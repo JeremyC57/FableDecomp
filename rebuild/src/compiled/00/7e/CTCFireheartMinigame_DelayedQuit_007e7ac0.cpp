@@ -92,7 +92,7 @@ public:
     unsigned char _pad89[0x98 - 0x89];
     CDefPointer<const CFireheartMinigameDef> PDef;          // +0x98
     unsigned long PlaySound(const CCharString& name);       // 0x007E7880
-    CWideString GetText(unsigned long id) const;            // 0x007E7580
+    CWideString GetText(unsigned long id);            // 0x007E7580
     void DelayedQuit();
 };
 

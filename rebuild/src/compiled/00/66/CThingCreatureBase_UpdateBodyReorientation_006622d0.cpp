@@ -32,7 +32,7 @@ class CTCPhysicsBase { public:
 };
 
 class CThingBodyReorienter { public:
-    bool IsUpdateNeeded();                              // 0x00863250
+    bool IsUpdateNeeded() const;                              // 0x00863250
     void UpdateBodyReorienation();                      // 0x00863E10
     void SetFlag_00863260(bool value);                  // 0x00863260 (`[this+8] = value`)
 };

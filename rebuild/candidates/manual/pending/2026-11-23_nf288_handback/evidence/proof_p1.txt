@@ -1,0 +1,2 @@
+##### 00a64230 renames: ?GetSymbol@CParsedItem@@QBEABVCCharString@@XZ=?GetString@CParsedItem@@QBEABVCCharString@@XZ
+ALL_EQ sections=8 DEF=7 tables=-

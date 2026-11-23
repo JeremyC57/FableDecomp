@@ -35,7 +35,7 @@ class CThingCreatureBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCTalk { public:                                // interface 0xf
-    float GetCurrentSpeechDuration();           // 0x006E2840
+    float GetCurrentSpeechDuration() const;           // 0x006E2840
 };
 
 class CSoundPair { public:

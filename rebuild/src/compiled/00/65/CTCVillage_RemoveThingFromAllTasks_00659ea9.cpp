@@ -31,7 +31,7 @@ class CTCVillage { public:
     CTaskList<CVillageTaskSecuritySweep>  SecuritySweepTasks; // +0x5C
     CTaskList<CVillageTaskCarryCrate>     CrateTasks;         // +0x60
     template<class T> void RemoveThingFromTaskList(const CThing& thing, CTaskList<T>& tasks);   // 0x00660787 ..
-    void RemoveThingFromAllTasks(const CThing& thing);
+    private: void RemoveThingFromAllTasks(const CThing& thing); public:
 };
 
 void CTCVillage::RemoveThingFromAllTasks(const CThing& thing)

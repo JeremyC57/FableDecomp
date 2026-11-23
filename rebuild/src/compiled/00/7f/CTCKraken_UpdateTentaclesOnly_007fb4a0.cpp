@@ -1,5 +1,5 @@
 // CTCKraken::UpdateTentaclesOnly() -- pick the tentacle closest to the target into AttackingTentacleIterator and, when one was found, set that tentacle component's Tracking flag
-// Leaf: ?UpdateTentaclesOnly@CTCKraken@@QAEXXZ
+// Leaf: ?UpdateTentaclesOnly@CTCKraken@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FB4A0, length 92 bytes.
 // Callees: CTCKraken::GetClosestTentacleToTarget(list iterator*) @ 0x007FB270, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
@@ -48,7 +48,7 @@ class CTCKraken { public:
     unsigned char     _pad_0x00[0x48];
     STentacleIterator AttackingTentacleIterator;    // +0x48
     bool GetClosestTentacleToTarget(STentacleIterator* closest);   // 0x007FB270
-    void UpdateTentaclesOnly();
+    private: void UpdateTentaclesOnly(); public:
 };
 
 void CTCKraken::UpdateTentaclesOnly()

@@ -55,7 +55,7 @@ class CTCEnemy { public:
     bool          IsInGlobalUpdateTCs;                      // +0x09
     unsigned char _pad0a[0x18 - 0x0a];                      // flags, EnemyThings, AllyThings (retail sizes)
     CFaction*     PFaction;                                 // +0x18
-    bool IsEnemyOf(const CThing& thing) const;              // 0x0076CCE0
+    private: bool IsEnemyOf(const CThing& thing) const; public:              // 0x0076CCE0
     bool IsAllyOf(const CThing& thing) const;
 };
 

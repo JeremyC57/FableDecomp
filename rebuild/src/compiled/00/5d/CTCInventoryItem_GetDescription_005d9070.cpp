@@ -86,9 +86,9 @@ class CTCInventoryItem { public:
     long    field8;                                // +0x08
     CDefPointer<CInventoryItemDef> PDef;           // +0x0c
     CDefPointer<CInventoryItemDef> GetPDef() const { return PDef; }
-    CWideString GetDescription();
+    CWideString GetDescription() const;
 };
-CWideString CTCInventoryItem::GetDescription()
+CWideString CTCInventoryItem::GetDescription() const
 {
     bool hasDescription = GetPDef()->ItemDescription > 0;
     if (hasDescription) {

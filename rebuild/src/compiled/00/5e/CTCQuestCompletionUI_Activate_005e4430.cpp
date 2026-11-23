@@ -89,7 +89,7 @@ class CTCQuestCard { public:
     CCharString ScriptName;                                // +0x28
     long GoldReward;                                       // +0x2c
     long RenownReward;                                     // +0x30
-    CWideString GetQuestSummary();                         // 0x00702400
+    CWideString GetQuestSummary() const;                         // 0x00702400
     CWideString GetSuccessSummary();                       // 0x00702630
     CWideString GetQuestName();                            // 0x00702470
 };

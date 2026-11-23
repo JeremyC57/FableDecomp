@@ -1,0 +1,101 @@
+## HEAD set: H_004bc4f0.obj H_004bda30.obj H_004bdb40.obj H_004bdd70.obj H_004bde90.obj H_004be000.obj H_00564570.obj H_0057be71.obj H_0057cb7e.obj H_00582027.obj H_005ae972.obj H_005cac8d.obj H_005d9070.obj H_00602f30.obj H_006ac690.obj H_006c3e80.obj H_006d7f20.obj H_0072ddb0.obj H_0072df50.obj H_00753c70.obj H_00766a60.obj H_0076d460.obj H_0077cd50.obj H_007e7ac0.obj H_007f08b0.obj H_007f14f0.obj H_007f15d0.obj H_007fb4a0.obj H_007fbb00.obj H_007fbc30.obj H_007fbc90.obj H_007fc8e0.obj H_008bab70.obj H_009261f0.obj 0076d2f0.obj 006c3ca0.obj 007c86f0.obj 007e7580.obj 006d5260.obj 006d53c0.obj 004c0560.obj 0072e130.obj 007f8890.obj 006d8770.obj 006d8790.obj 006d8830.obj 0055fb80.obj 00560d00.obj 00561450.obj 005615c0.obj 00561980.obj 00561dc0.obj 005621b0.obj 00563480.obj 00563920.obj 0057a89d.obj 0057b43f.obj 0057aad9.obj 0057d8be.obj 005ce0e6.obj 005d1f0c.obj 008991a0.obj 0077c960.obj 0058509f.obj 006ac430.obj 005bdd39.obj 0056fc5d.obj 00591e8c.obj 0059b717.obj 005b3e4e.obj 005c2dfd.obj 005cda50.obj 007cacb0.obj 005fbfa0.obj 005fc840.obj 0041e6d3.obj 005a8c66.obj 005ca68e.obj 005cb128.obj 005cb2b0.obj 007fc9d0.obj 007f07a0.obj 007f0890.obj 007f0b10.obj 007f0c70.obj 007f0f40.obj 00751da0.obj
+duplicates 25
+  DUP H_004bda30.obj ??1C3DMeshObject@@UAE@XZ in H_004bc4f0.obj;
+  DUP H_004bdb40.obj ??1C3DMeshObject@@UAE@XZ in H_004bc4f0.obj;
+  DUP H_004bdd70.obj ??1C3DMeshObject@@UAE@XZ in H_004bc4f0.obj;
+  DUP H_004bde90.obj ??1C3DMeshObject@@UAE@XZ in H_004bc4f0.obj;
+  DUP H_004be000.obj ??1C3DMeshObject@@UAE@XZ in H_004bc4f0.obj;
+  DUP H_007fbb00.obj ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z in H_007f08b0.obj;
+  DUP 004c0560.obj ??1C3DMeshObject@@UAE@XZ in H_004bc4f0.obj;
+  DUP 00561980.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@QAEHAAULHStringVector@@ABVCCharString@@@Z in 005615c0.obj;
+  DUP 00561980.obj ??9@YA_NABULHString@@PBD@Z in 005615c0.obj;
+  DUP 00561980.obj ??1LHStringVector@@QAE@XZ in 005615c0.obj;
+  DUP 00561dc0.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@QAEHAAULHStringVector@@ABVCCharString@@@Z in 005615c0.obj;
+  DUP 00561dc0.obj ?ReplaceDoubleApostrophes@@YI?AULHString@@ABU1@@Z in 005615c0.obj;
+  DUP 00561dc0.obj ??9@YA_NABULHString@@PBD@Z in 005615c0.obj;
+  DUP 00561dc0.obj ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z in 00561980.obj;
+  DUP 00561dc0.obj ??1LHStringVector@@QAE@XZ in 005615c0.obj;
+  DUP 005621b0.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@QAEHAAULHStringVector@@ABVCCharString@@@Z in 005615c0.obj;
+  DUP 005621b0.obj ??9@YA_NABULHString@@PBD@Z in 005615c0.obj;
+  DUP 005621b0.obj ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z in 00561980.obj;
+  DUP 005621b0.obj ??1LHStringVector@@QAE@XZ in 005615c0.obj;
+  DUP 00563480.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@AAEHAAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@ABVCCharString@@@Z in 00560d00.obj;
+  DUP 005d1f0c.obj ?ConvertMap@CTCInventoryStats@@QAEXABV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAV?$list@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@3@@Z in 005ce0e6.obj;
+  DUP 0058509f.obj ?GetQuickAccessNextFreeSlot@CTCInventory@@QAEJJ@Z in H_00582027.obj;
+  DUP 0041e6d3.obj ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z in 005b3e4e.obj;
+  DUP 005cb2b0.obj ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z in 0041e6d3.obj;
+  DUP 007f0b10.obj ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z in H_007f08b0.obj;
+UNRESOLVED 1 ?AddCarriedThingsOfThingToFadeList@CTCFadeOutAndIn@@QAEXABVCThing@@@Z
+UNRESOLVED 1 ?AttemptToStartParticle@CTCObjectAugmentations@@QAEXAAV?$CIntelligentPointer@VCThing@@@@JJABVCCharString@@1@Z
+UNRESOLVED 1 ?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@QAEXXZ
+UNRESOLVED 1 ?CreateHeadEffect@CTCKraken@@AAEXABVCCharString@@@Z
+UNRESOLVED 1 ?CreateHeadEffect@CTCKrakenTentacle@@QAEXXZ
+UNRESOLVED 1 ?CullNullFollowers@CTCFollowed@@IAEXXZ
+UNRESOLVED 1 ?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@QAEXXZ
+UNRESOLVED 1 ?DoMovement@CTCHighlightItem@@QAEXXZ
+UNRESOLVED 1 ?DownloadScoreboardForSelectedClan@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ
+UNRESOLVED 1 ?GetCentreMarker@CTCKraken@@AAEXXZ
+UNRESOLVED 1 ?GetDescription@CTCInventoryItem@@QBE?AVCWideString@@XZ
+UNRESOLVED 1 ?GetDescription@CTCInventoryItem@@SI?AVCWideString@@J@Z
+UNRESOLVED 1 ?GetMaxDrunkenness@CTCHeroStats@@QAEMXZ
+UNRESOLVED 1 ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z
+UNRESOLVED 1 ?GetNoDummyObjects@C3DMeshObject@@QBEJABVCCharString@@@Z
+UNRESOLVED 1 ?GetNoDummyObjects@CTCGraphicAppearance@@QAEJABVCCharString@@M@Z
+UNRESOLVED 2 ?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QAEJABVCCharString@@M@Z
+UNRESOLVED 1 ?GetPercentageThroughRenownLevel@CTCHeroStats@@QAEMXZ
+UNRESOLVED 4 ?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ
+UNRESOLVED 1 ?GetQuickAccessNextFreeSlot@CTCInventory@@QBEJJ@Z
+UNRESOLVED 1 ?GetReleaseAnimName@CTCFireballSpell@@QAE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetText@CTCFireheartMinigame@@QBE?AVCWideString@@K@Z
+UNRESOLVED 2 ?GlobalUpdate@CTCInventoryBase@NInventory@@QAEX_N@Z
+UNRESOLVED 2 ?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z
+UNRESOLVED 1 ?IsAbleToTurnDaBody@CTCLook@@QAE_NXZ
+UNRESOLVED 1 ?IsEnemyOf@CTCEnemy@@ABE_NABVCThing@@@Z
+UNRESOLVED 1 ?IsEnemyOf@CTCEnemy@@QBE_NABVCThing@@@Z
+UNRESOLVED 1 ?KillRippleFX@CTCKrakenTentacle@@QAEXXZ
+UNRESOLVED 1 ?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z
+UNRESOLVED 2 ?ReturnToDesiredPos@CTCKrakenTentacle@@QAEX_N@Z
+UNRESOLVED 1 ?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@QAEXXZ
+UNRESOLVED 1 ?TeleportHeroToRegionTeleporter@CTCInventoryMap@@QBEXJ@Z
+UNRESOLVED 1 ?TeleportToActiveRegion@CTCInventoryMap@@QAEXXZ
+UNRESOLVED 1 ?TrackTarget@CTCKrakenTentacle@@QAEXXZ
+UNRESOLVED 2 ?UpdateComboMultiplier@CTCHeroExperience@@AAEX_N@Z
+UNRESOLVED 1 ?UpdateTentaclesOnly@CTCKraken@@AAEXXZ
+## new set: 004bc4f0.obj 004bda30.obj 004bdb40.obj 004bdd70.obj 004bde90.obj 004be000.obj 00564570.obj 0057be71.obj 0057cb7e.obj 00582027.obj 005ae972.obj 005cac8d.obj 005d9070.obj 00602f30.obj 006ac690.obj 006c3e80.obj 006d7f20.obj 0072ddb0.obj 0072df50.obj 00753c70.obj 00766a60.obj 0076d460.obj 0077cd50.obj 007e7ac0.obj 007f08b0.obj 007f14f0.obj 007f15d0.obj 007fb4a0.obj 007fbb00.obj 007fbc30.obj 007fbc90.obj 007fc8e0.obj 008bab70.obj 009261f0.obj 0076d2f0.obj 006c3ca0.obj 007c86f0.obj 007e7580.obj 006d5260.obj 006d53c0.obj 004c0560.obj 0072e130.obj 007f8890.obj 006d8770.obj 006d8790.obj 006d8830.obj 0055fb80.obj 00560d00.obj 00561450.obj 005615c0.obj 00561980.obj 00561dc0.obj 005621b0.obj 00563480.obj 00563920.obj 0057a89d.obj 0057b43f.obj 0057aad9.obj 0057d8be.obj 005ce0e6.obj 005d1f0c.obj 008991a0.obj 0077c960.obj 0058509f.obj 006ac430.obj 005bdd39.obj 0056fc5d.obj 00591e8c.obj 0059b717.obj 005b3e4e.obj 005c2dfd.obj 005cda50.obj 007cacb0.obj 005fbfa0.obj 005fc840.obj 0041e6d3.obj 005a8c66.obj 005ca68e.obj 005cb128.obj 005cb2b0.obj 007fc9d0.obj 007f07a0.obj 007f0890.obj 007f0b10.obj 007f0c70.obj 007f0f40.obj 00751da0.obj
+duplicates 24
+  DUP 004bda30.obj ??1C3DMeshObject@@UAE@XZ in 004bc4f0.obj;
+  DUP 004bdb40.obj ??1C3DMeshObject@@UAE@XZ in 004bc4f0.obj;
+  DUP 004bdd70.obj ??1C3DMeshObject@@UAE@XZ in 004bc4f0.obj;
+  DUP 004bde90.obj ??1C3DMeshObject@@UAE@XZ in 004bc4f0.obj;
+  DUP 004be000.obj ??1C3DMeshObject@@UAE@XZ in 004bc4f0.obj;
+  DUP 007fbb00.obj ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z in 007f08b0.obj;
+  DUP 004c0560.obj ??1C3DMeshObject@@UAE@XZ in 004bc4f0.obj;
+  DUP 00561980.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@QAEHAAULHStringVector@@ABVCCharString@@@Z in 005615c0.obj;
+  DUP 00561980.obj ??9@YA_NABULHString@@PBD@Z in 005615c0.obj;
+  DUP 00561980.obj ??1LHStringVector@@QAE@XZ in 005615c0.obj;
+  DUP 00561dc0.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@QAEHAAULHStringVector@@ABVCCharString@@@Z in 005615c0.obj;
+  DUP 00561dc0.obj ?ReplaceDoubleApostrophes@@YI?AULHString@@ABU1@@Z in 005615c0.obj;
+  DUP 00561dc0.obj ??9@YA_NABULHString@@PBD@Z in 005615c0.obj;
+  DUP 00561dc0.obj ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z in 00561980.obj;
+  DUP 00561dc0.obj ??1LHStringVector@@QAE@XZ in 005615c0.obj;
+  DUP 005621b0.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@QAEHAAULHStringVector@@ABVCCharString@@@Z in 005615c0.obj;
+  DUP 005621b0.obj ??9@YA_NABULHString@@PBD@Z in 005615c0.obj;
+  DUP 005621b0.obj ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z in 00561980.obj;
+  DUP 005621b0.obj ??1LHStringVector@@QAE@XZ in 005615c0.obj;
+  DUP 00563480.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@AAEHAAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@ABVCCharString@@@Z in 00560d00.obj;
+  DUP 005d1f0c.obj ?ConvertMap@CTCInventoryStats@@QAEXABV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAV?$list@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@3@@Z in 005ce0e6.obj;
+  DUP 0041e6d3.obj ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z in 005b3e4e.obj;
+  DUP 005cb2b0.obj ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z in 0041e6d3.obj;
+  DUP 007f0b10.obj ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z in 007f08b0.obj;
+UNRESOLVED 1 ?AttemptToStartParticle@CTCObjectAugmentations@@AAEXAAV?$CIntelligentPointer@VCThing@@@@JJABVCCharString@@1@Z
+UNRESOLVED 1 ?CreateHeadEffect@CTCKrakenTentacle@@QAEXXZ
+UNRESOLVED 1 ?CullNullFollowers@CTCFollowed@@IAEXXZ
+UNRESOLVED 1 ?GetDescription@CTCInventoryItem@@SI?AVCWideString@@J@Z
+UNRESOLVED 1 ?GetNoDummyObjects@C3DMeshObject@@QBEJABVCCharString@@@Z
+UNRESOLVED 1 ?GetNoDummyObjects@CTCGraphicAppearance@@QAEJABVCCharString@@M@Z
+UNRESOLVED 5 ?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ
+UNRESOLVED 2 ?GlobalUpdate@CTCInventoryBase@NInventory@@QAEX_N@Z
+UNRESOLVED 2 ?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z
+UNRESOLVED 2 ?IsEnemyOf@CTCEnemy@@ABE_NABVCThing@@@Z
+UNRESOLVED 1 ?TeleportHeroToRegionTeleporter@CTCInventoryMap@@QBEXJ@Z
+LK_DONE

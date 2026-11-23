@@ -70,7 +70,7 @@ struct CTCPhysicsRigidBody : CTCPhysicsBase {
     CRightHandedSet RHSet;                      // +0x68
     CRightHandedSet OldRHSet;                   // +0x80
     C2DVector       OffsetVector;               // +0x98
-    void InitialiseBody();                      // 0x0075B000
+    private: void InitialiseBody(); public:                      // 0x0075B000
     virtual void OnCreate();
 };
 

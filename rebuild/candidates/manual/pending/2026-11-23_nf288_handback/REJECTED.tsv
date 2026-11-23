@@ -1,0 +1,4 @@
+idx	address	class	reason
+12	0x0055FB80	CTCHeroOnlineScoreboard	T3 (D3 pattern): 0x00560D00 defines a strong same-TU AAE copy of UpdateTransaction (line 226); moving the QAE self and its 5 QAE binders adds a second strong AAE definer
+23	0x005FC840	CTCInventoryMap	T3: the const self body forces const on TeleportHeroToTeleporter 0x005FBD20, whose self defines the stand-in signature QAEXPAVCThing (PDB QBEXAAVCThing)
+44	0x0066BC10	CTCSoundPlayer	T3 (D3 pattern): the only QAE binder 0x0066BDF0 defines and calls its own strong same-TU QAE copy; 0x0066BD00 already defines an AAE copy beside the self

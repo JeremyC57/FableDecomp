@@ -40,7 +40,7 @@ protected:
     unsigned long PlaySoundW(const CCharString& sound, bool player);   // 0x0079DE00 (Ego_r / FableWin ?PlaySoundW@CTCPhysicalShieldSpell@@IAEKABVCCharString@@_N@Z, protected)
 public:
     void PlayEffect(long effect, const CCharString& boneName, const CCharString& type, CThing* target, long flags);   // 0x0079DEB0
-    void PlayShieldEffects(CThingCreatureBase* creature);   // 0x0079E420
+    protected: void PlayShieldEffects(CThingCreatureBase* creature); public:   // 0x0079E420
     void FrameUpdate();
 };
 

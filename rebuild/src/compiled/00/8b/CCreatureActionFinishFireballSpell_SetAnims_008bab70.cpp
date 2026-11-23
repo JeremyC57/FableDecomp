@@ -26,7 +26,7 @@ class CBaseObjectPointer;
 
 
 class CTCFireballSpell { public:                   // interface type 0x9d component
-    CCharString GetReleaseAnimName();       // 0x007C86F0
+    CCharString GetReleaseAnimName() const;       // 0x007C86F0
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114

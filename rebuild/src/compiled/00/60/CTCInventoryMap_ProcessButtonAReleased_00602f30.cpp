@@ -80,7 +80,7 @@ public:
     void ReleaseMapScreenPrimitives();             // 0x005FC510
     void FindQuestsForActiveRegion();              // 0x005FD0F0
     void FindTeleportsForActiveRegion();           // 0x005FD1D0
-    void TeleportToActiveRegion();                 // 0x005FBFA0
+    private: void TeleportToActiveRegion(); public:                 // 0x005FBFA0
     void ProcessButtonAReleased();
 };
 void CTCInventoryMap::ProcessButtonAReleased()

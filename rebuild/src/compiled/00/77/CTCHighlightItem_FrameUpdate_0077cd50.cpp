@@ -101,7 +101,7 @@ struct CTCHighlightItem {
 
     CGameSubsystem* GetGameSubsystem() const;        // 0x00686D60 (CTCBase: main game component +0x1C)
     void DoStartRunning();                           // 0x0077CBE0
-    void DoMovement();                               // 0x0077C960
+    protected: void DoMovement(); public:                               // 0x0077C960
     void OnInitialActivate();
     void DoStopRunning();
     void FrameUpdate();

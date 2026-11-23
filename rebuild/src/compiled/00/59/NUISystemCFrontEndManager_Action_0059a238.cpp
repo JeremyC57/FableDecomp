@@ -257,7 +257,7 @@ protected:
     void LoadProfile(const CWideString& name);                    // 0x0059899A
 public:
     void GotoPreviousScreen(bool all);                            // 0x00597BF2
-    long RefreshAvailableSavedGamesForProfile();                  // 0x00598463
+    protected: long RefreshAvailableSavedGamesForProfile(); public:                  // 0x00598463
     void Action(const CCountedPointer<CAction>& action);
 };
 

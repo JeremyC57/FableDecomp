@@ -124,7 +124,7 @@ class CTCGraphicAppearance { public:
         for (CComponentListNode* node = Components.m_head->m_next; node != Components.m_head; node = node->m_next)
             node->m_value->GetAllMeshes(meshes);
     }
-    void GetMeshObject(const CMeshInfo& info, float scale, C3DMeshObject& out) const;   // 0x004BC4F0
+    protected: void GetMeshObject(const CMeshInfo& info, float scale, C3DMeshObject& out) const; public:   // 0x004BC4F0
     void GetDummyObjectNamesStartingWith(std::vector<CCharString>& names, const CCharString& prefix) const;
 };
 

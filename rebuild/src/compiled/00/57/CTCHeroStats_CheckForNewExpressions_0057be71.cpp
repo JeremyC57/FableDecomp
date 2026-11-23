@@ -52,7 +52,7 @@ class CTCHeroStats { public:
     unsigned char _pad_0x08[0x68];
     long          RenownLevel;                       // +0x70 (PDB +0x78)
 
-    float GetPercentageThroughRenownLevel();         // 0x0057AAD9
+    float GetPercentageThroughRenownLevel() const;         // 0x0057AAD9
     long GetMoralityCategory();                      // 0x0057A6B8
     void CheckForNewExpressions();
 };

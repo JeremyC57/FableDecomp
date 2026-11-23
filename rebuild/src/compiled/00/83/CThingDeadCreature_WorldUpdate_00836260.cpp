@@ -99,7 +99,7 @@ private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThingBodyReorienter { public:
-    bool IsUpdateNeeded();                              // 0x00863250
+    bool IsUpdateNeeded() const;                              // 0x00863250
     void UpdateBodyReorienation();                      // 0x00863E10
     void SetFlag_00863260(bool value);                  // 0x00863260
 };

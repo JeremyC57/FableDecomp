@@ -1,0 +1,46 @@
+## HEAD set: H_004c8c00.obj H_004c8cf0.obj H_004c9b80.obj H_004c9ca0.obj H_00522880.obj H_005e4430.obj H_00659ea9.obj H_0065b6dd.obj H_006622d0.obj H_006626e0.obj H_006afa40.obj H_006e2840.obj H_00728400.obj H_00728460.obj H_00728470.obj H_0075b2d0.obj H_007674a0.obj H_007888b4.obj H_0079e420.obj H_0079eb30.obj H_007d4a60.obj H_007d4a90.obj H_007f9b90.obj H_00800a60.obj H_00830360.obj H_00833a70.obj H_00836260.obj H_00863e10.obj H_0090f290.obj H_009357f0.obj H_0094ce60.obj H_00957a20.obj H_0096f570.obj H_0097f5b0.obj 007676a0.obj 00744830.obj 008d0ba0.obj 00939ed0.obj 0079ec10.obj 00725500.obj 0075b000.obj 008004d0.obj 00714370.obj 008008b0.obj 00702400.obj 0058578b.obj 0061b610.obj 0061e6d0.obj 007280c0.obj 007283f0.obj 007f53a0.obj 007f50b0.obj 0066bc10.obj 0066bd00.obj 0066bdf0.obj 00716b30.obj 007f9960.obj 005e9aa0.obj 007d7ba0.obj 008ef190.obj 008f1720.obj 005ea3c0.obj 008f1d40.obj 007da360.obj 007d46d0.obj 007881ad.obj 0065be6c.obj 004c8280.obj 004b5ee0.obj 00520c80.obj 00523cf0.obj 005252b0.obj 007df3e0.obj 0089f4a0.obj 004c9c10.obj 008338d0.obj 00863250.obj 00863280.obj 00863ca0.obj 00692c80.obj 00662880.obj 006a9dd0.obj
+duplicates 4
+  DUP H_004c9ca0.obj ?Kill@CThing@@QAEX_N@Z in H_004c9b80.obj;
+  DUP 0066bd00.obj ?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z in 0066bc10.obj;
+  DUP 0089f4a0.obj ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z in H_00836260.obj;
+  DUP 00662880.obj ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z in H_00836260.obj;
+UNRESOLVED 1 ?ClearAllParticleEffects@CTCObjectAugmentations@@AAEXXZ
+UNRESOLVED 1 ?ConstructFromParams@CThingCreatureBase@@QAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z
+UNRESOLVED 2 ?EndRound@CTCTavernGame@@QAEXXZ
+UNRESOLVED 1 ?EndRound@CTCTavernGame@@UAEXXZ
+UNRESOLVED 2 ?FadeOutTableOccupants@CTCTavernGameCoinGolf@@QAEX_N@Z
+UNRESOLVED 1 ?FillBodyReorientationPossibleIntersecting@CThingBodyReorienter@@QAEXXZ
+UNRESOLVED 1 ?FrameUpdate@CTCTavernGameCardBase@@QAEXXZ
+UNRESOLVED 1 ?GetAnimMovementVector@CThingCreatureBase@@QBE?AVC3DVector@@J@Z
+UNRESOLVED 1 ?GetBanter@CTCTavernGame@@QAEJXZ
+UNRESOLVED 1 ?GetCurrentSpeechDuration@CTCTalk@@QBEMXZ
+UNRESOLVED 1 ?GetQuestSummary@CTCQuestCard@@QAE?AVCWideString@@XZ
+UNRESOLVED 1 ?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QAE?AVC3DVector@@XZ
+UNRESOLVED 1 ?GradualReorientBody@CThingBodyReorienter@@QAEXXZ
+UNRESOLVED 1 ?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@IBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z
+UNRESOLVED 1 ?InitialiseBody@CTCPhysicsRigidBody@@QAEXXZ
+UNRESOLVED 1 ?InitialiseFromDef@CThingAICreature@@QAEXXZ
+UNRESOLVED 1 ?IsGameStatePersisted@CThing@@QAE_NXZ
+UNRESOLVED 2 ?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QAE_NXZ
+UNRESOLVED 2 ?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QBE_NXZ
+UNRESOLVED 2 ?IsUpdateNeeded@CThingBodyReorienter@@QAE_NXZ
+UNRESOLVED 1 ?LoadRoute@CTCPreCalculatedNavigationRoute@@QAEXAAVCPersistContext@@J@Z
+UNRESOLVED 1 ?OnInitialActivate@CTCSoundAtmosphere@@QAEXXZ
+UNRESOLVED 1 ?PlayShieldEffects@CTCPhysicalShieldSpell@@IAEXPAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?RemoveThingFromAllTasks@CTCVillage@@AAEXABVCThing@@@Z
+UNRESOLVED 3 ?UpdateMorphSet@CTCRandomAppearanceMorph@@QAEXXZ
+UNRESOLVED 1 ?UpdateTargetList@CTCTargetingSpirit@@QAEXXZ
+UNRESOLVED 1 ?UpdateThingScanInclusion@CThing@@IAEXXZ
+UNRESOLVED 1 ?UpdateTriggerThings@CTCTrapBase@@QAEXXZ
+## new set: 004c8c00.obj 004c8cf0.obj 004c9b80.obj 004c9ca0.obj 00522880.obj 005e4430.obj 00659ea9.obj 0065b6dd.obj 006622d0.obj 006626e0.obj 006afa40.obj 006e2840.obj 00728400.obj 00728460.obj 00728470.obj 0075b2d0.obj 007674a0.obj 007888b4.obj 0079e420.obj 0079eb30.obj 007d4a60.obj 007d4a90.obj 007f9b90.obj 00800a60.obj 00830360.obj 00833a70.obj 00836260.obj 00863e10.obj 0090f290.obj 009357f0.obj 0094ce60.obj 00957a20.obj 0096f570.obj 0097f5b0.obj 007676a0.obj 00744830.obj 008d0ba0.obj 00939ed0.obj 0079ec10.obj 00725500.obj 0075b000.obj 008004d0.obj 00714370.obj 008008b0.obj 00702400.obj 0058578b.obj 0061b610.obj 0061e6d0.obj 007280c0.obj 007283f0.obj 007f53a0.obj 007f50b0.obj 0066bc10.obj 0066bd00.obj 0066bdf0.obj 00716b30.obj 007f9960.obj 005e9aa0.obj 007d7ba0.obj 008ef190.obj 008f1720.obj 005ea3c0.obj 008f1d40.obj 007da360.obj 007d46d0.obj 007881ad.obj 0065be6c.obj 004c8280.obj 004b5ee0.obj 00520c80.obj 00523cf0.obj 005252b0.obj 007df3e0.obj 0089f4a0.obj 004c9c10.obj 008338d0.obj 00863250.obj 00863280.obj 00863ca0.obj 00692c80.obj 00662880.obj 006a9dd0.obj
+duplicates 4
+  DUP 004c9ca0.obj ?Kill@CThing@@QAEX_N@Z in 004c9b80.obj;
+  DUP 0066bd00.obj ?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z in 0066bc10.obj;
+  DUP 0089f4a0.obj ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z in 00836260.obj;
+  DUP 00662880.obj ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z in 00836260.obj;
+UNRESOLVED 2 ?EndRound@CTCTavernGame@@QAEXXZ
+UNRESOLVED 1 ?EndRound@CTCTavernGame@@UAEXXZ
+UNRESOLVED 1 ?FrameUpdate@CTCTavernGameCardBase@@QAEXXZ
+UNRESOLVED 4 ?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QBE_NXZ
+UNRESOLVED 1 ?OnInitialActivate@CTCSoundAtmosphere@@QAEXXZ
+LK_DONE

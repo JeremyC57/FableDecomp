@@ -98,7 +98,7 @@ namespace NInventory { class CTCInventoryBase; }
 class CTCInventoryItem { public:
     ETCInterfaceType GetInventoryType() const;   // NF35: Ego_r + FableWin ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ                            // 0x005D9030
     bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
-    CWideString GetDescription();                       // 0x005D9070
+    CWideString GetDescription() const;                       // 0x005D9070
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared

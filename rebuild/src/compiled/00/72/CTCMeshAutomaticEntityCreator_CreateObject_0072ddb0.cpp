@@ -37,7 +37,7 @@ class CTCGraphicAppearance { public:
     unsigned char _pad00[0x34];
     float         m_scale;                            // +0x34
     float GetScale() const { return m_scale; }
-    long GetNoDummyObjects(const CCharString& name, float scale);   // 0x004BE000
+    long GetNoDummyObjects(const CCharString& name, float scale) const;   // 0x004BE000
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
     void SetScale(float scale);                       // 0x004BFA50
 };

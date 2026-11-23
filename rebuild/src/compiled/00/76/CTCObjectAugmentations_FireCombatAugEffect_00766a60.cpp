@@ -88,8 +88,8 @@ class CTCObjectAugmentations { public:
     long          CurrentRunningAugEffectIndex;         // +0x5c
     long          CurPeriod;                            // +0x60
     bool          InStrikeAction;                       // +0x64
-    void AttemptToStartParticle(CIntelligentPointer<CThing>& effect, long particleType, long periodicFrames,
-                                const CCharString& startDummy, const CCharString& endDummy);   // 0x00766660
+    private: void AttemptToStartParticle(CIntelligentPointer<CThing>& effect, long particleType, long periodicFrames,
+                                const CCharString& startDummy, const CCharString& endDummy); public:   // 0x00766660
     void FireCombatAugEffect();
 };
 

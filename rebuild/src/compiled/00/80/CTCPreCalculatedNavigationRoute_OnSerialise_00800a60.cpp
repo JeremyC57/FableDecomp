@@ -44,7 +44,7 @@ public:
     unsigned __int64        ThingToCalculateRouteToUID; // +0x18
     unsigned char           Route[0xc];                 // +0x20 vector<pair<C2DVector, unsigned char> >
     void SaveRoute(CPersistContext& context);   // 0x008006D0
-    void LoadRoute(CPersistContext& context, long version);   // 0x008008B0
+    private: void LoadRoute(CPersistContext& context, long version); public:   // 0x008008B0
     void OnSerialise(CPersistContext& context, bool);
 };
 

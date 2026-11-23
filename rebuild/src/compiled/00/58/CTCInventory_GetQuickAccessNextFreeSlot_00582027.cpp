@@ -13,16 +13,16 @@ struct CLongVector {
     long* last;                                      // +0x04
     long* end_of_storage;                            // +0x08
     unsigned long size() const { return (unsigned long)(last - first); }
-    long& operator[](unsigned long n) { return first[n]; }
+    long& operator[](unsigned long n) { return first[n]; } const long& operator[](unsigned long n) const { return first[n]; }
 };
 
 class CTCInventory { public:
     unsigned char _pad_0x000[0x148];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
-    long GetQuickAccessNextFreeSlot(long item);
+    long GetQuickAccessNextFreeSlot(long item) const;
 };
 
-long CTCInventory::GetQuickAccessNextFreeSlot(long item)
+long CTCInventory::GetQuickAccessNextFreeSlot(long item) const
 {
     long result = -1;
     for (unsigned long i = 0; i < QuickAccessItems.size(); ++i) {

@@ -54,7 +54,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing;
 namespace NInventory { class CTCInventoryBase { public: virtual void v00(); }; }   // RTTI: CTCInventory's base @0
 class CTCInventory : public NInventory::CTCInventoryBase { public:
-    long GetQuickAccessNextFreeSlot(long item);                         // 0x00582027
+    long GetQuickAccessNextFreeSlot(long item) const;                         // 0x00582027
     void SetThingAsQuickAccessItem(long item, long slot, bool a);       // 0x00584157
 };
 class CTCInventoryItem { public:

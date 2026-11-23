@@ -119,7 +119,7 @@ public:
     long                      LastStrikeTick;            // +0x54
     long                      KillBeamCounter;           // +0x58
     bool                      ReturnHeadToWater;         // +0x5c
-    void GetCentreMarker();                              // 0x007FBC90
+    private: void GetCentreMarker(); public:                              // 0x007FBC90
     void SetPhase(EKrakenBossPhase phase);               // 0x007FC820
     void OnInitialActivate();
 };

@@ -55,7 +55,7 @@ class CThing { public:
     unsigned char   LevelIsUnloading : 1;
     unsigned char   IsAffectedByBulletTimeOverride : 1;
     unsigned char   AddingTCsPermitted : 1;          // bit 6
-    void UpdateThingScanInclusion();                 // 0x004C8C00
+    protected: void UpdateThingScanInclusion(); public:                 // 0x004C8C00
     void SendMessageW(CMessage* message);            // 0x004C7820
     void SetInLimbo(bool inLimbo);
 };

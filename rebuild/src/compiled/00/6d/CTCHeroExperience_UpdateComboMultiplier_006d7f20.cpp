@@ -1,5 +1,5 @@
 // CTCHeroExperience::UpdateComboMultiplier(bool) -- after a combo-multiplier change: re-enables the melee flourish on a rise, records the best multiplier, reports it to the scoreboard and plays the lock / increase / running-hits sound
-// Leaf: ?UpdateComboMultiplier@CTCHeroExperience@@QAEX_N@Z
+// Leaf: ?UpdateComboMultiplier@CTCHeroExperience@@AAEX_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D7F20, 435 bytes (+ int3 padding), `ret 4` (the bool parameter is unused;
 // its slot homes the interface-lookup keys).
@@ -81,7 +81,7 @@ public:
     long GetExperienceFallbackMultiplierForMultiplier(long multiplier) const;   // 0x006D73D0
     long GetExperienceFallbackMultiplier() const { return GetExperienceFallbackMultiplierForMultiplier(GetExperiencePickUpMultiplier()); }
     long GetRunningNumHits() const;                         // 0x006D63A0
-    void UpdateComboMultiplier(bool);
+    private: void UpdateComboMultiplier(bool); public:
 };
 
 void CTCHeroExperience::UpdateComboMultiplier(bool)

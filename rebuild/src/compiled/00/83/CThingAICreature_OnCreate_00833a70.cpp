@@ -102,7 +102,7 @@ class CThingAICreature : public CThingCreatureBase { public:
         Suspenders.InsertUnique(suspender);
         AISuspended = !Suspenders.empty();
     }
-    void InitialiseFromDef();                   // 0x008338D0
+    protected: void InitialiseFromDef(); public:                   // 0x008338D0
 protected:
     virtual bool OnCreate();            // protected virtual (both PDBs: MAE)
 };

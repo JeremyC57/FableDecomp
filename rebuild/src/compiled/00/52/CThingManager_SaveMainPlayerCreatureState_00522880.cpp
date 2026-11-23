@@ -85,7 +85,7 @@ public:
     short CurrentMapNumber;                             // +0x8e
     unsigned char _pad90;
     unsigned char Flags91;                              // +0x91
-    bool IsGameStatePersisted();                        // 0x004C8280
+    bool IsGameStatePersisted() const;                        // 0x004C8280
     bool IsLevelLess();                                 // 0x004C7930
     void SetCurrentMapNumber(long map);                 // 0x004C7580
     FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }

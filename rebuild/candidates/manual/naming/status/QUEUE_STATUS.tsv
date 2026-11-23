@@ -154,7 +154,7 @@ line	tag	address	correct_symbol	status	other_spellings
 153	523	006fc6a0	?_M_insert_overflow@?$vector@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@V?$allocator@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@2@ABU32@ABU__false_type@2@I_N@Z	partial	?_M_insert_overflow@ || ?_M_insert_overflow@?$vector@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@@V?$allocator@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@@@@@@QAEXPAU?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@@ABU2@ABU__false_type@@I_N@Z
 154	523	0072b940	?CalculateWeaponState@CTCSpecialAbilities@@SI?AW4EWEAPON_STATE@1@AAVCThingCreatureBase@@@Z	partial	?CalculateWeaponState@@YI?AW4EWEAPON_STATE@CTCSpecialAbilities@@PAVCThingCreatureBase@@@Z
 155	523	0076c7f0	?IsAlliedWithFaction@CTCEnemy@@QBE_NPBVCFaction@@@Z	closed	
-156	523	0076cce0	?IsEnemyOf@CTCEnemy@@ABE_NABVCThing@@@Z	partial	?IsEnemyOf@CTCEnemy@@QBE_NABVCThing@@@Z
+156	523	0076cce0	?IsEnemyOf@CTCEnemy@@ABE_NABVCThing@@@Z	closed	
 157	523	0076d2f0	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	partial	?AreThingsEnemies@@YI_NPBVCThing@@0@Z || ?AreThingsEnemies@CTCEnemy@N00807b70@@SI_NPAUCThing@2@0@Z
 158	523	0078b230	??$GetDef@VCThingShotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingShotDef@@@@@Z	partial	?GetDef@CDefinitionManager@@QAE_NJPAPAVCThingShotDef@@@Z
 159	523	007c0690	?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1PBV4@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z	partial	?Init@CTCShotDefinitionBase@@QAEXU?$CDefPointerByValue@VCThingShotDef@@@@PAVCThing@@11MMMPAV?$CDefPointer@VCMeleeCombatAbilityDef@@@@@Z
@@ -5151,7 +5151,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7074	land1011v	0072f0e0	?SetRespawnable@CTCDummyVillager@@QAEX_N@Z	partial	EnableNavigator
 7075	land1011v	0072f750	?CreateVillager@CTCDummyVillager@@QAEPAVCThingAICreature@@AAVCTCVillage@@ABVC3DVector@@_N@Z	closed	
 7076	land1011v	0073a8a0	?IsModeActive@CTCCreatureModeManager@@QBE_NK@Z	partial	?HasMode@CTCCreatureModeManager@@QAE_NJ@Z || ?HasMode@CTCCreatureModeManager@@QAE_NK@Z || IsModeActive
-7077	land1011v	0077c960	?DoMovement@CTCHighlightItem@@IAEXXZ	partial	?DoMovement@CTCHighlightItem@@QAEXXZ
+7077	land1011v	0077c960	?DoMovement@CTCHighlightItem@@IAEXXZ	closed	
 7078	land1011v	0077d080	??$GetSubDef@VCHighlightItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHighlightItemDef@@@@@Z	partial	?GetSubDef@CDefClassBase@@QAE_NAAUCHighlightItemDefPointer@@@Z || ?GetSubDef@CThingDef@@QBE_NPAV?$CDefPointer@$$CBVCHighlightItemDef@@@@@Z || ?GetSubDefRaw@CThingDef@@QBE_NPAV?$CDefPointer@$$CBVCHighlightItemDef@@@@@Z
 7079	land1011v	00800020	?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ	partial	UpdateActionSpeedMultiplier
 7080	land1011v	00857520	?Initialise@CCombatActionBase@@UAEXXZ	partial	?BaseInit@CCreatureAction_ScorpionRecover_Methods@@QAEXXZ || ?CCreatureAction_Base_Initialise@@YIXPAUCCreatureAction_Base@@@Z || ?base@Fable_TrollInit_008c5fd0@@QAIXXZ
@@ -5729,7 +5729,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7703	land1011bh	005130a0	??$GetSubDef@VCShopDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCShopDef@@@@@Z	closed	
 7704	land1011bh	0057a753	?OnHealthModified@CTCHeroStats@@QAEXXZ	partial	?OnHealthChanged@CTCHeroHealthObserver@@QAEXXZ
 7705	land1011bh	0057a67e	?GetMoralityMax@CTCHeroStats@@QBEJXZ	closed	
-7706	land1011bh	0057a89d	?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ	partial	?GetMaxDrunkenness@CTCHeroStats@@QAEMXZ
+7706	land1011bh	0057a89d	?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ	closed	
 7707	land1011bh	006869d0	?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ	partial	?GetDefinitions@CTCHeroStats@@QBEPAUCDefinitionHolder@@XZ
 7708	land1011bh	007528a0	?CentreHead@CTCLook@@AAEXXZ	closed	
 7709	land1011bh	00752200	?ChangeEyeAngles@CTCLook@@AAEXMM@Z	closed	
@@ -9743,7 +9743,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12067	land1120nf170	00f2d5b0	?TransferBinaryIn@?$CPersistTraits@W4EFeatAttackType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EFeatAttackType@@@Z	open	?TransferBinaryIn@?$CPersistTraits@W4EFeatAttackType@@@@QAEXPAVCMemoryDataInputStream@@PAW4EFeatAttackType@@@Z
 12068	land1120nf170	0049c700	?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z	closed	
 12069	land1120nf170	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	partial	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z || ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z
-12071	land1120nf170	005ea3c0	??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@...	open	?GetBanter@CTCTavernGame@@QAEJXZ || ?GetBanter@CTCTavernGame@@QBEJXZ
+12071	land1120nf170	005ea3c0	??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@...	open	?GetBanter@CTCTavernGame@@QBEJXZ
 12076	land1120nf170	005ea000	?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	partial	?GetTavernGameDef@CTCTavernGameCardBase@@QAEXPAUCDefPointer@@@Z
 12077	land1120nf170	00443f90	?Resize@CRetailHandleVector@@QAEXJ@Z	open	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z
 12078	land1120nf171	00637a10	?RemoveThing@CThingMapManager@NThingMap@@QAEXAAVCTCMapwho@@@Z	partial	DestroyMapwhoNode
@@ -9953,7 +9953,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12415	land1122p26	005121d0	?GetWorkBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ	no_binding	
 12416	land1122p26	00535fbe	?ShareData@?$CCountedPointer@VCListArrow@NUISystem@@@@QAEXPAVCListArrow@NUISystem@@PAVCCPPointerInfo@@@Z	closed	
 12417	land1122p26	005590b0	?SetScrollBar@CScrollBarOutside@NUISystem@@UAEXPAVCComponent@2@@Z	no_binding	
-12418	land1122p26	0057a89d	?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ	partial	?GetMaxDrunkenness@CTCHeroStats@@QAEMXZ
+12418	land1122p26	0057a89d	?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ	closed	
 12419	land1122p26	005bcf4c	?SetQuestPersistFlagForAllItems@CTCInventoryBase@NInventory@@QAEX_N@Z	closed	
 12420	land1122p26	005d82f3	??0?$_Vector_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@IABV?$allocator@PAVCComponent@NUISystem@@@1@@Z	open	??0?$_Vector_base@ || ??0?$_Vector_base@JV?$allocator@J@std@@@std@@QAE@IABV?$allocator@J@1@@Z
 12421	land1122p26	005f45b5	?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z	closed	
@@ -9979,7 +9979,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12441	land1122p26	007dac10	?DealCards@CTCTavernGameCardBlackjack@@UAEXXZ	closed	
 12442	land1122p26	007f1840	?GetRumbleDistanceAttenuationAtPos@NRumble@@YIMABVC3DVector@@0@Z	partial	?RumbleDistanceFalloff@@YIMABVC3DVector@@0@Z
 12443	land1122p26	008001f0	??$__copy@PAU?$pair@VC2DVector@@E@std@@PAU12@H@std@@YIPAU?$pair@VC2DVector@@E@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	open	?_Move@@YIPAUSRoutePoint@@PAU1@00ABU_Nonscalar_ptr_iterator_tag@@_N@Z || ?__copy@@YIPAUSElement9@@PAU1@00ABUrandom_access_iterator_tag@@PAJ@Z
-12444	land1122p26	008008b0	?LoadRoute@CTCPreCalculatedNavigationRoute@@AAEXAAVCPersistContext@@J@Z	partial	?LoadRoute@CTCPreCalculatedNavigationRoute@@QAEXAAVCPersistContext@@J@Z
+12444	land1122p26	008008b0	?LoadRoute@CTCPreCalculatedNavigationRoute@@AAEXAAVCPersistContext@@J@Z	closed	
 12445	land1122p26	00800ca0	?reserve@?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QAEXI@Z	open	?reserve@ || ?reserve@CRoutePointVector@@QAEXK@Z
 12446	land1122p26	00800da0	?_M_insert_overflow@?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@IAEXPAU?$pair@VC2DVector@@E@2@ABU32@ABU__false_type@2@I_N@Z	open	?_M_insert_overflow@ || ?_M_insert_overflow@CRoutePointVector@@QAEXPAUSRoutePoint@@ABU2@ABU__true_type@@K_N@Z
 12447	land1122p26	00802890	?GetTargetingRange@?A0x58ed6966@@YIMABVCTargetingDef@@W4ETargetingType@@@Z	open	?GetTargetingRange@?A0x0b18bc57@@YIMABVCTargetingDef@@W4ETargetingType@@@Z || ?GetTargetingRange@?A0x9ec1c2cb@@YIMABVCTargetingDef@@W4ETargetingType@@@Z || ?GetTargetingRange@@YI
@@ -10326,7 +10326,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13158	land1122p28	0055f710	?ResetAndOpenHTTPAndPrepareRequest@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVCCharString@@_N@Z	partial	?ResetAndOpenHTTPAndPrepareRequest@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@ABULHString@@ABVCCharString@@_N@Z
 13159	land1122p28	0055fb80	?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	partial	?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ || UpdateTransaction
 13160	land1122p28	00560bb0	?GetDecryptedDocument@CTCHeroOnlineScoreboard@@AAEHAAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@ABVCCharString@@@Z	partial	?GetDecryptedDocument@CTCHeroOnlineScoreboard@@ || ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@QAEHAAULHStringVector@@ABVCCharString@@@Z
-13161	land1122p28	00560d00	?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z	partial	?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z
+13161	land1122p28	00560d00	?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z	closed	
 13162	land1122p28	005dfa50	?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@@QAEPAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@ABW4EAnimComponent@@@Z	partial	?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@QBEPBU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@ABW4EAnimComponent@@@Z || ?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@QBEPBU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@ABW4EAnimComponent@@@Z || ?LowerBound@
 13163	land1122p28	00642000	??0CEnginePrimitiveLight@@QAE@_KABVC3DVector@@ABVCRGBColour@@MMW4EEngineInterpolationSet@@K@Z	partial	??0CEnginePrimitiveLight
 13164	land1122p28	00643bef	?GFToScreen@NPlayerGui@@YI?AVC2DBoxF@@ABV2@@Z	open	?ToScreenBox@@YI?AVC2DBoxF@@ABV1@@Z
@@ -10486,3 +10486,15 @@ line	tag	address	correct_symbol	status	other_spellings
 13322	land1123nf286	00be6f70	?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z	partial	?Render@CLandscapeBackgroundPatch@@QAE_N_N@Z
 13323	land1123nf287	009e1da0	?GFAXToVX@@YIMM@Z	closed	
 13324	land1123nf287	0062fe60	??0CUIDef@NUISystem@@QAE@XZ	partial	??0CClass_0062fe60@@QAE@XZ
+13325	land1123nf288	004be000	?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z	partial	GetNoDummyObjects
+13326	land1123nf288	006d7f20	?UpdateComboMultiplier@CTCHeroExperience@@AAEX_N@Z	partial	?helper_6d7f20@@YGXH@Z
+13327	land1123nf288	0057aad9	?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ	closed	
+13328	land1123nf288	00582027	?GetQuickAccessNextFreeSlot@CTCInventory@@QBEJJ@Z	partial	?GetQuickAccessNextFreeSlot@CTCInventory@@QAEJJ@Z
+13329	land1123nf288	0055fb80	?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	partial	?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ || UpdateTransaction
+13330	land1123nf288	005fbd20	?TeleportHeroToTeleporter@CTCInventoryMap@@QBEXAAVCThing@@@Z	partial	?TeleportHeroToTeleporter@CTCInventoryMap@@QAEXPAVCThing@@@Z
+13331	land1123nf288	005bdd39	?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z	partial	?GlobalUpdate@CTCInventoryBase@NInventory@@QAEX_N@Z || GlobalUpdate
+13332	land1123nf288	006d5260	?CullNullFollowers@CTCFollowed@@IAEXXZ	partial	?CullNullFollowers@CTCFollowed@@QAEXXZ || CullNullFollowers
+13333	land1123nf288	00744830	?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QBE_NXZ	closed	
+13334	land1123nf288	007280c0	?UpdateMorphSet@CTCRandomAppearanceMorph@@AAEXXZ	closed	
+13335	land1123nf288	0066bc10	?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	partial	?GetPotentialCriteriaStrings@CTCSoundPlayer@@QAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+13336	land1123nf288	005e9aa0	?EndRound@CTCTavernGame@@UAEXXZ	partial	?EndRound@CTCTavernGame@@QAEXXZ

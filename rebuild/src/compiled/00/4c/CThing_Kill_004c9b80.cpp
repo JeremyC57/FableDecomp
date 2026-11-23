@@ -52,7 +52,7 @@ public:
     unsigned char DeathPersistent : 1;
     unsigned char KillOnLevelUnload : 1;
     unsigned char _bits93 : 5;
-    void UpdateThingScanInclusion();             // 0x004C8C00
+    protected: void UpdateThingScanInclusion(); public:             // 0x004C8C00
     void Kill(bool immediately);
     bool DoActivationSequence();
 };

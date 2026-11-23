@@ -119,7 +119,7 @@ struct CAIStateGroupBaseP : CAIStateGroupBase {
 };
 
 class CTCPerceiveThing { public:                       // interface type 0x34
-    bool IsPlayerExtendedLineOfSight();         // 0x00744830
+    bool IsPlayerExtendedLineOfSight() const;         // 0x00744830
 };
 
 struct CInterfaceMapB {                         // the same vector map, this module's LowerBound instantiation

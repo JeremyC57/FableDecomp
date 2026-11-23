@@ -114,7 +114,7 @@ class CTCPhysicalShieldSpell { public:
     bool    Paused;                             // +0x45
     bool    CutSceneCancelled;                  // +0x46
     void TakeDamage(float damage);
-    void PlayShieldEffects(CThingCreatureBase* creature);
+    protected: void PlayShieldEffects(CThingCreatureBase* creature); public:
 };
 
 void CTCPhysicalShieldSpell::PlayShieldEffects(CThingCreatureBase* creature)

@@ -61,7 +61,7 @@ class CThing { public:
     }
 };
 class CTCPerceiveThing { public:                       // interface 0x34
-    bool IsPlayerExtendedLineOfSight();         // 0x00744830
+    bool IsPlayerExtendedLineOfSight() const;         // 0x00744830
 };
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 class CMainGameComponent {

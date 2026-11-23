@@ -119,7 +119,7 @@ class CTCKrakenTentacle : public CTCBase { public:
     CDefPointer<const CKrakenTentacleDef> PTentacleDef;     // +0x0c
     unsigned char _pad10[0x20 - 0x10];
     CIntelligentPointer<CThing> PRippleEffect;              // +0x20
-    void KillRippleFX();                                    // 0x007F07A0
+    private: void KillRippleFX(); public:                                    // 0x007F07A0
     void OnInitialActivate();
 };
 

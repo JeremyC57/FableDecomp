@@ -74,7 +74,7 @@ class CTCVillage { public:
     SList<CIntelligentPointer<CThingTrackNode> >  VillagePatrols;     // +0x48
     unsigned char                         _pad_0x4c[0x24];
     SList<CIntelligentPointer<CThingMarker> >     VillageMarkers;     // +0x70
-    void RemoveThingFromAllTasks(const CThing& thing);              // 0x00659EA9
+    private: void RemoveThingFromAllTasks(const CThing& thing); public:              // 0x00659EA9
     void RemoveThingAndUpdateCameraPoints(const CThing& thing);
 };
 

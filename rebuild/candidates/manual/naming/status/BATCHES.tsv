@@ -2,18 +2,9 @@ tier	fix	klass	n_targets	n_rows_touched	header	targets
 T0	catalog	CCountedPointer	7	7	engine/CCountedPointer.h	0041bd80 0067f650 00a110d0 00a8cb70 00a99fe0 00a9cb20 00b94f90
 T0	catalog	vector	2	2		004942c3 00dfde30
 T1	access	CWorld	6	5	engine/CWorld.h	0049d4e0 0049d8f0 0049e9f0 0049f4c0 004a21f0 004a2d70
-T1	access	CTCHeroOnlineScoreboard	4	2	engine/CTCHeroOnlineScoreboard.h	0055fb80 00560d00 00563480 00563920
-T1	access	CTCKrakenTentacle	3	3	engine/CTCKrakenTentacle.h	007f07a0 007f0c70 007f0f40
-T1	access	CThingBodyReorienter	3	2		00863250 00863280 00863ca0
-T1	access	CThingCreatureBase	3	3	engine/CThingCreatureBase.h	00662880 006628e0 00665860
 T1	access	CDiskFileWin32	2	2	engine/CDiskFileWin32.h	0099a960 0099aa90
-T1	access	CFrontEndManager	2	2	engine/CFrontEndManager.h	005955ab 00598463
 T1	access	CScriptGameResourceObjectScriptedThingBase	2	2	engine/CScriptGameResourceObjectScriptedThingBase.h	007e7310 007e7450
-T1	access	CTCGraphicAppearance	2	2		004bc4f0 004be000
-T1	access	CTCHeroStats	2	2	engine/CTCHeroStats.h	0057a89d 0057aad9
-T1	access	CTCPreCalculatedNavigationRoute	2	2	engine/CTCPreCalculatedNavigationRoute.h	008004d0 008008b0
-T1	access	CTCTavernGame	2	2	engine/CTCTavernGame.h	005e9aa0 005ea3c0
-T1	access	CThing	2	2	engine/CThing.h	004c8280 004c8c00
+T1	access	CThingCreatureBase	2	2	engine/CThingCreatureBase.h	006628e0 00665860
 T1	access	CUserProfileManager	2	2	engine/CUserProfileManager.h	00408120 0040d350
 T1	access	CVertexStreamConverter	2	1		00ac44d0 00ac4910
 T1	access	CWorldMap	2	2	engine/CWorldMap.h	004fb310 004fce20
@@ -25,39 +16,19 @@ T1	access	CCreatureActionBase	1	1	engine/CCreatureActionBase.h	00692aa0
 T1	access	CDeviceIndependent	1	1		00a90900
 T1	access	CEngineClothSimulationMeshBase	1	1	engine/CEngineClothSimulationMeshBase.h	00b80ad0
 T1	access	CEnginePrimitiveOcclusionInfo	1	1	engine/CEnginePrimitiveOcclusionInfo.h	00b2f8b0
+T1	access	CFrontEndManager	1	1	engine/CFrontEndManager.h	005955ab
 T1	access	CKeyboardDX	1	1		00ab6450
 T1	access	CLandscapeBackgroundPatch	1	1	engine/CLandscapeBackgroundPatch.h	00be6f70
 T1	access	CMouseDX	1	1	engine/CMouseDX.h	00ab5710
 T1	access	CTCBase	1	1	engine/CTCBase.h	00686db0
-T1	access	CTCEnemy	1	1	engine/CTCEnemy.h	0076cce0
-T1	access	CTCFadeOutAndIn	1	1	engine/CTCFadeOutAndIn.h	006c3ca0
-T1	access	CTCFireballSpell	1	1	engine/CTCFireballSpell.h	007c86f0
-T1	access	CTCFireheartMinigame	1	1		007e7580
 T1	access	CTCFollowed	1	1	engine/CTCFollowed.h	006d5260
-T1	access	CTCHighlightItem	1	1	engine/CTCHighlightItem.h	0077c960
+T1	access	CTCHeroOnlineScoreboard	1	1	engine/CTCHeroOnlineScoreboard.h	0055fb80
 T1	access	CTCInventory	1	1	engine/CTCInventory.h	00582027
 T1	access	CTCInventoryBase	1	1		005bdd39
-T1	access	CTCInventoryItem	1	1	engine/CTCInventoryItem.h	005d9070
-T1	access	CTCInventoryMap	1	1	engine/CTCInventoryMap.h	005fbfa0
-T1	access	CTCInventoryTrade	1	1	engine/CTCInventoryTrade.h	005a8c66
-T1	access	CTCInventoryWeapons	1	1	engine/CTCInventoryWeapons.h	005ca68e
-T1	access	CTCKraken	1	1	engine/CTCKraken.h	007fbb00
-T1	access	CTCLook	1	1	engine/CTCLook.h	00751da0
-T1	access	CTCObjectAugmentations	1	1	engine/CTCObjectAugmentations.h	00766660
-T1	access	CTCPerceiveThing	1	1	engine/CTCPerceiveThing.h	00744830
-T1	access	CTCPhysicalShieldSpell	1	1	engine/CTCPhysicalShieldSpell.h	0079e420
-T1	access	CTCPhysicsRigidBody	1	1	engine/CTCPhysicsRigidBody.h	0075b000
-T1	access	CTCQuestCard	1	1	engine/CTCQuestCard.h	00702400
-T1	access	CTCRandomAppearanceMorph	1	1	engine/CTCRandomAppearanceMorph.h	007280c0
 T1	access	CTCSoundAtmosphere	1	1		007f53a0
 T1	access	CTCSoundPlayer	1	1	engine/CTCSoundPlayer.h	0066bc10
-T1	access	CTCTalk	1	1	engine/CTCTalk.h	006e2840
-T1	access	CTCTargetingSpirit	1	1	engine/CTCTargetingSpirit.h	007f9960
+T1	access	CTCTavernGame	1	1	engine/CTCTavernGame.h	005e9aa0
 T1	access	CTCTavernGameCardBase	1	1	engine/CTCTavernGameCardBase.h	008f1d40
-T1	access	CTCTavernGameCoinGolf	1	1	engine/CTCTavernGameCoinGolf.h	007d46d0
-T1	access	CTCTrapBase	1	1	engine/CTCTrapBase.h	007881ad
-T1	access	CTCVillage	1	1	engine/CTCVillage.h	00659ea9
-T1	access	CThingAICreature	1	1	engine/CThingAICreature.h	008338d0
 T1	access	CThingMap	1	1		0085d180
 T1	access	CThingMapManager	1	1	engine/CThingMapManager.h	006378e0
 T1	access	CThingPhysical	1	1	engine/CThingPhysical.h	006a4e90
@@ -514,6 +485,7 @@ T1	other	CUserProfileManager	9	10	engine/CUserProfileManager.h	00406cc0 004071c0
 T1	other	CAFile	8	8	engine/CAFile.h	00997780 00998570 00998c90 00998f60 009994a0 00999ab0 00999c50 00999cb0
 T1	other	CCombatManager	8	13	engine/CCombatManager.h	006e92c0 006e93c0 006e9680 006e9700 006e9d10 006ea2c0 006ebdd0 006ed9c0
 T1	other	pair	8	13		004d9d2f 0059256c 00592dfb 005930f3 00a825d0 00bed640 00cba520 00cba700
+T1	other	CTCHeroExperience	7	10	engine/CTCHeroExperience.h	006d63a0 006d6570 006d72d0 006d7f20 006d8170 006d83b0 006d8830
 T1	other	NParticleEngine	7	11		00aeaa00 00aeaa80 00aeaad0 00aeaae0 00aeab00 00aeab10 00aebea0
 T1	other	sort_heap	7	7		00497570 007590c0 0081c7d0 0086c890 009b5af0 00a81d90 00a81e80
 T1	other	CAnimateThing	6	7	engine/CAnimateThing.h	0070c4e0 0070d580 0070d8c0 0070d920 0070e8b0 0070ec30
@@ -526,7 +498,6 @@ T1	other	CPlayerManager	6	13	engine/CPlayerManager.h	00449700 004498c0 00449910 
 T1	other	CQuestManager	6	8	engine/CQuestManager.h	004af610 004b0160 004b02f0 004b0a30 004b1d30 004b4260
 T1	other	CScriptBase	6	25	engine/CScriptBase.h	00cb7940 00cb7d60 00cb7e50 00cb7f60 00cb8110 00cb8220
 T1	other	CTCDParticleEmitter	6	5	engine/CTCDParticleEmitter.h	006e0880 006e0970 006e0be0 006e0e80 006e0f10 006e11a0
-T1	other	CTCHeroExperience	6	9	engine/CTCHeroExperience.h	006d63a0 006d6570 006d72d0 006d8170 006d83b0 006d8830
 T1	other	CTCShotDefinitionBase	6	9		007beff0 007bf2b0 007bfe30 007c0690 007c1000 007c21a0
 T1	other	CThingPhysical	6	8	engine/CThingPhysical.h	005296b0 006a4d00 006a4d60 006a4df0 006a64d0 006a6880
 T1	other	CThingPlayerCreature	6	7	engine/CThingPlayerCreature.h	0052ab20 006a9640 006a9dd0 006aa230 006ac200 006ac690
@@ -1149,17 +1120,12 @@ T1	other	deque	1	1		0059b039
 T1	other	fill	1	1		00a95b00
 T1	other	queue	1	1		00410ed0
 T1	other	sort	1	1		00a351b0
-T2	access	CTCKraken	2	3	engine/CTCKraken.h	007fb4a0 007fbc90
 T2	access	CAIStateGroup_JackDragon	1	1	engine/CAIStateGroup_JackDragon.h	0094fbb0
 T2	access	CFrontendGameComponent	1	1	engine/CFrontendGameComponent.h	004962c0
 T2	access	CTCInventoryMap	1	1	engine/CTCInventoryMap.h	005fc840
-T2	access	CTCObjectAugmentations	1	1	engine/CTCObjectAugmentations.h	007674a0
-T2	access	CTCPhysicsBase	1	1	engine/CTCPhysicsBase.h	006afa40
-T2	access	CThingCreatureBase	1	1	engine/CThingCreatureBase.h	006626e0
 T2	access	CThingPlayerCreature	1	1	engine/CThingPlayerCreature.h	006ad970
 T2	access	CThreadedFileManager	1	1	engine/CThreadedFileManager.h	0098ecd0
 T2	other	CFactionManager	1	4	engine/CFactionManager.h	006b93d0
-T2	other	CTCHeroExperience	1	2	engine/CTCHeroExperience.h	006d7f20
 T3	standin_alias	CCountedPointer	89	89	engine/CCountedPointer.h	00403db0 0041956c 004366b0 004441a0 00444210 00444280 004442f0 00444360 004443d0 00444440 004444b0 00444520 004446e0 00444830 004448a0 00444a60 00444ad0 00444d00 00445190 00445200 0049bce0 004a9a10 004a9a80 004adf80 0050f2b0 0050faa0 0050fb90 0051cea0 00535ebb 00578a8d 0065e198 0065e2e0 00673500 00675060 006fd460 00704430 007044d0 00718940 00771b60 00786bf0 008aa8e0 008ab230 008ab2b0 00992170 009b1f50 009e3090 009e3100 00a16640 00a29c50 00a44170 00a52be0 00a6ae60 00a9a420 00a9ced0 00ac38a0 00ac3ff0 00ae93e0 00b2e290 00b37470 00b37520 00b375d0 00b37680 00b37730 00b377e0 00b37890 00b37940 00b379f0 00b37aa0 00b37b90 00b37c40 00b37cf0 00b37da0 00b37e50 00b37f00 00b37fb0 00b38060 00b38110 00b381c0 00b38270 00b38320 00b4b360 00b4b410 00b4b4c0 00b4b570 00b4b620 00b95a30 00b95aa0 00bb64a0 00cdd4f0
 T3	standin_alias	CPlayerGui	11	11	engine/CPlayerGui.h	00437660 00437830 00437840 00437860 00437880 004378b0 004378d0 00437990 00437a00 00437d00 00438000
 T3	standin_alias	CGamePlayerInterface	5	5	engine/CGamePlayerInterface.h	00445920 00445ba0 00445bb0 00445bc0 00445bd0

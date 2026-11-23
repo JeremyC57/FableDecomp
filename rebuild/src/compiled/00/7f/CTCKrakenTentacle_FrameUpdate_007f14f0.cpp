@@ -102,8 +102,8 @@ class CTCKrakenTentacle : public CTCBase { public:
     bool          DoneDeathStuff;                    // +0x4c
     void CreateHeadEffect();                         // 0x007F0B10
     void RemoveObstruction();                        // 0x007F0810
-    void TrackTarget();                              // 0x007F0C70
-    void ReturnToDesiredPos(bool immediately);       // 0x007F0F40
+    private: void TrackTarget(); public:                              // 0x007F0C70
+    private: void ReturnToDesiredPos(bool immediately); public:       // 0x007F0F40
     void PerformStrikeDamage();                      // 0x007F11D0
 };
 void CTCKrakenTentacle::FrameUpdate()

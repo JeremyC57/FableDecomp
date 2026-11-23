@@ -46,7 +46,7 @@ class CBase { public: virtual void v00(); };
 class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     unsigned char _pad_0x134[0x154 - 0x134];
     CPrimitiveHandleVector ActiveWeaponPrimitiveHandles;   // +0x154
-    void SetupActiveWeaponsOnCarrier();       // 0x005CA68E
+    private: void SetupActiveWeaponsOnCarrier(); public:       // 0x005CA68E
     void CloseInventory();
 };
 void CTCInventoryWeapons::CloseInventory()
