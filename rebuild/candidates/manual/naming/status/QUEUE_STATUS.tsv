@@ -10196,7 +10196,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12918	land1122nf245	00404690	??0?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@ABV?$allocator@VCStringParserCommentBoundaries@@@1@@Z	closed	
 12919	land1122nf245	004046f0	??0?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@ABV?$allocator@VCStringParserCommentBoundaries@@@1@@Z	closed	
 12923	land1122nf244	00b26010	?OnPreDeviceReset@CEngine@@EAEXXZ	no_binding	
-12924	land1122nf244	00b25d00	?OnPostDeviceReset@CEngine@@EAE_NXZ	no_binding	
+12924	land1122nf244	00b25d00	?OnPostDeviceReset@CEngine@@EAE_NXZ	closed	
 12928	land1122nf246	00514280	??1?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAE@XZ	no_binding	
 12930	land1122nf246	004ac080	??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ	no_binding	
 12931	land1122nf246	006860e0	??1?$list@PBVCThingAICreature@@V?$allocator@PBVCThingAICreature@@@std@@@std@@QAE@XZ	no_binding	

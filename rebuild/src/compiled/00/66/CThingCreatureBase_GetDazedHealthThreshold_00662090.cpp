@@ -1,3 +1,4 @@
+// Leaf: ?GetDazedHealthThreshold@CThingCreatureBase@@QBEMXZ
 struct CDazedDef {
     char pad[0x84];
     int dazedThreshold; /* +0x84 */
@@ -5,8 +6,10 @@ struct CDazedDef {
 class CThingCreatureBase { public:
     char pad[0xe0];
     CDazedDef* pDef; /* +0xe0 */
+    public: float GetDazedHealthThreshold() const;
 };
-float __fastcall CThingCreatureBase_GetDazedHealthThreshold(CThingCreatureBase* creature)
+float CThingCreatureBase::GetDazedHealthThreshold() const
 {
+    CThingCreatureBase* creature = const_cast<CThingCreatureBase*>(this);
     return (float)creature->pDef->dazedThreshold;
 }
