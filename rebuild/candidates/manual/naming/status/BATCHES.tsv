@@ -10168,15 +10168,12 @@ T3	emit ?IsRunnable@CAIStateGroup_SeekEnemy@@UAE_NXZ	CAIStateGroupSeekEnemyMetho
 T3	emit ?InitStateGroup@CAIStateGroup_TavernServer@@MAEXABVCWorld@@AAVCThingAICreature@@	CAIStateGroupTavernServerMethods	1	1		00966930
 T3	emit ?IsRunnable@CAIStateGroup_TavernServer@@MAE_NXZ	CAIStateGroupTavernServerMethods	1	1		00967650
 T3	emit ?PracticeSkills@CAIStateGroup_ApprenticeHero@@MAE_NXZ	CAIStateGroup_ApprenticeHero	1	1	engine/CAIStateGroup_ApprenticeHero.h	0092a8a0
-T3	emit ?GetStateGroupType@CAIStateGroup_BalverineCornered@@MBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_BalverineCornered_Methods	1	1		00900513
 T3	emit ?InitStateGroup@CAIStateGroup_BalverineCornered@@MAEXABVCWorld@@AAVCThingAICreat	CAIStateGroup_BalverineCornered_Methods	1	1		0094f080
-T3	emit ?GetStateGroupType@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MBE?AW4EAIStateGro	CAIStateGroup_BalverineJumpAtFleeingEnemy_Methods	1	1		00900572
 T3	emit ?InitStateGroup@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MAEXABVCWorld@@AAVCTh	CAIStateGroup_BalverineJumpAtFleeingEnemy_Methods	1	1		0094f170
 T3	emit ?Update@CAIStateGroup_BanditKingCharge@@MAEXXZ	CAIStateGroup_BanditKingCharge	1	1	engine/CAIStateGroup_BanditKingCharge.h	00961790
 T3	emit ?GetStateGroupType@CAIStateGroup_BanditKingCharge@@MBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_BanditKingCharge_Methods	1	1		0090124a
 T3	emit ?OnReplace@CAIStateGroup_BanditPlayDice@@MAEXXZ	CAIStateGroup_BanditPlayDice	1	1	engine/CAIStateGroup_BanditPlayDice.h	00928e20
 T3	emit ?GetDiceGame@CAIStateGroup_BanditPlayDice@@MAEPAVCTCDiceGame@@XZ	CAIStateGroup_BanditPlayDice	1	1	engine/CAIStateGroup_BanditPlayDice.h	00929220
-T3	emit ?PutWeaponAway@CAIStateGroup_BanditPlayDice@@MAE_NXZ	CAIStateGroup_BanditPlayDice_Methods	1	1		008fe7d5
 T3	emit ?GetDiceGame@CAIStateGroup_BanditPlot@@MAEPAVCTCDiceGame@@XZ	CAIStateGroup_BanditPlot	1	1	engine/CAIStateGroup_BanditPlot.h	009292b0
 T3	emit ?Initialise@CAIStateGroup_BanditSitRoundCampfire@@UAEXAAVCAIBrain@@AAVCThingAICr	CAIStateGroup_BanditSitRoundCampfire	1	1	engine/CAIStateGroup_BanditSitRoundCampfire.h	0093a500
 T3	emit ?OnReplace@CAIStateGroup_BanditSitRoundCampfire@@UAEXXZ	CAIStateGroup_BanditSitRoundCampfire	1	1	engine/CAIStateGroup_BanditSitRoundCampfire.h	0093afc0
@@ -10185,7 +10182,6 @@ T3	emit ?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAI
 T3	emit ?IsStillValid@CAIStateGroup_BoastingCrowdMember@@MBE_NXZ	CAIStateGroup_BoastingCrowdMember	1	1		0095e870
 T3	emit ?OnReplace@CAIStateGroup_BoastingCrowdMember@@MAEXXZ	CAIStateGroup_BoastingCrowdMember	1	1		0095ebf0
 T3	emit ?IsRunnable@CAIStateGroup_BriarRoseWillUse@@UAE_NXZ	CAIStateGroup_BriarRoseWillUse	1	1	engine/CAIStateGroup_BriarRoseWillUse.h	00956ce0
-T3	emit ?GetStateGroupType@CAIStateGroup_BriarRoseWillUse@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_BriarRoseWillUse_Methods	1	1		00900933
 T3	emit ?Update@CAIStateGroup_ButterflyWander@@UAEXXZ	CAIStateGroup_ButterflyWander	1	1		0093d030
 T3	emit ??_ECAIStateGroup_BuyFromSeller@@UAEPAXI@Z	CAIStateGroup_BuyFromSeller	1	1	engine/CAIStateGroup_BuyFromSeller.h	0091a570
 T3	emit ?InitStateGroup@CAIStateGroup_Clean@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	CAIStateGroup_Clean	1	1		009174d0
@@ -10193,26 +10189,19 @@ T3	emit ?IsRunnable@CAIStateGroup_Clean@@MAE_NXZ	CAIStateGroup_Clean	1	2		00917a
 T3	emit ?InitStateGroup@CAIStateGroup_CleanHouse@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	CAIStateGroup_CleanHouse	1	1	engine/CAIStateGroup_CleanHouse.h	00917af0
 T3	emit ?GetBuilding@CAIStateGroup_CleanWork@@MAEPAVCThingBuilding@@XZ	CAIStateGroup_CleanWork	1	1		00917db0
 T3	emit ?ProcessCoverThingList@CAIStateGroup_CreatureAdvanceInCover@@UAEXAAV?$vector@PAV	CAIStateGroup_CreatureAdvanceInCover	1	1	engine/CAIStateGroup_CreatureAdvanceInCover.h	00979260
-T3	emit ?GetStateGroupType@CAIStateGroup_CreatureAdvanceInCover@@UBE?AW4EAIStateGroupTyp	CAIStateGroup_CreatureAdvanceInCover_Methods	1	1		00903154
-T3	emit ?GetStateGroupType@CAIStateGroup_CreatureFindCover@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_CreatureFindCover_Methods	1	1		009031f6
 T3	emit ?IsRunnable@CAIStateGroup_CreatureRangedCombat2@@MAE_NXZ	CAIStateGroup_CreatureRangedCombat2	1	1	engine/CAIStateGroup_CreatureRangedCombat2.h	0091eb60
 T3	emit ?GetStateGroupType@CAIStateGroup_CreatureRangedCombat2@@MBE?AW4EAIStateGroupType	CAIStateGroup_CreatureRangedCombat2_Methods	1	1		00900e42
 T3	emit ?InitStateGroup@CAIStateGroup_CreatureRangedCombat2@@MAEXABVCWorld@@AAVCThingAIC	CAIStateGroup_CreatureRangedCombat2_Methods	1	1		0091e970
 T3	emit ?IsRunnable@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@MAE_NXZ	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	1	1	engine/CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets.h	0095e260
-T3	emit ?GetStateGroupType@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@MBE?	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets_Methods	1	1		00900f82
 T3	emit ?GetStateGroupType@CAIStateGroup_CreatureRangedCombatUseWillShield@@MBE?AW4EAISt	CAIStateGroup_CreatureRangedCombatUseWillShield_Methods	1	1		008fe284
 T3	emit ?ProcessCoverThingList@CAIStateGroup_CreatureTakeCover@@MAEXAAV?$vector@PAVCThin	CAIStateGroup_CreatureTakeCover	1	1	engine/CAIStateGroup_CreatureTakeCover.h	0097aae0
-T3	emit ?GetStateGroupType@CAIStateGroup_CreatureTakeCover@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_CreatureTakeCover_Methods	1	1		00903173
 T3	emit ?Initialise@CAIStateGroup_CreatureUseCoverBase@@UAEXAAVCAIBrain@@AAVCThingAICrea	CAIStateGroup_CreatureUseCoverBase	1	1	engine/CAIStateGroup_CreatureUseCoverBase.h	009705d0
 T3	emit ?Init@CAIStateGroup_CreatureUseCoverBase@@MAEXXZ	CAIStateGroup_CreatureUseCoverBase	1	1	engine/CAIStateGroup_CreatureUseCoverBase.h	00970600
-T3	emit ?IsTimingCritical@CAIStateGroup_CreatureUseCoverBase@@UBE_NXZ	CAIStateGroup_CreatureUseCoverBase_Methods	1	1		00902f92
-T3	emit ?GetStateGroupType@CAIStateGroup_CreatureUseCoverBase@@MBE?AW4EAIStateGroupType@	CAIStateGroup_CreatureUseCoverBase_Methods	1	1		00902f96
 T3	emit ?OnActivate@CAIStateGroup_DeedReactionRoot@@UAEXXZ	CAIStateGroup_DeedReactionRoot	1	1	engine/CAIStateGroup_DeedReactionRoot.h	00960070
 T3	emit ?OnReplace@CAIStateGroup_DeedReactionRoot@@UAEXXZ	CAIStateGroup_DeedReactionRoot	1	1	engine/CAIStateGroup_DeedReactionRoot.h	00960760
 T3	emit ?InitStateGroup@CAIStateGroup_Drunk@@UAEXABVCWorld@@AAVCThingAICreature@@@Z	CAIStateGroup_Drunk_Methods	1	1		00922530
 T3	emit ?InitStateGroup@CAIStateGroup_EatAtTable@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	CAIStateGroup_EatAtTable	1	1		0096c870
 T3	emit ?GetBuilding@CAIStateGroup_EatAtTavern@@MBEPAVCThingBuilding@@XZ	CAIStateGroup_EatAtTavern	1	1		0096d260
-T3	emit ?GetStateGroupType@CAIStateGroup_EnemyCreatureBase@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_EnemyCreatureBase_Methods	1	1		008fe0ea
 T3	emit ?Initialise@CAIStateGroup_FireflyWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@J	CAIStateGroup_FireflyWander	1	1		00911f20
 T3	emit ?Update@CAIStateGroup_FireflyWander@@UAEXXZ	CAIStateGroup_FireflyWander	1	1		00911f80
 T3	emit ??_GCAIStateGroup_FlyingThingBase@@UAEPAXI@Z	CAIStateGroup_FlyingThingBase	1	1	engine/CAIStateGroup_FlyingThingBase.h	00913490
@@ -10230,7 +10219,6 @@ T3	emit ?IsStillValid@CAIStateGroup_GoToBed@@UBE_NXZ	CAIStateGroup_GoToBed	1	1	e
 T3	emit ?Update@CAIStateGroup_GoToBed@@UAEXXZ	CAIStateGroup_GoToBed	1	1	engine/CAIStateGroup_GoToBed.h	0092d7c0
 T3	emit ?Cleanup@CAIStateGroup_Guildmaster@@UAEXXZ	CAIStateGroup_Guildmaster	1	1	engine/CAIStateGroup_Guildmaster.h	00977770
 T3	emit ?OnDeactivate@CAIStateGroup_Guildmaster@@UAEXXZ	CAIStateGroup_Guildmaster	1	1	engine/CAIStateGroup_Guildmaster.h	00977a30
-T3	emit ?GetStateGroupType@CAIStateGroup_Guildmaster@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_Guildmaster_Methods	1	1		0090310a
 T3	emit ?GetStateGroupType@CAIStateGroup_HoverAttackArea@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_HoverAttackArea_Methods	1	1		00900d3d
 T3	emit ?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE?AW4EAISta	CAIStateGroup_HoverAttackUnlessTargetIsFleeing_Methods	1	1		00900c8b
 T3	emit ?IsRunnableLeaf@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@MAE_NXZ	CAIStateGroup_HoverAttackUnlessTargetIsFleeing_Methods	1	1		0091e480
@@ -10265,18 +10253,14 @@ T3	emit ?Update@CAIStateGroup_KrakenTentacleRise@@MAEXXZ	CAIStateGroup_KrakenTen
 T3	emit ?Update@CAIStateGroup_LightHomeCandle@@MAEXXZ	CAIStateGroup_LightHomeCandle	1	1	engine/CAIStateGroup_LightHomeCandle.h	00946850
 T3	emit ?GetStateGroupType@CAIStateGroup_MazeDefensiveMeleeCombat@@UBE?AW4EAIStateGroupT	CAIStateGroup_MazeDefensiveMeleeCombat_Methods	1	1		009007a4
 T3	emit ?IsRunnable@CAIStateGroup_MazeRangedCombat@@UAE_NXZ	CAIStateGroup_MazeRangedCombat	1	1	engine/CAIStateGroup_MazeRangedCombat.h	00954470
-T3	emit ?GetStateGroupType@CAIStateGroup_MazeRangedCombat@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_MazeRangedCombat_Methods	1	1		00900772
 T3	emit ?Cleanup@CAIStateGroup_MazeShieldedChase@@UAEXXZ	CAIStateGroup_MazeShieldedChase	1	1	engine/CAIStateGroup_MazeShieldedChase.h	00954900
 T3	emit ?GetStateGroupType@CAIStateGroup_MazeShieldedChase@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_MazeShieldedChase_Methods	1	1		009007d9
-T3	emit ?GetStateGroupType@CAIStateGroup_MazeTeleport@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_MazeTeleport_Methods	1	1		009026c7
 T3	emit ?GetStateGroupType@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UBE?AW4EA	CAIStateGroup_MazeTutorialBattleRespondToLightning_Methods	1	1		0090086f
 T3	emit ?Initialise@CAIStateGroup_MazeTutorialBattleTeleport@@UAEXAAVCAIBrain@@AAVCThing	CAIStateGroup_MazeTutorialBattleTeleport	1	1	engine/CAIStateGroup_MazeTutorialBattleTeleport.h	00953fe0
-T3	emit ?GetStateGroupType@CAIStateGroup_MazeTutorialBattleTeleport@@UBE?AW4EAIStateGrou	CAIStateGroup_MazeTutorialBattleTeleport_Methods	1	1		0090083d
 T3	emit ?Update@CAIStateGroup_MazeTutorialBattleUseShield@@UAEXXZ	CAIStateGroup_MazeTutorialBattleUseShield	1	1	engine/CAIStateGroup_MazeTutorialBattleUseShield.h	00956460
 T3	emit ?GetStateGroupType@CAIStateGroup_MazeTutorialBattleUseShield@@UBE?AW4EAIStateGro	CAIStateGroup_MazeTutorialBattleUseShield_Methods	1	1		009008a1
 T3	emit ?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@X	CAIStateGroup_MazeTutorialBattle_Methods	1	1		0090080b
 T3	emit ?GetStateGroupType@CAIStateGroup_MeleeCombatNearby2@@MBE?AW4EAIStateGroupType@@X	CAIStateGroup_MeleeCombatNearby2_Methods	1	1		008ff9a0
-T3	emit ?GetStateGroupType@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MBE?AW4EA	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose_Methods	1	1		008ff9d2
 T3	emit ?OnReadyToAttack@CAIStateGroup_MeleeCombatNearbyBase@@MAEXXZ	CAIStateGroup_MeleeCombatNearbyBase	1	1	engine/CAIStateGroup_MeleeCombatNearbyBase.h	0093d720
 T3	emit ?Initialise@CAIStateGroup_MinionBehaviourCrowdBase@@UAEXAAVCAIBrain@@AAVCThingAI	CAIStateGroup_MinionBehaviourCrowdBase	1	1	engine/CAIStateGroup_MinionBehaviourCrowdBase.h	00957bb0
 T3	emit ?Update@CAIStateGroup_MinionBehaviourGreetCreature@@UAEXXZ	CAIStateGroup_MinionBehaviourGreetCreature	1	1		009574d0
@@ -10312,13 +10296,10 @@ T3	emit ?IsStillValid@CAIStateGroup_MinionSitOutside@@MBE_NXZ	CAIStateGroup_Mini
 T3	emit ?InitStateGroup@CAIStateGroup_MinionWatchFires@@UAEXABVCWorld@@AAVCThingAICreatu	CAIStateGroup_MinionWatchFires	1	1	engine/CAIStateGroup_MinionWatchFires.h	009365e0
 T3	emit ?Update@CAIStateGroup_NonVillageGuardPatrol@@UAEXXZ	CAIStateGroup_NonVillageGuardPatrol	1	1		0093cb20
 T3	emit ?IsRunnable@CAIStateGroup_OnHeroPush@@UAE_NXZ	CAIStateGroup_OnHeroPush	1	1	engine/CAIStateGroup_OnHeroPush.h	0092b800
-T3	emit ?GetStateGroupType@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UBE?AW4EAISt	CAIStateGroup_RangedCombatUsePreferredFirePoint_Methods	1	1		00900f23
 T3	emit ?GetStateGroupType@CAIStateGroup_ReactToDeadLeader@@MBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_ReactToDeadLeader_Methods	1	1		00900fd0
 T3	emit ?IsStillValid@CAIStateGroup_RecoverStealableItem@@UBE_NXZ	CAIStateGroup_RecoverStealableItem_Adapter	1	1		00965520
 T3	emit ?GetStateGroupType@CAIStateGroup_RockTroll@@MBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_RockTroll_Methods	1	1		00902600
-T3	emit ?GetStateGroupType@CAIStateGroup_ScorpionKing@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_ScorpionKing_Methods	1	1		009031b6
 T3	emit ?GetStateGroupType@CAIStateGroup_SeekEnemy@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_SeekEnemy_Methods	1	1		008ff510
-T3	emit ?GetStateGroupType@CAIStateGroup_SeekScriptTarget@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_SeekScriptTarget_Methods	1	1		008ff55e
 T3	emit ?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	CAIStateGroup_ServeFood	1	1		00922fa0
 T3	emit ?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ	CAIStateGroup_ServeFoodAtHome_Methods	1	1		00902ca7
 T3	emit ?GetBuilding@CAIStateGroup_ServeFoodAtTavern@@MAEPAVCThingBuilding@@XZ	CAIStateGroup_ServeFoodAtTavern_Methods	1	1		00902cdc
@@ -10343,11 +10324,8 @@ T3	emit ?InitCreaturePosition@CAIStateGroup_TavernKeeper@@MAE_NXZ	CAIStateGroup_
 T3	emit ?IsStillValid@CAIStateGroup_TavernKeeper@@MBE_NXZ	CAIStateGroup_TavernKeeper	1	1	engine/CAIStateGroup_TavernKeeper.h	009681e0
 T3	emit ?InitStateGroup@CAIStateGroup_TavernKeeper@@MAEXABVCWorld@@AAVCThingAICreature@@	CAIStateGroup_TavernKeeper_Methods	1	1		009685c0
 T3	emit ?InitCreaturePosition@CAIStateGroup_TavernServer@@MAE_NXZ	CAIStateGroup_TavernServer	1	1	engine/CAIStateGroup_TavernServer.h	00966a90
-T3	emit ?GetStateGroupType@CAIStateGroup_Thunder@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_Thunder_Methods	1	1		009018ef
-T3	emit ?GetStateGroupType@CAIStateGroup_VersusEnemyBase@@MBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_VersusEnemyBase_Methods	1	1		0090141e
 T3	emit ?OnReplace@CAIStateGroup_VersusEnemyBase@@UAEXXZ	CAIStateGroup_VersusEnemyBase_Methods	1	1		00962b80
 T3	emit ?IsStillRunnable@CAIStateGroup_VersusScorpionKing@@MAE_NXZ	CAIStateGroup_VersusScorpionKing	1	1	engine/CAIStateGroup_VersusScorpionKing.h	009635c0
-T3	emit ?GetStateGroupType@CAIStateGroup_VersusScorpionKing@@MBE?AW4EAIStateGroupType@@X	CAIStateGroup_VersusScorpionKing_Methods	1	1		00901462
 T3	emit ?IsStillValid@CAIStateGroup_VillageTaskSecuritySweep@@UBE_NXZ	CAIStateGroup_VillageTaskSecuritySweep	1	1	engine/CAIStateGroup_VillageTaskSecuritySweep.h	0093fad0
 T3	emit ?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@UAE_NXZ	CAIStateGroup_WanderAroundInitialPos	1	1		00911a00
 T3	emit ?InitStateGroup@CAIStateGroup_WanderAroundShops@@UAEXABVCWorld@@AAVCThingAICreat	CAIStateGroup_WanderAroundShops	1	1	engine/CAIStateGroup_WanderAroundShops.h	00946e10
@@ -10355,7 +10333,6 @@ T3	emit ?IsStillValid@CAIStateGroup_WanderAroundShops@@UBE_NXZ	CAIStateGroup_Wan
 T3	emit ?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@MAE_NXZ	CAIStateGroup_WhisperPotionCombat	1	1	engine/CAIStateGroup_WhisperPotionCombat.h	0096aad0
 T3	emit ?GetStateGroupType@CAIStateGroup_WhisperPotionCombat@@UBE?AW4EAIStateGroupType@@	CAIStateGroup_WhisperPotionCombat_Methods	1	1		009031da
 T3	emit ?IsRunnableLeaf@CAIStateGroup_WhisperRetreat@@MAE_NXZ	CAIStateGroup_WhisperRetreat	1	1	engine/CAIStateGroup_WhisperRetreat.h	0096a7a0
-T3	emit ?GetStateGroupType@CAIStateGroup_WhisperRetreat@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_WhisperRetreat_Methods	1	1		0090188e
 T3	emit ?InitStateGroup@CAIStateGroup_WifeGiveYouGift@@UAEXABVCWorld@@AAVCThingAICreatur	CAIStateGroup_WifeGiveYouGift_Methods	1	1		00925f80
 T3	emit ?InitCreaturePosition@CAIStateGroup_WorkAtSchool@@MAE_NXZ	CAIStateGroup_WorkAtSchool	1	1	engine/CAIStateGroup_WorkAtSchool.h	009429c0
 T3	emit ?InitStateGroup@CAIStateGroup_WorkHammerAnvil@@MAEXABVCWorld@@AAVCThingAICreatur	CAIStateGroup_WorkHammerAnvil_Methods	1	1		00944cd0
@@ -10861,7 +10838,6 @@ T3	emit ?Clone@CCreatureAction_PerformExpressionExtended@@UBEPAVCCreatureActionB
 T3	emit ?PreventSneaking@CCreatureAction_PerformExpressionExtended@@UBE_NXZ	CCreatureAction_PerformExpressionExtended_Methods	1	1		00842c50
 T3	emit ?PreventSneaking@CCreatureAction_PerformExpression@@UBE_NXZ	CCreatureAction_PerformExpression_Methods	1	1		00842c00
 T3	emit ?Clone@CCreatureAction_PickCrop@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_PickCrop	1	1	engine/CCreatureAction_PickCrop.h	009406b0
-T3	emit ?PerformAction@CCreatureAction_PickCrop@@UAEXXZ	CCreatureAction_PickCrop_Methods	1	1		00844720
 T3	emit ?Clone@CCreatureAction_PickUpGenericBox@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_PickUpGenericBox	1	1	engine/CCreatureAction_PickUpGenericBox.h	0084c640
 T3	emit ?PerformAction@CCreatureAction_PickUpGoods@@UAEXXZ	CCreatureAction_PickUpGoods	1	1	engine/CCreatureAction_PickUpGoods.h	00848730
 T3	emit ?Clone@CCreatureAction_PickUpJug@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_PickUpJug	1	1		009680d0
@@ -10875,9 +10851,6 @@ T3	emit ?Clone@CCreatureAction_PlayAnimationFromIndex@@UBEPAVCCreatureActionBase
 T3	emit ??_ECCreatureAction_PlayAnimationWithLookTurning@@UAEPAXI@Z	CCreatureAction_PlayAnimationWithLookTurning	1	1	engine/CCreatureAction_PlayAnimationWithLookTurning.h	0084ac70
 T3	emit ?Clone@CCreatureAction_PlayAnimationWithLookTurning@@UBEPAVCCreatureActionBase@@	CCreatureAction_PlayAnimationWithLookTurning	1	1	engine/CCreatureAction_PlayAnimationWithLookTurning.h	0084c4e0
 T3	emit ?Clone@CCreatureAction_PlayCombatAnimationWithLooking@@UBEPAVCCreatureActionBase	CCreatureAction_PlayCombatAnimationWithLooking	1	1	engine/CCreatureAction_PlayCombatAnimationWithLooking.h	008b88a0
-T3	emit ?IsToFaceTarget@CCreatureAction_PlayCombatAnimation@@UBE_NXZ	CCreatureAction_PlayCombatAnimation_Methods	1	1		008b8660
-T3	emit ?IsMovementUsingPhysics@CCreatureAction_PlayCombatAnimation@@UBE_NXZ	CCreatureAction_PlayCombatAnimation_Methods	1	1		008b8670
-T3	emit ?IsAlwaysUseAnimationMovement@CCreatureAction_PlayCombatAnimation@@UBE_NXZ	CCreatureAction_PlayCombatAnimation_Methods	1	1		008b8680
 T3	emit ?Clone@CCreatureAction_PlayHopscotch@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_PlayHopscotch	1	1	engine/CCreatureAction_PlayHopscotch.h	00941cc0
 T3	emit ?IsUsingAnimationMovement@CCreatureAction_PlayIntoLoopOutOfAnimation@@UBE_NXZ	CCreatureAction_PlayIntoLoopOutOfAnimation	1	1	engine/CCreatureAction_PlayIntoLoopOutOfAnimation.h	0084a860
 T3	emit ?Clone@CCreatureAction_PlayIntoLoopOutOfAnimation@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_PlayIntoLoopOutOfAnimation	1	1	engine/CCreatureAction_PlayIntoLoopOutOfAnimation.h	0084c3b0
@@ -11016,7 +10989,6 @@ T3	emit ?FinishAction@CCreatureAction_UndeadReturnToEarth@@UAEXXZ	CCreatureActio
 T3	emit ?Clone@CCreatureAction_UndeadReturnToEarth@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_UndeadReturnToEarth	1	1	engine/CCreatureAction_UndeadReturnToEarth.h	008ec7b0
 T3	emit ?Clone@CCreatureAction_UndeadRiseUp@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_UndeadRiseUp	1	1	engine/CCreatureAction_UndeadRiseUp.h	0074df80
 T3	emit ?FinishAction@CCreatureAction_UndeadRiseUp@@UAEXXZ	CCreatureAction_UndeadRiseUp	1	1	engine/CCreatureAction_UndeadRiseUp.h	008ec470
-T3	emit ?IsToEvadeAllHits@CCreatureAction_UndeadRiseUp@@UBE_NXZ	CCreatureAction_UndeadRiseUp_Methods	1	1		0074dce0
 T3	emit ?Clone@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@EBEPAVCCreatur	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	1	1	engine/CCreatureAction_UnsheatheItemFromInventoryWithHasteAction.h	006a0ef0
 T3	emit ?Clone@CCreatureAction_UnsheatheToShowToSheatheTrophy@@UBEPAVCCreatureActionBase	CCreatureAction_UnsheatheToShowToSheatheTrophy	1	1	engine/CCreatureAction_UnsheatheToShowToSheatheTrophy.h	006dfc20
 T3	emit ?Clone@CCreatureAction_UnsheatheWeapons@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_UnsheatheWeapons	1	1	engine/CCreatureAction_UnsheatheWeapons.h	008b8ac0
@@ -11112,7 +11084,6 @@ T3	emit ?Update@CEngineInternalPrimitiveParticleDecal@@UAEXABVCEnginePrimitive@@
 T3	emit ?Update@CEngineInternalPrimitiveParticleDecalGroup@@UAEXABVCEnginePrimitive@@K@Z	CEngineInternalPrimitiveParticleDecalGroup	1	1	engine/CEngineInternalPrimitiveParticleDecalGroup.h	00bb6d70
 T3	emit ?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleGroup@@UAE_NJ@Z	CEngineInternalPrimitiveParticleGroup	1	1	engine/CEngineInternalPrimitiveParticleGroup.h	00bbbf00
 T3	emit ?GetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEPAVCEnginePersisten	CEngineInternalPrimitiveParticleGroup	1	1	engine/CEngineInternalPrimitiveParticleGroup.h	00bbc430
-T3	emit ?Update@CEngineInternalPrimitiveParticleGroup@@UAEXABVCEnginePrimitive@@K@Z	CEngineInternalPrimitiveParticleGroup_Methods	1	1		00bbbe60
 T3	emit ?Update@CEngineInternalPrimitiveParticleLine@@UAEXABVCEnginePrimitive@@K@Z	CEngineInternalPrimitiveParticleLine	1	1		00bc3d00
 T3	emit ?Update@CEngineInternalPrimitiveParticleLineGroup@@UAEXABVCEnginePrimitive@@K@Z	CEngineInternalPrimitiveParticleLineGroup	1	1		00bc3db0
 T3	emit ?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleLineGroup@@UAE_NJ@Z	CEngineInternalPrimitiveParticleLineGroup	1	1		00bc3df0
@@ -11214,13 +11185,10 @@ T3	emit ?Render@CEngineResourceManager@@UAEXABVCEngineComponentRenderParams@@@Z	
 T3	emit ??_ECEngineScene@@UAEPAXI@Z	CEngineScene	1	1	engine/CEngineScene.h	00b98a10
 T3	emit ??_ECEngineSceneEnumerator@@UAEPAXI@Z	CEngineSceneEnumerator	1	1		00b31dc0
 T3	emit ??_GCEngineSceneEnumeratorResetVisibilityRatio@@UAEPAXI@Z	CEngineSceneEnumeratorResetVisibilityRatio	1	1	engine/CEngineSceneEnumeratorResetVisibilityRatio.h	00b36c20
-T3	emit ?OnReleaseDefaultPoolResources@CEngineScreenEffectDisplacementRenderer@@UAEXXZ	CEngineScreenEffectDisplacementRenderer_Methods	1	1		00b86970
 T3	emit ?Render@CEngineScreenEffectDisplacementRenderer@@UAEXABVCEngineComponentRenderPa	CEngineScreenEffectDisplacementRenderer_Render	1	1		00b88ed0
 T3	emit ?Render@CEngineScreenEffectGlowRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	CEngineScreenEffectGlowRenderer	1	1	engine/CEngineScreenEffectGlowRenderer.h	00b619b0
 T3	emit ??_GCEngineScreenEffectGlowRenderer@@UAEPAXI@Z	CEngineScreenEffectGlowRenderer	1	1	engine/CEngineScreenEffectGlowRenderer.h	00b61a20
-T3	emit ?OnReleaseDefaultPoolResources@CEngineScreenEffectGlowRenderer@@UAEXXZ	CEngineScreenEffectGlowRenderer_Methods	1	1		00b5ec60
 T3	emit ??_GCEngineScreenEffectOutlineGlow@@UAEPAXI@Z	CEngineScreenEffectOutlineGlow	1	1	engine/CEngineScreenEffectOutlineGlow.h	00b8b5b0
-T3	emit ?OnReleaseDefaultPoolResources@CEngineScreenEffectRadialBlurRenderer@@UAEXXZ	CEngineScreenEffectRadialBlurRenderer_Methods	1	1		00b5bd00
 T3	emit ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCChar	CEngineScreenEffectRadialBlurRenderer_Methods	1	1		00b5ead0
 T3	emit ?PreLayerRender@CEngineShadowRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	CEngineShadowRenderer_Methods	1	1		00b4f510
 T3	emit ?GetMaximumIterations@CEngineSimulationBase@@UBEJXZ	CEngineSimulationBase	1	1	engine/CEngineSimulationBase.h	00b806c0
@@ -11234,7 +11202,6 @@ T3	emit ??_GCEngineSubPrimitiveAnimatedMesh@@UAEPAXI@Z	CEngineSubPrimitiveAnimat
 T3	emit ??_ECEngineSubPrimitiveDecal@@UAEPAXI@Z	CEngineSubPrimitiveDecal	1	1		00bbbb60
 T3	emit ??_GCEngineSubPrimitive2DSprite@@UAEPAXI@Z	CEngineSubPrimitiveGameMesh	1	1		00bb1760
 T3	emit ??_GCEngineSubPrimitiveParticleGroup@@UAEPAXI@Z	CEngineSubPrimitiveParticleGroup	1	1		00bbd480
-T3	emit ?PeekSceneFilterFlags@CEngineSubPrimitiveRenderer@@UBEKXZ	CEngineSubPrimitiveRenderer_Methods	1	1		00b86500
 T3	emit ??_ECEngineSubPrimitiveRepeatedStaticMesh@@UAEPAXI@Z	CEngineSubPrimitiveRepeatedStaticMesh	1	1	engine/CEngineSubPrimitiveRepeatedStaticMesh.h	00b9c170
 T3	emit ??_ECEngineSubPrimitiveStaticMesh@@UAEPAXI@Z	CEngineSubPrimitiveStaticMesh	1	1	engine/CEngineSubPrimitiveStaticMesh.h	00ba7be0
 T3	emit ??_ECEngineSubPrimitiveWeaponTrail@@UAEPAXI@Z	CEngineSubPrimitiveWeaponTrail	1	1		00bcc4f0
@@ -11258,9 +11225,7 @@ T3	emit ??_GCEngineWeatherRenderer@@UAEPAXI@Z	CEngineWeatherRenderer	1	1	engine/
 T3	emit ??_GCEngineWorldMap@@UAEPAXI@Z	CEngineWorldMap	1	1	engine/CEngineWorldMap.h	00b44440
 T3	emit ?CutscenePreload@CEngine@@UAEX_N0@Z	CEngine_Methods	1	1		00b23a10
 T3	emit ?ChangeCameraAngle@CEngine@@UAEXXZ	CEngine_Methods	1	1		00b23a50
-T3	emit ?IsPreloaded@CEngine@@UBE_NXZ	CEngine_Methods	1	1		00b23a70
 T3	emit ?SetCamera@CEngine@@UAEXPBVCCamera@@@Z	CEngine_Methods	1	1		00b23b50
-T3	emit ?SetEnvironmentalEffectsAlwaysUpdate@CEngine@@UAEX_N@Z	CEngine_Methods	1	1		00b23b90
 T3	emit ??_GCEnvironmentDef@@UAEPAXI@Z	CEnvironmentDef	1	1	engine/CEnvironmentDef.h	00455c1d
 T3	emit ??_ECExplosiveTrailDef@@UAEPAXI@Z	CExplosiveTrailDef	1	1	engine/CExplosiveTrailDef.h	0045011b
 T3	emit ?Transfer@CExplosiveTrailDef@@UAEXAAVCPersistContext@@@Z	CExplosiveTrailDefPersist	1	1		00453178
@@ -11269,7 +11234,6 @@ T3	emit ??_ECFactionDef@@UAEPAXI@Z	CFactionDef	1	1		00456515
 T3	emit ?NeedsBufferedRead@CFileDataInputStream@@EAE_NJ@Z	CFileDataInputStream_Methods	1	1		009943b0
 T3	emit ??_GCFileInstaller@@UAEPAXI@Z	CFileInstaller	1	1	engine/CFileInstaller.h	009c7900
 T3	emit ?Transfer@CFireballSpellLevelDef@@UAEXAAVCPersistContext@@@Z	CFireballSpellLevelDef_Methods	1	1		004dea03
-T3	emit ?Copy@CFireballSpellLevelDef@@UAEXPBVCDefClassBase@@@Z	CFireballSpellLevelDef_Methods	1	1		004e0f34
 T3	emit ?CreateCRC@CFontBankStateBlock@@UAEKXZ	CFontBankStateBlock	1	1	engine/CFontBankStateBlock.h	00a63890
 T3	emit ?Preload@CFontBank@@UBE_NABVCWideString@@_N@Z	CFontBank_Methods	1	1		009a0b20
 T3	emit ?CanUnload@CFontDataBankEntry@@UBE_NXZ	CFontDataBankEntry_Methods	1	1		00a63560
@@ -11406,14 +11370,12 @@ T3	emit ?GetProximityForDirectApproach@CGroundNavigatorExternalInterface@@UBEMXZ
 T3	emit ?Clone@CGroundNavigatorExternalInterface@@UBEPAVCNavigatorExternalInterface@@XZ	CGroundNavigatorExternalInterface_Methods	1	1		006ce650
 T3	emit ??_ECGuildMasterDef@@UAEPAXI@Z	CGuildMasterDef	1	1		0045008f
 T3	emit ?Copy@CGuildMasterDef@@UAEXPBVCDefClassBase@@@Z	CGuildMasterDef	1	1		00454248
-T3	emit ?MoveResource@CHandleBasedMemoryPool@@MAEXPAXJ00K@Z	CHandleBasedMemoryPool_Methods	1	1		00a02120
 T3	emit ?CanMoveResource@CHandleBasedMemoryPool@@MAE_NPAXJ@Z	CHandleBasedMemoryPool_Methods	1	1		00a03a40
 T3	emit ??_ECHeroAbilityDef@@UAEPAXI@Z	CHeroAbilityDef	1	1	engine/CHeroAbilityDef.h	0045608d
 T3	emit ??_GCHeroMarriageDef@@UAEPAXI@Z	CHeroMarriageDef	1	1	engine/CHeroMarriageDef.h	0044f7fe
 T3	emit ?Transfer@CHeroMarriageDef@@UAEXAAVCPersistContext@@@Z	CHeroMarriageDef_Transfer	1	1		00452398
 T3	emit ?Transfer@CHeroSuitDef@@UAEXAAVCPersistContext@@@Z	CHeroSuitDef	1	1	engine/CHeroSuitDef.h	004e55f1
 T3	emit ??_GCHeroTitleDef@@UAEPAXI@Z	CHeroTitleDef	1	1	engine/CHeroTitleDef.h	0044fa19
-T3	emit ?Transfer@CHighlightItemDef@@UAEXAAVCPersistContext@@@Z	CHighlightItemDef_Transfer	1	1		0077ce00
 T3	emit ??_GCHitLocationsDef@@UAEPAXI@Z	CHitLocationsDef	1	1		00453ba8
 T3	emit ??_GCTavernGameShoveHaPennyDef@@UAEPAXI@Z	CHoverWanderAroundThingGroup_004e2d89	1	1		004e2d89
 T3	emit ??_ECIDrawEnvironment@@UAEPAXI@Z	CIDrawEnvironment	1	1	engine/CIDrawEnvironment.h	006b2ad0
@@ -11536,10 +11498,6 @@ T3	emit ??_GCInventoryItemDef@@UAEPAXI@Z	CInventoryItemDef	1	1	engine/CInventory
 T3	emit ??_ECJackDragonDef@@UAEPAXI@Z	CJackDragonDef	1	1	engine/CJackDragonDef.h	0044ffbd
 T3	emit ?EventScanStart@CJoystick@@MBE_NPAVCInputEventScanInfo@@PAVCInputEvent@@@Z	CJoystick	1	1	engine/CJoystick.h	009e4230
 T3	emit ??_ECJoystick@@UAEPAXI@Z	CJoystick	1	1	engine/CJoystick.h	009e4980
-T3	emit ?GetXAxis@CJoystickDX@@MAEMXZ	CJoystickDX_Methods	1	1		00ab6ad0
-T3	emit ?GetYAxis@CJoystickDX@@MAEMXZ	CJoystickDX_Methods	1	1		00ab6ae0
-T3	emit ?GetXAxis2@CJoystickDX@@MAEMXZ	CJoystickDX_Methods	1	1		00ab6af0
-T3	emit ?GetYAxis2@CJoystickDX@@MAEMXZ	CJoystickDX_Methods	1	1		00ab6b00
 T3	emit ?GetRumbleWithID@CJoystickDX@@UAEPAVCActiveRumble@CJoystick@@J@Z	CJoystickDX_Methods	1	1		00ab7910
 T3	emit ?PeekRumbleWithID@CJoystickDX@@UBEPBVCActiveRumble@CJoystick@@J@Z	CJoystickDX_Methods	1	1		00ab7920
 T3	emit ?Update@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MAEXXZ	CJumpAtFleeingMethods	1	1		0094f730
@@ -11558,7 +11516,6 @@ T3	emit ?SetBridgeVertexBufferSize@CLandscapePatchTesselator@@EAEXJ@Z	CLandscape
 T3	emit ??_GCLightningDef@@UAEPAXI@Z	CLightningDef	1	1	engine/CLightningDef.h	0045896b
 T3	emit ?Close@CLipSyncDataBank@@UAEXXZ	CLipSyncDataBank	1	1	engine/CLipSyncDataBank.h	00a42da0
 T3	emit ?NotifyBankSize@CLipSyncDataBank@@MAEXKABV?$CArray@VCBankFileDataTypeCount@@@@@Z	CLipSyncDataBank	1	1	engine/CLipSyncDataBank.h	00a42e70
-T3	emit ?IsDiskFile@CLipSyncDataBank@@MAE_NKK@Z	CLipSyncDataBank_Methods	1	1		00a427c0
 T3	emit ??_ECLocalDetailObjectCollectionType@@UAEPAXI@Z	CLocalDetailObjectCollectionType	1	1		00bdf740
 T3	emit ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z	CMainGameComponent	1	1	engine/CMainGameComponent.h	004189c2
 T3	emit ??_GCManagedTexture@@UAEPAXI@Z	CManagedTexture	1	1	engine/CManagedTexture.h	00a00620
@@ -11613,7 +11570,6 @@ T3	RTTI names ?AddNavigableNodeNeighbouringSwitchableNodeToRegion@CNavNavigableL
 T3	emit ?SetUpNeighboursWithLeaf@CNavNavigableLeafNode@@MAEXW4ENavQuadTreeNeighbours@@PA	CNavNavigableLeafNode	1	1	engine/CNavNavigableLeafNode.h	00a76b90
 T3	emit ?SaveToFile@CNavNavigableLeafNode@@MBEXAAVCAFile@@ABV?$map@PBVCANavQuadTreeNode@	CNavNavigableLeafNode	1	2	engine/CNavNavigableLeafNode.h	00a77a10
 T3	RTTI names ?MakeRegion@CNavNavigableLeafNode@@MAE_NPBVCNavRegion@@AAV?$list@PAVCANavQuadTre	CNavNavigableLeafNode	1	1	engine/CNavNavigableLeafNode.h	00a77b00
-T3	emit ?GetPreferabilityCost@CNavNavigableLeafNode@@UBEEXZ	CNavNavigableLeafNode_Methods	1	1		00a75a90
 T3	emit ?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ	CNavNavigableLeafNode_Methods	1	1		00a75b50
 T3	RTTI names ?ConvertIndexesToPointers@CNavQuadTreeNode@@MAEXABV?$map@JPAVCANavQuadTreeNode@@	CNavQuadTreeNode	1	1	engine/CNavQuadTreeNode.h	00a77ca0
 T3	RTTI names ?AddToIndexTable@CNavQuadTreeNode@@MBEXAAJAAV?$map@PBVCANavQuadTreeNode@@JU?$les	CNavQuadTreeNode	1	1	engine/CNavQuadTreeNode.h	00a789f0

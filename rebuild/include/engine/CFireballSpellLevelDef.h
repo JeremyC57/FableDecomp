@@ -18,8 +18,17 @@ public:
     // Ego_r.pdb / FableWin.pdb ?StatGetTypeName@CFireballSpellLevelDef@@SI?AVCCharString@@XZ (inline; the GetSubDef 0x007BE88C key).
     static CCharString __fastcall StatGetTypeName() { return CCharString("CFireballSpellLevelDef", -1); }
     long SpellLevel;                                         // +0x28
+#ifdef FABLE_RETAIL_CFIREBALLSPELLLEVELDEF_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CSubDefClassBase chain declares at the same slot (no new slot).
+    // 0x004E0F34 vtable 0x0123CC3C slot 19: ?Copy@CFireballSpellLevelDef@@UAEXPBVCDefClassBase@@@Z (FableWin.pdb)
+public:
+    virtual void Copy(const CDefClassBase*);                          // 0x004E0F34
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CFireballSpellLevelDef) == 0x2c);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CFireballSpellLevelDef) == 0x2c);
 #else
 
 #pragma pack(push, 1)
@@ -39,9 +48,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CFireballSpellLevelDef) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CFireballSpellLevelDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CFireballSpellLevelDef, SpellLevel) == 0x28);
+FABLE_STATIC_ASSERT_AT(42, sizeof(CFireballSpellLevelDef) == 0x2c);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CFireballSpellLevelDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CFireballSpellLevelDef, SpellLevel) == 0x28);
 
 #endif // FABLE_RETAIL_CFIREBALLSPELLLEVELDEF
 #endif // FABLE_ENGINE_CFIREBALLSPELLLEVELDEF_H

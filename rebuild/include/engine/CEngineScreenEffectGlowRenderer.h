@@ -77,6 +77,15 @@ private:
     long            ShowDebug;                  // +0x218
     bool            EffectSupported;            // +0x21c
     CTVertexColTex1 GlowToBackBufferVerts[4];      // +0x220
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CEngineComponent chain declares at the same slot (no new slot).
+    // 0x00B5EC60 vtable 0x012A27CC slot 11: ?OnReleaseDefaultPoolResources@CEngineScreenEffectGlowRenderer@@UAEXXZ (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual void OnReleaseDefaultPoolResources();                     // 0x00B5EC60
+private:
+#endif
 };
 #else
 class CEngineScreenEffectGlowRenderer : public CEngineComponent {

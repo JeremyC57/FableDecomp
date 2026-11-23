@@ -94,6 +94,15 @@ private:
 #endif
     CTVertexColTex1 DisplacementToBackBufferVerts[4];        // +0x148
     bool            EnableDisplacementTextureView;           // +0x1a8
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CEngineComponent chain declares at the same slot (no new slot).
+    // 0x00B86970 vtable 0x012A3A94 slot 11: ?OnReleaseDefaultPoolResources@CEngineScreenEffectDisplacementRenderer@@UAEXXZ (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual void OnReleaseDefaultPoolResources();                     // 0x00B86970
+private:
+#endif
 };
 #else
 class CEngineScreenEffectDisplacementRenderer : public CEngineComponent {

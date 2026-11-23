@@ -22,8 +22,17 @@ public:
 private:
     bool IsStillRunnable() const;                                        // 0x0093BFA0
     CIntelligentPointer<CThing> PEnemy;                                  // +0x14
+#ifdef FABLE_RETAIL_CAISTATEGROUP_SEEKSCRIPTTARGET_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CAIStateGroupBase chain declares at the same slot (no new slot).
+    // 0x008FF55E vtable 0x0128B804 slot 8: ?GetStateGroupType@CAIStateGroup_SeekScriptTarget@@UBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;              // 0x008FF55E
+private:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SeekScriptTarget) == 0x1c);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CAIStateGroup_SeekScriptTarget) == 0x1c);
 #else
 
 #pragma pack(push, 1)

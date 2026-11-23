@@ -1,0 +1,21 @@
+--- orig/hdr/engine/CAIStateGroup_MazeTeleport.h	2026-11-23 23:09:04.527045824 +0000
++++ hdr/engine/CAIStateGroup_MazeTeleport.h	2026-11-23 23:09:04.524938150 +0000
+@@ -23,8 +23,17 @@
+     virtual void Update();                                               // slot 12 0x00954F40
+     virtual bool IsRunnable();                                           // slot 11 0x009543B0
+     virtual void OnActivate();                                           // 0x00954410
++#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZETELEPORT_RTTI_DECLS
++    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base CAIStateGroup_MazeBase chain declares at the same slot (no new slot).
++    // 0x009026C7 vtable 0x0128D0DC slot 8: ?GetStateGroupType@CAIStateGroup_MazeTeleport@@UBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
++public:
++    virtual EAIStateGroupType GetStateGroupType() const;              // 0x009026C7
++public:
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeTeleport) == 0x20);
++FABLE_STATIC_ASSERT_AT(27, sizeof(CAIStateGroup_MazeTeleport) == 0x20);
+ #else
+ #pragma pack(push, 1)
+ #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

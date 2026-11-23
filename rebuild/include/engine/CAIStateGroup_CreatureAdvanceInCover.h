@@ -36,6 +36,15 @@ protected:
 #endif
 protected:
     virtual bool IsRunnableLeaf();                                       // 0x00978E60
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREADVANCEINCOVER_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CAIStateGroup_CreatureUseCoverBase chain declares at the same slot (no new slot).
+    // 0x00903154 vtable 0x0128D4E4 slot 8: ?GetStateGroupType@CAIStateGroup_CreatureAdvanceInCover@@UBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;              // 0x00903154
+protected:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(33, sizeof(CAIStateGroup_CreatureAdvanceInCover) == 0x4c);
 #else

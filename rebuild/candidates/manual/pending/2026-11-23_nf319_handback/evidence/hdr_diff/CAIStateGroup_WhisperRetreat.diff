@@ -1,0 +1,18 @@
+--- orig/hdr/engine/CAIStateGroup_WhisperRetreat.h	2026-11-23 23:09:04.519827276 +0000
++++ hdr/engine/CAIStateGroup_WhisperRetreat.h	2026-11-23 23:09:04.517425300 +0000
+@@ -28,6 +28,15 @@
+  bool bIsRangeAttack;
+  long NumHits;
+  long FrameOfLastHit;
++#ifdef FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT_RTTI_DECLS
++    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base CAIStateGroup_EnemyCreatureBase chain declares at the same slot (no new slot).
++    // 0x0090188E vtable 0x0128CDCC slot 8: ?GetStateGroupType@CAIStateGroup_WhisperRetreat@@UBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
++public:
++    virtual EAIStateGroupType GetStateGroupType() const;              // 0x0090188E
++protected:
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_WhisperRetreat)==0x30);
+ #else

@@ -1,0 +1,104 @@
+NF319 helpers (paths set to w22/agentNF319). Pipeline per entry group:
+  nf.py census <idx..>            exe scan -> work/census.tsv          nf.py scen <idx..>  source census (heuristic; crashes on ??1 names)
+  pdbsets.py <idx..>              exact pdb_spelling in egor / fablewin name sets -> evidence/pdb_namesets.tsv
+  sigdiff.py <idx..>              signature triage: each wrong spelling flagged STANDIN (class in neither PDB name set) or INPLACE?
+  pre_tests.sh <files.tsv> <done> clang precheck of every landed TEST, BEFORE the locks (files.tsv: addr owner src test)
+  lock.sh (repo toolkit) ...      pre_list.sh <changed> <controls> <done>   clang prechecks (NOWCHAR via work/nowchar.txt)
+  cpp_err.sh <file..>             gcc cpp #error pass before any cl /Zs     zsq.sh <list> <done>   D1 / D1b / D1c cl /Zs (background)
+  grade_lane.sh <tag> <changed> <controls> <done>   one row per `timeout 900` grade line (run 4 in parallel)
+  bind.py <objdir> <idx..>        what each HEAD object binds at the entry address + the self's DEF  (the work list)
+  defscan.py <objdir> <idx..>     census-row objects that DEFINE the entry's method (same-TU strong copies -> T3)
+  gl.sh <addr> <regex>            non-comment source lines of a landed row (declaration / call sites)
+  fix.py / rep.py / medit.py      zero-line-delta edits (medit: JSON {addr: [[old,new,count]..]}, saves orig/ + rows/)
+  nf.py proof <tag> <rows..>      objsec HEAD v new;  drectve_eq.py <rows..>  .drectve equality with the ?A0x path hash mapped
+  gen_ren.py <rows..>             RENAMES pairs from the objects (prefix match; ?A0x path hashes skipped)
+  link_g.sh                       HEAD v new /FORCE link with controls;  nf.py link <tag> <watch> <objs> -- <objs> (ad hoc pairs)
+  nf.py pay work/<tag> <rows..> + recheck.sh <tag> [overlay]   vland --recheck-landed -> work/recheck_<tag>.log
+  assemble.py                     STATUS / APPLIED / RENAMES / TABLE_CHANGES / rows.txt from work/st.tsv ren1 ren2 tc_extra
+NF286 / NF288-only (kept for reference): links.sh, run_grades.sh, pre_all.sh, recheck_final.sh, recheck_g3.sh, recheck_g4.sh, mism.py.
+NF319 additions:
+  decl.py <idx..>   (DECL_HITS_ONLY=1 DECL_MAX=n) per census row: non-comment declaration lines of the method / ctor, header-only rows counted
+  declsum.py <decl output>   compact: only the declaration lines with a pointer parameter (pointer -> reference triage)
+  calls.py <addr> <Name>     call / temporary / mem-initializer sites of Name( in a landed row (not declarations)
+  ins.py <spec.json>         line-level insert / replace (for one-line #define opt-in users and tests: rows/<addr>_test.cpp via key <addr>_test)
+  NF_TREE=<full include tree> for nf.py pre / pre_list.sh; FABLE_HDR_OVERLAY=<same tree> for grades, zs and recheck.sh <tag> <tree>
+  nf.py blk(): now bounded to the row's own [pscustomobject]@{ ... } block (NF294's catalog-lookup bug class)
+NF319 (2026-11-23) additions:
+  show.py <idx..>   per entry: PDB spelling demangled, every WRONG spelling with its table witness, and for the self + each census row the
+                    non-comment lines naming the method / ctor (declarations and calls, continuation lines joined): the one-screen triage
+  work/offlimits.txt is built from the brief's held rows + the still-reserved Codex p28 rows + every T3_PORT_QUEUE address (decl.py / show.py tag OFF)
+NF319 (2026-11-23, this pass) additions / changes:
+  show.py           now handles operator names (??R, ??2, ...), member templates (??$); SHOW_WIT=1 prints only the self + the rows that witness a WRONG spelling
+  pickany.py        (copied from agent_tools/nf298) <obj> <symbol> <owner addr>: COMDAT body v Fable.exe at the owner (reloc fields zeroed) + each reloc's retail target v the table
+  cpp_err.sh        honours NF_TREE (full include tree) before hdr/
+  work/offlimits.txt + work/other_agents_entries.txt: built from the brief's held rows, Codex p28 RESERVED (still reserved), T3_PORT_QUEUE addresses, NF299 / NF301 ENTRIES
+NF319 (2026-11-23, T1 signature continuation) additions:
+  census_addr.py <addr..>      exe census (calls / jumps / absolute dwords) for ANY retail address (a respelled callee outside ENTRIES)
+  bindaddr.py <objdir> <target> <rows..>   what each row's object binds at a target address (nf.py xr)
+  workflow per group: work/g<N>_changed.txt + g<N>_controls.txt (selves + the FULL exe census of every entry touched, minus other
+  agents' entries / locks), pre_tests.sh BEFORE the locks, lock.sh, medit.py spec, pre_list.sh (+ NOWCHAR reruns for L"" / wchar_t
+  failures), grade_lane.sh x4 in the background, then bind.py on hb/ (HEAD) and nb/ (new) symlink dirs, nf.py proof, a `nf.py syms`
+  diff per row (DEF renames!), link_g.sh, gen_ren.py, assemble.py (+ work/tc_extra.tsv for table-only lines)
+  CAVEAT: nf.py xr / bind.py pick the FIRST symbol containing a bare Leaf (`Open` matched ?SetOpened@...): confirm a `-` with objdump
+NF319 (2026-11-23, this hand-back) additions / changes:
+  mkoff.py                     work/offlimits.txt, work/other_agents_entries.txt AND work/other_agents_witnesses.txt (every (addr) in the
+                               NF305 / NF306 spellings column); RESERVED rows only while still reserved
+  cmpcomdat.py <sym> <obj1> <obj2..>   the COMDAT defining <sym> in each object v the first: bytes + relocation list (pick-any census, ruling NF304 Q1)
+  assemble.py                  reads work/tc_skip.tsv (old symbol, target): skips the generated delete / replace for that pair (a hand
+                               `rewitness` line in tc_extra.tsv replaces it when another binder still binds the old spelling)
+  lock.sh needs `export S` (not only `source env.sh`)
+NF319 (2026-11-23, T1 signature continuation of NF307) additions / changes:
+  cstat.py <idx..>      per ENTRIES line: the self + every census row flagged OFF / OE (NF308 / NF309 entry) / OW (their witness) / LOCK=<owner> / MINE
+  aflags.py <addr..>    the same flags for arbitrary rows (controls, riders, binders outside ENTRIES)
+  ppdiff.sh <addr..>    gcc -E -P HEAD v rows/<addr>.cpp, whitespace-normalised diff (NF300 Q1 evidence: only the enum / types / literals change)
+  mkoff.py              retargeted to NF308 / NF309 (entries + witnesses)
+  nf.py                 link / grade / zs scratch now removed through the toolkit's clean.py (no os.unlink / shutil.rmtree of a variable path)
+  check before a SELF rename: `nf.py syms` every compiled census object for a DEF of the new name (pick-any COMDAT copies from a shared
+  header inline make a strong self a new duplicate: entries 5 / 6 here)
+NF319 (2026-11-23, this hand-back: T1 signature, NF310's continuation) additions / changes:
+  mkoff.py        retargeted to NF309 / NF311; witnesses = every 8-hex inside the spellings column's parentheses (incl. `(a,self)` /
+                  `(a,b)`), PLUS every reloc_bindings.tsv witness of an NF309 / NF311 target (the column is truncated) and their rows.txt
+  whose.py <addr..>      which NF309 / NF311 ENTRIES line names an address (target / witness), their rows.txt, and the lock owner
+  spells.py <idx..>      full (untruncated) spellings of an entry: PDB, self Leaf, every table line with the first differing position
+  portcensus.py <idx..>  NF299 Q4 census form: per wrong table line, witness flags, local STL model (namespace std / global template
+                         vector / pair), stand-in classes (in neither PDB name set), shared headers declaring the method -> evidence/port_census.tsv
+  rdis.py <addr> [n]     capstone listing of a landed row's catalog bytes (screen only; never write its output into a hand-back file)
+  check before a binder respell: does the binder define a same-TU stand-in BODY under the callee's name (0x007786F0)? then the respell
+  makes a second strong definition of the PDB name: T3
+NF319 (2026-11-23, NF312's held entries) changes:
+  mkoff.py / whose.py   retargeted to NF314 / NF315; mkoff also takes every 8-hex address in T3_PORT_QUEUE column 3 (unit targets,
+                        NF309 Q5) and the neighbours' rows/*.cpp (before they write rows.txt)
+  recheck.sh            cds to my work dir, never the repo (a verify_and_land import can create a `D:\...` directory relative to cwd)
+NF319 (2026-11-23, header-route rejects of alias1 / flatten-switch1) additions:
+  triage.py [idx..]        how engine/<X>.h declares the ENTRIES member: #if stack (guard dropped), DECL / INLINE -> work/triage.tsv
+  prec.py <idx..>          landed precedent rows defining a member of X under the same class-model switch (NPREC=n), with their preamble
+  flat.py <idx..>          flatten-switch rows: HEAD free `R __fastcall X_M(P*)` -> `R' X::M() [const]`, every other HEAD line kept
+  hoist.py <src> <dst>     move every `#define FABLE_RETAIL_*` that follows an #include up above the first #include
+  port.py <idx> [prec]     alias rows: precedent define / include block (never a _PASS<nn> precedent) + the draft's own lines
+  retfix.py <idx..>        the X::M definition takes the header's return type; an enum return keeps its literal as (E)N
+  chunkfix.py <idx..>      chunk classes: FABLE_RETAIL_CCHUNKEDFILECHUNK, local CCharString model dropped, header return type
+  tidy.py <addr..>         drop emptied alias classes / stale alias comments, one provenance line after the Leaf
+  libcp.py <tag> <addr..>  objsec + the 2026-11-23 libcp ruling check (HD= / ND= vland work dirs, else work/obj): one DEF rename,
+                           UND / DEF sets, no ??_7/??_R, sections equal, .drectve equal or HEAD + exactly /DEFAULTLIB:"libcp"
+  defgrep.py               other landed sources defining X::M( or Leafing the PDB name -> work/defgrep.tsv
+  inclass.py               local models of X elsewhere with an in-class M(...) { body (possible COMDAT emitters)
+  st.py <addr> <status> <reason>   one STATUS.tsv line;  rec.py <tag>   STATUS lines from a batch's vland + libcp evidence
+  assemble2.py             RENAMES (section 1 from the libcp evidence), rows.txt, REJECTED, empty TABLE_CHANGES / NAME_FIXES headers
+  Pipeline per batch: drafts -> nf.py pre (new + HEAD) -> nf.py pay work/<t>n + repo recheck.py -> work/<t>h_payload.json ->
+  recheck.sh <t>h / <t>n (flat tags!) -> libcp.py with HD=work/wd_<t>h ND=work/wd_<t>n -> rec.py <t> -> nf.py link (HEAD v new sets)
+NF319 (2026-11-23, alias rows with no header declaration) additions:
+  tri2.py [idx..]          class-model branches of engine/<X>.h per entry (#if stack, base, landed definers of each switch) -> work/tri2.tsv
+  basedecl.py <idx..>      base-chain headers declaring virtual M (text only; probe.py is the measured check)
+  vtslot.py <addr..>       retail vftable(s) holding an address: COL class + slot index (screen only)
+  mkdecl.py <idx..>        PDB spelling -> access, in-class declaration, definition head (llvm-undname) -> work/decls.tsv
+  gspec.py / hdredit.py    add-only `FABLE_RETAIL_<CLASS>_RTTI_DECLS` block before the class's closing `};` in work/tree (+ orig/hdr copies);
+                           pin with lane_merge/pin_asserts.py work/tree_old work/tree <headers>
+  auto.py <A|B> <idx..>    rows spec from the smallest landed precedent's defines (+ its includes in mode B), work/extra_defs.tsv / extra_inc.tsv
+  mkrow.py <spec>          alias block dropped, PDB head (HEAD param names kept), enum literal cast, Leaf, provenance -> rows/<addr>.cpp
+  minimize.py <idx..>      greedy preamble minimisation under clang + gcc cpp + probe
+  probe.py <addr> <X> <decl> [c]   override probe (slot condition) and its made-up-name control -> work/probe.log
+  preall.sh <label> <idx..>        clang precheck of rows/ on work/tree with own/header error counts
+  files.py <addr..>        addr, lock owner, HEAD source, HEAD test
+  flatcensus.py            NF299 Q4 census of flat-only headers -> evidence/flat_census.tsv
+  equiv3.py <old> <new> <ctl> <out> [addrs]   equiv_check variant: DIFF (old v new) + CTL (planted tokens per changed header) in one pass
+  assemble3.py             STATUS / APPLIED / RENAMES / REJECTED / rows.txt

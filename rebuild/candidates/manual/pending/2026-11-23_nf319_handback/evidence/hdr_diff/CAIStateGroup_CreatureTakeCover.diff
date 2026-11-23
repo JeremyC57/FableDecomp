@@ -1,0 +1,21 @@
+--- orig/hdr/engine/CAIStateGroup_CreatureTakeCover.h	2026-11-23 23:09:04.542780693 +0000
++++ hdr/engine/CAIStateGroup_CreatureTakeCover.h	2026-11-23 23:09:04.540809267 +0000
+@@ -29,8 +29,17 @@
+     bool AttackTargetThing();                                            // 0x00979F70 ?AttackTargetThing@..@@AAE_NXZ
+     bool MoveFromCoverToFiringPosition(const C3DVector& pos, const CIntelligentPointer<const CThing>& cover);   // 0x0097A1B0
+ #endif
++#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATURETAKECOVER_RTTI_DECLS
++    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base CAIStateGroup_CreatureUseCoverBase chain declares at the same slot (no new slot).
++    // 0x00903173 vtable 0x0128D54C slot 8: ?GetStateGroupType@CAIStateGroup_CreatureTakeCover@@UBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
++public:
++    virtual EAIStateGroupType GetStateGroupType() const;              // 0x00903173
++public:
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureTakeCover) == 0x4c);
++FABLE_STATIC_ASSERT_AT(33, sizeof(CAIStateGroup_CreatureTakeCover) == 0x4c);
+ #else
+ #pragma pack(push, 1)
+ #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

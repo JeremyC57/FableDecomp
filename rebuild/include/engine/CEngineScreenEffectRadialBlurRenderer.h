@@ -101,6 +101,15 @@ private:
     bool            EffectSupported;                         // +0x1c8
     bool            UseEnvironmentParameters;                // +0x1c9
     CTVertexColTex1 BlurToBackBufferVerts[4];                // +0x1cc
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CEngineComponent chain declares at the same slot (no new slot).
+    // 0x00B5BD00 vtable 0x012A2658 slot 11: ?OnReleaseDefaultPoolResources@CEngineScreenEffectRadialBlurRenderer@@UAEXXZ (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual void OnReleaseDefaultPoolResources();                     // 0x00B5BD00
+private:
+#endif
 };
 #else
 class CEngineScreenEffectRadialBlurRenderer : public CEngineComponent {

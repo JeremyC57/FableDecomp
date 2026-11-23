@@ -1,7 +1,9 @@
-// Leaf: ?OnReleaseDefaultPoolResources@CEngineScreenEffectDisplacementRenderer_Methods@@QAEXXZ
+// Leaf: ?OnReleaseDefaultPoolResources@CEngineScreenEffectDisplacementRenderer@@UAEXXZ
+// Header route (NF319, 2026-11-23): defined on the real class of engine/CEngineScreenEffectDisplacementRenderer.h (was ?OnReleaseDefaultPoolResources@CEngineScreenEffectDisplacementRenderer_Methods@@QAEXXZ); the retail RTTI vftable
+//   placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address; declared by the add-only opt-in
+//   FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_RTTI_DECLS. Bytes unchanged.
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_MEMBERS
+#define FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER_RTTI_DECLS
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CEngineScreenEffectDisplacementRenderer_Methods : CEngineScreenEffectDisplacementRenderer {
-    void OnReleaseDefaultPoolResources();
-};
-void CEngineScreenEffectDisplacementRenderer_Methods::OnReleaseDefaultPoolResources(){ this->DynamicTexturePageHandle = 0xffffffff; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?OnReleaseDefaultPoolResources@CEngineScreenEffectDisplacementRenderer@@UAEXXZ); evidence: RTTI vtable slot + PDB name set.
+void CEngineScreenEffectDisplacementRenderer::OnReleaseDefaultPoolResources() { this->DynamicTexturePageHandle = 0xffffffff; }

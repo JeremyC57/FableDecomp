@@ -54,6 +54,15 @@ public:
     bool                              ZBufferWritable;                   // +0xa8
     bool                              ClipEffectToWeatherMask;           // +0xa9
     bool                              EnableDithering;                   // +0xaa
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CEngineInternalPrimitiveBase chain declares at the same slot (no new slot).
+    // 0x00BBBE60 vtable 0x012A59D4 slot 5: ?Update@CEngineInternalPrimitiveParticleGroup@@UAEXABVCEnginePrimitive@@K@Z (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual void Update(const CEnginePrimitive&, unsigned long);      // 0x00BBBE60
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(39, sizeof(CEngineInternalPrimitiveParticleGroup) == 0xac);
 #else

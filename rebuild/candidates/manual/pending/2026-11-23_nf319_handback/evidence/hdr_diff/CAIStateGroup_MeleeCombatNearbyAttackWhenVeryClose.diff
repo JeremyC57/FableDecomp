@@ -1,0 +1,18 @@
+--- orig/hdr/engine/CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h	2026-11-23 23:09:04.479128768 +0000
++++ hdr/engine/CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h	2026-11-23 23:09:04.477100524 +0000
+@@ -18,6 +18,15 @@
+ class CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose : public CAIStateGroup_MeleeCombatNearbyBase {
+ protected:
+     virtual bool IsStillRunnable(bool initial) const;                    // 0x0093DC10
++#ifdef FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBYATTACKWHENVERYCLOSE_RTTI_DECLS
++    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base CAIStateGroup_MeleeCombatNearbyBase chain declares at the same slot (no new slot).
++    // 0x008FF9D2 vtable 0x0128B9E4 slot 8: ?GetStateGroupType@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
++protected:
++    virtual EAIStateGroupType GetStateGroupType() const;              // 0x008FF9D2
++protected:
++#endif
+ };
+ #else
+ #pragma pack(push, 1)

@@ -69,6 +69,18 @@ protected:
     long FailedTime;                                                     // +0x38
     C3DVector FailedToFindCoverAt;                                       // +0x3c
     long ValidPositionsFound;                                            // +0x48
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CAIStateGroup_EnemyCreatureBase chain declares at the same slot (no new slot).
+    // 0x00902F92 vtable 0x0128D31C slot 7: ?IsTimingCritical@CAIStateGroup_CreatureUseCoverBase@@UBE_NXZ (Ego_r.pdb + FableWin.pdb)
+    // 0x00902F96 vtable 0x0128D31C slot 8: ?GetStateGroupType@CAIStateGroup_CreatureUseCoverBase@@MBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
+public:
+    virtual bool IsTimingCritical() const;                            // 0x00902F92
+protected:
+    virtual EAIStateGroupType GetStateGroupType() const;              // 0x00902F96
+protected:
+#endif
 };
 #else
 

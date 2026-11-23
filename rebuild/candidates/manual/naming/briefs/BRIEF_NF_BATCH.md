@@ -200,3 +200,9 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   - **Q3:** an enum return written as a literal cast to the PDB enum is the NF307 D3 form, and allowed.
   - **Q4:** respelling a callee during a move needs the callee's own second source; otherwise it is a T3 unit.
   - **Q5:** a move that drops a COMDAT (even an unreferenced made-up one) fails "COMDAT sets SAME". Hold it.
+- NF319:
+  - **Q1:** triaging all entries by script first and then working the feasible ones meets the stop rule's intent.
+  - **Q2:** the libcp rows of header moves fall under NF318 Q1.
+  - **Q3:** adding a declaration to a class written on one line edits that existing line, so it is a class-model change (hold).
+  - **Landed precedent:** `FABLE_RETAIL_<CLASS>_RTTI_DECLS` add-only opt-ins, each declaration overriding a base virtual at the RTTI slot
+    (clang `override` probe plus a made-up-name control), with `FABLE_STATIC_ASSERT_AT` pins.

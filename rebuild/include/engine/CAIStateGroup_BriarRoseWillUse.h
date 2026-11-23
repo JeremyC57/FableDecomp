@@ -22,8 +22,17 @@ public:
 protected:
     CIntelligentPointer<CThing> PEnemy;                                 // +0x14
     long NextWillUseFrame;                                              // +0x1c
+#ifdef FABLE_RETAIL_CAISTATEGROUP_BRIARROSEWILLUSE_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CAIStateGroupBase chain declares at the same slot (no new slot).
+    // 0x00900933 vtable 0x0128C3C8 slot 8: ?GetStateGroupType@CAIStateGroup_BriarRoseWillUse@@UBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;              // 0x00900933
+protected:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BriarRoseWillUse) == 0x20);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CAIStateGroup_BriarRoseWillUse) == 0x20);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

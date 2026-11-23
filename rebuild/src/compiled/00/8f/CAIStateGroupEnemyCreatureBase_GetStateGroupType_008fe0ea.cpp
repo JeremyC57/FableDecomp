@@ -1,9 +1,15 @@
-// Leaf: ?GetStateGroupType@CAIStateGroup_EnemyCreatureBase_Methods@@QAEHXZ
+// Leaf: ?GetStateGroupType@CAIStateGroup_EnemyCreatureBase@@UBE?AW4EAIStateGroupType@@XZ
+// Header route (NF319, 2026-11-23): defined on the real class of engine/CAIStateGroup_EnemyCreatureBase.h (was ?GetStateGroupType@CAIStateGroup_EnemyCreatureBase_Methods@@QAEHXZ); the retail RTTI vftable
+//   placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address; declared by the add-only opt-in
+//   FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_RTTI_DECLS. Bytes unchanged.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_RTTI_DECLS
 #pragma optimize("s",on)
 // Constant-return member: returns 1. __fastcall this=ecx.
+class CThing;
+class CThingCreatureBase;
 #include "engine/CAIStateGroup_EnemyCreatureBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CAIStateGroup_EnemyCreatureBase_Methods : CAIStateGroup_EnemyCreatureBase {
-    int GetStateGroupType();
-};
-int CAIStateGroup_EnemyCreatureBase_Methods::GetStateGroupType() { return 1; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?GetStateGroupType@CAIStateGroup_EnemyCreatureBase@@UBE?AW4EAIStateGroupType@@XZ); evidence: RTTI vtable slot + PDB name set.
+EAIStateGroupType CAIStateGroup_EnemyCreatureBase::GetStateGroupType() const { return (EAIStateGroupType)1; }

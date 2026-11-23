@@ -1,5 +1,5 @@
 // CHighlightItemDef::Transfer(CPersistContext& context) -- persist the highlight item def (run flag, emitters, rotation, bobbing, delay)
-// Leaf: Transfer
+// Leaf: ?Transfer@CHighlightItemDef@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0077CE00, 448 bytes (virtual, `ret 4`).
 // Callees: CPersistContext::CheckCRC 0x00404500 (x8, the empty key "" 0x0122D70E);
 //   CPersistTraits<bool>::TransferBinaryIn 0x00403EB0 / CDataOutputStream::WriteEBOOL 0x00993E30;
@@ -9,8 +9,15 @@
 //   member address formed into ebx before the CRC call, `sub eax,2 ; je ; dec eax ; jne` on the mode, the empty traits
 //   temporary in the dead argument slot. Retail order is StartAsRunning first and BobTime before BobDistance; the last
 //   member reuses `this` (`add edi,44h`). `this` is the engine header layout (CHighlightItemDef.h, Ego_r.pdb).
-#include "engine/CHighlightItemDef.h"
+// Header route (NF319, 2026-11-23): defined on the real class of engine/CHighlightItemDef.h (was ?Transfer@CHighlightItemDef_Transfer@@QAEXAAVCPersistContext@@@Z); the retail RTTI vftable
+//   placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address; declared by the add-only opt-in
+//   FABLE_RETAIL_CHIGHLIGHTITEMDEF_RTTI_DECLS. Bytes unchanged.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CHIGHLIGHTITEMDEF
+#define FABLE_RETAIL_CHIGHLIGHTITEMDEF_RTTI_DECLS
 
+#include "engine/CHighlightItemDef.h"
 class CMemoryDataInputStream;
 class CDataOutputStream { public:
     void WriteEBOOL(bool value);                        // 0x00993E30 ?WriteEBOOL@CDataOutputStream@@QAEX_N@Z (Ego_r.pdb; name fix NF21)
@@ -53,12 +60,8 @@ class CPersistContext { public:
         }
     }
 };
-struct CHighlightItemDef_Transfer : CHighlightItemDef {
-    void Transfer(CPersistContext& context);
-};
 
-void CHighlightItemDef_Transfer::Transfer(CPersistContext& context)
-{
+void CHighlightItemDef::Transfer(CPersistContext& context) {
     context.Transfer("", StartAsRunning);
     context.Transfer("", ParticleEmitter);
     context.Transfer("", PickupParticleEmitter);

@@ -21,6 +21,15 @@ class CAIStateGroup_VersusScorpionKing : public CAIStateGroup_VersusEnemyBase {
     CIntelligentPointer<CThing> PArenaCentreThing;                     // +0x1D
     bool FindChargeEvent();                                            // 0x00963810
     bool IsScorpionChargingAtMe();                                     // 0x00963880
+#ifdef FABLE_RETAIL_CAISTATEGROUP_VERSUSSCORPIONKING_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CAIStateGroup_VersusEnemyBase chain declares at the same slot (no new slot).
+    // 0x00901462 vtable 0x0128CBE4 slot 8: ?GetStateGroupType@CAIStateGroup_VersusScorpionKing@@MBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
+protected:
+    virtual EAIStateGroupType GetStateGroupType() const;              // 0x00901462
+private:
+#endif
 };
 #else
 #pragma pack(push, 1)

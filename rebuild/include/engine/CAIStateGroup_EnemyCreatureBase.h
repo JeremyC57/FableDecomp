@@ -38,8 +38,17 @@ public:
 protected:
     virtual bool IsRequireDirectAwarenessOfThing() const;
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CAIStateGroupBase chain declares at the same slot (no new slot).
+    // 0x008FE0EA vtable 0x0128B8BC slot 8: ?GetStateGroupType@CAIStateGroup_EnemyCreatureBase@@UBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;              // 0x008FE0EA
+protected:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_EnemyCreatureBase)==0x1c);
+FABLE_STATIC_ASSERT_AT(42, sizeof(CAIStateGroup_EnemyCreatureBase)==0x1c);
 #else
 #pragma pack(push, 1)
 struct CAIStateGroup_EnemyCreatureBase {
@@ -52,9 +61,9 @@ struct CAIStateGroup_EnemyCreatureBase {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_EnemyCreatureBase) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EnemyCreatureBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EnemyCreatureBase, PTargetThing) == 0x14);
+FABLE_STATIC_ASSERT_AT(55, sizeof(CAIStateGroup_EnemyCreatureBase) == 0x1c);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CAIStateGroup_EnemyCreatureBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CAIStateGroup_EnemyCreatureBase, PTargetThing) == 0x14);
 
 #endif // retail branch
 #endif // FABLE_ENGINE_CAISTATEGROUP_ENEMYCREATUREBASE_H
