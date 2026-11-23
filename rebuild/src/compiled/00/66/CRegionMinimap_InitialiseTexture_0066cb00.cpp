@@ -50,7 +50,7 @@ class CSurface { public:                               // vtable 0x0122F84C
     virtual void v00();
     ~CSurface() { Uninitialise(); }
     void Uninitialise();                        // 0x009F2E20
-    void CopyFromSurface(const C2DBoxI* destBox, const CSurface* source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0
+    void CopyFromSurface(const C2DBoxI* destBox, const CSurface& source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0
 };
 class CTexture { public:
     IDirect3DTexture9* PD3DTexture;             // +0x00
@@ -80,5 +80,5 @@ void CRegionMinimap_Methods::InitialiseTexture()
     system->PDisplayManager->GetBestCompressedAlphaTextureFormat(0x10, format);
     texture.Initialise(size, 1, format, 0, SURFACE_POOL_MANAGED, false, false);
     C2DBoxI box(0, 0, size.X, size.Y);
-    texture.GetSurfaceLevel(0).CopyFromSurface(&box, &Surface(), &box, 1);
+    texture.GetSurfaceLevel(0).CopyFromSurface(&box, Surface(), &box, 1);
 }

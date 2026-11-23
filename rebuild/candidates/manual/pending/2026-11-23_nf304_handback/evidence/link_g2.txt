@@ -1,0 +1,41 @@
+## HEAD set: H_009a6610.obj H_005559d0.obj H_00556810.obj H_00a772d0.obj H_004138d0.obj H_00642970.obj H_0066c750.obj H_0066dc50.obj H_009f37e0.obj H_0066cb00.obj H_00b2c4e0.obj H_00555440.obj H_005556f0.obj H_005566a0.obj H_005570f0.obj H_00820f80.obj 00414e30.obj 00435530.obj 004a0d90.obj 00507c30.obj 00555a90.obj 00642820.obj 00642880.obj 0066ca80.obj 0066cd50.obj 006a5d90.obj 008315c0.obj 00837e40.obj 0083c2d0.obj 0083d990.obj 00872110.obj 008728c0.obj 00885f50.obj 00998250.obj 009ba110.obj 009bf350.obj 009ec710.obj 009ec890.obj 009f3230.obj 009f35d0.obj 009f36e0.obj 009f4120.obj 009f4390.obj 009f4910.obj 009fa4e0.obj 009fed30.obj 00a63ee0.obj 00a76a80.obj 00a76b90.obj 00a780b0.obj 00a78a90.obj 00a7db10.obj 00a7dbf0.obj 00b2b180.obj 008270c0.obj 0082e780.obj
+duplicates 0
+UNRESOLVED 1 ??0CScriptedMapBrush@@QAE@ABV0@@Z
+UNRESOLVED 1 ??0CScriptedMapBrush@@QAE@ABVC2DBoxI@@@Z
+UNRESOLVED 2 ??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z
+UNRESOLVED 1 ??0CStringParser@@QAE@PADP6IXPAVCCharString@@@ZABV1@J@Z
+UNRESOLVED 1 ??1CScriptedMapBrush@@QAE@XZ
+UNRESOLVED 1 ?CScriptedMapBrush_dtor@@YIXPAVCScriptedMapBrush@@@Z
+UNRESOLVED 1 ?CanDoProperSignedConversion@CSurface@@AAE_NPBVC2DBoxI@@0ABVCPixelFormat@@@Z
+UNRESOLVED 1 ?CanDoProperSignedConversion@CSurface@@QAE_NPBVC2DBoxI@@0PBVCPixelFormat@@@Z
+UNRESOLVED 2 ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@PBV1@0K@Z
+UNRESOLVED 1 ?CopyFromUnsignedDataToSignedSurface@CSurface@@AAEXPBXABVCPixelFormat@@J@Z
+UNRESOLVED 1 ?CopyFromUnsignedDataToSignedSurface@CSurface@@QAEXPBXPBVCPixelFormat@@J@Z
+UNRESOLVED 1 ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z
+UNRESOLVED 1 ?Initialise@CScratchBuffer@@QAEXJ@Z
+UNRESOLVED 1 ?InitialiseAsImage@CSurface@@QAE_NPAVC2DExtentsI@@PAVCPixelFormat@@_N@Z
+UNRESOLVED 2 ?InitialiseAsImage@CSurface@@QAE_NPBVC2DExtentsI@@PBVCPixelFormat@@_N@Z
+UNRESOLVED 3 ?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z
+UNRESOLVED 3 ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@AAVCParsedItem@@@Z
+UNRESOLVED 1 ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@PAVCParsedItem@@@Z
+UNRESOLVED 1 ?RegisterScriptedMapBrush@CWorldMap@@QAEXJPAVCScriptedMapBrush@@@Z
+UNRESOLVED 1 ?SaveAsTGA@CSurface@@QAE_NPBVCWideString@@PBVC2DExtentsI@@_N@Z
+UNRESOLVED 2 ?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z
+UNRESOLVED 1 ?SetPixel@CSurface@@QAEXJJPBVCRGBColour@@@Z
+UNRESOLVED 1 ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z
+UNRESOLVED 1 ?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@Z
+UNRESOLVED 1 ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXKABQBVCANavQuadTreeNode@@@Z
+## new set: 009a6610.obj 005559d0.obj 00556810.obj 00a772d0.obj 004138d0.obj 00642970.obj 0066c750.obj 0066dc50.obj 009f37e0.obj 0066cb00.obj 00b2c4e0.obj 00555440.obj 005556f0.obj 005566a0.obj 005570f0.obj 00820f80.obj 00414e30.obj 00435530.obj 004a0d90.obj 00507c30.obj 00555a90.obj 00642820.obj 00642880.obj 0066ca80.obj 0066cd50.obj 006a5d90.obj 008315c0.obj 00837e40.obj 0083c2d0.obj 0083d990.obj 00872110.obj 008728c0.obj 00885f50.obj 00998250.obj 009ba110.obj 009bf350.obj 009ec710.obj 009ec890.obj 009f3230.obj 009f35d0.obj 009f36e0.obj 009f4120.obj 009f4390.obj 009f4910.obj 009fa4e0.obj 009fed30.obj 00a63ee0.obj 00a76a80.obj 00a76b90.obj 00a780b0.obj 00a78a90.obj 00a7db10.obj 00a7dbf0.obj 00b2b180.obj 008270c0.obj 0082e780.obj
+duplicates 0
+UNRESOLVED 1 ??0CScriptedMapBrush@@QAE@ABV0@@Z
+UNRESOLVED 1 ??0CScriptedMapBrush@@QAE@ABVC2DBoxI@@@Z
+UNRESOLVED 2 ??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z
+UNRESOLVED 1 ?CScriptedMapBrush_dtor@@YIXPAVCScriptedMapBrush@@@Z
+UNRESOLVED 2 ?CanDoProperSignedConversion@CSurface@@AAE_NPBVC2DBoxI@@0ABVCPixelFormat@@@Z
+UNRESOLVED 2 ?CopyFromUnsignedDataToSignedSurface@CSurface@@AAEXPBXABVCPixelFormat@@J@Z
+UNRESOLVED 3 ?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z
+UNRESOLVED 4 ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@AAVCParsedItem@@@Z
+UNRESOLVED 1 ?RegisterScriptedMapBrush@CWorldMap@@QAEXJPAVCScriptedMapBrush@@@Z
+UNRESOLVED 3 ?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z
+UNRESOLVED 1 ?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@Z
+LK_DONE

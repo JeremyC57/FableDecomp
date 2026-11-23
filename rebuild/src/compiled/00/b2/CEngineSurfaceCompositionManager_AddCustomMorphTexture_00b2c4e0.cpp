@@ -65,7 +65,7 @@ class CSurface { public:                                       // vtable 0x0122F
     virtual void v00();
     ~CSurface() { Uninitialise(); }
     void Uninitialise();                                // 0x009F2E20
-    void CopyFromSurface(const C2DBoxI* destBox, const CSurface* source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0
+    void CopyFromSurface(const C2DBoxI* destBox, const CSurface& source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0
 };
 class CTexture { public:
     void*         PD3DTexture;                          // +0x00
@@ -177,7 +177,7 @@ unsigned long CEngineSurfaceCompositionManager::AddCustomMorphTexture(CTexture& 
     size.X = width;
     size.Y = height;
     composite.Initialise(size, -1, format, 0, SURFACE_POOL_MANAGED, false, false);
-    composite.GetSurfaceLevel(0).CopyFromSurface(0, &texture.GetSurfaceLevel(0), 0, (unsigned long)-1);
+    composite.GetSurfaceLevel(0).CopyFromSurface(0, texture.GetSurfaceLevel(0), 0, (unsigned long)-1);
     composite.GenerateMipmaps(5, 0);
     WriteTextureToBank(composite, CustomTextureBankFile, index, hasAlpha);
     CustomTextureBankFile.EndUpdateEntries();

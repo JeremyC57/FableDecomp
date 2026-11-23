@@ -63,7 +63,7 @@ class CParsedItem { public:                               // 12 bytes
     long        Integer;                           // +0x04
     CCharString String;                            // +0x08
 };
-typedef void (*TStringParserErrorCallback)(CCharString* message);
+typedef void (*TStringParserErrorCallback)(const CCharString& message);
 class CStringParser : public CBaseClass {               // vtable 0x0122D874, 0x28 bytes in retail
 public:
     char*                      String;             // +0x04
@@ -73,9 +73,9 @@ public:
     std::list<CStringParserCommentBoundaries> Comments;           // +0x14
     TStringParserErrorCallback ErrorCallback;      // +0x18
     CCursorPos                 CursorPos;          // +0x1C
-    CStringParser(char* text, TStringParserErrorCallback errorCallback = 0, const CCharString& filename = "",
+    CStringParser(const char* text, TStringParserErrorCallback errorCallback = 0, const CCharString& filename = "",
                   long baseLineOffset = 0);        // 0x00414E30
-    bool ReadAsStringUntilString(const CCharString& terminator, CParsedItem* item);   // 0x009BA110
+    bool ReadAsStringUntilString(const CCharString& terminator, CParsedItem& item);   // 0x009BA110
     CCharString ReadAsStringUntilString(const CCharString& terminator);             // 0x009BA330
     CCharString ReadAsSymbol();                    // 0x009BA790
     CCharString ReadAsString();                    // 0x009BA6F0
@@ -98,11 +98,11 @@ void GFParseCommandLine(char* commandLine)
     if (commandLine != 0) {
         CStringParser parser(commandLine, 0, CCharString(""), 0);
         CParsedItem item;
-        while (parser.ReadAsStringUntilString("-", &item)) {
+        while (parser.ReadAsStringUntilString("-", item)) {
             parser.ReadAsSymbol();
             CCharString option = parser.ReadAsString();
             if (option.EqualsNoCase("staticmap")) {
-                if (!parser.ReadAsStringUntilString("\"", &item))
+                if (!parser.ReadAsStringUntilString("\"", item))
                     break;
                 parser.ReadAsSymbol();
                 GForceLevel = parser.ReadAsStringUntilString("\"").ToWideString();

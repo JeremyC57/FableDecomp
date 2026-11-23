@@ -1,0 +1,28 @@
+00449970 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+00449a30 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+00449a50 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+00449b20 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+00449b40 _FableSpellWrap_6a4dd0@4 x1
+00449bf0 NOOBJ
+00449c10 NOOBJ
+00449cb0 ?GetPlayer@CPlayerManager@@QAEPAUCPlayer@@J@Z x2
+00449d90 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z x1
+00449e60 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z x1
+00449f90 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z x1
+0049d850 ?sub_4498c0@@YIXPAX@Z x1
+004a5a40 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+004c7a30 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+005faf50 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+00644424 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+0064c869 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+0066fb80 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+0066fc90 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z x1
+0066ff20 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+00670710 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+006e7550 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+006e7630 -
+007f9960 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x1
+0083c690 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z x1
+0083c800 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z x1
+0083ca90 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z x1
+00449cb0 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z x2

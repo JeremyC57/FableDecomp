@@ -24,7 +24,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCCreatureNavigation { public:                  // interface type 7
     bool GetNearbyDirectedPosition(const C3DVector& from, float radius, const C3DVector& direction, float spread,
-                                   C3DVector* out);     // 0x006CB780
+                                   C3DVector& out) const;     // 0x006CB780
     bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector* out, bool flag);   // 0x006CB6E0
 };
 class CThing { public:
@@ -165,7 +165,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_FleeToThingProximity(CIntelligentPoi
             creature->GetInterfaceR(&nav, 7, found);
             C3DVector toward = threat.GetPCreature()->PeekPos() - creature->PeekPos();
             C3DVector dest;
-            if (nav->GetNearbyDirectedPosition(GetCreature()->PeekPos(), 5.0f, toward, 0.25277778f, &dest)) {
+            if (nav->GetNearbyDirectedPosition(GetCreature()->PeekPos(), 5.0f, toward, 0.25277778f, dest)) {
                 CThingCreatureBase* me = GetCreature();
                 float tolerance = DELTA_NOTIONAL_ZERO;
                 const C3DVector& pos = me->PeekPos();

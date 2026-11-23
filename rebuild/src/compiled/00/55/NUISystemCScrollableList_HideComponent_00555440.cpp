@@ -1,5 +1,5 @@
 // NUISystem::CScrollableList::HideComponent(CComponent*, float, float, C2DVector, unsigned char) -- park a list component: set the position of all eight of its UI states to the given point and slide it there, set the alpha of all eight states and fade to it, then refresh the component's states
-// Leaf: HideComponent
+// Leaf: ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00555440, length 674 bytes, ret 0x18 (`this` unused; called by the landed
 // HideList 0x005559D0 and siblings).
 // Callees: the component's virtual GetStateMap (slot 82, +0x148), ChangePosition (slot 31, +0x7c), FadeColour (slot 38,
@@ -7,10 +7,10 @@
 // Layout: CUIState (the landed CSlider::Update 0x0054BA20 model) Position +0x08, Colour +0x18 (alpha byte +0x1b).
 // Shape: every state key is a fresh `const unsigned long&` temporary (one frame word for the first eight, the dead alpha
 // argument slot for the second eight); the key 6 used five times is hoisted into ebp.
-namespace NUISystem {
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
-};
+}; namespace NUISystem {
+
 struct CRGBColour {
     unsigned char B, G, R, A;
 };
@@ -56,7 +56,7 @@ class CComponent : public CComponentBase, public CStateHolder { public:
 };
 class CScrollableList { public:
     void* VTable;
-    void HideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position, unsigned char alpha);
+    protected: void HideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position, unsigned char alpha); public:
 };
 
 void CScrollableList::HideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position, unsigned char alpha)

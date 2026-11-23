@@ -123,3 +123,8 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
 - NF303 Q1: `virtual` on a local base that also flips the binder's own override leaf QAE -> UAE (the PDB spelling) is allowed per row under
   NF299 Q3 + NF302 Q5, recorded in RENAMES section 1. Q2: a member-template declaration that adds a `/alternatename` line to `.drectve` is
   T3 (a `.drectve` change is T3). Q4: held entries are taken once their locks are free, after re-reading the landed rows.
+- NF304 Q6: an owner's own PDB-signature self fix (bytes equal) lands when every landed binder of the old self spelling moves in the same
+  landing (NF302 Q5 widened; NF282 D2 covers re-scoping a self onto a made-up owner). Q1: a re-scope whose only renamed definitions are
+  pick-any copies of the type's implicit members or local inline getters, now in the PDB spelling, lands when each copy's body equals the
+  landed PDB definition or no landed strong definition of that symbol exists; otherwise T3. Q2: a local `long` member / parameter retyped to
+  the shared 4-byte enum lands under NF300 Q1.

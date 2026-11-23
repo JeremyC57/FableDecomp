@@ -29,13 +29,13 @@ class C3DOrientationInterpolator { public:
 
 class CTCCarryable { public:
     virtual void v00();
-    bool GetCarriedPositionInfo(C3DVector* position, CRightHandedSet* orientation, bool forceUpdate, float time);   // 0x007055D0
+    bool GetCarriedPositionInfo(C3DVector& position, CRightHandedSet& orientation, bool forceUpdate, float time) const;   // 0x007055D0
     bool GetCarriedPositionInfo(C3DPositionInterpolator* position, C3DOrientationInterpolator* orientation, float time);
 };
 
 bool CTCCarryable::GetCarriedPositionInfo(C3DPositionInterpolator* position, C3DOrientationInterpolator* orientation, float time)
 {
-    bool result = GetCarriedPositionInfo(&position->StartPosition, &orientation->StartOrientation, false, time);
+    bool result = GetCarriedPositionInfo(position->StartPosition, orientation->StartOrientation, false, time);
     position->EndPosition = position->StartPosition;
     orientation->EndOrientation = orientation->StartOrientation;
     return result;

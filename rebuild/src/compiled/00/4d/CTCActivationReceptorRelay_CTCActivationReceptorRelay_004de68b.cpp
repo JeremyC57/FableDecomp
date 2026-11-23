@@ -12,7 +12,7 @@ class CThing;
 
 class CTCActivationReceptorBase { public:
     virtual void v00();
-    CTCActivationReceptorBase(CThing* argument);            // 0x007F7710
+    CTCActivationReceptorBase(CThing& argument);            // 0x007F7710
 };
 
 struct CTCActivationReceptorRelay : CTCActivationReceptorBase {
@@ -21,6 +21,6 @@ struct CTCActivationReceptorRelay : CTCActivationReceptorBase {
 };
 
 CTCActivationReceptorRelay::CTCActivationReceptorRelay(CThing* argument)
-    : CTCActivationReceptorBase(argument)
+    : CTCActivationReceptorBase(*argument)
 {
 }

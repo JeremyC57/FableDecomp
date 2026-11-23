@@ -35,7 +35,7 @@ class CRenderTarget : public CBaseClass { public:                     // vtable 
     CSurface RenderToSurface;                      // +0x04
     CSurface ZBufferSurface;                       // +0x14
     CRenderTarget() {}
-    CRenderTarget(const CSurface& colour, const CSurface& depth);   // 0x00A10DC0
+    CRenderTarget(CSurface& colour, CSurface& depth);   // 0x00A10DC0
     CRenderTarget& operator=(const CRenderTarget& other)
     {
         RenderToSurface = other.RenderToSurface;

@@ -13,10 +13,10 @@ class CThing;
 
 class CTCBulletTime { public:
     unsigned char _body[0x58];       // sizeof(CTCBulletTime) = 0x58
-    CTCBulletTime(CThing* owner);                   // 0x0079D360
+    CTCBulletTime(CThing& owner);                   // 0x0079D360
 };
 
 CTCBulletTime* __fastcall CTCBulletTime_Alloc(CThing* owner)
 {
-    return new CTCBulletTime(owner);
+    return new CTCBulletTime(*owner);
 }

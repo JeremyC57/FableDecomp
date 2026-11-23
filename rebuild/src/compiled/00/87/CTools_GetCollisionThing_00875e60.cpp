@@ -21,7 +21,7 @@ class CPhysicsMeshObject { public:
     float         Scale;                           // +0x38
     float         OO_Scale;                        // +0x3c
     virtual ~CPhysicsMeshObject();                         // 0x00A127D0
-    bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* out) const;   // 0x00A12450
+    bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& out) const;   // 0x00A12450
 };
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -57,7 +57,7 @@ CThing* CTools::GetCollisionThing(const CThingPtrVector& things, const C3DVector
         {
             CPhysicsMeshObject mesh = physics->GetPhysicsMeshObject();
             CMeshIntersectionData data;
-            if (mesh.GetPointIntersectionFromTo(&from, &to, &data))
+            if (mesh.GetPointIntersectionFromTo(from, to, data))
             {
                 hit_pos = data.IntersectionPosition;
                 return *it;

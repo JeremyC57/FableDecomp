@@ -1,0 +1,70 @@
+{
+ "00555440": [
+  [
+   "// Leaf: HideComponent\n",
+   "// Leaf: ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z\n",
+   1
+  ],
+  [
+   "namespace NUISystem {\nstruct C2DVector {\n    float X, Y;\n};\n",
+   "class C2DVector { public:\n    float X, Y;\n}; namespace NUISystem {\n\n",
+   1
+  ],
+  [
+   "    void HideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position, unsigned char alpha);\n",
+   "    protected: void HideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position, unsigned char alpha); public:\n",
+   1
+  ]
+ ],
+ "005556f0": [
+  [
+   "// Leaf: UnhideComponent\n",
+   "// Leaf: ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z\n",
+   1
+  ],
+  [
+   "namespace NUISystem {\nstruct C2DVector {\n    float X, Y;\n};\n",
+   "class C2DVector { public:\n    float X, Y;\n}; namespace NUISystem {\n\n",
+   1
+  ],
+  [
+   "    void UnhideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position);\n",
+   "    protected: void UnhideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position); public:\n",
+   1
+  ]
+ ],
+ "005566a0": [
+  [
+   "namespace NUISystem {\n\nstruct C2DVector {\n",
+   "\n\nclass C2DVector { public:\n",
+   1
+  ],
+  [
+   "    C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}\n};\n",
+   "    C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}\n}; namespace NUISystem {\n",
+   1
+  ],
+  [
+   "    void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440\n",
+   "    protected: void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha); public:   // 0x00555440\n",
+   1
+  ]
+ ],
+ "005570f0": [
+  [
+   "namespace NUISystem {\n\nstruct C2DVector {\n",
+   "\n\nclass C2DVector { public:\n",
+   1
+  ],
+  [
+   "    C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}\n};\n",
+   "    C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}\n}; namespace NUISystem {\n",
+   1
+  ],
+  [
+   "    void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440\n",
+   "    protected: void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha); public:   // 0x00555440\n",
+   1
+  ]
+ ]
+}

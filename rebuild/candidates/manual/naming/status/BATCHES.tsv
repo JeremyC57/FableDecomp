@@ -203,14 +203,11 @@ T1	standin_alias	set	1	1		00513700
 T1	signature	CPersistTraits	15	18	engine/CPersistTraits.h	00403ff0 0040efb0 0040fe60 0044b890 0045e011 0045ed25 00464030 00475b93 004e959d 0057f9e9 005c0a98 005c19a3 0067aa40 006dc6a0 007e3930
 T1	signature	(none)	14	17		00405220 00497890 005578a0 00778610 0088ae40 00942b30 009e1e70 009e21d0 00cbe0c7 00cbe7aa 00cbe814 00cbed00 00cbed82 00cbeed2
 T1	signature	vector	11	11		0046aca8 004e9f20 00581284 006c9d50 006d4a20 006dd4a0 00721240 007b5210 00f33d90 00f34bf0 00f353f0
-T1	signature	CSurface	6	5	engine/CSurface.h	009f3230 009f35d0 009f36e0 009f37e0 009f4120 009f4590
 T1	signature	CWorldMap	6	5	engine/CWorldMap.h	00500eb0 00501990 00501d30 00502e90 0050a650 0063d4a0
 T1	signature	RemoveThingFromTask	6	1		00660ae2 00660b5d 00660bd8 00660c53 00660cce 00660d49
 T1	signature	RemoveThingFromTaskList	6	1		00660787 00660894 0066090a 00660980 006609f6 00660a6c
 T1	signature	CEnvironmentSpellEffectInterface	5	2	engine/CEnvironmentSpellEffectInterface.h	00884e90 00884f60 00884fe0 008854a0 00885680
 T1	signature	CThingCreatureBase	5	8	engine/CThingCreatureBase.h	006619f0 00662b10 00663260 006644f0 006668a0
-T1	signature	CScriptedMapBrush	4	3	engine/CScriptedMapBrush.h	0082e600 0082e780 0082e910 0082e9c0
-T1	signature	CSubtitleRenderer	4	6	engine/CSubtitleRenderer.h	00492973 00492e4b 00492f69 00493049
 T1	signature	CTCInventoryAbilities	4	4	engine/CTCInventoryAbilities.h	005ee49a 005eea9b 005f0dc5 005f1320
 T1	signature	CTCVillage	4	5	engine/CTCVillage.h	00658620 00658716 00659efc 0065a8ee
 T1	signature	CThingManager	4	4	engine/CThingManager.h	0051e210 0051ec50 00520d00 00525cd0
@@ -220,7 +217,7 @@ T1	signature	CCombatManager	3	8	engine/CCombatManager.h	006e8c30 006e9360 006edc
 T1	signature	CCreatureAction_PlayAnimation	3	4	engine/CCreatureAction_PlayAnimation.h	008424f0 00842570 00843a80
 T1	signature	CFileInstaller	3	2	engine/CFileInstaller.h	009c3330 009c3a60 009c4440
 T1	signature	CManager	3	3	engine/CManager.h	0041db1d 0041db84 0066e9e9
-T1	signature	CRenderManager2D	3	3	engine/CRenderManager2D.h	009dbff0 009dd210 009de3f0
+T1	signature	CScriptedMapBrush	3	3	engine/CScriptedMapBrush.h	0082e600 0082e910 0082e9c0
 T1	signature	CTCFollowed	3	2	engine/CTCFollowed.h	006d4e60 006d50c0 006d5180
 T1	signature	CTCHeroStats	3	4	engine/CTCHeroStats.h	0057a6b8 0057bc6e 0057c4f1
 T1	signature	CTCShop	3	3	engine/CTCShop.h	00772120 00773c00 007751a0
@@ -235,16 +232,9 @@ T1	signature	CEnginePrimitiveManagerOcclusionBase	2	3	engine/CEnginePrimitiveMan
 T1	signature	CEngineSceneGrid	2	2		00b92250 00b939e0
 T1	signature	CFileDataInputStream	2	1	engine/CFileDataInputStream.h	00994700 00994780
 T1	signature	CGameTimeManager	2	1	engine/CGameTimeManager.h	006bb860 006bb940
-T1	signature	CParticleEmitter	2	2	engine/CParticleEmitter.h	00aee940 00af0610
 T1	signature	CPlayer	2	2	engine/CPlayer.h	00487ef0 004888c0
-T1	signature	CPlayerGui	2	3	engine/CPlayerGui.h	00437ae0 0043b570
 T1	signature	CQ_AmbushTradersScript	2	2	engine/CQ_AmbushTradersScript.h	00f07b80 00f09950
 T1	signature	CQ_BountyHuntScript	2	2	engine/CQ_BountyHuntScript.h	00d16920 00d16d00
-T1	signature	CQuestManager	2	2	engine/CQuestManager.h	004afbb0 004b3a20
-T1	signature	CScrollableList	2	2		00555440 005556f0
-T1	signature	CStringParser	2	1	engine/CStringParser.h	00414e30 009ba110
-T1	signature	CTCBoastingArea	2	2		007827d0 00782860
-T1	signature	CTCCreatureNavigation	2	2	engine/CTCCreatureNavigation.h	006cb780 006cbac0
 T1	signature	CTCCreatureOpinionOfHero	2	2	engine/CTCCreatureOpinionOfHero.h	00681ae0 00682810
 T1	signature	CTCEnemy	2	2	engine/CTCEnemy.h	0076c8a0 0076cc00
 T1	signature	CTCGraphicAppearance	2	2		004bffd0 004c0240
@@ -305,33 +295,21 @@ T1	signature	CInputManager	1	2	engine/CInputManager.h	009f4c60
 T1	signature	CInputProcessManager	1	1	engine/CInputProcessManager.h	00a0d810
 T1	signature	CLandscapeBackgroundPatch	1	1	engine/CLandscapeBackgroundPatch.h	00be5bb0
 T1	signature	CLocalDetailPrimitiveMeshZSpriteBatch	1	1		00bf9fa0
-T1	signature	CMemoryAllocatorVariableSize	1	1	engine/CMemoryAllocatorVariableSize.h	00a64e70
 T1	signature	CMemoryFile	1	1	engine/CMemoryFile.h	009e97b0
 T1	signature	CNavigatorAStar	1	1	engine/CNavigatorAStar.h	00a1cbf0
 T1	signature	CNavigatorFlyer	1	1	engine/CNavigatorFlyer.h	00a18f70
 T1	signature	CPSCSplineBase	1	1	engine/CPSCSplineBase.h	00b21940
+T1	signature	CParticleEmitter	1	1	engine/CParticleEmitter.h	00af0610
 T1	signature	CParticleSystem	1	1	engine/CParticleSystem.h	00af5330
-T1	signature	CPhysicsMeshObject	1	3	engine/CPhysicsMeshObject.h	00a12450
-T1	signature	CRangeCompressor	1	1	engine/CRangeCompressor.h	00f3afc0
-T1	signature	CRenderTarget	1	1	engine/CRenderTarget.h	00a10dc0
+T1	signature	CQuestManager	1	1	engine/CQuestManager.h	004b3a20
 T1	signature	CResourceList	1	1	engine/CResourceList.h	009fc5c0
-T1	signature	CScratchBuffer	1	1		009f4910
 T1	signature	CScriptBase	1	1	engine/CScriptBase.h	00cb7920
 T1	signature	CShaderRenderManager	1	1	engine/CShaderRenderManager.h	0098b860
 T1	signature	CShaderResource	1	1	engine/CShaderResource.h	00a5d7c0
-T1	signature	CSmallVector	1	1	engine/CSmallVector.h	00a7db10
-T1	signature	CStringAndCageBase	1	1		00872110
-T1	signature	CSymbolMap	1	1	engine/CSymbolMap.h	009e5090
-T1	signature	CTCActionUseScriptedHook	1	1	engine/CTCActionUseScriptedHook.h	00729b20
-T1	signature	CTCActivationReceptorBase	1	1	engine/CTCActivationReceptorBase.h	007f7710
-T1	signature	CTCBerserk	1	1	engine/CTCBerserk.h	0078c210
+T1	signature	CSubtitleRenderer	1	1	engine/CSubtitleRenderer.h	00492e4b
 T1	signature	CTCBoastingCrowdControl	1	1	engine/CTCBoastingCrowdControl.h	00783730
-T1	signature	CTCBulletTime	1	1	engine/CTCBulletTime.h	0079d360
-T1	signature	CTCCarryable	1	1	engine/CTCCarryable.h	007055d0
-T1	signature	CTCCreditsUI	1	1		007e4b60
-T1	signature	CTCDParticleEmitter	1	1	engine/CTCDParticleEmitter.h	006e0480
+T1	signature	CTCCreatureNavigation	1	1	engine/CTCCreatureNavigation.h	006cbac0
 T1	signature	CTCDivineWrath	1	1	engine/CTCDivineWrath.h	0078ecd0
-T1	signature	CTCDoor	1	1	engine/CTCDoor.h	00730630
 T1	signature	CTCEmoteIcon	1	2	engine/CTCEmoteIcon.h	0071ac70
 T1	signature	CTCFlashOnHit	1	1	engine/CTCFlashOnHit.h	004d6292
 T1	signature	CTCForcePushed	1	1	engine/CTCForcePushed.h	007986a0

@@ -23,7 +23,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCCreatureNavigation { public:                  // interface type 7
     bool GetNearbyDirectedPosition(const C3DVector& from, float radius, const C3DVector& direction, float spread,
-                                   C3DVector* out);     // 0x006CB780
+                                   C3DVector& out) const;     // 0x006CB780
     // NF122 (2026-11-20, q5010): Ego_r.pdb / FableWin.pdb ?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z (const, result by reference); was GetNearbyWanderPosition(const C3DVector&, float, C3DVector*, bool) non-const.
     bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector& out, bool flag) const;   // 0x006CB6E0
 };
@@ -128,7 +128,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_RunAwayFrom(CIntelligentPointerConst
         creature->GetInterfaceR(&nav, 7, moving);
         C3DVector dest;
         EAIActionReturn result;
-        if (nav->GetNearbyDirectedPosition(creature->GetPos(), 5.0f, away, 0.25277778f, &dest)) {
+        if (nav->GetNearbyDirectedPosition(creature->GetPos(), 5.0f, away, 0.25277778f, dest)) {
             result = AIAction_MoveToPos((EAIActionRepeat)(AI_ACTION_REPEAT_POLL), dest, moving, (EMovementType)(MOVEMENT_RUN), true, true, 0, true, 0.0f);
         } else {
             const CThing* threatThing = ((CThing*)enemy.GetPItem());

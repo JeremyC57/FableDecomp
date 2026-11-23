@@ -28,9 +28,9 @@ class CWideString { public:
 };
 class CFontBank;
 class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CWideString& title, const CWideString& speaker, const CWideString& text,
+    void SetText(const CFontBank& font, const CWideString& title, const CWideString& speaker, const CWideString& text,
                  const CWideString& altText, unsigned long flags, float time, bool b0, bool b1);   // 0x00492F69
-    void SetText(CFontBank* font, const CWideString& title, const CWideString& speaker, const CWideString& text,
+    void SetText(const CFontBank& font, const CWideString& title, const CWideString& speaker, const CWideString& text,
                  const CWideString& altText, const CWideString& altText2, unsigned long flags, float time, bool b0,
                  bool b1);                                     // 0x00492973
 };
@@ -91,7 +91,7 @@ void CTCTavernGame::SetStateAfterYesNoAlt(CWideString title, CWideString text, E
         OnYesNoSkipped();
     } else {
         PlaySoundW("TAVERN_GAME_OBJECT_SELECTION_CHANGE");
-        g_pSubtitleOwner->Renderer.SetText(CMainGameComponent::Get()->PFont, title, L"", text, noText, altText, 0x84, 0.0f, false, true);
+        g_pSubtitleOwner->Renderer.SetText(*CMainGameComponent::Get()->PFont, title, L"", text, noText, altText, 0x84, 0.0f, false, true);
         CGameEvent event(9);
         event.SetData(false);
         CMainGameComponent::Get()->AddGameEvent(event);

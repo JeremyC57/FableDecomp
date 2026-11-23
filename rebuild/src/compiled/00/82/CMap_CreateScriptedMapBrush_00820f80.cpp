@@ -15,10 +15,10 @@ inline void* operator new(unsigned int, void* where) { return where; }
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 class C2DCoordI { public: long X, Y; };
 class CScriptedMapBrush { public:
-    unsigned char _body[0x54];
+    unsigned char _body[0x50];                                  // +0x04 (vptr +0x00: vtable 0x01272518, ~CScriptedMapBrush virtual, both PDB name sets UAE)
     explicit CScriptedMapBrush(const C2DBoxI& area);            // 0x0082E600
     CScriptedMapBrush(const CScriptedMapBrush& other);          // 0x00827040
-    ~CScriptedMapBrush();                                       // 0x0082E780
+    virtual ~CScriptedMapBrush();                               // 0x0082E780
 };
 struct SBrushNode {
     SBrushNode*       _M_next;

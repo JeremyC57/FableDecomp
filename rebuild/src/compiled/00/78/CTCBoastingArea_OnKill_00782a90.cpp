@@ -34,7 +34,7 @@ struct CTCBoastingArea : public CTCBase {
     EHeroWithinRadiusState HeroWithinRadiusState;           // +0x0c
     float                  Radius;                          // +0x10
     float                  AnticipationRadius;              // +0x14
-    void OnHeroLeavingArea(CThing* hero);                   // 0x00782860
+    private: void OnHeroLeavingArea(CThing& hero); public:  // 0x00782860
     void OnKill();
 };
 
@@ -43,6 +43,6 @@ void CTCBoastingArea::OnKill()
     if (HeroWithinRadiusState != HERO_OUTSIDE) {
         CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero && !hero->IsDead() && HeroWithinRadiusState == HERO_WITHIN_RADIUS)
-            OnHeroLeavingArea(hero);
+            OnHeroLeavingArea(*hero);
     }
 }

@@ -4,13 +4,13 @@
 // No generated CScrollableList header. Retail list entries +b0 are8-byte records;
 // PUpArrow+170/PDownArrow+174 and timer+16c agree canonical OnActivate00556200.
 // HideComponent00555440; component GetPosition virtual slot16.
-namespace NUISystem {
-struct C2DVector {
+
+class C2DVector { public:
     float X,Y;
     C2DVector() {}
     C2DVector(float x,float y):X(x),Y(y) {}
     C2DVector(const C2DVector& other):X(other.X),Y(other.Y) {}
-};
+}; namespace NUISystem {
 class CComponent { public:
     virtual void v00();
     virtual void v01();
@@ -40,7 +40,7 @@ class CScrollableList { public:
     CComponent* PUpArrow; CComponent* PDownArrow;
     bool ScrollUp,ScrollDown;
     unsigned long size() const { return EntriesFinish-EntriesStart; }
-    void HideComponent(CComponent*,float,float,C2DVector,unsigned char); //00555440
+    protected: void HideComponent(CComponent*,float,float,C2DVector,unsigned char); public: //00555440
     void HideList(float duration);
 };
 void CScrollableList::HideList(float duration) {

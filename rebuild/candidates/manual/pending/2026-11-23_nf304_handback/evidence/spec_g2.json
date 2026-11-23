@@ -1,0 +1,179 @@
+{
+ "009a6610": [
+  [
+   "class CScratchBuffer : public CInitBaseClass { public: void Initialise(long size); };",
+   "class CScratchBuffer : public CInitBaseClass { public: bool Initialise(long size); };",
+   1
+  ]
+ ],
+ "005559d0": [
+  [
+   "namespace NUISystem {\nstruct C2DVector {\n",
+   "\nclass C2DVector { public:\n",
+   1
+  ],
+  [
+   "    C2DVector(const C2DVector& other):X(other.X),Y(other.Y) {}\n};\nclass CComponent { public:\n",
+   "    C2DVector(const C2DVector& other):X(other.X),Y(other.Y) {}\n}; namespace NUISystem {\nclass CComponent { public:\n",
+   1
+  ],
+  [
+   "    void HideComponent(CComponent*,float,float,C2DVector,unsigned char); //00555440\n",
+   "    protected: void HideComponent(CComponent*,float,float,C2DVector,unsigned char); public: //00555440\n",
+   1
+  ]
+ ],
+ "00556810": [
+  [
+   "namespace NUISystem {\n\nstruct C2DVector {\n",
+   "\n\nclass C2DVector { public:\n",
+   1
+  ],
+  [
+   "    C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}\n};\n\n#include \"engine/CCountedPointer.h\"\n",
+   "    C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}\n}; namespace NUISystem {\n\n#include \"engine/CCountedPointer.h\"\n",
+   1
+  ],
+  [
+   "    void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440\n    void UnhideComponent(CComponent* component, float startTime, float endTime, C2DVector position);                      // 0x005556F0\n",
+   "    protected: void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440\n    void UnhideComponent(CComponent* component, float startTime, float endTime, C2DVector position); public:              // 0x005556F0\n",
+   1
+  ]
+ ],
+ "00a772d0": [
+  [
+   "    void resize(unsigned long size, const T& value);   // 0x00A7DB10",
+   "    void resize(long size, const T& value);   // 0x00A7DB10",
+   1
+  ]
+ ],
+ "004138d0": [
+  [
+   "typedef void (*TStringParserErrorCallback)(CCharString* message);",
+   "typedef void (*TStringParserErrorCallback)(const CCharString& message);",
+   1
+  ],
+  [
+   "    CStringParser(char* text, TStringParserErrorCallback errorCallback = 0,",
+   "    CStringParser(const char* text, TStringParserErrorCallback errorCallback = 0,",
+   1
+  ],
+  [
+   "bool ReadAsStringUntilString(const CCharString& terminator, CParsedItem* item);   // 0x009BA110",
+   "bool ReadAsStringUntilString(const CCharString& terminator, CParsedItem& item);   // 0x009BA110",
+   1
+  ],
+  [
+   "parser.ReadAsStringUntilString(\"-\", &item)",
+   "parser.ReadAsStringUntilString(\"-\", item)",
+   1
+  ],
+  [
+   "parser.ReadAsStringUntilString(\"\\\"\", &item)",
+   "parser.ReadAsStringUntilString(\"\\\"\", item)",
+   1
+  ]
+ ],
+ "00642970": [
+  [
+   "bool InitialiseAsImage(const C2DExtentsI* size, const CPixelFormat* format, bool a);   // 0x009F3230",
+   "bool InitialiseAsImage(const C2DExtentsI& size, const CPixelFormat& format, bool a);   // 0x009F3230",
+   1
+  ],
+  [
+   "surface->InitialiseAsImage(&size, &format, false);",
+   "surface->InitialiseAsImage(size, format, false);",
+   1
+  ],
+  [
+   "    void SetPixel(long x, long y, const CRGBColour* colour);",
+   "    void SetPixel(long x, long y, const CRGBColour& colour);",
+   1
+  ],
+  [
+   "surface->SetPixel(x, y, &colour);",
+   "surface->SetPixel(x, y, colour);",
+   1
+  ],
+  [
+   "    bool SaveAsTGA(const CWideString* filename, const C2DExtentsI* size, bool a);",
+   "    bool SaveAsTGA(const CWideString& filename, const C2DExtentsI* size, bool a) const;",
+   1
+  ],
+  [
+   "surface->SaveAsTGA(&filename, 0, false);",
+   "surface->SaveAsTGA(filename, 0, false);",
+   1
+  ]
+ ],
+ "0066c750": [
+  [
+   "bool InitialiseAsImage(C2DExtentsI* ext, CPixelFormat* pf, bool bb);",
+   "bool InitialiseAsImage(const C2DExtentsI& ext, const CPixelFormat& pf, bool bb);",
+   1
+  ],
+  [
+   "minimap->surf.InitialiseAsImage(&ext, &pf, false);",
+   "minimap->surf.InitialiseAsImage(ext, pf, false);",
+   1
+  ]
+ ],
+ "0066dc50": [
+  [
+   "bool InitialiseAsImage(const C2DExtentsI* extents, const CPixelFormat* format, bool flag);   // 0x009F3230",
+   "bool InitialiseAsImage(const C2DExtentsI& extents, const CPixelFormat& format, bool flag);   // 0x009F3230",
+   1
+  ],
+  [
+   "RegionMinimapSurface.InitialiseAsImage(&extents, &format, false);",
+   "RegionMinimapSurface.InitialiseAsImage(extents, format, false);",
+   1
+  ]
+ ],
+ "009f37e0": [
+  [
+   "    bool CanDoProperSignedConversion(const C2DBoxI* dst, const C2DBoxI* src, const CPixelFormat* format);   // 0x009F35D0",
+   "    private: bool CanDoProperSignedConversion(const C2DBoxI* dst, const C2DBoxI* src, const CPixelFormat& format); public:   // 0x009F35D0",
+   1
+  ],
+  [
+   "CanDoProperSignedConversion(0, 0, &CPixelFormat(D3DFMT_A8R8G8B8))",
+   "CanDoProperSignedConversion(0, 0, CPixelFormat(D3DFMT_A8R8G8B8))",
+   1
+  ],
+  [
+   "    void CopyFromUnsignedDataToSignedSurface(const void* data, const CPixelFormat* format, long pitch);",
+   "    private: void CopyFromUnsignedDataToSignedSurface(const void* data, const CPixelFormat& format, long pitch); public:",
+   1
+  ],
+  [
+   "CopyFromUnsignedDataToSignedSurface(locked.PMem, &argb, locked.Pitch);",
+   "CopyFromUnsignedDataToSignedSurface(locked.PMem, argb, locked.Pitch);",
+   1
+  ]
+ ],
+ "0066cb00": [
+  [
+   "    void CopyFromSurface(const C2DBoxI* destBox, const CSurface* source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0",
+   "    void CopyFromSurface(const C2DBoxI* destBox, const CSurface& source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0",
+   1
+  ],
+  [
+   "CopyFromSurface(&box, &Surface(), &box, 1);",
+   "CopyFromSurface(&box, Surface(), &box, 1);",
+   1
+  ]
+ ],
+ "00b2c4e0": [
+  [
+   "    void CopyFromSurface(const C2DBoxI* destBox, const CSurface* source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0",
+   "    void CopyFromSurface(const C2DBoxI* destBox, const CSurface& source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0",
+   1
+  ],
+  [
+   "CopyFromSurface(0, &texture.GetSurfaceLevel(0), 0, (unsigned long)-1);",
+   "CopyFromSurface(0, texture.GetSurfaceLevel(0), 0, (unsigned long)-1);",
+   1
+  ]
+ ]
+}

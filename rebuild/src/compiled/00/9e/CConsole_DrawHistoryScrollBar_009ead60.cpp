@@ -12,7 +12,7 @@ class CRGBColour { public: unsigned char B, G, R, A; };
 struct CRenderManager2D {
     bool Draw2DTriangle(const C2DVector& v0, const C2DVector& v1, const C2DVector& v2, const CRGBColour& colour,
                         unsigned long flags);                               // 0x009DDFF0
-    bool Draw2DBox(const C2DBoxF& box, const CRGBColour& colour, long flags); // 0x009DE3F0
+    bool Draw2DBox(const C2DBoxF& box, const CRGBColour& colour, unsigned long flags); // 0x009DE3F0
 };
 class CDisplayManager { public:
     unsigned char     _pad[8];

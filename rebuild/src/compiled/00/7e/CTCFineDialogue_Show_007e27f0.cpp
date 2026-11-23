@@ -50,7 +50,7 @@ private: public:
 };
 class CSubtitleRenderer {
 public:
-    void SetText(const CFontBank& font, const CWideString& text, unsigned long colour, float time, bool flag, unsigned long mode);   // 0x00492E4B
+    void SetText(const CFontBank& font, const CWideString& text, unsigned long colour, float time, bool flag, bool mode);   // 0x00492E4B
 };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui

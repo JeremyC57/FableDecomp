@@ -1,0 +1,44 @@
+## HEAD set: H_00492f69.obj H_007e7ac0.obj H_007132c0.obj H_009261f0.obj H_007e27f0.obj H_008929d0.obj H_005eadc0.obj H_006dd7e0.obj H_0069fe60.obj H_004de660.obj H_004de68b.obj H_004e07e3.obj H_004d4a69.obj H_007828e0.obj H_00782a90.obj H_004d4c58.obj H_00705b00.obj H_00705b60.obj H_006cb780.obj H_0095e900.obj H_0097fbe0.obj H_009804a0.obj H_00896df0.obj H_00750540.obj H_004d32da.obj H_005e9c50.obj H_005e9d60.obj H_005eaf30.obj H_005eb080.obj H_008139c0.obj 00492973.obj 00492bab.obj 00492e4b.obj 00493049.obj 004a3740.obj 004de623.obj 005eb180.obj 006637d0.obj 0066b370.obj 006d0830.obj 006e0480.obj 006e0730.obj 006f9be0.obj 006fc8e0.obj 00729b20.obj 0072e710.obj 0072e810.obj 0072e940.obj 00730630.obj 00750110.obj 0076e2f0.obj 007827d0.obj 00782860.obj 0078c210.obj 0079d360.obj 007cacb0.obj 007e2a60.obj 007e4b60.obj 007e4e30.obj 007ebea0.obj 007f7710.obj 00892a80.obj 0089e540.obj 0089f9e0.obj 00984f60.obj 009e5090.obj
+duplicates 0
+UNRESOLVED 3 ??0CTCActivationReceptorBase@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCBerserk@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCBulletTime@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCDoor@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ?Activate@CTCCreditsUI@@QAIXVCCharString@@@Z
+UNRESOLVED 1 ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z
+UNRESOLVED 2 ?GetCarriedPositionInfo@CTCCarryable@@QAE_NPAVC3DVector@@PAVCRightHandedSet@@_NM@Z
+UNRESOLVED 1 ?GetCarriedPositionInfo@CTCCarryable@@QBE_NAAVC3DVector@@AAVCRightHandedSet@@_NM@Z
+UNRESOLVED 2 ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@M0MAAV2@@Z
+UNRESOLVED 1 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z
+UNRESOLVED 1 ?OnActionUse@CTCActionUseScriptedHook@@QAEXPAVCThing@@@Z
+UNRESOLVED 1 ?OnHeroApproachPodiumArea@CTCBoastingCrowdControl@@QAEXXZ
+UNRESOLVED 1 ?OnHeroEnterPodiumArea@CTCBoastingCrowdControl@@QAEXXZ
+UNRESOLVED 1 ?OnHeroEnteringArea@CTCBoastingArea@@QAEXPAVCThing@@@Z
+UNRESOLVED 1 ?OnHeroLeavePodiumArea@CTCBoastingCrowdControl@@QAEXXZ
+UNRESOLVED 2 ?OnHeroLeavingArea@CTCBoastingArea@@QAEXPAVCThing@@@Z
+UNRESOLVED 1 ?OnHeroReturnToRegion@CTCWife@@QAEXXZ
+UNRESOLVED 1 ?OnHeroSlept@CTCVillage@@QAEXXZ
+UNRESOLVED 1 ?SetEmitterOrientation@CTCDParticleEmitter@@QAEXPAVCRightHandedSet@@@Z
+UNRESOLVED 3 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z
+UNRESOLVED 1 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+UNRESOLVED 3 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z
+UNRESOLVED 1 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_NK@Z
+UNRESOLVED 1 ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@1111KM_N2@Z
+UNRESOLVED 2 ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z
+UNRESOLVED 4 ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@1111KM_N2@Z
+UNRESOLVED 1 ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@KM_N2@Z
+UNRESOLVED 1 ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@PBVCWideString@@KM_N2@Z
+## new set: 00492f69.obj 007e7ac0.obj 007132c0.obj 009261f0.obj 007e27f0.obj 008929d0.obj 005eadc0.obj 006dd7e0.obj 0069fe60.obj 004de660.obj 004de68b.obj 004e07e3.obj 004d4a69.obj 007828e0.obj 00782a90.obj 004d4c58.obj 00705b00.obj 00705b60.obj 006cb780.obj 0095e900.obj 0097fbe0.obj 009804a0.obj 00896df0.obj 00750540.obj 004d32da.obj 005e9c50.obj 005e9d60.obj 005eaf30.obj 005eb080.obj 008139c0.obj 00492973.obj 00492bab.obj 00492e4b.obj 00493049.obj 004a3740.obj 004de623.obj 005eb180.obj 006637d0.obj 0066b370.obj 006d0830.obj 006e0480.obj 006e0730.obj 006f9be0.obj 006fc8e0.obj 00729b20.obj 0072e710.obj 0072e810.obj 0072e940.obj 00730630.obj 00750110.obj 0076e2f0.obj 007827d0.obj 00782860.obj 0078c210.obj 0079d360.obj 007cacb0.obj 007e2a60.obj 007e4b60.obj 007e4e30.obj 007ebea0.obj 007f7710.obj 00892a80.obj 0089e540.obj 0089f9e0.obj 00984f60.obj 009e5090.obj
+duplicates 0
+UNRESOLVED 1 ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z
+UNRESOLVED 3 ?GetCarriedPositionInfo@CTCCarryable@@QBE_NAAVC3DVector@@AAVCRightHandedSet@@_NM@Z
+UNRESOLVED 1 ?OnActionUse@CTCActionUseBase@@UAEXAAVCThing@@@Z
+UNRESOLVED 1 ?OnHeroApproachPodiumArea@CTCBoastingCrowdControl@@QAEXXZ
+UNRESOLVED 1 ?OnHeroEnterPodiumArea@CTCBoastingCrowdControl@@QAEXXZ
+UNRESOLVED 1 ?OnHeroLeavePodiumArea@CTCBoastingCrowdControl@@QAEXXZ
+UNRESOLVED 1 ?OnHeroReturnToRegion@CTCWife@@QAEXXZ
+UNRESOLVED 1 ?OnHeroSlept@CTCVillage@@QAEXXZ
+UNRESOLVED 3 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z
+UNRESOLVED 1 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+UNRESOLVED 2 ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z
+LK_DONE

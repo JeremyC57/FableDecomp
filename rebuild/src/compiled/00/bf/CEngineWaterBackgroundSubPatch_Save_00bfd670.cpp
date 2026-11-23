@@ -36,7 +36,7 @@ template <class T> class CArray { public:
 
 class CRangeCompressor {
 public:
-    long Compress(void* data, long count, long stride, CArray<unsigned char>* output);   // 0x00F3AFC0
+    long Compress(const void* data, long count, long stride, CArray<unsigned char>& output);   // 0x00F3AFC0
 };
 
 // NF149 (q4552 / q4555..q4560): the buffers are the shared retail classes (engine/CVertexBufferWin32.h, engine/CIndexBuffer.h; Ego_r.pdb +
@@ -82,14 +82,14 @@ void CEngineWaterBackgroundSubPatch_Methods::Save(CDataOutputStream& stream, uns
     CRangeCompressor compressor;
     CArray<unsigned char> buffer;
     void* vertices = VertexBuffer->Lock(0, 0, 0);
-    long size = compressor.Compress(vertices, VertexCount, stride, &buffer);
+    long size = compressor.Compress(vertices, VertexCount, stride, buffer);
     stream.WriteSLONG(stride);
     stream.WriteSLONG(size);
     stream.Write(buffer.GetData(), size);
     VertexBuffer->Unlock();
     if (PolyCount != 0) {
         void* indices = IndexBuffer->Lock(0, 0, 0);
-        size = compressor.Compress(indices, PolyCount * 3, 2, &buffer);
+        size = compressor.Compress(indices, PolyCount * 3, 2, buffer);
         stream.WriteSLONG(size);
         stream.Write(buffer.GetData(), size);
         IndexBuffer->Unlock();

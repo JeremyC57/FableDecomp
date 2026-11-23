@@ -26,7 +26,7 @@ class CPhysicsMeshObject { public:
     void*         m_pMesh;                      // +0x04 counted mesh
     unsigned char _pad08[0x38];
     virtual ~CPhysicsMeshObject();                      // 0x00A127D0
-    bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData* out);   // 0x00A12450
+    bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& out) const;   // 0x00A12450
 };
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -147,7 +147,7 @@ float CWorldMap::GetHeightZBelowAt(const C3DVector& pos, float radius, bool useT
         if (physics && physics->GetPhysicsMeshParameters()) {
             CPhysicsMeshObject mesh = physics->GetPhysicsMeshObject();
             CMeshIntersectionData data;
-            if (mesh.GetPointIntersectionFromTo(from, to, &data)) {
+            if (mesh.GetPointIntersectionFromTo(from, to, data)) {
                 float z = data.IntersectionPosition.Z + 0.007f;
                 if (z > height && z < from.Z)
                     height = z;

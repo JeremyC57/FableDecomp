@@ -1,0 +1,22 @@
+##### 009a6610 renames: ?Initialise@CScratchBuffer@@QAEXJ@Z=?Initialise@CScratchBuffer@@QAE_NJ@Z
+ALL_EQ sections=9 DEF=8 tables=??_7CDriveManager@@6B@
+##### 005559d0 renames: ?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z=?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z
+ALL_EQ sections=3 DEF=2 tables=-
+##### 00556810 renames: ?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z=?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z ?UnhideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@@Z=?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z
+ALL_EQ sections=6 DEF=5 tables=-
+##### 00a772d0 renames: ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXKABQBVCANavQuadTreeNode@@@Z=?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z
+ALL_EQ sections=13 DEF=12 tables=??_7CANavQuadTreeNode@@6B@,??_7CNavNavigableLeafNode@@6B@
+##### 004138d0 renames: ??0CStringParser@@QAE@PADP6IXPAVCCharString@@@ZABV1@J@Z=??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@PAVCParsedItem@@@Z=?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@AAVCParsedItem@@@Z
+ALL_EQ sections=16 DEF=15 tables=-
+##### 00642970 renames: ?InitialiseAsImage@CSurface@@QAE_NPBVC2DExtentsI@@PBVCPixelFormat@@_N@Z=?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z ?SaveAsTGA@CSurface@@QAE_NPBVCWideString@@PBVC2DExtentsI@@_N@Z=?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z ?SetPixel@CSurface@@QAEXJJPBVCRGBColour@@@Z=?SetPixel@CSurface@@QAEXJJABVCRGBColour@@@Z
+ALL_EQ sections=6 DEF=5 tables=-
+##### 0066c750 renames: ?InitialiseAsImage@CSurface@@QAE_NPAVC2DExtentsI@@PAVCPixelFormat@@_N@Z=?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 0066dc50 renames: ?InitialiseAsImage@CSurface@@QAE_NPBVC2DExtentsI@@PBVCPixelFormat@@_N@Z=?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z
+ALL_EQ sections=5 DEF=4 tables=-
+##### 009f37e0 renames: ?CanDoProperSignedConversion@CSurface@@QAE_NPBVC2DBoxI@@0PBVCPixelFormat@@@Z=?CanDoProperSignedConversion@CSurface@@AAE_NPBVC2DBoxI@@0ABVCPixelFormat@@@Z ?CopyFromUnsignedDataToSignedSurface@CSurface@@QAEXPBXPBVCPixelFormat@@J@Z=?CopyFromUnsignedDataToSignedSurface@CSurface@@AAEXPBXABVCPixelFormat@@J@Z
+ALL_EQ sections=13 DEF=12 tables=??_7CSurface@@6B@
+##### 0066cb00 renames: ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@PBV1@0K@Z=?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z
+ALL_EQ sections=9 DEF=8 tables=??_7CSurface@@6B@
+##### 00b2c4e0 renames: ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@PBV1@0K@Z=?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z
+ALL_EQ sections=26 DEF=25 tables=??_7CGraphicBankStateBlock@@6B@,??_7CSurface@@6B@

@@ -1,3 +1,4 @@
+// Leaf: ??0CRenderTarget@@QAE@AAVCSurface@@0@Z
 #include "fable_compiler.h"
 class CBaseClass {
 public:
@@ -27,15 +28,15 @@ class CRenderTarget : public CBaseClass
     CSurface secondary14;
 
     CRenderTarget(
-        const CSurface& primary,
-        const CSurface& secondary);
+        CSurface& primary,
+        CSurface& secondary);
 
     virtual void VTableAnchor();
 };
 
 CRenderTarget::CRenderTarget(
-    const CSurface& primary,
-    const CSurface& secondary)
+    CSurface& primary,
+    CSurface& secondary)
 {
     primary04 = primary;
     secondary14 = secondary;

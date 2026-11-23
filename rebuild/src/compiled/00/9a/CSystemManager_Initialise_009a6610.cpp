@@ -116,7 +116,7 @@ class CInitBaseClass { public:
     bool Valid;                                    // +0x04
     bool Initialise();                             // 0x0099A350
 };
-class CScratchBuffer : public CInitBaseClass { public: void Initialise(long size); };   // 0x009F4910
+class CScratchBuffer : public CInitBaseClass { public: bool Initialise(long size); };   // 0x009F4910
 struct _RTL_CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 extern "C" __declspec(dllimport) void* __stdcall ConvertThreadToFiber(void* parameter);              // [0x0143FD68]
 extern "C" __declspec(dllimport) long __stdcall CoInitialize(void* reserved);                        // [0x01440644]

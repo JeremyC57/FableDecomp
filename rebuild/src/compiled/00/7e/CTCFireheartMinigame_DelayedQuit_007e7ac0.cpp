@@ -38,7 +38,7 @@ public:
 class CFontBank;
 class CSubtitleRenderer {
 public:
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2);   // 0x00492F69
 };
 #include "engine/CCountedPointer.h"
@@ -110,7 +110,7 @@ void CTCFireheartMinigame::DelayedQuit()
         const CFireheartMinigameDef* def = PDef.operator->();
         CFontBank* font = CMainGameComponent::Get()->Font;
         CPlayerGui* gui = (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get());
-        gui->SubtitleRenderer.SetText(font, GetText(def->QuitText), empty, GetText(def->YesText), GetText(def->NoText),
+        gui->SubtitleRenderer.SetText(*font, GetText(def->QuitText), empty, GetText(def->YesText), GetText(def->NoText),
                                       0x1004, 0.0f, false, true);
     }
     {

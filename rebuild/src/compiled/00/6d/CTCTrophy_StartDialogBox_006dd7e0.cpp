@@ -26,10 +26,10 @@ class CWideString { public:
 };
 class CFontBank;
 class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, const CWideString& button3, unsigned long flags, float time, bool b1,
                  bool b2);                      // 0x00492973
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2);   // 0x00492F69
 };
 namespace NHeroInformationScreens {
@@ -85,9 +85,9 @@ void CTCTrophy::StartDialogBox(CWideString text, unsigned long flags, CWideStrin
     if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->ScreenActive)
         return;
     if (button3 != L"")
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L"", button1, button2, button3, flags, 0.0f, true, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, L"", button1, button2, button3, flags, 0.0f, true, true);
     else
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L"", button1, button2, flags, 0.0f, true, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, L"", button1, button2, flags, 0.0f, true, true);
     WaitingForConfirmation = true;
     if (!IsGlobalTC) {
         AddToGlobalTCs();

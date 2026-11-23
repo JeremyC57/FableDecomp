@@ -46,8 +46,8 @@ struct CTCBoastingArea : public CTCBase {
     EHeroWithinRadiusState HeroWithinRadiusState;   // +0x0c
     float   Radius;                                 // +0x10
     float   AnticipationRadius;                     // +0x14
-    void OnHeroEnteringArea(CThing* hero);          // 0x007827D0
-    void OnHeroLeavingArea(CThing* hero);           // 0x00782860
+    private: void OnHeroEnteringArea(CThing& hero);          // 0x007827D0
+    void OnHeroLeavingArea(CThing& hero); public:   // 0x00782860
     void FrameUpdate();
     CThing* GetThing() const { return Thing; }
 };
@@ -67,7 +67,7 @@ void CTCBoastingArea::FrameUpdate()
             return;
         if (inRadius) {
             HeroWithinRadiusState = HERO_IN_RADIUS;
-            OnHeroEnteringArea(hero);
+            OnHeroEnteringArea(*hero);
             return;
         }
         HeroWithinRadiusState = HERO_IN_ANTICIPATION;
@@ -84,7 +84,7 @@ void CTCBoastingArea::FrameUpdate()
         }
         if (inRadius) {
             HeroWithinRadiusState = HERO_IN_RADIUS;
-            OnHeroEnteringArea(hero);
+            OnHeroEnteringArea(*hero);
         }
         return;
     case HERO_IN_RADIUS:
@@ -92,10 +92,10 @@ void CTCBoastingArea::FrameUpdate()
             return;
         if (inAnticipation) {
             HeroWithinRadiusState = HERO_IN_ANTICIPATION;
-            OnHeroLeavingArea(hero);
+            OnHeroLeavingArea(*hero);
         } else {
             HeroWithinRadiusState = HERO_OUTSIDE;
-            OnHeroLeavingArea(hero);
+            OnHeroLeavingArea(*hero);
         }
         return;
     }

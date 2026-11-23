@@ -42,7 +42,7 @@ class CRGBColour { public:
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 struct CRenderManager2D {
-    bool Draw3DScaledText(const C3DVector& position, float scale, CWideString text, CFontBank* font,
+    bool Draw3DScaledText(const C3DVector& position, float scale, CWideString text, const CFontBank& font,
                           const CRGBColour& colour, unsigned long flags);                 // 0x009DBFF0
 };
 class CDisplayManager { public:
@@ -122,12 +122,12 @@ void CIMEFont::DrawTextW(const unsigned short* text)
         CRGBColour shadow(0, 0, 0, Colour.A);
         C3DVector shadowPosition3(shadowPosition.X, shadowPosition.Y, 0.0f);
         CRenderManager2D* renderManager = GFGetSystemManager()->DisplayManager->RenderManager2D;
-        renderManager->Draw3DScaledText(shadowPosition3, scale, wideText, font.Data, shadow, 0);
+        renderManager->Draw3DScaledText(shadowPosition3, scale, wideText, *font.Data, shadow, 0);
     }
     {
         C3DVector position3(position.X, position.Y, 0.0f);
         CRenderManager2D* renderManager = GFGetSystemManager()->DisplayManager->RenderManager2D;
-        renderManager->Draw3DScaledText(position3, scale, wideText, font.Data, Colour, 0);
+        renderManager->Draw3DScaledText(position3, scale, wideText, *font.Data, Colour, 0);
     }
 }
 }

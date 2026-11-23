@@ -29,7 +29,7 @@ class CMeshIntersectionData { public: unsigned char _body[0x1c]; };
 class CPhysicsMeshObject { public:
     unsigned char _body[0x40 - 4];
     virtual ~CPhysicsMeshObject();                         // 0x00A127D0
-    bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* data);   // 0x00A12450
+    bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;   // 0x00A12450
 };
 struct CTCPhysicsBase {                           // vtable view: slot 93 (+0x174)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -92,7 +92,7 @@ bool CAIStateGroup_CreatureUseCoverBase::CanSeeTarget()
             C3DVector to(target.X, target.Y, target.Z + 1.2f);
             CTCPhysicsBase* physics = PCoverThing.Get()->GetPhysicsTC();
             CMeshIntersectionData data;
-            bool blocked = physics->GetPhysicsMeshObject().GetPointIntersectionFromTo(&from, &to, &data);
+            bool blocked = physics->GetPhysicsMeshObject().GetPointIntersectionFromTo(from, to, data);
             if (blocked)
                 return false;
         }

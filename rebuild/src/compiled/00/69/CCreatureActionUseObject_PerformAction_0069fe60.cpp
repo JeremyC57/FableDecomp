@@ -46,7 +46,7 @@ class CTCEntityEvents { public:
     void AddEvent(NEntityEvents::CEventBase* event);           // 0x008113C0
 };
 class CTCActionUseScriptedHook { public:               // interface type 0xC2
-    void OnActionUse(CThing* user);             // 0x00729B20
+    void OnActionUse(CThing& user);             // 0x00729B20
 };
 struct CTCActionUse {                           // interface type 0xD
 #define VF(n) virtual void v##n();
@@ -78,7 +78,7 @@ void CCreatureAction_UseObject::PerformAction()
         ((CThing*)PUsedThing.GetPItem());
     CThing* usedThing = ((CThing*)PUsedThing.GetPItem());
     if (usedThing->HasTC(TCI_ACTION_USE_SCRIPTED_HOOK)) {
-        ((CTCActionUseScriptedHook*)&usedThing->GetTC(TCI_ACTION_USE_SCRIPTED_HOOK))->OnActionUse(((CThing*)PCreature.GetPItem()));
+        ((CTCActionUseScriptedHook*)&usedThing->GetTC(TCI_ACTION_USE_SCRIPTED_HOOK))->OnActionUse(*((CThing*)PCreature.GetPItem()));
         return;
     }
     CTCActionUse* actionUse;

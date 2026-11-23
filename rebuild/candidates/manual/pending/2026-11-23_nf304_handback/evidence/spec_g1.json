@@ -1,0 +1,258 @@
+{
+ "006b8640": [
+  [
+   "struct CRadialBlurParams { CRGBFloatColour ThresholdColour,IntensityColour; float Length,Fade,Range,Twist; };\nstruct CRadialBlurPositionParams { C3DVector AreaCenter,BlurCenter; long AreaTrackPos,BlurTrackPos; };\nstruct CScreenFilterParams { float Alpha,Saturation,Contrast,Brightness; CRGBFloatColour Tint; };\nclass CEnvironmentSpellEffectInterface { public:\n",
+   "class CEnvironmentSpellEffectInterface { public:\n struct CRadialBlurParams { CRGBFloatColour ThresholdColour,IntensityColour; float Length,Fade,Range,Twist; };\n struct CRadialBlurPositionParams { C3DVector AreaCenter,BlurCenter; long AreaTrackPos,BlurTrackPos; };\n struct CScreenFilterParams { float Alpha,Saturation,Contrast,Brightness; CRGBFloatColour Tint; };\n",
+   1
+  ],
+  [
+   " CRadialBlurParams CurrentRadialBlurParams;\n",
+   " CEnvironmentSpellEffectInterface::CRadialBlurParams CurrentRadialBlurParams;\n",
+   1
+  ],
+  [
+   " CRadialBlurPositionParams CurrentRadialBlurPosParams;\n",
+   " CEnvironmentSpellEffectInterface::CRadialBlurPositionParams CurrentRadialBlurPosParams;\n",
+   1
+  ],
+  [
+   " CScreenFilterParams CurrentScreenFilterParam;\n",
+   " CEnvironmentSpellEffectInterface::CScreenFilterParams CurrentScreenFilterParam;\n",
+   1
+  ],
+  [
+   " CRadialBlurParams GetCurrentRadialBlurParams() const",
+   " CEnvironmentSpellEffectInterface::CRadialBlurParams GetCurrentRadialBlurParams() const",
+   1
+  ],
+  [
+   " CRadialBlurPositionParams GetCurrentRadialBlurPositionParams() const",
+   " CEnvironmentSpellEffectInterface::CRadialBlurPositionParams GetCurrentRadialBlurPositionParams() const",
+   1
+  ],
+  [
+   " CScreenFilterParams GetCurrentScreenFilterParams() const",
+   " CEnvironmentSpellEffectInterface::CScreenFilterParams GetCurrentScreenFilterParams() const",
+   1
+  ]
+ ],
+ "00aeb990": [
+  [
+   "\nnamespace NParticleEngine {\n\nclass CIEngine;\n",
+   "\nclass CIEngine;\nnamespace NParticleEngine {\n\n",
+   1
+  ]
+ ],
+ "00668ab0": [
+  [
+   "const C3DVector& to, CMeshIntersectionData* out);   // 0x00A12450",
+   "const C3DVector& to, CMeshIntersectionData& out) const;   // 0x00A12450",
+   1
+  ],
+  [
+   "GetPointIntersectionFromTo(*From, *To, &data)",
+   "GetPointIntersectionFromTo(*From, *To, data)",
+   1
+  ]
+ ],
+ "0063e950": [
+  [
+   "const C3DVector& to, CMeshIntersectionData* out);   // 0x00A12450",
+   "const C3DVector& to, CMeshIntersectionData& out) const;   // 0x00A12450",
+   1
+  ],
+  [
+   "GetPointIntersectionFromTo(from, to, &data)",
+   "GetPointIntersectionFromTo(from, to, data)",
+   1
+  ]
+ ],
+ "00875e60": [
+  [
+   "bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* out) const;",
+   "bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& out) const;",
+   1
+  ],
+  [
+   "GetPointIntersectionFromTo(&from, &to, &data)",
+   "GetPointIntersectionFromTo(from, to, data)",
+   1
+  ]
+ ],
+ "00970790": [
+  [
+   "bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* data);",
+   "bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;",
+   1
+  ],
+  [
+   "GetPointIntersectionFromTo(&from, &to, &data)",
+   "GetPointIntersectionFromTo(from, to, data)",
+   1
+  ]
+ ],
+ "00449e60": [
+  [
+   "struct CPlayerSave {                                   // Ego_r.pdb (16 bytes)",
+   "namespace NPlayerManager { class CPlayerSave { public:  // Ego_r.pdb (16 bytes): NPlayerManager::CPlayerSave, class key V (NF304)",
+   1
+  ],
+  [
+   "    CCharString      RegionName;                       // +0x08\n};",
+   "    CCharString      RegionName;                       // +0x08\n}; }",
+   1
+  ],
+  [
+   "bool InitCharacterFromSave(CPlayerSave* save);",
+   "bool InitCharacterFromSave(const NPlayerManager::CPlayerSave& save);",
+   1
+  ],
+  [
+   "    CPlayerSave save;\n",
+   "    NPlayerManager::CPlayerSave save;\n",
+   1
+  ],
+  [
+   "InitCharacterFromSave(&save);",
+   "InitCharacterFromSave(save);",
+   1
+  ]
+ ],
+ "00449cb0": [
+  [
+   "struct CPlayer {\n",
+   "class CPlayer { public:\n",
+   1
+  ],
+  [
+   "bool SwitchPlayerCharactersWith(CPlayer* other);",
+   "bool SwitchPlayerCharactersWith(CPlayer& other);",
+   1
+  ],
+  [
+   "    CPlayer* GetPlayer(long player);",
+   "    CPlayer& GetPlayer(long player);",
+   1
+  ],
+  [
+   "        CPlayer* newPlayer = GetPlayer(player);\n        CPlayer* oldPlayer = GetPlayer(MainPlayer);\n        MainPlayer = newPlayer->Number;\n        if (!newPlayer->SwitchPlayerCharactersWith(oldPlayer))\n            MainPlayer = oldPlayer->Number;\n        if (oldPlayer->GetPControlledCreature())\n            ((CThing*)(oldPlayer->GetPControlledCreature()))->Kill(true);",
+   "        CPlayer& newPlayer = GetPlayer(player);\n        CPlayer& oldPlayer = GetPlayer(MainPlayer);\n        MainPlayer = newPlayer.Number;\n        if (!newPlayer.SwitchPlayerCharactersWith(oldPlayer))\n            MainPlayer = oldPlayer.Number;\n        if (oldPlayer.GetPControlledCreature())\n            ((CThing*)(oldPlayer.GetPControlledCreature()))->Kill(true);",
+   1
+  ]
+ ],
+ "00487fb0": [
+  [
+   "    CPlayerGui(CMainGameComponent* component, CWorld* world, CGamePlayerInterface* playerInterface,\n               CPlayerManager* playerManager, CGraphicDataBank* bank);",
+   "    CPlayerGui(const CMainGameComponent& component, CWorld& world, CGamePlayerInterface& playerInterface,\n               CPlayerManager& playerManager, const CGraphicDataBank& bank);",
+   1
+  ],
+  [
+   "new CPlayerGui(Component, World, playerInterface = PlayerInterface, PlayerManager,\n                                         bank = reinterpret_cast<CMainGameComponentBank*>(Component)->GraphicDataBank));",
+   "new CPlayerGui(*Component, *World, *(playerInterface = PlayerInterface), *PlayerManager,\n                                         *(bank = reinterpret_cast<CMainGameComponentBank*>(Component)->GraphicDataBank)));",
+   1
+  ]
+ ],
+ "00713850": [
+  [
+   "void OnEntityInterrupted(CThing* thing);",
+   "void OnEntityInterrupted(CThing& thing);",
+   1
+  ],
+  [
+   "OnEntityInterrupted(ParentThing);",
+   "OnEntityInterrupted(*ParentThing);",
+   1
+  ]
+ ],
+ "00bfd0b0": [
+  [
+   "long Compress(void* data, long count, long stride, CArray<unsigned char>* output);",
+   "long Compress(const void* data, long count, long stride, CArray<unsigned char>& output);",
+   1
+  ],
+  [
+   "compressor.Compress(data, verts.Count, sizeof(T), &buffer);",
+   "compressor.Compress(data, verts.Count, sizeof(T), buffer);",
+   1
+  ]
+ ],
+ "00bfd670": [
+  [
+   "long Compress(void* data, long count, long stride, CArray<unsigned char>* output);",
+   "long Compress(const void* data, long count, long stride, CArray<unsigned char>& output);",
+   1
+  ],
+  [
+   "compressor.Compress(vertices, VertexCount, stride, &buffer);",
+   "compressor.Compress(vertices, VertexCount, stride, buffer);",
+   1
+  ],
+  [
+   "compressor.Compress(indices, PolyCount * 3, 2, &buffer);",
+   "compressor.Compress(indices, PolyCount * 3, 2, buffer);",
+   1
+  ]
+ ],
+ "00405020": [
+  [
+   "CWideString text, CFontBank* font,",
+   "CWideString text, const CFontBank& font,",
+   1
+  ],
+  [
+   "wideText, font.Data, shadow, 0);",
+   "wideText, *font.Data, shadow, 0);",
+   1
+  ],
+  [
+   "wideText, font.Data, Colour, 0);",
+   "wideText, *font.Data, Colour, 0);",
+   1
+  ]
+ ],
+ "0041a980": [
+  [
+   "const C2DBoxF& box, CGraphicDataBank* bank, unsigned long graphic,",
+   "const C2DBoxF& box, const CGraphicDataBank& bank, unsigned long graphic,",
+   1
+  ],
+  [
+   "Draw2DScaledGraphic(box, bank.Data, GraphicIndex, 0, 0);",
+   "Draw2DScaledGraphic(box, *bank.Data, GraphicIndex, 0, 0);",
+   1
+  ]
+ ],
+ "009ead60": [
+  [
+   "const CRGBColour& colour, long flags); // 0x009DE3F0",
+   "const CRGBColour& colour, unsigned long flags); // 0x009DE3F0",
+   1
+  ]
+ ],
+ "00a10dc0": [
+  [
+   "    CRenderTarget(\n        const CSurface& primary,\n        const CSurface& secondary);",
+   "    CRenderTarget(\n        CSurface& primary,\n        CSurface& secondary);",
+   1
+  ],
+  [
+   "CRenderTarget::CRenderTarget(\n    const CSurface& primary,\n    const CSurface& secondary)",
+   "CRenderTarget::CRenderTarget(\n    CSurface& primary,\n    CSurface& secondary)",
+   1
+  ]
+ ],
+ "00b87680": [
+  [
+   "CRenderTarget(const CSurface& colour, const CSurface& depth);   // 0x00A10DC0",
+   "CRenderTarget(CSurface& colour, CSurface& depth);   // 0x00A10DC0",
+   1
+  ]
+ ],
+ "00b89a20": [
+  [
+   "CRenderTarget(const CSurface& colour, const CSurface& depth);   // 0x00A10DC0",
+   "CRenderTarget(CSurface& colour, CSurface& depth);   // 0x00A10DC0",
+   1
+  ]
+ ]
+}

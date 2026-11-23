@@ -25,9 +25,9 @@ class CSurface { public:
     void*         PD3DSurface;                  // +0x04
     unsigned long AllocationSource;             // +0x08
     void*         PAllocatedMemory;             // +0x0c
-    bool InitialiseAsImage(const C2DExtentsI* size, const CPixelFormat* format, bool a);   // 0x009F3230
-    void SetPixel(long x, long y, const CRGBColour* colour);                               // 0x009F4120
-    bool SaveAsTGA(const CWideString* filename, const C2DExtentsI* size, bool a);          // 0x009F4590
+    bool InitialiseAsImage(const C2DExtentsI& size, const CPixelFormat& format, bool a);   // 0x009F3230
+    void SetPixel(long x, long y, const CRGBColour& colour);                               // 0x009F4120
+    bool SaveAsTGA(const CWideString& filename, const C2DExtentsI* size, bool a) const;          // 0x009F4590
 };
 struct MinimapTheme {
     long ThemeIndex;
@@ -60,11 +60,11 @@ void CMinimapData::BuildMinimapTGA(const CWideString& filename)
     format.Initialise(8, 8, 8, 8, true);
     C2DExtentsI size(width, height);
     CSurface* surface = &MinimapSurface;
-    surface->InitialiseAsImage(&size, &format, false);
+    surface->InitialiseAsImage(size, format, false);
     for (long y = 0; y < height; ++y)
         for (long x = 0; x < width; ++x) {
             CRGBColour colour = ColourMinimapTheme[MinimapThemeList[MinimapExtents.X * y + x].ThemeIndex];
-            surface->SetPixel(x, y, &colour);
+            surface->SetPixel(x, y, colour);
         }
-    surface->SaveAsTGA(&filename, 0, false);
+    surface->SaveAsTGA(filename, 0, false);
 }

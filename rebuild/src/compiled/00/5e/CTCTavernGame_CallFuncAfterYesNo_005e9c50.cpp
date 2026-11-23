@@ -30,7 +30,7 @@ public:
 class CFontBank;
 class CSubtitleRenderer {
 public:
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2);   // 0x00492F69
 };
 #include "engine/CCountedPointer.h"
@@ -88,7 +88,7 @@ class CTCTavernGame { public:
 
 void CTCTavernGame::CallFuncAfterYesNo(CWideString text, CWideString yesText, TTavernGameFunc yesFunc, CWideString noText, TTavernGameFunc noFunc)
 {
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L"", yesText, noText, 0x84, 0.0f, false, true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, L"", yesText, noText, 0x84, 0.0f, false, true);
     {
         CGameEvent event(9);
         event.AddBOOL(false);

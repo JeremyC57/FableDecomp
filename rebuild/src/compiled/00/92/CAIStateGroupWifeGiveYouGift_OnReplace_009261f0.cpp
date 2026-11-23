@@ -123,7 +123,7 @@ private: public:
     CFontBank* PSubtitleFont;                           // +0x1614c
 };
 class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CWideString* text, unsigned long colour, float time, bool a, bool b);   // 0x00492E4B
+    void SetText(const CFontBank& font, const CWideString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492E4B
 };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -174,7 +174,7 @@ void CAIStateGroup_WifeGiveYouGift::OnReplace()
     item->AddToInventory(*(NInventory::CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
     CWideString text = CMainGameComponent::Get()->PTextBank->GetTextBySymbol("TEXT_GUI_WIFE_GIVEN_YOU_GIFT");
     NGameText::ConstructString(text, item->GetDescription());
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(CMainGameComponent::Get()->PSubtitleFont, &text, 0x122, 0.0f, false, true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*CMainGameComponent::Get()->PSubtitleFont, text, 0x122, 0.0f, false, true);
     if (PBrain->PCreature->HasTC(0xd7))
         ((CTCWife*)PBrain->PCreature->GetTC(0xd7))->GiftState = 0;
 }

@@ -1,0 +1,36 @@
+##### 006b8640 renames: ??0CRadialBlurPositionParams@@QAE@ABU0@@Z=??0CRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAE@ABU01@@Z ?GetCurrentRadialBlurParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurParams@@XZ=?GetCurrentRadialBlurParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurParams@CEnvironmentSpellEffectInterface@@XZ ?GetCurrentRadialBlurPositionParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurPositionParams@@XZ=?GetCurrentRadialBlurPositionParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@XZ ?GetCurrentScreenFilterParams@CScreenEffectPriorityStack@@QBE?AUCScreenFilterParams@@XZ=?GetCurrentScreenFilterParams@CScreenEffectPriorityStack@@QBE?AUCScreenFilterParams@CEnvironmentSpellEffectInterface@@XZ ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@@_N@Z=?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@@_N@Z=?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z ?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@@_N@Z=?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@1@_N@Z
+ALL_EQ sections=8 DEF=7 tables=-
+##### 00aeb990 renames: ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@2@@Z=?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@@@Z
+ALL_EQ sections=16 DEF=15 tables=-
+##### 00668ab0 renames: ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NABVC3DVector@@0PAVCMeshIntersectionData@@@Z=?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+ALL_EQ sections=6 DEF=5 tables=-
+##### 0063e950 renames: ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NABVC3DVector@@0PAVCMeshIntersectionData@@@Z=?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+ALL_EQ sections=17 DEF=16 tables=-
+##### 00875e60 renames: ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NPBVC3DVector@@0PAVCMeshIntersectionData@@@Z=?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+ALL_EQ sections=7 DEF=6 tables=-
+##### 00970790 renames: ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NPBVC3DVector@@0PAVCMeshIntersectionData@@@Z=?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+ALL_EQ sections=8 DEF=7 tables=-
+##### 00449e60 renames: ??0CPlayerSave@@QAE@XZ=??0CPlayerSave@NPlayerManager@@QAE@XZ ??1CPlayerSave@@QAE@XZ=??1CPlayerSave@NPlayerManager@@QAE@XZ ?InitCharacterFromSave@CPlayer@@QAE_NPAUCPlayerSave@@@Z=?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+ALL_EQ sections=10 DEF=9 tables=-
+##### 00449cb0 renames: ?GetPlayer@CPlayerManager@@QAEPAUCPlayer@@J@Z=?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z ?SwitchPlayerCharactersWith@CPlayer@@QAE_NPAU1@@Z=?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 00487fb0 renames: ??0CPlayerGui@@QAE@PAVCMainGameComponent@@PAVCWorld@@PAVCGamePlayerInterface@@PAVCPlayerManager@@PAVCGraphicDataBank@@@Z=??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z
+ALL_EQ sections=5 DEF=4 tables=-
+##### 00713850 renames: ?OnEntityInterrupted@CQuestManager@@QAEXPAVCThing@@@Z=?OnEntityInterrupted@CQuestManager@@QAEXAAVCThing@@@Z
+ALL_EQ sections=13 DEF=12 tables=??_7CIntelligentPointer@@6B@
+##### 00bfd0b0 renames: ?Compress@CRangeCompressor@@QAEJPAXJJPAV?$CArray@E@@@Z=?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z
+ALL_EQ sections=6 DEF=5 tables=-
+##### 00bfd670 renames: ?Compress@CRangeCompressor@@QAEJPAXJJPAV?$CArray@E@@@Z=?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z
+ALL_EQ sections=7 DEF=6 tables=-
+##### 00405020 renames: ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@PAVCFontBank@@ABVCRGBColour@@K@Z=?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+ALL_EQ sections=21 DEF=20 tables=-
+##### 0041a980 renames: ?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@PAVCGraphicDataBank@@KKK@Z=?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z
+ALL_EQ sections=8 DEF=7 tables=-
+##### 009ead60 renames: ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@J@Z=?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z
+ALL_EQ sections=16 DEF=15 tables=-
+##### 00a10dc0 renames: ??0CRenderTarget@@QAE@ABVCSurface@@0@Z=??0CRenderTarget@@QAE@AAVCSurface@@0@Z
+ALL_EQ sections=5 DEF=4 tables=??_7CRenderTarget@@6B@,??_7CSurface@@6B@
+##### 00b87680 renames: ??0CRenderTarget@@QAE@ABVCSurface@@0@Z=??0CRenderTarget@@QAE@AAVCSurface@@0@Z
+ALL_EQ sections=15 DEF=14 tables=??_7CRenderTarget@@6B@,??_7CSurface@@6B@
+##### 00b89a20 renames: ??0CRenderTarget@@QAE@ABVCSurface@@0@Z=??0CRenderTarget@@QAE@AAVCSurface@@0@Z
+ALL_EQ sections=15 DEF=14 tables=??_7CRenderTarget@@6B@,??_7CSurface@@6B@

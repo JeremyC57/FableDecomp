@@ -11,14 +11,14 @@
 // two 0.0f arguments are immediates, the component is re-read for the HideComponent call, and the base OnActivate is the
 // shared tail of both paths (`jmp`).
 // Leaf: OnActivate@CRedefinerList
-namespace NUISystem {
 
-struct C2DVector {
+
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
-};
+}; namespace NUISystem {
 
 class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
@@ -37,7 +37,7 @@ struct CGuiControl_005570f0 {                           // the control base (vpt
 
 class CScrollableList : public CListRoot_005570f0, public CGuiControl_005570f0 { public:
     unsigned char _body[0x174];                         // +0x008 .. +0x17b
-    void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440
+    protected: void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha); public:   // 0x00555440
     void OnActivate();                                  // 0x00556200
 };
 

@@ -35,7 +35,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public:
-    void OnEntityInterrupted(CThing* thing);        // 0x004AFBB0
+    void OnEntityInterrupted(CThing& thing);        // 0x004AFBB0
 };
 
 namespace std {
@@ -84,7 +84,7 @@ void CTCScriptedControl::InterruptControl()
     if (action && action->Activated)
         action->Exit();
     PActionList.clear();
-    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnEntityInterrupted(ParentThing);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnEntityInterrupted(*ParentThing);
     PScriptHandleImp = CIntelligentPointer(0);
     Locked = false;
 }
