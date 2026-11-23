@@ -1,3 +1,4 @@
+// Leaf: ?IsDecapitatingAttack@CCombatActionBase@@MBE_NXZ
 // CCombatActionBase::IsDecapitatingAttack() const -- the melee ability can decapitate; a berserk creature (flag 0x10) additionally asks its CTCBerserk interface
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00857CB0, length 92 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, `add ecx,8` in place), CVectorMap
@@ -73,7 +74,9 @@ class CCombatActionBase { public:
     unsigned char _pad10[0xb8 - 0x10];          // +0x10
     CMeleeCombatAbilityDef* PMeleeAbilityDef;   // +0xb8 (CCountedPointer, raw pointer used)
     unsigned char _padbc[0x114 - 0xbc];         // +0xbc
-    bool IsDecapitatingAttack() const;
+    protected:
+    virtual bool IsDecapitatingAttack() const;
+    public:
 };
 
 bool CCombatActionBase::IsDecapitatingAttack() const

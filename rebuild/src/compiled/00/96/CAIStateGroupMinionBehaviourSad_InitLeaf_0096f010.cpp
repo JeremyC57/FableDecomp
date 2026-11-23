@@ -1,13 +1,14 @@
+// Leaf: ?InitLeaf@CAIStateGroup_MinionBehaviourSad@@UAEXXZ
 class CAIStateGroup_MinionBehaviourSad
 {
 public:
-    char pad_0000[0x3c];
+    char pad_0000[0x38];
     unsigned char m_flag3c;
     unsigned char m_flag3d;
     unsigned char pad_3e[2];
     unsigned long m_field40;
 
-    void InitLeaf();
+    virtual void InitLeaf();
 };
 
 void CAIStateGroup_MinionBehaviourSad::InitLeaf()

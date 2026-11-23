@@ -1,3 +1,4 @@
+// Leaf: ?FrameStart@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEXXZ
 // CEnginePrimitiveManagerRepeatedStaticMeshes::FrameStart() -- point the four current-buffer pointers (+0x80..+0x8c) at the shadow buffer pairs (+0x60..+0x78) when the render settings' mode at +0x334 is 2, else at the normal pairs (+0x40..+0x58); then the common frame start
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B99B50, length 96 bytes.
 // Callees: the common frame start @ 0x00B99860 (a tail jump from both arms; the manifest label "engine_copy_global_transform_to_array" is propagated). Globals: the
@@ -13,12 +14,12 @@ namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   
 struct SMeshBuffer { void* m_pA; void* m_pB; };   // 8 bytes
 
 class CEnginePrimitiveManagerRepeatedStaticMeshes { public:
-    unsigned char _pad[0x40];
+    unsigned char _pad[0x3c];
     SMeshBuffer   m_normal[4];                     // +0x40 .. +0x60
     SMeshBuffer   m_shadow[4];                     // +0x60 .. +0x80
     SMeshBuffer*  m_pCurrent[4];                   // +0x80 .. +0x90
     private: void CalcFrameConstantSIMDVars(); public:                       // 0x00B99860; NF296: PDB name, was FrameStartCommon
-    void FrameStart();
+    virtual void FrameStart();
 };
 
 void CEnginePrimitiveManagerRepeatedStaticMeshes::FrameStart()

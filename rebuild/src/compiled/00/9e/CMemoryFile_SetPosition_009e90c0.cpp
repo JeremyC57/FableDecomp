@@ -1,3 +1,4 @@
+// Leaf: ?SetPosition@CMemoryFile@@UAEXJ@Z
 // CMemoryFile::SetPosition(long) -- seek; a position past the end builds an error message and throws a CBBBFileException (type 11)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E90C0, 128 bytes (padding included).
 // Shape: `position > Length` (+0xc, signed) takes the error path: an explicit CCharString temporary
@@ -41,7 +42,7 @@ class CMemoryFile { public:
     long          AccessType;                       // +0x04
     long          Position;                         // +0x08
     long          Length;                           // +0x0c
-    void SetPosition(long position);
+    virtual void SetPosition(long position);
 };
 
 void CMemoryFile::SetPosition(long position)

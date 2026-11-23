@@ -1,3 +1,4 @@
+// Leaf: ?SetActivationTriggerStatus@CGameScriptThing@@UAEX_N@Z
 // CGameScriptThing::SetActivationTriggerStatus(bool) -- forwards the flag to virtual slot 28 (+0x70) of the scripted thing's kind-0x66 component when the thing is alive
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D0A40, length 128 bytes (padded).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three calls), the non-const component-map LowerBound @ 0x0040F020 (kind 0x66),
@@ -89,10 +90,9 @@ struct CTCActivationTrigger_Retail {
     virtual void SetStatus(bool status);           // slot 28 (+0x70)
 };
 class CGameScriptThing { public:
-    void*                   m_pVtbl;               // +0x00
-    unsigned char           _pad04[8];
+        unsigned char           _pad04[8];
     CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>
-    void SetActivationTriggerStatus(bool status);
+    virtual void SetActivationTriggerStatus(bool status);
 };
 
 void CGameScriptThing::SetActivationTriggerStatus(bool status)

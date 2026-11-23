@@ -1,3 +1,4 @@
+// Leaf: ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
 // CAIStateGroupBase::Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name) -- binds the state group to its brain, records priorities and name, then InitStateGroup
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FCEC0, length 68 bytes.
 // Callees: CCharString::operator=(const CCharString&) @ 0x0099EFB0 (landed-trusted), then the
@@ -40,7 +41,7 @@ class CAIStateGroupBase { public:                  // vptr +0x00
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();
     virtual void InitStateGroup(CThingAIManager* manager, CThingAICreature& creature);   // slot 13 (+0x34)
-    void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name);
+    virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name);
 };
 
 void CAIStateGroupBase::Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name)

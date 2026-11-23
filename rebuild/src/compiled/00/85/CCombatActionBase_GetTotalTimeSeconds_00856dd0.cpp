@@ -1,3 +1,4 @@
+// Leaf: ?GetTotalTimeSeconds@CCombatActionBase@@UBEMXZ
 // CCombatActionBase::GetTotalTimeSeconds() const -- total time of the animation entry's animation from the creature's animation bank
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00856DD0, length 31 bytes.
 // Callees: CCreatureActionBase::GetPCreatureAnimationOwner @ 0x00692950 (`add ecx,8 ; call GetPItem ; jmp
@@ -33,7 +34,7 @@ class CCombatActionBase { public:
     CAnimationEntry* PAnimEntry;                // +0x74
     unsigned char _pad78[0x114 - 0x78];         // +0x78
     CAnimationOwner* GetPCreatureAnimationOwner() const;   // 0x00692950 (CCreatureActionBase)
-    float GetTotalTimeSeconds() const;
+    virtual float GetTotalTimeSeconds() const;
 };
 
 float CCombatActionBase::GetTotalTimeSeconds() const

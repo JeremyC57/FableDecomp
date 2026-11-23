@@ -1,5 +1,5 @@
 // CPersistContext::IsSaving() -- true (as a full-register long) when the context writes: Mode 1 (text save) or Mode 3 (binary save)
-// Leaf: IsSaving
+// Leaf: ?IsSaving@CPersistContext@@QBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AEF50, length 22 bytes.
 // Callees: none. The catalog label "IsBinary" is propagated/misread: the constructors (0x009BAE10 Mode 1 + PStringToSaveTo,
 // 0x009BAE30 Mode 2 + PLoadStream, 0x009BAE50 Mode 3 + PSaveStream, 0x009BADD0 Mode 0 + PParser) make modes 1 and 3 the two
@@ -30,10 +30,10 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
 
-    long IsSaving() const;
+    bool IsSaving() const;
 };
 
-long CPersistContext::IsSaving() const
+bool CPersistContext::IsSaving() const
 {
     return Mode == 1 || Mode == 3;
 }

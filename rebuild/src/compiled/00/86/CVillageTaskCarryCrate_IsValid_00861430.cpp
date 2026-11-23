@@ -1,5 +1,5 @@
 // CVillageTaskCarryCrate::IsValid() -- the task still makes sense: the crate stack thing exists and has crates to pick up (Pickup), or room for one more (fewer than 2) when dropping off
-// Leaf: ?IsValid@CVillageTaskCarryCrate@@
+// Leaf: ?IsValid@CVillageTaskCarryCrate@@UBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00861430, length 121 bytes (padded to 128).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2, on PCrateStack +0x10), CVectorMap<ETCInterfaceType,
@@ -61,10 +61,10 @@ class CVillageTaskCarryCrate { public:                    // engine/CVillageTask
     CIntelligentPointer<CThing> PCrateStack;           // +0x10 CIntelligentPointer<CThing>
     bool                    Pickup;                // +0x18
     long                    Priority;              // +0x1c
-    bool IsValid();
+    virtual bool IsValid() const;
     bool IsCreatureValidForTask(CThing* creature);
 };
-bool CVillageTaskCarryCrate::IsValid()
+bool CVillageTaskCarryCrate::IsValid() const
 {
     if (PCrateStack.GetPItem() == 0)
         return false;

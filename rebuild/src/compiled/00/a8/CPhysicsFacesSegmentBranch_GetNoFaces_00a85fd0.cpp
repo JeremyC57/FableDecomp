@@ -1,3 +1,4 @@
+// Leaf: ?GetNoFaces@CPhysicsFacesSegmentBranch@@MBEJXZ
 // CPhysicsFacesSegmentBranch::GetNoFaces  @ 0x00a85fd0
 // long __fastcall (this)
 // Sums GetNoFaces() (virtual slot 2, vtable+8) of two child segment pointers.
@@ -11,14 +12,16 @@ struct CPhysicsFacesSegmentBase
 
 struct CPhysicsFacesSegmentBranch
 {
-	char pad[0x14];
+	char pad[0x10];
 	CPhysicsFacesSegmentBase* PositiveChild;  // +0x14
 	CPhysicsFacesSegmentBase* NegativeChild;  // +0x18
 
-	long GetNoFaces();
+	protected:
+	virtual long GetNoFaces() const;
+	public:
 };
 
-long CPhysicsFacesSegmentBranch::GetNoFaces()
+long CPhysicsFacesSegmentBranch::GetNoFaces() const
 {
 	return this->PositiveChild->GetNoFaces() + this->NegativeChild->GetNoFaces();
 }

@@ -1,3 +1,4 @@
+// Leaf: ?GetTotalMemoryAllocated@CMemoryAllocatorVariableSize@@UAEKXZ
 // CMemoryAllocatorVariableSize::GetTotalMemoryAllocated() -- publish the alignment globals, then sum over every chunk: its allocated area headers (count x aligned sizeof(CMemoryArea)), its aligned chunk header and the payload sizes of its allocated areas
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A64DB0, length 100 bytes. No callees (vtable 0x0129DB1C slot 7).
 // Globals: current alignment shift 0x013D28D8, alignment 0x013D28D4.
@@ -32,12 +33,12 @@ struct CMemoryAreaChunk {
     CMemoryArea*      PFirstAllocatedArea;         // +0x30
 };
 class CMemoryAllocatorVariableSize { public:
-    unsigned char     _base[0xc14];                // vptr + CPerformanceStats
+    unsigned char _base[0xc10];                // vptr + CPerformanceStats
     unsigned long     Alignment;                   // +0xc14
     unsigned long     AlignmentShift;              // +0xc18
     CMemoryAreaChunk* PFirstChunk;                 // +0xc1c
     static FABLE_FORCEINLINE unsigned long AlignSize(unsigned long size) { return ((size + g_AllocatorAlignment - 1) >> g_AllocatorAlignmentShift) << g_AllocatorAlignmentShift; }
-    unsigned long GetTotalMemoryAllocated();
+    virtual unsigned long GetTotalMemoryAllocated();
 };
 
 unsigned long CMemoryAllocatorVariableSize::GetTotalMemoryAllocated()

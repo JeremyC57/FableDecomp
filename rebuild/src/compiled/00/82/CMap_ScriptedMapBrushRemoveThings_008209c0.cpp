@@ -1,3 +1,4 @@
+// Leaf: ?ScriptedMapBrushRemoveThings@CMap@@MAEXABVCScriptedMapBrush@@@Z
 // CMap::ScriptedMapBrushRemoveThings(const CScriptedMapBrush&) -- kill listed living things without immediate deletion.
 // Native008209C0 length193. Original PDB map/brush/thing method identities; typed native world/worldmap PMFs, no synthetic virtual padding.
 #include "fable_compiler.h"
@@ -54,11 +55,13 @@ class CWorld { public:
  FABLE_FORCEINLINE const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VTable)[13])();}
 };
 class CMap { public:
- unsigned char NativeMapPrefix[0x20];CWorld* World;
+ unsigned char NativeMapPrefix[0x1c];CWorld* World;
  unsigned char NativeRippleAndMapState[0x1d24-0x20-sizeof(CWorld*)];C2DCoordI WorldPos;
  FABLE_FORCEINLINE CWorld& GetWorld(){return *World;} // Named native member accessor projection.
  void ScriptedMapBrushAddThings(const CScriptedMapBrush&);
- void ScriptedMapBrushRemoveThings(const CScriptedMapBrush&);
+ protected:
+ virtual void ScriptedMapBrushRemoveThings(const CScriptedMapBrush&);
+ public:
 };
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(UIDNode)==16);

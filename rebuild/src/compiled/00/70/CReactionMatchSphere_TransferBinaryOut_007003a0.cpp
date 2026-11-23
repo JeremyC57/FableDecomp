@@ -9,7 +9,7 @@
 // Shape: the opinion set's inline writer (count as a long, then `WriteData(GetList(), Size() * 4)`) is reached
 // through `lea esi,[ebx+8]`; GetList() is the retail CArray accessor returning the array object itself when empty
 // (`test eax,eax ; ja ; mov ecx,esi`), as in the landed C3DMeshFileXTriangleStripChunk::WriteToFile.
-// Leaf: TransferBinaryOut
+// Leaf: ?TransferBinaryOut@CReactionMatch_Sphere@@UBEXAAVCDataOutputStream@@@Z
 class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
@@ -34,11 +34,10 @@ class COpinionSet { public:
 };
 
 struct CReactionMatch_Sphere {
-    void*       __vftable;                              // +0x00
-    long        ReactionType;                           // +0x04 CReactionMatch::ReactionType (EOpinionReactionType)
+        long        ReactionType;                           // +0x04 CReactionMatch::ReactionType (EOpinionReactionType)
     COpinionSet Centre;                                 // +0x08
     float       SqRadius;                               // +0x14
-    void TransferBinaryOut(CDataOutputStream& stream) const;
+    virtual void TransferBinaryOut(CDataOutputStream& stream) const;
 };
 
 void CReactionMatch_Sphere::TransferBinaryOut(CDataOutputStream& stream) const

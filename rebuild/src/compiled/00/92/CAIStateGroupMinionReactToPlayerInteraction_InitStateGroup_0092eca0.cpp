@@ -1,3 +1,4 @@
+// Leaf: ?InitStateGroup@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
 // CAIStateGroup_MinionReactToPlayerInteraction::InitStateGroup  @ 0x0092eca0
 // __fastcall(void) with (CWorld const&, CThingAICreature&) -> ret 8
 
@@ -6,7 +7,7 @@ class CThingAICreature;
 
 struct CAIStateGroup_MinionReactToPlayerInteraction
 {
-    char pad[0x14];
+    char pad[0x10];
     unsigned int m_14;
     unsigned int m_18;
     unsigned int m_1c;
@@ -16,7 +17,7 @@ struct CAIStateGroup_MinionReactToPlayerInteraction
     unsigned char m_2c;
     unsigned char m_2d;
 
-    void InitStateGroup(CWorld const& world, CThingAICreature& creature);
+    virtual void InitStateGroup(CWorld const& world, CThingAICreature& creature);
 };
 
 void CAIStateGroup_MinionReactToPlayerInteraction::InitStateGroup(

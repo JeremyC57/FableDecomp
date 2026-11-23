@@ -1,5 +1,5 @@
 // CClassFactory::GetClassNumberFromName(const CCharString& name) -- index of the used class type whose name equals `name`; otherwise builds "Unable to find class with name <name>" and throws CGenericException
-// Leaf: GetClassNumberFromName
+// Leaf: ?GetClassNumberFromName@CClassFactory@@IBEJABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A37060, 208 bytes incl. padding (ret 4).
 // Callees: Compare(const char*, const char*) @ 0x00411570 (__fastcall, in the inline CCharString ==),
 //          CCharString(const char*, long) @ 0x0099EBF0, operator+(const CCharString&, const char*) @ 0x0099F600,
@@ -58,10 +58,12 @@ class CClassFactory { public:
     CClassTypeInfo_Retail* ClassTypeInfo_end;   // +0x0C
     unsigned long          MaxClassTypeID;      // +0x10
     unsigned long          NoAllocatedClasses;  // +0x14
-    unsigned long GetClassNumberFromName(const CCharString& name);
+    protected:
+    long GetClassNumberFromName(const CCharString& name) const;
+    public:
 };
 
-unsigned long CClassFactory::GetClassNumberFromName(const CCharString& name)
+long CClassFactory::GetClassNumberFromName(const CCharString& name) const
 {
     unsigned long count = MaxClassTypeID;
     unsigned long i = 0;

@@ -1,3 +1,4 @@
+// Leaf: ?Copy@CSimVoicesDef@@UAEXPBVCDefClassBase@@@Z
 // Byte-exact reconstruction of CSimVoicesDef::Copy @ 0x0046311f
 // __fastcall void CSimVoicesDef::Copy(CDefClassBase const* src)
 // Authored as a real member function so VC7.1 emits __fastcall:
@@ -15,10 +16,10 @@ struct SubVoices {
 };
 
 class CSimVoicesDef { public:
-    char pad_base[0x3c];  // base region
+    char pad_base[0x38];  // base region
     SubVoices sub;        // at +0x3c
 
-    void Copy(CDefClassBase const* src);
+    virtual void Copy(CDefClassBase const* src);
 };
 
 void CSimVoicesDef::Copy(CDefClassBase const* src)

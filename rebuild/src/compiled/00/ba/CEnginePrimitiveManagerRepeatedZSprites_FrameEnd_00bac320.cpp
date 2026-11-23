@@ -1,3 +1,4 @@
+// Leaf: ?FrameEnd@CEnginePrimitiveManagerRepeatedZSprites@@EAEXXZ
 // CEnginePrimitiveManagerRepeatedZSprites::FrameEnd() -- shrink the unsigned vector at +0x80 to nothing (resize(0, zero)) and clear the count at +0xc0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BAC320, length 43 bytes.
 // Callees: vector<unsigned int>::resize(n, const T&) @ 0x00BAC990 (on the vector at +0x80; 0 and the fill value by reference). Shape: the fill value is a named
@@ -10,11 +11,13 @@ struct CRetailVector_uint {
 };
 
 class CEnginePrimitiveManagerRepeatedZSprites { public:
-    unsigned char      _pad[0x80];
+    unsigned char _pad[0x7c];
     CRetailVector_uint m_indices;                  // +0x80
     unsigned char      _pad8c[0x34];
     long               m_count;                    // +0xc0
-    void FrameEnd();
+    private:
+    virtual void FrameEnd();
+    public:
 };
 
 void CEnginePrimitiveManagerRepeatedZSprites::FrameEnd()

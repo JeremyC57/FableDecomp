@@ -401,7 +401,7 @@ T1	other	CThing	17	49	engine/CThing.h	004c7380 004c73d0 004c7950 004c7990 004c79
 T1	other	map	16	19		004df86c 00518e80 005692b0 005698a0 005bbbf3 0062ee80 006bd6a0 006f33a0 00721640 00802190 008267c0 0082fb90 00991350 009913d0 00a96e40 00ad6140
 T1	other	NCreatureMode	15	22	engine/NCreatureMode.h	0085ee50 0085ef70 0085f010 0085f0c0 0085f120 0085f200 0085f2b0 0085f3e0 0085f470 0085f560 0085f600 0085f8d0 0085fbc0 0085fcd0 008e8e50
 T1	other	(none)	14	17		00405f00 004978a0 0070bd80 0099dcb0 0099e260 009a3640 009a4ec0 009e1ad0 00a0db60 00c006a0 00c021c0 00c021f0 00cbe0c0 00cbfb7d
-T1	other	CAIStateGroupBase	13	35	engine/CAIStateGroupBase.h	008fcf10 008fcf40 008fcf80 008fcfa0 008fd288 0097d6f0 0097e200 0097e270 0097e2d0 0097e330 0097e380 0097f870 00c3f760
+T1	other	CAIStateGroupBase	14	41	engine/CAIStateGroupBase.h	008fcec0 008fcf10 008fcf40 008fcf80 008fcfa0 008fd288 0097d6f0 0097e200 0097e270 0097e2d0 0097e330 0097e380 0097f870 00c3f760
 T1	other	CCreatureActionBase	11	18	engine/CCreatureActionBase.h	00692620 00692910 00692940 00692950 00692990 00692a50 00692bc0 00692c10 00693ef0 00694430 00694d10
 T1	other	CTCBase	11	16	engine/CTCBase.h	006867f0 00686800 00686830 006868f0 006869d0 00686a70 00686af0 00686d30 00686d40 00686f60 00686fa0
 T1	other	CTCGraphicAppearance	10	16		004bd200 004bd390 004bd6e0 004bde90 004be490 004be4e0 004bfa50 004c08c0 004c11f0 004c12d0
@@ -1076,7 +1076,6 @@ T2	access	LSocket	1	1	engine/LSocket.h	008f8830
 T2	other	CCreatureActionBase	2	7	engine/CCreatureActionBase.h	006929e0 00693030
 T2	other	LSocket	2	4	engine/LSocket.h	008f87a0 008f8bb0
 T2	other	C3DAnimationInfo	1	2	engine/C3DAnimationInfo.h	00a269c0
-T2	other	CAIStateGroupBase	1	7	engine/CAIStateGroupBase.h	008fcec0
 T2	other	CCharString	1	3		0099eaf0
 T2	other	CEngineInternalPrimitiveBase	1	7	engine/CEngineInternalPrimitiveBase.h	00b8fd40
 T2	other	CFactionManager	1	4	engine/CFactionManager.h	006b93d0
@@ -1317,8 +1316,8 @@ T3	signature	map	15	16		0042d131 0042d1b7 0047cb50 0051bf90 00594a08 005bbc4e 00
 T3	signature	CPlayer	12	12	engine/CPlayer.h	00488b20 00633bf0 00633cb0 00633d80 00633f10 00633ff0 006355d0 00635840 00635a50 00635bf0 00636480 006366b0
 T3	signature	vector	12	12		0046f06a 0049b7f0 004ba7a0 005806df 005f9f5a 006253d0 006d4680 00770d60 007b9ec0 00808470 009cb7d0 00ae7d10
 T3	signature	GFSerialiseVectorBinaryIn	10	11		00412c70 00464d23 00465852 00468f15 00581404 005c2ad8 00672530 006c9e40 006d4b40 006dd580
-T3	signature	CPersistContext	9	9	engine/CPersistContext.h	004aef50 009ba9d0 009baa10 009bad60 009badd0 009bae10 009bae30 009bae50 009bba40
 T3	signature	CScriptGameResourceObjectScriptedThingBase	9	9	engine/CScriptGameResourceObjectScriptedThingBase.h	007e72d0 007e7300 007e7320 007e7330 007e7340 007e73c0 007e73e0 007e73f0 007e7420
+T3	signature	CPersistContext	8	8	engine/CPersistContext.h	009ba9d0 009baa10 009bad60 009badd0 009bae10 009bae30 009bae50 009bba40
 T3	signature	GFSerialiseVectorBinaryOut	8	9		0040fca0 00464ced 0057f109 005c12a1 006724f0 006c7ba0 006d3a30 006dc550
 T3	signature	list	8	9		00479449 004ba550 004cc820 00617230 0067bcc0 00711a10 0075f660 007c5080
 T3	signature	CQuestManager	6	7	engine/CQuestManager.h	004afa60 004b1960 004b19f0 004b2510 004b3a20 004b4590
@@ -1334,7 +1333,6 @@ T3	signature	CDrawQuestInfo	4	4		00643eb2 006473b9 0064f659 0064f9a7
 T3	signature	CShaderRenderManager	4	5	engine/CShaderRenderManager.h	009896b0 009896d0 00989910 00989b50
 T3	signature	CTCGraphicAppearance	4	4		004bd420 004bf9e0 004c0000 004c0240
 T3	signature	CTCHeroStats	4	6	engine/CTCHeroStats.h	0057a6b8 0057ae53 0057bb8d 0057bc6e
-T3	signature	CTCInventoryExperience	4	4	engine/CTCInventoryExperience.h	0056e5de 0056e674 0056ef6f 0057598a
 T3	signature	CTCTavernGame	4	4	engine/CTCTavernGame.h	005e9b70 005eadc0 005eaf30 005eb080
 T3	signature	CCreatureAction_PlayAnimation	3	6	engine/CCreatureAction_PlayAnimation.h	008424f0 00842570 008425e0
 T3	signature	CDefinitionManager	3	4	engine/CDefinitionManager.h	009b02e0 009b0470 009b05f0
@@ -1345,6 +1343,7 @@ T3	signature	CPlayerGui	3	3	engine/CPlayerGui.h	004387f0 00438cb0 00438ff0
 T3	signature	CStringParser	3	3	engine/CStringParser.h	009b9530 009b9570 009ba110
 T3	signature	CSubtitleRenderer	3	3	engine/CSubtitleRenderer.h	0048dba6 0048f1f4 0049166e
 T3	signature	CTCInventory	3	4	engine/CTCInventory.h	00581ddb 00581e33 00584edc
+T3	signature	CTCInventoryExperience	3	3	engine/CTCInventoryExperience.h	0056e5de 0056e674 0056ef6f
 T3	signature	CTCOpinionSource	3	3	engine/CTCOpinionSource.h	00771620 008640c0 008640f0
 T3	signature	CThingCreatureBase	3	4	engine/CThingCreatureBase.h	006619f0 00662620 00663ba0
 T3	signature	TransferVectorOfSubComponents	3	3		00f33b90 00f349f0 00f351f0
@@ -1353,7 +1352,6 @@ T3	signature	C2DBoxI	2	2	engine/C2DBoxI.h	004fab10 004fab40
 T3	signature	C3DMeshInfo	2	2	engine/C3DMeshInfo.h	00a23c40 00a248f0
 T3	signature	C3DMeshObject	2	2	engine/C3DMeshObject.h	00a361a0 00a36e70
 T3	signature	CAIStateGroup_JackDragon	2	2	engine/CAIStateGroup_JackDragon.h	00950a30 00950c30
-T3	signature	CClassFactory	2	2	engine/CClassFactory.h	00a37060 00a37360
 T3	signature	CConsole	2	2		009eb690 009eb8e0
 T3	signature	CCreatureAction_CastAssassinRush	2	2	engine/CCreatureAction_CastAssassinRush.h	008ce040 008ce100
 T3	signature	CCreatureAction_CastWillEnflameSpell	2	3	engine/CCreatureAction_CastWillEnflameSpell.h	008bb450 008bb500
@@ -1396,7 +1394,6 @@ T3	signature	CTCTalk	2	3	engine/CTCTalk.h	006e3180 006e3b60
 T3	signature	CTCVillage	2	3	engine/CTCVillage.h	00658620 00659c7e
 T3	signature	CThingCompare_BestForTargeting2	2	4	engine/CThingCompare_BestForTargeting2.h	007f9e70 007f9f00
 T3	signature	CThingFilter_IsInSameVolumeContextAsThing	2	2		006a8c00 006a8c60
-T3	signature	CVideoSys	2	3	engine/CVideoSys.h	00a3b0f0 00a3b1f0
 T3	signature	CWorldMap	2	2	engine/CWorldMap.h	0063e3c0 0063e950
 T3	signature	LHHttp2	2	2	engine/LHHttp2.h	0083eaa0 0083f9b0
 T3	signature	(none)	1	1		0042e3ce
@@ -1433,6 +1430,7 @@ T3	signature	CBrainOutput	1	1		0093e760
 T3	signature	CCharString	1	1		0099ec70
 T3	signature	CChunkedFile	1	1	engine/CChunkedFile.h	00aa7db0
 T3	signature	CChunkedFileSuperChunk	1	1	engine/CChunkedFileSuperChunk.h	00aa8360
+T3	signature	CClassFactory	1	1	engine/CClassFactory.h	00a37360
 T3	signature	CCombatAbilityAttackBase	1	1	engine/CCombatAbilityAttackBase.h	0044c503
 T3	signature	CCombatAbilityBlockDefBase	1	1	engine/CCombatAbilityBlockDefBase.h	00453e2d
 T3	signature	CCombatActionBase	1	2	engine/CCombatActionBase.h	00857f30
@@ -1542,7 +1540,6 @@ T3	signature	CEnginePrimitiveRenderUtil	1	1	engine/CEnginePrimitiveRenderUtil.h	
 T3	signature	CEngineResourceManager	1	1	engine/CEngineResourceManager.h	00b3b240
 T3	signature	CEngineSceneGrid	1	1		00b92250
 T3	signature	CEngineSceneGridCell	1	1	engine/CEngineSceneGridCell.h	00b936e0
-T3	signature	CEngineSceneMap	1	1	engine/CEngineSceneMap.h	00b91920
 T3	signature	CEngineScreenEffectColourFilter	1	1	engine/CEngineScreenEffectColourFilter.h	00b5a1d0
 T3	signature	CEngineSubPrimitiveAnimatedMesh	1	1	engine/CEngineSubPrimitiveAnimatedMesh.h	00bce740
 T3	signature	CEngineSubPrimitiveBase	1	1	engine/CEngineSubPrimitiveBase.h	00b98a50
@@ -1577,7 +1574,6 @@ T3	signature	CLandscapeBackgroundTreeNode	1	2	engine/CLandscapeBackgroundTreeNod
 T3	signature	CLevelLoader	1	1	engine/CLevelLoader.h	006c26b0
 T3	signature	CLipSyncDataBank	1	1	engine/CLipSyncDataBank.h	00a42fc0
 T3	signature	CLipSyncFrameData	1	1	engine/CLipSyncFrameData.h	00a48a40
-T3	signature	CManagedTexture	1	1	engine/CManagedTexture.h	00a69e60
 T3	signature	CMap	1	1	engine/CMap.h	00820f80
 T3	signature	CMapInfo	1	1	engine/CMapInfo.h	004fb3e0
 T3	signature	CMemoryAllocator	1	1	engine/CMemoryAllocator.h	009f2310
@@ -1621,7 +1617,6 @@ T3	signature	CSimpleMemoryPool	1	1	engine/CSimpleMemoryPool.h	00a5c5c0
 T3	signature	CSimplePointBase	1	1		00873a10
 T3	signature	CSmallVector	1	1	engine/CSmallVector.h	009d21d0
 T3	signature	CStatBase	1	1		0064cc11
-T3	signature	CSteeringAgent	1	1	engine/CSteeringAgent.h	00a1a1a0
 T3	signature	CSurface	1	1	engine/CSurface.h	009f36e0
 T3	signature	CTCBoastUI	1	1	engine/CTCBoastUI.h	0056a980
 T3	signature	CTCBoastingCrowdControl	1	1	engine/CTCBoastingCrowdControl.h	00783380
@@ -1652,7 +1647,6 @@ T3	signature	CTCShapeManager	1	1	engine/CTCShapeManager.h	00760870
 T3	signature	CTCSoundPlayer	1	1	engine/CTCSoundPlayer.h	0066b300
 T3	signature	CTCSpecialAbilities	1	1	engine/CTCSpecialAbilities.h	0072ac90
 T3	signature	CTCTavernBar	1	2		007b9f60
-T3	signature	CTCTavernGameCardBlackjack	1	1	engine/CTCTavernGameCardBlackjack.h	007da8b0
 T3	signature	CTCTavernGameCoinBase	1	1	engine/CTCTavernGameCoinBase.h	008efa00
 T3	signature	CTCTextureDecal	1	1		0070a3e0
 T3	signature	CTCVolumeContainmentTracker	1	1	engine/CTCVolumeContainmentTracker.h	00785c80
@@ -1696,6 +1690,7 @@ T3	signature	CV_BookCollectingScript	1	1	engine/CV_BookCollectingScript.h	00e543
 T3	signature	CV_ChickenKickingScript	1	1		00e62830
 T3	signature	CV_FisticuffsClubScript	1	1	engine/CV_FisticuffsClubScript.h	00e8a140
 T3	signature	CVersion	1	1		009ea080
+T3	signature	CVideoSys	1	2	engine/CVideoSys.h	00a3b0f0
 T3	signature	CVillageTaskPatrol	1	1	engine/CVillageTaskPatrol.h	0065ee66
 T3	signature	CVirtualKeyboard	1	1	engine/CVirtualKeyboard.h	00851700
 T3	signature	CVolume	1	1		00a674b0
@@ -7402,7 +7397,6 @@ T3	shared name (2 addresses)	CBankFile	2	2	engine/CBankFile.h	00c4f220 012160e0
 T3	shared name (2 addresses)	CBaseVideoRenderer	2	3	engine/CBaseVideoRenderer.h	00ca5f50 012169a0
 T3	shared name (2 addresses)	CCardPositionsDef	2	2	engine/CCardPositionsDef.h	00c108e0 01211400
 T3	shared name (2 addresses)	CConsole	2	2		009ea620 009ea640
-T3	shared name (2 addresses)	CContextSensitiveItemDef	2	2	engine/CContextSensitiveItemDef.h	004526b3 004df6f4
 T3	shared name (2 addresses)	CDBMinion	2	2		00d25d20 00d25ef0
 T3	shared name (2 addresses)	CDecodedStream	2	3		00c54510 01216140
 T3	shared name (2 addresses)	CDualArrayRecord	2	2		007f3de0 0090ba20

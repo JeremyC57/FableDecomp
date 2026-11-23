@@ -1,3 +1,4 @@
+// Leaf: ?UpdateActionMoveToPos@CCreatureActionBase@@MAEXXZ
 // CCreatureActionBase::UpdateActionMoveToPos() -- when the action uses animation movement (virtual slot 57), set the next movement position to the creature's position plus the animation movement step (stamped with the world frame); otherwise defer to virtual slot 58
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692B30, length 130 bytes (+ int3 padding). Protected virtual (`MAE`).
 // Callees: this action's virtual slots 57 (+0xe4, bool) and 58 (+0xe8, the `else` tail jump), CBaseIntelligentPointer::GetPItem
@@ -69,7 +70,9 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
         NextMovementPosWorldFrame = PCreature.GetPItem()->PeekWorld().GetFrame();
         NextMovementPos = pos;
     }
-    void UpdateActionMoveToPos();
+    protected:
+    virtual void UpdateActionMoveToPos();
+    public:
 };
 
 void CCreatureActionBase::UpdateActionMoveToPos()

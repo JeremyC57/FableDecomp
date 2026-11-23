@@ -1,3 +1,4 @@
+// Leaf: ?InternalReadNextSourceChunk@CFileDataInputStream@@EAEXAAPBEAAJ@Z
 // CFileDataInputStream::InternalReadNextSourceChunk(const unsigned char*& chunk, long& length) -- the next chunk is the smaller of the chunk size (+0x20) and what remains to the end (+8) from the current position (virtual slot 2); seek the source (+0x18) there, read that many bytes into the buffer (+0x1c) and hand the buffer back
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00994360, length 69 bytes.
 // Callees: virtual slot 2 (+8) of `this` (GetPosition), the source's Seek (slot 5) and Read (slot 3: buffer, length, 0). Shape: the unsigned minimum (`cmp edx,ecx ;
@@ -18,7 +19,9 @@ class CFileDataInputStream { public:
     CSourceStream_00994360* m_pSource;             // +0x18
     unsigned char*          m_pBuffer;             // +0x1c
     unsigned long           m_chunkSize;           // +0x20
-    void InternalReadNextSourceChunk(const unsigned char*& chunk, long& length);
+    private:
+    virtual void InternalReadNextSourceChunk(const unsigned char*& chunk, long& length);
+    public:
 };
 
 void CFileDataInputStream::InternalReadNextSourceChunk(const unsigned char*& chunk, long& length)

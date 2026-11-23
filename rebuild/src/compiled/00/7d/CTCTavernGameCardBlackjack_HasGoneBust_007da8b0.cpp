@@ -1,3 +1,4 @@
+// Leaf: ?HasGoneBust@CTCTavernGameCardBlackjack@@QAE_NXZ
 // CTCTavernGameCardBlackjack::HasGoneBust() -- sums the current hand (aces count 11), demotes aces to 1 while over 21, and returns whether the hand is still over 21
 // Retail: Fable.exe @ 0x007DA8B0, 71 bytes, no callees.
 // +0x33C points at the hand being scored (one of the three 12-byte card vectors the constructor at
@@ -22,10 +23,10 @@ struct CCardHand {
 struct CTCTavernGameCardBlackjack {
     unsigned char _pad[0x33c];
     CCardHand* m_pCurrentHand;          // +0x33c
-    long HasGoneBust();
+    bool HasGoneBust();
 };
 
-long CTCTavernGameCardBlackjack::HasGoneBust()
+bool CTCTavernGameCardBlackjack::HasGoneBust()
 {
     CCardHand* hand = m_pCurrentHand;
     long total = 0;

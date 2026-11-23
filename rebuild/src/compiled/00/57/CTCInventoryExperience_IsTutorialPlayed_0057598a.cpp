@@ -1,3 +1,4 @@
+// Leaf: ?IsTutorialPlayed@CTCInventoryExperience@@QAE_NABVCCharString@@@Z
 // CTCInventoryExperience::IsTutorialPlayed(const CCharString& name) -- true if already played, else record it and return false
 // Retail 0x0057598A, 53 bytes, ret 4. TutorialsPlayed is an STLport vector<CCharString> at retail
 // +0x248 (PDB +0x2A8: four 16-byte containers ahead of it are 12 bytes in retail), so a local model.
@@ -27,10 +28,10 @@ template <> class vector<CCharString, allocator<CCharString> > { public:   // ST
 class CTCInventoryExperience { public:
     unsigned char _pad_000[0x248];
     std::vector<CCharString, std::allocator<CCharString> > TutorialsPlayed;             // +0x248
-    unsigned char IsTutorialPlayed(const CCharString& name);
+    bool IsTutorialPlayed(const CCharString& name);
 };
 
-unsigned char CTCInventoryExperience::IsTutorialPlayed(const CCharString& name)
+bool CTCInventoryExperience::IsTutorialPlayed(const CCharString& name)
 {
     CCharString* last = TutorialsPlayed._M_finish;
     if (find(TutorialsPlayed._M_start, last, name) != last)

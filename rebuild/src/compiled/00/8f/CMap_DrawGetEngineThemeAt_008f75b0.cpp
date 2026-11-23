@@ -1,3 +1,4 @@
+// Leaf: ?DrawGetEngineThemeAt@CMap@@UBEJJJJ@Z
 // CMap::DrawGetEngineThemeAt(long x, long y, long which) -- the engine theme id of palette entry `which` (+4) of the game map cell at (x, y) (rows stored top-down: (maxY - y) * (width + 1) + x), looked up in the 8-byte palette at +0x1a6c
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F75B0, length 61 bytes.
 // Shape: the 12-byte cell address through `lea eax,[eax+eax*2] ; lea eax,[edx+eax*4]`, `movzx eax, byte ptr [eax+edx+4]`, `mov eax,[ecx+eax*8]`, `ret 0Ch`. Grid layout as the landed CMap::GetEngineThemeAt @ 0x0081F090.
@@ -29,14 +30,14 @@ struct CQuarterGrid {                              // the quarter-resolution sou
     long           m_height;                       // +0x20
 };
 class CMap { public:
-    unsigned char       _pad[0x1a6c];
+    unsigned char _pad[0x1a68];
     SThemePaletteEntry* m_pPalette;                // +0x1a6c
     unsigned char       _pad1a70[0xc];
     CGameMapGrid*       m_pGameMapGrid;            // +0x1a7c
-    unsigned long DrawGetEngineThemeAt(long x, long y, long which);
+    virtual long DrawGetEngineThemeAt(long x, long y, long which) const;
 };
 
-unsigned long CMap::DrawGetEngineThemeAt(long x, long y, long which)
+long CMap::DrawGetEngineThemeAt(long x, long y, long which) const
 {
     CGameMapGrid* grid = m_pGameMapGrid;
     return m_pPalette[grid->m_pCells[(grid->m_maxY - y) * (grid->m_width + 1) + x].EngineThemePaletteIndex[which]].m_themeId;

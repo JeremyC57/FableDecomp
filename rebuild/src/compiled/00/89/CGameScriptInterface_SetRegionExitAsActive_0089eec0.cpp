@@ -1,3 +1,4 @@
+// Leaf: ?SetRegionExitAsActive@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
 // CGameScriptInterface::SetRegionExitAsActive(const CScriptThing& thing, bool active) const -- when the valid script thing holds a region-exit component (kind 100: +0x2c bit 4), set the active byte (+0xc) of the object at the thing's +0x5c and refresh the player GUI (global 0x013B8790, 0x004378C0 with 0)
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089EEC0, length 64 bytes.
@@ -78,7 +79,7 @@ class CGameScriptInterface { public:
     CPlayerManager*  PlayerManager;                   // +0x14
     unsigned char           _pad18[4];
     bool                    m_handLampLit;                   // +0x1c (read when the hero has no hand-lamp component)
-    void SetRegionExitAsActive(const CScriptThing& thing, bool active) const;
+    virtual void SetRegionExitAsActive(const CScriptThing& thing, bool active) const;
 };
 
 void CGameScriptInterface::SetRegionExitAsActive(const CScriptThing& thing, bool active) const

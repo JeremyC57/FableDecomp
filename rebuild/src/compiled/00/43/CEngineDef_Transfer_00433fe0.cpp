@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CEngineDef@@UAEXAAVCPersistContext@@@Z
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: wrong callee: CPersistContext::Transfer float/long overloads swapped (0x431061 float, 0x431102 long))
 // CEngineDef::Transfer(CPersistContext&) -- transfer the engine definition's scalar fields in the retail order
 // Retail: Fable.exe @ 0x00433FE0, 208 bytes. Float fields go through CPersistContext::Transfer(float&) @ 0x00431061
@@ -8,14 +9,14 @@ class CPersistContext { public:
  template <class T> void Transfer(T& value); // 0x00431061
 };
 class CEngineDef { public:
- unsigned char _base[0x3c];
+ unsigned char _base[0x38];
  float LODErrorTolerance, CharacterLODErrorTolerance, LODErrorFactor, SeaHeight;              // 0x3c..0x48
  float GamePrimitiveDefaultFadeStart, GamePrimitiveDefaultFadeRangeRatio;                     // 0x4c, 0x50
  float LocalDetailDefaultFadeStart, LocalDetailDefaultFadeRangeRatio, FOV_2D;                 // 0x54, 0x58, 0x5c
  long LocalDetailBooleanAlphaDefaultAlphaRef, DefaultPrimitiveAlphaRef;                       // 0x60, 0x64
  long TestStaticMesh, TestAnimatedMesh, TestAnim, TestGraphic;                                // 0x68..0x74
  long InvalidTextureStandin, InvalidThemeStandin;                                             // 0x78, 0x7c
- void Transfer(CPersistContext&);
+ virtual void Transfer(CPersistContext&);
 };
 void CEngineDef::Transfer(CPersistContext& c) {
  c.Transfer(LODErrorTolerance); c.Transfer(CharacterLODErrorTolerance); c.Transfer(LODErrorFactor); c.Transfer(SeaHeight);

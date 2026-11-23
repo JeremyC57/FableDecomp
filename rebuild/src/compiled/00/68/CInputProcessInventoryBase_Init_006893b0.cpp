@@ -1,9 +1,10 @@
+// Leaf: ?Init@CInputProcessInventoryBase@@UAEXXZ
 struct CInputProcessInventoryBase {
-    char pad[0x28];
+    char pad[0x24];
     int m28;
     int m2c;
     char m30;
-    void Init();
+    virtual void Init();
 };
 
 void CInputProcessInventoryBase::Init()

@@ -1,3 +1,4 @@
+// Leaf: ?FrameUpdate@CCreatureAction_ActivateQuest@@UAEXXZ
 // CCreatureAction_ActivateQuest::FrameUpdate() -- finish the action once the named quest is no longer registered
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
@@ -31,7 +32,7 @@ class CCreatureAction_ActivateQuest { public:
     unsigned char _pad04[0xa8 - 4];         // +0x04 CCreatureActionBase body
     CCharString ScriptName;                 // +0xa8
     unsigned char LoadResources;            // +0xac
-    void FrameUpdate();
+    virtual void FrameUpdate();
 };
 
 void CCreatureAction_ActivateQuest::FrameUpdate()

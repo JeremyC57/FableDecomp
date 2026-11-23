@@ -1,5 +1,5 @@
 // CCombatActionBase::GetStrikeEventHelperName() const -- the helper-point name of the active strike event first to finish, or an empty string when there is none or it is a legacy event
-// Leaf: GetStrikeEventHelperName
+// Leaf: ?GetStrikeEventHelperName@CCombatActionBase@@UBE?AVCCharString@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008570D0, 115 bytes of code (CCharString returned through the hidden pointer, `ret 4`).
 // Callees: std::for_each<list<CCountedPointer<CStrikeEvent>>::const_iterator, CGetActiveStrikeEventThatIsFirstToFinish>
 //          @ 0x0085A960 (__fastcall, functor result through the hidden pointer in ecx), CCharString::CCharString(const
@@ -70,7 +70,7 @@ class CCombatActionBase { public:
         return for_each(StrikeEvents.begin(), StrikeEvents.end(),
                         CGetActiveStrikeEventThatIsFirstToFinish(FramesRunning)).m_pFirstToFinish;
     }
-    CCharString GetStrikeEventHelperName() const;
+    virtual CCharString GetStrikeEventHelperName() const;
 };
 
 CCharString CCombatActionBase::GetStrikeEventHelperName() const

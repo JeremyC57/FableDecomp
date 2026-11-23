@@ -1,3 +1,4 @@
+// Leaf: ?ScriptedMapBrushAddThings@CMap@@MAEXABVCScriptedMapBrush@@@Z
 // CMap::ScriptedMapBrushAddThings(const CScriptedMapBrush&) -- mark listed existing things activated.
 // Native00820790 length161. Original PDB map/brush/thing method identities; typed native world/worldmap PMFs, no synthetic virtual padding.
 #include "fable_compiler.h"
@@ -53,9 +54,11 @@ class CWorld { public:
  FABLE_FORCEINLINE const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VTable)[13])();}
 };
 class CMap { public:
- unsigned char NativeMapPrefix[0x20];CWorld* World;
+ unsigned char NativeMapPrefix[0x1c];CWorld* World;
  unsigned char NativeRippleAndMapState[0x1d24-0x20-sizeof(CWorld*)];C2DCoordI WorldPos;
- void ScriptedMapBrushAddThings(const CScriptedMapBrush&);
+ protected:
+ virtual void ScriptedMapBrushAddThings(const CScriptedMapBrush&);
+ public:
  void ScriptedMapBrushRemoveThings(const CScriptedMapBrush&);
 };
 #ifdef _MSC_VER

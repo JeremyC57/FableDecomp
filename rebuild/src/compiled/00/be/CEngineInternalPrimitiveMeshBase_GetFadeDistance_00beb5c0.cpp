@@ -1,3 +1,4 @@
+// Leaf: ?GetFadeDistance@CEngineInternalPrimitiveMeshBase@@UBE?AVCEngineFadeDistance@@XZ
 // CEngineInternalPrimitiveMeshBase::GetFadeDistance() const -- the primitive's fade distances: with OverrideFadeDistance set they are scaled by the engine fade scale and the draw distance is clamped into [min, max] (fade start scaled by the same ratio); otherwise the stored pair
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEB5C0, length 159 bytes (`ret 4`, CEngineFadeDistance by hidden pointer).
 // Globals: the engine settings pointer @ 0x01436E78 (fade-distance scale +0x7C, min / max draw distance +0x80 / +0x84; record named
@@ -30,7 +31,7 @@ public:
     unsigned char       NonPersistent : 1;
     unsigned char       OverrideFadeDistance : 1;
     unsigned char       PostRenderEnable : 1;
-    CEngineFadeDistance GetFadeDistance() const;
+    virtual CEngineFadeDistance GetFadeDistance() const;
 };
 
 CEngineFadeDistance CEngineInternalPrimitiveMeshBase::GetFadeDistance() const

@@ -1,3 +1,4 @@
+// Leaf: ?GiveThingItemInHand@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@_N@Z
 class CScriptThing;
 
 class CCharString
@@ -235,7 +236,7 @@ public:
     virtual void Pad222();
     virtual void Pad223();
     virtual void Slot380(const CScriptThing& thing, const CCharString& string, const CCharString& slot) const;
-    void GiveThingItemInHand(const CScriptThing& thing, const CCharString& string, bool right_hand) const;
+    virtual void GiveThingItemInHand(const CScriptThing& thing, const CCharString& string, bool right_hand) const;
 };
 
 void CGameScriptInterface::GiveThingItemInHand(const CScriptThing& thing, const CCharString& string, bool right_hand) const

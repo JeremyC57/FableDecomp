@@ -1,5 +1,5 @@
 // CConsoleVariable::GetHelp() -- "variable of type <bool|float|slong|string>; value is currently <value>"
-// Leaf: GetHelp
+// Leaf: ?GetHelp@CConsoleVariable@@EAE?AVCCharString@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EA3C0, 206 bytes (208 with padding), `?GetHelp@CConsoleVariable@@EAE?AVCCharString@@XZ`.
 // Callees: the variable's virtual slot 3 (+0xc) GetTypeAsString() const (0x00413700, returns "variable" by value; vtable
 //   0x0122E5C8: 0 deleting dtor, 1 ProcessCommandLine, 2 GetFormattedName, 3 GetTypeAsString, 4 GetHelp), operator+(const CCharString&, const char*) 0x0099F600
@@ -37,7 +37,9 @@ struct CConsoleVariable {
     virtual CCharString GetTypeAsString() const;                 // slot 3 (+0xc) 0x00413700
     unsigned char _pad04[4];
     CGenericVarRef Var;                                          // +0x08
-    CCharString GetHelp();
+    private:
+    virtual CCharString GetHelp();
+    public:
 };
 
 CCharString CConsoleVariable::GetHelp()

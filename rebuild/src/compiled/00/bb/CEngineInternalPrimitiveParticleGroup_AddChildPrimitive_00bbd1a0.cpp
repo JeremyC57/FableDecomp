@@ -1,3 +1,4 @@
+// Leaf: ?AddChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEKABVCEnginePrimitive@@K@Z
 // CEngineInternalPrimitiveParticleGroup::AddChildPrimitive(const CEnginePrimitive& primitive, unsigned long flags) -- allocates a child id (a recycled one from the free list at +0x58, else a new slot appended to the iterator array at +0x4c) and adds the primitive under it (virtual slot 8); returns the id
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBD1A0, length 86 bytes (96 with padding).
 // Callees: CArray<CPrimitiveIterator>::Resize(unsigned long) @ 0x00BBDD40 (on the array at +0x4c: count + 1), free @ 0x00BFEA14 (the popped list node),
@@ -48,7 +49,7 @@ struct CEngineInternalPrimitiveParticleGroup {
     void*          m_pPrimitives;                  // +0x48 list<CEnginePrimitiveHandle>
     CIteratorArray PrimitiveIDToIterator;          // +0x4c
     CIdList        FreePrimitiveIDs;               // +0x58
-    unsigned long AddChildPrimitive(const CEnginePrimitive& primitive, unsigned long flags);
+    virtual unsigned long AddChildPrimitive(const CEnginePrimitive& primitive, unsigned long flags);
 };
 
 unsigned long CEngineInternalPrimitiveParticleGroup::AddChildPrimitive(const CEnginePrimitive& primitive, unsigned long flags)

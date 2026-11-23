@@ -1,3 +1,4 @@
+// Leaf: ?GetHomeMapName@CScriptThing@@UBE?AVCCharString@@XZ
 
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x0143E8EC is CScriptThing::NullString (Ego_r.pdb + FableWin.pdb `dynamic initializer
 //   for 'CScriptThing::NullString'', initializer 0x01224C50 landed by agentFAM09); the null branch copies it with the out-of-line
@@ -22,13 +23,13 @@ struct CInner {
 };
 
 class CScriptThing { public:
-    unsigned char _pad_0x0[0x4];
+    
     CInner* inner;
-    CCharString GetHomeMapName();
+    virtual CCharString GetHomeMapName() const;
     static CCharString NullString;           // 0x0143E8EC ?NullString@CScriptThing@@2VCCharString@@A
 };
 
-CCharString CScriptThing::GetHomeMapName()
+CCharString CScriptThing::GetHomeMapName() const
 {
     CInner* inner = this->inner;
     if (inner == 0)

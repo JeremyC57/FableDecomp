@@ -1,3 +1,4 @@
+// Leaf: ?IsUsable@CGameScriptThing@@UBE_NXZ
 // CGameScriptThing::IsUsable() const -- whether the scripted thing is alive and its usable component (kind 0x0d) has its usable flag set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D06C0, length 112 bytes (padded).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three calls: null test, dead bit +0x91, mask word),
@@ -83,10 +84,9 @@ struct CTCUsable_Retail {
     bool           m_usable;                       // +0x10
 };
 class CGameScriptThing { public:
-    void*                   m_pVtbl;               // +0x00
-    unsigned char           _pad04[8];
+        unsigned char           _pad04[8];
     CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>
-    bool IsUsable() const;
+    virtual bool IsUsable() const;
 };
 
 bool CGameScriptThing::IsUsable() const

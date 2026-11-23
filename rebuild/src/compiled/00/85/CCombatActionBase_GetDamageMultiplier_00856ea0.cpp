@@ -1,3 +1,4 @@
+// Leaf: ?GetDamageMultiplier@CCombatActionBase@@UBEMXZ
 // CCombatActionBase::GetDamageMultiplier() const -- the melee ability's damage multiplier, or 1.0 when the action has no melee ability
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00856EA0, length 92 bytes.
 // Callees: the ability's virtual slot 1 (+4, Delete) when a temporary counted pointer drops the last reference.
@@ -29,7 +30,7 @@ class CCombatActionBase { public:
     CCountedAbilityPointer PMeleeAbilityDef;    // +0xb8
     unsigned char _padbc[0x114 - 0xbc];         // +0xbc
     CCountedAbilityPointer GetPMeleeAbilityDef() const { return PMeleeAbilityDef; }
-    float GetDamageMultiplier() const;
+    virtual float GetDamageMultiplier() const;
 };
 
 float CCombatActionBase::GetDamageMultiplier() const

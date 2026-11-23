@@ -1,3 +1,4 @@
+// Leaf: ?InternalReadUnbuffered@CFileDataInputStream@@EAEXPAEJ@Z
 // CFileDataInputStream::InternalReadUnbuffered(unsigned char* buffer, long length) -- seek the source (+0x18) to the current position (virtual slot 2) and read the bytes straight into the caller's buffer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009943D0, length 39 bytes.
 // Callees: virtual slot 2 (+8) of `this` (GetPosition), the source's Seek (slot 5) and Read (slot 3: buffer, length, 0). Shape: the two arguments are re-read from
@@ -14,7 +15,9 @@ class CFileDataInputStream { public:
     virtual long GetPosition();                    // slot 2 (+0x08)
     unsigned char           _pad04[0x14];
     CSourceStream_00994360* m_pSource;             // +0x18
-    void InternalReadUnbuffered(unsigned char* buffer, long length);
+    private:
+    virtual void InternalReadUnbuffered(unsigned char* buffer, long length);
+    public:
 };
 
 void CFileDataInputStream::InternalReadUnbuffered(unsigned char* buffer, long length)

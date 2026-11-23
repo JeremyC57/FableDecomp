@@ -1,3 +1,4 @@
+// Leaf: ?SetFriendsWithEverythingFlag@CGameScriptThing@@UAEX_N@Z
 // CGameScriptThing::SetFriendsWithEverythingFlag(bool) -- stores the flag into byte +0x0c of the scripted thing's kind-0x49 component when the thing is alive and has one
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D0960, length 112 bytes (padded).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three calls), the non-const component-map LowerBound @ 0x0040F020 (kind 0x49).
@@ -84,10 +85,9 @@ struct CTCFriendFlags_Retail {
     bool           m_friendsWithEverything;        // +0x0c
 };
 class CGameScriptThing { public:
-    void*                   m_pVtbl;               // +0x00
-    unsigned char           _pad04[8];
+        unsigned char           _pad04[8];
     CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>
-    void SetFriendsWithEverythingFlag(bool flag);
+    virtual void SetFriendsWithEverythingFlag(bool flag);
 };
 
 void CGameScriptThing::SetFriendsWithEverythingFlag(bool flag)

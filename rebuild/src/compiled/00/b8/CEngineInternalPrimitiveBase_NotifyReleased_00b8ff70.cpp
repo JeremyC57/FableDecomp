@@ -1,3 +1,4 @@
+// Leaf: ?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z
 // CEngineInternalPrimitiveBase::NotifyReleased(const CEnginePrimitiveHandle&) -- invalidate the scene-grid cell this primitive sits in (unless bit 1 of the flag byte says it is detached), mark the grid level as none and unlink from the primitive list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B8FF70, length 36 bytes.
 // Callees: CEngineSceneGridCell::InvalidateAll @ 0x00B91710 (on GridCell at +0x20), RemoveFromList @ 0x00B8FE60 (on `this`). Shape: the raw flag test
@@ -10,13 +11,15 @@ class CEngineSceneGridCell { friend class CEngineInternalPrimitiveBase; public:
 };
 
 class CEngineInternalPrimitiveBase { public:
-    unsigned char         _pad[0x20];
+    unsigned char _pad[0x1c];
     CEngineSceneGridCell* GridCell;                // +0x20
     signed char           GridPos_Level;           // +0x24
     unsigned char         _pad25[0x0f];
     unsigned char         PostRenderEnable;        // +0x34: bit 1 = detached from the grid
     void RemoveFromList();                         // 0x00B8FE60
-    void NotifyReleased(const CEnginePrimitiveHandle& handle);
+    protected:
+    virtual void NotifyReleased(const CEnginePrimitiveHandle& handle);
+    public:
 };
 
 void CEngineInternalPrimitiveBase::NotifyReleased(const CEnginePrimitiveHandle& handle)

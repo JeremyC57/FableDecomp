@@ -1,6 +1,6 @@
 // CMemoryAllocatorVariableSize::GetHeaderOverhead() -- publish the two usage counters (+0xc18 / +0xc14) to the statistics globals, then sum over the chunks (+0xc1c, next at +0x20): the area count (+8) times the aligned header size plus the aligned chunk header, both rounded up to the alignment shift held in +0xc18 (`(usage + 0x1f) >> shift << shift` and `(usage + 0x33) >> shift << shift`)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A64E20, length 80 bytes.
-// Leaf: GetHeaderOverhead
+// Leaf: ?GetHeaderOverhead@CMemoryAllocatorVariableSize@@UAEKXZ
 // Shape: `this` moved to edx so the shift count sits in cl, the two rounded sizes in esi/edi computed once before the loop, `ret`.
 struct SVarChunk_00a64e20 {
     unsigned char       _pad00[8];
@@ -12,11 +12,11 @@ extern unsigned long g_LastAllocatorChunkCounter_013d28d8;   // 0x013D28D8
 extern unsigned long g_LastAllocatorUsage_013d28d4;          // 0x013D28D4
 
 class CMemoryAllocatorVariableSize { public:
-    unsigned char       _pad00[0xc14];
+    unsigned char _pad00[0xc10];
     unsigned long       m_usage;                   // +0xc14: the header size
     unsigned long       m_alignmentShift;          // +0xc18
     SVarChunk_00a64e20* m_pFirstChunk;             // +0xc1c
-    unsigned long GetHeaderOverhead();
+    virtual unsigned long GetHeaderOverhead();
 };
 
 unsigned long CMemoryAllocatorVariableSize::GetHeaderOverhead()

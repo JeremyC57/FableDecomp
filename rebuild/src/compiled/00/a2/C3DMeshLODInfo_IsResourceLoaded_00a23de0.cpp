@@ -1,3 +1,4 @@
+// Leaf: ?IsResourceLoaded@C3DMeshLODInfo@@UBE_NXZ
 // Retail 0x00A23DE0. A pending async record answers for itself, tail-called
 // (CBankFileAsyncData::IsFinished, 0x009D54E0); no record means already resident.
 // The non-null case is tested first so the `return true` block lands last, which is
@@ -8,12 +9,12 @@ public:
 };
 
 class C3DMeshLODInfo { public:
-    char m_leading[0x24];
+    char m_leading[0x20];
     CBankFileAsyncData* m_pAsyncData;
-    bool IsResourceLoaded();
+    virtual bool IsResourceLoaded() const;
 };
 
-bool C3DMeshLODInfo::IsResourceLoaded() {
+bool C3DMeshLODInfo::IsResourceLoaded() const {
     if (m_pAsyncData != 0) {
         return m_pAsyncData->IsFinished();
     }

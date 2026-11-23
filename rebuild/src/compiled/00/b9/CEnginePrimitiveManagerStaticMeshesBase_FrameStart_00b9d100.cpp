@@ -1,7 +1,7 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test cannot fail (main only prints PASS))
 // CEnginePrimitiveManagerStaticMeshesBase::FrameStart() -- point the per-frame static-mesh shadow shader selectors at the
 //   colour-buffer shader set (shadow technique 2) or the depth-buffer set (otherwise)
-// Leaf: FrameStart
+// Leaf: ?FrameStart@CEnginePrimitiveManagerStaticMeshesBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B9D100, 0xb8 bytes.
 // Layout: PDB (Ego_r) names; retail offsets equal the PDB (CVertexShader is 8 bytes): the seven selector pointers
 //   VertexShadersStatic*Shadow +0x2f0..+0x304 and VertexShaderShadowBufferRender +0x308; the shader arrays they point at
@@ -15,7 +15,7 @@ class CEngineShadowRenderer { public:
 };
 namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 struct CEnginePrimitiveManagerStaticMeshesBase {
-    unsigned char _pad000[0xd8];
+    unsigned char _pad000[0xd4];
     CVertexShader VertexShadersStaticDepthBufferShadow[4];          // +0x0d8
     CVertexShader VertexShadersStaticEnvDepthBufferShadow[4];       // +0x0f8
     CVertexShader VertexShadersStaticEnvBumpDepthBufferShadow[4];   // +0x118
@@ -42,7 +42,7 @@ struct CEnginePrimitiveManagerStaticMeshesBase {
     CVertexShader* VertexShadersStaticSpotShadow;                   // +0x300
     CVertexShader* VertexShadersStaticEnvSpotShadow;                // +0x304
     CVertexShader* VertexShaderShadowBufferRender;                  // +0x308
-    void FrameStart();
+    virtual void FrameStart();
 };
 void CEnginePrimitiveManagerStaticMeshesBase::FrameStart()
 {

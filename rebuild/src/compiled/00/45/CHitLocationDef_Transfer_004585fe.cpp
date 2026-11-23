@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CHitLocationDef@@UAEXAAVCPersistContext@@@Z
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
 // CHitLocationDef::Transfer(CPersistContext&) -- serialize the hit-location definition fields in the retail persistence order
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004585FE, 237 bytes. Size-optimised def TU with a frame pointer.
@@ -39,7 +40,7 @@ class CHitLocationDef { public:
     bool Default;                                       // +0x74
     bool EnableOnCreate;                                // +0x75
     EHitLocationCodelet HitLocationCodelet;             // +0x78
-    void Transfer(CPersistContext& context);
+    virtual void Transfer(CPersistContext& context);
 };
 void CHitLocationDef::Transfer(CPersistContext& context) {
     context.Transfer(PhysicalPrimitive);

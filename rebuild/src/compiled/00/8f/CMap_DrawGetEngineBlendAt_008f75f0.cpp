@@ -1,3 +1,4 @@
+// Leaf: ?DrawGetEngineBlendAt@CMap@@UBEEJJJ@Z
 // CMap::DrawGetEngineBlendAt(long x, long y, long which) -- blend byte `which` (+7) of the game map cell at (x, y) (rows stored top-down: (maxY - y) * (width + 1) + x)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F75F0, length 47 bytes.
 // Shape: the 12-byte cell address through `lea eax,[eax+eax*2] ; lea edx,[ecx+eax*4]`, `mov al, byte ptr [edx+eax+7]`, `ret 0Ch`.
@@ -21,12 +22,12 @@ struct CGameMapGrid {                              // the game map's cell grid (
 };
 class C2DCoordI { public: long X; long Y; };
 class CMap { public:
-    unsigned char _pad[0x1a7c];
+    unsigned char _pad[0x1a78];
     CGameMapGrid* m_pGameMapGrid;                  // +0x1a7c
-    unsigned char DrawGetEngineBlendAt(long x, long y, long which);
+    virtual unsigned char DrawGetEngineBlendAt(long x, long y, long which) const;
 };
 
-unsigned char CMap::DrawGetEngineBlendAt(long x, long y, long which)
+unsigned char CMap::DrawGetEngineBlendAt(long x, long y, long which) const
 {
     CGameMapGrid* grid = m_pGameMapGrid;
     return grid->m_pCells[(grid->m_maxY - y) * (grid->m_width + 1) + x].EngineBlend[which];

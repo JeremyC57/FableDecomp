@@ -1,5 +1,5 @@
 // CKrakenDef::Transfer(CPersistContext& context) -- persist the Kraken boss definition's tuning fields in declaration order
-// Leaf: Transfer
+// Leaf: ?Transfer@CKrakenDef@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E80E3, length 222 bytes (`ret 4`).
 // Callees: CPersistContext::Transfer(float&) @ 0x00431061, CPersistContext::Transfer(long&) @ 0x00431102,
 // CPersistContext::Transfer(vector<long>&) @ 0x00466A47 (the per-type instantiation also used by the landed 0x00467553).
@@ -10,8 +10,7 @@
 #include "stlport/fable_containers.h"
 #include "engine/CPersistContext.h"
 class CKrakenDef { public:
-    void*         __vftable;                    // +0x00 (CDefClassBase)
-    unsigned char _base[0x24];                  // +0x04 .. +0x27
+        unsigned char _base[0x24];                  // +0x04 .. +0x27
     float HeightOffset;                         // +0x28
     float PoolRadius;                           // +0x2c
     float HeadRiseDelay;                        // +0x30
@@ -31,7 +30,7 @@ class CKrakenDef { public:
     long  TicksBetweenBeamExplosions;           // +0x68
     std::vector<long> TentacleDefIndex;               // +0x6c
     float TentacleMaxRiseDelay;                 // +0x78
-    void Transfer(CPersistContext& context);
+    virtual void Transfer(CPersistContext& context);
 };
 
 void CKrakenDef::Transfer(CPersistContext& context)

@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CPlayerDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct CSubA { char b[4]; };
 struct CSubB { char b[4]; };
@@ -8,10 +9,10 @@ class CPersistContext { public:                       // typed transfer helpers:
 };
 
 class CPlayerDef { public:
-    char pad3c[0x3c];
+    char pad3c[0x38];
     CSubA m3c;   // sub-object at +0x3c
     CSubB m40;   // sub-object at +0x40
-    void Transfer(CPersistContext& ctx);
+    virtual void Transfer(CPersistContext& ctx);
     void TransferB(CPersistContext& ctx); // base transfer at 0x4595a3, takes &self->m40
 };
 

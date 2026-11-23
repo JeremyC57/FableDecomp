@@ -1,3 +1,4 @@
+// Leaf: ?DeactivateBoastUi@CGameScriptInterface@@UBEXXZ
 // CGameScriptInterface::DeactivateBoastUi() const -- deactivate the hero's boast-UI component (kind 0xe8, CTCBoastUI::Deactivate @ 0x0056A880); the hero through PlayerManager->GetMainPlayer()->GetPControlledCreature() with no null or dead test
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A0C60, length 80 bytes.
@@ -75,7 +76,7 @@ class CGameScriptInterface { public:
     CPlayerManager*  PlayerManager;                   // +0x14
     unsigned char           _pad18[4];
     bool                    m_handLampLit;                   // +0x1c (read when the hero has no hand-lamp component)
-    void DeactivateBoastUi() const;
+    virtual void DeactivateBoastUi() const;
 };
 
 void CGameScriptInterface::DeactivateBoastUi() const

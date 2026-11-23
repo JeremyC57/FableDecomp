@@ -1,3 +1,4 @@
+// Leaf: ?PerformAction@CCreatureAction_WhisperSommersaultForward@@UAEXXZ
 // CCreatureAction_WhisperSommersaultForward::PerformAction() -- if the creature's flag bit 13 at +0x28 is set, notify its property 77 changed; then mark the action finished
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0B40, length 48 bytes.
@@ -20,7 +21,7 @@ class CCreatureAction_WhisperSommersaultForward { public:   // CCombatActionBase
     CBaseIntelligentPointer PCreature;         // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
     unsigned char           Finished;          // +0x114
-    void PerformAction();
+    virtual void PerformAction();
 };
 
 void CCreatureAction_WhisperSommersaultForward::PerformAction()

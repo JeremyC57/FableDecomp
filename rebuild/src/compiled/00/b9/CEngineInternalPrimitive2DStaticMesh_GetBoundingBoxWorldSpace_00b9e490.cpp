@@ -1,3 +1,4 @@
+// Leaf: ?GetBoundingBoxWorldSpace@CEngineInternalPrimitive2DStaticMesh@@UAE_NAAVC3DBoundingBox@@@Z
 // CEngineInternalPrimitive2DStaticMesh::GetBoundingBoxWorldSpace(C3DBoundingBox&) -- the mesh's local bounding box (from the mesh record at +0x50, offset +0x10) transformed by the primitive's matrix at +0x70; always true
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9E490, length 73 bytes.
 // Callees: C3DBoundingBox::InitialiseFromOBB(const C3DBoundingBox&, const CMatrix3x4&) @ 0x00ADE080 (on the argument; the local copy and the matrix pushed right to
@@ -26,11 +27,11 @@ struct SMeshRecord_00b9e490 {
 };
 
 struct CEngineInternalPrimitive2DStaticMesh {
-    unsigned char       _pad[0x50];
+    unsigned char _pad[0x4c];
     SMeshRecord_00b9e490* m_pMesh;                 // +0x50
     unsigned char       _pad54[0x1c];
     CMatrix3x4          m_transform;               // +0x70
-    bool GetBoundingBoxWorldSpace(C3DBoundingBox& box);
+    virtual bool GetBoundingBoxWorldSpace(C3DBoundingBox& box);
 };
 
 bool CEngineInternalPrimitive2DStaticMesh::GetBoundingBoxWorldSpace(C3DBoundingBox& box)

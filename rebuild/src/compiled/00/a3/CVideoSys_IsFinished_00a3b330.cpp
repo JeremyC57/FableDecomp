@@ -1,3 +1,4 @@
+// Leaf: ?IsFinished@CVideoSys@@QAE_NXZ
 // CVideoSys::IsFinished() -- true unless the movie is playing or paused; a playing movie whose progress reached 1.0 is stopped first (Stop inlined) and reported as not finished
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3B330, length 80 bytes.
 // Callees: CVideoSys::GetProgress @ 0x00A3B2A0 (float), CVideoSys::WaitForState @ 0x00A3B0F0,
@@ -40,7 +41,7 @@ struct CVideoSys {                            // engine/CVideoSys.h layout (no v
     void WaitForState(long state);            // 0x00A3B0F0
     float GetProgress();                      // 0x00A3B2A0
     unsigned char Stop();                     // 0x00A3B1F0 (defined here so it is inlined)
-    unsigned char IsFinished();
+    bool IsFinished();
 };
 
 unsigned char CVideoSys::Stop()
@@ -53,7 +54,7 @@ unsigned char CVideoSys::Stop()
     return 1;
 }
 
-unsigned char CVideoSys::IsFinished()
+bool CVideoSys::IsFinished()
 {
     if (State != 1 && State != 2)
         return 1;

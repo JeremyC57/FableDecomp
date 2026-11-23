@@ -1,3 +1,4 @@
+// Leaf: ?Interrupt@CNavigatorAStar@@UAEXXZ
 // CNavigatorAStar::Interrupt  @ 00a1a150
 // __fastcall void Interrupt(CNavigatorAStar* this)
 
@@ -8,14 +9,14 @@ struct SubObject {
 };
 
 class CNavigatorAStar { public:
-    char pad0[0x19];
+    char pad0[0x15];
     unsigned char Interrupted;      // +0x19
     char pad1[0x1c - 0x1a];
     char* sub;                 // +0x1c  (pointer to a block; method lives at +0x2c)
     char pad2[0x88 - 0x20];
     int field88;               // +0x88
 
-    void Interrupt();
+    virtual void Interrupt();
 };
 
 void CNavigatorAStar::Interrupt()

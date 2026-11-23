@@ -1,6 +1,6 @@
 // CParentDefClassBase::RemoveSubDef(const CCharString&) -- erase the sub-def map range keyed by CRC(name) (LowerBound/UpperBound + __copy over the tail), then sort the map if dirty
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B0170, length 138 bytes (padded to 144).
-// Leaf: RemoveSubDef
+// Leaf: ?RemoveSubDef@CParentDefClassBase@@UAEXABVCCharString@@@Z
 // Callees: Calc @ 0x004014A0, CVectorMap::LowerBound @ 0x009B20D0, CVectorMap::UpperBound @ 0x009B2190,
 // STLport __copy(first, last, result, random_access_iterator_tag, ptrdiff_t*) @ 0x009B1620 (manifest label
 // "_Copy_impl<CGenerationPos*>" is a byte-twin), the map's sort @ 0x009B84C0.
@@ -99,7 +99,7 @@ class CParentDefClassBase { public:
     unsigned char  _defClassBase[0x21];     // +0x04 CDefClassBase part
     long           InstantiationName;       // +0x25
     CSubDefInfoMap SubDefInfoMap;           // +0x29
-    void RemoveSubDef(const CCharString& name);
+    virtual void RemoveSubDef(const CCharString& name);
 };
 #pragma pack(pop)
 

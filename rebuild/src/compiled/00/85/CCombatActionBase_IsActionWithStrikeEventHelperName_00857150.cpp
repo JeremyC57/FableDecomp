@@ -1,3 +1,4 @@
+// Leaf: ?IsActionWithStrikeEventHelperName@CCombatActionBase@@MBE_NXZ
 // CCombatActionBase::IsActionWithStrikeEventHelperName() const -- the active strike event first to finish exists and is not a legacy event (its first byte, Legacy, is false)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00857150, length 78 bytes (+ int3 padding).
 // Callees: std::for_each<list<CCountedPointer<CStrikeEvent>>::const_iterator, CGetActiveStrikeEventThatIsFirstToFinish>
@@ -64,7 +65,9 @@ class CCombatActionBase { public:
         return for_each(StrikeEvents.begin(), StrikeEvents.end(),
                         CGetActiveStrikeEventThatIsFirstToFinish(FramesRunning)).m_pFirstToFinish;
     }
-    bool IsActionWithStrikeEventHelperName() const;
+    protected:
+    virtual bool IsActionWithStrikeEventHelperName() const;
+    public:
 };
 
 bool CCombatActionBase::IsActionWithStrikeEventHelperName() const

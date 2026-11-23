@@ -1,3 +1,4 @@
+// Leaf: ?AutoSaveQuestStart@CGameScriptInterface@@UBEXXZ
 class CWorld
 {
 public:
@@ -7,9 +8,8 @@ public:
 class CGameScriptInterface
 {
 public:
-    void* m_pVtbl;
-    CWorld* m_pWorld;
-    void AutoSaveQuestStart() const;
+        CWorld* m_pWorld;
+    virtual void AutoSaveQuestStart() const;
 };
 
 void CGameScriptInterface::AutoSaveQuestStart() const
