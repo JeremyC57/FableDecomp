@@ -1,3 +1,4 @@
+// Leaf: ?Write@CMemoryDataOutputStream@@UAEXPBXJ@Z
 // CMemoryDataOutputStream::Write(const void*, long) -- append/overwrite bytes at the current position, growing the buffer as needed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00996CC0, 129 bytes.
 // Shape: a positive size is range-checked as a 64-bit end position ((__int64)CurrentPosition +
@@ -22,7 +23,8 @@ class CMemoryDataOutputStream { public:
     void*         m_lineTerminator;                // +0x04 CCharString
     CArrayChar    Data;                            // +0x08
     unsigned long CurrentPosition;                 // +0x14
-    void Write(const void* data, long size);
+    virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void Write(const void* data, long size);   // slot 4: rtti-vtables CMemoryDataOutputStream slot 4; PDB UAE
 };
 
 void CMemoryDataOutputStream::Write(const void* data, long size)

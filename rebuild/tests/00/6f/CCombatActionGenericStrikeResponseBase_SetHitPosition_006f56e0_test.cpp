@@ -7,10 +7,10 @@ class C3DVector { public:
 };
 
 class CCombatAction_GenericStrikeResponseBase { public:
-    char pad[0x11c];
+    char pad[0x118];                    // +0x04 (the vptr takes +0x00)
     C3DVector hitPos;
 
-    void SetHitPosition(C3DVector pos);
+    virtual void SetHitPosition(C3DVector pos);   // the row's PDB UAE spelling
 };
 
 int main()

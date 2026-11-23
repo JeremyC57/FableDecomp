@@ -238,7 +238,9 @@ class CCombatActionBase { public:
         CVector<CThingGameObject*> StruckThingList;   // +0x1c
     };
     bool IsThingInStruckThingList(const CThingGameObject& thing) const;   // 0x00856F00
-    CStrikeEvent* GetPActiveStrikeEvent();      // 0x00856E50
+protected:
+    CStrikeEvent* GetPActiveStrikeEvent();      // 0x00856E50 (PDB IAE: protected)
+public:
     CThing* GetWeaponUsedInStrikeAction() const;      // 0x00857070
     bool HasPerformedAction() const;            // 0x006925A0
     void ProcessPossibleShotStrikeEvent(float time, const std::pair<C3DVector, C3DVector>& previous,

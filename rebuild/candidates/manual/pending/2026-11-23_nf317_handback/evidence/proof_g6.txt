@@ -1,0 +1,10 @@
+##### 00858400 renames: ?GetPActiveStrikeEvent@CCombatActionBase@@QAEPAVCStrikeEvent@1@XZ=?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ
+ALL_EQ sections=15 DEF=14 tables=-
+##### 00858590 renames: ?GetPActiveStrikeEvent@CCombatActionBase@@QAEPAVCStrikeEvent@1@XZ=?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ
+ALL_EQ sections=15 DEF=14 tables=-
+##### 008587b0 renames: ?GetPActiveStrikeEvent@CCombatActionBase@@QAEPAVCStrikeEvent@1@XZ=?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ
+ALL_EQ sections=9 DEF=8 tables=-
+##### 008c6430 renames: ?WhackGround@CCreatureAction_TrollWhackGroundBase@@QAEXXZ=?WhackGround@CCreatureAction_TrollWhackGroundBase@@AAEXXZ
+ALL_EQ sections=9 DEF=8 tables=-
+##### 007038d0 renames: ?OnDie@CThingObject@@QAEXXZ=?OnDie@CThingObject@@MAEXXZ ?OnDie@CThingPhysical@@QAEXXZ=?OnDie@CThingPhysical@@MAEXXZ
+ALL_EQ sections=6 DEF=5 tables=-

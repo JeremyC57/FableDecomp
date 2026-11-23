@@ -1,3 +1,4 @@
+// Leaf: ?IsStillValid@CAIStateGroup_EatAtTable@@MBE_NXZ
 // CAIStateGroup_EatAtTable::IsStillValid() -- drops creature mode 0x28; if the mode is still present the group is no longer valid, otherwise defers to the next validity check (virtual slot 15)
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096D190, length 105 bytes (+ int3 padding).
@@ -51,8 +52,8 @@ class CAIStateGroupBase { public:
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual void v11(); virtual void v12(); virtual void v13();
-    virtual bool IsStillValid();                // slot 14 (+0x38)
-    virtual bool IsStateGroupStillValid();      // slot 15 (+0x3c)
+    virtual bool IsStillValid() const;          // slot 14 (+0x38); PDB MBE overrides
+    virtual bool IsStateGroupStillValid() const;   // slot 15 (+0x3c); PDB MBE (other state groups); const: the PDB-const self calls it (ruling R1)
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
     void* Name_PStringData;                     // +0x0c
@@ -63,10 +64,12 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
-    virtual bool IsStillValid();
+    protected:
+    virtual bool IsStillValid() const;
+    public:
 };
 
-bool CAIStateGroup_EatAtTable::IsStillValid()
+bool CAIStateGroup_EatAtTable::IsStillValid() const
 {
     CTCCreatureModeManager* modes;
     PBrain->Creature->GetInterface(&modes, 0x31);

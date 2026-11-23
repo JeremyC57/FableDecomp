@@ -1,3 +1,4 @@
+// Leaf: ?IsUnderScriptControl@CThing@@QBE_NXZ
 // CThing::IsUnderScriptControl() -- a thing with a script-control component (interface 0x1f) is under script control when the component's control flag is set or its script task is no longer running
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasTC + the ternary GetTC model (landed 0x00584157 idiom) instead of the GetInterface out-pointer: the component loads straight into ecx
@@ -25,7 +26,7 @@ class CThing { public:
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
     CInterfaceMap       Components;                  // +0x44
-    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted) const  // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &Components;
@@ -33,10 +34,10 @@ class CThing { public:
         return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
     unsigned long HasTC(long interfaceType) const { return UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    bool IsUnderScriptControl();
+    bool IsUnderScriptControl() const;
 };
 
-bool CThing::IsUnderScriptControl()
+bool CThing::IsUnderScriptControl() const
 {
     if (HasTC(0x1f)) {
         CTCScriptControl* control = GetTC<CTCScriptControl>(0x1f);

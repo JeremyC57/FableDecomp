@@ -9748,7 +9748,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12077	land1120nf170	00443f90	?Resize@CRetailHandleVector@@QAEXJ@Z	open	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z
 12078	land1120nf171	00637a10	?RemoveThing@CThingMapManager@NThingMap@@QAEXAAVCTCMapwho@@@Z	partial	DestroyMapwhoNode
 12079	land1120nf171	00687d50	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@@Z	open	?IsButtonHeld@CInputProcessTargetLockCycleTargets@@QAE_NJJ@Z || ?IsButtonHeld@CInputProcessZTarget@@QAE_NJJ@Z || ?IsGameActionEventInQueue@CInputProcessGameBase@@QAE_NJJ@Z || IsGameActionEventInQueue || _JR_Helper@8
-12084	land1120nf172	00499c50	?DisplayProgress@CProgressDisplay@@UAEXABVCCharString@@M_N1@Z	no_binding	
+12084	land1120nf172	00499c50	?DisplayProgress@CProgressDisplay@@UAEXABVCCharString@@M_N1@Z	closed	
 12085	land1120nf172	00a5d620	?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@K@Z	closed	
 12086	land1120nf172	00b5bd70	?CaptureEnvironmentParameters@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	closed	
 12087	land1120nf172	00b5c120	?UpdateWorldPositionTracking@CEngineScreenEffectRadialBlurRenderer@@AAE_NXZ	closed	
@@ -10330,7 +10330,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13162	land1122p28	005dfa50	?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@@QAEPAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@ABW4EAnimComponent@@@Z	partial	?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@QBEPBU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@ABW4EAnimComponent@@@Z || ?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@QBEPBU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@ABW4EAnimComponent@@@Z || ?LowerBound@
 13163	land1122p28	00642000	??0CEnginePrimitiveLight@@QAE@_KABVC3DVector@@ABVCRGBColour@@MMW4EEngineInterpolationSet@@K@Z	partial	??0CEnginePrimitiveLight
 13164	land1122p28	00643bef	?GFToScreen@NPlayerGui@@YI?AVC2DBoxF@@ABV2@@Z	open	?ToScreenBox@@YI?AVC2DBoxF@@ABV1@@Z
-13165	land1122p28	00665e90	?IsPickPocketable@CThingCreatureBase@@QBE_NXZ	open	?IsPickPocketable@CThingCreatureBase || ?IsPickPocketable@CThing_Retail@@QAE_NXZ
+13165	land1122p28	00665e90	?IsPickPocketable@CThingCreatureBase@@QBE_NXZ	partial	?IsPickPocketable@CThing_Retail@@QAE_NXZ
 13166	land1122p28	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	partial	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z || ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z
 13167	land1122p28	00669d30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	closed	
 13168	land1122p28	00730ae0	?IsLockPickable@CTCDoor@@QBE_NXZ	open	?IsLockPickable@CGSIPickLockableDoor@@QAE_NXZ
@@ -10602,3 +10602,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13442	land1123nf314	00640430	?SetMapAsUnloaded@CEngineManager@@QAEXJ@Z	partial	?RemoveMap@CEngineManager@@QAEXJ@Z
 13443	land1123nf315	0097da40	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z	partial	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z || ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCreatureActionBase@@_N@Z || ?AIAction_CombatPerformActionAndWait@CAIStateGroupHoverHornetQueenTakeDamageMethods@@QAEJPAVCCreatureActionBase@@_N@Z || ?AIAction_CombatPerformActionAndWait@CAIStateGroup_BanditKingCharge@@QAEJPAVCCreatureActionBase@@
 13444	land1123nf315	009fc380	?AddResource@CResourceBank@@QAEXAAVCResource@@@Z	partial	?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z
+13445	nf317	00958c00	?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@ABE_NXZ	partial	?IsGuardOnLevel@CAIStateGroupMinionReactToCrimeMethods@@QAE_NXZ
+13446	nf317	0096d2d0	?IsStaffed@CAIStateGroup_EatAtTavern@@IBE_NXZ	closed	
+13447	nf317	006a4cf0	?OnDie@CThingPhysical@@MAEXXZ	partial	_Forward
+13448	nf317	008b0650	?OnCreate@CCombatSequenceBase@@UAEXXZ	partial	?M@C008b0650@@QAEXXZ || ?OnCreate@CCombatSequenceBase@@QAEXXZ || ?OnCreate@CCombatSequenceBase_008b0650@@UAEXXZ || ?OnCreateBase@CCombatSequence_WillPhysicalShield@@QAEXXZ || ?OnCreateBase@CCombatSequence_WillPhysicalShieldNonMelee@@QAEXXZ

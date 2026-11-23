@@ -1,3 +1,4 @@
+// Leaf: ?GetDefaultWeaponDef@CThingCreatureBase@@QBEJXZ
 struct SomeDef {
     char pad0[0xd8];
     long weaponA;   // +0xd8
@@ -10,10 +11,10 @@ struct SomeDef {
 class CThingCreatureBase { public:
     char pad0[0xe0];
     SomeDef* def;   // +0xe0
-    long GetDefaultWeaponDef();
+    long GetDefaultWeaponDef() const;
 };
 
-long CThingCreatureBase::GetDefaultWeaponDef()
+long CThingCreatureBase::GetDefaultWeaponDef() const
 {
     SomeDef* d = this->def;
     if (d->flags & 0x10)

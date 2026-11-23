@@ -1,5 +1,5 @@
 // CThingCreatureBase::IsPickPocketable() -- true when the creature def allows pick-pocketing, the hero is alive, the creature is not watching the hero, and the hero is within 2 units
-// Leaf: ?IsPickPocketable@CThingCreatureBase
+// Leaf: ?IsPickPocketable@CThingCreatureBase@@QBE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665E90, 241 bytes (+15 int3), `ret`, bool in al.
@@ -79,7 +79,7 @@ class CThing { public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_statusFlags;           // +0x91 (bit 0: dead)
     const C3DVector& GetPos() const;   // 0x004C73D0
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -101,10 +101,10 @@ class CTCPerceiveThing { public:
     bool CanSeeOrSmellPerceivedThing() const;   // 0x00661600
 };
 class CThingCreatureBase : public CThing { public:
-    bool IsPickPocketable();
+    bool IsPickPocketable() const;
 };
 
-bool CThingCreatureBase::IsPickPocketable()
+bool CThingCreatureBase::IsPickPocketable() const
 {
     CDefPointer<const CCreatureDef> out;
     PBaseDef->GetSubDef(&out);

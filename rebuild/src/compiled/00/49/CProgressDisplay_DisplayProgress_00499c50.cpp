@@ -1,3 +1,4 @@
+// Leaf: ?DisplayProgress@CProgressDisplay@@UAEXABVCCharString@@M_N1@Z
 // CProgressDisplay::DisplayProgress(const CCharString& textTag, float progress, bool a, bool b) -- when progress display is live, re-render the progress screen at most every 0.05 s (always on the first update) and remember the last text tag shown
 // Naming (NF172, 2026-11-20, q4303 / q11976 / q11977): the callee 0x00499880 respelled in place to its private PDB form
 //   ?RenderProgress@CProgressDisplay@@AAEXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb, engine/CProgressDisplay.h); its self row moves to
@@ -25,7 +26,8 @@ extern bool g_bProgressDisplaySuppressed;                  // 0x013B89D3
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (0.0001f, read from memory: not folded)
 
 struct CProgressDisplay {
-    unsigned char _pad00[0x50];                            // +0x00 textures, text tags, wide text, current tag
+    unsigned char _pad08[0x48];                            // +0x08 textures, text tags, wide text, current tag (the vptr is +0x00; VC7.1 aligns the
+                                                           // first member after it to the class's 8-byte alignment: the doubles below)
     CCharString   LastTextDisplayed;                       // +0x50
     long          GuildSealFrameIndex;                     // +0x54
     long          StageCount;                              // +0x58
@@ -37,7 +39,7 @@ struct CProgressDisplay {
 private:
     void RenderProgress(const CCharString& textTag, float progress, bool a, bool b);   // 0x00499880 (private: both PDBs)
 public:
-    void DisplayProgress(const CCharString& textTag, float progress, bool a, bool b);
+    virtual void DisplayProgress(const CCharString& textTag, float progress, bool a, bool b);   // PDB UAE (labels_rtti_port)
 };
 
 void CProgressDisplay::DisplayProgress(const CCharString& textTag, float progress, bool a, bool b)

@@ -1,5 +1,5 @@
 // CThingObject::OnDie() -- vtable slot 11: when the object def names an on-death object, create it at this object's position and give it a small random spin, then run CThingPhysical::OnDie
-// Leaf: ?OnDie@CThingObject
+// Leaf: ?OnDie@CThingObject@@MAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007038D0, length 199 bytes, `ret`; slot 11 of vtable 0x01264DCC =
 //   CThingObject (rtti-vtables.tsv); CThingPhysical::OnDie is slot 11 of 0x01244E84 (0x006A4CF0).
@@ -31,7 +31,10 @@ class CThingObjectDef { public:
 
 class CThing {
 public:
+    virtual void _v00(); virtual void _v01(); virtual void _v02(); virtual void _v03(); virtual void _v04(); virtual void _v05();
+    virtual void _v06(); virtual void _v07(); virtual void _v08(); virtual void _v09(); virtual void _v10();
 protected:
+    virtual void OnDie();                       // slot 11: ?OnDie@CThing@@MAEXXZ (both PDBs)
     // NF155 (q4259): Ego_r.pdb / FableWin.pdb ?GetPWorldSeed@CThing@@IBEPAKXZ (protected const, out of line at 0x004C7AE0, engine/CThing.h);
     // was the stand-in GetRandomSeed_004c7ae0.
     unsigned long* GetPWorldSeed() const;       // 0x004C7AE0
@@ -42,14 +45,17 @@ public:
 class CThingPhysical : public CThing {
 public:
     const C3DVector& PeekPos() const;    // 0x006A4D00
-    void OnDie();                               // 0x006A4CF0 (slot 11)
+protected:
+    virtual void OnDie();                       // 0x006A4CF0 (slot 11): ?OnDie@CThingPhysical@@MAEXXZ (both PDBs)
 };
 
 class CThingObject : public CThingPhysical {
 public:
-    unsigned char _pad00[0xd0];
+    unsigned char _pad04[0xcc];                 // +0x04 (the vptr takes +0x00)
     const CThingObjectDef* PDef;                // +0xd0 CDefPointer<CThingObjectDef const>::Object
-    void OnDie();
+protected:
+    virtual void OnDie();                       // rtti-vtables CThingObject slot 11; ?OnDie@CThingObject@@MAEXXZ (both PDBs)
+public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation,
                                            unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r/FableWin ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };

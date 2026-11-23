@@ -1,5 +1,5 @@
 // CTCCombat::UpdateCombatTimers() -- per-frame combat bookkeeping: track action/strike state, run the combo and handedness grace countdowns, the unarmed idle timer, the block-counter timer, every combat ability's timers, and the block hold/blocking counters
-// Leaf: UpdateCombatTimers
+// Leaf: ?UpdateCombatTimers@CTCCombat@@AAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x007339E0, 400 bytes, `ret`.
@@ -94,7 +94,9 @@ public:
     long                UnsheathingWeaponType;             // +0x6c
     SAbilityNode*       CombatAbilities;                   // +0x70 (multimap header node)
     void OnBlockHoldExpired();                             // 0x007338A0
+    private:
     void UpdateCombatTimers();
+    public:
 };
 
 void CTCCombat::UpdateCombatTimers()

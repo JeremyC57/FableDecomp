@@ -184,3 +184,12 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
     TU that compiles X's constructor, and its emission is part of each class's ctor port.
   - **The 539 landed `MakeOne` rows are debt.** Each defines the same strong `?MakeOne@@YAPAXXZ` (a full-link duplicate) plus a fake
     constructor and vftable. Do not copy that pattern.
+- NF317:
+  - **Q1:** const overloads added to local inline container stand-ins, whose pick-any helper COMDATs then carry renamed stand-in symbols,
+    are T3 (NF309 Q3).
+  - **Q2:** const on a force-inline lookup or a virtual-slot call of the local model, which the PDB-const body forces and which emits no
+    symbol, lands under R1.
+  - **Q3:** a fix that grows a stand-in vftable is a port onto the class header, never a COMDAT vftable change.
+  - **Q4:** when retail's bytes show an int / byte return width and the PDB says bool / void, the retail code wins. Record it as a PDB
+    revision difference and do not respell.
+  - **Gotcha:** HEAD and new must be compiled at ONE path, or `?A0x` anonymous-namespace hashes differ and objsec reports false diffs.

@@ -1,3 +1,4 @@
+// Leaf: ?OnCreate@CCombatSequence_VillagerComboUnblockable@@UAEXXZ
 // CCombatSequence_VillagerComboUnblockable::OnCreate -- enqueue two interruptable mid-attacks and one non-blockable villager knockdown action.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail address 0x00908b50, 296 bytes. Native sequence fields are owner +0x1c and target +0x20. The first two actions use the audited 81-slot InterruptableMidAttack hierarchy and inline CCombatActionBase ctor 0x00857f30 (code 150, zero sound pair); the third is the external RTTI-confirmed VillagerAttackKnockdown ctor 0x0097cf90 (PDB9A2B60 two Creature references, native zero-offset Thing base view, Blockable=false).
@@ -197,17 +198,17 @@ struct CCountedPointer {
     }
 };
 class CCombatSequenceBase { public:
-    void* nativeVptr; // data-only vptr; no sequence vtable is emitted by this caller
+    virtual void _v00(); // slot 0 (not modelled); no sequence vtable is emitted by this caller
     unsigned char nativePrefix[0x18];
     CThingCreatureBase* Creature; // native +0x1c (donor base header has a 4-byte difference)
     CThingCreatureBase* Target;               // native +0x20
     CThingCreatureBase& GetCreature()const{return *Creature;}
     CThingCreatureBase& GetTarget()const{return *Target;}
     void AddAction(const CCountedPointer& action); // 0x008B0B10
-    void OnCreate(); // non-virtual direct-call adapter for the real base slot at 0x008B0650
+    virtual void OnCreate(); // 0x008B0650 ?OnCreate@CCombatSequenceBase@@UAEXXZ (both PDBs; called qualified below)
 };
 struct CCombatSequence_VillagerComboUnblockable : CCombatSequenceBase {
-    void OnCreate(); // selected body; native PDB identifies this as a virtual override
+    virtual void OnCreate(); // rtti-vtables CCombatSequence_VillagerComboUnblockable slot 1; PDB UAE
 };
 #include <stddef.h>
 void* operator new(size_t); // 0x00BFEA1A

@@ -1,5 +1,5 @@
 // CInputManager::LoadAllEventPackages(const CVersion& version, CAFile& file) -- read a recorded-input file: skip its 12-byte version header, then pull event packages out of it one after another until the file position reaches its length, appending each to LoadedEventPackages; a package that fails to load stops the loop; finally rewind playback to the first package
-// Leaf: LoadAllEventPackages
+// Leaf: ?LoadAllEventPackages@CInputManager@@IAEXABVCVersion@@AAVCAFile@@@Z
 // where `this` is homed to [ebp-14h]: retail stores it right after `mov edi,ecx` at entry, the lane schedules the
 // store after the header Read call (just before the loop). Tried: per-iteration try with `break` (this form), the
 // try wrapping the loop (hoists the state-0 store to the loop pre-header, no per-iteration -1), the file calls
@@ -60,7 +60,9 @@ class CInputManager { public:
     unsigned char            _pad04[0x48];         // +0x04 vectors, counters, devices, flags, Checksum
     CInputEventPackageVector LoadedEventPackages;  // +0x4c
     long                     CurrentFilePackageIndex;   // +0x58 next package to play back
+    protected:
     void LoadAllEventPackages(const CVersion& version, CAFile& file);
+    public:
 };
 
 void CInputManager::LoadAllEventPackages(const CVersion& version, CAFile& file)

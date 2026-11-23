@@ -12,7 +12,7 @@ struct SomeDef {
 class CThingCreatureBase { public:
     char pad0[0xe0];
     SomeDef* def;   // +0xe0
-    long GetDefaultWeaponDef();
+    long GetDefaultWeaponDef() const;   // the row's PDB QBE spelling
 };
 
 int main()

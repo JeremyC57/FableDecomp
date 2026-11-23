@@ -1,5 +1,5 @@
 // CThingCreatureBase::OnDie() -- base physical death; spawn the EXPLODE_ON_KILLING_BLOW effect when the def names one; leave a dead-creature body (copying orientation, the carried components and the lighting channel) when the creature and its def allow it; post the death message, tell the killer it killed and the creature's own entity events it died, and drop experience orbs for the hero
-// Leaf: ?OnDie@CThingCreatureBase
+// Leaf: ?OnDie@CThingCreatureBase@@UAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -138,7 +138,11 @@ public:
 
 class CThing {
 public:
-    void* __vftable;
+    virtual void _v00(); virtual void _v01(); virtual void _v02(); virtual void _v03(); virtual void _v04(); virtual void _v05();
+    virtual void _v06(); virtual void _v07(); virtual void _v08(); virtual void _v09(); virtual void _v10();
+protected:
+    virtual void OnDie();                               // slot 11: ?OnDie@CThing@@MAEXXZ (both PDBs)
+public:
     unsigned char _pad04[0x10 - 0x04];
     unsigned char m_type;                               // +0x10 (1 = the player creature)
     unsigned char _pad11[0x20 - 0x11];
@@ -212,7 +216,9 @@ class CThingCreatureDef { public:
 class CThingPhysical : public CThing {
 public:
     const C3DVector& PeekPos() const;    // 0x006A4D00 (?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ)
-    void OnDie();                                       // 0x006A4CF0
+protected:
+    virtual void OnDie();                               // 0x006A4CF0, slot 11: ?OnDie@CThingPhysical@@MAEXXZ (both PDBs)
+public:
 };
 class CThingDeadCreature;
 class CThingCreatureBase : public CThingPhysical {
@@ -228,7 +234,7 @@ public:
     bool MeleeAttacked : 1;
     bool LeaveDeadBodyOverride : 1;                     // bit 4
     bool LeaveExperienceOrbsOverride : 1;               // bit 5
-    void OnDie();
+    virtual void OnDie();                               // slot 11: rtti-vtables CThingCreatureBase slot 11; PDB UAE
 };
 class CThingDeadCreature : public CThing {
 public:

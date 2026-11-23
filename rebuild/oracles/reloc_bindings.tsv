@@ -2826,7 +2826,7 @@ _FableCam_788198@8	0078809b	00788198
 ??_7CTCTrapBase@@6B@	0126b7fc	0078918d
 ??1CHitThingVector@@QAE@XZ	004e1b08	007891f8
 ?InsertGrow@CRetailVector_CElement12_00788d88@@QAEXPAUCElement12_00788d88@@ABU2@ABUSScalarTag@@K_N@Z	007893ae	00789515
-?GetBribeAmountWillTake@CTCGuard@@QAEJXZ	007b2d50	00789900
+?GetBribeAmountWillTake@CTCGuard@@QBEJXZ	007b2d50	00789900
 ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z	006345c0	00789b30
 ?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z	00634190	00789b30
 ??_7CTCHeroRangedAttacks@@6B@	0126baf4	00789bb0
@@ -8191,8 +8191,8 @@ _wcsncmp	00bfeb0a	004071c0
 ?UpdateEmitterThingAttachment@CTCDParticleEmitter@@QAEX_NM@Z	006dffb0	0071a9c0
 ??1CWoundList@@QAE@XZ	00758b00	00757680
 ?SetPushableByHero@CAIStateGroupBaseI@@QAEX_N@Z	0097e330	00944db0
-?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@QAE_NXZ	00958c00	00958e20
-?IsStaffed@CAIStateGroup_EatAtTavern@@QAE_NXZ	0096d2d0	0096d380
+?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@ABE_NXZ	00958c00	00958e20
+?IsStaffed@CAIStateGroup_EatAtTavern@@IBE_NXZ	0096d2d0	0096d380
 ?IsTimeBetween@CTCVillage@@QAE_NPAXJ@Z	00658620	0096d380
 ?UpdateFrameLogic@CAnimateThing@@QAEXABUCAnimFrameUpdate@@@Z	0070e8b0	00750470
 ?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@ABE_NXZ	00939e70	00939ed0
@@ -14884,7 +14884,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??$GetSubDef@VCContextSensitiveItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@Z	005933c8	005d9b90
 ?Write2DVector@CDataOutputStream@@QAEXABVC2DVector@@@Z	00993f90	005db3d0
 ?ReadC2DVector@CMemoryDataInputStream@@QAE?AVC2DVector@@XZ	00995030	005dbda0
-?TransferBinaryOut@CAnimationEntry@@QAEXAAVCDataOutputStream@@@Z	005db630	005dc070
+?TransferBinaryOut@CAnimationEntry@@QBEXAAVCDataOutputStream@@@Z	005db630	005dc070
 ?GetTransitionInTimeComponent@CAnimationEntry@@QBEXPAPAVCAnimComponentTransitionInTime@@@Z	005e0280	005dc230
 ?GetFlagsComponent@CAnimationEntry@@QBEXPAPAVCAnimComponentFlags@@@Z	005e0380	005dc390
 ?TransferIn@?$CPersistTraits@_N@@QAEXAAVCPersistContext@@AAVCStringParser@@PA_N@Z	00403ff0	005dc7b0
@@ -26181,7 +26181,7 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ?Activate@CQuestMgr@@QAEXPBXHH@Z	004b4260	00892ea0
 ?Activate@CQuestMgr@@QAEXABUCCharStringArray@@HH@Z	004b4260	00892ee0
 ?IsQuestRegistered@CQuestManager@@QBE_NABVCCharString@@@Z	004b00c0	00892f50
-?IsQuestCompleted@CQuestManager@@QAE_NABVCCharString@@@Z	004b0fc0	00892f60
+?IsQuestCompleted@CQuestManager@@QBE_NABVCCharString@@@Z	004b0fc0	00892f60
 ?IsQuestFailed@CQuestManager@@QAE_NABVCCharString@@@Z	004af280	00892f70
 ?Notify@CQuestMgr@@QAEXHDHH@Z	004b1d30	00892f80
 ?Reload@CQuestMgr@@QAEXH@Z	004b0160	00892f80
@@ -26674,7 +26674,7 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?OnInitialActivate@CThing@@QAEXXZ	004c97b0	00837830
 ?AddToGameObjectList@CThingManager@@QAEXAAVCThingGameObject@@@Z	0051df70	008389e0
 ?InitialActivate@CThingPhysical@@MAEXXZ	006a5230	008389e0
-?GetPActiveStrikeEvent@CCombatActionBase@@QAEPAVCStrikeEvent@1@XZ	00856e50	00858130
+?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ	00856e50	00858130
 ?GetPCombatFirstHitLocationIntersectionWithTriangle@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABU?$CVector@VC3DVector@@@@PAVC3DVector@@1M@Z	008169b0	00858130
 ?HasPerformedAction@CCombatActionBase@@QBE_NXZ	006925a0	00858130
 ?IsThingInStruckThingList@CCombatActionBase@@QBE_NABVCThingGameObject@@@Z	00856f00	00858130
@@ -36984,7 +36984,7 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?PeekThingSearchTools@CThing@@IBEABVCThingSearchTools@@XZ	004c7a60	00692990
 ?GetAllLeafThings@CThingSearchTools@@QAEXABVCThingFilter_None@@AAUCThingList@@@Z	006ae830	006ac140
 ?GetThingSearchTools@CThing@@IAEAAVCThingSearchTools@@XZ	004c7a50	006ac140
-?OnDie@CThingPhysical@@QAEXXZ	006a4cf0	007038d0
+?OnDie@CThingPhysical@@MAEXXZ	006a4cf0	007038d0
 ?SetSpin_006a4dc0@CThing@@QAEXPBVC3DVector@@@Z	006a4dc0	007038d0
 ?Compare@@YIJPBD0@Z	00411570	008330d0
 ?GetSex@CThingAICreature@@QBE?AW4ESex@@XZ	00661ff0	008330d0

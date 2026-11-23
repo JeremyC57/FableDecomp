@@ -1,3 +1,4 @@
+// Leaf: ?IsStillValid@CAIStateGroup_MinionReactToCrime@@UBE_NXZ
 // CAIStateGroup_MinionReactToCrime::IsStillValid() -- still valid while the villager's most recent "run and find a
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // guard" crime deed exists, a guard is on the level, and the village has not yet dealt with that crime.
@@ -119,11 +120,13 @@ struct CAIStateGroup_MinionReactToCrime : CAIStateGroupBase {
     bool GuardTold;                             // +0x18
     bool AllowDuplicateReactToCrime;            // +0x19
     bool DeedMaskApplied;                       // +0x1a
-    bool IsGuardOnLevel();                      // 0x00958C00
-    virtual bool IsStillValid();
+private:
+    bool IsGuardOnLevel() const;                // 0x00958C00 ?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@ABE_NXZ (both PDBs)
+public:
+    virtual bool IsStillValid() const;
 };
 
-bool CAIStateGroup_MinionReactToCrime::IsStillValid()
+bool CAIStateGroup_MinionReactToCrime::IsStillValid() const
 {
     if (PBrain->PCreature->HasTC(0x23)) {
         CTCVillage* village = ((CTCVillageMember*)((CTCVillager*)PBrain->PCreature->FindEntry(0x23)->second))->GetPVillage();

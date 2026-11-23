@@ -1,0 +1,9 @@
+action	symbol	target	witness	note
+replace	?TransferBinaryOut@CAnimationEntry@@QAEXAAVCDataOutputStream@@@Z -> ?TransferBinaryOut@CAnimationEntry@@QBEXAAVCDataOutputStream@@@Z	005db630	005dc070	witness now binds the PDB spelling; no line for it yet
+replace	?OnDie@CThingPhysical@@QAEXXZ -> ?OnDie@CThingPhysical@@MAEXXZ	006a4cf0	007038d0	witness now binds the PDB spelling; no line for it yet
+replace	?GetBribeAmountWillTake@CTCGuard@@QAEJXZ -> ?GetBribeAmountWillTake@CTCGuard@@QBEJXZ	007b2d50	00789900	witness now binds the PDB spelling; no line for it yet
+replace	?GetPActiveStrikeEvent@CCombatActionBase@@QAEPAVCStrikeEvent@1@XZ -> ?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ	00856e50	00858130	witness now binds the PDB spelling; no line for it yet
+replace	?IsQuestCompleted@CQuestManager@@QAE_NABVCCharString@@@Z -> ?IsQuestCompleted@CQuestManager@@QBE_NABVCCharString@@@Z	004b0fc0	00892f60	witness now binds the PDB spelling; no line for it yet
+replace	?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@QAE_NXZ -> ?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@ABE_NXZ	00958c00	00958e20	witness now binds the PDB spelling; no line for it yet
+replace	?IsStaffed@CAIStateGroup_EatAtTavern@@QAE_NXZ -> ?IsStaffed@CAIStateGroup_EatAtTavern@@IBE_NXZ	0096d2d0	0096d380	witness now binds the PDB spelling; no line for it yet
+replace	?IsEventInQueue@CInputManager@@QBE_NABVCInputEvent@@@Z -> ?IsEventInQueue@CInputManager@@IBE_NABVCInputEvent@@@Z	009f4d40	009f50a0	witness now binds the PDB spelling; no line for it yet

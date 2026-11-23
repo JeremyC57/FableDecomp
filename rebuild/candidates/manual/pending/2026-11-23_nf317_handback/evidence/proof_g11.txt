@@ -1,0 +1,2 @@
+##### 00995d30 renames: ?ReadNullTerminatedString@CMemoryDataInputStream@@QAE?AVCCharString@@XZ=?ReadNullTerminatedString@CMemoryDataInputStream@@UAE?AVCCharString@@XZ
+ALL_EQ sections=2 DEF=1 tables=-

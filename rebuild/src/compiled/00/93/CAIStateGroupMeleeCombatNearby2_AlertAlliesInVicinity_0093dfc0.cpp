@@ -1,5 +1,5 @@
 // CAIStateGroup_MeleeCombatNearby2::AlertAlliesInVicinity() -- when the creature perceives its enemy (line of sight or smell) and no "combat alert" message (type 0xC) is live, post one from the creature about the enemy (hearing radius 36, five seconds); always true
-// Leaf: ?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby2@@
+// Leaf: ?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby2@@AAE_NXZ
 // Grade: RELOCATION_MATCH (was DIFFER 208v203 nd=4) -- lever: every condition written as its own early `return true`
 //   (inverted tests, flat body) so the no-perception exit shares the epilogue's mov al,1 tail as retail; the nested-if
 //   form gives that exit its own copy.
@@ -105,7 +105,9 @@ struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
 };
 
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroup_MeleeCombatNearbyBase {
+    private:
     bool AlertAlliesInVicinity();
+    public:
 };
 
 bool CAIStateGroup_MeleeCombatNearby2::AlertAlliesInVicinity()

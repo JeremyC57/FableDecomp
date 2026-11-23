@@ -12,12 +12,12 @@ struct CInner {
 };
 
 struct CEngineInternalPrimitiveGroup {
-    char pad_0[0x50];
+    char pad_0[0x4c];                   // +0x04 (the vptr takes +0x00)
     CInner inner;
     char pad_54[0x5c-0x54];
     unsigned long m_5c;
 
-    void Update(const CEnginePrimitive& prim, unsigned long a3);
+    virtual void Update(const CEnginePrimitive& prim, unsigned long a3);   // the row's PDB UAE spelling
 };
 
 // provide the extern the source calls
