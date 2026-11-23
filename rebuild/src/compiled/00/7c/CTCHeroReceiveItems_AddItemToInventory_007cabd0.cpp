@@ -1,5 +1,5 @@
 // CTCHeroReceiveItems::AddItemToInventory(CThing& thing, bool flag) -- move a received item into the hero's matching inventory: when the thing is an inventory item and the hero has the inventory its type names, add it there (passing the flag through); otherwise kill the thing
-// Leaf: ?AddItemToInventory@CTCHeroReceiveItems
+// Leaf: ?AddItemToInventory@CTCHeroReceiveItems@@AAEXAAVCThing@@_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CABD0, 217 bytes (+7 int3), thiscall `ret 8`.
 // Identity: Ego_r.pdb name set ?AddItemToInventory@CTCHeroReceiveItems@@AAEXAAVCThing@@_N@Z (private, CThing&, bool);
@@ -76,7 +76,9 @@ class CTCHeroReceiveItems {
 public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
+    private:
     void AddItemToInventory(CThing& thing, bool flag);
+    public:
 };
 
 void CTCHeroReceiveItems::AddItemToInventory(CThing& thing, bool flag)

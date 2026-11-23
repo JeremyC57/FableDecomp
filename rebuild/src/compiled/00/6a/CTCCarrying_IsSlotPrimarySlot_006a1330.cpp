@@ -1,3 +1,4 @@
+// Leaf: ?IsSlotPrimarySlot@CTCCarrying@@QBE_NJ@Z
 // CTCCarrying::IsSlotPrimarySlot(long slot) -- fetches the slot's definition from the game definition manager and returns its IsPrimary flag (+0x30), releasing the definition pointer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A1330, length 60 bytes.
 // Callees: CGameDefinitionManager::Get @ 0x0044C6B0 (a static returning the global manager [0x013B879C]), the
@@ -56,10 +57,10 @@ class CGameDefinitionManager : public CDefinitionManager { public:
 
 class CTCCarrying { public:
     virtual void v00();
-    bool IsSlotPrimarySlot(long slot);
+    bool IsSlotPrimarySlot(long slot) const;
 };
 
-bool CTCCarrying::IsSlotPrimarySlot(long slot)
+bool CTCCarrying::IsSlotPrimarySlot(long slot) const
 {
     CDefPointer<CCarrySlotDef> def;
     CGameDefinitionManager::Get().GetDef(slot, &def);

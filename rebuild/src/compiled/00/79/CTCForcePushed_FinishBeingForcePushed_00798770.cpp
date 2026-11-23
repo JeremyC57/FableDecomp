@@ -2,7 +2,7 @@
 // hit along the push direction (reversed with the given damage, else 1 point), the owner's animation resumes, the push particle
 // is killed and the component removes itself
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00798770, 451 bytes (+ int3 padding), `ret 8`.
-// Leaf: FinishBeingForcePushed
+// Leaf: ?FinishBeingForcePushed@CTCForcePushed@@AAEX_NM@Z
 // Shape: the hit is built by a __forceinline helper taking the owner position BY VALUE (`HitOwner(owner, owner->GetPos(),
 // direction, damage)`): the by-value argument is an aggregate copy of the GetPos() reference, so VC loads the three words
 // into ecx/edx/eax before the CHitParameters argument pushes and stores them between the pushes (retail); a named
@@ -110,7 +110,9 @@ public:
     float DistanceMovingPerFrame;                   // +0x38
     bool Initialised;                               // +0x3C
     bool StartedMoving;                             // +0x3D
+    private:
     void FinishBeingForcePushed(bool reversed, float damage);
+    public:
     FABLE_FORCEINLINE void HitOwner(CThing* owner, C3DVector position, const C3DVector& direction, float damage)
     {
         CHitParameters hit(0, PThingCausingForcePush.GetPItem(), 0, position, direction, true, false, false, false);

@@ -1,3 +1,4 @@
+// Leaf: ?UpdateBeamExplosion@CTCKraken@@AAEXXZ
 // CTCKraken::UpdateBeamExplosion() -- while the target and the beam effect live and the kraken's beam-explosion interval has passed, spawns KRAKEN_BEAM_EXPLOSION along the beam from the mouth dummy (or the effect's own facing) and, when the beam has no line of sight to its end, a BEAM_HIT effect at the hit point
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FBE50, 955 bytes (+ int3 padding), plain `ret`, speed TU (no pragmas, no frame pointer).
@@ -190,7 +191,9 @@ class CTCKraken : public CTCBase { public:
     unsigned char           _pad3c[0x64 - 0x3c];
     long                    Mode;                     // +0x64
     void AddStrikeExplosion(CThing* explosion);       // 0x007FBA20
+    private:
     void UpdateBeamExplosion();
+    public:
 };
 
 void CTCKraken::UpdateBeamExplosion()

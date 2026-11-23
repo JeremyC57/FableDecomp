@@ -1,3 +1,4 @@
+// Leaf: ?GetDynamicPotionDefIndex@CTCContainerRewardHero@@IBEJXZ
 // CTCContainerRewardHero::GetDynamicPotionDefIndex() -- pick the potion a reward container should give the living hero: the health or mana potion, by whichever stat is relatively lower, else by which kind he carries fewer of
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail 0x0074E280, 480 bytes (plain `ret`, `long` result: 0 without a living hero carrying an inventory).
@@ -92,10 +93,12 @@ public:
 class CTCContainerRewardHero : public CTCContainer { public:
     void*   __vftable;                              // +0x00
     CThing* Thing;                                  // +0x04 CTCBase parent thing
-    long GetDynamicPotionDefIndex();
+    protected:
+    long GetDynamicPotionDefIndex() const;
+    public:
 };
 
-long CTCContainerRewardHero::GetDynamicPotionDefIndex()
+long CTCContainerRewardHero::GetDynamicPotionDefIndex() const
 {
     CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     CTCInventoryBase* inventory;

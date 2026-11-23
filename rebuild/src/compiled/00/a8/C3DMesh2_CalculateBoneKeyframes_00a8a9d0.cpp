@@ -1,5 +1,5 @@
 // C3DMesh2::CalculateBoneKeyframes() -- each bone's keyframe from the inverse of its localization matrix, post-multiplied by the parent's localization matrix
-// Leaf: CalculateBoneKeyframes
+// Leaf: ?CalculateBoneKeyframes@C3DMesh2@@AAEXXZ
 // Grade: RELOCATION_MATCH -- named bone reference; stepwise sums in retail term order (operator*= rows, inverse
 //   translation); the c11 cofactor written out twice (in det and in r.E11) instead of a named local, so its CSE
 //   temporary dies at r.E11 (fxch reuse) and the cofactor products take retail's operand order
@@ -71,7 +71,9 @@ public:
     unsigned long BoneCount;         // +0x98
     C3DBone2* Bones;                 // +0x9c
     C3DKeyframe* BoneKeyframes;      // +0xa0
+    private:
     void CalculateBoneKeyframes();
+    public:
 };
 
 void C3DMesh2::CalculateBoneKeyframes()

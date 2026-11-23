@@ -1,5 +1,5 @@
 // CTCHeroExperience::GetAttackVariationMultiplier() const -- the highest multiplier among the def's attack-history combos that the hero's attack history currently satisfies (at least 1.0)
-// Leaf: GetAttackVariationMultiplier
+// Leaf: ?GetAttackVariationMultiplier@CTCHeroExperience@@ABEMXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D7120, length 73 bytes (+ int3 padding).
 // Callees: CAttackHistoryCombo::IsComboSuccess(const list<pair<EDamageAttribute,long> >&) const @ 0x006D7080 (on AttackHistory +0x50).
 // Shape: the running multiplier stays in st(0) across IsComboSuccess because that callee (integer-only) is compiled
@@ -220,7 +220,9 @@ public:
     long GetTrainableStatLevel(EHeroTrainableStatType stat) const { return TrainableStatLevels[stat]; }
     float GetMeleeStrikeAnimationSpeedMultiplier() const;
     long GetShotAccuracyPercentage() const;
+    private:
     float GetAttackVariationMultiplier() const;
+    public:
     void OnRegionLoad();
     const CComboMultiplierData& GetActiveComboMultiplierData() const;   // 0x006D72D0
     long GetExperienceFallbackMultiplierForMultiplier(long multiplier) const;   // 0x006D73D0

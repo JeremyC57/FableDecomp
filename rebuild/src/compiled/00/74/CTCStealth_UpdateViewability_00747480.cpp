@@ -1,5 +1,5 @@
 // CTCStealth::UpdateViewability() -- the owner is viewable, except while sneaking in an engine theme whose def's stealth factor (+0x88) exceeds 1e-4
-// Leaf: UpdateViewability
+// Leaf: ?UpdateViewability@CTCStealth@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00747480, length 119 bytes.
 // Callees: CThing::GetPos @ 0x004C73D0 (returns const C3DVector&; manifest label "CVertexBufferWin32::DoSizeof" is propagated),
@@ -65,7 +65,9 @@ class CTCStealth : public CTCBase { public:
     bool Smellable;                             // +0x0d
     bool Hearable;                              // +0x0e
     bool Sneaking;                              // +0x0f
+    private:
     void UpdateViewability();
+    public:
 };
 
 void CTCStealth::UpdateViewability()

@@ -1,3 +1,4 @@
+// Leaf: ?GetWorldMapNumber@CMap@@QBEJXZ
 // CMap::GetWorldMapNumber() -- the world-map number of this map's position record (+0x1d24): the world (+0x20) gives its map table (slot 13) which is asked (slot 17) for the record
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081E690, length 27 bytes.
 // Callees: the world's virtual slot 13 (+0x34) and the map table's virtual slot 17 (+0x44, with the record's address). Shape: `add esi,1D24h` for the push, `ret`.
@@ -18,10 +19,10 @@ class CMap { public:
     CWorld*       m_pWorld;                        // +0x20
     unsigned char _pad24[0x1d00];
     unsigned char m_position[0xc];                 // +0x1d24: the map's world-map position record
-    long GetWorldMapNumber();
+    long GetWorldMapNumber() const;
 };
 
-long CMap::GetWorldMapNumber()
+long CMap::GetWorldMapNumber() const
 {
     return m_pWorld->GetWorldMapTable()->GetWorldMapNumber(m_position);
 }

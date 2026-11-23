@@ -1,3 +1,4 @@
+// Leaf: ?GetBodySettingsSlowInFastOut@CTCLook@@ABEXAAM0MMM@Z
 // CTCLook::GetBodySettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle) const -- when the body angle is off target, accelerate the velocity (clamped to +/- maxSpeed), compute the wrapped next angle, then snap the angle to the target and stop
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751970, length 254 bytes (+ int3 padding), `ret 14h`; `this` is not read.
@@ -18,7 +19,10 @@ extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 inline int Sign(float x) { return x < 0.0f ? -1 : 1; }
 
 class CTCLook { public:
-    void GetBodySettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle) const;   // FableWin.pdb ?GetBodySettingsSlowInFastOut@CTCLook@@ABEXAAM0MMM@Z
+    private:
+    void GetBodySettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle) const;
+    public:
+   // FableWin.pdb ?GetBodySettingsSlowInFastOut@CTCLook@@ABEXAAM0MMM@Z
 };
 
 void CTCLook::GetBodySettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle) const

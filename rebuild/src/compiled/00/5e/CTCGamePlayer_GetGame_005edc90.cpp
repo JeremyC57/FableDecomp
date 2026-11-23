@@ -1,3 +1,4 @@
+// Leaf: ?GetGame@CTCGamePlayer@@QBEPAVCTCTavernGame@@XZ
 // CTCGamePlayer::GetGame() -- the tavern game this player is in, or null when the game table is gone or dead
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EDC90, length 45 bytes.
@@ -21,10 +22,10 @@ class CTCGamePlayer { public:
     unsigned char              _pad_0x00[0x0c];         // CTCBase: vptr, ParentThing, flags
     CTCTavernGame*             Game;                    // +0x0c
     CBaseIntelligentPointer GameTable;               // +0x10
-    CTCTavernGame* GetGame();
+    CTCTavernGame* GetGame() const;
 };
 
-CTCTavernGame* CTCGamePlayer::GetGame()
+CTCTavernGame* CTCGamePlayer::GetGame() const
 {
     if (GameTable.GetPItem()) {
         if (!GameTable.GetPItem()->Dead)

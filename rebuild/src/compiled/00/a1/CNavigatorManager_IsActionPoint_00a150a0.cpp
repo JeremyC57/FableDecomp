@@ -1,6 +1,6 @@
 // CNavigatorManager::IsActionPoint(const C2DVector& position) -- true when the map on the list at +0x24 whose integer bounds (+0x14..+0x20) contain the truncated coordinates says the position is an action point (0x00A77540); false when no map contains it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A150A0, length 96 bytes.
-// Leaf: IsActionPoint
+// Leaf: ?IsActionPoint@CNavigatorManager@@QBE_NABVC2DVector@@@Z
 // Callees: __ftol2 @ 0x00BFEA70 (the two coordinates truncated once, after the empty test), the tree's member. Shape: the sentinel in ebx, the node in esi, the integer coordinates in edi / eax, `ret`.
 class C2DVector { public: float X, Y; };
 class CNavQuadTree { public:
@@ -21,10 +21,10 @@ struct STreeNode_00a150a0 {                           // the navigation-map list
 class CNavigatorManager { public:
     unsigned char    _pad00[0x24];
     STreeNode_00a150a0* m_pMaps;                      // +0x24: the sentinel
-    bool IsActionPoint(const C2DVector& position);
+    bool IsActionPoint(const C2DVector& position) const;
 };
 
-bool CNavigatorManager::IsActionPoint(const C2DVector& position)
+bool CNavigatorManager::IsActionPoint(const C2DVector& position) const
 {
     for (STreeNode_00a150a0* node = m_pMaps->m_pNext; node != m_pMaps; node = node->m_pNext) {
         long x = (long)position.X;

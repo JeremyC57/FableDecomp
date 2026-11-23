@@ -1,5 +1,5 @@
 // CTCTrophy::SendPauseEvent(bool pause) -- queue game event 9 (pause) for the current player carrying the pause flag byte
-// Leaf: SendPauseEvent
+// Leaf: ?SendPauseEvent@CTCTrophy@@AAEX_N@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
@@ -54,7 +54,9 @@ protected:
 };
 
 class CTCTrophy : public CTCBase { public:
+    private:
     void SendPauseEvent(bool pause);
+    public:
 };
 
 void CTCTrophy::SendPauseEvent(bool pause)

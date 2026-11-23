@@ -1,3 +1,4 @@
+// Leaf: ?GetInterpolatedTime@CAnimSet@@ABEMMJ@Z
 // CAnimSet::GetInterpolatedTime(float alpha, long animIndex) const -- the time into one of the set's animations between the last and current completion fractions: looping sets wrap through the interpolation helper, others lerp linearly, both scaled by the animation's duration
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -69,7 +70,9 @@ private:
         return *bank->PeekAnimation(anim);
     }
 public:
+    private:
     float GetInterpolatedTime(float alpha, long animIndex) const;
+    public:
 };
 
 float CAnimSet::GetInterpolatedTime(float alpha, long animIndex) const

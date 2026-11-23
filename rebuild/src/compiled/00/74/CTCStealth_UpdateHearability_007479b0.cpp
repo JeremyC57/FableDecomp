@@ -1,5 +1,5 @@
 // CTCStealth::UpdateHearability() -- unless sneaking (or without a stealth def), a moving owner can be heard from the def's base distance scaled by its pace (running / walking / creeping multiplier) and the hearability modifiers; a SIMPLE_NOISE of that radius is made at the owner and handed the owner
-// Leaf: UpdateHearability
+// Leaf: ?UpdateHearability@CTCStealth@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007479B0, 331 bytes (plain `ret`).
@@ -80,7 +80,9 @@ class CTCStealth : public CTCBase { public:
     float MaxSneakingSpeed;                     // +0x18
     CStealthDef* PDef;                          // +0x1c CDefPointer<CStealthDef const>
     float GetHearabilityModifier();             // 0x007475C0
+    private:
     void UpdateHearability();
+    public:
 };
 
 void CTCStealth::UpdateHearability()

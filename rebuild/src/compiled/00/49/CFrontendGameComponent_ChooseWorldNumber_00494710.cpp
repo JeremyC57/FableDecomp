@@ -10,7 +10,7 @@
 // Model: retail offsets. Ego_r.pdb puts WorldNames at +0x1E38, WorldNamesOffset +0x1E48 and WorldToLoad
 // +0x1E4C; retail STLport vectors are 12 bytes (PDB 16) and SaveNames precedes WorldNames, so retail sits
 // 8 bytes lower: WorldNames +0x1E30 (start/finish/end), WorldNamesOffset +0x1E3C, WorldToLoad +0x1E40.
-// Leaf: ?ChooseWorldNumber@CFrontendGameComponent
+// Leaf: ?ChooseWorldNumber@CFrontendGameComponent@@AAEXJ@Z
 
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
@@ -42,7 +42,9 @@ public:
     virtual void v02();
     virtual void v03();
     virtual void SetQuit();                         // slot 4
+    private:
     void ChooseWorldNumber(long number);
+    public:
 
     unsigned char _members[0x1e30 - 4];             // +0x04..+0x1E2F
     CWideStringVector WorldNames;                   // +0x1E30

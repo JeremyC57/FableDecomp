@@ -1,5 +1,5 @@
 // CTCMeshAutomaticEntityCreator::CreateChildThings() -- walk the appearance's dummy-object names and, for each name that differs from the previous one, parse it: a CREATEOBJECT / CREATEBUILDING / CREATEPARTICLE prefix creates the named object, building or particle at that dummy
-// Leaf: CreateChildThings
+// Leaf: ?CreateChildThings@CTCMeshAutomaticEntityCreator@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072E290, 550 bytes, plain `ret`.
 // Callees: CTCGraphicAppearance::GetAllDummyObjectNames @ 0x004BDB40, CCharString() @ 0x0099E4B0, CCharString(const char*,
 //   long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CCharString::operator!= @ 0x0099E900, operator= @ 0x0099EFB0,
@@ -69,7 +69,9 @@ public:    // CreateBuilding is not in the PDBs: the landed 0x0072DF50 spelling 
 private:
     void CreateParticle(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);   // 0x0072E130
 public:
+    private:
     void CreateChildThings();
+    public:
 };
 
 void CTCMeshAutomaticEntityCreator::CreateChildThings()

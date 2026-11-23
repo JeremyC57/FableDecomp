@@ -1,5 +1,5 @@
 // CTCHeroExperience::GetOnHitSoundIntensity() const -- scale the highest on-hit sound-intensity threshold by how far the combo multiplier has climbed from the current fallback towards the next one
-// Leaf: ?GetOnHitSoundIntensity@
+// Leaf: ?GetOnHitSoundIntensity@CTCHeroExperience@@ABEJXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D86D0, length 153 bytes (+ int3 padding), thiscall plain `ret`.
 // Ego_r.pdb `?GetOnHitSoundIntensity@CTCHeroExperience@@ABEJXZ`; single caller 0x006D8BF5, GetOnHitSound (0x006D8BF0, this
 // chunk). The manifest label "Flourish_UpdateMultiplier" is descriptive and wrong.
@@ -126,7 +126,9 @@ public:
     long GetExperienceFallbackMultiplierForMultiplier(long multiplier) const;   // 0x006D73D0
     long GetExperienceFallbackMultiplier() const { return GetExperienceFallbackMultiplierForMultiplier(GetExperiencePickUpMultiplier()); }
     long GetNextExperienceFallbackMultiplier() const;       // 0x006D7430
+    private:
     long GetOnHitSoundIntensity() const;
+    public:
 };
 
 long CTCHeroExperience::GetOnHitSoundIntensity() const

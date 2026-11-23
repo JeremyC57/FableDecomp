@@ -1,6 +1,6 @@
 // CTCCameraPointDefinitionBase::IsAngleValid() const -- for a point that tests its angle before activation: true only when the point's active camera position lies on the same side of the hero as the current game camera (positive 2D dot product)
 // Grade: RELOCATION_MATCH -- the 2D dot product is accumulated `d = toActive.X * toCamera.X; d += toActive.Y * toCamera.Y;` (retail multiplies the X term first); the single expression multiplies Y first
-// Leaf: IsAngleValid
+// Leaf: ?IsAngleValid@CTCCameraPointDefinitionBase@@ABE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C530, length 192 bytes
 // (?IsAngleValid@CTCCameraPointDefinitionBase@@ABE_NXZ).
@@ -61,7 +61,9 @@ public:
     bool    CutInto;                            // +0x0c
     bool    CutOutOf;                           // +0x0d
     bool    TestAngleBeforeActivation;          // +0x0e
+    private:
     bool IsAngleValid() const;
+    public:
 };
 
 bool CTCCameraPointDefinitionBase::IsAngleValid() const

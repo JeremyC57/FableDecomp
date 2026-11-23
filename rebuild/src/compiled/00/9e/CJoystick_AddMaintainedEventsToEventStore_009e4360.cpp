@@ -1,3 +1,4 @@
+// Leaf: ?AddMaintainedEventsToEventStore@CJoystick@@IAEXXZ
 // CJoystick::AddMaintainedEventsToEventStore() -- walk the maintained-event list (+0xd0c, a VC6-era Dinkumware ring) and append each node's event (node +0xc, 13 dwords) to the 64-entry event store while the stored count (+0xd10) is in range
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E4360, length 80 bytes.
 // No callees. Shape: `this` in edx (no calls, so a volatile register), the node in ebx, the head re-read for the loop test, the count re-read and incremented in memory, `rep movsd`, `ret`.
@@ -31,7 +32,9 @@ class CJoystick { public:                                 // retail layout (0xd1
     SMaintainedEventNode* m_pMaintainedEvents;     // +0xd0c list<CMaintainedEvent> head
     long                  NoStoredEvents;          // +0xd10
     long                  NoEventScansRunning;     // +0xd14
+    protected:
     void AddMaintainedEventsToEventStore();
+    public:
 };
 
 void CJoystick::AddMaintainedEventsToEventStore()

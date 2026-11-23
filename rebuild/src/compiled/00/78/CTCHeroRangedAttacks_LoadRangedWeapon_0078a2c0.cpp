@@ -1,5 +1,5 @@
 // CTCHeroRangedAttacks::LoadRangedWeapon() -- starts the hero's load action when the carried projectile weapon is alive and not yet loaded
-// Leaf: ?LoadRangedWeapon@CTCHeroRangedAttacks
+// Leaf: ?LoadRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078A2C0, 207 bytes.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (the hero's carrying component, type 0x46)
@@ -98,7 +98,9 @@ class CTCHeroRangedAttacks { public:
     bool                Aiming;                      // +0x15
     bool                FireQueued;                  // +0x16
     bool                Loading;                     // +0x17
+    private:
     void LoadRangedWeapon();
+    public:
 };
 
 void CTCHeroRangedAttacks::LoadRangedWeapon()

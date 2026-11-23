@@ -1,3 +1,4 @@
+// Leaf: ?IsStillRunnable@CAIStateGroup_CreatureAdvanceInCover@@IAE_NXZ
 // CAIStateGroup_CreatureAdvanceInCover::IsStillRunnable() -- the target lives, is not in melee and holds a projectile weapon
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00978f10, length 187 bytes (+ int3 padding).
@@ -112,7 +113,9 @@ struct CAIStateGroup_CreatureAdvanceInCover
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
     CIntelligentPointer<const CThing> PTargetThing; // +0x14
+    protected:
     bool IsStillRunnable();
+    public:
 };
 #pragma pack(pop)
 

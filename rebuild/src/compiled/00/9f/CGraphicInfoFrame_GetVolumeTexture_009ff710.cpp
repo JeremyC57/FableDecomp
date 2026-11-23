@@ -1,5 +1,5 @@
 // CGraphicInfoFrame::GetVolumeTexture(CVolumeTexture** out, unsigned long mipLevel) -- make sure the frame is loaded (start loading at that mip level, finish any pending read and upload it); when it has volume data, refresh the resources' LRU positions once per frame-stamp (unless this mip level is already resident) and return the volume texture through `out`
-// Leaf: GetVolumeTexture
+// Leaf: ?GetVolumeTexture@CGraphicInfoFrame@@QBE_NPAPAVCVolumeTexture@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FF710, length 330 bytes, `ret 8`.
 // Callees: CGraphicInfoFrame::BeginLoading(unsigned long, unsigned long) @ 0x009FE620, CBankFileAsyncData::IsFinished
 //   @ 0x009D54E0 / WaitUntilFinished @ 0x009D5B60, CFrameData's load completion @ 0x009FC440 and UploadFrame(bool)
@@ -110,10 +110,10 @@ public:
     CFrameData*    Data;                           // +0x08
     CGraphicInfo*  GraphicInfo;                    // +0x0c
     void BeginLoading(unsigned long a0, unsigned long a1) const;   // 0x009FE620
-    bool GetVolumeTexture(CVolumeTexture** out, unsigned long mipLevel);
+    bool GetVolumeTexture(CVolumeTexture** out, unsigned long mipLevel) const;
 };
 
-bool CGraphicInfoFrame::GetVolumeTexture(CVolumeTexture** out, unsigned long mipLevel)
+bool CGraphicInfoFrame::GetVolumeTexture(CVolumeTexture** out, unsigned long mipLevel) const
 {
     BeginLoading(mipLevel, 0);
     if (Data && Data->AsyncRead) {

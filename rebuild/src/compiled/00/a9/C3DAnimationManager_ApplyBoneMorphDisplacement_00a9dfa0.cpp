@@ -5,7 +5,7 @@
 //   the position goes through a C3DVector temporary with a user copy ctor times the morph, assigned through
 //   C4DVector::operator=(const C3DVector&) that clears W.
 // Layout: C3DKeyframe Rotation +0, Position C4DVector +0x10; C3DMesh2 BoneCount +0x98, Bones +0x9c (0x3c stride).
-// Leaf: ApplyBoneMorphDisplacement
+// Leaf: ?ApplyBoneMorphDisplacement@C3DAnimationManager@@ABEXPAVC3DKeyframe@@PBVC3DVector@@ABVC3DMesh2@@@Z
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
@@ -35,7 +35,9 @@ class C3DMesh2 { public:
     C3DMeshBone* Bones;                         // +0x9c
 };
 class C3DAnimationManager { public:
+    private:
     void ApplyBoneMorphDisplacement(C3DKeyframe* keyframes, const C3DVector* morphs, const C3DMesh2& mesh) const;
+    public:
 };
 
 void C3DAnimationManager::ApplyBoneMorphDisplacement(C3DKeyframe* keyframes, const C3DVector* morphs, const C3DMesh2& mesh) const

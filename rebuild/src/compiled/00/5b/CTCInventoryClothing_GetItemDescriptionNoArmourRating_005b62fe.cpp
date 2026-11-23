@@ -1,5 +1,5 @@
 // CTCInventoryClothing::GetItemDescriptionNoArmourRating(CWideString& out, long defIndex) -- append a clothing item's stat block to `out`: the suit-parts count when the item is part of a suit, then attractiveness, scariness and alignment, each as "<label> [+]<item value> ([+]<change>)" with the change against what the hero wears now, and finally the item's description text
-// Leaf: GetItemDescriptionNoArmourRating@CTCInventoryClothing
+// Leaf: ?GetItemDescriptionNoArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005B62FE, 1129 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
@@ -63,11 +63,11 @@ class CTCInventoryClothing { public:
         long  total_price;                                  // +0x2c
         ArgPasser();                                    // 0x005B336A
     };
-    void GetItemDescriptionNoArmourRating(CWideString& out, long defIndex);
+    void GetItemDescriptionNoArmourRating(CWideString& out, long defIndex) const;
 private:
     void CalculateArmorValues(ArgPasser& values, long defIndex) const;   // 0x005B4EBA
 };
-void CTCInventoryClothing::GetItemDescriptionNoArmourRating(CWideString& out, long defIndex)
+void CTCInventoryClothing::GetItemDescriptionNoArmourRating(CWideString& out, long defIndex) const
 {
     ArgPasser values;
     CalculateArmorValues(values, defIndex);

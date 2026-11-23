@@ -1,3 +1,4 @@
+// Leaf: ?TurnToFace@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
 // CAIStateGroup_OpinionReactionRoot::TurnToFace() -- one look-at-thing step at ThingReactingTo; terminate when done turning fails.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095EDF0, length 76 bytes (+ int3 padding).
@@ -35,7 +36,9 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     long CurrentReactionType;                   // +0x18
     bool ReactionFlags[79];                     // +0x1c
     CIntelligentPointer<CThing> ThingReactingTo;   // +0x6b
+    private:
     bool TurnToFace();
+    public:
 };
 #pragma pack(pop)
 

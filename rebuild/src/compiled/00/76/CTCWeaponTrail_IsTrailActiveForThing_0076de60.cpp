@@ -1,3 +1,4 @@
+// Leaf: ?IsTrailActiveForThing@CTCWeaponTrail@@ABE_NJPBVCThing@@PBVCThingCreatureBase@@@Z
 // CTCWeaponTrail::IsTrailActiveForThing(long, const CThing*, const CThingCreatureBase*) const -- a trail is active for a struck thing given directly, or when the creature's current action reports this component's trail at the same index
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076DE60, length 68 bytes (+ int3 padding).
 // Callees: CCreatureActionBase::GetWeaponTrailUsedInStrikeAction(long&) const, virtual slot 43 (+0xac).
@@ -31,7 +32,9 @@ class CThingCreatureBase { public:
 class CTCWeaponTrail { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
+    private:
     bool IsTrailActiveForThing(long trailIndex, const CThing* thing, const CThingCreatureBase* creature) const;
+    public:
 };
 
 bool CTCWeaponTrail::IsTrailActiveForThing(long trailIndex, const CThing* thing, const CThingCreatureBase* creature) const

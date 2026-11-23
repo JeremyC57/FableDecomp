@@ -1,3 +1,4 @@
+// Leaf: ?UpdateIdleParticles@CTCHeroMorph@@AAEXXZ
 // CTCHeroMorph::UpdateIdleParticles() -- prunes dead idle emitters; when the hero has stood still long enough spawns the idle particle morphs, otherwise kills them
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
@@ -182,7 +183,9 @@ public:
     bool IdleParticlesAdded;                            // +0x3C
     float GetMorphStrength(EHeroMorphType type) const;  // 0x0071BA60 (Ego_r.pdb)
     void KillIdleParticles();                           // 0x0071C1F0
+    private:
     void UpdateIdleParticles();
+    public:
 };
 
 void CTCHeroMorph::UpdateIdleParticles()

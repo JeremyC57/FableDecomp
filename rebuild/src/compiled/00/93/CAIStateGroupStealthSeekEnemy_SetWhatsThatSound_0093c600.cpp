@@ -1,5 +1,5 @@
 // CAIStateGroup_StealthSeekEnemy::SetWhatsThatSound() -- look up the creature's WHATS_THAT sound pair and play it
-// Leaf: SetWhatsThatSound
+// Leaf: ?SetWhatsThatSound@CAIStateGroup_StealthSeekEnemy@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // through the creature's interface-0x10 sound component with default play parameters.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093C600, length 195 bytes (+ int3 padding).
@@ -96,7 +96,9 @@ class CTCSoundPlayer { public:                         // the interface-0x10 com
 };
 
 struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
+    private:
     void SetWhatsThatSound();
+    public:
 };
 
 void CAIStateGroup_StealthSeekEnemy::SetWhatsThatSound()

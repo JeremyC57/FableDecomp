@@ -1,3 +1,4 @@
+// Leaf: ?DestroyPlayers@CPlayerManager@@AAEXXZ
 // CPlayerManager::DestroyPlayers() -- uninitialise player 0..n-1 (each looked up by number, the neutral player standing in for a missing one), delete every player, empty the player vector and reset the neutral/main player numbers
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0044A070, length 202 bytes (+ int3 padding), plain `ret`.
 // Identity: Ego_r.pdb `?DestroyPlayers@CPlayerManager@@AAEXXZ`.
@@ -62,7 +63,9 @@ class CPlayerManager { public:
                 return Players[i];
         return Players[PlayerNeutral];
     }
+    private:
     void DestroyPlayers();
+    public:
 };
 
 void CPlayerManager::DestroyPlayers()

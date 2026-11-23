@@ -1,3 +1,4 @@
+// Leaf: ?UpdateAnimation@CTCCupboard@@AAEXXZ
 // CTCCupboard::UpdateAnimation() -- while the cupboard is animating, advance its animation by one frame (1 / fps seconds) and stop once the animation has (to within epsilon) reached its end
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
@@ -65,7 +66,9 @@ class CTCCupboard { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     bool Animating;                                     // +0x0c
+    private:
     void UpdateAnimation();
+    public:
 };
 
 void CTCCupboard::UpdateAnimation()

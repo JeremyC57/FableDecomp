@@ -1,3 +1,4 @@
+// Leaf: ?InitHeightMap@CMap@@IAEXXZ
 // CMap::InitHeightMap() -- build the map's height map from its height-map size and the world seed and install it in the scoped pointer (the old height map, if any, is destroyed after the new one is stored)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081ED90, length 98 bytes.
 // Callees: operator new @ 0x00BFEA1A (0x214 bytes), CHeightMap::CHeightMap(CWorld*, CMap*, const CHeightMapInit&) @ 0x008F63C0, the old
@@ -58,7 +59,9 @@ class CMap { public:
     unsigned char           _pad1a80[0x1d14 - 0x1a80];
     long                    HeightMapSizeX;        // +0x1d14
     long                    HeightMapSizeY;        // +0x1d18
+    protected:
     void InitHeightMap();
+    public:
 };
 void CMap::InitHeightMap()
 {

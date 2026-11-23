@@ -1,5 +1,5 @@
 // CAFile::ParserReadPastComponent(CStringParser& parser, CCharString& component) -- read one path component (up to the next separator or the end) into component; false when none is there, it holds a forbidden symbol, or it ends in a space or a stray dot
-// Leaf: ?ParserReadPastComponent@CAFile@@
+// Leaf: ?ParserReadPastComponent@CAFile@@CI_NAAVCStringParser@@AAVCCharString@@@Z
 // Flags: /Oa
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00998010, 343 bytes (+ int3 padding). FableWin.pdb
 //   `?ParserReadPastComponent@CAFile@@CI_NAAVCStringParser@@AAVCCharString@@@Z`: a private static `__fastcall` (parser in
@@ -74,7 +74,9 @@ class CAFile
 public:
     private: static bool __fastcall ParserIsSeparatorNext(CStringParser& parser); public:              // 0x00997DA0
     private: static bool __fastcall IsForbiddenSymbolInComponent(const CCharString& component); public: // 0x009975E0
+    private:
     static bool __fastcall ParserReadPastComponent(CStringParser& parser, CCharString& component);
+    public:
 };
 
 bool __fastcall CAFile::ParserReadPastComponent(CStringParser& parser, CCharString& component)

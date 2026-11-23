@@ -1,5 +1,5 @@
 // CTCScriptedControl::IsActionRunning(const CCharString& name) -- true when a queued script action's name equals `name`
-// Leaf: IsActionRunning
+// Leaf: ?IsActionRunning@CTCScriptedControl@@QBE_NABVCCharString@@@Z
 // Retail: Fable.exe 0x00712D70, 123 bytes (`ret 4`); the twin of TerminateActionByName 0x00712CE0 without the store.
 // Callees: CTCScriptedControl::CActionBase virtual slot 4 (+0x10, GetName() returning CCharString by value; the
 // temporary lives in the dead argument slot), CCharString equality inlined around Compare(const char*, const char*)
@@ -59,10 +59,10 @@ class CTCScriptedControl { public:
     bool          IsInGlobalUpdateTCs;         // +0x09
     unsigned char PScriptHandleImp[8];         // +0x0c CIntelligentPointer<CScriptGameResourceObjectScriptedThing>
     CActionList   PActionList;                 // +0x14
-    bool IsActionRunning(const CCharString& name);
+    bool IsActionRunning(const CCharString& name) const;
 };
 
-bool CTCScriptedControl::IsActionRunning(const CCharString& name)
+bool CTCScriptedControl::IsActionRunning(const CCharString& name) const
 {
     for (SActionNode* node = PActionList._M_node->_M_next; node != PActionList._M_node; node = node->_M_next) {
         if (node->Data->GetName() == name)

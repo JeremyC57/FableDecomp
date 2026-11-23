@@ -1,3 +1,4 @@
+// Leaf: ?MarriageCommentIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
 // CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable() -- a hero comment is due and one of the hero's living wives from this creature's village has a marriage state 1..5.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00986510, length 421 bytes.
@@ -97,7 +98,9 @@ class CAIStateGroup_OpinionReactionRoot { public:
 private:
     bool CommentAboutHeroIsRunnable();          // 0x009863E0 (Ego_r.pdb + FableWin.pdb: private, AAE)
 public:
+    private:
     bool MarriageCommentIsRunnable();
+    public:
 };
 #pragma pack(pop)
 

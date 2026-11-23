@@ -1,5 +1,5 @@
 // CGraphicDataBank::GetTextureType(const CGraphicHeader& header, bool param) -- pick the ETextureType for a graphic from its pixel format (signed / compressed) and its transparency type
-// Leaf: GetTextureType
+// Leaf: ?GetTextureType@CGraphicDataBank@@ABE?AW4ETextureType@1@ABVCGraphicHeader@1@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009FD2B0, 212 bytes incl. the 4-entry jump table, `ret 8`. Called from 0x009FD76D.
 //   Real signature (FableWin.pdb): `CGraphicDataBank::ETextureType CGraphicDataBank::GetTextureType(const CGraphicHeader&, bool) const`.
 // Callees: CPixelFormat::IsCompressed 0x009E3940, CPixelFormat::IsSigned 0x009E3970.
@@ -34,7 +34,9 @@ public:
         unsigned long       FrameDataSize;         // +0x14
         unsigned long       CompressedMipmapSizes[1];    // +0x18
     };
+    private:
     ETextureType GetTextureType(const CGraphicHeader& header, bool param) const;
+    public:
 };
 
 CGraphicDataBank::ETextureType CGraphicDataBank::GetTextureType(const CGraphicHeader& header, bool param) const

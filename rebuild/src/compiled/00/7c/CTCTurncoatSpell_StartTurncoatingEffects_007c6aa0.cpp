@@ -1,5 +1,5 @@
 // CTCTurncoatSpell::StartTurncoatingEffects() -- while the target lives: start the looping turncoat sound, then look up the hero and enemy turncoating effects in the spell's effect table and attach a fresh particle effect of each to the caster and to the target
-// Leaf: ?StartTurncoatingEffects@CTCTurncoatSpell
+// Leaf: ?StartTurncoatingEffects@CTCTurncoatSpell@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C6AA0, 762 bytes (+ int3 padding), plain `ret`.
@@ -92,7 +92,9 @@ class CTCTurncoatSpell { public:
     unsigned char _pad54[0x74 - 0x54];
     CIntelligentPointer<CThing> TurncoatingEffectOnMe;      // +0x74
     CIntelligentPointer<CThing> TurncoatingEffectOnTarget;  // +0x7c
+    private:
     void StartTurncoatingEffects();
+    public:
 };
 
 void CTCTurncoatSpell::StartTurncoatingEffects()

@@ -11,7 +11,7 @@
 // built as `C3DVector(p.X, p.Y, p.Z + 1.2f)` (Z first: value-ctor arguments right to left); the intersection call's
 // arguments are pushed before the by-value mesh-object temporary is made; the bool is kept across its dtor.
 // Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (PCoverThing +0x1f); PTarget +0x14 (8-byte pointer before it).
-// Leaf: CanSeeTarget@CAIStateGroup_CreatureUseCoverBase
+// Leaf: ?CanSeeTarget@CAIStateGroup_CreatureUseCoverBase@@IAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CThing;
 
@@ -78,7 +78,9 @@ struct CAIStateGroup_CreatureUseCoverBase {
     bool HasJumpOutAnims;                          // +0x1d
     bool TimingCritical;                           // +0x1e
     CIntelligentPointer<CThing> PCoverThing;           // +0x1f
+    protected:
     bool CanSeeTarget();
+    public:
 };
 #pragma pack(pop)
 

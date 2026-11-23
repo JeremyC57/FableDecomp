@@ -1,5 +1,5 @@
 // CEnginePrimitiveManagerOcclusionBase::DrawAlphaBoundingBox(const CMatrix3x4& box, unsigned long colour) -- open a render-state capture block, turn pixel shaders off (remembering the old setting), set nine tracked render states (texture-stage colour/alpha ops and args from 0x01396E74/0x01396EF4, the texture factor = colour, +0x28B8 = 1, +0x291C/+0x2930 from 0x01396F78/0x01396F7C, +0x2840 = 0xF), render the occlusion data's untextured test mesh with the box, restore the pixel-shader setting and the capture block
-// Leaf: DrawAlphaBoundingBox
+// Leaf: ?DrawAlphaBoundingBox@CEnginePrimitiveManagerOcclusionBase@@IAEXABVCMatrix3x4@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B90CD0, length 1136 bytes, `ret 8`.
 // Callees: RenderUntexturedStaticMeshPrimitive @ 0x00B903D0 (on `this`), CShaderRenderManager::EnablePixelShaders @ 0x00988110 /
 //   DisablePixelShaders @ 0x00988190 (shader manager global 0x01436E14; PixelShadersEnabled +0x391, the inline
@@ -48,7 +48,9 @@ struct CEnginePrimitiveManagerOcclusionBase {
     unsigned char   _pad[0x14];
     COcclusionData* m_pOcclusionData;              // +0x14
     void RenderUntexturedStaticMeshPrimitive(void* mesh, const CMatrix3x4& box);   // 0x00B903D0
+    protected:
     void DrawAlphaBoundingBox(const CMatrix3x4& box, unsigned long colour);
+    public:
 };
 
 void CEnginePrimitiveManagerOcclusionBase::DrawAlphaBoundingBox(const CMatrix3x4& box, unsigned long colour)

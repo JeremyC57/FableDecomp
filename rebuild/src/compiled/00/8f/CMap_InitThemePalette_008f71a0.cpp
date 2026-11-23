@@ -1,5 +1,5 @@
 // CMap::InitThemePalette() -- empty the theme palette, refill it with 256 unused zero entries, mark entry 0 used and add the global def's invalid-theme stand-in
-// Leaf: ?InitThemePalette@
+// Leaf: ?InitThemePalette@CMap@@IAEXXZ
 // Retail 0x008F71A0, 0xAD bytes (+int3 padding), thiscall, plain `ret`. Manifest label "CMap_InitializePalette"
 //   (_global); FableWin PDB name set: `?InitThemePalette@CMap@@IAEXXZ` (the one void() CMap member about the palette
 //   besides the landed ZeroAllUnusedThemePaletteEntries). Callers: the two CMap constructors 0x00820CC0 / 0x008224E0
@@ -132,7 +132,9 @@ public:
     unsigned char _pad20[0x1a6c - 0x20];
     std::vector<CThemePaletteEntry> ThemePaletteEntryList;   protected: // +0x1a6c
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); public:   // 0x008F70F0
+    protected:
     void InitThemePalette();
+    public:
 };
 
 void CMap::InitThemePalette()

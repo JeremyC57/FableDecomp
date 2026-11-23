@@ -1,5 +1,5 @@
 // CTCEnemy::IsAllyOf(const CThing&) const -- the parent itself is an ally, an enemy never is, otherwise allied when both factions are known and the faction table allies them
-// Leaf: IsAllyOf
+// Leaf: ?IsAllyOf@CTCEnemy@@ABE_NABVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x0076D460, 132 bytes (`ret 4`). Ego_r.pdb `?IsAllyOf@CTCEnemy@@ABE_NABVCThing@@@Z`. Callees:
@@ -56,7 +56,9 @@ class CTCEnemy { public:
     unsigned char _pad0a[0x18 - 0x0a];                      // flags, EnemyThings, AllyThings (retail sizes)
     CFaction*     PFaction;                                 // +0x18
     private: bool IsEnemyOf(const CThing& thing) const; public:              // 0x0076CCE0
+    private:
     bool IsAllyOf(const CThing& thing) const;
+    public:
 };
 
 bool CTCEnemy::IsAllyOf(const CThing& thing) const

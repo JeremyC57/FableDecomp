@@ -6,7 +6,7 @@
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: IsInInteractiveState
+// Leaf: ?IsInInteractiveState@CSubtitleRenderer@@QBE_NXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -93,7 +93,7 @@ public:
     CFadeInFadeOutBase ButtonPulseTimer;           // +0x104
     bool IsWaitingForClickPast() const;            // 0x0048DB46
     bool IsTextReadyForClickPast() const;          // 0x0048E072
-    bool IsInInteractiveState();
+    bool IsInInteractiveState() const;
 };
 
 
@@ -201,7 +201,7 @@ public:
 };
 class CPlayerGui { public: NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const; };   // 0x00437CD0
 
-bool CSubtitleRenderer::IsInInteractiveState()
+bool CSubtitleRenderer::IsInInteractiveState() const
 {
     unsigned long flags = DisplayFlags;
     if (!(flags & 0x4c)) {

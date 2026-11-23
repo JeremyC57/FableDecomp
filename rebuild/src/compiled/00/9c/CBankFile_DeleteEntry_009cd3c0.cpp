@@ -1,5 +1,5 @@
 // CBankFile::DeleteEntry(unsigned long index) -- forget an entry: reset its runtime record, delete its pending update data, clear the block order and bump the change count
-// Leaf: DeleteEntry
+// Leaf: ?DeleteEntry@CBankFile@@AAEXK@Z
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CD3C0, length 184 bytes (+8 int3), ret 4.
 // Callees: operator delete[] @ 0x00BFEB1C (the update's InfoBuffer), CSmallVector<CCharString,8>::Clear @ 0x009D2110,
@@ -58,7 +58,9 @@ public:
     unsigned long             ChangeCount;          // +0x90
     unsigned char             _pad94[0x4c];         // +0x94 .. +0xdf
     CArray<unsigned long>     BlockOrder;           // +0xe0
+    private:
     void DeleteEntry(unsigned long index);
+    public:
 };
 
 void CBankFile::DeleteEntry(unsigned long index)

@@ -1,3 +1,4 @@
+// Leaf: ?GetMasterScriptDataForScript@CQuestManager@@AAEPAVCScriptDataBase@@ABVCScriptInfo@@@Z
 // CQuestManager::GetMasterScriptDataForScript(const CScriptInfo&) -- the script data of the active master-script quest whose script info shares the given info's master-data allocator, or null
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AFA10, length 67 bytes. No callees.
 // Identity: FableWin.pdb ?GetMasterScriptDataForScript@CQuestManager@@AAEPAVCScriptDataBase@@ABVCScriptInfo@@@Z.
@@ -36,7 +37,9 @@ struct CActiveQuestNode {
 class CQuestManager { public:
     unsigned char     _pad_0x00[0x38];
     CActiveQuestNode* ActiveQuests;                // +0x38 (head node)
+    private:
     CScriptDataBase* GetMasterScriptDataForScript(const CScriptInfo& info);
+    public:
 };
 
 CScriptDataBase* CQuestManager::GetMasterScriptDataForScript(const CScriptInfo& info)

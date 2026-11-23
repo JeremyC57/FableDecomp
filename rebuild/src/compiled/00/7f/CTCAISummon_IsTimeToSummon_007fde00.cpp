@@ -1,3 +1,4 @@
+// Leaf: ?IsTimeToSummon@CTCAISummon@@ABE_NXZ
 // CTCAISummon::IsTimeToSummon() -- true when nothing was summoned yet, the def has no interval, or the interval has elapsed
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -46,10 +47,12 @@ class CTCAISummon : public CTCBase_Calls { public:
     CDefPointer<CSummonDef> PSummonDef;                     // +0x0c
     void*                   MySummonedCreatures;            // +0x10 retail list (sentinel pointer)
     long                    LastSummonTick;                 // +0x14
-    bool IsTimeToSummon();
+    private:
+    bool IsTimeToSummon() const;
+    public:
 };
 
-bool CTCAISummon::IsTimeToSummon()
+bool CTCAISummon::IsTimeToSummon() const
 {
     if (LastSummonTick == 0)
         return true;

@@ -1,5 +1,5 @@
 // CModeStandBase::SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStatus status, float speed, const CMovementSetup& from, const CMovementSetup& to) const -- blend between the two movement anims by where the speed falls between their maximum speeds: when the pair is already playing (and new anims are not forced) re-weight both layers; otherwise start `from` as the main anim (keeping the current frame unless the existing anim is the same pair on a non-finished state) and add `to` as the weighted blend
-// Leaf: SetUpMovementAnim
+// Leaf: ?SetUpMovementAnim@CModeStandBase@@ABEXAAVCAnimateThing@@W4EExistingAnimStatus@1@MABVCMovementSetup@1@2@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00861A80, 0x1E6 bytes (padded to 496), `ret 14h`. PDB name
 //   ?SetUpMovementAnim@CModeStandBase@@ABEXAAVCAnimateThing@@W4EExistingAnimStatus@1@MABVCMovementSetup@1@2@Z (private; the
@@ -89,8 +89,10 @@ public:
     CThing*       Owner;                            // +0x04
     unsigned char _pad08[0x1c];
     bool          ForceAddNewAnims;                 // +0x24
+    private:
     void SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStatus status, float speed, const CMovementSetup& from,
                            const CMovementSetup& to) const;
+    public:
 };
 void CModeStandBase::SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStatus status, float speed,
                                        const CMovementSetup& from, const CMovementSetup& to) const

@@ -1,3 +1,4 @@
+// Leaf: ?InitialiseMannequin@CTCInventoryClothing@@AAEXXZ
 // CTCInventoryClothing::InitialiseMannequin() -- create the inventory mannequin from the inventory def at the owner, copy the owner's appearance components onto it and start its DEFAULT animation
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x23] removed re-padded by-value maps +8.
@@ -188,7 +189,9 @@ class CTCInventoryClothing { public:
     CThing* PMannequin;                                        // +0x158
     FABLE_FORCEINLINE CDefPointerCopy<CInventoryDef> GetInventoryDef() const { return CDefPointerCopy<CInventoryDef>(PInventoryDef); }
     FABLE_FORCEINLINE CThing* GetParentThing() const { return ParentThing; }
+    private:
     void InitialiseMannequin();
+    public:
 };
 void CTCInventoryClothing::InitialiseMannequin()
 {

@@ -1,3 +1,4 @@
+// Leaf: ?Laugh@CAIStateGroup_GoToPub@@IAE_NXZ
 // CAIStateGroup_GoToPub::Laugh() -- play the SEATED_TAVERN_LAUGH animation and report whether it completed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00947D30, length 114 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long)
@@ -62,7 +63,9 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     bool HandsOffMode;                              // +0xa0
     bool UnderScriptControl;                        // +0xa1
     long TimeBeforeAskingForBeer;                   // +0xa4
+    protected:
     bool Laugh();
+    public:
 };
 
 bool CAIStateGroup_GoToPub::Laugh()

@@ -1,3 +1,4 @@
+// Leaf: ?FinalCleanup@CTCMultiArrow@@IAEXXZ
 // CTCMultiArrow::FinalCleanup() -- removes the multi-arrow effect from the weapon held by the parent's type-0x13 component
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CC410, length 86 bytes.
@@ -65,7 +66,9 @@ struct CTCBase_007cc410 {
 
 class CTCMultiArrow : public CTCBase_007cc410 { public:
     void RemoveEffectOnWeapon(CThing* weapon);      // 0x007CC120
+    protected:
     void FinalCleanup();
+    public:
 };
 
 void CTCMultiArrow::FinalCleanup()

@@ -1,5 +1,5 @@
 // CTCSpecialAbilities::SetupPhysicalShieldSpell() -- cancel an active physical shield on the creature (false), or add a fresh CTCPhysicalShieldSpell component (true)
-// Leaf: SetupPhysicalShieldSpell
+// Leaf: ?SetupPhysicalShieldSpell@CTCSpecialAbilities@@AAE_NXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072B0D0, length 129 bytes (padded row 144).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetTC, interface 0x93 = bit 19 of CThing+0x30),
@@ -32,7 +32,9 @@ class CTCSpecialAbilities { public:
     long CurrentAbility;                        // +0x10
     void* UndeadFollowers;                      // +0x14 list sentinel
     CThing* Creature;                           // +0x18 (PDB +0x20)
+    private:
     bool SetupPhysicalShieldSpell();
+    public:
 };
 
 bool CTCSpecialAbilities::SetupPhysicalShieldSpell()

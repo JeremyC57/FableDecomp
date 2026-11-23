@@ -2,7 +2,7 @@
 // haste (squared) for action animations, and the hero's melee-strike speed scaled by the primary weapon's speed value
 // and clamped to the hero's range for strike animations; square-rooted, and divided by the squared bullet-time scale
 // when bullet time is on and the creature is affected
-// Leaf: ?GetAnimationSpeedMultiplier@CThingCreatureBase
+// Leaf: ?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006655A0, plain `ret` (float in st0).
 // Callees: CVectorMap::LowerBound const 0x004365B0; the current action's virtuals +0x3c, +0x78, +0x7c;
@@ -92,10 +92,10 @@ class CThingCreatureBase : public CThing {
 public:
     unsigned char        _pad94[0x100 - 0x94];
     CCreatureActionBase* CurrentAction;         // +0x100
-    float GetAnimationSpeedMultiplier();
+    float GetAnimationSpeedMultiplier() const;
 };
 
-float CThingCreatureBase::GetAnimationSpeedMultiplier()
+float CThingCreatureBase::GetAnimationSpeedMultiplier() const
 {
     float multiplier = 1.0f;
     bool actionSpeed = false;

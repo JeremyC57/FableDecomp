@@ -1,3 +1,4 @@
+// Leaf: ?IsTimeToPrepareMeal@CAIStateGroup_PrepareMeal@@ABE_NXZ
 // CAIStateGroup_PrepareMeal::IsTimeToPrepareMeal() -- the villager's village says it is cook time (the village's
 // counted def held across the call).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009462A0, length 138 bytes (+ int3 padding).
@@ -148,10 +149,12 @@ struct CThingB {
 };
 
 struct CAIStateGroup_PrepareMeal : CAIStateGroupBase {
-    bool IsTimeToPrepareMeal();
+    private:
+    bool IsTimeToPrepareMeal() const;
+    public:
 };
 
-bool CAIStateGroup_PrepareMeal::IsTimeToPrepareMeal()
+bool CAIStateGroup_PrepareMeal::IsTimeToPrepareMeal() const
 {
     CTCVillager* villager;
     ((CThingB*)PBrain->PCreature)->GetInterface(&villager, 0x23);

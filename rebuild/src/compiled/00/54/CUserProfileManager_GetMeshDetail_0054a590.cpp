@@ -1,3 +1,4 @@
+// Leaf: ?GetMeshDetail@CUserProfileManager@@QBEMXZ
 // CUserProfileManager::GetMeshDetail()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054A590, oracle length 18 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
@@ -18,10 +19,10 @@ class CUserProfileManager { public:
     float         MeshDetail;                  // +0x44 (PDB)
     unsigned char _pad_after[0x100 - 0x44 - 4];
     float         MeshDetailNewProfile;        // +0x100 (retail; PDB +0x104)
-    float GetMeshDetail();
+    float GetMeshDetail() const;
 };
 
-float CUserProfileManager::GetMeshDetail()
+float CUserProfileManager::GetMeshDetail() const
 {
     if (this->UseNewProfileValues)
         return this->MeshDetailNewProfile;

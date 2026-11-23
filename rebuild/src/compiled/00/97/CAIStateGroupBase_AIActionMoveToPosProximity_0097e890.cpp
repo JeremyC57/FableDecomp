@@ -1,3 +1,4 @@
+// Leaf: ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
 // CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat, C3DVector, float, bool&, EMovementType, bool, bool, bool, const CThing*, bool, float) -- steer the creature along its navigation route to within `proximity` of a position, one brain output per tick (move, look at the best face target or look around), until arrived (2), failed (3) or stopped (1)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
@@ -195,9 +196,11 @@ protected:
 public:
     protected: void SetThingToNotAvoid(const CThing* thing); public:   // 0x0097E270; NF296: PDB name, was SetNavigationIgnoreThing
     protected: void SetProximityForDirectApproach(float scale); public:            // 0x0097E2D0; NF296: PDB name, was SetNavigationSpeedScale
+    protected:
     EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float proximity, bool& moving,
                                                 EMovementType anim, bool lookAround, bool b7, bool b8, const CThing* ignoreThing,
                                                 bool b10, float speedScale);
+    public:
 };
 
 EAIActionReturn CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float proximity, bool& moving,

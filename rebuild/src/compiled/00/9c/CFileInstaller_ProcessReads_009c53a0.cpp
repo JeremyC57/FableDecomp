@@ -1,5 +1,5 @@
 // CFileInstaller::ProcessReads() -- when no reads or writes are in flight: retire the finished current read, then pull files off the to-copy list (start an active copy when needed, else record the file as completed) until a read is current, then process it
-// Leaf: ?ProcessReads@CFileInstaller
+// Leaf: ?ProcessReads@CFileInstaller@@IAEXXZ
 // Layout: retail CFileInstaller (STLport lists are one sentinel pointer each): FilesToCopy +0x38, FilesToFinish +0x3c, ActiveFiles +0x40,
 // CompletedFiles +0x44, PCurrentReadFile +0x50, NoActiveReads +0x58, NoActiveWrites +0x5c, Completed +0x80; retail CActiveFile 0xb0 bytes.
 // Shape: same-TU noinline stand-ins for IsFileCopyNecessary 0x009C4440 (reads info only) and the CActiveFile(const CFileInfoPointer&)
@@ -136,7 +136,9 @@ class CFileInstaller { public:
     bool IsFileCopyNecessary(const CFileInfoPointer& info); // 0x009C4440
     void StartRead(CActiveFile* file);                      // 0x009C3590
     void ProcessRead(CActiveFile* file);                    // 0x009C3AE0
+    protected:
     void ProcessReads();
+    public:
 };
 
 #pragma auto_inline(off)

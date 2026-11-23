@@ -1,7 +1,7 @@
 // CWorld::DisplayCollectableRentInformation() -- total the collectable and maximum rent over every buyable house that
 // is currently rented; when there is rent to collect and the hero is alive, format TEXT_GUI_COLLECTABLE_RENT with
 // the two totals into the hero's region display (the extra area-name line)
-// Leaf: DisplayCollectableRentInformation
+// Leaf: ?DisplayCollectableRentInformation@CWorld@@QBEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -125,7 +125,7 @@ class CThingSearchTools { public:
     void GetAllLeafThings(const CThingFilter_HasTC& filter, vector<const CThing*>& things);   // 0x004AD780
 };
 class CWorld : public CWorld_PDB { public:
-    void DisplayCollectableRentInformation();
+    void DisplayCollectableRentInformation() const;
 };
 const CThing** CollectLeafThings(long type, const CThing** first, const CThing** last);
 // Same-TU stand-in for GetAllLeafThings<buyable house> 0x004AD780 (retail's LTCG knowledge): the house vector's
@@ -136,7 +136,7 @@ void CThingSearchTools::GetAllLeafThings(const CThingFilter_HasTC& filter, vecto
     things._M_finish = CollectLeafThings(filter.Type, things._M_start, things._M_end_of_storage);
 }
 #pragma auto_inline(on)
-void CWorld::DisplayCollectableRentInformation()
+void CWorld::DisplayCollectableRentInformation() const
 {
     vector<const CThing*> houses;
     PThingSearchTools_ptr->GetAllLeafThings(CThingFilter_HasTC(0xd5), houses);

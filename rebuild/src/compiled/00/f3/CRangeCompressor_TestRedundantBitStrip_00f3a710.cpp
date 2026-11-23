@@ -1,5 +1,5 @@
 // CRangeCompressor::TestRedundantBitStrip(const CArray<unsigned long>& in, CArray<unsigned long>& out, CScriptEntry& entry, long bytes) -- strips the bits that are constant across every value and records the strip in the entry
-// Leaf: TestRedundantBitStrip
+// Leaf: ?TestRedundantBitStrip@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z
 // Layout: retail CArray<T> is begin/end/capacity (landed 0x00F3A270); CRangeCompressor is empty in the PDB; the
 // CScriptEntry fields are named from use only (+0 flags: 8 = constant-set bits, 2 = gap start at +0xC, 4 = gap
 // failed with the kept mask at +0x10; +0x14 = bits set in every value). out.resize is 0x00464931 (resize(n, const T&)).
@@ -21,7 +21,9 @@ struct CRangeCompressor {
         unsigned long KeptMask;     // +0x10
         unsigned long SetMask;      // +0x14
     };
+    private:
     void TestRedundantBitStrip(const CArray<unsigned long>& in, CArray<unsigned long>& out, CScriptEntry& entry, long bytes);
+    public:
 };
 
 void CRangeCompressor::TestRedundantBitStrip(const CArray<unsigned long>& in, CArray<unsigned long>& out, CScriptEntry& entry, long bytes)

@@ -1,3 +1,4 @@
+// Leaf: ?AnimsCanBeIgnored@CAnimateThing@@QBE_NXZ
 // CAnimateThing::AnimsCanBeIgnored() -- false when any transition or combination anim set, or a plain one/two-anim main set, carries the "must not be ignored" flag (8); true otherwise
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0070C100, 109 bytes (+3 int3), __fastcall, returns bool.
 // Layout: CAnimateThing::CurrentAnim (CCompleteAnimation) sits at +0, so `this` is also the main
@@ -64,10 +65,10 @@ struct CCompleteAnimation {
 
 class CAnimateThing { public:
     CCompleteAnimation CurrentAnim;                      // +0x00
-    bool AnimsCanBeIgnored();
+    bool AnimsCanBeIgnored() const;
 };
 
-bool CAnimateThing::AnimsCanBeIgnored()
+bool CAnimateThing::AnimsCanBeIgnored() const
 {
     CRetailList<CAnimSet>::SNode* node;
     for (node = CurrentAnim.TransitionAnimSets.m_head->next; node != CurrentAnim.TransitionAnimSets.m_head; node = node->next)

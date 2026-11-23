@@ -1,3 +1,4 @@
+// Leaf: ?UpdateAdditionalImpulse@CTCDPhysicalObstruction@@AAEXXZ
 // CTCDPhysicalObstruction::UpdateAdditionalImpulse() -- collect the creatures in the obstruction line's search area that are not on the ignore list, within the line's radius and affected by obstructions, and push each one off the smeared-out line
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FD580, 194 bytes (plain `ret`, 0x44-byte frame).
@@ -129,7 +130,9 @@ class CTCDPhysicalObstruction : public CTCDriverBase { public:
     long  LifeTimer;                                    // +0x24
     float Radius;                                       // +0x28
     CRetailVector<CIntelligentPointer> ThingsToIgnoreObstruction;   // +0x2c
+    private:
     void UpdateAdditionalImpulse();
+    public:
 };
 
 void CTCDPhysicalObstruction::UpdateAdditionalImpulse()

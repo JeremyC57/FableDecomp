@@ -1,4 +1,4 @@
-// Leaf: FormatTextForVWindow
+// Leaf: ?FormatTextForVWindow@CSubtitleRenderer@@ABEXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z
 // Naming wave 35c (caller respell): calls 0x0048DAE0 as the Ego_r.pdb template instance ??$GFLimit@MMM@@YIXAAMABM1@Z (was the
 //   non-template ?GFLimit@@YIXAAMABM1@Z); the same-TU stand-in body is now that template's.
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
@@ -73,8 +73,10 @@ public:
     // landed 0x0048E012 declares it so both files bind the same symbol). Only its address is taken here.
     static unsigned int __fastcall GetCharWidthW(wchar character);   // 0x0048E012
     CWideString WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const;   // 0x0048DC8B
+    private:
     void FormatTextForVWindow(const C2DBoxF& box, const CFontBank& font, const CWideString& text, CWideString& outText,
                               C2DBoxF& outBox) const;
+    public:
 };
 
 extern "C" int StandInSink(int, int);

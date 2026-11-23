@@ -1,3 +1,4 @@
+// Leaf: ?UpdateRegionsCorrespondances@CTCInventoryMap@@AAEXJJ@Z
 // CTCInventoryMap::UpdateRegionsCorrespondances(long startFrame, long endFrame) -- pairs up the region-left (0x26) and region-entered (0x27) messages of the frame window, newest first, and records every new (to, from) region pair in the map's correspondence list unless either orientation is already there
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005FC0C0, 524 bytes, `ret 8`. Speed TU (no pragmas, no frame pointer).
 // Callees: malloc 0x00BFEA0E / free 0x00BFEA14 (STLport list allocator), CTCBase::GetWorld 0x00686A70,
@@ -183,7 +184,9 @@ class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
     void*             __vftable;                        // +0x00
     unsigned char     _pad04[0x24c - 0x04];
     list<CRegionPair> RegionCorrespondances;            // +0x24C
+    private:
     void UpdateRegionsCorrespondances(long startFrame, long endFrame);
+    public:
 };
 void CTCInventoryMap::UpdateRegionsCorrespondances(long startFrame, long endFrame)
 {

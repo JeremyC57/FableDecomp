@@ -1,3 +1,4 @@
+// Leaf: ?GetTextureDetail@CUserProfileManager@@QBEMXZ
 // CUserProfileManager::GetTextureDetail()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054A530, oracle length 18 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
@@ -18,10 +19,10 @@ class CUserProfileManager { public:
     float         TextureDetail;               // +0x3c (PDB)
     unsigned char _pad_after[0xf8 - 0x3c - 4];
     float         TextureDetailNewProfile;     // +0xf8 (retail; PDB +0xfc)
-    float GetTextureDetail();
+    float GetTextureDetail() const;
 };
 
-float CUserProfileManager::GetTextureDetail()
+float CUserProfileManager::GetTextureDetail() const
 {
     if (this->UseNewProfileValues)
         return this->TextureDetailNewProfile;

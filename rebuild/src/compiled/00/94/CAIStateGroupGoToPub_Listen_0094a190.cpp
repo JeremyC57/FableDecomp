@@ -1,3 +1,4 @@
+// Leaf: ?Listen@CAIStateGroup_GoToPub@@IAE_NXZ
 // CAIStateGroup_GoToPub::Listen() -- play the LISTENING_INTO / LISTENING_LOOP / LISTENING_OUTOF animation sequence once
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094A190, length 104 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (x3),
@@ -22,7 +23,9 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     bool PlayAnims(const CCharString& into, const CCharString& loop, const CCharString& outOf, long loops);   // 0x00948D40
+    protected:
     bool Listen();
+    public:
 };
 
 bool CAIStateGroup_GoToPub::Listen()

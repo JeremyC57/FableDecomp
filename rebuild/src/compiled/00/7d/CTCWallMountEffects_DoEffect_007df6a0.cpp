@@ -1,3 +1,4 @@
+// Leaf: ?DoEffect@CTCWallMountEffects@@AAEXXZ
 // CTCWallMountEffects::DoEffect() -- stamp the use frame, then a teleport mount starts its CTCTeleporter on the living hero and a healing mount heals the living creature using it
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DF6A0, 201 bytes (+ int3 padding).
@@ -113,7 +114,9 @@ class CTCWallMountEffects : public CTCBase { public:
     CIntelligentPointer<CThing> CreaturePerformingAction;   // +0x14 CIntelligentPointer<CThingCreatureBase>
     long                    FrameEffectLastUsed;        // +0x1c
     bool                    ObjectWasGamePersistant;    // +0x20
+    private:
     void DoEffect();
+    public:
 };
 
 void CTCWallMountEffects::DoEffect()

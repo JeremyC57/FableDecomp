@@ -1,5 +1,5 @@
 // CWorld::UpdateEnvironmentCameraPos(const C3DVector& pos) -- bilinear blend of the environment themes of the four 4-unit map cells around the camera position: each cell's three atmos themes are weighted by its blend byte and the corner weight, and the camera theme stack is set when any weight is meaningful
-// Leaf: ?UpdateEnvironmentCameraPos@CWorld@
+// Leaf: ?UpdateEnvironmentCameraPos@CWorld@@IAEXABVC3DVector@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049E370, 542 bytes, `ret 4` (FableWin.pdb ?UpdateEnvironmentCameraPos@CWorld@@IAEXABVC3DVector@@@Z).
 // Callees: CWorld::PeekWorldMap (slot 13), CWorldMap::GetPGameMapCellAt 0x0063D8A0, _ftol 0x00BFEA70,
@@ -30,7 +30,9 @@ class CWorld { public:
     virtual const CWorldMap* PeekWorldMap() const;   // slot 13 (+0x34)
     unsigned char _pad04[0x14];
     CEnvironment* PEnvironment;                    // +0x18 (scoped_ptr)
+    protected:
     void UpdateEnvironmentCameraPos(const C3DVector& pos);
+    public:
 };
 void CWorld::UpdateEnvironmentCameraPos(const C3DVector& pos)
 {

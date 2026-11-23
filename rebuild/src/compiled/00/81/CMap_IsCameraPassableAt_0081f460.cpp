@@ -1,3 +1,4 @@
+// Leaf: ?IsCameraPassableAt@CMap@@QBE_NABVC2DCoordI@@@Z
 // CMap::IsCameraPassableAt(const C2DCoordI& pos) -- the camera-passable bit (bit 3 of the flag byte at +9) of the game map cell at pos (rows stored top-down: (maxY - y) * (width + 1) + x), after a virtual call on the engine globals (0x013B86A0, slot 9)
 // Naming wave 18: the global stand-in g_pEngineGlobals_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -35,10 +36,10 @@ private: public:
 class CMap { public:
     unsigned char _pad[0x1a7c];
     CGameMapGrid* m_pGameMapGrid;                  // +0x1a7c
-    bool IsCameraPassableAt(const C2DCoordI& pos);
+    bool IsCameraPassableAt(const C2DCoordI& pos) const;
 };
 
-bool CMap::IsCameraPassableAt(const C2DCoordI& pos)
+bool CMap::IsCameraPassableAt(const C2DCoordI& pos) const
 {
     CMainGameComponent::Get()->Lock();
     CGameMapGrid* grid = m_pGameMapGrid;

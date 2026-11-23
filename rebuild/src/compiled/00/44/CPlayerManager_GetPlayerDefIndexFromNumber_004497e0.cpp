@@ -1,3 +1,4 @@
+// Leaf: ?GetPlayerDefIndexFromNumber@CPlayerManager@@ABEJJ@Z
 // CPlayerManager::GetPlayerDefIndexFromNumber(long) -- the global def index of the player def for a player number: PLAYER_NEUTRAL for 4, PLAYER_HERO for the main player, PLAYER_SPIRIT otherwise
 // Retry 10b (accessor sweep, FIXES B-4/B-5): the definition manager is read through an inline accessor; the plain member read gives the parked register difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004497E0, length 91 bytes.
@@ -41,10 +42,12 @@ class CPlayerManager { public:
     CPlayer**               Players_End;                    // +0x14
     long                    PlayerNeutral;                  // +0x18
     long                    MainPlayer;                     // +0x1c
-    long GetPlayerDefIndexFromNumber(long number);
+    private:
+    long GetPlayerDefIndexFromNumber(long number) const;
+    public:
 };
 
-long CPlayerManager::GetPlayerDefIndexFromNumber(long number)
+long CPlayerManager::GetPlayerDefIndexFromNumber(long number) const
 {
     if (number == 4)
         return GetDefinitionManager()->GetDefGlobalIndexFromName("PLAYER_NEUTRAL");

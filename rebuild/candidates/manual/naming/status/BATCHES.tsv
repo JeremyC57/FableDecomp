@@ -997,159 +997,61 @@ T1	other	deque	1	1		0059b039
 T1	other	queue	1	1		00410ed0
 T1	other	sort	1	1		00a351b0
 T1	other	swap	1	1		00a3fdc0
-T2	access	CTCSpecialAbilities	10	10	engine/CTCSpecialAbilities.h	0072a970 0072a9b0 0072aa00 0072aa50 0072aaa0 0072b0d0 0072b160 0072c680 0072cd00 0072ce20
-T2	access	CMap	6	6	engine/CMap.h	0081e690 0081ed90 0081ee00 0081f460 00820ab0 008f71a0
-T2	access	CUserProfileManager	6	6	engine/CUserProfileManager.h	00406a80 00406c20 00406f70 00548710 0054a530 0054a590
-T2	access	CAIStateGroup_GoToPub	5	5	engine/CAIStateGroup_GoToPub.h	00947ca0 00947d30 00947fb0 0094a190 0094a2b0
-T2	access	CEngineWaterRenderer	4	4	engine/CEngineWaterRenderer.h	00b6d630 00b6e3e0 00b75ca0 00b77e20
-T2	access	CRangeCompressor	4	4	engine/CRangeCompressor.h	00f3a270 00f3a2e0 00f3a5d0 00f3a710
-T2	access	CTCBuyableHouse	4	4	engine/CTCBuyableHouse.h	006bfb90 006c0c90 006c0f70 006c0fd0
-T2	access	CThingCreatureBase	4	4	engine/CThingCreatureBase.h	006622d0 00662860 00663f50 006655a0
-T2	access	CWorld	4	4	engine/CWorld.h	0049e370 0049e620 0049ebf0 004a0370
-T2	access	CAIStateGroup_MeleeCombatNearby2	3	3	engine/CAIStateGroup_MeleeCombatNearby2.h	0093dde0 0093dfc0 0093e090
-T2	access	CDefinitionManager	3	3	engine/CDefinitionManager.h	009accc0 009acce0 009ae6b0
 T2	access	CManager	3	3	engine/CManager.h	00427dc9 0042819a 0066e985
-T2	access	CQuestManager	3	3	engine/CQuestManager.h	004afa10 004b1080 004b5030
-T2	access	CSubtitleRenderer	3	3	engine/CSubtitleRenderer.h	0048dbc3 0048f50c 00490a22
 T2	access	CTCInventory	3	3	engine/CTCInventory.h	00581cfd 00581d4e 00581fa4
-T2	access	CTCInventoryMap	3	3	engine/CTCInventoryMap.h	005faa60 005fc0c0 005fc840
-T2	access	CTCKraken	3	3	engine/CTCKraken.h	007faf60 007fb6a0 007fbe50
-T2	access	CTCLook	3	3	engine/CTCLook.h	00751970 00752480 00753020
-T2	access	CTCStealth	3	3	engine/CTCStealth.h	00747090 00747480 007479b0
-T2	access	CTCTavernGame	3	3	engine/CTCTavernGame.h	005ea400 005ec7c0 005ec990
 T2	access	CThing	3	3	engine/CThing.h	004c72d0 004c8c90 004c9690
-T2	access	CThingPhysical	3	4	engine/CThingPhysical.h	006a4d90 006a4e90 006a5ab0
 T2	access	C3DMeshInfo	2	2	engine/C3DMeshInfo.h	00a24a80 00a25530
-T2	access	CAIStateGroup_GoToBed	2	2	engine/CAIStateGroup_GoToBed.h	0092c4e0 0092d060
-T2	access	CAIStateGroup_OpinionReactionRoot	2	2	engine/CAIStateGroup_OpinionReactionRoot.h	0095edf0 00986510
-T2	access	CAIStateGroup_StealthSeekEnemy	2	2	engine/CAIStateGroup_StealthSeekEnemy.h	0093c600 0093c7b0
-T2	access	CAnimSet	2	2	engine/CAnimSet.h	0070c2c0 0070c800
-T2	access	CBankFileEntryUpdateData	2	2	engine/CBankFileEntryUpdateData.h	009cc750 009cc840
 T2	access	CComponent	2	2		00530a40 00530ce0
-T2	access	CEngine	2	2	engine/CEngine.h	00b23a90 00b262c0
-T2	access	CEngineResourceManager	2	2	engine/CEngineResourceManager.h	00b3b5d0 00b3c4b0
-T2	access	CInputManager	2	2	engine/CInputManager.h	009f4b10 009f5250
-T2	access	CJoystick	2	2	engine/CJoystick.h	009e42e0 009e4360
-T2	access	CMemoryAllocator	2	2	engine/CMemoryAllocator.h	009f2920 009f2a40
-T2	access	CMouseDX	2	2	engine/CMouseDX.h	00ab4910 00ab5190
-T2	access	CPlayerManager	2	2	engine/CPlayerManager.h	004497e0 0044a070
-T2	access	CShaderRenderManager	2	2	engine/CShaderRenderManager.h	00989640 0098a540
 T2	access	CStatBar	2	2		00645ce9 00645f2e
-T2	access	CTCContainerRewardHero	2	2	engine/CTCContainerRewardHero.h	0074e280 0074e460
-T2	access	CTCHeroExperience	2	2	engine/CTCHeroExperience.h	006d7120 006d86d0
-T2	access	CTCInventoryClothing	2	2	engine/CTCInventoryClothing.h	005b37f7 005b62fe
-T2	access	CTCMultiArrow	2	2	engine/CTCMultiArrow.h	007cc2b0 007cc410
+T2	access	CTCInventoryMap	2	2	engine/CTCInventoryMap.h	005faa60 005fc840
 T2	access	CTCShop	2	2	engine/CTCShop.h	00772720 00772790
-T2	access	CThingPlayerCreature	2	3	engine/CThingPlayerCreature.h	006ab770 006ac390
-T2	access	CVertexGroupBlockOptimiser	2	2		00ad8fe0 00ad9d10
-T2	access	C3DAnimationInfo	1	1	engine/C3DAnimationInfo.h	00a26a50
-T2	access	C3DAnimationManager	1	1	engine/C3DAnimationManager.h	00a9dfa0
-T2	access	C3DMesh2	1	1	engine/C3DMesh2.h	00a8a9d0
-T2	access	C3DMeshFileEngineMaterialChunk	1	1	engine/C3DMeshFileEngineMaterialChunk.h	00ac5260
-T2	access	C3DMeshFileLoader	1	1	engine/C3DMeshFileLoader.h	00a9ad00
-T2	access	C3DMeshMaterial	1	1	engine/C3DMeshMaterial.h	00abf6b0
-T2	access	C3DPrimitive2	1	1	engine/C3DPrimitive2.h	00a91560
-T2	access	CAFile	1	1	engine/CAFile.h	00998010
-T2	access	CAIStateGroupBase	1	1	engine/CAIStateGroupBase.h	0097e890
-T2	access	CAIStateGroup_CreatureAdvanceInCover	1	1	engine/CAIStateGroup_CreatureAdvanceInCover.h	00978f10
+T2	access	CTCSpecialAbilities	2	2	engine/CTCSpecialAbilities.h	0072cd00 0072ce20
+T2	access	CThingCreatureBase	2	2	engine/CThingCreatureBase.h	00662860 00663f50
+T2	access	CThingPhysical	2	3	engine/CThingPhysical.h	006a4d90 006a4e90
+T2	access	CUserProfileManager	2	2	engine/CUserProfileManager.h	00406c20 00406f70
 T2	access	CAIStateGroup_CreatureTakeCover	1	1	engine/CAIStateGroup_CreatureTakeCover.h	00979e90
-T2	access	CAIStateGroup_CreatureUseCoverBase	1	1	engine/CAIStateGroup_CreatureUseCoverBase.h	00970790
-T2	access	CAIStateGroup_Drunk	1	1	engine/CAIStateGroup_Drunk.h	00922750
-T2	access	CAIStateGroup_EatAtTable	1	1		0096c880
 T2	access	CAIStateGroup_GameMaster	1	1		0094ce60
 T2	access	CAIStateGroup_JackDragon	1	1	engine/CAIStateGroup_JackDragon.h	0094fbb0
-T2	access	CAIStateGroup_JackOfBladesStage1	1	1	engine/CAIStateGroup_JackOfBladesStage1.h	00972340
-T2	access	CAIStateGroup_PrepareMeal	1	1	engine/CAIStateGroup_PrepareMeal.h	009462a0
-T2	access	CAIStateGroup_SitForMeal	1	1		009454c0
-T2	access	CAnimateThing	1	1	engine/CAnimateThing.h	0070c100
+T2	access	CAIStateGroup_MeleeCombatNearby2	1	1	engine/CAIStateGroup_MeleeCombatNearby2.h	0093dfc0
 T2	access	CAnimationSet	1	1	engine/CAnimationSet.h	005dc070
-T2	access	CBankFile	1	1	engine/CBankFile.h	009cd3c0
 T2	access	CBankFileAsyncData	1	2	engine/CBankFileAsyncData.h	009d54e0
 T2	access	CCharString	1	2		0099ea60
-T2	access	CCombatActionBase	1	1	engine/CCombatActionBase.h	00856a20
-T2	access	CCombatManager	1	1	engine/CCombatManager.h	006e86a0
 T2	access	CDataInputStream	1	1	engine/CDataInputStream.h	00993bc0
 T2	access	CDrawQuickAccessIcons	1	1		00645292
 T2	access	CDynamicList	1	1		00541390
-T2	access	CEngineCamera	1	1	engine/CEngineCamera.h	00b2fb70
 T2	access	CEngineClothSimulationMeshBase	1	2	engine/CEngineClothSimulationMeshBase.h	00b80ad0
 T2	access	CEngineInternalPrimitiveSprite	1	1	engine/CEngineInternalPrimitiveSprite.h	00bad670
-T2	access	CEngineLightingManager	1	1	engine/CEngineLightingManager.h	00b44540
-T2	access	CEnginePrimitiveManagerOcclusionBase	1	1	engine/CEnginePrimitiveManagerOcclusionBase.h	00b90cd0
-T2	access	CEnginePrimitiveManagerParticleSpriteGroup	1	1	engine/CEnginePrimitiveManagerParticleSpriteGroup.h	00bbf380
-T2	access	CEngineSceneGrid	1	1		00b91f00
-T2	access	CEngineShadowRenderer	1	1	engine/CEngineShadowRenderer.h	00b4ce20
+T2	access	CEngineResourceManager	1	1	engine/CEngineResourceManager.h	00b3b5d0
 T2	access	CEngineSurfaceCompositionManager	1	1	engine/CEngineSurfaceCompositionManager.h	00b2c8e0
-T2	access	CEngineWorldMap	1	1	engine/CEngineWorldMap.h	00b40070
 T2	access	CFileDataInputStream	1	1	engine/CFileDataInputStream.h	00994300
-T2	access	CFileInstaller	1	1	engine/CFileInstaller.h	009c53a0
 T2	access	CFrontEndManager	1	1	engine/CFrontEndManager.h	00595b24
-T2	access	CFrontendGameComponent	1	1	engine/CFrontendGameComponent.h	00494710
-T2	access	CGamePlayerInterface	1	1	engine/CGamePlayerInterface.h	00446220
-T2	access	CGameTimeManager	1	1	engine/CGameTimeManager.h	006bb210
-T2	access	CGraphicDataBank	1	1	engine/CGraphicDataBank.h	009fd2b0
 T2	access	CGraphicInfo	1	1	engine/CGraphicInfo.h	009ff8d0
-T2	access	CGraphicInfoFrame	1	1	engine/CGraphicInfoFrame.h	009ff710
-T2	access	CHeightMap	1	1	engine/CHeightMap.h	008f5f00
 T2	access	CInputProcessGameBase	1	1	engine/CInputProcessGameBase.h	00687c90
-T2	access	CLandscapeBackgroundPatch	1	1	engine/CLandscapeBackgroundPatch.h	00be79d0
-T2	access	CLocalDetailObjectCollectionType	1	1		00be2740
+T2	access	CMemoryAllocator	1	1	engine/CMemoryAllocator.h	009f2a40
 T2	access	CMemoryDataInputStream	1	1	engine/CMemoryDataInputStream.h	00995d30
 T2	access	CMemoryDataOutputStream	1	1	engine/CMemoryDataOutputStream.h	00996cc0
 T2	access	CModeDragonFireBeam	1	1		008dba90
-T2	access	CModeStandBase	1	1	engine/CModeStandBase.h	00861a80
-T2	access	CMouse	1	1	engine/CMouse.h	00a66c20
-T2	access	CNavigatorAStar	1	1	engine/CNavigatorAStar.h	00a1b4e0
-T2	access	CNavigatorManager	1	1	engine/CNavigatorManager.h	00a150a0
 T2	access	CNetworkClient	1	1	engine/CNetworkClient.h	004aeaa0
 T2	access	CPSCUpdateNormal	1	1	engine/CPSCUpdateNormal.h	00b0a750
 T2	access	CPlayerGui	1	1	engine/CPlayerGui.h	00439ab0
 T2	access	CProjectileWeapon	1	1		00878ce0
-T2	access	CResourceList	1	1	engine/CResourceList.h	009fc070
+T2	access	CRangeCompressor	1	1	engine/CRangeCompressor.h	00f3a2e0
 T2	access	CScriptModuleFOVZoom	1	1		008520f0
 T2	access	CScrollableList	1	1		00555220
-T2	access	CStreamingFontDataBank	1	1	engine/CStreamingFontDataBank.h	00a5f2f0
-T2	access	CTCAISummon	1	1		007fde00
-T2	access	CTCBed	1	1	engine/CTCBed.h	007468c0
-T2	access	CTCBoss	1	1	engine/CTCBoss.h	007aede0
-T2	access	CTCCameraPointDefinitionBase	1	1		0075c530
-T2	access	CTCCarrying	1	1	engine/CTCCarrying.h	006a1330
-T2	access	CTCCupboard	1	1		00749b40
-T2	access	CTCDPhysicalObstruction	1	1	engine/CTCDPhysicalObstruction.h	007fd580
-T2	access	CTCEnemy	1	1	engine/CTCEnemy.h	0076d460
-T2	access	CTCExplodingObject	1	1	engine/CTCExplodingObject.h	00750dd0
+T2	access	CTCBuyableHouse	1	1	engine/CTCBuyableHouse.h	006c0f70
 T2	access	CTCFollowed	1	2	engine/CTCFollowed.h	006d5260
-T2	access	CTCForcePushed	1	1	engine/CTCForcePushed.h	00798770
-T2	access	CTCGamePlayer	1	1		005edc90
 T2	access	CTCGraphicAppearance	1	1		004bd2e0
-T2	access	CTCHeroMorph	1	1	engine/CTCHeroMorph.h	0071c9f0
 T2	access	CTCHeroOnlineScoreboard	1	2	engine/CTCHeroOnlineScoreboard.h	0055fb80
-T2	access	CTCHeroRangedAttacks	1	1	engine/CTCHeroRangedAttacks.h	0078a2c0
-T2	access	CTCHeroReceiveItems	1	1	engine/CTCHeroReceiveItems.h	007cabd0
 T2	access	CTCInventoryBase	1	1		005be028
 T2	access	CTCInventoryItem	1	1	engine/CTCInventoryItem.h	005d92f0
-T2	access	CTCInventoryTrade	1	1	engine/CTCInventoryTrade.h	0059de04
 T2	access	CTCInventoryWeapons	1	1	engine/CTCInventoryWeapons.h	005c30d3
-T2	access	CTCMeleeTrap	1	1	engine/CTCMeleeTrap.h	00788555
-T2	access	CTCMeshAutomaticEntityCreator	1	1		0072e290
-T2	access	CTCPhysicsBase	1	1	engine/CTCPhysicsBase.h	006afe00
-T2	access	CTCScriptedControl	1	1	engine/CTCScriptedControl.h	00712d70
+T2	access	CTCLook	1	1	engine/CTCLook.h	00753020
 T2	access	CTCShotDefinitionBase	1	1		007befb0
-T2	access	CTCSmokeGenerator	1	1		00722590
-T2	access	CTCSoundPlayer	1	1	engine/CTCSoundPlayer.h	0066b120
-T2	access	CTCSpotLight	1	1	engine/CTCSpotLight.h	00731ca0
 T2	access	CTCTalk	1	1	engine/CTCTalk.h	006e28d0
+T2	access	CTCTavernGame	1	1	engine/CTCTavernGame.h	005ea400
 T2	access	CTCTavernGameCardBase	1	1	engine/CTCTavernGameCardBase.h	008f1720
-T2	access	CTCTrophy	1	1	engine/CTCTrophy.h	006dd760
-T2	access	CTCTurncoatSpell	1	1	engine/CTCTurncoatSpell.h	007c6aa0
-T2	access	CTCVillage	1	1	engine/CTCVillage.h	00658f41
-T2	access	CTCWallMountEffects	1	1	engine/CTCWallMountEffects.h	007df6a0
-T2	access	CTCWeaponTrail	1	1	engine/CTCWeaponTrail.h	0076de60
 T2	access	CText	1	1	engine/CText.h	0054f8e0
-T2	access	CTextureManager	1	1	engine/CTextureManager.h	00a69730
-T2	access	CThingAICreature	1	1	engine/CThingAICreature.h	00833390
-T2	access	CThingManager	1	1	engine/CThingManager.h	0051e5a0
-T2	access	CWorldMap	1	1	engine/CWorldMap.h	004fc9c0
+T2	access	CThingPlayerCreature	1	2	engine/CThingPlayerCreature.h	006ac390
 T2	access	LSocket	1	1	engine/LSocket.h	008f8830
 T2	other	CCreatureActionBase	2	7	engine/CCreatureActionBase.h	006929e0 00693030
 T2	other	LSocket	2	4	engine/LSocket.h	008f87a0 008f8bb0

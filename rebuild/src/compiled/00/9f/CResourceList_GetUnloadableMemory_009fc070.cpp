@@ -1,3 +1,4 @@
+// Leaf: ?GetUnloadableMemory@CResourceList@@QBEKK@Z
 // CResourceList::GetUnloadableMemory(unsigned long minUnusedFrames) -- walk the list from the oldest resource and total the unloadable memory of every resource unused for at least `minUnusedFrames` frames, stopping at the first more recent one
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FC070, length 59 bytes.
 // Retail bytes:  push ebx ; push ebp ; push esi ; push edi ; mov edi,ecx ; mov esi,[edi+14h] ; lea ebp,[edi+4] ; xor ebx,ebx ;
@@ -41,10 +42,10 @@ class CResourceList { public:                               // vtable 0x0129C808
     unsigned long DebugStatsFrame;                   // +0x30
     unsigned long UnloadDelay;                       // +0x34
     unsigned long UnloadedThisFrame;                 // +0x38
-    unsigned long GetUnloadableMemory(unsigned long minUnusedFrames);
+    unsigned long GetUnloadableMemory(unsigned long minUnusedFrames) const;
 };
 
-unsigned long CResourceList::GetUnloadableMemory(unsigned long minUnusedFrames)
+unsigned long CResourceList::GetUnloadableMemory(unsigned long minUnusedFrames) const
 {
     unsigned long total = 0;
     for (CResource* resource = Head.NextResource; resource != &Head; resource = resource->NextResource) {

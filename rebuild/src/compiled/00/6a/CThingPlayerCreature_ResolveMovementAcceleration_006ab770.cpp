@@ -1,3 +1,4 @@
+// Leaf: ?ResolveMovementAcceleration@CThingPlayerCreature@@IAEXXZ
 // CThingPlayerCreature::ResolveMovementAcceleration() -- clamp the movement acceleration to the current maximum movement speed and, when the player did not drive the movement this frame, damp it to 0.49
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AB770, length 172 bytes, `ret`.
 // Callees: CThingPlayerCreature::GetCurrentMaxMovementSpeed @ 0x006AB5D0 (engine_api.tsv, float).
@@ -29,7 +30,9 @@ public:
 protected:
     float GetCurrentMaxMovementSpeed() const;         // 0x006AB5D0
 public:
+    protected:
     void ResolveMovementAcceleration();
+    public:
 };
 
 void CThingPlayerCreature::ResolveMovementAcceleration()

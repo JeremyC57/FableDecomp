@@ -1,5 +1,5 @@
 // CTCTavernGame::RenderText(const CEnginePrimitivePrepareInfo&, float x, float y, CWideString text, const CFontBank& font, CRGBColour colour) -- queues one 2D text primitive at a screen-fraction position: preloads the glyphs, adds a primitive handle and hands the engine the text primitive on layer 0x45
-// Leaf: RenderText
+// Leaf: ?RenderText@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@MMVCWideString@@ABVCFontBank@@VCRGBColour@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC7C0, 220 bytes (`ret 18h`: six argument dwords; the by-value text is
@@ -107,8 +107,10 @@ class CTCTavernGame { public:
     void*         ParentThing;                  // +0x04
     unsigned char _pad08[0x44 - 0x08];
     CHandleVector Handles;                      // +0x44
+    protected:
     void RenderText(const CEnginePrimitivePrepareInfo& info, float x, float y, CWideString text, const CFontBank& font,
                     CRGBColour colour);
+    public:
 };
 
 void CTCTavernGame::RenderText(const CEnginePrimitivePrepareInfo& info, float x, float y, CWideString text,

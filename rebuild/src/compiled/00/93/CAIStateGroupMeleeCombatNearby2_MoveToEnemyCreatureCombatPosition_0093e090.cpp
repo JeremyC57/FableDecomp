@@ -1,3 +1,4 @@
+// Leaf: ?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby2@@AAE_NXZ
 // CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition() -- keep moving (to within 0.5) towards the combat manager's preferred position for the creature, refreshing it every fifth frame (UID-staggered) or after 6 frames; tells the manager when the position proves unreachable; false when the creature stops being a combatant or a move fails, true once in position or no longer runnable
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E090, length 428 bytes (+ int3 padding).
@@ -126,7 +127,9 @@ struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
     virtual bool IsStillRunnable(bool checkEnemy);  // slot 14 (+0x38), first after the base's 14 slots (0..13)
     CIntelligentPointerCreature PEnemy;         // +0x14
     bool IsEnemyCreatureInCombatPosition();     // 0x0093DCD0
+    private:
     bool MoveToEnemyCreatureCombatPosition();
+    public:
 };
 
 bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()

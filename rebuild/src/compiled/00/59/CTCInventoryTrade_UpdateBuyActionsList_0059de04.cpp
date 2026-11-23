@@ -1,5 +1,5 @@
 // CTCInventoryTrade::UpdateBuyActionsList() -- send every buy list's owner component a type-3 action naming the list's key component, then clear the buy-list map
-// Leaf: UpdateBuyActionsList@CTCInventoryTrade
+// Leaf: ?UpdateBuyActionsList@CTCInventoryTrade@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059DE04, 114 bytes, plain `ret` (thiscall, no arguments).
 // Name: FableWin.pdb `?UpdateBuyActionsList@CTCInventoryTrade@@AAEXXZ` (private); the map is ItemBuyLists (retail +0x200,
 // map<NUISystem::CComponent*, NUISystem::CComponent*>, as the landed ctor 0x0059EB0C lays it out); the Sell twin
@@ -55,7 +55,9 @@ public:
     unsigned char _pad000[0x200];                    // CTCInventoryBase (0x130) and the trade state (landed ctor 0x0059EB0C)
     CComponentMap ItemBuyLists;                      // +0x200
     CComponentMap ItemSellLists;                     // +0x20c
+    private:
     void UpdateBuyActionsList();
+    public:
 };
 
 void CTCInventoryTrade::UpdateBuyActionsList()

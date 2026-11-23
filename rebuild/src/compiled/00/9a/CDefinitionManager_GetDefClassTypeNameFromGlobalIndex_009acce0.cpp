@@ -1,3 +1,4 @@
+// Leaf: ?GetDefClassTypeNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z
 // CDefString CDefinitionManager::GetDefClassTypeNameFromGlobalIndex(long index)
 // retail 009acce0
 // bytes: 8b81a40000008b4c24088b14888b0a8b4424048908c20800
@@ -27,7 +28,7 @@ class CDefinitionManager
     char pad_0000[0xA4];
     CDefClassInfoRec** m_classInfoTable; // +0xA4
 
-    CDefString GetDefClassTypeNameFromGlobalIndex(long index)
+    CDefString GetDefClassTypeNameFromGlobalIndex(long index) const
     {
         return CDefString(*(CDefString*)&m_classInfoTable[index]->m_typeName);
     }

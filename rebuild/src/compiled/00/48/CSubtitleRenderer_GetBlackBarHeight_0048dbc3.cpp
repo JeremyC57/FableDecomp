@@ -1,5 +1,5 @@
 // CSubtitleRenderer::GetBlackBarHeight() const -- half the gap between the virtual screen height and a 16:9 band of the virtual screen width: (VY(height) - VX(width) * 0.5625) * 0.5
-// Leaf: GetBlackBarHeight
+// Leaf: ?GetBlackBarHeight@CSubtitleRenderer@@ABEMXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048DBC3, 54 bytes. Callees: GFVYToAY(float) @ 0x009E1E40 and
 // GFVXToAX(float) @ 0x009E1E10 (Ego_r __fastcall float(float); the float travels in a stack slot, callee-popped), the screen size doubles @ 0x013961F0
 // (height) / 0x013961E8 (width) narrowed to float, the constants 0.5625f @ 0x01238110 and 0.5f @ 0x0122F59C.
@@ -77,7 +77,9 @@ public:
     bool               UpdateTimer;                // +0xE7
     CFadeInFadeOutBase SkipCutsceneTimer;          // +0xE8
     CFadeInFadeOutBase ButtonPulseTimer;           // +0x104
+    private:
     float GetBlackBarHeight() const;
+    public:
 };
 
 float __fastcall GFVYToAY(float y);                 // 0x009E1E40
