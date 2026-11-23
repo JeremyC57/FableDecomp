@@ -136,3 +136,24 @@ The other buckets are unchanged. Done is 29,936 (46.7%), down from 49.1%: the ol
   source first.** `tools/rtti_port_all.py` walks every retail / donor vftable pair, but its `class_of()` cannot parse `??_G` / `??_E`
   names, so it never ported them; that is why the RTTI file has no deleting destructors. A dtor-only port with a `??_G` / `??_E`-aware
   class filter is being run on the lane's binaries (evidence only, never committed).
+
+## Route 4: identity of the deleting destructors (coordinator, same evening)
+
+- **New retail identity source: `ghidra_out/labels_rtti_port_dtors.tsv`** (1,538 addresses, from `tools/rtti_port_dtors.py`).
+  - It is the RTTI vftable walk of `rtti_port_all.py`, restricted to `??_G` / `??_E` slot names. The stock `class_of()` could not parse
+    those names, so they had never been ported.
+  - Same guards: matched vtables only, own-class names only, and an address given two names is dropped (none was).
+  - Before using them, the coordinator checked that the lane's binaries reproduce the committed `labels_rtti_port.tsv` exactly (6,653
+    lines).
+- **Joined with the landed rows:**
+  - 1,417 rows name the same class in their label: two sources.
+  - **106 name another class** (e.g. 15 "copies of `CAnimFilterBase`'s destructor" are 15 different derived classes, which RTTI separates).
+    They are queued as `route4-identity` in T3_PORT_QUEUE.tsv.
+- **What VC7.1 emits (lane compiler test, `$S/dtor/`):** `??_GX@@UAEPAXI@Z` is the real body, a COMDAT emitted wherever X's vftable is.
+  `??_EX@@UAEPAXI@Z` is only a weak external aliasing it, unless the TU uses `new X[]`. So a retail scalar body is `??_G`. For 585 of the
+  1,430 two-source rows the donor PDB spells the slot `??_E` (a different toolchain), and the exact `??_G` spelling is in no PDB set.
+  **Owner ruling needed:** may these take `??_G<Class>` on the VC7.1 evidence?
+- **Emitting `??_GX` from C++ is a port, not a rename.** The TU has to emit X's vftable. The landed precedent (0x00429A45) uses an inline
+  virtual destructor plus a made-up non-inline helper `void* MakeOne() { return new X; }`. **Owner ruling needed** on that construct: a
+  made-up global function in every such row, colliding at a full link if two rows share the helper name. The alternative is a construct
+  that leaves only COMDATs.
