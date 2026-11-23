@@ -1,3 +1,4 @@
+// Leaf: ?RunCommandLine@CConsole@@AAEXXZ
 // CConsole::RunCommandLine() -- parse the front command line and run it: the first item must be a string naming a registered input (looked up lower-cased), which is executed with a copy of the whole line; otherwise report "unknown input - <name>" or "command line was not a string" to the user
 // Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
 //   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
@@ -108,7 +109,9 @@ class CConsole { public:
     CBaseClassLine BackCommandLine;         // +0x2c
     CCharString    HelpBarString;           // +0x3c
     CInputMap      RegisteredConsoleInputs; // +0x40
+    private:
     void RunCommandLine();
+    public:
     FABLE_FORCEINLINE SInputNode* FindInput(const CCharString& key) { return RegisteredConsoleInputs.find(key); }
 public:
     void SendMessageToUser(const CCharString&);   // 0x009EB260

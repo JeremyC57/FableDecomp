@@ -1,5 +1,5 @@
 // CWorldMap::AddLevelFromFile(const C2DCoordI&, const CCharString&) -- take the first unused map slot (index 1 up, else grow the map array by one), mark it used with the level name, place the level's world box at the position, give it a map UID and register it with the engine; returns the map index
-// Leaf: AddLevelFromFile
+// Leaf: ?AddLevelFromFile@CWorldMap@@IAEJABVC2DCoordI@@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00506F30, 314 bytes (320 with padding), `ret 8`.
 //   PDB ?AddLevelFromFile@CWorldMap@@QAEJABVC2DCoordI@@ABVCCharString@@@Z.
 // Callees: CArray<CMapInfo>::resize 0x0051BE20 (label "GetAnimsWithNameStartingWith" is wrong, GOTCHAS chunk 173/179),
@@ -50,7 +50,9 @@ public:
 protected: unsigned long AllocateMapUID(long map); public:   // 0x004FCE20 (Ego_r + FableWin IAEKJ, protected)
     void LoadLoadableGlobalThingsForLevel(long map);   // 0x004FBF60
     C2DBoxI GetLevelDimensions(const CCharString& levelName) const;   // 0x00506E30 (Ego_r.pdb / FableWin.pdb const overload; NF70 q10744)
+    protected:
     long AddLevelFromFile(const C2DCoordI& position, const CCharString& levelName);
+    public:
 };
 long CWorldMap::AddLevelFromFile(const C2DCoordI& position, const CCharString& levelName)
 {

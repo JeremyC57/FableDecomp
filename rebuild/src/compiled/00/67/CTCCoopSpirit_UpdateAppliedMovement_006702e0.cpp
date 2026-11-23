@@ -1,5 +1,5 @@
 // CTCCoopSpirit::UpdateAppliedMovement() -- unless the spirit's creature is busy with an action, take (and clear) the accumulated movement vector, turn it by the creature's relative movement angle, normalise it and, when it is not degenerate, reset the no-movement timer and push the creature's physics along it at half its length
-// Leaf: UpdateAppliedMovement
+// Leaf: ?UpdateAppliedMovement@CTCCoopSpirit@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006702E0, 400 bytes (`ret`).
@@ -87,7 +87,9 @@ class CTCCoopSpirit { public:
     long    Score;                                          // +0x10
     long    OffscreenCounter;                               // +0x14
     C3DVector MovementVector;                               // +0x18
+    private:
     void UpdateAppliedMovement();
+    public:
 };
 
 void CTCCoopSpirit::UpdateAppliedMovement()

@@ -1,3 +1,4 @@
+// Leaf: ?IsRunnable@CAIStateGroup_KrakenTentacleAttack@@MAE_NXZ
 // CAIStateGroup_KrakenTentacleAttack::IsRunnable() -- runnable while the tentacle component says it should strike.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009244D0, length 69 bytes (+ int3 padding).
@@ -56,7 +57,9 @@ class CTCKrakenTentacle { public:                      // interface type 0xE3 co
 };
 
 struct CAIStateGroup_KrakenTentacleAttack : CAIStateGroupBase {
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_KrakenTentacleAttack::IsRunnable()

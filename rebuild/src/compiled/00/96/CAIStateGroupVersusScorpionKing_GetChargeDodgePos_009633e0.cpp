@@ -1,5 +1,5 @@
 // CAIStateGroup_VersusScorpionKing::GetChargeDodgePos(C3DVector& pos) -- start from the creature's position; while the scorpion is alive, step 10 units sideways (a quarter turn left or right of the scorpion's normalised facing, whichever side the creature is facing towards)
-// Leaf: GetChargeDodgePos
+// Leaf: ?GetChargeDodgePos@CAIStateGroup_VersusScorpionKing@@AAEXAAVC3DVector@@@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009633E0, length 469 bytes (`ret 4`, the position by reference).
 // Callees: CThing::GetPos @ 0x004C73D0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3 on PEnemy), the physics
@@ -102,7 +102,9 @@ struct CAIStateGroup_VersusScorpionKing : CAIStateGroupBase {
     bool GoClockwise;                           // +0x1c
     CIntelligentPointer<CThing> PArenaCentreThing;  // +0x1d
     bool IsScorpionCharging() const;            // 0x00963810
+    private:
     void GetChargeDodgePos(C3DVector& pos);
+    public:
 };
 #pragma pack(pop)
 

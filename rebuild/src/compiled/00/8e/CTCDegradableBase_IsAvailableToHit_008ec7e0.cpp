@@ -1,3 +1,4 @@
+// Leaf: ?IsAvailableToHit@CTCDegradableBase@@IBE_NXZ
 // CTCDegradableBase::IsAvailableToHit() const -- true once more than one world frame has passed since the last hit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EC7E0, length 31 bytes.
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80 (returns g->+0x24; its non-const twin is 0x00686A70; the manifest
@@ -27,7 +28,9 @@ class CTCDegradableBase : public CTCBase { public:
     void*         PDefinition;                              // +0x10 CDefPointer<const CDegradableDef>
     void*         PCurrentDegradableInfo;                   // +0x14 CDegradableInfo*
     void*         PParentThingPhysical;                     // +0x18 CThingPhysical*
+    protected:
     bool IsAvailableToHit() const;
+    public:
 };
 
 bool CTCDegradableBase::IsAvailableToHit() const

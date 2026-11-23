@@ -1,5 +1,5 @@
 // CTCCreatureGenerator::UpdateCreatureTrigger(long frame) -- self-triggering: (re)arms the activation frame while waiting for the last batch to die, gives up when no triggers are left, then walks the triggerer creatures; a creature that enters the self-trigger radius (2D) fires a generation if the reset interval has passed since the last activation, and an external trigger fires on the interval alone; firing stamps the activation frame, spends one trigger, creates the creatures and latches ExternalTrigger to UndeadTriggered
-// Leaf: UpdateCreatureTrigger
+// Leaf: ?UpdateCreatureTrigger@CTCCreatureGenerator@@IAEXJ@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074BAA0, 384 bytes (`ret 4`).
 // Callees: CIntelligentPointer<CThingCreatureBase>::GetPItem() @ 0x00A01B50, CThing::GetPos() @ 0x004C73D0,
@@ -54,7 +54,9 @@ class CTCCreatureGenerator { public:
 protected:
     void CreateCreatures(CThingCreatureBase* creature);    // 0x0074B2B0 ?CreateCreatures@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z (protected in Ego_r.pdb / FableWin.pdb; landing 2026-11-03c)
 public:
+    protected:
     void UpdateCreatureTrigger(long frame);
+    public:
 };
 
 void CTCCreatureGenerator::UpdateCreatureTrigger(long frame)

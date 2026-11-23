@@ -1,5 +1,5 @@
 // CAIStateGroup_WorkAtSchool::IsRunnable() -- a villager kid with a school (and a village) works at school when the school building's sim-building def has Property bit 2 set and the school's own village says it is time to go to school
-// Leaf: ?IsRunnable@CAIStateGroup_WorkAtSchool
+// Leaf: ?IsRunnable@CAIStateGroup_WorkAtSchool@@MAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00942A00, length 304 bytes (plain `ret`, virtual).
@@ -257,7 +257,9 @@ class CTCVillage { public:
 };
 struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
     CThingSchoolKid* GetCreature() const { return (CThingSchoolKid*)PBrain->PCreature; }
+    protected:
     bool IsRunnable();
+    public:
     virtual void Update();
 };
 bool CAIStateGroup_WorkAtSchool::IsRunnable()

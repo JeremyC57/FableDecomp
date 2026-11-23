@@ -1,3 +1,4 @@
+// Leaf: ?InitWorld@CMainGameComponent@@IAEXXZ
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013B8660 is GEventPackageFileName (CWideString; Ego_r.pdb + FableWin.pdb
 //   `dynamic initializer for 'GEventPackageFileName'', initializer 0x01219F80 landed by agentFAM09; Anniv360 ?GEventPackageFileName@@3VCWideString@@A),
 //   read through CWideString::operator const wchar_t*() const 0x0099AF00 (fable_string.h; the ??BCWideString@@QBEPBGXZ spelling the landed
@@ -24,7 +25,9 @@ protected:
     bool InitEventPackageLoading(const wchar_t* fileName);   // 0x00416056
     bool InitEventPackageSaving(const wchar_t* fileName);    // 0x004160CC
 public:
+    protected:
     void InitWorld();
+    public:
 };
 void CMainGameComponent::InitWorld()
 {

@@ -1,5 +1,5 @@
 // CSubtitleRenderer::DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box) -- for each embedded controller graphic already reached by the text reveal, add its sprite (layer 0x45) at the box corner plus the graphic's and the GUI def's offsets, and draw the graphic's caption (if any) beside it in white at 0.75 scale on layer 0x43
-// Leaf: DrawTextEmbeddedGraphics
+// Leaf: ?DrawTextEmbeddedGraphics@CSubtitleRenderer@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048F230, 474 bytes, `ret 8` (retail mangling
 //   ?DrawTextEmbeddedGraphics@CSubtitleRenderer@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@@Z).
 // Callees: PeekGuiDef 0x00438570 (__fastcall), GFVYToAY 0x009E1E40 / GFVXToAX 0x009E1E10 (__fastcall, Ego_r / FableWin ?GFVYToAY@@YIMM@Z / ?GFVXToAX@@YIMM@Z; virtual to render-target pixels: x * width / 640), CEnginePrimitive2DSprite
@@ -106,7 +106,9 @@ public:
     bool               AllCharactersDisplayed;               // +0xDD
     CWideString GetTextFromEmbeddedTagGraphic(long graphic) const;            // 0x0048DF77
     const C2DVector& GetTextOffsetFromEmbeddedTagGraphic(long graphic) const;  // 0x0048DC3C
+    private:
     void DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box);
+    public:
 };
 
 void CSubtitleRenderer::DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box)

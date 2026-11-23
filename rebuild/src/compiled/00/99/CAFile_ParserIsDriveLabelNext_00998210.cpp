@@ -10,7 +10,7 @@
 // CParsedItem {Type +0, union +4, CCharString String +8} has a user ctor that only builds the string.
 // Shape: the position is read (inline GetStringPos) before the item is built; the bool result is kept in bl across
 // SetStringPos and the item's destructor.
-// Leaf: ?ParserIsDriveLabelNext@CAFile
+// Leaf: ?ParserIsDriveLabelNext@CAFile@@CI_NAAVCStringParser@@@Z
 class CCharStringData;
 class CCharString
 {
@@ -54,7 +54,9 @@ class CAFile
 {
 public:
     private: static bool __fastcall ParserReadPastDriveLabel(CStringParser& parser, CParsedItem& item); public:   // 0x00998170
+    private:
     static bool __fastcall ParserIsDriveLabelNext(CStringParser& parser);
+    public:
 };
 
 bool __fastcall CAFile::ParserIsDriveLabelNext(CStringParser& parser)

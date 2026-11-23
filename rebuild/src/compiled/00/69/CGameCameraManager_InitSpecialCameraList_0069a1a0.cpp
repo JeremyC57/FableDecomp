@@ -1,5 +1,5 @@
 // CGameCameraManager::InitSpecialCameraList() -- rebuild the special camera list: clear it, look up every speciality camera mode def the manager def names and append each one found, then point the special list index at its start
-// Leaf: ?InitSpecialCameraList@CGameCameraManager@@
+// Leaf: ?InitSpecialCameraList@CGameCameraManager@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069A1A0, 228 bytes (+ int3 padding to 256), thiscall, plain `ret`.
 // Identity: the catalog's "CGameCameraManager_PopulateListFromData" is a descriptive auto label. FableWin.pdb lists the
 //   private ?InitSpecialCameraList@CGameCameraManager@@AAEXXZ next to InitManualCameraList; the body reads
@@ -168,7 +168,9 @@ public:
     bool BlockModeChange;                                   // +0x12D
     CDefPointer<const CDefBase> PCameraManagerSet;          // +0x130
     CDefPointer<const CCameraManagerDef> PDef;              // +0x134
+    private:
     void InitSpecialCameraList();
+    public:
 };
 
 void CGameCameraManager::InitSpecialCameraList()

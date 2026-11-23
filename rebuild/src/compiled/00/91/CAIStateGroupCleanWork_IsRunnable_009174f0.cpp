@@ -1,3 +1,4 @@
+// Leaf: ?IsRunnable@CAIStateGroup_CleanWork@@MAE_NXZ
 // CAIStateGroup_CleanWork::IsRunnable()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009174F0, length 37 bytes (+ int3 padding).
 // Callees: virtual slot 14 (+0x38) GetBuilding (rtti-vtables: 0x01289AEC slot 14 ->
@@ -26,7 +27,9 @@ class CAIStateGroupBase { public:
 struct CAIStateGroup_CleanWork : CAIStateGroupBase {
     long m_nextFrame;                       // +0x14 (WorkBase: frame the work was last tried)
     long m_frameToStart;                    // +0x18
+    protected:
     virtual bool IsRunnable();
+    public:
     virtual CBuilding* GetBuilding();       // slot 14 (+0x38)
 };
 

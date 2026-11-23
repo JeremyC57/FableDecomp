@@ -1,3 +1,4 @@
+// Leaf: ?UpdateParentChainVisibilityFlag@CLandscapeBackgroundTreeNode@@AAEXXZ
 // CLandscapeBackgroundTreeNode::UpdateParentChainVisibilityFlag() -- re-derive this node's visible-last-frame flag from its two branches and, when it changes, record it and walk up to the parent
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF6AC0, length 128 bytes.
 // Callees: the sub node's virtual IsPatch (slot 4) through the inline GetSplitBranch; the parent walk is the
@@ -79,7 +80,9 @@ class CLandscapeBackgroundTreeNode : public CMovableResource { public:
             return (CLandscapeBackgroundSubNodeSplitBranch*)SubNode;
         return 0;
     }
+    private:
     void UpdateParentChainVisibilityFlag();
+    public:
     void SetVisibilityFlagAndUpdateParentChain(bool visible)   // 0x00BF7370 (inline here)
     {
         if (VisibleLastFrame != visible)

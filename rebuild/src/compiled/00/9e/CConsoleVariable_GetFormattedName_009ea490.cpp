@@ -1,3 +1,4 @@
+// Leaf: ?GetFormattedName@CConsoleVariable@@EBE?AVCCharString@@XZ
 // CConsoleVariable::GetFormattedName() const -- the variable's name followed by a space
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009EA490, length 26 bytes.
 // Callee: operator+(const CCharString&, const char*) @ 0x0099F600 (__fastcall: hidden result in
@@ -18,7 +19,9 @@ struct CConsoleVariable {
     virtual void v00();
     CCharString Name;                            // +0x04
     unsigned char Var[8];                        // +0x08 CGenericVarRef
+    private:
     virtual CCharString GetFormattedName() const;
+    public:
 };
 
 CCharString CConsoleVariable::GetFormattedName() const

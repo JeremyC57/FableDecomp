@@ -1,3 +1,4 @@
+// Leaf: ?SaveChunkedFile@CChunkedFileSaver@@IAEKAAVCChunkedFile@@AAVCDataOutputStream@@@Z
 // CChunkedFileSaver::SaveChunkedFile(CChunkedFile&, CDataOutputStream&) -- serialize header, root chunk, patched body length and terminator
 // Retail 0x00AA7C70, 305 bytes. Layouts match PDB CChunkedFile (20 bytes), saver (12 bytes).
 // Genuine stream slots: dtor0, SetPosition1, GetPosition2, Close3, Write4 (CMemoryDataOutputStream RTTI 0x0129A788).
@@ -52,7 +53,9 @@ class CChunkedFile { public:
 class CChunkedFileSaver { public:
     virtual ~CChunkedFileSaver();
     char SupportedFileType[5];
+    protected:
     unsigned long SaveChunkedFile(CChunkedFile& file,CDataOutputStream& out);
+    public:
 };
 unsigned long CChunkedFileSaver::SaveChunkedFile(CChunkedFile& file,CDataOutputStream& out) {
     unsigned long start=out.GetPosition();

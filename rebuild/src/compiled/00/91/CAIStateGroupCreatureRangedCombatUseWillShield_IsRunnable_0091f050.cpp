@@ -1,3 +1,4 @@
+// Leaf: ?IsRunnable@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAE_NXZ
 // CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable() -- runnable while the creature carries a ranged weapon, its targeting component (interface 8) has a target it should attack, and it has no interface 0x93 component
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
@@ -68,7 +69,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_CreatureRangedCombatUseWillShield : CAIStateGroupBase {
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable()

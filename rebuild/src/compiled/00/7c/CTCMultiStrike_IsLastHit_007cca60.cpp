@@ -1,3 +1,4 @@
+// Leaf: ?IsLastHit@CTCMultiStrike@@QBE_NXZ
 struct Inner {
     char pad[0x78];
     int* array;   // +0x78
@@ -9,10 +10,10 @@ class CTCMultiStrike { public:
     int index;      // +0x10
     char pad1[0x08];
     int current;    // +0x1c
-    bool IsLastHit();
+    bool IsLastHit() const;
 };
 
-bool CTCMultiStrike::IsLastHit()
+bool CTCMultiStrike::IsLastHit() const
 {
     return this->current == (this->inner->array[this->index] - 1);
 }

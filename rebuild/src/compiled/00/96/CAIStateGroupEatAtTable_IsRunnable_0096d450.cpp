@@ -1,3 +1,4 @@
+// Leaf: ?IsRunnable@CAIStateGroup_EatAtTable@@MAE_NXZ
 // CAIStateGroup_EatAtTable::IsRunnable()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096D450, length 38 bytes (+ int3 padding).
 // Callees: virtual slot 15 (+0x3c) IsRunnableLeaf (the hook the WorkBase/EatAtTable family adds
@@ -20,7 +21,9 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
     protected: bool GetSeat(); public:                         // 0x0096CB40
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_EatAtTable::IsRunnable()

@@ -1,5 +1,5 @@
 // CLandscapeBackgroundTreeNode::ProcessLoadTask(long, double, bool, CEngineStaticMapFileBlockManager*) -- advance this node's asynchronous load task: past the deadline report still-loading; drop the task when it may be aborted; once its file block is resident build the sub-node (a patch loaded with the node's Z range, or a split branch whose own load is then started) and, for a branch, pump its background loading, adopting it as the node's sub-node when it completes (LS_LOADED 1 / LS_LOADING 2 / LS_FAILED 3)
-// Leaf: ProcessLoadTask
+// Leaf: ?ProcessLoadTask@CLandscapeBackgroundTreeNode@@AAE?AW4LS_LOADING_STATUS@@JN_NPAVCEngineStaticMapFileBlockManager@@@Z
 // NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
 //   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 //   Also GetBlockData 0x00BE04C0 respelled to the PDB ?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z (const, const unsigned char*), was QAEPBDJ.
@@ -99,7 +99,9 @@ class CLandscapeBackgroundTreeNode { public:
     float PeekMaxZ() const { return BoundingBox[5]; }
     bool TestIfLoadTaskCanBeAborted(long lod, bool abort);   // 0x00BF6490
     void OnSubNodeLoaded();                         // 0x00BF6750
+    private:
     LS_LOADING_STATUS ProcessLoadTask(long lod, double time, bool abort, CEngineStaticMapFileBlockManager* manager);
+    public:
 };
 
 LS_LOADING_STATUS CLandscapeBackgroundTreeNode::ProcessLoadTask(long lod, double time, bool abort, CEngineStaticMapFileBlockManager* manager)

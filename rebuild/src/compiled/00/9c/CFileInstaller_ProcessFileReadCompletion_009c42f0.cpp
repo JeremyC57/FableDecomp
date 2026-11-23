@@ -1,3 +1,4 @@
+// Leaf: ?ProcessFileReadCompletion@CFileInstaller@@IAEXXZ
 // CFileInstaller::ProcessFileReadCompletion() -- under the installer's critical section (+4): when a completion record is queued at +0x74, process it (0x009C4120) and clear the slot
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C42F0, length 64 bytes.
 // Callees: CCriticalSectionLock::CCriticalSectionLock @ 0x00A62920 (the section, 0) and its destructor @ 0x00A629A0 (an 8-byte local), the processing member
@@ -17,7 +18,9 @@ class CFileInstaller { public:
     unsigned char          _pad1c[0x58];
     void* volatile         m_pReadCompletion;      // +0x74
     void ProcessReadCompletionData(void* record);  // 0x009C4120
+    protected:
     void ProcessFileReadCompletion();
+    public:
 };
 
 void CFileInstaller::ProcessFileReadCompletion()

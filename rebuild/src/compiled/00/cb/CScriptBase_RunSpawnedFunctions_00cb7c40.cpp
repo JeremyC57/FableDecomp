@@ -1,3 +1,4 @@
+// Leaf: ?RunSpawnedFunctions@CScriptBase@@IAEXXZ
 // CScriptBase::RunSpawnedFunctions() -- step every spawned script thread once and drop the threads that report they are finished
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB7C40, length 107 bytes (+5 int3 padding).
 // PDB: CScriptBase::Threads is list<CCountedPointer<CSpawnedFuncBase> > (retail: the STLport head-node pointer at
@@ -68,7 +69,9 @@ template <class T> struct list {                     // STLport list: the head n
 class CScriptBase {
 public:
     virtual ~CScriptBase();
+    protected:
     void RunSpawnedFunctions();
+    public:
     bool UpdateSpawnedFunction(CSpawnedFuncBase* thread);   // 0x00CB7950
 private:
     list<CCountedPointer<CSpawnedFuncBase> > Threads;      // +0x04

@@ -388,3 +388,4 @@ date	account	item	kind	status	note
 2026-11-23	A	flatten pilot 1 (scripted)	naming	done	79 rows by flatten_pilot.py (batches/2026-11-23_landing_flatten_pilot1)
 2026-11-23	A	flatten switch 1 (scripted)	naming	done	51 rows by flatten_pilot.py --switch (batches/2026-11-23_landing_flatten_switch1)
 2026-11-23	A	access 1 (scripted)	naming	done	170 rows by access_fix.py (batches/2026-11-23_landing_access1)
+2026-11-23	A	access 2 (scripted)	naming	done	188 rows by access_fix.py --wide (batches/2026-11-23_landing_access2)

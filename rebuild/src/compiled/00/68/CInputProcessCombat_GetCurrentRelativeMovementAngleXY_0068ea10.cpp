@@ -1,3 +1,4 @@
+// Leaf: ?GetCurrentRelativeMovementAngleXY@CInputProcessCombat@@ABEMXZ
 // CInputProcessCombat::GetCurrentRelativeMovementAngleXY() -- in the current player's first-person-style mode (CPlayer byte +0x220) the angle comes from the world's camera record (CWorld slot 6, a 56-byte record returned by value) through its GetAngleXY; otherwise from the current game camera (CWorld +0x34, slot 7)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068EA10, length 65 bytes (+ int3 padding).
 // Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0 (PlayerManager +0xc -> CPlayerManager::GetCurrentPlayer @ 0x00449970),
@@ -39,10 +40,12 @@ struct CInputProcessGameBase {                      // engine/CInputProcessGameB
     void*         PGamePlayerInterface;             // +0x24
 };
 class CInputProcessCombat : public CInputProcessGameBase { public:
-    float GetCurrentRelativeMovementAngleXY();
+    private:
+    float GetCurrentRelativeMovementAngleXY() const;
+    public:
 };
 
-float CInputProcessCombat::GetCurrentRelativeMovementAngleXY()
+float CInputProcessCombat::GetCurrentRelativeMovementAngleXY() const
 {
     if (World->PeekMyPlayer()->m_firstPersonControl)
         return World->GetCameraRecord().GetAngleXY();

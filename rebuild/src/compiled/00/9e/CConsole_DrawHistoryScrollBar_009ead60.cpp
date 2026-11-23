@@ -1,5 +1,5 @@
 // CConsole::DrawHistoryScrollBar(const C2DBoxF&) -- at the right edge of the history window draw an up arrow while lines below the visible ones exist, a down arrow while lines above exist, and the scroll bar box spanning the visible part of the history
-// Leaf: DrawHistoryScrollBar
+// Leaf: ?DrawHistoryScrollBar@CConsole@@AAEXABVC2DBoxF@@@Z
 // Shape: the four pixel/screen scales are IMPLICIT double->float conversions (`float bottomOffset = g_virtualPixelScaleY * -2.0;`); an explicit
 //   (float) cast stores bottomOffset before `push ebp` and hoists the barWidth chain between the prologue pushes.
 class C2DVector { public:
@@ -58,7 +58,9 @@ class CConsole { public:
     CHistoryList::Node* VisibleHistoryFinish;           // +0x54
     unsigned char       _pad58[0x8c - 0x58];
     CRGBColour          ScrollBarColour;                // +0x8c
+    private:
     void DrawHistoryScrollBar(const C2DBoxF& window);
+    public:
 };
 
 void CConsole::DrawHistoryScrollBar(const C2DBoxF& window)

@@ -1,3 +1,4 @@
+// Leaf: ?AllBeamsInactive@CTCWillLightning@@AAE_NXZ
 // CTCWillLightning::AllBeamsInactive() const -- true when every beam of the spell is inactive (state 0) or finished (state 6)
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079F7A0, 104 bytes (+8 int3). __fastcall, returns bool in al. Caller 0x007A2944.
@@ -22,9 +23,11 @@ class CTCWillLightning { public:
     void* __vftable;                             // +0x00
     unsigned char _pad_0x04[0x68 - 0x04];
     CRetailList<CCountedPointer<CLightningBeam> > m_lbBeams;     // +0x68
-    bool AllBeamsInactive() const;
+    private:
+    bool AllBeamsInactive();
+    public:
 };
-bool CTCWillLightning::AllBeamsInactive() const
+bool CTCWillLightning::AllBeamsInactive()
 {
     for (CRetailList<CCountedPointer<CLightningBeam> >::Node* it = m_lbBeams.begin(); it != m_lbBeams.end(); it = it->Next) {
         CCountedPointer<CLightningBeam> beam = it->Value;

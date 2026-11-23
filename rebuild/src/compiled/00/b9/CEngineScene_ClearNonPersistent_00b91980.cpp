@@ -1,3 +1,4 @@
+// Leaf: ?ClearNonPersistent@CEngineScene@@AAEXXZ
 // CEngineScene::ClearNonPersistent() -- walk the non-persistent chain at +0x24: for each node remember its +0x38 link, clear its four links (+0x38..+0x44), drop its reference count (+4) and destroy it through virtual slot 1 at zero; then clear the chain head
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B91980, length 58 bytes.
 // Callees: virtual slot 1 (+4) of a node whose count reaches zero. Shape: the zero register edi serves the four link stores, the head test and the final store; the
@@ -16,7 +17,9 @@ struct CSceneNode_00b91980 {
 class CEngineScene { public:
     unsigned char        _pad[0x24];
     CSceneNode_00b91980* m_pNonPersistent;         // +0x24
+    private:
     void ClearNonPersistent();
+    public:
 };
 
 void CEngineScene::ClearNonPersistent()

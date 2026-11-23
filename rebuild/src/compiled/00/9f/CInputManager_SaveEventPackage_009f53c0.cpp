@@ -1,5 +1,5 @@
 // CInputManager::SaveEventPackage() -- if any events are stored: sample the mouse position and the first joystick's axes, refresh the internal checksum, and write a package of the stored events (time stamp, checksum, both positions) to the package file
-// Leaf: SaveEventPackage
+// Leaf: ?SaveEventPackage@CInputManager@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F53C0, length 261 bytes (+ int3 padding), plain `ret`.
 // Callees: CalculateInternalChecksum @ 0x009F5170 (public const, unsigned long: NF78 q10952, both PDBs), STLport vector<CInputEvent> copy ctor @ 0x009F66A0,
 //   CInputEventPackage::Save(CAFile&) @ 0x009F52A0, ~CInputEvent @ 0x00A03B30, free @ 0x00BFEA14 (the STLport
@@ -95,7 +95,9 @@ class CInputManager { public:
     long                TimeStamp;                      // +0x5c
     CAFile              PackageFile;                    // +0x60 CDiskFileWin32
     unsigned long CalculateInternalChecksum() const;    // 0x009F5170 (Ego_r.pdb / FableWin.pdb ?CalculateInternalChecksum@CInputManager@@QBEKXZ)
+    protected:
     void SaveEventPackage();
+    public:
 };
 
 void CInputManager::SaveEventPackage()

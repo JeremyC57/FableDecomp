@@ -1,5 +1,5 @@
 // CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea() -- for each of the four players whose player object is initialised, if its living hero stands inside the switch's trigger square, count the trigger and queue a CEventTriggered for the hero on the switch's entity-events component (0x42)
-// Leaf: SwitchTriggerPlayerOnlyMultipleTimesInArea
+// Leaf: ?SwitchTriggerPlayerOnlyMultipleTimesInArea@CThingSwitch@@IAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083C690, length 361 bytes (plain `ret`).
@@ -90,7 +90,9 @@ class CThingSwitch : public CThingPhysical { public:
     float         TriggerRadius;                        // +0xd0
     unsigned char _padd4[0xe4 - 0xd4];
     long          TimesTriggered;                       // +0xe4
+    protected:
     void SwitchTriggerPlayerOnlyMultipleTimesInArea();
+    public:
 };
 
 void CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea()

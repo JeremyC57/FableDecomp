@@ -1,5 +1,5 @@
 // CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility ability) -- true when one of the inventory's quick-access slots holding the ability's quick-access item has a press of type 2 queued for the main player
-// Leaf: IsAbilityQuickAccessEventInQueue
+// Leaf: ?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -126,7 +126,7 @@ class CTCInventoryAbilities : public NInventory::CTCInventoryBase { public:
     unsigned char _pad_0x08[0x160 - 0x08];
     CAbilityVector Abilities;                        // +0x160 (PDB +0x180)
     CDefPointer<const CHeroAbilityDef> GetAbilityPDef(EHeroAbility ability) const;   // 0x005EDFD9
-    bool IsAbilityQuickAccessEventInQueue(EHeroAbility ability);
+    bool IsAbilityQuickAccessEventInQueue(EHeroAbility ability) const;
 };
 
 // Same-TU body of GetAbilityPDef @ 0x005EDFD9 (retail's TU, above the caller): it leaves edx alone, so VC7.1 keeps
@@ -138,7 +138,7 @@ __declspec(noinline) CDefPointer<const CHeroAbilityDef> CTCInventoryAbilities::G
 }
 #pragma optimize("y", off)
 
-bool CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility ability)
+bool CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility ability) const
 {
     CDefPointer<const CHeroAbilityDef> def = GetAbilityPDef(ability);
     if (def.Object) {

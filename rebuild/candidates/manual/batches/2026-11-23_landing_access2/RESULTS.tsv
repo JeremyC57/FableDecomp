@@ -1,0 +1,498 @@
+address	verdict	old	new	reason
+00406a80	SKIP	?GetEmptySlotName@CUserProfileManager@@QAE?AVCWideString@@XZ	?GetEmptySlotName@CUserProfileManager@@QBE?AVCWideString@@XZ	declaration already const
+00406c20	SKIP	?GetAutoSaveDisplayName@CUserProfileManager@@QAE?AVCWideString@@XZ	?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ	identity: the PDB name is claimed by another address 004069e0
+004167cd	SKIP	?GetCurrentFrameFinishTimeApproximation@CMainGameComponent@@QAENXZ	?GetCurrentFrameFinishTimeApproximation@CMainGameComponent@@IBENXZ	identity: the PDB name is claimed by another address 008f2c60
+00427dc9	SKIP	?CreateLevelSlider@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z	?CreateLevelSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z	nested scope or operator / special member
+00427f31	SKIP	?CreateStaticSlider@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	?CreateStaticSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	nested scope or operator / special member
+0042819a	SKIP	?CreateStaticSliderBidirectional@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	?CreateStaticSliderBidirectional@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	nested scope or operator / special member
+00446220	SKIP	?GetInputProcessEventFromUpdate@CGamePlayerInterface@@QBE_NAAVCProcessedInput@@@Z	?GetInputProcessEventFromUpdate@CGamePlayerInterface@@ABE_NAAVCProcessedInput@@@Z	access in the local model is already private
+004497e0	SKIP	?GetPlayerDefIndexFromNumber@CPlayerManager@@QAEJJ@Z	?GetPlayerDefIndexFromNumber@CPlayerManager@@ABEJJ@Z	declaration already const
+0044a070	SKIP	?DestroyPlayers@CPlayerManager@@QAEXXZ	?DestroyPlayers@CPlayerManager@@AAEXXZ	access in the local model is already private
+0047cfd3	SKIP	?GetCameraSensitivity@CUserProfileManager@@QAEMXZ	?GetCameraSensitivity@CUserProfileManager@@QBEMXZ	identity: the PDB name is claimed by another address 00437470,00437490,0047cfc2,0054a4f0
+0047cfee	SKIP	?BoughtSomething@CAIStateGroup_BuyFromSeller@@QAEXXZ	?BoughtSomething@CAIStateGroup_BuyFromSeller@@AAEXXZ	identity: the PDB name is claimed by another address 007e5950,00919a30,00b86a10
+0048dbc3	SKIP	?GetBlackBarHeight@CSubtitleRenderer@@QBEMXZ	?GetBlackBarHeight@CSubtitleRenderer@@ABEMXZ	access in the local model is already private
+0048f50c	SKIP	?FormatTextForVWindow@CSubtitleRenderer@@QBEXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z	?FormatTextForVWindow@CSubtitleRenderer@@ABEXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z	access in the local model is already private
+00490a22	SKIP	?IsInInteractiveState@CSubtitleRenderer@@QAE_NXZ	?IsInInteractiveState@CSubtitleRenderer@@QBE_NXZ	declaration already const
+00494710	SKIP	?ChooseWorldNumber@CFrontendGameComponent@@QAEXJ@Z	?ChooseWorldNumber@CFrontendGameComponent@@AAEXJ@Z	access in the local model is already private
+0049e370	SKIP	?UpdateEnvironmentCameraPos@CWorld@@QAEXABVC3DVector@@@Z	?UpdateEnvironmentCameraPos@CWorld@@IAEXABVC3DVector@@@Z	access in the local model is already protected
+0049e620	SKIP	?InitMeshBank@CWorld@@QAE_NXZ	?InitMeshBank@CWorld@@IAE_NXZ	access in the local model is already protected
+0049ebf0	SKIP	?InitThingManager@CWorld@@QAE_NXZ	?InitThingManager@CWorld@@IAE_NXZ	access in the local model is already protected
+004a0370	SKIP	?DisplayCollectableRentInformation@CWorld@@QAEXXZ	?DisplayCollectableRentInformation@CWorld@@QBEXXZ	declaration already const
+004afa10	SKIP	?GetMasterScriptDataForScript@CQuestManager@@QAEPAVCScriptDataBase@@ABVCScriptInfo@@@Z	?GetMasterScriptDataForScript@CQuestManager@@AAEPAVCScriptDataBase@@ABVCScriptInfo@@@Z	access in the local model is already private
+004b1080	SKIP	?IsAnyQuestActive@CQuestManager@@QAE_NXZ	?IsAnyQuestActive@CQuestManager@@QBE_NXZ	declaration already const
+004b5030	SKIP	?SaveMasterScriptDataToGameState@CQuestManager@@QAEXAAVCScriptDataBase@@ABVCCharString@@@Z	?SaveMasterScriptDataToGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z	access in the local model is already private
+004bd160	SKIP	?GetMeshObjectAssumingObjectAt@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@ABVC3DVector@@ABVCRightHandedSet@@AAVC3DMeshObject@@@Z	?GetMeshObjectAssumingObjectAt@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@ABVC3DVector@@ABVCRightHandedSet@@AAVC3DMeshObject@@@Z	nested scope or operator / special member
+004bd2e0	SKIP	?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ	?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ	nested scope or operator / special member
+004fc9c0	SKIP	?SetMapPlacement@CWorldMap@@QAEXABVC2DBoxI@@J@Z	?SetMapPlacement@CWorldMap@@IAEXABVC2DBoxI@@J@Z	access in the local model is already protected
+0051e5a0	SKIP	?ActivateAfterLoading@CThingManager@@QAEXJ@Z	?ActivateAfterLoading@CThingManager@@AAEXJ@Z	access in the local model is already private
+00541390	SKIP	?GetDataFromDef@CDynamicList@NUISystem@@QAEXXZ	?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ	nested scope or operator / special member
+0054a530	SKIP	?GetTextureDetail@CUserProfileManager@@QAEMXZ	?GetTextureDetail@CUserProfileManager@@QBEMXZ	declaration already const
+0054a590	SKIP	?GetMeshDetail@CUserProfileManager@@QAEMXZ	?GetMeshDetail@CUserProfileManager@@QBEMXZ	declaration already const
+0054f8e0	SKIP	?FitInWindow@CText@NUISystem@@QAEJAAVCWideString@@ABVC2DBoxF@@@Z	?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z	nested scope or operator / special member
+005826fa	SKIP	?IsQuitMenuReceivingInput@CTCInventory@@QAE_NXZ	?IsQuitMenuReceivingInput@CTCInventory@@QBE_NXZ	identity: the PDB name is claimed by another address 005836d2
+00595b24	SKIP	?AddProfileNameToScreens@CFrontEndManager@NUISystem@@QAEXABVCWideString@@@Z	?AddProfileNameToScreens@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z	nested scope or operator / special member
+0059de04	SKIP	?UpdateBuyActionsList@CTCInventoryTrade@@QAEXXZ	?UpdateBuyActionsList@CTCInventoryTrade@@AAEXXZ	access in the local model is already private
+005b37f7	SKIP	?InitialiseMannequin@CTCInventoryClothing@@QAEXXZ	?InitialiseMannequin@CTCInventoryClothing@@AAEXXZ	access in the local model is already private
+005b62fe	SKIP	?GetItemDescriptionNoArmourRating@CTCInventoryClothing@@QAEXAAVCWideString@@J@Z	?GetItemDescriptionNoArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z	declaration already const
+005bd3a0	SKIP	?PlayInventoryNoMovementSound@CTCInventoryBase@NInventory@@QBEXXZ	?PlayInventoryNoMovementSound@CTCInventoryBase@NInventory@@ABEXXZ	nested scope or operator / special member
+005be62c	SKIP	?GetPrerequisitesString@CTCInventoryBase@NInventory@@QAE?AVCWideString@@V?$CDefPointer@$$CBVCQuestCardDef@@@@@Z	?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE?AVCWideString@@V?$CDefPointer@$$CBVCQuestCardDef@@@@@Z	nested scope or operator / special member
+005d92f0	SKIP	?GetStartingRightHandedSet@CTCInventoryItem@@QAE?AVCRightHandedSet@@XZ	?GetStartingRightHandedSet@CTCInventoryItem@@QBE?AVCRightHandedSet@@XZ	identity: the PDB name is claimed by another address 005d9730
+005ec7c0	SKIP	?RenderText@CTCTavernGame@@QAEXABVCEnginePrimitivePrepareInfo@@MMVCWideString@@ABVCFontBank@@VCRGBColour@@@Z	?RenderText@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@MMVCWideString@@ABVCFontBank@@VCRGBColour@@@Z	access in the local model is already protected
+005ec990	SKIP	?DrawBox@CTCTavernGame@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	?DrawBox@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@@Z	access in the local model is already protected
+005edc90	SKIP	?GetGame@CTCGamePlayer@@QAEPAVCTCTavernGame@@XZ	?GetGame@CTCGamePlayer@@QBEPAVCTCTavernGame@@XZ	declaration already const
+005fc0c0	SKIP	?UpdateRegionsCorrespondances@CTCInventoryMap@@QAEXJJ@Z	?UpdateRegionsCorrespondances@CTCInventoryMap@@AAEXJJ@Z	access in the local model is already private
+00644179	SKIP	?IsFinishedOpening@CDrawMiniMap@NPlayerGui@@QAE_NXZ	?IsFinishedOpening@CDrawMiniMap@NPlayerGui@@QBE_NXZ	nested scope or operator / special member
+006441be	SKIP	?IsFinishedClosing@CDrawMiniMap@NPlayerGui@@QAE_NXZ	?IsFinishedClosing@CDrawMiniMap@NPlayerGui@@QBE_NXZ	nested scope or operator / special member
+00645292	SKIP	?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z	?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z	nested scope or operator / special member
+00645f2e	SKIP	?DrawChangeText@CStatBar@NPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z	?DrawChangeText@CStatBar@NPlayerGui@@IAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z	nested scope or operator / special member
+00658f41	SKIP	?GetNumberOfGayVillagers@CTCVillage@@QAEJXZ	?GetNumberOfGayVillagers@CTCVillage@@QBEJXZ	declaration already const
+006622d0	SKIP	?UpdateBodyReorientation@CThingCreatureBase@@QAEXXZ	?UpdateBodyReorientation@CThingCreatureBase@@IAEXXZ	access in the local model is already protected
+006655a0	SKIP	?GetAnimationSpeedMultiplier@CThingCreatureBase@@QAEMXZ	?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ	declaration already const
+0066b120	SKIP	?InternalPlaySoundEvent@CTCSoundPlayer@@QAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z	?InternalPlaySoundEvent@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z	access in the local model is already private
+0066c610	SKIP	?HasPhysicsMesh@C3DMeshInfo@@QAE_NXZ	?HasPhysicsMesh@C3DMeshInfo@@QBE_NXZ	identity: the PDB name is claimed by another address 0079dcb0,009e9c60,00a23c40,00c3eba0
+0066e985	SKIP	?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QAEXXZ	?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QBEXXZ	nested scope or operator / special member
+006a1330	SKIP	?IsSlotPrimarySlot@CTCCarrying@@QAE_NJ@Z	?IsSlotPrimarySlot@CTCCarrying@@QBE_NJ@Z	declaration already const
+006a5ab0	SKIP	?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QAE_NXZ	?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QBE_NXZ	declaration already const
+006ab770	SKIP	?ResolveMovementAcceleration@CThingPlayerCreature@@QAEXXZ	?ResolveMovementAcceleration@CThingPlayerCreature@@IAEXXZ	access in the local model is already protected
+006afe00	SKIP	?GetMass@CTCPhysicsBase@@QAEMXZ	?GetMass@CTCPhysicsBase@@QBEMXZ	declaration already const
+006bb1e0	SKIP	?IsDay@CGameTimeManager@@QAE_NXZ	?IsDay@CGameTimeManager@@QBE_NXZ	identity: the PDB name is claimed by another address 006bb2c0
+006bb210	SKIP	?IsNightTime@CGameTimeManager@@QAE_NXZ	?IsNightTime@CGameTimeManager@@QBE_NXZ	declaration already const
+006bf7b0	SKIP	?BoughtSomething@CAIStateGroup_BuyFromSeller@@QAEXXZ	?BoughtSomething@CAIStateGroup_BuyFromSeller@@AAEXXZ	identity: the PDB name is claimed by another address 0047cfee,007e5950,00919a30,00b86a10
+006bfb90	SKIP	?NeedsMainSignPost@CTCBuyableHouse@@QBE_NXZ	?NeedsMainSignPost@CTCBuyableHouse@@AAE_NXZ	declaration has no const to remove
+006c0c90	SKIP	?CreateRentMoney@CTCBuyableHouse@@QAEXXZ	?CreateRentMoney@CTCBuyableHouse@@AAEXXZ	access in the local model is already private
+006c0fd0	SKIP	?Evict@CTCBuyableHouse@@QAEXXZ	?Evict@CTCBuyableHouse@@AAEXXZ	access in the local model is already private
+006d7120	SKIP	?GetAttackVariationMultiplier@CTCHeroExperience@@QBEMXZ	?GetAttackVariationMultiplier@CTCHeroExperience@@ABEMXZ	access in the local model is already private
+006d86d0	SKIP	?GetOnHitSoundIntensity@CTCHeroExperience@@QBEJXZ	?GetOnHitSoundIntensity@CTCHeroExperience@@ABEJXZ	access in the local model is already private
+006dd760	SKIP	?SendPauseEvent@CTCTrophy@@QAEX_N@Z	?SendPauseEvent@CTCTrophy@@AAEX_N@Z	access in the local model is already private
+006e28d0	SKIP	?StopCurrentSpeech@CTCTalk@@QAEXPAVCTCSoundPlayer@@@Z	?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z	identity: the PDB name is claimed by another address 006e2e60
+006e86a0	SKIP	?UpdateDefenderAttackInstruction@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	?UpdateDefenderAttackInstruction@CCombatManager@@AAEXAAUCCombatantInfo@@@Z	access in the local model is already private
+006f9130	SKIP	?GetEmbeddedEventTime@CManager@NAnimationEvents@@QBEMKABVCCharString@@@Z	?GetEmbeddedEventTime@CManager@NAnimationEvents@@ABEMKABVCCharString@@@Z	nested scope or operator / special member
+006f92a0	SKIP	?SaveBinary@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z	?SaveBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z	nested scope or operator / special member
+006f9ac0	SKIP	?GetExtraEventNames@CManager@NAnimationEvents@@QBEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	?GetExtraEventNames@CManager@NAnimationEvents@@ABEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	nested scope or operator / special member
+006f9b50	SKIP	?GetExtraEvents@CManager@NAnimationEvents@@QBEXKAAV?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@@Z	?GetExtraEvents@CManager@NAnimationEvents@@ABEXKAAV?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@@Z	nested scope or operator / special member
+006f9f90	SKIP	?LoadBinary@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z	?LoadBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z	nested scope or operator / special member
+0070c100	SKIP	?AnimsCanBeIgnored@CAnimateThing@@QAE_NXZ	?AnimsCanBeIgnored@CAnimateThing@@QBE_NXZ	declaration already const
+0070c2c0	SKIP	?UpdateInternalAlphas@CAnimSet@@QAEXXZ	?UpdateInternalAlphas@CAnimSet@@AAEXXZ	access in the local model is already private
+0070c800	SKIP	?GetInterpolatedTime@CAnimSet@@QBEMMJ@Z	?GetInterpolatedTime@CAnimSet@@ABEMMJ@Z	access in the local model is already private
+00712d70	SKIP	?IsActionRunning@CTCScriptedControl@@QAE_NABVCCharString@@@Z	?IsActionRunning@CTCScriptedControl@@QBE_NABVCCharString@@@Z	declaration already const
+0071c9f0	SKIP	?UpdateIdleParticles@CTCHeroMorph@@QAEXXZ	?UpdateIdleParticles@CTCHeroMorph@@AAEXXZ	access in the local model is already private
+00722590	SKIP	?CreatePositions@CTCSmokeGenerator@@QAEXXZ	?CreatePositions@CTCSmokeGenerator@@IAEXXZ	access in the local model is already protected
+0072a970	SKIP	?SetupBulletTime@CTCSpecialAbilities@@QAE_NXZ	?SetupBulletTime@CTCSpecialAbilities@@AAE_NXZ	access in the local model is already private
+0072a9b0	SKIP	?SetupForceMove@CTCSpecialAbilities@@QAE_NXZ	?SetupForceMove@CTCSpecialAbilities@@AAE_NXZ	access in the local model is already private
+0072aa00	SKIP	?SetupHealLifeSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupHealLifeSpell@CTCSpecialAbilities@@AAE_NXZ	access in the local model is already private
+0072aa50	SKIP	?SetupGhostSwordSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupGhostSwordSpell@CTCSpecialAbilities@@AAE_NXZ	access in the local model is already private
+0072aaa0	SKIP	?SetupMultiArrow@CTCSpecialAbilities@@QAE_NXZ	?SetupMultiArrow@CTCSpecialAbilities@@AAE_NXZ	access in the local model is already private
+0072b0d0	SKIP	?SetupPhysicalShieldSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupPhysicalShieldSpell@CTCSpecialAbilities@@AAE_NXZ	access in the local model is already private
+0072b160	SKIP	?SetupTurncoatSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupTurncoatSpell@CTCSpecialAbilities@@AAE_NXZ	access in the local model is already private
+0072c680	SKIP	?SetupLightningSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupLightningSpell@CTCSpecialAbilities@@AAE_NXZ	access in the local model is already private
+0072e290	SKIP	?CreateChildThings@CTCMeshAutomaticEntityCreator@@QAEXXZ	?CreateChildThings@CTCMeshAutomaticEntityCreator@@AAEXXZ	access in the local model is already private
+00731ca0	SKIP	?GetDirection@CTCSpotLight@@QBE?AVC3DVector@@XZ	?GetDirection@CTCSpotLight@@QAE?AVC3DVector@@XZ	declaration has no const to remove
+007468c0	SKIP	?UpdateAnimation@CTCBed@@QAEXXZ	?UpdateAnimation@CTCBed@@AAEXXZ	access in the local model is already private
+00747090	SKIP	?ClearDangerStatus@CTCStealth@@QAEXXZ	?ClearDangerStatus@CTCStealth@@AAEXXZ	access in the local model is already private
+00747480	SKIP	?UpdateViewability@CTCStealth@@QAEXXZ	?UpdateViewability@CTCStealth@@AAEXXZ	access in the local model is already private
+007479b0	SKIP	?UpdateHearability@CTCStealth@@QAEXXZ	?UpdateHearability@CTCStealth@@AAEXXZ	access in the local model is already private
+00749b40	SKIP	?UpdateAnimation@CTCCupboard@@QAEXXZ	?UpdateAnimation@CTCCupboard@@AAEXXZ	access in the local model is already private
+0074e280	SKIP	?GetDynamicPotionDefIndex@CTCContainerRewardHero@@QAEJXZ	?GetDynamicPotionDefIndex@CTCContainerRewardHero@@IBEJXZ	declaration already const
+0074e460	SKIP	?GetDynamicResurrectionDefIndex@CTCContainerRewardHero@@QAEJXZ	?GetDynamicResurrectionDefIndex@CTCContainerRewardHero@@IBEJXZ	declaration already const
+00750dd0	SKIP	?Explode@CTCExplodingObject@@QAEXXZ	?Explode@CTCExplodingObject@@AAEXXZ	access in the local model is already private
+00751970	SKIP	?GetBodySettingsSlowInFastOut@CTCLook@@QBEXAAM0MMM@Z	?GetBodySettingsSlowInFastOut@CTCLook@@ABEXAAM0MMM@Z	access in the local model is already private
+00752480	SKIP	?IsAbleToTurnViaAnimation@CTCLook@@QAE_NXZ	?IsAbleToTurnViaAnimation@CTCLook@@ABE_NXZ	declaration already const
+00753020	SKIP	?IsTurningBody@CTCLook@@QAE_NXZ	?IsTurningBody@CTCLook@@AAE_NXZ	identity: the PDB name is claimed by another address 00638180,0075dcf0,00ad3940
+0075c530	SKIP	?IsAngleValid@CTCCameraPointDefinitionBase@@QBE_NXZ	?IsAngleValid@CTCCameraPointDefinitionBase@@ABE_NXZ	access in the local model is already private
+00760bc0	SKIP	?GetBounds@CShape@NShape@@QBEXAAVC2DBoxF@@@Z	?GetBounds@CShape@NShape@@IBEXAAVC2DBoxF@@@Z	nested scope or operator / special member
+0076d460	SKIP	?IsAllyOf@CTCEnemy@@QBE_NABVCThing@@@Z	?IsAllyOf@CTCEnemy@@ABE_NABVCThing@@@Z	access in the local model is already private
+0076de60	SKIP	?IsTrailActiveForThing@CTCWeaponTrail@@QBE_NJPBVCThing@@PBVCThingCreatureBase@@@Z	?IsTrailActiveForThing@CTCWeaponTrail@@ABE_NJPBVCThing@@PBVCThingCreatureBase@@@Z	access in the local model is already private
+00788555	SKIP	?UpdateAnimation@CTCMeleeTrap@@QAEXXZ	?UpdateAnimation@CTCMeleeTrap@@AAEXXZ	access in the local model is already private
+0078a2c0	SKIP	?LoadRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ	?LoadRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	access in the local model is already private
+00798770	SKIP	?FinishBeingForcePushed@CTCForcePushed@@QAEX_NM@Z	?FinishBeingForcePushed@CTCForcePushed@@AAEX_NM@Z	access in the local model is already private
+0079a600	SKIP	?FinalCleanup@CTCSummonSpell@@QAEXXZ	?FinalCleanup@CTCSummonSpell@@AAEXXZ	declaration does not start its line
+0079e500	SKIP	?UninitWindow@CSystemManager@@QAEXXZ	?UninitWindow@CSystemManager@@AAEXXZ	declaration does not start its line
+007a4300	SKIP	?FinalCleanup@CTCWillEnflame@@QAEXXZ	?FinalCleanup@CTCWillEnflame@@IAEXXZ	declaration does not start its line
+007a5450	SKIP	?FinalCleanup@CTCForcePushPower@@QAEXXZ	?FinalCleanup@CTCForcePushPower@@AAEXXZ	declaration does not start its line
+007aede0	SKIP	?IsOnFinalPhase@CTCBoss@@QBE_NXZ	?IsOnFinalPhase@CTCBoss@@QAE_NXZ	declaration has no const to remove
+007befb0	SKIP	?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@QAEMXZ	?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ	nested scope or operator / special member
+007c3030	SKIP	?FinalCleanup@CTCDrainLife@@QAEXXZ	?FinalCleanup@CTCDrainLife@@AAEXXZ	declaration does not start its line
+007c5470	SKIP	?FinalCleanup@CTCGhostSword@@QAEXXZ	?FinalCleanup@CTCGhostSword@@AAEXXZ	declaration does not start its line
+007c6aa0	SKIP	?StartTurncoatingEffects@CTCTurncoatSpell@@QAEXXZ	?StartTurncoatingEffects@CTCTurncoatSpell@@AAEXXZ	access in the local model is already private
+007cabd0	SKIP	?AddItemToInventory@CTCHeroReceiveItems@@QAEXAAVCThing@@_N@Z	?AddItemToInventory@CTCHeroReceiveItems@@AAEXAAVCThing@@_N@Z	access in the local model is already private
+007cc2b0	SKIP	?CreateAmmoEffect@CTCMultiArrow@@QAEXXZ	?CreateAmmoEffect@CTCMultiArrow@@IAEXXZ	access in the local model is already protected
+007cc410	SKIP	?FinalCleanup@CTCMultiArrow@@QAEXXZ	?FinalCleanup@CTCMultiArrow@@IAEXXZ	access in the local model is already protected
+007df3d0	SKIP	?HasCameraPhysicsMeshObject@CTCCameraCollision@@QAE_NXZ	?HasCameraPhysicsMeshObject@CTCCameraCollision@@QBE_NXZ	identity: the PDB name is claimed by another address 007e3010
+007df6a0	SKIP	?DoEffect@CTCWallMountEffects@@QAEXXZ	?DoEffect@CTCWallMountEffects@@AAEXXZ	access in the local model is already private
+007faf60	SKIP	?DoHeadTracking@CTCKraken@@QAEXXZ	?DoHeadTracking@CTCKraken@@AAEXXZ	access in the local model is already private
+007fb6a0	SKIP	?StartBeamEffect@CTCKraken@@QAEXXZ	?StartBeamEffect@CTCKraken@@AAEXXZ	access in the local model is already private
+007fbe50	SKIP	?UpdateBeamExplosion@CTCKraken@@QAEXXZ	?UpdateBeamExplosion@CTCKraken@@AAEXXZ	access in the local model is already private
+007fd580	SKIP	?UpdateAdditionalImpulse@CTCDPhysicalObstruction@@QAEXXZ	?UpdateAdditionalImpulse@CTCDPhysicalObstruction@@AAEXXZ	access in the local model is already private
+007fde00	SKIP	?IsTimeToSummon@CTCAISummon@@QAE_NXZ	?IsTimeToSummon@CTCAISummon@@ABE_NXZ	declaration already const
+0081e690	SKIP	?GetWorldMapNumber@CMap@@QAEJXZ	?GetWorldMapNumber@CMap@@QBEJXZ	declaration already const
+0081e7b0	SKIP	?GetMemoryFootprint@CMap@@QAEJXZ	?GetMemoryFootprint@CMap@@QBEJXZ	identity: the PDB name is claimed by another address 00c1d7f0
+0081ed90	SKIP	?InitHeightMap@CMap@@QAEXXZ	?InitHeightMap@CMap@@IAEXXZ	access in the local model is already protected
+0081ee00	SKIP	?InitGameMap@CMap@@QAEXXZ	?InitGameMap@CMap@@IAEXXZ	access in the local model is already protected
+0081f460	SKIP	?IsCameraPassableAt@CMap@@QAE_NABVC2DCoordI@@@Z	?IsCameraPassableAt@CMap@@QBE_NABVC2DCoordI@@@Z	declaration already const
+00820080	SKIP	?GetGroundSizeZAt@CMap@@QAEMABVC2DCoordI@@@Z	?GetGroundSizeZAt@CMap@@IBEMABVC2DCoordI@@@Z	identity: the PDB name is claimed by another address 0081ea50
+00820ab0	SKIP	?UpdateScriptedMapBrushes@CMap@@QAEXXZ	?UpdateScriptedMapBrushes@CMap@@IAEXXZ	access in the local model is already protected
+00833390	SKIP	?GetSleepTimes@CThingAICreature@@QAEXAAJ0@Z	?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z	declaration already const
+0084cdf0	SKIP	?UpdateFixLookDirection@CBase@NCameraModes@@QAEXABVC3DVector@@0AAV3@M@Z	?UpdateFixLookDirection@CBase@NCameraModes@@IBEXABVC3DVector@@0AAV3@M@Z	nested scope or operator / special member
+0084db30	SKIP	?UpdateCameraOcclusion@CBase@NCameraModes@@QAEXAAVC3DVector@@@Z	?UpdateCameraOcclusion@CBase@NCameraModes@@IAEXAAVC3DVector@@@Z	nested scope or operator / special member
+008520f0	SKIP	?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@QAEXABVC3DVector@@0J@Z	?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@IAEXABVC3DVector@@0J@Z	nested scope or operator / special member
+008527f0	SKIP	?IsThingsOk@CScriptModuleConversationBase@NCameraModes@@QBE_NXZ	?IsThingsOk@CScriptModuleConversationBase@NCameraModes@@IBE_NXZ	nested scope or operator / special member
+00853290	SKIP	?GetTransformedPosition@CScriptModuleBase@NCameraModes@@QAE?AVC3DVector@@ABV3@@Z	?GetTransformedPosition@CScriptModuleBase@NCameraModes@@IBE?AVC3DVector@@ABV3@@Z	nested scope or operator / special member
+00853320	SKIP	?GetViewPosInFocalPlane@CScriptModuleBase@NCameraModes@@QAE?AVC3DVector@@ABV3@0@Z	?GetViewPosInFocalPlane@CScriptModuleBase@NCameraModes@@IBE?AVC3DVector@@ABV3@0@Z	nested scope or operator / special member
+00856a20	SKIP	?InitialiseActionTimes@CCombatActionBase@@QAEXXZ	?InitialiseActionTimes@CCombatActionBase@@IAEXXZ	access in the local model is already protected
+0085cfe0	SKIP	?GetMemoryFootprint@CThingMap@NThingMap@@QAEJXZ	?GetMemoryFootprint@CThingMap@NThingMap@@QBEJXZ	nested scope or operator / special member
+00861a80	SKIP	?SetUpMovementAnim@CModeStandBase@@QBEXAAVCAnimateThing@@W4EExistingAnimStatus@1@MABVCMovementSetup@1@2@Z	?SetUpMovementAnim@CModeStandBase@@ABEXAAVCAnimateThing@@W4EExistingAnimStatus@1@MABVCMovementSetup@1@2@Z	access in the local model is already private
+00878ce0	SKIP	?SetUpParams@CProjectileWeapon@NCameraModes@@QAEXXZ	?SetUpParams@CProjectileWeapon@NCameraModes@@AAEXXZ	nested scope or operator / special member
+008798c0	SKIP	?GetPhiForTargetedThing@CProjectileWeapon@NCameraModes@@QBEMABVCThing@@@Z	?GetPhiForTargetedThing@CProjectileWeapon@NCameraModes@@ABEMABVCThing@@@Z	nested scope or operator / special member
+008dacb0	SKIP	?CreateHandGlow@CModeThunderLightningStorm@NCreatureMode@@QAEXXZ	?CreateHandGlow@CModeThunderLightningStorm@NCreatureMode@@AAEXXZ	nested scope or operator / special member
+008dba90	SKIP	?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@QAEXXZ	?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	nested scope or operator / special member
+008e5f00	SKIP	?PerformForceUpdates@CTCPhysicsStandard@@QAEXXZ	?PerformForceUpdates@CTCPhysicsStandard@@IAEXXZ	identity: the PDB name is claimed by another address 008e5670
+008e9460	SKIP	?GetBestFrameInAimingAnim@CModeStrafe@NCreatureMode@@QAE_NAAM@Z	?GetBestFrameInAimingAnim@CModeStrafe@NCreatureMode@@ABE_NAAM@Z	nested scope or operator / special member
+008ea9f0	SKIP	?UpdateHoverAnim@CModeHoverBase@NCreatureMode@@QAEXXZ	?UpdateHoverAnim@CModeHoverBase@NCreatureMode@@AAEXXZ	nested scope or operator / special member
+008f5ee0	SKIP	?GetMemoryFootprint@CGameMap@@QAEJXZ	?GetMemoryFootprint@CGameMap@@QBEJXZ	identity: the PDB name is claimed by another address 006b74b0
+008f5f00	SKIP	?Update@CHeightMap@@QAEXXZ	?Update@CHeightMap@@AAEXXZ	access in the local model is already private
+008f71a0	SKIP	?InitThemePalette@CMap@@QAEXXZ	?InitThemePalette@CMap@@IAEXXZ	access in the local model is already protected
+008f87a0	SKIP	?CreateSocket@LSocket@LHNetworkLib@@SIIABULAddress@2@W4LSOCKET_PROTOCOL@2@@Z	?CreateSocket@LSocket@LHNetworkLib@@CIIABULAddress@2@W4LSOCKET_PROTOCOL@2@@Z	nested scope or operator / special member
+008f8830	SKIP	?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@SI_NABULAddress@2@AAUsockaddr_in@@@Z	?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@CI_NABULAddress@2@AAUsockaddr_in@@@Z	nested scope or operator / special member
+008f8bb0	SKIP	?ConvertSockaddr2LAddress@LSocket@LHNetworkLib@@SI_NABUsockaddr_in@@AAULAddress@2@@Z	?ConvertSockaddr2LAddress@LSocket@LHNetworkLib@@CI_NABUsockaddr_in@@AAULAddress@2@@Z	nested scope or operator / special member
+00922750	SKIP	?TalkToSelfUpdate@CAIStateGroup_Drunk@@QAEXXZ	?TalkToSelfUpdate@CAIStateGroup_Drunk@@AAEXXZ	access in the local model is already private
+0092c4e0	SKIP	?IsInSleepTime@CAIStateGroup_GoToBed@@QAE_NXZ	?IsInSleepTime@CAIStateGroup_GoToBed@@QBE_NXZ	declaration already const
+0092d060	SKIP	?IsUnreportedCrimeKnown@CAIStateGroup_GoToBed@@QAE_NXZ	?IsUnreportedCrimeKnown@CAIStateGroup_GoToBed@@IBE_NXZ	declaration already const
+0093c600	SKIP	?SetWhatsThatSound@CAIStateGroup_StealthSeekEnemy@@QAEXXZ	?SetWhatsThatSound@CAIStateGroup_StealthSeekEnemy@@AAEXXZ	access in the local model is already private
+0093c7b0	SKIP	?MoveTowardsEnemy@CAIStateGroup_StealthSeekEnemy@@QAEXPBVCTCPerceiveThing@@@Z	?MoveTowardsEnemy@CAIStateGroup_StealthSeekEnemy@@AAEXPBVCTCPerceiveThing@@@Z	access in the local model is already private
+0093dde0	SKIP	?AttackEnemy@CAIStateGroup_MeleeCombatNearby2@@QAEXXZ	?AttackEnemy@CAIStateGroup_MeleeCombatNearby2@@AAEXXZ	access in the local model is already private
+0093e090	SKIP	?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby2@@QAE_NXZ	?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby2@@AAE_NXZ	access in the local model is already private
+009454c0	SKIP	?StandAroundAndEat@CAIStateGroup_SitForMeal@@QAE_NXZ	?StandAroundAndEat@CAIStateGroup_SitForMeal@@AAE_NXZ	access in the local model is already private
+009462a0	SKIP	?IsTimeToPrepareMeal@CAIStateGroup_PrepareMeal@@QAE_NXZ	?IsTimeToPrepareMeal@CAIStateGroup_PrepareMeal@@ABE_NXZ	declaration already const
+00947ca0	SKIP	?SitIdle@CAIStateGroup_GoToPub@@QAE_NXZ	?SitIdle@CAIStateGroup_GoToPub@@IAE_NXZ	access in the local model is already protected
+00947d30	SKIP	?Laugh@CAIStateGroup_GoToPub@@QAE_NXZ	?Laugh@CAIStateGroup_GoToPub@@IAE_NXZ	access in the local model is already protected
+00947fb0	SKIP	?IsStaffed@CAIStateGroup_GoToPub@@QAE_NXZ	?IsStaffed@CAIStateGroup_GoToPub@@IAE_NXZ	access in the local model is already protected
+0094a190	SKIP	?Listen@CAIStateGroup_GoToPub@@QAE_NXZ	?Listen@CAIStateGroup_GoToPub@@IAE_NXZ	access in the local model is already protected
+0094a2b0	SKIP	?TellStory@CAIStateGroup_GoToPub@@QAE_NXZ	?TellStory@CAIStateGroup_GoToPub@@IAE_NXZ	access in the local model is already protected
+0095edf0	SKIP	?TurnToFace@CAIStateGroup_OpinionReactionRoot@@QAE_NXZ	?TurnToFace@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	access in the local model is already private
+0096c880	SKIP	?WalkTo@CAIStateGroup_EatAtTable@@QAE_NVC3DVector@@VCRightHandedSet@@@Z	?WalkTo@CAIStateGroup_EatAtTable@@IAE_NVC3DVector@@VCRightHandedSet@@@Z	access in the local model is already protected
+00970790	SKIP	?CanSeeTarget@CAIStateGroup_CreatureUseCoverBase@@QAE_NXZ	?CanSeeTarget@CAIStateGroup_CreatureUseCoverBase@@IAE_NXZ	access in the local model is already protected
+00972340	SKIP	?HasHitsCausedRush@CAIStateGroup_JackOfBladesStage1@@QAE_NXZ	?HasHitsCausedRush@CAIStateGroup_JackOfBladesStage1@@IAE_NXZ	access in the local model is already protected
+00978f10	SKIP	?IsStillRunnable@CAIStateGroup_CreatureAdvanceInCover@@QAE_NXZ	?IsStillRunnable@CAIStateGroup_CreatureAdvanceInCover@@IAE_NXZ	access in the local model is already protected
+0097e890	SKIP	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z	?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z	access in the local model is already protected
+00986510	SKIP	?MarriageCommentIsRunnable@CAIStateGroup_OpinionReactionRoot@@QAE_NXZ	?MarriageCommentIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	access in the local model is already private
+00989640	SKIP	?UpdateWorldSpaceFogTransform@CShaderRenderManager@@QAEXXZ	?UpdateWorldSpaceFogTransform@CShaderRenderManager@@AAEXXZ	access in the local model is already private
+0098a540	SKIP	?UpdateWorldSpaceLighting@CShaderRenderManager@@QAEXXZ	?UpdateWorldSpaceLighting@CShaderRenderManager@@AAEXXZ	access in the local model is already private
+00997e90	SKIP	?ParserIsSeparatorNext@CAFile@@SI_NAAVCStringParser@@@Z	?ParserIsSeparatorNext@CAFile@@CI_NAAVCStringParser@@@Z	identity: the PDB name is claimed by another address 00997da0
+00998010	SKIP	?ParserReadPastComponent@CAFile@@SI_NAAVCStringParser@@AAVCCharString@@@Z	?ParserReadPastComponent@CAFile@@CI_NAAVCStringParser@@AAVCCharString@@@Z	access in the local model is already private
+009a5a50	SKIP	?ActivateWindow@CSystemManager@@SIXPAV1@_N@Z	?ActivateWindow@CSystemManager@@CIXPAV1@_N@Z	declaration does not start its line
+009accc0	SKIP	?GetDefNameFromGlobalIndex@CDefinitionManager@@QAE?AVCDefString@@J@Z	?GetDefNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z	declaration already const
+009acce0	SKIP	?GetDefClassTypeNameFromGlobalIndex@CDefinitionManager@@QAE?AVCDefString@@J@Z	?GetDefClassTypeNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z	declaration already const
+009ae6b0	SKIP	?ClearDefsForRecompile@CDefinitionManager@@QAEXABVCCharString@@@Z	?ClearDefsForRecompile@CDefinitionManager@@IAEXABVCCharString@@@Z	access in the local model is already protected
+009c53a0	SKIP	?ProcessReads@CFileInstaller@@QAEXXZ	?ProcessReads@CFileInstaller@@IAEXXZ	access in the local model is already protected
+009cc750	SKIP	?Equals@CBankFileEntryUpdateData@@QBE_NABV?$CArray@VCCharString@@@@V?$CCountedPointer@VCBankStateBlock@@@@@Z	?Equals@CBankFileEntryUpdateData@@ABE_NABV?$CArray@VCCharString@@@@V?$CCountedPointer@VCBankStateBlock@@@@@Z	access in the local model is already private
+009cc840	SKIP	?SetFilenames@CBankFileEntryUpdateData@@QAEXABV?$CArray@VCCharString@@@@@Z	?SetFilenames@CBankFileEntryUpdateData@@AAEXABV?$CArray@VCCharString@@@@@Z	access in the local model is already private
+009cd3c0	SKIP	?DeleteEntry@CBankFile@@QAEXK@Z	?DeleteEntry@CBankFile@@AAEXK@Z	access in the local model is already private
+009d5410	SKIP	?FreeBuffer@CBankFileAsyncData@@QAEXXZ	?FreeBuffer@CBankFileAsyncData@@AAEXXZ	identity: the PDB name is claimed by another address 0040f470,0043fdc0,0043fe80,004432b0
+009e42e0	SKIP	?UpdateMaintainedEventPositions@CJoystick@@QAEXXZ	?UpdateMaintainedEventPositions@CJoystick@@IAEXXZ	access in the local model is already protected
+009e4360	SKIP	?AddMaintainedEventsToEventStore@CJoystick@@QAEXXZ	?AddMaintainedEventsToEventStore@CJoystick@@IAEXXZ	access in the local model is already protected
+009ea620	SKIP	?CopyBackBufferToFrontBuffer@CConsole@@QAEXXZ	?CopyBackBufferToFrontBuffer@CConsole@@AAEXXZ	identity: the PDB name is claimed by another address 009ea640
+009ea640	SKIP	?CopyBackBufferToFrontBuffer@CConsole@@QAEXXZ	?CopyBackBufferToFrontBuffer@CConsole@@AAEXXZ	identity: the PDB name is claimed by another address 009ea620
+009f2920	SKIP	?InternalDeallocate@CMemoryAllocator@@QAEXPAX@Z	?InternalDeallocate@CMemoryAllocator@@IAEXPAX@Z	access in the local model is already protected
+009f2a40	SKIP	?InternalAllocate@CMemoryAllocator@@QAEPAXJK_N@Z	?InternalAllocate@CMemoryAllocator@@IAEPAXJK_N@Z	identity: the PDB name is claimed by another address 009f2ac0
+009f4b10	SKIP	?IsEventProcessed@CInputManager@@QAE_NABVCInputEvent@@@Z	?IsEventProcessed@CInputManager@@QBE_NABVCInputEvent@@@Z	declaration already const
+009f5250	SKIP	?IsJoystickDeviceNumberActive@CInputManager@@QAE_NJ@Z	?IsJoystickDeviceNumberActive@CInputManager@@QBE_NJ@Z	declaration already const
+009fc070	SKIP	?GetUnloadableMemory@CResourceList@@QAEKK@Z	?GetUnloadableMemory@CResourceList@@QBEKK@Z	declaration already const
+009fd2b0	SKIP	?GetTextureType@CGraphicDataBank@@QBE?AW4ETextureType@1@ABVCGraphicHeader@1@_N@Z	?GetTextureType@CGraphicDataBank@@ABE?AW4ETextureType@1@ABVCGraphicHeader@1@_N@Z	access in the local model is already private
+009ff440	SKIP	?InitFrames@CGraphicDataBank@@QAEXXZ	?InitFrames@CGraphicDataBank@@AAEXXZ	declaration does not start its line
+009ff710	SKIP	?GetVolumeTexture@CGraphicInfoFrame@@QAE_NPAPAVCVolumeTexture@@K@Z	?GetVolumeTexture@CGraphicInfoFrame@@QBE_NPAPAVCVolumeTexture@@K@Z	declaration already const
+00a150a0	SKIP	?IsActionPoint@CNavigatorManager@@QAE_NABVC2DVector@@@Z	?IsActionPoint@CNavigatorManager@@QBE_NABVC2DVector@@@Z	declaration already const
+00a1b4e0	SKIP	?GetSpeedReducedForStartAndEnd@CNavigatorAStar@@QAEMMMABVC2DVector@@@Z	?GetSpeedReducedForStartAndEnd@CNavigatorAStar@@AAEMMMABVC2DVector@@@Z	access in the local model is already private
+00a26a50	SKIP	?TouchAnimation@C3DAnimationInfo@@QAEXXZ	?TouchAnimation@C3DAnimationInfo@@QBEXXZ	declaration already const
+00a5f2f0	SKIP	?CloseFonts@CStreamingFontDataBank@@QAEXXZ	?CloseFonts@CStreamingFontDataBank@@AAEXXZ	access in the local model is already private
+00a63db0	SKIP	?ReadFromParserAsBool@CGenericVarRef@@QAE_NAAVCStringParser@@@Z	?ReadFromParserAsBool@CGenericVarRef@@AAE_NAAVCStringParser@@@Z	declaration does not start its line
+00a64230	SKIP	?ReadFromParserAsBool@CGenericVar@@QAE_NAAVCStringParser@@@Z	?ReadFromParserAsBool@CGenericVar@@IAE_NAAVCStringParser@@@Z	declaration does not start its line
+00a668e0	SKIP	?AddMaintainedEventsToEventStore@CKeyboard@@QAEXXZ	?AddMaintainedEventsToEventStore@CKeyboard@@IAEXXZ	identity: the PDB name is claimed by another address 00a66ed0
+00a66c20	SKIP	?UpdateMaintainedEvents@CMouse@@QAEXXZ	?UpdateMaintainedEvents@CMouse@@IAEXXZ	access in the local model is already protected
+00a66ed0	SKIP	?AddMaintainedEventsToEventStore@CKeyboard@@QAEXXZ	?AddMaintainedEventsToEventStore@CKeyboard@@IAEXXZ	identity: the PDB name is claimed by another address 00a668e0
+00a67420	SKIP	?ReleaseVolume@CVolume@@QAEXXZ	?ReleaseVolume@CVolume@@IAEXXZ	identity: the PDB name is claimed by another address 00a67460
+00a69730	SKIP	?GetPoolIndex@CTextureManager@@QBEJK@Z	?GetPoolIndex@CTextureManager@@AAEJK@Z	declaration has no const to remove
+00a8a9d0	SKIP	?CalculateBoneKeyframes@C3DMesh2@@QAEXXZ	?CalculateBoneKeyframes@C3DMesh2@@AAEXXZ	access in the local model is already private
+00a91560	SKIP	?LoadVertexBuffer@C3DPrimitive2@@QAEXAAVCMemoryDataInputStream@@KKKAAVCVertexCompressionParams@@@Z	?LoadVertexBuffer@C3DPrimitive2@@AAEXAAVCMemoryDataInputStream@@KKKAAVCVertexCompressionParams@@@Z	access in the local model is already private
+00a9ad00	SKIP	?AddChunkType@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@PAVCChunkedFileSuperChunk@@@Z	?AddChunkType@C3DMeshFileLoader@@AAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@PAVCChunkedFileSuperChunk@@@Z	access in the local model is already private
+00a9dfa0	SKIP	?ApplyBoneMorphDisplacement@C3DAnimationManager@@QBEXPAVC3DKeyframe@@PBVC3DVector@@ABVC3DMesh2@@@Z	?ApplyBoneMorphDisplacement@C3DAnimationManager@@ABEXPAVC3DKeyframe@@PBVC3DVector@@ABVC3DMesh2@@@Z	access in the local model is already private
+00aacfb0	SKIP	?UpdateFogColour@CShaderRenderManager@@QAEXXZ	?UpdateFogColour@CShaderRenderManager@@AAEXXZ	identity: the PDB name is claimed by another address 009897c0
+00ab4910	SKIP	?GetExclusiveModeDeviceMouseEvent@CMouseDX@@QAE_NPAVCMouseEvent@@@Z	?GetExclusiveModeDeviceMouseEvent@CMouseDX@@IAE_NPAVCMouseEvent@@@Z	access in the local model is already protected
+00ab5190	SKIP	?UpdateCurrentStatusFromEvent@CMouseDX@@QAEXPBVCMouseEvent@@@Z	?UpdateCurrentStatusFromEvent@CMouseDX@@IAEXPBVCMouseEvent@@@Z	access in the local model is already protected
+00abf6b0	SKIP	?SaveBinary@C3DMeshMaterial@@QAEXAAVCDataOutputStream@@@Z	?SaveBinary@C3DMeshMaterial@@QBEXAAVCDataOutputStream@@@Z	declaration already const
+00ac5260	SKIP	?CalculateMapFlags@C3DMeshFileEngineMaterialChunk@@QAEXXZ	?CalculateMapFlags@C3DMeshFileEngineMaterialChunk@@AAEXXZ	access in the local model is already private
+00ac7030	SKIP	?IsZTargetable@CTCTargeted@@QAE_NXZ	?IsZTargetable@CTCTargeted@@QBE_NXZ	identity: the PDB name is claimed by another address 007ea290
+00ad8fe0	SKIP	?CalcCurrentBestTheoreticalResultNewBlock@CVertexGroupBlockOptimiser@@QAEKXZ	?CalcCurrentBestTheoreticalResultNewBlock@CVertexGroupBlockOptimiser@@AAEKXZ	access in the local model is already private
+00ad9d10	SKIP	?CalcCurrentBestTheoreticalResultNewBlock2@CVertexGroupBlockOptimiser@@QAEKXZ	?CalcCurrentBestTheoreticalResultNewBlock2@CVertexGroupBlockOptimiser@@AAEKXZ	access in the local model is already private
+00b0a750	SKIP	?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@QAEMXZ	?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ	nested scope or operator / special member
+00b23a90	SKIP	?UpdateOffGameTickProcessInfo@CEngine@@QAEX_N@Z	?UpdateOffGameTickProcessInfo@CEngine@@AAEX_N@Z	access in the local model is already private
+00b262c0	SKIP	?AddRenderLayer@CEngine@@QAEAAVCEngineLayerRenderer@@PAV2@@Z	?AddRenderLayer@CEngine@@AAEAAVCEngineLayerRenderer@@PAV2@@Z	access in the local model is already private
+00b2fb70	SKIP	?TransformScreenTo2DHomogenousSpace@CEngineCamera@@QBEXAAVC2DVector@@@Z	?TransformScreenTo2DHomogenousSpace@CEngineCamera@@QAEXAAVC2DVector@@@Z	declaration has no const to remove
+00b3b5d0	SKIP	?SetupVertexShaderResource@CEngineResourceManager@@QAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z	?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z	identity: the PDB name is claimed by another address 00b3b6d0
+00b3c4b0	SKIP	?BuildHWStipplePatterns@CEngineResourceManager@@QAEXABV?$CArray@E@@@Z	?BuildHWStipplePatterns@CEngineResourceManager@@AAEXABV?$CArray@E@@@Z	access in the local model is already private
+00b40070	SKIP	?AutoBuildWorldMapGrid@CEngineWorldMap@@QAEXXZ	?AutoBuildWorldMapGrid@CEngineWorldMap@@AAEXXZ	access in the local model is already private
+00b44540	SKIP	?UpdateSIMDVarBlock@CEngineLightingManager@@QAEXXZ	?UpdateSIMDVarBlock@CEngineLightingManager@@AAEXXZ	access in the local model is already private
+00b4ce20	SKIP	?SetShadowClipVolumesToNeverShadow@CEngineShadowRenderer@@QAEXXZ	?SetShadowClipVolumesToNeverShadow@CEngineShadowRenderer@@AAEXXZ	access in the local model is already private
+00b6d630	SKIP	?FinishUsingDynamicTextures@CEngineWaterRenderer@@QAEXXZ	?FinishUsingDynamicTextures@CEngineWaterRenderer@@AAEXXZ	access in the local model is already private
+00b6e3e0	SKIP	?RenderIceBumpMap@CEngineWaterRenderer@@QAEXXZ	?RenderIceBumpMap@CEngineWaterRenderer@@AAEXXZ	access in the local model is already private
+00b75ca0	SKIP	?RenderIceBackground@CEngineWaterRenderer@@QAEXM@Z	?RenderIceBackground@CEngineWaterRenderer@@AAEXM@Z	access in the local model is already private
+00b77e20	SKIP	?RenderSeaNonReflectiveForeground@CEngineWaterRenderer@@QAEXM@Z	?RenderSeaNonReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z	access in the local model is already private
+00b86a10	SKIP	?BoughtSomething@CAIStateGroup_BuyFromSeller@@QAEXXZ	?BoughtSomething@CAIStateGroup_BuyFromSeller@@AAEXXZ	identity: the PDB name is claimed by another address 0047cfee,007e5950,00919a30
+00b90cd0	SKIP	?DrawAlphaBoundingBox@CEnginePrimitiveManagerOcclusionBase@@QAEXABVCMatrix3x4@@K@Z	?DrawAlphaBoundingBox@CEnginePrimitiveManagerOcclusionBase@@IAEXABVCMatrix3x4@@K@Z	access in the local model is already protected
+00b91f00	SKIP	?MovePrimitivesUp@CEngineSceneGrid@@QAEXXZ	?MovePrimitivesUp@CEngineSceneGrid@@AAEXXZ	access in the local model is already private
+00bbf380	SKIP	?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXXZ	?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ	access in the local model is already private
+00be2740	SKIP	?PeekFadeEnd@CLocalDetailObjectCollectionType@@QAEMXZ	?PeekFadeEnd@CLocalDetailObjectCollectionType@@QBEMXZ	declaration already const
+00be79d0	SKIP	?RenderWithOcclusion@CLandscapeBackgroundPatch@@QAEXAAJAA_N@Z	?RenderWithOcclusion@CLandscapeBackgroundPatch@@AAEXAAJAA_N@Z	access in the local model is already private
+00c1c620	SKIP	?SetAsPaused@CWorld@@QAEX_N@Z	?SetAsPaused@CWorld@@IAEX_N@Z	identity: the PDB name is claimed by another address 0049d8f0
+00c1d7f0	SKIP	?GetMemoryFootprint@CMap@@QAEJXZ	?GetMemoryFootprint@CMap@@QBEJXZ	identity: the PDB name is claimed by another address 0081e7b0
+00c1ea80	SKIP	?GetMemoryFootprint@CMap@@QAEJXZ	?GetMemoryFootprint@CMap@@QBEJXZ	identity: the PDB name is claimed by another address 0081e7b0,00c1d7f0
+00c23df0	SKIP	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJXZ	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@IAEJXZ	identity: the PDB name is claimed by another address 00c1b460,00c23c00,00c24040,00c242a0
+00c242a0	SKIP	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJXZ	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@IAEJXZ	identity: the PDB name is claimed by another address 00c1b460,00c23c00,00c23df0,00c24040
+00c44860	SKIP	?SetHeadTurnState@CTCLook@@QAEXJ@Z	?SetHeadTurnState@CTCLook@@AAEXJ@Z	identity: the PDB name is claimed by another address 007517b0,00c41530,00c415a0
+00f3a270	SKIP	?CalcMemoryNeededBitCompressed@CRangeCompressor@@QAEJABV?$CArray@K@@@Z	?CalcMemoryNeededBitCompressed@CRangeCompressor@@AAEJABV?$CArray@K@@@Z	access in the local model is already private
+00f3a2e0	SKIP	?Compress@CRangeCompressor@@QAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	identity: the PDB name is claimed by another address 00f3ae50,00f3afc0
+00f3a5d0	SKIP	?TestRangeBias@CRangeCompressor@@QAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	?TestRangeBias@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	access in the local model is already private
+00f3a710	SKIP	?TestRedundantBitStrip@CRangeCompressor@@QAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	?TestRedundantBitStrip@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	access in the local model is already private
+01212487	SKIP	?SetAsPaused@CWorld@@QAEX_N@Z	?SetAsPaused@CWorld@@IAEX_N@Z	identity: the PDB name is claimed by another address 0049d8f0,00c1c620
+00406820	ACCEPT	?ConvertFloatToVideoOptionQuality@CUserProfileManager@@QAE?AW4EEngineVideoOptionQuality@@M@Z	?ConvertFloatToVideoOptionQuality@CUserProfileManager@@AAE?AW4EEngineVideoOptionQuality@@M@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00406890	ACCEPT	?GetMaxRefreshRate@CUserProfileManager@@QAEKXZ	?GetMaxRefreshRate@CUserProfileManager@@QBEKXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00406f70	REJECT	?GetAutoSavePathName@CUserProfileManager@@QAE?AVCWideString@@XZ	?GetAutoSavePathName@CUserProfileManager@@QBE?AVCWideString@@XZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'LINK_FAIL'))
+00416202	ACCEPT	?UpdateAverageFrameDuration@CMainGameComponent@@QAEXN@Z	?UpdateAverageFrameDuration@CMainGameComponent@@IAEXN@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00416832	ACCEPT	?InitialiseText@CMainGameComponent@@QAEXXZ	?InitialiseText@CMainGameComponent@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0041735a	ACCEPT	?InitWorld@CMainGameComponent@@QAEXXZ	?InitWorld@CMainGameComponent@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00417418	ACCEPT	?InitDisplayEngine@CMainGameComponent@@QAEXXZ	?InitDisplayEngine@CMainGameComponent@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+004174f1	ACCEPT	?InitParticleEngine@CMainGameComponent@@QAEXXZ	?InitParticleEngine@CMainGameComponent@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+004348d0	ACCEPT	?GetFadeInOutAlpha@CFadeInFadeOutBase@@QAEMXZ	?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00439ab0	REJECT	?GetButtonAlpha@CPlayerGui@@QAEMJ_N00@Z	?GetButtonAlpha@CPlayerGui@@QBEMJ_N00@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00445a60	ACCEPT	?SavePacketEvent@CGamePlayerInterface@@QAEXABVCInputEvent@@@Z	?SavePacketEvent@CGamePlayerInterface@@AAEXABVCInputEvent@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00449730	ACCEPT	?GetSpiritDefName@CPlayerManager@@QAE?AVCCharString@@J@Z	?GetSpiritDefName@CPlayerManager@@QBE?AVCCharString@@J@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0048de8a	ACCEPT	?GetVisibleText@CSubtitleRenderer@@QAE_NABVCWideString@@AAV2@@Z	?GetVisibleText@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0048f230	ACCEPT	?DrawTextEmbeddedGraphics@CSubtitleRenderer@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@@Z	?DrawTextEmbeddedGraphics@CSubtitleRenderer@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00497a60	ACCEPT	?WordWrapText@CProgressDisplay@@QBE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z	?WordWrapText@CProgressDisplay@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004aeaa0	ACCEPT	?GetLocalGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z	?GetLocalGameEventPackageSet@CNetworkClient@@AAE_NPAVCGameEventPackageSet@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004b1110	REJECT	?IsBetweenQuestStartAndFinishScreensIgnoringVignettes@CQuestManager@@QAE_NXZ	?IsBetweenQuestStartAndFinishScreensIgnoringVignettes@CQuestManager@@QBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+004c5ea0	ACCEPT	?UpdateCombatRelatedEffects@CBulletTimeManager@@QAEXXZ	?UpdateCombatRelatedEffects@CBulletTimeManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+004c72d0	REJECT	?SaveSerialiseCreatableTCs@CThing@@QAEXAAVCCharString@@@Z	?SaveSerialiseCreatableTCs@CThing@@IBEXAAVCCharString@@@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+004c7500	ACCEPT	?IsFreeForDeletion@CThing@@QAE_NXZ	?IsFreeForDeletion@CThing@@QBE_NXZ	objsec ALL_EQ, MATCH PASS
+004c8c90	REJECT	?IsUnderScriptControl@CThing@@QAE_NXZ	?IsUnderScriptControl@CThing@@QBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+004ce4e0	ACCEPT	?AddCameraTagFromIndex@CSubtitledMessage@@QAE_NJMV?$CDefPointer@$$CBVCGlobalDef@@@@@Z	?AddCameraTagFromIndex@CSubtitledMessage@@AAE_NJMV?$CDefPointer@$$CBVCGlobalDef@@@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00506f30	ACCEPT	?AddLevelFromFile@CWorldMap@@QAEJABVC2DCoordI@@ABVCCharString@@@Z	?AddLevelFromFile@CWorldMap@@IAEJABVC2DCoordI@@ABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0051e530	ACCEPT	?GetNonLocalThingChecksum@CThingManager@@QAEKXZ	?GetNonLocalThingChecksum@CThingManager@@QBEKXZ	objsec ALL_EQ, MATCH PASS
+00523b40	ACCEPT	?RuntimeSaveGameHero@CThingManager@@QAEX_N@Z	?RuntimeSaveGameHero@CThingManager@@AAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00581cfd	REJECT	?GetContextSensitiveItemGraphicIndex@CTCInventory@@QAEJJ@Z	?GetContextSensitiveItemGraphicIndex@CTCInventory@@QBEJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00581d4e	REJECT	?GetContextSensitiveItemButtonIndex@CTCInventory@@QAEJJ@Z	?GetContextSensitiveItemButtonIndex@CTCInventory@@QBEJJ@Z	no object (head ('MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00581d8e	REJECT	?IsContextSensitiveOpinionExpressionAvailable@CTCInventory@@QAE_NXZ	?IsContextSensitiveOpinionExpressionAvailable@CTCInventory@@QBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00581fa4	REJECT	?GetQuickAccessItemGraphicIndex@CTCInventory@@QAEJJ@Z	?GetQuickAccessItemGraphicIndex@CTCInventory@@QBEJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+005c30d3	REJECT	?RefreshActiveWeaponData@CTCInventoryWeapons@@QAEXXZ	?RefreshActiveWeaponData@CTCInventoryWeapons@@QBEXXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+005c99be	REJECT	?GetTimeWieldedWeapon@CTCInventoryWeapons@@QAEJJ@Z	?GetTimeWieldedWeapon@CTCInventoryWeapons@@QBEJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+005dc070	REJECT	?TransferBinaryOut@CAnimationSet@@QAEXAAVCDataOutputStream@@@Z	?TransferBinaryOut@CAnimationSet@@QBEXAAVCDataOutputStream@@@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+005e9c50	ACCEPT	?CallFuncAfterYesNo@CTCTavernGame@@QAEXVCWideString@@0P6IXXZ01@Z	?CallFuncAfterYesNo@CTCTavernGame@@IAEXVCWideString@@0P6IXXZ01@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+005e9d60	ACCEPT	?CallFuncAfterOK@CTCTavernGame@@QAEXVCWideString@@0P6IXXZ@Z	?CallFuncAfterOK@CTCTavernGame@@IAEXVCWideString@@0P6IXXZ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+005edd04	ACCEPT	?GetAbilityInventoryThingName@CTCInventoryAbilities@@QAE?AVCCharString@@W4EHeroAbility@@@Z	?GetAbilityInventoryThingName@CTCInventoryAbilities@@ABE?AVCCharString@@W4EHeroAbility@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+005ee99d	ACCEPT	?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QAE_NW4EHeroAbility@@@Z	?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+005faa60	REJECT	?IsTeleportValid@CTCInventoryMap@@QAE_NXZ	?IsTeleportValid@CTCInventoryMap@@QBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+005fb630	ACCEPT	?GetRelativePosOnMap@CTCInventoryMap@@QBEXPAVCComponent@NUISystem@@ABVC3DVector@@AAVC2DVector@@@Z	?GetRelativePosOnMap@CTCInventoryMap@@IBEXPAVCComponent@NUISystem@@ABVC3DVector@@AAVC2DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0063ddf0	ACCEPT	?Validate@CWorldMap@@QBEXXZ	?Validate@CWorldMap@@IBEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00658ec3	ACCEPT	?BuildingContainsCorrectVillagers@CTCVillage@@QAE_NPAVCThingBuilding@@@Z	?BuildingContainsCorrectVillagers@CTCVillage@@AAE_NPAVCThingBuilding@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00659295	ACCEPT	?InitialiseToggleTorchTypes@CTCVillage@@QAEXAAVCThingObject@@@Z	?InitialiseToggleTorchTypes@CTCVillage@@AAEXAAVCThingObject@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0065ac83	ACCEPT	?HomeUsersAreAsleep@CTCVillage@@QAE_NPAVCThingBuilding@@@Z	?HomeUsersAreAsleep@CTCVillage@@AAE_NPAVCThingBuilding@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00662860	REJECT	?GetDefaultWeaponDef@CThingCreatureBase@@QAEJXZ	?GetDefaultWeaponDef@CThingCreatureBase@@QBEJXZ	grade ('MATCH', 'LINK_FAIL')
+00663510	REJECT	?InitialiseMovementSpeed@CThingCreatureBase@@QAEXAAMABVCCharString@@@Z	?InitialiseMovementSpeed@CThingCreatureBase@@IBEXAAMABVCCharString@@@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00665e90	REJECT	?IsPickPocketable@CThingCreatureBase@@QAE_NXZ	?IsPickPocketable@CThingCreatureBase@@QBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00667c00	ACCEPT	?GetPrefferedCombatDistance@CThingCreatureBase@@QAEMXZ	?GetPrefferedCombatDistance@CThingCreatureBase@@QBEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0066fc90	ACCEPT	?UpdateScreenRestrictingForces@CTCCoopSpirit@@QAEXXZ	?UpdateScreenRestrictingForces@CTCCoopSpirit@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006701a0	ACCEPT	?UpdateAttractionToMaster@CTCCoopSpirit@@QAEXXZ	?UpdateAttractionToMaster@CTCCoopSpirit@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006702e0	ACCEPT	?UpdateAppliedMovement@CTCCoopSpirit@@QAEXXZ	?UpdateAppliedMovement@CTCCoopSpirit@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00687c90	REJECT	?IsOtherQuickAccessItemButtonHeld@CInputProcessGameBase@@QAE_NJ@Z	?IsOtherQuickAccessItemButtonHeld@CInputProcessGameBase@@IBE_NJ@Z	grade ('RELOCATION_MATCH', 'LINK_FAIL')
+00687e10	ACCEPT	?AddManualCameraEvent@CInputProcessMain@@SIXEAAVCProcessedInput@@@Z	?AddManualCameraEvent@CInputProcessMain@@CIXEAAVCProcessedInput@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00687ed0	ACCEPT	?HandleDebugCameraAction@CInputProcessMain@@QAEXAAVCProcessedInput@@@Z	?HandleDebugCameraAction@CInputProcessMain@@AAEXAAVCProcessedInput@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006893d0	ACCEPT	?ChangeSelection@CInputProcessInventoryBase@@QAE_NW4ECurrentMovement@1@@Z	?ChangeSelection@CInputProcessInventoryBase@@AAE_NW4ECurrentMovement@1@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0068e8f0	ACCEPT	?ProcessUnarmedInput@CInputProcessCombat@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessUnarmedInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0068ea10	ACCEPT	?GetCurrentRelativeMovementAngleXY@CInputProcessCombat@@QAEMXZ	?GetCurrentRelativeMovementAngleXY@CInputProcessCombat@@ABEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0068eca0	ACCEPT	?ProcessArmedMeleeInput@CInputProcessCombat@@QAEXABVCInputEvent@@AAVCProcessedInput@@ABVCThing@@@Z	?ProcessArmedMeleeInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@ABVCThing@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0069a010	ACCEPT	?InitManualCameraList@CGameCameraManager@@QAEXXZ	?InitManualCameraList@CGameCameraManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0069a1a0	ACCEPT	?InitSpecialCameraList@CGameCameraManager@@QAEXXZ	?InitSpecialCameraList@CGameCameraManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006a11b0	REJECT	?HasCarrySlot@CTCCarrying@@QAE_NJ@Z	?HasCarrySlot@CTCCarrying@@QBE_NJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+006a9640	REJECT	?GetCurrentRelativeMovementAngleXY@CThingPlayerCreature@@QAEMXZ	?GetCurrentRelativeMovementAngleXY@CThingPlayerCreature@@QBEMXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+006ac140	ACCEPT	?ResetThingReactions@CThingPlayerCreature@@QAEXXZ	?ResetThingReactions@CThingPlayerCreature@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006c0f70	REJECT	?CreateDressingSignPost@CTCBuyableHouse@@QAEXXZ	?CreateDressingSignPost@CTCBuyableHouse@@AAEXXZ	objsec DIFF 6 .text .text bytes True relocs False 81 81 /     (8, '?DRESSING_SIGN_POST_DEF_NAME@?A0xb7721377@@3VCCharString@@B', 6) | (8, '?DRESSING_SIGN_POST_DEF_NAME@?A0x06be60f5@@3VCCharString@@B', 6) / bad 1 text_sections_equal=4
+006d5b50	ACCEPT	?UpdateAITurning@CThingAICreature@@QAEXABVC3DVector@@@Z	?UpdateAITurning@CThingAICreature@@IAEXABVC3DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006d74b0	ACCEPT	?GetNextFlourishLevel@CTCHeroExperience@@QBEJXZ	?GetNextFlourishLevel@CTCHeroExperience@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006e3780	ACCEPT	?GetPhonemeAnim@CTCTalk@@QBEKABVCCharString@@@Z	?GetPhonemeAnim@CTCTalk@@ABEKABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006e71f0	ACCEPT	?Rest@CGameScriptInterface@@QAEXM@Z	?Rest@CGameScriptInterface@@IBEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006e7480	ACCEPT	?CleanupActions@CGameScriptInterface@@QAEXXZ	?CleanupActions@CGameScriptInterface@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006fd6c0	ACCEPT	?IsLandscapeCollision@CGameCameraBase@@QAE_NXZ	?IsLandscapeCollision@CGameCameraBase@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0070be40	ACCEPT	?GetProgressFromAlpha@CAnimateThing@@QBEMMM@Z	?GetProgressFromAlpha@CAnimateThing@@ABEMMM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0070c330	ACCEPT	?UpdateTimePassed@CAnimSet@@QAEXM@Z	?UpdateTimePassed@CAnimSet@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0070e680	REJECT	?GetPMeshAnims@CAnimateThing@@QAEXPAPAVC3DAnimationBlendState@@0@Z	?GetPMeshAnims@CAnimateThing@@QBEXPAPAVC3DAnimationBlendState@@0@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+0071de80	ACCEPT	?UpdateTextureMorphs@CTCHeroMorph@@QAEXXZ	?UpdateTextureMorphs@CTCHeroMorph@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072cd00	REJECT	?SetupDivineWrath@CTCSpecialAbilities@@QAE_NXZ	?SetupDivineWrath@CTCSpecialAbilities@@AAE_NXZ	objsec DIFF 22 .text .text bytes True relocs False 286 286 /     (191, '?SHEATH_ACTION_NAME@?A0x2acce0b4@@3VCCharString@@A', 6) | (191, '?SHEATH_ACTION_NAME@?A0x9b009336@@3VCCharString@@A', 6) / bad 1 text_sections_equal=19
+0072ce20	REJECT	?SetupUnholyPower@CTCSpecialAbilities@@QAE_NXZ	?SetupUnholyPower@CTCSpecialAbilities@@AAE_NXZ	objsec DIFF 22 .text .text bytes True relocs False 286 286 /     (191, '?SHEATH_ACTION_NAME@?A0x71ff1f23@@3VCCharString@@A', 6) | (191, '?SHEATH_ACTION_NAME@?A0xc0336ca1@@3VCCharString@@A', 6) / bad 1 text_sections_equal=19
+007329e0	ACCEPT	?PlaySoundW@CTCClock@@QAEXABVCCharString@@@Z	?PlaySoundW@CTCClock@@IAEXABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+007334f0	ACCEPT	?ClearCombatVariables@CTCCombat@@QAEXXZ	?ClearCombatVariables@CTCCombat@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+007339e0	REJECT	?UpdateCombatTimers@CTCCombat@@QAEXXZ	?UpdateCombatTimers@CTCCombat@@AAEXXZ	objsec DIFF 3 .text .text bytes True relocs False 392 392 /     (177, '?DEFAULT_UNARMED_COMBAT_IDLE_COUNT@?A0x20d26915@@3JB', 6) | (177, '?DEFAULT_UNARMED_COMBAT_IDLE_COUNT@?A0x911e1a97@@3JB', 6) / bad 1 text_sections_equal=2
+00736590	ACCEPT	?UpdateUsableMeleeCombatAbilities@CTCCombat@@QAEXXZ	?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0074baa0	ACCEPT	?UpdateCreatureTrigger@CTCCreatureGenerator@@QAEXJ@Z	?UpdateCreatureTrigger@CTCCreatureGenerator@@IAEXJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00771540	ACCEPT	?AppliesToWitness@CTCOpinionSource@@QBE_NPBVCThingAICreature@@@Z	?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00772720	REJECT	?GetMaxStock@CTCShop@@QAEJJ@Z	?GetMaxStock@CTCShop@@QBEJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00772790	REJECT	?GetDaysTillRestock@CTCShop@@QAEJJ@Z	?GetDaysTillRestock@CTCShop@@QBEJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+0078e820	ACCEPT	?SetPTarget@CTCDivineWrath@@QAEXXZ	?SetPTarget@CTCDivineWrath@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00793d20	ACCEPT	?SetPTarget@CTCUnholyPower@@QAEXXZ	?SetPTarget@CTCUnholyPower@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00799350	ACCEPT	?GetFriendlynessIndicator@CTCShopKeeper@@QBE?AVCCharString@@XZ	?GetFriendlynessIndicator@CTCShopKeeper@@QAE?AVCCharString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0079f7a0	ACCEPT	?AllBeamsInactive@CTCWillLightning@@QBE_NXZ	?AllBeamsInactive@CTCWillLightning@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007a00e0	ACCEPT	?StartHandEffects@CTCWillLightning@@QAEXXZ	?StartHandEffects@CTCWillLightning@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007a1870	ACCEPT	?MakeRandomBeam@CTCWillLightning@@QAEX_N@Z	?MakeRandomBeam@CTCWillLightning@@AAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+007a7000	ACCEPT	?UpdateDirectionOverride@CTCBattleCharge@@QAEXXZ	?UpdateDirectionOverride@CTCBattleCharge@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007a9c80	ACCEPT	?SetupCameraOnStick@CTCAssassinRush@@QAEXXZ	?SetupCameraOnStick@CTCAssassinRush@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007aa4d0	ACCEPT	?FinalCleanup@CTCAssassinRush@@QAEXXZ	?FinalCleanup@CTCAssassinRush@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007b5ca0	ACCEPT	?IsInWater@CTCWaterWader@@QBEXAA_N0AAM@Z	?IsInWater@CTCWaterWader@@ABEXAA_N0AAM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+007cca60	ACCEPT	?IsLastHit@CTCMultiStrike@@QAE_NXZ	?IsLastHit@CTCMultiStrike@@QBE_NXZ	objsec ALL_EQ, MATCH PASS
+007eebb0	ACCEPT	?IsAvailableToHit@CTCSmashableBase@@QBE_NXZ	?IsAvailableToHit@CTCSmashableBase@@IBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+008025d0	ACCEPT	?GetFOVToBeInToBeTargetable@CTCTargetingPlayer@@QBEMXZ	?GetFOVToBeInToBeTargetable@CTCTargetingPlayer@@IBEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0080ca20	ACCEPT	?GiveDamageToThing@CTCDExplosion@@QAEXAAVCThingGameObject@@@Z	?GiveDamageToThing@CTCDExplosion@@AAEXAAVCThingGameObject@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0081e7e0	ACCEPT	?Clear@CMap@@QAEXXZ	?Clear@CMap@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00828590	REJECT	?GetNextRegionOnWayToRegion@CRegionConnectionGraph@@QAEJJJ@Z	?GetNextRegionOnWayToRegion@CRegionConnectionGraph@@QBEJJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+0082a500	ACCEPT	?AddAutoMarker@CMiniMapDisplay@@QAEXABVCThing@@J@Z	?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00838aa0	ACCEPT	?UpdateStandingOnThing@CThingGameObject@@QAEXXZ	?UpdateStandingOnThing@CThingGameObject@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0083be90	ACCEPT	?TriggerSetEnvironment@CThingSwitch@@QAEXXZ	?TriggerSetEnvironment@CThingSwitch@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0083c690	ACCEPT	?SwitchTriggerPlayerOnlyMultipleTimesInArea@CThingSwitch@@QAEXXZ	?SwitchTriggerPlayerOnlyMultipleTimesInArea@CThingSwitch@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0083c800	ACCEPT	?TriggerPlayerResetWhenLeaves@CThingSwitch@@QAEXXZ	?TriggerPlayerResetWhenLeaves@CThingSwitch@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0083c990	ACCEPT	?TriggerSetPlayerAreaName@CThingSwitch@@QAEXXZ	?TriggerSetPlayerAreaName@CThingSwitch@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0083ca90	ACCEPT	?SwitchTriggerPlayerOnlyOnceInArea@CThingSwitch@@QAEXXZ	?SwitchTriggerPlayerOnlyOnceInArea@CThingSwitch@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00856ac0	ACCEPT	?SetupCombatAnimation@CCombatActionBase@@QAEXXZ	?SetupCombatAnimation@CCombatActionBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+008b3f50	ACCEPT	?GetName@CCombatSequence_KingScorpionTailPlunge@@UAE?AVCCharString@@XZ	?GetName@CCombatSequence_KingScorpionTailPlunge@@UBE?AVCCharString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+008ec7e0	ACCEPT	?IsAvailableToHit@CTCDegradableBase@@QBE_NXZ	?IsAvailableToHit@CTCDegradableBase@@IBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009098e0	ACCEPT	?IsValid@CCombatSequence_WillForcePush@@UAE_NXZ	?IsValid@CCombatSequence_WillForcePush@@UBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0090c2d0	ACCEPT	?IsStillValidInternal@CAIStateGroup_MinionGuardFollowPlayer@@UAE_N_N@Z	?IsStillValidInternal@CAIStateGroup_MinionGuardFollowPlayer@@MBE_N_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0090ca60	ACCEPT	?OnReplace@CAIStateGroup_MinionGossip@@UAEXXZ	?OnReplace@CAIStateGroup_MinionGossip@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0090fcd0	ACCEPT	?IsStateGroupStillValid@CAIStateGroup_MinionSitAtSchool@@UAE_NXZ	?IsStateGroupStillValid@CAIStateGroup_MinionSitAtSchool@@MBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00910570	REJECT	?StandUp@CAIStateGroup_MinionListenToStory@@QAEXXZ	?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ	objsec DIFF 27 .text .text bytes True relocs False 312 312 /     (138, '?GET_UP_FROM_FLOOR_ANIM_NAME@?A0x6ff96586@@3VCCharString@@A', 6) | (138, '?GET_UP_FROM_FLOOR_ANIM_NAME@?A0xde351604@@3VCCharString@@A', 6) / bad 1 text_sections_equal=24
+009174f0	ACCEPT	?IsRunnable@CAIStateGroup_CleanWork@@UAE_NXZ	?IsRunnable@CAIStateGroup_CleanWork@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00917520	ACCEPT	?OnActivate@CAIStateGroup_Clean@@UAEXXZ	?OnActivate@CAIStateGroup_Clean@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009175e0	ACCEPT	?Update@CAIStateGroup_Clean@@UAEXXZ	?Update@CAIStateGroup_Clean@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00917b50	ACCEPT	?IsRunnable@CAIStateGroup_CleanHouse@@UAE_NXZ	?IsRunnable@CAIStateGroup_CleanHouse@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009195d0	ACCEPT	?Update@CAIStateGroup_LookAtInterestingThings@@UAEXXZ	?Update@CAIStateGroup_LookAtInterestingThings@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0091ea20	ACCEPT	?OnActivate@CAIStateGroup_CreatureRangedCombat2@@UAEXXZ	?OnActivate@CAIStateGroup_CreatureRangedCombat2@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0091f050	ACCEPT	?IsRunnable@CAIStateGroup_CreatureRangedCombatUseWillShield@@UAE_NXZ	?IsRunnable@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00920770	ACCEPT	?Update@CAIStateGroup_CreatureIdleUnderground@@UAEXXZ	?Update@CAIStateGroup_CreatureIdleUnderground@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009215e0	ACCEPT	?SetThingToNotAvoid@CAIStateGroup_MinionFollowThing@@QAEXPBVCThing@@@Z	?SetThingToNotAvoid@CAIStateGroup_MinionFollowThing@@IAEXPBVCThing@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00921870	ACCEPT	?Cleanup@CAIStateGroup_MinionFollowThing@@UAEXXZ	?Cleanup@CAIStateGroup_MinionFollowThing@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009244d0	ACCEPT	?IsRunnable@CAIStateGroup_KrakenTentacleAttack@@UAE_NXZ	?IsRunnable@CAIStateGroup_KrakenTentacleAttack@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00928550	ACCEPT	?GetMarkerType@CAIStateGroup_BanditPlayDice@@UAEJXZ	?GetMarkerType@CAIStateGroup_BanditPlayDice@@MAEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00928590	ACCEPT	?GetMarkerType@CAIStateGroup_BanditPlot@@UAEJXZ	?GetMarkerType@CAIStateGroup_BanditPlot@@MAEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0092b360	ACCEPT	?IsRunnable@CAIStateGroup_SkillPractice@@UAE_NXZ	?IsRunnable@CAIStateGroup_SkillPractice@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00933aa0	ACCEPT	?FindNewCuriosityPos@CAIStateGroup_MinionCuriosity@@QAE_NXZ	?FindNewCuriosityPos@CAIStateGroup_MinionCuriosity@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093d720	ACCEPT	?OnReadyToAttack@CAIStateGroup_MeleeCombatNearbyBase@@UAEXXZ	?OnReadyToAttack@CAIStateGroup_MeleeCombatNearbyBase@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093db70	ACCEPT	?GetProximityToBeConsideredNearToEnemyCreature@CAIStateGroup_MeleeCombatNearby2@@QAEMXZ	?GetProximityToBeConsideredNearToEnemyCreature@CAIStateGroup_MeleeCombatNearby2@@ABEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093dbd0	ACCEPT	?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby2@@QAE_NXZ	?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby2@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093dfc0	REJECT	?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby2@@QAE_NXZ	?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby2@@AAE_NXZ	objsec DIFF 7 .text .text bytes True relocs False 203 203 /     (180, '?TIME_TO_LEAVE_SHOUT_MESSAGE@?A0x7f6d8e2e@@3JB', 6) | (180, '?TIME_TO_LEAVE_SHOUT_MESSAGE@?A0xcea1fdac@@3JB', 6) / bad 1 text_sections_equal=6
+0093e2d0	ACCEPT	?Update@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@UAEXXZ	?Update@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00940ba0	ACCEPT	?InitStateGroup@CAIStateGroup_KidWatchHopscotch@@UAEXABVCWorld@@AAVCThingAICreature@@@Z	?InitStateGroup@CAIStateGroup_KidWatchHopscotch@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00941cf0	ACCEPT	?InitStateGroup@CAIStateGroup_KidReactToBlockage@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	?InitStateGroup@CAIStateGroup_KidReactToBlockage@@UAEXABVCWorld@@AAVCThingAICreature@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009426d0	ACCEPT	?PlayLoop@CAIStateGroup_WorkAtSchool@@QAE_NMABVCCharString@@00@Z	?PlayLoop@CAIStateGroup_WorkAtSchool@@IAE_NMABVCCharString@@00@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00942a00	ACCEPT	?IsRunnable@CAIStateGroup_WorkAtSchool@@UAE_NXZ	?IsRunnable@CAIStateGroup_WorkAtSchool@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00942c10	ACCEPT	?OnReplace@CAIStateGroup_WorkAtSchool@@UAEXXZ	?OnReplace@CAIStateGroup_WorkAtSchool@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00942d40	ACCEPT	?IsRunnable@CAIStateGroup_TellStory@@UAE_NXZ	?IsRunnable@CAIStateGroup_TellStory@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00942ee0	ACCEPT	?Update@CAIStateGroup_TellStory@@UAEXXZ	?Update@CAIStateGroup_TellStory@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009432c0	ACCEPT	?Update@CAIStateGroup_WorkAtSchool@@UAEXXZ	?Update@CAIStateGroup_WorkAtSchool@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00944730	ACCEPT	?IsRunnable@CAIStateGroup_WorkSawingWood@@UAE_NXZ	?IsRunnable@CAIStateGroup_WorkSawingWood@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00944e80	ACCEPT	?IsRunnable@CAIStateGroup_WorkHammerAnvil@@UAE_NXZ	?IsRunnable@CAIStateGroup_WorkHammerAnvil@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00945610	ACCEPT	?IsStateGroupStillValid@CAIStateGroup_SitForMeal@@UAE_NXZ	?IsStateGroupStillValid@CAIStateGroup_SitForMeal@@MBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00945b90	ACCEPT	?IsRunnable@CAIStateGroup_SitForMeal@@UAE_NXZ	?IsRunnable@CAIStateGroup_SitForMeal@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00946b50	ACCEPT	?IsRunnable@CAIStateGroup_LightHomeCandle@@UAE_NXZ	?IsRunnable@CAIStateGroup_LightHomeCandle@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094aac0	ACCEPT	?PayAtBar@CAIStateGroup_GoToPub@@QAE_NXZ	?PayAtBar@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094ce60	ACCEPT	?OfferPlayerAGame@CAIStateGroup_GameMaster@@QAE_NXZ	?OfferPlayerAGame@CAIStateGroup_GameMaster@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094dac0	ACCEPT	?IsRunnable@CAIStateGroup_RockTroll@@UAE_NXZ	?IsRunnable@CAIStateGroup_RockTroll@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094e6b0	ACCEPT	?IsRunnable@CAIStateGroup_EarthTroll@@UAE_NXZ	?IsRunnable@CAIStateGroup_EarthTroll@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00952e80	ACCEPT	?Update@CAIStateGroup_JackDragon@@UAEXXZ	?Update@CAIStateGroup_JackDragon@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00956b00	ACCEPT	?IsRunnable@CAIStateGroup_BriarRose@@UAE_NXZ	?IsRunnable@CAIStateGroup_BriarRose@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00958e20	REJECT	?IsStillValid@CAIStateGroup_MinionReactToCrime@@UAE_NXZ	?IsStillValid@CAIStateGroup_MinionReactToCrime@@UBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+0095b020	ACCEPT	?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009612f0	ACCEPT	?IsRunnable@CAIStateGroup_BanditKingCharge@@UAE_NXZ	?IsRunnable@CAIStateGroup_BanditKingCharge@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00961550	ACCEPT	?IsRunnable@CAIStateGroup_BanditKingThrowWeapons@@UAE_NXZ	?IsRunnable@CAIStateGroup_BanditKingThrowWeapons@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00961e10	ACCEPT	?Cleanup@CAIStateGroup_IceTrollIcicleAttack@@UAEXXZ	?Cleanup@CAIStateGroup_IceTrollIcicleAttack@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00961e80	ACCEPT	?IsRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@UAE_NXZ	?IsRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00961f40	ACCEPT	?Cleanup@CAIStateGroup_IceTrollPoundGroundAttack@@UAEXXZ	?Cleanup@CAIStateGroup_IceTrollPoundGroundAttack@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00962180	ACCEPT	?Cleanup@CAIStateGroup_IceTrollIcicleAssault@@UAEXXZ	?Cleanup@CAIStateGroup_IceTrollIcicleAssault@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00962c10	ACCEPT	?IsRunnable@CAIStateGroup_VersusRockTroll@@UAE_NXZ	?IsRunnable@CAIStateGroup_VersusRockTroll@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009633e0	ACCEPT	?GetChargeDodgePos@CAIStateGroup_VersusScorpionKing@@QAEXAAVC3DVector@@@Z	?GetChargeDodgePos@CAIStateGroup_VersusScorpionKing@@AAEXAAVC3DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00963640	ACCEPT	?IsRunnable@CAIStateGroup_VersusScorpionKing@@UAE_NXZ	?IsRunnable@CAIStateGroup_VersusScorpionKing@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00968bc0	ACCEPT	?OnReplace@CAIStateGroup_TavernKeeper@@UAEXXZ	?OnReplace@CAIStateGroup_TavernKeeper@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00969470	ACCEPT	?Update@CAIStateGroup_TavernKeeper@@UAEXXZ	?Update@CAIStateGroup_TavernKeeper@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0096af60	ACCEPT	?DisappearJump@CAIStateGroup_WhisperPotionCombat@@QAEXXZ	?DisappearJump@CAIStateGroup_WhisperPotionCombat@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0096c2e0	ACCEPT	?IsRunnable@CAIStateGroup_Thunder@@UAE_NXZ	?IsRunnable@CAIStateGroup_Thunder@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0096d190	REJECT	?IsStillValid@CAIStateGroup_EatAtTable@@UAE_NXZ	?IsStillValid@CAIStateGroup_EatAtTable@@MBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+0096d450	ACCEPT	?IsRunnable@CAIStateGroup_EatAtTable@@UAE_NXZ	?IsRunnable@CAIStateGroup_EatAtTable@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00970ab0	ACCEPT	?IsRunnable@CAIStateGroup_CreatureUseCoverBase@@UAE_NXZ	?IsRunnable@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00979e90	REJECT	?IsStillRunnable@CAIStateGroup_CreatureTakeCover@@QAE_NXZ	?IsStillRunnable@CAIStateGroup_CreatureTakeCover@@AAE_NXZ	objsec DIFF 5 .text .text bytes True relocs False 221 221 /     (82, '?IsInMeleeWithCombatWheelAttackers@?A0x742a608d@@YI_NABVCThingCreatureBase@@@Z', 20) | (82, '?IsInMeleeWithCombatWheelAttackers@?A0xc5e6130f@@YI_NABVCThingCreatureBase@@@Z', 20) / bad 1 text_sections_equal=4
+0097b900	ACCEPT	?IsRunnable@CAIStateGroup_ScorpionKing@@UAE_NXZ	?IsRunnable@CAIStateGroup_ScorpionKing@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00988e30	ACCEPT	?UpdateWorldTransform@CShaderRenderManager@@QAEXXZ	?UpdateWorldTransform@CShaderRenderManager@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+00998210	ACCEPT	?ParserIsDriveLabelNext@CAFile@@SI_NAAVCStringParser@@@Z	?ParserIsDriveLabelNext@CAFile@@CI_NAAVCStringParser@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0099ea60	ACCEPT	?AllocStringData@CCharString@@QAEPAVCCharStringData@@PBDJ@Z	?AllocStringData@CCharString@@IAEPAVCCharStringData@@PBDJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009a5270	ACCEPT	?SetAsActive@CSystemManager@@QAEX_N@Z	?SetAsActive@CSystemManager@@AAEX_N@Z	objsec ALL_EQ, MATCH PASS
+009ae150	ACCEPT	?CompileSubDefinition@CDefinitionManager@@QAEXVCCharString@@ABV2@J@Z	?CompileSubDefinition@CDefinitionManager@@IAEXVCCharString@@ABV2@J@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009be390	ACCEPT	?DestroyDevice@CDisplayManager@@QAEXXZ	?DestroyDevice@CDisplayManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009c32c0	REJECT	?GetPercentComplete@CFileInstaller@@QAEMXZ	?GetPercentComplete@CFileInstaller@@QBEMXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+009c3ae0	ACCEPT	?ProcessActiveFileForRead@CFileInstaller@@QAEXAAVCActiveFile@1@@Z	?ProcessActiveFileForRead@CFileInstaller@@IAEXAAVCActiveFile@1@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009c42f0	ACCEPT	?ProcessFileReadCompletion@CFileInstaller@@QAEXXZ	?ProcessFileReadCompletion@CFileInstaller@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009c5310	ACCEPT	?InitBuffers@CFileInstaller@@QAEXKK@Z	?InitBuffers@CFileInstaller@@IAEXKK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009d4a50	REJECT	?WriteTable@CDefStringTable@@QAEXAAVCDataOutputStream@@@Z	?WriteTable@CDefStringTable@@QBEXAAVCDataOutputStream@@@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+009d5650	ACCEPT	?StartRead@CBankFileAsyncData@@QAEXXZ	?StartRead@CBankFileAsyncData@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009e4f80	ACCEPT	?Error@CSymbolMap@@QAAXABVCWideString@@JPBDZZ	?Error@CSymbolMap@@IAAXABVCWideString@@JPBDZZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009ea490	ACCEPT	?GetFormattedName@CConsoleVariable@@UBE?AVCCharString@@XZ	?GetFormattedName@CConsoleVariable@@EBE?AVCCharString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009ea4f0	ACCEPT	?Reset@CConsoleCommandLine@@QAEXXZ	?Reset@CConsoleCommandLine@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009ead60	ACCEPT	?DrawHistoryScrollBar@CConsole@@QAEXABVC2DBoxF@@@Z	?DrawHistoryScrollBar@CConsole@@AAEXABVC2DBoxF@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009eb430	ACCEPT	?RunCommandLine@CConsole@@QAEXXZ	?RunCommandLine@CConsole@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009f4ad0	ACCEPT	?OpenPackageFileForSaving@CInputManager@@QAEXABVCVersion@@ABVCWideString@@@Z	?OpenPackageFileForSaving@CInputManager@@IAEXABVCVersion@@ABVCWideString@@@Z	objsec ALL_EQ, MATCH PASS
+009f4d40	REJECT	?IsEventInQueue@CInputManager@@QAE_NABVCInputEvent@@@Z	?IsEventInQueue@CInputManager@@IBE_NABVCInputEvent@@@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+009f53c0	ACCEPT	?SaveEventPackage@CInputManager@@QAEXXZ	?SaveEventPackage@CInputManager@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009f5d70	REJECT	?LoadAllEventPackages@CInputManager@@QAEXABVCVersion@@AAVCAFile@@@Z	?LoadAllEventPackages@CInputManager@@IAEXABVCVersion@@AAVCAFile@@@Z	objsec DIFF 1 .text .text bytes True relocs False 156 156 /     (6, '__ehhandler$?LoadAllEventPackages@CInputManager@@QAEXABVCVersion@@AAVCAFile@@@Z', 6) | (6, '__ehhandler$?LoadAllEventPackages@CInputManager@@IAEXABVCVersion@@AAVCAFile@@@Z', 6) / bad 1 text_sections_equal=0
+009f7250	ACCEPT	?ClearAllQueries@CVsyncCallbackTimer@@QAEXXZ	?ClearAllQueries@CVsyncCallbackTimer@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009ff8d0	ACCEPT	?GetFrame@CGraphicInfo@@QAE_NAAVCGraphicFrame@@KKK@Z	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a14f40	ACCEPT	?InterruptAllNavigators@CNavigatorManager@@QAEXXZ	?InterruptAllNavigators@CNavigatorManager@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+00a1be10	ACCEPT	?SmoothCorners@CNavigatorAStar@@QAEXXZ	?SmoothCorners@CNavigatorAStar@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a24d40	ACCEPT	?Reset@C3DAnimationInfo@@UAEXXZ	?Reset@C3DAnimationInfo@@EAEXXZ	objsec ALL_EQ, MATCH PASS
+00a25530	REJECT	?GetMeshStats@C3DMeshInfo@@QAE?AV?$CCountedPointer@$$CBVC3DMeshStats@@@@XZ	?GetMeshStats@C3DMeshInfo@@QBE?AV?$CCountedPointer@$$CBVC3DMeshStats@@@@XZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00a265b0	ACCEPT	?Sizeof@C3DAnimationInfo@@UAEKXZ	?Sizeof@C3DAnimationInfo@@UBEKXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a269c0	ACCEPT	?GetAnimationStats@C3DAnimationInfo@@QAE?AV?$CCountedPointer@$$CBVC3DAnimationStats@@@@XZ	?GetAnimationStats@C3DAnimationInfo@@QBE?AV?$CCountedPointer@$$CBVC3DAnimationStats@@@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a26d40	ACCEPT	?NotifyEntryAdded@CMeshDataBank@@UAEXKKABV?$CArray@D@@@Z	?NotifyEntryAdded@CMeshDataBank@@MAEXKKABV?$CArray@D@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a371f0	ACCEPT	?RegisterAllocatedClass@CClassFactory@@QAEXAAVCClass@@J_N@Z	?RegisterAllocatedClass@CClassFactory@@IAEXAAVCClass@@J_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a39fe0	ACCEPT	?ClipLineTo@C2DBoxI@@QBEXAAVC2DLineF@@@Z	?ClipLineTo@C2DBoxI@@QAEXAAVC2DLineF@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a3c0c0	ACCEPT	?Validate@C3DAnimationBlendState@@QBEXXZ	?Validate@C3DAnimationBlendState@@QAEXXZ	objsec ALL_EQ, MATCH PASS
+00a62b70	ACCEPT	?CountBits@CPackedUIntArray@@QBEKPBXKJK@Z	?CountBits@CPackedUIntArray@@ABEKPBXKJK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a641a0	ACCEPT	?ReadFromParserAsFloat@CGenericVar@@QAE_NAAVCStringParser@@@Z	?ReadFromParserAsFloat@CGenericVar@@IAE_NAAVCStringParser@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a65390	ACCEPT	?DeleteChunk@CMemoryAllocatorVariableSize@@QAEXPAVCMemoryAreaChunk@1@@Z	?DeleteChunk@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryAreaChunk@1@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a65f40	ACCEPT	?InternalAlloc@CMemoryAllocatorFixedSize@@QAEKKPAPAX@Z	?InternalAlloc@CMemoryAllocatorFixedSize@@IAEKKPAPAX@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a667c0	REJECT	?EventScanStart@CKeyboard@@QAE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z	?EventScanStart@CKeyboard@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z	no object (head ('MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00a66880	ACCEPT	?UpdateMaintainedEvents@CKeyboard@@QAEXXZ	?UpdateMaintainedEvents@CKeyboard@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a6c850	ACCEPT	?CalculateSegmentation@CPhysicsMesh@@QAEXXZ	?CalculateSegmentation@CPhysicsMesh@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a75f10	ACCEPT	?SetUpNeighboursWithLeaf@CNavQuadTreeNode@@UAEXW4ENavQuadTreeNeighbours@@PAVCANavQuadTreeNode@@@Z	?SetUpNeighboursWithLeaf@CNavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAVCANavQuadTreeNode@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a76060	ACCEPT	?RemoveRegionZero@CNavQuadTreeNode@@UAE_NXZ	?RemoveRegionZero@CNavQuadTreeNode@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a761c0	ACCEPT	?GetMemoryUsage@CNavQuadTreeNode@@UBEKAAK000@Z	?GetMemoryUsage@CNavQuadTreeNode@@MBEKAAK000@Z	objsec ALL_EQ, MATCH PASS
+00a78dd0	ACCEPT	?UnblockAllSwitchableNodes@CNavQuadTree@@QAEXXZ	?UnblockAllSwitchableNodes@CNavQuadTree@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a89450	ACCEPT	?SaveBinary@C3DMesh2@@QBEKAAVCDataOutputStream@@@Z	?SaveBinary@C3DMesh2@@QAEKAAVCDataOutputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00aa7c70	ACCEPT	?SaveChunkedFile@CChunkedFileSaver@@QAEKAAVCChunkedFile@@AAVCDataOutputStream@@@Z	?SaveChunkedFile@CChunkedFileSaver@@IAEKAAVCChunkedFile@@AAVCDataOutputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ab4830	ACCEPT	?UpdateAcquired@CMouseDX@@QAEXXZ	?UpdateAcquired@CMouseDX@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ab5ff0	ACCEPT	?UpdateKeyStates@CKeyboardDX@@QAE_NXZ	?UpdateKeyStates@CKeyboardDX@@IAE_NXZ	objsec ALL_EQ, MATCH PASS
+00ab6100	ACCEPT	?UpdateAcquired@CKeyboardDX@@QAEXXZ	?UpdateAcquired@CKeyboardDX@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ab6240	ACCEPT	?UpdateKeyEvents@CKeyboardDX@@QAE_NXZ	?UpdateKeyEvents@CKeyboardDX@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ab6d60	ACCEPT	?UpdateAcquired@CJoystickDX@@QAEXXZ	?UpdateAcquired@CJoystickDX@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ad9120	ACCEPT	?CountRemainingCurrentBlockSegments@CVertexGroupBlockOptimiser@@QBEKXZ	?CountRemainingCurrentBlockSegments@CVertexGroupBlockOptimiser@@ABEKXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ad9d70	ACCEPT	?CalcCurrentBestTheoreticalResult@CVertexGroupBlockOptimiser@@QAEKXZ	?CalcCurrentBestTheoreticalResult@CVertexGroupBlockOptimiser@@AAEKXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00adf300	ACCEPT	?ApplyDragging@CParticleSimulation@@QAEXABVCParticleContext@@@Z	?ApplyDragging@CParticleSimulation@@AAEXABVCParticleContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00adfdc0	ACCEPT	?OptimiseConstraints@CParticleProgram@@QAEXXZ	?OptimiseConstraints@CParticleProgram@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b2c8e0	ACCEPT	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@QAEXXZ	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b320a0	ACCEPT	?ResetVisibilityRatios@CEnginePrimitiveRenderer@@QAEXXZ	?ResetVisibilityRatios@CEnginePrimitiveRenderer@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b52b30	ACCEPT	?WorldFrameUpdate@CEngineWeatherRenderer@@EAEX_N@Z	?WorldFrameUpdate@CEngineWeatherRenderer@@UAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b6d940	ACCEPT	?LoadCompressedBuffer@CEngineWaterRenderer@@QAEXAAVCMemoryDataInputStream@@AAVCVertexBufferWin32@@PAJ@Z	?LoadCompressedBuffer@CEngineWaterRenderer@@AAEXAAVCMemoryDataInputStream@@AAVCVertexBufferWin32@@PAJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b8fd40	ACCEPT	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveBase@@QAEXM@Z	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveBase@@IAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b91980	ACCEPT	?ClearNonPersistent@CEngineScene@@QAEXXZ	?ClearNonPersistent@CEngineScene@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+00bdc150	ACCEPT	?IsBackgroundAtFullDetailInArea@CEngineLandscapeMap@@QAE_NJJJJ@Z	?IsBackgroundAtFullDetailInArea@CEngineLandscapeMap@@QBE_NJJJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00bf3790	ACCEPT	?DeleteLayerMeshes@CEngineLandscapePatch@@QAEXXZ	?DeleteLayerMeshes@CEngineLandscapePatch@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00bf3860	ACCEPT	?ClipPatch@CEngineLandscapePatch@@QAE_NXZ	?ClipPatch@CEngineLandscapePatch@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00bf6750	ACCEPT	?InvalidateEdgeTesellation@CLandscapeBackgroundTreeNode@@QAEXXZ	?InvalidateEdgeTesellation@CLandscapeBackgroundTreeNode@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00bf6ac0	ACCEPT	?UpdateParentChainVisibilityFlag@CLandscapeBackgroundTreeNode@@QAEXXZ	?UpdateParentChainVisibilityFlag@CLandscapeBackgroundTreeNode@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+00bf84c0	ACCEPT	?ProcessLoadTask@CLandscapeBackgroundTreeNode@@QAE?AW4LS_LOADING_STATUS@@JN_NPAVCEngineStaticMapFileBlockManager@@@Z	?ProcessLoadTask@CLandscapeBackgroundTreeNode@@AAE?AW4LS_LOADING_STATUS@@JN_NPAVCEngineStaticMapFileBlockManager@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00cb7c40	ACCEPT	?RunSpawnedFunctions@CScriptBase@@QAEXXZ	?RunSpawnedFunctions@CScriptBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00cb7ee0	ACCEPT	?LoadEntityScript@CScriptBase@@QAEX_KAAVCActiveEntityScriptBase@@@Z	?LoadEntityScript@CScriptBase@@IAEX_KAAVCActiveEntityScriptBase@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00cb8170	ACCEPT	?RunEntityThreads@CScriptBase@@QAEXXZ	?RunEntityThreads@CScriptBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00f3d830	ACCEPT	?CalcSectionScore@CTriangleStripifier2@@QAEMABV?$CArray@G@@0ABV?$CArray@V?$CArray@J@@@@@Z	?CalcSectionScore@CTriangleStripifier2@@AAEMABV?$CArray@G@@0ABV?$CArray@V?$CArray@J@@@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS

@@ -1,3 +1,4 @@
+// Leaf: ?Cleanup@CAIStateGroup_MinionFollowThing@@MAEXXZ
 // CAIStateGroup_MinionFollowThing::Cleanup() -- undo the follow set-up: flag the creature's 0xAA component, remove
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // the creature as a follower of the followee (when it was added and the creature is dead or flagged), restore the
@@ -173,7 +174,9 @@ struct CAIStateGroup_MinionFollowThing : CAIStateGroupBase {
     bool ExpressionUsed;                        // +0x22
     bool FollowerAdded;                         // +0x23
     long CurrentMovementType;                   // +0x24
+    protected:
     virtual void Cleanup();
+    public:
 };
 
 void CAIStateGroup_MinionFollowThing::Cleanup()

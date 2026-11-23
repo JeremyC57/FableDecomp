@@ -1,5 +1,5 @@
 // CAIStateGroup_TellStory::Update() -- find the nearest story place marker, then while the villager's village says it is cook time: gather the other creatures within 10 units of the marker, walk to the marker facing a random listener (or the marker's facing point), and tell the story (talk for 2-4 seconds, then act for 3-6); terminates when stopped or cook time ends
-// Leaf: ?Update@CAIStateGroup_TellStory
+// Leaf: ?Update@CAIStateGroup_TellStory@@MAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00942EE0, length 767 bytes (0x68 frame, virtual slot 12).
@@ -173,7 +173,9 @@ struct CAIStateGroup_TellStory : CAIStateGroupBase {
     bool MoveAndFace(C3DVector pos, float radius, C3DVector facePos);   // 0x009425F0
     bool StandAndTalk(float seconds);           // 0x00942C70
     void StandAndAct(float seconds);            // 0x00942920
+    protected:
     virtual void Update();
+    public:
 };
 
 void CAIStateGroup_TellStory::Update()

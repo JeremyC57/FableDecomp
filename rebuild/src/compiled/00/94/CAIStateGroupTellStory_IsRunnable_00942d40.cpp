@@ -1,5 +1,5 @@
 // CAIStateGroup_TellStory::IsRunnable() -- a villager with a workplace (and a village) tells a story when the workplace's material is a story building (def flag bit 2), the workplace's own village says it is cook time, and a "STORY_PLACE_MARKER" thing exists (nearest one searched)
-// Leaf: ?IsRunnable@CAIStateGroup_TellStory
+// Leaf: ?IsRunnable@CAIStateGroup_TellStory@@MAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00942D40, length 416 bytes (plain `ret`, virtual slot 11).
@@ -303,7 +303,9 @@ __declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_Ha
 #pragma auto_inline(on)
 struct CAIStateGroup_TellStory : CAIStateGroupBase {
     CThingVillagerBase* GetCreature() const { return (CThingVillagerBase*)PBrain->PCreature; }
+    protected:
     bool IsRunnable();
+    public:
     virtual void Update();
 };
 bool CAIStateGroup_TellStory::IsRunnable()

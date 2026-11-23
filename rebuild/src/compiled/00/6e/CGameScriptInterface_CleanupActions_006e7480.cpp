@@ -4,7 +4,7 @@
 // (CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetControlledCreature @ 0x00487DD0, +0x91 bit 0, the unfreeze @ 0x00449A50 with CurrentPlayer +0x1c),
 // CPlayerGui::Close @ 0x004374B0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790, CGameScriptInterface virtual slot 378 (+0x5e8, EndLetterBox), CDisplayEngine::EndScreenFadeOut @ 0x00434C90.
 // Shape: UnfreezeControls (0x006E73E0) is called qualified, so its body is inlined.
-// Leaf: CleanupActions
+// Leaf: ?CleanupActions@CGameScriptInterface@@IAEXXZ
 // Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -203,7 +203,9 @@ class CGameScriptInterface { public:
         if (creature && !creature->m_dead)
             PlayerManager->UnfreezePlayerControls(CurrentPlayer);
     }
+    protected:
     void CleanupActions();
+    public:
 };
 
 void CGameScriptInterface::CleanupActions()

@@ -1,3 +1,4 @@
+// Leaf: ?StartRead@CBankFileAsyncData@@AAEXXZ
 // CBankFileAsyncData::StartRead  retail 0x009d5650  __fastcall void(this)
 // this->f18 = this->f28->m110->Read(&this->f2c);
 
@@ -20,7 +21,9 @@ class CBankFileAsyncData { public:
     Inner*  f28;         // +0x28  pointer member
     Arg2c   f2c;         // +0x2c  address of this member is passed
 
+    private:
     void StartRead();
+    public:
 };
 
 void CBankFileAsyncData::StartRead()

@@ -1,5 +1,5 @@
 // CNavQuadTree::UnblockAllSwitchableNodes() -- clear the blocked state of every switchable node under its unique ID
-// Leaf: UnblockAllSwitchableNodes
+// Leaf: ?UnblockAllSwitchableNodes@CNavQuadTree@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A78DD0, length 67 bytes.
 // Callees: CNavSwitchableLeafNode::SetAsBlocked(unsigned __int64, bool) @ 0x00A78800.
 // Identity: the manifest label CPlayerManager::PrepareForLoad is propagated; Ego_r.pdb has
@@ -37,7 +37,9 @@ class CNavQuadTree { public:
     virtual void v00();
     unsigned char      _pad04[0x3c];
     CSwitchableNodeMap SwitchableNodes;                     // +0x40
+    private:
     void UnblockAllSwitchableNodes();
+    public:
 };
 
 void CNavQuadTree::UnblockAllSwitchableNodes()

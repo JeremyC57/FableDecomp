@@ -1,3 +1,4 @@
+// Leaf: ?GetMarkerType@CAIStateGroup_BanditPlayDice@@MAEJXZ
 // CAIStateGroup_BanditPlayDice::GetMarkerType() -- global def index of "MARKER_DICE_GAME"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00928550, length 51 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal @ 0x012917CC,
@@ -22,7 +23,9 @@ class CGameDefinitionManager : public CDefinitionManager { public:
 };
 
 struct CAIStateGroup_BanditPlayDice {
+    protected:
     virtual long GetMarkerType();
+    public:
 };
 
 long CAIStateGroup_BanditPlayDice::GetMarkerType()

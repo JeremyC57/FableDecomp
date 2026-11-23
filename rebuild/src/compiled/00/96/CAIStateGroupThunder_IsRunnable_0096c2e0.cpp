@@ -1,5 +1,5 @@
 // CAIStateGroup_Thunder::IsRunnable() -- when the creature's target (interface 8) is a creature: on a fresh hit, latch the "ThunderArenaCentre" thing and count the hit, and once the count reaches the def's threshold latch the target; otherwise latch the target when the creature's interface-0xAD value exceeds the def's limit
-// Leaf: ?IsRunnable@CAIStateGroup_Thunder
+// Leaf: ?IsRunnable@CAIStateGroup_Thunder@@MAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096C2E0, length 524 bytes (plain `ret`).
@@ -144,7 +144,9 @@ struct CAIStateGroup_Thunder : CAIStateGroupBase {
     unsigned char _pad25[3];
     long HitCount;                              // +0x28
     protected: bool FindHitEvent(); public:                        // 0x0096C250
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 #pragma pack(pop)
 

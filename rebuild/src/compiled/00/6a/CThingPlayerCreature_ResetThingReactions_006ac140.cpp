@@ -1,3 +1,4 @@
+// Leaf: ?ResetThingReactions@CThingPlayerCreature@@IAEXXZ
 // CThingPlayerCreature::ResetThingReactions() -- collect every leaf thing of the search tools' list, clear the intelligent pointer each one keeps at +0xf4, then free the temporary list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AC140, length 182 bytes (192 with padding).
 // Callees: malloc @ 0x00BFEA0E / free @ 0x00BFEA14 (the STLport list nodes), CThing::GetThingSearchTools @ 0x004C7A50
@@ -103,7 +104,9 @@ void CThingSearchTools::GetAllLeafThings(const CThingFilter_None&, CThingList& o
 #pragma auto_inline(on)
 
 class CThingPlayerCreature : public CThing { public:
+    protected:
     void ResetThingReactions();
+    public:
 };
 
 void CThingPlayerCreature::ResetThingReactions()

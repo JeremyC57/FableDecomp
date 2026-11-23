@@ -1,3 +1,4 @@
+// Leaf: ?PlayLoop@CAIStateGroup_WorkAtSchool@@IAE_NMABVCCharString@@00@Z
 // CAIStateGroup_WorkAtSchool::PlayLoop(float, const CCharString&, const CCharString&, const CCharString&) -- play the into animation, repeat the loop animation until `duration` seconds have passed, then the out-of animation; false as soon as one of them does not complete
 // Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -65,7 +66,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
+    protected:
     bool PlayLoop(float duration, const CCharString& into, const CCharString& loop, const CCharString& outOf);
+    public:
 };
 
 bool CAIStateGroup_WorkAtSchool::PlayLoop(float duration, const CCharString& into, const CCharString& loop, const CCharString& outOf)

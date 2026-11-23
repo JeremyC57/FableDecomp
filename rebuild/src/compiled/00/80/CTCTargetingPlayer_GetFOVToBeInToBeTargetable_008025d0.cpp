@@ -5,7 +5,7 @@
 // Name: Ego_r.pdb `?GetFOVToBeInToBeTargetable@CTCTargetingPlayer@@IBEMXZ` sits between SetAsTargetNextThing and
 //   GetPTargetedThing in the donor, exactly where 0x008025D0 sits between the landed SetAsTargetNextThing 0x00802590 and
 //   ClearLockedTarget 0x00802650 in retail; the catalog label "GetModifierValue" is descriptive.
-// Leaf: GetFOVToBeInToBeTargetable
+// Leaf: ?GetFOVToBeInToBeTargetable@CTCTargetingPlayer@@IBEMXZ
 // Callees: CThing::PeekPlayer 0x004C7A10. Constant: 1/360 (0.0027777778f) @ 0x01238E00 (degrees -> turns).
 // Layout (local model, as the landed siblings 0x008026A0 / 0x00802420): CTCBase ParentThing +0x04; CTCTargetingAI
 //   PSubDef (the CTargetingDef) +0x30 -- engine/CTCTargetingPlayer.h flattens the base to pads there. Ego_r.pdb
@@ -40,7 +40,9 @@ class CTCTargetingAI { public:
 };
 
 class CTCTargetingPlayer : public CTCTargetingAI { public:
+    protected:
     float GetFOVToBeInToBeTargetable() const;
+    public:
 };
 
 float CTCTargetingPlayer::GetFOVToBeInToBeTargetable() const

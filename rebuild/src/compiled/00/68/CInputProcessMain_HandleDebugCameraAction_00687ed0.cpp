@@ -1,5 +1,5 @@
 // CInputProcessMain::HandleDebugCameraAction(CProcessedInput& input) -- turn the debug-camera button into manual-camera game events according to the player's mode: mode 19 adds the first event (off), mode 1 with the free camera on adds the second (off), modes 4..13 and 23 do nothing, every other mode adds both (on); each handled case sets the input priority to 5
-// Leaf: HandleDebugCameraAction
+// Leaf: ?HandleDebugCameraAction@CInputProcessMain@@AAEXAAVCProcessedInput@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00687ED0, 131 bytes + the jump table (4 targets) and its 23-entry byte index
 //   table, `ret 4`.
 // Callees: CPlayer::GetCurrentMode @ 0x00633BE0, the file-static `__fastcall` game-event helpers @ 0x00687E10 (game
@@ -33,7 +33,9 @@ class CInputProcessMain { public:
     unsigned char InputProcessListPos[0xc];        // +0x08
     void*    World;                                // +0x14 (CInputProcessGameBase)
     CPlayer* MyPlayer;                             // +0x18
+    private:
     void HandleDebugCameraAction(CProcessedInput& input);
+    public:
 };
 
 void CInputProcessMain::HandleDebugCameraAction(CProcessedInput& input)

@@ -1,3 +1,4 @@
+// Leaf: ?InitialiseToggleTorchTypes@CTCVillage@@AAEXAAVCThingObject@@@Z
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad24[0x20] removed.
 #include "fable_compiler.h"
@@ -43,7 +44,9 @@ class CThingObject { public:
 };
 
 class CTCVillage { public:
+    private:
     void InitialiseToggleTorchTypes(CThingObject& object);
+    public:
 };
 
 void CTCVillage::InitialiseToggleTorchTypes(CThingObject& object)

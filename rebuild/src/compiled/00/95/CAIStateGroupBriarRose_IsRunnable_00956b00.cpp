@@ -8,7 +8,7 @@
 // result is ignored (a miss leaves the pointer unwritten: retail reloads it from the key's frame word), the boss test
 // `!(GetInterface(&boss, 0xad) && boss->IsReadyForPhaseChange())` guards the frame check (signed `jl`).
 // Layout: engine/CAIStateGroup_BriarRose.h (PEnemy +0x14, NextRunFrame +0x1c).
-// Leaf: IsRunnable@CAIStateGroup_BriarRose
+// Leaf: ?IsRunnable@CAIStateGroup_BriarRose@@MAE_NXZ
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 #include "fable_compiler.h"
 class CTCBase;
@@ -147,7 +147,9 @@ class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?Ge
 struct CAIStateGroup_BriarRose : CAIStateGroupBase {
     CIntelligentPointerThing PEnemy;            // +0x14 CIntelligentPointer<CThingCreatureBase>
     long NextRunFrame;                          // +0x1c
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_BriarRose::IsRunnable()

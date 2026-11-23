@@ -1,5 +1,5 @@
 // CNavQuadTreeNode::GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const -- count this inner node and sum its own size with the memory used by its four children
-// Leaf: ?GetMemoryUsage@CNavQuadTreeNode
+// Leaf: ?GetMemoryUsage@CNavQuadTreeNode@@MBEKAAK000@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A761C0, 122 bytes (+ int3 padding; `ret 10h`). Vtable 0x0129DCD4 slot 15.
 // Callees: each child's virtual slot 15 GetMemoryUsage (+0x3c), recursively.
 // Layout = Ego_r.pdb CNavQuadTreeNode (0x20): CANavQuadTreeNode (0x10) + TLNode +0x10, TRNode +0x14, BLNode +0x18, BRNode +0x1c.
@@ -116,7 +116,9 @@ class CNavQuadTreeNode : public CANavQuadTreeNode { public:
     CANavQuadTreeNode* TRNode;                             // +0x14
     CANavQuadTreeNode* BLNode;                             // +0x18
     CANavQuadTreeNode* BRNode;                             // +0x1c
+    protected:
     unsigned long GetMemoryUsage(unsigned long& quadTreeNodes, unsigned long& leafNodes, unsigned long& blockedNodes, unsigned long& totalNodes) const;
+    public:
     void AddToIndexTable(long& index, std::map<const CANavQuadTreeNode*, long>& table) const;
 };
 unsigned long CNavQuadTreeNode::GetMemoryUsage(unsigned long& quadTreeNodes, unsigned long& leafNodes, unsigned long& blockedNodes, unsigned long& totalNodes) const

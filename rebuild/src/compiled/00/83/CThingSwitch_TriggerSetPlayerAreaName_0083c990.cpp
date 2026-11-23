@@ -1,5 +1,5 @@
 // CThingSwitch::TriggerSetPlayerAreaName() -- once: when the living hero stands inside the switch's trigger square and has a region display, show the switch's script name as the current area name
-// Leaf: TriggerSetPlayerAreaName
+// Leaf: ?TriggerSetPlayerAreaName@CThingSwitch@@IAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083C990, length 255 bytes (+ int3 padding).
@@ -83,7 +83,9 @@ public:
     CCharString   EnvironmentDef;                              // +0xd4
     float         TimeToChangeEnvironmentDef;                  // +0xd8
     bool          AreaNameShown;                               // +0xdc
+    protected:
     void TriggerSetPlayerAreaName();
+    public:
 };
 
 void CThingSwitch::TriggerSetPlayerAreaName()

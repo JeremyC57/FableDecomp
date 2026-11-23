@@ -1,3 +1,4 @@
+// Leaf: ?IsStateGroupStillValid@CAIStateGroup_SitForMeal@@MBE_NXZ
 // CAIStateGroup_SitForMeal::IsStateGroupStillValid() -- normalises IsMealTime()'s byte result to a bool
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00945610, oracle length 11 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
@@ -9,11 +10,13 @@
 // kept from the manifest only when the label is unique. One of 6 bodies of this shape.
 struct CAIStateGroup_SitForMeal {
     virtual void v00();
-    virtual bool IsStateGroupStillValid();
+    protected:
+    virtual bool IsStateGroupStillValid() const;
+    public:
 private: bool IsMealTime() const; public:     // 0x009455B0 (NF306: Ego_r + FableWin ABE_N; was unsigned char Query_009455b0())
 };
 
-bool CAIStateGroup_SitForMeal::IsStateGroupStillValid()
+bool CAIStateGroup_SitForMeal::IsStateGroupStillValid() const
 {
     return IsMealTime() ? true : false;
 }

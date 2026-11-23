@@ -1660,7 +1660,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1864	c608	005dc340	?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	partial	?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z
 1865	c608	0070c050	?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z	partial	?Set@CAnimInit@@QAEXEKJJ_NKJ@Z || ?Set@CAnimInit@@QAEXJJJJ_NKJ@Z
 1866	c608	007f9330	??$GetSubDef@VCAnimatingObjectDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAnimatingObjectDef@@@@@Z	partial	?GetSubDef_007f9330@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAnimatingObjectDef@@@@@Z
-1867	c608	00945610	?IsStateGroupStillValid@CAIStateGroup_SitForMeal@@MBE_NXZ	no_binding	
+1867	c608	00945610	?IsStateGroupStillValid@CAIStateGroup_SitForMeal@@MBE_NXZ	closed	
 1873	c611	00c74bb0	?SetHighPass@CEffectFilter@@QAEXJMK@Z	open	?Set_HighPass@CFloatFilterParams@@QAEXHMI@Z
 1874	c611	00860a50	?GetNearestNode@CVillageTaskPatrol@@QBEPBVCThingTrackNode@@ABVC3DVector@@@Z	closed	
 1875	c611	0087bbf0	?OnDie@CScriptedControl@NCameraModes@@UAEXXZ	open	OnDie

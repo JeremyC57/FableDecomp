@@ -1,3 +1,4 @@
+// Leaf: ?ResetVisibilityRatios@CEnginePrimitiveRenderer@@AAEXXZ
 // CEnginePrimitiveRenderer::ResetVisibilityRatios() -- run a CEngineSceneEnumeratorResetVisibilityRatio (built on the stack with a null argument) over every scene grid in the vector at +0x338
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B320A0, length 88 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 and CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (the enumerator's base, out of line; the enumerator's own constructor is inlined: its vtable
@@ -23,7 +24,9 @@ class CEnginePrimitiveRenderer { public:
     unsigned char              _pad[0x338];
     CEngineSceneGrid_00b320a0** m_pFirstGrid;      // +0x338
     CEngineSceneGrid_00b320a0** m_pLastGrid;       // +0x33c
+    private:
     void ResetVisibilityRatios();
+    public:
 };
 
 void CEnginePrimitiveRenderer::ResetVisibilityRatios()

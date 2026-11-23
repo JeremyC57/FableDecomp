@@ -1,5 +1,5 @@
 // CTCTavernGame::CallFuncAfterOK(CWideString text, CWideString okText, void (__fastcall *okFunc)()) -- show an OK subtitle prompt, announce it with game event 9, remember the OK callback and enter the OK wait state 44 (or leave the game when a quit is pending)
-// Leaf: CallFuncAfterOK
+// Leaf: ?CallFuncAfterOK@CTCTavernGame@@IAEXVCWideString@@0P6IXXZ@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -83,7 +83,9 @@ class CTCTavernGame { public:
     TTavernGameFunc   AltFunc;                          // +0xbc
     ETavernGameStates TavernGameState;                  // +0xc0
     ETavernGameStates PreviousTavernGameState;          // +0xc4
+    protected:
     void CallFuncAfterOK(CWideString text, CWideString okText, TTavernGameFunc okFunc);
+    public:
 };
 
 void CTCTavernGame::CallFuncAfterOK(CWideString text, CWideString okText, TTavernGameFunc okFunc)

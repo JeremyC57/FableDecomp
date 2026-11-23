@@ -1,3 +1,4 @@
+// Leaf: ?DeleteLayerMeshes@CEngineLandscapePatch@@AAEXXZ
 // CEngineLandscapePatch::DeleteLayerMeshes() -- deletes the polymorphic layer mesh at +8 (clearing its slot and the three-bit layer count at +0x3c) and returns the virtual-memory block at +0xc to the engine's landscape memory manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF3790, length 65 bytes.
 // Callees: the layer mesh's virtual slot 0 (scalar deleting destructor, flag 1: `delete`), CEngineLandscapeMemoryManager::FreeVirtual(void*) @ 0x00BD9B90 (on the
@@ -21,7 +22,9 @@ class CEngineLandscapePatch { public:
     void*                m_pLayerBlock;            // +0x0c
     unsigned char        _pad10[0x2c];
     unsigned char        m_layerCount : 3;         // +0x3c bits 0-2
+    private:
     void DeleteLayerMeshes();
+    public:
 };
 
 void CEngineLandscapePatch::DeleteLayerMeshes()

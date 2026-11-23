@@ -1,3 +1,4 @@
+// Leaf: ?GetProximityToBeConsideredNearToEnemyCreature@CAIStateGroup_MeleeCombatNearby2@@ABEMXZ
 // CAIStateGroup_MeleeCombatNearby2::GetProximityToBeConsideredNearToEnemyCreature() -- the distance at which
 // the enemy counts as "near": the combat manager's proximity when the creature's combat-wheel sequence position
 // is valid, otherwise twice the creature's def radius scaled by 5/6, plus one metre.
@@ -50,10 +51,12 @@ public:
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
     unsigned char PEnemy[8];                // +0x14 CIntelligentPointer<CThingCreatureBase>
     bool Archer;                            // +0x1c
-    float GetProximityToBeConsideredNearToEnemyCreature();
+    private:
+    float GetProximityToBeConsideredNearToEnemyCreature() const;
+    public:
 };
 
-float CAIStateGroup_MeleeCombatNearby2::GetProximityToBeConsideredNearToEnemyCreature()
+float CAIStateGroup_MeleeCombatNearby2::GetProximityToBeConsideredNearToEnemyCreature() const
 {
     CThingCreatureBase* creature = PBrain->Creature;
     if (GetWorld().GetPCombatManager()->IsCreatureOnOuterRing(*creature)) {

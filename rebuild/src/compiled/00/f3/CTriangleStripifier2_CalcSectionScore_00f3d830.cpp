@@ -1,5 +1,5 @@
 // CTriangleStripifier2::CalcSectionScore(const CArray<unsigned short>& section, const CArray<unsigned short>& triangles, const CArray<CArray<long> >& vertexPolys) -- score a strip section: mark its polygons, strip the unused vertices from a copy of the section, count the vertices that still touch an unmarked polygon and return polygons per such vertex (0 when no polygon was marked, 1e30 when none touches an unmarked one)
-// Leaf: CalcSectionScore
+// Leaf: ?CalcSectionScore@CTriangleStripifier2@@AAEMABV?$CArray@G@@0ABV?$CArray@V?$CArray@J@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F3D830, 336 bytes, `ret 0Ch`.
 // Callees: CTriangleStripifier2::CalcSectionPolyMask @ 0x00F3CF50 (returns the marked polygon count), the CArray<unsigned
 //          short> copy ctor @ 0x00A87090, CTriangleStripifier2::StripUnusedVerts @ 0x00F3B970, free @ 0x00BFEA14 (the two
@@ -36,8 +36,10 @@ private:
 public:
     void StripUnusedVerts(CArray<unsigned short>& section, const CArray<CArray<long> >& vertexPolys,
                           const CArray<bool>& polyMask);                                                // 0x00F3B970
+    private:
     float CalcSectionScore(const CArray<unsigned short>& section, const CArray<unsigned short>& triangles,
                            const CArray<CArray<long> >& vertexPolys);
+    public:
 };
 
 void* AllocPolyMask(unsigned long count);                    // allocation for the stand-in

@@ -1,3 +1,4 @@
+// Leaf: ?SaveBinary@C3DMesh2@@QAEKAAVCDataOutputStream@@@Z
 // C3DMesh2::SaveBinary(CDataOutputStream&) const -- write the mesh stats, counts and raw bone/keyframe blocks, then every material and primitive; return the bytes written
 // Retail @ 0x00A89450, 403 bytes (ret 4).
 // Callees: CDataOutputStream::GetPosition (vtable slot 2), CDataOutputStream::WriteData (vtable slot 4),
@@ -64,10 +65,10 @@ class C3DMesh2 : public C3DMeshStats { public:
     bool ClothFlag;                       // +0xE4
     bool LockedFromMemoryRelocation;      // +0xE5
     unsigned long MeshID;                 // +0xE8
-    unsigned long SaveBinary(CDataOutputStream& out) const;
+    unsigned long SaveBinary(CDataOutputStream& out);
 };
 
-unsigned long C3DMesh2::SaveBinary(CDataOutputStream& out) const
+unsigned long C3DMesh2::SaveBinary(CDataOutputStream& out)
 {
     unsigned long start = out.GetPosition();
     C3DMeshStats::SaveBinary(out);

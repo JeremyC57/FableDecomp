@@ -1,5 +1,5 @@
 // CParticleProgram::OptimiseConstraints() -- merge runs of same-typed constraint records in the program's constraint stream: each record is (type, count, data size, data); consecutive records of one type other than 0 and 1 are combined into a single record whose count and size are the sums and whose data is the concatenation; the merged stream then replaces the original
-// Leaf: OptimiseConstraints
+// Leaf: ?OptimiseConstraints@CParticleProgram@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADFDC0, 647 bytes (+ int3 padding), plain `ret`.
 // Callees: CMemoryDataInputStream(const CMemoryDataOutputStream&) 0x00995EE0 / ~ 0x00993B10 (label "~CChunkedFileChunk"),
 //   CMemoryDataOutputStream() 0x00996AF0 / ~ 0x00996B30 (label "~CCompressedMemoryDataInputStream") / Reset 0x00996B60 /
@@ -48,7 +48,9 @@ class CParticleProgram {
 public:
     unsigned char           _body00[0x114];
     CMemoryDataOutputStream Constraints;                               // +0x114
+    private:
     void OptimiseConstraints();
+    public:
 };
 
 void CParticleProgram::OptimiseConstraints()

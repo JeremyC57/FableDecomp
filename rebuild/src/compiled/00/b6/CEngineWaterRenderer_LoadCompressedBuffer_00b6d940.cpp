@@ -1,5 +1,5 @@
 // CEngineWaterRenderer::LoadCompressedBuffer(CMemoryDataInputStream&, CVertexBufferWin32&, long*) -- read a vertex count and stride, create the vertex buffer, then range-decompress the following compressed block straight into the locked buffer; report the vertex count
-// Leaf: LoadCompressedBuffer
+// Leaf: ?LoadCompressedBuffer@CEngineWaterRenderer@@AAEXAAVCMemoryDataInputStream@@AAVCVertexBufferWin32@@PAJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6D940, length 432 bytes, `ret 0xc` (this unused).
 // Callees: CVertexBufferWin32::Uninitialise 0x00A63200, Initialise(long,long,long,unsigned long,long) 0x00A63150, the
 //   out-of-line Lock(3 args)/Unlock thunks 0x00AC20A0/0x00AC20B0 (COMDAT-folded), the buffer-usage query 0x00B3B030 on the
@@ -89,7 +89,9 @@ struct CRangeCompressor {
 };
 
 class CEngineWaterRenderer { public:
+    private:
     void LoadCompressedBuffer(CMemoryDataInputStream& stream, CVertexBufferWin32& buffer, long* vertexCount);
+    public:
 };
 
 void CEngineWaterRenderer::LoadCompressedBuffer(CMemoryDataInputStream& stream, CVertexBufferWin32& buffer, long* vertexCount)

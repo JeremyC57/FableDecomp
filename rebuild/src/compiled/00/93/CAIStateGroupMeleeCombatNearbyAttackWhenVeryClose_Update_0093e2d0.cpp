@@ -1,3 +1,4 @@
+// Leaf: ?Update@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MAEXXZ
 // CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update() -- with a living enemy: register as its combatant, refresh perception, strafe when in combat mode, signal ready-to-attack and mark the creature ready; then while the enemy lives, the group neither stops nor stops being runnable and the creature stays a combatant, post a look-at-enemy brain output and yield; finally clear the ready-to-attack mark and terminate
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -189,7 +190,9 @@ struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
     protected: void AddStrafeMode(); public:                       // 0x0093D7A0
 };
 struct CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose : CAIStateGroup_MeleeCombatNearbyBase {
+    protected:
     virtual void Update();
+    public:
 };
 
 void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()

@@ -1,3 +1,4 @@
+// Leaf: ?SetupCameraOnStick@CTCAssassinRush@@AAEXXZ
 // CTCAssassinRush::SetupCameraOnStick() -- read the hero's camera-stick helper point; store it relative to the hero (LocalRelativeVectorForCamera) and the camera relative to it (RelativeVectorForCamera), then hand over to the camera setup
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A9C80, length 221 bytes (+ int3 padding).
@@ -54,7 +55,9 @@ public:
     C3DVector LocalRelativeVectorForCamera;     // +0x74
     C3DVector RelativeVectorForCamera;          // +0x80
 private: void ResetCameraOnStick(); public:            // 0x007A9B10 ?ResetCameraOnStick@CTCAssassinRush@@AAEXXZ (Ego_r + FableWin, private; NF285, was public SetupCameraFromStick_007a9b10)
+    private:
     void SetupCameraOnStick();
+    public:
 };
 
 void CTCAssassinRush::SetupCameraOnStick()

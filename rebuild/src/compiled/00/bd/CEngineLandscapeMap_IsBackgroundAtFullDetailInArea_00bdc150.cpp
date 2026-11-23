@@ -1,3 +1,4 @@
+// Leaf: ?IsBackgroundAtFullDetailInArea@CEngineLandscapeMap@@QBE_NJJJJ@Z
 // CEngineLandscapeMap::IsBackgroundAtFullDetailInArea(long,long,long,long)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BDC150, oracle length 17 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
@@ -16,10 +17,10 @@ struct CLandscapeBackgroundTreeNodeCalls {
 class CEngineLandscapeMap { public:
     void*                              __vftable;   // +0x00
     CLandscapeBackgroundTreeNodeCalls* PatchTree;   // +0x04 (PDB: CLandscapeBackgroundTreeNode*)
-    bool IsBackgroundAtFullDetailInArea(long minX, long minY, long maxX, long maxY);
+    bool IsBackgroundAtFullDetailInArea(long minX, long minY, long maxX, long maxY) const;
 };
 
-bool CEngineLandscapeMap::IsBackgroundAtFullDetailInArea(long minX, long minY, long maxX, long maxY)
+bool CEngineLandscapeMap::IsBackgroundAtFullDetailInArea(long minX, long minY, long maxX, long maxY) const
 {
     CLandscapeBackgroundTreeNodeCalls* tree = this->PatchTree;
     if (!tree)

@@ -1,3 +1,4 @@
+// Leaf: ?InitStateGroup@CAIStateGroup_KidWatchHopscotch@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
 // CAIStateGroup_KidWatchHopscotch::InitStateGroup(const CWorld&, CThingAICreature&) -- stamp the start frame,
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -37,7 +38,9 @@ struct CAIStateGroup_KidWatchHopscotch : CAIStateGroupBase {
     bool m_gameSeen;                        // +0x38
     long m_gamesWatched;                    // +0x3c
     long m_lastGameFrame;                   // +0x40
+    protected:
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
+    public:
 };
 
 void CAIStateGroup_KidWatchHopscotch::InitStateGroup(const CWorld& world, CThingAICreature& creature)

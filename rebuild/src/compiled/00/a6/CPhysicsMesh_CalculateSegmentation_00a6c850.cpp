@@ -1,3 +1,4 @@
+// Leaf: ?CalculateSegmentation@CPhysicsMesh@@AAEXXZ
 // CPhysicsMesh::CalculateSegmentation() -- with more than 60 triangles, build the face segmentation tree (0x00A86CD0) and store it in the counted pointer at +0xB4
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
@@ -28,7 +29,9 @@ class CPhysicsMesh { public:
     CArray<C3DVector>                 TotalPoints;        // +0x3c
     unsigned char                     _pad48[0xb4 - 0x48];
     CCountedPointer<const CIPhysicsFacesSegmentBase> RootSegment;   // +0xb4
+    private:
     void CalculateSegmentation();
+    public:
 };
 
 void CPhysicsMesh::CalculateSegmentation()

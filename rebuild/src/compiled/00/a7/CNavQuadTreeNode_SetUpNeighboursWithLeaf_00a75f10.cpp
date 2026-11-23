@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A75F10, 0x52 bytes of code + a 4-entry jump table (164 bytes in the oracle row);
 //   slot 16 of vtable 0x0129DCD4 = CNavQuadTreeNode (rtti-vtables.tsv). FableWin.pdb mangles the family as
 //   ?SetUpNeighboursWithLeaf@CANavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAV1@@Z (global enum, protected virtual).
-// Leaf: SetUpNeighboursWithLeaf
+// Leaf: ?SetUpNeighboursWithLeaf@CNavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAVCANavQuadTreeNode@@@Z
 // Layout: PDB (Ego_r) names: CANavQuadTreeNode Position +0x04, QuadTreeLevel +0x0c, NavLayer +0x0d, LeafNode +0x0e,
 //   Blocked +0x0f; CNavQuadTreeNode TLNode +0x10, TRNode +0x14, BLNode +0x18, BRNode +0x1c. Vtable slot names come from
 //   the CNavQuadTreeNode vtable labels (rtti-vtables.tsv + manifest); unlabelled slots are VFuncNN. The enumerator
@@ -42,7 +42,9 @@ public:
     CANavQuadTreeNode* TRNode;                          // +0x14
     CANavQuadTreeNode* BLNode;                          // +0x18
     CANavQuadTreeNode* BRNode;                          // +0x1c
+    protected:
     virtual void SetUpNeighboursWithLeaf(ENavQuadTreeNeighbours side, CANavQuadTreeNode* leaf);
+    public:
 };
 void CNavQuadTreeNode::SetUpNeighboursWithLeaf(ENavQuadTreeNeighbours side, CANavQuadTreeNode* leaf)
 {

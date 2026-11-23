@@ -1,3 +1,4 @@
+// Leaf: ?ClipLineTo@C2DBoxI@@QAEXAAVC2DLineF@@@Z
 // C2DBoxI::ClipLineTo(C2DLineF&) const -- clip a line to the box: the first edge crossing replaces the start point, later crossings the end point
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A39FE0, length 355 bytes.
@@ -17,11 +18,11 @@ class C2DLineF { public:
 };
 class C2DBoxI { public:
     long minX; long minY; long maxX; long maxY;
-    void ClipLineTo(C2DLineF& line) const;
+    void ClipLineTo(C2DLineF& line);
 };
 extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C
 
-void C2DBoxI::ClipLineTo(C2DLineF& line) const
+void C2DBoxI::ClipLineTo(C2DLineF& line)
 {
     C2DVector hit;
     bool first = true;

@@ -1,5 +1,5 @@
 // CKeyboardDX::UpdateKeyEvents() -- drain DirectInput's buffered keyboard data (up to 256 records, re-acquiring once when the input was lost) into the event store: each record becomes a key-pressed event, or a key-released event carrying the start time of the matching held key from the maintained-event list; then refresh the maintained events
-// Leaf: UpdateKeyEvents
+// Leaf: ?UpdateKeyEvents@CKeyboardDX@@IAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AB6240, 516 bytes (+ int3 padding); 8-aligned frame (`and esp,-8`, __chkstk 0x1450).
 // Callees: CInputEvent ctor 0x00A04410 / dtor 0x00A03B30, GetType 0x00A03B40, GetKey 0x00A03B70, SetAsKeyboardKeyPressed(EInputKey,
 //   double) 0x00A03BF0, SetAsKeyboardKeyReleased(EInputKey, double, double) 0x00A03C50 (FableWin.pdb names); CKeyboard
@@ -87,7 +87,9 @@ struct CKeyboardDX {
                 return (EInputKey)i;
         return (EInputKey)0;
     }
+    protected:
     bool UpdateKeyEvents();
+    public:
 };
 
 bool CKeyboardDX::UpdateKeyEvents()

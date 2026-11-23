@@ -1,3 +1,4 @@
+// Leaf: ?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@IAEXXZ
 // CAIStateGroup_HoverHornetQueen::GoToSpawnPoint() -- switch the queen's navigator to hover, pick deposit position 1 (first time) or a random 1..4, find the "QueenDepositPos<n>" marker within 60 units (else use the creature's start position), look at the target, then fly to the marker facing the target until arrived; restore the navigator, or terminate when the state stops being runnable
 // NF127 (2026-11-20, q5141): the stand-in GetPWorldSeed declaration moved onto the row-local CAIStateGroupBase model as the PDB protected const member ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (0x008FCFD0).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
@@ -114,7 +115,9 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
 protected:
     bool IsStillRunnable();                     // 0x0095A420 (protected: Ego_r/FableWin IAE)
 public:
+    protected:
     void GoToSpawnPoint();
+    public:
 };
 
 void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()

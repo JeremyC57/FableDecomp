@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
 // CTCVillage::BuildingContainsCorrectVillagers(CThingBuilding* building) -- false when the building is dead, or when a live villager whose home is this building stands outside it, or one living elsewhere stands inside it
-// Leaf: BuildingContainsCorrectVillagers
+// Leaf: ?BuildingContainsCorrectVillagers@CTCVillage@@AAE_NPAVCThingBuilding@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00658EC3, 126 bytes (`ret 4`); size TU (unaligned entry; the frame pointer comes from the address of
 //         the `building` argument passed by reference): `optimize("s",on)`.
@@ -70,7 +70,9 @@ struct SVillagerNode {                          // STLport list node
 class CTCVillage { public:
     unsigned char  _pad_0x00[0x2c];
     SVillagerNode* VillagePeople;               // +0x2c list head node
+    private:
     bool BuildingContainsCorrectVillagers(CThingBuilding* building);
+    public:
 };
 
 bool CTCVillage::BuildingContainsCorrectVillagers(CThingBuilding* building)

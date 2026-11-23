@@ -1,5 +1,5 @@
 // CTCInventoryMap::GetRelativePosOnMap(NUISystem::CComponent* component, const C3DVector& position, C2DVector& relative) const -- scale a world position to the map screen: the bounding box of the world-map records 1..n-1 gives the world extent, and the UI misc-things def's map width/height over that extent scale X and Y
-// Leaf: GetRelativePosOnMap
+// Leaf: ?GetRelativePosOnMap@CTCInventoryMap@@IBEXPAVCComponent@NUISystem@@ABVC3DVector@@AAVC2DVector@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FB630, 429 bytes (+int3), `ret 0Ch`, esp frame (speed TU).
 //   Ego_r.pdb: ?GetRelativePosOnMap@CTCInventoryMap@@IBEXPAVCComponent@NUISystem@@ABVC3DVector@@AAVC2DVector@@@Z.
@@ -97,7 +97,9 @@ public:
 }
 
 class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
+    protected:
     void GetRelativePosOnMap(NUISystem::CComponent* component, const C3DVector& position, C2DVector& relative) const;
+    public:
 };
 
 void CTCInventoryMap::GetRelativePosOnMap(NUISystem::CComponent* component, const C3DVector& position, C2DVector& relative) const

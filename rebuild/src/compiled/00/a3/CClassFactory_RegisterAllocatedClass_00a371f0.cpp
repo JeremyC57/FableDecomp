@@ -1,5 +1,5 @@
 // CClassFactory::RegisterAllocatedClass(CClass& cls, long type, bool atBack) -- link a newly allocated class into the factory-wide class list and its type's list (both at the back or both at the front), remember both list positions in the class, bump both counts
-// Leaf: RegisterAllocatedClass
+// Leaf: ?RegisterAllocatedClass@CClassFactory@@IAEXAAVCClass@@J_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A371F0, 219 bytes (+ int3 padding), `ret 0Ch`.
 // Identity: Ego_r.pdb `?RegisterAllocatedClass@CClassFactory@@IAEXAAVCClass@@J_N@Z`; called by the landed
 //   ReregisterAllocatedClass 0x00A37300 (which names it). The catalog's "CClass_AddAllocation" is descriptive.
@@ -92,7 +92,9 @@ public:
     unsigned long   MaxClassTypeID;                     // +0x10
     unsigned long   NoAllocatedClasses;                 // +0x14
     CClassList      ClassList;                          // +0x18
+    protected:
     void RegisterAllocatedClass(CClass& cls, long type, bool atBack);
+    public:
 };
 
 void CClassFactory::RegisterAllocatedClass(CClass& cls, long type, bool atBack)

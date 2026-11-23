@@ -1,5 +1,5 @@
 // CGameCameraBase::IsLandscapeCollision() -- march from the camera position towards the point it looks at in quarter-unit steps, sampling the ground height; if the ground rises above the camera anywhere on the way, lift the camera to two units above the highest sample and report a collision
-// Leaf: IsLandscapeCollision
+// Leaf: ?IsLandscapeCollision@CGameCameraBase@@AAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Length respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FD6C0, 498 bytes, `ret`.
 // Callees: the world's map accessor (virtual slot 12), C3DVector::AccurateNormalise @ 0x00A14440 (catalog label GetScaled),
@@ -23,7 +23,9 @@ struct CGameCameraBase {
     C3DVector     LastPointingAt;                        // +0x74
     C3DVector     PointingAt;                            // +0x80
     CWorld*       World;                                 // +0x8c
+    private:
     bool IsLandscapeCollision();
+    public:
 };
 
 bool CGameCameraBase::IsLandscapeCollision()

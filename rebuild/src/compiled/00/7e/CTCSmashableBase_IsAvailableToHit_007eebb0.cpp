@@ -1,3 +1,4 @@
+// Leaf: ?IsAvailableToHit@CTCSmashableBase@@IBE_NXZ
 // CTCSmashableBase::IsAvailableToHit() const -- true once more than one world frame has passed since the last hit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EEBB0, length 24 bytes.
 // Callees: CTCBase::PeekWorld() @ 0x00686A80 (returns the world from the game singleton; its result is only the object
@@ -26,7 +27,9 @@ class CTCSmashableBase : public CTCBase { public:
     long  LastWorldFrameHit;                             // +0x0c
     bool  Smashed;                                       // +0x10
     void* Definition;                                    // +0x14 CDefPointer<CSmashableDef const>
+    protected:
     bool IsAvailableToHit() const;
+    public:
 };
 
 bool CTCSmashableBase::IsAvailableToHit() const

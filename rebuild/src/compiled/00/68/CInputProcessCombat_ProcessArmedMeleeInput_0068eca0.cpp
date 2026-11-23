@@ -1,5 +1,5 @@
 // CInputProcessCombat::ProcessArmedMeleeInput(const CInputEvent& event, CProcessedInput& processed, const CThing& weapon) -- on a button press with a melee weapon: game action 8 queues the CREATURE_ABILITY_FLOURISH (when the hero's combat component allows a flourish) or CREATURE_ABILITY_BREAK_BLOCK ability event 0x16 with the button pressure; action 0xf queues event 0x20; action 0xc the CREATURE_ABILITY_ATTACK event 0x16; action 0xe event 0x22 with a true byte
-// Leaf: ProcessArmedMeleeInput
+// Leaf: ?ProcessArmedMeleeInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@ABVCThing@@@Z
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
@@ -82,7 +82,9 @@ public:
 };
 class CInputProcessCombat : public CInputProcessGameBase {
 public:
+    private:
     void ProcessArmedMeleeInput(const CInputEvent& event, CProcessedInput& processed, const CThing& weapon);
+    public:
 };
 
 void CInputProcessCombat::ProcessArmedMeleeInput(const CInputEvent& event, CProcessedInput& processed, const CThing& weapon)

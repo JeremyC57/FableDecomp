@@ -1,5 +1,5 @@
 // CThingCreatureBase::GetPrefferedCombatDistance() -- the combat type def's PreferredCombatDistance, or when that is unset a fifth of the way from the front-middle limit to the front-far limit
-// Leaf: ?GetPrefferedCombatDistance@CThingCreatureBase
+// Leaf: ?GetPrefferedCombatDistance@CThingCreatureBase@@QBEMXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00667C00, 298 bytes (+6 int3), `ret`, float in st(0).
 // Callees: CThingCreatureBase::GetPCombatTypeDef() const @ 0x00664D40 (CDefPointer by value, hidden result pointer; five
 //   calls), the def's virtual slot 1 (+4) at a zero count. Globals: 1e-4f 0x0129BA3C, 0.2f 0x012305A0.
@@ -53,10 +53,10 @@ template<class T> class CDefPointer { public:
 class CThingCreatureBase { public:
     CDefPointer<CCombatTypeDef> GetPCombatTypeDef() const;     // 0x00664D40
     const CCombatTypeDef* GetCombatTypeDef() const { return GetPCombatTypeDef(); }
-    float GetPrefferedCombatDistance();
+    float GetPrefferedCombatDistance() const;
 };
 
-float CThingCreatureBase::GetPrefferedCombatDistance()
+float CThingCreatureBase::GetPrefferedCombatDistance() const
 {
     if (GetCombatTypeDef()->PreferredCombatDistance < 1e-4f) {
         float nearLimit = GetCombatTypeDef()->FrontNearLimit;

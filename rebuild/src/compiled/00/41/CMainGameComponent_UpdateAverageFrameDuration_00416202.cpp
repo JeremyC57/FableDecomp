@@ -1,5 +1,5 @@
 // CMainGameComponent::UpdateAverageFrameDuration(double) -- feeds the last frame's duration to the frame-rate smoother
-// Leaf: UpdateAverageFrameDuration@CMainGameComponent
+// Leaf: ?UpdateAverageFrameDuration@CMainGameComponent@@IAEXN@Z
 // Retail: Fable.exe @ 0x00416202, 23 bytes, `ret 8`. Catalog label CEngineSubPrimitiveBase::operator_new is wrong: the body
 // calls CFrameRateSmoother::AddFrameTime(double) 0x0049B9E0 (Ego_r.pdb ?AddFrameTime@CFrameRateSmoother@@QAEXN@Z) on
 // this+0x16178, which is CMainGameComponent::FrameRateSmoother in Ego_r.pdb (no engine header). Only caller is
@@ -15,7 +15,9 @@ class CMainGameComponent {
 public:
     unsigned char      _pad00[0x16178];
     CFrameRateSmoother FrameRateSmoother;                // +0x16178
+    protected:
     void UpdateAverageFrameDuration(double time);
+    public:
 };
 void CMainGameComponent::UpdateAverageFrameDuration(double time)
 {

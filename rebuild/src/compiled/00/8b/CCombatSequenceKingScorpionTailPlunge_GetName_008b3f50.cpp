@@ -1,3 +1,4 @@
+// Leaf: ?GetName@CCombatSequence_KingScorpionTailPlunge@@UBE?AVCCharString@@XZ
 // CCombatSequence_KingScorpionTailPlunge::GetName  (retail 0x008b3f50)
 // virtual CCharString __fastcall GetName();  returns a CCharString built from a
 // string literal via CCharString(const char*, long).
@@ -13,11 +14,11 @@ public:
 
 class CCombatSequence_KingScorpionTailPlunge {
 public:
-    virtual CCharString GetName();
+    virtual CCharString GetName() const;
     int m_pad;
 };
 
-CCharString CCombatSequence_KingScorpionTailPlunge::GetName()
+CCharString CCombatSequence_KingScorpionTailPlunge::GetName() const
 {
     return CCharString("CombatSequence_KingScorpionTailPlunge", -1);
 }

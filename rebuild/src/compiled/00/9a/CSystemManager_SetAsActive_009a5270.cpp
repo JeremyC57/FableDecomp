@@ -1,3 +1,4 @@
+// Leaf: ?SetAsActive@CSystemManager@@AAEX_N@Z
 // CSystemManager::SetAsActive(bool active) -- record the application's activation: on the inactive -> active transition of an application that has been active before, flag a restore (Restore); then store the new state and mark the application as having been active
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A5270, length 60 bytes.
 // Callees: none.
@@ -16,7 +17,9 @@ class CSystemManager { public:
     bool          EverBeenActive;                  // +0xdc
     unsigned char _padDd[0xea - 0xdd];
     bool          Restore;                         // +0xea
+    private:
     void SetAsActive(bool active);
+    public:
 };
 
 void CSystemManager::SetAsActive(bool active)

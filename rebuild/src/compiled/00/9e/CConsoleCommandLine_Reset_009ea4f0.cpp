@@ -1,3 +1,4 @@
+// Leaf: ?Reset@CConsoleCommandLine@@AAEXXZ
 // CConsoleCommandLine::Reset() -- clear the typed entry, the user-entry flag and the cursor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009EA4F0, length 26 bytes.
 // Callees: CCharString::operator=(const char*) @ 0x0099EFE0 with the empty literal @ 0x0122D70E.
@@ -14,7 +15,9 @@ class CConsoleCommandLine { public:
     CCharString CurrentEntry;       // +0x04
     bool        UserEntry;          // +0x08
     long        CursorPosition;     // +0x0c
+    private:
     void Reset();
+    public:
 };
 
 void CConsoleCommandLine::Reset()

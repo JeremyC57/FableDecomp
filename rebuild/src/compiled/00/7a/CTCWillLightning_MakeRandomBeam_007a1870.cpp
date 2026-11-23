@@ -1,5 +1,5 @@
 // CTCWillLightning::MakeRandomBeam(bool) -- fire a temporary main beam from the caster in a random direction: rotate the caster's forward by random angles about its side and up axes, scale it to the area-effect range, offset it from the caster, activate the beam and keep it in the beam list
-// Leaf: ?MakeRandomBeam@CTCWillLightning
+// Leaf: ?MakeRandomBeam@CTCWillLightning@@AAEX_N@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A1870, 676 bytes (+ int3 padding), `ret 4` (the bool is unused).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; the caster physics' right-handed set (virtual +0x120);
@@ -208,7 +208,9 @@ class CTCWillLightning : public CTCBase { public:
         }
         return true;
     }
+    private:
     void MakeRandomBeam(bool unused);
+    public:
 };
 
 void CTCWillLightning::MakeRandomBeam(bool unused)

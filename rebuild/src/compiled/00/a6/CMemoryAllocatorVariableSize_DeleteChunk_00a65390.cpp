@@ -1,5 +1,5 @@
 // CMemoryAllocatorVariableSize::DeleteChunk(CMemoryAreaChunk* chunk) -- take every free area of the chunk out of the size tree, unlink the chunk from the allocator's chunk list and give its pages back to the OS (unless demand paged), sampling GlobalMemoryStatus before and after
-// Leaf: DeleteChunk
+// Leaf: ?DeleteChunk@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryAreaChunk@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A65390, 126 bytes, `ret 4` (PDB ?DeleteChunk@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryAreaChunk@1@@Z).
 // Callees: CMemoryAllocatorVariableSize::RemoveFromTree(CMemoryArea*) @ 0x00A64EF0; KERNEL32 GlobalMemoryStatus
 //   (IAT 0x0143FE20, twice through one register) and VirtualFree (IAT 0x0143FD40, MEM_RELEASE 0x8000).
@@ -69,7 +69,9 @@ public:
     CMemoryArea*      PTreeRoot;                        protected: // +0xc34
 
     void RemoveFromTree(CMemoryArea* area); public:             // 0x00A64EF0
+    protected:
     void DeleteChunk(CMemoryAreaChunk* chunk);
+    public:
 };
 
 void CMemoryAllocatorVariableSize::DeleteChunk(CMemoryAreaChunk* chunk)

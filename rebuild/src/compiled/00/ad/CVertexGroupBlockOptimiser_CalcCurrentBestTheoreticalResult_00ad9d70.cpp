@@ -1,5 +1,5 @@
 // CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResult() -- recompute the block segments, then the lower bound on the block count: the existing blocks, the full blocks each segment needs, and the minimum packing of the segment remainders
-// Leaf: CalcCurrentBestTheoreticalResult
+// Leaf: ?CalcCurrentBestTheoreticalResult@CVertexGroupBlockOptimiser@@AAEKXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD9D70, 404 bytes + int3, plain `ret`, returns unsigned long.
 // The catalog row says CountOptimisedBlocks; the PDB's ?CalcCurrentBestTheoreticalResult@CVertexGroupBlockOptimiser@@AAEKXZ
 // is the no-argument unsigned long method that calls CalcCurrentBlockSegments and CalcMinimumBlocks.
@@ -186,7 +186,9 @@ public:
     void CalcCurrentBlockSegments();                           // 0x00AD9B20
     unsigned long CalcMinimumBlocks(const CRemainderArray& sizes, unsigned long& groupCount, CBoolArray& available,
                                     unsigned long count, unsigned long start);   // 0x00AD89B0
+    private:
     unsigned long CalcCurrentBestTheoreticalResult();
+    public:
 };
 
 unsigned long CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResult()

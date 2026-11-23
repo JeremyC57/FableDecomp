@@ -1,5 +1,5 @@
 // CThingManager::RuntimeSaveGameHero(bool binary) -- saves the living hero into the game-persistent slot 1 of the runtime persistence, as a compressed binary stream or as script text (the other form is cleared)
-// Leaf: ?RuntimeSaveGameHero@CThingManager@@
+// Leaf: ?RuntimeSaveGameHero@CThingManager@@AAEX_N@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00523B40, 423 bytes (0x1A7 + int3 padding), thiscall `ret 4`. One caller
@@ -213,7 +213,9 @@ public:
                               std::vector<CCharString>& names);                       // 0x00521EB0
     void SaveEntitiesBinary(CMemoryDataOutputStream& stream, long mode, const std::vector<CThing*>& things,
                             std::vector<CCharString>& names);                         // 0x00522160
+    private:
     void RuntimeSaveGameHero(bool binary);
+    public:
 };
 
 // Same-TU stand-ins for the two savers (0x00521EB0 / 0x00522160 are this TU's members): they read the thing vector,

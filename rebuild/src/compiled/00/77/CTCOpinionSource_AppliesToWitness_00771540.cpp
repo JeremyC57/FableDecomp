@@ -1,3 +1,4 @@
+// Leaf: ?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z
 // CTCOpinionSource::AppliesToWitness(const CThingAICreature* witness) const -- does this opinion source affect the witness: no witness never, no faction restriction always, otherwise only witnesses with an enemy component whose faction is allied with the restricting faction (inverted by RestrictToFactionIsReversed)
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -89,7 +90,9 @@ class CTCOpinionSource { public:
     unsigned char _pad08[0x20 - 0x08];
     CDefPointer<const CFactionDef> RestrictToFactionAndAllies;   // +0x20
     bool          RestrictToFactionIsReversed;          // +0x24
+    private:
     bool AppliesToWitness(const CThingAICreature* witness) const;
+    public:
 };
 
 bool CTCOpinionSource::AppliesToWitness(const CThingAICreature* witness) const
