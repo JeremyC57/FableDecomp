@@ -2,7 +2,7 @@
 """Scripted T2 route: a landed row whose own compiled symbol differs from the PDB symbol only in the member's access letter and / or its
 `const` (naming tracker tier T2, fix `access`; docs/journal/2026-11/2026-11-23_naming_remainder.md). Generate-and-verify; writes candidate
 sources only under <work>.
-usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr]
+usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr] [--wide]
 Edits, in the row's own local class model only (a declaration in a shared header is skipped: that is a header opt-in):
   - access: the declaration statement is wrapped as `<new>:` ... `<old>:`, so no member moves and no vtable slot changes;
   - const: `const` is added to or removed from the declaration and from the out-of-line definition `Class::Method(...)`.
@@ -35,6 +35,48 @@ catname = collections.defaultdict(set)
 for l in open("rebuild/oracles/auto-re-candidates.tsv").read().splitlines()[1:]:
     q = l.split("\t"); catname[q[1]].add(q[0].lower())
 rows = [l.split("\t") for l in open("rebuild/candidates/manual/naming/status/OPEN.tsv").read().splitlines()[1:]]
+if "--wide" in argv:
+    # finish plan route 1 widened: any landed row whose trusted measured self symbol is not a PDB name and differs from exactly ONE PDB
+    # symbol of the same `?name@scope@@` only in access / const. Identity: a virtual target needs the RTTI vftable placement to name that
+    # symbol at this address; a non-virtual one needs the symbol in BOTH PDB name sets. A row with a table binder on its old spelling is a
+    # unit (its binders move with it) and is skipped here.
+    def nameset(fn):
+        return {r[1] for r in ns.read_tsv(ns.P("ghidra_out", fn)) if len(r) > 1}
+    egor, fwin = nameset("egor_pdb_names.tsv"), nameset("fablewin_pdb_names.tsv"); pdb = egor | fwin
+    byprefix = collections.defaultdict(list)
+    for s in pdb:
+        m = SPLIT.match(s)
+        if m: byprefix[m.group(1)].append(s)
+    rtti = {}
+    for l in open("ghidra_out/labels_rtti_port.tsv", encoding="utf-8", errors="replace"):
+        q = l.rstrip("\n").split("\t")
+        if len(q) > 1: rtti[q[0].lower()] = q[1]
+    oldbind = collections.defaultdict(set)
+    for l in open("rebuild/oracles/reloc_bindings.tsv", encoding="utf-8", errors="replace").read().splitlines()[1:]:
+        q = l.split("\t")
+        if len(q) > 1: oldbind[q[1].lower()].add(q[0])
+    def near(s, g):
+        a1, b1 = SPLIT.match(s), SPLIT.match(g)
+        if not (a1 and b1 and a1.group(1) == b1.group(1)): return False
+        la, lb = a1.group(3), b1.group(3)
+        if la not in ACC or lb not in ACC or ACC[la][1] != ACC[lb][1]: return False
+        ra, rb = a1.group(4), b1.group(4)
+        return ra == rb or (ACC[la][1] != "s" and ra[1:] == rb[1:] and {ra[:1], rb[:1]} == {"A", "B"})
+    wide, why = [], collections.Counter()
+    for a in sorted(ent):
+        s = selfsym.get(a)
+        if not s or s in pdb: continue
+        m = SPLIT.match(s)
+        if not m: continue
+        g = [x for x in byprefix.get(m.group(1), []) if x != s and near(s, x)]
+        if len(g) != 1: why["no single near PDB symbol" if not g else "several near PDB symbols"] += 1; continue
+        g = g[0]; virt = ACC[SPLIT.match(g).group(3)][1] == "v"
+        if virt and rtti.get(a) != g: why["virtual without RTTI agreement"] += 1; continue
+        if not virt and not (g in egor and g in fwin): why["non-virtual not in both PDB sets"] += 1; continue
+        if s in oldbind.get(a, set()): why["a table binder uses the old spelling (unit)"] += 1; continue
+        wide.append([a, "", "T2", "access", "", "1", g, s])
+    print("wide candidates", len(wide), dict(why), flush=True)
+    rows = wide
 res, head, new = [], [], []
 def block_end(t, i):
     """index just past the `}` matching the `{` at t[i-1]"""
