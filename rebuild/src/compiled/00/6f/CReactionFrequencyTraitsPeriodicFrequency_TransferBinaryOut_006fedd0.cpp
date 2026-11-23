@@ -6,7 +6,8 @@
 // LastCutoffFrame (+0x10) and LastHappenedFrame (+0x1c) are runtime state and are not written.
 // Shape: plain member pushes in declaration order with the stream reference kept in edi; the method is attached
 // through a derived shell because the generated header is a plain layout struct.
-// Leaf: TransferBinaryOut
+// Leaf: ?TransferBinaryOut@CReactionFrequencyTraits_PeriodicFrequency@@UBEXAAVCDataOutputStream@@@Z
+#define FABLE_RETAIL_REACTIONFREQUENCYTRAITS_CLASS_CHAIN_PASS24   // alias route: engine/CReactionFrequencyTraits_PeriodicFrequency.h declares TransferBinaryOut under this class-model switch
 #include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"
 
 class CDataOutputStream { public:
@@ -15,11 +16,8 @@ public:
     void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
-struct CReactionFrequencyTraits_PeriodicFrequency_TransferBinaryOut : CReactionFrequencyTraits_PeriodicFrequency {
-    void TransferBinaryOut(CDataOutputStream& stream) const;
-};
 
-void CReactionFrequencyTraits_PeriodicFrequency_TransferBinaryOut::TransferBinaryOut(CDataOutputStream& stream) const
+void CReactionFrequencyTraits_PeriodicFrequency::TransferBinaryOut(CDataOutputStream& stream) const
 {
     stream.WriteFloat(LowFreqPerMin);
     stream.WriteFloat(HighLowFreqInterval);

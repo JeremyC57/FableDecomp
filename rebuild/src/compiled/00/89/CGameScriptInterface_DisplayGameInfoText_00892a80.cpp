@@ -1,3 +1,4 @@
+// Leaf: ?DisplayGameInfoText@CGameScriptInterface@@UBEXABVCWideString@@@Z
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
 // CGameScriptInterface::DisplayGameInfoText(const CWideString&) const -- show wide game-info text through the player GUI's subtitle
 //   renderer, with four empty substitution strings
@@ -10,6 +11,7 @@
 //   NPlayerGui::CDrawSpiritScores::Draw 0x00644424). CGameScriptInterface_Methods is the lane's method carrier for a
 //   generated data-only header, so the virtual is defined non-virtually here (the body is identical).
 #include <stddef.h>
+#define FABLE_RETAIL_NSCRIPT   // alias route: engine/CGameScriptInterface.h declares DisplayGameInfoText under this class-model switch
 #include "engine/CGameScriptInterface.h"
 #include "engine/CPlayerGui.h"
 class CWideString {
@@ -24,9 +26,9 @@ class CSubtitleRenderer { public: void SetText(CFontBank const&a0, CWideString c
 struct CMainGameComponentFontView { unsigned char _prefix[0x1614c]; CFontBank* Font; };   // +0x1614C
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void DisplayGameInfoText(const CWideString& text) const;
+
 };
-void CGameScriptInterface_Methods::DisplayGameInfoText(const CWideString& text) const
+void CGameScriptInterface::DisplayGameInfoText(const CWideString& text) const
 {
     // the four empty substitutions are named locals: retail builds all four before pushing any argument
     CWideString d(L"");

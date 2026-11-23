@@ -1,3 +1,5 @@
+// Leaf: ?CacheMusicSet@CGameScriptInterface@@UBEXW4EMusicSetType@@@Z
+#define FABLE_RETAIL_NSCRIPT   // alias route: engine/CGameScriptInterface.h declares CacheMusicSet under this class-model switch
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum EMusicSetType { EMS_A };
 
@@ -12,11 +14,8 @@ class CWorld
     CMusicTarget* target_006C;
 };
 
-struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void CacheMusicSet(EMusicSetType t) const;
-};
 
-void CGameScriptInterface_Methods::CacheMusicSet(EMusicSetType t) const
+void CGameScriptInterface::CacheMusicSet(EMusicSetType t) const
 {
     World->target_006C->CacheMusicSet(t);
 }

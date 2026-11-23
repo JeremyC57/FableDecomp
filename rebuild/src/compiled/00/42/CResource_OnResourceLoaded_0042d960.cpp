@@ -1,9 +1,7 @@
 // Empty virtual hook (CGameComponent::Init and friends): __fastcall this=ecx, no args,
-// Leaf: ?OnResourceLoaded@CResource_Methods@@QAEXXZ
+// Leaf: ?OnResourceLoaded@CResource@@UAEXXZ
 // no cleanup -> a bare `ret`.
+#define FABLE_RETAIL_DEF_CLASS_BASE   // alias route: engine/CResource.h declares OnResourceLoaded under this class-model switch
 #include "engine/CResource.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CResource_Methods : CResource {
-    void OnResourceLoaded();
-};
-void CResource_Methods::OnResourceLoaded() {}
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?OnResourceLoaded@CResource@@UAEXXZ); evidence: RTTI vtable slot + PDB name set.
+void CResource::OnResourceLoaded() {}
+// Was defined on a stand-in alias class (owner rule 2026-11-05); now the real member, through the class-model switch above (alias route, 2026-11-23).

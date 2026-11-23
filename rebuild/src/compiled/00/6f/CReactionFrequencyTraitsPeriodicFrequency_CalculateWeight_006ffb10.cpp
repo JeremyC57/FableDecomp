@@ -1,5 +1,5 @@
 // CReactionFrequencyTraits_PeriodicFrequency::CalculateWeight(const CThingAICreature*) -- the reaction's weight: roll the cutoff window forward, ramp the target frequency from LowFreqPerMin by the cubed ramp fraction, then weigh how far the observed frequency lags it, clamped to [0, 1]
-// Leaf: CalculateWeight
+// Leaf: ?CalculateWeight@CReactionFrequencyTraits_PeriodicFrequency@@UAEMPBVCThingAICreature@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FFB10, length 279 bytes, `ret 4` (vtable slot; float in st0)
 // (PDB ?CalculateWeight@CReactionFrequencyTraits_PeriodicFrequency@@UAEMPBVCThingAICreature@@@Z).
 // Callees: CWorld::GetWorldFrame 0x0049D870 (static). Constants: 2^32 0x0122DCB4 (unsigned-to-float fix-up), 0.0f 0x0122DEDC,
@@ -9,6 +9,7 @@
 // Shape: the landed ControlledCount twin 0x006FFE10: unsigned frame counts converted through `fild` + 2^32, both clamps the
 // inline reference Clamp over 0.0f/1.0f frame temporaries (`lea eax,[esp+N] ; fld [eax]`), the ramp fraction cubed in statement order
 // (`f = t * t; f *= t;`, a single expression is reassociated onto the member multiply), the second clamp's argument an unnamed temporary.
+#define FABLE_RETAIL_REACTIONFREQUENCYTRAITS_CLASS_CHAIN_PASS24   // alias route: engine/CReactionFrequencyTraits_PeriodicFrequency.h declares CalculateWeight under this class-model switch
 #include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"
 
 class CThingAICreature;
@@ -26,11 +27,8 @@ inline const float& Clamp(const float& v, const float& lo, const float& hi)
     return v;
 }
 
-struct CReactionFrequencyTraits_PeriodicFrequency_Methods : CReactionFrequencyTraits_PeriodicFrequency {
-    float CalculateWeight(const CThingAICreature* creature);
-};
 
-float CReactionFrequencyTraits_PeriodicFrequency_Methods::CalculateWeight(const CThingAICreature* creature)
+float CReactionFrequencyTraits_PeriodicFrequency::CalculateWeight(const CThingAICreature* creature)
 {
     unsigned long frame = CWorld::GetFrame();
     if (frame - LastCutoffFrame > CutoffIntervalFrames)

@@ -1,3 +1,5 @@
+// Leaf: ?OverrideMusic@CGameScriptInterface@@UBEXW4EMusicSetType@@_N1@Z
+#define FABLE_RETAIL_NSCRIPT   // alias route: engine/CGameScriptInterface.h declares OverrideMusic under this class-model switch
 #include "engine/CGameScriptInterface.h"
 
 // Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CGSIOverrideMusicEmitter model is gone and its slots carry the header names (Stop -> SetGainFader slot 46).
@@ -13,11 +15,8 @@ struct CGSIOverrideMusicEvent {
 };
 struct CGSIOverrideMusicInner { unsigned char pad00[0x6c]; CGSIOverrideMusicEvent* event; };
 #include "engine/CASoundManager.h"
-struct CGameScriptInterface_OverrideMusicMethods : CGameScriptInterface {
-    virtual void OverrideMusic(EMusicSetType musicSetType, bool enabled, bool forcePlay) const;
-};
 
-void CGameScriptInterface_OverrideMusicMethods::OverrideMusic(
+void CGameScriptInterface::OverrideMusic(
     EMusicSetType musicSetType, bool enabled, bool forcePlay) const {
     const CGameScriptInterface* scriptInterface =
         reinterpret_cast<const CGameScriptInterface*>(this);

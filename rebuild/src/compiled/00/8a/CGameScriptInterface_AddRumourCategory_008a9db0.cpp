@@ -1,3 +1,5 @@
+// Leaf: ?AddRumourCategory@CGameScriptInterface@@UBEXABVCCharString@@@Z
+#define FABLE_RETAIL_NSCRIPT   // alias route: engine/CGameScriptInterface.h declares AddRumourCategory under this class-model switch
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString { public:
     unsigned int value;
@@ -6,11 +8,8 @@ class CCharString { public:
 
 extern void __stdcall CGameScriptInterface_FindOrCreateRumourCategory(CCharString category);
 
-struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void AddRumourCategory(const CCharString& category) const;
-};
 
-void CGameScriptInterface_Methods::AddRumourCategory(const CCharString& category) const
+void CGameScriptInterface::AddRumourCategory(const CCharString& category) const
 {
     CGameScriptInterface_FindOrCreateRumourCategory(category);
 }

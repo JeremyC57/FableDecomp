@@ -1,8 +1,6 @@
 // Constant-false predicate: `xor al,al; ret`. __fastcall this=ecx, no args.
-// Leaf: ?IsResourceLoaded@CResource_Methods@@QAE_NXZ
+// Leaf: ?IsResourceLoaded@CResource@@UBE_NXZ
+#define FABLE_RETAIL_DEF_CLASS_BASE   // alias route: engine/CResource.h declares IsResourceLoaded under this class-model switch
 #include "engine/CResource.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CResource_Methods : CResource {
-    bool IsResourceLoaded();
-};
-bool CResource_Methods::IsResourceLoaded() { return false; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?IsResourceLoaded@CResource@@UBE_NXZ); evidence: RTTI vtable slot + PDB name set.
+bool CResource::IsResourceLoaded() const { return false; }
+// Was defined on a stand-in alias class (owner rule 2026-11-05); now the real member, through the class-model switch above (alias route, 2026-11-23).

@@ -9,8 +9,9 @@
 // (64-bit position range check, chunk memcpy fast path, overflow reader); every read lands in the dead
 // stream-argument slot and is then stored to its member. Each read is a non-template __forceinline ReadValue(T&)
 // (local + Read + store), as in the siblings; the bool is read as a byte and normalised (`test al,al; setne`).
-// Leaf: TransferBinaryIn@CReactionFrequencyTraits_ControlledCount
+// Leaf: ?TransferBinaryIn@CReactionFrequencyTraits_ControlledCount@@UAEXAAVCMemoryDataInputStream@@@Z
 #include "fable_compiler.h"
+#define FABLE_RETAIL_REACTIONFREQUENCYTRAITS_CLASS_CHAIN_PASS24   // alias route: engine/CReactionFrequencyTraits_ControlledCount.h declares TransferBinaryIn under this class-model switch
 #include "engine/CReactionFrequencyTraits_ControlledCount.h"
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -46,11 +47,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     FABLE_FORCEINLINE void ReadValue(unsigned long& out) { unsigned long value; Read(&value, sizeof(value)); out = value; }
 };
 
-struct CReactionFrequencyTraits_ControlledCount_Methods : CReactionFrequencyTraits_ControlledCount {
-    void TransferBinaryIn(CMemoryDataInputStream& stream);
-};
 
-void CReactionFrequencyTraits_ControlledCount_Methods::TransferBinaryIn(CMemoryDataInputStream& stream)
+void CReactionFrequencyTraits_ControlledCount::TransferBinaryIn(CMemoryDataInputStream& stream)
 {
     stream.ReadValue(AllowIndividualRepeats);
     stream.ReadValue(MinGapFrames);

@@ -1,6 +1,8 @@
+// Leaf: ?GetTextString@CGameScriptInterface@@UBE?AVCWideString@@ABVCCharString@@@Z
 // CGameScriptInterface_Methods::GetTextString @ 0x008913a0
 // Returns CWideString by value; forwards to a member helper obtained from a global.
 
+#define FABLE_RETAIL_NSCRIPT   // alias route: engine/CGameScriptInterface.h declares GetTextString under this class-model switch
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString { public: char* p; };
 class CWideString { public: unsigned short* p; };
@@ -13,7 +15,7 @@ class CDataBank { public:
 }
 
 struct CGameScriptInterface_Methods : CGameScriptInterface {
-    CWideString GetTextString(CCharString const& str);
+
 };
 
 // global object; +0x14 = Sub*
@@ -23,7 +25,7 @@ struct CGameScriptInterface_Methods : CGameScriptInterface {
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
 #include "engine/CMainGameComponent.h"
 
-CWideString CGameScriptInterface_Methods::GetTextString(CCharString const& str)
+CWideString CGameScriptInterface::GetTextString(CCharString const& str) const
 {
     const NGameText::CDataBank* bank = &CMainGameComponent::Get()->GetTextBank();
     return bank->GetTextBySymbol(str);

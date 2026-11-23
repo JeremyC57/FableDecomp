@@ -1,3 +1,5 @@
+// Leaf: ?StopOverrideMusic@CGameScriptInterface@@UBEX_N@Z
+#define FABLE_RETAIL_NSCRIPT   // alias route: engine/CGameScriptInterface.h declares StopOverrideMusic under this class-model switch
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CGSIStopMusicCodeSection
 // Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CGSIStopMusicEmitter model is gone and its slots carry the header names (Stop -> SetGainFader slot 46).
@@ -21,14 +23,11 @@ class CWorld
 
 #include "engine/CASoundManager.h"
 
-struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void StopOverrideMusic(bool enabled) const;
-};
 
 extern void __fastcall CGSIStopMusic_StopEvent(CGSIStopMusicEvent* event);
 extern void __fastcall CGSIStopMusic_ResumeEvent(CGSIStopMusicEvent* event);
 
-void CGameScriptInterface_Methods::StopOverrideMusic(bool enabled) const
+void CGameScriptInterface::StopOverrideMusic(bool enabled) const
 {
     if (enabled)
     {

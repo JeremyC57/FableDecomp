@@ -7,7 +7,8 @@
 // Shape: the bool widened through a cleared eax (`xor eax,eax ; mov al,[esi+4]`), the stream reference kept in
 // edi across the six calls; the method is attached through a derived shell because the generated header is a
 // plain layout struct.
-// Leaf: TransferBinaryOut
+// Leaf: ?TransferBinaryOut@CReactionFrequencyTraits_ControlledCount@@UBEXAAVCDataOutputStream@@@Z
+#define FABLE_RETAIL_REACTIONFREQUENCYTRAITS_CLASS_CHAIN_PASS24   // alias route: engine/CReactionFrequencyTraits_ControlledCount.h declares TransferBinaryOut under this class-model switch
 #include "engine/CReactionFrequencyTraits_ControlledCount.h"
 
 class CDataOutputStream { public:
@@ -17,11 +18,8 @@ public:
     void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
-struct CReactionFrequencyTraits_ControlledCount_TransferBinaryOut : CReactionFrequencyTraits_ControlledCount {
-    void TransferBinaryOut(CDataOutputStream& stream) const;
-};
 
-void CReactionFrequencyTraits_ControlledCount_TransferBinaryOut::TransferBinaryOut(CDataOutputStream& stream) const
+void CReactionFrequencyTraits_ControlledCount::TransferBinaryOut(CDataOutputStream& stream) const
 {
     stream.WriteEBOOL(AllowIndividualRepeats);
     stream.WriteULONG(MinGapFrames);

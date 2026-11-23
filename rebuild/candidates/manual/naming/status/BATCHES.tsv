@@ -2390,12 +2390,12 @@ T3	standin	CGameScriptThingMethods	37	37		008d04e0 008d0610 008d0730 008d0c50 00
 T3	standin	vector	36	38		004a96a0 004b9620 004d1800 00514350 0052bff0 0056d850 005e1500 0078b300 00807830 00841820 0084b6e0 008d61a0 008d62b0 0091fe50 00a03780 00a17190 00a17270 00a44b40 00a8ddc0 00ad3b20 00ad69b0 00ae5c60 00ae6c70 00ae6d50 00ae6f90 00b97cb0 00c28dc0 00c29840 01211880 01211889 012118a0 012118a9 01213450 01213459 01213470 01213479
 T3	standin	CActiveEntityScript	33	33	engine/CActiveEntityScript.h	012c3578 012d3978 012d3fe0 012d4428 012d47c0 012d4f84 012d5114 012d5b70 012d6c44 012d6e5c 012d7844 012d95b0 012d9f9c 012daa38 012db50c 012dc584 012dca80 012dcd2c 012ddc04 012ddf08 012de350 012de5e4 012deaac 012dee4c 012df7d4 012f6a8c 012f6bb8 012f6c3c 012f6e60 012f7038 012f72a8 012f7354 012f8178
 T3	standin	CEntityScriptBinding	33	33	engine/CEntityScriptBinding.h	00ce0ef0 00d7c2e0 00d7fab0 00d82210 00d844a0 00d89580 00d8a960 00d915b0 00d9d930 00d9ffd0 00da8320 00db8520 00dc0170 00dc8700 00dcf790 00dd9300 00ddc7d0 00ddeee0 00dec5b0 00def220 00df3550 00df4a50 00df99f0 00dfc100 00e05170 00efad80 00efb9c0 00efbf80 00efda90 00eff5c0 00f01150 00f01d20 00f09b10
-T3	standin	CGameScriptInterface_Methods	29	29		006e73b0 006e73e0 006e7d30 0088de90 0088ded0 0088df20 0088df80 0088dfa0 0088dfd0 0088e000 0088e520 0088e9e0 0088ec60 0088f810 00890b70 00890b90 008912a0 00891310 00891320 008913a0 00891680 00891880 008922c0 008929d0 00892a80 00892ec0 00893ec0 00896e60 008a9db0
 T3	standin	CMorphableNode_00c185b0	23	23		00c17e60 00c17f30 00c18000 00c180d0 00c18270 00c18340 00c18410 00c186d0 00c187a0 01211f59 01211f6b 01211f7d 01211f8f 01211fb3 01211fc5 01211fd7 01211ffb 01212003 0121200e 01212019 0121202b 0121203d 012b2dec
 T3	standin	CGameScriptInterfaceMethods	22	22		00894aa0 00895ed0 00896a30 00896d20 00897630 008986d0 00898840 00898940 0089b110 0089c560 0089cd70 0089f910 0089f9e0 0089fbb0 008a03f0 008a08a0 008a0a20 008a0b10 008a7e00 008a7f60 008a9020 008a99f0
 T3	standin	CHandleBasedMemoryPool_012b4098	20	23		00c27ef0 00c28080 00c280e0 00c28200 00c28220 00c283a0 00c283c0 00c283e0 00c28400 00c28540 00c28560 00c28580 00c28640 00c286f0 00c28870 00c28a80 00c28ae0 00c28b80 012134d1 012134e3
 T3	standin	CScriptGameResourceObjectScriptedThing_Methods	20	20		009037e0 00903ca0 00903d60 009040f0 009041a0 00904310 00904380 00904430 009046a0 00904780 00904860 00904940 009049f0 00904af0 00904bd0 00904cd0 00904e20 00904ee0 00904f60 00905320
 T3	standin	PKCOneShotQueue	20	20		00c39d50 00c39e20 00c39f30 00c3a010 00c3a130 00c3a210 00c3a330 00c3a420 00c3a540 00c3a610 01214bd0 01214bf0 01214c10 01214c30 01214c50 01214c70 01214c90 01214cb0 01214cd0 01214cf0
+T3	standin	CGameScriptInterface_Methods	18	18		006e73b0 006e73e0 006e7d30 0088de90 0088ded0 0088df20 0088df80 0088dfa0 0088dfd0 0088e000 0088e520 0088e9e0 0088ec60 0088f810 00891320 00892ec0 00893ec0 00896e60
 T3	standin	CCodaFrameStreamer_00c49650	17	17		00c49610 00c49650 00c49820 01215b9a 01215ba2 01215bad 01215bb8 01215bc3 01215bcb 01215bdd 01215be5 01215bf0 01215bfb 01215c06 01215c0e 01215c19 012b8138
 T3	standin	swap	15	15		004c1e90 004c2b60 004cf400 00565b60 00758350 00758860 008199b0 0081a900 009928a0 00992a90 00a312e0 00a32390 00a3fd60 00adaa00 00adaf60
 T3	standin	CScriptThing_Methods	14	14		004aa940 004aa9e0 004aac20 004aac40 004aac60 004aaca0 004aad20 004aad40 004aad60 004aad80 004aaee0 004aaf40 004aafe0 008aae40
@@ -2427,7 +2427,6 @@ T3	standin	CTCDPhysicalObstruction_00c2a8c0	7	7		012135cf 012135d7 012135e2 0121
 T3	standin	CTCDPhysicalObstruction_00c2a9b0	7	7		0121361a 01213625 01213630 0121363b 01213643 0121364b 01213653
 T3	standin	CVtable_012b28d8	7	7		00c154f0 00c155f0 00c15620 00c15640 00c159a0 01211b10 01211bb0
 T3	standin	CVtable_012b8ed4	7	7		00c57460 00c57490 00c57800 00c579c0 00c57af0 00c57b60 00c57d80
-T3	standin	CWADFile_Methods	7	7		00a39bb0 00a39bf0 00a39c00 00a39c20 00a39c40 00a39c70 00a39de0
 T3	standin	list	7	7		004405f0 004ac480 00685620 0092b250 0092b260 0092b2b0 00a219a0
 T3	standin	pair	7	7		004cbbb0 005f82bc 006a2bd0 007ca520 008828d0 009aa440 00cd237a
 T3	standin	CConsole_Retail	6	6		009ea5a0 009ea660 009ea980 009ea9e0 009eab80 009eb2c0
@@ -2442,12 +2441,10 @@ T3	standin	CWorldMap_Methods	6	6		004fb280 004fb2e0 004fc130 004fc150 004ff8a0 0
 T3	standin	PKCTRRedblackTree_00c18b20	6	6		00c19010 00c19080 00c19150 00c19180 012120d8 012120e0
 T3	standin	allocator	6	6		0043d100 0044ebe4 004d6ed0 00565030 00736f50 00754d00
 T3	standin	CBankFile_Retail	5	6		009cbd90 009cbf90 009cc4c0 009cd330 009d0380
-T3	standin	CDefClassBase_Methods	5	5		0042da20 0042da30 0042da40 0042da80 0042da90
 T3	standin	CDefPointer	5	5	engine/CDefPointer.h	0057f9bf 00592844 005c07ae 005f7e99 006551ff
 T3	standin	CEngineSkyRenderer_Methods	5	4		00b63010 00b63260 00b63c00 00b640e0 00b662f0
 T3	standin	CEngine_Methods	5	5		00b23a10 00b23a50 00b23a70 00b23b50 00b23b90
 T3	standin	CRenderManagerCore_Methods	5	5		00a0ab50 00a0ae10 00a0b1e0 00a0b280 00a0b3e0
-T3	standin	CResource_Methods	5	5		0042d940 0042d950 0042d960 0042d970 0042d980
 T3	standin	CTCCombat_Methods	5	5		00733410 00733910 00734050 00736ae0 00739cf0
 T3	standin	CTCInventoryBase_Retail	5	5		004e7d4d 005bca05 005bd5db 005bdb68 005bdc77
 T3	standin	CTCStockItem_Methods	5	5		007f4e80 007f4ed0 007f4f40 007f5050 007f5070
@@ -2458,6 +2455,7 @@ T3	standin	CVtable_012b34e0	5	5		00c1f930 00c1f940 00c1f950 01212740 012b34e0
 T3	standin	CVtable_012b3504	5	5		00c1f9f0 00c1fa00 00c1fa10 01212760 012b3504
 T3	standin	CVtable_012b4f60	5	5		00c33070 00c33080 00c33090 00c330a0 012b4f60
 T3	standin	CVtable_012bedb8	5	5		00c6e780 00c6eba0 00c6ec50 00c6ec80 012bedb8
+T3	standin	CWADFile_Methods	5	5		00a39bb0 00a39bf0 00a39c20 00a39c40 00a39c70
 T3	standin	GetAllThings	5	5		00516200 0062e840 006c1dd0 007bb660 008093d0
 T3	standin	PKCTRRedblackTree	5	5		00c18e20 00c19340 01212080 01212088 012120c6
 T3	standin	SExpSpendUndo_00c3d7d0	5	5		01214fa0 01214fa8 01214fb3 01214fbe 012b5870
@@ -2466,6 +2464,7 @@ T3	standin	CAudioObject	4	4		00c430e0 00c431a0 00c43230 00c43350
 T3	standin	CClothingSuitMap_00c19d90	4	4		00c19d90 012121b4 012121bc 012121c4
 T3	standin	CComponent_Retail	4	4		0052ec20 0052f3e0 00530460 005309b0
 T3	standin	CCreatureActionBase_Methods	4	4		006923a0 00692400 00692590 006926f0
+T3	standin	CDefClassBase_Methods	4	4		0042da20 0042da30 0042da40 0042da90
 T3	standin	CDefaultAllocator_00c166f0	4	4		00c166f0 00c16700 00c16720 012b2ab8
 T3	standin	CEnginePrimitiveTypeInfoDerived_00ca4f40	4	1		012bf388 012bf3ac 012bf3c0 012bf408
 T3	standin	CGroup	4	4		00c29d00 00c29d30 00c29d60 00c29d90
@@ -2734,7 +2733,6 @@ T3	standin	CEditControlCentre_00caff70	2	2		00caff70 01217360
 T3	standin	CEngineInternalPrimitive2DAnimatedMesh_Methods	2	2		00bcea40 00bcfde0
 T3	standin	CEnginePrimitiveManagerParticleMeshGroup_Methods	2	2		00bc2470 00bc3410
 T3	standin	CEnginePrimitiveOcclusionGroupManager_Methods	2	2		00bacbc0 00bacc50
-T3	standin	CEnginePrimitiveRenderer_Methods	2	3		00b32100 00b38cb0
 T3	standin	CEngineScreenEffectOutlineGlow_00c1e850	2	2		01212660 0121266b
 T3	standin	CEngineScreenEffectRadialBlurRenderer_Methods	2	2		00b5bd00 00b5ead0
 T3	standin	CEngineShadowRenderer_Methods	2	2		00b4ba60 00b4f510
@@ -2793,7 +2791,6 @@ T3	standin	CNavNavigableLeafNode_Methods	2	2		00a75a90 00a75b50
 T3	standin	CNavSwitchableLeafNode_Methods	2	2		00a75be0 00a84e20
 T3	standin	CNavigationTask_012b3fdc	2	1		00c266e0 012b3fdc
 T3	standin	CNavigatorAStar	2	2	engine/CNavigatorAStar.h	00a1a1d0 00a1aec0
-T3	standin	CNavigatorBase_Methods	2	2		00a19ad0 00a19ae0
 T3	standin	CObserved_00c113b0	2	2		00c113b0 01211518
 T3	standin	CObserved_00c11430	2	2		00c11430 0121152a
 T3	standin	CPair_00c1d780	2	2		00c1d780 012124b0
@@ -2805,7 +2802,6 @@ T3	standin	CPair_00c387e0	2	2		00c387e0 01214830
 T3	standin	CPair_00c487b0	2	2		00c487b0 012157d0
 T3	standin	CPair_00c49a70	2	2		00c49a70 01215aa0
 T3	standin	CPair_00c4bab0	2	2		00c4bab0 01215cb0
-T3	standin	CParentDefClassBase_Methods	2	2		004303c0 004303d0
 T3	standin	CPart2C_00c38b20	2	3		00c39bf0 01214b50
 T3	standin	CPart60_00c38b20	2	3		00c39c40 01214b70
 T3	standin	CPart94_00c38b20	2	3		00c39c90 01214b90
@@ -2826,9 +2822,6 @@ T3	standin	CPhysicsMeshObject_00c14970	2	2		00c14970 01211952
 T3	standin	CPlayer_Methods	2	2		004496b0 004874a0
 T3	standin	CPointerArray_00c324f0	2	2		00c324f0 012141fa
 T3	standin	CPointerArray_00c327b0	2	2		00c327b0 01214230
-T3	standin	CReactionFrequencyTraits_ControlledCount_Methods	2	2		006ffe10 006fff00
-T3	standin	CReactionFrequencyTraits_LinearTime_Methods	2	2		006fecf0 006ffa40
-T3	standin	CReactionFrequencyTraits_PeriodicFrequency_Methods	2	2		006ffb10 006ffc30
 T3	standin	CReactionFrequency_00c1e500	2	2		00c1e500 01212624
 T3	standin	CReactionManager_00cb1030	2	2		00cb1030 012173c0
 T3	standin	CReceptorBase_00c38b20	2	3		00c39ba0 01214b30
@@ -3549,6 +3542,7 @@ T3	standin	CEnginePrimitiveManagerTrailsBase_00bcbea0	1	1		00bcbea0
 T3	standin	CEnginePrimitiveManagerTrailsBase_00bcd7c0	1	1		00bcd7c0
 T3	standin	CEnginePrimitiveOcclusionManager_Methods	1	1		00b2f7c0
 T3	standin	CEnginePrimitiveRenderer2D_00c10e50	1	1		012114ac
+T3	standin	CEnginePrimitiveRenderer_Methods	1	2		00b32100
 T3	standin	CEngineResourceManager	1	1	engine/CEngineResourceManager.h	00b3b7c0
 T3	standin	CEngineScreenEffectDisplacementRenderer	1	1	engine/CEngineScreenEffectDisplacementRenderer.h	00b86a30
 T3	standin	CEngineScreenEffectDisplacementRenderer_Methods	1	1		00b86970
@@ -3643,7 +3637,6 @@ T3	standin	CFrontendGameComponent_004944b0	1	1		004944b0
 T3	standin	CFrontendGameComponent_004944e0	1	1		004944e0
 T3	standin	CGameCameraManager	1	1	engine/CGameCameraManager.h	00697c10
 T3	standin	CGameCameraManager_Methods	1	1		006977f0
-T3	standin	CGameScriptInterface_OverrideMusicMethods	1	1		00891220
 T3	standin	CGoldDef_Methods	1	1		004debc4
 T3	standin	CGraphicBankStateBlockMethods	1	1		009fcef0
 T3	standin	CGraphicFrame	1	1	engine/CGraphicFrame.h	00b2eec0
@@ -3799,6 +3792,7 @@ T3	standin	CNamedValue_00751590	1	1		00751590
 T3	standin	CNarrowWideStringPair_00527de0	1	1		00527de0
 T3	standin	CNavBlockedQuadTreeNode_009f76c0	1	1		009f76c0
 T3	standin	CNavigationHost_00c13310	1	1		012117e6
+T3	standin	CNavigatorBase_Methods	1	1		00a19ae0
 T3	standin	CNavigatorManager	1	1	engine/CNavigatorManager.h	00a15890
 T3	standin	CNodeVisitor_00c19d90	1	1		012b2f90
 T3	standin	CObjectBufferRecord_00a5e7b0	1	1		00a5e7b0
@@ -3902,6 +3896,7 @@ T3	standin	CParam_012b7c08	1	1		012b7c08
 T3	standin	CParam_012b7da8	1	1		012b7da8
 T3	standin	CParam_012b7ee8	1	1		012b7ee8
 T3	standin	CParam_012b7ef0	1	1		012b7ef0
+T3	standin	CParentDefClassBase_Methods	1	1		004303c0
 T3	standin	CParsedItem	1	1	engine/CParsedItem.h	009b9930
 T3	standin	CPartVisitor_00c19d90	1	1		012b2f88
 T3	standin	CParticleDataBank	1	1		0129f38c
@@ -3938,6 +3933,7 @@ T3	standin	CProgress_00c4e2f0	1	1		00c604e0
 T3	standin	CQuestManager	1	1	engine/CQuestManager.h	004b1450
 T3	standin	CQuestThingEntry_00768bc0	1	1		00768bc0
 T3	standin	CQueueOwner_00c279e0	1	1		00c279e0
+T3	standin	CReactionFrequencyTraits_LinearTime_Methods	1	1		006fecf0
 T3	standin	CReactionMatch_MRPyramid_Methods	1	1		00677740
 T3	standin	CRecordVectorVector_0086ee50	1	1		0086ee50
 T3	standin	CRecord_006a92b0	1	1		006a92b0
@@ -3988,6 +3984,7 @@ T3	standin	CRenderSetting_00c445c0	1	1		00c445c0
 T3	standin	CRenderStateManager_Methods	1	2		00a044e0
 T3	standin	CRenderTargetOwner_00c336b0	1	1		00c336b0
 T3	standin	CResourceIndex_00ac7fc0	1	1		00ac7fc0
+T3	standin	CResource_Methods	1	1		0042d970
 T3	standin	CResurrectionItemDef_Methods	1	1		004def76
 T3	standin	CRetailDeque_0040f560	1	1		0040f560
 T3	standin	CRetailDeque_009138b0	1	1		009138b0

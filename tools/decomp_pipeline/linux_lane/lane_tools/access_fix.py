@@ -101,6 +101,8 @@ if "--wide" in argv:
     for a in sorted(ent):
         if a in t3q: why["reserved in T3_PORT_QUEUE"] += 1; continue
         s = selfsym.get(a)
+        lf = ns.norm(ns.leaf_of(ent[a]["Source"]) or "")
+        if lf.startswith("?") and ns.complete(lf): s = lf    # a full Leaf written since the measurement pass (landed today) wins
         if not s or s in pdb: continue
         m = SPLIT.match(s)
         if not m: continue
@@ -133,7 +135,7 @@ for r in rows:
     alias = r[8] if len(r) > 8 else ""
     if only and a not in only: continue
     if len(new) >= mx: break
-    if selfsym.get(a) and selfsym[a] != old: res.append((a, "SKIP", old, good, "the measured self symbol is " + selfsym[a])); continue
+    if selfsym.get(a) and selfsym[a] != old and "--wide" not in argv: res.append((a, "SKIP", old, good, "the measured self symbol is " + selfsym[a])); continue
     old_eff = old
     if alias:
         old_eff = old.replace("@" + alias + "@@", "@" + SPLIT.match(good).group(2)[:-1] + "@@", 1)

@@ -1,5 +1,5 @@
 // CReactionFrequencyTraits_LinearTime::TransferBinaryIn(CMemoryDataInputStream& stream) -- read MinWait and WaitRange from a binary persist stream
-// Leaf: TransferBinaryIn@CReactionFrequencyTraits_LinearTime
+// Leaf: ?TransferBinaryIn@CReactionFrequencyTraits_LinearTime@@UAEXAAVCMemoryDataInputStream@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FFA40, length 194 bytes (__fastcall, ret 4).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0 (the chunk-overflow reader).
 // Shape: two copies of the inlined CMemoryDataInputStream::Read of the landed 0x007AD7F0 / 0x00701990 family
@@ -8,6 +8,7 @@
 // to its member. FrameHappened (+0x0c) is runtime state and is
 // not persisted. `this` uses engine/CReactionFrequencyTraits_LinearTime.h.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_REACTIONFREQUENCYTRAITS_CLASS_CHAIN_PASS24   // alias route: engine/CReactionFrequencyTraits_LinearTime.h declares TransferBinaryIn under this class-model switch
 #include "engine/CReactionFrequencyTraits_LinearTime.h"
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -40,11 +41,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 
-struct CReactionFrequencyTraits_LinearTime_Methods : CReactionFrequencyTraits_LinearTime {
-    void TransferBinaryIn(CMemoryDataInputStream& stream);
-};
 
-void CReactionFrequencyTraits_LinearTime_Methods::TransferBinaryIn(CMemoryDataInputStream& stream)
+void CReactionFrequencyTraits_LinearTime::TransferBinaryIn(CMemoryDataInputStream& stream)
 {
     float value;
     stream.Read(&value, sizeof(value));

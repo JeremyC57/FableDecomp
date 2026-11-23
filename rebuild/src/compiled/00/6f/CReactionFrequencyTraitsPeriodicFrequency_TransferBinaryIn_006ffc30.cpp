@@ -1,5 +1,5 @@
 // CReactionFrequencyTraits_PeriodicFrequency::TransferBinaryIn(CMemoryDataInputStream& stream) -- read LowFreqPerMin, HighLowFreqInterval, FramesPerMinute, RampUpTimeFrames and CutoffIntervalFrames from a binary persist stream
-// Leaf: TransferBinaryIn@CReactionFrequencyTraits_PeriodicFrequency
+// Leaf: ?TransferBinaryIn@CReactionFrequencyTraits_PeriodicFrequency@@UAEXAAVCMemoryDataInputStream@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FFC30, length 467 bytes (__fastcall, ret 4).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0 (the chunk-overflow reader).
 // Shape: five copies of the inlined CMemoryDataInputStream::Read of the landed sibling 0x006FFA40
@@ -10,6 +10,7 @@
 // dead-argument slot and keep this in ebx (named locals in the body give a second frame word or swap ebx/edi).
 // `this` uses engine/CReactionFrequencyTraits_PeriodicFrequency.h.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_REACTIONFREQUENCYTRAITS_CLASS_CHAIN_PASS24   // alias route: engine/CReactionFrequencyTraits_PeriodicFrequency.h declares TransferBinaryIn under this class-model switch
 #include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -43,11 +44,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     FABLE_FORCEINLINE void ReadValue(unsigned long& out) { unsigned long value; Read(&value, sizeof(value)); out = value; }
 };
 
-struct CReactionFrequencyTraits_PeriodicFrequency_Methods : CReactionFrequencyTraits_PeriodicFrequency {
-    void TransferBinaryIn(CMemoryDataInputStream& stream);
-};
 
-void CReactionFrequencyTraits_PeriodicFrequency_Methods::TransferBinaryIn(CMemoryDataInputStream& stream)
+void CReactionFrequencyTraits_PeriodicFrequency::TransferBinaryIn(CMemoryDataInputStream& stream)
 {
     stream.ReadValue(LowFreqPerMin);
     stream.ReadValue(HighLowFreqInterval);
