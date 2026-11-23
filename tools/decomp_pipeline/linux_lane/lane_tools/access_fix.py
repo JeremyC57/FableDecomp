@@ -2,7 +2,7 @@
 """Scripted T2 route: a landed row whose own compiled symbol differs from the PDB symbol only in the member's access letter and / or its
 `const` (naming tracker tier T2, fix `access`; docs/journal/2026-11/2026-11-23_naming_remainder.md). Generate-and-verify; writes candidate
 sources only under <work>.
-usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr] [--wide] [--virtual] [--ret]
+usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr] [--wide] [--virtual] [--ret] [--alias]
 Edits, in the row's own local class model only (a declaration in a shared header is skipped: that is a header opt-in):
   - access: the declaration statement is wrapped as `<new>:` ... `<old>:`, so no member moves and no vtable slot changes;
   - const: `const` is added to or removed from the declaration and from the out-of-line definition `Class::Method(...)`.
@@ -105,12 +105,19 @@ if "--wide" in argv:
         m = SPLIT.match(s)
         if not m: continue
         g = [x for x in byprefix.get(m.group(1), []) if x != s and near(s, x)]
+        alias = ""
+        if not g and "--alias" in argv and m.group(2).count("@") == 1:
+            # route 2b: the self is the right member on an alias class `X_Methods` / `X_Retail` / `X_<addr>`; the RTTI placement names X's member
+            sc = m.group(2)[:-1]; r0 = rtti.get(a, ""); rm = SPLIT.match(r0)
+            if rm and rm.group(2).count("@") == 1 and sc.startswith(rm.group(2)[:-1] + "_"):
+                s2 = s.replace("@" + sc + "@@", "@" + rm.group(2)[:-1] + "@@", 1)
+                if near(s2, r0): g, alias = [r0], sc
         if len(g) != 1: why["no single near PDB symbol" if not g else "several near PDB symbols"] += 1; continue
         g = g[0]; virt = ACC[SPLIT.match(g).group(3)][1] == "v"
         if virt and rtti.get(a) != g: why["virtual without RTTI agreement"] += 1; continue
         if not virt and not (g in egor and g in fwin): why["non-virtual not in both PDB sets"] += 1; continue
         if s in oldbind.get(a, set()): why["a table binder uses the old spelling (unit)"] += 1; continue
-        wide.append([a, "", "T2", "access", "", "1", g, s])
+        wide.append([a, "", "T2", "access", "", "1", g, s, alias])
     print("wide candidates", len(wide), dict(why), flush=True)
     rows = wide
 res, head, new = [], [], []
@@ -123,10 +130,14 @@ def block_end(t, i):
 for r in rows:
     if r[2] != "T2" or r[3] != "access": continue
     a, good, old = r[0], r[6], r[7]
+    alias = r[8] if len(r) > 8 else ""
     if only and a not in only: continue
     if len(new) >= mx: break
     if selfsym.get(a) and selfsym[a] != old: res.append((a, "SKIP", old, good, "the measured self symbol is " + selfsym[a])); continue
-    mg, ms = SPLIT.match(good), SPLIT.match(old)
+    old_eff = old
+    if alias:
+        old_eff = old.replace("@" + alias + "@@", "@" + SPLIT.match(good).group(2)[:-1] + "@@", 1)
+    mg, ms = SPLIT.match(good), SPLIT.match(old_eff)
     if not (mg and ms and mg.group(1) == ms.group(1)): res.append((a, "SKIP", old, good, "names differ beyond the access / cv letters")); continue
     lg, lo = mg.group(3), ms.group(3)
     td = tail_diff(lo, ms.group(4), lg, mg.group(4))
@@ -137,7 +148,11 @@ for r in rows:
     if (catname.get(cls + "::" + meth, set()) - {a}) or (symaddr.get(good, set()) - {a}):
         res.append((a, "SKIP", old, good, "identity: the PDB name is claimed by another address " +
                     ",".join(sorted((catname.get(cls + "::" + meth, set()) | symaddr.get(good, set())) - {a})[:4]))); continue
-    path = "rebuild/src/compiled/" + ent[a]["Source"]; src = open(path, encoding="utf-8").read()
+    path = "rebuild/src/compiled/" + ent[a]["Source"]; src = open(path, encoding="utf-8").read(); src_head = src
+    if alias:
+        if re.search(r'(?<![\w])' + cls + r'(?![\w])', src) or f'engine/{cls}.h' in src:
+            res.append((a, "SKIP", old, good, f"alias {alias}: the source already uses {cls}")); continue
+        src = re.sub(r'(?<![\w])' + alias + r'(?![\w])', cls, src)
     cd = list(re.finditer(r'^[ \t]*(class|struct)\s+' + cls + r'\b[^;{()]*\{', src, re.M))
     if len(cd) != 1: res.append((a, "SKIP", old, good, f"{len(cd)} local definitions of {cls} (needs exactly one)")); continue
     kw = cd[0].group(1); b0 = cd[0].end(); b1 = block_end(src, b0) - 1
@@ -216,7 +231,7 @@ for r in rows:
     base = dict(address=a, module=kv.get("Module", cls), name=meth, test_cpp=tst, pass_pattern=kv.get("PassPattern", f"{a}_TEST PASS"))
     extra = [f for f in kv.get("CompilerFlags", "").split() if f not in ("/O2", "/Oy", "/W3")]
     if extra: base["flags"] = extra
-    head.append(dict(base, source_cpp=src, leaf=old)); new.append(dict(base, source_cpp=ns_src, leaf=good))
+    head.append(dict(base, source_cpp=src_head, leaf=old)); new.append(dict(base, source_cpp=ns_src, leaf=good))
     open(f"{work}/rows/{a}.cpp", "w").write(ns_src)
 print("generated", len(new), flush=True)
 def vland(tag, rs):
