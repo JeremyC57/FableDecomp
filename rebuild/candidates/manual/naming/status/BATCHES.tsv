@@ -440,7 +440,7 @@ T1	other	CArray	3	3	engine/CArray.h	009b4b80 009b7b10 009e7c70
 T1	other	CBase	3	8		0066e734 0084d080 0084e420
 T1	other	CBaseIntelligentPointer	3	50		00a01b10 00a01b50 00a01b90
 T1	other	CBaseObject	3	3	engine/CBaseObject.h	0099a380 0099a3b0 0099a430
-T1	other	CCombatManager	3	7	engine/CCombatManager.h	006e92c0 006ea2c0 006ebdd0
+T1	other	CCombatManager	3	6	engine/CCombatManager.h	006e92c0 006ea2c0 006ebdd0
 T1	other	CCompressorZlib	3	4	engine/CCompressorZlib.h	00a3a7d0 00a3a9c0 00a3aa00
 T1	other	CDefString	3	9	engine/CDefString.h	0044fc00 004b7980 005fa740
 T1	other	CDefinitionManager	3	6	engine/CDefinitionManager.h	009ad2e0 009ad410 009b0ac0
@@ -479,7 +479,6 @@ T1	other	CWideString	3	19		0099aed0 0099b510 0099b720
 T1	other	GFSerialiseMapBinaryIn	3	2		0045c95a 0045df5e 004ecdac
 T1	other	GetPBestThingInRoughArea	3	3		00937420 00937690 0093cdb0
 T1	other	NCreatureAI	3	5	engine/NCreatureAI.h	00864840 008648a0 00864cb0
-T1	other	NPhysicsHelpers	3	2		008f58c0 008f5970 008f5ba0
 T1	other	NThingShot	3	5		007bf000 007c0ad0 007c0e80
 T1	other	Process	3	1		00883530 00883640 00883750
 T1	other	CAIStateGroup_GoToPub	2	3	engine/CAIStateGroup_GoToPub.h	008fdcca 0094a3b0
@@ -567,9 +566,8 @@ T1	other	GetPFirstThing	2	2		0056d050 00910740
 T1	other	IS_THING_ALIVE	2	4		0040dce0 004cc340
 T1	other	LSocketServer	2	2		0090aa10 0090b160
 T1	other	NCombatActionHelpers	2	2		008f7860 008f78e0
-T1	other	NProgressDisplay	2	5	engine/NProgressDisplay.h	009e9f20 009e9f40
+T1	other	NPhysicsHelpers	2	1		008f5970 008f5ba0
 T1	other	NTargeting	2	2	engine/NTargeting.h	007ea2f0 007f59f0
-T1	other	NVectorMath	2	2	engine/NVectorMath.h	00a5b850 00a5bef0
 T1	other	_For_each	2	2		007f7b70 007fda80
 T1	other	checked_delete	2	1		004add30 004ae080
 T1	other	remove_if	2	3		004b9250 00a155c0
@@ -852,7 +850,6 @@ T1	other	CTCFireheartMinigame	1	1		007e7880
 T1	other	CTCFlammable	1	2	engine/CTCFlammable.h	00780400
 T1	other	CTCFollowed	1	2	engine/CTCFollowed.h	006d5050
 T1	other	CTCGraphicAppearanceAnimatedMesh	1	1		0077b250
-T1	other	CTCGraphicAppearanceSprite	1	1		0077c490
 T1	other	CTCHasName	1	1	engine/CTCHasName.h	004dcf4e
 T1	other	CTCHero	1	2	engine/CTCHero.h	006c9fa0
 T1	other	CTCHeroMorph	1	1	engine/CTCHeroMorph.h	0071be80
@@ -910,7 +907,6 @@ T1	other	CV_AssassinAttacksScript	1	1	engine/CV_AssassinAttacksScript.h	00e39140
 T1	other	CV_BodyGuardScript	1	1	engine/CV_BodyGuardScript.h	00e5e240
 T1	other	CV_ChapelOfEvilScript	1	1	engine/CV_ChapelOfEvilScript.h	00e6ad20
 T1	other	CV_HauntedHouseScript	1	1	engine/CV_HauntedHouseScript.h	00e96c30
-T1	other	CV_StatueMasterScript	1	1	engine/CV_StatueMasterScript.h	00ed4420
 T1	other	CVertexBufferBase	1	1	engine/CVertexBufferBase.h	00ac20d0
 T1	other	CVertexBufferWin32	1	1	engine/CVertexBufferWin32.h	00a63150
 T1	other	CVertexShaderConstantLayout	1	2	engine/CVertexShaderConstantLayout.h	0098d710
@@ -931,12 +927,12 @@ T1	other	GetPTarget	1	1		006af520
 T1	other	GetRootsNumerically	1	1		0078b7c0
 T1	other	LHHttpHeaderStatus	1	1	engine/LHHttpHeaderStatus.h	0083f420
 T1	other	NAnimationEvents	1	4		006f90b0
-T1	other	NBalverineCombat	1	1		009054f0
 T1	other	NCameraModes	1	1		00874f80
 T1	other	NCreatureHiding	1	1	engine/NCreatureHiding.h	0074a5d0
 T1	other	NInputProcess	1	2		0068eb20
-T1	other	NPlayerGui	1	1		00643ca1
+T1	other	NProgressDisplay	1	4	engine/NProgressDisplay.h	009e9f40
 T1	other	NRumble	1	1	engine/NRumble.h	007f1840
+T1	other	NVectorMath	1	1	engine/NVectorMath.h	00a5b850
 T1	other	PerCreatureInfo	1	1		0078e4a0
 T1	other	ReadVar	1	1		00516e10
 T1	other	ResetBlockPercentageChance	1	1		00739360

@@ -24,7 +24,7 @@ class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() { }
 };
-C2DBoxI __fastcall GetLineThingSearchArea(const C3DVector& start, const C3DVector& end, float radius);   // 0x008F58C0
+namespace NPhysicsHelpers { C2DBoxI __fastcall GetLineThingSearchArea(const C3DVector& start, const C3DVector& end, float radius); } using NPhysicsHelpers::GetLineThingSearchArea;   // 0x008F58C0 (NF308: PDB scope)
 class CThing;
 class CThingCreatureBase;
 struct CIntelligentPointer { void* vptr; CThing* item; };

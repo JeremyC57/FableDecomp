@@ -178,7 +178,7 @@ class CCombatManager { public:
     unsigned char _pad24[0x38 - 0x24];
     CombatDialogueManager DialogueManager;                // +0x38
     CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->second; }
-    void PerformSequenceReset(CThingCreatureBase& creature);   // 0x006EA2C0
+    private: void PerformSequenceReset(CThingCreatureBase& creature); public:   // 0x006EA2C0 (NF308: AAE, both PDBs)
     bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;   // 0x006E9700
 private:   // FableWin.pdb + Ego_r.pdb: private const ?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z (NF237)
     long GetBestSequenceIndexAttackerOnDefender(const CCombatantInfo& attacker, const CCombatantInfo& defender) const;   // 0x006EAE20

@@ -1,0 +1,11 @@
+SAME ??8CCharString@@QBE_NABV0@@Z
+SAME ??_C@_0BL@JBHIEENH@CTCGraphicAppearanceSprite?$AA@
+SAME ?GetConstantFPS@CMainGameComponent@@SIJXZ
+SAME ?GetTC@CThing@@QAEPAVCTCBase@@J@Z
+SAME ?HasTC@CThing@@QBE_NJ@Z
+SAME ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+SAME ?OnCreate@CThingObject@@QAE_NXZ
+SAME ?SameText@CCharString@@QBE_NABV1@@Z
+SAME ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+SAME ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+SAME __real@3f800000

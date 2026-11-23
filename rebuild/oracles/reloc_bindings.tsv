@@ -7043,7 +7043,6 @@ _rand	00bfeb16	00d2c530
 ??_7CVtable_012f17dc@@6B@	012f17dc	00ec53c0
 ??0CVtable_012c1648@@QAE@XZ	00cb8110	00ed0e60
 ??_7CVtable_012f2b0c@@6B@	012f2b0c	00ed0e60
-?GetStatuePointingPosition@CV_StatueMasterScript@@QAEJXZ	00ed4420	00ed4830
 ??_7CVtable_012f2e6c@@6B@	012f2e6c	00ed4a40
 ??0CScriptBaseNative@@QAE@XZ	00cb8110	00ed76e0
 ??_7CScriptThingConstructorView@@6B@	01238c8c	00ed76e0
@@ -8063,7 +8062,6 @@ __imp__WaitMessage@0	01440380	009a6370
 ?ApplyDragging@CParticleSimulation@@QAEXPAUCParticleContext@@@Z	00adf300	00ae2cb0
 ?ApplyForces@CParticleSimulation@@QAEXPAUCParticleContext@@@Z	00adf760	00ae2cb0
 ?ExecuteLooped@CParticleProgram@@QAEXPAUCParticleSimulation@@J@Z	00ae2510	00ae2cb0
-?GFInterpolateVectors@@YAXPAUC4DVector@@K0K0KPAMKK@Z	00a5bef0	00ae2cb0
 ?ClingToMesh@CParticleProgram@@ABEXAAVCParticleSimulation@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@@Z	00ae1320	00ae2d20
 ??_7CPSCLight@NParticleEngine@@6B@	012a0624	00b1a640
 ?InsertGrow@?$CArray@G@@QAEXPAGABGABUSScalarTag@@K_N@Z	005135d0	00f3f5a0
@@ -9006,7 +9004,7 @@ __imp__GetSysColor@4	01440374	009a5490
 ?GlyphZ@@3USGlyph@@B	01397fe4	00a6c170
 ?Glyphs@CSystemFont@@2PAPBUSGlyph@@A	013d28f0	00a6c170
 ?Initialised@CSystemFont@@2_NA	013d2cf0	00a6c170
-?SetRotationAngle@CTCGraphicAppearanceSprite@@QAEXM@Z	0077c490	007032f0
+?SetRotationAngle@CTCGraphicAppearanceSprite@NGraphicAppearance@@QAEXM@Z	0077c490	007032f0
 ?GetSubDef@CDefClassBase@@QAE_NPAPAUCJackOfBladesDeathDef@@@Z	008c33e0	008d99b0
 ?ReplaceDoubleApostrophes@@YI?AULHString@@ABU1@@Z	0055ecb0	005615c0
 ?insert@CClanList@@QAE?AUiterator@1@U21@ABUCClanInfo@@@Z	00567790	005615c0
@@ -15671,7 +15669,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Construct@CTCDPhysicalObstruction@@AAEXABVC3DVector@@@Z	007fd430	007fd4b0
 ??$GetAllThingsInRoughArea@VCThingCreatureBase@@U?$CRetailVector@PAVCThingCreatureBase@@@@V?$CFilter_Bind3@VCThingFilter_IsNotList@@VCThingFilter_IsWithinArea@@UCThingFilter_IsAffectedByObstructions@@@@@CThingSearchTools@@QAEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsNotList@@VCThingFilter_IsWithinArea@@UCThingFilter_IsAffectedByObstructions@@@@AAU?$CRetailVector@PAVCThingCreatureBase@@@@@Z	007fdb10	007fd580
 ?ForEach@@YI?AVCKeepOutOffSmearedOutLine@@PAPAVCThingCreatureBase@@0V1@@Z	007fda80	007fd580
-?GetLineThingSearchArea@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z	008f58c0	007fd580
+?GetLineThingSearchArea@NPhysicsHelpers@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z	008f58c0	007fd580
 ?TransferIn@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC2DVector@@@Z	009e81e0	00800400
 ?TransferOut@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCCharString@@PAVC2DVector@@@Z	009e7f00	00800430
 ?LoadRoute@CTCPreCalculatedNavigationRoute@@AAEXAAVCPersistContext@@J@Z	008008b0	00800a60
@@ -27608,7 +27606,7 @@ _g_LookAtTurnSpeed	0138cba8	0092ace0
 ?AllowReactionsOnHitFromAttacker@CTCPhysicalShieldSpell@@QAEXPAVCThing@@_N@Z	0079e580	008c4680
 ?GetScorpionBattle@CDefLookup@@QBE_NPAU?$DefPointer@VCScorpionKingBattleDef@@@@@Z	008c5a50	008c4680
 ??$GetSubDef@UCLungeDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@UCLungeDef@@@@@Z	008cd0d0	008cc8e0
-?SetLungedThisFrame@@YIXXZ	009054f0	008cc8e0
+?SetLungedThisFrame@NBalverineCombat@@YIXXZ	009054f0	008cc8e0
 ?SetPTarget@CTCAssassinRush@@QAEXPAVCThing@@_N@Z	007a9ab0	008cd470
 ?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z	008e8e50	008e8ff0
 ?SetSpecificSamplePitch@CTCSoundPlayer@@QAEXKM@Z	0066afa0	008ef400
@@ -32101,7 +32099,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?SwapScreens@CDisplayManager@@QAE_NXZ	009beeb0	0042ebb6
 ?GOldAutoSaveProgressDisplay@@3UCCountedPointer_CAProgressDisplay@@A	013b89e0	0049e8c0
 ?SetProgressDisplay@@YIXPAUCCountedPointer_CAProgressDisplay@@@Z	009e9fd0	0049e8c0
-?StopProgress@@YIX_N0@Z	009e9f20	0049e8c0
 ?g_AutoSaveProgressEndTime@@3NA	013b89c8	0049e8c0
 ?g_bAutoSaveProgressShown@@3_NA	013b89c1	0049e8c0
 ?AutoSaveInternal@CWorld@@QAE_NABVCWideString@@_N@Z	004a0850	004a0ae0
@@ -33635,7 +33632,6 @@ __imp__recvfrom@24	01440518	008f9320
 ??0CRetailList_0064ed06@@QAE@ABUCRetailAllocator@@@Z	00655ad8	0064ed06
 ??_7CDrawPerceivers@NPlayerGui@@6B@	0125a670	0064ed06
 ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z	00493ac2	0064f6dc
-?GFAnchorToTopRight@@YI?AVC2DVector@@ABV1@@Z	00643ca1	0064f6dc
 ?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A	013b8790	0064f6dc
 ?PeekGuiDef@@YIPAUGuiOracleDefView@@XZ	00438570	0064f6dc
 ?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@KABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@_N2@Z	006e3890	006e3ab0
@@ -38373,7 +38369,6 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	00662410	006eb390
 ?IsMeleeWeapon@CTCWeapon@@QBE_NXZ	005daa00	006eb390
 ?IsProjectileWeapon@CTCWeapon@@QBE_NXZ	005daa40	006eb390
-?PerformSequenceReset@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	006ea2c0	006eb390
 ?GetNextActionInSequence@CCombatSequenceBase@@QAEPAVCCombatActionBase@@XZ	008b0780	006eb600
 ?IsZoneValid@CCombatSequenceBase@@QBE_NXZ	008b0610	006eb600
 ?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	006eb390	006eb600

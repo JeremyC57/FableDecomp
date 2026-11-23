@@ -138,3 +138,7 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   stand-in class onto other made-up names is held (port the stand-in). D3: a literal passed as the PDB enum (`(E)0xC` or an OR of
   enumerators) lands as one unit with the selves retyped to the enum and every binder moving (NF304 Q6). D5: a binder may bind a PDB name
   that a pre-existing TU emitter also defines strongly; queue the emitter for the nf86 / nf88 pick-any scaffolding.
+- NF308 Q2: a re-scope that renames an emitted vftable (`??_7...@6B<base>@@` included) is a port, not a per-case decision. Q3: a table line
+  carries the spelling its witness object binds; a Dinkumware `U?$char_traits` line whose witness binds the STLport `V` form is respelled
+  after compiling the witness. Q4: an owner free function moving into its PDB namespace (all binders with it, catalog Module updated by the
+  coordinator) lands in place.

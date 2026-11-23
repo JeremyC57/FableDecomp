@@ -64,9 +64,12 @@ class CTCBase { public:
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21();
     virtual CCharString GetClassName() const;          // slot 22 (+0x58)
 };
+namespace NGraphicAppearance {                          // NF308: the PDB scope (Ego_r / FableWin ?SetRotationAngle@CTCGraphicAppearanceSprite@NGraphicAppearance@@QAEXM@Z)
 struct CTCGraphicAppearanceSprite : CTCBase {
     void SetRotationAngle(float angle);                 // 0x0077C490
 };
+}
+using NGraphicAppearance::CTCGraphicAppearanceSprite;
 
 class CThingObjectDef { public:
     unsigned char  _pad00[0x70];

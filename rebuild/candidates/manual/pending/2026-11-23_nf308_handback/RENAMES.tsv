@@ -1,0 +1,13 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames)
+0x006ea2c0	CCombatManager	PerformSequenceReset	?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z	CCombatManager::PerformSequenceReset	?PerformSequenceReset@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	both PDBs AAE (private); HEAD object defines the QAE form (bare Leaf); access only (NF302 Q5 / NF304 Q6)
+0x009e9f20	NProgressDisplay	StopProgress	?StopProgress@NProgressDisplay@@YIX_N0@Z	_global::StopProgress	?StopProgress@@YIX_N0@Z	both PDBs; HEAD object defines the global form (no Leaf line); scope only (NF304 Q6); catalog Module '_global' becomes 'NProgressDisplay' (Source global_StopProgress_009e9f20.cpp may be renamed)
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x007032f0	?SetRotationAngle@CTCGraphicAppearanceSprite@@QAEXM@Z	?SetRotationAngle@CTCGraphicAppearanceSprite@NGraphicAppearance@@QAEXM@Z	0x0077c490
+0x006eb390	?PerformSequenceReset@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z	0x006ea2c0
+0x006eb600	?PerformSequenceReset@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z	0x006ea2c0
+0x008cc8e0	?SetLungedThisFrame@@YIXXZ	?SetLungedThisFrame@NBalverineCombat@@YIXXZ	0x009054f0
+0x007fd580	?GetLineThingSearchArea@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z	?GetLineThingSearchArea@NPhysicsHelpers@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z	0x008f58c0
+0x0064f6dc	?GFAnchorToTopRight@@YI?AVC2DVector@@ABV1@@Z	?GFAnchorToTopRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	0x00643ca1
+0x0064499c	?GFAnchorToTopRight@@YI?AVC2DVector@@ABV1@@Z	?GFAnchorToTopRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	0x00643ca1
+0x0049e8c0	?StopProgress@@YIX_N0@Z	?StopProgress@NProgressDisplay@@YIX_N0@Z	0x009e9f20

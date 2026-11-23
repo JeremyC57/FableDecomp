@@ -187,7 +187,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-void __fastcall SetLungedThisFrame();           // 0x009054F0
+namespace NBalverineCombat { void __fastcall SetLungedThisFrame(); } using NBalverineCombat::SetLungedThisFrame;   // 0x009054F0 (NF308: PDB scope)
 
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();

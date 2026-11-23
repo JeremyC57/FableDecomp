@@ -1,0 +1,35 @@
+## SetRotationAngle 5
+   src/compiled/00/77/NGraphicAppearanceCTCGraphicAppearanceSprite_SetRotationAngle_0077c490.cpp:67: void CTCGraphicAppearanceSprite::SetRotationAngle(float amount)
+   src/compiled/00/c1/unattributed_SetRotationAngle00c15ea0_00c15ea0.cpp:18: void CTCGraphicAppearanceSprite_00c15ea0::SetRotationAngle(long angle)
+   src/compiled/00/c1/unattributed_SetRotationAngle00c15e30_00c15e30.cpp:18: void CTCGraphicAppearanceSprite_00c15e30::SetRotationAngle(long angle)
+   tests/00/77/NGraphicAppearanceCTCGraphicAppearanceSprite_SetRotationAngle_0077c490_test.cpp:16: void SetRotationAngle(float amount)
+   tests/00/70/CThingObject_OnCreate_007032f0_test.cpp:213: void CTCGraphicAppearanceSprite::SetRotationAngle(float angle) { ++g_angleCalls; g_angle = angle; }
+## PerformSequenceReset 5
+   src/compiled/00/6e/CCombatManager_PerformSequenceReset_006ea2c0.cpp:118: void CCombatManager::PerformSequenceReset(CThingCreatureBase& creature)
+   tests/00/6e/CCombatManager_UpdateAttackingCombatantSequenceResets_006eabb0_test.cpp:17: void PerformSequenceReset(CCreature*) { ++resets; } void UpdateCurrentAction(CCreature*) { ++updates; }
+   tests/00/6e/CCombatManager_PerformSequenceReset_006ea2c0_test.cpp:22: void CCombatManager::PerformSequenceReset(CThingCreatureBase& creature)
+   tests/00/6e/CCombatManager_GetNextActionForCreature_006eb600_test.cpp:476: void CCombatManager::PerformSequenceReset(CThingCreatureBase&){++resetCalls;}
+   tests/00/6e/CCombatManager_SetupNextSequenceForAttacker_006eb390_test.cpp:268: void PerformSequenceReset(CThingCreatureBase& creature) { ++ResetCalls; ResetCreature = &creature; }   // 0x006EA2C0
+## SetLungedThisFrame 4
+   src/compiled/00/c6/global_SetLungedThisFrame_00c62350.cpp:3: float SetLungedThisFrame()
+   src/compiled/00/90/NBalverineCombat_SetLungedThisFrame_009054f0.cpp:18: void __fastcall SetLungedThisFrame()
+   tests/00/8c/CCreatureActionBalverineLungeAttack_Initialise_008cc8e0_test.cpp:329: void __fastcall SetLungedThisFrame() { ++g_lungedFrame; }
+   tests/00/90/NBalverineCombat_SetLungedThisFrame_009054f0_test.cpp:7: static void SetLungedThisFrame() { g_lastLungeFrame = GetFrame(); }
+## GetLineThingSearchArea 2
+   src/compiled/00/8f/NPhysicsHelpers_GetLineThingSearchArea_008f58c0.cpp:39: C2DBoxI __fastcall GetLineThingSearchArea(const C3DVector& lineStart, const C3DVector& lineEnd, float radius)
+   tests/00/7f/CTCDPhysicalObstruction_UpdateAdditionalImpulse_007fd580_test.cpp:11: C2DBoxI GetLineThingSearchArea(const C3DVector& start, const C3DVector& end, float radius)
+## GFAnchorToTopRight 8
+   src/compiled/00/64/NPlayerGui_GFAnchorToTopRight_00643ca1.cpp:40: C2DVector __fastcall GFAnchorToTopRight(const C2DVector& pos)
+   src/compiled/00/64/NPlayerGuiCDrawHighlightingTargetingCursor_Draw_0064bfba.cpp:187: C2DVector FABLE_FASTCALL NPlayerGui::GFAnchorToTopRight(const C2DVector& pos)
+   src/compiled/00/64/NPlayerGuiCDrawWorldTime_Draw_0064ca15.cpp:102: C2DVector __fastcall GFAnchorToTopRight(const C2DVector&pos){return C2DVector((float)GPDisplayManager->GetRenderTargetDi
+   tests/00/64/NPlayerGuiCDrawMiniMap_Draw_00648820_test.cpp:225: static C2DVector GFAnchorToTopRight(const C2DVector& position) { return C2DVector(1280-position.X,position.Y); }
+   tests/00/64/NPlayerGuiCDrawHighlightingTargetingCursor_Draw_0064bfba_test.cpp:194: C2DVector GFAnchorToTopRight(const C2DVector&p){return C2DVector(Display.Width+p.X-640.0f,p.Y);}
+   tests/00/64/NPlayerGuiCDrawWorldTime_Draw_0064ca15_test.cpp:5538: C2DVector __fastcall GFAnchorToTopRight(const C2DVector&pos){return C2DVector((float)GPDisplayManager->GetRenderTargetDi
+   tests/00/64/NPlayerGuiCDrawQuestInfo_DrawOracleSymbols_0064f6dc_test.cpp:1707: C2DVector __fastcall GFAnchorToTopRight(const C2DVector&p){assert(&p==&definition.OracleSymbolPos&&resizes==1);++anchors
+   tests/00/64/NPlayerGui_GFAnchorToTopRight_00643ca1_test.cpp:22: C2DVector __fastcall GFAnchorToTopRight(const C2DVector& pos)
+## StopProgress 5
+   src/compiled/00/49/CProgressDisplay_StopProgress_00499d90.cpp:58: void CProgressDisplay::StopProgress(bool showStoppingText, bool clearScreen)
+   src/compiled/00/9e/global_StopProgress_009e9f20.cpp:8: void __fastcall StopProgress(bool a, bool b)
+   tests/00/49/CProgressDisplay_CProgressDisplay_00499fb0_test.cpp:43: virtual void StopProgress(bool a, bool b) { if (!a && !b) ++g_stops; }
+   tests/00/49/CWorld_StopAutoSaveProgress_0049e8c0_test.cpp:24: static void StopProgress(bool stopNow, bool keepScreen) { if (stopNow && !keepScreen) ++g_stops; }
+   tests/00/43/CDisplayEngine_WorldUpdate_00434f60_test.cpp:7: static void StopProgress(bool a, bool b) { if (a && !b) ++g_stops; }

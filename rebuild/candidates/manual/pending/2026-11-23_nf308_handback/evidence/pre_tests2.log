@@ -1,0 +1,7 @@
+04:53:59 PASS /home/user/FableDecomp/rebuild/tests/00/96/CAIStateGroupTavernServer_PickUpJug_00967930_test.cpp
+04:53:59 PASS /home/user/FableDecomp/rebuild/tests/00/96/CAIStateGroupTavernServer_FillTankard_00967b40_test.cpp
+04:54:00 PASS /home/user/FableDecomp/rebuild/tests/00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0_test.cpp
+04:54:00 PASS /home/user/FableDecomp/rebuild/tests/00/6e/CCombatManager_SetupNextSequenceForAttacker_006eb390_test.cpp
+04:54:00 PASS /home/user/FableDecomp/rebuild/tests/00/6e/CCombatManager_GetNextActionForCreature_006eb600_test.cpp
+04:54:00 PASS /home/user/FableDecomp/rebuild/tests/00/97/CAIStateGroupBase_SetPushableByHero_0097e330_test.cpp
+04:54:00 PASS /home/user/FableDecomp/rebuild/tests/00/6e/CCombatManager_PerformSequenceReset_006ea2c0_test.cpp

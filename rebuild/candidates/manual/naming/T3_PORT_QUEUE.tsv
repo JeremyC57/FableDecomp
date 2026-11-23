@@ -1430,3 +1430,79 @@ nf307	0x007660C0	port	the self 0x007660C0 defines HasAugmentationOfType(long); b
 nf307	0x0079DEB0	port	binder 0x0079E300 declares PlayEffect(long, const CCharString&, const CCharString&, CThing*, long) public; the PDB is protected (CIntelligentPointer<CThing>*, ..., CThingCreatureBase*, long): different types, port
 nf307	0x00884E90	unit with 0x00884F60 / 0x00884FE0	binder 0x006B8640 (NF304 entries 1-3, NF307 measured, objsec ALL_EQ) held at landing nf307: the re-scope also renames three local inline getters of the stand-in CScreenEffectPriorityStack to names that are NOT PDB names (NF304 Q1 needs the PDB spelling); a full fix re-scopes it into NScreenEffect, which respells the FrameUpdate binding at 0x00880E50: one unit
 nf307	0x007CD390	pick-any scaffolding	0x007CD810 strongly defines the TU emitter `CTCMultiStrike::CTCMultiStrike(CThing&) { }` beside the real self 0x007CD390, so the PDB ctor name has two strong definitions (binder 0x004D5896 now binds it, landing nf307 D5): give 0x007CD810 the nf86 / nf88 pick-any scaffolding
+nf308	0x00414C90	port	binder 0x004175e5: 0x004175E5 binds ?Get@CConsole@@SAPAV1@XZ (another class, __cdecl static returning a pointer) for the PDB __fastcall CTBaseSingleton<CConsole>::Get returning CConsole&: class + signature port (NF303 / NF304 landed: re-read, no change)
+nf308	0x00686A70	port	binder 0x006a23e0 / 0x00960760: 0x006A23E0 keeps CTCCarrying and CWorld in its own NRemap006a23e0 stand-in namespace (return type moves with it); 0x00960760 declares GetWorld on the stand-in class CTCDeedReaction returning a pointer: ports
+nf308	0x00686D40	port	binder 0x007e5d20: GetPlayerManager declared on the stand-in class CTCOracleMinigame returning a pointer for the protected CTCBase member returning CPlayerManager&: class + return port
+nf308	0x006A2220	port	binder 0x006a23e0: NRemap006a23e0 stand-in namespace with its own Objects parameter type: namespace + parameter port
+nf308	0x006E0880	port	binder 0x008f7bd0: 0x008F7BD0 keeps CTCDParticleEmitter, CThing and C3DVector in its NFoot008f7bd0 stand-in namespace: namespace + parameter port
+nf308	0x006E0970	port	binder 0x00670560 / 0x0089f910: free-function stand-ins (?Create@@YI..., ?CreateParticle@@YI... returning CThingNative*) for the static member: class ports
+nf308	0x006E0BE0	port	binder 0x008f7bd0: NFoot008f7bd0 stand-in namespace, pointer / int parameters for the PDB CThing& / long / float: port
+nf308	0x006E0E80	port	binder 0x006e1080: free __fastcall stand-in taking CThing* for the private static member taking CThing&: class + parameter port
+nf308	0x006E11A0	port	binder 0x008f7bd0: NFoot008f7bd0 stand-in namespace with its own CParticleUpdateParameters struct for the PDB template: namespace + parameter port
+nf308	0x005BCAFE	port	binder 0x005bce49: free __fastcall Draw2DText taking pointers for the static NInventory::CTCInventoryBase member taking references: class + parameter port
+nf308	0x005C0121	port	binder 0x00582944 / 0x0057713f / 0x0059c8f2 / 0x005c3057 / 0x005cd33f / 0x005f4a86 / 0x00602e30 / 0x0072dc70: NF305 Q1: 0x00582944's re-scope moves its qualified OnCreate call onto a still-wrong non-virtual NInventory form (port); the seven others declare OnCreate on _Abilities / _Experience / _Magic / _Map / _Stats / _Trade / _Weapons stand-in classes: class ports
+nf308	0x006A06E0	port	binder 0x006ac910 / 0x006e11f0: both binders keep the class in a stand-in namespace (NFactory006ac910 / X_006e11f0) with namespace-local C3DVector / CRightHandedSet parameter types: namespace + parameter ports (0x006E11F0 is also an NF306 witness)
+nf308	0x007449B0	port	binder 0x00744d00: SetAsDirectlyAwareOfPerceivedThing declared on the derived class CTCPerceiveAlert (mangles Derived::f) for the CTCPerceiveThing member: class port
+nf308	0x006AF630	port	binder 0x00880200: extern "C" _FableSpellWrap_880200@4 stdcall stub for the protected const member: port
+nf308	0x007C0690	port	binder 0x008c0900: 0x008C0900 binds Init with CDefPointerByValue / non-const CDefPointer stand-in parameter types on the global class: scope + parameter port
+nf308	0x005EA9B0	port	binder 0x007d83c0: CreateGamePiece declared on the derived stand-in CTCTavernGameSpotTheAddition returning void*: class + return port
+nf308	0x00663B10	port	binder 0x008f3020: GetShotAccuracyPercentage declared on CThing (non-const) for the const CThingCreatureBase member: class + const port
+nf308	0x006A7380	port	binder 0x00809d60: the functor and CTargetPoint live in the stand-in namespace N00809d60 (the parameter becomes N00809d60::NPlayerTargeting::CTargetPoint): namespace + parameter port
+nf308	0x006A4D60	port	binder 0x00833a70: ValidateInitialisation declared public on CThingCreatureBase for the protected CThingPhysical member: class port
+nf308	0x005BFF07	port	binder 0x00606d20 / 0x004e7cc3 / 0x0059eb0c: DECISION (vtable): 0x00606D20 is CTCInventoryMap's ctor with the local CTCInventoryBase as the first of two polymorphic bases, so the emitted vftable is named after it (`??_7CTCInventoryMap@@6BCTCInventoryBase@@@`); re-scoping the base into NInventory renames that table (brief: a vtable change stops the address). 0x004E7CC3 / 0x0059EB0C pass CThing* for the PDB CThing&: parameter ports. The seven other derived ctors (0x0057832D / 0x00590D32 / 0x005C3947 / 0x005CD2A6 / 0x005F3BCF / 0x0061A420 / 0x0072DB90) bind other spellings or the PDB one (table)
+nf308	0x006A4DF0	port	binder 0x008445a0: IsInRange declared on CThing (non-const) for the const CThingPhysical member: class + const port
+nf308	0x0052AB20	port	binder 0x006ac910: 0x006AC910 keeps CThingPlayerCreature in its NFactory006ac910 stand-in namespace together with other members whose parameter types live there (entries 29 / 37): namespace port
+nf308	0x006A9DD0	port	binder 0x006ac910: NFactory006ac910 stand-in namespace, public, int parameters for the PDB long / CThingPlayerCreatureInit&: namespace + signature port
+nf308	0x00877720	port	binder 0x008faf70: global CTools (non-const) with the CThingList / struct C3DVector stand-in parameters for the NCameraModes const member taking list<const CThing*>&: scope + signature port
+nf308	0x00630350	port	binder 0x00632e00: 0x00632E00 is TransferVectorOfSubComponents<CUIStateDef>: re-scoping its local CUIStateDef into NUISystem renames the row's own template-instance definition (and its vector<CUIStateDef> COMDATs): NF300 Q2 excludes it, T3
+nf308	0x00407CD0	port	binder 0x00557d20: 0x00557D20 binds NUISystem::CUserProfileManager with struct-pointer parameters for the PDB global class taking const CActionInputControl&: scope + parameter port
+nf308	0x00E39140	port	binder 0x00e38f80: 0x00E38F80 binds WatchForAssassinDead with the CScriptThingRuntime stand-in parameter (both global and NScript forms) for the PDB CScriptThing: parameter port
+nf308	0x00E6AD20	port	binder 0x00e6aac0: CQ_AcolyteParentScript stand-in class with the CScriptThingRuntime parameter for the NScript::CV_ChapelOfEvilScript member: class + parameter port
+nf308	0x00AC20D0	port	binder 0x00a90860: Sizeof declared on the derived CVertexBufferWin32 for the CVertexBufferBase member: class port
+nf308	0x00A63150	port	binder 0x00bf3380: CVertexBufferWin32Native stand-in class with int parameters for the PDB enums: class + parameter port
+nf308	0x00A90630	port	binder 0x00a98680 / 0x00a90fc0: 0x00A98680 is CVertexShaderInputAnimated's own ctor (defines the global stand-in ctor and emits its vftable): re-scoping into N3DPrimitive renames its self and the table (T3 self port / vtable); 0x00A90FC0: ExternalRetry_00a90fc0 stand-in namespace with int parameters: port
+nf308	0x00A90560	port	binder 0x00a98710 / 0x00a91390: as entry 48 for CVertexShaderInputStatic (0x00A98710 own ctor + vftable; 0x00A91390 ExternalRetry namespace)
+nf308	0x00AB3740	port	binder 0x00ac4d70: GetDataTypeSize declared on the stand-in CVertexStreamConverter for the static CVertexStreamFormat member: class port
+nf308	0x00640030	port	binder 0x0069e940: GetDisplayEngine declared public on CView3DBase returning a pointer (struct CDisplayEngine in NDisplayView) for the protected CViewBase member returning CDisplayEngine&: class + return port
+nf308	0x004FAFF0	port	binder 0x00502170: free __fastcall stand-in for the static CWorldMap member: class port
+nf308	0x007573C0	port	binder 0x00757760: global CWound taking CTCTextureDecal* for the nested CTCWound::CWound member taking a reference: scope + parameter port
+nf308	0x008D46D0	port	binder 0x0097d360 / 0x0091cdc0 / 0x00922600 / 0x00969760 (0x008d0610 binds the PDB form): 0x008D0610 already binds the PDB spelling (its table line; tracker spelling truncated). 0x0097D360 keys its local member-template argument CFilter_Bind2 as struct (U): a class-key change on a member-template instance, .drectve-sensitive (NF303 Q2): T3. 0x0091CDC0 / 0x00922600 / 0x00969760 bind non-template stand-ins: ports
+nf308	0x007C3A60	port	binder 0x007c3040: GetDef<const T> on the stand-in class CDefinitionManager_Calls: class + template-argument port
+nf308	0x0065F7B4	port	binder 0x007b7140: GetSubDef<const CCrateStackDef> where the PDB instance is GetSubDef<CCrateStackDef>: template-argument change, NF303 Q2 (.drectve) T3
+nf308	0x008CD0D0	port	binder 0x008cc8e0 / 0x00905550 / 0x008ccd70: GetSubDef instances with another template argument (CLungeDef), non-const / reference forms, and a non-template stand-in: NF303 Q2 T3
+nf308	0x008E3240	port	binder 0x0096c2e0 / 0x00909070: GetSubDef<CThunderDef> (T** form) and the non-const reference form: NF303 Q2 T3
+nf308	0x00956590	port	binder 0x0096a7a0 / 0x00954cd0: GetSubDef<CWhisperRetreatDef> and a non-template stand-in: NF303 Q2 T3
+nf308	0x009255E0	port	binder 0x00924670: pulled ahead (E2, SCOPE shape): the PDB ctor is in an anonymous namespace (?A0xe2035276); 0x00924670 (CCreatureAction_KrakenLowAttackInto::FinishAction, its own class global too) can only reach it from the same TU: a TU fold, not a respelling (GOTCHAS 357 / 501)
+nf308	0x00925680	port	binder 0x00924670: pulled ahead (E2): as entry 158 for CCreatureAction_KrakenLowAttackOutOf
+nf308	0x006F2C00	port	binder 0x006ebf70: pulled ahead (E2, SCOPE shape): the two spellings differ only in the anonymous-namespace hash (?A0x1c1f655f v ?A0xd8b789b9), which follows the rebuild TU path: not fixable by a respelling (GOTCHAS 357 / 471 / 501)
+nf308	0x008E8A10	port	binder 0x008e7f80: pulled ahead (E2): anonymous-namespace hash only (?A0xd2e22ad2 v ?A0x4c72bf35): as entry 160
+nf308	0x00857250	port	binder 0x0085b2a0: pulled ahead (E2): anonymous-namespace hash only (?A0xfbaeb011 v ?A0xad05d24c): as entry 160
+nf308	0x008565E0	port	binder 0x0085b2a0: pulled ahead (E2): anonymous-namespace hash only: as entry 160
+nf308	0x00874F80	port	binder 0x00875550: free stand-in taking CWorldMap* / const C3DVector* for the NCameraModes function taking references: scope + parameter port
+nf308	0x008F7860	port	binder 0x00865c20: global stand-in taking two CThing* for the NCombatActionHelpers function taking const CThing& / const CThing*: scope + parameter port
+nf308	0x00864840	port	binder 0x0091eb60: global stand-in taking CThing* for the NCreatureAI function taking const CThingAICreature& / const CThingCreatureBase*: scope + parameter port
+nf308	0x008648A0	port	binder 0x0093c4e0 / 0x0093b8b0 / 0x006a7570: global stand-ins with non-const pointer / CThing parameters and an address-named stub for the NCreatureAI function taking const pointers: ports (0x0093C4E0 is in T3_PORT_QUEUE)
+nf308	0x00864CB0	port	binder 0x00663b10: global stand-in taking CThing* for the NCreatureAI function taking const CThing&: scope + parameter port
+nf308	0x0074A5D0	port	binder 0x0091d930 (0x008bc1a0 binds the PDB form): 0x008BC1A0 already declares NCreatureHiding::GetValidPositions with the PDB signature (tracker spelling truncated); the only stand-in binder 0x0091D930 passes the CPositionVector stand-in: parameter port
+nf308	0x0085EF70	port	binder 0x006a99d0 / 0x00746eb0: global stand-in taking CThing* for the NCreatureMode function taking const CThing&, and a made-up stub (ewu_probe): ports
+nf308	0x0085F010	port	binder 0x0095c1f0: global stand-in taking CThing* for the NCreatureMode function taking const CThing&: scope + parameter port
+nf308	0x0085F0C0	port	binder 0x008b0780 / 0x006ebdd0 / 0x006a73f0: global stand-ins taking CThing* / CThingCreatureBase* and an extern "C" stub for the NCreatureMode function taking const CThing&: ports
+nf308	0x0085F120	port	binder 0x0082b630 / 0x00920710: global stand-in taking const CThing* and a made-up stub (h_920710) for the NCreatureMode function taking const CThing&: ports
+nf308	0x0085F200	port	binder 0x00753c70: member stand-in on CThing for the free NCreatureMode function taking const CThing&: class port
+nf308	0x0085F2B0	port	binder 0x006622d0 / 0x006a7400: global stand-in taking CThing* and an extern "C" stub for the NCreatureMode function taking const CThing&: ports
+nf308	0x0085F470	port	binder 0x007e0670: global stand-in taking CThing* for the NCreatureMode function taking const CThing&: scope + parameter port
+nf308	0x0085F560	port	binder 0x007e0750: as entry 85 (IsAvailableForHeroRun)
+nf308	0x0085F600	port	binder 0x007122d0 / 0x0088e8d0: global stand-in taking CThing* and a CThing_Retail member stand-in for the NCreatureMode function taking CThing&: ports
+nf308	0x0085F8D0	port	binder 0x008e9460: global stand-in taking CThing* for the NCreatureMode function taking const CThing&: scope + parameter port
+nf308	0x0085FCD0	port	binder 0x00752480: as entry 88 (IsAbleToUseTurningAnimations)
+nf308	0x009E9F40	port	binder 0x00a25530 / 0x006ac910 / 0x00b428e0 / 0x0041735a: global stand-in with the (bool, float) parameter order swapped, the NFactory006ac910 stand-in namespace, another name (ReportStaticMapProgress) and an extern "C" stub (0x0041735A also an NF306 witness): ports
+nf308	0x007F59F0	port	binder 0x00733ee0: global stand-in taking CThing* for the NTargeting function taking const CThing&: scope + parameter port
+nf308	0x007BF000	port	binder 0x008444a0: global stand-in taking pointers for the NThingShot function taking references: scope + parameter port
+nf308	0x007C0AD0	port	binder 0x008f3020 / 0x00787ca5 / 0x008d5970: global CreateShot stand-ins with CDefPointerMelee / non-const CDefPointer / DefPointer stand-in parameter types for the NThingShot function: ports
+nf308	0x007C0E80	port	binder 0x008c89d0: global stand-in with CAbilityPointer and pointer parameters for the NThingShot function: port
+nf308	0x0078E4A0	port	binder 0x007934f0: 0x007934F0 is the map operator[] over its own global PerCreatureInfo model (returns PerCreatureInfo&, stand-in map class): re-scoping the struct into CTCDivineWrath renames the row's own definition: T3 (NF300 Q2)
+nf308	0x00883530	port	binder 0x00880e50: the binder instantiates Process<> over its own stand-in list template inside CScreenEffectPriorityStack: template-argument port (member template, NF303 Q2)
+nf308	0x00883640	port	binder 0x00880e50: as entry 101
+nf308	0x00883750	port	binder 0x00880e50: as entry 101
+nf308	0x00739360	port	binder 0x00734320: extern "C" @sub_D@4 stub for the member template: port
+nf308	0x008F82E0	FAMILY UNIT (all-or-nothing, one family per hand-back): LSocket family (0x008F82E0 / 0x008F86F0 / 0x008F87A0 / 0x008F8870 / 0x008F8A80 / 0x008F8BB0 / 0x008F8C70 / 0x008F9780 / 0x008FA120 / 0x0090AA10 / 0x0090B160)	binders are LSocket members defining their own global stand-ins; 0x0090B080 ties the ctor / dtor / SetNonBlocking to a re-scope that renames its own definition (NF308 entries 61-71)

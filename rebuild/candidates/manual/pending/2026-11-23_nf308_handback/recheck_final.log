@@ -1,0 +1,12 @@
+# NF308 recheck (vland --recheck-landed; new sources from rows/ via tools/mkpay308.py, repo tests unchanged). One run, 10 rows (work/rf1.log, copied to evidence/rf1.log):
+007032f0   RELOCATION_MATCH PASS   OnCreate
+006ea2c0   RELOCATION_MATCH PASS   PerformSequenceReset
+006eb390   RELOCATION_MATCH PASS   SetupNextSequenceForAttacker
+006eb600   RELOCATION_MATCH PASS   GetNextActionForCreature
+008cc8e0   RELOCATION_MATCH PASS   Initialise
+007fd580   RELOCATION_MATCH PASS   UpdateAdditionalImpulse
+0064f6dc   RELOCATION_MATCH PASS   DrawOracleSymbols
+0064499c   RELOCATION_MATCH PASS   Draw
+0049e8c0   RELOCATION_MATCH PASS   StopAutoSaveProgress
+009e9f20   RELOCATION_MATCH PASS   StopProgress
+# 65 WARN SHARED_HEADER_AVAILABLE lines: local models the rows already had at HEAD (no class newly modelled). 3 WARN RELOC_NAME lines are callee labels unrelated to this batch (DELTA_NOTIONAL_ZERO in 0x007032F0, ApplyBlockResponse in 0x006EB390, GlobalPlayerGui in 0x0064F6DC; same at HEAD).

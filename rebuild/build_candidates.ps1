@@ -41747,7 +41747,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009e9f20'
-        Module = '_global'
+        Module = 'NProgressDisplay'
         Source = '00/9e/global_StopProgress_009e9f20.cpp'
         TestSource = '00/9e/global_StopProgress_009e9f20_test.cpp'
         PassPattern = 'OK_009e9f20'

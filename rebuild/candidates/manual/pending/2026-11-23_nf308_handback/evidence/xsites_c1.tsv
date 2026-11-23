@@ -1,0 +1,36 @@
+005bff07	call	004e7ccc	004e7cc3L CTCInventoryClothing::CTCInventoryClothing
+005bff07	call	00578338	0057832dL CTCInventoryExperience::CTCInventoryExperience
+005bff07	call	00590d3e	00590d32L CTCInventory::CTCInventory
+005bff07	call	0059eb17	0059eb0cL CTCInventoryTrade::CTCInventoryTrade
+005bff07	call	005c3952	005c3947L CTCInventoryWeapons::CTCInventoryWeapons
+005bff07	call	005cd2ae	005cd2a6L CTCInventoryStats::CTCInventoryStats
+005bff07	call	005f3bdc	005f3bcfL CTCInventoryAbilities::CTCInventoryAbilities
+005bff07	call	00606d2a	00606d20L CTCInventoryMap::CTCInventoryMap
+005bff07	call	0061a42a	0061a420L CTCInventoryQuests::CTCInventoryQuests
+004bffc0	call	00646738	00646709L NPlayerGui::CDrawHighlightingTargetingCursor::Clear
+004bffc0	call	0064c05d	0064bfbaL NPlayerGui::CDrawHighlightingTargetingCursor::Draw
+0077c490	call	00703457	007032f0L CThingObject::OnCreate
+005bff07	call	0072db99	0072db90L CTCInventoryMagic::CTCInventoryMagic
+004bfae0	call	0078ce82	-
+004bffc0	call	0079eadd	0079eaa0L CTCPhysicalShieldSpell::FinalCleanup
+004bffc0	call	007cc170	007cc120L CTCMultiArrow::RemoveEffectOnWeapon
+004bfae0	call	007cc178	007cc120L CTCMultiArrow::RemoveEffectOnWeapon
+004bfae0	call	007cd940	007cd930L CTCBurntEffect::FinalCleanup
+004bfae0	call	007cd96e	007cd930L CTCBurntEffect::FinalCleanup
+004bfae0	call	007ce3a1	007ce390L CTCElectrocutedEffect::FinalCleanup
+004bffc0	call	007ce3a9	007ce390L CTCElectrocutedEffect::FinalCleanup
+004bfae0	call	007ce3d1	007ce3c0L CTCElectrocutedEffect::OnKill
+004bffc0	call	007ce3d9	007ce3c0L CTCElectrocutedEffect::OnKill
+004bfae0	call	007ce401	007ce3f0L CTCElectrocutedEffect::OnRemove
+004bffc0	call	007ce409	007ce3f0L CTCElectrocutedEffect::OnRemove
+004bfae0	call	007cf050	007cf040L CTCCreatureTintEffect::FinalCleanup
+004bfae0	call	007cf07e	007cf040L CTCCreatureTintEffect::FinalCleanup
+004bffc0	call	007d8ee2	007d8e20L CTCTavernGameSpotTheAddition::FrameUpdate
+004bfae0	call	007e33dc	007e33b0L CTCFlashOnHit::FrameUpdate
+004bfae0	call	007e343d	007e3420L CTCFlashOnHit::~CTCFlashOnHit
+004bfae0	call	007e6668	007e6450L CTCOracleMinigame::UpdateTints
+004bffc0	call	008f182a	008f17d0L CTCTavernGameCardBase::TurnCardsBack
+004bffc0	call	008f19e8	-
+00ed4420	call	00ed4272	00ed41d0L NScript::CV_StatueMasterScript::CStatueMasterStatue::Main
+00ed4420	call	00ed45b3	00ed45a0L NScript::CV_StatueMasterScript::CStatueMasterCellarDoors::Ma
+00ed4420	call	00ed4836	00ed4830L NScript::CV_StatueMasterScript::CStatueMasterChest::Main

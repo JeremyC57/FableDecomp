@@ -1,0 +1,8 @@
+## HEAD set: H_0077c490.obj H_007032f0.obj
+duplicates 0
+
+UNRESOLVED 1 ?SetRotationAngle@CTCGraphicAppearanceSprite@@QAEXM@Z
+## new set: H_0077c490.obj N_007032f0.obj
+duplicates 0
+
+LK_DONE
