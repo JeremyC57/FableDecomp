@@ -38,13 +38,17 @@ def mentions(name, own):
         alltext = {}
         for f in glob.glob("rebuild/src/compiled/*/*/*.cpp") + glob.glob("rebuild/tests/*/*/*.cpp"):
             alltext[f] = open(f, encoding="utf-8", errors="replace").read()
-    return [f for f, t in alltext.items() if name in t and os.path.basename(f) not in own]
+    return set(f for f, t in alltext.items() if name in t and os.path.basename(f) not in own)
 res = [];  cands = []
 # identity guard (landing pilot 1): the PDB name must belong to this address alone. Reject when the catalog names another address
 # Class::Method, or another landed row's graded symbol already is the PDB symbol (0x00408360 v 0x00438440 ForceClose, ...).
 catname = {}
 for l in open("rebuild/oracles/auto-re-candidates.tsv").read().splitlines()[1:]:
     q = l.split("\t"); catname.setdefault(q[1], set()).add(q[0].lower())
+tbl = {}
+for l in open("rebuild/oracles/reloc_bindings.tsv", encoding="utf-8", errors="replace").read().splitlines()[1:]:
+    q = l.split("\t")
+    if len(q) > 1: tbl.setdefault(q[0], set()).add(q[1].lower())
 symaddr = {}
 for k, v in sym.items(): symaddr.setdefault(v, set()).add(k)
 for a in sorted(ent):
@@ -79,7 +83,19 @@ for a, cls, meth, old, newsym in cands:
     kv = ent[a]; path = "rebuild/src/compiled/" + kv["Source"]; src = open(path, encoding="utf-8").read()
     fn = f"{cls}_{meth}"
     others = mentions(fn, {os.path.basename(path), os.path.basename(kv.get("TestSource", "") or "x")})
-    if others: res.append((a, "SKIP", old, newsym, "other landed files name " + fn + ": " + ",".join(os.path.basename(o) for o in others[:3]))); continue
+    if others: res.append((a, "SKIP", old, newsym, "other landed files name " + fn + ": " + ",".join(sorted(os.path.basename(o) for o in others)[:3]))); continue
+    # source-level identity guard (advisor, 2026-11-23): most landed rows are not measured yet, so also reject when another landed source or
+    # test already spells the PDB symbol or defines / declares Class::Method.
+    own = {os.path.basename(path), os.path.basename(kv.get("TestSource", "") or "x")}
+    # a claim is a definition, not a call: a `// Leaf:` line carrying the PDB symbol, a body `Class::Method(...) [const] {`, or a file
+    # named for Class_Method at another address (callers that spell the PDB name agree with it; they are not claims).
+    claim = [f for f in mentions(cls + "::" + meth, own) | set(mentions(newsym, own)) | set(mentions(fn + "_", own))
+             if re.search(r'^\s*//\s*Leaf:.*' + re.escape(newsym), alltext[f], re.M)
+             or (not f.endswith("_test.cpp") and re.search(r'\b' + cls + r'::' + meth + r'\s*\([^;{}]*\)\s*(?:const\s*)?\{', alltext[f]))
+             or re.match(fn + r'_[0-9a-f]{8}(_test)?\.cpp$', os.path.basename(f))]
+    claim += [f for f in alltext if re.match(fn + r'_[0-9a-f]{8}(_test)?\.cpp$', os.path.basename(f), re.I) and os.path.basename(f) not in own]
+    claim += ["reloc_bindings.tsv -> " + g for g in sorted(tbl.get(newsym, set()) - {a})]   # the table binds the PDB name to another address
+    if claim: res.append((a, "SKIP", old, newsym, "identity: another landed source spells " + cls + "::" + meth + ": " + ",".join(sorted({os.path.basename(o) if "/" in o else o for o in claim})[:3]))); continue
     # v3 parameter forms: (const C* p), (C* p), (C* const p), (struct / class C* p), (void* p), (const void* p), ()
     rx = re.compile(r'^(?P<ret>[^\n;{}()]*?)\b__fastcall\s+' + fn + r'\s*\(\s*(?:(?P<c>const\s+)?(?:class\s+|struct\s+)?(?P<t>' + cls +
                     r'|void)\s*\*\s*(?:const\s+)?(?P<p>\w+)|(?P<none>(?:void)?))\s*\)\s*\n?\s*\{', re.M)

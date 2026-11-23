@@ -98,3 +98,27 @@ These are separate problems; a proposal is sized by the addresses it closes and 
   1. Generate add-only opt-in declarations for the 498, with equiv_check and a planted control per header.
   2. Move the 271 together with their binders.
   3. Rerun the candidate scan once the measurement pass finishes (it adds the rows the gate never covered).
+
+## Advisor review of the next step (same day)
+
+The owner had the advisor decide whether the header opt-in route should come next. Verdict: yes, as a bounded pilot of 20-30
+non-virtual rows on 3-5 headers. It uses the landed `FLAT_*` opt-in form, one equiv_check and one planted control per header, and stops if
+acceptance falls well below the local route's 86% or the 180 s compile timeouts persist. The advisor ordered these steps before it:
+
+1. **Rerun the local-model route on the newly measured rows.** No new yield. All 5 accepted rows were pilot 1's held identity rows coming
+   back, because the old guard only saw measured symbols and the catalog. The 11 rejected rows match last time's.
+2. **Close the identity-guard gap.** `flatten_pilot.py` now also rejects a candidate when another landed source:
+   - carries the PDB symbol in a `// Leaf:` line;
+   - defines `Class::Method(...) {` (test stubs excluded);
+   - is a file named `Class_Method_<other address>`;
+   - or when `reloc_bindings.tsv` binds the PDB symbol to another address.
+
+   Calls that spell the PDB name are agreement, not claims. Checked on pilot 1: 0 of the 79 landed rows flagged, 7 of the 10 held rows
+   flagged. The other 3 are not conflicts. The table already binds 0x00662090's and 0x006D6570's PDB symbols to those same addresses, and
+   0x00B25D00's callers spell the PDB name. 0x006D6570 still has a second binder spelling `@Sub_GetExperiencePickUpMultiplier@4` (0x00899C90),
+   so it lands as a unit with that caller.
+3. **Count the 271 "named by other files" rows before routing them.** 237 of them (15 names) are not caller units: they are shared-name
+   clusters. Examples: `CTCCarryable_OnKill` is defined by 173 landed rows in two pointer forms, `CGuiVarTransferBool_TransferToGui` by 18 and
+   `CTCInventoryItem_OnDie` by 18. That is one made-up name on many addresses, so at most one row per name can be the PDB member. They are
+   queued as `flatten2 ... shared-name cluster` in T3_PORT_QUEUE.tsv. The 34 true caller units have 90 caller files: 17 with a local model,
+   47 header-only and 26 with neither. So the caller route depends mostly on the header pilot.
