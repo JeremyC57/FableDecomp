@@ -65,7 +65,7 @@ class CAnimateThing { public:
     CAnimFrameInfo Frame;                           // +0x1C
     CAnimFrameInfo GetFrame() const { return Frame; }
     void SetInternalAlpha(long layer, float alpha, bool immediate);  // 0x0070C280
-    void SetMainAnim(CAnimInit* init, long blendTime, long delay);   // 0x0070D580
+    void SetMainAnim(const CAnimInit& init, long blendTime, long delay);   // 0x0070D580 (NF313: the PDB parameter type, both PDBs)
     void AddBlendAnim(long anim, float alpha);                       // 0x0070D2F0
 };
 template<class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
@@ -116,7 +116,7 @@ void CModeStandBase::SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStat
         init.Frame = animate.GetFrame();
         animate.State = 4;
     }
-    animate.SetMainAnim(&init, blendTime, delay);
+    animate.SetMainAnim(init, blendTime, delay);
     animate.SetInternalAlpha(0, 1.0f - alpha, false);
     animate.AddBlendAnim(to.GetBankIndex(), alpha);
 }

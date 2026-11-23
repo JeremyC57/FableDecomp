@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0097E330	?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z	Ego_r.pdb + FableWin.pdb IAE; owner + 4 binders fixed in this hand-back (rows 0x0097E330 / 0x00967930 / 0x00967B40 / 0x00968BC0 / 0x009689C0)	?SetPushableByHero@CAIStateGroupBaseI@@QAEX_N@Z (0x00944DB0, made-up class: T3 port, still open)

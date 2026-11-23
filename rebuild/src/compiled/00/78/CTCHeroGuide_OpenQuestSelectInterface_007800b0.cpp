@@ -118,7 +118,7 @@ class CCharString { public:
 };
 class CFontBank;
 class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+    void SetText(const CFontBank& font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1 (NF313: the PDB parameter type, both PDBs)
 };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -168,7 +168,7 @@ void CTCHeroGuide::OpenQuestSelectInterface()
         } else {
             CCharString text("TEXT_GUI_QUESTS_NO_AVAILABLE", -1);
             const CMainGameComponent* component = &PeekComponent();
-            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(component->PCutSceneMainFont_Data, text, 0x122, 4.0f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*component->PCutSceneMainFont_Data, text, 0x122, 4.0f, false, true);
         }
     }
 }

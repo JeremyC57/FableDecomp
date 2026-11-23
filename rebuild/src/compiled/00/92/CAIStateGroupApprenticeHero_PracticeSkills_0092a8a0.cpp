@@ -7,6 +7,7 @@
 //   "CARRY_SLOT_RIGHT_HAND" 0x01265440, "CARRY_SLOT_LEFT_HAND" 0x01265428.
 // Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 #include "fable_compiler.h"
+#include "engine/EMovementType.h"   // NF313: the PDB parameter enum of AIAction_MinionWander
 class CThing;
 class CCharString { public:
     void* PStringData;
@@ -64,6 +65,7 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 enum EAIActionReturn { };
+class CThingBuilding;                          // NF313: the PDB parameter class of AIAction_MinionWander
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -75,7 +77,7 @@ class CAIStateGroupBase { public:
     protected: EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   protected: // 0x0097D6F0
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
-    long AIAction_MinionWander(long movementType, CThing* building);   // 0x0097F870
+    protected: EAIActionReturn AIAction_MinionWander(EMovementType movementType, CThingBuilding* building); public:   // 0x0097F870 (NF313: IAE, both PDBs)
     FABLE_FORCEINLINE unsigned long Random()
     {
         unsigned long* seed = GetPWorldSeed();
@@ -149,7 +151,7 @@ bool CAIStateGroup_ApprenticeHero::PracticeSkills()
         if (stepFailed)
             goto failed;
         if ((DummyType == 0 || DummyType == 2) && (Random() & 3) == 0) {
-            if (AIAction_MinionWander(3, 0) != 2 || !MoveToAppropriateDummy())
+            if (AIAction_MinionWander(AI_MOVEMENT_WALKING, 0) != 2 || !MoveToAppropriateDummy())
                 goto failed;
         }
         if (!IsDummyTypeLegal(DummyType))

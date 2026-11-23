@@ -1,0 +1,23 @@
+0097e330	call	00944e75	00944db0L CAIStateGroup_WorkHammerAnvil::OnReplace
+0097e330	call	00945167	00945060L CAIStateGroup_WorkHammerAnvil::Update
+0097e330	call	009451e0	00945060L CAIStateGroup_WorkHammerAnvil::Update
+0097e330	call	009453f4	00945060L CAIStateGroup_WorkHammerAnvil::Update
+0097e330	call	00967634	-
+0097e330	call	0096796f	00967930L CAIStateGroup_TavernServer::PickUpJug
+0097e330	call	009679ef	00967930L CAIStateGroup_TavernServer::PickUpJug
+0097e330	call	00967a08	00967930L CAIStateGroup_TavernServer::PickUpJug
+0097e330	call	00967b9b	00967b40L CAIStateGroup_TavernServer::FillTankard
+0097e330	call	00967c28	00967b40L CAIStateGroup_TavernServer::FillTankard
+0097e330	call	00967ce7	00967b40L CAIStateGroup_TavernServer::FillTankard
+0097e330	call	009689ce	009689c0L CAIStateGroup_TavernKeeper::LeanOnBar
+0097e330	call	00968a4b	009689c0L CAIStateGroup_TavernKeeper::LeanOnBar
+0097e330	call	00968b7d	009689c0L CAIStateGroup_TavernKeeper::LeanOnBar
+0097e330	call	00968ba0	009689c0L CAIStateGroup_TavernKeeper::LeanOnBar
+0097e330	call	00968def	00968bc0L CAIStateGroup_TavernKeeper::OnReplace
+0097e330	call	00968fd8	-
+0097e330	call	00969022	-
+0097e330	call	009691e1	-
+0097e330	call	0096929a	-
+0097e330	call	009692cb	009692c0L CAIStateGroup_TavernKeeper::ReceivePayment
+0097e330	call	009692f9	009692c0L CAIStateGroup_TavernKeeper::ReceivePayment
+0097e330	call	00969458	009692c0L CAIStateGroup_TavernKeeper::ReceivePayment

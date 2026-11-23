@@ -1,0 +1,16 @@
+H 00b242a0 CEngine::ClipBox RELOCATION_MATCH flags= [] leaf=
+H 00bacbd0 CEngineInternalPrimitiveOcclusionGroup::GetBoundingBoxTransform RELOCATION_MATCH flags= [] leaf=
+H 00bc5fc0 CEngineInternalPrimitiveGroup::GetBoundingBoxTransform RELOCATION_MATCH flags= [] leaf=
+H 00861a80 CModeStandBase::SetUpMovementAnim RELOCATION_MATCH flags= [] leaf=SetUpMovementAnim
+H 00b3a910 CEngineInternalAttachedPrimitive::CEngineInternalAttachedPrimitive RELOCATION_MATCH flags= [] leaf=??0CEngineInternalAttachedPrimitive
+H 006cef20 CTCWife::InitiateDivorce RELOCATION_MATCH flags= ['/GS'] leaf=
+H 00729b20 CTCActionUseScriptedHook::OnActionUse RELOCATION_MATCH flags= [] leaf=?OnActionUse@CTCActionUseScriptedHook@@QAEXAAVCThing@@@Z
+H 007800b0 CTCHeroGuide::OpenQuestSelectInterface RELOCATION_MATCH flags= ['/GS'] leaf=
+H 008139c0 CTCBoastingPodium::OnHeroEnterBoastArea RELOCATION_MATCH flags= [] leaf=?OnHeroEnterBoastArea@CTCBoastingPodium@@QAEXJ_NAAVCThingCreatureBase@@@Z
+H 00849380 CCreatureAction_BuyThingFromShop::PerformAction RELOCATION_MATCH flags= [] leaf=PerformAction
+H 007df4b0 CTCWallMountEffects::OnWallMountUseAction RELOCATION_MATCH flags= [] leaf=?OnWallMountUseAction@CTCWallMountEffects@@QAE_NAAVCThingCreatureBase@@@Z
+H 009d5a90 CBankFileAsync::RestartAbortedReads RELOCATION_MATCH flags= [] leaf=?RestartAbortedReads@CBankFileAsync@@AAEXXZ
+H 0088e0b0 CGameScriptInterface::SetSoundThemesAsEnabledForRegion RELOCATION_MATCH flags= [] leaf=
+H 006ea450 CCombatManager::SetAttackerAsReadyToAttack RELOCATION_MATCH flags= [] leaf=?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
+H 006eabb0 CCombatManager::UpdateAttackingCombatantSequenceResets RELOCATION_MATCH flags= [] leaf=
+GR_DONE

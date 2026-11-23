@@ -1,0 +1,8 @@
+H 00adebc0 C3DBoundingBox::CalculateMatrix RELOCATION_MATCH flags= [] leaf=CalculateMatrix@C3DBoundingBox
+H 00b8ff00 CEngineInternalPrimitiveBase::CEngineInternalPrimitiveBase RELOCATION_MATCH flags= [] leaf=
+H 00492ed1 CSubtitleRenderer::SetText RELOCATION_MATCH flags= ['/O1', '/Oy-'] leaf=?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+H 00492fb4 CSubtitleRenderer::SetText RELOCATION_MATCH flags= ['/O1', '/Oy-'] leaf=?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z
+H 0098f350 CThreadedFile::AddObject RELOCATION_MATCH flags= [] leaf=?AddObject@CThreadedFile
+H 004fc210 CWorldMap::GetRegionNumberFromName RELOCATION_MATCH flags= [] leaf=GetRegionNumberFromName
+H 006ea2c0 CCombatManager::PerformSequenceReset RELOCATION_MATCH flags= [] leaf=?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+GR_DONE

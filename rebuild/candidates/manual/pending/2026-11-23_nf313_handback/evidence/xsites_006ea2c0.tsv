@@ -1,0 +1,7 @@
+006ea2c0	call	006ea446	006ea430L CCombatManager::DeregisterCombatant
+006ea2c0	call	006ea531	006ea450L CCombatManager::SetAttackerAsReadyToAttack
+006ea2c0	call	006ea5dd	006ea540L CCombatManager::SetCreatureAsAttemptedToPerformedAction
+006ea2c0	call	006eabe1	006eabb0L CCombatManager::UpdateAttackingCombatantSequenceResets
+006ea2c0	call	006eac2e	006eabb0L CCombatManager::UpdateAttackingCombatantSequenceResets
+006ea2c0	call	006eb3f4	006eb390L CCombatManager::SetupNextSequenceForAttacker
+006ea2c0	call	006eb6b3	006eb600L GetNextActionForCreature

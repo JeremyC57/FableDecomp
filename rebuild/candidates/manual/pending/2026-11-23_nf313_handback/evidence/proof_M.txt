@@ -1,0 +1,8 @@
+##### 0092a8a0 renames: ?AIAction_MinionWander@CAIStateGroupBase@@QAEJJPAVCThing@@@Z=?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z
+sections head 19 new 19
+ALL_EQ text_sections_equal=8
+tables H=1 N=1
+##### 0092b3e0 renames: ?AIAction_MinionWander@CAIStateGroupBase@@QAEJJPAVCThing@@@Z=?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z
+sections head 15 new 15
+ALL_EQ text_sections_equal=8
+tables H=1 N=1

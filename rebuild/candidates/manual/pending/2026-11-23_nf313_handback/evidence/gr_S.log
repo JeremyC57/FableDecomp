@@ -1,0 +1,4 @@
+H 0090f0d0 CAIStateGroup_MinionReactToAlert::Initialise RELOCATION_MATCH flags= [] leaf=
+H 0095a890 CAIStateGroup_HoverHornetQueen::Initialise RELOCATION_MATCH flags= [] leaf=?Initialise@CAIStateGroup_HoverHornetQueen@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z
+H 007bb150 CTCTrespasser::SeeIfAnyOccupantsKnowAboutDeed RELOCATION_MATCH flags= [] leaf=SeeIfAnyOccupantsKnowAboutDeed
+GR_DONE

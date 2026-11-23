@@ -1,4 +1,5 @@
 // CAIStateGroupBase::SetPushableByHero(bool pushable) -- writes the flag (+0x79) on the creature's interface-170 component when the creature has that interface
+// Leaf: ?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097E330, length 69 bytes.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (landed callers).
@@ -50,7 +51,7 @@ class CAIBrain { public:
 class CAIStateGroupBase { public:
     void*     __vftable;                    // +0x00
     CAIBrain* PBrain;                       // +0x04
-    void SetPushableByHero(bool pushable);
+protected: void SetPushableByHero(bool pushable);      // NF313: IAE (Ego_r.pdb + FableWin.pdb)
 };
 
 void CAIStateGroupBase::SetPushableByHero(bool pushable)

@@ -3333,7 +3333,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?GetSoundSystem@@YGPAUCSoundSys@@H@Z	0040d2a0	0088e090
 ?SetAllMuted@CSoundSys@@QAEXXZ	00408340	0088e090
 ?GetCategoryWithIndex@CTCInventoryBase@NInventory@@QAEPAVCCategory@@J@Z	004fb490	0088e0b0
-?GetRegionNumberFromName@CWorldMap@@QAEJPBVCCharString@@@Z	004fc210	0088e0b0
 ?IsPickPocketable@CThing_Retail@@QAE_NXZ	00665e90	0088e220
 ?IsMapLoadedOnPlayerProximity@CWorldMap_Retail@@QAE_NJ@Z	004fd000	0088e2a0
 ?CRegions_GetEntry@@YIPAXPAUCRegions@@@Z	004fc180	0088e340
@@ -5281,7 +5280,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??0CBaseClassNonCopyable@@IAE@XZ	0099a2f0	00b39f30
 ??_7CEnginePrimitiveAttachmentManager@@6BCEngineComponent@@@	012a1a78	00b39f30
 ??_7CEnginePrimitiveAttachmentManager@@6BCBaseClassNonCopyable@@@	012a1ab0	00b39f30
-??0CEngineInternalPrimitiveBase@@QAE@JJ@Z	00b8ff00	00b3a910
 ??_7CEngineInternalAttachedPrimitive@@6B@	012a1a04	00b3a910
 ??_7CEngineInternalAttachedPrimitiveInfo@@6B@	012a1ab8	00b3aae0
 ?Sub_Update@@YIXPAUSub@@@Z	009fc430	00b3b180
@@ -15267,7 +15265,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?_M_clear@?$vector@PBVCThingCreatureBase@@U?$allocator@PBVCThingCreatureBase@@@std@@@std@@QAEXXZ	006ce2a0	006ce230
 ?_M_insert_overflow@?$vector@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@IAEXPAPBVCThingCreatureBase@@ABQBV3@ABU__true_type@2@I_N@Z	006ce570	006ce530
 ?Construct@CGroundNavigatorExternalInterface_Methods@@QAEPAVCNavigatorExternalInterface@@PAVCGroundNavigatorExternalInterface@@@Z	006ce670	006ce650
-?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z	00492ed1	006cef20
 ?GetSubDef@CDefClassBase@@QAE_NPAPAVCWifeDef@@@Z	006d3dc0	006cf480
 ?TransferOut@?$CPersistTraits@U?$pair@VCCharString@@J@@@@QAEXPAVCPersistContext@@PAVCCharString@@PAU?$pair@VCCharString@@J@@@Z	006d3880	006d3810
 ?TransferIn@?$CPersistTraits@U?$pair@VCCharString@@J@@@@QAEXPAVCPersistContext@@PAVCStringParser@@PAU?$pair@VCCharString@@J@@@Z	006d41f0	006d4180
@@ -15585,7 +15582,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetEvent@CTCEntityEvents@@QAE_NPAPAVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind2@VCIsHitEventHitBy@NEntityEvents@@VCIsHitEventHitByShot@2@@@@Z	007de2e0	007dd990
 ??0CCreatureAction_DragonFlight@@QAE@PAVCThingCreatureBase@@ABVCCharString@@@Z	008f4cb0	007ddcc0
 ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z	0075c040	007ddf90
-?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@111KM_N2@Z	00492fb4	007df4b0
 ?StartTeleporting@CTCTeleporter@@QAEXPAVCThingPlayerCreature@@@Z	007dff90	007df6a0
 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishDef@@@@@Z	007b2600	007dfb20
 ?IsAvailableForHeroSprint@@YI_NPAVCThing@@@Z	0085f470	007e0670
@@ -27666,7 +27662,6 @@ __aullrem	00bfebb0	00770e80
 ??0CCreatureAction_AimMissileWeapon@@QAE@PAVCThingCreatureBase@@@Z	00718710	0092a8a0
 ??1CCreatureAction_FireMissileWeapon@@UAE@XZ	0078adf0	0092a8a0
 ?AIAction_LookAtThing@CAIStateGroupBase@@QAEJJUCIntelligentPointerConstThing@@JM@Z	0097d6f0	0092a8a0
-?AIAction_MinionWander@CAIStateGroupBase@@QAEJJPAVCThing@@@Z	0097f870	0092a8a0
 ?DestroyItem@CAIStateGroup_ApprenticeHero@@QAEXABVCCharString@@@Z	008fd1b0	0092a8a0
 ?GetDummy@CAIStateGroup_ApprenticeHero@@QAE_NXZ	0092a0c0	0092a8a0
 ?GiveCarriedObject@CAIStateGroup_ApprenticeHero@@QAEXABVCCharString@@0@Z	008fd0a0	0092a8a0
@@ -28714,7 +28709,6 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?Reset@?$CCountedPointer@VCHitParameters@@@@QAEXPAVCHitParameters@@@Z	00812280	00811760
 ??0CIntelligentPointerConstThing@N_007b82c0@N_0065e133@@QAE@PAVCThing@@@Z	0065e133	00967650
 ??4CIntelligentPointerConstThing@N_007b82c0@N_0065e133@@QAEAAU012@ABU012@@Z	007b82c0	00967650
-?AddObject@CThreadedFile@@QAEKPAVCThreadedFileObjectDesc@@@Z	0098f350	009d5a90
 ?_M_erase@CPointerSet@@QAEXPAUSRbTreeNode@@@Z	009d7430	009d5a90
 ??0CCriticalSectionLock_Retail@@QAE@PAUCRITICAL_SECTION_Fable@@_N@Z	00a62920	009d5b60
 ??1CCriticalSectionLock_Retail@@QAE@XZ	00a629a0	009d5b60
@@ -29025,7 +29019,6 @@ __imp__GetFileSizeEx@8	0143fd5c	009c4440
 ??0CCreatureAction_FillTankardFromJug@@QAE@PAVCThingAICreature@@@Z	00842a80	00967b40
 ??0CCreatureAction_PutDownJug@@QAE@PAVCThingAICreature@@@Z	00842af0	00967b40
 ?IsServingPointValid@CAIStateGroup_TavernServer@@QAE_NXZ	00967250	00967b40
-?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z	0097e330	00967b40
 ?SplitPath@CAFile@@SIXABVCCharString@@PAV2@111@Z	009976d0	009914e0
 ?g_EmptyString@@3QBDB	0129aaf4	009914e0
 _tolower	00bfed10	0099ed10
@@ -32765,7 +32758,6 @@ _lzo1x_999_compress	00c08130	00a99840
 ?CreateComponent@Manager@RetailUI@@QAEPAUComponent@2@K@Z	0041d21b	005518e0
 ?Grow@ChildrenVector@RetailUI@@QAEXPAUPointer@2@ABU32@ABUTag@2@K_N@Z	005359d0	005518e0
 ?CreateComponent@CFrontEndManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@@Z	00594f94	00596a68
-?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z	00adebc0	00b242a0
 ?ClipBox@CEngineCamera@@QBE_NABVCMatrix3x4@@@Z	00b30610	00b242a0
 ?ClearHandles@CEnginePrimitiveOcclusionInfo@@QAEXXZ	00b2f8b0	00b2f8e0
 ?GetResult@CEngineOcclusionManager@@QAEKK_N@Z	00b8d0b0	00b2f8e0
@@ -37890,7 +37882,6 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?ReassignAttacker@CCombatWheel@@QAEXPAVCWorld@@PAUCCombatantInfo@@1PBVC3DVector@@@Z	006e80f0	006e9ec0
 ?SetAttackerRingAsRotating@CCombatManager@@QAEXABVCThingCreatureBase@@M@Z	006e9d90	006ea2c0
 ?Stop@CCombatSequenceBase@@QAEXXZ	008b0640	006ea2c0
-?PerformSequenceReset@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	006ea2c0	006ea450
 ?OnActionPerformed@CCombatSequenceBase@@QAEXXZ	008b0600	006ea540
 ?ResetAttackerSequence@CCombatManager@@QAEXABVCThingCreatureBase@@@Z	006ea2c0	006ea540
 ?GetBestSequenceIndexAttackerOnDefender@CCombatManager_Retail@@QAEJAAUCCombatantInfo@@0@Z	006eae20	006eb9f0
@@ -38045,7 +38036,6 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?GetDelayTime@CAnimationEntry@@QBEJXZ	005dc1f0	00861a80
 ?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z	0073a690	00861a80
 ?SetInternalAlpha@CAnimateThing@@QAEXJM_N@Z	0070c280	00861a80
-?SetMainAnim@CAnimateThing@@QAEXPAVCAnimInit@@JJ@Z	0070d580	00861a80
 ?glyphTextureCacheGlyphAdjustment@?A0x17dbab28@@3PAVCStreamingGlyphAdjustment@@A	013bda40	009a14e0
 ??3CMemoryAllocator@@KIXPAX@Z	009f1f90	009a1660
 ?GetNoAllocations@CMemoryAllocator@@QAEKXZ	009f1f10	009a1660

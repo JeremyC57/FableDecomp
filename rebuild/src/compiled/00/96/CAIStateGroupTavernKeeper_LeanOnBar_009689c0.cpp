@@ -70,7 +70,7 @@ class CAIStateGroupBase { public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
-    void SetPushableByHero(bool pushable);      // 0x0097E330
+    protected: void SetPushableByHero(bool pushable);      // 0x0097E330 (NF313: IAE, both PDBs; the next line is protected: already)
 protected:
     EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
 public:

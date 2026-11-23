@@ -1769,3 +1769,32 @@ nf309	0x0066ADD0	port	binder 007b0950 0079d020: census (tools/census309.py, NF29
 nf309	0x00787BF1	port	binder 00787c0c: census (tools/census309.py, NF299 Q4): every stand-in binder binds through a class / scope in neither PDB name set, the wrong class, or a free stand-in where the PDB has a member: 00787c0c:FREE
 nf309	0x004C79E0	port	binder 006cd9c0: census (tools/census309.py, NF299 Q4): every stand-in binder binds through a class / scope in neither PDB name set, the wrong class, or a free stand-in where the PDB has a member: 006cd9c0:WRONGCLS
 nf309	0x0085A840	part of the NF284 D4 deferred-12 unit	NF309 measured the DeleteData respells of 0x0085A840 / 0x00AC3A40 / 0x00618660 (bytes, objects and link pass) before finding them in the deferred-12 unit: the rows and their 4 table lines are in pending/2026-11-23_nf309_handback/reverted/unit5/ for that unit to pick up
+nf313	0x00AD6140	port	ENTRIES line 5: 0x00AD7050's local STLport map model is a struct with a struct allocator (U?$map / U?$allocator v the PDB V forms): a local STL model tag port (NF311 Q2 shape); 0x00ACA450 binds the made-up X_00aca450 scope
+nf313	0x00592DFB	port	ENTRIES line 6: 0x00593E10 binds the pair copy ctor of ANOTHER element type (CContextSensitiveItemDef) at this folded body (GOTCHAS 458: borrowed element type = port); the other two bind made-up classes
+nf313	0x00A81D90	port	ENTRIES line 7: 0x00A828C0's local STLport text declares pair as a class (PAV?$pair) where the PDB has struct; the tag fix renames the row's own partial_sort instantiation too (NF311 Q2 shape: T3)
+nf313	0x00462E78	port	ENTRIES line 8: 0x00D34FD0 binds the abbreviated one-argument vector<bool> of its local model (no allocator); 0x00462E2D the made-up CBoolVector
+nf313	0x00A80EE0	port	ENTRIES line 9: 0x00A85810 binds vector<long> (borrowed element type at the folded operator=, GOTCHAS 458); the other two made-up SVector* classes
+nf313	0x00A83D70	port	ENTRIES line 10: as line 9 (vector<unsigned long> borrowed for vector<list<C2DLineF> >)
+nf313	0x0091A670	port	ENTRIES line 11: the binders bind a non-template AIAction_WaitForMessage (another name, `long` repeat) for the PDB member template AIAction_WaitForMessageCallback<CFilter_Bind3<...> >: a different declaration, port
+nf313	0x0084E420	port	ENTRIES line 18 (owner not landed): 0x0056E330 passes `const CCameraModeDef*` where the PDB takes `const CDefPointer<const CCameraModeDef>&` (a type the row does not model: port); 0x00636E90 and 0x00699970 are NF309 witnesses; 0x00879620 binds the made-up CCameraModeBase
+nf313	0x009BEF80	port	ENTRIES line 23: 0x00B869A0 passes a `void*` viewport where the PDB takes `const C2DBoxI&` (a type its model lacks: port); the other two bind made-up view classes
+nf313	0x00A5D5F0	port	ENTRIES line 29: 0x00BCA770 declares the hidden-result ABI view `CVertexShader* (CVertexShader*, const CCharString&)` of the by-value PDB return: a by-value CVertexShader model is a port; 0x00B90270 is in T3_PORT_QUEUE
+nf313	0x00939C60	port	ENTRIES line 36: 0x00939D00 binds a non-template FindMostRecentMessage with ANOTHER filter (HasExtraData) for the PDB member template: different declaration, port
+nf313	0x00617780	port	ENTRIES line 37: 0x005FC620 binds GetAllThings (another name, struct stand-in CFilter_Bind2 / list) for GetAllLeafThings<...>: port
+nf313	0x0048D400	port	ENTRIES line 38: 0x004887C0 defines a same-TU noinline GetAllThings(const long&, vector<CThing*>&) stand-in body (strong copy; T3); 0x008A7F60 made-up
+nf313	0x00725F10	port	ENTRIES line 39 (owner not landed): 0x00726BE0 defines a same-TU noinline non-template stand-in body; 0x007C04A0 is an NF309 witness; 0x0092E950 made-up
+nf313	0x0065F604	port	ENTRIES line 41: 0x006594BB defines its own noinline template GetSubDef body in the TU (stand-in reconstruction, `CDefPointer<T>` without const); 0x006E0BE0 is in T3_PORT_QUEUE; the rest made-up
+nf313	0x00669580	port	ENTRIES line 42: both binders define stand-in GetSubDef bodies in their TU (Find_* stand-in callees): T3
+nf313	0x0073DBE0	port	ENTRIES line 43: 0x0073AFC0 defines a stand-in GetSubDef body (FindDef_ stand-in callee); 0x0073AF60 binds the wrong class (CThingBaseDef)
+nf313	0x0076FF90	port	ENTRIES line 44: 0x00770790's abbreviated local list<_Tp> model (no allocator argument): local STL model port
+nf313	0x00A81E80	port	ENTRIES line 45: as line 7 (local `class pair` in the partial_sort row)
+nf313	0x0047BA50	port	ENTRIES line 46: 0x0047C290's abbreviated local vector<T> model; 0x0047C250 made-up
+nf313	0x0047BB90	port	ENTRIES line 47: abbreviated local vector model; made-up CRetailVector12
+nf313	0x005BB346	port	ENTRIES line 48: abbreviated local vector model (defines the body); made-up CRetailVector* / CCompositeBlendDescVector
+nf313	0x006E22F0	port	ENTRIES line 49: 0x00AF59A0's vector / pair models live in NParticleEngine (re-scope of a local STL model whose operator= the TU names: port); 0x006E2570 made-up
+nf313	0x00A2B970	port	ENTRIES line 50: abbreviated local vector model; made-up AllocSecond
+nf313	0x00A83170	port	ENTRIES line 51: 0x00A85E40's local list<C2DLineF> argument lacks its allocator (abbreviated local STL model); made-up N00a85360
+nf313	0x00A83A30	port	ENTRIES line 52: as line 51 (and a class-tagged local pair)
+nf313	0x0065A8EE	port	ENTRIES line 58: 0x0090FD20 passes `CThing* creature = PBrain->PCreature;` (source lines 100-101) where the PDB takes CThingAICreature*, and `(CWorld*)&PeekWorld()` for `const CWorld&`: the first needs a cast across local models (GOTCHAS 459): port
+nf313	0x00777DB0	port	ENTRIES line 69: 0x0083ECF0 binds the STLport V?$char_traits form (stlport/fable_string.h `class char_traits`), which is the STLport spelling of this PDB's VC10 U form (NF301 / NF311 Q8: done-equivalent, not a fix target); 0x00777F80 binds the abbreviated non-template `basic_string::reserve` of its local model: port
+nf313	0x00686800	FAMILY UNIT (all-or-nothing, one family per hand-back): CTCBase(CThing*) ctor family	NF313 Q6: 58 landed sources declare the pointer-form CTCBase(CThing*) ctor behind one table witness; the PDB form takes a reference: one dedicated all-or-nothing unit

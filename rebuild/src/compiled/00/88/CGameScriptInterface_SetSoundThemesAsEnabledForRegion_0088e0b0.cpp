@@ -16,7 +16,7 @@ public:
 class CWorldMap
 {
 public:
-    long GetRegionNumberFromName(const CCharString* regionName);
+    long GetRegionNumberFromName(const CCharString& regionName) const;   // 0x004FC210 (NF313: the PDB QBE const-reference form, both PDBs)
 };
 
 namespace
@@ -62,7 +62,7 @@ void CGameScriptInterface::SetSoundThemesAsEnabledForRegion(
     CWorld* const pWorld = self->m_pWorld;
     const long regionNumber =
         reinterpret_cast<CWorldOverlay*>(pWorld)->m_pVTable->m_GetWorldMap(pWorld)
-            ->GetRegionNumberFromName(pName);
+            ->GetRegionNumberFromName(*pName);
     if (regionNumber > 0)
     {
         CWorld* const pWorld2 = self->m_pWorld;

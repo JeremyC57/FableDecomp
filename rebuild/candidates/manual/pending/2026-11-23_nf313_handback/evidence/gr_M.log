@@ -1,0 +1,4 @@
+H 0092a8a0 CAIStateGroup_ApprenticeHero::PracticeSkills RELOCATION_MATCH flags= [] leaf=
+H 0092b3e0 CAIStateGroup_SkillPractice::PracticeSkills RELOCATION_MATCH flags= [] leaf=
+H 0097f870 CAIStateGroupBase::AIAction_MinionWander RELOCATION_MATCH flags= [] leaf=?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z
+GR_DONE

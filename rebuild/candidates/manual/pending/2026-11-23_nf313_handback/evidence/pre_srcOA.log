@@ -1,0 +1,8 @@
+06:06:10 PASS /home/user/FableDecomp/rebuild/src/compiled/00/ad/C3DBoundingBox_CalculateMatrix_00adebc0.cpp
+06:06:10 PASS /home/user/FableDecomp/rebuild/src/compiled/00/b8/CEngineInternalPrimitiveBase_CEngineInternalPrimitiveBase_00b8ff00.cpp
+06:06:10 PASS /home/user/FableDecomp/rebuild/src/compiled/00/49/CSubtitleRenderer_SetText_00492ed1.cpp
+06:06:10 PASS_NOWCHAR /home/user/FableDecomp/rebuild/src/compiled/00/49/CSubtitleRenderer_SetText_00492fb4.cpp
+06:06:10 PASS /home/user/FableDecomp/rebuild/src/compiled/00/98/CThreadedFile_AddObject_0098f350.cpp
+06:06:10 PASS /home/user/FableDecomp/rebuild/src/compiled/00/4f/CWorldMap_GetRegionNumberFromName_004fc210.cpp
+06:06:10 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6e/CCombatManager_PerformSequenceReset_006ea2c0.cpp
+06:06:18 FAIL /home/user/FableDecomp/rebuild/src/compiled/00/70/CAnimateThing_SetMainAnim_0070d580.cpp

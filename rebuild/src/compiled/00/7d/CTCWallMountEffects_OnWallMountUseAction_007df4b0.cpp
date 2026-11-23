@@ -41,8 +41,8 @@ public:
 };
 
 class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CCharString& text, const CCharString& a, const CCharString& b, const CCharString& c,
-                 unsigned long colour, float time, bool b1, bool b2);   // 0x00492FB4
+    void SetText(const CFontBank& font, const CCharString& text, const CCharString& a, const CCharString& b, const CCharString& c,
+                 unsigned long colour, float time, bool b1, bool b2);   // 0x00492FB4 (NF313: the PDB parameter type, both PDBs)
 };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -137,7 +137,7 @@ bool CTCWallMountEffects::OnWallMountUseAction(CThingCreatureBase& creature)
             CCharString no("No");
             CCharString yes("Yes");
             CCharString empty("");
-            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, question, empty, yes, no, 4, 0.0f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, question, empty, yes, no, 4, 0.0f, false, true);
         }
         CreaturePerformingAction = CIntelligentPointer<CThingCreatureBase>(&creature);
         WaitingForConfirmation = WALL_MOUNT_CONFIRMATION_WAITING;

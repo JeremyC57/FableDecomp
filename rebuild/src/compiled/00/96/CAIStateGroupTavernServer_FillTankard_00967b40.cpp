@@ -87,7 +87,7 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
     void Terminate();                           // 0x008FCF40
     CThingAICreature* GetAICreature() const { return (CThingAICreature*)PBrain->PCreature; }
-    void SetPushableByHero(bool pushable);      protected: // 0x0097E330
+    protected: void SetPushableByHero(bool pushable);      protected: // 0x0097E330 (NF313: IAE, both PDBs)
     EAIActionReturn AIAction_DoNothing(); public:                  protected: // 0x0097E200
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool b); public:   // 0x0097DB70
 };

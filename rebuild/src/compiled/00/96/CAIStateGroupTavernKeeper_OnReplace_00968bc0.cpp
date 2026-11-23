@@ -77,7 +77,7 @@ class CAIStateGroupBase { public:
     CThing* GetCreature() const { return PBrain->PCreature; }
     CThingCreatureBase* GetCreatureBase() const { return (CThingCreatureBase*)PBrain->PCreature; }
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    void SetPushableByHero(bool pushable);      // 0x0097E330
+    protected: void SetPushableByHero(bool pushable); public:      // 0x0097E330 (NF313: IAE, both PDBs)
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
 };
 class CTCCarrying { public:                            // interface 0x46 on the creature

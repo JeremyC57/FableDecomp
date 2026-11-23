@@ -1,0 +1,60 @@
+##### 00b242a0 renames: ?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z=?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00bacbd0 renames: ?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z=?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00bc5fc0 renames: ?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z=?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00861a80 renames: ?SetMainAnim@CAnimateThing@@QAEXPAVCAnimInit@@JJ@Z=?SetMainAnim@CAnimateThing@@QAEXABVCAnimInit@@JJ@Z
+sections head 17 new 17
+ALL_EQ text_sections_equal=14
+tables H=0 N=0
+##### 00b3a910 renames: ??0CEngineInternalPrimitiveBase@@QAE@JJ@Z=??0CEngineInternalPrimitiveBase@@QAE@JK@Z
+sections head 9 new 9
+ALL_EQ text_sections_equal=6
+tables H=2 N=2
+##### 006cef20 renames: ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z=?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 00729b20 renames: ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z=?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 007800b0 renames: ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z=?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+sections head 33 new 33
+ALL_EQ text_sections_equal=31
+tables H=0 N=0
+##### 008139c0 renames: ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z=?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+sections head 17 new 17
+ALL_EQ text_sections_equal=11
+tables H=0 N=0
+##### 00849380 renames: ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z=?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+sections head 26 new 26
+ALL_EQ text_sections_equal=21
+tables H=0 N=0
+##### 007df4b0 renames: ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@111KM_N2@Z=?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z
+sections head 17 new 17
+ALL_EQ text_sections_equal=10
+tables H=1 N=1
+##### 009d5a90 renames: ?AddObject@CThreadedFile@@QAEKPAVCThreadedFileObjectDesc@@@Z=?AddObject@CThreadedFile@@QAEKABVCThreadedFileObjectDesc@@@Z
+sections head 11 new 11
+ALL_EQ text_sections_equal=10
+tables H=0 N=0
+##### 0088e0b0 renames: ?GetRegionNumberFromName@CWorldMap@@QAEJPBVCCharString@@@Z=?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 006ea450 renames: ?PerformSequenceReset@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z=?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+sections head 18 new 18
+ALL_EQ text_sections_equal=17
+tables H=0 N=0
+##### 006eabb0 renames: ?PerformSequenceReset@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z=?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

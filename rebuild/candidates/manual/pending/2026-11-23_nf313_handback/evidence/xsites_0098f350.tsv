@@ -1,0 +1,5 @@
+0098f350	call	009d5660	009d5650L CBankFileAsyncData::StartRead
+0098f350	call	009d5a21	009d5970L CBankFileAsyncEntry::SetupRead
+0098f350	call	009d5ad0	009d5a90L CBankFileAsync::RestartAbortedReads
+0098f350	call	00add2f3	00add240L CLHFile::Read
+0098f350	call	00add314	00add240L CLHFile::Read

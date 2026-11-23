@@ -1,0 +1,20 @@
+##### 0097e330 renames: ?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z=?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 00967930 renames: ?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z=?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=10
+tables H=1 N=1
+##### 00967b40 renames: ?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z=?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z
+sections head 23 new 23
+ALL_EQ text_sections_equal=21
+tables H=0 N=0
+##### 00968bc0 renames: ?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z=?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z
+sections head 28 new 28
+ALL_EQ text_sections_equal=25
+tables H=1 N=1
+##### 009689c0 renames: ?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z=?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z
+sections head 23 new 23
+ALL_EQ text_sections_equal=17
+tables H=0 N=0

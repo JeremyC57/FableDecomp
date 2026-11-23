@@ -1,0 +1,31 @@
+006c9fa0	call	0057c379	0057c2e6L CTCHeroStats::SetMorality
+006c9fa0	call	005841df	00584157L CTCInventory::SetThingAsQuickAccessItem
+006c9fa0	call	005b3d4d	005b3c95L CTCInventoryClothing::OnItemAdded
+006c9fa0	call	005be0e0	005be028L NInventory::CTCInventoryBase::OnItemAdded
+006c9fa0	call	005be0f7	005be028L NInventory::CTCInventoryBase::OnItemAdded
+006c9fa0	call	005be10d	005be028L NInventory::CTCInventoryBase::OnItemAdded
+006c9fa0	call	005ee48a	005ee418L CTCInventoryAbilities::FrameUpdate
+006c9fa0	call	0062a562	-
+006c9fa0	call	0062a5b4	-
+006c9fa0	call	0062a5e6	-
+006c9fa0	call	0062a647	-
+006c9fa0	call	0062a66f	-
+006c9fa0	call	0062b321	0062b070L CWorld::EAOpenHeroInformationScreen
+006c9fa0	call	0062b38f	0062b070L CWorld::EAOpenHeroInformationScreen
+006c9fa0	call	0064abef	-
+006c9fa0	call	0068e0bf	-
+006c9fa0	call	006ac64e	006ac430L CThingPlayerCreature::LearnExpression
+006c9fa0	call	006c6dd2	-
+006c9fa0	call	006d788b	006d77c0L CTCHeroExperience::AddExperience
+006c9fa0	call	0072e99d	0072e940L CTCActionUseBuyHouse::OnActionUseMain
+006c9fa0	call	0077d524	0077d4b0L CTCHeroCentre::OpenTrainingScreen
+006c9fa0	call	00784675	00784600L CTCCreatureGroupBoastingCrowd::OnHeroApproachBoastingArea
+006c9fa0	call	007b0d64	007b0cd0L CTCFishing::FrameUpdate
+006c9fa0	call	007e02e9	007e00d0L CTCTeleporter::FrameUpdate
+006c9fa0	call	007eb799	007eb6a0L CTCActionUseSearch::OnActionUse
+006c9fa0	call	00866ff3	00866fb0L CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath
+006c9fa0	call	00896472	00896390L CGameScriptInterface::OpenChest
+006c9fa0	call	00896d13	00896b60L CGameScriptInterface::KickOffQuestStartScreen
+006c9fa0	call	00898aaa	00898a50L CGameScriptInterface::GiveHeroTutorial
+006c9fa0	call	0089e76a	0089e710L CGameScriptInterface::DisplayTutorial
+006c9fa0	call	009608de	00960760L CAIStateGroup_DeedReactionRoot::OnReplace

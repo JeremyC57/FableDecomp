@@ -1,0 +1,21 @@
+## HEAD set: H_00b242a0.obj H_00bacbd0.obj H_00bc5fc0.obj H_00861a80.obj H_00b3a910.obj H_006cef20.obj H_00729b20.obj H_007800b0.obj H_008139c0.obj H_00849380.obj H_007df4b0.obj H_009d5a90.obj H_0088e0b0.obj H_006ea450.obj H_006eabb0.obj H_00adebc0.obj H_00b8ff00.obj H_00492ed1.obj H_00492fb4.obj H_0098f350.obj H_004fc210.obj H_006ea2c0.obj H_0070d580.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CEngineInternalPrimitiveBase@@QAE@JJ@Z
+UNRESOLVED 1 ?AddObject@CThreadedFile@@QAEKPAVCThreadedFileObjectDesc@@@Z
+UNRESOLVED 1 ?AddObject@CThreadedFileManager@@QAEKABVCThreadedFileObjectDesc@@PAVCThreadedFile@@@Z
+UNRESOLVED 3 ?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z
+UNRESOLVED 1 ?GetRegionNumberFromName@CWorldMap@@QAEJPBVCCharString@@@Z
+UNRESOLVED 2 ?PerformSequenceReset@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?SetMainAnim@CAnimateThing@@QAEXPAVCAnimInit@@JJ@Z
+UNRESOLVED 2 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@1111KM_N2@Z
+UNRESOLVED 1 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z
+UNRESOLVED 1 ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@111KM_N2@Z
+UNRESOLVED 5 ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z
+## new set: N_00b242a0.obj N_00bacbd0.obj N_00bc5fc0.obj N_00861a80.obj N_00b3a910.obj N_006cef20.obj N_00729b20.obj N_007800b0.obj N_008139c0.obj N_00849380.obj N_007df4b0.obj N_009d5a90.obj N_0088e0b0.obj N_006ea450.obj N_006eabb0.obj H_00adebc0.obj H_00b8ff00.obj H_00492ed1.obj H_00492fb4.obj H_0098f350.obj H_004fc210.obj H_006ea2c0.obj H_0070d580.obj
+duplicates 0
+
+UNRESOLVED 1 ?AddObject@CThreadedFileManager@@QAEKABVCThreadedFileObjectDesc@@PAVCThreadedFile@@@Z
+UNRESOLVED 2 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@1111KM_N2@Z
+UNRESOLVED 1 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z
+LK_DONE

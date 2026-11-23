@@ -79,7 +79,7 @@ class CCombatManager { public:
         std::map<unsigned __int64, CCombatantInfo>::iterator  it = Combatants.find(uid);
         return it != Combatants.end() && it->second.Attacked != 0;
     }
-    void PerformSequenceReset(CThingCreatureBase* creature);   // 0x006EA2C0
+    private: void PerformSequenceReset(CThingCreatureBase& creature); public:   // 0x006EA2C0 (NF313: AAE, both PDBs)
     void SetAttackerAsReadyToAttack(const CThingCreatureBase& creature, bool keepSequence);
 };
 
@@ -97,5 +97,5 @@ void CCombatManager::SetAttackerAsReadyToAttack(const CThingCreatureBase& creatu
             weapon->ResetAiming();
     }
     if (!keepSequence)
-        PerformSequenceReset(attacker);
+        PerformSequenceReset(*attacker);
 }

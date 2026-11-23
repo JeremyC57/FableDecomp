@@ -51,7 +51,7 @@ struct CCombatantInfo {
 };
 
 class CCombatManager { public:
-    void PerformSequenceReset(CThingCreatureBase* creature);   // 0x006EA2C0
+    private: void PerformSequenceReset(CThingCreatureBase& creature); public:   // 0x006EA2C0 (NF313: AAE, both PDBs)
     void UpdateCurrentAction(CThingCreatureBase* creature);    // 0x006E8400
     void UpdateAttackingCombatantSequenceResets(CCombatantInfo* info);
 };
@@ -62,13 +62,13 @@ void CCombatManager::UpdateAttackingCombatantSequenceResets(CCombatantInfo* info
     CThing* attacked = info->Attacked;
     CCombatSequenceBase* sequence = info->CombatSequences_first[info->CurrentSequence].m_pObject;
     if (sequence->IsFinished() && !sequence->IsZoneValid()) {
-        PerformSequenceReset(parent);
+        PerformSequenceReset(*parent);
         if (parent->IsPerformingAnyAction() && parent->IsFreeToFinishAction())
             parent->FinishCurrentAction();
         return;
     }
     if (sequence->IsResetOnTargetLost() && sequence->IsReadyToReset() && !NCreatureMode::IsAbleToBeAttacked(*attacked)) {
-        PerformSequenceReset(parent);
+        PerformSequenceReset(*parent);
         UpdateCurrentAction(parent);
     }
 }

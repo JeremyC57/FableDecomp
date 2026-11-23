@@ -1,0 +1,7 @@
+00adebc0	call	00b242ab	00b242a0L CEngine::ClipBox
+00adebc0	call	00b98d58	00b98d50L CEngineInternalPrimitiveRepeatedStaticMesh::GetBoundingBoxTr
+00adebc0	call	00b9d9c2	00b9d980L CEngineInternalPrimitiveStaticMesh::GetBoundingBoxTransform
+00adebc0	call	00b9e2d2	00b9e290L CEngineInternalPrimitive2DStaticMesh::GetBoundingBoxTransfor
+00adebc0	call	00baa418	00baa410L CEngineInternalPrimitiveRepeatedZSprite::GetBoundingBoxTrans
+00adebc0	call	00bacbe9	00bacbd0L CEngineInternalPrimitiveOcclusionGroup::GetBoundingBoxTransf
+00adebc0	call	00bc5fd9	00bc5fc0L CEngineInternalPrimitiveGroup::GetBoundingBoxTransform
