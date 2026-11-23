@@ -122,3 +122,14 @@ acceptance falls well below the local route's 86% or the 180 s compile timeouts 
    `CTCInventoryItem_OnDie` by 18. That is one made-up name on many addresses, so at most one row per name can be the PDB member. They are
    queued as `flatten2 ... shared-name cluster` in T3_PORT_QUEUE.tsv. The 34 true caller units have 90 caller files: 17 with a local model,
    47 header-only and 26 with neither. So the caller route depends mostly on the header pilot.
+
+## Measurement pass, part 1 (9,000 rows, `rebuild/oracles/self_symbols.tsv`)
+
+- **Grades:** 6,996 RELOCATION_MATCH, 1,666 MATCH, 312 NOT_GRADED (chunk 4's timeout, re-measured by `--retry` at the end), 21
+  LIBRARY_MATCH with no symbol, 2 DIFFER.
+- **Trust only MATCH / RELOCATION_MATCH symbols.** For a row with no `// Leaf:`, the recheck falls back to the largest function, so a
+  DIFFER row's symbol may not be the row's own function.
+- **Two DIFFER rows to look at.** Both sources are unchanged since the tree import, and the graded function is the right one in both:
+  - 0x0056C840 (`_Dest_val` for `pair<CCharString, CSymbolInfo>`) grades DIFFER(30v28), though the 2026-11-22 gate had it as
+    RELOCATION_MATCH;
+  - 0x00647308 (`GetElementCount`) grades DIFFER(18v17) and is not in the gate.
