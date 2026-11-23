@@ -1,0 +1,6 @@
+N 006778a0 CPersistTraits<CReactionFrequencyTraitsArray>::TransferBinaryIn RELOCATION_MATCH flags= [] leaf=
+N 006b84b0 CEnvironmentSpellEffectInterpolator::CEnvironmentSpellEffectInterpolator RELOCATION_MATCH flags= [] leaf=??0CScreenEffectOwner_006b84b0
+N 00dc21f0 NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker::Main RELOCATION_MATCH flags= [] leaf=?Main@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ
+N 00717c50 NTCScriptedControl::CActionTalkToThing::CActionTalkToThing RELOCATION_MATCH flags= [] leaf=??0CActionTalkToThing
+N 0092bcb0 CAIStateGroup_AvoidRegionExit::IsRunnable RELOCATION_MATCH flags= [] leaf=
+GR_DONE

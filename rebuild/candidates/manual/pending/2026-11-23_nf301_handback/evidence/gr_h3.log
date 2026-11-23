@@ -1,0 +1,5 @@
+H 006ff930 CReactionFrequencyTraits::CreateFromType RELOCATION_MATCH flags= [] leaf=?CreateFromType@CReactionFrequencyTraits@@SIPAV1@W4EReactionFrequencyType@@@Z
+H 00dc0300 NScript::CQ_OakValeBanditRaidScript::PopulateLevel RELOCATION_MATCH flags= [] leaf=PopulateLevel
+H 004cea60 CSubtitledMessage::GetMessageFromTextIndex RELOCATION_MATCH flags= ['/Gr'] leaf=?GetMessageFromTextIndex@CSubtitledMessage@@SI?AV1@KPBD@Z
+H 0092bd80 CTCAvoidRegionExit::GetPosition RELOCATION_MATCH flags= [] leaf=?GetPosition@CTCAvoidRegionExit@@QAE?AVC3DVector@@XZ
+GR_DONE

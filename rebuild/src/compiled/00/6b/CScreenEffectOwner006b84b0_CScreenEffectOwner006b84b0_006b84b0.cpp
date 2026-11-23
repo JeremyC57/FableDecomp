@@ -5,10 +5,10 @@
 // second argument into the first word, so this is a constructor of a non-polymorphic class. Shape: the id is stored before the member
 // constructor call (initialiser), the bytes and the owner after it (body), the bytes through one `xor al,al`.
 // Leaf: ??0CScreenEffectOwner_006b84b0
-struct CScreenEffectPriorityStack {
+namespace NScreenEffect { struct CScreenEffectPriorityStack {   // both PDBs: NScreenEffect::CScreenEffectPriorityStack
     unsigned char _body[0x10];
     CScreenEffectPriorityStack();                   // 0x00881370
-};
+}; }
 struct CScreenEffectOwner_006b84b0 {
     void*                      m_pOwner;            // +0x00
     long                       m_id;                // +0x04
@@ -16,7 +16,7 @@ struct CScreenEffectOwner_006b84b0 {
     bool                       m_active;            // +0x78
     bool                       m_dirty;             // +0x79
     unsigned char              _pad7a[0x16];        // +0x7a
-    CScreenEffectPriorityStack m_priorityStack;     // +0x90
+    NScreenEffect::CScreenEffectPriorityStack m_priorityStack;     // +0x90
     CScreenEffectOwner_006b84b0(long id, void* pOwner);
 };
 

@@ -1,0 +1,19 @@
+## HEAD set: H_006778a0.obj H_006b84b0.obj H_00dc21f0.obj H_00717c50.obj H_0092bcb0.obj H_00b81bc0.obj H_006ff930.obj H_00881370.obj H_00dc0300.obj H_004cea60.obj H_0092bd80.obj H_00f36be0.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CPerlinNoise@@QAE@K@Z
+UNRESOLVED 1 ??0CScreenEffectPriorityStack@@QAE@XZ
+UNRESOLVED 1 ??1CScreenEffectPriorityStack@NScreenEffect@@UAE@XZ
+UNRESOLVED 1 ?CreateFromType@@YIPAVCReactionFrequencyTraits@@W4EReactionFrequencyType@@@Z
+UNRESOLVED 1 ?GetMessageFromTextIndex@@YI?AVCSubtitledMessage@@KPBD@Z
+UNRESOLVED 1 ?GetPosition@CTCAvoidRegionExitView@@QAE?AVC3DVector@@XZ
+UNRESOLVED 1 ?Initialise@CPerlinNoise@NFractal@@QAEXK@Z
+UNRESOLVED 1 ?PopulateLevel@CQ_BanditRaidScript@@QAE_NXZ
+UNRESOLVED 1 ?Reset@CScreenEffectPriorityStack@NScreenEffect@@AAEXXZ
+## new set: N_006778a0.obj N_006b84b0.obj N_00dc21f0.obj N_00717c50.obj N_0092bcb0.obj N_00b81bc0.obj H_006ff930.obj H_00881370.obj H_00dc0300.obj H_004cea60.obj H_0092bd80.obj H_00f36be0.obj
+duplicates 0
+
+UNRESOLVED 1 ??1CScreenEffectPriorityStack@NScreenEffect@@UAE@XZ
+UNRESOLVED 1 ?Initialise@CPerlinNoise@NFractal@@QAEXK@Z
+UNRESOLVED 1 ?Reset@CScreenEffectPriorityStack@NScreenEffect@@AAEXXZ
+LK_DONE

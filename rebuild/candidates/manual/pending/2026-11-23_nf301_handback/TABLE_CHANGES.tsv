@@ -1,0 +1,22 @@
+action	symbol	target	witness	note
+replace	?CreateFromType@@YIPAVCReactionFrequencyTraits@@W4EReactionFrequencyType@@@Z -> ?CreateFromType@CReactionFrequencyTraits@@SIPAV1@W4EReactionFrequencyType@@@Z	006ff930	006778a0	entry 38: sole binder respelled (static member of its local model); both PDBs; owner self defines it
+replace	??0CScreenEffectPriorityStack@@QAE@XZ -> ??0CScreenEffectPriorityStack@NScreenEffect@@QAE@XZ	00881370	006b84b0	entry 48: sole binder respelled (member type in NScreenEffect); both PDBs; owner self defines it
+delete	?PopulateLevel@CQ_BanditRaidScript@@QAE_NXZ	00dc0300	00dc21f0	entry 31: binder respelled onto its NScript::CQ_OakValeBanditRaidScript model; the PDB line (witness 0x00DBF2D0) exists; other caller 0x00DC08C0 includes engine/CQ_OakValeBanditRaidScript.h
+replace	?GetMessageFromTextIndex@@YI?AVCSubtitledMessage@@KPBD@Z -> ?GetMessageFromTextIndex@CSubtitledMessage@@SI?AV1@KPBD@Z	004cea60	00717c50	entry 63: sole landed binder respelled (static member); both PDBs; owner self defines it
+replace	?GetPosition@CTCAvoidRegionExitView@@QAE?AVC3DVector@@XZ -> ?GetPosition@CTCAvoidRegionExit@@QAE?AVC3DVector@@XZ	0092bd80	0092bcb0	entry 68: sole binder respelled (view struct renamed to the PDB class); both PDBs; owner self defines it
+delete	??0CPerlinNoise@@QAE@K@Z	00f36be0	00b81bc0	entry 8: binder respelled (member type in NFractal); the PDB line (witness 0x00AEBA90) exists
+delete	?GetMainPlayerNumber@CPlayerManagerCalls@@QAEJXZ	00449700	00487520	entry 18: STALE witness (HEAD object binds only the PDB spelling); token in no other landed code
+delete	?GetPlayer@CPlayerManager449970@@QAEPAUCPlayer@@H@Z	004498c0	00449970	entry 19: STALE witness; token in no landed code
+delete	?GetPlayer@CPlayerManager449960@@QAEPAUCPlayer@@H@Z	00449910	00449960	entry 20: STALE witness; token in no landed code
+delete	?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@@QAEXUCScriptThingRuntime@@@Z	00f09950	00f09640	entry 26: STALE (witness object binds the NScript stand-in only; target referenced once, by that Init)
+delete	?WatchForContactDeath@CQ_AmbushTradersScript@@QAEXUCScriptThingRuntime@@@Z	00f09830	00f09640	rider of entry 26 (same witness object readout; 0x00F09830 is in no agent's ENTRIES; referenced once, by that Init)
+delete	?WatchForHostage1Killed@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z	00d16920	00d167c0	entry 27: STALE (witness object binds the NScript stand-in only; referenced once)
+delete	?WatchForHostage2Killed@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z	00d16d00	00d16bb0	entry 28: STALE (witness object binds the NScript stand-in only; referenced once)
+delete	?PlayCutscene@CQ_FireHeartScript@@QAEXVCCharString@@@Z	00d39330	00d3af50	entry 29: STALE witness; all landed callers NScript
+delete	?MakeBriarRoseComment@CQ_SummoningTheShipScript@@QAE_NABVCCharString@@@Z	00df20f0	00df2f90	entry 33: STALE witness; other caller 0x00DF1830 NScript header
+delete	?GetMaxSize@COldFileFormatMapHeader7@@SIJJJ@Z	00519630	0051cbb0	entry 42: STALE witness
+delete	@Q_Sunny_cb7940@4	00cb7940	00cdd360	entry 50: STALE witness; token only in that row's standalone test stub
+delete	?GetPredictedTargetPosForThing@?A0x1e3fe0e1@@YI?AUC3DVector@@ABUCThing@@0@Z	00961ab0	00961b90	entry 309: STALE witness (binds the V-keyed PDB spelling)
+delete	??4SList8_00517720@@QAEAAU0@ABU0@@Z	00517720	00a821c0	entry 427: STALE witness; token in no landed code
+delete	?FinaliseString@CIMECalls@@QAEX_N@Z	00404b50	00851860	prefix item (NF298 entry 7): STALE witness (0x00851860 HEAD object binds only ?FinaliseString@CIME@NUISystem@@QAEX_N@Z); CIMECalls appears in no landed code (codegrep), so none of the other callers (xsites) can bind it
+delete	?IsIMEActive@CIMECalls@@QAE_NXZ	00404c50	00851860	prefix item (NF298 entry 8): STALE witness (binds only ?IsIMEActive@CIME@NUISystem@@QBE_NXZ); CIMECalls appears in no landed code (codegrep), so no other caller can bind it

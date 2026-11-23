@@ -350,7 +350,7 @@ line	tag	address	correct_symbol	status	other_spellings
 352	529	00a868c0	?Calculate@CIPhysicsFacesSegmentBase@@KI_NABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@ABV?$CArray@G@@JAAVCPlane@@AAV4@4@Z	partial	?Calculate@CPhysicsFacesSegmentBranch@@SI_NABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@ABV?$CArray@G@@JPAVCPlane@@PAV4@4@Z
 353	529	00a87090	??0?$vector@GV?$allocator@G@std@@@std@@QAE@ABV01@@Z	partial	??0?$CArray@G@@QAE@ABV0@@Z || ??0?$vector@G || ??0CElement12_00a87090@@QAE@ABU0@@Z
 354	529	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	partial	??4CCharString@@QAEAAV0@ABV0@@Z || ??4CCharString@std@@QAEAAU01@ABU01@@Z || ??4SymbolString@@QAEAAU0@ABU0@@Z
-355	529	00517720	??4?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEAAV01@ABV01@@Z	partial	??4?$list@VC2DLineF@@ || ??4?$list@VC2DLineF@@H@std@@QAEAAV01@ABV01@@Z || ??4CElement4_00517720@@QAEAAU0@ABU0@@Z || ??4SList8_00517720@@QAEAAU0@ABU0@@Z || ??4SListHandle04_00517720@@QAEAAU0@ABU0@@Z
+355	529	00517720	??4?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEAAV01@ABV01@@Z	partial	??4?$list@VC2DLineF@@ || ??4?$list@VC2DLineF@@H@std@@QAEAAV01@ABV01@@Z || ??4CElement4_00517720@@QAEAAU0@ABU0@@Z || ??4SListHandle04_00517720@@QAEAAU0@ABU0@@Z
 356	529	005152c0	??$_M_insert_dispatch@U?$_List_iterator@VC2DLineF@@U?$_Const_traits@VC2DLineF@@@std@@@std@@@?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXU?$_List_iterator@VC2DLineF@@U?$_Nonconst_traits@VC2DLineF@@@std@@@1@U?$_List_iterator@VC2DLineF@@U?$_Const_traits@VC2DLineF@@@std@@@1@1ABU__false_type@1@@Z	partial	??$_M_insert_dispatch@ || ??$_M_insert_dispatch@U?$_List_iterator@VC2DLineF@@U?$_Const_traits@VC2DLineF@@@std@@@std@@@?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXU?$_List_iterator@VC2DLineF@@U?$_Nonconst_traits@VC2DLineF@@@std@@@1@U?$_List_iterator@VC2DLineF@@U?$_Const_traits@VC2DLineF@@@std@@@1@1ABV__false_type@1@@Z || ?_M_insert_dispatch@?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@s
 357	529	00af0380	??0CParticleEmitter@NParticleEngine@@QAE@XZ	partial	??0CParticleEmitter@@QAE@XZ || CParticleEmitter
 358	529	00ae91d0	?DeleteData@?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@SIXPAX@Z	closed	
@@ -938,7 +938,7 @@ line	tag	address	correct_symbol	status	other_spellings
 944	567	004d1fe0	??0CSubtitledMessage@@QAE@ABV0@@Z	partial	??0CSubtitledMessage
 945	567	004d1db0	??1CSubtitledMessage@@QAE@XZ	partial	??1CSubtitledMessage@NTCScriptedControl@@QAE@XZ || @CSpeechFrame_dtor@4
 946	567	004d2760	?_M_insert_overflow@?$vector@VCSubtitledMessage@@V?$allocator@VCSubtitledMessage@@@std@@@std@@IAEXPAVCSubtitledMessage@@ABV3@ABU__false_type@2@I_N@Z	partial	?InsertGrow@CRetailVector_CElement68_004d1fe0@@QAEXPAUCElement68_004d1fe0@@ABU2@ABUSScalarTag@@K_N@Z || ?M_insert_overflow@CSubtitledMessageArray@@QAEXPAVCSubtitledMessage@@ABV2@ABU__false_type@@K_N@Z
-947	567	004cea60	?GetMessageFromTextIndex@CSubtitledMessage@@SI?AV1@KPBD@Z	partial	?GetMessageFromTextIndex@@YI?AVCSubtitledMessage@@KPBD@Z
+947	567	004cea60	?GetMessageFromTextIndex@CSubtitledMessage@@SI?AV1@KPBD@Z	closed	
 948	567	009cc410	?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z	closed	
 949	567	013b8a50	?MostRecentGroupQueried@CSubtitledMessage@@0VCCharString@@A	closed	
 950	568	004c7950	?GetPhysPos@CThing@@QBE?AVC3DVector@@XZ	partial	?GetPhysPos@CThingPos@@QBE?AVC3DVector@@XZ
@@ -1498,7 +1498,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1596	sec3	006a9d10	?DrawGetThingDisplayInformation@CThingPlayerCreature@@UBE_NPAVCThingDrawInformation@@@Z	open	vfunc_34
 1597	sec3	0099a330	?IsValid@CInitBaseClass@@QBE_NXZ	closed	
 1598	sec3	006a4e40	?GetHealthPercentage@CThingPhysical@@QBEMXZ	closed	
-1599	sec3	00449910	?GetPlayer@CPlayerManager@@QBEABVCPlayer@@J@Z	partial	?GetPlayer@CPlayerManager449960@@QAEPAUCPlayer@@H@Z || ?GetPlayer@CPlayerManager@@QBEPBVCPlayer@@J@Z || ?GetProvider@CInputManager@@QAEPAUCInputProvider@@H@Z
+1599	sec3	00449910	?GetPlayer@CPlayerManager@@QBEABVCPlayer@@J@Z	partial	?GetPlayer@CPlayerManager@@QBEPBVCPlayer@@J@Z || ?GetProvider@CInputManager@@QAEPAUCInputProvider@@H@Z
 1600	sec3	004c79f0	?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ	partial	?GetPlayerManager@CThing@@QBEPBVCPlayerManager@@XZ || ?GetPlayerManager@CThingBuilding@@QAEPAVCPlayerManager@@XZ || ?GetPlayerManager_004c79f0@CThingPlayerCreature@@QAEPAVCPlayerManager@@XZ
 1607	sec2b	0072abd0	?FadeOrKillEffect@CTCSpecialAbilities@@SIXAAV?$CIntelligentPointer@VCThing@@@@@Z	partial	?FadeOrKillEffect@@YIXAAVCBaseIntelligentPointer@@@Z || FadeOrKillEffect
 1608	sec2b	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	partial	?GetHomeId@HomeObj@@QAEHXZ || ?GetId@Subobject@@QAEHXZ || ?GetPItem@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ || ?GetPItem@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00810fe0@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00811040@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAVCThing@@XZ 
@@ -2087,7 +2087,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2418	c642	005fb4b0	?TeleportHeroToBoastingArea@CTCInventoryMap@@QBEXXZ	closed	
 2419	c642	00487dd0	?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	partial	?GetControlledCreature@CPlayer@NCondition00935160@@QAEPAUCThing@2@XZ
 2420	c642	00449960	?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ	partial	?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ || ?GetMainPlayer@CPlayerManager@NCondition00935160@@QAEPAUCPlayer@2@XZ
-2421	c642	00449700	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	partial	?GetMainPlayerNumber@CPlayerManagerCalls@@QAEJXZ
+2421	c642	00449700	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	closed	
 2422	c642	006cb6e0	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	closed	
 2423	c642	0072f750	?CreateVillager@CTCDummyVillager@@QAEPAVCThingAICreature@@AAVCTCVillage@@ABVC3DVector@@_N@Z	closed	
 2424	c642	00497890	?GFROR13@@YIJK@Z	partial	?GFROR13@@YIKK@Z || GFROR13
@@ -2714,7 +2714,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3107	cg10	00437860	?IsMiniMapActive@CPlayerGui@@QBE_NXZ	partial	?Run@T@@QAEXXZ
 3108	cg10	00437880	?GetMiniMapRingAlpha@CPlayerGui@@QBEEXZ	partial	?Run@T@@QAEXXZ
 3109	cg10	00438570	?PeekGuiDef@CPlayerGui@@SIABVCPlayerGuiDef@@XZ	partial	?PeekGuiDef@@YAPAVCPlayerGuiDef@@XZ || ?PeekGuiDef@@YIPAUGuiOracleDefView@@XZ || ?PeekGuiDef@@YIPAUPlayerGuiDefNative@@XZ || ?PeekGuiDef@@YIPAVCPlayerGuiDef@@XZ || ?PeekGuiDef@@YIPBVCPlayerGuiDef@@XZ || PeekGuiDef
-3110	cg10	00449700	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	partial	?GetMainPlayerNumber@CPlayerManagerCalls@@QAEJXZ
+3110	cg10	00449700	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	closed	
 3111	cg10	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	partial	?AcquireBuilder@@YGPAUBuilder@@PAUInitGuard@@PAPAVCPlayerGuiDef@@@Z || ?GetDefinitionManager@NFactory007f1b70@@YIPAUCGameDefinitionManager@1@XZ
 3112	cg10	00462e78	??4?$vector@_NV?$allocator@_N@std@@@std@@QAEAAV01@ABV01@@Z	partial	??4?$vector@_N@std@@QAEAAV01@ABV01@@Z || ??4CBoolVector@@QAEAAU0@ABU0@@Z
 3113	cg10	00462f1f	??$__uninitialized_copy@PB_NPA_N@std@@YIPA_NPB_N0PA_NABU__true_type@0@@Z	partial	?fable_init_462f50@@YIXPAX00PAD@Z
@@ -4099,7 +4099,7 @@ line	tag	address	correct_symbol	status	other_spellings
 4633	cx13	00cdcdd0	??$Transfer@W4EPlaceInHeroSouls@@@CPersistContext@@QAEXPBDAAW4EPlaceInHeroSouls@@ABW41@@Z	closed	
 4634	cx13	00cdeb40	?Alloc@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	closed	
 4635	cx13	00df2090	?FollowHero@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@AAEX_N@Z	partial	Init
-4636	cx13	00df20f0	?MakeBriarRoseComment@CQ_SummoningTheShipScript@NScript@@QAE_NABVCCharString@@@Z	partial	?MakeBriarRoseComment@CQ_SummoningTheShipScript@@QAE_NABVCCharString@@@Z
+4636	cx13	00df20f0	?MakeBriarRoseComment@CQ_SummoningTheShipScript@NScript@@QAE_NABVCCharString@@@Z	closed	
 4637	cx13	00e3e320	?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ	partial	IsHeroDressedAsLady
 4638	cx13	00e3e6b0	?GetHeroStatusTextTag@CV_BordelloScript@NScript@@QAE?AVCCharString@@XZ	partial	GetHeroStatusTextTag
 4639	cx13	00e6f040	?FadeOutFaceAndOpenDoor@CV_DemonDoorsScript@NScript@@QAEXABVCScriptThing@@ABVCCharString@@@Z	closed	
@@ -4625,7 +4625,7 @@ line	tag	address	correct_symbol	status	other_spellings
 6143	s6w7	00428928	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@ABV0@@Z	closed	
 6144	s6w7	0065d89b	??0?$CCountedPointer@VCVillageTaskHorn@@@@QAE@ABV0@@Z	closed	
 6156	asm2b	0057a67e	?GetMoralityMax@CTCHeroStats@@QBEJXZ	closed	
-6157	asm2b	00449700	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	partial	?GetMainPlayerNumber@CPlayerManagerCalls@@QAEJXZ
+6157	asm2b	00449700	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	closed	
 6159	land0511a	00662110	?MakeNoise@CThingCreatureBase@@QAEXABVCCharString@@@Z	closed	
 6160	land0511a	00e7f7d0	?GetNextPrizeCategoryWeight@CV_FishingCompetitionScript@NScript@@QAEMXZ	closed	
 6161	land0511a	00e7fd50	?GenerateSignText@CV_FishingCompetitionScript@NScript@@QAEXXZ	closed	

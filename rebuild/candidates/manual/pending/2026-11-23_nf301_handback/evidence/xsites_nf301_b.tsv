@@ -1,0 +1,20 @@
+00519630	call	0051a40f	-
+00519630	call	0051ae22	0051adf0L CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHead
+00519630	call	0051ae46	0051adf0L CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHead
+00519630	call	0051cc1d	0051cbb0L CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHead
+00d39330	call	00d35a11	00d35090L NScript::CQ_FireHeartScript::Main
+00d39330	call	00d35db2	00d35090L NScript::CQ_FireHeartScript::Main
+00d39330	call	00d39f1e	00d39960L NScript::CQ_FireHeartScript::StartRound
+00d39330	call	00d3a473	00d3a1a0L NScript::CQ_FireHeartScript::CDF_Fireheart::Main
+00d39330	call	00d3a6fd	00d3a4a0L NScript::CQ_FireHeartScript::CFH_Prisoner::Main
+00d39330	call	00d3a78f	00d3a4a0L NScript::CQ_FireHeartScript::CFH_Prisoner::Main
+00d39330	call	00d3ad9d	00d3ad60L NScript::CQ_FireHeartScript::CheckCompletion
+00d39330	call	00d3af0b	00d3ae40L NScript::CQ_FireHeartScript::CFH_Scythe::Main
+00d39330	call	00d3af88	00d3af50L NScript::CQ_FireHeartScript::CFH_MemorialCutsceneMarker::Mai
+00df20f0	call	00df1bf2	00df1830L NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Main
+00df20f0	call	00df1c6b	00df1830L NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Main
+00df20f0	call	00df1ca2	00df1830L NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Main
+00df20f0	call	00df1dbd	00df1830L NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Main
+00df20f0	call	00df1eda	00df1830L NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Main
+00df20f0	call	00df2002	00df1830L NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Main
+00df20f0	call	00df33b4	00df2f90L NScript::CQ_SummoningTheShipScript::CFireHeart::Main

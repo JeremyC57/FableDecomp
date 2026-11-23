@@ -24,7 +24,7 @@ class CCharString { public:
 
 class CSubtitledMessage { public:                          // 0x44 bytes
     unsigned char _body[0x44];
-    CSubtitledMessage(const CSubtitledMessage& other);
+    CSubtitledMessage(const CSubtitledMessage& other); static CSubtitledMessage __fastcall GetMessageFromTextIndex(unsigned long textIndex, const char* groupName);   // 0x004CEA60 (both PDBs: static member)
     ~CSubtitledMessage();                           // 0x004D1DB0 (manifest "~CPatchTesselationEdgeStrip" propagated)
 };
 
@@ -96,7 +96,7 @@ __declspec(noinline) CSubtitledMessageArray& CSubtitledMessageArray::operator=(c
 }
 #pragma auto_inline(on)
 
-CSubtitledMessage __fastcall GetMessageFromTextIndex(unsigned long textIndex, const char* groupName);   // 0x004CEA60
+// CSubtitledMessage::GetMessageFromTextIndex @ 0x004CEA60 is declared in the class above (NF301: was a free-function stand-in).
 
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -136,7 +136,7 @@ CActionTalkToThing::CActionTalkToThing(CThing* target, unsigned long textIndex, 
     , DisplayOverScreenFade(displayOverScreenFade)
 {
     CSubtitledMessageArray messages;
-    messages.push_back(GetMessageFromTextIndex(textIndex, groupName));
+    messages.push_back(CSubtitledMessage::GetMessageFromTextIndex(textIndex, groupName));
     Messages = messages;
     AddedDuringCutscene = CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_inCutscene;
 }

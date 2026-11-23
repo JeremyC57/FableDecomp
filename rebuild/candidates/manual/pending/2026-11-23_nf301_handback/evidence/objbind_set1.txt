@@ -1,0 +1,13 @@
+#19	004498c0	binder 00449970	standin_in_obj=False	pdb_in_obj=True	?GetPlayer@CPlayerManager449970@@QAEPAUCPlayer@@H@Z
+#20	00449910	binder 00449960	standin_in_obj=False	pdb_in_obj=True	?GetPlayer@CPlayerManager449960@@QAEPAUCPlayer@@H@Z
+#18	00449700	binder 00487520	standin_in_obj=False	pdb_in_obj=True	?GetMainPlayerNumber@CPlayerManagerCalls@@QAEJXZ
+#50	00cb7940	binder 00cdd360	standin_in_obj=False	pdb_in_obj=True	@Q_Sunny_cb7940@4
+#427	00517720	binder 00a821c0	standin_in_obj=False	pdb_in_obj=True	??4SList8_00517720@@QAEAAU0@ABU0@@Z
+#309	00961ab0	binder 00961b90	standin_in_obj=False	pdb_in_obj=False	?GetPredictedTargetPosForThing@?A0x1e3fe0e1@@YI?AUC3DVector@@ABUCThing@@0@Z
+#26	00f09950	binder 00f09640	standin_in_obj=False	pdb_in_obj=False	?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@@QAEXUCScriptThingRuntime@@@Z
+#26	00f09950	binder 00f09640	standin_in_obj=True	pdb_in_obj=False	?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+#27	00d16920	binder 00d167c0	standin_in_obj=False	pdb_in_obj=False	?WatchForHostage1Killed@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z
+#27	00d16920	binder 00d167c0	standin_in_obj=True	pdb_in_obj=False	?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+#28	00d16d00	binder 00d16bb0	standin_in_obj=False	pdb_in_obj=False	?WatchForHostage2Killed@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z
+#28	00d16d00	binder 00d16bb0	standin_in_obj=True	pdb_in_obj=False	?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+#38	006ff930	binder 006778a0	standin_in_obj=True	pdb_in_obj=False	?CreateFromType@@YIPAVCReactionFrequencyTraits@@W4EReactionFrequencyType@@@Z

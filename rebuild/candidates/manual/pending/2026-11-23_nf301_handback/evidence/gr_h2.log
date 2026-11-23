@@ -1,0 +1,9 @@
+H 006b84b0 CEnvironmentSpellEffectInterpolator::CEnvironmentSpellEffectInterpolator RELOCATION_MATCH flags= [] leaf=??0CScreenEffectOwner_006b84b0
+H 00dc21f0 NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker::Main RELOCATION_MATCH flags= [] leaf=?Main@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ
+H 00717c50 NTCScriptedControl::CActionTalkToThing::CActionTalkToThing RELOCATION_MATCH flags= [] leaf=??0CActionTalkToThing
+H 0092bcb0 CAIStateGroup_AvoidRegionExit::IsRunnable RELOCATION_MATCH flags= [] leaf=
+H 00d3af50 NScript::CQ_FireHeartScript::CFH_MemorialCutsceneMarker::Main RELOCATION_MATCH flags= [] leaf=?Main@CFH_MemorialCutsceneMarker@CQ_FireHeartScript@NScript@@EAEXXZ
+H 00df2f90 NScript::CQ_SummoningTheShipScript::CFireHeart::Main RELOCATION_MATCH flags= [] leaf=?Main@CFireHeart@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+H 0066fb80 CTCCoopSpirit::UpdateLocalJostling RELOCATION_MATCH flags= [] leaf=?UpdateLocalJostling@CTCCoopSpirit@@QAEXXZ
+H 0051cbb0 CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHeader8>::ReadFromFile RELOCATION_MATCH flags= [] leaf=ReadFromFile
+GR_DONE
