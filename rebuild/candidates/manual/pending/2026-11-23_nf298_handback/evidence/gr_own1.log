@@ -1,0 +1,6 @@
+H 00d83e60 NScript::CQ_HeroSoulsMotherScript::CHS_Screamer::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+H 00d9f0b0 NScript::CQ_MinionCampScript::CMC_Minion::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CMC_Minion@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+H 00d9ea80 NScript::CQ_MinionCampScript::CMC_MinionGuard::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CMC_MinionGuard@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+H 00d9ed50 NScript::CQ_MinionCampScript::CMC_SpawnPoint::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CMC_SpawnPoint@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+H 00dcf610 NScript::CQ_OrchardFarmRaidScript::CMK_OFI_GWLL_WHIS2::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CMK_OFI_GWLL_WHIS2@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+GR_DONE

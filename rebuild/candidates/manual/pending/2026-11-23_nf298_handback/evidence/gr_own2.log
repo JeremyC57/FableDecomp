@@ -1,0 +1,6 @@
+H 00e5dff0 NScript::CV_BodyGuardScript::CM_BodyGuardRespawn::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CM_BodyGuardRespawn@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+H 00dc0090 NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+H 00dcf540 NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CM_WhisperFarmRaidIntro@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+H 00aedca0 CParticleEmitter::GetNoParticles RELOCATION_MATCH flags= [] leaf=GetNoParticles
+H 008f6050 CHeightMap::Clear MATCH flags= [] leaf=?Clear@CHeightMap@@AAEXXZ
+GR_DONE

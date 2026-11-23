@@ -1,0 +1,8 @@
+#64	00ae89e0	binder 00aeabe0	standin_in_obj=False	pdb_in_obj=True	?GetEmitterTemplate@CParticleEmitterDatabase@@QAEPAVCParticleEmitter@NParticleEngine@@JJ@Z
+#69	00af5870	binder 00aee8c0	standin_in_obj=False	pdb_in_obj=True	?Kill@CParticleSystem@@QAEXXZ
+#92	00d68f00	binder 00d6ed10	standin_in_obj=False	pdb_in_obj=True	??0CQ_HangingTreeEvilScript@@QAE@PAX0@Z
+#93	00d736b0	binder 00d73610	standin_in_obj=False	pdb_in_obj=True	?SpawnEnemies@CQ_HangingTreeGoodScript@@QAEXABVC3DVector@@VCCharString@@J@Z
+#122	00b21450	binder 00b218b0	standin_in_obj=False	pdb_in_obj=True	?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCPartic
+#241	00e8cb40	binder 00e8b9c0	standin_in_obj=False	pdb_in_obj=True	?CreateBandit@CV_GhostGrannyNecklaceScript@@QAEXXZ
+#242	00e8d2d0	binder 00e8b9c0	standin_in_obj=False	pdb_in_obj=True	?GhostGrannyHints@CV_GhostGrannyNecklaceScript@@QAEXXZ
+#426	00adf2a0	binder 00adf610	standin_in_obj=False	pdb_in_obj=True	?AllocateArrays@CParticleSimulation@@QAE_NPAVCMovableResourceMemoryPool@@@Z

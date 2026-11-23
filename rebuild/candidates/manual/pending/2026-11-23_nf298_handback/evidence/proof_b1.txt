@@ -1,0 +1,40 @@
+##### 00d80e40 map (1): ?Alloc@CHSBMagicBarrier@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CHSB_MagicBarrier@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+map_covers_symbol_diff=True
+sections head 26 new 26
+ALL_EQ text_sections_equal=6
+tables H=1 N=1
+##### 00d835d0 map (1): ?Alloc@CHSScreamer@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+map_covers_symbol_diff=True
+sections head 29 new 29
+ALL_EQ text_sections_equal=9
+tables H=2 N=2
+##### 00d9e5e0 map (3): ?Alloc@CMCMinion@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CMC_Minion@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z ?Alloc@CMCMinionGuard@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CMC_MinionGuard@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z ?Alloc@CMCSpawnPoint@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CMC_SpawnPoint@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+map_covers_symbol_diff=True
+sections head 20 new 20
+ALL_EQ text_sections_equal=9
+tables H=2 N=2
+##### 00dcc770 map (2): ?Alloc@CWhisperMarker@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CMK_OFI_GWLL_WHIS2@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z ?Alloc@CWhisperFarmRaidIntro@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CM_WhisperFarmRaidIntro@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+map_covers_symbol_diff=True
+sections head 34 new 34
+ALL_EQ text_sections_equal=13
+tables H=2 N=2
+##### 00e5d4f0 map (1): ?Alloc@CBodyGuardRespawn@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CM_BodyGuardRespawn@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+map_covers_symbol_diff=True
+sections head 22 new 22
+ALL_EQ text_sections_equal=9
+tables H=2 N=2
+##### 00dbf2d0 map (1): ?Alloc@CRestartMarker@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+map_covers_symbol_diff=True
+sections head 54 new 54
+ALL_EQ text_sections_equal=33
+tables H=5 N=5
+##### 00aeac90 map (1): ?GetNoParticles@CParticleEmitter@NParticleEngine@@QAEJXZ=?GetNoParticles@CParticleEmitter@NParticleEngine@@QBEJXZ
+map_covers_symbol_diff=True
+sections head 15 new 15
+ALL_EQ text_sections_equal=6
+tables H=1 N=1
+##### 008f63c0 map (1): ?Clear@CHeightMap@@QAEXXZ=?Clear@CHeightMap@@AAEXXZ
+map_covers_symbol_diff=True
+sections head 12 new 12
+ALL_EQ text_sections_equal=10
+tables H=1 N=1

@@ -7582,7 +7582,7 @@ line	tag	address	correct_symbol	status	other_spellings
 9667	land1113fy	013d2d38	?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A	no_binding	
 9668	land1113fy	00a5b210	?OpenFromFile@CCachedFile@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	closed	
 9669	land1113fy	0050ee40	??0CFileLargeThemePalette@@QAE@XZ	partial	SetAllPolys
-9670	land1113fy	008f6050	?Clear@CHeightMap@@AAEXXZ	partial	?Clear@CGameMapGrid@@QAEXXZ || ?Clear@CHeightMap@@QAEXXZ
+9670	land1113fy	008f6050	?Clear@CHeightMap@@AAEXXZ	partial	?Clear@CGameMapGrid@@QAEXXZ
 9671	land1113fy	0051cbb0	?ReadFromFile@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	partial	ReadFromFile
 9672	land1113fy	0063f3a0	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z	closed	
 9673	land1113fy	009ad3b0	?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z	closed	
@@ -10539,3 +10539,5 @@ line	tag	address	correct_symbol	status	other_spellings
 13376	land1123nf297	009f1650	?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z	closed	
 13377	land1123nf297	009ff8d0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	partial	?GetFrame@CGraphicInfo@@
 13378	land1123nf297	00bdcbb0	?InvalidateEdge@CEngineLandscapeMap@@QAEXJJJW4LANDSCAPE_EDGE_STRIP_SIDE@@@Z	partial	?InvalidateEdge@CEngineLandscapeMap@@QAEXJJJJ@Z || InvalidateEdge
+13379	land1123nf298	00aedca0	?GetNoParticles@CParticleEmitter@NParticleEngine@@QBEJXZ	partial	?GetNoParticles@CParticleEmitter@@QAEJXZ || GetNoParticles
+13380	land1123nf298	00aedcd0	?GetNoDecals@CParticleEmitter@NParticleEngine@@QBEJXZ	partial	?GetNoDecals@CParticleEmitter@@QAEJXZ || GetNoDecals

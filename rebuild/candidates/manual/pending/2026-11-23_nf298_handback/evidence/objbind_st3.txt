@@ -1,0 +1,6 @@
+== 00aeb8c0
+?GetEmitterTemplate@CParticleEmitterDatabase@@QAEPAVCParticleEmitter@NParticleEngine@@J_N@Z
+== 00d73ae0
+?SpawnEnemies@CQ_HangingTreeGoodScript@NScript@@QAEXABVC3DVector@@VCCharString@@J@Z
+== 00ae1bc0
+?AllocateArrays@CParticleSimulation@@AAE_NAAVCMovableResourceMemoryPool@@@Z

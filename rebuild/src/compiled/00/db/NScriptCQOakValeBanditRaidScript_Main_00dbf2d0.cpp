@@ -108,7 +108,7 @@ namespace NScript {
 class CQ_OakValeBanditRaidScript : public CScriptBase {
 public:
     struct COakValeBanditRaidBandit { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_OakValeBanditRaidScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00DBFDD0
-    struct CRestartMarker { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_OakValeBanditRaidScript& parent, CScriptDataBase* data, const CScriptThing& thing); };             // 0x00DC0090
+    struct CM_RestartMarker { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_OakValeBanditRaidScript& parent, CScriptDataBase* data, const CScriptThing& thing); };             // 0x00DC0090
     CGameScriptInterface* Game;                         // +0x40
     void Main();
     bool PopulateLevel();                               // 0x00DC0300
@@ -155,7 +155,7 @@ void NScript::CQ_OakValeBanditRaidScript::Main()
     }
     Game->KickOffQuestStartScreen("Q_BanditCamp", true, false);
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_OakValeBanditRaidScript>("OakValeBanditRaidBandit", this, &COakValeBanditRaidBandit::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_OakValeBanditRaidScript>("M_RestartMarker", this, &CRestartMarker::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_OakValeBanditRaidScript>("M_RestartMarker", this, &CM_RestartMarker::Alloc, 0));
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();
     Game->AddRumourCategory("OAKVALE_BANDITRAID");

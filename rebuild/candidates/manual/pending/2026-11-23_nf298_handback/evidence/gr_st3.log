@@ -1,0 +1,4 @@
+H 00aeb8c0 NParticleEngine::CParticleEmitterManager::CreateInterpolatedEmitter RELOCATION_MATCH flags= [] leaf=?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z
+H 00d73ae0 NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointRear::Main RELOCATION_MATCH flags= [] leaf=?Main@CHTG_AmbushPointRear@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+H 00ae1bc0 CParticleSimulation::ReadFromFile RELOCATION_MATCH flags= [] leaf=?ReadFromFile@CParticleSimulation@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z
+GR_DONE

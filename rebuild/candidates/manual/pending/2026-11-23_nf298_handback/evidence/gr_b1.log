@@ -1,0 +1,19 @@
+H 00d80e40 NScript::CQ_HeroSoulsBriarScript::Main RELOCATION_MATCH flags= [] leaf=?Main@CQ_HeroSoulsBriarScript@NScript@@UAEXXZ
+N 00d80e40 NScript::CQ_HeroSoulsBriarScript::Main RELOCATION_MATCH flags= [] leaf=?Main@CQ_HeroSoulsBriarScript@NScript@@UAEXXZ
+H 00d835d0 NScript::CQ_HeroSoulsMotherScript::Main RELOCATION_MATCH flags= [] leaf=
+N 00d835d0 NScript::CQ_HeroSoulsMotherScript::Main RELOCATION_MATCH flags= [] leaf=
+N 00d9e5e0 NScript::CQ_MinionCampScript::Main RELOCATION_MATCH flags= [] leaf=
+H 00d9e5e0 NScript::CQ_MinionCampScript::Main RELOCATION_MATCH flags= [] leaf=
+N 00dcc770 NScript::CQ_OrchardFarmRaidScript::Main RELOCATION_MATCH flags= [] leaf=
+H 00dcc770 NScript::CQ_OrchardFarmRaidScript::Main RELOCATION_MATCH flags= [] leaf=
+N 00e5d4f0 NScript::CV_BodyGuardScript::Main RELOCATION_MATCH flags= [] leaf=
+H 00e5d4f0 NScript::CV_BodyGuardScript::Main RELOCATION_MATCH flags= [] leaf=
+N 00dbf2d0 NScript::CQ_OakValeBanditRaidScript::Main RELOCATION_MATCH flags= [] leaf=Main
+H 00dbf2d0 NScript::CQ_OakValeBanditRaidScript::Main RELOCATION_MATCH flags= [] leaf=Main
+N 00aeac90 NParticleEngine::CParticleEmitterManager::DumpInfo RELOCATION_MATCH flags= [] leaf=DumpInfo
+H 00ea8830 NScript::CV_MurderTwistScript::Main RELOCATION_MATCH flags= [] leaf=?Main@CV_MurderTwistScript@NScript@@UAEXXZ
+N 008f63c0 CHeightMap::CHeightMap RELOCATION_MATCH flags= [] leaf=??0CHeightMap
+GR_DONE
+H 00aeac90 NParticleEngine::CParticleEmitterManager::DumpInfo RELOCATION_MATCH flags= [] leaf=DumpInfo
+H 008f63c0 CHeightMap::CHeightMap RELOCATION_MATCH flags= [] leaf=??0CHeightMap
+GR_DONE

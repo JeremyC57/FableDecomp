@@ -1,0 +1,21 @@
+## HEAD set: H_00d80e40.obj H_00d835d0.obj H_00d9e5e0.obj H_00dcc770.obj H_00e5d4f0.obj H_00dbf2d0.obj H_00aeac90.obj H_008f63c0.obj H_00d81b60.obj H_00d83e60.obj H_00d9f0b0.obj H_00d9ea80.obj H_00d9ed50.obj H_00dcf610.obj H_00e5dff0.obj H_00dc0090.obj H_00dcf540.obj H_00aedca0.obj H_008f6050.obj
+duplicates 0
+
+UNRESOLVED 1 ?Alloc@CBodyGuard@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBodyGuardRespawn@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CHSBMagicBarrier@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CHSScreamer@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CMCMinion@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CMCMinionGuard@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CMCSpawnPoint@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CRestartMarker@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CWhisperFarmRaidIntro@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CWhisperMarker@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Clear@CHeightMap@@QAEXXZ
+UNRESOLVED 1 ?GetNoParticles@CParticleEmitter@NParticleEngine@@QAEJXZ
+## new set: N_00d80e40.obj N_00d835d0.obj N_00d9e5e0.obj N_00dcc770.obj N_00e5d4f0.obj N_00dbf2d0.obj N_00aeac90.obj N_008f63c0.obj H_00d81b60.obj H_00d83e60.obj H_00d9f0b0.obj H_00d9ea80.obj H_00d9ed50.obj H_00dcf610.obj H_00e5dff0.obj H_00dc0090.obj H_00dcf540.obj H_00aedca0.obj H_008f6050.obj
+duplicates 0
+
+UNRESOLVED 1 ?Alloc@CBodyGuard@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?GetNoParticles@CParticleEmitter@NParticleEngine@@QBEJXZ
+LK_DONE

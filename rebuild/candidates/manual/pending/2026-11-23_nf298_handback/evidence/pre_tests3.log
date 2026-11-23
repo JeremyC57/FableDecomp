@@ -1,0 +1,7 @@
+03:03:24 PASS /home/user/FableDecomp/rebuild/tests/00/ae/NParticleEngineCParticleEmitterManager_CreateEmitter_00aeb6d0_test.cpp
+03:03:24 FAIL /home/user/FableDecomp/rebuild/tests/00/ae/NParticleEngineCParticleEmitterManager_Create2DEmitter_00aeb790_test.cpp
+03:03:24 PASS /home/user/FableDecomp/rebuild/tests/00/ae/NParticleEngineCParticleEmitterManager_CreateInterpolatedEmitter_00aeb8c0_test.cpp
+03:03:24 PASS /home/user/FableDecomp/rebuild/tests/00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointCond_Main_00d73970_test.cpp
+03:03:24 PASS /home/user/FableDecomp/rebuild/tests/00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointRear_Main_00d73ae0_test.cpp
+03:03:24 PASS /home/user/FableDecomp/rebuild/tests/00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointBackup_Main_00d73c70_test.cpp
+03:03:24 PASS_NOWCHAR /home/user/FableDecomp/rebuild/tests/00/ae/CParticleSimulation_ReadFromFile_00ae1bc0_test.cpp

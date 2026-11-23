@@ -5270,7 +5270,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?Update@CSplinePosParamData@NParticleEngine@@QAEXPAUCParticleUpdateParameters@2@PAUCCardinalSpline@2@@Z	00b20ba0	00b215a0
 ??4?$CArray@K@NParticleEngine@@QAEAAU01@ABU01@@Z	0045bc09	00b217d0
 ?GFInterpolateArray@NParticleEngine@@YI?AU?$CArray@K@1@ABU21@0MABK@Z	00b22f30	00b217d0
-?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JPAUC3DVector@2@111@Z	00b21450	00b218b0
 ?Destroy_00b230e0@@YIXPAX@Z	00b230e0	00b23170
 ?Destroy_00b231e0@@YIXPAX@Z	00b231e0	00b23240
 ??_7CIEngine@@6B@	012a0d24	00b23750
@@ -6992,7 +6991,6 @@ _rand	00bfeb16	00d2c530
 ??_7CVtable_012d15fc@@6B@	012d15fc	00d664d0
 ??_7CVtable_012d1d1c@@6B@	012d1d1c	00d67740
 ??_7CVtable_012d1e08@@6B@	012d1e08	00d68ea0
-??0CQ_HangingTreeEvilScript@@QAE@PAX0@Z	00d68f00	00d6ed10
 ??_7CHTG_Audience@@6B@	012d292c	00d72160
 ?g_PredMsg@@3DA	012d29d4	00d732a0
 ??_7CVtable_012d2f48@@6B@	012d2f48	00d7ac50
@@ -7753,7 +7751,6 @@ __imp__realloc	01440054	00c90fc0
 ?IsShopKeeperAvailable@CTCShop@@QBE_NXZ	00773aa0	0082ae80
 ?IsAttractedToHero@CTCWife@@QBE_NXZ	006cfe80	0082b520
 ?IsMarriedToThePlayer@CTCWife@@QBE_NXZ	006cec80	0082b520
-?Kill@CParticleSystem@@QAEXXZ	00af5870	00aee8c0
 ??0CMainGameComponentInit@@QAE@XZ	004131a0	0042ea8f
 ??0CStopWatch@@QAE@XZ	0062f740	0042ea8f
 ??1CInputProcessManager@@QAE@XZ	00a0d810	00446be0
@@ -9119,12 +9116,8 @@ __imp__GetSysColor@4	01440374	009a5490
 ?PostAddScriptedEntities@CScriptBase@@QAEXXZ	00cb8930	00d2f7f0
 ??_7?$CEntityScriptBinding@UCV_GhostGrannyNecklaceScript@@@@6B@	012ebaf8	00e8b9c0
 ??_7?$CSpawnedFunc@UCV_GhostGrannyNecklaceScript@@@@6B@	012eba50	00e8b9c0
-?CreateBandit@CV_GhostGrannyNecklaceScript@@QAEXXZ	00e8cb40	00e8b9c0
-?GhostGrannyHints@CV_GhostGrannyNecklaceScript@@QAEXXZ	00e8d2d0	00e8b9c0
 ??_7?$CEntityScriptBinding@UCV_MurderTwistScript@@@@6B@	012ee73c	00ea8830
 ??_7?$CSpawnedFunc@UCV_MurderTwistScript@@@@6B@	012ee648	00ea8830
-?GemsFoundProcess@CV_MurderTwistScript@@QAEXXZ	00ead9f0	00ea8830
-?MagicRuneProcess@CV_MurderTwistScript@@QAEXXZ	00ea8c20	00ea8830
 ??_7CSpecialAbilitiesDivineWrathDef@@6B@	0123487c	00458033
 ??_7CSpecialAbilitiesUnholyPowerDef@@6B@	012348e4	004581f8
 ??_7CTCPhysicsBase@@6B@	0125d2c4	006b0730
@@ -16584,7 +16577,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?HasIntersection@CVertexGroupBlock@@QBE_NABV1@@Z	00ad8af0	00ad9380
 ?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z	00a62e40	00adf2a0
 ?AlignedTransformTransposedAssumeW@CMatrix4x4@@QBEXPBVC4DVector@@PAV2@KM@Z	00a5cb90	00adf300
-?AllocateArrays@CParticleSimulation@@QAE_NPAVCMovableResourceMemoryPool@@@Z	00adf2a0	00adf610
 ?PeekVertexBlends@C3DGroup2@@QBEPBVC3DVertexBlend2@@XZ	00ac40a0	00ae0680
 ?AllocateArrays@CParticleSimulation@@QAE_NAAVCMovableResourceMemoryPool@@@Z	00adf2a0	00ae1030
 ?AllocateParticles@CParticleArrayOwner@@QAE_NKPAVCMovableResourceMemoryPool@@@Z	00adf460	00ae1150
@@ -16606,7 +16598,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?LowerBound@?$CVectorMap@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@@@@QAEPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@ABJ@Z	00ae9520	00ae8b50
 ?UpperBound@?$CVectorMap@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@@@@QAEPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@ABJ@Z	00ae95e0	00ae8b50
 ??0C3DPositionInterpolator@@QAE@ABVC3DVector@@0@Z	006af570	00aeabe0
-?GetEmitterTemplate@CParticleEmitterDatabase@@QAEPAVCParticleEmitter@NParticleEngine@@JJ@Z	00ae89e0	00aeabe0
 ?IsVisible@CParticleEmitter@NParticleEngine@@QAE_NMPBVCEnginePrimitivePrepareInfo@@@Z	00aed2f0	00aeb2d0
 ?Initialise@CParticleEmitter@NParticleEngine@@QAE_NPAVCIEngine@@@Z	00aee240	00aeb4a0
 ??$FindString@PAVCCharString@@V1@USRandomAccessIteratorTag@@@@YIPAVCCharString@@PAV0@0ABV0@ABUSRandomAccessIteratorTag@@@Z	004b8e40	00aebc90
@@ -16838,7 +16829,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?PlayCutscene@CQ_FireHeartScript@@QAEXVCCharString@@@Z	00d39330	00d3af50
 ?erase@?$vector@VCScriptThing@@@@QAEPAVCScriptThing@@PAV2@0@Z	008ac9d0	00d6be20
 ?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@0@Z	008ac9d0	00d732f0
-?SpawnEnemies@CQ_HangingTreeGoodScript@@QAEXABVC3DVector@@VCCharString@@J@Z	00d736b0	00d73610
 ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ	004aa900	00d73970
 ?IsDistanceBetweenThingsOver@@YI_NABVCScriptThing@@0M@Z	00cbe3ea	00d73ae0
 ?PlayCutscene@CQ_HeroSoulsMotherScript@NScript@@QAEXVCCharString@@@Z	00d848d0	00d835d0
@@ -16890,13 +16880,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??_7?$CSpawnedFunc0@VCV_ExposeMayorScript@NScript@@@@6B@	012e96e0	00e76920
 ??_7?$CSpawnedFunc1@VCV_ExposeMayorScript@NScript@@J@@6B@	012e9924	00e76920
 ??_7?$CSpawnedFunc0@VCV_FishingCompetitionScript@NScript@@@@6B@	012ea48c	00e7f030
-?Alloc@CMurderTwistBrother@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaaf10	00ea8830
-?Alloc@CMurderTwistBrotherFriend@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eac4e0	00ea8830
-?Alloc@CMurderTwistBrotherOlder@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaba10	00ea8830
-?Alloc@CMurderTwistBrotherOlderFriend@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eacde0	00ea8830
-?Alloc@CMurderTwistBrotherYounger@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaae40	00ea8830
-?Alloc@CMurderTwistBuriedGem@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ead730	00ea8830
-?Alloc@CMurderTwistLeader@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ea8e50	00ea8830
 ?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z	00eb07d0	00eb0700
 ?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@@QAEXABVCScriptThing@@@Z	00eb0700	00eb15c0
 ?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@@QAE_NABVCScriptThing@@@Z	00eb07d0	00eb23e0
@@ -17526,7 +17509,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Alloc@CFinalMaze@CQ_GuildTrainingWoodsDepartureScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d62270	00d61d20
 ?Alloc@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d63cc0	00d61d20
 ??_7?$CEntityScriptBinding@VCQ_HeroSoulsMotherScript@NScript@@@@6B@	012d4758	00d835d0
-?Alloc@CHSScreamer@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d83e60	00d835d0
 ?Alloc@CSummonerToKill@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d83cf0	00d835d0
 ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ	00cb7940	00d8ee50
 ??_7?$CEntityScriptBinding@VCQ_OrchardFarmRaidScript@NScript@@@@6B@	012db2bc	00dcc770
@@ -17535,8 +17517,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Alloc@CFarmRearEntrance@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dcf3d0	00dcc770
 ?Alloc@COrchardFarmWhisper@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dcef50	00dcc770
 ?Alloc@CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dcd0e0	00dcc770
-?Alloc@CWhisperFarmRaidIntro@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dcf540	00dcc770
-?Alloc@CWhisperMarker@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dcf610	00dcc770
 ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ	00cb7940	00e3a150
 ?IsActiveThreadTerminating@CV_HauntedHouseScript@NScript@@QAE_NXZ	00cb7940	00e953e0
 ??_7CQ_FireHeartScript@NScript@@6B@	012ccb90	00d34470
@@ -17575,9 +17555,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??_7?$CEntityScriptBinding@VCQ_MinionCampScript@NScript@@@@6B@	012d6d04	00d9e5e0
 ?Alloc@CBriarRose@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d9e8b0	00d9e5e0
 ?Alloc@CFadeinSummoner@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d9f5b0	00d9e5e0
-?Alloc@CMCMinion@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d9f0b0	00d9e5e0
-?Alloc@CMCMinionGuard@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d9ea80	00d9e5e0
-?Alloc@CMCSpawnPoint@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d9ed50	00d9e5e0
 ??_7?$CEntityScriptBinding@VCQ_WaspBossScript@NScript@@@@6B@	012e01f8	00e0ea40
 ?Alloc@CFleeingWoman@CQ_WaspBossScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e0f400	00e0ea40
 ?Alloc@CGratefulVillagerSpawn@CQ_WaspBossScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e109d0	00e0ea40
@@ -17590,7 +17567,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Alloc@CWaspVictim@CQ_WaspBossScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e11580	00e0ea40
 ??_7?$CEntityScriptBinding@VCV_BodyGuardScript@NScript@@@@6B@	012e7004	00e5d4f0
 ?Alloc@CBodyGuard@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e5dd60	00e5d4f0
-?Alloc@CBodyGuardRespawn@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e5dff0	00e5d4f0
 ?Alloc@CHenchmanComment@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e5f1c0	00e5d4f0
 ?Alloc@CHenchmanRegionEntranceComment@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e5f5c0	00e5d4f0
 ?Alloc@CHenchmanRegionExitComment@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e5f800	00e5d4f0
@@ -34019,7 +33995,6 @@ __imp__recvfrom@24	01440518	008f9320
 ??_7?$CEntityScriptBinding@VCQ_HeroSoulsBriarScript@NScript@@@@6B@	012d42e4	00d80e40
 ?Alloc@CBriarRose@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d81630	00d80e40
 ?Alloc@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d81750	00d80e40
-?Alloc@CHSBMagicBarrier@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d81b60	00d80e40
 ?PlayCutscene@CQ_HeroSoulsBriarScript@NScript@@QAEXVCCharString@@@Z	00d823a0	00d80e40
 ?MakeBanditComment@CQ_HobbeCaveScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z	00d905c0	00d907b0
 ??_7?$CSpawnedFunc1@VCQ_MinionClifftopChaseScript@NScript@@VCScriptThing@@@@6B@	012d771c	00da6d50
@@ -35526,7 +35501,6 @@ __imp__ReadFileEx@20	0143fdf4	009c3ae0
 ?UnlockPrimitive@C3DMesh2@@QAEXK@Z	00a892a0	00a24520
 ?g_MeshDataMemoryPool@@3PAVCMovableResourceMemoryPool@@A	013d2d6c	00a24520
 ?GetChunkInfo@C3DMeshFileHelperPointChunk@@UBE?AVCCharString@@XZ	00aa96b0	00aa9910
-?GetNoParticles@CParticleEmitter@NParticleEngine@@QAEJXZ	00aedca0	00aeac90
 ?ClearStaticParticleSims@CEngineClothSimulationMeshBase@@SIXXZ	00b81450	00b81820
 ??0CParticleSimulation@@QAE@XZ	00ae0600	00b81f30
 ?Reset@?$CCountedPointer@VCParticleSimulation@@@@QAEXPAVCParticleSimulation@@@Z	00b82a50	00b81f30
@@ -37884,7 +37858,6 @@ _z_inflateInit_	00c02310	00a3a840
 ?PhaseOne@CQ_MinionCampScript@NScript@@QAEXXZ	00da05d0	00da0230
 ??_7?$CEntityScriptBinding@VCQ_OakValeBanditRaidScript@NScript@@@@6B@	012d9ec0	00dbf2d0
 ?Alloc@COakValeBanditRaidBandit@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dbfdd0	00dbf2d0
-?Alloc@CRestartMarker@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dc0090	00dbf2d0
 ?PopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAE_NXZ	00dc0300	00dbf2d0
 ?WatchForGateTimer@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ	00dc08c0	00dbf2d0
 ?WatchForLevelChanges@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ	00dc0ff0	00dbf2d0
@@ -37961,7 +37934,6 @@ _z_inflateInit_	00c02310	00a3a840
 ?CopyToMemory@CSurface@@QAEXPAXJ@Z	009f3520	00885f50
 ?GetSurfaceExtents@@YI?AVC2DExtentsI@@ABVC2DCoordI@@ABVCPixelFormat@@@Z	009f3220	00885f50
 ?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z	0099a960	00885f50
-?Clear@CHeightMap@@QAEXXZ	008f6050	008f63c0
 ?resize@CHeightMapCellVector@@QAEXIABVCHeightMapCell@@@Z	008f6e30	008f63c0
 ??_7CActionDropGenericBox@NTCScriptedControl@@6B@	0128d7bc	00904e20
 ??_7CActionPerformExpression@@6B@	0128d8ec	00905360
@@ -39341,3 +39313,12 @@ __real@0000000000000000	0122ed70	00b260b0
 ?SetProximityForDirectApproach@CAIStateGroupBase@@IAEXM@Z	0097e2d0	0097e890
 ?RunSubThreads@CScriptBase@@QAEXXZ	00cb8220	004b4490
 ?Clear@CTCIdleScheduler@@QAEXXZ	008018b0	004e1537
+?Alloc@CHSB_MagicBarrier@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d81b60	00d80e40
+?Alloc@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d83e60	00d835d0
+?Alloc@CMC_Minion@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d9f0b0	00d9e5e0
+?Alloc@CMC_MinionGuard@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d9ea80	00d9e5e0
+?Alloc@CMC_SpawnPoint@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d9ed50	00d9e5e0
+?Alloc@CMK_OFI_GWLL_WHIS2@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dcf610	00dcc770
+?Alloc@CM_WhisperFarmRaidIntro@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dcf540	00dcc770
+?Alloc@CM_BodyGuardRespawn@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e5dff0	00e5d4f0
+?Alloc@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dc0090	00dbf2d0
