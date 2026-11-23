@@ -379,3 +379,4 @@ date	account	item	kind	status	note
 2026-11-23	A	tracker batch T1 other class/ns 7	naming	done	agent NF308 landed 10 rows + 8 table lines (batches/2026-11-23_landing_nf308); continuation NF311
 2026-11-23	A	tracker batch T1 signature 7	naming	done	agent NF310 landed 38 rows + 1 test + 24 table lines (batches/2026-11-23_landing_nf310); continuation NF312
 2026-11-23	A	tracker batch T1 other class/ns 8	naming	done	agent NF311 landed 6 rows + 11 table lines (batches/2026-11-23_landing_nf311); continuation NF313
+2026-11-23	A	tracker batch T1 leftovers 1	naming	done	agent NF309 landed 28 rows + 28 table lines (batches/2026-11-23_landing_nf309); continuation NF314

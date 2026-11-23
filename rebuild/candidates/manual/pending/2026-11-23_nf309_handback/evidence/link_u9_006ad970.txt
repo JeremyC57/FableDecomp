@@ -1,0 +1,9 @@
+## HEAD set: H_006ad970.obj H_006a8560.obj H_007122c0.obj
+duplicates 0
+
+UNRESOLVED 1 ?IsScriptTaskRunning@CTCScriptedControl@@QAE_NXZ
+UNRESOLVED 1 ?IsTaskListEmpty@CTCScriptedControl@@QAE_NXZ
+## new set: N_006ad970.obj N_006a8560.obj H_007122c0.obj
+duplicates 0
+
+LK_DONE

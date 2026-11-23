@@ -1,0 +1,9 @@
+## HEAD set: H_0082d810.obj H_00838ba0.obj
+duplicates 0
+
+UNRESOLVED 1 ?WorldUpdate@CThingGameObject@@QAE_NXZ
+## new set: N_0082d810.obj H_00838ba0.obj
+duplicates 0
+
+UNRESOLVED 1 ?WorldUpdate@CThingGameObject@@UAE_NXZ
+LK_DONE

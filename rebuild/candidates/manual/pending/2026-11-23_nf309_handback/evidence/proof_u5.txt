@@ -1,0 +1,12 @@
+##### 0085a840 renames: ?Destroy_0085a5a0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCCombatActionBase@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00ac3a40 renames: ?Destroy_00ac3a10@@YIXPAX@Z=?DeleteData@?$CCountedPointer@V?$CArray@VC3DTriangle2@@@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00618660 renames: ?Destroy_006174f0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0

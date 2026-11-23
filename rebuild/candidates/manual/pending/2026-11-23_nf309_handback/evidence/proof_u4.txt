@@ -1,0 +1,12 @@
+##### 00f3afc0 renames: ?CompressToBuffer@CRangeCompressor@@QAEJPBXJJPAEJ@Z=?Compress@CRangeCompressor@@QAEJPBXJJPAEJ@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 009261f0 renames: ?GetPlayerManager@CAIStateGroupBase@@QAEPAVCPlayerManager@@XZ=?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ
+sections head 16 new 16
+ALL_EQ text_sections_equal=12
+tables H=0 N=0
+##### 009ba110 renames: ?FindMatchingSubstring@CStringParser@@QAE_NPAVCCharString@@@Z=?SkipUntilString@CStringParser@@QAE_NABVCCharString@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

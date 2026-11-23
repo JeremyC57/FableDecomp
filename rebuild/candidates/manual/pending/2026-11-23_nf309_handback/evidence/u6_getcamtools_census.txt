@@ -1,0 +1,2 @@
+00871fd0: ?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ
+00872110: ?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ

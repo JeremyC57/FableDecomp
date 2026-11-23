@@ -1,7 +1,7 @@
 // CCreatureAction_HeroLoadRangedWeapon::Initialise() -- base Initialise; for a hero with an experience component (0x68)
 // and a carrying component, register a loading-speed haste multiplier for this action: the primary weapon's ability def
 // gives the multiplier range, the hero's stats def the ability level (adding a CTCHaste when missing)
-// Leaf: ?Initialise@CCreatureAction_HeroLoadRangedWeapon
+// Leaf: ?Initialise@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ
 // Inline-budget: FABLE_FORCEINLINE CTCHaste::SetActionSpeedMultiplier (NF61 overlay opt-in FABLE_RETAIL_CTCHASTE_SETACTIONSPEEDMULTIPLIER_FORCEINLINE):
 //   retail expands it here; VC7.1 calls it out of line in this caller, also under /d2inlS20 (469 v 493 bytes).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -141,13 +141,13 @@ class CCreatureActionBase { public:                          // retail sizeof 0x
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char _pad10[0xa8 - 0x10];
-    void Initialise();                                // 0x00694D10
+    virtual void Initialise();                        // 0x00694D10 ?Initialise@CCreatureActionBase@@UAEXXZ (virtual in Ego_r / FableWin; called qualified here)
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
 };
 class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PRangedWeapon;            // +0xa8
     CIntelligentPointer<CThing> PAmmo;                    // +0xb0
-    void Initialise();
+    virtual void Initialise();                        // ?Initialise@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ (Ego_r / FableWin)
 };
 
 void CCreatureAction_HeroLoadRangedWeapon::Initialise()

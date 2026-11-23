@@ -30,7 +30,7 @@ class CDataInputStream;
 //   0x00A41DE0 / FableWin.pdb 0x02DF7220 const ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z (the self row's spelling).
 class CEngineStaticMapFileBlockManager { public:
     void UnlockBlock(long pos);                     // 0x00BE0400
-    void PrioritiseBlock(long pos);                 // 0x00BE0420
+    void SetBlockToHighPriority(long pos);          // 0x00BE0420 ?SetBlockToHighPriority@CEngineStaticMapFileBlockManager@@QAEXJ@Z (Ego_r / FableWin; donor ProcessBackgroundLoading calls it)
     bool IsBlockLoaded(long pos) const;             // 0x00BE0480
     const unsigned char* GetBlockData(long pos) const;   // 0x00BE04C0 Ego_r.pdb 0x00A41E20 + FableWin.pdb 0x02DF74B0 (NF131)
 };
@@ -96,7 +96,7 @@ class CLandscapeBackgroundTreeNode { public:
     bool                             VisibleLastFrameHasBeenUpdated;   // +0xe5
     float PeekMinZ() const { return BoundingBox[2]; }
     float PeekMaxZ() const { return BoundingBox[5]; }
-    long CalculateLODBand();                        // 0x00BF7DF0 (descriptive name)
+    long GetDesiredLODBand();                       // 0x00BF7DF0 ?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ (Ego_r / FableWin; donor ProcessBackgroundLoading calls it)
     bool StartTreeLoadTask(CEngineStaticMapFileBlockManager* manager, bool block);   // 0x00BF6530
     bool StartPatchLoadTask(long lod, CEngineStaticMapFileBlockManager* manager, bool block);   // 0x00BF65B0
     CLandscapeBackgroundPatch* GetPatch() { return SubNode && SubNode->IsPatch() ? static_cast<CLandscapeBackgroundPatch*>(SubNode) : 0; }
@@ -110,7 +110,7 @@ LS_LOADING_STATUS CLandscapeBackgroundTreeNode::ProcessBackgroundLoading(double 
     if (GFGetFastSubFrameTimer() > time)
         return LS_LOADING;
     bool wasUpdated = VisibleLastFrameHasBeenUpdated;
-    long band = CalculateLODBand();
+    long band = GetDesiredLODBand();
     VisibleLastFrame = true;
     VisibleLastFrameHasBeenUpdated = true;
     GetPatch();
@@ -151,7 +151,7 @@ LS_LOADING_STATUS CLandscapeBackgroundTreeNode::ProcessBackgroundLoading(double 
             }
         }
         if (!block)
-            manager->PrioritiseBlock(AsyncLoadTask->FileBlockPos);
+            manager->SetBlockToHighPriority(AsyncLoadTask->FileBlockPos);
         if (!manager->IsBlockLoaded(AsyncLoadTask->FileBlockPos))
             return LS_LOADING;
         if (AsyncLoadTask->IsPatchLoadTask) {

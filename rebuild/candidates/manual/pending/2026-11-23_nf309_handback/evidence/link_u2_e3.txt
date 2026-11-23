@@ -1,0 +1,11 @@
+## HEAD set: H_0082d810.obj H_00704150.obj H_00836260.obj H_00838ba0.obj
+duplicates 0
+
+UNRESOLVED 3 ?WorldUpdate@CThingGameObject@@QAE_NXZ
+UNRESOLVED 1 ?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ
+## new set: N_0082d810.obj N_00704150.obj N_00836260.obj H_00838ba0.obj
+duplicates 0
+
+UNRESOLVED 3 ?WorldUpdate@CThingGameObject@@UAE_NXZ
+UNRESOLVED 1 ?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ
+LK_DONE

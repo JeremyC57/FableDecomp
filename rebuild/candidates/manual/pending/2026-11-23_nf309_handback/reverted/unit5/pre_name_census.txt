@@ -1,0 +1,99 @@
+# tools/namecensus.py v2 output (NF309, 2026-11-23): 31 new symbols = TABLE_CHANGES add / replace targets + RENAMES section 1 own Leafs + RENAMES section 2 new_symbol.
+# own_def = definitions (bodies) in the target's own row; OTHER = Class::Member bodies in any other landed row source.
+??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z	target=0084af90	own_def=1	other_defs=0
+??0CTCDivineWrath@@QAE@AAVCThing@@@Z	target=0078ecd0	own_def=1	other_defs=0
+?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z	target=00bacd80	own_def=1	other_defs=0
+?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z	target=0052cf40	own_def=2	other_defs=1
+    OTHER 00/41/NUISystemCChangingStateComponent_ChangeState_0041c5a0.cpp:27 CChangingStateComponent::ChangeState(unsigned long state, float parentUpdateTime) {
+?ChangeState@CMovie@NUISystem@@UAEXK@Z	target=00547c90	own_def=1	other_defs=0
+?ChangeState@CParticleEffect@NUISystem@@UAEXK@Z	target=00543df0	own_def=1	other_defs=0
+?ChangeState@CScrollingViewport@NUISystem@@UAEXK@Z	target=0053ebf0	own_def=1	other_defs=0
+?ChangeState@CZoomingComponent@NUISystem@@UAEXK@Z	target=005469e0	own_def=1	other_defs=0
+?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@MPAK@Z	target=00b30480	own_def=1	other_defs=1
+    OTHER 00/b3/CEnginePrimitiveAttachmentManager_UpdatePrimitives_00b39fb0.cpp:71 CEngineCamera::ClipSphere(const C3DVector& center,float radius)const {
+?Compress@CRangeCompressor@@QAEJPBXJJPAEJ@Z	target=00f3ae50	own_def=1	other_defs=3
+    OTHER 00/bf/CPatchTesselationEdgeStrip_SaveVertsCFanBaseVertex_00bfd0b0.cpp:7 CRangeCompressor::Compress(void*, long count, long stride, //   CArray<unsigned char>*) 0x00F3AFC0, free 0x00B
+    OTHER 00/f3/CRangeCompressor_Compress_00f3afc0.cpp:26 CRangeCompressor::Compress(const void* source, long width, long height, CArray<unsigned char>& out) {
+    OTHER 00/f3/CRangeCompressor_Compress_00f3a2e0.cpp:56 CRangeCompressor::Compress(const unsigned char* source, long count, long stride, unsigned char* dest, const CA
+?DeleteData@?$CCountedPointer@V?$CArray@VC3DTriangle2@@@@@@SIXPAX@Z	target=00ac3a10	own_def=0	other_defs=13
+    OTHER 00/54/NUISystemCSpellContainerList_CSpellContainerList_00544c10.cpp:50 CCountedPointer<NUISystem::CAction>::DeleteData (Ego_r.pdb 0x00438DF1 + FableWin.pdb), the per-T deleter.  str
+    OTHER 00/62/CTCQuickAccessMenu_GetExpressionsListUI_00627be0.cpp:134 CCountedPointer<NUISystem::CAction>::DeleteData(void* data) {
+    OTHER 00/62/CTCQuickAccessMenu_Activate_00628000.cpp:134 CCountedPointer<NUISystem::CAction>::DeleteData(void* data) {
+    OTHER 00/a8/CCountedPointerCScopedMemoryHandle_DeleteData_00a8d7c0.cpp:39 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/ae/NParticleEngineCParticleEmitterManager_scalardeletingdestructor_00aec9f0.cpp:13 CCountedPointer<CParticleEmitterManager>::DeleteData (0x00AECA50, same TU): ~CParticleEmitterManager -> //   ~
+    OTHER 00/a9/CCountedPointerC3DGroup2_DeleteData_00a982d0.cpp:46 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/9c/CCountedPointer_DeleteData_009c6640.cpp:1 CCountedPointer<const CFileInstaller::CFileInfo>::DeleteData(void* data) -- the counted-pointer deleter of a f
+    OTHER 00/44/CCountedPointer_DeleteData_00443840.cpp:89 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/44/CCountedPointer_DeleteData_00443b60.cpp:88 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/44/CCountedPointer_DeleteData_00443930.cpp:87 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/ab/CCountedPointerC3DAnimationBuilderCBoneInfo_DeleteData_00ab3640.cpp:16 CCountedPointer<T>::DeleteData(void* object) {
+    OTHER 00/82/CCountedPointerCRegionConnectionNode_DeleteData_00829160.cpp:1 CCountedPointer<CRegionConnectionNode>::DeleteData(void* data) -- the counted pointer's deleter: destroy and f
+    OTHER 00/82/CCountedPointerCRegionConnectionNode_DeleteData_00829160.cpp:43 CCountedPointer<T>::DeleteData(void* data) {
+?DeleteData@?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@SIXPAX@Z	target=006174f0	own_def=0	other_defs=13
+    OTHER 00/54/NUISystemCSpellContainerList_CSpellContainerList_00544c10.cpp:50 CCountedPointer<NUISystem::CAction>::DeleteData (Ego_r.pdb 0x00438DF1 + FableWin.pdb), the per-T deleter.  str
+    OTHER 00/62/CTCQuickAccessMenu_GetExpressionsListUI_00627be0.cpp:134 CCountedPointer<NUISystem::CAction>::DeleteData(void* data) {
+    OTHER 00/62/CTCQuickAccessMenu_Activate_00628000.cpp:134 CCountedPointer<NUISystem::CAction>::DeleteData(void* data) {
+    OTHER 00/a8/CCountedPointerCScopedMemoryHandle_DeleteData_00a8d7c0.cpp:39 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/ae/NParticleEngineCParticleEmitterManager_scalardeletingdestructor_00aec9f0.cpp:13 CCountedPointer<CParticleEmitterManager>::DeleteData (0x00AECA50, same TU): ~CParticleEmitterManager -> //   ~
+    OTHER 00/a9/CCountedPointerC3DGroup2_DeleteData_00a982d0.cpp:46 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/9c/CCountedPointer_DeleteData_009c6640.cpp:1 CCountedPointer<const CFileInstaller::CFileInfo>::DeleteData(void* data) -- the counted-pointer deleter of a f
+    OTHER 00/44/CCountedPointer_DeleteData_00443840.cpp:89 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/44/CCountedPointer_DeleteData_00443b60.cpp:88 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/44/CCountedPointer_DeleteData_00443930.cpp:87 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/ab/CCountedPointerC3DAnimationBuilderCBoneInfo_DeleteData_00ab3640.cpp:16 CCountedPointer<T>::DeleteData(void* object) {
+    OTHER 00/82/CCountedPointerCRegionConnectionNode_DeleteData_00829160.cpp:1 CCountedPointer<CRegionConnectionNode>::DeleteData(void* data) -- the counted pointer's deleter: destroy and f
+    OTHER 00/82/CCountedPointerCRegionConnectionNode_DeleteData_00829160.cpp:43 CCountedPointer<T>::DeleteData(void* data) {
+?DeleteData@?$CCountedPointer@VCCombatActionBase@@@@SIXPAX@Z	target=0085a5a0	own_def=0	other_defs=13
+    OTHER 00/54/NUISystemCSpellContainerList_CSpellContainerList_00544c10.cpp:50 CCountedPointer<NUISystem::CAction>::DeleteData (Ego_r.pdb 0x00438DF1 + FableWin.pdb), the per-T deleter.  str
+    OTHER 00/62/CTCQuickAccessMenu_GetExpressionsListUI_00627be0.cpp:134 CCountedPointer<NUISystem::CAction>::DeleteData(void* data) {
+    OTHER 00/62/CTCQuickAccessMenu_Activate_00628000.cpp:134 CCountedPointer<NUISystem::CAction>::DeleteData(void* data) {
+    OTHER 00/a8/CCountedPointerCScopedMemoryHandle_DeleteData_00a8d7c0.cpp:39 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/ae/NParticleEngineCParticleEmitterManager_scalardeletingdestructor_00aec9f0.cpp:13 CCountedPointer<CParticleEmitterManager>::DeleteData (0x00AECA50, same TU): ~CParticleEmitterManager -> //   ~
+    OTHER 00/a9/CCountedPointerC3DGroup2_DeleteData_00a982d0.cpp:46 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/9c/CCountedPointer_DeleteData_009c6640.cpp:1 CCountedPointer<const CFileInstaller::CFileInfo>::DeleteData(void* data) -- the counted-pointer deleter of a f
+    OTHER 00/44/CCountedPointer_DeleteData_00443840.cpp:89 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/44/CCountedPointer_DeleteData_00443b60.cpp:88 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/44/CCountedPointer_DeleteData_00443930.cpp:87 CCountedPointer<T>::DeleteData(void* data) {
+    OTHER 00/ab/CCountedPointerC3DAnimationBuilderCBoneInfo_DeleteData_00ab3640.cpp:16 CCountedPointer<T>::DeleteData(void* object) {
+    OTHER 00/82/CCountedPointerCRegionConnectionNode_DeleteData_00829160.cpp:1 CCountedPointer<CRegionConnectionNode>::DeleteData(void* data) -- the counted pointer's deleter: destroy and f
+    OTHER 00/82/CCountedPointerCRegionConnectionNode_DeleteData_00829160.cpp:43 CCountedPointer<T>::DeleteData(void* data) {
+?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ	target=0084d080	own_def=1	other_defs=0
+?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ	target=00bf7df0	own_def=1	other_defs=0
+?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ	target=008fcf90	own_def=0	other_defs=0
+?Initialise@CCreatureActionBase@@UAEXXZ	target=00694d10	own_def=1	other_defs=0
+?Initialise@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ	target=0078b410	own_def=1	other_defs=0
+?Initialise@CInitBaseClass@@IAE_NXZ	target=0099a350	own_def=2	other_defs=2
+    OTHER 00/a6/CSystemFont_Initialise_00a6c170.cpp:54 CInitBaseClass::Initialise() == true)     {
+    OTHER 00/9a/CSystemManager_Initialise_009a6610.cpp:204 CInitBaseClass::Initialise() == true) {
+?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ	target=007122c0	own_def=1	other_defs=0
+?PlaySoundW@CTCFireheartMinigame@@QAEKABVCCharString@@@Z	target=007e7880	own_def=1	other_defs=0
+?SetBlockToHighPriority@CEngineStaticMapFileBlockManager@@QAEXJ@Z	target=00be0420	own_def=1	other_defs=0
+?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z	target=00b30b50	own_def=1	other_defs=1
+    OTHER 00/b3/CEngineCamera_ProcessDebugScript_00b31160.cpp:52 CEngineCamera::SetCameraState(const CEngineCameraDesc& desc, bool rebuild_gamut, bool refresh_d3d) {
+?SetWill@CTCHeroMorph@@QAEXM@Z	target=0071be80	own_def=1	other_defs=0
+?SkipUntilString@CStringParser@@QAE_NABVCCharString@@@Z	target=009b9a20	own_def=1	other_defs=0
+?UpdateActionMovement@CCreatureActionBase@@IAEXXZ	target=00692aa0	own_def=1	other_defs=0
+?WorldUpdate@CThingBuilding@@UAE_NXZ	target=0082d810	own_def=1	other_defs=0
+?WorldUpdate@CThingDeadCreature@@UAE_NXZ	target=00836260	own_def=1	other_defs=0
+?WorldUpdate@CThingGameObject@@UAE_NXZ	target=00838ba0	own_def=0	other_defs=0
+?WorldUpdate@CThingObject@@UAE_NXZ	target=00704150	own_def=1	other_defs=0
+?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	target=00996610	own_def=1	other_defs=0
+
+# Reading of every OTHER hit and every own_def=0:
+# - ChangeState@CChangingStateComponent@NUISystem: OTHER 0041c5a0 is ChangeState(unsigned long, float), a different overload. own_def=2 =
+#   the 0052cf40 row's own definitions.
+# - ClipSphere QBE: OTHER 00b39fb0 is the 2-argument ClipSphere(const C3DVector&, float) const, a different overload / mangled name.
+# - Compress: OTHER 00bfd0b0 is a comment line; 00f3afc0 (my row) and 00f3a2e0 are different overloads (CArray& / CArray<CScriptEntry>&).
+# - Initialise@CInitBaseClass: OTHER 00a6c170 / 009a6610 are call sites (`CInitBaseClass::Initialise() == true) {`), not definitions.
+# - SetCameraState ABU: OTHER 00b31160 (CEngineCamera::ProcessDebugScript) is a documented same-TU strong copy of the owner 0x00B30B50,
+#   "the owner row's body verbatim" (its own fidelity comment). Same body; it exists at HEAD; the link evidence (link_u1_00b662f0.txt)
+#   shows no new duplicate.
+# - DeleteData x3: own_def=0 because the targets instantiate the shared-header body explicitly:
+#   0x0085A5A0 `template void FABLE_FASTCALL CCountedPointer<CCombatActionBase>::DeleteData(void*);`,
+#   0x00AC3A10 `template class CCountedPointer<CArray<C3DTriangle2> >;`, 0x006174F0 `template class CCountedPointer<std::vector<unsigned __int64> >;`.
+#   The 13 OTHER files each define a generic template<class T> CCountedPointer<T>::DeleteData. None names CCombatActionBase /
+#   CArray<C3DTriangle2> / std::vector<unsigned __int64> as T (grep), so none instantiates these symbols. The three binders use
+#   FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY (reference only; NF284 hybrid).
+# - GetPlayerManager IBEAAV (0x008FCF90) and WorldUpdate@CThingGameObject UAE (0x00838BA0): own_def=0 because the self rows define
+#   stand-ins under other names (NAME_FIXES lines). Unresolved before and after (NF302 Q2); no other row defines them.
+# Conclusion: no landed row defines a same-named function with a different body for any of the 31 new symbols.

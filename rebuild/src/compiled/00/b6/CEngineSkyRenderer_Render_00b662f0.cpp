@@ -47,7 +47,7 @@ struct CEngineCameraDesc {                               // 0x6c bytes (PDB)
 class CEngineCamera { public:
     unsigned char     _pad00[0x14];
     CEngineCameraDesc CameraDesc;                        // +0x14
-    void SetCameraState(const CEngineCameraDesc* desc, bool a, bool b);   // 0x00B30B50
+    void SetCameraState(const CEngineCameraDesc& desc, bool a, bool b);   // 0x00B30B50 ?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z (Ego_r / FableWin)
 };
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }                   // 0x01436EA0
 class CEngineLightingManager { public:
@@ -92,10 +92,10 @@ void CEngineSkyRenderer_Methods::Render(const CEngineComponentRenderParams& para
         skyDesc.WorldPosition.X = 0.0f;
         skyDesc.WorldPosition.Y = 0.0f;
         skyDesc.WorldPosition.Z = 0.0f;
-        NEngineInternal::GPCamera->SetCameraState(&skyDesc, false, true);
+        NEngineInternal::GPCamera->SetCameraState(skyDesc, false, true);
         NEngineInternal::GPRenderManager->SetZBufferEnable(true);
         RenderSky(interpolate, &NEngineInternal::GPCamera->CameraDesc.WorldPosition, false);
-        NEngineInternal::GPCamera->SetCameraState(&savedDesc, false, true);
+        NEngineInternal::GPCamera->SetCameraState(savedDesc, false, true);
         C3DVector sun = NEngineInternal::GPLightingManager->SunVector;
         float distance = NEngineInternal::GPCamera->CameraDesc.FarZPlane * 0.099f;
         C3DVector pos = sun * distance + NEngineInternal::GPCamera->CameraDesc.WorldPosition;

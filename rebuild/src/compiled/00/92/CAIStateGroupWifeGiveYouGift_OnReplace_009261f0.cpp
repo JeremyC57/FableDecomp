@@ -152,7 +152,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CPlayerManager* GetPlayerManager();                 // 0x008FCF90
+protected:
+    CPlayerManager& GetPlayerManager() const;           // 0x008FCF90 ?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ (Ego_r / FableWin)
 };
 struct CAIStateGroup_WifeGiveYouGift : CAIStateGroupBase {
     long FrameToSpeakNext;                              // +0x14
@@ -165,7 +166,7 @@ void CAIStateGroup_WifeGiveYouGift::OnReplace()
 {
     if (!DeliveredGiveSpeech)
         return;
-    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || (hero->m_flags91 & 1))
         return;
     CThing* gift = ((CThing*)CThingObject::Create(GiftToGiveDef, *(&hero->GetPos()), hero->PlayerNumber, 0, 0, ""));

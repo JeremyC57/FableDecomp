@@ -10,7 +10,7 @@
 // Retail 0x007E7AC0, 320 bytes incl. padding (plain `ret`, /GS cookie 0x0139C8A8). Ego_r.pdb
 // `?DelayedQuit@CTCFireheartMinigame@@...` (catalog row).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 (literal 0x0125603C
-// "TAVERN_GAME_OBJECT_SELECTION_CHANGE"), CTCFireheartMinigame::PlaySound(const CCharString&) @ 0x007E7880 (label
+// "TAVERN_GAME_OBJECT_SELECTION_CHANGE"), CTCFireheartMinigame::PlaySoundW(const CCharString&) @ 0x007E7880 (label
 // "CTCBetting::PlaySoundW" is a byte-twin propagation), CWideString::CWideString(const wchar_t*) @ 0x0099B6B0 (empty wide
 // literal 0x0122D70C; label "CCharString::AssignFromWide" propagated), CTCFireheartMinigame::GetText(ulong) const @ 0x007E7580
 // (three times, hidden result; label "CTCBetting::GetText" propagated), CSubtitleRenderer::SetText(CFontBank*, 4 x const
@@ -91,7 +91,7 @@ public:
     bool QuitWithDelay;                                     // +0x88
     unsigned char _pad89[0x98 - 0x89];
     CDefPointer<const CFireheartMinigameDef> PDef;          // +0x98
-    unsigned long PlaySound(const CCharString& name);       // 0x007E7880
+    unsigned long PlaySoundW(const CCharString& name);      // 0x007E7880 ?PlaySoundW@CTCFireheartMinigame@@QAEKABVCCharString@@@Z (Ego_r / FableWin; self Leaf)
     CWideString GetText(unsigned long id);            // 0x007E7580
     void DelayedQuit();
 };
@@ -103,7 +103,7 @@ void CTCFireheartMinigame::DelayedQuit()
     QuitWithDelay = true;
     {
         CCharString sound("TAVERN_GAME_OBJECT_SELECTION_CHANGE", -1);
-        PlaySound(sound);
+        PlaySoundW(sound);
     }
     {
         CWideString empty(L"");

@@ -1,0 +1,8 @@
+## HEAD set: H_006ba030.obj H_00996610.obj
+duplicates 0
+
+UNRESOLVED 1 ?WriteData@CDataOutputStream@@QAEXPBXK@Z
+## new set: N_006ba030.obj H_00996610.obj
+duplicates 0
+
+LK_DONE

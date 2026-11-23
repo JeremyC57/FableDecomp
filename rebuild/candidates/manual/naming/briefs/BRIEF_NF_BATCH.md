@@ -147,3 +147,8 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
 - NF311 Q5 / Q6: NF299 Q3 also covers a `virtual` destructor on a local member model and the access label the PDB gives the override
   (e.g. MAE), under the same conditions. Stale witnesses can hide behind access / const / pointer-v-reference differences: compile the
   witness rather than screening identifiers, and read full spellings from the table (ENTRIES cuts them at 160 characters).
+- NF309 Q2: an `#ifdef` opt-in giving an existing shared-header declaration its PDB access (`#ifdef` new / `#else` old) plus a friend naming
+  the real class lands with equiv_check and a planted control. Q3: a self fix that forces const onto same-TU stand-ins is T3. Q4: a
+  table-only delete of a stale line, proved from the witness's object, counts as `done`. Q5: nested types only a shared header can declare
+  are header-lane / T3 work. Screen TARGETS as well as binders against stay-off (T3_PORT_QUEUE column 3 lists unit targets too), and keep
+  the changed rows' locks until the landing.

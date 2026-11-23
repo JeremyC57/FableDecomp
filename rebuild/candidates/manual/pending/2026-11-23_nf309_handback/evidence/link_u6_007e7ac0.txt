@@ -1,0 +1,8 @@
+## HEAD set: H_007e7ac0.obj H_007e7880.obj
+duplicates 0
+
+UNRESOLVED 1 ?PlaySound@CTCFireheartMinigame@@QAEKABVCCharString@@@Z
+## new set: N_007e7ac0.obj H_007e7880.obj
+duplicates 0
+
+LK_DONE

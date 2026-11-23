@@ -1,0 +1,11 @@
+## HEAD set: H_009261f0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+UNRESOLVED 1 ?GetPlayerManager@CAIStateGroupBase@@QAEPAVCPlayerManager@@XZ
+## new set: N_009261f0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+UNRESOLVED 1 ?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ
+LK_DONE

@@ -1,0 +1,16 @@
+##### 005469e0 renames: ?ChangeState@CChangingStateComponent@NUISystem@@QAEXK@Z=?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z ?ChangeState@CZoomingComponent@NUISystem@@QAEXK@Z=?ChangeState@CZoomingComponent@NUISystem@@UAEXK@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0053ebf0 renames: ?ChangeState@CChangingStateComponent@@QAEXK@Z=?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z ?ChangeState@CScrollingViewport@NUISystem@@QAEXK@Z=?ChangeState@CScrollingViewport@NUISystem@@UAEXK@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00547c90 renames: ?ChangeState@CChangingStateComponent@NUISystem@@QAEXK@Z=?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z ?ChangeState@CMovie@NUISystem@@QAEXK@Z=?ChangeState@CMovie@NUISystem@@UAEXK@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00543df0 renames: ?ChangeState@CChangingStateComponent@NUISystem@@UAEXJ@Z=?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z ?ChangeState@CParticleEffect@NUISystem@@UAEXJ@Z=?ChangeState@CParticleEffect@NUISystem@@UAEXK@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0

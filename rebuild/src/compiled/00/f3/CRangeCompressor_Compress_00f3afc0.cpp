@@ -8,7 +8,7 @@
 // [0, 0x7FFFFFFF] (refused with 0), then recomputed in 32 bits for the resize; the data pointer goes through the
 // inline accessor that yields the array object itself when empty. The bound is written out at both uses (a
 // `size` local moves the values into other registers).
-// Leaf: Compress@CRangeCompressor
+// Leaf: ?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z
 template<class T> class CArray { public:
     T* m_first;                                                 // +0
     T* m_last;                                                  // +4
@@ -19,7 +19,7 @@ template<class T> class CArray { public:
 };
 
 struct CRangeCompressor {
-    long CompressToBuffer(const void* source, long width, long height, unsigned char* dest, long destSize);  // 0x00F3AE50
+    long Compress(const void* source, long width, long height, unsigned char* dest, long destSize);  // 0x00F3AE50 ?Compress@CRangeCompressor@@QAEJPBXJJPAEJ@Z (Ego_r / FableWin; the buffer overload)
     long Compress(const void* source, long width, long height, CArray<unsigned char>& out);
 };
 
@@ -29,7 +29,7 @@ long CRangeCompressor::Compress(const void* source, long width, long height, CAr
     if (bound < 0 || bound > 0x7fffffff)
         return 0;
     out.resize(width * height + 1, 0);
-    long produced = CompressToBuffer(source, width, height, out.GetData(), width * height + 1);
+    long produced = Compress(source, width, height, out.GetData(), width * height + 1);
     out.resize(produced, 0);
     return produced;
 }

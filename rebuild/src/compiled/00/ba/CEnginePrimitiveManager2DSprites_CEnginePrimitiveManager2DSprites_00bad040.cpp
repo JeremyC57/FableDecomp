@@ -4,7 +4,7 @@
 //   CPixelShader::CPixelShader @ 0x00A5EC00, CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
 //   CShaderResource::GetVertexShader @ 0x00A5D5F0 and GetPixelShader @ 0x00A5D720 (both labelled GetPixelShader in the
 //   manifest; the first returns a CVertexShader -- its temporary is reset to vtable 0x0129B3D0 and counts at +0x10),
-//   CEnginePrimitiveManager::RegisterEnable @ 0x00BACD80 (a retail no-op, `ret 4`).
+//   CEnginePrimitiveManager::AddEnableConsoleVariable @ 0x00BACD80 (a retail no-op, `ret 4`).
 // Globals: the engine data @ 0x01436E98; its shader resource at +0x2A40 (vertex) and +0x2A98 (pixel).
 // Vtables: 0x012A5664 CEnginePrimitiveManager2DSprites, 0x0129B3D0 CVertexShader, 0x0129A054 CPixelShader, 0x0129A030 CShaderBase.
 // Layout: engine/CEnginePrimitiveManager2DSprites.h offsets (VertexShader2DSprite +0x0C, VertexShader2DClockSprite +0x14,
@@ -38,7 +38,7 @@ class CEnginePrimitiveManager { public:
     CEngineSceneArray* SceneList;                  // +0x04
     bool               Enable;                     // +0x08
     CEnginePrimitiveManager(CEngineSceneArray* scenes);   // 0x00BACDB0
-    void RegisterEnable(const CCharString& name);  // 0x00BACD80
+    void AddEnableConsoleVariable(const CCharString& name);  // 0x00BACD80 ?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z (Ego_r / FableWin; the donor 2DSprites ctor calls it; self Leaf)
 };
 
 class CEnginePrimitiveManager2DSprites : public CEnginePrimitiveManager { public:   // vtable 0x012A5664
@@ -64,5 +64,5 @@ CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites(CEngineSceneA
     Indices[3] = 1;
     Indices[4] = 3;
     Indices[5] = 2;
-    RegisterEnable("Enable2DSprites");
+    AddEnableConsoleVariable("Enable2DSprites");
 }

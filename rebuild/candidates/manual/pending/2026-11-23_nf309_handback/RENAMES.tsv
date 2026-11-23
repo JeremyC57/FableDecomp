@@ -1,0 +1,40 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames / leaf changes)
+0x00694d10	CCreatureActionBase	Initialise	?Initialise@CCreatureActionBase@@UAEXXZ	CCreatureActionBase::Initialise	Initialise (defined ?Initialise@CCreatureActionBase@@QAEXXZ)	Ego_r + FableWin UAE; vtable slot 12 (land1122nf266 vtmap); NF304 Q6 self fix, the only landed QAE binder 0x0078B410 moves in this hand-back
+0x0078b410	CCreatureAction_HeroLoadRangedWeapon	Initialise	?Initialise@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ	CCreatureAction_HeroLoadRangedWeapon::Initialise	?Initialise@CCreatureAction_HeroLoadRangedWeapon (defined QAEXXZ)	Ego_r + FableWin UAE; NF303 Q1 (base made virtual); no landed binder (vtable 0x0126BA04 only)
+0x0082d810	CThingBuilding	WorldUpdate	?WorldUpdate@CThingBuilding@@UAE_NXZ	CThingBuilding::WorldUpdate	(no Leaf; defined ?WorldUpdate@CThingBuilding@@QAE_NXZ)	Ego_r + FableWin UAE; NF303 Q1; no landed binder (vtable 0x012450E8 only)
+0x00704150	CThingObject	WorldUpdate	?WorldUpdate@CThingObject@@UAE_NXZ	CThingObject::WorldUpdate	?WorldUpdate@CThingObject (defined QAE_NXZ)	Ego_r + FableWin UAE; NF303 Q1; no landed binder (one vtable absolute reference only)
+0x00836260	CThingDeadCreature	WorldUpdate	?WorldUpdate@CThingDeadCreature@@UAE_NXZ	CThingDeadCreature::WorldUpdate	?WorldUpdate@CThingDeadCreature (defined QAE_NXZ)	Ego_r + FableWin UAE; NF303 Q1; no landed binder (one vtable absolute reference only)
+0x005469e0	NUISystem::CZoomingComponent	ChangeState	?ChangeState@CZoomingComponent@NUISystem@@UAEXK@Z	NUISystem::CZoomingComponent::ChangeState	(no Leaf; defined QAEXK)	Ego_r + FableWin UAE; NF303 Q1; vtable 0x01247DC4 slot 48, one absolute reference; no landed binder
+0x0053ebf0	NUISystem::CScrollingViewport	ChangeState	?ChangeState@CScrollingViewport@NUISystem@@UAEXK@Z	NUISystem::CScrollingViewport::ChangeState	ChangeState (defined QAEXK)	Ego_r + FableWin UAE; NF303 Q1; one absolute reference; no landed binder
+0x00547c90	NUISystem::CMovie	ChangeState	?ChangeState@CMovie@NUISystem@@UAEXK@Z	NUISystem::CMovie::ChangeState	?ChangeState@CMovie (defined QAEXK)	Ego_r + FableWin UAE; NF303 Q1; one absolute reference; no landed binder
+0x00543df0	NUISystem::CParticleEffect	ChangeState	?ChangeState@CParticleEffect@NUISystem@@UAEXK@Z	NUISystem::CParticleEffect::ChangeState	(no Leaf; defined UAEXJ)	Ego_r + FableWin UAEXK (unsigned long); NF304 Q6 signature self fix; one absolute reference (vtable 0x0124735C); no landed binder
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00694020	?UpdateActionMovement@CCreatureActionBase@@QAEXXZ	?UpdateActionMovement@CCreatureActionBase@@IAEXXZ	0x00692aa0
+0x00bf9aa0	?ClipSphere@CEngineCamera@@QAE_NPBVC3DVector@@MPAK@Z	?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@MPAK@Z	0x00b30480
+0x00b662f0	?SetCameraState@CEngineCamera@@QAEXPBUCEngineCameraDesc@@_N1@Z	?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z	0x00b30b50
+0x00845900	??0CEventTalkedTo@NEntityEvents@@QAE@PAVCThing@@@Z	??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z	0x0084af90
+0x004d4a99	??0CTCDivineWrath@@QAE@PAVCThing@@@Z	??0CTCDivineWrath@@QAE@AAVCThing@@@Z	0x0078ecd0
+0x0078b410	?Initialise@CCreatureActionBase@@QAEXXZ	?Initialise@CCreatureActionBase@@UAEXXZ	0x00694d10
+0x0082d810	?WorldUpdate@CThingGameObject@@QAE_NXZ	?WorldUpdate@CThingGameObject@@UAE_NXZ	0x00838ba0
+0x00704150	?WorldUpdate@CThingGameObject@@QAE_NXZ	?WorldUpdate@CThingGameObject@@UAE_NXZ	0x00838ba0
+0x00836260	?WorldUpdate@CThingGameObject@@QAE_NXZ	?WorldUpdate@CThingGameObject@@UAE_NXZ	0x00838ba0
+0x005469e0	?ChangeState@CChangingStateComponent@NUISystem@@QAEXK@Z	?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z	0x0052cf40
+0x0053ebf0	?ChangeState@CChangingStateComponent@@QAEXK@Z	?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z	0x0052cf40
+0x00547c90	?ChangeState@CChangingStateComponent@NUISystem@@QAEXK@Z	?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z	0x0052cf40
+0x00543df0	?ChangeState@CChangingStateComponent@NUISystem@@UAEXJ@Z	?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z	0x0052cf40
+0x00f3afc0	?CompressToBuffer@CRangeCompressor@@QAEJPBXJJPAEJ@Z	?Compress@CRangeCompressor@@QAEJPBXJJPAEJ@Z	0x00f3ae50
+0x009261f0	?GetPlayerManager@CAIStateGroupBase@@QAEPAVCPlayerManager@@XZ	?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ	0x008fcf90
+0x009ba110	?FindMatchingSubstring@CStringParser@@QAE_NPAVCCharString@@@Z	?SkipUntilString@CStringParser@@QAE_NABVCCharString@@@Z	0x009b9a20
+0x008728c0	?GetCamTools@CBase@NCameraModes@@QBEABVCTools@2@XZ	?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ	0x0084d080
+0x006ba030	?WriteData@CDataOutputStream@@QAEXPBXK@Z	?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	0x00996610
+0x00bf8030	?PrioritiseBlock@CEngineStaticMapFileBlockManager@@QAEXJ@Z	?SetBlockToHighPriority@CEngineStaticMapFileBlockManager@@QAEXJ@Z	0x00be0420
+0x00bf84c0	?PrioritiseBlock@CEngineStaticMapFileBlockManager@@QAEXJ@Z	?SetBlockToHighPriority@CEngineStaticMapFileBlockManager@@QAEXJ@Z	0x00be0420
+0x00bf8030	?CalculateLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ	?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ	0x00bf7df0
+0x007e7ac0	?PlaySound@CTCFireheartMinigame@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCFireheartMinigame@@QAEKABVCCharString@@@Z	0x007e7880
+0x005ee887	?SetWillMorphAmount@CTCHeroMorph@@QAEXM@Z	?SetWill@CTCHeroMorph@@QAEXM@Z	0x0071be80
+0x00bad040	?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z	?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z	0x00bacd80
+0x009f4910	?Init@CInitBaseClass@@QAE_NXZ	?Initialise@CInitBaseClass@@IAE_NXZ	0x0099a350
+0x006ad970	?IsScriptTaskRunning@CTCScriptedControl@@QAE_NXZ	?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ	0x007122c0
+0x006a8560	?IsTaskListEmpty@CTCScriptedControl@@QAE_NXZ	?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ	0x007122c0
+0x008326a0	?IsScriptTaskRunning@CTCScriptedControl@@QAE_NXZ	?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ	0x007122c0

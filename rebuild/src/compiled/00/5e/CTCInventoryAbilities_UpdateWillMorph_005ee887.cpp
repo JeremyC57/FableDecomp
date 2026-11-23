@@ -24,7 +24,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCHeroMorph { public:                                // interface type 3
-    void SetWillMorphAmount(float amount);           // 0x0071BE80
+    void SetWill(float amount);                      // 0x0071BE80 ?SetWill@CTCHeroMorph@@QAEXM@Z (Ego_r / FableWin; donor UpdateWillMorph calls it)
 };
 #include "engine/EHeroTrainableStatType.h"
 class CTCHeroExperience { public:                           // interface type 0x68
@@ -77,5 +77,5 @@ void CTCInventoryAbilities::UpdateWillMorph()
         reached += experience->GetTrainableStatLevel(HERO_STAT_WILL_MAGIC_POWER);
     }
     if (possible > 0)
-        morph->SetWillMorphAmount((float)reached / possible);
+        morph->SetWill((float)reached / possible);
 }

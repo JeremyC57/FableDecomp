@@ -1,0 +1,10 @@
+## HEAD set: H_00845900.obj H_0084af90.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CEventTalkedTo@NEntityEvents@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CEventTalkedToBy@NEntityEvents@@QAE@PAVCThing@@@Z
+## new set: N_00845900.obj H_0084af90.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CEventTalkedToBy@NEntityEvents@@QAE@PAVCThing@@@Z
+LK_DONE

@@ -1,0 +1,13 @@
+## HEAD set: H_00bf8030.obj H_00bf84c0.obj H_00be0420.obj H_00bf7df0.obj
+duplicates 0
+
+UNRESOLVED 1 ?CalculateLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ
+UNRESOLVED 1 ?ChangeLoadingPriority@CBankFileAsyncData@@QAEXW4EThreadedFilePriority@@@Z
+UNRESOLVED 2 ?PrioritiseBlock@CEngineStaticMapFileBlockManager@@QAEXJ@Z
+UNRESOLVED 1 ?g_HighLoadingPriority@@3W4EThreadedFilePriority@@A
+## new set: N_00bf8030.obj N_00bf84c0.obj H_00be0420.obj H_00bf7df0.obj
+duplicates 0
+
+UNRESOLVED 1 ?ChangeLoadingPriority@CBankFileAsyncData@@QAEXW4EThreadedFilePriority@@@Z
+UNRESOLVED 1 ?g_HighLoadingPriority@@3W4EThreadedFilePriority@@A
+LK_DONE

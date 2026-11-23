@@ -1,0 +1,4 @@
+replace	?Destroy_006174f0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@SIXPAX@Z	006174f0	00618660	NF309 entry 75: the only address-taker (absrows) respelled; the target had no PDB line
+rewitness	?Destroy_0085a5a0@@YIXPAX@Z	0085a5a0	00905fd0	NF309 entry 80: 0x0085A840 moves to DeleteData; the other address-taker 0x00905FD0 (T3 row) still binds the stand-in
+add	?DeleteData@?$CCountedPointer@VCCombatActionBase@@@@SIXPAX@Z	0085a5a0	0085a840	NF309 entry 80: the target had no PDB line (self Leaf only)
+replace	?Destroy_00ac3a10@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@V?$CArray@VC3DTriangle2@@@@@@SIXPAX@Z	00ac3a10	00ac3a40	NF309 entry 81: the only address-taker (absrows) respelled; the target had no PDB line

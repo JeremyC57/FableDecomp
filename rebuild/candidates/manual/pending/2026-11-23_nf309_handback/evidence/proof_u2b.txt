@@ -1,0 +1,12 @@
+##### 00704150 renames: ?WorldUpdate@CThingGameObject@@QAE_NXZ=?WorldUpdate@CThingGameObject@@UAE_NXZ ?WorldUpdate@CThingObject@@QAE_NXZ=?WorldUpdate@CThingObject@@UAE_NXZ
+sections head 13 new 13
+ALL_EQ text_sections_equal=11
+tables H=0 N=0
+##### 00836260 renames: ?WorldUpdate@CThingDeadCreature@@QAE_NXZ=?WorldUpdate@CThingDeadCreature@@UAE_NXZ ?WorldUpdate@CThingGameObject@@QAE_NXZ=?WorldUpdate@CThingGameObject@@UAE_NXZ
+sections head 24 new 24
+ALL_EQ text_sections_equal=19
+tables H=0 N=0
+##### 00694d10 renames: ?Initialise@CCreatureActionBase@@QAEXXZ=?Initialise@CCreatureActionBase@@UAEXXZ
+sections head 16 new 16
+ALL_EQ text_sections_equal=14
+tables H=0 N=0

@@ -214,8 +214,8 @@ class CCreatureActionBase { public:
     CActionEventVector      ActionEvents;              // +0x84
     SCutSceneTree           CutSceneEvents;            // +0x90
 
-    void UpdateActionMovement();                       // 0x00692AA0
 protected:
+    void UpdateActionMovement();                       // 0x00692AA0 ?UpdateActionMovement@CCreatureActionBase@@IAEXXZ (protected in Ego_r / FableWin)
     virtual void FrameUpdate();                        // Ego_r.pdb 0x0051A410 / FableWin.pdb 0x01DB65E0 ?FrameUpdate@CCreatureActionBase@@MAEXXZ
                                                        //   (protected virtual, engine/CCreatureActionBase.h; NF64 q10720); the last slot here, so no other slot moves
 };

@@ -19,7 +19,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CTCScriptedControl { public:                              // interface type 0x1f component
     unsigned char _pad00[0x18];
     bool          m_forceUpdate;                         // +0x18
-    bool IsScriptTaskRunning();                          // 0x007122C0
+    bool IsActionListEmpty() const;                      // 0x007122C0 ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ (Ego_r / FableWin; self Leaf; the expression below is the inline IsActive, whose donor body calls it)
     void Update();                                       // 0x00713910
 };
 
@@ -32,7 +32,7 @@ void CThingPlayerCreature::UpdatePlayerControl()
     CTCScriptedControl* control;
     if (GetTC(TCI_SCRIPTED_CONTROL, &control))
     {
-        if (control->m_forceUpdate || !control->IsScriptTaskRunning())
+        if (control->m_forceUpdate || !control->IsActionListEmpty())
             control->Update();
     }
     ControlledMove();

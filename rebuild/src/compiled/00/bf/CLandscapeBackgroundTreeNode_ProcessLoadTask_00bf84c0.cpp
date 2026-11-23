@@ -32,7 +32,7 @@ class CDataInputStream;
 // Callee respelled (NF177, PRIORITY q12088): 0x00BE0480 was ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QAE_NJ@Z; now the Ego_r.pdb
 //   0x00A41DE0 / FableWin.pdb 0x02DF7220 const ?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z (the self row's spelling).
 class CEngineStaticMapFileBlockManager { public:
-    void PrioritiseBlock(long pos);                 // 0x00BE0420
+    void SetBlockToHighPriority(long pos);          // 0x00BE0420 ?SetBlockToHighPriority@CEngineStaticMapFileBlockManager@@QAEXJ@Z (Ego_r / FableWin; donor ProcessLoadTask calls it)
     bool IsBlockLoaded(long pos) const;             // 0x00BE0480
     const unsigned char* GetBlockData(long pos) const;   // 0x00BE04C0 Ego_r.pdb 0x00A41E20 + FableWin.pdb 0x02DF74B0 (NF131)
 public:
@@ -120,7 +120,7 @@ LS_LOADING_STATUS CLandscapeBackgroundTreeNode::ProcessLoadTask(long lod, double
     }
     if (AsyncLoadTask->LoadingTree == 0) {
         if (VisibleLastFrame)
-            manager->PrioritiseBlock(AsyncLoadTask->FileBlockPos);
+            manager->SetBlockToHighPriority(AsyncLoadTask->FileBlockPos);
         if (!manager->IsBlockLoaded(AsyncLoadTask->FileBlockPos))
             return LS_LOADING;
         if (AsyncLoadTask->IsPatchLoadTask) {

@@ -1,0 +1,10 @@
+## HEAD set: H_005469e0.obj H_0053ebf0.obj H_00547c90.obj H_00543df0.obj H_0052cf40.obj
+duplicates 0
+
+UNRESOLVED 1 ?ChangeState@CChangingStateComponent@@QAEXK@Z
+UNRESOLVED 2 ?ChangeState@CChangingStateComponent@NUISystem@@QAEXK@Z
+UNRESOLVED 1 ?ChangeState@CChangingStateComponent@NUISystem@@UAEXJ@Z
+## new set: N_005469e0.obj N_0053ebf0.obj N_00547c90.obj N_00543df0.obj H_0052cf40.obj
+duplicates 0
+
+LK_DONE

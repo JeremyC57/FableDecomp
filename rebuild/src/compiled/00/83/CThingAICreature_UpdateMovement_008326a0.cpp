@@ -2,7 +2,7 @@
 // Leaf: UpdateMovement
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Callees: LowerBound @ 0x0040F020, CTCScriptedControl::IsScriptTaskRunning @ 0x007122C0, _ftol @ 0x00BFEA70,
+// Callees: LowerBound @ 0x0040F020, CTCScriptedControl::IsActionListEmpty() const @ 0x007122C0, _ftol @ 0x00BFEA70,
 // CAIBrain::IsReadyToRunStateGroupWithHigherScriptPriorityThan(long, long) @ 0x0088BAC0, CTCScriptedControl::InterruptControl
 // @ 0x00713850, CBrainOutput::CBrainOutput @ 0x00835620, CAIBrain::ForceReset(CBrainOutput*) @ 0x0088BA40,
 // CThingAICreature::UpdateAI @ 0x006D5D30, CThingAICreature::UpdateBrain @ 0x006D5A90, the movement component's slot 33 (+0x84),
@@ -81,7 +81,7 @@ class CTCScriptedControl { public:
     bool m_forceUpdate;                         // +0x18
     unsigned char _pad19[3];
     long ScriptPriority;                        // +0x1c
-    bool IsScriptTaskRunning();                 // 0x007122C0
+    bool IsActionListEmpty() const;             // 0x007122C0 ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ (Ego_r / FableWin; self Leaf; the test is the inline IsActive, whose donor body calls it)
     void InterruptControl();                    // 0x00713850
     void Update();                              // 0x00713910
 };
@@ -139,7 +139,7 @@ public:
 void CThingAICreature::UpdateMovement(float dt)
 {
     CTCScriptedControl* control;
-    if (GetInterface(&control, 0x1f) && (control->m_forceUpdate || !control->IsScriptTaskRunning())) {
+    if (GetInterface(&control, 0x1f) && (control->m_forceUpdate || !control->IsActionListEmpty())) {
         long priority = control->ScriptPriority;
         if (Brain->IsReadyToRunStateGroupWithHigherScriptPriorityThan(priority, (long)dt)) {
             control->InterruptControl();
