@@ -36,7 +36,8 @@ import argparse, collections, os, re, subprocess, sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 P = lambda *a: os.path.join(ROOT, *a)
 
-STANDIN = re.compile(r"(?:_[0-9a-fA-F]{8}(?![0-9a-fA-F])|@T@@|^\?\w+@T@@|DAT_|FUN_|_vtbl|Unproven|@Native@@|ForwardTarget_|g_obj_|"
+STANDIN = re.compile(r"(?:_[0-9a-fA-F]{8}(?![0-9a-fA-F])|@T@@|^\?\w+@T@@|@S@@|^\?\?_?[0-9A-Z][TS]@@|DAT_|FUN_|_vtbl|Unproven|@Native@@|ForwardTarget_|g_obj_|"
+                     # @S@@ / ??1T@@ / ??0S@@: the placeholder classes T and S (no PDB class has either name; finish plan route 0)
                      r"_Retail@@|Methods@@|\bv\d\d@|Virtual\d+@|LAB_|thunk_)")
 CAT_STANDIN = re.compile(r"(?:_[0-9a-fA-F]{8}(?![0-9a-fA-F])|FUN_|DAT_|::void |Unproven|Virtual\d+|\bT::)")
 # MSVC function access/storage letter after the name@scope@@ : A-H private/protected/public member (Q..Z for publics etc.)
@@ -80,8 +81,30 @@ def leaf_of(src):
     return ""
 
 
+_LIBSYMS = None
+def lib_symbols():
+    """symbols of proven toolchain / vendor library code (libsig: library_signatures.tsv, vendor_signatures.tsv `symbol` columns)."""
+    global _LIBSYMS
+    if _LIBSYMS is None:
+        _LIBSYMS = set()
+        for f in ("library_signatures.tsv", "vendor_signatures.tsv"):
+            p = P("rebuild", "oracles", f)
+            if not os.path.exists(p): continue
+            rows = read_tsv(p)
+            if not rows or "symbol" not in rows[0]: continue
+            k = rows[0].index("symbol")
+            _LIBSYMS.update(r[k] for r in rows[1:] if len(r) > k and r[k])
+    return _LIBSYMS
+
+
 def is_std(sym):
-    return (not sym.startswith("?")) or "@std@@" in sym or "@_STL@@" in sym or sym.startswith("??_") or "?$" in sym and "@std@@" in sym
+    # A C name (no `?`) counts only when it is a proven library symbol (finish plan route 0, 2026-11-23: is_std used to accept every C
+    # name, so 1,270 made-up C names such as `_Construct` / `@VecDelDtor@12` counted as done).
+    # Import-table names (`__imp__GetFileSize@8`) and SDK GUID data (`_GUID_SysMouse`, `_IID_...`) are the real names. `_$E1` / `_$E2`
+    # are the compiler's placeholder for a dynamic initializer whose PDB name is `dynamic initializer for 'X'`: open.
+    if not sym.startswith("?"):
+        return sym in lib_symbols() or sym.startswith("__imp_") or re.match(r"_(GUID|IID|CLSID|DIID|LIBID)_\w+$", sym) is not None
+    return "@std@@" in sym or "@_STL@@" in sym or sym.startswith("??_")
 
 
 def klass(sym):
@@ -259,7 +282,34 @@ def main():
                       fix=("catalog" if tier == "T0" else "self" if st == "catalog_standin" else fix_kind(good, [x for x in names if x != good]) if good else
                            ("standin" if st == "standin" else "")))
 
-    cols = ["target", "status", "tier", "fix", "klass", "n_spellings", "pdb_spelling", "self_leaf", "landed", "catalog", "source", "spellings"]
+    # Shared names (finish plan route 0, 2026-11-23): one non-PDB, non-std name that is the only spelling of several addresses is at most
+    # right once (`AutoTinyCountedHandle::Reset` on 341 addresses, `CTCCarryable_OnKill` on 173), so those rows are stand-ins (T3 identity).
+    # A PDB name on several addresses is listed for audit (SHARED_PDB.tsv) and keeps its status: overloads of one name across classes do
+    # not share a full mangled name, so a shared full PDB symbol is an identity conflict or an ICF fold to check.
+    single = collections.defaultdict(list)
+    for t2, r2 in rec.items():
+        if r2["status"] in ("agree_unverified", "agree_std", "agree_pdb") and r2["n_spellings"] == 1:
+            s2 = r2["self_leaf"] or r2["pdb_spelling"] or r2["spellings"].split(" (")[0]
+            single[s2].append(t2)
+    shared_pdb = []
+    for s2, ts in single.items():
+        if len(ts) < 2: continue
+        for t2 in ts:
+            if rec[t2]["status"] == "agree_pdb": shared_pdb.append((s2, t2)); continue
+            if rec[t2]["status"] == "agree_std" and s2.startswith("??_"): continue   # compiler-generated thunks fold legitimately
+            rec[t2].update(status="standin", tier="T3", fix="shared name (%d addresses)" % len(ts)); status[t2] = "standin"
+    with open(os.path.join(a.out, "SHARED_PDB.tsv"), "w") as o:
+        o.write("symbol\ttarget\n" + "".join("%s\t%s\n" % x for x in sorted(shared_pdb)))
+
+    # RTTI vftable placement (ghidra_out/labels_rtti_port.tsv, tools/rtti_port_all.py: own-class slots only, ICF-collided addresses dropped):
+    # the retail second source for a virtual member's name (finish plan route 0).
+    rtti = {}
+    rp = P("ghidra_out", "labels_rtti_port.tsv")
+    if os.path.exists(rp):
+        for r in read_tsv(rp):
+            if len(r) > 1: rtti[r[0].lower()] = r[1]
+    for t2, r2 in rec.items(): r2["rtti"] = rtti.get(t2, "")
+    cols = ["target", "status", "tier", "fix", "klass", "n_spellings", "pdb_spelling", "self_leaf", "landed", "catalog", "source", "spellings", "rtti"]
     openst = ("standin", "split_fixable", "split_unknown", "split_pdb_multi", "catalog_standin")
     with open(os.path.join(a.out, "OPEN.tsv"), "w") as o:
         o.write("\t".join(cols) + "\n")

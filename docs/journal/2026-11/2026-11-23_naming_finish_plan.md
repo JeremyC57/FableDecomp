@@ -84,3 +84,33 @@ claims marked (v) before recording them.
 - **Routes 4-7:** about 12,000 addresses plus the script rejects. At 47 rows per agent-hour that is about 250-300 agent-hours, or 2-3
   weeks with 3-4 family agents, if deriving the pointee type from typed callers works.
 - **Floor:** if it does not, about 2,000-3,000 addresses stay as documented descriptive names.
+
+## Route 0 done (coordinator, same day)
+
+`naming_status.py` changes:
+
+- **`is_std`.** A C name (no `?`) counts as done only when it is one of these:
+  - a proven library symbol (the `symbol` column of `library_signatures.tsv` / `vendor_signatures.tsv`);
+  - an import-table name (`__imp_...`);
+  - SDK GUID data (`_GUID_` / `_IID_` / `_CLSID_` ...).
+
+  1,514 rows leave agree_std, among them `_$E1` / `_$E2` (the compiler's placeholder for `dynamic initializer for 'X'`), flattened STL
+  helpers and made-up C names.
+- **Shared names.** A non-PDB, non-std name that is the only spelling of several addresses becomes a stand-in (T3, fix
+  `shared name (n addresses)`): 3,836 rows. Compiler-generated `??_` thunks are exempt. PDB names on several addresses are listed in
+  `status/SHARED_PDB.tsv` (108 lines) for audit.
+- **`STANDIN`** also matches the placeholder classes `S` and the `??0T@@` / `??1T@@` forms; neither class exists in either PDB.
+- **New `rtti` column in OPEN.tsv:** 793 open rows carry an RTTI name, and none contradicts the tracker's pdb_spelling.
+- **Not done here:** the STLport equivalence (911). Its two-spelling rows are real link mismatches, such as a symbol with and without its
+  allocator argument, so they need the NF301 equivalence rules rather than a status flip.
+
+Result (64,076 addresses):
+
+| Bucket | Before route 0 | After route 0 |
+|---|---:|---:|
+| agree_pdb | 22,205 | 22,205 |
+| agree_std | 9,267 | 7,731 |
+| agree_unverified | 13,006 | 10,673 |
+| standin | 6,972 | 10,841 |
+
+The other buckets are unchanged. Done is 29,936 (46.7%), down from 49.1%: the old count included names that were never real.
