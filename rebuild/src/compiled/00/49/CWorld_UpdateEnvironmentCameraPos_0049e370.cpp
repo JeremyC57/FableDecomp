@@ -21,7 +21,7 @@ class CEnvironment { public:
     unsigned char _pad08[8];
     long  RegionTheme;                             // +0x10
     long GetGlobalEnvironmentThemeIndexFromLocal(long localIndex);   // 0x006B2C60
-    void SetCameraThemes(long a, long b, const long* themes, const float* weights, long count);   // 0x006B3E60
+    void SetWeightedThemes(long a, long b, long* themes, float* weights, long count);   // 0x006B3E60 (NF306: Ego_r + FableWin ?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z; was SetCameraThemes(..., const long*, const float*, ...))
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -71,5 +71,5 @@ void CWorld::UpdateEnvironmentCameraPos(const C3DVector& pos)
         }
     }
     if (total > 0.00390625f)
-        PEnvironment->SetCameraThemes(0, 0, themes, weights, count);
+        PEnvironment->SetWeightedThemes(0, 0, themes, weights, count);
 }

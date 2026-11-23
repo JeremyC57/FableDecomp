@@ -1,0 +1,28 @@
+## HEAD set: H_00b324a0.obj H_00814d90.obj H_004fc8a0.obj H_0049f180.obj H_0090fa60.obj H_008c1f70.obj H_009492a0.obj H_0054e4b0.obj H_00923510.obj H_005e4430.obj H_00b6e260.obj H_00be79d0.obj H_00602f30.obj H_008fcf80.obj H_00814c70.obj H_004b4260.obj H_007ffdb0.obj H_0066ace0.obj H_00702470.obj
+duplicates 0
+
+UNRESOLVED 1 ?ActivateMultipleQuests@CQuestManager@@QAE_NPAV?$CArray@VCCharString@@@@_N1@Z
+UNRESOLVED 1 ?AddPrimitive@CEnginePrimitiveRenderer2D@@QAEXPAVCEngineInternalPrimitiveBase@@@Z
+UNRESOLVED 1 ?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@PAVCThing@@@Z
+UNRESOLVED 2 ?GetPMiniMapDisplay@CPlayerGui@@QAEPAVCMiniMapDisplay@@XZ
+UNRESOLVED 1 ?GetPPlayerManager@CAIStateGroupBase@@QBEPBVCPlayerManager@@XZ
+UNRESOLVED 1 ?GetPickupSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3_N@Z
+UNRESOLVED 1 ?GetQueryResult@CEngineOcclusionManager@@QAEKJ_N@Z
+UNRESOLVED 1 ?GetQuestName@CTCQuestCard@@QAE?AVCWideString@@XZ
+UNRESOLVED 1 ?IsQueryVisible@CEngineOcclusionManager@@QAEJK_N@Z
+UNRESOLVED 1 ?PlaySound@CTCSoundPlayer@@QAEKJABVCSoundInit@@JJ@Z
+UNRESOLVED 1 ?RegisterPrimitive@CEnginePrimitiveManager@@QAEXPAVCEngineInternalPrimitiveBase@@K@Z
+UNRESOLVED 1 ?ReleaseMapScreenPrimitives@CTCInventoryMap@@QAEXXZ
+UNRESOLVED 1 ?RemoveUser@CTCGatherPointBase@@QAEXPAVCThing@@@Z
+UNRESOLVED 1 ?SetUpChildrenForAcceptButton@NUISystem@@YIXPAVCComponent@1@0@Z
+## new set: N_00b324a0.obj N_00814d90.obj N_004fc8a0.obj N_0049f180.obj N_0090fa60.obj N_008c1f70.obj N_009492a0.obj N_0054e4b0.obj N_00923510.obj N_005e4430.obj N_00b6e260.obj N_00be79d0.obj N_00602f30.obj H_008fcf80.obj H_00814c70.obj H_004b4260.obj H_007ffdb0.obj H_0066ace0.obj H_00702470.obj
+duplicates 0
+
+UNRESOLVED 1 ?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z
+UNRESOLVED 1 ?AddPrimitive@CEnginePrimitiveRenderer2D@@QAEXPAVCEngineInternalPrimitiveBase@@@Z
+UNRESOLVED 2 ?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ
+UNRESOLVED 1 ?GetPickupSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3_N@Z
+UNRESOLVED 2 ?GetResult@CEngineOcclusionManager@@QAEKK_N@Z
+UNRESOLVED 1 ?ResetPrimitiveHandles@CTCInventoryMap@@QAEXXZ
+UNRESOLVED 1 ?SetPAcceptButtonRecursive@@YIXPAVCComponent@NUISystem@@0@Z
+LK_DONE

@@ -7,7 +7,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096EA50, length 187 bytes.
 // Callees: CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (twice), the brain world accessor @ 0x008FCFC0
 // (combat manager at +0x4c), CCombatManager::SetAttackerAsReadyToAttack @ 0x006EA450 /
-// IsAttackerReadyToAttack @ 0x006E93C0, AIAction_PumpCombatActions @ 0x0097D980, CBaseIntelligentPointer::GetPItem
+// IsCreatureOnRotatingCombatRing @ 0x006E93C0, AIAction_PumpCombatActions @ 0x0097D980, CBaseIntelligentPointer::GetPItem
 // (inlined IS_THING_ALIVE on PEnemy +0x14), Terminate @ 0x008FCF40, IsStopping @ 0x008FD010, this->IsStillRunnable
 // (slot 14, +0x38), IsEnemyCreatureNearCombatPosition @ 0x0096E830.
 // Shape: the creature is a named local read before the world call both times; a do/while whose PEnemy address is
@@ -129,7 +129,7 @@ class CThingCreatureBase { public:
 
 class CCombatManager { public:
     void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450 (NF34: Ego_r + FableWin ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z)
-    bool IsAttackerReadyToAttack(CThingCreatureBase* attacker);                  // 0x006E93C0
+    bool IsCreatureOnRotatingCombatRing(const CThingCreatureBase& creature) const;   // 0x006E93C0 (NF306: Ego_r + FableWin QBE, const reference; was IsAttackerReadyToAttack(CThingCreatureBase*))
 };
 
 struct CAIStateGroup_MeleeCombatNearby : CAIStateGroupBase {
@@ -162,7 +162,7 @@ void CAIStateGroup_MeleeCombatNearby::AttackEnemy()
             return;
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
         const CWorld& world = GetWorld();
-        if (world.GetPCombatManager()->IsAttackerReadyToAttack(creature))
+        if (world.GetPCombatManager()->IsCreatureOnRotatingCombatRing(*creature))
             return;
     } while (true);
 }

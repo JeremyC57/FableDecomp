@@ -140,7 +140,7 @@ line	tag	address	correct_symbol	status	other_spellings
 139	523	00693ef0	??1CCreatureActionBase@@UAE@XZ	partial	??1CCreatureActionBase || ??1CCreatureAction_PlayAnimationBase@@QAE@XZ
 140	523	006a1440	?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ	partial	?GetThingInPrimarySlot@CTCCarrying@@QAEPAUCThingB@@XZ || ?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ || ?GetWeaponInHand@CTCInventoryAbilities@@QBEPAVCThing@@XZ
 141	523	006a2220	?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	partial	?GetAllCarriedThings@CTCCarrying@NRemap006a23e0@@QAEXAAUObjects@2@@Z
-142	523	006b9460	?IsAlliedWithFaction@CFaction@@QBE_NABV1@@Z	partial	?IsAlliedWith@CFaction@@QBE_NPBV1@@Z
+142	523	006b9460	?IsAlliedWithFaction@CFaction@@QBE_NABV1@@Z	closed	
 143	523	006d4d70	?IsFollower@CTCFollowed@@QBE_NPBVCThing@@@Z	partial	?IsAIFollower@CTCFollowed_Retail@@QAE_NPAUCThing_Retail@@@Z || IsFollower
 144	523	006e7fd0	?GetProngVector@CProng@CDefendingCombatantInfo@@QBE?AVC3DVector@@M@Z	partial	GetRotatedPosition
 145	523	006e87d0	?GetAttackerProng@CCombatRing@CDefendingCombatantInfo@@QBEPBVCProng@2@ABVCThingCreatureBase@@@Z	closed	
@@ -416,7 +416,7 @@ line	tag	address	correct_symbol	status	other_spellings
 421	530	00be03a0	?SetBankFileEntry@CEngineStaticMapFileBlockManager@@QAEXV?$CCountedPointer@VCBankFileAsyncEntry@@@@@Z	closed	
 422	530	00bdd0e0	?OpenStaticMap@CEngineLandscapeMap@@QAEXPAVCEngineStaticMapFileBlockManager@@AAVCDataInputStream@@@Z	closed	
 423	530	00bdf010	?OpenStaticMap@CLocalDetailCacheMap@@QAEXPAVCEngineStaticMapFileBlockManager@@AAVCDataInputStream@@@Z	closed	
-424	530	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManager@@QAEXPAVCEngineInternalPrimitiveBase@@K@Z || ?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
+424	530	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
 425	530	00bae160	?AddSprite@CEnginePrimitiveManagerSprites@@QAE?AVCEnginePrimitiveHandle@@PAVCTexture@@ABVC3DVector@@MMMW4EEnginePrimitiveBlendMode@@E_N3MM3@Z	closed	
 426	530	00b812f0	?Render@CEngineClothSimulationStaticMesh@@QAEXABVC3DPrimitive2@@ABVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z	closed	
 427	530	0099a2d0	??0CBase@@QAE@XZ	open	??0CBase@N_0099a2d0@@QAE@XZ || ??0CBase@N_0099a2d0@NHeroInformationScreens@@QAE@XZ || ??0CBaseClass || ??0CBaseClass@@QAE@XZ || ??0CBaseClass@NFoot008f7bd0@@QAE@XZ || ??0CBaseNative@@QAE@XZ || N_0099a2d0
@@ -2162,7 +2162,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2513	c646	009e1e40	?GFVYToAY@@YIMM@Z	closed	
 2514	c646	0099b800	??4CWideString@@QAEABV0@PB_W@Z	partial	??4CWideString@@QAEABV0@PBG@Z
 2521	c647	0049d870	?GetFrame@CWorld@@SIJXZ	closed	
-2522	c647	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManager@@QAEXPAVCEngineInternalPrimitiveBase@@K@Z || ?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
+2522	c647	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
 2523	c647	00a01b10	??0CBaseIntelligentPointer@@QAE@XZ	partial	??0BaseIntelligentPointer@@QAE@XZ || ??0CBaseIntelligentPointer@FableCopy_006a3130@@QAE@XZ || ??0CBaseIntelligentPointer@FableCopy_006a31d0@@QAE@XZ || ??0CBaseIntelligentPointer@FableFill_006a3180@@QAE@XZ || ??0CBaseIntelligentPointer@FableFill_006a3220@@QAE@XZ || ??0CBaseIntelligentPointer@FableHeap_006a3300@@QAE@XZ || ??0CBaseIntelligentPointer@N006e4bd0@@QAE@XZ || ??0CBaseIntelligentPointer@N00
 2524	c647	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	partial	?GetHomeId@HomeObj@@QAEHXZ || ?GetId@Subobject@@QAEHXZ || ?GetPItem@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ || ?GetPItem@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00810fe0@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00811040@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAVCThing@@XZ 
 2525	c647	00a01b90	?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z	partial	?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z || ?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z || ?SetPItem@CBaseIntelligentPointer@@QAEXPBX@Z || ?SetPItem@CBaseIntelligentPointer@FableCopy_006a3130@@QAEXPAVCBaseObject@2@@Z || ?SetPItem@CBaseIntelligentPointer@FableCopy_006a31d0@@QAEXPAVCBaseObject@2@@Z || ?SetPItem@CBaseIntelligentPointer@FableFill_006a3180@@QAEXPAVCBaseObject@2@@Z || ?SetP
@@ -5186,7 +5186,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7109	land1011v	00b38db0	?UndoMatrixConversion@CEngineInternalAttachedPrimitive@@QBEXAAVCMatrix3x4@@@Z	closed	
 7110	land1011v	00b396e0	?Update@CEngineInternalAttachedPrimitive@@QAE_NABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABVCEnginePrimitiveHandle@@JK@Z	partial	?Attach@CEngineInternalPrimitiveAttached@@QAE_NABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABVCEnginePrimitiveHandle@@JK@Z
 7111	land1011v	00b91710	?InvalidateAll@CEngineSceneGridCell@@AAEXXZ	partial	?InvalidateAll@CSceneGridOwner_00b91710@@QAEXXZ
-7112	land1011v	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManager@@QAEXPAVCEngineInternalPrimitiveBase@@K@Z || ?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
+7112	land1011v	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
 7113	land1011v	00c11520	?SetEventPosition@CSoundEventManager@@UAEXJABUCSoundPositionVector@@@Z	open	?SetEventPosition@CSoundEventManager@@UAEXJABVC3DVector@@@Z
 7114	land1011v	00c20390	??0CSoundPosition@@QAE@XZ	partial	??0CNavigationLayer@@QAE@XZ || ??0CNavigationLayer_00c13310@@QAE@XZ || ??0COcclusionBase_00c20390@@QAE@XZ || ??0CPartB_00c12d50@@QAE@XZ || ??0CPosition_00c2bb10@@QAE@XZ || ??0CSnapshotPartB@@QAE@XZ || ??0SEventRecord@@QAE@XZ || ??0SPKHandle@@QAE@XZ
 7115	land1011v	00c21e20	?FindInChildThenSelf@CSoundEventSet@@QAEPAVCSoundEvent@@J@Z	partial	?Find@CObservable@@QAEPAUCObserver@@PAX@Z || ?Find@CObservable_00c11330@@QAEPAUCObserver_00c11330@@PAX@Z || ?Find@CObservable_00c114b0@@QAEPAUCObserver_00c114b0@@PAX@Z || ?Find@CObservable_00c11650@@QAEPAUCObserver_00c11650@@PAX@Z || ?Find@CObservable_00c11c00@@QAEPAUCObserver_00c11c00@@PAX@Z || FindInChildThenSelf
@@ -5431,7 +5431,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7388	land1011aq	0076c8a0	??0CTCEnemy@@QAE@AAVCThing@@@Z	partial	??0CTCEnemy@@QAE@PAVCThing@@@Z
 7389	land1011aq	007e5820	??$GetSubDef@VCBettingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBettingDef@@@@@Z	partial	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCBettingDef@@@@@Z || ?GetSubDef_007e5820@CDefClassBase@@QAE_NAAV?$CDefPointer@VCBettingDef@@@@@Z
 7390	land1011aq	00800020	?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ	partial	UpdateActionSpeedMultiplier
-7391	land1011aq	00814c70	?GetSphereBase@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@ABVCThing@@@Z	partial	?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@@QBE?AVC3DVector@@PAVCThing@@@Z || ?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@PAVCThing@@@Z
+7391	land1011aq	00814c70	?GetSphereBase@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@ABVCThing@@@Z	partial	?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@@QBE?AVC3DVector@@PAVCThing@@@Z
 7392	land1011aq	0082a890	?AddMarker@CMiniMapDisplay@@QAEXABVCThing@@J@Z	partial	?AddMarker@CMiniMapDisplay_Retail@@QAEXPAUCThing_Retail@@J@Z
 7393	land1011aq	00833a10	?SuspendAI@CThingAICreature@@QAEX_NPAX@Z	closed	
 7394	land1011aq	0084eaf0	??$GetRollingAverage@VC3DVector@@@CTools@NCameraModes@@QBE?AVC3DVector@@ABV2@0M@Z	closed	
@@ -5609,7 +5609,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7581	land1011bb	006cba20	?IsPosNavLineOfSightTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@@Z	closed	
 7582	land1011bb	006d4d70	?IsFollower@CTCFollowed@@QBE_NPBVCThing@@@Z	partial	?IsAIFollower@CTCFollowed_Retail@@QAE_NPAUCThing_Retail@@@Z || IsFollower
 7583	land1011bb	006d4e60	?IsCreatureValidFollower@CTCFollowed@@QBE_NABVCThingAICreature@@PA_N@Z	partial	?IsCreatureValidFollower@CTCFollowed@@QAE_NPAVCThing@@PA_N@Z
-7584	land1011bb	006e9700	?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	partial	?CCombatWheel_ValidateSequencePosition@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z || ?IsPositionOccupied@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z || ?ValidateSequencePosition@CCombatPositionMethods@@QAE_NPAVCThingAICreature@@@Z
+7584	land1011bb	006e9700	?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	partial	?ValidateSequencePosition@CCombatPositionMethods@@QAE_NPAVCThingAICreature@@@Z
 7585	land1011bb	006ea770	?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z	partial	?GetPreferredPos@CCombatPositionMethods@@QAE?AVC3DVector@@PAVCThingAICreature@@@Z
 7586	land1011bb	0073a6e0	?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ	partial	?GetCurrentMode@CModeComponent@@QAEPAUCMode@@XZ || ?GetCurrentMode@CTCModeOwner@@QAEPAUCMode@@XZ || ?GetCurrentMode@ModeManager@@QBEAAUModeInterface@@XZ || ?GetKindObject@CTC31@@QBEPAUCKindObject@@XZ || ?GetObject@CTCEpicSpellTarget@@QBEPAUCTypedObject@@XZ || ?GetObject@CTCInterface31@@QBEPAUCTypedObject@@XZ
 7587	land1011bb	00744730	?SetLastAwareInfo@CTCPerceiveThing@@AAEXXZ	partial	?CTCPerceiveThing_SetLastAwareInfo@@YIXPAVCTCPerceiveThing@@@Z || ?Do_744730@@YIXPAVCTCPerceiveThing@@@Z || ?OnDirectlyAwareOfPerceivedThing@CTCPerceiveThing_Methods@@QAEXXZ
@@ -5683,7 +5683,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7655	land1011bb	00a26730	?BeginLoading@C3DAnimationInfo@@QBEX_N@Z	partial	BeginLoading@C3DAnimationInfo
 7656	land1011bb	00b8ff00	??0CEngineInternalPrimitiveBase@@QAE@JK@Z	partial	??0CEngineInternalPrimitiveBase@@QAE@JJ@Z || ??0CEngineInternalPrimitiveNative@@QAE@JK@Z
 7657	land1011bb	00ba0fc0	?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z	closed	
-7658	land1011bb	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManager@@QAEXPAVCEngineInternalPrimitiveBase@@K@Z || ?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
+7658	land1011bb	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
 7659	land1011bb	00c462e0	?Interpolate@CFloatQuad@@QBEMMM@Z	closed	
 7660	land1011bb	0122f598	??_7CEnginePrimitiveHandle@@6B@	partial	??_7CBatchRecord_0122f598@@6B@ || ??_7CEnginePrimitiveHandle@NUISystem@@6B@ || ??_7CEnginePrimitiveHandleNative@@6B@ || ?C3DAnimationBlendState_vtable@@3QAXA
 7661	land1011bb	0122ffcc	??_7CAnimFilterBase@@6B@	partial	??_7CAnimFilter@@6B@
@@ -5705,7 +5705,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7677	land1011bc	0076d2f0	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	partial	?AreThingsEnemies@@YI_NPBVCThing@@0@Z || ?AreThingsEnemies@CTCEnemy@N00807b70@@SI_NPAUCThing@2@0@Z
 7678	land1011bc	0065f604	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z	partial	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@VCEntitySoundDef@@@@@Z || ?GetSubDef@CDefClassBase@@QAE_NPAUCSoundDefPtr@@@Z || ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCEntitySoundDef@@@@@Z || ?GetSubDef@CThingCreatureDef@@QAE_NPAV?$CDefPointer@UCCreatureSoundSubDef@@@@@Z || ?GetSubDef@CThingDef@@QBE_NPAV?$CDefPointer@UCSoundPlayerDef@@@@@Z || ?GetSubDef_0065f604@CDef
 7679	land1011bc	00bec680	?CollectStats@CEngineInternalPrimitiveMeshBase@@SIXABVC3DMeshInfo@@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z	partial	?Inner_CollectStats@@YIXPAVCEngineInternalPrimitiveMeshBase@@AAUStatMap@@W4EEnginePrimitiveStatIndex@@K@Z || ?SubMesh_CollectStats@@YIXPAVC3DMeshInfo@@AAUStatMap@@HK@Z
-7680	land1011bc	006b3e60	?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z	partial	?SetCameraThemes@CEnvironment@@QAEXJJPBJPBMJ@Z
+7680	land1011bc	006b3e60	?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z	closed	
 7681	land1011bc	00a14440	?AccurateNormalise@C3DVector@@QAEAAV1@XZ	closed	
 7682	land1011bd	009ada90	?GetPDefFromInstantiationName@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@ABVCCharString@@@Z	closed	
 7683	land1011bd	009ad6e0	?LoadDef@CDefinitionManager@@IBEXK@Z	closed	
@@ -10576,3 +10576,6 @@ line	tag	address	correct_symbol	status	other_spellings
 13414	land1123nf305	0048da30	?IsOpen@CFadeInFadeOutBase@@QBE_NXZ	partial	?Method_0048da30@CBaseIntelligentPointer@@QAEPAVCBaseObject@@XZ
 13415	land1123nf305	00730c00	?Open@CTCDoor@@IAEX_N@Z	partial	?Open@CTCDoor_Methods@@QAEX_N@Z || Open
 13416	land1123nf305	00666d10	?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	partial	?GetCombatTypeDef@CThing@@QAEPAVCCombatTypeDef@@XZ || ?GetCombatTypeDef@CThingCreatureBase@@QAEPBVCCombatTypeDef@@XZ || ?GetCombatTypeDef@CThingCreatureBase@@QBEPBVCCombatTypeDef@@XZ || ?GetCombatTypeDef@CThingCreatureBase@CombatLists@@QAEPAVCCombatTypeDef@@XZ || ?GetSub@@YIPAVCThingCreatureBase@@PAVCTCCombat@@@Z
+13417	land1123nf306	00b8d0b0	?GetResult@CEngineOcclusionManager@@QAEKK_N@Z	partial	?GetQueryResult@CEngineOcclusionManager@@QAEKJ_N@Z || ?IsQueryVisible@CEngineOcclusionManager@@QAEJK_N@Z || AddChildPrimitive
+13418	land1123nf306	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
+13419	land1123nf306	00437ce0	?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ	partial	?GetMiniMapDisplay@CGameUI@@QAEPAVCMiniMapDisplay@@J@Z || ?GetMiniMapDisplay@CGameUI_Retail@@QAEPAUCMiniMapDisplay_Retail@@XZ || @get_sub@4

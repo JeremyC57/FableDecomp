@@ -94,7 +94,7 @@ class CTCCreatureNavigation { public:                  // interface 7
 class CCombatManager { public:
     C3DVector GetPreferredPos(const CThingCreatureBase& creature) const;        // 0x006EA770
     bool IsCreatureOnRotatingCombatRing(CThingCreatureBase* creature);  // 0x006E9700
-    void OnCombatPositionUnreachable(CThingCreatureBase* creature);     // 0x006E9D10 (autoname label only; called when the move returns 3)
+    void SetAttackerProngAsInvalid(CThingCreatureBase& attacker);       // 0x006E9D10 (NF306: Ego_r + FableWin QAE, reference; was OnCombatPositionUnreachable(CThingCreatureBase*); called when the move returns 3)
 };
 class CWorld { public:
     unsigned char _pad0[0x4c];
@@ -157,7 +157,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
                 if (PBrain->PCreature->IsInMeleeAsAttacker()) {
                     CThingCreatureBase* self = PBrain->PCreature;
                     CWorld* w = &GetWorld();
-                    w->CombatManager->OnCombatPositionUnreachable(self);
+                    w->CombatManager->SetAttackerProngAsInvalid(*self);
                 }
             } else if (result != 4 && result != 2)
                 return false;

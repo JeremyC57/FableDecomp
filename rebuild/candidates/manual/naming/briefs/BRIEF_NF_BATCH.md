@@ -132,3 +132,5 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   Q2: `cl /Zs` counts as the precheck of a CHANGED source only when the same clang error (outside the toolchain headers) also fires on
   its unchanged HEAD source; record both logs. Q3: a native `wchar_t` (`_W`) need is a compile-flag change: T3. Q5: a `friend` the retail
   access forces, naming the real class, lands under R1.
+- NF306 Q2: a tiny stub target (GOTCHAS NF30 shape) is not named on one-step-indirect donor evidence (a callee the retail build inlined);
+  hold it as identity research. Q3: a binder-only fix where the self row already carries the PDB Leaf lands.

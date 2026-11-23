@@ -2,7 +2,7 @@
 // Leaf: PlayAttachedSample
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066B300, length 112 bytes (`ret 18h`).
 // Callees: CTCBase accessor @ 0x00686D60 (`[[0x13B8A1C]+0x1C]`, the game object that owns a random generator at +0x16140; manifest label
-// "CViewBase::GetDisplayEngine" is a byte twin), GFROR13 @ 0x00497890 (`__fastcall`), CTCSoundPlayer::PlayAttachedSampleIndex @ 0x0066B080
+// "CViewBase::GetDisplayEngine" is a byte twin), GFROR13 @ 0x00497890 (`__fastcall`), CTCSoundPlayer::InternalPlayAttachedSample @ 0x0066B080
 // (bank, index, init and the three flags; manifest "Sound_PlayAttached").
 // Layout: CSoundPair {Min +0, Max +4} (sample index range); the generator's seed is its only word.
 // Shape: the generator step `seed = GFROR13(seed * 0x24A1 + 0x24DF)` and `n ? r % n : 0` inlined (as the landed 0x008EE720); the generator
@@ -32,7 +32,7 @@ protected:
 public:
 };
 class CTCSoundPlayer : public CTCBase { public:
-    unsigned long PlayAttachedSampleIndex(CASoundBank* bank, long index, CSoundInit* init, bool a, bool b, bool c);   // 0x0066B080
+private: unsigned long InternalPlayAttachedSample(CASoundBank& bank, long index, const CSoundInit& init, bool a, bool b, bool c); public:   // 0x0066B080 (NF306: Ego_r + FableWin AAE; was PlayAttachedSampleIndex(CASoundBank*, long, CSoundInit*, ...))
     unsigned long PlayAttachedSample(CASoundBank* bank, const CSoundPair* pair, CSoundInit* init, bool a, bool b, bool c);
 };
 
@@ -40,5 +40,5 @@ unsigned long CTCSoundPlayer::PlayAttachedSample(CASoundBank* bank, const CSound
 {
     CRandomGenerator& rng = const_cast<CMainGameComponent&>(PeekComponent()).Random;
     long index = pair->Min + rng.Random(pair->Max - pair->Min + 1);
-    return PlayAttachedSampleIndex(bank, index, init, a, b, c);
+    return InternalPlayAttachedSample(*bank, index, *init, a, b, c);
 }

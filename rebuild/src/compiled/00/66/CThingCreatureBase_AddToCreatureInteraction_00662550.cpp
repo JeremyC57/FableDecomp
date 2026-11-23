@@ -2,7 +2,7 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00662550, 96 bytes (`ret 4`).
 // Callees: the count block's destroy function (+4, object at +8 in ecx), operator delete @ 0x00BFE9BC,
-//   CCreatureInteraction::AddCreature(CThingCreatureBase*) @ 0x008631D0 (manifest "CreatureInteraction_InsertAfter":
+//   CCreatureInteraction::AddParticipant(CThingCreatureBase&) @ 0x008631D0 (manifest "CreatureInteraction_InsertAfter":
 //   a list insert on the interaction's creature list at +0 that stores the pointer by value).
 // Layout: PDB CCountedPointer<CCreatureInteraction> PCreatureInteraction is at +0x150 in Ego_r.pdb; retail keeps it at
 //   +0x12c (object) / +0x130 (count block), 0x24 lower, so the class is modelled locally.
@@ -14,7 +14,7 @@ void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
 class CThingCreatureBase;
 class CCreatureInteraction { public:
-    void AddCreature(CThingCreatureBase* creature);     // 0x008631D0
+    void AddParticipant(CThingCreatureBase& participant);   // 0x008631D0 (NF306: Ego_r + FableWin QAE, reference; was AddCreature(CThingCreatureBase*))
 };
 
 class CThingCreatureBase { public:
@@ -26,5 +26,5 @@ class CThingCreatureBase { public:
 void CThingCreatureBase::AddToCreatureInteraction(const CCountedPointer<CCreatureInteraction>& interaction)
 {
     PCreatureInteraction = interaction;
-    PCreatureInteraction->AddCreature(this);
+    PCreatureInteraction->AddParticipant(*this);
 }

@@ -24,8 +24,8 @@ class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCTavernBar { public:                           // interface type 0xb9
-    bool GetPickupSlot(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, long* actionPointIndex,
-        long* barIndex, bool reserve);          // 0x007BA000
+    bool GetPickupSlot(CThing& creature, C3DVector& pos, CRightHandedSet& rhSet, long& actionPointIndex,
+        long& barIndex, bool reserve);          // 0x007BA000 (NF306: Ego_r + FableWin, references; was the pointer form)
 };
 
 class CBaseObject;
@@ -74,7 +74,7 @@ bool CAIStateGroup_GoToPub::GetPayPoint()
     if (barThing->HasTC(TCI_TAVERN_BAR)) {
         CTCTavernBar* bar = ((CTCTavernBar*)&barThing->GetTC(TCI_TAVERN_BAR));
         CThing* creature = PBrain->PCreature;
-        if (bar->GetPickupSlot(creature, &BarPos, &BarRHSet, &BarActionPointIndex, &BarIndex, false))
+        if (bar->GetPickupSlot(*creature, BarPos, BarRHSet, BarActionPointIndex, BarIndex, false))
             return true;
     }
     return false;

@@ -41,13 +41,13 @@ T1	standin_alias	CThing	4	4	engine/CThing.h	004c78a0 004c7a10 004c9c40 004ca1d0
 T1	standin_alias	FindMostRecentMessage	4	4		008abf20 0090dee0 0090edc0 00939cb0
 T1	standin_alias	GFSerialiseVectorBinaryIn	4	4		00463f9c 0046caf4 00472123 004e89f7
 T1	standin_alias	CArray	3	3	engine/CArray.h	00675230 006755a0 00af7210
+T1	standin_alias	CCombatManager	3	2	engine/CCombatManager.h	006e9700 006ea770 006eae20
 T1	standin_alias	CThingCreatureBase	3	3	engine/CThingCreatureBase.h	00663610 006647f0 00666830
 T1	standin_alias	C3DMeshFileMaterialChunk	2	1	engine/C3DMeshFileMaterialChunk.h	00ac0e50 00ac0ee0
 T1	standin_alias	CAIStateGroupBase	2	1	engine/CAIStateGroupBase.h	0097d580 0097ec00
 T1	standin_alias	CAnimationSet	2	2	engine/CAnimationSet.h	00461f3b 005dd2e0
 T1	standin_alias	CBankFileAsync	2	5	engine/CBankFileAsync.h	009d5f80 009d6490
 T1	standin_alias	CCategory	2	2	engine/CCategory.h	005bc934 005bfcd9
-T1	standin_alias	CCombatManager	2	2	engine/CCombatManager.h	006ea770 006eae20
 T1	standin_alias	CConsole	2	2		009eaf80 009eb260
 T1	standin_alias	CCreatureAction_DeclarePlayerACriminal	2	1	engine/CCreatureAction_DeclarePlayerACriminal.h	00910b20 00910c30
 T1	standin_alias	CDataInputStream	2	2	engine/CDataInputStream.h	00993b20 00993ca0
@@ -125,6 +125,7 @@ T1	standin_alias	CEngineInternalPrimitiveAnimatedMesh	1	1	engine/CEngineInternal
 T1	standin_alias	CEngineInternalPrimitiveBase	1	1	engine/CEngineInternalPrimitiveBase.h	00b8fe60
 T1	standin_alias	CEngineInterpolationInfo	1	1	engine/CEngineInterpolationInfo.h	0042fa30
 T1	standin_alias	CEngineLandscapeMap	1	1		00bdc450
+T1	standin_alias	CEnginePrimitiveManager	1	1	engine/CEnginePrimitiveManager.h	00bacdd0
 T1	standin_alias	CEnginePrimitiveManagerSprites	1	1	engine/CEnginePrimitiveManagerSprites.h	00bacf70
 T1	standin_alias	CEngineScene	1	1	engine/CEngineScene.h	00b91840
 T1	standin_alias	CEngineSceneGridCell	1	1	engine/CEngineSceneGridCell.h	00b91710
@@ -376,9 +377,9 @@ T1	other	CCountedPointer	34	79	engine/CCountedPointer.h	00403d20 00413590 004191
 T1	other	CThingCreatureBase	26	51	engine/CThingCreatureBase.h	00661b40 00661cd0 00661d20 00661e70 00661ec0 00661ed0 00661f70 00661ff0 006621a0 00662410 006624f0 00662650 006627f0 00662a00 00662ef0 00662fa0 00663990 00663b10 00664490 00664d40 00665190 00665260 00665df0 00666d10 00666d40 00666ef0
 T1	other	CTCInventoryBase	24	48		005bc499 005bc58f 005bc638 005bc649 005bc65b 005bc65c 005bc68e 005bc68f 005bc692 005bc693 005bc6ed 005bcae3 005bcafe 005bce2f 005bd1eb 005bd273 005bd4ea 005bd597 005bdb4d 005bdd8c 005bddb8 005bff07 005c00a0 005c0121
 T1	other	CThing	20	56	engine/CThing.h	004c7380 004c73d0 004c74f0 004c7820 004c7950 004c7990 004c79d0 004c79e0 004c79f0 004c7a00 004c7a60 004c7aa0 004c7ab0 004c7ac0 004c7e50 004c8050 004c9840 004c9b80 004c9ca0 004c9d60
-T1	other	(none)	18	27		00405f00 0041e61b 004978a0 0054e350 00698a30 0070bd80 00864250 00870c90 008c9a40 00961ab0 009a3640 009a4ec0 00a0db60 00c006a0 00c021c0 00c021f0 00cbe0c0 00cbfb7d
 T1	other	map	18	25		00430345 00453554 004df81d 004df86c 004df8e9 004dfa89 005692b0 005698a0 005812df 005bbbf3 006bd6a0 00721640 00802190 00a96e40 00ad6140 00cd3d2e 00cdbf70 00cdbfb0
-T1	other	CAIStateGroupBase	16	59	engine/CAIStateGroupBase.h	008fcec0 008fcf10 008fcf40 008fcf80 008fcf90 008fcfa0 008fd010 008fd288 0097d6f0 0097da40 0097e200 0097e270 0097e2d0 0097e330 0097e380 0097f870
+T1	other	(none)	17	26		00405f00 0041e61b 004978a0 00698a30 0070bd80 00864250 00870c90 008c9a40 00961ab0 009a3640 009a4ec0 00a0db60 00c006a0 00c021c0 00c021f0 00cbe0c0 00cbfb7d
+T1	other	CAIStateGroupBase	16	58	engine/CAIStateGroupBase.h	008fcec0 008fcf10 008fcf40 008fcf80 008fcf90 008fcfa0 008fd010 008fd288 0097d6f0 0097da40 0097e200 0097e270 0097e2d0 0097e330 0097e380 0097f870
 T1	other	CCreatureActionBase	15	31	engine/CCreatureActionBase.h	006925a0 006925e0 00692620 00692910 00692940 00692950 00692990 006929e0 00692a50 00692bc0 00692c10 00693030 00693ef0 00694430 00694d10
 T1	other	list	15	24		0042b687 004db5bb 00517720 00519420 0055c4c0 005791b5 00579a1c 00655ece 0065617d 006604eb 0076d7b0 0076ff90 0084ace0 009d7b00 00a37940
 T1	other	NCreatureMode	14	20	engine/NCreatureMode.h	0085ee50 0085ef70 0085f010 0085f0c0 0085f120 0085f200 0085f2b0 0085f3e0 0085f470 0085f560 0085f600 0085f8d0 0085fcd0 008e8e50
@@ -393,7 +394,6 @@ T1	other	CUserProfileManager	9	9	engine/CUserProfileManager.h	00406cc0 004071c0 
 T1	other	CBankFile	8	12	engine/CBankFile.h	009cbb90 009cc190 009cc270 009ccdc0 009cd620 009ce360 009ce8d0 009cea70
 T1	other	pair	8	13		004d9d2f 0059256c 00592dfb 005930f3 00a825d0 00bed640 00cba520 00cba700
 T1	other	CAFile	7	7	engine/CAFile.h	00998570 00998c90 00998f60 009994a0 00999ab0 00999c50 00999cb0
-T1	other	CCombatManager	7	12	engine/CCombatManager.h	006e92c0 006e93c0 006e9680 006e9700 006e9d10 006ea2c0 006ebdd0
 T1	other	NParticleEngine	7	11		00aeaa00 00aeaa80 00aeaad0 00aeaae0 00aeab00 00aeab10 00aebea0
 T1	other	sort_heap	7	7		00497570 007590c0 0081c7d0 0086c890 009b5af0 00a81d90 00a81e80
 T1	other	CBasicString	6	11		00411570 004115a0 009a0080 009a01c0 009a0390 009a0460
@@ -424,20 +424,18 @@ T1	other	CChangingStateComponent	4	11		0052c920 0052cab0 0052ccf0 0052cf40
 T1	other	CChunkedFileSuperChunk	4	7	engine/CChunkedFileSuperChunk.h	00aa78c0 00aa7ea0 00aa84f0 00aa8830
 T1	other	CCombatWheel	4	4		006e8520 006e8850 006e89b0 006e9200
 T1	other	CDataInputStream	4	5	engine/CDataInputStream.h	00993c10 00995030 009950f0 00996390
-T1	other	CFaction	4	4	engine/CFaction.h	006b9460 006b94e0 006b9510 006b9530
 T1	other	CInputEvent	4	5	engine/CInputEvent.h	00a03b40 00a03b50 00a043a0 00a043d0
 T1	other	CIntelligentPointer	4	10	engine/CIntelligentPointer.h	004a96f0 004a9760 0050f380 00668b60
 T1	other	CMusicManager	4	2	engine/CMusicManager.h	006bdea0 006bdef0 006bdf40 006bdf90
 T1	other	CParentDefClassBase	4	10	engine/CParentDefClassBase.h	00430300 00430370 00431ed0 0046ee98
 T1	other	CParticleEmitter	4	4	engine/CParticleEmitter.h	006dfda0 00aedca0 00aedcd0 00af0380
 T1	other	CParticleProgram	4	4	engine/CParticleProgram.h	00adf460 00ae0540 00ae0680 00ae2510
-T1	other	CPlayerGui	4	11	engine/CPlayerGui.h	00437ce0 00438010 00438310 00438570
-T1	other	CQuestManager	4	5	engine/CQuestManager.h	004b0160 004b02f0 004b1d30 004b4260
+T1	other	CPlayerGui	4	10	engine/CPlayerGui.h	00437ce0 00438010 00438310 00438570
+T1	other	CQuestManager	4	4	engine/CQuestManager.h	004b0160 004b02f0 004b1d30 004b4260
 T1	other	CResourceBank	4	6	engine/CResourceBank.h	009fc380 009fc410 009fc430 009fc690
 T1	other	CScriptBase	4	22	engine/CScriptBase.h	00cb7940 00cb7e50 00cb7f60 00cb8110
 T1	other	CTCCarrying	4	7	engine/CTCCarrying.h	006a1440 006a15a0 006a1620 006a2220
 T1	other	CTCHeroStats	4	5	engine/CTCHeroStats.h	0057a57a 0057a753 0057c2e6 005814e5
-T1	other	CTCSoundPlayer	4	6	engine/CTCSoundPlayer.h	0066ace0 0066add0 0066ae60 0066b080
 T1	other	CThingAICreature	4	6	engine/CThingAICreature.h	00512210 00512260 006d5ab0 008300d0
 T1	other	CWorld	4	4	engine/CWorld.h	0048db13 0049d810 0049d880 004a0940
 T1	other	set	4	6		00451b07 004ad460 00514400 005157f0
@@ -446,13 +444,14 @@ T1	other	CArray	3	3	engine/CArray.h	009b4b80 009b7b10 009e7c70
 T1	other	CBase	3	8		0066e734 0084d080 0084e420
 T1	other	CBaseIntelligentPointer	3	50		00a01b10 00a01b50 00a01b90
 T1	other	CBaseObject	3	3	engine/CBaseObject.h	0099a380 0099a3b0 0099a430
+T1	other	CCombatManager	3	7	engine/CCombatManager.h	006e92c0 006ea2c0 006ebdd0
 T1	other	CCompressorZlib	3	4	engine/CCompressorZlib.h	00a3a7d0 00a3a9c0 00a3aa00
 T1	other	CDefString	3	9	engine/CDefString.h	0044fc00 004b7980 005fa740
 T1	other	CDefinitionManager	3	6	engine/CDefinitionManager.h	009ad2e0 009ad410 009b0ac0
 T1	other	CDrawQuestInfo	3	6		00644efd 00647319 00654593
 T1	other	CEngineStaticMapFileBlockManager	3	6	engine/CEngineStaticMapFileBlockManager.h	00be0400 00be0420 00be06b0
-T1	other	CEnvironment	3	4	engine/CEnvironment.h	006b3880 006b3950 006b3e60
 T1	other	CEnvironmentSpellEffectInterpolator	3	3	engine/CEnvironmentSpellEffectInterpolator.h	006b8310 006b83e0 006b8730
+T1	other	CFaction	3	3	engine/CFaction.h	006b94e0 006b9510 006b9530
 T1	other	CGameCameraManager	3	5	engine/CGameCameraManager.h	00697e20 006988b0 00699560
 T1	other	CGameJoystickManager	3	2	engine/CGameJoystickManager.h	0049bb40 0049bb50 0049bb90
 T1	other	CIME	3	1		00404a60 00404e10 004051c0
@@ -473,6 +472,7 @@ T1	other	CTCCreatureModeManager	3	10	engine/CTCCreatureModeManager.h	0073a6e0 00
 T1	other	CTCDExplosion	3	7	engine/CTCDExplosion.h	0080c460 0080c500 0080cbf0
 T1	other	CTCEnemy	3	6	engine/CTCEnemy.h	0076d1b0 0076d2f0 0076d4f0
 T1	other	CTCKraken	3	3	engine/CTCKraken.h	007fb1c0 007fb870 007fc210
+T1	other	CTCSoundPlayer	3	4	engine/CTCSoundPlayer.h	0066ace0 0066add0 0066ae60
 T1	other	CTCSpecialAbilities	3	3	engine/CTCSpecialAbilities.h	0072abd0 0072b3b0 0072b940
 T1	other	CThingBuilding	3	7	engine/CThingBuilding.h	0082d000 0082d2d0 0082d920
 T1	other	CThingGameObject	3	10	engine/CThingGameObject.h	00838a00 00838a40 00838ba0
@@ -507,14 +507,13 @@ T1	other	CDrawBase	2	3		00644627 0064cc65
 T1	other	CDynamicObjectHeap	2	2	engine/CDynamicObjectHeap.h	00af8780 00b48c70
 T1	other	CEngineInternalPrimitiveBase	2	8	engine/CEngineInternalPrimitiveBase.h	00b8fd40 00b8ff00
 T1	other	CEngineLandscapeMemoryManager	2	5	engine/CEngineLandscapeMemoryManager.h	00bd9af0 00bd9ce0
-T1	other	CEnginePrimitiveManager	2	4	engine/CEnginePrimitiveManager.h	00bacd80 00bacdd0
 T1	other	CEntityScriptBase	2	5	engine/CEntityScriptBase.h	00f35b10 00f35b40
+T1	other	CEnvironment	2	3	engine/CEnvironment.h	006b3880 006b3950
 T1	other	CEnvironmentThemeSetDay	2	2		00888260 008899c0
 T1	other	CFadeInFadeOutBase	2	6	engine/CFadeInFadeOutBase.h	004348d0 00436560
 T1	other	CFileInstaller	2	2	engine/CFileInstaller.h	009c3590 009c4120
 T1	other	CFrameData	2	3		009fe460 009ff220
 T1	other	CGameScriptInterface	2	5	engine/CGameScriptInterface.h	006e7510 006e7530
-T1	other	CHandleBasedMemoryPool	2	2	engine/CHandleBasedMemoryPool.h	00a01d40 00a03180
 T1	other	CHeroAbilityStatPackage	2	3	engine/CHeroAbilityStatPackage.h	00451763 00851b50
 T1	other	CHeroSoulsCreatureDef	2	1	engine/CHeroSoulsCreatureDef.h	00f270d0 00f27650
 T1	other	CMap	2	3	engine/CMap.h	00820b80 00821850
@@ -548,11 +547,9 @@ T1	other	CTCCreatureGroup	2	3	engine/CTCCreatureGroup.h	004e5c71 008128f0
 T1	other	CTCDPhysicalObstruction	2	3	engine/CTCDPhysicalObstruction.h	007fd3d0 007fd4b0
 T1	other	CTCDRumble	2	2		004dcdfd 007f1ac0
 T1	other	CTCEntityEvents	2	6	engine/CTCEntityEvents.h	00811340 00811380
-T1	other	CTCGatherPointBase	2	5	engine/CTCGatherPointBase.h	004e0ae8 007ffdb0
+T1	other	CTCGatherPointBase	2	4	engine/CTCGatherPointBase.h	004e0ae8 007ffdb0
 T1	other	CTCHeroOpinionDeedLog	2	4	engine/CTCHeroOpinionDeedLog.h	006c5630 006c5920
 T1	other	CTCInGameMenu	2	2	engine/CTCInGameMenu.h	0047dbb8 0047e07f
-T1	other	CTCInventory	2	2	engine/CTCInventory.h	00582414 00584157
-T1	other	CTCInventoryMap	2	2	engine/CTCInventoryMap.h	005fc510 0060eeb0
 T1	other	CTCInventoryStats	2	2	engine/CTCInventoryStats.h	005ccc91 005cdbbe
 T1	other	CTCMeleeTrap	2	2	engine/CTCMeleeTrap.h	00787dbc 0078809b
 T1	other	CTCParticleAttachmentTracker	2	2		0071a8f0 0071a940
@@ -603,7 +600,6 @@ T1	other	CAIStateGroup_JackOfBladesBase	1	4	engine/CAIStateGroup_JackOfBladesBas
 T1	other	CAIStateGroup_LightHomeCandle	1	1	engine/CAIStateGroup_LightHomeCandle.h	00946ae0
 T1	other	CAIStateGroup_MinionGuardReactToPlayerWithWeapon	1	1		00939dd0
 T1	other	CAIStateGroup_ScriptingBase	1	1	engine/CAIStateGroup_ScriptingBase.h	009350c0
-T1	other	CAIStateGroup_SitForMeal	1	2		009455b0
 T1	other	CAIStateGroup_StealthSeekEnemy	1	2	engine/CAIStateGroup_StealthSeekEnemy.h	0093c4e0
 T1	other	CAIStateGroup_SummonerCharge	1	1	engine/CAIStateGroup_SummonerCharge.h	00902f49
 T1	other	CAIStateGroup_SummonerLightningAttack	1	1	engine/CAIStateGroup_SummonerLightningAttack.h	00902eef
@@ -669,7 +665,6 @@ T1	other	CCreatureAction_UnsheatheWeapons	1	2	engine/CCreatureAction_UnsheatheWe
 T1	other	CCreatureAction_UseWallMount	1	2	engine/CCreatureAction_UseWallMount.h	00843610
 T1	other	CCreatureAction_WaspQueenLashOutAttack	1	1	engine/CCreatureAction_WaspQueenLashOutAttack.h	0095cac0
 T1	other	CCreatureGenerationFamilyDef	1	1	engine/CCreatureGenerationFamilyDef.h	00456010
-T1	other	CCreatureInteraction	1	1	engine/CCreatureInteraction.h	008631d0
 T1	other	CCreatureStatsDef	1	1	engine/CCreatureStatsDef.h	00453b4d
 T1	other	CCutsceneDef	1	1	engine/CCutsceneDef.h	00f2a0d0
 T1	other	CDataBank	1	1		009c8990
@@ -699,6 +694,7 @@ T1	other	CEngineManager	1	1	engine/CEngineManager.h	006404b0
 T1	other	CEngineOcclusionManager	1	2	engine/CEngineOcclusionManager.h	00b8d0b0
 T1	other	CEnginePrimitive2DParticleGroup	1	1		00af0880
 T1	other	CEnginePrimitive2DText	1	1	engine/CEnginePrimitive2DText.h	00655048
+T1	other	CEnginePrimitiveManager	1	2	engine/CEnginePrimitiveManager.h	00bacd80
 T1	other	CEnginePrimitiveManagerMeshBase	1	1	engine/CEnginePrimitiveManagerMeshBase.h	00bebc30
 T1	other	CEnginePrimitiveManagerSprites	1	1	engine/CEnginePrimitiveManagerSprites.h	00bade40
 T1	other	CEnginePrimitiveOcclusionManager	1	1	engine/CEnginePrimitiveOcclusionManager.h	00b2f8e0
@@ -731,6 +727,7 @@ T1	other	CGamePlayerInterface	1	1	engine/CGamePlayerInterface.h	00445800
 T1	other	CGameTimeManager	1	1	engine/CGameTimeManager.h	006bb300
 T1	other	CGetBestFreeProngForAttacker	1	1	engine/CGetBestFreeProngForAttacker.h	006f2c00
 T1	other	CGraphicDataBank	1	1	engine/CGraphicDataBank.h	009fd150
+T1	other	CHandleBasedMemoryPool	1	1	engine/CHandleBasedMemoryPool.h	00a01d40
 T1	other	CHeightMap	1	1	engine/CHeightMap.h	008f6050
 T1	other	CHeroAbilityStatWeight	1	1	engine/CHeroAbilityStatWeight.h	00851bd0
 T1	other	CHeroExperienceDef	1	1	engine/CHeroExperienceDef.h	004ebb1c
@@ -787,7 +784,7 @@ T1	other	CPSCSplineBase	1	1	engine/CPSCSplineBase.h	00b215e0
 T1	other	CParticleUpdateParameters	1	3	engine/CParticleUpdateParameters.h	006e2500
 T1	other	CPersistTraitsSLONG	1	6		009e2560
 T1	other	CPhysicalPrimitiveCylinder	1	1		008158d0
-T1	other	CPhysicalPrimitiveSphere	1	2		00814c70
+T1	other	CPhysicalPrimitiveSphere	1	1		00814c70
 T1	other	CPhysicsMesh	1	1	engine/CPhysicsMesh.h	00a6c560
 T1	other	CPlayerInventoryDef	1	1		00459b73
 T1	other	CPreAllocVectorMap	1	1	engine/CPreAllocVectorMap.h	00a316b0
@@ -807,7 +804,6 @@ T1	other	CRangeCompressor	1	1	engine/CRangeCompressor.h	00f3ae50
 T1	other	CReactionMatch	1	2	engine/CReactionMatch.h	006fefb0
 T1	other	CReactionMatch_AsymmetricPyramid	1	1	engine/CReactionMatch_AsymmetricPyramid.h	00677620
 T1	other	CRedefinerList	1	1		00556470
-T1	other	CRegionConnectionNode	1	1		00828360
 T1	other	CRegionMinimap	1	2	engine/CRegionMinimap.h	0066c6a0
 T1	other	CRegionScriptDef	1	1	engine/CRegionScriptDef.h	00f29fa0
 T1	other	CRenderManager2D	1	1	engine/CRenderManager2D.h	009d8cf0
@@ -868,6 +864,8 @@ T1	other	CTCHeroRangedAttacks	1	1	engine/CTCHeroRangedAttacks.h	00789a60
 T1	other	CTCHeroReceiveItems	1	2	engine/CTCHeroReceiveItems.h	007cab30
 T1	other	CTCHitLocations	1	1	engine/CTCHitLocations.h	004e7e7f
 T1	other	CTCInterestingToVillagers	1	1	engine/CTCInterestingToVillagers.h	004dc916
+T1	other	CTCInventory	1	1	engine/CTCInventory.h	00584157
+T1	other	CTCInventoryMap	1	1	engine/CTCInventoryMap.h	0060eeb0
 T1	other	CTCNoiseDef	1	2	engine/CTCNoiseDef.h	004537e9
 T1	other	CTCNymph	1	1	engine/CTCNymph.h	0080f240
 T1	other	CTCObstacle	1	1		004d95eb
@@ -876,7 +874,6 @@ T1	other	CTCParamsPhysicsBase	1	2	engine/CTCParamsPhysicsBase.h	006a06e0
 T1	other	CTCParticleAttacher	1	1		004e0bf6
 T1	other	CTCPerceiveThing	1	1	engine/CTCPerceiveThing.h	007449b0
 T1	other	CTCPhotojournalCapture	1	1	engine/CTCPhotojournalCapture.h	0055dc00
-T1	other	CTCQuestCard	1	1	engine/CTCQuestCard.h	00702470
 T1	other	CTCRegionDisplay	1	1	engine/CTCRegionDisplay.h	00639ba0
 T1	other	CTCRegionFollower	1	1	engine/CTCRegionFollower.h	006aeba0
 T1	other	CTCResurrectionItem	1	1		004dccd2
@@ -886,7 +883,7 @@ T1	other	CTCSmashableBase	1	2	engine/CTCSmashableBase.h	004db004
 T1	other	CTCStockItem	1	3	engine/CTCStockItem.h	007f4fc0
 T1	other	CTCSwitchableNavigation	1	1	engine/CTCSwitchableNavigation.h	004d483f
 T1	other	CTCTargeted	1	1	engine/CTCTargeted.h	004dbf56
-T1	other	CTCTavernBar	1	2		007ba000
+T1	other	CTCTavernBar	1	1		007ba000
 T1	other	CTCTrapBase	1	1	engine/CTCTrapBase.h	00787bf1
 T1	other	CTCUserActionPointBase	1	2	engine/CTCUserActionPointBase.h	004ddf6f
 T1	other	CTCVillageMember	1	1	engine/CTCVillageMember.h	004dc659
@@ -897,7 +894,6 @@ T1	other	CTargetPointFilter_IsStealableStockItem	1	1		00809270
 T1	other	CTestTheInventoryScript	1	1		00eeec00
 T1	other	CText	1	2	engine/CText.h	0054f4b0
 T1	other	CTexture	1	1	engine/CTexture.h	009fa620
-T1	other	CTextureManager	1	1	engine/CTextureManager.h	00a6abe0
 T1	other	CThemeChannel	1	1		006b6010
 T1	other	CThingBaseDef	1	4	engine/CThingBaseDef.h	00463950
 T1	other	CThingBodyReorienter	1	1		00863790

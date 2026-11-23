@@ -1,0 +1,40 @@
+action	symbol	target	witness	note
+delete	?ReleaseMapScreenPrimitives@CTCInventoryMap@@QAEXXZ	005fc510	00602f30	NF306 unit A: sole binder respelled ResetPrimitiveHandles; other exe callers 0x005FCE60 / 0x005FD0B0 name the PDB member, 0x005FC610 binds the gapscan stand-in _ForwardTarget_005fc510
+delete	?IsAttackerReadyToAttack@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z	006e93c0	0096ea50	NF306 unit A: sole exe caller respelled
+add	?IsCreatureOnRotatingCombatRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	006e93c0	0096ea50	NF306 unit A: target had no PDB line (self Leaf only)
+delete	?Combat_ProximityCalculation@CCombatManager@@QAEMPAVCThingCreatureBase@@@Z	006e9680	0093db70	NF306 unit A: sole exe caller respelled
+add	?GetCombatWheelRadiusForAttacker@CCombatManager@@QBEMABVCThingCreatureBase@@@Z	006e9680	0093db70	NF306 unit A: target had no PDB line
+delete	?CCombatWheel_ValidateSequencePosition@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z	006e9700	0093db70	NF306 unit A: binder respelled IsCreatureOnOuterRing; 0x0093DCD0 (CCombatPositionMethods stand-in) keeps its own line
+delete	?IsPositionOccupied@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z	006e9700	0096e700	NF306 unit A: binder respelled IsCreatureOnOuterRing
+delete	?OnCombatPositionUnreachable@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	006e9d10	0093e090	NF306 unit A: sole exe caller respelled
+add	?SetAttackerProngAsInvalid@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	006e9d10	0093e090	NF306 unit A: target had no PDB line
+delete	?AddCreature@CCreatureInteraction@@QAEXPAVCThingCreatureBase@@@Z	008631d0	00662550	NF306 unit A: sole exe caller respelled
+add	?AddParticipant@CCreatureInteraction@@QAEXAAVCThingCreatureBase@@@Z	008631d0	00662550	NF306 unit A: target had no PDB line
+delete	?SetCameraThemes@CEnvironment@@QAEXJJPBJPBMJ@Z	006b3e60	0049e370	NF306 unit A: sole exe caller respelled
+add	?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z	006b3e60	0049e370	NF306 unit A: target had no PDB line
+delete	?IsAlliedWith@CFaction@@QBE_NPBV1@@Z	006b9460	0076d460	NF306 unit A: binder respelled; the other exe caller 0x0076C7F0 binds the PDB spelling
+delete	?InternalAllocate@CHandleBasedMemoryPool@@QAE_NAAJJJ@Z	00a03180	00a032f0	NF306 unit A: binder respelled Allocate(long*, ulong, ulong); 0x00A62E40 / 0x00A98860 / 0x00B2C8E0 name the PDB member
+delete	?GetNextRegionOnWayToRegion@CRegionConnectionNode@@QAEJJPAVCRegionConnectionGraph@@@Z	00828360	00828590	NF306 unit A: sole exe caller respelled
+add	?GetNextNodeOnWayToRegion@CRegionConnectionNode@@QBEJJABVCRegionConnectionGraph@@@Z	00828360	00828590	NF306 unit A: target had no PDB line
+delete	?ClearHighlights@CTCInventory@@QAEXJ@Z	00582414	00587a41	NF306 unit A: binder respelled; 0x00587847 / 0x0041E6D3 name the PDB member
+delete	?PlayAttachedSampleIndex@CTCSoundPlayer@@QAEKPAVCASoundBank@@JPAVCSoundInit@@_N22@Z	0066b080	0066b300	NF306 unit A: binder respelled to the private PDB member; owner self 0x0066B080 made private (AAE) in the same unit
+delete	?ResizePoolByFormat@CTextureManager@@QAE_NJJ@Z	00a6abe0	00b3b4f0	NF306 unit A: sole exe caller respelled
+add	?ResizePoolTextureCount@CTextureManager@@QAE_NKK@Z	00a6abe0	00b3b4f0	NF306 unit A: target had no PDB line
+delete	?Query_009455b0@CAIStateGroup_SitForMeal@@QAEEXZ	009455b0	00945610	NF306 unit A: binder respelled IsMealTime
+delete	?IsInMealHours@CAIStateGroup_WorkBase@@QAE_NXZ	009455b0	00945b90	NF306 unit A: binder respelled IsMealTime (moved from the CAIStateGroup_WorkBase model to CAIStateGroup_SitForMeal)
+add	?IsMealTime@CAIStateGroup_SitForMeal@@ABE_NXZ	009455b0	00945610	NF306 unit A: target had no PDB line
+delete	?GetPPlayerManager@CAIStateGroupBase@@QBEPBVCPlayerManager@@XZ	008fcf80	00923510	NF306 unit C: binder respelled protected PeekPlayerManager; the other exe callers name the PDB member; 0x00935160 (NF305 witness) binds its own stand-in class
+delete	?IsQueryVisible@CEngineOcclusionManager@@QAEJK_N@Z	00b8d0b0	00b6e260	NF306 unit C, CONDITIONAL on question Q2 (entry 24): binder respelled GetResult
+delete	?GetQueryResult@CEngineOcclusionManager@@QAEKJ_N@Z	00b8d0b0	00be79d0	NF306 unit C, CONDITIONAL on question Q2 (entry 24): binder respelled GetResult
+delete	?RegisterPrimitive@CEnginePrimitiveManager@@QAEXPAVCEngineInternalPrimitiveBase@@K@Z	00bacdd0	00b324a0	NF306 unit C: binder respelled AddPrimitive; 0x00BABA70 (NF305 witness) keeps its own stand-in-class line
+delete	?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@PAVCThing@@@Z	00814c70	00814d90	NF306 unit C: sole binder of this (namespaced) spelling respelled; the global-scope GetDummyObjectOrigin line (0x00814D10 / 0x00814E10 / 0x00814F90) stays
+delete	?GetPMiniMapDisplay@CPlayerGui@@QAEPAVCMiniMapDisplay@@XZ	00437ce0	004fc8a0	NF306 unit C: both binders of this spelling (0x004FC8A0, 0x00602F30) respelled GetMiniMap
+delete	?ActivateMultipleQuests@CQuestManager@@QAE_NPAV?$CArray@VCCharString@@@@_N1@Z	004b4260	0049f180	NF306 unit C: sole binder of the pointer form respelled
+delete	?RemoveUser@CTCGatherPointBase@@QAEXPAVCThing@@@Z	007ffdb0	0090fa60	NF306 unit C: sole binder respelled; 0x0094B740 (NF305 witness, CTCPub) keeps its line
+add	?RemoveAsUser@CTCGatherPointBase@@QAEXABVCThing@@@Z	007ffdb0	0090fa60	NF306 unit C: target had no PDB line
+delete	?PlaySound@CTCSoundPlayer@@QAEKJABVCSoundInit@@JJ@Z	0066ace0	008c1f70	NF306 unit C: sole binder respelled; 0x007C04A0 (NF305 witness, CTCAI stand-in) keeps its line
+add	?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z	0066ace0	008c1f70	NF306 unit C: target had no PDB line
+delete	?GetPickupSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3_N@Z	007ba000	009492a0	NF306 unit C: sole binder of the pointer form respelled; 0x00967180 (NF304 witness) keeps GetFreeJugPoint
+add	?GetPickupSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3_N@Z	007ba000	009492a0	NF306 unit C: target had no PDB line
+delete	?SetUpChildrenForAcceptButton@NUISystem@@YIXPAVCComponent@1@0@Z	0054e350	0054e4b0	NF306 unit C: sole binder respelled (declaration moved to global scope)
+delete	?GetQuestName@CTCQuestCard@@QAE?AVCWideString@@XZ	00702470	005e4430	NF306 entry 11: sole binder respelled GetQuestObjective (GetQuestName is the PDB member at 0x00702310; the shared-header callers bind it there)

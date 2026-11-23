@@ -1,0 +1,4 @@
+##### 005e4430 renames: ?GetQuestName@CTCQuestCard@@QAE?AVCWideString@@XZ=?GetQuestObjective@CTCQuestCard@@QBE?AVCWideString@@XZ
+sections head 22 new 22
+ALL_EQ text_sections_equal=19
+tables H=0 N=0

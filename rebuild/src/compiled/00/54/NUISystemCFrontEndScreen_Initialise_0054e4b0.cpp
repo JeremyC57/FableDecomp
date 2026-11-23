@@ -56,13 +56,15 @@ public:
     CComponent*               PAcceptButton;             // +0x168
     virtual void Initialise();
 };
-void __fastcall SetUpChildrenForAcceptButton(CComponent* component, CComponent* accept_button);   // 0x0054E350 (placeholder name)
+}   // namespace NUISystem: the PDB function is at global scope (NF306)
+void __fastcall SetPAcceptButtonRecursive(NUISystem::CComponent* component, NUISystem::CComponent* accept_button);   // 0x0054E350 (NF306: Ego_r + FableWin ?SetPAcceptButtonRecursive@@YIXPAVCComponent@NUISystem@@0@Z; was NUISystem::SetUpChildrenForAcceptButton)
+namespace NUISystem {
 void CFrontEndScreen::Initialise()
 {
     CChangingStateComponent::Initialise();
     m_fLastInputTime = Time;
     PAcceptButton = FindChild(CCharString("UI_ACCEPT"));
     if (PAcceptButton)
-        SetUpChildrenForAcceptButton(this, PAcceptButton);
+        SetPAcceptButtonRecursive(this, PAcceptButton);
 }
 }

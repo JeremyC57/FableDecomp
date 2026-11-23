@@ -1,0 +1,15 @@
+# NF306 template-shape probes (rows reverted after the probe; not handed back as changes)
+# 00bf9cc0 (entry 60, free function template GFDataIsInsideBlock<C4DVector*>) and 008269a0 (entry 85, member template CAFile::ReadVar<unsigned char>):
+# HEAD and probe both RELOCATION_MATCH; objsec: every section equal except .drectve, which gains one /alternatename line:
+##### 00bf9cc0 renames: ?IsObjectOffsetsInRange@@YI_NPAPAVC4DVector@@PAXJ@Z=??$GFDataIsInsideBlock@PAVC4DVector@@@@YI_NAAPAVC4DVector@@PAXJ@Z
+sections head 10 new 10
+DIFF 0 .drectve .drectve bytes False relocs True 42 172
+bad 1 text_sections_equal=9
+tables H=0 N=0
+##### 008269a0 renames: ?ReadVar@CAFile@@QAEXPAEPAVCASuspendableProcess@@@Z=??$ReadVar@E@CAFile@@QAEXAAEPAVCASuspendableProcess@@@Z
+sections head 2 new 2
+DIFF 0 .drectve .drectve bytes False relocs True 42 165
+bad 1 text_sections_equal=1
+tables H=0 N=0
+00bf9cc0 new .drectve adds: /alternatename:??$GFDataIsInsideBlock@PAVC4DVector@@@@YI_NAAPAVC4DVector@@PAXJ@Z=?GFDataIsInsideBlock@@YI_NAAPAVC4DVector@@PAXJ@Z
+008269a0 new .drectve adds: /alternatename:??$ReadVar@E@CAFile@@QAEXAAEPAVCASuspendableProcess@@@Z=?ReadVar@CAFile@@QAEXAAEPAVCASuspendableProcess@@@Z

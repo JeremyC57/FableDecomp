@@ -45,7 +45,7 @@ FABLE_FORCEINLINE CTCBase* GetTCIfPresent(const CThing& thing, long kind)
 }
 
 class CFaction { public:
-    bool IsAlliedWith(const CFaction* other) const;         // 0x006B9460
+    bool IsAlliedWithFaction(const CFaction& other) const;  // 0x006B9460 (NF306: Ego_r + FableWin QBE, const reference; was IsAlliedWith(const CFaction*))
 };
 
 class CTCEnemy { public:
@@ -70,7 +70,7 @@ bool CTCEnemy::IsAllyOf(const CThing& thing) const
     {
         CFaction* otherFaction = ((const CTCEnemy*)GetTCIfPresent(thing, 0x49))->PFaction;
         if (otherFaction)
-            return faction->IsAlliedWith(otherFaction);
+            return faction->IsAlliedWithFaction(*otherFaction);
     }
     return false;
 }

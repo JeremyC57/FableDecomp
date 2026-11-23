@@ -33,7 +33,7 @@ public:
     static unsigned long __fastcall CalculateTextureSize(unsigned long a0, unsigned long a1, bool a2, CPixelFormat const&a3);   // 0x00A698F0 (Ego_r.pdb ?CalculateTextureSize@CTextureManager@@SIKKK_NABVCPixelFormat@@@Z)
 private:
 public:
-    bool ResizePoolByFormat(long textureSize, long textureCount);   // 0x00A6ABE0
+    bool ResizePoolTextureCount(unsigned long textureSize, unsigned long textureCount);   // 0x00A6ABE0 (NF306: Ego_r + FableWin QAE_NKK; was ResizePoolByFormat(long, long))
 };
 class CGraphicDataBank {
 public:
@@ -67,7 +67,7 @@ bool CEngineResourceManager::ResizeHiresTextureMemory(long sizeKB)
     long textureSize = CTextureManager::CalculateTextureSize(0x200, 0x200, true, format);
     long level = m_pMainGraphicBank->m_level;
     m_pMainGraphicBank->SetReduceSizeFrameDelay(0);
-    bool result = m_pMainGraphicBank->m_pTextureManager->ResizePoolByFormat(textureSize, (sizeKB << 10) / textureSize);
+    bool result = m_pMainGraphicBank->m_pTextureManager->ResizePoolTextureCount(textureSize, (sizeKB << 10) / textureSize);
     m_pMainGraphicBank->SetReduceSizeFrameDelay(level);
     return result;
 }

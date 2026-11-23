@@ -75,7 +75,7 @@ class CEnginePrimitiveManager {
 public:
     virtual void v00();
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);   // slot 1
-    void RegisterPrimitive(CEngineInternalPrimitiveBase* primitive, unsigned long flags);   // 0x00BACDD0
+    void AddPrimitive(CEngineInternalPrimitiveBase& primitive, unsigned long flags);   // 0x00BACDD0 (NF306: Ego_r + FableWin QAEXAAV..K; was RegisterPrimitive(CEngineInternalPrimitiveBase*, unsigned long))
 };
 class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
@@ -126,5 +126,5 @@ void CEnginePrimitiveRenderer::SetPersistentPrimitive(CEnginePrimitiveHandle& ha
     if (flags & 0x40)
         NEngineInternal::GPPrimitiveRenderer2D->AddPrimitive(created);
     else
-        manager->RegisterPrimitive(created, flags);
+        manager->AddPrimitive(*created, flags);
 }

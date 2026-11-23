@@ -40,7 +40,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
 class CPlayerGui { public:
-    CMiniMapDisplay* GetPMiniMapDisplay();         // 0x00437CE0
+    CMiniMapDisplay& GetMiniMap();                 // 0x00437CE0 (NF306: Ego_r + FableWin QAEAAV; was CMiniMapDisplay* GetPMiniMapDisplay())
 };
 namespace NHeroInformationScreens {
 class CBase { public:                                     // secondary base at +0x130
@@ -77,7 +77,7 @@ public:
     unsigned char _pad134[0x234 - 0x134];
     bool          WorldMapActive;                  // +0x234
     long          ActiveRegionIndex;               // +0x238
-    void ReleaseMapScreenPrimitives();             // 0x005FC510
+    void ResetPrimitiveHandles();                  // 0x005FC510 (NF306: Ego_r + FableWin; was ReleaseMapScreenPrimitives)
     void FindQuestsForActiveRegion();              // 0x005FD0F0
     void FindTeleportsForActiveRegion();           // 0x005FD1D0
     private: void TeleportToActiveRegion(); public:                 // 0x005FBFA0
@@ -88,11 +88,11 @@ void CTCInventoryMap::ProcessButtonAReleased()
     if (InventorySelectionState == 1) {
         if (WorldMapActive && ActiveRegionIndex > 0) {
             WorldMapActive = false;
-            ReleaseMapScreenPrimitives();
+            ResetPrimitiveHandles();
             const CRegion& region = PeekWorld().PeekWorldMap()->GetRegion(ActiveRegionIndex);
             const CWorld* world = &PeekWorld();
             CPlayerGui* gui = (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get());
-            gui->GetPMiniMapDisplay()->InitialiseMiniMapFileLoading_Region(region, world->CurrentWorldName, false);
+            gui->GetMiniMap().InitialiseMiniMapFileLoading_Region(region, world->CurrentWorldName, false);
             FindQuestsForActiveRegion();
             FindTeleportsForActiveRegion();
             SelectItem(0);
