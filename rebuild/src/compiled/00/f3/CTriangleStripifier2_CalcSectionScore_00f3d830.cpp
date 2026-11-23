@@ -34,8 +34,11 @@ private:
     long CalcSectionPolyMask(const CArray<unsigned short>& triangles, const CArray<CArray<long> >& vertexPolys,
                              const CArray<unsigned short>& section, CArray<bool>& polyMask);            // 0x00F3CF50
 public:
+    private:
     void StripUnusedVerts(CArray<unsigned short>& section, const CArray<CArray<long> >& vertexPolys,
-                          const CArray<bool>& polyMask);                                                // 0x00F3B970
+                          const CArray<bool>& polyMask);
+    public:
+                                                // 0x00F3B970
     private:
     float CalcSectionScore(const CArray<unsigned short>& section, const CArray<unsigned short>& triangles,
                            const CArray<CArray<long> >& vertexPolys);

@@ -38,7 +38,7 @@ class C3DPrimitive2 { public:
     void* StaticBlocks;                                        // +0x44
     unsigned long AnimatedBlockCount;                          // +0x48 (PDB +0x4C)
     unsigned char _pad4c[0xA0 - 0x4C];
-    void SaveBinary(CDataOutputStream& out) const;             // 0x00A8FD40
+    void SaveBinary(CDataOutputStream& out);             // 0x00A8FD40
 };
 
 class C3DMeshStats { public:

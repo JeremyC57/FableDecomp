@@ -90,7 +90,7 @@ class CTCQuestCard { public:
     long GoldReward;                                       // +0x2c
     long RenownReward;                                     // +0x30
     CWideString GetQuestSummary() const;                         // 0x00702400
-    CWideString GetSuccessSummary();                       // 0x00702630
+    CWideString GetSuccessSummary() const;                       // 0x00702630
     CWideString GetQuestObjective() const;                 // 0x00702470 (NF306: Ego_r + FableWin ?GetQuestObjective@CTCQuestCard@@QBE?AVCWideString@@XZ; donor Activate calls it; was GetQuestName(), whose PDB address is 0x00702310)
 };
 struct CBoast { long a, b, c; CCharString ScriptName; CWideString Text0; CWideString Text1; };

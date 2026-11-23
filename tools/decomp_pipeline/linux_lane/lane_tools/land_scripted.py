@@ -8,7 +8,8 @@ Steps, in order (nothing is committed; the coordinator writes the README / HANDO
      --fix-unsigned-pad restores `unsigned char` on a pad that an older access_fix.py (before 2026-11-23 evening) shrank as `char`;
   3. recheck.py + vland --recheck-landed on the landed tree (timeout 900), and the graded symbol of every object must be the run's new
      symbol; any failure restores that row's HEAD source and holds it;
-  4. write rebuild/candidates/manual/batches/<batch>/ (RESULTS.tsv, rows.txt, rows_held.txt, logs/recheck.log), append the run's REJECT
+  4. a binder run (access_fix.py --binders) also applies its TABLE_CHANGES.tsv for the landed callers (apply_table.py);
+  5. write rebuild/candidates/manual/batches/<batch>/ (RESULTS.tsv, rows.txt, rows_held.txt, logs/recheck.log), append the run's REJECT
      rows to T3_PORT_QUEUE.tsv as <queue tag>, release the locks (naming_batch/clean.py)."""
 import os, re, sys, json, shutil, subprocess, contextlib, io
 sys.path.insert(0, "tools/decomp_pipeline"); argv = sys.argv[1:]; sys.argv = ["x"]
@@ -58,7 +59,8 @@ for a in land:
     g = st.get(a, ("NOT_GRADED", "-")); o = f"{W}/wd/{a[:2]}/{a[2:4]}/{a}/{a}.obj"; sym = ""
     if os.path.exists(o):
         with contextlib.redirect_stderr(io.StringIO()): sym = V.obj_text(o, acc[a][3])[2]
-    if not (g[0].startswith(("MATCH", "RELOCATION_MATCH")) and g[1] == "PASS" and sym == acc[a][3]):
+    binder = "; target " in acc[a][4]          # access_fix --binders: a caller keeps its own symbol; its proof is objsec + grade
+    if not (g[0].startswith(("MATCH", "RELOCATION_MATCH")) and g[1] == "PASS" and (binder or sym == acc[a][3])):
         bad.append(a); held[a] = f"landing recheck {g} symbol {sym}"
         open("rebuild/src/compiled/" + ent[a]["Source"], "w", encoding="utf-8").write(orig[a])
 land = [a for a in land if a not in bad]
@@ -66,6 +68,13 @@ B = f"rebuild/candidates/manual/batches/{batch}"; os.makedirs(f"{B}/logs", exist
 shutil.copyfile(f"{run}/RESULTS.tsv", f"{B}/RESULTS.tsv"); shutil.copyfile(f"{W}/recheck.log", f"{B}/logs/recheck.log")
 open(f"{B}/rows.txt", "w").write("".join(a + "\n" for a in land))
 open(f"{B}/rows_held.txt", "w").write("".join(f"{a}\t{why}\n" for a, why in sorted(held.items())))
+# a binder run's table changes, for the landed callers only (naming_batch/apply_table.py; nothing is written if any line misses)
+if os.path.exists(f"{run}/TABLE_CHANGES.tsv"):
+    tl = open(f"{run}/TABLE_CHANGES.tsv").read().splitlines()
+    keep = [tl[0]] + [l for l in tl[1:] if l.split("\t")[3] in land]
+    open(f"{B}/TABLE_CHANGES.tsv", "w").write("\n".join(keep) + "\n")
+    ap = subprocess.run(["python3", f"{LT}/naming_batch/apply_table.py", f"{B}/TABLE_CHANGES.tsv"], capture_output=True, text=True)
+    print("table:", ap.stdout.strip().replace("\n", " | "), ap.stderr.strip()[-300:])
 rej = [r for r in res if r[1] == "REJECT"]
 if rej:
     with open("rebuild/candidates/manual/naming/T3_PORT_QUEUE.tsv", "a") as o:

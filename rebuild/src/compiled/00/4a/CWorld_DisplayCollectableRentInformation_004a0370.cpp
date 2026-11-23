@@ -94,7 +94,7 @@ inline bool IsThingAlive(const CThing* thing) { return thing && !(thing->Flags91
 class CTCBuyableHouse { public:
     unsigned char _pad00[0x12];
     bool          Rented;                              // +0x12
-    long GetCurrentCollectableRentValue();             // 0x006C0160
+    long GetCurrentCollectableRentValue() const;             // 0x006C0160
     long GetMaxCollectableRentValue();                 // 0x006C0270
 };
 class CTCRegionDisplay { public:

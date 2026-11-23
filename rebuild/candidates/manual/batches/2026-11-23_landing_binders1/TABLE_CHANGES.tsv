@@ -1,0 +1,17 @@
+action	symbol	target	witness	note
+replace	?SaveBinary@C3DPrimitive2@@QBEXAAVCDataOutputStream@@@Z -> ?SaveBinary@C3DPrimitive2@@QAEXAAVCDataOutputStream@@@Z	00a8fd40	00a89450	access_fix --binders: the caller now references the PDB spelling
+replace	?GetAVisibleTelevisionScreenArea@CDisplayManager@@QAE?AVC2DBoxF@@XZ -> ?GetAVisibleTelevisionScreenArea@CDisplayManager@@QBE?AVC2DBoxF@@XZ	009becb0	007ca670	access_fix --binders: the caller now references the PDB spelling
+replace	?Initialise@CInitBaseClass@@QAE_NXZ -> ?Initialise@CInitBaseClass@@IAE_NXZ	0099a350	009a6610	access_fix --binders: the caller now references the PDB spelling
+replace	?Render@CLandscapeBackgroundPatch@@QAE_N_N@Z -> ?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z	00be6f70	00be79d0	access_fix --binders: the caller now references the PDB spelling
+replace	?RemoveAllDeadMarkers@CMiniMapDisplay@@QAEXXZ -> ?RemoveAllDeadMarkers@CMiniMapDisplay@@IAEXXZ	0082a2a0	0082b750	access_fix --binders: the caller now references the PDB spelling
+replace	?TransferVectorOfSubComponentsLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z -> ?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	009bc120	00f33b90	access_fix --binders: the caller now references the PDB spelling
+replace	?GetCurrentCollectableRentValue@CTCBuyableHouse@@QAEJXZ -> ?GetCurrentCollectableRentValue@CTCBuyableHouse@@QBEJXZ	006c0160	004a0370	access_fix --binders: the caller now references the PDB spelling
+replace	?IsReadyToLevelUp@CTCHeroExperience@@QAE_NXZ -> ?IsReadyToLevelUp@CTCHeroExperience@@QBE_NXZ	006d7cb0	0065196c	access_fix --binders: the caller now references the PDB spelling
+replace	?IsAnySliderReceivingInput@CTCInGameMenu@@QAE_NXZ -> ?IsAnySliderReceivingInput@CTCInGameMenu@@QBE_NXZ	0047d483	00690480	access_fix --binders: the caller now references the PDB spelling
+replace	?IsButtonHeldForExpression@CTCInventory@@QAE_NABVCCharString@@@Z -> ?IsButtonHeldForExpression@CTCInventory@@QBE_NABVCCharString@@@Z	00582a16	0064a568	access_fix --binders: the caller now references the PDB spelling
+replace	?GetHealthToAddThisFrame@CTCObjectAugmentations@@QAEJXZ -> ?GetHealthToAddThisFrame@CTCObjectAugmentations@@QBEJXZ	00766260	0057d5a0	access_fix --binders: the caller now references the PDB spelling
+replace	?GetSuccessSummary@CTCQuestCard@@QAE?AVCWideString@@XZ -> ?GetSuccessSummary@CTCQuestCard@@QBE?AVCWideString@@XZ	00702630	005e4430	access_fix --binders: the caller now references the PDB spelling
+replace	?IsAbleToFlourishDangerThings@CTCStealth@@QAE_NXZ -> ?IsAbleToFlourishDangerThings@CTCStealth@@QBE_NXZ	007471a0	0087cb10	access_fix --binders: the caller now references the PDB spelling
+replace	?GetIsAvailableForResidency@CThingBuilding@@QBE_NXZ -> ?GetIsAvailableForResidency@CThingBuilding@@QAE_NXZ	0082e0e0	0072f9e0	access_fix --binders: the caller now references the PDB spelling
+replace	?StripUnusedVerts@CTriangleStripifier2@@QAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z -> ?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z	00f3b970	00f3d830	access_fix --binders: the caller now references the PDB spelling
+replace	?UnassignString@CWideString@@QAEXXZ -> ?UnassignString@CWideString@@IAEXXZ	0099b4d0	0099be70	access_fix --binders: the caller now references the PDB spelling

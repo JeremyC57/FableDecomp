@@ -2,7 +2,7 @@
 """Scripted T2 route: a landed row whose own compiled symbol differs from the PDB symbol only in the member's access letter and / or its
 `const` (naming tracker tier T2, fix `access`; docs/journal/2026-11/2026-11-23_naming_remainder.md). Generate-and-verify; writes candidate
 sources only under <work>.
-usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr] [--wide] [--virtual] [--ret] [--alias]
+usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr] [--wide] [--virtual] [--ret] [--alias] [--binders]
 Edits, in the row's own local class model only (a declaration in a shared header is skipped: that is a header opt-in):
   - access: the declaration statement is wrapped as `<new>:` ... `<old>:`, so no member moves and no vtable slot changes;
   - const: `const` is added to or removed from the declaration and from the out-of-line definition `Class::Method(...)`.
@@ -122,6 +122,33 @@ if "--wide" in argv:
         wide.append([a, "", "T2", "access", "", "1", g, s, alias])
     print("wide candidates", len(wide), dict(why), flush=True)
     rows = wide
+BINDERS = "--binders" in argv
+if BINDERS:
+    # T1 binder respell: the target's own row already defines the PDB symbol P; a caller (table witness) still references a near-miss
+    # spelling W (access / const only). Edit the CALLER's local model declaration so its reference becomes P. Proof: the caller's
+    # object is ALL_EQ under the one rename W -> P, its own grade still passes; the table line (W, T, caller) becomes (P, T, caller).
+    t3q = set()
+    for l in open("rebuild/candidates/manual/naming/T3_PORT_QUEUE.tsv", encoding="utf-8", errors="replace").read().splitlines()[1:]:
+        q = l.split("\t")
+        if len(q) > 2: t3q.add(q[1].lower().replace("0x", "")); t3q.update(x.lower() for x in re.findall(r"0x([0-9a-fA-F]{8})", q[2]))
+    pool, seen = [], set()
+    for r in rows:
+        if r[2] != "T1" or len(r) < 12: continue
+        T, P = r[0], r[6]
+        for part in r[11].split(" || "):
+            mm = re.match(r"(\S+) \(([^)]*)\)$", part.strip())
+            if not mm or mm.group(1) == P: continue
+            W = mm.group(1)
+            a1, b1 = SPLIT.match(W), SPLIT.match(P)
+            if not (a1 and b1 and a1.group(1) == b1.group(1)): continue
+            td = tail_diff(a1.group(3), a1.group(4), b1.group(3), b1.group(4))
+            if td is None or td[1] or td[2]: continue      # access / const only for callers
+            for B in mm.group(2).split(","):
+                B = B.strip().lower()
+                if B in ("self", "...") or B not in ent or B in t3q or B in seen: continue
+                seen.add(B); pool.append([B, "", "T2", "access", "", "1", P, W, "", T])
+    print("binder candidates", len(pool), flush=True)
+    rows = pool
 res, head, new = [], [], []
 def block_end(t, i):
     """index just past the `}` matching the `{` at t[i-1]"""
@@ -135,7 +162,7 @@ for r in rows:
     alias = r[8] if len(r) > 8 else ""
     if only and a not in only: continue
     if len(new) >= mx: break
-    if selfsym.get(a) and selfsym[a] != old and "--wide" not in argv: res.append((a, "SKIP", old, good, "the measured self symbol is " + selfsym[a])); continue
+    if selfsym.get(a) and selfsym[a] != old and "--wide" not in argv and not BINDERS: res.append((a, "SKIP", old, good, "the measured self symbol is " + selfsym[a])); continue
     old_eff = old
     if alias:
         old_eff = old.replace("@" + alias + "@@", "@" + SPLIT.match(good).group(2)[:-1] + "@@", 1)
@@ -147,7 +174,7 @@ for r in rows:
     cv_new, ret_new, virt_add = td
     meth = re.match(r'\?([^@]+)@', good).group(1); scope = mg.group(2).rstrip("@").split("@"); cls = scope[0]
     if len(scope) != 1 or meth.startswith("?"): res.append((a, "SKIP", old, good, "nested scope or operator / special member")); continue
-    if (catname.get(cls + "::" + meth, set()) - {a}) or (symaddr.get(good, set()) - {a}):
+    if not BINDERS and ((catname.get(cls + "::" + meth, set()) - {a}) or (symaddr.get(good, set()) - {a})):
         res.append((a, "SKIP", old, good, "identity: the PDB name is claimed by another address " +
                     ",".join(sorted((catname.get(cls + "::" + meth, set()) | symaddr.get(good, set())) - {a})[:4]))); continue
     path = "rebuild/src/compiled/" + ent[a]["Source"]; src = open(path, encoding="utf-8").read(); src_head = src
@@ -226,14 +253,20 @@ for r in rows:
             else:
                 mc = re.match(r'(\s*)const\b', tail)
                 if mc: ns_src = ns_src[:k] + tail[mc.end():]
-    if re.search(r'^//\s*Leaf:', ns_src, re.M): ns_src = re.sub(r'^//\s*Leaf:.*$', lambda q: "// Leaf: " + good, ns_src, count=1, flags=re.M)
+    if BINDERS: pass        # a caller keeps its own Leaf
+    elif re.search(r'^//\s*Leaf:', ns_src, re.M): ns_src = re.sub(r'^//\s*Leaf:.*$', lambda q: "// Leaf: " + good, ns_src, count=1, flags=re.M)
     else: ns_src = "// Leaf: " + good + "\n" + ns_src
     kv = ent[a]
     tst = open("rebuild/tests/" + kv["TestSource"], encoding="utf-8").read() if kv.get("TestSource") else ""
     base = dict(address=a, module=kv.get("Module", cls), name=meth, test_cpp=tst, pass_pattern=kv.get("PassPattern", f"{a}_TEST PASS"))
     extra = [f for f in kv.get("CompilerFlags", "").split() if f not in ("/O2", "/Oy", "/W3")]
     if extra: base["flags"] = extra
-    head.append(dict(base, source_cpp=src_head, leaf=old)); new.append(dict(base, source_cpp=ns_src, leaf=good))
+    if BINDERS:
+        own = ns.leaf_of(kv["Source"]) or ""
+        head.append(dict(base, source_cpp=src_head, leaf=own, ren=(old, good), target=r[9]))
+        new.append(dict(base, source_cpp=ns_src, leaf=own, ren=(old, good), target=r[9]))
+    else:
+        head.append(dict(base, source_cpp=src_head, leaf=old)); new.append(dict(base, source_cpp=ns_src, leaf=good))
     open(f"{work}/rows/{a}.cpp", "w").write(ns_src)
 print("generated", len(new), flush=True)
 def vland(tag, rs):
@@ -255,6 +288,13 @@ if new:
         a = h["address"]; oh = f"{dh}/wd/{a[:2]}/{a[2:4]}/{a}/{a}.obj"; on = f"{dn}/wd/{a[:2]}/{a[2:4]}/{a}/{a}.obj"
         gst = sn.get(a, ("NOT_GRADED", "-"))
         if not (os.path.exists(oh) and os.path.exists(on)): res.append((a, "REJECT", h["leaf"], n["leaf"], f"no object (head {sh.get(a)}, new {gst})")); continue
+        if "ren" in n:
+            with contextlib.redirect_stderr(io.StringIO()): gh, gn = V.obj_text(oh, h["leaf"])[2], V.obj_text(on, n["leaf"])[2]
+            if gh != gn: res.append((a, "REJECT", n["ren"][0], n["ren"][1], f"caller's graded symbol moved {gh} -> {gn}")); continue
+            o = subprocess.run(["python3", OBJSEC, oh, on, f"{n['ren'][0]}={n['ren'][1]}"], capture_output=True, text=True).stdout
+            if "ALL_EQ" not in o: res.append((a, "REJECT", n["ren"][0], n["ren"][1], "objsec " + " / ".join(o.strip().splitlines()[-3:]))); continue
+            if not (gst[0].startswith(("MATCH", "RELOCATION_MATCH")) and gst[1] == "PASS"): res.append((a, "REJECT", n["ren"][0], n["ren"][1], f"grade {gst}")); continue
+            res.append((a, "ACCEPT", n["ren"][0], n["ren"][1], f"objsec ALL_EQ, {gst[0]} {gst[1]}; target {n['target']}")); continue
         with contextlib.redirect_stderr(io.StringIO()): g = V.obj_text(on, n["leaf"])[2]
         if g != n["leaf"]: res.append((a, "REJECT", h["leaf"], n["leaf"], f"graded symbol {g}")); continue
         o = subprocess.run(["python3", OBJSEC, oh, on, f"{h['leaf']}={n['leaf']}"], capture_output=True, text=True).stdout
@@ -264,6 +304,11 @@ if new:
 acc = {r[0] for r in res if r[1] == "ACCEPT"}
 for f in glob.glob(f"{work}/rows/*.cpp"):
     if os.path.basename(f)[:8] not in acc: os.replace(f, f + ".rejected")
+if BINDERS:
+    with open(f"{work}/TABLE_CHANGES.tsv", "w") as o:
+        o.write("action\tsymbol\ttarget\twitness\tnote\n")
+        for r in res:
+            if r[1] == "ACCEPT": o.write(f"replace\t{r[2]} -> {r[3]}\t{r[4].split('target ')[-1]}\t{r[0]}\taccess_fix --binders: the caller now references the PDB spelling\n")
 with open(f"{work}/RESULTS.tsv", "w") as o:
     o.write("address\tverdict\told\tnew\treason\n" + "\n".join("\t".join(r) for r in res) + "\n")
 print(collections.Counter(r[1] for r in res))

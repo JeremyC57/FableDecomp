@@ -125,7 +125,7 @@ class CTCInventoryWeapons { public:                         // interface 0x13
 #pragma pack(pop)
 
 class CTCObjectAugmentations { public:                      // interface 0xBF
-    long GetHealthToAddThisFrame();                  // 0x00766260
+    long GetHealthToAddThisFrame() const;                  // 0x00766260
     long GetStaminaToAddThisFrame();                 // 0x00766330
 };
 

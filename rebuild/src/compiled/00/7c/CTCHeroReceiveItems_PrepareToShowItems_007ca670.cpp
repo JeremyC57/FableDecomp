@@ -85,7 +85,7 @@ public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
 private: public: unsigned char _pad[0x28]; CDisplayEngine* DisplayEngine; };   // +0x28
 class CDisplayManager { public:
-    C2DBoxF GetAVisibleTelevisionScreenArea();          // 0x009BECB0
+    C2DBoxF GetAVisibleTelevisionScreenArea() const;          // 0x009BECB0
 };
 extern CDisplayManager* GPDisplayManager;              // 0x013B8390
 extern C3DVector g_ItemUp;                              // 0x01383A5C

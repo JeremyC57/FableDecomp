@@ -66,7 +66,10 @@ class CLandscapeBackgroundPatch { public:
     unsigned short                MapY;             // +0x10e
     unsigned short                Width;            // +0x110
     unsigned short                Height;           // +0x112
-    bool Render(bool full);                         // 0x00BE6F70
+    private:
+    bool Render(bool full);
+    public:
+                         // 0x00BE6F70
     private:
     void RenderWithOcclusion(long& queryHandle, bool& occluded);
     public:

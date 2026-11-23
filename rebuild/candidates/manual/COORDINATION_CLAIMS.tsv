@@ -392,3 +392,4 @@ date	account	item	kind	status	note
 2026-11-23	A	access 3 (scripted)	naming	done	140 rows by access_fix.py --wide --virtual --ret (batches/2026-11-23_landing_access3)
 2026-11-23	A	alias 1 (scripted)	naming	done	29 rows by alias_header.py (batches/2026-11-23_landing_alias1)
 2026-11-23	A	access 4 (scripted)	naming	done	72 rows by access_fix.py --wide --virtual --ret (batches/2026-11-23_landing_access4)
+2026-11-23	A	binders 1 (scripted)	naming	done	16 callers by access_fix.py --binders (batches/2026-11-23_landing_binders1)

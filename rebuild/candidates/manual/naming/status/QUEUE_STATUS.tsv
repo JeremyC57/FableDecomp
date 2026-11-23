@@ -2954,7 +2954,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3352	c682	00f344c0	??0CFeatDef@@QAE@XZ	partial	??0CDefRecord64@@QAE@XZ
 3353	c682	00f263d0	??0CArenaCreatureDef@@QAE@XZ	closed	
 3354	c682	00f25e40	??1CArenaCreatureDef@@UAE@XZ	closed	
-3355	c682	009bc120	?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	partial	?TransferSubComponentVectorLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z || ?TransferVectorOfSubComponentsLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z
+3355	c682	009bc120	?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	partial	?TransferSubComponentVectorLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z
 3356	c682	00bbbbc0	??1CEnginePrimitiveManagerDecal@@UAE@XZ	open	??1CEnginePrimitiveManagerDecal
 3357	c682	0078891d	?PerformPossibleTrapDamage@CTCMeleeTrap@@AAEXMM@Z	open	?MeleeTrapHelper@@YGXMM@Z
 3358	c682	00788617	?ProcessPossibleStrike@CTCMeleeTrap@@AAEXMMABU?$pair@VC3DVector@@V1@@std@@0AAVCThing@@@Z	closed	
@@ -3508,7 +3508,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3999	c712	0055d590	??1CTCPhotojournalCapture@@UAE@XZ	closed	
 4000	c712	00b0ca90	??1CPSCUpdateNormal@NParticleEngine@@UAE@XZ	closed	
 4001	c712	0099a360	?Uninitialise@CInitBaseClass@@IAEXXZ	closed	
-4002	c712	0099a350	?Initialise@CInitBaseClass@@IAE_NXZ	partial	?Initialise@CInitBaseClass@@QAE_NXZ || ?InitialiseNetworkBase@CNetworkClient@@QAE_NXZ
+4002	c712	0099a350	?Initialise@CInitBaseClass@@IAE_NXZ	partial	?InitialiseNetworkBase@CNetworkClient@@QAE_NXZ
 4003	c712	0099a330	?IsValid@CInitBaseClass@@QBE_NXZ	closed	
 4004	c712	009fc430	?FrameEnd@CResourceBank@@QAEXXZ	partial	?Sub_Update@@YIXPAUSub@@@Z
 4005	c712	009fc410	?ProcessLoadingQueue@CResourceBank@@QAEX_NN@Z	partial	?Process@CLoadingQueue_00a23b00@@QAEXPAXN@Z || ?ProcessLoading@CGraphicDataBank_Calls@@QAEX_NN@Z
@@ -9940,7 +9940,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12394	land1121nf219	013bd800	?NoStrings@CCharString@@1JA	open	?g_CCharStringInstanceCount@@3JA || ?g_CCharStringInstanceCount_013BD800@@3HA || _g_CCharString_liveCount || _g_charStringCount
 12395	land1121nf219	0099e9b0	?UnassignString@CCharString@@IAEXXZ	closed	
 12396	land1121nf219	00c443d0	?Clear@CircularQueue@@QAEXXZ	closed	
-12398	land1121nf219	0099b4d0	?UnassignString@CWideString@@IAEXXZ	partial	?UnassignString@CWideString@@AAEXXZ || ?UnassignString@CWideString@@QAEXXZ
+12398	land1121nf219	0099b4d0	?UnassignString@CWideString@@IAEXXZ	partial	?UnassignString@CWideString@@AAEXXZ
 12404	land1121nf220	004291de	??1	open	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
 12407	land1122p26	00404710	??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	no_binding	
 12408	land1122p26	00429c53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	closed	
@@ -10483,7 +10483,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13319	land1123nf286	00730dd0	?Close@CTCDoor@@IAEXXZ	partial	Close
 13320	land1123nf286	007e7310	?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z	partial	?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z
 13321	land1123nf286	005955ab	?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	partial	?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
-13322	land1123nf286	00be6f70	?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z	partial	?Render@CLandscapeBackgroundPatch@@QAE_N_N@Z
+13322	land1123nf286	00be6f70	?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z	closed	
 13323	land1123nf287	009e1da0	?GFAXToVX@@YIMM@Z	closed	
 13324	land1123nf287	0062fe60	??0CUIDef@NUISystem@@QAE@XZ	partial	??0CUIDef@@QAE@XZ
 13325	land1123nf288	004be000	?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z	partial	GetNoDummyObjects
@@ -10501,7 +10501,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13337	land1123nf289	00449b60	?GetMultiplayerColour@CPlayerManager@@QBE?AVCRGBColour@@J@Z	partial	GetMultiplayerColour
 13338	land1123nf291	007022e0	?IsVignette@CTCQuestCard@@QBE_NXZ	closed	
 13339	land1123nf291	0062fe60	??0CUIDef@NUISystem@@QAE@XZ	partial	??0CUIDef@@QAE@XZ
-13340	land1123nf290	00f3b970	?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z	partial	?StripUnusedVerts@CTriangleStripifier2@@QAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z
+13340	land1123nf290	00f3b970	?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z	closed	
 13341	land1123nf290	0049d8f0	?SetAsPaused@CWorld@@IAEX_N@Z	closed	
 13343	land1123nf290	004fb310	?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ	closed	
 13344	land1123nf290	00968230	?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z	closed	

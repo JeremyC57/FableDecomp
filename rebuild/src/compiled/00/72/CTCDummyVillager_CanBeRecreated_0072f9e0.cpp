@@ -18,7 +18,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingBuilding : public CThing { public:
-    bool GetIsAvailableForResidency() const;    // 0x0082E0E0
+    bool GetIsAvailableForResidency();    // 0x0082E0E0
 };
 class CTCVillage { public:
     unsigned char _pad00[0xb3];
