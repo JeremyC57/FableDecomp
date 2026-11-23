@@ -1,0 +1,102 @@
+addr       parity           behav  name
+00438aa0   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00438aa0   RELOCATION_MATCH PASS   AddScreenMessage
+0048f230   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0048f230   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0048f230   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+0048f230   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+0048f230   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DSprite (engine/CEnginePrimitive2DSprite.h)
+0048f230   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer (engine/CEnginePrimitiveRenderer.h)
+0048f230   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo (engine/CEnginePrimitivePrepareInfo.h)
+0048f230   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0048f230   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0048f230   WARN RELOC_NAME: ?g_pGameUI@@3PAUCGameUI@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+0048f230   RELOCATION_MATCH PASS   DrawTextEmbeddedGraphics
+0049d550   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+0049d550   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0049d550   RELOCATION_MATCH PASS   ConvertWorldToStaticMapPath
+0049d6b0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+0049d6b0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0049d6b0   RELOCATION_MATCH PASS   ConvertWorldToISMThingyPath
+0049ddd0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+0049ddd0   RELOCATION_MATCH PASS   ConvertWorldToStaticMapPath
+0049dec0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+0049dec0   RELOCATION_MATCH PASS   ConvertWorldToISMThingyPath
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0094a6d0   RELOCATION_MATCH PASS   WalkToPoint
+009dca80   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+009dca80   WARN SHARED_HEADER_AVAILABLE CTVertexRHWColSpecTex1 (engine/CTVertexRHWColSpecTex1.h)
+009dca80   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009dca80   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+009dca80   WARN SHARED_HEADER_AVAILABLE CGraphicFrame (engine/CGraphicFrame.h)
+009dca80   WARN SHARED_HEADER_AVAILABLE CGraphicInfo (engine/CGraphicInfo.h)
+009dca80   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+009dca80   WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)
+009dca80   RELOCATION_MATCH PASS   Draw2DGraphic
+009dd210   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+009dd210   WARN SHARED_HEADER_AVAILABLE CTVertexRHWColSpecTex1 (engine/CTVertexRHWColSpecTex1.h)
+009dd210   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009dd210   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+009dd210   WARN SHARED_HEADER_AVAILABLE CGraphicFrame (engine/CGraphicFrame.h)
+009dd210   WARN SHARED_HEADER_AVAILABLE CGraphicInfo (engine/CGraphicInfo.h)
+009dd210   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+009dd210   WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)
+009dd210   RELOCATION_MATCH PASS   Draw2DScaledGraphic
+009dda50   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+009dda50   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+009dda50   WARN SHARED_HEADER_AVAILABLE CTVertexRHWColSpecTex1 (engine/CTVertexRHWColSpecTex1.h)
+009dda50   WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)
+009dda50   RELOCATION_MATCH PASS   Draw2DBoxColours
+009ddff0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+009ddff0   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+009ddff0   WARN SHARED_HEADER_AVAILABLE CTVertexRHWColSpecTex1 (engine/CTVertexRHWColSpecTex1.h)
+009ddff0   WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)
+009ddff0   RELOCATION_MATCH PASS   Draw2DTriangle
+00ae2050   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00ae2050   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00ae2050   WARN SHARED_HEADER_AVAILABLE CParticleSimulation (engine/CParticleSimulation.h)
+00ae2050   RELOCATION_MATCH PASS   WriteToFile
+00ae2230   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE C3DTriangle2 (engine/C3DTriangle2.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE C3DQuad2 (engine/C3DQuad2.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE C3DClothRenderVertex (engine/C3DClothRenderVertex.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CParticleSimulation (engine/CParticleSimulation.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CParticleProgram (engine/CParticleProgram.h)
+00ae2230   RELOCATION_MATCH PASS   WriteToFile
+00af5380   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CParticleEmitterList (engine/CParticleEmitterList.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CDecal (engine/CDecal.h)
+00af5380   WARN SHARED_HEADER_AVAILABLE CParticleSystem (engine/CParticleSystem.h)
+00af5380   RELOCATION_MATCH PASS   AllocateDecal
+
+WINS: 14
+  00438aa0 RELOCATION_MATCH CPlayerGui::AddScreenMessage
+  0048f230 RELOCATION_MATCH CSubtitleRenderer::DrawTextEmbeddedGraphics
+  0049d550 RELOCATION_MATCH CWorld::ConvertWorldToStaticMapPath
+  0049d6b0 RELOCATION_MATCH CWorld::ConvertWorldToISMThingyPath
+  0049ddd0 RELOCATION_MATCH CWorld::?ConvertWorldToStaticMapPath@CWorld_Methods@@QBE?AVCWideString@@ABV2@@Z
+  0049dec0 RELOCATION_MATCH CWorld::?ConvertWorldToISMThingyPath@CWorld_Methods@@QBE?AVCWideString@@ABV2@@Z
+  0094a6d0 RELOCATION_MATCH CAIStateGroup_GoToPub::WalkToPoint
+  009dca80 RELOCATION_MATCH CRenderManager2D::Draw2DGraphic
+  009dd210 RELOCATION_MATCH CRenderManager2D::Draw2DScaledGraphic
+  009dda50 RELOCATION_MATCH CRenderManager2D::Draw2DBoxColours
+  009ddff0 RELOCATION_MATCH CRenderManager2D::Draw2DTriangle
+  00ae2050 RELOCATION_MATCH CParticleSimulation::WriteToFile
+  00ae2230 RELOCATION_MATCH CParticleProgram::WriteToFile
+  00af5380 RELOCATION_MATCH NParticleEngine::CParticleSystem::?AllocateDecal@CParticleSystem@NParticleEngine@@QAEPAVCDecal@2@XZ

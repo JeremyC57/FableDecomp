@@ -1,0 +1,11 @@
+## HEAD set: H_00af5380.obj H_009415b0.obj H_00af8b00.obj H_0090dee0.obj
+duplicates 0
+
+UNRESOLVED 1 ?AllocateParticleMemory_00af8b00@@YIPAXI@Z
+UNRESOLVED 1 ?FindMostRecentMessage_0090dee0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z
+UNRESOLVED 1 ?v00@CDecal@NParticleEngine@@UAEXXZ
+## new set: N_00af5380.obj N_009415b0.obj H_00af8b00.obj H_0090dee0.obj
+duplicates 0
+
+UNRESOLVED 1 ?v00@CDecal@NParticleEngine@@UAEXXZ
+LK_DONE

@@ -1,0 +1,14 @@
+# Entry 1: rename map per row, read off each object's own DEF/UND diff (proof_e1.txt), compared by string with the intended PDB spellings.
+# Ego_r 00b34b30 / 00b34b70 / 00b34bb0 / 00b34bf0 and FableWin 030a64e0 / 030a6530 / 030a6590 / 030a65e0 name sets:
+#   ?GFAXToVX@@YIMM@Z / ?GFAYToVY@@YIMM@Z / ?GFVXToAX@@YIMM@Z / ?GFVYToAY@@YIMM@Z, donor order = retail 0x009E1DA0 / 0x009E1DD0 / 0x009E1E10 / 0x009E1E40;
+#   each self row defines its spelling (gr_e1.log leaves); the reloc table already binds the four PDB spellings at these addresses.
+0x009ddff0  ?GFAXToVX@@YGMM@Z -> ?GFVXToAX@@YIMM@Z (0x009E1E10)    ?GFAYToVY@@YGMM@Z -> ?GFVYToAY@@YIMM@Z (0x009E1E40)   OK
+0x009dda50  ?GFAXToVX@@YGMM@Z -> ?GFVXToAX@@YIMM@Z (0x009E1E10)    ?GFAYToVY@@YGMM@Z -> ?GFVYToAY@@YIMM@Z (0x009E1E40)   OK
+0x009dd210  ?GFAXToVX_009e1e10@@YIMM@Z -> ?GFVXToAX@@YIMM@Z        ?GFAYToVY@@YIMM@Z -> ?GFVYToAY@@YIMM@Z                OK
+0x009dca80  ?GFAXToVX_009e1e10@@YIMM@Z -> ?GFVXToAX@@YIMM@Z        ?GFAYToVY@@YIMM@Z -> ?GFVYToAY@@YIMM@Z                OK
+0x0048f230  ?GFVXToAX_009e1e10@@YGMM@Z -> ?GFVXToAX@@YIMM@Z        ?GFVYToAY@@YGMM@Z -> ?GFVYToAY@@YIMM@Z                OK
+0x00438aa0  ?GFVXToAX@@YGMM@Z -> ?GFAXToVX@@YIMM@Z (0x009E1DA0)                                                         OK
+# Call targets: xsites_009e1e40.tsv, xsites_009e1dd0_009e1e10.tsv, xsites_009e1da0.tsv (E8/E9 scan); absrefs_converters.tsv: no absolute
+# references to any of the four. census_converters_HEAD.tsv (10 problems, all in these six rows) v census_converters.tsv (0).
+# The unattributed 0x009E1E40 sites (row "-" in xsites_009e1e40.tsv) fall in no landed row's catalog extent (xsites.py maps each site to its row).
+# __stdcall -> __fastcall on a single float argument is byte-neutral (float on the stack, callee pops, no register argument): ALL_EQ.

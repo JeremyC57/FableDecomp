@@ -2,7 +2,7 @@
 // Leaf: DrawTextEmbeddedGraphics
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048F230, 474 bytes, `ret 8` (retail mangling
 //   ?DrawTextEmbeddedGraphics@CSubtitleRenderer@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@@Z).
-// Callees: PeekGuiDef 0x00438570 (__fastcall), GFVYToAY 0x009E1E40 / GFVXToAX 0x009E1E10 (__stdcall, virtual to render-target pixels: x * width / 640; some landed files call these GFAXToVX/GFAYToVY), CEnginePrimitive2DSprite
+// Callees: PeekGuiDef 0x00438570 (__fastcall), GFVYToAY 0x009E1E40 / GFVXToAX 0x009E1E10 (__fastcall, Ego_r / FableWin ?GFVYToAY@@YIMM@Z / ?GFVXToAX@@YIMM@Z; virtual to render-target pixels: x * width / 640), CEnginePrimitive2DSprite
 //   ctor 0x00493AC2 (13 arguments), the renderer's AddPrimitive (slot 23, +0x5C), CSubtitleRenderer::GetTextFromEmbeddedTagGraphic
 //   0x0048DF77 and GetTextOffsetFromEmbeddedTagGraphic 0x0048DC3C (both landed), CWideString::operator!=(const wchar_t*)
 //   0x0099B150 (L"" 0x0122D70C) / ~CWideString 0x0099B510, GFACoordToVCoord 0x009E21D0 (__fastcall), CGameUI::Draw2DText
@@ -35,8 +35,8 @@ class CRGBColour { public:
 };
 class CFontBank;
 
-float __stdcall GFVXToAX_009e1e10(float x);                           // 0x009E1E10
-float __stdcall GFVYToAY(float y);                           // 0x009E1E40
+float __fastcall GFVXToAX(float x);                           // 0x009E1E10
+float __fastcall GFVYToAY(float y);                           // 0x009E1E40
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
 
 class CEnginePrimitiveHandle { public: unsigned long Data[2]; };
@@ -116,7 +116,7 @@ void CSubtitleRenderer::DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareIn
     const CPlayerGuiDef* def = PeekGuiDef();
     for (unsigned long i = 0; i < EmbeddedGraphics.size(); ++i) {
         if (AllCharactersDisplayed || TextCharactersShowing > EmbeddedGraphics[i].CharIndex) {
-            C2DVector pos = EmbeddedGraphics[i].Offset + def->ControllerGraphicOffset + C2DVector(GFVXToAX_009e1e10(box.TLX), GFVYToAY(box.TLY));
+            C2DVector pos = EmbeddedGraphics[i].Offset + def->ControllerGraphicOffset + C2DVector(GFVXToAX(box.TLX), GFVYToAY(box.TLY));
             CEnginePrimitive2DSprite sprite(0, pos, (EEngine2DLayer)0x45, EmbeddedGraphics[i].Graphic, 0, (EEnginePrimitiveBlendMode)2, (EEngineInterpolationSet)0, 0.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 0,
                                             C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
             info.Renderer->AddPrimitive(&EmbeddedPrimitiveHandles[i], sprite, 0xc0);

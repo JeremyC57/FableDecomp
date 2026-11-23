@@ -325,9 +325,22 @@ FABLE_STATIC_ASSERT_AT(257, offsetof(CAIStateGroupBase, Enabled) == 0x12);
 
 class CAIBrain;
 class CCharStringData;
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_LOOKATPOS
+// NF287 add-only opt-in (2026-11-23, binder 0x0094A6D0 CAIStateGroup_GoToPub::WalkToPoint, whose local struct derives this flat view):
+// declaration only of the protected base member AIAction_LookAtPos 0x0097D580, Ego_r.pdb + FableWin.pdb
+// ?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z (a member's mangling carries no
+// class key, so the flat view gives the PDB spelling; protected, so only a derived class can call it). MS forward enums; the row
+// defines the enumerators it uses.
+class C3DVector;
+enum EAIActionReturn; enum EAIActionRepeat;
+#endif
 
 #pragma pack(push, 1)
 class CAIStateGroupBase {
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_LOOKATPOS
+protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+#endif
 public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CAIBrain*        PBrain;                                 // +0x04

@@ -1,0 +1,66 @@
+# row	exe_calls	HEAD_used	HEAD_conv	new_used	new_conv	source
+0041a980	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/41/CSprite_DrawWithRenderManager_0041a980.cpp
+00435530	009e1dd0	GFAYToVY		GFAYToVY		00/43/CDisplayEngine_DoRender_00435530.cpp
+00437210	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/43/CFontBank_GetVStringExtents_00437210.cpp
+0043e4d0	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/43/CFontBank_GetVStringWidth_0043e4d0.cpp
+00438aa0	009e1da0	GFVXToAX	__stdcall	GFAXToVX	__fastcall	00/43/CPlayerGui_AddScreenMessage_00438aa0.cpp
+00439070	009e1e10,009e1e40	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/43/CPlayerGui_DrawPreparePrimitivesForEngine_00439070.cpp
+00487570	009e1da0,009e1dd0					00/48/CPlayer_DrawFreeCamDebug_00487570.cpp
+0048e78e	009e1e10	GFVXToAX	__fastcall	GFVXToAX	__fastcall	00/48/CSubtitleRenderer_DrawButtonGraphics_0048e78e.cpp
+0048f230	009e1e10,009e1e40	GFVXToAX_009e1e10,GFVYToAY	__stdcall	GFVXToAX,GFVYToAY	__fastcall	00/48/CSubtitleRenderer_DrawTextEmbeddedGraphics_0048f230.cpp
+0048f40a	009e1e10,009e1e40	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/48/CSubtitleRenderer_DrawTextEmbeddedHighlights_0048f40a.cpp
+0048f50c	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/48/CSubtitleRenderer_FormatTextForVWindow_0048f50c.cpp
+0048dbc3	009e1e10,009e1e40	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/48/CSubtitleRenderer_GetBlackBarHeight_0048dbc3.cpp
+00494900	009e1dd0	GFAYToVY		GFAYToVY		00/49/CFrontendGameComponent_Output_00494900.cpp
+00497fd0	009e1da0,009e1dd0	GFAXToVX,GFAYToVY		GFAXToVX,GFAYToVY		00/49/CProgressDisplay_DisplayCenteredText_00497fd0.cpp
+00498490	009e1da0,009e1dd0	GFAXToVX,GFAYToVY		GFAXToVX,GFAYToVY		00/49/CProgressDisplay_DrawRetailDisplay_00498490.cpp
+00498410	009e1da0,009e1dd0					00/49/CProgressDisplay_GetCharWidthW_00498410.cpp
+00492381	009e1da0,009e1dd0,009e1e10	GFAXToVX,GFAYToVY,GFVXToAX	__fastcall	GFAXToVX,GFAYToVY,GFVXToAX	__fastcall	00/49/CSubtitleRenderer_ProcessEmbeddedGraphicTags_00492381.cpp
+00491ad2	009e1da0,009e1dd0,009e1e10	GFAXToVX,GFAYToVY,GFVXToAX	__fastcall	GFAXToVX,GFAYToVY,GFVXToAX	__fastcall	00/49/CSubtitleRenderer_ProcessEmbeddedHighlightTags_00491ad2.cpp
+0057b43f	009e1e10,009e1e40	GFVXToAX,GFVYToAY	FABLE_FASTCALL	GFVXToAX,GFVYToAY	FABLE_FASTCALL	00/57/CTCHeroStats_RenderHeroDrunkenness_0057b43f.cpp
+005bcafe	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/5b/NInventoryCTCInventoryBase_Draw2DText_005bcafe.cpp
+0061ad60	009e1dd0	GFAYToVY		GFAYToVY		00/61/CTCInventoryQuests_DrawActiveTestQuests_0061ad60.cpp
+00637c80	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	FABLE_FASTCALL	GFAXToVX,GFAYToVY	FABLE_FASTCALL	00/63/NThingMapCThingMapManager_DebugDraw_00637c80.cpp
+00647ab4	009e1da0,009e1dd0	GFAXToVX,GFAYToVY		GFAXToVX,GFAYToVY		00/64/NPlayerGuiCDrawHealth_Draw_00647ab4.cpp
+00648820	009e1da0,009e1dd0	GFAXToVX,GFAYToVY		GFAXToVX,GFAYToVY		00/64/NPlayerGuiCDrawMiniMap_Draw_00648820.cpp
+006495a8	009e1da0	GFAXToVX	FABLE_FASTCALL	GFAXToVX	FABLE_FASTCALL	00/64/NPlayerGuiCDrawScreenFade_Draw_006495a8.cpp
+00646762	009e1da0	GFAXToVX		GFAXToVX		00/64/NPlayerGuiCStatBar_DrawStatBarOnLeft_00646762.cpp
+00646a46	009e1da0	GFAXToVX	__fastcall	GFAXToVX	__fastcall	00/64/NPlayerGuiCStatBar_DrawStatBoxWithText_00646a46.cpp
+006572a0	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/65/NPlayerGuiCDrawNPCName_Draw_006572a0.cpp
+00652fa4	009e1da0,009e1dd0	GFAXToVX,GFAYToVY		GFAXToVX,GFAYToVY		00/65/NPlayerGuiCDrawQuickAccessIcons_Draw_00652fa4.cpp
+0079d360	009e1e10,009e1e40	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/79/CTCBulletTime_CTCBulletTime_0079d360.cpp
+0079c880	009e1e10,009e1e40	GFVXToAX,GFVYToAY	FABLE_FASTCALL	GFVXToAX,GFVYToAY	FABLE_FASTCALL	00/79/CTCBulletTime_FrameUpdate_0079c880.cpp
+0079d7e0	009e1e10,009e1e40	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/79/CTCBulletTime_UnPause_0079d7e0.cpp
+009bcef0	009e1da0,009e1dd0					00/9b/CMovieSubtitles_GetCharWidthW_009bcef0.cpp
+009bce70	009e1da0,009e1dd0					00/9b/CXMVPlayer_GetCharWidthW_009bce70.cpp
+009bca20	009e1da0,009e1dd0	GFAXToVX,GFAYToVY		GFAXToVX,GFAYToVY		00/9b/global_DisplayCenteredText_009bca20.cpp
+009db700	009e1e10,009e1e40	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/9d/CRenderManager2D_AddText_009db700.cpp
+009dda50	009e1e10,009e1e40	GFAXToVX,GFAYToVY	__stdcall	GFVXToAX,GFVYToAY	__fastcall	00/9d/CRenderManager2D_Draw2DBoxColours_009dda50.cpp
+009de140	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/9d/CRenderManager2D_Draw2DBoxOutline_009de140.cpp
+009ddc60	009e1e10,009e1e40	GFVXToAX,GFVYToAY	FABLE_FASTCALL	GFVXToAX,GFVYToAY	FABLE_FASTCALL	00/9d/CRenderManager2D_Draw2DBoxWithZ_009ddc60.cpp
+009dca80	009e1e10,009e1e40	GFAXToVX_009e1e10,GFAYToVY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/9d/CRenderManager2D_Draw2DGraphic_009dca80.cpp
+009dd960	009e1e10,009e1e40	GFVXToAX,GFVYToAY	FABLE_FASTCALL	GFVXToAX,GFVYToAY	FABLE_FASTCALL	00/9d/CRenderManager2D_Draw2DLine_009dd960.cpp
+009dd210	009e1e10,009e1e40	GFAXToVX_009e1e10,GFAYToVY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/9d/CRenderManager2D_Draw2DScaledGraphic_009dd210.cpp
+009ddff0	009e1e10,009e1e40	GFAXToVX,GFAYToVY	__stdcall	GFVXToAX,GFVYToAY	__fastcall	00/9d/CRenderManager2D_Draw2DTriangle_009ddff0.cpp
+009de2a0	009e1da0,009e1dd0,009e1e10,009e1e40	GFAXToVX,GFAYToVY,GFVXToAX,GFVYToAY	__fastcall	GFAXToVX,GFAYToVY,GFVXToAX,GFVYToAY	__fastcall	00/9d/CRenderManager2D_DrawArc_009de2a0.cpp
+009e1da0	-	GFAXToVX	__fastcall	GFAXToVX	__fastcall	00/9e/Global_GFAXToVX_009e1da0.cpp
+009e2020	-	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/9e/global_GFABoxToVBox_009e2020.cpp
+009e20f0	-	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/9e/global_GFABoxToVBox_009e20f0.cpp
+009e21d0	-	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/9e/global_GFACoordToVCoord_009e21d0.cpp
+009e2240	-	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/9e/global_GFACoordToVCoord_009e2240.cpp
+009e1dd0	-	GFAYToVY	__fastcall	GFAYToVY	__fastcall	00/9e/global_GFAYToVY_009e1dd0.cpp
+009e1e70	-	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/9e/global_GFVBoxToABox_009e1e70.cpp
+009e1f50	-	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/9e/global_GFVBoxToABox_009e1f50.cpp
+009e22c0	-	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/9e/global_GFVCoordToACoord_009e22c0.cpp
+009e2330	-	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/9e/global_GFVCoordToACoord_009e2330.cpp
+009e1e10	-	GFVXToAX	__fastcall	GFVXToAX	__fastcall	00/9e/global_GFVXToAX_009e1e10.cpp
+009e1e40	-	GFVYToAY	__fastcall	GFVYToAY	__fastcall	00/9e/global_GFVYToAY_009e1e40.cpp
+009e23f0	-					00/9e/global_GFXToY_009e23f0.cpp
+00a0b560	-					00/a0/CRenderManagerCore_SetVWindow_00a0b560.cpp
+00b665e0	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/b6/CEngineSkyRenderer_GetEnvironmentMap_00b665e0.cpp
+00b64550	009e1e10,009e1e40	GFVXToAX,GFVYToAY	__fastcall	GFVXToAX,GFVYToAY	__fastcall	00/b6/CEngineSkyRenderer_RenderSunFlare_00b64550.cpp
+00b72180	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/b7/CEngineWaterRenderer_CreateDynamicTextures_00b72180.cpp
+00b7ad20	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/b7/CEngineWaterRenderer_SetRenderTargetToSurface_00b7ad20.cpp
+00bafa00	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/ba/CEnginePrimitiveManager2DSprites_RenderClockPrim_00bafa00.cpp
+00bb0970	009e1da0,009e1dd0	GFAXToVX,GFAYToVY	__fastcall	GFAXToVX,GFAYToVY	__fastcall	00/bb/CEnginePrimitiveManager2DSprites_RenderSpritePrim_00bb0970.cpp
+# consistency problems: 0

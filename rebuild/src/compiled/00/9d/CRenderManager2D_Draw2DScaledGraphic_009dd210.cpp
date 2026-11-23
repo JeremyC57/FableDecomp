@@ -2,7 +2,7 @@
 // Leaf: Draw2DScaledGraphic
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009DD210, length 860 bytes (ret 0x14); PDB
 // ?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z.
-// Callees: GFAXToVX 0x009E1E10 / GFAYToVY 0x009E1E40 (__fastcall, float on the stack), CGraphicInfo::GetFrame 0x009FF8D0,
+// Callees: GFVXToAX 0x009E1E10 / GFVYToAY 0x009E1E40 (__fastcall, float on the stack), CGraphicInfo::GetFrame 0x009FF8D0,
 // CGraphicFrameData::GetTextureQuadUVs 0x009FC810 (hidden result), CTexture::GetDimensions 0x009F9DB0 (hidden result),
 // CGraphicFrameData::Uninitialise 0x009FCBA0 and operator delete 0x00BFE9BC (the inline ~CGraphicFrame), Add2DTri
 // 0x009DC030 twice. Data: the corner orders {0,1,2,3} 0x0129B94C, {1,0,3,2} 0x0129B95C, {3,2,1,0} 0x0129B96C; 0.01f
@@ -104,8 +104,8 @@ class CGraphicDataBank { public:
     CRetailVector<CGraphicInfo> m_records;             // +0x1e0
     FABLE_FORCEINLINE const CGraphicInfo* Get(unsigned long index) const { return index < m_records.size() ? &m_records[index] : 0; }
 };
-float __fastcall GFAXToVX_009e1e10(float x);                    // 0x009E1E10
-float __fastcall GFAYToVY(float y);                    // 0x009E1E40
+float __fastcall GFVXToAX(float x);                    // 0x009E1E10
+float __fastcall GFVYToAY(float y);                    // 0x009E1E40
 extern const float BIGGEST_RHW_VERTEX_VALUE;                              // 0x0139652C (S_LDATA32 const float in both PDBs; the spelling engine/CTVertexRHWColSpecTex1.h declares)
 static const unsigned long s_CornerOrderNormal[4] = { 0, 1, 2, 3 };    // 0x0129B94C
 static const unsigned long s_CornerOrderFlipX[4]  = { 1, 0, 3, 2 };    // 0x0129B95C
@@ -142,13 +142,13 @@ bool CRenderManager2D::Draw2DScaledGraphic(const C2DBoxF& box, const CGraphicDat
     CTextureQuadUVs uvs;
     {
         float left = box.TLX;
-        v[0].X = GFAXToVX_009e1e10(left);
-        v[0].Y = GFAYToVY(box.TLY);
+        v[0].X = GFVXToAX(left);
+        v[0].Y = GFVYToAY(box.TLY);
         v[0].Diffuse = 0xffffffff;
-        v[2].X = v[1].X = GFAXToVX_009e1e10(box.BRX);
+        v[2].X = v[1].X = GFVXToAX(box.BRX);
         v[1].Y = v[0].Y;
         v[1].Diffuse = 0xffffffff;
-        v[3].Y = v[2].Y = GFAYToVY(box.BRY);
+        v[3].Y = v[2].Y = GFVYToAY(box.BRY);
         v[3].X = v[0].X;
         v[2].Diffuse = 0xffffffff;
         v[3].Diffuse = 0xffffffff;

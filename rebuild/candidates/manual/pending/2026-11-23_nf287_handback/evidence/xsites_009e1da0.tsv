@@ -1,0 +1,100 @@
+009e1da0	call	00404d7f	-
+009e1da0	call	00404da1	-
+009e1da0	call	0041aa73	0041a980L CSprite::DrawWithRenderManager
+009e1da0	call	0041aa8f	0041a980L CSprite::DrawWithRenderManager
+009e1da0	call	00437234	00437210L CFontBank::GetVStringExtents
+009e1da0	call	00437d94	-
+009e1da0	call	00437e15	-
+009e1da0	call	00437ec1	-
+009e1da0	call	00438afe	00438aa0L CPlayerGui::AddScreenMessage
+009e1da0	call	0043e4f4	0043e4d0L CFontBank::GetVStringWidth
+009e1da0	call	00487658	00487570L CPlayer::DrawFreeCamDebug
+009e1da0	call	0048f63a	0048f50cL CSubtitleRenderer::FormatTextForVWindow
+009e1da0	call	0048f64f	0048f50cL CSubtitleRenderer::FormatTextForVWindow
+009e1da0	call	0048fbde	-
+009e1da0	call	0048fbf0	-
+009e1da0	call	0048fc04	-
+009e1da0	call	0048fc25	-
+009e1da0	call	0048fc40	-
+009e1da0	call	0048fe06	-
+009e1da0	call	0048fe1b	-
+009e1da0	call	0048fe4c	-
+009e1da0	call	0048ffec	-
+009e1da0	call	00490025	-
+009e1da0	call	00490034	-
+009e1da0	call	0049006b	-
+009e1da0	call	00490098	-
+009e1da0	call	004900ad	-
+009e1da0	call	004901ff	-
+009e1da0	call	0049023f	-
+009e1da0	call	00491e56	00491ad2L CSubtitleRenderer::ProcessEmbeddedHighlightTags
+009e1da0	call	00491e87	00491ad2L CSubtitleRenderer::ProcessEmbeddedHighlightTags
+009e1da0	call	004925d0	00492381L CSubtitleRenderer::ProcessEmbeddedGraphicTags
+009e1da0	call	00492601	00492381L CSubtitleRenderer::ProcessEmbeddedGraphicTags
+009e1da0	call	0049811e	00497fd0L CProgressDisplay::DisplayCenteredText
+009e1da0	call	0049817e	00497fd0L CProgressDisplay::DisplayCenteredText
+009e1da0	call	00498215	00497fd0L CProgressDisplay::DisplayCenteredText
+009e1da0	call	004982a8	00497fd0L CProgressDisplay::DisplayCenteredText
+009e1da0	call	0049845b	00498410L CProgressDisplay::GetCharWidthW
+009e1da0	call	00498663	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	0049867d	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	004986f8	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498774	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	004987f4	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	0049880b	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	0049888b	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	0049890b	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498a12	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498a26	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498a63	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498b3c	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498b5c	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498c51	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498c71	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498d65	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498d96	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498eee	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00498f20	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	0049906c	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00499080	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	00499107	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	004991e5	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	0049922b	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	0049927a	00498490L CProgressDisplay::DrawRetailDisplay
+009e1da0	call	005bcb1c	005bcafeL NInventory::CTCInventoryBase::Draw2DText
+009e1da0	call	00637ceb	00637c80L NThingMap::CThingMapManager::DebugDraw
+009e1da0	call	00637d36	00637c80L NThingMap::CThingMapManager::DebugDraw
+009e1da0	call	00639fd7	-
+009e1da0	call	0063a0a9	-
+009e1da0	call	0063a157	-
+009e1da0	call	0064697e	00646762L NPlayerGui::CStatBar::DrawStatBarOnLeft
+009e1da0	call	00646ab9	00646a46L NPlayerGui::CStatBar::DrawStatBoxWithText
+009e1da0	call	00647ed3	00647ab4L NPlayerGui::CDrawHealth::Draw
+009e1da0	call	00649547	00648820L NPlayerGui::CDrawMiniMap::Draw
+009e1da0	call	006496d6	006495a8L NPlayerGui::CDrawScreenFade::Draw
+009e1da0	call	006496ee	006495a8L NPlayerGui::CDrawScreenFade::Draw
+009e1da0	call	0065383d	00652fa4L NPlayerGui::CDrawQuickAccessIcons::Draw
+009e1da0	call	0065385b	00652fa4L NPlayerGui::CDrawQuickAccessIcons::Draw
+009e1da0	call	00653870	00652fa4L NPlayerGui::CDrawQuickAccessIcons::Draw
+009e1da0	call	00653deb	00652fa4L NPlayerGui::CDrawQuickAccessIcons::Draw
+009e1da0	call	00657349	006572a0L NPlayerGui::CDrawNPCName::Draw
+009e1da0	call	00657429	006572a0L NPlayerGui::CDrawNPCName::Draw
+009e1da0	call	009bcb6c	009bca20L _global::DisplayCenteredText
+009e1da0	call	009bcbcc	009bca20L _global::DisplayCenteredText
+009e1da0	call	009bcc6c	009bca20L _global::DisplayCenteredText
+009e1da0	call	009bcd08	009bca20L _global::DisplayCenteredText
+009e1da0	call	009bcebb	009bce70L CXMVPlayer::GetCharWidthW
+009e1da0	call	009bcf3b	009bcef0L CMovieSubtitles::GetCharWidthW
+009e1da0	call	009de168	009de140L CRenderManager2D::Draw2DBoxOutline
+009e1da0	call	009de367	009de2a0L CRenderManager2D::DrawArc
+009e1da0	call	009de3a5	009de2a0L CRenderManager2D::DrawArc
+009e1da0	call	00b6670a	00b665e0L CEngineSkyRenderer::GetEnvironmentMap
+009e1da0	call	00b72e07	00b72180L CEngineWaterRenderer::CreateDynamicTextures
+009e1da0	call	00b731e1	00b72180L CEngineWaterRenderer::CreateDynamicTextures
+009e1da0	call	00b733ed	00b72180L CEngineWaterRenderer::CreateDynamicTextures
+009e1da0	call	00b735a5	00b72180L CEngineWaterRenderer::CreateDynamicTextures
+009e1da0	call	00b7ad93	00b7ad20L CEngineWaterRenderer::SetRenderTargetToSurface
+009e1da0	call	00bb090e	00bafa00L CEnginePrimitiveManager2DSprites::RenderClockPrim
+009e1da0	call	00bb0926	00bafa00L CEnginePrimitiveManager2DSprites::RenderClockPrim
+009e1da0	call	00bb158d	00bb0970L CEnginePrimitiveManager2DSprites::RenderSpritePrim
+009e1da0	call	00bb15a7	00bb0970L CEnginePrimitiveManager2DSprites::RenderSpritePrim

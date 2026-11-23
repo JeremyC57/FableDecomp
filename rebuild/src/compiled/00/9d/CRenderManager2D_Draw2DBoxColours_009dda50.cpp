@@ -2,7 +2,7 @@
 // Leaf: Draw2DBoxColours
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009DDA50, length 515 bytes (ret 0xC); PDB
 // ?Draw2DBoxColours@CRenderManager2D@@QAE_NABVC2DBoxF@@QBVCRGBColour@@K@Z.
-// Callees: GFAXToVX 0x009E1E10 / GFAYToVY 0x009E1E40 (__stdcall float), the screen RHW float 0x0139652C,
+// Callees: GFVXToAX 0x009E1E10 / GFVYToAY 0x009E1E40 (__fastcall float), the screen RHW float 0x0139652C,
 // CRenderManager2D::Add2DTri 0x009DC030 (v0, v1, v2, mode, texture) twice.
 // Shape: the landed Draw2DTriangle 0x009DDFF0 for a quad: the four ARGB words packed first (the last one lands in the
 // dead colours argument slot), the four box edges converted in TLX, TLY, BRX, BRY order, then the vertex array
@@ -21,8 +21,8 @@ class CTVertexRHWColSpecTex1 { public:
     unsigned long Specular;
     float U, V;
 };
-float __stdcall GFAXToVX(float x);                 // 0x009E1E10
-float __stdcall GFAYToVY(float y);                 // 0x009E1E40
+float __fastcall GFVXToAX(float x);                 // 0x009E1E10
+float __fastcall GFVYToAY(float y);                 // 0x009E1E40
 extern const float BIGGEST_RHW_VERTEX_VALUE;                          // 0x0139652C (S_LDATA32 const float in both PDBs; the spelling engine/CTVertexRHWColSpecTex1.h declares)
 
 struct CRenderManager2D {
@@ -39,10 +39,10 @@ bool CRenderManager2D::Draw2DBoxColours(const C2DBoxF& box, const CRGBColour col
     argb[2] = colours[2].GetARGB();
     argb[3] = colours[3].GetARGB();
     float left = box.TLX;
-    left = GFAXToVX(left);
-    float top = GFAYToVY(box.TLY);
-    float right = GFAXToVX(box.BRX);
-    float bottom = GFAYToVY(box.BRY);
+    left = GFVXToAX(left);
+    float top = GFVYToAY(box.TLY);
+    float right = GFVXToAX(box.BRX);
+    float bottom = GFVYToAY(box.BRY);
     CTVertexRHWColSpecTex1 v[4];
     v[0].U = 0.0f;
     v[0].V = 0.0f;

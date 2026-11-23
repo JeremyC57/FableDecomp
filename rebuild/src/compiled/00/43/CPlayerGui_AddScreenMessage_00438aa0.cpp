@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00438AA0, length 528 bytes, `ret 4`.
 // Callees: CDisplayManager::GetVVisibleTelevisionScreenArea 0x009BECE0 (g_pDisplayManager 0x013B8390, hidden result),
 // the lazily loaded "PLAYER_GUI_PC" def (CCharString 0x0099EBF0, CGameDefinitionManager::Get 0x0044C6B0, GetDef<T>
-// 0x0043FF30, ~CCharString 0x0099EAE0; global 0x013B878C), GFVXToAX 0x009E1DA0 (__stdcall float; virtual-to-absolute X `K * x / width`, the inverse of the landed GFAXToVX 0x009E1E10, Ego_r.pdb ?GFVXToAX@@YIMM@Z pairs with ?GFVYToAY at 0x009E1DD0), the font bank's
+// 0x0043FF30, ~CCharString 0x0099EAE0; global 0x013B878C), GFAXToVX 0x009E1DA0 (__fastcall float, the float on the stack; actual-to-virtual X `K * x / width`, Ego_r / FableWin ?GFAXToVX@@YIMM@Z, the first of GFAXToVX / GFAYToVY / GFVXToAX / GFVYToAY = 0x009E1DA0 / 0x009E1DD0 / 0x009E1E10 / 0x009E1E40), the font bank's
 // GetFont 0x009E2C80 (bank 0x013B838C, CCountedPointer by hidden pointer; count-block destroy +4 and operator delete
 // 0x00BFE9BC), CWideString() 0x0099AED0 / (const CWideString&) 0x0099B720 / ~CWideString 0x0099B510,
 // CPlayerGui::FormatStringForArea 0x00437D10 (static __fastcall), __ftol2 0x00BFEA70, NPlayerGui::CScreenMessage ctor
@@ -37,7 +37,7 @@ class CDisplayManager { public:
     C2DBoxF GetVVisibleTelevisionScreenArea() const;        // 0x009BECE0
 };
 extern CDisplayManager* GPDisplayManager;                  // 0x013B8390
-float __stdcall GFVXToAX(float x);                          // 0x009E1DA0
+float __fastcall GFAXToVX(float x);                          // 0x009E1DA0
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -116,7 +116,7 @@ class CPlayerGui { public:
 void CPlayerGui::AddScreenMessage(const CWideString& text)
 {
     C2DBoxF area = GPDisplayManager->GetVVisibleTelevisionScreenArea();
-    float margin = GFVXToAX(GetPlayerGuiDef()->MessageLeftMargin);
+    float margin = GFAXToVX(GetPlayerGuiDef()->MessageLeftMargin);
     if (area.TLX < margin)
         area.TLX = margin;
     CFontBank* font = PFontManager->GetFont(GetPlayerGuiDef()->MessageFont).Data;

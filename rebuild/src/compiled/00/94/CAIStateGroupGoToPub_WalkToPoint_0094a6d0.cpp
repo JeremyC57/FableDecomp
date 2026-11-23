@@ -10,8 +10,8 @@
 // Layout: engine/CAIStateGroupBase.h (PBrain +4) + Ego_r.pdb CAIStateGroup_GoToPub PPub +0x14, PBar +0x1C
 //          (CIntelligentPointer); CRightHandedSet Up +0, Forward +0xC.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_LOOKATPOS   // NF287: the protected base member 0x0097D580 (declaration only)
 #include "engine/CAIStateGroupBase.h"
-
 class CThing;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
@@ -63,7 +63,7 @@ struct CAIStateGroupGoToPubMethods : CAIStateGroupBase {
     CThing* GetCreature() const { return PBrain->PCreature; }
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool* reached, EMovementType movement,
         bool a, bool b, CThing* avoid, bool c, float speed);   // 0x0097EC00
-    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long lookFlags, float tolerance);   // 0x0097D580
+    // AIAction_LookAtPos 0x0097D580: the protected CAIStateGroupBase member (header opt-in above; Ego_r + FableWin IAE spelling)
     void FreeBarPoint();                        // 0x00949320
     bool WalkToPoint(const C3DVector& pos, const CRightHandedSet& rhSet);
 };

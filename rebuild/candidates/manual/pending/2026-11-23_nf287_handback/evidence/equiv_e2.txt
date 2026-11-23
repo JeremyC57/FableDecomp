@@ -1,0 +1,8 @@
+# equiv_check engine/CAIStateGroupBase.h (repo tree v symlink farm work/eqtree_e2 = repo + NF287 overlay; S=$A/pE)
+# addr-file (tools/incl.py): the header's transitive landed includers (111 headers) plus every row including a relative path: 1970 rows
+differing: 0
+# control (work/ctl_e2: a typedef planted at the top of the flat branch, outside the opt-in), same rows: differing 82 (first lines):
+008fcfd0	test	DIFF
+008fcff0	src	DIFF
+008fcff0	test	DIFF
+0095aa00	src	DIFF

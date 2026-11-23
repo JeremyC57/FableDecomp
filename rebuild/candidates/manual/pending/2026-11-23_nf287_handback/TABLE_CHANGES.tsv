@@ -1,0 +1,47 @@
+action	symbol	target	witness	note
+delete	?GFAYToVY@@YGMM@Z	009e1e40	009dda50	both binders (0x009dda50, 0x009ddff0) respelled by NF287; ?GFVYToAY@@YIMM@Z 009e1e40 exists (witness 0048dbc3 / 0048f40a)
+delete	?GFVYToAY@@YGMM@Z	009e1e40	0048f230	sole binder 0x0048f230 respelled by NF287
+delete	?GFAXToVX@@YGMM@Z	009e1e10	009dda50	both binders (0x009dda50, 0x009ddff0) respelled by NF287 (outside ENTRIES); ?GFVXToAX@@YIMM@Z 009e1e10 exists
+delete	?GFAXToVX_009e1e10@@YIMM@Z	009e1e10	009dca80	both binders (0x009dca80, 0x009dd210) respelled by NF287 (outside ENTRIES)
+delete	?GFVXToAX_009e1e10@@YGMM@Z	009e1e10	0048f230	sole binder 0x0048f230 respelled by NF287 (outside ENTRIES)
+delete	?AIAction_LookAtPos@CAIStateGroupGoToPubMethods@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z	0097d580	0094a6d0	sole binder 0x0094a6d0 respelled by NF287 (flat-view opt-in); the PDB line exists (witness 0093b1d0)
+delete	?WriteEBOOL@CDataOutputStream_Methods@@QAEX_N@Z	00993e30	00b17f70	stale: the witness 0x00b17f70 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv)
+delete	?WriteULong@CDataOutputStream_Methods@@QAEXK@Z	00993ea0	00b17f70	stale: the witness 0x00b17f70 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv)
+delete	??0CElement8_00654daf@@QAE@ABU0@@Z	00654daf	00654e90	stale: the witness 0x00654e90 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv)
+delete	?GetInstance@CFrontEndManager_00404c00@@SIPAU1@XZ	0041e5f2	00404c00	stale: the witness 0x00404c00 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv)
+delete	?GetInstance_0041e5f2@@YIPAUCFrontEndManager@@XZ	0041e5f2	00557bd0	stale: the witness 0x00557bd0 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv)
+delete	??0CClass_004ebba3@@QAE@XZ	004ebba3	004ec526	stale: the witness 0x004ec526 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	??0CObjectAugmentationsDef@@QAE@XZ	004ebba3	004ec526	the witness binds it at HEAD (stale_objbind.tsv)
+delete	??0CClass_00455eac@@QAE@XZ	00455eac	0045c5ab	stale: the witness 0x0045c5ab HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	??0CSoundThemeDef@@QAE@XZ	00455eac	0045c5ab	the witness binds it at HEAD (stale_objbind.tsv)
+delete	??0CClass_004d4c3e@@QAE@XZ	004d4c3e	004d885e	stale: the witness 0x004d885e HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	??0CSummonableCreatureDef@@QAE@XZ	004d4c3e	004d885e	the witness binds it at HEAD (stale_objbind.tsv)
+delete	?vfunc_42@CTCInventoryBase_Retail@@QAEMXZ	005bd404	0061a0e0	stale: the witness 0x0061a0e0 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	?GetInitialCategoryRepeatDelay@CTCInventoryBase@NInventory@@UBEMXZ	005bd404	0061a0e0	the witness binds it at HEAD (stale_objbind.tsv)
+delete	?vfunc_43@CTCInventoryBase_Retail@@QAEMXZ	005bd427	0061a100	stale: the witness 0x0061a100 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	?GetContinuedCategoryRepeatDelay@CTCInventoryBase@NInventory@@UBEMXZ	005bd427	0061a100	the witness binds it at HEAD (stale_objbind.tsv)
+delete	?HighlightNextItem@CTCInventoryBase_Retail@@QAEXXZ	005bdcb4	005bddb8	stale: the witness 0x005bddb8 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	?HighlightNextItem@CTCInventoryBase@NInventory@@QAEXXZ	005bdcb4	005bddb8	the witness binds it at HEAD (stale_objbind.tsv)
+delete	?HighlightPreviousItem@CTCInventoryBase_Retail@@QAEXXZ	005bdcdc	005bdd8c	stale: the witness 0x005bdd8c HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	?HighlightPreviousItem@CTCInventoryBase@NInventory@@QAEXXZ	005bdcdc	005bdd8c	the witness binds it at HEAD (stale_objbind.tsv)
+delete	??0CClass_004e1195@@QAE@XZ	004e1195	004e2db2	stale: the witness 0x004e2db2 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	??0CTavernGameCardBaseDef@@QAE@XZ	004e1195	004e2db2	the witness binds it at HEAD (stale_objbind.tsv)
+delete	??0CClass_00e2ab60@@QAE@PAX0@Z	00e2ab60	00e322c0	stale: the witness 0x00e322c0 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv)
+delete	??0CClass_00e54310@@QAE@PAX0@Z	00e54310	00e57a50	stale: the witness 0x00e57a50 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv)
+delete	??0CClass_00e62830@@QAE@PAX0@Z	00e62830	00e68e60	stale: the witness 0x00e68e60 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv)
+delete	??0CClass_00eae910@@QAE@PAX0@Z	00eae910	00eb6a60	stale: the witness 0x00eb6a60 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv)
+delete	??0CClass_004525b3@@QAE@XZ	004525b3	00453ae0	stale: the witness 0x00453ae0 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	??0CVillagePeopleDef@@QAE@XZ	004525b3	00453ae0	the witness binds it at HEAD (stale_objbind.tsv)
+delete	?SerialiseMapBinaryIn_004e5a76@@YIXPAUCDefMap_004e59e1@@PAX@Z	004e5a76	004e59e1	stale: the witness 0x004e59e1 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	??$GFSerialiseMapBinaryIn@JVCDefString@@V?$CCompareDefString@J@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@VCDefString@@JV?$CCompareDefString@J@@V?$allocator@U?$pair@$$CBVCDefString@@J@std@@@std@@@std@@@Z	004e5a76	004e59e1	the witness binds it at HEAD (stale_objbind.tsv)
+delete	?h_005dc1f0@@YGPAUAT@@PAPAU1@@Z	005e0300	005dc1f0	stale: the witness 0x005dc1f0 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	??$GetComponent@VCAnimComponentDelayTime@@@CAnimationEntry@@QBEXPAPBVCAnimComponentDelayTime@@@Z	005e0300	005dc1f0	the witness binds it at HEAD (stale_objbind.tsv)
+delete	?CameraBlockTest_00874ee0@@YI_NPAUCWorldMap@@PBUC3DVector@@1_N@Z	00874ee0	008754a0	stale: the witness 0x008754a0 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	?IsThemeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z	00874ee0	008754a0	the witness binds it at HEAD (stale_objbind.tsv)
+delete	?CameraBlockTest_00874f10@@YI_NPAUCWorldMap@@PBUC3DVector@@1_N@Z	00874f10	008754a0	stale: the witness 0x008754a0 HEAD object references the PDB spelling, not this one (evidence/stale_objbind.tsv); no landed source names the stand-in in code (evidence/stale_codegrep.tsv); add the PDB line
+add	?IsThemeToBlockPassabilityBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z	00874f10	008754a0	the witness binds it at HEAD (stale_objbind.tsv)
+replace	?GetLevelsDirectory_0041a410@@YI?AVCWideString@@XZ -> ?GetStaticMapDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a410	0049d550	all four binders respelled by NF287; no PDB line existed
+replace	?WriteVectors_00ae18c0@@YIXPBVC4DVector@@KAAVCDataOutputStream@@@Z -> ?WriteVectorArray@CParticleSimulation@@KIXPBVC4DVector@@KAAVCDataOutputStream@@@Z	00ae18c0	00ae2050	both binders respelled by NF287; no PDB line existed
+delete	?AddMode@CPlayer_Methods@@QAEXJ_N@Z	006345c0	00487bd0	stale: the witness HEAD object references the PDB spelling (evidence/stale_objbind2.tsv); no landed row declares a J-typed AddMode
+delete	?GetInventoryItemDef@CItem_Methods@@QAE?AUCIVCountedPointer_Def@@XZ	005bd82e	005bd931	stale: the witness HEAD object references the PDB spelling (evidence/stale_objbind2.tsv)
+replace	?AllocateParticleMemory_00af8b00@@YIPAXI@Z -> ??2CDecal@NParticleEngine@@SIPAXI@Z	00af8b00	00af5380	sole binder 0x00af5380 respelled by NF287 [conditional on decision 3]
