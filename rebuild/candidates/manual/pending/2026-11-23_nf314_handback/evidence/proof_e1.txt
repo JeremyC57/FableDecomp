@@ -1,0 +1,4 @@
+##### 00a91640 renames: ?AddTriangleList@CDeviceIndependent@N3DPrimitive@@QAEXABVC3DMeshFileTrianglesChunk@@@Z=?AddTriangleList@CDeviceIndependent@N3DPrimitive@@AAEXABVC3DMeshFileTrianglesChunk@@@Z
+sections head 238 new 238
+ALL_EQ text_sections_equal=226
+tables H=0 N=0

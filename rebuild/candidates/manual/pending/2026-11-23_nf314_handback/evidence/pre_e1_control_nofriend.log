@@ -1,0 +1,3 @@
+/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF314/rows/00a91640.cpp:121:15: error: 'AddTriangleList' is a private member of 'N3DPrimitive::CDeviceIndependent'
+/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF314/rows/00a91640.cpp:176:19: error: 'AddTriangleList' is a private member of 'N3DPrimitive::CDeviceIndependent'
+2 errors generated.

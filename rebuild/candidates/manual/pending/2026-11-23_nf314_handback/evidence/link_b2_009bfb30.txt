@@ -1,0 +1,8 @@
+## HEAD set: H_009bfb30.obj H_009bebb0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetDepthBufferFormat@CDisplayManager@@QAE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z
+## new set: N_009bfb30.obj H_009bebb0.obj
+duplicates 0
+
+LK_DONE

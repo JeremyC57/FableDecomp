@@ -1,0 +1,9 @@
+## HEAD set: H_00692b30.obj H_006655a0.obj H_004c7ab0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetWorld@CThing@@QAEPAVCWorld@@XZ
+UNRESOLVED 1 ?GetWorld@CThing@@QBEPAVCWorld@@XZ
+## new set: N_00692b30.obj N_006655a0.obj H_004c7ab0.obj
+duplicates 0
+
+LK_DONE

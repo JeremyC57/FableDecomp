@@ -1840,3 +1840,35 @@ nf312	0x006689E0	pick-any scaffolding	the strong OverlappingSphere self 0x006689
 nf312	0x008ED590	shared-header fix	rebuild/include/candidates/object_family_compiled.h:21 gives GFROR13 an unsigned spelling the PDB does not (NF312); 0x008ED590 grades DIFFER(141v166) on the linux lane at HEAD: check that row's grade and the header line together
 nf316	0x00AD89B0	port	no longer tied (NF311 landed); binder 0x00AD9D70 opened: it passes the stand-in structs CRemainderArray / CBoolArray (local models of CArray<unsigned long> / CArray<bool>, in neither PDB name set) for the PDB CArray parameters: a port (stand-in parameter types)
 nf316	0x007510D0	port	no longer tied (NF309 / NF311 landed); binder 0x00750BE0 opened: it calls through the stand-in class CThingDefClass (neither PDB name set) and carries a same-TU stand-in body of CThingBaseDef::GetSubDef over a made-up Find_CThingBaseDef_GetSubDef: a port
+nf314	0x004C79F0	port	0x0083C690 (a CEventTriggered member) binds a public pointer-return CThing::GetPlayerManager for the protected PeekPlayerManager const-reference: name + signature + access from a non-member (nf311 0x004C7A00 judged the same binder a port); 0x006A9D10 / 0x0082D1D0 bind the wrong class.
+nf314	0x00661D20	port	0x006CDA00 is a stand-in body (CGroundNavigatorExternalInterface_Methods calls Run() for GetNavigationLevelAt); 0x006EA770 is a T3 row; 0x0093DB10 binds the wrong class.
+nf314	0x00A24A80	port	the self 0x00A24A80 defines the QAE stand-in (plain Leaf); its const fix needs mutable / const_cast (it assigns MeshData and passes this to a non-const C3DMeshLODInfo ctor): T3 (NF309 Q3 / NF305 Q1). A binder-only const respell of 0x00A25530 would leave unresolved what HEAD resolves (the self). NAME_FIXES. (0x00A25530's own GetMeshStats is also non-const for the PDB QBE.)
+nf314	0x008FCF80	port (census)	census (tools/census309.py, NF299 Q4): 00935160:NOTPDB.
+nf314	0x009CC190	port (census)	census: all WRONGCLS (0x00A42830 T3).
+nf314	0x00692BC0	port (census)	census: WRONGCLS, T3 row.
+nf314	0x00692C10	port (census)	census: WRONGCLS.
+nf314	0x00996390	port (census)	census: WRONGCLS.
+nf314	0x00669300	port (census)	census: FREE stand-in (T3-mentioned).
+nf314	0x00811190	port (census)	census: FREE stand-in (T3-mentioned).
+nf314	0x007A1380	port (census)	census: WRONGCLS.
+nf314	0x00A47D10	port (census)	census: FREE stand-in, T3 row.
+nf314	0x00B103F0	port (census)	census: FREE stand-in, T3 row.
+nf314	0x00AFB7C0	port (census)	census: FREE stand-in, T3 row.
+nf314	0x00AE85B0	port (census)	census: WRONGCLS, T3 row.
+nf314	0x00438570	port (census)	census: all FREE stand-ins. Opened by NF314 (HDR_HIT): 0x006448A4 / 0x0064F6DC return stand-in structs (PlayerGuiDefNative / GuiOracleDefView); 0x00439E00 / 0x005BEB57 / 0x0064FC23 (T3-mentioned) declare a free PeekGuiDef where the PDB has the static member CPlayerGui::PeekGuiDef returning const CPlayerGuiDef& (free -> member: port, NF299 Q4).
+nf314	0x009FBF20	port (census)	census: NOTPDB. Opened by NF314 (HDR_HIT): 0x009FE380 binds through the stand-in CResourceNative (an NF313 witness); 0x00A26290 is an OP::h2 stand-in (T3-mentioned); 0x00B2AFD0 the stand-in CCompositeSurfaceCache_Retail: ports.
+nf314	0x004C7AA0	port (census)	census: FREE / WRONGCLS (T3 and T3-mentioned).
+nf314	0x0099EBF0	port (census)	census: every non-PDB line binds a stand-in (InitGuard ctor, GAN<addr> classes); the census OPEN verdict was a parse artefact of the ??0 ctor scope. Opened (NF299 Q4 sample).
+nf314	0x00BF8C10	port	0x00BF8030 calls a named ScalarDeletingDestructor stand-in method; ??_G is compiler-emitted, so no member spelling binds it: a port of the call shape.
+nf314	0x00686830	port	decision Q4: `virtual ~CTCBase` on the local base (vptr pad removed) makes ~CTCKraken virtual (UAE, the PDB spelling) but the TU then stores its vptr and emits ??_7CTCKraken@@6B@: a vtable appears, so stopped (work/reverted/004e1437.cpp). Others: T3 rows / stand-ins.
+nf314	0x0082D2D0	port	0x0065F056 binds a stand-in def type; 0x009167F0 another name and def type; 0x00917A10 needs const plus CDefPointer<const CSimBuildingDef> (a template-argument type change of its local: port); 0x007F50B0 another name / type.
+nf314	0x006B93D0	port (census)	census: NOTPDB stand-in classes; the self QAE -> QBE needs const on same-TU stand-ins (NF309 Q3: T3). Opened (NF299 Q4 sample).
+nf314	0x00717950	port	0x00717AA0: re-scoping the local base into NTCScriptedControl (protected, CThing&) renames the TU's pick-any implicit base dtor to ??1CActionTalkBase@NTCScriptedControl@@QAE@XZ, not the PDB UAE dtor (NF307 D1); reverted (work/reverted/00717aa0.cpp). 0x00717D40 models a stand-in NTCScriptedControl::CThing.
+nf314	0x0099E960	port (census)	census: stand-in classes CCharStringCmp / Str / CCharStringMethods. Opened (NF299 Q4 sample).
+nf314	0x00697E20	port	0x00698D10 binds a stand-in parameter struct; 0x00699970 is an NF313 witness; 0x0069E3D0 the wrong class.
+nf314	0x00F08590	port	both bind the stand-in parameter struct CScriptThingRuntime (one also the wrong scope).
+nf314	0x009D2110	port	stand-ins (CFilenameVector, a free CInner_dtor, CSmallFilenameVector); census SAMECLS was a parse artefact.
+nf314	0x004E1437	port	NF314 entry 66: a virtual ~CTCBase in the local model makes the row emit the CTCKraken vtable (DIFFER 94v88)
+nf314	0x008C52C0	port	NF314 entry 76: the fix changes the CCreatureAction_WaspQueenDie vtable the row emits
+nf314	0x00717AA0	port	NF314 entry 73: the namespace re-scope renames an implicit base destructor onto a non-PDB spelling (NF307 D1)
+nf314	0x00861E00	in-place unit (self + 23 binders)	NF314 Q3: the self defines the pointer-form CModeStandBase ctor and 23 landed rows bind it (pending/2026-11-23_nf314_handback/evidence/e61_pav_binders.txt): one NF304 Q6 unit

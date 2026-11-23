@@ -1,0 +1,32 @@
+??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ	target=005cc091	own_def=0	other_defs=0
+??1CVertexShaderConstantLayout@@UAE@XZ	target=0098d710	own_def=0	other_defs=0
+??4CParentDefClassBase@@QAEAAV0@ABV0@@Z	target=00431ed0	own_def=0	other_defs=0
+?AddTriangleList@CDeviceIndependent@N3DPrimitive@@AAEXABVC3DMeshFileTrianglesChunk@@@Z	target=00a90900	own_def=1	other_defs=0
+?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z	target=009e5170	own_def=2	other_defs=0
+?Get@?$CTBaseSingleton@VCEngineManager@@@@SIAAVCEngineManager@@XZ	target=00436fb0	own_def=0	other_defs=2
+    OTHER 00/64/CEngineManager_AddChangedArea_00640560.cpp:5 CTBaseSingleton<CEngineManager>::Get()` 0x00436FB0 then this). Catalog label "std_vector_push_back" is // the 
+    OTHER 00/40/CTBaseSingletonCFileInstaller_Get_00404440.cpp:36 CTBaseSingleton<T>::Get() {
+?Get@CGameJoystickManager@@SIAAV1@XZ	target=0049bb90	own_def=1	other_defs=0
+?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	target=005dc340	own_def=1	other_defs=0
+?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z	target=00662a00	own_def=1	other_defs=2
+    OTHER 00/8e/NCreatureModeCModeStrafe_SetUpCombinationAnims_008e9190.cpp:7 CThingCreatureBase::GetAnimFromName(const CCharString&, long) 0x00662A00, operator new 0x00BFEA1A, //   CAnimE
+    OTHER 00/66/CThingCreatureBase_GetAnimFromName_00662b10.cpp:42 CThingCreatureBase::GetAnimFromName(const CCharString& name, const CAnimFilterBase& filter, long index) const 
+?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ	target=0070b460	own_def=0	other_defs=0
+?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z	target=009bebb0	own_def=1	other_defs=0
+?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	target=00666d10	own_def=0	other_defs=0
+?OnAnimationLoaded@CCombatActionBase@@MAEXXZ	target=00859ef0	own_def=1	other_defs=0
+?OnAnimationLoaded@CCreatureAction_UndeadRiseUp@@UAEXXZ	target=008ec260	own_def=1	other_defs=0
+?OnNoBoastsRemain@CTCBoastingCrowdControl@@QAEXXZ	target=00783680	own_def=1	other_defs=0
+?PeekWorld@CThing@@IBEABVCWorld@@XZ	target=004c7ab0	own_def=1	other_defs=0
+?PushCurrentManualMode@CGameCameraManager@@QAEXXZ	target=006988b0	own_def=1	other_defs=0
+?RemoveMessageEventsAdded@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAEXXZ	target=00939dd0	own_def=1	other_defs=0
+?ResizeWindowToBackBufferSize@CDisplayManager@@QAEXXZ	target=009be490	own_def=1	other_defs=0
+?Terminate@CAIStateGroupBase@@QAEXXZ	target=008fcf40	own_def=1	other_defs=1
+    OTHER 00/91/CAIStateGroupBirdStartled_Update_00914600.cpp:11 CAIStateGroupBase::Terminate() 0x008FCF40. // Shape: the landed twin CAIStateGroup_SmallBirdWander::Update (0x
+# NF314 manual supplement (namecensus.py cannot parse ??1 / ??4 names):
+#   ??1CVertexShaderConstantLayout@@UAE@XZ: one definition, the self row 00/98/CVertexShaderConstantLayout_CVertexShaderConstantLayout_0098d710.cpp.
+#   ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z: no out-of-line definition in a landed row other than the self 0x00431ED0 (defining-line grep);
+#     engine/CParentDefClassBase.h declares it (line 69) and has a FORCEINLINE body only under its chunk-783 opt-in.
+#   ??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ: no landed definition (the self defines the CAggregate_005cc091 stand-in).
+# OTHER hits above read: 00640560 / 00914600 / 008e9190 are comments; 00404440 is the CTBaseSingleton<T>::Get template body of its own TU
+#   (T = CFileInstaller); 00662b10 is the 3-argument GetAnimFromName overload. No conflicting same-named body.

@@ -1,0 +1,8 @@
+## HEAD set: H_009c1050.obj H_009be490.obj
+duplicates 0
+
+UNRESOLVED 1 ?InitialiseDeviceState@CDisplayManager@@QAEXXZ
+## new set: N_009c1050.obj H_009be490.obj
+duplicates 0
+
+LK_DONE

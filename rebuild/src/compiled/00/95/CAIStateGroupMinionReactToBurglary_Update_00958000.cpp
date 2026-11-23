@@ -60,7 +60,7 @@ class CAIStateGroupBase { public:
 protected:
     EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z) (EAIActionReturn)
 public:
-    void FinishUpdate();                            // 0x008FCF40
+    void Terminate();                               // 0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ (Ego_r / FableWin; the donor Update calls it)
 };
 
 struct CAIStateGroup_MinionReactToBurglary : CAIStateGroupBase {
@@ -73,5 +73,5 @@ void CAIStateGroup_MinionReactToBurglary::Update()
     AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PBurglar, 0x23, 0.013888889f) == 2 &&
         AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_SURPRISED",
             CSoundPair(0x2b, 0x2b), false, true, false, 0, 0));
-    FinishUpdate();
+    Terminate();
 }

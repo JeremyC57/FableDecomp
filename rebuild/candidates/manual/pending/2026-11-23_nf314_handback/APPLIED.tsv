@@ -1,0 +1,26 @@
+entry	address	row	change	proof
+1	0x00a90900	0x00a91640	defines FABLE_RETAIL_CDEVICEINDEPENDENT_ADDTRIANGLELIST_PRIVATE (hdr/engine/C3DPrimitive2.h opt-in: friend class ::C3DPrimitive2, private AddTriangleList)	objsec ALL_EQ (evidence/proof_e1.txt); link evidence/link_e1_00a91640.txt; equiv_check work/eq_e1new (0 of 1443) / control work/eq_e1ctl (9 flagged)
+4	0x006988b0	0x00699090	CGameCameraManager model: Extra() -> PushCurrentManualMode()	objsec ALL_EQ (evidence/proof_n1.txt); link evidence/link_b1_00699090.txt
+36	0x00939dd0	0x0093a080	local class: RemoveMyWarningMessage() -> private RemoveMessageEventsAdded(); comment respelled	objsec ALL_EQ (proof_n1); link evidence/link_b1_0093a080.txt
+44	0x0049bb90	0x00449e60	CGameJoystickManager::Get() returns a reference; call `.`	objsec ALL_EQ (proof_n1); link evidence/link_b1_00449e60.txt
+56	0x005dc340	0x005b37f7	CAnimationSet::GetAnimation -> const CAnimationEntry& GetAnim(...) const; reference local	objsec ALL_EQ (proof_n2); link evidence/link_b2_005dc340.txt
+56	0x005dc340	0x005cd767	same as 0x005B37F7 (was the non-const pointer form)	objsec ALL_EQ (proof_n2); link evidence/link_b2_005dc340.txt
+58	0x005cc091	0x007a7bf0	virtual ~CCreatureAction_UnsheatheItemFromInventory()	objsec ALL_EQ, vftable set unchanged (proof_n2); link evidence/link_b2_007a7bf0.txt
+62	0x00431ed0	0x00477964	CParentDefClassBase& operator=(const CParentDefClassBase&)	objsec ALL_EQ (proof_n2); link evidence/link_b2_00477964.txt
+63	0x009e5170	0x006f9640	Lookup(const CCharString&, long*) const -> FindSymbol(const CCharString&, long&) const; call passes index	objsec ALL_EQ (proof_n2); link evidence/link_b2_009e5170.txt
+63	0x009e5170	0x00ae85b0	Lookup(...) -> FindSymbol(const CCharString&, long&) const; call passes handle	objsec ALL_EQ (proof_n2); link evidence/link_b2_009e5170.txt
+64	0x00436fb0	0x004ff440	local CTBaseSingleton<T>::Get returns T&; call `.`	objsec ALL_EQ (proof_n2); link evidence/link_b2_004ff440.txt
+64	0x00436fb0	0x004ff8b0	same	objsec ALL_EQ (proof_n7); link evidence/link_b4_004ff8b0.txt
+65	0x0070b460	0x00750470	CAnimateThing& GetAnimation(); reference local	objsec ALL_EQ (proof_n2); link evidence/link_b2_0070b460.txt
+65	0x0070b460	0x008dbb30	GetAnimateThing() -> CAnimateThing& GetAnimation(); reference local; comment respelled	objsec ALL_EQ (proof_n2); link evidence/link_b2_0070b460.txt
+67	0x004c7ab0	0x00692b30	local CThing: GetWorld() const -> protected PeekWorld() const returning const CWorld&, friend class CCreatureActionBase	objsec ALL_EQ (proof_n4); link evidence/link_b3_004c7ab0.txt
+67	0x004c7ab0	0x006655a0	local CThing: GetWorld() -> protected PeekWorld() const (const CWorld&)	objsec ALL_EQ (proof_n4); link evidence/link_b3_004c7ab0.txt
+69	0x0098d710	0x0098abf0	member model: virtual ~CVertexShaderConstantLayout(), pad 0x14C -> 0x148	objsec ALL_EQ (proof_n2); link evidence/link_b2_0098abf0.txt
+71	0x008fcf40	0x009574d0	FinishUpdate() -> Terminate() (declaration, 2 calls, 2 comments)	objsec ALL_EQ (proof_n2); link evidence/link_b2_009574d0.txt
+71	0x008fcf40	0x00958000	FinishUpdate() -> Terminate()	objsec ALL_EQ (proof_n7); link evidence/link_b4_00958000.txt
+77	0x00859ef0	0x008ec260	base OnAnimationLoaded protected virtual; own override UAE; Leaf line added	objsec ALL_EQ (proof_n2); link evidence/link_b2_008ec260.txt
+78	0x009be490	0x009c1050	InitialiseDeviceState() -> ResizeWindowToBackBufferSize()	objsec ALL_EQ (proof_n2); link evidence/link_b2_009c1050.txt
+79	0x009bebb0	0x009bfb30	GetDepthBufferFormat -> private GetClosestDepthBufferFormat(...) const	objsec ALL_EQ (proof_n2); link evidence/link_b2_009bfb30.txt
+86	0x00783680	0x0056a980	DetachAll() -> OnNoBoastsRemain(); comment respelled	objsec ALL_EQ (proof_n2); link evidence/link_b2_0056a980.txt
+87	0x00662a00	0x00733690	const CAnimationEntry& GetAnimFromName(const CCharString&, long) const; `entry = &...`; comment	objsec ALL_EQ (proof_n2); link evidence/link_b2_00733690.txt
+88	0x00666d10	0x006ec4f0	const CCombatTypeDef& GetCombatTypeDef() const; `def = &...`	objsec ALL_EQ (proof_n2); link evidence/link_b2_006ec4f0.txt

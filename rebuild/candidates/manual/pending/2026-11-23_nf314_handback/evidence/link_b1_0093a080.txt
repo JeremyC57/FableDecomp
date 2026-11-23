@@ -1,0 +1,8 @@
+## HEAD set: H_0093a080.obj H_00939dd0.obj
+duplicates 0
+
+UNRESOLVED 1 ?RemoveMyWarningMessage@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ
+## new set: N_0093a080.obj H_00939dd0.obj
+duplicates 0
+
+LK_DONE

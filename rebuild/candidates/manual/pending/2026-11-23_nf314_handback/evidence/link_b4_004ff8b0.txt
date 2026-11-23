@@ -1,0 +1,10 @@
+## HEAD set: H_004ff8b0.obj H_00436fb0.obj
+duplicates 0
+
+UNRESOLVED 1 ?Get@?$CTBaseSingleton@VCEngineManager@@@@SIPAVCEngineManager@@XZ
+UNRESOLVED 1 ?Instance@?$CTBaseSingleton@VCEngineManager@@@@2V?$CCountedPointer@VCEngineManager@@@@A
+## new set: N_004ff8b0.obj H_00436fb0.obj
+duplicates 0
+
+UNRESOLVED 1 ?Instance@?$CTBaseSingleton@VCEngineManager@@@@2V?$CCountedPointer@VCEngineManager@@@@A
+LK_DONE

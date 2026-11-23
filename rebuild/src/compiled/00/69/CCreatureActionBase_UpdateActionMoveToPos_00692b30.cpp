@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692B30, length 130 bytes (+ int3 padding). Protected virtual (`MAE`).
 // Callees: this action's virtual slots 57 (+0xe4, bool) and 58 (+0xe8, the `else` tail jump), CBaseIntelligentPointer::GetPItem
 // @ 0x00A01B50 (PCreature at +8, twice), CThing::GetPos @ 0x004C73D0 (`[this+60h]+0Ch`; manifest "CVertexBufferWin32::DoSizeof"
-// is propagated), CThing::GetWorld @ 0x004C7AB0 (reads a global; "CViewBase::GetDisplayEngine" is propagated), the world-frame
+// is propagated), CThing::PeekWorld @ 0x004C7AB0 (reads a global; "CViewBase::GetDisplayEngine" is propagated), the world-frame
 // getter @ 0x0049D870 (a static of the world class: the GetWorld call is still emitted, GOTCHAS wave 25).
 // Shape: the sum is built component by component into a 12-byte frame temporary (`fld step ; fadd [pos]` -- the step is the
 // left operand), then the inlined SetMoveToPos (the landed 0x006929E0 body) stamps the frame and copies the three dwords into
@@ -21,7 +21,10 @@ class CWorld { public:
 };
 class CThing { public:
     const C3DVector& GetPos() const;   // 0x004C73D0
-    CWorld* GetWorld() const;               // 0x004C7AB0
+    friend class CCreatureActionBase;       // retail access: CCreatureActionBase reaches the protected PeekWorld (0x00692B30 SetMoveToPos)
+protected:
+    const CWorld& PeekWorld() const;        // 0x004C7AB0 ?PeekWorld@CThing@@IBEABVCWorld@@XZ (protected const; Ego_r / FableWin)
+public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -63,7 +66,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     unsigned char _pad74[0xa8 - 0x74];      // +0x74
     void SetMoveToPos(const C3DVector& pos)   // 0x006929E0, inlined here
     {
-        NextMovementPosWorldFrame = PCreature.GetPItem()->GetWorld()->GetFrame();
+        NextMovementPosWorldFrame = PCreature.GetPItem()->PeekWorld().GetFrame();
         NextMovementPos = pos;
     }
     void UpdateActionMoveToPos();

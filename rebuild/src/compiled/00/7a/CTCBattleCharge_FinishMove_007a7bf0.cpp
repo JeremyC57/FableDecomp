@@ -48,7 +48,7 @@ class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { 
     unsigned char _body[0x10];
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& owner, const CCharString& animation, CThing& item,
                                                long priority, long timeout, CCreatureActionBase* next);   // 0x0069F0F0
-    ~CCreatureAction_UnsheatheItemFromInventory();   // 0x005CC091
+    virtual ~CCreatureAction_UnsheatheItemFromInventory();   // 0x005CC091 ??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ (virtual in Ego_r / FableWin)
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _pad0a8[0x114 - 0xa8];

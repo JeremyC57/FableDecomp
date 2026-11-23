@@ -1,0 +1,9 @@
+## HEAD set: H_006ec4f0.obj H_00666d10.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetCombatTypeDef@CThingCreatureBase@@QAEPBVCCombatTypeDef@@XZ
+## new set: N_006ec4f0.obj H_00666d10.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ
+LK_DONE

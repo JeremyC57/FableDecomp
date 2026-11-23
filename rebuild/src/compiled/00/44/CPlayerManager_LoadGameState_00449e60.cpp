@@ -35,7 +35,7 @@ class CPlayer { public:
     long GetJoystickDeviceNumber() const;                      // 0x00487510
 };
 class CGameJoystickManager { public:
-    static CGameJoystickManager* __fastcall Get();     // 0x0049BB90
+    static CGameJoystickManager& __fastcall Get();     // 0x0049BB90 ?Get@CGameJoystickManager@@SIAAV1@XZ (Ego_r / FableWin: returns a reference)
     void SetMainPlayerJoystickDeviceNumber(long device);   // 0x0049BB30
 };
 
@@ -77,5 +77,5 @@ void CPlayerManager::LoadGameState(CPersistContext& context)
     context.Transfer("PlayerCharacterUID", save.CharacterUID, (unsigned __int64)0);
     context.Transfer<CCharString>("PlayerRegionName", save.RegionName, "");
     FindPlayer(MainPlayer)->InitCharacterFromSave(save);
-    CGameJoystickManager::Get()->SetMainPlayerJoystickDeviceNumber(FindPlayer(MainPlayer)->GetJoystickDeviceNumber());
+    CGameJoystickManager::Get().SetMainPlayerJoystickDeviceNumber(FindPlayer(MainPlayer)->GetJoystickDeviceNumber());
 }

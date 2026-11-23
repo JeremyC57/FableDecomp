@@ -1,0 +1,212 @@
+## entry 44 0049bb90 old=?Get@CGameJoystickManager@@SIPAV1@XZ witness=00449e60 landed_rows=9 data_refs=0 hits=31
+   HIT 00416296:11 static CGameJoystickManager& __fastcall Get();
+   HIT 00416296:25 return GPInputManager->IsJoystickDeviceNumberActive(CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber()) ? false : true;
+   HIT 0041db84:19 class CMainGameComponent{protected:static CMainGameComponent*PMainGameComponent;unsigned char unreadMainGame[0x14];CCountedPointer<NGameText::CDataBan
+   HIT 0041db84:21 class CNewFrontendGameComponent{private:static CNewFrontendGameComponent*m_pNewFrontendGameComponent;unsigned char unreadFrontend[0x60];CCountedPointe
+   HIT 0041db84:23 if(CMainGameComponent::Get()){CWideString text=CMainGameComponent::Get()->GetTextBank().GetTextBySymbol(symbol);if(text!=CWideString::NullString)retur
+   HIT 0041db84:24 if(CNewFrontendGameComponent::Get()){CWideString text=CNewFrontendGameComponent::Get()->GetTextBank().GetTextBySymbol(symbol);if(text!=CWideString::Nu
+   HIT 0041db84:27 class CGameJoystickManager:public CGameJoystickManagerFields{public:static CGameJoystickManager&__fastcall Get();long GetMainPlayerJoystickDeviceNumbe
+   HIT 0041db84:195 if(CNewFrontendGameComponent::Get()){
+   HIT 0041db84:203 NGameText::ConstructString(message,CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber()+1);
+   HIT 0042dc63:14 static CGameJoystickManager& __fastcall Get();
+   HIT 0042dc63:32 if (CGameJoystickManager::Get().HasExplicitMainPlayerJoystickDeviceNumber())
+   HIT 0042dc63:33 return !GPInputManager->IsJoystickDeviceNumberActive(CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber());
+   HIT 0042e3ee:68 static T& __fastcall Get();
+   HIT 0042e3ee:77 static CActiveJoystick& __fastcall Get();
+   HIT 0042e3ee:123 CTBaseSingleton<CConsole>::Get().ProcessInput(event);
+   HIT 0042e3ee:173 if (CActiveJoystick::Get().IsLocked())
+   HIT 0042e3ee:174 activePad = CActiveJoystick::Get().GetDeviceNumber() == event.GetDeviceNumber();
+   HIT 00449e60:38 static CGameJoystickManager& __fastcall Get();
+   HIT 00449e60:80 CGameJoystickManager::Get().SetMainPlayerJoystickDeviceNumber(FindPlayer(MainPlayer)->GetJoystickDeviceNumber());
+   HIT 00487aa0:18 static CGameJoystickManager& __fastcall Get();
+   HIT 00487aa0:43 long mainDevice = CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber();
+   HIT 0048a210:38 static CGameJoystickManager& __fastcall Get();
+   HIT 0048a210:140 long mainDevice = CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber();
+   HIT 00496cf0:84 CGameJoystickManager::Get().SetMainPlayerJoystickDeviceNumber(CreateGameJoystickDeviceNumber);
+   HIT 00599d5c:76 static CUserProfileManager& __fastcall Get();
+   HIT 00599d5c:82 static T& __fastcall Get();
+   HIT 00599d5c:88 static CGameJoystickManager& __fastcall Get();
+   HIT 00599d5c:149 && VerifySignatureCached(CUserProfileManager::Get().GetProfileDir(profiles[0], false));
+   HIT 00599d5c:158 CUserProfileManager::Get().UseNewProfileValues = true;
+   HIT 00599d5c:159 CUserProfileManager::Get().Apply();
+   HIT 00599d5c:162 CGameJoystickManager::Get().SetMainPlayerJoystickDeviceNumber(CNewFrontendGameComponent::Get()->GetLastActiveJoystickDeviceNumber());
+## entry 64 00436fb0 old=?Get@?$CTBaseSingleton@VCEngineManager@@@@SIPAVCEngineManager@@XZ witness=004ff440 landed_rows=15 data_refs=0 hits=57
+   HIT 00435190:79 if (CMainGameComponent::Get()->IsEditorActive())
+   HIT 00435190:95 CEngineManager::Get().AddEngine(*Engine3D);
+   HIT 004354a0:24 static T& __fastcall Get();
+   HIT 004354a0:32 CTBaseSingleton<CEngineManager>::Get().RemoveEngine(*Engine3D);
+   HIT 00435530:206 CTBaseSingleton<CEngineManager>::Get().OnRender();
+   HIT 00435530:224 if (ScreenFadeDuration > -DELTA_NOTIONAL_ZERO && !CPlayerGui::Get().GetSubtitleRenderer().IsWaitingForClickPast()) {
+   HIT 00435530:259 if (CConsole::Get().IsActive())
+   HIT 00435530:260 CConsole::Get().Draw(C2DBoxF(0.0f, 0.0f, VIRTUAL_SCREEN_WIDTH, (VIRTUAL_SCREEN_HEIGHT * 5.0) / 12.0));
+   HIT 004a5a40:116 static T& __fastcall Get();
+   HIT 004a5a40:148 CTBaseSingletonNoDefaultAlloc<CDriveManager>::Get().DeleteFileW(L"Z:\\game_crash_marker.dat");
+   HIT 004a5a40:172 if (WaitingForInventoryTutorialToFinish && !CPlayerGui::Get().GetSubtitleRenderer().IsDisplayingText() && !Paused) {
+   HIT 004a5a40:209 CPlayerGui::Get().UpdateMiniMapMarkers(true);
+   HIT 004a5a40:220 CQuestManager::Get().Update();
+   HIT 004a5a40:229 CTBaseSingleton<CEngineManager>::Get().OnUpdate(fullUpdate);
+   HIT 004a5a40:239 CTBaseSingleton<CEngineManager>::Get().OnPausedUpdate();
+   HIT 004a5a40:242 CPlayerGui::Get().Update(Paused);
+   HIT 004feb70:68 CEngineManager::Get().AddChangedArea(*pworld_box);
+   HIT 004feb70:73 if (Maps[*it].PMap.Get())
+   HIT 004fede0:104 static CEngineManager& __fastcall Get();
+   HIT 004fede0:143 CEngineManager::Get().RemoveMap(map);
+   HIT 004feec0:102 static CEngineManager& __fastcall Get();
+   HIT 004feec0:155 CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnRegionUnloaded(Regions[region].Name);
+   HIT 004feec0:161 CEngineManager::Get().RemoveMap(map);
+   HIT 004ff440:48 static T& __fastcall Get();
+   HIT 004ff440:72 CTBaseSingleton<CEngineManager>::Get().SetMapAsLoaded(map);
+   HIT 004ff8b0:40 static T& __fastcall Get();
+   HIT 004ff8b0:61 CTBaseSingleton<CEngineManager>::Get().RemoveMap(map);
+   HIT 005022f0:26 static CEngineManager& __fastcall Get();
+   HIT 005022f0:129 CEngineManager::Get().RemoveMap(i);
+   HIT 00506940:127 static CEngineManager* __fastcall Get();
+   HIT 00506940:175 CEngineManager::Get()->RemoveMap(i);
+   HIT 00506f30:43 static CEngineManager& __fastcall Get();
+   HIT 00506f30:79 CEngineManager::Get().AddMap(map);
+   HIT 00507c30:112 CEngineManager::Get().Cleanup();
+   HIT 00507c30:185 CEngineManager::Get().AddMap(newMap);
+   HIT 0069e980:91 template<class T> struct CTBaseSingleton { static T& __fastcall Get(); };
+   HIT 0069e980:111 template<class T> FABLE_FORCEINLINE T* Get(long interfaceType) {
+   HIT 0069e980:116 template<class T> FABLE_FORCEINLINE const T* Get(long interfaceType) const {
+   HIT 0069e980:136 static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
+   HIT 0069e980:158 static T& __fastcall Get() { return *PClass; }
+   HIT 0069e980:206 CTBaseSingleton<CEngineManager>::Get().OnRender();
+   HIT 0069e980:223 if(CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().IsOpen()) {
+   HIT 0069e980:228 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SetVWindowForDeprecatedDrawInterface(fullWindow);
+   HIT 0069e980:229 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawPreparePrimitivesForEngine(guiPrepare);
+   HIT 0069e980:230 CPlayer& player=CMainGameComponent::Get()->PPlayerManager->GetMainPlayer();
+   HIT 0069e980:235 if(g_BettingHudEnabled_013bae1d) CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawBettingHUD(guiPrepare);
+   HIT 0069e980:238 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ClearGui();
+   HIT 0069e980:239 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawReceivedItems(guiPrepare);
+   HIT 0069e980:240 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawInventory(guiPrepare);
+   HIT 0069e980:241 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawSaveScreen(guiPrepare);
+   HIT 0069e980:242 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawScreenFade(guiPrepare);
+   HIT 0069e980:243 if(CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ForceAllowSubtitleToRender) {
+   HIT 0069e980:244 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.DrawPreparePrimitivesForEngine(guiPrepare);
+   HIT 0069e980:245 const CPlayer& player=((const CPlayerManager*)CMainGameComponent::Get()->PPlayerManager)->GetMainPlayer();
+   HIT 0069e980:251 if(game->IsBetting()) CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawBettingHUD(guiPrepare);
+   HIT 0069e980:256 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Draw2DText(guiPrepare);
+   HIT 0069e980:258 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawDebugSafeAreas(guiPrepare);
+## entry 69 0098d710 old=??1CVertexShaderConstantLayout@@QAE@XZ witness=0098abf0 landed_rows=10 data_refs=5 hits=2
+   HIT 0098abf0:62 virtual ~CVertexShaderConstantLayout();
+   HIT 00b3b8e0:69 virtual ~CVertexShaderConstantLayout();
+## entry 72 0097e200 old=?AIAction_DoNothing@CAIStateGroupBase@@QAEJXZ witness=00920770 landed_rows=70 data_refs=27 hits=118
+   HIT 0090d030:150 if (AIAction_DoNothing() == AI_ACTION_TERMINATE_PROCESS) {
+   HIT 0090d030:258 } else if (AIAction_DoNothing() != AI_ACTION_FINISHED)
+   HIT 0090e5d0:129 if(AIAction_DoNothing()==AI_ACTION_TERMINATE_PROCESS||CWorld::GetFrame()>wait_till_frame){Terminate();return;}
+   HIT 0090eec0:80 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0090eec0:132 } while (AIAction_DoNothing() == 4);
+   HIT 0090f470:78 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0090f470:130 } while (AIAction_DoNothing() == 4);
+   HIT 0090f740:28 EAIActionReturn AIAction_DoNothing();
+   HIT 0090f740:46 while (AIAction_DoNothing() == 4 && IsStateGroupStillValid())
+   HIT 0090fdb0:105 EAIActionReturn AIAction_DoNothing(); public:                  protected:
+   HIT 0090fdb0:156 while (AIAction_DoNothing() == 4) {
+   HIT 00911d90:144 } while (AIAction_DoNothing() == 4);
+   HIT 009175e0:119 AIAction_DoNothing();
+   HIT 00918b90:140 while (CWorld::GetFrame() < end && AIAction_DoNothing() == AI_ACTION_IN_PROGRESS)
+   HIT 0091bd10:165 } while (AIAction_DoNothing() == AI_ACTION_IN_PROGRESS);
+   HIT 0091e4b0:75 long AIAction_DoNothing(); void Update();
+   HIT 0091e4b0:83 while(AIAction_DoNothing()==4) {}
+   HIT 00920770:9 protected: EAIActionReturn AIAction_DoNothing(); public:
+   HIT 00920770:19 while (AIAction_DoNothing() == 4) {
+   HIT 00920a00:71 EAIActionReturn ret=AIAction_DoNothing();
+   HIT 00920a00:100 AIAction_DoNothing();
+   HIT 009224f0:26 EAIActionReturn AIAction_DoNothing();
+   HIT 009224f0:36 while (AIAction_DoNothing() == AI_ACTION_FINISHED && IsRunnable())
+   HIT 00922750:111 long AIAction_DoNothing();
+   HIT 00922750:130 if (AIAction_DoNothing() == 4)
+   HIT 00924c70:167 if (AIAction_DoNothing() == AI_ACTION_STOPPING) {
+   HIT 00924c70:204 AIAction_DoNothing();
+   HIT 00924c70:213 if (AIAction_DoNothing() == AI_ACTION_STOPPING) {
+   HIT 00924c70:250 if (AIAction_DoNothing() == AI_ACTION_STOPPING) {
+   HIT 00924c70:256 if (AIAction_DoNothing() == AI_ACTION_STOPPING) {
+   HIT 00926060:77 if (talk_ret == CTCTalk::SPEECH_PLAYBACK_FAILED_RETRY && AIAction_DoNothing() != AI_ACTION_IN_PROGRESS) {
+   HIT 00929b10:160 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 00929b10:178 if (AIAction_DoNothing() != 4)
+   HIT 0092a8a0:77 protected: EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0092a8a0:105 AIAction_DoNothing();
+   HIT 0092b3e0:87 protected: EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0092b3e0:113 AIAction_DoNothing();
+   HIT 0092c070:154 } while (AIAction_DoNothing() == 4);
+   HIT 0092da20:187 while (AIAction_DoNothing() == 4) {
+   HIT 00934870:59 EAIActionReturn AIAction_DoNothing();
+   HIT 00934870:87 } while (AIAction_DoNothing() == 4);
+   HIT 009357f0:112 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 009357f0:146 if (AIAction_DoNothing() != 4) {
+   HIT 00936020:73 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 00936020:96 } while (AIAction_DoNothing() == 4);
+   HIT 009363d0:58 if (AIAction_DoNothing() != 4)
+   HIT 009392a0:134 while ((unsigned long)PeekWorld().GetFrame() < frame_to_stop_sitting && AIAction_DoNothing() == AI_ACTION_IN_PROGRESS) {
+   HIT 0093a540:42 protected: EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0093a540:64 result = AIAction_DoNothing();
+   HIT 00941690:104 AIAction_DoNothing();
+   HIT 00942c70:62 long AIAction_DoNothing();
+   HIT 00942c70:76 long result = AIAction_DoNothing();
+   HIT 00942c70:78 result = AIAction_DoNothing();
+   HIT 009432c0:104 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 009432c0:166 if (AIAction_DoNothing() != 4) {
+   HIT 00945bd0:75 if (AIAction_DoNothing() != 4)
+   HIT 00946190:53 while(AIAction_DoNothing()==AI_ACTION_IN_PROGRESS){}
+   HIT 00947ca0:54 protected: EAIActionReturn AIAction_DoNothing(); public:
+   HIT 00947ca0:71 return AIAction_DoNothing() == 4;
+   HIT 00948880:77 if (AIAction_DoNothing() != AI_ACTION_IN_PROGRESS)
+   HIT 00948880:87 return AIAction_DoNothing() != AI_ACTION_TERMINATE_PROCESS;
+   HIT 00948880:104 if (AIAction_DoNothing() != AI_ACTION_IN_PROGRESS) {
+   HIT 00949380:87 if (AIAction_DoNothing() == 4)
+   HIT 0094b740:114 long AIAction_DoNothing();
+   HIT 0094b740:125 if (AIAction_DoNothing() == 4) {
+   HIT 0094b740:139 } while (AIAction_DoNothing() == 4);
+   HIT 0094c050:117 if (AIAction_DoNothing() == 1) {
+   HIT 0094c050:158 waiting = AIAction_DoNothing() == 4 && (PBuyer->GetPos() - GetCreature().GetPos()).GetSquaredMagnitude() > shop_keeper->GetMaxDistFromCustomer() * sho
+   HIT 0094d020:163 EAIActionReturn AIAction_DoNothing();
+   HIT 0094d020:200 AIAction_DoNothing();
+   HIT 0094dd90:176 AIAction_DoNothing();
+   HIT 0094e7b0:217 AIAction_DoNothing();
+   HIT 0094f000:39 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0094f000:55 AIAction_DoNothing();
+   HIT 0094fe30:49 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0094fe30:66 AIAction_DoNothing();
+   HIT 0094feb0:110 void Terminate();bool IsStopping();long AIAction_DoNothing();
+   HIT 0094feb0:120 AIAction_DoNothing();
+   HIT 00950950:241 long AIAction_DoNothing();
+   HIT 00950950:275 AIAction_DoNothing();
+   HIT 00950c30:177 long AIAction_DoNothing();
+   HIT 00950c30:188 AIAction_DoNothing();
+   HIT 00950cf0:99 AIAction_DoNothing();
+   HIT 00952890:131 AIAction_DoNothing();
+   HIT 00952890:161 AIAction_DoNothing();
+   HIT 00952890:199 AIAction_DoNothing();
+   HIT 0095b6f0:67 result = AIAction_DoNothing();
+   HIT 0095ed80:30 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0095ed80:57 wait = AIAction_DoNothing();
+   HIT 00960120:195 if (AIAction_DoNothing() != AI_ACTION_IN_PROGRESS) {
+   HIT 00961640:44 EAIActionReturn ret=AIAction_DoNothing();
+   HIT 00961880:61 EAIActionReturn ret = AIAction_DoNothing();
+   HIT 009621f0:134 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 009621f0:177 if (AIAction_DoNothing() == 1) {
+   HIT 009627c0:60 if (AIAction_DoNothing() == AI_ACTION_TERMINATE_PROCESS)
+   HIT 00967b40:91 EAIActionReturn AIAction_DoNothing(); public:                  protected:
+   HIT 00967b40:123 if (AIAction_DoNothing() != 4) {
+   HIT 00967d40:99 AIAction_DoNothing();
+   HIT 009692c0:84 AIAction_DoNothing();
+   HIT 00969470:188 if (AIAction_DoNothing() == 1) {
+   HIT 00969cb0:126 AIAction_DoNothing();
+   HIT 0096af60:169 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0096af60:210 AIAction_DoNothing();
+   HIT 0096cd70:117 } else if (AIAction_DoNothing() != AI_ACTION_IN_PROGRESS)
+   HIT 0096ec10:61 else ret=AIAction_DoNothing();
+   HIT 0096fcd0:144 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0096fcd0:188 if (AIAction_DoNothing() == 1) {
+   HIT 0096ff10:146 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0096ff10:201 if (AIAction_DoNothing() == 1) {
+   HIT 00974aa0:151 AIAction_DoNothing();
+   HIT 00974aa0:163 AIAction_DoNothing();
+   HIT 009756b0:92 AIAction_DoNothing();
+   HIT 009756b0:104 AIAction_DoNothing();
+   HIT 009756b0:123 AIAction_DoNothing();
+   HIT 009756b0:159 AIAction_DoNothing();
+   HIT 0097bda0:239 AIAction_DoNothing();
+   HIT 0097fbe0:112 EAIActionReturn AIAction_DoNothing(); public:
+   HIT 0097fbe0:150 result = AIAction_DoNothing();

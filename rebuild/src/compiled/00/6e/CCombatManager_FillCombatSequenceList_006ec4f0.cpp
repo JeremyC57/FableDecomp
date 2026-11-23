@@ -71,7 +71,7 @@ class CThing { public:
 class CThingCreatureBase { public:
     unsigned char _pad[0x10];
     unsigned char ThingClass;                       // +0x10
-    const CCombatTypeDef* GetCombatTypeDef();       // 0x00666D10
+    const CCombatTypeDef& GetCombatTypeDef() const; // 0x00666D10 ?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ (Ego_r / FableWin)
 };
 class CCombatSequenceDef { public:
     virtual void v00();
@@ -206,7 +206,7 @@ void CCombatManager::FillCombatSequenceList(CThingCreatureBase& attacker, CThing
 {
     if (attacker.ThingClass == 2)
         return;
-    const CCombatTypeDef* def = attacker.GetCombatTypeDef();
+    const CCombatTypeDef* def = &attacker.GetCombatTypeDef();
     if (def->CombatSequence.first == def->CombatSequence.last && def->CombatSequenceDef.first == def->CombatSequenceDef.last) {
         CCharString name = GDefStringTable.GetString((((CThing*)&attacker)->GetDefName()).m_index);
         CCharString message = "WARNING : No combat sequences registered for this combat type - in creature " + name;

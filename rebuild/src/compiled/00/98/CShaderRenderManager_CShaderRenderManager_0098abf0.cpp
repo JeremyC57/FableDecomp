@@ -59,8 +59,8 @@ class CShaderResource;
 
 class CVertexShaderConstantLayout {                     // 0x14C bytes in retail
 public:
-    ~CVertexShaderConstantLayout();                     // 0x0098D710
-    unsigned char _body[0x14c];
+    virtual ~CVertexShaderConstantLayout();             // 0x0098D710 ??1CVertexShaderConstantLayout@@UAE@XZ (virtual in Ego_r / FableWin; NF299 Q3 / NF311 Q5: the vptr takes the first 4 pad bytes)
+    unsigned char _body[0x148];
 };
 
 class CMemoryBlock;

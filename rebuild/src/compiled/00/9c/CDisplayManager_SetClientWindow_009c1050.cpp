@@ -32,7 +32,7 @@ public:
     bool SetClientWindow(HWND window);
     void GetWindowDimensions(HWND window, C2DExtentsI* dims, long* bitDepth);
     long CreateDevice(const CCreateDeviceParameters* params);
-    void InitialiseDeviceState();
+    void ResizeWindowToBackBufferSize();   // 0x009BE490 ?ResizeWindowToBackBufferSize@CDisplayManager@@QAEXXZ (Ego_r / FableWin; the donor SetClientWindow calls it)
     long _pad00;
     void* SystemManager;                                  // +0x04
     CRenderManagerBase* PRenderManager;                   // +0x08
@@ -75,7 +75,7 @@ bool CDisplayManager::SetClientWindow(HWND window)
         if (CreateDevice(&params) != 2)
             return false;
     }
-    InitialiseDeviceState();
+    ResizeWindowToBackBufferSize();
     if (PRenderManager) {
         CRenderManagerBase* manager = new CRenderManager(this, ShaderResourcePath, RenderManagerInitFlags);
         CRenderManagerBase* old = PRenderManager;

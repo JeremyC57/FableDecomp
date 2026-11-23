@@ -1,0 +1,11 @@
+## HEAD set: H_007a7bf0.obj H_005cc091.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z
+UNRESOLVED 1 ??1CCreatureAction_UnsheatheItemFromInventory@@QAE@XZ
+## new set: N_007a7bf0.obj H_005cc091.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z
+UNRESOLVED 1 ??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ
+LK_DONE

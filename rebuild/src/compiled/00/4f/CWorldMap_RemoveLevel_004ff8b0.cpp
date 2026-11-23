@@ -37,7 +37,7 @@ public:
 };
 template <class T> class CTBaseSingleton {
 public:
-    static T* __fastcall Get();                 // 0x00436FB0 (CEngineManager)
+    static T& __fastcall Get();                 // 0x00436FB0 (CEngineManager) ?Get@?$CTBaseSingleton@VCEngineManager@@@@SIAAVCEngineManager@@XZ (Ego_r / FableWin: by reference)
 };
 
 class CWorldMap {
@@ -58,6 +58,6 @@ void CWorldMap::RemoveLevel(long map)
     if (IsMapLoaded(map))
         UnloadLevel(map);
     ChangeMapPlacementValuesTo(map, 0);
-    CTBaseSingleton<CEngineManager>::Get()->RemoveMap(map);
+    CTBaseSingleton<CEngineManager>::Get().RemoveMap(map);
     info.Used = false;
 }

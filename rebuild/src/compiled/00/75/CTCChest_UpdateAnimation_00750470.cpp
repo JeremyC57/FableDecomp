@@ -28,7 +28,7 @@ class CAnimateThing { public:
 };
 
 class CTCAnimationComplex { public:
-    CAnimateThing* GetAnimation();                          // 0x0070B460
+    CAnimateThing& GetAnimation();                          // 0x0070B460 ?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ (Ego_r / FableWin: by reference)
 };
 
 class CTCChest { public:
@@ -42,6 +42,6 @@ void CTCChest::UpdateAnimation(float time)
     CTCAnimationComplex* complex = 0;
     ParentThing->GetTC(TCI_ANIMATION, &complex);
     CAnimFrameUpdate update(time);
-    CAnimateThing* animation = complex->GetAnimation();
-    animation->UpdateFrameLogic(update);
+    CAnimateThing& animation = complex->GetAnimation();
+    animation.UpdateFrameLogic(update);
 }

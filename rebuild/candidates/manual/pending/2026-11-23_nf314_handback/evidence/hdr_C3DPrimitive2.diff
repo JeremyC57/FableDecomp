@@ -1,0 +1,30 @@
+--- orig/C3DPrimitive2.h	2026-11-23 06:07:15.714618173 +0000
++++ hdr/engine/C3DPrimitive2.h	2026-11-23 06:07:28.154826161 +0000
+@@ -16,6 +16,9 @@
+ #include "engine/CVertexBufferWin32.h"
+ class C3DClothPrimitive;class C3DGroup2;class C3DMeshFilePrimitiveChunk;class C3DMeshFileTrianglesChunk;class C3DMeshFileXAnimatedPrimitiveBlockChunk;
+ class CScopedMemoryHandle;
++#ifdef FABLE_RETAIL_CDEVICEINDEPENDENT_ADDTRIANGLELIST_PRIVATE
++class C3DPrimitive2;   // NF314 opt-in: forward declaration for the friend below
++#endif
+ namespace N3DPrimitive {
+ class CTriangleList;
+ class CDeviceIndependent : public CBaseClassNonCopyable {
+@@ -29,7 +32,17 @@
+     unsigned long GetTriangleListCount() const { return TriangleLists.size(); }                  // ?GetTriangleListCount@..@@QBEKXZ
+     unsigned long GetTotalTriangleCount() const;                         // 0x00A8ECE0
+     unsigned long GetTotalIndexCount() const;                            // 0x00A8ED30
++#ifdef FABLE_RETAIL_CDEVICEINDEPENDENT_ADDTRIANGLELIST_PRIVATE
++    // NF314 opt-in (row 0x00A91640): the PDB access. Ego_r.pdb and FableWin.pdb both spell ?AddTriangleList@CDeviceIndependent@N3DPrimitive@@AAEX
++    // ABVC3DMeshFileTrianglesChunk@@@Z (private); its only retail caller is C3DPrimitive2::InitialiseFromMeshFileData (0x00A919D6 / 0x00A9202A),
++    // so C3DPrimitive2 is a friend of the class.
++    friend class ::C3DPrimitive2;
++private:
++    void AddTriangleList(const C3DMeshFileTrianglesChunk& chunk);        // 0x00A90900 (private in Ego_r and FableWin)
++public:
++#else
+     void AddTriangleList(const C3DMeshFileTrianglesChunk& chunk);        // 0x00A90900 (private in Ego_r)
++#endif
+ #ifdef FABLE_RETAIL_C3DPRIMITIVE2_CONVERTSTATICBUMP
+     // Overlay opt-in (hand4d, row 0x00A8F1B0 ConvertToVBFormatStaticBump): FableWin.pdb ?GetVertexCount@CDeviceIndependent@N3DPrimitive@@QBEKXZ
+     // (0x032F8CB0 debug; inline in retail: the row reads the Vertices words in place).

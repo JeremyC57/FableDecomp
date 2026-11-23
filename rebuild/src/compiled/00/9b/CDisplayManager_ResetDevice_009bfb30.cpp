@@ -158,7 +158,7 @@ class CDisplayManager { public:
     CCreateDeviceParameters LastDeviceCreationParameters;   // +0x268
     CVsyncCallbackTimer* VsyncCallbackTimer;       // +0x294
     private: _D3DDISPLAYMODE GetClosestMode(const C2DExtentsI& resolution, long colourDepth, bool fullScreen) const; public:   // 0x009BF600
-    CPixelFormat GetDepthBufferFormat(const _D3DDISPLAYMODE& mode, long depthBits);   // 0x009BEBB0
+    private: CPixelFormat GetClosestDepthBufferFormat(const _D3DDISPLAYMODE& mode, long depthBits) const; public:   // 0x009BEBB0 ?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z (private const; Ego_r / FableWin; the donor ResetDevice calls it)
     unsigned long CalculateD3DPresentationInterval(const CPresentationIntervalDesc& desc);   // 0x009BE2D0
     private: bool SetupDepthAndBackBufferTextures(); public:        // 0x009BEE40
     void SetViewport(const C2DBoxI& box);          // 0x009BEF80
@@ -199,7 +199,7 @@ CDisplayManager::ECreateDeviceSuccess CDisplayManager::ResetDevice(const CCreate
     PresentParams.MultiSampleType = MultisampleType;
     PresentParams.SwapEffect = 1;
     PresentParams.EnableAutoDepthStencil = 1;
-    PresentParams.AutoDepthStencilFormat = GetDepthBufferFormat(CurrentMode, params.ZBufferBitDepth).GetD3DFormat();
+    PresentParams.AutoDepthStencilFormat = GetClosestDepthBufferFormat(CurrentMode, params.ZBufferBitDepth).GetD3DFormat();
     PresentParams.hDeviceWindow = WindowHandle;
     PresentParams.BackBufferCount = NoBackBuffers;
     if (params.ExclusiveMode) {

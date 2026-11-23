@@ -9,7 +9,7 @@
 //   CTCLook::IsCurrentlyTurningViaAnimation 0x00753B40 / turn speed 0x00751B70 (TC 0x43); CTCHaste::
 //   GetActionSpeedMultiplier 0x007FFFB0 (TC 0x8c); CTCHeroExperience::GetMeleeStrikeAnimationSpeedMultiplier 0x006D6870
 //   and its min/max getters 0x006D6530 / 0x006D6540 (TC 0x68); CTCCarrying::GetThingInPrimarySlot 0x006A1440 (TC 0x46);
-//   CTCWeapon::GetAnimationSpeedValue 0x005DA850 (TC 0x48); CThing::GetWorld 0x004C7AB0, IsAffectedByBulletTime
+//   CTCWeapon::GetAnimationSpeedValue 0x005DA850 (TC 0x48); CThing::PeekWorld 0x004C7AB0, IsAffectedByBulletTime
 //   0x004C9920, the bullet-time time scale 0x004C5FA0.
 // Layout: retail CThing interface bitset +0x20 / map +0x44, dead flag +0x91 bit 0; retail CThingCreatureBase current
 //   action +0x100 (PDB view 0x10 larger). Action: +0x20 / +0x24 longs, +0x61 finished byte. World +0x68 bullet time
@@ -54,7 +54,9 @@ public:
         }
         return false;
     }
-    CWorld* GetWorld();                         // 0x004C7AB0
+protected:
+    const CWorld& PeekWorld() const;            // 0x004C7AB0 ?PeekWorld@CThing@@IBEABVCWorld@@XZ (protected const; Ego_r / FableWin)
+public:
     bool IsAffectedByBulletTime() const;              // 0x004C9920
 };
 class CCreatureActionBase { public:
@@ -146,9 +148,9 @@ float CThingCreatureBase::GetAnimationSpeedMultiplier()
             scale = maxSpeed;
         multiplier *= scale;
     }
-    CBulletTimeManager* bulletTime = GetWorld()->BulletTime;
+    CBulletTimeManager* bulletTime = PeekWorld().BulletTime;
     if ((bulletTime->Active || bulletTime->Frames) && IsAffectedByBulletTime()) {
-        float timeScale = GetWorld()->BulletTime->GetBulletTimeSlowdownMultiplier();
+        float timeScale = PeekWorld().BulletTime->GetBulletTimeSlowdownMultiplier();
         return sqrtf(multiplier / (timeScale * timeScale));
     }
     return sqrtf(multiplier);

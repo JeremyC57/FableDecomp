@@ -5,6 +5,7 @@
 // FITTED (grading only): `if (count)` guard round the vertex-list loop (device a, redundant-but-real guard; zero bytes: the loop's own count test absorbs it). It re-keys a c2 record-count tie: without it the material-loop store 0x00A91BF9 comes out [esi+ecx+1Ch] (SIB base/index swapped, the only differing instruction); any code-free extra IL before the loop flips it (measured: a dead self-assignment of TriangleCount anywhere before the loop does the same; dead asserts / unused locals do not). `unsigned long staticBytes` named + unnamed size sum written twice (guard / AllocateResource argument); `if (IsValidSize) {..material loop} else return false;` block end (EVIDENCED by the packer probe: group/cloth function scope); vector<C3DVector>::resize explicit specialization with the landed body as inline __declspec(noinline) (EVIDENCED: frame slot of the default-argument temporary)
 // Leaf: ?InitialiseFromMeshFileData@C3DPrimitive2@@QAE_NABVC3DMeshFilePrimitiveChunk@@_NKKAAVCScopedMemoryHandle@@@Z
 #define FABLE_RETAIL_C3DPRIMITIVE2_LOADER
+#define FABLE_RETAIL_CDEVICEINDEPENDENT_ADDTRIANGLELIST_PRIVATE   // NF314: N3DPrimitive::CDeviceIndependent::AddTriangleList is private in Ego_r / FableWin (friend C3DPrimitive2)
 #define FABLE_RETAIL_C3DPRIMITIVE2_STREAMFLAGS_MEMBER
 #define FABLE_RETAIL_C3DPRIMITIVE2_HIERARCHY
 #define FABLE_RETAIL_C3DPRIMITIVE2_ANIMATEDBLOCKS

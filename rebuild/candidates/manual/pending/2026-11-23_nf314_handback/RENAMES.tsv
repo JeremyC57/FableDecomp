@@ -1,0 +1,29 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames / leaf changes)
+0x008ec260	CCreatureAction_UndeadRiseUp	OnAnimationLoaded	?OnAnimationLoaded@CCreatureAction_UndeadRiseUp@@UAEXXZ	CCreatureAction_UndeadRiseUp::OnAnimationLoaded	(no Leaf; defined ?OnAnimationLoaded@CCreatureAction_UndeadRiseUp@@QAEXXZ)	Ego_r + FableWin UAE; NF303 Q1 (base OnAnimationLoaded made protected virtual); no landed binder of the QAE self spelling (vtable 0x01269054 only); new `// Leaf:` line carries the full mangled name
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00a91640	?AddTriangleList@CDeviceIndependent@N3DPrimitive@@QAEXABVC3DMeshFileTrianglesChunk@@@Z	?AddTriangleList@CDeviceIndependent@N3DPrimitive@@AAEXABVC3DMeshFileTrianglesChunk@@@Z	0x00a90900
+0x00699090	?Extra@CGameCameraManager@@QAEXXZ	?PushCurrentManualMode@CGameCameraManager@@QAEXXZ	0x006988b0
+0x0093a080	?RemoveMyWarningMessage@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ	?RemoveMessageEventsAdded@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAEXXZ	0x00939dd0
+0x00449e60	?Get@CGameJoystickManager@@SIPAV1@XZ	?Get@CGameJoystickManager@@SIAAV1@XZ	0x0049bb90
+0x005b37f7	?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	0x005dc340
+0x005cd767	?GetAnimation@CAnimationSet@@QBEPAVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	0x005dc340
+0x007a7bf0	??1CCreatureAction_UnsheatheItemFromInventory@@QAE@XZ	??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ	0x005cc091
+0x00477964	??4CParentDefClassBase@@QAEPAV0@AAV0@@Z	??4CParentDefClassBase@@QAEAAV0@ABV0@@Z	0x00431ed0
+0x006f9640	?Lookup@CSymbolMap@@QBE_NABVCCharString@@PAJ@Z	?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z	0x009e5170
+0x00ae85b0	?Lookup@CSymbolMap@@QAE_NABVCCharString@@PAJ@Z	?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z	0x009e5170
+0x004ff440	?Get@?$CTBaseSingleton@VCEngineManager@@@@SIPAVCEngineManager@@XZ	?Get@?$CTBaseSingleton@VCEngineManager@@@@SIAAVCEngineManager@@XZ	0x00436fb0
+0x004ff8b0	?Get@?$CTBaseSingleton@VCEngineManager@@@@SIPAVCEngineManager@@XZ	?Get@?$CTBaseSingleton@VCEngineManager@@@@SIAAVCEngineManager@@XZ	0x00436fb0
+0x00750470	?GetAnimation@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ	?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ	0x0070b460
+0x008dbb30	?GetAnimateThing@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ	?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ	0x0070b460
+0x00692b30	?GetWorld@CThing@@QBEPAVCWorld@@XZ	?PeekWorld@CThing@@IBEABVCWorld@@XZ	0x004c7ab0
+0x006655a0	?GetWorld@CThing@@QAEPAVCWorld@@XZ	?PeekWorld@CThing@@IBEABVCWorld@@XZ	0x004c7ab0
+0x0098abf0	??1CVertexShaderConstantLayout@@QAE@XZ	??1CVertexShaderConstantLayout@@UAE@XZ	0x0098d710
+0x009574d0	?FinishUpdate@CAIStateGroupBase@@QAEXXZ	?Terminate@CAIStateGroupBase@@QAEXXZ	0x008fcf40
+0x00958000	?FinishUpdate@CAIStateGroupBase@@QAEXXZ	?Terminate@CAIStateGroupBase@@QAEXXZ	0x008fcf40
+0x008ec260	?OnAnimationLoaded@CCombatActionBase@@QAEXXZ	?OnAnimationLoaded@CCombatActionBase@@MAEXXZ	0x00859ef0
+0x009c1050	?InitialiseDeviceState@CDisplayManager@@QAEXXZ	?ResizeWindowToBackBufferSize@CDisplayManager@@QAEXXZ	0x009be490
+0x009bfb30	?GetDepthBufferFormat@CDisplayManager@@QAE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z	?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z	0x009bebb0
+0x0056a980	?DetachAll@CTCBoastingCrowdControl@@QAEXXZ	?OnNoBoastsRemain@CTCBoastingCrowdControl@@QAEXXZ	0x00783680
+0x00733690	?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z	?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z	0x00662a00
+0x006ec4f0	?GetCombatTypeDef@CThingCreatureBase@@QAEPBVCCombatTypeDef@@XZ	?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	0x00666d10
