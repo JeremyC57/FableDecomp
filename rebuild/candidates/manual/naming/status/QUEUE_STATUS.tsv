@@ -429,7 +429,7 @@ line	tag	address	correct_symbol	status	other_spellings
 434	532	009ef0d0	?_M_insert@?$_Rb_tree@DU?$pair@$$CBDVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBDVCCharString@@@std@@@2@U?$less@D@2@V?$allocator@U?$pair@$$CBDVCCharString@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBDVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBDVCCharString@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBDVCCharString@@@2@0@Z	partial	?_M_insert@?$_Rb_tree@DU?$pair@$$CBDVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBDVCCharString@@@std@@@2@U?$less@D@2@V?$allocator@U?$pair@$$CBDVCCharString@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBDVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBDVCCharString@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBDVCCharString@@@2@0@Z
 435	532	0041d21b	?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@J@Z	partial	?CreateComponent@Manager@RetailUI@@QAEPAUComponent@2@K@Z
 436	532	00661ed0	?GetCombatManager@CThingCreatureBase@@QAEAAVCCombatManager@@XZ	partial	?GetCombatManager@@YAPAVCCombatManager@@XZ || ?GetCombatManager@CThing@@QAEPAVCCombatManager@@XZ || ?dv_h2_00661ed0@@YIXPAX@Z
-437	532	006ed9c0	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	partial	?DeregisterCombatant@CCombatManagerCalls@@QAEXPAUCThingCreatureBase@@@Z
+437	532	006ed9c0	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	closed	
 438	532	006edc50	?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z	partial	?RegisterCombatant@CCombatManager@@QAEXPAUMazeThing@@0_N@Z || ?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z || ?RegisterCombatant@CCombatManager@@QAEXPAVCThingAICreature@@PAVCThing@@_N@Z || ?RegisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@0_N@Z || ?RegisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@PAVCThing@@_N@Z || RegisterCombatant
 439	532	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ || ?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ
 440	532	00835560	?insert_unique@?$_Rb_tree@PAXPAXU?$_Identity@PAX@std@@U?$less@PAX@2@V?$allocator@PAX@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAXU?$_Nonconst_traits@PAX@std@@@std@@_N@2@ABQAX@Z	partial	?InsertUnique@CSuspenderSet@@QAE?AUSSuspenderInsertResult@@ABQAX@Z
@@ -3746,7 +3746,7 @@ line	tag	address	correct_symbol	status	other_spellings
 4264	cx11c	0066a560	??0CCombatAction_GenericResponseToDecapitation@@QAE@AAVCThingCreatureBase@@@Z	closed	
 4265	cx11c	008679c0	??0CCombatAction_GenericStrikeResponseKnockdown@@QAE@AAVCThingCreatureBase@@PBVCThing@@ABVC3DVector@@2@Z	closed	
 4266	cx11c	004c70f0	?IsActive@CTCScriptedControl@@QBE_NXZ	closed	
-4267	cx11c	006ed9c0	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	partial	?DeregisterCombatant@CCombatManagerCalls@@QAEXPAUCThingCreatureBase@@@Z
+4267	cx11c	006ed9c0	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	closed	
 4268	cx11c	006f0f60	??$GetSubDef@VCCombatAbilityStrafeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@@Z	closed	
 4269	cx11c	006696b0	??$GetSubDef@VCCombatAbilityUseProjectileWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@Z	closed	
 4270	cx11c	00772250	?FindDefaultStockItem@CTCShop@@QBEPBVCShopItem@@J@Z	partial	FindDefaultStockItem
@@ -9254,7 +9254,7 @@ line	tag	address	correct_symbol	status	other_spellings
 11477	land1119Bhand4db10	00c74850	?Set_ShelfLfHf@CFloatFilterParams@@QAEXMMMMI@Z	closed	
 11478	land1119Bhand4db10	00c783f0	?Translate@CFloatReverbParameterTranslator@@QAEXPAVCFloatReverbParameters@@PAVCHLRvbParams@@@Z	closed	
 11479	land1119nf93	009994a0	?CreateDirectoryW@CAFile@@SIXABVCWideString@@@Z	partial	?CreateDirectory@@YIXABVCWideString@@@Z
-11480	land1119nf93	00997780	?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z	partial	?MakePath@@YI?AVCWideString@@ABV1@000@Z
+11480	land1119nf93	00997780	?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z	closed	
 11481	land1119nf93	00516e10	??$ReadVar@E@CAFile@@QAEXAAEPAVCASuspendableProcess@@@Z	partial	?ReadVar@CAFile@@QAEXPAEPAVCASuspendableProcess@@@Z
 11483	land1119nf93	00789d90	?GetAccuracyPercentageFromThingAtBuildUpTime@?A0x0524c104@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	open	?GetAccuracyPercentageFromThingAtBuildUpTime@ || ?GetAccuracyPercentageFromThingAtBuildUpTime@?A0x9f6d64a0@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z
 11484	land1119nf93	00b97c10	??A?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@QAEAAV?$CCountedPointer@VCEngineSceneMap@@@@ABJ@Z	closed	
@@ -10509,3 +10509,5 @@ line	tag	address	correct_symbol	status	other_spellings
 13346	land1123nf290	009cc530	?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z	closed	
 13347	land1123nf290	00a36df0	?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z	no_binding	
 13348	land1123nf290	0093e760	?SetAsLookAtThing@CBrainOutput@@QAEXABVCThing@@J@Z	closed	
+13349	land1123nf294	009cc190	?EntryExists@CBankFile@@QBE_NK@Z	partial	?EntryExists@CDataBank@NGameText@@QAE_NK@Z || ?EntryExists@CLipSyncDataBank@@QAE_NJ@Z || ?EntryExists@CLipSyncDataBank@@QBE_NK@Z
+13350	land1123nf294	009ccb20	?WritePadding@CBankFile@@AAEXK@Z	partial	?WritePadding@CBankFile_Retail@@QAEXK@Z || ?WriteZeros@CBankFile_Retail@@QAEXK@Z || WritePadding

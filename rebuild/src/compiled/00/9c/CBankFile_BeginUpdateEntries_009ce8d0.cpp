@@ -84,7 +84,7 @@ class CBankFile { public:
     unsigned char _pad9c[0x5c];                    // +0x9c .. +0xf8
     CChecksumCacheFile ChecksumCache;              // +0xf8
     unsigned long Align(unsigned long size) const { return (Alignment + size - 1) / Alignment * Alignment; }
-    void WriteZeros(unsigned long count);          // 0x009CCB20
+private: void WritePadding(unsigned long size); public:   // 0x009CCB20; NF294: Ego_r / FableWin ?WritePadding@CBankFile@@AAEXK@Z (private), was WriteZeros
 private:
     void WriteFileInformation(bool flush);         // 0x009CE370; NF236: Ego_r / FableWin spelling AAE (private)
 public:
@@ -99,7 +99,7 @@ void CBankFile::BeginUpdateEntries()
         WrittenToFile = true;
         long length = BankFile->GetLength();
         BankFile->Seek(length);
-        WriteZeros(Align(length) - length);
+        WritePadding(Align(length) - length);
         BankFile->GetLength();
         Solid = true;
         UpdatingFlag = true;

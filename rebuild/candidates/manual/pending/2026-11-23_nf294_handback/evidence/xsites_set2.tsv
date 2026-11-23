@@ -1,0 +1,6 @@
+00717950	call	00717a36	-
+00717950	call	00717abc	00717aa0L NTCScriptedControl::CActionTalkToThing::CActionTalkToThing
+00717950	call	00717b8e	-
+00717950	call	00717bd3	00717bc0L NTCScriptedControl::CActionOverheadTalkToThing::CActionOverh
+00717950	call	00717c6c	00717c50L NTCScriptedControl::CActionTalkToThing::CActionTalkToThing
+00717950	call	00717d5f	00717d40L NTCScriptedControl::CActionTalkToThing::CActionTalkToThing

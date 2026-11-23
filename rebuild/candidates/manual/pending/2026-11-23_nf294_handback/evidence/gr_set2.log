@@ -1,0 +1,3 @@
+H 00717bc0 NTCScriptedControl::CActionOverheadTalkToThing::CActionOverheadTalkToThing RELOCATION_MATCH flags= [] leaf=??0CActionOverheadTalkToThing
+H 00717950 NTCScriptedControl::CActionTalkBase::CActionTalkBase RELOCATION_MATCH flags= ['/Oa'] leaf=??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z
+GR_DONE

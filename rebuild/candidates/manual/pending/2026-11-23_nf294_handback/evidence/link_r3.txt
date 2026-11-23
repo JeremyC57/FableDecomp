@@ -1,0 +1,9 @@
+## HEAD set: H_00a5eea0.obj H_009cc190.obj
+duplicates 0
+
+UNRESOLVED 1 ?EntryExists@CStreamingFontDataBank_Methods@@QAE_NK@Z
+## new set: N_00a5eea0.obj H_009cc190.obj
+duplicates 0
+
+UNRESOLVED 1 ?EntryExists@CBankFile@@QBE_NK@Z
+LK_DONE

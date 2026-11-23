@@ -316,3 +316,52 @@ nf290	0x0067C6D0	T3: binder 0x0067CC50 keys CBlurredAttitudesDef `struct` (U); t
 nf290	0x006AC390	entry 7 unit with 0x00805890: const self respells the strong same-TU stand-in CInterfaceMap::LowerBound 0x004365B0	NF290 entry 7 (dropped)
 nf290	0x0049D8F0	self SetAsPaused: PDB symbol inline in engine/CWorld.h (pick-any in 0x004A3740); scaffolding port	NF290 entry 21
 nf290	0x0093E760	self SetAsLookAtThing: PDB symbol inline in engine/campfire_types.h (pick-any in 0x00972CC0); scaffolding port	NF290 entry 60
+nf294	0x00a13c60	entry 1: binder local `struct CQuakeVector {float X,Y,Z; void Rotate(...)}` stands for C3DVector (engine/C3DVector.h exists): replacing the local vector type is a port	NF294 skipped-port
+nf294	0x00999ab0	entry 3: binder declares `IsRoomForFile(long, const wchar_t*)` and passes `.GetText()`; the PDB takes const CWideString& (FABLE_RETAIL_CAFILE_ISROOMFORFILE exists): a parameter-type change with a changed argument expression, port	NF294 skipped-port
+nf294	0x00999cb0	entry 4: stand-in parameter type `CFileScanState` for CAFile::CFileScanInfo (the header declaration exists under INSTALLERPATHS, nested in FABLE_RETAIL_CAFILE): port	NF294 skipped-port
+nf294	0x009350c0	entry 7: binder local `struct CAIStateGroup_ScriptingBase : CAIStateGroupBase` for the template CAIStateGroup_ScriptingBase<CAIStateGroupBase> (engine/CAIStateGroup_ScriptingBase.h exists): template/base port	NF294 skipped-port
+nf294	0x00916790	entry 8: IsInSchoolHours declared on the binder's own class CAIStateGroup_StayNearSchool : CAIStateGroupBase; the PDB member is on the template base CAIStateGroup_WorkBase<CAIStateGroupBase>: base-chain port	NF294 skipped-port
+nf294	0x007e71d0	entry 10: binder local global `struct CActionMoveTo` (0x50 bytes) with a long movement parameter; PDB NTCScriptedControl::CActionMoveTo(const C3DVector&, EMovementType, float, bool, bool): namespace + enum port	NF294 skipped-port
+nf294	0x00ce1110	entry 12: 35 generated CEntityScriptBinding rows each declare CActiveEntityScriptBase in a stand-in namespace (EntityScriptBinding_<addr>, ArenaBinding, HenchmenBinding, ExternalRetry) with (CScriptThing*, uint, uint, uint) for the PDB (const CScriptThing&, unsigned __int64, unsigned long): family p	NF294 skipped-port
+nf294	0x0070c280	entry 14: stand-in local `class CAnimateThing` for CAnimSet (engine/CAnimSet.h has it under STRAFE_ACCESSORS_PASS24): stand-in class port	NF294 skipped-port
+nf294	0x00a24d70	entry 15: only stand-in binder 0x00A269C0 is in T3_PORT_QUEUE.tsv; not compiled	NF294 skipped-held
+nf294	0x00a25b20	entry 16: 0x00A26290 is a 2-line `struct OP { int h1(); }` stand-in (catalog CThingFilter_IsInBuilding::operator() calling 0x00A25B20: identity doubt); 0x00A265B0 models a global CAnimationData with virtual Sizeof: port	NF294 skipped-port
+nf294	0x009b4b80	entry 17: binder carries its own `template<class T> class CArray : std::vector<T>` and a strong same-TU DeallocateMemory body with the element CInstantiatedDefInfo global (PDB CDefinitionManager::CInstantiatedDefInfo): same-TU stand-in body + element port	NF294 skipped-port
+nf294	0x009b7b10	entry 18: stand-in struct CCRCVectorMap for CArray<std::pair<unsigned long,unsigned long> > (engine/CArray.h has DEALLOCATEUNUSEDMEMORY): container port	NF294 skipped-port
+nf294	0x009e7c70	entry 19: only stand-in binder 0x009E5C90 is an NF292 ENTRIES target; not compiled	NF294 skipped-held
+nf294	0x00e55ce0	entry 21: binder's own class is a global `class CBS_Teacher : CEntityScriptBase`; the PDB nests it in NScript::CV_BookCollectingScript and AskForBook is private: wrapping renames the binder self (NF282 D2, T3)	NF294 skipped-port
+nf294	0x009cbb90	entry 22: stand-in struct CBankFileAsyncRetail behind the BankFile pointer (engine/CBankFile.h has ALIGN): pointer-type port	NF294 skipped-port
+nf294	0x009cc270	entry 24: m_pBank typed as the stand-in local `class CBankFileAsync`: pointer-type port	NF294 skipped-port
+nf294	0x009cd620	entry 26: local `class CGraphicDataBank` (no CBankFile base) declares AddEntry with UCBankStateBlock: base + class-key port	NF294 skipped-port
+nf294	0x009ce360	entry 27: 0x009C8BF0 CTwoStep_Retail::Method_<addr>; 0x009FEBC0 CBankFileNative stand-in base; 0x00AF15B0 local CBankFile has non-virtual Close_009ce360 where the PDB is virtual (UAE): `virtual` with a table effect on a local model (T3)	NF294 skipped-port
+nf294	0x009ce8d0	entry 28: local stand-in classes CBankFileAsync / CGraphicDataBank (no CBankFile base): ports	NF294 skipped-port
+nf294	0x009cea70	entry 29: as entry 28 (same binders, EndUpdateEntries)	NF294 skipped-port
+nf294	0x009d5620	entry 30: stand-in struct BankFileData for CBankFileAsyncData (engine/CBankFileAsyncData.h has SIZEOF): port	NF294 skipped-port
+nf294	0x00411570	entry 31: three free fastcall stand-ins (Compare_00411570, N006d41f0::Compare, ::Compare) for the protected static template member CBasicString<char>::Compare: each needs the CBasicString template model (KIJ): port	NF294 skipped-port
+nf294	0x004115a0	entry 32: local CBasicString template in namespace X_004fe630 / non-template N006d41f0::CBasicString::Equal: ports	NF294 skipped-port
+nf294	0x009a0080	entry 33: stand-in struct CBasicStringChar for CBasicString<char>: port	NF294 skipped-port
+nf294	0x006b5df0	entry 35: global CBlendedEnvironmentTheme / CElement500_<addr> local models; PDB NEnvironmentInternal::CBlendedEnvironmentTheme (engine/CBlendedEnvironmentTheme.h exists): port	NF294 skipped-port
+nf294	0x008864a0	entry 36: global local `struct CBlendedEnvironmentTheme` in CEnvironment's ctor row; namespace wrap renames other symbols of the model: port onto the shared header	NF294 skipped-port
+nf294	0x004b73a0	entry 37: global `struct CBoast` (+ list model) and CSecond_<addr> element stand-in; PDB CQuestManager::CBoast: nested-class port	NF294 skipped-port
+nf294	0x00459abe	entry 38: free `extern "C" __fastcall CBrainDef_dtor` stand-in for the virtual ??1CBrainDef@@UAE@XZ: port	NF294 skipped-port
+nf294	0x00a0c380	entry 39: free Helper_0x00a0c380(SomeObj*), CTransform and SCameraRecord_<addr> stand-in classes for CCamera: ports	NF294 skipped-port
+nf294	0x00c10940	entry 40: free fastcall FableBaseDtor_c10a10 for the virtual ??1CCardPositionsDef@@UAE@XZ: port (and identity: the binder is a CChunkedFileChunk ctor)	NF294 skipped-port
+nf294	0x00654f80	entry 41: global `struct CChangeText`; nesting it in NPlayerGui::CStatBar also renames the stand-in CChangeTextList::push_front(const CChangeText&) (0x006567EC): port	NF294 skipped-port
+nf294	0x0052c920	entry 42: global local `struct CChangingStateComponent` (PDB NUISystem::CChangingStateComponent, protected virtual MAE): namespace + virtual port	NF294 skipped-port
+nf294	0x0099e4b0	entry 43: CCharString default ctor: four stand-ins (SubB::Release, C3DAnimationBlendState::HelperReset, SubInit::Init, N006d41f0::CCharString), each a different local model; tri4 LIVE: ports	NF294 skipped-port
+nf294	0x0099ec30	entry 44: CCharString copy ctor: about 60 stand-in spellings (namespaced N<addr> / FableCons_ / FableCopy_ CCharString models, Str / WStr / Pair / CRetailString classes); tri4 LIVE for every one: family port	NF294 skipped-port
+nf294	0x0099ed10	entry 45: CCharStringLowerView::ToLower reinterpret view and the X_009eb590 namespaced CCharString model: ports	NF294 skipped-port
+nf294	0x00aa78c0	entry 46: local stand-in bases C3DMeshFileChunk / CChunkedFileSuperChunkBase (virtual WriteToFile): ports	NF294 skipped-port
+nf294	0x00aa7ea0	entry 47: 0x00ABFCD0 free __stdcall FableHasExtHelper (calling convention differs from the PDB thiscall: identity doubt); 0x00AC3E00 stand-in class C3DMeshFileClothChunk: ports	NF294 skipped-port
+nf294	0x00aa84f0	entry 48: AddSubChunk declared on an empty local `class CChunkedFileChunk` with CCountedPointer<struct ...> (U v V): class + key port	NF294 skipped-port
+nf294	0x00aa8830	entry 49: 0x00A98AF0 local CChunkedFileSuperChunk has non-virtual ReadFromFile, the PDB is virtual UAE (T3 form); 0x00AB9C50 stand-in base C3DMeshFileChunk: ports	NF294 skipped-port
+nf294	0x006e8b60	entry 51: local global `struct CCombatRing`; PDB CDefendingCombatantInfo::CCombatRing, and the binder self CCombatWheel::ResetRings is also nested there: binder self port (T3)	NF294 skipped-port
+nf294	0x006e8520	entry 52: only stand-in binder 0x006E93C0 is an NF292 ENTRIES target; not compiled	NF294 skipped-held
+nf294	0x006e8850	entry 53: only stand-in binder 0x006E9680 is an NF292 ENTRIES target; not compiled	NF294 skipped-held
+nf294	0x0052e830	entry 54: stand-in `struct Observer` with ProcessEvent(int) for CComponent::ProcessEvent(EEvent): class + enum port	NF294 skipped-port
+nf294	0x005303f0	entry 55: the only stand-in binder is the self row: global `struct CComponent : CComponentBase, CObserver` with public RemoveObserverRecursive; PDB NUISystem::CComponent, protected (IAE): self port (T3)	NF294 skipped-port
+nf294	0x00533b50	entry 56: four different stand-in parameter types (SComponentRef_<addr>, CComponentPointer, CCountedPointer<..>@NUISystem, CountedPointer) and a stand-in class: ports	NF294 skipped-port
+nf294	0x004cd9c0	entry 57: `typedef long EConversationAttitude` and a free fastcall GetAnimGroupName: the PDB static CConversationAttitude::GetAnimGroupName takes the real enum (W4EConversationAttitude@@): enum + class port	NF294 skipped-port
+nf294	0x00413590	entry 58: pointer stand-in classes CCountedCodeSectionManagerPointer / CCodeSectionManagerPointer (0x004B3A20 is an NF293 ENTRIES target) / CParticleMorphManagerPointer: CCountedPointer<T> port	NF294 skipped-port
+nf294	0x005c1946	entry 59: stand-in CCountedPointer_PerItemData with a global CPerItemData (PDB NInventory::CPerItemData): port	NF294 skipped-port
+nf294	0x00641eb0	entry 60: local CCountedPointer<T> template over a global struct CLightInfo (PDB CTCLight::CLightInfo, class): element port	NF294 skipped-port

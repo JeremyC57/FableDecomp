@@ -1,0 +1,5 @@
+02:01:38 PASS_NOWCHAR /home/user/FableDecomp/rebuild/tests/00/99/CAFile_MakePath_00997780_test.cpp
+02:01:38 PASS /home/user/FableDecomp/rebuild/tests/00/d8/NScriptCQHeroSoulsBriarScriptCBRIARROSEIMPOSTER_Alloc_00d81750_test.cpp
+02:01:38 PASS /home/user/FableDecomp/rebuild/tests/00/9c/CBankFile_EntryExists_009cc190_test.cpp
+02:01:39 PASS /home/user/FableDecomp/rebuild/tests/00/9c/CBankFile_WritePadding_009ccb20_test.cpp
+02:02:46 PASS /home/user/FableDecomp/rebuild/tests/00/71/NTCScriptedControlCActionTalkBase_CActionTalkBase_00717950_test.cpp

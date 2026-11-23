@@ -69,6 +69,12 @@ public:
     // CWideString overload (0x00997620; path in ecx, drive in edx, directory / name / extension pushed).
     static void __fastcall SplitPath(const CWideString&,CWideString*,CWideString*,CWideString*,CWideString*);
 #endif
+#if defined(FABLE_RETAIL_CAFILE_MAKEPATH) && !(defined(FABLE_RETAIL_CAFILE) && defined(FABLE_RETAIL_CAFILE_CREATEDIRECTORY))
+    // NF294 add-only opt-in (row 0x00997800 ReplacePathExtension): Ego_r.pdb / FableWin.pdb ?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z
+    // (0x00997780; hidden result in ecx), static __fastcall, outside the FABLE_RETAIL_CAFILE branch (that branch pulls engine/CArray.h and
+    // with it a /DEFAULTLIB:"libcp" directive). Declaration only; when CREATEDIRECTORY's copy is also on, that one is used.
+    static CWideString __fastcall MakePath(const CWideString& drive,const CWideString& dir,const CWideString& name,const CWideString& ext);   // 0x00997780
+#endif
 #ifdef FABLE_RETAIL_CAFILE
     // Movie row 0x006286F0: Ego_r.pdb + FableWin.pdb ?ConvertPathToFullPath@CAFile@@SI?AVCWideString@@ABV2@@Z (0x00999110; the
     // hidden return slot in ecx, the path in edx). The PDBs' CCharString overload (SI?AVCCharString@@ABV2@@Z) and the

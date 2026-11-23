@@ -1,0 +1,14 @@
+## HEAD set: H_00717bc0.obj H_00717950.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CActionTalkBase@NTCScriptedControl@@QAE@PAVCThing@@_N11@Z
+UNRESOLVED 1 ??1CActionTalkBase@NTCScriptedControl@@UAE@XZ
+UNRESOLVED 1 ?DefaultCameraTagsNeedInitialising@CActionTalkBase@NTCScriptedControl@@2_NA
+UNRESOLVED 1 ?InitialiseDefaultCameraTags@CActionTalkBase@NTCScriptedControl@@CIXXZ
+## new set: N_00717bc0.obj H_00717950.obj
+duplicates 0
+
+UNRESOLVED 1 ??1CActionTalkBase@NTCScriptedControl@@UAE@XZ
+UNRESOLVED 1 ?DefaultCameraTagsNeedInitialising@CActionTalkBase@NTCScriptedControl@@2_NA
+UNRESOLVED 1 ?InitialiseDefaultCameraTags@CActionTalkBase@NTCScriptedControl@@CIXXZ
+LK_DONE

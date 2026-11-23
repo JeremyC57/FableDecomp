@@ -1,0 +1,4 @@
+##### 00997800 renames: ?MakePath@@YI?AVCWideString@@ABV1@000@Z=?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

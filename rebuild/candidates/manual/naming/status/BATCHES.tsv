@@ -35,7 +35,7 @@ T1	standin_alias	vector	19	18		00411910 004df88a 004e34b2 0056d490 005bba94 005e
 T1	standin_alias	CCountedPointer	13	14	engine/CCountedPointer.h	004850f9 0048afb0 0056c0f0 005ed2c0 006174f0 0065d5a0 006e46f0 007180b0 007222b0 0085a5a0 009a4400 00ac3a10 00b230e0
 T1	standin_alias	pair	12	12		00448380 004d6902 004d788d 004dd728 005799fd 005f8736 006b8e20 00825090 00827f80 00a7faf0 00ae98e0 00cd27b4
 T1	standin_alias	GetSubDef	9	9		007086f0 0077e430 007a6ca0 007c8000 007e0540 007e1400 007f9330 007fe5b0 00810c80
-T1	standin_alias	CBankFile	6	5	engine/CBankFile.h	009cb960 009cbfe0 009ce370 009cfbc0 009d1160 009d1260
+T1	standin_alias	CBankFile	7	7	engine/CBankFile.h	009cb960 009cbfe0 009ccb20 009ce370 009cfbc0 009d1160 009d1260
 T1	standin_alias	GetBestTaskForThing	6	6		0065f856 0065f884 00660034 00660062 00660090 006600be
 T1	standin_alias	remove_if	5	5		006603a0 006603dd 0066041a 00660457 00660494
 T1	standin_alias	CCriticalSectionLock	4	2	engine/CCriticalSectionLock.h	00a62920 00a62960 00a62980 00a629a0
@@ -453,18 +453,18 @@ T1	other	GetDef	11	14		0043ff30 00528760 00593666 005c0c99 006a3060 0078b230 007
 T1	other	CCharString	10	146		0099e4b0 0099e960 0099eae0 0099eaf0 0099eb40 0099ebf0 0099ec30 0099ed10 0099efb0 0099f1f0
 T1	other	CWorldMap	10	12	engine/CWorldMap.h	004faff0 004fb490 004fc180 004fc210 004fc560 004fe5b0 00502620 0063a300 0063b7f0 0063e480
 T1	other	LSocket	10	9	engine/LSocket.h	008f8210 008f82e0 008f86f0 008f87a0 008f8870 008f8a80 008f8bb0 008f8c70 008f9780 008fa120
-T1	other	CBankFile	9	16	engine/CBankFile.h	009cbb90 009cc190 009cc270 009ccb20 009ccdc0 009cd620 009ce360 009ce8d0 009cea70
 T1	other	CDataOutputStream	9	15	engine/CDataOutputStream.h	00993e80 00993eb0 00993ee0 00993f30 00993f90 00993fd0 00994230 009959f0 00996610
 T1	other	CTCInventoryItem	9	12	engine/CTCInventoryItem.h	004dc600 005d8e50 005d9630 005d96a0 005d9730 005d97f0 005d98b0 005d9aa0 005d9b90
 T1	other	CUserProfileManager	9	10	engine/CUserProfileManager.h	00406cc0 004071c0 00407370 00407cd0 00408340 004085f0 00409730 0040a740 0040d2a0
-T1	other	CAFile	8	8	engine/CAFile.h	00997780 00998570 00998c90 00998f60 009994a0 00999ab0 00999c50 00999cb0
-T1	other	CCombatManager	8	13	engine/CCombatManager.h	006e92c0 006e93c0 006e9680 006e9700 006e9d10 006ea2c0 006ebdd0 006ed9c0
+T1	other	CBankFile	8	12	engine/CBankFile.h	009cbb90 009cc190 009cc270 009ccdc0 009cd620 009ce360 009ce8d0 009cea70
 T1	other	pair	8	13		004d9d2f 0059256c 00592dfb 005930f3 00a825d0 00bed640 00cba520 00cba700
+T1	other	CAFile	7	7	engine/CAFile.h	00998570 00998c90 00998f60 009994a0 00999ab0 00999c50 00999cb0
+T1	other	CCombatManager	7	12	engine/CCombatManager.h	006e92c0 006e93c0 006e9680 006e9700 006e9d10 006ea2c0 006ebdd0
 T1	other	CTCHeroExperience	7	10	engine/CTCHeroExperience.h	006d63a0 006d6570 006d72d0 006d7f20 006d8170 006d83b0 006d8830
 T1	other	NParticleEngine	7	11		00aeaa00 00aeaa80 00aeaad0 00aeaae0 00aeab00 00aeab10 00aebea0
 T1	other	sort_heap	7	7		00497570 007590c0 0081c7d0 0086c890 009b5af0 00a81d90 00a81e80
 T1	other	CAnimateThing	6	7	engine/CAnimateThing.h	0070c4e0 0070d580 0070d8c0 0070d920 0070e8b0 0070ec30
-T1	other	CBasicString	6	13		00411570 004115a0 009a0080 009a01c0 009a0390 009a0460
+T1	other	CBasicString	6	12		00411570 004115a0 009a0080 009a01c0 009a0390 009a0460
 T1	other	CCombatActionBase	6	21	engine/CCombatActionBase.h	008571c0 008574d0 00857520 00857e40 00859a20 00859ef0
 T1	other	CDisplayManager	6	9	engine/CDisplayManager.h	009be490 009bebb0 009bee00 009bef80 009bf5e0 009c05c0
 T1	other	CIME	6	2		00404a60 00404a80 00404b50 00404c50 00404e10 004051c0
@@ -707,7 +707,7 @@ T1	other	CAIStateGroup_VillageTaskPickCrops	1	1	engine/CAIStateGroup_VillageTask
 T1	other	CAIStateGroup_WanderAroundShops	1	1	engine/CAIStateGroup_WanderAroundShops.h	00947110
 T1	other	CAIStateGroup_WorkBase	1	1	engine/CAIStateGroup_WorkBase.h	00916790
 T1	other	CActionMoveTo	1	1		007e71d0
-T1	other	CActionTalkBase	1	3		00717950
+T1	other	CActionTalkBase	1	2		00717950
 T1	other	CActiveEntityScriptBase	1	35	engine/CActiveEntityScriptBase.h	00ce1110
 T1	other	CAnimEntryLite	1	2		0073a9b0
 T1	other	CAnimFilterOf2Groups	1	1		0073e040
@@ -719,7 +719,6 @@ T1	other	CApplyAdditionalPlayerImpulseToPlayerIfInsideUnpushableCreature	1	1		00
 T1	other	CArmourDef	1	1	engine/CArmourDef.h	004585bd
 T1	other	CAttackHistoryCombo	1	1	engine/CAttackHistoryCombo.h	004e1cfc
 T1	other	CAugmentationDef	1	1	engine/CAugmentationDef.h	00454088
-T1	other	CBRIAR_ROSE_IMPOSTER	1	1		00d81750
 T1	other	CBS_Teacher	1	1		00e55ce0
 T1	other	CBoast	1	2		004b73a0
 T1	other	CBonusItemDef	1	1	engine/CBonusItemDef.h	00453c58

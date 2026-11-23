@@ -1,0 +1,4 @@
+##### 00717bc0 renames: ??0CActionTalkBase@NTCScriptedControl@@QAE@PAVCThing@@_N11@Z=??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=5
+tables H=1 N=1

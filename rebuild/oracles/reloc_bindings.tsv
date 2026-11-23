@@ -2605,7 +2605,6 @@ __CIfmod	00bfeb28	006f99b0
 ?g_someFactor@@3MA	012670d8	007331c0
 ?HasQueuedActions@CThingCreatureBase@@QAE_NXZ	00661f20	007332a0
 ?QueueAction@CThingCreatureBase@@QAEXPAUCCreatureAction@@@Z	00664490	007332a0
-?DeregisterCombatant@CCombatManagerCalls@@QAEXPAUCThingCreatureBase@@@Z	006ed9c0	00733580
 ?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ	00662410	00733580
 ?ResetCombatState@CTCCombat_Methods@@QAEXXZ	007334f0	00733580
 ?FindBlockAbility@CTCCombat_Methods@@QAE_NPAPAUCCombatAbilityEntry@@J@Z	00733620	00733750
@@ -4405,7 +4404,7 @@ _g_emptyCharStringData	0129aaf4	0099ec70
 __vsnprintf	00bfedac	0099f1f0
 @CCharString_Detach@4	0099eaf0	0099f390
 ?Prepare@CThingMapManager@@QAEXXZ	0099eb40	0099f3b0
-?ResizeMap@CThingMap@@QAEXJPAUC2DBoxI@@@Z	009a0460	0099f3b0
+?Append@?$CBasicString@D@@QAEXDK@Z	009a0460	0099f3b0
 ?Truncate@CBasicStringChar@@QAEXK@Z	009a0080	0099f400
 ?g_CCharStringInstanceCount@@3JA	013bd800	0099f450
 ?Format@CCharString@@QAAXPBDZZ	0099f1f0	0099f930
@@ -4922,7 +4921,6 @@ __TI1?AUCFibreException@@	013692f8	00a44740
 ?InsertN@CRetailVector_00a5e6a0@@QAEXPAJKABJ@Z	00a5e3b0	00a5e6a0
 ??_7CPixelShaderData@@6B@	0129d58c	00a5ec40
 ??_U@YAPAXI@Z	00bfeb22	00a5ec40
-?EntryExists@CStreamingFontDataBank_Methods@@QAE_NK@Z	009cc190	00a5eea0
 ?EntrySetUpdate@CStreamingFontDataBank_Methods@@QAE_NK_N@Z	009cc300	00a5eea0
 ??_7CStreamingFontDataBankEntry@@6B@	0129d5b4	00a5f110
 ?Helper@CStreamingFontBankStateBlock@@QAEHPAXH@Z	00a00950	00a5f6a0
@@ -15525,7 +15523,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CActionTalkedTo@NTCScriptedControl@@QAE@PAVCThing@@PAVCBaseObject@@@Z	00712df0	00714d30
 ?GetCurrentMessageText@CActionTalkBase@NTCScriptedControl@@QAE?AVCWideString@@XZ	00713290	00717450
 ??0CActionTalkBase@@QAE@PAVCThing@@_N11@Z	00717950	00717aa0
-??0CActionTalkBase@NTCScriptedControl@@QAE@PAVCThing@@_N11@Z	00717950	00717bc0
+??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z	00717950	00717bc0
 ?GetMessageFromTextIndex@@YI?AVCSubtitledMessage@@KPBD@Z	004cea60	00717c50
 ?M_insert_overflow@CSubtitledMessageArray@@QAEXPAVCSubtitledMessage@@ABV2@ABU__false_type@@K_N@Z	004d2760	00717c50
 ?g_pPlayerGui@NTCScriptedControl@@3PAVCPlayerGui_DonorPDB@@A	013b8790	00717d40
@@ -34128,7 +34126,7 @@ __imp__recvfrom@24	01440518	008f9320
 ?WatchForMissionEnd@CQ_HangingTreeEvilScript@NScript@@QAEXXZ	00d6c3a0	00d6bfa0
 ??_7?$CEntityScriptBinding@VCQ_HeroSoulsBriarScript@NScript@@@@6B@	012d42e4	00d80e40
 ?Alloc@CBriarRose@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d81630	00d80e40
-?Alloc@CBriarRoseImposter@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d81750	00d80e40
+?Alloc@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d81750	00d80e40
 ?Alloc@CHSBMagicBarrier@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d81b60	00d80e40
 ?PlayCutscene@CQ_HeroSoulsBriarScript@NScript@@QAEXVCCharString@@@Z	00d823a0	00d80e40
 ?MakeBanditComment@CQ_HobbeCaveScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z	00d905c0	00d907b0
@@ -37669,7 +37667,6 @@ _s_HeroStateExt	01236a74	004a05c0
 ?GetSubDef@CThingCreatureDef@@QAE_NPAV?$CDefPointer@UCCreatureSoundSubDef@@@@@Z	0065f604	00665f90
 ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z	0066a9d0	00665f90
 ?g_CreatureContinuousSoundVoice@@3JA	013ba874	00665f90
-?MakePath@@YI?AVCWideString@@ABV1@000@Z	00997780	00997800
 ??0CCRCSymbolMap@@QAE@XZ	00a38500	00a01950
 ?LoadBinary@CCRCSymbolMap@@QAEXABVCWideString@@@Z	00a38c20	00a01950
 ?Reset@?$CCountedPointer@VCCRCSymbolMap@@@@QAEXPAVCCRCSymbolMap@@@Z	00a01aa0	00a01950
@@ -38136,7 +38133,6 @@ __beginthread	00bfed3a	0098f3a0
 ??_7CXMVPlayer@@6B@	0129b3bc	009bdb00
 ??0CChecksumCacheFile@@QAE@J@Z	00a60c90	009cd480
 ??0CPackedUIntArray@@QAE@XZ	00a629c0	009cd480
-?WriteZeros@CBankFile@@QAEXK@Z	009ccb20	009ce8d0
 ??1CFileDataOutputStream@@UAE@XZ	00994430	009d4ce0
 ?Erase@CStringMap@@QAEXPAUSRbTreeNode@@@Z	0043020a	009d4ce0
 ?WriteTable@CDefStringTable@@QAEXPAUCFileDataOutputStream@@@Z	009d4a50	009d4ce0

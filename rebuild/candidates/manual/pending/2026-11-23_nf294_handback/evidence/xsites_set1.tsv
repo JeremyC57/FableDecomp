@@ -1,0 +1,48 @@
+00997780	call	004fb050	004faff0L CWorldMap::GetThingFilenameFromLevelFilename
+00997780	call	004fb100	004fb0a0L CWorldMap::GetThingFilenameFromWorldFilename
+009cc190	call	00550594	-
+009cc190	call	005a2853	005a04f7L CTCInventoryTrade::ConstructNormalShopList
+009cc190	call	005a2b14	005a29f4L CTCInventoryTrade::ConstructSpecialShopList
+009cc190	call	005a8eab	005a8c66L CTCInventoryTrade::ConstructActualSpecialInventoryPC
+009cc190	call	0065c9d8	0065c781L CTCVillage::FrameUpdate
+006ed9c0	call	0073359b	00733580L CTCCombat::RemoveFromCombat
+006ed9c0	call	00735645	007355f0L CTCCombat::SetCombatType
+006ed9c0	call	007e5b4c	007e5b40L CTCFireRangedWeaponOnLeavingStateGroup::Cleanup
+009cc190	call	007f4a11	007f4990L CTCHasName::GetNPCShortName
+009cc190	call	007f4b83	007f4b60L CTCHasName::GetNPCNameAndFullTitle
+006ed9c0	call	007fc860	007fc820L CTCKraken::SetPhase
+006ed9c0	call	008345a8	00834530L CThingAICreature::CombatStressTestDebug
+006ed9c0	call	0091d877	0091d850L CAIStateGroup_EnemyCreatureBase::Cleanup
+006ed9c0	call	0093e265	0093e240L CAIStateGroup_MeleeCombatNearby2::Cleanup
+006ed9c0	call	0093e581	0093e560L CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Cleanup
+006ed9c0	call	009540e4	009540c0L CAIStateGroup_MazeBase::OnReplace
+006ed9c0	call	00954a45	00954a20L CAIStateGroup_MazeDefensiveMeleeCombat::OnReplace
+006ed9c0	call	0095c2ae	0095c1f0L CAIStateGroup_HoverHornetQueen::Update
+006ed9c0	call	0095d301	0095d200L CAIStateGroup_RangedCombatUsePreferredFirePoint::Update
+006ed9c0	call	0095d471	0095d3a0L CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace
+006ed9c0	call	00962bf8	00962b80L CAIStateGroup_VersusEnemyBase::OnReplace
+006ed9c0	call	0096ee25	0096edb0L CAIStateGroup_MeleeCombatNearby::Cleanup
+006ed9c0	call	00972135	00972110L CAIStateGroup_JackOfBladesBase::Cleanup
+006ed9c0	call	00977794	00977770L CAIStateGroup_Guildmaster::Cleanup
+006ed9c0	call	0097b7a5	0097b780L CAIStateGroup_ScorpionKing::Cleanup
+00997780	call	00997850	00997800L _global::ReplacePathExtension
+00997780	call	009996f1	00999620L CAFile::CreateDirectoryForFile
+00997780	call	00999b7c	00999ab0L CAFile::IsRoomForFile
+009a0460	call	0099f196	0099f180L CCharString::operator+=
+009a0460	call	0099f3c4	0099f3b0L CCharString::Append
+009a0460	call	009a0a1a	-
+00997780	call	009bd4eb	-
+009ccb20	call	009ccd9c	009cccd0L CBankFile::InternalWriteEntryData
+009ccb20	call	009cd3ab	009cd330L CBankFile::WriteEntryData
+009ccb20	call	009ce57f	009ce370L CBankFile::WriteFileInformation
+009ccb20	call	009ce960	009ce8d0L CBankFile::BeginUpdateEntries
+00a25b20	call	00a26293	00a26290L CThingFilter_IsInBuilding::operator()
+00a25b20	call	00a265b7	00a265b0L C3DAnimationInfo::Sizeof
+00a25b20	jmp	00a2bba0	-
+00a25b20	call	00a2c436	-
+009cc190	call	00a42839	00a42830L CLipSyncDataBank::GetPEntry
+009cc190	call	00a42ac9	00a42ac0L CLipSyncDataBank::BeginLoadingEntry
+009cc190	call	00a42fda	00a42fc0L CLipSyncDataBank::GetLipSyncData
+009cc190	call	00a5eeb3	00a5eea0L CStreamingFontDataBank::AdjustUpdateEntries
+009cc190	call	00bbac7c	00bbac60L CEnginePrimitiveManagerDecal::RenderLandscapeDecal
+009cc190	call	00bc0526	00bc04f0L CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSpri

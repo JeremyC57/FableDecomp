@@ -1,0 +1,7 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00997800	?MakePath@@YI?AVCWideString@@ABV1@000@Z	?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z	0x00997780
+0x00717bc0	??0CActionTalkBase@NTCScriptedControl@@QAE@PAVCThing@@_N11@Z	??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z	0x00717950
+0x00d80e40	?Alloc@CBriarRoseImposter@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	?Alloc@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	0x00d81750
+0x00a5eea0	?EntryExists@CStreamingFontDataBank_Methods@@QAE_NK@Z	?EntryExists@CBankFile@@QBE_NK@Z	0x009cc190
+0x009ce8d0	?WriteZeros@CBankFile@@QAEXK@Z	?WritePadding@CBankFile@@AAEXK@Z	0x009ccb20

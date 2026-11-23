@@ -1,0 +1,14 @@
+## HEAD set: H_00d80e40.obj H_00d81750.obj
+duplicates 0
+
+UNRESOLVED 1 ??1CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@UAE@XZ
+UNRESOLVED 1 ?Alloc@CBriarRoseImposter@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?GetParentScript@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 1 ?Main@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@EAEXXZ
+## new set: N_00d80e40.obj H_00d81750.obj
+duplicates 0
+
+UNRESOLVED 1 ??1CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@UAE@XZ
+UNRESOLVED 1 ?GetParentScript@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 1 ?Main@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@EAEXXZ
+LK_DONE

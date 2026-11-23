@@ -1,0 +1,5 @@
+H 00997780 CAFile::MakePath RELOCATION_MATCH flags= ['/GS'] leaf=?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z
+H 00d81750 NScript::CQ_HeroSoulsBriarScript::CBRIAR_ROSE_IMPOSTER::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+H 009cc190 CBankFile::EntryExists RELOCATION_MATCH flags= [] leaf=
+H 009ccb20 CBankFile::WritePadding RELOCATION_MATCH flags= [] leaf=WritePadding
+GR_DONE
