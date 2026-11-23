@@ -235,14 +235,18 @@ def main():
             else:
                 tier = "T3"
         elif st in ("agree_pdb",) and cn and CAT_STANDIN.search(cn):
-            st, tier = "catalog_standin", "T0"
+            # T0 (catalog / file rename only) needs the row's own Leaf to confirm the PDB spelling; a row with no Leaf line may
+            # still define its stand-in (0x0073D180 / 0x00863090, landing nf295: callers moved, the self row defines
+            # CCountedPointer_0073cc90), and a plain / prefix Leaf can resolve onto the PDB spelling while the object defines a stand-in
+            # (the AutoTinyVirtualObject DeleteData rows, NF284), so only a full mangled Leaf makes it T0; otherwise a T3 self port.
+            st, tier = "catalog_standin", ("T0" if self_leaf and self_leaf in pdb and self_how == "full" else "T3")
         status[t] = st
         good = pd[0] if len(pd) == 1 else ""
         rec[t] = dict(target=t, status=st, tier=tier, landed="y" if t in ent else "n", catalog=cn, self_leaf=self_leaf,
                       pdb_spelling=good, klass=klass(good or self_leaf or (names[0] if names else "")),
                       spellings=" || ".join("%s (%s)" % (s[:160], ",".join(sorted(sp[s])[:6]) + (",..." if len(sp[s]) > 6 else "")) for s in names)[:700],
                       n_spellings=len(names), source=ent.get(t, {}).get("Source", ""),
-                      fix=("catalog" if tier == "T0" else fix_kind(good, [x for x in names if x != good]) if good else
+                      fix=("catalog" if tier == "T0" else "self" if st == "catalog_standin" else fix_kind(good, [x for x in names if x != good]) if good else
                            ("standin" if st == "standin" else "")))
 
     cols = ["target", "status", "tier", "fix", "klass", "n_spellings", "pdb_spelling", "self_leaf", "landed", "catalog", "source", "spellings"]
@@ -297,7 +301,7 @@ def main():
         o.write("| Status | Addresses | Share | Meaning |\n|---|---:|---:|---|\n")
         mean = dict(agree_pdb="one spelling, a PDB name: done", agree_std="one spelling, std / compiler / C name: done",
                     agree_unverified="one spelling, not a PDB name, no stand-in marker: check later",
-                    catalog_standin="code agrees on the PDB name, catalog / file name is a stand-in (T0)",
+                    catalog_standin="callers agree on the PDB name, catalog / file name is a stand-in (T0 when the row's own Leaf confirms it, else T3 self)",
                     standin="one spelling with a stand-in marker: open", split_fixable="2+ spellings, one PDB name: open, target known",
                     split_pdb_multi="2+ PDB names at one address: ruling", split_unknown="2+ spellings, no PDB name: open, research")
         mean["unmeasured"] = "landed row, no caller binding and no usable mangled Leaf line: not measured"
