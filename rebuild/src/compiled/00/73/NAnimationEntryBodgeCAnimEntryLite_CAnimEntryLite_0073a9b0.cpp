@@ -1,4 +1,5 @@
 // CAnimEntryLite::CAnimEntryLite(const CAnimationEntry& entry) -- cache the entry's bank index, transition time, delay time and flags
+// Leaf: ??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073A9B0, length 61 bytes (+ int3 padding).
 // Callees: CAnimationEntry::GetAnimationTransitionInTime() @ 0x005DC1D0 (component type 1 value),
 // CAnimationEntry::GetDelayTime() @ 0x005DC1F0 (component type 2 value; the manifest label is the
@@ -31,15 +32,12 @@ public:
     long GetDelayTime() const;   // 0x005DC1F0
 };
 
-struct CAnimEntryLite {
-    long BankIndex;                             // +0x00
-    long DelayTime;                             // +0x04
-    long TransitionTime;                        // +0x08
-    long AnimFlags;                             // +0x0c
-    CAnimEntryLite(const CAnimationEntry& entry);
-};
+// NF295 (2026-11-23): the shared engine/NAnimationEntryBodge_CAnimEntryLite.h class (same members and offsets) replaces the global
+//   local struct, so the row defines the Ego_r + FableWin ??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z that its
+//   callers 0x00861E60 / 0x008E9190 / 0x00752640 bind (was ??0CAnimEntryLite@@QAE@ABVCAnimationEntry@@@Z).
+#include "engine/NAnimationEntryBodge_CAnimEntryLite.h"
 
-CAnimEntryLite::CAnimEntryLite(const CAnimationEntry& entry)
+NAnimationEntryBodge::CAnimEntryLite::CAnimEntryLite(const CAnimationEntry& entry)
 {
     BankIndex = entry.BankIndex;
     TransitionTime = entry.GetTransitionTime();

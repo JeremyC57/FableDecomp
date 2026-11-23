@@ -1,0 +1,8 @@
+##### 00b6d940 renames: ?SetPositionAssumeWithinSourceChunk@CMemoryDataInputStream@@QAEXK@Z=?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 00846660 renames: ??0CEventTalkedTo@@QAE@PAVCThing@@@Z=??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z
+sections head 17 new 17
+ALL_EQ text_sections_equal=15
+tables H=0 N=0

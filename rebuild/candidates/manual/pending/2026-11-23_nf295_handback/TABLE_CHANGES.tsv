@@ -1,0 +1,15 @@
+action	symbol	target	witness	note
+delete	?AIAction_MoveToPos@CAIStateGroup_NonVillageGuardPatrol@@QAEJJVC3DVector@@AA_NJ_N2PBVCThing@@2M@Z	0097ec00	0093cb20	sole binder of this stand-in respelled by NF295 (the class is the row's own; source census: no other row declares it); PDB line exists (witness 0093b1d0)
+delete	?AIAction_MoveToPos@CAIStateGroupGoToPubMethods@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@PA_NW4EMovementType@@_N4PAVCThing@@4M@Z	0097ec00	0094a6d0	sole binder respelled by NF295 (stand-in class in 1 source); PDB line exists (witness 0093b1d0)
+delete	?AIAction_MoveToPos@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJJVC3DVector@@PA_NJ_N2PAVCThing@@2M@Z	0097ec00	0091e4b0	sole binder respelled by NF295 (stand-in class in 1 source); PDB line exists (witness 0093b1d0)
+delete	?RemoveFromInterface@CAInputProcessCalls@@QAEXXZ	00a0d2d0	00634470	sole binder respelled by NF295 (stand-in in 1 source); PDB line exists (witness 00633420)
+delete	??0CAnimEntryLite@@QAE@ABVCAnimationEntry@@@Z	0073a9b0	008e9190	binder 0x008E9190 and the self row 0x0073A9B0 respelled by NF295; no other landed source declares a global CAnimEntryLite ctor (census); PDB line exists (witness 00861e60)
+delete	??0CAnimEntryLite@@QAE@PBVCAnimationEntry@@@Z	0073a9b0	00752640	sole binder respelled by NF295; PDB line exists (witness 00861e60)
+delete	??0?$CCountedPointer@UCAnimEntryLite@@@@QAE@PAUCAnimEntryLite@@@Z	0073d180	00752640	sole binder respelled by NF295 (0x00753170 forward-declares the global struct but binds no T* ctor: source read); PDB line exists (witness 00861e60)
+delete	??4?$CCountedPointer@UCAnimEntryLite@@@@QAEAAV0@ABV0@@Z	00754f10	00752640	sole binder respelled by NF295; PDB line exists (witness 008621a0)
+delete	?Reset@?$CCountedPointer@UCAnimEntryLite@@@@QAEXPAUCAnimEntryLite@@@Z	00863090	008e9190	sole binder respelled by NF295; PDB line exists (witness 008621a0)
+delete	??0CEventTalkedTo@@QAE@PAVCThing@@@Z	0084af90	00846660	sole binder respelled by NF295 (global CEventTalkedTo appears in no other source); the other stand-in line (witness 00845900, NF292/NF293 witness) stays; no PDB line yet
+add	??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z	0084af90	00846660	Ego_r + FableWin; 0x00846660 now binds it; the owner row 0x0084AF90 defines it (Leaf)
+delete	?Alloc@CGhostGrannyDaughterInLaw@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8be10	00e8b9c0	stale witness: 0x00E8B9C0 HEAD object (RELOCATION_MATCH, NF295) binds only the NScript PDB spelling, whose line already exists with the same witness; Alloc is only address-taken in that Main
+delete	?Alloc@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8bd30	00e8b9c0	stale witness, as above
+delete	?Alloc@CGhostGrannySon@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8ca60	00e8b9c0	stale witness, as above

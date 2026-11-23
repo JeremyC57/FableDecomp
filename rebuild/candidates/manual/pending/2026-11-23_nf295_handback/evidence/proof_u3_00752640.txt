@@ -1,0 +1,20 @@
+# 0x00752640 HEAD v NF295 final (RELEASEDATA opt-in), function COMDATs matched by symbol under the respell
+COMDAT sets same: True 16 16
+??$IS_THING_ALIVE@VCThingCreatureBase@@@@YA_NABQAVCThingCreatureBase@@@Z bytes_equal=True relocs_equal=True
+??0?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@PAVCAnimEntryLite@NAnimationEntryBodge@@@Z bytes_equal=True relocs_equal=True
+??0CAnimFilterBase@@QAE@XZ bytes_equal=True relocs_equal=True
+??0CAnimFilterNoGroup@@QAE@XZ bytes_equal=True relocs_equal=True
+??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z bytes_equal=True relocs_equal=True
+??1?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@XZ bytes_equal=True relocs_equal=True
+??1CAnimFilterBase@@UAE@XZ bytes_equal=True relocs_equal=True
+??1CAnimFilterNoGroup@@UAE@XZ bytes_equal=True relocs_equal=True
+??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z bytes_equal=True relocs_equal=True
+??C?$CDefPointer@$$CBVCAppearanceDef@@@@QBEPBVCAppearanceDef@@XZ bytes_equal=True relocs_equal=True
+??_GCAnimFilterBase@@UAEPAXI@Z bytes_equal=True relocs_equal=True
+??_GCAnimFilterNoGroup@@UAEPAXI@Z bytes_equal=True relocs_equal=True
+?DeleteData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@SIXPAX@Z bytes_equal=True relocs_equal=True
+?InitialiseHeadAnims@CTCLook@@QAEXXZ bytes_equal=True relocs_equal=True
+?ReleaseData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXXZ bytes_equal=False relocs_equal=True
+?ShareData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodg bytes_equal=True relocs_equal=True
+.drectve equal: True
+non-text sections (data / rdata / vtables): [('.drectve', 42), ('.rdata', 12), ('.rdata', 12)] equal bytes: [True, True, True]

@@ -1,0 +1,19 @@
+H 0064dab4 NPlayerGui::CDrawTargetInfo::CDrawTargetInfo RELOCATION_MATCH flags= [] leaf=
+H 00891c80 CGameScriptInterface::UpdateMiniGameInfoBar RELOCATION_MATCH flags= [] leaf=
+H 006df480 CTCTrophy::FrameUpdate RELOCATION_MATCH flags= [] leaf=?FrameUpdate@CTCTrophy@@UAEXXZ
+H 00891c60 CGameScriptInterface::DisplayMiniGameInfo RELOCATION_MATCH flags= [] leaf=
+H 007b0cd0 CTCFishing::FrameUpdate RELOCATION_MATCH flags= [] leaf=?FrameUpdate@CTCFishing@@UAEXXZ
+H 00443080 _global::ScalarDeletingDtor_00443080 RELOCATION_MATCH flags= [] leaf=?CLandscapeBackgroundPatch_vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
+H 00b81230 CEngineClothSimulationAnimatedMesh::CalcAndSetRunState RELOCATION_MATCH flags= [] leaf=
+H 00baf9e0 CEnginePrimitiveManagerSprites::RenderPrimitive RELOCATION_MATCH flags= [] leaf=?CEnginePrimitiveManagerSprites_RenderPrimitive@@YIHPAVCEnginePrimitiveManagerSprites@@HAAVCEngineInternalPrimitiveBase@@HAAVCEngineSubPrimitiveChain@@@Z
+H 00b88ed0 CEngineScreenEffectDisplacementRenderer::Render RELOCATION_MATCH flags= [] leaf=Render
+H 00520c80 CThingManager::OnThingKill RELOCATION_MATCH flags= [] leaf=OnThingKill
+H 007a9fe0 CTCAssassinRush::CreateTrailingEffect RELOCATION_MATCH flags= [] leaf=CreateTrailingEffect
+H 0083af30 CEventHitBy::CEventHitBy RELOCATION_MATCH flags= [] leaf=
+H 00846660 CCreatureAction_Talk::PerformAction RELOCATION_MATCH flags= [] leaf=?PerformAction@CCreatureAction_Talk@@UAEXXZ
+H 00594df4 CTimedEntryArray_00594df4::ResetEntry RELOCATION_MATCH flags= [] leaf=
+H 0049166e CSubtitleRenderer::CSubtitleRenderer RELOCATION_MATCH flags= [] leaf=??0CSubtitleRenderer
+H 0088ece0 CGameScriptInterface::CameraShake RELOCATION_MATCH flags= [] leaf=
+H 00687d10 CInputManager::GetButtonPressureForEvent RELOCATION_MATCH flags= [] leaf=
+H 00e8b9c0 NScript::CV_GhostGrannyNecklaceScript::Main RELOCATION_MATCH flags= [] leaf=?Main@CV_GhostGrannyNecklaceScript@NScript@@UAEXXZ
+GR_DONE

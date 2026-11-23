@@ -1,0 +1,10 @@
+## HEAD set: H_008e9190.obj H_00752640.obj H_0073a9b0.obj H_00863090.obj H_00754f10.obj H_0073d180.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CAnimEntryLite@@QAE@PBVCAnimationEntry@@@Z
+UNRESOLVED 1 ?Reset@?$CCountedPointer@UCAnimEntryLite@@@@QAEXPAUCAnimEntryLite@@@Z
+## new set: N_008e9190.obj N_00752640.obj N_0073a9b0.obj H_00863090.obj H_00754f10.obj H_0073d180.obj
+duplicates 0
+
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@@Z
+LK_DONE

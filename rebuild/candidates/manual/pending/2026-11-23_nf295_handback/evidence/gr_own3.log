@@ -1,0 +1,3 @@
+H 00993c10 CDataInputStream::SetPositionAssumeWithinSourceChunk MATCH flags= [] leaf=
+H 0084af90 NEntityEvents::CEventTalkedTo::CEventTalkedTo RELOCATION_MATCH flags= [] leaf=??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z
+GR_DONE

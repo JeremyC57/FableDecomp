@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9190, 705 bytes (`ret`).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CThingCreatureBase virtual slot 73 (+0x124, HasAnimation(name, bool) -- the landed
 //   CThingAICreature 0x00830F20), CThingCreatureBase::GetAnimFromName(const CCharString&, long) 0x00662A00, operator new 0x00BFEA1A,
-//   CAnimEntryLite::CAnimEntryLite(const CAnimationEntry&) 0x0073A9B0, CCountedPointer<CAnimEntryLite>::Reset(T*) 0x00863090,
+//   CAnimEntryLite::CAnimEntryLite(const CAnimationEntry&) 0x0073A9B0, CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>::Reset(T*) 0x00863090,
 //   operator delete 0x00BFE9BC (the inline count-block release).
 // Data: "PROJECTILE_WEAPON_AIM" 0x01265684, "PROJECTILE_WEAPON_BUILDUP" 0x01287CA0, "PROJECTILE_WEAPON_PULLBACK" 0x01287C84,
 //   "STRAFE_UPPER_BODY" 0x01287C70.
@@ -23,10 +23,10 @@ class CAnimationEntry { public:
     long BankIndex;
     unsigned char _rest[0xc];
 };
-struct CAnimEntryLite {
-    long BankIndex, DelayTime, TransitionTime, AnimFlags;
-    CAnimEntryLite(const CAnimationEntry& entry);       // 0x0073A9B0
-};
+// NF295 (2026-11-23): the shared header's NAnimationEntryBodge::CAnimEntryLite (Ego_r + FableWin
+//   ??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z, 16 bytes) replaces the global local struct; the counted pointer's
+//   Reset 0x00863090 then binds the PDB ?Reset@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@@Z.
+#include "engine/NAnimationEntryBodge_CAnimEntryLite.h"
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
@@ -69,10 +69,10 @@ struct CModeBase {
 namespace NCreatureMode {
 struct CModeStrafe : CModeBase {
     unsigned char _pad1c[0x50 - 0x1c];
-    CCountedPointer<CAnimEntryLite> PAnimProjectileAim;        // +0x50
-    CCountedPointer<CAnimEntryLite> PAnimProjectileBuildUp;    // +0x58
-    CCountedPointer<CAnimEntryLite> PAnimProjectilePullBack;   // +0x60
-    CCountedPointer<CAnimEntryLite> PAnimStrafeUpperBody;      // +0x68
+    CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimProjectileAim;        // +0x50
+    CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimProjectileBuildUp;    // +0x58
+    CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimProjectilePullBack;   // +0x60
+    CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimStrafeUpperBody;      // +0x68
     void SetUpCombinationAnims();
 };
 
@@ -82,22 +82,22 @@ void CModeStrafe::SetUpCombinationAnims()
     PAnimProjectileAim.Clear();
     if (creature->HasAnimation("PROJECTILE_WEAPON_AIM", true)) {
         CAnimationEntry* entry = creature->GetAnimFromName("PROJECTILE_WEAPON_AIM", 0);
-        PAnimProjectileAim.Reset(new CAnimEntryLite(*entry));
+        PAnimProjectileAim.Reset(new NAnimationEntryBodge::CAnimEntryLite(*entry));
     }
     PAnimProjectileBuildUp.Clear();
     if (creature->HasAnimation("PROJECTILE_WEAPON_BUILDUP", true)) {
         CAnimationEntry* entry = creature->GetAnimFromName("PROJECTILE_WEAPON_BUILDUP", 0);
-        PAnimProjectileBuildUp.Reset(new CAnimEntryLite(*entry));
+        PAnimProjectileBuildUp.Reset(new NAnimationEntryBodge::CAnimEntryLite(*entry));
     }
     PAnimProjectilePullBack.Clear();
     if (creature->HasAnimation("PROJECTILE_WEAPON_PULLBACK", true)) {
         CAnimationEntry* entry = creature->GetAnimFromName("PROJECTILE_WEAPON_PULLBACK", 0);
-        PAnimProjectilePullBack.Reset(new CAnimEntryLite(*entry));
+        PAnimProjectilePullBack.Reset(new NAnimationEntryBodge::CAnimEntryLite(*entry));
     }
     PAnimStrafeUpperBody.Clear();
     if (creature->HasAnimation("STRAFE_UPPER_BODY", true)) {
         CAnimationEntry* entry = creature->GetAnimFromName("STRAFE_UPPER_BODY", 0);
-        PAnimStrafeUpperBody.Reset(new CAnimEntryLite(*entry));
+        PAnimStrafeUpperBody.Reset(new NAnimationEntryBodge::CAnimEntryLite(*entry));
     }
 }
 }

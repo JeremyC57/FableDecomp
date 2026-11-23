@@ -16,6 +16,8 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+protected:   // NF295: Ego_r + FableWin ?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z (protected base member; was on CMemoryDataInputStream)
+    void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10
 };
 class CMemoryDataInputStream { public:
     unsigned long StreamPos;                            // +0x04
@@ -27,7 +29,6 @@ class CMemoryDataInputStream { public:
     virtual void v00();
     virtual void v01();
     virtual unsigned long GetPosition();                // slot 2
-    void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10
     static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     FABLE_FORCEINLINE void Read(void* dst, long size)
     {
@@ -56,7 +57,7 @@ class CMemoryDataInputStream { public:
         const unsigned char* data;
         if (IsValidPosition(np)) {
             data = StreamSource + position;
-            SetPositionAssumeWithinSourceChunk(position + size);
+            ((CDataInputStream*)this)->SetPositionAssumeWithinSourceChunk(position + size);
         } else {
             data = 0;
         }

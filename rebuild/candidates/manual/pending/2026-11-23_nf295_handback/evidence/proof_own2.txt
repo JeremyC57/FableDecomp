@@ -1,0 +1,4 @@
+##### 0073a9b0 renames: ??0CAnimEntryLite@@QAE@ABVCAnimationEntry@@@Z=??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0

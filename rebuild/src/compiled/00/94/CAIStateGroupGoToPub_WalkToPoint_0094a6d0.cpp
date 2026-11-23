@@ -11,6 +11,7 @@
 //          (CIntelligentPointer); CRightHandedSet Up +0, Forward +0xC.
 #include "fable_compiler.h"
 #define FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_LOOKATPOS   // NF287: the protected base member 0x0097D580 (declaration only)
+#define FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_MOVETOPOS   // NF295: the protected base member 0x0097EC00 (declaration only)
 #include "engine/CAIStateGroupBase.h"
 class CThing;
 #include "engine/C3DVector.h"
@@ -61,8 +62,8 @@ struct CAIStateGroupGoToPubMethods : CAIStateGroupBase {
     CIntelligentPointer<CThing> PPub;               // +0x14
     CIntelligentPointer<CThing> PBar;               // +0x1c
     CThing* GetCreature() const { return PBrain->PCreature; }
-    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool* reached, EMovementType movement,
-        bool a, bool b, CThing* avoid, bool c, float speed);   // 0x0097EC00
+    // AIAction_MoveToPos 0x0097EC00: the protected CAIStateGroupBase member (NF295 header opt-in above; Ego_r + FableWin IAE spelling,
+    // bool& reached and const CThing* avoid as both PDBs give them: the same pushed values)
     // AIAction_LookAtPos 0x0097D580: the protected CAIStateGroupBase member (header opt-in above; Ego_r + FableWin IAE spelling)
     void FreeBarPoint();                        // 0x00949320
     bool WalkToPoint(const C3DVector& pos, const CRightHandedSet& rhSet);
@@ -75,7 +76,7 @@ bool CAIStateGroupGoToPubMethods::WalkToPoint(const C3DVector& pos, const CRight
         if (!IS_THING_ALIVE(PPub) || !IS_THING_ALIVE(PBar))
             goto failed;
         bool reached;
-        result = AIAction_MoveToPos(AI_ACTION_REPEAT_2, pos, &reached, MOVEMENT_3, true, true, 0, true, 0.0f);
+        result = AIAction_MoveToPos(AI_ACTION_REPEAT_2, pos, reached, MOVEMENT_3, true, true, 0, true, 0.0f);
     } while (result == AI_ACTION_RUNNING);
     if (result == AI_ACTION_SUCCEEDED) {
         C3DVector forward = rhSet.Forward;

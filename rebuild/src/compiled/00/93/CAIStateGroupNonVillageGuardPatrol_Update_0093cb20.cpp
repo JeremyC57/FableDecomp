@@ -14,10 +14,14 @@
 #include "engine/CAIStateGroupBase.h"
 #undef CAIStateGroupBase
 
+class C3DVector; class CThing;
+#include "engine/fable_ai_action_enums.h"   // NF295: EAIActionReturn / EAIActionRepeat / EMovementType (Ego_r enum records)
 class CAIStateGroupBase : public CAIStateGroupBaseLayout
 {
 public:
     void Terminate();   // 0x008FCF40
+protected:              // NF295: Ego_r + FableWin ?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float);   // 0x0097EC00
 };
 #include "engine/_quarantine/CThing.h"
 #include "engine/CBaseObject.h"
@@ -59,7 +63,6 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 };
 struct CAIStateGroup_NonVillageGuardPatrol : CAIStateGroupBase {
     CIntelligentPointer<const CThingTrackNode> CurrentGuardpostThing; // +0x14 CIntelligentPointer<const CThingTrackNode>
-    long AIAction_MoveToPos(long, C3DVector, bool&, long, bool, bool, const CThing*, bool, float);
     void Update();
 };
 
@@ -70,7 +73,7 @@ void CAIStateGroup_NonVillageGuardPatrol::Update()
         return;
     for (;;) {
         const CThingTrackNode* movingNode = (const CThingTrackNode*)CurrentGuardpostThing.GetPItem();
-        long result = AIAction_MoveToPos(2, movingNode->PeekPos(), reached, 3, true, true, 0, true, 0.0f);
+        long result = AIAction_MoveToPos(ACTION_REPEAT_CALLBACK, movingNode->PeekPos(), reached, AI_MOVEMENT_WALKING, true, true, 0, true, 0.0f);
         if (CurrentGuardpostThing.GetPItem() != 0 && result == 4)
             continue;
         if (result != 2) {

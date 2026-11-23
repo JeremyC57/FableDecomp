@@ -1,0 +1,315 @@
+00993c10	call	004c7084	-
+00993c10	call	004ca4e5	004ca390L CThing::ConstructFromBinarySave
+00993c10	call	004ca823	004ca390L CThing::ConstructFromBinarySave
+00993c10	call	0051f7ff	0051f480L NThingManager::CEntityRuntimePersistence::ClearPersistenceDa
+00993c10	call	005207a2	00520670L CThingManager::LoadHeroStateBinary
+00993c10	call	00520929	00520670L CThingManager::LoadHeroStateBinary
+00993c10	call	00520a96	00520670L CThingManager::LoadHeroStateBinary
+00993c10	call	00520b39	00520670L CThingManager::LoadHeroStateBinary
+00993c10	call	0052138e	00521240L CThingManager::LoadEntitiesBinary
+00993c10	call	005214e7	00521240L CThingManager::LoadEntitiesBinary
+00993c10	call	00524fc6	-
+00993c10	call	0052511a	-
+00a0d2d0	call	00633429	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	00633434	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	0063343f	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	0063344a	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	00633455	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	00633460	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	0063346b	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	00633476	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	00633481	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	0063348c	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	00633497	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	006334a2	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	006334ad	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	006334b8	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	006334c3	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	006334ce	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	006334d9	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	006334e4	00633420L CPlayer::UninitModeControlCreature
+00a0d2d0	call	006334f9	006334f0L std::_Dest_val<std::allocator<std::pair<long,CMusicManager::
+00a0d2d0	call	00633504	006334f0L std::_Dest_val<std::allocator<std::pair<long,CMusicManager::
+00a0d2d0	call	00633519	00633510L std::_Dest_val<std::allocator<std::pair<long,CMusicManager::
+00a0d2d0	call	00633524	00633510L std::_Dest_val<std::allocator<std::pair<long,CMusicManager::
+00a0d2d0	call	00633596	-
+00a0d2d0	call	006335a6	-
+00a0d2d0	call	006335d6	-
+00a0d2d0	call	0063365d	-
+00a0d2d0	call	00633679	00633670L CPlayer::UninitModeClickPastText
+00a0d2d0	call	00633684	00633670L CPlayer::UninitModeClickPastText
+00a0d2d0	call	006336b6	-
+00a0d2d0	call	006336e6	006336e0L CPlayer::UninitModeControlSpirit
+00a0d2d0	call	006336f6	006336f0L CPlayer::UninitModeTavernGame
+00a0d2d0	call	00633786	00633780L CPlayer::UninitModeFishing
+00a0d2d0	call	006337b6	006337b0L CPlayer::UninitModeDigging
+00a0d2d0	call	00633839	00633830L CPlayer::UninitModeParalysed
+00a0d2d0	call	00633844	00633830L CPlayer::UninitModeParalysed
+00a0d2d0	call	0063384f	00633830L CPlayer::UninitModeParalysed
+00a0d2d0	call	0063385a	00633830L CPlayer::UninitModeParalysed
+00a0d2d0	call	00633865	00633830L CPlayer::UninitModeParalysed
+00a0d2d0	call	00633870	00633830L CPlayer::UninitModeParalysed
+00a0d2d0	call	00633889	00633880L CPlayer::UninitModeBoastUI
+00a0d2d0	call	00633894	00633880L CPlayer::UninitModeBoastUI
+00a0d2d0	call	0063389f	00633880L CPlayer::UninitModeBoastUI
+00a0d2d0	call	006338aa	00633880L CPlayer::UninitModeBoastUI
+00a0d2d0	call	006338b5	00633880L CPlayer::UninitModeBoastUI
+00a0d2d0	call	006338c0	00633880L CPlayer::UninitModeBoastUI
+00a0d2d0	call	006339b9	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	006339c4	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	006339cf	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	006339da	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	006339e5	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	006339f0	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	006339fb	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	00633a06	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	00633a11	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	00633a1c	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	00633a27	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	00633a32	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	00633a3d	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	00633a48	006339b0L CPlayer::UninitModeBerserk
+00a0d2d0	call	00633a69	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633a74	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633a7f	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633a8a	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633a95	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633aa0	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633aab	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633ab6	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633ac1	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633acc	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633ad7	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633ae2	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633aed	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633af8	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633b03	00633a60L CPlayer::UninitModeQuickAccessMenu
+00a0d2d0	call	00633b19	00633b10L CPlayer::InitModeQuestCompletionUI
+00a0d2d0	call	00633b58	00633b40L CPlayer::UninitModeQuestCompletionUI
+00a0d2d0	call	00633b96	-
+00a0d2d0	call	00633ba6	-
+00a0d2d0	call	00633bb9	00633bb0L CPlayer::UninitModeOracleMinigame
+00a0d2d0	call	00633bc4	00633bb0L CPlayer::UninitModeOracleMinigame
+00a0d2d0	call	00633bd6	00633bd0L CPlayer::UninitModeFireheartMinigame
+00a0d2d0	call	0063441a	-
+00a0d2d0	call	00634425	-
+00a0d2d0	call	00634430	-
+00a0d2d0	call	00634479	00634470L CPlayer::UninitModeChargeQuickAccess
+00a0d2d0	call	00634484	00634470L CPlayer::UninitModeChargeQuickAccess
+00a0d2d0	call	0063448f	00634470L CPlayer::UninitModeChargeQuickAccess
+00a0d2d0	call	0063449a	00634470L CPlayer::UninitModeChargeQuickAccess
+00a0d2d0	call	006344a5	00634470L CPlayer::UninitModeChargeQuickAccess
+00a0d2d0	call	00634552	00634510L CPlayer::UninitModeConsole
+00a0d2d0	call	0063456a	00634560L CPlayer::UninitModeViewHero
+00a0d2d0	call	00634575	00634560L CPlayer::UninitModeViewHero
+00a0d2d0	call	00634580	00634560L CPlayer::UninitModeViewHero
+00a0d2d0	call	00634c1b	-
+00a0d2d0	call	00634c26	-
+00a0d2d0	call	00634d2d	-
+00a0d2d0	call	00634d38	-
+00a0d2d0	call	00634e3d	-
+00a0d2d0	call	00634e48	-
+00a0d2d0	call	00634f3b	-
+00a0d2d0	call	00634f46	-
+00a0d2d0	call	00634fb0	00634f60L CPlayer::InitModeNavigateInventoryMapScreen
+00a0d2d0	call	0063504d	-
+00a0d2d0	call	00635058	-
+00a0d2d0	call	0063516d	-
+00a0d2d0	call	00635178	-
+00a0d2d0	call	00635280	-
+00a0d2d0	call	0063528b	-
+00a0d2d0	call	0063538d	-
+00a0d2d0	call	00635398	-
+00a0d2d0	call	0063549d	-
+00a0d2d0	call	006354a8	-
+00a0d2d0	call	006355b0	-
+00a0d2d0	call	006355bb	-
+00a0d2d0	call	0063584d	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	00635858	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	00635863	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	0063586e	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	00635879	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	00635884	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	0063588f	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	0063589a	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	006358a5	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	006358b0	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	006358bb	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	006358c6	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	006358d1	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	006358dc	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	006358e7	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	006358f2	00635840L CPlayer::UninitModeZTarget
+00a0d2d0	call	00635b3c	00635b30L CPlayer::UninitModeFirstPersonTargeting
+00a0d2d0	call	00635b47	00635b30L CPlayer::UninitModeFirstPersonTargeting
+00a0d2d0	call	00635b52	00635b30L CPlayer::UninitModeFirstPersonTargeting
+00a0d2d0	call	00635b5d	00635b30L CPlayer::UninitModeFirstPersonTargeting
+00a0d2d0	call	00635d7c	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635d87	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635d92	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635d9d	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635da8	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635db3	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635dbe	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635dc9	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635dd4	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635ddf	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635dea	00635d70L CPlayer::UninitModeUseProjectileWeapon
+00a0d2d0	call	00635fca	-
+00a0d2d0	call	00635fd5	-
+00a0d2d0	call	00635fe0	-
+00a0d2d0	call	00635feb	-
+00a0d2d0	call	00635ff6	-
+00a0d2d0	call	00636001	-
+00a0d2d0	call	0063600c	-
+00a0d2d0	call	00636017	-
+00a0d2d0	call	00636022	-
+00a0d2d0	call	0063602d	-
+00a0d2d0	call	00636038	-
+00a0d2d0	call	00636043	-
+00a0d2d0	call	006361aa	-
+00a0d2d0	call	006361b5	-
+00a0d2d0	call	006361c0	-
+00a0d2d0	call	006361cb	-
+00a0d2d0	call	006361d6	-
+00a0d2d0	call	006361e1	-
+00a0d2d0	call	006361ec	-
+00a0d2d0	call	006361f7	-
+00a0d2d0	call	00636202	-
+00a0d2d0	call	0063636d	-
+00a0d2d0	call	006366bc	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	006366c7	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	006366d2	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	006366dd	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	006366e8	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	006366f3	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	006366fe	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	00636709	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	00636714	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	0063671f	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	0063672a	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	00636735	006366b0L CPlayer::UninitModeLightning
+00a0d2d0	call	00636920	-
+00a0d2d0	call	00636a4d	006369b0L CPlayer::UninitModeLiveGUI
+00a0d2d0	call	00636a58	006369b0L CPlayer::UninitModeLiveGUI
+00a0d2d0	call	00636adc	-
+00a0d2d0	call	00636b4f	00636b00L CPlayer::UninitModeTakePhotojournalScreenshot
+00a0d2d0	call	00636d4a	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636d55	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636d60	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636d6b	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636d76	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636d81	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636d8c	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636d97	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636da2	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636dad	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636db8	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636dc3	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636dce	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636dd9	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+00a0d2d0	call	00636de4	00636d40L CPlayer::UninitModePCProjectileWeaponThirdPersonAiming
+0073a9b0	call	0075269e	00752640L CTCLook::InitialiseHeadAnims
+0073d180	call	007526ac	00752640L CTCLook::InitialiseHeadAnims
+00754f10	call	007526b8	00752640L CTCLook::InitialiseHeadAnims
+0073a9b0	call	0075271f	00752640L CTCLook::InitialiseHeadAnims
+0073d180	call	0075272d	00752640L CTCLook::InitialiseHeadAnims
+00754f10	call	00752739	00752640L CTCLook::InitialiseHeadAnims
+0073a9b0	call	007527c3	00752640L CTCLook::InitialiseHeadAnims
+0073d180	call	007527d1	00752640L CTCLook::InitialiseHeadAnims
+00754f10	call	007527dd	00752640L CTCLook::InitialiseHeadAnims
+0073a9b0	call	00752853	00752640L CTCLook::InitialiseHeadAnims
+0073d180	call	00752861	00752640L CTCLook::InitialiseHeadAnims
+00754f10	call	0075286d	00752640L CTCLook::InitialiseHeadAnims
+0084af90	call	008459ab	00845900L CCreatureAction_PlayerInteractionGreet::PerformAction
+0084af90	call	008466df	00846660L CCreatureAction_Talk::PerformAction
+0073a9b0	call	00862037	00861e60L NCreatureMode::GetRandomAnimationFromCreature
+0073d180	call	0086204b	00861e60L NCreatureMode::GetRandomAnimationFromCreature
+0073a9b0	call	008620e6	00861e60L NCreatureMode::GetRandomAnimationFromCreature
+0073d180	call	008620fa	00861e60L NCreatureMode::GetRandomAnimationFromCreature
+0073a9b0	call	008625e1	008621a0L CModeStandBase::OnActivate
+00863090	call	008625f2	008621a0L CModeStandBase::OnActivate
+00754f10	call	00862615	008621a0L CModeStandBase::OnActivate
+00754f10	call	0086262a	008621a0L CModeStandBase::OnActivate
+00754f10	call	0086263d	008621a0L CModeStandBase::OnActivate
+00754f10	call	0086264b	008621a0L CModeStandBase::OnActivate
+00863090	jmp	00863100	-
+0073a9b0	call	008e9233	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+00863090	call	008e923f	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+0073a9b0	call	008e92db	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+00863090	call	008e92e7	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+0073a9b0	call	008e9383	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+00863090	call	008e938f	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+0073a9b0	call	008e942c	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+00863090	call	008e9434	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+00863090	call	008e9445	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+0097ec00	call	0090bde7	0090bd40L CAIStateGroup_MinionWorkInInn::CleanBench
+0097ec00	call	009117b5	00911710L CAIStateGroup_Wander::Update
+0097ec00	call	00911945	009118a0L CAIStateGroup_ChickenWander::Update
+0097ec00	call	00911b6b	00911a90L CAIStateGroup_WanderAroundInitialPos::Update
+0097ec00	call	0091455c	00914460L CAIStateGroup_BirdGroundWander::Update
+0097ec00	call	00914e95	-
+0097ec00	call	0091609c	00915b60L CAIStateGroup_MoveGoodsBase::PlaceGoods
+0097ec00	call	00917f67	-
+0097ec00	call	0091b27d	0091b190L CAIStateGroup_HandyMan::Update
+0097ec00	call	0091e01d	0091ddd0L CAIStateGroup_HoverAllAroundTest::Update
+0097ec00	call	0091e4e4	0091e4b0L CAIStateGroup_MinionLeaveRegion::Update
+0097ec00	call	0091f401	0091f140L CAIStateGroup_TestTestTest::Update
+0097ec00	call	00922b69	00922860L CAIStateGroup_Drunk::Update
+0097ec00	call	00922db5	00922860L CAIStateGroup_Drunk::Update
+0097ec00	call	00922ff4	00922fc0L CAIStateGroup_ServeFood::WalkTo
+0097ec00	call	00927251	-
+0097ec00	call	009293a6	00929340L CAIStateGroup_BanditPlayDice::Update
+0097ec00	call	0092ad62	0092ace0L CAIStateGroup_ApprenticeHero::GoToLibrary
+0097ec00	call	0092d95a	0092d7c0L CAIStateGroup_GoToBed::Update
+0097ec00	call	0092ec35	0092ea90L CAIStateGroup_MinionFindPersonalSpace::Update
+0097ec00	call	00931cbd	-
+0097ec00	call	00932047	-
+0097ec00	call	009386ce	009385f0L CAIStateGroup_UsesSeat::MoveToSeat
+0097ec00	call	00939395	009392a0L CAIStateGroup_SitRoundCampfire::Update
+0097ec00	call	0093b3ac	0093b1d0L CAIStateGroup_BanditSitRoundCampfire::Update
+0097ec00	call	0093cb88	0093cb20L CAIStateGroup_NonVillageGuardPatrol::Update
+0097ec00	call	0093eb85	0093ea90L CAIStateGroup_VillageTaskTorch::Update
+0097ec00	call	0093fe41	-
+0097ec00	call	009400cb	-
+0097ec00	call	00940e9b	-
+0097ec00	call	00940f7e	-
+0097ec00	call	00941733	00941690L CAIStateGroup_KidPlayHopscotch::Update
+0097ec00	call	0094498b	00944940L CAIStateGroup_WorkSawingWood::Update
+0097ec00	call	0094509d	00945060L CAIStateGroup_WorkHammerAnvil::Update
+0097ec00	call	00945998	-
+0097ec00	call	009461c2	00946190L CAIStateGroup_PrepareMeal::Update
+0097ec00	call	00946954	00946850L CAIStateGroup_LightHomeCandle::Update
+0097ec00	call	009496be	00949580L CAIStateGroup_GoToPub::WalktoSeatAndSit
+0097ec00	call	0094a753	0094a6d0L CAIStateGroup_GoToPub::WalkToPoint
+0097ec00	call	00957e2b	00957db0L CAIStateGroup_MinionBehaviourCrowdBase::Update
+0097ec00	call	009632d1	-
+0097ec00	call	00963b41	-
+0097ec00	call	00964058	-
+0097ec00	call	0096491c	009647c0L CAIStateGroup_StealStealableItem::Update
+0097ec00	call	00965a0c	009658b0L CAIStateGroup_RecoverStealableItem::Update
+0097ec00	call	00966506	-
+0097ec00	call	00967838	009677a0L CAIStateGroup_TavernServer::WalkToPoint
+0097ec00	call	009682b3	00968230L CAIStateGroup_TavernKeeper::WalkToPoint
+0097ec00	call	0096c912	0096c880L CAIStateGroup_EatAtTable::WalkTo
+0097ec00	call	0096ecf4	0096ec10L CAIStateGroup_MeleeCombatNearby::MoveToEnemyCreatureCombatPo
+0097ec00	call	0097f4b9	0097f3a0L CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToPos
+0097ec00	call	0097f6df	0097f690L CAIStateGroupBase::AIAction_MoveToPreCalcRoute
+0097ec00	call	0097f73d	0097f690L CAIStateGroupBase::AIAction_MoveToPreCalcRoute
+0097ec00	call	0097f7cf	0097f780L CAIStateGroupBase::AIAction_MoveToPreCalcRouteProximity
+0097ec00	call	0097f9f4	0097f870L CAIStateGroupBase::AIAction_MinionWander
+0097ec00	call	0097fd6b	0097fbe0L CAIStateGroupBase::AIAction_RunAwayFrom
+0097ec00	call	0097fe24	0097fbe0L CAIStateGroupBase::AIAction_RunAwayFrom
+0097ec00	call	00980704	009804a0L CAIStateGroupBase::AIAction_FleeToThingProximity
+0097ec00	call	00980a19	00980770L CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFa
+0097ec00	call	009819c8	-
+00993c10	call	009baf51	009bae70L CPersistContext::ReadSection
+00a0d2d0	call	00a0d588	00a0d530L CInputProcessManager::RemoveAllInputProcesses
+00a0d2d0	call	00a0d648	00a0d5f0L CInputProcessManager::RemoveAllInputProcesses
+00993c10	call	00b6d8e0	-
+00993c10	call	00b6daaa	00b6d940L CEngineWaterRenderer::LoadCompressedBuffer
+00993c10	call	00bde9df	00bde860L CLocalDetailCacheMap::CObjectCacheGroupCollection::LoadConte
+00993c10	call	00be8a27	00be8920L CLandscapeBackgroundPatch::LoadCompressed
+00993c10	call	00be935d	00be91e0L CWaterSeaGenerator::LoadSea
+00993c10	call	00be9443	00be91e0L CWaterSeaGenerator::LoadSea
+00993c10	call	00bf3d3e	00bf3b60L CEngineLandscapePatch::LoadForegroundPatch

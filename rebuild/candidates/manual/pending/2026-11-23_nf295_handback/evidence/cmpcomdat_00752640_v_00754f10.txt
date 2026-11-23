@@ -1,0 +1,3 @@
+??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z bytes_equal=True relocs_equal=True sizes=72/72
+?ReleaseData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXXZ bytes_equal=False relocs_equal=True sizes=53/53
+?ShareData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodg bytes_equal=True relocs_equal=True sizes=67/67

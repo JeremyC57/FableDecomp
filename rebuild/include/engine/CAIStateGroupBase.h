@@ -334,12 +334,26 @@ class CCharStringData;
 class C3DVector;
 enum EAIActionReturn; enum EAIActionRepeat;
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_MOVETOPOS
+// NF295 add-only opt-in (2026-11-23, binder 0x0094A6D0 CAIStateGroup_GoToPub::WalkToPoint, whose local struct derives this flat view):
+// declaration only of the protected base member AIAction_MoveToPos 0x0097EC00, Ego_r.pdb + FableWin.pdb
+// ?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z
+// (protected; a member's mangling carries no class key, so the flat view gives the PDB spelling). MS forward enums; the row defines
+// the enumerators it uses.
+class C3DVector; class CThing;
+enum EAIActionReturn; enum EAIActionRepeat; enum EMovementType;
+#endif
 
 #pragma pack(push, 1)
 class CAIStateGroupBase {
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_LOOKATPOS
 protected:
     EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_MOVETOPOS
+protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& reached, EMovementType movement, bool a, bool b,
+                                       const CThing* avoid, bool c, float speed);                         // 0x0097EC00
 #endif
 public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject

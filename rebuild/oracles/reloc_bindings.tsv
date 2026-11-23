@@ -8897,7 +8897,6 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ?FrameUpdate@CModeBase@@QAEXXZ	0073ac50	008e0d20
 ?Recover@CModeScorpionKingTailPlunge@NCreatureMode@@QAEXXZ	008df510	008e0d20
 ?Spike@CModeScorpionKingTailPlunge@NCreatureMode@@QAEXXZ	008da0f0	008e0d20
-?Reset@?$CCountedPointer@UCAnimEntryLite@@@@QAEXPAUCAnimEntryLite@@@Z	00863090	008e9190
 ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ	004874d0	008e9460
 ??1C3DAnimationInfo@@QAE@XZ	00a25970	00a26d40
 ??1C3DMeshInfo@@QAE@XZ	00a24930	00a26d40
@@ -16092,7 +16091,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCreatureAction_BriarRoseConcentrateOutof@@QAE@PAVCThingCreatureBase@@0@Z	008c2cb0	008e8760
 ??0CCreatureAction_BriarRoseConcentrateInto@@QAE@PAVCThingCreatureBase@@PAVCBaseObject@@_N@Z	008e8bb0	008e8940
 ?GetStrafeAnimationName@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z	008e8e50	008e9110
-??0CAnimEntryLite@@QAE@ABVCAnimationEntry@@@Z	0073a9b0	008e9190
 ?IsValidRangedWeaponTargetForShooter@@YI_NPAVCThing@@0M@Z	0085f8d0	008e9460
 ?FindCombinationAnim@CAnimateThing@@QAEPAVCAnimSet@@J@Z	0070c4e0	008e9710
 ?ChangeMesh@CTCDegradableBase@@QAEXABVCEngineGraphic@@@Z	008ec9c0	008ecac0
@@ -16229,7 +16227,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?FindMostRecentMessage_00939cb0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00939cb0	00939d70
 ?GetDeedFromHandle@CTCHeroOpinionDeedLog@@QBEPBVCOpinionDeed@@J@Z	006c58f0	0093a3c0
 ??_7?$CIntelligentPointer@$$CBVCThingTrackNode@@@@6B@	0125a894	0093cb20
-?AIAction_MoveToPos@CAIStateGroup_NonVillageGuardPatrol@@QAEJJVC3DVector@@AA_NJ_N2PBVCThing@@2M@Z	0097ec00	0093cb20
 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ	006a4d00	0093cb20
 ?PeekTrackStartNode@CThingTrackNode@@QBEPBV1@XZ	00836da0	0093cb20
 ?PeekWorldMap@CAIStateGroupBase@@QAEPAVCWorldMap@@XZ	008fcff0	0093d720
@@ -16257,7 +16254,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetPickupSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3_N@Z	007ba000	009492a0
 ?PlayAnims@CAIStateGroup_GoToPub@@QAE_NABVCCharString@@00M@Z	00948ef0	0094a0e0
 ?PlayAnims@CAIStateGroup_GoToPub@@QAE_NABVCCharString@@00J@Z	00948d40	0094a190
-?AIAction_MoveToPos@CAIStateGroupGoToPubMethods@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@PA_NW4EMovementType@@_N4PAVCThing@@4M@Z	0097ec00	0094a6d0
 ?WalkToPoint@CAIStateGroup_GoToPub@@QAE_NPAVC3DVector@@PAVCRightHandedSet@@@Z	0094a6d0	0094aac0
 ??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@VCIsBenchWithOnePerson@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@0@U10@0VCIsBenchWithOnePerson@@@Z	0094ba90	0094b840
 ?AutoPlaceNear@CCreaturePlacementMethods@@QAE_NABVC3DVector@@M@Z	00665df0	0094c850
@@ -16929,9 +16925,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??_7?$CSpawnedFunc0@VCV_ExposeMayorScript@NScript@@@@6B@	012e96e0	00e76920
 ??_7?$CSpawnedFunc1@VCV_ExposeMayorScript@NScript@@J@@6B@	012e9924	00e76920
 ??_7?$CSpawnedFunc0@VCV_FishingCompetitionScript@NScript@@@@6B@	012ea48c	00e7f030
-?Alloc@CGhostGrannyDaughterInLaw@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8be10	00e8b9c0
-?Alloc@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8bd30	00e8b9c0
-?Alloc@CGhostGrannySon@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e8ca60	00e8b9c0
 ?Alloc@CMurderTwistBrother@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaaf10	00ea8830
 ?Alloc@CMurderTwistBrotherFriend@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eac4e0	00ea8830
 ?Alloc@CMurderTwistBrotherOlder@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaba10	00ea8830
@@ -26572,7 +26565,6 @@ _MusicFadeTimes	0137fae8	006bd9b0
 ?GetDefinitionManager@CThing@@QBEPAVCDefinitionManager@@XZ	004c7990	0083cc10
 ??_7CEventOpenedChest@NEntityEvents@@6B@	01274258	008448e0
 ??0CEventShownItem@NEntityEvents@@QAE@PAVCThing@@0@Z	0084aee0	00845270
-??0CEventTalkedTo@@QAE@PAVCThing@@@Z	0084af90	00846660
 ?SetHasInformation@CThingAICreature@@QAEX_N000@Z	00830eb0	00846660
 ?Initialise@CCombatActionBase@@UAEXXZ	00857520	00855430
 ??_7CEventMissedStrike@@6B@	01277874	0087cb10
@@ -26979,7 +26971,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?OpenPCPhotojournal@CTCInventory@@QAEXXZ	0058f9bc	0062c7a0
 ?OpenActualBuyInventoryPC@CTCInventoryTrade@@QAEXXZ	005ae972	0062c7f0
 ?OpenActualSellInventoryPC@CTCInventoryTrade@@QAEXXZ	005ac0ee	0062c840
-?RemoveFromInterface@CAInputProcessCalls@@QAEXXZ	00a0d2d0	00634470
 ??$?0UCQuestInfoElementCounter@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@1@@Z	00654bc0	0064fc23
 ??$?0UCQuestInfoElementMiniGameBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementMiniGameBar@NPlayerGui@@@1@@Z	00654c8f	0064fc23
 ??0?$CCountedPointer@UCQuestInfoElementMiniGameBar@NPlayerGui@@@NPlayerGui@@QAE@PAUCQuestInfoElementMiniGameBar@1@@Z	00656f2f	0064fc23
@@ -27755,9 +27746,6 @@ _g_LookAtTurnSpeed	0138cba8	0092ace0
 ?g_vector_scale@@3MA	01238170	0074e080
 ??0CTCContainerRewardHero_Calls@@QAE@PAVCThing@@@Z	0074e6b0	007508d0
 ??_7CTCChest@@6B@	0126957c	007508d0
-??0?$CCountedPointer@UCAnimEntryLite@@@@QAE@PAUCAnimEntryLite@@@Z	0073d180	00752640
-??0CAnimEntryLite@@QAE@PBVCAnimationEntry@@@Z	0073a9b0	00752640
-??4?$CCountedPointer@UCAnimEntryLite@@@@QAEAAV0@ABV0@@Z	00754f10	00752640
 ?ST_HEAD_TURN_H@@3VCCharString@@B	013bace4	00752640
 ?ST_HEAD_TURN_V@@3VCCharString@@B	013bace8	00752640
 ??_7CTCDRegionExit@@6B@	0126ab54	00778fa0
@@ -36779,7 +36767,6 @@ _time	00bfed22	008405f0
 ?NewCreatureInteraction@CThingCreatureBase@@QAEXJ@Z	00662970	0091a9b0
 ?RemoveFromCreatureInteraction@CThingCreatureBase@@QAEXXZ	006629b0	0091a9b0
 ?AIAction_DoNothing@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJXZ	0097e200	0091e4b0
-?AIAction_MoveToPos@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJJVC3DVector@@PA_NJ_N2PAVCThing@@2M@Z	0097ec00	0091e4b0
 ?GetAllRegionNodes@CThingSearchToolsMethods@@QAEXABUCThingFilter_IsRegionNode@@PAUThingVector@@@Z	0091e660	0091e4b0
 ?Drink@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	0093a8c0	0093ad70
 ?Eat@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	0093a5c0	0093ad70
@@ -39408,3 +39395,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ?UnregisterBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z	009d5a30	009d66a0
 ?GetNavPreferredAt@CMap@@QBE_NABVC2DCoordI@@@Z	0081f630	0063a760
 ?GetMouseWheelMovement@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z	00687d40	00690030
+??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z	0084af90	00846660

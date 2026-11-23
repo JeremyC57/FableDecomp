@@ -363,3 +363,4 @@ date	account	item	kind	status	note
 2026-11-23	A	tracker batch T1 other class/ns 1	naming	done	agent NF294 landed 5 rows + 1 header opt-in + 7 table lines (batches/2026-11-23_landing_nf294); continuation NF295
 2026-11-23	A	tracker batch T1 other made-up names 1	naming	done	agent NF292 landed 47 rows + 4 header opt-ins (batches/2026-11-23_landing_nf292); continuation NF296
 2026-11-23	A	tracker batch T1 signature 2	naming	done	agent NF293 landed 51 rows + 3 header opt-ins (batches/2026-11-23_landing_nf293); continuation NF297; five family units queued T3
+2026-11-23	A	tracker batch T1 other class/ns 2	naming	done	agent NF295 landed 9 rows + 1 header opt-in (batches/2026-11-23_landing_nf295); continuation NF298

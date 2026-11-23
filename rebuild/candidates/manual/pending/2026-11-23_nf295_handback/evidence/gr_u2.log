@@ -1,0 +1,3 @@
+N 00b6d940 CEngineWaterRenderer::LoadCompressedBuffer RELOCATION_MATCH flags= [] leaf=LoadCompressedBuffer
+N 00846660 CCreatureAction_Talk::PerformAction RELOCATION_MATCH flags= [] leaf=?PerformAction@CCreatureAction_Talk@@UAEXXZ
+GR_DONE

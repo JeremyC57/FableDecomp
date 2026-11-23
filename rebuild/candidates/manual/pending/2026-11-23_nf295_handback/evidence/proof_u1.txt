@@ -1,0 +1,26 @@
+##### 0093cb20 renames: ?AIAction_MoveToPos@CAIStateGroup_NonVillageGuardPatrol@@QAEJJVC3DVector@@AA_NJ_N2PBVCThing@@2M@Z=?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=6
+tables H=1 N=1
+##### 0094a6d0 renames: ?AIAction_MoveToPos@CAIStateGroupGoToPubMethods@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@PA_NW4EMovementType@@_N4PAVCThing@@4M@Z=?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 0091e4b0 renames: ?AIAction_MoveToPos@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJJVC3DVector@@PA_NJ_N2PAVCThing@@2M@Z=?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00634470 renames: ?RemoveFromInterface@CAInputProcessCalls@@QAEXXZ=??C?$scoped_ptr@VCInputProcessCameraLookAround@@@boost@@QBEPAVCInputProcessCameraLookAround@@XZ =??C?$scoped_ptr@VCInputProcessControlCreatureRightStick@@@boost@@QBEPAVCInputProcessControlCreatureRightStick@@XZ =??C?$scoped_ptr@VCInputProcessCycleSpecialCameraModes@@@boost@@QBEPAVCInputProcessCycleSpecialCameraModes@@XZ =??C?$scoped_ptr@VCInputProcessDebugControls@@@boost@@QBEPAVCInputProcessDebugControls@@XZ =??C?$scoped_ptr@VCInputProcessQuickAccessItems@@@boost@@QBEPAVCInputProcessQuickAccessItems@@XZ =?RemoveFromInterface@CAInputProcess@@QAEXXZ
+sections head 2 new 7
+DIFF section count
+DIFF 1 .text .text bytes False relocs False 71 3
+bad 2 text_sections_equal=0
+tables H=0 N=0
+##### 008e9190 renames: ??0CAnimEntryLite@@QAE@ABVCAnimationEntry@@@Z=??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z ?Clear@?$CCountedPointer@UCAnimEntryLite@@@@QAEXXZ=?Clear@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXXZ ?Reset@?$CCountedPointer@UCAnimEntryLite@@@@QAEXPAUCAnimEntryLite@@@Z=?Reset@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00752640 renames: ??0?$CCountedPointer@UCAnimEntryLite@@@@QAE@PAUCAnimEntryLite@@@Z=??0?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@PAVCAnimEntryLite@NAnimationEntryBodge@@@Z ??0CAnimEntryLite@@QAE@PBVCAnimationEntry@@@Z=??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z ??1?$CCountedPointer@UCAnimEntryLite@@@@QAE@XZ=??1?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@XZ ??4?$CCountedPointer@UCAnimEntryLite@@@@QAEAAV0@ABV0@@Z=??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z ?DeleteData@?$CCountedPointer@UCAnimEntryLite@@@@SIXPAX@Z=?DeleteData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@SIXPAX@Z ?ReleaseData@?$CCountedPointer@UCAnimEntryLite@@@@QAEXXZ=?ReleaseData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXXZ ?ShareData@?$CCountedPointer@UCAnimEntryLite@@@@QAEXPAUCAnimEntryLite@@PAVCCPPointerInfo@@@Z=?ShareData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@PAVCCPPointerInfo@@@Z
+sections head 19 new 19
+ALL_EQ text_sections_equal=16
+tables H=2 N=2

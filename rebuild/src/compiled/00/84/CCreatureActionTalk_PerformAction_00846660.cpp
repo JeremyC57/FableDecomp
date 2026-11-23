@@ -27,11 +27,13 @@ class CBaseObjectPointer;
 
 namespace NEntityEvents {
 class CEventBase { public: };
-}
-struct CEventTalkedTo : NEntityEvents::CEventBase {
+// NF295: nested in NEntityEvents and taking CThing& as both PDBs give it (Ego_r + FableWin ??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z;
+//   the same pushed value); was the global CEventTalkedTo(CThing*). The ctor is this local model's only symbol.
+class CEventTalkedTo : public CEventBase { public:
     unsigned char _pad[0x10];
-    CEventTalkedTo(CThing* talker);             // 0x0084AF90
+    CEventTalkedTo(CThing& talker);             // 0x0084AF90
 };
+}
 class CTCEntityEvents { public:
     void AddEvent(NEntityEvents::CEventBase* event);           // 0x008113C0
 };
@@ -56,7 +58,7 @@ void CCreatureAction_Talk::PerformAction()
         CThingAICreature* creature = (CThingAICreature*)PTarget.Get();
         CTCEntityEvents* events;
         if (creature && creature->GetTC(TCI_ENTITY_EVENTS, &events)) {
-            events->AddEvent(new CEventTalkedTo(PCreature.Get()));
+            events->AddEvent(new NEntityEvents::CEventTalkedTo(*PCreature.Get()));
             creature->SetHasInformation(false, false, true, false);
         }
     }

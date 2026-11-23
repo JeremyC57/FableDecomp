@@ -1,0 +1,10 @@
+## HEAD set: H_0093cb20.obj H_0094a6d0.obj H_0091e4b0.obj H_0097ec00.obj
+duplicates 0
+
+UNRESOLVED 1 ?AIAction_MoveToPos@CAIStateGroupGoToPubMethods@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@PA_NW4EMovementType@@_N4PAVCThing@@4M@Z
+UNRESOLVED 1 ?AIAction_MoveToPos@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJJVC3DVector@@PA_NJ_N2PAVCThing@@2M@Z
+UNRESOLVED 1 ?AIAction_MoveToPos@CAIStateGroup_NonVillageGuardPatrol@@QAEJJVC3DVector@@AA_NJ_N2PBVCThing@@2M@Z
+## new set: N_0093cb20.obj N_0094a6d0.obj N_0091e4b0.obj H_0097ec00.obj
+duplicates 0
+
+LK_DONE

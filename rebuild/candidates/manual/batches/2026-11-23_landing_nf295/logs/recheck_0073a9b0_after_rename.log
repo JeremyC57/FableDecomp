@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0073a9b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentFlags (engine/CAnimComponentFlags.h)
+0073a9b0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+0073a9b0   WARN RELOC_NAME: ?GetFlagsComponent@CAnimationEntry@@QBEXPAPAVCAnimComponentFlags@@@Z -> 005e0380 labelled 'CAnimationEntry::GetComponent<CAnimComponentFlags>'
+0073a9b0   RELOCATION_MATCH PASS   CAnimEntryLite
+
+WINS: 1
+  0073a9b0 RELOCATION_MATCH NAnimationEntryBodge::CAnimEntryLite::??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z

@@ -9,6 +9,8 @@
 #undef CAIStateGroup_MinionLeaveRegion
 
 class CWorld;
+class C3DVector; class CThing;
+#include "engine/fable_ai_action_enums.h"   // NF295: EAIActionReturn / EAIActionRepeat / EMovementType (Ego_r enum records)
 class CAIStateGroupBase
 {
 protected:
@@ -17,6 +19,8 @@ public:
     void Terminate();   // 0x008FCF40
 protected:
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+    // NF295: Ego_r + FableWin ?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z (protected)
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float);   // 0x0097EC00
 };
 class CAIStateGroup_MinionLeaveRegion : public CAIStateGroupBase, public CAIStateGroup_MinionLeaveRegionLayout
 {
@@ -68,13 +72,12 @@ long __fastcall GFROR13(unsigned long);   // 0x00497890
 struct CAIStateGroup_MinionLeaveRegion_Adapter : CAIStateGroup_MinionLeaveRegion {
  CAIBrain* Brain() { return *(CAIBrain**)&_pad_0x04[0]; }
  C3DVector& ExitPosition() { return *(C3DVector*)&ExitPoint_X; }
- long AIAction_MoveToPos(long,C3DVector,bool*,long,bool,bool,CThing*,bool,float);
  long AIAction_DoNothing(); void Update();
  FABLE_FORCEINLINE void GetNodes(const CThingFilter_IsRegionNode& filter,ThingVector* nodes) { CWorld* world=&GetWorld(); ((CThingSearchToolsMethods*)world->PThingSearchTools_ptr)->GetAllRegionNodes(filter,nodes); }
 };
 void CAIStateGroup_MinionLeaveRegion_Adapter::Update() {
  bool reached;
- if(AIAction_MoveToPos(1,ExitPosition(),&reached,3,true,true,0,true,0.0f)!=2) { Terminate(); return; }
+ if(AIAction_MoveToPos(ACTION_REPEAT_UNTIL_FINISHED,ExitPosition(),reached,AI_MOVEMENT_WALKING,true,true,0,true,0.0f)!=2) { Terminate(); return; }
  ((CThing*)Brain()->Creature)->SetInLimbo(true);
  ((CBrainVirtual*)Brain())->SuspendSuspendableProcess();
  while(AIAction_DoNothing()==4) {}

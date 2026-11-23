@@ -191012,9 +191012,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073a9b0'
-        Module = 'CAnimEntryLite'
-        Source = '00/73/CAnimEntryLite_CAnimEntryLite_0073a9b0.cpp'
-        TestSource = '00/73/CAnimEntryLite_CAnimEntryLite_0073a9b0_test.cpp'
+        Module = 'NAnimationEntryBodge::CAnimEntryLite'
+        Source = '00/73/NAnimationEntryBodgeCAnimEntryLite_CAnimEntryLite_0073a9b0.cpp'
+        TestSource = '00/73/NAnimationEntryBodgeCAnimEntryLite_CAnimEntryLite_0073a9b0_test.cpp'
         PassPattern = '0073a9b0_TEST PASS'
     }
     [pscustomobject]@{
