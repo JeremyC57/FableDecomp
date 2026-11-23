@@ -157,3 +157,28 @@ The other buckets are unchanged. Done is 29,936 (46.7%), down from 49.1%: the ol
   virtual destructor plus a made-up non-inline helper `void* MakeOne() { return new X; }`. **Owner ruling needed** on that construct: a
   made-up global function in every such row, colliding at a full link if two rows share the helper name. The alternative is a construct
   that leaves only COMDATs.
+
+### Rulings (owner asked the coordinator to decide with the advisor) and their effect
+
+- **Spelling:** `??_G` / `??_E` per address. The class comes from the RTTI slot, the kind from the retail body, the tail from the donor
+  name. 910 of the 1,538 `??_G` spellings are in a PDB set and 628 are not (counted with the donor tail kept). The earlier "585, a
+  different toolchain" figure and explanation are withdrawn.
+- **Emission:** none at scale. Every forcing construct also defines a fake `??0X` and a truncated `??_7X`, while with an out-of-line ctor and
+  dtor `new X` emits neither (lane test). Emission belongs to each class's ctor port.
+- **The landed precedent:** 539 rows contain the `MakeOne` construct, each with the same strong `?MakeOne@@YAPAXXZ`, which is debt.
+- **The tracker reads both RTTI files:**
+  - **rtti_conflict (99):** a row whose only spelling contradicts RTTI is open, including 12 that counted as agree_pdb.
+  - **rtti_identified (4,842):** a row whose RTTI name it does not spell yet is identified, with emission open. This takes 4,112 of the
+    old agree_unverified rows.
+  - `??_G` / `??_E` of one class and tail agree.
+- **Now** (64,076 addresses):
+
+  | Bucket | Addresses |
+  |---|---:|
+  | agree_pdb | 22,757 |
+  | agree_std | 7,644 |
+  | rtti_identified | 4,842 |
+  | rtti_conflict | 99 |
+  | agree_unverified | 6,216 |
+  | standin | 10,093 |
+  | split_fixable / split_unknown | 4,766 / 7,186 |

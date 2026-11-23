@@ -278,7 +278,7 @@ def main():
         rec[t] = dict(target=t, status=st, tier=tier, landed="y" if t in ent else "n", catalog=cn, self_leaf=self_leaf,
                       pdb_spelling=good, klass=klass(good or self_leaf or (names[0] if names else "")),
                       spellings=" || ".join("%s (%s)" % (s[:160], ",".join(sorted(sp[s])[:6]) + (",..." if len(sp[s]) > 6 else "")) for s in names)[:700],
-                      n_spellings=len(names), source=ent.get(t, {}).get("Source", ""),
+                      n_spellings=len(names), names=names, source=ent.get(t, {}).get("Source", ""),
                       fix=("catalog" if tier == "T0" else "self" if st == "catalog_standin" else fix_kind(good, [x for x in names if x != good]) if good else
                            ("standin" if st == "standin" else "")))
 
@@ -309,9 +309,21 @@ def main():
         if os.path.exists(rp):
             for r in read_tsv(rp):
                 if len(r) > 1: rtti.setdefault(r[0].lower(), r[1])
-    for t2, r2 in rec.items(): r2["rtti"] = rtti.get(t2, "")
+    # RTTI against the spelling (advisor, 2026-11-23): the retail vftable placement is a retail second source, so a row whose only spelling
+    # contradicts it is not done (rtti_conflict, T3 identity), and a row whose RTTI name is not what it spells yet is identified but not
+    # emitted (rtti_identified: the name is known; the code still has to define it, e.g. the deleting destructors' ctor-TU ports).
+    for t2, r2 in rec.items():
+        r2["rtti"] = rn = rtti.get(t2, "")
+        if not rn or rn in r2.get("names", ()): continue   # full spellings (the spellings column is truncated)
+        # deleting destructors: the CLASS comes from the RTTI slot, the KIND (??_G scalar / ??_E vector) from the retail body, which the
+        # grade enforces (owner question 2026-11-23, advisor ruling): ??_G and ??_E of the same class and tail agree here
+        if rn[:4] in ("??_G", "??_E") and any(x[:4] in ("??_G", "??_E") and x[4:] == rn[4:] for x in r2.get("names", ())): continue
+        if r2["status"] in ("agree_pdb", "agree_std"):
+            r2.update(status="rtti_conflict", tier="T3", fix="RTTI names " + rn[:80]); status[t2] = "rtti_conflict"
+        elif r2["status"] in ("agree_unverified", "standin", "split_unknown"):
+            r2.update(status="rtti_identified", tier="T3", fix="emit " + rn[:80]); status[t2] = "rtti_identified"
     cols = ["target", "status", "tier", "fix", "klass", "n_spellings", "pdb_spelling", "self_leaf", "landed", "catalog", "source", "spellings", "rtti"]
-    openst = ("standin", "split_fixable", "split_unknown", "split_pdb_multi", "catalog_standin")
+    openst = ("standin", "split_fixable", "split_unknown", "split_pdb_multi", "catalog_standin", "rtti_conflict", "rtti_identified")
     with open(os.path.join(a.out, "OPEN.tsv"), "w") as o:
         o.write("\t".join(cols) + "\n")
         for t in sorted(rec, key=lambda t: (rec[t]["tier"] or "T9", rec[t]["status"], rec[t]["klass"], t)):
@@ -366,7 +378,10 @@ def main():
                     standin="one spelling with a stand-in marker: open", split_fixable="2+ spellings, one PDB name: open, target known",
                     split_pdb_multi="2+ PDB names at one address: ruling", split_unknown="2+ spellings, no PDB name: open, research")
         mean["unmeasured"] = "landed row, no caller binding and no usable mangled Leaf line: not measured"
-        for k in ["agree_pdb", "agree_std", "agree_unverified", "catalog_standin", "standin", "split_fixable", "split_pdb_multi", "split_unknown", "unmeasured"]:
+        mean["rtti_conflict"] = "one spelling, but the retail RTTI vftable placement names another symbol: open, identity"
+        mean["rtti_identified"] = "the retail RTTI placement names it; the code does not define that name yet: identified, emission open"
+        for k in ["agree_pdb", "agree_std", "agree_unverified", "catalog_standin", "standin", "split_fixable", "split_pdb_multi", "split_unknown",
+                  "rtti_conflict", "rtti_identified", "unmeasured"]:
             o.write("| %s | %d | %.2f%% | %s |\n" % (k, c[k], 100.0 * c[k] / max(total, 1), mean[k]))
         o.write("| **total** | **%d** | | done (agree_pdb + agree_std): **%d (%.2f%%)** |\n\n" % (total, done, 100.0 * done / max(total, 1)))
         o.write("| Tier | Open addresses | Batches (by class) | What the fix touches |\n|---|---:|---:|---|\n")

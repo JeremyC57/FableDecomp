@@ -170,3 +170,17 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   - Why: NF303 Q2 covers `/alternatename`, which changes symbol resolution. libcp only extends the library search, comes from the shared
     header the header rule requires, and is already carried by about 17% of landed objects. It is not a claim that retail linked libcp.
   - Virtual targets also need the RTTI vftable placement (`labels_rtti_port.tsv`) to name the same symbol at that address.
+- Owner question 2026-11-23, decided with the advisor: deleting destructors.
+  - **Spelling.** A deleting destructor takes `??_G<Class>` or `??_E<Class>` per address:
+    - the CLASS comes from the retail RTTI vftable slot (`ghidra_out/labels_rtti_port_dtors.tsv`);
+    - the KIND comes from the retail body (scalar = `??_G`, vector = `??_E`), which the grade enforces;
+    - the tail (access, virtuality) comes from the donor name.
+
+    A donor `??_E` only means some donor TU array-news the class, so a retail scalar body is `??_G` even when no PDB set spells it. VC7.1
+    defines `??_G` and makes `??_E` a weak alias of it unless the TU uses `new X[]` (lane test, `$S/dtor/`).
+  - **Emission.** No forcing construct at scale. A helper that constructs X (`MakeOne`, an explicit template instance, a `selectany`
+    pointer) also defines `??0X@@QAE@XZ` and `??_7X@@6B@` from a throwaway model: a fake constructor and a truncated vftable under real
+    PDB-shaped names. With the constructor and destructor declared out of line, `new X` emits neither (lane test). So `??_GX` belongs to the
+    TU that compiles X's constructor, and its emission is part of each class's ctor port.
+  - **The 539 landed `MakeOne` rows are debt.** Each defines the same strong `?MakeOne@@YAPAXXZ` (a full-link duplicate) plus a fake
+    constructor and vftable. Do not copy that pattern.
