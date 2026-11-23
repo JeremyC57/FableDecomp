@@ -135,6 +135,10 @@ def switch_source(src, m, cls, meth, newsym, is_const):
     while depth and i < len(src):
         depth += {"{": 1, "}": -1}.get(src[i], 0); i += 1
     body = src[m.end():i - 1]
+    # the switch route drops the row's local model, so a body that uses its `this` parameter (members of the local model, named as the
+    # local model names them) is a port: sw3 pilot, 28 of 30 CGameScriptInterface rows SRC_FAIL on local member names.
+    if m.group('p') and re.search(r'\b' + m.group('p') + r'\b', re.sub(r'\(void\)\s*' + m.group('p') + r'\s*;', '', body)):
+        return None, "body uses the local model through " + m.group('p') + " (a port onto the header's members)"
     pconst = 'const ' if m.group('c') else ''
     if m.group('p') is None: alias = ""
     elif m.group('t') == 'void': alias = f"\n    {pconst}void* {m.group('p')} = (void*)this;"
