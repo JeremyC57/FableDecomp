@@ -7,7 +7,7 @@
 //   CTCShopKeeper::GetShopTC @ 0x00798F50 (x2), CTCShop::SetStockState @ 0x00773C00, the 0x23 component's 0x007EE540
 //   (manifest IS_THING_ALIVE<...> label is propagated), CThingBuilding::IsPointInside @ 0x0082D000, CThing::GetPosition
 //   @ 0x004C73D0 / GetPhysPos @ 0x004C7950, AIAction_MoveToPosProximity @ 0x0097E890, GetPaymentRequest 0x009683A0,
-//   GetOldJugPoint 0x00968860, ReceivePayment 0x009692C0, the brain's slot 2, IsStopping 0x008FD010, Terminate
+//   GetPaymentPoint 0x00968860, ReceivePayment 0x009692C0, the brain's slot 2, IsStopping 0x008FD010, Terminate
 //   0x008FCF40, CTCTavernBar::GetEmptyJugSlot 0x007BA1D0 / GetJug 0x007B9F60 (returns the jug pointer by value),
 //   WalkToPoint 0x00968230, FillJug 0x00968FA0, FreeBarPoint 0x00968950, GetPWorldSeed 0x008FCFD0 + GFROR13
 //   0x00497890 (inline random step), AIAction_DoNothing 0x0097E200, LeanOnBar 0x009689C0, CBaseIntelligentPointer.
@@ -110,7 +110,7 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     long JugSlot;                               // +0x5c
     bool WalkToPoint(C3DVector* pos, CRightHandedSet* rh);   // 0x00968230
     bool GetPaymentRequest();                   // 0x009683A0
-    bool GetOldJugPoint();                      // 0x00968860
+    bool GetPaymentPoint();                     // 0x00968860
     void FreeBarPoint();                        // 0x00968950
     bool LeanOnBar();                           // 0x009689C0
     bool FillJug();                             // 0x00968FA0
@@ -142,7 +142,7 @@ void CAIStateGroup_TavernKeeper::Update()
     ((CThing*)PBar.GetPItem())->GetTC(TCI_TAVERN_BAR, &bar);
     for (;;) {
         if (GetPaymentRequest()) {
-            if (!GetOldJugPoint()) {
+            if (!GetPaymentPoint()) {
                 PBrain->WaitForNextUpdate();
                 if (IsStopping()) {
                     Terminate();

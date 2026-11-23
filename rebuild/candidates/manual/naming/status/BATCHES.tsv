@@ -664,7 +664,6 @@ T1	other	NThingShot	3	5		007bf000 007c0ad0 007c0e80
 T1	other	Process	3	1		00883530 00883640 00883750
 T1	other	C3DAnimation2	2	1	engine/C3DAnimation2.h	00a4cec0 00a4d770
 T1	other	CAIStateGroup_GoToPub	2	3	engine/CAIStateGroup_GoToPub.h	008fdcca 0094a3b0
-T1	other	CAIStateGroup_TavernServer	2	2	engine/CAIStateGroup_TavernServer.h	00901750 009687b0
 T1	other	CAIStateGroup_ThrowLogsOnFire	2	2	engine/CAIStateGroup_ThrowLogsOnFire.h	00917050 009170b0
 T1	other	CAInputProcess	2	14	engine/CAInputProcess.h	00a0d2d0 00a0d3d0
 T1	other	CAnimationData	2	3		00a24d70 00a25b20
@@ -801,6 +800,7 @@ T1	other	CAIStateGroup_SitForMeal	1	2		009455b0
 T1	other	CAIStateGroup_StealthSeekEnemy	1	2	engine/CAIStateGroup_StealthSeekEnemy.h	0093c4e0
 T1	other	CAIStateGroup_SummonerCharge	1	1	engine/CAIStateGroup_SummonerCharge.h	00902f49
 T1	other	CAIStateGroup_SummonerLightningAttack	1	1	engine/CAIStateGroup_SummonerLightningAttack.h	00902eef
+T1	other	CAIStateGroup_TavernServer	1	1	engine/CAIStateGroup_TavernServer.h	00901750
 T1	other	CAIStateGroup_VillageTaskPickCrops	1	1	engine/CAIStateGroup_VillageTaskPickCrops.h	00940120
 T1	other	CAIStateGroup_WanderAroundShops	1	1	engine/CAIStateGroup_WanderAroundShops.h	00947110
 T1	other	CAIStateGroup_WorkBase	1	1	engine/CAIStateGroup_WorkBase.h	00916790

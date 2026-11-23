@@ -33508,7 +33508,7 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?TOTAL_FRAMES_TO_RUN@?A0x39d7b2b6@@3JB	013bb738	0095e470
 ?FillJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968fa0	00969470
 ?GetEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3@Z	007ba1d0	00969470
-?GetOldJugPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968860	00969470
+?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968860	00969470
 ?GetPhysPos@CThingPos@@QBE?AVC3DVector@@XZ	004c7950	00969470
 ?IsPointInside@CThingBuildingModel@@QAE_NABVC3DVector@@@Z	0082d000	00969470
 ?LeanOnBar@CAIStateGroup_TavernKeeper@@QAE_NXZ	009689c0	00969470
@@ -37843,7 +37843,7 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?SetForceVisible@CTCBob@@QAEXXZ	00787740	008a7f60
 ?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@0MB	013bae70	0093a8c0
 ?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	00683b00	00960070
-?IsCarryingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	009687b0	00968bc0
+?IsHoldingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	009687b0	00968bc0
 ?GetScreenFadeOutAlpha@CDisplayEngine@@QBEEXZ	004364c0	006495a8
 ?IsOverridingScreenFade@CTCQuestCompletionUI@@QBE_NXZ	005e3e70	006495a8
 ?GetExperienceSpentOnAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	005ee136	005724cd

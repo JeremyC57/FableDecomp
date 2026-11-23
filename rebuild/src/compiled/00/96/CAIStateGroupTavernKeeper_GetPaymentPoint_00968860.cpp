@@ -1,5 +1,9 @@
-// CAIStateGroup_TavernKeeper::GetOldJugPoint() -- with the bar alive, ask its named-action-point component
-// Leaf: ?GetOldJugPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ
+// CAIStateGroup_TavernKeeper::GetPaymentPoint() -- with the bar alive, ask its named-action-point component
+// Leaf: ?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ
+// Name (2026-11-23): Ego_r.pdb + FableWin.pdb ?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ (was the descriptive GetOldJugPoint,
+//   the TavernServer twin's name; TavernKeeper has no GetOldJugPoint in either PDB): the one TavernKeeper member left after 16 of 18 map to
+//   other rows; Ego_r 245 B v TavernServer::GetOldJugPoint 249 B (retail 229 v 233); Update 0x00969470 calls it between GetPaymentRequest
+//   and ReceivePayment.
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // (interface 0x2E) for the free point "ACTION_POINT_BARMAN_0<JugSlot+1>" and store it as the jug point.
@@ -76,10 +80,10 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     C3DVector JugPos;                           // +0x38
     CRightHandedSet JugRHSet;                   // +0x44
     long JugSlot;                               // +0x5c
-    bool GetOldJugPoint();
+    bool GetPaymentPoint();
 };
 
-bool CAIStateGroup_TavernKeeper::GetOldJugPoint()
+bool CAIStateGroup_TavernKeeper::GetPaymentPoint()
 {
     if (!IS_THING_ALIVE(PBar))
         return false;

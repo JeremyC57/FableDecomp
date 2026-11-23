@@ -1,4 +1,4 @@
-# Pending (2026-11-23): TavernKeeper 0x009687B0 / 0x00968860 onto their PDB names, waiting on the lane
+# Landing (2026-11-23): TavernKeeper 0x009687B0 / 0x00968860 onto their PDB names
 
 Owner (2026-11-23): "If you can figure out what the function does, then name it based on how the original devs name other functions and
 what it does." Both turned out to have real PDB names, so nothing is made up:
@@ -14,11 +14,9 @@ GetPaymentPoint 245 v TavernServer::GetOldJugPoint 249; retail 172 v 174 and 229
 0x00968BC0, and Update 0x00969470 calls 0x00968860 between GetPaymentRequest and ReceivePayment. Labels: in PATCH.diff
 (`ghidra_out/labels_landing_2026-11-23_tavernkeeper.tsv`).
 
-`PATCH.diff` (apply with `git apply --index`): the two self rows and their tests (renamed), the callers OnReplace 0x00968BC0 and Update
-0x00969470, build_candidates.ps1, reloc_bindings.tsv, the labels file. Also rename the two rows' name column in
-`rebuild/oracles/auto-re-candidates.tsv` (`CAIStateGroup_TavernServer::IsCarryingJug` -> `CAIStateGroup_TavernKeeper::IsHoldingJug` for
-009687b0; `CAIStateGroup_TavernKeeper::GetOldJugPoint` -> `CAIStateGroup_TavernKeeper::GetPaymentPoint` for 00968860); that file carries
-retail bytes, so its hunk is not in the patch.
+Changed: the two self rows and their tests (renamed), the callers OnReplace 0x00968BC0 and Update 0x00969470, build_candidates.ps1,
+reloc_bindings.tsv (2 lines respelled), auto-re-candidates.tsv (2 names), `ghidra_out/labels_landing_2026-11-23_tavernkeeper.tsv`.
 
-Not landed yet: the container restart of 2026-11-23 wiped the lane. To land, rebuild the lane, objsec HEAD v new for the four rows (only the
-two symbol names change), recheck 009687b0 00968860 00968bc0 00969470 through vland, then commit as a landing.
+## Recheck
+`logs/recheck.log` (landed tree, rebuilt lane after the 2026-11-23 container restart): 009687b0 / 00968860 / 00968bc0 / 00969470
+4 RELOCATION_MATCH PASS, 0 RELOC_CONFLICT. `?IsCarryingJug@CAIStateGroup_TavernServer@@QAE_NXZ` now names one address (0x00966CF0).

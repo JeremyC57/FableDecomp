@@ -235888,8 +235888,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00968860'
         Module = 'CAIStateGroup_TavernKeeper'
-        Source = '00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860.cpp'
-        TestSource = '00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860_test.cpp'
+        Source = '00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860.cpp'
+        TestSource = '00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860_test.cpp'
         PassPattern = '00968860_TEST PASS'
     }
     [pscustomobject]@{
@@ -255015,9 +255015,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009687b0'
-        Module = 'CAIStateGroup_TavernServer'
-        Source = '00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0.cpp'
-        TestSource = '00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0_test.cpp'
+        Module = 'CAIStateGroup_TavernKeeper'
+        Source = '00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0.cpp'
+        TestSource = '00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0_test.cpp'
         PassPattern = '009687b0_TEST PASS'
     }
     [pscustomobject]@{

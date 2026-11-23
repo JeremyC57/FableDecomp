@@ -7,7 +7,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 // ---- source (verbatim) ----
-// CAIStateGroup_TavernServer::IsCarryingJug() -- with the jug alive, ask the creature's inventory component
+// CAIStateGroup_TavernKeeper::IsHoldingJug() -- with the jug alive, ask the creature's inventory component
 // Retry 10b (getsw sweep, FIXES B-15): the item id is read through an inline getter `GetItemID()`; the plain member read gives the parked register/scheduling difference.
 // (interface 0x46) whether the jug's item id is absent; the result is that negation.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009687B0, length 172 bytes (+ int3 padding).
@@ -150,17 +150,17 @@ class CTCInventory { public:                           // interface 0x46
     bool HasItemWithID(long id);                // 0x006A1230
 };
 
-struct CAIStateGroup_TavernServer : CAIStateGroupBase {
+struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     CBaseIntelligentPointer PJug;               // +0x14 CIntelligentPointer<CThingObject>
     CBaseIntelligentPointer PBar;               // +0x1c CIntelligentPointer<CThingObject>
     CBaseIntelligentPointer PTable;             // +0x24 CIntelligentPointer<CThingObject>
     CBaseIntelligentPointer PTankard;           // +0x2c CIntelligentPointer<CThingObject>
     CBaseIntelligentPointer PPub;               // +0x34 CIntelligentPointer<CThingBuilding>
     long JugIndex;                              // +0x3c
-    bool IsCarryingJug();
+    bool IsHoldingJug();
 };
 
-bool CAIStateGroup_TavernServer::IsCarryingJug()
+bool CAIStateGroup_TavernKeeper::IsHoldingJug()
 {
     if (!IS_THING_ALIVE(PJug))
         return false;
@@ -198,15 +198,15 @@ int main()
     creature.m_interfaces.first = entries; creature.m_interfaces.last = entries + 1; creature.m_presentBits[0x46 >> 5] |= 1UL << (0x46 & 31);
     static unsigned char classRaw[sizeof(CDefClassBase)]; jug.PDef.Object = (CDefPointeeBase*)classRaw;
     static CAIBrain brain; brain.PCreature = &creature;
-    static unsigned char raw[sizeof(CAIStateGroup_TavernServer)]; memset(raw, 0, sizeof(raw));
-    CAIStateGroup_TavernServer* s = (CAIStateGroup_TavernServer*)raw; s->PBrain = &brain;
-    CHECK(s->IsCarryingJug() == false && g_askedId == -1);                  // no jug
+    static unsigned char raw[sizeof(CAIStateGroup_TavernKeeper)]; memset(raw, 0, sizeof(raw));
+    CAIStateGroup_TavernKeeper* s = (CAIStateGroup_TavernKeeper*)raw; s->PBrain = &brain;
+    CHECK(s->IsHoldingJug() == false && g_askedId == -1);                  // no jug
     s->PJug.m_pItem = &jug;
-    CHECK(s->IsCarryingJug() == false && g_askedId == 42 && g_jugDef->m_refCount == 1 && g_deletes == 0);
+    CHECK(s->IsHoldingJug() == false && g_askedId == 42 && g_jugDef->m_refCount == 1 && g_deletes == 0);
     g_has = false;
-    CHECK(s->IsCarryingJug() == true);
+    CHECK(s->IsHoldingJug() == true);
     jug.m_flags91 = 1; g_askedId = -1;
-    CHECK(s->IsCarryingJug() == false && g_askedId == -1);                  // dead jug
+    CHECK(s->IsHoldingJug() == false && g_askedId == -1);                  // dead jug
     if (fails == 0) printf("009687b0_TEST PASS\n"); else printf("009687b0_TEST FAIL\n");
     return fails;
 }

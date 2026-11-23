@@ -1,7 +1,10 @@
-// CAIStateGroup_TavernServer::IsCarryingJug() -- with the jug alive, ask the creature's inventory component
+// CAIStateGroup_TavernKeeper::IsHoldingJug() -- with the jug alive, ask the creature's inventory component
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
-// Leaf: ?IsCarryingJug@CAIStateGroup_TavernServer@@QAE_NXZ
+// Leaf: ?IsHoldingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ
+// Name (2026-11-23): Ego_r.pdb + FableWin.pdb ?IsHoldingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ. The row was the TavernServer twin's name
+//   (IsCarryingJug 0x00966CF0, same body); of TavernKeeper's 18 PDB members 16 map to other retail rows, leaving IsHoldingJug / GetPaymentPoint
+//   for 0x009687B0 / 0x00968860; Ego_r sizes 193 = TavernServer::IsCarryingJug 193 (retail 172 v 174); caller OnReplace 0x00968BC0.
 // agentNF25b (2026-11-12): GetSubDef<CCarryableDef> const 0x005CC10E (the body pushes 'CCarryableDef'; was a local CJugDef) from
 //   engine/CDefClassBase_GetSubDef.h under the per-TU no-inline opt-in; the +0x30 word is Ego_r CCarryableDef::PassiveCarrySlot, read into a named
 //   local (the earlier made-up GetItemID() getter); 0x006A1230 is CTCCarrying::IsCarrySlotFree(long) const (Ego_r + FableWin; landed row,
@@ -107,17 +110,16 @@ class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
 #define FABLE_RETAIL_CTCCARRYING_SLOTFREE   // ?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z 0x006A1230 (agentNF25b)
 #include "engine/CTCCarrying.h"                 // interface 0x46
 
-struct CAIStateGroup_TavernServer : CAIStateGroupBase {
+struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {   // Ego_r layout (engine/CAIStateGroup_TavernKeeper.h); only PJug is used here
     CIntelligentPointer<CThing> PJug;               // +0x14 CIntelligentPointer<CThingObject>
     CIntelligentPointer<CThing> PBar;               // +0x1c CIntelligentPointer<CThingObject>
-    CIntelligentPointer<CThing> PTable;             // +0x24 CIntelligentPointer<CThingObject>
-    CIntelligentPointer<CThing> PTankard;           // +0x2c CIntelligentPointer<CThingObject>
-    CIntelligentPointer<CThing> PPub;               // +0x34 CIntelligentPointer<CThingBuilding>
-    long JugIndex;                              // +0x3c
-    bool IsCarryingJug();
+    CIntelligentPointer<CThing> PPub;               // +0x24 CIntelligentPointer<CThingBuilding>
+    CIntelligentPointer<CThing> PPayee;             // +0x2c CIntelligentPointer<CThingAICreature>
+    long JugActionPointIndex;                       // +0x34
+    bool IsHoldingJug();
 };
 
-bool CAIStateGroup_TavernServer::IsCarryingJug()
+bool CAIStateGroup_TavernKeeper::IsHoldingJug()
 {
     if (!IS_THING_ALIVE(PJug))
         return false;

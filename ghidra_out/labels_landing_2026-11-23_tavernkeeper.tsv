@@ -1,0 +1,3 @@
+address	symbol	evidence
+009687B0	?IsHoldingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	Ego_r.pdb 0098d4e0 + FableWin.pdb 02c47ab0; 16 of TavernKeeper's 18 PDB members map to other retail rows; Ego_r size 193 = TavernServer::IsCarryingJug twin; caller OnReplace 0x00968BC0; was CAIStateGroup_TavernServer::IsCarryingJug (one name at two addresses)
+00968860	?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ	Ego_r.pdb 0098d5b0 + FableWin.pdb; the last unmapped TavernKeeper member; Ego_r 245 B v TavernServer::GetOldJugPoint 249 B twin; Update 0x00969470 calls it between GetPaymentRequest and ReceivePayment; was the descriptive GetOldJugPoint (no TavernKeeper GetOldJugPoint in either PDB)

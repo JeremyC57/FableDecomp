@@ -1,4 +1,4 @@
-// Behaviour test for 00968860 (see src/00968860.cpp): TavernKeeper::GetOldJugPoint: "ACTION_POINT_BARMAN_0<JugSlot+1>" from the live bar; plain C++98, member access only.
+// Behaviour test for 00968860 (see src/00968860.cpp): TavernKeeper::GetPaymentPoint: "ACTION_POINT_BARMAN_0<JugSlot+1>" from the live bar; plain C++98, member access only.
 #include <cstdio>
 #include <cstring>
 // shared test model: a thing with an interface table (sorted type -> component), a dead bit, and an
@@ -29,7 +29,7 @@ struct TPoints { char lastName[64]; long lastSlot; bool result;
     bool GetFreeNamedActionPoint(TThing*, float*, float*, const char* name, long* ap, long slot, bool) { std::strcpy(lastName, name); lastSlot = slot; *ap = 5; return result; } };
 static void BuildName(char* out, const char* base, long n) { std::sprintf(out, "%s_0%ld", base, n); }
 struct TGroup { TThing* creature; TPtr PBar; long Index; long ApIndex;
-    bool GetOldJugPoint(const char* base) {
+    bool GetPaymentPoint(const char* base) {
         if (!Alive(PBar)) return false;
         TPoints* p = 0; PBar.GetPItem()->GetInterface(&p, 0x2E);
         char name[64]; BuildName(name, base, Index + 1);
@@ -37,9 +37,9 @@ struct TGroup { TThing* creature; TPtr PBar; long Index; long ApIndex;
 int main() {
     TThing me, bar; TPoints pts; pts.result = true; pts.lastSlot = -1; bar.Add(0x2E, &pts);
     TGroup g; g.creature = &me; g.Index = 2; g.ApIndex = 0;
-    CHECK(!g.GetOldJugPoint("ACTION_POINT_BARMAN"), "00968860");
+    CHECK(!g.GetPaymentPoint("ACTION_POINT_BARMAN"), "00968860");
     g.PBar.SetPItem(&bar);
-    CHECK(g.GetOldJugPoint("ACTION_POINT_BARMAN") && std::strcmp(pts.lastName, "ACTION_POINT_BARMAN_03") == 0 && pts.lastSlot == 0 && g.ApIndex == 5, "00968860");
-    pts.result = false; CHECK(!g.GetOldJugPoint("ACTION_POINT_BARMAN"), "00968860");
-    bar.flags91 = 1; pts.result = true; CHECK(!g.GetOldJugPoint("ACTION_POINT_BARMAN"), "00968860");
+    CHECK(g.GetPaymentPoint("ACTION_POINT_BARMAN") && std::strcmp(pts.lastName, "ACTION_POINT_BARMAN_03") == 0 && pts.lastSlot == 0 && g.ApIndex == 5, "00968860");
+    pts.result = false; CHECK(!g.GetPaymentPoint("ACTION_POINT_BARMAN"), "00968860");
+    bar.flags91 = 1; pts.result = true; CHECK(!g.GetPaymentPoint("ACTION_POINT_BARMAN"), "00968860");
     std::printf("00968860_TEST PASS\n"); return 0; }

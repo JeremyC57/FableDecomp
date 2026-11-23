@@ -7000,7 +7000,7 @@ line	tag	address	correct_symbol	status	other_spellings
 9028	land1011ef	00406610	?GetManualSaveFileName@CUserProfileManager@@QBE...	open	?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z
 9029	land1011eg	00878430	??$GetAllThingsInRoughArea@VCThing@@V?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@AAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	closed	
 9031	land1011eg	00407370	?ApplyValues@CUserProfileManager@@IAEXXZ	partial	?CPlayerGui_Reset@@YIXPAVCPlayerGui@@@Z
-9032	land1011eh	00968860	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z	open	?GetOldJugPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ
+9032	land1011eh	00968860	?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z	open	?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ
 9033	land1011eh	009e3df0	?ConvertPFDDataToRGB@CPixelFormat@@QBEXPBEAAVCRGBColour@@@Z	closed	
 9034	land1011eh	0129ba40	?GD3DFormats@@3QBVCD3DFormatInfo@@B	partial	?g_FablePixelFormatTable@@3PAUFablePixelFormatRecord@@A || ?g_PixelFormatTable@@3PAUCPixelFormatInfo@@A || ?g_PixelFormatTable@@3PAUSPixelFormatInfo@@A || ?g_texFormatTable@@3PAIA
 9035	land1011eh	00687a70	?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z	closed	
