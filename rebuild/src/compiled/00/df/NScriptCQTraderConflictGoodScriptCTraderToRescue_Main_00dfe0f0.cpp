@@ -44,7 +44,7 @@ FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(Timer
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(thing) {}
 inline NScript::CIsThingAlive::~CIsThingAlive() {}
 FABLE_FORCEINLINE bool CScriptThing::operator==(const CScriptThing& other) const { return PImp->IsEqualTo(*other.PImp); }
-long FABLE_FASTCALL IsPlayerThreateningEntity(const CScriptThing&);   // 0x00CBEED2 ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z
+int FABLE_FASTCALL IsPlayerThreateningEntity(const CScriptThing&);   // 0x00CBEED2 ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z
 
 void NScript::CQ_TraderConflictGoodScript::CTraderToRescue::Main()
 {

@@ -1,0 +1,32 @@
+## entry 22 pick-any copies (cmpcomdat: bytes + relocation list v the first object)
+# ??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NABVCThingBuilding@@@Z
+REF work/hobj/00669110.obj len=134 relocs=2
+EQUAL work/obj/006698d0.obj len=134
+NODEF work/hobj/006689e0.obj
+# ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z
+REF work/hobj/00669110.obj len=109 relocs=1
+EQUAL work/obj/006698d0.obj len=109
+DIFF bytes=True relocs=False work/hobj/006689e0.obj len=109
+# COMDAT selection per defined symbol (2 = pick-any, 1 = no duplicates)
+hobj/00669110.obj ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z select 2
+hobj/00669110.obj ??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NABVCThingBuilding@@@Z select 2
+hobj/006689e0.obj ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ select 2
+hobj/006689e0.obj ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z select 1
+obj/H_006698d0.obj ??RCThingFilter_OverlappingSphere@@QBE_NPAVCThing@@@Z select 2
+obj/H_006698d0.obj ??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NPAVCThingBuilding@@@Z select 2
+obj/006698d0.obj ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z select 2
+obj/006698d0.obj ??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NABVCThingBuilding@@@Z select 2
+obj/H_006a7b20.obj ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ select 2
+obj/H_006a7b20.obj ??RCThingFilter_PosInContainmentVolume@@QBE_NPAVCThing@@@Z select 1
+obj/006a7b20.obj ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ select 2
+obj/006a7b20.obj ??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z select 1
+# GetBoundingInfo relocation in each OverlappingSphere copy
+hobj/00669110.obj ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z ['?GetBoundingInfo@CTCPhysicsBase@@QAEXPAVC3DVector@@PAM@Z']
+obj/006698d0.obj ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z ['?GetBoundingInfo@CTCPhysicsBase@@QAEXPAVC3DVector@@PAM@Z']
+hobj/006689e0.obj ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z ['?GetBoundingInfo@CTCPhysicsBase@@QBEXAAVC3DVector@@AAM@Z']
+obj/H_006698d0.obj ??RCThingFilter_OverlappingSphere@@QBE_NPAVCThing@@@Z ['?GetBoundingInfo@CTCPhysicsBase@@QAEXPAVC3DVector@@PAM@Z']
+# 0x006E7740 (HEAD) emitted CGameScriptInterface vftable
+??_7CGameScriptInterface@@6B@ section .rdata bytes 4 slots 1 relocs ['??_ECGameScriptInterface@@UAEPAXI@Z']
+# ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ (inline header getter, pick-any)
+REF work/hobj/006689e0.obj len=4 relocs=0
+EQUAL work/obj/006a7b20.obj len=4

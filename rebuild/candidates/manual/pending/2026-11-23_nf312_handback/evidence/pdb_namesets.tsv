@@ -1,0 +1,17 @@
+20	0x00799E30	??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z	egor=Y	fablewin=Y
+21	0x006A7590	??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z	egor=Y	fablewin=Y
+22	0x006A7B20	??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z	egor=Y	fablewin=Y
+23	0x0049D930	?SetCreatureGenerationGroupAsEnabled@CWorld@@QAEXW4ECreatureGroup@@_N@Z	egor=Y	fablewin=Y
+37	0x0085F830	?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z	egor=Y	fablewin=Y
+72	0x00405220	?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z	egor=Y	fablewin=Y
+76	0x0088AE40	?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z	egor=Y	fablewin=Y
+77	0x00942B30	?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z	egor=Y	fablewin=Y
+80	0x00CBE0C7	?FoundMessageIsThingHitBy@@YI_NABVCScriptThing@@0@Z	egor=Y	fablewin=Y
+81	0x00CBE7AA	?FadeInThing@@YIXAAVCScriptThing@@M@Z	egor=Y	fablewin=Y
+82	0x00CBE814	?FadeOutThing@@YIXAAVCScriptThing@@MM@Z	egor=Y	fablewin=Y
+85	0x00CBEED2	?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z	egor=Y	fablewin=Y
+extra	-	?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBEXW4ECreatureGroup@@_N@Z	egor=Y	fablewin=Y
+extra	-	??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NABVCThingBuilding@@@Z	egor=N	fablewin=Y
+extra	-	??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z	egor=Y	fablewin=Y
+extra	-	?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ	egor=N	fablewin=Y
+extra	-	?GetPhysicsMeshInfo@CTCPhysicsBase@@UBEPBVCThingPhysicsMeshInfo@@XZ	egor=N	fablewin=Y

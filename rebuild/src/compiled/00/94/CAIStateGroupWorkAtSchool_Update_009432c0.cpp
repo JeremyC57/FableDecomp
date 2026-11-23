@@ -54,7 +54,7 @@ class CThing { public:
         return found;
     }
 };
-bool __fastcall GetDummyObjectRecursive(CThing* thing, const CCharString& name, long index, unsigned long flags, C3DVector* pos, CRightHandedSet* set);   // 0x00942B30
+bool __fastcall GetDummyObjectRecursive(const CThing* thing, const CCharString& name, long index, unsigned long flags, C3DVector& pos, CRightHandedSet& set);   // 0x00942B30
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -142,7 +142,7 @@ void CAIStateGroup_WorkAtSchool::Update()
     CRightHandedSet deskSet;
     {
         CCharString name("ACTION_POINT_DESK");
-        GetDummyObjectRecursive(((CThing*)school.GetPItem()), name, 0, 0, &deskPos, &deskSet);
+        GetDummyObjectRecursive(((CThing*)school.GetPItem()), name, 0, 0, deskPos, deskSet);
     }
     C3DVector boardLook = boardPos + boardSet.Up;
     C3DVector deskLook = deskPos + deskSet.Up;

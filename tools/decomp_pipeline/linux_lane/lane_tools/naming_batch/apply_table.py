@@ -4,7 +4,7 @@
 Columns: action symbol target witness note. Actions: delete (symbol,target), add, replace (`old -> new` in the symbol column; the line
 keeps its target and takes the given witness), rewitness. Every miss is reported and nothing is written if any line misses.
 Reports symbols with two or more targets before and after (a new one is a RELOC_CONFLICT to hold)."""
-import os, sys
+import os, re, sys
 from collections import defaultdict
 R = os.environ.get('FABLE_ROOT', '/home/user/FableDecomp'); p = R + '/rebuild/oracles/reloc_bindings.tsv'
 t = open(p).read(); assert t.endswith('\n')
@@ -20,6 +20,8 @@ c = defaultdict(int); miss = []; dele = set()
 for l in open(sys.argv[1]).read().splitlines()[1:]:
     if not l.strip(): continue
     f = l.split('\t'); act, sym, tg = f[0], f[1], f[2].lower().replace('0x', ''); wit = f[3].lower().replace('0x', '') if len(f) > 3 else ''
+    if '->' in wit: wit = wit.split('->')[-1].strip()   # a rewitness written `old -> new` (landing nf312 wrote it into the table once)
+    if wit and not re.fullmatch(r'[0-9a-f]{8}', wit): miss.append('bad witness ' + l); continue
     if act == 'delete':
         if (sym, tg) in idx: dele.update(idx[(sym, tg)]); c['delete'] += 1
         else: miss.append(l)

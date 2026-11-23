@@ -1,0 +1,15 @@
+## HEAD set: H_007990c0.obj H_009650c0.obj H_00405350.obj H_009432c0.obj H_00efb8c0.obj H_00df2ab0.obj H_00d89380.obj H_00df2380.obj H_00dfe0f0.obj 00799e30.obj 006a7590.obj 00405220.obj 00942b30.obj 00cbe0c7.obj 00cbe7aa.obj 00cbe814.obj 00cbeed2.obj 0079a050.obj 0079a280.obj 0091adb0.obj 00936100.obj 00964230.obj 00965e80.obj 00e49020.obj 00eb4710.obj
+duplicates 0
+UNRESOLVED 1 ??0CThingFilter_IsPotentialCustomer@@QAE@PAVCTCShopKeeper@@_N@Z
+UNRESOLVED 1 ??RCThingFilter_IsPotentialCustomer@@QAE_NPAVCThing@@@Z
+UNRESOLVED 1 ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThing@@@Z
+UNRESOLVED 3 ?FadeInThing@@YIXABVCScriptThing@@M@Z
+UNRESOLVED 1 ?FadeOutThing@@YIXABVCScriptThing@@MM@Z
+UNRESOLVED 1 ?FoundMessageIsThingHitBy@@YI_NPAVCScriptThing@@0@Z
+UNRESOLVED 1 ?GetDummyObjectRecursive@@YI_NPAVCThing@@ABVCCharString@@JKPAVC3DVector@@PAVCRightHandedSet@@@Z
+UNRESOLVED 1 ?IsPlayerThreateningEntity@@YIJABVCScriptThing@@@Z
+UNRESOLVED 1 ?TransferIMEColour@@YIIAAVCPersistContext@@ABVCCharString@@I@Z
+## new set: 007990c0.obj 009650c0.obj 00405350.obj 009432c0.obj 00efb8c0.obj 00df2ab0.obj 00d89380.obj 00df2380.obj 00dfe0f0.obj 00799e30.obj 006a7590.obj 00405220.obj 00942b30.obj 00cbe0c7.obj 00cbe7aa.obj 00cbe814.obj 00cbeed2.obj 0079a050.obj 0079a280.obj 0091adb0.obj 00936100.obj 00964230.obj 00965e80.obj 00e49020.obj 00eb4710.obj
+duplicates 0
+UNRESOLVED 1 ??0CThingFilter_IsPotentialCustomer@@QAE@PAVCTCShopKeeper@@_N@Z
+LK_DONE

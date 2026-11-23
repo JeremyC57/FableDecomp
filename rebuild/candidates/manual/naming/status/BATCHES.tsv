@@ -206,8 +206,8 @@ T1	standin_alias	ReadVar	1	1		00516180
 T1	standin_alias	Transfer	1	1		007e39d0
 T1	standin_alias	set	1	1		00513700
 T1	signature	CPersistTraits	15	18	engine/CPersistTraits.h	00403ff0 0040efb0 0040fe60 0044b890 0045e011 0045ed25 00464030 00475b93 004e959d 0057f9e9 005c0a98 005c19a3 0067aa40 006dc6a0 007e3930
-T1	signature	(none)	14	17		00405220 00497890 005578a0 00778610 0088ae40 00942b30 009e1e70 009e21d0 00cbe0c7 00cbe7aa 00cbe814 00cbed00 00cbed82 00cbeed2
 T1	signature	vector	11	11		0046aca8 004e9f20 00581284 006c9d50 006d4a20 006dd4a0 00721240 007b5210 00f33d90 00f34bf0 00f353f0
+T1	signature	(none)	7	7		00497890 005578a0 00778610 009e1e70 009e21d0 00cbed00 00cbed82
 T1	signature	RemoveThingFromTask	6	1		00660ae2 00660b5d 00660bd8 00660c53 00660cce 00660d49
 T1	signature	RemoveThingFromTaskList	6	1		00660787 00660894 0066090a 00660980 006609f6 00660a6c
 T1	signature	CEnvironmentSpellEffectInterface	5	2	engine/CEnvironmentSpellEffectInterface.h	00884e90 00884f60 00884fe0 008854a0 00885680
@@ -331,16 +331,12 @@ T1	signature	CThingFilter_EnemyCreature	1	1	engine/CThingFilter_EnemyCreature.h	
 T1	signature	CThingFilter_HasScriptData	1	1	engine/CThingFilter_HasScriptData.h	006a7e70
 T1	signature	CThingFilter_IsNot	1	1	engine/CThingFilter_IsNot.h	006a76a0
 T1	signature	CThingFilter_IsNotList	1	1	engine/CThingFilter_IsNotList.h	006a7eb0
-T1	signature	CThingFilter_IsPotentialCustomer	1	1		00799e30
 T1	signature	CThingFilter_IsThingAbleToBeEngagedInCombat	1	1	engine/CThingFilter_IsThingAbleToBeEngagedInCombat.h	006a7580
-T1	signature	CThingFilter_ObjectHasProperty	1	1		006a7590
-T1	signature	CThingFilter_PosInContainmentVolume	1	1	engine/CThingFilter_PosInContainmentVolume.h	006a7b20
 T1	signature	CTools	1	1		00877840
 T1	signature	CVertexGroupBlockOptimiser	1	1		00ad89b0
 T1	signature	CVideoSys	1	1	engine/CVideoSys.h	00a3b0f0
 T1	signature	CWStringParser	1	1	engine/CWStringParser.h	00a0ccd0
 T1	signature	CWideString	1	1		0099b800
-T1	signature	CWorld	1	1	engine/CWorld.h	0049d930
 T1	signature	FindAllMessages	1	1		00493eab
 T1	signature	GFSerialiseVectorBinaryIn	1	1		00412c70
 T1	signature	GFSerialiseVectorBinaryOut	1	1		0040fca0
@@ -348,7 +344,6 @@ T1	signature	GetAllThings	1	1		0052b270
 T1	signature	GetAllThingsInRoughArea	1	1		008786e0
 T1	signature	GetSubDef	1	1		007510d0
 T1	signature	LHNetworkLib	1	1		0083ebd0
-T1	signature	NCreatureMode	1	1	engine/NCreatureMode.h	0085f830
 T1	signature	NProgressDisplay	1	1	engine/NProgressDisplay.h	009ea060
 T1	signature	NSpeechGainManager	1	1	engine/NSpeechGainManager.h	006e2b70
 T1	signature	deque	1	1		0059b4fe

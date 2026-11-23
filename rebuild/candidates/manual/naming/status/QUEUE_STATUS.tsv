@@ -5921,7 +5921,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7903	land1011bs	005bba94	?push_back@?$vector@W4EClothingSuitPart@@V?$allocator@W4EClothingSuitPart@@@std@@@std@@QAEXABW4EClothingSuitPart@@@Z	partial	?push_back_005bba94@CLongVector@@QAEXABJ@Z
 7906	land1011bu	00403eb0	?TransferBinaryIn@?$CPersistTraits@_N@@QAEXAAVCMemoryDataInputStream@@AA_N@Z	closed	
 7907	land1011bu	00404500	?CheckCRC@CPersistContext@@IAEXPBD@Z	partial	?Marker@@YGXPBD@Z || ?PrepShadow@@YGXH@Z || ?Prof_Enter@@YGXPBD@Z || ?ProfileEnter@@YGXH@Z || ?SetHelperName@CFlammableDef@@QAEXPBD@Z || ?SomeGlobalFunc@@YGXPBX@Z || _BeginProfile@4 || _EnterShadowScope@4
-7908	land1011bu	00405220	?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z	partial	?TransferIMEColour@@YIIAAVCPersistContext@@ABVCCharString@@I@Z
+7908	land1011bu	00405220	?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z	closed	
 7909	land1011bu	00405a60	??$Transfer@E@CPersistContext@@QAEXPBDAAEABE@Z	partial	?TransferSignedChar@CPersistContext@@QAEXPBDAACABC@Z
 7910	land1011bu	0040dce0	??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z	partial	?IS_THING_ALIVE@@YI_NABQAUCThingNative@@@Z || ?IS_THING_ALIVE@@YI_NABQAVCThing@@@Z || ?IS_THING_ALIVE_RAW@@YI_NPBQAVCThing@@@Z
 7911	land1011bu	0040f020	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	partial	?Find@MazeTable@@QAEPAUMazeEntry@@ABJ@Z || ?LowerBound@CCreatureInterfaceMap@@QAEPAUCVectorMapEntry@@PAJ@Z || ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z || ?LowerBound@CTCMap@@QAEPAUSTCEntry@@ABK@Z || ?LowerBound@CTCMap_Retail@@QAEPAUSTCEntry_Retail@@ABK@Z || ?LowerBound@Map@NCondition00935160@@QAEPAUPair@2@ABH@Z || ?LowerBound@Map@NFactory008385b0@@QAEPAUPair@2@ABH@Z || ?VMap_LowerBound@@YIP
@@ -10344,7 +10344,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13176	land1122p28	00ab7c20	?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z	closed	
 13177	land1122p28	00b1ad90	?SmoothFadeValue@CPSCLight@NParticleEngine@@QBEMM@Z	closed	
 13178	land1122p28	00bca950	?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z	closed	
-13179	land1122p28	00cbeed2	?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z	partial	?IsPlayerThreateningEntity@@YIJABVCScriptThing@@@Z
+13179	land1122p28	00cbeed2	?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z	closed	
 13180	land1122p28	00dfde30	??0?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV01@@Z	closed	
 13181	land1122p28	01375550	?ConstantFPS@CMainGameComponent@@1JA	partial	?g_framesPerSecond@@3JA || ?g_logicFramesPerSecond@@3JA
 13182	land1122p28	01375732	?EnableUnknownThreatDeedPostings@NGlobalConsole@@3_NA	closed	
@@ -10591,3 +10591,5 @@ line	tag	address	correct_symbol	status	other_spellings
 13430	land1123nf309	00838ba0	?WorldUpdate@CThingGameObject@@UAE_NXZ	partial	?GetState@CThingHolySite@@QAEEXZ || ?GetState@CThingMarker@@QAEEXZ || ?GetState@CThingPhysicalSwitch@@QAEEXZ || EditWorldUpdate
 13431	land1123nf309	008fcf90	?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ	partial	?GetPPlayerManager@CAIStateGroupMinionGuardReactToBribeMethods@@QAEPAVCPlayerManager@@XZ || ?GetPPlayerManager@CAIStateGroupMinionReactToCrimeMethods@@QAEPAVCPlayerManager@@XZ || ?GetPPlayerManager@CAIStateGroup_BanditKingCharge@@QAEPAVCPlayerManager@@XZ || ?GetPPlayerManager@CAIStateGroup_BanditKingLunge@@QAEPAVCPlayerManager@@XZ || ?GetPPlayerManager@CAIStateGroup_BanditKingThrowWeapons@@QAEPAVC
 13432	land1123nf313	0097e330	?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z	partial	?SetPushableByHero@CAIStateGroupBaseI@@QAEX_N@Z
+13433	land1123nf312	006af640	?GetBoundingInfo@CTCPhysicsBase@@QBEXAAVC3DVector@@AAM@Z	closed	
+13434	land1123nf312	00497890	?GFROR13@@YIJK@Z	partial	?GFROR13@@YIKK@Z || GFROR13

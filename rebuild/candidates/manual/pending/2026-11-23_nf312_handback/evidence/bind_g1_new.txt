@@ -1,0 +1,34 @@
+#20 00799e30 ??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z
+   00799e30(self) - DEF=OK:??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z
+   007990c0 OK ??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z x1
+   0079a050 OK ??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z x1
+   0079a280 OK ??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z x1
+#21 006a7590 ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z
+   006a7590(self) - DEF=OK:??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z
+   0091adb0 OK ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z x1
+   00936100 OK ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z x1
+   00964230 OK ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z x1
+   009650c0 OK ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z x1
+   00965e80 OK ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z x1
+#72 00405220 ?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z
+   00405220(self) - DEF=OK:?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z
+   00405350 OK ?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z x12
+#77 00942b30 ?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z
+   00942b30(self) OK ?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z x1 DEF=OK:?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z
+   009432c0 OK ?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z x1
+#80 00cbe0c7 ?FoundMessageIsThingHitBy@@YI_NABVCScriptThing@@0@Z
+   00cbe0c7(self) - DEF=OK:?FoundMessageIsThingHitBy@@YI_NABVCScriptThing@@0@Z
+   00efb8c0 OK ?FoundMessageIsThingHitBy@@YI_NABVCScriptThing@@0@Z x2
+#81 00cbe7aa ?FadeInThing@@YIXAAVCScriptThing@@M@Z
+   00cbe7aa(self) - DEF=OK:?FadeInThing@@YIXAAVCScriptThing@@M@Z
+   00d89380 OK ?FadeInThing@@YIXAAVCScriptThing@@M@Z x1
+   00df2380 OK ?FadeInThing@@YIXAAVCScriptThing@@M@Z x1
+   00df2ab0 OK ?FadeInThing@@YIXAAVCScriptThing@@M@Z x1
+#82 00cbe814 ?FadeOutThing@@YIXAAVCScriptThing@@MM@Z
+   00cbe814(self) - DEF=OK:?FadeOutThing@@YIXAAVCScriptThing@@MM@Z
+   00d89380 OK ?FadeOutThing@@YIXAAVCScriptThing@@MM@Z x1
+#85 00cbeed2 ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z
+   00cbeed2(self) - DEF=OK:?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z
+   00dfe0f0 OK ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z x3
+   00e49020 OK ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z x1
+   00eb4710 OK ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z x1

@@ -1,0 +1,17 @@
+== 0088f400
+1,2c1,2
+< DEF ?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBIXW4ECreatureGroup@@_N@Z
+< UND ?SetCreatureGenerationGroupAsEnabled@CWorld@@QAIXW4ECreatureGroup@@_N@Z
+---
+> DEF ?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBEXW4ECreatureGroup@@_N@Z
+> UND ?SetCreatureGenerationGroupAsEnabled@CWorld@@QAEXW4ECreatureGroup@@_N@Z
+== 006c0810
+16c16
+< UND ?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAVCBaseIntelligentPointer@@K@Z
+---
+> UND ?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z
+== 008d66e0
+2c2
+< UND ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKPAUCThing@1@J@Z
+---
+> UND ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z

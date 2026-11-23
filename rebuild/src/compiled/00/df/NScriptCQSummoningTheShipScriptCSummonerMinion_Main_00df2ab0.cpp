@@ -19,7 +19,7 @@ class CCPPointerInfo;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-void __fastcall FadeInThing(const CScriptThing& thing, float time);   // 0x00CBE7AA
+void __fastcall FadeInThing(CScriptThing& thing, float time);   // 0x00CBE7AA
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

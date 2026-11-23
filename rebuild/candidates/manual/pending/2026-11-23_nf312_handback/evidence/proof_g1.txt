@@ -1,0 +1,19 @@
+##### 007990c0 renames: ??RCThingFilter_IsPotentialCustomer@@QAE_NPAVCThing@@@Z=??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 009650c0 renames: ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThing@@@Z=??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z
+ALL_EQ sections=12 DEF=11 tables=-
+##### 00405350 renames: ?TransferIMEColour@@YIIAAVCPersistContext@@ABVCCharString@@I@Z=?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z
+ALL_EQ sections=21 DEF=20 tables=-
+##### 009432c0 renames: ?GetDummyObjectRecursive@@YI_NPAVCThing@@ABVCCharString@@JKPAVC3DVector@@PAVCRightHandedSet@@@Z=?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z
+ALL_EQ sections=20 DEF=19 tables=??_7CIntelligentPointerThing@@6B@
+##### 00efb8c0 renames: ?FoundMessageIsThingHitBy@@YI_NPAVCScriptThing@@0@Z=?FoundMessageIsThingHitBy@@YI_NABVCScriptThing@@0@Z
+ALL_EQ sections=9 DEF=8 tables=??_7CIsThingConscious@NScript@@6B@,??_7CPredicateBase@NScript@@6B@
+##### 00df2ab0 renames: ?FadeInThing@@YIXABVCScriptThing@@M@Z=?FadeInThing@@YIXAAVCScriptThing@@M@Z
+ALL_EQ sections=10 DEF=9 tables=??_7CIsThingAlive@NScript@@6B@,??_7CPredicateBase@NScript@@6B@
+##### 00d89380 renames: ?FadeInThing@@YIXABVCScriptThing@@M@Z=?FadeInThing@@YIXAAVCScriptThing@@M@Z ?FadeOutThing@@YIXABVCScriptThing@@MM@Z=?FadeOutThing@@YIXAAVCScriptThing@@MM@Z
+ALL_EQ sections=12 DEF=11 tables=??_7CIsThingAlive@NScript@@6B@,??_7CPredicateBase@NScript@@6B@
+##### 00df2380 renames: ?FadeInThing@@YIXABVCScriptThing@@M@Z=?FadeInThing@@YIXAAVCScriptThing@@M@Z
+ALL_EQ sections=26 DEF=25 tables=??_7CIsThingAlive@NScript@@6B@,??_7CPredicateBase@NScript@@6B@,??_7CScriptGameResourceObjectScriptedThingBase@@6B@,??_7CScriptThing@@6B@
+##### 00dfe0f0 renames: ?IsPlayerThreateningEntity@@YIJABVCScriptThing@@@Z=?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z
+ALL_EQ sections=60 DEF=59 tables=??_7CIsThingAlive@NScript@@6B@,??_7CPredicateBase@NScript@@6B@,??_7CScriptGameResourceObjectBase@@6B@,??_7CScriptGameResourceObjectScriptedThingBase@@6B@
+

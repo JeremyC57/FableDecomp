@@ -155,3 +155,6 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
 - NF313 Q2: the call-site edits a pointer -> reference fix needs (`&x` -> `x`, `p` -> `*p`) are part of it. Q3: a row whose own self is a
   virtual override (local `typedef long E` models) may retype that self only when every landed vftable and binder of the old self spelling
   moves in the same landing; otherwise a port. Never pipe a payload build or a grade into `head` (broken pipe).
+- NF312 D3: dropping a made-up `__fastcall` from a self and its callee is an in-place self fix when objsec is ALL_EQ and no landed row binds
+  the old spelling. D5: an object's UND symbol proves the binding for a rewitness whatever the row's grade. Write a rewitness's witness
+  column as the NEW bare address only (not `old -> new`).

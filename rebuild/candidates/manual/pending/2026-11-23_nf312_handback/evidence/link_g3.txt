@@ -1,0 +1,8 @@
+## HEAD set: H_006a7b20.obj H_006698d0.obj 00669110.obj 006689e0.obj
+duplicates 1
+  DUP 006689e0.obj ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z in 00669110.obj;
+UNRESOLVED 1 ??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z
+## new set: 006a7b20.obj 006698d0.obj 00669110.obj 006689e0.obj
+duplicates 1
+  DUP 006689e0.obj ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z in 006698d0.obj;
+LK_DONE

@@ -1,0 +1,190 @@
+004978a0|18:long __fastcall GFROR13(unsigned long value);    // 0x00497890
+004cdae0|11:long __fastcall GFROR13(unsigned long);   // 0x00497890
+004fce20|15:long __fastcall GFROR13(unsigned long value);         // 0x00497890
+00502b00|27:long __fastcall GFROR13(unsigned long value);                       // 0x00497890
+005472a0|16:long __fastcall GFROR13(unsigned long);       // 0x00497890 (rotate right by 13)
+00666b50|23:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00669850|18:long __fastcall GFROR13(unsigned long);       // 0x00497890
+0066b280|70:long __fastcall GFROR13(unsigned long);   // 0x00497890
+0066b300|17:long __fastcall GFROR13(unsigned long value);            // 0x00497890 ?GFROR13@@YIJK@Z
+00680840|11:long __fastcall GFROR13(unsigned long);
+00699560|13:long __fastcall GFROR13(unsigned long value); //497890 ?GFROR13@@YIJK@Z (Ego_r.pdb)
+006cefe0|17:long __fastcall GFROR13(unsigned long);   // 0x00497890
+006cf530|
+006d0410|51:long __fastcall GFROR13(unsigned long value);      // 0x00497890
+006e8730|9:long __fastcall GFROR13(unsigned long);   // 0x00497890
+006ea2c0|48:long __fastcall GFROR13(unsigned long);   // 0x00497890
+006eae20|
+00700120|16:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00728000|18:long __fastcall GFROR13(unsigned long);  // 0x00497890
+00728ff0|22:long __fastcall GFROR13(unsigned long);  // 0x00497890
+0072f170|
+007332f0|
+00733690|24:long __fastcall GFROR13(unsigned long value);  // 0x00497890
+00733cf0|
+007345d0|93:long __fastcall GFROR13(unsigned long);   // 0x00497890
+0073a8e0|
+0074a260|29:long __fastcall GFROR13(unsigned long);       // 0x00497890
+0074af50|
+00757870|21:long __fastcall GFROR13(unsigned long);       // 0x00497890 (rotate right by 13)
+00757f90|13:long __fastcall GFROR13(unsigned long value);    // 0x00497890
+00783380|26:long __fastcall GFROR13(unsigned long value);  // 0x00497890
+007a0d90|
+007b0cd0|40:long __fastcall GFROR13(unsigned long value);           // 0x00497890 ?GFROR13@@YIJK@Z
+007ba3c0|25:long __fastcall GFROR13(unsigned long);  // 0x00497890
+007bebe0|23:long __fastcall GFROR13(unsigned long value);                           // 0x00497890
+007dfb20|16:long __fastcall GFROR13(unsigned long);      // 0x00497890
+007e61b0|13:long __fastcall GFROR13(unsigned long value);       // 0x00497890
+007fede0|33:long __fastcall GFROR13(unsigned long);       // 0x00497890
+00801920|
+00805fe0|20:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00806910|24:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00806990|22:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00807520|25:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00808950|21:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00809650|18:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0080a240|23:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0080f130|11:long __fastcall GFROR13(unsigned long);   // 0x00497890
+0080f270|191:extern long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00830260|16:long  __fastcall GFROR13(unsigned long value);                      // 0x00497890
+00834530|
+00853670|
+008539c0|
+008559e0|91:long __fastcall GFROR13(unsigned long);
+00861e60|54:long __fastcall GFROR13(unsigned long);       // 0x00497890
+00862ec0|
+0086b810|
+0086b9d0|
+0086be40|
+0086f510|11:long __fastcall GFROR13(unsigned long value);      // 0x00497890
+008a7e00|146:long __fastcall GFROR13(unsigned long); //00497890
+008a93a0|
+008bc1a0|253:long __fastcall GFROR13(unsigned long value);            // 0x00497890
+008bf800|
+008c1600|
+008c4fd0|
+008c64f0|
+008d6580|
+008d6ac0|
+008e0060|
+008e03b0|
+008e7f80|
+008e8060|
+008ed590|
+008ee5a0|13:long __fastcall GFROR13(unsigned long value);            // 0x00497890
+008ee600|13:long __fastcall GFROR13(unsigned long value);            // 0x00497890
+008ee660|13:long __fastcall GFROR13(unsigned long value);            // 0x00497890
+008ee6c0|13:long __fastcall GFROR13(unsigned long value);            // 0x00497890
+008ee720|
+00907010|19:long __fastcall GFROR13(unsigned long);   // 0x00497890
+0090bed0|41:long __fastcall GFROR13(unsigned long);   // 0x00497890
+0090c800|79:long __fastcall GFROR13(unsigned long);   // 0x00497890
+0090d030|
+0090e5d0|
+0090f690|73:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0090f7d0|64:long __fastcall GFROR13(unsigned long value);           // 0x00497890 (Ego_r.pdb ?GFROR13@@YIJK@Z)
+0090fdb0|81:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+009104d0|41:long __fastcall GFROR13(unsigned long value);                       // 0x00497890 ?GFROR13@@YIJK@Z
+00911710|88:long __fastcall GFROR13(unsigned long);   // 0x00497890
+009118a0|88:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00911f80|19:long __fastcall GFROR13(unsigned long);    // 0x00497890
+00912ba0|
+00913f30|72:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00914460|107:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00914c60|78:long __fastcall GFROR13(unsigned long);          // 0x00497890
+00914f00|
+00915080|89:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00915350|
+00915b60|
+009175e0|54:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00918640|
+00918ac0|16:long __fastcall GFROR13(unsigned long);      // 0x00497890
+00918b90|
+009190f0|133:long __fastcall GFROR13(unsigned long);      // 0x00497890
+009191b0|26:long __fastcall GFROR13(unsigned long);      // 0x00497890
+00919440|133:long __fastcall GFROR13(unsigned long value);      // 0x00497890
+0091a9b0|23:long __fastcall GFROR13(unsigned long); // 0x00497890
+0091b010|138:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0091bd10|35:long __fastcall GFROR13(unsigned long);    // 0x00497890
+0091ddd0|43:long __fastcall GFROR13(unsigned long value);               // 0x00497890
+0091e4b0|71:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00922010|
+00922860|
+009284b0|
+009285d0|19:long __fastcall GFROR13(unsigned long value);    // 0x00497890
+009289b0|
+00928e20|96:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00929b10|122:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0092a0c0|70:long __fastcall GFROR13(unsigned long);   // 0x00497890
+0092a8a0|61:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0092b110|62:long __fastcall GFROR13(unsigned long);   // 0x00497890
+0092b3e0|71:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0092c440|14:long __fastcall GFROR13(unsigned long);   // 0x00497890
+0092c490|14:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00934090|24:long __fastcall GFROR13(unsigned long);   // 0x00497890
+009347b0|74:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00934870|21:long __fastcall GFROR13(unsigned long value);               // 0x00497890
+00938280|37:long __fastcall GFROR13(unsigned long value);                       // 0x00497890 ?GFROR13@@YIJK@Z
+00938bf0|66:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00938f70|79:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00939180|105:long __fastcall GFROR13(unsigned long);
+0093afc0|22:long __fastcall GFROR13(unsigned long value);    // 0x00497890
+0093c030|
+0093d030|49:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00941cf0|24:long __fastcall GFROR13(unsigned long);      // 0x00497890
+00941d70|24:long __fastcall GFROR13(unsigned long value);      // 0x00497890
+00942ee0|137:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+009431e0|71:long __fastcall GFROR13(unsigned long);   // 0x00497890
+009432c0|85:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00946f90|222:long __fastcall GFROR13(unsigned long value);               // 0x00497890 ?GFROR13@@YIJK@Z
+00947110|140:long __fastcall GFROR13(unsigned long value);            // 0x00497890 ?GFROR13@@YIJK@Z
+009473e0|
+009482a0|
+00948880|
+00949ab0|
+0094a0e0|127:long __fastcall GFROR13(unsigned long);      // 0x00497890
+0094a200|128:long __fastcall GFROR13(unsigned long);      // 0x00497890
+0094a2b0|128:long __fastcall GFROR13(unsigned long);      // 0x00497890
+0094a3b0|
+0094b740|64:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0094bb20|96:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0094ce60|80:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00950a30|298:long __fastcall GFROR13(unsigned long);      // 0x00497890
+00951430|
+00951b20|57:long __fastcall GFROR13(unsigned long);      // 0x00497890
+00954f40|
+00956060|
+00957a20|65:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00959800|
+00959a60|62:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00959bf0|
+00959f80|
+0095b020|32:long __fastcall GFROR13(unsigned long);  // 0x00497890
+00962c10|157:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00963640|155:long __fastcall GFROR13(unsigned long value);  // 0x00497890
+00964ca0|70:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00966af0|
+00966da0|
+00969470|71:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00969e70|65:long __fastcall GFROR13(unsigned long value);                       // 0x00497890 ?GFROR13@@YIJK@Z
+0096aad0|86:long __fastcall GFROR13(unsigned long value);  // 0x00497890
+0096c9a0|67:long __fastcall GFROR13(unsigned long);  // 0x00497890
+0096df50|
+0096f570|31:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+0096f770|82:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00971ed0|
+00974110|
+009756b0|
+0097a630|
+0097fa00|63:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+00984a20|82:long __fastcall GFROR13(unsigned long value);   // 0x00497890
+009c9280|
+00a146c0|19:long __fastcall GFROR13(unsigned long value);                     // 0x00497890
+00b0a210|16:long __fastcall GFROR13(unsigned long);  // 0x00497890
+00b0cad0|
+00b0dc20|
+00b3be10|9:long __fastcall GFROR13(unsigned long);
+00b51570|
+00b935c0|76:long __fastcall GFROR13(unsigned long);   // 0x00497890
+00f35e00|12:long __fastcall GFROR13(unsigned long value);                       // 0x00497890
+00f35ed0|19:long __fastcall GFROR13(unsigned long value);           // 0x00497890

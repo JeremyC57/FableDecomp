@@ -1,0 +1,4 @@
+#22 006a7b20 ??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z
+   006a7b20(self) - DEF=WRONG:??RCThingFilter_PosInContainmentVolume@@QBE_NPAVCThing@@@Z
+   00669110 OK ??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z x1
+   006698d0 WRONG ??RCThingFilter_PosInContainmentVolume@@QBE_NPAVCThing@@@Z x1

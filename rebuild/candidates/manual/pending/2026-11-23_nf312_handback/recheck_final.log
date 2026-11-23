@@ -1,0 +1,78 @@
+addr       parity           behav  name
+00405350   WARN RELOC_NAME: ?TransferSignedChar@CPersistContext@@QAEXPBDAACABC@Z -> 00405a60 labelled 'CPersistContext::Transfer<unsigned char>'
+00405350   WARN RELOC_NAME: _g_FableImeEnabled_013B7CD8 -> 013b7cd8 labelled 'NUISystem::CIME gIME'
+00405350   RELOCATION_MATCH PASS   LoadIMESettings
+006698d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006698d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+006698d0   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+006698d0   WARN SHARED_HEADER_AVAILABLE CThingFilter_OverlappingSphere (engine/CThingFilter_OverlappingSphere.h)
+006698d0   WARN SHARED_HEADER_AVAILABLE CThingFilter_PosInContainmentVolume (engine/CThingFilter_PosInContainmentVolume.h)
+006698d0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+006698d0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+006698d0   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+006698d0   RELOCATION_MATCH PASS   GetPFirstLeafThing<CFilter_Bind2<CThingFilter_OverlappingSphere, CThingFilter_PosInContainmentVolume>, CThingBuilding>
+006a7b20   WARN SHARED_HEADER_AVAILABLE CPhysicsMeshObject (engine/CPhysicsMeshObject.h)
+006a7b20   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+006a7b20   WARN SHARED_HEADER_AVAILABLE CThingFilter_PosInContainmentVolume (engine/CThingFilter_PosInContainmentVolume.h)
+006a7b20   WARN STANDIN_LEAF ??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z (catalog CThingFilter_PosInContainmentVolume::operator; names another function)
+006a7b20   RELOCATION_MATCH PASS   operator
+006c0810   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006c0810   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+006c0810   RELOCATION_MATCH PASS   OnSerialise
+007990c0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007990c0   WARN SHARED_HEADER_AVAILABLE CTCShopKeeper (engine/CTCShopKeeper.h)
+007990c0   RELOCATION_MATCH PASS   RequiresNewCustomer
+0088f400   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f400   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0088f400   RELOCATION_MATCH PASS   SetCreatureGeneratorsCreatureGroupAsEnabled
+008d66e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d66e0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008d66e0   RELOCATION_MATCH PASS   OnActivate
+009432c0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CTCVillageMember (engine/CTCVillageMember.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkAtSchool (engine/CAIStateGroup_WorkAtSchool.h)
+009432c0   WARN RELOC_NAME: ?CrouchAndTalk@CAIStateGroup_WorkAtSchool@@QAE_NM@Z -> 009428a0 labelled 'CAIStateGroup_WorkAtSchool::Teach'
+009432c0   WARN RELOC_NAME: ?SitAndTalk@CAIStateGroup_WorkAtSchool@@QAE_NM@Z -> 00942820 labelled 'CAIStateGroup_WorkAtSchool::CrouchAndTalk'
+009432c0   RELOCATION_MATCH PASS   Update
+009650c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingFilter_In3DRange (engine/CThingFilter_In3DRange.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind4 (engine/CFilter_Bind4.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+009650c0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+009650c0   WARN RELOC_NAME: ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z -> 00916b10 labelled 'CThingCompare_Nearest::operator()<CThingObject>'
+009650c0   RELOCATION_MATCH PASS   GetPBestThing
+00d89380   RELOCATION_MATCH PASS   Main
+00df2380   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00df2380   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00df2380   WARN SHARED_HEADER_AVAILABLE CQ_SummoningTheShipScript (engine/CQ_SummoningTheShipScript.h)
+00df2380   RELOCATION_MATCH PASS   Main
+00df2ab0   WARN SHARED_HEADER_AVAILABLE CQ_SummoningTheShipScript (engine/CQ_SummoningTheShipScript.h)
+00df2ab0   RELOCATION_MATCH PASS   Main
+00dfe0f0   RELOCATION_MATCH PASS   Main
+00efb8c0   RELOCATION_MATCH PASS   Main
+
+WINS: 14
+  00405350 RELOCATION_MATCH NUISystem::CIME::LoadIMESettings
+  006698d0 RELOCATION_MATCH CThingSearchTools::GetPFirstLeafThing
+  006a7b20 RELOCATION_MATCH CThingFilter_PosInContainmentVolume::??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z
+  006c0810 RELOCATION_MATCH CTCBuyableHouse::OnSerialise
+  007990c0 RELOCATION_MATCH CTCShopKeeper::RequiresNewCustomer
+  0088f400 RELOCATION_MATCH CGameScriptInterface::?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBEXW4ECreatureGroup@@_N@Z
+  008d66e0 RELOCATION_MATCH NCreatureMode::CModeUnderground::OnActivate
+  009432c0 RELOCATION_MATCH CAIStateGroup_WorkAtSchool::Update
+  009650c0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00d89380 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CNostro::Main
+  00df2380 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerAttacker::?Main@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+  00df2ab0 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerMinion::?Main@CSummonerMinion@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+  00dfe0f0 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CTraderToRescue::?Main@CTraderToRescue@CQ_TraderConflictGoodScript@NScript@@EAEXXZ
+  00efb8c0 RELOCATION_MATCH NScript::CHitSwitchTestScript::CHitSwitch::?Main@CHitSwitch@CHitSwitchTestScript@NScript@@EAEXXZ

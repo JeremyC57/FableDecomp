@@ -1,9 +1,10 @@
+// Leaf: ?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBEXW4ECreatureGroup@@_N@Z
 enum ECreatureGroup { ECreatureGroup_Dummy };
 
 class CWorld
 {
 public:
-    void __fastcall SetCreatureGenerationGroupAsEnabled(
+    void SetCreatureGenerationGroupAsEnabled(
         ECreatureGroup creatureGroup,
         bool enabled);
 };
@@ -11,7 +12,7 @@ public:
 class CGameScriptInterface
 {
 public:
-    virtual void __fastcall SetCreatureGeneratorsCreatureGroupAsEnabled(
+    virtual void SetCreatureGeneratorsCreatureGroupAsEnabled(
         ECreatureGroup creatureGroup,
         bool enabled) const;
 };
@@ -22,7 +23,7 @@ struct CGameScriptInterfaceOverlay
     CWorld* m_pWorld; /* 0x04 */
 };
 
-void __fastcall CGameScriptInterface::SetCreatureGeneratorsCreatureGroupAsEnabled(
+void CGameScriptInterface::SetCreatureGeneratorsCreatureGroupAsEnabled(
     ECreatureGroup creatureGroup,
     bool enabled) const
 {

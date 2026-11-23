@@ -31,8 +31,8 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-void __fastcall FadeOutThing(const CScriptThing& thing, float time, float alpha);   // 0x00CBE814
-void __fastcall FadeInThing(const CScriptThing& thing, float time);                 // 0x00CBE7AA
+void __fastcall FadeOutThing(CScriptThing& thing, float time, float alpha);   // 0x00CBE814
+void __fastcall FadeInThing(CScriptThing& thing, float time);                       // 0x00CBE7AA
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.

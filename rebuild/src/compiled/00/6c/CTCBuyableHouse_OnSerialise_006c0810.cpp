@@ -24,7 +24,7 @@ class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
     //   instances here: bool 0x004045C0; long 0x00410BE0
 };
-void __fastcall GFSerialisePointer(CPersistContext* context, const char* name, CBaseIntelligentPointer* pointer,
+void __fastcall GFSerialisePointer(CPersistContext& context, const char* name, CIntelligentPointer<CThing>& pointer,
                                    unsigned long thingType);   // 0x0088AE40
 class CDefPointeeBase;
 class CTCBuyableHouse {
@@ -43,7 +43,7 @@ public:
     CBaseIntelligentPointer MainSignPost;               // +0x24
     CBaseIntelligentPointer DressingSignPost;           // +0x2c
     long                    FrameToNextCheckIfWeNeedToCreateAnything;   // +0x34
-    CBaseIntelligentPointer WifeLivingHere;             // +0x38
+    CIntelligentPointer<CThing> WifeLivingHere;         // +0x38
     bool                    InitiallySetupDressLevel;   // +0x40
     long                    VirtualMoneyBags;           // +0x44
     bool                    HasPreviouslyBeenBuyable;   // +0x48
@@ -55,7 +55,7 @@ public:
 
 void CTCBuyableHouse::OnSerialise(CPersistContext* context, bool full)
 {
-    GFSerialisePointer(context, "WifeLivingHere", &WifeLivingHere, ParentThing->GetCurrentMapNumber());
+    GFSerialisePointer(*context, "WifeLivingHere", WifeLivingHere, ParentThing->GetCurrentMapNumber());
     context->Transfer("OwnedByPlayer", OwnedByPlayer, false);
     context->Transfer("IsScripted", IsScripted, false);
     context->Transfer("Rented", Rented, false);

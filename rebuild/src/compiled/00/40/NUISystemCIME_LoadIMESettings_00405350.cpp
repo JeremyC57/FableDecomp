@@ -25,10 +25,10 @@ extern "C" fable_u32 g_FableImeCandidateColourConverted_013B7D0C;
 extern "C" fable_u32 g_FableImeCandidateColourTargetNotConverted_013B7D10;
 extern "C" fable_u32 g_FableImeCandidateColourInputError_013B7D14;
 
-fable_u32 FABLE_FASTCALL TransferIMEColour(
+unsigned long FABLE_FASTCALL TransferIMEColour(
     CPersistContext& context,
     const CCharString& token,
-    fable_u32 defaultColour);
+    unsigned long defaultColour);
 
 void FABLE_FASTCALL NUISystem::CIME::LoadIMESettings(
     CPersistContext& context)

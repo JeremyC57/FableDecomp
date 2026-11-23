@@ -1,0 +1,47 @@
+#23 0049d930 ?SetCreatureGenerationGroupAsEnabled@CWorld@@QAEXW4ECreatureGroup@@_N@Z
+   0049d930(self) - DEF=OK:?SetCreatureGenerationGroupAsEnabled@CWorld@@QAEXW4ECreatureGroup@@_N@Z
+   0088f400 OK ?SetCreatureGenerationGroupAsEnabled@CWorld@@QAEXW4ECreatureGroup@@_N@Z x1
+#37 0085f830 ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z
+   0085f830(self) - DEF=OK:?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z
+   008d66e0 OK ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z x1
+#76 0088ae40 ?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z
+   0088ae40(self) - DEF=OK:?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z
+   006c0810 OK ?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z x1
+#78 009e1e70 ?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z
+   009e1e70(self) - DEF=OK:?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z
+   00434b50 NOOBJ
+   009dc6e0 OK ?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z x1
+   009dc870 OK ?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z x1
+   00a0b560 OK ?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z x1
+   00b314e0 NOOBJ
+#83 00cbed00 ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+   00cbed00(self) - DEF=OK:?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+   00d17340 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x1
+   00d18b20 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x2
+   00d19af0 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x2
+   00d1c9e0 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x2
+   00d1cac0 NOOBJ
+   00d20790 WRONG ?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z x1
+   00d6be20 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x3
+   00d74430 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x2
+   00d75060 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x1
+   00d91740 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x1
+   00def3b0 WRONG ?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z x2
+   00def760 WRONG ?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z x2
+   00df0200 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x2
+   00e12580 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x2
+   00e2fc50 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x2
+   00e74d70 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x2
+   00edd060 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x1
+   00ee6a40 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x1
+   00f09cd0 OK ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z x6
+#84 00cbed82 ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z
+   00cbed82(self) - DEF=OK:?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z
+   00d30030 OK ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z x1
+   00d9a190 OK ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z x1
+   00db97a0 OK ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z x3
+   00dc0830 NOOBJ
+   00e0b160 OK ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z x1
+   00e1d690 OK ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z x1
+   00e87030 OK ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z x1
+   00ed2a50 OK ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z x1
