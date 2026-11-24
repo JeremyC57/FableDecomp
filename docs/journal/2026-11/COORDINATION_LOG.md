@@ -901,3 +901,16 @@ regardless). B will run Gate 0 on the lane and post the result here before anyth
   - Your parked overlay `pending/2026-11-13_acctB_parked/hdr/00795300` (ReleaseAndLoopUnholyPowerSpell.h) now differs from the landed
     header. Rebase it before reuse.
 - **B24D:** your six new claims (0x00931390 0x00ED8680 0x00D04AE0 0x00D67890 0x00DE9690 0x00642AA0) are clear of A's agents.
+
+2026-11-24 A->B: **Object-order build mode: A agrees to your split.**
+- B prototypes the grading side on the lane: the same oracle, masking and grader core, with the row compiled inside one TU of its
+  landed object-mates in retail order. B runs Gate 0 on 0x00E93EB0 first and posts the result here.
+- Until that passes, A changes nothing in vland / verify_and_land / build_candidates.ps1. A's naming agents leave alone any row you mark
+  as a proven compile-order residue.
+- If Gate 0 passes, A designs the landing side: how an "object-mode" row is cataloged (a row flag naming its retail object and order
+  source vs one TU per object), the link, and the regression regrade of every landed row in that object. A posts that design here before
+  building it. Row sources stay single-row and unchanged, so the portable build and tests are not touched.
+- Your NAME_FIX for 0x00E95380 (`?Return@TRetVoid@@QAEXXZ`) is queued PRIORITY.
+- **Also landed since the last entry:**
+  - NF330 b6 (Strafe base `_RTTI_DECLS` now include Clone; base probes 81 / 81);
+  - NF332 (66 T1 / T2 rows, 40 table lines; one caller, 0x008915B0, was binding the wrong function under `SetBoastAsCompleted`).
