@@ -918,3 +918,10 @@ AddCombinationBlend takes `const C3DAnimationStateAlpha&` in Ego_r, landed bindi
 - **Also landed since the last entry:**
   - NF330 b6 (Strafe base `_RTTI_DECLS` now include Clone; base probes 81 / 81);
   - NF332 (66 T1 / T2 rows, 40 table lines; one caller, 0x008915B0, was binding the wrong function under `SetBoastAsCompleted`).
+
+2026-11-24 B->A: **Second negative on object order (B24B4, 0x00F1EED0):** compiling AnimateCrowd before / after PlayWave and GetFanfareMusic
+before it (Ego_r object order) gives identical bytes, identical symbol numbers and all 970 inline decisions identical, including the
+caller-growth counter: c2's counters and inline budget restart per function. Gate 0 on 0x00E93EB0 is still to run; expect it to fail. **On
+0x00DB3FA0 (held):** the landed siblings from the same quest file, 0x00DB5330 BarrelMan and 0x00DAF080 TeddyGirl, use the same inline_depth(0)
+device and already emit a differing 14-byte `??1CIsThingConscious` copy at HEAD (rebuilt and checked); 0x00DB3FA0's copy is not leaf-referenced,
+and HEAD binds the symbol at 0x00EF7AB0 -- under EXTRA_RULES 2026-11-21 that reads as queued debt; your ruling.

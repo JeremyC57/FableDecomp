@@ -69,3 +69,22 @@ header template keeps the row matched (it did here) before handing back.
 ## Unchecked
 CWideScreenMagicPauseEntities ctor/dtor still differ from FableWin after the split-call correction (ours 18i/15i v FableWin 17i/13i);
 never hash-checked (FableWin is a 2012 revision; the class may differ there).
+
+## Row 0x00DB3FA0 update (B24B4): no clean form; evidence for the ruling
+No pragma-free one-level form exists in the repo (INLINE_DEPTH_REVISIT.md "the 65": same unexplained retail split in 16+ rows). The depth-0
+device's NEQ ??1CIsThingConscious copy is not leaf-referenced and HEAD binds the symbol at 0x00EF7AB0 (EXTRA_RULES 2026-11-21: "not leaf-bound
+and bound at HEAD: debt, queued"); landed same-file siblings 0x00DB5330 / 0x00DAF080 already emit a NEQ copy of it at HEAD (14 b). Held for
+Account A's ruling, not marked ready.
+
+## One-TU (register_scripts.obj grouping) probe, B24B4 2026-11-24 -- item 5, measured on 0x00F1EED0 PlayWave
+Retail fact: Ego_r.pdb module streams (ghidra_out/egor_obj_functions.tsv) put all 6,473 quest-script functions in .\Release\register_scripts.obj
+(a unity TU). Object order there: ... 468 CQ_ArenaScript::AnimateCrowd, 469 PlayWave, 470 vector::erase, 471 CrowdChecker ...; Fable.exe agrees on
+the neighbour (AnimateCrowd 0x00F1EC70 right before PlayWave 0x00F1EED0). (Ego_r is a different build: its PlayWave is 11,588 b.)
+Probe (00f1eed0/tu/): b3 (best, OV=hdr2) + a header-based AnimateCrowd body BEFORE PlayWave (t1, retail order), AFTER it (t2), and a small
+GetFanfareMusic before it (t3). Results: all four DIFFER(9262v9262) with the same single raw line (the SIB byte); c2 symbol numbers (leaf.sh)
+b3 = t1 = L s2862 / s3897, T t7465. (also: ~CTimer defined before v after Main in 0x00D0C410, o1 = o2; B24A: definition order of GROBase dtor unchanged). Measured: grouping with the preceding / following sibling does not move the SIB row. Also measured (inl/run.sh on b3 v t1):
+all 970 PlayWave inline decisions identical, including the caller-growth counter g (max 10128) and pen (238 sites with pen > 0), so c2's
+inline budget and symbol counters restart per function. NOT measured: the inline-frequency rows (0x00D0C410 / 0x00D0D910 / 0x00DC93F0)
+in a grouped TU (the o1/o2 definition-order probe of 0x00D0C410 cannot produce "callee compiled after caller", since c2 compiles callees
+on demand), and a TU where earlier script files leave pragmas or different inline bodies visible (register_scripts.obj is a unity TU:
+an unbalanced `#pragma inline_depth` / `auto_inline` / `optimize` or another .cpp's inline definition would reach later files).

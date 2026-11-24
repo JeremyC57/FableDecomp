@@ -23,3 +23,12 @@
   differ/00d0c410.cpp = c1.
 State: escalated (ESCALATE.md). Next idea: the ~MovieBase decision (cause open, see ESCALATE.md; 0x00DC93F0 contradicts a plain 'always-inline'); also recheck pick-any
 (declared-only CP<Movie> dtor gives a NEQ ~MovieBase copy, row 0x00DB3FA0).
+## B24B4 (2026-11-24)
+- B24A family recipe applied (r1.cpp: S15 + plain inline ~CTimer + inline_depth(0) round the 16 terminate checks with NO movie in scope,
+  2 hot exits left plain): DIFFER(5358v5373) 131 hunks -- the caveat bites: 36 terminate checks sit inside the two speech_movie scopes
+  (retail: MovieBase expanded, ~CTimer called), so ~CTimer expands there. Recipe does not apply to this row. Best stays c1.cpp (2 hunks).
+- Compile-order probe (diagnostic, strong out-of-line ~CTimer): non-inline ~CTimer defined AFTER Main (o1) = before Main (o2) =
+  5331 (S15) / 5304 (stock), identical to the inline forms -> definition order inside one TU is not the lever (agrees with B24A).
+- Structural argument (for ESCALATE): in c2's regime-0 rule, expansion is monotone in c1 at equal f; c1(~MovieBase) 19 > c1(~CTimer) 14
+  at every site (pen 0), so "MovieBase expanded + ~CTimer called at the same return" is impossible for any S/T and any frequency
+  unless the two dtors see different costs or frequencies at that return. Retail does it at ~36 returns here.

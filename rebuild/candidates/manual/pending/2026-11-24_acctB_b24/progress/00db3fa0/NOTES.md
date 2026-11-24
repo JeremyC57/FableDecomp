@@ -17,3 +17,16 @@
   (p1.cpp) emits an EQ copy (84 b), so the NEW differing copy is caused by the depth-0 device (the out-of-line body compiled under depth 0
   calls ~CScriptThing; retail's expands it). No sanctioned remedy found (the 2026-11-20 size-pragma scaffolding is for optimize pragmas;
   a DECL_ONLY opt-in cannot coexist with the expansion Main needs). Needs the lander's / owner's ruling; held until then.
+## B24B4 (2026-11-24): searched for a clean form -- none; row stays HELD (RELOCATION_MATCH staged), ruling evidence for Account A
+- Repo history: docs/pipeline/INLINE_DEPTH_REVISIT.md "Still unexplained (the 65)": retail calls ~CScriptThing 0x004AA840 / copy 0x004ABE90
+  out of line inside inline-expanded CIsThingAlive / CIsThingConscious special members but expands them elsewhere in 16+ rows; no pragma-free
+  form was ever found (/d2inlT55-65 reproduces 9, diagnostic only). Same mechanism here.
+- Correction (B24B4, advisor check): Ego_r.pdb puts ~CIsThingConscious in .\Release\register_scripts.obj (index 99, 140 b) with the
+  quest scripts, so ONE unity TU produced both forms (standalone copy: ~CScriptThing expanded; Main's expansion: ~CScriptThing called).
+  The 'linker kept another object's copy' guess is withdrawn; the split is the unexplained c2 behaviour of 'the 65'.
+- Ruling evidence: EXTRA_RULES 2026-11-21 clause "Not leaf-bound and bound at HEAD: debt, queued" -- the copy is not leaf-referenced and HEAD
+  binds it (reloc_bindings.tsv: `??1CIsThingConscious@NScript@@UAE@XZ 00ef7ab0 00f1a990`). Counter-text: 2026-11-20 "debt, queued, not licence
+  for more". Precedent: landed siblings of the same quest file with the same device emit a NEQ copy of the same symbol at HEAD (q.py rebuild +
+  pickany_vs_retail.py, B24B4): 0x00DB5330 CNOVI_BarrelMan::Main NEQ 14 b, 0x00DAF080 CNOVI_TeddyGirl::Main NEQ 14 b (NOVTABLE form);
+  ours is NEQ 25 b (calls ~CScriptThing, tail-jumps ~CPredicateBase; retail 0x00EF7AB0 = 84 b, both expanded). All other copies EQ.
+- NOT marked ready: held until Account A rules on the clause above. payload.json / oracle.tsv / vland PASS from B24B3 unchanged.

@@ -148,3 +148,8 @@ the effect with leaf.sh (flip iff 2b - a > ~220) and rawcmp. Also try the same f
 - B24A4's family recipe (/d2inlS15 + scoped inline_depth(0)) needs a ~CTimer of c1 >= 20; the original text measures c1 14 (sz ~20),
   so that branch is closed from lane B's side.
 State: unchanged best b3 (SIB only); remaining lever is the a/b symbol-count inequality with no evidenced form. Moving to row 2.
+## B24B4 (2026-11-24): one-TU probe (item 5) -- negative
+tu/t1.cpp (AnimateCrowd before PlayWave, retail object order), tu/t2.cpp (after), tu/t3.cpp (GetFanfareMusic before), OV=hdr2: all
+DIFFER(9262v9262), raw = the SIB line only; leaf.sh b3 = t1 = t2: L s2862 / s3897, T t7465. Symbol numbering is per function; grouping
+rows in one TU does not move the SIB. Written to ../SHARED_FORM.md. Remaining unity-TU difference untested: pragmas / inline bodies left
+visible by earlier script files in register_scripts.obj.

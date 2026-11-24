@@ -9,3 +9,8 @@ always-inline' is not a uniform retail property; needs the frequency/cost questi
 
 Pick-any caution (from row 0x00DB3FA0): c1.cpp keeps the declared-only CP<Movie> dtor specialization, which makes the emitted
 ??1CScriptGameResourceObjectMovieBase copy NEQ to retail 0x006E7B80; recheck with the visible header template before any hand-back.
+
+B24B4: family recipe measured (r1.cpp 131 hunks: 36 in-movie terminate checks need MovieBase expanded + ~CTimer called at the same return,
+which c2's per-site rule cannot give while c1(MB) 19 > c1(~CTimer) 14). TU definition order of ~CTimer is not the lever (o1 = o2). Candidate
+for the owner's retail-object build mode (register_scripts.obj grouping): only if that context changes the callee costs/frequencies seen by
+Main -- unproven, see b24b/SHARED_FORM.md (item 5 measurement).

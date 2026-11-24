@@ -13,3 +13,24 @@
   (0x00DCA20D.. possession test, returned[] test, terminate check) equal ours, so the lower frequency comes from control flow outside
   the chain (loop construct / branch structure of `while (!collected_all)` and `if (collected_all)`), not from the arms. Next idea:
   read the Lua port (work/aeon_lua_ports, OpeningGraveyardSecretPassage) for the original loop shape, then trace f again.
+## B24B4 (2026-11-24): regrade on the corrected oracle (4507): DIFFER(4485v4507) 18 hunks (r0.cpp = differ/ unchanged) -- residue as B24B3 said
+- Trace kit copied to inl/ (tr.sh <src> <tag>: 20 s c2 trace, prints Return / ~MovieBase / ~STB decisions with f; + expanded, - called).
+- NEW: a UNIFORM scale r of the whole main-loop body frequency fits every inline site at once: r in (0.32, 0.403) (helmet ~MB .1159r < .0467,
+  armour .1545r > .0467, CScriptThing copy ctor .2197r > .068, STB/MB ctors .1562r > .0503, all called STB sites stay called). Our loop body
+  is 2.5 (first R in the loop); retail looks like ~0.8..1.0, i.e. no loop weight. The slot-order residue (STB v MovieBase density) is
+  probably the same frequency fact (both block-weight driven) -- untested.
+- Tried, frequencies UNCHANGED (c2 finds the loop from the CFG): for(;!c;), if(!c) do{}while(!c), for(;;){if(c)break;}, while(true){if(c)break;},
+  do{if(c)break;}while(true), goto loops (G1/G2). Bytes equal (18..22 hunks).
+- Tried, bytes change: for-j / for-i as `while(j<LAST){...++j;}` (w1/w2/w3): cools the code after the loop ~10x (too cold), 3683..4000 b.
+- else -> `else if (!collected_all)` (a1): else-block x0.5 -> helmet .0579 still expanded (need < .0467); swapping if/else flips layout.
+- Next idea: what source makes c2 give the main loop body weight ~1 (r 0.32..0.40): the loop factor 2.5 may come from its exit count or nesting;
+  or this is retail-object compile context (owner 2026-11-24 build mode) -- not proven, so not escalated as compile order.
+- Bound note: the helmet ~MovieBase site is the ONLY upper bound on r; every other site is a lower bound. So shapes that cool only the
+  else block or only the 4th arm (x < 0.403 there, armour arm >= 0.302) are as valid as a uniform loop scale.
+- ONE CAUSE (B24B4 diagnostic): `#pragma inline_depth(0)` round only the helmet arm's terminate check (x1) or only its `return` (x4)
+  -> DIFFER(4509v4507) 3 hunks: ~MovieBase now CALLED there (= retail) and the whole STB/MovieBase slot-order residue VANISHES. So the
+  slot order is a consequence of the helmet ~MovieBase decision. Left: depth(0) also blocks ~CWideScreenMagicPauseEntities at that return
+  (called + spill of its Game pointer at 0x00DCA1DE, eax/edx at 0x00DCA4F4); depth(1) same; depth(2) 171 hunks; a forced WS dtor (overlay
+  hdrx FORCEINLINE_DTOR, diagnostic) is blocked by depth 0 too. differ/ = x4 (3 hunks; the device is NOT landable while WS is wrong).
+  Next: a form that lowers ONLY the 4th arm's frequency below 0.403x (or the whole else block 0.30..0.40x) with no device; or a scoped
+  control that blocks the implicit ~MovieBase but not the WS dtor.
