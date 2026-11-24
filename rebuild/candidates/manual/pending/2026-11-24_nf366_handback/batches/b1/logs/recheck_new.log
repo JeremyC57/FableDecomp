@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00447660   MATCH            PASS   sub_00447660
+00a28370   MATCH            PASS   sub_00a28370
+00a281e0   MATCH            PASS   sub_00a281e0
+00aa4310   MATCH            PASS   sub_00aa4310
+00b3e080   MATCH            PASS   sub_00b3e080
+00cd42e0   MATCH            PASS   sub_00cd42e0
+00f38920   MATCH            PASS   sub_00f38920
+
+WINS: 7
+  00447660 MATCH _gapscan::?DeleteData@?$CCountedPointer@$$CBVCInputTypeBase@@@@SIXPAX@Z
+  00a28370 MATCH _gapscan::?DeleteData@?$CCountedPointer@VCMeshDataBankEntry@@@@SIXPAX@Z
+  00a281e0 MATCH _gapscan::?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z
+  00aa4310 MATCH _gapscan::?DeleteData@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@SIXPAX@Z
+  00b3e080 MATCH _gapscan::?DeleteData@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@SIXPAX@Z
+  00cd42e0 MATCH _gapscan::?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z
+  00f38920 MATCH _gapscan::?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z
+EXIT 0

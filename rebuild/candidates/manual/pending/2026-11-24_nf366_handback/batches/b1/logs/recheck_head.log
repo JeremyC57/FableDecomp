@@ -1,0 +1,32 @@
+addr       parity           behav  name
+  WARN leaf 'sub_00447660' matches no symbol in 00447660.obj; graded the largest function
+  WARN leaf 'sub_00447660' matches no symbol in 00447660.obj; graded the largest function
+00447660   MATCH            PASS   sub_00447660
+  WARN leaf 'sub_00a28370' matches no symbol in 00a28370.obj; graded the largest function
+  WARN leaf 'sub_00a28370' matches no symbol in 00a28370.obj; graded the largest function
+00a28370   MATCH            PASS   sub_00a28370
+  WARN leaf 'sub_00a281e0' matches no symbol in 00a281e0.obj; graded the largest function
+  WARN leaf 'sub_00a281e0' matches no symbol in 00a281e0.obj; graded the largest function
+00a281e0   MATCH            PASS   sub_00a281e0
+  WARN leaf 'sub_00aa4310' matches no symbol in 00aa4310.obj; graded the largest function
+  WARN leaf 'sub_00aa4310' matches no symbol in 00aa4310.obj; graded the largest function
+00aa4310   MATCH            PASS   sub_00aa4310
+  WARN leaf 'sub_00b3e080' matches no symbol in 00b3e080.obj; graded the largest function
+  WARN leaf 'sub_00b3e080' matches no symbol in 00b3e080.obj; graded the largest function
+00b3e080   MATCH            PASS   sub_00b3e080
+  WARN leaf 'sub_00cd42e0' matches no symbol in 00cd42e0.obj; graded the largest function
+  WARN leaf 'sub_00cd42e0' matches no symbol in 00cd42e0.obj; graded the largest function
+00cd42e0   MATCH            PASS   sub_00cd42e0
+  WARN leaf 'sub_00f38920' matches no symbol in 00f38920.obj; graded the largest function
+  WARN leaf 'sub_00f38920' matches no symbol in 00f38920.obj; graded the largest function
+00f38920   MATCH            PASS   sub_00f38920
+
+WINS: 7
+  00447660 MATCH _gapscan::sub_00447660
+  00a28370 MATCH _gapscan::sub_00a28370
+  00a281e0 MATCH _gapscan::sub_00a281e0
+  00aa4310 MATCH _gapscan::sub_00aa4310
+  00b3e080 MATCH _gapscan::sub_00b3e080
+  00cd42e0 MATCH _gapscan::sub_00cd42e0
+  00f38920 MATCH _gapscan::sub_00f38920
+EXIT 0

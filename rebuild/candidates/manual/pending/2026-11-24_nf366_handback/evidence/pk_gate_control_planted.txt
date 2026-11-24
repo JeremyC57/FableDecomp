@@ -1,0 +1,23 @@
+00447660	pk_all	SAME
+00447660	pvr	SAME
+ROW 00447660 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00a28370	pk_all	SAME
+00a28370	pvr	SAME
+ROW 00a28370 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00a281e0	pk_all	SAME
+00a281e0	pvr	SAME
+ROW 00a281e0 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00aa4310	pk_all	SAME
+00aa4310	pvr	SAME
+ROW 00aa4310 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00b3e080	pk_all	SAME
+00b3e080	pvr	SAME
+ROW 00b3e080 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00cd42e0	pk_all	SAME
+00cd42e0	pvr	SAME
+ROW 00cd42e0 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00f38920	pk_all	NEWLY_NEQ	00f38930	leaf-called	?PlantedCopy@@QAEXXZ
+00f38920	pvr	SAME
+ROW 00f38920 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 1, 0, 0], 'pvr': [0, 0, 0, 0]}
+GATE FAIL (1)

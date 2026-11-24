@@ -1,0 +1,8 @@
+# NF366: each new self as a whole fixed string in the FableWin / Ego_r / Ego_d PDB name sets (grep -cxF on the extracted name column)
+00447660	?DeleteData@?$CCountedPointer@$$CBVCInputTypeBase@@@@SIXPAX@Z	fablewin=1	egor=0	egod=0
+00a28370	?DeleteData@?$CCountedPointer@VCMeshDataBankEntry@@@@SIXPAX@Z	fablewin=1	egor=0	egod=0
+00a281e0	?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z	fablewin=1	egor=0	egod=0
+00aa4310	?DeleteData@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@SIXPAX@Z	fablewin=1	egor=0	egod=0
+00b3e080	?DeleteData@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@SIXPAX@Z	fablewin=1	egor=0	egod=0
+00cd42e0	?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z	fablewin=1	egor=0	egod=0
+00f38920	?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z	fablewin=1	egor=0	egod=0

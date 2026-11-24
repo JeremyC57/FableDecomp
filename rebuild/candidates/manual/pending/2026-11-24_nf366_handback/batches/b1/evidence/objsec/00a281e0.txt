@@ -1,0 +1,7 @@
+# objsec HEAD (landed text) v the FINAL row text rows/00a281e0.cpp (work/obj/00a281e0.obj)
+LEAF A @DeleteIfSet@4 {'name': '.text', 'ch': '60501020', 'sel': 1, 'size': 11}
+LEAF B ?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z {'name': '.text', 'ch': '60501020', 'sel': 1, 'size': 11}
+DRECTVE - [] + []
+LEAFCMP data_eq=True relocs_eq=True ch_eq=True
+VERDICT OTHER_SAME symdelta=0
+DEFS_EQ_LEAF yes (DEF ?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z )

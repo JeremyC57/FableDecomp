@@ -1,0 +1,10 @@
+UND	-	?Destroy_00447660@@YIXPAX@Z	00447d90.obj
+DEF	2	?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z	00a24520.obj
+UND	-	?Destroy_00a281e0@@YIXPAX@Z	00a299c0.obj
+UND	-	?Destroy_00a28370@@YIXPAX@Z	00a29d20.obj
+UND	-	?Destroy_00aa4310@@YIXPAX@Z	00aa4460.obj
+UND	-	?Destroy_00b3e080@@YIXPAX@Z	00b3e510.obj
+UND	-	?Destroy_00cd42e0@@YIXPAX@Z	00cd43a0.obj
+DEF	2	?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z	00f38990.obj
+UND	-	?Destroy_00f38920@@YIXPAX@Z	00f39ca0.obj
+# objects 41 unreadable 0

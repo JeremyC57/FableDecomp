@@ -1,0 +1,2 @@
+REF /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF366/work/obj/00a281e0.obj len=11 relocs=0
+EQUAL /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF366/work/hobj/00a24520.obj len=11

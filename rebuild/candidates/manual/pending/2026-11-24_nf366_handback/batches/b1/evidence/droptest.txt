@@ -1,0 +1,7 @@
+# Drop test (NF366): the only symbol the seven rows drop is the extern "C" self @DeleteIfSet@4; nothing is added but each row's PDB self.
+reloc_bindings.tsv lines naming @DeleteIfSet@4: 0
+landed sources that name DeleteIfSet in code (not comments): the 11 gapscan definers only (00447660 0044ac20 00991e10 009a6c00 00a0bb40 00a28370 00a281e0 00aa4310 00b3e080 00cd42e0 00f38920); 0 declarations without a body
+UND @DeleteIfSet@4: 0 of 41 HEAD-compiled control objects (evidence/symscan_controls.txt), 0 of 76,571 scratch-corpus objects (work/symscan.out)
+self_symbols.tsv: the 11 definers' lines (7 follow the respell at the next self_symbols.py pass; 0044ac20 00991e10 009a6c00 00a0bb40 keep @DeleteIfSet@4)
+link of the seven HEAD objects: 6 LNK4006 duplicates of @DeleteIfSet@4 (one stand-in at seven addresses); the seven new objects: 0 duplicates (evidence/link/link_all7.txt)
+After the landing @DeleteIfSet@4 is still defined by the four skipped rows (identical bodies), so 3 duplicates remain among them.

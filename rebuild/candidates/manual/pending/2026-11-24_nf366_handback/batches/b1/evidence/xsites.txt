@@ -1,0 +1,22 @@
+## 00447660 sub_00447660 11
+  .text 00447de0 store mov [eax+4],imm32 owner=('00447d90', 'CCountedPointer_00447660::Reset', 103)
+## 0044ac20 sub_0044ac20 11
+  .text 0054f6ac call-rel32 operand (coincidental) owner=('0054f5c0?', 'NUISystem::CText::CText', 131)
+## 00991e10 sub_00991e10 11
+  .text 00992270 store mov [eax+4],imm32 owner=('00992220', 'CCountedPointer_00991e10::Reset', 103)
+## 009a6c00 sub_009a6c00 11
+  .text 009a7320 store mov [eax+4],imm32 owner=('009a72d0', 'CCountedPointer_009a6c00::Reset', 103)
+## 00a0bb40 sub_00a0bb40 11
+  .text 00a0bce0 store mov [eax+4],imm32 owner=('00a0bc90', 'CCountedPointer_00a0bb40::Reset', 103)
+## 00a28370 sub_00a28370 11
+  .text 00a29d70 store mov [eax+4],imm32 owner=('00a29d20', 'CCountedPointer_00a28370::Reset', 103)
+## 00a281e0 sub_00a281e0 11
+  .text 00a29a10 store mov [eax+4],imm32 owner=('00a299c0', 'CCountedPointer<C3DMesh2>::Reset', 103)
+## 00aa4310 sub_00aa4310 11
+  .text 00aa44b0 store mov [eax+4],imm32 owner=('00aa4460', 'CCountedPointer_00aa4310::Reset', 103)
+## 00b3e080 sub_00b3e080 11
+  .text 00b3e560 store mov [eax+4],imm32 owner=('00b3e510', 'CCountedPointer_00b3e080::Reset', 103)
+## 00cd42e0 sub_00cd42e0 11
+  .text 00cd43f0 store mov [eax+4],imm32 owner=('00cd43a0', 'CCountedPointer_00cd42e0::Reset', 103)
+## 00f38920 sub_00f38920 11
+  .text 00f39cf0 store mov [eax+4],imm32 owner=('00f39ca0', 'CCountedPointer<CRenderTarget>::Reset', 103)

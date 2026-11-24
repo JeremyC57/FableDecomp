@@ -1,0 +1,5 @@
+address	reason
+0044ac20	T not proven (no store site, no caller)
+00a0bb40	T not proven (Reset uncalled; not CCRCSymbolMap)
+009a6c00	T not proven (no PDB counted-pointer name for CSoundManagerLH / CASoundManager)
+00991e10	T not proven (no PDB counted-pointer name for CLipSyncDataBank or its bases)

@@ -1,0 +1,22 @@
+## 0044ac20 sub_0044ac20 0
+## 00447d90 CCountedPointer_00447660::Reset 1
+  00447216 call 00446be0? CGamePlayerInterface::~CGamePlayerInterface
+## 00992220 CCountedPointer_00991e10::Reset 1
+  00991b25 call 00991910? CASoundManager::CASoundManager
+## 009a72d0 CCountedPointer_009a6c00::Reset 2
+  009a68d5 call 009a6610 CSystemManager::Initialise
+  009a74f0 jmp 009a7440? CSystemManager::CSystemManager
+## 00a0bc90 CCountedPointer_00a0bb40::Reset 0
+## 00a29d20 CCountedPointer_00a28370::Reset 1
+  00a26ff0 call 00a26d40 CMeshDataBank::NotifyEntryAdded
+## 00a299c0 CCountedPointer<C3DMesh2>::Reset 2
+  00a245ff call 00a24520 C3DMeshLODInfo::BuildMesh
+  00a2463e call 00a24520 C3DMeshLODInfo::BuildMesh
+## 00aa4460 CCountedPointer_00aa4310::Reset 1
+  00aa4298 call 00aa4210 C3DQuadricBasedMeshOptimiser::BeginOptimisation
+## 00b3e510 CCountedPointer_00b3e080::Reset 1
+  00b3b487 call 00b3b240 CEngineResourceManager::AllocatePools
+## 00cd43a0 CCountedPointer_00cd42e0::Reset 1
+  00cd3f46 call 00cd3f40 CEngineSubPrimitiveBase::operator_new
+## 00f39ca0 CCountedPointer<CRenderTarget>::Reset 1
+  00f389f1 call 00f38990 CSurfaceCompositor::CSurfaceCompositor

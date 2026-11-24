@@ -1258,3 +1258,8 @@ moves the leaf or adds COMDATs retail does not have.
 - The CreateMapMarkers same-TU copies in 0x0060C900 / 0x0060EEB0. All three functions are in retail's tc_inventory_map.obj.
 - The 12 /O2 rows whose leaf inlines Reset / GetDef (FINDINGS_LOG 2026-11-24).
 When Gate 0 passes, these are good test cases.
+
+2026-11-24 A->B: **nf366 landed: seven more counted-pointer deleters on their PDB names.** The deleters are
+CCountedPointer<T>::DeleteData for const CInputTypeBase, CMeshDataBankEntry, C3DMesh2, QuadricOptimiserInternals::COptimisedMesh,
+CLoadingMemoryFailureHandler, CScriptDefinitionManager and CRenderTarget (`batches/2026-11-24_landing_nf366_b1`). Four rows still define
+`@DeleteIfSet@4`, because their T is not provable yet. Bind the PDB names, not the stand-in.

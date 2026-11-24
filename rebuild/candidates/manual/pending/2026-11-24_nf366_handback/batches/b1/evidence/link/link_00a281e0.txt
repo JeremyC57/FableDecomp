@@ -1,0 +1,8 @@
+## HEAD set: H_00a281e0.obj 00a299c0.obj 00a24520.obj
+duplicates 0
+UNRESOLVED 1 ?Destroy_00a281e0@@YIXPAX@Z
+## new set: 00a281e0.obj 00a299c0.obj 00a24520.obj
+duplicates 1
+  DUP 00a24520.obj ?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z in 00a281e0.obj;
+UNRESOLVED 1 ?Destroy_00a281e0@@YIXPAX@Z
+LK_DONE

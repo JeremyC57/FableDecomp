@@ -1,0 +1,9 @@
+## HEAD set: H_00aa4310.obj 00aa4460.obj 00aa4210.obj
+duplicates 0
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VC3DOptimisedMeshBase@@@@SIXPAX@Z
+UNRESOLVED 1 ?Destroy_00aa4310@@YIXPAX@Z
+## new set: 00aa4310.obj 00aa4460.obj 00aa4210.obj
+duplicates 0
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VC3DOptimisedMeshBase@@@@SIXPAX@Z
+UNRESOLVED 1 ?Destroy_00aa4310@@YIXPAX@Z
+LK_DONE

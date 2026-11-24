@@ -670,7 +670,7 @@ address	symbol	status	leaf_given
 00446be0	??1CGamePlayerInterface@@QAE@XZ	RELOCATION_MATCH	??1CGamePlayerInterface
 00447390	?Catch_0040d959@@YIXPAVCGamePlayerInterface@@@Z	RELOCATION_MATCH	Catch@0040d959
 004473a0	??0CGamePlayerInterface@@QAE@PAVCMainGameComponent@@PAVCPlayerManager@@@Z	RELOCATION_MATCH	??0CGamePlayerInterface
-00447660	@DeleteIfSet@4	MATCH	sub_00447660
+00447660	?DeleteData@?$CCountedPointer@$$CBVCInputTypeBase@@@@SIXPAX@Z	MATCH	?DeleteData@?$CCountedPointer@$$CBVCInputTypeBase@@@@SIXPAX@Z
 004477c0	?Uninit_copy@@YIPAUElem@@PAU1@00UTag@@@Z	MATCH	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>
 00447a20	??_GCInputTypeBase@@UAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor
 00447a40	?OnEngineSurveyLMBHeld@@YIPAUObj@@PAU1@PAX1PAUPayload@@@Z	RELOCATION_MATCH	OnEngineSurveyLMBHeld
@@ -16423,8 +16423,8 @@ address	symbol	status	leaf_given
 00a26c60	?GetAnimation@C3DAnimationInfo@@QBE?AV?$CCountedPointer@$$CBVC3DAnimation2@@@@ABVC3DMesh2@@@Z	RELOCATION_MATCH	GetAnimation@C3DAnimationInfo
 00a26d40	?NotifyEntryAdded@CMeshDataBank@@UAEXKKABV?$CArray@D@@@Z	RELOCATION_MATCH	NotifyEntryAdded
 00a27030	??0CMeshDataBank@@QAE@XZ	RELOCATION_MATCH	??0CMeshDataBank
-00a281e0	@DeleteIfSet@4	MATCH	sub_00a281e0
-00a28370	@DeleteIfSet@4	MATCH	sub_00a28370
+00a281e0	?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z	MATCH	?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z
+00a28370	?DeleteData@?$CCountedPointer@VCMeshDataBankEntry@@@@SIXPAX@Z	MATCH	?DeleteData@?$CCountedPointer@VCMeshDataBankEntry@@@@SIXPAX@Z
 00a299c0	?Reset@CCountedPointer_00a281e0@@QAEXPAX@Z	RELOCATION_MATCH	Reset
 00a29d20	?Reset@CCountedPointer_00a28370@@QAEXPAX@Z	RELOCATION_MATCH	Reset
 00a29e70	?Increment@CRetailTreeIterator@@QAEAAU1@XZ	MATCH	Increment
@@ -17512,7 +17512,7 @@ address	symbol	status	leaf_given
 00aa0dc0	?CombineBlendedBaseAnimationsBoneList@C3DAnimationManager@@AAEXABVC3DAnimationStateBase@@0MPAVC3DKeyframe@@KKABVC3DMesh2@@ABV?$CArray@K@@@Z	RELOCATION_MATCH	CombineBlendedBaseAnimationsBoneList
 00aa4150	?C3DAnimationManager_scalar_deleting_destructor@@YIPAXPAVC3DAnimationManager@@HI@Z	RELOCATION_MATCH	`scalar deleting destructor'
 00aa4210	?BeginOptimisation@C3DQuadricBasedMeshOptimiser@@QAE?AV?$CCountedPointer@VC3DOptimisedMeshBase@@@@AAVC3DMeshFile@@M@Z	RELOCATION_MATCH	BeginOptimisation@C3DQuadricBasedMeshOptimiser
-00aa4310	@DeleteIfSet@4	MATCH	sub_00aa4310
+00aa4310	?DeleteData@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@SIXPAX@Z	MATCH	?DeleteData@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@SIXPAX@Z
 00aa43c0	?C3DQuadricBasedMeshOptimiser_scalar_deleting_destructor@@YIPAXPAVC3DQuadricBasedMeshOptimiser@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00aa4460	?Reset@CCountedPointer_00aa4310@@QAEXPAX@Z	RELOCATION_MATCH	Reset
 00aa4570	?ReadFromFile@C3DAnimFileXAllocationSizeChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z	RELOCATION_MATCH	ReadFromFile@C3DAnimFileXAllocationSizeChunk
@@ -18547,7 +18547,7 @@ address	symbol	status	leaf_given
 00b3b4a0	?ChangeScene@CEngineResourceManager@@QAEXXZ	RELOCATION_MATCH	ChangeScene
 00b3b6d0	?SetupVertexShaderResource@CEngineResourceManagerNative@@QAEXW4EShaderBankNo@@ABVCCharString@@ABVCVertexShaderInput@@@Z	RELOCATION_MATCH	SetupVertexShaderResource
 00b3b7c0	?Render@CEngineResourceManager@@QAEXPAUSRenderRequest_00b3b7c0@@@Z	RELOCATION_MATCH	Render
-00b3e080	@DeleteIfSet@4	MATCH	sub_00b3e080
+00b3e080	?DeleteData@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@SIXPAX@Z	MATCH	?DeleteData@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@SIXPAX@Z
 00b3e510	?Reset@CCountedPointer_00b3e080@@QAEXPAX@Z	RELOCATION_MATCH	Reset
 00b3e790	??0_Rb_tree_base_node0x1c_00b3e790@std@@QAE@UCRetailAllocator@@@Z	RELOCATION_MATCH	??0_Rb_tree_base_node0x1c_00b3e790@std@@
 00b3e920	??0?$vector@VCTextureManagerPoolInfo@@V?$allocator@VCTextureManagerPoolInfo@@@std@@@std@@QAE@I@Z	RELOCATION_MATCH	??0?$vector@VCTextureManagerPoolInfo@@
@@ -22270,7 +22270,7 @@ address	symbol	status	leaf_given
 00cd3ef0	_GetGlobal	RELOCATION_MATCH	_GetGlobal
 00cd3f00	??0CScriptDefinitionManager@@QAE@XZ	RELOCATION_MATCH	??0CScriptDefinitionManager
 00cd3f40	?operator_new_variant@@YIPAXI@Z	RELOCATION_MATCH	operator_new
-00cd42e0	@DeleteIfSet@4	MATCH	sub_00cd42e0
+00cd42e0	?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z	MATCH	?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z
 00cd43a0	?Reset@CCountedPointer_00cd42e0@@QAEXPAX@Z	RELOCATION_MATCH	Reset
 00cd4450	??0CTimer@@QAE@XZ	RELOCATION_MATCH	??0CTimer
 00cd4470	?Dtor@CTimer@@QAEXXZ	RELOCATION_MATCH	??1CTimer@
@@ -22896,7 +22896,7 @@ address	symbol	status	leaf_given
 00f385a0	?resize@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@std@@@std@@QAEXIABUCResourceEntry@CGPUScratchBufferTextureManager@@@Z	RELOCATION_MATCH	?resize@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@
 00f386d0	??1?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@UCResourcePage@CGPUScratchBufferTextureManager@@@std@@@std@@QAE@XZ	RELOCATION_MATCH	??1?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@
 00f388d0	?ScalarDeletingDestructor@CGPUScratchBufferTextureManager@@QAEPAXI@Z	RELOCATION_MATCH	`scalar deleting destructor'
-00f38920	@DeleteIfSet@4	MATCH	sub_00f38920
+00f38920	?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z	MATCH	?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z
 00f38930	?EndComposition@CSurfaceCompositor@@QAEXXZ	RELOCATION_MATCH	EndComposition
 00f39ca0	?Reset@CCountedPointer_00f38920@@QAEXPAX@Z	RELOCATION_MATCH	Reset
 00f39d10	?ScalarDeletingDestructor@CSurfaceCompositor@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
