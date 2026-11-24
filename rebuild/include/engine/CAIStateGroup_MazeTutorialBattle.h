@@ -8,6 +8,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZETUTORIALBATTLE_VIRTUAL_MODEL
+// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128C29C (RTTI .?AVCAIStateGroup_MazeTutorialBattle@@ : CAIStateGroup_MazeBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MazeTutorialBattle); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_MAZEBASE_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_MazeBase.h"
+enum EAIStateGroupType;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MazeTutorialBattle : public CAIStateGroup_MazeBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void OnActivate();                                            // slot 2 0x00954190 ?OnActivate@CAIStateGroup_MazeTutorialBattle@@UAEXXZ
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x0090080B ?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@XZ
+    virtual bool IsRunnable();                                            // slot 11 0x00954AB0 ?IsRunnable@CAIStateGroup_MazeTutorialBattle@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x00955C90 ?Update@CAIStateGroup_MazeTutorialBattle@@UAEXXZ
+public:
+    long          FrameOfLastShield;                         // +0x20
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeTutorialBattle) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattle, FrameOfLastShield) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -31,5 +59,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_MazeTutorialBattle) == 0x24);
 FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_MazeTutorialBattle, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_MazeTutorialBattle, FrameOfLastShield) == 0x20);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MAZETUTORIALBATTLE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZETUTORIALBATTLE_H

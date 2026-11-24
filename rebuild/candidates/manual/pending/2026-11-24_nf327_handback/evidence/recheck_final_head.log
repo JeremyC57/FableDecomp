@@ -1,0 +1,32 @@
+addr       parity           behav  name
+007ebb30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+007ebb30   RELOCATION_MATCH PASS   Clone
+007ed140   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+007ed140   RELOCATION_MATCH PASS   Clone
+0084c010   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0084c010   RELOCATION_MATCH PASS   Clone
+0084ca30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0084ca30   RELOCATION_MATCH PASS   Clone
+0084ca60   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0084ca60   RELOCATION_MATCH PASS   Clone
+00933d50   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00933d50   RELOCATION_MATCH PASS   Clone
+0088e520   WARN RELOC_NAME: ?helperA@CGameScriptInterface_Methods@@QAEXXZ -> 006e7270 labelled '_global::Forward_EndScreenFadeOut_via0xc_006e7270'
+0088e520   WARN RELOC_NAME: ?helperB@CGameScriptInterface_Methods@@QAEXH@Z -> 006e71f0 labelled 'CGameScriptInterface::Rest'
+0088e520   RELOCATION_MATCH PASS   EndCutFade
+00a86030   WARN SHARED_HEADER_AVAILABLE CIPhysicsFacesSegmentBase (engine/CIPhysicsFacesSegmentBase.h)
+00a86030   MATCH            PASS   GetPossibleCollisionSet
+00902ca7   RELOCATION_MATCH PASS   GetBuilding
+00902cdc   RELOCATION_MATCH PASS   GetBuilding
+
+WINS: 10
+  007ebb30 RELOCATION_MATCH CCreatureAction_LookThroughWindow::Clone
+  007ed140 RELOCATION_MATCH CCreatureAction_DropWeapon::Clone
+  0084c010 RELOCATION_MATCH CCreatureAction_ActivateZTarget::Clone
+  0084ca30 RELOCATION_MATCH CCreatureAction_StartFillingTankard::Clone
+  0084ca60 RELOCATION_MATCH CCreatureAction_StopFillingTankard::Clone
+  00933d50 RELOCATION_MATCH CCreatureAction_CallSpouseHome::Clone
+  0088e520 RELOCATION_MATCH CGameScriptInterface::EndCutFade
+  00a86030 MATCH CPhysicsFacesSegmentBranch::GetPossibleCollisionSet
+  00902ca7 RELOCATION_MATCH CAIStateGroup_ServeFoodAtHome::GetBuilding
+  00902cdc RELOCATION_MATCH CAIStateGroup_ServeFoodAtTavern::GetBuilding

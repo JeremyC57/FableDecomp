@@ -1,0 +1,16 @@
+--- orig/hdr_CCreatureAction_Tankard.h	2026-11-24 01:42:44.082093288 +0000
++++ hdr/engine/CCreatureAction_Tankard.h	2026-11-24 01:42:44.207863138 +0000
+@@ -20,6 +20,13 @@
+     CIntelligentPointer<CThing> PThingToPickUp;
+ private:
+     NCreatureMode::EMode Mode;
++#ifdef FABLE_RETAIL_CCREATUREACTION_PICKUPTHINGATTABLE_COPYCTOR_DECL
++    // Opt-in (NF327, 2026-11-24, NF323 Q2): the copy constructor retail calls out of line at 0x0084C9A0 (0x009680D0 PickUpJug::Clone,
++    // 0x0084C970 PickUpThingAtTable::Clone). FableWin.pdb ??0CCreatureAction_PickUpThingAtTable@@QAE@ABV0@@Z, defined by the landed row
++    // 0x0084C9A0 under that symbol. Declaration only: a Clone TU of a derived class then calls it instead of expanding the implicit one.
++public:
++    CCreatureAction_PickUpThingAtTable(const CCreatureAction_PickUpThingAtTable&);                      // 0x0084C9A0
++#endif
+ };
+ 
+ class CCreatureAction_PutDownThingAtTable : public CCreatureActionBase {

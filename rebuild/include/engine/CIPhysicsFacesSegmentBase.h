@@ -28,6 +28,13 @@ protected:
 #endif
     virtual void GetPossibleCollisionSet(float,const C3DVector&,const C3DVector&,
         std::vector<long>&) const = 0;
+#ifdef FABLE_RETAIL_CIPHYSICSFACESSEGMENTBASE_FRIEND_BRANCH
+    // Opt-in (NF327, 2026-11-24, NF325 Q1 ruling; NF305 Q5 / NF309 Q2 shape): retail 0x00A86030
+    // CPhysicsFacesSegmentBranch::GetPossibleCollisionSet recurses through its CIPhysicsFacesSegmentBase* children into this protected
+    // slot 4 (`call [eax+10h]`), which C++ allows a derived class only through a friend (or a public declaration; both PDBs give the
+    // derived override protected, MBE). Declaration only: no member, slot or layout change.
+    friend class CPhysicsFacesSegmentBranch;
+#endif
 };
 FABLE_STATIC_ASSERT_AT(22, sizeof(CIPhysicsFacesSegmentBase)==4);
 #endif

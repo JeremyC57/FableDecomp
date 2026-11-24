@@ -1,0 +1,8 @@
+class	header	size	named_members	status	note
+CAIStateGroup_ServeFood	CAIStateGroup_ServeFood.h	76	9	OK	0 retail files
+CCreatureAction_ActivateZTarget	CCreatureAction_ActivateZTarget.h	168	0	OK	0 retail files
+CCreatureAction_CallSpouseHome	CCreatureAction_CallSpouseHome.h	168	0	OK	0 retail files
+CCreatureAction_DropWeapon	CCreatureAction_DropWeapon.h	168	0	OK	0 retail files
+CCreatureAction_LookThroughWindow	CCreatureAction_LookThroughWindow.h	168	0	OK	0 retail files
+CCreatureAction_StartFillingTankard	CCreatureAction_StartFillingTankard.h	168	0	OK	0 retail files
+CCreatureAction_StopFillingTankard	CCreatureAction_StopFillingTankard.h	168	0	OK	0 retail files

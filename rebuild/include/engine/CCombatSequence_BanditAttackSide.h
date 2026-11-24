@@ -9,6 +9,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_BANDITATTACKSIDE_VIRTUAL_MODEL
+// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127926C (RTTI .?AVCCombatSequence_BanditAttackSide@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_BanditAttackSide); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+enum ECombatSequenceType;
+#pragma pack(push, 1)
+class CCombatSequence_BanditAttackSide : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x009062A0 ?OnCreate@CCombatSequence_BanditAttackSide@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B3810 ?GetName@CCombatSequence_BanditAttackSide@@UBE?AVCCharString@@XZ
+    virtual ECombatSequenceType GetCombatSequenceType() const;            // slot 3 0x008B3840 ?GetCombatSequenceType@CCombatSequence_BanditAttackSide@@UBE?AW4ECombatSequenceType@@XZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B3830 ?GetZone@CCombatSequence_BanditAttackSide@@UBEKXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_BanditAttackSide) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_BanditAttackSide {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +41,8 @@ struct CCombatSequence_BanditAttackSide {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_BanditAttackSide) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_BanditAttackSide, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequence_BanditAttackSide) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequence_BanditAttackSide, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_BANDITATTACKSIDE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_BANDITATTACKSIDE_H

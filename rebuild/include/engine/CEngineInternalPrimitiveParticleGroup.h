@@ -63,6 +63,24 @@ public:
     virtual void Update(const CEnginePrimitive&, unsigned long);      // 0x00BBBE60
 public:
 #endif
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_RTTI_SLOTS
+    // Opt-in (NF325, 2026-11-24): declarations only, no layout change. The overrides the retail RTTI vftable 0x012A59D4 places under this
+    // class (ghidra_out/labels_rtti_port.tsv; every spelling in Ego_r.pdb and FableWin.pdb), plus its two new virtuals in slot order
+    // (slot 28 GetRenderLayerMask, slot 29 PrimTypeMatchesGroup). With _RTTI_DECLS (Update, slot 5) the emitted table matches retail
+    // slot for slot (NF325 evidence/probe_*.txt; needs FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER for slots 7/8).
+public:
+    virtual unsigned long AddChildPrimitive(const CEnginePrimitive&, unsigned long); // slot 6 0x00BBD1A0 ?AddChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEKABVCEnginePrimitive@@K@Z
+    virtual void SetChildPrimitive(unsigned long, CEnginePrimitiveHandle&, const CEnginePrimitive&, unsigned long); // slot 7 0x00BBC310 ?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
+    virtual void SetChildPrimitive(unsigned long, const CEnginePrimitive&, unsigned long); // slot 8 0x00BBCF70 ?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKABVCEnginePrimitive@@K@Z
+    virtual void GetChildPrimitiveHandle(unsigned long, CEnginePrimitiveHandle&); // slot 9 0x00BBC3A0 ?GetChildPrimitiveHandle@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@@Z
+    virtual void ClearChildPrimitive(unsigned long);                      // slot 10 0x00BBCE10 ?ClearChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXK@Z
+    virtual void ClearAllChildPrimitives();                               // slot 11 0x00BBD200 ?ClearAllChildPrimitives@CEngineInternalPrimitiveParticleGroup@@UAEXXZ
+    virtual CEnginePersistentPrimitiveBase* GetChildPrimitive(unsigned long); // slot 12 0x00BBC430 ?GetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z
+    virtual bool GetWorldPosition(C3DVector&);                            // slot 15 0x00BBBE40 ?GetWorldPosition@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DVector@@@Z
+    virtual bool GetBoundingSphereWorldSpace(C3DBoundingSphere&);         // slot 18 0x00BBBE10 ?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DBoundingSphere@@@Z
+    virtual unsigned long GetRenderLayerMask() const;                     // slot 28 0x00BBBDF0 ?GetRenderLayerMask@CEngineInternalPrimitiveParticleGroup@@UBEKXZ
+    virtual bool PrimTypeMatchesGroup(long);                              // slot 29 0x00BBBF00 ?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleGroup@@UAE_NJ@Z
+#endif
 };
 FABLE_STATIC_ASSERT_AT(39, sizeof(CEngineInternalPrimitiveParticleGroup) == 0xac);
 #else

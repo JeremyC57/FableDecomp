@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a86030   MATCH            PASS   GetPossibleCollisionSet
+
+WINS: 1
+  00a86030 MATCH CPhysicsFacesSegmentBranch::?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z

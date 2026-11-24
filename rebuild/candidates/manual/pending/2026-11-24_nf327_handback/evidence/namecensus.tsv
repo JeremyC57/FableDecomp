@@ -1,0 +1,15 @@
+addr	symbol	other_definers	leaf_claims
+007ebb30	?Clone@CCreatureAction_LookThroughWindow@@UBEPAVCCreatureActionBase@@XZ	-	-
+007ed140	?Clone@CCreatureAction_DropWeapon@@UBEPAVCCreatureActionBase@@XZ	-	-
+0084c010	?Clone@CCreatureAction_ActivateZTarget@@UBEPAVCCreatureActionBase@@XZ	-	-
+0084ca30	?Clone@CCreatureAction_StartFillingTankard@@UBEPAVCCreatureActionBase@@XZ	-	-
+0084ca60	?Clone@CCreatureAction_StopFillingTankard@@UBEPAVCCreatureActionBase@@XZ	-	-
+0085ff10	?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z	-	-
+00860150	??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z	SKIP (special member; ctor binder, not a new name)	-
+00860290	?Clone@CCreatureAction_GetUpFromSitting@@UBEPAVCCreatureActionBase@@XZ	-	-
+0088e520	?EndCutFade@CGameScriptInterface@@UAEXXZ	-	-
+00902ca7	?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ	-	-
+00902cdc	?GetBuilding@CAIStateGroup_ServeFoodAtTavern@@MAEPAVCThingBuilding@@XZ	-	-
+00933d50	?Clone@CCreatureAction_CallSpouseHome@@UBEPAVCCreatureActionBase@@XZ	-	-
+009680d0	?Clone@CCreatureAction_PickUpJug@@UBEPAVCCreatureActionBase@@XZ	-	-
+00a86030	?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z	-	-

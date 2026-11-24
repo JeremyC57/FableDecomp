@@ -1,0 +1,9 @@
+addr       parity           behav  name
+009680d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009680d0   RELOCATION_MATCH PASS   Clone
+00a86030   WARN SHARED_HEADER_AVAILABLE CIPhysicsFacesSegmentBase (engine/CIPhysicsFacesSegmentBase.h)
+00a86030   MATCH            PASS   GetPossibleCollisionSet
+
+WINS: 2
+  009680d0 RELOCATION_MATCH CCreatureAction_PickUpJug::Clone
+  00a86030 MATCH CPhysicsFacesSegmentBranch::GetPossibleCollisionSet

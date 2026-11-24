@@ -12,6 +12,30 @@
 class CCharString;
 #endif
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCEWHISPERSORTYOURSELFOUT_VIRTUAL_MODEL
+// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01279F8C (RTTI .?AVCCombatSequenceWhisperSortYourselfOut@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequenceWhisperSortYourselfOut); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequenceWhisperSortYourselfOut : public CCombatSequenceBase {
+public:
+#ifdef FABLE_RETAIL_COMBATSEQUENCE_STATGETNAME
+    // Opt-in (agentNF24, row 0x008B0440): Ego_r.pdb ?StatGetName@CCombatSequenceWhisperSortYourselfOut@@SI?AVCCharString@@XZ, the static registry-name factory
+    // (out of line at that address: a CCharString built from the sequence's literal into the hidden result). Declaration only.
+    static CCharString FABLE_FASTCALL StatGetName();
+#endif
+public:
+    virtual void OnCreate();                                              // slot 1 0x00908FE0 ?OnCreate@CCombatSequenceWhisperSortYourselfOut@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B4D20 ?GetName@CCombatSequenceWhisperSortYourselfOut@@UBE?AVCCharString@@XZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B4D40 ?GetZone@CCombatSequenceWhisperSortYourselfOut@@UBEKXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequenceWhisperSortYourselfOut) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequenceWhisperSortYourselfOut {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -29,7 +53,8 @@ struct CCombatSequenceWhisperSortYourselfOut {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequenceWhisperSortYourselfOut) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequenceWhisperSortYourselfOut, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CCombatSequenceWhisperSortYourselfOut) == 0x28);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CCombatSequenceWhisperSortYourselfOut, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCEWHISPERSORTYOURSELFOUT_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCEWHISPERSORTYOURSELFOUT_H

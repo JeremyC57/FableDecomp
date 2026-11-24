@@ -45,8 +45,13 @@ public:
  virtual ~CEngineInternalPrimitiveBase();
  virtual void Update(const CEnginePrimitive&,unsigned long);
  virtual unsigned long AddChildPrimitive(const CEnginePrimitive&,unsigned long);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER // NF325: retail vftable 0x012A3D7C slot 7 = (K, CEnginePrimitiveHandle&, const CEnginePrimitive&, K), slot 8 = (K, const CEnginePrimitive&, K); VC7.1 lays an overloaded virtual pair out in reverse declaration order, so the three-argument one is declared first (emitted-vftable probe, NF325 evidence/probe_*.txt)
+ virtual void SetChildPrimitive(unsigned long,const CEnginePrimitive&,unsigned long);
+ virtual void SetChildPrimitive(unsigned long,CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);
+#else
  virtual void SetChildPrimitive(unsigned long,CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);
  virtual void SetChildPrimitive(unsigned long,const CEnginePrimitive&,unsigned long);
+#endif
  virtual void GetChildPrimitiveHandle(unsigned long,CEnginePrimitiveHandle&);
  virtual void ClearChildPrimitive(unsigned long);
  virtual void ClearAllChildPrimitives();

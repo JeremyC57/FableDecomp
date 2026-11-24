@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006e71f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006e71f0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006e71f0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+006e71f0   RELOCATION_MATCH PASS   Rest
+006e7270   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+006e7270   WARN STANDIN_LEAF ?Run@T@@QAEXXZ (catalog _global::Forward_EndScreenFadeOut_via0xc_006e7270; generic placeholder)
+006e7270   RELOCATION_MATCH PASS   Forward_EndScreenFadeOut_via0xc_006e7270
+
+WINS: 2
+  006e71f0 RELOCATION_MATCH CGameScriptInterface::?Rest@CGameScriptInterface@@IBEXM@Z
+  006e7270 RELOCATION_MATCH _global::?Run@T@@QAEXXZ

@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?helperA@CGameScriptInterface_Methods@@QAEXXZ -> ?EndFadeScreen@CGameScriptInterface@@IAEXXZ	006e7270	0088e520	witness now binds the PDB spelling (its object UND, vland new side); ref_scan: no other landed row references the old spelling (evidence/ref_scan_g4_REFS.tsv, 5 candidates compiled)
+replace	?helperB@CGameScriptInterface_Methods@@QAEXH@Z -> ?Rest@CGameScriptInterface@@IBEXM@Z	006e71f0	0088e520	witness now binds the PDB spelling (its object UND, vland new side); ref_scan: NONE (evidence/ref_scan_g4_REFS.tsv)

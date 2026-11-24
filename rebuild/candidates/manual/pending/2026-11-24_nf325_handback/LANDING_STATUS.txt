@@ -1,1 +1,0 @@
-Not landed yet (2026-11-24): landing waits on the coordinator's full equiv_check; see docs/journal/2026-11/2026-11-24_naming_automation.md. rows/ and hdr/engine/ are the hand-back copies to apply.

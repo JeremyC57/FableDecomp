@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00860290   RELOCATION_MATCH PASS   Clone
+0085ff10   RELOCATION_MATCH PASS   GetUpFromSitting
+00860150   RELOCATION_MATCH PASS   CCreatureAction_GetUpFromSitting
+
+WINS: 3
+  00860290 RELOCATION_MATCH CCreatureAction_GetUpFromSitting::?Clone@CCreatureAction_GetUpFromSitting@@UBEPAVCCreatureActionBase@@XZ
+  0085ff10 RELOCATION_MATCH NCreatureMode::?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z
+  00860150 RELOCATION_MATCH CCreatureAction_GetUpFromSitting::??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z

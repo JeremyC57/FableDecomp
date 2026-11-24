@@ -3338,8 +3338,8 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?SetHiddenOnMiniMap@CThing_Retail@@QAEX_N@Z	006626a0	0088e410
 ?SetHasInformation@CThing_Retail@@QAEXJ_N00@Z	00830eb0	0088e440
 ?g_movieSeqCameraFixed@@3EA	01380c30	0088e500
-?helperA@CGameScriptInterface_Methods@@QAEXXZ	006e7270	0088e520
-?helperB@CGameScriptInterface_Methods@@QAEXH@Z	006e71f0	0088e520
+?EndFadeScreen@CGameScriptInterface@@IAEXXZ	006e7270	0088e520
+?Rest@CGameScriptInterface@@IBEXM@Z	006e71f0	0088e520
 ?ResetMaxRunningSpeedToDefault@CThing_Retail@@QAEXXZ	006a9bc0	0088e810
 ?ResetMaxWalkingSpeedToDefault@CThing_Retail@@QAEXXZ	006a9b70	0088e870
 ?RemoveMovementBlockingModes@CThing_Retail@@QAEXXZ	0085f600	0088e8d0
@@ -16223,7 +16223,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?ReadAsStringUntilCharacter@CWStringParser@@QAE_NGPAVCWParsedItem@@@Z	00a0cbb0	00a0ccd0
 ?ReadNextNumber@CWStringParser@@AAE_NPAVCWParsedItem@@@Z	00a0cdd0	00a0cfc0
 ?ReadNextString@CWStringParser@@AAE_NPAVCWParsedItem@@@Z	00a0ce90	00a0cfc0
-?Register@CInputProcessManager@@QAEXPAVCAInputProcess@@@Z	00a0d4f0	00a0d2b0
+?AddInputProcess@CInputProcessManager@@IAEXAAVCAInputProcess@@@Z	00a0d4f0	00a0d2b0
 ?RemoveInputProcess@CInputProcessManagerCalls@@QAEXPAVCAInputProcess@@@Z	00a0d780	00a0d2d0
 ??$__copy@VC2DVector@@@std@@YI?AU?$_Deque_iterator@VC2DVector@@@0@U10@00ABUrandom_access_iterator_tag@0@PAH@Z	00a0e460	00a0e790
 ??$__copy_aux@VC2DVector@@@std@@YI?AU?$_Deque_iterator@VC2DVector@@@0@U10@00ABU__false_type@0@@Z	00a0e790	00a0eb40

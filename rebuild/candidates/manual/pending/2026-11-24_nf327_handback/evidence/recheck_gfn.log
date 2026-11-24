@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00902ca7   RELOCATION_MATCH PASS   GetBuilding
+00902cdc   RELOCATION_MATCH PASS   GetBuilding
+
+WINS: 2
+  00902ca7 RELOCATION_MATCH CAIStateGroup_ServeFoodAtHome::?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ
+  00902cdc RELOCATION_MATCH CAIStateGroup_ServeFoodAtTavern::?GetBuilding@CAIStateGroup_ServeFoodAtTavern@@MAEPAVCThingBuilding@@XZ

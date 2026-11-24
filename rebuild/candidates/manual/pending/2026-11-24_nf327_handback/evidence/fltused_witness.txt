@@ -1,0 +1,5 @@
+# NF321 Q1 condition 2: already-landed rows whose HEAD objects carry UND __fltused (vland --recheck-landed objects, HEAD sources unchanged)
+00a86030 HEAD grade=[00a86030   MATCH            PASS   GetPossibleCollisionSet] fltused=['UND __fltused']
+006e71f0 HEAD grade=[006e71f0   RELOCATION_MATCH PASS   Rest] fltused=['UND __fltused']
+0088e520 HEAD grade=[0088e520   RELOCATION_MATCH PASS   EndCutFade] fltused=none
+0088e520 NEW grade=[0088e520   RELOCATION_MATCH PASS   EndCutFade] fltused=['UND __fltused']

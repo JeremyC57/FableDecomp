@@ -9,6 +9,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_TROLLOPENINGGROUNDPOUND_VIRTUAL_MODEL
+// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012797BC (RTTI .?AVCCombatSequence_TrollOpeningGroundPound@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_TrollOpeningGroundPound); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequence_TrollOpeningGroundPound : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x00907930 ?OnCreate@CCombatSequence_TrollOpeningGroundPound@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B40F0 ?GetName@CCombatSequence_TrollOpeningGroundPound@@UBE?AVCCharString@@XZ
+    virtual bool IsMeleeSequence() const;                                 // slot 7 0x008B4130 ?IsMeleeSequence@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ
+    virtual bool IsValid() const;                                         // slot 12 0x009076A0 ?IsValid@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ
+    virtual bool IsToPreferSequenceWhenValid() const;                     // slot 13 0x008B4110 ?IsToPreferSequenceWhenValid@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B4120 ?GetZone@CCombatSequence_TrollOpeningGroundPound@@UBEKXZ
+    virtual void OnStart();                                               // slot 17 0x00907670 ?OnStart@CCombatSequence_TrollOpeningGroundPound@@UAEXXZ
+public:
+    long          WFNextHappen;                              // +0x28
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_TrollOpeningGroundPound) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CCombatSequence_TrollOpeningGroundPound, WFNextHappen) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_TrollOpeningGroundPound {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -24,8 +48,9 @@ struct CCombatSequence_TrollOpeningGroundPound {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_TrollOpeningGroundPound) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_TrollOpeningGroundPound, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_TrollOpeningGroundPound, WFNextHappen) == 0x28);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CCombatSequence_TrollOpeningGroundPound) == 0x2c);
+FABLE_STATIC_ASSERT_AT(28, offsetof(CCombatSequence_TrollOpeningGroundPound, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CCombatSequence_TrollOpeningGroundPound, WFNextHappen) == 0x28);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_TROLLOPENINGGROUNDPOUND_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_TROLLOPENINGGROUNDPOUND_H

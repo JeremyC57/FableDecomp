@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0088e520   WARN RELOC_NAME: ?helperA@CGameScriptInterface_Methods@@QAEXXZ -> 006e7270 labelled '_global::Forward_EndScreenFadeOut_via0xc_006e7270'
+0088e520   WARN RELOC_NAME: ?helperB@CGameScriptInterface_Methods@@QAEXH@Z -> 006e71f0 labelled 'CGameScriptInterface::Rest'
+0088e520   RELOCATION_MATCH PASS   EndCutFade
+
+WINS: 1
+  0088e520 RELOCATION_MATCH CGameScriptInterface::EndCutFade

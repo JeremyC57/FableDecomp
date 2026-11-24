@@ -1,0 +1,12 @@
+addr       parity           behav  name
+007ebb30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+007ebb30   RELOCATION_MATCH PASS   Clone
+007ed140   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+007ed140   RELOCATION_MATCH PASS   Clone
+0084c010   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0084c010   RELOCATION_MATCH PASS   Clone
+
+WINS: 3
+  007ebb30 RELOCATION_MATCH CCreatureAction_LookThroughWindow::Clone
+  007ed140 RELOCATION_MATCH CCreatureAction_DropWeapon::Clone
+  0084c010 RELOCATION_MATCH CCreatureAction_ActivateZTarget::Clone

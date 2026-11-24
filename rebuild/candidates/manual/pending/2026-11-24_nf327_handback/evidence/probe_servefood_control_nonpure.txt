@@ -1,0 +1,79 @@
+== CAIStateGroup_ServeFoodAtHome vftable 0128CEFC
+slot   0 00901A2D DIFF     ours=??_ECAIStateGroup_ServeFoodAtHome@@UAEPAXI@Z retail_label=??_GCAIStateGroup_ServeFoodAtHome@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 009239C0 SAME     ours=?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ retail_label=?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ
+slot  11 00923070 SAME     ours=?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ
+slot  12 009236C0 SAME     ours=?Update@CAIStateGroup_ServeFood@@MAEXXZ retail_label=?Update@CAIStateGroup_ServeFood@@MAEXXZ
+slot  13 00922FA0 SAME     ours=?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 00923AA0 SAME     ours=?IsTime@CAIStateGroup_ServeFoodAtHome@@MAE_NXZ retail_label=?IsTime@CAIStateGroup_ServeFoodAtHome@@MAE_NXZ
+slot  15 00902CA7 SAME     ours=?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ retail_label=?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ
+slot  16 00901A2A SAME     ours=?SetPlaceForSelf@CAIStateGroup_ServeFoodAtHome@@MAE_NXZ retail_label=?SetPlaceForSelf@CAIStateGroup_ServeFoodAtHome@@MAE_NXZ
+retail slots 17, emitted slots 17; SAME 16 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_ServeFoodAtTavern vftable 0128AA7C
+slot   0 00901A6D SAME     ours=??_ECAIStateGroup_ServeFoodAtTavern@@UAEPAXI@Z retail_label=??_ECAIStateGroup_ServeFoodAtTavern@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 009239C0 SAME     ours=?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ retail_label=?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ
+slot  11 00923070 SAME     ours=?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ
+slot  12 009236C0 SAME     ours=?Update@CAIStateGroup_ServeFood@@MAEXXZ retail_label=?Update@CAIStateGroup_ServeFood@@MAEXXZ
+slot  13 00922FA0 SAME     ours=?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 00923B00 SAME     ours=?IsTime@CAIStateGroup_ServeFoodAtTavern@@MAE_NXZ retail_label=?IsTime@CAIStateGroup_ServeFoodAtTavern@@MAE_NXZ
+slot  15 00902CDC SAME     ours=?GetBuilding@CAIStateGroup_ServeFoodAtTavern@@MAEPAVCThingBuilding@@XZ retail_label=?GetBuilding@CAIStateGroup_ServeFoodAtTavern@@MAEPAVCThingBuilding@@XZ
+slot  16 008FE66E SAME     ours=?SetPlaceForSelf@CAIStateGroup_ServeFoodAtTavern@@MAE_NXZ retail_label=?SetPlaceForSelf@CAIStateGroup_ServeFoodAtTavern@@MAE_NXZ
+retail slots 17, emitted slots 17; SAME 17 DIFF 0 NOLABEL 0
+
+PROBE_DONE
+== base table ??_7CAIStateGroup_ServeFood@@6B@ as emitted in the AtHome probe TU v retail 0x0128AA1C (slots 14-16: retail 0x00BFEA08 = MSVCR71 _purecall)
+slot   0 008FE62D DIFF     ours=??_ECAIStateGroup_ServeFood@@UAEPAXI@Z retail_label=??_GCAIStateGroup_ServeFood@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 009239C0 SAME     ours=?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ retail_label=?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ
+slot  11 00923070 SAME     ours=?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ
+slot  12 009236C0 SAME     ours=?Update@CAIStateGroup_ServeFood@@MAEXXZ retail_label=?Update@CAIStateGroup_ServeFood@@MAEXXZ
+slot  13 00922FA0 SAME     ours=?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 00BFEA08 NOLABEL  ours=?IsTime@CAIStateGroup_ServeFood@@MAE_NXZ retail_label=-
+slot  15 00BFEA08 NOLABEL  ours=?GetBuilding@CAIStateGroup_ServeFood@@MAEPAVCThingBuilding@@XZ retail_label=-
+slot  16 00BFEA08 NOLABEL  ours=?SetPlaceForSelf@CAIStateGroup_ServeFood@@MAE_NXZ retail_label=-
+retail slots 17, emitted slots 17; SAME 13 DIFF 1 NOLABEL 3
+== base table ??_7CAIStateGroup_ServeFood@@6B@ as emitted in the AtTavern probe TU v retail 0x0128AA1C (slots 14-16: retail 0x00BFEA08 = MSVCR71 _purecall)
+slot   0 008FE62D DIFF     ours=??_ECAIStateGroup_ServeFood@@UAEPAXI@Z retail_label=??_GCAIStateGroup_ServeFood@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 009239C0 SAME     ours=?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ retail_label=?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ
+slot  11 00923070 SAME     ours=?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ
+slot  12 009236C0 SAME     ours=?Update@CAIStateGroup_ServeFood@@MAEXXZ retail_label=?Update@CAIStateGroup_ServeFood@@MAEXXZ
+slot  13 00922FA0 SAME     ours=?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 00BFEA08 NOLABEL  ours=?IsTime@CAIStateGroup_ServeFood@@MAE_NXZ retail_label=-
+slot  15 00BFEA08 NOLABEL  ours=?GetBuilding@CAIStateGroup_ServeFood@@MAEPAVCThingBuilding@@XZ retail_label=-
+slot  16 00BFEA08 NOLABEL  ours=?SetPlaceForSelf@CAIStateGroup_ServeFood@@MAE_NXZ retail_label=-
+retail slots 17, emitted slots 17; SAME 13 DIFF 1 NOLABEL 3
