@@ -1,0 +1,47 @@
+SAME   .drectve  (static) - sel=0 size=62 nrel=0
+DIFF   .debug$S  (static) - bytes(203 v 203) (debug)
+SAME   .text     ??1CDefPointeeBase@@UAE@XZ sel=2 size=11 nrel=2
+SAME   .rdata    ??_7CDefPointeeBase@@6B@ sel=2 size=40 nrel=10
+SAME   .debug$F  (static) - sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??_GCDefPointeeBase@@UAEPAXI@Z sel=2 size=36 nrel=3
+SAME   .debug$F  (static) -#1 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??1CDefClassBase@@UAE@XZ sel=2 size=11 nrel=2
+SAME   .debug$F  (static) -#2 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??0CDefPointeeBase@@QAE@XZ sel=2 size=18 nrel=2
+SAME   .debug$F  (static) -#3 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??1CSubDefClassBase@@UAE@XZ sel=2 size=11 nrel=2
+SAME   .debug$F  (static) -#4 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ sel=2 size=5 nrel=1
+SAME   .debug$F  (static) -#5 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ sel=2 size=18 nrel=2
+SAME   .rdata    ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ sel=2 size=4 nrel=1
+SAME   .debug$F  (static) -#6 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z sel=2 size=30 nrel=2
+SAME   .debug$F  (static) -#7 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??0CDefClassBase@@AAE@XZ sel=2 size=29 nrel=2
+SAME   .rdata    ??_7CDefClassBase@@6B@ sel=2 size=100 nrel=25
+SAME   .debug$F  (static) -#8 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??_GCDefClassBase@@UAEPAXI@Z sel=2 size=36 nrel=3
+SAME   .debug$F  (static) -#9 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??0CSubDefClassBase@@QAE@XZ sel=2 size=29 nrel=2
+SAME   .rdata    ??_7CSubDefClassBase@@6B@ sel=2 size=100 nrel=25
+SAME   .debug$F  (static) -#10 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??_GCSubDefClassBase@@UAEPAXI@Z sel=2 size=36 nrel=3
+SAME   .debug$F  (static) -#11 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??0CTCNoiseDef@@QAE@XZ sel=2 size=29 nrel=2
+SAME   .rdata    ??_7CTCNoiseDef@@6B@ sel=2 size=100 nrel=25
+SAME   .debug$F  (static) -#12 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??_GCTCNoiseDef@@UAEPAXI@Z sel=2 size=30 nrel=2
+SAME   .debug$F  (static) -#13 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??0CTCNoise@@QAE@AAVCThing@@@Z sel=1 size=79 nrel=6
+SAME   .rdata    ??_7CTCNoise@@6B@ sel=2 size=112 nrel=28
+SAME   .debug$F  (static) -#14 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??_GCTCNoise@@UAEPAXI@Z sel=2 size=30 nrel=2
+SAME   .debug$F  (static) -#15 sel=5 size=16 nrel=1 (debug)
+DRECTVE_A [['/DEFAULTLIB:"libcp"', '/DEFAULTLIB:"LIBC"', '/DEFAULTLIB:"OLDNAMES"']]
+DRECTVE_B [['/DEFAULTLIB:"libcp"', '/DEFAULTLIB:"LIBC"', '/DEFAULTLIB:"OLDNAMES"']]
+UND only A []
+UND only B []
+DEF only A []
+DEF only B []
+VERDICT ALL_NONDEBUG_SAME

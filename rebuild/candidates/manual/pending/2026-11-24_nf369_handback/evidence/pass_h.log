@@ -1,0 +1,4 @@
+# overlay=
+H 00749810 RELOCATION_MATCH leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF369/orig/00749810.cpp
+H 00749a70 RELOCATION_MATCH leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF369/orig/00749a70.cpp
+PASS_DONE

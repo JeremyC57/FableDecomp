@@ -1,0 +1,49 @@
+DIFF   .drectve  (static) - bytes(42 v 62)
+SAME   .debug$S  (static) - sel=0 size=203 nrel=0 (debug)
+SAME   .text     ??1CDefPointeeBase@@UAE@XZ sel=2 size=11 nrel=2
+SAME   .rdata    ??_7CDefPointeeBase@@6B@ sel=2 size=40 nrel=10
+SAME   .debug$F  (static) - sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??_GCDefPointeeBase@@UAEPAXI@Z sel=2 size=36 nrel=3
+SAME   .debug$F  (static) -#1 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??1CDefClassBase@@UAE@XZ sel=2 size=11 nrel=2
+SAME   .debug$F  (static) -#2 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??1CSubDefClassBase@@UAE@XZ sel=2 size=11 nrel=2
+DIFF   .debug$F  (static) -#3 bytes(16 v 16) relocs(1 v 1) assoc (debug)
+ONLY_A .text     ??1CTCNoiseDef@@UAE@XZ
+DIFF   .debug$F  (static) -#4 relocs(1 v 1) assoc (debug)
+SAME   .text     ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ sel=2 size=5 nrel=1
+SAME   .debug$F  (static) -#5 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ sel=2 size=18 nrel=2
+SAME   .rdata    ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ sel=2 size=4 nrel=1
+SAME   .debug$F  (static) -#6 sel=5 size=16 nrel=1 (debug)
+SAME   .text     ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z sel=2 size=30 nrel=2
+SAME   .debug$F  (static) -#7 sel=5 size=16 nrel=1 (debug)
+DIFF   .text     ??0CTCNoise@@QAE@AAVCThing@@@Z bytes(59 v 79) relocs(5 v 6)
+DIFF   .rdata    ??_7CTCNoise@@6B@ relocs(28 v 28)
+DIFF   .debug$F  (static) -#8 bytes(16 v 16) relocs(1 v 1) assoc (debug)
+SAME   .text     ??_GCTCNoise@@UAEPAXI@Z sel=2 size=30 nrel=2
+DIFF   .debug$F  (static) -#9 bytes(16 v 16) relocs(1 v 1) assoc (debug)
+ONLY_A .text     ??1CTCNoise@@UAE@XZ
+DIFF   .debug$F  (static) -#10 bytes(16 v 16) relocs(1 v 1) assoc (debug)
+ONLY_B .text     ??0CDefPointeeBase@@QAE@XZ
+ONLY_B .text     ??0CDefClassBase@@AAE@XZ
+ONLY_B .rdata    ??_7CDefClassBase@@6B@
+ONLY_B .text     ??_GCDefClassBase@@UAEPAXI@Z
+ONLY_B .text     ??0CSubDefClassBase@@QAE@XZ
+ONLY_B .rdata    ??_7CSubDefClassBase@@6B@
+ONLY_B .text     ??_GCSubDefClassBase@@UAEPAXI@Z
+ONLY_B .debug$F  (static) -#11 (debug)
+ONLY_B .text     ??0CTCNoiseDef@@QAE@XZ
+ONLY_B .rdata    ??_7CTCNoiseDef@@6B@
+ONLY_B .debug$F  (static) -#12 (debug)
+ONLY_B .text     ??_GCTCNoiseDef@@UAEPAXI@Z
+ONLY_B .debug$F  (static) -#13 (debug)
+ONLY_B .debug$F  (static) -#14 (debug)
+ONLY_B .debug$F  (static) -#15 (debug)
+DRECTVE_A [['/DEFAULTLIB:"LIBC"', '/DEFAULTLIB:"OLDNAMES"']]
+DRECTVE_B [['/DEFAULTLIB:"libcp"', '/DEFAULTLIB:"LIBC"', '/DEFAULTLIB:"OLDNAMES"']]
+UND only A ['??0CTCNoiseDef@@QAE@XZ', '??1CTCBase@@UAE@XZ', '?FrameUpdate@CTCBase@@UAEXXZ', '?HasFrameUpdate@CTCBase@@UBE_NXZ', '?OnCreate@CTCBase@@UAEXXZ']
+UND only B ['??0CResource@@QAE@XZ', '??1CTCNoise@@UAE@XZ', '??1CTCNoiseDef@@UAE@XZ', '??_GCDefClassBase@@UAEPAXI@Z', '??_GCSubDefClassBase@@UAEPAXI@Z', '??_GCTCNoiseDef@@UAEPAXI@Z', '?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z', '?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z', '?FrameUpdate@CTCNoise@@UAEXXZ', '?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ', '?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z', '?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z', '?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ', '?GetSizeofClass@CTCNoiseDef@@UAEKXZ', '?HasFrameUpdate@CTCNoise@@UBE_NXZ', '?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z', '?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z', '?IsParentDef@CDefClassBase@@UBE_NXZ', '?OnCreate@CTCNoise@@UAEXXZ', '?PostTransfer@CDefClassBase@@UAEXXZ', '?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z', '?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z', '?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z', '?UnloadResource@CDefClassBase@@UAE_NXZ', '?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z', '__purecall']
+DEF only A ['??1CTCNoise@@UAE@XZ', '??1CTCNoiseDef@@UAE@XZ']
+DEF only B ['??0CDefClassBase@@AAE@XZ', '??0CDefPointeeBase@@QAE@XZ', '??0CSubDefClassBase@@QAE@XZ', '??0CTCNoiseDef@@QAE@XZ', '??_7CDefClassBase@@6B@', '??_7CSubDefClassBase@@6B@', '??_7CTCNoiseDef@@6B@', '??_GCDefClassBase@@UAEPAXI@Z', '??_GCSubDefClassBase@@UAEPAXI@Z', '??_GCTCNoiseDef@@UAEPAXI@Z']
+VERDICT NONDEBUG_DIFF 15
