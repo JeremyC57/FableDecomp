@@ -1,0 +1,2 @@
+541	0x00428B10	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	stored as CCPPointerInfo::DeleteFunc by 0x429C15; fastcall static (FableWin.pdb)	Destroy_00428b10
+nf356	0x00428B10	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	PRIORITY. Its callers (Reset 0x00429C6F, the pick-any Reset copies) reference ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z; the landed row defines @DeleteIfSet@4. Also what blocks a declaration-only DeleteData route for 0x00429C6F (NF356 Q2).	self @DeleteIfSet@4

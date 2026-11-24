@@ -267,7 +267,7 @@ address	symbol	status	leaf_given
 0041e61b	?ShowErrorMessageOnInstance@CManager@NUISystem@@SIXJ@Z	RELOCATION_MATCH	AddChild
 00427f31	?CreateStaticSlider@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	RELOCATION_MATCH	CreateStaticSlider
 0042899b	@op_dec_post_0042899b@16	MATCH	operator--
-00428b10	@DeleteIfSet@4	MATCH	@DeleteIfSet@4
+00428b10	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	MATCH	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
 00428d80	?allocate@CRetailAllocator_12@@QAEPAUelement@1@KPBX@Z	RELOCATION_MATCH	allocate
 00428ef4	?Self@T@@QAEPAU1@H@Z	MATCH	sub_00428ef4
 0042913a	?ShareData@CCPtr@@QAEXPAXPAJ@Z	RELOCATION_MATCH	ShareData

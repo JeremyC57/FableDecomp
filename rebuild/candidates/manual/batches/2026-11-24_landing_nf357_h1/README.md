@@ -12,3 +12,5 @@ Coordinator verification from the repo (`$S/v357h.sh`, the v357 script on these 
 - The rows' other NEQ copies (Reset / ctor of CCountedPointer<CComponent>, GetDef<CThingObjectDef>, map / list copies) are unchanged
   pre-existing debt (NF358 census: the 0x00429C6F, 0x0042B040 lines reopened).
 The 0x005E5F30 / 0x00607330 pair is Account B's 2026-11-12/13 stale staging with no open claim (NF357 ruling Q5); B was told in the log.
+- 0x005E5F30's two `WARN RELOC_NAME` lines (`?PSoundManager@@3PAVCASoundManager@@A` -> 013b8394 and GetDef<CUIMiscThingsDef> -> 0042b312, each
+  against its descriptive Ghidra label) are also in NF357's HEAD grade: pre-existing label-text warnings, not caused by this change.

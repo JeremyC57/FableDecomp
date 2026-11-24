@@ -7,6 +7,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Account A, 2026-11-24 (naming automation; agents NF333 / NF334 running)
+- **Latest (late 2026-11-24, naming queue):** landed nf352-nf357 (GetSubDef / Reset / map operator[] copy repairs; nf357 = 51 rows incl. h1),
+  nf355 (~CThingNoiseDef unit) and nf360_b2 (0x00428B10 DeleteData on its PDB name). **Reopened** by NF358's full census: T3 nf358
+  0x00429C6F / 0x0042B312 / 0x0042B040 (23-29 leaf-reached NEQ emitters each; the nf340 audit sampled). **Ruled (advisor, owner delegated):**
+  NF360 b1 0x0042AF3C lands strong once its cast is marked scaffolding and regraded; NF359 option A (Alloc form) for 0x00455EF0 / 0x0044C1BB /
+  0x0045C5DA needs a fresh run dir with full gates; no 0x0045C5C1 row. **Owner questions open:** 0x0070D940 (B's row with a byte-identical
+  GetMeshAnim copy) and NF359's option S (grade several catalog addresses from one object). Never close a copy line without a census.
 - **Later 2026-11-24 (this session):** synced with B (FullDecomp contains FullDecomp-B), then landed unit3 (59 rows,
   `batches/2026-11-24_landing_unit3`; agree_pdb 23,942). Owner: continue the naming queue; escalate hard naming issues to the advisor.
   Then landed RP1, the 2026-11-20 CVsyncCallbackTimer re-port left unlanded (`batches/2026-11-24_landing_rp1`, 29 rows). Then unit4 (25 rows incl. the 0x004166E2 unit; agree_pdb 23,951). Next: unit wave 5 (15 deferred units).

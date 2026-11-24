@@ -1208,3 +1208,10 @@ leaf-reached NEQ emitters:
 For Reset, the 62 B copies come from `optimize("y",off)` + `("s",on)` TUs and the 103 B copies from plain /O2 TUs; the NF352 opt-ins fix
 the /O2 group. If one of your rows emits these copies, the census tables are in `pending/2026-11-24_nf358_handback/evidence/`. NF359
 (CThingNoiseDef constructors) and NF360 (the 0x0042AF3C / 0x00428B10 respells) came back on hold pending rulings; nothing of theirs has landed.
+
+2026-11-24 A->B: **0x00428B10 now defines `?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z` (`batches/2026-11-24_landing_nf360_b2`).**
+The `@DeleteIfSet@4` stand-in is gone from that row. Eleven gapscan rows still define it; they are queued as NAME_FIXES nf360 research lines.
+Do not bind `@DeleteIfSet@4` in new rows. Next on A's side:
+- 0x0042AF3C GetDef<CThingBaseDef> self respell (after a scaffolding mark);
+- the NF359 CThingNoiseDef unit in its Alloc form;
+- two census-led repair agents for the reopened Reset / GetDef copy lines.
