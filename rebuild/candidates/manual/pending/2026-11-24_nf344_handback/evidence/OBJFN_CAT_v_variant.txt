@@ -1,0 +1,50 @@
+== 0064b1ac CAT v NOD
+FNDIFF same=48 differ=0 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 00e4aa00 CAT v NOD
+FNDIFF same=18 differ=0 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 00e4fa20 CAT v NOD
+FNDIFF same=18 differ=0 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 00b2c8e0 CAT v NOD
+DIFFER    pickany 94->25 bytes ?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z
+FNDIFF same=34 differ=1 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 006c6040 CAT v NOD
+DIFFER    pickany 62->5 bytes ??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+FNDIFF same=153 differ=1 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 00803d60 CAT v NOD
+DIFFER    pickany 656->803 bytes ??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind5@VCThingFilter_IsInFOV@@VCThingFilter_IsNot@@V?$unary_negate@VCThingFilter_In2DRange@@@std@@V?$unary_negate@VCThingFilter_ShotFiredByThing@?A0x55c821d0@@@4@VCThingFilter_ViableProjectileAimingTarget@?A0x55c821d0@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind5@VCThingFilter_IsInFOV@@VCThingFilter_IsNot@@V?$unary_negate@VCThingFilter_In2DRange@@@std@@V?$unary_negate@VCThingFilter_ShotFiredByThing@?A0x55c821d0@@@4@VCThingFilter_ViableProjectileAimingTarget@?A0x55c821d0@@@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+FNDIFF same=121 differ=1 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 007677e0 CAT v T60
+DIFFER    pickany 46->106 bytes ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z
+DIFFER    pickany 46->106 bytes ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z
+DIFFER    pickany 45->113 bytes ??$__uninitialized_fill_n@PAUAttackParticleAndEndPoints@@IU1@@std@@YAPAUAttackParticleAndEndPoints@@PAU1@IABU1@ABU__false_type@0@@Z
+FNDIFF same=165 differ=3 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 007677e0 CAT v T61
+DIFFER    pickany 46->106 bytes ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z
+DIFFER    pickany 46->106 bytes ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z
+DIFFER    pickany 45->113 bytes ??$__uninitialized_fill_n@PAUAttackParticleAndEndPoints@@IU1@@std@@YAPAUAttackParticleAndEndPoints@@PAU1@IABU1@ABU__false_type@0@@Z
+DIFFER    pickany 20->62 bytes ??E?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@@2@@std@@QAEAAU01@XZ
+FNDIFF same=164 differ=4 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 00b47bc0 CAT v T39
+DIFFER    pickany 12->51 bytes ??2CManagerLocalLight@CEngineLightingManager@@SIPAXI@Z
+DIFFER    pickany 160->216 bytes ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLight@CEngineLightingManager@@ABQAU34@ABU__true_type@2@I_N@Z
+FNDIFF same=33 differ=2 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 00b47bc0 CAT v T40
+DIFFER    pickany 12->51 bytes ??2CManagerLocalLight@CEngineLightingManager@@SIPAXI@Z
+DIFFER    pickany 160->216 bytes ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLight@CEngineLightingManager@@ABQAU34@ABU__true_type@2@I_N@Z
+FNDIFF same=33 differ=2 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 00afcc30 CAT v T1537
+FNDIFF same=157 differ=0 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none
+== 00b03ca0 CAT v T1537
+FNDIFF same=174 differ=0 only_head=0 only_new=0
+NONCODE_SECTIONS_DIFFER none

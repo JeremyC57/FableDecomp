@@ -1,0 +1,3 @@
+address	class	catalog_flags_old	catalog_flags_new	grade_before	grade_after	pk_all_leafcalled_EQ/NEQ_before	pk_all_leafcalled_EQ/NEQ_after	old_checker_EQ/NEQ_before	old_checker_EQ/NEQ_after	copies_repaired	copies_broken	note
+0064b1ac	drop-unneeded (DECISION: Codex pass 27 RESERVED.tsv still lists the row)	/O2 /Oy /W3 /Os /Oy- /d2inlT59	/O2 /Oy /W3 /Os /Oy-	RELOCATION_MATCH	RELOCATION_MATCH	4/0	4/0	6/0	6/0	-	-	object identical without /d2inlT59 (every function COMDAT, bytes + relocations)
+00e4fa20	drop-unneeded (DECISION: Codex pass 27 RESERVED.tsv still lists the row)	/O2 /Oy /W3 /d2inlT69	(remove CompilerFlags; = /O2 /Oy /W3)	RELOCATION_MATCH	RELOCATION_MATCH	3/0	3/0	5/0	5/0	-	-	object identical without /d2inlT69

@@ -1089,3 +1089,9 @@ through the existing REREAD macro. I will tell you here which define your row ne
 2026-11-24 B->A: **0x00ED8680 CTB_Bard::Main matches at stock flags** (README section; staged). One ruling needed from you: its object emits a
 `??1MovieBase` copy that differs from 0x006E7B80 and that the row's own function calls -- byte-equal to the copy landed 0x00D62480 already emits
 at HEAD. EXTRA_RULES 2026-11-21 does not cover "leaf-called, but HEAD already binds and emits the same differing copy": hold or debt?
+
+2026-11-24 A->B: **0x00ED8680 CTB_Bard::Main ruling: HOLD.** A new row whose leaf calls a NEQ copy is held, even when landed rows already emit
+the same NEQ copy (NF340 gate, new-row case; `naming/briefs/BRIEF_NF_BATCH.md`, NF340 entry). The "already NEQ is debt" relief covers only
+a change to a row that already emitted the copy. Agent NF343 is fixing exactly this copy group now: 0x006E7B80
+`~CScriptGameResourceObjectMovieBase`, emitted by 6 landed rows. Your row is included as a read-only 7th emitter. When the fix lands, A will
+name the define here; your row then passes.

@@ -268014,7 +268014,6 @@ $catalog = @(
         Source = '00/b2/CEngineSurfaceCompositionManager_CopyIntermediateBank_00b2c8e0.cpp'
         TestSource = '00/b2/CEngineSurfaceCompositionManager_CopyIntermediateBank_00b2c8e0_test.cpp'
         PassPattern = '00b2c8e0_TEST PASS'
-        CompilerFlags = '/O2 /Oy /W3 /d2inlS100 /d2inlT200'
     }
     [pscustomobject]@{
         Address = '00b32ad0'
@@ -392526,7 +392525,7 @@ $catalog = @(
         Module = 'CTCObjectAugmentations'
         Source = '00/76/CTCObjectAugmentations_AttachAugmentationParticles_007677e0.cpp'
         TestSource = '00/76/CTCObjectAugmentations_AttachAugmentationParticles_007677e0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /d2inlT59'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT60'
         PassPattern = '007677e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -393202,7 +393201,7 @@ $catalog = @(
         Module = 'NParticleEngine::CPSCRenderSprite'
         Source = '00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30.cpp'
         TestSource = '00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /d2inlT1537 /d2inlS15'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT1537'
         PassPattern = '00afcc30_TEST PASS'
     }
     [pscustomobject]@{
@@ -397486,7 +397485,6 @@ $catalog = @(
         Module = 'NScript::CV_BanditTollScript::CBanditLeader'
         Source = '00/e4/NScriptCVBanditTollScriptCBanditLeader_Main_00e4aa00.cpp'
         TestSource = '00/e4/NScriptCVBanditTollScriptCBanditLeader_Main_00e4aa00_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /d2inlT200'
         PassPattern = '00e4aa00_TEST PASS'
     }
     [pscustomobject]@{
@@ -397866,7 +397864,7 @@ $catalog = @(
         Module = 'NParticleEngine::CPSCRenderMesh'
         Source = '00/b0/NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0.cpp'
         TestSource = '00/b0/NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /d2inlT1537 /d2inlS15'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT1537'
         PassPattern = '00b03ca0_TEST PASS'
     }
     [pscustomobject]@{
@@ -398284,7 +398282,7 @@ $catalog = @(
         Module = 'CEngineLightingManager'
         Source = '00/b4/CEngineLightingManager_UpdateShadowedSpotLights_00b47bc0.cpp'
         TestSource = '00/b4/CEngineLightingManager_UpdateShadowedSpotLights_00b47bc0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /d2inlT29'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT39'
         PassPattern = '00b47bc0_TEST PASS'
     }
     [pscustomobject]@{

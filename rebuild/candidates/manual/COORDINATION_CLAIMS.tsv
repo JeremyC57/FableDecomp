@@ -497,3 +497,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF344: /d2inl flag rows from NF340 + leaf-vs-table census	naming	claimed	locks via lock.sh NF344
 2026-11-24	A	agent NF341: GetDef<CMaterialDef> pick-any copy (0x0066C340) + 0x006EA430 self spelling (unblock B 0x00839940)	naming	released	handed back; item 2 landing as nf341 b2x; item 1 rework re-claimed below
 2026-11-24	A	agent NF341 round 2: GetDef<CMaterialDef> copy as an opt-in (B OnHit unblock)	naming	claimed	locks via lock.sh NF341
+2026-11-24	A	agent NF344: /d2inl flag rows from NF340 + leaf-vs-table census	naming	done	6 flag changes landed (batches/2026-11-24_landing_nf344_b1, b3); b2 held (Codex p27 reservation); census queued

@@ -1,0 +1,13 @@
+00465c54 /d2inlS40 /d2inlS42 /d2inlS45 /d2inlS50 /d2inlS60 /d2inlS80
+007677e0 /d2inlT55 /d2inlT56 /d2inlT57 /d2inlT58 /d2inlT60 /d2inlT61 /d2inlT62 /d2inlT64
+0083f650 /d2inlS10 /d2inlS12 /d2inlS13 /d2inlS15 /d2inlS20
+008ddad0 /d2inlT61 /d2inlT62 /d2inlT63 /d2inlT64 /d2inlT66 /d2inlT67 /d2inlT68 /d2inlT69
+009c4440 /d2inlT110 /d2inlT115 /d2inlT125 /d2inlT140 /d2inlT160 /d2inlT200
+00a71910 /d2inlT60 /d2inlT61 /d2inlT62 /d2inlT63 /d2inlT64 /d2inlT65
+00afcc30 /d2inlT1537 /d2inlS15 /d2inlT1156 /d2inlT1537_/d2inlS13 /d2inlT1537_/d2inlS20 /d2inlT2000_/d2inlS15
+00b03ca0 /d2inlT1537 /d2inlS15 /d2inlT1156 /d2inlT1537_/d2inlS13 /d2inlT1537_/d2inlS20 /d2inlT2000_/d2inlS15
+00b1f200 /d2inlT1157 /d2inlT1200 /d2inlT1537 /d2inlT1537_/d2inlS15 /d2inlT1156_/d2inlS15 /d2inlT2000
+00b21e90 /d2inlS85 /d2inlS90 /d2inlS100
+00b47bc0 /d2inlT30 /d2inlT31 /d2inlT32 /d2inlT35 /d2inlT40 /d2inlT45
+00de8370 /d2inlS13_/d2inlT30 /d2inlS13_/d2inlT32 /d2inlS13_/d2inlT35 /d2inlS14_/d2inlT29 /d2inlS15_/d2inlT29
+00efa4f0 /d2inlT38 /d2inlT40 /d2inlT43 /d2inlT46 /d2inlT48 /d2inlT50

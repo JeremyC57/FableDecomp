@@ -1,0 +1,12 @@
+0064b1ac	rows/0064b1ac.cpp	CLANG_OK
+00e4aa00	rows/00e4aa00.cpp	CLANG_OK
+00e4fa20	rows/00e4fa20.cpp	CLANG_OK
+00b2c8e0	rows/00b2c8e0.cpp	CLANG_OK
+007677e0	rows/007677e0.cpp	/home/user/FableDecomp/rebuild/include/engine/CTCObjectAugmentations.h:107:10: error: explicit instantiation cannot be 'inline'
+1 error generated.
+00b47bc0	rows/00b47bc0.cpp	CLANG_OK
+00afcc30	rows/00afcc30.cpp	CLANG_OK
+00b03ca0	rows/00b03ca0.cpp	CLANG_OK
+007677e0	rows/007677e0.cpp(reworded)	/home/user/FableDecomp/rebuild/include/engine/CTCObjectAugmentations.h:107:10: error: explicit instantiation cannot be 'inline'
+1 error generated.
+00b47bc0	rows/00b47bc0.cpp(reworded)	CLANG_OK

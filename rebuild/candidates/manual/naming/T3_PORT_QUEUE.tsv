@@ -61,7 +61,6 @@ nf285	0x008CFFE0	standin_alias port	binder source read; identity not verified: r
 nf285	0x006A22D0	standin_alias port	binder source read; identity not verified: real class, stand-in member GetWeapons_006a22d0(CThingVector*, bool) v PDB RemoveAllThingsInPrimarySlot(vector<CThing*>&, bool): the stand-in container type CThingVector must become the STLport vector (port)
 nf285	0x007FF7D0	standin_alias port	binder source read; identity not verified: free stand-in CreateThing_007ff7d0 for the static CTCDHeroSuit::Create: no shared header for CTCDHeroSuit, so the class declaration would be a new local model (rule: header first)
 nf285	0x0071D7C0	standin_alias port	binder source read; identity not verified: real class, but the parameter type is the stand-in CThing_Retail* where the PDB takes const CThing&: port off CThing_Retail
-nf283	0x0099A960	CDiskFileWin32 port (binders 0x0055D070 / 0x00B2C8E0 emit ??_7CDiskFileWin32 from local models)	NF283 D2
 nf283	0x0099AA90	CDiskFileWin32 port (as 0x0099A960)	NF283 D2
 nf283	0x0099EA60	same-TU strong copy carries the PDB spelling (NF281 D2)	NF283 D3
 nf283	0x00B80AD0	same-TU strong copy carries the PDB spelling (NF281 D2)	NF283 D3
@@ -3360,8 +3359,6 @@ nf326	0x00F08590	port	00f08590 skipped-port ?WatchForEnemyDeath@CQ_AmbushTraders
 nf326	0x00F09950	port	00f09950 skipped-port ?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z outside the CScriptThing member unit (stand-in class / parameter / container binders, not in-TU copies of a CScriptTh
 nf326	0x00DF6010	debt	00df6010 GetDataString copy COMDAT is 45 bytes against retail's 42 (every spelling tried flips the row's own fitted leaf); pick-any is not yet sound for GetDataString (NF326 Q2)
 pickany_d2inlS15	0x00472896	debt	00472896 leaf references a pick-any copy that differs from Fable.exe (naming/audits/2026-11-24_pickany_d2inlS15)
-pickany_d2inlS15	0x00AFCC30	debt	00afcc30 leaf references a pick-any copy that differs from Fable.exe (naming/audits/2026-11-24_pickany_d2inlS15)
-pickany_d2inlS15	0x00B03CA0	debt	00b03ca0 leaf references a pick-any copy that differs from Fable.exe (naming/audits/2026-11-24_pickany_d2inlS15)
 pickany_d2inlS15	0x00B1F200	debt	00b1f200 leaf references a pick-any copy that differs from Fable.exe (naming/audits/2026-11-24_pickany_d2inlS15)
 pickany_d2inlS15	0x00D13580	debt	00d13580 leaf references a pick-any copy that differs from Fable.exe (naming/audits/2026-11-24_pickany_d2inlS15)
 pickany_d2inlS15	0x00D19BD0	debt	00d19bd0 leaf references a pick-any copy that differs from Fable.exe (naming/audits/2026-11-24_pickany_d2inlS15)
@@ -3575,6 +3572,8 @@ nf340	0x00CD20CE	pick-any debt (copy)	leaf-called NEQ copy ??0?$pair@$$CBHVCChar
 nf340	0x00CD36C2	pick-any debt (copy)	leaf-called NEQ copy ?insert@?$map@HVCCharString@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHVCCharString@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHVC emitted by 1 row(s): 00cd3a16; /d2inl-caused in 0; fix the emitting header text / local model (audits/2026-11-24_pk_all_nf340/DEBT_BY_COPY.tsv)
 nf340	0x009AC700	pick-any debt (copy)	leaf-called NEQ copy ??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z emitted by 1 row(s): 00d58490; /d2inl-caused in 0; fix the emitting header text / local model (audits/2026-11-24_pk_all_nf340/DEBT_BY_COPY.tsv)
 nf340	0x00CDD4C0	pick-any debt (copy)	leaf-called NEQ copy ??1CSpawnedFuncBase@@UAE@XZ emitted by 1 row(s): 00e9e090; /d2inl-caused in 0; fix the emitting header text / local model (audits/2026-11-24_pk_all_nf340/DEBT_BY_COPY.tsv)
-nf340	-	audit	leaf-vs-table census (no compile): every landed row whose own Leaf symbol is bound in reloc_bindings to a different address (seen today: 0x00464536, 0x006EA430, + NF340 three)
-nf340	-	audit	the 14 /d2inl rows whose leaf matches without the flag (audits/2026-11-24_pk_all_nf340/SUMMARY.md): decide each by pk_all delta
 nf341	-	port (header text)	D3: HEAD has 121 NEQ GetDef<T> copies in 110 objects, all one cause (the default CDefPointer::SetDynamicCast keeps the pointer in a register; retail re-reads: the REREAD form). A general re-reading GetDef body would fix them: one ruling + census; size from pending/2026-11-24_nf341_handback/evidence/pk_gate.txt
+nf283	0x0099A960	CDiskFileWin32 port (binders 0x0055D070 / 0x00B2C8E0 emit ??_7CDiskFileWin32 from local models)	NF283 D2
+pickany_d2inlS15	0x00AFCC30	debt	00afcc30 leaf references a pick-any copy that differs from Fable.exe (naming/audits/2026-11-24_pickany_d2inlS15)
+pickany_d2inlS15	0x00B03CA0	debt	00b03ca0 leaf references a pick-any copy that differs from Fable.exe (naming/audits/2026-11-24_pickany_d2inlS15)
+nf344	-	identity research	leaf-vs-table census: 624 landed rows whose own leaf is bound only at another address (naming/audits/2026-11-24_leaf_table_nf344/LEAF_TABLE_CONFLICTS.tsv; hints: 140 folded/twin, 335 two rows grade one symbol, 143 table line likely stale, 6 research)

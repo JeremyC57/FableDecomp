@@ -1,0 +1,5 @@
+addr       parity           behav  name
+007677e0   RELOCATION_MATCH PASS   AttachAugmentationParticles
+
+WINS: 1
+  007677e0 RELOCATION_MATCH CTCObjectAugmentations::?AttachAugmentationParticles@CTCObjectAugmentations@@AAEXXZ

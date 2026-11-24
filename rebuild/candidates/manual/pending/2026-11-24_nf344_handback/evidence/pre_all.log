@@ -1,0 +1,58 @@
+00465c54	CCombatAbilityBlockDefBase_Transfer_00465c54.cpp	CLANG_OK
+00465c54	CCombatAbilityBlockDefBase_Transfer_00465c54_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error: expected a qualified name after 'typename' /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error:
+007677e0	CTCObjectAugmentations_AttachAugmentationParticles_007677e0.cpp	CLANG_FAIL	/home/user/FableDecomp/rebuild/include/engine/CTCObjectAugmentations.h:107:10: error: explicit instantiation cannot be 'inline' 1 error generated. 
+007677e0	CTCObjectAugmentations_AttachAugmentationParticles_007677e0_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error: expected a qualified name after 'typename' /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error:
+0083f650	LHNetworkLibLHHttpHeaders_GetHeader_0083f650.cpp	CLANG_OK
+0083f650	LHNetworkLibLHHttpHeaders_GetHeader_0083f650_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/ostream:51:16: error: invalid operands to binary expression ('fmtflags' (aka 'int') and 'ios_base &(ios_base &) __attribute__((cdecl))') /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88
+008ddad0	NCreatureModeCModeThunderLightningStorm_CreateLightningBeams_008ddad0.cpp	CLANG_OK
+008ddad0	NCreatureModeCModeThunderLightningStorm_CreateLightningBeams_008ddad0_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error: expected a qualified name after 'typename' /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error:
+009c4440	CFileInstaller_IsFileCopyNecessary_009c4440.cpp	CLANG_OK
+009c4440	CFileInstaller_IsFileCopyNecessary_009c4440_test.cpp	CLANG_OK
+00a71910	std_unguardedpartition_00a71910.cpp	CLANG_OK
+00a71910	std_unguardedpartition_00a71910_test.cpp	CLANG_OK
+00afcc30	NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30.cpp	CLANG_OK
+00afcc30	NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error: expected a qualified name after 'typename' /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error:
+00b03ca0	NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0.cpp	CLANG_OK
+00b03ca0	NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error: expected a qualified name after 'typename' /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error:
+00b1f200	NParticleEngineCPSCDecalRenderer_PreparePrimitives_00b1f200.cpp	CLANG_OK
+00b1f200	NParticleEngineCPSCDecalRenderer_PreparePrimitives_00b1f200_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error: expected a qualified name after 'typename' /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error:
+00b21e90	NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_DatabaseSerialise_00b21e90.cpp	CLANG_OK
+00b21e90	NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_DatabaseSerialise_00b21e90_test.cpp	CLANG_OK
+00b47bc0	CEngineLightingManager_UpdateShadowedSpotLights_00b47bc0.cpp	CLANG_OK
+00b47bc0	CEngineLightingManager_UpdateShadowedSpotLights_00b47bc0_test.cpp	CLANG_FAIL	/home/user/FableDecomp/rebuild/tests/00/b4/CEngineLightingManager_UpdateShadowedSpotLights_00b47bc0_test.cpp:134:2: error: no matching function for call to '_assert' /home/user/FableDecomp/rebuild/tests/00/b4/CEngineLightingManager_UpdateShadowedSpotLights_00b47bc0_test.cpp:166:62: error: no matchin
+00ce7670	NScriptCGameflowScript_Main_00ce7670.cpp	CLANG_OK
+00ce7670	NScriptCGameflowScript_Main_00ce7670_test.cpp	CLANG_OK
+00d45060	NScriptCQGuildTrainingScript_CheckFriendlyAttacks_00d45060.cpp	CLANG_OK
+00d45060	NScriptCQGuildTrainingScript_CheckFriendlyAttacks_00d45060_test.cpp	CLANG_OK
+00de8370	NScriptCQRansomVictimScriptCRansommer_Main_00de8370.cpp	CLANG_OK
+00de8370	NScriptCQRansomVictimScriptCRansommer_Main_00de8370_test.cpp	CLANG_OK
+00efa4f0	NScriptCbanditlevelcutsceneScript_Main_00efa4f0.cpp	CLANG_OK
+00efa4f0	NScriptCbanditlevelcutsceneScript_Main_00efa4f0_test.cpp	CLANG_OK
+005414a0	NUISystemCDynamicList_vfunc147_005414a0.cpp	CLANG_OK
+005414a0	NUISystemCDynamicList_vfunc147_005414a0_test.cpp	CLANG_OK
+006116e0	CTCInventoryMap_OpenInventory_006116e0.cpp	CLANG_OK
+006116e0	CTCInventoryMap_OpenInventory_006116e0_test.cpp	CLANG_OK
+0064b1ac	NPlayerGuiCDrawAbilityButtons_UpdateWeaponAbilities_0064b1ac.cpp	CLANG_OK
+0064b1ac	NPlayerGuiCDrawAbilityButtons_UpdateWeaponAbilities_0064b1ac_test.cpp	CLANG_FAIL	/home/user/FableDecomp/rebuild/tests/00/64/NPlayerGuiCDrawAbilityButtons_UpdateWeaponAbilities_0064b1ac_test.cpp:306:55: error: explicit specialization of '~CTBaseSingletonNoDefaultAlloc' after instantiation 1 error generated. 
+006c6040	CTCHeroOpinionDeedLog_InformRelevantThingsOfDeed_006c6040.cpp	CLANG_OK
+006c6040	CTCHeroOpinionDeedLog_InformRelevantThingsOfDeed_006c6040_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error: expected a qualified name after 'typename' /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error:
+007e4b60	CTCCreditsUI_Activate_007e4b60.cpp	CLANG_OK
+007e4b60	CTCCreditsUI_Activate_007e4b60_test.cpp	CLANG_OK
+00803d60	CTCTargetingPlayer_UpdateProjectileTargeting_00803d60.cpp	CLANG_OK
+00803d60	CTCTargetingPlayer_UpdateProjectileTargeting_00803d60_test.cpp	CLANG_OK
+0090e5d0	CAIStateGroupBanditGossip_Update_0090e5d0.cpp	CLANG_OK
+0090e5d0	CAIStateGroupBanditGossip_Update_0090e5d0_test.cpp	CLANG_FAIL	/home/user/FableDecomp/rebuild/tests/00/90/CAIStateGroupBanditGossip_Update_0090e5d0_test.cpp:244:235: error: no matching function for call to '_assert' /home/user/FableDecomp/rebuild/tests/00/90/CAIStateGroupBanditGossip_Update_0090e5d0_test.cpp:268:89: error: no matching function for call to '_ass
+0091f140	CAIStateGroupTestTestTest_Update_0091f140.cpp	CLANG_OK
+0091f140	CAIStateGroupTestTestTest_Update_0091f140_test.cpp	CLANG_OK
+00b2c8e0	CEngineSurfaceCompositionManager_CopyIntermediateBank_00b2c8e0.cpp	CLANG_OK
+00b2c8e0	CEngineSurfaceCompositionManager_CopyIntermediateBank_00b2c8e0_test.cpp	CLANG_OK
+00b3fc40	CEngineMap_PeekInterpolatedMapNormal_00b3fc40.cpp	CLANG_OK
+00b3fc40	CEngineMap_PeekInterpolatedMapNormal_00b3fc40_test.cpp	CLANG_OK
+00bd9ce0	CEngineLandscapeMemoryManager_FreeDisposalList_00bd9ce0.cpp	CLANG_OK
+00bd9ce0	CEngineLandscapeMemoryManager_FreeDisposalList_00bd9ce0_test.cpp	CLANG_OK
+00bda150	CEngineLandscapeMemoryManager_ProcessDisposalList_00bda150.cpp	CLANG_OK
+00bda150	CEngineLandscapeMemoryManager_ProcessDisposalList_00bda150_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error: expected a qualified name after 'typename' /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/functional:154:12: error:
+00e4aa00	NScriptCVBanditTollScriptCBanditLeader_Main_00e4aa00.cpp	CLANG_OK
+00e4aa00	NScriptCVBanditTollScriptCBanditLeader_Main_00e4aa00_test.cpp	CLANG_FAIL	/home/user/FableDecomp/rebuild/tests/00/e4/NScriptCVBanditTollScriptCBanditLeader_Main_00e4aa00_test.cpp:46:35: error: no matching function for call to '_assert' /home/user/FableDecomp/rebuild/tests/00/e4/NScriptCVBanditTollScriptCBanditLeader_Main_00e4aa00_test.cpp:46:45: error: no matching functio
+00e4fa20	NScriptCVBeardyBaldyScript_Main_00e4fa20.cpp	CLANG_OK
+00e4fa20	NScriptCVBeardyBaldyScript_Main_00e4fa20_test.cpp	CLANG_FAIL	/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/ostream:51:16: error: invalid operands to binary expression ('fmtflags' (aka 'int') and 'ios_base &(ios_base &) __attribute__((cdecl))') /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88

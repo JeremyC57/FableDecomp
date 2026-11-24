@@ -1,0 +1,17 @@
+addr       parity           behav  name
+007677e0   RELOCATION_MATCH PASS   AttachAugmentationParticles
+00b47bc0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b47bc0   RELOCATION_MATCH PASS   UpdateShadowedSpotLights
+00afcc30   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00afcc30   RELOCATION_MATCH PASS   PreparePrimitives
+00b03ca0   WARN RELOC_NAME: ??0CRGBColour@@QAE@XZ -> 004048e0 labelled 'Identity_ReturnArg'
+00b03ca0   WARN RELOC_NAME: ??_H@YGXPAXIHP6EPAX0@Z@Z -> 004038c0 labelled '`vector_constructor_iterator''
+00b03ca0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b03ca0   RELOCATION_MATCH PASS   PreparePrimitives
+
+WINS: 4
+  007677e0 RELOCATION_MATCH CTCObjectAugmentations::?AttachAugmentationParticles@CTCObjectAugmentations@@AAEXXZ
+  00b47bc0 RELOCATION_MATCH CEngineLightingManager::?UpdateShadowedSpotLights@CEngineLightingManager@@AAEXXZ
+  00afcc30 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::?PreparePrimitives@CPSCRenderSprite@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+  00b03ca0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?PreparePrimitives@CPSCRenderMesh@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+VB1B_DONE
