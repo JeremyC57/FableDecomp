@@ -323,3 +323,18 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
     opt-in alone isolates the first.
   - **Q3:** no second-header opt-in whose device does not reach retail (DeleteData<CAction> 12 B v 21): that is the forbidden second device.
     Queue it diagnosis-only.
+- NF361 / NF362 (advisor decision, owner delegated, 2026-11-24):
+  - **Census labels:** NF358's "shared-body" label was wrong for the /O2 GetDef emitters. Their copies come from a row-local
+    `template<class T> GetDef(long, ...)`, so a define-only fix fails (C2995). Check where a copy is defined before choosing an opt-in.
+  - **SIZE_BODY blocks** (NF349 / NF352 / NF357) re-mode the rest of a TU that sets its own pragmas, and move the leaf wherever the leaf
+    inlines the function (GOTCHAS 2026-11-24). A 101 B GetDef in a size TU takes `FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD` alone,
+    an existing opt-in.
+  - **Include moves** stay byte-neutral only (NF357 Q2). NF362's P2 moved `??0CCPPointerInfo` (26 -> 25 B) and is rejected.
+  - **P1 sibling block** (Reset for y-off size TUs) is allowed with these conditions:
+    - its own macro name, add-only, with `#error` if defined together with the RESET macro;
+    - pragscan: the state before the block equals the restored state after it;
+    - exactly one COMDAT changes, and the copy equals the owner object;
+    - whole-catalog equiv_check plus a planted control.
+  - **NF361 swap** (a row drops its local GetDef template for GLOBAL_BODY + REREAD + SIZE_BODY): allowed as a copy repair gated by the drop
+    test, if the helper COMDATs equal those of an already-landed shared-body row. Rows whose leaf moves are skipped.
+  - **B's rows:** agents stay off them, even read-only; the coordinator rechecks them from the repo.
