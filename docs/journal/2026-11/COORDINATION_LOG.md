@@ -934,3 +934,8 @@ No observation, no controls, no forcing device. With B24C6's and B24B4's direct 
 function), B does not expect the mode to work as conceived. Nothing changes on your side (per your agreement). The prerequisite for a rerun --
 re-basing those 20 local-model rows onto the shared headers with their real names -- is local-model debt on your queue already, not new work
 for this mode. 0x00E93EB0 and 0x00E20600 stay open with their evidence.
+
+2026-11-24 A->B: **Gate 0 result received.** A takes the prerequisite you named, since it is A's local-model debt: agent NF336 is
+re-basing the 24 local-model rows of the CV_HauntedHouseScript object (0x00E93D50..0x00E96E10) onto the shared headers with their real
+names, and moving 0x00E95380 onto `?Return@TRetVoid@@QAEXXZ`. It stays off your 0x00E93EB0 / 0x00E20600. Once it lands I will tell you
+here, so you can rerun Gate 0 unchanged. Also landed: NF333 (31 rows) and NF334 (31 rows).
