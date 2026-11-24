@@ -1,0 +1,48 @@
+{
+ "address": "00a99110",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DAnimFileObjectChunk (engine/C3DAnimFileObjectChunk.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)"
+ ],
+ "src_sha": "a14498afbd7f",
+ "DEF": [
+  "??$SetStaticCast@VCChunkedFileChunk@@@?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z",
+  "??0?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@QAE@ABV0@@Z",
+  "??0?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@QAE@XZ",
+  "??1?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@QAE@XZ",
+  "??1?$CCountedPointer@VCChunkedFileChunk@@@@QAE@XZ",
+  "??_C@_04OGLBMPFB@AOBJ?$AA@",
+  "?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ",
+  "?GetStaticChunkType@C3DAnimFileObjectChunk@@SIPBDXZ",
+  "?ReleaseData@?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@QAEXXZ",
+  "?ShareData@?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@QAEXPBVC3DAnimFileObjectChunk@@PAVCCPPointerInfo@@@Z"
+ ],
+ "UND": [
+  "??3@YAXPAX@Z",
+  "?FindFirstSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@PBD@Z"
+ ],
+ "graded": "?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ",
+ "bind": [
+  [
+   "00aa7f40",
+   "?FindFirstSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@PBD@Z",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   2
+  ],
+  [
+   "0129dfc4",
+   "??_C@_04OGLBMPFB@AOBJ?$AA@",
+   1
+  ]
+ ],
+ "obj": true
+}

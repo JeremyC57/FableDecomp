@@ -1,0 +1,94 @@
+{
+ "address": "0040a740",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Save",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMemoryFile (engine/CMemoryFile.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)"
+ ],
+ "src_sha": "810ff8de95cd",
+ "DEF": [
+  "??1CAFile@@UAE@XZ",
+  "??1CByteArray@@QAE@XZ",
+  "??1CMemoryFile@@UAE@XZ",
+  "??_7CMemoryFile@@6B@",
+  "??_C@_11LOCGONAA@?$AA?$AA@",
+  "??_GCMemoryFile@@UAEPAXI@Z",
+  "?Save@CUserProfileManager@@QAEXXZ"
+ ],
+ "UND": [
+  "??0CMemoryFile@@QAE@ABVCWideString@@W4FileAccessType@@K@Z",
+  "??1CBaseClassNonCopyable@@MAE@XZ",
+  "??1CWideString@@QAE@XZ",
+  "??3@YAXPAX@Z",
+  "??9CWideString@@QBE_NPBG@Z",
+  "??_GCMemoryFile@@UAEPAXI@Z",
+  "?Close@CMemoryFile@@UAEXXZ",
+  "?DumpToFile@CMemoryFile@@QAEXXZ",
+  "?GetProfileDir@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z",
+  "?SaveGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z",
+  "_free"
+ ],
+ "graded": "?Save@CUserProfileManager@@QAEXXZ",
+ "bind": [
+  [
+   "004082d0",
+   "?GetProfileDir@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z",
+   1
+  ],
+  [
+   "00409fd0",
+   "?SaveGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z",
+   1
+  ],
+  [
+   "0099a300",
+   "??1CBaseClassNonCopyable@@MAE@XZ",
+   1
+  ],
+  [
+   "0099b150",
+   "??9CWideString@@QBE_NPBG@Z",
+   1
+  ],
+  [
+   "0099b510",
+   "??1CWideString@@QAE@XZ",
+   2
+  ],
+  [
+   "009e9330",
+   "?DumpToFile@CMemoryFile@@QAEXXZ",
+   1
+  ],
+  [
+   "009e9390",
+   "?Close@CMemoryFile@@UAEXXZ",
+   2
+  ],
+  [
+   "009e97b0",
+   "??0CMemoryFile@@QAE@ABVCWideString@@W4FileAccessType@@K@Z",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   1
+  ],
+  [
+   "0122d70c",
+   "??_C@_11LOCGONAA@?$AA?$AA@",
+   1
+  ],
+  [
+   "0122e0fc",
+   "??_7CMemoryFile@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,16 @@
+{
+ "address": "004aad40",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z",
+ "warn": [],
+ "src_sha": "bb964074a18a",
+ "DEF": [
+  "?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z",
+  "?ReferenceScriptThingMsgIsHitByAnySpecialAbilityFrom@?A0xf069803b@@YA_NABVCScriptThing@@ABVCCharString@@@Z"
+ ],
+ "UND": [],
+ "graded": "?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z",
+ "bind": [],
+ "obj": true
+}

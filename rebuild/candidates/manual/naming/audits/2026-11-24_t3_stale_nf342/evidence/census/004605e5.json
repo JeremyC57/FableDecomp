@@ -1,0 +1,27 @@
+{
+ "address": "004605e5",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??4CSpecialAbilitiesThunderLightningStormDef@@QAEAAV0@ABV0@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesThunderLightningStormDef (engine/CSpecialAbilitiesThunderLightningStormDef.h)"
+ ],
+ "src_sha": "e637abf50f5e",
+ "DEF": [
+  "??4CSpecialAbilitiesThunderLightningStormDef@@QAEAAV0@ABV0@@Z"
+ ],
+ "UND": [
+  "??4CParentDefClassBase@@QAEAAV0@ABV0@@Z",
+  "__fltused"
+ ],
+ "graded": "??4CSpecialAbilitiesThunderLightningStormDef@@QAEAAV0@ABV0@@Z",
+ "bind": [
+  [
+   "00431ed0",
+   "??4CParentDefClassBase@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

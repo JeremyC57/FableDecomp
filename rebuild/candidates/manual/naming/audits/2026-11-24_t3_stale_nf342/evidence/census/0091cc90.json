@@ -1,0 +1,23 @@
+{
+ "address": "0091cc90",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Initialise",
+ "warn": [],
+ "src_sha": "4168be86c09b",
+ "DEF": [
+  "?Initialise@CAIStateGroup_MinionReactToNoise_Methods@@QAEXXZ"
+ ],
+ "UND": [
+  "@FableReactBaseInit_91cc90@4"
+ ],
+ "graded": "?Initialise@CAIStateGroup_MinionReactToNoise_Methods@@QAEXXZ",
+ "bind": [
+  [
+   "008fcec0",
+   "@FableReactBaseInit_91cc90@4",
+   1
+  ]
+ ],
+ "obj": true
+}

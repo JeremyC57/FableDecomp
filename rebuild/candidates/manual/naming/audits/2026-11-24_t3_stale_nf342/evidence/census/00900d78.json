@@ -1,0 +1,15 @@
+{
+ "address": "00900d78",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "33b9afe3a509",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

@@ -1,0 +1,73 @@
+{
+ "address": "00904cd0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "MoveToAndPickUpGenericBox",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)"
+ ],
+ "src_sha": "eb74ac81aa43",
+ "DEF": [
+  "??$GetInterface@VCTCScriptedControl@@@CThing_Retail@@QAE_NPAPAVCTCScriptedControl@@J@Z",
+  "?HasTC@CThing_Retail@@QBEEJ@Z",
+  "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+  "?MoveToAndPickUpGenericBox@CScriptGameResourceObjectScriptedThing_Methods@@QAEXABVCScriptThing@@J_N@Z",
+  "?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ",
+  "?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ"
+ ],
+ "UND": [
+  "??0CActionMoveTo@NTCScriptedControl@@QAE@PAUCThing_Retail@@JM_N11111@Z",
+  "??0CActionPickUpGenericBox@NTCScriptedControl@@QAE@PAUCThing_Retail@@@Z",
+  "??0CActionTurnToFacePosition@NTCScriptedControl@@QAE@ABVC3DVector@@M@Z",
+  "??2@YAPAXI@Z",
+  "?AddAction@CTCScriptedControl@@QAEXPAX@Z",
+  "?GetPItem@CIntelligentPointer_Retail@@QAEPAUCThing_Retail@@XZ",
+  "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+  "__fltused"
+ ],
+ "graded": "?MoveToAndPickUpGenericBox@CScriptGameResourceObjectScriptedThing_Methods@@QAEXABVCScriptThing@@J_N@Z",
+ "bind": [
+  [
+   "0040f020",
+   "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+   1
+  ],
+  [
+   "004c73d0",
+   "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+   1
+  ],
+  [
+   "00713200",
+   "??0CActionPickUpGenericBox@NTCScriptedControl@@QAE@PAUCThing_Retail@@@Z",
+   1
+  ],
+  [
+   "007137d0",
+   "?AddAction@CTCScriptedControl@@QAEXPAX@Z",
+   4
+  ],
+  [
+   "007185d0",
+   "??0CActionTurnToFacePosition@NTCScriptedControl@@QAE@ABVC3DVector@@M@Z",
+   1
+  ],
+  [
+   "009051f0",
+   "??0CActionMoveTo@NTCScriptedControl@@QAE@PAUCThing_Retail@@JM_N11111@Z",
+   1
+  ],
+  [
+   "00a01b50",
+   "?GetPItem@CIntelligentPointer_Retail@@QAEPAUCThing_Retail@@XZ",
+   3
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   3
+  ]
+ ],
+ "obj": true
+}

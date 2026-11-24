@@ -1,0 +1,28 @@
+{
+ "address": "008ac970",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ",
+ "warn": [],
+ "src_sha": "ee6c619feb1e",
+ "DEF": [
+  "??$_Destroy@VCScriptThing@@@std@@YAXPAVCScriptThing@@0@Z",
+  "??$_Destroy@VCScriptThing@@@std@@YAXPAVCScriptThing@@@Z",
+  "??$__destroy_aux@PAVCScriptThing@@@std@@YAXPAVCScriptThing@@0ABU__false_type@0@@Z",
+  "??1?$_Vector_base@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ",
+  "??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ",
+  "?deallocate@?$allocator@VCScriptThing@@@std@@QAEXPAVCScriptThing@@I@Z"
+ ],
+ "UND": [
+  "_free"
+ ],
+ "graded": "??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ",
+ "bind": [
+  [
+   "00bfea14",
+   "_free",
+   1
+  ]
+ ],
+ "obj": true
+}

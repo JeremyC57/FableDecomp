@@ -1,0 +1,47 @@
+{
+ "address": "007b7d20",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Transfer@COverheadDisplayDef@@UAEXAAVCPersistContext@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)"
+ ],
+ "src_sha": "3c312a47360a",
+ "DEF": [
+  "??$Transfer@_N@CPersistContext@@QAEXPBDAA_N@Z",
+  "??0?$CPersistTraits@_N@@QAE@XZ",
+  "??_C@_00CNPNBAHC@?$AA@",
+  "?Transfer@COverheadDisplayDef@@UAEXAAVCPersistContext@@@Z",
+  "?TransferBinaryOut@?$CPersistTraits@_N@@SAXPAVCDataOutputStream@@AB_N@Z"
+ ],
+ "UND": [
+  "?CheckCRC@CPersistContext@@IAEXPBD@Z",
+  "?TransferBinaryIn@?$CPersistTraits@_N@@QAEXAAVCMemoryDataInputStream@@AA_N@Z",
+  "?WriteEBOOL@CDataOutputStream@@QAEX_N@Z"
+ ],
+ "graded": "?Transfer@COverheadDisplayDef@@UAEXAAVCPersistContext@@@Z",
+ "bind": [
+  [
+   "00403eb0",
+   "?TransferBinaryIn@?$CPersistTraits@_N@@QAEXAAVCMemoryDataInputStream@@AA_N@Z",
+   3
+  ],
+  [
+   "00404500",
+   "?CheckCRC@CPersistContext@@IAEXPBD@Z",
+   3
+  ],
+  [
+   "00993e30",
+   "?WriteEBOOL@CDataOutputStream@@QAEX_N@Z",
+   3
+  ],
+  [
+   "0122d70e",
+   "??_C@_00CNPNBAHC@?$AA@",
+   3
+  ]
+ ],
+ "obj": true
+}

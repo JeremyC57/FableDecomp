@@ -1,0 +1,19 @@
+{
+ "address": "00994b40",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetLength@CMemoryDataOutputStream@@QBEKXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)"
+ ],
+ "src_sha": "7255870e1b16",
+ "DEF": [
+  "?GetLength@CMemoryDataOutputStream@@QBEKXZ"
+ ],
+ "UND": [],
+ "graded": "?GetLength@CMemoryDataOutputStream@@QBEKXZ",
+ "bind": [],
+ "obj": true
+}

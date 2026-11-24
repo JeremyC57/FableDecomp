@@ -1,0 +1,38 @@
+{
+ "address": "00452b14",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Transfer",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)",
+  "  WARN RELOC_NAME: ?TSub@CPersistContext@@QAEXPAX@Z -> 00452b4d labelled '_global::PersistTransfer_00452b4d'"
+ ],
+ "src_sha": "a4e6b4104f9f",
+ "DEF": [
+  "?Transfer@CCombatAbilityAttackBase_Methods@@QAEXAAVCPersistContext@@@Z"
+ ],
+ "UND": [
+  "??$Transfer@M@CPersistContext@@QAEXAAM@Z",
+  "??$Transfer@_N@CPersistContext@@QAEXAA_N@Z",
+  "?TSub@CPersistContext@@QAEXPAX@Z"
+ ],
+ "graded": "?Transfer@CCombatAbilityAttackBase_Methods@@QAEXAAVCPersistContext@@@Z",
+ "bind": [
+  [
+   "00431061",
+   "??$Transfer@M@CPersistContext@@QAEXAAM@Z",
+   1
+  ],
+  [
+   "0043314a",
+   "??$Transfer@_N@CPersistContext@@QAEXAA_N@Z",
+   2
+  ],
+  [
+   "00452b4d",
+   "?TSub@CPersistContext@@QAEXPAX@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

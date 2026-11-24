@@ -1,0 +1,25 @@
+{
+ "address": "004aaa40",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetAngleXY@CScriptThing@@UBEMXZ",
+ "warn": [],
+ "src_sha": "051753be3130",
+ "DEF": [
+  "?GetAngleXY@CScriptThing@@UBEMXZ",
+  "?ReferenceScriptThingGetAngleXY@?A0x4c2762d3@@YAMABVCScriptThing@@@Z",
+  "__real@00000000"
+ ],
+ "UND": [
+  "__fltused"
+ ],
+ "graded": "?GetAngleXY@CScriptThing@@UBEMXZ",
+ "bind": [
+  [
+   "0122dedc",
+   "__real@00000000",
+   1
+  ]
+ ],
+ "obj": true
+}

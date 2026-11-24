@@ -1,0 +1,15 @@
+{
+ "address": "008fe284",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_CreatureRangedCombatUseWillShield@@MBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "e96101c1266d",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_CreatureRangedCombatUseWillShield@@MBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_CreatureRangedCombatUseWillShield@@MBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

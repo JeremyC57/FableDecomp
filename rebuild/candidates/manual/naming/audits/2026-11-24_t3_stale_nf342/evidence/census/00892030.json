@@ -1,0 +1,37 @@
+{
+ "address": "00892030",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?MiniMapRemoveAllMarkers@CGameScriptInterface@@UBEXXZ",
+ "warn": [
+  "  WARN RELOC_NAME: ?g_obj@@3PAUCObj@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'"
+ ],
+ "src_sha": "042cc55af41a",
+ "DEF": [
+  "?MiniMapRemoveAllMarkers@CGameScriptInterface@@UBEXXZ"
+ ],
+ "UND": [
+  "?g_obj@@3PAUCObj@@A",
+  "@get_sub@4",
+  "@sub_method@4"
+ ],
+ "graded": "?MiniMapRemoveAllMarkers@CGameScriptInterface@@UBEXXZ",
+ "bind": [
+  [
+   "00437ce0",
+   "@get_sub@4",
+   1
+  ],
+  [
+   "0082a300",
+   "@sub_method@4",
+   1
+  ],
+  [
+   "013b8790",
+   "?g_obj@@3PAUCObj@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

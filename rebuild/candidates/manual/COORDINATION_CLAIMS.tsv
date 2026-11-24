@@ -492,3 +492,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF341: GetDef<CMaterialDef> pick-any copy (0x0066C340) + 0x006EA430 self spelling (unblock B 0x00839940)	naming	claimed	locks via lock.sh NF341
 2026-11-24	A	agent NF342: T3 queue stale-line sweep	audit	claimed	read-only, compiled proof per stale line
 2026-11-24	A	agent NF340: pick-any all-copies audit (B24C9 checker finding)	audit	done	audits/2026-11-24_pk_all_nf340; pk_all.py added; per-copy debt queued T3 nf340
+2026-11-24	A	agent NF342: T3 queue stale-line sweep	audit	done	263 stale lines closed (audits/2026-11-24_t3_stale_nf342)

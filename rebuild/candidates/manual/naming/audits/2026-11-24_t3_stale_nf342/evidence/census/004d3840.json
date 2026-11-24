@@ -1,0 +1,15 @@
+{
+ "address": "004d3840",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetSizeofClass@CChestDef@@UAEKXZ",
+ "warn": [],
+ "src_sha": "506a4063967e",
+ "DEF": [
+  "?GetSizeofClass@CChestDef@@UAEKXZ"
+ ],
+ "UND": [],
+ "graded": "?GetSizeofClass@CChestDef@@UAEKXZ",
+ "bind": [],
+ "obj": true
+}

@@ -1,0 +1,24 @@
+{
+ "address": "004e14fd",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z",
+ "warn": [],
+ "src_sha": "fe9b4eec701e",
+ "DEF": [
+  "?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "??4CDefClassBase@@QAEAAV0@ABV0@@Z",
+  "__fltused"
+ ],
+ "graded": "?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "00431f10",
+   "??4CDefClassBase@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

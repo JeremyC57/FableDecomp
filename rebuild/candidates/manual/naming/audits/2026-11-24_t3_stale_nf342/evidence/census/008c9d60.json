@@ -1,0 +1,15 @@
+{
+ "address": "008c9d60",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "IsToFaceTargetAtStart",
+ "warn": [],
+ "src_sha": "283276b1aa5c",
+ "DEF": [
+  "?CCreatureAction_HobbeLungeAttack_IsToFaceTargetAtStart@@YI_NXZ"
+ ],
+ "UND": [],
+ "graded": "?CCreatureAction_HobbeLungeAttack_IsToFaceTargetAtStart@@YI_NXZ",
+ "bind": [],
+ "obj": true
+}

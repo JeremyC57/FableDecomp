@@ -1,0 +1,26 @@
+{
+ "address": "004ed2f1",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "CopyBackwardPtrs_Element48_004ed2f1",
+ "warn": [],
+ "src_sha": "9ebd0b0f1590",
+ "DEF": [
+  "??0random_access_iterator_tag@@QAE@XZ",
+  "??4SElement48@@QAEAAU0@ABU0@@Z",
+  "?CopyBackwardPtrs_Element48_004ed2f1@@YIPAUSElement48@@PAU1@00ABU__false_type@@@Z",
+  "?__copy_backward@@YAPAUSElement48@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z"
+ ],
+ "UND": [
+  "??4CRecordHead@@QAEAAV0@ABV0@@Z"
+ ],
+ "graded": "?CopyBackwardPtrs_Element48_004ed2f1@@YIPAUSElement48@@PAU1@00ABU__false_type@@@Z",
+ "bind": [
+  [
+   "00431f10",
+   "??4CRecordHead@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

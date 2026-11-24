@@ -1,0 +1,36 @@
+{
+ "address": "00855b50",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CCreatureAction_BlockRespond",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CCreatureAction_BlockBase (engine/CCreatureAction_BlockBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCreatureAction_BlockRespond (engine/CCreatureAction_BlockRespond.h)"
+ ],
+ "src_sha": "7b511811d465",
+ "DEF": [
+  "??0CCreatureAction_BlockRespond@@QAE@PAVCThingCreatureBase@@0J@Z",
+  "??_7CCreatureAction_BlockRespond@@6B@",
+  "??_GCCreatureAction_BlockRespond@@UAEPAXI@Z"
+ ],
+ "UND": [
+  "??0CCreatureAction_BlockBase@@QAE@AAVCThingCreatureBase@@0JJ@Z",
+  "??1CCreatureAction_BlockBase@@UAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCCreatureAction_BlockRespond@@UAEPAXI@Z"
+ ],
+ "graded": "??0CCreatureAction_BlockRespond@@QAE@PAVCThingCreatureBase@@0J@Z",
+ "bind": [
+  [
+   "00855af0",
+   "??0CCreatureAction_BlockBase@@QAE@AAVCThingCreatureBase@@0JJ@Z",
+   1
+  ],
+  [
+   "01276084",
+   "??_7CCreatureAction_BlockRespond@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

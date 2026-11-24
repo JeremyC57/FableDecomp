@@ -1,0 +1,49 @@
+{
+ "address": "00ae1bc0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?ReadFromFile@CParticleSimulation@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z",
+ "warn": [],
+ "src_sha": "bec0d65d5885",
+ "DEF": [
+  "??$ReadType@E@CDataInputStream@@QAEEXZ",
+  "??$ReadType@K@CDataInputStream@@QAEKXZ",
+  "??$ReadType@M@CDataInputStream@@QAEMXZ",
+  "?Read@CDataInputStream@@QAEXPAXJ@Z",
+  "?ReadEBOOL@CDataInputStream@@QAE_NXZ",
+  "?ReadFloat@CDataInputStream@@QAEMXZ",
+  "?ReadFromFile@CParticleSimulation@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z",
+  "?ReadULONG@CDataInputStream@@QAEKXZ"
+ ],
+ "UND": [
+  "??$copy@PAVC4DVector@@PAV1@@std@@YIPAVC4DVector@@PAV1@00@Z",
+  "?AllocateArrays@CParticleSimulation@@AAE_NAAVCMovableResourceMemoryPool@@@Z",
+  "?ReadVectorArray@CParticleSimulation@@KIXPAVC4DVector@@KAAVCDataInputStream@@M@Z",
+  "?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z",
+  "__fltused"
+ ],
+ "graded": "?ReadFromFile@CParticleSimulation@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z",
+ "bind": [
+  [
+   "00993ca0",
+   "?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z",
+   12
+  ],
+  [
+   "00adf2a0",
+   "?AllocateArrays@CParticleSimulation@@AAE_NAAVCMovableResourceMemoryPool@@@Z",
+   1
+  ],
+  [
+   "00ae1730",
+   "?ReadVectorArray@CParticleSimulation@@KIXPAVC4DVector@@KAAVCDataInputStream@@M@Z",
+   1
+  ],
+  [
+   "00ae61e0",
+   "??$copy@PAVC4DVector@@PAV1@@std@@YIPAVC4DVector@@PAV1@00@Z",
+   2
+  ]
+ ],
+ "obj": true
+}

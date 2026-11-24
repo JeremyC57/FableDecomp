@@ -1,0 +1,35 @@
+{
+ "address": "00dfde30",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CRetailVector_CScriptThing_Retail_00dfde30@",
+ "warn": [
+  "  WARN RELOC_NAME: ??0CRetailVectorBase_CScriptThing_Retail@@QAE@KABUCRetailAllocator@@@Z -> 00dfde90 labelled 'std::_Vector_base<CScriptThing, std::allocator<CScriptThing>>::_Vector_base'",
+  "  WARN RELOC_NAME: ?ConstructCopy_CScriptThing_Retail@@YIXPAUCScriptThing_Retail@@ABU1@@Z -> 008ac120 labelled 'std::_Construct<CScriptThing,CScriptThing>'"
+ ],
+ "src_sha": "5ea4275a16c2",
+ "DEF": [
+  "??0CRetailAllocator@@QAE@XZ",
+  "??0CRetailVector_CScriptThing_Retail_00dfde30@@QAE@ABU0@@Z",
+  "?get_allocator@CRetailVector_CScriptThing_Retail_00dfde30@@QBE?AUCRetailAllocator@@XZ",
+  "?size@CRetailVector_CScriptThing_Retail_00dfde30@@QBEKXZ"
+ ],
+ "UND": [
+  "??0CRetailVectorBase_CScriptThing_Retail@@QAE@KABUCRetailAllocator@@@Z",
+  "?ConstructCopy_CScriptThing_Retail@@YIXPAUCScriptThing_Retail@@ABU1@@Z"
+ ],
+ "graded": "??0CRetailVector_CScriptThing_Retail_00dfde30@@QAE@ABU0@@Z",
+ "bind": [
+  [
+   "008ac120",
+   "?ConstructCopy_CScriptThing_Retail@@YIXPAUCScriptThing_Retail@@ABU1@@Z",
+   1
+  ],
+  [
+   "00dfde90",
+   "??0CRetailVectorBase_CScriptThing_Retail@@QAE@KABUCRetailAllocator@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

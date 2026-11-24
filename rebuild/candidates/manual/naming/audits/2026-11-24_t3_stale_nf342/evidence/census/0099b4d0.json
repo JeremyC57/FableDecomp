@@ -1,0 +1,42 @@
+{
+ "address": "0099b4d0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?UnassignString@CWideString@@IAEXXZ",
+ "warn": [],
+ "src_sha": "6770f3371ba6",
+ "DEF": [
+  "??$_Destroy@PAG@std@@YAXPAG0@Z",
+  "??$__destroy@PAGG@std@@YAXPAG00@Z",
+  "??$__destroy_aux@PAG@std@@YAXPAG0ABU__true_type@0@@Z",
+  "??0__true_type@std@@QAE@XZ",
+  "??1?$_STLP_alloc_proxy@PAGGV?$allocator@G@std@@@std@@QAE@XZ",
+  "??1?$_String_base@GV?$allocator@G@std@@@std@@QAE@XZ",
+  "??1?$allocator@G@std@@QAE@XZ",
+  "??1?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@std@@QAE@XZ",
+  "??1CWideStringData@@QAE@XZ",
+  "??_GCWideStringData@@QAEPAXI@Z",
+  "?Get@UnassignStringReference@?A0x262fab67@@SAP8CWideString@@AEXXZXZ",
+  "?UnassignString@CWideString@@IAEXXZ",
+  "?_M_deallocate_block@?$_String_base@GV?$allocator@G@std@@@std@@QAEXXZ",
+  "?deallocate@?$allocator@G@std@@QAEXPAGI@Z"
+ ],
+ "UND": [
+  "??3@YAXPAX@Z",
+  "_free"
+ ],
+ "graded": "?UnassignString@CWideString@@IAEXXZ",
+ "bind": [
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   1
+  ]
+ ],
+ "obj": true
+}

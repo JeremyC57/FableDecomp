@@ -1,0 +1,60 @@
+{
+ "address": "0055fb80",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "UpdateTransaction",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE LHHttp2 (engine/LHHttp2.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)",
+  "  WARN RELOC_NAME: ??0CHttpResponse@LHNetworkLib@@QAE@XZ -> 00569c50 labelled 'LHNetworkLib::LHHttpHeaderStatus::LHHttpHeaderStatus'",
+  "  WARN RELOC_NAME: ??1CHttpResponse@LHNetworkLib@@QAE@XZ -> 00569d30 labelled 'LHNetworkLib::LHHttpHeaderStatus::~LHHttpHeaderStatus'",
+  "  WARN RELOC_NAME: ?ReceiveResponseHeaders@LHHttp2@LHNetworkLib@@QAEJXZ -> 00840740 labelled 'LHNetworkLib::LHHttp2::ReceiveHeaderAsync'",
+  "  WARN RELOC_NAME: ?ParseResponseLine@LHHttp2@LHNetworkLib@@QAEJPAUCHttpResponse@2@@Z -> 00840b60 labelled 'LHNetworkLib::LHHttp2::GetHeader'"
+ ],
+ "src_sha": "871f8bed86fb",
+ "DEF": [
+  "?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ"
+ ],
+ "UND": [
+  "??0CHttpResponse@LHNetworkLib@@QAE@XZ",
+  "??1CHttpResponse@LHNetworkLib@@QAE@XZ",
+  "?ParseResponseLine@LHHttp2@LHNetworkLib@@QAEJPAUCHttpResponse@2@@Z",
+  "?ReceiveDocumentAsync@LHHttp2@LHNetworkLib@@QAEJXZ",
+  "?ReceiveResponseHeaders@LHHttp2@LHNetworkLib@@QAEJXZ",
+  "?SendRequest@LHHttp2@LHNetworkLib@@QAEJXZ"
+ ],
+ "graded": "?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ",
+ "bind": [
+  [
+   "00569c50",
+   "??0CHttpResponse@LHNetworkLib@@QAE@XZ",
+   2
+  ],
+  [
+   "00569d30",
+   "??1CHttpResponse@LHNetworkLib@@QAE@XZ",
+   4
+  ],
+  [
+   "0083efe0",
+   "?ReceiveDocumentAsync@LHHttp2@LHNetworkLib@@QAEJXZ",
+   1
+  ],
+  [
+   "008405f0",
+   "?SendRequest@LHHttp2@LHNetworkLib@@QAEJXZ",
+   1
+  ],
+  [
+   "00840740",
+   "?ReceiveResponseHeaders@LHHttp2@LHNetworkLib@@QAEJXZ",
+   1
+  ],
+  [
+   "00840b60",
+   "?ParseResponseLine@LHHttp2@LHNetworkLib@@QAEJPAUCHttpResponse@2@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

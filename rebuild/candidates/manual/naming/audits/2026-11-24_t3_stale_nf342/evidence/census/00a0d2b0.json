@@ -1,0 +1,23 @@
+{
+ "address": "00a0d2b0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?AddToInterface@CAInputProcess@@UAE_NAAVCInputProcessManager@@@Z",
+ "warn": [],
+ "src_sha": "59e16e0a8b6f",
+ "DEF": [
+  "?AddToInterface@CAInputProcess@@UAE_NAAVCInputProcessManager@@@Z"
+ ],
+ "UND": [
+  "?AddInputProcess@CInputProcessManager@@IAEXAAVCAInputProcess@@@Z"
+ ],
+ "graded": "?AddToInterface@CAInputProcess@@UAE_NAAVCInputProcessManager@@@Z",
+ "bind": [
+  [
+   "00a0d4f0",
+   "?AddInputProcess@CInputProcessManager@@IAEXAAVCAInputProcess@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

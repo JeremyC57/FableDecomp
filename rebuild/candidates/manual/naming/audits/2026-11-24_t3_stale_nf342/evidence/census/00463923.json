@@ -1,0 +1,32 @@
+{
+ "address": "00463923",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?Copy@CBaseNoiseDef@@QAEXPBVCDefClassBase@@@Z -> 00463950 labelled 'CThingBaseDef::operator='",
+  "  WARN RELOC_NAME: ?Copy@SubMember@@QAEXPBVCDefClassBase@@@Z -> 004537e9 labelled 'CTCNoiseDef::operator='"
+ ],
+ "src_sha": "ef77af6ab6c6",
+ "DEF": [
+  "?Copy@CThingNoiseDef@@QAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "?Copy@CBaseNoiseDef@@QAEXPBVCDefClassBase@@@Z",
+  "?Copy@SubMember@@QAEXPBVCDefClassBase@@@Z"
+ ],
+ "graded": "?Copy@CThingNoiseDef@@QAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "004537e9",
+   "?Copy@SubMember@@QAEXPBVCDefClassBase@@@Z",
+   1
+  ],
+  [
+   "00463950",
+   "?Copy@CBaseNoiseDef@@QAEXPBVCDefClassBase@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

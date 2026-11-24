@@ -1,0 +1,56 @@
+{
+ "address": "00f3b970",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTriangleStripifier2 (engine/CTriangleStripifier2.h)",
+  "  WARN RELOC_NAME: ?InsertGrow@?$CArray@G@@QAEXPAGABGABUSScalarTag@@K_N@Z -> 005135d0 labelled 'std::vector<unsigned short,std::allocator<unsigned short> >::_M_insert_overflow'"
+ ],
+ "src_sha": "72f69cb32f76",
+ "DEF": [
+  "??0?$CArray@G@@QAE@XZ",
+  "??0SScalarTag@@QAE@XZ",
+  "??1?$CArray@G@@QAE@XZ",
+  "??2@YAPAXIPAX@Z",
+  "??4?$CArray@G@@QAEAAV0@ABV0@@Z",
+  "??A?$CArray@G@@QBEAAGK@Z",
+  "??A?$CArray@J@@QBEAAJK@Z",
+  "??A?$CArray@V?$CArray@J@@@@QBEAAV?$CArray@J@@K@Z",
+  "??A?$CArray@_N@@QBEAA_NK@Z",
+  "?InsertGrow@?$CArray@G@@QAEXPAGABGABUSScalarTag@@K_N@Z",
+  "?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z",
+  "?begin@?$CArray@G@@QBEPAGXZ",
+  "?begin@?$CArray@J@@QBEPAJXZ",
+  "?begin@?$CArray@V?$CArray@J@@@@QBEPAV?$CArray@J@@XZ",
+  "?begin@?$CArray@_N@@QBEPA_NXZ",
+  "?push_back@?$CArray@G@@QAEXABG@Z",
+  "?size@?$CArray@G@@QBEKXZ",
+  "?size@?$CArray@J@@QBEKXZ"
+ ],
+ "UND": [
+  "?AssignArrayRange_00f3b640@@YAXPAXPBX1@Z",
+  "?GrowArrayStorage_005135d0@@YAPAXK@Z",
+  "_free"
+ ],
+ "graded": "?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z",
+ "bind": [
+  [
+   "005135d0",
+   "?InsertGrow@?$CArray@G@@QAEXPAGABGABUSScalarTag@@K_N@Z",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   1
+  ],
+  [
+   "00f3b640",
+   "??4?$CArray@G@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,23 @@
+{
+ "address": "00902ca7",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ",
+ "warn": [],
+ "src_sha": "095efdb445fe",
+ "DEF": [
+  "?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ"
+ ],
+ "UND": [
+  "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ"
+ ],
+ "graded": "?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ",
+ "bind": [
+  [
+   "00a01b50",
+   "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+   1
+  ]
+ ],
+ "obj": true
+}

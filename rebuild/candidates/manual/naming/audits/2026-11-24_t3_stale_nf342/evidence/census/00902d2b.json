@@ -1,0 +1,15 @@
+{
+ "address": "00902d2b",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_SummonerLightningAttack@@UBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "98efefc80412",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_SummonerLightningAttack@@UBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_SummonerLightningAttack@@UBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

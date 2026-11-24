@@ -1,0 +1,96 @@
+{
+ "address": "004c0240",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "SetPMeshEffect",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEngineMeshEffect (engine/CEngineMeshEffect.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)"
+ ],
+ "src_sha": "095a06544633",
+ "DEF": [
+  "??$GetInterface@VCTCCarrying@@@CThing@@QAE_NPAPAVCTCCarrying@@J@Z",
+  "??$GetInterface@VCTCGraphicAppearance@NGraphicAppearance@@@CThing@@QAE_NPAPAVCTCGraphicAppearance@NGraphicAppearance@@J@Z",
+  "??$_Destroy@PAPAVCThing@@@std@@YAXPAPAVCThing@@0@Z",
+  "??$__destroy@PAPAVCThing@@PAV1@@std@@YAXPAPAVCThing@@00@Z",
+  "??$__destroy_aux@PAPAVCThing@@@std@@YAXPAPAVCThing@@0ABU__true_type@0@@Z",
+  "??0?$CIVCountedPointer@VCEngineMeshEffect@@@@QAE@ABV0@@Z",
+  "??0?$CIVCountedPointer@VCEngineMeshEffect@@@@QAE@XZ",
+  "??0?$_STLP_alloc_proxy@PAPAVCThing@@PAV1@V?$allocator@PAVCThing@@@std@@@std@@QAE@ABV?$allocator@PAVCThing@@@1@PAPAVCThing@@@Z",
+  "??0?$_Vector_base@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAE@ABV?$allocator@PAVCThing@@@1@@Z",
+  "??0?$allocator@PAVCThing@@@std@@QAE@ABV01@@Z",
+  "??0?$allocator@PAVCThing@@@std@@QAE@XZ",
+  "??0?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAE@ABV?$allocator@PAVCThing@@@1@@Z",
+  "??0CMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@QAE@ABV?$CIVCountedPointer@VCEngineMeshEffect@@@@W4EAppearanceMeshEffectPriority@@_N22@Z",
+  "??0__true_type@std@@QAE@XZ",
+  "??1?$CIVCountedPointer@VCEngineMeshEffect@@@@QAE@XZ",
+  "??1?$_STLP_alloc_proxy@PAPAVCThing@@PAV1@V?$allocator@PAVCThing@@@std@@@std@@QAE@XZ",
+  "??1?$_Vector_base@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAE@XZ",
+  "??1?$allocator@PAVCThing@@@std@@QAE@XZ",
+  "??1?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAE@XZ",
+  "??1CMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@QAE@XZ",
+  "??4?$CIVCountedPointer@VCEngineMeshEffect@@@@QAEAAV0@ABV0@@Z",
+  "??4CMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@QAEAAU012@ABU012@@Z",
+  "??A?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEAAPAVCThing@@I@Z",
+  "?AddRef@CEngineMeshEffect@@QAEXXZ",
+  "?IsWeapon@CThing@@QBE_NXZ",
+  "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+  "?ParentIsWeapon@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ",
+  "?Release@CEngineMeshEffect@@QAEXXZ",
+  "?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@@PAX@Z",
+  "?TestTC@CThing@@QBE_NJ@Z",
+  "?begin@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEPAPAVCThing@@XZ",
+  "?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ",
+  "?deallocate@?$allocator@PAVCThing@@@std@@QAEXPAPAVCThing@@I@Z",
+  "?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ",
+  "?size@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QBEIXZ"
+ ],
+ "UND": [
+  "??A?$map@PAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@U?$less@PAX@std@@V?$allocator@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@5@@std@@QAEAAUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@ABQAX@Z",
+  "?AddToRenderList@CThing@@QAEXXZ",
+  "?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z",
+  "?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z",
+  "_free"
+ ],
+ "graded": "?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@@PAX@Z",
+ "bind": [
+  [
+   "0040f020",
+   "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+   2
+  ],
+  [
+   "004bfe20",
+   "?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z",
+   1
+  ],
+  [
+   "004c0240",
+   "?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@@PAX@Z",
+   1
+  ],
+  [
+   "004c5b90",
+   "??A?$map@PAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@U?$less@PAX@std@@V?$allocator@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@5@@std@@QAEAAUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@ABQAX@Z",
+   1
+  ],
+  [
+   "004c7ac0",
+   "?AddToRenderList@CThing@@QAEXXZ",
+   1
+  ],
+  [
+   "006a2220",
+   "?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,34 @@
+{
+ "address": "006a98f0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "SerialiseGameState@CThingPlayerCreature",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)"
+ ],
+ "src_sha": "742c780e7c19",
+ "DEF": [
+  "?SerialiseGameState@CThingPlayerCreature@@UAE_NAAVCPersistContext@@@Z"
+ ],
+ "UND": [
+  "?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z",
+  "__fltused"
+ ],
+ "graded": "?SerialiseGameState@CThingPlayerCreature@@UAE_NAAVCPersistContext@@@Z",
+ "bind": [
+  [
+   "006628e0",
+   "?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z",
+   1
+  ],
+  [
+   "0122dedc",
+   "_HEALTH_UNSET",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,35 @@
+{
+ "address": "0040d400",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "SetProfileName",
+ "warn": [],
+ "src_sha": "7f38c89ecac8",
+ "DEF": [
+  "?SetProfileName@CUserProfileManager@@QAEXABVCWideString@@_N@Z"
+ ],
+ "UND": [
+  "??4CWideString@@QAEABV0@ABV0@@Z",
+  "?Load@CUserProfileManager@@QAEXXZ",
+  "?Save@CUserProfileManager@@QAEXXZ"
+ ],
+ "graded": "?SetProfileName@CUserProfileManager@@QAEXABVCWideString@@_N@Z",
+ "bind": [
+  [
+   "0040a740",
+   "?Save@CUserProfileManager@@QAEXXZ",
+   1
+  ],
+  [
+   "0040d350",
+   "?Load@CUserProfileManager@@QAEXXZ",
+   1
+  ],
+  [
+   "0099b7d0",
+   "??4CWideString@@QAEABV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

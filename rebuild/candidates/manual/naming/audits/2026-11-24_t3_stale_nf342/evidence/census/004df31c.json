@@ -1,0 +1,25 @@
+{
+ "address": "004df31c",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Transfer@CCameraCollisionDef@@UAEXAAVCPersistContext@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)"
+ ],
+ "src_sha": "b8dad35b41b1",
+ "DEF": [
+  "?Transfer@CCameraCollisionDef@@UAEXAAVCPersistContext@@@Z"
+ ],
+ "UND": [
+  "??$Transfer@J@CPersistContext@@QAEXAAJ@Z"
+ ],
+ "graded": "?Transfer@CCameraCollisionDef@@UAEXAAVCPersistContext@@@Z",
+ "bind": [
+  [
+   "00431102",
+   "??$Transfer@J@CPersistContext@@QAEXAAJ@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

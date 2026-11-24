@@ -1,0 +1,52 @@
+{
+ "address": "00895ed0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "SetHouseOwnedByPlayer",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)"
+ ],
+ "src_sha": "7a5bba865d86",
+ "DEF": [
+  "??$GetComponent@$03UHeroStatsRetail@@@@YAPAUHeroStatsRetail@@PAUCThingNative@@@Z",
+  "??$GetComponent@$0NF@UBuyableHouseMethods@@@@YAPAUBuyableHouseMethods@@PAUCThingNative@@@Z",
+  "?SetHouseOwnedByPlayer@CGameScriptInterfaceMethods@@QBEXABUScriptMethods@@_N1@Z"
+ ],
+ "UND": [
+  "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ",
+  "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+  "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+  "?SetOwnedByPlayer@CTCBuyableHouse@@QAEX_N@Z",
+  "?SetRented@CTCBuyableHouse@@QAEX_N@Z"
+ ],
+ "graded": "?SetHouseOwnedByPlayer@CGameScriptInterfaceMethods@@QBEXABUScriptMethods@@_N1@Z",
+ "bind": [
+  [
+   "0040f020",
+   "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+   2
+  ],
+  [
+   "00449970",
+   "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ",
+   1
+  ],
+  [
+   "00487dc0",
+   "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+   1
+  ],
+  [
+   "006c1150",
+   "?SetRented@CTCBuyableHouse@@QAEX_N@Z",
+   1
+  ],
+  [
+   "006c17b0",
+   "?SetOwnedByPlayer@CTCBuyableHouse@@QAEX_N@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,32 @@
+{
+ "address": "00766480",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetOnHitExplodingEffect",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CObjectAugmentationsDef (engine/CObjectAugmentationsDef.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCObjectAugmentations (engine/CTCObjectAugmentations.h)"
+ ],
+ "src_sha": "b470ac431acc",
+ "DEF": [
+  "?GetOnHitExplodingEffect@CTCObjectAugmentations@@QBEJXZ"
+ ],
+ "UND": [
+  "?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z",
+  "?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z"
+ ],
+ "graded": "?GetOnHitExplodingEffect@CTCObjectAugmentations@@QBEJXZ",
+ "bind": [
+  [
+   "00766050",
+   "?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z",
+   1
+  ],
+  [
+   "007660c0",
+   "?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z",
+   2
+  ]
+ ],
+ "obj": true
+}

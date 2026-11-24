@@ -1,0 +1,48 @@
+{
+ "address": "00ac0e50",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?FindFirstMap@C3DMeshFileMaterialChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@XZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DMeshFileMapChunk (engine/C3DMeshFileMapChunk.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DMeshFileMaterialChunk (engine/C3DMeshFileMaterialChunk.h)"
+ ],
+ "src_sha": "31bdb8661c79",
+ "DEF": [
+  "??$SetStaticCast@VCChunkedFileChunk@@@?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z",
+  "??0?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAE@ABV0@@Z",
+  "??0?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAE@XZ",
+  "??1?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAE@XZ",
+  "??1?$CCountedPointer@VCChunkedFileChunk@@@@QAE@XZ",
+  "??_C@_04DLCDKOFJ@MMAP?$AA@",
+  "?FindFirstMap@C3DMeshFileMaterialChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@XZ",
+  "?GetStaticChunkType@C3DMeshFileMapChunk@@SIPBDXZ",
+  "?ReleaseData@?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAEXXZ",
+  "?ShareData@?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAEXPBVC3DMeshFileMapChunk@@PAVCCPPointerInfo@@@Z"
+ ],
+ "UND": [
+  "??3@YAXPAX@Z",
+  "?FindFirstSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@PBD@Z"
+ ],
+ "graded": "?FindFirstMap@C3DMeshFileMaterialChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@XZ",
+ "bind": [
+  [
+   "00aa7f40",
+   "?FindFirstSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@PBD@Z",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   2
+  ],
+  [
+   "0129edd4",
+   "??_C@_04DLCDKOFJ@MMAP?$AA@",
+   1
+  ]
+ ],
+ "obj": true
+}

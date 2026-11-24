@@ -1,0 +1,23 @@
+{
+ "address": "0088fb30",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetPrizeTavernTable@CGameScriptInterface@@UAE_NXZ",
+ "warn": [],
+ "src_sha": "1c66af48148e",
+ "DEF": [
+  "?GetPrizeTavernTable@CGameScriptInterface@@UAE_NXZ"
+ ],
+ "UND": [
+  "?g_PrizeTavernTable@@3_NA"
+ ],
+ "graded": "?GetPrizeTavernTable@CGameScriptInterface@@UAE_NXZ",
+ "bind": [
+  [
+   "013833d0",
+   "?g_PrizeTavernTable@@3_NA",
+   1
+  ]
+ ],
+ "obj": true
+}

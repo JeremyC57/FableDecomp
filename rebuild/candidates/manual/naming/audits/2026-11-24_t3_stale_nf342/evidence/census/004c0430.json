@@ -1,0 +1,34 @@
+{
+ "address": "004c0430",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "InheritMeshEffectsFromCarrier",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CEngineMeshEffect (engine/CEngineMeshEffect.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)"
+ ],
+ "src_sha": "c194292fb3d0",
+ "DEF": [
+  "??0?$CIVCountedPointer@VCEngineMeshEffect@@@@QAE@ABV0@@Z",
+  "??0const_iterator@CMeshEffectMap@CTCGraphicAppearance@NGraphicAppearance@@QAE@PAUSNode@23@@Z",
+  "??9const_iterator@CMeshEffectMap@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABU0123@@Z",
+  "??Cconst_iterator@CMeshEffectMap@CTCGraphicAppearance@NGraphicAppearance@@QBEPBUSNode@23@XZ",
+  "??Econst_iterator@CMeshEffectMap@CTCGraphicAppearance@NGraphicAppearance@@QAEAAU0123@XZ",
+  "?Increment@const_iterator@CMeshEffectMap@CTCGraphicAppearance@NGraphicAppearance@@SAPAUSNode@34@PAU534@@Z",
+  "?InheritMeshEffectsFromCarrier@CTCGraphicAppearance@NGraphicAppearance@@QAEXPBV12@@Z",
+  "?begin@CMeshEffectMap@CTCGraphicAppearance@NGraphicAppearance@@QBE?AUconst_iterator@123@XZ",
+  "?end@CMeshEffectMap@CTCGraphicAppearance@NGraphicAppearance@@QBE?AUconst_iterator@123@XZ"
+ ],
+ "UND": [
+  "?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@2@PAX@Z"
+ ],
+ "graded": "?InheritMeshEffectsFromCarrier@CTCGraphicAppearance@NGraphicAppearance@@QAEXPBV12@@Z",
+ "bind": [
+  [
+   "004c0240",
+   "?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@2@PAX@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,117 @@
+{
+ "address": "00506d40",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "LoadRegionGraph",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)",
+  "  WARN RELOC_NAME: ??1CAFile@@UAE@XZ -> 0099a300 labelled 'CBaseClassNonCopyable::~CBaseClassNonCopyable'"
+ ],
+ "src_sha": "2a7ffc238156",
+ "DEF": [
+  "??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z",
+  "??0CRegionConnectionGraph@@QAE@XZ",
+  "??0CVectorMap@@QAE@XZ",
+  "??1CDiskFileWin32@@UAE@XZ",
+  "??C?$CCountedPointer@VCRegionConnectionGraph@@@@QBEPAVCRegionConnectionGraph@@XZ",
+  "??_7CDiskFileWin32@@6B@",
+  "??_GCDiskFileWin32@@UAEPAXI@Z",
+  "?DeleteData@?$CCountedPointer@VCRegionConnectionGraph@@@@SIXPAX@Z",
+  "?LoadRegionGraph@CWorldMap@@QAEXABVCWideString@@@Z",
+  "?ReleaseData@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXXZ",
+  "?Reset@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXPAVCRegionConnectionGraph@@@Z"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@XZ",
+  "??0CDiskFileWin32@@QAE@ABVCWideString@@W4FileAccessType@@K@Z",
+  "??1CAFile@@UAE@XZ",
+  "??1CCharString@@QAE@XZ",
+  "??1CWideString@@QAE@XZ",
+  "??2@YAPAXI@Z",
+  "??3@YAXPAX@Z",
+  "??H@YI?AVCWideString@@ABV0@0@Z",
+  "??_GCDiskFileWin32@@UAEPAXI@Z",
+  "?Close@CDiskFileWin32@@UAEXXZ",
+  "?GetMiscDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ",
+  "?InitialiseGraph@CRegionConnectionGraph@@QAEXABVCCharString@@ABVCWorldMap@@@Z",
+  "?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z",
+  "?PathExists@CAFile@@SI_NABVCWideString@@@Z"
+ ],
+ "graded": "?LoadRegionGraph@CWorldMap@@QAEXABVCWideString@@@Z",
+ "bind": [
+  [
+   "0041a0a0",
+   "?GetMiscDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ",
+   1
+  ],
+  [
+   "0051cea0",
+   "?Reset@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXPAVCRegionConnectionGraph@@@Z",
+   1
+  ],
+  [
+   "00828710",
+   "?InitialiseGraph@CRegionConnectionGraph@@QAEXABVCCharString@@ABVCWorldMap@@@Z",
+   1
+  ],
+  [
+   "00999230",
+   "?PathExists@CAFile@@SI_NABVCWideString@@@Z",
+   1
+  ],
+  [
+   "0099a300",
+   "??1CAFile@@UAE@XZ",
+   1
+  ],
+  [
+   "0099a920",
+   "?Close@CDiskFileWin32@@UAEXXZ",
+   1
+  ],
+  [
+   "0099ad80",
+   "??0CDiskFileWin32@@QAE@ABVCWideString@@W4FileAccessType@@K@Z",
+   1
+  ],
+  [
+   "0099b510",
+   "??1CWideString@@QAE@XZ",
+   3
+  ],
+  [
+   "0099be70",
+   "??H@YI?AVCWideString@@ABV0@0@Z",
+   1
+  ],
+  [
+   "0099e4b0",
+   "??0CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099eae0",
+   "??1CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099f2e0",
+   "?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ],
+  [
+   "0122d06c",
+   "??_7CDiskFileWin32@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,40 @@
+{
+ "address": "0094fbb0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsTargetOnATower@CAIStateGroup_JackDragon@@QAE_NXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackDragon (engine/CAIStateGroup_JackDragon.h)"
+ ],
+ "src_sha": "ba9378f2a822",
+ "DEF": [
+  "?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ",
+  "?IsTargetOnATower@CAIStateGroup_JackDragon@@QAE_NXZ",
+  "__real@3fc00000"
+ ],
+ "UND": [
+  "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+  "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+  "__fltused"
+ ],
+ "graded": "?IsTargetOnATower@CAIStateGroup_JackDragon@@QAE_NXZ",
+ "bind": [
+  [
+   "004c73d0",
+   "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+   2
+  ],
+  [
+   "00a01b50",
+   "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+   2
+  ],
+  [
+   "0125aadc",
+   "__real@3fc00000",
+   1
+  ]
+ ],
+ "obj": true
+}

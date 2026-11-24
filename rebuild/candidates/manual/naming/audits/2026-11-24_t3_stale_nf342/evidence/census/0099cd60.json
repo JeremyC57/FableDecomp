@@ -1,0 +1,35 @@
+{
+ "address": "0099cd60",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "resize",
+ "warn": [],
+ "src_sha": "e1b3dfe5e396",
+ "DEF": [
+  "??$_Destroy@G@std@@YAXPAG0@Z",
+  "?begin@?$basic_string@GU?$char_traits@G@std@@U?$allocator@G@2@@std@@QAEPAGXZ",
+  "?end@?$basic_string@GU?$char_traits@G@std@@U?$allocator@G@2@@std@@QAEPAGXZ",
+  "?erase@?$basic_string@GU?$char_traits@G@std@@U?$allocator@G@2@@std@@QAEPAGPAG0@Z",
+  "?move@?$char_traits@G@std@@SAPAGPAGPBGI@Z",
+  "?resize@?$basic_string@GU?$char_traits@G@std@@U?$allocator@G@2@@std@@QAEXIG@Z",
+  "?size@?$basic_string@GU?$char_traits@G@std@@U?$allocator@G@2@@std@@QBEIXZ"
+ ],
+ "UND": [
+  "?append@?$basic_string@GU?$char_traits@G@std@@U?$allocator@G@2@@std@@QAEAAV12@IG@Z",
+  "_memmove"
+ ],
+ "graded": "?resize@?$basic_string@GU?$char_traits@G@std@@U?$allocator@G@2@@std@@QAEXIG@Z",
+ "bind": [
+  [
+   "0099cb00",
+   "?append@?$basic_string@GU?$char_traits@G@std@@U?$allocator@G@2@@std@@QAEAAV12@IG@Z",
+   1
+  ],
+  [
+   "00bfeae6",
+   "_memmove",
+   1
+  ]
+ ],
+ "obj": true
+}

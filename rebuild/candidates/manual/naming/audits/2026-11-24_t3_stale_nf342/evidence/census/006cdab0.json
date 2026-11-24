@@ -1,0 +1,20 @@
+{
+ "address": "006cdab0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?PeekNavigatorPosition3D@CGroundNavigatorExternalInterface@@UBE?AVC3DVector@@XZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)"
+ ],
+ "src_sha": "6a8df2de3835",
+ "DEF": [
+  "??0C3DVector@@QAE@ABV0@@Z",
+  "?PeekNavigatorPosition3D@CGroundNavigatorExternalInterface@@UBE?AVC3DVector@@XZ"
+ ],
+ "UND": [
+  "__fltused"
+ ],
+ "graded": "?PeekNavigatorPosition3D@CGroundNavigatorExternalInterface@@UBE?AVC3DVector@@XZ",
+ "bind": [],
+ "obj": true
+}

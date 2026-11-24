@@ -1,0 +1,23 @@
+{
+ "address": "00893040",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetActiveGossipCategoriesSize@CGameScriptInterface@@UAEHXZ",
+ "warn": [],
+ "src_sha": "2a7abc85cf6d",
+ "DEF": [
+  "?GetActiveGossipCategoriesSize@CGameScriptInterface@@UAEHXZ"
+ ],
+ "UND": [
+  "?g_ActiveGossipCategoriesSize@@3HA"
+ ],
+ "graded": "?GetActiveGossipCategoriesSize@CGameScriptInterface@@UAEHXZ",
+ "bind": [
+  [
+   "013bae30",
+   "?g_ActiveGossipCategoriesSize@@3HA",
+   1
+  ]
+ ],
+ "obj": true
+}

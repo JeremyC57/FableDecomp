@@ -1,0 +1,31 @@
+{
+ "address": "00af7e60",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Alloc",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CPSCUpdateNormal (engine/CPSCUpdateNormal.h)"
+ ],
+ "src_sha": "5971ca8eb7a3",
+ "DEF": [
+  "?CPSCUpdateNormal_Alloc@@YAPAUCPSCUpdateNormal@@XZ"
+ ],
+ "UND": [
+  "??0CPSCUpdateNormal@@QAE@XZ",
+  "??2@YAPAXI@Z"
+ ],
+ "graded": "?CPSCUpdateNormal_Alloc@@YAPAUCPSCUpdateNormal@@XZ",
+ "bind": [
+  [
+   "00b0c9c0",
+   "??0CPSCUpdateNormal@@QAE@XZ",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

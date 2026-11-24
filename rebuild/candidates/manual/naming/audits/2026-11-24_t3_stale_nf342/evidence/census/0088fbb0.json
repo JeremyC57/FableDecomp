@@ -1,0 +1,23 @@
+{
+ "address": "0088fbb0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetCountBetMoneyDown@CGameScriptInterface@@UAE_NXZ",
+ "warn": [],
+ "src_sha": "0422ce93d471",
+ "DEF": [
+  "?GetCountBetMoneyDown@CGameScriptInterface@@UAE_NXZ"
+ ],
+ "UND": [
+  "?g_countBetMoneyDown@@3_NA"
+ ],
+ "graded": "?GetCountBetMoneyDown@CGameScriptInterface@@UAE_NXZ",
+ "bind": [
+  [
+   "013bae24",
+   "?g_countBetMoneyDown@@3_NA",
+   1
+  ]
+ ],
+ "obj": true
+}

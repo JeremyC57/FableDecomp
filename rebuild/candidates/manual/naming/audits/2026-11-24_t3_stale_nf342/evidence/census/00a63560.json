@@ -1,0 +1,15 @@
+{
+ "address": "00a63560",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?CanUnload@CFontDataBankEntry@@UBE_NXZ",
+ "warn": [],
+ "src_sha": "2ddbcc793952",
+ "DEF": [
+  "?CanUnload@CFontDataBankEntry@@UBE_NXZ"
+ ],
+ "UND": [],
+ "graded": "?CanUnload@CFontDataBankEntry@@UBE_NXZ",
+ "bind": [],
+ "obj": true
+}

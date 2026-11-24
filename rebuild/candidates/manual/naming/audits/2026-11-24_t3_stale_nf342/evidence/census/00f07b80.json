@@ -1,0 +1,115 @@
+{
+ "address": "00f07b80",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "WatchForBanditSpeechMarkers",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CBaseClass (engine/CBaseClass.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase (engine/CGameScriptInterfaceBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTimer (engine/CTimer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)"
+ ],
+ "src_sha": "8b07fd204f7a",
+ "DEF": [
+  "??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ",
+  "??1CScriptThing@@UAE@XZ",
+  "??C?$CDefPointer@$$CBVCScriptDef@@@@QBEPBVCScriptDef@@XZ",
+  "??_7CScriptThing@@6B@",
+  "??_C@_0BC@BHCDMHAC@M_AT_EntitySpeech?$AA@",
+  "??_GCScriptThing@@UAEPAXI@Z",
+  "?Get@?$CDefPointer@$$CBVCScriptDef@@@@QBEPBVCScriptDef@@XZ",
+  "?SetTime@CTimer@@QAEXJ@Z",
+  "?WatchForBanditSpeechMarkers@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??0CCharString@@QAE@XZ",
+  "??1CBaseClass@@UAE@XZ",
+  "??1CCharString@@QAE@XZ",
+  "??3@YAXPAX@Z",
+  "??4CCharString@@QAEABV0@ABV0@@Z",
+  "??_GCScriptThing@@UAEPAXI@Z",
+  "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+  "?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z",
+  "?pDSTGame@@3PAVCGameScriptInterfaceBase@@A",
+  "?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A",
+  "__fltused",
+  "_rand"
+ ],
+ "graded": "?WatchForBanditSpeechMarkers@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z",
+ "bind": [
+  [
+   "004aa840",
+   "??1CScriptThing@@UAE@XZ",
+   3
+  ],
+  [
+   "0099a2e0",
+   "??1CBaseClass@@UAE@XZ",
+   1
+  ],
+  [
+   "0099e4b0",
+   "??0CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099eae0",
+   "??1CCharString@@QAE@XZ",
+   5
+  ],
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ],
+  [
+   "0099efb0",
+   "??4CCharString@@QAEABV0@ABV0@@Z",
+   2
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   1
+  ],
+  [
+   "00bfeb16",
+   "_rand",
+   1
+  ],
+  [
+   "00cb7940",
+   "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+   12
+  ],
+  [
+   "00cbe2ff",
+   "?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z",
+   1
+  ],
+  [
+   "01238c8c",
+   "??_7CScriptThing@@6B@",
+   3
+  ],
+  [
+   "012f8080",
+   "??_C@_0BC@BHCDMHAC@M_AT_EntitySpeech?$AA@",
+   1
+  ],
+  [
+   "0143e8f8",
+   "?pDSTGame@@3PAVCGameScriptInterfaceBase@@A",
+   1
+  ],
+  [
+   "0143e90c",
+   "?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A",
+   4
+  ]
+ ],
+ "obj": true
+}

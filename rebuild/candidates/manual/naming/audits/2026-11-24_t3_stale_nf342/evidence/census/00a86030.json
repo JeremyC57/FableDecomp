@@ -1,0 +1,19 @@
+{
+ "address": "00a86030",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z",
+ "warn": [],
+ "src_sha": "8e1d1fa1d608",
+ "DEF": [
+  "?GetDistanceToPoint@CPlaneModel@@QBEMABVC3DVector@@@Z",
+  "?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z",
+  "?Plane@CPhysicsFacesSegmentBranch_Methods@@QBEABUCPlaneModel@@XZ"
+ ],
+ "UND": [
+  "__fltused"
+ ],
+ "graded": "?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z",
+ "bind": [],
+ "obj": true
+}

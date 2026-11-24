@@ -1,0 +1,23 @@
+{
+ "address": "0088fc30",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetBoastingEnabled@CGameScriptInterface@@UAE_NXZ",
+ "warn": [],
+ "src_sha": "1f4ef3571799",
+ "DEF": [
+  "?GetBoastingEnabled@CGameScriptInterface@@UAE_NXZ"
+ ],
+ "UND": [
+  "?g_boastingEnabled@@3_NA"
+ ],
+ "graded": "?GetBoastingEnabled@CGameScriptInterface@@UAE_NXZ",
+ "bind": [
+  [
+   "013833d8",
+   "?g_boastingEnabled@@3_NA",
+   1
+  ]
+ ],
+ "obj": true
+}

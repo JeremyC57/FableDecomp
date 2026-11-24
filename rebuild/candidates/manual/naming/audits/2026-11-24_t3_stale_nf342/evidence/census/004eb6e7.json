@@ -1,0 +1,60 @@
+{
+ "address": "004eb6e7",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CMultiStaticMeshEntryDef (engine/CMultiStaticMeshEntryDef.h)",
+  "  WARN RELOC_NAME: ?_M_clear@?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@IAEXXZ -> 004eb80e labelled '_global::StdList_Dtor_004eb80e'"
+ ],
+ "src_sha": "088e89ceaba2",
+ "DEF": [
+  "??$_Construct@VCMultiStaticMeshEntryDef@@V1@@std@@YAXPAVCMultiStaticMeshEntryDef@@ABV1@@Z",
+  "??$_Destroy@VCMultiStaticMeshEntryDef@@@std@@YAXPAVCMultiStaticMeshEntryDef@@0@Z",
+  "??$__copy@PBVCMultiStaticMeshEntryDef@@PAV1@H@std@@YAPAVCMultiStaticMeshEntryDef@@PBV1@0PAV1@ABUrandom_access_iterator_tag@0@PAH@Z",
+  "??$__copy_ptrs@PBVCMultiStaticMeshEntryDef@@PAV1@@std@@YAPAVCMultiStaticMeshEntryDef@@PBV1@0PAV1@ABU__false_type@0@@Z",
+  "??$__uninitialized_copy@PBVCMultiStaticMeshEntryDef@@PAV1@@std@@YAPAVCMultiStaticMeshEntryDef@@PBV1@0PAV1@ABU__false_type@0@@Z",
+  "??0__false_type@std@@QAE@XZ",
+  "??0random_access_iterator_tag@std@@QAE@XZ",
+  "??2@YAPAXIPAX@Z",
+  "??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z",
+  "?capacity@?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QBEIXZ",
+  "?size@?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QBEIXZ"
+ ],
+ "UND": [
+  "??$_M_allocate_and_copy@PBVCMultiStaticMeshEntryDef@@@?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@IAEPAVCMultiStaticMeshEntryDef@@IPBV2@0@Z",
+  "??$__destroy_aux@PAVCMultiStaticMeshEntryDef@@@std@@YIXPAVCMultiStaticMeshEntryDef@@0ABU__false_type@0@@Z",
+  "??0CMultiStaticMeshEntryDef@@QAE@ABV0@@Z",
+  "??4CMultiStaticMeshEntryDef@@QAEAAV0@ABV0@@Z",
+  "?_M_clear@?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@IAEXXZ"
+ ],
+ "graded": "??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z",
+ "bind": [
+  [
+   "004da655",
+   "??$__destroy_aux@PAVCMultiStaticMeshEntryDef@@@std@@YIXPAVCMultiStaticMeshEntryDef@@0ABU__false_type@0@@Z",
+   1
+  ],
+  [
+   "004eb80e",
+   "?_M_clear@?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@IAEXXZ",
+   1
+  ],
+  [
+   "004eb831",
+   "??4CMultiStaticMeshEntryDef@@QAEAAV0@ABV0@@Z",
+   2
+  ],
+  [
+   "004eb864",
+   "??0CMultiStaticMeshEntryDef@@QAE@ABV0@@Z",
+   1
+  ],
+  [
+   "004eb90c",
+   "??$_M_allocate_and_copy@PBVCMultiStaticMeshEntryDef@@@?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@IAEPAVCMultiStaticMeshEntryDef@@IPBV2@0@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

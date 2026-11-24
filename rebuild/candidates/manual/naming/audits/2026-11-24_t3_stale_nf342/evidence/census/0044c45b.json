@@ -1,0 +1,15 @@
+{
+ "address": "0044c45b",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetCombatAbilityDataType",
+ "warn": [],
+ "src_sha": "db6652388932",
+ "DEF": [
+  "?CCombatAbilityData_GetCombatAbilityDataType@@YI?AW4ECombatAbilityDataType@@PAVCCombatAbilityData@@@Z"
+ ],
+ "UND": [],
+ "graded": "?CCombatAbilityData_GetCombatAbilityDataType@@YI?AW4ECombatAbilityDataType@@PAVCCombatAbilityData@@@Z",
+ "bind": [],
+ "obj": true
+}

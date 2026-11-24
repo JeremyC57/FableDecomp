@@ -1,0 +1,137 @@
+{
+ "address": "009dca80",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Draw2DGraphic",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTVertexRHWColSpecTex1 (engine/CTVertexRHWColSpecTex1.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGraphicFrame (engine/CGraphicFrame.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGraphicInfo (engine/CGraphicInfo.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)"
+ ],
+ "src_sha": "99d93bc34c97",
+ "DEF": [
+  "??0CGraphicFrame@@QAE@XZ",
+  "??1CCountedPointer_CTexture@@QAE@XZ",
+  "??1CGraphicFrame@@QAE@XZ",
+  "??1CGraphicFrameData@@QAE@XZ",
+  "??A?$CRetailVector@VCGraphicInfo@@@@QBEABVCGraphicInfo@@K@Z",
+  "??_GCGraphicFrameData@@QAEPAXI@Z",
+  "?Draw2DGraphic@CRenderManager2D@@QAE_NABVC2DVector@@ABVCGraphicDataBank@@KKKK@Z",
+  "?Get@CGraphicDataBank@@QBEPBVCGraphicInfo@@K@Z",
+  "?GetTexture@CGraphicFrameData@@QBEPAVCTexture@@XZ",
+  "?begin@?$CRetailVector@VCGraphicInfo@@@@QBEPBVCGraphicInfo@@XZ",
+  "?end@?$CRetailVector@VCGraphicInfo@@@@QBEPBVCGraphicInfo@@XZ",
+  "?size@?$CRetailVector@VCGraphicInfo@@@@QBEKXZ",
+  "__real@00000000",
+  "__real@3c23d70a",
+  "__real@3f800000",
+  "__real@4f800000",
+  "__real@bc23d70a"
+ ],
+ "UND": [
+  "??3@YAXPAX@Z",
+  "?Add2DTri@CRenderManager2D@@QAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z",
+  "?BIGGEST_RHW_VERTEX_VALUE@@3MB",
+  "?GFVXToAX@@YIMM@Z",
+  "?GFVYToAY@@YIMM@Z",
+  "?GetDimensions@CTexture@@QBE?AVC2DExtentsI@@K@Z",
+  "?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z",
+  "?GetTextureQuadUVs@CGraphicFrameData@@QBE?AUCTextureQuadUVs@@XZ",
+  "?Uninitialise@CGraphicFrameData@@QAEXXZ",
+  "__fltused"
+ ],
+ "graded": "?Draw2DGraphic@CRenderManager2D@@QAE_NABVC2DVector@@ABVCGraphicDataBank@@KKKK@Z",
+ "bind": [
+  [
+   "009dc030",
+   "?Add2DTri@CRenderManager2D@@QAEXABVCTVertexRHWColSpecTex1@@00JPAVCTexture@@@Z",
+   2
+  ],
+  [
+   "009e1e10",
+   "?GFVXToAX@@YIMM@Z",
+   1
+  ],
+  [
+   "009e1e40",
+   "?GFVYToAY@@YIMM@Z",
+   1
+  ],
+  [
+   "009f9db0",
+   "?GetDimensions@CTexture@@QBE?AVC2DExtentsI@@K@Z",
+   2
+  ],
+  [
+   "009fc810",
+   "?GetTextureQuadUVs@CGraphicFrameData@@QBE?AUCTextureQuadUVs@@XZ",
+   1
+  ],
+  [
+   "009fcba0",
+   "?Uninitialise@CGraphicFrameData@@QAEXXZ",
+   2
+  ],
+  [
+   "009ff8d0",
+   "?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   4
+  ],
+  [
+   "0122dcb4",
+   "__real@4f800000",
+   4
+  ],
+  [
+   "0122ded8",
+   "__real@3f800000",
+   1
+  ],
+  [
+   "0122dedc",
+   "__real@00000000",
+   2
+  ],
+  [
+   "01231564",
+   "__real@bc23d70a",
+   1
+  ],
+  [
+   "0129b944",
+   "__real@3c23d70a",
+   3
+  ],
+  [
+   "0129b94c",
+   "_s_CornerOrderNormal",
+   1
+  ],
+  [
+   "0129b95c",
+   "_s_CornerOrderFlipX",
+   1
+  ],
+  [
+   "0129b96c",
+   "_s_CornerOrderFlipY",
+   1
+  ],
+  [
+   "0139652c",
+   "?BIGGEST_RHW_VERTEX_VALUE@@3MB",
+   2
+  ]
+ ],
+ "obj": true
+}

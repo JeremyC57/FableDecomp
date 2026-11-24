@@ -1,0 +1,32 @@
+{
+ "address": "008fdb27",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CAIStateGroup_Clean@",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)"
+ ],
+ "src_sha": "e0df3c532a82",
+ "DEF": [
+  "??0CAIStateGroup_Clean@@QAE@XZ",
+  "??_7CAIStateGroup_Clean@@6B@"
+ ],
+ "UND": [
+  "??0CAIStateGroupBase@@QAE@XZ",
+  "?v00@CAIStateGroupBase@@UAEXXZ"
+ ],
+ "graded": "??0CAIStateGroup_Clean@@QAE@XZ",
+ "bind": [
+  [
+   "008fd255",
+   "??0CAIStateGroupBase@@QAE@XZ",
+   1
+  ],
+  [
+   "01289a4c",
+   "??_7CAIStateGroup_Clean@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

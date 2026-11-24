@@ -1,0 +1,25 @@
+{
+ "address": "0045473a",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?CVillagePeopleDef_CopyImpl@@YIXPAX0@Z -> 0045473f labelled 'CVillagePeopleDef::operator='"
+ ],
+ "src_sha": "747eef3bb5c7",
+ "DEF": [
+  "?CVillagePeopleDef_Copy@@YIXPAX0@Z"
+ ],
+ "UND": [
+  "?CVillagePeopleDef_CopyImpl@@YIXPAX0@Z"
+ ],
+ "graded": "?CVillagePeopleDef_Copy@@YIXPAX0@Z",
+ "bind": [
+  [
+   "0045473f",
+   "?CVillagePeopleDef_CopyImpl@@YIXPAX0@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,98 @@
+{
+ "address": "004fe630",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetNavigationSectionOffsetInFile",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)"
+ ],
+ "src_sha": "85e15f6e743d",
+ "DEF": [
+  "??0?$pair@VCCharString@@H@std@X_004fe630@@QAE@ABVCCharString@@ABH@Z",
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??0CCharString@@QAE@XZ",
+  "??1?$pair@VCCharString@@H@std@X_004fe630@@QAE@XZ",
+  "??1CCharString@@QAE@XZ",
+  "??4CCharString@@QAEABV0@ABV0@@Z",
+  "??8?$CBasicString@D@X_004fe630@@QBE_NPBD@Z",
+  "??_C@_00CNPNBAHC@?$AA@",
+  "??_C@_04HIBGFPH@NULL?$AA@",
+  "??_GCCharStringData@X_004fe630@@QAEPAXI@Z",
+  "?GetNavigationSectionOffsetInFile@CWorldMapMethods@X_004fe630@@QBE?AU?$pair@VCCharString@@H@std@2@AAUCAFile@2@ABU?$set@VCCharString@@@42@@Z",
+  "?Less@X_004fe630@@YA_NABVCCharString@@0@Z",
+  "?LoadFromFile@CCharString@@QAEXPAUCAFile@X_004fe630@@PAXH@Z",
+  "?ReadVar@CAFile@X_004fe630@@QAEXPAHPAX@Z",
+  "?UnassignString@CCharString@@QAEXXZ",
+  "?find@?$set@VCCharString@@@std@X_004fe630@@QBEPAUNode@3@ABVCCharString@@@Z"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@ABV0@@Z",
+  "??0CCharStringData@X_004fe630@@QAE@HD@Z",
+  "??1CCharStringData@X_004fe630@@QAE@XZ",
+  "??2@YAPAXI@Z",
+  "??3@YAXPAX@Z",
+  "?AllocStringData@CCharString@@QAEPAUCCharStringData@X_004fe630@@PBDH@Z",
+  "?CCharStringInstances@X_004fe630@@3HA",
+  "_free",
+  "_malloc"
+ ],
+ "graded": "?GetNavigationSectionOffsetInFile@CWorldMapMethods@X_004fe630@@QBE?AU?$pair@VCCharString@@H@std@2@AAUCAFile@2@ABU?$set@VCCharString@@@42@@Z",
+ "bind": [
+  [
+   "004115a0",
+   "??8?$CBasicString@D@X_004fe630@@QBE_NPBD@Z",
+   2
+  ],
+  [
+   "004b9370",
+   "?find@?$set@VCCharString@@@std@X_004fe630@@QBEPAUNode@3@ABVCCharString@@@Z",
+   1
+  ],
+  [
+   "00516180",
+   "?ReadVar@CAFile@X_004fe630@@QAEXPAHPAX@Z",
+   3
+  ],
+  [
+   "0099e4b0",
+   "??0CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099eae0",
+   "??1CCharString@@QAE@XZ",
+   6
+  ],
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   2
+  ],
+  [
+   "0099ec30",
+   "??0CCharString@@QAE@ABV0@@Z",
+   3
+  ],
+  [
+   "0099efb0",
+   "??4CCharString@@QAEABV0@ABV0@@Z",
+   3
+  ],
+  [
+   "0099f2e0",
+   "?LoadFromFile@CCharString@@QAEXPAUCAFile@X_004fe630@@PAXH@Z",
+   1
+  ],
+  [
+   "0122d70e",
+   "??_C@_00CNPNBAHC@?$AA@",
+   5
+  ],
+  [
+   "012393e4",
+   "??_C@_04HIBGFPH@NULL?$AA@",
+   2
+  ]
+ ],
+ "obj": true
+}

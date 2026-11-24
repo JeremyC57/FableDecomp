@@ -1,0 +1,38 @@
+{
+ "address": "00b16eb0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CPSCOrbit@",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CPSCBase (engine/CPSCBase.h)"
+ ],
+ "src_sha": "887cd8251b08",
+ "DEF": [
+  "??0COrbitSettings@NParticleEngine@@QAE@XZ",
+  "??0CPSCOrbit@NParticleEngine@@QAE@XZ",
+  "??_7CPSCOrbit@NParticleEngine@@6B@",
+  "??_GCPSCOrbit@NParticleEngine@@UAEPAXI@Z",
+  "??_H@YGXPAXIHP6EPAX0@Z@Z"
+ ],
+ "UND": [
+  "??0CPSCBase@NParticleEngine@@QAE@XZ",
+  "??1CPSCBase@NParticleEngine@@UAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCPSCOrbit@NParticleEngine@@UAEPAXI@Z",
+  "__fltused"
+ ],
+ "graded": "??0CPSCOrbit@NParticleEngine@@QAE@XZ",
+ "bind": [
+  [
+   "00af2620",
+   "??0CPSCBase@NParticleEngine@@QAE@XZ",
+   1
+  ],
+  [
+   "012a0374",
+   "??_7CPSCOrbit@NParticleEngine@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

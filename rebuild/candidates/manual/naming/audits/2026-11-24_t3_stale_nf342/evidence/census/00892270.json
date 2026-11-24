@@ -1,0 +1,28 @@
+{
+ "address": "00892270",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsInCutscene@CGameScriptInterface@@UBE_NXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)"
+ ],
+ "src_sha": "77693d03206d",
+ "DEF": [
+  "??D?$CCountedPointer@VCPlayerGui@@@@QBEAAVCPlayerGui@@XZ",
+  "?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ",
+  "?IsInCutscene@CGameScriptInterface@@UBE_NXZ"
+ ],
+ "UND": [
+  "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A"
+ ],
+ "graded": "?IsInCutscene@CGameScriptInterface@@UBE_NXZ",
+ "bind": [
+  [
+   "013b8790",
+   "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

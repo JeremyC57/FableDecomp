@@ -1,0 +1,46 @@
+{
+ "address": "006628e0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z",
+ "warn": [],
+ "src_sha": "f8abc0b105be",
+ "DEF": [
+  "??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z",
+  "??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingCreatureDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z",
+  "??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ",
+  "?AddRef@CIVCountedPointeeBase@@QBEXXZ",
+  "?Assign@?$CDefPointer@$$CBVCThingCreatureDef@@@@AAEXPAVCDefPointeeBase@@@Z",
+  "?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ",
+  "?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ",
+  "?IsSaving@CPersistContext@@QBE_NXZ",
+  "?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ",
+  "?Release@?$CDefPointer@$$CBVCThingCreatureDef@@@@QAEXXZ",
+  "?Release@CIVCountedPointeeBase@@QBEJXZ",
+  "?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z"
+ ],
+ "UND": [
+  "?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z",
+  "?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ",
+  "?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z"
+ ],
+ "graded": "?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z",
+ "bind": [
+  [
+   "004c7990",
+   "?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ",
+   1
+  ],
+  [
+   "00513160",
+   "??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z",
+   1
+  ],
+  [
+   "006a5af0",
+   "?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

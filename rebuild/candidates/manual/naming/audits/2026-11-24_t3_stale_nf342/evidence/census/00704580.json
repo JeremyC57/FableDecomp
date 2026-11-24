@@ -1,0 +1,25 @@
+{
+ "address": "00704580",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z",
+ "warn": [],
+ "src_sha": "b497783ae72b",
+ "DEF": [
+  "??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z",
+  "?ReleaseData@?$CCountedPointer@VCScriptThing@@@@QAEXXZ",
+  "?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z"
+ ],
+ "UND": [
+  "??3@YAXPAX@Z"
+ ],
+ "graded": "??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z",
+ "bind": [
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

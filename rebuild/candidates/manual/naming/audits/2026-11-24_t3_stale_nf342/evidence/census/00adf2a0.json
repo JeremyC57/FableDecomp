@@ -1,0 +1,35 @@
+{
+ "address": "00adf2a0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "AllocateArrays",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMovableResourceMemoryPool (engine/CMovableResourceMemoryPool.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CParticleSimulation (engine/CParticleSimulation.h)"
+ ],
+ "src_sha": "1f29b85b6b8e",
+ "DEF": [
+  "?AllocateArrays@CParticleSimulation@@QAE_NPAVCMovableResourceMemoryPool@@@Z"
+ ],
+ "UND": [
+  "?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z",
+  "?GetPointerFromHandle@CHandleBasedMemoryPool@@QAEPAXJ@Z"
+ ],
+ "graded": "?AllocateArrays@CParticleSimulation@@QAE_NPAVCMovableResourceMemoryPool@@@Z",
+ "bind": [
+  [
+   "00a026b0",
+   "?GetPointerFromHandle@CHandleBasedMemoryPool@@QAEPAXJ@Z",
+   1
+  ],
+  [
+   "00a62e40",
+   "?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,31 @@
+{
+ "address": "00828590",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetNextRegionOnWayToRegion",
+ "warn": [],
+ "src_sha": "c8fd088614f5",
+ "DEF": [
+  "??C?$CCountedPointer@VCRegionConnectionNode@@@@QBEPAVCRegionConnectionNode@@XZ",
+  "?Find@CRegionNodeMap@@QAEPAUSRegionNodeEntry@@ABJ@Z",
+  "?GetNextRegionOnWayToRegion@CRegionConnectionGraph@@QAEJJJ@Z"
+ ],
+ "UND": [
+  "?GetNextNodeOnWayToRegion@CRegionConnectionNode@@QBEJJABVCRegionConnectionGraph@@@Z",
+  "?LowerBound@CRegionNodeMap@@QAEPAUSRegionNodeEntry@@ABJ@Z"
+ ],
+ "graded": "?GetNextRegionOnWayToRegion@CRegionConnectionGraph@@QAEJJJ@Z",
+ "bind": [
+  [
+   "00827b60",
+   "?LowerBound@CRegionNodeMap@@QAEPAUSRegionNodeEntry@@ABJ@Z",
+   1
+  ],
+  [
+   "00828360",
+   "?GetNextNodeOnWayToRegion@CRegionConnectionNode@@QBEJJABVCRegionConnectionGraph@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

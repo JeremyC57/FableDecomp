@@ -1,0 +1,34 @@
+{
+ "address": "008fdb55",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CAIStateGroup_CleanHouse@",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CInterestingToVillagersDef (engine/CInterestingToVillagersDef.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CleanHouse (engine/CAIStateGroup_CleanHouse.h)",
+  "  WARN RELOC_NAME: ??0CInterestingToVillagersDef@N_008fdb27@@QAE@XZ -> 008fdb27 labelled 'CAIStateGroup_Clean::CAIStateGroup_Clean'"
+ ],
+ "src_sha": "92accd4d0db1",
+ "DEF": [
+  "??0CAIStateGroup_CleanHouse@@QAE@XZ",
+  "??_7CAIStateGroup_CleanHouse@@6B@"
+ ],
+ "UND": [
+  "??0CInterestingToVillagersDef@N_008fdb27@@QAE@XZ",
+  "?v00@CAIStateGroup_CleanHouse@@UAEXXZ"
+ ],
+ "graded": "??0CAIStateGroup_CleanHouse@@QAE@XZ",
+ "bind": [
+  [
+   "008fdb27",
+   "??0CInterestingToVillagersDef@N_008fdb27@@QAE@XZ",
+   1
+  ],
+  [
+   "01289a9c",
+   "??_7CAIStateGroup_CleanHouse@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

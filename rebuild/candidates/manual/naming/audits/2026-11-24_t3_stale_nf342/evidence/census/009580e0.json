@@ -1,0 +1,72 @@
+{
+ "address": "009580e0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsStillRunnable@CAIStateGroup_MinionReactToTrespassing@@AAE_N_N@Z",
+ "warn": [],
+ "src_sha": "89d173da3cdc",
+ "DEF": [
+  "??$GFFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@YI?AV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@ABVCOpinionDeedFilter_IsStillHappening@@ABVCOpinionDeedFilter_TargetIs@@@Z",
+  "??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z",
+  "??$PeekTC@$$CBVCTCCreatureOpinionOfHero@@@CThing@@QBE_NW4ETCInterfaceType@@PAPBVCTCCreatureOpinionOfHero@@@Z",
+  "??0?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@QAE@ABVCOpinionDeedFilter_IsStillHappening@@ABVCOpinionDeedFilter_TargetIs@@@Z",
+  "??0COpinionDeedFilter_IsStillHappening@@QAE@XZ",
+  "??0COpinionDeedFilter_TargetIs@@QAE@ABVCThing@@@Z",
+  "??_C@_06CBNGNPJL@bitset?$AA@",
+  "?FRAMES_BETWEEN_CHECKING_IS_STILL_VALID@?A0xaa0b780e@@3JA",
+  "?Get@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ",
+  "?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ",
+  "?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ",
+  "?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ",
+  "?GetPointer@?$CIntelligentPointer@VCThingBuilding@@@@ABEPAVCThingBuilding@@XZ",
+  "?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z",
+  "?IsDead@CThing@@QBE_NXZ",
+  "?IsStillRunnable@CAIStateGroup_MinionReactToTrespassing@@AAE_N_N@Z",
+  "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+  "?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z",
+  "?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z",
+  "?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z",
+  "?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z",
+  "?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z",
+  "?__stl_throw_out_of_range@std@@YAXPBD@Z",
+  "?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ",
+  "?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ",
+  "?test@?$bitset@$0BBC@@std@@QBE_NI@Z"
+ ],
+ "UND": [
+  "??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z",
+  "?GetFrame@CWorld@@SIJXZ",
+  "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+  "_abort",
+  "_puts"
+ ],
+ "graded": "?IsStillRunnable@CAIStateGroup_MinionReactToTrespassing@@AAE_N_N@Z",
+ "bind": [
+  [
+   "004365b0",
+   "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+   1
+  ],
+  [
+   "0049d870",
+   "?GetFrame@CWorld@@SIJXZ",
+   2
+  ],
+  [
+   "0092e630",
+   "??$FindMostRecentDeed@V?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABV?$CFilter_Bind2@VCOpinionDeedFilter_IsStillHappening@@VCOpinionDeedFilter_TargetIs@@@@PAJ_N@Z",
+   3
+  ],
+  [
+   "00a01b50",
+   "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+   1
+  ],
+  [
+   "0138d2d4",
+   "?FRAMES_BETWEEN_CHECKING_IS_STILL_VALID@?A0xaa0b780e@@3JA",
+   1
+  ]
+ ],
+ "obj": true
+}

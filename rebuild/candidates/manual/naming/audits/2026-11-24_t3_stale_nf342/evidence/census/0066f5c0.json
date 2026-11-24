@@ -1,0 +1,40 @@
+{
+ "address": "0066f5c0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsEventOfThisType@CInputTypeMouseWheelMovementDownEvent@@UBE_NABVCInputEvent@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)",
+  "  WARN RELOC_NAME: ?GetValue@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'",
+  "  WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'"
+ ],
+ "src_sha": "53d1a5d7a03a",
+ "DEF": [
+  "?IsEventOfThisType@CInputTypeMouseWheelMovementDownEvent@@UBE_NABVCInputEvent@@@Z"
+ ],
+ "UND": [
+  "?DELTA_NOTIONAL_ZERO@@3MB",
+  "?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ",
+  "?GetValue@CInputEvent@@QBEMXZ",
+  "__fltused"
+ ],
+ "graded": "?IsEventOfThisType@CInputTypeMouseWheelMovementDownEvent@@UBE_NABVCInputEvent@@@Z",
+ "bind": [
+  [
+   "00a03b40",
+   "?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ",
+   1
+  ],
+  [
+   "00a03bb0",
+   "?GetValue@CInputEvent@@QBEMXZ",
+   1
+  ],
+  [
+   "0129ba3c",
+   "?DELTA_NOTIONAL_ZERO@@3MB",
+   1
+  ]
+ ],
+ "obj": true
+}

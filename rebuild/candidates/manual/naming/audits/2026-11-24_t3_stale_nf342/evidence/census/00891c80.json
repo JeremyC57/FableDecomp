@@ -1,0 +1,36 @@
+{
+ "address": "00891c80",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "UpdateMiniGameInfoBar",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)",
+  "  WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)",
+  "  WARN RELOC_NAME: ?method@Inner@@QAEXHHH@Z -> 00644efd labelled 'NPlayerGui::CDrawQuestInfo::UpdateMiniGame'"
+ ],
+ "src_sha": "cb6eb5bdcee9",
+ "DEF": [
+  "??D?$CCountedPointer@VCPlayerGui@@@@QBEAAVCPlayerGui@@XZ",
+  "?CGameScriptInterface_UpdateMiniGameInfoBar@@YGXH@Z",
+  "?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ"
+ ],
+ "UND": [
+  "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+  "?method@Inner@@QAEXHHH@Z"
+ ],
+ "graded": "?CGameScriptInterface_UpdateMiniGameInfoBar@@YGXH@Z",
+ "bind": [
+  [
+   "00644efd",
+   "?method@Inner@@QAEXHHH@Z",
+   1
+  ],
+  [
+   "013b8790",
+   "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

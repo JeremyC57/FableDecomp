@@ -1,0 +1,71 @@
+{
+ "address": "004aeaa0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetLocalGameEventPackageSet",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGameEventPackage (engine/CGameEventPackage.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGameEventPackageSet (engine/CGameEventPackageSet.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)"
+ ],
+ "src_sha": "970fecdaba18",
+ "DEF": [
+  "?GetLocalGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z"
+ ],
+ "UND": [
+  "?AddData@CGameEvent@@QAEXJPBX@Z",
+  "?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z",
+  "?AddPackage@CGameEventPackageSet@@QAEXPAVCGameEventPackage@@@Z",
+  "?Clear@CGameEventPackage@@QAEXXZ",
+  "?Clear@CGameEventPackageSet@@QAEXXZ",
+  "?IsTimeForServerUpdate@CMainGameComponent@@QBE_NJ@Z",
+  "@__security_check_cookie@4",
+  "___security_cookie"
+ ],
+ "graded": "?GetLocalGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z",
+ "bind": [
+  [
+   "0041674a",
+   "?IsTimeForServerUpdate@CMainGameComponent@@QBE_NJ@Z",
+   1
+  ],
+  [
+   "009f1650",
+   "?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z",
+   1
+  ],
+  [
+   "009f16c0",
+   "?Clear@CGameEventPackage@@QAEXXZ",
+   1
+  ],
+  [
+   "009f16f0",
+   "?AddPackage@CGameEventPackageSet@@QAEXPAVCGameEventPackage@@@Z",
+   1
+  ],
+  [
+   "009f1720",
+   "?Clear@CGameEventPackageSet@@QAEXXZ",
+   1
+  ],
+  [
+   "009f1760",
+   "?AddData@CGameEvent@@QAEXJPBX@Z",
+   3
+  ],
+  [
+   "00bfe9f9",
+   "@__security_check_cookie@4",
+   2
+  ],
+  [
+   "0139c8a8",
+   "___security_cookie",
+   1
+  ]
+ ],
+ "obj": true
+}

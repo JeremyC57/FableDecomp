@@ -1,0 +1,42 @@
+{
+ "address": "00904ee0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "IsPerformingScriptTask",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)"
+ ],
+ "src_sha": "9f94c5ae3ef7",
+ "DEF": [
+  "??$GetInterface@VCTCScriptedControl@@@CThing_Retail@@QAE_NPAPAVCTCScriptedControl@@J@Z",
+  "?GetPItem@?$CIntelligentPointer@VCThing_Retail@@@@QBEPAVCThing_Retail@@XZ",
+  "?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThing_Methods@@QAE_NXZ",
+  "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+  "?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ",
+  "?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ"
+ ],
+ "UND": [
+  "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+  "?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ"
+ ],
+ "graded": "?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThing_Methods@@QAE_NXZ",
+ "bind": [
+  [
+   "004365b0",
+   "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+   1
+  ],
+  [
+   "007122c0",
+   "?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ",
+   2
+  ],
+  [
+   "00a01b50",
+   "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+   3
+  ]
+ ],
+ "obj": true
+}

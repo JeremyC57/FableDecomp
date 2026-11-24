@@ -1,0 +1,28 @@
+{
+ "address": "00581d8e",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "IsContextSensitiveOpinionExpressionAvailable",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)"
+ ],
+ "src_sha": "ed1868a1f8e5",
+ "DEF": [
+  "??ACLongVector@@QAEAAJK@Z",
+  "?IsContextSensitiveOpinionExpressionAvailable@CTCInventory@@QAE_NXZ",
+  "?begin@CLongVector@@QBEPAJXZ",
+  "?size@CLongVector@@QBEKXZ"
+ ],
+ "UND": [
+  "?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z"
+ ],
+ "graded": "?IsContextSensitiveOpinionExpressionAvailable@CTCInventory@@QAE_NXZ",
+ "bind": [
+  [
+   "005d9b90",
+   "?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

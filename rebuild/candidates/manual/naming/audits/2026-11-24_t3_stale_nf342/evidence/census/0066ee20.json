@@ -1,0 +1,31 @@
+{
+ "address": "0066ee20",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsEventOfThisType@CInputTypeKeyboardKeyEvent@@UBE_NABVCInputEvent@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)"
+ ],
+ "src_sha": "9f32b747219b",
+ "DEF": [
+  "?IsEventOfThisType@CInputTypeKeyboardKeyEvent@@UBE_NABVCInputEvent@@@Z"
+ ],
+ "UND": [
+  "?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ",
+  "?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ"
+ ],
+ "graded": "?IsEventOfThisType@CInputTypeKeyboardKeyEvent@@UBE_NABVCInputEvent@@@Z",
+ "bind": [
+  [
+   "00a03b40",
+   "?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ",
+   3
+  ],
+  [
+   "00a03b70",
+   "?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ",
+   1
+  ]
+ ],
+ "obj": true
+}

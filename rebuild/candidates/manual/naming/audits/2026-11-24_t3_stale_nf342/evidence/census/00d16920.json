@@ -1,0 +1,92 @@
+{
+ "address": "00d16920",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist (engine/CRuntimeScriptedEntityPersist.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase (engine/CGameScriptInterfaceBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CQ_BountyHuntScript (engine/CQ_BountyHuntScript.h)"
+ ],
+ "src_sha": "560563db01be",
+ "DEF": [
+  "??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ",
+  "??1CScriptThing@@UAE@XZ",
+  "??C?$CCountedPointer@VCScriptThing@@@@QBEPAVCScriptThing@@XZ",
+  "??_7CScriptThing@@6B@",
+  "??_C@_00CNPNBAHC@?$AA@",
+  "??_GCScriptThing@@UAEPAXI@Z",
+  "?MsgIsKilledBy@CScriptThing@@UBE_NABVCCharString@@@Z",
+  "?UnknownSlot10@CScriptThing@@UAEXXZ",
+  "?UnknownSlot11@CScriptThing@@UAEXXZ",
+  "?UnknownSlot12@CScriptThing@@UAEXXZ",
+  "?UnknownSlot13@CScriptThing@@UAEXXZ",
+  "?UnknownSlot14@CScriptThing@@UAEXXZ",
+  "?UnknownSlot15@CScriptThing@@UAEXXZ",
+  "?UnknownSlot16@CScriptThing@@UAEXXZ",
+  "?UnknownSlot17@CScriptThing@@UAEXXZ",
+  "?UnknownSlot1@CScriptThing@@UAEXXZ",
+  "?UnknownSlot2@CScriptThing@@UAEXXZ",
+  "?UnknownSlot3@CScriptThing@@UAEXXZ",
+  "?UnknownSlot4@CScriptThing@@UAEXXZ",
+  "?UnknownSlot5@CScriptThing@@UAEXXZ",
+  "?UnknownSlot6@CScriptThing@@UAEXXZ",
+  "?UnknownSlot7@CScriptThing@@UAEXXZ",
+  "?UnknownSlot8@CScriptThing@@UAEXXZ",
+  "?UnknownSlot9@CScriptThing@@UAEXXZ",
+  "?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??1CBaseClass@@UAE@XZ",
+  "??1CCharString@@QAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCScriptThing@@UAEPAXI@Z",
+  "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+ ],
+ "graded": "?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z",
+ "bind": [
+  [
+   "004aa840",
+   "??1CScriptThing@@UAE@XZ",
+   1
+  ],
+  [
+   "0099a2e0",
+   "??1CBaseClass@@UAE@XZ",
+   1
+  ],
+  [
+   "0099eae0",
+   "??1CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   1
+  ],
+  [
+   "00cb7940",
+   "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+   2
+  ],
+  [
+   "0122d70e",
+   "??_C@_00CNPNBAHC@?$AA@",
+   1
+  ],
+  [
+   "01238c8c",
+   "??_7CScriptThing@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

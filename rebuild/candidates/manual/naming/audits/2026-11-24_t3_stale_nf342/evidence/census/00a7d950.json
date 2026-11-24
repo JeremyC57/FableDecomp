@@ -1,0 +1,15 @@
+{
+ "address": "00a7d950",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?MakeRegion@CNavBlockedQuadTreeNode@@MAE_NPBVCNavRegion@@AAV?$list@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@@Z",
+ "warn": [],
+ "src_sha": "338cf7dac1cc",
+ "DEF": [
+  "?MakeRegion@CNavBlockedQuadTreeNode@@MAE_NPBVCNavRegion@@AAV?$list@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@@Z"
+ ],
+ "UND": [],
+ "graded": "?MakeRegion@CNavBlockedQuadTreeNode@@MAE_NPBVCNavRegion@@AAV?$list@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@@Z",
+ "bind": [],
+ "obj": true
+}

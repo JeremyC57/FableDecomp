@@ -1,0 +1,31 @@
+{
+ "address": "004c7e50",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ",
+ "warn": [],
+ "src_sha": "4e01d9986a46",
+ "DEF": [
+  "??D?$CCountedPointer@VCQuestManager@@@@QBEAAVCQuestManager@@XZ",
+  "?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ",
+  "?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ"
+ ],
+ "UND": [
+  "?CreateScriptThing@CGameScriptThingManager@@QAE?AVCScriptThing@@ABVCThing@@@Z",
+  "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A"
+ ],
+ "graded": "?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ",
+ "bind": [
+  [
+   "00704860",
+   "?CreateScriptThing@CGameScriptThingManager@@QAE?AVCScriptThing@@ABVCThing@@@Z",
+   1
+  ],
+  [
+   "013b89fc",
+   "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

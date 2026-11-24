@@ -1,0 +1,47 @@
+{
+ "address": "00abfd70",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetChunkInfo@C3DMeshFileMaterialExtChunk@@UBE?BVCCharString@@XZ",
+ "warn": [],
+ "src_sha": "457f8cdb34bb",
+ "DEF": [
+  "??_C@_0BE@KAALHIAP@Self?5Illumination?3?5?$AA@",
+  "?GetChunkInfo@C3DMeshFileMaterialExtChunk@@UBE?BVCCharString@@XZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??1CCharString@@QAE@XZ",
+  "??H@YI?AVCCharString@@ABV0@0@Z",
+  "?GFIntToCharString@@YI?AVCCharString@@J@Z"
+ ],
+ "graded": "?GetChunkInfo@C3DMeshFileMaterialExtChunk@@UBE?BVCCharString@@XZ",
+ "bind": [
+  [
+   "0099eae0",
+   "??1CCharString@@QAE@XZ",
+   2
+  ],
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ],
+  [
+   "0099f570",
+   "??H@YI?AVCCharString@@ABV0@0@Z",
+   1
+  ],
+  [
+   "0099f830",
+   "?GFIntToCharString@@YI?AVCCharString@@J@Z",
+   1
+  ],
+  [
+   "0129ee1c",
+   "??_C@_0BE@KAALHIAP@Self?5Illumination?3?5?$AA@",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,115 @@
+{
+ "address": "0066bc10",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z",
+ "warn": [],
+ "src_sha": "453730fd76f7",
+ "DEF": [
+  "??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z",
+  "??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z",
+  "??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCEntitySoundDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z",
+  "??$_Construct@VCCharString@@V1@@std@@YAXPAVCCharString@@ABV1@@Z",
+  "??$_Destroy@PAVCCharString@@@std@@YAXPAVCCharString@@0@Z",
+  "??$_Destroy@VCCharString@@@std@@YAXPAVCCharString@@@Z",
+  "??$__destroy@PAVCCharString@@V1@@std@@YAXPAVCCharString@@00@Z",
+  "??$__destroy_aux@PAVCCharString@@@std@@YAXPAVCCharString@@0ABU__false_type@0@@Z",
+  "??$__uninitialized_copy@PAVCCharString@@PAV1@@std@@YAPAVCCharString@@PAV1@00ABU__false_type@0@@Z",
+  "??$__uninitialized_fill_n@PAVCCharString@@IV1@@std@@YAPAVCCharString@@PAV1@IABV1@ABU__false_type@0@@Z",
+  "??$max@I@std@@YAABIABI0@Z",
+  "??0?$CDefPointer@$$CBVCEntitySoundDef@@@@QAE@W4ENullDef@@@Z",
+  "??0__false_type@std@@QAE@XZ",
+  "??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ",
+  "??1?$CDefPointer@$$CBVCEntitySoundDef@@@@QAE@XZ",
+  "??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ",
+  "??2@YAPAXIPAX@Z",
+  "??C?$CDefPointer@$$CBVCEntitySoundDef@@@@QBEPBVCEntitySoundDef@@XZ",
+  "??D?$CDefPointer@$$CBVCThingBaseDef@@@@QBEABVCThingBaseDef@@XZ",
+  "??_C@_03EMDAGEC@CS_?$AA@",
+  "??_C@_04DFFEKHNE@?$DLCS_?$AA@",
+  "??_C@_0BA@OKBMKDFK@CEntitySoundDef?$AA@",
+  "??_GCCharString@@QAEPAXI@Z",
+  "?AddRef@CIVCountedPointeeBase@@QBEXXZ",
+  "?Assign@?$CDefPointer@$$CBVCEntitySoundDef@@@@AAEXPAVCDefPointeeBase@@@Z",
+  "?Get@?$CDefPointer@$$CBVCEntitySoundDef@@@@QBEPBVCEntitySoundDef@@XZ",
+  "?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ",
+  "?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z",
+  "?HasBaseDef@CThing@@QBE_NXZ",
+  "?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ",
+  "?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ",
+  "?IsNull@?$CDefPointer@$$CBVCThingBaseDef@@@@QBE_NXZ",
+  "?PeekBaseDef@CThing@@QBEABVCThingBaseDef@@XZ",
+  "?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ",
+  "?Release@?$CDefPointer@$$CBVCEntitySoundDef@@@@QAEXXZ",
+  "?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ",
+  "?StatGetTypeName@CEntitySoundDef@@SI?AVCCharString@@XZ",
+  "?_M_clear@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXXZ",
+  "?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z",
+  "?_M_set@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@00@Z",
+  "?allocate@?$allocator@VCCharString@@@std@@QAEPAVCCharString@@IPBX@Z",
+  "?deallocate@?$allocator@VCCharString@@@std@@QAEXPAVCCharString@@I@Z",
+  "?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z",
+  "?size@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QBEIXZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@ABV0@@Z",
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??1CCharString@@QAE@XZ",
+  "??3@YAXPAX@Z",
+  "??H@YI?AVCCharString@@ABV0@0@Z",
+  "??H@YI?AVCCharString@@ABV0@PBD@Z",
+  "??H@YI?AVCCharString@@PBDABV0@@Z",
+  "?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z",
+  "_free",
+  "_malloc"
+ ],
+ "graded": "?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z",
+ "bind": [
+  [
+   "00433530",
+   "?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z",
+   2
+  ],
+  [
+   "0065f604",
+   "??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z",
+   1
+  ],
+  [
+   "0099eae0",
+   "??1CCharString@@QAE@XZ",
+   3
+  ],
+  [
+   "0099ec30",
+   "??0CCharString@@QAE@ABV0@@Z",
+   2
+  ],
+  [
+   "0099f570",
+   "??H@YI?AVCCharString@@ABV0@0@Z",
+   1
+  ],
+  [
+   "0099f600",
+   "??H@YI?AVCCharString@@ABV0@PBD@Z",
+   1
+  ],
+  [
+   "0099f690",
+   "??H@YI?AVCCharString@@PBDABV0@@Z",
+   1
+  ],
+  [
+   "0125b234",
+   "??_C@_03EMDAGEC@CS_?$AA@",
+   1
+  ],
+  [
+   "0125b238",
+   "??_C@_04DFFEKHNE@?$DLCS_?$AA@",
+   1
+  ]
+ ],
+ "obj": true
+}

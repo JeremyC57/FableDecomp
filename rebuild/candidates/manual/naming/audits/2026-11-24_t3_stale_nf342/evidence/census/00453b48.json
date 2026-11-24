@@ -1,0 +1,25 @@
+{
+ "address": "00453b48",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?CCreatureStatsDef_CopyImpl@@YIXPAVCCreatureStatsDef@@PAXPBV1@@Z -> 00453b4d labelled 'CCreatureStatsDef::operator='"
+ ],
+ "src_sha": "1dca68bbed50",
+ "DEF": [
+  "?CCreatureStatsDef_Copy@@YIXPAVCCreatureStatsDef@@PAXPBV1@@Z"
+ ],
+ "UND": [
+  "?CCreatureStatsDef_CopyImpl@@YIXPAVCCreatureStatsDef@@PAXPBV1@@Z"
+ ],
+ "graded": "?CCreatureStatsDef_Copy@@YIXPAVCCreatureStatsDef@@PAXPBV1@@Z",
+ "bind": [
+  [
+   "00453b4d",
+   "?CCreatureStatsDef_CopyImpl@@YIXPAVCCreatureStatsDef@@PAXPBV1@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,72 @@
+{
+ "address": "00ce1110",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CActiveEntityScriptBase",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)",
+  "  WARN RELOC_NAME: ??0CScriptProcessBase@@QAE@JJM@Z -> 00a44740 labelled 'CSuspendableProcessMicrothread::CSuspendableProcessMicrothread'"
+ ],
+ "src_sha": "e9d69254948f",
+ "DEF": [
+  "??0CActiveEntityScriptBase@@QAE@ABVCScriptThing@@_KK@Z",
+  "??0CBaseObject@@QAE@ABV0@@Z",
+  "??0CEntityScriptPointer@@QAE@XZ",
+  "??0CPredicatePointer@@QAE@XZ",
+  "??0CScriptThing@@QAE@ABV0@@Z",
+  "??0CScriptThingImpPointer@@QAE@ABU0@@Z",
+  "??0CSpawnedFuncBase@@QAE@ABVCCharString@@@Z",
+  "??_7CActiveEntityScriptBase@@6B@",
+  "??_7CBaseObject@@6B@",
+  "??_7CScriptThing@@6B@",
+  "??_7CSpawnedFuncBase@@6B@"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@ABV0@@Z",
+  "??0CCharString@@QAE@XZ",
+  "??0CScriptProcessBase@@QAE@JJM@Z",
+  "?GetName@CScriptThing@@UBEABVCCharString@@XZ",
+  "?v00@CActiveEntityScriptBase@@UAEXXZ",
+  "?v00@CBaseObject@@UAEXXZ",
+  "?v00@CScriptThing@@UAEXXZ",
+  "?v00@CSpawnedFuncBase@@UAEXXZ",
+  "__fltused"
+ ],
+ "graded": "??0CActiveEntityScriptBase@@QAE@ABVCScriptThing@@_KK@Z",
+ "bind": [
+  [
+   "0099e4b0",
+   "??0CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099ec30",
+   "??0CCharString@@QAE@ABV0@@Z",
+   1
+  ],
+  [
+   "00a44740",
+   "??0CScriptProcessBase@@QAE@JJM@Z",
+   1
+  ],
+  [
+   "01238c8c",
+   "??_7CScriptThing@@6B@",
+   1
+  ],
+  [
+   "012c2f9c",
+   "??_7CSpawnedFuncBase@@6B@",
+   1
+  ],
+  [
+   "012c3594",
+   "??_7CActiveEntityScriptBase@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,102 @@
+{
+ "address": "00857f30",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CCombatActionBase",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)",
+  "  WARN RELOC_NAME: ?InitialiseStrikeState@CCombatActionBase@@QAEXXZ -> 008561c0 labelled 'CCombatActionBase::ResetStrikeState'"
+ ],
+ "src_sha": "92200abd0453",
+ "DEF": [
+  "??0CAnimationVector@@QAE@XZ",
+  "??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z",
+  "??0CConstIntelligentPointer@@QAE@XZ",
+  "??0CDefPointer@@QAE@XZ",
+  "??0CEndOfStorage@@QAE@PAX@Z",
+  "??0CIntelligentPointer@@QAE@PAVCThing@@@Z",
+  "??0CIntelligentPointer@@QAE@XZ",
+  "??0CStrikeEventList@@QAE@XZ",
+  "??1CConstIntelligentPointer@@UAE@XZ",
+  "??1CIntelligentPointer@@UAE@XZ",
+  "??4CIntelligentPointer@@QAEAAU0@ABU0@@Z",
+  "??_7CCombatActionBase@@6B@",
+  "??_7CConstIntelligentPointer@@6B@",
+  "??_7CIntelligentPointer@@6B@",
+  "??_GCConstIntelligentPointer@@UAEPAXI@Z",
+  "??_GCIntelligentPointer@@UAEPAXI@Z"
+ ],
+ "UND": [
+  "??0CBaseIntelligentPointer@@QAE@XZ",
+  "??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@ABVCSoundPair@@JJ@Z",
+  "??1CBaseIntelligentPointer@@UAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCConstIntelligentPointer@@UAEPAXI@Z",
+  "??_GCIntelligentPointer@@UAEPAXI@Z",
+  "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+  "?InitialiseStrikeState@CCombatActionBase@@QAEXXZ",
+  "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+  "?v00@CCombatActionBase@@UAEXXZ",
+  "?v00@CConstIntelligentPointer@@UAEXXZ",
+  "?v00@CIntelligentPointer@@UAEXXZ",
+  "_malloc"
+ ],
+ "graded": "??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z",
+ "bind": [
+  [
+   "00693c70",
+   "??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@ABVCSoundPair@@JJ@Z",
+   1
+  ],
+  [
+   "008561c0",
+   "?InitialiseStrikeState@CCombatActionBase@@QAEXXZ",
+   1
+  ],
+  [
+   "00a01b10",
+   "??0CBaseIntelligentPointer@@QAE@XZ",
+   4
+  ],
+  [
+   "00a01b50",
+   "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+   1
+  ],
+  [
+   "00a01b90",
+   "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+   3
+  ],
+  [
+   "00a01c10",
+   "??1CBaseIntelligentPointer@@UAE@XZ",
+   1
+  ],
+  [
+   "00bfea0e",
+   "_malloc",
+   1
+  ],
+  [
+   "01237f1c",
+   "??_7CConstIntelligentPointer@@6B@",
+   1
+  ],
+  [
+   "01238c6c",
+   "??_7CIntelligentPointer@@6B@",
+   3
+  ],
+  [
+   "01259e44",
+   "??_7CCombatActionBase@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

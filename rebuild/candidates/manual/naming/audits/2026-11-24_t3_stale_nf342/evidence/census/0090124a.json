@@ -1,0 +1,15 @@
+{
+ "address": "0090124a",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_BanditKingCharge@@MBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "0d01cf4554e6",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_BanditKingCharge@@MBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_BanditKingCharge@@MBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

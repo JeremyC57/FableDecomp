@@ -1,0 +1,44 @@
+{
+ "address": "0066f320",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsEventOfThisTypeInQueue@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)"
+ ],
+ "src_sha": "8f049f74d62a",
+ "DEF": [
+  "?IsEventOfThisTypeInQueue@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z"
+ ],
+ "UND": [
+  "??0CInputEvent@@QAE@XZ",
+  "??1CInputEvent@@QAE@XZ",
+  "?GPInputManager@@3PAVCInputManager@@A",
+  "?IsJoystickEventInQueue@CInputManager@@QBE_NW4EInputEventType@@JAAVCInputEvent@@J@Z"
+ ],
+ "graded": "?IsEventOfThisTypeInQueue@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z",
+ "bind": [
+  [
+   "009f4c60",
+   "?IsJoystickEventInQueue@CInputManager@@QBE_NW4EInputEventType@@JAAVCInputEvent@@J@Z",
+   1
+  ],
+  [
+   "00a03b30",
+   "??1CInputEvent@@QAE@XZ",
+   1
+  ],
+  [
+   "00a04410",
+   "??0CInputEvent@@QAE@XZ",
+   1
+  ],
+  [
+   "013b8388",
+   "?GPInputManager@@3PAVCInputManager@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

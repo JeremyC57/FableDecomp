@@ -1,0 +1,15 @@
+{
+ "address": "006924d0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ",
+ "warn": [],
+ "src_sha": "ecf6e07ff52b",
+ "DEF": [
+  "?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ"
+ ],
+ "UND": [],
+ "graded": "?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ",
+ "bind": [],
+ "obj": true
+}

@@ -1,0 +1,30 @@
+{
+ "address": "008b4200",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetName@CCombatSequence_TrollBurrowPursue@@UBE?AVCCharString@@XZ",
+ "warn": [
+  "  WARN RELOC_CONFLICT: _kName -> 01278a9c here, 012786ac in landed 008b34d0"
+ ],
+ "src_sha": "00755a6dc77a",
+ "DEF": [
+  "?GetName@CCombatSequence_TrollBurrowPursue@@UBE?AVCCharString@@XZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z"
+ ],
+ "graded": "?GetName@CCombatSequence_TrollBurrowPursue@@UBE?AVCCharString@@XZ",
+ "bind": [
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ],
+  [
+   "01278a9c",
+   "_kName",
+   1
+  ]
+ ],
+ "obj": true
+}

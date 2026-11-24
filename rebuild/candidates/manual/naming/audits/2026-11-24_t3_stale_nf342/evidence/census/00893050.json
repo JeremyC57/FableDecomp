@@ -1,0 +1,23 @@
+{
+ "address": "00893050",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetIsGossipForPlayerSize@CGameScriptInterface@@UAEHXZ",
+ "warn": [],
+ "src_sha": "195df13f8aaf",
+ "DEF": [
+  "?GetIsGossipForPlayerSize@CGameScriptInterface@@UAEHXZ"
+ ],
+ "UND": [
+  "?g_IsGossipForPlayerSize@@3HA"
+ ],
+ "graded": "?GetIsGossipForPlayerSize@CGameScriptInterface@@UAEHXZ",
+ "bind": [
+  [
+   "013bae3c",
+   "?g_IsGossipForPlayerSize@@3HA",
+   1
+  ]
+ ],
+ "obj": true
+}

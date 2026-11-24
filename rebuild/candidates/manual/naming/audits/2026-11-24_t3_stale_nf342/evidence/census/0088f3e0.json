@@ -1,0 +1,25 @@
+{
+ "address": "0088f3e0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsTutorialSystemEnabled@CGameScriptInterface@@UBE_NXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)"
+ ],
+ "src_sha": "02b2eec96347",
+ "DEF": [
+  "?IsTutorialSystemEnabled@CGameScriptInterface@@UBE_NXZ"
+ ],
+ "UND": [
+  "?Get@CUserProfileManager@@SIAAV1@XZ"
+ ],
+ "graded": "?IsTutorialSystemEnabled@CGameScriptInterface@@UBE_NXZ",
+ "bind": [
+  [
+   "0040d2a0",
+   "?Get@CUserProfileManager@@SIAAV1@XZ",
+   1
+  ]
+ ],
+ "obj": true
+}

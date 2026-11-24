@@ -1,0 +1,32 @@
+{
+ "address": "00908de0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?OnStart@CCombatSequence_BattleCharge@@UAEXXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)"
+ ],
+ "src_sha": "81b805bc257a",
+ "DEF": [
+  "?Get@CMainGameComponent@@SIPAV1@XZ",
+  "?OnStart@CCombatSequence_BattleCharge@@UAEXXZ"
+ ],
+ "UND": [
+  "?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ",
+  "?PMainGameComponent@CMainGameComponent@@1PAV1@A"
+ ],
+ "graded": "?OnStart@CCombatSequence_BattleCharge@@UAEXXZ",
+ "bind": [
+  [
+   "004167c8",
+   "?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ",
+   1
+  ],
+  [
+   "013b86a0",
+   "?PMainGameComponent@CMainGameComponent@@1PAV1@A",
+   1
+  ]
+ ],
+ "obj": true
+}

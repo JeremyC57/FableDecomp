@@ -1,0 +1,25 @@
+{
+ "address": "004dea03",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Transfer@CFireballSpellLevelDef@@UAEXAAVCPersistContext@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)"
+ ],
+ "src_sha": "a56c8436b9f9",
+ "DEF": [
+  "?Transfer@CFireballSpellLevelDef@@UAEXAAVCPersistContext@@@Z"
+ ],
+ "UND": [
+  "??$Transfer@J@CPersistContext@@QAEXAAJ@Z"
+ ],
+ "graded": "?Transfer@CFireballSpellLevelDef@@UAEXAAVCPersistContext@@@Z",
+ "bind": [
+  [
+   "00431102",
+   "??$Transfer@J@CPersistContext@@QAEXAAJ@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

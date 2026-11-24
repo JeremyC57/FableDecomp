@@ -1,0 +1,37 @@
+{
+ "address": "00766050",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "HasCombinationOfAugmentations",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CAugmentationDef (engine/CAugmentationDef.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCObjectAugmentations (engine/CTCObjectAugmentations.h)"
+ ],
+ "src_sha": "79ad9427f06f",
+ "DEF": [
+  "??0?$CDefPointer@VCAugmentationDef@@@@QAE@XZ",
+  "??1?$CDefPointer@VCAugmentationDef@@@@QAE@XZ",
+  "??A?$CRetailVector@UCThingBaseDefPointer@@@@QBEAAUCThingBaseDefPointer@@K@Z",
+  "??C?$CDefPointer@VCAugmentationDef@@@@QBEPAVCAugmentationDef@@XZ",
+  "?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAugmentationDef@@@@@Z",
+  "?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NJ@Z",
+  "?ReleaseReference@CDefClassBase@@QAEXXZ",
+  "?begin@?$CRetailVector@UCThingBaseDefPointer@@@@QBEPAUCThingBaseDefPointer@@XZ",
+  "?size@?$CRetailVector@UCThingBaseDefPointer@@@@QBEKXZ"
+ ],
+ "UND": [
+  "?FindDef_CThingBaseDef_GetSubDef_0@@YAPAXXZ"
+ ],
+ "graded": "?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NJ@Z",
+ "bind": [
+  [
+   "0042b248",
+   "?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAugmentationDef@@@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

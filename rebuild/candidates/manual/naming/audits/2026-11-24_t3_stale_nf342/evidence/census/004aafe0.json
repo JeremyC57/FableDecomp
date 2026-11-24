@@ -1,0 +1,16 @@
+{
+ "address": "004aafe0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z",
+ "warn": [],
+ "src_sha": "7255a429aade",
+ "DEF": [
+  "?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z",
+  "?ReferenceScriptThingIsBeingCarriedBy@?A0x85e3ac77@@YA_NABVCScriptThing@@ABVCCharString@@@Z"
+ ],
+ "UND": [],
+ "graded": "?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z",
+ "bind": [],
+ "obj": true
+}

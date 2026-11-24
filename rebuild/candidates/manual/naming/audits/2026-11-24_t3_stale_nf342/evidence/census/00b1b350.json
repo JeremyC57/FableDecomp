@@ -1,0 +1,35 @@
+{
+ "address": "00b1b350",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CPSCSpline",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CPSCSplineBase (engine/CPSCSplineBase.h)"
+ ],
+ "src_sha": "234614682ede",
+ "DEF": [
+  "??0CPSCSpline@NParticleEngine@@QAE@XZ",
+  "??_7CPSCSpline@NParticleEngine@@6B@",
+  "??_GCPSCSpline@NParticleEngine@@UAEPAXI@Z"
+ ],
+ "UND": [
+  "??0CPSCSplineBase@NParticleEngine@@QAE@XZ",
+  "??1CPSCSplineBase@NParticleEngine@@UAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCPSCSpline@NParticleEngine@@UAEPAXI@Z"
+ ],
+ "graded": "??0CPSCSpline@NParticleEngine@@QAE@XZ",
+ "bind": [
+  [
+   "00b21530",
+   "??0CPSCSplineBase@NParticleEngine@@QAE@XZ",
+   1
+  ],
+  [
+   "012a0934",
+   "??_7CPSCSpline@NParticleEngine@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

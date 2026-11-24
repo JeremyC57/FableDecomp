@@ -1,0 +1,28 @@
+{
+ "address": "00841790",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?find@?$basic_string@",
+ "warn": [],
+ "src_sha": "fc5aa2efd263",
+ "DEF": [
+  "??$search@PBDPBDU?$_Eq_traits@U?$char_traits@D@std@@@std@@@std@@YIPBDPBD000U?$_Eq_traits@U?$char_traits@D@std@@@0@@Z",
+  "??0?$_Eq_traits@U?$char_traits@D@std@@@std@@QAE@XZ",
+  "??R?$_Eq_traits@U?$char_traits@D@std@@@std@@QBE_NABD0@Z",
+  "?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z",
+  "?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z",
+  "?length@?$char_traits@D@std@@SAIPBD@Z",
+  "?npos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2IB",
+  "?size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIXZ"
+ ],
+ "UND": [],
+ "graded": "?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z",
+ "bind": [
+  [
+   "00567120",
+   "??$search@PBDPBDU?$_Eq_traits@U?$char_traits@D@std@@@std@@@std@@YIPBDPBD000U?$_Eq_traits@U?$char_traits@D@std@@@0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

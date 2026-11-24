@@ -1,0 +1,70 @@
+{
+ "address": "006df730",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CCreatureAction_ShowTrophy@",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCreatureAction_ShowTrophy (engine/CCreatureAction_ShowTrophy.h)",
+  "  WARN RELOC_NAME: ?GetTableAnimation@@YIPAVCAnimationEntry@@PAVCThingCreatureBase@@ABVCCharString@@@Z -> 006924b0 labelled 'CCreatureActionBase::GetRandomAnimFromName'"
+ ],
+ "src_sha": "23b7951013bf",
+ "DEF": [
+  "??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z",
+  "??0?$CIntelligentPointer@VCThing@@@@QAE@XZ",
+  "??0CCreatureAction_ShowTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@J@Z",
+  "??0CSoundPair@@QAE@XZ",
+  "??1?$CIntelligentPointer@VCThing@@@@UAE@XZ",
+  "??_7?$CIntelligentPointer@VCThing@@@@6B@",
+  "??_7CCreatureAction_ShowTrophy@@6B@",
+  "??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z",
+  "?SetPItem@?$CIntelligentPointer@VCThing@@@@QAEXPAVCThing@@@Z"
+ ],
+ "UND": [
+  "??0CBaseIntelligentPointer@@QAE@XZ",
+  "??0CCreatureActionBase@@QAE@PAVCThingCreatureBase@@MMPAVCAnimationEntry@@ABVCSoundPair@@JJ@Z",
+  "??1CBaseIntelligentPointer@@UAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z",
+  "?GetTableAnimation@@YIPAVCAnimationEntry@@PAVCThingCreatureBase@@ABVCCharString@@@Z",
+  "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+  "?v00@CCreatureAction_ShowTrophy@@UAEXXZ",
+  "__fltused"
+ ],
+ "graded": "??0CCreatureAction_ShowTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@J@Z",
+ "bind": [
+  [
+   "006924b0",
+   "?GetTableAnimation@@YIPAVCAnimationEntry@@PAVCThingCreatureBase@@ABVCCharString@@@Z",
+   1
+  ],
+  [
+   "00693b30",
+   "??0CCreatureActionBase@@QAE@PAVCThingCreatureBase@@MMPAVCAnimationEntry@@ABVCSoundPair@@JJ@Z",
+   1
+  ],
+  [
+   "00a01b10",
+   "??0CBaseIntelligentPointer@@QAE@XZ",
+   2
+  ],
+  [
+   "00a01b90",
+   "?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z",
+   1
+  ],
+  [
+   "01238c6c",
+   "??_7?$CIntelligentPointer@VCThing@@@@6B@",
+   2
+  ],
+  [
+   "0125f7b4",
+   "??_7CCreatureAction_ShowTrophy@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

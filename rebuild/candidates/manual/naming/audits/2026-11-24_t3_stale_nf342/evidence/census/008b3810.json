@@ -1,0 +1,23 @@
+{
+ "address": "008b3810",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetName@CCombatSequence_BanditAttackSide@@UBE?AVCCharString@@XZ",
+ "warn": [],
+ "src_sha": "19afaba2b567",
+ "DEF": [
+  "?GetName@CCombatSequence_BanditAttackSide@@UBE?AVCCharString@@XZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z"
+ ],
+ "graded": "?GetName@CCombatSequence_BanditAttackSide@@UBE?AVCCharString@@XZ",
+ "bind": [
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

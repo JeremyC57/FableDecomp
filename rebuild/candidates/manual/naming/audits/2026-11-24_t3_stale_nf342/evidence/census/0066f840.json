@@ -1,0 +1,47 @@
+{
+ "address": "0066f840",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetControlDirection@CInputTypeXboxPadRightStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)",
+  "  WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'"
+ ],
+ "src_sha": "aa07eda7cf78",
+ "DEF": [
+  "??0C2DVector@@QAE@MM@Z",
+  "?GetControlDirection@CInputTypeXboxPadRightStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z",
+  "__real@3f800000",
+  "__real@bf800000"
+ ],
+ "UND": [
+  "?DELTA_NOTIONAL_ZERO@@3MB",
+  "?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ",
+  "__fltused"
+ ],
+ "graded": "?GetControlDirection@CInputTypeXboxPadRightStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z",
+ "bind": [
+  [
+   "00a043a0",
+   "?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ",
+   1
+  ],
+  [
+   "0122ded8",
+   "__real@3f800000",
+   2
+  ],
+  [
+   "0122dee0",
+   "__real@bf800000",
+   1
+  ],
+  [
+   "0129ba3c",
+   "?DELTA_NOTIONAL_ZERO@@3MB",
+   1
+  ]
+ ],
+ "obj": true
+}

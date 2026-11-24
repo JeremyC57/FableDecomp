@@ -1,0 +1,26 @@
+{
+ "address": "00412070",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetPathname",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CMemoryFile (engine/CMemoryFile.h)",
+  "  WARN RELOC_NAME: ?ctor@CWideString@@QAEXPBX@Z -> 0099b720 labelled 'CWideString::CWideString'"
+ ],
+ "src_sha": "8cc8f9f7e25c",
+ "DEF": [
+  "?CMemoryFile_GetPathname@@YIPAVCWideString@@PBVCMemoryFile@@PAXPAV1@@Z"
+ ],
+ "UND": [
+  "?ctor@CWideString@@QAEXPBX@Z"
+ ],
+ "graded": "?CMemoryFile_GetPathname@@YIPAVCWideString@@PBVCMemoryFile@@PAXPAV1@@Z",
+ "bind": [
+  [
+   "0099b720",
+   "?ctor@CWideString@@QAEXPBX@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

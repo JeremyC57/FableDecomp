@@ -1,0 +1,24 @@
+{
+ "address": "0088fc10",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetTradingPriceMult@CGameScriptInterface@@UAEMXZ",
+ "warn": [],
+ "src_sha": "380745664100",
+ "DEF": [
+  "?GetTradingPriceMult@CGameScriptInterface@@UAEMXZ"
+ ],
+ "UND": [
+  "?g_TradingPriceMult@@3MA",
+  "__fltused"
+ ],
+ "graded": "?GetTradingPriceMult@CGameScriptInterface@@UAEMXZ",
+ "bind": [
+  [
+   "013833d4",
+   "?g_TradingPriceMult@@3MA",
+   1
+  ]
+ ],
+ "obj": true
+}

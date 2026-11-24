@@ -1,0 +1,33 @@
+{
+ "address": "00891510",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?RemoveAllAvailableQuestCardsFromGuild@CGameScriptInterface@@UBEXXZ",
+ "warn": [
+  "  WARN RELOC_NAME: ?Guild_RemoveAllAvailableQuestCards@@YIXPAUCGuild@@@Z -> 004afdb0 labelled 'CEngine::ChangeCameraAngle'"
+ ],
+ "src_sha": "a42800c1e39a",
+ "DEF": [
+  "??D?$CCountedPointer@VCQuestManager@@@@QBEAAVCQuestManager@@XZ",
+  "?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ",
+  "?RemoveAllAvailableQuestCardsFromGuild@CGameScriptInterface@@UBEXXZ"
+ ],
+ "UND": [
+  "?Guild_RemoveAllAvailableQuestCards@@YIXPAUCGuild@@@Z",
+  "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A"
+ ],
+ "graded": "?RemoveAllAvailableQuestCardsFromGuild@CGameScriptInterface@@UBEXXZ",
+ "bind": [
+  [
+   "004afdb0",
+   "?Guild_RemoveAllAvailableQuestCards@@YIXPAUCGuild@@@Z",
+   1
+  ],
+  [
+   "013b89fc",
+   "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

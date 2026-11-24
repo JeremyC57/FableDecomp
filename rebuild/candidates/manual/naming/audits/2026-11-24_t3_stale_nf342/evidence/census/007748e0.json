@@ -1,0 +1,155 @@
+{
+ "address": "007748e0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCThingOwner (engine/CTCThingOwner.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)"
+ ],
+ "src_sha": "0480b4883bc2",
+ "DEF": [
+  "??$_M_range_initialize@PBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXPBD0@Z",
+  "??$_M_range_initialize@PBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXPBD0ABUforward_iterator_tag@1@@Z",
+  "??$max@I@std@@YAABIABI0@Z",
+  "??0?$_STLP_alloc_proxy@PADDV?$allocator@D@std@@@std@@QAE@ABV?$allocator@D@1@PAD@Z",
+  "??0?$_String_base@DV?$allocator@D@std@@@std@@QAE@ABV?$allocator@D@1@@Z",
+  "??0?$allocator@D@std@@QAE@ABV01@@Z",
+  "??0?$allocator@D@std@@QAE@XZ",
+  "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+  "??0C3DVector@@QAE@XZ",
+  "??0CRightHandedSet@@QAE@XZ",
+  "??0GoodsPlace@CTCShop@@QAE@XZ",
+  "??0forward_iterator_tag@std@@QAE@XZ",
+  "??0input_iterator_tag@std@@QAE@XZ",
+  "??1?$_String_base@DV?$allocator@D@std@@@std@@QAE@XZ",
+  "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+  "??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z",
+  "??_C@_0L@MANBNPEG@GoodsPlace?$AA@",
+  "??_C@_0N@GOPDCEEB@basic_string?$AA@",
+  "??_C@_0N@JLLFHLBP@GOODS_PLACE_?$AA@",
+  "?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z",
+  "?GetPItem@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ",
+  "?GetTC@CThing@@QBEPAVCTCBase@@J@Z",
+  "?HasTC@CThing@@QBEKJ@Z",
+  "?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z",
+  "?_M_allocate_block@?$_String_base@DV?$allocator@D@std@@@std@@QAEXI@Z",
+  "?_M_construct_null@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXPAD@Z",
+  "?_M_deallocate_block@?$_String_base@DV?$allocator@D@std@@@std@@QAEXXZ",
+  "?_M_terminate_string@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ",
+  "?_M_throw_length_error@?$_String_base@DV?$allocator@D@std@@@std@@QBEXXZ",
+  "?__copy_trivial@std@@YAPAXPBX0PAX@Z",
+  "?allocate@?$allocator@D@std@@QAEPADIPBX@Z",
+  "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBD0@Z",
+  "?assign@?$char_traits@D@std@@SAXAADABD@Z",
+  "?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+  "?deallocate@?$allocator@D@std@@QAEXPADI@Z",
+  "?length@?$char_traits@D@std@@SAIPBD@Z",
+  "?max_size@?$_String_base@DV?$allocator@D@std@@@std@@QBEIXZ",
+  "?push_back@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXD@Z",
+  "?reserve@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXI@Z",
+  "?size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIXZ",
+  "?uninitialized_copy@std@@YAPADPBD0PAD@Z"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??1CCharString@@QAE@XZ",
+  "??4CCharString@@QAEABV0@PBD@Z",
+  "?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z",
+  "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+  "?push_back@CGoodsPlaceVector@CTCShop@@QAEXABUGoodsPlace@2@@Z",
+  "__fltused",
+  "_abort",
+  "_free",
+  "_malloc",
+  "_memmove",
+  "_puts"
+ ],
+ "graded": "?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z",
+ "bind": [
+  [
+   "004365b0",
+   "?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z",
+   2
+  ],
+  [
+   "004c08c0",
+   "?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z",
+   2
+  ],
+  [
+   "005693b0",
+   "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBD0@Z",
+   1
+  ],
+  [
+   "007748e0",
+   "?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z",
+   1
+  ],
+  [
+   "00777db0",
+   "?reserve@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXI@Z",
+   1
+  ],
+  [
+   "00777f80",
+   "?push_back@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXD@Z",
+   3
+  ],
+  [
+   "00778210",
+   "?push_back@CGoodsPlaceVector@CTCShop@@QAEXABUGoodsPlace@2@@Z",
+   1
+  ],
+  [
+   "0099eae0",
+   "??1CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ],
+  [
+   "0099efe0",
+   "??4CCharString@@QAEABV0@PBD@Z",
+   1
+  ],
+  [
+   "00a01b50",
+   "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+   1
+  ],
+  [
+   "00bfea0e",
+   "_malloc",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   1
+  ],
+  [
+   "00bfeae6",
+   "_memmove",
+   1
+  ],
+  [
+   "0126a9bc",
+   "??_C@_0N@JLLFHLBP@GOODS_PLACE_?$AA@",
+   2
+  ],
+  [
+   "0126a9cc",
+   "??_C@_0L@MANBNPEG@GoodsPlace?$AA@",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,38 @@
+{
+ "address": "0066f540",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsEventOfThisType@CInputTypeMouseWheelMovementUpEvent@@UBE_NABVCInputEvent@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)"
+ ],
+ "src_sha": "7d63e1c21e9d",
+ "DEF": [
+  "?IsEventOfThisType@CInputTypeMouseWheelMovementUpEvent@@UBE_NABVCInputEvent@@@Z",
+  "__real@38d1b717"
+ ],
+ "UND": [
+  "?GetMouseWheelMovement@CInputEvent@@QBEMXZ",
+  "?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ",
+  "__fltused"
+ ],
+ "graded": "?IsEventOfThisType@CInputTypeMouseWheelMovementUpEvent@@UBE_NABVCInputEvent@@@Z",
+ "bind": [
+  [
+   "00a03b40",
+   "?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ",
+   1
+  ],
+  [
+   "00a03bb0",
+   "?GetMouseWheelMovement@CInputEvent@@QBEMXZ",
+   1
+  ],
+  [
+   "0129ba3c",
+   "__real@38d1b717",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,24 @@
+{
+ "address": "0088fbf0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetGlobalTargetingDistanceOffset@CGameScriptInterface@@UAEMXZ",
+ "warn": [],
+ "src_sha": "5c7d64dce9c9",
+ "DEF": [
+  "?GetGlobalTargetingDistanceOffset@CGameScriptInterface@@UAEMXZ"
+ ],
+ "UND": [
+  "?g_GlobalTargetingDistanceOffset@@3MA",
+  "__fltused"
+ ],
+ "graded": "?GetGlobalTargetingDistanceOffset@CGameScriptInterface@@UAEMXZ",
+ "bind": [
+  [
+   "013bae28",
+   "?g_GlobalTargetingDistanceOffset@@3MA",
+   1
+  ]
+ ],
+ "obj": true
+}

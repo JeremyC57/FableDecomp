@@ -1,0 +1,55 @@
+{
+ "address": "00a3aa40",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?InternalCompress@CCompressorZlib@@QAEKPBXKPAXK@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CCompressorZlib (engine/CCompressorZlib.h)"
+ ],
+ "src_sha": "d968c6096119",
+ "DEF": [
+  "?InternalCompress@CCompressorZlib@@QAEKPBXKPAXK@Z"
+ ],
+ "UND": [
+  "?Alloc@CCompressorZlib@@CAPAXPAXII@Z",
+  "?Free@CCompressorZlib@@CAXPAX0@Z",
+  "?g_zlibVersion@@3QBDB",
+  "_z_deflate",
+  "_z_deflateEnd",
+  "_z_deflateInit_"
+ ],
+ "graded": "?InternalCompress@CCompressorZlib@@QAEKPBXKPAXK@Z",
+ "bind": [
+  [
+   "00a3a9c0",
+   "?Alloc@CCompressorZlib@@CAPAXPAXII@Z",
+   1
+  ],
+  [
+   "00a3aa00",
+   "?Free@CCompressorZlib@@CAXPAX0@Z",
+   1
+  ],
+  [
+   "00c006a0",
+   "_z_deflate",
+   2
+  ],
+  [
+   "00c00ae0",
+   "_z_deflateEnd",
+   1
+  ],
+  [
+   "00c021c0",
+   "_z_deflateInit_",
+   1
+  ],
+  [
+   "0129cfe0",
+   "?g_zlibVersion@@3QBDB",
+   1
+  ]
+ ],
+ "obj": true
+}

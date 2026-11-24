@@ -1,0 +1,25 @@
+{
+ "address": "00453ce5",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?CHeroTitleDef_Copy_impl@@YIXPAVCHeroTitleDef@@PAX@Z -> 00453cea labelled 'CHeroTitleDef::operator='"
+ ],
+ "src_sha": "f950ab0d4df3",
+ "DEF": [
+  "?CHeroTitleDef_Copy@@YIXPAVCHeroTitleDef@@PAX@Z"
+ ],
+ "UND": [
+  "?CHeroTitleDef_Copy_impl@@YIXPAVCHeroTitleDef@@PAX@Z"
+ ],
+ "graded": "?CHeroTitleDef_Copy@@YIXPAVCHeroTitleDef@@PAX@Z",
+ "bind": [
+  [
+   "00453cea",
+   "?CHeroTitleDef_Copy_impl@@YIXPAVCHeroTitleDef@@PAX@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

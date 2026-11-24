@@ -1,0 +1,32 @@
+{
+ "address": "0088e520",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?EndCutFade@CGameScriptInterface@@UAEXXZ",
+ "warn": [
+  "  WARN RELOC_NAME: ?EndFadeScreen@CGameScriptInterface@@IAEXXZ -> 006e7270 labelled '_global::Forward_EndScreenFadeOut_via0xc_006e7270'"
+ ],
+ "src_sha": "9166379253d2",
+ "DEF": [
+  "?EndCutFade@CGameScriptInterface@@UAEXXZ"
+ ],
+ "UND": [
+  "?EndFadeScreen@CGameScriptInterface@@IAEXXZ",
+  "?Rest@CGameScriptInterface@@IBEXM@Z",
+  "__fltused"
+ ],
+ "graded": "?EndCutFade@CGameScriptInterface@@UAEXXZ",
+ "bind": [
+  [
+   "006e71f0",
+   "?Rest@CGameScriptInterface@@IBEXM@Z",
+   1
+  ],
+  [
+   "006e7270",
+   "?EndFadeScreen@CGameScriptInterface@@IAEXXZ",
+   1
+  ]
+ ],
+ "obj": true
+}

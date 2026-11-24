@@ -1,0 +1,47 @@
+{
+ "address": "007e1e30",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Transfer@CCarriedReadableDef@@UAEXAAVCPersistContext@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)",
+  "  WARN RELOC_NAME: ?ReadBinary@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z -> 0044fc00 labelled 'CDefString::TransferBinaryIn'"
+ ],
+ "src_sha": "f17709c09a5d",
+ "DEF": [
+  "??_C@_00CNPNBAHC@?$AA@",
+  "?Transfer@CCarriedReadableDef@@UAEXAAVCPersistContext@@@Z",
+  "?Transfer@CPersistContext@@QAEXAAVCDefString@@@Z"
+ ],
+ "UND": [
+  "?CheckCRC@CPersistContext@@IAEXPBD@Z",
+  "?ReadBinary@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z",
+  "?WriteSLONG@CDataOutputStream@@QAEXJ@Z"
+ ],
+ "graded": "?Transfer@CCarriedReadableDef@@UAEXAAVCPersistContext@@@Z",
+ "bind": [
+  [
+   "00404500",
+   "?CheckCRC@CPersistContext@@IAEXPBD@Z",
+   2
+  ],
+  [
+   "0044fc00",
+   "?ReadBinary@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z",
+   2
+  ],
+  [
+   "00993eb0",
+   "?WriteSLONG@CDataOutputStream@@QAEXJ@Z",
+   2
+  ],
+  [
+   "0122d70e",
+   "??_C@_00CNPNBAHC@?$AA@",
+   2
+  ]
+ ],
+ "obj": true
+}

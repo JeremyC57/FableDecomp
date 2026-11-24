@@ -1,0 +1,25 @@
+{
+ "address": "004df0f7",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Transfer@CAICreatureWillPowerIndicatorDef@@UAEXAAVCPersistContext@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)"
+ ],
+ "src_sha": "98bceae093e3",
+ "DEF": [
+  "?Transfer@CAICreatureWillPowerIndicatorDef@@UAEXAAVCPersistContext@@@Z"
+ ],
+ "UND": [
+  "??$Transfer@M@CPersistContext@@QAEXAAM@Z"
+ ],
+ "graded": "?Transfer@CAICreatureWillPowerIndicatorDef@@UAEXAAVCPersistContext@@@Z",
+ "bind": [
+  [
+   "00431061",
+   "??$Transfer@M@CPersistContext@@QAEXAAM@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

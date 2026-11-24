@@ -1,0 +1,25 @@
+{
+ "address": "00a3a9c0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Alloc@CCompressorZlib@@CAPAXPAXII@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CCompressorZlib (engine/CCompressorZlib.h)"
+ ],
+ "src_sha": "4f482c4702d4",
+ "DEF": [
+  "?Alloc@CCompressorZlib@@CAPAXPAXII@Z"
+ ],
+ "UND": [
+  "_malloc"
+ ],
+ "graded": "?Alloc@CCompressorZlib@@CAPAXPAXII@Z",
+ "bind": [
+  [
+   "00bfea0e",
+   "_malloc",
+   1
+  ]
+ ],
+ "obj": true
+}

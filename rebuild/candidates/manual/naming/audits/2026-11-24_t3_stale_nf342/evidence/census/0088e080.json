@@ -1,0 +1,26 @@
+{
+ "address": "0088e080",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetConstantFPS@CGameScriptInterface@@UBEJXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)"
+ ],
+ "src_sha": "59049e617947",
+ "DEF": [
+  "?GetConstantFPS@CGameScriptInterface@@UBEJXZ",
+  "?GetConstantFPS@CMainGameComponent@@SIJXZ"
+ ],
+ "UND": [
+  "?ConstantFPS@CMainGameComponent@@1JA"
+ ],
+ "graded": "?GetConstantFPS@CGameScriptInterface@@UBEJXZ",
+ "bind": [
+  [
+   "01375550",
+   "?ConstantFPS@CMainGameComponent@@1JA",
+   1
+  ]
+ ],
+ "obj": true
+}

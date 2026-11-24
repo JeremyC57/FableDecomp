@@ -1,0 +1,45 @@
+{
+ "address": "008adf90",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?push_back@",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)"
+ ],
+ "src_sha": "0b4a7e990ff9",
+ "DEF": [
+  "??0?$CCountedPointer@VCScriptThing@@@@QAE@ABV0@@Z",
+  "??0CBaseClass@@QAE@ABV0@@Z",
+  "??0CScriptThing@@QAE@ABV0@@Z",
+  "??0__false_type@std@@QAE@XZ",
+  "??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ",
+  "??2@YAPAXIPAX@Z",
+  "??_7CBaseClass@@6B@",
+  "??_7CScriptThing@@6B@",
+  "??_GCBaseClass@@UAEPAXI@Z",
+  "??_GCScriptThing@@UAEPAXI@Z",
+  "?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z",
+  "?push_back@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXABVCScriptThing@@@Z"
+ ],
+ "UND": [
+  "??1CBaseClass@@UAE@XZ",
+  "??1CScriptThing@@UAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCBaseClass@@UAEPAXI@Z",
+  "??_GCScriptThing@@UAEPAXI@Z"
+ ],
+ "graded": "?push_back@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXABVCScriptThing@@@Z",
+ "bind": [
+  [
+   "008ad5f0",
+   "?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z",
+   1
+  ],
+  [
+   "01238c8c",
+   "??_7CScriptThing@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

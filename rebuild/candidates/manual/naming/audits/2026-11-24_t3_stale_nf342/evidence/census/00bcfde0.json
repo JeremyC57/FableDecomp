@@ -1,0 +1,76 @@
+{
+ "address": "00bcfde0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "InitialiseSimulation",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveSimulationInfo (engine/CEnginePrimitiveSimulationInfo.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DMesh2 (engine/C3DMesh2.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEngineSimulationBase (engine/CEngineSimulationBase.h)",
+  "  WARN RELOC_NAME: ??0SimulationPointer@@QAE@PAVCEngineSimulationBase@@@Z -> 00ba7cf0 labelled '_unattributed::CCountedPointer_00ba7cf0'"
+ ],
+ "src_sha": "418556049f6c",
+ "DEF": [
+  "??1SimulationPointer@@QAE@XZ",
+  "?Empty@SimulationArray@@QBE_NXZ",
+  "?InitialiseSimulation@CEngineInternalPrimitive2DAnimatedMesh_Methods@@QAEXPBVC3DMeshInfo@@ABVC3DMesh2@@@Z",
+  "?Release@CEnginePrimitiveSimulationInfo@@QAEXXZ",
+  "?Set@SimulationInfoPointer@@QAEXPAVCEnginePrimitiveSimulationInfo@@@Z",
+  "?Simulation@CEngineInternalPrimitive2DAnimatedMesh_Methods@@QAEAAUSimulationInfoPointer@@XZ"
+ ],
+ "UND": [
+  "??0CEngineClothSimulation2DAnimatedMesh@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveAnimatedMesh@@@Z",
+  "??0CEnginePrimitiveSimulationInfo@@QAE@XZ",
+  "??0SimulationPointer@@QAE@PAVCEngineSimulationBase@@@Z",
+  "??2@YAPAXI@Z",
+  "??3@YAXPAX@Z",
+  "?AddSimulation@CEnginePrimitiveSimulationInfo@@QAEXIABUSimulationPointer@@@Z",
+  "?AddSimulationInfo@CEngineSimulationManager_Methods@@QAEXABUSimulationInfoPointer@@_N1@Z",
+  "?g_SimulationManager@@3PAUCEngineSimulationManager_Methods@@A"
+ ],
+ "graded": "?InitialiseSimulation@CEngineInternalPrimitive2DAnimatedMesh_Methods@@QAEXPBVC3DMeshInfo@@ABVC3DMesh2@@@Z",
+ "bind": [
+  [
+   "00b817d0",
+   "?AddSimulationInfo@CEngineSimulationManager_Methods@@QAEXABUSimulationInfoPointer@@_N1@Z",
+   1
+  ],
+  [
+   "00b81e00",
+   "??0CEnginePrimitiveSimulationInfo@@QAE@XZ",
+   1
+  ],
+  [
+   "00b81f00",
+   "??0CEngineClothSimulation2DAnimatedMesh@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveAnimatedMesh@@@Z",
+   1
+  ],
+  [
+   "00b82330",
+   "?AddSimulation@CEnginePrimitiveSimulationInfo@@QAEXIABUSimulationPointer@@@Z",
+   1
+  ],
+  [
+   "00ba7cf0",
+   "??0SimulationPointer@@QAE@PAVCEngineSimulationBase@@@Z",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   2
+  ],
+  [
+   "01436e68",
+   "?g_SimulationManager@@3PAUCEngineSimulationManager_Methods@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

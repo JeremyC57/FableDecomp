@@ -1,0 +1,15 @@
+{
+ "address": "006924f0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ",
+ "warn": [],
+ "src_sha": "583872d23512",
+ "DEF": [
+  "?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ"
+ ],
+ "UND": [],
+ "graded": "?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ",
+ "bind": [],
+ "obj": true
+}

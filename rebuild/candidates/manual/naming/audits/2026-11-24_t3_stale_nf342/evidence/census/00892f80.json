@@ -1,0 +1,54 @@
+{
+ "address": "00892f80",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "SetQuestAsCompleted",
+ "warn": [
+  "  WARN RELOC_NAME: ?Notify@CQuestMgr@@QAEXHDHH@Z -> 004b1d30 labelled 'CQuestManager::SetQuestAsCompleted'",
+  "  WARN RELOC_NAME: ?Reload@CQuestMgr@@QAEXH@Z -> 004b0160 labelled 'CQuestManager::OnQuestFinishScreenDisplayed'",
+  "  WARN RELOC_NAME: ?SetQuestProgress@CGameScriptInterface_Methods@@QAEXM@Z -> 006e71f0 labelled 'CGameScriptInterface::Rest'"
+ ],
+ "src_sha": "d0e3e56f3c12",
+ "DEF": [
+  "??D?$CCountedPointer@VCQuestManager@@@@QBEAAVCQuestManager@@XZ",
+  "?CGameScriptInterface_SetQuestAsCompleted@@YIXPAVCGameScriptInterface@@HHDHH@Z",
+  "?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ"
+ ],
+ "UND": [
+  "?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA",
+  "?Notify@CQuestMgr@@QAEXHDHH@Z",
+  "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A",
+  "?Reload@CQuestMgr@@QAEXH@Z",
+  "?SetQuestProgress@CGameScriptInterface_Methods@@QAEXM@Z",
+  "__fltused"
+ ],
+ "graded": "?CGameScriptInterface_SetQuestAsCompleted@@YIXPAVCGameScriptInterface@@HHDHH@Z",
+ "bind": [
+  [
+   "004b0160",
+   "?Reload@CQuestMgr@@QAEXH@Z",
+   1
+  ],
+  [
+   "004b1d30",
+   "?Notify@CQuestMgr@@QAEXHDHH@Z",
+   1
+  ],
+  [
+   "006e71f0",
+   "?SetQuestProgress@CGameScriptInterface_Methods@@QAEXM@Z",
+   1
+  ],
+  [
+   "01375741",
+   "?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA",
+   1
+  ],
+  [
+   "013b89fc",
+   "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A",
+   2
+  ]
+ ],
+ "obj": true
+}

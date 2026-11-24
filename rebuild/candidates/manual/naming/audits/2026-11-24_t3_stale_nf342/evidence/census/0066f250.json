@@ -1,0 +1,31 @@
+{
+ "address": "0066f250",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsEventOfThisType@CInputTypeXboxPadButtonEvent@@UBE_NABVCInputEvent@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)"
+ ],
+ "src_sha": "cc8ae929b8e3",
+ "DEF": [
+  "?IsEventOfThisType@CInputTypeXboxPadButtonEvent@@UBE_NABVCInputEvent@@@Z"
+ ],
+ "UND": [
+  "?GetJoystickButton@CInputEvent@@QBEJXZ",
+  "?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ"
+ ],
+ "graded": "?IsEventOfThisType@CInputTypeXboxPadButtonEvent@@UBE_NABVCInputEvent@@@Z",
+ "bind": [
+  [
+   "00a03b40",
+   "?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ",
+   3
+  ],
+  [
+   "00a03b90",
+   "?GetJoystickButton@CInputEvent@@QBEJXZ",
+   1
+  ]
+ ],
+ "obj": true
+}

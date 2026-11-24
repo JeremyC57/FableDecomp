@@ -1,0 +1,15 @@
+{
+ "address": "00bbddb0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAE_NJ@Z",
+ "warn": [],
+ "src_sha": "883a5879043b",
+ "DEF": [
+  "?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAE_NJ@Z"
+ ],
+ "UND": [],
+ "graded": "?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAE_NJ@Z",
+ "bind": [],
+ "obj": true
+}

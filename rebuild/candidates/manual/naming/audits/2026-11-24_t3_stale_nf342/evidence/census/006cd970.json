@@ -1,0 +1,26 @@
+{
+ "address": "006cd970",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?CGroundNavigatorExternalInterface_FindPosZAt@@YIMPAVCGroundNavigatorExternalInterface@@PAXABVC3DVector@@_N@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)"
+ ],
+ "src_sha": "6736fd9c118a",
+ "DEF": [
+  "?CGroundNavigatorExternalInterface_FindPosZAt@@YIMPAVCGroundNavigatorExternalInterface@@PAXABVC3DVector@@_N@Z"
+ ],
+ "UND": [
+  "?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z",
+  "__fltused"
+ ],
+ "graded": "?CGroundNavigatorExternalInterface_FindPosZAt@@YIMPAVCGroundNavigatorExternalInterface@@PAXABVC3DVector@@_N@Z",
+ "bind": [
+  [
+   "00666d40",
+   "?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,15 @@
+{
+ "address": "00b4b6b0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?RenderPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z",
+ "warn": [],
+ "src_sha": "fce6622a729d",
+ "DEF": [
+  "?RenderPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z"
+ ],
+ "UND": [],
+ "graded": "?RenderPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z",
+ "bind": [],
+ "obj": true
+}

@@ -1,0 +1,40 @@
+{
+ "address": "0099f2e0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)"
+ ],
+ "src_sha": "04148eb1d496",
+ "DEF": [
+  "??0?$CBasicString@D@@QAE@KD@Z",
+  "??0CCharStringData@@QAE@JD@Z",
+  "?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z"
+ ],
+ "UND": [
+  "??2@YAPAXI@Z",
+  "?SetString@?$CBasicString@D@@IAEXKD@Z",
+  "?UnassignString@CCharString@@IAEXXZ"
+ ],
+ "graded": "?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z",
+ "bind": [
+  [
+   "0099e9b0",
+   "?UnassignString@CCharString@@IAEXXZ",
+   1
+  ],
+  [
+   "009a0390",
+   "?SetString@?$CBasicString@D@@IAEXKD@Z",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

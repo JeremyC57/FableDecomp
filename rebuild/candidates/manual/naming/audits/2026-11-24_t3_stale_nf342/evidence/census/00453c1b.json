@@ -1,0 +1,25 @@
+{
+ "address": "00453c1b",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?CContextSensitiveItemDef_CopyImpl@@YIXPAX0@Z -> 00453c20 labelled '_unattributed::operator='"
+ ],
+ "src_sha": "e9194a19bed2",
+ "DEF": [
+  "?CContextSensitiveItemDef_Copy@@YIXPAX0@Z"
+ ],
+ "UND": [
+  "?CContextSensitiveItemDef_CopyImpl@@YIXPAX0@Z"
+ ],
+ "graded": "?CContextSensitiveItemDef_Copy@@YIXPAX0@Z",
+ "bind": [
+  [
+   "00453c20",
+   "?CContextSensitiveItemDef_CopyImpl@@YIXPAX0@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

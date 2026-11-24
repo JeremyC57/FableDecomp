@@ -1,0 +1,56 @@
+{
+ "address": "008098b0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??RCThingCompare_BestForTargeting2@@QBE_NABVCTargetPoint@NPlayerTargeting@@0@Z",
+ "warn": [
+  "  WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'"
+ ],
+ "src_sha": "9872c24d0d1c",
+ "DEF": [
+  "??0C3DVector@@QAE@ABV0@@Z",
+  "??0C3DVector@@QAE@MMM@Z",
+  "??GC3DVector@@QBE?BV0@ABV0@@Z",
+  "??RCThingCompare_BestForTargeting2@@QBE_NABVCTargetPoint@NPlayerTargeting@@0@Z",
+  "??XC3DVector@@QAEABV0@M@Z",
+  "?Dot@C3DVector@@QBE?BMABV1@@Z",
+  "?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ",
+  "?GetCompareValue@CVectorCompare_BestForTargeting@@ABEMMM@Z",
+  "?GetCompareValueForPoint@CVectorCompare_BestForTargeting@@QBEMABVC3DVector@@@Z",
+  "?sqrt@@YAMM@Z",
+  "__real@00000000",
+  "__real@38d1b717",
+  "__real@3f800000",
+  "_sqrtf"
+ ],
+ "UND": [
+  "?DELTA_NOTIONAL_ZERO@@3MB",
+  "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+  "?GetThingCompareMultiplier@CThingCompare_BestForTargeting2@@ABEMPBVCThing@@@Z",
+  "__fltused"
+ ],
+ "graded": "??RCThingCompare_BestForTargeting2@@QBE_NABVCTargetPoint@NPlayerTargeting@@0@Z",
+ "bind": [
+  [
+   "007f9660",
+   "?GetCompareValueForPoint@CVectorCompare_BestForTargeting@@QBEMABVC3DVector@@@Z",
+   2
+  ],
+  [
+   "007f9e70",
+   "?GetThingCompareMultiplier@CThingCompare_BestForTargeting2@@ABEMPBVCThing@@@Z",
+   2
+  ],
+  [
+   "00a01b50",
+   "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+   2
+  ],
+  [
+   "0129ba3c",
+   "?DELTA_NOTIONAL_ZERO@@3MB",
+   1
+  ]
+ ],
+ "obj": true
+}

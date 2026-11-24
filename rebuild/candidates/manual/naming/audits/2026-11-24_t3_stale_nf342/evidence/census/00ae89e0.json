@@ -1,0 +1,49 @@
+{
+ "address": "00ae89e0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetEmitterTemplate",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CParticleEmitterDatabase (engine/CParticleEmitterDatabase.h)",
+  "  WARN RELOC_NAME: ??1CEmitterPointer@@QAE@XZ -> 00ae94a0 labelled 'CCountedPointer<NParticleEngine::CParticleEmitter>::~CCountedPointer'"
+ ],
+ "src_sha": "bdf64e865d12",
+ "DEF": [
+  "??0CEmitterPointer@@QAE@XZ",
+  "??CCBankPointer@@QBEPAVCParticleDataBank@NParticleEngine@@XZ",
+  "?Find@CEmitterVectorMap@@QAEPAUSEmitterEntry@@PBJ@Z",
+  "?GetEmitterTemplate@CParticleEmitterDatabase@@QAEPAVCParticleEmitter@NParticleEngine@@JJ@Z",
+  "?end@CEmitterVectorMap@@QAEPAUSEmitterEntry@@XZ"
+ ],
+ "UND": [
+  "??1CEmitterPointer@@QAE@XZ",
+  "?GetEmitterInfo@CParticleDataBank@NParticleEngine@@QAEPAUCParticleEmitterInfo@@J@Z",
+  "?GetEmitterTemplate@CParticleEmitterInfo@@QAE_NAAUCEmitterPointer@@J@Z",
+  "?LowerBound@CEmitterVectorMap@@QAEPAUSEmitterEntry@@PBJ@Z"
+ ],
+ "graded": "?GetEmitterTemplate@CParticleEmitterDatabase@@QAEPAVCParticleEmitter@NParticleEngine@@JJ@Z",
+ "bind": [
+  [
+   "00ae94a0",
+   "??1CEmitterPointer@@QAE@XZ",
+   2
+  ],
+  [
+   "00ae9520",
+   "?LowerBound@CEmitterVectorMap@@QAEPAUSEmitterEntry@@PBJ@Z",
+   1
+  ],
+  [
+   "00af1280",
+   "?GetEmitterInfo@CParticleDataBank@NParticleEngine@@QAEPAUCParticleEmitterInfo@@J@Z",
+   1
+  ],
+  [
+   "00af1480",
+   "?GetEmitterTemplate@CParticleEmitterInfo@@QAE_NAAUCEmitterPointer@@J@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

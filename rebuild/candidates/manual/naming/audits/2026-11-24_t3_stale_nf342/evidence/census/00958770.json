@@ -1,0 +1,70 @@
+{
+ "address": "00958770",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetSomeoneElseGettingHelpMessage@CAIStateGroup_MinionReactToCrime@@AAEPBVCMessageEvent@@J@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CClass (engine/CClass.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CFilter_Bind4 (engine/CFilter_Bind4.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMessageEvent (engine/CMessageEvent.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToCrime (engine/CAIStateGroup_MinionReactToCrime.h)"
+ ],
+ "src_sha": "dd09d0bc2ddb",
+ "DEF": [
+  "??$?VVCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@@@YA?AV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@@@ABVCMessageEventFilter_IsOfType@@ABVCMessageEventFilter_IsOriginatorAlive@@@Z",
+  "??$?VVCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@@@YA?AV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@@@ABV?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@@Z",
+  "??$?VVCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@VCMessageEventFilter_HasExtraData@@@@YA?AV?$CFilter_Bind4@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@VCMessageEventFilter_HasExtraData@@@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@@@ABVCMessageEventFilter_HasExtraData@@@Z",
+  "??$FindMostRecentMessage@V?$CFilter_Bind4@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@VCMessageEventFilter_HasExtraData@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind4@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@VCMessageEventFilter_HasExtraData@@@@@Z",
+  "??$not1@VCMessageEventFilter_IsOriginatedByThing@@@std@@YA?AV?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@0@ABVCMessageEventFilter_IsOriginatedByThing@@@Z",
+  "??0?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@@@QAE@ABVCMessageEventFilter_IsOfType@@ABVCMessageEventFilter_IsOriginatorAlive@@@Z",
+  "??0?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@@@QAE@ABVCMessageEventFilter_IsOfType@@ABVCMessageEventFilter_IsOriginatorAlive@@ABV?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@@Z",
+  "??0?$CFilter_Bind4@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@VCMessageEventFilter_HasExtraData@@@@QAE@ABVCMessageEventFilter_IsOfType@@ABVCMessageEventFilter_IsOriginatorAlive@@ABV?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@ABVCMessageEventFilter_HasExtraData@@@Z",
+  "??0?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@QAE@ABVCMessageEventFilter_IsOriginatedByThing@@@Z",
+  "??0CMessageEventFilter_HasExtraData@@QAE@J@Z",
+  "??0CMessageEventFilter_IsOfType@@QAE@J@Z",
+  "??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z",
+  "??0CMessageEventFilter_IsOriginatorAlive@@QAE@XZ",
+  "??0const_iterator@?$list@VCMessageEvent@@V?$allocator@VCMessageEvent@@@std@@@std@@QAE@PAU_List_node_base@2@@Z",
+  "??9const_iterator@?$list@VCMessageEvent@@V?$allocator@VCMessageEvent@@@std@@@std@@QBE_NABU012@@Z",
+  "??Dconst_iterator@?$list@VCMessageEvent@@V?$allocator@VCMessageEvent@@@std@@@std@@QBEABVCMessageEvent@@XZ",
+  "??Econst_iterator@?$list@VCMessageEvent@@V?$allocator@VCMessageEvent@@@std@@@std@@QAEAAU012@XZ",
+  "??R?$CFilter_Bind4@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@VCMessageEventFilter_HasExtraData@@@@QBE_NABVCMessageEvent@@@Z",
+  "??R?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@QBE_NABVCMessageEvent@@@Z",
+  "?GetSomeoneElseGettingHelpMessage@CAIStateGroup_MinionReactToCrime@@AAEPBVCMessageEvent@@J@Z",
+  "?MessageEventManagerOf@@YAPBVCMessageEventManager@@ABVCWorld@@@Z",
+  "?begin@?$list@VCMessageEvent@@V?$allocator@VCMessageEvent@@@std@@@std@@QBE?AUconst_iterator@12@XZ",
+  "?end@?$list@VCMessageEvent@@V?$allocator@VCMessageEvent@@@std@@@std@@QBE?AUconst_iterator@12@XZ"
+ ],
+ "UND": [
+  "??RCMessageEventFilter_HasExtraData@@QBE_NABVCMessageEvent@@@Z",
+  "??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z",
+  "??RCMessageEventFilter_IsOriginatedByThing@@QBE_NABVCMessageEvent@@@Z",
+  "??RCMessageEventFilter_IsOriginatorAlive@@QBE_NABVCMessageEvent@@@Z",
+  "?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ"
+ ],
+ "graded": "?GetSomeoneElseGettingHelpMessage@CAIStateGroup_MinionReactToCrime@@AAEPBVCMessageEvent@@J@Z",
+ "bind": [
+  [
+   "008fcfa0",
+   "?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ",
+   1
+  ],
+  [
+   "00959040",
+   "??$FindMostRecentMessage@V?$CFilter_Bind4@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@VCMessageEventFilter_HasExtraData@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind4@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatorAlive@@V?$unary_negate@VCMessageEventFilter_IsOriginatedByThing@@@std@@VCMessageEventFilter_HasExtraData@@@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

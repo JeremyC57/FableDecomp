@@ -1,0 +1,36 @@
+{
+ "address": "00704730",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetNullScriptThing",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)"
+ ],
+ "src_sha": "6fd6cc37243b",
+ "DEF": [
+  "??0CBase@@QAE@XZ",
+  "??0CCountedPointer_CScriptThing@@QAE@ABU0@@Z",
+  "??0CScriptThing@@QAE@ABV0@@Z",
+  "??_7CBase@@6B@",
+  "??_7CScriptThing@@6B@",
+  "??_GCBase@@UAEPAXI@Z",
+  "??_GCScriptThing@@UAEPAXI@Z",
+  "?GetNullScriptThing@CGameScriptThingManager@@QAE?AVCScriptThing@@XZ"
+ ],
+ "UND": [
+  "??1CBase@@UAE@XZ",
+  "??1CScriptThing@@UAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCBase@@UAEPAXI@Z",
+  "??_GCScriptThing@@UAEPAXI@Z"
+ ],
+ "graded": "?GetNullScriptThing@CGameScriptThingManager@@QAE?AVCScriptThing@@XZ",
+ "bind": [
+  [
+   "01238c8c",
+   "??_7CScriptThing@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

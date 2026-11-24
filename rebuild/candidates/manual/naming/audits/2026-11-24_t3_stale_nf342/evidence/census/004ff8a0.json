@@ -1,0 +1,23 @@
+{
+ "address": "004ff8a0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?ForceUnload@CWorldMap@@UAEXJ@Z",
+ "warn": [],
+ "src_sha": "d506c9b6b8e1",
+ "DEF": [
+  "?ForceUnload@CWorldMap@@UAEXJ@Z"
+ ],
+ "UND": [
+  "?UnloadLevel@CWorldMap@@IAEXJ@Z"
+ ],
+ "graded": "?ForceUnload@CWorldMap@@UAEXJ@Z",
+ "bind": [
+  [
+   "004fede0",
+   "?UnloadLevel@CWorldMap@@IAEXJ@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

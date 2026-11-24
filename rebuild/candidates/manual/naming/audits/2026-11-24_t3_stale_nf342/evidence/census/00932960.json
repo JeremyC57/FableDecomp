@@ -1,0 +1,15 @@
+{
+ "address": "00932960",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?InitStateGroup@CAIStateGroup_MinionGuardReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z",
+ "warn": [],
+ "src_sha": "7422a73a77d4",
+ "DEF": [
+  "?InitStateGroup@CAIStateGroup_MinionGuardReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z"
+ ],
+ "UND": [],
+ "graded": "?InitStateGroup@CAIStateGroup_MinionGuardReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z",
+ "bind": [],
+ "obj": true
+}

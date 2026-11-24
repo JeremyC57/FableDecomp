@@ -1,0 +1,29 @@
+{
+ "address": "00af8090",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Alloc",
+ "warn": [],
+ "src_sha": "20ae77df4d7c",
+ "DEF": [
+  "?CPSCSpline_Alloc@@YAPAUCPSCSpline@@XZ"
+ ],
+ "UND": [
+  "??0CPSCSpline@@QAE@XZ",
+  "??2@YAPAXI@Z"
+ ],
+ "graded": "?CPSCSpline_Alloc@@YAPAUCPSCSpline@@XZ",
+ "bind": [
+  [
+   "00b1b350",
+   "??0CPSCSpline@@QAE@XZ",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

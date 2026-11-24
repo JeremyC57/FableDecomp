@@ -1,0 +1,31 @@
+{
+ "address": "00891870",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsHeroOnQuest@CGameScriptInterface@@UBE_NXZ",
+ "warn": [],
+ "src_sha": "3b490786ca5f",
+ "DEF": [
+  "??D?$CCountedPointer@VCQuestManager@@@@QBEAAVCQuestManager@@XZ",
+  "?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ",
+  "?IsHeroOnQuest@CGameScriptInterface@@UBE_NXZ"
+ ],
+ "UND": [
+  "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A",
+  "@QuestMgr_IsHeroOnQuest@4"
+ ],
+ "graded": "?IsHeroOnQuest@CGameScriptInterface@@UBE_NXZ",
+ "bind": [
+  [
+   "004b1110",
+   "@QuestMgr_IsHeroOnQuest@4",
+   1
+  ],
+  [
+   "013b89fc",
+   "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A",
+   1
+  ]
+ ],
+ "obj": true
+}
