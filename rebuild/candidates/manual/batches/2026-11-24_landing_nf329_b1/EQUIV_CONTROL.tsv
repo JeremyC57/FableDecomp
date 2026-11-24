@@ -1,0 +1,48 @@
+header	flagged_rows	examples
+CCombatAction_ControlledStrafeJump	0	
+CCombatAction_StabThing	1	0087ed70:src
+CCreatureActionHero180RunningTurn	0	
+CCreatureActionHeroRunningStop	0	
+CCreatureAction_Ambush	0	
+CCreatureAction_BalverineCorneredJumpIntoSky	0	
+CCreatureAction_BalverineDropInFromSky	0	
+CCreatureAction_BanditKingAttack	1	008c94b0:src
+CCreatureAction_BanditKingStuck	0	
+CCreatureAction_BanditKingUnstuck	1	008c9610:src
+CCreatureAction_BattleChargeImpact	0	
+CCreatureAction_BattleChargeMiss	0	
+CCreatureAction_BattleChargeTurnLeft	0	
+CCreatureAction_BattleChargeTurnRight	0	
+CCreatureAction_BlockBase	0	
+CCreatureAction_BlockCounter	0	
+CCreatureAction_BuildDrainLifeSpell	0	
+CCreatureAction_BuildFireballSpell	0	
+CCreatureAction_BuildGhostSwordSpell	0	
+CCreatureAction_BuildHealLifeSpell	0	
+CCreatureAction_BuildUpBattleCharge	0	
+CCreatureAction_BuildUpDivineWrathSpell	0	
+CCreatureAction_BuildUpPhysicalShieldSpell	0	
+CCreatureAction_BuildUpTimeSpell	0	
+CCreatureAction_BuildUpUnholyPowerSpell	0	
+CCreatureAction_BuildUpWillEnflameSpell	0	
+CCreatureAction_BuildUpWillLightningSpell	0	
+CCreatureAction_BuildUpWillSummonSpell	0	
+CCreatureAction_BuildWillForceSpell	0	
+CCreatureAction_BuildWillTurncoatSpell	0	
+CCreatureAction_CastDivineWrathSpell	0	
+CCreatureAction_CastSkillMultiArrow	0	
+CCreatureAction_CastTimeSpell	0	
+CCreatureAction_CastUnholyPowerSpell	0	
+CCreatureAction_CastWillFireballSpell	1	0072c930:src
+CCreatureAction_CastWillGhostSwordSpell	0	
+CCreatureAction_CastWillSummonSpell	0	
+CCreatureAction_DragonFlight	2	008f2e00:src 008f55f0:src
+CCreatureAction_DragonRearUpInto	0	
+CCreatureAction_DragonRearUpOutOf	0	
+CCreatureAction_DragonRetreat	0	
+CCreatureAction_DragonStrafeOutOf	0	
+CCreatureAction_DragonSwoop	0	
+CCreatureAction_DragonTakeOffIntoFlying	0	
+CCreatureAction_FinishDrainLifeSpell	0	
+CCreatureAction_FinishGhostSwordSpell	0	
+CCreatureAction_FinishHealLifeSpell	0	

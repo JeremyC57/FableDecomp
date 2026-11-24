@@ -9,6 +9,29 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTSKILLMULTIARROW_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01284BDC (RTTI .?AVCCreatureAction_CastSkillMultiArrow@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_CastSkillMultiArrow); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_CastSkillMultiArrow : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008CD460 ?PerformAction@CCreatureAction_CastSkillMultiArrow@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008CDCF0 ?FinishAction@CCreatureAction_CastSkillMultiArrow@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008CF260 ?Clone@CCreatureAction_CastSkillMultiArrow@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008CDC40 ?Initialise@CCreatureAction_CastSkillMultiArrow@@UAEXXZ
+public:
+    long          Level;                                     // +0x114
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastSkillMultiArrow) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastSkillMultiArrow, Level) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_CastSkillMultiArrow {
 public:
@@ -77,8 +100,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastSkillMultiArrow) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastSkillMultiArrow, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastSkillMultiArrow, Level) == 0x114);
+FABLE_STATIC_ASSERT_AT(80, sizeof(CCreatureAction_CastSkillMultiArrow) == 0x118);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_CastSkillMultiArrow, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_CastSkillMultiArrow, Level) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTSKILLMULTIARROW_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTSKILLMULTIARROW_H

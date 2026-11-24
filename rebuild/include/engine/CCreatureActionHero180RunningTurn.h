@@ -9,6 +9,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTIONHERO180RUNNINGTURN_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127655C (RTTI .?AVCCreatureActionHero180RunningTurn@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureActionHero180RunningTurn); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureActionHero180RunningTurn : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x0085B890 ?FinishAction@CCreatureActionHero180RunningTurn@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0085BCB0 ?Clone@CCreatureActionHero180RunningTurn@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x0085B8F0 ?Initialise@CCreatureActionHero180RunningTurn@@UAEXXZ
+    virtual bool IsClearingMovementVector() const;                        // slot 35 0x0085BBE0 ?IsClearingMovementVector@CCreatureActionHero180RunningTurn@@UBE_NXZ
+    virtual bool CanAnimationTransitionOut() const;                       // slot 67 0x0085B880 ?CanAnimationTransitionOut@CCreatureActionHero180RunningTurn@@UBE_NXZ
+public:
+    float         RequiredFacing_X;                          // +0x114 C3DVector::X
+    float         RequiredFacing_Y;                          // +0x118 C3DVector::Y
+    float         RequiredFacing_Z;                          // +0x11c C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureActionHero180RunningTurn) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCreatureActionHero180RunningTurn, RequiredFacing_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureActionHero180RunningTurn, RequiredFacing_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureActionHero180RunningTurn, RequiredFacing_Z) == 0x11c);
+#else
 #pragma pack(push, 1)
 class CCreatureActionHero180RunningTurn {
 public:
@@ -79,10 +107,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureActionHero180RunningTurn) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCreatureActionHero180RunningTurn, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureActionHero180RunningTurn, RequiredFacing_X) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureActionHero180RunningTurn, RequiredFacing_Y) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureActionHero180RunningTurn, RequiredFacing_Z) == 0x11c);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CCreatureActionHero180RunningTurn) == 0x120);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureActionHero180RunningTurn, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureActionHero180RunningTurn, RequiredFacing_X) == 0x114);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureActionHero180RunningTurn, RequiredFacing_Y) == 0x118);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureActionHero180RunningTurn, RequiredFacing_Z) == 0x11c);
+#endif // FABLE_RETAIL_CCREATUREACTIONHERO180RUNNINGTURN_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTIONHERO180RUNNINGTURN_H

@@ -12,6 +12,55 @@
 class CCPPointerInfo;
 class CCreatureActionBase;
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_DRAGONTAKEOFFINTOFLYING_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01293A7C (RTTI .?AVCCreatureAction_DragonTakeOffIntoFlying@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_DragonTakeOffIntoFlying); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008F47E0 ?FinishAction@CCreatureAction_DragonTakeOffIntoFlying@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00953B90 ?Clone@CCreatureAction_DragonTakeOffIntoFlying@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008F3E70 ?Initialise@CCreatureAction_DragonTakeOffIntoFlying@@UAEXXZ
+    virtual bool IsMovementUsingPhysics() const;                          // slot 59 0x00953460 ?IsMovementUsingPhysics@CCreatureAction_DragonTakeOffIntoFlying@@UBE_NXZ
+public:
+    float                Dest_X;                             // +0x114 C3DVector::X
+    float                Dest_Y;                             // +0x118 C3DVector::Y
+    float                Dest_Z;                             // +0x11c C3DVector::Z
+    float                StartPos_X;                         // +0x120 C3DVector::X
+    float                StartPos_Y;                         // +0x124 C3DVector::Y
+    float                StartPos_Z;                         // +0x128 C3DVector::Z
+    float                PreviousPoint_X;                    // +0x12c C3DVector::X
+    float                PreviousPoint_Y;                    // +0x130 C3DVector::Y
+    float                PreviousPoint_Z;                    // +0x134 C3DVector::Z
+    unsigned char        MovementPoints[0xc];                // +0x138 vector<C3DVector,std::allocator<C3DVector>_>
+    bool                 UsePreviousPoint;                   // +0x144
+    unsigned char        _pad_0x145[0x3];                    // +0x145
+    CCreatureActionBase* PEndAction_Data;                    // +0x148 CCountedPointer<CCreatureActionBase>::Data
+    CCPPointerInfo*      PEndAction_Info;                    // +0x14c CCountedPointer<CCreatureActionBase>::Info
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonTakeOffIntoFlying) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, Dest_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, Dest_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, Dest_Z) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, StartPos_X) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, StartPos_Y) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, StartPos_Z) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PreviousPoint_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PreviousPoint_Y) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PreviousPoint_Z) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, MovementPoints) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, UsePreviousPoint) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, _pad_0x145) == 0x145);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PEndAction_Data) == 0x148);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PEndAction_Info) == 0x14c);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_DragonTakeOffIntoFlying {
 public:
@@ -93,20 +142,21 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonTakeOffIntoFlying) == 0x150);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, Dest_X) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, Dest_Y) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, Dest_Z) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, StartPos_X) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, StartPos_Y) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, StartPos_Z) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PreviousPoint_X) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PreviousPoint_Y) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PreviousPoint_Z) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, MovementPoints) == 0x138);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, UsePreviousPoint) == 0x144);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PEndAction_Data) == 0x148);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonTakeOffIntoFlying, PEndAction_Info) == 0x14c);
+FABLE_STATIC_ASSERT_AT(96, sizeof(CCreatureAction_DragonTakeOffIntoFlying) == 0x150);
+FABLE_STATIC_ASSERT_AT(97, offsetof(CCreatureAction_DragonTakeOffIntoFlying, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(98, offsetof(CCreatureAction_DragonTakeOffIntoFlying, Dest_X) == 0x114);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CCreatureAction_DragonTakeOffIntoFlying, Dest_Y) == 0x118);
+FABLE_STATIC_ASSERT_AT(100, offsetof(CCreatureAction_DragonTakeOffIntoFlying, Dest_Z) == 0x11c);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CCreatureAction_DragonTakeOffIntoFlying, StartPos_X) == 0x120);
+FABLE_STATIC_ASSERT_AT(102, offsetof(CCreatureAction_DragonTakeOffIntoFlying, StartPos_Y) == 0x124);
+FABLE_STATIC_ASSERT_AT(103, offsetof(CCreatureAction_DragonTakeOffIntoFlying, StartPos_Z) == 0x128);
+FABLE_STATIC_ASSERT_AT(104, offsetof(CCreatureAction_DragonTakeOffIntoFlying, PreviousPoint_X) == 0x12c);
+FABLE_STATIC_ASSERT_AT(105, offsetof(CCreatureAction_DragonTakeOffIntoFlying, PreviousPoint_Y) == 0x130);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CCreatureAction_DragonTakeOffIntoFlying, PreviousPoint_Z) == 0x134);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CCreatureAction_DragonTakeOffIntoFlying, MovementPoints) == 0x138);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CCreatureAction_DragonTakeOffIntoFlying, UsePreviousPoint) == 0x144);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CCreatureAction_DragonTakeOffIntoFlying, PEndAction_Data) == 0x148);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CCreatureAction_DragonTakeOffIntoFlying, PEndAction_Info) == 0x14c);
+#endif // FABLE_RETAIL_CCREATUREACTION_DRAGONTAKEOFFINTOFLYING_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_DRAGONTAKEOFFINTOFLYING_H

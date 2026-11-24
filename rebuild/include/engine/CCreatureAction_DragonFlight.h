@@ -9,6 +9,37 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_DRAGONFLIGHT_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01288544 (RTTI .?AVCCreatureAction_DragonFlight@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_DragonFlight); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_DragonFlight : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008F3020 ?PerformAction@CCreatureAction_DragonFlight@@UAEXXZ
+    virtual long GetAnimDelayTime() const;                                // slot 6 0x008F55E0 ?GetAnimDelayTime@CCreatureAction_DragonFlight@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008F5740 ?Clone@CCreatureAction_DragonFlight@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008F2AE0 ?Initialise@CCreatureAction_DragonFlight@@UAEXXZ
+    virtual void FrameUpdate();                                           // slot 56 0x008F2E00 ?FrameUpdate@CCreatureAction_DragonFlight@@UAEXXZ
+    virtual bool IsUsingAnimationMovement() const;                        // slot 57 0x008F5600 ?IsUsingAnimationMovement@CCreatureAction_DragonFlight@@UBE_NXZ
+    virtual bool IsMovementUsingPhysics() const;                          // slot 59 0x008F5610 ?IsMovementUsingPhysics@CCreatureAction_DragonFlight@@UBE_NXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x008F55F0 ?IsToFaceTarget@CCreatureAction_DragonFlight@@UBE_NXZ
+public:
+    bool          FaceTarget;                                // +0x114
+    unsigned char _pad_0x115[0x3];                           // +0x115
+    float         TurnRate;                                  // +0x118
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonFlight) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFlight, FaceTarget) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFlight, _pad_0x115) == 0x115);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFlight, TurnRate) == 0x118);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_DragonFlight {
 public:
@@ -79,9 +110,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonFlight) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFlight, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFlight, FaceTarget) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFlight, TurnRate) == 0x118);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CCreatureAction_DragonFlight) == 0x11c);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_DragonFlight, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_DragonFlight, FaceTarget) == 0x114);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_DragonFlight, TurnRate) == 0x118);
+#endif // FABLE_RETAIL_CCREATUREACTION_DRAGONFLIGHT_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_DRAGONFLIGHT_H

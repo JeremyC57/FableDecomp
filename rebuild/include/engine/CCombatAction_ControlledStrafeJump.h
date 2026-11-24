@@ -9,6 +9,46 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATACTION_CONTROLLEDSTRAFEJUMP_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01276974 (RTTI .?AVCCombatAction_ControlledStrafeJump@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatAction_ControlledStrafeJump); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCombatAction_ControlledStrafeJump : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x0085C120 ?FinishAction@CCombatAction_ControlledStrafeJump@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0085C330 ?Clone@CCombatAction_ControlledStrafeJump@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x0085BD70 ?Initialise@CCombatAction_ControlledStrafeJump@@UAEXXZ
+    virtual bool IsOverrideableByActionOfSamePriority() const;            // slot 24 0x0085BD60 ?IsOverrideableByActionOfSamePriority@CCombatAction_ControlledStrafeJump@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x0085C0B0 ?FrameUpdate@CCombatAction_ControlledStrafeJump@@UAEXXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x0085C2F0 ?IsToFaceTarget@CCombatAction_ControlledStrafeJump@@UBE_NXZ
+    virtual float GetIsToFaceTargetCone() const;                          // slot 78 0x0085C300 ?GetIsToFaceTargetCone@CCombatAction_ControlledStrafeJump@@UBEMXZ
+public:
+    float         RequiredFacing_X;                          // +0x114 C3DVector::X
+    float         RequiredFacing_Y;                          // +0x118 C3DVector::Y
+    float         RequiredFacing_Z;                          // +0x11c C3DVector::Z
+    float         OriginalFacing_X;                          // +0x120 C3DVector::X
+    float         OriginalFacing_Y;                          // +0x124 C3DVector::Y
+    float         OriginalFacing_Z;                          // +0x128 C3DVector::Z
+    bool          AddedRollMode;                             // +0x12c
+    unsigned char _pad_0x12d[0x3];                           // +0x12d
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatAction_ControlledStrafeJump) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_Z) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_X) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_Y) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_Z) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, AddedRollMode) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, _pad_0x12d) == 0x12d);
+#else
 #pragma pack(push, 1)
 class CCombatAction_ControlledStrafeJump {
 public:
@@ -84,14 +124,15 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatAction_ControlledStrafeJump) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_X) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_Y) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_Z) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_X) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_Y) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_Z) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, AddedRollMode) == 0x12c);
+FABLE_STATIC_ASSERT_AT(87, sizeof(CCombatAction_ControlledStrafeJump) == 0x130);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CCombatAction_ControlledStrafeJump, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(89, offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_X) == 0x114);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_Y) == 0x118);
+FABLE_STATIC_ASSERT_AT(91, offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_Z) == 0x11c);
+FABLE_STATIC_ASSERT_AT(92, offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_X) == 0x120);
+FABLE_STATIC_ASSERT_AT(93, offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_Y) == 0x124);
+FABLE_STATIC_ASSERT_AT(94, offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_Z) == 0x128);
+FABLE_STATIC_ASSERT_AT(95, offsetof(CCombatAction_ControlledStrafeJump, AddedRollMode) == 0x12c);
+#endif // FABLE_RETAIL_CCOMBATACTION_CONTROLLEDSTRAFEJUMP_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATACTION_CONTROLLEDSTRAFEJUMP_H

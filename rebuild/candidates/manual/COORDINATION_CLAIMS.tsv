@@ -450,3 +450,4 @@ date	account	item	kind	status	note
 2026-11-24	B	0x00407BA0	author	done	landed by Account A (batches/2026-11-24_landing_acctB_b24)
 2026-11-24	A	agent NF329: NF324 Q1 flat-header combat families on generated opt-in models	naming	claimed	b3 landed (60 rows, batches/2026-11-24_landing_nf329_b3); b4, b1, b2 follow
 2026-11-24	A	agent NF329: NF324 Q1 flat-header combat families on generated opt-in models	naming	claimed	b4 landed (86 rows, 37 headers, batches/2026-11-24_landing_nf329_b4); b1, b2 follow
+2026-11-24	A	agent NF329: NF324 Q1 flat-header combat families on generated opt-in models	naming	claimed	b1 landed (80 rows, 47 headers, batches/2026-11-24_landing_nf329_b1); b2 follows

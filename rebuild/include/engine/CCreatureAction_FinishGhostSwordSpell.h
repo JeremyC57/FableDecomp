@@ -9,6 +9,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_FINISHGHOSTSWORDSPELL_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127D14C (RTTI .?AVCCreatureAction_FinishGhostSwordSpell@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_FinishGhostSwordSpell); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_FinishGhostSwordSpell : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008B9440 ?PerformAction@CCreatureAction_FinishGhostSwordSpell@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008B9A60 ?FinishAction@CCreatureAction_FinishGhostSwordSpell@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008BE730 ?Clone@CCreatureAction_FinishGhostSwordSpell@@UBEPAVCCreatureActionBase@@XZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_FinishGhostSwordSpell) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_FinishGhostSwordSpell {
 public:
@@ -27,7 +47,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_FinishGhostSwordSpell) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_FinishGhostSwordSpell, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_FinishGhostSwordSpell) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_FinishGhostSwordSpell, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_FINISHGHOSTSWORDSPELL_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_FINISHGHOSTSWORDSPELL_H

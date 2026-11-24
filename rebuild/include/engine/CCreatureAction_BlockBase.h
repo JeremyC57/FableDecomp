@@ -9,6 +9,38 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BLOCKBASE_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01275F3C (RTTI .?AVCCreatureAction_BlockBase@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BlockBase); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class C3DVector;
+#pragma pack(push, 1)
+class CCreatureAction_BlockBase : public CCombatActionBase {
+public:
+    virtual long GetAnimationTransitionInTime() const;                    // slot 8 0x00855D10 ?GetAnimationTransitionInTime@CCreatureAction_BlockBase@@UBEJXZ
+    virtual void Initialise();                                            // slot 12 0x00855430 ?Initialise@CCreatureAction_BlockBase@@UAEXXZ
+    virtual bool IsOverrideableByActionOfSamePriority() const;            // slot 24 0x00855CF0 ?IsOverrideableByActionOfSamePriority@CCreatureAction_BlockBase@@UBE_NXZ
+protected:
+    virtual C3DVector GetNextPos() const;                                 // slot 70 0x008552F0 ?GetNextPos@CCreatureAction_BlockBase@@MBE?AVC3DVector@@XZ
+public:
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x00855D00 ?IsToFaceTarget@CCreatureAction_BlockBase@@UBE_NXZ
+public:
+    long          BlowStrength;                              // +0x114
+    float         MovementDirection_X;                       // +0x118 C3DVector::X
+    float         MovementDirection_Y;                       // +0x11c C3DVector::Y
+    float         MovementDirection_Z;                       // +0x120 C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BlockBase) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, BlowStrength) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection_X) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection_Y) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection_Z) == 0x120);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BlockBase {
 public:
@@ -80,11 +112,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BlockBase) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, BlowStrength) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection_X) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection_Y) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection_Z) == 0x120);
+FABLE_STATIC_ASSERT_AT(83, sizeof(CCreatureAction_BlockBase) == 0x124);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_BlockBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_BlockBase, BlowStrength) == 0x114);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_BlockBase, MovementDirection_X) == 0x118);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_BlockBase, MovementDirection_Y) == 0x11c);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CCreatureAction_BlockBase, MovementDirection_Z) == 0x120);
+#endif // FABLE_RETAIL_CCREATUREACTION_BLOCKBASE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BLOCKBASE_H

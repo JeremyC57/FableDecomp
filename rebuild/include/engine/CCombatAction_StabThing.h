@@ -9,6 +9,38 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATACTION_STABTHING_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01277E84 (RTTI .?AVCCombatAction_StabThing@@ : CCombatActionBase), 83 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatAction_StabThing); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class C3DVector;
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCombatAction_StabThing : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x0087EE70 ?PerformAction@CCombatAction_StabThing@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00880190 ?Clone@CCombatAction_StabThing@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x0087ECB0 ?Initialise@CCombatAction_StabThing@@UAEXXZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x00880060 ?IsToCauseRecoil@CCombatAction_StabThing@@UBE_NXZ
+    virtual bool IsAbleToBeAttacked() const;                              // slot 47 0x00880070 ?IsAbleToBeAttacked@CCombatAction_StabThing@@UBE_NXZ
+    virtual C3DVector GetNextPos() const;                                 // slot 70 0x0087ED70 ?GetNextPos@CCombatAction_StabThing@@UBE?AVC3DVector@@XZ
+    virtual bool IsUsingActionMovement() const;                           // slot 81 0x00880040 ?IsUsingActionMovement@CCombatAction_StabThing@@UBE_NXZ
+    virtual bool IsToRetainSafeDistance() const;                          // slot 82 0x00880050 ?IsToRetainSafeDistance@CCombatAction_StabThing@@UBE_NXZ
+public:
+    float         StabPos_X;                                 // +0x114 C3DVector::X
+    float         StabPos_Y;                                 // +0x118 C3DVector::Y
+    float         StabPos_Z;                                 // +0x11c C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatAction_StabThing) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_Z) == 0x11c);
+#else
 #pragma pack(push, 1)
 class CCombatAction_StabThing {
 public:
@@ -79,10 +111,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatAction_StabThing) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_X) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_Y) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_Z) == 0x11c);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CCombatAction_StabThing) == 0x120);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCombatAction_StabThing, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCombatAction_StabThing, StabPos_X) == 0x114);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCombatAction_StabThing, StabPos_Y) == 0x118);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCombatAction_StabThing, StabPos_Z) == 0x11c);
+#endif // FABLE_RETAIL_CCOMBATACTION_STABTHING_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATACTION_STABTHING_H
