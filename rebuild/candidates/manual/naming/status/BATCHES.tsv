@@ -265,6 +265,7 @@ T1	signature	CMemoryFile	2	2	engine/CMemoryFile.h	009e97b0 009e99c0
 T1	signature	CParticleSystem	2	2	engine/CParticleSystem.h	00af5330 00af59a0
 T1	signature	CQ_AmbushTradersScript	2	2	engine/CQ_AmbushTradersScript.h	00f07b80 00f09950
 T1	signature	CQ_BountyHuntScript	2	2	engine/CQ_BountyHuntScript.h	00d16920 00d16d00
+T1	signature	CTCFollowed	2	2	engine/CTCFollowed.h	006d4e60 006d4fd0
 T1	signature	CTCShop	2	2	engine/CTCShop.h	00772120 007751a0
 T1	signature	CTCStealth	2	3	engine/CTCStealth.h	00746ec0 00747b80
 T1	signature	CTCTavernGame	2	2	engine/CTCTavernGame.h	005eb4b0 005eca50
@@ -343,7 +344,6 @@ T1	signature	CTCFadeOutAndIn	1	1	engine/CTCFadeOutAndIn.h	006c3c30
 T1	signature	CTCFireballSpell	1	1	engine/CTCFireballSpell.h	007c87f0
 T1	signature	CTCFireheartMinigame	1	1		007e79c0
 T1	signature	CTCFish	1	1	engine/CTCFish.h	007dfb20
-T1	signature	CTCFollowed	1	1	engine/CTCFollowed.h	006d4e60
 T1	signature	CTCForcePushPower	1	1		007a54a0
 T1	signature	CTCForcePushed	1	1	engine/CTCForcePushed.h	00798570
 T1	signature	CTCGhostSword	1	1	engine/CTCGhostSword.h	007c5560
@@ -460,6 +460,7 @@ T1	other	CTCWife	4	3	engine/CTCWife.h	006cef20 006cf920 006cfe80 006d18a0
 T1	other	CThingBuilding	4	8	engine/CThingBuilding.h	0082d000 0082d2d0 0082d920 0082e090
 T1	other	CThingManager	4	8	engine/CThingManager.h	0051e530 0051ed80 00521eb0 005239c0
 T1	other	CThingPhysical	4	5	engine/CThingPhysical.h	005296b0 006a4d00 006a4d60 006a6880
+T1	other	CWideString	4	21		0099aed0 0099b510 0099b560 0099b720
 T1	other	GFSerialiseMapBinaryOut	4	1		0045df1e 0067b8b0 0067b930 0067b9b0
 T1	other	set	4	11		00514400 00738dc0 00826000 00ad3a10
 T1	other	CAIStateGroup_GoToPub	3	4	engine/CAIStateGroup_GoToPub.h	008fdcca 009498b0 0094a3b0
@@ -492,7 +493,6 @@ T1	other	CTCInGameMenu	3	3	engine/CTCInGameMenu.h	0047d648 0047dbb8 0047e07f
 T1	other	CTCPhysicsBase	3	4	engine/CTCPhysicsBase.h	006af630 006b0780 006b0c10
 T1	other	CTCSoundPlayer	3	4	engine/CTCSoundPlayer.h	0066ace0 0066add0 0066ae60
 T1	other	CTavernTableDef	3	3	engine/CTavernTableDef.h	00485125 004853bd 005f9bb2
-T1	other	CWideString	3	19		0099aed0 0099b510 0099b720
 T1	other	GFSerialiseMapBinaryIn	3	2		0045c95a 0045df5e 004ecdac
 T1	other	GetDef	3	4		00528760 00593666 0079bd80
 T1	other	GetPBestThingInRoughArea	3	3		00937420 00937690 0093cdb0
@@ -4849,7 +4849,6 @@ T3	-	CStreamBuffer	5	12		00c26090 00c262e0 00c26390 00c26410 00c26480
 T3	-	CTCMapwho	5	10	engine/CTCMapwho.h	00656e3e 00656fe9 00657022 006e26f0 00c0eb20
 T3	-	CTCShotDefinitionBase	5	13		006bf890 007befa0 007bf3d0 007bf460 00815270
 T3	-	CVoiceParams	5	10		00c34410 00c34440 00c344d0 00c34500 00c34580
-T3	-	CWideString	5	15		0099af10 0099b070 0099b440 0099b560 0099b6b0
 T3	-	CWorld	5	13	engine/CWorld.h	00814bf0 00c1c460 00c1c620 00c26280 013b89bc
 T3	-	CWorldMap	5	9	engine/CWorldMap.h	004fcb30 004fede0 0063a6e0 01244ab4 01244aec
 T3	-	PKCMailbox	5	13		00c1afd0 00c1b130 00c1d9d0 00c1da30 00c1dc40
@@ -4886,6 +4885,7 @@ T3	-	CText	4	4	engine/CText.h	00550030 01249c9c 01249ca4 01249ccc
 T3	-	CThingCreatureBase	4	10	engine/CThingCreatureBase.h	00662040 00662550 00663510 00667310
 T3	-	CThingManager	4	10	engine/CThingManager.h	0051df80 00520c80 005252b0 013b8a80
 T3	-	CThingMapManager	4	8	engine/CThingMapManager.h	00637980 00637da0 00637f40 006381a0
+T3	-	CWideString	4	11		0099af10 0099b070 0099b440 0099b6b0
 T3	-	GFSerialiseMapBinaryIn	4	6		00475aa6 0067c020 0067c110 0067c200
 T3	-	GetAllThingsInRoughArea	4	8		007f4500 00809a70 0080a550 008e4100
 T3	-	NParticleEngine	4	7		013d2e14 013d2e1c 013d2e24 013d2e2c
@@ -6279,7 +6279,6 @@ T3	-	CTCDoor_Methods	1	2		0082cf40
 T3	-	CTCFineDialogue	1	2		007e2730
 T3	-	CTCFireheartMinigame	1	2		013baeb0
 T3	-	CTCFishingSpot_00c3e2a0	1	2		012b5b80
-T3	-	CTCFollowed	1	3	engine/CTCFollowed.h	006d4fd0
 T3	-	CTCGatherPointBuilding	1	2		00c46eb0
 T3	-	CTCGift	1	3	engine/CTCGift.h	008fa280
 T3	-	CTCGraphicAppearance	1	2		004bc620

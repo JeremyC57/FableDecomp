@@ -9422,7 +9422,7 @@ line	tag	address	correct_symbol	status	other_spellings
 11659	land1120nf121	006a1060	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	closed	
 11660	land1120nf121	006a10a0	?IsCarryingThing@CTCCarrying@@QBE_NJ@Z	closed	
 11661	land1120nf120	00751820	?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z	closed	
-11662	land1120nf120	00751e80	?GetTurningAngles@CTCLook@@AAE_NAAM0@Z	open	?GetTurningAngles@CTCLook@@QAE_NAAM0@Z
+11662	land1120nf120	00751e80	?GetTurningAngles@CTCLook@@AAE_NAAM0@Z	closed	
 11663	land1120nf120	00752190	?ChangeHeadAngleYZ@CTCLook@@AAEXMM@Z	closed	
 11664	land1120nf120	0076c850	?RemoveAllyThing@CTCEnemy@@QAEXABVCThing@@@Z	closed	
 11665	land1120nf120	00752200	?ChangeEyeAngles@CTCLook@@AAEXMM@Z	closed	
@@ -9644,7 +9644,7 @@ line	tag	address	correct_symbol	status	other_spellings
 11929	land1120nf154	007517b0	?SetHeadTurnState@CTCLook@@AAEXJ@Z	closed	
 11930	land1120nf154	005dab10	?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z	closed	
 11931	land1120nf154	0097f5b0	?SetUpPreCalcNav@CAIStateGroupBase@@IAE?AVC3DVector@@ABVCThing@@@Z	closed	
-11932	land1120nf154	00751e80	?GetTurningAngles@CTCLook@@AAE_NAAM0@Z	open	?GetTurningAngles@CTCLook@@QAE_NAAM0@Z
+11932	land1120nf154	00751e80	?GetTurningAngles@CTCLook@@AAE_NAAM0@Z	closed	
 11933	land1120nf154	00800540	?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@ABEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z	closed	
 11935	land1120nf155	00692990	?PeekThingSearchTools@CCreatureActionBase@@IBEABVCThingSearchTools@@XZ	partial	?GetThingSearchTools@CCombatActionBase@@QBEPAVCThingSearchTools@@XZ
 11936	land1120nf155	006633a0	?ClearCurrentAction@CThingCreatureBase@@QAEXXZ	closed	
