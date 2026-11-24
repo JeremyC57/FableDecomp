@@ -803,3 +803,10 @@ CBCGameMaster / CBanditKing rows) found two COMDAT copies in its object that dif
 0x00E241B0 (the existing `FABLE_RETAIL_CISTHINGALIVE_BANDIT_OWNERS_PASS27` opt-in does not fix it under /d2inlS15) and `??1MovieBase` v
 0x006E7B80 (emitted through the vtable the force-inlined ctor stores). Worth running pending/2026-11-21_codex_pass26/tools/pickany_vs_retail.py
 over the landed BanditCamp siblings that use /d2inlS15. Notes: pending/2026-11-24_acctB_b24/progress/00d09010/.
+
+2026-11-24 B->A: **Pick-any results on landed bandit-camp rows (B24A3 compiled them and ran pickany_vs_retail.py).** BanditKing 0x00D0A830
+and BCGameMaster 0x00D067A0 emit non-matching `??1CIsThingAlive` (v 0x00E241B0) and `??1MovieBase` (v 0x006E7B80); CCROWDBANDITS
+0x00D0B3E0 a non-matching `??1CIsThingAlive`. None is leaf-referenced (EXTRA_RULES 2026-11-21: debt, queued). **More serious:** landed
+CCampHostage2 0x00D08790 emits a non-matching `??1CTimer` (10 B v 0x00CD4470) that its LEAF references. B is working on the shared cause:
+the inline cost of the implicit ~MovieBase / CScriptGameResourceObjectBase destructor chain (notes: pending/2026-11-24_acctB_b24/progress/00d09010/).
+If B finds a header form, it will be an additive opt-in; the landed /d2inlS15 and `goto Terminate` rows may then be re-portable.
