@@ -493,3 +493,5 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF342: T3 queue stale-line sweep	audit	claimed	read-only, compiled proof per stale line
 2026-11-24	A	agent NF340: pick-any all-copies audit (B24C9 checker finding)	audit	done	audits/2026-11-24_pk_all_nf340; pk_all.py added; per-copy debt queued T3 nf340
 2026-11-24	A	agent NF342: T3 queue stale-line sweep	audit	done	263 stale lines closed (audits/2026-11-24_t3_stale_nf342)
+2026-11-24	A	agent NF343: pick-any debt, largest copy groups (T3 nf340)	naming	claimed	locks via lock.sh NF343
+2026-11-24	A	agent NF344: /d2inl flag rows from NF340 + leaf-vs-table census	naming	claimed	locks via lock.sh NF344
