@@ -50,7 +50,10 @@ class CMiniMapDisplay { public:
     void InitialiseDemonDoorMarkers();
     public:
              // 0x0082ADD0
-    void InitialiseTraderMarkers();                // 0x0082AE80
+    protected:
+    void InitialiseTraderMarkers();
+    public:
+                // 0x0082AE80
     void InitialiseRegionExitMarkers();            // 0x0082AFA0
     void InitialiseAttractionMarkers();            // 0x0082B520
     void InitialiseEnemyMarkers();                 // 0x0082B630

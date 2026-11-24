@@ -1,5 +1,5 @@
 // CTCHeroOnlineScoreboard::DownloadLogosForThisClansMembers() -- when idle, sends DOWNLOAD_MEMBER_LOGOS (user, session and the cached member logo list); then steps the transaction and, on success, decrypts the reply (busy unless it starts "SID:OK") and writes each (clan id, logo id, size, data) quadruple to SaveDir\ClanData\<id>\logo.<id>.jpg before dropping the connection
-// Leaf: DownloadLogosForThisClansMembers
+// Leaf: ?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
 // Retail: Fable.exe @ 0x005621B0, 1088 bytes, `ret`. Ego_r.pdb `?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ`.
 // Byte-twin of DownloadMyClansLogos 0x00561980 except the cached-logo getter (GetCachedMemberLogosAsString 0x0055EA80) and the
 // command literal; same source shape.
@@ -148,7 +148,9 @@ public:
         return ResetAndOpenHTTPAndPrepareRequest(text, key, false) == NETWORK_BUSY;
     }
     static CCharString GetHeader() { return CCharString("Fable1.5\r\nVersion 1\r\n", -1); }
+    private:
     ENetworkSuccess DownloadLogosForThisClansMembers();
+    public:
 };
 
 #pragma auto_inline(off)

@@ -3079,7 +3079,7 @@ __CxxThrowException@8	00bfeb84	0081e960
 ?InitialiseInformationMarkers@CMiniMapDisplay@@IAEXXZ	0082a9b0	0082b750
 ?InitialiseRegionExitMarkers@CMiniMapDisplay@@QAEXXZ	0082afa0	0082b750
 ?InitialiseTeleportMarkers@CMiniMapDisplay@@IAEXXZ	0082abd0	0082b750
-?InitialiseTraderMarkers@CMiniMapDisplay@@QAEXXZ	0082ae80	0082b750
+?InitialiseTraderMarkers@CMiniMapDisplay@@IAEXXZ	0082ae80	0082b750
 ?RemoveAllDeadMarkers@CMiniMapDisplay@@IAEXXZ	0082a2a0	0082b750
 ?UpdateMarkersInternal@CMiniMapDisplay@@IAEXXZ	0082a960	0082b750
 ?remove_if@CMarkerList_0082c6e0@@QAEXUCIsMarkerBoundToThing@@@Z	0082c6e0	0082b750
@@ -28149,7 +28149,7 @@ _CommonStaticMapHeaderEntryName	01436ecc	012246c0
 ?ChooseAClan@CTCHeroOnlineScoreboard@@AAEXXZ	0055fec0	00564570
 ?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ	00563920	00564570
 ?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	005615c0	00564570
-?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	005621b0	00564570
+?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	005621b0	00564570
 ?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00561dc0	00564570
 ?DownloadMyClansLogos@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00561980	00564570
 ?DownloadScoreboardForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00563480	00564570

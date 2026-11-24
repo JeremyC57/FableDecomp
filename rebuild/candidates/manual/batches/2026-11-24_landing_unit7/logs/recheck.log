@@ -1,0 +1,33 @@
+addr       parity           behav  name
+005621b0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+005621b0   WARN SHARED_HEADER_AVAILABLE LHHttp2 (engine/LHHttp2.h)
+005621b0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+005621b0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+005621b0   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+005621b0   WARN RELOC_NAME: ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z -> 005672d0 labelled 'std::basic_string<char>::_M_range_initialize<const char*>'
+005621b0   WARN RELOC_NAME: ??1LHStringVector@@QAE@XZ -> 00569940 labelled 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::~vector'
+005621b0   WARN RELOC_NAME: ?GetSaveDir@@YI?AVCWideString@@XZ -> 0041a5b0 labelled 'NResourceDirectoryNames::GetScoreboardImageCacheDir'
+005621b0   RELOCATION_MATCH PASS   DownloadLogosForThisClansMembers
+00564570   WARN SHARED_HEADER_AVAILABLE CList (engine/CList.h)
+00564570   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+00564570   RELOCATION_MATCH PASS   GlobalUpdate
+0082ae80   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0082ae80   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0082ae80   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0082ae80   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0082ae80   WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)
+0082ae80   WARN SHARED_HEADER_AVAILABLE CTCShopKeeper (engine/CTCShopKeeper.h)
+0082ae80   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+0082ae80   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0082ae80   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0082ae80   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082ae80   WARN RELOC_NAME: ?AddMarker@CMiniMapDisplay@@QAEXPBVCThing@@J@Z -> 0082a500 labelled 'CMiniMapDisplay::AddAutoMarker'
+0082ae80   RELOCATION_MATCH PASS   InitialiseTraderMarkers
+0082b750   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082b750   RELOCATION_MATCH PASS   UpdateMarkersNow
+
+WINS: 4
+  005621b0 RELOCATION_MATCH CTCHeroOnlineScoreboard::?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
+  00564570 RELOCATION_MATCH CTCHeroOnlineScoreboard::GlobalUpdate
+  0082ae80 RELOCATION_MATCH CMiniMapDisplay::?InitialiseTraderMarkers@CMiniMapDisplay@@IAEXXZ
+  0082b750 RELOCATION_MATCH CMiniMapDisplay::UpdateMarkersNow
