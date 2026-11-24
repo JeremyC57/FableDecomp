@@ -2,9 +2,12 @@
 // Leaf: ClearEvents
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F5540, length 123 bytes.
-// Callees: vector<CInputEvent>::erase(first, last) @ 0x009F67E0 (x2), the joystick's virtual slot 15 (+0x3c) and Clear
-// @ 0x009E42C0, CMouse::Clear @ 0x00A66C00, CKeyboard::Clear @ 0x00A66860 (tail jump; the three Clear labels read
-// "CMemoryDataOutputStream::Clear", propagated).
+// Callees: vector<CInputEvent>::erase(first, last) @ 0x009F67E0 (x2), the joystick's virtual slot 15 (+0x3c) and
+// CJoystick::ClearAllMaintainedEvents @ 0x009E42C0, CMouse::ClearAllMaintainedEvents @ 0x00A66C00, CKeyboard::ClearAllMaintainedEvents
+// @ 0x00A66860 (tail jump).
+// Name fix (NF383, 2026-11-24): the three callees were bound as CJoystick / CMouse / CKeyboard::Clear (stand-ins; their catalog labels read the
+// propagated "CMemoryDataOutputStream::Clear", whose real address is 0x00996B60). FableWin's ClearEvents calls ?ClearAllMaintainedEvents@CJoystick,
+// @CMouse and @CKeyboard@@QAEXXZ in this order (Ego_r.pdb: 26 bytes each, in lib_joystick / lib_mouse / lib_keyboard.obj).
 // Shape: `clear()` is the inlined `erase(begin(), end())` (end loaded first); the joystick count is a `long` local
 // (`sar edi,3`), each joystick re-indexed from the vector's first pointer for both calls.
 // Layout: retail CInputManager (0x80 bytes, 12-byte vectors; GOTCHAS wave 24m): ProcessedEvents +0x04, EventStore +0x10,
@@ -37,16 +40,16 @@ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
     virtual void ResetState();                     // slot 15 (+0x3c)
-    void Clear();                                  // 0x009E42C0
+    void ClearAllMaintainedEvents();               // 0x009E42C0
 };
 #include "engine/CCountedPointer.h"
 class CMouse {
 public:
-    void Clear();                                  // 0x00A66C00
+    void ClearAllMaintainedEvents();               // 0x00A66C00
 };
 class CKeyboard {
 public:
-    void Clear();                                  // 0x00A66860
+    void ClearAllMaintainedEvents();               // 0x00A66860
 };
 class CInputManager {
 public:
@@ -70,11 +73,11 @@ void CInputManager::ClearEvents()
     for (long i = 0; i < count; ++i) {
         if (PJoysticks[i].Data) {
             PJoysticks[i].Data->ResetState();
-            PJoysticks[i].Data->Clear();
+            PJoysticks[i].Data->ClearAllMaintainedEvents();
         }
     }
     if (PMouse)
-        PMouse->Clear();
+        PMouse->ClearAllMaintainedEvents();
     if (PKeyboard)
-        PKeyboard->Clear();
+        PKeyboard->ClearAllMaintainedEvents();
 }

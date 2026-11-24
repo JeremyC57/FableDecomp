@@ -353,7 +353,6 @@ nf292	0x00a9b0c0	entry 21: order 2 (read). As entry 20 (GetNextSubMesh).	NF292 s
 nf292	0x0070D920	owner self row defines ?op_del@@YGXPAX@Z (in neither PDB set); self port	NF292 Q2
 nf292	0x006925E0	owner self row defines GetMovementRatio (in neither PDB set); self port	NF292 Q2
 nf292	0x00B59760	20-byte body with two PDB names (SetupEnableConsoleVariable in the table; self defines a non-virtual GetControlAngleXY, PDBs only the virtual const form): identity research	NF292 Q3
-nf292	0x00996B60	CMemoryDataOutputStream::Clear defined by four landed rows (owner 0x00996B60 + 0x00A66860, 0x00A66C00, 0x009E42C0): check strong v pick-any	NF292 Q4
 nf293	0x00857F30	FAMILY UNIT (all-or-nothing, one family per hand-back): CCombatActionBase family (~45 binders, stand-in self)	NF293 entry 10
 nf293	0x006EDC50	FAMILY UNIT (all-or-nothing, one family per hand-back): RegisterCombatant (24 rows, mostly casts / stand-ins)	NF293 entry 19
 nf293	0x008B0AB0	FAMILY UNIT (all-or-nothing, one family per hand-back): CCombatSequenceBase family (~60 rows)	NF293 entry 20

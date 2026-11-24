@@ -4569,9 +4569,9 @@ _atexit	004012bc	009f0240
 ?SetAsKeyboardKeyPressed@CInputEvent@@QAEXW4EInputKey@@N@Z	00a03bf0	009f50a0
 ?SetAsKeyboardKeyReleased@CInputEvent@@QAEXW4EInputKey@@NN@Z	00a03c50	009f50a0
 ?GetChecksum@CInputEvent@@QBEKXZ	00a04160	009f5170
-?Clear@CJoystick@@QAEXXZ	009e42c0	009f5540
-?Clear@CKeyboard@@QAEXXZ	00a66860	009f5540
-?Clear@CMouse@@QAEXXZ	00a66c00	009f5540
+?ClearAllMaintainedEvents@CJoystick@@QAEXXZ	009e42c0	009f5540
+?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ	00a66860	009f5540
+?ClearAllMaintainedEvents@CMouse@@QAEXXZ	00a66c00	009f5540
 ??4?$CArray@USRecord34@@@@QAEAAU0@ABU0@@Z	009f66a0	009f69b0
 ??0CElement48_009f69b0@@QAE@ABU0@@Z	009f69b0	009f6fe0
 ?InsertGrow@CRetailVector_CElement48_009f69b0@@QAEXPAUCElement48_009f69b0@@ABU2@ABUSScalarTag@@K_N@Z	009f6ed0	009f6fe0
@@ -25577,7 +25577,6 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABJ@Z	005949c3	0058a0c7
 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	00429c53	00563920
 ??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ	00578a8d	00570332
-??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	00429288	00570332
 ?GetAbilityGraphicIndex@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	005ede7f	00570332
 ?GetExperienceAbilityDescription@CTCInventoryExperience@@QAE?AVCWideString@@JJ@Z	0056fe7c	00570332
 ?GetExperienceAbilityMovieName@CTCInventoryExperience@@QAE?AVCWideString@@W4EHeroAbility@@@Z	0056e75f	00570332
@@ -39158,3 +39157,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ??1CTemporaryBuffer@@UAE@XZ	00a98910	00a99510
 ?UpdateKeyEvents@CKeyboardDX@@IAE_NXZ	00ab6240	00ab69f0
 ?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@1@@Z	007137d0	007e7760
+??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	00429d8e	0056ad40

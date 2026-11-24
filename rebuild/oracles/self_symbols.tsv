@@ -7928,7 +7928,7 @@ address	symbol	status	leaf_given
 006f0740	?CCombatSequenceBase_IsAllowedOnOuterRing@@YIIPAVCCombatSequenceBase@@PAX@Z	MATCH	IsAllowedOnOuterRing
 006f0750	?CCombatSequenceGeneric_OnCreate@@YIXXZ	MATCH	OnCreate
 006f0800	?GetFirstAsHandle_006f0800@CClass_006f0800@@QAE?AUCHandle@@XZ	MATCH	GetFirstAsHandle_006f0800
-006f0810	??0?$vector@VC3DVector@@@std@@QAE@ABU01@@Z	RELOCATION_MATCH	??0?$vector@
+006f0810	??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z	RELOCATION_MATCH	??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z
 006f0930	?Remove_006f0930@CRemovalTable_006f0930@@QAEXPAX@Z	RELOCATION_MATCH	Remove_006f0930
 006f09b0	?StdList_InitEmpty_006f09b0@@YIPAPAXPAPAXPAX1@Z	RELOCATION_MATCH	StdList_InitEmpty_006f09b0
 006f09d0	?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z	RELOCATION_MATCH	SortTreeRecursively
@@ -15751,7 +15751,7 @@ address	symbol	status	leaf_given
 009e41a0	?M@C009e41a0@@QAE_NH@Z	MATCH	SetExclusiveMode
 009e41c0	?EventScanEnd@S@@QAEXPAVCInputEvent@@@Z	MATCH	EventScanEnd
 009e4230	?EventScanStart@CJoystick@@UAE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z	MATCH	EventScanStart
-009e42c0	?Clear@CMemoryDataOutputStream@@QAEXXZ	RELOCATION_MATCH	Clear
+009e42c0	?ClearAllMaintainedEvents@CJoystick@@QAEXXZ	RELOCATION_MATCH	?ClearAllMaintainedEvents@CJoystick@@QAEXXZ
 009e43b0	??0CJoystick@@QAE@AAVCInputManager@@_N@Z	RELOCATION_MATCH	??0CJoystick
 009e4420	??1CJoystick@@QAE@XZ	RELOCATION_MATCH	??1CJoystick
 009e4470	?ProcessMaintainedEvents@JoystickNative@@QAEXPBVCInputEvent@@@Z	RELOCATION_MATCH	ProcessMaintainedEvents
@@ -17058,7 +17058,7 @@ address	symbol	status	leaf_given
 00a66550	?GetFragmentation@CMemoryAllocatorFixedSize@@QAEMXZ	MATCH	GetFragmentation
 00a66750	?operator_delete@@YIXPAX@Z	RELOCATION_MATCH	operator_delete
 00a66850	?M@S@@QAEXPAD@Z	MATCH	EventScanEnd
-00a66860	?Clear@CMemoryDataOutputStream@@QAEXXZ	RELOCATION_MATCH	Clear
+00a66860	?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ	RELOCATION_MATCH	?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ
 00a668e0	?AddMaintainedEventsToEventStore@CKeyboard@@QAEXXZ	MATCH	AddMaintainedEventsToEventStore
 00a669e0	?ProcessMaintainedEventsFromEvent@CKeyboard@@QAEXABVCInputEvent@@@Z	RELOCATION_MATCH	ProcessMaintainedEventsFromEvent
 00a66ac0	?CKeyboard_SetHasInputFocus@@YGXH@Z	MATCH	SetHasInputFocus
@@ -17067,7 +17067,7 @@ address	symbol	status	leaf_given
 00a66b10	?M@C00a66b10@@QAEXXZ	MATCH	EmptyEventStore
 00a66b60	?GetEventFromStore@CMouse@@QAEPAVCInputEvent@@K@Z	MATCH	GetEventFromStore
 00a66b70	?EventScanStart@CMouse@@UAE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z	MATCH	EventScanStart
-00a66c00	?Clear@CMemoryDataOutputStream@@QAEXXZ	RELOCATION_MATCH	Clear
+00a66c00	?ClearAllMaintainedEvents@CMouse@@QAEXXZ	RELOCATION_MATCH	?ClearAllMaintainedEvents@CMouse@@QAEXXZ
 00a66ed0	?AddMaintainedEventsToEventStore@CKeyboard@@QAEXXZ	MATCH	AddMaintainedEventsToEventStore
 00a673a0	?CMouse_SetHasInputFocus@@YGXH@Z	MATCH	SetHasInputFocus
 00a673b0	?ScalarDeletingDestructor@CMouse@@QAEPAXI@Z	RELOCATION_MATCH	`scalar deleting destructor'
@@ -27228,3 +27228,4 @@ address	symbol	status	leaf_given
 009f3390	?GetPitch@CSurface@@QBEKXZ	RELOCATION_MATCH	?GetPitch@CSurface@@QBEKXZ
 0050e500	??$fill@PAGG@std@@YIXPAG0ABG@Z	MATCH	??$fill@PAGG@std@@YIXPAG0ABG@Z
 00a326d0	??1?$pair@KVC3DMeshVolume@@@std@@QAE@XZ	RELOCATION_MATCH	??1?$pair@KVC3DMeshVolume@@@std@@QAE@XZ
+00429d8e	??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	RELOCATION_MATCH	??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ

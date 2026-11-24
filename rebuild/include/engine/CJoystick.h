@@ -65,7 +65,14 @@ public:
     bool           ExclusiveMode;                            // +0xd08
     unsigned char  _pad_0xd09[0x1];                          // +0xd09
     unsigned char  _pad_0xd0a[0x2];                          // +0xd0a
+#ifdef FABLE_RETAIL_CJOYSTICK_MAINTAINEDEVENTS_LIST
+    // NF383 opt-in (2026-11-24, row 0x009E42C0 ClearAllMaintainedEvents): the member typed as the retail STLport list (4 bytes, same offset).
+    // Requires (includer): complete CMaintainedEvent and the STLport 4.6 std::list declared before this header (stlport/fable_containers.h).
+    std::list<CMaintainedEvent> MaintainedEventsList;        // +0xd0c
+    void ClearAllMaintainedEvents();                         // 0x009E42C0 ?ClearAllMaintainedEvents@CJoystick@@QAEXXZ (Ego_r.pdb / FableWin.pdb, public)
+#else
     unsigned char  MaintainedEventsList[0x4];                // +0xd0c list<CMaintainedEvent,std::allocator<CMaintainedEvent>_>
+#endif
     long           NoStoredEvents;                           // +0xd10
     long           NoEventScansRunning;                      // +0xd14
 };

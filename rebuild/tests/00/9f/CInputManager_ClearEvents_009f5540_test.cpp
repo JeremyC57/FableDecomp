@@ -1,17 +1,17 @@
-// Behaviour test for 0x009F5540 (CInputManager::ClearEvents): both event vectors emptied, count zeroed, devices cleared.
+// Behaviour test for 0x009F5540 (CInputManager::ClearEvents): both event vectors emptied, count zeroed, devices cleared (ClearAllMaintainedEvents on each joystick, the mouse and the keyboard).
 #include <cstdio>
 #include <vector>
-struct Joystick { int resets, clears; Joystick() : resets(0), clears(0) {} void ResetState() { ++resets; } void Clear() { ++clears; } };
-struct Device { int clears; Device() : clears(0) {} void Clear() { ++clears; } };
+struct Joystick { int resets, clears; Joystick() : resets(0), clears(0) {} void ResetState() { ++resets; } void ClearAllMaintainedEvents() { ++clears; } };
+struct Device { int clears; Device() : clears(0) {} void ClearAllMaintainedEvents() { ++clears; } };
 struct Manager {
     std::vector<int> ProcessedEvents, EventStore; int NoStoredEvents; Device* PMouse; Device* PKeyboard; std::vector<Joystick*> PJoysticks;
     void ClearEvents()
     {
         ProcessedEvents.clear(); EventStore.clear(); NoStoredEvents = 0;
         long count = (long)PJoysticks.size();
-        for (long i = 0; i < count; ++i) if (PJoysticks[i]) { PJoysticks[i]->ResetState(); PJoysticks[i]->Clear(); }
-        if (PMouse) PMouse->Clear();
-        if (PKeyboard) PKeyboard->Clear();
+        for (long i = 0; i < count; ++i) if (PJoysticks[i]) { PJoysticks[i]->ResetState(); PJoysticks[i]->ClearAllMaintainedEvents(); }
+        if (PMouse) PMouse->ClearAllMaintainedEvents();
+        if (PKeyboard) PKeyboard->ClearAllMaintainedEvents();
     }
 };
 int main()

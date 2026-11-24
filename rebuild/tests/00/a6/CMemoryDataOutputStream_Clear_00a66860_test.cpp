@@ -1,33 +1,30 @@
+// Behaviour test for 0x00A66860 CKeyboard::ClearAllMaintainedEvents: the maintained-event list is emptied and the stored-event count
+// zeroed; nothing else in the device is touched.
 #include <cstdio>
-
-struct MemberBuffer {
-    int cleared;
-    void Clear() { cleared = 0x55; }
+#include <list>
+struct CMaintainedEvent { long Event; long Time; };
+class CKeyboard { public:
+    long                        Guard;
+    long                        NoStoredEvents;
+    std::list<CMaintainedEvent> MaintainedEventsList;
+    void ClearAllMaintainedEvents();
 };
-
-class CMemoryDataOutputStream { public:
-    char   pad0[0x3404];
-    int    m_size;
-    char   pad1[4];
-    MemberBuffer m_buffer;
-    void Clear();
-};
-
-void CMemoryDataOutputStream::Clear()
+void CKeyboard::ClearAllMaintainedEvents()
 {
-    m_buffer.Clear();
-    m_size = 0;
+    MaintainedEventsList.clear();
+    NoStoredEvents = 0;
 }
-
 int main()
 {
-    static CMemoryDataOutputStream s;
-    s.m_size = 12345;
-    s.m_buffer.cleared = 0;
-    s.Clear();
-    if (s.m_size == 0 && s.m_buffer.cleared == 0x55)
-        printf("CLEAR_OK\n");
-    else
-        printf("CLEAR_FAIL m_size=%d cleared=%d\n", s.m_size, s.m_buffer.cleared);
-    return (s.m_size == 0 && s.m_buffer.cleared == 0x55) ? 0 : 1;
+    static CKeyboard d;
+    CMaintainedEvent e = { 7, 9 };
+    d.MaintainedEventsList.push_back(e); d.MaintainedEventsList.push_back(e);
+    d.NoStoredEvents = 12345; d.Guard = 0x55;
+    d.ClearAllMaintainedEvents();
+    bool ok = d.MaintainedEventsList.empty() && d.NoStoredEvents == 0 && d.Guard == 0x55;
+    d.ClearAllMaintainedEvents();   // clearing an empty list is harmless
+    ok = ok && d.MaintainedEventsList.empty() && d.NoStoredEvents == 0;
+    if (ok) { std::printf("CLEAR_OK\n"); return 0; }
+    std::printf("CLEAR_FAIL\n");
+    return 1;
 }

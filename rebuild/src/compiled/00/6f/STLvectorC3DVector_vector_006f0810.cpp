@@ -1,5 +1,9 @@
 // std::vector<C3DVector>::vector(const vector& x) -- STLport vector copy constructor for 12-byte C3DVector points: allocate exactly x.size() elements (none when empty), then copy-construct x's range into them
-// Leaf: ??0?$vector@
+// Leaf: ??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z
+// Name fix (NF383, 2026-11-24): the local model spelt the instance ??0?$vector@VC3DVector@@@std@@QAE@ABU01@@Z (one template argument, struct key);
+//   the STLport class is `template <class _Tp, class _Alloc = allocator<_Tp> > class vector`, the spelling the table already binds here
+//   (binder 0x00765B70) and the one FableWin's callers name (CCombatDebugInfo copy, NShape::FractureShape, CBasicShape::UpdateSubdivisions,
+//   the Dragon creature-action ctors). Retail has no ICF, so the CArray<C3DVector> copy (binder 0x00BD8B30) is not a second name here.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F0810, 137 bytes, thiscall, `ret 4`, returns this.
 // Identity: 76 call sites (0x006EADCA, 0x006F3037, 0x0075DEBB, ...); the landed CTCShapeManager::InitialiseFrom 0x00762AB0
@@ -34,7 +38,8 @@ inline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, 
     return __cur;
 }
 
-template <class T> struct allocator {                       // STLport allocator<T>: empty
+template <class T> class allocator {                        // STLport allocator<T>: empty (class key, as STLport declares it)
+public:
     allocator() { }
     allocator(const allocator&) { }
     T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
@@ -58,17 +63,18 @@ template <class T> struct _Vector_base {
     }
 };
 
-template <class T> struct vector : _Vector_base<T> {
+template <class T, class _Alloc = allocator<T> > class vector : public _Vector_base<T> {
+public:
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
     allocator<T> get_allocator() const { return allocator<T>(); }
     vector(const vector& x);
 };
 
-template <class T> vector<T>::vector(const vector& x)
+template <class T, class _Alloc> vector<T, _Alloc>::vector(const vector& x)
     : _Vector_base<T>(x.size(), x.get_allocator())
 {
     this->_M_finish = __uninitialized_copy((const T*)x._M_start, (const T*)x._M_finish, this->_M_start, __false_type());
 }
 
-template struct vector<C3DVector>;
+template class vector<C3DVector>;
 }

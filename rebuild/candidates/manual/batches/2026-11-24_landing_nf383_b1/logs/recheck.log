@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00429d8e   RELOCATION_MATCH PASS   TailJmp__Dest_val_std__allocator_CCountedPointer_00429d8e
+006f0810   RELOCATION_MATCH PASS   vector
+009e42c0   WARN STANDIN_LEAF ?ClearAllMaintainedEvents@CJoystick@@QAEXXZ (catalog CMemoryDataOutputStream::Clear; names another function)
+009e42c0   RELOCATION_MATCH PASS   Clear
+009f5540   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+009f5540   WARN SHARED_HEADER_AVAILABLE CJoystick (engine/CJoystick.h)
+009f5540   WARN SHARED_HEADER_AVAILABLE CMouse (engine/CMouse.h)
+009f5540   WARN SHARED_HEADER_AVAILABLE CKeyboard (engine/CKeyboard.h)
+009f5540   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+009f5540   RELOCATION_MATCH PASS   ClearEvents
+00a66860   WARN STANDIN_LEAF ?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ (catalog CMemoryDataOutputStream::Clear; names another function)
+00a66860   RELOCATION_MATCH PASS   Clear
+00a66c00   WARN STANDIN_LEAF ?ClearAllMaintainedEvents@CMouse@@QAEXXZ (catalog CMemoryDataOutputStream::Clear; names another function)
+00a66c00   RELOCATION_MATCH PASS   Clear
+
+WINS: 6
+  00429d8e RELOCATION_MATCH _global::??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ
+  006f0810 RELOCATION_MATCH std::vector<C3DVector>::??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z
+  009e42c0 RELOCATION_MATCH CMemoryDataOutputStream::?ClearAllMaintainedEvents@CJoystick@@QAEXXZ
+  009f5540 RELOCATION_MATCH CInputManager::ClearEvents
+  00a66860 RELOCATION_MATCH CMemoryDataOutputStream::?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ
+  00a66c00 RELOCATION_MATCH CMemoryDataOutputStream::?ClearAllMaintainedEvents@CMouse@@QAEXXZ

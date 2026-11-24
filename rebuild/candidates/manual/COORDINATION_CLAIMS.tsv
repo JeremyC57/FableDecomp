@@ -570,3 +570,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF385 stand-in selves sharing one name with one other address (581 free OPEN.tsv rows, fix "shared name (2 addresses)"; scratch agentNF385/TARGETS.tsv)	naming	claimed	locks via nflocks owner NF385
 2026-11-24	A	agent NF384 the 116 free T1 split_fixable targets (scratch agentNF384/TARGETS.tsv)	naming	done	landed nf384_b1 (10 rows); ports queued T3 nf384
 2026-11-24	A	agent NF386 unblock the T1 targets NF384 skipped: the T3 lines reserving their 74 binders (nf324 26, nf297 7, nf303 7, ...; scratch agentNF386/BLOCKERS.tsv)	naming	claimed	locks via nflocks owner NF386
+2026-11-24	A	agent NF383 identity research under the no-ICF ruling: NF378 skipped-conflict (18) + NF380 q5 unknowns (26)	naming	done	landed nf383_b1 (6), b2 (5, objsec rule), b3 (3); 14 unknowns queued

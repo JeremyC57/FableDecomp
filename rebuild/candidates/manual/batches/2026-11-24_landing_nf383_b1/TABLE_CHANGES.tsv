@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+replace	?Clear@CJoystick@@QAEXXZ -> ?ClearAllMaintainedEvents@CJoystick@@QAEXXZ	009e42c0	009f5540	NF383: binder 009f5540 respelt (FableWin CInputManager::ClearEvents calls ClearAllMaintainedEvents; Ego_r lib_joystick.obj 26 bytes)
+replace	?Clear@CMouse@@QAEXXZ -> ?ClearAllMaintainedEvents@CMouse@@QAEXXZ	00a66c00	009f5540	NF383: binder 009f5540 respelt (Ego_r lib_mouse.obj 26 bytes)
+replace	?Clear@CKeyboard@@QAEXXZ -> ?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ	00a66860	009f5540	NF383: binder 009f5540 respelt (Ego_r lib_keyboard.obj 26 bytes)
