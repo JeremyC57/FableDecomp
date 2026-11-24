@@ -1,0 +1,16 @@
+class	vftable	verdict	slots	notes
+CCreatureAction_DowseFire	01274D0C	OK	retail=70 emitted=70 same=70 slot0_alias=0	
+CCreatureAction_FillBucket	01274E2C	OK	retail=70 emitted=70 same=70 slot0_alias=0	
+CCreatureAction_Hammer	0127519C	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_PickUpGoods	0128FBF4	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_PlayerInteractionBribe	01259664	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_PlayerInteractionFlirt	01259794	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_PlayerInteractionGreet	012592D4	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_PlayerInteractionInsult	01259404	OK	retail=70 emitted=70 same=70 slot0_alias=0	
+CCreatureAction_PlayerInteractionThreaten	01259534	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_PlayerInteractionViewQuests	01270E7C	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_SheatheItemToInventory_ForDivineWrath	0125CA7C	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_SheatheItemToInventory_ForUnholyPower	0125CB9C	OK	retail=70 emitted=70 same=70 slot0_alias=0	
+CCreatureAction_ShowLove	01274F4C	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_StabbedToDeath	01277B74	OK	retail=70 emitted=70 same=69 slot0_alias=1	
+CCreatureAction_TavernGameMasterInteraction	012598C4	OK	retail=70 emitted=70 same=69 slot0_alias=1	

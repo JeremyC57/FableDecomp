@@ -9,6 +9,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_FILLBUCKET_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01274E2C (RTTI .?AVCCreatureAction_FillBucket@@ : CCreatureActionBase), 70 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_FillBucket); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.
+#include "engine/CCreatureActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_FillBucket : public CCreatureActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x0084B420 ?PerformAction@CCreatureAction_FillBucket@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0084C5C0 ?Clone@CCreatureAction_FillBucket@@UBEPAVCCreatureActionBase@@XZ
+public:
+    unsigned char PAICreature[0x8];                          // +0xa8 CIntelligentPointer<CThingAICreature>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_FillBucket) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_FillBucket, PAICreature) == 0xa8);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_FillBucket {
 public:
@@ -50,8 +69,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_FillBucket) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_FillBucket, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_FillBucket, PAICreature) == 0xa8);
+FABLE_STATIC_ASSERT_AT(53, sizeof(CCreatureAction_FillBucket) == 0xb0);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CCreatureAction_FillBucket, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CCreatureAction_FillBucket, PAICreature) == 0xa8);
+#endif // FABLE_RETAIL_CCREATUREACTION_FILLBUCKET_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_FILLBUCKET_H

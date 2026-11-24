@@ -9,6 +9,29 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_DOWSEFIRE_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01274D0C (RTTI .?AVCCreatureAction_DowseFire@@ : CCreatureActionBase), 70 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_DowseFire); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.
+#include "engine/CCreatureActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_DowseFire : public CCreatureActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x00842260 ?PerformAction@CCreatureAction_DowseFire@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0084C510 ?Clone@CCreatureAction_DowseFire@@UBEPAVCCreatureActionBase@@XZ
+public:
+    unsigned char PAICreature[0x8];                          // +0xa8 CIntelligentPointer<CThingAICreature>
+    unsigned char PBuilding[0x8];                            // +0xb0 CIntelligentPointer<CThingBuilding>
+    unsigned long FireNumber;                                // +0xb8
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DowseFire) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DowseFire, PAICreature) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DowseFire, PBuilding) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DowseFire, FireNumber) == 0xb8);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_DowseFire {
 public:
@@ -52,10 +75,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DowseFire) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DowseFire, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DowseFire, PAICreature) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DowseFire, PBuilding) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DowseFire, FireNumber) == 0xb8);
+FABLE_STATIC_ASSERT_AT(55, sizeof(CCreatureAction_DowseFire) == 0xbc);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CCreatureAction_DowseFire, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CCreatureAction_DowseFire, PAICreature) == 0xa8);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CCreatureAction_DowseFire, PBuilding) == 0xb0);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CCreatureAction_DowseFire, FireNumber) == 0xb8);
+#endif // FABLE_RETAIL_CCREATUREACTION_DOWSEFIRE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_DOWSEFIRE_H

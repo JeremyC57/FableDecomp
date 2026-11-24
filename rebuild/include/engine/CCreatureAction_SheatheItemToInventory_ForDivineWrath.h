@@ -9,6 +9,29 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORDIVINEWRATH_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0125CA7C (RTTI .?AVCCreatureAction_SheatheItemToInventory_ForDivineWrath@@ : CCreatureAction_SheatheItemToInventory), 70 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_SheatheItemToInventory_ForDivineWrath); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.
+#include "engine/CCreatureAction_SheatheItemToInventory.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_SheatheItemToInventory_ForDivineWrath : public CCreatureAction_SheatheItemToInventory {
+public:
+    virtual void PerformAction();                                         // slot 3 0x0069F7F0 ?PerformAction@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x0069F800 ?FinishAction@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAEXXZ
+private:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x006A0CC0 ?Clone@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@EBEPAVCCreatureActionBase@@XZ
+public:
+    virtual void Initialise();                                            // slot 12 0x0069F7B0 ?Initialise@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x006A07F0 ?IsToEvadeAllHits@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UBE_NXZ
+    virtual bool IsAbleToBeAttacked() const;                              // slot 47 0x006A0800 ?IsAbleToBeAttacked@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SheatheItemToInventory_ForDivineWrath) == 0xb0);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_SheatheItemToInventory_ForDivineWrath {
 public:
@@ -19,7 +42,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SheatheItemToInventory_ForDivineWrath) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SheatheItemToInventory_ForDivineWrath, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CCreatureAction_SheatheItemToInventory_ForDivineWrath) == 0xb0);
+FABLE_STATIC_ASSERT_AT(23, offsetof(CCreatureAction_SheatheItemToInventory_ForDivineWrath, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORDIVINEWRATH_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORDIVINEWRATH_H

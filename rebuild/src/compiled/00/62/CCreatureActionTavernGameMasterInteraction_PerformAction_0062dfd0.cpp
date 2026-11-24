@@ -1,1 +1,8 @@
-void __fastcall CCreatureAction_TavernGameMasterInteraction_PerformAction() {}
+// Leaf: ?PerformAction@CCreatureAction_TavernGameMasterInteraction@@UAEXXZ
+#define FABLE_RETAIL_CCREATUREACTION_TAVERNGAMEMASTERINTERACTION_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCreatureAction_TavernGameMasterInteraction.h"
+void CCreatureAction_TavernGameMasterInteraction::PerformAction()
+{}
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_TavernGameMasterInteraction_PerformAction -> CCreatureAction_TavernGameMasterInteraction::PerformAction, the RTTI-placed PDB member; class model: engine/CCreatureAction_TavernGameMasterInteraction.h opt-in FABLE_RETAIL_CCREATUREACTION_TAVERNGAMEMASTERINTERACTION_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.

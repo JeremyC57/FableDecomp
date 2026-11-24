@@ -9,6 +9,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_STABBEDTODEATH_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01277B74 (RTTI .?AVCCreatureAction_StabbedToDeath@@ : CCreatureActionBase), 70 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_StabbedToDeath); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.
+#include "engine/CCreatureActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_StabbedToDeath : public CCreatureActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x0087E830 ?PerformAction@CCreatureAction_StabbedToDeath@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x0087E840 ?FinishAction@CCreatureAction_StabbedToDeath@@UAEXXZ
+    virtual long GetAnimDelayTime() const;                                // slot 6 0x0087FE50 ?GetAnimDelayTime@CCreatureAction_StabbedToDeath@@UBEJXZ
+    virtual long GetAnimationTransitionInTime() const;                    // slot 8 0x0087FE60 ?GetAnimationTransitionInTime@CCreatureAction_StabbedToDeath@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008800C0 ?Clone@CCreatureAction_StabbedToDeath@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x0087F340 ?Initialise@CCreatureAction_StabbedToDeath@@UAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_StabbedToDeath) == 0xa8);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_StabbedToDeath {
 public:
@@ -18,7 +39,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_StabbedToDeath) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_StabbedToDeath, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(21, sizeof(CCreatureAction_StabbedToDeath) == 0xa8);
+FABLE_STATIC_ASSERT_AT(22, offsetof(CCreatureAction_StabbedToDeath, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_STABBEDTODEATH_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_STABBEDTODEATH_H
