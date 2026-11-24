@@ -1,4 +1,6 @@
+// Leaf: ?RemoveHeroClothing@CGameScriptInterface@@UBEXXZ
 // CGameScriptInterface::RemoveHeroClothing @ 0089b390
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 // agentNF17: the Node / Vec stand-ins are the explicit specialisation CVectorMap<ETCInterfaceType, CTCBase*> (the landed 0x0074EE90
 //   idiom) and its std::pair value_type; 0x0040F020 is its LowerBound (NF14 / established spelling).
@@ -34,8 +36,9 @@ class CThingPlayerCreature : public HeroData { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 
-void __fastcall CGameScriptInterface_RemoveHeroClothing(CGameScriptInterface* self)
+void CGameScriptInterface::RemoveHeroClothing() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     ETCInterfaceType key;
     CPlayer* h = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     HeroData* d = h->GetPControlledCreature();
@@ -53,3 +56,4 @@ void __fastcall CGameScriptInterface_RemoveHeroClothing(CGameScriptInterface* se
     }
     DoRemove(it->second);
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_RemoveHeroClothing -> CGameScriptInterface::RemoveHeroClothing, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

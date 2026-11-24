@@ -1,0 +1,22 @@
+--- orig/hdr_CTavernGameSpotTheAdditionDef.h	2026-11-24 01:19:59.237554373 +0000
++++ hdr/engine/CTavernGameSpotTheAdditionDef.h	2026-11-24 01:19:59.287927825 +0000
+@@ -39,8 +39,16 @@
+     float HighlightWidth;               // +0x84
+     CRGBColour HighlightColour;         // +0x88
+     CRGBColour HighlightColourError;    // +0x8c
++#ifdef FABLE_RETAIL_CTAVERNGAMESPOTTHEADDITIONDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x004DED48: ?GetSizeofClass@CTavernGameSpotTheAdditionDef@@UAEKXZ (Ego_r.pdb + FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+-FABLE_STATIC_ASSERT(offsetof(CTavernGameSpotTheAdditionDef, ItemsPerRound) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CTavernGameSpotTheAdditionDef, ImpulseScale) == 0x60);
+-FABLE_STATIC_ASSERT(offsetof(CTavernGameSpotTheAdditionDef, HighlightColourError) == 0x8c);
++FABLE_STATIC_ASSERT_AT(43, offsetof(CTavernGameSpotTheAdditionDef, ItemsPerRound) == 0x44);
++FABLE_STATIC_ASSERT_AT(44, offsetof(CTavernGameSpotTheAdditionDef, ImpulseScale) == 0x60);
++FABLE_STATIC_ASSERT_AT(45, offsetof(CTavernGameSpotTheAdditionDef, HighlightColourError) == 0x8c);
+ #endif

@@ -26,8 +26,19 @@ public:
     virtual CCreatureActionBase* Clone() const;                          // 0x007EEA50
 private:
     CIntelligentPointer<CThing> PChest;                                  // +0xa8
+#ifdef FABLE_RETAIL_CCREATUREACTION_OPENCHEST_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x007EE850: ?IsToHaveEmptyHands@CCreatureAction_OpenChest@@UBE_NXZ (FableWin.pdb)
+public:
+    virtual bool IsToHaveEmptyHands() const;
+    // 0x007EE860: ?IsToReplaceItemIfRemoved@CCreatureAction_OpenChest@@UBE_NXZ (FableWin.pdb)
+    virtual bool IsToReplaceItemIfRemoved() const;
+private:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_OpenChest) == 0xb0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_OpenChest) == 0xb0);
 #else
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -73,9 +84,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_OpenChest) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_OpenChest, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_OpenChest, PChest) == 0xa8);
+FABLE_STATIC_ASSERT_AT(76, sizeof(CCreatureAction_OpenChest) == 0xb0);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CCreatureAction_OpenChest, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CCreatureAction_OpenChest, PChest) == 0xa8);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_OPENCHEST
 #endif // FABLE_ENGINE_CCREATUREACTION_OPENCHEST_H

@@ -22,6 +22,15 @@ protected:
     bool ImmediateCast;                                                  // +0x114
     bool OneAnimCast;                                                    // +0x115
     long LevelToCast;                                                    // +0x118
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTWILLFORCESPELL_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x008BD900: ?PerformAction@CCreatureAction_CastWillForceSpell@@UAEXXZ (FableWin.pdb)
+public:
+    virtual void PerformAction();
+protected:
+#endif
 };
 #else
 

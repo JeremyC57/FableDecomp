@@ -1,4 +1,14 @@
-bool __fastcall CCombatAction_GenericResponseToExplosion_IsOverrideableByActionOfSamePriority()
+// Leaf: ?IsOverrideableByActionOfSamePriority@CCombatAction_GenericResponseToExplosion@@UBE_NXZ
+#define FABLE_RETAIL_CCOMBATACTION_GENERICRESPONSETOEXPLOSION_RTTI_DECLS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONGENERICRESPONSETOEXPLOSION
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCombatAction_GenericResponseToExplosion.h"
+bool CCombatAction_GenericResponseToExplosion::IsOverrideableByActionOfSamePriority() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v4, NF324): CCombatAction_GenericResponseToExplosion_IsOverrideableByActionOfSamePriority -> CCombatAction_GenericResponseToExplosion::IsOverrideableByActionOfSamePriority, the RTTI-placed PDB member; class model: engine/CCombatAction_GenericResponseToExplosion.h opt-in FABLE_RETAIL_CCOMBATACTIONGENERICRESPONSETOEXPLOSION, FABLE_RETAIL_CCOMBATACTION_GENERICRESPONSETOEXPLOSION_RTTI_DECLS (preamble of CThingCreatureBase_ReactToGenericStrike_00667450.cpp).

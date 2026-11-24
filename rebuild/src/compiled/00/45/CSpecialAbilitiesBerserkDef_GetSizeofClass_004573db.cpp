@@ -1,9 +1,10 @@
+// Leaf: ?GetSizeofClass@CSpecialAbilitiesBerserkDef@@UAEKXZ
 class CSpecialAbilitiesBerserkDef { public:
-    int placeholder;
+    virtual unsigned long GetSizeofClass();
 };
 
-unsigned long __fastcall CSpecialAbilitiesBerserkDef_GetSizeofClass(const CSpecialAbilitiesBerserkDef* self)
+unsigned long CSpecialAbilitiesBerserkDef::GetSizeofClass()
 {
-    (void)self;
     return 0x188;
 }
+// Flatten route (flatten_pilot v4, NF324): CSpecialAbilitiesBerserkDef_GetSizeofClass -> CSpecialAbilitiesBerserkDef::GetSizeofClass, the RTTI-placed PDB member; class model: the row's local class model.

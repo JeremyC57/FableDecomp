@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CVillagerInteractionsDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 class CDefString;
 class CPersistContext { public:
@@ -5,15 +6,18 @@ class CPersistContext { public:
 };
 
 class CVillagerInteractionsDef { public:
-    char pad[0x3c];
+    char pad[0x38];
     int fieldA;   // +0x3c
     int fieldB;   // +0x40
     int fieldC;   // +0x44
+    virtual void Transfer(class CPersistContext&);
 };
 
-void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* /*edx*/, CPersistContext* ctx)
+void CVillagerInteractionsDef::Transfer(class CPersistContext& ctx)
 {
-    ctx->Transfer(*(CDefString*)&(def->fieldA));
-    ctx->Transfer(*(CDefString*)&(def->fieldB));
-    ctx->Transfer(*(float*)&(def->fieldC));
+    CVillagerInteractionsDef* def = this;
+    ctx.Transfer(*(CDefString*)&(def->fieldA));
+    ctx.Transfer(*(CDefString*)&(def->fieldB));
+    ctx.Transfer(*(float*)&(def->fieldC));
 }
+// Flatten route (flatten_pilot v4, NF324): CVillagerInteractionsDef_Transfer -> CVillagerInteractionsDef::Transfer, the RTTI-placed PDB member; class model: the row's local class model.

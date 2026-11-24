@@ -27,8 +27,17 @@ protected:
     C3DVector     TargetPos;                                             // +0x11c
     bool          UseTargetPos;                                          // +0x128
     long          ShotAlpha;                                             // +0x12c
+#ifdef FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x008C7CF0: ?GetAnimationTransitionInTime@CCreatureAction_TrollThrowProjectile@@UBEJXZ (FableWin.pdb)
+public:
+    virtual long GetAnimationTransitionInTime() const;
+protected:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollThrowProjectile) == 0x130);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CCreatureAction_TrollThrowProjectile) == 0x130);
 #else
 
 #pragma pack(push, 1)
@@ -105,14 +114,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollThrowProjectile) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, PShot) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_X) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Y) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Z) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, UseTargetPos) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, ShotAlpha) == 0x12c);
+FABLE_STATIC_ASSERT_AT(108, sizeof(CCreatureAction_TrollThrowProjectile) == 0x130);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CCreatureAction_TrollThrowProjectile, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CCreatureAction_TrollThrowProjectile, PShot) == 0x114);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_X) == 0x11c);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Y) == 0x120);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Z) == 0x124);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CCreatureAction_TrollThrowProjectile, UseTargetPos) == 0x128);
+FABLE_STATIC_ASSERT_AT(115, offsetof(CCreatureAction_TrollThrowProjectile, ShotAlpha) == 0x12c);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE
 #endif // FABLE_ENGINE_CCREATUREACTION_TROLLTHROWPROJECTILE_H

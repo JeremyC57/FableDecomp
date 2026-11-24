@@ -1,0 +1,22 @@
+--- orig/hdr_CBuyableHouseDef.h	2026-11-24 01:17:46.563627808 +0000
++++ hdr/engine/CBuyableHouseDef.h	2026-11-24 01:17:46.620077799 +0000
+@@ -24,8 +24,16 @@
+     long MaxRentBags;                                                    // +0x44
+     bool IsScripted;                                                     // +0x48
+     bool IsBuyableWithoutSignpost;                                       // +0x49
++#ifdef FABLE_RETAIL_CBUYABLEHOUSEDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x004DDB52: ?GetSizeofClass@CBuyableHouseDef@@UAEKXZ (FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+-FABLE_STATIC_ASSERT(offsetof(CBuyableHouseDef, Price) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CBuyableHouseDef, IsScripted) == 0x48);
+-FABLE_STATIC_ASSERT(sizeof(CBuyableHouseDef) == 0x4c);
++FABLE_STATIC_ASSERT_AT(28, offsetof(CBuyableHouseDef, Price) == 0x28);
++FABLE_STATIC_ASSERT_AT(29, offsetof(CBuyableHouseDef, IsScripted) == 0x48);
++FABLE_STATIC_ASSERT_AT(30, sizeof(CBuyableHouseDef) == 0x4c);
+ #endif // FABLE_ENGINE_CBUYABLEHOUSEDEF_RETAIL_H

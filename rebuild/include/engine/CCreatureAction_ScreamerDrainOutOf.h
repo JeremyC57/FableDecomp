@@ -19,6 +19,14 @@ public:
     CCreatureAction_ScreamerDrainOutOf(CThingCreatureBase& creature) : CCombatActionBase(creature, 150, CSoundPair()) { }
     CCreatureAction_ScreamerDrainOutOf(CThingCreatureBase& creature, CThing& target) : CCombatActionBase(creature, target, 150, CSoundPair()) { }
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINOUTOF_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x006F55C0: ?GetAnimationTransitionInTime@CCreatureAction_ScreamerDrainOutOf@@UBEJXZ (FableWin.pdb)
+public:
+    virtual long GetAnimationTransitionInTime() const;
+#endif
 };
 FABLE_STATIC_ASSERT_AT(12, sizeof(CCreatureAction_ScreamerDrainOutOf) == 0x114);
 #else

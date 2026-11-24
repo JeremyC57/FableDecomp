@@ -1,4 +1,6 @@
+// Leaf: ?IsHeroNaked@CGameScriptInterface@@UBE_NXZ
 // CGameScriptInterface::IsHeroNaked  @ 0x0089b330  (VC7.1 /O2 /Oy)
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef unsigned char u8;
 typedef unsigned int u32;
@@ -36,8 +38,9 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern "C" bool        __fastcall TCShop_GetName(void* self);
 
-bool __fastcall CGameScriptInterface_IsHeroNaked(const CGameScriptInterface* self)
+bool CGameScriptInterface::IsHeroNaked() const
 {
+    const CGameScriptInterface* self = this;
     HeroTarget* target = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer())->GetPControlledCreature();
 
     if (target != 0 &&
@@ -54,3 +57,4 @@ bool __fastcall CGameScriptInterface_IsHeroNaked(const CGameScriptInterface* sel
     }
     return false;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_IsHeroNaked -> CGameScriptInterface::IsHeroNaked, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

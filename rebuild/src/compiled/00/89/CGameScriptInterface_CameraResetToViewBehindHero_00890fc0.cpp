@@ -1,3 +1,4 @@
+// Leaf: ?CameraResetToViewBehindHero@CGameScriptInterface@@UAEXM@Z
 // Naming wave 18: the global stand-in g_someInt (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 class CMainGameComponent {
@@ -8,13 +9,16 @@ public:
 };
 
 class CGameScriptInterface { public:
-    char pad[0x48];
+    char pad[0x44];
     int field48;
+    virtual void CameraResetToViewBehindHero(float);
 };
 
-void __fastcall CGameScriptInterface_CameraResetToViewBehindHero(CGameScriptInterface* self, void* edx, float scale)
+void CGameScriptInterface::CameraResetToViewBehindHero(float scale)
 {
+    CGameScriptInterface* self = this;
     long v = (long)((double)CMainGameComponent::GetConstantFPS() * scale);
     self->field48 = v;
     if (v < 0) self->field48 = 0;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_CameraResetToViewBehindHero -> CGameScriptInterface::CameraResetToViewBehindHero, the RTTI-placed PDB member; class model: the row's local class model.

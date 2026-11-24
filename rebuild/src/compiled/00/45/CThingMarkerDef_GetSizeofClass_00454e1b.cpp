@@ -1,7 +1,10 @@
-class CThingMarkerDef { public:};
+// Leaf: ?GetSizeofClass@CThingMarkerDef@@UAEKXZ
+class CThingMarkerDef { public:
+    virtual unsigned long GetSizeofClass();
+};
 
-unsigned long __fastcall CThingMarkerDef_GetSizeofClass(const CThingMarkerDef* self)
+unsigned long CThingMarkerDef::GetSizeofClass()
 {
-    (void)self;
     return 0x88;
 }
+// Flatten route (flatten_pilot v4, NF324): CThingMarkerDef_GetSizeofClass -> CThingMarkerDef::GetSizeofClass, the RTTI-placed PDB member; class model: the row's local class model.

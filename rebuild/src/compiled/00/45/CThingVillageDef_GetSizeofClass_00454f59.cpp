@@ -1,6 +1,9 @@
-class CThingVillageDef { public:};
-unsigned long __fastcall CThingVillageDef_GetSizeofClass(const CThingVillageDef* self)
+// Leaf: ?GetSizeofClass@CThingVillageDef@@UAEKXZ
+class CThingVillageDef { public:
+    virtual unsigned long GetSizeofClass();
+};
+unsigned long CThingVillageDef::GetSizeofClass()
 {
-    (void)self;
     return 0x80;
 }
+// Flatten route (flatten_pilot v4, NF324): CThingVillageDef_GetSizeofClass -> CThingVillageDef::GetSizeofClass, the RTTI-placed PDB member; class model: the row's local class model.

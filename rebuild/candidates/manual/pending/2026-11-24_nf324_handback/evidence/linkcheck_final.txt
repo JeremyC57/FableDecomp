@@ -1,0 +1,4 @@
+head: objects 681 duplicates(LNK2005) 0 unresolved 203
+new: objects 681 duplicates(LNK2005) 0 unresolved 203
+unresolved sets EQUAL (105)
+LINKCHECK_DONE

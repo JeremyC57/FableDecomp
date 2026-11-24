@@ -1,3 +1,5 @@
+// Leaf: ?GetPlayerCreatureCombatMultiplierRunningNumHits@CGameScriptInterface@@UBEJXZ
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum ETCInterfaceType { ETC_DUMMY = 0 };
 
@@ -36,9 +38,9 @@ extern "C" long __fastcall Sub_InvokeTarget(void* iface);
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)0x68;
 
-long __fastcall CGameScriptInterface_GetPlayerCreatureCombatMultiplierRunningNumHits(
-    const CGameScriptInterface* self)
+long CGameScriptInterface::GetPlayerCreatureCombatMultiplierRunningNumHits() const
 {
+    const CGameScriptInterface* self = this;
     CPlayer* a = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     CThingOverlay* pThing = a->GetPControlledCreature();
     if (pThing != 0 &&
@@ -56,3 +58,4 @@ long __fastcall CGameScriptInterface_GetPlayerCreatureCombatMultiplierRunningNum
     }
     return 0;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_GetPlayerCreatureCombatMultiplierRunningNumHits -> CGameScriptInterface::GetPlayerCreatureCombatMultiplierRunningNumHits, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

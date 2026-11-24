@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of CGameScriptInterface::AddGossip @ 0x008aa0d0
-// Leaf: ?CGameScriptInterface_AddGossip@@YIXPAVCGameScriptInterface@@PAXVCCharString@@@Z
+// Leaf: ?AddGossip@CGameScriptInterface@@UAEXVCCharString@@@Z
 //
 // Retail is a __fastcall member (this=ecx) taking a CCharString by value. It copies
 // the argument into a temporary and forwards it BY VALUE to an inner routine
@@ -21,7 +21,8 @@ class CCharString { public:
 // Inner gossip routine @ 0x8ae660: takes the string BY VALUE (owns/destroys the copy).
 void __fastcall Inner(CCharString byval);
 
-void __fastcall CGameScriptInterface_AddGossip(CGameScriptInterface* self, void* edx, CCharString category)
+void CGameScriptInterface::AddGossip(class CCharString category)
 {
     Inner(category);
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_AddGossip -> CGameScriptInterface::AddGossip, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

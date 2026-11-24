@@ -1,4 +1,11 @@
-int __fastcall CCombatAction_GenericStrikeResponseKnockdownRecoverBase_GetAnimationTransitionInTime()
+// Leaf: ?GetAnimationTransitionInTime@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UBEJXZ
+#define FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWNRECOVERBASE_RTTI_DECLS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTION_KNOCKDOWNRECOVER
+#include "engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h"
+long CCombatAction_GenericStrikeResponseKnockdownRecoverBase::GetAnimationTransitionInTime() const
 {
     return 0;
 }
+// Flatten route (flatten_pilot v4, NF324): CCombatAction_GenericStrikeResponseKnockdownRecoverBase_GetAnimationTransitionInTime -> CCombatAction_GenericStrikeResponseKnockdownRecoverBase::GetAnimationTransitionInTime, the RTTI-placed PDB member; class model: engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h opt-in FABLE_RETAIL_CCOMBATACTION_KNOCKDOWNRECOVER, FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWNRECOVERBASE_RTTI_DECLS (preamble of CCombatActionGenericStrikeResponseKnockdownRecoverBase_Initialise_00865eb0.cpp).

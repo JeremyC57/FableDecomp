@@ -1,3 +1,4 @@
+// Leaf: ?AddNewRumourToCategory@CGameScriptInterface@@UBEXABVCCharString@@0@Z
 
 class CCharString {
 public:
@@ -14,7 +15,8 @@ public:
 
 void __stdcall CGameScriptInterface_AddRumourToCategoryEx(CCharString rumourCategory, CCharString rumourText);
 
-void __fastcall CGameScriptInterface_AddNewRumourToCategory(CGameScriptInterface* self, void* /*edx*/, const CCharString& rumourCategory, const CCharString& rumourText)
+void CGameScriptInterface::AddNewRumourToCategory(const class CCharString& rumourCategory, const class CCharString& rumourText) const
 {
     CGameScriptInterface_AddRumourToCategoryEx(rumourCategory, rumourText);
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_AddNewRumourToCategory -> CGameScriptInterface::AddNewRumourToCategory, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

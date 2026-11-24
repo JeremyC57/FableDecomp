@@ -28,6 +28,14 @@ public:
 // ?Alloc@CLightningDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
+#ifdef FABLE_RETAIL_CLIGHTNINGDEF_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x0045890D: ?GetSizeofClass@CLightningDef@@UAEKXZ (FableWin.pdb)
+public:
+    virtual unsigned long GetSizeofClass();
+#endif
 };
 FABLE_STATIC_ASSERT_AT(27, offsetof(CLightningDef, Range) == 0x3c);
 FABLE_STATIC_ASSERT_AT(28, offsetof(CLightningDef, DamagePeriod) == 0x4c);

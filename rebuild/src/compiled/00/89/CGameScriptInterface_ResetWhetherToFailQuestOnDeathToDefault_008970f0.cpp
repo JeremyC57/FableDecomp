@@ -1,7 +1,9 @@
+// Leaf: ?ResetWhetherToFailQuestOnDeathToDefault@CGameScriptInterface@@UBEXXZ
 // CGameScriptInterface::ResetWhetherToFailQuestOnDeathToDefault
 // Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members root/header are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // __fastcall, void, 1 param (this)
 
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -20,8 +22,9 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 extern void __fastcall Consume(void* value);
 
 
-void __fastcall CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault(CGameScriptInterface* self)
+void CGameScriptInterface::ResetWhetherToFailQuestOnDeathToDefault() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     CPlayer* a = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     unsigned char* eax = (unsigned char*)a->GetPControlledCreature();
     if (!eax) return;
@@ -38,3 +41,4 @@ void __fastcall CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault(CGa
     else sel = endNode;
     Consume(((void*)sel->second));
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault -> CGameScriptInterface::ResetWhetherToFailQuestOnDeathToDefault, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

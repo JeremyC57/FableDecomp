@@ -1,1 +1,8 @@
-void __stdcall CEnginePrimitiveOcclusionGroupManager_RenderSubPrimitive(int primitive, int arg1) {}
+// Leaf: ?RenderSubPrimitive@CEnginePrimitiveOcclusionGroupManager@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONGROUPMANAGER_RTTI_DECLS
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONGROUPMANAGER_CLASS
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#include "engine/CEnginePrimitiveOcclusionGroupManager.h"
+void CEnginePrimitiveOcclusionGroupManager::RenderSubPrimitive(class CEngineSubPrimitiveBase& primitive, enum ERenderPassType arg1)
+{}
+// Flatten route (flatten_pilot v4, NF324): CEnginePrimitiveOcclusionGroupManager_RenderSubPrimitive -> CEnginePrimitiveOcclusionGroupManager::RenderSubPrimitive, the RTTI-placed PDB member; class model: engine/CEnginePrimitiveOcclusionGroupManager.h opt-in FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONGROUPMANAGER_CLASS, FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONGROUPMANAGER_RTTI_DECLS (preamble of CEnginePrimitiveOcclusionGroupManager_CreateInternalPrimitive_00bacbc0.cpp).

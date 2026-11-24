@@ -39,6 +39,14 @@ public:
     long          SlotIndex;                                 // +0x30
     long          ExtraData1;                                // +0x34
     long          ExtraData2;                                // +0x38
+#ifdef FABLE_RETAIL_CCONTEXTSENSITIVEITEMDEF_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x0044C37A: ?GetSizeofClass@CContextSensitiveItemDef@@UAEKXZ (FableWin.pdb)
+public:
+    virtual unsigned long GetSizeofClass();
+#endif
 };
 FABLE_STATIC_ASSERT_AT(1032, sizeof(CContextSensitiveItemDef) == 0x3c);
 FABLE_STATIC_ASSERT_AT(1034, offsetof(CContextSensitiveItemDef, Type) == 0x28);

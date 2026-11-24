@@ -1,4 +1,7 @@
+// Leaf: ?IsPlayerCreatureReadyToFireProjectileWeapon@CGameScriptInterface@@UBE_NAAM@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 /* CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon @ 0x00899c10
  * VC7.1 / __fastcall member modelled as free __fastcall(this in ecx).
  * Signed bool return in al; single out-parameter (float*) => ret 4.
@@ -52,9 +55,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 extern float  __fastcall IsPCReady_GetReadiness(void* weapon);               /* call ffeefe50 */
 extern const float DELTA_NOTIONAL_ZERO;
 
-bool __fastcall CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon(
-    void* thisptr, unsigned long /*edx*/, float* out)
+bool CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon(float& out) const
 {
+    void* thisptr = (void*)this;
     IsPCReady_Self* self = (IsPCReady_Self*)thisptr;
 
     CPlayer* subsystem = (&((CPlayerManager*)self->m_Field14)->GetMainPlayer());
@@ -87,8 +90,9 @@ bool __fastcall CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon
     /* fcom threshold; taken (return false) when readiness <= threshold */
     if (readiness > DELTA_NOTIONAL_ZERO)
     {
-        *out = readiness;
+        out = readiness;
         return true;
     }
     return false;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon -> CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

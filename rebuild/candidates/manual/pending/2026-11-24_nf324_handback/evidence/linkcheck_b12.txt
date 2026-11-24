@@ -1,0 +1,3 @@
+head: objects 500 duplicates(LNK2005) 0 unresolved 191
+new: objects 500 duplicates(LNK2005) 0 unresolved 191
+unresolved mangled sets (first parenthesised name) EQUAL: 100 symbols

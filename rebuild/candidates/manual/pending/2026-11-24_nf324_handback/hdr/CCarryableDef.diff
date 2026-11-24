@@ -1,0 +1,51 @@
+--- orig/hdr_CCarryableDef.h	2026-11-24 01:17:49.033441409 +0000
++++ hdr/engine/CCarryableDef.h	2026-11-24 01:17:49.094719445 +0000
+@@ -30,8 +30,16 @@
+ #else
+     unsigned char _tail_0x34[0x1c];                          // +0x34 OnKillFX .. IncludeInThingScansWhenCarried (opaque)
+ #endif
++#ifdef FABLE_RETAIL_CCARRYABLEDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x004D7A0B: ?GetSizeofClass@CCarryableDef@@UAEKXZ (FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, PassiveCarrySlot) == 0x30);
++FABLE_STATIC_ASSERT_AT(34, offsetof(CCarryableDef, PassiveCarrySlot) == 0x30);
+ #else
+ #pragma pack(push, 1)
+ class CCarryableDef {
+@@ -60,18 +68,18 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CCarryableDef) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, ActiveCarrySlot) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, SecondaryActiveCarrySlot) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, PassiveCarrySlot) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OnKillFX) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_X) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_Y) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_Z) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetAmountForThingsOnTopOfMe) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, PassiveCarrySlotScale) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, IncludeInThingScansWhenCarried) == 0x4c);
++FABLE_STATIC_ASSERT_AT(63, sizeof(CCarryableDef) == 0x50);
++FABLE_STATIC_ASSERT_AT(64, offsetof(CCarryableDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(65, offsetof(CCarryableDef, ActiveCarrySlot) == 0x28);
++FABLE_STATIC_ASSERT_AT(66, offsetof(CCarryableDef, SecondaryActiveCarrySlot) == 0x2c);
++FABLE_STATIC_ASSERT_AT(67, offsetof(CCarryableDef, PassiveCarrySlot) == 0x30);
++FABLE_STATIC_ASSERT_AT(68, offsetof(CCarryableDef, OnKillFX) == 0x34);
++FABLE_STATIC_ASSERT_AT(69, offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_X) == 0x38);
++FABLE_STATIC_ASSERT_AT(70, offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_Y) == 0x3c);
++FABLE_STATIC_ASSERT_AT(71, offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_Z) == 0x40);
++FABLE_STATIC_ASSERT_AT(72, offsetof(CCarryableDef, OffsetAmountForThingsOnTopOfMe) == 0x44);
++FABLE_STATIC_ASSERT_AT(73, offsetof(CCarryableDef, PassiveCarrySlotScale) == 0x48);
++FABLE_STATIC_ASSERT_AT(74, offsetof(CCarryableDef, IncludeInThingScansWhenCarried) == 0x4c);
+ #endif // FABLE_RETAIL_CCARRYABLEDEF
+ 
+ #endif // FABLE_ENGINE_CCARRYABLEDEF_H

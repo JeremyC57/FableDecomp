@@ -1,10 +1,13 @@
-// Leaf: ?CCarrySlotDef_GetSizeofClass@@YIKPBX@Z
+// Leaf: ?GetSizeofClass@CCarrySlotDef@@UAEKXZ
+#define FABLE_RETAIL_CCARRYSLOTDEF_RTTI_DECLS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#include "engine/CCarrySlotDef.h"
 #pragma optimize("s",on)
 typedef unsigned long ulong;
 
-ulong __fastcall CCarrySlotDef_GetSizeofClass(const void* self)
+unsigned long CCarrySlotDef::GetSizeofClass()
 {
-    (void)self;
     return 0x38;
 }
-// Stand-in (owner rule 2026-11-05): CCarrySlotDef_GetSizeofClass for CCarrySlotDef::GetSizeofClass; RTTI vtable slot ?GetSizeofClass@CCarrySlotDef@@UAEKXZ + PDB name set (fablewin).
+// Flatten route (flatten_pilot v4, NF324): CCarrySlotDef_GetSizeofClass -> CCarrySlotDef::GetSizeofClass, the RTTI-placed PDB member; class model: engine/CCarrySlotDef.h opt-in FABLE_RETAIL_CCARRYSLOTDEF_RTTI_DECLS (preamble of CTCCarrying_PutThingInCarrySlot_006a1f80.cpp).

@@ -1,0 +1,8 @@
+address	verdict	old	new	route	reason
+0084a820	ACCEPT	?CCreatureAction_DropGenericBox_GetAnimExtraFlags@@YIHXZ	?GetAnimExtraFlags@CCreatureAction_DropGenericBox@@UBEKXZ	header	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+008601b0	ACCEPT	?CCreatureAction_GetUpFromSitting_IsPreventingNormalMovement@@YI_NXZ	?IsPreventingNormalMovement@CCreatureAction_GetUpFromSitting@@UBE_NXZ	header	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+008601c0	ACCEPT	?CCreatureAction_GetUpFromSitting_IsPreventingLookTurning@@YI_NXZ	?IsPreventingLookTurning@CCreatureAction_GetUpFromSitting@@UBE_NXZ	header	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00865a80	ACCEPT	?CCreatureAction_BeDazed_GetAnimationTransitionInTime@@YIHXZ	?GetAnimationTransitionInTime@CCreatureAction_BeDazed@@UBEJXZ	header	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00865a90	ACCEPT	?CCreatureAction_BeDazed_GetAnimDelayTime@@YIHXZ	?GetAnimDelayTime@CCreatureAction_BeDazed@@UBEJXZ	header	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00941ba0	ACCEPT	?CCreatureAction_PlayHopscotch_GetAnimExtraFlags@@YIHXZ	?GetAnimExtraFlags@CCreatureAction_PlayHopscotch@@UBEKXZ	header	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00941bb0	ACCEPT	?CCreatureAction_PlayHopscotch_IsUsingAnimationMovement@@YI_NXZ	?IsUsingAnimationMovement@CCreatureAction_PlayHopscotch@@UBE_NXZ	header	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS

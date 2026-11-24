@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0084a820   MATCH            PASS   GetAnimExtraFlags
+00865a80   MATCH            PASS   GetAnimationTransitionInTime
+00865a90   MATCH            PASS   GetAnimDelayTime
+00941ba0   MATCH            PASS   GetAnimExtraFlags
+00941bb0   MATCH            PASS   IsUsingAnimationMovement
+
+WINS: 5
+  0084a820 MATCH CCreatureAction_DropGenericBox::?GetAnimExtraFlags@CCreatureAction_DropGenericBox@@UBEKXZ
+  00865a80 MATCH CCreatureAction_BeDazed::?GetAnimationTransitionInTime@CCreatureAction_BeDazed@@UBEJXZ
+  00865a90 MATCH CCreatureAction_BeDazed::?GetAnimDelayTime@CCreatureAction_BeDazed@@UBEJXZ
+  00941ba0 MATCH CCreatureAction_PlayHopscotch::?GetAnimExtraFlags@CCreatureAction_PlayHopscotch@@UBEKXZ
+  00941bb0 MATCH CCreatureAction_PlayHopscotch::?IsUsingAnimationMovement@CCreatureAction_PlayHopscotch@@UBE_NXZ

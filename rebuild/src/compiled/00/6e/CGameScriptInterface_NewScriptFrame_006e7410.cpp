@@ -1,7 +1,10 @@
+// Leaf: ?NewScriptFrame@CGameScriptInterface@@UBEXXZ
 // NF52 (round 7): the guard at 0x013D2838 is the running script process, the established
 // ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A (descriptive; the spelling of the landed 0x00A44660 / 0x00A44880 that store it)
 // over engine/CSuspendableProcessMicrothread.h: StopRunning +0x05 and the slot-2 virtual SuspendSuspendableProcess (the frame yield).
 // Were the made-up Guard / GuardVT stand-ins and extern g_guard.
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 #include "engine/CSuspendableProcessMicrothread.h"
 extern CSuspendableProcessMicrothread* g_pScriptRunner;   // 0x013D2838
 
@@ -32,7 +35,7 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };   // 0x0049D870
 
-void CGameScriptInterface_NewScriptFrame()
+void CGameScriptInterface::NewScriptFrame() const
 {
     if (g_pScriptRunner->StopRunning) return;
     g_pScriptRunner->SuspendSuspendableProcess();
@@ -44,3 +47,4 @@ void CGameScriptInterface_NewScriptFrame()
     esi->f18 = esi->f1c;
     esi->f1c = eax;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_NewScriptFrame -> CGameScriptInterface::NewScriptFrame, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

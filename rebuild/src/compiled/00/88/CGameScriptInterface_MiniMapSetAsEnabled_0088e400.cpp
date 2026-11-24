@@ -1,8 +1,11 @@
+// Leaf: ?MiniMapSetAsEnabled@CGameScriptInterface@@UBEX_N@Z
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CWorld { public: void SetMiniMapEnabled(bool b); };
 
-void __fastcall CGameScriptInterface_MiniMapSetAsEnabled(CGameScriptInterface* self, void* edx, bool enabled)
+void CGameScriptInterface::MiniMapSetAsEnabled(bool enabled) const
 {
-    (void)edx;
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     self->World->SetMiniMapEnabled(enabled);
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_MiniMapSetAsEnabled -> CGameScriptInterface::MiniMapSetAsEnabled, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

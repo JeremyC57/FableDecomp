@@ -1,3 +1,5 @@
+// Leaf: ?ConfiscateAllHeroWeapons@CGameScriptInterface@@UBEXXZ
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -18,8 +20,9 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern void __fastcall DoIt(void* self);
 
-void __fastcall CGameScriptInterface_ConfiscateAllHeroWeapons(CGameScriptInterface* self)
+void CGameScriptInterface::ConfiscateAllHeroWeapons() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     CPlayer* a = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     Obj* o = a->GetPControlledCreature();
     if (!o) return;
@@ -35,3 +38,4 @@ void __fastcall CGameScriptInterface_ConfiscateAllHeroWeapons(CGameScriptInterfa
     }
     DoIt(((void*)n->second));
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_ConfiscateAllHeroWeapons -> CGameScriptInterface::ConfiscateAllHeroWeapons, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

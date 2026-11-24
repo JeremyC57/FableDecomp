@@ -1,4 +1,8 @@
-bool __fastcall CAIGameCameraBase_IsFreeLookMode()
+// Leaf: ?IsFreeLookMode@CAIGameCameraBase@@UBE_NXZ
+#define FABLE_RETAIL_CAIGAMECAMERABASE
+#include "engine/CAIGameCameraBase.h"
+bool CAIGameCameraBase::IsFreeLookMode() const
 {
     return false;
 }
+// Flatten route (flatten_pilot v4, NF324): CAIGameCameraBase_IsFreeLookMode -> CAIGameCameraBase::IsFreeLookMode, the RTTI-placed PDB member; class model: engine/CAIGameCameraBase.h under FABLE_RETAIL_CAIGAMECAMERABASE.

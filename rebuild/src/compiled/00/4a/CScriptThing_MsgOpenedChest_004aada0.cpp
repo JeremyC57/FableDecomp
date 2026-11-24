@@ -1,3 +1,4 @@
+// Leaf: ?MsgOpenedChest@CScriptThing@@UBE_NXZ
 struct CInner {
     virtual bool m0();
     virtual bool m1();
@@ -48,14 +49,16 @@ struct CInner {
 };
 
 class CScriptThing { public:
-    void* pad0;
-    CInner* m_inner; /* +0x4 */
+        CInner* m_inner; /* +0x4 */
+    virtual bool MsgOpenedChest() const;
 };
 
-bool __fastcall CScriptThing_MsgOpenedChest(CScriptThing* scriptThing)
+bool CScriptThing::MsgOpenedChest() const
 {
+    CScriptThing* scriptThing = const_cast<CScriptThing*>(this);
     CInner* p = scriptThing->m_inner;
     if (!p)
         return false;
     return p->m45();
 }
+// Flatten route (flatten_pilot v4, NF324): CScriptThing_MsgOpenedChest -> CScriptThing::MsgOpenedChest, the RTTI-placed PDB member; class model: the row's local class model.

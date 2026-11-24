@@ -1,0 +1,4 @@
+0044c72b	src	DIFF		rebuild/src/compiled/00/44/CGameDefinitionManager_InitAndCompile_0044c72b.cpp
+006a1a00	src	DIFF		rebuild/src/compiled/00/6a/CTCCarrying_GetCarriedThingInterpolatedPosAndOrientation_006a1a00.cpp
+006a1f80	src	DIFF		rebuild/src/compiled/00/6a/CTCCarrying_PutThingInCarrySlot_006a1f80.cpp
+006a1f80	test	DIFF		rebuild/tests/00/6a/CTCCarrying_PutThingInCarrySlot_006a1f80_test.cpp

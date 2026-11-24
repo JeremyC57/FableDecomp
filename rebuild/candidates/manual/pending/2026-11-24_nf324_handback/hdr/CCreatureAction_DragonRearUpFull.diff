@@ -1,0 +1,18 @@
+--- orig/hdr_CCreatureAction_DragonRearUpFull.h	2026-11-24 01:18:18.686276576 +0000
++++ hdr/engine/CCreatureAction_DragonRearUpFull.h	2026-11-24 01:18:18.738299337 +0000
+@@ -18,6 +18,15 @@
+ #endif
+ private:
+     CIntelligentPointer<CThing> PShot;                       // +0x114
++#ifdef FABLE_RETAIL_CCREATUREACTION_DRAGONREARUPFULL_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x00953190: ?IsMovementUsingPhysics@CCreatureAction_DragonRearUpFull@@UBE_NXZ (FableWin.pdb)
++public:
++    virtual bool IsMovementUsingPhysics() const;
++private:
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(18, sizeof(CCreatureAction_DragonRearUpFull) == 0x11c);
+ #else

@@ -1,0 +1,26 @@
+address	kind	note
+0044c41e	ptr2ref	ptr2ref stream: CDataOutputStream* -> class CDataOutputStream& (pointer -> reference, NF313 Q2)
+0045212a	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+00452184	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+00452256	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+00452b93	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+00452c94	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+004556ce	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+00456818	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+00456883	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+00456f27	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+004df77c	ptr2ref	ptr2ref ctx: CPersistContext* -> class CPersistContext& (pointer -> reference, NF313 Q2)
+0088e910	retype	retype val: char -> bool
+0088e920	retype	retype value: char -> bool
+0088e930	retype	retype arg: char -> bool
+0088ec90	retype	retype flag: char -> bool
+0088f410	retype	retype active: char -> bool
+0088f430	retype	retype active: char -> bool
+0088f440	retype	retype enabled: char -> bool
+0088f470	retype	retype doesAffect: char -> bool
+0088f940	retype	retype enabled: char -> bool
+0088fae0	retype	retype val: char -> bool
+0088fb60	retype	retype accept: char -> bool
+0088fb80	retype	retype amount: int -> long
+00892050	retype	retype enabled: char -> bool
+00899c10	ptr2ref	ptr2ref out: float* -> float& (pointer -> reference, NF313 Q2)

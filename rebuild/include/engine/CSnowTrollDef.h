@@ -36,10 +36,18 @@ public:
     long  IcicleAssaultWarningFXIndex;                       // +0x54
     long  IcicleAssaultTrapIndex;                            // +0x58
     float IceTrailDistanceLimit;                             // +0x5c
+#ifdef FABLE_RETAIL_CSNOWTROLLDEF_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x0044C669: ?GetSizeofClass@CSnowTrollDef@@UAEKXZ (FableWin.pdb)
+public:
+    virtual unsigned long GetSizeofClass();
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CSnowTrollDef) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, IcicleAttackIndex) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, DistanceRange) == 0x48);
+FABLE_STATIC_ASSERT_AT(40, sizeof(CSnowTrollDef) == 0x60);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CSnowTrollDef, IcicleAttackIndex) == 0x28);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CSnowTrollDef, DistanceRange) == 0x48);
 #else // flattened Ego_r layout (the landed default, unchanged)
 #pragma pack(push, 1)
 class CSnowTrollDef {

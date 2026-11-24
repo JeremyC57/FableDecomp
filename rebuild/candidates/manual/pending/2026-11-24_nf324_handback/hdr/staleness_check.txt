@@ -1,0 +1,2 @@
+after equiv_check (2026-11-24): edited headers 122, orig/ stale [], tree files differing from the repo (unedited) [], hdr/ v tree mismatches []
+no rebuild/include file newer than hdr/staleness_check.txt; orig/ equal to repo (final check)

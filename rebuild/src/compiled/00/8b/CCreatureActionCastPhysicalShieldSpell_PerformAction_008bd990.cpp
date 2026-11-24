@@ -1,1 +1,12 @@
-void __fastcall CCreatureAction_CastPhysicalShieldSpell_PerformAction() {}
+// Leaf: ?PerformAction@CCreatureAction_CastPhysicalShieldSpell@@UAEXXZ
+#define FABLE_RETAIL_CCREATUREACTION_CASTPHYSICALSHIELDSPELL_RTTI_DECLS
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_CASTPHYSICALSHIELD
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureAction_CastPhysicalShieldSpell.h"
+void CCreatureAction_CastPhysicalShieldSpell::PerformAction()
+{}
+// Flatten route (flatten_pilot v4, NF324): CCreatureAction_CastPhysicalShieldSpell_PerformAction -> CCreatureAction_CastPhysicalShieldSpell::PerformAction, the RTTI-placed PDB member; class model: engine/CCreatureAction_CastPhysicalShieldSpell.h opt-in FABLE_RETAIL_CCREATUREACTION_CASTPHYSICALSHIELD, FABLE_RETAIL_CCREATUREACTION_CASTPHYSICALSHIELDSPELL_RTTI_DECLS (preamble of CCreatureActionCastPhysicalShieldSpell_Initialise_008b9dd0.cpp).

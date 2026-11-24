@@ -1,1 +1,7 @@
-void __stdcall CJoystick_SetHasInputFocus(int arg0) {}
+// Leaf: ?SetHasInputFocus@CJoystick@@UAEX_N@Z
+#define FABLE_RETAIL_CJOYSTICK
+#define FABLE_RETAIL_CJOYSTICK_VIRTUALS
+#include "engine/CJoystick.h"
+void CJoystick::SetHasInputFocus(bool arg0)
+{}
+// Flatten route (flatten_pilot v4, NF324): CJoystick_SetHasInputFocus -> CJoystick::SetHasInputFocus, the RTTI-placed PDB member; class model: engine/CJoystick.h under FABLE_RETAIL_CJOYSTICK, FABLE_RETAIL_CJOYSTICK_VIRTUALS.

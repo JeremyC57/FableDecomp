@@ -1,4 +1,11 @@
-bool __fastcall CAIStateGroup_HoverAttackUnlessTargetIsFleeing_IsCombatStateGroup()
+// Leaf: ?IsCombatStateGroup@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE_NXZ
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERATTACKUNLESSTARGETISFLEEING_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERATTACK_VIRTUAL_MODEL
+#include "engine/CAIStateGroup_HoverAttackUnlessTargetIsFleeing.h"
+bool CAIStateGroup_HoverAttackUnlessTargetIsFleeing::IsCombatStateGroup() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v4, NF324): CAIStateGroup_HoverAttackUnlessTargetIsFleeing_IsCombatStateGroup -> CAIStateGroup_HoverAttackUnlessTargetIsFleeing::IsCombatStateGroup, the RTTI-placed PDB member; class model: engine/CAIStateGroup_HoverAttackUnlessTargetIsFleeing.h under FABLE_RETAIL_CAISTATEGROUP_HOVERATTACKUNLESSTARGETISFLEEING_VIRTUAL_MODEL (preamble of CAIStateGroupHoverAttackUnlessTargetIsFleeing_GetStateGroupType_00900c8b.cpp).

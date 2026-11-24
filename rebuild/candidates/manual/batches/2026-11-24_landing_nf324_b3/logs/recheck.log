@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00445620   MATCH            PASS   GetType
+00445670   MATCH            PASS   GetType
+004456d0   MATCH            PASS   IsInputTypeWithMouseButton
+00445770   MATCH            PASS   GetType
+00b23360   RELOCATION_MATCH PASS   GetPrimitiveDrawDistanceFactor
+
+WINS: 5
+  00445620 MATCH CInputTypeXboxPadButtonEvent::?GetType@CInputTypeXboxPadButtonEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+  00445670 MATCH CInputTypeXboxPadLeftStickEvent::?GetType@CInputTypeXboxPadLeftStickEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+  004456d0 MATCH CInputTypeXboxPadRightStickEvent::?IsInputTypeWithMouseButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EMouseButtonControl@@@Z
+  00445770 MATCH CInputTypeMouseWheelMovementUpEvent::?GetType@CInputTypeMouseWheelMovementUpEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+  00b23360 RELOCATION_MATCH CIEngine::?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ

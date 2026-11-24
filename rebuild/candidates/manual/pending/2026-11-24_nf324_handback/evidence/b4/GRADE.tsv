@@ -1,0 +1,8 @@
+address	verdict	old	new	route	reason
+0062d7b0	ACCEPT	?CCreatureAction_StartSneaking_PerformAction@@YIXXZ	?PerformAction@CCreatureAction_StartSneaking@@UAEXXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0062d7c0	ACCEPT	?CCreatureAction_StartSneaking_IsPreventingNormalMovement@@YI_NXZ	?IsPreventingNormalMovement@CCreatureAction_StartSneaking@@UBE_NXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0062d860	ACCEPT	?CCreatureAction_StopSneaking_IsPreventingNormalMovement@@YI_NXZ	?IsPreventingNormalMovement@CCreatureAction_StopSneaking@@UBE_NXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00842250	ACCEPT	?CCreatureAction_YellOverHere_PerformAction@@YIXXZ	?PerformAction@CCreatureAction_YellOverHere@@UAEXXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0084b490	ACCEPT	?CCreatureAction_PlayAnimationFromIndex_PerformAction@@YIXXZ	?PerformAction@CCreatureAction_PlayAnimationFromIndex@@UAEXXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+008aa0d0	ACCEPT	?CGameScriptInterface_AddGossip@@YIXPAVCGameScriptInterface@@PAXVCCharString@@@Z	?AddGossip@CGameScriptInterface@@UAEXVCCharString@@@Z	switch	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00b23570	ACCEPT	?CIEngine_SetLandscapeDebugTintColour@@YGXHH@Z	?SetLandscapeDebugTintColour@CIEngine@@UAEXJVCRGBColour@@@Z	switch	objcheck ALL_EQ, MATCH PASS

@@ -1,1 +1,8 @@
-void __stdcall CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets_InitStateGroup(int world, int creature) {}
+// Leaf: ?InitStateGroup@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATFIREATSPECIFICTARGETS
+#include "engine/CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets.h"
+void CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::InitStateGroup(const class CWorld& world, class CThingAICreature& creature)
+{}
+// Flatten route (flatten_pilot v4, NF324): CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets_InitStateGroup -> CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::InitStateGroup, the RTTI-placed PDB member; class model: engine/CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets.h under FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATFIREATSPECIFICTARGETS (preamble of CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_GetStateGroupType_00900f82.cpp).

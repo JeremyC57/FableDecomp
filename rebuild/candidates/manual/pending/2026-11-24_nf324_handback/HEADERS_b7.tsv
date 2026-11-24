@@ -1,0 +1,6 @@
+address	header	opt_in_macro
+0084a820	engine/CCreatureAction_DropGenericBox.h (already in the repo header)	FABLE_RETAIL_CCREATUREACTION_DROPGENERICBOX_RTTI_DECLS
+00865a80	engine/CCreatureAction_BeDazed.h (already in the repo header)	FABLE_RETAIL_CCREATUREACTION_BEDAZED_RTTI_DECLS
+00865a90	engine/CCreatureAction_BeDazed.h (already in the repo header)	FABLE_RETAIL_CCREATUREACTION_BEDAZED_RTTI_DECLS
+00941ba0	engine/CCreatureAction_PlayHopscotch.h (already in the repo header)	FABLE_RETAIL_CCREATUREACTION_PLAYHOPSCOTCH_RTTI_DECLS
+00941bb0	engine/CCreatureAction_PlayHopscotch.h (already in the repo header)	FABLE_RETAIL_CCREATUREACTION_PLAYHOPSCOTCH_RTTI_DECLS

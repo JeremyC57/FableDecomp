@@ -1,0 +1,132 @@
+address	new	head	test	variant	new_errors	head_errors
+0044c158	PASS	PASS	PASS			
+0044c1cd	PASS	PASS	PASS	prereq		
+0044c364	PASS	PASS	PASS			
+0044c41e	PASS	PASS	PASS			
+0044c579	PASS	PASS	PASS			
+0044c611	PASS	PASS	PASS	prereq		
+0044c67f	PASS	PASS	PASS			
+0045212a	PASS	PASS	PASS			
+00452184	PASS	PASS	PASS			
+00452256	PASS	PASS	PASS			
+00452b93	PASS	PASS	PASS			
+00452bb4	PASS	PASS	PASS			
+00452c94	PASS	PASS	PASS			
+00453ece	PASS	PASS	PASS			
+00454643	PASS	PASS	PASS			
+004556ce	PASS	PASS	PASS			
+00455ca7	PASS	PASS	PASS			
+00456818	PASS	PASS	PASS			
+0045687f	PASS	PASS	PASS			
+00456883	PASS	PASS	PASS			
+00456cfb	PASS	PASS	PASS			
+00456d9e	PASS	PASS	PASS			
+00456f27	PASS	PASS	PASS			
+004571e8	PASS	PASS	PASS			
+004573db	PASS	PASS	PASS			
+00457f0f	PASS	PASS	PASS			
+0046ee66	PASS	PASS	PASS			
+0046f1ff	PASS	PASS	PASS			
+0046f723	PASS	PASS	PASS			
+00471f93	PASS	PASS	PASS	v1 min-1/4		
+004732da	PASS	PASS	PASS			
+00477424	PASS	PASS	PASS			
+00477698	PASS	PASS	PASS			
+004784e0	PASS	PASS	PASS			
+004aacc0	PASS	PASS	PASS			
+004aace0	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/004aace0/new.cpp:12:20: error: no member named 'sub' in 'CScriptThing' | 1 error generated.	
+004aad00	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/004aad00/new.cpp:12:34: error: no member named 'inner' in 'CScriptThing' | 1 error generated.	
+004aada0	PASS	PASS	PASS			
+004aaf80	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/004aaf80/new.cpp:12:30: error: no member named 'inner' in 'CScriptThing' | 1 error generated.	
+004d6670	PASS	PASS	PASS	prereq		
+004de8f1	PASS	PASS	PASS	prereq		
+004e157c	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CSubDefClassBase.h:10:2: error: engine/CSubDefClassBase.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it |    10 | #error engine/CSubDefClassBase.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it | /home/user/FableDecomp/rebuild/include/engine/CCarriedReadableDef.h:19:36: error: unknown c	
+004e26b6	PASS	PASS	PASS			
+004eac55	PASS	PASS	PASS			
+004ebbec	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CSubDefClassBase.h:10:2: error: engine/CSubDefClassBase.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it |    10 | #error engine/CSubDefClassBase.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it | /home/user/FableDecomp/rebuild/include/stlport/fable_containers.h:397:31: error: variable h	
+004ebe16	PASS	PASS	PASS			
+004ec0af	PASS	PASS	PASS			
+0051ce00	PASS	PASS	PASS			
+0051ce20	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/0051ce20/new.cpp:26:12: error: non-const lvalue reference to type 'class CMap' cannot bind to a value of unrelated type 'void *' | 1 error generated.	
+0051ce40	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/0051ce40/new.cpp:17:12: error: reference to incomplete type 'const class CMap' could not bind to an lvalue of type 'void *' | 1 error generated.	
+00550890	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/C3DAnimationState.h:70:1: error: 'fable_static_assert_54' declared as an array with a negative size | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/00550890/new.cpp:8:12: error: reference to type 'const class C3DAnimationState' could not bind to an lvalue of type 'void *'	
+005508a0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/C3DAnimationState.h:70:1: error: 'fable_static_assert_54' declared as an array with a negative size | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/005508a0/new.cpp:8:12: error: reference to type 'const class C3DAnimationState' could not bind to an lvalue of type 'void *'	
+005db1d0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAnimComponentBase.h:30:1: error: 'fable_static_assert_30' declared as an array with a negative size | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentFlags.h:24:35: error: incomplete result type 'CCharString' in function definition | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentFlags.h:24:63: error: 'CCharString' is an incom	
+005db200	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAnimComponentBase.h:30:1: error: 'fable_static_assert_30' declared as an array with a negative size | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentTransitionInTime.h:24:35: error: incomplete result type 'CCharString' in function definition | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentTransitionInTime.h:24:63: error: 'CC	
+005db230	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAnimComponentBase.h:30:1: error: 'fable_static_assert_30' declared as an array with a negative size | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentDelayTime.h:24:35: error: incomplete result type 'CCharString' in function definition | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentDelayTime.h:24:63: error: 'CCharString' is 	
+005db260	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAnimComponentBase.h:30:1: error: 'fable_static_assert_30' declared as an array with a negative size | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentCombatHandedness.h:24:35: error: incomplete result type 'CCharString' in function definition | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentCombatHandedness.h:24:63: error: 'CC	
+005db2c0	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/005db2c0/new.cpp:25:12: error: cannot initialize return object of type 'class CAnimComponentBase *' with an lvalue of type 'CAnimComponentCombatComboChain *' | 1 error generated.	
+005db320	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAnimComponentBase.h:30:1: error: 'fable_static_assert_30' declared as an array with a negative size | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentCombatRecoil.h:24:35: error: incomplete result type 'CCharString' in function definition | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentCombatRecoil.h:24:63: error: 'CCharStrin	
+005db350	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAnimComponentBase.h:30:1: error: 'fable_static_assert_30' declared as an array with a negative size | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentCombatMisc.h:24:35: error: incomplete result type 'CCharString' in function definition | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentCombatMisc.h:24:63: error: 'CCharString' i	
+005db400	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAnimComponentBase.h:30:1: error: 'fable_static_assert_30' declared as an array with a negative size | /home/user/FableDecomp/rebuild/include/engine/CDefString.h:17:2: error: engine/CDefString.h needs the retail CDefStringTable: define FABLE_RETAIL_CDEFSTRINGTABLE (and FABLE_RETAIL_CCHARSTRING) before including it |    17 | #error engine/CDefString.h n	
+005db430	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAnimComponentBase.h:30:1: error: 'fable_static_assert_30' declared as an array with a negative size | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentSetCreatureMode.h:24:35: error: incomplete result type 'CCharString' in function definition | /home/user/FableDecomp/rebuild/include/engine/CAnimComponentSetCreatureMode.h:24:63: error: 'CCha	
+005db460	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAnimComponentBase.h:30:1: error: 'fable_static_assert_30' declared as an array with a negative size | /home/user/FableDecomp/rebuild/include/engine/CDefString.h:17:2: error: engine/CDefString.h needs the retail CDefStringTable: define FABLE_RETAIL_CDEFSTRINGTABLE (and FABLE_RETAIL_CCHARSTRING) before including it |    17 | #error engine/CDefString.h n	
+005db470	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/005db470/new.cpp:8:162: error: no member named 'vtbl' in 'CAnimComponentStrikeSpeedMultiplier' | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/005db470/new.cpp:8:190: error: no member named 'f8' in 'CAnimComponentStrikeSpe	
+005df610	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/005df610/new.cpp:29:12: error: cannot initialize return object of type 'class CAnimComponentBase *' with an rvalue of type 'CAnimComponentTransitionInTime *' | 1 error generated.	
+005df650	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/005df650/new.cpp:29:12: error: cannot initialize return object of type 'class CAnimComponentBase *' with an rvalue of type 'CAnimComponentDelayTime *' | 1 error generated.	
+005df6d0	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/005df6d0/new.cpp:29:12: error: cannot initialize return object of type 'class CAnimComponentBase *' with an rvalue of type 'CAnimComponentCombatComboChain *' | 1 error generated.	
+005df710	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/005df710/new.cpp:29:12: error: cannot initialize return object of type 'class CAnimComponentBase *' with an rvalue of type 'CAnimComponentCombatRecoil *' | 1 error generated.	
+005df840	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/005df840/new.cpp:29:12: error: cannot initialize return object of type 'class CAnimComponentBase *' with an rvalue of type 'CAnimComponentSetCreatureMode *' | 1 error generated.	
+0062e9f0	PASS	PASS	PASS	v1 min-0/3		
+0062ea00	PASS	PASS	PASS			
+00692960	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CCreatureActionBase.h:387:1: error: 'fable_static_assert_338' declared as an array with a negative size | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/00692960/new.cpp:22:155: error: no member named 'PCreature' in 'CCreatureActionBase'	
+006f58e0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CDefPointer.h:32:2: error: engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it |    32 | #error engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it | /home/user/FableDecomp/rebuild/include/engine/CCombatActionBase.h:16:20: error: unknown type name 'CThingC	
+00710540	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/00710540/new.cpp:7:7: error: redefinition of 'CIVCountedPointeeBase' | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/00710540/new.cpp:20:22: error: no member named 'StartState_Object' in 'C3DAnimationTransitionState' | /tm	
+007e72c0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CScriptGameResourceObjectScriptedThingBase.h:103:65: error: implicit instantiation of undefined template 'CCountedPointer<CScriptGameResourceObjectScriptedThingBase>' | /home/user/FableDecomp/rebuild/include/engine/CScriptGameResourceObjectScriptedThingBase.h:105:1: error: 'fable_static_assert_105' declared as an array with a negative size	
+0084a850	PASS	PASS	PASS	v1 min-25/28		
+0084b210	PASS	PASS	PASS	v1 min-15/19		
+0084b220	PASS	PASS	PASS	v1 min-15/19		
+0084b230	PASS	PASS	PASS	v1 min-15/19		
+00856190	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CDefPointer.h:32:2: error: engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it |    32 | #error engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it | /home/user/FableDecomp/rebuild/include/engine/CCombatActionBase.h:16:20: error: unknown type name 'CThingC	
+00856240	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CDefPointer.h:32:2: error: engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it |    32 | #error engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it | /home/user/FableDecomp/rebuild/include/engine/CCombatActionBase.h:16:20: error: unknown type name 'CThingC	
+008562e0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CDefPointer.h:32:2: error: engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it |    32 | #error engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it | /home/user/FableDecomp/rebuild/include/engine/CCombatActionBase.h:16:20: error: unknown type name 'CThingC	
+008562f0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CDefPointer.h:32:2: error: engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it |    32 | #error engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it | /home/user/FableDecomp/rebuild/include/engine/CCombatActionBase.h:16:20: error: unknown type name 'CThingC	
+00856300	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CDefPointer.h:32:2: error: engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it |    32 | #error engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it | /home/user/FableDecomp/rebuild/include/engine/CCombatActionBase.h:16:20: error: unknown type name 'CThingC	
+0088e910	PASS	PASS	PASS			
+0088e920	PASS	PASS	PASS			
+0088e930	PASS	PASS	PASS			
+0088ec90	PASS	PASS	PASS			
+0088f410	PASS	PASS	PASS			
+0088f430	PASS	PASS	PASS			
+0088f440	PASS	PASS	PASS			
+0088f470	PASS	PASS	PASS			
+0088f7d0	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/0088f7d0/new.cpp:30:54: error: no member named '__vftable' in 'CGameScriptInterface' | 1 error generated.	
+0088f940	PASS	PASS	PASS			
+0088fae0	PASS	PASS	PASS			
+0088fb60	PASS	PASS	PASS			
+0088fb80	PASS	PASS	PASS			
+00892050	PASS	PASS	PASS			
+00899c10	PASS	PASS	PASS			
+008aa330	PASS	PASS	PASS			
+008bff10	PASS	PASS	PASS	v1 min-18/24		
+008fe0ee	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:16:31: error: use of undeclared identifier 'CThingCreatureBase' | /home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:51:1: error: 'fable_static_assert_42' declared as an array with a negative size	
+008fe0ef	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:16:31: error: use of undeclared identifier 'CThingCreatureBase' | /home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:51:1: error: 'fable_static_assert_42' declared as an array with a negative size	
+008fe0f2	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:16:31: error: use of undeclared identifier 'CThingCreatureBase' | /home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:51:1: error: 'fable_static_assert_42' declared as an array with a negative size	
+008fe0f3	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:16:31: error: use of undeclared identifier 'CThingCreatureBase' | /home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:51:1: error: 'fable_static_assert_42' declared as an array with a negative size	
+008fe0f4	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:16:31: error: use of undeclared identifier 'CThingCreatureBase' | /home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:51:1: error: 'fable_static_assert_42' declared as an array with a negative size	
+008fe102	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:16:31: error: use of undeclared identifier 'CThingCreatureBase' | /home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h:51:1: error: 'fable_static_assert_42' declared as an array with a negative size	
+00994470	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CFileDataOutputStream.h:16:38: error: unknown class name 'CDataOutputStream'; did you mean 'CFileDataOutputStream'? | /home/user/FableDecomp/rebuild/include/engine/CFileDataOutputStream.h:16:38: error: base class has incomplete type | /home/user/FableDecomp/rebuild/include/engine/CFileDataOutputStream.h:26:1: error: 'fable_static_assert_26' declared as	
+009a0ea0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CStreamingFontBank.h:42:13: error: unknown type name 'C2DExtentsF' | /home/user/FableDecomp/rebuild/include/engine/CStreamingFontBank.h:46:32: error: unknown type name 'CWideString' | /home/user/FableDecomp/rebuild/include/engine/CStreamingFontBank.h:47:31: error: unknown type name 'CWideString' | /home/user/FableDecomp/rebuild/include/engine/CStreamin	
+009e97f0	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/009e97f0/new.cpp:23:12: error: cannot initialize return object of type 'class CAFile *' with an rvalue of type 'CMemoryFile *' | 1 error generated.	
+009fd0b0	PASS	PASS	PASS	v1 min-0/3		
+00a19bc0	PASS	PASS	PASS			
+00a19bd0	PASS	PASS	PASS			
+00a19be0	PASS	PASS	PASS			
+00a19bf0	PASS	PASS	PASS			
+00a5f420	PASS	PASS	PASS			
+00a635c0	PASS	PASS	PASS			
+00a66ac0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CKeyboard.h:30:47: error: unknown type name 'CInputEvent' | /home/user/FableDecomp/rebuild/include/engine/CKeyboard.h:31:46: error: unknown type name 'CInputEvent' | /home/user/FableDecomp/rebuild/include/engine/CKeyboard.h:36:32: error: unknown type name 'CInputEvent' | /home/user/FableDecomp/rebuild/include/engine/CKeyboard.h:37:11: error: unknown ty	
+00a673a0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CMouse.h:43:47: error: unknown type name 'CInputEvent' | /home/user/FableDecomp/rebuild/include/engine/CMouse.h:44:46: error: unknown type name 'CInputEvent' | /home/user/FableDecomp/rebuild/include/engine/CMouse.h:49:32: error: unknown type name 'CInputEvent' | /home/user/FableDecomp/rebuild/include/engine/CMouse.h:50:11: error: unknown type name 'CIn	
+00ab78d0	PASS	PASS	PASS			
+00b23570	PASS	PASS	PASS	prereq		
+00b23df0	PASS	PASS	PASS	prereq		
+00b6d500	PASS	PASS	PASS			
+00b7ed70	PASS	PASS	PASS			
+00b8b5a0	PASS	PASS	PASS			
+00b8ffc0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CEnginePersistentPrimitiveBase.h:38:1: error: 'fable_static_assert_38' declared as an array with a negative size | 1 error generated.	
+00b8ffd0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CEnginePersistentPrimitiveBase.h:38:1: error: 'fable_static_assert_38' declared as an array with a negative size | 1 error generated.	
+00b9d0d0	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitive2DStaticMesh.h:134:42: error: unknown type name 'CMatrix3x4' | /home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitive2DStaticMesh.h:138:37: error: unknown type name 'CMatrix3x4' | /home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitive2DStaticMesh.h:139:43: error: unknown type name 'CMatrix3x4' | /	
+00b9d980	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitiveMeshBase.h:54:2: error: no template named 'CIVCountedPointer' | /home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitiveMeshBase.h:55:20: error: use of undeclared identifier 'CEngineMeshEffect' | /home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitiveMeshBase.h:22:65: error: no matching constructor f	
+00b9e290	FAIL	PASS	PASS		/home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitive2DStaticMesh.h:134:42: error: unknown type name 'CMatrix3x4' | /home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitive2DStaticMesh.h:138:37: error: unknown type name 'CMatrix3x4' | /home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitive2DStaticMesh.h:139:43: error: unknown type name 'CMatrix3x4' | /	
+00be1b90	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/00be1b90/new.cpp:5:13: error: typedef redefinition with different types ('int' vs 'ERendered') | 1 error generated.	
+00be2260	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b2/pre/00be2260/new.cpp:11:13: error: typedef redefinition with different types ('int' vs 'EEnginePrimitiveType') | 1 error generated.	

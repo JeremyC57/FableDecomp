@@ -1,1 +1,6 @@
-void __stdcall CIEngine_OverrideSnow(int arg0) {}
+// Leaf: ?OverrideSnow@CIEngine@@UAEXM@Z
+#define FABLE_RETAIL_CIENGINE
+#include "engine/CIEngine.h"
+void CIEngine::OverrideSnow(float arg0)
+{}
+// Flatten route (flatten_pilot v4, NF324): CIEngine_OverrideSnow -> CIEngine::OverrideSnow, the RTTI-placed PDB member; class model: engine/CIEngine.h under FABLE_RETAIL_CIENGINE.

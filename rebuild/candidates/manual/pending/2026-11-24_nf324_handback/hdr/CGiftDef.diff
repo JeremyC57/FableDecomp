@@ -1,0 +1,20 @@
+--- orig/hdr_CGiftDef.h	2026-11-24 01:19:18.241617125 +0000
++++ hdr/engine/CGiftDef.h	2026-11-24 01:19:18.351292825 +0000
+@@ -21,7 +21,15 @@
+     unsigned char _pad_0x25[0x3];                                        // +0x25
+     EGiftType Type;                                                      // +0x28
+     bool IsWeddingRing;                                                  // +0x2c
++#ifdef FABLE_RETAIL_CGIFTDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x004D41AB: ?GetSizeofClass@CGiftDef@@UAEKXZ (FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CGiftDef) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CGiftDef, Type) == 0x28);
++FABLE_STATIC_ASSERT_AT(25, sizeof(CGiftDef) == 0x30);
++FABLE_STATIC_ASSERT_AT(26, offsetof(CGiftDef, Type) == 0x28);
+ #endif

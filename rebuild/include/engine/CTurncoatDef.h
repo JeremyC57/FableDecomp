@@ -20,8 +20,16 @@ public:
     std::vector<long> TurncoatStageEffects;                              // +0x40
     float PercentageOfHealthAsResistance;                                // +0x4c
     float ExtraResistance;                                               // +0x50
+#ifdef FABLE_RETAIL_CTURNCOATDEF_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x004DEBC0: ?GetSizeofClass@CTurncoatDef@@UAEKXZ (FableWin.pdb)
+public:
+    virtual unsigned long GetSizeofClass();
+#endif
 };
-FABLE_STATIC_ASSERT(offsetof(CTurncoatDef, TurncoatDeactivateEffect) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CTurncoatDef, TurncoatStageEffects) == 0x40);
-FABLE_STATIC_ASSERT(sizeof(CTurncoatDef) == 0x54);
+FABLE_STATIC_ASSERT_AT(24, offsetof(CTurncoatDef, TurncoatDeactivateEffect) == 0x30);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CTurncoatDef, TurncoatStageEffects) == 0x40);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CTurncoatDef) == 0x54);
 #endif // FABLE_ENGINE_CTURNCOATDEF_RETAIL_H

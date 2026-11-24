@@ -1,4 +1,12 @@
-bool __fastcall CCreatureAction_InterruptableMidAttack_IsPartOfComboChain()
+// Leaf: ?IsPartOfComboChain@CCreatureAction_InterruptableMidAttack@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_RTTI_DECLS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_PRIORITYCTOR
+#define FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_PROTOTYPE
+#include "engine/CCreatureAction_InterruptableMidAttack.h"
+bool CCreatureAction_InterruptableMidAttack::IsPartOfComboChain() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v4, NF324): CCreatureAction_InterruptableMidAttack_IsPartOfComboChain -> CCreatureAction_InterruptableMidAttack::IsPartOfComboChain, the RTTI-placed PDB member; class model: engine/CCreatureAction_InterruptableMidAttack.h opt-in FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_PROTOTYPE, FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_RTTI_DECLS (preamble of CCreatureActionBase_StatRegisterClass_006f5c10.cpp).

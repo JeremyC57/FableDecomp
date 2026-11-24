@@ -1,6 +1,8 @@
+// Leaf: ?GetHeroWillEnergyPercentage@CGameScriptInterface@@UBEJXZ
 // CGameScriptInterface::GetHeroWillEnergyPercentage @ 0089a210
 // __fastcall, returns long, 0 params.
 
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -36,8 +38,9 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern float __fastcall CalcPct(void* value);          // call C: this=value, returns a float (st0)
 
-long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(CGameScriptInterface* self)
+long CGameScriptInterface::GetHeroWillEnergyPercentage() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     Thing* thing = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer())->GetPControlledCreature();
     if (thing != 0 && !(thing->flags91 & 1) && (thing->field20 & 0x10)) {
         ETCInterfaceType key = (ETCInterfaceType)(4);
@@ -53,3 +56,4 @@ long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(CGameScriptInte
     }
     return 0;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_GetHeroWillEnergyPercentage -> CGameScriptInterface::GetHeroWillEnergyPercentage, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

@@ -1,0 +1,568 @@
+00401650   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00401650   MATCH            PASS   IsIOFinished
+00401660   MATCH            PASS   GetAlignment
+00412050   MATCH            PASS   GetPosition
+00412060   MATCH            PASS   GetLength
+00445620   MATCH            PASS   GetType
+00445670   MATCH            PASS   GetType
+004456b0   MATCH            PASS   GetType
+004456d0   MATCH            PASS   IsInputTypeWithMouseButton
+004456f0   MATCH            PASS   GetType
+00445730   MATCH            PASS   GetType
+00445770   MATCH            PASS   GetType
+004457b0   MATCH            PASS   GetType
+004479f0   MATCH            PASS   GetType
+0044c5fb   MATCH            PASS   GetSizeofClass
+0044c627   MATCH            PASS   GetSizeofClass
+0044c63d   MATCH            PASS   GetSizeofClass
+0044c653   MATCH            PASS   GetSizeofClass
+0045266b   MATCH            PASS   GetSizeofClass
+00453884   WARN SHARED_HEADER_AVAILABLE CDegradableDef (engine/CDegradableDef.h)
+00453884   MATCH            PASS   GetSizeofClass
+00454b88   WARN SHARED_HEADER_AVAILABLE CThingBuildingDef (engine/CThingBuildingDef.h)
+00454b88   MATCH            PASS   GetSizeofClass
+00454e1b   WARN SHARED_HEADER_AVAILABLE CThingMarkerDef (engine/CThingMarkerDef.h)
+00454e1b   MATCH            PASS   GetSizeofClass
+00454f59   WARN SHARED_HEADER_AVAILABLE CThingVillageDef (engine/CThingVillageDef.h)
+00454f59   MATCH            PASS   GetSizeofClass
+00454fbd   WARN SHARED_HEADER_AVAILABLE CThingPhysicalSwitchDef (engine/CThingPhysicalSwitchDef.h)
+00454fbd   MATCH            PASS   GetSizeofClass
+004558d9   MATCH            PASS   GetSizeofClass
+00455c60   MATCH            PASS   GetSizeofClass
+00455f14   MATCH            PASS   GetSizeofClass
+00455ff0   WARN SHARED_HEADER_AVAILABLE CCreatureGenerationFamilyDef (engine/CCreatureGenerationFamilyDef.h)
+00455ff0   MATCH            PASS   GetSizeofClass
+00456087   WARN SHARED_HEADER_AVAILABLE CHeroAbilityDef (engine/CHeroAbilityDef.h)
+00456087   MATCH            PASS   GetSizeofClass
+0045617c   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef (engine/CHeroStatsDef.h)
+0045617c   MATCH            PASS   GetSizeofClass
+004564e5   WARN SHARED_HEADER_AVAILABLE CRegionDef (engine/CRegionDef.h)
+004564e5   MATCH            PASS   GetSizeofClass
+004567bb   WARN SHARED_HEADER_AVAILABLE CCameraManagerDef (engine/CCameraManagerDef.h)
+004567bb   MATCH            PASS   GetSizeofClass
+00456814   MATCH            PASS   GetSizeofClass
+004569a1   WARN SHARED_HEADER_AVAILABLE CExpressionDef (engine/CExpressionDef.h)
+004569a1   MATCH            PASS   GetSizeofClass
+00456df5   MATCH            PASS   GetSizeofClass
+00457110   MATCH            PASS   GetSizeofClass
+00457285   MATCH            PASS   GetSizeofClass
+00457a09   MATCH            PASS   GetSizeofClass
+00457b52   MATCH            PASS   GetSizeofClass
+00457c7e   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesLightningSpellDef (engine/CSpecialAbilitiesLightningSpellDef.h)
+00457c7e   MATCH            PASS   GetSizeofClass
+00457e57   MATCH            PASS   GetSizeofClass
+004585fa   MATCH            PASS   GetSizeofClass
+00458a2d   MATCH            PASS   GetSizeofClass
+00458b7b   MATCH            PASS   GetSizeofClass
+00459129   MATCH            PASS   GetSizeofClass
+0045954d   MATCH            PASS   Transfer
+00459700   MATCH            PASS   GetSizeofClass
+00459764   MATCH            PASS   Transfer
+00459e24   MATCH            PASS   GetSizeofClass
+004611d6   WARN SHARED_HEADER_AVAILABLE CObjectFamilyDef (engine/CObjectFamilyDef.h)
+004611d6   WARN RELOC_NAME: ?BaseCopy@BaseDef@@QAEXPBVCDefClassBase@@@Z -> 00431ed0 labelled 'CParentDefClassBase::operator='
+004611d6   WARN RELOC_NAME: ?Copy_004611f5@SubDef@@QAEXPBX@Z -> 004611f5 labelled 'std::vector<CObjectFamilyEntry, std::allocator<CObjectFamilyEntry>>::operator='
+004611d6   RELOCATION_MATCH PASS   Copy
+00478702   MATCH            PASS   GetSizeofClass
+00478823   MATCH            PASS   GetSizeofClass
+004d325d   MATCH            PASS   GetSizeofClass
+004d32a3   MATCH            PASS   GetSizeofClass
+004d35de   MATCH            PASS   GetSizeofClass
+004d3938   MATCH            PASS   GetSizeofClass
+004d4078   MATCH            PASS   GetSizeofClass
+004d4e78   MATCH            PASS   GetSizeofClass
+004d50b2   MATCH            PASS   GetSizeofClass
+004d5128   MATCH            PASS   GetSizeofClass
+004d513e   MATCH            PASS   GetSizeofClass
+004d59da   MATCH            PASS   GetSizeofClass
+004d5dbe   MATCH            PASS   GetSizeofClass
+004d5e10   MATCH            PASS   GetSizeofClass
+004d5ee4   MATCH            PASS   GetSizeofClass
+004d624b   MATCH            PASS   GetSizeofClass
+004d64f8   MATCH            PASS   GetSizeofClass
+004d7a21   MATCH            PASS   GetSizeofClass
+004defa3   MATCH            PASS   GetSizeofClass
+004df3b4   RELOCATION_MATCH PASS   FindPosZAt
+004df3bd   RELOCATION_MATCH PASS   FindPosZAtIncludingThemes
+004df3d4   RELOCATION_MATCH PASS   GetTerrainHeightAt
+004df3dd   RELOCATION_MATCH PASS   GetThemeHeightAt
+004df46e   RELOCATION_MATCH PASS   PeekNavigatorMaxSpeed
+004df482   MATCH            PASS   GetPThingToNotAvoid
+004df485   RELOCATION_MATCH PASS   GetProximityForDirectApproach
+004df492   RELOCATION_MATCH PASS   GetMinPathCost
+004df499   RELOCATION_MATCH PASS   GetMaxPathCost
+004df4aa   MATCH            PASS   IsDead
+004dff9f   MATCH            PASS   GetSizeofClass
+004dfff6   RELOCATION_MATCH PASS   Copy
+004e0e98   WARN SHARED_HEADER_AVAILABLE CCrateStackDef (engine/CCrateStackDef.h)
+004e0e98   RELOCATION_MATCH PASS   Copy
+004e1086   MATCH            PASS   GetSizeofClass
+004e11bd   MATCH            PASS   GetSizeofClass
+004e38e0   MATCH            PASS   GetSizeofClass
+004e3b7e   MATCH            PASS   GetSizeofClass
+004eac9c   WARN SHARED_HEADER_AVAILABLE CPrizeScoreDef (engine/CPrizeScoreDef.h)
+004eac9c   RELOCATION_MATCH PASS   Copy
+004eb89d   MATCH            PASS   GetSizeofClass
+0050b440   MATCH            PASS   NotifyPostEntriesLoaded
+0051cde0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+0051cde0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0051cde0   MATCH            PASS   GetDimensions
+0051da20   MATCH            PASS   OnCreateClass
+0051da30   MATCH            PASS   OnDeleteClass
+0052add0   MATCH            PASS   CompressAsImage
+0052ade0   MATCH            PASS   Compress
+0052adf0   MATCH            PASS   Decompress
+0052ae00   MATCH            PASS   SetQuality
+00550880   MATCH            PASS   GetType
+005db250   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatHandedness (engine/CAnimComponentCombatHandedness.h)
+005db250   MATCH            PASS   SetDefaultValue
+005db2b0   MATCH            PASS   SetDefaultValue
+005db450   MATCH            PASS   SetDefaultValue
+005db490   MATCH            PASS   SetDefaultValue
+005df600   MATCH            PASS   GetType
+005df640   MATCH            PASS   GetType
+005df680   MATCH            PASS   GetType
+005df6c0   MATCH            PASS   GetType
+005df700   MATCH            PASS   GetType
+005df740   MATCH            PASS   GetType
+005df780   MATCH            PASS   GetType
+005df7d0   MATCH            PASS   GetType
+005df7e0   MATCH            PASS   SetDefaultValue
+005df830   MATCH            PASS   GetType
+005df880   MATCH            PASS   GetType
+005df8d0   MATCH            PASS   GetType
+005df920   MATCH            PASS   GetType
+005dfe80   MATCH            PASS   GetType
+0065ed3a   MATCH            PASS   GetTaskType
+0065ed8e   RELOCATION_MATCH PASS   IsAnyCreatureAssignedToTask
+0065ed9d   RELOCATION_MATCH PASS   IsValid
+0065edec   MATCH            PASS   GetTaskType
+0065ee41   RELOCATION_MATCH PASS   IsValid
+0065ef31   MATCH            PASS   GetTaskType
+0065efd4   MATCH            PASS   GetTaskType
+006775a0   MATCH            PASS   GetMatchType
+00677610   MATCH            PASS   GetMatchType
+006776b0   MATCH            PASS   GetMatchType
+0067c320   MATCH            PASS   GetMatchType
+006924e0   MATCH            PASS   IsStrikeEvent
+00692550   MATCH            PASS   OnFrameUpdate
+00692570   MATCH            PASS   IsActionReadyForInterruption
+00692710   MATCH            PASS   IsActionReadyForInterruptionByMovement
+006927c0   MATCH            PASS   SetHitter
+006927f0   MATCH            PASS   OnBlowBlocked
+006929c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+006929c0   WARN GENERIC_STRUCT module=CCreatureActionBase (use engine/CCreatureActionBase.h)
+006929c0   WARN GENERIC_STRUCT module=CCreatureActionBase (use engine/CCreatureActionBase.h)
+006929c0   WARN RELOC_NAME: ?Method@Foo@@QAEJJ@Z -> 005dc230 labelled 'CAnimationEntry::GetTimeToBlendIn'
+006929c0   RELOCATION_MATCH PASS   GetAnimationTransitionInTime
+00697030   MATCH            PASS   PreparePrimitivesForRendering
+00697040   MATCH            PASS   IsPosInViewingFrustrum
+00697070   MATCH            PASS   IsLineOfSightToPos
+006970a0   MATCH            PASS   SetChangeInControlDirection
+006970d0   MATCH            PASS   IsFreeLookMode
+006970e0   MATCH            PASS   IsOverridingMainAngleXY
+006970f0   MATCH            PASS   ScriptEnd
+00697100   MATCH            PASS   ScriptStart
+00697110   MATCH            PASS   ScriptMoveToPosAndLookAtPos
+00697120   MATCH            PASS   ScriptMoveToPosAndLookAtThing
+00697130   MATCH            PASS   ScriptMoveToThingAndLookAtPos
+00697140   MATCH            PASS   ScriptMoveToThingAndLookAtThing
+00697150   MATCH            PASS   ScriptSetRotationSpeed
+00697160   MATCH            PASS   SetDebugCameraType
+00697170   MATCH            PASS   SetLookaroundVector
+00697180   MATCH            PASS   CyclePlayerViewType
+006976f0   MATCH            PASS   SetViewThing
+006a0830   MATCH            PASS   IsUsingForcedMovement
+006a0840   MATCH            PASS   IsPlayingAnimation
+006a0850   MATCH            PASS   IsOverrideableByActionOfSamePriority
+006a0860   MATCH            PASS   IsPreventingNormalMovement
+006a0870   MATCH            PASS   IsPreventingLookTurning
+006cd990   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006cd990   RELOCATION_MATCH PASS   FindPosZAtIncludingThemes
+006cd9c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006cd9c0   WARN RELOC_NAME: ?Lookup@CThingCreatureBase@@QAEPAUCTerrainResult@@ABVC3DVector@@@Z -> 004c79e0 labelled 'CThing::PeekWorldMap'
+006cd9c0   WARN RELOC_NAME: ?GetHeight@CTerrainResult@@QAEMXZ -> 0063a300 labelled 'CWorldMap::GetGroundSizeZAt'
+006cd9c0   RELOCATION_MATCH PASS   GetTerrainHeightAt
+006cd9e0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006cd9e0   WARN RELOC_NAME: ?Lookup@CThingCreatureBase@@QAEPAUCTerrainResult@@ABVC3DVector@@@Z -> 004c79e0 labelled 'CThing::PeekWorldMap'
+006cd9e0   WARN RELOC_NAME: ?GetHeight_0063a390@CTerrainResult@@QAEMXZ -> 0063a390 labelled 'CWorldMap::GetThemeSizeZAt'
+006cd9e0   RELOCATION_MATCH PASS   GetThemeHeightAt
+006e71b0   RELOCATION_MATCH PASS   IsActiveThreadTerminating
+006e7340   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006e7340   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+006e7340   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+006e7340   RELOCATION_MATCH PASS   GetGameAngleXY
+006e7410   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006e7410   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+006e7410   RELOCATION_MATCH PASS   NewScriptFrame
+006e7d20   MATCH            PASS   TraceMessage
+006e7d40   MATCH            PASS   ResetCreatureCreationDelayFrames
+00710520   MATCH            PASS   GetType
+007186d0   MATCH            PASS   PerformAction
+00739a40   MATCH            PASS   IsActionReadyForInterruption
+00842120   MATCH            PASS   PerformAction
+008422e0   MATCH            PASS   PerformAction
+00842710   MATCH            PASS   PerformAction
+00842a00   MATCH            PASS   PerformAction
+0084a830   MATCH            PASS   PerformAction
+0084ac60   MATCH            PASS   IsPreventingLookTurning
+008600d0   MATCH            PASS   GetAnimExtraFlags
+008600e0   MATCH            PASS   IsUsingAnimationMovement
+008600f0   MATCH            PASS   GetAnimDelayTime
+008602f0   MATCH            PASS   GetTaskType
+00860940   RELOCATION_MATCH PASS   IsValid
+00860c50   RELOCATION_MATCH PASS   IsValid
+008659c0   MATCH            PASS   PerformAction
+008659d0   MATCH            PASS   GetAnimationTransitionInTime
+00865a70   MATCH            PASS   PerformAction
+0088de00   MATCH            PASS   Error
+0088e210   MATCH            PASS   DisplayTime
+0088e340   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0088e340   WARN RELOC_NAME: ?CRegions_GetEntry@@YIPAXPAUCRegions@@@Z -> 004fc180 labelled 'CWorldMap::GetRegion'
+0088e340   RELOCATION_MATCH PASS   GetRegionName
+0088e400   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088e400   RELOCATION_MATCH PASS   MiniMapSetAsEnabled
+0088e4c0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+0088e4c0   WARN RELOC_NAME: ?CGameScriptInterface_DoFade@@YIXPAVCGameScriptInterface@@@Z -> 006e7270 labelled '_global::Forward_EndScreenFadeOut_via0xc_006e7270'
+0088e4c0   RELOCATION_MATCH PASS   FadeScreenIn
+0088e4d0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+0088e4d0   MATCH            PASS   IsScreenFadingOut
+0088e950   RELOCATION_MATCH PASS   StartProgressDisplay
+0088ecc0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0088ecc0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088ecc0   RELOCATION_MATCH PASS   IsCameraInScriptedMode
+0088ed20   RELOCATION_MATCH PASS   CameraEarthquakeIntensityAtPos
+0088f420   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f420   MATCH            PASS   IsTeleportingActive
+0088f450   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f450   MATCH            PASS   IsHeroSleepingEnabled
+0088f560   MATCH            PASS   EntityCastLightningAtTarget
+0088f900   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f900   MATCH            PASS   GetCountdownTimer
+0088f930   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f930   RELOCATION_MATCH PASS   AutoSave
+0088f950   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f950   MATCH            PASS   IsSavingEnabled
+0088f9e0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f9e0   MATCH            PASS   GetGuildSealRecallAngleXY
+0088fac0   RELOCATION_MATCH PASS   SetPlayerUsingWillDummies
+0088fb00   RELOCATION_MATCH PASS   SetQuitTavernGame
+0088fb20   RELOCATION_MATCH PASS   SetPrizeTavernTable
+0088fb40   RELOCATION_MATCH PASS   SetBettingActive
+0088fba0   RELOCATION_MATCH PASS   SetCountBetMoneyDown
+0088fbe0   RELOCATION_MATCH PASS   SetGlobalTargetingDistanceOffset
+0088fc20   RELOCATION_MATCH PASS   SetBoastingEnabled
+0088fe50   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088fe50   MATCH            PASS   GetDayOfWeek
+0088fe70   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088fe70   MATCH            PASS   GetDayCount
+00890170   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00890170   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+00890170   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+00890170   MATCH            PASS   IsRadialBlurFadeActive
+00890180   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00890180   WARN RELOC_NAME: ?Callee@@YIXPAUCTarget@@@Z -> 006b8300 labelled '_global::SetMemberConst_006b8300'
+00890180   RELOCATION_MATCH PASS   CancelRadialBlurFade
+008902b0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+008902b0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008902b0   RELOCATION_MATCH PASS   IsHeroChild
+00890370   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00890370   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00890370   RELOCATION_MATCH PASS   GetHeroHealth
+008903a0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008903a0   RELOCATION_MATCH PASS   GetHeroHealthMax
+008903d0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008903d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+008903d0   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+008903d0   RELOCATION_MATCH PASS   GetHeroHealthPercentage
+00890fc0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00890fc0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00890fc0   RELOCATION_MATCH PASS   CameraResetToViewBehindHero
+00891550   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00891550   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+00891550   RELOCATION_MATCH PASS   IsBoastTaken
+00891580   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00891580   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+00891580   RELOCATION_MATCH PASS   RemoveBoast
+00891800   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00891800   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+00891800   RELOCATION_MATCH PASS   TellHeroQuestObjectiveCompleted
+00891810   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00891810   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+00891810   WARN RELOC_NAME: ?SetObjectiveAsFailed@CQuestManager@@QAEXK@Z -> 004af990 labelled 'CQuestManager::SetObjectiveAsCompleted'
+00891810   RELOCATION_MATCH PASS   TellHeroQuestObjectiveFailed
+00892e80   RELOCATION_MATCH PASS   ActivateQuest
+00892f00   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00892f00   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+00892f00   RELOCATION_MATCH PASS   DeactivateQuest
+00893020   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00893020   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+00893020   RELOCATION_MATCH PASS   SetQuestAsPersistent
+008942c0   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+008942c0   WARN RELOC_NAME: ?GSI_PreMsg@CGameScriptInterface_Methods@@QAEXXZ -> 006e7510 labelled 'CGameScriptInterface::GetMinWorldFrameForMessages'
+008942c0   WARN RELOC_NAME: ?GSI_PostMsg@CGameScriptInterface_Methods@@QAEXXZ -> 006e7530 labelled 'CGameScriptInterface::GetMaxWorldFrameForMessages'
+008942c0   RELOCATION_MATCH PASS   MsgOnChestOpeningCancelled
+00894370   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+00894370   WARN RELOC_NAME: ?GetThing1@@YIHXZ -> 006e7510 labelled 'CGameScriptInterface::GetMinWorldFrameForMessages'
+00894370   WARN RELOC_NAME: ?GetThing2@@YIHPAX@Z -> 006e7530 labelled 'CGameScriptInterface::GetMaxWorldFrameForMessages'
+00894370   WARN RELOC_NAME: ?Dispatch@Obj@@QAEHPAURange@@@Z -> 008abed0 labelled 'CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_OccuredBetween>>'
+00894370   RELOCATION_MATCH PASS   MsgIsGameInfoClickedPast
+00896f60   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00896f60   RELOCATION_MATCH PASS   SetDeathRecoveryMarkerName
+00896fd0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00896fd0   RELOCATION_MATCH PASS   ResetDeathRecoveryMarkerNameToDefault
+008970f0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008970f0   WARN RELOC_NAME: ?Consume@@YIXPAX@Z -> 0057a5b6 labelled '_global::SetMemberConst_0057a5b6'
+008970f0   RELOCATION_MATCH PASS   ResetWhetherToFailQuestOnDeathToDefault
+008987e0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+008987e0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008987e0   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+008987e0   WARN RELOC_NAME: ?DoIt@@YIXPAX@Z -> 005bfa8e labelled 'CTCInventoryBase::ConfiscateAllItems'
+008987e0   RELOCATION_MATCH PASS   ConfiscateAllHeroWeapons
+00899ba0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00899ba0   WARN RELOC_NAME: ?CheckBlocking@@YIDPAX@Z -> 007331e0 labelled '_global::GetMember_byte0x63_007331e0'
+00899ba0   RELOCATION_MATCH PASS   IsPlayerCreatureBlocking
+00899cf0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00899cf0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00899cf0   RELOCATION_MATCH PASS   GetPlayerCreatureCombatMultiplierRunningNumHits
+0089a210   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0089a210   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0089a210   WARN RELOC_NAME: ?CalcPct@@YIMPAX@Z -> 0057a57a labelled 'CTCHeroStats::GetStaminaPercentage'
+0089a210   RELOCATION_MATCH PASS   GetHeroWillEnergyPercentage
+0089b330   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0089b330   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0089b330   RELOCATION_MATCH PASS   IsHeroNaked
+0089b390   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0089b390   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0089b390   WARN RELOC_NAME: ?DoRemove@@YIXPAX@Z -> 005b40e6 labelled 'CTCInventoryClothing::RemoveAllClothing'
+0089b390   RELOCATION_MATCH PASS   RemoveHeroClothing
+008a1300   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+008a1300   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008a1300   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+008a1300   WARN RELOC_NAME: ?FinalCall@@YIXPAX@Z -> 00747560 labelled 'CTCStealth::StartSneaking'
+008a1300   RELOCATION_MATCH PASS   StartSneaking
+008a9dd0   WARN RELOC_NAME: ?CGameScriptInterface_AddRumourToCategoryEx@@YGXVCCharString@@0@Z -> 008ae5e0 labelled 'CTCAIScratchpad::AddGossip'
+008a9dd0   RELOCATION_MATCH PASS   AddNewRumourToCategory
+008aa590   WARN RELOC_NAME: ?Inner_008aeac0@@YIXVCCharString@@@Z -> 008aeac0 labelled 'CTCAIScratchpad::AddGossipFactions'
+008aa590   RELOCATION_MATCH PASS   AddGossipFactions
+008bdb00   MATCH            PASS   IsToEvadeAllHits
+008bdb10   MATCH            PASS   IsToEvadeAllHits
+008c93d0   MATCH            PASS   IsToPerformActionOnStrike
+008cf960   MATCH            PASS   IsUsingAnimationMovement
+008cf9e0   MATCH            PASS   IsUsingAnimationMovement
+008cfa50   MATCH            PASS   IsToEvadeAllHits
+008cfa60   MATCH            PASS   IsUsingAnimationMovement
+008cfa70   MATCH            PASS   IsMovementUsingPhysics
+008d5960   WARN RELOC_NAME: ?dv_h1_008d58d0@@YIXPAX@Z -> 008d58d0 labelled 'CCreatureAction_FireMissileWeapon::ResetCreatureUseProjectileWeaponState'
+008d5960   WARN RELOC_NAME: ?dv_h2_00694430@@YIXPAX@Z -> 00694430 labelled 'CCreatureActionBase::FinishAction'
+008d5960   RELOCATION_MATCH PASS   FinishAction
+008edb40   MATCH            PASS   PerformAction
+008fd285   MATCH            PASS   InitStateGroup
+008fd3d9   MATCH            PASS   UseLineOfSight
+008fd40a   MATCH            PASS   UseLineOfSight
+008fdb24   MATCH            PASS   AllowPriorityOverlap
+008fec7d   MATCH            PASS   IsTimingCritical
+008ff2cd   MATCH            PASS   IsOwnerSubjectToRegulation
+008ff36c   MATCH            PASS   AllowPriorityOverlap
+009009cb   MATCH            PASS   InitLeaf
+009009cc   MATCH            PASS   OnActivateLeaf
+009009cd   MATCH            PASS   CleanupLeaf
+00900c13   MATCH            PASS   IsCombatStateGroup
+00900c4d   MATCH            PASS   IsCombatStateGroup
+00900c88   MATCH            PASS   IsCombatStateGroup
+00900d3a   MATCH            PASS   IsCombatStateGroup
+00900d75   MATCH            PASS   IsCombatStateGroup
+009014b0   MATCH            PASS   GetStateGroupType
+009031d7   MATCH            PASS   IsCombatStateGroup
+00907f90   MATCH            PASS   InitAnimation
+00907fa0   MATCH            PASS   GetEffectName
+0090c7e0   MATCH            PASS   GetTimeToInitiate
+0090c7f0   MATCH            PASS   GetTimeToRespond
+0090e5b0   MATCH            PASS   GetTimeToInitiate
+0090e5c0   MATCH            PASS   GetTimeToRespond
+009111f0   MATCH            PASS   PerformAction
+009143c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+009143c0   WARN RELOC_NAME: ?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z -> 008fcfa0 labelled 'CAIStateGroupBase::PeekWorld'
+009143c0   RELOCATION_MATCH PASS   Cleanup
+00917320   MATCH            PASS   IsRunnable
+00918ec0   MATCH            PASS   GetOwner
+0091b330   MATCH            PASS   Cleanup
+00929ea0   MATCH            PASS   InitCreaturePosition
+0092c4d0   MATCH            PASS   InitCreaturePosition
+0092e3c0   MATCH            PASS   GetAnimExtraFlags
+0092e3d0   MATCH            PASS   IsUsingAnimationMovement
+00933da0   MATCH            PASS   IsRunnable
+0093d170   MATCH            PASS   IsTimingCritical
+00941b90   MATCH            PASS   PerformAction
+0094b720   MATCH            PASS   InitStateGroup
+0094f9d0   MATCH            PASS   IsRunnable
+00957270   MATCH            PASS   IsToFaceTargetAtStart
+0095e0a0   MATCH            PASS   InitStateGroup
+0095e340   MATCH            PASS   Cleanup
+0095ed60   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_OpinionReactionRoot (engine/CAIStateGroup_OpinionReactionRoot.h)
+0095ed60   MATCH            PASS   InitStateGroup
+0096bf60   MATCH            PASS   IsToFaceTarget
+0096bfe0   MATCH            PASS   IsToFaceTarget
+0096f4a0   MATCH            PASS   IsRunnableLeaf
+0097b6f0   MATCH            PASS   OnReplace
+00993b90   MATCH            PASS   InternalReadNextSourceChunk
+00993ba0   MATCH            PASS   NeedsBufferedRead
+00993bb0   MATCH            PASS   InternalReadUnbuffered
+009945c0   MATCH            PASS   Close
+0099a340   MATCH            PASS   Validate
+009cba70   MATCH            PASS   AdjustUpdateEntries
+009cbc00   MATCH            PASS   NotifyBankOpened
+009cbc30   MATCH            PASS   NotifyEntryRemoved
+009d5100   MATCH            PASS   Verify
+009e41b0   MATCH            PASS   Update
+009e4930   MATCH            PASS   UpdateInsertionsAndRemovals
+009e4940   MATCH            PASS   Clear
+009e4950   MATCH            PASS   SetHasInputFocus
+009fbf10   MATCH            PASS   ResetDebugMemoryInUse
+00a03a50   MATCH            PASS   ValidateResource
+00a19ab0   MATCH            PASS   Save
+00a19b10   MATCH            PASS   UpdateLastPosition
+00a19b70   MATCH            PASS   IsNeighbourOf
+00a19b80   MATCH            PASS   GetRegion
+00a19ba0   MATCH            PASS   IsSwitchable
+00a23900   MATCH            PASS   FreeDeviceSpecificResources
+00a23ac0   MATCH            PASS   GetDataFormatVersion
+00a39be0   MATCH            PASS   Write
+00a39c30   MATCH            PASS   IsIOFinished
+00a39dd0   MATCH            PASS   SetLength
+00a3be10   MATCH            PASS   Validate
+00a44600   MATCH            PASS   SuspendableProcess
+00a61f90   MATCH            PASS   GetDataFormatVersion
+00a63130   MATCH            PASS   DoIsBusy
+00a65b50   MATCH            PASS   ConsolidateFreeAreas
+00aa7610   MATCH            PASS   IsUnknownType
+00aa7620   MATCH            PASS   IsSuperChunk
+00aa76a0   MATCH            PASS   IsSuperChunk
+00ac1f50   MATCH            PASS   RelocateData
+00b232f0   MATCH            PASS   SetEnvironmentalEffectsAlwaysUpdate
+00b23300   MATCH            PASS   SetWorld
+00b23310   MATCH            PASS   WorldFrameUpdate
+00b23330   MATCH            PASS   SetVideoOptions
+00b23360   RELOCATION_MATCH PASS   GetPrimitiveDrawDistanceFactor
+00b23370   MATCH            PASS   AddPrimitive
+00b233a0   MATCH            PASS   SetPrimitiveAnimation
+00b233b0   MATCH            PASS   SetPrimitivePosition
+00b233f0   MATCH            PASS   GetChildPrimitiveHandle
+00b23400   MATCH            PASS   ClearChildPrimitive
+00b23410   MATCH            PASS   ClearAllChildPrimitives
+00b23420   MATCH            PASS   SetAttachedPrimitive
+00b234a0   MATCH            PASS   UpdateStaticMap
+00b234c0   MATCH            PASS   AddMap
+00b234d0   MATCH            PASS   RemoveMap
+00b234e0   MATCH            PASS   SetMapAsLoaded
+00b234f0   MATCH            PASS   SetMapAsUnloaded
+00b23500   MATCH            PASS   SetMapVisibilityAllMaps
+00b23510   MATCH            PASS   SetMapVisibility
+00b23520   MATCH            PASS   AreaChanged
+00b23550   MATCH            PASS   IsActive
+00b23560   MATCH            PASS   SetStaticMapFileForUse
+00b23590   MATCH            PASS   StartNewScene
+00b235a0   MATCH            PASS   CutscenePreload
+00b235b0   MATCH            PASS   CutsceneAddCameraAngle
+00b235f0   MATCH            PASS   SetScreenColourFilter
+00b23600   MATCH            PASS   SetSpotlightShadowMode
+00b23620   MATCH            PASS   UpdateDebugOverlay
+00b23630   MATCH            PASS   EnableDebugOverlay
+00b23640   MATCH            PASS   SetGlobalLightingParameters
+00b23650   MATCH            PASS   Set2DPrimitiveLightingParameters
+00b23660   MATCH            PASS   SetRenderTargetTexture
+00b23680   MATCH            PASS   FreeTextureFromEngineResourcePools
+00b236e0   MATCH            PASS   Enable3DSceneRendering
+00b23700   MATCH            PASS   Enable2DSceneRendering
+00b23720   MATCH            PASS   OverrideRain
+00b23730   MATCH            PASS   OverrideSnow
+00b23740   MATCH            PASS   RenderColorFilteredQuad
+00b239a0   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b239a0   MATCH            PASS   StartNewScene
+00b23da0   MATCH            PASS   UpdateStaticMap
+00b23dd0   MATCH            PASS   AreaChanged
+00b23e70   MATCH            PASS   ReloadLocalDetailDefs
+00b23e80   MATCH            PASS   UpdateDebugOverlay
+00b23e90   MATCH            PASS   EnableDebugOverlay
+00b23ef0   MATCH            PASS   SetRenderTargetTexture
+00b28c20   MATCH            PASS   FrameStart
+00b28c30   MATCH            PASS   FrameEnd
+00b28c40   MATCH            PASS   LoadNewScene
+00b28c50   MATCH            PASS   Render
+00b28c60   MATCH            PASS   PreLayerRender
+00b28c70   MATCH            PASS   PostLayerRender
+00b28c80   MATCH            PASS   WorldFrameUpdate
+00b28c90   MATCH            PASS   PausedWorldFrameUpdate
+00b28cc0   MATCH            PASS   OnReleaseDefaultPoolResources
+00b28cd0   MATCH            PASS   OnRestoreDefaultPoolResources
+00b28ce0   MATCH            PASS   PeekSceneFilterFlags
+00b2aa20   MATCH            PASS   PreChangeResolution
+00b2aa40   MATCH            PASS   GetStaticMapUpdatePassCount
+00b2fae0   MATCH            PASS   PeekSceneFilterFlags
+00b31c00   MATCH            PASS   PeekSceneFilterFlags
+00b38830   MATCH            PASS   Render2DPrimitive
+00b38840   MATCH            PASS   RenderNonsortedPrimitives
+00b38850   MATCH            PASS   AddStaticShadowData
+00b3a980   MATCH            PASS   GetChildPrimitive
+00b3a9b0   MATCH            PASS   PostRender
+00b3a9c0   MATCH            PASS   GetWorldPosition
+00b3a9d0   MATCH            PASS   GetBoundingBoxTransform
+00b3a9e0   MATCH            PASS   GetBoundingBoxWorldSpace
+00b3a9f0   MATCH            PASS   GetBoundingSphereWorldSpace
+00b3aa00   MATCH            PASS   GetBoundingSphereRadiusWorldSpace
+00b3aa20   MATCH            PASS   GetObjectTransform
+00b3aa30   MATCH            PASS   SetObjectTransform
+00b3aa40   MATCH            PASS   SetAnimation
+00b3aa50   MATCH            PASS   SetPosition
+00b3aa80   MATCH            PASS   GetAsOcclusionPrimitive
+00b3b180   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00b3b180   WARN GENERIC_STRUCT module=CEngineResourceManager (use engine/CEngineResourceManager.h)
+00b3b180   WARN GENERIC_STRUCT module=CEngineResourceManager (use engine/CEngineResourceManager.h)
+00b3b180   WARN RELOC_NAME: ?Sub_Update@@YIXPAUSub@@@Z -> 009fc430 labelled 'CResourceBank::FrameEnd'
+00b3b180   RELOCATION_MATCH PASS   WorldFrameUpdate
+00b3ec80   MATCH            PASS   PeekSceneFilterFlags
+00b3edb0   MATCH            PASS   GetDataFormatVersion
+00b43390   MATCH            PASS   GetDefault
+00b433a0   MATCH            PASS   CreateCRC
+00b433b0   MATCH            PASS   Set
+00b44160   MATCH            PASS   PeekSceneFilterFlags
+00b4a450   MATCH            PASS   RenderSubPrimitive
+00b4a460   MATCH            PASS   RenderBoundingVolume
+00b4a470   MATCH            PASS   PeekSceneFilterFlags
+00b4b710   MATCH            PASS   PeekSceneFilterFlags
+00b50b70   MATCH            PASS   PeekSceneFilterFlags
+00b56670   MATCH            PASS   PeekSceneFilterFlags
+00b5a040   MATCH            PASS   PeekSceneFilterFlags
+00b5baf0   MATCH            PASS   PeekSceneFilterFlags
+00b5eaf0   MATCH            PASS   PeekSceneFilterFlags
+00b61a10   MATCH            PASS   PeekSceneFilterFlags
+00b66de0   MATCH            PASS   PeekSceneFilterFlags
+00b88fa0   MATCH            PASS   PeekSceneFilterFlags
+00b8cfc0   MATCH            PASS   PeekSceneFilterFlags
+00b8f810   MATCH            PASS   PeekSceneFilterFlags
+00b8fd80   MATCH            PASS   Update
+00b8fdc0   MATCH            PASS   GetChildPrimitiveHandle
+00b8fdd0   MATCH            PASS   ClearChildPrimitive
+00b8fde0   MATCH            PASS   ClearAllChildPrimitives
+00b9cfe0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b9cfe0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh (engine/CEngineInternalPrimitiveStaticMesh.h)
+00b9cfe0   MATCH            PASS   SetObjectTransform
+00b9d040   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DStaticMesh (engine/CEngineInternalPrimitive2DStaticMesh.h)
+00b9d040   MATCH            PASS   GetWorldPosition
+00b9d1d0   MATCH            PASS   AddStaticShadowData
+00ba7fc0   MATCH            PASS   GetTransformFrameStart
+00ba7fd0   MATCH            PASS   GetTransformFrameEnd
+00bacd90   MATCH            PASS   FrameStart
+00bacda0   MATCH            PASS   FrameEnd
+00bbbdf0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleGroup (engine/CEngineInternalPrimitiveParticleGroup.h)
+00bbbdf0   MATCH            PASS   GetRenderLayerMask
+00bce9f0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00bce9f0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveAnimatedMesh (engine/CEngineInternalPrimitiveAnimatedMesh.h)
+00bce9f0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveMeshBase (engine/CEngineInternalPrimitiveMeshBase.h)
+00bce9f0   RELOCATION_MATCH PASS   GetTransformFrameStart
+00bd9b30   WARN STANDIN_LEAF ?CEngineLandscapeMemoryManager_HandleFailedAllocation@@YI_NPAXHH@Z (catalog ?HandleFailedAllocation@CEngineLandscapeMemoryManager@@EAE_NK@Z; names another function)
+00bd9b30   MATCH            PASS   HandleFailedAllocation
+00bd9b70   MATCH            PASS   RelocateData
+00bf6b50   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf6b50   WARN GENERIC_STRUCT module=CLandscapeBackgroundTreeNode (use engine/CLandscapeBackgroundTreeNode.h)
+00bf6b50   MATCH            PASS   CanRelocateData

@@ -1,0 +1,8 @@
+0062d7b0   MATCH            PASS   PerformAction
+0062d7c0   MATCH            PASS   IsPreventingNormalMovement
+0062d860   MATCH            PASS   IsPreventingNormalMovement
+00842250   MATCH            PASS   PerformAction
+0084b490   MATCH            PASS   PerformAction
+008aa0d0   WARN RELOC_NAME: ?Inner@@YIXVCCharString@@@Z -> 008ae660 labelled 'CTCAIScratchpad::AddGossip'
+008aa0d0   RELOCATION_MATCH PASS   AddGossip
+00b23570   MATCH            PASS   SetLandscapeDebugTintColour

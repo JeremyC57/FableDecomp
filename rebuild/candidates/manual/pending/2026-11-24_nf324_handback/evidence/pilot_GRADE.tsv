@@ -1,0 +1,22 @@
+address	verdict	old	new	route	reason
+00401650	ACCEPT	?CAFile_IsIOFinished@@YI_NPBVCAFile@@@Z	?IsIOFinished@CAFile@@UBE_NXZ	local	objcheck ALL_EQ, MATCH PASS
+00401660	ACCEPT	?CAFile_GetAlignment@@YIJPBVCAFile@@@Z	?GetAlignment@CAFile@@UBEJXZ	switch	objcheck ALL_EQ, MATCH PASS
+00412050	ACCEPT	?CMemoryFile_GetPosition@@YIJPBVCMemoryFile@@@Z	?GetPosition@CMemoryFile@@UBEJXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+004456d0	ACCEPT	?CInputTypeXboxPadRightStickEvent_IsInputTypeWithMouseButton@@YI_NPAX0H@Z	?IsInputTypeWithMouseButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EMouseButtonControl@@@Z	switch	objcheck ALL_EQ, MATCH PASS
+0044c5fb	ACCEPT	?CDragonActionHoverDef_GetSizeofClass@@YIKPBVCDragonActionHoverDef@@@Z	?GetSizeofClass@CDragonActionHoverDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+0044c63d	ACCEPT	?CJackDragonDef_GetSizeofClass@@YIKPAX@Z	?GetSizeofClass@CJackDragonDef@@UAEKXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0044c653	ACCEPT	?CBriarRoseDef_GetSizeofClass@@YIKPAX@Z	?GetSizeofClass@CBriarRoseDef@@UAEKXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0045954d	ACCEPT	?CThingGroupDef_Transfer@@YGXH@Z	?Transfer@CThingGroupDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, MATCH PASS
+00459764	ACCEPT	?CEngineThemeGroupDef_Transfer@@YGXH@Z	?Transfer@CEngineThemeGroupDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, MATCH PASS
+004611d6	ACCEPT	?CObjectFamilyDef_Copy@@YIXPAVCObjectFamilyDef@@HPBVCDefClassBase@@@Z	?Copy@CObjectFamilyDef@@UAEXPBVCDefClassBase@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+004df485	ACCEPT	?CObstacleNavigatorExternalInterface_GetProximityForDirectApproach@@YAMXZ	?GetProximityForDirectApproach@CObstacleNavigatorExternalInterface@@UBEMXZ	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+004df492	ACCEPT	?CObstacleNavigatorExternalInterface_GetMinPathCost@@YAMXZ	?GetMinPathCost@CObstacleNavigatorExternalInterface@@UBEMXZ	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+004dfff6	ACCEPT	?CSmokeGeneratorDef_Copy@@YIXPAVCSmokeGeneratorDef@@PAXPBVCDefClassBase@@@Z	?Copy@CSmokeGeneratorDef@@UAEXPBVCDefClassBase@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+0051da20	ACCEPT	?CClassFactory_OnCreateClass@@YGXH@Z	?OnCreateClass@CClassFactory@@MAEXAAVCClass@@@Z	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0051da30	ACCEPT	?CClassFactory_OnDeleteClass@@YGXH@Z	?OnDeleteClass@CClassFactory@@MAEXAAVCClass@@@Z	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+006924e0	ACCEPT	?CCreatureActionBase_IsStrikeEvent@@YI_NPAXHH@Z	?IsStrikeEvent@CCreatureActionBase@@UBE_NJ@Z	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00692550	ACCEPT	?CCreatureActionBase_OnFrameUpdate@@YGXH@Z	?OnFrameUpdate@CCreatureActionBase@@UAEXM@Z	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00692710	ACCEPT	?CCreatureActionBase_IsActionReadyForInterruptionByMovement@@YI_NPAXHH@Z	?IsActionReadyForInterruptionByMovement@CCreatureActionBase@@UBE_NABVC3DVector@@@Z	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+006927c0	ACCEPT	?CCreatureActionBase_SetHitter@@YGXH@Z	?SetHitter@CCreatureActionBase@@UAEXABVCThing@@@Z	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00697040	ACCEPT	?CAIGameCameraBase_IsPosInViewingFrustrum@@YI_NPAXHH@Z	?IsPosInViewingFrustrum@CAIGameCameraBase@@UBE_NABVC3DVector@@@Z	switch	objcheck ALL_EQ, MATCH PASS
+006e7410	ACCEPT	?CGameScriptInterface_NewScriptFrame@@YAXXZ	?NewScriptFrame@CGameScriptInterface@@UBEXXZ	switch	objcheck ALL_EQ, RELOCATION_MATCH PASS

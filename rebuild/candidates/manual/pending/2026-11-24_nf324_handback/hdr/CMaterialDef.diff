@@ -1,0 +1,17 @@
+--- orig/hdr_CMaterialDef.h	2026-11-24 01:19:43.521173242 +0000
++++ hdr/engine/CMaterialDef.h	2026-11-24 01:19:43.587094810 +0000
+@@ -30,6 +30,14 @@
+ // ?GetRandomSlideFootParticleEffect@CMaterialDef@@QBEJXZ (retail 0x008EE5A0, landed; labels_familypass6 L093). Declaration only; no layout change.
+ public: long GetRandomSlideFootParticleEffect() const;
+ #endif
++#ifdef FABLE_RETAIL_CMATERIALDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x00455D22: ?GetSizeofClass@CMaterialDef@@UAEKXZ (Ego_r.pdb + FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+ // Layout: original parent base, native OnHit reads +44/+48; six STL containers contract by4bytes.
+ FABLE_STATIC_ASSERT_AT(17, offsetof(CMaterialDef,OnHitRumbleLevel)==0x44);

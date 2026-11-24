@@ -124,6 +124,15 @@ private:
 #else
     unsigned char _body_0x0c[0x60 - 0xc];                               // +0x0c MeshData, BoundingBox, BoundingSphere, ...
 #endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x00A23C70: ?FreeDeviceSpecificResources@C3DMeshInfo@@UAEXXZ (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual void FreeDeviceSpecificResources();
+private:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(104, sizeof(C3DMeshInfo) == 0x60);
 #ifdef FABLE_RETAIL_C3DMESHINFO_DETAILLEVEL

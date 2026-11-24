@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+008bffb0	ACCEPT	?CCreatureAction_BodgeSideStrike__GetActionSpeedParameter@@YIMPAX@Z	?GetActionSpeedParameter@CCreatureAction_BodgeSideStrike@@UBEMXZ	objcheck equal but .drectve +libcp (NF318 Q1), RELOCATION_MATCH PASS [route header]

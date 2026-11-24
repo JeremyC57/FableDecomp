@@ -1,0 +1,24 @@
+--- orig/hdr_CCreatureAction_ReleaseStrengthBerserk.h	2026-11-24 01:18:38.607067763 +0000
++++ hdr/engine/CCreatureAction_ReleaseStrengthBerserk.h	2026-11-24 01:18:38.662493121 +0000
+@@ -17,8 +17,20 @@
+ class CCreatureAction_ReleaseStrengthBerserk : public CCombatActionBase {
+ public:
+     CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase& creature);   // 0x008E68E0
++#ifdef FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x008E6DF0: ?PerformAction@CCreatureAction_ReleaseStrengthBerserk@@UAEXXZ (FableWin.pdb)
++public:
++    virtual void PerformAction();
++    // 0x008E6E00: ?IsToCauseRecoil@CCreatureAction_ReleaseStrengthBerserk@@UBE_NXZ (FableWin.pdb)
++    virtual bool IsToCauseRecoil() const;
++    // 0x008E6E10: ?IsAbleToBeAttacked@CCreatureAction_ReleaseStrengthBerserk@@UBE_NXZ (FableWin.pdb)
++    virtual bool IsAbleToBeAttacked() const;
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x114);
++FABLE_STATIC_ASSERT_AT(21, sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x114);
+ #else
+ #include <stddef.h>
+ #include "rebuild_abi.h"

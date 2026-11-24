@@ -15,6 +15,16 @@ class CCreatureAction_PickupGameObject : public CCreatureActionBase {           
 public:
     CCreatureAction_PickupGameObject(CThingCreatureBase& creature, CThing& object);   // 0x007EB030 (Ego_r.pdb / FableWin.pdb ??0CCreatureAction_PickupGameObject@@QAE@...)
     CIntelligentPointer<CThing> PObject;                        // +0xA8
+#ifdef FABLE_RETAIL_CCREATUREACTION_PICKUPGAMEOBJECT_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x007EB0C0: ?IsToHaveEmptyHands@CCreatureAction_PickupGameObject@@UBE_NXZ (FableWin.pdb)
+public:
+    virtual bool IsToHaveEmptyHands() const;
+    // 0x007EB0D0: ?IsToReplaceItemIfRemoved@CCreatureAction_PickupGameObject@@UBE_NXZ (FableWin.pdb)
+    virtual bool IsToReplaceItemIfRemoved() const;
+#endif
 };
 #else // generated flattened layout (the landed default, unchanged)
 #include <stddef.h>
@@ -61,9 +71,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PickupGameObject) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PickupGameObject, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PickupGameObject, PObject) == 0xa8);
+FABLE_STATIC_ASSERT_AT(64, sizeof(CCreatureAction_PickupGameObject) == 0xb0);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CCreatureAction_PickupGameObject, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CCreatureAction_PickupGameObject, PObject) == 0xa8);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_PICKUPGAMEOBJECT
 #endif // FABLE_ENGINE_CCREATUREACTION_PICKUPGAMEOBJECT_H

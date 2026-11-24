@@ -1,0 +1,26 @@
+--- orig/hdr_CTavernGameShoveHaPennyDef.h	2026-11-24 01:19:58.421559340 +0000
++++ hdr/engine/CTavernGameShoveHaPennyDef.h	2026-11-24 01:19:58.512570731 +0000
+@@ -48,10 +48,18 @@
+     float MaxPower;                                 // +0x1f4
+     float RestSpeed;                                // +0x1f8
+     long  Rounds;                                   // +0x1fc
++#ifdef FABLE_RETAIL_CTAVERNGAMESHOVEHAPENNYDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x004E1127: ?GetSizeofClass@CTavernGameShoveHaPennyDef@@UAEKXZ (Ego_r.pdb + FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+-FABLE_STATIC_ASSERT(offsetof(CTavernGameShoveHaPennyDef, Regions) == 0x1a4);
+-FABLE_STATIC_ASSERT(offsetof(CTavernGameShoveHaPennyDef, PositionCoinSpeedPC) == 0x1bc);
+-FABLE_STATIC_ASSERT(offsetof(CTavernGameShoveHaPennyDef, JoystickScalePCX) == 0x1dc);
+-FABLE_STATIC_ASSERT(offsetof(CTavernGameShoveHaPennyDef, AverageDrift) == 0x1f0);
+-FABLE_STATIC_ASSERT(sizeof(CTavernGameShoveHaPennyDef) == 0x200);
++FABLE_STATIC_ASSERT_AT(52, offsetof(CTavernGameShoveHaPennyDef, Regions) == 0x1a4);
++FABLE_STATIC_ASSERT_AT(53, offsetof(CTavernGameShoveHaPennyDef, PositionCoinSpeedPC) == 0x1bc);
++FABLE_STATIC_ASSERT_AT(54, offsetof(CTavernGameShoveHaPennyDef, JoystickScalePCX) == 0x1dc);
++FABLE_STATIC_ASSERT_AT(55, offsetof(CTavernGameShoveHaPennyDef, AverageDrift) == 0x1f0);
++FABLE_STATIC_ASSERT_AT(56, sizeof(CTavernGameShoveHaPennyDef) == 0x200);
+ #endif

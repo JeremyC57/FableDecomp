@@ -1,4 +1,14 @@
-bool __fastcall CCombatAction_GenericStrikeResponseKnockdown_IsToEvadeAllHits()
+// Leaf: ?IsToEvadeAllHits@CCombatAction_GenericStrikeResponseKnockdown@@UBE_NXZ
+#define FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWN_RTTI_DECLS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCombatAction_GenericStrikeResponseKnockdown.h"
+bool CCombatAction_GenericStrikeResponseKnockdown::IsToEvadeAllHits() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v4, NF324): CCombatAction_GenericStrikeResponseKnockdown_IsToEvadeAllHits -> CCombatAction_GenericStrikeResponseKnockdown::IsToEvadeAllHits, the RTTI-placed PDB member; class model: engine/CCombatAction_GenericStrikeResponseKnockdown.h opt-in FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN, FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWN_RTTI_DECLS (preamble of CThingCreatureBase_ReactToGenericStrike_00667450.cpp).

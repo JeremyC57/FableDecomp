@@ -1,0 +1,2 @@
+address	verdict	old	new	route	reason	bucket	name_fixes	switches	notes
+008bffb0	GEN	?CCreatureAction_BodgeSideStrike__GetActionSpeedParameter@@YIMPAX@Z	?GetActionSpeedParameter@CCreatureAction_BodgeSideStrike@@UBEMXZ	header		generated	[]	FABLE_RETAIL_CCREATUREACTION_BODGESIDESTRIKE_PROTOTYPE,FABLE_RETAIL_CCREATUREACTION_BODGESIDESTRIKE_RTTI_DECLS	gate PASS; pre v1 min-91/96

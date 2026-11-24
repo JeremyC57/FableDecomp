@@ -1,4 +1,14 @@
-bool __fastcall CCreatureAction_PlayCombatAnimationWithLooking_IsPreventingLookTurning()
+// Leaf: ?IsPreventingLookTurning@CCreatureAction_PlayCombatAnimationWithLooking@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATIONWITHLOOKING_RTTI_DECLS
+#define FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATION
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCreatureAction_PlayCombatAnimationWithLooking.h"
+bool CCreatureAction_PlayCombatAnimationWithLooking::IsPreventingLookTurning() const
 {
     return false;
 }
+// Flatten route (flatten_pilot v4, NF324): CCreatureAction_PlayCombatAnimationWithLooking_IsPreventingLookTurning -> CCreatureAction_PlayCombatAnimationWithLooking::IsPreventingLookTurning, the RTTI-placed PDB member; class model: engine/CCreatureAction_PlayCombatAnimationWithLooking.h opt-in FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATION, FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATIONWITHLOOKING_RTTI_DECLS (preamble of NTCScriptedControlCActionPlayCombatAnimation_Update_00712a80.cpp).

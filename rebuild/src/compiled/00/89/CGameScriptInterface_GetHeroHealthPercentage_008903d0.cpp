@@ -1,3 +1,5 @@
+// Leaf: ?GetHeroHealthPercentage@CGameScriptInterface@@UBEMXZ
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
@@ -10,8 +12,9 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 class CThingPhysical { public: float GetHealthPercentage() const; };   // 0x006A4E40 (Ego_r.pdb CThingPhysical, const)
 extern float g_defaultHealthPct;
 
-float __fastcall CGameScriptInterface_GetHeroHealthPercentage(CGameScriptInterface* self)
+float CGameScriptInterface::GetHeroHealthPercentage() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     void* mgr = self->PlayerManager;
     CThingPlayerCreature* hero = (&((CPlayerManager*)mgr)->GetMainPlayer())->GetPControlledCreature();
     if (hero != 0 && (*(unsigned char*)((char*)hero + 0x91) & 0x1) == 0) {
@@ -20,3 +23,4 @@ float __fastcall CGameScriptInterface_GetHeroHealthPercentage(CGameScriptInterfa
     }
     return g_defaultHealthPct;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_GetHeroHealthPercentage -> CGameScriptInterface::GetHeroHealthPercentage, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

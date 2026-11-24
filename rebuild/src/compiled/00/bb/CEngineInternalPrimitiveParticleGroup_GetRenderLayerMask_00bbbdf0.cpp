@@ -1,13 +1,15 @@
-// Leaf: ?CEngineInternalPrimitiveParticleGroup_GetRenderLayerMask@@YIKPAUCEngineInternalPrimitiveParticleGroup@@@Z
+// Leaf: ?GetRenderLayerMask@CEngineInternalPrimitiveParticleGroup@@UBEKXZ
 typedef unsigned long ulong;
 
 struct CEngineInternalPrimitiveParticleGroup {
-    char pad[0xa4];
+    char pad[0xa0];
     unsigned long type;
+    virtual unsigned long GetRenderLayerMask() const;
 };
 
-ulong __fastcall CEngineInternalPrimitiveParticleGroup_GetRenderLayerMask(CEngineInternalPrimitiveParticleGroup* self)
+unsigned long CEngineInternalPrimitiveParticleGroup::GetRenderLayerMask() const
 {
+    CEngineInternalPrimitiveParticleGroup* self = const_cast<CEngineInternalPrimitiveParticleGroup*>(this);
     switch (self->type) {
     case 0:
         return 0x8000;
@@ -17,3 +19,4 @@ ulong __fastcall CEngineInternalPrimitiveParticleGroup_GetRenderLayerMask(CEngin
         return 0x80000;
     }
 }
+// Flatten route (flatten_pilot v4, NF324): CEngineInternalPrimitiveParticleGroup_GetRenderLayerMask -> CEngineInternalPrimitiveParticleGroup::GetRenderLayerMask, the RTTI-placed PDB member; class model: the row's local class model.

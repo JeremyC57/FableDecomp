@@ -1,4 +1,6 @@
+// Leaf: ?GetGameAngleXY@CGameScriptInterface@@UBEMXZ
 // CGameScriptInterface::GetGameAngleXY  @ 006e7340
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 extern float g_defaultGameAngleXY;
 
@@ -28,8 +30,9 @@ class CWorld { public:
 };
 
 
-float __fastcall CGameScriptInterface_GetGameAngleXY(CGameScriptInterface* self)
+float CGameScriptInterface::GetGameAngleXY() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     Obj* local;
     Holder* h = self->World->holder;
     if (h->tryGet(&local)) {
@@ -37,3 +40,4 @@ float __fastcall CGameScriptInterface_GetGameAngleXY(CGameScriptInterface* self)
     }
     return g_defaultGameAngleXY;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_GetGameAngleXY -> CGameScriptInterface::GetGameAngleXY, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

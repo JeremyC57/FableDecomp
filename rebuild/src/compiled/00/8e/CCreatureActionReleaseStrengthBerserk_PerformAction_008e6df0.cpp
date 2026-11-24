@@ -1,1 +1,9 @@
-void __fastcall CCreatureAction_ReleaseStrengthBerserk_PerformAction() {}
+// Leaf: ?PerformAction@CCreatureAction_ReleaseStrengthBerserk@@UAEXXZ
+#define FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK_RTTI_DECLS
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK
+#include "engine/CThing.h"
+#include "engine/CCreatureAction_ReleaseStrengthBerserk.h"
+void CCreatureAction_ReleaseStrengthBerserk::PerformAction()
+{}
+// Flatten route (flatten_pilot v4, NF324): CCreatureAction_ReleaseStrengthBerserk_PerformAction -> CCreatureAction_ReleaseStrengthBerserk::PerformAction, the RTTI-placed PDB member; class model: engine/CCreatureAction_ReleaseStrengthBerserk.h opt-in FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK, FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK_RTTI_DECLS (preamble of CCreatureActionReleaseStrengthBerserk_CCreatureActionReleaseStrengthBerserk_008e68e0.cpp).

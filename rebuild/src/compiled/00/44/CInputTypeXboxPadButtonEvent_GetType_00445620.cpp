@@ -1,9 +1,10 @@
 // CInputTypeXboxPadButtonEvent::GetType
-// Leaf: ?CInputTypeXboxPadButtonEvent_GetType@@YIHPAX@Z
-// Retail bytes: b8 02 00 00 00 c3  =>  mov eax,2 ; ret
+// Leaf: ?GetType@CInputTypeXboxPadButtonEvent@@UBE?AW4EInputType@NControlSystem@@XZ
 // __fastcall (this in ecx), no stack args, returns constant enum value 2.
-int __fastcall CInputTypeXboxPadButtonEvent_GetType(void *event)
+#define FABLE_RETAIL_CINPUTTYPEXBOXPADBUTTONEVENT_VIRTUAL_MODEL
+#include "engine/CInputTypeXboxPadButtonEvent.h"
+NControlSystem::EInputType CInputTypeXboxPadButtonEvent::GetType() const
 {
-    (void)event;
-    return 2;
+    return (NControlSystem::EInputType)2;
 }
+// Flatten route (flatten_pilot v4, NF324): CInputTypeXboxPadButtonEvent_GetType -> CInputTypeXboxPadButtonEvent::GetType, the RTTI-placed PDB member; class model: engine/CInputTypeXboxPadButtonEvent.h under FABLE_RETAIL_CINPUTTYPEXBOXPADBUTTONEVENT_VIRTUAL_MODEL.
