@@ -1,0 +1,3 @@
+0069adc0 OK GETDEF_EQ=1 HELPER_BODY=1 leaf=?SetUpMainCameraManagerSetDef@CGameCameraManager@@AAEXXZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B

@@ -1,0 +1,23 @@
+# leaf ?SetUpMainCameraManagerSetDef@CGameCameraManager@@AAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??0?$CDefPointer@$$CBVCRegionDef@@@@QAE@ABV0@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCRegionDef@@@@QBEPBVCRegionDef@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCRegionDef@@@@QBEPBVCRegionDef@@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QAE@W4ENullDef@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QBEPBVCCameraManagerSetDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCRegionDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+NOADDR	NOADDR	-	-	pickany	10	-	n	n	?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	48	-	n	n	?Assign@?$CDefPointer@$$CBVCCameraManagerSetDef@@@@AAEXPAVCDefPointeeBase@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NEQ	NEQ	0069ac90	a,b	strong	19	124	y	y	?SetCameraManagerSetDef@CGameCameraManager@@QAEXABV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCRegionDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$?4$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QAEAAV0@ABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+EQ	EQ	00419650	b,c	pickany	19	19	n	n	?GetPRegionDef@CRegion@@QBE?AV?$CDefPointer@$$CBVCRegionDef@@@@XZ
+EQ	EQ	004ab920	a,b	pickany	108	108	y	y	??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z
+NEQ	NEQ	004ab990	a,b	pickany	112	104	y	y	??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z

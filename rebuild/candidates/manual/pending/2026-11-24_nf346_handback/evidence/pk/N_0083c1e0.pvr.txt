@@ -1,0 +1,1 @@
+EQ  0083cfa0 108 ??$GetDef@VCThingSwitchDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingSwitchDef@@@@@Z 

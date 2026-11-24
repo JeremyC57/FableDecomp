@@ -1,0 +1,60 @@
+addr       parity           behav  name
+006ea0c0   RELOCATION_MATCH PASS   UpdateDefenderAttackPattern
+00736640   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@std@@@std@@IAEXPAV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@ABV3@ABU__false_type@2@I_N@Z -> 00739bc0 labelled 'std::vector_insert_CCountedPointer'
+00736640   RELOCATION_MATCH PASS   AddMeleeFlourishAbility
+00749f00   RELOCATION_MATCH PASS   Validate
+0074a100   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+0074a100   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+0074a100   RELOCATION_MATCH PASS   GetNumGeneratedCreatures
+0074af50   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+0074af50   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+0074af50   WARN RELOC_NAME: ??1CThingAICreatureInit@@QAE@XZ -> 004fad50 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0074af50   RELOCATION_MATCH PASS   CreateCreaturesUndead
+007f26b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007f26b0   WARN RELOC_NAME: ?ProcessPoints@CLinearSpline@NBBBMaths@@QAEXJ@Z -> 00a58130 labelled '_global::CPSCSplineBase_GenerateCurvePoints'
+007f26b0   RELOCATION_MATCH PASS   Initialise
+007f2dc0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007f2dc0   RELOCATION_MATCH PASS   FrameUpdate
+0081fa20   RELOCATION_MATCH PASS   GetThemeSizeZOffsetAt
+0081fa90   RELOCATION_MATCH PASS   GetThemeMinCameraSizeZOffsetAt
+0081fb00   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+0081fb00   WARN SHARED_HEADER_AVAILABLE CHeightMapCell (engine/CHeightMapCell.h)
+0081fb00   WARN SHARED_HEADER_AVAILABLE CHeightMap (engine/CHeightMap.h)
+0081fb00   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+0081fb00   RELOCATION_MATCH PASS   HasWaterAt
+0081fcc0   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+0081fcc0   WARN SHARED_HEADER_AVAILABLE CHeightMapCell (engine/CHeightMapCell.h)
+0081fcc0   WARN SHARED_HEADER_AVAILABLE CHeightMap (engine/CHeightMap.h)
+0081fcc0   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+0081fcc0   RELOCATION_MATCH PASS   GetWaterSizeZOffsetAt
+008201e0   RELOCATION_MATCH PASS   InitPassabilityFromThemesIfNecessary
+0082d6b0   RELOCATION_MATCH PASS   GetMaterialOnHitByMelee
+0082d6f0   RELOCATION_MATCH PASS   OnCreate
+0082d7d0   RELOCATION_MATCH PASS   GetFloorMaterial
+0082d870   RELOCATION_MATCH PASS   UseHighDetailQuadTree
+0082d8c0   RELOCATION_MATCH PASS   GetReverbSettings
+00835b90   RELOCATION_MATCH PASS   PeekDefinition
+0083b520   RELOCATION_MATCH PASS   GetCurrentGraphic
+0083bab0   RELOCATION_MATCH PASS   ConstructFromParams
+
+WINS: 20
+  006ea0c0 RELOCATION_MATCH CCombatManager::?UpdateDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z
+  00736640 RELOCATION_MATCH CTCCombat::?AddMeleeFlourishAbility@CTCCombat@@QAEXJ@Z
+  00749f00 RELOCATION_MATCH CTCCreatureGenerator::?Validate@CTCCreatureGenerator@@UBE_NAAVCCharString@@@Z
+  0074a100 RELOCATION_MATCH CTCCreatureGenerator::?GetNumGeneratedCreatures@CTCCreatureGenerator@@QBEJXZ
+  0074af50 RELOCATION_MATCH CTCCreatureGenerator::?CreateCreaturesUndead@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z
+  007f26b0 RELOCATION_MATCH CTCLightningOrb::?Initialise@CTCLightningOrb@@QAEXAAVCThing@@0@Z
+  007f2dc0 RELOCATION_MATCH CTCLightningNode::?FrameUpdate@CTCLightningNode@@UAEXXZ
+  0081fa20 RELOCATION_MATCH CMap::?GetThemeSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+  0081fa90 RELOCATION_MATCH CMap::?GetThemeMinCameraSizeZOffsetAt@CMap@@IBEMABVC2DCoordI@@@Z
+  0081fb00 RELOCATION_MATCH CMap::HasWaterAt
+  0081fcc0 RELOCATION_MATCH CMap::GetWaterSizeZOffsetAt
+  008201e0 RELOCATION_MATCH CMap::?InitPassabilityFromThemesIfNecessary@CMap@@QAEXABVC2DBoxI@@@Z
+  0082d6b0 RELOCATION_MATCH CThingBuilding::?GetMaterialOnHitByMelee@CThingBuilding@@UBEJXZ
+  0082d6f0 RELOCATION_MATCH CThingBuilding::?OnCreate@CThingBuilding@@MAE_NXZ
+  0082d7d0 RELOCATION_MATCH CThingBuilding::?GetFloorMaterial@CThingBuilding@@UBEJXZ
+  0082d870 RELOCATION_MATCH CThingBuilding::?UseHighDetailQuadTree@CThingBuilding@@UBE_NXZ
+  0082d8c0 RELOCATION_MATCH CThingBuilding::?GetReverbSettings@CThingBuilding@@QBEXAAW4EReverbEnvironmentType@@AAM@Z
+  00835b90 RELOCATION_MATCH CThingDeadCreature::?PeekDefinition@CThingDeadCreature@@IBEABVCThingCreatureDef@@XZ
+  0083b520 RELOCATION_MATCH CThingVillage::?GetCurrentGraphic@CThingVillage@@IBEPBVCEngineGraphic@@XZ
+  0083bab0 RELOCATION_MATCH CThingHolySite::?ConstructFromParams@CThingHolySite@@IAE_NJABVC3DVector@@J_N@Z

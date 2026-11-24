@@ -1,0 +1,1 @@
+EQ  0083e0d0 108 ??$GetDef@VCThingPhysicalSwitchDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingPhysicalSwitchDef@@@@@Z 

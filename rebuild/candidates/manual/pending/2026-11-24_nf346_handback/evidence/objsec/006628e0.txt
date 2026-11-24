@@ -1,0 +1,4 @@
+006628e0 OK GETDEF_EQ=1 HELPER_BODY=1 HELPER_DROP=1 leaf=?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingCreatureDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingCreatureDef@@@@AAEXPAVCDefPointeeBase@@@Z

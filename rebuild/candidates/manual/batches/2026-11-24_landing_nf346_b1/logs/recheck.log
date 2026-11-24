@@ -1,0 +1,58 @@
+addr       parity           behav  name
+0057aeb4   RELOCATION_MATCH PASS   GetFavouriteWeapon
+0058807d   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0058807d   RELOCATION_MATCH PASS   OpenPCInventoryMenu
+005a30a1   RELOCATION_MATCH PASS   InitialiseBuyableItems
+005bdf08   RELOCATION_MATCH PASS   GetNumberOfItemsOfTypeInInventory
+005bdfb1   RELOCATION_MATCH PASS   SelectItemWithDefIndex
+005c71aa   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005c71aa   RELOCATION_MATCH PASS   ConstructWeaponDescriptionNoDamageNorWeight
+005c7913   RELOCATION_MATCH PASS   GetItemDescription
+005c7b10   RELOCATION_MATCH PASS   GetItemDescriptionNoDamageNorWeight
+005c7d0d   RELOCATION_MATCH PASS   GetItemDescriptionWeight
+005c7f07   RELOCATION_MATCH PASS   GetItemDescriptionDamage
+005eeff2   WARN RELOC_NAME: ??0?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@ABV?$allocator@W4EHeroAbility@@@1@@Z -> 005f88ed labelled 'std_CircularList_Construct'
+005eeff2   WARN RELOC_NAME: ??1?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@XZ -> 005f8908 labelled '_global::StdList_Dtor_005f8908'
+005eeff2   RELOCATION_MATCH PASS   GetMagicListUIComponent
+005f1b10   WARN RELOC_NAME: ??0?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@ABV?$allocator@W4EHeroAbility@@@1@@Z -> 005f88ed labelled 'std_CircularList_Construct'
+005f1b10   WARN RELOC_NAME: ??1?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@XZ -> 005f8908 labelled '_global::StdList_Dtor_005f8908'
+005f1b10   RELOCATION_MATCH PASS   ConstructPCMagicList
+005f6e40   RELOCATION_MATCH PASS   OnSerialise
+0063eb20   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0063eb20   RELOCATION_MATCH PASS   DestroyThemeAt
+0064e978   WARN RELOC_CONFLICT: ??0C3DAnimationBlendState@@QAE@XZ -> 004c2dd0 here, 00c59ba0 in landed 00c72600
+0064e978   RELOCATION_MATCH PASS   Draw
+00652fa4   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00652fa4   WARN RELOC_NAME: ?GetGuildSealAlpha@CPlayerGui@@QBEMXZ -> 00437820 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00652fa4   WARN RELOC_NAME: ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z -> 0072c430 labelled 'CTCSpecialAbilities::CTCSpecialAbilities::GetAbilityAvailability'
+00652fa4   WARN RELOC_NAME: ??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00652fa4   RELOCATION_MATCH PASS   Draw
+00662880   RELOCATION_MATCH PASS   ConstructFromParams
+006628e0   RELOCATION_MATCH PASS   SerialiseGameState
+00662930   RELOCATION_MATCH PASS   ConstructFromLevelScript
+006a1a00   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006a1a00   RELOCATION_MATCH PASS   GetCarriedThingInterpolatedPosAndOrientation
+006af3f0   RELOCATION_MATCH PASS   operator()
+
+WINS: 21
+  0057aeb4 RELOCATION_MATCH CTCHeroStats::?GetFavouriteWeapon@CTCHeroStats@@QBE?AVCWideString@@J@Z
+  0058807d RELOCATION_MATCH CTCInventory::?OpenPCInventoryMenu@CTCInventory@@QAEXXZ
+  005a30a1 RELOCATION_MATCH CTCInventoryTrade::?InitialiseBuyableItems@CTCInventoryTrade@@QAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z
+  005bdf08 RELOCATION_MATCH CTCInventoryBase::?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
+  005bdfb1 RELOCATION_MATCH NInventory::CTCInventoryBase::?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z
+  005c71aa RELOCATION_MATCH CTCInventoryWeapons::?ConstructWeaponDescriptionNoDamageNorWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@JM_N@Z
+  005c7913 RELOCATION_MATCH CTCInventoryWeapons::?GetItemDescription@CTCInventoryWeapons@@UBEXAAVCWideString@@J_N@Z
+  005c7b10 RELOCATION_MATCH CTCInventoryWeapons::?GetItemDescriptionNoDamageNorWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@J_N@Z
+  005c7d0d RELOCATION_MATCH CTCInventoryWeapons::?GetItemDescriptionWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z
+  005c7f07 RELOCATION_MATCH CTCInventoryWeapons::?GetItemDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z
+  005eeff2 RELOCATION_MATCH CTCInventoryAbilities::?GetMagicListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+  005f1b10 RELOCATION_MATCH CTCInventoryAbilities::?ConstructPCMagicList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+  005f6e40 RELOCATION_MATCH CTCInventoryAbilities::?OnSerialise@CTCInventoryAbilities@@UAEXAAVCPersistContext@@_N@Z
+  0063eb20 RELOCATION_MATCH CWorldMap::?DestroyThemeAt@CWorldMap@@QAEXABVC3DVector@@@Z
+  0064e978 RELOCATION_MATCH NPlayerGui::CDrawReceivedItems::?Draw@CDrawReceivedItems@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  00652fa4 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+  00662880 RELOCATION_MATCH CThingCreatureBase::?ConstructFromParams@CThingCreatureBase@@IAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z
+  006628e0 RELOCATION_MATCH CThingCreatureBase::?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z
+  00662930 RELOCATION_MATCH CThingCreatureBase::?ConstructFromLevelScript@CThingCreatureBase@@UAE_NPBD@Z
+  006a1a00 RELOCATION_MATCH CTCCarrying::?GetCarriedThingInterpolatedPosAndOrientation@CTCCarrying@@QBE_NABVCThing@@AAVC3DVector@@AAVCRightHandedSet@@_NM@Z
+  006af3f0 RELOCATION_MATCH CMessageEventFilter_IsMyDeadLeader::??RCMessageEventFilter_IsMyDeadLeader@@QBE_NABVCMessageEvent@@@Z

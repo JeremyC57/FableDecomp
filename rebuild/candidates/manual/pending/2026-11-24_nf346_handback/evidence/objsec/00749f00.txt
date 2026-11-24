@@ -1,0 +1,4 @@
+00749f00 OK GETDEF_EQ=1 HELPER_BODY=1 HELPER_DROP=1 leaf=?Validate@CTCCreatureGenerator@@UBE_NAAVCCharString@@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@AAEXPAVCDefPointeeBase@@@Z

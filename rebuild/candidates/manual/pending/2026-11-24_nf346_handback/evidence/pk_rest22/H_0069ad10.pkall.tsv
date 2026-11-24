@@ -1,0 +1,7 @@
+# leaf ?PushBuildingCameraMode@CGameCameraManager@@QAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	12	-	n	n	?IsDead@CThing@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ
+NOADDR	NOADDR	-	-	pickany	5	-	n	n	?Get@?$CIntelligentPointer@$$CBVCThingGameObject@@@@QBEPBVCThingGameObject@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QAE@XZ

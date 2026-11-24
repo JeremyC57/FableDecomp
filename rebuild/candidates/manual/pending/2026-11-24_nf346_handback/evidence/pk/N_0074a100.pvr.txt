@@ -1,0 +1,6 @@
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+EQ  0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ 
+EQ  0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z 
+EQ  0074cbc0 42 ?at@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QBEABVCDefIndex@@I@Z 
+EQ  0074d220 108 ??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z 
+EQ  0074a190 75 ?HasHitCreationLimit@CTCCreatureGenerator@@QBE_NXZ 

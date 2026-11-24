@@ -1,0 +1,1 @@
+NEQ 0083cfa0 116 ??$GetDef@VCThingSwitchDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingSwitchDef@@@@@Z LEAF-REFERENCED

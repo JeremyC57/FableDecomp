@@ -1,0 +1,6 @@
+0083d190 OK GETDEF_EQ=1 HELPER_BODY=2 HELPER_DROP=2 leaf=?GetCurrentGraphic@CThingMarker@@IBE?AVCEngineGraphic@@XZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingMarkerDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingMarkerDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingMarkerDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCAppearanceDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingMarkerDef@@@@AAEXPAVCDefPointeeBase@@@Z

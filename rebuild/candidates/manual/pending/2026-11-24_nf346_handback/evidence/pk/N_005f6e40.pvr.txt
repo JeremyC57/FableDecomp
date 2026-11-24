@@ -1,0 +1,20 @@
+NEQ 00405c10 8 ??2@YAPAXIPAX@Z not referenced by the leaf
+NEQ 005f7b76 38 ??$__copy@PAW4EHeroAbility@@PAW41@H@std@@YIPAW4EHeroAbility@@PAW41@00ABUrandom_access_iterator_tag@0@PAH@Z not referenced by the leaf
+NEQ 00429a79 15 ??A?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAVCCharString@@I@Z not referenced by the leaf
+NEQ 005f7f4c 64 ?LowerBound@?$CVectorMap@JW4EHeroAbility@@V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@@QAEPAU?$pair@JW4EHeroAbility@@@std@@ABJ@Z LEAF-REFERENCED
+EQ  0042b312 98 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z 
+EQ  005ee3b3 101 ?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ 
+EQ  00440080 14 ?_M_clear@?$vector@JV?$allocator@J@std@@@std@@IAEXXZ 
+EQ  00414de0 15 ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z 
+EQ  00cd2d0b 14 ??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ 
+NEQ 00440990 140 ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z not referenced by the leaf
+EQ  00485ff3 49 ?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z 
+EQ  005f8f89 37 ?erase@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEPAW4EHeroAbility@@PAW43@0@Z 
+NEQ 005f9495 179 ?_M_insert_overflow@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@IAEXPAW4EHeroAbility@@ABW43@ABU__false_type@2@I_N@Z not referenced by the leaf
+NEQ 00414ea0 30 ??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ LEAF-REFERENCED
+EQ  005f9bcd 49 ?push_back@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXABW4EHeroAbility@@@Z 
+NEQ 005f9df8 64 ?resize@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXIABW4EHeroAbility@@@Z LEAF-REFERENCED
+NEQ 0043336a 52 ?erase@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@PAV3@0@Z LEAF-REFERENCED
+NEQ 00433530 181 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z not referenced by the leaf
+NEQ 0044bff0 56 ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z LEAF-REFERENCED
+EQ  00485fe8 11 ?clear@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXXZ 

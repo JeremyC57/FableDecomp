@@ -1,0 +1,20 @@
+EQ  00c25970 33 ?GetMagnitude@C3DVector@@QBEMXZ 
+EQ  004facd0 77 ??0CThingAICreatureInit@@QAE@PAVCThingPhysical@@0_NABVCCharString@@21@Z 
+EQ  0074dbb0 79 ??0CCreatureAction_OnGenerate@@QAE@AAVCThingCreatureBase@@@Z 
+EQ  008c38b0 82 ??0CCombatAction_WillForcePushInto@@QAE@AAVCThingCreatureBase@@@Z 
+EQ  004cdae0 47 ?GFRandom@@YIKKPAK@Z 
+EQ  004fad50 20 ??1CThingAICreatureInit@@QAE@XZ 
+EQ  00668b80 26 ??4?$CIntelligentPointer@VCThingCreatureBase@@@@QAEAAV0@ABV0@@Z 
+EQ  004a88f0 21 ??$IS_THING_ALIVE@PAVCThingAICreature@@@@YI_NABQAVCThingAICreature@@@Z 
+EQ  0074ca20 74 ??$__copy@PAVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z 
+NEQ 008aabc0 85 ??R?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@QBE_NABVC3DVector@@@Z not referenced by the leaf
+EQ  00668b60 32 ??0?$CIntelligentPointer@VCThingCreatureBase@@@@QAE@PAVCThingCreatureBase@@@Z 
+EQ  0040f220 12 ??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  004cc340 36 ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z 
+EQ  006961f0 36 ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingCreatureBase@@@@@@YI_NABV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z 
+NEQ 008ab710 116 ??$remove_copy_if@PAVC3DVector@@PAV1@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@00V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@@Z LEAF-REFERENCED
+EQ  0074d220 108 ??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  004dcfbb 14 ??1?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ 

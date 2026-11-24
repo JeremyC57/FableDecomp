@@ -1,0 +1,1 @@
+EQ  0083bd10 108 ??$GetDef@VCThingHolySiteDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingHolySiteDef@@@@@Z 

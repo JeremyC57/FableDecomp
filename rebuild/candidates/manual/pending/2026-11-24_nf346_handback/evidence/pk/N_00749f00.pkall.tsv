@@ -1,0 +1,26 @@
+# leaf ?Validate@CTCCreatureGenerator@@UBE_NAAVCCharString@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??0forward_iterator_tag@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??0bidirectional_iterator_tag@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??BCDefIndex@@QBEJXZ
+EQ	EQ	00415d70	b	pickany	25	25	n	n	?GetString@CDefString@@QBE?AVCCharString@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@W4ECreatureGeneratorGenerateType@@V?$allocator@W4ECreatureGeneratorGenerateType@@@std@@@std@@QBEPBW4ECreatureGeneratorGenerateType@@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@?$vector@W4ECreatureGeneratorGenerateType@@V?$allocator@W4ECreatureGeneratorGenerateType@@@std@@@std@@QBEPBW4ECreatureGeneratorGenerateType@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QBEPBVCDefIndex@@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QBEPBVCDefIndex@@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?empty@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?empty@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@QAE@W4ENullDef@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@QBEPBVCCreatureGenerationFamilyDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+EQ	EQ	0074c9b0	a,b	pickany	112	112	y	y	??$__find@PBW4ECreatureGeneratorGenerateType@@W41@@std@@YIPBW4ECreatureGeneratorGenerateType@@PBW41@0ABW41@ABUrandom_access_iterator_tag@0@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??0random_access_iterator_tag@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@QBEPBVCCreatureGenerationFamilyDef@@XZ
+NOADDR	NOADDR	-	-	pickany	26	-	n	n	??$find@PBW4ECreatureGeneratorGenerateType@@W41@@std@@YAPBW4ECreatureGeneratorGenerateType@@PBW41@0ABW41@@Z
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+EQ	EQ	0074d220	a,b	pickany	108	108	y	y	??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z

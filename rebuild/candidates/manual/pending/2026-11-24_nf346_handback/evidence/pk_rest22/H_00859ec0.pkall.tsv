@@ -1,0 +1,6 @@
+# leaf ?SetUpCombatAnimationNotes@CCombatActionBase@@IAEXXZ  source_a=yes  
+EQ	EQ	0041c780	b	pickany	11	11	n	n	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+EQ	EQ	0041c7c0	b	pickany	22	22	n	n	??9_List_iterator_base@std@@QBE_NABU01@@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+NOADDR	NOADDR	-	-	pickany	13	-	n	n	?begin@?$list@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@V?$allocator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@2@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?end@?$list@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@V?$allocator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@2@XZ

@@ -1,0 +1,17 @@
+# tool validation on NF341 r2's kept objects / pk evidence (batches/2026-11-24_landing_nf341_r2): must reproduce its 7 FIXED, GATE PASS, reversed control FAIL, and objsec_r2_classified.txt
+ROW 008f7950 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+ROW 00703150 gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+ROW 007f0300 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+ROW 0082d5c0 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 7, 0], 'pvr': [0, 0, 7, 0]}
+GATE PASS
+# reversed:
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [7, 0, 0, 0], 'pvr': [7, 0, 0, 0]}
+GATE FAIL (14)
+# objsec346:
+008f7950 OK GETDEF_EQ=2 HELPER_BODY=2 HELPER_DROP=2 leaf=?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameD
+00703150 OK GETDEF_EQ=1 HELPER_BODY=1 HELPER_DROP=1 leaf=?PeekPMaterial@CThingObject@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+007f0300 OK GETDEF_EQ=2 HELPER_BODY=2 HELPER_DROP=2 leaf=?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z
+0082d5c0 OK GETDEF_EQ=2 HELPER_BODY=2 HELPER_DROP=2 leaf=?PeekPMaterial@CThingBuilding@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+# objsec346 control (HEAD object against itself):
+00703150 SAME  leaf=?PeekPMaterial@CThingObject@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ

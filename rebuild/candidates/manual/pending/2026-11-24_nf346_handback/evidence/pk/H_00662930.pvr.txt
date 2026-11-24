@@ -1,0 +1,1 @@
+NEQ 00513160 116 ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z LEAF-REFERENCED
