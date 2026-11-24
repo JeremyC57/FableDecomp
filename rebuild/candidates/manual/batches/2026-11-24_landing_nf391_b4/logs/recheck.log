@@ -1,0 +1,9 @@
+addr       parity           behav  name
+005143e0   WARN STANDIN_LEAF ?size@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QBEIXZ (catalog CGuiControlTreePane::SortTreeRecursively; names another function)
+005143e0   MATCH            PASS   SortTreeRecursively
+00615220   WARN STANDIN_LEAF ?size@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEIXZ (catalog CGuiControlTreePane::SortTreeRecursively; names another function)
+00615220   MATCH            PASS   SortTreeRecursively
+
+WINS: 2
+  005143e0 MATCH CGuiControlTreePane::?size@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QBEIXZ
+  00615220 MATCH CGuiControlTreePane::?size@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEIXZ

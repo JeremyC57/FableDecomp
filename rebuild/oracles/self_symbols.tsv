@@ -3750,7 +3750,7 @@ address	symbol	status	leaf_given
 005142e0	?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z	RELOCATION_MATCH	OnReadFinished
 00514300	?DList_Init_0xc@@YIPAPAXPAPAXPAX1@Z	RELOCATION_MATCH	DList_Init_0xc
 00514350	??0?$vector@VCUnprovenElement_00514350@@V?$allocator@VCUnprovenElement_00514350@@@std@@@std@@QAE@ABV01@@Z	RELOCATION_MATCH	??0?$vector@
-005143e0	?SortTreeRecursively@@YIHPAUTree@@@Z	MATCH	SortTreeRecursively
+005143e0	?size@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QBEIXZ	MATCH	?size@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QBEIXZ
 00514400	??0?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@QAE@ABV01@@Z	RELOCATION_MATCH	??0?$set@
 00514620	??1CRetailTree_erase00510da0@@QAE@XZ	RELOCATION_MATCH	??1CRetailTree_erase00510da0@
 005149b0	?FreeTree_CTreeOwner_005149b0@CTreeOwner_005149b0@@QAEXPAUSNode@@@Z	RELOCATION_MATCH	FreeTree_CTreeOwner_005149b0
@@ -5752,7 +5752,7 @@ address	symbol	status	leaf_given
 00614a10	?_M_find@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@U?$allocator@J@2@@std@@QBEPAU?$_Rb_tree_node@J@2@ABJ@Z	MATCH	?_M_find@
 00614af0	?TransferBinaryIn@?$CPersistTraits@VCUIMiniMapMarker@CTCInventoryMap@@@@QAEXPAVCMemoryDataInputStream@@PAVCUIMiniMapMarker@CTCInventoryMap@@@Z	RELOCATION_MATCH	?TransferBinaryIn@?$CPersistTraits@VCUIMiniMapMarker@CTCInventoryMap@@
 00614da0	?TransferBinaryIn@?$CPersistTraits@VCUIRegionInfo@CTCInventoryMap@@@@QAEXPAVCMemoryDataInputStream@@PAVCUIRegionInfo@CTCInventoryMap@@@Z	RELOCATION_MATCH	?TransferBinaryIn@?$CPersistTraits@VCUIRegionInfo@CTCInventoryMap@@
-00615220	?SortTreeRecursively@@YIHPAUTree@@@Z	MATCH	SortTreeRecursively
+00615220	?size@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEIXZ	MATCH	?size@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEIXZ
 00615250	?CTCCarryable_OnKill@@YIXPAVCTCCarryable@@@Z	RELOCATION_MATCH	OnKill
 006152c0	??0list_T_0x8_006152c0@std@@QAE@UCRetailAllocator@@@Z	RELOCATION_MATCH	??0list_T_0x8_006152c0@std@@
 006152e0	?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z	RELOCATION_MATCH	SortTreeRecursively
