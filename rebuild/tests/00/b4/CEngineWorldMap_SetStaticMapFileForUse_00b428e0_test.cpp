@@ -240,8 +240,8 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 void FABLE_FASTCALL ReportStaticMapProgress(const CCharString&,bool,float,unsigned); //009e9f40
-struct CStaticMapPool {void EnablePoolAllocation(bool);}; //00bda070
-struct CStaticMapEngineState {unsigned char UnrelatedState[0x6b0];CStaticMapPool* Pool;};
+struct CEngineLandscapeMemoryManager {void EnablePoolAllocation(bool);}; //00bda070
+struct CStaticMapEngineState {unsigned char UnrelatedState[0x6b0];CEngineLandscapeMemoryManager* Pool;};
 extern CStaticMapEngineState* gStaticMapEngineState; //01436ea8
 struct CEngineWorldMapRetail {
  unsigned char UnrelatedMapState[0x30];CWideString StaticMapBankName;
@@ -282,12 +282,12 @@ CWideString::CWideString():storage_(0){}
 CWideString::~CWideString(){delete storage_;}
 const CWideString& CWideString::operator=(const wchar_t*t){Step(4);Check(liveStrings==0&&wcscmp(t,wanted)==0);delete storage_;storage_=new CWideStringData;storage_->text=const_cast<wchar_t*>(t);storage_->unknown04=storage_->unknown08=0;storage_->owners=1;return *this;}
 CWideString::operator const wchar_t*()const{return storage_?storage_->text:L"";}
-static CStaticMapPool pool;static CStaticMapEngineState engine;CStaticMapEngineState* gStaticMapEngineState=&engine;
+static CEngineLandscapeMemoryManager pool;static CStaticMapEngineState engine;CStaticMapEngineState* gStaticMapEngineState=&engine;
 void FABLE_FASTCALL ReportStaticMapProgress(const CCharString&m,bool b,float f,unsigned u){Check(!b&&f==-1&&u==0&&liveStrings==1);
  const char*expected=step==0?"SetStaticMapFileForUse: CloseStaticMapFile":step==2?"SetStaticMapFileForUse: EnablePoolAllocation":step==5?"SetStaticMapFileForUse: OpenStaticMaps":"SetStaticMapFileForUse: LoadWaterData";
  Check(strcmp(m,expected)==0);if(step==7)Check(owner->StaticMapOpenState==3);++step;}
 void CEngineWorldMapRetail::CloseStaticMapFile(){Step(1);Check(this==owner&&liveStrings==0);}
-void CStaticMapPool::EnablePoolAllocation(bool b){Step(3);Check(this==&pool&&b&&liveStrings==0);}
+void CEngineLandscapeMemoryManager::EnablePoolAllocation(bool b){Step(3);Check(this==&pool&&b&&liveStrings==0);}
 void CEngineWorldMapRetail::OpenStaticMaps(bool b){Step(6);Check(this==owner&&b&&liveStrings==0&&wcscmp(StaticMapBankName,wanted)==0);}
 void CEngineWorldMapRetail::LoadWaterData(){Step(8);Check(this==owner&&StaticMapOpenState==3&&liveStrings==0);}
 int main(){engine.Pool=&pool;CEngineWorldMapRetail x;owner=&x;wanted=L"Maps\\Test.stb";x.StaticMapOpenState=19;x.SetStaticMapFileForUse(wanted);Check(step==9&&liveStrings==0);step=0;wanted=L"";x.SetStaticMapFileForUse(wanted);Check(step==9&&liveStrings==0);printf("00b428e0_TEST %s\n",bad?"FAIL":"PASS");return bad;}

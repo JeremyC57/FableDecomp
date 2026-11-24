@@ -100,12 +100,13 @@ struct CCountedPointerCreatureInteraction {            // CCountedPointer<CCreat
 class CThing { public:
     const C3DVector& GetPos() const;                    // CThing::GetPos 0x004C73D0
 };
+enum ECreatureInteractionType;                          // MS forward enum, as engine/CCreatureInteraction.h (enumerators in no name set)
 class CThingCreatureBase : public CThing {
 public:
     unsigned char _pad00[0x12c];
     CCountedPointerCreatureInteraction PCreatureInteraction;   // +0x12C
     void RemoveFromCreatureInteraction();              // 0x006629B0
-    void NewCreatureInteraction(long type);            // 0x00662970 (ECreatureInteractionType)
+    void NewCreatureInteraction(ECreatureInteractionType type);   // 0x00662970 ?NewCreatureInteraction@CThingCreatureBase@@QAEXW4ECreatureInteractionType@@@Z (Ego_r + FableWin; NF384, was long)
     void AddToCreatureInteraction(const CCountedPointerCreatureInteraction& interaction);   // 0x00662550
 };
 
@@ -201,7 +202,7 @@ template <class Base> void CAIStateGroup_WorkBase<Base>::AcquireSeller()
             continue;
         if (this->PBrain->PCreature->PCreatureInteraction.Data != 0)
             this->PBrain->PCreature->RemoveFromCreatureInteraction();
-        this->PBrain->PCreature->NewCreatureInteraction(8);
+        this->PBrain->PCreature->NewCreatureInteraction((ECreatureInteractionType)8);
         seller->AddToCreatureInteraction(this->PBrain->PCreature->PCreatureInteraction);
     }
 }

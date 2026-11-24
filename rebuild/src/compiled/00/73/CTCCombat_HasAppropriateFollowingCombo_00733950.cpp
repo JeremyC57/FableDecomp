@@ -68,7 +68,7 @@ class CAnimationSet { public:
 };
 
 class CThingCreatureBase { public:
-    CAnimationSet* GetCombatAnimationSet();     // 0x00663260
+    const CAnimationSet& GetCombatAnimationSet() const;     // 0x00663260 ?GetCombatAnimationSet@CThingCreatureBase@@QBEABVCAnimationSet@@XZ (Ego_r + FableWin; NF384, as 0x00733910)
 };
 
 class CTCCombat { public:
@@ -91,13 +91,13 @@ bool CTCCombat::HasAppropriateFollowingCombo(const CAnimationEntry* entry)
     CAnimComponentCombatComboChain* combo = GetComboChain(entry);
     if (combo->ComboID != COMBO_ID_NONE)
     {
-        CAnimationSet* set = ParentCreature->GetCombatAnimationSet();
+        const CAnimationSet* set = &ParentCreature->GetCombatAnimationSet();
         long maxStage;
         if (ComboChainID == COMBO_ID_NONE)
             maxStage = 0;
         else
         {
-            CAnimationSet* chainSet = ParentCreature->GetCombatAnimationSet();
+            const CAnimationSet* chainSet = &ParentCreature->GetCombatAnimationSet();
             maxStage = for_each(chainSet->m_pFirst, chainSet->m_pLast, CGetMaxComboStage(ComboChainID)).MaxComboStage;
             if (maxStage == COMBO_STAGE_NONE)
                 maxStage = 0;

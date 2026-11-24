@@ -11,8 +11,8 @@
 #undef CEngineWorldMap
 #include "fable_string.h"
 void FABLE_FASTCALL ReportStaticMapProgress(const CCharString&,bool,float,unsigned); //009e9f40
-struct CStaticMapPool {void EnablePoolAllocation(bool);}; //00bda070
-struct CStaticMapEngineState {unsigned char UnrelatedState[0x6b0];CStaticMapPool* Pool;};
+struct CEngineLandscapeMemoryManager {void EnablePoolAllocation(bool);}; //00bda070 ?EnablePoolAllocation@CEngineLandscapeMemoryManager@@QAEX_N@Z (Ego_r + FableWin; NF384, was the made-up CStaticMapPool)
+struct CStaticMapEngineState {unsigned char UnrelatedState[0x6b0];CEngineLandscapeMemoryManager* Pool;};
 extern CStaticMapEngineState* gStaticMapEngineState; //01436ea8
 class CEngineMap { public: enum STATIC_MAP_OPEN_STATE { }; };   // the PDB's nested enum (enumerators not in the name sets)
 class CEngineWorldMap { public:

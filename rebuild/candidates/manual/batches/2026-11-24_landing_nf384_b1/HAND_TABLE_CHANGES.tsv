@@ -1,0 +1,6 @@
+action	symbol	target	witness	note
+rewitness	?OnAnimationLoaded@CCombatActionBase@@UAEXXZ	00859ef0	00908a20	NF384: 00908b50 (b1) moved to the protected PDB spelling; 00908a20 HEAD object binds the old UAE form (compiled, UND; evidence/census_c1.txt). Apply only when 00908b50 lands
+rewitness	?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z	006c9fa0	0057c2e6	NF384: stale witness: 005ee418 HEAD object binds only the PDB ETutorialCategory form; 0057c2e6 (T3 nf row, compiled read-only) binds the J form (UND)
+delete	?GetCombatAnimationSet@CThingCreatureBase@@QAEPBVCAnimationSet@@XZ	00663260	00733910	NF384: stale witness (NF374 respelled 00733910); the three retail callers of 0x00663260 (00733910 00733950 008e7040) compiled HEAD and new: none binds it
+delete	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@@@Z	007137d0	007e7760	NF384: stale witness (NF374 nested CActionBase in 007e7760); all 20 retail callers of 0x007137D0 compiled: none binds it
+delete	?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@NTCScriptedControl@@@Z	007137d0	00714d30	NF384: stale witness (NF374 nested CActionBase in 00714d30); all 20 retail callers of 0x007137D0 compiled: none binds it

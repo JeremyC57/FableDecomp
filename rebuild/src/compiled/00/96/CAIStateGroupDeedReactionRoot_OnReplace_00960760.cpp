@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00960760, 592 bytes. ?OnReplace@CAIStateGroup_DeedReactionRoot@@UAEXXZ (Ego_r.pdb).
 // Callees: CInterfaceMap lower_bound 0x0040F020 / const 0x004365B0, CTCDeedEffects::GetDeedEffectsDef 0x006C5630,
 //   CTCBase::GetWorld 0x00686A70, CWorld::GetWorldFrame 0x0049D870, CTCTutorial::IsActive 0x006CFE80 /
-//   OnDeedReactionDone 0x006CEF20, CTCTutorialGiver::GiveTutorialForCategory 0x006C9FA0, CAIStateGroupBase::GetWorld 0x008FCFC0,
+//   CTCWife::InitiateDivorce 0x006CEF20, CTCHero::GiveTutorialForCategory 0x006C9FA0, CAIStateGroupBase::GetWorld 0x008FCFC0,
 //   ReleaseDeedSpeech 0x006FEAE0, CTCTalk::StopCurrentSpeech 0x006E2E60, CBaseIntelligentPointer::GetPItem 0x00A01B50.
 // Layout: PDB state-group fields ThingReactingTo +0x14 .. DeliveredSpeech +0x35; brain creature +0x18; retail CThing
 //   interface bitset +0x20, map +0x44, dead flag +0x91 bit 0; deed effects def RefCount +4, SpeechReaction +0x7c bit 7;
@@ -71,12 +71,18 @@ struct CTCDeedReaction {                        // interface 0x4F
 struct CTCDeedEffects {                         // interface 0x51
     CDefPointer<CDeedEffectsDef> GetDeedEffectsDef(long deedType) const;   // 0x006C5630
 };
-struct CTCTutorial {                            // interface 0xD7
+struct CTCTutorial {                            // interface 0xD7 (0x006CFE80 is ?IsAttractedToHero@CTCWife@@QBE_NXZ: T3 nf303, left for its port)
     bool IsActive() const;                      // 0x006CFE80
-    void OnDeedReactionDone();                  // 0x006CEF20
 };
-struct CTCTutorialGiver {                       // interface 0x29
-    void GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
+// NF384: interface 0xD7 is CTCWife and 0x29 the hero: 0x006CEF20 is ?InitiateDivorce@CTCWife@@QAEXXZ (was CTCTutorial::OnDeedReactionDone),
+//   0x006C9FA0 is ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z (was CTCTutorialGiver, long, void); Ego_r + FableWin.
+#define FABLE_RETAIL_TUTORIAL_CATEGORIES_PASS26   // the shared ETutorialCategory enum (Ego_d TPI 0xCE58), as 0x005EE418
+#include "engine/ETutorialCategory.h"
+class CTCWife { public:                         // interface 0xD7
+    void InitiateDivorce();                     // 0x006CEF20
+};
+class CTCHero { public:                         // interface 0x29
+    bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0
 };
 class CTCTalk { public:                                // interface 0x0F
     void StopCurrentSpeech();                   // 0x006E2E60
@@ -161,9 +167,9 @@ void CAIStateGroup_DeedReactionRoot::OnReplace()
                 if (me->HasTC(0xd7) && ((const CTCTutorial*)me->GetTC(0xd7))->IsActive()) {
                     CThing* target = ThingReactingTo.GetPItem();
                     if (target->HasTC(0x29)) {
-                        CTCTutorialGiver* giver = (CTCTutorialGiver*)target->GetTC(0x29);
+                        CTCHero* giver = (CTCHero*)target->GetTC(0x29);
                         if (giver)
-                            giver->GiveTutorialForCategory(0x11, false);
+                            giver->GiveTutorialForCategory(TUTORIAL_CATEGORY_FLIRTING, false);
                     }
                 }
             }
@@ -172,9 +178,9 @@ void CAIStateGroup_DeedReactionRoot::OnReplace()
         if (CurrentDeedType == 0x59) {
             CThingCreatureBase* creature = GetCreature();
             if (creature->HasTC(0xd7)) {
-                CTCTutorial* tutorial = (CTCTutorial*)creature->GetTC(0xd7);
-                if (tutorial)
-                    tutorial->OnDeedReactionDone();
+                CTCWife* wife = (CTCWife*)creature->GetTC(0xd7);
+                if (wife)
+                    wife->InitiateDivorce();
             }
         }
     }

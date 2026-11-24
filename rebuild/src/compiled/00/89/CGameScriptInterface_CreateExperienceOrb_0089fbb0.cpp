@@ -119,7 +119,7 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
 #include "engine/CGameDefinitionManager.h"
-CThingNative* __fastcall CreateExperienceOrbThing(long,const C3DVector&); //00779E90
+class CTCDExperienceOrb { public: static CThing* __fastcall Create(long,const C3DVector&); }; //00779E90 ?Create@CTCDExperienceOrb@@SIPAVCThing@@JABVC3DVector@@@Z (Ego_r + FableWin; NF384, was the made-up free CreateExperienceOrbThing)
 #include "engine/CTCBase.h"
 // Donor CTCDExperienceOrb fields, struct_layouts_egor.tsv83459..83468; no generated class header.
 struct ExperienceOrbMethods:CTCBase{CDefPointeeBase* PDef;long ExperiencePoints,CombinationImmunityTimer,LifeTimer;bool DecayOverTime,PickedUp;void SetExperiencePoints(long);}; //00779E10; DecayOverTime+1C
@@ -128,5 +128,5 @@ static FABLE_FORCEINLINE void GetOrbInterface(CThingNative* thing,ExperienceOrbM
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateExperienceOrb(const C3DVector&,long)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateExperienceOrb(const C3DVector& position,long scale)const{
  long definition;{CCharString name("THING_EXPERIENCE_ORB",-1);definition=::CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);}
- if(definition>0){CThingNative* thing=CreateExperienceOrbThing(definition,position);if(thing&&!thing->Dead){ExperienceOrbMethods* orb;GetOrbInterface(thing,&orb);orb->SetExperiencePoints(scale);orb->DecayOverTime=false;return thing->GetScriptThing();}}
+ if(definition>0){CThingNative* thing=static_cast<CThingNative*>(CTCDExperienceOrb::Create(definition,position));if(thing&&!thing->Dead){ExperienceOrbMethods* orb;GetOrbInterface(thing,&orb);orb->SetExperiencePoints(scale);orb->DecayOverTime=false;return thing->GetScriptThing();}}
  return ScriptMethods();}

@@ -8,7 +8,7 @@
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10
 // (CIntelligentPointer<CThing> vtable 0x01238C6C, CIntelligentPointer<CThingAICreature> vtable 0x0123E7E0), the element's virtual
 // destructor (slot 0, flag 0) and CRT `free` @ 0x00BFEA14 in the inlined list erase, CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on
-// (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790, CTCFollowed::AddEmoteIcon(CThing*) @ 0x006D4FD0.
+// (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790, CTCFollowed::AddEmoteIcon(CThing&) @ 0x006D4FD0.
 // Layout = Ego_r.pdb CTCFollowed: Followers +0x0c, AIFollowers +0x10 (retail STLport lists are one node pointer each; the PDB's
 // are 12 bytes); list node {next, prev, CIntelligentPointer data (+8)}; CThing Dead bit 0 of +0x91.
 // Shape: each loop copies the element into a local intelligent pointer (default base ctor + SetPItem(GetPItem())), tests it with
@@ -81,8 +81,8 @@ class CTCFollowed : public CTCBase {
 public:
     CRetailList<CIntelligentPointer<CThing> >           Followers;     // +0x0c
     CRetailList<CIntelligentPointer<CThingAICreature> > AIFollowers;   // +0x10
-    void AddEmoteIcon(CThing* follower);                // 0x006D4FD0
     protected:
+    void AddEmoteIcon(CThing& follower);                // 0x006D4FD0 ?AddEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z (Ego_r + FableWin; NF384, was public by pointer)
     void CullNullFollowers();
     public:
 };
@@ -95,7 +95,7 @@ void CTCFollowed::CullNullFollowers()
             it = Followers.erase(it);
             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
         } else {
-            AddEmoteIcon(follower.GetPItem());
+            AddEmoteIcon(*follower.GetPItem());
             it = it->_M_next;
         }
     }
@@ -104,7 +104,7 @@ void CTCFollowed::CullNullFollowers()
         if (!IS_THING_ALIVE(follower)) {
             it = AIFollowers.erase(it);
         } else {
-            AddEmoteIcon(follower.GetPItem());
+            AddEmoteIcon(*follower.GetPItem());
             it = it->_M_next;
         }
     }

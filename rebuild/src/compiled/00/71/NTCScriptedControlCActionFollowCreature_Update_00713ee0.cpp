@@ -70,7 +70,6 @@ class CThing { public:
     CTCPhysicsBase* PPhysics;                   // +0x60
     const C3DVector& GetPos() const;       // 0x004C73D0
     float GetCurrentSpeed() const;              // 0x00661CD0
-    float GetSneakSpeedTowards(const C3DVector& pos);   // 0x00664CB0
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -102,6 +101,7 @@ class CThing { public:
 //   FableWin.pdb), reached through the scripted creature (CThingCreatureBase derives from CThing).
 class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
+    float GetMaxSneakingSpeed(const C3DVector& pos) const;   // 0x00664CB0 ?GetMaxSneakingSpeed@CThingCreatureBase@@QBEMABVC3DVector@@@Z (Ego_r + FableWin; NF384, was CThing::GetSneakSpeedTowards)
 };
 class CTCStealth { public: char _pad[0xf]; bool Sneaking; };   // interface 0x36
 class CNavigationInput { public:
@@ -207,7 +207,7 @@ void NTCScriptedControl::CActionFollowCreature::Update()
     C3DVector ahead = Offset(me->GetPos(), me->PPhysics->GetVelocity());
     float maxSpeed;
     if (Sneaking)
-        maxSpeed = GetCreature()->GetSneakSpeedTowards(ahead);
+        maxSpeed = static_cast<CThingCreatureBase*>(GetCreature())->GetMaxSneakingSpeed(ahead);
     else
         maxSpeed = GetCreature()->GetMaxSpeedTowards(ahead);
     float gap = distance - radii;

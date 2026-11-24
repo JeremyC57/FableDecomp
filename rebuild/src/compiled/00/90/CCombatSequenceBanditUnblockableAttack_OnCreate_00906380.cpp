@@ -134,7 +134,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
     virtual void UpdateActionMoveToPos();
     virtual void InitialiseActionMovement();
     virtual bool AllowsCombinationAnims() const;
-    virtual void OnAnimationLoaded();
+    protected: virtual void OnAnimationLoaded(); public:   // ?OnAnimationLoaded@CCombatActionBase@@MAEXXZ (Ego_r + FableWin; NF384, was public)
     virtual C3DVector GetNextPos() const;
     virtual bool IsToUseRotationInAnimation() const;
     virtual bool IsToAlignWithGroundNormal() const;

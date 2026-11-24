@@ -100,9 +100,13 @@ class CTCHeroExperience { public:                           // interface 0x68
     unsigned char _pad00[0x58];
     CCountedPointer<CExperienceDef> Def;             // +0x58
 };
-struct CTCWeaponModifier {                           // interface 0x87 (descriptive)
-    bool CausesKnockDown();                          // 0x007CCA60
-    float GetDamageMultiplier();                     // 0x007CCA80
+// NF384: interface 0x87 is CTCMultiStrike (Ego_r + FableWin; was the made-up CTCWeaponModifier): 0x007CCA60 ?IsLastHit@CTCMultiStrike@@QBE_NXZ
+//   (was CausesKnockDown), 0x007CCA80 ?GetPerHitDamageMultiplier@CTCMultiStrike@@QBEMXZ (was GetDamageMultiplier): Ego_r 0x007CAFB0 / 0x007CAFD0
+//   and FableWin 0x02731DD0 / 0x02731E50 hold the pair in this order; retail 0x007CCA80 returns PDef->PerHitDamagerMultiplier[SpellLevel] (Ego_r members
+//   PDef +0x0C, SpellLevel +0x10; the def's 12-byte retail vectors NumHits +0x78 / PerHitDamagerMultiplier +0x84), as IsLastHit reads NumHits[SpellLevel].
+class CTCMultiStrike { public:                       // interface 0x87
+    bool IsLastHit() const;                          // 0x007CCA60
+    float GetPerHitDamageMultiplier() const;         // 0x007CCA80
 };
 struct CTCCharge {                                   // interface 0x84 (descriptive)
     float GetDamageMultiplier() const;               // 0x0078BE50
@@ -257,12 +261,12 @@ void CThingGameObject::GetMeleeHitParameters(NHitLocations::CHitLocation* locati
         }
     }
     float weaponMultiplier = 1.0f;
-    CTCWeaponModifier* modifier;
+    CTCMultiStrike* modifier;
     if (weapon && !weapon->Dead && weapon != &hitter && hitter.GetInterface(&modifier, 0x87)) {
-        weaponMultiplier = modifier->GetDamageMultiplier();
+        weaponMultiplier = modifier->GetPerHitDamageMultiplier();
         params.MoveBack = false;
         params.Blockable = false;
-        if (modifier->CausesKnockDown())
+        if (modifier->IsLastHit())
             params.KnockDown = true;
     }
     const CTCHeroExperience* experience;
