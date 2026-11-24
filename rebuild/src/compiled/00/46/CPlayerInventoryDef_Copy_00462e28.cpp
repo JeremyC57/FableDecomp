@@ -1,20 +1,20 @@
+// Leaf: ?Copy@CPlayerInventoryDef@@UAEXPBVCDefClassBase@@@Z
+// CPlayerInventoryDef::Copy(const CDefClassBase* other) -- copy every member of another CPlayerInventoryDef: `*this = *(const CPlayerInventoryDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00462E28, 5 bytes: a thiscall tail call, `jmp` to CPlayerInventoryDef::operator= 0x00462E2D (emitted right after it).
+// Identity: the RTTI vftable placement of 0x00462E28 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CPlayerInventoryDef::operator=(const CPlayerInventoryDef&) 0x00462E2D, ??4CPlayerInventoryDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
 #include "rebuild_abi.h"
 
-/* 0x00462e28  CPlayerInventoryDef::Copy
- * Retail body is a single 5-byte `jmp rel32` thunk (tail call). The rel32
- * target is relocation-masked in parity, so any plausible extern callee with
- * a matching signature reproduces the exact `E9 xx xx xx xx` byte pattern.
- *
- * Signature per manifest: void __fastcall(this, arg) -> model as __fastcall
- * free function taking the object pointer (byte-identical to __fastcall).
- */
+class CDefClassBase;
+class CPlayerInventoryDef {                                // declarations only (no engine/CPlayerInventoryDef.h)
+public:
+    virtual void Copy(const CDefClassBase* other);              // vftable slot 19, 0x00462E28
+    CPlayerInventoryDef& operator=(const CPlayerInventoryDef& other);   // out of line: 0x00462E2D
+};
 
-class CPlayerInventoryDef;
-
-/* The real (non-thunk) implementation this thunk tail-calls into. */
-extern void __fastcall CPlayerInventoryDef_Copy_impl(CPlayerInventoryDef* thisptr, void* src);
-
-void __fastcall CPlayerInventoryDef_Copy(CPlayerInventoryDef* thisptr, void* src)
+void CPlayerInventoryDef::Copy(const CDefClassBase* other)
 {
-    CPlayerInventoryDef_Copy_impl(thisptr, src);
+    *this = *(const CPlayerInventoryDef*)other;
 }

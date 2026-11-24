@@ -1,0 +1,4 @@
+class	verdict	macro	notes
+CThingBaseDef	OK	FABLE_RETAIL_CTHINGBASEDEF_COPY_DECLS	hand insert (retail FABLE_RETAIL_CTHINGBASEDEF branch, before its `};`): the base operator= declaration only; pinned 0; clang probe: with the macro a use leaves ??4CThingBaseDef@@QAEAAV0@ABV0@@Z undefined, without it the object defines the implicit one (evidence/b3/probe_CThingBaseDef.txt)
+CThingPhysicalSwitchDef	OK	FABLE_RETAIL_CTHINGPHYSICALSWITCHDEF_COPY_DECLS	insert at line 21; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+COpinionPersonalityDef	OK	FABLE_RETAIL_COPINIONPERSONALITYDEF_COPY_DECLS	insert at line 44; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles

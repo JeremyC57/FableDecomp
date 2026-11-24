@@ -1,0 +1,5 @@
+address	run	objcheck	rename_map
+00464531	g4	ALL_EQ	{"?CThingPhysicalSwitchDef_Copy@@YIXPAVCThingPhysicalSwitchDef@@PAX@Z": "?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z", "?CThingPhysicalSwitchDef_Copy_impl@@YIXPAVCThingPhysicalSwitchDef@@PAX@Z": "??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z"}
+00464536	g4	ALL_EQ	{"??4CThingBaseDef@@QAEAAV0@ABV0@@Z": "??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z", "??4CThingBaseDefBase@@QAEAAU0@ABU0@@Z": "??4CThingBaseDef@@QAEAAV0@ABV0@@Z"}
+0045e65b	g4	ALL_EQ	{"?COpinionPersonalityDef_Copy@@YIXPAVCOpinionPersonalityDef@@PAX0@Z": "?Copy@COpinionPersonalityDef@@UAEXPBVCDefClassBase@@@Z", "?COpinionPersonalityDef_Copy_impl@@YIXPAVCOpinionPersonalityDef@@PAX0@Z": "??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z"}
+0045e660	g4	ALL_EQ	{"??4COpinionPersonalityDef@@QAEAAV0@ABV0@@Z": "??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z"}

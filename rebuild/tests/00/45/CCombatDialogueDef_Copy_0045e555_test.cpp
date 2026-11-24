@@ -1,38 +1,34 @@
-#include "rebuild_abi.h"
+// behaviour test for 0x0045E555: CCombatDialogueDef::Copy forwards to CCombatDialogueDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CCombatDialogueDef::Copy (?Copy@CCombatDialogueDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CCombatDialogueDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-class CCombatDialogueDef { public: int x; };
+class CDefClassBase;
+class CCombatDialogueDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CCombatDialogueDef& operator=(const CCombatDialogueDef& other);
+};
 
-// Provide the impl the thunk tail-jumps to.
-static int g_called = 0;
-static CCombatDialogueDef* g_this = 0;
-static void* g_src = 0;
-
-extern "C" void __fastcall CCombatDialogueDef_Copy_impl_c(CCombatDialogueDef* thisptr, void* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CCombatDialogueDef& CCombatDialogueDef::operator=(const CCombatDialogueDef& other)
 {
-    g_called = 1;
-    g_this = thisptr;
-    g_src = src;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-// Alias to the C++-mangled name the thunk references.
-void __fastcall CCombatDialogueDef_Copy_impl(CCombatDialogueDef* thisptr, void* src)
-{
-    CCombatDialogueDef_Copy_impl_c(thisptr, src);
-}
-
-void __fastcall CCombatDialogueDef_Copy(CCombatDialogueDef* thisptr, void* src);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CCombatDialogueDef obj;
-    obj.x = 0x45E555;
-    int marker = 0;
-    CCombatDialogueDef_Copy(&obj, &marker);
-
-    if (g_called && g_this == &obj && g_src == (void*)&marker)
-        printf("PASS_0045e555_THUNK\n");
-    else
-        printf("FAIL_0045e555\n");
-    return 0;
+    ((CCombatDialogueDef*)(g_dst))->CCombatDialogueDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("PASS_0045e555_THUNK\n");
+        return 0;
+    }
+    std::printf("FAIL_0045e555 calls=%d\n", g_calls);
+    return 1;
 }

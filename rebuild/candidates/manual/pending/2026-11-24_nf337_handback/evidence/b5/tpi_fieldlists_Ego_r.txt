@@ -1,0 +1,15 @@
+## CLensFlareElementDef 0x16DC1 field list 0x16DC0
+  - LF_MEMBER [name = `Radius`, Type = 0x0040 (float), offset = 64, attrs = public]
+  - LF_MEMBER [name = `Colour`, Type = 0x2C35, offset = 68, attrs = public]
+  - LF_MEMBER [name = `Position`, Type = 0x0040 (float), offset = 72, attrs = public]
+  - LF_MEMBER [name = `Texture`, Type = 0x0012 (long), offset = 76, attrs = public]
+## CSpecialAbilitiesDrunkennessDef 0x1C23D field list 0x1C23C
+  - LF_MEMBER [name = `DrunkenGraphic`, Type = 0x0012 (long), offset = 64, attrs = public]
+  - LF_MEMBER [name = `MaxAlpha`, Type = 0x0012 (long), offset = 68, attrs = public]
+  - LF_MEMBER [name = `USpeed`, Type = 0x0040 (float), offset = 72, attrs = public]
+  - LF_MEMBER [name = `VSpeed`, Type = 0x0040 (float), offset = 76, attrs = public]
+  - LF_MEMBER [name = `RotSpeed`, Type = 0x0040 (float), offset = 80, attrs = public]
+## CInterestingToVillagersDef 0x2FB66 field list 0x2FB65
+  - LF_MEMBER [name = `Interest`, Type = 0x0040 (float), offset = 40, attrs = public]
+## CAICreatureWillPowerIndicatorDef 0x3173C field list 0x3173B
+  - LF_MEMBER [name = `RechargeTime`, Type = 0x0040 (float), offset = 40, attrs = public]

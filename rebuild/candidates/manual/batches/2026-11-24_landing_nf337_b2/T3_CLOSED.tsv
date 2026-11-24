@@ -1,0 +1,12 @@
+source	address	unit	reason
+nf324	0x0045F711	port	0045f711 skipped-port ?Copy@CSpecialAbilitiesMultiStrikeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesMultiStrikeDef_Copy
+nf324	0x0045F84F	port	0045f84f skipped-port ?Copy@CSpecialAbilitiesBerserkDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesBerserkDef_Copy
+nf324	0x0045FABC	port	0045fabc skipped-port ?Copy@CSpecialAbilitiesBulletTimeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesBulletTimeDef_Copy
+nf324	0x0045FD4E	port	0045fd4e skipped-port ?Copy@CSpecialAbilitiesForcePushDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesForcePushDef_Copy
+nf324	0x0046012C	port	0046012c skipped-port ?Copy@CSpecialAbilitiesHealLifeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesHealLifeDef_Copy
+nf324	0x004601E5	port	004601e5 skipped-port ?Copy@CSpecialAbilitiesTurncoatSpellDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesTurncoatSpellDef_Copy
+nf324	0x0046133F	port	0046133f skipped-port ?Copy@CArmourDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CArmourDef_Copy
+nf324	0x004628CB	port	004628cb skipped-port ?Copy@CPlayerMovementDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CPlayerMovementDef_Copy
+nf324	0x00463B9D	port	00463b9d skipped-port ?Copy@CEntitySoundDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CEntitySoundDef_Copy
+nf324	0x0046F4EB	port	0046f4eb skipped-port ?Copy@CSkyDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSkyDef_Copy
+nf324	0x004717C2	port	004717c2 skipped-port ?Copy@CAppearanceDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CAppearanceDef_Copy

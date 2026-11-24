@@ -1,38 +1,34 @@
-#include "rebuild_abi.h"
-#include <stdio.h>
+// behaviour test for 0x00461D4B: CCombatSequenceDef::Copy forwards to CCombatSequenceDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CCombatSequenceDef::Copy (?Copy@CCombatSequenceDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CCombatSequenceDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
+#include <cstdio>
 
-class CCombatSequenceDef { public: int x; };
+class CDefClassBase;
+class CCombatSequenceDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CCombatSequenceDef& operator=(const CCombatSequenceDef& other);
+};
 
-// Provide the (normally extern) tail-call target for the local test build.
-static int g_called = 0;
-static void* g_seen_this = 0;
-static void* g_seen_other = 0;
-
-void __fastcall CCombatSequenceDef_Copy_impl(CCombatSequenceDef* thisptr, void* other)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CCombatSequenceDef& CCombatSequenceDef::operator=(const CCombatSequenceDef& other)
 {
-    g_called = 1;
-    g_seen_this = (void*)thisptr;
-    g_seen_other = other;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-void __fastcall CCombatSequenceDef_Copy(CCombatSequenceDef* thisptr, void* other);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
-int main(void)
+int main()
 {
-    CCombatSequenceDef obj;
-    obj.x = 0x1234;
-    int marker = 0;
-    CCombatSequenceDef_Copy(&obj, &marker);
-
-    if (g_called == 1 &&
-        g_seen_this == (void*)&obj &&
-        g_seen_other == (void*)&marker)
-    {
-        printf("OK_461d4b\n");
+    ((CCombatSequenceDef*)(g_dst))->CCombatSequenceDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_461d4b\n");
+        return 0;
     }
-    else
-    {
-        printf("FAIL_461d4b\n");
-    }
-    return 0;
+    std::printf("FAIL_00461d4b calls=%d\n", g_calls);
+    return 1;
 }

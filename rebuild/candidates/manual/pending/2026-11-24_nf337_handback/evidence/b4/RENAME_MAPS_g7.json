@@ -1,0 +1,25 @@
+{
+ "004e01a7": {
+  "?CBuyHouseDef_Copy@@YIXPAVCBuyHouseDef@@HPBVCDefClassBase@@@Z": "?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z"
+ },
+ "004e14fd": {
+  "?CAICreatureWillPowerIndicatorDef_Copy@@YIXPAVCAICreatureWillPowerIndicatorDef@@HPBVCDefClassBase@@@Z": "?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z",
+  "?CloneFields@CAICreatureWillPowerIndicatorDefBase@@QAEXPBVCDefClassBase@@@Z": "??4CDefClassBase@@QAEAAV0@ABV0@@Z"
+ },
+ "004e0e0a": {
+  "?CInterestingToVillagersDef__Copy@@YIXPAVCInterestingToVillagersDef@@PAXPBVCDefClassBase@@@Z": "?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z"
+ },
+ "004e064e": {
+  "?CEnemyDef_Copy@@YIXPAVCEnemyDef@@HPBVCDefClassBase@@@Z": "?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z"
+ },
+ "004e0ca7": {
+  "?CExpressionSubDef_Copy@@YIXPAVCExpressionSubDef@@HPBVCDefClassBase@@@Z": "?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z"
+ },
+ "004e0fed": {
+  "?CGoldDef_Copy@@YIXPAVCGoldDef@@HPBVCDefClassBase@@@Z": "?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z"
+ },
+ "004eb6c8": {
+  "?Copy@@YIXPAVCMultiStaticMeshDef@@PAXPBVCDefClassBase@@@Z": "?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z",
+  "?Copy@SubContainer@@QAEXPBU1@@Z": "??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z"
+ }
+}

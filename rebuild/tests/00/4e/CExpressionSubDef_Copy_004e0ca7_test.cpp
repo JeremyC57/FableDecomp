@@ -1,41 +1,36 @@
+// behaviour test for 0x004E0CA7: CExpressionSubDef::Copy calls CDefClassBase::operator= with this and the source object, then copies ExpressionDef (+0x28)
+// NF337 (NF324 Q2 form): the row now defines the PDB member CExpressionSubDef::Copy (?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee CDefClassBase::operator= (??4CDefClassBase@@QAEAAV0@ABV0@@Z) is stubbed as a member here.
 #include <cstdio>
 
-class CDefClassBase { public: int base[10]; int f28; 
-public:
+class CDefClassBase { public:
     CDefClassBase& operator=(const CDefClassBase& other);
 };
-
 class CExpressionSubDef { public:
-    int base[10];
-    int f28;
-    void BaseClone(const CDefClassBase* src);
+    virtual void Copy(const CDefClassBase* other);
 };
 
-static int g_base_called = 0;
-static void* g_base_self = 0;
-static const void* g_base_src = 0;
-
-CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other)
 {
-    const CDefClassBase* src = (const CDefClassBase*)&other_; (void)src;
-    g_base_called = 1;
-    g_base_self = ((CExpressionSubDef*)this);
-    g_base_src = src;
+    ++g_calls; g_this = this; g_other = &other;
     return *this;
 }
 
-void __fastcall CExpressionSubDef_Copy(CExpressionSubDef* self, int /*edx*/, const CDefClassBase* src);
+static unsigned long g_dst[12];
+static unsigned long g_src[12];
 
 int main()
 {
-    CExpressionSubDef dst; dst.f28 = 111;
-    CExpressionSubDef src; src.f28 = 999;
-
-    CExpressionSubDef_Copy(&dst, 0, (const CDefClassBase*)&src);
-
-    if (g_base_called == 1 && g_base_self == &dst && g_base_src == (const void*)&src && dst.f28 == 999)
-        printf("004e0ca7_TEST PASS\n");
-    else
-        printf("FAIL called=%d self=%d src=%d f28=%d\n", g_base_called, g_base_self==&dst, g_base_src==(void*)&src, dst.f28);
-    return 0;
+    *(unsigned long*)((char*)g_src + 0x28) = 0x7A6B5C4DUL;
+    ((CExpressionSubDef*)(g_dst))->CExpressionSubDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src && *(unsigned long*)((char*)g_dst + 0x28) == 0x7A6B5C4DUL) {
+        std::printf("004e0ca7_TEST PASS\n");
+        return 0;
+    }
+    std::printf("FAIL_004e0ca7 calls=%d\n", g_calls);
+    return 1;
 }

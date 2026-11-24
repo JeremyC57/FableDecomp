@@ -1,5 +1,8 @@
 // COpinionPersonalityDef::operator=(const COpinionPersonalityDef&) -- copies the default flag, the per-attitude enable map and the hit tolerance, then the owned personality-trait table in place; the base part is NOT assigned; returns *this
 #pragma optimize("s", on)
+// Leaf: ??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z
+// NF337 (2026-11-24): the return type is `const COpinionPersonalityDef&` as both PDB name sets spell it (??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z,
+//   Ego_r.pdb + FableWin.pdb; the only ??4 spelling of the class in either); a hand-written assignment, same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0045E660, length 52 bytes.
 // Pragma: #pragma optimize("s", on) -- `push 2Dh ; pop ecx` before the `rep movsd`.
 // Callees: map<EOpinionAttitudeType,bool>::operator= @ 0x0045E694 (manifest "CTCCarryable_AssignClonedTree4", propagated).
@@ -46,10 +49,10 @@ class COpinionPersonalityDef : public CParentDefClassBase { public:   // vtable 
     bool                    AttitudeEnabledDefaultForNotNone;   // +0x40
     std::map<EOpinionAttitudeType, bool>     AttitudeEnabled;            // +0x44
     float                   ToleranceToBeingHit;        // +0x50
-    COpinionPersonalityDef& operator=(const COpinionPersonalityDef& other);
+    const COpinionPersonalityDef& operator=(const COpinionPersonalityDef& other);
 };
 
-COpinionPersonalityDef& COpinionPersonalityDef::operator=(const COpinionPersonalityDef& other)
+const COpinionPersonalityDef& COpinionPersonalityDef::operator=(const COpinionPersonalityDef& other)
 {
     AttitudeEnabledDefaultForNotNone = other.AttitudeEnabledDefaultForNotNone;
     AttitudeEnabled = other.AttitudeEnabled;

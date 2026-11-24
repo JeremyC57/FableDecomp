@@ -1,0 +1,40 @@
+## HEAD set: 0045f711.obj 0045f716.obj 0045f84f.obj 0045f854.obj 0045fabc.obj 0045fac1.obj 0045fd4e.obj 0045fd53.obj 004601e5.obj 004601ea.obj 0046012c.obj 00460131.obj 0046133f.obj 00461344.obj 004628cb.obj 004628d0.obj 00463b9d.obj 00463ba2.obj 0046f4eb.obj 0046f4f0.obj 004717c2.obj 004717c7.obj
+duplicates 0
+UNRESOLVED 1 ??4?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 2 ??4?$vector@JV?$allocator@J@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 6 ??4?$vector@MV?$allocator@M@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4CAnimationSet@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ??4CCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 2 ??4CDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ??4CLensFlareElementDefVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 9 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ??4CSoundMap@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ?CAppearanceDef_Copy_impl@@YIXPAVCAppearanceDef@@0@Z
+UNRESOLVED 1 ?CArmourDef_Copy_impl_0046133f@@YIXPAVCArmourDef@@0@Z
+UNRESOLVED 1 ?CEntitySoundDef_Copy_impl@@YIXPAVCEntitySoundDef@@0@Z
+UNRESOLVED 1 ?CPlayerMovementDef_Copy_impl@@YIXPAVCPlayerMovementDef@@0@Z
+UNRESOLVED 1 ?CSkyDef_Copy_impl@@YIXPAVCSkyDef@@PBV1@@Z
+UNRESOLVED 1 ?CSpecialAbilitiesBerserkDef_Copy_impl@@YIXPAVCSpecialAbilitiesBerserkDef@@PAX@Z
+UNRESOLVED 1 ?CSpecialAbilitiesForcePushDef_Copy_impl@@YIXPAVCSpecialAbilitiesForcePushDef@@PAXPBX@Z
+UNRESOLVED 1 ?CSpecialAbilitiesHealLifeDef_Copy_impl@@YIXPAVCSpecialAbilitiesHealLifeDef@@PAX@Z
+UNRESOLVED 1 ?CSpecialAbilitiesMultiStrikeDef_Copy_impl@@YIXPAVCSpecialAbilitiesMultiStrikeDef@@PBVCDefClassBase@@@Z
+UNRESOLVED 1 ?CSpecialAbilitiesTurncoatSpellDef_Copy_impl@@YIXPAVCSpecialAbilitiesTurncoatSpellDef@@PAX@Z
+UNRESOLVED 1 @CSpecialAbilitiesBulletTimeDef_Copy_impl@8
+UNRESOLVED 8 __fltused
+## new set: 0045f711.obj 0045f716.obj 0045f84f.obj 0045f854.obj 0045fabc.obj 0045fac1.obj 0045fd4e.obj 0045fd53.obj 004601e5.obj 004601ea.obj 0046012c.obj 00460131.obj 0046133f.obj 00461344.obj 004628cb.obj 004628d0.obj 00463b9d.obj 00463ba2.obj 0046f4eb.obj 0046f4f0.obj 004717c2.obj 004717c7.obj
+duplicates 0
+UNRESOLVED 1 ??4?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 2 ??4?$vector@JV?$allocator@J@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 6 ??4?$vector@MV?$allocator@M@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4CAnimationSet@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ??4CCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 2 ??4CDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ??4CLensFlareElementDefVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 9 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ??4CSoundMap@@QAEAAV0@ABV0@@Z
+UNRESOLVED 8 __fltused
+LK_DONE

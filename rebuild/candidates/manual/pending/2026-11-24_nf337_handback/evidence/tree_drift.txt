@@ -1,0 +1,6 @@
+Tree drift check (NF337, 2026-11-24): work/tree was copied from rebuild/include once; by the b4 equiv run four headers outside this hand-back had changed
+in the repo (engine/C3DVector.h, CSpawnedFuncBase.h, CThing.h, CV_HauntedHouseScript.h). equiv b4 flagged 1 row (00975BB0) from that drift alone.
+work/tree refreshed from the repo for those four (diff -rq rebuild/include work/tree now lists only the 19 hand-back headers); orig/hdr_*.h all still equal the repo.
+Graded new rows reading a drifted header (clang -M over work/gen/*.cpp with row defines): only 0045FABC (b2) reads C3DVector.h, whose change is a new
+#elif FABLE_RETAIL_C3DVECTOR_ISNONZERO_YZX_BRACKET branch that row does not define: its preprocessed text is unchanged, so the b2 grade stands.
+equiv rerun as b5 / b5ctl on the refreshed trees.

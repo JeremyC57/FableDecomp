@@ -1,0 +1,8 @@
+## HEAD set: 0046f49f.obj 0046f43e.obj
+duplicates 0
+UNRESOLVED 1 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 @CAbilityButtonGuiDef_Copy_impl_0046f49f@8
+## new set: 0046f49f.obj 0046f43e.obj
+duplicates 0
+UNRESOLVED 1 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+LK_DONE

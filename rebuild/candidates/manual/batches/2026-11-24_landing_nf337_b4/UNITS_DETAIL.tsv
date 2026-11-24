@@ -1,0 +1,6 @@
+copy	operator=	class	copy_symbol	operator=_symbol	operator=_definition	note
+004e01a7	-	CBuyHouseDef	?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z	??4CDefClassBase@@QAEAAV0@ABV0@@Z (0x00431F10)	-	body form: retail calls CDefClassBase::operator= itself, then copies the member; no operator= row
+004e064e	-	CEnemyDef	?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z	??4CDefClassBase@@QAEAAV0@ABV0@@Z (0x00431F10)	-	body form: retail calls CDefClassBase::operator= itself, then copies the member; no operator= row
+004e0ca7	-	CExpressionSubDef	?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z	??4CDefClassBase@@QAEAAV0@ABV0@@Z (0x00431F10)	-	body form: retail calls CDefClassBase::operator= itself, then copies the member; no operator= row
+004e0fed	-	CGoldDef	?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z	??4CDefClassBase@@QAEAAV0@ABV0@@Z (0x00431F10)	-	body form: retail calls CDefClassBase::operator= itself, then copies the member; no operator= row
+004eb6c8	-	CMultiStaticMeshDef	?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z	??4CDefClassBase@@QAEAAV0@ABV0@@Z + ??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z (0x004EB6E7)	-	body form; the vector operator= row 0x004EB6E7 unchanged

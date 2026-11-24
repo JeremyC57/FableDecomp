@@ -3127,7 +3127,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004644fa	Copy	CThingSwitchDef	__thiscall	void	2	CThingSwitchDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CThingSwitchDef_Copy_004644fa.cpp
 00464513	Copy	CThingVillageDef	__thiscall	CThingVillageDef *	2	CThingVillageDef *,CThingVillageDef *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CThingVillageDef_CopyCThingVillageDefUAEXPBVCDefClassBaseZ_00464513.cpp
 00464531	Copy	CThingPhysicalSwitchDef	__thiscall	void	2	CThingPhysicalSwitchDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_Copy_00464531.cpp
-00464536	operator=	CThingBaseDef	unknown	undefined	0		0	yes	accepted									
+00464536	operator=	CThingPhysicalSwitchDef	unknown	undefined	0		0	yes	accepted									
 0046457d	Transfer	NUISystem::CUILocaleGraphicsDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
 004645ab	TransferMap<unsigned long, EWorldMapNameGraphic>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_004645ab.cpp
 004645e0	GFSerialiseMapBinaryOut<unsigned long,EWorldMapNameGraphic,std::less<EWorldMapNameGraphic>>	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x004645E0_global_SerializeAllocationAreas.cpp				

@@ -1,20 +1,16 @@
+// Leaf: ?Copy@COpinionPersonalityDef@@UAEXPBVCDefClassBase@@@Z
+// COpinionPersonalityDef::Copy(const CDefClassBase* other) -- copy every member of another COpinionPersonalityDef: `*this = *(const COpinionPersonalityDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0045E65B, 5 bytes: a thiscall tail call, `jmp` to COpinionPersonalityDef::operator= 0x0045E660 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x0045E65B (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: COpinionPersonalityDef::operator=(const COpinionPersonalityDef&) 0x0045E660, ??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb, the only ??4 spelling of the class in either; the operator= row respells onto it from the non-const return in this unit).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_COPINIONPERSONALITYDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/COpinionPersonalityDef.h"
 
-/* 0x0045e65b  COpinionPersonalityDef::Copy (5-byte thunk)
- * Retail body is a single `jmp rel32` tail-call that forwards this+arg
- * to the real implementation. The rel32 target is relocation-masked,
- * so any plausible extern callee with a matching signature byte-matches.
- */
-
-class COpinionPersonalityDef;
-
-/* real implementation the thunk tail-calls into (address relocation-masked) */
-extern void __fastcall COpinionPersonalityDef_Copy_impl(
-    COpinionPersonalityDef* thisptr, void* edx, COpinionPersonalityDef* src);
-
-/* modeled member accessor as free __fastcall(objptr, ...) per ABI rules */
-void __fastcall COpinionPersonalityDef_Copy(
-    COpinionPersonalityDef* thisptr, void* edx, COpinionPersonalityDef* src)
+void COpinionPersonalityDef::Copy(const CDefClassBase* other)
 {
-    COpinionPersonalityDef_Copy_impl(thisptr, edx, src);
+    *this = *(const COpinionPersonalityDef*)other;
 }

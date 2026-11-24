@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0045e65b   MATCH            PASS   Copy
+0045e660   WARN SHARED_HEADER_AVAILABLE COpinionPersonalityDef (engine/COpinionPersonalityDef.h)
+0045e660   RELOCATION_MATCH PASS   operator=
+00464531   MATCH            PASS   Copy
+00464536   WARN STANDIN_LEAF ??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z (catalog CThingBaseDef::operator=; names another function)
+00464536   RELOCATION_MATCH PASS   operator=
+
+WINS: 4
+  0045e65b MATCH COpinionPersonalityDef::?Copy@COpinionPersonalityDef@@UAEXPBVCDefClassBase@@@Z
+  0045e660 RELOCATION_MATCH COpinionPersonalityDef::??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z
+  00464531 MATCH CThingPhysicalSwitchDef::?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z
+  00464536 RELOCATION_MATCH CThingBaseDef::??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z

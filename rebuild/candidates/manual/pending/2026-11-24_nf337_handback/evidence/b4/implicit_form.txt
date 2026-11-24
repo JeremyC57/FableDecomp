@@ -1,0 +1,6 @@
+Implicit-form trial (NF337 g6, one compile each): `void C::Copy(const CDefClassBase* other) { *this = *(const C*)other; }` on the shared header with no declared C::operator=
+  004e01a7 CBuyHouseDef      RELOCATION_MATCH PASS, ctl LINK_FAIL; objcheck: DEF differ +??4CBuyHouseDef@@QAEAAV0@ABV0@@Z,??4CSubDefClassBase@@QAEAAV0@ABV0@@Z (pick-any COMDAT bodies of the implicit operators)
+  004e064e CEnemyDef         RELOCATION_MATCH PASS, ctl LINK_FAIL; objcheck: DEF differ +??4CEnemyDef@@QAEAAV0@ABV0@@Z,??4CSubDefClassBase@@QAEAAV0@ABV0@@Z
+  004e0ca7 CExpressionSubDef RELOCATION_MATCH PASS, ctl LINK_FAIL; objcheck: DEF differ +??4CExpressionSubDef@@QAEAAV0@ABV0@@Z,??4CSubDefClassBase@@QAEAAV0@ABV0@@Z
+=> the bytes of Copy match either way, but the implicit form adds two COMDAT DEFs per object (gate: COMDAT sets equal), so the rows keep the explicit form
+   (base CDefClassBase::operator= call + member copy), the inline expansion of the same assignment.

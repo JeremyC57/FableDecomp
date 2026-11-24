@@ -1,0 +1,7 @@
+address	run	objcheck	rename_map
+00460584	g4	ALL_EQ	{"?CSpecialAbilitiesDrunkennessDef_Copy@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z": "?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z", "?CSpecialAbilitiesDrunkennessDef_CopyImpl@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z": "??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z"}
+00460589	g4	ALL_EQ+FLTUSED	{"??4CBase_00431ed0_Derived_00460589@@QAEAAU0@ABU0@@Z": "??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z", "??4CBase_00431ed0@@QAEAAU0@ABU0@@Z": "??4CParentDefClassBase@@QAEAAV0@ABV0@@Z"}
+0046f77c	g4	ALL_EQ	{"?CLensFlareElementDef_Copy@@YIXPAVCLensFlareElementDef@@PBVCDefClassBase@@@Z": "?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z", "@CLensFlareElementDef_Copy_impl@8": "??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z"}
+0046f6af	g4	ALL_EQ+FLTUSED	{"??4CBase_00431ed0_Derived_0046f6af@@QAEAAU0@ABU0@@Z": "??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z", "??4CBase_00431ed0@@QAEAAU0@ABU0@@Z": "??4CParentDefClassBase@@QAEAAV0@ABV0@@Z"}
+004e14fd	g7	ALL_EQ+FLTUSED	{"?CAICreatureWillPowerIndicatorDef_Copy@@YIXPAVCAICreatureWillPowerIndicatorDef@@HPBVCDefClassBase@@@Z": "?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z", "?CloneFields@CAICreatureWillPowerIndicatorDefBase@@QAEXPBVCDefClassBase@@@Z": "??4CDefClassBase@@QAEAAV0@ABV0@@Z"}
+004e0e0a	g7	ALL_EQ+FLTUSED	{"?CInterestingToVillagersDef__Copy@@YIXPAVCInterestingToVillagersDef@@PAXPBVCDefClassBase@@@Z": "?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z"}

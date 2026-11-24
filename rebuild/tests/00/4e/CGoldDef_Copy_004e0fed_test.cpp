@@ -1,22 +1,36 @@
-#include "engine/CGoldDef.h"
+// behaviour test for 0x004E0FED: CGoldDef::Copy calls CDefClassBase::operator= with this and the source object, then copies Gold (+0x28)
+// NF337 (NF324 Q2 form): the row now defines the PDB member CGoldDef::Copy (?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee CDefClassBase::operator= (??4CDefClassBase@@QAEAAV0@ABV0@@Z) is stubbed as a member here.
 #include <cstdio>
-class CDefClassBase { public: char pad[0x2c]; 
-public:
+
+class CDefClassBase { public:
     CDefClassBase& operator=(const CDefClassBase& other);
 };
-struct CGoldDef_Methods : CGoldDef { void BaseClone(const CDefClassBase* other); };
-static int g_baseCalled;
-CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+class CGoldDef { public:
+    virtual void Copy(const CDefClassBase* other);
+};
+
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other)
 {
-     g_baseCalled = 1;
+    ++g_calls; g_this = this; g_other = &other;
     return *this;
 }
-void __fastcall CGoldDef_Copy(CGoldDef* self, int, const CDefClassBase* other);
+
+static unsigned long g_dst[12];
+static unsigned long g_src[12];
+
 int main()
 {
-    CGoldDef_Methods src, dst; src.Gold = (long)0xDEADBEEF; dst.Gold = 0;
-    CGoldDef_Copy(&dst, 0, (const CDefClassBase*)&src);
-    if (g_baseCalled == 1 && dst.Gold == (long)0xDEADBEEF) printf("004e0fed_TEST PASS\n");
-    else printf("FAIL base=%d f=%08lx\n", g_baseCalled, dst.Gold);
-    return 0;
+    *(unsigned long*)((char*)g_src + 0x28) = 0x7A6B5C4DUL;
+    ((CGoldDef*)(g_dst))->CGoldDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src && *(unsigned long*)((char*)g_dst + 0x28) == 0x7A6B5C4DUL) {
+        std::printf("004e0fed_TEST PASS\n");
+        return 0;
+    }
+    std::printf("FAIL_004e0fed calls=%d\n", g_calls);
+    return 1;
 }

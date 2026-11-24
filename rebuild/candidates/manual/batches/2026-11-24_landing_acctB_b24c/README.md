@@ -15,8 +15,8 @@ B24A7's notes and ESCALATE.md under `notes/00975bb0/`. A re-graded the row on it
   `p_hit_location_final` ("final hit location jack not found"), `GetTC(&ptc_targeted)`, `PeekTC(&ptc_perceive_thing)`,
   `ptc_perceive_thing->GetPerceivedThing() == PTargetThing.Get()` and `p_obstruction_thing->GetTCDriver(&ptcd_obstruction)`.
   Seven are "Failed success assert on" forms.
-- **The row's placements are partly fitted.** Eight of the row's placements follow those results. The ninth, after `ptc_solid_to_thing`,
-  stands where the debug build asserts the perceived-thing compare. The conditions are spelled on the pointer results, not as the
+- **The row's placements are partly fitted.** Eight of the row's placements follow those results. The ninth, after `ptc_solid_to_thing`
+  (fourth in source order), is in place of the debug build's perceived-thing compare (its eighth, after PeekTC): the retext moves it. The conditions are spelled on the pointer results, not as the
   recovered success forms. The coordinator rewrote the row's `// Inferred:` comment to state this; it was a comment-only change and the
   row re-graded identically. The retext to the recovered forms is queued to Account B, and that retext must stay inside the graded window.
 - **Window dependency (B's ESCALATE section 3).** The matching window of 9 to 14 asserts rests on helper texts that still differ from

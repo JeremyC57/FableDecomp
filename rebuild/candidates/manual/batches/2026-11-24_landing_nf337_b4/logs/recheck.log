@@ -1,0 +1,13 @@
+addr       parity           behav  name
+004e01a7   RELOCATION_MATCH PASS   Copy
+004e064e   RELOCATION_MATCH PASS   Copy
+004e0ca7   RELOCATION_MATCH PASS   Copy
+004e0fed   RELOCATION_MATCH PASS   Copy
+004eb6c8   RELOCATION_MATCH PASS   Copy
+
+WINS: 5
+  004e01a7 RELOCATION_MATCH CBuyHouseDef::?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z
+  004e064e RELOCATION_MATCH CEnemyDef::?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z
+  004e0ca7 RELOCATION_MATCH CExpressionSubDef::?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z
+  004e0fed RELOCATION_MATCH CGoldDef::?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z
+  004eb6c8 RELOCATION_MATCH CMultiStaticMeshDef::?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z

@@ -1,34 +1,34 @@
+// behaviour test for 0x00460180: CSpecialAbilitiesGhostSwordDef::Copy forwards to CSpecialAbilitiesGhostSwordDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CSpecialAbilitiesGhostSwordDef::Copy (?Copy@CSpecialAbilitiesGhostSwordDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSpecialAbilitiesGhostSwordDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
-#include "rebuild_abi.h"
 
-class CSpecialAbilitiesGhostSwordDef { public: int x; };
+class CDefClassBase;
+class CSpecialAbilitiesGhostSwordDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSpecialAbilitiesGhostSwordDef& operator=(const CSpecialAbilitiesGhostSwordDef& other);
+};
 
-static int g_called = 0;
-static CSpecialAbilitiesGhostSwordDef* g_this = 0;
-static void* g_src = 0;
-
-extern void __fastcall CSpecialAbilitiesGhostSwordDef_Copy(
-    CSpecialAbilitiesGhostSwordDef* thisptr, void* edx, void* src);
-
-// Provide the impl the thunk tail-calls.
-void __fastcall CSpecialAbilitiesGhostSwordDef_Copy_impl(
-    CSpecialAbilitiesGhostSwordDef* thisptr, void* edx, void* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSpecialAbilitiesGhostSwordDef& CSpecialAbilitiesGhostSwordDef::operator=(const CSpecialAbilitiesGhostSwordDef& other)
 {
-    (void)edx;
-    g_called = 1;
-    g_this = thisptr;
-    g_src = src;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
+
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CSpecialAbilitiesGhostSwordDef obj;
-    obj.x = 42;
-    int localSrc = 7;
-    CSpecialAbilitiesGhostSwordDef_Copy(&obj, 0, &localSrc);
-    if (g_called == 1 && g_this == &obj && g_src == &localSrc)
-        printf("OK_460180\n");
-    else
-        printf("FAIL_460180\n");
-    return 0;
+    ((CSpecialAbilitiesGhostSwordDef*)(g_dst))->CSpecialAbilitiesGhostSwordDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_460180\n");
+        return 0;
+    }
+    std::printf("FAIL_00460180 calls=%d\n", g_calls);
+    return 1;
 }

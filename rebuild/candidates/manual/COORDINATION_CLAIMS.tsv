@@ -483,3 +483,4 @@ date	account	item	kind	status	note
 2026-11-24	A	land Account B staged row 0x00975BB0 (JackOfBladesStage1 Update)	landing	done	batches/2026-11-24_landing_acctB_b24c
 2026-11-24	A	agent NF336: CV_HauntedHouseScript family onto the shared headers + TRetVoid::Return	naming	done	landed 24 rows (batches/2026-11-24_landing_nf336); 0x00E96C30 queued T3 nf336
 2026-11-24	A	agent NF339: T3 self-respell lines (227)	naming	claimed	locks via lock.sh NF339
+2026-11-24	A	agent NF337: CDefClassBase-family Copy rows (48) NF335 skipped, as units with their operator= rows	naming	claimed	b1..b4 landed (38 rows); b5 / b6 ruled, landing next

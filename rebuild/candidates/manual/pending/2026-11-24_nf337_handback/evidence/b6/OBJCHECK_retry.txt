@@ -1,0 +1,8 @@
+D-2 retry objcheck, 0x0046F43E HEAD (landed local model, defines Copy) v new (engine/CAbilityButtonGuiDef.h, implicit operator=, scaffolding helper), run g13:
+  ??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z COMDAT: bytes equal, relocations equal (one: +10 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z), section flags 0x60101020 both, selection 2 (pick-any) both
+  .drectve equal; UND sets equal ({??4CParentDefClassBase@@QAEAAV0@ABV0@@Z})
+  DEF: -?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z (now the 0x0046F49F row), +?ReferenceAssign@?A0x23e5b93b@@YAP8CAbilityButtonGuiDef@@AEAAV2@ABV2@@ZXZ (anonymous-namespace scaffolding helper, 6-byte section)
+  grade RELOCATION_MATCH PASS (HEAD RELOCATION_MATCH PASS), landed test unchanged (standalone mock)
+0x0046F49F unchanged from the first b6 (g10): RELOCATION_MATCH PASS, ctl LINK_FAIL, objcheck ALL_EQ under {flat self -> ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z, @CAbilityButtonGuiDef_Copy_impl_0046f49f@8 -> ??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z}
+Link (0x0046F49F + 0x0046F43E + binding witness 0x00476672), HEAD set and new set: 0 duplicates; new unresolved = HEAD minus the made-up impl (linkcheck_b6_retry_with_witness.txt)
+Rejected first build (explicit out-of-line operator=, selection 1): work/b6_explicit_rejected_rundir/

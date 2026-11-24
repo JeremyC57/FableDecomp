@@ -1,22 +1,17 @@
+// Leaf: ?Copy@CSpecialAbilitiesHealLifeDef@@UAEXPBVCDefClassBase@@@Z
+// CSpecialAbilitiesHealLifeDef::Copy(const CDefClassBase* other) -- copy every member of another CSpecialAbilitiesHealLifeDef: `*this = *(const CSpecialAbilitiesHealLifeDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0046012C, 5 bytes: a thiscall tail call, `jmp` to CSpecialAbilitiesHealLifeDef::operator= 0x00460131 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x0046012C (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CSpecialAbilitiesHealLifeDef::operator=(const CSpecialAbilitiesHealLifeDef&) 0x00460131, ??4CSpecialAbilitiesHealLifeDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_CTCHEALLIFE_START_ORIGINAL
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CSPECIALABILITIESHEALLIFEDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/CSpecialAbilitiesHealLifeDef.h"
 
-// 0x0046012c  CSpecialAbilitiesHealLifeDef::Copy
-// Retail body is a single 5-byte tail-call thunk: `e9 rel32` (jmp).
-// The jump target is relocation-masked in parity, so any plausible
-// extern callee with a matching __fastcall(this, src) signature that we
-// tail-call produces the identical `jmp rel32` byte pattern.
-
-class CSpecialAbilitiesHealLifeDef;
-
-// The forwarded-to implementation (e.g. a base-class / shared Copy).
-// Declared extern; its address is relocation-masked at compare time.
-extern void __fastcall CSpecialAbilitiesHealLifeDef_Copy_impl(
-    CSpecialAbilitiesHealLifeDef* thisptr, void* src);
-
-// Model the __fastcall accessor as a free __fastcall(this, ...).
-// A pure tail-call compiles to a single `jmp rel32`.
-void __fastcall CSpecialAbilitiesHealLifeDef_Copy(
-    CSpecialAbilitiesHealLifeDef* thisptr, void* src)
+void CSpecialAbilitiesHealLifeDef::Copy(const CDefClassBase* other)
 {
-    CSpecialAbilitiesHealLifeDef_Copy_impl(thisptr, src);
+    *this = *(const CSpecialAbilitiesHealLifeDef*)other;
 }

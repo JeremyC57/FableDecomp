@@ -1,0 +1,6 @@
+source	address	unit	reason
+nf324	0x004E01A7	port	004e01a7 skipped-port ?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CBuyHouseDef_Copy
+nf324	0x004E064E	port	004e064e skipped-port ?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CEnemyDef_Copy
+nf324	0x004E0CA7	port	004e0ca7 skipped-port ?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CExpressionSubDef_Copy
+nf324	0x004E0FED	port	004e0fed skipped-port ?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CGoldDef_Copy
+nf324	0x004EB6C8	port	004eb6c8 skipped-port ?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: other landed files name Copy: C3DAnimation2_InitialiseSharedAnimation_00a4fe60_test.cpp,C3DAnimation2_RelocateData_00a4e960_test.cpp,C3DA

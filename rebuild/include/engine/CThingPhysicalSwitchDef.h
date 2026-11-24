@@ -18,6 +18,15 @@ public:
 // ?Alloc@CThingPhysicalSwitchDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCHDEF_COPY_DECLS
+    // Opt-in (NF337, 2026-11-24): declarations only, no layout change, for CThingPhysicalSwitchDef::Copy 0x00464531, which tail-calls the out-of-line
+    // operator= (retail `jmp` 0x00464536). ?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at 0x00464531 (slot 19; it overrides CDefClassBase::Copy: clang override probe, made-up-name
+    // control fails); ??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb) is the operator= at 0x00464536.
+public:
+    virtual void Copy(const CDefClassBase*);
+    CThingPhysicalSwitchDef& operator=(const CThingPhysicalSwitchDef&);
+#endif
 };
 #ifdef FABLE_RETAIL_CTHINGBASEDEF
 FABLE_STATIC_ASSERT_AT(18, sizeof(CThingPhysicalSwitchDef)==0x94);

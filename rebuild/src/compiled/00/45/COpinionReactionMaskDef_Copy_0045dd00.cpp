@@ -1,19 +1,20 @@
+// Leaf: ?Copy@COpinionReactionMaskDef@@UAEXPBVCDefClassBase@@@Z
+// COpinionReactionMaskDef::Copy(const CDefClassBase* other) -- copy every member of another COpinionReactionMaskDef: `*this = *(const COpinionReactionMaskDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0045DD00, 5 bytes: a thiscall tail call, `jmp` to COpinionReactionMaskDef::operator= 0x0045DD05 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x0045DD00 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: COpinionReactionMaskDef::operator=(const COpinionReactionMaskDef&) 0x0045DD05, ??4COpinionReactionMaskDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
 #include "rebuild_abi.h"
 
-// 0x0045dd00  COpinionReactionMaskDef::Copy  (__fastcall, void, 2 params)
-// Retail is a 5-byte jump thunk: `e9 00 00 00 00` == jmp rel32.
-// This is a tail-call thunk to the real implementation; the rel32 target
-// is relocation-masked in parity, so any tail call to a plausible extern
-// with the matching signature reproduces the exact bytes (jmp rel32).
+class CDefClassBase;
+class COpinionReactionMaskDef {                                // declarations only (no engine/COpinionReactionMaskDef.h)
+public:
+    virtual void Copy(const CDefClassBase* other);              // vftable slot 19, 0x0045DD00
+    COpinionReactionMaskDef& operator=(const COpinionReactionMaskDef& other);   // out of line: 0x0045DD05
+};
 
-class COpinionReactionMaskDef;
-
-// The real implementation this thunk tail-jumps to (relocation-masked target).
-extern void __fastcall COpinionReactionMaskDef_Copy_impl(COpinionReactionMaskDef* thisptr, void* src);
-
-// Modeled as a free __fastcall taking the this-pointer (byte-identical to __fastcall).
-void __fastcall COpinionReactionMaskDef_Copy(COpinionReactionMaskDef* thisptr, void* src)
+void COpinionReactionMaskDef::Copy(const CDefClassBase* other)
 {
-    // Tail call -> emits a single `jmp rel32` (the 5-byte thunk).
-    COpinionReactionMaskDef_Copy_impl(thisptr, src);
+    *this = *(const COpinionReactionMaskDef*)other;
 }

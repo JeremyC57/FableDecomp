@@ -217781,9 +217781,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00464536'
-        Module = 'CThingBaseDef'
-        Source = '00/46/CThingBaseDef_operator_00464536.cpp'
-        TestSource = '00/46/CThingBaseDef_operator_00464536_test.cpp'
+        Module = 'CThingPhysicalSwitchDef'
+        Source = '00/46/CThingPhysicalSwitchDef_operator_00464536.cpp'
+        TestSource = '00/46/CThingPhysicalSwitchDef_operator_00464536_test.cpp'
         PassPattern = '00464536_TEST PASS'
     }
     [pscustomobject]@{

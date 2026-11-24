@@ -41,6 +41,15 @@ public:
     unsigned char AttitudeEnabled[0x10];                                 // +0x44 map<EOpinionAttitudeType,bool> (opaque)
 #endif
     float         ToleranceToBeingHit;                                   // +0x54
+#ifdef FABLE_RETAIL_COPINIONPERSONALITYDEF_COPY_DECLS
+    // Opt-in (NF337, 2026-11-24): declarations only, no layout change, for COpinionPersonalityDef::Copy 0x0045E65B, which tail-calls the out-of-line
+    // operator= (retail `jmp` 0x0045E660). ?Copy@COpinionPersonalityDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at 0x0045E65B (slot 19; it overrides CDefClassBase::Copy: clang override probe, made-up-name
+    // control fails); ??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb) is the operator= at 0x0045E660.
+public:
+    virtual void Copy(const CDefClassBase*);
+    const COpinionPersonalityDef& operator=(const COpinionPersonalityDef&);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(33, offsetof(COpinionPersonalityDef, PersonalityTraits) == 0x3c);
 FABLE_STATIC_ASSERT_AT(34, offsetof(COpinionPersonalityDef, ToleranceToBeingHit) == 0x54);

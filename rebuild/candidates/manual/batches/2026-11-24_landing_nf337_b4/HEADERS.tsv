@@ -1,0 +1,4 @@
+class	verdict	macro	notes
+CEnemyDef	OK	FABLE_RETAIL_CENEMYDEF_COPY_DECLS	insert at line 16; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CExpressionSubDef	OK	FABLE_RETAIL_CEXPRESSIONSUBDEF_COPY_DECLS	insert at line 26; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CGoldDef	OK	FABLE_RETAIL_CGOLDDEF_COPY_DECLS	insert at line 29; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles

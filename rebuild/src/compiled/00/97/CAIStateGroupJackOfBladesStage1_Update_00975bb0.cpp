@@ -14,8 +14,8 @@
 //   &p_jack_def), GetTC(&ptc_boss), GetTC(&ptc_combat), GetTC(&p_TC_hit_locations), p_hit_location_final ("final hit location jack not
 //   found"), GetTC(&ptc_targeted), PeekTC(&ptc_perceive_thing), ptc_perceive_thing->GetPerceivedThing() == PTargetThing.Get(),
 //   p_obstruction_thing->GetTCDriver(&ptcd_obstruction); seven are "Failed success assert on" forms (the call itself asserted). Eight
-//   placements here follow those results; the ninth (after ptc_solid_to_thing) stands where the debug build asserts the perceived-thing
-//   compare, and the conditions are spelled on the pointer results: both fitted (retext to the recovered forms queued to Account B).
+//   placements here follow those results; the ninth (after ptc_solid_to_thing, 4th in source order) is in place of the debug build's
+//   perceived-thing compare (its 8th, after PeekTC); conditions spelled on the pointer results: both fitted (retext queued to Account B).
 // Bracket: IsNonZero as Y*Y+(Z*Z)+X*X (C3DVector.h FABLE_RETAIL_C3DVECTOR_ISNONZERO_YZX_BRACKET, B24A6): retail 0x0097614F..0x0097618B.
 // Evidenced helper texts (FableWin.pdb /Od sizes SAME): GetTC<T> as the HasTC / GetTC(id) / checked-cast chain (27i, existing opt-in
 //   FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN, so FABLE_RETAIL_CTHING_GETTC_EXPANDED is not defined), PeekTC<T> likewise (27i), CThing::IsDead

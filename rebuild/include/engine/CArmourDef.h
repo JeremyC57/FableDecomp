@@ -41,6 +41,15 @@ public:unsigned char AugmentationResponse[12];std::map<EDamageAttribute,float> D
 // ?Alloc@CArmourDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
+#ifdef FABLE_RETAIL_CARMOURDEF_COPY_DECLS
+    // Opt-in (NF337, 2026-11-24): declarations only, no layout change, for CArmourDef::Copy 0x0046133F, which tail-calls the out-of-line
+    // operator= (retail `jmp` 0x00461344). ?Copy@CArmourDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at 0x0046133F (slot 19; it overrides CDefClassBase::Copy: clang override probe, made-up-name
+    // control fails); ??4CArmourDef@@QAEAAV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb) is the operator= at 0x00461344.
+public:
+    virtual void Copy(const CDefClassBase*);
+    CArmourDef& operator=(const CArmourDef&);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(9, offsetof(CArmourDef,DamageTypeResponse)==0x48);
 FABLE_STATIC_ASSERT_AT(10, sizeof(CArmourDef)==0x6c);

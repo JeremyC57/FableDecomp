@@ -1,0 +1,13 @@
+## HEAD set: 0045e182.obj 0045e187.obj 0045d2f7.obj 0045d2fc.obj
+duplicates 0
+UNRESOLVED 1 ??4?$_Rb_tree@W4EOpinionDeedType@@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@U?$less@W4EOpinionDeedType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 2 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ?CFactionDef_Copy_impl@@YIXPAVCFactionDef@@PAX@Z
+UNRESOLVED 1 ?COpinionDeedMaskDef_Copy_impl@@YIXPAVCOpinionDeedMaskDef@@PAX@Z
+## new set: 0045e182.obj 0045e187.obj 0045d2f7.obj 0045d2fc.obj
+duplicates 0
+UNRESOLVED 1 ??4?$_Rb_tree@W4EOpinionDeedType@@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@U?$less@W4EOpinionDeedType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 2 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+LK_DONE

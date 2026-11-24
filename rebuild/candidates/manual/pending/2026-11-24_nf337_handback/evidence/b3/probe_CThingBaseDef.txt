@@ -1,0 +1,3 @@
+CThingBaseDef.h FABLE_RETAIL_CTHINGBASEDEF_COPY_DECLS probe (clang i686 MS mode, work/tree, FABLE_RETAIL_DEF_CLASS_BASE + FABLE_RETAIL_CTHINGBASEDEF):
+  with the macro    a use of CThingBaseDef::operator= compiles; the object leaves ??4CThingBaseDef@@QAEAAV0@ABV0@@Z undefined (U: the out-of-line 0x00463950)
+  without the macro the same use compiles and the object DEFINES ??4CThingBaseDef@@QAEAAV0@ABV0@@Z (T: the implicit one) -- the declaration is what keeps the base call out of line

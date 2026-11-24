@@ -1,0 +1,4 @@
+objcheck planted controls (must not be ALL_EQ):
+map without the callee rename: UND differ: +??4CFactionDef@@QAEAAV0@ABV0@@Z -?CFactionDef_Copy_impl@@YIXPAVCFactionDef@@PAX@Z
+objects of two different rows: DEF differ: +?Copy@COpinionDeedMaskDef@@UAEXPBVCDefClassBase@@@Z -?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z
+a HEAD operator= object against a new Copy object: DEF differ: +?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z -??4CFactionDef@@QAEAAV0@ABV0@@Z,?Copy@CFactionDef@@QAEXPBVCParentDefClassBase@@@Z

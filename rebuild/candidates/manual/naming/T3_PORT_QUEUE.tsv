@@ -557,8 +557,8 @@ nf301	0x00881690	port	binder 0x006b84e0: global CRadialBlurParams / CRadialBlurP
 nf301	0x00CB7940	port (rest of done-partial)	binder 0x00cdd360 + 7 others: STALE: 0x00CDD360 now calls CScriptBase::IsActiveThreadTerminating (HEAD object binds only the PDB spelling); the @Q_Sunny_cb7940@4 line is deleted (the token survives only in that row's standalone test stub, NF284 D2). Left: the member declared on each script's own local class or on CScriptBase_Retail (0x00E1F3A0, 0x00EE8FE0, 0x00E1E530, 0x00D8EE50, 0x00E3A150, 0x00E953E0, 0x00D032F0): base-member port
 nf301	0x005ED070	port	binder 0x005ed190: global polymorphic CScriptModuleBase is the base of the binder's own NCameraModes class: nesting a base (NF298 37 / 39 precedent): port
 nf301	0x006FB5C0	port	binder 7 binders: CSmallVector<CEvent, 32> instance stand-ins (local templates in per-row namespaces, struct-keyed CEvent, public Copy): template-instance port
-nf301	0x004605E5	port	binder 0x004605e0 / 0x004582ba: free extern "C" __fastcall stand-ins for the operator= / virtual dtor members: port
-nf301	0x004582D6	port	binder 0x004605e0 / 0x004582ba: free extern "C" __fastcall stand-ins for the operator= / virtual dtor members: port
+nf301	0x004605E5	port	binder 0x004582ba (0x004605e0 moved onto the PDB ??4 at nf337 b1): free extern "C" __fastcall stand-ins for the operator= / virtual dtor members: port
+nf301	0x004582D6	port	binder 0x004582ba (0x004605e0 moved onto the PDB ??4 at nf337 b1): free extern "C" __fastcall stand-ins for the operator= / virtual dtor members: port
 nf301	0x00B20BA0	port	binder 0x00b215a0: CSplinePosParamData modelled in NParticleEngine (PDB nests it in CPSCSplineBase) with pointer parameters for the PDB references: nesting + parameter port
 nf301	0x00B206B0	port	binder 0x00b215a0 / 0x00b21160: 0x00B215A0: nesting in CPSCSplineBase also renames its GetPointAtPos / GetPointAtIndex references (pointer parameters); 0x00B21160 is the self on the global stand-in: port / binder self T3
 nf301	0x0041AB00	port	binder 0x0055c5b0: global polymorphic CSprite is the base of the binder's own NUISystem::CMouseCursor: nesting a base (NF298 37 / 39 precedent): port
@@ -3159,54 +3159,23 @@ nf324	0x00458C46	held	00458c46 skipped-held ?GetSizeofClass@CMeleeCombatAbilityD
 nf324	0x00459704	port	00459704 skipped-port ?Transfer@CSimBuildingDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CVillagerInteractionsDef*` (another class)
 nf324	0x00459A9E	port	00459a9e skipped-port ?GetSizeofClass@CBrainDef@@UAEKXZ triage (header): model: engine/CBrainDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x0045C549	port	0045c549 skipped-port ?Copy@CSoundThemeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSoundThemeDef_Copy
-nf324	0x0045D2F7	port	0045d2f7 skipped-port ?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CFactionDef_Copy
 nf324	0x0045D500	port	0045d500 skipped-port ?Copy@CCameraManagerDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CCameraManagerDef_Copy
-nf324	0x0045DD00	port	0045dd00 skipped-port ?Copy@COpinionReactionMaskDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls COpinionReactionMaskDef_Copy
-nf324	0x0045E182	port	0045e182 skipped-port ?Copy@COpinionDeedMaskDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls COpinionDeedMaskDef_Copy
-nf324	0x0045E555	port	0045e555 skipped-port ?Copy@CCombatDialogueDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CCombatDialogueDef_Copy
-nf324	0x0045E65B	port	0045e65b skipped-port ?Copy@COpinionPersonalityDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls COpinionPersonalityDef_Copy
-nf324	0x0045F630	port	0045f630 skipped-port ?Copy@CSpecialAbilitiesBattleChargeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesBattleChargeDef_Copy
-nf324	0x0045F711	port	0045f711 skipped-port ?Copy@CSpecialAbilitiesMultiStrikeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesMultiStrikeDef_Copy
-nf324	0x0045F7C2	port	0045f7c2 skipped-port ?Copy@CSpecialAbilitiesMultiArrowDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesMultiArrowDef_Copy
-nf324	0x0045F84F	port	0045f84f skipped-port ?Copy@CSpecialAbilitiesBerserkDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesBerserkDef_Copy
-nf324	0x0045FABC	port	0045fabc skipped-port ?Copy@CSpecialAbilitiesBulletTimeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesBulletTimeDef_Copy
-nf324	0x0045FD4E	port	0045fd4e skipped-port ?Copy@CSpecialAbilitiesForcePushDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesForcePushDef_Copy
 nf324	0x0045FE26	port	0045fe26 skipped-port ?Copy@CSpecialAbilitiesEnflameDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
 nf324	0x0045FEDE	port	0045fede skipped-port ?Copy@CSpecialAbilitiesPhysicalShieldDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx is used
 nf324	0x004600C6	port	004600c6 skipped-port ?Copy@CSpecialAbilitiesDrainLifeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesDrainLifeDef_Copy
-nf324	0x0046012C	port	0046012c skipped-port ?Copy@CSpecialAbilitiesHealLifeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesHealLifeDef_Copy
-nf324	0x00460180	port	00460180 skipped-port ?Copy@CSpecialAbilitiesGhostSwordDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesGhostSwordDef_Copy
-nf324	0x004601E5	port	004601e5 skipped-port ?Copy@CSpecialAbilitiesTurncoatSpellDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesTurncoatSpellDef_Copy
 nf324	0x00460251	port	00460251 skipped-port ?Copy@CSpecialAbilitiesFireballSpellDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
-nf324	0x00460452	port	00460452 skipped-port ?Copy@CSpecialAbilitiesSummonSpellDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesSummonSpellDef_Copy
-nf324	0x004604CA	port	004604ca skipped-port ?Copy@CSpecialAbilitiesBurntEffectDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesBurntEffectDef_Copy
-nf324	0x00460518	port	00460518 skipped-port ?Copy@CSpecialAbilitiesElectrocutedEffectDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesElectrocutedEffectDef_Copy
 nf324	0x00460584	port	00460584 skipped-port ?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesDrunkennessDef_Copy
-nf324	0x004605E0	port	004605e0 skipped-port ?Copy@CSpecialAbilitiesThunderLightningStormDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesThunderLightningStormDef_Copy
 nf324	0x004608C1	port	004608c1 skipped-port ?Copy@CSpecialAbilitiesUnholyPowerDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
 nf324	0x00460A14	port	00460a14 skipped-port ?Copy@CSpecialAbilitiesCreatureTintDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
 nf324	0x00460A5C	port	00460a5c skipped-port ?Copy@CSoundDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
 nf324	0x004611A1	port	004611a1 skipped-port ?Copy@CAttackPatternDef@@UAEXPBVCDefClassBase@@@Z triage (-): this: the body uses self typed `CObjectFamilyDef*` (another class)
-nf324	0x0046133F	port	0046133f skipped-port ?Copy@CArmourDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CArmourDef_Copy
 nf324	0x00461D0D	port	00461d0d skipped-port ?Copy@CCombatAbilityBlockHeavyWeaponAttackDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: used parameter src is `const CCombatAbilityBlockHeavyWeaponAttackDef*`, the PDB type is `const class CDefClassBase*
-nf324	0x00461D4B	port	00461d4b skipped-port ?Copy@CCombatSequenceDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CCombatSequenceDef_Copy
-nf324	0x00461F77	port	00461f77 skipped-port ?Copy@CHeroCombatDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CHeroCombatDef_Copy
 nf324	0x0046244C	port	0046244c skipped-port ?Copy@CMeleeCombatAbilityDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CMeleeCombatAbilityDef_Copy
-nf324	0x004625F8	port	004625f8 skipped-port ?Copy@CMeleeCombatKnockdownEffects@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CMeleeCombatKnockdownEffects_Copy
 nf324	0x00462888	port	00462888 skipped-port ?Copy@CPlayerDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx_ is used
-nf324	0x004628CB	port	004628cb skipped-port ?Copy@CPlayerMovementDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CPlayerMovementDef_Copy
-nf324	0x004629F6	port	004629f6 skipped-port ?Copy@CEngineThemeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CEngineThemeDef_Copy
 nf324	0x00462B10	port	00462b10 skipped-port ?Copy@CBrainDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CBrainDef_Copy
-nf324	0x00462E28	port	00462e28 skipped-port ?Copy@CPlayerInventoryDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CPlayerInventoryDef_Copy
-nf324	0x00463B9D	port	00463b9d skipped-port ?Copy@CEntitySoundDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CEntitySoundDef_Copy
 nf324	0x004642F5	port	004642f5 skipped-port ?Copy@CThingObjectDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
-nf324	0x00464531	port	00464531 skipped-port ?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CThingPhysicalSwitchDef_Copy
-nf324	0x00465EAE	port	00465eae skipped-port ?Copy@CGlobalDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CGlobalDef_Copy
 nf324	0x0046F49F	port	0046f49f skipped-port ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CAbilityButtonGuiDef_Copy
-nf324	0x0046F4EB	port	0046f4eb skipped-port ?Copy@CSkyDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSkyDef_Copy
 nf324	0x0046F77C	port	0046f77c skipped-port ?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CLensFlareElementDef_Copy
-nf324	0x004717C2	port	004717c2 skipped-port ?Copy@CAppearanceDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CAppearanceDef_Copy
-nf324	0x00471A72	port	00471a72 skipped-port ?Copy@COpinionDeedEffectsDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls COpinionDeedEffectsDef_Copy
 nf324	0x004784E4	port	004784e4 skipped-port ?Transfer@CAppearanceModifierScalingDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CVillagerInteractionsDef*` (another class)
 nf324	0x00478827	port	00478827 skipped-port ?Transfer@CAbilityTrackLevelDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CVillagerInteractionsDef*` (another class)
 nf324	0x00486360	port	00486360 skipped-port ?Init@CAInputProcess@@UAEXXZ triage (header): model: engine/CAInputProcess.h does not declare Init (add-only opt-in)
@@ -3271,13 +3240,10 @@ nf324	0x004DF3D4	rejected	004df3d4 rejected ?GetTerrainHeightAt@CObstacleNavigat
 nf324	0x004DF46E	rejected	004df46e rejected ?PeekNavigatorMaxSpeed@CObstacleNavigatorExternalInterface@@UBEMABVC3DVector@@@Z work/exp_b1 REJECT: no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS')) [route local]
 nf324	0x004DF47F	port	004df47f skipped-port ?GetPNavigatorObstacles@CObstacleNavigatorExternalInterface@@UAEPAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ triage (-): signature: template type (T3)
 nf324	0x004E00A3	port	004e00a3 skipped-port ?Copy@CReadableDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CReadableDef_Copy
-nf324	0x004E01A7	port	004e01a7 skipped-port ?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CBuyHouseDef_Copy
 nf324	0x004E0331	port	004e0331 skipped-port ?Copy@CHeroDef@@UAEXPBVCDefClassBase@@@Z triage (local): model: virtual target, local model has a base clause
-nf324	0x004E064E	port	004e064e skipped-port ?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CEnemyDef_Copy
 nf324	0x004E0701	port	004e0701 skipped-port ?GetSizeofClass@CShopDef@@UAEKXZ triage (-): unit: other landed files name CShopDef_GetSizeofClass: CShopDef_CShopDef_004e06c3.cpp
 nf324	0x004E088A	port	004e088a skipped-port ?GetSizeofClass@CExperienceDef@@UAEKXZ triage (header): model: engine/CExperienceDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004E091A	port	004e091a skipped-port ?GetSizeofClass@CHeroSuitDef@@UAEKXZ triage (header): model: engine/CHeroSuitDef.h does not declare GetSizeofClass (add-only opt-in)
-nf324	0x004E0CA7	port	004e0ca7 skipped-port ?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CExpressionSubDef_Copy
 nf324	0x004E0CC0	port	004e0cc0 skipped-port ?Copy@CSummonableCreatureDef@@UAEXPBVCDefClassBase@@@Z triage (local): model: virtual target, local model has a base clause
 nf324	0x004E0D33	port	004e0d33 skipped-port ?Copy@COccupiableDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: used parameter other is `const COccupiableDef*`, the PDB type is `const class CDefClassBase*` (alias pattern)
 nf324	0x004E0E0A	port	004e0e0a skipped-port ?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CInterestingToVillagersDef__Copy
@@ -3285,7 +3251,6 @@ nf324	0x004E0E79	port	004e0e79 skipped-port ?Copy@CActivateQuestDef@@UAEXPBVCDef
 nf324	0x004E0EE3	port	004e0ee3 skipped-port ?Copy@CTavernTableDef@@UAEXPBVCDefClassBase@@@Z triage (local): model: virtual target, local model has a base clause
 nf324	0x004E0F02	port	004e0f02 skipped-port ?Copy@CTavernDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CTavernDef_Copy
 nf324	0x004E0F1B	port	004e0f1b skipped-port ?Copy@CDrunkennessDef@@UAEXPBVCDefClassBase@@@Z triage (local): model: virtual target, local model has a base clause
-nf324	0x004E0FED	port	004e0fed skipped-port ?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CGoldDef_Copy
 nf324	0x004E1394	port	004e1394 skipped-port ?Copy@CResurrectionItemDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: used parameter other is `const CResurrectionItemDef*`, the PDB type is `const class CDefClassBase*` (alias pattern)
 nf324	0x004E14FD	port	004e14fd skipped-port ?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CAICreatureWillPowerIndicatorDef_Copy
 nf324	0x004E157C	port	004e157c skipped-port ?Copy@CCarriedReadableDef@@UAEXPBVCDefClassBase@@@Z work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home/user/FableDecomp/rebuild/include/engine/CSubDefClassBase.h:10:2: error: engi
@@ -3298,7 +3263,6 @@ nf324	0x004E3F7B	port	004e3f7b skipped-port ?Transfer@CAreaOfEffectAttackDef@@UA
 nf324	0x004E4648	port	004e4648 skipped-port ?Copy@CWhisperBattleDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx_ is used
 nf324	0x004E5F51	port	004e5f51 skipped-port ?Copy@CReplaceableMeshDef@@UAEXPBVCDefClassBase@@@Z triage (local): model: virtual target, local model has a base clause
 nf324	0x004EAC7B	port	004eac7b skipped-port ?Transfer@CPrizeScoreDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CGuildMasterDef*` (another class)
-nf324	0x004EB6C8	port	004eb6c8 skipped-port ?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: other landed files name Copy: C3DAnimation2_InitialiseSharedAnimation_00a4fe60_test.cpp,C3DAnimation2_RelocateData_00a4e960_test.cpp,C3DA
 nf324	0x004EBBEC	port	004ebbec skipped-port ?GetSizeofClass@CObjectAugmentationsDef@@UAEKXZ work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home/user/FableDecomp/rebuild/include/engine/CSubDefClassBase.h:10:2: error: engine/C
 nf324	0x004EC0F0	port	004ec0f0 skipped-port ?Copy@CCardDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx_ is used
 nf324	0x004FB2D0	port	004fb2d0 skipped-port ?DrawGetGranularity@CWorldMap@@UBEJXZ triage (-): this: the body uses self typed `const unsigned char*` (another class)
@@ -3932,3 +3896,7 @@ nf335	0x006A40B0	callee respell	006a40b0 calls made-up _JR_Helper@8 at 0x00687D5
 nf336	0x00E96C30	port	shared-header port keeps the grade but changes the COMDAT set (STLport vector<CScriptThing> helpers, NF320 Q2 / NF318 Q5) and adds libcp: STLport census owner (NF303 T3); attempt in pending/2026-11-24_nf336_handback/evidence/attempt_00e96c30.cpp; last local model in the CV_HauntedHouseScript object (B Gate 0)
 acctB_b24C8	0x0070C900	port	B request: re-row CAnimSet::GetMeshAnim onto shared headers with the same body text as an opt-in body in CAnimSet.h, so B row 0x0070D940 takes it from the header instead of a verbatim copy (low priority; tell B in the log)
 acctB_b24B6	0x0066C340	pick-any debt	shared GETDEF_GLOBAL_BODY text emits a GetDef<CMaterialDef> copy that differs from retail 0x0066C340; leaf-referenced in B row 0x00839940 (holds it, pick-any rule) and emitted by landed 0x008F7950 at HEAD (NF328 D1 debt)
+nf337	0x0045D2FC	port	D-3: CFactionDef operator= row defines a ?Copy@CFactionDef@@QAEXPBVCParentDefClassBase@@@Z scaffolding helper (NF318 Q5 debt); swap to the 0x00E95380 anonymous-namespace helper form (NF337 b6)
+nf337	0x0045E55A	port	D-3: CCombatDialogueDef operator= row, same helper swap
+nf337	0x004604CF	port	D-3: CSpecialAbilitiesBurntEffectDef operator= row, same helper swap
+nf337	0x00464536	debt	standalone mock test still names the old classes (CThingBaseDef) after the nf337 b3 rename

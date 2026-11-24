@@ -1,35 +1,34 @@
-#include "rebuild_abi.h"
-#include <stdio.h>
+// behaviour test for 0x0045F711: CSpecialAbilitiesMultiStrikeDef::Copy forwards to CSpecialAbilitiesMultiStrikeDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CSpecialAbilitiesMultiStrikeDef::Copy (?Copy@CSpecialAbilitiesMultiStrikeDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSpecialAbilitiesMultiStrikeDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
+#include <cstdio>
 
 class CDefClassBase;
-class CSpecialAbilitiesMultiStrikeDef;
+class CSpecialAbilitiesMultiStrikeDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSpecialAbilitiesMultiStrikeDef& operator=(const CSpecialAbilitiesMultiStrikeDef& other);
+};
 
-// Capture the tail-call so the test is deterministic without the real engine impl.
-static int g_called = 0;
-static void* g_this = 0;
-static const void* g_src = 0;
-
-extern void __fastcall CSpecialAbilitiesMultiStrikeDef_Copy_impl(
-    CSpecialAbilitiesMultiStrikeDef* thisptr, const CDefClassBase* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSpecialAbilitiesMultiStrikeDef& CSpecialAbilitiesMultiStrikeDef::operator=(const CSpecialAbilitiesMultiStrikeDef& other)
 {
-    g_called = 1;
-    g_this = (void*)thisptr;
-    g_src = (const void*)src;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-void __fastcall CSpecialAbilitiesMultiStrikeDef_Copy(
-    CSpecialAbilitiesMultiStrikeDef* thisptr, const CDefClassBase* src);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
-int main(void)
+int main()
 {
-    char obj[8];
-    char src[8];
-    CSpecialAbilitiesMultiStrikeDef_Copy(
-        (CSpecialAbilitiesMultiStrikeDef*)obj, (const CDefClassBase*)src);
-    if (g_called == 1 && g_this == (void*)obj && g_src == (const void*)src) {
-        printf("OK_0045f711\n");
-    } else {
-        printf("FAIL_0045f711\n");
+    ((CSpecialAbilitiesMultiStrikeDef*)(g_dst))->CSpecialAbilitiesMultiStrikeDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_0045f711\n");
+        return 0;
     }
-    return 0;
+    std::printf("FAIL_0045f711 calls=%d\n", g_calls);
+    return 1;
 }

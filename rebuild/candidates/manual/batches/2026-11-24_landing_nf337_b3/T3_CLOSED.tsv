@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf324	0x0045E65B	port	0045e65b skipped-port ?Copy@COpinionPersonalityDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls COpinionPersonalityDef_Copy
+nf324	0x00464531	port	00464531 skipped-port ?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CThingPhysicalSwitchDef_Copy

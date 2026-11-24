@@ -1,19 +1,20 @@
+// Leaf: ?Copy@CSpecialAbilitiesBattleChargeDef@@UAEXPBVCDefClassBase@@@Z
+// CSpecialAbilitiesBattleChargeDef::Copy(const CDefClassBase* other) -- copy every member of another CSpecialAbilitiesBattleChargeDef: `*this = *(const CSpecialAbilitiesBattleChargeDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0045F630, 5 bytes: a thiscall tail call, `jmp` to CSpecialAbilitiesBattleChargeDef::operator= 0x0045F635 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x0045F630 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CSpecialAbilitiesBattleChargeDef::operator=(const CSpecialAbilitiesBattleChargeDef&) 0x0045F635, ??4CSpecialAbilitiesBattleChargeDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
 #include "rebuild_abi.h"
 
-// 0x0045f630 CSpecialAbilitiesBattleChargeDef::Copy
-// Retail is a 5-byte thunk: a single `jmp rel32` (tail-call) into the real
-// Copy implementation. The jmp rel32 target is relocation-masked in parity,
-// so any tail-call to an extern member-shaped function reproduces the bytes.
+class CDefClassBase;
+class CSpecialAbilitiesBattleChargeDef {                                // declarations only (no engine/CSpecialAbilitiesBattleChargeDef.h)
+public:
+    virtual void Copy(const CDefClassBase* other);              // vftable slot 19, 0x0045F630
+    CSpecialAbilitiesBattleChargeDef& operator=(const CSpecialAbilitiesBattleChargeDef& other);   // out of line: 0x0045F635
+};
 
-class CSpecialAbilitiesBattleChargeDef;
-
-// The real implementation this thunk tail-jumps to (address relocation-masked).
-extern void __fastcall CSpecialAbilitiesBattleChargeDef_Copy_impl(
-    CSpecialAbilitiesBattleChargeDef* thisptr, void* src);
-
-void __fastcall CSpecialAbilitiesBattleChargeDef_Copy(
-    CSpecialAbilitiesBattleChargeDef* thisptr, void* src)
+void CSpecialAbilitiesBattleChargeDef::Copy(const CDefClassBase* other)
 {
-    // Tail-call -> compiles to `jmp rel32`.
-    CSpecialAbilitiesBattleChargeDef_Copy_impl(thisptr, src);
+    *this = *(const CSpecialAbilitiesBattleChargeDef*)other;
 }

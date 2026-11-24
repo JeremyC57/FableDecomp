@@ -1,0 +1,12 @@
+class	verdict	macro	notes
+CSpecialAbilitiesMultiStrikeDef	OK	FABLE_RETAIL_CSPECIALABILITIESMULTISTRIKEDEF_COPY_DECLS	insert at line 29; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CSpecialAbilitiesBerserkDef	OK	FABLE_RETAIL_CSPECIALABILITIESBERSERKDEF_COPY_DECLS	insert at line 65; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CSpecialAbilitiesBulletTimeDef	OK	FABLE_RETAIL_CSPECIALABILITIESBULLETTIMEDEF_COPY_DECLS	insert at line 62; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CSpecialAbilitiesForcePushDef	OK	FABLE_RETAIL_CSPECIALABILITIESFORCEPUSHDEF_COPY_DECLS	insert at line 45; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CSpecialAbilitiesTurncoatSpellDef	OK	FABLE_RETAIL_CSPECIALABILITIESTURNCOATSPELLDEF_COPY_DECLS	insert at line 40; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CSpecialAbilitiesHealLifeDef	OK	FABLE_RETAIL_CSPECIALABILITIESHEALLIFEDEF_COPY_DECLS	insert at line 12; pinned 1; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CArmourDef	OK	FABLE_RETAIL_CARMOURDEF_COPY_DECLS	insert at line 44; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CPlayerMovementDef	OK	FABLE_RETAIL_CPLAYERMOVEMENTDEF_COPY_DECLS	insert at line 42; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CEntitySoundDef	OK	FABLE_RETAIL_CENTITYSOUNDDEF_COPY_DECLS	insert at line 42; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CSkyDef	OK	FABLE_RETAIL_CSKYDEF_COPY_DECLS	insert at line 45; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles
+CAppearanceDef	OK	FABLE_RETAIL_CAPPEARANCEDEF_COPY_DECLS	insert at line 53; pinned 0; override True ; control(made-up name) fails; decl-use True ; without macro compiles

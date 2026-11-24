@@ -45,6 +45,13 @@ public:
 // ?Alloc@CThingBaseDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
+#ifdef FABLE_RETAIL_CTHINGBASEDEF_COPY_DECLS
+    // Opt-in (NF337, 2026-11-24): declaration only, no layout change, for the out-of-line base call of CThingPhysicalSwitchDef::operator=
+    // 0x00464536 (`call 0x00463950`): ??4CThingBaseDef@@QAEAAV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb) is the CThingBaseDef::operator= at 0x00463950
+    // (the landed row 0x00463950 defines it; reloc_bindings 0x004642FA binds it there). Declaration only: no layout change.
+public:
+    CThingBaseDef& operator=(const CThingBaseDef&);
+#endif
 };
 #else
 class CThingBaseDef : public CParentDefClassBase {
