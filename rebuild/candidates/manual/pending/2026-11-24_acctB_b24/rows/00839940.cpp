@@ -16,6 +16,8 @@
 //   proven to be the only one. Positions: the coordinator gave the ORDER only; asserts 1, 2 and 4 are placed from that order
 //   next to the value they test (unverified). Unverified: assert 7's position -- here it is the guard-test condition itself (FableWin may test the
 //   GetTC result twice; FableWin.exe is not on the lane).
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+#define FABLE_RETAIL_CCOMBATMANAGER_SETATTACKERASBEENSTRUCK
 #define FABLE_RETAIL_CDEFCLASSBASE_CREATURE_OWNER_SIZE_PASS26
 #define FABLE_RETAIL_ASSERT_DEAD_ARM
 #define FABLE_RETAIL_CCREATUREDEF_STATGETTYPENAME
@@ -26,8 +28,10 @@
 // CThingGameObject::OnHit(CHitParameters& hit_params) -- apply damage, combat effects and hit notifications
 // Leaf: ?OnHit@CThingGameObject@@UAEXAAVCHitParameters@@@Z
 // Retail: 0x00839940, 5195 bytes, thiscall.
-// Name: the call at 0x0083A37B binds 0x006EA430 under the landed spelling DeregisterCombatant; NAME_FIXES.tsv proves it is
-//   CCombatManager::SetAttackerAsBeenStruck (Ego_r / FableWin object order and size) -- respell this caller with that fix.
+// Name: the call at 0x0083A37B binds 0x006EA430 as CCombatManager::SetAttackerAsBeenStruck (Account A's NF341 respell: Ego_r / FableWin
+//   object order and size; it was spelled DeregisterCombatant, which is 0x006ED9C0).
+// Pick-any: FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD (existing opt-in, Account A NF341 round 2) makes the leaf-called
+//   GetDef<CMaterialDef> copy equal retail 0x0066C340; every leaf-called copy is EQ (13 / 13).
 // Inline-budget: FABLE_FORCEINLINE on original HasTC<T> only; native839c5b..839d58 expands window type check. Plain and scoped depth255 reject cost190/score2015; S200 changes unrelated sites.
 // Inline-budget: HasTC(ETCInterfaceType) wrapper forced only for this row; native late calls are bitset::test410de0, not HasTC. S28 over-expanded alive helpers; depth cannot override the observed cost rejection.
 // Identity: both original PDBs, donor027ec280 and nativecallers667d44/7039b4.
@@ -335,7 +339,7 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
             if (GetTypeFlags() & 8) {
                 CThingCreatureBase& creature = *static_cast<CThingCreatureBase*>(this);
                 if (creature.IsInMeleeAsAttacker())
-                    creature.GetCombatManager().DeregisterCombatant(creature);
+                    creature.GetCombatManager().SetAttackerAsBeenStruck(creature);
             }
             if ((GetTypeFlags() & 8) || HasTC(TCI_CREATURE_GENERATOR)) {
                 float display_damage = -damage_absorbed;

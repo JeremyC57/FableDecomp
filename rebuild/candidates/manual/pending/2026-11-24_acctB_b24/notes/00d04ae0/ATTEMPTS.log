@@ -1,0 +1,11 @@
+09:16 00d04ae0 grade 00d04ae0.cpp SRC_FAIL -- B24A9 baseline on today's headers
+10:20 00d04ae0 grade 00d04ae0.cpp DIFFER(3847v3623) hunks=44 -- A11 port p1: overlay ASSASSIN1 + FableWin/Ego_d recipe
+10:20 00d04ae0 grade p1.cpp DIFFER(3884v3623) hunks=41 -- A11 port p1: overlay ASSASSIN1 + FableWin/Ego_d recipe
+10:21 00d04ae0 grade p1.cpp RELOCATION_MATCH /d2inlS15 -- diagnostic: family flag /d2inlS15
+10:21 00d04ae0 grade p1.cpp DIFFER(3884v3623) hunks=41 /d2inlS10 -- smallest N: /d2inlS10
+10:21 00d04ae0 grade p1.cpp DIFFER(3884v3623) hunks=41 /d2inlS12 -- smallest N: /d2inlS12
+10:21 00d04ae0 grade p1.cpp DIFFER(3884v3623) hunks=41 /d2inlS13 -- smallest N: /d2inlS13
+10:21 00d04ae0 grade p1.cpp DIFFER(3884v3623) hunks=41 /d2inlS14 -- smallest N: /d2inlS14
+10:22 00d04ae0 grade q1.cpp DIFFER(3655v3623) hunks=24 /d2inlS15 -- measure q1 (S15)
+10:22 00d04ae0 grade q2.cpp DIFFER(3623v3623) hunks=7 /d2inlS15 -- measure q2 (S15)
+10:23 00d04ae0 grade 00d04ae0.cpp RELOCATION_MATCH /d2inlS15 -- final 00d04ae0.cpp (S15, dtor pragma, comments)

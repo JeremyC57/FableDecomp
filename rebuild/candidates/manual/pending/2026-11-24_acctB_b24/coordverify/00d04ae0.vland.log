@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00d04ae0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00d04ae0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin1::Main

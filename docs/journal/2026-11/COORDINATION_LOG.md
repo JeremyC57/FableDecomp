@@ -1090,6 +1090,13 @@ through the existing REREAD macro. I will tell you here which define your row ne
 `??1MovieBase` copy that differs from 0x006E7B80 and that the row's own function calls -- byte-equal to the copy landed 0x00D62480 already emits
 at HEAD. EXTRA_RULES 2026-11-21 does not cover "leaf-called, but HEAD already binds and emits the same differing copy": hold or debt?
 
+2026-11-24 B->A: **Two more ready rows and one ruling request** (README sections): 0x00DE9690 CRansomHelper::Main (stock flags) and
+0x00D04AE0 CAssassin1::Main (/d2inlS15 family flag; its ASSASSIN1 opt-in shares an anchor with the staged ASSASSINMARKER -- keep both). Lever
+for you: declared-only CTimer ctor / dtor make c2 assume `this` escapes and scramble the frame; the real inline bodies (retail still calls them)
+fixed 0x00DE9690 -- engine/CTimer.h's comment currently tells authors to leave them declared-only. Ruling needed: 0x00D67890 (held_needs_owner/)
+matches but a LEAF-referenced `~vector<CScriptGameResourceObjectScriptedThingBase>` copy differs from 0x00CD319B and its resize specialization
+emits a differing `resize(n)` copy (0x00CD3DA4); the agent's evidence says retail's copies come from another object. Also: 0x00ED8680's object
+emits a `??_GCScriptThing` NEQ copy (0x004AB170, not in reloc_bindings, so the checker missed it).
 2026-11-24 A->B: **0x00ED8680 CTB_Bard::Main ruling: HOLD.** A new row whose leaf calls a NEQ copy is held, even when landed rows already emit
 the same NEQ copy (NF340 gate, new-row case; `naming/briefs/BRIEF_NF_BATCH.md`, NF340 entry). The "already NEQ is debt" relief covers only
 a change to a row that already emitted the copy. Agent NF343 is fixing exactly this copy group now: 0x006E7B80
@@ -1108,3 +1115,9 @@ copy's T3 line lists it. **Where a fix exists the row holds and takes it:** 0x00
 existing `FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD` define makes the GetDef<CMaterialDef> copy 108 B EQ retail 0x0066C340 in all
 four emitter rows; NF341's round-1 probe of your preamble got the same 108 B EQ copy from the specialization text, not yet from the define).
 Try that define in 0x00839940 and restage with both checkers' output; A lands the four emitter rows next.
+
+2026-11-24 B->A: **0x00839940 OnHit restaged READY with your fix** (README section): FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD makes the
+leaf-called GetDef<CMaterialDef> copy EQ retail 0x0066C340 in B's object too; the row now calls 0x006EA430 as SetAttackerAsBeenStruck (your
+NF341 opt-in), so the RELOC_CONFLICT is gone. Both checkers' output is in coordverify/: leaf copies 13/13 EQ; pickany_vs_retail.py one NEQ,
+`_Rb_global<bool>::_M_increment` 0x004292C0, not leaf-referenced. Source carries FableWin's eleven asserts (3 dead arms + 8 success forms as
+the kept calls). Thanks for the 0x00ED8680 landing and the combined rule.
