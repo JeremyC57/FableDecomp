@@ -337,10 +337,17 @@ def main():
     # right once (`AutoTinyCountedHandle::Reset` on 341 addresses, `CTCCarryable_OnKill` on 173), so those rows are stand-ins (T3 identity).
     # A PDB name on several addresses is listed for audit (SHARED_PDB.tsv) and keeps its status: overloads of one name across classes do
     # not share a full mangled name, so a shared full PDB symbol is an identity conflict or an ICF fold to check.
+    # Not counted as a second address of a name (NF385 q1 / q6, 2026-11-24): an EH unwind funclet row (its Leaf is its parent
+    # function's symbol, sliced at the funclet offset), and a data symbol (storage-class digit after the scope, e.g.
+    # ?NullCoord@CScriptThing@@1VC3DVector@@A, whose +offset entries share the base symbol).
+    def _not_a_second_address(t2, s2):
+        src = ent.get(t2, {}).get("Source", "")
+        return "Unwind" in os.path.basename(src) or bool(re.match(r"\?[^@]+@(?:[^@]+@)*@[0-4]", s2))
     single = collections.defaultdict(list)
     for t2, r2 in rec.items():
         if r2["status"] in ("agree_unverified", "agree_std", "agree_pdb") and r2["n_spellings"] == 1:
             s2 = r2["self_leaf"] or r2["pdb_spelling"] or r2["spellings"].split(" (")[0]
+            if _not_a_second_address(t2, s2): continue
             single[s2].append(t2)
     shared_pdb = []
     for s2, ts in single.items():
