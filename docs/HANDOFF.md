@@ -6,7 +6,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
-## Account A, 2026-11-24 (naming automation; agents NF328 / NF329 running)
+## Account A, 2026-11-24 (naming automation; agents NF330 / NF331 running)
 - **Later 2026-11-24 (this session):** synced with B (FullDecomp contains FullDecomp-B), then landed unit3 (59 rows,
   `batches/2026-11-24_landing_unit3`; agree_pdb 23,942). Owner: continue the naming queue; escalate hard naming issues to the advisor.
   Then landed RP1, the 2026-11-20 CVsyncCallbackTimer re-port left unlanded (`batches/2026-11-24_landing_rp1`, 29 rows). Then unit4 (25 rows incl. the 0x004166E2 unit; agree_pdb 23,951). Next: unit wave 5 (15 deferred units).
@@ -26,10 +26,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - **Later still:** unit5-unit9 landed (scripted waves; the loop was stopped after unit9, at one unit per wave, with 3 deferred units left).
   Also landed: B's three staged rows (`batches/2026-11-24_landing_acctB_b24`, owner ruling "B verifies and stages, A lands").
   Pick-any audit of the 63 /d2inlS15 rows: `naming/audits/2026-11-24_pickany_d2inlS15`.
-- **Running:** agents NF328 (the CScriptThing destructor / copy-ctor unit) and NF329 (NF324 Q1 combat flat-header rows), in
-  `$S/w22/agentNF32{8,9}/`, claims 2026-11-24. The owner allows 2 naming agents at once. Next steps: the journal's "Open and queued" list.
-
-## Account A, 2026-11-21 (owner: B rows released; agents resumed)
+- **Running:** agents NF330 (NF324 Q1 thin-family remainder, 95 rows) and NF331 (CScriptThing operator= pick-any unit), in
+  `$S/w22/agentNF33{0,1}/`, claims 2026-11-24. Landed since: NF329 (301 rows + 118 headers, `batches/2026-11-24_landing_nf329_b1..b4`;
+  `land_scripted.py --release-t3`), NF328 (9-row CScriptThing dtor / copy-ctor unit, `batches/2026-11-24_landing_nf328`); agree_pdb 24,266+.
 - Owner released the ten rows still `reserved (acctB ...)` (0x00502E90 0x007602F0 0x00763060 0x008E18D0 0x0093D270 0x00A4EFC0
   0x00B4D370 0x00BD3070 0x00C73050 0x00CF4EC0): now `parked (released from Account B ...)`; claims line + COORDINATION_LOG entry.
 - **Landed nf218** (`batches/2026-11-21_landing_nf218/README.md`): 8 rows (CircularQueue::GetInfo, OnCloseMenus binders, SourceUnqueueBuffers one definition, UnassignString self rename + family); queued the 0x01223EC0 / 0x0122A5E0 static pair.
