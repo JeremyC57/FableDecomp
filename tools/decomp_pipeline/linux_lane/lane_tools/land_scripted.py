@@ -95,7 +95,9 @@ for a in land:
     if os.path.exists(o):
         with contextlib.redirect_stderr(io.StringIO()): sym = V.obj_text(o, acc[a][3])[2]
     binder = "; target " in acc[a][4] or (a in unit and unit[a] != a)          # access_fix --binders: a caller keeps its own symbol; its proof is objsec + grade
-    if not (g[0].startswith(("MATCH", "RELOCATION_MATCH")) and g[1] == "PASS" and (binder or sym == acc[a][3])):
+    # A leaf in an anonymous namespace is written `...@?A0x` (a prefix): its 8-hex hash depends on the build path (landing nf365 g2).
+    anon = acc[a][3].endswith("?A0x") and re.sub(r"(\?A0x)[0-9a-f]{8}.*", r"\1", sym) == acc[a][3]
+    if not (g[0].startswith(("MATCH", "RELOCATION_MATCH")) and g[1] == "PASS" and (binder or sym == acc[a][3] or anon)):
         bad.append(a); held[a] = f"landing recheck {g} symbol {sym}"
         open("rebuild/src/compiled/" + ent[a]["Source"], "w", encoding="utf-8").write(orig[a])
 for u in {unit[a] for a in bad if a in unit}:

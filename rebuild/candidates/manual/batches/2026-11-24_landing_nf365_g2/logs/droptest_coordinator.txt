@@ -1,0 +1,9 @@
+00868e50 DEF- ?Assign@?$CDefPointer@$$CBVCAppearanceModifierDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+00868e50 DEF- ?Assign@?$CDefPointer@$$CBVCArmourDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+00868e50 DEF- ?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+00868e50 DEF- ?GetArmourWeightsFromThing@?A0xfe8973e0@@YIXABVCThing@@AAV?$multimap@V?$CDefPointer@$$CBVCArmourDef@@@@MV?$CCo bind=0 witness_here=0 pkH= -
+00868e50 DEF- ?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ bind=0 witness_here=0 pkH= NOADDR -
+0060c900 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+0060c900 DEF- ?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ bind=0 witness_here=0 pkH= NOADDR -
+0060eeb0 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+0060eeb0 DEF- ?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ bind=0 witness_here=0 pkH= NOADDR -

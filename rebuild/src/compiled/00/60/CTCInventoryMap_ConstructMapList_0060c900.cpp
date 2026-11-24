@@ -86,6 +86,13 @@
 #define FABLE_RETAIL_CTCINVENTORYMAP
 #define FABLE_RETAIL_CTCPHYSICSBASE
 #define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+// Pick-any (NF361): CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) takes the engine/CDefinitionManager.h body
+//   (GETDEF_GLOBAL_BODY with the retail re-reading SetDynamicCast) in place of the former same-TU template, and the NF349 size-body
+//   opt-in gives the out-of-line GetDef<NUISystem::CUIMiscThingsDef> copy owner 0x0042B312's optimize("y", off) / ("s", on) body
+//   (Fidelity: scaffolding, not retail).
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CUIMISCTHINGSDEF_SIZE_BODY
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
 #include "fable_string.h"
@@ -126,14 +133,7 @@
 
 using namespace NUISystem;
 #pragma auto_inline(off)
-// Same-TU body of CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) (retail calls the instance 0x0042B312; as the landed
-// CTCInventoryMap::ConstructRegionDescriptionShops 0x006001E0): VC7.1 then sees the def pointer is not captured.
-template<class T> bool CDefinitionManager::GetDef(long index,CDefPointer<const T>* result)const {
-    if(index<=0)return false;
-    CDefPointer<const CDefClassBase> definition=GetPDefFromGlobalIndex(index);
-    if(!definition.IsNull()) { result->SetDynamicCast(definition);return true; }
-    return false;
-}
+// (NF361) CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*): engine/CDefinitionManager.h GETDEF_GLOBAL_BODY (see the defines above).
 #pragma auto_inline(on)
 // Ego_r.pdb / FableWin.pdb ?GetGuildSealRecallRegion@CTCInventoryMap@@ABEJXZ (landed out of line at 0x005FA990, same text): retail
 // calls it at 0x0060CE88 and expands it in the two loops (0x0060D550..0x0060D5AA, 0x0060D7CD..0x0060D827).

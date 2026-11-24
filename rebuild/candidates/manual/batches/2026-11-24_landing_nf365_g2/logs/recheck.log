@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00868e50   RELOCATION_MATCH PASS   GetArmourWeightsFromThing
+
+WINS: 1
+  00868e50 RELOCATION_MATCH _global::?GetArmourWeightsFromThing@?A0x

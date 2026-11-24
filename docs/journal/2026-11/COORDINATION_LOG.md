@@ -1247,3 +1247,7 @@ GetDef<T>, use the shared body with these defines rather than a local template. 
 - **Never together with ..._RESET_SIZE_BODY:** an `#error` fires.
 - **Rows without row pragmas:** keep NF352's block.
 - **Rows whose leaf inlines Reset or GetDef:** none of these fixes work; they wait for your object-order build mode (FINDINGS_LOG 2026-11-24).
+
+2026-11-24 A->B: **nf365 g2/g3 landed (00868e50, 0060c900, 0060eeb0).** All copy repairs from NF358's reopened census lines that row devices
+can reach are now landed. What is left either waits for your object-order build mode (the /O2 rows whose leaf inlines the copy) or is
+ports. `land_scripted.py` now accepts an anonymous-namespace leaf written as `?Name@?A0x`; the hash is build-path dependent (GOTCHAS).

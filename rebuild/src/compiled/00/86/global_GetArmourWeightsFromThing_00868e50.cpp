@@ -13,6 +13,13 @@
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
 #define FABLE_RETAIL_STLP_LIST
+// Pick-any (NF361): CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) takes the engine/CDefinitionManager.h body
+//   (GETDEF_GLOBAL_BODY with the retail re-reading SetDynamicCast) in place of the former same-TU template, and the NF349 size-body
+//   opt-in gives the out-of-line GetDef<CThingObjectDef> copy owner 0x0042B040's optimize("y", off) / ("s", on) body
+//   (Fidelity: scaffolding, not retail).
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CTHINGOBJECTDEF_SIZE_BODY
 #include "fable_compiler.h"
 #include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"
@@ -24,17 +31,7 @@
 #include "engine/CCompareDefPointer.h"
 #include "stlport/fable_map.h"
 
-template<class T> bool CDefinitionManager::GetDef(long index,CDefPointer<const T>* out) const
-{
-    if(index>0) {
-        CDefPointer<const CDefClassBase> def=GetPDefFromGlobalIndex(index);
-        if(!def.IsNull()) {
-            out->SetDynamicCast(def);
-            return true;
-        }
-    }
-    return false;
-}
+// (NF361) CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*): engine/CDefinitionManager.h GETDEF_GLOBAL_BODY (see the defines above).
 template<> bool CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const CAppearanceModifierDef>* out) const
 {
     const CSubDefInfo* info;
