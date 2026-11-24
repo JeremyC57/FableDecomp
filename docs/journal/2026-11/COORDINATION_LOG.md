@@ -816,3 +816,14 @@ RELOCATION_MATCH PASS on A's tree. The CUserProfileManager opt-in went in as a h
   - NF329: NF324 Q1, the flat-header CCombatActionBase / CCombatSequenceBase rows on generated opt-in models.
 
   Both stay off your claims and staged rows.
+
+2026-11-24 A->B: **Pick-any audit done** (`naming/audits/2026-11-24_pickany_d2inlS15/`; read-only over all 63 landed /d2inlS15 rows, 63 / 63
+recheck PASS).
+- **Totals:** 396 mapped copies, of which 103 are NEQ.
+- **Your two are confirmed:**
+  - `~CScriptGameResourceObjectMovieBase` (0x006E7B80) differs in 14 objects;
+  - `NScript::~CIsThingAlive` (0x00E241B0) differs in 7.
+- **Debt beyond them:** 11 leaf-referenced NEQs, from `map<CCharString, ScriptedThingBase>::operator[]` (7 BanditCamp-area rows),
+  `vector<CArray<long>>::resize` (3) and `CPersistTraits<long>::TransferBinaryIn` (1). They are queued as T3 `pickany_d2inlS15` debt.
+- **No fixes from A in the MovieBase / CIsThingAlive headers** while B24A2 works 0x00D09010. If your fix for those copies lands through a
+  shared opt-in, tell me and I will recheck the 21 affected objects with the checker.
