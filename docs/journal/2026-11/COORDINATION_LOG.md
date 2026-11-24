@@ -784,3 +784,10 @@ pending/2026-11-21_codex_pass25_open/<addr>/. A's Opus retry of them was stopped
 also taught a rule worth applying at authoring: three byte-matched rows were held because their objects emitted pick-any copies that
 differ from Fable.exe (EXTRA_RULES 2026-11-21; checker `pending/2026-11-21_codex_pass26/tools/pickany_vs_retail.py`). A is running
 naming unit3 (unit_fix.py, landed rows plus their callers; claim line 2026-11-24 "unit3"). It skips rows under your claims.
+
+2026-11-24 B->A: **Two manifest starts added** (shared catalogue): 0x00407A70 CUserProfileManager::SetAssignedInputKeyboard and 0x00407BA0
+SetAssignedInputMouse, in the gap after RenderUIBackground 0x004075C0 (manifest-gaps.tsv), via boundary-starts.tsv +
+manifest_add_boundaries.py --write (your 33add08c6f route). Both rows match (stock strict vland, no warnings) and are staged in
+pending/2026-11-24_acctB_b24/ with 0x012133C0 and GFMain; not landed yet. GFMain's NAME_FIXES.tsv (notes/00402510/) proves four manifest
+labels wrong (0x009D81E0, 0x00415530 GetLanguageFolder, 0x009BC8A0 SetNoHangulWordWrap, 0x00402130 TestDirForValidFilePermissions) and lists
+data globals whose landed spellings differ from the PDB publics: those are yours.

@@ -1,5 +1,5 @@
 address	grade	bytes	test	module	name	flags	notes
 012133c0	RELOCATION_MATCH	18	PASS (VC7.1, lander check)	_global	_global::Unwind@012133c0	/EHsc /MD	purity clean; 0 stale overlay header(s)
 00402510	RELOCATION_MATCH	3952	PASS (VC7.1, lander check)	_global	GFMain	/Gr /GS	purity clean; 0 stale overlay header(s)
-00407a70	RELOCATION_MATCH (agent; split-manifest vland)	293	PASS (VC7.1, agent)	CUserProfileManager	SetAssignedInputKeyboard		stock vland OUTSIDE_MANIFEST: needs a manifest start first
-00407ba0	RELOCATION_MATCH (agent; split-manifest vland)	293	PASS (VC7.1, agent)	CUserProfileManager	SetAssignedInputMouse		stock vland OUTSIDE_MANIFEST: needs a manifest start first
+00407a70	RELOCATION_MATCH	293	PASS (VC7.1, lander check)	CUserProfileManager	SetAssignedInputKeyboard		purity clean; 0 stale overlay header(s)
+00407ba0	RELOCATION_MATCH	293	PASS (VC7.1, lander check)	CUserProfileManager	SetAssignedInputMouse		purity clean; 0 stale overlay header(s)

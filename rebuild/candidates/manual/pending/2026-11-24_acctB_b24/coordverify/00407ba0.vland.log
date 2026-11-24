@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00407ba0   RELOCATION_MATCH PASS   SetAssignedInputMouse
+
+WINS: 1
+  00407ba0 RELOCATION_MATCH CUserProfileManager::SetAssignedInputMouse

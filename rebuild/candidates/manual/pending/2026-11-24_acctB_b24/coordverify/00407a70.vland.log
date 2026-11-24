@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00407a70   RELOCATION_MATCH PASS   SetAssignedInputKeyboard
+
+WINS: 1
+  00407a70 RELOCATION_MATCH CUserProfileManager::SetAssignedInputKeyboard

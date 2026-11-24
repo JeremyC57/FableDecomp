@@ -165,6 +165,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00407370	ApplyValues	CUserProfileManager	__thiscall	void	1	CUserProfileManager *	1	yes	accepted									
 004075b0	CaptureBackBufferForUIBackgroundIfNonExistant	CUserProfileManager	__thiscall	void	1	CUserProfileManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CUserProfileManager_CaptureBackBufferForUIBackgroundIfNo_004075b0.cpp
 004075c0	RenderUIBackground	CUserProfileManager	__thiscall	void	2	CUserProfileManager *,float	1	yes	accepted									
+00407a70	SetAssignedInputKeyboard	CUserProfileManager	unknown	undefined	0		0			discovered	boundary							
+00407ba0	SetAssignedInputMouse	CUserProfileManager	unknown	undefined	0		0			discovered	boundary							
 00407cd0	RedefineControlPassive	CUserProfileManager	__thiscall	void	4	CUserProfileManager *,CActionInputControl *,CActionInputControl *,long	1	yes	accepted									
 00407e10	GetSaveDisplayNameFromFileName	CUserProfileManager	__thiscall	CWideString	3	CUserProfileManager *,CWideString *,long	1	yes	accepted									
 00407fd0	GetAutoSaveQuestStartPathName	CUserProfileManager	__thiscall	CWideString	1	CUserProfileManager *	1	yes	accepted									
