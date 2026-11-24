@@ -13,12 +13,13 @@ struct CCriticalSectionLock_Retail {              // 8 bytes on the stack
 class CFileInstaller { public:
     unsigned char          _pad[4];
     CRITICAL_SECTION_Fable m_section;              // +0x04
-    void InitBuffers(void* buffers, long count);   // 0x009C5310
     void SetBuffers(void* buffers, long count);
+protected:
+    void InitBuffers(unsigned long buffers, unsigned long count);   // 0x009C5310 (NF374: Ego_r + FableWin ?InitBuffers@CFileInstaller@@IAEXKK@Z)
 };
 
 void CFileInstaller::SetBuffers(void* buffers, long count)
 {
     CCriticalSectionLock_Retail lock(&m_section, false);
-    InitBuffers(buffers, count);
+    InitBuffers((unsigned long)buffers, (unsigned long)count);
 }

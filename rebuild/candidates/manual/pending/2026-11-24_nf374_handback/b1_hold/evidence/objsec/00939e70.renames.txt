@@ -1,0 +1,4 @@
+HEAD_ONLY UND ??$FindMostRecentDeed@VCOpinionDeedFilter_IsStillHappening@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@JABVCOpinionDeedFilter_IsStillHappening@@PAJ_N@Z
+NEW_ONLY  UND ??$FindMostRecentDeed@VCOpinionDeedFilter_IsStillHappening@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABVCOpinionDeedFilter_IsStillHappening@@PAJ_N@Z
+RENAME ??$FindMostRecentDeed@VCOpinionDeedFilter_IsStillHappening@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@JABVCOpinionDeedFilter_IsStillHappening@@PAJ_N@Z -> ??$FindMostRecentDeed@VCOpinionDeedFilter_IsStillHappening@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABVCOpinionDeedFilter_IsStillHappening@@PAJ_N@Z
+ALL_EQ renames=1 drectve=DIFF comdats=15/15 sections=17

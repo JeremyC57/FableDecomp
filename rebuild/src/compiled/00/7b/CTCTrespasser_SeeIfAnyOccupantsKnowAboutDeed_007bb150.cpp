@@ -12,7 +12,7 @@
 //         +0x38; list node {next, prev, CIntelligentPointer<CThingAICreature> at +8}.
 // Shape: the list end is kept in the `push ecx` slot and re-read after the call; the lookup key lives in the dead
 //        deedIndex argument slot (the index itself is kept in ebp).
-typedef long EOpinionDeedType;
+#include "engine/EOpinionDeedType.h"   // NF374: the PDB enum (was `typedef long EOpinionDeedType`)
 class CTCBase;
 
 #define FABLE_RETAIL_CTHING
@@ -27,7 +27,7 @@ class CBaseObjectPointer;
 
 
 class CTCCreatureOpinionOfHero { public:
-    bool KnowsOfDeed(long deedHandle, EOpinionDeedType type, bool includeReported);   // 0x00681AE0
+    bool KnowsOfDeed(long deedHandle, EOpinionDeedType type, bool includeReported) const;   // 0x00681AE0 (NF374: Ego_r + FableWin ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z)
 };
 class CWorld { public:
     static long __fastcall GetFrame();       // 0x0049D870
@@ -54,6 +54,7 @@ class CTCTrespasser { public:
     CIntelligentPointer<CThing> TrespassingThing;           // +0x2d
     unsigned char _pad_0x35[0x3];
     SOccupantNode* OccupantsOfCurrentTrespassingThing;  // +0x38 list head node
+private:   // NF374: Ego_r + FableWin ?SeeIfAnyOccupantsKnowAboutDeed@CTCTrespasser@@AAE_NJW4EOpinionDeedType@@@Z (no landed caller binds the old self spelling)
     bool SeeIfAnyOccupantsKnowAboutDeed(long deedIndex, EOpinionDeedType type);
 };
 #pragma pack(pop)

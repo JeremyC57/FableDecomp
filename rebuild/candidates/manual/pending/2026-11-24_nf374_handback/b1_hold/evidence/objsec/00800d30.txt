@@ -1,0 +1,5 @@
+CHANGED ('COMDAT', '?Transfer@CPersistContext@@QAEXPBDAAVC2DVector@@@Z', '.text') size 44 -> 44 data_eq=True relocs_eq=False flags_eq=True
+CHANGED ('SEC', '.drectve', 1) size 42 -> 184 data_eq=False relocs_eq=True flags_eq=True
+SYM- UND ?Transfer@CPersistContext@@QAEXPBDAAVC2DVector@@ABV2@@Z
+SYM+ UND ??$Transfer@VC2DVector@@@CPersistContext@@QAEXPBDAAVC2DVector@@ABV1@@Z
+VERDICT DIFF n=2 symdelta=2 leaf=absent

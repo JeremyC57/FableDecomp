@@ -17,6 +17,7 @@ extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
 class CThing;
+class CBaseObject;
 
 class CBaseIntelligentPointer {
 public:
@@ -24,12 +25,12 @@ public:
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();         // slot 0
     void* GetPItem() const;                     // 0x00A01B50
-    void SetPItem(const void* item);            // 0x00A01B90
+    void SetPItem(CBaseObject* item);           // 0x00A01B90 (NF374: Ego_r + FableWin ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
 };
 
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)other.GetPItem()); }
     virtual ~CIntelligentPointer() {}           // vtable 0x01237F1C
 };
 

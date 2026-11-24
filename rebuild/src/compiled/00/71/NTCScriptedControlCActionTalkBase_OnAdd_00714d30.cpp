@@ -58,7 +58,6 @@ class CScriptThing { public:
 };
 
 namespace NTCScriptedControl {
-class CActionBase;
 class CScriptConversation : public CBaseObject {   // vtable 0x01265520, 8 bytes
 public:
     CScriptConversation() { }
@@ -69,11 +68,13 @@ public:
 class CTCScriptedControl { public:                        // interface 0x1F
     void*   __vftable;
     CThing* ParentThing;                           // +0x04 (CTCBase)
-    void AddAction(NTCScriptedControl::CActionBase* action);   // 0x007137D0
+    // NF374 (NF300 Q2): the action base is nested in CTCScriptedControl (Ego_r + FableWin ?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@1@@Z,
+    // ?OnActivate@CActionBase@CTCScriptedControl@@UAEXXZ; RTTI .?AVCActionBase@CTCScriptedControl@@); the concrete actions stay in NTCScriptedControl.
+    class CActionBase;
+    void AddAction(CActionBase* action);           // 0x007137D0
 };
 
-namespace NTCScriptedControl {
-class CActionBase {
+class CTCScriptedControl::CActionBase {
 public:
     virtual ~CActionBase();
     virtual void Update();                         // slot 1
@@ -84,13 +85,14 @@ public:
     bool                Terminated;                // +0x09
 };
 
-class CActionTalkedTo : public CActionBase {       // 0x20 bytes
+namespace NTCScriptedControl {
+class CActionTalkedTo : public CTCScriptedControl::CActionBase {       // 0x20 bytes
 public:
     CActionTalkedTo(CThing* talker, CBaseObject* conversation);   // 0x00712DF0
     unsigned char _pad0c[0x20 - 0x0c];
 };
 
-class CActionTalkBase : public CActionBase {
+class CActionTalkBase : public CTCScriptedControl::CActionBase {
 public:
     virtual void OnAdd();
     CScriptThing  PTargetThing;                    // +0x0C

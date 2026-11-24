@@ -88,12 +88,12 @@ class CWorld { public:
     CGameScriptInterface* PGameScriptInterface; // +0x38 (scoped_ptr<CGameScriptInterface>: its one pointer)
 };
 
-struct CActionBase;
 struct CActionMoveTo {                          // 0x50 bytes
     unsigned char _body[0x50];
     CActionMoveTo(const C3DVector& position, long movementType, float distance, bool a, bool b);   // 0x007E71D0
 };
 class CTCScriptedControl { public:
+    class CActionBase;                          // NF374: the action base is nested (Ego_r + FableWin ?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@1@@Z; RTTI .?AVCActionBase@CTCScriptedControl@@)
     void AddAction(CActionBase* action);        // 0x007137D0
 };
 
@@ -143,6 +143,6 @@ void CTCFireheartMinigame::SetHeroPos(long x, long y, bool instantly)
     if (g_pScriptRunner) {
         GetWorld().PGameScriptInterface->StartScriptingEntity(GetParentThing()->GetScriptThing(), ScriptData, 4);
     }
-    control->AddAction((CActionBase*)new CActionMoveTo(Markers[x][y]->GetPos(), 3, 0.0f, true, false));
+    control->AddAction((CTCScriptedControl::CActionBase*)new CActionMoveTo(Markers[x][y]->GetPos(), 3, 0.0f, true, false));
     Moving = true;
 }

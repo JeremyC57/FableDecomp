@@ -31,7 +31,7 @@ CGetMaxComboStage __fastcall ForEachAnimation(const CAnimationEntryPair* first, 
                                               CGetMaxComboStage f);   // 0x00738F30
 
 class CThingCreatureBase { public:
-    const CAnimationSet* GetCombatAnimationSet();           // 0x00663260
+    const CAnimationSet& GetCombatAnimationSet() const;     // 0x00663260 (NF374: Ego_r + FableWin ?GetCombatAnimationSet@CThingCreatureBase@@QBEABVCAnimationSet@@XZ)
 };
 
 struct CTCCombat_Methods : CTCCombat {
@@ -41,7 +41,7 @@ struct CTCCombat_Methods : CTCCombat {
 long CTCCombat_Methods::GetComboMaxStage()
 {
     if (ComboChainID != -999) {
-        const CAnimationSet* set = ParentCreature->GetCombatAnimationSet();
+        const CAnimationSet* set = &ParentCreature->GetCombatAnimationSet();
         long stage = ForEachAnimation(set->First, set->Last, CGetMaxComboStage(ComboChainID)).MaxStage;
         if (stage != -777)
             return stage;

@@ -1,0 +1,9 @@
+CHANGED ('COMDAT', '??0CIndexList@QuadricOptimiserInternals@@QAE@ABV01@@Z', '.text') size 19 -> 19 data_eq=True relocs_eq=False flags_eq=True
+CHANGED ('COMDAT', '??0COptimisedVertex@QuadricOptimiserInternals@@QAE@ABV01@@Z', '.text') size 187 -> 187 data_eq=True relocs_eq=False flags_eq=True
+SYM- UND ??0?$map@KMU?$less@K@std@@U?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAE@ABU01@@Z
+SYM- UND ??0?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@U?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@4@@std@@QAE@ABU01@@Z
+SYM- UND ??0?$set@KU?$less@K@std@@U?$allocator@K@2@@std@@QAE@ABU01@@Z
+SYM+ UND ??0?$map@KMU?$less@K@std@@V?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAE@ABV01@@Z
+SYM+ UND ??0?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@4@@std@@QAE@ABV01@@Z
+SYM+ UND ??0?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@ABV01@@Z
+VERDICT DIFF n=2 symdelta=6 leaf=absent

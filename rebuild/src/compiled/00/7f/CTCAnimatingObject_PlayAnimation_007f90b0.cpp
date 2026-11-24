@@ -39,7 +39,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
 };
 class CAnimationSet { public:
     bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;                                // 0x005DC2E0
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
+    const CAnimationEntry& GetAnim(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340 (NF374: Ego_r + FableWin + the self row's Leaf ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z; GetAnimation is in neither PDB set)
 };
 
 struct CBlendPair {
@@ -154,7 +154,7 @@ void CTCAnimatingObject::PlayAnimation(const CCharString& name, long priority, b
         const CAnimationSet* set = &def->Animation;
         if (set->AnimExists(name, CAnimFilterNoGroup())) {
             ClearQueuedAnims();
-            const CAnimationEntry* entry = set->GetAnimation(name, 0, CAnimFilterNoGroup());
+            const CAnimationEntry* entry = &set->GetAnim(name, 0, CAnimFilterNoGroup());
             PlayAnimation(entry->AnimIndex, priority, looping);
         }
     }

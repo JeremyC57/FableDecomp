@@ -37,7 +37,7 @@ struct CDataInputStreamReader : CDataInputStream {
 
 class CDefString { public:
     long Index;
-    void TransferBinaryIn(CDataInputStream* stream);    // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream& stream);    // 0x0044FC00 (NF374: Ego_r + FableWin ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z)
 };
 
 class CSoundBankEntry { public:
@@ -57,8 +57,8 @@ void CPersistTraits<CSoundBankEntry>::TransferBinaryIn(CDataInputStream* stream,
 {
     CDataInputStreamReader* in = (CDataInputStreamReader*)stream;
     value->ID = in->ReadULong();
-    value->Filename.TransferBinaryIn(stream);
-    value->SymbolFilename.TransferBinaryIn(stream);
-    value->LipSyncBankHandle.TransferBinaryIn(stream);
+    value->Filename.TransferBinaryIn(*stream);
+    value->SymbolFilename.TransferBinaryIn(*stream);
+    value->LipSyncBankHandle.TransferBinaryIn(*stream);
     value->DVD = in->ReadByte() != 0;
 }

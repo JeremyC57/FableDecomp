@@ -12,6 +12,7 @@
 //   inline constructor stores the derived vtable after the out-of-line base constructor and its compiler-generated
 //   destructor calls only the base destructor (the landed CThingGameObject::OnCreate 0x00838A40 model).
 class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -19,13 +20,13 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                                 // 0x00A01C10
     CThing* GetPItem() const;                                   // 0x00A01B50
-    void SetPItem(CThing* item);                                // 0x00A01B90
+    void SetPItem(CBaseObject* item);                           // 0x00A01B90 (NF374: Ego_r + FableWin ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
 };
 
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
 public:
     virtual void v00();
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
 template <class T> struct SListNode {

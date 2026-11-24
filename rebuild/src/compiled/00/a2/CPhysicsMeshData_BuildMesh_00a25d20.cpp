@@ -57,7 +57,7 @@ class CPhysicsMesh { public:
     virtual void Destroy();                        // slot 1 (+0x04)
     long RefCount;                                 // +0x04
     unsigned char _pad08[0xc0 - 0x08];
-    CPhysicsMesh(C3DMeshFile* file, CMovableResourceMemoryPool* pool);   // 0x00A6DA40
+    CPhysicsMesh(const C3DMeshFile& file, CMovableResourceMemoryPool* pool);   // 0x00A6DA40 (NF374: Ego_r + FableWin ??0CPhysicsMesh@@QAE@ABVC3DMeshFile@@PAVCMovableResourceMemoryPool@@@Z)
     void Release() { if (--RefCount == 0) Destroy(); }
 public:
     long Sizeof() const;   // 0x00A6C900
@@ -104,7 +104,7 @@ void CPhysicsMeshData::BuildMesh()
     unsigned long size = FileData->Size;
     C3DMeshFileLoader* loader = Owner->Manager->MeshFileLoader;
     CCountedPointer<C3DMeshFile> file = loader->LoadMeshFileCompressed(FileData->GetData(), size, pool);
-    Mesh = new CPhysicsMesh(file.Data, pool = manager->MemoryPool);
+    Mesh = new CPhysicsMesh(*file.Data, pool = manager->MemoryPool);
     FileData.Reset();
     SetResourceSize(0x2c + Mesh.Sizeof() + FileData.Sizeof());
     RemoveFromResourceList();

@@ -109,7 +109,7 @@ template <> struct CPersistTraits<bool> {
 };
 template <> struct CPersistTraits<CIntelligentPointer<CThing> > {
     CIntelligentPointer<CThing> DefaultVal;
-    void TransferBinaryIn(CMemoryDataInputStream* stream, CIntelligentPointer<CThing>* value);   // 0x006C8780
+    void TransferBinaryIn(CMemoryDataInputStream& stream, CIntelligentPointer<CThing>& value);   // 0x006C8780 (NF374: Ego_r + FableWin, by reference)
 };
 template <> struct CPersistTraits<COpinionDeed*> {
     void TransferBinaryIn(CMemoryDataInputStream* stream, COpinionDeed** value);
@@ -127,5 +127,5 @@ void CPersistTraits<COpinionDeed*>::TransferBinaryIn(CMemoryDataInputStream* str
     (*value)->IsCrime = CPersistTraits<bool>::Read(stream);
     (*value)->ExtraData = CPersistTraits<long>::Read(stream);
     CPersistTraits<CIntelligentPointer<CThing> > pointerTraits;
-    pointerTraits.TransferBinaryIn(stream, (CIntelligentPointer<CThing>*)&(*value)->PTarget);
+    pointerTraits.TransferBinaryIn(*stream, *(CIntelligentPointer<CThing>*)&(*value)->PTarget);
 }

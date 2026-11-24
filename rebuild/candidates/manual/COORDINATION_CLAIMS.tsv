@@ -552,3 +552,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF373 NF370 held T2 self units: 0099eaf0 0099f0a0 006929e0 0069fe60 00693030 00693b30 00b80ad0 00b80fe0 006d5260 006d5850 0055fb80 00561450 005bd4ea 005f05e5 006a4e90 008374f0 00736590 00736ad0	naming	done	hand-back processed by A (landing nf373)
 2026-11-24	A	agent NF375 T3 queue stale-line sweep v2 (lines a landing since NF342 may have fixed)	naming	claimed	locks via nflocks owner NF375
 2026-11-24	A	agent NF376 option S pilot (owner question 2, advisor decision): 0055fb80 00560d00 00b80ad0 00b80f90 00b80fe0	naming	claimed	locks via nflocks owner NF376
+2026-11-24	A	agent NF374 tracker T1 free slice (306 targets free of T3 and outside NF372; list in scratch agentNF374/TARGETS.tsv)	naming	done	hand-back processed by A (landing nf374)

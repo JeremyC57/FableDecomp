@@ -133,7 +133,8 @@ class CScriptBase {
 public:
     virtual ~CScriptBase();
     void OnScriptedEntityActivated(unsigned __int64 entityID, CScriptThing& entity);
-    void LoadEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase* script);   // 0x00CB7EE0
+protected:
+    void LoadEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script);   // 0x00CB7EE0 (NF374: Ego_r + FableWin ?LoadEntityScript@CScriptBase@@IAEX_KAAVCActiveEntityScriptBase@@@Z)
 private:
     void*            Threads;                        // +0x04
     CEntityScriptMap EntityScripts;                  // +0x08
@@ -151,7 +152,7 @@ void CScriptBase::OnScriptedEntityActivated(unsigned __int64 entityID, CScriptTh
         else
         {
             script->PEntityScript->Restart();
-            LoadEntityScript(entityID, script);
+            LoadEntityScript(entityID, *script);
         }
     }
     else
@@ -163,7 +164,7 @@ void CScriptBase::OnScriptedEntityActivated(unsigned __int64 entityID, CScriptTh
         EntityScripts.Sort();
         if (script.Data->Flags & 1)
             entity.SetToKillOnLevelUnload(false);
-        LoadEntityScript(entityID, script.Data);
+        LoadEntityScript(entityID, *script.Data);
     }
     entity.IncrementScriptCounter();
 }

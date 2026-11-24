@@ -29,6 +29,7 @@ class CThingAICreature;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
+#include "engine/fable_ai_action_enums.h"   // NF374: EAIActionReturn
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CBaseIntelligentPointer {
@@ -87,6 +88,8 @@ protected:
 public:
 public:
     void Terminate();   // 0x008FCF40
+protected:
+    EAIActionReturn AIAction_DoNothing();           // 0x0097E200 (NF374: Ego_r + FableWin ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ; was declared on CAIStateGroup_Drunk as long)
 };
 
 // NF55 (2026-11-17): the interface-0xf component is engine/CTCTalk.h (AISPEECHTEXT: Ego_r.pdb
@@ -108,7 +111,6 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 
 struct CAIStateGroup_Drunk : CAIStateGroupBase {
     long FrameToNextTalkToSelf;                     // +0x14
-    long AIAction_DoNothing();                      // 0x0097E200 (EAIActionReturn)
     private:
     void TalkToSelfUpdate();
     public:
@@ -129,7 +131,7 @@ void CAIStateGroup_Drunk::TalkToSelfUpdate()
             result = talk->PlayAISpeech(text, false, (NSpeechGainManager::EDialogueLayer)2, false, true);
         }
         if (result == 2) {
-            if (AIAction_DoNothing() == 4)
+            if (AIAction_DoNothing() == AI_ACTION_IN_PROGRESS)
                 continue;
             Terminate();
             return;

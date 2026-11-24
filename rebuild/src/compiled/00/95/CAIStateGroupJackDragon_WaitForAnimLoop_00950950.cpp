@@ -31,6 +31,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 #include "engine/C3DVector.h"
+#include "engine/fable_ai_action_enums.h"             // NF374: EAIActionReturn (AIAction_DoNothing's PDB return type)
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
@@ -127,6 +128,10 @@ protected:
     bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 protected:
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+    // NF374: the two base members as Ego_r + FableWin spell them (were declared on CAIStateGroup_JackDragon):
+    EAIActionReturn AIAction_DoNothing();       // 0x0097E200 ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
+public:
+    void Terminate();                           // 0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ
 };
 
 
@@ -238,8 +243,6 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
     long FramesInSnapRange;                     // +0x58
     long CurrentState;                          // +0x5c EDragonState
     long GoLeft;                                // +0x60
-    long AIAction_DoNothing();                  // 0x0097E200
-    void Terminate();                           // 0x008FCF40
     long ChooseHoverOrStrafeState();
 private:
     void WaitForAnimLoop(float seconds);        // NF35: private (AAE)

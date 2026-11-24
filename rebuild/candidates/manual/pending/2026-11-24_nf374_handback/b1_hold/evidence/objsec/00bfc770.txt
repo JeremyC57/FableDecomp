@@ -1,0 +1,11 @@
+CHANGED ('COMDAT', '?Save@CPatchTesselationEdgeStrip@@QAEXPAVCDataOutputStream@@@Z', '.text') size 102 -> 102 data_eq=True relocs_eq=False flags_eq=True
+CHANGED ('SEC', '.drectve', 1) size 1398 -> 1398 data_eq=False relocs_eq=True flags_eq=True
+SYM- UND ??$SaveVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z
+SYM- UND ??$SaveVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z
+SYM- UND ??$SaveVerts@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z
+SYM- UND ??$SaveVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z
+SYM+ UND ??$SaveVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z
+SYM+ UND ??$SaveVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z
+SYM+ UND ??$SaveVerts@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z
+SYM+ UND ??$SaveVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z
+VERDICT DIFF n=2 symdelta=8 leaf=absent

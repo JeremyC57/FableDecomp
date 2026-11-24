@@ -42,8 +42,9 @@ class CThingCreatureBase : public CThing { public:
     ECreatureType GetCreatureType() const;              // 0x00662000
 };
 
+class CThingAICreature;
 class CTCVillage { public:
-    bool IsVillagerPerformingVillageTask(const CThing* thing) const;   // 0x00659104
+    bool IsVillagerPerformingVillageTask(const CThingAICreature* creature);   // 0x00659104 (NF374: Ego_r + FableWin ?IsVillagerPerformingVillageTask@CTCVillage@@QAE_NPBVCThingAICreature@@@Z, non-const)
 };
 class CTCVillageMember : public CTCBase { public:
     CTCVillage* GetPVillage() const;                      // 0x007EE540
@@ -99,7 +100,7 @@ bool CThingFilter_IsPotentialCustomer::operator()(const CThing& thing) const
         && !thing.HasTC(TCI_SHOP_KEEPER) && !thing.HasTC(TCI_GUARD)) {
         if (thing.HasTC(TCI_VILLAGE_MEMBER)) {
             const CTCVillageMember* member = (const CTCVillageMember*)((const CTCVillageMember*)&thing.GetTC(TCI_VILLAGE_MEMBER));
-            if (member->GetPVillage() && thing.GetType() == 1 && member->GetPVillage()->IsVillagerPerformingVillageTask(&thing))
+            if (member->GetPVillage() && thing.GetType() == 1 && member->GetPVillage()->IsVillagerPerformingVillageTask((const CThingAICreature*)&thing))
                 return false;
         }
         if (!TCShopKeeper->HasBeenCustomer(&thing) || AllowExistingShopper) {

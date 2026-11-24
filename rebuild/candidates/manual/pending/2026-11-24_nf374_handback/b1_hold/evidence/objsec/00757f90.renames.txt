@@ -1,0 +1,4 @@
+HEAD_ONLY UND ?AddWound@CTCWound@@QAEXJ@Z
+NEW_ONLY  UND ?AddWound@CTCWound@@QAEXW4EBodyLocation@@@Z
+RENAME ?AddWound@CTCWound@@QAEXJ@Z -> ?AddWound@CTCWound@@QAEXW4EBodyLocation@@@Z
+ALL_EQ renames=1 drectve=DIFF comdats=2/2 sections=4

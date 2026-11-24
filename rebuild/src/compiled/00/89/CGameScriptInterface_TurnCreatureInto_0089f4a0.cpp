@@ -132,7 +132,7 @@ public:
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
     CScriptThing GetScriptThing() const;                      // 0x004C7E50
     void AddAndCopyTC(const CTCBase& tc, bool a);       // 0x004C9F60 (Ego_r.pdb, by reference)
-    void CopyTCIfExists(const CTCBase* tc);             // 0x004C8FB0
+    void CopyTCIfExists(const CTCBase& tc);             // 0x004C8FB0 (NF374: Ego_r + FableWin ?CopyTCIfExists@CThing@@QAEXABVCTCBase@@@Z, by reference)
     void Kill(bool immediately);                        // 0x004C9B80
     FABLE_FORCEINLINE bool GetInterface(const CTCBase** out, long wanted) const
     {
@@ -215,11 +215,11 @@ CScriptThing CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, c
                         if (old->GetInterface(&tc, 0xfc))
                             creature->AddAndCopyTC(*tc, true);
                         if (old->GetInterface(&tc, 0x11))
-                            creature->CopyTCIfExists(tc);
+                            creature->CopyTCIfExists(*tc);
                         if (old->GetInterface(&tc, 0x13))
-                            creature->CopyTCIfExists(tc);
+                            creature->CopyTCIfExists(*tc);
                         if (old->GetInterface(&tc, 0x12))
-                            creature->CopyTCIfExists(tc);
+                            creature->CopyTCIfExists(*tc);
                     }
                     PlayerManager->GetMainPlayer().SetPlayerCharacter(creature);
                     PlayerManager->GetMainPlayer().SetControlledCreature(creature);

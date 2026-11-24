@@ -45,7 +45,7 @@ struct CReorienterPointer {                     // scoped_ptr<CThingBodyReorient
 class CThingPhysical { public:
     virtual void v00();
     unsigned char _pad04[0xbc];
-    CThingPhysical(long type);                  // 0x005296B0
+    CThingPhysical(unsigned long type);         // 0x005296B0 (NF374: Ego_r + FableWin ??0CThingPhysical@@QAE@K@Z)
 };
 
 class CThingGameObject : public CThingPhysical { public:      // vtable 0x01244F7C

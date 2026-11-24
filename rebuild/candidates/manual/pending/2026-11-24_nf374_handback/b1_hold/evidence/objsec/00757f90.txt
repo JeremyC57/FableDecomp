@@ -1,0 +1,5 @@
+CHANGED ('COMDAT', '?AddPossibleWoundGivenStrikePoint@CTCWound@@QAE_NABVC3DVector@@@Z', '.text') size 111 -> 111 data_eq=True relocs_eq=False flags_eq=True
+CHANGED ('SEC', '.drectve', 1) size 42 -> 62 data_eq=False relocs_eq=True flags_eq=True
+SYM- UND ?AddWound@CTCWound@@QAEXJ@Z
+SYM+ UND ?AddWound@CTCWound@@QAEXW4EBodyLocation@@@Z
+VERDICT DIFF n=2 symdelta=2 leaf=absent

@@ -18,13 +18,14 @@
 #include "engine/CCarriedReadableDef.h"
 
 class CMemoryDataInputStream;
+class CDataInputStream;
 class CDataOutputStream { public:
 public:
     void WriteSLONG(long);   // 0x00993EB0
 };
 class CDefString { public:                           // the TablePos word of a CDefString member
     long TablePos;
-    void ReadBinary(CMemoryDataInputStream* stream);   // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream& stream);   // 0x0044FC00 (NF374: Ego_r + FableWin + the self row's Leaf ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z; ReadBinary is in neither PDB set)
 };
 class CPersistContext { public:
     unsigned char           _pad00[0x18];
@@ -38,7 +39,7 @@ class CPersistContext { public:
         CheckCRC("");
         switch (Mode) {
         case 2:
-            value.ReadBinary(LoadStream);
+            value.TransferBinaryIn(*(CDataInputStream*)LoadStream);   // the memory stream's CDataInputStream base is at +0
             break;
         case 3:
             SaveStream->WriteSLONG(value.TablePos);

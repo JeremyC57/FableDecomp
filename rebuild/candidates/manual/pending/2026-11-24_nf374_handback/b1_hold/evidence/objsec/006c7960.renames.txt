@@ -1,0 +1,4 @@
+HEAD_ONLY UND ?TransferOut@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXPAVCPersistContext@@PAVCCharString@@PBV?$CIntelligentPointer@VCThing@@@@@Z
+NEW_ONLY  UND ?TransferOut@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCPersistContext@@AAVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z
+RENAME ?TransferOut@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXPAVCPersistContext@@PAVCCharString@@PBV?$CIntelligentPointer@VCThing@@@@@Z -> ?TransferOut@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCPersistContext@@AAVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z
+ALL_EQ renames=1 drectve=BYTE_EQUAL comdats=10/10 sections=17

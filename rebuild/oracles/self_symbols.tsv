@@ -10049,7 +10049,7 @@ address	symbol	status	leaf_given
 007badd0	?GetDeedType@CTCTrespasser@@QAEJJ@Z	MATCH	GetDeedType
 007bae70	?IsCurrentlyTrespassing@CTCTrespasser@@QAE_NXZ	RELOCATION_MATCH	IsCurrentlyTrespassing
 007bb070	?ForceTrespass@CTCTrespasser@@QAEXXZ	RELOCATION_MATCH	ForceTrespass
-007bb150	?SeeIfAnyOccupantsKnowAboutDeed@CTCTrespasser@@QAE_NJJ@Z	RELOCATION_MATCH	SeeIfAnyOccupantsKnowAboutDeed
+007bb150	?SeeIfAnyOccupantsKnowAboutDeed@CTCTrespasser@@AAE_NJW4EOpinionDeedType@@@Z	RELOCATION_MATCH	SeeIfAnyOccupantsKnowAboutDeed
 007bb610	?GetClassTypeName@CTCTrespasser@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetClassTypeName
 007bb630	?CTCTrespasser_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 007bb660	??$GetAllThings@VCThingAICreature@@U?$CResultList@V?$CIntelligentPointer@VCThingAICreature@@@@@@VCThingFilter_HasBuildingAsHomeOrWork@@@CThingSearchToolsMethods@@QAEXABVCThingFilter_HasBuildingAsHomeOrWork@@AAU?$CResultList@V?$CIntelligentPointer@VCThingAICreature@@@@@@@Z	RELOCATION_MATCH	GetAllThings

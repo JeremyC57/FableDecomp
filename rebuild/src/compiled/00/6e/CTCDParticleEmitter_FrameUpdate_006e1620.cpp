@@ -65,7 +65,7 @@ class CTCPhysicsBase { public:
     V(70) V(71)
 #undef V
     virtual const CRightHandedSet& GetOrientation();         // slot 72 (+0x120)
-    void GetOrientationInterpolator(C3DOrientationInterpolator* out);   // 0x006B0460
+    void GetOrientationInterpolator(C3DOrientationInterpolator& out) const;   // 0x006B0460 (NF374: Ego_r + FableWin ?GetOrientationInterpolator@CTCPhysicsBase@@QBEXAAVC3DOrientationInterpolator@@@Z)
 };
 class CCharString { public: void* PStringData; };
 struct CTCGraphicAppearance {
@@ -214,7 +214,7 @@ void CTCDParticleEmitter::FrameUpdate()
         --DieOffTimer;
     if (IndependantObject) {
         C3DOrientationInterpolator orientation;
-        ParentThing->PhysicsTC->GetOrientationInterpolator(&orientation);
+        ParentThing->PhysicsTC->GetOrientationInterpolator(orientation);
         if (PEmitter.GetPItem()) {
             SetPositionFrom(ParentThing->GetPos());
             PEmitter.GetPItem()->SetOrientation(orientation);

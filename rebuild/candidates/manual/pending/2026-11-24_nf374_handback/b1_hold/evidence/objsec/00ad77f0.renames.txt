@@ -1,0 +1,10 @@
+HEAD_ONLY UND ??0?$map@KMU?$less@K@std@@U?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAE@ABU01@@Z
+HEAD_ONLY UND ??0?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@U?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@4@@std@@QAE@ABU01@@Z
+HEAD_ONLY UND ??0?$set@KU?$less@K@std@@U?$allocator@K@2@@std@@QAE@ABU01@@Z
+NEW_ONLY  UND ??0?$map@KMU?$less@K@std@@V?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAE@ABV01@@Z
+NEW_ONLY  UND ??0?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@4@@std@@QAE@ABV01@@Z
+NEW_ONLY  UND ??0?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@ABV01@@Z
+RENAME ??0?$map@KMU?$less@K@std@@U?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAE@ABU01@@Z -> ??0?$map@KMU?$less@K@std@@V?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAE@ABV01@@Z
+RENAME ??0?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@U?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@4@@std@@QAE@ABU01@@Z -> ??0?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@4@@std@@QAE@ABV01@@Z
+RENAME ??0?$set@KU?$less@K@std@@U?$allocator@K@2@@std@@QAE@ABU01@@Z -> ??0?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@ABV01@@Z
+ALL_EQ renames=3 drectve=BYTE_EQUAL comdats=5/5 sections=6

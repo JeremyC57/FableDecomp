@@ -44,7 +44,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
 class CDefString {
 public:
     long Index;
-    void TransferBinaryIn(CMemoryDataInputStream& stream);   // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream& stream);         // 0x0044FC00 (NF374: Ego_r + FableWin ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z; the memory stream is its CDataInputStream base at +0)
 };
 
 class CBrainBehaviour { public:                               // 12 bytes
@@ -69,7 +69,7 @@ template <> struct CPersistTraits<CBrainBehaviour> {
 
 void CPersistTraits<CBrainBehaviour>::TransferBinaryIn(CMemoryDataInputStream* stream, CBrainBehaviour* value)
 {
-    value->Name.TransferBinaryIn(*stream);
+    value->Name.TransferBinaryIn(*(CDataInputStream*)stream);
     CPersistTraits<long> longTraits;
     longTraits.TransferBinaryIn(stream, &value->Priority);
     longTraits.TransferBinaryIn(stream, &value->ScriptAIPriority);

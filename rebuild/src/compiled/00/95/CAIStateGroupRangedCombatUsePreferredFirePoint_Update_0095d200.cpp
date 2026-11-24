@@ -77,6 +77,7 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    void Terminate();                           // 0x008FCF40 (NF374: Ego_r + FableWin ?Terminate@CAIStateGroupBase@@QAEXXZ; was declared on the derived group)
     // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
     unsigned long Random(unsigned long range)
     {
@@ -114,7 +115,6 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
     CBaseIntelligentPointer PFirePoint;         // +0x1c CIntelligentPointer<CThing>
     long TimeOutCounter;                        // +0x24
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
-    void Terminate();                           // 0x008FCF40
     protected: bool IsStillRunnable(); public:                     // 0x0095D0E0
     protected:
     bool AttackEnemy();

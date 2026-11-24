@@ -14,9 +14,11 @@ struct CTCGraphicAppearance {
 };
 
 class CThingPhysical { public:
-    unsigned char _pad00[0x64];
+    // NF374 (NF299 Q3): the PDB member is virtual (Ego_r + FableWin ?DrawPreparePrimitivesForRendering@CThingPhysical@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z);
+    // the call below is qualified (direct), the TU emits no CThingPhysical vftable, and the leading pad shrinks by the vptr so +0x64 holds.
+    virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006A64D0
+    unsigned char _pad04[0x64 - 0x04];
     CTCGraphicAppearance* m_pGraphicAppearance;                 // +0x64
-    bool DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info);   // 0x006A64D0
 };
 
 class CThingBuilding : public CThingPhysical { public:
@@ -25,7 +27,7 @@ class CThingBuilding : public CThingPhysical { public:
 
 bool CThingBuilding::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)
 {
-    if (CThingPhysical::DrawPreparePrimitivesForRendering(info)) {
+    if (CThingPhysical::DrawPreparePrimitivesForRendering(*info)) {
         m_pGraphicAppearance->PrepareForDraw(info);
         return true;
     }

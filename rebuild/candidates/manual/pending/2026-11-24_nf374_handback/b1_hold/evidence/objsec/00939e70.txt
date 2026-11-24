@@ -1,0 +1,5 @@
+CHANGED ('COMDAT', '?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@ABE_NXZ', '.text') size 90 -> 90 data_eq=True relocs_eq=False flags_eq=True
+CHANGED ('SEC', '.drectve', 1) size 348 -> 386 data_eq=False relocs_eq=True flags_eq=True
+SYM- UND ??$FindMostRecentDeed@VCOpinionDeedFilter_IsStillHappening@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@JABVCOpinionDeedFilter_IsStillHappening@@PAJ_N@Z
+SYM+ UND ??$FindMostRecentDeed@VCOpinionDeedFilter_IsStillHappening@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABVCOpinionDeedFilter_IsStillHappening@@PAJ_N@Z
+VERDICT DIFF n=2 symdelta=2 leaf=absent

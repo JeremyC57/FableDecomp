@@ -39,7 +39,7 @@ struct CTCDrawPreparer {
     virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // slot 11 (+0x2c)
 };
 class CTCWeaponTrail { public:
-    void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);           // 0x0076E6A0
+    void DrawAddWeaponTrails(const CEnginePrimitivePrepareInfo& info) const;                   // 0x0076E6A0 (NF374: Ego_r + FableWin ?DrawAddWeaponTrails@CTCWeaponTrail@@QBEXABVCEnginePrimitivePrepareInfo@@@Z, the only CTCWeaponTrail member of the PDB sets taking the prepare info; was DrawPreparePrimitivesForRendering)
 };
 class CTCCarryable { public:
     unsigned char _pad00[0x10];
@@ -131,7 +131,7 @@ bool CThingObject::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepa
         const CThingObject* const& self = this;
         CTCWeaponTrail* trail;
         if (g_ShowWeaponTrails && self->GetInterface(&trail, 0x4c))
-            trail->DrawPreparePrimitivesForRendering(info);
+            trail->DrawAddWeaponTrails(info);
         CTCDrawPreparer* preparer;
         if (PickInterface(&preparer, 0x54))
             preparer->DrawPreparePrimitivesForRendering(info);

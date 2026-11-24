@@ -58,7 +58,9 @@ class CThingCreatureBase : public CThing { public:
 public:
     bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
-bool __fastcall IsAbleToBeEngagedInCombat(CThing* thing);  // 0x0085FBC0
+namespace NCreatureMode {
+bool __fastcall IsAbleToBeEngagedInCombat(const CThing& thing);  // 0x0085FBC0 (NF374: Ego_r + FableWin ?IsAbleToBeEngagedInCombat@NCreatureMode@@YI_NABVCThing@@@Z)
+}
 struct CTCCombatEngage {                        // interface 0x30
     unsigned char _pad[0x80];
     bool Engaged;                               // +0x80
@@ -128,7 +130,7 @@ bool CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool checkCombatant) c
     if (IS_THING_ALIVE(PEnemy)) {
         const CTCCombatEngage* engage;
         ((const CThing*)GetCreature())->GetInterface(&engage, 0x30);
-        if (engage->Engaged && IsAbleToBeEngagedInCombat(PEnemy.GetPItem())) {
+        if (engage->Engaged && NCreatureMode::IsAbleToBeEngagedInCombat(*PEnemy.GetPItem())) {
             CTCCombatTarget* combat;
             ((const CThing*)GetCreature())->GetInterface(&combat, 8);
             CThing* target = combat->GetTarget();

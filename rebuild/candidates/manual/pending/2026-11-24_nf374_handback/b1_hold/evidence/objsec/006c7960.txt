@@ -1,0 +1,4 @@
+CHANGED ('COMDAT', '?TransferOut@?$CPersistTraits@PAVCOpinionDeed@@@@QAEXPAVCPersistContext@@PAVCCharString@@PBQAVCOpinionDeed@@@Z', '.text') size 404 -> 404 data_eq=True relocs_eq=False flags_eq=True
+SYM- UND ?TransferOut@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXPAVCPersistContext@@PAVCCharString@@PBV?$CIntelligentPointer@VCThing@@@@@Z
+SYM+ UND ?TransferOut@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCPersistContext@@AAVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z
+VERDICT DIFF n=1 symdelta=2 leaf=absent

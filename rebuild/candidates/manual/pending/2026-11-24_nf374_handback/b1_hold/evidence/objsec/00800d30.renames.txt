@@ -1,0 +1,4 @@
+HEAD_ONLY UND ?Transfer@CPersistContext@@QAEXPBDAAVC2DVector@@ABV2@@Z
+NEW_ONLY  UND ??$Transfer@VC2DVector@@@CPersistContext@@QAEXPBDAAVC2DVector@@ABV1@@Z
+RENAME ?Transfer@CPersistContext@@QAEXPBDAAVC2DVector@@ABV2@@Z -> ??$Transfer@VC2DVector@@@CPersistContext@@QAEXPBDAAVC2DVector@@ABV1@@Z
+ALL_EQ renames=1 drectve=DIFF comdats=2/2 sections=3

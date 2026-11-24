@@ -1,0 +1,46 @@
+// CPersistContext::Transfer(const char* name, C3DVector& value) -- transfer a 3D vector with a default of (0, 0, 0)
+// Leaf: Transfer
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00485B44, length 40 bytes.
+// Callees: CPersistContext::Transfer<C3DVector>(const char*, C3DVector&, const C3DVector&) @ 0x004859AD (CheckCRC, the
+// mode switch with a three-`movsd` default copy, CDataOutputStream::Write3DVector @ 0x00993FD0; labelled
+// "Transfer<CFloatRange>", propagated).
+// Shape: a frame-pointer size TU (`push dword ptr [ebp+N]`, `leave`): `#pragma optimize("y", off)` + `("s", on)`; the
+// 12-byte temporary C3DVector(0.0f, 0.0f, 0.0f) is filled with `fldz ; fstp` (the size form of a float zero store)
+// interleaved with the pushes; `this` stays in ecx; `ret 8`.
+// Layout: CPersistContext from the PDB (Ego_r.pdb, 0x2c bytes); no engine header exists, so a local model is used.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+#include "engine/C3DVector.h"
+class CDefinitionManager;
+class CSymbolMap;
+class CStringParser;
+class CCharString;
+class CMemoryDataInputStream;
+class CDataOutputStream;
+
+// CPersistContext (0x2c bytes, PDB layout Ego_r.pdb; no engine header, HAND_OWNED in engine/INDEX.tsv)
+class CPersistContext { public:
+    CDefinitionManager*     PDefinitionManager;           // +0x00
+    CSymbolMap*             PSymbolMap;                   // +0x04
+    CStringParser*          PParser;                      // +0x08
+    void (__cdecl*          ErrorCallback)(CCharString*); // +0x0c
+    CCharString*            PStringToClean;               // +0x10
+    bool                    UseDefaults;                  // +0x14
+    bool                    UseCRCCheck;                  // +0x15
+    bool                    SingleTransfer;               // +0x16
+    bool                    Finished;                     // +0x17
+    long                    Mode;                         // +0x18 EMode: 0 text load, 1 text save, 2 binary load, 3 binary save
+    bool                    Binary;                       // +0x1c
+    CCharString*            PStringToSaveTo;              // +0x20
+    CMemoryDataInputStream* PLoadStream;                  // +0x24
+    CDataOutputStream*      PSaveStream;                  // +0x28
+
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004859AD for T = C3DVector (NF374: Ego_r + FableWin ??$Transfer@VC3DVector@@@CPersistContext@@QAEXPBDAAVC3DVector@@ABV1@@Z, the member template)
+    void Transfer(const char* name, C3DVector& value);
+};
+
+void CPersistContext::Transfer(const char* name, C3DVector& value)
+{
+    Transfer(name, value, C3DVector(0.0f, 0.0f, 0.0f));
+}
