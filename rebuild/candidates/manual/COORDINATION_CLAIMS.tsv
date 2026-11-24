@@ -427,3 +427,4 @@ date	account	item	kind	status	note
 2026-11-24	A	unit3	naming	claimed	scripted unit route (unit_fix.py) over the 51 units deferred from unit2; touches landed rows and their callers only, skips any row reserved by B / a live lock
 2026-11-24	A	unit3	naming	done	landed 59 rows (batches/2026-11-24_landing_unit3); unit 0x004166E2 / 0x00417001 held (RP1 lock + 2026-11-20 claim)
 2026-11-24	A	CVsyncCallbackTimer option A (B's reports_REMAINING) + IDirect3D9 0x009BE870 / 0x009BFB30	header	done	RP1 hand-back landed 2026-11-24 (batches/2026-11-24_landing_rp1; advisor decision, owner delegated); 0x009C0E50 stays blocked (option B)
+2026-11-24	A	unit4	naming	claimed	scripted unit route wave 4 (unit_fix.py): the units deferred from unit3 plus 0x004166E2 / 0x00417001; landed rows and their callers only, skips B claims and live locks
