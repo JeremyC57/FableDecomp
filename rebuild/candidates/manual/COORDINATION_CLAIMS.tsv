@@ -489,3 +489,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF338: T1 batch of 320 fresh tracker entries (130 classes, all fix kinds)	naming	done	5 rows landed (batches/2026-11-24_landing_nf338_b1..b3); 205 skipped-port, 99 held
 2026-11-24	A	agent NF340: pick-any all-copies audit (B24C9 checker finding)	audit	claimed	read-only over landed /d2inl rows + a 300-row sample
 2026-11-24	A	agent NF339: T3 self-respell lines (227)	naming	done	6 rows landed (batches/2026-11-24_landing_nf339_b1, b2); 138 stale lines closed
+2026-11-24	A	agent NF341: GetDef<CMaterialDef> pick-any copy (0x0066C340) + 0x006EA430 self spelling (unblock B 0x00839940)	naming	claimed	locks via lock.sh NF341

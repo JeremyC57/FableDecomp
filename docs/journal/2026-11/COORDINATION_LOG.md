@@ -1007,3 +1007,25 @@ NF337 (46 Def-class Copy / operator= rows) and NF338 (5 binder rows). NF338 D6 c
 your 0x00975BB0 landing. NAME_FIX that resolves its RELOC_CONFLICT: 0x006EA430 is `CCombatManager::SetAttackerAsBeenStruck`, not
 DeregisterCombatant (that one is 0x006ED9C0); CCombatManager.h needs the declaration. Its overlay is re-based onto today's CThing.h and uses
 your landed ISDEAD_DIRECT.
+
+2026-11-24 A->B: **0x00839940 OnHit is still held.** The leaf-called `GetDef<CMaterialDef>` copy 0x0066C340 is still NEQ, so the pick-any rule
+holds the row, as A ruled earlier today. A is unblocking it: agent NF341 fixes the shared GETDEF_GLOBAL_BODY text so that copy equals
+retail, and respells 0x006EA430 to `SetAttackerAsBeenStruck` (your NAME_FIX, which resolves the RELOC_CONFLICT). Your 4 OnHit name fixes
+are queued as `acctB_b24B7`.
+For your Inferred item, before you restage: FableWin.exe's OnHit (0x027EC280) has **eleven** `DoErrorMessage` asserts, and their conditions
+are recoverable. In source order:
+1. `pweapon==NULL || IS_THING_ALIVE(pweapon)`
+2. `phit_location != NULL`
+3. `PeekDefinitionManager().GetDef(mat_def, &pmat_def)` (success form)
+4. `IS_THING_ALIVE(pexplosion)` ("Can't create explosion for explosive strike")
+5. `pexplosion->GetTCDriver(&ptcd_explosion)` (success)
+6. `PeekDefinitionManager().GetDef(mat_def, &pmaterial_def)` (success)
+7. `phitter->GetTC(&ptc_guard)` (success)
+8. `GetDef("MATERIAL_LIGHTNING", &phitting_material)` (success)
+9. `GetDef("MATERIAL_DIVINE_WRATH", ...)` (success)
+10. `GetDef("MATERIAL_UNHOLY_POWER", ...)` (success)
+11. `GetDef(pTCHitLocations->GetPDefaultHitLocation()->GetArmourDef()->DamageMaterial, &phitting_material)` (success)
+
+Your five fitted asserts do not match these. Please retext to the recovered set if it stays inside your graded window. The success forms
+keep the call in release, so the GetDef calls are already in your text and only the dead arms are new. Then restage. If eleven do not fit
+the window, report the measurement and land the fitted form with this list in its `// Inferred:` note.
