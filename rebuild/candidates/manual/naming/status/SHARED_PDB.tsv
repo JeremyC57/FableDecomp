@@ -49,8 +49,6 @@ symbol	target
 ??4CRegionScriptDef@@QAEAAV0@ABV0@@Z	00f29f70
 ??RCThingFilter_AICreatureHasProperty@@QBE_NABVCThingAICreature@@@Z	006a75d0
 ??RCThingFilter_AICreatureHasProperty@@QBE_NABVCThingAICreature@@@Z	006c4560
-??RCThingFilter_HasBuildingAsHome@@QBE_NABVCThingAICreature@@@Z	00733020
-??RCThingFilter_HasBuildingAsHome@@QBE_NABVCThingAICreature@@@Z	00982db0
 ??_GCANavQuadTreeNode@@UAEPAXI@Z	00a19c00
 ??_GCANavQuadTreeNode@@UAEPAXI@Z	00a7d990
 ??_GCAnimFilterBase@@UAEPAXI@Z	0041cce4
