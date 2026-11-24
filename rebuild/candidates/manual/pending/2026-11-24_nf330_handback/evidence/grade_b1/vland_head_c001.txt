@@ -1,0 +1,24 @@
+addr       parity           behav  name
+004d500f   MATCH            PASS   GetSizeofClass
+004d5b15   MATCH            PASS   GetSizeofClass
+004d5c89   MATCH            PASS   GetSizeofClass
+004d61a0   MATCH            PASS   GetSizeofClass
+004d649f   MATCH            PASS   GetSizeofClass
+004d6601   MATCH            PASS   GetSizeofClass
+004d665a   MATCH            PASS   GetSizeofClass
+004ded4e   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004ded4e   RELOCATION_MATCH PASS   Transfer
+0077d3a0   MATCH            PASS   Transfer
+007ac6e0   MATCH            PASS   GetSizeofClass
+
+WINS: 10
+  004d500f MATCH CGuardDef::?CGuardDef_GetSizeofClass@@YIHXZ
+  004d5b15 MATCH CDecapitationDef::?CDecapitationDef_GetSizeofClass@@YIHXZ
+  004d5c89 MATCH CFishDef::?CFishDef_GetSizeofClass@@YIHXZ
+  004d61a0 MATCH CSummonDef::?CSummonDef_GetSizeofClass@@YIHXZ
+  004d649f MATCH CWillResponseDef::?CWillResponseDef_GetSizeofClass@@YIHXZ
+  004d6601 MATCH COracleMinigameDef::?COracleMinigameDef_GetSizeofClass@@YIHXZ
+  004d665a MATCH CFireheartMinigameDef::?CFireheartMinigameDef_GetSizeofClass@@YIHXZ
+  004ded4e RELOCATION_MATCH CDecapitationDef::?CDecapitationDef_Transfer@@YIXPAVCDecapitationDef@@PAXPAVCPersistContext@@@Z
+  0077d3a0 MATCH CHeroCentreDef::?CHeroCentreDef_Transfer@@YGXH@Z
+  007ac6e0 MATCH CAIScratchpadDef::?CAIScratchpadDef_GetSizeofClass@@YIHXZ

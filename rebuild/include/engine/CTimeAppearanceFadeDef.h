@@ -8,6 +8,35 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CTIMEAPPEARANCEFADEDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123B7CC (RTTI .?AVCTimeAppearanceFadeDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CTimeAppearanceFadeDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CTimeAppearanceFadeDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DE50C ?Transfer@CTimeAppearanceFadeDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E074B ?Copy@CTimeAppearanceFadeDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D4156 ?GetSizeofClass@CTimeAppearanceFadeDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    float         FadeInStart;                               // +0x28
+    float         FadeInEnd;                                 // +0x2c
+    float         FadeOutStart;                              // +0x30
+    float         FadeOutEnd;                                // +0x34
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CTimeAppearanceFadeDef) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, FadeInStart) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, FadeInEnd) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, FadeOutStart) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, FadeOutEnd) == 0x34);
+#else
 #pragma pack(push, 1)
 class CTimeAppearanceFadeDef {
 public:
@@ -28,11 +57,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTimeAppearanceFadeDef) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, FadeInStart) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, FadeInEnd) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, FadeOutStart) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CTimeAppearanceFadeDef, FadeOutEnd) == 0x34);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CTimeAppearanceFadeDef) == 0x38);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CTimeAppearanceFadeDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CTimeAppearanceFadeDef, FadeInStart) == 0x28);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CTimeAppearanceFadeDef, FadeInEnd) == 0x2c);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CTimeAppearanceFadeDef, FadeOutStart) == 0x30);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CTimeAppearanceFadeDef, FadeOutEnd) == 0x34);
+#endif // FABLE_RETAIL_CTIMEAPPEARANCEFADEDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CTIMEAPPEARANCEFADEDEF_H

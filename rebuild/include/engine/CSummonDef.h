@@ -8,6 +8,45 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSUMMONDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123DEB4 (RTTI .?AVCSummonDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CSummonDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CSummonDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DF264 ?Transfer@CSummonDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E17CD ?Copy@CSummonDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D61A0 ?GetSizeofClass@CSummonDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    long          CreatureToSummon;                          // +0x28
+    long          CreatureFamilyToSummon;                    // +0x2c
+    long          NumberToSummon;                            // +0x30
+    float         SummonRadius;                              // +0x34
+    long          MySummonLimit;                             // +0x38
+    long          MinimumSummon;                             // +0x3c
+    float         TimeBetweenSummons;                        // +0x40
+    long          SummonEffect;                              // +0x44
+    long          SummoneeEffect;                            // +0x48
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CSummonDef) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, CreatureToSummon) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, CreatureFamilyToSummon) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, NumberToSummon) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, SummonRadius) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, MySummonLimit) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, MinimumSummon) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, TimeBetweenSummons) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, SummonEffect) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CSummonDef, SummoneeEffect) == 0x48);
+#else
 #pragma pack(push, 1)
 class CSummonDef {
 public:
@@ -33,16 +72,17 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSummonDef) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, CreatureToSummon) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, CreatureFamilyToSummon) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, NumberToSummon) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, SummonRadius) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, MySummonLimit) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, MinimumSummon) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, TimeBetweenSummons) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, SummonEffect) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CSummonDef, SummoneeEffect) == 0x48);
+FABLE_STATIC_ASSERT_AT(36, sizeof(CSummonDef) == 0x4c);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CSummonDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CSummonDef, CreatureToSummon) == 0x28);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CSummonDef, CreatureFamilyToSummon) == 0x2c);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CSummonDef, NumberToSummon) == 0x30);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CSummonDef, SummonRadius) == 0x34);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CSummonDef, MySummonLimit) == 0x38);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CSummonDef, MinimumSummon) == 0x3c);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CSummonDef, TimeBetweenSummons) == 0x40);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CSummonDef, SummonEffect) == 0x44);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CSummonDef, SummoneeEffect) == 0x48);
+#endif // FABLE_RETAIL_CSUMMONDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CSUMMONDEF_H

@@ -8,6 +8,41 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSHIPDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123C0A4 (RTTI .?AVCShipDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CShipDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CShipDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DE782 ?Transfer@CShipDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E0A67 ?Copy@CShipDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D489D ?GetSizeofClass@CShipDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    long          SightingFrequency;                         // +0x28
+    long          SightingOffset;                            // +0x2c
+    long          DaysVisible;                               // +0x30
+    float         Swell;                                     // +0x34
+    float         Pitch;                                     // +0x38
+    float         Roll;                                      // +0x3c
+    float         WaveLength;                                // +0x40
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CShipDef) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CShipDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CShipDef, SightingFrequency) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CShipDef, SightingOffset) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CShipDef, DaysVisible) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CShipDef, Swell) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CShipDef, Pitch) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CShipDef, Roll) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CShipDef, WaveLength) == 0x40);
+#else
 #pragma pack(push, 1)
 class CShipDef {
 public:
@@ -31,14 +66,15 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CShipDef) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CShipDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CShipDef, SightingFrequency) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CShipDef, SightingOffset) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CShipDef, DaysVisible) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CShipDef, Swell) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CShipDef, Pitch) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CShipDef, Roll) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CShipDef, WaveLength) == 0x40);
+FABLE_STATIC_ASSERT_AT(34, sizeof(CShipDef) == 0x44);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CShipDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CShipDef, SightingFrequency) == 0x28);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CShipDef, SightingOffset) == 0x2c);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CShipDef, DaysVisible) == 0x30);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CShipDef, Swell) == 0x34);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CShipDef, Pitch) == 0x38);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CShipDef, Roll) == 0x3c);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CShipDef, WaveLength) == 0x40);
+#endif // FABLE_RETAIL_CSHIPDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CSHIPDEF_H

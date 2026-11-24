@@ -1,0 +1,19 @@
+addr       parity           behav  name
+008bdcf0   MATCH            PASS   IsPlayHitResponse
+00908060   MATCH            PASS   IsVitalStrike
+00908070   MATCH            PASS   IsKnockdownStrike
+00908080   MATCH            PASS   IsBlockable
+00908110   MATCH            PASS   IsToFaceTarget
+00908120   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+00908130   MATCH            PASS   IsInterruptableDueToZoneChange
+009081c0   MATCH            PASS   IsToEvadeAllHits
+
+WINS: 8
+  008bdcf0 MATCH CCreatureAction_ReleaseAndLoopUnholyPowerSpell::?IsPlayHitResponse@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ
+  00908060 MATCH CCreatureAction_TrollAngryGroundPound::?IsVitalStrike@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ
+  00908070 MATCH CCreatureAction_TrollAngryGroundPound::?IsKnockdownStrike@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ
+  00908080 MATCH CCreatureAction_TrollAngryGroundPound::?IsBlockable@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ
+  00908110 MATCH CCreatureAction_TrollProjectileAttack::?IsToFaceTarget@CCreatureAction_TrollProjectileAttack@@UBE_NXZ
+  00908120 RELOCATION_MATCH CCreatureAction_TrollProjectileAttack::?GetIsToFaceTargetCone@CCreatureAction_TrollProjectileAttack@@UBEMXZ
+  00908130 MATCH CCreatureAction_TrollProjectileAttack::?IsInterruptableDueToZoneChange@CCreatureAction_TrollProjectileAttack@@UBE_NXZ
+  009081c0 MATCH CCreatureAction_TrollTunnel::?IsToEvadeAllHits@CCreatureAction_TrollTunnel@@UBE_NXZ

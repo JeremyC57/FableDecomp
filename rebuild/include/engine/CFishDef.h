@@ -8,6 +8,51 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CFISHDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123D7BC (RTTI .?AVCFishDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CFishDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CFishDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DEE7E ?Transfer@CFishDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E12B3 ?Copy@CFishDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D5C89 ?GetSizeofClass@CFishDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    float         MinLength;                                 // +0x28
+    float         MaxLength;                                 // +0x2c
+    float         MinWeight;                                 // +0x30
+    float         MaxWeight;                                 // +0x34
+    float         MinSpeed;                                  // +0x38
+    float         MaxSpeed;                                  // +0x3c
+    float         BasePullSeconds;                           // +0x40
+    float         MaxRandomPullSeconds;                      // +0x44
+    float         BasePullWaitSeconds;                       // +0x48
+    float         MaxRandomPullWaitSeconds;                  // +0x4c
+    long          Level;                                     // +0x50
+    long          InfoText;                                  // +0x54
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CFishDef) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, MinLength) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxLength) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, MinWeight) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxWeight) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, MinSpeed) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxSpeed) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, BasePullSeconds) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxRandomPullSeconds) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, BasePullWaitSeconds) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxRandomPullWaitSeconds) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, Level) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CFishDef, InfoText) == 0x54);
+#else
 #pragma pack(push, 1)
 class CFishDef {
 public:
@@ -36,19 +81,20 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CFishDef) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MinLength) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxLength) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MinWeight) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxWeight) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MinSpeed) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxSpeed) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, BasePullSeconds) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxRandomPullSeconds) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, BasePullWaitSeconds) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxRandomPullWaitSeconds) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, Level) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, InfoText) == 0x54);
+FABLE_STATIC_ASSERT_AT(39, sizeof(CFishDef) == 0x58);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CFishDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CFishDef, MinLength) == 0x28);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CFishDef, MaxLength) == 0x2c);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CFishDef, MinWeight) == 0x30);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CFishDef, MaxWeight) == 0x34);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CFishDef, MinSpeed) == 0x38);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CFishDef, MaxSpeed) == 0x3c);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CFishDef, BasePullSeconds) == 0x40);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CFishDef, MaxRandomPullSeconds) == 0x44);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CFishDef, BasePullWaitSeconds) == 0x48);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CFishDef, MaxRandomPullWaitSeconds) == 0x4c);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CFishDef, Level) == 0x50);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CFishDef, InfoText) == 0x54);
+#endif // FABLE_RETAIL_CFISHDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CFISHDEF_H

@@ -8,6 +8,31 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CHERODEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123A904 (RTTI .?AVCHeroDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CHeroDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CHeroDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DDEAA ?Transfer@CHeroDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E0331 ?Copy@CHeroDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D3464 ?GetSizeofClass@CHeroDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    long          DefaultTitle;                              // +0x28
+    unsigned char DefaultHeroTrainingStatus[0x4];            // +0x2c EHeroTrainingStatus
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CHeroDef) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CHeroDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CHeroDef, DefaultTitle) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CHeroDef, DefaultHeroTrainingStatus) == 0x2c);
+#else
 #pragma pack(push, 1)
 class CHeroDef {
 public:
@@ -26,9 +51,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CHeroDef) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CHeroDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CHeroDef, DefaultTitle) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CHeroDef, DefaultHeroTrainingStatus) == 0x2c);
+FABLE_STATIC_ASSERT_AT(29, sizeof(CHeroDef) == 0x30);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CHeroDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CHeroDef, DefaultTitle) == 0x28);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CHeroDef, DefaultHeroTrainingStatus) == 0x2c);
+#endif // FABLE_RETAIL_CHERODEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CHERODEF_H

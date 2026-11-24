@@ -10,6 +10,37 @@
 
 class CCharStringData;
 
+#ifdef FABLE_RETAIL_CFIREHEARTMINIGAMEDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123E584 (RTTI .?AVCFireheartMinigameDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CFireheartMinigameDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CFireheartMinigameDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DF6F4 ?Transfer@CFireheartMinigameDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E19DD ?Copy@CFireheartMinigameDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D665A ?GetSizeofClass@CFireheartMinigameDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    CCharStringData* MoonFX_PStringData;                     // +0x28 CCharString::PStringData
+    CCharStringData* SunFX_PStringData;                      // +0x2c CCharString::PStringData
+    unsigned long    QuitText;                               // +0x30
+    unsigned long    YesText;                                // +0x34
+    unsigned long    NoText;                                 // +0x38
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CFireheartMinigameDef) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, MoonFX_PStringData) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, SunFX_PStringData) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, QuitText) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, YesText) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, NoText) == 0x38);
+#else
 #pragma pack(push, 1)
 class CFireheartMinigameDef {
 public:
@@ -31,12 +62,13 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CFireheartMinigameDef) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, MoonFX_PStringData) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, SunFX_PStringData) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, QuitText) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, YesText) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, NoText) == 0x38);
+FABLE_STATIC_ASSERT_AT(34, sizeof(CFireheartMinigameDef) == 0x3c);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CFireheartMinigameDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CFireheartMinigameDef, MoonFX_PStringData) == 0x28);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CFireheartMinigameDef, SunFX_PStringData) == 0x2c);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CFireheartMinigameDef, QuitText) == 0x30);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CFireheartMinigameDef, YesText) == 0x34);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CFireheartMinigameDef, NoText) == 0x38);
+#endif // FABLE_RETAIL_CFIREHEARTMINIGAMEDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CFIREHEARTMINIGAMEDEF_H

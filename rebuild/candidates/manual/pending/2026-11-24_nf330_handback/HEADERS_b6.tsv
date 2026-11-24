@@ -1,0 +1,5 @@
+header	macro	rows
+engine/CCreatureAction_BanditKingAdvance.h	FABLE_RETAIL_CCREATUREACTION_BANDITKINGADVANCE_VIRTUAL_MODEL	00906c00
+engine/CCreatureAction_BanditKingBackOff.h	FABLE_RETAIL_CCREATUREACTION_BANDITKINGBACKOFF_VIRTUAL_MODEL	00906c40
+engine/CCreatureAction_StrafeForward.h	FABLE_RETAIL_CCREATUREACTION_STRAFEFORWARD_RTTI_DECLS (base opt-in)	(none; the batch's derived models need it)
+engine/CCreatureAction_StrafeBackward.h	FABLE_RETAIL_CCREATUREACTION_STRAFEBACKWARD_RTTI_DECLS (base opt-in)	(none; the batch's derived models need it)

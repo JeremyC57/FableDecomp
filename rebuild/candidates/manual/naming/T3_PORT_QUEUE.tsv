@@ -3104,9 +3104,6 @@ nf324	0x00412070	port	00412070 skipped-port ?GetPathname@CMemoryFile@@UBE?AVCWid
 nf324	0x0042DA10	port	0042da10 skipped-port ?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ triage (-): params: __stdcall self has 1 stack parameters, the member 0
 nf324	0x0042DAA0	port	0042daa0 skipped-port ?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ triage (-): unit: the row's own test calls CDefClassBase_GetPSubDe
 nf324	0x0044C12F	held	0044c12f skipped-held ?GetSizeofClass@CInventoryItemDef@@UAEKXZ triage (-): reserved: T3_PORT_QUEUE
-nf324	0x0044C229	port	0044c229 skipped-port ?GetSizeofClass@CSmashableDef@@UAEKXZ triage (header): model: engine/CSmashableDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
-nf324	0x0044C269	port	0044c269 skipped-port ?GetSizeofClass@CActionUseDef@@UAEKXZ triage (header): model: engine/CActionUseDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
-nf324	0x0044C390	port	0044c390 skipped-port ?GetSizeofClass@CBonusItemDef@@UAEKXZ triage (header): model: engine/CBonusItemDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
 nf324	0x0044C45B	held	0044c45b skipped-held ?GetCombatAbilityDataType@CCombatAbilityData@@UBE?AW4ECombatAbilityDataType@@XZ triage (-): identity: engine/CCombatAbilityData.h defines GetCombatAbilityDataType inline in some branch: a strong self would c
 nf324	0x0044C4A0	held	0044c4a0 skipped-held ?GetCombatAbilityDataType@CCombatAbilityMeleeAttackData@@UBE?AW4ECombatAbilityDataType@@XZ work/exp_b2 SKIP: identity: engine/CCombatAbilityMeleeAttackData.h defines GetCombatAbilityDataType inline in some b
 nf324	0x0044C4CA	held	0044c4ca skipped-held ?GetCombatAbilityDataType@CCombatAbilityStrafingData@@UBE?AW4ECombatAbilityDataType@@XZ work/exp_b2 SKIP: identity: engine/CCombatAbilityStrafingData.h defines GetCombatAbilityDataType inline in some branch:
@@ -3114,10 +3111,7 @@ nf324	0x0044C4F8	held	0044c4f8 skipped-held ?GetCombatAbilityDataType@CCombatAbi
 nf324	0x0044C549	port	0044c549 skipped-port ?GetSizeofClass@CCombatAbilityBlockCounterAttackDef@@UAEKXZ triage (header): model: engine/CCombatAbilityBlockCounterAttackDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x0044C561	port	0044c561 skipped-port ?GetSizeofClass@CCombatAbilityFlourishCounterAttackDef@@UAEKXZ triage (header): model: engine/CCombatAbilityFlourishCounterAttackDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x0044C599	port	0044c599 skipped-port ?GetSizeofClass@CCombatAbilityStrafeDef@@UAEKXZ triage (header): model: engine/CCombatAbilityStrafeDef.h does not declare GetSizeofClass (add-only opt-in)
-nf324	0x0044C5CF	port	0044c5cf skipped-port ?GetSizeofClass@CDragonActionSwoopDef@@UAEKXZ triage (header): model: engine/CDragonActionSwoopDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
-nf324	0x0044C695	port	0044c695 skipped-port ?GetSizeofClass@CSummonerDef@@UAEKXZ triage (header): model: engine/CSummonerDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
 nf324	0x0044C6AB	port	0044c6ab skipped-port ?GetSizeofClass@CExplosiveTrailDef@@UAEKXZ triage (header): model: engine/CExplosiveTrailDef.h does not declare GetSizeofClass (add-only opt-in)
-nf324	0x004522C6	port	004522c6 skipped-port ?Transfer@CSmashableDef@@UAEXAAVCPersistContext@@@Z triage (header): model: engine/CSmashableDef.h does not declare Transfer and has no polymorphic class model (port)
 nf324	0x00452B04	port	00452b04 skipped-port ?Transfer@CHairCardDef@@UAEXAAVCPersistContext@@@Z batches/5 SKIP: override gate: with the final preamble CSubDefClassBase does not declare the virtual (a new slot)
 nf324	0x00452BB4	rejected	00452bb4 rejected ?Transfer@CCombatAbilityUseProjectileWeaponDef@@UAEXAAVCPersistContext@@@Z work/exp_b2 REJECT: objcheck: section .text bytes differ [route local] [the final tool now skips it: model: virtual target, local model 
 nf324	0x00452DF1	port	00452df1 skipped-port ?Transfer@CAbilityDef@@UAEXAAVCPersistContext@@@Z triage (-): params: used parameter context is `CTransferData*`, the PDB type is `class CPersistContext&` (alias pattern)
@@ -3252,29 +3246,18 @@ nf324	0x004AB040	port	004ab040 skipped-port ?SetAsUsable@CScriptThing@@UAEX_N@Z 
 nf324	0x004AE890	port	004ae890 skipped-port ?DrawGetProceduralTexture@CWorld@@UBEPBVCProceduralTexture@@XZ triage (-): unit: the row's own test calls CWorld_DrawGetProceduralTexture
 nf324	0x004D33D8	port	004d33d8 skipped-port ?GetSizeofClass@CLightDef@@UAEKXZ triage (header): model: engine/CLightDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004D341E	port	004d341e skipped-port ?GetSizeofClass@CSpotLightDef@@UAEKXZ triage (header): model: engine/CSpotLightDef.h does not declare GetSizeofClass (add-only opt-in)
-nf324	0x004D3464	port	004d3464 skipped-port ?GetSizeofClass@CHeroDef@@UAEKXZ triage (header): model: engine/CHeroDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
 nf324	0x004D3DDB	port	004d3ddb skipped-port ?GetSizeofClass@CEnemyDef@@UAEKXZ triage (header): model: engine/CEnemyDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004D4110	port	004d4110 skipped-port ?GetSizeofClass@CStockItemDef@@UAEKXZ triage (header): model: engine/CStockItemDef.h does not declare GetSizeofClass (add-only opt-in)
-nf324	0x004D4156	port	004d4156 skipped-port ?GetSizeofClass@CTimeAppearanceFadeDef@@UAEKXZ triage (header): model: engine/CTimeAppearanceFadeDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
 nf324	0x004D458A	port	004d458a skipped-port ?GetSizeofClass@CHighlightItemDef@@UAEKXZ triage (header): model: engine/CHighlightItemDef.h does not declare GetSizeofClass (add-only opt-in)
-nf324	0x004D463C	port	004d463c skipped-port ?GetSizeofClass@CHeroCentreDef@@UAEKXZ triage (header): model: engine/CHeroCentreDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
-nf324	0x004D489D	port	004d489d skipped-port ?GetSizeofClass@CShipDef@@UAEKXZ triage (header): model: engine/CShipDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
 nf324	0x004D4B97	port	004d4b97 skipped-port ?GetSizeofClass@CExpressionSubDef@@UAEKXZ triage (header): model: engine/CExpressionSubDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004D4FE6	held	004d4fe6 skipped-held ?GetSizeofClass@CInterestingToVillagersDef@@UAEKXZ triage (switch): model: engine/CInterestingToVillagersDef.h declares GetSizeofClass only under #if FABLE_RETAIL_FIND_INTERESTING (no landed / non-_PASS swit
-nf324	0x004D500F	port	004d500f skipped-port ?GetSizeofClass@CGuardDef@@UAEKXZ triage (header): model: engine/CGuardDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
 nf324	0x004D5211	held	004d5211 skipped-held ?GetSizeofClass@CTavernDef@@UAEKXZ triage (switch): model: engine/CTavernDef.h declares GetSizeofClass only under #if FABLE_RETAIL_BED_USE_PASS28 (no landed / non-_PASS switch)
 nf324	0x004D538E	port	004d538e skipped-port ?GetSizeofClass@CFireballSpellLevelDef@@UAEKXZ triage (header): model: engine/CFireballSpellLevelDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004D584F	port	004d584f skipped-port ?GetSizeofClass@CGoldDef@@UAEKXZ triage (header): model: engine/CGoldDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004D597B	held	004d597b skipped-held ?GetSizeofClass@CCoinGameObstacleDef@@UAEKXZ triage (switch): model: engine/CCoinGameObstacleDef.h declares GetSizeofClass only under #if FABLE_RETAIL_CCOINGAMEOBSTACLEDEF_PASS26 (no landed / non-_PASS switc
 nf324	0x004D5991	held	004d5991 skipped-held ?GetSizeofClass@CTavernGameCoinBaseDef@@UAEKXZ triage (switch): model: engine/CTavernGameCoinBaseDef.h declares GetSizeofClass only under #if FABLE_RETAIL_COIN_UPDATE_PASS27 (no landed / non-_PASS switch)
-nf324	0x004D5B15	port	004d5b15 skipped-port ?GetSizeofClass@CDecapitationDef@@UAEKXZ triage (header): model: engine/CDecapitationDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
-nf324	0x004D5C89	port	004d5c89 skipped-port ?GetSizeofClass@CFishDef@@UAEKXZ triage (header): model: engine/CFishDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
 nf324	0x004D5DE7	port	004d5de7 skipped-port ?GetSizeofClass@CKrakenTentacleDef@@UAEKXZ triage (header): model: engine/CKrakenTentacleDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004D6177	port	004d6177 skipped-port ?GetSizeofClass@CNymphDef@@UAEKXZ triage (header): model: engine/CNymphDef.h does not declare GetSizeofClass (add-only opt-in)
-nf324	0x004D61A0	port	004d61a0 skipped-port ?GetSizeofClass@CSummonDef@@UAEKXZ triage (header): model: engine/CSummonDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
-nf324	0x004D649F	port	004d649f skipped-port ?GetSizeofClass@CWillResponseDef@@UAEKXZ triage (header): model: engine/CWillResponseDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
-nf324	0x004D6601	port	004d6601 skipped-port ?GetSizeofClass@COracleMinigameDef@@UAEKXZ triage (header): model: engine/COracleMinigameDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
-nf324	0x004D665A	port	004d665a skipped-port ?GetSizeofClass@CFireheartMinigameDef@@UAEKXZ triage (header): model: engine/CFireheartMinigameDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
 nf324	0x004D7AE5	port	004d7ae5 skipped-port ?GetSizeofClass@CReadableDef@@UAEKXZ triage (header): model: engine/CReadableDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004DD9DD	port	004dd9dd skipped-port ?Transfer@CSmokeGeneratorDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CGuildMasterDef*` (another class)
 nf324	0x004DD9FE	port	004dd9fe skipped-port ?Transfer@CCreatureNavigationDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CCarrySlotDef*` (another class)
@@ -3283,7 +3266,6 @@ nf324	0x004DE50C	port	004de50c skipped-port ?Transfer@CTimeAppearanceFadeDef@@UA
 nf324	0x004DE545	port	004de545 skipped-port ?Transfer@CGiftDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CGuildMasterDef*` (another class)
 nf324	0x004DE891	port	004de891 skipped-port ?Transfer@CSummonableCreatureDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CGuildMasterDef*` (another class)
 nf324	0x004DE912	port	004de912 skipped-port ?GetSizeofClass@CFishingDef@@UAEKXZ triage (header): model: engine/CFishingDef.h does not declare GetSizeofClass (add-only opt-in)
-nf324	0x004DED4E	port	004ded4e skipped-port ?Transfer@CDecapitationDef@@UAEXAAVCPersistContext@@@Z triage (header): model: engine/CDecapitationDef.h does not declare Transfer and has no polymorphic class model (port)
 nf324	0x004DEDAC	port	004dedac skipped-port ?Transfer@CWallMountEffectsDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CTCNoiseDef*` (another class)
 nf324	0x004DEF0F	port	004def0f skipped-port ?Transfer@CTeleporterDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CTCNoiseDef*` (another class)
 nf324	0x004DEF3D	port	004def3d skipped-port ?Transfer@CHeroSpecialMovementDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CCarrySlotDef*` (another class)
@@ -3451,8 +3433,6 @@ nf324	0x0074DCB0	port	0074dcb0 skipped-port ?PerformAction@CCreatureAction_Undea
 nf324	0x0074DCC0	port	0074dcc0 skipped-port ?IsKnockdownStrike@CCreatureAction_UndeadRiseUp@@UBE_NXZ triage (header): model: engine/CCreatureAction_UndeadRiseUp.h does not declare IsKnockdownStrike (add-only opt-in)
 nf324	0x0074DCD0	port	0074dcd0 skipped-port ?IsBlockable@CCreatureAction_UndeadRiseUp@@UBE_NXZ triage (header): model: engine/CCreatureAction_UndeadRiseUp.h does not declare IsBlockable (add-only opt-in)
 nf324	0x0074DCF0	port	0074dcf0 skipped-port ?WaitForMeshToLoad@CCreatureAction_UndeadRiseUp@@MBE_NXZ triage (header): model: engine/CCreatureAction_UndeadRiseUp.h does not declare WaitForMeshToLoad (add-only opt-in)
-nf324	0x0077D3A0	port	0077d3a0 skipped-port ?Transfer@CHeroCentreDef@@UAEXAAVCPersistContext@@@Z triage (header): model: engine/CHeroCentreDef.h does not declare Transfer and has no polymorphic class model (port)
-nf324	0x007AC6E0	port	007ac6e0 skipped-port ?GetSizeofClass@CAIScratchpadDef@@UAEKXZ triage (header): model: engine/CAIScratchpadDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
 nf324	0x007E72C0	port	007e72c0 skipped-port ?Validate@CScriptGameResourceObjectScriptedThingBase@@MBEXXZ work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home/user/FableDecomp/rebuild/include/engine/CScriptGameResourceObjectSc
 nf324	0x007E7370	port	007e7370 skipped-port ?WaitWhilePerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ triage (-): this: the body uses thing typed `Outer*` (another class)
 nf324	0x007EB520	port	007eb520 skipped-port ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionViewQuests@@UBE_NXZ triage (header): model: engine/CCreatureAction_PlayerInteractionViewQuests.h does not declare IsToHaveEmptyHands and has no polymorphi

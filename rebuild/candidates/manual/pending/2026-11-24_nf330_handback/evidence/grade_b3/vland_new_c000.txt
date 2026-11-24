@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00855d40   MATCH            PASS   IsOverrideableByActionOfSamePriority
+008bdbd0   MATCH            PASS   PerformAction
+008bdbe0   MATCH            PASS   IsToEvadeAllHits
+008bdbf0   MATCH            PASS   IsToCauseRecoil
+008bdc00   MATCH            PASS   IsAbleToBeAttacked
+008bdc10   MATCH            PASS   IsPlayHitResponse
+008bdcb0   MATCH            PASS   PerformAction
+008bdcc0   MATCH            PASS   IsToEvadeAllHits
+008bdcd0   MATCH            PASS   IsToCauseRecoil
+008bdce0   MATCH            PASS   IsAbleToBeAttacked
+
+WINS: 10
+  00855d40 MATCH CCreatureAction_BlockRespond::?IsOverrideableByActionOfSamePriority@CCreatureAction_BlockRespond@@UBE_NXZ
+  008bdbd0 MATCH CCreatureAction_ReleaseAndLoopDivineWrathSpell::?PerformAction@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UAEXXZ
+  008bdbe0 MATCH CCreatureAction_ReleaseAndLoopDivineWrathSpell::?IsToEvadeAllHits@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ
+  008bdbf0 MATCH CCreatureAction_ReleaseAndLoopDivineWrathSpell::?IsToCauseRecoil@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ
+  008bdc00 MATCH CCreatureAction_ReleaseAndLoopDivineWrathSpell::?IsAbleToBeAttacked@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ
+  008bdc10 MATCH CCreatureAction_ReleaseAndLoopDivineWrathSpell::?IsPlayHitResponse@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ
+  008bdcb0 MATCH CCreatureAction_ReleaseAndLoopUnholyPowerSpell::?PerformAction@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UAEXXZ
+  008bdcc0 MATCH CCreatureAction_ReleaseAndLoopUnholyPowerSpell::?IsToEvadeAllHits@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ
+  008bdcd0 MATCH CCreatureAction_ReleaseAndLoopUnholyPowerSpell::?IsToCauseRecoil@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ
+  008bdce0 MATCH CCreatureAction_ReleaseAndLoopUnholyPowerSpell::?IsAbleToBeAttacked@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ

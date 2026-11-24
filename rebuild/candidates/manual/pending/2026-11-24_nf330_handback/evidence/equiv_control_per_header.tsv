@@ -1,0 +1,56 @@
+header	flagged_rows	examples
+CAIScratchpadDef	21	007adef0:src 008a23b0:src 008a24c0:src 008a2590:src 008a2770:src 008a2a30:src
+CAIStateGroup_ChickenBeg	3	008fd7b4:src 00911f00:src 0121f86f:src
+CAIStateGroup_Gaze	5	00918640:src 00918640:test 00918a40:src 00918b90:src 00918ec0:src
+CAIStateGroup_GazeAtHome	2	008fdbf4:src 0121f86f:src
+CAIStateGroup_GazeOutside	2	008fdbcb:src 0121f86f:src
+CAIStateGroup_KidWanderNearKids	4	008fd979:src 00914c60:src 00914c60:test 0121f86f:src
+CAIStateGroup_LightHomeCandle	2	008fdc30:src 0121f86f:src
+CAIStateGroup_LightWorkCandle	2	008fdc56:src 0121f86f:src
+CAIStateGroup_MinionLeaveRegion	4	008fe1ef:src 0091e4b0:src 0091e4b0:test 0121f86f:src
+CAIStateGroup_MinionReactToNoise	6	008fe05c:src 0091cc90:src 0091ccb0:src 0091ccb0:test 0091cdc0:src 0121f86f:src
+CActionUseDef	5	0044c269:src 0044c269:test 0044c72b:src 00454dc5:src 006773f0:src
+CBonusItemDef	4	0044c72b:src 00454dc5:src 0057c4f1:src 0057c4f1:test
+CCreatureAction_BanditKingAdvance	0	
+CCreatureAction_BanditKingBackOff	0	
+CCreatureAction_BlockRespond	1	00855d50:src
+CCreatureAction_DowseFire	0	
+CCreatureAction_FillBucket	0	
+CCreatureAction_Hammer	0	
+CCreatureAction_PickUpGoods	0	
+CCreatureAction_PlayerInteractionBribe	0	
+CCreatureAction_PlayerInteractionFlirt	0	
+CCreatureAction_PlayerInteractionGreet	0	
+CCreatureAction_PlayerInteractionInsult	0	
+CCreatureAction_PlayerInteractionThreaten	0	
+CCreatureAction_PlayerInteractionViewQuests	0	
+CCreatureAction_ReleaseAndLoopDivineWrathSpell	0	
+CCreatureAction_ReleaseAndLoopUnholyPowerSpell	0	
+CCreatureAction_SheatheItemToInventory_ForDivineWrath	1	0069f7b0:src
+CCreatureAction_SheatheItemToInventory_ForUnholyPower	1	0069f860:src
+CCreatureAction_ShowLove	0	
+CCreatureAction_StabbedToDeath	1	0087fe60:src
+CCreatureAction_StrafeBackward	1	006f5c10:src
+CCreatureAction_StrafeForward	1	006f5c10:src
+CCreatureAction_TavernGameMasterInteraction	1	00845b10:src
+CCreatureAction_TrollAngryGroundPound	2	008c63a0:src 00908090:src
+CCreatureAction_TrollProjectileAttack	1	00908140:src
+CCreatureAction_TrollTunnel	1	009081d0:src
+CDecapitationDef	1	004ded4e:src
+CDragonActionSwoopDef	3	0044c72b:src 00453fc4:src 00454dc5:src
+CEngineInternalPrimitiveLight	2	00b47fd0:src 00b47fd0:test
+CEngineInternalPrimitiveShadowedSpotLight	0	
+CFireheartMinigameDef	0	
+CFishDef	0	
+CGuardDef	0	
+CHeroCentreDef	0	
+CHeroDef	0	
+COracleMinigameDef	3	007e6450:src 007e6750:src 007e7000:src
+CParticleSimulationRenderData	3	00bb1dd0:src 00bb2540:src 00bb6330:src
+CPhysicsFacesSegmentLeaf	0	
+CShipDef	0	
+CSmashableDef	7	0044c229:src 0044c72b:src 004522c6:src 004522c6:test 00453842:src 00453842:test
+CSummonDef	2	007fde00:src 008b7a20:src
+CSummonerDef	4	0044c72b:src 00454dc5:src 007af0f0:src 008cb250:src
+CTimeAppearanceFadeDef	0	
+CWillResponseDef	0	

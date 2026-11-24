@@ -1,0 +1,4 @@
+HIT 00bb1dd0 rebuild/tests/00/b8/CEngineClothSimulationMeshBase_ClearParticleSims_00b81d60_test.cpp in-class body in a local model
+HIT 00bb1dd0 rebuild/tests/00/b8/CEngineClothSimulationMeshBase_ClearStaticParticleSims_00b81450_test.cpp in-class body in a local model
+HIT 00a87110 rebuild/tests/00/a8/CPhysicsFacesSegmentLeaf_CPhysicsFacesSegmentLeaf_00a87140_test.cpp in-class body in a local model
+census hits 3 rows 81

@@ -8,6 +8,63 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CDRAGONACTIONSWOOPDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01232744 (RTTI .?AVCDragonActionSwoopDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CDragonActionSwoopDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CDragonActionSwoopDef : public CSubDefClassBase {
+public:
+#ifdef FABLE_RETAIL_CDRAGONACTIONSWOOPDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CDragonActionSwoopDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x00452BE2 ?Transfer@CDragonActionSwoopDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x00453FC4 ?Copy@CDragonActionSwoopDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x0044C5CF ?GetSizeofClass@CDragonActionSwoopDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    float         IntoDelay;                                 // +0x28
+    float         OutOfDelay;                                // +0x2c
+    float         Distance;                                  // +0x30
+    float         MidPointsControlOffset;                    // +0x34
+    float         StartHeight;                               // +0x38
+    float         MidHeight;                                 // +0x3c
+    float         EndHeight;                                 // +0x40
+    float         FlightSpeed;                               // +0x44
+    float         MaxSplineProgressForSplineAdjustment;      // +0x48
+    float         MaxSplineProgressForBurninationEffect;     // +0x4c
+    float         MinSplineProgressForWingFlap;              // +0x50
+    float         MaxExplosionRange;                         // +0x54
+    float         ExplosionLineProjectionAngle;              // +0x58
+    long          FramesBetweenExplosions;                   // +0x5c
+    float         WindSpeed;                                 // +0x60
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CDragonActionSwoopDef) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, IntoDelay) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, OutOfDelay) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, Distance) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MidPointsControlOffset) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, StartHeight) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MidHeight) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, EndHeight) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, FlightSpeed) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MaxSplineProgressForSplineAdjustment) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MaxSplineProgressForBurninationEffect) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MinSplineProgressForWingFlap) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, MaxExplosionRange) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, ExplosionLineProjectionAngle) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, FramesBetweenExplosions) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CDragonActionSwoopDef, WindSpeed) == 0x60);
+#else
 #pragma pack(push, 1)
 class CDragonActionSwoopDef {
 public:
@@ -61,5 +118,6 @@ FABLE_STATIC_ASSERT_AT(55, offsetof(CDragonActionSwoopDef, MaxExplosionRange) ==
 FABLE_STATIC_ASSERT_AT(56, offsetof(CDragonActionSwoopDef, ExplosionLineProjectionAngle) == 0x58);
 FABLE_STATIC_ASSERT_AT(57, offsetof(CDragonActionSwoopDef, FramesBetweenExplosions) == 0x5c);
 FABLE_STATIC_ASSERT_AT(58, offsetof(CDragonActionSwoopDef, WindSpeed) == 0x60);
+#endif // FABLE_RETAIL_CDRAGONACTIONSWOOPDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CDRAGONACTIONSWOOPDEF_H
