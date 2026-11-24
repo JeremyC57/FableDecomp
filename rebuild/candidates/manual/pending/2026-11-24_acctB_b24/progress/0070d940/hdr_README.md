@@ -45,3 +45,15 @@ additive #ifdef sections (default branches unchanged); the B24C4 overlay is kept
 - engine/C3DAnimationStateAlpha.h (FABLE_RETAIL_C3DANIMATIONSTATEALPHA_INDEX_CTOR, own B24C6 section): the constructor body calls the new
   inline SetAlphaWeight (FableWin.pdb ?SetAlphaWeight@C3DAnimationStateAlpha@@QAEXM@Z 0x01E99AA0); FableWin ctor 31i/104b v this text 29i/98b
   (+2 three-instruction float pushes in FableWin), the init-list form 19i/50b.
+## B24C9 changes (2026-11-24) -- these supersede the B24C7 / B24C8 lines above where they differ
+- engine/CAnimateThing.h: FABLE_RETAIL_CANIMATETHING_PEEKANIMINFO replaced by FABLE_RETAIL_CANIMATETHING_GETMESHBANK (forward declaration of
+  CMeshDataBank + public `const CMeshDataBank& GetMeshBank()const;`, Ego_r release animate_thing.obj 12 bytes / FableWin 0x01E92060). The row
+  no longer calls PeekAnimInfo(long): it spells `GetMeshBank().PeekAnimation(combination.Anims[0])->IsLoaded()` (B24C9 NOTES: the object
+  chain is evaluated before the argument, as retail's rotation shows; PeekAnimation(unsigned long) also sign-extends the short from memory).
+  engine/CAnimateThing_PeekAnimInfo.h replaced by engine/CAnimateThing_GetMeshBank.h (GetMeshBank body only). Backups: ../c9/hdr_b24c8_bak/.
+- engine/CIVCountedPointer.h CONVERT_ASSIGN: comment corrected (retail's AddRef at 0x0070DD05 is `mov ecx,[eax+4] ; inc ecx ; mov
+  [eax+4],ecx`, not `inc [eax+4]`; the A/B without it: a converted temporary, +12 instructions). Code unchanged.
+- stlport/fable_algorithm.h STABLE_SORT_AUX_DECL: stable_sort respelled as STLport 4.6.2 (`template <class _RandomAccessIter, class
+  _Compare>`, value / distance types through iterator_traits) so its COMDAT copy mangles `??$stable_sort@PAU?$_List_iterator@..` like
+  __stable_sort_aux's Ego_r name; the row's bytes are unchanged (c9/r.sh raw diff 0).
+- The comparator line above ("4-byte functor carrying alpha", B24C7) is superseded by B24C8's EMPTY class (already in the header).

@@ -33,3 +33,14 @@
 - PDB-only forms in v16 (no byte change in this row, kept for fidelity): the C3DAnimationStateAlpha ctor through SetAlphaWeight (FableWin
   sizes), the PASS23 C3DAnimationStateBase ctors (FableWin SAME), the empty CAnimSetItPriorityLessThan with its binary_function base
   (the empty class itself DOES change bytes: the comparator push).
+## B24C9 (2026-11-24)
+- Row bytes: RELOCATION_MATCH under /d2inlT67 (v20). The devices left are inline-budget ones (EXTRA_RULES 2026-11-08 preference 2 / 3):
+  /d2inlT67 (first-pass overflow site 68 v 74; inl/v18.txt) and ASSIGN_FORCEINLINE + CONVERT_ASSIGN (converting op= 144 expanded v
+  ~vector 113 called in one block). Both re-measured on v18 (NOTES).
+- Held by the pick-any rule (2026-11-21): the emitted vector<CIVCountedPointer<C3DAnimationTransitionState>>::_M_insert_overflow copy
+  differs from retail 0x00711A50 (leaf-bound). Not a row-text problem: the COMDAT's own inline split / registers. Needs a shared-header
+  text (or a decision that the landed 0x00711A50 definition is the one linked).
+- (B24C9, supersedes the T67 device above) /d2inlT67 also flips the overflow<CIVCountedPointer<TS>> COMDAT's __uninitialized_fill_n
+  site (score 68: retail expands it, 0x00711A50 = the stock-threshold body). At stock + DESTROY_AUX_FASTCALL + UNINIT_COPY_FALSE_FASTCALL_PASS26
+  all copies are EQ and the row differs only at the first-pass CAnimSetIt overflow site (68, retail calls). A threshold cannot serve both;
+  the row's site score in retail is >= 74 for a reason not yet found. Do NOT land the T67 payload.
