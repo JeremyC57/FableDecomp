@@ -8,8 +8,8 @@ Steps:
      ALL_EQ under old -> PDB, grade PASS);
   2. callers: every other landed source naming the member's identifier as a whole word (a unit with more than --cap, default 60, is skipped)
      is compiled at HEAD; the unit's callers are those whose object contains the old spelling. A unit is skipped when a caller is reserved
-     (T3_PORT_QUEUE.tsv, a live lock), belongs to two units, or is itself a self of the run; or when a table witness of the old spelling is
-     not among its callers;
+     (T3_PORT_QUEUE.tsv, a live lock), or when a table witness of the old spelling is not among its callers. Units that share a source
+     (a caller of two units, or a caller that is another unit's self) go in waves: the first taken, the rest deferred to the next run;
   3. access_fix.py --pairs: each caller's local-model declaration edited so its reference becomes the PDB spelling, proven by objsec ALL_EQ
      under the one rename old -> PDB, its own graded symbol unchanged, grade PASS;
   4. a unit is ACCEPTED only when its self and every caller are ACCEPTED. Output <work>/run/ for land_scripted.py: RESULTS.tsv, rows/,
@@ -85,10 +85,15 @@ for a in list(callers):
     s, g = selves[a]; R = callers[a]; wit = bind.get((s, a), [])
     why = ("no caller references the old spelling" if not R else
            "caller reserved " + ",".join(b for b in R if b in t3q or locked(b)) if any(b in t3q or locked(b) for b in R) else
-           "a caller belongs to two units" if any(len(owner[b]) > 1 for b in R) else
-           "a caller is itself a self of this run" if any(b in selves for b in R) else
            "table witness not among the callers " + ",".join(w for w in wit if w not in R) if any(w not in R for w in wit) else "")
     if why: skip[a] = why; del callers[a]
+# waves: one source changes once per run. A unit whose self or callers overlap a unit already taken is deferred to the next wave
+# (run unit_fix.py again after landing this one; the overlapping source is then HEAD again with one edit done).
+claimed = set()
+for a in sorted(callers):
+    mem = {a} | set(callers[a])
+    if mem & claimed: skip[a] = "deferred to the next wave: shares " + ",".join(sorted(mem & claimed)[:3]); del callers[a]; continue
+    claimed |= mem
 print("units with callers", len(callers), flush=True)
 # 3. caller edits
 with open(f"{work}/pairs.tsv", "w") as o:
