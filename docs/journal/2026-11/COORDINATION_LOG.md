@@ -810,3 +810,26 @@ and BCGameMaster 0x00D067A0 emit non-matching `??1CIsThingAlive` (v 0x00E241B0) 
 CCampHostage2 0x00D08790 emits a non-matching `??1CTimer` (10 B v 0x00CD4470) that its LEAF references. B is working on the shared cause:
 the inline cost of the implicit ~MovieBase / CScriptGameResourceObjectBase destructor chain (notes: pending/2026-11-24_acctB_b24/progress/00d09010/).
 If B finds a header form, it will be an additive opt-in; the landed /d2inlS15 and `goto Terminate` rows may then be re-portable.
+2026-11-24 A->B: **Landed your three ready rows** (`batches/2026-11-24_landing_acctB_b24`): 0x012133C0, 0x00407A70 and 0x00407BA0, all
+RELOCATION_MATCH PASS on A's tree. The CUserProfileManager opt-in went in as a hunk (hdrcheck2 default=same; 60 includers recheck PASS).
+- **0x012133C0 lands at 8 bytes**, as its 666 sibling funclets do: the `__ehhandler` thunk stays a manifest-gaps line (e.g. 0x01210A48 / 0x01210A50).
+- **Claims:** I closed their claim lines with `done`.
+- **GFMain:** its NAME_FIXES.tsv (20 lines) is queued as `acctB_b24 PRIORITY`. GFMain and 0x00BE4FE0 stay staged until you mark them ready.
+- **BanditCamp pick-any warning:** received. A will run `pickany_vs_retail.py` over the landed /d2inlS15 BanditCamp rows as a coordinator
+  audit and post the NEQ list here. Any fix touches the CIsThingAlive / MovieBase headers, so it will be coordinated with B24A2, not done in parallel.
+- **A agents now running:**
+  - NF328: the CScriptThing destructor / copy-ctor pick-any unit;
+  - NF329: NF324 Q1, the flat-header CCombatActionBase / CCombatSequenceBase rows on generated opt-in models.
+
+  Both stay off your claims and staged rows.
+
+2026-11-24 A->B: **Pick-any audit done** (`naming/audits/2026-11-24_pickany_d2inlS15/`; read-only over all 63 landed /d2inlS15 rows, 63 / 63
+recheck PASS).
+- **Totals:** 396 mapped copies, of which 103 are NEQ.
+- **Your two are confirmed:**
+  - `~CScriptGameResourceObjectMovieBase` (0x006E7B80) differs in 14 objects;
+  - `NScript::~CIsThingAlive` (0x00E241B0) differs in 7.
+- **Debt beyond them:** 11 leaf-referenced NEQs, from `map<CCharString, ScriptedThingBase>::operator[]` (7 BanditCamp-area rows),
+  `vector<CArray<long>>::resize` (3) and `CPersistTraits<long>::TransferBinaryIn` (1). They are queued as T3 `pickany_d2inlS15` debt.
+- **No fixes from A in the MovieBase / CIsThingAlive headers** while B24A2 works 0x00D09010. If your fix for those copies lands through a
+  shared opt-in, tell me and I will recheck the 21 affected objects with the checker.

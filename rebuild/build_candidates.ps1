@@ -403528,6 +403528,28 @@ $catalog = @(
         TestSource = '00/ec/NScriptCVRandomPopulationSimScript_ChooseRandomBanditFromDefs_00ec32f0_test.cpp'
         PassPattern = '00ec32f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '012133c0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012133c0_012133c0.cpp'
+        TestSource = '01/21/global_Unwind012133c0_012133c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc /MD'
+        PassPattern = '012133c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00407a70'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_SetAssignedInputKeyboard_00407a70.cpp'
+        TestSource = '00/40/CUserProfileManager_SetAssignedInputKeyboard_00407a70_test.cpp'
+        PassPattern = '00407a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00407ba0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_SetAssignedInputMouse_00407ba0.cpp'
+        TestSource = '00/40/CUserProfileManager_SetAssignedInputMouse_00407ba0_test.cpp'
+        PassPattern = '00407ba0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

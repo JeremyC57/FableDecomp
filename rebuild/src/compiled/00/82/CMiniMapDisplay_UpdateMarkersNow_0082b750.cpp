@@ -55,8 +55,14 @@ class CMiniMapDisplay { public:
     public:
                 // 0x0082AE80
     void InitialiseRegionExitMarkers();            // 0x0082AFA0
-    void InitialiseAttractionMarkers();            // 0x0082B520
-    void InitialiseEnemyMarkers();                 // 0x0082B630
+    protected:
+    void InitialiseAttractionMarkers();
+    public:
+            // 0x0082B520
+    protected:
+    void InitialiseEnemyMarkers();
+    public:
+                 // 0x0082B630
     void UpdateMarkersNow();
 };
 

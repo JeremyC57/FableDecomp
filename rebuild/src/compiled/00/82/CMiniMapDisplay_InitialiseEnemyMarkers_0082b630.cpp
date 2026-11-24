@@ -1,5 +1,5 @@
 // CMiniMapDisplay::InitialiseEnemyMarkers() -- when a region is loaded and the hero is alive, add a minimap marker (graphics[8].Primary) for every creature in the current region that is the hero's enemy, is not a guild sparrow, is not underground and is not hidden from the minimap
-// Leaf: InitialiseEnemyMarkers
+// Leaf: ?InitialiseEnemyMarkers@CMiniMapDisplay@@IAEXXZ
 // NF167 (2026-11-20, q4949 / q4988): callee 0x0076D2F0 respelt from the free stand-in AreThingsEnemies(CThing*, CThing*) to the PDB static
 //   ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (Ego_r 0x0077B430 / FableWin 0x02606310) through the shared engine/CTCEnemy.h (the call
 //   dereferences both thing pointers; same fastcall registers).
@@ -121,7 +121,9 @@ class CMiniMapDisplay { public:
     unsigned char _pad04[0xb4];                    // +0x04 .. +0xb8
     CRegion*      m_pRegion;                       // +0xb8 (retail)
     void AddMarker(const CThing* thing, long graphicIndex);   // 0x0082A500
+    protected:
     void InitialiseEnemyMarkers();
+    public:
 };
 
 void CMiniMapDisplay::InitialiseEnemyMarkers()

@@ -1,0 +1,14 @@
+addr       parity           behav  name
+012133c0   RELOCATION_MATCH PASS   _global::Unwind@012133c0
+00407a70   RELOCATION_MATCH PASS   SetAssignedInputKeyboard
+00407ba0   RELOCATION_MATCH PASS   SetAssignedInputMouse
+
+WINS: 3
+  012133c0 RELOCATION_MATCH _global::Unwind@012133c0
+  00407a70 RELOCATION_MATCH CUserProfileManager::SetAssignedInputKeyboard
+  00407ba0 RELOCATION_MATCH CUserProfileManager::SetAssignedInputMouse
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  global_Unwind012133c0_012133c0
+  CUserProfileManager_SetAssignedInputKeyboard_00407a70
+  CUserProfileManager_SetAssignedInputMouse_00407ba0

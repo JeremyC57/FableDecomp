@@ -6,7 +6,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
-## Account A, 2026-11-24 (naming automation; agents NF321-NF327 all landed; nothing running)
+## Account A, 2026-11-24 (naming automation; agents NF328 / NF329 running)
 - **Later 2026-11-24 (this session):** synced with B (FullDecomp contains FullDecomp-B), then landed unit3 (59 rows,
   `batches/2026-11-24_landing_unit3`; agree_pdb 23,942). Owner: continue the naming queue; escalate hard naming issues to the advisor.
   Then landed RP1, the 2026-11-20 CVsyncCallbackTimer re-port left unlanded (`batches/2026-11-24_landing_rp1`, 29 rows). Then unit4 (25 rows incl. the 0x004166E2 unit; agree_pdb 23,951). Next: unit wave 5 (15 deferred units).
@@ -23,8 +23,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   Tracker: agree_pdb 23,920.
 - **New scripted routes** (lane_tools): `unit_fix.py`, `ref_scan.py`, `access_fix.py --rename / --pairs`. `land_scripted.py` lands units
   atomically and holds stale rows. flatten_pilot v4 is in `agent_tools/nf324/`, to be promoted after review.
-- **No agent or route is running.** The owner said to launch nothing new. The next steps are in the journal's "Open, queued, not started"
-  list.
+- **Later still:** unit5-unit9 landed (scripted waves; the loop was stopped after unit9, at one unit per wave, with 3 deferred units left).
+  Also landed: B's three staged rows (`batches/2026-11-24_landing_acctB_b24`, owner ruling "B verifies and stages, A lands").
+  Pick-any audit of the 63 /d2inlS15 rows: `naming/audits/2026-11-24_pickany_d2inlS15`.
+- **Running:** agents NF328 (the CScriptThing destructor / copy-ctor unit) and NF329 (NF324 Q1 combat flat-header rows), in
+  `$S/w22/agentNF32{8,9}/`, claims 2026-11-24. The owner allows 2 naming agents at once. Next steps: the journal's "Open and queued" list.
 
 ## Account A, 2026-11-21 (owner: B rows released; agents resumed)
 - Owner released the ten rows still `reserved (acctB ...)` (0x00502E90 0x007602F0 0x00763060 0x008E18D0 0x0093D270 0x00A4EFC0

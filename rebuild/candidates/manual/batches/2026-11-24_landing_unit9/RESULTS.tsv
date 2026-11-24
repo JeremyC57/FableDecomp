@@ -1,0 +1,3 @@
+address	verdict	old	new	reason
+0082b630	ACCEPT	?InitialiseEnemyMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseEnemyMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0082b750	ACCEPT	?InitialiseEnemyMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseEnemyMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0082b630
