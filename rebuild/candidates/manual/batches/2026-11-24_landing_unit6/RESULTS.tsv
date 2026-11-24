@@ -1,0 +1,7 @@
+address	verdict	old	new	reason
+00561dc0	ACCEPT	?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00564570	ACCEPT	?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00561dc0
+00753ba0	ACCEPT	?ImplementHeadSettings@CTCLook@@QAEXXZ	?ImplementHeadSettings@CTCLook@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00753c70	ACCEPT	?ImplementHeadSettings@CTCLook@@QAEXXZ	?ImplementHeadSettings@CTCLook@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00753ba0
+0082add0	ACCEPT	?InitialiseDemonDoorMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseDemonDoorMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0082b750	ACCEPT	?InitialiseDemonDoorMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseDemonDoorMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0082add0

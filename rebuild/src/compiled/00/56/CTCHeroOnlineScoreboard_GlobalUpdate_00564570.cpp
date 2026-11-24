@@ -66,7 +66,10 @@ public:
     void ChooseAClan();
     public:
                               // 0x0055FEC0
-    ENetworkSuccess DownloadMemberListForSelectedClan();   // 0x00561DC0
+    private:
+    ENetworkSuccess DownloadMemberListForSelectedClan();
+    public:
+   // 0x00561DC0
     ENetworkSuccess DownloadLogosForThisClansMembers();    // 0x005621B0
     private: ENetworkSuccess DownloadScoreboardForSelectedClan(); public:   // 0x00563480
     private: void DisplayScoreboardGUI(); public:                     // 0x00563920

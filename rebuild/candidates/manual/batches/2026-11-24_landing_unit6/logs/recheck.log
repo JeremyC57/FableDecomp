@@ -1,0 +1,38 @@
+addr       parity           behav  name
+00561dc0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00561dc0   WARN SHARED_HEADER_AVAILABLE LHHttp2 (engine/LHHttp2.h)
+00561dc0   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+00561dc0   WARN RELOC_NAME: ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z -> 005672d0 labelled 'std::basic_string<char>::_M_range_initialize<const char*>'
+00561dc0   WARN RELOC_NAME: ??1LHStringVector@@QAE@XZ -> 00569940 labelled 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::~vector'
+00561dc0   RELOCATION_MATCH PASS   DownloadMemberListForSelectedClan
+00564570   WARN SHARED_HEADER_AVAILABLE CList (engine/CList.h)
+00564570   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+00564570   RELOCATION_MATCH PASS   GlobalUpdate
+00753ba0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+00753ba0   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex (engine/CTCAnimationComplex.h)
+00753ba0   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00753ba0   RELOCATION_MATCH PASS   ImplementHeadSettings
+00753c70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00753c70   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00753c70   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00753c70   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00753c70   RELOCATION_MATCH PASS   FrameUpdate
+0082add0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0082add0   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0082add0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0082add0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+0082add0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0082add0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0082add0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0082add0   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082add0   RELOCATION_MATCH PASS   InitialiseDemonDoorMarkers
+0082b750   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082b750   RELOCATION_MATCH PASS   UpdateMarkersNow
+
+WINS: 6
+  00561dc0 RELOCATION_MATCH CTCHeroOnlineScoreboard::?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
+  00564570 RELOCATION_MATCH CTCHeroOnlineScoreboard::GlobalUpdate
+  00753ba0 RELOCATION_MATCH CTCLook::?ImplementHeadSettings@CTCLook@@AAEXXZ
+  00753c70 RELOCATION_MATCH CTCLook::?FrameUpdate@CTCLook@@UAEXXZ
+  0082add0 RELOCATION_MATCH CMiniMapDisplay::?InitialiseDemonDoorMarkers@CMiniMapDisplay@@IAEXXZ
+  0082b750 RELOCATION_MATCH CMiniMapDisplay::UpdateMarkersNow

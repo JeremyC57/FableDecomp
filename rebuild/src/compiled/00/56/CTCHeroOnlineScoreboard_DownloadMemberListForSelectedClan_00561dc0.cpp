@@ -1,5 +1,5 @@
 // CTCHeroOnlineScoreboard::DownloadMemberListForSelectedClan() -- when idle, sends DOWNLOAD_MEMBER_LIST for the signed-in user, session and SelectedClan; then steps the transaction and, on success, decrypts the reply (busy unless it starts "SID:OK") and appends one CClanMember per (name, id, description) line triple to ClanMembers before dropping the connection
-// Leaf: DownloadMemberListForSelectedClan
+// Leaf: ?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
 // Retail: Fable.exe @ 0x00561DC0, 1008 bytes, `ret`. Ego_r.pdb `?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ`
 // (the manifest label DownloadLogosForThisClansMembers is propagated; the request literal is DOWNLOAD_MEMBER_LIST and
 // GlobalUpdate 0x00564570 runs it as state 6, right after ChooseAClan).
@@ -134,7 +134,9 @@ public:
         return ResetAndOpenHTTPAndPrepareRequest(text, key, false) == NETWORK_BUSY;
     }
     static CCharString GetHeader() { return CCharString("Fable1.5\r\nVersion 1\r\n", -1); }
+    private:
     ENetworkSuccess DownloadMemberListForSelectedClan();
+    public:
 };
 
 #pragma auto_inline(off)

@@ -3073,7 +3073,7 @@ __CxxThrowException@8	00bfeb84	0081e960
 ??0CRegionMinimap@@QAE@XZ	0066ccc0	0082a460
 ??_7CMiniMapDisplay@@6B@	01231768	0082a460
 ?InitialiseAttractionMarkers@CMiniMapDisplay@@QAEXXZ	0082b520	0082b750
-?InitialiseDemonDoorMarkers@CMiniMapDisplay@@QAEXXZ	0082add0	0082b750
+?InitialiseDemonDoorMarkers@CMiniMapDisplay@@IAEXXZ	0082add0	0082b750
 ?InitialiseEnemyMarkers@CMiniMapDisplay@@QAEXXZ	0082b630	0082b750
 ?InitialiseHouseMarkers@CMiniMapDisplay@@IAEXXZ	0082acd0	0082b750
 ?InitialiseInformationMarkers@CMiniMapDisplay@@IAEXXZ	0082a9b0	0082b750
@@ -28150,7 +28150,7 @@ _CommonStaticMapHeaderEntryName	01436ecc	012246c0
 ?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ	00563920	00564570
 ?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	005615c0	00564570
 ?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	005621b0	00564570
-?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	00561dc0	00564570
+?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00561dc0	00564570
 ?DownloadMyClansLogos@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00561980	00564570
 ?DownloadScoreboardForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00563480	00564570
 ?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z	00560d00	00564570
@@ -37493,7 +37493,7 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?UpdateLookTimer@CTCLook@@AAEXXZ	00751ad0	00753840
 ?FrameUpdateHeadInterested@CTCLook@@AAEXXZ	00753380	00753c70
 ?FrameUpdateOverriddenByParent@CTCLook@@AAEXXZ	00753080	00753c70
-?ImplementHeadSettings@CTCLook@@QAEXXZ	00753ba0	00753c70
+?ImplementHeadSettings@CTCLook@@AAEXXZ	00753ba0	00753c70
 ?IsAbleToTurnDaBody@CTCLook@@ABE_NXZ	00751da0	00753c70
 ?IsLookTimeOver@CTCLook@@ABE_NXZ	00753ad0	00753c70
 ?IsLookTurningOverridenByParent@CThing@@QAE_NXZ	0085f200	00753c70

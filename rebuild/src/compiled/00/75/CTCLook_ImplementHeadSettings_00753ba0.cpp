@@ -1,5 +1,5 @@
 // CTCLook::ImplementHeadSettings() -- applies the head angles to the creature's animation: builds the head animations on the first pass, and when the creature is inside the look range, either strips both head-turn combination animations (no head angle) or updates the vertical and horizontal head animations
-// Leaf: ?ImplementHeadSettings@CTCLook@@QAEXXZ
+// Leaf: ?ImplementHeadSettings@CTCLook@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753BA0, length 208 bytes (+ int3 padding); speed TU (no frame pointer).
 // Callees: CTCLook::InitialiseHeadAnims @ 0x00752640, IsInsideAnimationRange @ 0x00751BC0, CVectorMap::LowerBound @ 0x0040F020 (the
@@ -56,7 +56,9 @@ class CTCLook { public:
     public:
                       // 0x00752640
     bool IsInsideAnimationRange() const;// 0x00751BC0  // NF35: Ego_r + FableWin ?IsInsideAnimationRange@CTCLook@@QBE_NXZ (const)
+    private:
     void ImplementHeadSettings();
+    public:
 private:
     void UpdateHeadCreatureAnim(const CCharString& name, ECreatureAnim type, CAnimateThing* animation);   // 0x00752F30 Ego_r/FableWin ?UpdateHeadCreatureAnim@CTCLook@@AAEXABVCCharString@@W4ECreatureAnim@@PAVCAnimateThing@@@Z
 };
