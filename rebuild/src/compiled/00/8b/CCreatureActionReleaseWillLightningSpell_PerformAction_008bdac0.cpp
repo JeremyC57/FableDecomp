@@ -1,1 +1,10 @@
-void __fastcall CCreatureAction_ReleaseWillLightningSpell_PerformAction() {}
+// Leaf: ?PerformAction@CCreatureAction_ReleaseWillLightningSpell@@UAEXXZ
+#define FABLE_RETAIL_CCREATUREACTION_RELEASEWILLLIGHTNINGSPELL_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_ReleaseWillLightningSpell.h"
+void CCreatureAction_ReleaseWillLightningSpell::PerformAction()
+{}
+// Flatten route (flatten_pilot v5, NF329): CCreatureAction_ReleaseWillLightningSpell_PerformAction -> CCreatureAction_ReleaseWillLightningSpell::PerformAction, the RTTI-placed PDB member; class model: engine/CCreatureAction_ReleaseWillLightningSpell.h opt-in FABLE_RETAIL_CCREATUREACTION_RELEASEWILLLIGHTNINGSPELL_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.

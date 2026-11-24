@@ -9,6 +9,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_VILLAGERADVANCE_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012990BC (RTTI .?AVCCreatureAction_VillagerAdvance@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_VillagerAdvance); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_VillagerAdvance : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0097D200 ?Clone@CCreatureAction_VillagerAdvance@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x0097CEB0 ?Initialise@CCreatureAction_VillagerAdvance@@UAEXXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x0097D0F0 ?IsToFaceTarget@CCreatureAction_VillagerAdvance@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_VillagerAdvance) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_VillagerAdvance {
 public:
@@ -27,7 +47,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_VillagerAdvance) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_VillagerAdvance, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_VillagerAdvance) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_VillagerAdvance, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_VILLAGERADVANCE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_VILLAGERADVANCE_H

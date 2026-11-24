@@ -1,5 +1,5 @@
+// Leaf: ?GetIsToFaceTargetCone@CCreatureAction_NymphTeleportLimboBase@@UBEMXZ
 // CCreatureAction_NymphTeleportLimboBase::GetIsToFaceTargetCone @ 0x008CA950
-// Retail: d9 05 d8 de 22 01 c3
 //   fld DWORD PTR ds:0x122ded8
 //   ret
 //
@@ -13,10 +13,16 @@
 // not resolve to that exact address; declaring it extern lets the linker
 // place it while the compiler still emits the fld/ret shape.
 
+#define FABLE_RETAIL_CCREATUREACTION_NYMPHTELEPORTLIMBOBASE_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_NymphTeleportLimboBase.h"
 extern float g_FloatOne;
 
-float __fastcall CCreatureAction_NymphTeleportLimboBase__GetIsToFaceTargetCone(void *action)
+float CCreatureAction_NymphTeleportLimboBase::GetIsToFaceTargetCone() const
 {
-    (void)action;
     return g_FloatOne;
 }
+// Flatten route (flatten_pilot v5, NF329): CCreatureAction_NymphTeleportLimboBase__GetIsToFaceTargetCone -> CCreatureAction_NymphTeleportLimboBase::GetIsToFaceTargetCone, the RTTI-placed PDB member; class model: engine/CCreatureAction_NymphTeleportLimboBase.h opt-in FABLE_RETAIL_CCREATUREACTION_NYMPHTELEPORTLIMBOBASE_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.

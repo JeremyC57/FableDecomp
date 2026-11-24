@@ -1,1 +1,10 @@
-void __fastcall CCreatureAction_FinishWillTurncoatSpell_PerformAction() {}
+// Leaf: ?PerformAction@CCreatureAction_FinishWillTurncoatSpell@@UAEXXZ
+#define FABLE_RETAIL_CCREATUREACTION_FINISHWILLTURNCOATSPELL_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_FinishWillTurncoatSpell.h"
+void CCreatureAction_FinishWillTurncoatSpell::PerformAction()
+{}
+// Flatten route (flatten_pilot v5, NF329): CCreatureAction_FinishWillTurncoatSpell_PerformAction -> CCreatureAction_FinishWillTurncoatSpell::PerformAction, the RTTI-placed PDB member; class model: engine/CCreatureAction_FinishWillTurncoatSpell.h opt-in FABLE_RETAIL_CCREATUREACTION_FINISHWILLTURNCOATSPELL_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.

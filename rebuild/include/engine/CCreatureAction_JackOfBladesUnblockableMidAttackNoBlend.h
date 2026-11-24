@@ -9,6 +9,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_JACKOFBLADESUNBLOCKABLEMIDATTACKNOBLEND_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01280A44 (RTTI .?AVCCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@ : CCombatActionBase), 82 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend : public CCombatActionBase {
+public:
+    virtual long GetAnimDelayTime() const;                                // slot 6 0x008C3AE0 ?GetAnimDelayTime@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBEJXZ
+    virtual long GetAnimationTransitionInTime() const;                    // slot 8 0x008C3AD0 ?GetAnimationTransitionInTime@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C3C50 ?Clone@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C0460 ?Initialise@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UAEXXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x008C3AB0 ?IsKnockdownStrike@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x008C3AA0 ?IsBlockable@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBE_NXZ
+    virtual bool IsToFaceMovementDirection() const;                       // slot 81 0x008C3AC0 ?IsToFaceMovementDirection@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend {
 public:
@@ -27,7 +51,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_JACKOFBLADESUNBLOCKABLEMIDATTACKNOBLEND_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_JACKOFBLADESUNBLOCKABLEMIDATTACKNOBLEND_H

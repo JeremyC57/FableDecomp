@@ -9,6 +9,32 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_VILLAGERATTACKKNOCKDOWN_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01298F74 (RTTI .?AVCCreatureAction_VillagerAttackKnockdown@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_VillagerAttackKnockdown); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_VillagerAttackKnockdown : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0097D1C0 ?Clone@CCreatureAction_VillagerAttackKnockdown@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x0097CE70 ?Initialise@CCreatureAction_VillagerAttackKnockdown@@UAEXXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x0097D0D0 ?IsKnockdownStrike@CCreatureAction_VillagerAttackKnockdown@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x0097D0E0 ?IsBlockable@CCreatureAction_VillagerAttackKnockdown@@UBE_NXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x0097D0C0 ?IsToFaceTarget@CCreatureAction_VillagerAttackKnockdown@@UBE_NXZ
+public:
+    bool          Blockable;                                 // +0x114
+    unsigned char _pad_0x115[0x3];                           // +0x115
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_VillagerAttackKnockdown) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_VillagerAttackKnockdown, Blockable) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_VillagerAttackKnockdown, _pad_0x115) == 0x115);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_VillagerAttackKnockdown {
 public:
@@ -78,8 +104,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_VillagerAttackKnockdown) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_VillagerAttackKnockdown, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_VillagerAttackKnockdown, Blockable) == 0x114);
+FABLE_STATIC_ASSERT_AT(81, sizeof(CCreatureAction_VillagerAttackKnockdown) == 0x118);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_VillagerAttackKnockdown, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_VillagerAttackKnockdown, Blockable) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_VILLAGERATTACKKNOCKDOWN_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_VILLAGERATTACKKNOCKDOWN_H

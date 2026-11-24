@@ -9,6 +9,29 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_STARTBLOCKING_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012761CC (RTTI .?AVCCreatureAction_StartBlocking@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_StartBlocking); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_StartBlocking : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008558D0 ?FinishAction@CCreatureAction_StartBlocking@@UAEXXZ
+    virtual long GetAnimationTransitionInTime() const;                    // slot 8 0x00855D60 ?GetAnimationTransitionInTime@CCreatureAction_StartBlocking@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00855E20 ?Clone@CCreatureAction_StartBlocking@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x00855880 ?Initialise@CCreatureAction_StartBlocking@@UAEXXZ
+    virtual bool IsOverrideableByActionOfSamePriority() const;            // slot 24 0x008552D0 ?IsOverrideableByActionOfSamePriority@CCreatureAction_StartBlocking@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x008552E0 ?FrameUpdate@CCreatureAction_StartBlocking@@UAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_StartBlocking) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_StartBlocking {
 public:
@@ -31,11 +54,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_StartBlocking) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_StartBlocking, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_StartBlocking, field_4) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_StartBlocking, field_8) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_StartBlocking, field_c) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_StartBlocking, field_10) == 0x10);
+FABLE_STATIC_ASSERT_AT(34, sizeof(CCreatureAction_StartBlocking) == 0x114);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CCreatureAction_StartBlocking, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CCreatureAction_StartBlocking, field_4) == 0x4);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CCreatureAction_StartBlocking, field_8) == 0x8);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CCreatureAction_StartBlocking, field_c) == 0xc);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CCreatureAction_StartBlocking, field_10) == 0x10);
+#endif // FABLE_RETAIL_CCREATUREACTION_STARTBLOCKING_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_STARTBLOCKING_H

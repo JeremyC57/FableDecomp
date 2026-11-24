@@ -9,6 +9,35 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_LEAPLONG_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127A9EC (RTTI .?AVCCreatureAction_LeapLong@@ : CCombatActionBase), 82 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_LeapLong); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_LeapLong : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008B7470 ?PerformAction@CCreatureAction_LeapLong@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008B74A0 ?FinishAction@CCreatureAction_LeapLong@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008B8900 ?Clone@CCreatureAction_LeapLong@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008B76B0 ?Initialise@CCreatureAction_LeapLong@@UAEXXZ
+    virtual bool IsPhysicsPushableByHero() const;                         // slot 32 0x008B86E0 ?IsPhysicsPushableByHero@CCreatureAction_LeapLong@@UBE_NXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x008B86C0 ?IsToEvadeAllHits@CCreatureAction_LeapLong@@UBE_NXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x008B86B0 ?IsToFaceTargetAtStart@CCreatureAction_LeapLong@@UBE_NXZ
+    virtual bool IsToRetainSafeDistance() const;                          // slot 81 0x008B86D0 ?IsToRetainSafeDistance@CCreatureAction_LeapLong@@UBE_NXZ
+public:
+    bool          Landed;                                    // +0x114
+    unsigned char _pad_0x115[0x3];                           // +0x115
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_LeapLong) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_LeapLong, Landed) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_LeapLong, _pad_0x115) == 0x115);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_LeapLong {
 public:
@@ -78,8 +107,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_LeapLong) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_LeapLong, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_LeapLong, Landed) == 0x114);
+FABLE_STATIC_ASSERT_AT(81, sizeof(CCreatureAction_LeapLong) == 0x118);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_LeapLong, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_LeapLong, Landed) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_LEAPLONG_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_LEAPLONG_H

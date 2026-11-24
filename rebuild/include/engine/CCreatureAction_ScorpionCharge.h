@@ -9,6 +9,38 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCORPIONCHARGE_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01281024 (RTTI .?AVCCreatureAction_ScorpionCharge@@ : CCombatActionBase), 83 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_ScorpionCharge); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_ScorpionCharge : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008C55B0 ?FinishAction@CCreatureAction_ScorpionCharge@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C5D90 ?Clone@CCreatureAction_ScorpionCharge@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C4680 ?Initialise@CCreatureAction_ScorpionCharge@@UAEXXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x008C5BC0 ?IsBlockable@CCreatureAction_ScorpionCharge@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x008C3E10 ?FrameUpdate@CCreatureAction_ScorpionCharge@@UAEXXZ
+    virtual bool IsToFaceMovementDirection() const;                       // slot 81 0x008C5BD0 ?IsToFaceMovementDirection@CCreatureAction_ScorpionCharge@@UBE_NXZ
+    virtual bool IsToRetainSafeDistance() const;                          // slot 82 0x008C5BE0 ?IsToRetainSafeDistance@CCreatureAction_ScorpionCharge@@UBE_NXZ
+public:
+    float         ChargeDistance;                            // +0x114
+    float         StartPos_X;                                // +0x118 C3DVector::X
+    float         StartPos_Y;                                // +0x11c C3DVector::Y
+    float         StartPos_Z;                                // +0x120 C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionCharge) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, ChargeDistance) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos_X) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos_Y) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos_Z) == 0x120);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ScorpionCharge {
 public:
@@ -80,11 +112,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionCharge) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, ChargeDistance) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos_X) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos_Y) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos_Z) == 0x120);
+FABLE_STATIC_ASSERT_AT(83, sizeof(CCreatureAction_ScorpionCharge) == 0x124);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_ScorpionCharge, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_ScorpionCharge, ChargeDistance) == 0x114);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_ScorpionCharge, StartPos_X) == 0x118);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_ScorpionCharge, StartPos_Y) == 0x11c);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CCreatureAction_ScorpionCharge, StartPos_Z) == 0x120);
+#endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONCHARGE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONCHARGE_H

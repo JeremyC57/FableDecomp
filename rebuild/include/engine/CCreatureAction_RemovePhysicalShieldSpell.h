@@ -9,6 +9,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_REMOVEPHYSICALSHIELDSPELL_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127C1E4 (RTTI .?AVCCreatureAction_RemovePhysicalShieldSpell@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_RemovePhysicalShieldSpell); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_RemovePhysicalShieldSpell : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008BA7E0 ?PerformAction@CCreatureAction_RemovePhysicalShieldSpell@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008BE4F0 ?Clone@CCreatureAction_RemovePhysicalShieldSpell@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x008BD9E0 ?IsToCauseRecoil@CCreatureAction_RemovePhysicalShieldSpell@@UBE_NXZ
+    virtual bool IsAbleToBeAttacked() const;                              // slot 47 0x008BD9F0 ?IsAbleToBeAttacked@CCreatureAction_RemovePhysicalShieldSpell@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_RemovePhysicalShieldSpell) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_RemovePhysicalShieldSpell {
 public:
@@ -27,7 +48,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_RemovePhysicalShieldSpell) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_RemovePhysicalShieldSpell, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_RemovePhysicalShieldSpell) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_RemovePhysicalShieldSpell, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_REMOVEPHYSICALSHIELDSPELL_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_REMOVEPHYSICALSHIELDSPELL_H

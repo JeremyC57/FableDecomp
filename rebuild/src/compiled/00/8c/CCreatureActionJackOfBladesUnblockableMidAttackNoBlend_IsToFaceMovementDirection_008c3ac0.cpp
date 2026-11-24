@@ -1,4 +1,12 @@
-bool __fastcall CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend_IsToFaceMovementDirection()
+// Leaf: ?IsToFaceMovementDirection@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_JACKOFBLADESUNBLOCKABLEMIDATTACKNOBLEND_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend.h"
+bool CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend::IsToFaceMovementDirection() const
 {
     return false;
 }
+// Flatten route (flatten_pilot v5, NF329): CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend_IsToFaceMovementDirection -> CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend::IsToFaceMovementDirection, the RTTI-placed PDB member; class model: engine/CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend.h opt-in FABLE_RETAIL_CCREATUREACTION_JACKOFBLADESUNBLOCKABLEMIDATTACKNOBLEND_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.

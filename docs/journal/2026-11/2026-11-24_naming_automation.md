@@ -103,3 +103,8 @@ Tracker after these landings: **agree_pdb 23,920** (from 23,193 this morning, 22
     flat-header rows on generated opt-in derived models under the NF322 Q1 / Q2 rules. Stays off NF326's rows and anything emitting the NF328 members.
 - **B's BanditCamp pick-any warning** (COORDINATION_LOG): a coordinator audit, not an agent, because its fixes touch the CIsThingAlive /
   MovieBase headers B24A2 is working on.
+- **NF329 landed** (`batches/2026-11-24_landing_nf329_b3`, `_b4`, `_b1`, `_b2`): 301 NF324 Q1 rows onto their RTTI-placed PDB members,
+  118 new opt-in class models, 0 held. `land_scripted.py --release-t3 <tag>` lands rows an agent was sent into from T3 and closes their
+  lines. Open: the 95 thin-remainder rows, the neutral CCombatActionBase guard, and rebasing the parked overlays (D-e).
+- **NF328 handed back** (`pending/2026-11-24_nf328_handback/`): the ~CScriptThing / copy-ctor unit, 9 rows proven and held on decisions
+  D1-D6. Advisor ruling: land as one unit, with the 21 differing copies as debt, after the D5 census holes are compiled.

@@ -9,6 +9,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_WHISPERJUMPINTOSKY_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012969E4 (RTTI .?AVCCreatureAction_WhisperJumpIntoSky@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_WhisperJumpIntoSky); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_WhisperJumpIntoSky : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0096C180 ?Clone@CCreatureAction_WhisperJumpIntoSky@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x0096C080 ?IsToEvadeAllHits@CCreatureAction_WhisperJumpIntoSky@@UBE_NXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x0096C070 ?IsToFaceTargetAtStart@CCreatureAction_WhisperJumpIntoSky@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_WhisperJumpIntoSky) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_WhisperJumpIntoSky {
 public:
@@ -27,7 +47,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_WhisperJumpIntoSky) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_WhisperJumpIntoSky, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_WhisperJumpIntoSky) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_WhisperJumpIntoSky, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_WHISPERJUMPINTOSKY_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_WHISPERJUMPINTOSKY_H

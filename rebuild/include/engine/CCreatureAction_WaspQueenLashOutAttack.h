@@ -9,6 +9,31 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_WASPQUEENLASHOUTATTACK_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0129504C (RTTI .?AVCCreatureAction_WaspQueenLashOutAttack@@ : CCombatActionBase), 82 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_WaspQueenLashOutAttack); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_WaspQueenLashOutAttack : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008C40D0 ?FinishAction@CCreatureAction_WaspQueenLashOutAttack@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0095CCD0 ?Clone@CCreatureAction_WaspQueenLashOutAttack@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C4040 ?Initialise@CCreatureAction_WaspQueenLashOutAttack@@UAEXXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x0095CB50 ?IsKnockdownStrike@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x0095CB40 ?IsBlockable@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ
+    virtual bool IsMovementUsingPhysics() const;                          // slot 59 0x0095CB60 ?IsMovementUsingPhysics@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x0095CB30 ?IsToFaceTargetAtStart@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ
+    virtual bool IsToRetainSafeDistance() const;                          // slot 81 0x0095CB20 ?IsToRetainSafeDistance@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_WaspQueenLashOutAttack) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_WaspQueenLashOutAttack {
 public:
@@ -27,7 +52,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_WaspQueenLashOutAttack) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_WaspQueenLashOutAttack, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_WaspQueenLashOutAttack) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_WaspQueenLashOutAttack, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_WASPQUEENLASHOUTATTACK_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_WASPQUEENLASHOUTATTACK_H

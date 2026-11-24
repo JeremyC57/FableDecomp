@@ -11,6 +11,30 @@
 
 class CTCKrakenTentacle;
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_TENTACLESTRIKEINTO_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0129044C (RTTI .?AVCCreatureAction_TentacleStrikeInto@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_TentacleStrikeInto); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_TentacleStrikeInto : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008CF700 ?FinishAction@CCreatureAction_TentacleStrikeInto@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00925C40 ?Clone@CCreatureAction_TentacleStrikeInto@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008CF3D0 ?Initialise@CCreatureAction_TentacleStrikeInto@@UAEXXZ
+    virtual bool IsUsingAnimationMovement() const;                        // slot 57 0x00925300 ?IsUsingAnimationMovement@CCreatureAction_TentacleStrikeInto@@UBE_NXZ
+    virtual bool IsMovementUsingPhysics() const;                          // slot 59 0x00925310 ?IsMovementUsingPhysics@CCreatureAction_TentacleStrikeInto@@UBE_NXZ
+public:
+    CTCKrakenTentacle* PTCTentacle;                          // +0x114
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TentacleStrikeInto) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TentacleStrikeInto, PTCTentacle) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_TentacleStrikeInto {
 public:
@@ -79,8 +103,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TentacleStrikeInto) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TentacleStrikeInto, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TentacleStrikeInto, PTCTentacle) == 0x114);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CCreatureAction_TentacleStrikeInto) == 0x118);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_TentacleStrikeInto, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_TentacleStrikeInto, PTCTentacle) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_TENTACLESTRIKEINTO_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_TENTACLESTRIKEINTO_H

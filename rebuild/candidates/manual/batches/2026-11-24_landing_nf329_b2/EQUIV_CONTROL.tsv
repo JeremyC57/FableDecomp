@@ -1,0 +1,35 @@
+header	flagged_rows	examples
+CCreatureAction_FinishWillForceSpell	0	
+CCreatureAction_FinishWillTurncoatSpell	0	
+CCreatureAction_FodderIdle	0	
+CCreatureAction_FodderPrimaryAttack	0	
+CCreatureAction_FodderSecondaryAttack	0	
+CCreatureAction_FodderUnblockablePrimaryAttack	0	
+CCreatureAction_GeneralInterruptedAttack	0	
+CCreatureAction_IceTrollIcicleAttack	0	
+CCreatureAction_InterruptableMidAttackAutoTurn	0	
+CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend	0	
+CCreatureAction_LeapLong	2	008b86c0:src 008b86c0:test
+CCreatureAction_MidAttackFacing	0	
+CCreatureAction_NymphTeleportLimboBase	0	
+CCreatureAction_ReleaseDivineWrathSpell	0	
+CCreatureAction_ReleaseUnholyPowerSpell	0	
+CCreatureAction_ReleaseWillEnflameSpell	0	
+CCreatureAction_ReleaseWillLightningSpell	0	
+CCreatureAction_ReleaseWillSummonSpell	0	
+CCreatureAction_RemovePhysicalShieldSpell	1	008ba7e0:src
+CCreatureAction_ScorpionCharge	2	008c4680:src 008c5490:src
+CCreatureAction_ScorpionChargeStrike	0	
+CCreatureAction_SnapDragonOutOf	0	
+CCreatureAction_StartBlocking	0	
+CCreatureAction_TentacleRise	0	
+CCreatureAction_TentacleStrikeInto	0	
+CCreatureAction_TrollGetProjectile	0	
+CCreatureAction_TrollPursue	0	
+CCreatureAction_TrollSwipe	0	
+CCreatureAction_VillagerAdvance	0	
+CCreatureAction_VillagerAttack	0	
+CCreatureAction_VillagerAttackKnockdown	3	00908a20:src 00908b50:src 0097d0e0:src
+CCreatureAction_VillagerBackOff	0	
+CCreatureAction_WaspQueenLashOutAttack	0	
+CCreatureAction_WhisperJumpIntoSky	0	
