@@ -118,3 +118,16 @@ Tools added: g3.sh <src> "<note>" [flags] (fg grade + full q listing q_<b>.txt +
   sz 19 c1 13 ALWAYS at stock, but no GROBase vptr store in the expansion (retail has `mov [m],0x0126008C`); user-declared GROBase
   dtor in-class / out-of-class inline / non-virtual spelling / __forceinline -> sz 25 c1 19. ~MovieBase sz = 14 + sz(~GROBase);
   the vptr store costs 6 of GROBase's 11. Still open: a form with the store whose cost is <= 5, or a cheaper CP<Movie> member part.
+
+## B24A4 (2026-11-24)
+- 0x00D11930 MATCHED with /d2inlS15 + inline_depth(0) round the one terminate check whose exit retail sends to the CALLED ~CTimer
+  (that exit has no movie in scope). Here the same recipe cannot work: v1 (plain returns, plain inline ~CTimer) at S15 = 6016v5864,
+  147 hunks, DeregisterTimer (slot 0x160) expanded 9x v retail 4x. The extra 5 are most likely cold exits inside movie scopes (inferred, not mapped site by site; measured
+  support: B24A3's v10 goto runs and 00d01630's a1, where moving movie-scope exits to a shared pragma'd return fixes the timer count but
+  reshuffles the frame), where retail expands ~MovieBase AND calls ~CTimer at the same return: inline_depth(0) on that return blocks both, S15 expands both, stock calls both.
+  Only a cost reversal separates them: ~CTimer c1 > 19 while ~MovieBase <= 19 (S15). Our ~CTimer is c1 14 and every byte-identical
+  spelling measured is c1 12..14 (00d11930/NOTES.md, pr/t0..t11). FableWin's four CTimer bodies are each +1 /Od instruction (+2 bytes)
+  longer than ours: lane B (b24b/SHARED_FORM.md) owns that text. If it yields a ~CTimer of c1 20..23 at /O2 with retail's bytes,
+  v1 + S15 should give retail's exits here (00d09010 hot exits f 0.0707 / 0.2459 still expand for c1 < 25.7). Blocked on that.
+- Lane B (b24b/SHARED_FORM.md, B24B3): today's CTimer text is FableWin-hash-exact (the +1 /Od instruction is VC10's split virtual
+  call), ~CTimer stays c1 14: the cost reversal is NOT on the CTimer side either. Row stays blocked (Ego_d questions in ESCALATE.md).

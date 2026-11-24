@@ -45,3 +45,14 @@ vland warnings, all explained in notes/00402510/NAME_FIXES.tsv (24 lines, supers
 label -> descriptive DisableVTuneCollection, no PDB name), 0x00415530 GetLanguageFolder, 0x009BC8A0 SetNoHangulWordWrap, 0x00402130
 TestDirForValidFilePermissions (Ego_r), and `??1CAFile` -> 0x0099A300, a linker-folded body shared with ~CBaseClassNonCopyable (GOTCHAS nf104;
 the new CAFILE_DTOR_DECL_ONLY removes a differing ~CAFile copy); RELOC_ALIAS `_exit` (import thunk, expected).
+
+## 0x00D11930 NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::Main: READY with review items (B24A4, re-verified 2026-11-24)
+RELOCATION_MATCH PASS, strict vland, no warnings. Flags `/d2inlS15` (the landed BanditCamp family form, CBCGameMaster 0x00D067A0) plus three
+scoped `#pragma inline_depth(0)` regions, each justified in the source's `// Inline-budget:` line (EXTRA_RULES owner decision 2026-11-08):
+around the `~CIsThingAlive` definition, the final loop's check, and the cut-scene block's terminate check, where retail calls ~CTimer
+(0x00D128BA). Overlay: CQ_BanditCampBossBattleScript.h +22, additive (`FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_ASSASSINMARKER`: class body
+and a `sizeof == 0x1c` assert). Test fixed for VC7.1 (no zero-init of a non-POD `World()`), vt PASS. Review items for the lander:
+- `map<CCharString,STB>::operator[]` is declared-only ROW-LOCALLY (it was a leaf-referenced NEQ copy of 0x00CD3D2E); EXTRA_RULES 2026-11-20
+  prefers a header decl-only opt-in.
+- Pick-any: six NEQ copies, none leaf-referenced, all already in Account A's /d2inlS15 audit (`??1MovieBase`, `??4STB`, `??1pair`,
+  `??1CIsThingAlive`, `_M_erase`, `clear`): family debt.

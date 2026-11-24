@@ -13,3 +13,17 @@
 - Draft devices to remove before landing: `CBaseClass::CBaseClass() {}` strong out-of-line definition under auto_inline(off) (a second
   definition of landed 0x0099A2D0: not allowed) and the pointer-to-member final Return call.
 - Note: ../gx.sh (generic grader) sits at the b24a level, outside any row dir (B24A3).
+
+## B24A4 (2026-11-24)
+- v1.cpp = v0 minus the strong `CBaseClass::CBaseClass() {}` (auto_inline(off)) definition: byte-identical grade DIFFER(5173v5321)
+  59 hunks -> dropped for good (differ/ updated). v2 = v1 + plain `return _Fail_Val.Return();` for the final check instead of the
+  pointer-to-member call: 5145v5321, 88 hunks (retail CALLS Return 0xE95380 at that exit; the device is still what gives the call).
+- c2 trace (inl/v1.txt, 468 decisions): at the end of Main the caller-size penalty is live (pen 27..36): ~CScriptThing sc 72/72/73
+  expanded, the last three sc 74 called -- the end-of-function split sits ON the T=74 threshold, so it is decided by Main's running
+  IL size (g) and the sites' f (3.0762). Retail: +2 ~CScriptThing expanded, +1 vector free, operator[] CALLED in the last candle loop,
+  Return CALLED at the final check -> retail's running size differs from ours before the end; find the upstream IL size difference
+  (e.g. GetPos / IsAlive / IsDead bodies, the three `if (!false)` blocks, CreateEffect argument temporaries) before tuning the end.
+- Slot probe: declaring Forcefield1 before FXBarrier (v3) fixes the middle uses (hunks 100..488) but not the ctor order nor 601+ (42
+  hunks): the slot pair is weight-driven, not declaration-driven; keep the v1 order (retail constructs 0x28, 0x1C, 0x10 in that order).
+- Next: compare the decision list with retail's expansion pattern site by site (retail callee counts in the B24A3 section), and look
+  for a source shape that lowers Main's IL size before the cellar section by ~2..6 tuples per site.

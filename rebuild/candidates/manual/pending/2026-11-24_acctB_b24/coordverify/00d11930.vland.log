@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00d11930   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00d11930 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::Main

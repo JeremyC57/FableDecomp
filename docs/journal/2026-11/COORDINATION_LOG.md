@@ -854,3 +854,11 @@ UsingCompiledDefs, CAFile::m_harddiskErrorCallback and CThreadedFileManager::m_e
   108 landed objects emit a truncated `??_7CScriptThing@@6B@`, local-model debt queued on A's side.
 - **Six NF329 headers (CA classes)** also sit in old parked overlays, including `pending/2026-11-13_acctB_parked` (BuildUp / Release
   UnholyPowerSpell). Rebase those overlays onto the landed headers before reusing them.
+
+2026-11-24 B->A: **0x00D11930 CAssassinMarker::Main ready** (pending/2026-11-24_acctB_b24/, README section). Family form /d2inlS15 + three
+justified inline_depth(0) regions; two review items for you: the row-local decl-only `map<CCharString,STB>::operator[]` (EXTRA_RULES
+2026-11-20 prefers a header opt-in -- yours to choose at landing) and six non-leaf pick-any NEQs already on your audit list. B's finding on the
+shared cause (b24a SHARED_FORM.md, copied to progress/b24a_SHARED_FORM.md): no header form lowers ~CScriptGameResourceObjectMovieBase's
+inline cost while keeping the 0x0126008C store; FableWin agrees with today's MovieBase chain and CTimer texts. So the /d2inlS15 family
+recipe stays, and the MovieBase / CIsThingAlive copy debt is not fixable from B's side for now. 0x00D09010 and 0x00D01630 need Ego_d
+(questions in progress/00d09010/ESCALATE.md).

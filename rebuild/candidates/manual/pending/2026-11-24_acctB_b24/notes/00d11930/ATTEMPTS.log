@@ -1,0 +1,43 @@
+04:50 00d11930 grade v0.cpp DIFFER(1179v4072) hunks=31 -- B24A3 baseline (Codex draft)
+04:52 00d11930 grade v1.cpp SRC_FAIL -- hand868 best draft, current headers
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ob1 -- flag probe /Ob1
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ob2 -- flag probe /Ob2
+04:52 00d11930 grade v1.cpp SRC_FAIL /Os -- flag probe /Os
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ot -- flag probe /Ot
+04:52 00d11930 grade v1.cpp SRC_FAIL /O1 -- flag probe /O1
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ox -- flag probe /Ox
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ob2 /Os -- flag probe /Ob2 /Os
+04:52 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 -- hand868 draft + hand868 overlay, flags 
+04:52 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 /Ob1 -- hand868 draft + hand868 overlay, flags /Ob1
+04:52 00d11930 grade v1.cpp DIFFER(2801v4072) hunks=213 /Os -- hand868 draft + hand868 overlay, flags /Os
+04:52 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 /Ot -- hand868 draft + hand868 overlay, flags /Ot
+04:53 00d11930 grade v1.cpp DIFFER(2801v4072) hunks=213 /O1 -- hand868 draft + hand868 overlay, flags /O1
+04:53 00d11930 grade v1.cpp DIFFER(2801v4072) hunks=213 /Ob2 /Os -- hand868 draft + hand868 overlay, flags /Ob2 /Os
+04:53 00d11930 grade v1.cpp DIFFER(4072v4072) hunks=102 /d2inlS15 -- hand868 draft + hand868 overlay, flags /d2inlS15
+04:53 00d11930 grade b3f1.cpp DIFFER(4056v4072) hunks=3 -- loop-shape frequency lever for cutscene movie site: b3f1
+04:53 00d11930 grade b3f2.cpp DIFFER(4056v4072) hunks=3 -- loop-shape frequency lever for cutscene movie site: b3f2
+04:53 00d11930 grade b3f3.cpp DIFFER(4056v4072) hunks=3 -- loop-shape frequency lever for cutscene movie site: b3f3
+04:55 00d11930 grade v1.cpp DIFFER(4072v4072) hunks=102 /d2inlS15 -- S15 probe: count timer expansions
+04:56 00d11930 grade v1.cpp DIFFER(4072v4072) hunks=102 /d2inlS15 -- S15 diff view
+05:05 00d11930 grade v1.cpp SRC_FAIL -- step1: implicit GROBase dtor overlay, stock
+05:05 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 -- rebaseline hand868 overlay
+05:05 00d11930 grade v1.cpp SRC_FAIL -- step1: implicit GROBase dtor overlay, stock (retry)
+05:05 00d11930 grade v1.cpp DIFFER(4168v4072) hunks=55 -- step1: implicit GROBase dtor overlay, stock
+05:11 00d11930 grade v1.cpp DIFFER(4024v4072) hunks=54 -- step1b TEST: MovieBase-only implicit base dtor (sz19), stock
+05:13 00d11930 grade v1.cpp DIFFER(4072v4072) hunks=102 /d2inlS15 -- S15 listing for comparison
+05:18 00d11930 grade t_fi.cpp DIFFER(4120v4072) hunks=79 -- TEST world: forceinline MovieBase dtor (extra MovieBase vptr store) to see frame
+05:19 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 /Ob2 -- flag probe /Ob2 with hand868 overlay
+05:19 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 /Ob2 /Ot -- flag probe /Ob2 /Ot with hand868 overlay
+05:19 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 /Oi -- flag probe /Oi with hand868 overlay
+05:27 00d11930 grade v1nd.cpp DIFFER(4012v4072) hunks=136 -- no devices, stock
+05:27 00d11930 grade v1nd.cpp DIFFER(3996v4072) hunks=145 -- no devices, s1b MovieBase-always test
+05:27 00d11930 grade v1nd.cpp DIFFER(4016v4072) hunks=159 /d2inlS15 -- no devices, S15
+05:52 00d11930 grade v2.cpp RELOCATION_MATCH /d2inlS15 -- S15 sibling config: v2
+05:52 00d11930 grade v2b.cpp DIFFER(4072v4072) hunks=69 /d2inlS15 -- S15 sibling config: v2b
+05:52 00d11930 grade v1b.cpp DIFFER(4072v4072) hunks=147 /d2inlS15 -- S15 sibling config: v1b
+05:53 00d11930 grade v2.cpp RELOCATION_MATCH /d2inlS15 -- v2 S15 on today's headers + ASSASSINMARKER overlay
+05:53 00d11930 grade v3.cpp SRC_FAIL /d2inlS15 -- v3: FABLE_FORCEINLINE, header FORCEINLINE_ASSIGN opt-in
+05:53 00d11930 grade v3.cpp RELOCATION_MATCH /d2inlS15 -- v3: FABLE_FORCEINLINE spellings
+05:54 00d11930 grade v4.cpp RELOCATION_MATCH /d2inlS15 -- v4 final source
+06:01 00d11930 grade v5.cpp DIFFER(4064v4072) hunks=7 /d2inlS15 -- v5: v4 minus final-loop inline_depth(0)
+06:01 00d11930 grade v4.cpp RELOCATION_MATCH /d2inlS15 -- v4 final regrade

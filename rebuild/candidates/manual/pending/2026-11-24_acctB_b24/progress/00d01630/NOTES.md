@@ -24,3 +24,8 @@
 - Best remains v0 (= Codex). Best next idea: the family-level question in ../00d09010/NOTES.md (B24A3): which header form makes the
   implicit ~MovieBase always-inline at STOCK (c1 <= 13) while it still expands GROBase (vptr store + ~CBaseObject call); with it,
   n0.cpp at stock flags is expected to match retail's exits.
+
+## B24A4 (2026-11-24)
+- Same block as 00d09010 (see its B24A4 section): movie-scope cold exits need ~MovieBase expanded and ~CTimer called at one return;
+  S15 + inline_depth(0) separates them only where no movie is in scope (that is how 0x00D11930 matched). Waits on lane B's CTimer
+  text (a ~CTimer of c1 > 19 with retail's bytes would make n0.cpp + /d2inlS15 the candidate).
