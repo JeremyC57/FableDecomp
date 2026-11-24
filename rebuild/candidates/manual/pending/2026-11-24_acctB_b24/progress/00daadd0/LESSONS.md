@@ -1,0 +1,4 @@
+- (B24A12) VC7.1 instantiates class-template / function-template members at the END of the TU with the pragma state there: `#pragma optimize("g", off)` or `inline_depth(0)` at the TU end changes every STLport / CPredicate_And instantiation (probes 00daadd0 p2, 00ef5ff0 d1).
+- (B24A12) c2's heuristic size of a callee is its COMPILED size (push_back 59; 134 when compiled without global opts); score = adj when the site frequency is 1e8.
+- (B24A12) The budget R (= 2 x caller IL size; accepted callees > 40 subtract their size; nested share = (R - size) / remaining sites) is maintained in heuristic mode too; the budget test 0x107284A3 is only reached for callees without heuristic info.
+- (B24A12) gdb tracer for c2 inline decisions: $S/w22/b24e/00daadd0/tr/ (inl_gdb.py, run.py <src> <flags>, sim.py); FableWin call annotator: $S/w22/b24e/00ef5ff0/fwann.py.
