@@ -1,0 +1,47 @@
+05:47 0070d940 grade v0.cpp DIFFER(2572v2395) hunks=125 -- B24C4 baseline: hand785 draft unchanged
+06:50 0070d940 grade v0.cpp DIFFER(2572v2395) hunks=125 -- B24C6 baseline v0
+06:54 0070d940 grade v1.cpp SRC_FAIL -- B24C6 v1 port onto shared headers
+06:54 0070d940 grade v1.cpp SRC_FAIL -- B24C6 v1 compile check
+06:54 0070d940 grade v1.cpp SRC_FAIL -- B24C6 v1 port onto shared headers
+06:54 0070d940 grade v1.cpp SRC_FAIL -- B24C6 v1 compile check
+06:54 0070d940 grade v1.cpp DIFFER(2673v2395) hunks=127 -- B24C6 v1 + SHAREDDATA
+06:55 0070d940 grade v1.cpp DIFFER(2673v2395) hunks=127 -- B24C6 v1 port (SHAREDDATA)
+06:55 0070d940 grade v2.cpp DIFFER(2689v2395) hunks=125 -- B24C6 v2 + ASSIGN_FORCEINLINE
+07:06 0070d940 grade v3.cpp DIFFER(2593v2395) hunks=153 -- B24C6 B24C7 v3 transitions loop as while
+07:07 0070d940 grade v4.cpp DIFFER(2593v2395) hunks=153 -- B24C6 B24C7 v4 first/second comb loop while
+07:07 0070d940 grade v5.cpp DIFFER(2593v2395) hunks=153 -- B24C6 B24C7 v5 first/second comb loop while
+07:20 0070d940 grade v3.cpp DIFFER(2468v2395) hunks=150 /d2inlT67 -- B24C7 v3 diagnostic /d2inlT67
+07:24 0070d940 grade v3.cpp DIFFER(2628v2395) hunks=109 -- B24C6 B24C7 v3 + GFGetInterpolatedValue alphas (stock)
+07:24 0070d940 grade v3.cpp DIFFER(2516v2395) hunks=109 /d2inlT67 -- B24C7 v3 + GFGet alphas /d2inlT67
+07:27 0070d940 grade v6.cpp DIFFER(2458v2395) hunks=143 /d2inlT67 -- B24C7 v6 DTOR_DIRECT /d2inlT67
+07:28 0070d940 grade v7.cpp DIFFER(2474v2395) hunks=139 /d2inlT67 -- B24C7 v7 = v6 + CONVERT_ASSIGN /d2inlT67
+07:28 0070d940 grade v8.cpp DIFFER(2516v2395) hunks=152 /d2inlT67 -- B24C7 v8 = v7 - DTOR_DIRECT /d2inlT67
+07:28 0070d940 grade v7.cpp DIFFER(2586v2395) hunks=138 -- B24C7 v7 stock
+07:29 0070d940 grade v9.cpp DIFFER(2626v2395) hunks=124 -- B24C7 v9 FW-sized Release/dtor + CONVERT_ASSIGN stock
+07:29 0070d940 grade v9.cpp DIFFER(2514v2395) hunks=125 /d2inlT67 -- B24C7 v9 /d2inlT67
+07:30 0070d940 grade v7.cpp SRC_FAIL /d2inlT67 -- B24C7 v7 + forced converting op= /d2inlT67
+07:30 0070d940 grade v9.cpp SRC_FAIL /d2inlT67 -- B24C7 v9 + forced converting op= /d2inlT67
+07:31 0070d940 grade v7.cpp DIFFER(2442v2395) hunks=151 /d2inlT67 -- B24C7 v7 + forced converting op= /d2inlT67
+07:31 0070d940 grade v9.cpp DIFFER(2482v2395) hunks=127 /d2inlT67 -- B24C7 v9 + forced converting op= /d2inlT67
+07:32 0070d940 grade v7.cpp DIFFER(2698v2395) hunks=143 /d2inlT200 -- B24C7 v7 diag /d2inlT200
+07:41 0070d940 grade v10.cpp DIFFER(2482v2395) hunks=127 /d2inlT67 -- B24C7 v10 = v9 with the three local items in headers, /d2inlT67
+07:41 0070d940 grade v10.cpp DIFFER(2610v2395) hunks=122 -- B24C7 v10 stock
+07:50 0070d940 grade v11.cpp DIFFER(2530v2395) hunks=62 -- B24C7 v11 = v10 + landed GetMeshAnim body verbatim in TU (stock)
+07:50 0070d940 grade v11.cpp DIFFER(2418v2395) hunks=59 /d2inlT67 -- B24C7 v11 + /d2inlT67
+07:52 0070d940 grade v12.cpp DIFFER(2531v2395) hunks=39 -- B24C7 v12 = v11 + const CAnimSet& combination = **set (stock)
+07:52 0070d940 grade v12.cpp DIFFER(2417v2395) hunks=26 /d2inlT67 -- B24C7 v12 + /d2inlT67
+07:56 0070d940 grade v14.cpp DIFFER(2523v2395) hunks=40 -- B24C7 v14 = v12 + CAnimateThing::PeekAnimInfo(long)/GetMeshBank (Ego_r/FableWin) (stock)
+07:56 0070d940 grade v14.cpp DIFFER(2396v2395) hunks=27 /d2inlT67 -- B24C7 v14 + /d2inlT67
+08:03 0070d940 grade v14.cpp DIFFER(2396v2395) hunks=27 /d2inlT67 -- B24C8 v14 T67 for pickany
+08:08 0070d940 grade t_p23.cpp DIFFER(2507v2395) hunks=38 -- B24C8 gmacheck t_p23.cpp
+08:08 0070d940 grade t_p23.cpp DIFFER(2395v2395) hunks=21 /d2inlT67 -- B24C8 gmacheck t_p23.cpp
+08:08 0070d940 grade v16.cpp DIFFER(2507v2395) hunks=38 -- B24C7 v16 = v14 + empty comparator (PDB) + StateAlpha ctor via SetAlphaWeight + ORIGINAL_CTORS_PASS23 (stock)
+08:08 0070d940 grade v16.cpp DIFFER(2395v2395) hunks=21 /d2inlT67 -- B24C7 v16 + /d2inlT67
+08:09 0070d940 grade v16.cpp DIFFER(2395v2395) hunks=21 /d2inlT67 -- B24C8 v16 T67 hunks
+08:19 0070d940 grade v16.cpp DIFFER(2395v2395) hunks=21 /d2inlT67 -- B24C8 gmacheck v16.cpp
+08:19 0070d940 grade v16.cpp DIFFER(2507v2395) hunks=38 -- B24C8 gmacheck v16.cpp
+08:43 0070d940 grade v17.cpp DIFFER(2395v2395) hunks=6 /d2inlT67 -- B24C9 v17 = v16 + direct GetMeshBank().PeekAnimation(Anims[0]) call sites (this chain evaluated before the arg) T67
+08:43 0070d940 grade v17.cpp DIFFER(2507v2395) hunks=23 -- B24C9 v17 stock
+08:45 0070d940 grade v18.cpp RELOCATION_MATCH /d2inlT67 -- B24C9 v18 = v17 + reserve as if/else of two calls (tail-merged; retail mov ecx before push) T67
+08:45 0070d940 grade v18.cpp DIFFER(2507v2395) hunks=21 -- B24C9 v18 stock
+08:58 0070d940 grade 0070d940.cpp RELOCATION_MATCH /d2inlT67 -- B24C9 v20 final candidate (DESTROY_AUX_FASTCALL for the ~vector copy)

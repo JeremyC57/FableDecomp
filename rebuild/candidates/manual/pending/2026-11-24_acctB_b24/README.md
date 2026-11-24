@@ -82,3 +82,9 @@ FableWin's copy is +734 instructions at /Od (one debug ASSERT ~42 i, so roughly 
 unrecoverable (notes/00975bb0/ESCALATE.md). Under EXTRA_RULES "2026-11-19 advisor decision" this is a fitted tie-breaker that stays
 `// Inferred:` and is reported here: the lander decides. GET_ROUNDED_ANGLE keeps FABLE_FORCEINLINE with evidence (no out-of-line copy in
 Fable.exe / Ego_r; plain inline scores 75 v limit 74; landed 0x0068CB90 / 0x00974AA0 use the same).
+
+## 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim: NOT READY (in progress, B24C9)
+Coordinator re-verify of the agent's intermediate payload: RELOCATION_MATCH PASS, but only with `/d2inlT67` (a device still under work: the
+first combination pass's `_M_insert_overflow` site scores 68 v the default 74) and with `RELOC_CONFLICT _$E2 -> 0x01229630 here, 0x01228930 in
+landed 0x01219F00` (a compiler-generated static initializer symbol) plus RELOC_NAME 0x0129BA3C (label spelling). Staged only so the work is
+durable; the agent is still on it. Do not land until this section says READY.

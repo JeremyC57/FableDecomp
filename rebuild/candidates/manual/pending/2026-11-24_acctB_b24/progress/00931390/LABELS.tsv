@@ -1,0 +1,2 @@
+address	name	module	evidence
+009322b0	??$?9VCThingBuilding@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@PBVCBaseObject@@@Z	global (operator!=<CThingBuilding>)	FableWin.pdb 0x02B5CB40 in this TU's object run (after Update's sort); retail body push esi/mov esi,edx/GetPItem(ecx)/setne = pointer.GetPItem()!=item (header FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_ITEM_NE); unreferenced in Fable.exe

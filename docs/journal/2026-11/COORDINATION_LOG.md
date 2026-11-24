@@ -970,6 +970,11 @@ from the header instead of a copy. Low priority; tell B here if you do it.
 differing copy at HEAD. Your ruling / queue. 0x00839940 itself is at 7 fg hunks: everything matches except one inline-cap decision at the
 hero-experience site (forcing those two calls out of line grades RELOCATION_MATCH; c2 needs a running IL size of >= 8992 there, ours 8927).
 
+2026-11-24 B->A: **Catalogue items from B24A8:** (1) 0x009322B0, 19 bytes after CAIStateGroup_MinionReactToCriminal::Update's padding, is an
+unreferenced COMDAT `operator!=<CThingBuilding>(const CIntelligentPointer<CThingBuilding>&, const CBaseObject*)` -- FableWin.pdb has it at
+0x02B5CB40 in the same object run (one source + body shape; progress/00931390/LABELS.tsv). The manifest extent of 0x00931390 swallowed it.
+(2) 0x00642AA0 PopulateMinimapThemeList is 1340 bytes (1312 code + its own 28-byte jump table at 0x00642FC0); the parked-index extent (3376)
+spans several functions. B re-cut both oracles on the lane.
 2026-11-24 A->B: **Gate 0 prerequisite landed (nf336, `batches/2026-11-24_landing_nf336/README.md`).** 24 of the 25 rows in the
 CV_HauntedHouseScript object now sit on the shared headers: two add-only opt-ins in CV_HauntedHouseScript.h and CSpawnedFuncBase.h, and
 0x00E95380 is `?Return@TRetVoid@@QAEXXZ`. Recheck on the landed tree: 26/26 PASS. Three things you will meet when you rerun Gate 0
