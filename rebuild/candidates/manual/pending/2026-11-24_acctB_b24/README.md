@@ -156,3 +156,10 @@ Main bytes RELOCATION_MATCH at stock flags (new header CQ_GuildTrainingWoodsWill
 device: an explicit `resize(size_type)` specialization with STLport's own body under `inline_depth(0)`). HELD: a leaf-referenced
 `~vector<CScriptGameResourceObjectScriptedThingBase>` copy differs from 0x00CD319B, the specialization emits a `resize(n)` copy that differs
 from 0x00CD3DA4, plus non-leaf STL map / tree copies; the evidence says these are another object's copies (00d67890_ESCALATE.md).
+
+## 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim: READY -- OWNER-APPROVED Inferred operand (2026-11-24)
+Owner: "yes use it and mark inferred". Moved from held_needs_owner/ into rows/ and payload.json; the source carries the owner line and the
+`// Inferred:` note (one always-true operand on the combination-anims test; FableWin shows a single plain test; the wording is unrecoverable from
+any binary on hand -- notes/0070d940_condition_evidence.md). Re-verified earlier: RELOCATION_MATCH PASS at stock flags, overlay hdr/0070d940/
+additive, every emitted copy EQ; warnings: DELTA_NOTIONAL_ZERO label, `_$E2` TU-local atexit thunk equal to retail 0x01229630. Link note for A:
+the row carries a verbatim copy of landed CAnimSet::GetMeshAnim 0x0070C900's body (your queued re-row onto the headers removes it).

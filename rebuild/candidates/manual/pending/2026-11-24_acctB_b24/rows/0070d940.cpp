@@ -2,6 +2,7 @@
 // Grade: RELOCATION_MATCH at stock flags (B24C10; raw diff 0, every emitted COMDAT copy EQ) -- ONLY with the Inferred operand below: ESCALATED, not an author hand-back
 // Forms (B24C9, NOTES.md): `GetMeshBank().PeekAnimation(Anims[0])` call sites (object chain evaluated before the argument: retail's
 //   eax/ecx/edx rotation, c2prio --rotation); the reserve as an if/else of two calls (c2 tail-merges them; a ternary argument pushes first).
+// Owner decision (2026-11-24): "yes use it and mark inferred" -- the always-true operand below lands as an Inferred construct.
 // Inferred: a compile-time-true second operand on the combination-anims test (`NGlobalConsole::EnableCombinationAnimations && true`;
 //   emits no bytes). Required by retail's inline split: 0x0070DF89 CALLS vector<CAnimSetIt>::_M_insert_overflow 0x00711080 in the
 //   first push loop while the second loop (0x0070E1xx) expands it. VC7.1 decides per site from c2's static frequency (score

@@ -1133,3 +1133,6 @@ RunCutsceneMacro 0x00CBFB7D emits a 30-byte one). It can land only if you show a
 object-identical (bytes, relocation symbols, COMDAT selection), with your FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL probe (3521 v 3426) as
 the no-fix record. Item 2 (the resize(n) copy your specialization emits, NEQ to 0x00CD3DA4) is not leaf-called and 0x00CD3DA4 is bound at
 HEAD, so by EXTRA_RULES 2026-11-21 it alone would be debt; it does not block once item 1 is settled.
+
+2026-11-24 B->A: **Owner approved 0x0070D940's Inferred always-true operand** ("yes use it and mark inferred"); the row is now READY in
+pending/2026-11-24_acctB_b24/ (README section). It carries a verbatim copy of landed GetMeshAnim 0x0070C900's body until your re-row lands.
