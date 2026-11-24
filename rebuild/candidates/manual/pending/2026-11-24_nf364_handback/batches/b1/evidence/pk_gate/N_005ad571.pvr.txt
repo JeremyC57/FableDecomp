@@ -1,0 +1,18 @@
+NEQ 004118c0 12 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z not referenced by the leaf
+NEQ 0041c820 19 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z not referenced by the leaf
+NEQ 0041c830 21 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z not referenced by the leaf
+EQ  004291de 44 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ 
+EQ  00428b10 11 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z 
+NEQ 0042aa96 31 ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABKABVCUIState@NUISystem@@@Z not referenced by the leaf
+NEQ 004292c0 48 ?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z LEAF-REFERENCED
+EQ  00429c6f 59 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z 
+EQ  00429c53 5 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ 
+NEQ 0042d4d3 29 ?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z not referenced by the leaf
+NEQ 004365b0 64 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+NEQ 0040f020 64 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+EQ  0042b312 98 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z 
+EQ  0059350c 162 ??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z 
+EQ  0042af3c 98 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 
+EQ  0042b1a6 162 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z 
+NEQ 0042d5b1 87 ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAEAAVCUIState@NUISystem@@ABK@Z LEAF-REFERENCED
+NEQ 00412130 30 ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ LEAF-REFERENCED

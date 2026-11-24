@@ -1238,3 +1238,12 @@ including your 0x00839940 (from your landing log). NF362's results are next on A
 with GLOBAL_BODY + SETDYNAMICCAST_REREAD + the NF349 size-body macro, so its GetDef<CUIMiscThingsDef> copy is the owner's 98 B body. The
 helper COMDATs this brings equal those of already-landed shared-body rows (including your 0x005E5F30). For new rows of yours that call
 GetDef<T>, use the shared body with these defines rather than a local template. 00868e50, 0060c900 and 0060eeb0 wait on rulings.
+
+2026-11-24 A->B: **nf364 landed: a new opt-in in engine/CCountedPointer.h, `FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU`
+(19 rows, `batches/2026-11-24_landing_nf364_b1`).**
+- **When to use it:** in a row that sets `optimize("y", off)` + `("s", on)` ABOVE CCountedPointer.h and emits the 62 B Reset<CComponent>
+  copy. It compiles Reset at y on + s on (the owner's mode), then restores y off + s on.
+- **Precondition:** pragscan shows y off + s on right before the block.
+- **Never together with ..._RESET_SIZE_BODY:** an `#error` fires.
+- **Rows without row pragmas:** keep NF352's block.
+- **Rows whose leaf inlines Reset or GetDef:** none of these fixes work; they wait for your object-order build mode (FINDINGS_LOG 2026-11-24).

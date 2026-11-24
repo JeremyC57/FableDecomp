@@ -1,0 +1,1 @@
+9dade0954d750f49b69b535af1fe09b6c19c15ed6c676dc02a75c1472c86963f  /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/inc_new/engine/CCountedPointer.h

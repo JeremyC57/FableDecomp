@@ -1,0 +1,11 @@
+In file included from both.cpp:3:
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/inc_new/engine/CCountedPointer.h:604:2: error: FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU and FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY define the same specialization: use one
+  604 | #error FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU and FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY define the same specialization: use one
+      |  ^
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/inc_new/engine/CCountedPointer.h:628:46: error: redefinition of 'Reset'
+  628 | void CCountedPointer<NUISystem::CComponent>::Reset(NUISystem::CComponent* data)
+      |                                              ^
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/inc_new/engine/CCountedPointer.h:591:46: note: previous definition is here
+  591 | void CCountedPointer<NUISystem::CComponent>::Reset(NUISystem::CComponent* data)
+      |                                              ^
+2 errors generated.

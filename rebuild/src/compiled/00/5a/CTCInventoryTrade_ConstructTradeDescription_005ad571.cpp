@@ -34,6 +34,7 @@
 //   GetPHeroCombatDef() (`inc ; inc ; dec`, 0x005AE35A). `text = NGameText::ConstructString(fmt, args)` assigns the bool result
 //   through operator=(wchar_t) (retail `movzx ax,al` at 0x005AE4EA, call at 0x005AE4F2) -- as the original source did.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU   // NF364: Reset<CComponent> 0x00429C6F pick-any copy in this y-off / s-on TU
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING

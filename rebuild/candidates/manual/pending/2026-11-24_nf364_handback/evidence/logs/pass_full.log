@@ -1,0 +1,102 @@
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 0058315b RELOCATION_MATCH leaf=?ConstructStyleEntryPC@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@s flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_ConstructStyleEntryPC_0058315b.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 0058a0c7 RELOCATION_MATCH leaf=?ConstructItemEntry@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedP flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_ConstructItemEntry_0058a0c7.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 0058e208 RELOCATION_MATCH leaf=?ConstructItemEntryPC@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCounte flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_ConstructItemEntryPC_0058e208.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 005907ab RELOCATION_MATCH leaf=?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$ve flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventory_ConstructItemCategoryListPC_005907ab.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 0059cb90 RELOCATION_MATCH leaf=?AddWantedItemToList@CTCInventoryTrade@@QAEXJPAVCList@NUISystem@@PAVCViewport@3@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddWantedItemToList_0059cb90.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 0059d270 RELOCATION_MATCH leaf=?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCVie flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddWantedItemToListPC_0059d270.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 0059ed42 RELOCATION_MATCH leaf=?AddSellItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddSellItemToList_0059ed42.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 0059f51e RELOCATION_MATCH leaf=?AddSellItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCVie flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddSellItemToListPC_0059f51e.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 0059fee3 RELOCATION_MATCH leaf=?AddBuyItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddBuyItemToList_0059fee3.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 005a8c66 RELOCATION_MATCH leaf=?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructActualSpecialInventoryPC_005a8c66.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 005d64dd RELOCATION_MATCH leaf=?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@NUISystem@@W4EHeroAbility@@AAM@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5d/CTCInventoryStats_AddHeroAbility_005d64dd.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 005d6748 RELOCATION_MATCH leaf=?ConstructExperienceList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5d/CTCInventoryStats_ConstructExperienceList_005d6748.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 005d7081 RELOCATION_MATCH leaf=?ConstructExperienceListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5d/CTCInventoryStats_ConstructExperienceListPC_005d7081.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 005a29f4 RELOCATION_MATCH leaf=?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pa flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructSpecialShopList_005a29f4.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 005a9cbe RELOCATION_MATCH leaf=?ConstructTradeDescriptionWeapon@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructTradeDescriptionWeapon_005a9cbe.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 005aaf28 RELOCATION_MATCH leaf=?ConstructTradeDescriptionClothing@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructTradeDescriptionClothing_005aaf28.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 005ad571 RELOCATION_MATCH leaf=?ConstructTradeDescription@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructTradeDescription_005ad571.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 0058315b RELOCATION_MATCH leaf=?ConstructStyleEntryPC@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@s flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/0058315b.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 0058a0c7 RELOCATION_MATCH leaf=?ConstructItemEntry@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedP flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/0058a0c7.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 0058e208 RELOCATION_MATCH leaf=?ConstructItemEntryPC@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCounte flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/0058e208.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 005907ab RELOCATION_MATCH leaf=?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$ve flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/005907ab.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 0059cb90 RELOCATION_MATCH leaf=?AddWantedItemToList@CTCInventoryTrade@@QAEXJPAVCList@NUISystem@@PAVCViewport@3@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/0059cb90.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 0059d270 RELOCATION_MATCH leaf=?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCVie flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/0059d270.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 0059ed42 RELOCATION_MATCH leaf=?AddSellItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/0059ed42.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 0059f51e RELOCATION_MATCH leaf=?AddSellItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCVie flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/0059f51e.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 0059fee3 RELOCATION_MATCH leaf=?AddBuyItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/0059fee3.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 005a8c66 RELOCATION_MATCH leaf=?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/005a8c66.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 005d64dd RELOCATION_MATCH leaf=?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@NUISystem@@W4EHeroAbility@@AAM@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/005d64dd.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 005d6748 RELOCATION_MATCH leaf=?ConstructExperienceList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/005d6748.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 005d7081 RELOCATION_MATCH leaf=?ConstructExperienceListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/005d7081.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 005a29f4 RELOCATION_MATCH leaf=?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pa flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/005a29f4.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 005a9cbe RELOCATION_MATCH leaf=?ConstructTradeDescriptionWeapon@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/005a9cbe.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 005aaf28 RELOCATION_MATCH leaf=?ConstructTradeDescriptionClothing@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/005aaf28.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 005ad571 RELOCATION_MATCH leaf=?ConstructTradeDescription@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/005ad571.cpp
+PASS_DONE

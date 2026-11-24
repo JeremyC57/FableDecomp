@@ -338,3 +338,8 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   - **NF361 swap** (a row drops its local GetDef template for GLOBAL_BODY + REREAD + SIZE_BODY): allowed as a copy repair gated by the drop
     test, if the helper COMDATs equal those of an already-landed shared-body row. Rows whose leaf moves are skipped.
   - **B's rows:** agents stay off them, even read-only; the coordinator rechecks them from the repo.
+- NF364 (advisor decision, owner delegated, 2026-11-24): `FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU` (engine/CCountedPointer.h)
+  is the Reset<NUISystem::CComponent> size body for TUs that set `optimize("y", off)` + `("s", on)` ABOVE the header; it restores exactly that
+  state. Precondition: pragscan shows y off + s on immediately before the block. Never together with ..._RESET_SIZE_BODY (`#error`).
+  Rows whose leaf inlines Reset or GetDef (the /O2 rows 005ff190 00603000 00607330 0061b610 0061e6d0 006096e0 0060c900 0060eeb0 00622a00,
+  and the swap's 005ff190 00605570 00607330) are closed for row devices: noinline and inline bodies both move the leaf (FINDINGS_LOG).

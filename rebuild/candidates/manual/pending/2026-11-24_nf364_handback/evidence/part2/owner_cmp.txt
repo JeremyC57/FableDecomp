@@ -1,0 +1,3 @@
+REF work/obj/H_00429c6f.obj len=59 relocs=3
+EQUAL work/obj/00603000_p2.obj len=59
+DIFF bytes=False relocs=False work/obj/H_00603000.obj len=103

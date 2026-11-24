@@ -34,6 +34,7 @@
 #define FABLE_RETAIL_CDELETION
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU   // NF364: Reset<CComponent> 0x00429C6F pick-any copy in this y-off / s-on TU
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)

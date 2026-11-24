@@ -3,6 +3,7 @@
 // Leaf: ?AddBuyItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059FEE3, 1556 bytes, thiscall `ret 14h`, bool in al. Frame-pointer size TU: optimize("y",off) + ("s",on).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU   // NF364: Reset<CComponent> 0x00429C6F pick-any copy in this y-off / s-on TU
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING

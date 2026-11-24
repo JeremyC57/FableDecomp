@@ -1,0 +1,59 @@
+00427216	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+00427216	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 00427216 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00582ace	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+00582ace	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 00582ace gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0058315b	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+0058315b	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 0058315b gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0058a0c7	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+0058a0c7	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 0058a0c7 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0058e208	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+0058e208	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 0058e208 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005907ab	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005907ab	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005907ab gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0059cb90	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+0059cb90	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 0059cb90 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0059d270	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+0059d270	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 0059d270 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0059ed42	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+0059ed42	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 0059ed42 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0059f51e	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+0059f51e	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 0059f51e gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0059fee3	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+0059fee3	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 0059fee3 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005a8c66	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005a8c66	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005a8c66 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005d64dd	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005d64dd	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005d64dd gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005d6748	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005d6748	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005d6748 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005d7081	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005d7081	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005d7081 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005a29f4	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005a29f4	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005a29f4 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005a9cbe	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005a9cbe	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005a9cbe gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005aaf28	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005aaf28	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005aaf28 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005ad571	pk_all	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005ad571	pvr	FIXED	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005ad571 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 19, 0], 'pvr': [0, 0, 19, 0]}
+GATE PASS

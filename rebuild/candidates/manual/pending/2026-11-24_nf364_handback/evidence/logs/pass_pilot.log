@@ -1,0 +1,15 @@
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 00429c6f RELOCATION_MATCH leaf=?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/42/CCountedPointerNUISystemCComponent_Reset_00429c6f.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 00427216 RELOCATION_MATCH leaf=?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJA flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/42/NUISystemCManager_CreateTickSlider_00427216.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+H 00582ace RELOCATION_MATCH leaf=?ConstructStyleEntry@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_ConstructStyleEntry_00582ace.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 00427216 RELOCATION_MATCH leaf=?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJA flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/00427216.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/tree
+N 00582ace RELOCATION_MATCH leaf=?ConstructStyleEntry@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/00582ace.cpp
+PASS_DONE

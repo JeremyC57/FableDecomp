@@ -1,0 +1,20 @@
+601a602,620
+> #ifdef NF364_PROBE_RESET_SIZE_INLINE
+> // NF364 PART 2 PROBE ONLY (scratch tree, never handed back as a header change): the NF352 Reset size body WITHOUT __declspec(noinline),
+> // for an /O2 TU with no row pragma (0x00603000). Same pragmas and body as FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY.
+> namespace NUISystem { class CComponent; }
+> #if defined(_MSC_VER)
+> #pragma optimize("s", on)
+> #endif
+> template<> inline
+> void CCountedPointer<NUISystem::CComponent>::Reset(NUISystem::CComponent* data)
+> {
+>     ReleaseData();
+>     Data = data;
+>     if (data)
+>         Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
+> }
+> #if defined(_MSC_VER)
+> #pragma optimize("", on)
+> #endif
+> #endif

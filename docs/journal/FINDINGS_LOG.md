@@ -1629,3 +1629,15 @@ against CODAApi.lib, or stay compiled C++?
   compared with zero (`!= false`, `!= 0`, `!!(..)` all 100 B) and line 342's +12 B an explicit float narrowing (`(float)(..)`, float(),
   static_cast all 122 B); VC7.1 /O2 folds both, so retail cannot select them. Label such spellings Inferred (spelling chosen inside the
   family). A size gap equal to a destructor group is not proof of an extra object: check the frame (an extra iterator moves the locals).
+
+## 2026-11-24 (Account A naming queue): /O2 rows whose leaf inlines Reset<CComponent> / GetDef<CUIMiscThingsDef>: no row device works
+- Rows: 005ff190 00603000 00607330 0061b610 0061e6d0 006096e0 0060c900 0060eeb0 00622a00 (Reset 103 v 59 B) and, for the GetDef swap,
+  005ff190 00605570 00607330.
+- Measured:
+  - NF361: the noinline NF352 block fixes the copy but turns inline expansions in the leaf into calls (e.g. 00603000 8520v9571).
+  - NF364 Part 2: the same body without `__declspec(noinline)` fixes the copy but moves the leaf the other way (00603000 DIFFER 9794v9571;
+    Reset calls 3 -> 1) and flips ReleaseData's reach n -> y.
+  - NF365: the GetDef swap moves the leaf in 005ff190 4128v4176, 00605570 1841v1890, 00607330 9084v9124.
+- Reading (a guess from one probe, not proved): the leaf matches only with the default (speed) body visible, so retail's TU likely emitted the
+  speed copy and lost the pick at link. This fits the standing rule that copies reflecting retail's object composition wait for B's
+  object-order build mode. Loop rule: no further agents on these rows' copies.

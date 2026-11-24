@@ -81,6 +81,7 @@
 #define FABLE_RETAIL_CTCINVENTORYCLOTHING_ARMOUR
 #define FABLE_RETAIL_CTCINVENTORYCLOTHING_NOARMOUR
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU   // NF364: Reset<CComponent> 0x00429C6F pick-any copy in this y-off / s-on TU
 #include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"
 #include "engine/CTCInventoryTrade.h"

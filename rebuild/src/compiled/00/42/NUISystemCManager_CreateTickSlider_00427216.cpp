@@ -44,6 +44,7 @@
 #define FABLE_RETAIL_CRGBFLOATCOLOUR
 #define FABLE_RETAIL_CRGBFLOATCOLOUR_TO_CRGBCOLOUR
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU   // NF364: Reset<CComponent> 0x00429C6F pick-any copy in this y-off / s-on TU
 #include <math.h>
 #include "engine/C2DCoordI.h"
 #include "engine/CRGBFloatColour.h"

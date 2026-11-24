@@ -324,7 +324,7 @@ address	symbol	status	leaf_given
 0042ae0e	?BinarySearchTree_FindByIntKey@@YIPAUNode@@PAUTree@@PAXPAH@Z	MATCH	BinarySearchTree_FindByIntKey
 0042ae90	?_M_lower_bound@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@@4@@std@@ABEPAU_Rb_tree_node_base@2@ABQAVCComponent@NUISystem@@@Z	MATCH	?_M_lower_bound@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@
 0042aeda	?GetDef_0042aeda@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	RELOCATION_MATCH	CUIDef>
-0042af3c	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	RELOCATION_MATCH	GetDef<CThingBaseDef>
+0042af3c	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	RELOCATION_MATCH	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
 0042b144	?GetDef_0042b144@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	RELOCATION_MATCH	GetDef<CDefClassBase>
 0042b2ea	??0CVector_0042b2ea@@QAE@USIterator@@0@Z	RELOCATION_MATCH	CVector_0042b2ea
 0042b374	?GetDef_0042b374@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	RELOCATION_MATCH	GetDef_0042b374
@@ -1207,7 +1207,7 @@ address	symbol	status	leaf_given
 0045c549	?CSoundThemeDef_Copy@@YIXPAVCSoundThemeDef@@PAX@Z	MATCH	Copy
 0045c54e	??4CSoundThemeDef@@QAEAAV0@ABV0@@Z	RELOCATION_MATCH	??4CSoundThemeDef@
 0045c5ab	?CSoundThemeDef_Alloc@@YAPAVCSoundThemeDef@@XZ	RELOCATION_MATCH	Alloc
-0045c5da	??_GCThingNoiseDef@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+0045c5da	??_GCThingNoiseDef@@UAEPAXI@Z	RELOCATION_MATCH	??_GCThingNoiseDef@@UAEPAXI@Z
 0045c5f6	?EndAttackBeam@CTCKraken@@QAEXXZ	RELOCATION_MATCH	EndAttackBeam
 0045c614	??4CCreatureGenerationFamilyDef@@QAEAAV0@ABV0@@Z	RELOCATION_MATCH	??4CCreatureGenerationFamilyDef@
 0045c75b	?OnReadFinished_0045c75b@@YIXPAUCActiveFile@@@Z	RELOCATION_MATCH	OnReadFinished
@@ -27216,5 +27216,5 @@ address	symbol	status	leaf_given
 009ac700	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z	RELOCATION_MATCH	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z
 00e1a990	?Main@CQ_WizardBattleScript@NScript@@UAEXXZ	RELOCATION_MATCH	?Main@CQ_WizardBattleScript@NScript@@UAEXXZ
 0045c5f6	??1CThingNoiseDef@@UAE@XZ	RELOCATION_MATCH	??1CThingNoiseDef@@UAE@XZ
-0045c5da	??_GCThingNoiseDef@@UAEPAXI@Z	RELOCATION_MATCH	-
+0045c5da	??_GCThingNoiseDef@@UAEPAXI@Z	RELOCATION_MATCH	??_GCThingNoiseDef@@UAEPAXI@Z
 007fc800	?EndAttackBeam@CTCKraken@@QAEXXZ	RELOCATION_MATCH	?EndAttackBeam@CTCKraken@@QAEXXZ

@@ -1,0 +1,6 @@
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/ptree
+H 00603000 RELOCATION_MATCH leaf=?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_CreateMiniMapMarkers_00603000.cpp
+PASS_DONE
+# overlay=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/work/ptree
+N 00603000_p2 DIFFER(9794v9571) leaf=?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF364/rows/probe/00603000_p2.cpp
+PASS_DONE

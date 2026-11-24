@@ -1,0 +1,18 @@
+NEQ 00405c10 8 ??2@YAPAXIPAX@Z not referenced by the leaf
+NEQ 0041c780 14 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z not referenced by the leaf
+EQ  004291de 44 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ 
+EQ  00428b10 11 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z 
+EQ  00429160 44 ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ 
+EQ  00429c53 5 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ 
+NEQ 00429c6f 62 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z LEAF-REFERENCED
+EQ  00429b72 5 ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ 
+NEQ 00429fbe 29 ?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z not referenced by the leaf
+EQ  0042a168 39 ?clear@?$_List_base@JV?$allocator@J@std@@@std@@QAEXXZ 
+EQ  0042a141 39 ?clear@?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXXZ 
+NEQ 0042aadc 38 ?insert@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCActionParam@NUISystem@@U?$_Nonconst_traits@PAVCActionParam@NUISystem@@@std@@@2@U32@ABQAVCActionParam@NUISystem@@@Z not referenced by the leaf
+EQ  0042ab73 23 ??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ 
+EQ  0042ab1c 23 ??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ 
+EQ  0042b646 26 ?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z 
+NEQ 0053fd00 20 ??1CAction@NUISystem@@QAE@XZ not referenced by the leaf
+NEQ 00429f43 12 ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z not referenced by the leaf
+NEQ 0042aa29 65 ??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z LEAF-REFERENCED

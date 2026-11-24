@@ -599,4 +599,42 @@ void CCountedPointer<NUISystem::CComponent>::Reset(NUISystem::CComponent* data)
 #pragma optimize("", on)
 #endif
 #endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY
+#error FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU and FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY define the same specialization: use one
+#endif
+// NF364 opt-in (2026-11-24; T3 nf358 0x00429C6F; NF362 proposal P1, advisor decision, owner delegated). Fidelity: scaffolding, not
+// retail: it is for link determinism and makes no claim about retail's text. The sibling of FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY
+// for TUs whose row head sets `#pragma optimize("y", off)` + `("s", on)` ABOVE their include of this header (the CreateTickSlider,
+// CTCInventory, CTCInventoryTrade and CTCInventoryStats rows). VC7.1 compiles their pick-any Reset<CComponent> at the end-of-TU state
+// (s on, y off: 62 bytes, frame pointer); the owner 0x00429C6F compiles it at s on, y on (59 bytes). The NF352 block does not serve these
+// TUs: after the row's pragmas it still compiles at y off, and its optimize("", on) returns the rest of the TU (the row's own leaf) to the
+// command line (NF362). This block switches to the owner's mode (y on, s on; the owner row sets `#pragma optimize("s", on)` itself and
+// builds at the catalog default /O2 /Oy /W3, no CompilerFlags entry), defines the same specialization (the NF352 body, token for token),
+// then RESTORES y off + s on instead of the command line (VC7.1 has no push / pop for optimize). The restore is hard-coded, so a row may
+// define this macro only where the optimize state here is exactly y off + s on with every other setting at the command line: pragscan the
+// row's TU and check that the state before this block equals the state after it. Define the macro before the first include of this
+// header. Not with FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY (#error above) or FABLE_RETAIL_CCOUNTEDPOINTER_ORIGINAL_COMPLETE_MEMBERS_PASS22.
+// ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z = 0x00429C6F (59 bytes, calls ReleaseData 0x004291DE,
+// stores DeleteData 0x00428B10).
+namespace NUISystem { class CComponent; }
+#if defined(_MSC_VER)
+#pragma optimize("y", on)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+void CCountedPointer<NUISystem::CComponent>::Reset(NUISystem::CComponent* data)
+{
+    ReleaseData();
+    Data = data;
+    if (data)
+        Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
+}
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+#endif
+#endif
 #endif // FABLE_ENGINE_CCOUNTEDPOINTER_H

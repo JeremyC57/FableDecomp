@@ -29,6 +29,7 @@
 // AddSelectedAction / AddSecondaryAction / Clear / SetUserParam / AddFocusAction / AddUnfocusAction / AddEntry / AddEntryAtTop); ItemsToSell
 // is the header's map (+0x150).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU   // NF364: Reset<CComponent> 0x00429C6F pick-any copy in this y-off / s-on TU
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING

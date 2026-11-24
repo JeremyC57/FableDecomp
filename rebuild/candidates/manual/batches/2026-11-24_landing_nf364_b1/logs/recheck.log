@@ -1,0 +1,59 @@
+addr       parity           behav  name
+00427216   RELOCATION_MATCH PASS   CreateTickSlider
+00582ace   RELOCATION_MATCH PASS   ConstructStyleEntry
+0058315b   RELOCATION_MATCH PASS   ConstructStyleEntryPC
+0058a0c7   RELOCATION_MATCH PASS   ConstructItemEntry
+0058e208   RELOCATION_MATCH PASS   ConstructItemEntryPC
+005907ab   RELOCATION_MATCH PASS   ConstructItemCategoryListPC
+0059cb90   RELOCATION_MATCH PASS   AddWantedItemToList
+0059d270   RELOCATION_MATCH PASS   AddWantedItemToListPC
+0059ed42   RELOCATION_MATCH PASS   AddSellItemToList
+0059f51e   RELOCATION_MATCH PASS   AddSellItemToListPC
+0059fee3   RELOCATION_MATCH PASS   AddBuyItemToList
+005a29f4   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005a29f4   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005a29f4   RELOCATION_MATCH PASS   ConstructSpecialShopList
+005a8c66   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005a8c66   RELOCATION_MATCH PASS   ConstructActualSpecialInventoryPC
+005a9cbe   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005a9cbe   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005a9cbe   RELOCATION_MATCH PASS   ConstructTradeDescriptionWeapon
+005aaf28   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005aaf28   RELOCATION_MATCH PASS   ConstructTradeDescriptionClothing
+005ad571   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005ad571   RELOCATION_MATCH PASS   ConstructTradeDescription
+005d64dd   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005d64dd   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005d64dd   RELOCATION_MATCH PASS   AddHeroAbility
+005d6748   RELOCATION_MATCH PASS   ConstructExperienceList
+005d7081   RELOCATION_MATCH PASS   ConstructExperienceListPC
+
+WINS: 19
+  00427216 RELOCATION_MATCH NUISystem::CManager::?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z
+  00582ace RELOCATION_MATCH CTCInventory::?ConstructStyleEntry@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@ABVCCharString@@0@Z
+  0058315b RELOCATION_MATCH CTCInventory::?ConstructStyleEntryPC@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@0ABVCCharString@@0@Z
+  0058a0c7 RELOCATION_MATCH CTCInventory::?ConstructItemEntry@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  0058e208 RELOCATION_MATCH CTCInventory::?ConstructItemEntryPC@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  005907ab RELOCATION_MATCH CTCInventory::?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z
+  0059cb90 RELOCATION_MATCH CTCInventoryTrade::?AddWantedItemToList@CTCInventoryTrade@@QAEXJPAVCList@NUISystem@@PAVCViewport@3@@Z
+  0059d270 RELOCATION_MATCH CTCInventoryTrade::?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCViewport@3@@Z
+  0059ed42 RELOCATION_MATCH CTCInventoryTrade::?AddSellItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z
+  0059f51e RELOCATION_MATCH CTCInventoryTrade::?AddSellItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCViewport@3@_N@Z
+  0059fee3 RELOCATION_MATCH CTCInventoryTrade::?AddBuyItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z
+  005a29f4 RELOCATION_MATCH CTCInventoryTrade::?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z
+  005a8c66 RELOCATION_MATCH CTCInventoryTrade::?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ
+  005a9cbe RELOCATION_MATCH CTCInventoryTrade::?ConstructTradeDescriptionWeapon@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z
+  005aaf28 RELOCATION_MATCH CTCInventoryTrade::?ConstructTradeDescriptionClothing@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z
+  005ad571 RELOCATION_MATCH CTCInventoryTrade::?ConstructTradeDescription@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z
+  005d64dd RELOCATION_MATCH CTCInventoryStats::?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@NUISystem@@W4EHeroAbility@@AAM@Z
+  005d6748 RELOCATION_MATCH CTCInventoryStats::?ConstructExperienceList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005d7081 RELOCATION_MATCH CTCInventoryStats::?ConstructExperienceListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z

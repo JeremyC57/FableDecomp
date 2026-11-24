@@ -1,0 +1,22 @@
+address	part	verdict	batch	note
+00427216	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+00582ace	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+0058315b	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+0058a0c7	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+0058e208	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+005907ab	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+0059cb90	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+0059d270	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+0059ed42	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+0059f51e	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+0059fee3	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+005a8c66	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+005d64dd	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips; DeleteData 0x00428B10 copy NEQ reach y at HEAD and new (unchanged debt, T3 nf360)
+005d6748	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+005d7081	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+005a29f4	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+005a9cbe	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+005aaf28	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+005ad571	P1	ACCEPT	b1	Reset<CComponent> 0x00429C6F copy 62->59 B EQ = owner object; one COMDAT; leaf same; RELOCATION_MATCH HEAD and new (scratch + vland); pragscan OK; 0 NEQ turned/new; 0 reach flips
+00603000	P2	probe-fail (diagnosis only, no hand-back text)	-	size-mode Reset WITHOUT noinline: copy 103->59 B EQ = owner, but leaf DIFFER(9794v9571) (Reset calls 3->1, DeleteData relocs 10->12) and NEQ ReleaseData 0x004291DE reach n->y
+00429c6f	owner	compiled read-only (HEAD)	-	lock released right after the owner build

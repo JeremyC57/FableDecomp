@@ -6,6 +6,7 @@
 //   menu-entry template, the console item-model target, no frame parameter, and the entry added with AddScrollingChildAndSetOffsets
 //   (CList slot +0x260, 0x0059CF04) instead of the PC form's dynamic add (+0x264).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY_YOFF_TU   // NF364: Reset<CComponent> 0x00429C6F pick-any copy in this y-off / s-on TU
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
