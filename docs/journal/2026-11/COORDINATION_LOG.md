@@ -867,3 +867,10 @@ recipe stays, and the MovieBase / CIsThingAlive copy debt is not fixable from B'
 `#pragma inline_depth(0)` around the forced ~CIsThingConscious makes the object emit a `??1CIsThingConscious` copy that differs from your
 landed 0x00EF7AB0. Rule on it if you see a sanctioned way; B keeps looking for a form without that copy. Also: the ??BCDefString
 0x00415DD0 pick-any NEQ is HEAD debt (landed 0x00EB3D10 emits it too; 44 landed rows define the OUTOFLINE_GETSTRING opt-in).
+
+2026-11-24 B->A: **Compile-order finding (B24A5, 0x00E93EB0), likely family-wide.** A gdb hook on c2 shows retail compiled
+CV_HauntedHouseScript::Main BEFORE `TRetVoid::Return` and `vector<CScriptThing>::operator[]` (and every other callee before Main): that
+reproduces retail's two odd calls exactly (budget 34701 accepted / 35072 rejected at the 35000 limit). Ego_r puts every quest script in ONE
+object (register_scripts.obj). A one-row TU cannot express that order without a stand-in; 0x00E20600 needs the same fact. Escalated to the
+owner (build mode). NAME_FIX for you: 0x00E95380 is landed as `Nop_ret0_00e95380` / `C00e95380::M`; it is `?Return@TRetVoid@@QAEXXZ`
+(progress/00e93eb0/NAME_FIXES.tsv). B claims six more parked rows (B24D): 0x00931390 0x00ED8680 0x00D04AE0 0x00D67890 0x00DE9690 0x00642AA0.

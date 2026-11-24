@@ -26,3 +26,11 @@ Conclusion: in this TU retail inlined a ~CIsThingAlive body that calls ~CScriptT
 No single-definition form reproduces both on the lane's cl 13.10.3077 (same open mechanism as FINDINGS_LOG 2026-11-20 p25B, 0x00EC4A00).
 Owner decision needed: either accept a ??1CIsThingAlive pick-any copy that differs from 0x00E241B0 (declaration-only opt-in is impossible
 because the temporaries need the body), or keep the row parked until the mechanism is found.
+
+## B24A5 cross-reference (2026-11-24): same build fact measured on 0x00E93EB0
+Row 0x00E93EB0 (CV_HauntedHouseScript::Main, ../00e93eb0/ESCALATE.md) gives a quantitative proof of the compile-order mechanism this
+row needs: forcing ONLY TRetVoid::Return and vector<CScriptThing>::operator[] down c2's budget path (diagnostic hook, inl/inlf.py)
+reproduces retail's two unique out-of-line calls exactly where the budget total passes 35000; a diagnostic caller-growth bump then
+removes the slot swap and every exit hunk. Retail's script TU (Ego_r: all scripts in register_scripts.obj) compiles some Mains before
+some of their inline callees; this row's ~CIsThingAlive / CPredicate_And<CITA,CITA> budget-path need is the same fact. No new
+experiment was run on this row (wfE4 measured every per-row device out).

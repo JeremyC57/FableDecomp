@@ -1,5 +1,5 @@
 // NScript::CV_HauntedHouseScript::Main() -- the haunted-house quest main: until Q_TraderEscort is done, raise the red forcefield barrier (two effects at PreBarrierHere, cellar door unusable, DoorToLock hidden, Candles off) whenever the house loads, re-create the forcefields if they die, and drop the barrier when the house unloads; then remove the forcefields, bind the four entity scripts, spawn CheckRegionLeaving, and until the hero is inside keep the Candles off while the house is loaded; light the Candles, wait for the cellar door to open, then put them out
-// Grade: DIFFER(5173v5321) -- First 21 of 22 true cleanup paths agree in callee choices; final cancellation expands all three Things versus native two expanded plus called FXBarrier. FXBarrier/Forcefield1 slots are swapped and one vector-cleanup placement differs. 59 strict / 4 loose hunks.
+// Grade: DIFFER(5173v5321) -- 59 hunks: FXBarrier/Forcefield1 slots swapped (retail FXBarrier 0x28, FF1 0x1C) and the end-of-function exits (pen-driven inline split, final Return called); B24A4: strong CBaseClass ctor definition removed (no change)
 // Inline-budget: Native E950CC calls vector/Thing cleanup; guarded depth0 applies only to that post-cellar cancellation. Default T74 gives native callee choices at the first21 exits.
 // Remaining: final cancellation expands one extra Thing destructor; cleanup placement and two object slots differ. No byte-match claim.
 // Leaf: ?Main@CV_HauntedHouseScript@NScript@@UAEXXZ
@@ -28,13 +28,6 @@
 #include "engine/CSpawnedFunc.h"
 #include "engine/TRetVoid.h"
 // Original called root constructor99A2D0 is visible; root destructor retains its original declaration.
-#ifdef _MSC_VER
-#pragma auto_inline(off)
-#endif
-CBaseClass::CBaseClass() {}
-#ifdef _MSC_VER
-#pragma auto_inline(on)
-#endif
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::~CScriptThing() { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { CBaseClass::operator=(other); PImp=other.PImp; return *this; }
