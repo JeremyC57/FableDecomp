@@ -280,3 +280,43 @@ hvar.py (header-overlay variants), var.py-style text variants. No payload for th
   FableWin helper texts onto the repo-current header) -- not yet a hand-back overlay.
 - (B24C11) differ/00be4660.cpp left as the z2 W-form (4 hunks, conflicts with the sea template); the evidenced full form is saved as
   differ/00be4660_fwform.cpp (16 hunks). STATUS.tsv: my first write replaced the append log; restored from the earlier lines + B24C11.
+## B24C12 (2026-11-24)
+- PDB local records (repacked FableWin.pdb, module 936 dump ../00be3970/c12/fw_m936.txt lines 5055 water / 5585 sea, lane only): params
+  strip, strip_x, strip_y, is_left_right_edge, is_right_top_edge, opposite_edge, pindex; locals adj_strip_index, engine_map, adj_strip,
+  last_new_edge_vertex, strip_size; block {n}; block {water_vert1, water_vert0}; block {vert0_main_axis_pos, vert0, vert1,
+  vert1_main_axis_pos}; block {poly_needs_hiding, duplicate_fan_vertex; block {new_vertex}; block {new_vertex; block
+  {water_fan_base_vert0}}}. Records are in frame-offset order: no declaration order. Same for both twins.
+- Retail loop-head difference between the twins (read): SEA stores i as an immediate (`mov [esp+30h],0`) and reloads it at the loop head
+  (0x00BE5150); WATER keeps i in eax from the preheader (`xor eax,eax` 0x00BE47AA .. `mov [esp+44h],eax`, falls into the body with
+  eax = i, ecx = strip on both edges). Our water has the SEA shape -> the twins' retail colourings differ from one template text.
+- c2prio of c11/w_full v s_full (c12/prio_w_full.txt / prio_s_full.txt): water's late candidates are allowed only .....bp (esi/edi
+  excluded) where sea's are ...sibp; y = split edx #44 / edi #19 (water) v ebx #58 / edx #74 (sea); main-loop i (+8-9) memory in both.
+- (B24C12) c2prio --trace of c11/w_full (c12/trace_w_full.txt, --blocks in c12/blk_w_full.txt) names the prologue decision: after the
+  last split pass, y's piece #44 (piece of #19 of y #15, prio 52, allowed ..ds.bp) is coloured BEFORE the FindFirst inline copy y'
+  (#122, piece of local #33, prio 48, allowed only ebp): #44 sees all costs 0 and takes the first allowed register (edx), then #122 gets
+  ebp -> `mov edx,[y] ; push edx ; mov ebp,edx`. Retail (`mov ebp,[y] ; push ebp`) needs y' coloured first (prio >= 52, or #44 < 48) so
+  #44 inherits the copy preference for ebp. Sea for comparison (trace_s_full.txt): y #74 prio 56 -> edx, y' #28 prio 44 -> ebp, which is
+  what retail sea has. x side identical in both (#37 -> esi, x' #51 -> esi). The main-loop i (#23, +8-9) is memory in both traces;
+  retail water keeps an eax piece over the loop head (see above) -- likely the same priority family.
+- (B24C12) FableWin.pdb water helper locals (fw_m936 lines 5197..5283, 6344, 6426): AddFanBaseVertex {new_vert, wvert, fan_vert,
+  vert_index, vert, wfan_vert}, AddDuplicateEdgeVertex {new_vert, wvert, vert_index, vert}, AddCompositeVertex params (strip, index,
+  adj_strip, adj_index, is_left_right_edge) locals {new_vert, adj_vert, vert_index, adj_water_vert}; FindFirstWaterAdjacentVertex params
+  (strip, current_vert, engine_map, vertical, strip_x, strip_y, size, side) + block local adj_size; IterateThroughAdjacentVerts params
+  (strip, current_vert, engine_map, strip_x, strip_y, size, side) locals {vertical, vert}. FableWin AddDuplicateEdgeVertex (0x02CC1EE0)
+  order = ours: vert_index = size(); push_back(); new_vert = [vert_index]; wvert; vert; 2 asserts; X, Y, Z, shore copy; return
+  vert_index -> our `new_index` is `vert_index`, `v` is `new_vert`, `water` is `wvert` (names only; use them at hand-back).
+- (B24C12) No new grade on this row (no evidenced text left that touches the #44 / #122 priorities). Pick-any re-check of the sea under the
+  full form not done (no hand-back: water does not match).
+- (B24C12) FindFirstWaterAdjacentVertex /Od gap explained: FableWin's only extra instructions (+3i/+9b) are the for-scope guard
+  `xor edx,edx ; je ; jmp end` of `#define for if (0) ; else for` (see ../00be3970/NOTES.md B24C12); with it FindFirst is 89i/250b SAME.
+  Inert at /O2 (c12/w_for 16, c12/s_for RELOCATION_MATCH).
+## Exact state at hand-back (B24C12)
+- differ/00be4660.cpp unchanged (z2 W-form, 4 hunks, conflicts with sea); evidenced template form differ/00be4660_fwform.cpp (16 hunks,
+  sea RM). The residue is the prologue colouring order #44 (y piece, prio 52) v #122 (y' copy, prio 48) and the main-loop i head piece;
+  next: find what raises the y' piece's priority over the y piece in water only (block weights of the FindFirst region, c12/blk_w_full.txt).
+- (B24C12, corrections) "retail needs y' coloured first" is the reading consistent with B24C3's measured mechanism (NOTES B24C3: moving
+  map + adjacent_index above the length ternary drops K(prologue) to 11 and y's piece takes ebp by copy preference, c3/sw: 8 orders,
+  e.g. c3/pr/prio_w_AIML_hdr.txt `y piece -> ebp costs {ebp: -1}`), but those orders move code. Pick-any re-check of the sea under the
+  full form DONE: c11/s_full.cpp regraded RELOCATION_MATCH, pickany_vs_retail.py: EQ ??2 (0x00405C10), EQ _M_insert_overflow
+  (0x005135D0); no other emitted copy maps to a retail address in reloc_bindings / functions.tsv / auto-re-candidates (c12/s_full.obj).
+  The for-scope macro (`#define for if (0) ; else for`) is measured: FindFirst 89i/250b SAME under it.
