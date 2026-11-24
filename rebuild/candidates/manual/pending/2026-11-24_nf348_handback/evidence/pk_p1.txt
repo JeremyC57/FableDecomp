@@ -1,0 +1,13 @@
+## 0047d008 H_ pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 0047d008 H_ pk_all --row-length=10
+# leaf ?Set@T@@QAEXH@Z  source_a=yes  
+## 0047d008 new pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 0047d008 new pk_all --row-length=10
+# leaf ?LoadGame@CTCInGameMenu@@QAEXJ@Z  source_a=yes  
+## 00e1ad30 H_ pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 00e1ad30 H_ pk_all --row-length=37
+# leaf ?Init@C@@QAEXXZ  source_a=yes  
+## 00e1ad30 new pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 00e1ad30 new pk_all --row-length=37
+# leaf ?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ  source_a=yes  
+PK_DONE

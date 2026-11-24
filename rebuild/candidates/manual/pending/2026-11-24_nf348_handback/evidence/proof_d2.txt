@@ -1,0 +1,5 @@
+##### 00437990 renames: ?Run_00643d8c@Sub@@QAEXXZ=?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z UNPAIRED DEF old=['?Run@T@@QAEXXZ'] new=['??C?$CCountedPointer@VCDrawCombatMultiplier@NPlayerGui@@@@QBEPAVCDrawCombatMultiplier@NPlayerGui@@XZ', '?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z']
+  .drectve HEAD-only=[] new-only=['/DEFAULTLIB:"libcp"']
+NOT_EQ unpaired renames; section count 2 v 3; section .drectve data/flags; section .text data/flags; section .text relocs; DEF sets differ: ['??C?$CCountedPointer@VCDrawCombatMultiplier@NPlayerGui@@@@QBEPAVCDrawCombatMultiplier@NPlayerGui@@XZ', '?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z', '?Run@T@@QAEXXZ'] sections=3 DEF=2 UND=1 tables=-
+##### 00643d8c renames: ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z=?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
+ALL_EQ sections=3 DEF=2 UND=5 tables=-

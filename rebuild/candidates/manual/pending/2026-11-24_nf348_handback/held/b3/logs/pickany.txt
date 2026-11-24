@@ -1,0 +1,13 @@
+## 007fc800 H_ pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 007fc800 H_ pk_all --row-length=23
+# leaf ?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z  source_a=yes  
+## 007fc800 new pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 007fc800 new pk_all --row-length=23
+# leaf ?EndAttackBeam@CTCKraken@@QAEXXZ  source_a=yes  
+## 005eedcf H_ pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 005eedcf H_ pk_all --row-length=19
+# leaf ?AddLearnedExpression@FableAddLearned_005eedcf@@QAEXJ@Z  source_a=yes  
+## 005eedcf new pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 005eedcf new pk_all --row-length=19
+# leaf ?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z  source_a=yes  
+PK_DONE

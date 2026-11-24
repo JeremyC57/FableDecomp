@@ -1,0 +1,17 @@
+## 00437990 H_ pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 00437990 H_ pk_all --row-length=11
+# leaf ?Run@T@@QAEXXZ  source_a=yes  
+## 00437990 new pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 00437990 new pk_all --row-length=11
+# leaf ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z  source_a=yes  
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??C?$CCountedPointer@VCDrawCombatMultiplier@NPlayerGui@@@@QBEPAVCDrawCombatMultiplier@NPlayerGui@@XZ
+## 00643d8c H_ pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+NEQ 00437990 89 ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z not referenced by the leaf
+## 00643d8c H_ pk_all --row-length=89
+# leaf ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     25 leaf=n reach=n ??0C3DVector@@QAE@MMM@Z
+## 00643d8c new pickany_vs_retail (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 00643d8c new pk_all --row-length=89
+# leaf ?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     25 leaf=n reach=n ??0C3DVector@@QAE@MMM@Z
+PK_DONE

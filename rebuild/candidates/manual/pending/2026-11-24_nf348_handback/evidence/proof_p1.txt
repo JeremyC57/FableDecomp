@@ -1,0 +1,4 @@
+##### 0047d008 renames: ?Set@T@@QAEXH@Z=?LoadGame@CTCInGameMenu@@QAEXJ@Z
+ALL_EQ sections=2 DEF=1 UND=0 tables=-
+##### 00e1ad30 renames: ?Init@C@@QAEXXZ=?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ
+ALL_EQ sections=2 DEF=1 UND=0 tables=-

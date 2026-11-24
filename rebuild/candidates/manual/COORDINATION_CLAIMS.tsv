@@ -517,3 +517,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF349 size-mode GetDef copies in the rows NF346 skipped	naming	claimed	locks via nflocks owner NF349
 2026-11-24	A	agent NF347 INDEX_DECL_ONLY pilot and next debt groups	naming	done	batches/2026-11-24_landing_nf347_b1; pending/2026-11-24_nf347_handback
 2026-11-24	A	agent NF350 map owner respell and decl-only run dir	naming	claimed	locks via nflocks owner NF350
+2026-11-24	A	agent NF348 owner ports queued by NF345	naming	done	batches/2026-11-24_landing_nf348_b1; pending/2026-11-24_nf348_handback

@@ -1,0 +1,6 @@
+## HEAD set: H_0047d008.obj 0041e6d3.obj
+duplicates 0
+UNRESOLVED 1 ?LoadGame@CTCInGameMenu@@QAEXJ@Z
+## new set: 0047d008.obj 0041e6d3.obj
+duplicates 0
+LK_DONE

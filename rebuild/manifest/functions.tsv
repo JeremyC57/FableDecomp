@@ -3781,7 +3781,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0047cfc2	GetCameraSensitivity	CUserProfileManager	__thiscall	float	1	CUserProfileManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CUserProfileManager_GetCameraSensitivity_0047cfc2.cpp
 0047cfd3	GetCameraSensitivity	CUserProfileManager	__thiscall	float	1	CUserProfileManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CUserProfileManager_GetCameraSensitivity_0047cfd3.cpp
 0047cfee	BoughtSomething	CAIStateGroup_BuyFromSeller	__thiscall	void	1	CAIStateGroup_BuyFromSeller *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CAIStateGroupBuyFromSeller_BoughtSomething_0047cfee.cpp
-0047d008	SetMember_dword0x64_0047d008	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CObservable_AddExclusiveObserver_0047d008.cpp
+0047d008	LoadGame	CTCInGameMenu	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CObservable_AddExclusiveObserver_0047d008.cpp
 0047d012	ConfirmedVideoOptionsChanged	CTCInGameMenu	__thiscall	void	1	CTCInGameMenu *	1	yes	accepted									
 0047d0d5	PCCancelQuitToFrontEnd	_global	unknown	undefined	0		0			discovered	gapscan							
 0047d1ac	DrawPreparePrimitivesForRendering	CTCInGameMenu	__thiscall	void	2	CTCInGameMenu *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
@@ -52337,7 +52337,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e1a960	SuspendableProcess	CSpawnedFunc<NScript::CQ_WizardBattleScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e1\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e1a960.cpp
 00e1a970	`scalar deleting destructor'	CSpawnedFunc<NScript::CQ_WizardBattleScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e1\CLandscapeBackgroundPatch_vectordeletingdestructor_00e1a970.cpp
 00e1a990	Main	NScript::CQ_WizardBattleScript	__thiscall	void	1	CV_MurderTwistScript *	1	yes	accepted									
-00e1ad30	Init	NScript::CV_ChickenKickingScript	__thiscall	void	1	CV_ChickenKickingScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e1\Init_Init_00e1ad30.cpp
+00e1ad30	InitialiseVariables	NScript::CQ_WizardBattleScript	__thiscall	void	1	CV_ChickenKickingScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e1\Init_Init_00e1ad30.cpp
 00e1ad60	WatchForTermination	NScript::CQ_WizardBattleScript	__thiscall	void	1	CQ_HangingTreeEvilScript *	1	yes	accepted									
 00e1ae40	GetEntityScriptName	CEntityScriptBinding<NScript::CQ_WizardBattleScript>	unknown	undefined	0		0			discovered	gapscan							
 00e1ae50	Alloc	NScript::CQ_WizardBattleScript::CChasingScreamer	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									

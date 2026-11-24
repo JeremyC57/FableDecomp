@@ -1,0 +1,3 @@
+address	unit	note
+0047d008	0047d008	lands with hdr/engine/CTCInGameMenu.h (its opt-in)
+00e1ad30	00e1ad30	lands with hdr/engine/CQ_WizardBattleScript.h (its opt-in)

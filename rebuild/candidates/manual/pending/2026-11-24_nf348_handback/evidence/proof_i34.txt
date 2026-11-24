@@ -1,0 +1,6 @@
+##### 007fc800 renames: ?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z=?EndAttackBeam@CTCKraken@@QAEXXZ
+  .drectve HEAD-only=[] new-only=['/DEFAULTLIB:"libcp"']
+NOT_EQ section .drectve data/flags sections=2 DEF=1 UND=2 tables=-
+##### 005eedcf renames: ?AddLearnedExpression@FableAddLearned_005eedcf@@QAEXJ@Z=?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z
+  .drectve HEAD-only=[] new-only=['/DEFAULTLIB:"libcp"']
+NOT_EQ section .drectve data/flags sections=2 DEF=1 UND=1 tables=-

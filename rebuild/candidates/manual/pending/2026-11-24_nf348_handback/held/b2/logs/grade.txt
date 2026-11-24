@@ -1,0 +1,11 @@
+pH 00437990 RELOCATION_MATCH leaf=?Run@T@@QAEXXZ flags=
+pS 00437990 RELOCATION_MATCH leaf=?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z flags=
+pH 00643d8c RELOCATION_MATCH leaf=?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z flags=
+pS 00643d8c RELOCATION_MATCH leaf=?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z flags=
+GRADE_DONE
+pH 00667d30 RELOCATION_MATCH leaf=?OnHit@CThingCreatureBase@@UAEXAAVCHitParameters@@@Z flags=
+GRADE_DONE
+pH 00439070 RELOCATION_MATCH leaf=?DrawPreparePrimitivesForEngine@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z flags=/d2inlT63
+GRADE_DONE
+pH 004378f0 RELOCATION_MATCH leaf=?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z flags=
+GRADE_DONE

@@ -1,0 +1,2 @@
+# leaf ?DrawPreparePrimitivesForEngine@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z  source_a=yes  
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??C?$CCountedPointer@VCDrawCombatMultiplier@NPlayerGui@@@@QBEPAVCDrawCombatMultiplier@NPlayerGui@@XZ

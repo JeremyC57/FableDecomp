@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00437990   RELOCATION_MATCH PASS   Forward_InitParticleEmitter_via0x150_00437990
+00643d8c   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00643d8c   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00643d8c   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00643d8c   WARN STANDIN_LEAF ?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z (catalog CPlayerGui::AddHitByMelee; names another function)
+00643d8c   RELOCATION_MATCH PASS   AddHitByMelee
+
+WINS: 2
+  00437990 RELOCATION_MATCH _global::?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
+  00643d8c RELOCATION_MATCH CPlayerGui::?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z

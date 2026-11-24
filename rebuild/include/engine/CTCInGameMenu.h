@@ -225,6 +225,12 @@ public:
     CComponent*      PMousePointer;                          // +0xec
     CYesNo*          PYesNo;                                 // +0xf0
     unsigned char    _pad_0xf4[0x4];                         // +0xf4
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_LOADGAME
+    // NF348 opt-in (row 0x0047D008, generated flat branch only): Ego_r.pdb / FableWin.pdb ?LoadGame@CTCInGameMenu@@QAEXJ@Z (public),
+    // out of line at 0x0047D008 (10 bytes: LoadGameIndex +0x64 = the argument; called from NUISystem::CManager::Action 0x0041F831).
+    // Declaration only: no layout change.
+    void LoadGame(long);                                             // 0x0047D008
+#endif
 };
 #pragma pack(pop)
 

@@ -1,0 +1,4 @@
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF348/work/gr_i34.log:pH 007fc800 RELOCATION_MATCH leaf=?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z flags=
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF348/work/gr_i34.log:pS 007fc800 RELOCATION_MATCH leaf=?EndAttackBeam@CTCKraken@@QAEXXZ flags=
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF348/work/gr_i34c.log:pH 00923f60 RELOCATION_MATCH leaf=?Initialise@ flags=
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF348/work/gr_c34.log:pH 0045c5f6 RELOCATION_MATCH leaf=EndAttackBeam flags=

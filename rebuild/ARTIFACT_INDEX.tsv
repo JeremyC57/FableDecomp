@@ -2477,7 +2477,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0047d003						rebuild/build/candidates-Release/00/47/0047d003
 0047d004						rebuild/build/candidates-Release/00/47/0047d004
 0047d005						rebuild/build/candidates-Release/00/47/0047d005
-0047d008	CObservable		rebuild/src/compiled/00/47/CObservable_AddExclusiveObserver_0047d008.cpp	rebuild/tests/00/47/CObservable_AddExclusiveObserver_0047d008_test.cpp		rebuild/build/candidates-Release/00/47/0047d008
+0047d008	CObservable		rebuild/src/compiled/00/47/CTCInGameMenu_LoadGame_0047d008.cpp	rebuild/tests/00/47/CTCInGameMenu_LoadGame_0047d008_test.cpp		rebuild/build/candidates-Release/00/47/0047d008
 0047d5a3	CTCInGameMenu		rebuild/src/compiled/00/47/CTCInGameMenu_PeekGuiDef_0047d5a3.cpp	rebuild/tests/00/47/CTCInGameMenu_PeekGuiDef_0047d5a3_test.cpp		rebuild/build/candidates-Release/00/47/0047d5a3
 0047d60d	CTCInGameMenu		rebuild/src/compiled/00/47/CTCInGameMenu_OnCreate_0047d60d.cpp	rebuild/tests/00/47/CTCInGameMenu_OnCreate_0047d60d_test.cpp		rebuild/build/candidates-Release/00/47/0047d60d
 0047db73	_global		rebuild/src/compiled/00/47/global_SavedConfirmed_0047db73.cpp	rebuild/tests/00/47/global_SavedConfirmed_0047db73_test.cpp		rebuild/build/candidates-Release/00/47/0047db73
@@ -17849,7 +17849,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00e1a7d0	CEngineSubPrimitiveText		rebuild/src/compiled/00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1a7d0.cpp	rebuild/tests/00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1a7d0_test.cpp		rebuild/build/candidates-Release/00/e1/00e1a7d0
 00e1a960	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>		rebuild/src/compiled/00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e1a960.cpp	rebuild/tests/00/e1/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e1a960_test.cpp		rebuild/build/candidates-Release/00/e1/00e1a960
 00e1a970	CLandscapeBackgroundPatch		rebuild/src/compiled/00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e1a970.cpp	rebuild/tests/00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e1a970_test.cpp		rebuild/build/candidates-Release/00/e1/00e1a970
-00e1ad30	Init		rebuild/src/compiled/00/e1/Init_Init_00e1ad30.cpp	rebuild/tests/00/e1/Init_Init_00e1ad30_test.cpp		rebuild/build/candidates-Release/00/e1/00e1ad30
+00e1ad30	Init		rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_InitialiseVariables_00e1ad30.cpp	rebuild/tests/00/e1/NScriptCQWizardBattleScript_InitialiseVariables_00e1ad30_test.cpp		rebuild/build/candidates-Release/00/e1/00e1ad30
 00e1ae40	_gapscan		rebuild/src/compiled/00/e1/gapscan_sub00e1ae40_00e1ae40.cpp	rebuild/tests/00/e1/gapscan_sub00e1ae40_00e1ae40_test.cpp		rebuild/build/candidates-Release/00/e1/00e1ae40
 00e1aef0	_gapscan		rebuild/src/compiled/00/e1/gapscan_sub00e1aef0_00e1aef0.cpp	rebuild/tests/00/e1/gapscan_sub00e1aef0_00e1aef0_test.cpp		rebuild/build/candidates-Release/00/e1/00e1aef0
 00e1af00	_gapscan		rebuild/src/compiled/00/e1/gapscan_sub00e1af00_00e1af00.cpp	rebuild/tests/00/e1/gapscan_sub00e1af00_00e1af00_test.cpp		rebuild/build/candidates-Release/00/e1/00e1af00

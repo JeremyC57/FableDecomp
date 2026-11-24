@@ -1,0 +1,2 @@
+address	test_source	note
+00643d8c	00/64/CPlayerGui_AddHitByMelee_00643d8c_test.cpp	standalone behaviour model respelled CPlayerGui -> NPlayerGui::CDrawCombatMultiplier (names only); install tests/00643d8c_test.cpp over it (or over its renamed file) before land_scripted; vland new PASS with it
