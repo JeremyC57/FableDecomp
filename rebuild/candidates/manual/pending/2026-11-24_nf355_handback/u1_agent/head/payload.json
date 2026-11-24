@@ -1,0 +1,36 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "0045c5f6",
+    "module": "CThingNoiseDef",
+    "name": "~CThingNoiseDef",
+    "source_cpp": "// CTCKraken::EndAttackBeam @ 0045c5f6\n// Leaf: EndAttackBeam\n// push esi; mov esi,ecx; lea ecx,[esi+0x70]; mov [ecx],vtbl(0x1230ba0);\n// call 0x9fc550(ecx); mov ecx,esi; pop esi; jmp 0x454b4c(this)\n\nclass CResource {\npublic:\n    virtual ~CResource();   // 0x009FC550\n};\nstruct Sub {\n    void** vtbl;\n};\n\n// vtbl address 0x1230ba0 \u2014 model as an extern global we take the address of\nextern void* Sub_vtbl_1230ba0;\n\n// helper at 0x9fc550, __fastcall on the subobject (ecx = sub)\n\nclass CTCKraken { public:\n    char pad[0x70];\n    Sub sub;   // at +0x70\n\n    void EndAttackBeam();\n    void Base454b4c();  // base method tail-called at 0x454b4c\n};\n\nvoid CTCKraken::EndAttackBeam()\n{\n    this->sub.vtbl = (void**)&Sub_vtbl_1230ba0;\n    ((CResource*)(&this->sub))->CResource::~CResource();\n    this->Base454b4c();\n}",
+    "test_cpp": "#include <cstdio>\n\nstruct Sub {\n    void** vtbl;\n};\n\nstatic int g_helper_called = 0;\nstatic int g_base_called = 0;\nstatic void* g_vtbl_marker = 0;\n\nvoid* Sub_vtbl_1230ba0;  // definition of the extern global\n\nvoid __fastcall helper_9fc550(Sub* sub)\n{\n    g_helper_called = 1;\n    g_vtbl_marker = *sub->vtbl == 0 ? (void*)1 : (void*)1; // touch it\n    (void)sub;\n}\n\nclass CTCKraken { public:\n    char pad[0x70];\n    Sub sub;\n\n    void EndAttackBeam();\n    void Base454b4c();\n};\n\nvoid CTCKraken::EndAttackBeam()\n{\n    this->sub.vtbl = (void**)&Sub_vtbl_1230ba0;\n    helper_9fc550(&this->sub);\n    this->Base454b4c();\n}\n\nvoid CTCKraken::Base454b4c()\n{\n    g_base_called = 1;\n}\n\nint main()\n{\n    CTCKraken k;\n    for (int i = 0; i < (int)sizeof(k); ++i) ((char*)&k)[i] = 0;\n    k.EndAttackBeam();\n\n    bool ok = true;\n    if (k.sub.vtbl != (void**)&Sub_vtbl_1230ba0) ok = false;\n    if (!g_helper_called) ok = false;\n    if (!g_base_called) ok = false;\n\n    if (ok)\n        printf(\"0045c5f6_TEST PASS\\n\");\n    else\n        printf(\"FAIL vtbl=%p helper=%d base=%d\\n\", (void*)k.sub.vtbl, g_helper_called, g_base_called);\n    return 0;\n}",
+    "pass_pattern": "0045c5f6_TEST PASS",
+    "flags": [],
+    "leaf": "EndAttackBeam"
+   },
+   {
+    "address": "0045c5da",
+    "module": "CThingNoiseDef",
+    "name": "`scalar_deleting_destructor'",
+    "source_cpp": "#pragma optimize(\"s\", on)\nextern void __fastcall CThingNoiseDef_Destruct(void* def);\nvoid* __fastcall CThingNoiseDef_ScalarDeletingDestructor(void* def, int, unsigned int flags)\n{\n    CThingNoiseDef_Destruct(def);\n    if (flags & 1)\n        operator delete(def);\n    return def;\n}",
+    "test_cpp": "#include <cstdio>\nstatic int g_AutoTinyScalarDestructorCalls = 0;\nstatic int g_AutoTinyScalarDeleteCalls = 0;\nvoid __fastcall CThingNoiseDef_Destruct(void*)\n{\n    ++g_AutoTinyScalarDestructorCalls;\n}\nvoid __cdecl OperatorDelete(void*)\n{\n    ++g_AutoTinyScalarDeleteCalls;\n}\nvoid* __fastcall CThingNoiseDef_ScalarDeletingDestructor(void* def, int, unsigned int flags)\n{\n    CThingNoiseDef_Destruct(def);\n    if (flags & 1)\n        OperatorDelete(def);\n    return def;\n}\nint main()\n{\n    int object = 0;\n    if (CThingNoiseDef_ScalarDeletingDestructor(&object, 0, 0) != &object ||\n        g_AutoTinyScalarDestructorCalls != 1 ||\n        g_AutoTinyScalarDeleteCalls != 0)\n        return 1;\n    CThingNoiseDef_ScalarDeletingDestructor(&object, 0, 1);\n    if (g_AutoTinyScalarDestructorCalls != 2 ||\n        g_AutoTinyScalarDeleteCalls != 1)\n        return 1;\n    std::printf(\"AUTO_TINY_0045c5da_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "AUTO_TINY_0045c5da_TEST PASS",
+    "flags": [],
+    "leaf": "`scalar_deleting_destructor'"
+   },
+   {
+    "address": "007fc800",
+    "module": "_global",
+    "name": "EndAttackBeam",
+    "source_cpp": "#pragma optimize(\"s\",on)\n// Leaf: ?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z\n\nclass CTCKraken { public:\n    char pad[0x64];\n    int  beamState;\n};\n\nextern \"C\" void __fastcall Kraken_PreEnd(CTCKraken* self);\nextern \"C\" void __fastcall Kraken_Finish(CTCKraken* self);\n\nvoid __fastcall CTCKraken_EndAttackBeam(CTCKraken* self)\n{\n    self->beamState = 3;\n    Kraken_PreEnd(self);\n    Kraken_Finish(self);\n}",
+    "test_cpp": "#include <stdio.h>\n\nclass CTCKraken { public:\n    char pad[0x64];\n    int  beamState;\n};\n\nstatic int g_pre = 0;\nstatic int g_fin = 0;\nstatic CTCKraken* g_last = 0;\n\nextern \"C\" void __fastcall Kraken_PreEnd(CTCKraken* self){ g_pre++; g_last = self; }\nextern \"C\" void __fastcall Kraken_Finish(CTCKraken* self){ g_fin++; g_last = self; }\n\nvoid __fastcall CTCKraken_EndAttackBeam(CTCKraken* self);\n\nint main(){\n    CTCKraken k;\n    k.beamState = 0;\n    CTCKraken_EndAttackBeam(&k);\n    if (k.beamState == 3 && g_pre == 1 && g_fin == 1 && g_last == &k)\n        printf(\"OK_007fc800\\n\");\n    else\n        printf(\"FAIL %d %d %d\\n\", k.beamState, g_pre, g_fin);\n    return 0;\n}",
+    "pass_pattern": "OK_007fc800",
+    "flags": [],
+    "leaf": "?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z"
+   }
+  ]
+ }
+}

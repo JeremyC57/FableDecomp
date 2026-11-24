@@ -1,0 +1,4 @@
+address	unit	note
+0045c5f6	U1	emitter; lands whole with 0045c5da and 007fc800 and the four headers
+0045c5da	U1	binder of ??1CThingNoiseDef (needs the new header and 0045c5f6)
+007fc800	U1	takes ?EndAttackBeam@CTCKraken@@QAEXXZ, which 0045c5f6 drops; without it the kraken binders 0x00923F60 / 0x009243B0 / 0x00924520 / 0x00924930 are left unresolved

@@ -1,0 +1,2 @@
+rows checked 57155 -> differing lines in $S/eq355/plant.tsv
+plant rows: 526

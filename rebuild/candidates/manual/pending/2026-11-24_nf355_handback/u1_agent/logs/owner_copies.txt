@@ -1,0 +1,10 @@
+## ??0CThingNoiseDef: owner 0x00455EF0 HEAD object v the new 0x0045C5F6 object's pick-any copy
+bytes EQUAL 36 36
+relocs EQUAL
+ head [(5, '??0CThingBaseDef@@QAE@XZ', 20), (16, '??_7CThingNoiseDef@@6B@', 6), (21, '??0CSubDefClassBase@@QAE@XZ', 20), (27, '??_7CTCNoiseDef@@6B@', 6)]
+ new  [(5, '??0CThingBaseDef@@QAE@XZ', 20), (16, '??_7CThingNoiseDef@@6B@', 6), (21, '??0CSubDefClassBase@@QAE@XZ', 20), (27, '??_7CTCNoiseDef@@6B@', 6)]
+## ??0CTCNoiseDef: owner 0x0044C1BB HEAD object v the new copy
+bytes EQUAL 18 18
+relocs EQUAL
+ head [(4, '??0CSubDefClassBase@@QAE@XZ', 20), (10, '??_7CTCNoiseDef@@6B@', 6)]
+ new  [(4, '??0CSubDefClassBase@@QAE@XZ', 20), (10, '??_7CTCNoiseDef@@6B@', 6)]

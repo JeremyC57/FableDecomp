@@ -1,7 +1,11 @@
 #include <cstdio>
 static int g_AutoTinyScalarDestructorCalls = 0;
 static int g_AutoTinyScalarDeleteCalls = 0;
-void __fastcall CThingNoiseDef_Destruct(void*)
+class CThingNoiseDef {
+public:
+    ~CThingNoiseDef();
+};
+CThingNoiseDef::~CThingNoiseDef()
 {
     ++g_AutoTinyScalarDestructorCalls;
 }
@@ -11,7 +15,7 @@ void __cdecl OperatorDelete(void*)
 }
 void* __fastcall CThingNoiseDef_ScalarDeletingDestructor(void* def, int, unsigned int flags)
 {
-    CThingNoiseDef_Destruct(def);
+    static_cast<CThingNoiseDef*>(def)->CThingNoiseDef::~CThingNoiseDef();
     if (flags & 1)
         OperatorDelete(def);
     return def;

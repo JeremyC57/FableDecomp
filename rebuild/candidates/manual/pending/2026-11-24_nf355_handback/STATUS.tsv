@@ -1,0 +1,7 @@
+address	status	where	reason
+0045c5f6	held (unit U1, rulings R1-R4)	held/u1	??1CThingNoiseDef@@UAE@XZ as the compiler-generated destructor emitted by CThingNoiseDef::Alloc on the new engine/CThingNoiseDef.h (VIRTUAL_MODEL): vland RELOCATION_MATCH PASS; leaf equal to HEAD under 2 UND renames; all emitted copies EQ under both checkers; vftables slot-for-slot; equiv 0/978 + control. Held: Alloc 0x0045C5C1 authored (R1), new LNK2005 ??0CThingNoiseDef v 0x00455EF0 + vftable COMDAT clash (R2), include-order pick-any device for ??_GCDefPointeeBase (R3), header opt-ins (R4)
+0045c5da	held (unit U1)	held/u1	callee CThingNoiseDef_Destruct -> ??1CThingNoiseDef@@UAE@XZ via the header's _DTOR_DECL binder opt-in (R4c); objsec ALL_EQ, vland PASS, no copies; self stand-in unchanged (NAME_FIXES)
+007fc800	held (unit U1)	held/u1	self -> ?EndAttackBeam@CTCKraken@@QAEXXZ (NF348 draft) + callees -> KillBeamEffect / KillTentacles PDB names; objsec equal except .drectve libcp (NF318 Q1 met); vland PASS; lands with 0045c5f6
+00455ef0	control only	-	HEAD compiled for the link check (strong ??0CThingNoiseDef, 1-slot vftables); port queued (NAME_FIXES, R2)
+0044c1bb	control only	-	HEAD compiled for the link check (strong ??0CTCNoiseDef; HEAD already LNK2005 v 0x00455EF0)
+00923f60	control only	-	HEAD compiled for the link check: EndAttackBeam resolves in HEAD and new sets

@@ -1,0 +1,34 @@
+addr       parity           behav  name
+0045c5f6   WARN RELOC_NAME: ??1CThingBaseDef@@UAE@XZ -> 00454b4c labelled '_global::Dtor_SharedBaseOf7_00454b4c'
+0045c5f6   RELOCATION_MATCH PASS   ~CThingNoiseDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045c5da.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045c5da.obj; graded the largest function
+0045c5da   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007fc800   RELOCATION_MATCH PASS   EndAttackBeam
+00923f60   WARN SHARED_HEADER_AVAILABLE CTCKraken (engine/CTCKraken.h)
+00923f60   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00923f60   RELOCATION_MATCH PASS   Initialise
+009243b0   WARN SHARED_HEADER_AVAILABLE CTCKraken (engine/CTCKraken.h)
+009243b0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009243b0   RELOCATION_MATCH PASS   Initialise
+00924520   WARN SHARED_HEADER_AVAILABLE CKrakenDef (engine/CKrakenDef.h)
+00924520   WARN SHARED_HEADER_AVAILABLE CTCKraken (engine/CTCKraken.h)
+00924520   WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)
+00924520   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00924520   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00924520   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00924520   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00924520   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00924520   RELOCATION_MATCH PASS   FinishAction
+  WARN leaf '?FinishAction@CCreatureAction_KrakenHighAttackLoop@?A0xe2035276@@UAEXXZ' matches no symbol in 00924930.obj; graded the largest function
+  WARN leaf '?FinishAction@CCreatureAction_KrakenHighAttackLoop@?A0xe2035276@@UAEXXZ' matches no symbol in 00924930.obj; graded the largest function
+00924930   RELOCATION_MATCH PASS   FinishAction
+
+WINS: 7
+  0045c5f6 RELOCATION_MATCH CThingNoiseDef::??1CThingNoiseDef@@UAE@XZ
+  0045c5da RELOCATION_MATCH CThingNoiseDef::`scalar_deleting_destructor'
+  007fc800 RELOCATION_MATCH _global::?EndAttackBeam@CTCKraken@@QAEXXZ
+  00923f60 RELOCATION_MATCH CCreatureAction_KrakenLowAttackOutOf::?Initialise@
+  009243b0 RELOCATION_MATCH CCreatureAction_KrakenHighAttackOutOf::?Initialise@
+  00924520 RELOCATION_MATCH CCreatureAction_KrakenLowAttackLoop::?FinishAction@CCreatureAction_KrakenLowAttackLoop@?A0x
+  00924930 RELOCATION_MATCH `anonymous namespace::?FinishAction@CCreatureAction_KrakenHighAttackLoop@?A0xe2035276@@UAEXXZ

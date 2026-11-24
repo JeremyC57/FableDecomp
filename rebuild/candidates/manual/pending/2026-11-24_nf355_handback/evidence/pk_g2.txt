@@ -1,0 +1,16 @@
+## 0045c5da /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/H_0045c5da.obj pickany_vs_retail --leaf=CThingNoiseDef_ScalarDeletingDestructor (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 0045c5da /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/H_0045c5da.obj pk_all --leaf=CThingNoiseDef_ScalarDeletingDestructor --row-length=28 --addrs=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/pk_addrs.tsv
+# leaf ?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z  source_a=yes  
+## done
+## 0045c5da /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/0045c5da.obj pickany_vs_retail --leaf=CThingNoiseDef_ScalarDeletingDestructor (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 0045c5da /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/0045c5da.obj pk_all --leaf=CThingNoiseDef_ScalarDeletingDestructor --row-length=28 --addrs=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/pk_addrs.tsv
+# leaf ?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z  source_a=yes  
+## done
+## 007fc800 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/H_007fc800.obj pickany_vs_retail --leaf=?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 007fc800 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/H_007fc800.obj pk_all --leaf=?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z --row-length=23 --addrs=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/pk_addrs.tsv
+# leaf ?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z  source_a=yes  
+## done
+## 007fc800 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/007fc800.obj pickany_vs_retail --leaf=?EndAttackBeam@CTCKraken@@QAEXXZ (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 007fc800 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/007fc800.obj pk_all --leaf=?EndAttackBeam@CTCKraken@@QAEXXZ --row-length=23 --addrs=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/pk_addrs.tsv
+# leaf ?EndAttackBeam@CTCKraken@@QAEXXZ  source_a=yes  
+## done

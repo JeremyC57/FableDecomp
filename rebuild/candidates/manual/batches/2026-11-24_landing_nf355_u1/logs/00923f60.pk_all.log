@@ -1,0 +1,16 @@
+# leaf ?Initialise@CCreatureAction_KrakenLowAttackOutOf@@UAEXXZ  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     18 leaf=n reach=n ?__stl_throw_out_of_range@std@@YAXPBD@Z
+NOADDR    NOADDR                    - -        pickany      5 leaf=n reach=n ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+NOADDR    NOADDR                    - -        pickany      4 leaf=n reach=n ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+NOADDR    NOADDR                    - -        pickany      8 leaf=n reach=n ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+NOADDR    NOADDR                    - -        pickany      8 leaf=n reach=n ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+NOADDR    NOADDR                    - -        pickany     15 leaf=n reach=n ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+NOADDR    NOADDR                    - -        pickany     13 leaf=n reach=n ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+EQ        EQ                 0040f020 a,b      pickany     60 leaf=y reach=y ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+EQ        ADDR_CONFLICT(EQ)  006804c0 c        pickany     60 leaf=y reach=y ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+NOADDR    NOADDR                    - -        pickany     37 leaf=n reach=n ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+EQ        EQ                 00410de0 b,c      pickany     63 leaf=n reach=n ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+EQ        EQ                 004118c0 b        pickany     58 leaf=n reach=n ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+NOADDR    NOADDR                    - -        pickany    112 leaf=n reach=n ??$GetTC@VCTCKraken@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCKraken@@@Z
+NOADDR    NOADDR                    - -        pickany     67 leaf=n reach=n ?GetKraken@CCombatActionBase@@QBEPAVCTCKraken@@XZ

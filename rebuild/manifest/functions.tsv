@@ -2809,7 +2809,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045c54e	operator=	CSoundThemeDef	unknown	undefined	0		0	yes	accepted									
 0045c5ab	Alloc	CSoundThemeDef	unknown	undefined	0		0			discovered	gapscan							
 0045c5da	`scalar_deleting_destructor'	CThingNoiseDef	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_0045c5da.cpp
-0045c5f6	~CThingNoiseDef	CThingNoiseDef	__thiscall	void	1	CTCKraken *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CTCKraken_EndAttackBeam_0045c5f6.cpp
+0045c5f6	~CThingNoiseDef	CThingNoiseDef	__thiscall	void	1	CThingNoiseDef *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CThingNoiseDef_CThingNoiseDef_0045c5f6.cpp
 0045c60f	Copy	CCreatureGenerationFamilyDef	__thiscall	void	2	CCreatureGenerationFamilyDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCreatureGenerationFamilyDef_Copy_0045c60f.cpp
 0045c614	operator=	CCreatureGenerationFamilyDef	unknown	undefined	0		0	yes	accepted									
 0045c64d	operator=	std::vector<ECreatureGeneratorGenerateType, std::allocator<ECreatureGeneratorGenerateType>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\45\0x0045C64D_global_CActiveFile_AssignUndefinedVector4.cpp				

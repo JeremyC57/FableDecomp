@@ -1,0 +1,3 @@
+## form S (p2 object) v p3 (adopted): every differing section
+3 .text ['??1CDefPointeeBase@@UAE@XZ'] bytes EQ flags 60101020 v 60501020 relocs EQ
+6 .text ['??_GCDefPointeeBase@@UAEPAXI@Z'] bytes DIFF flags 60101020 v 60501020 relocs EQ

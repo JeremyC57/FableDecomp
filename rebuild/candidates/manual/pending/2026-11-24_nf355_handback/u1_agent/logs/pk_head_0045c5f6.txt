@@ -1,0 +1,5 @@
+## 0045c5f6 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/H_0045c5f6.obj pickany_vs_retail --leaf=?EndAttackBeam@CTCKraken@@QAEXXZ (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+NEQ 007fc800 25 ?EndAttackBeam@CTCKraken@@QAEXXZ not referenced by the leaf
+## 0045c5f6 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/obj/H_0045c5f6.obj pk_all --leaf=?EndAttackBeam@CTCKraken@@QAEXXZ --row-length=25 --addrs=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF355/work/pk_addrs.tsv
+# leaf ?EndAttackBeam@CTCKraken@@QAEXXZ  source_a=yes  
+## done

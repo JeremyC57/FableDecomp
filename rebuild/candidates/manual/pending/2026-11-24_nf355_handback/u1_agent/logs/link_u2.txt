@@ -1,0 +1,26 @@
+## HEAD set: H_0045c5f6.obj H_0045c5da.obj H_007fc800.obj 00455ef0.obj 00923f60.obj 0044c1bb.obj
+duplicates 1
+  DUP 0044c1bb.obj ??0CTCNoiseDef@@QAE@XZ in 00455ef0.obj;
+UNRESOLVED 1 ??0CThingBaseDef@@QAE@XZ
+UNRESOLVED 1 ?Base454b4c@CTCKraken@@QAEXXZ
+UNRESOLVED 1 ?CThingNoiseDef_Destruct@@YIXPAX@Z
+UNRESOLVED 2 ?v00@CTCNoiseDef@@UAEXXZ
+UNRESOLVED 1 ?v00@CThingNoiseDef@@UAEXXZ
+UNRESOLVED 1 @Kraken_Finish@4
+UNRESOLVED 1 @Kraken_PreEnd@4
+## new set: 0045c5f6.obj 0045c5da.obj 007fc800.obj 00455ef0.obj 00923f60.obj 0044c1bb.obj
+duplicates 2
+  DUP 00455ef0.obj ??0CThingNoiseDef@@QAE@XZ in 0045c5f6.obj;
+  DUP 0044c1bb.obj ??0CTCNoiseDef@@QAE@XZ in 0045c5f6.obj;
+UNRESOLVED 2 ??0CThingBaseDef@@QAE@XZ
+UNRESOLVED 1 ?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z
+UNRESOLVED 1 ?Copy@CThingNoiseDef@@UAEXPBVCDefClassBase@@@Z
+UNRESOLVED 1 ?GetSizeofClass@CTCNoiseDef@@UAEKXZ
+UNRESOLVED 1 ?GetSizeofClass@CThingNoiseDef@@UAEKXZ
+UNRESOLVED 1 ?KillBeamEffect@CTCKraken@@AAEXXZ
+UNRESOLVED 1 ?KillTentacles@CTCKraken@@AAEXXZ
+UNRESOLVED 1 ?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 1 ?Transfer@CThingNoiseDef@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 2 ?v00@CTCNoiseDef@@UAEXXZ
+UNRESOLVED 1 ?v00@CThingNoiseDef@@UAEXXZ
+LK_DONE

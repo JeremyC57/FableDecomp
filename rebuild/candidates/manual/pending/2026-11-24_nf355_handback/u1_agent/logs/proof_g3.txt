@@ -1,0 +1,2 @@
+##### 0045c5da renames: ?CThingNoiseDef_Destruct@@YIXPAX@Z=??1CThingNoiseDef@@UAE@XZ
+ALL_EQ sections=2 DEF=1 UND=2 tables=-

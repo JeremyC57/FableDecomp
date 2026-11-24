@@ -1,0 +1,4 @@
+HEAD payload (head/payload.json) built from the repo sources by nf.py pay with HEADPAY=1 (NF355, 2026-11-24). Per row: repo file, sha1 now, sha1 of the payload source_cpp:
+0045c5f6	rebuild/src/compiled/00/45/CTCKraken_EndAttackBeam_0045c5f6.cpp	90579680288516b93384ecaf6f917a16b23a9fb4	90579680288516b93384ecaf6f917a16b23a9fb4	SAME
+0045c5da	rebuild/src/compiled/00/45/CThingNoiseDef_scalardeletingdestructor_0045c5da.cpp	c6509459a7353f39ce1da02f344d14a2fec090a6	c6509459a7353f39ce1da02f344d14a2fec090a6	SAME
+007fc800	rebuild/src/compiled/00/7f/CTCKraken_EndAttackBeam_007fc800.cpp	9b877b981485d4cb0dc82d3accbe0344c8da8b7f	9b877b981485d4cb0dc82d3accbe0344c8da8b7f	SAME

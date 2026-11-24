@@ -1,0 +1,8 @@
+action	symbol	target	witness	note
+replace	?CThingNoiseDef_Destruct@@YIXPAX@Z -> ??1CThingNoiseDef@@UAE@XZ	0045c5f6	0045c5da	NF355: 0x0045C5DA's call binds the PDB destructor (Ego_r.pdb + FableWin.pdb; RTTI slot 0 of 0x0123388C); only 0x0045C5DA (and its test) named the stand-in
+delete	?Base454b4c@CTCKraken@@QAEXXZ	00454b4c	0045c5f6	NF355: 0x0045C5F6 no longer binds the stand-in (only that row and its test named it); its tail jump binds ??1CThingBaseDef@@UAE@XZ (line below)
+add	??1CThingBaseDef@@UAE@XZ	00454b4c	0045c5f6	NF355: FableWin.pdb ??1CThingBaseDef@@UAE@XZ (FableWin's ~CThingNoiseDef calls it; Ego_r.pdb inlines it, silent); retail 0x0045C5F6 tail-jumps 0x00454B4C, whose body (~CThingComponentSet +0x39, jmp ~CParentDefClassBase) is FableWin's ~CThingBaseDef's calls
+delete	?Sub_vtbl_1230ba0@@3PAXA	01230ba0	0045c5f6	NF355: 0x0045C5F6 now stores ??_7CDefPointeeBase@@6B@ (existing line, witness 0042d910); only that row and its test named the stand-in
+add	??1CThingComponentSet@@QAE@XZ	00450ba0	0045c5f6	NF355: the ??1CThingBaseDef COMDAT the 0x0045C5F6 object emits calls it (Ego_r.pdb + FableWin.pdb; landed row 0x00450BA0 defines it)
+delete	@Kraken_PreEnd@4	007fb870	007fc800	NF355: 0x007FC800 now calls ?KillBeamEffect@CTCKraken@@AAEXXZ (existing line, witness 007fc730); no other landed row names the stand-in
+delete	@Kraken_Finish@4	007fb1c0	007fc800	NF355: 0x007FC800 now calls ?KillTentacles@CTCKraken@@AAEXXZ (existing line, witness 007fc730); no other landed row names the stand-in

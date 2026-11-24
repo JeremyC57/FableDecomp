@@ -28,7 +28,14 @@ public:
 #else
  CTCNoiseDef();
 #endif
+#ifndef FABLE_RETAIL_CTCNOISEDEF_IMPLICIT_DTOR
  virtual ~CTCNoiseDef();
+#else
+ // NF355 opt-in (2026-11-24, row 0x0045C5F6 ??1CThingNoiseDef@@UAE@XZ): retail's ~CTCNoiseDef is the compiler-generated one, so this
+ // class declares none. Retail never calls it out of line: 0x0045C5F6 (Noise +0x70) and 0x00749A70 (CTCNoise::Definition +0x0C) expand
+ // it with no CTCNoiseDef vtable store, down to ~CDefPointeeBase's store of 0x01230BA0 and the ~CResource 0x009FC550 call. Only
+ // FableWin.pdb (debug) has ??1CTCNoiseDef@@UAE@XZ; Ego_r.pdb inlines it. Without this macro the landed includers keep the declaration.
+#endif
  CTCNoiseDef & operator=(const CTCNoiseDef & p0);
 };
 FABLE_STATIC_ASSERT_AT(26, sizeof(CTCNoiseDef)==52);

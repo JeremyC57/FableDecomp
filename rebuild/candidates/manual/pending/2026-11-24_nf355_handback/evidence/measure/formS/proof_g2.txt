@@ -1,0 +1,5 @@
+##### 0045c5da renames: ?CThingNoiseDef_Destruct@@YIXPAX@Z=??1CThingNoiseDef@@UAE@XZ
+ALL_EQ sections=2 DEF=1 UND=2 tables=-
+##### 007fc800 renames: ?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z=?EndAttackBeam@CTCKraken@@QAEXXZ @Kraken_Finish@4=?KillBeamEffect@CTCKraken@@AAEXXZ @Kraken_PreEnd@4=?KillTentacles@CTCKraken@@AAEXXZ
+  .drectve HEAD-only=[] new-only=['/DEFAULTLIB:"libcp"']
+NOT_EQ section .drectve data/flags; section .text relocs sections=2 DEF=1 UND=2 tables=-

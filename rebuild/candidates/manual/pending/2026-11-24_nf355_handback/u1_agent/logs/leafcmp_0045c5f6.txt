@@ -1,0 +1,4 @@
+bytes EQUAL 25 25
+relocs EQUAL
+ head [(8, '??_7CDefPointeeBase@@6B@', 6), (13, '??1CResource@@UAE@XZ', 20), (21, '??1CThingBaseDef@@UAE@XZ', 20)]
+ new  [(8, '??_7CDefPointeeBase@@6B@', 6), (13, '??1CResource@@UAE@XZ', 20), (21, '??1CThingBaseDef@@UAE@XZ', 20)]

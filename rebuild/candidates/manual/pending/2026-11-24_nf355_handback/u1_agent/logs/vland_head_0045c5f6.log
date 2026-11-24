@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0045c5f6   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+0045c5f6   WARN SHARED_HEADER_AVAILABLE CTCKraken (engine/CTCKraken.h)
+0045c5f6   WARN RELOC_NAME: ?Base454b4c@CTCKraken@@QAEXXZ -> 00454b4c labelled '_global::Dtor_SharedBaseOf7_00454b4c'
+0045c5f6   WARN STANDIN_LEAF ?EndAttackBeam@CTCKraken@@QAEXXZ (catalog CThingNoiseDef::~CThingNoiseDef; names another function)
+0045c5f6   RELOCATION_MATCH PASS   ~CThingNoiseDef
+
+WINS: 1
+  0045c5f6 RELOCATION_MATCH CThingNoiseDef::EndAttackBeam

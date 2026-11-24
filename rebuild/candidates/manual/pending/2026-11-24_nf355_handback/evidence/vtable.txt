@@ -1,0 +1,64 @@
+## final 0x0045C5F6 object (p3 form)
+ 0 DIFF   obj=??_ECThingNoiseDef@@UAEPAXI@Z retail=0045c5da ??_GCThingNoiseDef@@UAEPAXI@Z
+ 1 EQ     obj=?Delete@CIVCountedPointeeBase@@UBEXXZ retail=0042d930 ?Delete@CIVCountedPointeeBase@@UBEXXZ
+ 2 EQ     obj=?UnloadResource@CDefClassBase@@UAE_NXZ retail=009ace90 ?UnloadResource@CDefClassBase@@UAE_NXZ
+ 3 EQ     obj=?GetUnloadableMemory@CResource@@UBEKXZ retail=009fbef0 ?GetUnloadableMemory@CResource@@UBEKXZ
+ 4 EQ     obj=?IsResourceLoaded@CResource@@UBE_NXZ retail=0042d950 ?IsResourceLoaded@CResource@@UBE_NXZ
+ 5 EQ     obj=?OnResourceLoaded@CResource@@UAEXXZ retail=0042d960 ?OnResourceLoaded@CResource@@UAEXXZ
+ 6 EQ     obj=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail=0042d970 ?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+ 7 EQ     obj=?OnResourceLoadAborted@CResource@@UAEXXZ retail=0042d980 ?OnResourceLoadAborted@CResource@@UAEXXZ
+ 8 EQ     obj=?GetDebugMemoryInUse@CResource@@UBEKXZ retail=009fbf00 ?GetDebugMemoryInUse@CResource@@UBEKXZ
+ 9 EQ     obj=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail=009fbf10 ?ResetDebugMemoryInUse@CResource@@UAEXXZ
+10 EQ     obj=?GetInstantiationName@CParentDefClassBase@@UBE?AVCDefString@@XZ retail=004303b0 ?GetInstantiationName@CParentDefClassBase@@UBE?AVCDefString@@XZ
+11 EQ     obj=?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z retail=004303c0 ?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z
+12 EQ     obj=?AddSubDef@CParentDefClassBase@@UAEXABVCCharString@@JJ@Z retail=009b00d0 ?AddSubDef@CParentDefClassBase@@UAEXABVCCharString@@JJ@Z
+13 EQ     obj=?RemoveSubDef@CParentDefClassBase@@UAEXABVCCharString@@@Z retail=009b0170 ?RemoveSubDef@CParentDefClassBase@@UAEXABVCCharString@@@Z
+14 EQ     obj=?GetPSubDefInfo@CParentDefClassBase@@UBEPBVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z retail=009ad4a0 ?GetPSubDefInfo@CParentDefClassBase@@UBEPBVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z
+15 EQ     obj=?GetPSubDefInfo@CParentDefClassBase@@UAEPAVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z retail=009ad510 ?GetPSubDefInfo@CParentDefClassBase@@UAEPAVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z
+16 EQ     obj=?IsParentDef@CParentDefClassBase@@UBE_NXZ retail=004303d0 ?IsParentDef@CParentDefClassBase@@UBE_NXZ
+17 EQ     obj=?PostTransfer@CDefClassBase@@UAEXXZ retail=0042da80 ?PostTransfer@CDefClassBase@@UAEXXZ
+18 EQ     obj=?Transfer@CThingNoiseDef@@UAEXAAVCPersistContext@@@Z retail=00455f1a ?Transfer@CThingNoiseDef@@UAEXAAVCPersistContext@@@Z
+19 EQ     obj=?Copy@CThingNoiseDef@@UAEXPBVCDefClassBase@@@Z retail=00463923 ?Copy@CThingNoiseDef@@UAEXPBVCDefClassBase@@@Z
+20 EQ     obj=?GetSizeofClass@CThingNoiseDef@@UAEKXZ retail=00455f14 ?GetSizeofClass@CThingNoiseDef@@UAEKXZ
+21 EQ     obj=?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail=009b0200 ?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+22 EQ     obj=?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z retail=009aed70 ?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z
+23 EQ     obj=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail=0042da90 ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+24 EQ     obj=?GetPSubDefInfoMap@CParentDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail=004303e0 ?GetPSubDefInfoMap@CParentDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+SLOTS 25 DIFF 1
+ 0 EQ     obj=??_ECTCNoiseDef@@UAEPAXI@Z retail=0044f71b ??_ECTCNoiseDef@@UAEPAXI@Z
+ 1 EQ     obj=?Delete@CIVCountedPointeeBase@@UBEXXZ retail=0042d930 ?Delete@CIVCountedPointeeBase@@UBEXXZ
+ 2 EQ     obj=?UnloadResource@CDefClassBase@@UAE_NXZ retail=009ace90 ?UnloadResource@CDefClassBase@@UAE_NXZ
+ 3 EQ     obj=?GetUnloadableMemory@CResource@@UBEKXZ retail=009fbef0 ?GetUnloadableMemory@CResource@@UBEKXZ
+ 4 EQ     obj=?IsResourceLoaded@CResource@@UBE_NXZ retail=0042d950 ?IsResourceLoaded@CResource@@UBE_NXZ
+ 5 EQ     obj=?OnResourceLoaded@CResource@@UAEXXZ retail=0042d960 ?OnResourceLoaded@CResource@@UAEXXZ
+ 6 EQ     obj=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail=0042d970 ?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+ 7 EQ     obj=?OnResourceLoadAborted@CResource@@UAEXXZ retail=0042d980 ?OnResourceLoadAborted@CResource@@UAEXXZ
+ 8 EQ     obj=?GetDebugMemoryInUse@CResource@@UBEKXZ retail=009fbf00 ?GetDebugMemoryInUse@CResource@@UBEKXZ
+ 9 EQ     obj=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail=009fbf10 ?ResetDebugMemoryInUse@CResource@@UAEXXZ
+10 EQ     obj=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail=0042da10 ?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+11 EQ     obj=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail=0042da20 ?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+12 EQ     obj=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail=0042da30 ?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+13 EQ     obj=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail=0042da40 ?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+14 EQ     obj=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail=0042da60 ?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+15 EQ     obj=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail=0042da50 ?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+16 EQ     obj=?IsParentDef@CDefClassBase@@UBE_NXZ retail=0042da70 ?IsParentDef@CDefClassBase@@UBE_NXZ
+17 EQ     obj=?PostTransfer@CDefClassBase@@UAEXXZ retail=0042da80 ?PostTransfer@CDefClassBase@@UAEXXZ
+18 EQ     obj=?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z retail=00452184 ?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z
+19 EQ     obj=?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z retail=004537e4 ?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z
+20 EQ     obj=?GetSizeofClass@CTCNoiseDef@@UAEKXZ retail=0044c1cd ?GetSizeofClass@CTCNoiseDef@@UAEKXZ
+21 EQ     obj=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail=009acab0 ?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+22 EQ     obj=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail=009acb20 ?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+23 EQ     obj=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail=0042da90 ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+24 EQ     obj=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail=0042daa0 ?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+SLOTS 25 DIFF 0
+ 0 EQ     obj=??_ECDefPointeeBase@@UAEPAXI@Z retail=0042d9a0 ??_ECDefPointeeBase@@UAEPAXI@Z
+ 1 EQ     obj=?Delete@CIVCountedPointeeBase@@UBEXXZ retail=0042d930 ?Delete@CIVCountedPointeeBase@@UBEXXZ
+ 2 EQ     obj=?UnloadResource@CResource@@UAE_NXZ retail=0042d940 ?UnloadResource@CResource@@UAE_NXZ
+ 3 EQ     obj=?GetUnloadableMemory@CResource@@UBEKXZ retail=009fbef0 ?GetUnloadableMemory@CResource@@UBEKXZ
+ 4 EQ     obj=?IsResourceLoaded@CResource@@UBE_NXZ retail=0042d950 ?IsResourceLoaded@CResource@@UBE_NXZ
+ 5 EQ     obj=?OnResourceLoaded@CResource@@UAEXXZ retail=0042d960 ?OnResourceLoaded@CResource@@UAEXXZ
+ 6 EQ     obj=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail=0042d970 ?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+ 7 EQ     obj=?OnResourceLoadAborted@CResource@@UAEXXZ retail=0042d980 ?OnResourceLoadAborted@CResource@@UAEXXZ
+ 8 EQ     obj=?GetDebugMemoryInUse@CResource@@UBEKXZ retail=009fbf00 ?GetDebugMemoryInUse@CResource@@UBEKXZ
+ 9 EQ     obj=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail=009fbf10 ?ResetDebugMemoryInUse@CResource@@UAEXXZ
+SLOTS 10 DIFF 0

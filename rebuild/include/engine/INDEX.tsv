@@ -1184,6 +1184,7 @@ CThing	_quarantine/CThing.h	152	24	QUARANTINED	3 conflict(s) in 3 file(s) vs 2 a
 CThingAICreature	CThingAICreature.h	472	24	OK	1 retail files
 CThingBaseDef	_quarantine/CThingBaseDef.h	112	15	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CThingBuildingDef	_quarantine/CThingBuildingDef.h	164	10	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingComponentSet	CThingComponentSet.h	8	1	OK	0 retail files
 CThingCreatureBase	CThingCreatureBase.h	352	34	OK	5 retail files
 CThingCreatureDef	_quarantine/CThingCreatureDef.h	332	57	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CThingDrainLifeShotDef	CThingDrainLifeShotDef.h	60	5	OK	0 retail files
@@ -1193,7 +1194,7 @@ CThingHolySiteDef	_quarantine/CThingHolySiteDef.h	128	6	QUARANTINED	3 conflict(s
 CThingMapManager	CThingMapManager.h	56	7	OK	0 retail files
 CThingMarkerDef	_quarantine/CThingMarkerDef.h	136	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CThingMultiArrowShotDef	CThingMultiArrowShotDef.h	84	11	OK	0 retail files
-CThingNoiseDef	_quarantine/CThingNoiseDef.h	164	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingNoiseDef	CThingNoiseDef.h	164	2	HAND_RETAIL	promoted from _quarantine by NF355 (2026-11-24): retail size 0xA4 (GetSizeofClass 0x00455F14, Alloc 0x0045C5C1, ctor 0x00455EF0) v donor 0xA8; hand retail correction kept
 CThingObjectDef	_quarantine/CThingObjectDef.h	156	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CThingPhysical	CThingPhysical.h	192	10	OK	1 retail files
 CThingPhysicalSwitchDef	_quarantine/CThingPhysicalSwitchDef.h	148	12	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing

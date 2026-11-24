@@ -1,0 +1,1 @@
+NOT_EQ section .drectve data/flags sections=2 DEF=1 UND=2 renames={'?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z': '?EndAttackBeam@CTCKraken@@QAEXXZ', '@Kraken_PreEnd@4': '?KillBeamEffect@CTCKraken@@AAEXXZ', '@Kraken_Finish@4': '?KillTentacles@CTCKraken@@AAEXXZ'}

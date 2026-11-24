@@ -1,0 +1,4 @@
+address	test_source	note
+0045c5f6	00/45/CTCKraken_EndAttackBeam_0045c5f6_test.cpp (rename with the row, RENAMES.tsv)	new standalone behaviour model: Alloc then delete through CDefClassBase*, destruction order Noise chain, ~CThingComponentSet, ~CParentDefClassBase, base chain ("DRCPDR"); same PassPattern 0045c5f6_TEST PASS; vland PASS; g++ PASS
+0045c5da	00/45/CThingNoiseDef_scalardeletingdestructor_0045c5da_test.cpp	standalone model respelled: the stand-in callee is a class CThingNoiseDef destructor; same PassPattern; vland PASS
+007fc800	00/7f/CTCKraken_EndAttackBeam_007fc800_test.cpp	linked with the row: calls the member EndAttackBeam, defines the private KillBeamEffect / KillTentacles (order checked); same PassPattern OK_007fc800; vland PASS

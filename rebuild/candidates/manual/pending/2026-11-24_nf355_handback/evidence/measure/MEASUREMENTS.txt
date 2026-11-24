@@ -1,0 +1,14 @@
+NF355 measurements for 0x0045C5F6 ??1CThingNoiseDef@@UAE@XZ (exp.py: VC7.1 RTM 3077, graded on the named leaf against the catalog oracle).
+None of these files is a candidate. a1-a4 use a local CThingBaseDef model (overlay work/exp/ov: CTCNoiseDef.h with the implicit-dtor opt-in);
+p1-p3 and formS use the real overlay (hdr/).
+
+tag    form                                                                         grade                note
+a1     Alloc form, implicit ~CThingBaseDef (typed Components), no pragma (/O2)      DIFFER(59v25)        no ??1 symbol: the dtor is expanded into ??_G
+a2     same, #pragma optimize("s", on)                                              RELOCATION_MATCH     ??1 / ??_G / ??0 / Alloc / ??1CThingBaseDef all retail-shaped
+a3     Alloc form, declared virtual ~CThingBaseDef (opaque Components), /O2         DIFFER(59v25)        no ??1 symbol
+a4     same, optimize("s")                                                          RELOCATION_MATCH     not used: a2 is the faithful (implicit) model
+formS  real headers, pragma at the row head                                         RELOCATION_MATCH     all copies EQ except ??_GCDefPointeeBase /Os `pop ecx` v retail 0x0042D9A0 /O2 `add esp,4` (NEQ; reached from the leaf through ??_7CDefPointeeBase, which pk_all's function-only reach walk does not follow)
+p1     pragma moved below the include                                               DIFFER(46v25)        ??_GCDefPointeeBase becomes EQ, but ??1 is no longer emitted (expanded into ??_G)
+p2     formS + optimize("", on) after Alloc                                         RELOCATION_MATCH     no change: ??_GCDefPointeeBase still /Os NEQ
+p3     engine/CDefPointeeBase.h included above the pragma                           RELOCATION_MATCH     every copy EQ (??_GCDefPointeeBase = 0x0042D9A0); only that COMDAT differs from formS (objsec); ADOPTED as the row
+NOT measured: the constructor-TU form (an out-of-line CThingNoiseDef::CThingNoiseDef in this row): it cannot avoid a second strong ??0CThingNoiseDef beside 0x00455EF0, and the Alloc form already reproduces every retail body.

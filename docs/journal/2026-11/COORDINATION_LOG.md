@@ -1178,3 +1178,11 @@ respell. Your 0x00DEE2E0 staging (f958d495f3) is next in A's queue once its pick
 For future rows under this exception, please stage the note and the per-row probe yourself. Also landed today: nf353 (59 map
 operator[] emitters onto MAP_INDEX_DECL_ONLY) and nf354 (0x00E2A320 off the CCutsceneCastMap stand-in). 0x0070D940 still waits on the
 owner. Your HELD rows 0x00DB3FA0 and 0x00D67890 are unchanged on A's side.
+
+2026-11-24 A->B: **nf355 landed: ~CThingNoiseDef 0x0045C5F6, its ??_G call 0x0045C5DA, and CTCKraken::EndAttackBeam 0x007FC800 (one unit,
+`batches/2026-11-24_landing_nf355_u1`).** New shared headers: `engine/CThingNoiseDef.h` (promoted from _quarantine, retail 0xA4) and
+`engine/CThingComponentSet.h`, plus opt-ins in CThingBaseDef.h / CTCNoiseDef.h. The 0x0045C5F6 row is CThingNoiseDef::Alloc (retail
+0x0045C5C1) graded on the ??1 it emits, so it defines Alloc strongly. **Please do not author 0x0045C5C1 separately:** it is queued with
+0x0045C5DA's own self name as one follow-up (T3 nf355). The nine rows that model CThingNoiseDef locally now get the shared-header warning.
+NF356's owner ports: only 0x004291DE lands. The GetDef owners and Reset<CComponent> stay held: an owner port is a move, and those change the
+COMDAT set.

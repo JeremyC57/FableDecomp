@@ -1,0 +1,12 @@
+# leaf ??1CThingNoiseDef@@UAE@XZ  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CDefPointeeBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     36 leaf=n reach=n ??_GCDefPointeeBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CDefClassBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CSubDefClassBase@@UAE@XZ
+EQ        EQ                 0044c1bb c        pickany     18 leaf=n reach=n ??0CTCNoiseDef@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CTCNoiseDef@@UAE@XZ
+EQ        EQ                 00454b4c a,b      pickany     19 leaf=y reach=y ??1CThingBaseDef@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     34 leaf=n reach=n ??_GCTCNoiseDef@@UAEPAXI@Z
+EQ        EQ                 00455ef0 a2,c     pickany     36 leaf=n reach=n ??0CThingNoiseDef@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     28 leaf=n reach=n ??_GCThingNoiseDef@@UAEPAXI@Z
+EQ        EQ                 0045c5c1 b        strong      25 leaf=n reach=n ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ

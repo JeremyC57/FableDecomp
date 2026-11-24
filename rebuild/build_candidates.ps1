@@ -43135,7 +43135,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007fc800'
-        Module = '_global'
+        Module = 'CTCKraken'
         Source = '00/7f/CTCKraken_EndAttackBeam_007fc800.cpp'
         TestSource = '00/7f/CTCKraken_EndAttackBeam_007fc800_test.cpp'
         PassPattern = 'OK_007fc800'
@@ -44229,8 +44229,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0045c5f6'
         Module = 'CThingNoiseDef'
-        Source = '00/45/CTCKraken_EndAttackBeam_0045c5f6.cpp'
-        TestSource = '00/45/CTCKraken_EndAttackBeam_0045c5f6_test.cpp'
+        Source = '00/45/CThingNoiseDef_CThingNoiseDef_0045c5f6.cpp'
+        TestSource = '00/45/CThingNoiseDef_CThingNoiseDef_0045c5f6_test.cpp'
         PassPattern = '0045c5f6_TEST PASS'
     }
     [pscustomobject]@{

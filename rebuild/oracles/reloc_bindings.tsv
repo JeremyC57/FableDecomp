@@ -453,8 +453,6 @@ _FreeThing@4	00451b82	00453630
 ?Sub3c_Notify@@YIXPAUSub3c@@@Z	0045180f	0045a133
 ?CActiveFile_CopyRange@@YIPAXHHPAXPBX@Z	0045bcc1	0045bcf2
 ??4CBase_00431ed0@@QAEAAU0@ABU0@@Z	00431ed0	0045bdb6
-?Base454b4c@CTCKraken@@QAEXXZ	00454b4c	0045c5f6
-?Sub_vtbl_1230ba0@@3PAXA	01230ba0	0045c5f6
 ??4CGenerateTypeVector@@QAEAAU0@ABU0@@Z	0045c64d	0045c614
 ??4CCharStringVector@@QAEAAU0@ABU0@@Z	00432ee9	0045cc04
 ?HHQ_vtbl@@3HA	01230ba0	0045ce22
@@ -2979,8 +2977,6 @@ _g_actionName	0123d724	007df2c0
 ?FrameUpdate@CTCBase@@UAEXXZ	006868a0	007f9b90
 ?UpdateTargetList@CTCTargetingSpirit@@IAEXXZ	007f9960	007f9b90
 ?GetClosestTentacleToTarget@CTCKraken@@QAE_NPAUSTentacleIterator@@@Z	007fb270	007fb4a0
-@Kraken_Finish@4	007fb1c0	007fc800
-@Kraken_PreEnd@4	007fb870	007fc800
 ??_7CTCUserActionPointBase@@6B@	0127216c	007fec60
 ?Open@CTCChest@@QAEXXZ	00750540	007ffc70
 ?Close@CTCChest@@QAEXXZ	007506c0	007ffcd0
@@ -17010,7 +17006,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?CPlayerInventoryDef_Destruct@@YIXPAX@Z	00459b73	00459b57
 ?CPlayerGuiDef_Destruct@@YIXPAX@Z	00459e46	00459e2a
 ?CUILocaleGraphicsDef_Destruct@@YIXPAX@Z	0045a133	0045a117
-?CThingNoiseDef_Destruct@@YIXPAX@Z	0045c5f6	0045c5da
+??1CThingNoiseDef@@UAE@XZ	0045c5f6	0045c5da
 ?AutoTinyScalarDestructor_0045ce22@@YIXPAX@Z	0045ce22	0045ce06
 ?CTCInGameMenu_Destruct@@YIXPAX@Z	0047e07f	004861c3
 ?ScalarDtor@CInputProcessConsole@@QAEXXZ	00a0d3d0	0048b3b0
@@ -39120,3 +39116,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z	0040b050	0041e6d3
 ?RemoveMap@CEngineManager@@QAEXJ@Z	006403d0	004ff8b0
 ?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	00643d8c	00437990
+??1CThingBaseDef@@UAE@XZ	00454b4c	0045c5f6
+??1CThingComponentSet@@QAE@XZ	00450ba0	0045c5f6

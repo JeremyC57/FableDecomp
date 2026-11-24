@@ -27215,3 +27215,6 @@ address	symbol	status	leaf_given
 00cd3d2e	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	RELOCATION_MATCH	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
 009ac700	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z	RELOCATION_MATCH	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z
 00e1a990	?Main@CQ_WizardBattleScript@NScript@@UAEXXZ	RELOCATION_MATCH	?Main@CQ_WizardBattleScript@NScript@@UAEXXZ
+0045c5f6	??1CThingNoiseDef@@UAE@XZ	RELOCATION_MATCH	??1CThingNoiseDef@@UAE@XZ
+0045c5da	?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	-
+007fc800	?EndAttackBeam@CTCKraken@@QAEXXZ	RELOCATION_MATCH	?EndAttackBeam@CTCKraken@@QAEXXZ

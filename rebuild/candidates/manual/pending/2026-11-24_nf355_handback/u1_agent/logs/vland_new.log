@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0045c5f6   WARN RELOC_NAME: ??1CThingBaseDef@@UAE@XZ -> 00454b4c labelled '_global::Dtor_SharedBaseOf7_00454b4c'
+0045c5f6   RELOCATION_MATCH PASS   ~CThingNoiseDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045c5da.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045c5da.obj; graded the largest function
+0045c5da   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007fc800   RELOCATION_MATCH PASS   EndAttackBeam
+
+WINS: 3
+  0045c5f6 RELOCATION_MATCH CThingNoiseDef::??1CThingNoiseDef@@UAE@XZ
+  0045c5da RELOCATION_MATCH CThingNoiseDef::`scalar_deleting_destructor'
+  007fc800 RELOCATION_MATCH _global::?EndAttackBeam@CTCKraken@@QAEXXZ

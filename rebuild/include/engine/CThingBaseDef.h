@@ -4,6 +4,9 @@
 #ifdef FABLE_RETAIL_CTHINGBASEDEF_DEFAULTSCRIPT
 #include "engine/CDefString.h"
 #endif
+#ifdef FABLE_RETAIL_CTHINGBASEDEF_COMPONENTS
+#include "engine/CThingComponentSet.h"
+#endif
 // Original Ego_r CThingBaseDef derives CParentDefClassBase; native STLport sizeof70.
 // Complete original Components through DefaultScriptData range retained opaque.
 #ifdef FABLE_RETAIL_CTHINGBASEDEF
@@ -15,7 +18,15 @@ public:
 #ifdef FABLE_RETAIL_CTHINGCREATUREDEF_TRANSFER_PASS24
     virtual void Transfer(class CPersistContext& persist);
 #endif
+#ifdef FABLE_RETAIL_CTHINGBASEDEF_COMPONENTS
+    // NF355 opt-in (2026-11-24, row 0x0045C5F6): Components typed as its Ego_r.pdb CThingComponentSet (engine/CThingComponentSet.h, 8
+    // bytes, out-of-line ~CThingComponentSet 0x00450BA0), so this class's destructor is retail's compiler-generated one: 0x00454B4C
+    // (FableWin.pdb ??1CThingBaseDef@@UAE@XZ; Ego_r.pdb inlines it) stores no vtable, calls ~CThingComponentSet on +0x39 and tail-jumps
+    // ~CParentDefClassBase 0x00430300. Same layout (8 bytes at +0x39).
+    CThingComponentSet Components;                               // +0x39
+#else
     unsigned char Components[8];                                 // +0x39 CThingComponentSet
+#endif
     bool AvailableInEditor:1, AlwaysFrameUpdate:1, StartKillLocked:1, LevelLess:1, IsDrawable:1, IsDrawableInEditor:1,
         ForceNoSerialise:1, InMapSearches:1;                     // +0x41
     bool IsLoadableGlobal:1, GameStatePersisted:1, CanComeBetweenCameraAndObservedThing:1, DrawWeaponTrails:1,
@@ -31,6 +42,11 @@ public:
     float MeshHeight;                                            // +0x5C
     float MeshRadius;                                            // +0x60
     float ApproxMaxMeshHeight;                                   // +0x64
+#ifdef FABLE_RETAIL_CTHINGBASEDEF_CTOR_DECL
+    // NF355 opt-in (2026-11-24, row 0x0045C5F6): declaration only, no layout change. ??0CThingBaseDef@@QAE@XZ (Ego_r.pdb + FableWin.pdb)
+    // is 0x006772D0, which the CThingNoiseDef constructor 0x00455EF0 calls out of line (landed table line ??0CThingBaseDef@@QAE@XZ).
+    CThingBaseDef();
+#endif
 #ifdef FABLE_RETAIL_CTHINGBASEDEF_DEFAULTSCRIPT
     // NF62 opt-in (2026-11-17, row 0x004CA010 CThing::ConstructFromParams): the two members typed as their Ego_r.pdb CDefString (engine/CDefString.h,
     // 4 bytes: TablePos), read through CDefString::GetString (`push [eax+68h] ; mov ecx,offset GDefStringTable ; call 0x009D49B0`). Same layout.
