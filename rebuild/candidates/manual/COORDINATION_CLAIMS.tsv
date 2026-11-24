@@ -486,3 +486,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF337: CDefClassBase-family Copy rows (48) NF335 skipped, as units with their operator= rows	naming	claimed	b1..b4 landed (38 rows); b5 / b6 ruled, landing next
 2026-11-24	A	q6333,q6342,q12343	naming	done	NF214 landed 2026-11-21 (batches/2026-11-21_landing_nf214; line with reordered item key q12343,q6333,q6342); closing this key too (NF338 D2)
 2026-11-24	A	agent NF337: CDefClassBase-family Copy rows (48) NF335 skipped, as units with their operator= rows	naming	done	46 rows landed (batches/2026-11-24_landing_nf337_b1..b6, b5u); 7 skipped-port, D-3 queued T3
+2026-11-24	A	agent NF338: T1 batch of 320 fresh tracker entries (130 classes, all fix kinds)	naming	done	5 rows landed (batches/2026-11-24_landing_nf338_b1..b3); 205 skipped-port, 99 held

@@ -1,0 +1,9 @@
+action	symbol	target	witness	note
+delete	?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ	00662410	00733580	entry 38 (stale): the HEAD object of 0x00733580 binds ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (line exists, witness 0x006EB390); ref_scan rs1 NONE
+delete	??0CCharString@std@@QAE@ABU01@@Z	0099ec30	004d0f80	entry 88 (stale): 0x004D0F80 binds ??0CCharString@@QAE@ABV0@@Z (line exists, witness 0x0046381B); the only landed source declaring a CCharString inside namespace std is 0x004D0830 (brace-aware scan), and its HEAD object (compiled) does not reference this symbol (ref_scan would be TOO_MANY on the identifier)
+delete	?AddSubChunk@CChunkedFileChunk@@QAEXABV?$CCountedPointer@UCChunkedFileChunk@@@@@Z	00aa84f0	00acd5a0	entry 112 (stale): 0x00ACD5A0 binds the PDB spelling (line exists, witness 0x00AC0C00); ref_scan rs1 NONE
+replace	?fn_a3a9c0@@YAXXZ -> ?Alloc@CCompressorZlib@@CAPAXPAXII@Z	00a3a9c0	00a3aa10	entry 119 (stale): 0x00A3AA10 binds the PDB private static (compiled); ref_scan rs1 NONE
+replace	?fn_a3aa00@@YAXXZ -> ?Free@CCompressorZlib@@CAXPAX0@Z	00a3aa00	00a3aa10	entry 120 (stale): as 119; ref_scan rs1 NONE
+delete	@FableGetCurrentPath_00997F80@8	00997f80	00999230	entry 149 (stale): 0x00999230 binds ?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ (line exists, witness 0x009990B0); no landed source names FableGetCurrentPath_00997F80 (ref_scan rs4 TOO_MANY on the decorated C name: grep is the census)
+delete	?SubmitDrag_00c25970@@YIXPBX@Z	00c25970	00c20340	entry 186 (stale): all 3 census binders bind ?GetMagnitude@C3DVector@@QBEMXZ (line exists, witness 0x00C45810); ref_scan rs1 NONE
+delete	??0CElement56_0049d380@@QAE@ABU0@@Z	0049d380	00b2aa70	entry 195 (stale): all 11 census binders bind ??0CCamera@@QAE@ABV0@@Z (line exists, witness 0x0049DAA0); ref_scan rs1 NONE

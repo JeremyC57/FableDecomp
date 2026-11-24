@@ -1,0 +1,2 @@
+##### 00405650 renames: ?Callback_DrawFans@@YIXPBUIMEUI_VERTEX@@I@Z=?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z ?Callback_malloc@@YIPAXI@Z=?Callback_malloc@CIME@NUISystem@@SIPAXI@Z
+ALL_EQ sections=8 DEF=7 tables=??_7CIMEFont@NUISystem@@6B@,??_7CImeUiFont_Base@@6B@

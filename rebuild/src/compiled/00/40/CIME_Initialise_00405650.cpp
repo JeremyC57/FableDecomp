@@ -5,11 +5,11 @@
 // Native nonvirtual Reset method missing from actual header uses a field-free derived method adapter.
 // Naming (NF142, 2026-11-20, q4291): the CSystemManagerNative / CDisplayManagerNative stand-ins and the local C2DExtentsI model replaced by
 //   engine/CSystemManager.h, engine/CDisplayManager.h and engine/C2DExtentsI.h: GetRenderTargetDimensions 0x009BEDC0 is Ego_r.pdb 0x00B242A0 +
-//   FableWin.pdb 0x03022ED0 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ (hidden C2DExtentsI result, `ret 4`), reached
-//   through the inline CSystemManager::GetDisplayManager (PDisplayManager Data word +0x60), as GFABoxToVBox 0x009E2020.
+//   FableWin.pdb 0x03022ED0 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ (hidden C2DExtentsI result, `ret 4`), reached through the inline CSystemManager::GetDisplayManager (PDisplayManager Data word +0x60), as GFABoxToVBox 0x009E2020.
 #define FABLE_RETAIL_CDISPLAYMANAGER
 #define FABLE_RETAIL_CSYSTEMMANAGER
 #define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CIME_CALLBACKS
 #include "fable_ime.h"
 #include "fable_string.h"
 #include "fable_compiler.h"
@@ -53,9 +53,9 @@ extern void (FABLE_FASTCALL *ImeUiCallback_Free)(void*); //0143CF08 (DirectX SDK
 extern void (FABLE_FASTCALL *ImeUiCallback_DrawFans)(const IMEUI_VERTEX*,unsigned int); //0143CDFC (SDK ImeUi.cpp callback pointer, chunk 685; naming wave 19)
 extern void (FABLE_FASTCALL *ImeUiCallback_OnChar)(wchar_t); //0143E630 (DXUT ImeUi.h; was g_ImeOnChar, Codex pass 12 respell)
 void FABLE_FASTCALL Callback_DrawRect(int,int,int,int,unsigned long); //00404D50
-void* FABLE_FASTCALL Callback_malloc(unsigned int); //00404A60, genuine malloc importBFEA0E
+// NF338: Callback_malloc 0x00404A60 (malloc importBFEA0E) is the PDB public static CIME::Callback_malloc (Ego_r + FableWin ?Callback_malloc@CIME@NUISystem@@SIPAXI@Z), fable_ime.h FABLE_RETAIL_CIME_CALLBACKS
 void FABLE_FASTCALL Callback_free(void*); //00404A70, freeBFEA14
-void FABLE_FASTCALL Callback_DrawFans(const IMEUI_VERTEX*,unsigned int); //00404E10
+// NF338: Callback_DrawFans 0x00404E10 is the PDB public static CIME::Callback_DrawFans (Ego_r + FableWin ?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z), same opt-in
 void FABLE_FASTCALL Callback_OnChar(wchar_t); //00404F00
 bool FABLE_FASTCALL ImeUi_Initialize(HWND__*,bool); //00CB5180 (FableWin.pdb ?ImeUi_Initialize@@YI_NPAUHWND__@@_N@Z; naming wave 19)
 void FABLE_FASTCALL ImeUi_EnableIme(bool); //00CB5130

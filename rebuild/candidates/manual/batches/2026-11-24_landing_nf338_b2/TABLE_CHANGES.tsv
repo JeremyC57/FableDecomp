@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?Callback_malloc@@YIPAXI@Z -> ?Callback_malloc@CIME@NUISystem@@SIPAXI@Z	00404a60	00405650	entry 223: the binder now references the PDB spelling; ref_scan rs3 NONE
+replace	?Callback_DrawFans@@YIXPBUIMEUI_VERTEX@@I@Z -> ?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z	00404e10	00405650	entry 224: the binder now references the PDB spelling; ref_scan rs3 NONE

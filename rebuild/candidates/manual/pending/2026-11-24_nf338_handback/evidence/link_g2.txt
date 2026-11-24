@@ -1,0 +1,6 @@
+## HEAD set: H_0056fad7.obj 0041d122.obj
+duplicates 0
+UNRESOLVED 1 ?OnOpenMenus@@YIXXZ
+## new set: 0056fad7.obj 0041d122.obj
+duplicates 0
+LK_DONE

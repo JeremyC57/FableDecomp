@@ -1,0 +1,7 @@
+idx	source	address	unit	reason
+62	nf309	0x0041D122	port	binder 0056fad7: census (tools/census309.py, NF299 Q4): every stand-in binder binds through a class / scope in neither PDB name set, the wrong class, or a free stand-in where the PDB has a member: 0056fad7:FREE
+112	nf294	0x00aa84f0	entry 48: AddSubChunk declared on an empty local `class CChunkedFileChunk` with CCountedPointer<struct ...> (U v V): class + key port	NF294 skipped-port
+186	nf285	0x00C25970	standin_alias port	binder source read; identity not verified: stand-in SubmitDrag_00c25970(const void*) is a free void function, the PDB spelling a float member C3DVector::GetMagnitude() const (0x00C25970 lies in the libpk range): identity and signature not settled here
+195	nf285	0x0049D380	standin_alias port	binder source read; identity not verified: stand-in element CElement56_0049d380 for CCamera's copy ctor (vector push_back row): STL-instance port
+223	nf309	0x00404A60	port	binder 00405650: census (tools/census309.py, NF299 Q4): every stand-in binder binds through a class / scope in neither PDB name set, the wrong class, or a free stand-in where the PDB has a member: 00405650:FREE
+224	nf309	0x00404E10	port	binder 00405650: census (tools/census309.py, NF299 Q4): every stand-in binder binds through a class / scope in neither PDB name set, the wrong class, or a free stand-in where the PDB has a member: 00405650:FREE

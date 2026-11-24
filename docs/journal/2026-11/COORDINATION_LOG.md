@@ -997,3 +997,9 @@ and change emitted COMDAT copies (here T67 turned a site inside the 0x00711A50 c
 copies the official checker does not see. Worth an audit pass with the all-copies tool. NAME_FIX: 0x00711A50 is bound as
 `?GrowInsert@?$CRetailVector..` but is `vector<CIVCountedPointer<C3DAnimationTransitionState>>::_M_insert_overflow`. B withdrew 0x0070D940's
 T67 payload (README section).
+
+2026-11-24 A->B: **B24C9 checker findings received.** Your 0x00711A50 name fix is queued (`acctB_b24C9`). A is starting an audit agent (NF340): it
+runs your `pk_all_copies.py` over every landed `/d2inl*` row, and then over a sample of other rows, to see how large the gap in
+`pickany_vs_retail.py` is. A will report the size here and land a checker fix if the gap is real. Also landed since the last note:
+NF337 (46 Def-class Copy / operator= rows) and NF338 (5 binder rows). NF338 D6 concerns you: if your `engine/NUISystem_CIME.h`
+(0x00402510) lands, the new `FABLE_RETAIL_CIME_CALLBACKS` opt-in in `fable_ime.h` should move to whichever CIME header becomes canonical.

@@ -1,0 +1,321 @@
+idx	target	t3_tag	status	where	reason
+1	0x00413590	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+2	0x004850F9	nf284	skipped-port	-	stand-in identifier still in every free binder's code
+3	0x0048AFB0	nf284	skipped-port	-	stand-in identifier still in every free binder's code
+4	0x0056C0F0	nf284	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+5	0x005C1946	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+6	0x005ED2C0	nf284	skipped-port	-	stand-in identifier still in every free binder's code
+7	0x006174F0	nf284	skipped-port	-	stand-in identifier still in every free binder's code
+8	0x0065D5A0	nf284	skipped-port	-	stand-in identifier still in every free binder's code
+9	0x006E46F0	nf284	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+10	0x007180B0	nf284	skipped-port	-	stand-in identifier still in every free binder's code
+11	0x007222B0	nf284	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+12	0x0085A5A0	nf284	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+13	0x009A4400	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+14	0x00AC3A10	nf284	skipped-port	-	stand-in identifier still in every free binder's code
+15	0x00B230E0	nf284	skipped-port	-	stand-in identifier still in every free binder's code
+16	0x00B3E4A0	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+17	0x00CB8D30	nf295	skipped-port	-	re-read: witness 00cb8230 compiled at HEAD binds ?DeleteData@CEntityScriptBindingBase@@QAEXXZ (table line), not the PDB ?DeleteData@?$CCountedPointer@VCEntityScriptBindingBase@@@@SIXPAX@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+18	0x00CE10B0	nf295	skipped-port	-	stand-in identifier still in every free binder's code
+19	0x0045E011	nf300	skipped-port	-	re-read: witness 0067c020 compiled at HEAD binds ?TransferBinaryIn@?$CPersistTraits@W4EOpinionReactionType@@@@QBEXAAVCMemoryDataInputStream@@PAW4EOpinionReactionType@@@Z (table line), not the PDB ?TransferBinaryIn@?$CPersistTraits@W4EOpinionReactionType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EOpinionReactionType@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+20	0x0045ED25	nf300	skipped-port	-	re-read: witness 0067c020 compiled at HEAD binds ?TransferBinaryIn@?$CPersistTraits@W4EOpinionAttitudeType@@@@QBEXAAVCMemoryDataInputStream@@PAW4EOpinionAttitudeType@@@Z (table line), not the PDB ?TransferBinaryIn@?$CPersistTraits@W4EOpinionAttitudeType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EOpinionAttitudeType@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+21	0x00464030	nf300	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+22	0x00475B93	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+23	0x004DDF0C	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+24	0x0057F9E9	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+25	0x005C0A98	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+26	0x005C19A3	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+27	0x0067AA40	nf300	skipped-port	-	re-read: witness 0067c110 compiled at HEAD binds ?TransferBinaryIn@?$CPersistTraits@W4EOpinionTargetingConditionType@@@@QBEXAAVCMemoryDataInputStream@@PAW4EOpinionTargetingConditionType@@@Z (table line), not the PDB ?TransferBinaryIn@?$CPersistTraits@W4EOpinionTargetingConditionType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EOpinionTargetingConditionType@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+28	0x006DC6A0	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+29	0x009CB960	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+30	0x009CBFE0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+31	0x009CC270	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+32	0x009CD620	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+33	0x009CE370	nf285	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+34	0x009CE8D0	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+35	0x009CFBC0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+36	0x009D1160	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+37	0x009D1260	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+38	0x00662410	nf299	done-partial	TABLE_ONLY	table line ?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ / 00733580 is stale: the HEAD object of 00733580 binds the PDB ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (compiled); delete it (ref_scan NONE). The rest of the reason holds (0093dcd0 / 006ea770 T3 rows; 0093e2d0, 0095d070, 00962a90 stand-in / wrong classes)
+39	0x00662B10	nf310	skipped-port	-	re-read: witness 008d6780 compiled at HEAD binds ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@PBVCAnimFilterBase@@J@Z (table line), not the PDB ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@J@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+40	0x00663610	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+41	0x006644F0	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+42	0x006647F0	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+43	0x00665E90	access2	skipped-port	-	stand-in identifier still in every free binder's code
+44	0x00666830	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+45	0x006668A0	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+46	0x00666D40	nf296	skipped-port	-	stand-in identifier still in every free binder's code
+47	0x004D788D	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+48	0x004DD728	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+49	0x005799FD	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+50	0x005E0E20	nf312	skipped-port	-	re-read: witness 005e1020 compiled at HEAD binds ??4?$pair@KVCAnimationEntry@@@@QAEAAU0@ABU0@@Z (table line), not the PDB ??4?$pair@KVCAnimationEntry@@@std@@QAEAAU01@ABU01@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+51	0x005F8736	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+52	0x006B8E20	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+53	0x00825090	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+54	0x00827F80	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+55	0x00AE98E0	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+56	0x008FCF10	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+57	0x0097D580	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+58	0x0097E270	nf296	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+59	0x0097E2D0	nf296	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+60	0x0097EC00	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+61	0x00980BD0	nf290	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+62	0x0041D122	nf309	done	b1	the census-only reason (FREE stand-in) does not hold: both binders 0056fad7 and 006116e0 (no table line) already model NUISystem::CManager locally, so the static member is declared there (objsec ALL_EQ); 004830a1 / 0058578b / 00622a00 bind the PDB form (compiled)
+63	0x0041D21B	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+64	0x0041DB1D	nf300	skipped-port	-	re-read: witness 005e4430 compiled at HEAD binds ?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@_N@Z (table line), not the PDB ?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+65	0x0041DB84	nf300	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+66	0x0066E9E9	nf300	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+67	0x006F90D0	nf309	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+68	0x004C78A0	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+69	0x004C79E0	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+70	0x004C7A10	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+71	0x004C8310	nf310	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+72	0x004C9C40	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+73	0x004CA1D0	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+74	0x0065F856	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+75	0x0065F884	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+76	0x00660034	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+77	0x00660062	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+78	0x00660090	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+79	0x006600BE	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+80	0x00660787	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+81	0x00660894	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+82	0x0066090A	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+83	0x00660980	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+84	0x006609F6	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+85	0x00660A6C	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+86	0x0099E4B0	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+87	0x0099E5F0	nf293	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+88	0x0099EC30	nf294	done-partial	TABLE_ONLY	table line ??0CCharString@std@@QAE@ABU01@@Z / 004d0f80 is stale (004d0f80 binds the PDB ??0CCharString@@QAE@ABV0@@Z, compiled); delete it. The ~60 other stand-in spellings hold
+89	0x0099ED10	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+90	0x0099EFE0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+91	0x00658716	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+92	0x0065914B	nf296	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+93	0x00659EFC	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+94	0x0065B349	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+95	0x0065BFFA	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+96	0x004FB880	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+97	0x004FC970	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+98	0x00500EB0	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+99	0x00501990	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+100	0x00501D30	nf312	skipped-port	-	re-read: witness 00502170 compiled at HEAD binds ?GetLevelFilesFromWorldFile@CWorldMap@@QAEXABVCWideString@@AAU?$vector@VCWideString@@@@@Z (table line), not the PDB ?GetLevelFilesFromWorldFile@CWorldMap@@IAEXABVCWideString@@AAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+101	0x006603A0	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+102	0x006603DD	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+103	0x0066041A	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+104	0x00660457	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+105	0x00660494	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+106	0x00411570	nf294	skipped-port	-	re-read: witness 008330d0 compiled at HEAD binds ?Compare@@YIJPBD0@Z (table line), not the PDB ?Compare@?$CBasicString@D@@KIJPBD0@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+107	0x004115A0	nf294	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+108	0x009A0080	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+109	0x009A0460	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+110	0x00AA78C0	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+111	0x00AA8400	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+112	0x00AA84F0	nf294	done	TABLE_ONLY	table line ?AddSubChunk@CChunkedFileChunk@@... / 00acd5a0 is stale: 00acd5a0 binds the PDB spelling (compiled); both census binders bind the PDB form; delete it (ref_scan NONE)
+113	0x00AA8830	nf294	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+114	0x006E9360	nf293	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+115	0x006EA770	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+116	0x006EAE20	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+117	0x006EDC50	nf293	skipped-port	-	re-read: witness 0095d200 compiled at HEAD binds ?RegisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@0_N@Z (table line), not the PDB ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+118	0x00A3A7D0	nf299	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+119	0x00A3A9C0	nf299	done-partial	b3 + TABLE_ONLY	00a3aa10 already binds the PDB ?Alloc@CCompressorZlib@@CAPAXPAXII@Z (stale ?fn_a3a9c0 line: replace); 00a3aa40 respelled ZAlloc -> private static Alloc (objsec ALL_EQ). 00a3ab00 still holds (its self is the CCompressorZlib_Retail stand-in)
+120	0x00A3AA00	nf299	done-partial	b3 + TABLE_ONLY	as 119 for Free (stale ?fn_a3aa00 line: replace; 00a3aa40 ZFree -> private static Free); 00a3ab00 holds
+121	0x00A3AA40	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+122	0x0062EBC0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+123	0x00692A50	nf295	skipped-port	-	stand-in identifier still in every free binder's code
+124	0x00692BC0	nf314	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+125	0x00692C10	nf314	skipped-port	-	stand-in identifier still in every free binder's code
+126	0x00996AF0	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+127	0x009E42C0	nf292	not-taken(prose-only)	-	named only in another line's prose (coordinator: list in NOTES, do not take)
+128	0x00A66860	nf292	not-taken(prose-only)	-	named only in another line's prose (coordinator: list in NOTES, do not take)
+129	0x00A66C00	nf292	not-taken(prose-only)	-	named only in another line's prose (coordinator: list in NOTES, do not take)
+130	0x005BC5C6	nf296	skipped-port	-	stand-in identifier still in every free binder's code
+131	0x005BF3F1	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+132	0x005BF482	nf307	skipped-port	-	stand-in identifier still in every free binder's code
+133	0x005BF91A	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+134	0x008ABF20	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+135	0x0090DEE0	nf287	skipped-port	-	stand-in identifier still in every free binder's code
+136	0x0090EDC0	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+137	0x00939CB0	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+138	0x00463F9C	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+139	0x0046CAF4	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+140	0x00472123	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+141	0x004E89F7	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+142	0x00BFC880	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+143	0x00BFCA20	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+144	0x00BFCBC0	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+145	0x00BFCD60	nf312	skipped-port	-	stand-in identifier still in every free binder's code
+146	0x00405F00	nf296	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+147	0x005578A0	nf312	skipped-port	-	re-read: witness 005580b0 compiled at HEAD binds ?AreAllowedToCoexist@@YI_NJJ@Z (table line), not the PDB ?AreAllowedToCoexist@@YI_NW4EGameAction@@0@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+148	0x00778610	nf312	skipped-port	-	re-read: witness 007786f0 compiled at HEAD binds ?GFGetValPositionInLimitsLooping@@YI_NMMMMMPAM@Z (table line), not the PDB ?GFGetValPositionInLimitsLooping@@YI_NMMMMMAAM@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+149	0x00997F80	nf285	done-partial	b1 + TABLE_ONLY	table line @FableGetCurrentPath_00997F80@8 / 00999230 is stale (00999230 binds the PDB static, compiled): delete; 00999110 (no table line) respelled GetCurrentWorkingDirectory -> CAFile::GetCurrentPath on its own local CAFile model (objsec ALL_EQ); 14 other census binders bind the PDB form (compiled); 009994a0 (T3 nf303) not compiled, binds through engine/CAFile.h by source
+150	0x00999AB0	nf294	skipped-port	-	re-read: witness 0049d4b0 compiled at HEAD binds ?IsRoomForFile@@YI_NJPBG@Z (table line), not the PDB ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+151	0x00999CB0	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+152	0x006B5DF0	nf294	skipped-port	-	re-read: witness 006b63c0 compiled at HEAD binds ??4CBlendedEnvironmentTheme@@QAEAAU0@ABU0@@Z (table line), not the PDB ??4CBlendedEnvironmentTheme@NEnvironmentInternal@@QAEAAV01@ABV01@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+153	0x008864A0	nf294	skipped-port	-	re-read: witness 006b4900 compiled at HEAD binds ??0CBlendedEnvironmentTheme@@QAE@XZ (no table line), not the PDB ??0CBlendedEnvironmentTheme@NEnvironmentInternal@@QAE@XZ; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+154	0x008894A0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+155	0x00BDC020	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+156	0x00BDC180	rename1	skipped-port	-	re-read: witness 00b68610 compiled at HEAD binds ?UpdateBackgroundLOD@CEngineLandscapeMap@@QAEHPAVCLandscapeGPUUpdateQueue@@N_N@Z (table line), not the PDB ?UpdateBackgroundLOD@CEngineLandscapeMap@@QAE?AW4LS_LOADING_STATUS@@AAVCLandscapeGPUUpdateQueue@@N_N@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+157	0x00BDC450	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+158	0x00B64550	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+159	0x00B64FA0	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+160	0x00B65A20	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+161	0x00884E90	nf307	skipped-port	-	re-read: witness 006b8640 compiled at HEAD binds ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@@_N@Z (table line), not the PDB ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+162	0x008854A0	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+163	0x00885680	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+164	0x0082E600	nf304	skipped-port	-	stand-in identifier still in every free binder's code
+165	0x0082E910	nf304	skipped-port	-	stand-in identifier still in every free binder's code
+166	0x0082E9C0	nf304	skipped-port	-	stand-in identifier still in every free binder's code
+167	0x006C59E0	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+168	0x006C5E90	nf291	not-taken(prose-only)	-	named only in another line's prose (coordinator: list in NOTES, do not take)
+169	0x006C5F80	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+170	0x0074AC80	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+171	0x00772120	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+172	0x007751A0	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+173	0x0066ADD0	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+174	0x0066AEB0	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+175	0x0066BC10	nf288	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+176	0x0051ED80	nf296	skipped-port	-	stand-in identifier still in every free binder's code
+177	0x0051EFC0	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+178	0x00520D00	nf310	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+179	0x00A4EAE0	nf290	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+180	0x00A50BF0	nf285	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+181	0x00AC0E50	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+182	0x00AC0EE0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+183	0x00A9B030	nf292	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+184	0x00A9B0C0	nf292	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+185	0x00A13C60	nf294	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+186	0x00C25970	nf285	done	TABLE_ONLY	table line ?SubmitDrag_00c25970@@YIXPBX@Z / 00c20340 is stale: all 3 census binders bind ?GetMagnitude@C3DVector@@QBEMXZ (compiled); delete it (ref_scan NONE)
+187	0x00712340	nf290	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+188	0x00717950	nf314	skipped-port	-	re-read: witness 00717d40 compiled at HEAD binds ??0CActionTalkBase@NTCScriptedControl@@QAE@PAUCThing@1@_N11@Z (table line), not the PDB ??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+189	0x00A24D70	nf294	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+190	0x00A25B20	nf294	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+191	0x009B4B80	nf294	skipped-port	-	re-read: witness 009b6eb0 compiled at HEAD binds ?DeallocateMemory@?$CArray@PAVCInstantiatedDefInfo@@@@QAEXXZ (table line), not the PDB ?DeallocateMemory@?$CArray@PAVCInstantiatedDefInfo@CDefinitionManager@@@@QAEXXZ; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+192	0x009B7B10	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+193	0x009D5F80	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+194	0x009D6490	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+195	0x0049D380	nf285	done	TABLE_ONLY	table line ??0CElement56_0049d380@@QAE@ABU0@@Z / 00b2aa70 is stale: all 11 census binders bind ??0CCamera@@QAE@ABV0@@Z (compiled); delete it (ref_scan NONE)
+196	0x00A0C380	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+197	0x009EAF80	nf285	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+198	0x009ED190	nf293	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+199	0x00910B20	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+200	0x00910C30	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+201	0x00A593F0	nf295	skipped-port	-	re-read: witness 00815c40 compiled at HEAD binds ?GetFirstIntersectionWithTriangle@CCylinder@@QBE_NPBXPAVC3DVector@@1@Z (table line), not the PDB ?GetFirstIntersectionWithTriangle@CCylinder@NBBBMaths@@QBE_NABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@1@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+202	0x00A59FD0	nf309	skipped-port	-	re-read: witness 00815ba0 compiled at HEAD binds ?GetFirstIntersectionWithFiniteLine@CCylinder@@QBE_NABVC3DVector@@0PAV2@1@Z (table line), not the PDB ?GetFirstIntersectionWithFiniteLine@CCylinder@NBBBMaths@@QBE_NABVC3DVector@@0AAV3@1@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+203	0x009C8660	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+204	0x009C8990	nf295	skipped-port	-	stand-in identifier still in every free binder's code
+205	0x00993B20	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+206	0x00993CA0	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+207	0x009D49B0	nf309	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+208	0x009D4A50	access2	skipped-port	-	stand-in identifier still in every free binder's code
+209	0x009BF7E0	nf297	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+210	0x009C0E50	nf297	not-taken(prose-only)	-	named only in another line's prose (coordinator: list in NOTES, do not take)
+211	0x00644EFD	nf295	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+212	0x0064A3ED	nf297	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+213	0x00B90270	nf297	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+214	0x00B903D0	nf297	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+215	0x00434840	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+216	0x00436560	nf295	skipped-port	-	stand-in identifier still in every free binder's code
+217	0x00994700	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+218	0x00994780	nf300	skipped-port	-	re-read: witness 009b08c0 compiled at HEAD binds ??1CFileDataInputStream@@QAE@XZ (table line), not the PDB ??1CFileDataInputStream@@UAE@XZ; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+219	0x009FE460	nf295	skipped-port	-	stand-in identifier still in every free binder's code
+220	0x009FF220	nf309	skipped-port	-	re-read: witness 009ff710 compiled at HEAD binds ?UploadFrame@CFrameData@@QAE_N_N@Z (table line), not the PDB ?UploadFrame@CFrameData@CGraphicInfoFrame@@QAE_N_N@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+221	0x006BB860	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+222	0x006BB940	nf300	skipped-port	-	stand-in identifier still in every free binder's code
+223	0x00404A60	nf309	done	b2	the census-only reason (FREE stand-in) does not hold as an obstacle: binder 0x00405650 binds the PDB public static NUISystem::CIME::Callback_malloc through an add-only fable_ime.h opt-in (FABLE_RETAIL_CIME_CALLBACKS; probe, equiv 0 DIFF, planted control = the 7 includers); objsec ALL_EQ, link resolves; batches/b2
+224	0x00404E10	nf309	done	b2	as 223 for Callback_DrawFans (same binder, same opt-in); batches/b2
+225	0x00A03B40	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+226	0x00A043A0	nf296	skipped-port	-	stand-in identifier still in every free binder's code
+227	0x007A0770	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+228	0x007A1380	nf314	skipped-port	-	re-read: witness 007a16f0 compiled at HEAD binds ?Activate@CLightningBeam@@QAEXXZ (table line), not the PDB ?Activate@CLightningBeam@CTCWillLightning@@QAEXXZ; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+229	0x00415FBC	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+230	0x00416225	nf299	skipped-port	-	stand-in identifier still in every free binder's code
+231	0x005110B0	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+232	0x00513BF0	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+233	0x0082A300	nf309	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+234	0x0082A890	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+235	0x0073A760	nf309	skipped-port	-	re-read: witness 00862780 compiled at HEAD binds ?GetNoFramesBeforePlayingIdleAnims@CModeBase@@QAEJW4EMode@@@Z (table line), not the PDB ?GetNoFramesBeforePlayingIdleAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+236	0x0073A7D0	nf309	skipped-port	-	re-read: witness 00862780 compiled at HEAD binds ?GetNoFramesBeforePlayingWaveAnims@CModeBase@@QAEJW4EMode@@@Z (table line), not the PDB ?GetNoFramesBeforePlayingWaveAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+237	0x00BDD860	nf298	skipped-port	-	stand-in identifier still in every free binder's code
+238	0x00BDE600	nf298	skipped-port	-	re-read: witness 00bde680 compiled at HEAD binds ?CreatePrimitiveOfType@CObjectTypeCollection@@QAEPAVCLocalDetailPrimitiveBase@@J@Z (table line), not the PDB ?CreatePrimitiveOfType@CObjectTypeCollection@CLocalDetailCacheMap@@QAEPAVCLocalDetailPrimitiveBase@@W4LOCAL_DETAIL_PRIMITIVE_TYPE@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+239	0x004888C0	nf304	skipped-port	-	re-read: witness 00449cb0 compiled at HEAD binds ?SwitchPlayerCharactersWith@CPlayer@@QAE_NPAU1@@Z (table line), not the PDB ?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+240	0x00489D40	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+241	0x004AFC60	nf309	skipped-port	-	stand-in identifier still in every free binder's code
+242	0x004B0C80	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+243	0x00A04630	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+244	0x00A059E0	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+245	0x006A22D0	nf285	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+246	0x006A2520	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+247	0x008ED040	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+248	0x008ED1F0	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+249	0x006D4D70	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+250	0x006D4E60	nf307	skipped-port	-	stand-in identifier still in every free binder's code
+251	0x008018B0	nf296	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+252	0x00801920	nf307	skipped-port	-	re-read: witness 00917af0 compiled at HEAD binds ?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@J@Z (table line), not the PDB ?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@W4EIdleStateGroup@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+253	0x00582027	nf309	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+254	0x00584B86	nf307	skipped-port	-	re-read: witness 00584edc compiled at HEAD binds ?AssignThingPC@CTCInventory@@QAEXJKPAUCComponent@@@Z (table line), not the PDB ?AssignThingPC@CTCInventory@@QAEXJKPAVCComponent@NUISystem@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+255	0x005F0DC5	nf307	skipped-port	-	re-read: witness 005f4519 compiled at HEAD binds ?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAUCComponent@@@Z (table line), not the PDB ?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAVCComponent@NUISystem@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+256	0x005F1320	nf307	skipped-port	-	re-read: witness 005f4519 compiled at HEAD binds ?UnAssignAbilityPC@CTCInventoryAbilities@@QAEXKPAUCComponent@@@Z (table line), not the PDB ?UnAssignAbilityPC@CTCInventoryAbilities@@QAEXKPAVCComponent@NUISystem@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+257	0x005B43A2	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+258	0x005B4A95	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+259	0x0056FF3D	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+260	0x0056FFC5	nf289	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+261	0x00746EC0	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+262	0x00747B80	nf310	skipped-port	-	re-read: witness 0096ff10 compiled at HEAD binds ?SetAsInDanger@CTCStealth@@QAEXPAVCThing@@J@Z (table line), not the PDB ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+263	0x007F5890	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+264	0x008ABB50	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+265	0x005EB4B0	nf310	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+266	0x005ECA50	nf310	skipped-port	-	stand-in identifier still in every free binder's code
+267	0x006D5AB0	nf296	skipped-port	-	stand-in identifier still in every free binder's code
+268	0x00830EB0	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+269	0x00632830	nf312	skipped-port	-	re-read: witness 006327a0 compiled at HEAD binds ??$GFSerialiseMapBinaryIn@JW4ETableSprites@NUISystem@@U?$less@W4ETableSprites@NUISystem@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4ETableSprites@NUISystem@@JU?$less@W4ETableSprites@NUISystem@@@std@@@std@@@Z (table line), not the PDB ??$GFSerialiseMapBinaryIn@JW4ETableSprites@NUISystem@@U?$less@W4ETableSprites@NUISystem@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4ETableSprites@NUISystem@@JU?$less@W4ETableSprites@NUISystem@@@std@@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@J@std@@@4@@std@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+270	0x00632B90	nf312	skipped-port	-	re-read: witness 00632af0 compiled at HEAD binds ??$GFSerialiseMapBinaryIn@VCCharString@@KU?$less@K@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@KVCCharString@@U?$less@K@std@@@std@@@Z (table line), not the PDB ??$GFSerialiseMapBinaryIn@VCCharString@@KU?$less@K@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@KVCCharString@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@3@@std@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+271	0x004314C8	nf291	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+272	0x00475A51	nf291	skipped-port	-	stand-in identifier still in every free binder's code
+273	0x00769040	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+274	0x00A25970	nf290	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+275	0x00C72600	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+276	0x00929FC0	nf287	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+277	0x00958770	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+278	0x0092FAB0	nf290	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+279	0x009580E0	nf285	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+280	0x00915B60	nf290	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+281	0x009852C0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+282	0x0095D4C0	nf290	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+283	0x009652C0	nf290	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+284	0x009350C0	nf294	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+285	0x00962AF0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+286	0x00916790	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+287	0x0070C280	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+288	0x005DD2E0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+289	0x00E55CE0	nf294	skipped-port	-	re-read: witness 00e57530 compiled at HEAD binds ?AskForBook@CBS_Teacher@@QAE_NJVCCharString@@@Z (table line), not the PDB ?AskForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAE_NJVCCharString@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+290	0x009D5620	nf294	skipped-port	-	stand-in identifier still in every free binder's code
+291	0x009A7AC0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+292	0x0099A2F0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+293	0x004B73A0	nf294	skipped-port	-	re-read: witness 004b1960 compiled at HEAD binds ??0CBoast@@QAE@ABU0@@Z (table line), not the PDB ??0CBoast@CQuestManager@@QAE@ABV01@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+294	0x00A38500	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+295	0x0056E2D0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+296	0x00654F80	nf294	skipped-port	-	re-read: witness 0064dae0 compiled at HEAD binds ??0CChangeText@@QAE@ABVC2DVector@@ABVCRGBColour@@ABVCWideString@@J_N@Z (table line), not the PDB ??0CChangeText@CStatBar@NPlayerGui@@QAE@ABVC2DVector@@ABVCRGBColour@@ABVCWideString@@J_N@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+297	0x0052C920	nf294	skipped-port	-	re-read: witness 005546f0 compiled at HEAD binds ?ProcessChangeState@CChangingStateComponent@@QAEXXZ (table line), not the PDB ?ProcessChangeState@CChangingStateComponent@NUISystem@@MAEXXZ; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+298	0x00A373B0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+299	0x0062F3B0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+300	0x006F83C0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+301	0x008B0AB0	nf293	skipped-port	-	re-read: witness 008b5550 compiled at HEAD binds ??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z (table line), not the PDB ??0CCombatSequenceBase@@QAE@AAVCThingCreatureBase@@0@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+302	0x006E8850	nf294	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+303	0x00533B50	nf294	skipped-port	-	re-read: witness 00546c90 compiled at HEAD binds ?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@2@@Z (table line), not the PDB ?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+304	0x004CD9C0	nf294	skipped-port	-	re-read: witness 008d9220 compiled at HEAD binds ?GetAnimGroupName@@YIABVCCharString@@J@Z (table line), not the PDB ?GetAnimGroupName@CConversationAttitude@@SIABVCCharString@@W4EConversationAttitude@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+305	0x00933CC0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+306	0x00845CE0	nf295	skipped-port	-	re-read: witness 0069f9e0 compiled at HEAD binds ?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@0@Z (table line), not the PDB ?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+307	0x008D5110	nf293	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+308	0x009074C0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+309	0x00907320	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+310	0x00907440	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+311	0x009073A0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+312	0x008C3810	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+313	0x008B8190	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+314	0x00843A80	nf293	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+315	0x006DF730	nf297	skipped-port	-	re-read: witness 006dd8f0 compiled at HEAD binds ??0CCreatureAction_ShowTrophy@@QAE@PAVCThing@@0ABVCCharString@@J@Z (table line), not the PDB ??0CCreatureAction_ShowTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@J@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+316	0x0096C820	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+317	0x008BFCE0	nf285	skipped-port	-	stand-in identifier still in every free binder's code
+318	0x008C61C0	nf299	skipped-held	-	every wrong-spelling witness is itself reserved (T3 / other agent)
+319	0x0069F0F0	nf297	skipped-port	-	re-read: witness 008b96a0 compiled at HEAD binds ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z (table line), not the PDB ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured
+320	0x008B7CF0	nf295	skipped-port	-	re-read: witness 006ebdd0 compiled at HEAD binds ?ShouldPlayUnsheatheWeaponAction@@YI_NPAVCThingCreatureBase@@JPA_N1@Z (table line), not the PDB ?ShouldPlayUnsheatheWeaponAction@CCreatureAction_UnsheatheWeapons@@SI_NABVCThingCreatureBase@@W4EUnsheatheWeaponType@@AA_N2@Z; the binding is measured (compiled); the recorded obstacle (stand-in / measured port) was read, not re-measured

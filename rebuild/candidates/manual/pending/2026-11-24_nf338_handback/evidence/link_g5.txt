@@ -1,0 +1,9 @@
+## HEAD set: H_00405650.obj 00404a60.obj 00404e10.obj
+duplicates 0
+UNRESOLVED 1 ?Callback_DrawFans@@YIXPBUIMEUI_VERTEX@@I@Z
+UNRESOLVED 1 ?Callback_malloc@@YIPAXI@Z
+UNRESOLVED 1 ?ImeUiCallback_DrawFans@@3P6IXPBUIMEUI_VERTEX@@I@ZA
+## new set: 00405650.obj 00404a60.obj 00404e10.obj
+duplicates 0
+UNRESOLVED 1 ?ImeUiCallback_DrawFans@@3P6IXPBUIMEUI_VERTEX@@I@ZA
+LK_DONE

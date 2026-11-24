@@ -1,0 +1,25 @@
+addr       parity           behav  name
+0056fad7   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+0056fad7   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0056fad7   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0056fad7   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+0056fad7   WARN RELOC_NAME: ?PrepareScreen@CTCInventoryExperience@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+0056fad7   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0056fad7   RELOCATION_MATCH PASS   OpenInventory
+006116e0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap (engine/CTCInventoryMap.h)
+006116e0   WARN RELOC_NAME: ?ResetOpenState@CTCInventoryBase@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+006116e0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006116e0   WARN RELOC_NAME: ?BuildMapMenu@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@JJ@Z -> 0060eeb0 labelled 'CTCInventoryMap::ConstructPCMapList'
+006116e0   RELOCATION_MATCH PASS   OpenInventory
+00999110   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00999110   RELOCATION_MATCH PASS   ConvertPathToFullPath
+
+WINS: 3
+  0056fad7 RELOCATION_MATCH CTCInventoryExperience::?OpenInventory@CTCInventoryExperience@@QAEXXZ
+  006116e0 RELOCATION_MATCH CTCInventoryMap::?OpenInventory@CTCInventoryMap@@QAEXXZ
+  00999110 RELOCATION_MATCH _global::ConvertPathToFullPath

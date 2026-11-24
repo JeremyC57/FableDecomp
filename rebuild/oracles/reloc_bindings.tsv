@@ -2572,7 +2572,6 @@ __CIfmod	00bfeb28	006f99b0
 ?g_someFactor@@3MA	012670d8	007331c0
 ?HasQueuedActions@CThingCreatureBase@@QAE_NXZ	00661f20	007332a0
 ?QueueAction@CThingCreatureBase@@QAEXPAUCCreatureAction@@@Z	00664490	007332a0
-?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ	00662410	00733580
 ?FindBlockAbility@CTCCombat_Methods@@QAE_NPAPAUCCombatAbilityEntry@@J@Z	00733620	00733750
 ?RemoveMode@CTCCreatureModeManager@@QAEXK@Z	0073aba0	007338a0
 @sub_D@4	00739360	00734320
@@ -4292,7 +4291,6 @@ __imp__GlobalFree@4	0143fdf8	0098eb20
 ?resize@CArrayChar@@QAEXKABD@Z	004122d0	00996cc0
 ??_7CFileDataInputStream@@6B@	0129a728	009971a0
 ?Close@CFileDataInputStream@@UAEXXZ	00994300	009971a0
-@FableGetCurrentPath_00997F80@8	00997f80	00999230
 @FableWideStringConstruct_0099AED0@8	0099aed0	00999230
 @FableWideStringGetBuffer_0099AF00@8	0099af00	00999230
 ?FreeTree_CTreeOwner_00999e50@CTreeOwner_00999e50@@QAEXPAUSNode@@@Z	00999e50	00999e50
@@ -4751,10 +4749,8 @@ _vsprintf	00bfedd0	00a381d0
 ?Destroy_00a3a2f0@@YIXPAX@Z	00a3a2f0	00a3a380
 _deflate	00c006a0	00a3a7f0
 _deflateInit_	00c021c0	00a3a7f0
-?fn_a3a9c0@@YAXXZ	00a3a9c0	00a3aa10
-?fn_a3aa00@@YAXXZ	00a3aa00	00a3aa10
-?ZAlloc@CCompressorZlib@@SAPAXPAXII@Z	00a3a9c0	00a3aa40
-?ZFree@CCompressorZlib@@SAXPAX0@Z	00a3aa00	00a3aa40
+?Alloc@CCompressorZlib@@CAPAXPAXII@Z	00a3a9c0	00a3aa10
+?Free@CCompressorZlib@@CAXPAX0@Z	00a3aa00	00a3aa10
 ?g_zlibVersion@@3QBDB	0129cfe0	00a3aa40
 ?ZlibAlloc@@YAPAXPAXII@Z	00a3a9c0	00a3ab00
 ?ZlibFree@@YAXPAX0@Z	00a3aa00	00a3ab00
@@ -5243,7 +5239,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??_7CEngineStateBlockSolid@@6B@	012a0e7c	00b28bc0
 ??_7CEngineStateBlocks@@6B@	012a0ecc	00b28bc0
 ??_7CEngineLayerRenderer@@6B@	012a0f04	00b29720
-??0CElement56_0049d380@@QAE@ABU0@@Z	0049d380	00b2aa70
 ?InsertGrow@CRetailVector_CElement56_0049d380@@QAEXPAUCElement56_0049d380@@ABU2@ABUSScalarTag@@K_N@Z	00b29840	00b2aa70
 ?ProcessLoading@CGraphicDataBank_Calls@@QAEX_NN@Z	009fc410	00b2ad90
 ?SetResourceSize@CCompositeSurfaceCache_Retail@@QAEXK@Z	009fbf20	00b2afd0
@@ -5929,7 +5924,6 @@ _Flush_00c336a0	00c336a0	00c1c110
 ??_7CIntelligentPointer_00c20230@@6B@	012b3600	00c20230
 ??_7CPointerBase_00c20230@@6B@	012b3474	00c20230
 ?BuildDragDescriptor_00c257b0@@YI?AUSDragDescriptor_00c20340@@PAUCDragSource_00c20340@@J@Z	00c257b0	00c20340
-?SubmitDrag_00c25970@@YIXPBX@Z	00c25970	00c20340
 ??0CMessageEventList@@QAE@XZ	00c1bd10	00c203a0
 ?Set@SubObj@@QAEXJ@Z	00c1bb40	00c203e0
 ?Write@PersistWriter@@QAEXPAX@Z	00c1bb60	00c20400
@@ -8757,7 +8751,6 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ??_7CTCInventoryMap@@6BCTCInventoryBase@@@	01257a9c	00606d20
 ??0CBaseIntelligentPointerReal@@QAE@XZ	00a01b10	007004b0
 ??0C3DMeshFilePrimitiveChunk@@QAE@XZ	00abd080	00acd5a0
-?AddSubChunk@CChunkedFileChunk@@QAEXABV?$CCountedPointer@UCChunkedFileChunk@@@@@Z	00aa84f0	00acd5a0
 ?GetFirstSubMesh@C3DMeshFileMeshChunk@@QAE?AV?$CCountedPointer@UC3DMeshFileSubMeshChunk@@@@XZ	00a9aec0	00acd5a0
 ?GetRoot@C3DMeshFile@@QAE?AV?$CCountedPointer@VC3DMeshFileRootChunk@@@@XZ	00ad1e80	00acd5a0
 ?GetNextSubMesh@C3DMeshFileMeshChunk@@QAE?AV?$CCountedPointer@UC3DMeshFileSubMeshChunk@@@@ABV?$CCountedPointer@UCChunkedFileChunk@@@@@Z	00a9af50	00acd5a0
@@ -10086,7 +10079,6 @@ __imp__OpenMutexW@12	0143fe24	00403480
 ?__uninitialized_copy@std@@YIPAU?$pair@MUCCharString@std@@@1@PBU21@0PAU21@ABU__false_type@1@@Z	004cf9d0	004d0830
 ?__uninitialized_copy@std@@YIPAU?$pair@MUCCameraTag@std@@@1@PBU21@0PAU21@ABU__false_type@1@@Z	004cfac0	004d08a0
 ?__unguarded_linear_insert@std@@YIXPAU?$pair@MW4EConversationAttitude@std@@@1@U21@UCKeyPairCompareLess@1@@Z	004cfcb0	004d0f10
-??0CCharString@std@@QAE@ABU01@@Z	0099ec30	004d0f80
 ??1CCharString@std@@QAE@XZ	0099eae0	004d0f80
 ??4CCharString@std@@QAEAAU01@ABU01@@Z	0099efb0	004d0f80
 ?TransferBinaryOut@?$CPersistTraits@VCMusicEntry@@@@QBEXAAUCDataOutputStreamWriter@@PBVCMusicEntry@@@Z	004e9d34	004e9ce8
@@ -36206,7 +36198,6 @@ __imp__setsockopt@20	01440534	008f8cc0
 ?ForceTrainableStatExperienceTo@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z	006d6830	0056f4ba
 ?pop_back@CLongList@@QAEXXZ	005791b5	0056f4ba
 ?push_back@CLongList@@QAEXABJ@Z	0042b687	0056f597
-?OnOpenMenus@@YIXXZ	0041d122	0056fad7
 ?PrepareScreen@CTCInventoryExperience@@QAEXXZ	005bc6ed	0056fad7
 ?clear@CTutorialSoundHandleMap@@QAEXXZ	005795c3	0056fad7
 ?UpdateExternalExperienceSpendStat@CTCInventoryExperience@@QAEXW4EHeroTrainableStatType@@J@Z	00572672	005746f7
@@ -36700,11 +36691,11 @@ __imp__GlobalAlloc@8	0143fdd4	009c5310
 ?push_back@?$CArray@VCGraphicInfo@@@@QAEXXZ	00a01650	009ff590
 ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@AAVCTexture@@W4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@6@Z	0041bf60	0041afa0
 ??_7CIMEFont@NUISystem@@6B@	0122dcbc	00405650
-?Callback_DrawFans@@YIXPBUIMEUI_VERTEX@@I@Z	00404e10	00405650
+?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z	00404e10	00405650
 ?Callback_DrawRect@@YIXHHHHK@Z	00404d50	00405650
 ?Callback_OnChar@@YIXG@Z	00404f00	00405650
 ?Callback_free@@YIXPAX@Z	00404a70	00405650
-?Callback_malloc@@YIPAXI@Z	00404a60	00405650
+?Callback_malloc@CIME@NUISystem@@SIPAXI@Z	00404a60	00405650
 ?ImeUiCallback_OnChar@@3P6IXG@ZA	0143e630	00405650
 ?ImeUi_EnableIme@@YIX_N@Z	00cb5130	00405650
 ?ImeUi_FinalizeString@@YIX_N@Z	00cb2c60	00405650

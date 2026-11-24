@@ -1,0 +1,7 @@
+## HEAD set: H_00a3aa40.obj 00a3a9c0.obj 00a3aa00.obj
+duplicates 0
+UNRESOLVED 1 ?ZAlloc@CCompressorZlib@@SAPAXPAXII@Z
+UNRESOLVED 1 ?ZFree@CCompressorZlib@@SAXPAX0@Z
+## new set: 00a3aa40.obj 00a3a9c0.obj 00a3aa00.obj
+duplicates 0
+LK_DONE

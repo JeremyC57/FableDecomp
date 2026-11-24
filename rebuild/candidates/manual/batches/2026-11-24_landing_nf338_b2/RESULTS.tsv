@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+00405650	ACCEPT	?Initialise@CIME@NUISystem@@QAEXPAUHWND__@@@Z	?Initialise@CIME@NUISystem@@QAEXPAUHWND__@@@Z	binder respell (entries 223 / 224, nf309 T3): free Callback_malloc / Callback_DrawFans -> PDB public static NUISystem::CIME members (Ego_r + FableWin) through the fable_ime.h opt-in FABLE_RETAIL_CIME_CALLBACKS (hdr/); objsec ALL_EQ; target 0x00404A60 / 0x00404E10

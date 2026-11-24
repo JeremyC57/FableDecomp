@@ -1,0 +1,4 @@
+62	0x0041D122	?OnOpenMenus@CManager@NUISystem@@SIXXZ	egor=Y	fablewin=Y
+119	0x00A3A9C0	?Alloc@CCompressorZlib@@CAPAXPAXII@Z	egor=Y	fablewin=Y
+120	0x00A3AA00	?Free@CCompressorZlib@@CAXPAX0@Z	egor=Y	fablewin=Y
+149	0x00997F80	?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ	egor=Y	fablewin=Y
