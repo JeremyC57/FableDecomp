@@ -5757,7 +5757,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7731	land1011bi	00a242c0	?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z	closed	
 7732	land1011bi	005dc290	?GetNoAnims@CAnimationSet@@QBEJABVCCharString@@ABVCAnimFilterBase@@@Z	closed	
 7733	land1011bi	005dc340	?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	partial	?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z
-7734	land1011bi	006a5af0	?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z	partial	?SerialiseGameState@CThingPhysical@@QAE_NPAVCPersistContext@@@Z || SerialiseGameState
+7734	land1011bi	006a5af0	?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z	partial	?SerialiseGameState@CThingPhysical@@QAE_NPAVCPersistContext@@@Z
 7735	land1011bi	00838930	?ConstructFromLevelScript@CThingGameObject@@UAE_NPBD@Z	closed	
 7736	land1011bi	008388d0	?ConstructFromParams@CThingGameObject@@IAE_NJABVC3DVector@@JKABVCCharString@@PAVCThingPhysical@@2_N@Z	closed	
 7737	land1011bi	00838a40	?OnCreate@CThingGameObject@@MAE_NXZ	partial	?OnCreate@CThingGameObject@@QAE_NXZ || ?OnCreate@CThingGameObject@@UAE_NXZ || ?OnCreate@CThingPhysicalSwitch@@QAEEXZ || ?OnCreate@CThingSwitch@@QAEEXZ || OnCreate
@@ -7523,7 +7523,7 @@ line	tag	address	correct_symbol	status	other_spellings
 9608	land1113fy	00643d0c	?GFAnchorToBottomRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	closed	
 9609	land1113fy	00aa0090	?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MPBVC3DVector@@ABVC3DMesh2@@PAVCMatrix4x4@@K_N@Z	closed	
 9610	land1113fy	00aa09f0	?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@0MPBVC3DVector@@ABVC3DMesh2@@PAVCMatrix3x4@@K@Z	closed	
-9611	land1113fy	009ff8d0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	partial	?GetFrame@CGraphicInfo@@
+9611	land1113fy	009ff8d0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	closed	
 9612	land1113fy	009fcba0	?Uninitialise@CGraphicFrameData@@QAEXXZ	closed	
 9613	land1113fy	00a05840	?RestoreCaptureBlock@CRenderStateManager@@QAEXXZ	partial	?RestoreCaptureBlock@CRenderManagerCoreView@@QAEXXZ || ?RestoreCaptureBlockAtGlobal@@YIXPAUCRenderStateManagerCaptureView@@@Z
 9614	land1113fy	00987fe0	?EnableVertexShaders@CShaderRenderManager@@QAEXXZ	closed	
@@ -10528,7 +10528,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13365	land1123nf297	00b2fac0	?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEJAAVCEnginePrimitiveOcclusionInfo@@@Z	closed	
 13366	land1123nf297	0069f1f0	??0CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@QAE@PAXAAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z	closed	
 13367	land1123nf297	009f1650	?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z	closed	
-13368	land1123nf297	009ff8d0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	partial	?GetFrame@CGraphicInfo@@
+13368	land1123nf297	009ff8d0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	closed	
 13369	land1123nf297	00bdcbb0	?InvalidateEdge@CEngineLandscapeMap@@QAEXJJJW4LANDSCAPE_EDGE_STRIP_SIDE@@@Z	partial	?InvalidateEdge@CEngineLandscapeMap@@QAEXJJJJ@Z || InvalidateEdge
 13370	land1123nf298	00aedca0	?GetNoParticles@CParticleEmitter@NParticleEngine@@QBEJXZ	partial	?GetNoParticles@CParticleEmitter@@QAEJXZ || GetNoParticles
 13371	land1123nf298	00aedcd0	?GetNoDecals@CParticleEmitter@NParticleEngine@@QBEJXZ	partial	?GetNoDecals@CParticleEmitter@@QAEJXZ || GetNoDecals
@@ -10680,10 +10680,10 @@ line	tag	address	correct_symbol	status	other_spellings
 13520	nf326	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z ||
 13521	nf326	004aa900	?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ	closed	
 13522	acctB_b24 PRIORITY	00415530	?GetLanguageFolder@NLocalisation@@YI?AVCCharString@@XZ	partial	?FableGetDefaultLanguageName_00415530@@YI?AVCCharString@@XZ
-13523	acctB_b24 PRIORITY	009bc8a0	?SetNoHangulWordWrap@CXMVPlayer@@SIX_N@Z	no_binding	
-13524	acctB_b24 PRIORITY	00402130	?TestDirForValidFilePermissions@@YIKABVCWideString@@@Z	open	?FableCheckMyDocumentsWritePermissions@@
+13523	acctB_b24 PRIORITY	009bc8a0	?SetNoHangulWordWrap@CXMVPlayer@@SIX_N@Z	closed	
+13524	acctB_b24 PRIORITY	00402130	?TestDirForValidFilePermissions@@YIKABVCWideString@@@Z	partial	?FableCheckMyDocumentsWritePermissions@@
 13525	acctB_b24 PRIORITY	00413c50	?InitialiseConsoleVariables@@YIXXZ	closed	
-13526	acctB_b24 PRIORITY	009d81e0	?DisableVTuneCollection@@YIXXZ	no_binding	
+13526	acctB_b24 PRIORITY	009d81e0	?DisableVTuneCollection@@YIXXZ	closed	
 13527	acctB_b24 PRIORITY	013b861b	?GLeftAlignText@@3_NA	open	?g_bLeftAlignText@@3_NA
 13528	acctB_b24 PRIORITY	0137548f	?InitialiseConsoleAtStartup@@3_NA	open	?g_bFrontEndFlag_137548F@@3_NA
 13529	acctB_b24 PRIORITY	0138e188	?CreateCompiledDefs@CDefinitionManager@@1_NA	open	?g_bSaveBinaryDefinitions@@3_NA
@@ -10695,7 +10695,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13535	acctB_b24 PRIORITY	013b8617	?GUseCompiledDefs@@3_NA	open	?g_bUseCompiledDefs@@3_NA
 13536	acctB_b24 PRIORITY	013b8619	?GUseCompiledSoundSymbols@@3_NA	open	?g_bUseCompiledSoundSymbols@@3_NA
 13537	acctB_b24 PRIORITY	01375459	?GAllowDataGeneration@@3_NA	closed	
-13538	acctB_b24 PRIORITY	013b864f	?GDisableCapsLock@@3_NA	open	?g_KeyRedefinerFlag@@3EA
+13538	acctB_b24 PRIORITY	013b864f	?GDisableCapsLock@@3_NA	partial	?g_KeyRedefinerFlag@@3EA
 13539	acctB_b24 PRIORITY	013b8605	?GSkipFrontend@@3_NA	open	?g_bStartMainGame@@3_NA
 13540	acctB_b24 PRIORITY	013b8628	?GPresentImmidiate@@3_NA	open	?g_PresentationInterval@@3_NA
 13541	acctB_b24 PRIORITY	013ca79c	?GBankFileManager@NBankFileManager@@3VCBankFileManager@@A	partial	?g_BankFileManager@@3UCBankFileManager@@A || ?g_BankFileManager@@3VCBankFileManager@@A || ?g_CStatic_009a7ac0_013ca79c@@3UCStatic_009a7ac0@@A || ?g_bankFileManager@@3UCBankFileManager@@A
@@ -10751,3 +10751,20 @@ line	tag	address	correct_symbol	status	other_spellings
 13604	nf355	00463923	?Copy@CThingNoiseDef@@UAEXPBVCDefClassBase@@@Z	no_binding	
 13605	nf355	0045c5c1	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ	closed	
 13606	nf355	0044c1bb	??0CTCNoiseDef@@QAE@XZ	closed	
+13611	nf366	00447d90	?Reset@?$CCountedPointer@$$CBVCInputTypeBase@@@@QAEXPBVCInputTypeBase@@@Z	closed	
+13612	nf366	00a29d20	?Reset@?$CCountedPointer@VCMeshDataBankEntry@@@@QAEXPAVCMeshDataBankEntry@@@Z	partial	?Reset@CEntryCountedPointer@@QAEXPAVCMeshDataBankEntry@@@Z
+13613	nf366	00a299c0	?Reset@?$CCountedPointer@VC3DMesh2@@@@QAEXPAVC3DMesh2@@@Z	closed	
+13614	nf366	00aa4460	?Reset@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@QAEXPAVCOptimisedMesh@QuadricOptimiserInternals@@@Z	partial	?Reset@?$CCountedPointer@VC3DOptimisedMeshBase@@@@QAEXPAVC3DOptimisedMeshBase@@@Z
+13615	nf366	00b3e510	?Reset@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@QAEXPAVCLoadingMemoryFailureHandler@@@Z	partial	?Reset@CAllocatorPointer@@QAEXPAUCPoolAllocator@@@Z
+13616	nf366	00cd43a0	?Reset@?$CCountedPointer@VCScriptDefinitionManager@@@@QAEXPAVCScriptDefinitionManager@@@Z	closed	
+13617	nf366	00f39ca0	?Reset@?$CCountedPointer@VCRenderTarget@@@@QAEXPAVCRenderTarget@@@Z	closed	
+13618	nf366	00cd3f40	?Set@CScriptDefinitionManager@@SIXPAV1@@Z	closed	
+13619	acctB_b25	0137544a	?GFullScreen@@3_NA	open	?g_bFrontEndFlag_137544A@@3_NA
+13620	acctB_b25	013b8648	?GOnlyBuildStaticMaps@@3_NA	open	?g_bCompileFrontendDefinitions@@3_NA
+13621	acctB_b25	013bc864	?m_harddiskErrorCallback@CThreadedFileManager@@0P6IXPBD@ZA	open	?HardDiskErrorCallback@CThreadedFileManager@@0P6IXPBD@ZA
+13622	nf370	0099ea60	?AllocStringData@CCharString@@IAEPAVCCharStringData@@PBDJ@Z	partial	?AllocStringData@CCharString@@AAEPAVCCharStringData@@PBDJ@Z
+13623	nf370	00736590	?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ	partial	?UpdateUsableMeleeCombatAbilities@CTCCombat_Methods@@QAEXXZ
+13624	nf370	00a269c0	?GetAnimationStats@C3DAnimationInfo@@QBE?AV?$CCountedPointer@$$CBVC3DAnimationStats@@@@XZ	partial	?GetAnimationStats@C3DAnimationInfo@@QAE?AUCCountedPointer_C3DAnimationStats@@XZ
+13625	nf371	00a29d20	?Reset@?$CCountedPointer@VCMeshDataBankEntry@@@@QAEXPAVCMeshDataBankEntry@@@Z	partial	?Reset@CEntryCountedPointer@@QAEXPAVCMeshDataBankEntry@@@Z
+13626	nf371	00b3e510	?Reset@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@QAEXPAVCLoadingMemoryFailureHandler@@@Z	partial	?Reset@CAllocatorPointer@@QAEXPAUCPoolAllocator@@@Z
+13627	nf371	00aa4460	?Reset@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@QAEXPAVCOptimisedMesh@QuadricOptimiserInternals@@@Z	partial	?Reset@?$CCountedPointer@VC3DOptimisedMeshBase@@@@QAEXPAVC3DOptimisedMeshBase@@@Z
