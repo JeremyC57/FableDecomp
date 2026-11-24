@@ -1,0 +1,4 @@
+005f6e40 OK GETDEF_EQ=1 HELPER_BODY=1 HELPER_DROP=1 leaf=?OnSerialise@CTCInventoryAbilities@@UAEXAAVCPersistContext@@_N@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z 101->98 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->50 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z

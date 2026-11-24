@@ -7554,7 +7554,7 @@ __imp__SleepEx@8	0143fddc	0098f1e0
 ?IsNavigationMapLoaded@CNavigatorManager@@QBE_NJ@Z	00a14e80	004fede0
 ?OnLevelUnload@CThingManager@@QAEXJ_N@Z	00525d90	004fede0
 ?RemoveGameMap@CThingMapManager@@QAEXJ@Z	00638340	004fede0
-?RemoveMap@CEngineManager@@QAEXJ@Z	00640430	004fede0
+?SetMapAsUnloaded@CEngineManager@@QAEXJ@Z	00640430	004fede0
 ?RemoveNavigationMap@CNavigatorManager@@QAEXJ@Z	00a155d0	004fede0
 ?GetScarStrength@CWound@CTCWound@@QBEMXZ	00757340	00757570
 ?GetWoundStrength@CWound@CTCWound@@QBEMXZ	007572d0	00757570
@@ -8313,7 +8313,7 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ?RemoveEventFromQueue@CInputManager@@QAEXABVCInputEvent@@@Z	009f4f70	0041e16e
 ?ShowErrorMessage@CManager@NUISystem@@QAEXJ@Z	0041db84	0041e61b
 ??M?$CBasicString@D@@QBE_NABV0@@Z	00429950	0042aab3
-??0?$pair@$$CBVCCharString@@J@std@@QAE@ABU01@@Z	004297db	0042b587
+??0?$pair@$$CBVCCharString@@K@std@@QAE@ABU01@@Z	004297db	0042b587
 ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABU01@@Z	0042a944	0042bdf0
 ??0?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@ABU01@@Z	0042a961	0042be2f
 ?_M_lower_bound@?$map@PAVCComponent@NUISystem@@JU?$less@PAVCComponent@NUISystem@@@std@@@std@@QBEPAU_Rb_tree_node_base@2@ABQAVCComponent@NUISystem@@@Z	0042ad91	0042d1b7
@@ -8394,7 +8394,6 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ?SetScoreboardEditBox@CFrontEndManager@NUISystem@@IAEXABVCCharString@@ABVCWideString@@@Z	0059630e	005963db
 ?ApplyNewProfileValues@CUserProfileManager@@QAEXXZ	0040cca0	0059697a
 ?IsEnoughSpaceForProfile@CUserProfileManager@@QBE_NXZ	004067c0	0059697a
-?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z	0040d2f0	0059697a
 ?ProcessButtonAReleased@CTCInventoryBase@NInventory@@UAEXXZ	005bc65c	0059b777
 ??$__find_if@PBVCItem@NInventory@@V?$binder2nd@V?$const_mem_fun1_ref_t@_NVCItem@NInventory@@J@std@@@std@@@std@@YIPBVCItem@NInventory@@PBV12@0V?$binder2nd@V?$const_mem_fun1_ref_t@_NVCItem@NInventory@@J@std@@@0@ABUrandom_access_iterator_tag@0@@Z	005c1153	005c13cd
 ??$__find_if@PAVCItem@NInventory@@V?$binder2nd@V?$const_mem_fun1_ref_t@_NVCItem@NInventory@@J@std@@@std@@@std@@YIPAVCItem@NInventory@@PAV12@0V?$binder2nd@V?$const_mem_fun1_ref_t@_NVCItem@NInventory@@J@std@@@0@ABUrandom_access_iterator_tag@0@@Z	005c11fa	005c13e3
@@ -17414,7 +17413,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Alloc@CHKC_VillagerScreamer@CQ_WizardBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e1b100	00e1a990
 ?Alloc@CInitialScreamerPoint@CQ_WizardBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e1bb80	00e1a990
 ?DoMission@CQ_WizardBattleScript@NScript@@QAEXXZ	00e1c0f0	00e1a990
-?Init@CQ_WizardBattleScript@NScript@@QAEXXZ	00e1ad30	00e1a990
+?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ	00e1ad30	00e1a990
 ?WatchForTermination@CQ_WizardBattleScript@NScript@@QAEXXZ	00e1ad60	00e1a990
 ??_7?$CEntityScriptBinding@VCV_ChickenKickingScript@NScript@@@@6B@	012e73c8	00e62a00
 ?Alloc@CChickenMaster@CV_ChickenKickingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e634b0	00e62a00
@@ -33403,7 +33402,7 @@ __imp__recvfrom@24	01440518	008f9320
 ?OnOkClicked@CTCHeroOnlineScoreboard@@QAEXXZ	0055ee20	0041e6d3
 ?OnPlayerSelectedClan@CTCHeroOnlineScoreboard@@QAEXVCWideString@@PAVCComponent@NUISystem@@@Z	005625f0	0041e6d3
 ?PCSetQuitToFrontEnd@CTCInGameMenu@@QAEXXZ	0047d296	0041e6d3
-?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z	0047d008	0041e6d3
+?LoadGame@CTCInGameMenu@@QAEXJ@Z	0047d008	0041e6d3
 ?RefreshAugmentationsLeftDescriptions@CTCInventoryWeapons@@QAEXXZ	005c69aa	0041e6d3
 ?RefreshDescriptions@CTCInventoryClothing@@QAEXXZ	005b690b	0041e6d3
 ?RefreshWeaponDescriptions@CTCInventoryWeapons@@QAEXXZ	005cacb9	0041e6d3
@@ -39118,3 +39117,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ?StartMultiHit@CTCMultiStrike@@QAEXABVCHitParameters@@PAVCThing@@@Z	007ccb00	00839940
 ?hit_dir@?A0x09bbfb3c@@3VCEnginePrimitiveHandle@@A	013baf4c	00839940
 ?hit_pos@?A0x09bbfb3c@@3VCEnginePrimitiveHandle@@A	013baf44	00839940
+?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z	0040b050	0041e6d3
+?RemoveMap@CEngineManager@@QAEXJ@Z	006403d0	004ff8b0

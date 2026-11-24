@@ -1,0 +1,9 @@
+005f1b10 OK GETDEF_EQ=2 HELPER_BODY=3 HELPER_DROP=3 leaf=?ConstructPCMagicList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 101->98 B
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z 101->98 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAbilityDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 47->47 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 47->47 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 47->47 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCAbilityDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z

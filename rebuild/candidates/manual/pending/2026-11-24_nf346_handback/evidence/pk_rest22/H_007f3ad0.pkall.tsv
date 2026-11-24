@@ -1,0 +1,7 @@
+# leaf ??0CLightningBranch@CTCLightningNode@@QAE@AAVCThing@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	5	-	n	n	??1?$CIntelligentPointer@VCThing@@@@UAE@XZ
+EQ_AMBIG	EQ	004b6830	c	pickany	18	18	n	n	??0?$CIntelligentPointer@VCThing@@@@QAE@XZ
+EQ_AMBIG	EQ	006c4ce0	c	pickany	18	18	n	n	??0?$CIntelligentPointer@VCThing@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	30	-	n	n	??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	5	-	n	n	?SetPointer@?$CIntelligentPointer@VCThing@@@@AAEXPBVCThing@@@Z
+EQ	EQ	004a96f0	b,c	pickany	32	32	n	n	??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z

@@ -1,0 +1,4 @@
+0096c4f0 OK GETDEF_EQ=1 HELPER_BODY=1 HELPER_DROP=1 leaf=?Update@CAIStateGroup_Thunder@@UAEXXZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCSpecialAbilitiesThunderLightningStormDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesThunderLightningStormDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCSpecialAbilitiesThunderLightningStormDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCSpecialAbilitiesThunderLightningStormDef@@@@AAEXPAVCDefPointeeBase@@@Z

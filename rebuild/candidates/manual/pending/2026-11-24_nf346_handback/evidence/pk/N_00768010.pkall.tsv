@@ -1,0 +1,21 @@
+# leaf ?OnInitialActivate@CTCObjectAugmentations@@UAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	?size@?$vector@JV?$allocator@J@std@@@std@@QBEIXZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	?size@?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@V?$allocator@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@@std@@QBEIXZ
+NOADDR	NOADDR	-	-	pickany	10	-	n	n	?IsNull@?$CDefPointer@$$CBVCThingBaseDef@@@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@JV?$allocator@J@std@@@std@@QBEPBJXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@QBEPBVCObjectAugmentationsDef@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@V?$allocator@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@@std@@QAEPAV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@V?$allocator@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@@std@@QBEPBV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+EQ	EQ	0040f220	b	pickany	12	12	n	n	??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@QBEPBVCObjectAugmentationsDef@@XZ
+NOADDR	NOADDR	-	-	pickany	12	-	n	n	??A?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@V?$allocator@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@@std@@QAEAAV?$CDefPointer@$$CBVCThingBaseDef@@@@I@Z
+NOADDR	NOADDR	-	-	pickany	12	-	n	n	??A?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@V?$allocator@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@@std@@QBEABV?$CDefPointer@$$CBVCThingBaseDef@@@@I@Z
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+EQ	EQ	00765d50	b,c	strong	47	47	n	n	?GetFreeSlot@CTCObjectAugmentations@@QBEJXZ
+NEQ	NEQ	0042af3c	a,b	pickany	108	98	y	y	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z

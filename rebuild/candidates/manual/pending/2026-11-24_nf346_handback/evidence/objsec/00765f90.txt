@@ -1,0 +1,6 @@
+00765f90 BAD GETDEF_NEQ=1 HELPER_BODY=2 HELPER_DROP=2 leaf=?GetAugmentationName@CTCObjectAugmentations@@SI?AVCWideString@@J@Z
+    GETDEF_NEQ :: changed COMDAT ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAugmentationDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCAugmentationDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z

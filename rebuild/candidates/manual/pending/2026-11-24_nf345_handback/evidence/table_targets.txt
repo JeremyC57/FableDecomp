@@ -1,0 +1,30 @@
+# NF345 retail rel32 callers of each changed table target (tools/xscan.py)
+0040b050 <- call 0041f2d0 row=0041e6d3 LANDED NUISystem::CManager::Action
+0047d008 <- call 0041f831 row=0041e6d3 LANDED NUISystem::CManager::Action
+0040d2f0 <- call 004213f1 row=0041e6d3 LANDED NUISystem::CManager::Action
+004297db <- call 0042a911 row=None notlanded 
+004297db <- call 0042b59d row=0042b587 LANDED std::_Rb_tree<CCharString, std::pair<CCharString const, long>, std::_Select1st<std::pair<CCharString const, long>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, long>>>::_M_create_node
+00640430 <- call 004fee43 row=004fede0 LANDED CWorldMap::UnloadLevel
+00640430 <- call 004fef4e row=004feec0 LANDED CWorldMap::UnloadRegion
+006403d0 <- call 004ff8e8 row=004ff8b0 LANDED CWorldMap::RemoveLevel
+006403d0 <- call 00502346 row=005022f0 LANDED CWorldMap::DeleteAllLevels
+006403d0 <- call 005069c8 row=00506940 LANDED CWorldMap::~CWorldMap
+0040d2f0 <- call 00596a23 row=0059697a LANDED NUISystem::CFrontEndManager::CreateNewProfile
+00e1ad30 <- call 00e1a99f row=00e1a990 LANDED NScript::CQ_WizardBattleScript::Main
+
+# ref_scan.py (repo tool) on the replaced / deleted spellings, work/rs/REFS.tsv
+symbol	status	addresses
+?Init@CQ_WizardBattleScript@NScript@@QAEXXZ	TOO_MANY	1680 sources
+??0?$pair@$$CBVCCharString@@J@std@@QAE@ABU01@@Z	TOO_MANY	no identifier
+?RemoveMap@CEngineManager@@QAEXJ@Z	REFS	00506940,005022f0,004ff8b0,006403d0
+?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z	REFS	0040b050,0040cca0,0041e6d3
+?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z	REFS	0047dd9d
+
+# xr of the other RemoveMap referencers (HEAD objects from ref_scan)
+== 00506940
+006403d0	?RemoveMap@CEngineManager@@QAEXJ@Z	x1
+== 005022f0
+006403d0	?RemoveMap@CEngineManager@@QAEXJ@Z	x1
+== 004ff8b0
+006403d0	?RemoveMap@CEngineManager@@QAEXJ@Z	x1
+== 0040cca0

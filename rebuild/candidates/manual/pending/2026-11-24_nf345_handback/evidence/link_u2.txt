@@ -1,0 +1,21 @@
+## HEAD set: H_0059697a.obj 0040d2f0.obj 0040b050.obj
+duplicates 0
+UNRESOLVED 1 ?ApplyNewProfileValues@CUserProfileManager@@QAEXXZ
+UNRESOLVED 2 ?ApplyValues@CUserProfileManager@@IAEXXZ
+UNRESOLVED 1 ?Get@CUserProfileManager@@SIAAV1@XZ
+UNRESOLVED 1 ?GetProfileDir@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z
+UNRESOLVED 1 ?IsEnoughSpaceForProfile@CUserProfileManager@@QBE_NXZ
+UNRESOLVED 3 ?Save@CUserProfileManager@@QAEXXZ
+UNRESOLVED 1 ?SetDefaultValues@CUserProfileManager@@QAEXXZ
+UNRESOLVED 1 ?SetProfileName@CUserProfileManager@@QAEXABVCWideString@@_N@Z
+## new set: 0059697a.obj 0040d2f0.obj 0040b050.obj
+duplicates 0
+UNRESOLVED 1 ?ApplyNewProfileValues@CUserProfileManager@@QAEXXZ
+UNRESOLVED 2 ?ApplyValues@CUserProfileManager@@IAEXXZ
+UNRESOLVED 1 ?Get@CUserProfileManager@@SIAAV1@XZ
+UNRESOLVED 1 ?GetProfileDir@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z
+UNRESOLVED 1 ?IsEnoughSpaceForProfile@CUserProfileManager@@QBE_NXZ
+UNRESOLVED 3 ?Save@CUserProfileManager@@QAEXXZ
+UNRESOLVED 1 ?SetDefaultValues@CUserProfileManager@@QAEXXZ
+UNRESOLVED 1 ?SetProfileName@CUserProfileManager@@QAEXABVCWideString@@_N@Z
+LK_DONE

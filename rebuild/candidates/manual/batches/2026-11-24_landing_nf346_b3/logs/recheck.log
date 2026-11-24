@@ -1,0 +1,64 @@
+addr       parity           behav  name
+0083bb40   RELOCATION_MATCH PASS   SerialiseGameState
+0083bba0   RELOCATION_MATCH PASS   ConstructFromLevelScript
+0083c1e0   RELOCATION_MATCH PASS   PeekDefinition
+0083d190   RELOCATION_MATCH PASS   GetCurrentGraphic
+0083d280   RELOCATION_MATCH PASS   GetProperties
+0083d900   RELOCATION_MATCH PASS   PeekDefinition
+0083db60   RELOCATION_MATCH PASS   GetCurrentGraphic
+0083ddc0   RELOCATION_MATCH PASS   TriggerMe
+0083df20   RELOCATION_MATCH PASS   UntriggerMe
+008548b0   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesLightningSpellDef (engine/CSpecialAbilitiesLightningSpellDef.h)
+008548b0   RELOCATION_MATCH PASS   CreateAttackEffect
+0087f3a0   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+0087f3a0   RELOCATION_MATCH PASS   PerformAction
+008a9100   RELOCATION_MATCH PASS   CreateCreature
+008c6860   RELOCATION_MATCH PASS   PerformAction
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastSkillMultiArrow (engine/CCreatureAction_CastSkillMultiArrow.h)
+008ce6f0   RELOCATION_MATCH PASS   CCreatureAction_CastSkillMultiArrow
+008ce900   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008ce900   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008ce900   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+008ce900   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ce900   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008ce900   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008ce900   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008ce900   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ce900   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastSkillMultiArrow (engine/CCreatureAction_CastSkillMultiArrow.h)
+008ce900   RELOCATION_MATCH PASS   CCreatureAction_CastSkillMultiArrow
+008f3310   RELOCATION_MATCH PASS   PerformAction
+008f3630   RELOCATION_MATCH PASS   PerformAction
+0096c4f0   RELOCATION_MATCH PASS   Update
+00974110   WARN RELOC_NAME: ??$__find_if@PAVC3DVector@@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@0V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@ABUrandom_access_iterator_tag@0@@Z -> 008aac50 labelled 'std::__find_if<C3DVector *, std::unary_negate<CVectorFilter_FurtherFromPointThan>>'
+00974110   WARN RELOC_NAME: ??$remove_copy_if@PAVC3DVector@@PAV1@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@00V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@@Z -> 008ab710 labelled 'std::remove_copy_if<C3DVector *, C3DVector *, std::unary_negate<CVectorFilter_FurtherFromPointThan>>'
+00974110   RELOCATION_MATCH PASS   Summon
+
+WINS: 19
+  0083bb40 RELOCATION_MATCH CThingHolySite::?SerialiseGameState@CThingHolySite@@UAE_NAAVCPersistContext@@@Z
+  0083bba0 RELOCATION_MATCH CThingHolySite::?ConstructFromLevelScript@CThingHolySite@@UAE_NPBD@Z
+  0083c1e0 RELOCATION_MATCH CThingSwitch::?PeekDefinition@CThingSwitch@@IBE?AV?$CDefPointer@$$CBVCThingSwitchDef@@@@XZ
+  0083d190 RELOCATION_MATCH CThingMarker::?GetCurrentGraphic@CThingMarker@@IBE?AVCEngineGraphic@@XZ
+  0083d280 RELOCATION_MATCH CThingMarker::?GetProperties@CThingMarker@@UBEKXZ
+  0083d900 RELOCATION_MATCH CThingPhysicalSwitch::?PeekDefinition@CThingPhysicalSwitch@@IBEABVCThingPhysicalSwitchDef@@XZ
+  0083db60 RELOCATION_MATCH CThingPhysicalSwitch::?GetCurrentGraphic@CThingPhysicalSwitch@@IBEABVCEngineGraphic@@XZ
+  0083ddc0 RELOCATION_MATCH CThingPhysicalSwitch::?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z
+  0083df20 RELOCATION_MATCH CThingPhysicalSwitch::?UntriggerMe@CThingPhysicalSwitch@@IAEXXZ
+  008548b0 RELOCATION_MATCH CCreatureAction_SpiritAttack::?CreateAttackEffect@CCreatureAction_SpiritAttack@@AAEXXZ
+  0087f3a0 RELOCATION_MATCH CCombatAction_KickThingOnGround::?PerformAction@CCombatAction_KickThingOnGround@@UAEXXZ
+  008a9100 RELOCATION_MATCH CGameScriptInterface::?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z
+  008c6860 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?PerformAction@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+  008ce6f0 RELOCATION_MATCH CCreatureAction_CastSkillMultiArrow::??0CCreatureAction_CastSkillMultiArrow
+  008ce900 RELOCATION_MATCH CCreatureAction_CastSkillMultiArrow::??0CCreatureAction_CastSkillMultiArrow
+  008f3310 RELOCATION_MATCH CCreatureAction_DragonFireBlastBase::?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ
+  008f3630 RELOCATION_MATCH CCreatureAction_DragonRearUpFull::?PerformAction@CCreatureAction_DragonRearUpFull@@UAEXXZ
+  0096c4f0 RELOCATION_MATCH CAIStateGroup_Thunder::?Update@CAIStateGroup_Thunder@@UAEXXZ
+  00974110 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::?Summon@CAIStateGroup_JackOfBladesBase@@IAEXJ_N@Z

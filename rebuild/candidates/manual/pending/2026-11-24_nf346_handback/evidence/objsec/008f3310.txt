@@ -1,0 +1,6 @@
+008f3310 OK GETDEF_EQ=1 HELPER_BODY=2 HELPER_DROP=2 leaf=?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingShotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingShotDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingShotDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCWeaponDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingShotDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z

@@ -1,0 +1,11 @@
+address	what	batch
+0063b890	self respell (U1)	b1
+0063b920	self respell (U1)	b1
+0063b9b0	self respell (U1)	b1
+0063ba30	self respell (U1)	b1
+0059697a	binder respell + TABLE_CHANGES (U2)	b1
+004fede0	binder respell + TABLE_CHANGES (U3)	b1
+004feec0	binder respell (U3)	b1
+0042b587	self respell + TABLE_CHANGES	b3
+0041e6d3	binder respell + TABLE_CHANGES (decision D1)	b2
+00e1a990	binder respell + TABLE_CHANGES (decision D1)	b2

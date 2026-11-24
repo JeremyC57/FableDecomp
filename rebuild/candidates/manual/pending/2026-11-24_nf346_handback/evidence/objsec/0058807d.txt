@@ -1,0 +1,15 @@
+0058807d OK GETDEF_EQ=2 HELPER_BODY=6 HELPER_DROP=6 leaf=?OpenPCInventoryMenu@CTCInventory@@QAEXXZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 101->98 B
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 101->98 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAbilityDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 47->47 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 47->47 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAugmentationDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 47->47 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCHeroSuitDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 47->47 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 47->47 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 47->47 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCAbilityDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCAppearanceModifierDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCAugmentationDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCHeroSuitDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z

@@ -1,0 +1,31 @@
+# pickany_vs_retail.py HEAD (H) v new (N) per row, under the repo table and the applied (shadow) table; J/K normalised for 0042b587
+0063b890 table=repo: copies H=1 N=0 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0063ba30', '') ?PointIsWithinCellBR@CWorldMap@@IBE_NPBVC3DVector@@0@Z | in N: None
+0063b890 table=applied: copies H=1 N=0 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0063ba30', '') ?PointIsWithinCellBR@CWorldMap@@IBE_NPBVC3DVector@@0@Z | in N: None
+0063b920 table=repo: copies H=1 N=0 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0063b9b0', '') ?PointIsWithinCellTL@CWorldMap@@IBE_NPBVC3DVector@@0@Z | in N: None
+0063b920 table=applied: copies H=1 N=0 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0063b9b0', '') ?PointIsWithinCellTL@CWorldMap@@IBE_NPBVC3DVector@@0@Z | in N: None
+0063b9b0 table=repo: copies H=1 N=0 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0063b920', '') ?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z | in N: None
+0063b9b0 table=applied: copies H=1 N=0 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0063b920', '') ?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z | in N: None
+0063ba30 table=repo: copies H=1 N=0 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0063b890', '') ?PointIsWithinCellTR@CWorldMap@@IBE_NPBVC3DVector@@0@Z | in N: None
+0063ba30 table=applied: copies H=1 N=0 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0063b890', '') ?PointIsWithinCellTR@CWorldMap@@IBE_NPBVC3DVector@@0@Z | in N: None
+0059697a table=repo: copies H=1 N=1 NEQ H=1 N=1 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+0059697a table=applied: copies H=1 N=1 NEQ H=1 N=1 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+004fede0 table=repo: copies H=1 N=1 NEQ H=0 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+004fede0 table=applied: copies H=1 N=1 NEQ H=0 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+004feec0 table=repo: copies H=1 N=1 NEQ H=0 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+004feec0 table=applied: copies H=1 N=1 NEQ H=0 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+0041e6d3 table=repo: copies H=93 N=93 NEQ H=31 N=31 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+0041e6d3 table=applied: copies H=93 N=93 NEQ H=31 N=31 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+00e1a990 table=repo: copies H=2 N=2 NEQ H=1 N=1 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+00e1a990 table=applied: copies H=2 N=2 NEQ H=1 N=1 new-NEQ=0 (leaf-ref 0) gone-NEQ=0
+0042b587 table=repo: copies H=3 N=1 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0046ece7', '') ?_M_create_node@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@X@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@X@std@@@3@U?$less@VCCharString@@@3@V | in N: None
+0042b587 table=applied: copies H=2 N=2 NEQ H=1 N=0 new-NEQ=0 (leaf-ref 0) gone-NEQ=1
+   GONE NEQ ('NEQ', '0046ece7', '') ?_M_create_node@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@X@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@X@std@@@3@U?$less@VCCharString@@@3@V | in N: None

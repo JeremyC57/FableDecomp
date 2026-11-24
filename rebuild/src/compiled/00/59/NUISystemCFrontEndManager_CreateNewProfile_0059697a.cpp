@@ -5,12 +5,14 @@
 // if Get().GetProfileDir(name, true) (0x004082D0, CWideString temporary) has GetLength() (0x0099B220) zero, ok = false
 // (the bool is formed with neg/sbb/inc before ~CWideString 0x0099B510); Get().SetProfileName(name, false) (0x0040D400);
 // Get().SetDefaultValues() (0x0040C790); Get().ApplyNewProfileValues() (0x0040CCA0, copies the *NewProfile mirror
-// +0xcd.. over the live values); Get().SetCameraYZInverted(Get().IsCameraYZInverted(), true) (0x0040D2F0; the inline
+// +0xcd.. over the live values); Get().SetCameraBowYZInverted(Get().IsCameraYZInverted(), true) (0x0040D2F0; the inline
 // getter reads CameraYZInvertedNewProfile +0xd0 when UseNewProfileValues, else CameraYZInverted +0x10);
 // Get().Save() (0x0040A740); SetMainMenuDefName(CCharString("UI_FRONTEND_MAIN_MENU_NO_LIVEAWARE_NO_CONTINUE"))
 // (a named local in its own block, ctor 0x0099EBF0 with length -1, 0x00595A06, ~CCharString 0x0099EAE0);
 // AddProfileNameToScreens(name) (0x00595B24); return ok. Get() is CTBaseSingleton<CUserProfileManager>::Get (0x0040D2A0).
-// Names: IsEnoughSpaceForProfile / SetCameraYZInverted are Ego_r.pdb signature matches; SetDefaultValues (0x0040C790:
+// Names: IsEnoughSpaceForProfile / SetCameraBowYZInverted are Ego_r.pdb signature matches (NF345: 0x0040D2F0 stores the FP and PC
+// bow YZ flags +0x12 / +0x14 and their NewProfile mirrors, Ego_r.pdb CameraFPBowYZInverted / CameraPCBowYZInverted; ego_r.exe's
+// CreateNewProfile calls SetCameraBowYZInverted; SetCameraYZInverted is 0x0040B050, which stores +0x10 / +0xD0); SetDefaultValues (0x0040C790:
 // stores the 1.0f / flag defaults), ApplyNewProfileValues (0x0040CCA0: copies +0xcd.. to +0xd..) and Save (0x0040A740:
 // GetProfileDir then writes) are named from their bodies. 0x004945B0's src calls 0x0040C790 "Save" -- that name is wrong,
 // it is the defaults reset.
@@ -47,7 +49,7 @@ public:
     void SetDefaultValues();                             // 0x0040C790
     void ApplyNewProfileValues();                        // 0x0040CCA0
     bool IsCameraYZInverted() const { return UseNewProfileValues ? CameraYZInvertedNewProfile : CameraYZInverted; }
-    void SetCameraYZInverted(bool inverted, bool apply); // 0x0040D2F0
+    void SetCameraBowYZInverted(bool inverted, bool apply); // 0x0040D2F0
     void Save();                                         // 0x0040A740
 public:
     static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
@@ -75,7 +77,7 @@ bool CFrontEndManager::CreateNewProfile(CWideString& name)
     CUserProfileManager::Get().SetProfileName(name, false);
     CUserProfileManager::Get().SetDefaultValues();
     CUserProfileManager::Get().ApplyNewProfileValues();
-    CUserProfileManager::Get().SetCameraYZInverted(CUserProfileManager::Get().IsCameraYZInverted(), true);
+    CUserProfileManager::Get().SetCameraBowYZInverted(CUserProfileManager::Get().IsCameraYZInverted(), true);
     CUserProfileManager::Get().Save();
     {
         CCharString def("UI_FRONTEND_MAIN_MENU_NO_LIVEAWARE_NO_CONTINUE");

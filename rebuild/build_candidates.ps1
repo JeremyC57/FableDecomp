@@ -234964,29 +234964,29 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0063b890'
         Module = 'CWorldMap'
-        Source = '00/63/CWorldMap_PointIsWithinCellBR_0063b890.cpp'
-        TestSource = '00/63/CWorldMap_PointIsWithinCellBR_0063b890_test.cpp'
+        Source = '00/63/CWorldMap_PointIsWithinCellTR_0063b890.cpp'
+        TestSource = '00/63/CWorldMap_PointIsWithinCellTR_0063b890_test.cpp'
         PassPattern = '0063b890_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0063b920'
         Module = 'CWorldMap'
-        Source = '00/63/CWorldMap_PointIsWithinCellTL_0063b920.cpp'
-        TestSource = '00/63/CWorldMap_PointIsWithinCellTL_0063b920_test.cpp'
+        Source = '00/63/CWorldMap_PointIsWithinCellBL_0063b920.cpp'
+        TestSource = '00/63/CWorldMap_PointIsWithinCellBL_0063b920_test.cpp'
         PassPattern = '0063b920_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0063b9b0'
         Module = 'CWorldMap'
-        Source = '00/63/CWorldMap_PointIsWithinCellBL_0063b9b0.cpp'
-        TestSource = '00/63/CWorldMap_PointIsWithinCellBL_0063b9b0_test.cpp'
+        Source = '00/63/CWorldMap_PointIsWithinCellTL_0063b9b0.cpp'
+        TestSource = '00/63/CWorldMap_PointIsWithinCellTL_0063b9b0_test.cpp'
         PassPattern = '0063b9b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0063ba30'
         Module = 'CWorldMap'
-        Source = '00/63/CWorldMap_PointIsWithinCellTR_0063ba30.cpp'
-        TestSource = '00/63/CWorldMap_PointIsWithinCellTR_0063ba30_test.cpp'
+        Source = '00/63/CWorldMap_PointIsWithinCellBR_0063ba30.cpp'
+        TestSource = '00/63/CWorldMap_PointIsWithinCellBR_0063ba30_test.cpp'
         PassPattern = '0063ba30_TEST PASS'
     }
     [pscustomobject]@{
@@ -259566,8 +259566,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0042b587'
         Module = '_global'
-        Source = '00/42/stdRbtreeCCharStringpairconstCCharStringlong_Mcreatenode_0042b587.cpp'
-        TestSource = '00/42/stdRbtreeCCharStringpairconstCCharStringlong_Mcreatenode_0042b587_test.cpp'
+        Source = '00/42/stdRbtreeCCharStringpairconstCCharStringunsignedlong_Mcreatenode_0042b587.cpp'
+        TestSource = '00/42/stdRbtreeCCharStringpairconstCCharStringunsignedlong_Mcreatenode_0042b587_test.cpp'
         PassPattern = '0042b587_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,0 +1,6 @@
+0082d3b0 OK GETDEF_EQ=2 HELPER_BODY=2 HELPER_DROP=1 leaf=?PeekPCameraManagerSetDefinition@CThingBuilding@@QBE?AV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@XZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z 116->108 B
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCameraManagerSetDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingBuildingDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingBuildingDef@@@@AAEXPAVCDefPointeeBase@@@Z

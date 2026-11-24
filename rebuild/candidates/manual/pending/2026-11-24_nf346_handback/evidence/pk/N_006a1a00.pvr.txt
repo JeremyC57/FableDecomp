@@ -1,0 +1,6 @@
+EQ  00415d70 25 ?GetString@CDefString@@QBE?AVCCharString@@XZ 
+EQ  00415dd0 25 ??BCDefString@@QBE?AVCCharString@@XZ 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  006a3060 108 ??$GetDef@VCCarrySlotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCarrySlotDef@@@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

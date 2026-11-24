@@ -1,0 +1,2 @@
+NEQ 0042af3c 116 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z LEAF-REFERENCED
+EQ  005da180 182 ??$GetSubDef@VCHairCardDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHairCardDef@@@@@Z 

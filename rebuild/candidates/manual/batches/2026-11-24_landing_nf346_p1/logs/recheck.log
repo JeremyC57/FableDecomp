@@ -1,0 +1,17 @@
+addr       parity           behav  name
+0069adc0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0069adc0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0069adc0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0069adc0   RELOCATION_MATCH PASS   SetUpMainCameraManagerSetDef
+0082d3b0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0082d3b0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0082d3b0   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+0082d3b0   WARN RELOC_NAME: ?GetDefinitionManager@CThingBuilding@@QBEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+0082d3b0   WARN RELOC_NAME: ?GetWorld@CThingBuilding@@QBEPAVCWorld@@XZ -> 004c7ab0 labelled 'CThing::PeekWorld'
+0082d3b0   RELOCATION_MATCH PASS   PeekPCameraManagerSetDefinition
+008338d0   RELOCATION_MATCH PASS   InitialiseFromDef
+
+WINS: 3
+  0069adc0 RELOCATION_MATCH CGameCameraManager::?SetUpMainCameraManagerSetDef@CGameCameraManager@@AAEXXZ
+  0082d3b0 RELOCATION_MATCH CThingBuilding::PeekPCameraManagerSetDefinition
+  008338d0 RELOCATION_MATCH CThingAICreature::?InitialiseFromDef@CThingAICreature@@IAEXXZ

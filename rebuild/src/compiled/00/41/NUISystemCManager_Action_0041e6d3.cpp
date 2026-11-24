@@ -469,7 +469,8 @@ public:
 };
 class CTCInGameMenu {
 public:
-    void PCSetToLoad(long);                                          // 0x0047D008
+    void LoadGame(long);                                             // 0x0047D008 (NF345: stores LoadGameIndex +0x64, 10 bytes; Ego_r.pdb
+                                                                     // ?LoadGame@CTCInGameMenu@@QAEXJ@Z ~10 bytes, ego_r Action calls it; PCSetToLoad is 0x0047DD9D)
     void SetToSave(long);                                            // 0x0047ED76
     void CloseInGameMenuViaGameEvent();                              // 0x0047D21C
     void PCSetQuitToFrontEnd();                                      // 0x0047D296
@@ -1031,7 +1032,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         CActionParamULONG* file = static_cast<CActionParamULONG*>(UIActionParams.back());
         CTCInGameMenu* menu;
         PPlayer->GetTC(TCI_IN_GAME_MENU, &menu);
-        menu->PCSetToLoad(file->Value);
+        menu->LoadGame(file->Value);
         if (CPlayerGui::Get().IsLiveGUIMode())
             CPlayerGui::Get().ToggleLiveGui();
         return;

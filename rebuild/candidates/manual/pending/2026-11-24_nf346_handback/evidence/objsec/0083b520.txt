@@ -1,0 +1,6 @@
+0083b520 OK GETDEF_EQ=1 HELPER_BODY=2 HELPER_DROP=2 leaf=?GetCurrentGraphic@CThingVillage@@IBEPBVCEngineGraphic@@XZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingVillageDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingVillageDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingVillageDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCAppearanceDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingVillageDef@@@@AAEXPAVCDefPointeeBase@@@Z

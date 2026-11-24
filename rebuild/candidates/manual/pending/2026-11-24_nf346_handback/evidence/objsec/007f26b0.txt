@@ -1,0 +1,6 @@
+007f26b0 OK GETDEF_EQ=1 HELPER_BODY=2 HELPER_DROP=2 leaf=?Initialise@CTCLightningOrb@@QAEXAAVCThing@@0@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCLightningDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCLightningDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCLightningDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCSpecialEffectsDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCLightningDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCSpecialEffectsDef@@@@AAEXPAVCDefPointeeBase@@@Z

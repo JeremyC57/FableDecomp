@@ -6,7 +6,8 @@
 // Label: manifest "CV_MurderTwistScript::Main" is propagated; the class is CQ_WizardBattleScript (vtable 0x012E0F54,
 //   object size 0x80 = Ego_r 148 - 0x14, allocated at 0x00E1D9F0; HKC_* / Screamer / Maze binding names match its
 //   Maze / NumberOfScreamersAlive members in Ego_r.pdb).
-// Callees: Init 0x00E1AD30 (manifest "CV_ChickenKickingScript::Init" propagated), operator new 0x00BFEA1A, CCharString
+// Callees: InitialiseVariables 0x00E1AD30 (NF345: FableWin.pdb CQ_WizardBattleScript::InitialiseVariables, called first by the
+//   debug Main and placed after Main as retail; the body zeroes the script variables +0x48..+0x54; Init is 0x00E1A870), operator new 0x00BFEA1A, CCharString
 //   0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0, AddEntityScriptBinding 0x00CB8230 (binding vtable 0x012E0FCC),
 //   CScriptBase::PostAddScriptedEntities 0x00CB8930, CSpawnedFuncBase 0x00CDD450 (spawn vtable 0x012E0F68),
 //   AddSpawnedFunction 0x00CB7E50; threads WatchForTermination 0x00E1AD60, DoMission 0x00E1C0F0;
@@ -88,7 +89,7 @@ public:
     CGameScriptInterface* Game;                          // +0x40
     void* PMasterData;                                   // +0x44
     void Main();
-    void Init();                                         // 0x00E1AD30
+    void InitialiseVariables();                          // 0x00E1AD30
     void WatchForTermination();                          // 0x00E1AD60
     void DoMission();                                    // 0x00E1C0F0
 };
@@ -97,7 +98,7 @@ using NScript::CQ_WizardBattleScript;
 
 void NScript::CQ_WizardBattleScript::Main()
 {
-    Init();
+    InitialiseVariables();
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_WizardBattleScript>("HKC_VillagerScreamer", this, &CHKC_VillagerScreamer::Alloc, 1));
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_WizardBattleScript>("HKC_ScreamerPoint", this, &CHKC_ScreamerPoint::Alloc, 1));
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_WizardBattleScript>("ChasingScreamer", this, &CChasingScreamer::Alloc, 1));

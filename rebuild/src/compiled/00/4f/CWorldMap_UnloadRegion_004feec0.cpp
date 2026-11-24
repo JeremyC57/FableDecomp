@@ -5,7 +5,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FEEC0, 444 bytes (+ int3 padding), `ret 8`. PDB ?UnloadRegion@CWorldMap@@IAEXJ_N@Z.
 // Callees: the quest manager (global 0x013B89FC) OnRegionUnloaded 0x004AFC30 (const CCharString&), CWorld virtual slot 3
 //   GetThingManager, CThingManager::OnLevelsUnload(const vector<long>&, bool) 0x00525CD0, CWorldMap virtual slot 10
-//   IsMapLoaded, CTBaseSingleton<CEngineManager>::Get 0x00436FB0 (`__fastcall`), CEngineManager::RemoveMap 0x00640430,
+//   IsMapLoaded, CTBaseSingleton<CEngineManager>::Get 0x00436FB0 (`__fastcall`), CEngineManager::SetMapAsUnloaded 0x00640430 (NF345: Ego_r.pdb
+//   name set; ego_r.exe UnloadLevel / UnloadRegion call SetMapAsUnloaded; RemoveMap is 0x006403D0),
 //   __find 0x0050E540 (`__fastcall`, landed; same-TU stand-in as in the landed UnloadLevel 0x004FEDE0), memmove
 //   0x00BFEAE6, operator delete 0x00BFE9BC, CThingMapManager::RemoveGameMap 0x00638340, CNavigatorManager::
 //   IsNavigationMapLoaded 0x00A14E80 / RemoveNavigationMap 0x00A155D0, CMessageEventManager::AddMessage 0x00687540.
@@ -100,7 +101,7 @@ class CQuestManager { public:
 // 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 struct CEngineManager {
     static CEngineManager& __fastcall Get();                 // 0x00436FB0 CTBaseSingleton<CEngineManager>::Get
-    void RemoveMap(long map);                                // 0x00640430
+    void SetMapAsUnloaded(long map);                                // 0x00640430
 };
 struct CThingManager {
     void OnLevelsUnload(const CLongArray& maps, bool b);     // 0x00525CD0
@@ -158,7 +159,7 @@ void CWorldMap::UnloadRegion(long region, bool b)
         long map = maps[i];
         if (IsMapLoaded(map)) {
             Maps[map].Activated = false;
-            CEngineManager::Get().RemoveMap(map);
+            CEngineManager::Get().SetMapAsUnloaded(map);
             LoadedMaps.Erase(Find(LoadedMaps.Start, LoadedMaps.Finish, map, CIteratorTag()));
             Maps[map].PMap.ReleaseData();
         }

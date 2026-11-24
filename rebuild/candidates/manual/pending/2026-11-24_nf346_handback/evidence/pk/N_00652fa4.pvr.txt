@@ -1,0 +1,20 @@
+EQ  004371a0 34 ??0C2DBoxF@@QAE@ABVC2DVector@@0@Z 
+EQ  00643be2 13 ?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z 
+NEQ 00548610 17 ?IsHUDTooltipEnabled@CUserProfileManager@@QBE_NXZ not referenced by the leaf
+EQ  00643cda 50 ?GFAnchorToBottomLeft@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z 
+NEQ 00a01c10 5 ??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ LEAF-REFERENCED
+EQ  0043dbd0 21 ??$IS_THING_ALIVE@PAVCThingPlayerCreature@@@@YI_NABQAVCThingPlayerCreature@@@Z 
+EQ  00493ac2 153 ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z 
+NEQ 004365b0 61 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+NEQ 0040f020 61 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+NEQ 0041be70 58 ?Clear@CEnginePrimitiveHandle@@QAEXXZ not referenced by the leaf
+EQ  00645292 477 ?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z 
+EQ  0064546f 406 ?DrawEffectAtPos@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVC2DCoordI@@JJ@Z 
+EQ  0042b040 98 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 
+EQ  0042af3c 98 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 
+EQ  005936c2 162 ??$GetSubDef@VCAbilityDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAbilityDef@@@@@Z 
+NEQ 00440260 41 ??$__copy@PAVCEnginePrimitiveHandle@@PAV1@H@std@@YIPAVCEnginePrimitiveHandle@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z not referenced by the leaf
+NEQ 00410de0 31 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z LEAF-REFERENCED
+NEQ 004118c0 8 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z not referenced by the leaf
+NEQ 00440d70 52 ?erase@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@PAV3@0@Z LEAF-REFERENCED
+NEQ 00443f90 40 ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z LEAF-REFERENCED

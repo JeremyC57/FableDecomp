@@ -1,0 +1,1 @@
+EQ  00513160 108 ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z 

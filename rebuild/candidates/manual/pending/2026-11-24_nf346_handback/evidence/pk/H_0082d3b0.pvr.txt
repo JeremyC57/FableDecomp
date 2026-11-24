@@ -1,0 +1,4 @@
+EQ  00419650 19 ?GetPRegionDef@CRegion@@QBE?AV?$CDefPointer@$$CBVCRegionDef@@@@XZ 
+NEQ 004ab840 116 ??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z not referenced by the leaf
+NEQ 004ab920 116 ??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z not referenced by the leaf
+NEQ 004ab990 112 ??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z not referenced by the leaf

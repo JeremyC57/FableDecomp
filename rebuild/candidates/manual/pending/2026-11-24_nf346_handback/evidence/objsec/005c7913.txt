@@ -1,0 +1,6 @@
+005c7913 OK GETDEF_EQ=1 HELPER_BODY=2 HELPER_DROP=2 leaf=?GetItemDescription@CTCInventoryWeapons@@UBEXAAVCWideString@@J_N@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 101->98 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->50 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCWeaponDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->50 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z

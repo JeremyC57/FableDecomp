@@ -1,0 +1,3 @@
+008338d0 OK GETDEF_EQ=1 HELPER_BODY=1 leaf=?InitialiseFromDef@CThingAICreature@@IAEXXZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCBrainDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCBrainDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B

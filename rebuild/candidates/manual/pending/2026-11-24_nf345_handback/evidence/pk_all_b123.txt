@@ -1,0 +1,86 @@
+== H_0042b587
+EQ EQ 00405c10 pickany 5 leaf=n reach=n ??2@YAPAXIPAX@Z
+EQ EQ 004297db pickany 27 leaf=y reach=y ??0?$pair@$$CBVCCharString@@J@std@@QAE@ABU01@@Z
+NOADDR NOADDR - pickany 18 leaf=n reach=n ??$_Construct@U?$pair@$$CBVCCharString@@J@std@@U12@@std@@YAXPAU?$pair@
+== 0042b587
+EQ EQ 00405c10 pickany 5 leaf=n reach=n ??2@YAPAXIPAX@Z
+EQ EQ 004297db pickany 27 leaf=y reach=y ??0?$pair@$$CBVCCharString@@K@std@@QAE@ABU01@@Z
+NOADDR NOADDR - pickany 18 leaf=n reach=n ??$_Construct@U?$pair@$$CBVCCharString@@K@std@@U12@@std@@YAXPAU?$pair@
+== H_0059697a
+NEQ NEQ 005485b0 pickany 17 leaf=n reach=n ?IsCameraYZInverted@CUserProfileManager@@QBE_NXZ
+== 0059697a
+NEQ NEQ 005485b0 pickany 17 leaf=n reach=n ?IsCameraYZInverted@CUserProfileManager@@QBE_NXZ
+== H_004fede0
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0CIteratorTag@@QAE@XZ
+EQ EQ 0050e540 strong 112 leaf=y reach=y ?Find@@YIPAJPAJ0ABJABUCIteratorTag@@@Z
+NOADDR NOADDR - pickany 42 leaf=n reach=n ?Erase@CLongArray@@QAEPAJPAJ@Z
+NOADDR NOADDR - pickany 53 leaf=n reach=n ?Clear@?$CCountedPointer@VCMap@@@@QAEXXZ
+NOADDR NOADDR - pickany 15 leaf=n reach=n ??A?$CArray@VCMapInfo@@@@QAEAAVCMapInfo@@I@Z
+== 004fede0
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0CIteratorTag@@QAE@XZ
+EQ EQ 0050e540 strong 112 leaf=y reach=y ?Find@@YIPAJPAJ0ABJABUCIteratorTag@@@Z
+NOADDR NOADDR - pickany 42 leaf=n reach=n ?Erase@CLongArray@@QAEPAJPAJ@Z
+NOADDR NOADDR - pickany 53 leaf=n reach=n ?Clear@?$CCountedPointer@VCMap@@@@QAEXXZ
+NOADDR NOADDR - pickany 15 leaf=n reach=n ??A?$CArray@VCMapInfo@@@@QAEAAVCMapInfo@@I@Z
+== H_004feec0
+NOADDR NOADDR - pickany 25 leaf=n reach=n ??0C3DVector@@QAE@MMM@Z
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0CIteratorTag@@QAE@XZ
+EQ EQ 0050e540 strong 112 leaf=y reach=y ?Find@@YIPAJPAJ0ABJABUCIteratorTag@@@Z
+NOADDR NOADDR - pickany 9 leaf=n reach=n ?size@CLongArray@@QBEIXZ
+NOADDR NOADDR - pickany 12 leaf=n reach=n ??ACLongArray@@QAEAAJI@Z
+NOADDR NOADDR - pickany 42 leaf=n reach=n ?Erase@CLongArray@@QAEPAJPAJ@Z
+NOADDR NOADDR - pickany 53 leaf=n reach=n ?ReleaseData@?$CCountedPointer@UCMap@@@@QAEXXZ
+NOADDR NOADDR - pickany 15 leaf=n reach=n ??A?$CArray@UCMapInfo@@@@QAEAAUCMapInfo@@I@Z
+== 004feec0
+NOADDR NOADDR - pickany 25 leaf=n reach=n ??0C3DVector@@QAE@MMM@Z
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0CIteratorTag@@QAE@XZ
+EQ EQ 0050e540 strong 112 leaf=y reach=y ?Find@@YIPAJPAJ0ABJABUCIteratorTag@@@Z
+NOADDR NOADDR - pickany 9 leaf=n reach=n ?size@CLongArray@@QBEIXZ
+NOADDR NOADDR - pickany 12 leaf=n reach=n ??ACLongArray@@QAEAAJI@Z
+NOADDR NOADDR - pickany 42 leaf=n reach=n ?Erase@CLongArray@@QAEPAJPAJ@Z
+NOADDR NOADDR - pickany 53 leaf=n reach=n ?ReleaseData@?$CCountedPointer@UCMap@@@@QAEXXZ
+NOADDR NOADDR - pickany 15 leaf=n reach=n ??A?$CArray@UCMapInfo@@@@QAEAAUCMapInfo@@I@Z
+== H_0063b890
+== 0063b890
+== H_0063b920
+== 0063b920
+== H_0063b9b0
+== 0063b9b0
+== H_0063ba30
+== 0063ba30
+== H_00e1a990
+NOADDR NOADDR - pickany 45 leaf=n reach=n ?SpawnFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@PBD@Z
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0CEntityScriptBindingBase@@QAE@XZ
+EQ EQ 00cdd4f0 pickany 53 leaf=n reach=n ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ
+NOADDR NOADDR - pickany 53 leaf=n reach=n ??0?$CEntityScriptBinding@VCQ_WizardBattleScript@NScript@@@@QAE@ABVCCh
+NOADDR NOADDR - pickany 4 leaf=n reach=n ?GetEntityScriptName@?$CEntityScriptBinding@VCQ_WizardBattleScript@NSc
+NEQ NEQ 00cdd4c0 pickany 76 leaf=n reach=n ??1CSpawnedFuncBase@@UAE@XZ
+NOADDR NOADDR - pickany 46 leaf=n reach=n ??0?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@QAE@ABVCCharString
+NOADDR NOADDR - pickany 15 leaf=n reach=n ?SuspendableProcess@?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@U
+== 00e1a990
+NOADDR NOADDR - pickany 45 leaf=n reach=n ?SpawnFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@PBD@Z
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0CEntityScriptBindingBase@@QAE@XZ
+EQ EQ 00cdd4f0 pickany 53 leaf=n reach=n ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ
+NOADDR NOADDR - pickany 53 leaf=n reach=n ??0?$CEntityScriptBinding@VCQ_WizardBattleScript@NScript@@@@QAE@ABVCCh
+NOADDR NOADDR - pickany 4 leaf=n reach=n ?GetEntityScriptName@?$CEntityScriptBinding@VCQ_WizardBattleScript@NSc
+NEQ NEQ 00cdd4c0 pickany 76 leaf=n reach=n ??1CSpawnedFuncBase@@UAE@XZ
+NOADDR NOADDR - pickany 46 leaf=n reach=n ??0?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@QAE@ABVCCharString
+NOADDR NOADDR - pickany 15 leaf=n reach=n ?SuspendableProcess@?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@U
+== H_0041e6d3
+EQ EQ 00405c10 pickany 5 leaf=n reach=n ??2@YAPAXIPAX@Z
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0__false_type@std@@QAE@XZ
+EQ EQ 0041c780 pickany 11 leaf=n reach=n ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0_List_iterator_base@std@@QAE@XZ
+NEQ NEQ 0041c7a0 pickany 7 leaf=n reach=n ?_M_incr@_List_iterator_base@std@@QAEXXZ
+NEQ NEQ 0041c7b0 pickany 8 leaf=n reach=n ?_M_decr@_List_iterator_base@std@@QAEXXZ
+NEQ NEQ 0041c7c0 pickany 18 leaf=y reach=y ??9_List_iterator_base@std@@QBE_NABU01@@Z
+NOADDR NOADDR - pickany 15 leaf=n reach=n ??8CWideStringData@@QBE_NPBG@Z
+== 0041e6d3
+EQ EQ 00405c10 pickany 5 leaf=n reach=n ??2@YAPAXIPAX@Z
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0__false_type@std@@QAE@XZ
+EQ EQ 0041c780 pickany 11 leaf=n reach=n ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+NOADDR NOADDR - pickany 3 leaf=n reach=n ??0_List_iterator_base@std@@QAE@XZ
+NEQ NEQ 0041c7a0 pickany 7 leaf=n reach=n ?_M_incr@_List_iterator_base@std@@QAEXXZ
+NEQ NEQ 0041c7b0 pickany 8 leaf=n reach=n ?_M_decr@_List_iterator_base@std@@QAEXXZ
+NEQ NEQ 0041c7c0 pickany 18 leaf=y reach=y ??9_List_iterator_base@std@@QBE_NABU01@@Z
+NOADDR NOADDR - pickany 15 leaf=n reach=n ??8CWideStringData@@QBE_NPBG@Z

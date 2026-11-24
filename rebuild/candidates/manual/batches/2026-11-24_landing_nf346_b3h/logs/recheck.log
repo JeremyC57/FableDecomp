@@ -1,0 +1,5 @@
+addr       parity           behav  name
+008c64f0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 1
+  008c64f0 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?Initialise@CCreatureAction_TrollThrowProjectile@@UAEXXZ

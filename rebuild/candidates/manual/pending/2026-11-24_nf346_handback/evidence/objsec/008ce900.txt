@@ -1,0 +1,6 @@
+008ce900 OK GETDEF_EQ=1 HELPER_BODY=2 HELPER_DROP=2 leaf=??0CCreatureAction_CastSkillMultiArrow@@QAE@PAVCThingCreatureBase@@J@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCSpecialAbilitiesMultiArrowDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesMultiArrowDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCSpecialAbilitiesMultiArrowDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCSpecialEffectsDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCSpecialAbilitiesMultiArrowDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCSpecialEffectsDef@@@@AAEXPAVCDefPointeeBase@@@Z

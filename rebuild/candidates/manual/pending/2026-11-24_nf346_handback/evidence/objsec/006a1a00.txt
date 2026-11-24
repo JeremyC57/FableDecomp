@@ -1,0 +1,4 @@
+006a1a00 OK GETDEF_EQ=1 HELPER_BODY=1 HELPER_DROP=1 leaf=?GetCarriedThingInterpolatedPosAndOrientation@CTCCarrying@@QBE_NABVCThing@@AAVC3DVector@@AAVCRightHa
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCCarrySlotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCarrySlotDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCarrySlotDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCCarrySlotDef@@@@AAEXPAVCDefPointeeBase@@@Z

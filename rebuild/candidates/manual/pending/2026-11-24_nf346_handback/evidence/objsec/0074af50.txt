@@ -1,0 +1,9 @@
+0074af50 OK GETDEF_EQ=2 HELPER_BODY=3 HELPER_DROP=3 leaf=?CreateCreaturesUndead@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z 116->108 B
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCreatureDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingCreatureDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCCreatureDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingCreatureDef@@@@AAEXPAVCDefPointeeBase@@@Z

@@ -20,6 +20,7 @@
 //   header (FABLE_RETAIL_CMAP_GETSTRONGESTENGINETHEMEAT_BODY, `inline __declspec(noinline)`; retail compiled both in one object);
 //   GetGroundFaceNormalAt is the PDB const member (was QAE). Overlay opt-in FABLE_RETAIL_CMAP_INITPASSABILITYFROMTHEMES declares both.
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD   // NF346: GetDef<T> copies = retail (the re-reading SetDynamicCast, owner 0x0066C340; as 0x0066B370)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFINITIONMANAGER

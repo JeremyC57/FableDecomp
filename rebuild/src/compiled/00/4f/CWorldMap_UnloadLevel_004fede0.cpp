@@ -4,7 +4,8 @@
 // Retail: Fable.exe @ 0x004FEDE0, 222 bytes, `ret 4`. PDB ?UnloadLevel@CWorldMap@@IAEXJ@Z (protected)
 // Callees: SGI __find<long*>(first, last, const long&, random_access_iterator_tag) 0x0050E540 (`__fastcall`, landed
 // global_Find0050e540), memmove 0x00BFEAE6, CTBaseSingleton<CEngineManager>::Get 0x00436FB0 (`__fastcall`; manifest
-// "CGameJoystickManager Get" is a byte twin), CEngineManager::RemoveMap(long) 0x00640430, CWorld virtual slot 3
+// "CGameJoystickManager Get" is a byte twin), CEngineManager::SetMapAsUnloaded(long) 0x00640430 (NF345: Ego_r.pdb
+// name set; ego_r.exe UnloadLevel / UnloadRegion call SetMapAsUnloaded; RemoveMap is 0x006403D0, called by RemoveLevel / DeleteAllLevels / ~CWorldMap), CWorld virtual slot 3
 // GetThingManager (0x0049E1B0), CThingManager::OnLevelUnload(long, bool) 0x00525D90 (manifest
 // "CLandscapeGPUUpdateQueue::AddTask"), operator delete 0x00BFE9BC, NThingMap::CThingMapManager::RemoveGameMap(long)
 // 0x00638340, CNavigatorManager::IsNavigationMapLoaded(long) const 0x00A14E80, RemoveNavigationMap(long) 0x00A155D0.
@@ -102,7 +103,7 @@ class CMapInfo { public:                                            // 0x48 byte
 
 class CEngineManager { public:
     static CEngineManager& __fastcall Get();                 // 0x00436FB0 CTBaseSingleton<CEngineManager>::Get
-    void RemoveMap(long map);                                // 0x00640430
+    void SetMapAsUnloaded(long map);                                // 0x00640430
 };
 class CThingManager { public:
     void OnLevelUnload(long map, bool b);                    // 0x00525D90
@@ -142,7 +143,7 @@ void CWorldMap::UnloadLevel(long map)
 {
     Maps[map].Activated = false;
     LoadedMaps.Erase(Find(LoadedMaps.Start, LoadedMaps.Finish, map, CIteratorTag()));
-    CEngineManager::Get().RemoveMap(map);
+    CEngineManager::Get().SetMapAsUnloaded(map);
     World->GetThingManager()->OnLevelUnload(map, true);
     Maps[map].PMap.Clear();
     PThingMapManager->RemoveGameMap(map);

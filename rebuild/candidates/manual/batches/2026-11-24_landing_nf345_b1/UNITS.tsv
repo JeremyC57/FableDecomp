@@ -1,0 +1,8 @@
+address	unit	note
+0063b890	u1_pointiswithincell	unit: lands whole or not at all (with its TABLE_CHANGES lines)
+0063b920	u1_pointiswithincell	unit: lands whole or not at all (with its TABLE_CHANGES lines)
+0063b9b0	u1_pointiswithincell	unit: lands whole or not at all (with its TABLE_CHANGES lines)
+0063ba30	u1_pointiswithincell	unit: lands whole or not at all (with its TABLE_CHANGES lines)
+0059697a	u2_camerabow	unit: lands whole or not at all (with its TABLE_CHANGES lines)
+004fede0	u3_setmapasunloaded	unit: lands whole or not at all (with its TABLE_CHANGES lines)
+004feec0	u3_setmapasunloaded	unit: lands whole or not at all (with its TABLE_CHANGES lines)

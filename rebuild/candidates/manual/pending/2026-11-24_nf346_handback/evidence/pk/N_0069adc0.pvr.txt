@@ -1,0 +1,4 @@
+NEQ 0069ac90 19 ?SetCameraManagerSetDef@CGameCameraManager@@QAEXABV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z LEAF-REFERENCED
+EQ  00419650 19 ?GetPRegionDef@CRegion@@QBE?AV?$CDefPointer@$$CBVCRegionDef@@@@XZ 
+EQ  004ab920 108 ??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z 
+NEQ 004ab990 112 ??$GetDef@VCCameraManagerSetDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCCameraManagerSetDef@@@@@Z LEAF-REFERENCED

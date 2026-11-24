@@ -1,0 +1,4 @@
+0081fcc0 OK GETDEF_EQ=1 HELPER_BODY=1 HELPER_DROP=1 leaf=?GetWaterSizeZOffsetAt@CMap@@QAEMABVC2DCoordI@@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z 116->108 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCEngineThemeDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCEngineThemeDef@@@@AAEXPAVCDefPointeeBase@@@Z
