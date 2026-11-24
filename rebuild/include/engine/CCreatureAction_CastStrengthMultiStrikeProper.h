@@ -8,6 +8,27 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHMULTISTRIKEPROPER_VIRTUAL_MODEL
+// NF323 (2026-11-24, NF320 Q1 / NF322 recipe): the polymorphic retail class for the Clone TU, RTTI .?AVCCreatureAction_CastStrengthMultiStrikeProper@@ : CCombatActionBase
+// (rtti_bases.tsv) on the retail 0x114-byte CCombatActionBase (engine/CCombatActionBase.h retail branch), own member SpellLevel at +0x114
+// (Ego_r.pdb +0x12c on the 0x12c Ego_r base; sizeof 0x118: the Clone allocates 0x118). Declarations only. Each virtual overrides the
+// base virtual at the same slot of retail vftable 0x012877A4 (RTTI-port label + the PDB name sets):
+//   slot 4 = 0x008E63B0 ?FinishAction@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ (FableWin.pdb, Ego_r.pdb)
+//   slot 11 = 0x008E6F50 ?Clone@CCreatureAction_CastStrengthMultiStrikeProper@@UBEPAVCCreatureActionBase@@XZ (FableWin.pdb, Ego_r.pdb)
+//   slot 12 = 0x008E6690 ?Initialise@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ (FableWin.pdb, Ego_r.pdb)
+//   slot 29 = 0x008E6E20 ?IsBlockable@CCreatureAction_CastStrengthMultiStrikeProper@@UBE_NXZ (FableWin.pdb)
+#include "engine/CCombatActionBase.h"
+class CCreatureAction_CastStrengthMultiStrikeProper : public CCombatActionBase {
+public:
+    virtual void FinishAction();
+    virtual CCreatureActionBase * Clone() const;
+    virtual void Initialise();
+    virtual bool IsBlockable() const;
+    long          SpellLevel;                                // +0x114
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastStrengthMultiStrikeProper) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastStrengthMultiStrikeProper, SpellLevel) == 0x114);
+#else
 
 #pragma pack(push, 1)
 class CCreatureAction_CastStrengthMultiStrikeProper {
@@ -77,8 +98,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastStrengthMultiStrikeProper) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastStrengthMultiStrikeProper, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastStrengthMultiStrikeProper, SpellLevel) == 0x114);
+FABLE_STATIC_ASSERT_AT(80, sizeof(CCreatureAction_CastStrengthMultiStrikeProper) == 0x118);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_CastStrengthMultiStrikeProper, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_CastStrengthMultiStrikeProper, SpellLevel) == 0x114);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHMULTISTRIKEPROPER_VIRTUAL_MODEL
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTSTRENGTHMULTISTRIKEPROPER_H

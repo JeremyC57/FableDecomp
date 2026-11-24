@@ -8,6 +8,24 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CCREATUREACTION_STARTSNEAKING_VIRTUAL_MODEL
+// NF323 (2026-11-24, NF320 Q1 / NF322 recipe): the polymorphic retail class for the Clone TU, RTTI .?AVCCreatureAction_StartSneaking@@ : CCreatureActionBase
+// (rtti_bases.tsv), no own members (retail sizeof 0xA8: the Clone allocates 0xa8 and copies only the base). Declarations only. Each
+// virtual overrides the CCreatureActionBase virtual at the same slot of retail vftable 0x01258DFC (RTTI-port label + the PDB name sets):
+//   slot 3 = 0x0062D7B0 ?PerformAction@CCreatureAction_StartSneaking@@UAEXXZ (FableWin.pdb)
+//   slot 4 = 0x00845C70 ?FinishAction@CCreatureAction_StartSneaking@@UAEXXZ (FableWin.pdb, Ego_r.pdb)
+//   slot 11 = 0x0062F230 ?Clone@CCreatureAction_StartSneaking@@UBEPAVCCreatureActionBase@@XZ (FableWin.pdb, Ego_r.pdb)
+//   slot 49 = 0x0062D7C0 ?IsPreventingNormalMovement@CCreatureAction_StartSneaking@@UBE_NXZ (FableWin.pdb)
+#include "engine/CCreatureActionBase.h"
+class CCreatureAction_StartSneaking : public CCreatureActionBase {
+public:
+    virtual void PerformAction();
+    virtual void FinishAction();
+    virtual CCreatureActionBase * Clone() const;
+    virtual bool IsPreventingNormalMovement() const;
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_StartSneaking) == 0xa8);
+#else
 
 #pragma pack(push, 1)
 class CCreatureAction_StartSneaking {
@@ -18,7 +36,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_StartSneaking) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_StartSneaking, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(21, sizeof(CCreatureAction_StartSneaking) == 0xa8);
+FABLE_STATIC_ASSERT_AT(22, offsetof(CCreatureAction_StartSneaking, __vftable) == 0x0);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_STARTSNEAKING_VIRTUAL_MODEL
 #endif // FABLE_ENGINE_CCREATUREACTION_STARTSNEAKING_H

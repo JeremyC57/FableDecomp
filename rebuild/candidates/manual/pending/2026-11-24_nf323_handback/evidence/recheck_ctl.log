@@ -1,0 +1,85 @@
+addr       parity           behav  name
+00842150   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00842150   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00842150   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00842150   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DropGenericBox (engine/CCreatureAction_DropGenericBox.h)
+00842150   RELOCATION_MATCH PASS   CCreatureAction_DropGenericBox
+00842270   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00842270   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00842270   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00842270   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00842270   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ShowFear (engine/CCreatureAction_ShowFear.h)
+00842270   RELOCATION_MATCH PASS   CCreatureAction_ShowFear
+00842300   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00842300   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00842300   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00842300   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00842300   WARN SHARED_HEADER_AVAILABLE CCreatureAction_AlertToPlayer (engine/CCreatureAction_AlertToPlayer.h)
+00842300   RELOCATION_MATCH PASS   CCreatureAction_AlertToPlayer
+00865a00   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00865a00   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00865a00   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00865a00   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00865a00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BeDazed (engine/CCreatureAction_BeDazed.h)
+00865a00   RELOCATION_MATCH PASS   CCreatureAction_BeDazed
+009110f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+009110f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009110f0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+009110f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009110f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_OrderSecuritySweep (engine/CCreatureAction_OrderSecuritySweep.h)
+009110f0   RELOCATION_MATCH PASS   CCreatureAction_OrderSecuritySweep
+00911180   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00911180   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00911180   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00911180   WARN SHARED_HEADER_AVAILABLE CCreatureAction_Curiosity (engine/CCreatureAction_Curiosity.h)
+00911180   RELOCATION_MATCH PASS   CCreatureAction_Curiosity
+00915810   RELOCATION_MATCH PASS   CCreatureAction_PutGoodsDown
+00941b20   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00941b20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00941b20   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00941b20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00941b20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayHopscotch (engine/CCreatureAction_PlayHopscotch.h)
+00941b20   RELOCATION_MATCH PASS   CCreatureAction_PlayHopscotch
+0062d740   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0062d740   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0062d740   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0062d740   WARN SHARED_HEADER_AVAILABLE CCreatureAction_StartSneaking (engine/CCreatureAction_StartSneaking.h)
+0062d740   RELOCATION_MATCH PASS   CCreatureAction_StartSneaking
+0062d7f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0062d7f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0062d7f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0062d7f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_StopSneaking (engine/CCreatureAction_StopSneaking.h)
+0062d7f0   RELOCATION_MATCH PASS   CCreatureAction_StopSneaking
+007eba20   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+007eba20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+007eba20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+007eba20   RELOCATION_MATCH PASS   CCreatureAction_LookThroughWindow
+008421e0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008421e0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008421e0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008421e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008421e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_YellOverHere (engine/CCreatureAction_YellOverHere.h)
+008421e0   RELOCATION_MATCH PASS   CCreatureAction_YellOverHere
+00842460   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00842460   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00842460   RELOCATION_MATCH PASS   CCreatureAction_ActivateZTarget
+00854660   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00854660   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00854660   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SpiritReturnToHero (engine/CCreatureAction_SpiritReturnToHero.h)
+00854660   RELOCATION_MATCH PASS   CCreatureAction_SpiritReturnToHero
+
+WINS: 14
+  00842150 RELOCATION_MATCH CCreatureAction_DropGenericBox::??0CCreatureAction_DropGenericBox@@QAE@AAVCThingCreatureBase@@@Z
+  00842270 RELOCATION_MATCH CCreatureAction_ShowFear::??0CCreatureAction_ShowFear@@QAE@AAVCThingAICreature@@@Z
+  00842300 RELOCATION_MATCH CCreatureAction_AlertToPlayer::??0CCreatureAction_AlertToPlayer@@QAE@AAVCThingAICreature@@@Z
+  00865a00 RELOCATION_MATCH CCreatureAction_BeDazed::??0CCreatureAction_BeDazed@@QAE@AAVCThingCreatureBase@@@Z
+  009110f0 RELOCATION_MATCH CCreatureAction_OrderSecuritySweep::??0CCreatureAction_OrderSecuritySweep@@QAE@AAVCThingCreatureBase@@@Z
+  00911180 RELOCATION_MATCH CCreatureAction_Curiosity::??0CCreatureAction_Curiosity@@QAE@AAVCThingCreatureBase@@@Z
+  00915810 RELOCATION_MATCH CCreatureAction_PutGoodsDown::??0CCreatureAction_PutGoodsDown@@QAE@AAVCThingCreatureBase@@ABVCCharString@@@Z
+  00941b20 RELOCATION_MATCH CCreatureAction_PlayHopscotch::??0CCreatureAction_PlayHopscotch@@QAE@AAVCThingCreatureBase@@@Z
+  0062d740 RELOCATION_MATCH CCreatureAction_StartSneaking::??0CCreatureAction_StartSneaking@@QAE@AAVCThingCreatureBase@@@Z
+  0062d7f0 RELOCATION_MATCH CCreatureAction_StopSneaking::??0CCreatureAction_StopSneaking@@QAE@AAVCThingCreatureBase@@@Z
+  007eba20 RELOCATION_MATCH CCreatureAction_LookThroughWindow::??0CCreatureAction_LookThroughWindow@@QAE@AAVCThingCreatureBase@@@Z
+  008421e0 RELOCATION_MATCH CCreatureAction_YellOverHere::??0CCreatureAction_YellOverHere@@QAE@AAVCThingAICreature@@@Z
+  00842460 RELOCATION_MATCH CCreatureAction_ActivateZTarget::??0CCreatureAction_ActivateZTarget@
+  00854660 RELOCATION_MATCH CCreatureAction_SpiritReturnToHero::??0CCreatureAction_SpiritReturnToHero@

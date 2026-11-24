@@ -1,0 +1,27 @@
+CCreatureAction_ShowFear::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_AlertToPlayer::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_OrderSecuritySweep::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_Curiosity::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_PutGoodsDown::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_DropGenericBox::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_PlayHopscotch::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_BeDazed::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_StartSneaking::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_StopSneaking::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_PlayAnimationFromIndex::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_YellOverHere::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_SpiritReturnToHero::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_LookThroughWindow::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_DropWeapon::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_ActivateZTarget::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_StartFillingTankard::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_StopFillingTankard::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_CallSpouseHome::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_CastStrengthMultiStrikeProper::Clone defs=1 leafs=0 ??_G-mentions=0
+CCreatureAction_GetUpFromSitting::Clone defs=1 leafs=0 ??_G-mentions=0
+CFireballSpellLevelDef::Transfer defs=0
+CJoystickDX::GetRumbleWithID defs=0
+CJoystickDX::PeekRumbleWithID defs=0
+CNavBlockedQuadTreeNode::MakeRegion defs=0
+CNavBlockedQuadTreeNode::AddNavigableNodeNeighbouringSwitchableNodeToRegion defs=0
+CEnginePrimitiveManager2DParticleGroup::RenderPrimitive defs=0

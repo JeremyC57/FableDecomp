@@ -1,0 +1,55 @@
+addr       parity           behav  name
+0085ff10   RELOCATION_MATCH PASS   GetUpFromSitting
+00860150   RELOCATION_MATCH PASS   CCreatureAction_GetUpFromSitting
+008a8c60   RELOCATION_MATCH PASS   EntitySetAsSittingOnFloor
+00938a10   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_GetUpFromSitting (engine/CCreatureAction_GetUpFromSitting.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00938a10   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+00938a10   RELOCATION_MATCH PASS   GetUpFromSeat
+0093afc0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093afc0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditSitRoundCampfire (engine/CAIStateGroup_BanditSitRoundCampfire.h)
+0093afc0   RELOCATION_MATCH PASS   OnReplace
+008e6bb0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008e6bb0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008e6bb0   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesMultiStrikeDef (engine/CSpecialAbilitiesMultiStrikeDef.h)
+008e6bb0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008e6bb0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008e6bb0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008e6bb0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008e6bb0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastStrengthMultiStrikeProper (engine/CCreatureAction_CastStrengthMultiStrikeProper.h)
+008e6bb0   RELOCATION_MATCH PASS   CCreatureAction_CastStrengthMultiStrikeProper
+008e6c90   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008e6c90   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008e6c90   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesMultiStrikeDef (engine/CSpecialAbilitiesMultiStrikeDef.h)
+008e6c90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008e6c90   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008e6c90   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008e6c90   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008e6c90   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastStrengthMultiStrikeProper (engine/CCreatureAction_CastStrengthMultiStrikeProper.h)
+008e6c90   RELOCATION_MATCH PASS   CCreatureAction_CastStrengthMultiStrikeProper
+
+WINS: 7
+  0085ff10 RELOCATION_MATCH NCreatureMode::?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z
+  00860150 RELOCATION_MATCH CCreatureAction_GetUpFromSitting::??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z
+  008a8c60 RELOCATION_MATCH CGameScriptInterface::?EntitySetAsSittingOnFloor@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  00938a10 RELOCATION_MATCH CAIStateGroup_UsesSeat::?GetUpFromSeat@CAIStateGroup_UsesSeat@@IAE_NXZ
+  0093afc0 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?OnReplace@CAIStateGroup_BanditSitRoundCampfire@@QAEXXZ
+  008e6bb0 RELOCATION_MATCH CCreatureAction_CastStrengthMultiStrikeProper::??0CCreatureAction_CastStrengthMultiStrikeProper@@QAE@PAVCThingCreatureBase@@PAVCThing@@J@Z
+  008e6c90 RELOCATION_MATCH CCreatureAction_CastStrengthMultiStrikeProper::??0CCreatureAction_CastStrengthMultiStrikeProper@@QAE@PAVCThingCreatureBase@@J@Z

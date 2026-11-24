@@ -1,0 +1,16 @@
+--- orig/hdr/engine/CFireballSpellLevelDef.h	2026-11-24 00:39:24.489816853 +0000
++++ hdr/engine/CFireballSpellLevelDef.h	2026-11-24 00:44:49.716208353 +0000
+@@ -27,6 +27,13 @@
+     virtual void Copy(const CDefClassBase*);                          // 0x004E0F34
+ public:
+ #endif
++#ifdef FABLE_RETAIL_CFIREBALLSPELLLEVELDEF_TRANSFER_DECL
++    // Opt-in (NF323, 2026-11-24): declaration only, no layout change: Ego_r.pdb + FableWin.pdb ?Transfer@CFireballSpellLevelDef@@UAEXAAVCPersistContext@@@Z,
++    // named at 0x004DEA03 by the retail RTTI vftable placement (vtable 0x0123CC3C slot 18); overrides CDefClassBase::Transfer (slot 18), no new slot.
++public:
++    virtual void Transfer(CPersistContext&);                          // 0x004DEA03
++public:
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(22, sizeof(CFireballSpellLevelDef) == 0x2c);
+ #else

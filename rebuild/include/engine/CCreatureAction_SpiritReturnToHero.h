@@ -8,6 +8,22 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CCREATUREACTION_SPIRITRETURNTOHERO_VIRTUAL_MODEL
+// NF323 (2026-11-24, NF320 Q1 / NF322 recipe): the polymorphic retail class for the Clone TU, RTTI .?AVCCreatureAction_SpiritReturnToHero@@ : CCreatureActionBase
+// (rtti_bases.tsv), no own members (retail sizeof 0xA8: the Clone allocates 0xa8 and copies only the base). Declarations only. Each
+// virtual overrides the CCreatureActionBase virtual at the same slot of retail vftable 0x01275C54 (RTTI-port label + the PDB name sets):
+//   slot 3 = 0x00854720 ?PerformAction@CCreatureAction_SpiritReturnToHero@@UAEXXZ (FableWin.pdb, Ego_r.pdb)
+//   slot 11 = 0x00855200 ?Clone@CCreatureAction_SpiritReturnToHero@@UBEPAVCCreatureActionBase@@XZ (FableWin.pdb, Ego_r.pdb)
+//   slot 12 = 0x008546A0 ?Initialise@CCreatureAction_SpiritReturnToHero@@UAEXXZ (FableWin.pdb, Ego_r.pdb)
+#include "engine/CCreatureActionBase.h"
+class CCreatureAction_SpiritReturnToHero : public CCreatureActionBase {
+public:
+    virtual void PerformAction();
+    virtual CCreatureActionBase * Clone() const;
+    virtual void Initialise();
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SpiritReturnToHero) == 0xa8);
+#else
 
 #pragma pack(push, 1)
 class CCreatureAction_SpiritReturnToHero {
@@ -21,9 +37,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SpiritReturnToHero) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritReturnToHero, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritReturnToHero, field_10) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritReturnToHero, field_14) == 0x14);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCreatureAction_SpiritReturnToHero) == 0xa8);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCreatureAction_SpiritReturnToHero, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(26, offsetof(CCreatureAction_SpiritReturnToHero, field_10) == 0x10);
+FABLE_STATIC_ASSERT_AT(27, offsetof(CCreatureAction_SpiritReturnToHero, field_14) == 0x14);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_SPIRITRETURNTOHERO_VIRTUAL_MODEL
 #endif // FABLE_ENGINE_CCREATUREACTION_SPIRITRETURNTOHERO_H

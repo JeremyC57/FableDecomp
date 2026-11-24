@@ -1,0 +1,252 @@
+== 0062f230 CCreatureAction_StartSneaking vt=01258dfc old=?Clone@CCreatureAction_StartSneaking@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_StartSneaking@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0062D7D0 ??_GCCreatureAction_StartSneaking@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 0062f260 CCreatureAction_StopSneaking vt=01258f24 old=?Clone@CCreatureAction_StopSneaking@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_StopSneaking@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0062D870 ??_ECCreatureAction_StopSneaking@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 0084c460 CCreatureAction_PlayAnimationFromIndex vt=0127507c old=?Clone@CCreatureAction_PlayAnimationFromIndex@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_PlayAnimationFromIndex@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0084B4A0 ??_ECCreatureAction_PlayAnimationFromIndex@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 0084c7a0 CCreatureAction_YellOverHere vt=0127331c old=?Clone@CCreatureAction_YellOverHere@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_YellOverHere@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0084AB80 ??_ECCreatureAction_YellOverHere@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 00855200 CCreatureAction_SpiritReturnToHero vt=01275c54 old=?Clone@CCreatureAction_SpiritReturnToHero@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_SpiritReturnToHero@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 008550E0 ??_GCCreatureAction_SpiritReturnToHero@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 007ebb30 CCreatureAction_LookThroughWindow vt=01270fbc old=?Clone@CCreatureAction_LookThroughWindow@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_LookThroughWindow@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 007EBA90 ??_ECCreatureAction_LookThroughWindow@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 007ed140 CCreatureAction_DropWeapon vt=01271274 old=?Clone@CCreatureAction_DropWeapon@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_DropWeapon@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 007ED040 ??_ECCreatureAction_DropWeapon@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 0084c010 CCreatureAction_ActivateZTarget vt=012738ec old=?Clone@CCreatureAction_ActivateZTarget@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_ActivateZTarget@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0084AAA0 ??_ECCreatureAction_ActivateZTarget@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 0084ca30 CCreatureAction_StartFillingTankard vt=01273d6c old=?Clone@CCreatureAction_StartFillingTankard@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_StartFillingTankard@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0084AC00 ??_GCCreatureAction_StartFillingTankard@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 0084ca60 CCreatureAction_StopFillingTankard vt=01273e9c old=?Clone@CCreatureAction_StopFillingTankard@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_StopFillingTankard@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0084AC20 ??_ECCreatureAction_StopFillingTankard@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 00933d50 CCreatureAction_CallSpouseHome vt=0129203c old=?Clone@CCreatureAction_CallSpouseHome@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_CallSpouseHome@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 00933D30 ??_ECCreatureAction_CallSpouseHome@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 0084c6f0 CCreatureAction_ShowFear vt=0127344c old=?Clone@CCreatureAction_ShowFear@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_ShowFear@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0084AB60 ??_GCCreatureAction_ShowFear@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 0084c7d0 CCreatureAction_AlertToPlayer vt=0127357c old=?Clone@CCreatureAction_AlertToPlayer@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_AlertToPlayer@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0084ABA0 ??_ECCreatureAction_AlertToPlayer@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 009115a0 CCreatureAction_OrderSecuritySweep vt=0128f74c old=?Clone@CCreatureAction_OrderSecuritySweep@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_OrderSecuritySweep@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 00911160 ??_GCCreatureAction_OrderSecuritySweep@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 009115d0 CCreatureAction_Curiosity vt=0128f86c old=?Clone@CCreatureAction_Curiosity@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_Curiosity@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 00911200 ??_GCCreatureAction_Curiosity@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 00916760 CCreatureAction_PutGoodsDown vt=0128fad4 old=?Clone@CCreatureAction_PutGoodsDown@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_PutGoodsDown@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 00916540 ??_ECCreatureAction_PutGoodsDown@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 0084c6c0 CCreatureAction_DropGenericBox vt=012731e4 old=?Clone@CCreatureAction_DropGenericBox@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_DropGenericBox@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0084AB40 ??_GCCreatureAction_DropGenericBox@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 00941cc0 CCreatureAction_PlayHopscotch vt=0129274c old=?Clone@CCreatureAction_PlayHopscotch@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_PlayHopscotch@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 00941BC0 ??_GCCreatureAction_PlayHopscotch@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 008683d0 CCreatureAction_BeDazed vt=01276f54 old=?Clone@CCreatureAction_BeDazed@@QAEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_BeDazed@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 00867F40 ??_GCCreatureAction_BeDazed@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 008e6f50 CCreatureAction_CastStrengthMultiStrikeProper vt=012877a4 old=?Clone@CCreatureAction_CastStrengthMultiStrikeProper@@QBEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 59 v 59 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_CastStrengthMultiStrikeProper@@UAEPAXI@Z']
+PASS vft_slotcount retail 81 emitted 81 relocs 81
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 008E6E90 ??_GCCreatureAction_CastStrengthMultiStrikeProper@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCombatActionBase@@UAE@XZ->0062E900(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK
+== 00860290 CCreatureAction_GetUpFromSitting vt=01276c2c old=?Clone@CCreatureAction_GetUpFromSitting@@QBEPAVCCreatureActionBase@@XZ
+PASS clone_bytes 71 v 71 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_GetUpFromSitting@@UAEPAXI@Z']
+PASS vft_slotcount retail 81 emitted 81 relocs 81
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 008601F0 ??_GCCreatureAction_GetUpFromSitting@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCombatActionBase@@UAE@XZ->0062E900(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+OK

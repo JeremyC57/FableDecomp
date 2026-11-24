@@ -40,6 +40,15 @@ class CEnginePrimitiveManager2DParticleGroup : public CEnginePrimitiveManagerPar
 public:
     CEnginePrimitiveManager2DParticleGroup(CArray<CEngineScene*>& scenes) : CEnginePrimitiveManagerParticleGroup(scenes) { }
     virtual ~CEnginePrimitiveManager2DParticleGroup();
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_RENDERPRIMITIVE_DECL
+    // Opt-in (NF323, 2026-11-24, NF320 Q3): declaration only, no layout change: FableWin.pdb
+    // ?RenderPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z,
+    // named at 0x00B4B6B0 by the retail RTTI vftable placement (vtable 0x012A22D0 slot 7); overrides the
+    // CEnginePrimitiveManagerParticleGroup virtual above (no new slot). Ego_r.pdb has none (ICF / not emitted).
+public:
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // 0x00B4B6B0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(32, sizeof(CEnginePrimitiveManager2DParticleGroup) == 0x28);
 #else

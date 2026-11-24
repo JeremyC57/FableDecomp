@@ -1,0 +1,15 @@
+CCreatureAction_CastStrengthMultiStrikeProper vt=012877a4 slots=81
+   slot  0 008E6E90 ??_GCCreatureAction_CastStrengthMultiStrikeProper@@UAEPAXI@Z eg=0 fw=1
+   slot  4 008E63B0 ?FinishAction@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ eg=1 fw=1
+   slot 11 008E6F50 ?Clone@CCreatureAction_CastStrengthMultiStrikeProper@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+   slot 12 008E6690 ?Initialise@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ eg=1 fw=1
+   slot 29 008E6E20 ?IsBlockable@CCreatureAction_CastStrengthMultiStrikeProper@@UBE_NXZ eg=0 fw=1
+CCreatureAction_GetUpFromSitting vt=01276c2c slots=81
+   slot  0 008601F0 ??_GCCreatureAction_GetUpFromSitting@@UAEPAXI@Z eg=0 fw=1
+   slot  3 008B79A0 ?PerformAction@CCreatureAction_GetUpFromSitting@@UAEXXZ eg=1 fw=1
+   slot 11 00860290 ?Clone@CCreatureAction_GetUpFromSitting@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+   slot 12 008B7920 ?Initialise@CCreatureAction_GetUpFromSitting@@UAEXXZ eg=1 fw=1
+   slot 49 008601B0 ?IsPreventingNormalMovement@CCreatureAction_GetUpFromSitting@@UBE_NXZ eg=0 fw=1
+   slot 50 008601C0 ?IsPreventingLookTurning@CCreatureAction_GetUpFromSitting@@UBE_NXZ eg=0 fw=1
+   slot 59 008601D0 ?IsMovementUsingPhysics@CCreatureAction_GetUpFromSitting@@UBE_NXZ eg=0 fw=1
+   slot 68 008B6530 ?OnAnimationLoaded@CCreatureAction_GetUpFromSitting@@UAEXXZ eg=1 fw=1
