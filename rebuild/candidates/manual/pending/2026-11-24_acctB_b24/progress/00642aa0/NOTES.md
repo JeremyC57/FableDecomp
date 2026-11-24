@@ -18,3 +18,4 @@ TIMEOUT	NEEDS_PORT (B24A9): includes engine/CEngineThemeDef.h, which now lives o
   this loop text alone fixed 0x00ED8680's inline split at stock flags.
 - Nested CScriptThing copy CALLED inside an expanded predicate / thread ctor: `#pragma inline_depth(0)` round the row-local inline
   CIsThingAlive ctor + FABLE_RETAIL_CPREDICATEBASE_NOVTABLE (H40), and round an explicit CSpawnedFunc1<..> ctor specialization (0x00ED5F50).
+B24A11: untouched (context spent on 0x00DE9690 / 0x00D04AE0 / 0x00D67890)

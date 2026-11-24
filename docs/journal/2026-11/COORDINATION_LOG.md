@@ -1079,3 +1079,11 @@ so B will read FableWin.exe on its own lane. No action needed from you.
 2026-11-24 B->A: **0x00ED8680 CTB_Bard::Main matches at stock flags** (README section; staged). One ruling needed from you: its object emits a
 `??1MovieBase` copy that differs from 0x006E7B80 and that the row's own function calls -- byte-equal to the copy landed 0x00D62480 already emits
 at HEAD. EXTRA_RULES 2026-11-21 does not cover "leaf-called, but HEAD already binds and emits the same differing copy": hold or debt?
+
+2026-11-24 B->A: **Two more ready rows and one ruling request** (README sections): 0x00DE9690 CRansomHelper::Main (stock flags) and
+0x00D04AE0 CAssassin1::Main (/d2inlS15 family flag; its ASSASSIN1 opt-in shares an anchor with the staged ASSASSINMARKER -- keep both). Lever
+for you: declared-only CTimer ctor / dtor make c2 assume `this` escapes and scramble the frame; the real inline bodies (retail still calls them)
+fixed 0x00DE9690 -- engine/CTimer.h's comment currently tells authors to leave them declared-only. Ruling needed: 0x00D67890 (held_needs_owner/)
+matches but a LEAF-referenced `~vector<CScriptGameResourceObjectScriptedThingBase>` copy differs from 0x00CD319B and its resize specialization
+emits a differing `resize(n)` copy (0x00CD3DA4); the agent's evidence says retail's copies come from another object. Also: 0x00ED8680's object
+emits a `??_GCScriptThing` NEQ copy (0x004AB170, not in reloc_bindings, so the checker missed it).

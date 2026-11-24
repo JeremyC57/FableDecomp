@@ -135,3 +135,24 @@ function calls under a symbol HEAD already binds -- hold or debt?
 FableWin's FindFirstWaterAdjacentVertex / IterateThroughAdjacentVerts). With ALL of it (agent's c11/bd_full.cpp) the SEA twin still
 matches (fg and masked compare) and no longer needs the "start via GetWaterVertex(i)" device, so the staged sea text above will be superseded
 by that evidenced form once the water twin matches too (water: same 16-hunk register residue).
+
+## 0x00DE9690 NScript::CQ_RansomVictimScript::CRansomHelper::Main: READY (B24A11, re-verified 2026-11-24)
+RELOCATION_MATCH PASS at STOCK flags, strict vland, no warnings; vt PASS, three mutations FAIL. No overlay. What made it match: the frame-packer
+trace showed the timer local interfering with all 45 frame nodes because CTimer's ctor / dtor were declared only (c2 assumed `this` escapes);
+the real inline bodies in the TU (`CTimer() : TimerIndex(pDSTGame->RegisterTimer()) {}`, `~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }`,
+the FableWin-checked text) fixed it -- retail still CALLS both, and so do we. Also the H40 `inline_depth(0)` round the CIsThingAlive ctor +
+NOVTABLE, FABLE_FORCEINLINE on CTimer operator= / GetTime / operator== (measured). Pick-any: three NEQ copies, none leaf-referenced, all
+byte-identical to copies landed 0x00D973D0 already emits (HEAD debt).
+
+## 0x00D04AE0 NScript::CQ_BanditCampBossBattleScript::CAssassin1::Main: READY with the family flag (B24A11, re-verified 2026-11-24)
+RELOCATION_MATCH PASS, flags `/d2inlS15` (the BanditCamp family flag, as staged sibling 0x00D11930; S10..S14 fail; stock 3884v3623 because
+~MovieBase is called at cold exits retail expands -- a fitted device, not proven), strict vland no warnings; vt PASS. Overlay: today's
+CQ_BanditCampBossBattleScript.h +23 additive (`..._ASSASSIN1`), inserted at the same anchor as the staged `..._ASSASSINMARKER`: a merge keeps
+both blocks. Debug-build recipe: Ego_d locals, TalkedTo set before ParentClass.TalkedToAssassin, the if/else tail with two idle loops.
+Pick-any: five NEQ copies, none leaf-referenced, identical to the staged / landed siblings' copies.
+
+## 0x00D67890 CQ_GuildTrainingWoodsWillScript::Main: matched, HELD for an A ruling (held_needs_owner/00d67890*)
+Main bytes RELOCATION_MATCH at stock flags (new header CQ_GuildTrainingWoodsWillScript.h from the Ego_r layout; the landed 0x00ED5F50
+device: an explicit `resize(size_type)` specialization with STLport's own body under `inline_depth(0)`). HELD: a leaf-referenced
+`~vector<CScriptGameResourceObjectScriptedThingBase>` copy differs from 0x00CD319B, the specialization emits a `resize(n)` copy that differs
+from 0x00CD3DA4, plus non-leaf STL map / tree copies; the evidence says these are another object's copies (00d67890_ESCALATE.md).

@@ -1,0 +1,28 @@
+09:16 00de9690 grade 00de9690.cpp DIFFER(3428v3412) hunks=55 -- B24A9 baseline on today's headers
+09:54 00de9690 grade base.cpp DIFFER(3428v3412) hunks=55 -- A10 baseline / H40 lever on CIsThingAlive ctor
+09:54 00de9690 grade h1.cpp DIFFER(3412v3412) hunks=46 -- A10 baseline / H40 lever on CIsThingAlive ctor
+09:54 00de9690 grade h1.cpp DIFFER(3412v3412) hunks=46  A10 h1 relist
+09:54 00de9690 grade h2.cpp DIFFER(3412v3412) hunks=46 -- A10 h1 + predicate temporary / unscoped named local
+09:55 00de9690 grade h3.cpp DIFFER(3400v3412) hunks=100 -- A10 h1 + predicate temporary / unscoped named local
+09:55 00de9690 grade h2.cpp DIFFER(3412v3412) hunks=46  A10 h2 relist
+09:56 00de9690 grade h4.cpp DIFFER(3412v3412) hunks=46 -- A10 h2 + TRetVoid _Fail_Val returns + Ego_d local names (FableWin 0x0388CEA0)
+10:06 00de9690 grade b0.cpp DIFFER(3412v3412) hunks=46 -- A11 baseline h4
+10:08 00de9690 grade b0.cpp DIFFER(3412v3412) hunks=46 -- A11 baseline full hunks
+10:10 00de9690 grade e1.cpp RELOCATION_MATCH -- probe: Timer..end in a block (vs Ego_d function scope)
+10:11 00de9690 grade e2.cpp RELOCATION_MATCH -- CTimer ctor(+dtor) real inline bodies visible (SHARED_FORM text)
+10:11 00de9690 grade f1.cpp RELOCATION_MATCH -- cleanup: enum headers / no local ~CIsThingAlive / plain-inline CTimer ops
+10:12 00de9690 grade f2.cpp DIFFER(3390v3412) hunks=52 -- cleanup f2
+10:12 00de9690 grade f3.cpp DIFFER(3396v3412) hunks=4 -- cleanup f3
+10:12 00de9690 grade g1.cpp DIFFER(3412v3412) hunks=4 -- CTimer ops landed spelling g1
+10:12 00de9690 grade g2.cpp DIFFER(3412v3412) hunks=4 -- CTimer ops landed spelling g2
+10:12 00de9690 grade g1.cpp DIFFER(3412v3412) hunks=4 -- g1 relist
+10:12 00de9690 grade g3.cpp RELOCATION_MATCH -- g3: all three CTimer ops FABLE_FORCEINLINE landed spelling
+10:12 00de9690 grade m1.cpp RELOCATION_MATCH -- final text m1
+10:12 00de9690 grade m2.cpp RELOCATION_MATCH -- final text m2
+10:13 00de9690 grade m3.cpp DIFFER(3428v3412) hunks=9 -- measure: without inline_depth(0) CIsThingAlive device
+10:16 00de9690 grade n1.cpp DIFFER(3460v3412) hunks=50 -- pick-any: inline ~CScriptThing (header contract) so ??_GCScriptThing expands as 0x004AB170
+10:17 00de9690 grade n2.cpp RELOCATION_MATCH -- pick-any: inline_depth(0) round ~CIsThingAlive (family ??_G copy)
+10:17 00de9690 grade n3.cpp RELOCATION_MATCH -- pick-any: drop SCRIPTEDTHINGBASE_OUTOFLINE_DTOR so ??_G expands as 0x007E7520
+10:18 00de9690 grade 00de9690.cpp RELOCATION_MATCH -- final 00de9690.cpp (n3 + comments)
+probe 00de9690 packer-trace b0 (a11/b0.pk.json): ReturnToCaveTimer interferes with all 45 nodes
+probe 00de9690 packer-trace e1 (a11/e1.pk.json): Timer in a block -> no interference with first-loop temps (diagnostic only)

@@ -129,3 +129,4 @@ FableWin /Od copy 0x02B5A820 (fwdis.py). differ/00931390.cpp = a10/r8.cpp. Appli
 - Probe (a10/ovA): IS_THING_ALIVE written `return thing!=0 && !thing->IsDead();` (FableWin 0x01D7C940 is the /Od `&&` shape: operator!=
   with edx=0, GetPItem + IsDead, materialised al) -- r8 29 / r9 49, unchanged. CAUTION: fg.py may force overlay $W/hdr; not verified
   that FABLE_HDR_OVERLAY=$W/a10/ovA took effect.
+B24A11: untouched (context spent on 0x00DE9690 / 0x00D04AE0 / 0x00D67890)
