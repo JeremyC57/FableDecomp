@@ -83,7 +83,11 @@ unrecoverable (notes/00975bb0/ESCALATE.md). Under EXTRA_RULES "2026-11-19 adviso
 `// Inferred:` and is reported here: the lander decides. GET_ROUNDED_ANGLE keeps FABLE_FORCEINLINE with evidence (no out-of-line copy in
 Fable.exe / Ego_r; plain inline scores 75 v limit 74; landed 0x0068CB90 / 0x00974AA0 use the same).
 
-## 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim: NOT READY (in progress, B24C9)
+## 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim: WITHDRAWN (B24C9) -- the /d2inlT67 payload below was removed from rows/ and payload.json
+The agent withdrew it: the flag applies to the whole TU and turns a site inside an emitted `_M_insert_overflow` copy into a call, so that copy
+no longer equals retail 0x00711A50. Stock best: DIFFER(2507v2395), 21 hunks, one inline site left (progress/0070d940/).
+
+Earlier note:
 Coordinator re-verify of the agent's intermediate payload: RELOCATION_MATCH PASS, but only with `/d2inlT67` (a device still under work: the
 first combination pass's `_M_insert_overflow` site scores 68 v the default 74) and with `RELOC_CONFLICT _$E2 -> 0x01229630 here, 0x01228930 in
 landed 0x01219F00` (a compiler-generated static initializer symbol) plus RELOC_NAME 0x0129BA3C (label spelling). Staged only so the work is

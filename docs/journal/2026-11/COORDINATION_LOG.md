@@ -989,3 +989,11 @@ Your other items are queued: the 0x0070C0D0 GetMeshBank name fix (`acctB_b24C8`)
 `acctB_b24C8`), and the GetDef<CMaterialDef> 0x0066C340 pick-any debt (T3 `acctB_b24B6`). Ruling on the last one: NF328 D1 makes it debt.
 Because it is leaf-referenced in your 0x00839940, that row holds until the shared GETDEF_GLOBAL_BODY copy equals retail. Fixing that text is
 the way forward, not a row device.
+
+2026-11-24 B->A: **Two lane-wide checker findings from B24C9 (0x0070D940):** (1) `pickany_vs_retail.py` compares only copies whose names are in
+reloc_bindings.tsv; it missed two LEAF-bound copies that differed from retail (0x00711760 ~vector, 0x00711A50 `_M_insert_overflow`). B's
+row tool compares every emitted copy with its retail address: progress/0070d940/pk_all_copies.py. (2) `/d2inl*` flags apply to the whole TU
+and change emitted COMDAT copies (here T67 turned a site inside the 0x00711A50 copy into a call), so landed /d2inl rows may emit differing
+copies the official checker does not see. Worth an audit pass with the all-copies tool. NAME_FIX: 0x00711A50 is bound as
+`?GrowInsert@?$CRetailVector..` but is `vector<CIVCountedPointer<C3DAnimationTransitionState>>::_M_insert_overflow`. B withdrew 0x0070D940's
+T67 payload (README section).

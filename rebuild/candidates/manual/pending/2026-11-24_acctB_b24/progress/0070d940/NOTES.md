@@ -156,3 +156,77 @@
 - Best: differ/ = c8/v16.cpp. Next ideas: (1) the remaining scratch-register / store-order hunks are allocator tie-breaks; look for an
   IL difference in the combination section (CIVCountedPointer texts: Release 17i/45b v FableWin 17i/50b, default ctor 10i v 12i, op=
   31i v 35i, converting ctor 18i v 22i -- fwsize on c8/v16.cpp), one grade each; (2) C3DAnimationBlendState dtor / copy texts at the tail.
+## B24C9 (2026-11-24)
+- Lessons applied: C2_ALLOCATOR_PROBE.md (expression temporaries take eax/ecx/edx from a ROTATING pointer, reset per function;
+  c2prio.py --rotation prints it per source line); GOTCHAS 394 (scheduler ties come out by IL index); B24A7's symbol-numbering
+  mechanism (measured NOT to apply here: 4..48 dead `alpha*alpha+alpha*k` statements before the function body or before the
+  combination section changed nothing, raw diff 35 throughout).
+- Reduced bisect (c9/rb, c9/lt.sh): ANY extra rotation temp before the loop (a pushed global / param load) moves the loop-top
+  register eax -> ecx -> edx -> eax (x0..x5: mod 3); temps after the loop do not. c2prio --rotation on a line-split copy (c9/v16L.cpp,
+  c9/rot_v16L.txt): our loop top takes the Anims[0] pointer first (ptr ecx); retail's registers fit codegen order PMGC -> world ->
+  Anims (ptr ecx -> ecx, edx, eax), i.e. the MeshBank chain (the call's object) evaluated BEFORE the argument.
+- v17 = v16 with both call sites spelled `GetMeshBank().PeekAnimation(combination.Anims[0])->IsLoaded()` / `->TouchAnimation()`
+  (CAnimateThing::GetMeshBank() const + CMeshDataBank::PeekAnimation(unsigned long), both PDB; the object call is evaluated first,
+  the short sign-extends straight from memory to the unsigned long): raw diff 35 -> 2 (loop tops, both StateAlpha store orders,
+  loop-2 alpha push register and the tail Delete register all fixed: one rotation offset). /d2inlT67 6 hunks.
+- v18 = v17 + the reserve as an if/else of two calls (`if (a.size() > d.size()) v.reserve(a.size()); else v.reserve(d.size());`,
+  tail-merged by c2 into retail's single `mov ecx,offset ; push edx ; call` -- the ternary argument gives `push edx` first):
+  RELOCATION_MATCH under /d2inlT67 (c9/r.sh raw diff 0). Stock: DIFFER(2507v2395) 21 hunks (the first-pass overflow site).
+- v19 = v18 + overlay hygiene: CANIMATETHING_PEEKANIMINFO -> CANIMATETHING_GETMESHBANK (GetMeshBank only, engine/CAnimateThing_GetMeshBank.h;
+  PeekAnimInfo(long) no longer used: B24C8's "the long overload gives movsx from memory" holds for PeekAnimation(unsigned long) too),
+  CONVERT_ASSIGN comment corrected (retail AddRef = `mov ecx,[eax+4]; inc ecx; mov [eax+4],ecx`; without it a converted temporary,
+  +12 instructions), stable_sort respelled as STLport (`_RandomAccessIter`, iterator_traits) so its copy mangles `??$stable_sort@PAU..`
+  (EQ to 0x00711C90). Devices re-tested on v18: no CONVERT_ASSIGN 797i, no ASSIGN_FORCEINLINE 778i, neither 795i (v 785): both stay.
+- Stock: inline trace inl/v18.txt: first-pass overflow site still c1 52 + ext 21 = 73 at f 1.25 -> 68 (needs >= 74, f <= 0.91);
+  every other expanded site <= 66 -> /d2inlT67 kept (Inline-budget line updated). An `if (!anim.CombinationAnims.empty())` guard
+  around the first push loop does make it a call at stock, but its test is not folded into the loop test (+4 instructions): not retail.
+- Reserve probes (micro TU c9/mr/m1..m4 and row s2): ternary argument, named count, if/else assigning a count -> `push` first; only the
+  two-call if/else gives retail's `mov ecx,offset` first. Call-site probes: c9/rb/* (reduced row), c9/rot_v16L.txt (rotation trace).
+- Pick-any (c9/pk.py: every emitted copy v retail, relocations masked; c9/pk_v20.log): EQ push_back<CAnimSetIt> 0x007115C0,
+  overflow<CAnimSetIt> 0x00711080, push_back<TS> 0x00711C50, stable_sort 0x00711C90, GetProgressFromAlpha 0x0070BE40, Set{Start,End}State
+  0x00710560 / 0x007105A0, GetMeshBank 0x0070C0D0, GetMeshAnim 0x0070C900, _$E2 0x01229630. ~vector<CIVCountedPointer<TS>> 0x00711760 was
+  NEQ (cdecl __destroy_aux call; retail's /Gr TU calls 0x00710C50 __fastcall) -> v20 adds the existing repo opt-in
+  FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL: EQ, row unchanged. STILL NEQ: vector<CIVCountedPointer<TS>>::_M_insert_overflow 0x00711A50
+  (ours 239 v 244 bytes; register allocation / inline split inside the COMDAT: retail expands the prefix __uninitialized_copy and calls
+  the suffix one 0x0070FA30 __fastcall; FLARE_ABI 231 b, UNINIT_COPY_FALSE_FASTCALL_PASS26+DESTROY_AUX 214 b, + ORIGINAL_OVERFLOW_SCOPE
+  no change). It is leaf-bound (the in-loop push_back calls it) and the landed 0x00711A50 row is a local model (reloc_bindings names the
+  address ?GrowInsert@?$CRetailVector..: NAME_FIXES.tsv) -> by the 2026-11-21 rule the row is HELD on this copy until a shared-header
+  text reproduces 0x00711A50 (or the landing build lets the landed definition win). Next idea: c2 inline trace of the COMDAT
+  (inl/run.sh with INL_F='_M_insert_overflow@?$vector@V?$CIVCounted') to see the two __uninitialized_copy site scores.
+- vland (strict, v20): RELOCATION_MATCH PASS. WARN RELOC_NAME DELTA_NOTIONAL_ZERO (label only; NAME_FIXES). WARN RELOC_CONFLICT _$E2:
+  a TU-local (storage class 3) compiler-generated atexit thunk name; ours is EQ to retail 0x01229630 (the Ego_r
+  `CalcInterpolatedMeshAnim'::`23'::`dynamic atexit destructor for 'sorted_combination_anims'`); landed 0x01219F00's _$E2 is its own TU's.
+- Test: 0070d940.test.cpp (prior model + the reserve count in both orders and the sign-extended PeekAnimation index); vt.py PASS, a
+  mutated reserve (c9/test_mut.cpp) FAILs.
+- Link risk for Account A: the row carries a strong second definition of CAnimSet::GetMeshAnim 0x0070C900 (verbatim landed body,
+  EQ copy) -- it must become one shared text (#include) or the landed row must drop its definition before both link.
+- LESSON (B24C9): a register-rotation residue (eax/ecx/edx swapped in many places downstream) can be ONE IL-order fact: VC7.1
+  evaluates a call's object expression first when it is a call (`GetMeshBank().PeekAnimation(x)`) but the argument first when the
+  object is implicit (`PeekAnimInfo(x)` inline); c2prio --rotation on a line-split copy names the first temp that differs.
+  `mov ecx,this` before `push arg` at a join = two calls tail-merged (if/else), not a ternary argument.
+- (B24C9, KEY FINDING -- read first) /d2inlT67 is WRONG for this TU: it is TU-wide, and the emitted
+  vector<CIVCountedPointer<TS>>::_M_insert_overflow COMDAT has its own __uninitialized_fill_n site scoring 68 (inl/v20o.txt decision 14,
+  INL_F='_M_insert_overflow@?$vector@V?$CIVCounted') that retail EXPANDS (0x00711AD6.. loop, no call) and T67 calls. At STOCK flags with
+  the existing opt-ins FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL + FABLE_RETAIL_STLP_UNINIT_COPY_FALSE_FASTCALL_PASS26 (+ #include
+  "rebuild_abi.h" / "fable_compiler.h" ahead of the STLport header; c9/v20u.cpp) EVERY emitted copy is EQ to retail (c9/pk.py: 0x00711A50
+  included; the suffix __uninitialized_copy is called at 74 like retail). Same score 68, opposite decisions (row's first-pass CAnimSetIt
+  overflow called, the COMDAT's fill_n expanded) -> no threshold reproduces retail: retail's row site must score >= 74 (f <= 0.91 or
+  cost >= 80), i.e. a source / TU fact still unknown. So the target is v20u at stock (DIFFER(2507v2395): only that site), and the
+  T67 hand-back (payload.json, v20) must NOT land as is.
+- Forced budget path for the CAnimSetIt overflow alone (inl/runf.sh, FORCE='_M_insert_overflow@\?\$vector@U\?\$_List_iterator', stock,
+  inl/f20.*): BOTH overflow sites become calls and push_back<CAnimSetIt> itself goes out of line (717 instructions, push_back copy NEQ):
+  compile order of that callee does not give retail's split either.
+- Next ideas for the stock site: (1) frequency: what plain control flow puts the first push loop at <= 0.36 (loop body) -- e.g. the
+  first list's loop inside a block retail-shaped like the second's; compare with how c2 scores the two loops (f 1.25 v 31.25: the
+  second is hot because the `for` leak keeps 5x after each loop); (2) cost: the c1 / ext of overflow<CAnimSetIt> (52 + 21) -- a
+  shared-header overflow text with a higher c1 that still emits retail's 0x00711080 bytes (check its own inner decisions with INL_F).
+- (B24C9) payload.json renamed payload_T67_DO_NOT_LAND.json (the T67 hand-back; see KEY FINDING). differ/ = c9/v20u.cpp at stock.
+- (B24C9, corrections after review) (a) The f20 forced run used FORCE_AFTER=0, so it forced EVERY function's sites, including the
+  push_back<CAnimSetIt> copy's own compile (that copy grew 50 -> 187 bytes: the overflow expanded inside it) and the row shrank to 717
+  instructions. "Both sites become calls" / "compile order does not give the split" are NOT supported: compile order for this one callee
+  is OPEN. Clean test: FORCE_AFTER = the row's pipe index (CalcInterpolatedMeshAnim is compiled after GetMeshAnim), then read the row
+  listing. (b) The earlier B24C9 bullet "STILL NEQ ... HELD until a shared-header text reproduces 0x00711A50" and ESCALATE's "Not a row-text
+  problem" are SUPERSEDED by the KEY FINDING: 0x00711A50 is EQ at stock with the two existing opt-ins. (c) differ/ (= v20u) has no Flags
+  line but still carries the T67 `// Inline-budget:` block and a `// Pick-any:` line naming only DESTROY_AUX_FASTCALL (it also uses
+  UNINIT_COPY_FALSE_FASTCALL_PASS26 + the rebuild_abi.h / fable_compiler.h includes): rewrite those header lines with the next change.
+  (d) The emitted ~vector<CAnimSetIt> copy (14 bytes) has no retail address checked (c9/pk.py NOADDR).
