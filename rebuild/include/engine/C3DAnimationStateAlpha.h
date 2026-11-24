@@ -12,6 +12,16 @@ public:
     // Retail opt-in (Codex pass 24): Ego_d's ctor and retail 0x00A3C460.
     C3DAnimationStateAlpha() : AlphaWeight(1.0f) { }
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATIONSTATEALPHA_INDEX_CTOR
+    // Nested opt-in (B24C6, row 0x0070D940): FableWin.pdb ??0C3DAnimationStateAlpha@@QAE@KMM@Z (0x01E99920; no Ego_r proc record:
+    // inline in retail, the caller stores the vtable 0x01265128, index, time and weight in place).
+    // B24C8: the body sets the weight through ?SetAlphaWeight@C3DAnimationStateAlpha@@QAEXM@Z (FableWin.pdb 0x01E99AA0, right after the
+    // constructor and GetType; 99i/359b of asserts in the debug build, `AlphaWeight = alpha_weight;` in release). FableWin's constructor
+    // is 31i/104b = VC7.1 /Od /EHsc of this text (the call needs the EH frame); the member-initialiser form is 19i/50b.
+    // Retail 0x0070E042..0x0070E05F stores the weight first, then IVRefCount / index / vtable.
+    C3DAnimationStateAlpha(unsigned long index, float time, float alpha_weight) : C3DAnimationState(index, time) { SetAlphaWeight(alpha_weight); }
+    void SetAlphaWeight(float alpha_weight) { AlphaWeight = alpha_weight; }
+#endif
     float GetAlphaWeight() const { return AlphaWeight; }                 // FableWin.pdb ?GetAlphaWeight@C3DAnimationStateAlpha@@QBEMXZ (inline)
     float AlphaWeight;                                                   // +0x10
 };

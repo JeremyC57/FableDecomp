@@ -150,6 +150,27 @@ public:
     template<class U> CIVCountedPointer(const CIVCountedPointer<U>& other) : Object(other.InternalGetObject()) { if (Object) Object->AddRef(); }
     CIVCountedPointeeBase* InternalGetObject() const { return Object; }
     T& operator*() const { return *static_cast<T*>(Object); }
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT_ASSIGN
+    // Nested opt-in (B24C7, row 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim; needs FABLE_RETAIL_CIVCOUNTEDPOINTER(_ASSIGN)):
+    // FableWin.pdb's converting assignment ??$?4VC3DAnimationTransitionState@@@?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAEAAV0@
+    // ABV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@Z (debug copy 0x01EA5040, inline in retail). `transition =
+    // transitions.back()` assigns through it with no converted temporary: retail 0x0070DCFA..0x0070DD0D is the new pointer's AddRef
+    // (`mov ecx,[eax+4] ; inc ecx ; mov [eax+4],ecx`) and the store, the release of the old (null) pointer folded away. Without this
+    // member VC7.1 converts through a CIVCountedPointer<C3DAnimationStateBase> temporary (two AddRefs and the temporary's release at the
+    // site, +12 instructions; B24C9 A/B c9/d1.cpp). Under FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN_FORCEINLINE forced like the same-type
+    // operator=: retail expands it at a site scoring 144 (c2 trace inl/v18.txt) where ~vector, scoring 113, is called.
+    template<class U>
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN_FORCEINLINE
+    FABLE_FORCEINLINE
+#endif
+    CIVCountedPointer& operator=(const CIVCountedPointer<U>& other) {
+        if (InternalGetObject() == other.InternalGetObject()) return *this;
+        Release();
+        Object = other.InternalGetObject();
+        if (InternalGetObject()) InternalGetObject()->AddRef();
+        return *this;
+    }
+#endif
 #endif
     bool IsNull() const { return Object == 0; }
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_GET

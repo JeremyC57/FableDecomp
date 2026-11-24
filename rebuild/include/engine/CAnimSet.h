@@ -3,6 +3,11 @@
 #include "rebuild_abi.h"
 #include "stlport/fable_containers.h"
 #include "engine/CAnimInit.h"
+#ifdef FABLE_RETAIL_CANIMSET_MESHANIM
+#include "engine/CIVCountedPointer.h"
+#include "engine/C3DAnimationStateAlpha.h"
+#include "engine/GFGetInterpolatedValue.h"
+#endif
 template<class T,class L>inline void FABLE_FASTCALL GFLimitLower(T& value,const L& lower){if(value<lower)value=lower;}
 class CAnimateThing;
 #ifdef FABLE_RETAIL_CANIMSET_ANIMATETHING_UPDATE
@@ -91,6 +96,24 @@ class CAnimSet{friend class CAnimateThing;public:
  bool IsFinished()const;                                               // 0x00668A80
 #endif
 #endif
+#ifdef FABLE_RETAIL_CANIMSET_MESHANIM
+ // Nested opt-in (B24C6, row 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim; needs FABLE_RETAIL_DEF_CLASS_BASE,
+ // FABLE_RETAIL_C3DANIMATIONSTATEALPHA(_INDEX_CTOR)): Ego_r.pdb / FableWin.pdb ?GetMeshAnim@CAnimSet@@QBE?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@M@Z
+ // (out of line, retail 0x0070C900, landed), ?GetFirstMeshAnim@CAnimSet@@QBE?AVC3DAnimationStateAlpha@@M@Z (FableWin 0x01E99780, inline),
+ // and the private ?GetInterpolatedAlpha@CAnimSet@@ABEMM@Z (FableWin 0x01E992B0, inline), ?GetInterpolatedInternalAlpha@CAnimSet@@ABEMMJ@Z
+ // (FableWin 0x01E99330, inline), ?GetInterpolatedTime@CAnimSet@@ABEMMJ@Z (out of line, retail 0x0070C800, landed).
+ CIVCountedPointer<C3DAnimationStateBase> GetMeshAnim(float alpha)const;   // 0x0070C900
+ C3DAnimationStateAlpha GetFirstMeshAnim(float alpha)const{float blend=GetInterpolatedInternalAlpha(alpha,0);return C3DAnimationStateAlpha(Anims[0],GetInterpolatedTime(alpha,0),blend);}
+private:
+ // Both lerp through Ego_r / FableWin ?GFGetInterpolatedValue@@YIMMMM@Z (by-value floats: retail loads LastAlpha once and keeps it on the
+ // x87 stack, `fld last; fld current; fsub st,st(1); fmul alpha; fadd st,st(1); fstp st(0)`, 0x0070DA92 / 0x0070E01B; the member
+ // spelling reloads it). FableWin 0x01E992B0 GetInterpolatedAlpha 19i/45b = this call (VC7.1 /Od 16i/36b + FableWin's 3-instruction
+ // float pushes, B24C7).
+ float GetInterpolatedAlpha(float alpha)const{return GFGetInterpolatedValue(LastAlpha,CurrentAlpha,alpha);}
+ float GetInterpolatedInternalAlpha(float alpha,long index)const{return GFGetInterpolatedValue(InternalAlphas[index].LastAlpha,InternalAlphas[index].CurrentAlpha,alpha);}
+ float GetInterpolatedTime(float alpha,long index)const;               // 0x0070C800
+public:
+#endif
 #ifdef FABLE_RETAIL_CANIMSET_ANIMATETHING_UPDATE
  // Opt-in (p25A, row 0x0070E8B0 CAnimateThing::Update): FableWin.pdb ?HasHadUpdate@CAnimSet@@QBE_NXZ (inline in retail: `test byte
  // [set+51h],8`, 0x0070E9F6). Needs FABLE_RETAIL_CANIMSET_TYPE + FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24 (SetAsUpdated / SetAlpha).
@@ -148,6 +171,23 @@ inline void CAnimSet::SetAlpha(float alpha)
         alpha = 1.0f;
     LastAlpha = CurrentAlpha;
     CurrentAlpha = alpha;
+}
+#endif
+#ifdef FABLE_RETAIL_CANIMSET_GETMESHANIM_INLINE_BODY
+// Retail opt-in (row 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim): the body of CAnimSet::GetMeshAnim 0x0070C900
+// (Ego_r.pdb / FableWin.pdb ?GetMeshAnim@CAnimSet@@QBE?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@M@Z). Both PDBs place it in
+// animate_thing.obj with CalcInterpolatedMeshAnim (egor_obj_functions.tsv / fablewin_obj_functions.tsv): retail compiled the body in
+// the caller's TU and kept it out of line. Without a visible body the caller's leaf grows (2610 v 2395). `inline` here gives the
+// caller the body as a pick-any COMDAT instead of a second strong definition of the landed 0x0070C900; the copy equals retail.
+#include "engine/C3DAnimationState.h"
+#include "engine/C3DAnimationTransitionState.h"
+inline CIVCountedPointer<C3DAnimationStateBase> CAnimSet::GetMeshAnim(float fraction) const
+{
+    CIVCountedPointer<C3DAnimationState> start(new C3DAnimationState(Anims[0],GetInterpolatedTime(fraction,0)));
+    if(Anims.size()==1) return start;
+    CIVCountedPointer<C3DAnimationState> end(new C3DAnimationState(Anims[1],GetInterpolatedTime(fraction,1)));
+    CIVCountedPointer<C3DAnimationTransitionState> transition(new C3DAnimationTransitionState(start,end,GetInterpolatedInternalAlpha(fraction,1)));
+    return transition;
 }
 #endif
 #endif

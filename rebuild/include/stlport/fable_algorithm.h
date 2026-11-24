@@ -345,4 +345,20 @@ inline _InputIter FABLE_FASTCALL find(_InputIter __first, _InputIter __last, con
 }
 #endif
 }
+#ifdef FABLE_RETAIL_STLP_STABLE_SORT_AUX_DECL
+// Opt-in (B24C7/B24C9, row 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim): STLport 4.6.2 stable_sort, whose body forwards to
+// __stable_sort_aux(first, last, value_type*, distance_type*, comp) (`push comp ; push 0 ; push 0 ; call`, retail 0x0070DF9F /
+// 0x0070E16A and its out-of-line copy 0x00711C90), declared here; the landed __stable_sort_aux 0x00711B80 is __fastcall (Ego_r
+// ??$__stable_sort_aux@PAU?$_List_iterator@..@U12@HVCAnimSetItPriorityLessThan@@@std@@YIX..: _RandomAccessIter, value type, int distance).
+// STLport's spelling: _STLP_VALUE_TYPE / _STLP_DISTANCE_TYPE through iterator_traits (VC7.1 has partial specialisation).
+namespace std {
+template <class _RandomAccessIter, class _Tp, class _Distance, class _Compare>
+void FABLE_FASTCALL __stable_sort_aux(_RandomAccessIter __first, _RandomAccessIter __last, _Tp*, _Distance*, _Compare __comp);
+template <class _RandomAccessIter, class _Compare>
+void FABLE_FASTCALL stable_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp) {
+  __stable_sort_aux(__first, __last, (typename iterator_traits<_RandomAccessIter>::value_type*)0,
+                    (typename iterator_traits<_RandomAccessIter>::difference_type*)0, __comp);
+}
+}
+#endif
 #endif

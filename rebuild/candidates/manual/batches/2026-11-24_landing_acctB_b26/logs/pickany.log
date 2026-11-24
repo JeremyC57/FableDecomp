@@ -1,0 +1,206 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+EQ  0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ 
+EQ  0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z 
+EQ  0070be40 60 ?GetProgressFromAlpha@CAnimateThing@@ABEMMM@Z 
+EQ  0070fa30 45 ??$__uninitialized_copy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@PAV1@@std@@YIPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@PAV1@00ABU__false_type@0@@Z 
+EQ  00710560 55 ?SetStartState@C3DAnimationTransitionState@@QAEXABV?$CIVCountedPointer@VC3DAnimationStateBase@@@@@Z 
+EQ  007105a0 55 ?SetEndState@C3DAnimationTransitionState@@QAEXABV?$CIVCountedPointer@VC3DAnimationStateBase@@@@@Z 
+NEQ 00c59ba0 25 ??0C3DAnimationBlendState@@QAE@XZ not referenced by the leaf
+EQ  004c2df0 35 ??1C3DAnimationBlendState@@UAE@XZ 
+EQ  0070c900 455 ?GetMeshAnim@CAnimSet@@QBE?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@M@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  00711080 227 ?_M_insert_overflow@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@IAEXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@ABU32@ABU__false_type@2@I_N@Z 
+EQ  00710c50 50 ??$__destroy_aux@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@YIXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@0ABU__false_type@0@@Z 
+EQ  00711760 37 ??1?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAE@XZ 
+EQ  00711a50 245 ?_M_insert_overflow@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@IAEXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@ABV3@ABU__false_type@2@I_N@Z 
+EQ  00711c50 57 ?push_back@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAEXABV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@Z 
+
+# leaf ?CalcInterpolatedMeshAnim@CAnimateThing@@ABE?AVC3DAnimationBlendState@@ABVCCompleteAnimation@1@ABVCDelayedAnimation@1@M@Z  source_a=yes  
+EQ        EQ                 00405c10 b        pickany      5 leaf=n reach=n ??2@YAPAXIPAX@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0__false_type@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0forward_iterator_tag@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0bidirectional_iterator_tag@std@@QAE@XZ
+EQ        EQ                 0041c780 b        pickany     11 leaf=n reach=n ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+EQ        EQ                 0041c7a0 b        pickany      7 leaf=n reach=n ?_M_incr@_List_iterator_base@std@@QAEXXZ
+EQ        EQ                 0041c7c0 b        pickany     22 leaf=n reach=n ??9_List_iterator_base@std@@QBE_NABU01@@Z
+NOADDR    NOADDR                    - -        pickany     18 leaf=n reach=n ?__stl_throw_out_of_range@std@@YAXPBD@Z
+NOADDR    NOADDR                    - -        pickany     16 leaf=n reach=n ??0CIVCountedPointeeBase@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      7 leaf=n reach=n ??1CIVCountedPointeeBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany      4 leaf=n reach=n ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR    NOADDR                    - -        pickany     19 leaf=n reach=n ?Release@CIVCountedPointeeBase@@QBEJXZ
+EQ_AMBIG  EQ                 004c2f50 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 004c2fe0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 004c3070 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00550820 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005508b0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005df5d0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dfeb0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dfed0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dfef0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dff10 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dff30 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dff50 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dff70 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dff90 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dffb0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dffd0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005dfff0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 005e0010 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 0070fe30 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 0077c280 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00b49ad0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00b49af0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00b8ffe0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00b90000 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bb1850 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bb1870 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bb1890 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bb6ca0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bb9960 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bbbb80 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bc2100 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bc3b20 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bc5320 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bc99c0 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+EQ_AMBIG  EQ                 00bce340 c        pickany     31 leaf=n reach=n ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany      7 leaf=n reach=n ??1C3DAnimationStateBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     16 leaf=n reach=n ??0C3DAnimationStateBase@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??_GC3DAnimationStateBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany      7 leaf=n reach=n ??1C3DAnimationState@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     10 leaf=n reach=n ?SetProgress@C3DAnimationTransitionState@@QAEXM@Z
+NOADDR    NOADDR                    - -        pickany     10 leaf=n reach=n ?SetAlphaWeight@C3DAnimationStateAlpha@@QAEXM@Z
+NOADDR    NOADDR                    - -        pickany      7 leaf=n reach=n ??1C3DAnimationStateAlpha@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     19 leaf=n reach=n ?GFGetInterpolatedValue@@YIMMMM@Z
+NOADDR    NOADDR                    - -        pickany     17 leaf=n reach=n ?GetInterpolatedAlpha@CAnimSet@@ABEMM@Z
+EQ        EQ                 0070be40 a,b,c    pickany     60 leaf=y reach=y ?GetProgressFromAlpha@CAnimateThing@@ABEMMM@Z
+NOADDR    NOADDR                    - -        pickany      4 leaf=n reach=n ?GetMeshBank@CWorld@@QAEPAVCMeshDataBank@@XZ
+NOADDR    NOADDR                    - -        pickany      6 leaf=n reach=n ?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR    NOADDR                    - -        pickany      4 leaf=n reach=n ?GetWorld@CMainGameComponent@@QAEAAVCWorld@@XZ
+NOADDR    NOADDR                    - -        pickany     12 leaf=n reach=n ?GetMeshBank@CAnimateThing@@QBEABVCMeshDataBank@@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??0CBaseClass@@QAE@ABV0@@Z
+NEQ       NEQ                0099a470 c        pickany     30 leaf=n reach=n ??_GCBaseClass@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ??0?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??0?$CIVCountedPointer@VCSharedData@C3DAnimationBlendState@@@@QAE@PAVCSharedData@C3DAnimationBlendState@@@Z
+NOADDR    NOADDR                    - -        pickany     20 leaf=n reach=n ??0?$CIVCountedPointer@VCSharedData@C3DAnimationBlendState@@@@QAE@ABV0@@Z
+NOADDR    NOADDR                    - -        pickany      8 leaf=n reach=n ?size@?$vector@FV?$allocator@F@std@@@std@@QBEIXZ
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ?size@?$vector@VCTransitionBlendAlpha@@V?$allocator@VCTransitionBlendAlpha@@@std@@@std@@QBEIXZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??0?$CIVCountedPointer@VC3DAnimationState@@@@QAE@PAVC3DAnimationState@@@Z
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??0?$CIVCountedPointer@VC3DAnimationTransitionState@@@@QAE@PAVC3DAnimationTransitionState@@@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??C?$CIVCountedPointer@VC3DAnimationTransitionState@@@@QBEPAVC3DAnimationTransitionState@@XZ
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ?empty@?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@QBE_NXZ
+NOADDR    NOADDR                    - -        pickany      6 leaf=n reach=n ??D?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@QBEABVCAnimSet@@XZ
+NOADDR    NOADDR                    - -        pickany      6 leaf=n reach=n ??C?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@QBEPBVCAnimSet@@XZ
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ??E?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@QAEAAU01@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ?begin@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAEPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@XZ
+NOADDR    NOADDR                    - -        pickany      4 leaf=n reach=n ?end@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAEPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ?InternalGetObject@?$CIVCountedPointer@VC3DAnimationStateBase@@@@QBEPAVCIVCountedPointeeBase@@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ?begin@?$vector@FV?$allocator@F@std@@@std@@QBEPBFXZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ?begin@?$vector@VCTransitionBlendAlpha@@V?$allocator@VCTransitionBlendAlpha@@@std@@@std@@QBEPBVCTransitionBlendAlpha@@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??0?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+NOADDR    NOADDR                    - -        pickany      4 leaf=n reach=n ?end@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAEPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$_STLP_alloc_proxy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V1@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$_STLP_alloc_proxy@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@U12@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     10 leaf=n reach=n ?IsNull@?$CIVCountedPointer@VC3DAnimationStateBase@@@@QBE_NXZ
+NOADDR    NOADDR                    - -        pickany     10 leaf=n reach=n ?IsNull@?$CIVCountedPointer@VCSharedData@C3DAnimationBlendState@@@@QBE_NXZ
+NOADDR    NOADDR                    - -        pickany     10 leaf=n reach=n ?IsNull@?$CIVCountedPointer@VC3DAnimationState@@@@QBE_NXZ
+NOADDR    NOADDR                    - -        pickany     10 leaf=n reach=n ?IsNull@?$CIVCountedPointer@VC3DAnimationTransitionState@@@@QBE_NXZ
+NOADDR    NOADDR                    - -        pickany     18 leaf=n reach=n ?deallocate@?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@QAEXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@I@Z
+NOADDR    NOADDR                    - -        pickany     18 leaf=n reach=n ?deallocate@?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@std@@QAEXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@I@Z
+NOADDR    NOADDR                    - -        pickany      8 leaf=n reach=n ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+NOADDR    NOADDR                    - -        pickany      8 leaf=n reach=n ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+NOADDR    NOADDR                    - -        pickany      5 leaf=n reach=n ??0?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@QAE@ABV01@@Z
+NOADDR    NOADDR                    - -        pickany      5 leaf=n reach=n ??0?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@std@@QAE@ABV01@@Z
+NOADDR    NOADDR                    - -        pickany     17 leaf=n reach=n ??$stable_sort@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@VCAnimSetItPriorityLessThan@@@std@@YIXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@0VCAnimSetItPriorityLessThan@@@Z
+NOADDR    NOADDR                    - -        pickany     17 leaf=n reach=n ??$_Construct@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@U12@@std@@YAXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@ABU10@@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ?InternalGetObject@?$CIVCountedPointer@VC3DAnimationState@@@@QBEPAVCIVCountedPointeeBase@@XZ
+NOADDR    NOADDR                    - -        pickany     20 leaf=n reach=n ??0?$CIVCountedPointer@VC3DAnimationTransitionState@@@@QAE@ABV0@@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ?InternalGetObject@?$CIVCountedPointer@VC3DAnimationTransitionState@@@@QBEPAVCIVCountedPointeeBase@@XZ
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ?size@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QBEIXZ
+NOADDR    NOADDR                    - -        pickany     23 leaf=n reach=n ?_M_set@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@IAEXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@00@Z
+NOADDR    NOADDR                    - -        pickany     28 leaf=n reach=n ?allocate@?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@QAEPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@IPBX@Z
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ?size@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QBEIXZ
+NOADDR    NOADDR                    - -        pickany     23 leaf=n reach=n ?_M_set@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@IAEXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@00@Z
+NOADDR    NOADDR                    - -        pickany     28 leaf=n reach=n ?allocate@?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@std@@QAEPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@IPBX@Z
+NOADDR    NOADDR                    - -        pickany     17 leaf=n reach=n ??$max@I@std@@YAABIABI0@Z
+NOADDR    NOADDR                    - -        pickany     38 leaf=n reach=n ??$__uninitialized_copy@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@PAU12@@std@@YIPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@PAU10@00ABU__false_type@0@@Z
+NOADDR    NOADDR                    - -        pickany     33 leaf=n reach=n ??$__uninitialized_fill_n@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@IU12@@std@@YAPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@PAU10@IABU10@ABU__false_type@0@@Z
+NOADDR    NOADDR                    - -        pickany     33 leaf=n reach=n ??$__copy@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@PAU12@H@std@@YIPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??$_Destroy@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@std@@YAXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0random_access_iterator_tag@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     32 leaf=n reach=n ??0C3DAnimationState@@QAE@KM@Z
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??_GC3DAnimationState@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     39 leaf=n reach=n ??0C3DAnimationStateAlpha@@QAE@KMM@Z
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??_GC3DAnimationStateAlpha@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     12 leaf=n reach=n ??A?$vector@FV?$allocator@F@std@@@std@@QBEABFI@Z
+NOADDR    NOADDR                    - -        pickany     12 leaf=n reach=n ??A?$vector@VCTransitionBlendAlpha@@V?$allocator@VCTransitionBlendAlpha@@@std@@@std@@QBEABVCTransitionBlendAlpha@@I@Z
+NOADDR    NOADDR                    - -        pickany     13 leaf=n reach=n ?begin@?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@QBE?AU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ?end@?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@QBE?AU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@XZ
+NOADDR    NOADDR                    - -        pickany     24 leaf=n reach=n ?size@?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@QBEIXZ
+NOADDR    NOADDR                    - -        pickany      7 leaf=n reach=n ?back@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAEAAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@XZ
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ?Release@?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ?Release@?$CIVCountedPointer@VCSharedData@C3DAnimationBlendState@@@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ?Release@?$CIVCountedPointer@VC3DAnimationState@@@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ?Release@?$CIVCountedPointer@VC3DAnimationTransitionState@@@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ??1?$_Vector_base@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ??1?$_Vector_base@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     15 leaf=n reach=n ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+NOADDR    NOADDR                    - -        pickany     13 leaf=n reach=n ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??0?$_STLP_alloc_proxy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V1@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAE@ABV?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@1@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@Z
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??0?$_STLP_alloc_proxy@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@U12@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@1@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@1@@Z
+NOADDR    NOADDR                    - -        pickany     20 leaf=n reach=n ??$?0VC3DAnimationState@@@?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAE@ABV?$CIVCountedPointer@VC3DAnimationState@@@@@Z
+NOADDR    NOADDR                    - -        pickany     20 leaf=n reach=n ??$?0VC3DAnimationTransitionState@@@?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAE@ABV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@Z
+NOADDR    NOADDR                    - -        pickany     54 leaf=n reach=n ??$?4VC3DAnimationTransitionState@@@?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAEAAV0@ABV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@Z
+NOADDR    NOADDR                    - -        pickany     24 leaf=n reach=n ??$_Construct@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V1@@std@@YAXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@ABV1@@Z
+NOADDR    NOADDR                    - -        pickany     37 leaf=n reach=n ??$__copy_ptrs@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@PAU12@@std@@YAPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@PAU10@00ABU__false_type@0@@Z
+EQ        EQ                 0070fa30 a2,b     pickany     45 leaf=n reach=y ??$__uninitialized_copy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@PAV1@@std@@YIPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@PAV1@00ABU__false_type@0@@Z
+NOADDR    NOADDR                    - -        pickany     42 leaf=n reach=n ??$__uninitialized_fill_n@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@IV1@@std@@YAPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@PAV1@IABV1@ABU__false_type@0@@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??$__destroy_aux@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@std@@YIXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@0ABU__false_type@0@@Z
+NOADDR    NOADDR                    - -        pickany     58 leaf=n reach=n ?IsValid@CAnimSet@@QBE_NXZ
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ?GetInterpolatedInternalAlpha@CAnimSet@@ABEMMJ@Z
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ??1?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     54 leaf=n reach=n ??4?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAEAAV0@ABV0@@Z
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ??1?$CIVCountedPointer@VCSharedData@C3DAnimationBlendState@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ??1?$CIVCountedPointer@VC3DAnimationState@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ??1?$CIVCountedPointer@VC3DAnimationTransitionState@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     37 leaf=n reach=n ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+NOADDR    NOADDR                    - -        pickany     15 leaf=n reach=n ??0?$_Vector_base@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAE@ABV?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@1@@Z
+NOADDR    NOADDR                    - -        pickany     15 leaf=n reach=n ??0?$_Vector_base@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@1@@Z
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??$__destroy@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@U12@@std@@YAXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@00@Z
+NOADDR    NOADDR                    - -        pickany     47 leaf=n reach=n ??_G?$CIVCountedPointer@VC3DAnimationTransitionState@@@@QAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     24 leaf=n reach=n ??0C3DAnimationTransitionState@@QAE@XZ
+EQ        EQ                 00710560 a,b      pickany     55 leaf=y reach=y ?SetStartState@C3DAnimationTransitionState@@QAEXABV?$CIVCountedPointer@VC3DAnimationStateBase@@@@@Z
+EQ        EQ                 007105a0 a,b      pickany     55 leaf=y reach=y ?SetEndState@C3DAnimationTransitionState@@QAEXABV?$CIVCountedPointer@VC3DAnimationStateBase@@@@@Z
+EQ_AMBIG  EQ                 004c2dd0 c        pickany     25 leaf=n reach=n ??0C3DAnimationBlendState@@QAE@XZ
+EQ_AMBIG  NEQ                00c59ba0 b        pickany     25 leaf=n reach=n ??0C3DAnimationBlendState@@QAE@XZ
+EQ        EQ                 004c2df0 b        pickany     35 leaf=n reach=n ??1C3DAnimationBlendState@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     77 leaf=n reach=n ?GetFirstMeshAnim@CAnimSet@@QBE?AVC3DAnimationStateAlpha@@M@Z
+EQ        EQ                 0070c900 a,b      pickany    455 leaf=y reach=y ?GetMeshAnim@CAnimSet@@QBE?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@M@Z
+NOADDR    NOADDR                    - -        pickany     28 leaf=n reach=n ??0C3DAnimationBlendState@@QAE@ABV0@@Z
+EQ        EQ                 00410de0 b,c      pickany     63 leaf=n reach=n ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+NOADDR    NOADDR                    - -        pickany     15 leaf=n reach=n ??0?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAE@ABV?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@1@@Z
+NOADDR    NOADDR                    - -        pickany     15 leaf=n reach=n ??0?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@1@@Z
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??$_Destroy@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@std@@YAXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@0@Z
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ?_M_clear@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@IAEXXZ
+NOADDR    NOADDR                    - -        pickany     29 leaf=n reach=n ??$_Destroy@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@YAXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@Z
+NOADDR    NOADDR                    - -        pickany     47 leaf=n reach=n ??_GC3DAnimationTransitionState@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     56 leaf=n reach=n ??_GC3DAnimationBlendState@@UAEPAXI@Z
+EQ        EQ                 004118c0 b        pickany     58 leaf=n reach=n ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ??1?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     52 leaf=n reach=n ?erase@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAEPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@PAU32@0@Z
+EQ        EQ                 00711080 a,b      pickany    227 leaf=y reach=y ?_M_insert_overflow@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@IAEXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@ABU32@ABU__false_type@2@I_N@Z
+EQ        EQ                 00710c50 a2,b     pickany     50 leaf=n reach=y ??$__destroy_aux@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@YIXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@0ABU__false_type@0@@Z
+NOADDR    NOADDR                    - -        pickany     50 leaf=n reach=n ?push_back@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAEXABU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@2@@Z
+NOADDR    NOADDR                    - -        pickany     37 leaf=n reach=n ?clear@?$vector@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@V?$allocator@U?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@@2@@std@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany     21 leaf=n reach=n ??$__destroy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V1@@std@@YAXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@00@Z
+NOADDR    NOADDR                    - -        pickany     21 leaf=n reach=n ??$_Destroy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@YAXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@0@Z
+NOADDR    NOADDR                    - -        pickany     37 leaf=n reach=n ?_M_clear@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@IAEXXZ
+EQ        EQ                 00711760 a,b      pickany     37 leaf=y reach=y ??1?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAE@XZ
+EQ        EQ                 00711a50 a,a2,b   pickany    245 leaf=y reach=y ?_M_insert_overflow@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@IAEXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@ABV3@ABU__false_type@2@I_N@Z
+EQ        EQ                 00711c50 a,b      pickany     57 leaf=y reach=y ?push_back@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@QAEXABV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@Z
+EQ        EQ                 01229630 a        static      17 leaf=y reach=y _$E2

@@ -7,6 +7,12 @@
 #include "engine/CAnimateThingUpdate.h"
 #endif
 class CThing;
+#ifdef FABLE_RETAIL_CANIMATETHING_GETMESHBANK
+class CMeshDataBank;
+#endif
+#ifdef FABLE_RETAIL_CANIMATETHING_PROGRESSFROMALPHA
+extern const float DELTA_NOTIONAL_ZERO;                                   // 0x0129BA3C
+#endif
 class CAnimateThing {public:
 #ifdef FABLE_RETAIL_CANIMATETHING_CTOR_PASS26
  // Pass26 native caller0070b418 and both PDBs prove CThing& formal.
@@ -128,9 +134,28 @@ private:
  mutable C3DAnimationBlendState StartAnimState,EndAnimState,LastStartAnimState,LastEndAnimState;
  void CalcCachedAnims() const;
  C3DAnimationBlendState CalcInterpolatedMeshAnim(const CCompleteAnimation&, const CDelayedAnimation&, float) const;
+#ifdef FABLE_RETAIL_CANIMATETHING_PROGRESSFROMALPHA
+ // Nested opt-in (B24C6, row 0x0070D940): Ego_r.pdb / FableWin.pdb ?GetProgressFromAlpha@CAnimateThing@@ABEMMM@Z, out of line at 0x0070BE40
+ // (landed, same body) and expanded in place inside the transition loop of 0x0070D940: an inline body the size-mode inliner
+ // expands once its budget allows. DELTA_NOTIONAL_ZERO 0x0129BA3C.
+ float GetProgressFromAlpha(float alpha, float totalAlpha) const
+ {
+  if (totalAlpha >= DELTA_NOTIONAL_ZERO && DELTA_NOTIONAL_ZERO + 1.0f >= totalAlpha) return alpha / totalAlpha;
+  return 1.0f;
+ }
+#endif
  const CThing& GetParentThing() const { return ParentThing; }
 #else
  C3DAnimationBlendState StartAnimState,EndAnimState,LastStartAnimState,LastEndAnimState;
+#endif
+#ifdef FABLE_RETAIL_CANIMATETHING_GETMESHBANK
+public:
+ // B24C8/B24C9 opt-in (row 0x0070D940): Ego_r.pdb (release animate_thing.obj, 12 bytes) and FableWin.pdb 0x01E92060
+ // ?GetMeshBank@CAnimateThing@@QBEABVCMeshDataBank@@XZ (public const); retail's out-of-line copy is 0x0070C0D0 (`mov eax,[PMainGameComponent];
+ // mov ecx,[eax+24h]; mov eax,[ecx+3Ch]`). 0x0070D940 expands it as the object of `GetMeshBank().PeekAnimation(index)` at 0x0070DFD3 /
+ // 0x0070DFF9 (the object chain evaluated before the argument). Body: engine/CAnimateThing_GetMeshBank.h.
+ const CMeshDataBank& GetMeshBank()const;                              // 0x0070C0D0
+private:
 #endif
  float Scale,ChangeAlphaBy;
  long AnimDelay;

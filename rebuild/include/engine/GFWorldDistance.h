@@ -50,4 +50,10 @@ inline float FABLE_FASTCALL GFGetWorld2DDistance(const C3DVector& pos1,const C3D
  return (float)sqrt(sqr_dist);
 }
 #endif
+#if defined(FABLE_RETAIL_GFWORLD3DDISTANCE_SMALLER_DECL) && !defined(FABLE_RETAIL_GFWORLD3DDISTANCE_SMALLER)
+// Opt-in (B24C7, row 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim): the same Ego_r / FableWin
+// ?GFWorld3DDistanceSmallerThan@@YI_NABVC3DVector@@0M@Z declared only, for TUs that call the out-of-line copy (retail 0x006614F0,
+// called from 0x0070D99B) instead of expanding the inline body above.
+bool FABLE_FASTCALL GFWorld3DDistanceSmallerThan(const C3DVector& pos1,const C3DVector& pos2,float compare);
+#endif
 #endif

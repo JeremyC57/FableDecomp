@@ -403607,6 +403607,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
         PassPattern = '00d11930_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0070d940'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_CalcInterpolatedMeshAnim_0070d940.cpp'
+        TestSource = '00/70/CAnimateThing_CalcInterpolatedMeshAnim_0070d940_test.cpp'
+        PassPattern = '0070d940_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

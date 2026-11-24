@@ -87,6 +87,11 @@ public:
     bool IsLoading() const { return !Data.IsNull() && Data->FileData.Data; }
     void BeginLoading(bool) const;                                       // 0x00A26730
     void TouchAnimation() const;                                         // 0x00A26A50
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_ISLOADED
+    // Nested opt-in (B24C6, row 0x0070D940): Ego_r.pdb ?IsLoaded@C3DAnimationInfo@@QBE_NXZ, out of line at 0x00A23F50 (landed; called
+    // twice by 0x0070D940's combination passes). Declaration only.
+    bool IsLoaded() const;                                               // 0x00A23F50
+#endif
     void Preload() const;                                                // 0x00A26AA0
 private:
 #ifdef FABLE_RETAIL_CMESHDATABANK_INITIALISEENTRY_PASS27

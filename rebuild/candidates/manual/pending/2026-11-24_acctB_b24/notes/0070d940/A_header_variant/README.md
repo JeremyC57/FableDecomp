@@ -1,4 +1,4 @@
-# 0x0070D940 with GetMeshAnim from a shared header (Account A, 2026-11-24): proposal, not landed
+# 0x0070D940 with GetMeshAnim from a shared header (Account A, 2026-11-24): LANDED as acctB_b26 (owner yes)
 
 The question: can the row get CAnimSet::GetMeshAnim (0x0070C900) from a header instead of its verbatim strong same-TU copy?
 
@@ -16,4 +16,4 @@ form avoids a second strong definition of a landed symbol.
 
 Still open: the landed 0x0070C900 row models its classes locally (no shared headers), so the body exists twice (that row and the
 header). Porting 0x0070C900 onto the shared headers with this body would make the header the one source; not attempted.
-Waits on the owner's yes (HANDOFF owner question 1).
+Owner approved 2026-11-24; landed in batches/2026-11-24_landing_acctB_b26.

@@ -21,6 +21,9 @@ class C3DSkeletalMorph;
 class C3DSkeletalMorph;
 #endif
 class C3DAnimationState;
+#ifdef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_ADDCOMBINATIONBLEND
+class C3DAnimationStateAlpha;
+#endif
 class C3DAnimationStateBase;
 template <class T> class CIVCountedPointer;
 class C3DAnimationBlendState : public CBaseClass {
@@ -51,6 +54,11 @@ public:
 #endif
     void SetBaseAnimation(const C3DAnimationState& state);               // 0x00A3C260
     void SetBaseAnimation(const CIVCountedPointer<C3DAnimationStateBase>& state);
+#ifdef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_ADDCOMBINATIONBLEND
+    // Nested opt-in (B24C6, row 0x0070D940): Ego_r.pdb ?AddCombinationBlend@C3DAnimationBlendState@@QAEXABVC3DAnimationStateAlpha@@@Z
+    // (0x00B96B60), out of line at 0x00A3C310 (landed; its reloc binding spells the argument as a pointer, see NAME_FIXES.tsv).
+    void AddCombinationBlend(const C3DAnimationStateAlpha& blend);      // 0x00A3C310
+#endif
 #if defined(FABLE_RETAIL_C3DANIMATIONBLENDSTATE_SKELETALMORPH) && defined(FABLE_RETAIL_C3DANIMATIONBLENDSTATE_SHAREDDATA)
     // Retail opt-in (chunk Q32, row 0x00BD2A90): FableWin.pdb ?HasSkeletalMorph@C3DAnimationBlendState@@QBE_NXZ /
     // ?PeekSkeletalMorph@C3DAnimationBlendState@@QBEABVC3DSkeletalMorph@@XZ, inline in retail (0x00BD2A96..0x00BD2AAF reads
