@@ -9,8 +9,8 @@ class CGame : public CInitBaseClass {
 public:
     CGame();
     virtual ~CGame();
-#ifdef FABLE_RETAIL_CGAME_GFMAIN
-    // b24c opt-in (row 0x00402510 GFMain): Ego_r.pdb ?Play@CGame@@QAEXXZ, out of line at 0x00412F90 (GFMain `mov ecx,13B83D0h ; call`).
+#ifdef FABLE_RETAIL_CGAME_PLAY
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb ?Play@CGame@@QAEXXZ, out of line at 0x00412F90 (landed; GFMain `mov ecx,13B83D0h ; call`).
     void Play();                                                         // 0x00412F90
 #endif
 #ifdef FABLE_RETAIL_CGAME_UNINITIALISE
@@ -26,8 +26,5 @@ private:
     bool Quit;
 };
 FABLE_STATIC_ASSERT_AT(17, sizeof(CGame)==528);
-#ifdef FABLE_RETAIL_CGAME_GFMAIN
-extern CGame GGame;                                                      // 0x013B83D0 ?GGame@@3VCGame@@A (PDB dynamic initializer 'GGame')
-#endif
 #endif
 #endif

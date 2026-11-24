@@ -5,3 +5,5 @@
 03:21 00402510 grade v6a.cpp RELOCATION_MATCH /Gr /GS -- v6: CIVCountedPointer dtor variants (direct / direct_clear / release_forceinline)
 03:23 00402510 grade v7.cpp RELOCATION_MATCH /Gr /GS -- v7: names fixed (landed spellings, descriptive names without addresses)
 03:23 00402510 grade v8.cpp RELOCATION_MATCH /Gr /GS -- v8: final header comment
+05:52 00402510 grade v12.cpp DIFFER(3926v3952) hunks=21 /Gr /GS -- b24c4 v12: existing CDISKFILEWIN32_DTOR_DECL_ONLY instead of new CAFILE_DTOR_DECL_ONLY; CInputManagerInit decl-only
+05:53 00402510 grade 00402510.cpp RELOCATION_MATCH /Gr /GS -- b24c4 v11 final: CInputManagerInit decl-only header

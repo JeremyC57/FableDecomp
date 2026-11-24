@@ -215,10 +215,10 @@ public:
 #else
 class CDataBank : public CBankFileAsync {
 public:
-#ifdef FABLE_RETAIL_NGAMETEXT_CDATABANK_GFMAIN
-    // b24c opt-in (row 0x00402510 GFMain): Ego_r.pdb ??0CDataBank@NGameText@@QAE@XZ (out of line at 0x009C85A0; GFMain
-    // `new` + call), ??1CDataBank@NGameText@@UAE@XZ and the protected override ?GetDataFormatVersion@CDataBank@NGameText@@MAEKXZ of the
-    // pure CBankFile slot (so the class is concrete). Declarations only.
+#ifdef FABLE_RETAIL_NGAMETEXT_CDATABANK_CTOR_DECL
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb ??0CDataBank@NGameText@@QAE@XZ (out of line at 0x009C85A0;
+    // GFMain `new` + call), ??1CDataBank@NGameText@@UAE@XZ and the protected override ?GetDataFormatVersion@CDataBank@NGameText@@MAEKXZ
+    // of the pure CBankFile slot (so the class is concrete). Declarations only.
     CDataBank();                                                                   // 0x009C85A0
     virtual ~CDataBank();
 protected:

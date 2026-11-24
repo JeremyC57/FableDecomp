@@ -11,8 +11,8 @@
 class CDefStringTable {
 public:
     void SetTableFilename(const CWideString& filename);   // 0x009D4A40
-#ifdef FABLE_RETAIL_CDEFSTRINGTABLE_GFMAIN
-    // b24c opt-in (row 0x00402510 GFMain): Ego_r.pdb ?LoadTable@CDefStringTable@@QAEX_N@Z, out of line at 0x009D4C30.
+#ifdef FABLE_RETAIL_CDEFSTRINGTABLE_LOADTABLE
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb ?LoadTable@CDefStringTable@@QAEX_N@Z, out of line at 0x009D4C30.
     void LoadTable(bool read_only);                        // 0x009D4C30
 #endif
 protected:
@@ -21,8 +21,4 @@ protected:
     bool          Locked;                                  // +0x34
     bool          ReadOnly;                                // +0x35
 };
-#ifdef FABLE_RETAIL_CDEFSTRINGTABLE_GFMAIN
-// The global table (landed spelling ?GDefStringTable@@3VCDefStringTable@@A, PDB dynamic initializer 'GDefStringTable').
-extern CDefStringTable GDefStringTable;                    // 0x013CA828
-#endif
 #endif // FABLE_ENGINE_CDEFSTRINGTABLE_H

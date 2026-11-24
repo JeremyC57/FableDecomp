@@ -34,3 +34,14 @@ settled, regenerate the sea row's source, test, payload, vland log and pick-any 
 
 ## Landed by Account A (2026-11-24, batches/2026-11-24_landing_acctB_b24)
 0x012133C0 (at 8 bytes, as its sibling funclets; the `__ehhandler` thunk stays a manifest-gaps line), 0x00407A70, 0x00407BA0. Still staged: GFMain (under repair) and 0x00BE4FE0 (held for the shared template).
+
+## 0x00402510 GFMain: READY (repaired by B24C4, re-verified by the coordinator 2026-11-24)
+RELOCATION_MATCH PASS, /Gr /GS (as GFConfigDetection 0x004017B0, the landed row from the same object). Test regenerated from the row body;
+two one-line mutations FAIL. Pick-any: 12 / 12 copies EQ (pickany.txt in notes). Overlay: 12 existing headers with additive `#ifdef` opt-ins
+only (diff -0 against today's headers; each named after what it adds, no `_GFMAIN` gates) plus 7 NEW headers with Ego_r layouts
+(CSystemManagerInit, CInputManagerInit, CDisplayManagerInit, CSystemRegistry, CBankFileManager, NUISystem_CIME, CSoundManagerInit); evidence
+per opt-in in hdr/00402510/README.md. Data globals use the landed spellings (52 data relocations checked; one exception, 0x013B864F, in NOTES).
+vland warnings, all explained in notes/00402510/NAME_FIXES.tsv (24 lines, supersedes the 20 queued by A): RELOC_NAME on 0x009D81E0 (placeholder
+label -> descriptive DisableVTuneCollection, no PDB name), 0x00415530 GetLanguageFolder, 0x009BC8A0 SetNoHangulWordWrap, 0x00402130
+TestDirForValidFilePermissions (Ego_r), and `??1CAFile` -> 0x0099A300, a linker-folded body shared with ~CBaseClassNonCopyable (GOTCHAS nf104;
+the new CAFILE_DTOR_DECL_ONLY removes a differing ~CAFile copy); RELOC_ALIAS `_exit` (import thunk, expected).

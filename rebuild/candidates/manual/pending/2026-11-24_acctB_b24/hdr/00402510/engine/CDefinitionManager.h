@@ -24,6 +24,13 @@ class CDefString;
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_PARSEENUMFORSYMBOLS
 class CStringParser;
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_STARTUP_SETTERS
+// The three flags the start-up setters write, spelled as the landed rows spell the addresses (Ego_d.pdb names them
+// ?CreateCompiledDefs@ / ?CreateChecksums@ / ?UsingCompiledDefs@CDefinitionManager@@1_NA: NAME_FIXES).
+extern bool g_bSaveBinaryDefinitions;                                // 0x0138E188 (CDefinitionManager::Compile 0x009B08C0)
+extern bool g_bCheckDefDependencies;                                 // 0x0138E189 (CDefinitionManager::CheckDependencies 0x009B05F0)
+extern bool g_bLoadBinaryDefinitions;                                // 0x013CA7D8 (CDefinitionManager::Compile 0x009B08C0)
+#endif
 class CDefinitionManager : public CResourceList {
     friend class CDefClassBase;
 public:
@@ -58,6 +65,16 @@ public:
 protected:
     static CWideString CompiledDefDirectory;                             // 0x013CA7DC
 public:
+#endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_STARTUP_SETTERS
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb / FableWin.pdb static setters
+    // ?SetCreatingCompiledDefs@ / ?SetCreateChecksums@ / ?SetUsingCompiledDefs@CDefinitionManager@@SIX_N@Z and
+    // ?SetCompiledDefDirectory@CDefinitionManager@@SIXABVCWideString@@@Z, all inline in retail (GFMain stores 0x0138E188 / 0x0138E189 /
+    // 0x013CA7D8 and assigns CompiledDefDirectory 0x013CA7DC in place). Needs FABLE_RETAIL_CDEFINITIONMANAGER_COMPILEDDEFDIR.
+    static void __fastcall SetCreatingCompiledDefs(bool value) { g_bSaveBinaryDefinitions = value; }
+    static void __fastcall SetCreateChecksums(bool value) { g_bCheckDefDependencies = value; }
+    static void __fastcall SetCompiledDefDirectory(const CWideString& directory) { CompiledDefDirectory = directory; }
+    static void __fastcall SetUsingCompiledDefs(bool value) { g_bLoadBinaryDefinitions = value; }
 #endif
     virtual ~CDefinitionManager();
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_SAVEBINARY_PASS23
@@ -478,22 +495,6 @@ struct _func___cdecl_void_CCharString_ptr;
 #pragma pack(push, 1)
 class CDefinitionManager {
 public:
-#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GFMAIN
-    // b24c opt-in (row 0x00402510 GFMain): Ego_r.pdb / FableWin.pdb static setters ?SetCreatingCompiledDefs@ /
-    // ?SetCreateChecksums@ / ?SetUsingCompiledDefs@CDefinitionManager@@SIX_N@Z and ?SetCompiledDefDirectory@CDefinitionManager@@SIXABVCWideString@@@Z,
-    // all inline in retail (GFMain stores 0x0138E188 / 0x0138E189 / 0x013CA7D8 and assigns CompiledDefDirectory 0x013CA7DC in place).
-    // CompiledDefDirectory is the Anniv360 PDB name (COMPILEDDEFDIR block); the three flag names are descriptive (no PDB data name; Codex pass-12 spellings).
-    static void __fastcall SetCreatingCompiledDefs(bool value) { CreateCompiledDefs = value; }
-    static void __fastcall SetCreateChecksums(bool value) { CreateChecksums = value; }
-    static void __fastcall SetCompiledDefDirectory(const CWideString& directory) { CompiledDefDirectory = directory; }
-    static void __fastcall SetUsingCompiledDefs(bool value) { UsingCompiledDefs = value; }
-protected:
-    static bool CreateCompiledDefs;                                     // 0x0138E188
-    static bool CreateChecksums;                                        // 0x0138E189
-    static CWideString CompiledDefDirectory;                            // 0x013CA7DC
-    static bool UsingCompiledDefs;                                      // 0x013CA7D8
-public:
-#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_CINSTANTIATEDEFINFO_DECL
     // agentNF28 (row 0x009B4BD0 vector<CDefinitionManager::CInstantiatedDefInfo*>::_M_insert_overflow): the nested record named
     // only, for TUs that use pointers to it without its layout (Ego_r.pdb CDefinitionManager::CInstantiatedDefInfo; InstantiatedDefs

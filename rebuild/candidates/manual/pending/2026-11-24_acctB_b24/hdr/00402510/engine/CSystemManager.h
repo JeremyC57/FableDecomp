@@ -86,9 +86,9 @@ public:
 void DisplayCriticalMessage(const char*);
 #endif
 CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
-#ifdef FABLE_RETAIL_CSYSTEMMANAGER_GFMAIN
-    // b24c opt-in (row 0x00402510 GFMain): Ego_r.pdb ?Initialise@CSystemManager@@QAE?AW4ESystemCode@@PBVCSystemManagerInit@@@Z,
-// out of line at 0x009A6610. Declaration only.
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_INITIALISE
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb ?Initialise@CSystemManager@@QAE?AW4ESystemCode@@PBVCSystemManagerInit@@@Z,
+// out of line at 0x009A6610 (landed). Declaration only.
  ESystemCode Initialise(const class CSystemManagerInit* init);          // 0x009A6610
 #endif
 #ifdef FABLE_RETAIL_CSYSTEMMANAGER

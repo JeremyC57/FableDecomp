@@ -128,3 +128,45 @@ hvar.py (header-overlay variants), var.py-style text variants. No payload for th
   temp piece (length value, edi), 32 = `+6` local (edi), 109 = `+2-3` temp (eax), 40 = `+6` two-ref local (ecx). Two readings fit the
   4-point gap: retail's prologue block has ~2 fewer referenced candidates (K 13 -> 11), OR the copy pieces gain ~5 in the FindFirst
   loop (bottom GetEdgeStrip block K 5 -> 7). Test both in next idea 2.
+## B24C4 (2026-11-24): is it ONE template text? Evidence (b24c4/: w.dis / s.dis = retail listings, diff in this note)
+- PDB files are NOT on this machine (no Ego_r / Ego_d / FableWin .pdb anywhere; debug_build/ absent), so egod_lines.py / egod_proc.py
+  (C13 line blocks) cannot run here: same-line-range proof needs the owner's Windows box (D:\..\debug_build\Ego_d.pdb). What the
+  derived tables say:
+  - Ego_r.pdb module streams (ghidra_out/egor_obj_functions.tsv): both in Release\Engine_landscape_tesselator.obj, consecutive procs
+    55 (Water, 0x009C4710, 2452 bytes) and 56 (Sea, 0x009C50B0, 2327 bytes): same compiland, template instantiations side by side.
+  - Ego_d.pdb carved procs (egod_carved_functions.tsv): both in FableEngine\Debug\Engine_landscape_tesselator.obj, EQUAL size 1307.
+  - FableWin.pdb (fablewin_pdb_names.tsv span to next public): TesselateEdge Water 0x02CC14F0 and Sea 0x02CC3440 both 1648; the
+    per-T helpers differ (AddFanBaseVertex Water span 768, Sea 240 -- vertex copy vs int->float conversion; spans may include unnamed code).
+  - Retail TLC listings: identical callee multiset (GetEdgeStrip 0x00BDC980 x4, _M_insert_overflow 0x005135D0 x10, the per-T
+    CArray<T>::push_back x4: 0x00BE4F90 water / 0x00BE5950 sea), identical non-type immediates. Every difference is type-dependent:
+    vertex stride (imul 0x38 / divide magic 0x92492493 sar 5 for 56-byte water vertices v lea*3*4 / 0x2AAAAAAB sar 1 for 12-byte sea
+    vertices), vertex fill (water: u16 X / u16 Y / dword Z + `rep movsd` 12 dwords ShoreLookUpArray; sea: fild/fstp ushort->float X/Y
+    (+Z)), frame (0x11C water: four 0x38-byte push_back temporaries at esp+0x4C/0x84/0xBC/0xF4; 0x68 sea: four 12-byte ones), and
+    register allocation / loop-head alignment (sea pads `lea ecx,[ecx]` before the bridged-span loop at 0x00BE51E0, water does not).
+    The branch structure of the stretch 0x00BE47EE..0x00BE48D6 v 0x00BE517E..0x00BE5266 is the same block for block (side-by-side);
+    the loop head and the not-found tail differ in LAYOUT (that is the W / S difference), not checked block for block.
+  - No explicit specialisation of TesselateEdge is indicated (no extra / missing statement, no different constant, same callees).
+- Conclusion: ONE TesselateEdge template text (premise holds). The separating input is type-dependent: the inlined per-T vertex
+  helpers (AddDuplicateEdgeVertex / AddFanBaseVertex: struct copy + rep movsd v float conversion) and the vertex size, which change
+  register pressure / frame and, through them, our compiler's loop-tail shape. Since one text cannot be W for water and S for sea in
+  our compiles, the remaining candidates are (i) the helper TEXT (water helper forms h0..h6 / ha tried by B24C3 under S; the sea
+  helper under W was tried for local order only), (ii) the vertex class (copy assignment / constructor of CTVertexWaterBackground:
+  a user-declared copy or a member-wise copy changes the push_back temporaries and the fill), (iii) B24C3's split-pass idea.
+- (B24C4) Probe: Ego_r.pdb vertex hierarchy on both types (CTVertexWaterBackground : CGenericVertex<CTVertexWaterBackgroundBase>,
+  probe overlay b24c4/ovh + the repo's FABLE_RETAIL_CTVERTEXSEABACKGROUND_HIERARCHY): INERT. z2 (W) water 4 / sea 22; gba1 (S) water
+  16 / sea RELOCATION_MATCH -- identical to the flat classes.
+## Exact state at hand-back (B24C4)
+- Unchanged best: water differ/00be4660.cpp (z2 W-form, 4 hunks, prologue y register); sea matched under S-forms (held: needs the same
+  text as water). Premise "one template text" now evidenced (see the B24C4 evidence block above); the line-range proof needs the
+  PDBs, which are not on this machine.
+- Next: B24C3's split-pass instrumentation (idea 1) and prologue candidates (idea 2); the per-T helper texts are the only
+  type-dependent source left -- try sea helper variants under the W-form (only local orders were tried) before more loop-tail forms.
+- (B24C4, advisor lead, not yet checked) Sea keeps -1 in ebp (`or ebp,0xffffffff`, `mov [esp+1Ch],ebp` 0x00BE51D3) and seems to have
+  TWO `previous = -1` stores at the tail (an immediate before the index store and `mov [esp+14h],ebp` near the skip target 0x00BE5925);
+  water stores immediates (0x00BE4843) and seems to have ONE, possibly shared with its skip target 0x00BE4F5C. Disassemble from
+  0x00BE4F49 and 0x00BE5904 to confirm. If so, the S order is the source order and water's W shape is VC7.1 tail-merging two identical
+  immediate stores: z2 would be a hand-merged text, and the question becomes whether our S-form water (w_gba1) keeps -1 in a register
+  where retail does not (register pressure in the water instantiation tying the 16 hunks and the prologue y register to one cause).
+- (B24C4) Strongest one-text evidence without the PDBs: ghidra_out/naming_stragglers/FableWin.exe.signatures.tsv gives both FableWin
+  instantiations (0x02CC14F0 water, 0x02CC3440 sea) 1307 bytes, 387 instructions and EQUAL strict (075ae730d3131c87) and loose
+  (00df6ec15f10d4b5) signatures.

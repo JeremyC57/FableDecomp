@@ -21,6 +21,16 @@ public:
     static void __fastcall DoHardDiskErrorCallback(const char* message) {
         if (HardDiskErrorCallback) HardDiskErrorCallback(message);
     }
+#ifdef FABLE_RETAIL_CTHREADEDFILEMANAGER_SETCALLBACKS
+    // b24c4 opt-in (row 0x00402510 GFMain): FableWin.pdb ?SetErrorCallback@CThreadedFileManager@@SIXP6IXXZ@Z /
+    // ?SetHardDiskErrorCallback@CThreadedFileManager@@SIXP6IXPBD@Z@Z, inline in retail (GFMain stores 0x013BC860 / 0x013BC864 in
+    // place, 0x0040256B / 0x0040257E). m_errorCallback 0x013BC860 is the Ego_d.pdb name (?m_errorCallback@CThreadedFileManager@@0P6IXXZA).
+    static void __fastcall SetErrorCallback(void (__fastcall* callback)()) { m_errorCallback = callback; }
+    static void __fastcall SetHardDiskErrorCallback(void (__fastcall* callback)(const char*)) { HardDiskErrorCallback = callback; }
+private:
+    static void (__fastcall* m_errorCallback)();                     // 0x013BC860
+public:
+#endif
 private:
     class CFileObject {
     public:
@@ -65,18 +75,5 @@ private:
     float DeviceTimeSlice[THREADED_FILE_DEVICE_COUNT];
 };
 FABLE_STATIC_ASSERT_AT(59, sizeof(CThreadedFileManager)==0x178);
-#elif defined(FABLE_RETAIL_CTHREADEDFILEMANAGER_GFMAIN)
-// b24c opt-in (row 0x00402510 GFMain): FableWin.pdb ?SetErrorCallback@CThreadedFileManager@@SIXP6IXXZ@Z and
-// ?SetHardDiskErrorCallback@CThreadedFileManager@@SIXP6IXPBD@Z@Z, inline in retail (GFMain stores 0x013BC860 / 0x013BC864 in place,
-// 0x0040256B / 0x0040257E). HardDiskErrorCallback is the landed spelling (PASS27 branch, DoHardDiskErrorCallback); ErrorCallback is
-// descriptive (no PDB data name). Static members only.
-class CThreadedFileManager {
-public:
-    static void __fastcall SetErrorCallback(void (__fastcall* callback)()) { ErrorCallback = callback; }
-    static void __fastcall SetHardDiskErrorCallback(void (__fastcall* callback)(const char*)) { HardDiskErrorCallback = callback; }
-private:
-    static void (__fastcall* ErrorCallback)();                       // 0x013BC860
-    static void (__fastcall* HardDiskErrorCallback)(const char*);    // 0x013BC864
-};
 #endif
 #endif

@@ -833,3 +833,12 @@ recheck PASS).
   `vector<CArray<long>>::resize` (3) and `CPersistTraits<long>::TransferBinaryIn` (1). They are queued as T3 `pickany_d2inlS15` debt.
 - **No fixes from A in the MovieBase / CIsThingAlive headers** while B24A2 works 0x00D09010. If your fix for those copies lands through a
   shared opt-in, tell me and I will recheck the 21 affected objects with the checker.
+
+2026-11-24 B->A: **GFMain 0x00402510 is ready to land** (pending/2026-11-24_acctB_b24/, README section "GFMain: READY"). Repaired: data globals on
+your landed spellings, no `_GFMAIN` gates (14 opt-ins named after what they add, 5 existing opt-ins reused, all additive), 7 new headers with
+Ego_r layouts, pick-any 12/12 EQ, test regenerated and mutation-checked. Its NAME_FIXES.tsv is now 24 lines and SUPERSEDES the 20 you queued
+(evidence corrected to Ego_d for 0x0138E188 / 0x0138E189 / 0x013CA7D8 / 0x013BCA00; three added: 0x013BC864, 0x0137544A GFullScreen,
+0x013B8648 GOnlyBuildStaticMaps). One new RELOC_NAME you should judge: `??1CAFile` -> 0x0099A300, the linker-folded body shared with
+~CBaseClassNonCopyable (GOTCHAS nf104). Note for your labels: Ego_d names CDefinitionManager::CreateCompiledDefs / CreateChecksums /
+UsingCompiledDefs, CAFile::m_harddiskErrorCallback and CThreadedFileManager::m_errorCallback / m_harddiskErrorCallback exist
+(ghidra_out/egod_carved_names.tsv).

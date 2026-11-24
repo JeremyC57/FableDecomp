@@ -1,5 +1,5 @@
 // Production GFMain body copied verbatim; collaborators expose startup decisions and calls.
-// Native-only 32-bit sound configuration words use unsigned int in this host-portable fixture.
+// The sound settings block (CSoundManagerInit) is mirrored with host-portable int / unsigned int fields.
 #include <stdio.h>
 #include <assert.h>
 #include <string>
@@ -21,17 +21,17 @@ static std::vector<std::string>stages;static std::vector<BankOpen>banks;static s
 static bool class_left,class_wrap,font_fixed,async_failure;
 void __fastcall DoDirtyDisc(){}void __fastcall GFHardDiskError(const char*){}
 enum ESystemCode{SYS_OK=1};bool __fastcall GFIsSystemErrorFailure(ESystemCode){return false;}
-bool GAllowWADGeneration,GUseCompiledSoundSymbols,GRunFromDVD,GPreventInstallation,GIgnoreTimestampOnInstall,GStartVTuneDisabled,GUseAsyncLoadingMemoryHandler;
-bool GLeftAlignText,GNoHangulWordWrap,GDisableCapsLock,GUseRetailBanks,GSkipFrontend,GUseCompiledDefs,GForcePrimary,GSoundOn;
+bool GAllowDataGeneration,g_bUseCompiledSoundSymbols,g_bRunFromDVD,GPreventInstallation,GIgnoreTimestampOnInstall,GStartVTuneDisabled,GUseAsyncLoadingMemoryHandler;
+bool g_bLeftAlignText,GNoHangulWordWrap,GDisableCapsLock,g_bRuntimeLevelFiles,g_bStartMainGame,g_bUseCompiledDefs,GForcePrimary,GSoundOn;
 long GResolutionWidth,GResolutionHeight,GResolutionDepth,GZBufferDepth,GResolutionRefreshRate,GPushBufferSize,GKickoffSize;
-bool GPresentImmidiate,GAntialiasingOn,GAntialiasing9x,GFullScreen,GAllowBackgroundProcessing,GSkipConfigDetection,GOnlyBuildStaticMaps;
-bool StartupConsoleEnabled_0137548f,SaveSoundSymbols_0138dd3b,LoadSoundSymbols_013bc9f0,PrepareParticles_01375754,RenderConfigurationFlag1_013750a4,RenderConfigurationFlag2_013750aa,UseFixedFontFunction_013750ab;
+bool g_PresentationInterval,GAntialiasingOn,GAntialiasing9x,g_bFrontEndFlag_137544A,GAllowBackgroundProcessing,GSkipConfigDetection,g_bCompileFrontendDefinitions;
+bool g_bFrontEndFlag_137548F,g_bSaveBinarySoundSymbols,g_bLoadBinarySoundSymbols,g_bParticlesEnabled,g_FeatureA,g_FeatureF,g_FeatureG;
 namespace NProfileTimer{void StartProfile(const CCharString&s,long n){assert(n==0);stages.push_back(s.text);}void EndProfile(long n){assert(n==0);}}
 namespace NLocalisation{CCharString GetLanguageFolder(){return CCharString("english");}CCharString GetTextBankName(){return CCharString("TEXT_BANK");}CCharString GetStreamingFontBankName(){return CCharString("FONT_BANK");}}
 namespace NResourceDirectoryNames{CWideString GetGraphicBankDir(){return L"graphics/";}CWideString GetFontBankDir(){return L"fonts/";}CWideString GetHDDialogueDir(){return L"dialogue/";}CWideString GetHDMiscDir(){return L"hdmisc/";}CWideString GetMiscDir(){return L"misc/";}CWideString GetShaderBankDir(){return L"shader/";}CWideString GetCacheDir(){return L"cache/";}CWideString GetMyDocumentsDir(){return L"docs/";}CWideString GetUserDataDir(){return L"user/";}CWideString GetSaveDir(){return L"saves/";}}
-namespace NGlobalConsole{void Initialise(){++console_count;}}
+void InitialiseConsoleVariables(){++console_count;}
 namespace EULA{int DoEULAThings(){++eula_count;return eula_ok;}}
-void ClearStartupLatch_009d81e0(){++latch_count;}
+void DisableVTuneCollection(){++latch_count;}
 class CAFile{public:static void(*error)();static void(*hard)(const char*);static void SetErrorCallback(void(*f)()){error=f;}static void SetHardDiskErrorCallback(void(*f)(const char*)){hard=f;}static CWideString GetProjectPath(){return L"project/";}static void SetCurrentPath(const CWideString&s){assert(s.text==L"project/");}static bool PathExists(const CWideString&s){assert(s.text==L"Data\\lang\\english\\lang_settings.txt");return setting_file;}};void(*CAFile::error)()=0;void(*CAFile::hard)(const char*)=0;
 enum FileAccessType{FILE_ACCESS_READ=1};class CDiskFileWin32:public CAFile{public:CDiskFileWin32(const CWideString&s,FileAccessType a,unsigned long n){assert(s.text==L"Data\\lang\\english\\lang_settings.txt"&&a==FILE_ACCESS_READ&&n==2);}bool IsOpen()const{return open_file;}};
 void CCharString::LoadFromFile(CAFile&,void*p,long n){assert(p==0&&n==-1);++file_reads;text="settings";}
@@ -53,7 +53,8 @@ namespace NUISystem{class CIME{public:static CIME&Get(){static CIME x;return x;}
 enum ESurfaceMultisampleType{SURFACE_MULTISAMPLE_NONE=0,SURFACE_MULTISAMPLE_4=4,SURFACE_MULTISAMPLE_9=9};
 class CInputManagerInit{public:bool UseJoystick,UseKeyboard,UseMouse;CInputManagerInit():UseJoystick(false),UseKeyboard(false),UseMouse(false){}};
 class CDisplayManagerInit{public:long Depth,Width,Height,RefreshRate,PushBufferSize,KickOffSize;unsigned char ZBufferDepth,NoBackBuffers;bool PresentImmediate,UseRenderManager;CWideString ShaderResourcePath;ESurfaceMultisampleType MultisampleType;unsigned long RenderManagerInitFlags;CDisplayManagerInit():Depth(0),Width(0),Height(0),RefreshRate(0),PushBufferSize(0),KickOffSize(0),ZBufferDepth(0),NoBackBuffers(0),PresentImmediate(false),UseRenderManager(false),MultisampleType(SURFACE_MULTISAMPLE_NONE),RenderManagerInitFlags(0){}};
-class CSystemManagerInit{public:HINSTANCE__*InstanceHandle;char*CommandLine;int WindowsShow;CWideString AppName,TempPath;bool ExclusiveMode,PreferPrimaryDisplayDevice,WaitWhileInactive,SkipConfigDetection;unsigned long Flags;CCharString StreamingFontBankHandle;unsigned int Body_38[8];CInputManagerInit InputManagerInit;CDisplayManagerInit DisplayManagerInit;bool(*IsErrorFailureFunc)(ESystemCode);bool(*IMEMessageFunc)(HWND,unsigned int,unsigned int,long,long&);bool(*MessageFilter)(tagMSG*);CSystemManagerInit():InstanceHandle(0),CommandLine(0),WindowsShow(0),ExclusiveMode(false),PreferPrimaryDisplayDevice(false),WaitWhileInactive(false),SkipConfigDetection(false),Flags(0),IsErrorFailureFunc(0),IMEMessageFunc(0),MessageFilter(0){memset(Body_38,0,sizeof(Body_38));}};
+struct CSoundManagerInit{int MaxEmitters,Setting04;float Setting08,Setting0C,Scale;unsigned int ChannelMask;int Setting18;unsigned int ResourceMemory;};
+class CSystemManagerInit{public:HINSTANCE__*InstanceHandle;char*CommandLine;int WindowsShow;CWideString AppName,TempPath;bool ExclusiveMode,PreferPrimaryDisplayDevice,WaitWhileInactive,SkipConfigDetection;unsigned long Flags;CCharString StreamingFontBankHandle;CSoundManagerInit SoundManagerInit;CInputManagerInit InputManagerInit;CDisplayManagerInit DisplayManagerInit;bool(*IsErrorFailureFunc)(ESystemCode);bool(*IMEMessageFunc)(HWND,unsigned int,unsigned int,long,long&);bool(*MessageFilter)(tagMSG*);CSystemManagerInit():InstanceHandle(0),CommandLine(0),WindowsShow(0),ExclusiveMode(false),PreferPrimaryDisplayDevice(false),WaitWhileInactive(false),SkipConfigDetection(false),Flags(0),IsErrorFailureFunc(0),IMEMessageFunc(0),MessageFilter(0){memset(&SoundManagerInit,0,sizeof(SoundManagerInit));}};
 static CSystemManagerInit captured;
 class CSystemManager{public:HWND GetApplicationWinHandle()const{return (HWND)8;}ESystemCode Initialise(const CSystemManagerInit*s){captured=*s;++initialise_count;return (ESystemCode)system_code;}};
 CSystemManager*GFGetSystemManager(){static CSystemManager x;return &x;}
@@ -78,15 +79,15 @@ long __fastcall GFMain(HINSTANCE__*instance_handle,char*command_line,int show)
  CAFile::SetErrorCallback(DoDirtyDisc);CThreadedFileManager::SetErrorCallback(DoDirtyDisc);
  CAFile::SetHardDiskErrorCallback(GFHardDiskError);CThreadedFileManager::SetHardDiskErrorCallback(GFHardDiskError);
  CAFile::SetCurrentPath(CAFile::GetProjectPath());
- if(StartupConsoleEnabled_0137548f)NGlobalConsole::Initialise();
+ if(g_bFrontEndFlag_137548F)InitialiseConsoleVariables();
  NProfileTimer::EndProfile(0);
  NProfileTimer::StartProfile("Setup Basic install files",0);
- CDefinitionManager::SetCreatingCompiledDefs(GAllowWADGeneration);
- CDefinitionManager::SetCreateChecksums(GAllowWADGeneration);
- SaveSoundSymbols_0138dd3b=GAllowWADGeneration;
- LoadSoundSymbols_013bc9f0=GUseCompiledSoundSymbols;
- if(GRunFromDVD&&!GPreventInstallation)CFileInstaller::Get().SetIgnoreTimeStampWhenCopying(GIgnoreTimestampOnInstall);
- if(GStartVTuneDisabled)ClearStartupLatch_009d81e0();
+ CDefinitionManager::SetCreatingCompiledDefs(GAllowDataGeneration);
+ CDefinitionManager::SetCreateChecksums(GAllowDataGeneration);
+ g_bSaveBinarySoundSymbols=GAllowDataGeneration;
+ g_bLoadBinarySoundSymbols=g_bUseCompiledSoundSymbols;
+ if(g_bRunFromDVD&&!GPreventInstallation)CFileInstaller::Get().SetIgnoreTimeStampWhenCopying(GIgnoreTimestampOnInstall);
+ if(GStartVTuneDisabled)DisableVTuneCollection();
  CBankFileAsync::SetEnableFailureHandling(GUseAsyncLoadingMemoryHandler);
  CFileInstaller::Release();
  NProfileTimer::EndProfile(0);
@@ -98,16 +99,16 @@ long __fastcall GFMain(HINSTANCE__*instance_handle,char*command_line,int show)
    CCharString script;script.LoadFromFile(file,0,-1);
    CStringParser parser(script,0,CCharString(""),0);
    CPersistContext context(parser,0,true,0,0,0);
-   context.Transfer("LeftAlignText",GLeftAlignText,false);
+   context.Transfer("LeftAlignText",g_bLeftAlignText,false);
    context.Transfer("NoHangulWordWrap",GNoHangulWordWrap,false);
    context.Transfer("DisableCapsLock",GDisableCapsLock,false);
    NUISystem::CIME::LoadIMESettings(context);
   }
  }
- CXMVPlayer::SetLeftAlignText(GLeftAlignText);CXMVPlayer::SetNoHangulWordWrap(GNoHangulWordWrap);
+ CXMVPlayer::SetLeftAlignText(g_bLeftAlignText);CXMVPlayer::SetNoHangulWordWrap(GNoHangulWordWrap);
  NProfileTimer::EndProfile(0);
  NProfileTimer::StartProfile("Setup basic retail banks",0);
- NBankFileManager::GBankFileManager.SetUsingRetailBanks(GUseRetailBanks);
+ NBankFileManager::GBankFileManager.SetUsingRetailBanks(g_bRuntimeLevelFiles);
  NBankFileManager::GBankFileManager.SetBankAlias("GBANK_MAIN_PC","GBANK_MAIN");
  NBankFileManager::GBankFileManager.SetBankAlias("GBANK_GUI_PC","GBANK_GUI");
  NBankFileManager::GBankFileManager.SetBankAlias("GBANK_FRONT_END_PC","GBANK_FRONT_END");
@@ -115,8 +116,8 @@ long __fastcall GFMain(HINSTANCE__*instance_handle,char*command_line,int show)
  NBankFileManager::GBankFileManager.SetBankAlias("PARTICLE_FRONTEND_PC","PARTICLE_FRONTEND");
  CWideString compiled_def_dir;
  using namespace NResourceDirectoryNames;
- if(GUseRetailBanks){
-  if(GSkipFrontend){
+ if(g_bRuntimeLevelFiles){
+  if(g_bStartMainGame){
    CWideString platform_dir=L"pc\\";
    NBankFileManager::GBankFileManager.OpenRetailBank(GetGraphicBankDir()+L"graphics.big",true);
    NBankFileManager::GBankFileManager.OpenRetailBank(GetGraphicBankDir()+platform_dir+L"textures.big",true);
@@ -131,7 +132,7 @@ long __fastcall GFMain(HINSTANCE__*instance_handle,char*command_line,int show)
   NBankFileManager::SetHeaderDir(L"data\\defs\\RetailHeaders\\");
   compiled_def_dir=L"Data\\CompiledDefs\\";
  }else{
-  if(GRunFromDVD)NBankFileManager::GBankFileManager.OpenIniFile(L"banks_dvd.ini");
+  if(g_bRunFromDVD)NBankFileManager::GBankFileManager.OpenIniFile(L"banks_dvd.ini");
   else NBankFileManager::GBankFileManager.OpenIniFile(L"banks.ini");
   NBankFileManager::SetHeaderDir(L"data\\defs\\DevHeaders\\");
   compiled_def_dir=L"Data\\CompiledDefs\\Development\\";
@@ -140,8 +141,8 @@ long __fastcall GFMain(HINSTANCE__*instance_handle,char*command_line,int show)
  NProfileTimer::StartProfile("Setup definition manager table",0);
  CDefinitionManager::SetCompiledDefDirectory(compiled_def_dir);
  GDefStringTable.SetTableFilename(compiled_def_dir+L"names.bin");
- CDefinitionManager::SetUsingCompiledDefs(GUseCompiledDefs);
- if(GUseCompiledDefs)GDefStringTable.LoadTable(!GAllowWADGeneration);
+ CDefinitionManager::SetUsingCompiledDefs(g_bUseCompiledDefs);
+ if(g_bUseCompiledDefs)GDefStringTable.LoadTable(!GAllowDataGeneration);
  NProfileTimer::EndProfile(0);
  HANDLE pfabledirhandle=CreateFileW(GetUserDataDir().GetAsCharArray(),1,1,0,3,FILE_FLAG_BACKUP_SEMANTICS,0);
  unsigned long errorCRC;
@@ -163,31 +164,31 @@ long __fastcall GFMain(HINSTANCE__*instance_handle,char*command_line,int show)
  }
  NProfileTimer::StartProfile("Setup library",0);
  sys_init.InstanceHandle=instance_handle;sys_init.CommandLine=command_line;sys_init.WindowsShow=show;sys_init.Flags=5;sys_init.PreferPrimaryDisplayDevice=GForcePrimary;
- if(GSoundOn==true){sys_init.Flags=21;reinterpret_cast<float*>(sys_init.Body_38)[2]=32.0f;reinterpret_cast<float*>(sys_init.Body_38)[3]=5.0f;reinterpret_cast<float*>(sys_init.Body_38)[4]=1.0f;sys_init.Body_38[5]=0x100;sys_init.Body_38[7]=0x10000;}
+ if(GSoundOn==true){sys_init.Flags=21;sys_init.SoundManagerInit.Setting08=32.0f;sys_init.SoundManagerInit.Setting0C=5.0f;sys_init.SoundManagerInit.Scale=1.0f;sys_init.SoundManagerInit.ChannelMask=0x100;sys_init.SoundManagerInit.ResourceMemory=0x10000;}
  sys_init.DisplayManagerInit.Depth=GResolutionDepth;sys_init.DisplayManagerInit.Width=GResolutionWidth;sys_init.DisplayManagerInit.Height=GResolutionHeight;
  sys_init.DisplayManagerInit.ZBufferDepth=(unsigned char)GZBufferDepth;sys_init.DisplayManagerInit.RefreshRate=GResolutionRefreshRate;
- sys_init.DisplayManagerInit.PresentImmediate=GPresentImmidiate;sys_init.DisplayManagerInit.PushBufferSize=GPushBufferSize;sys_init.DisplayManagerInit.KickOffSize=GKickoffSize;
+ sys_init.DisplayManagerInit.PresentImmediate=g_PresentationInterval;sys_init.DisplayManagerInit.PushBufferSize=GPushBufferSize;sys_init.DisplayManagerInit.KickOffSize=GKickoffSize;
  sys_init.DisplayManagerInit.ShaderResourcePath=GetShaderBankDir();
  if(GAntialiasingOn)sys_init.DisplayManagerInit.MultisampleType=GAntialiasing9x?SURFACE_MULTISAMPLE_9:SURFACE_MULTISAMPLE_4;
  sys_init.DisplayManagerInit.UseRenderManager=true;sys_init.DisplayManagerInit.NoBackBuffers=1;
- sys_init.IsErrorFailureFunc=GFIsSystemErrorFailure;sys_init.AppName=GetWindowTitle();sys_init.ExclusiveMode=GFullScreen;
+ sys_init.IsErrorFailureFunc=GFIsSystemErrorFailure;sys_init.AppName=GetWindowTitle();sys_init.ExclusiveMode=g_bFrontEndFlag_137544A;
  sys_init.TempPath=GetCacheDir();sys_init.StreamingFontBankHandle=NLocalisation::GetStreamingFontBankName();
  sys_init.WaitWhileInactive=!GAllowBackgroundProcessing;
  sys_init.InputManagerInit.UseJoystick=true;sys_init.InputManagerInit.UseKeyboard=true;sys_init.InputManagerInit.UseMouse=true;sys_init.SkipConfigDetection=GSkipConfigDetection;
- if(GOnlyBuildStaticMaps){sys_init.SkipConfigDetection=true;PrepareParticles_01375754=false;}
+ if(g_bCompileFrontendDefinitions){sys_init.SkipConfigDetection=true;g_bParticlesEnabled=false;}
  else{
   if(!EULA::DoEULAThings())exit(1);
-  if(!sys_init.SkipConfigDetection&&!GOnlyBuildStaticMaps){if(!GFConfigDetection())exit(1);GFFreeConfigDetection();}
+  if(!sys_init.SkipConfigDetection&&!g_bCompileFrontendDefinitions){if(!GFConfigDetection())exit(1);GFFreeConfigDetection();}
  }
- if(RenderConfigurationFlag1_013750a4)sys_init.DisplayManagerInit.RenderManagerInitFlags|=1;
- if(!RenderConfigurationFlag2_013750aa)sys_init.DisplayManagerInit.RenderManagerInitFlags|=2;
- if(UseFixedFontFunction_013750ab)CStreamingFontBank::SetUseFixedFunction(true);
+ if(g_FeatureA)sys_init.DisplayManagerInit.RenderManagerInitFlags|=1;
+ if(!g_FeatureF)sys_init.DisplayManagerInit.RenderManagerInitFlags|=2;
+ if(g_FeatureG)CStreamingFontBank::SetUseFixedFunction(true);
  sys_init.IMEMessageFunc=NUISystem::CIME::ProcessWinMessage;sys_init.MessageFilter=NUISystem::CIME::FilterMessage;
  ESystemCode code=GFGetSystemManager()->Initialise(&sys_init);
  NProfileTimer::EndProfile(0);
  NUISystem::CIME::Get().Initialise(GFGetSystemManager()->GetApplicationWinHandle());
  NProfileTimer::StartProfile("End basic init",0);
- if(GAllowWADGeneration)CMainGameComponent::GenerateMetFilesFromLugFiles();
+ if(GAllowDataGeneration)CMainGameComponent::GenerateMetFilesFromLugFiles();
  if(code==SYS_OK){
   if(GFInitialise()){
    if(launched_profile_name!=L"")CUserProfileManager::Get().SetProfileName(launched_profile_name,true);
@@ -203,12 +204,12 @@ long __fastcall GFMain(HINSTANCE__*instance_handle,char*command_line,int show)
 #undef exit
 static void reset(unsigned n){mode=n;setting_file=(n&1)!=0;open_file=(n&2)!=0;user_exists=(n&4)!=0;saves_exists=(n&8)!=0;eula_ok=(n%7)!=0;config_ok=(n%11)!=0;game_init=(n%5)!=0;system_code=n%13==0?4:1;error_path=n%17==0?1:n%19==0?2:n%23==0?3:0;error_crc=200;text_entry_exists=(n&1)!=0;caption_entry_exists=(n&2)!=0;
 file_reads=parser_count=persist_count=ime_loads=ime_inits=ime_shutdowns=console_count=latch_count=installer_sets=installer_releases=table_loads=close_count=message_count=config_count=free_config_count=eula_count=met_count=game_plays=game_uninits=initialise_count=handle_error_count=registry_count=registry_writes=profile_sets=0;stages.clear();banks.clear();aliases.clear();permission_paths.clear();message_text.erase();message_caption.erase();ini_file.erase();font_fixed=false;class_left=class_wrap=false;table_readonly=false;
-GAllowWADGeneration=(n&1)!=0;GUseCompiledSoundSymbols=(n&2)!=0;GRunFromDVD=(n&4)!=0;GPreventInstallation=(n&8)!=0;GIgnoreTimestampOnInstall=(n&16)!=0;GStartVTuneDisabled=(n&32)!=0;GUseAsyncLoadingMemoryHandler=(n&64)!=0;GLeftAlignText=GNoHangulWordWrap=GDisableCapsLock=false;
-GUseRetailBanks=(n&16)!=0;GSkipFrontend=(n&32)!=0;GUseCompiledDefs=(n&64)!=0;GForcePrimary=(n&128)!=0;GSoundOn=(n&256)!=0;GResolutionWidth=800;GResolutionHeight=600;GResolutionDepth=32;GZBufferDepth=24;GResolutionRefreshRate=60;GPushBufferSize=123;GKickoffSize=45;GPresentImmidiate=(n&1)!=0;GAntialiasingOn=(n&2)!=0;GAntialiasing9x=(n&4)!=0;GFullScreen=(n&8)!=0;GAllowBackgroundProcessing=(n&16)!=0;GSkipConfigDetection=(n&32)!=0;GOnlyBuildStaticMaps=(n&64)!=0;StartupConsoleEnabled_0137548f=(n&128)!=0;PrepareParticles_01375754=true;RenderConfigurationFlag1_013750a4=(n&256)!=0;RenderConfigurationFlag2_013750aa=(n&512)!=0;UseFixedFontFunction_013750ab=(n&1024)!=0;SaveSoundSymbols_0138dd3b=false;LoadSoundSymbols_013bc9f0=false;}
+GAllowDataGeneration=(n&1)!=0;g_bUseCompiledSoundSymbols=(n&2)!=0;g_bRunFromDVD=(n&4)!=0;GPreventInstallation=(n&8)!=0;GIgnoreTimestampOnInstall=(n&16)!=0;GStartVTuneDisabled=(n&32)!=0;GUseAsyncLoadingMemoryHandler=(n&64)!=0;g_bLeftAlignText=GNoHangulWordWrap=GDisableCapsLock=false;
+g_bRuntimeLevelFiles=(n&16)!=0;g_bStartMainGame=(n&32)!=0;g_bUseCompiledDefs=(n&64)!=0;GForcePrimary=(n&128)!=0;GSoundOn=(n&256)!=0;GResolutionWidth=800;GResolutionHeight=600;GResolutionDepth=32;GZBufferDepth=24;GResolutionRefreshRate=60;GPushBufferSize=123;GKickoffSize=45;g_PresentationInterval=(n&1)!=0;GAntialiasingOn=(n&2)!=0;GAntialiasing9x=(n&4)!=0;g_bFrontEndFlag_137544A=(n&8)!=0;GAllowBackgroundProcessing=(n&16)!=0;GSkipConfigDetection=(n&32)!=0;g_bCompileFrontendDefinitions=(n&64)!=0;g_bFrontEndFlag_137548F=(n&128)!=0;g_bParticlesEnabled=true;g_FeatureA=(n&256)!=0;g_FeatureF=(n&512)!=0;g_FeatureG=(n&1024)!=0;g_bSaveBinarySoundSymbols=false;g_bLoadBinarySoundSymbols=false;}
 int main(){for(unsigned n=0;n<2048;++n){reset(n);HINSTANCE__ instance;char cmd[]="-test";long result=-1;bool exited=false;try{result=GFMain(&instance,cmd,3);}catch(const ExitResult&e){assert(e.code==1);exited=true;}
-assert(CAFile::error==DoDirtyDisc&&CThreadedFileManager::error==DoDirtyDisc&&CAFile::hard==GFHardDiskError&&CThreadedFileManager::hard==GFHardDiskError);assert(console_count==(unsigned)StartupConsoleEnabled_0137548f);assert(latch_count==(unsigned)GStartVTuneDisabled);assert(installer_sets==(unsigned)(GRunFromDVD&&!GPreventInstallation)&&installer_releases==1);assert(async_failure==GUseAsyncLoadingMemoryHandler);assert(CDefinitionManager::create==GAllowWADGeneration&&CDefinitionManager::checks==GAllowWADGeneration);assert(SaveSoundSymbols_0138dd3b==GAllowWADGeneration&&LoadSoundSymbols_013bc9f0==GUseCompiledSoundSymbols);bool loaded=setting_file&&open_file;assert(file_reads==(unsigned)loaded&&parser_count==file_reads&&persist_count==file_reads&&ime_loads==file_reads);assert(class_left==(loaded&&(n&1))&&class_wrap==(loaded&&(n&2)));assert(aliases.size()==5);assert(aliases[0]=="GBANK_MAIN_PC=GBANK_MAIN"&&aliases[1]=="GBANK_GUI_PC=GBANK_GUI"&&aliases[2]=="GBANK_FRONT_END_PC=GBANK_FRONT_END"&&aliases[3]=="PARTICLE_MAIN_PC=PARTICLE_MAIN"&&aliases[4]=="PARTICLE_FRONTEND_PC=PARTICLE_FRONTEND");assert(alias_retail==GUseRetailBanks);
-if(GUseRetailBanks){assert(banks.size()==(GSkipFrontend?9:2));unsigned k=0;if(GSkipFrontend){assert(banks[k].path==L"graphics/graphics.big"&&banks[k++].resident);assert(banks[k].path==L"graphics/pc\\textures.big"&&banks[k++].resident);assert(banks[k].path==L"dialogue/dialogue.big"&&!banks[k++].resident);assert(banks[k].path==L"hdmisc/pc\\effects.big"&&!banks[k++].resident);assert(banks[k].path==L"dialogue/text.big"&&!banks[k++].resident);assert(banks[k].path==L"misc/temp.big"&&!banks[k++].resident);assert(banks[k].path==L"shader/pc\\shaders.big"&&!banks[k++].resident);}assert(banks[k].path==L"fonts/fonts.big"&&banks[k++].resident);assert(banks[k].path==L"dialogue/text.big"&&!banks[k].resident);assert(header_dir==L"data\\defs\\RetailHeaders\\"&&compiled_directory==L"Data\\CompiledDefs\\");}else{assert(banks.empty());assert(ini_file==(GRunFromDVD?L"banks_dvd.ini":L"banks.ini"));assert(header_dir==L"data\\defs\\DevHeaders\\"&&compiled_directory==L"Data\\CompiledDefs\\Development\\");}assert(table_filename==compiled_directory+L"names.bin");assert(table_loads==(unsigned)GUseCompiledDefs);if(GUseCompiledDefs)assert(table_readonly==!GAllowWADGeneration);
+assert(CAFile::error==DoDirtyDisc&&CThreadedFileManager::error==DoDirtyDisc&&CAFile::hard==GFHardDiskError&&CThreadedFileManager::hard==GFHardDiskError);assert(console_count==(unsigned)g_bFrontEndFlag_137548F);assert(latch_count==(unsigned)GStartVTuneDisabled);assert(installer_sets==(unsigned)(g_bRunFromDVD&&!GPreventInstallation)&&installer_releases==1);assert(async_failure==GUseAsyncLoadingMemoryHandler);assert(CDefinitionManager::create==GAllowDataGeneration&&CDefinitionManager::checks==GAllowDataGeneration);assert(g_bSaveBinarySoundSymbols==GAllowDataGeneration&&g_bLoadBinarySoundSymbols==g_bUseCompiledSoundSymbols);bool loaded=setting_file&&open_file;assert(file_reads==(unsigned)loaded&&parser_count==file_reads&&persist_count==file_reads&&ime_loads==file_reads);assert(class_left==(loaded&&(n&1))&&class_wrap==(loaded&&(n&2)));assert(aliases.size()==5);assert(aliases[0]=="GBANK_MAIN_PC=GBANK_MAIN"&&aliases[1]=="GBANK_GUI_PC=GBANK_GUI"&&aliases[2]=="GBANK_FRONT_END_PC=GBANK_FRONT_END"&&aliases[3]=="PARTICLE_MAIN_PC=PARTICLE_MAIN"&&aliases[4]=="PARTICLE_FRONTEND_PC=PARTICLE_FRONTEND");assert(alias_retail==g_bRuntimeLevelFiles);
+if(g_bRuntimeLevelFiles){assert(banks.size()==(g_bStartMainGame?9:2));unsigned k=0;if(g_bStartMainGame){assert(banks[k].path==L"graphics/graphics.big"&&banks[k++].resident);assert(banks[k].path==L"graphics/pc\\textures.big"&&banks[k++].resident);assert(banks[k].path==L"dialogue/dialogue.big"&&!banks[k++].resident);assert(banks[k].path==L"hdmisc/pc\\effects.big"&&!banks[k++].resident);assert(banks[k].path==L"dialogue/text.big"&&!banks[k++].resident);assert(banks[k].path==L"misc/temp.big"&&!banks[k++].resident);assert(banks[k].path==L"shader/pc\\shaders.big"&&!banks[k++].resident);}assert(banks[k].path==L"fonts/fonts.big"&&banks[k++].resident);assert(banks[k].path==L"dialogue/text.big"&&!banks[k].resident);assert(header_dir==L"data\\defs\\RetailHeaders\\"&&compiled_directory==L"Data\\CompiledDefs\\");}else{assert(banks.empty());assert(ini_file==(g_bRunFromDVD?L"banks_dvd.ini":L"banks.ini"));assert(header_dir==L"data\\defs\\DevHeaders\\"&&compiled_directory==L"Data\\CompiledDefs\\Development\\");}assert(table_filename==compiled_directory+L"names.bin");assert(table_loads==(unsigned)g_bUseCompiledDefs);if(g_bUseCompiledDefs)assert(table_readonly==!GAllowDataGeneration);
 unsigned last_path=user_exists?(saves_exists?2:1):3;bool permission_error=last_path==error_path;assert(permission_paths.size()==(user_exists&&saves_exists?2:1));assert(close_count==(unsigned)user_exists+(unsigned)(user_exists&&saves_exists));if(permission_error){assert(!exited&&result==1&&message_count==1&&initialise_count==0&&registry_count==0);assert(message_text==(text_entry_exists?L"error":L"")&&message_caption==(caption_entry_exists?L"caption":L""));continue;}
-assert(message_count==0);bool expected_exit=!GOnlyBuildStaticMaps&&(!eula_ok||(!GSkipConfigDetection&&!config_ok));assert(exited==expected_exit);assert(eula_count==(unsigned)!GOnlyBuildStaticMaps);assert(config_count==(unsigned)(!GOnlyBuildStaticMaps&&eula_ok&&!GSkipConfigDetection));assert(free_config_count==(unsigned)(config_count&&config_ok));assert(PrepareParticles_01375754==!GOnlyBuildStaticMaps);if(exited){assert(initialise_count==0&&registry_count==0);continue;}
-assert(result==0&&initialise_count==1&&ime_inits==1&&registry_count==1&&registry_writes==1&&profile_sets==0);assert(captured.InstanceHandle==&instance&&captured.CommandLine==cmd&&captured.WindowsShow==3);assert(captured.Flags==(GSoundOn?21:5)&&captured.PreferPrimaryDisplayDevice==GForcePrimary);if(GSoundOn){assert(reinterpret_cast<float*>(captured.Body_38)[2]==32.0f&&reinterpret_cast<float*>(captured.Body_38)[3]==5.0f&&reinterpret_cast<float*>(captured.Body_38)[4]==1.0f);assert(captured.Body_38[5]==256&&captured.Body_38[7]==65536);}assert(captured.DisplayManagerInit.Depth==32&&captured.DisplayManagerInit.Width==800&&captured.DisplayManagerInit.Height==600&&captured.DisplayManagerInit.ZBufferDepth==24&&captured.DisplayManagerInit.RefreshRate==60);assert(captured.DisplayManagerInit.MultisampleType==(GAntialiasingOn?(GAntialiasing9x?SURFACE_MULTISAMPLE_9:SURFACE_MULTISAMPLE_4):SURFACE_MULTISAMPLE_NONE));assert(captured.DisplayManagerInit.UseRenderManager&&captured.DisplayManagerInit.NoBackBuffers==1);assert(captured.DisplayManagerInit.RenderManagerInitFlags==((RenderConfigurationFlag1_013750a4?1u:0u)|(!RenderConfigurationFlag2_013750aa?2u:0u)));assert(captured.DisplayManagerInit.ShaderResourcePath.text==L"shader/"&&captured.TempPath.text==L"cache/"&&captured.AppName.text==L"Fable test");assert(captured.StreamingFontBankHandle.text=="FONT_BANK");assert(captured.InputManagerInit.UseJoystick&&captured.InputManagerInit.UseKeyboard&&captured.InputManagerInit.UseMouse);assert(captured.SkipConfigDetection==(GSkipConfigDetection||GOnlyBuildStaticMaps));assert(captured.WaitWhileInactive==!GAllowBackgroundProcessing&&captured.ExclusiveMode==GFullScreen);assert(captured.IMEMessageFunc==NUISystem::CIME::ProcessWinMessage&&captured.MessageFilter==NUISystem::CIME::FilterMessage&&captured.IsErrorFailureFunc==GFIsSystemErrorFailure);assert(font_fixed==UseFixedFontFunction_013750ab);assert(met_count==(unsigned)GAllowWADGeneration);assert(game_plays==(unsigned)(system_code==1&&game_init)&&game_uninits==game_plays&&handle_error_count==(unsigned)(system_code!=1));assert(stages.size()==7&&stages.front()=="Parse Command Line"&&stages.back()=="End basic init");}
+assert(message_count==0);bool expected_exit=!g_bCompileFrontendDefinitions&&(!eula_ok||(!GSkipConfigDetection&&!config_ok));assert(exited==expected_exit);assert(eula_count==(unsigned)!g_bCompileFrontendDefinitions);assert(config_count==(unsigned)(!g_bCompileFrontendDefinitions&&eula_ok&&!GSkipConfigDetection));assert(free_config_count==(unsigned)(config_count&&config_ok));assert(g_bParticlesEnabled==!g_bCompileFrontendDefinitions);if(exited){assert(initialise_count==0&&registry_count==0);continue;}
+assert(result==0&&initialise_count==1&&ime_inits==1&&registry_count==1&&registry_writes==1&&profile_sets==0);assert(captured.InstanceHandle==&instance&&captured.CommandLine==cmd&&captured.WindowsShow==3);assert(captured.Flags==(GSoundOn?21:5)&&captured.PreferPrimaryDisplayDevice==GForcePrimary);if(GSoundOn){assert(captured.SoundManagerInit.Setting08==32.0f&&captured.SoundManagerInit.Setting0C==5.0f&&captured.SoundManagerInit.Scale==1.0f);assert(captured.SoundManagerInit.ChannelMask==256&&captured.SoundManagerInit.ResourceMemory==65536);}assert(captured.DisplayManagerInit.Depth==32&&captured.DisplayManagerInit.Width==800&&captured.DisplayManagerInit.Height==600&&captured.DisplayManagerInit.ZBufferDepth==24&&captured.DisplayManagerInit.RefreshRate==60);assert(captured.DisplayManagerInit.MultisampleType==(GAntialiasingOn?(GAntialiasing9x?SURFACE_MULTISAMPLE_9:SURFACE_MULTISAMPLE_4):SURFACE_MULTISAMPLE_NONE));assert(captured.DisplayManagerInit.UseRenderManager&&captured.DisplayManagerInit.NoBackBuffers==1);assert(captured.DisplayManagerInit.RenderManagerInitFlags==((g_FeatureA?1u:0u)|(!g_FeatureF?2u:0u)));assert(captured.DisplayManagerInit.ShaderResourcePath.text==L"shader/"&&captured.TempPath.text==L"cache/"&&captured.AppName.text==L"Fable test");assert(captured.StreamingFontBankHandle.text=="FONT_BANK");assert(captured.InputManagerInit.UseJoystick&&captured.InputManagerInit.UseKeyboard&&captured.InputManagerInit.UseMouse);assert(captured.SkipConfigDetection==(GSkipConfigDetection||g_bCompileFrontendDefinitions));assert(captured.WaitWhileInactive==!GAllowBackgroundProcessing&&captured.ExclusiveMode==g_bFrontEndFlag_137544A);assert(captured.IMEMessageFunc==NUISystem::CIME::ProcessWinMessage&&captured.MessageFilter==NUISystem::CIME::FilterMessage&&captured.IsErrorFailureFunc==GFIsSystemErrorFailure);assert(font_fixed==g_FeatureG);assert(met_count==(unsigned)GAllowDataGeneration);assert(game_plays==(unsigned)(system_code==1&&game_init)&&game_uninits==game_plays&&handle_error_count==(unsigned)(system_code!=1));assert(stages.size()==7&&stages.front()=="Parse Command Line"&&stages.back()=="End basic init");}
 puts("00402510_TEST PASS");return 0;}
