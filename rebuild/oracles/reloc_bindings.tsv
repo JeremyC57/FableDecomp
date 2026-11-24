@@ -2183,8 +2183,6 @@ _GetActionRegistrar	006f90b0	00692380
 ?SetPendingMode@CGameCameraManager@@QAEXUCCountedCameraMode@@@Z	00697e20	00699970
 ?g_DefaultCameraModeDef@@3UCCameraModeDefPointer@@A	013ba8d8	00699970
 ?g_RotateAroundVTable@NCameraModes@@3PAPAXA	0125c674	00699970
-?PopulateListFromData@CGameCameraManager@@QAEXXZ	0069a1a0	0069a920
-?PopulateSwitchList@CGameCameraManager@@QAEXXZ	0069a010	0069a920
 __isnan	00bfec26	0069ab80
 ?Erase@CRetailTree_erase0069d3d0@@QAEXPAUnode@1@@Z	0069d3d0	0069da60
 ??_7CStringAndCage@NCameraModes@@6B@	0125c404	0069de30
@@ -3684,7 +3682,6 @@ _kName	012786ac	008b34d0
 ??_7CCreatureAction_WaspQueenDiveAttack@@6B@	01281304	008c5ed0
 ?base@Fable_TrollInit_008c5fd0@@QAIXXZ	00857520	008c5fd0
 ?DoBase@CCreatureAction_TrollAngryGroundPound_Methods@@QAEXXZ	008c61c0	008c63a0
-?WhackGround@CCreatureAction_TrollWhackGroundBase@@QAEXXZ	008c61c0	008c63c0
 ??_7CCreatureAction_TrollThrowProjectile@@6B@	01281694	008c7390
 ?BaseOnAnimationLoaded@CCreatureAction_Base@@QAEXXZ	00859ef0	008c7f40
 ??_7CCreatureAction_BanditKingThrowWeapons@@6B@	0128193c	008c7fd0
@@ -5174,7 +5171,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??1SParticleList@NParticleEngine@@QAE@XZ	00af6710	00af5900
 ??_7CParticleSystem@NParticleEngine@@6B@	0129f4e8	00af5900
 ?DeleteAllParticles@CParticleSystem@NParticleEngine@@QAEXXZ	00af56e0	00af5900
-?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ	00af5770	00af59a0
 ?_Destroy_range@NParticleEngine@@YIXPAUCComponentEntry@1@0ABUSScalarTag@1@@Z	00af6f90	00af5900
 ??0CParticleSystem@NParticleEngine@@QAE@XZ	00af4e10	00af5960
 ??_7CComponentInstance@NParticleEngine@@6B@	0129f478	00af6550
@@ -15366,7 +15362,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?__find_if@@YIPAPAVCThing@@PAPAV1@0VCIsCreatureIsIntersecting@@ABUrandom_access_iterator_tag@@@Z	00724a90	00724240
 ?remove_copy_if@@YIPAPAVCThing@@PAPAV1@00VCIsCreatureIsIntersecting@@@Z	00724a50	00724240
 ?OnSerialise@CTCPhysicsBase@@UAEXAAVCPersistContext@@_N@Z	006b08f0	00724290
-??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z	00723fd0	004d297b
 ?ResetPosition@CTCPhysicsBase_Calls@@QAEXABVC3DVector@@@Z	006b01d0	00726700
 ?GetSubDef_007086f0@CDefClassBase@@QAE_NAAV?$CDefPointer@VCTextureReplacementDef@@@@@Z	007086f0	007275c0
 ?_M_insert_overflow@?$vector@VCMeshInfo@NGraphicAppearance@@@@QAEXPAVCMeshInfo@NGraphicAppearance@@ABV23@ABU__true_type@@K_N@Z	007091a0	00727c20

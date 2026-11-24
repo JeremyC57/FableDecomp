@@ -1,0 +1,7 @@
+address	batch	change	proof
+00af59a0	b1	?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ -> ?DeleteAllDecals@CParticleSystem@NParticleEngine@@QAEXXZ	objsec ALL_EQ under the rename, symbol sets equal, own graded symbol unchanged, grade unchanged (RELOCATION_MATCH PASS)
+0069a920	b1	?PopulateSwitchList@CGameCameraManager@@QAEXXZ -> ?InitManualCameraList@CGameCameraManager@@AAEXXZ	objsec ALL_EQ under the rename, symbol sets equal, own graded symbol unchanged, grade unchanged (RELOCATION_MATCH PASS)
+004d297b	b1	??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z -> ??0CTCPhysicsStandard@@QAE@AAVCThing@@@Z	objsec ALL_EQ under the rename, symbol sets equal, own graded symbol unchanged, grade unchanged (RELOCATION_MATCH PASS)
+008c63c0	b1	?WhackGround@CCreatureAction_TrollWhackGroundBase@@QAEXXZ -> ?WhackGround@CCreatureAction_TrollWhackGroundBase@@AAEXXZ	objsec ALL_EQ under the rename, symbol sets equal, own graded symbol unchanged, grade unchanged (RELOCATION_MATCH PASS)
+008c6430	b1	?WhackGround@CCreatureAction_TrollWhackGroundBase@@QAEXXZ -> ?WhackGround@CCreatureAction_TrollWhackGroundBase@@AAEXXZ	objsec ALL_EQ under the rename, symbol sets equal, own graded symbol unchanged, grade unchanged (RELOCATION_MATCH PASS)
+008800c0	b2	?Clone@CCreatureAction_StabbedToDeath@@QAEPAVCCreatureActionBase@@XZ -> ?Clone@CCreatureAction_StabbedToDeath@@UBEPAVCCreatureActionBase@@XZ	cloneproof OK (NF320 Q1 / NF323 Q6), RELOCATION_MATCH PASS head and new, graded symbol = PDB

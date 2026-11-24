@@ -1,0 +1,192 @@
+00bad670 TAGS access1,nf317,nf322,nF325
+    nf322 00bad670 skipped-port ?Update@CEngineInternalPrimitiveSprite@@UAEXABVCEnginePrimitive@@K@Z base CEngineInternalPrimitiveBase model slot order differs from retail at slots 7/8 (SetChildPrimitive overloads; evidence/probe_particletrail.txt): base fix fi
+    nF325 00bad670 skipped-port ?Update@CEngineInternalPrimitiveSprite@@UAEXABVCEnginePrimitive@@K@Z NF325 order 9: the base defect NF322 named is fixed here (CEngineInternalPrimitiveBase SetChildPrimitive 7/8 under FABLE_RETAIL_CEN
+008f1720 TAGS access1
+006a4e90 TAGS nf290,access1
+    nf290 NF290 entry 6 (rejected)
+00a24a80 TAGS nf314,access1
+    nf314 the self 0x00A24A80 defines the QAE stand-in (plain Leaf); its const fix needs mutable / const_cast (it assigns MeshData and passes this to a non-const C3DMeshLODInfo ctor): T3 (NF309 Q3 / NF305 Q1). A binder-only const respell of 0x00A25530 would leave unreso
+00a25530 TAGS access1,access2,nf317,nf321
+    nf317 ?GetMeshStats@C3DMeshInfo@@QAE?AV?$CCountedPointer@$$CBVC3DMeshStats@@@@XZ: the const self forces const on BeginLoadingStats (0x00A24A80), whose self row defines the QAE stand-in and is held (nf314): the binder would go unresolved where
+    nf321 00a25530 skipped-held ?GetMeshStats@C3DMeshInfo@@QBE?AV?$CCountedPointer@$$CBVC3DMeshStats@@@@XZ callees BeginLoadingStats 0x00A24A80 (nf314) and 0x009E9F40 (nf308) are T3_PORT_QUEUE targets
+009d54e0 TAGS nf309,access1
+    nf309 binder 0x00a262b0: binder 0x00A262B0 respelled IsFinished() const was RELOCATION_MATCH / ALL_EQ, but the self row 0x009D54E0 DEFINES ?IsFinished@CBankFileAsyncData@@QAE_NXZ (non-const; HEAD object) and is the only definer: the respell would leave unresolved a 
+00439ab0 TAGS access1,access2,nf317
+    nf317 ?GetButtonAlpha@CPlayerGui@@QAEMJ_N00@Z: held by ruling Q1 (NF309 Q3): const self: STLport's const operator[] (and const begin()) added to the local inline container model (no call emitted: the unreferenced pick-any helper COMDATs 
+00581cfd TAGS access1,access2,nf317
+    nf317 ?GetContextSensitiveItemGraphicIndex@CTCInventory@@QAEJJ@Z: held by ruling Q1 (NF309 Q3): const self: STLport's const operator[] (and const begin()) added to the local inline container model (no call emitted: the unreferenced pick-any helper COMDATs 
+00581d4e TAGS access1,access2,nf317
+    nf317 ?GetContextSensitiveItemButtonIndex@CTCInventory@@QAEJJ@Z: held by ruling Q1 (NF309 Q3): const self: STLport's const operator[] (and const begin()) added to the local inline container model (no call emitted: the unreferenced pick-any helper COMDATs 
+00581fa4 TAGS access1,access2,nf317
+    nf317 ?GetQuickAccessItemGraphicIndex@CTCInventory@@QAEJJ@Z: held by ruling Q1 (NF309 Q3): const self: STLport's const operator[] (and const begin()) added to the local inline container model (no call emitted: the unreferenced pick-any helper COMDATs 
+005fc840 TAGS nf288,access1
+    nf288 NF288 entry 23 (rejected)
+005c30d3 TAGS access1,access2,nf317,nf321
+    nf317 ?RefreshActiveWeaponData@CTCInventoryWeapons@@QAEXXZ: the const self forces const on callee 0x005BF414, bound as the stand-in ?RefreshItemData@CTCInventoryBase_Retail@@ (PDB: UpdateItemStatsForThing): another wrong
+    nf321 005c30d3 skipped-port ?RefreshActiveWeaponData@CTCInventoryWeapons@@QBEXXZ const self (PDB QBE) calls 0x005BF414, whose PDB spelling ?UpdateItemStatsForThing@CTCInventoryBase@NInventory@@IAEXABVCThing@@@Z is non-const: a c
+00772720 TAGS access1,access2,nf317,nf321
+    nf317 ?GetMaxStock@CTCShop@@QAEJJ@Z: the const self forces const on the same-TU noinline stand-in map find (0x00777170, CStockMap): NF309 Q3; not compiled
+    nf321 00772720 skipped-port ?GetMaxStock@CTCShop@@QBEJJ@Z const self forces const on the same-TU noinline stand-in map find 0x00777170 (CStockMap): NF309 Q3; not compiled
+00772790 TAGS access1,access2,nf317,nf321
+    nf317 ?GetDaysTillRestock@CTCShop@@QAEJJ@Z: the const self forces const on the same-TU noinline stand-in map find (0x00777170, CRestockMap): NF309 Q3; not compiled
+    nf321 00772790 skipped-port ?GetDaysTillRestock@CTCShop@@QBEJJ@Z as 0x00772720 (CRestockMap stand-in, same-TU find 0x00777170): NF309 Q3; not compiled
+004c72d0 TAGS access1,access2,nf317,nf321
+    nf317 ?SaveSerialiseCreatableTCs@CThing@@QAEXAAVCCharString@@@Z: the const body writes AddingTCsPermitted (a bitfield member): needs mutable (T3); not compiled
+    nf321 004c72d0 skipped-port ?SaveSerialiseCreatableTCs@CThing@@IBEXAAVCCharString@@@Z const self (PDB IBE) writes the bitfield AddingTCsPermitted, which engine/CThing.h declares non-mutable: `mutable` edits an existing header li
+006ac390 TAGS nf290,access1
+    nf290 NF290 entry 7 (dropped)
+00406f70 TAGS access1,access2,nf317,nf321
+    nf317 ?GetAutoSavePathName@CUserProfileManager@@QAE?AVCWideString@@XZ: the const self passes &field8 to the made-up extern "C" CreateSaveGame stand-in (CWideString*): a cast or a stand-in parameter change (nf105 debt); its test als
+    nf321 00406f70 skipped-port ?GetAutoSavePathName@CUserProfileManager@@QBE?AVCWideString@@XZ const self (PDB QBE) passes &field8 to the made-up extern "C" CreateSaveGame stand-in; the callee 0x00406E30 is a T3_PORT_QUEUE column-2
+004b1110 TAGS access2,nf317
+    nf317 ?IsBetweenQuestStartAndFinishScreensIgnoringVignettes@CQuestManager@@QAE_NXZ: held by ruling Q1 (NF309 Q3): const self: STLport's const operator[] (and const begin()) added to the local inline container model (no call emitted: the unreferenced pick-any helper 
+00581d8e TAGS access2,nf317
+    nf317 ?IsContextSensitiveOpinionExpressionAvailable@CTCInventory@@QAE_NXZ: held by ruling Q1 (NF309 Q3): const self: STLport's const operator[] (and const begin()) added to the local inline container model (no call emitted: the unreferenced pick-any helper COMDATs 
+005c99be TAGS access2,nf317,nf321
+    nf317 ?GetTimeWieldedWeapon@CTCInventoryWeapons@@QAEJJ@Z: the const self forces const on GetAllInventoryItemsOfType, bound on the stand-in class CTCInventoryBase_Retail with CItemVector* (PDB IBE on NInventory::CTCInve
+    nf321 005c99be skipped-port ?GetTimeWieldedWeapon@CTCInventoryWeapons@@QBEJJ@Z const self forces const onto GetAllInventoryItemsOfType on the stand-in CTCInventoryBase_Retail (PDB NInventory::CTCInventoryBase, vector&); its vect
+00663510 TAGS access2,nf317
+    nf317 ?InitialiseMovementSpeed@CThingCreatureBase@@QAEXAAMABVCCharString@@@Z: the const self forces const on GetAnimFromName, bound QAE with a CAnimationEntry* return (PDB QBE returns const CAnimationEntry&): another wrong form (NF305 Q1)
+006a11b0 TAGS access2,nf317,nf321
+    nf317 ?HasCarrySlot@CTCCarrying@@QAE_NJ@Z: the const self needs a const Find on the stand-in map CCarrySlotMap, whose out-of-line LowerBound (0x006A2A10) would then bind a const stand-in spelling: anothe
+    nf321 006a11b0 skipped-port ?HasCarrySlot@CTCCarrying@@QBE_NJ@Z const self needs a const Find on the stand-in map CCarrySlotMap (out-of-line LowerBound 0x006A2A10 would bind a const stand-in spelling, NF305 Q1); engine/CTCCarryi
+006a9640 TAGS nf311,access2
+    nf311 binder 0x0066fc90 / 0x00857b70: binders bind CThing / Creature stand-in classes (ports); 0x007A7000 already binds the PDB form; the target is now an NF309 witness
+0070e680 TAGS access2,nf317,nf321
+    nf317 ?GetPMeshAnims@CAnimateThing@@QAEXPAPAVC3DAnimationBlendState@@0@Z: the const self forces const on the made-up BaseGetPMeshAnims of a stand-in base struct (0x0070E520): another wrong form (NF305 Q1); not compiled
+    nf321 0070e680 skipped-port ?GetPMeshAnims@CAnimateThing@@QBEXPAPAVC3DAnimationBlendState@@0@Z const self forces const on the made-up BaseGetPMeshAnims of a stand-in base struct (0x0070E520); engine/CAnimateThing.h does not decl
+00828590 TAGS access2,nf317,nf321
+    nf317 ?GetNextRegionOnWayToRegion@CRegionConnectionGraph@@QAEJJJ@Z: the const self needs a const Find on the stand-in map CRegionNodeMap, whose out-of-line LowerBound (0x00827B60) would then bind a const stand-in spelling (NF305
+    nf321 00828590 skipped-port ?GetNextRegionOnWayToRegion@CRegionConnectionGraph@@QBEJJJ@Z no engine/CRegionConnectionGraph.h; const Find on the stand-in CRegionNodeMap (out-of-line LowerBound 0x00827B60 would bind a const stand-i
+009c32c0 TAGS access2,nf317,nf321
+    nf317 ?GetPercentComplete@CFileInstaller@@QAEMXZ: the const body passes &CriticalSection to the stand-in CCriticalSectionLock_Retail ctor (non-const pointer): mutable or a stand-in class change (T3); not compil
+    nf321 009c32c0 skipped-port ?GetPercentComplete@CFileInstaller@@QBEMXZ const self (PDB QBE) passes &CriticalSection to the lock stand-in CCriticalSectionLock_Retail (non-const pointer): mutable / const_cast on a stand-in; its lo
+009f4d40 TAGS access2,nf317
+    nf317 ?IsEventInQueue@CInputManager@@QAE_NABVCInputEvent@@@Z: held by ruling Q1 (NF309 Q3): const self: STLport's const operator[] (and const begin()) added to the local inline container model (no call emitted: the unreferenced pick-any helper COMDATs 
+004fab40 TAGS access3,nf317
+    nf317 ?Overlapping@C2DBoxI@@QBEHABV1@@Z: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00639b70 TAGS access3,nf317
+    nf317 ?IsDrawing@CTCRegionDisplay@@QBEJXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00662620 TAGS access3,nf317
+    nf317 ?IsPerformingASneakingIncompatibleAction@CThingCreatureBase@@QAEJXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+006cf900 TAGS access3,nf317
+    nf317 ?IsInLoveWithHero@CTCWife@@QAEHXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00751fc0 TAGS access3,nf317
+    nf317 ?IsWithinYZHeadRange@CTCLook@@QAEJM@Z: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00773aa0 TAGS access3,nf317
+    nf317 ?IsShopKeeperAvailable@CTCShop@@QBEJXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00789ab0 TAGS access3,nf317
+    nf317 ?IsToUseFirstPersonTargetingMode@CTCHeroRangedAttacks@@QAEEXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+007c7870 TAGS access3,nf317
+    nf317 ?IsTurncoatable@CTCTurncoat@@QAEHXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00860290 TAGS access3,nf317,nf320,nf323,nF327
+    nf323 00860290 NF323 Q3: lands as one unit with binders 0x0085FF10 / 0x00860150 (access opt-in), two table replaces after ref_scan on the MBE spelling
+    nF327 00860290 skipped-held ?Clone@CCreatureAction_GetUpFromSitting@@UBEPAVCCreatureActionBase@@XZ NF323 Q3 unit: the Clone row alone passes cloneproof (81/81, evidence/cloneproof_gc.txt), but the binders fail the ruling conditi
+008800c0 TAGS access3,nf317,nf320,nf323
+    nf320 008800c0 skipped-port ?Clone@CCreatureAction_StabbedToDeath@@QAEPAVCCreatureActionBase@@XZ clone-port; engine/<class>.h is missing or has no class model declaring Clone (evidence/abscensus.tsv: FLAT generated / NOHEADER)
+    nf323 008800c0 skipped-held Clone of CCreatureAction_StabbedToDeath: NF322 (active) is porting that class model (its entry 0x0087FE60); the Clone follows the NF322 opt-in model (cloneproof recipe ready) 
+009680d0 TAGS access3,nf317,nf320,nf323,nF327
+    nf323 009680d0 skipped-held Clone of CCreatureAction_PickUpJug: no class model; the base CCreatureAction_PickUpThingAtTable (engine/CCreatureAction_Tankard.h, no switch) has an implicit copy ctor that retail calls out of line (0x0084C9
+    nF327 009680d0 skipped-held ?Clone@CCreatureAction_PickUpJug@@UBEPAVCCreatureActionBase@@XZ NF323 Q2: the two sources hold (FableWin.pdb ??0CCreatureAction_PickUpThingAtTable@@QAE@ABV0@@Z + landed row 0x0084C9A0 defining it + re
+00a4b220 TAGS access3,nf317
+    nf317 ?CheckTermination@CASuspendableProcess@@QAEEXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00a57a40 TAGS access3,nf317
+    nf317 ?IsWithinDist@C2DLineF@@QBEHABVC2DVector@@M@Z: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00a84e40 TAGS access3,nf317,nf321
+    nf317 ?IsSwitchableOn@CNavSwitchableLeafNode@@QAE_N_K@Z: the const self needs a const Find on the stand-in map CVectorMap_00a84e40, whose out-of-line LowerBound (0x00A84E80) would then bind a const stand-in spelling (
+    nf321 00a84e40 skipped-port ?IsSwitchableOn@CNavSwitchableLeafNode@@UBE_N_K@Z const self needs a const Find on the stand-in CVectorMap_00a84e40 (out-of-line LowerBound 0x00A84E80 would bind a const stand-in spelling, NF305 Q1); 
+00bb6420 TAGS access3
+00453e16 TAGS alias1,nf318,nf321
+    nf318 ?GetCombatAbilityDataType@CCombatAbilityBlockingData@@UBE?AW4ECombatAbilityDataType@@XZ: engine/CCombatAbilityBlockingData.h defines GetCombatAbilityDataType in-class (inline body, retail branch L16): an out-of-line X::M is a redefinition (C2084); the retail 
+    nf321 00453e16 skipped-held ?GetCombatAbilityDataType@CCombatAbilityBlockingData@@UBE?AW4ECombatAbilityDataType@@XZ in-class inline: engine/CCombatAbilityBlockingData.h defines GetCombatAbilityDataType in-class (L16); as 0x00405
+004e069f TAGS alias1,nf318,nf322,nF325
+    nf322 004e069f skipped-port ?Copy@CShopItemDef@@UAEXPBVCDefClassBase@@@Z engine/CShopItemDef.h already has the polymorphic model (FABLE_RETAIL_CSHOPITEMDEF); the row is a body port (NF318: made-up alias accessors, local CShopItem mod
+    nF325 004e069f skipped-port ?Copy@CShopItemDef@@UAEXPBVCDefClassBase@@@Z NF325 order 9 (carry-over, untouched): a body / callee / other-class port that NF322 rulings Q1-Q3 do not cover; NF322 reason: engine/CShopItemDef.h alread
+005dbda0 TAGS alias1,nf318,nf323
+    nf318 ?TransferBinaryIn@CAnimComponentCombatFlourishTargetOffset@@UAEXAAVCMemoryDataInputStream@@@Z: Q5: the port is byte-exact for the function (vland RELOCATION_MATCH PASS, HEAD and new) but the HEAD object also emits the alias class's made-up inline accessor ?Tar
+    nf323 005dbda0 skipped-held NF318 Q5 ruling (the move drops the alias accessor COMDAT); unchanged 
+0065edac TAGS alias1,nf318,nf322,nF325
+    nf322 0065edac skipped-port ?IsTaskAvailable@CVillageTaskTorch@@UBE_NXZ body port (NF318): the alias body indexes the flat CreatureAssignedToTask array as CBaseIntelligentPointer; CVillageTaskBase's model is not part of this batch
+    nF325 0065edac skipped-port ?IsTaskAvailable@CVillageTaskTorch@@UBE_NXZ NF325 order 9 (carry-over, untouched): a body / callee / other-class port that NF322 rulings Q1-Q3 do not cover; NF322 reason: body port (NF318): the alias 
+006923a0 TAGS alias1,nf318,nf321
+    nf318 ?GetActionStartRunningTimeSeconds@CCreatureActionBase@@MBEMXZ: body port: the alias body reaches its virtual callees through a made-up slot struct (CCreatureActionBaseVirtuals: slot 7 GetAnimID, slot 63 GetActionRunningTimeSeconds) a
+    nf321 006923a0 skipped-held ?GetActionStartRunningTimeSeconds@CCreatureActionBase@@MBEMXZ unit with stay-off targets: the callees 0x006F9720 AnimHasEvent and 0x006F9790 GetEventTimeInSeconds are nf309 T3_PORT_QUEUE column-2 line
+00692480 TAGS alias1,nf318,nf321,nF325
+    nf321 00692480 skipped-port ?UpdateActionRunningTime@CCreatureActionBase@@UAEXXZ unit: the landed binder 0x008579D0 binds the non-virtual ?UpdateActionRunningTime@CCreatureActionBase@@QAEXXZ and must move with the self (NF302 Q5
+    nF325 00692480 skipped-port ?UpdateActionRunningTime@CCreatureActionBase@@UAEXXZ NF325 order 8 (requeue, not compiled): CCreatureActionBase class model (slot 62 GetFrameUpdateTime unverified, NF321) is the CCreatureAction family
+006feca0 TAGS alias1,nf318,nf321
+    nf318 ?TransferBinaryOut@CReactionMatch_MRPyramid@@UBEXAAVCDataOutputStream@@@Z: callee respells: the body calls a made-up local CDataOutputStream::WriteFloat (engine/CDataOutputStream.h names the PDB writer differently) and the base TransferBinaryOut
+    nf321 006feca0 skipped-held ?TransferBinaryOut@CReactionMatch_MRPyramid@@UBEXAAVCDataOutputStream@@@Z callee respell onto a stay-off target: WriteFloat 0x00993EE0 is a T3_PORT_QUEUE column-2 target (per NF318 engine/CDataOutputS
+006ff040 TAGS alias1,nf318,nf321
+    nf318 ?TransferBinaryIn@CReactionMatch_SecondaryAxisMRShifted@@UAEXAAVCMemoryDataInputStream@@@Z: the script draft (class header under FABLE_RETAIL_CREACTIONMATCH_*_CLASS, the alias body unchanged) grades DIFFER(629v625) in my grade g1 (HEAD RELOCATION_MATCH): on th
+    nf321 006ff040 skipped-held ?TransferBinaryIn@CReactionMatch_SecondaryAxisMRShifted@@UAEXAAVCMemoryDataInputStream@@@Z callee 0x006FEFB0 (base TransferBinaryIn, bound as the made-up CReactionMatch_TransferBinaryIn) is the nf315 
+006ff2c0 TAGS alias1,nf318,nf321
+    nf318 ?TransferBinaryIn@CReactionMatch_SecondaryAxisCentredMRShifted@@UAEXAAVCMemoryDataInputStream@@@Z: the script draft (class header under FABLE_RETAIL_CREACTIONMATCH_*_CLASS, the alias body unchanged) grades DIFFER(629v625) in my grade g1 (HEAD RELOCATION_MATCH)
+    nf321 006ff2c0 skipped-held ?TransferBinaryIn@CReactionMatch_SecondaryAxisCentredMRShifted@@UAEXAAVCMemoryDataInputStream@@@Z as 0x006FF040: callee 0x006FEFB0 is the nf315 T3 target; DIFFER(629v625) on the real stream header (NF
+006ff810 TAGS alias1,nf318,nf321
+    nf318 ?TransferBinaryIn@CReactionMatch_MRPyramid@@UAEXAAVCMemoryDataInputStream@@@Z: the port (engine/CReactionMatch_MRPyramid.h under FABLE_RETAIL_CREACTIONMATCH_MRPYRAMID_CLASS, alias body unchanged) grades DIFFER(285v285) in vland (HEAD RELOCATION_MATC
+    nf321 006ff810 skipped-port ?TransferBinaryIn@CReactionMatch_MRPyramid@@UAEXAAVCMemoryDataInputStream@@@Z body port: on engine/CReactionMatch_MRPyramid.h the shared CMemoryDataInputStream Read expansion graded DIFFER(285v285) in
+007b5740 TAGS alias1,nf318,nf322,nF325
+    nf322 007b5740 skipped-port ?Transfer@CActivateQuestDef@@UAEXAAVCPersistContext@@@Z engine/CActivateQuestDef.h already has the polymorphic model (FABLE_RETAIL_CACTIVATEQUESTDEF); the row is a body port (NF318: local CDefString model), not a fla
+    nF325 007b5740 skipped-port ?Transfer@CActivateQuestDef@@UAEXAAVCPersistContext@@@Z NF325 order 9 (carry-over, untouched): a body / callee / other-class port that NF322 rulings Q1-Q3 do not cover; NF322 reason: engine/CActivateQ
+00842c00 TAGS alias1,nf318,nf321
+    nf318 ?PreventSneaking@CCreatureAction_PerformExpression@@UBE_NXZ: body port: the alias row is a void byte stand-in (an Assign of a name field through PExpressionDef_Object + 0x78) for the PDB member bool PreventSneaking() const; the rea
+    nf321 00842c00 skipped-held ?PreventSneaking@CCreatureAction_PerformExpression@@UBE_NXZ retail loads [this+0xA8], adds 0x78 and returns CDefString::operator!=(const char*) 0x005FA740 against a literal (the member names at those 
+00842c50 TAGS alias1,nf318,nf321
+    nf318 ?PreventSneaking@CCreatureAction_PerformExpressionExtended@@UBE_NXZ: body port: same void byte stand-in as 0x00842C00 (Assign through PExpressionDef_Object + 0x78) for the PDB member bool PreventSneaking() const
+    nf321 00842c50 skipped-held ?PreventSneaking@CCreatureAction_PerformExpressionExtended@@UBE_NXZ as 0x00842C00 (callee 0x005FA740 is a T3 target)
+00893ec0 TAGS alias1,nf318,nf321
+    nf318 ?MsgOnHeroSlept@CGameScriptInterface@@UBE_NAA_N@Z: callee respells: the body calls GetFrameForMessages_006e7510 / GetMaxWorldFrameForMessages on the alias class; engine/CGameScriptInterface.h names them GetMinWorldFrameFo
+    nf321 00893ec0 skipped-held ?MsgOnHeroSlept@CGameScriptInterface@@UBE_NAA_N@Z callee FindMostRecentMessage 0x008ABED0 is the nf311 T3_PORT_QUEUE target whose binders include this row; GetMin/MaxWorldFrameForMessages are declared
+00900e42 TAGS alias1,nf318
+    nf318 ?GetStateGroupType@CAIStateGroup_CreatureRangedCombat2@@MBE?AW4EAIStateGroupType@@XZ: engine/CAIStateGroup_CreatureRangedCombat2.h declares GetStateGroupType only under FABLE_RETAIL_CREATURE_RANGED_COMBAT2_PASS27, a pass-specific switch the brief excludes;
+00914ef0 TAGS alias1,nf318
+    nf318 ?OnActivate@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ: engine/CAIStateGroup_KidHurtSelfRunToMother.h declares OnActivate only under FABLE_RETAIL_KID_HURT_SELF_PASS23, a pass-specific switch the brief excludes; not compiled, n
+0091e970 TAGS alias1,nf318
+    nf318 ?InitStateGroup@CAIStateGroup_CreatureRangedCombat2@@MAEXABVCWorld@@AAVCThingAICreature@@@Z: engine/CAIStateGroup_CreatureRangedCombat2.h declares InitStateGroup only under FABLE_RETAIL_CREATURE_RANGED_COMBAT2_PASS27, a pass-specific switch the brief excludes;
+00995fb0 TAGS alias1,nf318,nf321
+    nf318 ?ReadCompressed@CDataInputStream@@UAEXPAXJ@Z: body port: the alias body runs through helper structs that touch CDataInputStream's private members (StreamPos, SourceChunkBytesRemaining, CurrentSourcePtr: C2248 on engi
+    nf321 00995fb0 skipped-port ?ReadCompressed@CDataInputStream@@UAEXPAXJ@Z body port: the HEAD body runs through row-local FORCEINLINE Read / ReadShort / ReadLong helpers on the private stream members; on engine/CDataInputStream.h
+00996230 TAGS alias1,nf318,nf321
+    nf318 ?ReadZlibCompressed@CDataInputStream@@UAEXPAXJ@Z: body port (as 0x00995FB0): the zlib read path runs through helper structs on CDataInputStream's private members; also a landed binder 0x0047F58B binds the PDB name alread
+    nf321 00996230 skipped-port ?ReadZlibCompressed@CDataInputStream@@UAEXPAXJ@Z as 0x00995FB0 (zlib path; its CCompressorZlib callee 0x00A3A7D0 is also a T3 target)
+00aa4b50 TAGS alias1,nf318,nf321
+    nf318 ?WriteToFile@C3DMeshFileXBoundingSphereChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z: body port: the alias row carries local models of CChunkedFileChunk / C3DMeshFileChunk / CDataOutputStream (made-up writers WriteFloat / WriteULong / WriteLong) an
+    nf321 00aa4b50 skipped-held ?WriteToFile@C3DMeshFileXBoundingSphereChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z callee WriteFloat 0x00993EE0 is a T3_PORT_QUEUE column-2 target (the writers' PDB spellings go with tha
+00aa4b90 TAGS alias1,nf318,nf321
+    nf318 ?WriteToFile@C3DMeshFileXBoundingBoxChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z: body port: the alias row carries local models of CChunkedFileChunk / C3DMeshFileChunk / CDataOutputStream (made-up writers WriteFloat / WriteULong / WriteLong) and r
+    nf321 00aa4b90 skipped-held ?WriteToFile@C3DMeshFileXBoundingBoxChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z as 0x00AA4B50 (WriteFloat 0x00993EE0 is a T3 target)
+00aa4c00 TAGS alias1,nf318,nf321
+    nf318 ?WriteToFile@C3DMeshFileXMappingInfoChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z: body port: the alias row carries local models of CChunkedFileChunk / C3DMeshFileChunk / CDataOutputStream (made-up writers WriteFloat / WriteULong / WriteLong) and r
+    nf321 00aa4c00 skipped-held ?WriteToFile@C3DMeshFileXMappingInfoChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z as 0x00AA4B50 (WriteFloat 0x00993EE0 is a T3 target)
+00aa7230 TAGS alias1,nf318,nf321
+    nf318 ?GetChunkDescription@C3DMeshFileXVertexDataChunk@@UBE?BVCCharString@@XZ: the HEAD row carries a same-TU strong stand-in body of the CCharString constructor (__declspec(noinline) CCharString::CCharString(const char*, long) storing text / text+1
+    nf321 00aa7230 skipped-held ?GetChunkDescription@C3DMeshFileXVertexDataChunk@@UBE?BVCCharString@@XZ the HEAD row carries a same-TU strong stand-in body of ??0CCharString@@QAE@PBDJ@Z and passes the string as a hard-coded address 
+00b6ccf0 TAGS alias1,nf318
+    nf318 ?SetBridgeVertexBufferSize@CLandscapePatchTesselator@@EAEXJ@Z: READY (full proof) but held for Q2: no landed row defines FABLE_RETAIL_CLANDSCAPEPATCHTESSELATOR yet (this would be the first); libcp (alias route) as allowed by the BRIE
+00800500 TAGS access4,nf317
+    nf317 ?HasRoute@CTCPreCalculatedNavigationRoute@@QBEJXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00803b20 TAGS access4,nf317
+    nf317 ?PostProcessTargetedThing@CTCTargetingPlayer@@QAE_NXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00860300 TAGS access4,nf317,nf322,nF325
+    nf322 00860300 skipped-port ?IsValid@CVillageTaskSecuritySweep@@UBE_NXZ base CVillageTaskSecuritySweepDonor alias over the flat shared header (NF317); CVillageTaskBase model not in this batch
+    nF325 00860300 skipped-port ?IsValid@CVillageTaskSecuritySweep@@UBE_NXZ NF325 order 9 (carry-over, untouched): a body / callee / other-class port that NF322 rulings Q1-Q3 do not cover; NF322 reason: base CVillageTaskSecuritySwee
+0090cb80 TAGS access4,nf317,nf321
+    nf317 ?IsStillValid@CAIStateGroup_MinionGossip@@UAE_NXZ: the const body writes the member PTCGossip through GetTC(type, &PTCGossip): needs mutable (T3); not compiled
+    nf321 0090cb80 skipped-port ?IsStillValid@CAIStateGroup_MinionGossip@@MBE_NXZ const self (PDB MBE) writes PTCGossip through GetTC(type, &PTCGossip); engine/CAIStateGroup_MinionGossip.h declares PTCGossip non-mutable: `mutable` e
+00939060 TAGS access4,nf317
+    nf317 ?IsStillValid@CAIStateGroup_MinionSitOutside@@UAEEXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00984a20 TAGS access4,nf317
+    nf317 ?WatchUpdate@CAIStateGroup_OpinionReactionRoot@@QAEJXZ: return-type edit: the row returns a full-width / byte value the way retail does (the script run gave objsec .text bytes differences); the PDB bool / void signat
+00858130 TAGS binders1
+00892f60 TAGS binders1
+00789900 TAGS binders1
+0058509f TAGS binders1,nf317,nf323
+    nf317 OnItemAdded: binder (ENTRIES pdb/current columns read `OnItemAdded`: truncated): the caller defines a same-TU strong copy of GetQuickAccessNextFreeSlot (0x00582027); its con
+    nf323 0058509f skipped-port NF281 D2 / NF317: the binder defines a same-TU strong copy of GetQuickAccessNextFreeSlot; the respell would make a strong copy under the owner PDB name (T3); CTCInventory also in NF321 scope 
+008913c0 TAGS flatten-switch1,nf318,flatten4,nf321,nf324
+    nf321 008913c0 skipped-port ?IsHeroInTavernGame@CGameScriptInterface@@UBE_NXZ NF317 Q4: retail returns through the eax-wide forms (xor eax,eax / mov eax,1) the int stand-in reproduces; the PDB bool return grades DIFFER(34v39) (N
+    nf324 008913c0 skipped-held ?IsHeroInTavernGame@CGameScriptInterface@@UBE_NXZ triage (-): reserved: T3_PORT_QUEUE
+00af59a0 TAGS nf334
+0069a920 TAGS nf334
+004d297b TAGS nf334

@@ -1,0 +1,6 @@
+action	symbol	target	witness	note
+delete	?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ	00af5770	00af59a0	NF339: the only binder moved to ?DeleteAllDecals@ (already a table line, witness 00af5900); census: no other landed object references the old spelling
+delete	?PopulateSwitchList@CGameCameraManager@@QAEXXZ	0069a010	0069a920	NF339: the only binder moved to ?InitManualCameraList@...@@AAEXXZ (table line, witness 0069a850); census clean
+delete	?PopulateListFromData@CGameCameraManager@@QAEXXZ	0069a1a0	0069a920	NF339: the only binder moved to ?InitSpecialCameraList@...@@AAEXXZ (table line, witness 0069a850); census clean
+delete	??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z	00723fd0	004d297b	NF339: the only binder moved to ??0CTCPhysicsStandard@@QAE@AAVCThing@@@Z (table line, witness 00724f50); census of the 6 other rows naming the ctor clean
+delete	?WhackGround@CCreatureAction_TrollWhackGroundBase@@QAEXXZ	008c61c0	008c63c0	NF339: both QAE binders (008c63c0, 008c6430) moved to the PDB AAE (table line, witness 008c6390); census clean

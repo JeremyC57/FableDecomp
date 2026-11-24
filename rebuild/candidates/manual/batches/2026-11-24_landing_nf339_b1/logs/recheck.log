@@ -1,0 +1,47 @@
+addr       parity           behav  name
+004d297b   WARN SHARED_HEADER_AVAILABLE CTCPhysicsStandard (engine/CTCPhysicsStandard.h)
+004d297b   RELOCATION_MATCH PASS   Alloc
+0069a920   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0069a920   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0069a920   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+0069a920   WARN SHARED_HEADER_AVAILABLE CCameraManagerSetDef (engine/CCameraManagerSetDef.h)
+0069a920   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0069a920   WARN SHARED_HEADER_AVAILABLE CCameraManagerDef (engine/CCameraManagerDef.h)
+0069a920   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0069a920   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0069a920   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0069a920   RELOCATION_MATCH PASS   RemoveCombatCameraMode
+008c63c0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008c63c0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008c63c0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+008c63c0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c63c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollWhackGroundBase (engine/CCreatureAction_TrollWhackGroundBase.h)
+008c63c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollTunnel (engine/CCreatureAction_TrollTunnel.h)
+008c63c0   RELOCATION_MATCH PASS   PerformAction
+008c6430   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008c6430   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008c6430   WARN SHARED_HEADER_AVAILABLE CMeleeCombatAbilityDef (engine/CMeleeCombatAbilityDef.h)
+008c6430   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008c6430   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008c6430   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008c6430   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008c6430   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollWhackGroundBase (engine/CCreatureAction_TrollWhackGroundBase.h)
+008c6430   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollProjectileAttack (engine/CCreatureAction_TrollProjectileAttack.h)
+008c6430   WARN RELOC_NAME: ?GetPWorld@CCreatureAction_TrollWhackGroundBase@@QBEPAVCWorld@@XZ -> 00692940 labelled 'CCreatureActionBase::GetWorld'
+008c6430   RELOCATION_MATCH PASS   PerformAction
+00af59a0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00af59a0   WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)
+00af59a0   WARN SHARED_HEADER_AVAILABLE CParticleUpdateParameters (engine/CParticleUpdateParameters.h)
+00af59a0   WARN SHARED_HEADER_AVAILABLE CPSCBase (engine/CPSCBase.h)
+00af59a0   WARN SHARED_HEADER_AVAILABLE CComponentInstance (engine/CComponentInstance.h)
+00af59a0   WARN SHARED_HEADER_AVAILABLE CParticleSystem (engine/CParticleSystem.h)
+00af59a0   WARN RELOC_NAME: ??$sort@U?$pair@KUC3DVector@NParticleEngine@@@NParticleEngine@@U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@2@@NParticleEngine@@YIXPAU?$pair@KUC3DVector@NParticleEngine@@@0@0U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@0@@Z -> 0076c000 labelled 'std::sort<std::pair<unsigned long, C3DVector> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareVector<unsigned long>>'
+00af59a0   WARN RELOC_NAME: ??$sort@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@NParticleEngine@@U?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@2@@NParticleEngine@@YIXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@0U?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@0@@Z -> 0076c1a0 labelled 'std::sort<std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long>> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareParamDesc<unsigned long>>'
+00af59a0   RELOCATION_MATCH PASS   Update
+
+WINS: 5
+  004d297b RELOCATION_MATCH CTCPhysicsStandard::Alloc
+  0069a920 RELOCATION_MATCH CGameCameraManager::RemoveCombatCameraMode
+  008c63c0 RELOCATION_MATCH CCreatureAction_TrollTunnel::?PerformAction@CCreatureAction_TrollTunnel@@UAEXXZ
+  008c6430 RELOCATION_MATCH CCreatureAction_TrollProjectileAttack::PerformAction
+  00af59a0 RELOCATION_MATCH NParticleEngine::CParticleSystem::Update

@@ -43,8 +43,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
-class CCreatureAction_TrollWhackGroundBase : public CCombatActionBase { public:
-    void WhackGround();                     // 0x008C61C0
+class CCreatureAction_TrollWhackGroundBase : public CCombatActionBase { friend class CCreatureAction_TrollTunnel; public:
+private: void WhackGround();            // 0x008C61C0, PDB AAE (private): the retail call from TrollTunnel needs the friend
 };
 class CCreatureAction_TrollTunnel : public CCreatureAction_TrollWhackGroundBase { public:
     virtual void PerformAction();

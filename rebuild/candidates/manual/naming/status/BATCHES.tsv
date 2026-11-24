@@ -113,6 +113,7 @@ T1	standin_alias	CCreatureAction_JackGetUp	1	1		008c3810
 T1	standin_alias	CCreatureAction_LeapLong	1	1	engine/CCreatureAction_LeapLong.h	008b8190
 T1	standin_alias	CCreatureAction_StopEatingAtTable	1	1		0096c820
 T1	standin_alias	CCreatureAction_StrafeForward	1	1	engine/CCreatureAction_StrafeForward.h	008bfce0
+T1	standin_alias	CCreatureAction_TrollWhackGroundBase	1	1	engine/CCreatureAction_TrollWhackGroundBase.h	008c61c0
 T1	standin_alias	CCreatureAction_VillagerAdvance	1	1	engine/CCreatureAction_VillagerAdvance.h	0097cff0
 T1	standin_alias	CCreatureAction_VillagerAttack	1	1	engine/CCreatureAction_VillagerAttack.h	0097cf30
 T1	standin_alias	CCreatureAction_VillagerBackOff	1	1	engine/CCreatureAction_VillagerBackOff.h	0097d050
@@ -362,7 +363,7 @@ T1	other	NParticleEngine	7	11		00aeaa00 00aeaa80 00aeaad0 00aeaae0 00aeab00 00ae
 T1	other	fill	7	7		00527c10 00819320 0085d680 0086d9d0 009d1bb0 00a6b000 00a95b00
 T1	other	remove_if	7	7		004b91a0 004b9250 00711800 00711860 007118c0 0073e790 008fbdd0
 T1	other	CAFile	6	5	engine/CAFile.h	00998570 00998f60 009994a0 00999ab0 00999c50 00999cb0
-T1	other	CParticleSystem	6	11	engine/CParticleSystem.h	00af3dc0 00af43b0 00af5090 00af5430 00af56e0 00af5770
+T1	other	CParticleSystem	6	10	engine/CParticleSystem.h	00af3dc0 00af43b0 00af5090 00af5430 00af56e0 00af5770
 T1	other	CTCDParticleEmitter	6	5	engine/CTCDParticleEmitter.h	006e0880 006e0970 006e0be0 006e0e80 006e0f10 006e11a0
 T1	other	CTCHeroExperience	6	6	engine/CTCHeroExperience.h	006d63a0 006d6620 006d72d0 006d7e70 006d7f20 006d8830
 T1	other	CTCInventoryItem	6	9	engine/CTCInventoryItem.h	004dc600 005d8e50 005d9630 005d97f0 005d98b0 005d9aa0
@@ -471,7 +472,6 @@ T1	other	CEngineScene	2	3	engine/CEngineScene.h	00b93290 00b94060
 T1	other	CEntityScriptBase	2	5	engine/CEntityScriptBase.h	00f35b10 00f35b40
 T1	other	CEnvironment	2	3	engine/CEnvironment.h	006b3880 006b3950
 T1	other	CFrameData	2	3		009fe460 009ff220
-T1	other	CGameCameraManager	2	1	engine/CGameCameraManager.h	0069a010 0069a1a0
 T1	other	CGameScriptInterface	2	5	engine/CGameScriptInterface.h	006e7510 006e7530
 T1	other	CHeroMarriageDef	2	2	engine/CHeroMarriageDef.h	0044f81a 00453911
 T1	other	CHeroSoulsCreatureDef	2	1	engine/CHeroSoulsCreatureDef.h	00f270d0 00f27650
@@ -621,7 +621,6 @@ T1	other	CCreatureAction_ShowItemToThing	1	1		007ed780
 T1	other	CCreatureAction_StartFillingTankard	1	1	engine/CCreatureAction_StartFillingTankard.h	00842a80
 T1	other	CCreatureAction_StopFillingTankard	1	1	engine/CCreatureAction_StopFillingTankard.h	00842af0
 T1	other	CCreatureAction_TrollGroundPound	1	1	engine/CCreatureAction_TrollGroundPound.h	0094e5f0
-T1	other	CCreatureAction_TrollWhackGroundBase	1	2	engine/CCreatureAction_TrollWhackGroundBase.h	008c61c0
 T1	other	CCreatureAction_UnsheatheWeapons	1	2	engine/CCreatureAction_UnsheatheWeapons.h	008b7cf0
 T1	other	CCreatureAction_UseWallMount	1	2	engine/CCreatureAction_UseWallMount.h	00843610
 T1	other	CCreatureAction_WaspQueenLashOutAttack	1	1	engine/CCreatureAction_WaspQueenLashOutAttack.h	0095cac0
@@ -9596,7 +9595,6 @@ T3	emit ?Clone@CCreatureAction_SpiritAttack@@UBEPAVCCreatureActionBase@@XZ	CCrea
 T3	emit ?Initialise@CCreatureAction_SpiritAttack@@UAEXXZ	CCreatureAction_SpiritAttack_Methods	1	1		008545f0
 T3	emit ?Clone@CCreatureAction_SpiritHitResponse@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SpiritHitResponse	1	1	engine/CCreatureAction_SpiritHitResponse.h	00855190
 T3	emit ??_GCCreatureAction_StabbedToDeath@@UAEPAXI@Z	CCreatureAction_StabbedToDeath	1	1	engine/CCreatureAction_StabbedToDeath.h	0087fe80
-T3	emit ?Clone@CCreatureAction_StabbedToDeath@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StabbedToDeath	1	1	engine/CCreatureAction_StabbedToDeath.h	008800c0
 T3	emit ?GetAnimationTransitionInTime@CCreatureAction_StabbedToDeath@@UBEJXZ	CCreatureAction_StabbedToDeath_Methods	1	1		0087fe60
 T3	emit ?Clone@CCreatureAction_StartBlocking@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StartBlocking	1	1	engine/CCreatureAction_StartBlocking.h	00855e20
 T3	emit ?Clone@CCreatureAction_StartEatingAtTable@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StartEatingAtTable	1	1		0096d4d0
