@@ -527,3 +527,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF354 CCutsceneCastMap stand-in binders of the map owner	naming	done	batches/2026-11-24_landing_nf354_b1 (0x00E2A320); rest queued T3 nf354
 2026-11-24	A	agent NF355 CThingNoiseDef destructor class port (0x0045C5F6) then 0x007FC800 EndAttackBeam respell	naming	claimed	locks via nflocks owner NF355
 2026-11-24	A	agent NF356 owner ports onto size-body opt-ins (0x0042AF3C, 0x0042B040, 0x0042B312, 0x005F81BE, 0x00429C6F, 0x004291DE)	naming	claimed	locks via nflocks owner NF356
+2026-11-24	A	agent NF357 GetSubDef<T> pick-any copies (0x005BADE1, 0x0042B1A6, 0x0065F604, 0x0042B0A2)	naming	claimed	locks via nflocks owner NF357
