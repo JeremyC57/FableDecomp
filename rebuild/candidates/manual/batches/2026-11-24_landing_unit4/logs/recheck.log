@@ -1,0 +1,184 @@
+addr       parity           behav  name
+004fede0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CMapInfo (engine/CMapInfo.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CEngineManager (engine/CEngineManager.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CThingMapManager (engine/CThingMapManager.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager (engine/CNavigatorManager.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004fede0   WARN RELOC_NAME: ?RemoveMap@CEngineManager@@QAEXJ@Z -> 00640430 labelled 'CEngineManager::SetMapAsUnloaded'
+004fede0   RELOCATION_MATCH PASS   UnloadLevel
+004ff8b0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+004ff8b0   WARN SHARED_HEADER_AVAILABLE CMapInfo (engine/CMapInfo.h)
+004ff8b0   WARN SHARED_HEADER_AVAILABLE CEngineManager (engine/CEngineManager.h)
+004ff8b0   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+004ff8b0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004ff8b0   WARN RELOC_CONFLICT: ?RemoveMap@CEngineManager@@QAEXJ@Z -> 006403d0 here, 00640430 in landed 004fede0
+004ff8b0   RELOCATION_MATCH PASS   RemoveLevel
+00502850   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+00502850   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00502850   WARN SHARED_HEADER_AVAILABLE CLevelLoader (engine/CLevelLoader.h)
+00502850   WARN SHARED_HEADER_AVAILABLE CMapInfo (engine/CMapInfo.h)
+00502850   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+00502850   RELOCATION_MATCH PASS   CacheMaps
+005615c0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+005615c0   WARN SHARED_HEADER_AVAILABLE LHHttp2 (engine/LHHttp2.h)
+005615c0   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+005615c0   WARN RELOC_NAME: ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z -> 005672d0 labelled 'std::basic_string<char>::_M_range_initialize<const char*>'
+005615c0   WARN RELOC_NAME: ??1LHStringVector@@QAE@XZ -> 00569940 labelled 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::~vector'
+005615c0   RELOCATION_MATCH PASS   DownloadListOfMyClans
+00564570   WARN SHARED_HEADER_AVAILABLE CList (engine/CList.h)
+00564570   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+00564570   RELOCATION_MATCH PASS   GlobalUpdate
+0065a852   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0065a852   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0065a852   WARN SHARED_HEADER_AVAILABLE CTCEnemy (engine/CTCEnemy.h)
+0065a852   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0065a852   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+0065a852   RELOCATION_MATCH PASS   SetEnemyToHeroStatus
+0065c781   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CASoundBank (engine/CASoundBank.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CSoundInit (engine/CSoundInit.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CThingSoundEmitter (engine/CThingSoundEmitter.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCLight (engine/CTCLight.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CVillageDef (engine/CVillageDef.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+0065c781   WARN RELOC_NAME: ?ReleaseInvalidTasks@CTCVillage@@QAEXXZ -> 0065be32 labelled 'CGuiControlComboBox_0065be32::ReleaseMembers'
+0065c781   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0065c781   RELOCATION_MATCH PASS   FrameUpdate
+00670710   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00670710   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00670710   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00670710   RELOCATION_MATCH PASS   UpdateScore
+00670a10   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+00670a10   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00670a10   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00670a10   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00670a10   RELOCATION_MATCH PASS   vfunc_9
+0069b6f0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0069b6f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0069b6f0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0069b6f0   RELOCATION_MATCH PASS   UpdatePrepareFlags
+0069b790   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0069b790   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0069b790   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+0069b790   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0069b790   RELOCATION_MATCH PASS   Update
+00753930   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00753930   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+00753930   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+00753930   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+00753930   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex (engine/CTCAnimationComplex.h)
+00753930   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00753930   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00753930   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00753930   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00753930   WARN RELOC_NAME: ?GetTurnBetween@CAnimationEntry@@QBEXMMPAM@Z -> 005dc000 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00753930   RELOCATION_MATCH PASS   SetBodyMovingViaAnimation
+00753c70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00753c70   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00753c70   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00753c70   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00753c70   RELOCATION_MATCH PASS   FrameUpdate
+0080d0b0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CExplosionDef (engine/CExplosionDef.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CTCDriverBase (engine/CTCDriverBase.h)
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CTCDExplosion (engine/CTCDExplosion.h)
+0080d0b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0080d0b0   WARN RELOC_NAME: ?GetEmitterSpacing@CExplosionDef@@QBEMM@Z -> 0080c190 labelled '_global::GetExplosionEffectInterpolate'
+0080d0b0   RELOCATION_MATCH PASS   CreateStaticExplosion
+0080d750   WARN SHARED_HEADER_AVAILABLE CExplosionDef (engine/CExplosionDef.h)
+0080d750   WARN SHARED_HEADER_AVAILABLE CTCDExplosion (engine/CTCDExplosion.h)
+0080d750   RELOCATION_MATCH PASS   FrameUpdate
+0082abd0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0082abd0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0082abd0   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0082abd0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0082abd0   WARN SHARED_HEADER_AVAILABLE CTCTeleporter (engine/CTCTeleporter.h)
+0082abd0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+0082abd0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0082abd0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0082abd0   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082abd0   WARN RELOC_NAME: ?AddMarker@CMiniMapDisplay@@QAEXPBVCThing@@J@Z -> 0082a500 labelled 'CMiniMapDisplay::AddAutoMarker'
+0082abd0   RELOCATION_MATCH PASS   InitialiseTeleportMarkers
+0082b750   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082b750   RELOCATION_MATCH PASS   UpdateMarkersNow
+008eca50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008eca50   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008eca50   WARN SHARED_HEADER_AVAILABLE CTCDegradableBase (engine/CTCDegradableBase.h)
+008eca50   RELOCATION_MATCH PASS   ShowParticleEffects
+008ecac0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ecac0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+008ecac0   WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)
+008ecac0   WARN SHARED_HEADER_AVAILABLE CDegradableInfo (engine/CDegradableInfo.h)
+008ecac0   WARN SHARED_HEADER_AVAILABLE CDegradableDef (engine/CDegradableDef.h)
+008ecac0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008ecac0   WARN SHARED_HEADER_AVAILABLE CTCSwitchableNavigation (engine/CTCSwitchableNavigation.h)
+008ecac0   WARN SHARED_HEADER_AVAILABLE CTCDegradableBase (engine/CTCDegradableBase.h)
+008ecac0   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+008ecac0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+008ecac0   RELOCATION_MATCH PASS   OnParentHealthChanged
+0094a840   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayAnimation (engine/CCreatureAction_PlayAnimation.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0094a840   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GoToPub (engine/CAIStateGroup_GoToPub.h)
+0094a840   RELOCATION_MATCH PASS   PayMoney
+0094aac0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0094aac0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0094aac0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GoToPub (engine/CAIStateGroup_GoToPub.h)
+0094aac0   RELOCATION_MATCH PASS   PayAtBar
+009a5490   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+009a5490   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+009a5490   RELOCATION_MATCH PASS   InitSystemColours
+009a6610   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CFontManager (engine/CFontManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CMeshBankManager (engine/CMeshBankManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CDriveManager (engine/CDriveManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+009a6610   WARN RELOC_NAME: ?Math_InitializeCosineLookup@@YAXXZ -> 00a0db60 labelled '_global::GFInitMaths'
+009a6610   RELOCATION_MATCH PASS   Initialise
+
+WINS: 23
+  004fede0 RELOCATION_MATCH CWorldMap::?UnloadLevel@CWorldMap@@IAEXJ@Z
+  004ff8b0 RELOCATION_MATCH CWorldMap::?RemoveLevel@CWorldMap@@UAEXJ@Z
+  00502850 RELOCATION_MATCH CWorldMap::CacheMaps
+  005615c0 RELOCATION_MATCH CTCHeroOnlineScoreboard::?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
+  00564570 RELOCATION_MATCH CTCHeroOnlineScoreboard::GlobalUpdate
+  0065a852 RELOCATION_MATCH CTCVillage::?SetEnemyToHeroStatus@CTCVillage@@AAEXXZ
+  0065c781 RELOCATION_MATCH CTCVillage::?FrameUpdate@CTCVillage@@QAEXXZ
+  00670710 RELOCATION_MATCH CTCCoopSpirit::?UpdateScore@CTCCoopSpirit@@AAEXXZ
+  00670a10 RELOCATION_MATCH CTCCoopSpirit::vfunc_9
+  0069b6f0 RELOCATION_MATCH CGameCameraManager::?UpdatePrepareFlags@CGameCameraManager@@AAEXXZ
+  0069b790 RELOCATION_MATCH CGameCameraManager::Update
+  00753930 RELOCATION_MATCH CTCLook::?SetBodyMovingViaAnimation@CTCLook@@AAEXXZ
+  00753c70 RELOCATION_MATCH CTCLook::?FrameUpdate@CTCLook@@UAEXXZ
+  0080d0b0 RELOCATION_MATCH CTCDExplosion::?CreateStaticExplosion@CTCDExplosion@@AAEXXZ
+  0080d750 RELOCATION_MATCH CTCDExplosion::?FrameUpdate@CTCDExplosion@@QAEXXZ
+  0082abd0 RELOCATION_MATCH CMiniMapDisplay::?InitialiseTeleportMarkers@CMiniMapDisplay@@IAEXXZ
+  0082b750 RELOCATION_MATCH CMiniMapDisplay::UpdateMarkersNow
+  008eca50 RELOCATION_MATCH CTCDegradableBase::?ShowParticleEffects@CTCDegradableBase@@AAEXJ@Z
+  008ecac0 RELOCATION_MATCH CTCDegradableBase::?OnParentHealthChanged@CTCDegradableBase@@AAEX_N@Z
+  0094a840 RELOCATION_MATCH CAIStateGroup_GoToPub::?PayMoney@CAIStateGroup_GoToPub@@IAE_NXZ
+  0094aac0 RELOCATION_MATCH CAIStateGroup_GoToPub::?PayAtBar@CAIStateGroup_GoToPub@@IAE_NXZ
+  009a5490 RELOCATION_MATCH CSystemManager::?InitSystemColours@CSystemManager@@AAEXXZ
+  009a6610 RELOCATION_MATCH CSystemManager::Initialise

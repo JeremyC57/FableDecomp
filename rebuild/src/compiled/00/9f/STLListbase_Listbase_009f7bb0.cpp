@@ -174,27 +174,27 @@ template <class _Tp, class _Alloc> void _List_base<_Tp, _Alloc>::clear()
 
 }
 
-struct IDirect3DQuery9 {
-    virtual long __stdcall QueryInterface(const void* riid, void** object);
-    virtual unsigned long __stdcall AddRef();
-    virtual unsigned long __stdcall Release();
-};
 
-class CVsyncCallbackTimer {
-public:
-    struct CPendingQuery {
-        IDirect3DQuery9* Query;
-        long             Frame;
-        double           TimeStamp;
-    };
-    void* Device;                                                       // +0x00 IDirect3DDevice9*
-    std::list<CPendingQuery, std::allocator<CPendingQuery> > FreeQueoryObjects;   // +0x04
-    std::list<CPendingQuery, std::allocator<CPendingQuery> > PendingQueories;     // +0x08
-    long PendingFrame;                                                  // +0x0c
-    long FinishedFrame;                                                 // +0x10
-    void ClearAllQueries();
-    void OnPreDeviceReset();
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 struct SListEntry16 {                                // the second 16-byte list element of this TU (unidentified)
     long m_words[4];

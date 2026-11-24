@@ -7,8 +7,8 @@
 //   four dwords). Label correction: the catalog's "_Cons_val<allocator<CPendingQuery>,...>" is the propagated Dinkumware
 //   spelling; retail STL is STLport 4.x.
 // Callees: placement operator new(unsigned int, void*) @ 0x00405C10 (out of line here: `mov eax,[esp+8] ; ret`).
-// Layout: CPendingQuery {four dwords}; member names are not in the PDB layouts (descriptive: the D3D query object and
-//   the frame it was issued for, plus two words).
+// Layout: CPendingQuery {Query, Frame, double TimeStamp} (Ego_r.pdb, 16 bytes), from engine/CVsyncCallbackTimer.h (RP1);
+//   the trivial copy is still the dword-by-dword block copy.
 // Shape: this TU region (0x009F77xx-0x009F78xx, see the landed 0x009F77F0/0x009F7810) is built with optimisation off (`// Flags: /Od`, the TU's own switch; /Od implies /Ob0):
 //   both register arguments are homed (edx to [ebp-0Ch], ecx to [ebp-8]), the placement new is a real call whose result
 //   is null-tested, the implicit copy constructor is the dword-by-dword block copy, and the new-expression's value is
@@ -19,17 +19,17 @@
 
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }   // 0x00405C10 (STLport <new>)
 
-struct IDirect3DQuery9;
+#define FABLE_RETAIL_CVSYNCCALLBACKTIMER_PENDINGQUERY
+#include "engine/CVsyncCallbackTimer.h"   // CVsyncCallbackTimer::CPendingQuery (Ego_r.pdb, 0x10 bytes; RP1 header re-port)
 
-class CVsyncCallbackTimer {
-public:
-    struct CPendingQuery {                               // 16 bytes
-        IDirect3DQuery9* Query;                          // +0x00
-        long             Frame;                          // +0x04
-        long             Data0;                          // +0x08
-        long             Data1;                          // +0x0c
-    };
-};
+
+
+
+
+
+
+
+
 
 namespace std {
 

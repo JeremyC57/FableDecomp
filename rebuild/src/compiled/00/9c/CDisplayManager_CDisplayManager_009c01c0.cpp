@@ -46,9 +46,9 @@ class CSystemManager;
 class CRenderManager { public:
     virtual ~CRenderManager();                              // slot 0 (deleting dtor called with 1)
 };
-class CVsyncCallbackTimer { public:
-    ~CVsyncCallbackTimer();                                 // 0x009F7330
-};
+#define FABLE_RETAIL_CVSYNCCALLBACKTIMER_DTOR
+#include "engine/CVsyncCallbackTimer.h"   // RP1 header re-port (was a row-local CVsyncCallbackTimer model)
+
 class CDeviceResetCallback;
 class CSurface { public:                                    // vtable 0x0122F84C, 0x10 bytes (engine/CSurface.h layout)
     virtual ~CSurface() { Uninitialise(); }

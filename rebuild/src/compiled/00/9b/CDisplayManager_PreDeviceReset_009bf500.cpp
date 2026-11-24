@@ -18,7 +18,7 @@
 //   call at 0x009A67D3). RTTI CDisplayManager : CBaseClassNonCopyable : CBaseClass. No engine header for CDisplayManager; the members
 //   this body does not touch are opaque storage at their retail offsets. CRenderManagerCore comes through the layout-rename include
 //   of engine/CRenderManagerCore.h (flattened vptr, `struct` key; reached only through a pointer); CRenderManager2D / CRenderManager /
-//   CVsyncCallbackTimer / CSystemManager have no shared header and are pointer-only declarations.
+//   CSystemManager has no shared header and is a pointer-only declaration; CVsyncCallbackTimer comes from engine/CVsyncCallbackTimer.h (RP1).
 // Shape: the STLport list walk `for (it = begin(); it != end(); ++it)` keeps the node in esi and re-reads the header member after
 //   every virtual call (the first compare uses the begin() load).
 #include "engine/CBaseClassNonCopyable.h"                  // CBaseClassNonCopyable : CBaseClass
@@ -85,9 +85,9 @@ class CRenderManagerCore : public CRenderManagerCoreLayout { public:
 };
 class CRenderManager2D : public CRenderManagerCore { };     // RTTI: CRenderManager : CRenderManager2D : CRenderManagerCore (+0)
 class CRenderManager : public CRenderManager2D { };
-class CVsyncCallbackTimer { public:
-    void OnPreDeviceReset();                                // 0x009F73A0 ?OnPreDeviceReset@CVsyncCallbackTimer@@QAEXXZ
-};
+#define FABLE_RETAIL_CVSYNCCALLBACKTIMER_ONPREDEVICERESET
+#include "engine/CVsyncCallbackTimer.h"   // RP1 header re-port (was a row-local CVsyncCallbackTimer model)
+
 class CDeviceResetCallback { public:
     virtual void OnPreDeviceReset() = 0;                    // slot 0
     virtual bool OnPostDeviceReset() = 0;                   // slot 1

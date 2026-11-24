@@ -108,7 +108,10 @@ class CTCDegradableBase { public:
     void ChangeMesh(const CEngineGraphic& graphic);
     public:
          // 0x008EC9C0
-    void ShowParticleEffects(long emitter);                 // 0x008ECA50
+    private:
+    void ShowParticleEffects(long emitter);
+    public:
+                 // 0x008ECA50
     private:
     void OnParentHealthChanged(bool fromHit);
     public:

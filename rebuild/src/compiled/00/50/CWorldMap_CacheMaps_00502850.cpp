@@ -65,7 +65,10 @@ class CWorldMap { public:
     long GetMinPlayerDistanceFromMap(long map) const;
     public:
          // 0x004FCB30
-    void UnloadLevel(long map);                         // 0x004FEDE0
+    protected:
+    void UnloadLevel(long map);
+    public:
+                         // 0x004FEDE0
 protected:
     void LoadLevel(long map, ELoadType loadType);       // 0x00502620
     void CacheMaps(ELoadType loadType);

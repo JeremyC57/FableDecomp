@@ -9,7 +9,7 @@
 //   +0x10, interlocked busy counter +0x14) indexed by 0x013CB4F4; CPU time stamps (doubles) 0x013CB4E0 / 0x013CB4E8 and the
 //   CPU frame count 0x013CB4F0. These statics have no PDB names in our sets: descriptive names.
 // Layout: CVsyncCallbackTimer (Ego_r.pdb names): Device +0, FreeQueoryObjects +4, PendingQueories +8 (4-byte STLport lists),
-//   PendingFrame +0xc, FinishedFrame +0x10; `this` is homed but unused. No engine header exists for the class.
+//   PendingFrame +0xc, FinishedFrame +0x10; `this` is homed but unused. Class and record from engine/CVsyncCallbackTimer.h (RP1).
 // Shape: the vsync TU is unoptimised (`#pragma optimize("", off)`, like its landed siblings 0x009F73A0 / 0x009F7250): every
 //   value goes through memory and the 48-byte result is copied out with `rep movsd`. The /Od frame (info at ebp-0x30, record
 //   pointer at ebp-0x34, `this` ebp-0x38, `sub esp,38h`) needs BOTH locals at function scope (an inner `{ }` around `info`
@@ -19,15 +19,15 @@
 extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long* addend);   // IAT 0x0143FD34
 extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(long* addend);   // IAT 0x0143FD38
 
-struct CVsyncCallbackTimerInfo {                   // 48 bytes (Ego_r.pdb)
-    double        CPUTimeStamp;                    // +0x00
-    double        CPUPrevTimeStamp;                // +0x08
-    long          CPUFrameCount;                   // +0x10
-    double        GPUTimeStamp;                    // +0x18
-    double        GPUPrevTimeStamp;                // +0x20
-    long          GPUFrameCount;                   // +0x28
-    CVsyncCallbackTimerInfo();                     // 0x009F7020
-};
+#define FABLE_RETAIL_CVSYNCCALLBACKTIMER_GETINFO
+#include "engine/CVsyncCallbackTimer.h"            // CVsyncCallbackTimerInfo (48 bytes, Ego_r.pdb; ctor 0x009F7020), GetInfo (RP1 header re-port)
+
+
+
+
+
+
+
 
 struct SVsyncGPUTimeRecord {                       // 0x18 bytes (descriptive)
     double        TimeStamp;                       // +0x00
@@ -41,16 +41,16 @@ extern double              g_VsyncCPUTimeStamp;       // 0x013CB4E0
 extern double              g_VsyncCPUPrevTimeStamp;   // 0x013CB4E8
 extern long                g_VsyncCPUFrameCount;      // 0x013CB4F0
 
-struct IDirect3DDevice9;
-class CVsyncCallbackTimer {
-public:
-    IDirect3DDevice9* Device;                      // +0x00
-    void*             FreeQueoryObjects;           // +0x04 STLport list<CPendingQuery>
-    void*             PendingQueories;             // +0x08 STLport list<CPendingQuery>
-    long              PendingFrame;                // +0x0c
-    long              FinishedFrame;               // +0x10
-    CVsyncCallbackTimerInfo GetInfo();
-};
+
+
+
+
+
+
+
+
+
+
 
 #pragma optimize("", off)
 CVsyncCallbackTimerInfo CVsyncCallbackTimer::GetInfo()

@@ -80,8 +80,13 @@ Tracker after these landings: **agree_pdb 23,920** (from 23,193 this morning, 22
 ## Open, queued, not started (the owner said to launch nothing new)
 - **unit3: landed** (`batches/2026-11-24_landing_unit3`): 59 rows, 26 table replaces; agree_pdb 23,942. Wave 4: 26 units deferred
   again (shared sources); run `unit_fix.py` in a fresh directory. The unit 0x004166E2 / 0x00417001 is held for the third time, by the
-  RP1 lock and the open 2026-11-20 CVsyncCallbackTimer claim line: settle that claim before wave 4.
+  RP1 lock and the open 2026-11-20 CVsyncCallbackTimer claim line.
+- **RP1 landed** (`batches/2026-11-24_landing_rp1`, advisor decision, owner delegated): the 2026-11-20 CVsyncCallbackTimer header re-port,
+  never landed then, re-based (27 rows as returned, 2 three-way merged), 29 / 29 recheck good. Its claim is closed and its 30 locks are released, so
+  wave 4 can take the 0x004166E2 unit. Stale session locks released as well: 8 NF214, 71 acctB (owner released those rows on 2026-11-21).
 - **The 39-spelling ref_scan:** old spellings over 80 sources each, about 5,000 compiles.
+- **unit4 landed** (`batches/2026-11-24_landing_unit4` + `_unit4b`): 25 rows, 12 table replaces; agree_pdb 23,951. 15 units deferred to wave 5.
+  `land_scripted.py` now honours "newest claim line per item wins" (it held 0x004166E2 on the landing's own claim line).
 - **NF324 Q1:** a generated opt-in derived-model route for the CCombatActionBase (~156) and CCombatSequenceBase (~143) families.
 - **NF324 Q2:** 79 rows whose own tests call the flattened name, which need the tests rewritten by script.
 - **NF324 table check:** 2 callers still bind a non-virtual spelling of members nf324 moved to virtual (0x00858CC0 CreatureOnBlowBlocked,

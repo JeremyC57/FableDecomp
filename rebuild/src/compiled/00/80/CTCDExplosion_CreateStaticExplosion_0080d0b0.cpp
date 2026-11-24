@@ -1,7 +1,7 @@
 // CTCDExplosion::CreateStaticExplosion() -- when the explosion def has an emitter: place emitters along the explosion line
 // (one per damage radius, plus one) and remember each live one with its creation frame; then, when the def asks for it,
 // shake the camera at the middle of the line
-// Leaf: CreateStaticExplosion
+// Leaf: ?CreateStaticExplosion@CTCDExplosion@@AAEXXZ
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 //
 // Retail 0x0080D0B0, 580 bytes, plain `ret` (8-aligned frame).
@@ -99,7 +99,9 @@ class CTCDExplosion : public CTCDriverBase { public:
     bool  CreatedEmitter;                                    // +0x3c
     bool  NeedToTriggerExplosion;                            // +0x3d
     CEmitterVector Emitters;                                 // +0x40
+    private:
     void CreateStaticExplosion();
+    public:
 };
 
 void CTCDExplosion::CreateStaticExplosion()

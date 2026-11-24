@@ -48,7 +48,10 @@ public:
     virtual bool IsMapLoaded(long map) const;   // slot 10 (+0x28) 0x004FC050
     unsigned char    _pad04[0x1c];
     CArray<CMapInfo> Maps;                      // +0x20 (PDB +0x24)
-    void UnloadLevel(long map);                 // 0x004FEDE0
+    protected:
+    void UnloadLevel(long map);
+    public:
+                 // 0x004FEDE0
     protected:
     void ChangeMapPlacementValuesTo(long from, long to);
     public:

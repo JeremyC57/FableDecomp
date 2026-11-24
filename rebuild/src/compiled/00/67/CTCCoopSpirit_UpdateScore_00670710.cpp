@@ -1,5 +1,5 @@
 // CTCCoopSpirit::UpdateScore() -- once the spirit's score reaches 20: clear the +0x10 counter of every other player's hero interface-0xc7 component, then swap the spirit back to a hero
-// Leaf: ?UpdateScore@CTCCoopSpirit@@QAEXXZ
+// Leaf: ?UpdateScore@CTCCoopSpirit@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x00670710, 135 bytes (plain `ret`). Callees: CTCBase::GetPlayerManager @ 0x00686D40
@@ -47,7 +47,9 @@ class CTCCoopSpirit : public CTCBase { public:
     unsigned char _pad08[4];
     long          NoMovementTimer;                          // +0x0c
     long          Score;                                    // +0x10
+    private:
     void UpdateScore();
+    public:
 private:
     void SwapToHero();                                      // 0x0066FF20 ?SwapToHero@CTCCoopSpirit@@AAEXXZ (Ego_r / FableWin, private)
 };

@@ -1,3 +1,4 @@
+// Leaf: ?InitialiseTeleportMarkers@CMiniMapDisplay@@IAEXXZ
 // CMiniMapDisplay::InitialiseTeleportMarkers() -- add a minimap marker for every teleporter in the current region
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -104,7 +105,9 @@ class CMiniMapDisplay { public:
     unsigned char _pad04[0xb4];                    // +0x04 .. +0xb8
     CRegion*      m_pRegion;                       // +0xb8 (retail)
     void AddMarker(const CThing* thing, long graphicIndex);   // 0x0082A500
+    protected:
     void InitialiseTeleportMarkers();
+    public:
 };
 
 void CMiniMapDisplay::InitialiseTeleportMarkers()

@@ -69,7 +69,10 @@ class CTCDExplosion { public:
     bool  NeedToTriggerExplosion;               // +0x3d
     CEmitterVector Emitters;                    // +0x40
     void UpdateDynamicExplosion();              // 0x0080D300
-    void CreateStaticExplosion();               // 0x0080D0B0
+    private:
+    void CreateStaticExplosion();
+    public:
+               // 0x0080D0B0
     void UpdateHitThings(const C3DVector& start, const C3DVector& end);   // 0x0080CD40
     private:
     void UpdateExplosiveAdditionalImpulse();

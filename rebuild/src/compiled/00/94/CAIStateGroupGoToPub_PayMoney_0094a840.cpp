@@ -1,5 +1,5 @@
 // CAIStateGroup_GoToPub::PayMoney() -- find the barman through the bar's tavern component, ask him for payment and wait up to 20 seconds for his reply; on reply play PAY_AT_BAR and send the paid message, else withdraw the request and send the gave-up message; the bar point is released on every path past the barman lookup
-// Leaf: ?PayMoney@CAIStateGroup_GoToPub@@QAE_NXZ
+// Leaf: ?PayMoney@CAIStateGroup_GoToPub@@IAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -114,7 +114,9 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     bool GetPaymentRequestReplyMessage();
     public:
               // 0x00947E20
+    protected:
     bool PayMoney();
+    public:
 };
 
 bool CAIStateGroup_GoToPub::PayMoney()

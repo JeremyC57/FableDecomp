@@ -1,0 +1,45 @@
+address	reason
+00408900	caller not accepted: 00548790 SKIP Q->Q: the difference is not an allowed access / const / virtual / return edit
+004fca50	caller not accepted: 00507c30 SKIP 0 local definitions of CWorldMap (needs exactly one)
+004fdbc0	deferred to the next wave: shares 00507c30
+004fe030	deferred to the next wave: shares 00507c30
+00561980	deferred to the next wave: shares 00564570
+00561dc0	deferred to the next wave: shares 00564570
+005621b0	deferred to the next wave: shares 00564570
+00641260	caller reserved 006412b0
+0065c08a	deferred to the next wave: shares 0065c781
+006643c0	caller reserved 006644f0
+00697860	caller reserved 00697e20
+006b7510	781 sources name Clear (cap 60)
+006d73d0	caller reserved 006d7f20
+006e0af0	caller reserved 006e0be0
+006eda80	caller reserved 006edc50
+00753ad0	deferred to the next wave: shares 00753c70
+00753ba0	deferred to the next wave: shares 00753c70
+00779d20	93 sources name Construct (cap 60)
+007a6f00	1700 sources name Reset (cap 60)
+007a74a0	caller reserved 007a7bf0
+007a9b70	1700 sources name Reset (cap 60)
+007ca670	caller reserved 007cab30
+0082acd0	deferred to the next wave: shares 0082b750
+0082add0	deferred to the next wave: shares 0082b750
+0082ae80	deferred to the next wave: shares 0082b750
+0082b520	deferred to the next wave: shares 0082b750
+0082b630	deferred to the next wave: shares 0082b750
+00830360	87 sources name ConstructFromParams (cap 60)
+008f5fa0	caller not accepted: 0081e810 SKIP declaration does not start its line
+00917a10	363 sources name IsRunnable (cap 60)
+0093d180	caller reserved 0093e5e0,0096ee90
+0093d580	caller reserved 0093d720
+0095d310	caller reserved 0095d590
+009a64b0	deferred to the next wave: shares 009a6610
+009be980	caller reserved 009c0e50
+009d52d0	caller not accepted: 009d5970 REJECT no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+009fd8d0	77 sources name Sizeof (cap 60)
+00a02140	caller not accepted: 00a62e40 REJECT no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS')); 00a03180 REJECT no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00a67f60	callers did not compile at HEAD: 00f3fb96
+00ad9380	table witness not among the callers 00ad9380
+00ae2050	138 sources name WriteToFile (cap 60)
+00bf6530	caller not accepted: 00bf8810 SKIP 0 local definitions of CLandscapeBackgroundTreeNode (needs exactly one)
+00bf65b0	deferred to the next wave: shares 00bf8030
+00bf6a30	table witness not among the callers 00bf6a30

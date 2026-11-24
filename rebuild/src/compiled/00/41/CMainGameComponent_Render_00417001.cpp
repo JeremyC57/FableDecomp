@@ -152,7 +152,10 @@ public:
     long                                 DebugNoFramesUnableToRender;   // +0x161e4
     protected: double GetCurrentGameTime() const; public:                  // 0x00416231
     protected: double GetPredictedTimeSinceLastRenderFrame() const; public:    // 0x00416258; NF296: PDB name, was GetTimeSinceLastRenderFrameStart
-    double GetGameTimeOfNextPresentCompletion();  // 0x004166E2
+    protected:
+    double GetGameTimeOfNextPresentCompletion() const;
+    public:
+  // 0x004166E2
 protected:
     void ForceRender(long frames);                // 0x004164E0
     virtual void Render();

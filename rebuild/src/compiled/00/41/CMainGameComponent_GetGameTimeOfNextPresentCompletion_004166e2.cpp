@@ -1,3 +1,4 @@
+// Leaf: ?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ
 // CMainGameComponent::GetGameTimeOfNextPresentCompletion() -- predict when the next present completes (the vsync timer's last vsync time plus the pending vsync count times the refresh period), never earlier than now (or exactly now when the immediate-present flag is set), as game time
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004166E2, length 104 bytes.
@@ -10,18 +11,18 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 double __fastcall GFGetTime();                     // 0x009E1BC0
-struct CVsyncCallbackTimerInfo {                   // 0x30 bytes
-    unsigned char _pad00[0x10];
-    long          VsyncCount;                      // +0x10
-    unsigned char _pad14[4];
-    double        LastVsyncTime;                   // +0x18
-    unsigned char _pad20[8];
-    long          PresentedVsyncCount;             // +0x28
-    unsigned char _pad2c[4];
-};
-class CVsyncCallbackTimer { public:
-    CVsyncCallbackTimerInfo GetInfo();             // 0x009F7050
-};
+#define FABLE_RETAIL_CVSYNCCALLBACKTIMER_GETINFO
+#include "engine/CVsyncCallbackTimer.h"            // CVsyncCallbackTimerInfo (0x30, Ego_r.pdb members), GetInfo 0x009F7050 (RP1 header re-port)
+
+
+
+
+
+
+
+
+
+
 struct CDisplayDevice {
     unsigned char        _pad00[0x1d4];
     float                m_refreshPeriod;          // +0x1d4
@@ -34,13 +35,15 @@ extern bool g_immediatePresent;                    // 0x013B86A4
 class CMainGameComponent { public:
     unsigned char _pad00[0x60];
     double        m_gameTimeBase;                  // +0x60
-    double GetGameTimeOfNextPresentCompletion();
+    protected:
+    double GetGameTimeOfNextPresentCompletion() const;
+    public:
 };
 
-double CMainGameComponent::GetGameTimeOfNextPresentCompletion()
+double CMainGameComponent::GetGameTimeOfNextPresentCompletion() const
 {
     CVsyncCallbackTimerInfo info = ((CDisplayDevice*)GPDisplayManager)->m_pVsyncTimer->GetInfo();
-    double t = (info.VsyncCount - info.PresentedVsyncCount + 1) * ((CDisplayDevice*)GPDisplayManager)->m_refreshPeriod + info.LastVsyncTime;
+    double t = (info.CPUFrameCount - info.GPUFrameCount + 1) * ((CDisplayDevice*)GPDisplayManager)->m_refreshPeriod + info.GPUTimeStamp;
     double now = GFGetTime();
     if (t < now)
         t = now;

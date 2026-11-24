@@ -15,16 +15,16 @@
 // Shape: `#pragma optimize("", off)`: `this` homed at [ebp-4] and returned in eax; the one argument is read from [ebp+8].
 #pragma optimize("", off)
 
-struct IDirect3DQuery9;
+#define FABLE_RETAIL_CVSYNCCALLBACKTIMER_PENDINGQUERY
+#include "engine/CVsyncCallbackTimer.h"   // CVsyncCallbackTimer::CPendingQuery (Ego_r.pdb, 0x10 bytes; RP1 header re-port)
 
-class CVsyncCallbackTimer {
-public:
-    struct CPendingQuery {
-        IDirect3DQuery9* Query;
-        long             Frame;
-        double           TimeStamp;
-    };
-};
+
+
+
+
+
+
+
 
 namespace std {
 

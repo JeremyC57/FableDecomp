@@ -2,53 +2,53 @@
 // Leaf: ?ResetDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
+#include "engine/IDirect3D9.h"   // IDirect3D9 (slots 8 / 11); engine/Direct3D9Types.h: _D3DFORMAT, _D3DDISPLAYMODE, _D3DPRESENT_PARAMETERS_ (RP1)
 #include <string.h>
-struct _D3DDISPLAYMODE {
-    unsigned long Width;
-    unsigned long Height;
-    unsigned long RefreshRate;
-    _D3DFORMAT Format;                          // D3DFORMAT
-};
-struct _D3DPRESENT_PARAMETERS_ {
-    unsigned int  BackBufferWidth;
-    unsigned int  BackBufferHeight;
-    _D3DFORMAT BackBufferFormat;
-    unsigned int  BackBufferCount;
-    unsigned long MultiSampleType;
-    unsigned long MultiSampleQuality;
-    unsigned long SwapEffect;
-    void*         hDeviceWindow;
-    int           Windowed;
-    int           EnableAutoDepthStencil;
-    unsigned long AutoDepthStencilFormat;
-    unsigned long Flags;
-    unsigned int  FullScreen_RefreshRateInHz;
-    unsigned int  PresentationInterval;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 struct IDirect3DSurface9;
 struct IDirect3DDevice9;
-struct IDirect3D9 {
-    virtual long __stdcall QueryInterface(const void* iid, void** object);
-    virtual unsigned long __stdcall AddRef();
-    virtual unsigned long __stdcall Release();
-    virtual long __stdcall RegisterSoftwareDevice(void* initializeFunction);
-    virtual unsigned long __stdcall GetAdapterCount();
-    virtual long __stdcall GetAdapterIdentifier(unsigned long adapter, unsigned long flags, void* identifier);
-    virtual unsigned long __stdcall GetAdapterModeCount(unsigned long adapter, unsigned long format);
-    virtual long __stdcall EnumAdapterModes(unsigned long adapter, unsigned long format, unsigned long mode, _D3DDISPLAYMODE* out);
-    virtual long __stdcall GetAdapterDisplayMode(unsigned long adapter, _D3DDISPLAYMODE* mode);                    // slot 8
-    virtual long __stdcall CheckDeviceType(unsigned long, unsigned long, unsigned long, unsigned long, int);
-    virtual long __stdcall CheckDeviceFormat(unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long);
-    virtual long __stdcall CheckDeviceMultiSampleType(unsigned long adapter, unsigned long deviceType, unsigned long format, int windowed,
-                                                      unsigned long multiSampleType, unsigned long* qualityLevels);   // slot 11
-    virtual long __stdcall CheckDepthStencilMatch(unsigned long, unsigned long, unsigned long, unsigned long, unsigned long);
-    virtual long __stdcall CheckDeviceFormatConversion(unsigned long, unsigned long, unsigned long, unsigned long);
-    virtual long __stdcall GetDeviceCaps(unsigned long, unsigned long, void*);
-    virtual void* __stdcall GetAdapterMonitor(unsigned long);
-    virtual long __stdcall CreateDevice(unsigned long adapter, unsigned long deviceType, void* focusWindow, unsigned long behaviorFlags,
-                                        _D3DPRESENT_PARAMETERS_* presentationParameters, IDirect3DDevice9** device);   // slot 16
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 struct IDirect3DDevice9 {
     virtual long __stdcall QueryInterface(const void* iid, void** object);
     virtual unsigned long __stdcall AddRef();
@@ -102,7 +102,7 @@ class CSurface { public:
 };
 class CTexture { public: void* _vtable; void* PD3DTexture; void Uninitialise(); };   // 0x009F9F70
 struct C2DExtentsIRet { long X; long Y; };
-class CVsyncCallbackTimer { public: IDirect3DDevice9* Device; };
+#include "engine/CVsyncCallbackTimer.h"   // CVsyncCallbackTimer (RP1; was a row-local model)
 struct CD3DFailure { CD3DFailure() {} };
 
 class CDisplayManager { public:
@@ -130,7 +130,7 @@ class CDisplayManager { public:
     CTexture          BackBufferCopyTexture;       // +0x4c
     IDirect3D9*       D3D;                         // +0x54
     IDirect3DDevice9* D3DDevice;                   // +0x58
-    unsigned long     DeviceType;                  // +0x5c D3DDeviceCaps.DeviceType
+    D3DDEVTYPE        DeviceType;                  // +0x5c D3DDeviceCaps.DeviceType
     unsigned long     AdapterOrdinal;              // +0x60 D3DDeviceCaps.AdapterOrdinal
     unsigned char     _caps08[0x14];
     unsigned long     DevCaps;                     // +0x78 D3DDeviceCaps.DevCaps
@@ -144,7 +144,7 @@ class CDisplayManager { public:
     CPixelFormat      DepthBufferFormat;           // +0x1ac
     bool              UsingRenderManager;          // +0x1b0
     bool              UsingShaderRenderManager;    // +0x1b1
-    void*             WindowHandle;                // +0x1b4
+    HWND              WindowHandle;                // +0x1b4
     _D3DDISPLAYMODE   CurrentMode;                 // +0x1b8
     long              RefreshRate;                 // +0x1c8
     CPresentationIntervalDesc PresentationInterval;   // +0x1cc
@@ -190,16 +190,16 @@ CDisplayManager::ECreateDeviceSuccess CDisplayManager::ResetDevice(const CCreate
         CPixelFormat format;
         format.Initialise(PresentParams.BackBufferFormat);
         long multisample = params.MultisampleType;
-        if (D3D->CheckDeviceMultiSampleType(0, DeviceType, format.GetD3DFormat(), 0, multisample, 0) == 0)
+        if (D3D->CheckDeviceMultiSampleType(0, DeviceType, (_D3DFORMAT)format.GetD3DFormat(), 0, (D3DMULTISAMPLE_TYPE)multisample, 0) == 0)
             MultisampleType = params.MultisampleType;
         else
             MultisampleType = 0;
     } else
         MultisampleType = 0;
-    PresentParams.MultiSampleType = MultisampleType;
-    PresentParams.SwapEffect = 1;
+    PresentParams.MultiSampleType = (D3DMULTISAMPLE_TYPE)MultisampleType;
+    PresentParams.SwapEffect = D3DSWAPEFFECT_DISCARD;
     PresentParams.EnableAutoDepthStencil = 1;
-    PresentParams.AutoDepthStencilFormat = GetClosestDepthBufferFormat(CurrentMode, params.ZBufferBitDepth).GetD3DFormat();
+    PresentParams.AutoDepthStencilFormat = (_D3DFORMAT)GetClosestDepthBufferFormat(CurrentMode, params.ZBufferBitDepth).GetD3DFormat();
     PresentParams.hDeviceWindow = WindowHandle;
     PresentParams.BackBufferCount = NoBackBuffers;
     if (params.ExclusiveMode) {
