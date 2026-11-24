@@ -1,0 +1,8 @@
+# leaf ??1CTCNoise@@UAE@XZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??1CDefPointeeBase@@UAE@XZ
+EQ	EQ	0042d9a0	o	pickany	36	36	n	n	??_GCDefPointeeBase@@UAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??1CDefClassBase@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??1CSubDefClassBase@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??1CTCNoiseDef@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	5	-	n	n	??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+NOADDR	NOADDR	-	-	strong	35	-	n	n	?ReferenceNoiseDestructor@?A0xbfaf630c@@YAXAAVCTCNoise@@@Z

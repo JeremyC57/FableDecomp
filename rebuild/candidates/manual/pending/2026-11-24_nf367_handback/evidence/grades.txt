@@ -1,0 +1,42 @@
+# overlay=
+N 00749a70_cand RELOCATION_MATCH leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/held/p2_helper_unit/00749a70.cpp
+PASS_DONE
+# overlay=
+N 00749a70_cand RELOCATION_MATCH leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/held/p2_helper_unit/00749a70.cpp
+PASS_DONE
+# overlay=
+H 00749810 RELOCATION_MATCH leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/74/CTCNoise_CTCNoise_00749810.cpp
+H 00749a70 RELOCATION_MATCH leaf=??1CTCNoise@@UAE@XZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/74/CTCNoise_CTCNoise_00749a70.cpp
+H 0044c1bb RELOCATION_MATCH leaf=??0CTCNoiseDef@@QAE@XZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/44/CTCNoiseDef_CTCNoiseDef_0044c1bb.cpp
+H 0045c5f6 RELOCATION_MATCH leaf=??1CThingNoiseDef@@UAE@XZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/45/CThingNoiseDef_CThingNoiseDef_0045c5f6.cpp
+PASS_DONE
+# overlay=
+N 00749810_v1 RELOCATION_MATCH leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/v1_implicit.cpp
+N 00749810_v2 DIFFER(67v79) leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/v2_nosubinline.cpp
+N 00749810_v3 DIFFER(67v79) leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/v3_both.cpp
+PASS_DONE
+# overlay=
+N 00749810_v4 RELOCATION_MATCH leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/v4_dev_implicit.cpp
+N 00749810_v5 RELOCATION_MATCH leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/v5_dev.cpp
+N 00749a70_p2a OBJDUMP_ERR leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/p2a_declonly.cpp
+N 00749a70_p2b DIFFER(39v33) leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/p2b_hdr_explicit_implicitdef.cpp
+N 00749a70_p2c DIFFER(33v33) leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/p2c_hdr_explicit.cpp
+N 00749a70_p2d DIFFER(39v33) leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/p2d_local_explicit.cpp
+PASS_DONE
+# overlay=
+N 00749810_v6 RELOCATION_MATCH leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/v6_dev2_implicit.cpp
+N 00749810_v7 RELOCATION_MATCH leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/v7_dev2.cpp
+N 00749a70_p2e RELOCATION_MATCH leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/p2e_local_shareddef.cpp
+PASS_DONE
+# overlay=
+N 00749a70_p2f RELOCATION_MATCH leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/p2f_local_shareddef_dev.cpp
+PASS_DONE
+# overlay=
+N 00749a70_p2g DIFFER(27v33) leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/p2g_helper.cpp
+PASS_DONE
+# overlay=
+N 00749a70_p2h RELOCATION_MATCH leaf=??1CTCNoise@@UAE@XZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/p2h_helper_nopragma.cpp
+PASS_DONE
+# overlay=
+N 00749810_v8 DIFFER(67v79) leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF367/work/var/v8_ctordecl.cpp
+PASS_DONE

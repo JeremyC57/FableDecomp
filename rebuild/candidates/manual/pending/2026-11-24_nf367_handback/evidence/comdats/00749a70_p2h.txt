@@ -1,0 +1,25 @@
+  1 .drectve sel=0 size=42   align=1  nrel=0   (static) -
+  3 .text    sel=2 size=11   align=16 nrel=2   ??1CDefPointeeBase@@UAE@XZ
+  4 .rdata   sel=2 size=40   align=4  nrel=10  ??_7CDefPointeeBase@@6B@
+  6 .text    sel=2 size=36   align=16 nrel=3   ??_GCDefPointeeBase@@UAEPAXI@Z
+  8 .text    sel=2 size=11   align=16 nrel=2   ??1CDefClassBase@@UAE@XZ
+ 10 .text    sel=2 size=11   align=16 nrel=2   ??1CSubDefClassBase@@UAE@XZ
+ 12 .text    sel=2 size=11   align=16 nrel=2   ??1CTCNoiseDef@@UAE@XZ
+ 14 .text    sel=2 size=5    align=16 nrel=1   ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+ 16 .text    sel=2 size=33   align=16 nrel=4   ??1CTCNoise@@UAE@XZ
+ 18 .text    sel=1 size=35   align=16 nrel=4   ?ReferenceNoiseDestructor@?A0xbfaf630c@@YAXAAVCTCNoise@@@Z
+UND 14
+  UND ??1CBaseIntelligentPointer@@UAE@XZ
+  UND ??1CResource@@UAE@XZ
+  UND ??1CTCBase@@UAE@XZ
+  UND ??3@YAXPAX@Z
+  UND ??_GCDefPointeeBase@@UAEPAXI@Z
+  UND ?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+  UND ?Delete@CIVCountedPointeeBase@@UBEXXZ
+  UND ?GetDebugMemoryInUse@CResource@@UBEKXZ
+  UND ?GetUnloadableMemory@CResource@@UBEKXZ
+  UND ?IsResourceLoaded@CResource@@UBE_NXZ
+  UND ?OnResourceLoadAborted@CResource@@UAEXXZ
+  UND ?OnResourceLoaded@CResource@@UAEXXZ
+  UND ?ResetDebugMemoryInUse@CResource@@UAEXXZ
+  UND ?UnloadResource@CResource@@UAE_NXZ

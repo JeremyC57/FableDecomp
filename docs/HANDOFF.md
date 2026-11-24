@@ -11,7 +11,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   the CThingNoiseDef constructor unit), nf364_b1 (new CCountedPointer.h opt-in ..._RESET_SIZE_BODY_YOFF_TU, 19 rows) and nf365_b1 (the GetDef
   swap, 10 rows). nf365 g2/g3 landed too. Open on the reopened nf358 lines: 0041e6d3 (/GS), the CreateMapMarkers port (T3 nf365
   0x005FF190), and the /O2 rows whose leaf inlines the copy (closed for row devices, FINDINGS_LOG 2026-11-24). **Owner questions
-  open:** 0x0070D940 (B's row with a byte-identical GetMeshAnim copy) and NF359's option S (grade several catalog addresses from one object).
+  open:** (1) 0x0070D940 (B's row with a byte-identical GetMeshAnim copy). (2) NF359's option S (grade several catalog addresses from one
+  object) or B's object-order build mode now gates: 0x0045C5C1 and the duplicate CThingNoiseDef / CUIMiscThingsDef Alloc definitions; 0x00749810's
+  CTCNoiseDef copies (T3 nf359 PRIORITY); the CreateMapMarkers copies in 0x0060C900 / 0x0060EEB0; the 12 /O2 rows whose leaf inlines Reset / GetDef.
   Never close a copy line without a census.
 - **Later 2026-11-24 (this session):** synced with B (FullDecomp contains FullDecomp-B), then landed unit3 (59 rows,
   `batches/2026-11-24_landing_unit3`; agree_pdb 23,942). Owner: continue the naming queue; escalate hard naming issues to the advisor.

@@ -1,0 +1,65 @@
+  1 .drectve sel=0 size=42   align=1  nrel=0   (static) -
+  3 .text    sel=2 size=11   align=16 nrel=2   ??1CDefPointeeBase@@UAE@XZ
+  4 .rdata   sel=2 size=40   align=4  nrel=10  ??_7CDefPointeeBase@@6B@
+  6 .text    sel=2 size=36   align=16 nrel=3   ??_GCDefPointeeBase@@UAEPAXI@Z
+  8 .text    sel=2 size=11   align=1  nrel=2   ??1CDefClassBase@@UAE@XZ
+ 10 .text    sel=2 size=11   align=1  nrel=2   ??1CSubDefClassBase@@UAE@XZ
+ 12 .text    sel=2 size=18   align=1  nrel=2   ??0CTCNoiseDef@@QAE@XZ
+ 13 .rdata   sel=2 size=100  align=8  nrel=25  ??_7CTCNoiseDef@@6B@
+ 15 .text    sel=2 size=11   align=1  nrel=2   ??1CTCNoiseDef@@UAE@XZ
+ 17 .text    sel=2 size=19   align=1  nrel=2   ??1CThingBaseDef@@UAE@XZ
+ 19 .text    sel=2 size=34   align=1  nrel=3   ??_GCTCNoiseDef@@UAEPAXI@Z
+ 21 .text    sel=2 size=36   align=1  nrel=4   ??0CThingNoiseDef@@QAE@XZ
+ 22 .rdata   sel=2 size=100  align=8  nrel=25  ??_7CThingNoiseDef@@6B@
+ 24 .text    sel=2 size=28   align=1  nrel=2   ??_GCThingNoiseDef@@UAEPAXI@Z
+ 26 .text    sel=2 size=25   align=1  nrel=3   ??1CThingNoiseDef@@UAE@XZ
+ 28 .text    sel=1 size=25   align=1  nrel=2   ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+UND 48
+  UND ??0CSubDefClassBase@@QAE@XZ
+  UND ??0CThingBaseDef@@QAE@XZ
+  UND ??1CParentDefClassBase@@UAE@XZ
+  UND ??1CResource@@UAE@XZ
+  UND ??1CThingComponentSet@@QAE@XZ
+  UND ??2@YAPAXI@Z
+  UND ??3@YAXPAX@Z
+  UND ??_GCDefPointeeBase@@UAEPAXI@Z
+  UND ??_GCTCNoiseDef@@UAEPAXI@Z
+  UND ??_GCThingNoiseDef@@UAEPAXI@Z
+  UND ?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+  UND ?AddSubDef@CParentDefClassBase@@UAEXABVCCharString@@JJ@Z
+  UND ?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+  UND ?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z
+  UND ?Copy@CThingNoiseDef@@UAEXPBVCDefClassBase@@@Z
+  UND ?Delete@CIVCountedPointeeBase@@UBEXXZ
+  UND ?GetDebugMemoryInUse@CResource@@UBEKXZ
+  UND ?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+  UND ?GetInstantiationName@CParentDefClassBase@@UBE?AVCDefString@@XZ
+  UND ?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+  UND ?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+  UND ?GetPSubDefInfo@CParentDefClassBase@@UAEPAVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z
+  UND ?GetPSubDefInfo@CParentDefClassBase@@UBEPBVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z
+  UND ?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+  UND ?GetPSubDefInfoMap@CParentDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+  UND ?GetSizeofClass@CTCNoiseDef@@UAEKXZ
+  UND ?GetSizeofClass@CThingNoiseDef@@UAEKXZ
+  UND ?GetUnloadableMemory@CResource@@UBEKXZ
+  UND ?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+  UND ?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z
+  UND ?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+  UND ?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+  UND ?IsParentDef@CDefClassBase@@UBE_NXZ
+  UND ?IsParentDef@CParentDefClassBase@@UBE_NXZ
+  UND ?IsResourceLoaded@CResource@@UBE_NXZ
+  UND ?OnResourceLoadAborted@CResource@@UAEXXZ
+  UND ?OnResourceLoaded@CResource@@UAEXXZ
+  UND ?PostTransfer@CDefClassBase@@UAEXXZ
+  UND ?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+  UND ?RemoveSubDef@CParentDefClassBase@@UAEXABVCCharString@@@Z
+  UND ?ResetDebugMemoryInUse@CResource@@UAEXXZ
+  UND ?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+  UND ?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z
+  UND ?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z
+  UND ?Transfer@CThingNoiseDef@@UAEXAAVCPersistContext@@@Z
+  UND ?UnloadResource@CDefClassBase@@UAE_NXZ
+  UND ?UnloadResource@CResource@@UAE_NXZ
+  UND ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z

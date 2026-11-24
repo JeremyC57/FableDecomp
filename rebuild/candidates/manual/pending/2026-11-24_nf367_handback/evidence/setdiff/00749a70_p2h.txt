@@ -1,0 +1,20 @@
+DROPPED  .rdata   sel=2 size=4 ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@
+DROPPED  .rdata   sel=2 size=112 ??_7CTCNoise@@6B@
+DROPPED  .text    sel=2 size=18 ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ
+DROPPED  .text    sel=1 size=59 ??0CTCNoise@@QAE@AAVCThing@@@Z
+DROPPED  .text    sel=2 size=30 ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+DROPPED  .text    sel=2 size=30 ??_GCTCNoise@@UAEPAXI@Z
+ADDED    .text    sel=1 size=35 ?ReferenceNoiseDestructor@?A0xbfaf630c@@YAXAAVCTCNoise@@@Z
+SAME     .drectve static:- 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+SAME     .text    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ 
+SAME     .text    ??1CDefClassBase@@UAE@XZ 
+SAME     .text    ??1CDefPointeeBase@@UAE@XZ 
+SAME     .text    ??1CSubDefClassBase@@UAE@XZ 
+SAME     .text    ??1CTCNoise@@UAE@XZ 
+SAME     .text    ??1CTCNoiseDef@@UAE@XZ 
+SAME     .text    ??_GCDefPointeeBase@@UAEPAXI@Z 
+DEF dropped: ['??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ', '??0CTCNoise@@QAE@AAVCThing@@@Z', '??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@', '??_7CTCNoise@@6B@', '??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z', '??_GCTCNoise@@UAEPAXI@Z']
+DEF added: ['?ReferenceNoiseDestructor@?A0xbfaf630c@@YAXAAVCTCNoise@@@Z']
+UND dropped: ['??0CBaseIntelligentPointer@@QAE@XZ', '??0CTCBase@@QAE@AAVCThing@@@Z', '??0CTCNoiseDef@@QAE@XZ', '??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z', '??_GCTCNoise@@UAEPAXI@Z', '?BulletTimeFrameUpdate@CTCBase@@UAEXXZ', '?ConstructFromParams@CTCBase@@UAEXABVCTCParamsBase@@@Z', '?Copy@CTCBase@@UAEXABV1@@Z', '?DrawPreparePrimitivesForRendering@CTCBase@@UAEXABVCEnginePrimitivePrepareInfo@@@Z', '?FrameUpdate@CTCBase@@UAEXXZ', '?GetClassTypeName@CTCNoise@@UBE?AVCCharString@@XZ', '?GetInterfaceType@CTCNoise@@UBE?AW4ETCInterfaceType@@XZ', '?GlobalUpdate@CTCBase@@UAEX_N@Z', '?HandleMessage@CTCBase@@UAEXABVCMessageBase@NTCMessages@@@Z', '?HasFrameUpdate@CTCBase@@UBE_NXZ', '?InitialActivate@CTCBase@@UAEXXZ', '?IsComponentSerialisable@CTCBase@@UBE_NXZ', '?IsCopyable@CTCBase@@UBE_NXZ', '?IsDriver@CTCBase@@UBE_NXZ', '?IsFreeForDeletion@CTCBase@@UBE_NXZ', '?IsSerialisableForHeroState@CTCBase@@UBE_NXZ', '?IsSerialiseCreatable@CTCBase@@UBE_NXZ', '?OnCreate@CTCBase@@UAEXXZ', '?OnDie@CTCBase@@UAEXXZ', '?OnInitialActivate@CTCBase@@UAEXXZ', '?OnKill@CTCBase@@UAEXXZ', '?OnLevelUnload@CTCBase@@UAEXXZ', '?OnRemove@CTCBase@@UAEXXZ', '?OnSerialise@CTCBase@@MAEXAAVCPersistContext@@_N@Z', '?OnSetInLimbo@CTCBase@@UAEX_N@Z', '?RenderUpdate@CTCBase@@UAEXM@Z', '?Validate@CTCBase@@UBE_NAAVCCharString@@@Z', '__fltused']
+UND added (0): []

@@ -1,0 +1,4 @@
+EQ  0042d9e0 29 ??0CDefClassBase@@AAE@XZ 
+EQ  0044c0c0 29 ??0CSubDefClassBase@@QAE@XZ 
+EQ  00749810 79 ??0CTCNoise@@QAE@AAVCThing@@@Z 
+len=33

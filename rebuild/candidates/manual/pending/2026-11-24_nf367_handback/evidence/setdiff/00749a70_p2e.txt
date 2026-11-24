@@ -1,0 +1,29 @@
+ADDED    .rdata   sel=2 size=100 ??_7CDefClassBase@@6B@
+ADDED    .rdata   sel=2 size=100 ??_7CSubDefClassBase@@6B@
+ADDED    .rdata   sel=2 size=100 ??_7CTCNoiseDef@@6B@
+ADDED    .text    sel=2 size=29 ??0CDefClassBase@@AAE@XZ
+ADDED    .text    sel=2 size=18 ??0CDefPointeeBase@@QAE@XZ
+ADDED    .text    sel=2 size=29 ??0CSubDefClassBase@@QAE@XZ
+ADDED    .text    sel=2 size=29 ??0CTCNoiseDef@@QAE@XZ
+ADDED    .text    sel=2 size=36 ??_GCDefClassBase@@UAEPAXI@Z
+ADDED    .text    sel=2 size=36 ??_GCSubDefClassBase@@UAEPAXI@Z
+ADDED    .text    sel=2 size=36 ??_GCTCNoiseDef@@UAEPAXI@Z
+SAME     .drectve static:- 
+SAME     .rdata   ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+CHANGED  .rdata   ??_7CTCNoise@@6B@ relocs ['?FrameUpdate@CTCBase@@UAEXXZ', '?HasFrameUpdate@CTCBase@@UBE_NXZ', '?OnCreate@CTCBase@@UAEXXZ'] -> ['?FrameUpdate@CTCNoise@@UAEXXZ', '?HasFrameUpdate@CTCNoise@@UBE_NXZ', '?OnCreate@CTCNoise@@UAEXXZ']
+SAME     .text    ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ 
+CHANGED  .text    ??0CTCNoise@@QAE@AAVCThing@@@Z size 59->79; bytes differ; relocs ['??0CTCNoiseDef@@QAE@XZ'] -> ['??0CResource@@QAE@XZ', '??_7CTCNoiseDef@@6B@']
+SAME     .text    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ 
+SAME     .text    ??1CDefClassBase@@UAE@XZ 
+SAME     .text    ??1CDefPointeeBase@@UAE@XZ 
+SAME     .text    ??1CSubDefClassBase@@UAE@XZ 
+SAME     .text    ??1CTCNoise@@UAE@XZ 
+SAME     .text    ??1CTCNoiseDef@@UAE@XZ 
+SAME     .text    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z 
+SAME     .text    ??_GCDefPointeeBase@@UAEPAXI@Z 
+SAME     .text    ??_GCTCNoise@@UAEPAXI@Z 
+DEF dropped: []
+DEF added: ['??0CDefClassBase@@AAE@XZ', '??0CDefPointeeBase@@QAE@XZ', '??0CSubDefClassBase@@QAE@XZ', '??0CTCNoiseDef@@QAE@XZ', '??_7CDefClassBase@@6B@', '??_7CSubDefClassBase@@6B@', '??_7CTCNoiseDef@@6B@', '??_GCDefClassBase@@UAEPAXI@Z', '??_GCSubDefClassBase@@UAEPAXI@Z', '??_GCTCNoiseDef@@UAEPAXI@Z']
+UND dropped: ['??0CTCNoiseDef@@QAE@XZ', '?FrameUpdate@CTCBase@@UAEXXZ', '?HasFrameUpdate@CTCBase@@UBE_NXZ', '?OnCreate@CTCBase@@UAEXXZ']
+UND added (24): ['??0CResource@@QAE@XZ', '??_GCDefClassBase@@UAEPAXI@Z', '??_GCSubDefClassBase@@UAEPAXI@Z', '??_GCTCNoiseDef@@UAEPAXI@Z', '?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z', '?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z', '?FrameUpdate@CTCNoise@@UAEXXZ', '?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ', '?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z', '?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z', '?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ', '?GetSizeofClass@CTCNoiseDef@@UAEKXZ', '?HasFrameUpdate@CTCNoise@@UBE_NXZ', '?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z', '?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z', '?IsParentDef@CDefClassBase@@UBE_NXZ', '?OnCreate@CTCNoise@@UAEXXZ', '?PostTransfer@CDefClassBase@@UAEXXZ', '?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z', '?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z', '?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z', '?UnloadResource@CDefClassBase@@UAE_NXZ', '?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z', '__purecall']

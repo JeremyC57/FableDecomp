@@ -1,0 +1,54 @@
+## ??0CTCNoiseDef@@QAE@XZ (REF = owner 0x0045C5F6 HEAD object)
+REF H_0045c5f6.obj len=18 relocs=2
+EQUAL H_0044c1bb.obj len=18
+DIFF bytes=False relocs=False H_00749810.obj len=29
+DIFF bytes=False relocs=False 00749810_v1.obj len=29
+EQUAL 00749810_v2.obj len=18
+DIFF bytes=True relocs=False 00749810_v4.obj len=18
+DIFF bytes=True relocs=False 00749810_v5.obj len=18
+EQUAL 00749810_v6.obj len=18
+EQUAL 00749810_v7.obj len=18
+DIFF bytes=False relocs=False 00749a70_p2e.obj len=29
+EQUAL 00749a70_p2f.obj len=18
+## ??_GCTCNoiseDef@@UAEPAXI@Z (REF = owner 0x0045C5F6 HEAD object)
+REF H_0045c5f6.obj len=34 relocs=3
+EQUAL H_0044c1bb.obj len=34
+DIFF bytes=False relocs=False H_00749810.obj len=30
+DIFF bytes=False relocs=True 00749810_v1.obj len=36
+DIFF bytes=False relocs=False 00749810_v2.obj len=30
+EQUAL 00749810_v4.obj len=34
+DIFF bytes=False relocs=False 00749810_v5.obj len=28
+EQUAL 00749810_v6.obj len=34
+DIFF bytes=False relocs=False 00749810_v7.obj len=28
+DIFF bytes=False relocs=True 00749a70_p2e.obj len=36
+EQUAL 00749a70_p2f.obj len=34
+## ??0CTCNoise@@QAE@AAVCThing@@@Z (REF = HEAD 0x00749810)
+REF H_00749810.obj len=79 relocs=6
+DIFF bytes=False relocs=False H_00749a70.obj len=59
+EQUAL 00749a70_p2e.obj len=79
+EQUAL 00749a70_p2f.obj len=79
+EQUAL 00749810_v6.obj len=79
+## ??_7CTCNoise@@6B@ (REF = HEAD 0x00749810)
+REF H_00749810.obj len=112 relocs=28
+DIFF bytes=True relocs=False H_00749a70.obj len=112
+EQUAL 00749a70_p2e.obj len=112
+EQUAL 00749a70_p2f.obj len=112
+EQUAL 00749810_v6.obj len=112
+## ??_GCTCNoise@@UAEPAXI@Z (REF = HEAD 0x00749810)
+REF H_00749810.obj len=30 relocs=2
+EQUAL H_00749a70.obj len=30
+EQUAL 00749a70_p2e.obj len=30
+EQUAL 00749a70_p2f.obj len=30
+EQUAL 00749810_v6.obj len=30
+## ??1CTCNoiseDef@@UAE@XZ (REF = HEAD 0x00749A70; no retail home: retail expands it everywhere)
+REF H_00749a70.obj len=11 relocs=2
+EQUAL 00749810_v1.obj len=11
+EQUAL 00749810_v6.obj len=11
+EQUAL 00749a70_p2e.obj len=11
+EQUAL 00749a70_p2f.obj len=11
+EQUAL 00749a70_p2h.obj len=11
+## ??1CTCNoise@@UAE@XZ (REF = HEAD 0x00749A70, the leaf)
+REF H_00749a70.obj len=33 relocs=4
+EQUAL 00749a70_p2e.obj len=33
+EQUAL 00749a70_p2f.obj len=33
+EQUAL 00749a70_p2h.obj len=33

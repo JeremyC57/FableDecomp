@@ -1,0 +1,2 @@
+NEQ 00749810 59 ??0CTCNoise@@QAE@AAVCThing@@@Z not referenced by the leaf
+len=33

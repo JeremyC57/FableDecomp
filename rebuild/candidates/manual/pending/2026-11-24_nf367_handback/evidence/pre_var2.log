@@ -1,0 +1,14 @@
+== v4_dev_implicit
+19a20
+> #define FABLE_RETAIL_CTCNOISEDEF_IMPLICIT_DTOR
+20a22,25
+> // MEASUREMENT ONLY (NF367): size-mode device around the def header, not a candidate
+> #pragma optimize("s", on)
+> #include "engine/CTCNoiseDef.h"
+> #pragma optimize("", on)
+== v5_dev
+20a21,24
+> // MEASUREMENT ONLY (NF367): size-mode device around the def header, not a candidate
+> #pragma optimize("s", on)
+> #include "engine/CTCNoiseDef.h"
+> #pragma optimize("", on)

@@ -1,0 +1,82 @@
+== p2a_declonly
+61,64d60
+< CTCNoise::CTCNoise(CThing& thing)
+<     : CTCBase(thing), LifeTimer(0), DistanceCanBeHeardFrom(0)     // retail 0x00749847 / 0x0074984A store 0 to both
+< {
+< }
+\ No newline at end of file
+== p2b_hdr_explicit_implicitdef
+1c1
+---
+3,20c3
+---
+> #define FABLE_RETAIL_HEARING
+22d4
+< #include "engine/CTCBase.h"                                 // CTCBase : CBaseClassNonCopyable (vtable 0x0125BE0C)
+24,29c6,10
+< #include "engine/CSubDefClassBase.h"                        // : CDefClassBase : CDefPointeeBase (vtable 0x01230BA0) : CResource
+< 
+< class CThing;
+< class CBaseObject;
+< class CBaseObjectPointer;
+< 
+---
+> #define FABLE_RETAIL_DEF_CLASS_BASE_CTORS
+> #define FABLE_RETAIL_CDEFCLASSBASE_CTOR_SUBDEF_FRIEND
+> #define FABLE_RETAIL_CSUBDEFCLASSBASE_CTOR_INLINE
+> #define FABLE_RETAIL_CTCNOISEDEF_CTOR_INLINE
+> #define FABLE_RETAIL_CTCNOISEDEF_IMPLICIT_DTOR
+31,59c12
+< #include "engine/CIntelligentPointer.h"
+< 
+< enum ENoiseType;                                            // MS forward enum (Ego_r CTCNoiseDef::Type)
+< 
+< class CTCNoiseDef : public CSubDefClassBase {               // RTTI CTCNoiseDef : CSubDefClassBase; Ego_r 0x34 bytes
+< public:
+<     CTCNoiseDef();                                          // ??0CTCNoiseDef@@QAE@XZ
+<     virtual void Transfer(CPersistContext& context);        // slot 18
+<     virtual void Copy(const CDefClassBase* other);          // slot 19
+== p2c_hdr_explicit
+1c1
+---
+3,20c3
+---
+> #define FABLE_RETAIL_HEARING
+22d4
+< #include "engine/CTCBase.h"                                 // CTCBase : CBaseClassNonCopyable (vtable 0x0125BE0C)
+24,29c6,9
+< #include "engine/CSubDefClassBase.h"                        // : CDefClassBase : CDefPointeeBase (vtable 0x01230BA0) : CResource
+< 
+< class CThing;
+< class CBaseObject;
+< class CBaseObjectPointer;
+< 
+---
+> #define FABLE_RETAIL_DEF_CLASS_BASE_CTORS
+> #define FABLE_RETAIL_CDEFCLASSBASE_CTOR_SUBDEF_FRIEND
+> #define FABLE_RETAIL_CSUBDEFCLASSBASE_CTOR_INLINE
+> #define FABLE_RETAIL_CTCNOISEDEF_CTOR_INLINE
+31,59c11
+< #include "engine/CIntelligentPointer.h"
+< 
+< enum ENoiseType;                                            // MS forward enum (Ego_r CTCNoiseDef::Type)
+< 
+< class CTCNoiseDef : public CSubDefClassBase {               // RTTI CTCNoiseDef : CSubDefClassBase; Ego_r 0x34 bytes
+< public:
+<     CTCNoiseDef();                                          // ??0CTCNoiseDef@@QAE@XZ
+<     virtual void Transfer(CPersistContext& context);        // slot 18
+<     virtual void Copy(const CDefClassBase* other);          // slot 19
+<     virtual unsigned long GetSizeofClass();                 // slot 20
+== p2d_local_explicit
+51a52
+>     virtual ~CTCNoise();
+61,62c62
+< CTCNoise::CTCNoise(CThing& thing)
+<     : CTCBase(thing), LifeTimer(0), DistanceCanBeHeardFrom(0)     // retail 0x00749847 / 0x0074984A store 0 to both
+---
+> CTCNoise::~CTCNoise()
+64c64
+< }
+\ No newline at end of file
+---
+> }

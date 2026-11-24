@@ -1,0 +1,1 @@
+pre p2h_helper_nopragma.cpp: PASS (clang -fsyntax-only, no errors; output was empty)

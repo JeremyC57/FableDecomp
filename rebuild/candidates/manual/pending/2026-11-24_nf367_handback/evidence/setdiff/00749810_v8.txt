@@ -1,0 +1,27 @@
+DROPPED  .rdata   sel=2 size=100 ??_7CDefClassBase@@6B@
+DROPPED  .text    sel=2 size=29 ??0CDefClassBase@@AAE@XZ
+DROPPED  .text    sel=2 size=18 ??0CDefPointeeBase@@QAE@XZ
+DROPPED  .text    sel=2 size=36 ??_GCDefClassBase@@UAEPAXI@Z
+SAME     .drectve static:- 
+SAME     .rdata   ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+SAME     .rdata   ??_7CSubDefClassBase@@6B@ 
+SAME     .rdata   ??_7CTCNoise@@6B@ 
+SAME     .rdata   ??_7CTCNoiseDef@@6B@ 
+SAME     .text    ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ 
+CHANGED  .text    ??0CSubDefClassBase@@QAE@XZ size 29->18; bytes differ; relocs ['??0CResource@@QAE@XZ'] -> ['??0CDefClassBase@@AAE@XZ']
+CHANGED  .text    ??0CTCNoise@@QAE@AAVCThing@@@Z size 79->67; bytes differ; relocs ['??0CResource@@QAE@XZ'] -> ['??0CDefClassBase@@AAE@XZ']
+CHANGED  .text    ??0CTCNoiseDef@@QAE@XZ size 29->18; bytes differ; relocs ['??0CResource@@QAE@XZ'] -> ['??0CDefClassBase@@AAE@XZ']
+SAME     .text    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ 
+SAME     .text    ??1CDefClassBase@@UAE@XZ 
+SAME     .text    ??1CDefPointeeBase@@UAE@XZ 
+SAME     .text    ??1CSubDefClassBase@@UAE@XZ 
+SAME     .text    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z 
+SAME     .text    ??_GCDefPointeeBase@@UAEPAXI@Z 
+SAME     .text    ??_GCSubDefClassBase@@UAEPAXI@Z 
+SAME     .text    ??_GCTCNoise@@UAEPAXI@Z 
+SAME     .text    ??_GCTCNoiseDef@@UAEPAXI@Z 
+DEF dropped: ['??0CDefClassBase@@AAE@XZ', '??0CDefPointeeBase@@QAE@XZ', '??_7CDefClassBase@@6B@', '??_GCDefClassBase@@UAEPAXI@Z']
+DEF added: []
+UND dropped: ['??0CResource@@QAE@XZ', '??_GCDefClassBase@@UAEPAXI@Z']
+UND added (1): ['??0CDefClassBase@@AAE@XZ']

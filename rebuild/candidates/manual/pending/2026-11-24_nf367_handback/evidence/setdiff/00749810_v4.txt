@@ -1,0 +1,28 @@
+ADDED    .text    sel=2 size=11 ??1CTCNoiseDef@@UAE@XZ
+SAME     .drectve static:- 
+SAME     .rdata   ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 
+SAME     .rdata   ??_7CDefClassBase@@6B@ 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+SAME     .rdata   ??_7CSubDefClassBase@@6B@ 
+SAME     .rdata   ??_7CTCNoise@@6B@ 
+SAME     .rdata   ??_7CTCNoiseDef@@6B@ 
+SAME     .text    ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ 
+CHANGED  .text    ??0CDefClassBase@@AAE@XZ size 29->26; characteristics 60501020->60101020; bytes differ; relocs [] -> []
+CHANGED  .text    ??0CDefPointeeBase@@QAE@XZ characteristics 60501020->60101020
+CHANGED  .text    ??0CSubDefClassBase@@QAE@XZ size 29->18; characteristics 60501020->60101020; bytes differ; relocs ['??0CResource@@QAE@XZ'] -> ['??0CDefClassBase@@AAE@XZ']
+SAME     .text    ??0CTCNoise@@QAE@AAVCThing@@@Z 
+CHANGED  .text    ??0CTCNoiseDef@@QAE@XZ size 29->18; characteristics 60501020->60101020; bytes differ; relocs ['??0CResource@@QAE@XZ'] -> ['??0CDefClassBase@@AAE@XZ']
+SAME     .text    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ 
+CHANGED  .text    ??1CDefClassBase@@UAE@XZ characteristics 60501020->60101020
+CHANGED  .text    ??1CDefPointeeBase@@UAE@XZ characteristics 60501020->60101020
+CHANGED  .text    ??1CSubDefClassBase@@UAE@XZ characteristics 60501020->60101020
+SAME     .text    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z 
+CHANGED  .text    ??_GCDefClassBase@@UAEPAXI@Z size 36->34; characteristics 60501020->60101020; bytes differ
+CHANGED  .text    ??_GCDefPointeeBase@@UAEPAXI@Z size 36->34; characteristics 60501020->60101020; bytes differ
+CHANGED  .text    ??_GCSubDefClassBase@@UAEPAXI@Z size 36->34; characteristics 60501020->60101020; bytes differ
+SAME     .text    ??_GCTCNoise@@UAEPAXI@Z 
+CHANGED  .text    ??_GCTCNoiseDef@@UAEPAXI@Z size 30->34; characteristics 60501020->60101020; bytes differ; relocs ['??1CTCNoiseDef@@UAE@XZ'] -> ['??1CResource@@UAE@XZ', '??_7CDefPointeeBase@@6B@']
+DEF dropped: []
+DEF added: ['??1CTCNoiseDef@@UAE@XZ']
+UND dropped: ['??1CTCNoiseDef@@UAE@XZ']
+UND added (0): []

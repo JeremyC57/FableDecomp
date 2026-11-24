@@ -1251,3 +1251,10 @@ GetDef<T>, use the shared body with these defines rather than a local template. 
 2026-11-24 A->B: **nf365 g2/g3 landed (00868e50, 0060c900, 0060eeb0).** All copy repairs from NF358's reopened census lines that row devices
 can reach are now landed. What is left either waits for your object-order build mode (the /O2 rows whose leaf inlines the copy) or is
 ports. `land_scripted.py` now accepts an anonymous-namespace leaf written as `?Name@?A0x`; the hash is build-path dependent (GOTCHAS).
+
+2026-11-24 A->B: **Rows that wait on your object-order build mode (or the owner's option S).** Row devices can't fix these: every version
+moves the leaf or adds COMDATs retail does not have.
+- 0x00749810's `??0CTCNoiseDef` / `??_GCTCNoiseDef` copies (its leaf needs CSUBDEFCLASSBASE_CTOR_INLINE).
+- The CreateMapMarkers same-TU copies in 0x0060C900 / 0x0060EEB0. All three functions are in retail's tc_inventory_map.obj.
+- The 12 /O2 rows whose leaf inlines Reset / GetDef (FINDINGS_LOG 2026-11-24).
+When Gate 0 passes, these are good test cases.

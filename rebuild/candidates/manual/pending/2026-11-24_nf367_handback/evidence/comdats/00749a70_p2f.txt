@@ -1,0 +1,93 @@
+  1 .drectve sel=0 size=42   align=1  nrel=0   (static) -
+  3 .text    sel=2 size=11   align=16 nrel=2   ??1CDefPointeeBase@@UAE@XZ
+  4 .rdata   sel=2 size=40   align=4  nrel=10  ??_7CDefPointeeBase@@6B@
+  6 .text    sel=2 size=36   align=16 nrel=3   ??_GCDefPointeeBase@@UAEPAXI@Z
+  8 .text    sel=2 size=11   align=16 nrel=2   ??1CDefClassBase@@UAE@XZ
+ 10 .text    sel=2 size=18   align=16 nrel=2   ??0CDefPointeeBase@@QAE@XZ
+ 12 .text    sel=2 size=11   align=16 nrel=2   ??1CSubDefClassBase@@UAE@XZ
+ 14 .text    sel=2 size=11   align=1  nrel=2   ??1CTCNoiseDef@@UAE@XZ
+ 16 .text    sel=2 size=5    align=16 nrel=1   ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+ 18 .text    sel=2 size=18   align=16 nrel=2   ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ
+ 19 .rdata   sel=2 size=4    align=4  nrel=1   ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@
+ 21 .text    sel=2 size=30   align=16 nrel=2   ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+ 23 .text    sel=2 size=29   align=16 nrel=2   ??0CDefClassBase@@AAE@XZ
+ 24 .rdata   sel=2 size=100  align=8  nrel=25  ??_7CDefClassBase@@6B@
+ 26 .text    sel=2 size=36   align=16 nrel=3   ??_GCDefClassBase@@UAEPAXI@Z
+ 28 .text    sel=2 size=29   align=16 nrel=2   ??0CSubDefClassBase@@QAE@XZ
+ 29 .rdata   sel=2 size=100  align=8  nrel=25  ??_7CSubDefClassBase@@6B@
+ 31 .text    sel=2 size=36   align=16 nrel=3   ??_GCSubDefClassBase@@UAEPAXI@Z
+ 33 .text    sel=2 size=18   align=1  nrel=2   ??0CTCNoiseDef@@QAE@XZ
+ 34 .rdata   sel=2 size=100  align=8  nrel=25  ??_7CTCNoiseDef@@6B@
+ 36 .text    sel=2 size=34   align=1  nrel=3   ??_GCTCNoiseDef@@UAEPAXI@Z
+ 38 .text    sel=1 size=79   align=16 nrel=6   ??0CTCNoise@@QAE@AAVCThing@@@Z
+ 39 .rdata   sel=2 size=112  align=8  nrel=28  ??_7CTCNoise@@6B@
+ 41 .text    sel=2 size=30   align=16 nrel=2   ??_GCTCNoise@@UAEPAXI@Z
+ 43 .text    sel=2 size=33   align=16 nrel=4   ??1CTCNoise@@UAE@XZ
+UND 67
+  UND ??0CBaseIntelligentPointer@@QAE@XZ
+  UND ??0CResource@@QAE@XZ
+  UND ??0CTCBase@@QAE@AAVCThing@@@Z
+  UND ??1CBaseIntelligentPointer@@UAE@XZ
+  UND ??1CResource@@UAE@XZ
+  UND ??1CTCBase@@UAE@XZ
+  UND ??3@YAXPAX@Z
+  UND ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+  UND ??_GCDefClassBase@@UAEPAXI@Z
+  UND ??_GCDefPointeeBase@@UAEPAXI@Z
+  UND ??_GCSubDefClassBase@@UAEPAXI@Z
+  UND ??_GCTCNoise@@UAEPAXI@Z
+  UND ??_GCTCNoiseDef@@UAEPAXI@Z
+  UND ?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+  UND ?BulletTimeFrameUpdate@CTCBase@@UAEXXZ
+  UND ?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+  UND ?ConstructFromParams@CTCBase@@UAEXABVCTCParamsBase@@@Z
+  UND ?Copy@CTCBase@@UAEXABV1@@Z
+  UND ?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z
+  UND ?Delete@CIVCountedPointeeBase@@UBEXXZ
+  UND ?DrawPreparePrimitivesForRendering@CTCBase@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+  UND ?FrameUpdate@CTCNoise@@UAEXXZ
+  UND ?GetClassTypeName@CTCNoise@@UBE?AVCCharString@@XZ
+  UND ?GetDebugMemoryInUse@CResource@@UBEKXZ
+  UND ?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+  UND ?GetInterfaceType@CTCNoise@@UBE?AW4ETCInterfaceType@@XZ
+  UND ?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+  UND ?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+  UND ?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+  UND ?GetSizeofClass@CTCNoiseDef@@UAEKXZ
+  UND ?GetUnloadableMemory@CResource@@UBEKXZ
+  UND ?GlobalUpdate@CTCBase@@UAEX_N@Z
+  UND ?HandleMessage@CTCBase@@UAEXABVCMessageBase@NTCMessages@@@Z
+  UND ?HasFrameUpdate@CTCNoise@@UBE_NXZ
+  UND ?InitialActivate@CTCBase@@UAEXXZ
+  UND ?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+  UND ?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+  UND ?IsComponentSerialisable@CTCBase@@UBE_NXZ
+  UND ?IsCopyable@CTCBase@@UBE_NXZ
+  UND ?IsDriver@CTCBase@@UBE_NXZ
+  UND ?IsFreeForDeletion@CTCBase@@UBE_NXZ
+  UND ?IsParentDef@CDefClassBase@@UBE_NXZ
+  UND ?IsResourceLoaded@CResource@@UBE_NXZ
+  UND ?IsSerialisableForHeroState@CTCBase@@UBE_NXZ
+  UND ?IsSerialiseCreatable@CTCBase@@UBE_NXZ
+  UND ?OnCreate@CTCNoise@@UAEXXZ
+  UND ?OnDie@CTCBase@@UAEXXZ
+  UND ?OnInitialActivate@CTCBase@@UAEXXZ
+  UND ?OnKill@CTCBase@@UAEXXZ
+  UND ?OnLevelUnload@CTCBase@@UAEXXZ
+  UND ?OnRemove@CTCBase@@UAEXXZ
+  UND ?OnResourceLoadAborted@CResource@@UAEXXZ
+  UND ?OnResourceLoaded@CResource@@UAEXXZ
+  UND ?OnSerialise@CTCBase@@MAEXAAVCPersistContext@@_N@Z
+  UND ?OnSetInLimbo@CTCBase@@UAEX_N@Z
+  UND ?PostTransfer@CDefClassBase@@UAEXXZ
+  UND ?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+  UND ?RenderUpdate@CTCBase@@UAEXM@Z
+  UND ?ResetDebugMemoryInUse@CResource@@UAEXXZ
+  UND ?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+  UND ?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z
+  UND ?UnloadResource@CDefClassBase@@UAE_NXZ
+  UND ?UnloadResource@CResource@@UAE_NXZ
+  UND ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+  UND ?Validate@CTCBase@@UBE_NAAVCCharString@@@Z
+  UND __fltused
+  UND __purecall

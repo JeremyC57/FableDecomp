@@ -1,0 +1,5 @@
+address	status	reason
+0x00749810	skipped-device	Part 1: neither NEQ copy (??0CTCNoiseDef 29 B v 18, ??_GCTCNoiseDef 30 B v 34) has an existing-opt-in or byte-neutral-include fix; the only owner-EQ text is a size-mode pragma around CTCNoiseDef.h (v6), a new device: ruling NF367-Q1. Row unchanged.
+0x00749a70	held-ruling	Part 2: retail ??0CTCNoise is 0x00749810 79 B; 0x00749A70 defines a 59 B NEQ strong copy because its ctor is the only emitter of the vftable / ??_G / implicit ??1. Measured fix P2h (ctor declared + one ?A0x helper, scaffolding): every measured gate passes but the helper is a device: ruling NF367-Q2. No run dir.
+0x0044c1bb	read-only	owner object compiled at HEAD for the copy comparison; lock released after the build.
+0x0045c5f6	read-only	owner object compiled at HEAD for the copy comparison; lock released after the build.

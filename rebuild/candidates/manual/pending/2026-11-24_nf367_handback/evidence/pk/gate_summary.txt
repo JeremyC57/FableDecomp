@@ -1,0 +1,70 @@
+=== p2e
+-- pkall
+< NEQ	NEQ	00749810	b	strong	59	79	n	n	??0CTCNoise@@QAE@AAVCThing@@@Z
+> EQ	EQ	0042d9e0	b	pickany	29	29	n	n	??0CDefClassBase@@AAE@XZ
+> EQ	EQ	0042d910	c	pickany	18	18	n	n	??0CDefPointeeBase@@QAE@XZ
+> EQ	EQ	0044c0c0	b	pickany	29	29	n	n	??0CSubDefClassBase@@QAE@XZ
+> EQ	EQ	00749810	b	strong	79	79	n	n	??0CTCNoise@@QAE@AAVCThing@@@Z
+> NEQ	NEQ	0044c1bb	c	pickany	29	18	n	n	??0CTCNoiseDef@@QAE@XZ
+-- pkallo
+< NEQ	NEQ	00749810	b,o	strong	59	79	n	n	??0CTCNoise@@QAE@AAVCThing@@@Z
+> EQ	EQ	0042d9e0	b	pickany	29	29	n	n	??0CDefClassBase@@AAE@XZ
+> EQ	EQ	0042d910	c	pickany	18	18	n	n	??0CDefPointeeBase@@QAE@XZ
+> EQ	EQ	0044c0c0	b	pickany	29	29	n	n	??0CSubDefClassBase@@QAE@XZ
+> EQ	EQ	00749810	b,o	strong	79	79	n	n	??0CTCNoise@@QAE@AAVCThing@@@Z
+> NEQ	NEQ	0044c1bb	c,o	pickany	29	18	n	n	??0CTCNoiseDef@@QAE@XZ
+> EQ	EQ	0042dab0	o	pickany	36	36	n	n	??_GCDefClassBase@@UAEPAXI@Z
+> EQ	EQ	0044f620	o	pickany	36	36	n	n	??_GCSubDefClassBase@@UAEPAXI@Z
+> NEQ	NEQ	0044f71b	o	pickany	36	34	n	n	??_GCTCNoiseDef@@UAEPAXI@Z
+reachflip(addrs):
+pairs 1 NEQ reach flips 0
+reachflip(plain):
+pairs 2 NEQ reach flips 0
+=== p2f
+-- pkall
+< NEQ	NEQ	00749810	b	strong	59	79	n	n	??0CTCNoise@@QAE@AAVCThing@@@Z
+> EQ	EQ	0042d9e0	b	pickany	29	29	n	n	??0CDefClassBase@@AAE@XZ
+> EQ	EQ	0042d910	c	pickany	18	18	n	n	??0CDefPointeeBase@@QAE@XZ
+> EQ	EQ	0044c0c0	a2,b	pickany	29	29	n	n	??0CSubDefClassBase@@QAE@XZ
+> EQ	EQ	00749810	b	strong	79	79	n	n	??0CTCNoise@@QAE@AAVCThing@@@Z
+> EQ	EQ	0044c1bb	c	pickany	18	18	n	n	??0CTCNoiseDef@@QAE@XZ
+-- pkallo
+< NEQ	NEQ	00749810	b,o	strong	59	79	n	n	??0CTCNoise@@QAE@AAVCThing@@@Z
+> EQ	EQ	0042d9e0	b	pickany	29	29	n	n	??0CDefClassBase@@AAE@XZ
+> EQ	EQ	0042d910	c	pickany	18	18	n	n	??0CDefPointeeBase@@QAE@XZ
+> EQ	EQ	0044c0c0	a2,b	pickany	29	29	n	n	??0CSubDefClassBase@@QAE@XZ
+> EQ	EQ	00749810	b,o	strong	79	79	n	n	??0CTCNoise@@QAE@AAVCThing@@@Z
+> EQ	EQ	0044c1bb	c,o	pickany	18	18	n	n	??0CTCNoiseDef@@QAE@XZ
+> EQ	EQ	0042dab0	o	pickany	36	36	n	n	??_GCDefClassBase@@UAEPAXI@Z
+> EQ	EQ	0044f620	o	pickany	36	36	n	n	??_GCSubDefClassBase@@UAEPAXI@Z
+> EQ	EQ	0044f71b	o	pickany	34	34	n	n	??_GCTCNoiseDef@@UAEPAXI@Z
+reachflip(addrs):
+pairs 1 NEQ reach flips 0
+reachflip(plain):
+pairs 2 NEQ reach flips 0
+=== v6
+-- pkall
+< EQ	EQ	0044c0c0	b	pickany	29	29	n	n	??0CSubDefClassBase@@QAE@XZ
+< NEQ	NEQ	0044c1bb	c	pickany	29	18	n	n	??0CTCNoiseDef@@QAE@XZ
+> EQ	EQ	0044c0c0	a2,b	pickany	29	29	n	n	??0CSubDefClassBase@@QAE@XZ
+> EQ	EQ	0044c1bb	c	pickany	18	18	n	n	??0CTCNoiseDef@@QAE@XZ
+-- pkallo
+< EQ	EQ	0044c0c0	b	pickany	29	29	n	n	??0CSubDefClassBase@@QAE@XZ
+< NEQ	NEQ	0044c1bb	c,o	pickany	29	18	n	n	??0CTCNoiseDef@@QAE@XZ
+> EQ	EQ	0044c0c0	a2,b	pickany	29	29	n	n	??0CSubDefClassBase@@QAE@XZ
+> EQ	EQ	0044c1bb	c,o	pickany	18	18	n	n	??0CTCNoiseDef@@QAE@XZ
+< NEQ	NEQ	0044f71b	o	pickany	30	34	n	n	??_GCTCNoiseDef@@UAEPAXI@Z
+> EQ	EQ	0044f71b	o	pickany	34	34	n	n	??_GCTCNoiseDef@@UAEPAXI@Z
+reachflip(addrs):
+pairs 1 NEQ reach flips 0
+reachflip(plain):
+pairs 2 NEQ reach flips 0
+=== v1
+-- pkall
+-- pkallo
+< NEQ	NEQ	0044f71b	o	pickany	30	34	n	n	??_GCTCNoiseDef@@UAEPAXI@Z
+> NEQ	NEQ	0044f71b	o	pickany	36	34	n	n	??_GCTCNoiseDef@@UAEPAXI@Z
+reachflip(addrs):
+pairs 1 NEQ reach flips 0
+reachflip(plain):
+pairs 2 NEQ reach flips 0

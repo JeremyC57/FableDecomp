@@ -1,0 +1,1 @@
+pre p2g_helper.cpp: PASS (clang -fsyntax-only, no errors; output was empty)
