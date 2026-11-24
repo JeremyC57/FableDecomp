@@ -77,7 +77,7 @@ show up in agree_pdb.
 Tracker after these landings: **agree_pdb 23,920** (from 23,193 this morning, 22,988 on 2026-11-23). rtti_identified fell from 4,551 to
 3,829.
 
-## Open, queued, not started (the owner said to launch nothing new)
+## Open and queued (owner, 2026-11-24: continue the naming queue; up to 2 naming agents at once)
 - **unit3: landed** (`batches/2026-11-24_landing_unit3`): 59 rows, 26 table replaces; agree_pdb 23,942. Wave 4: 26 units deferred
   again (shared sources); run `unit_fix.py` in a fresh directory. The unit 0x004166E2 / 0x00417001 is held for the third time, by the
   RP1 lock and the open 2026-11-20 CVsyncCallbackTimer claim line.
@@ -96,3 +96,10 @@ Tracker after these landings: **agree_pdb 23,920** (from 23,193 this morning, 22
   macro), 0x008BFFB0 (no HEAD payload), and rename1's three units.
 - **flatten_pilot.py v4** is in `naming_batch/agent_tools/nf324/`. Promote it over `lane_tools/flatten_pilot.py` after a review.
 - **Stale lock:** one NF314 lock (0x00DC0300) is still live. NF314 is long finished, so release it at the next landing.
+- **unit5-unit9 landed** (scripted waves, 24 rows); the loop was stopped before unit10's run (one unit per wave left); 3 deferred units remain.
+- **Agents launched 2026-11-24 (owner: "You can run 2 naming queue agents at the same time as long as they don't interfere"):**
+  - NF328: the ~CScriptThing / copy-constructor pick-any unit (NF326 Q4), with a stop condition on any new vftable / ctor / `??_G` emission.
+  - NF329: NF324 Q1, ruled wanted as its own pass (advisor decision, owner delegated): the CCombatActionBase, then CCombatSequenceBase,
+    flat-header rows on generated opt-in derived models under the NF322 Q1 / Q2 rules. Stays off NF326's rows and anything emitting the NF328 members.
+- **B's BanditCamp pick-any warning** (COORDINATION_LOG): a coordinator audit, not an agent, because its fixes touch the CIsThingAlive /
+  MovieBase headers B24A2 is working on.

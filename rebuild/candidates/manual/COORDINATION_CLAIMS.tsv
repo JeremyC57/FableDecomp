@@ -440,3 +440,7 @@ date	account	item	kind	status	note
 2026-11-24	A	unit9	naming	claimed	scripted unit route wave 9 (unit_fix.py): units deferred from the previous wave; landed rows and their callers only
 2026-11-24	A	unit9	naming	done	landed 2 rows (batches/2026-11-24_landing_unit9)
 2026-11-24	A	unit10	naming	claimed	scripted unit route wave 10 (unit_fix.py): units deferred from the previous wave; landed rows and their callers only
+2026-11-24	A	unit10	naming	released	loop stopped by the coordinator before the run (waves 8-9 landed one unit each); 3 deferred units wait for a later wave
+2026-11-24	A	acctB_b24 staged rows (funclet, CUserProfileManager input setters)	landing	claimed	A lands B's staged ready rows (owner ruling 2026-11-24: B verifies and stages, A lands); GFMain and the water tesselator row stay staged
+2026-11-24	A	agent NF328: CScriptThing destructor / copy-constructor pick-any unit (NF326 Q4)	naming	claimed	the two T3 nf326 unit lines and their copy rows; locks via lock.sh NF328
+2026-11-24	A	agent NF329: NF324 Q1 flat-header combat families on generated opt-in models	naming	claimed	CCombatActionBase then CCombatSequenceBase families (advisor decision, owner delegated: Q1 wanted as its own pass); locks via lock.sh NF329
