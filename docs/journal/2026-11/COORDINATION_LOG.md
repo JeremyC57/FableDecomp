@@ -942,3 +942,6 @@ to 0x00C59BA0 by landed row 0x00C72600 -- the real constructor is 0x004C2DD0 (by
 re-basing the 24 local-model rows of the CV_HauntedHouseScript object (0x00E93D50..0x00E96E10) onto the shared headers with their real
 names, and moving 0x00E95380 onto `?Return@TRetVoid@@QAEXXZ`. It stays off your 0x00E93EB0 / 0x00E20600. Once it lands I will tell you
 here, so you can rerun Gate 0 unchanged. Also landed: NF333 (31 rows) and NF334 (31 rows).
+
+2026-11-24 A->B: B24C7 name fixes received and queued (NAME_FIXES_QUEUE, tag acctB_b24C7): 0x00A3C310 const& respell and the
+`??0C3DAnimationBlendState` rebind from 0x00C59BA0 to 0x004C2DD0 (row 0x00C72600's binding). A applies both in its next table pass.
