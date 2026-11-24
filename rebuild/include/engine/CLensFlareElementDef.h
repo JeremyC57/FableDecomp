@@ -23,7 +23,15 @@ public:
     CRGBColour    Colour;                                   // +0x40
     float         Position;                                 // +0x44
     long          Texture;                                  // +0x48
+#ifdef FABLE_RETAIL_CLENSFLAREELEMENTDEF_COPY_DECLS
+    // Opt-in (NF337, 2026-11-24): declarations only, no layout change, for CLensFlareElementDef::Copy 0x0046F77C, which tail-calls the out-of-line
+    // operator= (retail `jmp` 0x0046F6AF). ?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at 0x0046F77C (slot 19; it overrides CDefClassBase::Copy: clang override probe, made-up-name
+    // control fails); ??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb) is the operator= at 0x0046F6AF.
+public:
+    CLensFlareElementDef& operator=(const CLensFlareElementDef&);
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CLensFlareElementDef) == 0x4C);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CLensFlareElementDef) == 0x4C);
 #endif // FABLE_RETAIL_DEF_CLASS_BASE
 #endif // FABLE_ENGINE_CLENSFLAREELEMENTDEF_H

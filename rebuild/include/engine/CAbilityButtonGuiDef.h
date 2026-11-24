@@ -35,7 +35,15 @@ public:
     long          ButtonGraphic;                            // +0x48
     C2DVector     Position;                                 // +0x4C
     C2DVector     Offset;                                   // +0x54
+#ifdef FABLE_RETAIL_CABILITYBUTTONGUIDEF_COPY_DECLS
+    // Opt-in (NF337, 2026-11-24): declarations only, no layout change, for CAbilityButtonGuiDef::Copy 0x0046F49F, which tail-calls the out-of-line
+    // operator= (retail `jmp` 0x0046F43E). ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at 0x0046F49F (slot 19; it overrides CDefClassBase::Copy: clang override probe, made-up-name
+    // control fails); ??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb) is the operator= at 0x0046F43E.
+public:
+    CAbilityButtonGuiDef& operator=(const CAbilityButtonGuiDef&);
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAbilityButtonGuiDef) == 0x5C);
+FABLE_STATIC_ASSERT_AT(39, sizeof(CAbilityButtonGuiDef) == 0x5C);
 #endif // FABLE_RETAIL_DEF_CLASS_BASE
 #endif // FABLE_ENGINE_CABILITYBUTTONGUIDEF_H

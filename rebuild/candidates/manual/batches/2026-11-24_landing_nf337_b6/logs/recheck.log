@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0046f43e   RELOCATION_MATCH PASS   operator=
+0046f49f   RELOCATION_MATCH PASS   Copy
+
+WINS: 2
+  0046f43e RELOCATION_MATCH CAbilityButtonGuiDef::??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z
+  0046f49f RELOCATION_MATCH CAbilityButtonGuiDef::?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z

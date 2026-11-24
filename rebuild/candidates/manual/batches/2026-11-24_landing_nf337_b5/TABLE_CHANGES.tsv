@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?CSpecialAbilitiesDrunkennessDef_CopyImpl@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z -> ??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z	00460589	00460584	NF337: Copy 00460584 now binds the PDB operator= of CSpecialAbilitiesDrunkennessDef (the 00460589 row, respelled in this unit)
+delete	?CloneFields@CAICreatureWillPowerIndicatorDefBase@@QAEXPBVCDefClassBase@@@Z	00431f10	004e14fd	NF337: made-up spelling; ??4CDefClassBase@@QAEAAV0@ABV0@@Z already binds 00431f10 (Copy 004e14fd)

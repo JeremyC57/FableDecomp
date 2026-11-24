@@ -1,28 +1,34 @@
+// behaviour test for 0x0046F49F: CAbilityButtonGuiDef::Copy forwards to CAbilityButtonGuiDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CAbilityButtonGuiDef::Copy (?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
-#include "rebuild_abi.h"
 
 class CDefClassBase;
-class CAbilityButtonGuiDef;
+class CAbilityButtonGuiDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CAbilityButtonGuiDef& operator=(const CAbilityButtonGuiDef& other);
+};
 
-extern "C" CAbilityButtonGuiDef* __fastcall
-CAbilityButtonGuiDef_Copy_impl_0046f49f(CAbilityButtonGuiDef* thisptr, const CDefClassBase* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CAbilityButtonGuiDef& CAbilityButtonGuiDef::operator=(const CAbilityButtonGuiDef& other)
 {
-    // Test stub: identity-ish, echoes this pointer.
-    (void)src;
-    return thisptr;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-CAbilityButtonGuiDef* __fastcall
-CAbilityButtonGuiDef_Copy(CAbilityButtonGuiDef* thisptr, const CDefClassBase* src);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CAbilityButtonGuiDef* self = (CAbilityButtonGuiDef*)0x1234;
-    const CDefClassBase* src = (const CDefClassBase*)0x5678;
-    CAbilityButtonGuiDef* r = CAbilityButtonGuiDef_Copy(self, src);
-    if (r == self)
-        printf("PASS_0046f49f\n");
-    else
-        printf("FAIL_0046f49f\n");
-    return 0;
+    ((CAbilityButtonGuiDef*)(g_dst))->CAbilityButtonGuiDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("PASS_0046f49f\n");
+        return 0;
+    }
+    std::printf("FAIL_0046f49f calls=%d\n", g_calls);
+    return 1;
 }

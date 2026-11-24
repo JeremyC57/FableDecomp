@@ -1,40 +1,36 @@
+// behaviour test for 0x004E0E0A: CInterestingToVillagersDef::Copy calls CDefClassBase::operator= with this and the source object, then copies Interest (+0x28)
+// NF337 (NF324 Q2 form): the row now defines the PDB member CInterestingToVillagersDef::Copy (?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee CDefClassBase::operator= (??4CDefClassBase@@QAEAAV0@ABV0@@Z) is stubbed as a member here.
 #include <cstdio>
 
 class CDefClassBase { public:
-    char pad[0x28];
-    unsigned long field28;
-
-public:
     CDefClassBase& operator=(const CDefClassBase& other);
 };
-
-struct BaseDef {
-    void Clone(CDefClassBase const* src);
+class CInterestingToVillagersDef { public:
+    virtual void Copy(const CDefClassBase* other);
 };
 
-class CInterestingToVillagersDef : public BaseDef { public:
-    char pad[0x28 - sizeof(BaseDef)];
-    unsigned long field28;
-};
-
-static bool g_cloned = false;
-CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other)
 {
-    CDefClassBase const* src = (CDefClassBase const*)&other_; (void)src; g_cloned = true;
+    ++g_calls; g_this = this; g_other = &other;
     return *this;
 }
 
-void __fastcall CInterestingToVillagersDef__Copy(CInterestingToVillagersDef* self, void* /*edx*/, CDefClassBase const* src);
+static unsigned long g_dst[12];
+static unsigned long g_src[12];
 
-int main() {
-    CInterestingToVillagersDef dst;
-    CDefClassBase src;
-    dst.field28 = 0;
-    src.field28 = 0xDEADBEEF;
-    CInterestingToVillagersDef__Copy(&dst, 0, &src);
-    if (g_cloned && dst.field28 == 0xDEADBEEF)
-        printf("004e0e0a_TEST PASS\n");
-    else
-        printf("FAIL cloned=%d f28=%08x\n", g_cloned, dst.field28);
-    return 0;
+int main()
+{
+    *(unsigned long*)((char*)g_src + 0x28) = 0x7A6B5C4DUL;
+    ((CInterestingToVillagersDef*)(g_dst))->CInterestingToVillagersDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src && *(unsigned long*)((char*)g_dst + 0x28) == 0x7A6B5C4DUL) {
+        std::printf("004e0e0a_TEST PASS\n");
+        return 0;
+    }
+    std::printf("FAIL_004e0e0a calls=%d\n", g_calls);
+    return 1;
 }

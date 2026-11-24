@@ -1,0 +1,2 @@
+class	verdict	macro	notes
+CLensFlareElementDef	OK	FABLE_RETAIL_CLENSFLAREELEMENTDEF_COPY_DECLS	insert at line 26; pinned 1; override True ; control(made-up name) fails; decl-use True ; without macro compiles

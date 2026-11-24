@@ -1,32 +1,34 @@
-#include "rebuild_abi.h"
+// behaviour test for 0x00460584: CSpecialAbilitiesDrunkennessDef::Copy forwards to CSpecialAbilitiesDrunkennessDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CSpecialAbilitiesDrunkennessDef::Copy (?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-class CSpecialAbilitiesDrunkennessDef { public: int x; };
+class CDefClassBase;
+class CSpecialAbilitiesDrunkennessDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSpecialAbilitiesDrunkennessDef& operator=(const CSpecialAbilitiesDrunkennessDef& other);
+};
 
-// Provide the extern callee so the test links.
-static int g_called = 0;
-void __fastcall CSpecialAbilitiesDrunkennessDef_CopyImpl(
-    CSpecialAbilitiesDrunkennessDef* thisptr, void* other)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSpecialAbilitiesDrunkennessDef& CSpecialAbilitiesDrunkennessDef::operator=(const CSpecialAbilitiesDrunkennessDef& other)
 {
-    (void)other;
-    if (thisptr) thisptr->x = 0x460584;
-    g_called = 1;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-extern void __fastcall CSpecialAbilitiesDrunkennessDef_Copy(
-    CSpecialAbilitiesDrunkennessDef* thisptr, void* other);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
-int main(void)
+int main()
 {
-    CSpecialAbilitiesDrunkennessDef a;
-    a.x = 0;
-    CSpecialAbilitiesDrunkennessDef b;
-    b.x = 7;
-    CSpecialAbilitiesDrunkennessDef_Copy(&a, &b);
-    if (g_called == 1 && a.x == 0x460584) {
-        printf("OK_460584\n");
-    } else {
-        printf("FAIL_460584\n");
+    ((CSpecialAbilitiesDrunkennessDef*)(g_dst))->CSpecialAbilitiesDrunkennessDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_460584\n");
+        return 0;
     }
-    return 0;
+    std::printf("FAIL_00460584 calls=%d\n", g_calls);
+    return 1;
 }

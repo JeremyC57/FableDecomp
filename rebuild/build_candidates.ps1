@@ -168374,9 +168374,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0046f6af'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_operator_0046f6af.cpp'
-        TestSource = '00/46/unattributed_operator_0046f6af_test.cpp'
+        Module = 'CLensFlareElementDef'
+        Source = '00/46/CLensFlareElementDef_operator_0046f6af.cpp'
+        TestSource = '00/46/CLensFlareElementDef_operator_0046f6af_test.cpp'
         PassPattern = '0046f6af_TEST PASS'
     }
     [pscustomobject]@{
@@ -172759,9 +172759,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00460589'
-        Module = '_unattributed'
-        Source = '00/46/unattributed_operator_00460589.cpp'
-        TestSource = '00/46/unattributed_operator_00460589_test.cpp'
+        Module = 'CSpecialAbilitiesDrunkennessDef'
+        Source = '00/46/CSpecialAbilitiesDrunkennessDef_operator_00460589.cpp'
+        TestSource = '00/46/CSpecialAbilitiesDrunkennessDef_operator_00460589_test.cpp'
         PassPattern = '00460589_TEST PASS'
     }
     [pscustomobject]@{

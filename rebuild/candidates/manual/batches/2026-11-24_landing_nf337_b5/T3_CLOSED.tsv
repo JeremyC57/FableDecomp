@@ -1,0 +1,4 @@
+source	address	unit	reason
+nf324	0x00460584	port	00460584 skipped-port ?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesDrunkennessDef_Copy
+nf324	0x004E0E0A	port	004e0e0a skipped-port ?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CInterestingToVillagersDef__Copy
+nf324	0x004E14FD	port	004e14fd skipped-port ?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CAICreatureWillPowerIndicatorDef_Copy

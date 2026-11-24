@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00450a74   MATCH            PASS   __destroy_aux<CLensFlareElementDef*>
+00455876   WARN SHARED_HEADER_AVAILABLE CSkyDef (engine/CSkyDef.h)
+00455876   RELOCATION_MATCH PASS   CSkyDef
+0046f6af   WARN STANDIN_LEAF ??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z (catalog _unattributed::operator=; names another function)
+0046f6af   RELOCATION_MATCH PASS   operator=
+0046f723   MATCH            PASS   GetSizeofClass
+0046f77c   RELOCATION_MATCH PASS   Copy
+004769d0   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CLensFlareElementDef>
+00476d9d   RELOCATION_MATCH PASS   uninitialized_fill_n<CLensFlareElementDef*,unsigned int,CLensFlareElementDef>
+
+WINS: 7
+  00450a74 MATCH std::??$__destroy_aux@PAVCLensFlareElementDef@@@std@@YIXPAVCLensFlareElementDef@@0ABU__false_type@0@@Z
+  00455876 RELOCATION_MATCH CSkyDef::??0CSkyDef@@QAE@XZ
+  0046f6af RELOCATION_MATCH _unattributed::??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z
+  0046f723 MATCH CLensFlareElementDef::?GetSizeofClass@CLensFlareElementDef@@UAEKXZ
+  0046f77c RELOCATION_MATCH CLensFlareElementDef::?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z
+  004769d0 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCLensFlareElementDef@@@CPersistContext@@QAEXAAV?$vector@VCLensFlareElementDef@@V?$allocator@VCLensFlareElementDef@@@std@@@std@@@Z
+  00476d9d RELOCATION_MATCH std::??$uninitialized_fill_n@PAVCLensFlareElementDef@@IV1@@std@@YIPAVCLensFlareElementDef@@PAV1@IABV1@@Z

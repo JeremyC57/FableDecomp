@@ -12,7 +12,6 @@ nf285	0x00958770	standin_alias port	binder source read; identity not verified: M
 nf285	0x009580E0	standin_alias port	binder source read; identity not verified: as 0x00958770: private PDB member (AAE), binder is a 12-line Methods struct whose own leaf IsRunnable is also a stand-in
 nf285	0x009852C0	standin_alias port	binder source read; identity not verified: stand-in CClass_00985420::Method(long,long) v PDB FollowUpdate(float,bool) (the binder passes 0x40000000 = 2.0f and 1): stand-in class and signature, port
 nf285	0x00962AF0	standin_alias port	binder source read; identity not verified: Methods stand-in; the PDB member is a protected VIRTUAL (MAE), which a flat-view opt-in cannot declare without a vptr: port
-nf285	0x0046F43E	standin_alias port	binder source read; identity not verified: extern "C" fastcall stand-in for CAbilityButtonGuiDef::operator=: needs the class model (port)
 nf285	0x004787F6	standin_alias port	binder source read; identity not verified: stand-in element CElement72_004787f6 in an uninitialized_fill_n row: STL-instance port
 nf285	0x00461F3B	standin_alias port	binder source read; identity not verified: free stand-in CMember_dtor_00461f3b(CMember*) for ~CAnimationSet on a stand-in member type: port
 nf285	0x005DD2E0	standin_alias port	binder source read; identity not verified: stand-in member class CMember_005dd2e0 for CAnimationSet's ctor: port
@@ -494,7 +493,6 @@ nf298	0x008e2fc0	entry 11 (ENTRIES line 12): copy ctor of the element of an STL-
 nf298	0x00a0d780	entry 13 (ENTRIES line 14): binder reinterpret_casts to the stand-in CInputProcessManagerCalls; the PDB member is protected on CInputProcessManager taking CAInputProcess& (needs the real class + friend), and the binder is itself the CAInputProcess_Methods stand-in self (NF295 NAME_FIXES): port	NF298 skipped-port
 nf298	0x0075f1f0	entry 14 (ENTRIES line 15): copy ctor of the element of an STL-instance row: global CKeyCamera for the nested CTCCameraPointScriptedSpline::CKeyCamera (renames the vector COMDATs): element-type port	NF298 skipped-port
 nf298	0x00a66770	entry 15 (ENTRIES line 16): AddEventToStore declared on the local CKeyboardDX; the PDB member is protected on the base CKeyboard (engine/CKeyboard.h): base-member port	NF298 skipped-port
-nf298	0x0046f6af	entry 16 (ENTRIES line 17): free extern "C" @CLensFlareElementDef_Copy_impl@8 stand-in for the ??4 member: port	NF298 skipped-port
 nf298	0x0079fe90	entry 17 (ENTRIES line 18): global local CLightningBeam with a non-template CIntelligentPointer parameter; PDB CTCWillLightning::CLightningBeam::Deactivate(CIntelligentPointer<CThingCreatureBase>): nesting + parameter-type port	NF298 skipped-port
 nf298	0x00b493c0	entry 32 (ENTRIES line 33): global CManagerShadowedSpotLight is the template argument of the binder's CPointerVector (push_back COMDAT names change); PDB nests it in CEngineLightingManager: nesting + container port	NF298 skipped-port
 nf298	0x0073eac0	entry 37 (ENTRIES line 38): global polymorphic CModeBase is the base of each binder's own mode class (PDB CTCCreatureModeManager::CModeBase; 0x0073FDB0 also CThing* for CThing&): nesting a base can change RTTI / vtable names: port	NF298 skipped-port
@@ -3164,7 +3162,6 @@ nf324	0x0045FE26	port	0045fe26 skipped-port ?Copy@CSpecialAbilitiesEnflameDef@@U
 nf324	0x0045FEDE	port	0045fede skipped-port ?Copy@CSpecialAbilitiesPhysicalShieldDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx is used
 nf324	0x004600C6	port	004600c6 skipped-port ?Copy@CSpecialAbilitiesDrainLifeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesDrainLifeDef_Copy
 nf324	0x00460251	port	00460251 skipped-port ?Copy@CSpecialAbilitiesFireballSpellDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
-nf324	0x00460584	port	00460584 skipped-port ?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesDrunkennessDef_Copy
 nf324	0x004608C1	port	004608c1 skipped-port ?Copy@CSpecialAbilitiesUnholyPowerDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
 nf324	0x00460A14	port	00460a14 skipped-port ?Copy@CSpecialAbilitiesCreatureTintDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
 nf324	0x00460A5C	port	00460a5c skipped-port ?Copy@CSoundDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
@@ -3174,8 +3171,6 @@ nf324	0x0046244C	port	0046244c skipped-port ?Copy@CMeleeCombatAbilityDef@@UAEXPB
 nf324	0x00462888	port	00462888 skipped-port ?Copy@CPlayerDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx_ is used
 nf324	0x00462B10	port	00462b10 skipped-port ?Copy@CBrainDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CBrainDef_Copy
 nf324	0x004642F5	port	004642f5 skipped-port ?Copy@CThingObjectDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
-nf324	0x0046F49F	port	0046f49f skipped-port ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CAbilityButtonGuiDef_Copy
-nf324	0x0046F77C	port	0046f77c skipped-port ?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CLensFlareElementDef_Copy
 nf324	0x004784E4	port	004784e4 skipped-port ?Transfer@CAppearanceModifierScalingDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CVillagerInteractionsDef*` (another class)
 nf324	0x00478827	port	00478827 skipped-port ?Transfer@CAbilityTrackLevelDef@@UAEXAAVCPersistContext@@@Z triage (-): this: the body uses def typed `CVillagerInteractionsDef*` (another class)
 nf324	0x00486360	port	00486360 skipped-port ?Init@CAInputProcess@@UAEXXZ triage (header): model: engine/CAInputProcess.h does not declare Init (add-only opt-in)
@@ -3246,13 +3241,11 @@ nf324	0x004E088A	port	004e088a skipped-port ?GetSizeofClass@CExperienceDef@@UAEK
 nf324	0x004E091A	port	004e091a skipped-port ?GetSizeofClass@CHeroSuitDef@@UAEKXZ triage (header): model: engine/CHeroSuitDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004E0CC0	port	004e0cc0 skipped-port ?Copy@CSummonableCreatureDef@@UAEXPBVCDefClassBase@@@Z triage (local): model: virtual target, local model has a base clause
 nf324	0x004E0D33	port	004e0d33 skipped-port ?Copy@COccupiableDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: used parameter other is `const COccupiableDef*`, the PDB type is `const class CDefClassBase*` (alias pattern)
-nf324	0x004E0E0A	port	004e0e0a skipped-port ?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CInterestingToVillagersDef__Copy
 nf324	0x004E0E79	port	004e0e79 skipped-port ?Copy@CActivateQuestDef@@UAEXPBVCDefClassBase@@@Z triage (local): model: virtual target, local model has a base clause
 nf324	0x004E0EE3	port	004e0ee3 skipped-port ?Copy@CTavernTableDef@@UAEXPBVCDefClassBase@@@Z triage (local): model: virtual target, local model has a base clause
 nf324	0x004E0F02	port	004e0f02 skipped-port ?Copy@CTavernDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CTavernDef_Copy
 nf324	0x004E0F1B	port	004e0f1b skipped-port ?Copy@CDrunkennessDef@@UAEXPBVCDefClassBase@@@Z triage (local): model: virtual target, local model has a base clause
 nf324	0x004E1394	port	004e1394 skipped-port ?Copy@CResurrectionItemDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: used parameter other is `const CResurrectionItemDef*`, the PDB type is `const class CDefClassBase*` (alias pattern)
-nf324	0x004E14FD	port	004e14fd skipped-port ?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CAICreatureWillPowerIndicatorDef_Copy
 nf324	0x004E157C	port	004e157c skipped-port ?Copy@CCarriedReadableDef@@UAEXPBVCDefClassBase@@@Z work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home/user/FableDecomp/rebuild/include/engine/CSubDefClassBase.h:10:2: error: engi
 nf324	0x004E2497	port	004e2497 skipped-port ?GetSizeofClass@CContainerRewardHeroDef@@UAEKXZ triage (header): model: engine/CContainerRewardHeroDef.h does not declare GetSizeofClass (add-only opt-in)
 nf324	0x004E28B6	port	004e28b6 skipped-port ?Copy@CSkeletalMorphDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: used parameter src is `const char*`, the PDB type is `const class CDefClassBase*` (alias pattern)

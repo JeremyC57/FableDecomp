@@ -2963,7 +2963,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00460518	Copy	CSpecialAbilitiesElectrocutedEffectDef	__thiscall	void	2	CSpecialAbilitiesElectrocutedEffectDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_Copy_00460518.cpp
 0046051d	operator=	CSpecialAbilitiesElectrocutedEffectDef	unknown	undefined	0		0	yes	accepted									
 00460584	Copy	CSpecialAbilitiesDrunkennessDef	__thiscall	void	2	CSpecialAbilitiesDrunkennessDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_Copy_00460584.cpp
-00460589	operator=	_unattributed	unknown	undefined	0		0	yes	accepted									
+00460589	operator=	CSpecialAbilitiesDrunkennessDef	unknown	undefined	0		0	yes	accepted									
 004605e0	Copy	CSpecialAbilitiesThunderLightningStormDef	__thiscall	void	2	CSpecialAbilitiesThunderLightningStormDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_Copy_004605e0.cpp
 004605e5	operator=	CSpecialAbilitiesThunderLightningStormDef	unknown	undefined	0		0	yes	accepted									
 00460652	Copy	CSpecialAbilitiesDivineWrathDef	__thiscall	void	2	CSpecialAbilitiesDivineWrathDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CSpecialAbilitiesDivineWrathDef_Copy_00460652.cpp
@@ -3404,7 +3404,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0046f4f0	operator=	CSkyDef	unknown	undefined	0		0	yes	accepted									
 0046f565	operator=	std::vector<CLensFlareElementDef, std::allocator<CLensFlareElementDef>>	unknown	undefined	0		0	yes	accepted									
 0046f68c	StdList_Dtor_0046f68c	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_OnReadFinished_0046f68c.cpp
-0046f6af	operator=	_unattributed	__thiscall	CAreaOfEffectAttackDef *	2	CAreaOfEffectAttackDef *,CAreaOfEffectAttackDef *	1	yes	accepted									
+0046f6af	operator=	CLensFlareElementDef	__thiscall	CAreaOfEffectAttackDef *	2	CAreaOfEffectAttackDef *,CAreaOfEffectAttackDef *	1	yes	accepted									
 0046f6dc	CLensFlareElementDef	CLensFlareElementDef	__thiscall	undefined	2	CLensFlareElementDef *,CLensFlareElementDef *	0	yes	accepted									
 0046f723	GetSizeofClass	CLensFlareElementDef	__thiscall	ulong	1	CLensFlareElementDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CLensFlareElementDef_GetSizeofClass_0046f723.cpp
 0046f727	Transfer	CLensFlareElementDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted									

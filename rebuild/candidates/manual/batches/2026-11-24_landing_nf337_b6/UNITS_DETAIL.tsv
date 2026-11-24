@@ -1,0 +1,2 @@
+copy	operator=	class	copy_symbol	operator=_symbol	operator=_definition	note
+0046f49f	0046f43e	CAbilityButtonGuiDef	?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z	??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z	pick-any COMDAT (implicit) in the 0046f43e object, HEAD and new	Copy moves from the 0046f43e object (where it was the forcing device) to its own row; 0046f43e keeps the implicit operator=, forced by the scaffolding helper, on the shared header
