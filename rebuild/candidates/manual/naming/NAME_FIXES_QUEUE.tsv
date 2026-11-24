@@ -13646,3 +13646,5 @@ nf383	0x00A326D0	std::pair<unsigned long,C3DMeshVolume>::~pair	catalog label (NF
 nf383	0x00A335E0	std::fill<std::pair<unsigned long,C3DMeshVolume>*,...>	catalog label (NF383 n9; self landed nf383_b3)	fill<pair<long,...>>
 nf383	0x0050E500	std::fill<unsigned short*,unsigned short>	catalog label (NF383 n9; self landed nf383_b3)	fill<short*,short>
 nf385	(see note)	catalog labels / file names	NF385 q9: 0052cbf0 0054e5a0 005cbeba 008d6980 00618170 0074d5d0 007a6e20 00d25ef0 keep the old class in Module / file name (pending/2026-11-24_nf385_handback RENAMES.tsv)	-
+nf392	0x005BC277	??_G?$pair@VCMeshInfo@NGraphicAppearance@@VCEngineTextureMorphSet@@@std@@QAEPAXI@Z	FableWin.pdb name set + table line (witness 005bc29e) + retail: __destroy_aux<pair*> 0x005BC29E calls it with flag 0 at stride 0x18 (NF392)	??_GSRecord_005bc277
+nf392	0x005BC26F	??1?$pair@VCMeshInfo@NGraphicAppearance@@VCEngineTextureMorphSet@@@std@@QAE@XZ	FableWin.pdb name + retail 8 B add ecx,0Ch ; jmp 0x005BC0D3 (pair dtor destroying the set at +0x0C) (NF392)	-

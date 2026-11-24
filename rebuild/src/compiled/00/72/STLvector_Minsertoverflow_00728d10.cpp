@@ -3,8 +3,9 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00728D10, length 216 bytes (+ int3 padding), thiscall, `ret 14h`.
 // Callers: the same vector's _M_fill_insert 0x00728DF0 (0x00728EFE, the no-room arm; reached from resize 0x00728F20).
 // Callees: malloc @ 0x00BFEA0E (inline allocate: `n != 0 ? malloc(n * 16) : 0`), __uninitialized_copy @ 0x00728B10
-//   (landed, twice), __uninitialized_fill_n @ 0x00728A40 (landed), CArray<CEngineTextureMorph>::CArray(const CArray&)
-//   @ 0x005BBDF1 (landed; the fill_len == 1 arm's inline element copy), __destroy_aux @ 0x00722130 (landed; _M_clear's
+//   (landed, twice), __uninitialized_fill_n @ 0x00728A40 (landed), STLport vector<CEngineTextureMorph>::vector(const vector&)
+//   @ 0x005BBDF1 (landed; the fill_len == 1 arm's inline element copy: CMeshMorphSetParts' implicit copy expands the implicit
+//   CEngineTextureMorphSet and CArray<CEngineTextureMorph> copies down to it), __destroy_aux @ 0x00722130 (landed; _M_clear's
 //   _Destroy of the old range), free @ 0x00BFEA14. The three helpers are __fastcall (first/n in ecx, last in edx).
 // Label: catalog "std::vector_InsertAndGrow_Pair" is descriptive.
 // Element (16 bytes, `sar eax,4`): {unsigned long key; CArray of 20-byte records} with the record {long, long, vector of
@@ -16,35 +17,16 @@
 // Shape: STLport 4.6 verbatim, as 0x00721060 of this chunk (max by const reference into the `push ecx` local, the tag
 //   temporaries homed in the atend slot through same-TU stand-in bodies of the out-of-line helpers, _M_clear / _M_set
 //   inline), here with a non-trivial _Destroy: the out-of-line __destroy_aux(first, last, __false_type) before the free.
+// Binder (NF392, T3 nf383 0x009B7870 / ruling R5): CArray<T> derives from the STLport vector with no special members of its own, as
+//   in the landed same-TU sibling 0x00728DF0 (_M_fill_insert), so the element copy binds STLport's
+//   ??0?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@ABV01@@Z (0x005BBDF1, FableWin.pdb), not
+//   the CArray copy the old model declared out of line. VC7.1 also emits the implicit CArray<CEngineTextureMorph> copy / destructor
+//   as pick-any COMDATs (19-byte forwarder / 5-byte `jmp` thunk), like 0x00728DF0 and like the retail TUs that kept them.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
 class CEngineTextureMorph;
-template <class T> class CArray {                           // retail: an STLport vector (12 bytes)
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    CArray(const CArray<T>& other);                         // 0x005BBDF1 for T = CEngineTextureMorph
-    ~CArray();                                              // 0x005BC0D3
-};
-class CEngineTextureMorphSet {                              // Ego_r.pdb (retail 12 bytes)
-public:
-    CArray<CEngineTextureMorph> Morphs;                     // +0x00
-};
-class CTCAppearanceMorphBase {
-public:
-    class CMeshMorphSet {
-    public:
-        class CMeshMorphSetParts {                          // Ego_r.pdb (retail 16 bytes)
-        public:
-            unsigned long          MeshIndex;               // +0x00
-            CEngineTextureMorphSet TextureMorphs;           // +0x04
-        };
-    };
-};
-
 namespace std {
 struct __false_type { __false_type() { } };
 
@@ -98,6 +80,8 @@ public:
 };
 template <class T, class Alloc = allocator<T> > class vector : public _Vector_base<T, Alloc> {
 public:
+    vector(const vector<T, Alloc>& x);                     // 0x005BBDF1 for T = CEngineTextureMorph
+    ~vector();                                              // 0x005BC0D3 for T = CEngineTextureMorph
     unsigned int size() const { return unsigned int(this->_M_finish - this->_M_start); }
     protected:
     void _M_clear()
@@ -139,6 +123,25 @@ void vector<T, Alloc>::_M_insert_overflow(T* position, const T& x, const __false
     _M_set(new_start, new_finish, new_start + len);
 }
 }
+
+template <class T> class CArray : public std::vector<T> {   // retail: CArray<T> is an STLport vector (12 bytes); its copy is vector's
+public:
+};
+class CEngineTextureMorphSet {                              // Ego_r.pdb (retail 12 bytes)
+public:
+    CArray<CEngineTextureMorph> Morphs;                     // +0x00
+};
+class CTCAppearanceMorphBase {
+public:
+    class CMeshMorphSet {
+    public:
+        class CMeshMorphSetParts {                          // Ego_r.pdb (retail 16 bytes)
+        public:
+            unsigned long          MeshIndex;               // +0x00
+            CEngineTextureMorphSet TextureMorphs;           // +0x04
+        };
+    };
+};
 
 typedef CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts TMeshMorphSetParts;
 template void std::vector<TMeshMorphSetParts>::_M_insert_overflow(TMeshMorphSetParts*, const TMeshMorphSetParts&,
