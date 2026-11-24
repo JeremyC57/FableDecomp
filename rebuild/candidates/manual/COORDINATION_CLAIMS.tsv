@@ -556,3 +556,6 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF377 NF374 follow-ups: binders 0046b0d6 00786700 00752640 007fdf60 0052ac10 00950c30 00a9b740; target 00bf6e20 (binder 00bf8c80); self 00bfd0b0 then binder 00bfc770	naming	claimed	locks via nflocks owner NF377
 2026-11-24	A	agent NF376 option S pilot (owner question 2, advisor decision): 0055fb80 00560d00 00b80ad0 00b80f90 00b80fe0	naming	done	hand-back processed by A (landing nf376, option S pilot)
 2026-11-24	A	agent NF377 NF374 follow-ups: binders 0046b0d6 00786700 00752640 007fdf60 0052ac10 00950c30 00a9b740; target 00bf6e20 (binder 00bf8c80); self 00bfd0b0 then binder 00bfc770	naming	done	hand-back processed by A (landing nf377)
+2026-11-24	A	agent NF378 stand-in self identity, 114 high-confidence unique BSim candidates (scratch agentNF378/targets.txt)	naming	claimed	locks via nflocks owner NF378
+2026-11-24	A	agent NF379 option S tool diffs (a)(c)(d)(e) tested on a scratch copy + next S unit candidates (0045c5c1 family, 0094fbb0/00951fb0, 0099ea60/0099f9b0, 008f87a0/008f8bb0/008f99a0)	naming	claimed	locks via nflocks owner NF379
+2026-11-24	A	agent NF380 split_pdb_multi rulings research (89 addresses with 2+ PDB names; scratch agentNF380/TARGETS.tsv)	naming	claimed	locks via nflocks owner NF380
