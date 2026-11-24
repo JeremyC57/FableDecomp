@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00be4fe0   RELOCATION_MATCH PASS   TesselateEdge
+
+WINS: 1
+  00be4fe0 RELOCATION_MATCH CWaterPatchTesselatorBase<CTVertexSeaBackground>::TesselateEdge

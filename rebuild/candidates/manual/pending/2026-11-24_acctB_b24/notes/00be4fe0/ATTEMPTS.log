@@ -1,0 +1,30 @@
+03:24 00be4fe0 grade v0.cpp DIFFER(2404v2412) hunks=90 -- baseline draft unchanged
+03:25 00be4fe0 grade v1.cpp DIFFER(2388v2412) hunks=94 -- local order / if-else length
+03:25 00be4fe0 grade v2.cpp DIFFER(2404v2412) hunks=90 -- local order / if-else length
+03:25 00be4fe0 grade v3.cpp DIFFER(2404v2412) hunks=90 -- local order / if-else length
+03:25 00be4fe0 grade v4.cpp DIFFER(2404v2412) hunks=90 -- loop-scope found/fan; else-chain previous=-1
+03:25 00be4fe0 grade v5.cpp DIFFER(2391v2412) hunks=83 -- loop-scope found/fan; else-chain previous=-1
+03:26 00be4fe0 grade v6.cpp DIFFER(2391v2412) hunks=83 -- loop-scope found/fan; else-chain previous=-1
+03:31 00be4fe0 grade c0.cpp DIFFER(2404v2412) hunks=90 -- B24C2 baseline
+03:32 00be4fe0 grade c0.cpp DIFFER(2404v2412) hunks=90 -- B24C2 full diff
+03:36 00be4fe0 grade v5.cpp DIFFER(2391v2412) hunks=83 -- B24C2 regrade v5 full diff
+03:40 00be4fe0 grade c0f.cpp DIFFER(2406v2412) hunks=41 -- FindWaterVert FableWin-sized text (early return 0, while loops)
+03:40 00be4fe0 grade v5f.cpp DIFFER(2393v2412) hunks=23 -- FindWaterVert FableWin-sized text (early return 0, while loops)
+03:42 00be4fe0 grade ffpos.cpp DIFFER(2393v2412) hunks=23 -- FindFirst FableWin-size candidates (pos local / count local / no size local)
+03:42 00be4fe0 grade pos_cnt.cpp DIFFER(2393v2412) hunks=23 -- FindFirst FableWin-size candidates (pos local / count local / no size local)
+03:42 00be4fe0 grade ffnosz.cpp DIFFER(2393v2412) hunks=25 -- FindFirst FableWin-size candidates (pos local / count local / no size local)
+03:42 00be4fe0 grade v5f.cpp DIFFER(2393v2412) hunks=23 -- full diff of v5f
+03:43 00be4fe0 grade w_a.cpp DIFFER(2406v2412) hunks=19 -- skip-path shapes: if/else+continue, continue chain, early-continue chain
+03:43 00be4fe0 grade w_b.cpp DIFFER(2406v2412) hunks=19 -- skip-path shapes: if/else+continue, continue chain, early-continue chain
+03:43 00be4fe0 grade w_c.cpp DIFFER(2393v2412) hunks=51 -- skip-path shapes: if/else+continue, continue chain, early-continue chain
+03:43 00be4fe0 grade w_a.cpp DIFFER(2406v2412) hunks=19 -- full diff w_a
+03:43 00be4fe0 grade x1.cpp DIFFER(2412v2412) hunks=4 -- start / adjacency read through GetWaterVertex(i) instead of water ref
+03:43 00be4fe0 grade x2.cpp DIFFER(2422v2412) hunks=44 -- start / adjacency read through GetWaterVertex(i) instead of water ref
+03:43 00be4fe0 grade x3.cpp DIFFER(2422v2412) hunks=44 -- start / adjacency read through GetWaterVertex(i) instead of water ref
+03:43 00be4fe0 grade x4.cpp RELOCATION_MATCH -- not-found: previous = -1 before the indices store
+03:45 00be4fe0 grade m1.cpp RELOCATION_MATCH -- cleaned: helpers in header overlays, FABLE_FORCEINLINE, quarantine CEngineLandscapeMap GetEdgeStrip opt-in
+03:45 00be4fe0 grade m1a.cpp RELOCATION_MATCH -- inner-scope found/fan; plain inline sea helpers; all helpers plain inline
+03:45 00be4fe0 grade m1b.cpp DIFFER(1844v2412) hunks=146 -- plain inline sea helpers
+03:45 00be4fe0 grade m1c.cpp DIFFER(736v2412) hunks=43 -- every FABLE_FORCEINLINE as plain inline
+03:51 00be4fe0 grade fanvert.cpp RELOCATION_MATCH -- sea: AddFanBaseVertex with named CVertex& vert (FableWin 60i/182b exact)
+03:51 00be4fe0 grade fanvert2.cpp DIFFER(2412v2412) hunks=18 -- sea: named vert, declared before water_fan

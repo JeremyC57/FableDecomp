@@ -16,3 +16,10 @@ Agent notes, escalations and name fixes are in `notes/<addr>/`.
 - Manifest starts 0x00407A70 / 0x00407BA0 added by the boundary-starts route (`rebuild/manifest/boundary-starts.tsv` + `crawl/manifest_add_boundaries.py --write`, precedent 33add08c6f), with the evidence in the boundary line. Stock strict vland: both RELOCATION_MATCH PASS, 0 warnings. The 0x004075C0 landed extent (1194 B) ends at 0x00407A6A, before the new start.
 - Name check: both mangled names are in Ego_r and FableWin; the keyboard setter stores type 2 (0x00407AE6) and an EInputKey, the mouse setter type 3 (0x00407C16) and an EMouseButtonControl.
 - Landing these three was attempted and refused by this session's permission check, so nothing is landed; the landing payload for 0x012133C0 / 0x00407A70 / 0x00407BA0 is `payload.json` here (oracle to be cut on the landing machine).
+
+## 0x00BE4FE0 CWaterPatchTesselatorBase<CTVertexSeaBackground>::TesselateEdge (B24C2, 2026-11-24)
+Coordinator re-verify: RELOCATION_MATCH PASS, stock flags, no warnings; pick-any checker (agent): both COMDATs EQ. Overlay additive only
+(CPatchTesselationEdgeStrip.h +18, CWaterPatchTesselatorBase.h +63, CLandscapeTesselatorBase.h +11, `_quarantine/CEngineLandscapeMap.h` +10).
+What made it match: FableWin-exact FindWaterVert text, one shared `previous = -1` skip with `continue` per bridged span, and the reload of
+`strip->GetWaterVertex(i)` for `start` (notes/00be4fe0/NOTES.md). Review item: `FABLE_FORCEINLINE` on the two sea helpers, justified in the
+source by retail having no out-of-line copy (FableWin has debug copies, Ego_r's tesselator module has no proc record; plain `inline` calls them).
