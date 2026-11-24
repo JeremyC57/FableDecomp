@@ -1,11 +1,14 @@
 // CInputTypeMouseWheelMovementEvent::IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) -- ask the input manager whether a joystick-queue event of type 14 is waiting for the player
-// Leaf: ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementEvent_Methods@@QBE_NW4EInputButtonEventType@@JAAM@Z
 // Retail: Fable.exe @ 0x0066F4D0, 58 bytes, `ret 0Ch`; Ego_r.pdb ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
 // (0x00676C20). Catalog label "CInputTypeMouseMovementEvent::..." names the wrong class for all but 0x0066F440.
 // Body: a local CInputEvent (52 bytes; ctor 0x00A04410, out-of-line empty dtor 0x00A03B30) is passed to
 // g_pInputManager (0x013B8388)->IsJoystickEventInQueue(14, 0, event, player) (0x009F4C60, PDB
 // ?IsJoystickEventInQueue@CInputManager@@QBE_NW4EInputEventType@@JAAVCInputEvent@@J@Z); the result is held in bl across the dtor.
 // The button event type and the float& are unused.
+// Leaf: ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CInputTypeMouseWheelMovementEvent.h under FABLE_RETAIL_CINPUTTYPEMOUSEWHEELMOVEMENTEVENT_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CInputTypeMouseWheelMovementEvent_Methods::IsEventOfThisTypeInQueue); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CINPUTTYPEMOUSEWHEELMOVEMENTEVENT_VIRTUAL_MODEL
 #include "engine/CInputTypeMouseWheelMovementEvent.h"
 enum EInputEventType { INPUT_EVENT_TYPE_MOUSE_WHEEL_MOVEMENT = 14 };
 enum EInputButtonEventType { INPUT_BUTTON_EVENT_TYPE_NONE };
@@ -20,10 +23,7 @@ public:
     bool IsJoystickEventInQueue(EInputEventType type, long index, CInputEvent& event, long player) const;  // 0x009F4C60
 };
 extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
-struct CInputTypeMouseWheelMovementEvent_Methods : CInputTypeMouseWheelMovementEvent {
-    bool IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const;
-};
-bool CInputTypeMouseWheelMovementEvent_Methods::IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const
+bool CInputTypeMouseWheelMovementEvent::IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const
 {
     CInputEvent event;
     return GPInputManager->IsJoystickEventInQueue(INPUT_EVENT_TYPE_MOUSE_WHEEL_MOVEMENT, 0, event, player);

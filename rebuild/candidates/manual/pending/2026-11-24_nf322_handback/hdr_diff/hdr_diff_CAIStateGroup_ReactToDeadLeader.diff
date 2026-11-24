@@ -1,0 +1,45 @@
+--- orig/hdr_CAIStateGroup_ReactToDeadLeader.h	2026-11-23 23:57:03.334087666 +0000
++++ hdr/engine/CAIStateGroup_ReactToDeadLeader.h	2026-11-23 23:57:03.421086513 +0000
+@@ -8,6 +8,35 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CAISTATEGROUP_REACTTODEADLEADER_VIRTUAL_MODEL
++// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
++// 0x0128C8D0 (RTTI .?AVCAIStateGroup_ReactToDeadLeader@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_ReactToDeadLeader); every other slot stays the base's.
++// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
++#include "engine/CAIStateGroupBase.h"
++enum EAIStateGroupType;
++#pragma pack(push, 1)
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++class CCharString; class CAIStateGroupBase;
++#endif
++class CAIStateGroup_ReactToDeadLeader : public CAIStateGroupBase {
++public:
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
++#endif
++protected:
++    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00900FD0 ?GetStateGroupType@CAIStateGroup_ReactToDeadLeader@@MBE?AW4EAIStateGroupType@@XZ
++    virtual void Cleanup();                                               // slot 9 0x0095E340 ?Cleanup@CAIStateGroup_ReactToDeadLeader@@MAEXXZ
++    virtual bool IsRunnable();                                            // slot 11 0x0095E350 ?IsRunnable@CAIStateGroup_ReactToDeadLeader@@MAE_NXZ
++    virtual void Update();                                                // slot 12 0x0095E470 ?Update@CAIStateGroup_ReactToDeadLeader@@MAEXXZ
++public:
++    unsigned char PEnemy[0x8];                               // +0x14 CIntelligentPointer<CThingCreatureBase>
++    long          FramesRunning;                             // +0x1c
++};
++#pragma pack(pop)
++FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_ReactToDeadLeader) == 0x20);
++FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ReactToDeadLeader, PEnemy) == 0x14);
++FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ReactToDeadLeader, FramesRunning) == 0x1c);
++#else
+ #pragma pack(push, 1)
+ #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+ class CCharString; class CAIStateGroupBase;
+@@ -30,5 +59,6 @@
+ FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_ReactToDeadLeader, __vftable) == 0x0);
+ FABLE_STATIC_ASSERT_AT(25, offsetof(CAIStateGroup_ReactToDeadLeader, PEnemy) == 0x14);
+ FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_ReactToDeadLeader, FramesRunning) == 0x1c);
++#endif // FABLE_RETAIL_CAISTATEGROUP_REACTTODEADLEADER_VIRTUAL_MODEL
+ 
+ #endif // FABLE_ENGINE_CAISTATEGROUP_REACTTODEADLEADER_H

@@ -1,0 +1,58 @@
+--- orig/hdr_CStreamingFontDataBankEntry.h	2026-11-24 00:07:12.714881923 +0000
++++ hdr/engine/CStreamingFontDataBankEntry.h	2026-11-24 00:07:12.754346467 +0000
+@@ -12,10 +12,18 @@
+ class CFontBank;
+ class CStreamingFontDataBank;
+ 
++#ifdef FABLE_RETAIL_CSTREAMINGFONTDATABANKENTRY_VIRTUAL_MODEL
++// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
++// 0x0129D5B4 (RTTI .?AVCStreamingFontDataBankEntry@@ : CBaseClassNonCopyable), 4 slots; the declared slots are this class's overrides (RTTI-port labels name CStreamingFontDataBankEntry); every other slot stays the base's.
++// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
++#include "engine/CBaseClassNonCopyable.h"
+ #pragma pack(push, 1)
+-class CStreamingFontDataBankEntry {
++class CStreamingFontDataBankEntry : public CBaseClassNonCopyable {
++public:
++    virtual bool IsLoaded() const;                                        // slot 1 0x00A5F220 ?IsLoaded@CStreamingFontDataBankEntry@@UBE_NXZ
++    virtual bool CanUnload() const;                                       // slot 2 0x00A5F230 ?CanUnload@CStreamingFontDataBankEntry@@UBE_NXZ
++    virtual void Unload();                                                // slot 3 0x00A5F250 ?Unload@CStreamingFontDataBankEntry@@UAEXXZ
+ public:
+-    void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
+     CFontBank*              Font_Data;                       // +0x04 CCountedPointer<CFontBank>::Data
+     CCPPointerInfo*         Font_Info;                       // +0x08 CCountedPointer<CFontBank>::Info
+     CStreamingFontDataBank* Bank;                            // +0x0c
+@@ -23,13 +31,32 @@
+     unsigned long           DataType;                        // +0x14
+ };
+ #pragma pack(pop)
+-
+ FABLE_STATIC_ASSERT(sizeof(CStreamingFontDataBankEntry) == 0x18);
+-FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, __vftable) == 0x0);
+ FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, Font_Data) == 0x4);
+ FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, Font_Info) == 0x8);
+ FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, Bank) == 0xc);
+ FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, Index) == 0x10);
+ FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, DataType) == 0x14);
++#else
++#pragma pack(push, 1)
++class CStreamingFontDataBankEntry {
++public:
++    void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
++    CFontBank*              Font_Data;                       // +0x04 CCountedPointer<CFontBank>::Data
++    CCPPointerInfo*         Font_Info;                       // +0x08 CCountedPointer<CFontBank>::Info
++    CStreamingFontDataBank* Bank;                            // +0x0c
++    unsigned long           Index;                           // +0x10
++    unsigned long           DataType;                        // +0x14
++};
++#pragma pack(pop)
++
++FABLE_STATIC_ASSERT_AT(27, sizeof(CStreamingFontDataBankEntry) == 0x18);
++FABLE_STATIC_ASSERT_AT(28, offsetof(CStreamingFontDataBankEntry, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(29, offsetof(CStreamingFontDataBankEntry, Font_Data) == 0x4);
++FABLE_STATIC_ASSERT_AT(30, offsetof(CStreamingFontDataBankEntry, Font_Info) == 0x8);
++FABLE_STATIC_ASSERT_AT(31, offsetof(CStreamingFontDataBankEntry, Bank) == 0xc);
++FABLE_STATIC_ASSERT_AT(32, offsetof(CStreamingFontDataBankEntry, Index) == 0x10);
++FABLE_STATIC_ASSERT_AT(33, offsetof(CStreamingFontDataBankEntry, DataType) == 0x14);
++#endif // FABLE_RETAIL_CSTREAMINGFONTDATABANKENTRY_VIRTUAL_MODEL
+ 
+ #endif // FABLE_ENGINE_CSTREAMINGFONTDATABANKENTRY_H

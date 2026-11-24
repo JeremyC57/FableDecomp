@@ -1,7 +1,13 @@
-// Leaf: ?OnReplace@CAIStateGroup_HoverHornetQueenTakeDamage_Methods@@QAEXXZ
+// Leaf: ?OnReplace@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXXZ
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CAIStateGroup_HoverHornetQueenTakeDamage.h under FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEENTAKEDAMAGE_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CAIStateGroup_HoverHornetQueenTakeDamage_Methods::OnReplace); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEENTAKEDAMAGE_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUP_HOVERMOVEMENTBASE_MOVETOPOSANDFACEPOS
 #include "engine/CAIStateGroup_HoverHornetQueenTakeDamage.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CAIStateGroup_HoverHornetQueenTakeDamage_Methods : CAIStateGroup_HoverHornetQueenTakeDamage {
-    void OnReplace();
-};
-void CAIStateGroup_HoverHornetQueenTakeDamage_Methods::OnReplace(){ this->RangeAttackCount = 0u; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?OnReplace@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXXZ); evidence: RTTI vtable slot + PDB name set.
+void CAIStateGroup_HoverHornetQueenTakeDamage::OnReplace() { this->RangeAttackCount = 0u; }

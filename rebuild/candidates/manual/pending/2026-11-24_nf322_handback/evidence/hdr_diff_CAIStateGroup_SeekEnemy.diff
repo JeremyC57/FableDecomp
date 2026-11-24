@@ -1,0 +1,46 @@
+--- orig/hdr_CAIStateGroup_SeekEnemy.h	2026-11-23 23:57:03.335506853 +0000
++++ hdr/engine/CAIStateGroup_SeekEnemy.h	2026-11-23 23:57:03.421420008 +0000
+@@ -8,6 +8,36 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CAISTATEGROUP_SEEKENEMY_VIRTUAL_MODEL
++// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
++// 0x0128B7C8 (RTTI .?AVCAIStateGroup_SeekEnemy@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_SeekEnemy); every other slot stays the base's.
++// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
++#include "engine/CAIStateGroupBase.h"
++class CThingAICreature;
++class CWorld;
++enum EAIStateGroupType;
++#pragma pack(push, 1)
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++class CCharString; class CAIStateGroupBase;
++#endif
++class CAIStateGroup_SeekEnemy : public CAIStateGroupBase {
++public:
++#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
++static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
++#endif
++public:
++    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x008FF510 ?GetStateGroupType@CAIStateGroup_SeekEnemy@@UBE?AW4EAIStateGroupType@@XZ
++    virtual void Cleanup();                                               // slot 9 0x0093BDF0 ?Cleanup@CAIStateGroup_SeekEnemy@@UAEXXZ
++    virtual bool IsRunnable();                                            // slot 11 0x0093B740 ?IsRunnable@CAIStateGroup_SeekEnemy@@UAE_NXZ
++    virtual void Update();                                                // slot 12 0x0093B9F0 ?Update@CAIStateGroup_SeekEnemy@@UAEXXZ
++    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x0093B6F0 ?InitStateGroup@CAIStateGroup_SeekEnemy@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
++public:
++    unsigned char PEnemy[0x8];                               // +0x14 CIntelligentPointer<CThing>
++};
++#pragma pack(pop)
++FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SeekEnemy) == 0x1c);
++FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SeekEnemy, PEnemy) == 0x14);
++#else
+ #pragma pack(push, 1)
+ #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+ class CCharString; class CAIStateGroupBase;
+@@ -28,5 +58,6 @@
+ FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_SeekEnemy) == 0x1c);
+ FABLE_STATIC_ASSERT_AT(23, offsetof(CAIStateGroup_SeekEnemy, __vftable) == 0x0);
+ FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_SeekEnemy, PEnemy) == 0x14);
++#endif // FABLE_RETAIL_CAISTATEGROUP_SEEKENEMY_VIRTUAL_MODEL
+ 
+ #endif // FABLE_ENGINE_CAISTATEGROUP_SEEKENEMY_H

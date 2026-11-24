@@ -1,7 +1,6 @@
-// Leaf: ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementDownEvent_Methods@@QAE_NHHH@Z
+// Leaf: ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CInputTypeMouseWheelMovementDownEvent.h under FABLE_RETAIL_CINPUTTYPEMOUSEWHEELMOVEMENTDOWNEVENT_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CInputTypeMouseWheelMovementDownEvent_Methods::IsEventOfThisTypeInQueue); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CINPUTTYPEMOUSEWHEELMOVEMENTDOWNEVENT_VIRTUAL_MODEL
 #include "engine/CInputTypeMouseWheelMovementDownEvent.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CInputTypeMouseWheelMovementDownEvent_Methods : CInputTypeMouseWheelMovementDownEvent {
-    bool IsEventOfThisTypeInQueue(int a0, int a1, int a2);
-};
-bool CInputTypeMouseWheelMovementDownEvent_Methods::IsEventOfThisTypeInQueue(int a0, int a1, int a2) { return false; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z); evidence: RTTI vtable slot + PDB name set.
+bool CInputTypeMouseWheelMovementDownEvent::IsEventOfThisTypeInQueue(EInputButtonEventType a0, long a1, float& a2) const { return false; }

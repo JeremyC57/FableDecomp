@@ -3,6 +3,10 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CDAB0, length 48 bytes.
 // Callees: none. Shape: the body pointer loaded, the position sub-object addressed once (`add ecx,0Ch`) and copied through three word moves into the hidden result, `ret 4`.
 // Model: the engine header for the interface (vptr, Creature at +4, Radius at +8); the creature, its physics body (+0x60) and its component map are local models (engine/CThingCreatureBase.h has no names at these offsets).
+// Leaf: ?PeekNavigatorPosition3D@CGroundNavigatorExternalInterface@@UBE?AVC3DVector@@XZ
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CGroundNavigatorExternalInterface.h under FABLE_RETAIL_CGROUNDNAVIGATOREXTERNALINTERFACE_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CGroundNavigatorExternalInterface_Methods::PeekNavigatorPosition3D); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CGROUNDNAVIGATOREXTERNALINTERFACE_VIRTUAL_MODEL
 #include "fable_compiler.h"
 struct CTCBase_Retail;
 struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
@@ -92,11 +96,7 @@ class CThingCreatureBase { public:                        // the retail creature
 };
 #include "engine/CGroundNavigatorExternalInterface.h"
 
-struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInterface {
-    C3DVector PeekNavigatorPosition3D() const;
-};
-
-C3DVector CGroundNavigatorExternalInterface_Methods::PeekNavigatorPosition3D() const
+C3DVector CGroundNavigatorExternalInterface::PeekNavigatorPosition3D() const
 {
     return Creature->m_pBody->m_position;
 }

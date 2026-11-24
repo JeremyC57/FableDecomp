@@ -10,6 +10,38 @@
 
 class CAFile;
 
+#ifdef FABLE_RETAIL_CBUFFEREDFILEDATAOUTPUTSTREAM_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0129A710 (RTTI .?AVCBufferedFileDataOutputStream@@ : CDataOutputStream), 5 slots; the declared slots are this class's overrides (RTTI-port labels name CBufferedFileDataOutputStream); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CDATAOUTPUTSTREAM.
+#include "engine/CDataOutputStream.h"
+#pragma pack(push, 1)
+class CBufferedFileDataOutputStream : public CDataOutputStream {
+public:
+    virtual void SetPosition(unsigned long);                              // slot 1 0x00994500 ?SetPosition@CBufferedFileDataOutputStream@@UAEXK@Z
+    virtual unsigned long GetPosition() const;                            // slot 2 0x00994510 ?GetPosition@CBufferedFileDataOutputStream@@UBEKXZ
+    virtual void Close();                                                 // slot 3 0x00994810 ?Close@CBufferedFileDataOutputStream@@UAEXXZ
+    virtual void Write(const void*, long);                                // slot 4 0x00994870 ?Write@CBufferedFileDataOutputStream@@UAEXPBXJ@Z
+public:
+    CAFile*       File;                                      // +0x08
+    void*         Buffer;                                    // +0x0c uchar *
+    long          BufferSize;                                // +0x10
+    long          BufferDataSize;                            // +0x14
+    long          DataStartFilePtr;                          // +0x18
+    long          FileSize;                                  // +0x1c
+    long          FilePos;                                   // +0x20
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CBufferedFileDataOutputStream) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, File) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, Buffer) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, BufferSize) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, BufferDataSize) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, DataStartFilePtr) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, FileSize) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, FilePos) == 0x20);
+#else
 #pragma pack(push, 1)
 struct CBufferedFileDataOutputStream {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -24,14 +56,15 @@ struct CBufferedFileDataOutputStream {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CBufferedFileDataOutputStream) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, File) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, Buffer) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, BufferSize) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, BufferDataSize) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, DataStartFilePtr) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, FileSize) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CBufferedFileDataOutputStream, FilePos) == 0x20);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CBufferedFileDataOutputStream) == 0x24);
+FABLE_STATIC_ASSERT_AT(28, offsetof(CBufferedFileDataOutputStream, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CBufferedFileDataOutputStream, File) == 0x8);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CBufferedFileDataOutputStream, Buffer) == 0xc);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CBufferedFileDataOutputStream, BufferSize) == 0x10);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CBufferedFileDataOutputStream, BufferDataSize) == 0x14);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CBufferedFileDataOutputStream, DataStartFilePtr) == 0x18);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CBufferedFileDataOutputStream, FileSize) == 0x1c);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CBufferedFileDataOutputStream, FilePos) == 0x20);
+#endif // FABLE_RETAIL_CBUFFEREDFILEDATAOUTPUTSTREAM_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CBUFFEREDFILEDATAOUTPUTSTREAM_H

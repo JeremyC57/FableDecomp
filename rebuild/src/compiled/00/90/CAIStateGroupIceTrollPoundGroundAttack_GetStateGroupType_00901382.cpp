@@ -1,9 +1,10 @@
-// Leaf: ?GetStateGroupType@CAIStateGroup_IceTrollPoundGroundAttack_Methods@@QAEHXZ
+// Leaf: ?GetStateGroupType@CAIStateGroup_IceTrollPoundGroundAttack@@MBE?AW4EAIStateGroupType@@XZ
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CAIStateGroup_IceTrollPoundGroundAttack.h under FABLE_RETAIL_CAISTATEGROUP_ICETROLLPOUNDGROUNDATTACK_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CAIStateGroup_IceTrollPoundGroundAttack_Methods::GetStateGroupType); the retail RTTI vftable placement names this PDB member here.
 #pragma optimize("s",on)
 // Constant-return member: returns 1. __fastcall this=ecx.
+#define FABLE_RETAIL_CAISTATEGROUP_ICETROLLPOUNDGROUNDATTACK_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
 #include "engine/CAIStateGroup_IceTrollPoundGroundAttack.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CAIStateGroup_IceTrollPoundGroundAttack_Methods : CAIStateGroup_IceTrollPoundGroundAttack {
-    int GetStateGroupType();
-};
-int CAIStateGroup_IceTrollPoundGroundAttack_Methods::GetStateGroupType() { return 1; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?GetStateGroupType@CAIStateGroup_IceTrollPoundGroundAttack@@MBE?AW4EAIStateGroupType@@XZ); evidence: RTTI vtable slot + PDB name set.
+EAIStateGroupType CAIStateGroup_IceTrollPoundGroundAttack::GetStateGroupType() const { return (EAIStateGroupType)1; }

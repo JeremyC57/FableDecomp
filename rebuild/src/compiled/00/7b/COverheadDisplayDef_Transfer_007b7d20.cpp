@@ -1,5 +1,4 @@
 // COverheadDisplayDef::Transfer(CPersistContext&) -- persist the three overhead-display switches (damage, repair, renown)
-// Leaf: Transfer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B7D20, 184 bytes (+ int3 padding; virtual, `ret 4`).
 // Callees: CPersistContext::CheckCRC 0x00404500 (x3, the empty key "" 0x0122D70E), CPersistTraits<bool>::TransferBinaryIn
 //   0x00403EB0, CDataOutputStream::WriteEBOOL 0x00993E30.
@@ -7,6 +6,11 @@
 //   (member address formed before its CRC call, the `sub eax,2 ; je ; dec eax ; jne` mode switch, the empty traits temporary
 //   in the dead argument slot); the last member reuses `this` (`add edi,27h`) and gets its own epilogue per arm. `this` is the
 //   engine header layout (DisplayDamage +0x25, DisplayRepair +0x26, DisplayRenown +0x27).
+// Leaf: ?Transfer@COverheadDisplayDef@@UAEXAAVCPersistContext@@@Z
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/COverheadDisplayDef.h under FABLE_RETAIL_COVERHEADDISPLAYDEF_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was COverheadDisplayDef_Transfer::Transfer); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_COVERHEADDISPLAYDEF_VIRTUAL_MODEL
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/COverheadDisplayDef.h"
 
 class CMemoryDataInputStream;
@@ -40,12 +44,8 @@ class CPersistContext { public:
         }
     }
 };
-struct COverheadDisplayDef_Transfer : COverheadDisplayDef {
-    void Transfer(CPersistContext& context);
-};
 
-void COverheadDisplayDef_Transfer::Transfer(CPersistContext& context)
-{
+void COverheadDisplayDef::Transfer(CPersistContext& context) {
     context.Transfer("", DisplayDamage);
     context.Transfer("", DisplayRepair);
     context.Transfer("", DisplayRenown);

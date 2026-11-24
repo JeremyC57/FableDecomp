@@ -1,0 +1,77 @@
+CInputTypeBase vftable 01231784 (this-offset 0, COL 0132DED4)
+  slot   0 +0x000 004455D0 ??_ECInputTypeBase@@UAEPAXI@Z
+  slot   1 +0x004 00BFEA08 -
+  slot   2 +0x008 00BFEA08 -
+  slot   3 +0x00C 00BFEA08 -
+  slot   4 +0x010 00BFEA08 -
+  slot   5 +0x014 00BFEA08 -
+  slot   6 +0x018 00BFEA08 -
+  slot   7 +0x01C 00BFEA08 -
+CInputTypeXboxPadButtonEvent vftable 012317A8 (this-offset 0, COL 0132DF1C)
+  slot   0 +0x000 00447AD0 ??_GCInputTypeXboxPadButtonEvent@@UAEPAXI@Z
+  slot   1 +0x004 00445620 ?GetType@CInputTypeXboxPadButtonEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+  slot   2 +0x008 0066F210 -
+  slot   3 +0x00C 0066F250 ?IsEventOfThisType@CInputTypeXboxPadButtonEvent@@UBE_NABVCInputEvent@@@Z
+  slot   4 +0x010 0066F730 ?GetControlDirection@CInputTypeXboxPadButtonEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+  slot   5 +0x014 0066F750 ?IsEventOfThisTypeInQueue@CInputTypeXboxPadButtonEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  slot   6 +0x018 00445630 ?IsInputTypeWithButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EXboxControllerButton@@@Z
+  slot   7 +0x01C 00445650 ?IsInputTypeWithMouseButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EMouseButtonControl@@@Z
+CInputTypeXboxPadRightStickEvent vftable 012317F0 (this-offset 0, COL 0132DFAC)
+  slot   0 +0x000 00447B10 ??_GCInputTypeXboxPadRightStickEvent@@UAEPAXI@Z
+  slot   1 +0x004 004456B0 ?GetType@CInputTypeXboxPadRightStickEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+  slot   2 +0x008 0066F360 -
+  slot   3 +0x00C 0066F390 ?IsEventOfThisType@CInputTypeXboxPadRightStickEvent@@UBE_NABVCInputEvent@@@Z
+  slot   4 +0x010 0066F840 ?GetControlDirection@CInputTypeXboxPadRightStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+  slot   5 +0x014 0066F3B0 ?IsEventOfThisTypeInQueue@CInputTypeXboxPadRightStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  slot   6 +0x018 004456C0 ?IsInputTypeWithButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EXboxControllerButton@@@Z
+  slot   7 +0x01C 004456D0 ?IsInputTypeWithMouseButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EMouseButtonControl@@@Z
+CInputTypeMouseMovementEvent vftable 01231814 (this-offset 0, COL 0132DFF4)
+  slot   0 +0x000 00447B30 ??_ECInputTypeMouseMovementEvent@@UAEPAXI@Z
+  slot   1 +0x004 004456F0 ?GetType@CInputTypeMouseMovementEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+  slot   2 +0x008 0066F3F0 -
+  slot   3 +0x00C 0066F420 ?IsEventOfThisType@CInputTypeMouseMovementEvent@@UBE_NABVCInputEvent@@@Z
+  slot   4 +0x010 0066F8B0 ?GetControlDirection@CInputTypeMouseMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+  slot   5 +0x014 0066F440 ?IsEventOfThisTypeInQueue@CInputTypeMouseMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  slot   6 +0x018 00445700 ?IsInputTypeWithButton@CInputTypeMouseMovementEvent@@UBE_NW4EXboxControllerButton@@@Z
+  slot   7 +0x01C 00445710 ?IsInputTypeWithMouseButton@CInputTypeMouseMovementEvent@@UBE_NW4EMouseButtonControl@@@Z
+CInputTypeMouseWheelMovementEvent vftable 01231838 (this-offset 0, COL 0132E03C)
+  slot   0 +0x000 00447B50 ??_GCInputTypeMouseWheelMovementEvent@@UAEPAXI@Z
+  slot   1 +0x004 00445730 ?GetType@CInputTypeMouseWheelMovementEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+  slot   2 +0x008 0066F480 -
+  slot   3 +0x00C 0066F4B0 ?IsEventOfThisType@CInputTypeMouseWheelMovementEvent@@UBE_NABVCInputEvent@@@Z
+  slot   4 +0x010 0066F930 ?GetControlDirection@CInputTypeMouseWheelMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+  slot   5 +0x014 0066F4D0 ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  slot   6 +0x018 00445740 ?IsInputTypeWithButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EXboxControllerButton@@@Z
+  slot   7 +0x01C 00445750 ?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EMouseButtonControl@@@Z
+CInputTypeMouseWheelMovementUpEvent vftable 0123185C (this-offset 0, COL 0132E084)
+  slot   0 +0x000 00447B70 ??_ECInputTypeMouseWheelMovementUpEvent@@UAEPAXI@Z
+  slot   1 +0x004 00445770 ?GetType@CInputTypeMouseWheelMovementUpEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+  slot   2 +0x008 0066F510 -
+  slot   3 +0x00C 0066F540 ?IsEventOfThisType@CInputTypeMouseWheelMovementUpEvent@@UBE_NABVCInputEvent@@@Z
+  slot   4 +0x010 0066F950 ?GetControlDirection@CInputTypeMouseWheelMovementUpEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+  slot   5 +0x014 0066F580 ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  slot   6 +0x018 00445780 ?IsInputTypeWithButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EXboxControllerButton@@@Z
+  slot   7 +0x01C 00445790 ?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EMouseButtonControl@@@Z
+CInputTypeMouseWheelMovementDownEvent vftable 01231880 (this-offset 0, COL 0132E0CC)
+  slot   0 +0x000 00447B90 ??_GCInputTypeMouseWheelMovementDownEvent@@UAEPAXI@Z
+  slot   1 +0x004 004457B0 ?GetType@CInputTypeMouseWheelMovementDownEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+  slot   2 +0x008 0066F590 -
+  slot   3 +0x00C 0066F5C0 ?IsEventOfThisType@CInputTypeMouseWheelMovementDownEvent@@UBE_NABVCInputEvent@@@Z
+  slot   4 +0x010 0066F970 ?GetControlDirection@CInputTypeMouseWheelMovementDownEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+  slot   5 +0x014 0066F600 ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  slot   6 +0x018 004457C0 ?IsInputTypeWithButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EXboxControllerButton@@@Z
+  slot   7 +0x01C 004457D0 ?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EMouseButtonControl@@@Z
+CInputTypeMouseButtonEvent vftable 012318C8 (this-offset 0, COL 0132E15C)
+  slot   0 +0x000 00447AB0 -
+  slot   1 +0x004 00447A70 -
+  slot   2 +0x008 0066EEA0 -
+  slot   3 +0x00C 0066EEE0 -
+  slot   4 +0x010 0066F6B0 -
+  slot   5 +0x014 0066F6D0 -
+  slot   6 +0x018 00447A80 -
+  slot   7 +0x01C 00447A90 -
+  slot   8 +0x020 00730041 -
+  slot   9 +0x024 00690073 -
+  slot  10 +0x028 006E0067 -
+  slot  11 +0x02C 00640065 -
+  slot  12 +0x030 00740020 -

@@ -10,6 +10,11 @@
 // Shape: two inlined per-tag transfers (`CheckCRC("")` then a two-case `switch` lowered to `sub eax,2 ; je ;
 // dec eax ; jne`); the first tag's address is formed up front (`lea ebx,[edi+28h]`), the second by `add edi,2Ch`;
 // the second save path returns directly (tail-duplicated epilogue).
+// Leaf: ?Transfer@CCarriedReadableDef@@UAEXAAVCPersistContext@@@Z
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CCarriedReadableDef.h under FABLE_RETAIL_CCARRIEDREADABLEDEF_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CCarriedReadableDef_Methods::Transfer); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CCARRIEDREADABLEDEF_VIRTUAL_MODEL
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CCarriedReadableDef.h"
 
 class CMemoryDataInputStream;
@@ -42,12 +47,7 @@ class CPersistContext { public:
     }
 };
 
-struct CCarriedReadableDef_Methods : CCarriedReadableDef {
-    void Transfer(CPersistContext& context);
-};
-
-void CCarriedReadableDef_Methods::Transfer(CPersistContext& context)
-{
+void CCarriedReadableDef::Transfer(CPersistContext& context) {
     context.Transfer(*reinterpret_cast<CDefString*>(&TitleTextTag_TablePos));
     context.Transfer(*reinterpret_cast<CDefString*>(&BodyTextTag_TablePos));
 }

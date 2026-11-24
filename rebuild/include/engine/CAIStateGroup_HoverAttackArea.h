@@ -8,6 +8,43 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERATTACKAREA_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128C754 (RTTI .?AVCAIStateGroup_HoverAttackArea@@ : CAIStateGroup_HoverAttack), 23 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_HoverAttackArea); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS, FABLE_RETAIL_CINTELLIGENTPOINTER, FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS, FABLE_RETAIL_CAISTATEGROUP_HOVERMOVEMENTBASE_MOVETOPOSANDFACEPOS, FABLE_RETAIL_CAISTATEGROUP_HOVERATTACK_VIRTUAL_MODEL.
+class CThingCreatureBase;
+#include "engine/CAIStateGroup_HoverAttack.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_HoverAttackArea : public CAIStateGroup_HoverAttack {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0095A270 ?Initialise@CAIStateGroup_HoverAttackArea@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00900D3D ?GetStateGroupType@CAIStateGroup_HoverAttackArea@@UBE?AW4EAIStateGroupType@@XZ
+    virtual bool IsRunnable();                                            // slot 11 0x0095A2C0 ?IsRunnable@CAIStateGroup_HoverAttackArea@@UAE_NXZ
+    virtual bool IsCombatStateGroup() const;                              // slot 20 0x00900D3A ?IsCombatStateGroup@CAIStateGroup_HoverAttackArea@@UBE_NXZ
+public:
+    float         StartPos_X;                                // +0x1c C3DVector::X
+    float         StartPos_Y;                                // +0x20 C3DVector::Y
+    float         StartPos_Z;                                // +0x24 C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverAttackArea) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverAttackArea, StartPos_X) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverAttackArea, StartPos_Y) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverAttackArea, StartPos_Z) == 0x24);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -34,5 +71,6 @@ FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_HoverAttackArea, __vftable) ==
 FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_HoverAttackArea, StartPos_X) == 0x1c);
 FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_HoverAttackArea, StartPos_Y) == 0x20);
 FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_HoverAttackArea, StartPos_Z) == 0x24);
+#endif // FABLE_RETAIL_CAISTATEGROUP_HOVERATTACKAREA_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_HOVERATTACKAREA_H

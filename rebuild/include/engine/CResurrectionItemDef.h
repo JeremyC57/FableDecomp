@@ -8,6 +8,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CRESURRECTIONITEMDEF_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123D9AC (RTTI .?AVCResurrectionItemDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CResurrectionItemDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CResurrectionItemDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DEF76 ?Transfer@CResurrectionItemDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E1394 ?Copy@CResurrectionItemDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D5DBE ?GetSizeofClass@CResurrectionItemDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    long          OnUseParticleEffect;                       // +0x28
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CResurrectionItemDef) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CResurrectionItemDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CResurrectionItemDef, OnUseParticleEffect) == 0x28);
+#else
 #pragma pack(push, 1)
 class CResurrectionItemDef {
 public:
@@ -25,8 +47,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CResurrectionItemDef) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CResurrectionItemDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CResurrectionItemDef, OnUseParticleEffect) == 0x28);
+FABLE_STATIC_ASSERT_AT(28, sizeof(CResurrectionItemDef) == 0x2c);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CResurrectionItemDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CResurrectionItemDef, OnUseParticleEffect) == 0x28);
+#endif // FABLE_RETAIL_CRESURRECTIONITEMDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CRESURRECTIONITEMDEF_H

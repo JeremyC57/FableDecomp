@@ -1,0 +1,6 @@
+009031da LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_WhisperPotionCombat_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_WhisperPotionCombat@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+00900c50 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_HoverAttack_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_HoverAttack@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+00900d78 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_HoverHornetQueenTakeDamage_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+0095a3b0 LIBCP_OK renames=?OnReplace@CAIStateGroup_HoverHornetQueenTakeDamage_Methods@@QAEXXZ=?OnReplace@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXXZ ; .drectve EQUAL ; sections=2
+00900d3d LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_HoverAttackArea_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_HoverAttackArea@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+00900c8b LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2

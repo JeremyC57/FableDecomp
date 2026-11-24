@@ -1,0 +1,5 @@
+## HEAD set: 008fe284.obj 008ff510.obj 008ff5ac.obj 00900fd0.obj 0090124a.obj 00901334.obj 00901382.obj 00901ea9.obj 00902d2b.obj 00902d57.obj 00917300.obj 0092ecc0.obj 00932960.obj
+duplicates 0
+## new set: 008fe284.obj 008ff510.obj 008ff5ac.obj 00900fd0.obj 0090124a.obj 00901334.obj 00901382.obj 00901ea9.obj 00902d2b.obj 00902d57.obj 00917300.obj 0092ecc0.obj 00932960.obj
+duplicates 0
+LK_DONE

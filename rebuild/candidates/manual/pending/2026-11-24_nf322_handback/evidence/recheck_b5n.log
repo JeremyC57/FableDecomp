@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00994500   MATCH            PASS   SetPosition
+00a5f230   MATCH            PASS   CanUnload
+00a63560   MATCH            PASS   CanUnload
+
+WINS: 3
+  00994500 MATCH CBufferedFileDataOutputStream::?SetPosition@CBufferedFileDataOutputStream@@UAEXK@Z
+  00a5f230 MATCH CStreamingFontDataBankEntry::?CanUnload@CStreamingFontDataBankEntry@@UBE_NXZ
+  00a63560 MATCH CFontDataBankEntry::?CanUnload@CFontDataBankEntry@@UBE_NXZ

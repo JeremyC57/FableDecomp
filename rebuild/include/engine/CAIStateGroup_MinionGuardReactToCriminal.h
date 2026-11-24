@@ -8,6 +8,47 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONGUARDREACTTOCRIMINAL_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128B230 (RTTI .?AVCAIStateGroup_MinionGuardReactToCriminal@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MinionGuardReactToCriminal); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+#include "engine/CAIStateGroupBase.h"
+class CThingAICreature;
+class CWorld;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MinionGuardReactToCriminal : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual bool IsStillValid() const;                                    // slot 5 0x00932980 ?IsStillValid@CAIStateGroup_MinionGuardReactToCriminal@@UBE_NXZ
+    virtual void OnReplace();                                             // slot 10 0x009331E0 ?OnReplace@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00932990 ?IsRunnable@CAIStateGroup_MinionGuardReactToCriminal@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x00932B50 ?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x00932960 ?InitStateGroup@CAIStateGroup_MinionGuardReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+public:
+    unsigned char PHero[0x8];                                // +0x14 CIntelligentPointer<CThingPlayerCreature>
+    float         PositionPlayerWasWhenWarned_X;             // +0x1c C3DVector::X
+    float         PositionPlayerWasWhenWarned_Y;             // +0x20 C3DVector::Y
+    float         PositionPlayerWasWhenWarned_Z;             // +0x24 C3DVector::Z
+    long          WarningsGiven;                             // +0x28
+    long          FrameWarningStarted;                       // +0x2c
+    long          DeedLastWarnedAbout;                       // +0x30
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionGuardReactToCriminal) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PHero) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_X) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Y) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Z) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, WarningsGiven) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, FrameWarningStarted) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, DeedLastWarnedAbout) == 0x30);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -40,5 +81,6 @@ FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_MinionGuardReactToCriminal, Po
 FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_MinionGuardReactToCriminal, WarningsGiven) == 0x28);
 FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_MinionGuardReactToCriminal, FrameWarningStarted) == 0x2c);
 FABLE_STATIC_ASSERT_AT(36, offsetof(CAIStateGroup_MinionGuardReactToCriminal, DeedLastWarnedAbout) == 0x30);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MINIONGUARDREACTTOCRIMINAL_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONGUARDREACTTOCRIMINAL_H

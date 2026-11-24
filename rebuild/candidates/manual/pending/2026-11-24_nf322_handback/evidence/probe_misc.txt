@@ -1,0 +1,24 @@
+== CBufferedFileDataOutputStream vftable 0129A710
+slot   0 009971E0 SAME     ours=??_ECBufferedFileDataOutputStream@@UAEPAXI@Z retail_label=??_ECBufferedFileDataOutputStream@@UAEPAXI@Z
+slot   1 00994500 SAME     ours=?SetPosition@CBufferedFileDataOutputStream@@UAEXK@Z retail_label=?SetPosition@CBufferedFileDataOutputStream@@UAEXK@Z
+slot   2 00994510 SAME     ours=?GetPosition@CBufferedFileDataOutputStream@@UBEKXZ retail_label=?GetPosition@CBufferedFileDataOutputStream@@UBEKXZ
+slot   3 00994810 SAME     ours=?Close@CBufferedFileDataOutputStream@@UAEXXZ retail_label=?Close@CBufferedFileDataOutputStream@@UAEXXZ
+slot   4 00994870 SAME     ours=?Write@CBufferedFileDataOutputStream@@UAEXPBXJ@Z retail_label=?Write@CBufferedFileDataOutputStream@@UAEXPBXJ@Z
+retail slots 5, emitted slots 5; SAME 5 DIFF 0 NOLABEL 0
+
+== CFontDataBankEntry vftable 0129DA70
+slot   0 00A63970 DIFF     ours=??_ECFontDataBankEntry@@UAEPAXI@Z retail_label=??_GCFontDataBankEntry@@UAEPAXI@Z
+slot   1 00A63550 SAME     ours=?IsLoaded@CFontDataBankEntry@@UBE_NXZ retail_label=?IsLoaded@CFontDataBankEntry@@UBE_NXZ
+slot   2 00A63560 SAME     ours=?CanUnload@CFontDataBankEntry@@UBE_NXZ retail_label=?CanUnload@CFontDataBankEntry@@UBE_NXZ
+slot   3 00A63580 SAME     ours=?Unload@CFontDataBankEntry@@UAEXXZ retail_label=?Unload@CFontDataBankEntry@@UAEXXZ
+retail slots 4, emitted slots 4; SAME 3 DIFF 1 NOLABEL 0
+
+== CStreamingFontDataBankEntry vftable 0129D5B4
+slot   0 00A5F800 SAME     ours=??_ECStreamingFontDataBankEntry@@UAEPAXI@Z retail_label=??_ECStreamingFontDataBankEntry@@UAEPAXI@Z
+slot   1 00A5F220 SAME     ours=?IsLoaded@CStreamingFontDataBankEntry@@UBE_NXZ retail_label=?IsLoaded@CStreamingFontDataBankEntry@@UBE_NXZ
+slot   2 00A5F230 SAME     ours=?CanUnload@CStreamingFontDataBankEntry@@UBE_NXZ retail_label=?CanUnload@CStreamingFontDataBankEntry@@UBE_NXZ
+slot   3 00A5F250 SAME     ours=?Unload@CStreamingFontDataBankEntry@@UAEXXZ retail_label=?Unload@CStreamingFontDataBankEntry@@UAEXXZ
+retail slots 4, emitted slots 4; SAME 4 DIFF 0 NOLABEL 0
+
+CEngineInternalPrimitiveParticleSpriteTrailGroup COMPILE_FAIL rc=2 leDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF322\work\tree\engine\CEnginePrimitiveHandle.h(29) : error C2039: 'GetRefCount' : is not a member of 'CEnginePersistentPrimitiveBase' | ecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF322\work\tree\engine\CEnginePrimitiveHandle.h(29) : error C2039: 'NotifyReleased' : is not a member of 'CEnginePersistentPrimitiveBase' | leDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF322\work\tree\engine\CEnginePrimitiveHandle.h(84) : error C2039: 'GetRefCount' : is not a member of 'CEnginePersistentPrimitiveBase' | ecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF322\work\tree\engine\CEnginePrimitiveHandle.h(84) : error C2039: 'NotifyReleased' : is not a member of 'CEnginePersistentPrimitiveBase'
+PROBE_DONE

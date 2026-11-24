@@ -8,6 +8,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CBUYHOUSEDEF_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123A61C (RTTI .?AVCBuyHouseDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CBuyHouseDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CBuyHouseDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DDB56 ?Transfer@CBuyHouseDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E01A7 ?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D325D ?GetSizeofClass@CBuyHouseDef@@UAEKXZ
+public:
+    bool          Main;                                      // +0x25
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CBuyHouseDef) == 0x26);
+FABLE_STATIC_ASSERT(offsetof(CBuyHouseDef, Main) == 0x25);
+#else
 #pragma pack(push, 1)
 class CBuyHouseDef {
 public:
@@ -17,8 +37,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CBuyHouseDef) == 0x26);
-FABLE_STATIC_ASSERT(offsetof(CBuyHouseDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CBuyHouseDef, Main) == 0x25);
+FABLE_STATIC_ASSERT_AT(20, sizeof(CBuyHouseDef) == 0x26);
+FABLE_STATIC_ASSERT_AT(21, offsetof(CBuyHouseDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(22, offsetof(CBuyHouseDef, Main) == 0x25);
+#endif // FABLE_RETAIL_CBUYHOUSEDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CBUYHOUSEDEF_H

@@ -7,14 +7,13 @@
 // global float value. Model it as a __fastcall member with one 4-byte
 // parameter so the compiler emits 'ret 4'.
 
+// Leaf: ?GetTerrainDesirabilityAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CGroundNavigatorExternalInterface.h under FABLE_RETAIL_CGROUNDNAVIGATOREXTERNALINTERFACE_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CGroundNavigatorExternalInterface_Methods::GetTerrainDesirabilityAt); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CGROUNDNAVIGATOREXTERNALINTERFACE_VIRTUAL_MODEL
 #include "engine/CGroundNavigatorExternalInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInterface {
-    float GetTerrainDesirabilityAt(void* pos);
-};
-
-float CGroundNavigatorExternalInterface_Methods::GetTerrainDesirabilityAt(void* pos)
-{
+float CGroundNavigatorExternalInterface::GetTerrainDesirabilityAt(const C3DVector& pos) const {
     (void)pos;
     return 1.0f;
 }

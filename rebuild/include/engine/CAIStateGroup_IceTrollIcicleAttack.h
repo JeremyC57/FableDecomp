@@ -8,6 +8,33 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_ICETROLLICICLEATTACK_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128CAEC (RTTI .?AVCAIStateGroup_IceTrollIcicleAttack@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_IceTrollIcicleAttack); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+#include "engine/CAIStateGroupBase.h"
+enum EAIStateGroupType;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_IceTrollIcicleAttack : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00901334 ?GetStateGroupType@CAIStateGroup_IceTrollIcicleAttack@@MBE?AW4EAIStateGroupType@@XZ
+    virtual void Cleanup();                                               // slot 9 0x00961E10 ?Cleanup@CAIStateGroup_IceTrollIcicleAttack@@MAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00961CA0 ?IsRunnable@CAIStateGroup_IceTrollIcicleAttack@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x009621F0 ?Update@CAIStateGroup_IceTrollIcicleAttack@@MAEXXZ
+public:
+    unsigned char PTarget[0x8];                              // +0x14 CIntelligentPointer<CThing>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_IceTrollIcicleAttack) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_IceTrollIcicleAttack, PTarget) == 0x14);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -28,5 +55,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_IceTrollIcicleAttack) == 0x1c);
 FABLE_STATIC_ASSERT_AT(23, offsetof(CAIStateGroup_IceTrollIcicleAttack, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_IceTrollIcicleAttack, PTarget) == 0x14);
+#endif // FABLE_RETAIL_CAISTATEGROUP_ICETROLLICICLEATTACK_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_ICETROLLICICLEATTACK_H

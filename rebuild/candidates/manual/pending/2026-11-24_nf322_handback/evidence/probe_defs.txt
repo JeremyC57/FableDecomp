@@ -1,0 +1,365 @@
+== CAICreatureWillPowerIndicatorDef vftable 0123DAA4
+slot   0 004D928E SAME     ours=??_ECAICreatureWillPowerIndicatorDef@@UAEPAXI@Z retail_label=??_ECAICreatureWillPowerIndicatorDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 004DF0F7 SAME     ours=?Transfer@CAICreatureWillPowerIndicatorDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CAICreatureWillPowerIndicatorDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004E14FD SAME     ours=?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D5E10 SAME     ours=?GetSizeofClass@CAICreatureWillPowerIndicatorDef@@UAEKXZ retail_label=?GetSizeofClass@CAICreatureWillPowerIndicatorDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 25 DIFF 0 NOLABEL 0
+
+== CAIScratchpadDef vftable 0126D014
+slot   0 007ACAA0 DIFF     ours=??_ECAIScratchpadDef@@UAEPAXI@Z retail_label=??_GCAIScratchpadDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 007AD300 SAME     ours=?Transfer@CAIScratchpadDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CAIScratchpadDef@@UAEXAAVCPersistContext@@@Z
+slot  19 007ADEF0 SAME     ours=?Copy@CAIScratchpadDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CAIScratchpadDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 007AC6E0 SAME     ours=?GetSizeofClass@CAIScratchpadDef@@UAEKXZ retail_label=?GetSizeofClass@CAIScratchpadDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 24 DIFF 1 NOLABEL 0
+
+== CActionUseDef vftable 0123200C
+slot   0 0044F7C3 DIFF     ours=??_ECActionUseDef@@UAEPAXI@Z retail_label=??_GCActionUseDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 006773F0 SAME     ours=?Transfer@CActionUseDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CActionUseDef@@UAEXAAVCPersistContext@@@Z
+slot  19 00453899 SAME     ours=?Copy@CActionUseDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CActionUseDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 0044C269 SAME     ours=?GetSizeofClass@CActionUseDef@@UAEKXZ retail_label=?GetSizeofClass@CActionUseDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 24 DIFF 1 NOLABEL 0
+
+== CBuyHouseDef vftable 0123A61C
+slot   0 004D7B7F SAME     ours=??_ECBuyHouseDef@@UAEPAXI@Z retail_label=??_ECBuyHouseDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 004DDB56 SAME     ours=?Transfer@CBuyHouseDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CBuyHouseDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004E01A7 SAME     ours=?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D325D SAME     ours=?GetSizeofClass@CBuyHouseDef@@UAEKXZ retail_label=?GetSizeofClass@CBuyHouseDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 25 DIFF 0 NOLABEL 0
+
+== CCameraCollisionDef vftable 0123DFBC
+slot   0 004D9489 DIFF     ours=??_ECCameraCollisionDef@@UAEPAXI@Z retail_label=??_GCCameraCollisionDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 004DF31C SAME     ours=?Transfer@CCameraCollisionDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CCameraCollisionDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004E187E SAME     ours=?Copy@CCameraCollisionDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CCameraCollisionDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D624B SAME     ours=?GetSizeofClass@CCameraCollisionDef@@UAEKXZ retail_label=?GetSizeofClass@CCameraCollisionDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 24 DIFF 1 NOLABEL 0
+
+== CCarriedReadableDef vftable 0123DB94
+slot   0 004D92C6 SAME     ours=??_ECCarriedReadableDef@@UAEPAXI@Z retail_label=??_ECCarriedReadableDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 007E1E30 SAME     ours=?Transfer@CCarriedReadableDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CCarriedReadableDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004E157C SAME     ours=?Copy@CCarriedReadableDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CCarriedReadableDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D5EE4 SAME     ours=?GetSizeofClass@CCarriedReadableDef@@UAEKXZ retail_label=?GetSizeofClass@CCarriedReadableDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 25 DIFF 0 NOLABEL 0
+
+== CChestDef vftable 0123ACDC
+slot   0 004D8072 SAME     ours=??_ECChestDef@@UAEPAXI@Z retail_label=??_ECChestDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 004DE204 SAME     ours=?Transfer@CChestDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CChestDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004E0564 SAME     ours=?Copy@CChestDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CChestDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D3840 SAME     ours=?GetSizeofClass@CChestDef@@UAEKXZ retail_label=?GetSizeofClass@CChestDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 25 DIFF 0 NOLABEL 0
+
+== CCrateStackDef vftable 0123C86C
+slot   0 004D8A8E DIFF     ours=??_ECCrateStackDef@@UAEPAXI@Z retail_label=??_GCCrateStackDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 004DE9A1 SAME     ours=?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004E0E98 SAME     ours=?Copy@CCrateStackDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CCrateStackDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D50B2 SAME     ours=?GetSizeofClass@CCrateStackDef@@UAEKXZ retail_label=?GetSizeofClass@CCrateStackDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 24 DIFF 1 NOLABEL 0
+
+== CHeroMarriageDef vftable 01232074
+slot   0 0044F7FE DIFF     ours=??_ECHeroMarriageDef@@UAEPAXI@Z retail_label=??_GCHeroMarriageDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 00452398 SAME     ours=?Transfer@CHeroMarriageDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CHeroMarriageDef@@UAEXAAVCPersistContext@@@Z
+slot  19 0045390C SAME     ours=?Copy@CHeroMarriageDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CHeroMarriageDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 0044C2E2 SAME     ours=?GetSizeofClass@CHeroMarriageDef@@UAEKXZ retail_label=?GetSizeofClass@CHeroMarriageDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 24 DIFF 1 NOLABEL 0
+
+== COccupiableDef vftable 0123C514
+slot   0 004D8920 SAME     ours=??_ECOccupiableDef@@UAEPAXI@Z retail_label=??_ECOccupiableDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 004DE8B2 SAME     ours=?Transfer@COccupiableDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@COccupiableDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004E0D33 SAME     ours=?Copy@COccupiableDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@COccupiableDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D4E78 SAME     ours=?GetSizeofClass@COccupiableDef@@UAEKXZ retail_label=?GetSizeofClass@COccupiableDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 25 DIFF 0 NOLABEL 0
+
+== COverheadDisplayDef vftable 0123C8FC
+slot   0 004D8AD4 SAME     ours=??_ECOverheadDisplayDef@@UAEPAXI@Z retail_label=??_ECOverheadDisplayDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 007B7D20 SAME     ours=?Transfer@COverheadDisplayDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@COverheadDisplayDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004E0EB7 SAME     ours=?Copy@COverheadDisplayDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@COverheadDisplayDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D5128 SAME     ours=?GetSizeofClass@COverheadDisplayDef@@UAEKXZ retail_label=?GetSizeofClass@COverheadDisplayDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 25 DIFF 0 NOLABEL 0
+
+== CResurrectionItemDef vftable 0123D9AC
+slot   0 004D9202 DIFF     ours=??_ECResurrectionItemDef@@UAEPAXI@Z retail_label=??_GCResurrectionItemDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 004DEF76 SAME     ours=?Transfer@CResurrectionItemDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CResurrectionItemDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004E1394 SAME     ours=?Copy@CResurrectionItemDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CResurrectionItemDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D5DBE SAME     ours=?GetSizeofClass@CResurrectionItemDef@@UAEKXZ retail_label=?GetSizeofClass@CResurrectionItemDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 24 DIFF 1 NOLABEL 0
+
+== CVillageMemberDef vftable 0123E854
+slot   0 004DA7D1 SAME     ours=??_ECVillageMemberDef@@UAEPAXI@Z retail_label=??_ECVillageMemberDef@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 009ACE90 SAME     ours=?UnloadResource@CDefClassBase@@UAE_NXZ retail_label=?UnloadResource@CDefClassBase@@UAE_NXZ
+slot   3 009FBEF0 SAME     ours=?GetUnloadableMemory@CResource@@UBEKXZ retail_label=?GetUnloadableMemory@CResource@@UBEKXZ
+slot   4 0042D950 SAME     ours=?IsResourceLoaded@CResource@@UBE_NXZ retail_label=?IsResourceLoaded@CResource@@UBE_NXZ
+slot   5 0042D960 SAME     ours=?OnResourceLoaded@CResource@@UAEXXZ retail_label=?OnResourceLoaded@CResource@@UAEXXZ
+slot   6 0042D970 SAME     ours=?CanAbortResourceLoad@CResource@@UBE_NJ@Z retail_label=?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+slot   7 0042D980 SAME     ours=?OnResourceLoadAborted@CResource@@UAEXXZ retail_label=?OnResourceLoadAborted@CResource@@UAEXXZ
+slot   8 009FBF00 SAME     ours=?GetDebugMemoryInUse@CResource@@UBEKXZ retail_label=?GetDebugMemoryInUse@CResource@@UBEKXZ
+slot   9 009FBF10 SAME     ours=?ResetDebugMemoryInUse@CResource@@UAEXXZ retail_label=?ResetDebugMemoryInUse@CResource@@UAEXXZ
+slot  10 0042DA10 SAME     ours=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ retail_label=?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ
+slot  11 0042DA20 SAME     ours=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z retail_label=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+slot  12 0042DA30 SAME     ours=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z retail_label=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+slot  13 0042DA40 SAME     ours=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z retail_label=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+slot  14 0042DA60 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z
+slot  15 0042DA50 SAME     ours=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z retail_label=?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z
+slot  16 0042DA70 SAME     ours=?IsParentDef@CDefClassBase@@UBE_NXZ retail_label=?IsParentDef@CDefClassBase@@UBE_NXZ
+slot  17 0042DA80 SAME     ours=?PostTransfer@CDefClassBase@@UAEXXZ retail_label=?PostTransfer@CDefClassBase@@UAEXXZ
+slot  18 004DD989 SAME     ours=?Transfer@CVillageMemberDef@@UAEXAAVCPersistContext@@@Z retail_label=?Transfer@CVillageMemberDef@@UAEXAAVCPersistContext@@@Z
+slot  19 004DFFA5 SAME     ours=?Copy@CVillageMemberDef@@UAEXPBVCDefClassBase@@@Z retail_label=?Copy@CVillageMemberDef@@UAEXPBVCDefClassBase@@@Z
+slot  20 004D7A21 SAME     ours=?GetSizeofClass@CVillageMemberDef@@UAEKXZ retail_label=?GetSizeofClass@CVillageMemberDef@@UAEKXZ
+slot  21 009ACAB0 SAME     ours=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z retail_label=?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+slot  22 009ACB20 SAME     ours=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z retail_label=?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+slot  23 0042DA90 SAME     ours=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z retail_label=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+slot  24 0042DAA0 SAME     ours=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ retail_label=?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+retail slots 25, emitted slots 25; SAME 25 DIFF 0 NOLABEL 0
+
+PROBE_DONE

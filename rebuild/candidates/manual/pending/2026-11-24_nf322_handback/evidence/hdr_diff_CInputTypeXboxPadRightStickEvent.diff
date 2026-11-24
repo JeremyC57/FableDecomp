@@ -1,0 +1,46 @@
+--- orig/hdr_CInputTypeXboxPadRightStickEvent.h	2026-11-23 23:53:27.274001899 +0000
++++ hdr/engine/CInputTypeXboxPadRightStickEvent.h	2026-11-23 23:53:27.375065732 +0000
+@@ -8,13 +8,41 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CINPUTTYPEXBOXPADRIGHTSTICKEVENT_VIRTUAL_MODEL
++// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
++// 0x012317F0 (RTTI .?AVCInputTypeXboxPadRightStickEvent@@), 8 slots; every slot is this class's own (RTTI-port labels), so `void* __vftable` becomes these virtual declarations, in slot order.
++// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
++class C2DVector;
++class CInputEvent;
++class CInputTypeBase;
++enum EInputButtonEventType;
++enum EMouseButtonControl;
++enum EXboxControllerButton;
++namespace NControlSystem { enum EInputType; }
++#pragma pack(push, 1)
++class CInputTypeXboxPadRightStickEvent {
++public:
++    virtual ~CInputTypeXboxPadRightStickEvent();                          // slot 0 0x00447B10 ??_GCInputTypeXboxPadRightStickEvent@@UAEPAXI@Z
++    virtual NControlSystem::EInputType GetType() const;                   // slot 1 0x004456B0 ?GetType@CInputTypeXboxPadRightStickEvent@@UBE?AW4EInputType@NControlSystem@@XZ
++    virtual bool operator==(const CInputTypeBase&) const;                 // slot 2 0x0066F360 ??8CInputTypeXboxPadRightStickEvent@@UBE_NABVCInputTypeBase@@@Z
++    virtual bool IsEventOfThisType(const CInputEvent&) const;             // slot 3 0x0066F390 ?IsEventOfThisType@CInputTypeXboxPadRightStickEvent@@UBE_NABVCInputEvent@@@Z
++    virtual C2DVector GetControlDirection(const CInputEvent&) const;      // slot 4 0x0066F840 ?GetControlDirection@CInputTypeXboxPadRightStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
++    virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType, long, float&) const; // slot 5 0x0066F3B0 ?IsEventOfThisTypeInQueue@CInputTypeXboxPadRightStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
++    virtual bool IsInputTypeWithButton(EXboxControllerButton) const;      // slot 6 0x004456C0 ?IsInputTypeWithButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EXboxControllerButton@@@Z
++    virtual bool IsInputTypeWithMouseButton(EMouseButtonControl) const;   // slot 7 0x004456D0 ?IsInputTypeWithMouseButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EMouseButtonControl@@@Z
++public:
++};
++#pragma pack(pop)
++FABLE_STATIC_ASSERT(sizeof(CInputTypeXboxPadRightStickEvent) == 0x4);
++#else
+ #pragma pack(push, 1)
+ struct CInputTypeXboxPadRightStickEvent {
+     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CInputTypeXboxPadRightStickEvent) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CInputTypeXboxPadRightStickEvent, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(17, sizeof(CInputTypeXboxPadRightStickEvent) == 0x4);
++FABLE_STATIC_ASSERT_AT(18, offsetof(CInputTypeXboxPadRightStickEvent, __vftable) == 0x0);
++#endif // FABLE_RETAIL_CINPUTTYPEXBOXPADRIGHTSTICKEVENT_VIRTUAL_MODEL
+ 
+ #endif // FABLE_ENGINE_CINPUTTYPEXBOXPADRIGHTSTICKEVENT_H

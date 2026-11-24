@@ -1,0 +1,15 @@
+addr       parity           behav  name
+009031da   MATCH            PASS   GetStateGroupType
+00900c50   MATCH            PASS   GetStateGroupType
+00900d78   MATCH            PASS   GetStateGroupType
+0095a3b0   MATCH            PASS   OnReplace
+00900d3d   MATCH            PASS   GetStateGroupType
+00900c8b   MATCH            PASS   GetStateGroupType
+
+WINS: 6
+  009031da MATCH CAIStateGroup_WhisperPotionCombat::?GetStateGroupType@CAIStateGroup_WhisperPotionCombat_Methods@@QAEHXZ
+  00900c50 MATCH CAIStateGroup_HoverAttack::?GetStateGroupType@CAIStateGroup_HoverAttack_Methods@@QAEHXZ
+  00900d78 MATCH CAIStateGroup_HoverHornetQueenTakeDamage::?GetStateGroupType@CAIStateGroup_HoverHornetQueenTakeDamage_Methods@@QAEHXZ
+  0095a3b0 MATCH CAIStateGroup_HoverHornetQueenTakeDamage::?OnReplace@CAIStateGroup_HoverHornetQueenTakeDamage_Methods@@QAEXXZ
+  00900d3d MATCH CAIStateGroup_HoverAttackArea::?GetStateGroupType@CAIStateGroup_HoverAttackArea_Methods@@QAEHXZ
+  00900c8b MATCH CAIStateGroup_HoverAttackUnlessTargetIsFleeing::?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing_Methods@@QAEHXZ

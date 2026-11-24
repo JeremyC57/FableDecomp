@@ -1,0 +1,60 @@
+--- orig/hdr_CInputTypeKeyboardKeyEvent.h	2026-11-23 23:53:27.259553506 +0000
++++ hdr/engine/CInputTypeKeyboardKeyEvent.h	2026-11-23 23:53:27.374403444 +0000
+@@ -8,20 +8,54 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CINPUTTYPEKEYBOARDKEYEVENT_VIRTUAL_MODEL
++// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
++// 0x012318A4 (RTTI .?AVCInputTypeKeyboardKeyEvent@@), 8 slots; every slot is this class's own (RTTI-port labels), so `void* __vftable` becomes these virtual declarations, in slot order.
++// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
++class C2DVector;
++class CInputEvent;
++class CInputTypeBase;
++enum EInputButtonEventType;
++enum EMouseButtonControl;
++enum EXboxControllerButton;
++namespace NControlSystem { enum EInputType; }
+ #pragma pack(push, 1)
+ class CInputTypeKeyboardKeyEvent {
+ public:
+-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
++    virtual ~CInputTypeKeyboardKeyEvent();                                // slot 0 0x00447A20 ??_ECInputTypeKeyboardKeyEvent@@UAEPAXI@Z
++    virtual NControlSystem::EInputType GetType() const;                   // slot 1 0x004479F0 ?GetType@CInputTypeKeyboardKeyEvent@@UBE?AW4EInputType@NControlSystem@@XZ
++    virtual bool operator==(const CInputTypeBase&) const;                 // slot 2 0x0066EDE0 ??8CInputTypeKeyboardKeyEvent@@UBE_NABVCInputTypeBase@@@Z
++    virtual bool IsEventOfThisType(const CInputEvent&) const;             // slot 3 0x0066EE20 ?IsEventOfThisType@CInputTypeKeyboardKeyEvent@@UBE_NABVCInputEvent@@@Z
++    virtual C2DVector GetControlDirection(const CInputEvent&) const;      // slot 4 0x0066F610 ?GetControlDirection@CInputTypeKeyboardKeyEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
++    virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType, long, float&) const; // slot 5 0x0066F630 ?IsEventOfThisTypeInQueue@CInputTypeKeyboardKeyEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
++    virtual bool IsInputTypeWithButton(EXboxControllerButton) const;      // slot 6 0x00447A00 ?IsInputTypeWithButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EXboxControllerButton@@@Z
++    virtual bool IsInputTypeWithMouseButton(EMouseButtonControl) const;   // slot 7 0x00447A10 ?IsInputTypeWithMouseButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EMouseButtonControl@@@Z
++public:
+     unsigned char KeyboardKey[0x4];                          // +0x04 EInputKey
+     float         ControlDirection_X;                        // +0x08 C2DVector::X
+     float         ControlDirection_Y;                        // +0x0c C2DVector::Y
+ };
+ #pragma pack(pop)
+-
+ FABLE_STATIC_ASSERT(sizeof(CInputTypeKeyboardKeyEvent) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CInputTypeKeyboardKeyEvent, __vftable) == 0x0);
+ FABLE_STATIC_ASSERT(offsetof(CInputTypeKeyboardKeyEvent, KeyboardKey) == 0x4);
+ FABLE_STATIC_ASSERT(offsetof(CInputTypeKeyboardKeyEvent, ControlDirection_X) == 0x8);
+ FABLE_STATIC_ASSERT(offsetof(CInputTypeKeyboardKeyEvent, ControlDirection_Y) == 0xc);
++#else
++#pragma pack(push, 1)
++class CInputTypeKeyboardKeyEvent {
++public:
++    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
++    unsigned char KeyboardKey[0x4];                          // +0x04 EInputKey
++    float         ControlDirection_X;                        // +0x08 C2DVector::X
++    float         ControlDirection_Y;                        // +0x0c C2DVector::Y
++};
++#pragma pack(pop)
++
++FABLE_STATIC_ASSERT_AT(21, sizeof(CInputTypeKeyboardKeyEvent) == 0x10);
++FABLE_STATIC_ASSERT_AT(22, offsetof(CInputTypeKeyboardKeyEvent, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(23, offsetof(CInputTypeKeyboardKeyEvent, KeyboardKey) == 0x4);
++FABLE_STATIC_ASSERT_AT(24, offsetof(CInputTypeKeyboardKeyEvent, ControlDirection_X) == 0x8);
++FABLE_STATIC_ASSERT_AT(25, offsetof(CInputTypeKeyboardKeyEvent, ControlDirection_Y) == 0xc);
++#endif // FABLE_RETAIL_CINPUTTYPEKEYBOARDKEYEVENT_VIRTUAL_MODEL
+ 
+ #endif // FABLE_ENGINE_CINPUTTYPEKEYBOARDKEYEVENT_H

@@ -1,0 +1,29 @@
+== CGroundNavigatorExternalInterface vftable 0125EC9C
+slot   0 006CDDF0 SAME     ours=?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z retail_label=?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z
+slot   1 006CD9B0 SAME     ours=?GetTerrainDesirabilityAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z retail_label=?GetTerrainDesirabilityAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
+slot   2 006CD9C0 SAME     ours=?GetTerrainHeightAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z retail_label=?GetTerrainHeightAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
+slot   3 006CD9E0 SAME     ours=?GetThemeHeightAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z retail_label=?GetThemeHeightAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
+slot   4 006CD970 SAME     ours=?FindPosZAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@_N@Z retail_label=?FindPosZAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@_N@Z
+slot   5 006CD990 SAME     ours=?FindPosZAtIncludingThemes@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@_N@Z retail_label=?FindPosZAtIncludingThemes@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@_N@Z
+slot   6 006CDA10 SAME     ours=?PeekNavigatorRadius@CGroundNavigatorExternalInterface@@UBEM_N@Z retail_label=?PeekNavigatorRadius@CGroundNavigatorExternalInterface@@UBEM_N@Z
+slot   7 006CDA50 SAME     ours=?PeekNavigatorOrientation@CGroundNavigatorExternalInterface@@UBE?AVC2DVector@@XZ retail_label=?PeekNavigatorOrientation@CGroundNavigatorExternalInterface@@UBE?AVC2DVector@@XZ
+slot   8 006CDA90 SAME     ours=?PeekNavigatorPosition2D@CGroundNavigatorExternalInterface@@UBE?AVC2DVector@@XZ retail_label=?PeekNavigatorPosition2D@CGroundNavigatorExternalInterface@@UBE?AVC2DVector@@XZ
+slot   9 006CDAB0 SAME     ours=?PeekNavigatorPosition3D@CGroundNavigatorExternalInterface@@UBE?AVC3DVector@@XZ retail_label=?PeekNavigatorPosition3D@CGroundNavigatorExternalInterface@@UBE?AVC3DVector@@XZ
+slot  10 006CDAE0 SAME     ours=?PeekNavigatorMaxSpeed@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z retail_label=?PeekNavigatorMaxSpeed@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
+slot  11 006CDC20 SAME     ours=?GetNavigatorObstacles@CGroundNavigatorExternalInterface@@UAEAAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ retail_label=?GetNavigatorObstacles@CGroundNavigatorExternalInterface@@UAEAAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ
+slot  12 006CDBD0 SAME     ours=?GetNavigatorObstacles@CGroundNavigatorExternalInterface@@UBEABV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ retail_label=?GetNavigatorObstacles@CGroundNavigatorExternalInterface@@UBEABV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ
+slot  13 006CD7B0 SAME     ours=?GetPNavigatorObstacles@CGroundNavigatorExternalInterface@@UAEPAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ retail_label=?GetPNavigatorObstacles@CGroundNavigatorExternalInterface@@UAEPAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ
+slot  14 006CDC70 SAME     ours=?GetPThingToNotAvoid@CGroundNavigatorExternalInterface@@UBEPBVCSteeringAgent@@XZ retail_label=?GetPThingToNotAvoid@CGroundNavigatorExternalInterface@@UBEPBVCSteeringAgent@@XZ
+slot  15 006CDD00 SAME     ours=?GetProximityForDirectApproach@CGroundNavigatorExternalInterface@@UBEMXZ retail_label=?GetProximityForDirectApproach@CGroundNavigatorExternalInterface@@UBEMXZ
+slot  16 006CDA00 SAME     ours=?GetNavigationLevelAt@CGroundNavigatorExternalInterface@@UBEJABVC3DVector@@@Z retail_label=?GetNavigationLevelAt@CGroundNavigatorExternalInterface@@UBEJABVC3DVector@@@Z
+slot  17 006CDB00 SAME     ours=?GetConstantFPS@CGroundNavigatorExternalInterface@@UBEJXZ retail_label=?GetConstantFPS@CGroundNavigatorExternalInterface@@UBEJXZ
+slot  18 006CDB50 SAME     ours=?GetMinPathCost@CGroundNavigatorExternalInterface@@UBEMXZ retail_label=?GetMinPathCost@CGroundNavigatorExternalInterface@@UBEMXZ
+slot  19 006CDB90 SAME     ours=?GetMaxPathCost@CGroundNavigatorExternalInterface@@UBEMXZ retail_label=?GetMaxPathCost@CGroundNavigatorExternalInterface@@UBEMXZ
+slot  20 006CB5F0 SAME     ours=?IsPlayer@CGroundNavigatorExternalInterface@@UBE_NXZ retail_label=?IsPlayer@CGroundNavigatorExternalInterface@@UBE_NXZ
+slot  21 006CDB20 SAME     ours=?IsDead@CGroundNavigatorExternalInterface@@UBE_NXZ retail_label=?IsDead@CGroundNavigatorExternalInterface@@UBE_NXZ
+slot  22 006CDB10 SAME     ours=?GetForwardNavigationWidthExtension@CGroundNavigatorExternalInterface@@UBEMXZ retail_label=?GetForwardNavigationWidthExtension@CGroundNavigatorExternalInterface@@UBEMXZ
+slot  23 006CE710 SAME     ours=??_ECGroundNavigatorExternalInterface@@UAEPAXI@Z retail_label=??_ECGroundNavigatorExternalInterface@@UAEPAXI@Z
+slot  24 006CE650 SAME     ours=?Clone@CGroundNavigatorExternalInterface@@UBEPAVCNavigatorExternalInterface@@XZ retail_label=?Clone@CGroundNavigatorExternalInterface@@UBEPAVCNavigatorExternalInterface@@XZ
+retail slots 25, emitted slots 25; SAME 25 DIFF 0 NOLABEL 0
+
+PROBE_DONE

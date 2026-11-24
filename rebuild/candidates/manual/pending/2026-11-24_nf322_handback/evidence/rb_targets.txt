@@ -1,0 +1,5 @@
+?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z	00410be0	004de9a1
+?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ	00a03b70	0066ee20
+?GetMouseWheelMovement@CInputEvent@@QBEMXZ	00a03bb0	0066f540
+?ReadBinary@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z	0044fc00	007e1e30
+?IsJoystickEventInQueue@CInputManager@@QBE_NW4EInputEventType@@JAAVCInputEvent@@J@Z	009f4c60	0066f320

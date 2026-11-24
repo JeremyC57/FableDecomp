@@ -10,6 +10,40 @@
 
 class CDefPointeeBase;
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_SUMMONERCHARGE_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128D2DC (RTTI .?AVCAIStateGroup_SummonerCharge@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_SummonerCharge); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+#include "engine/CAIStateGroupBase.h"
+class CThingAICreature;
+class CWorld;
+enum EAIStateGroupType;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_SummonerCharge : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00902D57 ?GetStateGroupType@CAIStateGroup_SummonerCharge@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void Cleanup();                                               // slot 9 0x0096FC60 ?Cleanup@CAIStateGroup_SummonerCharge@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x0096FA90 ?IsRunnable@CAIStateGroup_SummonerCharge@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x0096FF10 ?Update@CAIStateGroup_SummonerCharge@@UAEXXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x0096F730 ?InitStateGroup@CAIStateGroup_SummonerCharge@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+public:
+    unsigned char    PTarget[0x8];                           // +0x14 CIntelligentPointer<CThing>
+    CDefPointeeBase* PDef_Object;                            // +0x1c CDefPointer<CSummonerDef_const_>::Object
+    long             NextFrameToCharge;                      // +0x20
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SummonerCharge) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SummonerCharge, PTarget) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SummonerCharge, PDef_Object) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SummonerCharge, NextFrameToCharge) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -34,5 +68,6 @@ FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_SummonerCharge, __vftable) == 
 FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_SummonerCharge, PTarget) == 0x14);
 FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_SummonerCharge, PDef_Object) == 0x1c);
 FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_SummonerCharge, NextFrameToCharge) == 0x20);
+#endif // FABLE_RETAIL_CAISTATEGROUP_SUMMONERCHARGE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_SUMMONERCHARGE_H

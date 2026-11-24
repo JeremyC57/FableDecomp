@@ -1,5 +1,4 @@
 // CInputTypeMouseMovementEvent::GetControlDirection(const CInputEvent& event) const -- mouse movement as a direction, clamped to unit length
-// Leaf: GetControlDirection
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0066F8B0, 120 bytes, vtable 0x01231814 slot 4, __thiscall `ret 8` (hidden C2DVector result,
 // then the event). The movement comes from CInputEvent's C3DVector accessor (0x00A043D0, copies +0x0C..+0x14;
@@ -9,6 +8,10 @@
 // Shape: Y is built in sequenced double statements (load, *= scale, then a float-typed * -1.0f so the constant stays a
 // dword) and the squared length as `lengthSq = x*x; lengthSq += y*y;`: the one-expression forms let VC7.1 hoist the
 // scale load above the Y self-copy store and square Y first (120v120 x87 order).
+// Leaf: ?GetControlDirection@CInputTypeMouseMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CInputTypeMouseMovementEvent.h under FABLE_RETAIL_CINPUTTYPEMOUSEMOVEMENTEVENT_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CInputTypeMouseMovementEvent_Methods::GetControlDirection); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CINPUTTYPEMOUSEMOVEMENTEVENT_VIRTUAL_MODEL
 #include <math.h>
 #include "engine/CInputTypeMouseMovementEvent.h"
 #include "engine/C3DVector.h"
@@ -25,10 +28,7 @@ public:
     C3DVector GetMouseMovement() const;         // 0x00A043D0
 };
 extern const float g_MouseMovementScale;        // 0x0125B24C (0.015625f = 1/64)
-struct CInputTypeMouseMovementEvent_Methods : CInputTypeMouseMovementEvent {
-    C2DVector GetControlDirection(const CInputEvent& event) const;
-};
-C2DVector CInputTypeMouseMovementEvent_Methods::GetControlDirection(const CInputEvent& event) const
+C2DVector CInputTypeMouseMovementEvent::GetControlDirection(const CInputEvent& event) const
 {
     C2DVector movement(event.GetMouseMovement());
     double x = g_MouseMovementScale * movement.X;
