@@ -1,0 +1,105 @@
+06:23 00975bb0 grade v0.cpp DIFFER(4612v4707) hunks=17 -- B24A5 baseline regrade (Codex draft)
+06:25 00975bb0 grade n_ISNONZERO_ORIGINAL_YXZ.cpp DIFFER(4608v4707) hunks=19 -- B24A5 IsNonZero existing opt-in texts YXZ / ZYX / squared-XYZ
+06:25 00975bb0 grade n_ISNONZERO_ZYX.cpp DIFFER(4608v4707) hunks=19 -- B24A5 IsNonZero existing opt-in texts YXZ / ZYX / squared-XYZ
+06:25 00975bb0 grade n_NONZERO_SQUARED_XYZ.cpp DIFFER(4608v4707) hunks=19 -- B24A5 IsNonZero existing opt-in texts YXZ / ZYX / squared-XYZ
+06:55 00975bb0 grade v0.cpp DIFFER(4612v4707) hunks=17 -- B24A5 baseline
+06:58 00975bb0 grade n_*.cpp DIFFER(4608v4707) hunks=19 -- B24A5 IsNonZero YXZ/ZYX/squared-XYZ texts
+06:26 00975bb0 grade n_GS.cpp DIFFER(4612v4707) hunks=15 -- B24A5 Normalise grouped-sum / GFSqr grouped existing opt-ins
+06:26 00975bb0 grade n_SG.cpp DIFFER(4612v4707) hunks=17 -- B24A5 Normalise grouped-sum / GFSqr grouped existing opt-ins
+07:02 00975bb0 grade n_GS.cpp DIFFER(4612v4707) hunks=15 -- B24A5 NORMALISE_GROUPED_SUM opt-in (best; differ/ updated); n_SG GFSqr grouped 17
+06:30 00975bb0 grade base.cpp DIFFER(4612v4624) hunks=14 -- B24A6 regrade after oracle re-cut
+06:37 00975bb0 grade r1.cpp DIFFER(4628v4624) hunks=180 -- FableWin-sized vector op texts (named result) + magnitude 26i texts
+06:37 00975bb0 grade r2.cpp DIFFER(4624v4624) hunks=181 -- FableWin-sized vector op texts (named result) + magnitude 26i texts
+06:37 00975bb0 grade r3.cpp DIFFER(4628v4624) hunks=180 -- FableWin-sized vector op texts (named result) + magnitude 26i texts
+06:37 00975bb0 grade s1.cpp DIFFER(4612v4624) hunks=14 -- isolate: SUB named / ADD+SCALE named / MAG XY_THEN_Z
+06:37 00975bb0 grade s2.cpp DIFFER(4612v4624) hunks=14 -- isolate: SUB named / ADD+SCALE named / MAG XY_THEN_Z
+06:37 00975bb0 grade s3.cpp DIFFER(4624v4624) hunks=15 -- isolate: SUB named / ADD+SCALE named / MAG XY_THEN_Z
+06:37 00975bb0 grade s3.cpp DIFFER(4624v4624) hunks=15 -- s3 detail
+06:38 00975bb0 grade p1.cpp DIFFER(4612v4624) hunks=14 -- PROBE: unrelated function compiled before Update in TU (symbol-pool carry-over test)
+06:38 00975bb0 grade p2.cpp DIFFER(4612v4624) hunks=14 -- PROBE: unrelated function compiled before Update in TU (symbol-pool carry-over test)
+06:47 00975bb0 grade i1.cpp DIFFER(4608v4624) hunks=18 -- one-expression IsNonZero (FableWin 31i) -- check factor load order
+06:49 00975bb0 grade i2.cpp DIFFER(4608v4624) hunks=18 -- one-expr IsNonZero YXZ x Normalise texts (plain GFSqr / LOCALS / LOCALS_YZX)
+06:49 00975bb0 grade i3.cpp DIFFER(4624v4624) hunks=18 -- one-expr IsNonZero YXZ x Normalise texts (plain GFSqr / LOCALS / LOCALS_YZX)
+06:49 00975bb0 grade i4.cpp DIFFER(4624v4624) hunks=16 -- one-expr IsNonZero YXZ x Normalise texts (plain GFSqr / LOCALS / LOCALS_YZX)
+06:57 00975bb0 grade c1.cpp DIFFER(4624v4624) hunks=18 -- i4 + SUB named / all named / MAG XY_THEN_Z
+06:57 00975bb0 grade c2.cpp DIFFER(4624v4624) hunks=16 -- i4 + SUB named / all named / MAG XY_THEN_Z
+06:57 00975bb0 grade c3.cpp DIFFER(4624v4624) hunks=16 -- i4 + SUB named / all named / MAG XY_THEN_Z
+06:57 00975bb0 grade e1.cpp DIFFER(4624v4624) hunks=16 -- PROBE f-first: E1 f-declared-first YZX locals / default GetSquaredMagnitude / GFSqr named
+06:58 00975bb0 grade e2.cpp DIFFER(4564v4624) hunks=112 -- PROBE f-first: E1 f-declared-first YZX locals / default GetSquaredMagnitude / GFSqr named
+06:58 00975bb0 grade e3.cpp DIFFER(4644v4624) hunks=80 -- PROBE f-first: E1 f-declared-first YZX locals / default GetSquaredMagnitude / GFSqr named
+07:05 00975bb0 grade f1.cpp DIFFER(4624v4624) hunks=15 -- PROBE IsNonZero grouping on f-first GROUPED_SUM Normalise
+07:05 00975bb0 grade f2.cpp DIFFER(4624v4624) hunks=15 -- PROBE IsNonZero grouping on f-first GROUPED_SUM Normalise
+07:05 00975bb0 grade f3.cpp DIFFER(4608v4624) hunks=18 -- PROBE IsNonZero grouping on f-first GROUPED_SUM Normalise
+07:19 00975bb0 grade g1.cpp DIFFER(4624v4624) hunks=17 -- PROBE IsNonZero pair groupings (avoid sum CSE) on f-first Normalise
+07:19 00975bb0 grade g2.cpp DIFFER(4632v4624) hunks=180 -- PROBE IsNonZero pair groupings (avoid sum CSE) on f-first Normalise
+07:19 00975bb0 grade g3.cpp DIFFER(4624v4624) hunks=17 -- PROBE IsNonZero pair groupings (avoid sum CSE) on f-first Normalise
+07:19 00975bb0 grade g1.cpp DIFFER(4624v4624) hunks=17 -- g1 detail
+07:19 00975bb0 grade h1.cpp DIFFER(4628v4624) hunks=16 -- PROBE IsNonZero single-product parens on f-first Normalise
+07:19 00975bb0 grade h2.cpp DIFFER(4624v4624) hunks=11 -- PROBE IsNonZero single-product parens on f-first Normalise
+07:19 00975bb0 grade h3.cpp DIFFER(4624v4624) hunks=18 -- PROBE IsNonZero single-product parens on f-first Normalise
+07:19 00975bb0 grade h2a.cpp DIFFER(4624v4624) hunks=9 -- h2 +/- GROUPED_SUM, GFSqr paren
+07:19 00975bb0 grade h2b.cpp DIFFER(4624v4624) hunks=11 -- h2 +/- GROUPED_SUM, GFSqr paren
+07:20 00975bb0 grade h2.cpp DIFFER(4624v4624) hunks=11 -- h2 +/- GROUPED_SUM, GFSqr paren
+07:20 00975bb0 grade m1.cpp DIFFER(4624v4624) hunks=8 -- h2a + GetMagnitude 26i texts (XY_THEN_Z / SQUARED_LOCAL / X_THEN_YZ)
+07:20 00975bb0 grade m2.cpp DIFFER(4624v4624) hunks=9 -- h2a + GetMagnitude 26i texts (XY_THEN_Z / SQUARED_LOCAL / X_THEN_YZ)
+07:20 00975bb0 grade m3.cpp DIFFER(4624v4624) hunks=187 -- h2a + GetMagnitude 26i texts (XY_THEN_Z / SQUARED_LOCAL / X_THEN_YZ)
+07:20 00975bb0 grade m4.cpp DIFFER(4624v4624) hunks=9 -- h2a + MAGNITUDE_NAMED_SQUARED
+07:27 00975bb0 grade b1.cpp DIFFER(4628v4624) hunks=8 -- h2a + GetMagnitude named-squared bracket placements B1-B3
+07:27 00975bb0 grade b2.cpp DIFFER(4624v4624) hunks=9 -- h2a + GetMagnitude named-squared bracket placements B1-B3
+07:27 00975bb0 grade b3.cpp DIFFER(4624v4624) hunks=10 -- h2a + GetMagnitude named-squared bracket placements B1-B3
+07:27 00975bb0 grade b4.cpp DIFFER(4624v4624) hunks=9 -- h2a + GetMagnitude named-squared B4-B6
+07:27 00975bb0 grade b5.cpp DIFFER(4624v4624) hunks=9 -- h2a + GetMagnitude named-squared B4-B6
+07:27 00975bb0 grade b6.cpp DIFFER(4624v4624) hunks=187 -- h2a + GetMagnitude named-squared B4-B6
+07:28 00975bb0 grade b7.cpp DIFFER(4624v4624) hunks=9 -- h2a + GetMagnitude named-squared term orders YXZ/ZYX/YZX
+07:28 00975bb0 grade b8.cpp DIFFER(4624v4624) hunks=9 -- h2a + GetMagnitude named-squared term orders YXZ/ZYX/YZX
+07:28 00975bb0 grade b9.cpp DIFFER(4624v4624) hunks=9 -- h2a + GetMagnitude named-squared term orders YXZ/ZYX/YZX
+07:28 00975bb0 grade best.cpp DIFFER(4624v4624) hunks=9 -- clean: ISNONZERO_YZX_BRACKET opt-in + plain GFSqr Normalise (site 1 matched)
+07:29 00975bb0 grade k1.cpp DIFFER(4624v4624) hunks=13 -- best + FableWin-sized named-result vector operators (all / SUB / SCALE)
+07:29 00975bb0 grade k2.cpp DIFFER(4624v4624) hunks=13 -- best + FableWin-sized named-result vector operators (all / SUB / SCALE)
+07:29 00975bb0 grade k3.cpp DIFFER(4624v4624) hunks=9 -- best + FableWin-sized named-result vector operators (all / SUB / SCALE)
+07:31 00975bb0 grade 00975bb0.cpp DIFFER(4624v4624) hunks=9 -- B24A7 baseline regrade
+07:41 00975bb0 grade pr1.cpp DIFFER(4624v4624) hunks=8 -- PROBE: 20 dead float stmts before loop (temp shift)
+07:42 00975bb0 grade pr2.cpp RELOCATION_MATCH -- PROBE: 24 dead float stmts (temp shift +128)
+07:43 00975bb0 grade t1.cpp DIFFER(4624v4624) hunks=9 -- GetTC<T> FableWin ORIGINAL_CHAIN (27i) instead of EXPANDED forwarder / no EXPANDED / both
+07:43 00975bb0 grade t2.cpp DIFFER(4624v4624) hunks=9 -- GetTC<T> FableWin ORIGINAL_CHAIN (27i) instead of EXPANDED forwarder / no EXPANDED / both
+07:43 00975bb0 grade t3.cpp DIFFER(4624v4624) hunks=9 -- GetTC<T> FableWin ORIGINAL_CHAIN (27i) instead of EXPANDED forwarder / no EXPANDED / both
+07:48 00975bb0 grade u1.cpp DIFFER(4624v4624) hunks=9 -- t1 + PEEKTC chain / + IsDead direct (FableWin 10i) / t1+IsDead
+07:48 00975bb0 grade u2.cpp DIFFER(4624v4624) hunks=9 -- t1 + PEEKTC chain / + IsDead direct (FableWin 10i) / t1+IsDead
+07:48 00975bb0 grade u3.cpp DIFFER(4624v4624) hunks=9 -- t1 + PEEKTC chain / + IsDead direct (FableWin 10i) / t1+IsDead
+07:50 00975bb0 grade v1.cpp DIFFER(4624v4624) hunks=9 -- IsStillRunnable FableWin-SAME texts (if-&& / nested ifs) on u1 / u2
+07:50 00975bb0 grade v2.cpp DIFFER(4624v4624) hunks=9 -- IsStillRunnable FableWin-SAME texts (if-&& / nested ifs) on u1 / u2
+07:50 00975bb0 grade v3.cpp DIFFER(4624v4624) hunks=9 -- IsStillRunnable FableWin-SAME texts (if-&& / nested ifs) on u1 / u2
+07:52 00975bb0 grade B.cpp DIFFER(4624v4624) hunks=9 -- evidenced base B (GetTC/PeekTC chain, IsDead direct, IsStillRunnable nested) / + named-result -,+,* / + named +,*
+07:52 00975bb0 grade w1.cpp DIFFER(4624v4624) hunks=13 -- evidenced base B (GetTC/PeekTC chain, IsDead direct, IsStillRunnable nested) / + named-result -,+,* / + named +,*
+07:52 00975bb0 grade w2.cpp DIFFER(4624v4624) hunks=9 -- evidenced base B (GetTC/PeekTC chain, IsDead direct, IsStillRunnable nested) / + named-result -,+,* / + named +,*
+07:53 00975bb0 grade w1.cpp DIFFER(4624v4624) hunks=13 -- w1 regrade to read hunks
+07:54 00975bb0 grade x1.cpp DIFFER(4624v4624) hunks=9 -- B + GetMagnitude 26i texts SQUARED_LOCAL / XY_THEN_Z / NAMED_SQUARED
+07:54 00975bb0 grade x2.cpp DIFFER(4624v4624) hunks=8 -- B + GetMagnitude 26i texts SQUARED_LOCAL / XY_THEN_Z / NAMED_SQUARED
+07:55 00975bb0 grade x3.cpp DIFFER(4624v4624) hunks=9 -- B + GetMagnitude 26i texts SQUARED_LOCAL / XY_THEN_Z / NAMED_SQUARED
+07:56 00975bb0 grade y1.cpp DIFFER(4624v4624) hunks=13 -- B + Initialise-form operators (FableWin 34i) all / ADD+SCALE / SUB
+07:56 00975bb0 grade y2.cpp DIFFER(4624v4624) hunks=9 -- B + Initialise-form operators (FableWin 34i) all / ADD+SCALE / SUB
+07:56 00975bb0 grade y3.cpp DIFFER(4624v4624) hunks=13 -- B + Initialise-form operators (FableWin 34i) all / ADD+SCALE / SUB
+08:00 00975bb0 grade z1.cpp DIFFER(4624v4624) hunks=9 -- B + dead release ASSERTs on unchecked GetTC results (2/5/7) [Inferred probe]
+08:00 00975bb0 grade z2.cpp DIFFER(4624v4624) hunks=9 -- B + dead release ASSERTs on unchecked GetTC results (2/5/7) [Inferred probe]
+08:00 00975bb0 grade z3.cpp DIFFER(4624v4624) hunks=9 -- B + dead release ASSERTs on unchecked GetTC results (2/5/7) [Inferred probe]
+08:02 00975bb0 grade z4.cpp DIFFER(4624v4624) hunks=9 -- B + 8 dead release ASSERTs (z3 + p_jack_def.Get() / + combined ptc check) [Inferred]
+08:02 00975bb0 grade z5.cpp DIFFER(4624v4624) hunks=9 -- B + 8 dead release ASSERTs (z3 + p_jack_def.Get() / + combined ptc check) [Inferred]
+08:03 00975bb0 grade q2.cpp RELOCATION_MATCH -- PROBE count: z4 + 2/4/6 repeated dead asserts (10/12/14)
+08:03 00975bb0 grade n9.cpp RELOCATION_MATCH -- natural dead asserts: 9 (+ptc_solid_to_thing) / 10 (+shield index) / 10 (+minion index)
+08:04 00975bb0 grade n9.cpp RELOCATION_MATCH -- n9 on clean overlay (probe sections removed)
+08:05 00975bb0 grade 00975bb0.cpp RELOCATION_MATCH -- final differ source (header comment rewritten)
+08:09 00975bb0 grade p1.cpp DIFFER(4572v4624) hunks=36 -- pick-any: p1 declaration-only (GetSubDef / GetTCDriver / CIntelligentPointer(T*))
+08:09 00975bb0 grade p2.cpp DIFFER(4624v4624) hunks=71 -- pick-any: p2 declaration-only (GetSubDef / GetTCDriver / CIntelligentPointer(T*))
+08:09 00975bb0 grade p3.cpp RELOCATION_MATCH -- pick-any: p3 declaration-only (GetSubDef / GetTCDriver / CIntelligentPointer(T*))
+08:09 00975bb0 grade r1.cpp RELOCATION_MATCH -- pick-any fixes: ctor out of line + StatGetTypeName inline + GetTCDriver size body
+08:09 00975bb0 grade r2.cpp RELOCATION_MATCH -- pick-any fixes without GetTCDriver size body
+08:10 00975bb0 grade r1.cpp RELOCATION_MATCH -- GetTCDriver size body defined out of class
+08:10 00975bb0 grade r1.cpp RELOCATION_MATCH -- GetTCDriver size body + inline_depth(0)
+08:11 00975bb0 grade r3.cpp DIFFER(4624v4624) hunks=71 -- GetTCDriver declaration only (no copy emitted)
+08:11 00975bb0 grade r4.cpp RELOCATION_MATCH -- explicit instantiation of GetTCDriver under size pragma (pick-any scaffold)
+08:11 00975bb0 grade 00975bb0.cpp RELOCATION_MATCH -- final: r2 (ctor out of line + StatGetTypeName inline) on clean overlays
+08:15 00975bb0 grade s1.cpp RELOCATION_MATCH -- GetTCDriver<PhysObstruction> specialised noinline under size pragma (owner scope)
+08:15 00975bb0 grade s1.cpp RELOCATION_MATCH -- GetTCDriver specialisation with owner-row test() text
+08:16 00975bb0 grade cnt14.cpp RELOCATION_MATCH -- PROBE assert count window: 14
+08:16 00975bb0 grade cnt12.cpp RELOCATION_MATCH -- PROBE assert count window: 12
+08:16 00975bb0 grade cnt11.cpp RELOCATION_MATCH -- PROBE assert count window: 11

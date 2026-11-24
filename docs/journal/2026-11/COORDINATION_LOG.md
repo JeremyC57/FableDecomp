@@ -942,3 +942,8 @@ to 0x00C59BA0 by landed row 0x00C72600 -- the real constructor is 0x004C2DD0 (by
 re-basing the 24 local-model rows of the CV_HauntedHouseScript object (0x00E93D50..0x00E96E10) onto the shared headers with their real
 names, and moving 0x00E95380 onto `?Return@TRetVoid@@QAEXXZ`. It stays off your 0x00E93EB0 / 0x00E20600. Once it lands I will tell you
 here, so you can rerun Gate 0 unchanged. Also landed: NF333 (31 rows) and NF334 (31 rows).
+
+2026-11-24 B->A: **0x00975BB0 Jack of Blades Stage1 Update ready, with an Inferred item for you** (README section): RELOCATION_MATCH, pick-any
+13/13 EQ, overlays additive. It carries `// Inferred:` nine dead release ASSERTs (FableWin's copy is +734 i at /Od; the graded window 9-14
+matches; conditions unrecoverable) -- a fitted tie-breaker under EXTRA_RULES 2026-11-19, reported for your landing decision. Two label
+spellings in its NAME_FIXES.tsv (0x0129BA3C DELTA_NOTIONAL_ZERO, 0x0091F990 converting ctor).

@@ -68,3 +68,17 @@ pragma the copy matches). Under EXTRA_RULES 2026-11-20 that holds the row until 
 Today's CTimer header text is the original: all four bodies hash-equal FableWin's Ghidra instruction signatures once VC10's split virtual call
 is allowed for (tool: notes in progress/00f1eed0/). ~CTimer costs c1 14 everywhere. The ??BCDefString 0x00415DD0 pick-any NEQ is HEAD debt
 (landed 0x00EB3D10 emits it too). Oracle extents of 0x00D0D910 (4752) and 0x00DC93F0 (4507) were wrong in B's cut and are re-cut.
+
+## 0x00975BB0 CAIStateGroup_JackOfBladesStage1::Update: READY, with an Inferred item for the lander (B24A7, re-verified 2026-11-24)
+RELOCATION_MATCH PASS, stock flags, strict vland; warnings: RELOC_NAME 0x0129BA3C (`?DELTA_NOTIONAL_ZERO@@3MB`, labelled g_NormaliseEpsilon)
+and 0x0091F990 (full mangled converting-constructor name) -- both label spellings, in notes/00975bb0/NAME_FIXES.tsv; RELOC_ALIAS `__CIfmod`
+(import thunk, expected). vt PASS, mutation FAILs. Pick-any: 13 / 13 copies EQ (pickany.log). Overlay additive (C3DVector.h +5
+`ISNONZERO_YZX_BRACKET`; CThing.h +23 `ISDEAD_DIRECT` and the size-owner scaffold `GETTCDRIVER_PHYSOBSTRUCTION_SIZE_OWNER`, the
+2026-11-20 pattern of the landed `CDEFCLASSBASE_CREATURE_OWNER_SIZE_PASS26`, copying landed owner 0x007890EA's text).
+What made it match: c2 orders the three shared x87 product temporaries by temp number mod 1024, so the number of temps in the whole function
+decides site 2; evidenced helper texts (GetTC / PeekTC original chain, IsDead direct, IsStillRunnable nested ifs; FableWin size SAME) plus
+**`// Inferred:` nine dead release ASSERTs** (fable_assert.h, the form 72 landed rows use), one after each unchecked pointer result. Evidence:
+FableWin's copy is +734 instructions at /Od (one debug ASSERT ~42 i, so roughly 10-17 asserts); graded window 9-14 matches; conditions are
+unrecoverable (notes/00975bb0/ESCALATE.md). Under EXTRA_RULES "2026-11-19 advisor decision" this is a fitted tie-breaker that stays
+`// Inferred:` and is reported here: the lander decides. GET_ROUNDED_ANGLE keeps FABLE_FORCEINLINE with evidence (no out-of-line copy in
+Fable.exe / Ego_r; plain inline scores 75 v limit 74; landed 0x0068CB90 / 0x00974AA0 use the same).
