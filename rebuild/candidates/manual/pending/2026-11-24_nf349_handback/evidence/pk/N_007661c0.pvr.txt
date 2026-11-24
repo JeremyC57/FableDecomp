@@ -1,0 +1,3 @@
+EQ  0040f220 12 ??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z 
+EQ  0042af3c 98 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 
+NEQ 0042b248 182 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z LEAF-REFERENCED

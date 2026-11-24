@@ -1,0 +1,24 @@
+NOADDR   ABSENT   size 25->- addr - src - leaf/reach n n   ??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAE@ABV0@@Z
+NOADDR   ABSENT   size 13->- addr - src - leaf/reach n n   ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Noncon
+NOADDR   ABSENT   size 11->- addr - src - leaf/reach n n   ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Noncon
+NEQ      ABSENT   size 62->- addr 00cd27c7 src b leaf/reach n n   ??0?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@ABVCCharString@@ABVCScriptG
+NOADDR   ABSENT   size 25->- addr - src - leaf/reach n n   ??0CScriptGameResourceObjectBase@@QAE@ABV0@@Z
+EQ       ABSENT   size 45->- addr 00905330 src b,c leaf/reach n n   ??0CScriptGameResourceObjectScriptedThingBase@@QAE@ABV0@@Z
+NEQ      NEQ      size 78->78 addr 00cd27b4 src b leaf/reach n n  debt(already NEQ) ??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+EQ       ABSENT   size 16->- addr 0041c820 src b leaf/reach n n   ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+NEQ      ABSENT   size 257->- addr 00cd3d2e src a,b leaf/reach n n   ??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U
+NOADDR   ABSENT   size 6->- addr - src - leaf/reach n n   ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Noncon
+NOADDR   ABSENT   size 7->- addr - src - leaf/reach n n   ??R?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QBEABVCChar
+NEQ      ABSENT   size 17->- addr 0042aab3 src b leaf/reach n n   ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z
+NOADDR   ABSENT   size 6->- addr - src - leaf/reach n n   ?_M_root@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@
+NOADDR   ABSENT   size 4->- addr - src - leaf/reach n n   ?_S_key@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@
+NOADDR   ABSENT   size 4->- addr - src - leaf/reach n n   ?_S_left@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@
+NOADDR   ABSENT   size 4->- addr - src - leaf/reach n n   ?_S_right@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std
+NOADDR   ABSENT   size 4->- addr - src - leaf/reach n n   ?_S_value@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std
+NOADDR   ABSENT   size 11->- addr - src - leaf/reach n n   ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$
+NOADDR   ABSENT   size 11->- addr - src - leaf/reach n n   ?end@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator
+NOADDR   ABSENT   size 31->- addr - src - leaf/reach n n   ?insert@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$alloca
+NOADDR   ABSENT   size 7->- addr - src - leaf/reach n n   ?key_comp@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std
+NOADDR   ABSENT   size 7->- addr - src - leaf/reach n n   ?key_comp@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allo
+NOADDR   ABSENT   size 55->- addr - src - leaf/reach n n   ?lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@
+NOADDR   ABSENT   size 22->- addr - src - leaf/reach n n   ?lower_bound@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$a

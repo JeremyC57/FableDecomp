@@ -1,0 +1,43 @@
+## NF351 item 3 measurement: 0x0045C5F6 as ??1CThingNoiseDef@@UAE@XZ (source work/exp/m3.cpp -> evidence/m3_measure.cpp)
+grade: EXP m3 0045c5f6 DIFFER(25v25) ??1CThingNoiseDef@@UAE@XZ 
+retail body (from the landed row's own comment): push esi; mov esi,ecx; lea ecx,[esi+0x70]; mov [ecx],0x01230BA0 (CDefPointeeBase vftable); call ~CResource 0x009FC550; mov ecx,esi; pop esi; jmp 0x00454B4C
+--- measured body (user-written destructor on the shared CThingBaseDef.h + CTCNoiseDef.h, local CThingNoiseDef model, Noise at +0x70):
+0000 push     esi                            
+0001 mov      esi, ecx                       
+0003 lea      ecx, [esi + 0x70]              
+0006 mov      dword ptr [esi], 0             ??_7CThingNoiseDef@@6B@
+000c call     0x11                           ??1CTCNoiseDef@@UAE@XZ
+0011 mov      ecx, esi                       
+0013 pop      esi                            
+0014 jmp      0x19                           ??1CParentDefClassBase@@UAE@XZ
+--- measured object symbols:
+DEF ??1CThingBaseDef@@UAE@XZ
+DEF ??1CThingNoiseDef@@UAE@XZ
+DEF ??_7CThingNoiseDef@@6B@
+DEF ??_GCThingNoiseDef@@UAEPAXI@Z
+UND ??1CParentDefClassBase@@UAE@XZ
+UND ??1CTCNoiseDef@@UAE@XZ
+UND ??3@YAXPAX@Z
+UND ??_GCThingNoiseDef@@UAEPAXI@Z
+UND ?AddSubDef@CParentDefClassBase@@UAEXABVCCharString@@JJ@Z
+UND ?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+UND ?Delete@CIVCountedPointeeBase@@UBEXXZ
+UND ?GetDebugMemoryInUse@CResource@@UBEKXZ
+UND ?GetInstantiationName@CParentDefClassBase@@UBE?AVCDefString@@XZ
+UND ?GetPSubDefInfo@CParentDefClassBase@@UAEPAVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z
+UND ?GetPSubDefInfo@CParentDefClassBase@@UBEPBVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z
+UND ?GetPSubDefInfoMap@CParentDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ
+UND ?GetUnloadableMemory@CResource@@UBEKXZ
+UND ?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z
+UND ?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+UND ?IsParentDef@CParentDefClassBase@@UBE_NXZ
+UND ?IsResourceLoaded@CResource@@UBE_NXZ
+UND ?OnResourceLoadAborted@CResource@@UAEXXZ
+UND ?OnResourceLoaded@CResource@@UAEXXZ
+UND ?PostTransfer@CDefClassBase@@UAEXXZ
+UND ?RemoveSubDef@CParentDefClassBase@@UAEXABVCCharString@@@Z
+UND ?ResetDebugMemoryInUse@CResource@@UAEXXZ
+UND ?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z
+UND ?UnloadResource@CDefClassBase@@UAE_NXZ
+UND ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+UND __purecall

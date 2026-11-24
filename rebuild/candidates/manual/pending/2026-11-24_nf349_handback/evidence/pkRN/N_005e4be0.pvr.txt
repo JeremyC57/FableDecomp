@@ -1,0 +1,13 @@
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+EQ  0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ 
+EQ  0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z 
+EQ  0041c820 16 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+EQ  00405f00 62 ?GFIntToWideString@@YI?AVCWideString@@J@Z 
+EQ  004a93c0 34 ??8?$CBasicString@D@@QBE_NABV0@@Z 
+NEQ 00429c53 53 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ not referenced by the leaf
+NEQ 0042aa96 30 ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABKABVCUIState@NUISystem@@@Z not referenced by the leaf
+NEQ 0042d4d3 31 ?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z not referenced by the leaf
+EQ  0042b040 98 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 
+EQ  0042b312 98 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z 
+NEQ 005bade1 171 ??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z LEAF-REFERENCED
+NEQ 0042d5b1 137 ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAEAAVCUIState@NUISystem@@ABK@Z LEAF-REFERENCED

@@ -1,0 +1,9 @@
+EQ  0041c820 16 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+EQ  006cf900 29 ?IsInLoveWithHero@CTCWife@@QBE_NXZ 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 00592f92 56 ??$_M_find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@1@ABJ@Z not referenced by the leaf
+NEQ 0042af3c 108 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z LEAF-REFERENCED
+EQ  006d3ef0 182 ??$GetSubDef@VCGiftDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGiftDef@@@@@Z 
+EQ  005937e1 20 ??$find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Nonconst_traits@U?$pair@$$CBJJ@std@@@2@@1@ABJ@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

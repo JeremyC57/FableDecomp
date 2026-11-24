@@ -1,0 +1,3 @@
+address	unit	note
+00437990	D2	lands whole with 00643d8c (either alone breaks CThingCreatureBase::OnHit 0x00667D30)
+00643d8c	D2	lands whole with 00437990

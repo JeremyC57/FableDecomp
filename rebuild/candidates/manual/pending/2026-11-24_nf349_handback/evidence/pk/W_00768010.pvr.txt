@@ -1,0 +1,3 @@
+EQ  0040f220 12 ??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z 
+EQ  00765d50 47 ?GetFreeSlot@CTCObjectAugmentations@@QBEJXZ 
+NEQ 0042af3c 108 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z LEAF-REFERENCED

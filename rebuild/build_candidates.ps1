@@ -74803,9 +74803,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00437990'
-        Module = '_global'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990_test.cpp'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_AddHitByMelee_00437990.cpp'
+        TestSource = '00/43/CPlayerGui_AddHitByMelee_00437990_test.cpp'
         PassPattern = 'PASS_00437990'
     }
     [pscustomobject]@{
@@ -175784,7 +175784,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd3cae'
-        Module = 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString> >'
+        Module = 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const,CScriptGameResourceObjectScriptedThingBase> > >'
         Source = '00/cd/STLmapCCharStringCScriptGameResourceObjectScriptedThingBaseSTLlessCCharString_insert_00cd3cae.cpp'
         TestSource = '00/cd/STLmapCCharStringCScriptGameResourceObjectScriptedThingBaseSTLlessCCharString_insert_00cd3cae_test.cpp'
         PassPattern = '00cd3cae_TEST PASS'
@@ -291637,9 +291637,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00643d8c'
-        Module = 'CPlayerGui'
-        Source = '00/64/CPlayerGui_AddHitByMelee_00643d8c.cpp'
-        TestSource = '00/64/CPlayerGui_AddHitByMelee_00643d8c_test.cpp'
+        Module = 'NPlayerGui::CDrawCombatMultiplier'
+        Source = '00/64/NPlayerGuiCDrawCombatMultiplier_AddHitByMelee_00643d8c.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawCombatMultiplier_AddHitByMelee_00643d8c_test.cpp'
         PassPattern = '00643d8c_TEST PASS'
     }
     [pscustomobject]@{

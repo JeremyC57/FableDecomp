@@ -1,0 +1,13 @@
+kind	row	old	new	batch
+self	00437990	?Run@T@@QAEXXZ	?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	b1 (D2 unit)
+callee	00437990	?Run_00643d8c@Sub@@QAEXXZ	?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	b1 (D2 unit)
+self	00643d8c	?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	b1 (D2 unit)
+catalog Module	00437990	_global	CPlayerGui	b1 (D2 unit)
+catalog name (auto-re-candidates)	00437990	_global::Forward_InitParticleEmitter_via0x150_00437990	CPlayerGui::AddHitByMelee	b1 (D2 unit)
+catalog Source	00437990	00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990.cpp	00/43/CPlayerGui_AddHitByMelee_00437990.cpp	b1 (D2 unit)
+catalog TestSource	00437990	00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990_test.cpp	00/43/CPlayerGui_AddHitByMelee_00437990_test.cpp	b1 (D2 unit)
+catalog Module	00643d8c	CPlayerGui	NPlayerGui::CDrawCombatMultiplier	b1 (D2 unit)
+catalog name (auto-re-candidates)	00643d8c	CPlayerGui::AddHitByMelee	NPlayerGui::CDrawCombatMultiplier::AddHitByMelee	b1 (D2 unit)
+catalog Source	00643d8c	00/64/CPlayerGui_AddHitByMelee_00643d8c.cpp	00/64/NPlayerGuiCDrawCombatMultiplier_AddHitByMelee_00643d8c.cpp	b1 (D2 unit)
+catalog TestSource	00643d8c	00/64/CPlayerGui_AddHitByMelee_00643d8c_test.cpp	00/64/NPlayerGuiCDrawCombatMultiplier_AddHitByMelee_00643d8c_test.cpp	b1 (D2 unit)
+self	00e1a990	?Main@CQ_WizardBattleScript@NScript@@QAEXXZ	?Main@CQ_WizardBattleScript@NScript@@UAEXXZ	b2 (option B, in place) or held/b2A (option A, shared header): the same rename either way; no catalog change (Source / Module / name already Main / NScript::CQ_WizardBattleScript)

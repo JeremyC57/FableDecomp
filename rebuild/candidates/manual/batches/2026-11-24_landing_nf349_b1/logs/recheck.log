@@ -1,0 +1,50 @@
+addr       parity           behav  name
+005d9a10   RELOCATION_MATCH PASS   GetHairCardDef
+005da6e0   RELOCATION_MATCH PASS   OnCreate
+005e4be0   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005e4be0   RELOCATION_MATCH PASS   GetQuestDescription
+006ac430   RELOCATION_MATCH PASS   LearnExpression
+006aca30   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+006aca30   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ -> 005d9030 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+006aca30   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+006aca30   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+006aca30   RELOCATION_MATCH PASS   OnCollisionWithObject
+006c14d0   RELOCATION_MATCH PASS   OnInitialActivate
+006cf530   RELOCATION_MATCH PASS   FindAppropriateGift
+006d0630   RELOCATION_MATCH PASS   ReceivedNiceGiftIsOpinionReactionHappening
+006d1250   WARN RELOC_CONFLICT: ??$find@J@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@1@ABJ@Z -> 00616580 here, 00b2eb20 in landed 00b2d9f0
+006d1250   RELOCATION_MATCH PASS   CheckAppearanceChanges
+00703050   RELOCATION_MATCH PASS   ConstructFromParams
+007030c0   RELOCATION_MATCH PASS   SerialiseGameState
+00703110   RELOCATION_MATCH PASS   ConstructFromLevelScript
+0072f170   RELOCATION_MATCH PASS   SetupFromData
+00730630   RELOCATION_MATCH PASS   CTCDoor
+00744ed0   RELOCATION_MATCH PASS   OnCreate
+0074e860   WARN SHARED_HEADER_AVAILABLE CContainerRewardHeroDef (engine/CContainerRewardHeroDef.h)
+0074e860   WARN SHARED_HEADER_AVAILABLE CObjectFamilyDef (engine/CObjectFamilyDef.h)
+0074e860   WARN RELOC_NAME: ?erase@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAEPAU?$pair@JVCCharString@@@2@PAU32@0@Z -> 0074fb20 labelled 'std::std::vector_CopyAssignSegment'
+0074e860   RELOCATION_MATCH PASS   GetRewardItems
+00765f90   RELOCATION_MATCH PASS   GetAugmentationName
+007661c0   RELOCATION_MATCH PASS   GetDamageMultiplierFromAugmentationSet
+00768010   RELOCATION_MATCH PASS   OnInitialActivate
+
+WINS: 19
+  005d9a10 RELOCATION_MATCH CTCInventoryItem::?GetHairCardDef@CTCInventoryItem@@SI?AV?$CDefPointer@$$CBVCHairCardDef@@@@J@Z
+  005da6e0 RELOCATION_MATCH CTCWeapon::?OnCreate@CTCWeapon@@EAEXXZ
+  005e4be0 RELOCATION_MATCH CTCQuestCompletionUI::?GetQuestDescription@CTCQuestCompletionUI@@AAEXPAVCComponent@NUISystem@@@Z
+  006ac430 RELOCATION_MATCH CThingPlayerCreature::?LearnExpression@CThingPlayerCreature@@QAE_NABVCCharString@@J_N@Z
+  006aca30 RELOCATION_MATCH CThingPlayerCreature::?OnCollisionWithObject@CThingPlayerCreature@@QAEXPAVCThing@@@Z
+  006c14d0 RELOCATION_MATCH CTCBuyableHouse::?OnInitialActivate@CTCBuyableHouse@@UAEXXZ
+  006cf530 RELOCATION_MATCH CTCWife::?FindAppropriateGift@CTCWife@@AAEXXZ
+  006d0630 RELOCATION_MATCH CTCWife::?ReceivedNiceGiftIsOpinionReactionHappening@CTCWife@@QAE_NJ@Z
+  006d1250 RELOCATION_MATCH CTCWife::?CheckAppearanceChanges@CTCWife@@AAEXAAVCThingPlayerCreature@@@Z
+  00703050 RELOCATION_MATCH CThingObject::?ConstructFromParams@CThingObject@@IAE_NJABVC3DVector@@JKABVCCharString@@@Z
+  007030c0 RELOCATION_MATCH CThingObject::?SerialiseGameState@CThingObject@@MAE_NAAVCPersistContext@@@Z
+  00703110 RELOCATION_MATCH CThingObject::?ConstructFromLevelScript@CThingObject@@MAE_NPBD@Z
+  0072f170 RELOCATION_MATCH CTCDummyVillager::?SetupFromData@CTCDummyVillager@@QAEXKPAVCThingBuilding@@0_N@Z
+  00730630 RELOCATION_MATCH CTCDoor::??0CTCDoor@@QAE@AAVCThing@@@Z
+  00744ed0 RELOCATION_MATCH CTCPerceiveThing::?OnCreate@CTCPerceiveThing@@UAEXXZ
+  0074e860 RELOCATION_MATCH CTCContainerRewardHero::?GetRewardItems@CTCContainerRewardHero@@IAEXAAV?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@AAJ@Z
+  00765f90 RELOCATION_MATCH CTCObjectAugmentations::?GetAugmentationName@CTCObjectAugmentations@@SI?AVCWideString@@J@Z
+  007661c0 RELOCATION_MATCH CTCObjectAugmentations::?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@JV?$allocator@J@std@@@std@@@Z
+  00768010 RELOCATION_MATCH CTCObjectAugmentations::?OnInitialActivate@CTCObjectAugmentations@@UAEXXZ

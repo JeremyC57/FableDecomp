@@ -1,0 +1,7 @@
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0042af3c 98 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 
+EQ  008c79b0 182 ??$GetSubDef@VCAreaOfEffectAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAreaOfEffectAttackDef@@@@@Z 
+NEQ 00788e53 182 ??$GetSubDef@VCTrapDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTrapDef@@@@@Z LEAF-REFERENCED
+EQ  00751190 182 ??$GetSubDef@VCExplosionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExplosionDef@@@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

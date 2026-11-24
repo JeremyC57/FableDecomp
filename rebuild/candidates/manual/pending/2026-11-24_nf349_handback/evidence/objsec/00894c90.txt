@@ -1,0 +1,6 @@
+00894c90 OK GETDEF_EQ=1 HELPER_BODY=2 HELPER_DROP=2 leaf=?IsGiftFriendly@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 116->98 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCGiftDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCGiftDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z

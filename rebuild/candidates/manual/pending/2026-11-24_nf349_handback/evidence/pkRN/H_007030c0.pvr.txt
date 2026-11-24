@@ -1,0 +1,2 @@
+EQ  004aef50 22 ?IsSaving@CPersistContext@@QBE_NXZ 
+NEQ 0042b040 108 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z LEAF-REFERENCED

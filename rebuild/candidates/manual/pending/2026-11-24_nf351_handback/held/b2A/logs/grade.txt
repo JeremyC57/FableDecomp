@@ -1,0 +1,3 @@
+pH 00e1a990 RELOCATION_MATCH leaf=?Main@CQ_WizardBattleScript@NScript@@UAEXXZ flags=
+pS 00e1a990 RELOCATION_MATCH leaf=?Main@CQ_WizardBattleScript@NScript@@UAEXXZ flags=
+GRADE_DONE

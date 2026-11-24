@@ -1,0 +1,3 @@
+005e4be0 OK GETDEF_EQ=2 leaf=?GetQuestDescription@CTCQuestCompletionUI@@AAEXPAVCComponent@NUISystem@@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 108->98 B
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z 108->98 B

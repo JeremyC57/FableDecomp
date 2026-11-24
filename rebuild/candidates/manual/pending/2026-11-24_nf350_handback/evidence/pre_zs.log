@@ -1,0 +1,69 @@
+11:35:04 ZS_PASS test_00cd3cae test /home/user/FableDecomp/rebuild/tests/00/cd/STLmapCCharStringCScriptGameResourceObjectScriptedThingBaseSTLlessCCharString_insert_00cd3cae_test.cpp /Od /W3
+11:42:49 ZS_PASS test_00d27050 test /home/user/FableDecomp/rebuild/tests/00/d2/NScriptCQDragonBossFightScript_PlayCutscene_00d27050_test.cpp /Od /W3
+11:42:50 ZS_PASS test_00d3b010 test /home/user/FableDecomp/rebuild/tests/00/d3/NScriptCQFireHeartScript_CQFireHeartScript_00d3b010_test.cpp /Od /W3
+11:42:52 ZS_PASS test_00d7aa30 test /home/user/FableDecomp/rebuild/tests/00/d7/NScriptCQHeroSoulsScript_PlayCutscene_00d7aa30_test.cpp /Od /W3
+11:42:53 ZS_PASS test_00d7fc70 test /home/user/FableDecomp/rebuild/tests/00/d7/NScriptCQHeroSoulsArenaScript_PlayCutscene_00d7fc70_test.cpp /Od /W3
+11:42:54 ZS_PASS test_00d89ad0 test /home/user/FableDecomp/rebuild/tests/00/d8/NScriptCQHeroSoulsNostroScript_PlayCutscene_00d89ad0_test.cpp /Od /W3
+11:42:55 ZS_PASS test_00da2ca0 test /home/user/FableDecomp/rebuild/tests/00/da/NScriptCQMinionCampScriptCBriarRose_PlayCutscene_00da2ca0_test.cpp /Od /W3
+11:42:57 ZS_PASS test_00df3e50 test /home/user/FableDecomp/rebuild/tests/00/df/NScriptCQSummoningTheShipScript_PlayCutscene_00df3e50_test.cpp /Od /W3
+11:42:58 ZS_PASS test_00df9e00 test /home/user/FableDecomp/rebuild/tests/00/df/NScriptCQTraderConflictEvilScript_PlayCutscene_00df9e00_test.cpp /Od /W3
+11:43:00 ZS_PASS test_00dfded0 test /home/user/FableDecomp/rebuild/tests/00/df/NScriptCQTraderConflictGoodScript_PlayCutscene_00dfded0_test.cpp /Od /W3
+11:43:01 ZS_PASS test_00e12330 test /home/user/FableDecomp/rebuild/tests/00/e1/NScriptCQWaspBossScript_WatchForCutscene_00e12330_test.cpp /Od /W3
+11:43:03 ZS_PASS test_00e68b20 test /home/user/FableDecomp/rebuild/tests/00/e6/NScriptCVChickenKickingScript_PlayCutscene_00e68b20_test.cpp /Od /W3
+11:43:04 ZS_PASS test_00e9bbc0 test /home/user/FableDecomp/rebuild/tests/00/e9/NScriptCVHeroDuelScript_DuelChallenge_00e9bbc0_test.cpp /Od /W3
+11:45:20 ZS_PASS test_0058a0c7 test /home/user/FableDecomp/rebuild/tests/00/58/CTCInventory_ConstructItemEntry_0058a0c7_test.cpp /Od /W3
+11:45:21 ZS_PASS test_005940ec test /home/user/FableDecomp/rebuild/tests/00/59/stdRbtree_insertunique_005940ec_test.cpp /Od /W3
+11:45:22 ZS_PASS test_005f077f test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryAbilities_ContructItemLists_005f077f_test.cpp /Od /W3
+11:46:58 ZS_PASS src_00e8ef80 src /home/user/FableDecomp/rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Main_00e8ef80.cpp /O2 /Oy /W3 /d2inlT72
+11:46:59 ZS_PASS new_00e8ef80 src /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF350/rows/00e8ef80.cpp /O2 /Oy /W3 /d2inlT72
+11:48:52 ZS_PASS test_00cbfb7d test /home/user/FableDecomp/rebuild/tests/00/cb/global_RunCutsceneMacro_00cbfb7d_test.cpp /Od /W3
+11:48:54 ZS_PASS test_00d13580 test /home/user/FableDecomp/rebuild/tests/00/d1/NScriptCQBountyHuntScript_Main_00d13580_test.cpp /Od /W3
+11:48:55 ZS_PASS test_00d1b200 test /home/user/FableDecomp/rebuild/tests/00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Main_00d1b200_test.cpp /Od /W3
+11:48:56 ZS_PASS test_00d2d930 test /home/user/FableDecomp/rebuild/tests/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930_test.cpp /Od /W3
+11:48:57 ZS_PASS test_00d33280 test /home/user/FableDecomp/rebuild/tests/00/d3/NScriptCQEndGameBossBattleScriptCSwordVoid_Main_00d33280_test.cpp /Od /W3
+11:48:58 ZS_PASS test_00d51520 test /home/user/FableDecomp/rebuild/tests/00/d5/NScriptCQGuildTrainingPreMeleeScript_Main_00d51520_test.cpp /Od /W3
+11:48:59 ZS_PASS test_00dbb310 test /home/user/FableDecomp/rebuild/tests/00/db/NScriptCQNewOakValeIntroScriptCNOVIBully_Main_00dbb310_test.cpp /Od /W3
+11:49:01 ZS_PASS test_00dc1770 test /home/user/FableDecomp/rebuild/tests/00/dc/NScriptCQOakValeBanditRaidScriptCOakValeBanditRaidBandit_Main_00dc1770_test.cpp /Od /W3
+11:49:02 ZS_PASS test_00dd9520 test /home/user/FableDecomp/rebuild/tests/00/dd/NScriptCQPrisonEscapeRescueMotherScript_SplittingUpCutscene_00dd9520_test.cpp /Od /W3
+11:49:03 ZS_PASS test_00ddf090 test /home/user/FableDecomp/rebuild/tests/00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_Main_00ddf090_test.cpp /Od /W3
+11:49:05 ZS_PASS test_00de6730 test /home/user/FableDecomp/rebuild/tests/00/de/NScriptCQRansomVictimScript_PlayCutscene_00de6730_test.cpp /Od /W3
+11:49:06 ZS_PASS test_00e0a820 test /home/user/FableDecomp/rebuild/tests/00/e0/NScriptCQTraderEscortScript_TurnToBalv_00e0a820_test.cpp /Od /W3
+11:49:07 ZS_PASS test_00e26e30 test /home/user/FableDecomp/rebuild/tests/00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Main_00e26e30_test.cpp /Od /W3
+11:49:08 ZS_PASS test_00e55ce0 test /home/user/FableDecomp/rebuild/tests/00/e5/NScriptCVBookCollectingScriptCBSTeacher_AskForBook_00e55ce0_test.cpp /Od /W3
+11:49:10 ZS_PASS test_00e78100 test /home/user/FableDecomp/rebuild/tests/00/e7/NScriptCVExposeMayorScript_PlayCutscene_00e78100_test.cpp /Od /W3
+11:49:11 ZS_PASS test_00e7c8e0 test /home/user/FableDecomp/rebuild/tests/00/e7/NScriptCVFishermanScriptCFisherman_Main_00e7c8e0_test.cpp /Od /W3
+11:49:12 ZS_PASS test_00e90be0 test /home/user/FableDecomp/rebuild/tests/00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Main_00e90be0_test.cpp /Od /W3
+11:49:14 ZS_PASS test_00ed5f50 test /home/user/FableDecomp/rebuild/tests/00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Main_00ed5f50_test.cpp /Od /W3
+11:49:15 ZS_PASS test_00f0fb70 test /home/user/FableDecomp/rebuild/tests/00/f0/NScriptCQArenaScript_Main_00f0fb70_test.cpp /Od /W3
+11:50:27 ZS_PASS src_00d19bd0 src /home/user/FableDecomp/rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage1_Main_00d19bd0.cpp /O2 /Oy /W3 /d2inlS15
+11:50:29 ZS_PASS src_00d22f30 src /home/user/FableDecomp/rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScriptCKGSheriff_Main_00d22f30.cpp /O2 /Oy /W3 /d2inlS15
+11:50:30 ZS_PASS src_00d2d930 src /home/user/FableDecomp/rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930.cpp /O2 /Oy /W3 /d2inlS15
+11:50:31 ZS_PASS src_00d2ed20 src /home/user/FableDecomp/rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScythe_Main_00d2ed20.cpp /O2 /Oy /W3
+11:50:33 ZS_PASS src_00d321c0 src /home/user/FableDecomp/rebuild/src/compiled/00/d3/NScriptCQEndGameBossBattleScript_JackOfBladesBossFightCutscene_00d321c0.cpp /O2 /Oy /W3
+11:50:34 ZS_PASS src_00d328c0 src /home/user/FableDecomp/rebuild/src/compiled/00/d3/NScriptCQEndGameBossBattleScriptCEndGameSister_Main_00d328c0.cpp /O2 /Oy /W3
+11:50:36 ZS_PASS src_00d647f0 src /home/user/FableDecomp/rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_Main_00d647f0.cpp /O2 /Oy /W3
+11:50:38 ZS_PASS src_00d9a190 src /home/user/FableDecomp/rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScript_Main_00d9a190.cpp /O2 /Oy /W3
+11:50:39 ZS_PASS src_00da91a0 src /home/user/FableDecomp/rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Main_00da91a0.cpp /O2 /Oy /W3
+11:50:40 ZS_PASS src_00db86b0 src /home/user/FableDecomp/rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVILiveFather_Main_00db86b0.cpp /O2 /Oy /W3
+11:50:42 ZS_PASS src_00db97a0 src /home/user/FableDecomp/rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVITheresa_Main_00db97a0.cpp /O2 /Oy /W3
+11:50:43 ZS_PASS src_00dbb310 src /home/user/FableDecomp/rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBully_Main_00dbb310.cpp /O2 /Oy /W3
+11:50:44 ZS_PASS src_00dbcd60 src /home/user/FableDecomp/rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIVictim_Main_00dbcd60.cpp /O2 /Oy /W3
+11:50:46 ZS_PASS src_00dc1770 src /home/user/FableDecomp/rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScriptCOakValeBanditRaidBandit_Main_00dc1770.cpp /O2 /Oy /W3
+11:50:47 ZS_PASS src_00dc27c0 src /home/user/FableDecomp/rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScript_Main_00dc27c0.cpp /O2 /Oy /W3
+11:50:49 ZS_PASS src_00dca6d0 src /home/user/FableDecomp/rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Main_00dca6d0.cpp /O2 /Oy /W3
+11:50:50 ZS_PASS src_00dcfa60 src /home/user/FableDecomp/rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScript_DoCutsceneIfRequired_00dcfa60.cpp /O2 /Oy /W3
+11:50:52 ZS_PASS src_00e0b160 src /home/user/FableDecomp/rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScript_Main_00e0b160.cpp /O2 /Oy /W3
+11:50:53 ZS_PASS src_00e13f10 src /home/user/FableDecomp/rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_Main_00e13f10.cpp /O2 /Oy /W3
+11:50:55 ZS_PASS src_00e18630 src /home/user/FableDecomp/rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScript_Main_00e18630.cpp /O2 /Oy /W3
+11:50:56 ZS_PASS src_00e19d80 src /home/user/FableDecomp/rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Main_00e19d80.cpp /O2 /Oy /W3
+11:50:57 ZS_PASS src_00e26e30 src /home/user/FableDecomp/rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Main_00e26e30.cpp /O2 /Oy /W3
+11:50:59 ZS_PASS src_00e46d30 src /home/user/FableDecomp/rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScript_Main_00e46d30.cpp /O2 /Oy /W3
+11:51:00 ZS_PASS src_00e55ce0 src /home/user/FableDecomp/rebuild/src/compiled/00/e5/NScriptCVBookCollectingScriptCBSTeacher_AskForBook_00e55ce0.cpp /O2 /Oy /W3
+11:51:02 ZS_PASS src_00e7c8e0 src /home/user/FableDecomp/rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFisherman_Main_00e7c8e0.cpp /O2 /Oy /W3
+11:51:04 ZS_PASS src_00e8dfa0 src /home/user/FableDecomp/rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Main_00e8dfa0.cpp /O2 /Oy /W3
+11:51:06 ZS_PASS src_00e8ef80 src /home/user/FableDecomp/rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Main_00e8ef80.cpp /O2 /Oy /W3 /d2inlT72
+11:51:07 ZS_PASS src_00e90be0 src /home/user/FableDecomp/rebuild/src/compiled/00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Main_00e90be0.cpp /O2 /Oy /W3
+11:51:09 ZS_PASS src_00ea2720 src /home/user/FableDecomp/rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScript_WatchForCutscene1_00ea2720.cpp /O2 /Oy /W3
+11:51:10 ZS_PASS src_00ed5f50 src /home/user/FableDecomp/rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Main_00ed5f50.cpp /O2 /Oy /W3
+11:51:12 ZS_PASS src_00f0d630 src /home/user/FableDecomp/rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_Main_00f0d630.cpp /O2 /Oy /W3
+11:51:13 ZS_PASS src_00f0fb70 src /home/user/FableDecomp/rebuild/src/compiled/00/f0/NScriptCQArenaScript_Main_00f0fb70.cpp /O2 /Oy /W3

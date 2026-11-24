@@ -1,0 +1,3 @@
+006096e0 BAD GETDEF_EQ=1 LEAF=1 leaf=?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 108->98 B
+    LEAF :: leaf section ('COMDAT', '?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z', '.text') differs

@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00437990   RELOCATION_MATCH PASS   AddHitByMelee
+00643d8c   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00643d8c   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00643d8c   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00643d8c   RELOCATION_MATCH PASS   AddHitByMelee
+00e1a990   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00e1a990   WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)
+00e1a990   WARN SHARED_HEADER_AVAILABLE CQ_WizardBattleScript (engine/CQ_WizardBattleScript.h)
+00e1a990   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00437990 RELOCATION_MATCH CPlayerGui::?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
+  00643d8c RELOCATION_MATCH NPlayerGui::CDrawCombatMultiplier::?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
+  00e1a990 RELOCATION_MATCH NScript::CQ_WizardBattleScript::?Main@CQ_WizardBattleScript@NScript@@UAEXXZ

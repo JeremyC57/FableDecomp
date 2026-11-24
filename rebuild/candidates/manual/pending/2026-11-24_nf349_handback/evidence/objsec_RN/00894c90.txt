@@ -1,0 +1,2 @@
+00894c90 OK GETDEF_EQ=1 leaf=?IsGiftFriendly@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 108->98 B

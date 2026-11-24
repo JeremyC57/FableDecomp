@@ -1,0 +1,6 @@
+## HEAD set: N_00ea59e0.obj N_00e8ef80.obj H_00cd3d2e.obj
+duplicates 0
+UNRESOLVED 2 ??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+## new set: N_00ea59e0.obj N_00e8ef80.obj N_00cd3d2e.obj
+duplicates 0
+LK_DONE

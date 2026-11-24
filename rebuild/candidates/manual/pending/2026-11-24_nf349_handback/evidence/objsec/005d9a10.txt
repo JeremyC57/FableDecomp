@@ -1,0 +1,6 @@
+005d9a10 OK GETDEF_EQ=1 HELPER_BODY=2 HELPER_DROP=2 leaf=?GetHairCardDef@CTCInventoryItem@@SI?AV?$CDefPointer@$$CBVCHairCardDef@@@@J@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 116->98 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCHairCardDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_BODY :: changed COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z 50->52 B
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCHairCardDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    HELPER_DROP :: dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z

@@ -1,0 +1,7 @@
+# tools/leafrel.py: leaf section, relocation targets keyed by stable section keys (objsec346 keys $L labels by raw section index)
+## H v R (REREAD only)
+data_equal True relocs_equal True n 501 501
+## H v N (REREAD + size body)
+data_equal True relocs_equal True n 501 501
+## R v N
+data_equal True relocs_equal True n 501 501

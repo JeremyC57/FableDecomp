@@ -1,0 +1,5 @@
+##### 00437990 renames: ?Run@T@@QAEXXZ=?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z ?Run_00643d8c@Sub@@QAEXXZ=?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
+  .drectve HEAD-only=[] new-only=['/DEFAULTLIB:"libcp"']
+NOT_EQ section .drectve data/flags sections=2 DEF=1 UND=1 tables=-
+##### 00643d8c renames: ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z=?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
+ALL_EQ sections=3 DEF=2 UND=5 tables=-

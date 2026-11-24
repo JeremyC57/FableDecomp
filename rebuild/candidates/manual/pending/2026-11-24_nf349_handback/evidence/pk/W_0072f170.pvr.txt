@@ -1,0 +1,5 @@
+EQ  004cdae0 47 ?GFRandom@@YIKKPAK@Z 
+EQ  0050f3d0 26 ??4?$CIntelligentPointer@VCThingBuilding@@@@QAEAAV0@ABV0@@Z 
+EQ  0050f380 32 ??0?$CIntelligentPointer@VCThingBuilding@@@@QAE@PAVCThingBuilding@@@Z 
+NEQ 0042af3c 108 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z LEAF-REFERENCED
+NEQ 00485815 182 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z LEAF-REFERENCED

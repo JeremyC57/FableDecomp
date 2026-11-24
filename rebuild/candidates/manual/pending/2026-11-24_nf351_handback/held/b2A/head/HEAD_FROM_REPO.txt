@@ -1,0 +1,2 @@
+HEAD payload (head/payload.json) built from the repo sources by nf.py pay with HEADPAY=1 (NF351, 2026-11-24). Per row: repo file, sha1 now, sha1 of the payload source_cpp:
+00e1a990	rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_Main_00e1a990.cpp	8032826eb37e109fdf51eb0033bbfad63a66af4b	8032826eb37e109fdf51eb0033bbfad63a66af4b	SAME

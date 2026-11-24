@@ -1,0 +1,2 @@
+006d1250 OK GETDEF_EQ=1 leaf=?CheckAppearanceChanges@CTCWife@@AAEXAAVCThingPlayerCreature@@@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 108->98 B

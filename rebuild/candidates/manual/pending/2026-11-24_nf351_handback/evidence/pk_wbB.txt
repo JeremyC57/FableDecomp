@@ -1,0 +1,29 @@
+## 00e1a990 H_ pickany_vs_retail
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+NEQ 00cdd4c0 76 ??1CSpawnedFuncBase@@UAE@XZ not referenced by the leaf
+## 00e1a990 H_ pk_all --row-length=919
+# leaf ?Main@CQ_WizardBattleScript@NScript@@QAEXXZ  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     45 leaf=n reach=n ?SpawnFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@PBD@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0CEntityScriptBindingBase@@QAE@XZ
+EQ        EQ                 00cdd4f0 b        pickany     53 leaf=n reach=n ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??0?$CEntityScriptBinding@VCQ_WizardBattleScript@NScript@@@@QAE@ABVCCharString@@PAVCQ_WizardBattleScript@NScript@@P6I?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@ZK@Z
+NOADDR    NOADDR                    - -        pickany      4 leaf=n reach=n ?GetEntityScriptName@?$CEntityScriptBinding@VCQ_WizardBattleScript@NScript@@@@UBEABVCCharString@@XZ
+NEQ       NEQ                00cdd4c0 b        pickany     76 leaf=n reach=n ??1CSpawnedFuncBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     46 leaf=n reach=n ??0?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@QAE@ABVCCharString@@KPAVCQ_WizardBattleScript@NScript@@P823@AEXXZ@Z
+NOADDR    NOADDR                    - -        pickany     15 leaf=n reach=n ?SuspendableProcess@?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@UAEXXZ
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_G?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@UAEPAXI@Z
+## 00e1a990 new pickany_vs_retail
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+NEQ 00cdd4c0 76 ??1CSpawnedFuncBase@@UAE@XZ not referenced by the leaf
+## 00e1a990 new pk_all --row-length=919
+# leaf ?Main@CQ_WizardBattleScript@NScript@@UAEXXZ  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     45 leaf=n reach=n ?SpawnFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@PBD@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0CEntityScriptBindingBase@@QAE@XZ
+EQ        EQ                 00cdd4f0 b        pickany     53 leaf=n reach=n ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??0?$CEntityScriptBinding@VCQ_WizardBattleScript@NScript@@@@QAE@ABVCCharString@@PAVCQ_WizardBattleScript@NScript@@P6I?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@ZK@Z
+NOADDR    NOADDR                    - -        pickany      4 leaf=n reach=n ?GetEntityScriptName@?$CEntityScriptBinding@VCQ_WizardBattleScript@NScript@@@@UBEABVCCharString@@XZ
+NEQ       NEQ                00cdd4c0 b        pickany     76 leaf=n reach=n ??1CSpawnedFuncBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     46 leaf=n reach=n ??0?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@QAE@ABVCCharString@@KPAVCQ_WizardBattleScript@NScript@@P823@AEXXZ@Z
+NOADDR    NOADDR                    - -        pickany     15 leaf=n reach=n ?SuspendableProcess@?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@UAEXXZ
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_G?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@UAEPAXI@Z
+PK_DONE

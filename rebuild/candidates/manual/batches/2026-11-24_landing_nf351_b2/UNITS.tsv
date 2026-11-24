@@ -1,0 +1,2 @@
+address	unit	note
+00e1a990	00e1a990	self only: no landed object references either Main spelling (census: the only CQ_WizardBattleScript vftable definer, ctor 0x00E1A800, binds ?Main@CScriptBase@@MAEXXZ in slot 2; RegisterMain 0x00E1A8D0 reaches Main through the vcall thunk)

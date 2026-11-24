@@ -1,0 +1,2 @@
+NEQ 0042af3c 108 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z LEAF-REFERENCED
+EQ  006d3ef0 182 ??$GetSubDef@VCGiftDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGiftDef@@@@@Z 

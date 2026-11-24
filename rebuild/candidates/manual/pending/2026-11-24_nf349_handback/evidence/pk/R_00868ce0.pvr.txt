@@ -1,0 +1,10 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  004a9760 26 ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z 
+EQ  004a96f0 32 ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 0042af3c 108 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z LEAF-REFERENCED
+NEQ 0042b248 182 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z LEAF-REFERENCED
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  00cd2d0b 14 ??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  00869ac0 227 ?_M_insert_overflow@?$vector@W4EObjectAugmentationType@@V?$allocator@W4EObjectAugmentationType@@@std@@@std@@IAEXPAW4EObjectAugmentationType@@ABW43@ABU__false_type@2@I_N@Z 
