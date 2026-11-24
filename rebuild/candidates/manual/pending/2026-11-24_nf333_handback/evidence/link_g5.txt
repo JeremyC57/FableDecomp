@@ -1,0 +1,6 @@
+## HEAD set: H_0051e210.obj 0051d990.obj
+duplicates 0
+UNRESOLVED 1 ?MakeUID_0051d990@@YG_K_K0@Z
+## new set: 0051e210.obj 0051d990.obj
+duplicates 0
+LK_DONE

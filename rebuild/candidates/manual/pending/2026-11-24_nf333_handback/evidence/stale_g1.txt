@@ -1,0 +1,4 @@
+== 00444b40 HEAD object (hobj) external symbols matching DeleteData/Destroy
+UND ?DeleteData@?$CCountedPointer@VCDrawMeleeActionButtonEffects@NPlayerGui@@@@SIXPAX@Z
+== 004adae0 HEAD object (hobj) external symbols matching DeleteData/Destroy
+UND ?DeleteData@?$CCountedPointer@VCOpinionReactionManager@@@@SIXPAX@Z

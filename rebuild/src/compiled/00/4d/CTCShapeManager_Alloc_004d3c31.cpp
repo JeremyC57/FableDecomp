@@ -13,10 +13,10 @@ class CThing;
 
 class CTCShapeManager { public:
     unsigned char _body[0x30];       // sizeof(CTCShapeManager) = 0x30
-    CTCShapeManager(CThing* owner);                   // 0x00762090
+    CTCShapeManager(CThing& owner);                   // 0x00762090
 };
 
 CTCShapeManager* __fastcall CTCShapeManager_Alloc(CThing* owner)
 {
-    return new CTCShapeManager(owner);
+    return new CTCShapeManager(*owner);
 }

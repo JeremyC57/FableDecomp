@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00401f30   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00401f30   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00401f30   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00401f30   RELOCATION_MATCH PASS   GFGetBuildNumber2
+
+WINS: 1
+  00401f30 RELOCATION_MATCH _global::?GFGetBuildNumber2@@YAXXZ

@@ -1,0 +1,13 @@
+## HEAD set: H_008640c0.obj H_008640f0.obj H_00a62d80.obj H_0071d3b0.obj H_007b2fd0.obj H_0095c1f0.obj 00771540.obj 00a62b70.obj 0071bcd0.obj 007b2c70.obj 0095b020.obj 0095c0b0.obj
+duplicates 0
+UNRESOLVED 2 ?AppliesToWitness@CTCOpinionSource@@QBE_NPAVCThingAICreature@@@Z
+UNRESOLVED 1 ?CountBits@CPackedUIntArray@@QBEEPBXKJK@Z
+UNRESOLVED 1 ?CreateAlphaChannel@CTCHeroMorph@@QAE_NAAVCTexture@@0@Z
+UNRESOLVED 1 ?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@QAE_NXZ
+UNRESOLVED 1 ?ReportCrime@CTCGuard@@QAEXPAVCTCVillage@@JJ_N@Z
+UNRESOLVED 1 ?ReportCrime@CTCVillage@@QAEXJ@Z
+UNRESOLVED 1 ?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@QAEJXZ
+## new set: 008640c0.obj 008640f0.obj 00a62d80.obj 0071d3b0.obj 007b2fd0.obj 0095c1f0.obj 00771540.obj 00a62b70.obj 0071bcd0.obj 007b2c70.obj 0095b020.obj 0095c0b0.obj
+duplicates 0
+UNRESOLVED 1 ?ReportCrime@CTCVillage@@QAEXJ@Z
+LK_DONE

@@ -36,7 +36,7 @@ public:
 class CCharString
 {
 public:
-    CCharString(CAFile* file, long length);         // 0x0099FA50
+    CCharString(CAFile& file, long length);         // 0x0099FA50
     ~CCharString();                                 // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     void* PStringData;
@@ -104,7 +104,7 @@ void __cdecl GFGetBuildNumber2()
         new (diskFile.Raw) CDiskFileWin32(pathText.Get(), (FileAccessType)1, 2);
         pathText.Get().~CWideString();
 
-        new (fileContents.Raw) CCharString(&diskFile.Get(), -1);
+        new (fileContents.Raw) CCharString(diskFile.Get(), -1);
         GVersionString = fileContents.Get();
         fileContents.Get().~CCharString();
 

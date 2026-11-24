@@ -40,7 +40,7 @@ class COpinionDeed { public:
     unsigned long Time;                                 // +0x14
 };
 class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:
-    bool operator()(const COpinionDeed* deed) const;    // 0x00681750
+    bool operator()(const COpinionDeed& deed) const;    // 0x00681750
 };
 class CTCHeroOpinionDeedLog { public:
     const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
@@ -83,7 +83,7 @@ const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(const TFilter& 
             SHandleNode* end = PendingDeeds.head;
             for (SHandleNode* node = end->next; node != end; node = node->next) {
                 const COpinionDeed* deed = log->GetDeedFromHandle(node->value);
-                if (deed && filter(deed) && (deed->Time > bestTime || !best)) {
+                if (deed && filter(*deed) && (deed->Time > bestTime || !best)) {
                     if (outHandle)
                         *outHandle = node->value;
                     bestTime = deed->Time;
@@ -95,7 +95,7 @@ const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(const TFilter& 
             SHandleNode* end = KnownDeeds[type].head;
             for (SHandleNode* node = end->next; node != end; node = node->next) {
                 const COpinionDeed* deed = log->GetDeedFromHandle(node->value);
-                if (deed && filter(deed) && (deed->Time > bestTime || !best)) {
+                if (deed && filter(*deed) && (deed->Time > bestTime || !best)) {
                     if (outHandle)
                         *outHandle = node->value;
                     bestTime = deed->Time;

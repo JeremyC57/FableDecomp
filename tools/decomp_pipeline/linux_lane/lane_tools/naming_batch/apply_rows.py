@@ -7,7 +7,8 @@ cat = open(R + '/rebuild/build_candidates.ps1', encoding='utf-8', errors='replac
 src, tst = {}, {}
 for m in re.finditer(r"Address = '([0-9a-fA-F]{8})'(.*?)\n\s*\}", cat, re.S):
     a = m.group(1).lower(); body = m.group(2)
-    s = re.search(r"\n\s*Source = '([^']+)'", body); t = re.search(r"TestSource = '([^']+)'", body)
+    # `Source` may follow `Module` on the Address line (`...; Module = 'x'; Source = '...'`, 63 entries) or start its own line
+    s = re.search(r"[\n;]\s*Source = '([^']+)'", body); t = re.search(r"TestSource = '([^']+)'", body)
     if s: src[a] = R + '/rebuild/src/compiled/' + s.group(1)
     if t: tst[a] = R + '/rebuild/tests/' + t.group(1)
 d = sys.argv[1]; dry = '--dry' in sys.argv; n = bad = 0

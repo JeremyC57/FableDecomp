@@ -133,7 +133,7 @@ class CTCGuard { public:
     unsigned char _pad08[0x44 - 0x08];
     long          LastCrimeSeenSeverity;                // +0x44
     long          FrameLastCrimeSeen;                   // +0x48
-    void ReportCrime(CTCVillage* village, long deedHandle, long deedType, bool self);   // 0x007B2C70
+    private: void ReportCrime(CTCVillage& village, long deedHandle, EOpinionDeedType deedType, bool self); public:   // 0x007B2C70
     void WitnessedCrime(const COpinionDeed& deed, long deedHandle);
 };
 
@@ -161,7 +161,7 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
             severe = true;
         FrameLastCrimeSeen = CWorld::GetFrame();
     }
-    ReportCrime(village, deedHandle, deed.Type, self);
+    ReportCrime(*village, deedHandle, (EOpinionDeedType)(deed.Type), self);
     if (severe)
         village->StartSecuritySweep(false);
 }

@@ -13,7 +13,8 @@ public:
 class CCharString
 {
 public:
-    CCharString(CAFile* file, long length);
+    CCharString();                                   // test-only: GVersionString's placeholder construction
+    CCharString(CAFile& file, long length);
     ~CCharString();
     const CCharString& operator=(const CCharString& other);
     void* PStringData;
@@ -64,7 +65,7 @@ struct BuildCall
     int ValueB;
 };
 
-CCharString GVersionString(0, 0);
+CCharString GVersionString;                        // test placeholder (the spy log is reset before every check)
 static BuildCall gCalls[20];
 static int gCallCount;
 static bool gPathExists;
@@ -109,9 +110,13 @@ CDiskFileWin32::CDiskFileWin32(const CWideString& path, FileAccessType accessTyp
     Record(EVENT_DISK_CONSTRUCT, this, &path, (int)accessType, (int)shareMode);
 }
 
-CCharString::CCharString(CAFile* file, long length)
+CCharString::CCharString() : PStringData(0)
 {
-    Record(EVENT_FILE_CONSTRUCT, this, file, length, 0);
+}
+
+CCharString::CCharString(CAFile& file, long length)
+{
+    Record(EVENT_FILE_CONSTRUCT, this, &file, length, 0);
 }
 
 const CCharString& CCharString::operator=(const CCharString& other)

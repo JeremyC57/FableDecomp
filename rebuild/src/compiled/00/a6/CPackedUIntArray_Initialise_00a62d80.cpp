@@ -15,7 +15,7 @@ struct CPackedUIntArray {
     unsigned char  Bits;                    // +0x08
     unsigned long  Bias;                    private: // +0x0c
     unsigned long CalculateBias(const void* data, unsigned long bits, long stride, unsigned long count) const; public:   // 0x00A62AE0
-    unsigned char CountBits(const void* data, unsigned long bits, long stride, unsigned long count) const;       // 0x00A62B70
+    private: unsigned long CountBits(const void* data, unsigned long bits, long stride, unsigned long count) const; public:       // 0x00A62B70
     private:
     void PackArray(const void* data, unsigned long bits, long stride, unsigned long words);
     public:

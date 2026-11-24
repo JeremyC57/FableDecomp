@@ -226,7 +226,7 @@ public:
     unsigned char _pad08[0x1c - 0x08];
     CThingDefVector Tattoos;                                // +0x1c
     CBankMap CustomToBankIndex;                             // +0x28
-    bool CreateAlphaChannel(CTexture& texture, CTexture& alpha);   // 0x0071BCD0
+    private: void CreateAlphaChannel(CTexture& texture, CTexture& alpha) const; public:   // 0x0071BCD0
     void UpdateTattoos(CTextureLayerMap& layers);
 };
 

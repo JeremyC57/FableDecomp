@@ -1,0 +1,12 @@
+#19 target 004d3826 witness 004d805c: HEAD object references the PDB ??0CChestDef@@QAE@XZ; leaf relocations at the target: 004d3826	??0CChestDef@@QAE@XZ	x1
+#34 target 004e1341 witness 004e3096: HEAD object references the PDB ??0CExplosionDef@@QAE@XZ; leaf relocations at the target: 004e1341	??0CExplosionDef@@QAE@XZ	x1
+#35 target 004e0a05 witness 004e59e1: HEAD object references the PDB ??0CFireEffectCreationSet@@QAE@XZ; leaf relocations at the target: 004e0a05	??0CFireEffectCreationSet@@QAE@XZ	x1
+#36 target 004d6638 witness 004d982f: HEAD object references the PDB ??0CFireheartMinigameDef@@QAE@XZ; leaf relocations at the target: 004d6638	??0CFireheartMinigameDef@@QAE@XZ	x1
+#41 target 004d4fcf witness 004d89b4: HEAD object references the PDB ??0CInterestingToVillagersDef@@QAE@XZ; leaf relocations at the target: 004d4fcf	??0CInterestingToVillagersDef@@QAE@XZ	x1
+#45 target 004e1516 witness 004e31fa: HEAD object references the PDB ??0CMultiStaticMeshDef@@QAE@XZ; leaf relocations at the target: 004e1516	??0CMultiStaticMeshDef@@QAE@XZ	x1
+#47 target 00b16eb0 witness 00af7f40: HEAD object does NOT reference the PDB ??0CPSCOrbit@NParticleEngine@@QAE@XZ; leaf relocations at the target: 00b16eb0	??0CPSCOrbit@@QAE@XZ	x1
+#48 target 00b1b350 witness 00af8090: HEAD object does NOT reference the PDB ??0CPSCSpline@NParticleEngine@@QAE@XZ; leaf relocations at the target: 00b1b350	??0CPSCSpline@@QAE@XZ	x1
+#49 target 00b0c9c0 witness 00af7e60: HEAD object does NOT reference the PDB ??0CPSCUpdateNormal@NParticleEngine@@QAE@XZ; leaf relocations at the target: 00b0c9c0	??0CPSCUpdateNormal@@QAE@XZ	x1
+#55 target 007837c0 witness 004d4759: HEAD object does NOT reference the PDB ??0CTCBoastingCrowdControl@@QAE@AAVCThing@@@Z; leaf relocations at the target: 007837c0	??0CTCBoastingCrowdControl@@QAE@PAVCThing@@@Z	x1
+#76 target 00762090 witness 004d3c31: HEAD object does NOT reference the PDB ??0CTCShapeManager@@QAE@AAVCThing@@@Z; leaf relocations at the target: 00762090	??0CTCShapeManager@@QAE@PAVCThing@@@Z	x1
+#11 target 008fdb27 witness 008fdb55: HEAD object does NOT reference the PDB ??0CAIStateGroup_Clean@@QAE@XZ; leaf relocations at the target: 008fdb27	??0CInterestingToVillagersDef@N_008fdb27@@QAE@XZ	x1

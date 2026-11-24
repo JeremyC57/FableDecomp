@@ -29,7 +29,7 @@ class CDateAndTime { public:
     long Year;
     unsigned long Month, Day, Hour, Minute, Second, Millisecond;
     CDateAndTime();                                // 0x009E9AB0
-    void Initialise(const _FILETIME* time);        // 0x009E9CB0
+    void Initialise(const _FILETIME& time);        // 0x009E9CB0
 };
 class CFileInformation { public:
     CDateAndTime CreationTime;                     // +0x00
@@ -53,9 +53,9 @@ CFileInformation CDiskFileWin32::GetFileInformation()
     CFileInformation info;
     BY_HANDLE_FILE_INFORMATION data;
     if (GetFileInformationByHandle(WinFileHandle, &data)) {
-        info.CreationTime.Initialise(&data.ftCreationTime);
-        info.LastAccessTime.Initialise(&data.ftLastAccessTime);
-        info.LastWriteTime.Initialise(&data.ftLastWriteTime);
+        info.CreationTime.Initialise(data.ftCreationTime);
+        info.LastAccessTime.Initialise(data.ftLastAccessTime);
+        info.LastWriteTime.Initialise(data.ftLastWriteTime);
         info.ReadOnly = (data.dwFileAttributes & 1) != 0;
     } else {
         info.CreationTime = CDateAndTime();

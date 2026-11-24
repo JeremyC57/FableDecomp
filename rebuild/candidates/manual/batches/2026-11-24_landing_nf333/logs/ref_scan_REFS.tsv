@@ -1,0 +1,36 @@
+symbol	status	addresses
+??0CCharString@@QAE@PAVCAFile@@J@Z	TOO_MANY	10931 sources
+?Initialise@CDateAndTime@@QAEXPBU_FILETIME@@@Z	TOO_MANY	1107 sources
+?TransferBinaryOut@COpinionPersonalityTraits@@QBEXPAVCDataOutputStream@@@Z	TOO_MANY	258 sources
+?TransferBinaryOut@CThingComponentSet@@QBEXPAVCDataOutputStream@@@Z	TOO_MANY	258 sources
+??0CClass_004d3826@@QAE@XZ	NONE	
+??0CClass_004d4fcf@@QAE@XZ	NONE	
+??0CClass_004d6638@@QAE@XZ	NONE	
+??0CClass_004e1341@@QAE@XZ	NONE	
+??0CClass_004e1516@@QAE@XZ	NONE	
+??0CClass_00762090@@QAE@PAUCThing@@@Z	NONE	
+??0CClass_007837c0@@QAE@PAUCThing@@@Z	NONE	
+??0CTransferScope_004e0a05@@QAE@XZ	NONE	
+??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NPBVCOpinionDeed@@@Z	NONE	
+?AddQueuedProcessedInput@CInputProcessManager@@QAEXPAVCProcessedInput@@@Z	NONE	
+?AppliesToWitness@CTCOpinionSource@@QBE_NPAVCThingAICreature@@@Z	NONE	
+?AutoSaveCheckPoint@CWorld@@QAEXXZ	NONE	
+?CountBits@CPackedUIntArray@@QBEEPBXKJK@Z	NONE	
+?CreateAlphaChannel@CTCHeroMorph@@QAE_NAAVCTexture@@0@Z	NONE	
+?Destroy_00436ba0@@YIXPAX@Z	NONE	
+?Destroy_00443aa0@@YIXPAX@Z	NONE	
+?Destroy_004ad600@@YIXPAX@Z	NONE	
+?Destroy_004ae510@@YIXPAX@Z	NONE	
+?Destroy_00674e80@@YIXPAX@Z	NONE	
+?Destroy_006d6210@@YIXPAX@Z	NONE	
+?Destroy_00a4a910@@YIXPAX@Z	NONE	
+?Destroy_00a8d7c0@@YIXPAX@Z	NONE	
+?Destroy_00aeca50@@YIXPAX@Z	NONE	
+?GetCurrentSoundCamera@CWorld@@QAE?AVCCamera@@PBVCInterpolationInfo@@@Z	NONE	
+?GetMaxRefreshRate@CUserProfileManager@@QBEJXZ	NONE	
+?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@QAE_NXZ	NONE	
+?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QAE_NJ@Z	NONE	
+?MakeUID_0051d990@@YG_K_K0@Z	NONE	
+?OnDeactivateEntity@CQuestManager@@QAEXPAVCThing@@_N@Z	NONE	
+?ReportCrime@CTCGuard@@QAEXPAVCTCVillage@@JJ_N@Z	NONE	
+?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@QAEJXZ	NONE	

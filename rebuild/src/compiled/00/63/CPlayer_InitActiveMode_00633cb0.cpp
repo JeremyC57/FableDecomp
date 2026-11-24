@@ -44,7 +44,7 @@ class CProcessedInput { public:                                // 0xb0 bytes
 };
 
 class CInputProcessManager { public:
-    void AddQueuedProcessedInput(CProcessedInput* input);   // 0x00A0D460
+    void AddQueuedProcessedInput(const CProcessedInput& input);   // 0x00A0D460
 };
 class CGamePlayerInterface : public CInputProcessManager { public: };
 
@@ -88,7 +88,7 @@ void CPlayer::InitActiveMode(EPlayerMode mode)
         input.SetPlayer(Number);
         (this->*PlayerModeInfo[current].InitFunc)(mode, &input);
         if (input.Type != 0)
-            PlayerInterface->AddQueuedProcessedInput(&input);
+            PlayerInterface->AddQueuedProcessedInput(input);
     }
     DisallowModeChanges = false;
 }

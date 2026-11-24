@@ -72,7 +72,7 @@ public:
 };
 class CQuestManager {
 public:
-    void OnDeactivateEntity(CThing* thing, bool deactivate);   // 0x004AFB00
+    void OnDeactivateEntity(CThing& thing, bool deactivate);   // 0x004AFB00
 };
 
 struct SThingListNode {
@@ -111,7 +111,7 @@ void CThingManager::SaveThingsOnLevelReadyForUnloading(long mapNumber, bool save
         if (!thing->KillOnLevelUnload) {
             thing->PrepareForLimbo();
             thing->SetInLimbo(true);
-            CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnDeactivateEntity(thing, true);
+            CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnDeactivateEntity(*thing, true);
         } else if (!thing->GloballyLoaded && (thing->PersistOnUnloadWhenInLimbo || !thing->InLimbo)
                    && thing->DeletedOnOwnerLevelOutOfScope) {
             toDelete->push_back(thing);

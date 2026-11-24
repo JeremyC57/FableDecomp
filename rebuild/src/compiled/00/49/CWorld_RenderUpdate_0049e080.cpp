@@ -68,7 +68,7 @@ public:
     CEnvironment*  PEnvironment_ptr;                 // +0x18 scoped_ptr<CEnvironment>
     unsigned char  _pad1c[0x50 - 0x1c];
     CThingManager* PThingManager_ptr;                // +0x50 scoped_ptr<CThingManager>
-    CCamera GetCurrentSoundCamera(const CInterpolationInfo* info);   // 0x0049DAA0
+    CCamera GetCurrentSoundCamera(const CInterpolationInfo& info) const;   // 0x0049DAA0
     void RenderUpdate(const CInterpolationInfo* info);
 };
 
@@ -78,7 +78,7 @@ void CWorld::RenderUpdate(const CInterpolationInfo* info)
     PThingManager_ptr->RenderUpdateThings(info);
     PEnvironment_ptr->RenderUpdate(info->Current.WFInterpolate);
     if (PSoundManager) {
-        CCamera camera = GetCurrentSoundCamera(info);
+        CCamera camera = GetCurrentSoundCamera(*info);
         C3DVector forward = camera.RHSet.Forward;
         C3DVector up = camera.RHSet.Up;
         if (camera.RHSet.Forward.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO &&
