@@ -3,7 +3,8 @@
 usage (repo root, lane env sourced, S set): python3 -u land_scripted.py <run dir> <batch name> <queue tag> [--fix-unsigned-pad] [--release-t3 TAG[,TAG...]]
 --release-t3 TAG[,TAG...]: a T3_PORT_QUEUE.tsv line of a source TAG whose column-2 address is an accepted row of this run, and which is that address's
   only mention anywhere in the queue, does not reserve it (an agent pass the coordinator sent into those lines); the lines of the rows that
-  land are closed: removed from the queue and kept in the batch's T3_CLOSED.tsv.
+  land are closed: removed from the queue and kept in the batch's T3_CLOSED.tsv. An address with several lines is released when EVERY line
+  mentioning it (column 2 or the unit column) has a released TAG and the address in column 2; all of them close with the row (NF339 D6).
 Steps, in order (nothing is committed; the coordinator writes the README / HANDOFF / claims line and commits):
   1. reservations: an accepted address is HELD when it is in T3_PORT_QUEUE.tsv's address column or a unit column (NF316 Q3), under a live
      lane lock ($S/w22/nflocks/<addr>/owner not `released`), or named by an open (not done / released) COORDINATION_CLAIMS.tsv line;
@@ -30,11 +31,11 @@ mentions = {}
 for i, r in enumerate(q):
     if len(r) > 2:
         for x in {r[1].lower().replace("0x", "")} | {x.lower() for x in re.findall(r"0x([0-9a-fA-F]{8})", r[2])}: mentions.setdefault(x, []).append(i)
-released = {}                                                   # address -> its one queue line index (released for this run)
+released = {}                                                   # address -> its queue line indices (released for this run)
 if rel_tag:
     for a in acc:
         m = mentions.get(a, [])
-        if len(m) == 1 and q[m[0]][0] in rel_tag and q[m[0]][1].lower().replace("0x", "") == a: released[a] = m[0]
+        if m and all(q[i][0] in rel_tag and q[i][1].lower().replace("0x", "") == a for i in m): released[a] = m
 t3 = {a for a in mentions if a not in released}
 held = {}
 for a in acc:
@@ -115,7 +116,7 @@ if os.path.exists(f"{run}/TABLE_CHANGES.tsv"):
     ap = subprocess.run(["python3", f"{LT}/naming_batch/apply_table.py", f"{B}/TABLE_CHANGES.tsv"], capture_output=True, text=True)
     print("table:", ap.stdout.strip().replace("\n", " | "), ap.stderr.strip()[-300:])
 if released:
-    closed = {released[a] for a in land if a in released}
+    closed = {i for a in land if a in released for i in released[a]}
     qp = "rebuild/candidates/manual/naming/T3_PORT_QUEUE.tsv"; ql = open(qp).read().splitlines()
     open(f"{B}/T3_CLOSED.tsv", "w").write(ql[0] + "\n" + "".join(ql[i + 1] + "\n" for i in sorted(closed)))
     open(qp, "w").write("\n".join(l for k, l in enumerate(ql) if k - 1 not in closed) + "\n")

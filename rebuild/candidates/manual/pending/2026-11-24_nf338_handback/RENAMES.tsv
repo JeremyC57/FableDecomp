@@ -1,0 +1,8 @@
+address	old	new
+0056fad7	?OnOpenMenus@@YIXXZ	?OnOpenMenus@CManager@NUISystem@@SIXXZ
+006116e0	?OnOpenMenus@@YIXXZ	?OnOpenMenus@CManager@NUISystem@@SIXXZ
+00999110	?GetCurrentWorkingDirectory@@YI?AVCWideString@@XZ	?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ
+00a3aa40	?ZAlloc@CCompressorZlib@@SAPAXPAXII@Z	?Alloc@CCompressorZlib@@CAPAXPAXII@Z
+00a3aa40	?ZFree@CCompressorZlib@@SAXPAX0@Z	?Free@CCompressorZlib@@CAXPAX0@Z
+00405650	?Callback_malloc@@YIPAXI@Z	?Callback_malloc@CIME@NUISystem@@SIPAXI@Z
+00405650	?Callback_DrawFans@@YIXPBUIMEUI_VERTEX@@I@Z	?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z

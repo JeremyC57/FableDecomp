@@ -1,0 +1,2 @@
+##### 00999110 renames: ?GetCurrentWorkingDirectory@@YI?AVCWideString@@XZ=?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ
+ALL_EQ sections=2 DEF=1 tables=-

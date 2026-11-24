@@ -1,0 +1,5 @@
+source	address	unit	reason
+access3	0x008800C0	self respell	access3 measured ?Clone@CCreatureAction_StabbedToDeath@@QAEPAVCCreatureActionBase@@XZ -> ?Clone@CCreatureAction_StabbedToDeath@@UBEPAVCCreatureActionBase@@XZ (objsec sections head 4 new 4 / DIFF 2 .rdata .rdata bytes False relocs)
+nf317	0x008800C0	port	?Clone@CCreatureAction_StabbedToDeath@@QAEPAVCCreatureActionBase@@XZ: vtable change (decision): the row TU emits the class vftable (the inline copy constructor stores it), so `virtual Clone() const` grows the stand-in ??_7 from 1 
+nf320	0x008800C0	port	008800c0 skipped-port ?Clone@CCreatureAction_StabbedToDeath@@QAEPAVCCreatureActionBase@@XZ clone-port; engine/<class>.h is missing or has no class model declaring Clone (evidence/abscensus.tsv: FLAT generated / NOHEADER)
+nf323	0x008800C0	held	008800c0 skipped-held Clone of CCreatureAction_StabbedToDeath: NF322 (active) is porting that class model (its entry 0x0087FE60); the Clone follows the NF322 opt-in model (cloneproof recipe ready) 

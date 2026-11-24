@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00405350   WARN RELOC_NAME: ?TransferSignedChar@CPersistContext@@QAEXPBDAACABC@Z -> 00405a60 labelled 'CPersistContext::Transfer<unsigned char>'
+00405350   WARN RELOC_NAME: _g_FableImeEnabled_013B7CD8 -> 013b7cd8 labelled 'NUISystem::CIME gIME'
+00405350   RELOCATION_MATCH PASS   LoadIMESettings
+00405650   WARN RELOC_NAME: ?Reset@NativeCIME@NUISystem@@QAEXXZ -> 004051c0 labelled 'NUISystem::CIME::Shutdown'
+00405650   RELOCATION_MATCH PASS   Initialise
+00540320   RELOCATION_MATCH PASS   KeyPressed
+00851920   RELOCATION_MATCH PASS   Confirm
+01219e90   WARN RELOC_CONFLICT: _$E2 -> 012288b0 here, 01228930 in landed 01219f00
+01219e90   WARN RELOC_NAME: _$E2 -> 012288b0 labelled '`dynamic atexit destructor for 'gIME'''
+01219e90   RELOCATION_MATCH PASS   `dynamic initializer for 'gIME'' (object symbol _$E1 of its TU)
+012288b0   RELOCATION_MATCH PASS   `dynamic atexit destructor for 'gIME''
+
+WINS: 6
+  00405350 RELOCATION_MATCH NUISystem::CIME::LoadIMESettings
+  00405650 RELOCATION_MATCH CIME::?Initialise@CIME@NUISystem@@QAEXPAUHWND__@@@Z
+  00540320 RELOCATION_MATCH NUISystem::CEditBox::?KeyPressed@CEditBox@NUISystem@@UAEX_W@Z
+  00851920 RELOCATION_MATCH CVirtualKeyboard::?Confirm@CVirtualKeyboard_Methods@@QAEXXZ
+  01219e90 RELOCATION_MATCH _global::_$E1
+  012288b0 RELOCATION_MATCH _global::_$E2

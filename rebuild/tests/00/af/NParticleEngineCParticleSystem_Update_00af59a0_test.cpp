@@ -6,7 +6,7 @@
 // Callees: vector<pair<unsigned long, C3DVector> >::operator= 0x006E2000 and vector<pair<unsigned long,
 //   CParticleUpdateParamDesc> >::operator= 0x006E22F0 (both catalogued as propagated std/CCombatWheel names), SGI
 //   sort<...>(first, last, comp) 0x0076C000 / 0x0076C1A0 (`__fastcall`, comparator by value), CParticleSystem::
-//   DeleteAllParticles 0x00AF56E0 and DestroyDecals 0x00AF5770; CPSCBase virtual slots 8 (+0x20, one-argument pre-update,
+//   DeleteAllParticles 0x00AF56E0 and DeleteAllDecals 0x00AF5770; CPSCBase virtual slots 8 (+0x20, one-argument pre-update,
 //   descriptive name), 9 (+0x24) Update(CParticleSystem&, const CParticleUpdateParameters&, bool&) and 10 (+0x28)
 //   CollectUpdateParameters(CParticleUpdateParameters&, const unsigned long&) (PDB, CPSCUpdateNormal overrides).
 // Layout: CParticleUpdateParameters<ulong, ulong> (retail 0x24: vptr, VectorParams +4, UpdateParams +0x14, each a 0x10-byte
@@ -114,7 +114,7 @@ public:
     bool                     ScaleParticles : 1;
     float                    GlobalAlpha;          // +0x54
     void DeleteAllParticles();                     // 0x00AF56E0
-    void DestroyDecals();                          // 0x00AF5770
+    void DeleteAllDecals();                        // 0x00AF5770
     void Update(const CUpdateParameters& params);
 };
 
@@ -143,7 +143,7 @@ void CParticleSystem::Update(const CUpdateParameters& params)
     if (!alive) {
         Initialised = false;
         DeleteAllParticles();
-        DestroyDecals();
+        DeleteAllDecals();
         Dead = true;
     }
 }
@@ -172,7 +172,7 @@ template <> CUpdateParameters::~CParticleUpdateParameters() { }
 CComponentInstance::~CComponentInstance() { }
 CParticleSystem::~CParticleSystem() { }
 void CParticleSystem::DeleteAllParticles() { ++g_deleted; }
-void CParticleSystem::DestroyDecals() { ++g_decals; }
+void CParticleSystem::DeleteAllDecals() { ++g_decals; }
 void CPSCBase::v00() {} void CPSCBase::v01() {} void CPSCBase::v02() {} void CPSCBase::v03() {} void CPSCBase::v04() {}
 void CPSCBase::v05() {} void CPSCBase::v06() {} void CPSCBase::v07() {}
 void CPSCBase::PreUpdate(const CUpdateParameters&) {}

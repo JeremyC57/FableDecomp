@@ -1,0 +1,5 @@
+source	address	unit	reason
+binders1	0x008C63C0	self respell	binders1 measured ?PerformAction@CCreatureAction_TrollTunnel@@UAEXXZ -> ?PerformAction@CCreatureAction_TrollTunnel@@UAEXXZ (no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+nf334	0x00AF59A0	self respell	00af59a0 still binds ?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ (PDB DeleteAllDecals); the table line keeps it as witness (NF334 landing ref_scan)
+nf334	0x0069A920	self respell	0069a920 still binds ?PopulateListFromData / ?PopulateSwitchList@CGameCameraManager (PDB InitSpecialCameraList / InitManualCameraList); the table lines keep it as witness (NF334 landing ref_scan)
+nf334	0x004D297B	self respell	004d297b still binds ??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z (PDB takes CThing&); stand-in CTCActivationTrigger form (NF334 landing ref_scan)

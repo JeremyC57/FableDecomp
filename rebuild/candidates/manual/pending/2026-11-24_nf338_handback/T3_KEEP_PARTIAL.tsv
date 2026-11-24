@@ -1,0 +1,6 @@
+idx	source	address	unit	reason
+38	nf299	0x00662410	port	binder 0x006ea770,0x00733580,0x0093dcd0,0x00962a90,0x0095d070: the PDB-class witness 0x006EA770 is a T3_PORT_QUEUE row; the other spellings are stand-in or wrong classes (CThingCreatureBaseCalls, CCreatureCombatView, CThingAICreature, CThing, CThingPos). Its IsRegisteredCombatant@CThingCreatureBase line looks stale (the source names IsInMeleeAsAttacker) but was not compiled here (T3 row).
+88	nf294	0x0099ec30	entry 44: CCharString copy ctor: about 60 stand-in spellings (namespaced N<addr> / FableCons_ / FableCopy_ CCharString models, Str / WStr / Pair / CRetailString classes); tri4 LIVE for every one: family port	NF294 skipped-port
+119	nf299	0x00A3A9C0	port	binder 0x00a3aa40: the sole binder 0x00A3AA40 is a T3_PORT_QUEUE row.
+120	nf299	0x00A3AA00	port	binder 0x00a3aa40: the sole binder 0x00A3AA40 is a T3_PORT_QUEUE row.
+149	nf285	0x00997F80	standin_alias port	binder source read; identity not verified: extern "C" @FableGetCurrentPath_00997F80@8 stands for the static CAFile::GetCurrentPath() returning CWideString by value (hidden result): signature port

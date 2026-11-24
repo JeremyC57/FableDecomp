@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00a3aa40   WARN SHARED_HEADER_AVAILABLE CCompressorZlib (engine/CCompressorZlib.h)
+00a3aa40   RELOCATION_MATCH PASS   InternalCompress
+
+WINS: 1
+  00a3aa40 RELOCATION_MATCH CCompressorZlib::?InternalCompress@CCompressorZlib@@QAEKPBXKPAXK@Z

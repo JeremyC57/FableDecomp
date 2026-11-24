@@ -130,7 +130,7 @@ line	tag	address	correct_symbol	status	other_spellings
 129	523	004ad520	?push_back@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z	partial	?PushBack@IntelligentThingVector@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z || ?push_back@?$CRetailVector@V?$CIntelligentPointer@VCThing@@@@@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z || ?push_back@CIntelligentPointerVector@@QAEXABUCIntelligentPointer@@@Z || ?push_back@CIntelligentPointerVector@@QAEXABUCIntelligentPointerThing@@@Z || ?push_back@CParticleList@@QAEXABV?$CIntelligentPointer@VCThing
 130	523	004c9d60	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z	partial	?AddTC@CThing@@QAEXABVCCharString@@_NABVCPhysicsSnapshot@@@Z || ?AddTC@CThingNative@@QAEPAVCTCBase@@ABVCCharString@@_NPAVCTCParamsBase@@@Z
 131	523	005da750	?GetCreatedShotDefGlobalIndex@CTCWeapon@@QBEJXZ	closed	
-132	523	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ || ?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ
+132	523	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ
 133	523	00662650	?FinishCurrentAction@CThingCreatureBase@@QAEXXZ	partial	?FinishCurrentAction@CThing@@QAEXXZ || ?FinishCurrentAction@CThing_Retail@@QAEXXZ
 134	523	00666d10	?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	partial	?GetCombatTypeDef@CThing@@QAEPAVCCombatTypeDef@@XZ || ?GetCombatTypeDef@CThingCreatureBase@@QBEPBVCCombatTypeDef@@XZ || ?GetCombatTypeDef@CThingCreatureBase@CombatLists@@QAEPAVCCombatTypeDef@@XZ || ?GetSub@@YIPAVCThingCreatureBase@@PAVCTCCombat@@@Z
 135	523	0066e370	?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__false_type@2@I_N@Z	partial	?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@ABV3@ABV__true_type@@I_N@Z
@@ -431,7 +431,7 @@ line	tag	address	correct_symbol	status	other_spellings
 436	532	00661ed0	?GetCombatManager@CThingCreatureBase@@QAEAAVCCombatManager@@XZ	partial	?GetCombatManager@@YAPAVCCombatManager@@XZ || ?GetCombatManager@CThing@@QAEPAVCCombatManager@@XZ || ?dv_h2_00661ed0@@YIXPAX@Z
 437	532	006ed9c0	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	closed	
 438	532	006edc50	?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z	partial	?RegisterCombatant@CCombatManager@@QAEXPAUMazeThing@@0_N@Z || ?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z || ?RegisterCombatant@CCombatManager@@QAEXPAVCThingAICreature@@PAVCThing@@_N@Z || ?RegisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@0_N@Z || ?RegisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@PAVCThing@@_N@Z || RegisterCombatant
-439	532	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ || ?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ
+439	532	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ
 440	532	00835560	?insert_unique@?$_Rb_tree@PAXPAXU?$_Identity@PAX@std@@U?$less@PAX@2@V?$allocator@PAX@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAXU?$_Nonconst_traits@PAX@std@@@std@@_N@2@ABQAX@Z	partial	?InsertUnique@CSuspenderSet@@QAE?AUSSuspenderInsertResult@@ABQAX@Z
 441	532	0052b270	??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVCThingFilter_None@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z	partial	??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@@std@@VCThingFilter_None@@@CThingSearchTools@@QAEXABVCThingFilter_None@@AAV?$vector@PAVCThingAICreature@@@std@@@Z || GetAllThings
 442	532	00751610	??0CGetBestTurningAnim@?A0x@@QAE@ABVC3DVector@@0@Z	open	??0CGetBestTurningAnim || ??0CGetBestTurningAnim@?A0x0e9f9c40@@QAE@ABVC3DVector@@0@Z
@@ -692,7 +692,7 @@ line	tag	address	correct_symbol	status	other_spellings
 697	540	00415dd0	??BCDefString@@QBE?AVCCharString@@XZ	closed	
 698	540	006bbf40	?GetNameGraphicOffset@CRegion@@QBE?BVC2DVector@@XZ	open	?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ || GetWorldMapOffset
 699	540	005d8730	?erase@?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEIABK@Z	open	?erase@?$_Rb_tree@ || ?erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEIABK@Z
-700	541	0041d122	?OnOpenMenus@CManager@NUISystem@@SIXXZ	partial	?OnOpenMenus@@YIXXZ
+700	541	0041d122	?OnOpenMenus@CManager@NUISystem@@SIXXZ	closed	
 701	541	0041e5f2	?GetInstance@CManager@NUISystem@@SIPAV12@XZ	closed	
 702	541	00429c15	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z	partial	??0Pointer@RetailUI@@QAE@PAUComponent@1@@Z
 703	541	00428b10	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	partial	@DeleteIfSet@4
@@ -1430,7 +1430,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1483	597	00c20420	?Set9_00c20420@CSoundPlayParams_00c37840@@QAEXM@Z	open	?SetScale@CPKVoiceParams@@QAEXM@Z
 1484	597	00c383d0	?Add@CRegistryLayer_00c383d0@@QAEPAUCRegisteredItem@@PAU2@_N1@Z	partial	?Add@CRegistryLayer_00c383d0@@ || ?GetSnapshot@CInputSource@@QAEAAUSInputSnapshot@@AAU2@JJ@Z
 1485	597	00c257e0	??H@YI?AVC3DVector@@ABV0@0@Z	partial	??H@YI || ?Add_00c257e0@@YI?AVC3DVector@@ABV1@0@Z
-1486	597	00c25970	?GetMagnitude@C3DVector@@QBEMXZ	partial	?SubmitDrag_00c25970@@YIXPBX@Z || GetMagnitude
+1486	597	00c25970	?GetMagnitude@C3DVector@@QBEMXZ	partial	GetMagnitude
 1487	597	00c1ba70	?GetMaximum@CUnprovenPackedParameterRange@@QBEMXZ	partial	?GetDamage@CDamageRecord_00c199a0@@QAEMXZ || ?GetLoopEnd@CSoundPlayParameters@@QBEMXZ
 1488	597	00c20390	??0SEventRecord@@QAE@XZ	partial	??0CNavigationLayer@@QAE@XZ || ??0CNavigationLayer_00c13310@@QAE@XZ || ??0COcclusionBase_00c20390@@QAE@XZ || ??0CPartB_00c12d50@@QAE@XZ || ??0CPosition_00c2bb10@@QAE@XZ || ??0CSnapshotPartB@@QAE@XZ || ??0CSoundPosition@@QAE@XZ || ??0SPKHandle@@QAE@XZ
 1489	597	00c203a0	??0CMessageListOwner_00c203a0@@QAE@XZ	partial	??0CMessageListOwner@@QAE@XZ || ??0CMessageListOwner_00c13310@@QAE@XZ || ??0CPartA_00c12d50@@QAE@XZ || ??0CSnapshotPartA@@QAE@XZ
@@ -4999,7 +4999,7 @@ line	tag	address	correct_symbol	status	other_spellings
 6914	land0809e	0041e5f2	?GetInstance@CManager@NUISystem@@SIPAV12@XZ	closed	
 6915	land0809e	007f9480	?GetCompareValue@CVectorCompare_BestForTargeting@@ABEMMM@Z	open	?ComputeValue@CVectorCompare_BestForTargeting@@QBEMMM@Z || ?GetCompareValue@CVectorCompare_BestForTargeting@@QBEMMM@Z
 6916	land0809e	008e8e50	?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z	partial	?GetStrafeAnimationName@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z
-6917	land0809e	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ || ?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ
+6917	land0809e	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ
 6918	land0809e	004c73d0	?GetPos@CThing@@QBEABVC3DVector@@XZ	partial	?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingPos@@QAEABVC3DVector@@XZ
 6919	land0809e	007eed20	?Smash@CTCSmashableBase@@MAEXXZ	open	?Smash@CTCBase@@UAEXXZ || Smash
 6921	land0809e	00cd23b9	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	closed	
@@ -5208,7 +5208,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7136	land1011v	0143bb14	?LHAudioCriticalSection@@3VPKCCriticalSection@@A	open	?g_AtmosProfileSection_0143bb14@@3PAEA || ?g_AudioProfileSection_0143bb14@@3PAEA || ?g_SteeringTimer@@3PADA || ?g_lock_0143bb14@@3UCGlobalLockTarget@@A || ?g_lock_0143bb14@@3VPKCCriticalSection@@A || ?g_settingsLock@@3UPKCCriticalSection@@A || ?g_settingsLock@@3VPKCCriticalSection@@A
 7137	land1011v	0143bb58	?CODA@@3VCCodaContext@@A	partial	?gErrorState@@3UCErrorState@@A || ?g_CStatic_00c3d7d0_0143bb58@@3UCStatic_00c3d7d0@@A || ?g_CUnprovenSingleton_0143bb58@@3VCUnprovenSingleton_0143bb58@@A || ?g_ErrorState@@3UCErrorState@@A || ?g_allocInstance@@3UAlloc@@A || ?g_audioSystem@@3UCAudioSystem@@A || ?g_audioSystem@@3VCAudioSystem@@A || ?g_errSink@@3UErrSink@@A || ?g_listenerStateFactory@@3UCListenerStateFactory@@A || ?g_logger@@3UCLogge
 7138	land1011w	0041d165	?OnCloseMenus@CManager@NUISystem@@SIXXZ	closed	
-7139	land1011w	0041d122	?OnOpenMenus@CManager@NUISystem@@SIXXZ	partial	?OnOpenMenus@@YIXXZ
+7139	land1011w	0041d122	?OnOpenMenus@CManager@NUISystem@@SIXXZ	closed	
 7140	land1011w	0066e7bd	?GetCurrentScreen@CManager@NHeroInformationScreens@@QAEPBVCBase@2@XZ	closed	
 7141	land1011w	0066e799	?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z	closed	
 7142	land1011w	005ee01a	?SetAbilityLevelTo@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J@Z	closed	
@@ -5594,7 +5594,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7566	land1011bb	00659fed	?SetTorchTaskAsCompleted@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskTorch@@@@@Z	closed	
 7567	land1011bb	00662000	?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ	closed	
 7568	land1011bb	006622a0	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	closed	
-7569	land1011bb	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ || ?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ
+7569	land1011bb	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ
 7570	land1011bb	006644f0	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z	partial	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z
 7571	land1011bb	0066c880	?GetTGAPositionFromWorldCoordinates@CRegionMinimap@@QBEXABVC3DVector@@AAVC2DCoordI@@@Z	closed	
 7572	land1011bb	006869d0	?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ	partial	?GetDefinitions@CTCHeroStats@@QBEPAUCDefinitionHolder@@XZ
@@ -6974,7 +6974,7 @@ line	tag	address	correct_symbol	status	other_spellings
 8982	land1011dh	005da490	?IsAimedForLongEnough@CTCWeapon@@QBE_NM@Z	closed	
 8983	land1011dh	00658a35	?IsSchoolTime@CTCVillage@@QBE_NXZ	closed	
 8984	land1011dh	00658a80	?IsStoryTime@CTCVillage@@QBE_NXZ	closed	
-8985	land1011dh	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ || ?IsRegisteredCombatant@CThingCreatureBaseCalls@@QAE_NXZ
+8985	land1011dh	00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	partial	?CanAttackNow@CThingPos@@QAE_NXZ || ?IsCombatant@CThing@@QAE_NXZ || ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ || ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ || ?IsRegisteredCombatant@CThingCreatureBase@@QBE_NXZ
 8986	land1011di	0079c740	?GetTimeMultiplier@CTCBulletTime@@QBEMXZ	closed	
 8987	land1011di	004fb150	?GetLoadedRegion@CWorldMap@@QBEJXZ	partial	DrawGetEnvironment
 8988	land1011dl	004c24c0	??1?$CCountedPointer@$$CBVC3DMeshStats@@@@QAE@XZ	closed	
@@ -10729,7 +10729,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13569	nf333	004d4759	?Alloc@CTCBoastingCrowdControl@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
 13570	nf333	004d3c31	?Alloc@CTCShapeManager@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
 13571	nf333	0083ebd0	?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z	partial	?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
-13572	nf334	00997f80	?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ	partial	@FableGetCurrentPath_00997F80@8
+13572	nf334	00997f80	?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ	closed	
 13573	acctB_b24C7	00a3c310	?AddCombinationBlend@C3DAnimationBlendState@@QAEXABVC3DAnimationStateAlpha@@@Z	open	?AddCombinationBlend@C3DAnimationBlendState@@QAEXPAVC3DAnimationStateAlpha@@@Z
 13574	acctB_b24C7	004c2dd0	??0C3DAnimationBlendState@@QAE@XZ	open	??0C3DAnimationBlendState@
 13575	acctB_b24c	0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	closed	
@@ -10745,3 +10745,4 @@ line	tag	address	correct_symbol	status	other_spellings
 13585	nf336	00cdd420	?OnInterrupted@CSpawnedFuncBase@@UAEXXZ	no_binding	
 13586	nf336	00e96660	?Main@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ	open	?Main@CM_HeroInsideHouse@
 13587	acctB_b24C8	0070c0d0	?GetMeshBank@CAnimateThing@@QBEABVCMeshDataBank@@XZ	open	?GetMeshBank@CAnimateThing@@QAEPAVCMeshDataBank@@XZ || ?GetMeshBank_2@CAnimateThing@@QAEPAVCMeshDataBank@@XZ
+13590	acctB_b24C9	00711a50	?_M_insert_overflow@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@...	open	?GrowInsert@?$CRetailVector@UCCountedPointer@@@@QAEXPAUCCountedPointer@@ABU2@ABUSInsertTag@@KK@Z || ?_M_insert_overflow@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@IAEXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@ABV3@ABU__false_type@2@I_N@Z

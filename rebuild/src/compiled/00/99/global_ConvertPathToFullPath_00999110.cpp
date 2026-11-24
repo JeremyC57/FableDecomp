@@ -19,7 +19,7 @@ private:
     wchar_t* m_data;
 };
 
-CWideString __fastcall GetCurrentWorkingDirectory();   // 0x00997F80 (relocation identity: the scratch buffer is its by-value result)
+// NF338: 0x00997F80 is the PDB public static CAFile::GetCurrentPath() (Ego_r + FableWin ?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ), declared in the class below; its by-value result is the scratch buffer
 
 namespace
 {
@@ -43,10 +43,10 @@ namespace
 class CAFile
 {
 public:
-    static CWideString __fastcall ExpandPath(const CWideString& path, const CWideString& base); static CWideString __fastcall ConvertPathToFullPath(const CWideString& path);
+    static CWideString __fastcall ExpandPath(const CWideString& path, const CWideString& base); static CWideString __fastcall ConvertPathToFullPath(const CWideString& path); static CWideString __fastcall GetCurrentPath();
 };
 
 CWideString __fastcall CAFile::ConvertPathToFullPath(const CWideString& path)
 {
-    return ExpandPath(path, GetCurrentWorkingDirectory());
+    return ExpandPath(path, GetCurrentPath());
 }

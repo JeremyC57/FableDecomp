@@ -92,7 +92,7 @@ public:
     CIntelligentPointer<CThingCreatureBase> PTarget;                   // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
     CWorld* GetPWorld() const;                         // 0x00692940
-    void WhackGround();                                // 0x008C61C0
+private: void WhackGround(); friend class CCreatureAction_TrollProjectileAttack;   // 0x008C61C0, PDB AAE (private)
 };
 
 class CCreatureAction_TrollProjectileAttack : public CCreatureAction_TrollWhackGroundBase {

@@ -1,0 +1,2 @@
+##### 006116e0 renames: ?OnOpenMenus@@YIXXZ=?OnOpenMenus@CManager@NUISystem@@SIXXZ
+ALL_EQ sections=21 DEF=20 tables=-

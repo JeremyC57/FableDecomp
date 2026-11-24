@@ -1,0 +1,2 @@
+##### 00a3aa40 renames: ?ZAlloc@CCompressorZlib@@SAPAXPAXII@Z=?Alloc@CCompressorZlib@@CAPAXPAXII@Z ?ZFree@CCompressorZlib@@SAXPAX0@Z=?Free@CCompressorZlib@@CAXPAX0@Z
+ALL_EQ sections=2 DEF=1 tables=-

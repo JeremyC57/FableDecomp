@@ -68,7 +68,7 @@ class CManager { public:
     virtual void SetActiveThing(void* thing);           // slot 26 (+0x68)
 #undef V
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
+    static CManager* __fastcall GetInstance(); static void __fastcall OnOpenMenus();   // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ; 0x0041D122 ?OnOpenMenus@CManager@NUISystem@@SIXXZ (Ego_r + FableWin)
 };
 }
 #define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
@@ -83,7 +83,7 @@ class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 #include "engine/CASoundManager.h"
-void __fastcall OnOpenMenus();                          // 0x0041D122
+// NF338: 0x0041D122 is the PDB public static NUISystem::CManager::OnOpenMenus() (?OnOpenMenus@CManager@NUISystem@@SIXXZ), declared in the model above
 struct CInputController {
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
@@ -156,7 +156,7 @@ void CTCInventoryMap::OpenInventory()
         PSoundManager->SetGainFader(0x40, 0, 500.0f);
         PSoundManager->SetGainFader(0x80, 0, 500.0f);
     }
-    OnOpenMenus();
+    NUISystem::CManager::OnOpenMenus();
     CMainGameComponent::Get()->Display->Input->SetEnabled(false);
     NUISystem::CComponent* screen = BuildMapMenu(0, 0);
     if (screen) {

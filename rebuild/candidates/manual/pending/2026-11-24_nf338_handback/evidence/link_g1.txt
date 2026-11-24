@@ -1,0 +1,8 @@
+## HEAD set: H_00999110.obj 00997f80.obj
+duplicates 0
+UNRESOLVED 1 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z
+UNRESOLVED 1 ?GetCurrentWorkingDirectory@@YI?AVCWideString@@XZ
+## new set: 00999110.obj 00997f80.obj
+duplicates 0
+UNRESOLVED 1 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z
+LK_DONE

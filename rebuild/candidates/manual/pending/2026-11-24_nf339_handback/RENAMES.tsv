@@ -1,0 +1,8 @@
+section	address	old	new	note
+2	00af59a0	?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ	?DeleteAllDecals@CParticleSystem@NParticleEngine@@QAEXXZ	caller respelling (callee reference only; own symbol unchanged)
+2	0069a920	?PopulateSwitchList@CGameCameraManager@@QAEXXZ	?InitManualCameraList@CGameCameraManager@@AAEXXZ	caller respelling (callee reference only; own symbol unchanged)
+2	004d297b	??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z	??0CTCPhysicsStandard@@QAE@AAVCThing@@@Z	caller respelling (callee reference only; own symbol unchanged)
+2	008c63c0	?WhackGround@CCreatureAction_TrollWhackGroundBase@@QAEXXZ	?WhackGround@CCreatureAction_TrollWhackGroundBase@@AAEXXZ	caller respelling (callee reference only; own symbol unchanged)
+2	008c6430	?WhackGround@CCreatureAction_TrollWhackGroundBase@@QAEXXZ	?WhackGround@CCreatureAction_TrollWhackGroundBase@@AAEXXZ	caller respelling (callee reference only; own symbol unchanged)
+2	0069a920	?PopulateListFromData@CGameCameraManager@@QAEXXZ	?InitSpecialCameraList@CGameCameraManager@@AAEXXZ	caller respelling (second callee of the row)
+1	008800c0	?Clone@CCreatureAction_StabbedToDeath@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_StabbedToDeath@@UBEPAVCCreatureActionBase@@XZ	self rename (b2, Clone port onto the shared model)

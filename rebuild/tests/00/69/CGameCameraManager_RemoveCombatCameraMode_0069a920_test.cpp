@@ -103,8 +103,8 @@ class CGameCameraManager { public:
     unsigned char _padab[0x85];                     // +0xab
     CDefPointer<CCameraManagerSetDef> PCameraManagerSet;   // +0x130
     CDefPointer<CCameraManagerDef>    PDef;                // +0x134
-    void PopulateSwitchList();                      // 0x0069A010
-    void PopulateListFromData();                    // 0x0069A1A0
+private: void InitManualCameraList();            // 0x0069A010 (PDB AAE)
+    void InitSpecialCameraList(); public:           // 0x0069A1A0 (PDB AAE)
     void PushCurrentManualMode();                   // 0x006988B0
     void SetCameraManagerDef(const CDefPointer<CCameraManagerDef>& def);   // 0x0069A850 (landed)
     void RemoveCombatCameraMode();
@@ -116,8 +116,8 @@ class CGameCameraManager { public:
 __declspec(noinline) void CGameCameraManager::SetCameraManagerDef(const CDefPointer<CCameraManagerDef>& def)
 {
     PDef = def;
-    PopulateSwitchList();
-    PopulateListFromData();
+    InitManualCameraList();
+    InitSpecialCameraList();
     PushCurrentManualMode();
 }
 #pragma auto_inline(on)
@@ -140,8 +140,8 @@ bool CPlayer::HasMode(long mode) { g_modeAsked = mode; return g_hasMode; }
 static CPlayer g_player; static CPlayerManager g_pm;
 CPlayer* CPlayerManager::GetMainPlayer() { return &g_player; }
 static CEngine g_engine; CEngine* g_pEngine = &g_engine;
-void CGameCameraManager::PopulateSwitchList() { g_switch = ++g_seq; }
-void CGameCameraManager::PopulateListFromData() { g_list = ++g_seq; }
+void CGameCameraManager::InitManualCameraList() { g_switch = ++g_seq; }
+void CGameCameraManager::InitSpecialCameraList() { g_list = ++g_seq; }
 void CGameCameraManager::PushCurrentManualMode() { g_push = ++g_seq; }
 int main()
 {

@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?OnOpenMenus@@YIXXZ	0041d122	0056fad7	entry 62: 0x0056FAD7 / 0x006116E0 now bind ?OnOpenMenus@CManager@NUISystem@@SIXXZ (line exists, witness 0x004830A1); ref_scan rs2: only 0x006116E0 (same unit) referenced it

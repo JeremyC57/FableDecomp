@@ -1,0 +1,2 @@
+##### 0056fad7 renames: ?OnOpenMenus@@YIXXZ=?OnOpenMenus@CManager@NUISystem@@SIXXZ
+ALL_EQ sections=9 DEF=8 tables=-

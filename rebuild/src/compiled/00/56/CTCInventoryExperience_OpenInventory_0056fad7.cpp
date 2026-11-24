@@ -22,7 +22,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-void __fastcall OnOpenMenus();                       // 0x0041D122
+// NF338: 0x0041D122 is the PDB public static NUISystem::CManager::OnOpenMenus() (?OnOpenMenus@CManager@NUISystem@@SIXXZ), declared below
 class CThing;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
@@ -38,7 +38,7 @@ class CTCHeroExperience { public:                           // interface type 0x
     long GetStatExperience(EHeroExperienceStatCategory stat_category) const;   // 0x006D6510 (Ego_r.pdb / FableWin.pdb QBE)
 };
 
-namespace NUISystem { class CManager { public:
+namespace NUISystem { class CManager { public: static void __fastcall OnOpenMenus();   // 0x0041D122 (Ego_r + FableWin)
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -271,7 +271,7 @@ class CTCInventoryExperience { public:
 
 void CTCInventoryExperience::OpenInventory()
 {
-    OnOpenMenus();
+    NUISystem::CManager::OnOpenMenus();
     NUISystem::CManager::GetInstance()->OnThingInventoryOpened(ParentThing);
     PrepareScreen();
     AccumFadeTime = 0.0f;

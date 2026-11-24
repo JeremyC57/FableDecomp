@@ -37,8 +37,8 @@ extern "C" int __cdecl z_deflateEnd(z_stream* strm);                            
 extern const char g_zlibVersion[];                                                                      // 0x0129CFE0 ("1.2.1")
 
 class CCompressorZlib { public:
-    static void* __cdecl ZAlloc(void* opaque, uInt items, uInt size);   // 0x00A3A9C0
-    static void  __cdecl ZFree(void* opaque, void* address);            // 0x00A3AA00
+private: static void* __cdecl Alloc(void* opaque, uInt items, uInt size);   // 0x00A3A9C0 (Ego_r + FableWin ?Alloc@CCompressorZlib@@CAPAXPAXII@Z, private static)
+    static void  __cdecl Free(void* opaque, void* address); public:   // 0x00A3AA00 (Ego_r + FableWin ?Free@CCompressorZlib@@CAXPAX0@Z, private static)
     unsigned long InternalCompress(const void* source, unsigned long sourceSize, void* dest, unsigned long destSize);
 };
 
@@ -47,8 +47,8 @@ unsigned long CCompressorZlib::InternalCompress(const void* source, unsigned lon
     if (sourceSize == 0)
         return 0;
     z_stream stream;
-    stream.zalloc = ZAlloc;
-    stream.zfree = ZFree;
+    stream.zalloc = Alloc;
+    stream.zfree = Free;
     stream.opaque = 0;
     z_deflateInit_(&stream, 1, g_zlibVersion, sizeof(z_stream));
     stream.next_in = (Bytef*)source;

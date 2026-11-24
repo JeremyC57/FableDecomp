@@ -104,8 +104,8 @@ class CGameCameraManager { public:
     unsigned char _padab[0x85];                     // +0xab
     CDefPointer<CCameraManagerSetDef> PCameraManagerSet;   // +0x130
     CDefPointer<CCameraManagerDef>    PDef;                // +0x134
-    void PopulateSwitchList();                      // 0x0069A010
-    void PopulateListFromData();                    // 0x0069A1A0
+private: void InitManualCameraList();            // 0x0069A010 (PDB AAE)
+    void InitSpecialCameraList(); public:           // 0x0069A1A0 (PDB AAE)
     void PushCurrentManualMode();                   // 0x006988B0
     void SetCameraManagerDef(const CDefPointer<CCameraManagerDef>& def);   // 0x0069A850 (landed)
     void RemoveCombatCameraMode();
@@ -117,8 +117,8 @@ class CGameCameraManager { public:
 __declspec(noinline) void CGameCameraManager::SetCameraManagerDef(const CDefPointer<CCameraManagerDef>& def)
 {
     PDef = def;
-    PopulateSwitchList();
-    PopulateListFromData();
+    InitManualCameraList();
+    InitSpecialCameraList();
     PushCurrentManualMode();
 }
 #pragma auto_inline(on)

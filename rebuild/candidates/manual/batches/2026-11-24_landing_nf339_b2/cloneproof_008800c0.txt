@@ -1,0 +1,12 @@
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_StabbedToDeath@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+PASS vft_slots 
+PASS dtorG_bytes_v_retail 30 bytes at 0087FE80 ??_GCCreatureAction_StabbedToDeath@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+INFO und_dropped: ?v00@CCreatureAction_StabbedToDeath@@UAEXXZ
+OK

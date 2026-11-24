@@ -1,0 +1,5 @@
+addr       parity           behav  name
+008800c0   RELOCATION_MATCH PASS   Clone
+
+WINS: 1
+  008800c0 RELOCATION_MATCH CCreatureAction_StabbedToDeath::?Clone@CCreatureAction_StabbedToDeath@@UBEPAVCCreatureActionBase@@XZ

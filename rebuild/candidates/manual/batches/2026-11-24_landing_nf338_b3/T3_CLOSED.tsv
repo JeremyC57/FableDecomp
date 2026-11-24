@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf285	0x00A3AA40	standin_alias port	triage from the spellings column only (binder not opened; identity not verified): NOT ATTEMPTED (identity and form not verified; the flat-view opt-in form may apply): stand-in class token, not a respell inside a real class: _Retail / Methods stand-in class (?InternalCompress@CCompressorZlib_Retail@@QAEKPBXKPAXK@Z in 00a3ac40); the binder needs its model ported onto the real class (renaming its local token to the real class is the nf95b move)

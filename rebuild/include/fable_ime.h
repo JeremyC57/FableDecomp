@@ -39,6 +39,9 @@ struct IMEUI_APPEARANCE {                                 // ImeUi.h (DXUT ImeUi
     unsigned char    caretYMargin;                        // +0x3D
 };
 FABLE_STATIC_ASSERT(sizeof(IMEUI_APPEARANCE) == 0x40);
+#ifdef FABLE_RETAIL_CIME_CALLBACKS
+struct IMEUI_VERTEX;                                      // ImeUi.h (DXUT ImeUi) vertex, used by Callback_DrawFans
+#endif
 namespace NUISystem
 {
     class CIME
@@ -61,6 +64,13 @@ namespace NUISystem
         // ?FinaliseString@CIME@NUISystem@@QAEX_N@Z, out of line at 0x00404B50 (landed row). Declaration only.
         void FinaliseString(bool commit);                                   // 0x00404B50
 #endif
+#ifdef FABLE_RETAIL_CIME_CALLBACKS
+        // NF338 opt-in (2026-11-24, row 0x00405650 NUISystem::CIME::Initialise, which stores them into the ImeUi hooks): Ego_r.pdb /
+        // FableWin.pdb ?Callback_malloc@CIME@NUISystem@@SIPAXI@Z (0x00404A60) and ?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z
+        // (0x00404E10), public static __fastcall; both landed rows. Declarations only.
+        static void* FABLE_FASTCALL Callback_malloc(unsigned int size);                                 // 0x00404A60
+        static void FABLE_FASTCALL Callback_DrawFans(const IMEUI_VERTEX* vertices, unsigned int count); // 0x00404E10
+#endif
     private:
         void Reset();
         bool             EnableIME;                       // +0x00
@@ -72,6 +82,9 @@ namespace NUISystem
     };
 }
 #else
+#ifdef FABLE_RETAIL_CIME_CALLBACKS
+struct IMEUI_VERTEX;                                      // ImeUi.h (DXUT ImeUi) vertex, used by Callback_DrawFans
+#endif
 namespace NUISystem
 {
     class CIME
@@ -80,6 +93,13 @@ namespace NUISystem
         static void FABLE_FASTCALL LoadIMESettings(
             CPersistContext& context);
         void Initialise(HWND__* window);
+#ifdef FABLE_RETAIL_CIME_CALLBACKS
+        // NF338 opt-in (2026-11-24, row 0x00405650 NUISystem::CIME::Initialise, which stores them into the ImeUi hooks): Ego_r.pdb /
+        // FableWin.pdb ?Callback_malloc@CIME@NUISystem@@SIPAXI@Z (0x00404A60) and ?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z
+        // (0x00404E10), public static __fastcall; both landed rows. Declarations only.
+        static void* FABLE_FASTCALL Callback_malloc(unsigned int size);                                 // 0x00404A60
+        static void FABLE_FASTCALL Callback_DrawFans(const IMEUI_VERTEX* vertices, unsigned int count); // 0x00404E10
+#endif
 
     private:
         bool enableIme_;

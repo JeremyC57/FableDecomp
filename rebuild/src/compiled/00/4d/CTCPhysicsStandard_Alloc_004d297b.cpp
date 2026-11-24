@@ -13,10 +13,10 @@ class CThing;
 
 struct CTCPhysicsStandard {
     unsigned char _body[0x88];       // sizeof(CTCPhysicsStandard) = 0x88
-    CTCPhysicsStandard(CThing* owner);                   // 0x00723FD0
+    CTCPhysicsStandard(CThing& owner);                   // 0x00723FD0 (PDB ??0CTCPhysicsStandard@@QAE@AAVCThing@@@Z)
 };
 
 CTCPhysicsStandard* __fastcall CTCPhysicsStandard_Alloc(CThing* owner)
 {
-    return new CTCPhysicsStandard(owner);
+    return new CTCPhysicsStandard(*owner);
 }

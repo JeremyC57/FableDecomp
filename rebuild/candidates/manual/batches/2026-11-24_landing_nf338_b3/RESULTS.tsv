@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+00a3aa40	ACCEPT	?InternalCompress@CCompressorZlib@@QAEKPBXKPAXK@Z	?InternalCompress@CCompressorZlib@@QAEKPBXKPAXK@Z	binder respell (entries 119 / 120): ZAlloc / ZFree stand-ins -> PDB private static CCompressorZlib::Alloc / Free (Ego_r + FableWin ?Alloc@CCompressorZlib@@CAPAXPAXII@Z / ?Free@CCompressorZlib@@CAXPAX0@Z); objsec ALL_EQ; target 0x00A3A9C0 / 0x00A3AA00
