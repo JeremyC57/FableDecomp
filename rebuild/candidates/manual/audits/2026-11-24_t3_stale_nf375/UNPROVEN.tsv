@@ -1,0 +1,14 @@
+line	sha	source	address	kind	why
+155	449c4fb7a61a	nf289	0x00736590	binder	the named open binder 0x00736AE0 is a stay-off row (not compiled); 0x00736AD0 binds only P
+1508	fa70708f6736	nf310	0x00525CD0	binder	the only named binder 0x004FEEC0 is a stay-off row (not compiled)
+1851	93dd40437619	nf315	0x00430300	binder	the named open binder 0x00454B4C is a stay-off row (not compiled); 0x004573FD binds only P
+2531	1354d3da3947	rename1	0x00BDC180	self?	0x00BDC180 is a stay-off row (not compiled)
+3473	ac1bcd3e079a	nf340	0x00429C53	copy	00626110 STAY_OFF  ; 00626750 STAY_OFF 
+3474	97d399fd1d05	nf340	0x00429C15	copy	00626110 STAY_OFF  ; 00626750 STAY_OFF 
+3475	127270d7d304	nf340	0x005949C3	copy	00626110 STAY_OFF  ; 00626750 STAY_OFF 
+3476	bd80a0975a32	nf340	0x00429F43	copy	00626110 STAY_OFF  ; 00626750 STAY_OFF 
+3538	97dae3b24102	nf340	0x00CDBFB0	copy	00ce7670 STAY_OFF 
+3582	61586ca621fb	nf348x	0x00C59BA0	binder	0x0070D940 (Account B's row, landed at 17:40) is a stay-off row (not compiled)
+3595	f8f276d5da24	nf334	0x0045C5F6	binder	binder 0x00454B4C and the target 0x0045C5F6 are stay-off rows (not compiled)
+3596	dcd4b1dffb00	nf355	0x0045C5C1	binder	0x0045C5F6 is a stay-off row (not compiled)
+3618	c0afd70b2f62	nf361	0x0066C340	binder	the binder 0x00839940 is a stay-off row (not compiled)
