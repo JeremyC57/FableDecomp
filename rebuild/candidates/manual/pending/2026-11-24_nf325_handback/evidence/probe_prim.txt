@@ -1,0 +1,67 @@
+== CEngineInternalPrimitiveParticleSpriteTrailGroup vftable 012A5BFC
+slot   0 00BBF180 DIFF     ours=??_ECEngineInternalPrimitiveParticleSpriteTrailGroup@@UAEPAXI@Z retail_label=??_GCEngineInternalPrimitiveParticleSpriteTrailGroup@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 00B3AA90 SAME     ours=?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z retail_label=?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z
+slot   3 00B8FF70 SAME     ours=?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z retail_label=?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z
+slot   4 00B3AAA0 SAME     ours=?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ retail_label=?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ
+slot   5 00BBDD90 SAME     ours=?Update@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAEXABVCEnginePrimitive@@K@Z retail_label=?Update@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAEXABVCEnginePrimitive@@K@Z
+slot   6 00BBD1A0 SAME     ours=?AddChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEKABVCEnginePrimitive@@K@Z retail_label=?AddChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEKABVCEnginePrimitive@@K@Z
+slot   7 00BBC310 SAME     ours=?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z retail_label=?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
+slot   8 00BBCF70 SAME     ours=?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKABVCEnginePrimitive@@K@Z retail_label=?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKABVCEnginePrimitive@@K@Z
+slot   9 00BBC3A0 SAME     ours=?GetChildPrimitiveHandle@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@@Z retail_label=?GetChildPrimitiveHandle@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@@Z
+slot  10 00BBCE10 SAME     ours=?ClearChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXK@Z retail_label=?ClearChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXK@Z
+slot  11 00BBD200 SAME     ours=?ClearAllChildPrimitives@CEngineInternalPrimitiveParticleGroup@@UAEXXZ retail_label=?ClearAllChildPrimitives@CEngineInternalPrimitiveParticleGroup@@UAEXXZ
+slot  12 00BBC430 SAME     ours=?GetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z retail_label=?GetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z
+slot  13 00B3A990 SAME     ours=?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AVCEngineFadeDistance@@XZ retail_label=?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AVCEngineFadeDistance@@XZ
+slot  14 00B3A9B0 SAME     ours=?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ retail_label=?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ
+slot  15 00BBBE40 SAME     ours=?GetWorldPosition@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DVector@@@Z retail_label=?GetWorldPosition@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DVector@@@Z
+slot  16 00B3A9D0 SAME     ours=?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z retail_label=?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z
+slot  17 00B3A9E0 SAME     ours=?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z retail_label=?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z
+slot  18 00BBBE10 SAME     ours=?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DBoundingSphere@@@Z retail_label=?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DBoundingSphere@@@Z
+slot  19 00B3AA00 SAME     ours=?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z retail_label=?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z
+slot  20 00B3AA10 SAME     ours=?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z retail_label=?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z
+slot  21 00B3AA20 SAME     ours=?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z retail_label=?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z
+slot  22 00B3AA30 SAME     ours=?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z retail_label=?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z
+slot  23 00B3AA40 SAME     ours=?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z retail_label=?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z
+slot  24 00B3AA50 SAME     ours=?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z retail_label=?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z
+slot  25 00B3AA60 SAME     ours=?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z retail_label=?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z
+slot  26 00B3AA70 SAME     ours=?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z retail_label=?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z
+slot  27 00B3AA80 SAME     ours=?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ retail_label=?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ
+slot  28 00BBBDF0 SAME     ours=?GetRenderLayerMask@CEngineInternalPrimitiveParticleGroup@@UBEKXZ retail_label=?GetRenderLayerMask@CEngineInternalPrimitiveParticleGroup@@UBEKXZ
+slot  29 00BBDDB0 SAME     ours=?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAE_NJ@Z retail_label=?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAE_NJ@Z
+retail slots 30, emitted slots 30; SAME 29 DIFF 1 NOLABEL 0
+
+== CEngineInternalPrimitiveParticleGroup vftable 012A59D4
+slot   0 00BBA1E0 DIFF     ours=??_ECEngineInternalPrimitiveParticleGroup@@UAEPAXI@Z retail_label=??_GCEngineInternalPrimitiveParticleGroup@@UAEPAXI@Z
+slot   1 0042D930 SAME     ours=?Delete@CIVCountedPointeeBase@@UBEXXZ retail_label=?Delete@CIVCountedPointeeBase@@UBEXXZ
+slot   2 00B3AA90 SAME     ours=?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z retail_label=?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z
+slot   3 00B8FF70 SAME     ours=?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z retail_label=?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z
+slot   4 00B3AAA0 SAME     ours=?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ retail_label=?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ
+slot   5 00BBBE60 SAME     ours=?Update@CEngineInternalPrimitiveParticleGroup@@UAEXABVCEnginePrimitive@@K@Z retail_label=?Update@CEngineInternalPrimitiveParticleGroup@@UAEXABVCEnginePrimitive@@K@Z
+slot   6 00BBD1A0 SAME     ours=?AddChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEKABVCEnginePrimitive@@K@Z retail_label=?AddChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEKABVCEnginePrimitive@@K@Z
+slot   7 00BBC310 SAME     ours=?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z retail_label=?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
+slot   8 00BBCF70 SAME     ours=?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKABVCEnginePrimitive@@K@Z retail_label=?SetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXKABVCEnginePrimitive@@K@Z
+slot   9 00BBC3A0 SAME     ours=?GetChildPrimitiveHandle@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@@Z retail_label=?GetChildPrimitiveHandle@CEngineInternalPrimitiveParticleGroup@@UAEXKAAVCEnginePrimitiveHandle@@@Z
+slot  10 00BBCE10 SAME     ours=?ClearChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXK@Z retail_label=?ClearChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXK@Z
+slot  11 00BBD200 SAME     ours=?ClearAllChildPrimitives@CEngineInternalPrimitiveParticleGroup@@UAEXXZ retail_label=?ClearAllChildPrimitives@CEngineInternalPrimitiveParticleGroup@@UAEXXZ
+slot  12 00BBC430 SAME     ours=?GetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z retail_label=?GetChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z
+slot  13 00B3A990 SAME     ours=?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AVCEngineFadeDistance@@XZ retail_label=?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AVCEngineFadeDistance@@XZ
+slot  14 00B3A9B0 SAME     ours=?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ retail_label=?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ
+slot  15 00BBBE40 SAME     ours=?GetWorldPosition@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DVector@@@Z retail_label=?GetWorldPosition@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DVector@@@Z
+slot  16 00B3A9D0 SAME     ours=?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z retail_label=?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z
+slot  17 00B3A9E0 SAME     ours=?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z retail_label=?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z
+slot  18 00BBBE10 SAME     ours=?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DBoundingSphere@@@Z retail_label=?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DBoundingSphere@@@Z
+slot  19 00B3AA00 SAME     ours=?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z retail_label=?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z
+slot  20 00B3AA10 SAME     ours=?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z retail_label=?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z
+slot  21 00B3AA20 SAME     ours=?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z retail_label=?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z
+slot  22 00B3AA30 SAME     ours=?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z retail_label=?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z
+slot  23 00B3AA40 SAME     ours=?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z retail_label=?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z
+slot  24 00B3AA50 SAME     ours=?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z retail_label=?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z
+slot  25 00B3AA60 SAME     ours=?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z retail_label=?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z
+slot  26 00B3AA70 SAME     ours=?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z retail_label=?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z
+slot  27 00B3AA80 SAME     ours=?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ retail_label=?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ
+slot  28 00BBBDF0 SAME     ours=?GetRenderLayerMask@CEngineInternalPrimitiveParticleGroup@@UBEKXZ retail_label=?GetRenderLayerMask@CEngineInternalPrimitiveParticleGroup@@UBEKXZ
+slot  29 00BBBF00 SAME     ours=?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleGroup@@UAE_NJ@Z retail_label=?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleGroup@@UAE_NJ@Z
+retail slots 30, emitted slots 30; SAME 29 DIFF 1 NOLABEL 0
+
+PROBE_DONE

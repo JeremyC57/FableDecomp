@@ -3691,7 +3691,7 @@ line	tag	address	correct_symbol	status	other_spellings
 4205	cx11	013bda40	?glyphTextureCacheGlyphAdjustment@?A0xfe46a155@@3PAVCStreamingGlyphAdjustment@@A	open	?glyphTextureCacheGlyphAdjustment@?A0x17dbab28@@3PAVCStreamingGlyphAdjustment@@A || ?glyphTextureCacheGlyphAdjustment@?A0x4d07cd46@@3PAVCStreamingGlyphAdjustment@@A || ?glyphTextureCacheGlyphAdjustment@?A0x726eb32e@@3PAVCStreamingGlyphAdjustment@@A || ?glyphTextureCacheGlyphAdjustment@?A0x837960d0@@3PAVCStreamingGlyphAdjustment@@A
 4206	cx11	00a537f0	?GetRoot@C3DAnimFile@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileRootChunk@@@@XZ	partial	?GetRoot@C3DAnimFile
 4207	cx11	00a99390	?GetHelpers@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileHelpersChunk@@@@XZ	closed	
-4208	cx11	00a99110	?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	partial	?GetFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ
+4208	cx11	00a99110	?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	closed	
 4209	cx11	00aae5b0	?GetMovementVector@C3DAnimFileHelpersChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileMovementVectorChunk@@@@XZ	closed	
 4210	cx11	00a4cdd0	?ReadCompressedFromFile@C3DAnimationSequence@@QAEXAAVCDataInputStream@@KPAVC3DAnimationSequenceData@@AAVCSimpleMemoryPool@@@Z	closed	
 4211	cx11	00993b10	??1CDataInputStream@@UAE@XZ	partial	??1CDataStream@@UAE@XZ
@@ -6099,7 +6099,7 @@ line	tag	address	correct_symbol	status	other_spellings
 8090	land1011bw	007edee0	?OnActionUseCommon@CTCCarriedActionUseTrophy@@AAEXAAVCThing@@@Z	closed	
 8091	land1011bw	008e5670	?PerformForceUpdates@CTCPhysicsStandard@@IAEXXZ	closed	
 8092	land1011bw	006ae1c0	??$GetDef@VCPlayerMovementDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCPlayerMovementDef@@@@@Z	closed	
-8096	land1011bw	006c5920	?RemoveDeedStillSearchingForWitnesses@CTCHeroOpinionDeedLog@@QAEXJ@Z	partial	?EndDeed@CTCHeroOpinionDeedLog@@QAEXJ@Z || ?RemoveDeedStillSearchingForWitnesses@CDeedOwner_006c6010@@QAEXJ@Z || RemoveDeedStillSearchingForWitnesses
+8096	land1011bw	006c5920	?RemoveDeedStillSearchingForWitnesses@CTCHeroOpinionDeedLog@@QAEXJ@Z	partial	?RemoveDeedStillSearchingForWitnesses@CDeedOwner_006c6010@@QAEXJ@Z || RemoveDeedStillSearchingForWitnesses
 8097	land1011bx	00692910	?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ	partial	?GetDefinitionManager@CCombatActionBase@@QAEPAVCDefinitionManager@@XZ || ?GetDefinitionManager@CCombatActionBase@@QAEPAVCGameDefinitionManager@@XZ || ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ || ?GetPDefinitionManager@CCreatureAction_UnsheatheWeapons@@QBEPAVCDefinitionManager@@XZ
 8098	land1011bx	00842150	??0CCreatureAction_DropGenericBox@@QAE@AAVCThingCreatureBase@@@Z	closed	
 8099	land1011bx	008e5670	?PerformForceUpdates@CTCPhysicsStandard@@IAEXXZ	closed	
@@ -10608,3 +10608,70 @@ line	tag	address	correct_symbol	status	other_spellings
 13448	nf317	008b0650	?OnCreate@CCombatSequenceBase@@UAEXXZ	partial	?M@C008b0650@@QAEXXZ || ?OnCreate@CCombatSequenceBase@@QAEXXZ || ?OnCreate@CCombatSequenceBase_008b0650@@UAEXXZ || ?OnCreateBase@CCombatSequence_WillPhysicalShield@@QAEXXZ || ?OnCreateBase@CCombatSequence_WillPhysicalShieldNonMelee@@QAEXXZ
 13449	nf318	013b8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	partial	?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A || ?g_GlobalCountedPointer@@3UCCountedPointer41915a@@A || ?g_HeroPerceptionManager@@3PAUHeroPerceptionManager@@A || ?g_MovieTransitionState@@3PAUMovieTransitionState@@A || ?g_cutscene@@3PAUInner@@A || ?g_gameObj@@3PAUGameObj@@A || ?g_hud@@3PAUCHud@@A || ?g_obj@@3PAUCObj@@A || ?g_pGameUI@@3PAUCGameUI@@A || ?g_pGameUI_013b8790@@3PAUCGameUI@@A || ?g_pGameUI
 13450	nf320	00463bdb	?Copy@CCombatAbilityBlockUnarmedAttackDef@@UAEXPBVCDefClassBase@@@Z	no_binding	
+13451	nf321	006e7270	?EndFadeScreen@CGameScriptInterface@@IAEXXZ	open	?CGameScriptInterface_DoFade@@YIXPAVCGameScriptInterface@@@Z || ?Run@T@@QAEXXZ || ?helperA@CGameScriptInterface_Methods@@QAEXXZ
+13452	nf321	009cbb80	?GetAlignment@CBankFile@@QBEKXZ	partial	?GetAlignment@CBankFileAsync@@QBEKXZ || DrawGetEnvironment
+13453	nf321	004fede0	?UnloadLevel@CWorldMap@@IAEXJ@Z	partial	?UnloadLevel@CWorldMap@@QAEXJ@Z || ?UnloadLevel@CWorldMap_Methods@@QAEXJ@Z || UnloadLevel
+13454	nf321	00b2fbf0	?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z	partial	?M@C_00b2fbf0@@QAEXK@Z
+13455	nf321	006e71f0	?Rest@CGameScriptInterface@@IBEXM@Z	partial	?SetQuestProgress@CGameScriptInterface_Methods@@QAEXM@Z || ?applyFloat@CGameScriptInterface_Methods@@QAEXM@Z || ?helperB@CGameScriptInterface_Methods@@QAEXH@Z
+13456	nf323	0062d7d0	??_GCCreatureAction_StartSneaking@@UAEPAXI@Z	no_binding	
+13457	nf323	0062d870	??_GCCreatureAction_StopSneaking@@UAEPAXI@Z	no_binding	
+13458	nf323	0084b4a0	??_GCCreatureAction_PlayAnimationFromIndex@@UAEPAXI@Z	no_binding	
+13459	nf323	0084ab80	??_GCCreatureAction_YellOverHere@@UAEPAXI@Z	no_binding	
+13460	nf323	008550e0	??_GCCreatureAction_SpiritReturnToHero@@UAEPAXI@Z	no_binding	
+13461	nf323	007eba90	??_GCCreatureAction_LookThroughWindow@@UAEPAXI@Z	no_binding	
+13462	nf323	007ed040	??_GCCreatureAction_DropWeapon@@UAEPAXI@Z	no_binding	
+13463	nf323	0084aaa0	??_GCCreatureAction_ActivateZTarget@@UAEPAXI@Z	no_binding	
+13464	nf323	0084ac00	??_GCCreatureAction_StartFillingTankard@@UAEPAXI@Z	no_binding	
+13465	nf323	0084ac20	??_GCCreatureAction_StopFillingTankard@@UAEPAXI@Z	no_binding	
+13466	nf323	00933d30	??_GCCreatureAction_CallSpouseHome@@UAEPAXI@Z	no_binding	
+13467	nf323	0084ab60	??_GCCreatureAction_ShowFear@@UAEPAXI@Z	no_binding	
+13468	nf323	0084aba0	??_GCCreatureAction_AlertToPlayer@@UAEPAXI@Z	no_binding	
+13469	nf323	00911160	??_GCCreatureAction_OrderSecuritySweep@@UAEPAXI@Z	no_binding	
+13470	nf323	00911200	??_GCCreatureAction_Curiosity@@UAEPAXI@Z	no_binding	
+13471	nf323	00916540	??_GCCreatureAction_PutGoodsDown@@UAEPAXI@Z	no_binding	
+13472	nf323	0084ab40	??_GCCreatureAction_DropGenericBox@@UAEPAXI@Z	no_binding	
+13473	nf323	00941bc0	??_GCCreatureAction_PlayHopscotch@@UAEPAXI@Z	no_binding	
+13474	nf323	00867f40	??_GCCreatureAction_BeDazed@@UAEPAXI@Z	no_binding	
+13475	nf323	008e6e90	??_GCCreatureAction_CastStrengthMultiStrikeProper@@UAEPAXI@Z	no_binding	
+13476	nf323	008601f0	??_GCCreatureAction_GetUpFromSitting@@UAEPAXI@Z	no_binding	
+13477	nf323	0062ea00	?GetAnimDelayTime@CCombatActionBase@@UBEJXZ	no_binding	
+13478	nf323	00865a90	?GetAnimDelayTime@CCreatureAction_BeDazed@@UBEJXZ	no_binding	
+13479	nf323	0084a820	?GetAnimExtraFlags@CCreatureAction_DropGenericBox@@UBEKXZ	no_binding	
+13480	nf323	00941ba0	?GetAnimExtraFlags@CCreatureAction_PlayHopscotch@@UBEKXZ	no_binding	
+13481	nf323	008565b0	?GetAnimationIndex@CCombatActionBase@@UBEJXZ	no_binding	
+13482	nf323	008571a0	?GetAnimationTransitionInTime@CCombatActionBase@@UBEJXZ	no_binding	
+13483	nf323	00865a80	?GetAnimationTransitionInTime@CCreatureAction_BeDazed@@UBEJXZ	no_binding	
+13484	nf323	00857d10	?GetWeaponTrailUsedInStrikeAction@CCombatActionBase@@MBEPAVCTCWeaponTrail@@AAJ@Z	open	GetWeaponTrailUsedInStrikeAction
+13485	nf323	008546a0	?Initialise@CCreatureAction_SpiritReturnToHero@@UAEXXZ	open	?CCreatureAction_SpiritReturnToHero_Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z
+13486	nf323	00856240	?InitialiseActionMovement@CCombatActionBase@@MAEXXZ	no_binding	
+13487	nf323	00856170	?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ	open	?IsActionReadyForInterruption@CCombatActionBase@@QBE_NXZ
+13488	nf323	00856190	?IsActionReadyForInterruptionByMovement@CCombatActionBase@@UBE_NABVC3DVector@@@Z	no_binding	
+13489	nf323	008562d0	?IsBlockCounter@CCombatActionBase@@MBE_NXZ	no_binding	
+13490	nf323	008e6e20	?IsBlockable@CCreatureAction_CastStrengthMultiStrikeProper@@UBE_NXZ	no_binding	
+13491	nf323	008565d0	?IsKnockdownStrike@CCombatActionBase@@MBE_NXZ	no_binding	
+13492	nf323	00856300	?IsMovementUsingPhysics@CCombatActionBase@@MBE_NXZ	no_binding	
+13493	nf323	008601d0	?IsMovementUsingPhysics@CCreatureAction_GetUpFromSitting@@UBE_NXZ	open	@CCreatureAction_GetUpFromSitting_IsMovementUsingPhysics@4
+13494	nf323	008601c0	?IsPreventingLookTurning@CCreatureAction_GetUpFromSitting@@UBE_NXZ	no_binding	
+13495	nf323	008601b0	?IsPreventingNormalMovement@CCreatureAction_GetUpFromSitting@@UBE_NXZ	no_binding	
+13496	nf323	0062d7c0	?IsPreventingNormalMovement@CCreatureAction_StartSneaking@@UBE_NXZ	no_binding	
+13497	nf323	0062d860	?IsPreventingNormalMovement@CCreatureAction_StopSneaking@@UBE_NXZ	no_binding	
+13498	nf323	008562f0	?IsUsingAnimationMovement@CCombatActionBase@@MBE_NXZ	open	?virtual_tgt@GS@@QAEDXZ
+13499	nf323	00941bb0	?IsUsingAnimationMovement@CCreatureAction_PlayHopscotch@@UBE_NXZ	no_binding	
+13500	nf323	008562e0	?IsVitalStrike@CCombatActionBase@@MBE_NXZ	no_binding	
+13501	nf323	008b6530	?OnAnimationLoaded@CCreatureAction_GetUpFromSitting@@UAEXXZ	open	?OnAnimationLoaded@CCreatureAction_GetUpFromSitting@@QAEXXZ
+13502	nf323	0062e9f0	?PerformAction@CCombatActionBase@@UAEXXZ	no_binding	
+13503	nf323	00849320	?PerformAction@CCreatureAction_AlertToPlayer@@UAEXXZ	no_binding	
+13504	nf323	00865a70	?PerformAction@CCreatureAction_BeDazed@@UAEXXZ	no_binding	
+13505	nf323	00849140	?PerformAction@CCreatureAction_CallSpouseHome@@UAEXXZ	no_binding	
+13506	nf323	009111f0	?PerformAction@CCreatureAction_Curiosity@@UAEXXZ	no_binding	
+13507	nf323	008424d0	?PerformAction@CCreatureAction_LookThroughWindow@@UAEXXZ	no_binding	
+13508	nf323	00849250	?PerformAction@CCreatureAction_OrderSecuritySweep@@UAEXXZ	no_binding	
+13509	nf323	0084b490	?PerformAction@CCreatureAction_PlayAnimationFromIndex@@UAEXXZ	no_binding	
+13510	nf323	00941b90	?PerformAction@CCreatureAction_PlayHopscotch@@UAEXXZ	no_binding	
+13511	nf323	008422e0	?PerformAction@CCreatureAction_ShowFear@@UAEXXZ	no_binding	
+13512	nf323	0062d7b0	?PerformAction@CCreatureAction_StartSneaking@@UAEXXZ	no_binding	
+13513	nf323	00842250	?PerformAction@CCreatureAction_YellOverHere@@UAEXXZ	no_binding	
+13514	nf323	008579d0	?UpdateActionRunningTime@CCombatActionBase@@UAEXXZ	open	?UpdateActionRunningTime@CCombatActionBase
+13515	nf323	00463bdb	?Copy@CCombatAbilityBlockUnarmedAttackDef@@UAEXPBVCDefClassBase@@@Z	no_binding	
+13516	nf323	00860290	?Clone@CCreatureAction_GetUpFromSitting@@UBEPAVCCreatureActionBase@@XZ	no_binding	
+13517	nf323	01276c2c	??_7CCreatureAction_GetUpFromSitting@@6B@	partial	??_7CCreatureAction_StandUp@@6B@

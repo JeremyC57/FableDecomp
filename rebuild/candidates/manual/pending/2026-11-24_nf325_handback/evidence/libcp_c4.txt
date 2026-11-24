@@ -1,0 +1,1 @@
+00bbddb0 LIBCP_OK renames=?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleSpriteTrailGroup_Methods@@QAE_NH@Z=?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAE_NJ@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

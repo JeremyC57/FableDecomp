@@ -1,0 +1,1 @@
+008b3810 LIBCP_OK renames=?GetName@CCombatSequence_BanditAttackSide_Methods@@QAEPAVCCharString@@PAV2@@Z=?GetName@CCombatSequence_BanditAttackSide@@UBE?AVCCharString@@XZ ?Init@CCharString@@QAEXPBDH@Z=??0CCharString@@QAE@PBDJ@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

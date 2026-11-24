@@ -1,0 +1,2 @@
+/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF325/rows/00a86030.cpp:31:24: error: 'GetPossibleCollisionSet' is a protected member of 'CIPhysicsFacesSegmentBase'
+/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF325/rows/00a86030.cpp:33:24: error: 'GetPossibleCollisionSet' is a protected member of 'CIPhysicsFacesSegmentBase'

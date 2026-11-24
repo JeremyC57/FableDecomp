@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a0d2b0   WARN SHARED_HEADER_AVAILABLE CInputProcessManager (engine/CInputProcessManager.h)
+00a0d2b0   WARN RELOC_NAME: ?Register@CInputProcessManager@@QAEXPAVCAInputProcess@@@Z -> 00a0d4f0 labelled 'CInputProcessManager::AddInputProcess'
+00a0d2b0   RELOCATION_MATCH PASS   AddToInterface
+
+WINS: 1
+  00a0d2b0 RELOCATION_MATCH CAInputProcess::AddToInterface

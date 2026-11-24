@@ -1,0 +1,9 @@
+== CPhysicsFacesSegmentBranch vftable 0129DE88
+slot   0 00A86F10 SAME     ours=?HasChildren@CPhysicsFacesSegmentBranch@@MBE_NXZ retail_label=?HasChildren@CPhysicsFacesSegmentBranch@@MBE_NXZ
+slot   1 00A85FB0 SAME     ours=?Sizeof@CPhysicsFacesSegmentBranch@@MBEJXZ retail_label=?Sizeof@CPhysicsFacesSegmentBranch@@MBEJXZ
+slot   2 00A85FD0 SAME     ours=?GetNoFaces@CPhysicsFacesSegmentBranch@@MBEJXZ retail_label=?GetNoFaces@CPhysicsFacesSegmentBranch@@MBEJXZ
+slot   3 00A86F60 SAME     ours=??_ECPhysicsFacesSegmentBranch@@MAEPAXI@Z retail_label=??_ECPhysicsFacesSegmentBranch@@MAEPAXI@Z
+slot   4 00A86030 SAME     ours=?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z retail_label=?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z
+retail slots 5, emitted slots 5; SAME 5 DIFF 0 NOLABEL 0
+
+PROBE_DONE

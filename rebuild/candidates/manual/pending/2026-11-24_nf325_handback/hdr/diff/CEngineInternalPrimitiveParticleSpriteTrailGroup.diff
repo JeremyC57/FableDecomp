@@ -1,0 +1,55 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CEngineInternalPrimitiveParticleSpriteTrailGroup.h	2026-11-23 00:11:47.577824474 +0000
++++ hdr/engine/CEngineInternalPrimitiveParticleSpriteTrailGroup.h	2026-11-24 01:06:19.565521168 +0000
+@@ -9,6 +9,33 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLESPRITETRAILGROUP_VIRTUAL_MODEL
++// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
++// 0x012A5BFC (RTTI .?AVCEngineInternalPrimitiveParticleSpriteTrailGroup@@ : CEngineInternalPrimitiveParticleGroup), 30 slots; the declared slots are this class's overrides (RTTI-port labels name CEngineInternalPrimitiveParticleSpriteTrailGroup); every other slot stays the base's.
++// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
++// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_RTTI_DECLS, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_RTTI_SLOTS.
++#include "engine/CEngineInternalPrimitiveParticleGroup.h"
++class CEnginePrimitive;
++#pragma pack(push, 1)
++class CEngineInternalPrimitiveParticleSpriteTrailGroup : public CEngineInternalPrimitiveParticleGroup {
++public:
++    virtual void Update(const CEnginePrimitive&, unsigned long);          // slot 5 0x00BBDD90 ?Update@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAEXABVCEnginePrimitive@@K@Z
++    virtual bool PrimTypeMatchesGroup(long);                              // slot 29 0x00BBDDB0 ?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAE_NJ@Z
++public:
++    unsigned long  BankIndex;                                // +0xac
++    unsigned short Flags;                                    // +0xb0
++    unsigned char  _pad_0xb2[0x2];                           // +0xb2
++    unsigned char  BlendMode[0x4];                           // +0xb4 EEnginePrimitiveBlendMode
++    unsigned char  BlendOp[0x4];                             // +0xb8 EEnginePrimitiveBlendOp
++};
++#pragma pack(pop)
++FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveParticleSpriteTrailGroup) == 0xbc);
++FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, BankIndex) == 0xac);
++FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, Flags) == 0xb0);
++FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, _pad_0xb2) == 0xb2);
++FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, BlendMode) == 0xb4);
++FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, BlendOp) == 0xb8);
++#else
+ #pragma pack(push, 1)
+ struct CEngineInternalPrimitiveParticleSpriteTrailGroup {
+     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
+@@ -60,11 +87,12 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveParticleSpriteTrailGroup) == 0xbc);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, BankIndex) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, Flags) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, BlendMode) == 0xb4);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, BlendOp) == 0xb8);
++FABLE_STATIC_ASSERT_AT(63, sizeof(CEngineInternalPrimitiveParticleSpriteTrailGroup) == 0xbc);
++FABLE_STATIC_ASSERT_AT(64, offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(65, offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, BankIndex) == 0xac);
++FABLE_STATIC_ASSERT_AT(66, offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, Flags) == 0xb0);
++FABLE_STATIC_ASSERT_AT(67, offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, BlendMode) == 0xb4);
++FABLE_STATIC_ASSERT_AT(68, offsetof(CEngineInternalPrimitiveParticleSpriteTrailGroup, BlendOp) == 0xb8);
++#endif // FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLESPRITETRAILGROUP_VIRTUAL_MODEL
+ 
+ #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEPARTICLESPRITETRAILGROUP_H

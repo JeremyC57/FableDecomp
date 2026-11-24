@@ -1,0 +1,3 @@
+0090080b LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_MazeTutorialBattle_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+0090086f LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleRespondToLightning_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+009008a1 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleUseShield_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleUseShield@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2

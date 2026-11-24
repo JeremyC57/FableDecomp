@@ -1,0 +1,53 @@
+CAIStateGroup_MazeBase COMPILE_FAIL rc=2 ser-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF325\work\probe\maze\CAIStateGroup_MazeBase.cpp(6) : error C2259: 'CAIStateGroup_MazeBase' : cannot instantiate abstract class
+== CAIStateGroup_MazeTutorialBattle vftable 0128C29C
+slot   0 0090080F DIFF     ours=??_ECAIStateGroup_MazeTutorialBattle@@UAEPAXI@Z retail_label=??_GCAIStateGroup_MazeTutorialBattle@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 00954190 SAME     ours=?OnActivate@CAIStateGroup_MazeTutorialBattle@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_MazeTutorialBattle@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 0090080B SAME     ours=?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 009540C0 SAME     ours=?OnReplace@CAIStateGroup_MazeBase@@UAEXXZ retail_label=?OnReplace@CAIStateGroup_MazeBase@@UAEXXZ
+slot  11 00954AB0 SAME     ours=?IsRunnable@CAIStateGroup_MazeTutorialBattle@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_MazeTutorialBattle@@UAE_NXZ
+slot  12 00955C90 SAME     ours=?Update@CAIStateGroup_MazeTutorialBattle@@UAEXXZ retail_label=?Update@CAIStateGroup_MazeTutorialBattle@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_MazeTutorialBattleRespondToLightning vftable 0128C314
+slot   0 00900873 SAME     ours=??_ECAIStateGroup_MazeTutorialBattleRespondToLightning@@UAEPAXI@Z retail_label=??_ECAIStateGroup_MazeTutorialBattleRespondToLightning@@UAEPAXI@Z
+slot   1 00954040 SAME     ours=?Initialise@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 009540F0 SAME     ours=?OnActivate@CAIStateGroup_MazeBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_MazeBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 0090086F SAME     ours=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 009540C0 SAME     ours=?OnReplace@CAIStateGroup_MazeBase@@UAEXXZ retail_label=?OnReplace@CAIStateGroup_MazeBase@@UAEXXZ
+slot  11 00954E30 SAME     ours=?IsRunnable@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UAE_NXZ
+slot  12 00956380 SAME     ours=?Update@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UAEXXZ retail_label=?Update@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 14 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_MazeTutorialBattleUseShield vftable 0128C350
+slot   0 009008A5 SAME     ours=??_ECAIStateGroup_MazeTutorialBattleUseShield@@UAEPAXI@Z retail_label=??_ECAIStateGroup_MazeTutorialBattleUseShield@@UAEPAXI@Z
+slot   1 00954080 SAME     ours=?Initialise@CAIStateGroup_MazeTutorialBattleUseShield@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroup_MazeTutorialBattleUseShield@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 009540F0 SAME     ours=?OnActivate@CAIStateGroup_MazeBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_MazeBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 009008A1 SAME     ours=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleUseShield@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleUseShield@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 009540C0 SAME     ours=?OnReplace@CAIStateGroup_MazeBase@@UAEXXZ retail_label=?OnReplace@CAIStateGroup_MazeBase@@UAEXXZ
+slot  11 00954CD0 SAME     ours=?IsRunnable@CAIStateGroup_MazeTutorialBattleUseShield@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_MazeTutorialBattleUseShield@@UAE_NXZ
+slot  12 00956460 SAME     ours=?Update@CAIStateGroup_MazeTutorialBattleUseShield@@UAEXXZ retail_label=?Update@CAIStateGroup_MazeTutorialBattleUseShield@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 14 DIFF 0 NOLABEL 0
+
+PROBE_DONE

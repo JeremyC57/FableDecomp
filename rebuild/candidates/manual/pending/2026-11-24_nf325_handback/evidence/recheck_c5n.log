@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a0d2b0   RELOCATION_MATCH PASS   AddToInterface
+
+WINS: 1
+  00a0d2b0 RELOCATION_MATCH CAInputProcess::?AddToInterface@CAInputProcess@@UAE_NAAVCInputProcessManager@@@Z

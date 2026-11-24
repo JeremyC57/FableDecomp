@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a85fb0   MATCH            PASS   Sizeof
+
+WINS: 1
+  00a85fb0 MATCH CPhysicsFacesSegmentBranch::?Sizeof@CPhysicsFacesSegmentBranch@@MBEJXZ

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+008b3810   WARN RELOC_NAME: ?Init@CCharString@@QAEXPBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+008b3810   RELOCATION_MATCH PASS   GetName
+008b42e0   WARN RELOC_NAME: ?Init@CCharString@@QAEXPBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+008b42e0   RELOCATION_MATCH PASS   GetName
+
+WINS: 2
+  008b3810 RELOCATION_MATCH CCombatSequence_BanditAttackSide::GetName
+  008b42e0 RELOCATION_MATCH CCombatSequence_TrollRockPursue::?GetName@CCombatSequence_TrollRockPursue_Methods@@QBEPAVCCharString@@PAV2@@Z

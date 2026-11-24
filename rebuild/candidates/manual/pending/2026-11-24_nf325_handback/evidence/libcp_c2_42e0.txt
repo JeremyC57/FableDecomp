@@ -1,0 +1,1 @@
+008b42e0 LIBCP_OK renames=?GetName@CCombatSequence_TrollRockPursue_Methods@@QBEPAVCCharString@@PAV2@@Z=?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ ?Init@CCharString@@QAEXPBDH@Z=??0CCharString@@QAE@PBDJ@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=4
