@@ -1,0 +1,2 @@
+006c14d0 OK GETDEF_EQ=1 leaf=?OnInitialActivate@CTCBuyableHouse@@UAEXXZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z 108->98 B

@@ -1,0 +1,9 @@
+EQ  004cdae0 47 ?GFRandom@@YIKKPAK@Z 
+EQ  00695250 30 ??0?$pair@JVCCharString@@@std@@QAE@ABJABVCCharString@@@Z 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 0074f6a0 171 ??$GetSubDef@VCContainerRewardHeroDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCContainerRewardHeroDef@@@@@Z LEAF-REFERENCED
+EQ  0074f760 108 ??$GetDef@VCObjectFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCObjectFamilyDef@@@@@Z 
+NEQ 0042af3c 108 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z LEAF-REFERENCED
+NEQ 006ae320 171 ??$GetSubDef@VCGoldDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGoldDef@@@@@Z LEAF-REFERENCED
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

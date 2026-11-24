@@ -233,6 +233,123 @@ bool CDefinitionManager::GetDef(long index,CDefPointer<const T>* out)const
  return false;
 }
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+// Nested opt-ins (NF349 2026-11-24, the size-pragma scaffolding of EXTRA_RULES 2026-11-20 / 2026-11-21 condition 2): GetDef<T> by
+// global index, size-mode copies. Fidelity: scaffolding, not retail: it is for link determinism and makes no claim about retail's text.
+// A /O2 /Oy TU that keeps the GETDEF_GLOBAL_BODY template visible emits its own pick-any copy of these four instances (108 B with
+// FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD), while retail's linker kept the 98 B frame-pointer size-mode copies of their owner
+// rows, which set these same two pragmas themselves and build at the catalog default /O2 /Oy /W3 (no CompilerFlags entry):
+//   GetDef<CThingBaseDef>     0x0042AF3C  rebuild/src/compiled/00/42/CDefinitionManager_GetDefT_0042af3c.cpp
+//   GetDef<CThingObjectDef>   0x0042B040  rebuild/src/compiled/00/42/CDefinitionManager_GetDefCThingObjectDef_0042b040.cpp
+//   GetDef<CUIMiscThingsDef>  0x0042B312  rebuild/src/compiled/00/42/CDefinitionManager_GetDef_0042b312.cpp
+//   GetDef<CExpressionDef>    0x005F81BE  rebuild/src/compiled/00/5f/CDefinitionManager_GetDef_005f81be.cpp (this template + REREAD)
+// (each: optimize("y", off) / optimize("s", on)). VC7.1 takes a template instance's optimize mode at the end of the TU, so a pragma pair
+// around the template above does nothing; an `inline` explicit specialization is an ordinary definition and takes the mode at this
+// point. Each body is the template body above with T = the def type, token for token, and needs the REREAD SetDynamicCast. Each pair
+// ends with optimize("", on), which restores the command-line default (VC7.1 has no push / pop for optimize), so this is valid only in a
+// TU with no optimize pragma above this include.
+#if defined(FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CTHINGBASEDEF_SIZE_BODY) || defined(FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CTHINGOBJECTDEF_SIZE_BODY) || defined(FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CUIMISCTHINGSDEF_SIZE_BODY) || defined(FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CEXPRESSIONDEF_SIZE_BODY)
+#ifndef FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+#error the GetDef<T> size-body opt-ins need FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD (the retail re-reading SetDynamicCast)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CTHINGBASEDEF_SIZE_BODY
+class CThingBaseDef;
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefinitionManager::GetDef<CThingBaseDef>(long index,CDefPointer<const CThingBaseDef>* out)const
+{
+ if(index>0){
+  CDefPointer<const CDefClassBase> def=GetPDefFromGlobalIndex(index);
+  if(def.Get()){
+   out->SetDynamicCast(def);
+   return true;
+  }
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CTHINGOBJECTDEF_SIZE_BODY
+class CThingObjectDef;
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefinitionManager::GetDef<CThingObjectDef>(long index,CDefPointer<const CThingObjectDef>* out)const
+{
+ if(index>0){
+  CDefPointer<const CDefClassBase> def=GetPDefFromGlobalIndex(index);
+  if(def.Get()){
+   out->SetDynamicCast(def);
+   return true;
+  }
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CUIMISCTHINGSDEF_SIZE_BODY
+namespace NUISystem { class CUIMiscThingsDef; }
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>(long index,CDefPointer<const NUISystem::CUIMiscThingsDef>* out)const
+{
+ if(index>0){
+  CDefPointer<const CDefClassBase> def=GetPDefFromGlobalIndex(index);
+  if(def.Get()){
+   out->SetDynamicCast(def);
+   return true;
+  }
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CEXPRESSIONDEF_SIZE_BODY
+class CExpressionDef;
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefinitionManager::GetDef<CExpressionDef>(long index,CDefPointer<const CExpressionDef>* out)const
+{
+ if(index>0){
+  CDefPointer<const CDefClassBase> def=GetPDefFromGlobalIndex(index);
+  if(def.Get()){
+   out->SetDynamicCast(def);
+   return true;
+  }
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
+#endif
 #ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
 // Original FableWin01ccd0f0: genuine lookup, const conversion and output assignment.
 #ifdef _MSC_VER

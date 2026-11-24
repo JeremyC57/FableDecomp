@@ -1,0 +1,4 @@
+005e5f30 BAD GETDEF_EQ=2 LEAF=1 leaf=?ActivateReal@CTCQuestCompletionUI@@QAEXXZ
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 108->98 B
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z 108->98 B
+    LEAF :: leaf section ('COMDAT', '?ActivateReal@CTCQuestCompletionUI@@QAEXXZ', '.text') differs

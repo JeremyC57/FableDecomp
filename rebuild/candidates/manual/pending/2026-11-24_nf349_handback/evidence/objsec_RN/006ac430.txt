@@ -1,0 +1,2 @@
+006ac430 OK GETDEF_EQ=1 leaf=?LearnExpression@CThingPlayerCreature@@QAE_NABVCCharString@@J_N@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z 108->98 B

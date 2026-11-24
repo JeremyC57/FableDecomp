@@ -1,0 +1,2 @@
+00703110 OK GETDEF_EQ=1 leaf=?ConstructFromLevelScript@CThingObject@@MAE_NPBD@Z
+    GETDEF_EQ :: changed COMDAT ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 108->98 B

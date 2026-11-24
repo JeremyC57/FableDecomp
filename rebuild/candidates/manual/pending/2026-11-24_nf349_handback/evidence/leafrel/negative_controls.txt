@@ -1,0 +1,9 @@
+# leafrel.py negative controls (symbols known to differ):
+## 005d9a10 GetDef<CThingBaseDef> H v N (116 v 98 B)
+data_equal False relocs_equal False n 1 1
+   0xf ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z -> ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z
+## 005e5f30 GetDef<CThingObjectDef> R v N (108 v 98 B)
+data_equal False relocs_equal False n 1 1
+   0xf ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z -> ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z
+## relocation-only control: 005e5f30 leaf, H v N, with a relocation target swapped by hand in memory
+relocs_equal_after_plant False
