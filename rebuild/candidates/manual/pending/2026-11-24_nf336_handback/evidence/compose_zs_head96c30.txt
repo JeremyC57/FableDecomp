@@ -1,0 +1,102 @@
+rc 2 flags /O2 /Oy /W3
+error	C2084	r_00e93e60.cpp	line 218 (+28)	function 'NScript::CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase *,CGameScriptInterfaceBase &)' already has a body
+error	C2084	r_00e95670.cpp	line 422 (+31)	function 'NScript::CV_HauntedHouseScript::CM_QuestControl::CM_QuestControl(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2084	r_00e95670.cpp	line 427 (+36)	function 'CCountedPointer<T> NScript::CV_HauntedHouseScript::CM_QuestControl::Alloc(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2264	r_00e95670.cpp	line 428 (+37)	'NScript::CV_HauntedHouseScript::CM_QuestControl::CM_QuestControl' : error in function definition or declaration; function not called
+error	C2084	r_00e95750.cpp	line 509 (+31)	function 'NScript::CV_HauntedHouseScript::CM_UndeadHere::CM_UndeadHere(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2084	r_00e95750.cpp	line 514 (+36)	function 'CCountedPointer<T> NScript::CV_HauntedHouseScript::CM_UndeadHere::Alloc(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2264	r_00e95750.cpp	line 515 (+37)	'NScript::CV_HauntedHouseScript::CM_UndeadHere::CM_UndeadHere' : error in function definition or declaration; function not called
+error	C2084	r_00e95cb0.cpp	line 596 (+31)	function 'NScript::CV_HauntedHouseScript::CM_HeroInsideHouse::CM_HeroInsideHouse(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2084	r_00e95cb0.cpp	line 601 (+36)	function 'CCountedPointer<T> NScript::CV_HauntedHouseScript::CM_HeroInsideHouse::Alloc(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2264	r_00e95cb0.cpp	line 602 (+37)	'NScript::CV_HauntedHouseScript::CM_HeroInsideHouse::CM_HeroInsideHouse' : error in function definition or declaration; function not called
+error	C2084	r_00e95e60.cpp	line 764 (+31)	function 'NScript::CV_HauntedHouseScript::CHHUndead::CHHUndead(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2084	r_00e95e60.cpp	line 769 (+36)	function 'CCountedPointer<T> NScript::CV_HauntedHouseScript::CHHUndead::Alloc(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2264	r_00e95e60.cpp	line 770 (+37)	'NScript::CV_HauntedHouseScript::CHHUndead::CHHUndead' : error in function definition or declaration; function not called
+error	C2011	r_00e96c30.cpp	line 949 (+21)	'CCharString' : 'class' type redefinition
+error	C2011	r_00e96c30.cpp	line 961 (+33)	'std::__true_type' : 'struct' type redefinition
+error	C2011	r_00e96c30.cpp	line 962 (+34)	'std::__false_type' : 'struct' type redefinition
+error	C2953	r_00e96c30.cpp	line 963 (+35)	'std::__type_traits' : template class has already been defined
+error	C2995	r_00e96c30.cpp	line 964 (+36)	'void std::_Destroy(T *)' : template function has already been defined
+error	C2995	r_00e96c30.cpp	line 970 (+42)	'void std::__destroy_aux(I,I,const std::__false_type &)' : template function has already been defined
+error	C2953	r_00e96c30.cpp	line 980 (+52)	'std::allocator' : template class has already been defined
+error	C2953	r_00e96c30.cpp	line 985 (+57)	'std::_STLP_alloc_proxy' : template class has already been defined
+error	C2953	r_00e96c30.cpp	line 997 (+69)	'std::_Vector_base' : template class has already been defined
+warning	C4348	r_00e96c30.cpp	line 998 (+70)	'std::vector' : redefinition of default parameter : parameter 2
+error	C2953	r_00e96c30.cpp	line 1007 (+79)	'std::vector' : template class has already been defined
+error	C3203	header:CGameScriptInterface.h	line 64	'allocator' : class template invalid as template argument for template parameter '_Alloc', expected a real type
+error	C3203	header:CGameScriptInterface.h	line 65	'allocator' : class template invalid as template argument for template parameter '_Alloc', expected a real type
+error	C2955	header:CGameScriptInterface.h	line 80	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 80	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 121	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 121	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 122	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 122	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 125	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 125	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 126	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 126	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 130	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 130	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 131	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 131	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 277	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 277	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 278	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 278	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 279	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 279	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 347	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 347	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 347	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 347	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 634	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 634	'std::vector' : use of class template requires template argument list
+error	C3203	header:CGameScriptInterface.h	line 642	'allocator' : class template invalid as template argument for template parameter 'A', expected a real type
+error	C2955	header:CGameScriptInterface.h	line 721	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 721	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 761	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 761	'std::vector' : use of class template requires template argument list
+error	C3203	header:CGameScriptInterface.h	line 932	'allocator' : class template invalid as template argument for template parameter 'A', expected a real type
+error	C3203	header:CGameScriptInterface.h	line 936	'allocator' : class template invalid as template argument for template parameter 'A', expected a real type
+error	C2955	header:CGameScriptInterface.h	line 941	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 941	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 949	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 949	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 957	'std::vector' : use of class template requires template argument list
+error	C2955	header:CGameScriptInterface.h	line 957	'std::vector' : use of class template requires template argument list
+error	C2555	header:CGameScriptInterface.h	line 1010	'CGameScriptInterface::GetActiveGossipCategories': overriding virtual function return type differs and is not covariant from 'CGameScriptInterfaceBase::GetActiveGossipCategories'
+error	C2555	header:CGameScriptInterface.h	line 1010	'CGameScriptInterface::GetIsGossipForPlayer': overriding virtual function return type differs and is not covariant from 'CGameScriptInterfaceBase::GetIsGossipForPlayer'
+error	C2555	header:CGameScriptInterface.h	line 1010	'CGameScriptInterface::GetGossip': overriding virtual function return type differs and is not covariant from 'CGameScriptInterfaceBase::GetGossip'
+error	C2555	header:CGameScriptInterface.h	line 1010	'CGameScriptInterface::GetGossipVillages': overriding virtual function return type differs and is not covariant from 'CGameScriptInterfaceBase::GetGossipVillages'
+error	C2555	header:CGameScriptInterface.h	line 1010	'CGameScriptInterface::GetGossipFactions': overriding virtual function return type differs and is not covariant from 'CGameScriptInterfaceBase::GetGossipFactions'
+error	C2011	r_00e96c30.cpp	line 1017 (+89)	'NScript::CV_HauntedHouseScript' : 'class' type redefinition
+error	C2955	r_00e96c30.cpp	line 1025 (+97)	'std::vector' : use of class template requires template argument list
+error	C2955	r_00e96c30.cpp	line 1025 (+97)	'std::vector' : use of class template requires template argument list
+error	C2133	r_00e96c30.cpp	line 1025 (+97)	'bodyguards' : unknown size
+error	C2512	r_00e96c30.cpp	line 1025 (+97)	'std::vector' : no appropriate default constructor available
+error	C2262	r_00e96c30.cpp	line 1025 (+97)	'bodyguards' : cannot be destroyed
+error	C2819	r_00e96c30.cpp	line 1026 (+98)	type 'CGameScriptInterfaceBase' does not have an overloaded member 'operator ->'
+error	C2227	r_00e96c30.cpp	line 1026 (+98)	left of '->GetAllThingsWithScriptName' must point to class/struct/union
+error	C3861	r_00e96c30.cpp	line 1026 (+98)	'bodyguards': identifier not found, even with argument-dependent lookup
+error	C2662	r_00e96c30.cpp	line 1027 (+99)	'std::vector<_Tp,_Alloc>::size' : cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Tp,_Alloc> &'
+error	C3861	r_00e96c30.cpp	line 1027 (+99)	'bodyguards': identifier not found, even with argument-dependent lookup
+error	C2819	r_00e96c30.cpp	line 1030 (+102)	type 'CGameScriptInterfaceBase' does not have an overloaded member 'operator ->'
+error	C2227	r_00e96c30.cpp	line 1030 (+102)	left of '->EntityTeleportToThing' must point to class/struct/union
+error	C2819	r_00e96c30.cpp	line 1030 (+102)	type 'CGameScriptInterfaceBase' does not have an overloaded member 'operator ->'
+error	C2227	r_00e96c30.cpp	line 1030 (+102)	left of '->GetThingWithScriptName' must point to class/struct/union
+error	C3861	r_00e96c30.cpp	line 1030 (+102)	'bodyguards': identifier not found, even with argument-dependent lookup
+error	C2662	r_00e96c30.cpp	line 1032 (+104)	'std::vector<_Tp,_Alloc>::size' : cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Tp,_Alloc> &'
+error	C3861	r_00e96c30.cpp	line 1032 (+104)	'bodyguards': identifier not found, even with argument-dependent lookup
+error	C2819	r_00e96c30.cpp	line 1035 (+107)	type 'CGameScriptInterfaceBase' does not have an overloaded member 'operator ->'
+error	C2227	r_00e96c30.cpp	line 1035 (+107)	left of '->EntityTeleportToThing' must point to class/struct/union
+error	C2819	r_00e96c30.cpp	line 1035 (+107)	type 'CGameScriptInterfaceBase' does not have an overloaded member 'operator ->'
+error	C2227	r_00e96c30.cpp	line 1035 (+107)	left of '->GetThingWithScriptName' must point to class/struct/union
+error	C3861	r_00e96c30.cpp	line 1035 (+107)	'bodyguards': identifier not found, even with argument-dependent lookup
+error	C2819	r_00e96c30.cpp	line 1036 (+108)	type 'CGameScriptInterfaceBase' does not have an overloaded member 'operator ->'
+error	C2227	r_00e96c30.cpp	line 1036 (+108)	left of '->EntityTeleportToThing' must point to class/struct/union
+error	C2819	r_00e96c30.cpp	line 1036 (+108)	type 'CGameScriptInterfaceBase' does not have an overloaded member 'operator ->'
+error	C2227	r_00e96c30.cpp	line 1036 (+108)	left of '->GetThingWithScriptName' must point to class/struct/union
+error	C3861	r_00e96c30.cpp	line 1036 (+108)	'bodyguards': identifier not found, even with argument-dependent lookup
+error	C2084	r_00e96dd0.cpp	line 1069 (+29)	function 'NScript::CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase *,CGameScriptInterfaceBase &)' already has a body
+error	C2264	r_00e96dd0.cpp	line 1074 (+34)	'NScript::CV_HauntedHouseScript::CV_HauntedHouseScript' : error in function definition or declaration; function not called
+error	C2084	r_00e96e10.cpp	line 1106 (+29)	function 'NScript::CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase *,CGameScriptInterfaceBase &)' already has a body

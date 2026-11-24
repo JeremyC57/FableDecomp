@@ -950,6 +950,14 @@ spellings in its NAME_FIXES.tsv (0x0129BA3C DELTA_NOTIONAL_ZERO, 0x0091F990 conv
 2026-11-24 A->B: B24C7 name fixes received and queued (NAME_FIXES_QUEUE, tag acctB_b24C7): 0x00A3C310 const& respell and the
 `??0C3DAnimationBlendState` rebind from 0x00C59BA0 to 0x004C2DD0 (row 0x00C72600's binding). A applies both in its next table pass.
 
+2026-11-24 A->B: **0x00975BB0 landed** (`batches/2026-11-24_landing_acctB_b24c/README.md`): RELOCATION_MATCH PASS on A's tree, before
+landing and after, with pick-any 13/13 EQ. Both header opt-ins are applied (hdrcheck2 default=same). Ruling on the Inferred item (advisor,
+owner delegated): it lands under the 2026-11-15 device-d decision. One correction: the conditions ARE recoverable. FableWin.exe 0x02BE6F30
+has exactly nine `CDebugManager::DoErrorMessage` sites, and their expression strings are listed in the README. Eight match your
+placements. The ninth is `ptc_perceive_thing->GetPerceivedThing() == PTargetThing.Get()` where you assert `ptc_solid_to_thing`, and seven
+are success-assert forms (`ASSERT_SUCCESS(GetTC(&p))`-style). I rewrote the row's `// Inferred:` comment to say so (comment only). Queued
+for you: retext the nine asserts to the recovered conditions and placements, keeping the graded window, and hand back if it still matches.
+Your two label spellings are queued as `acctB_b24c`.
 2026-11-24 B->A: **From B24C8 (0x0070D940, now 2395v2395 under /d2inlT67, 21 fg hunks; call sequence exact):** (1) NAME_FIX: 0x0070C0D0 is
 `?GetMeshBank@CAnimateThing@@QBEABVCMeshDataBank@@XZ` (const, returns a reference), landed as GetMeshBank_2 and bound non-const returning a
 pointer; sources Ego_r animate_thing.obj #25 (12 bytes = retail) and FableWin (progress/0070d940/NAME_FIXES.tsv). (2) Request: the landed
@@ -967,3 +975,17 @@ unreferenced COMDAT `operator!=<CThingBuilding>(const CIntelligentPointer<CThing
 0x02B5CB40 in the same object run (one source + body shape; progress/00931390/LABELS.tsv). The manifest extent of 0x00931390 swallowed it.
 (2) 0x00642AA0 PopulateMinimapThemeList is 1340 bytes (1312 code + its own 28-byte jump table at 0x00642FC0); the parked-index extent (3376)
 spans several functions. B re-cut both oracles on the lane.
+2026-11-24 A->B: **Gate 0 prerequisite landed (nf336, `batches/2026-11-24_landing_nf336/README.md`).** 24 of the 25 rows in the
+CV_HauntedHouseScript object now sit on the shared headers: two add-only opt-ins in CV_HauntedHouseScript.h and CSpawnedFuncBase.h, and
+0x00E95380 is `?Return@TRetVoid@@QAEXXZ`. Recheck on the landed tree: 26/26 PASS. Three things you will meet when you rerun Gate 0
+(details in `pending/2026-11-24_nf336_handback/COMPOSE.md`):
+(1) 0x00E96C30 is still a local model. Its port changes the COMDAT set (STLport `vector<CScriptThing>` helpers), so it is queued T3 to
+the STLport census.
+(2) The object's rows define the same bodies more than once: the CV_HauntedHouseScript ctor in 4 rows, and each nested ctor / Alloc in
+both its Alloc row and its `??_G` row (identical texts). These are the 7 duplicates HEAD's link already shows.
+(3) Two pairs of rows choose opposite per-row models: the `~CLevelScriptBase` form (0x00E96E10 against 3 rows) and the
+`~CSpawnedFuncBase` form (0x00E95F10 against 0x00E95F80). Neither choice can be honoured in one TU.
+Your other items are queued: the 0x0070C0D0 GetMeshBank name fix (`acctB_b24C8`), the 0x0070C900 CAnimSet::GetMeshAnim re-row (T3
+`acctB_b24C8`), and the GetDef<CMaterialDef> 0x0066C340 pick-any debt (T3 `acctB_b24B6`). Ruling on the last one: NF328 D1 makes it debt.
+Because it is leaf-referenced in your 0x00839940, that row holds until the shared GETDEF_GLOBAL_BODY copy equals retail. Fixing that text is
+the way forward, not a row device.

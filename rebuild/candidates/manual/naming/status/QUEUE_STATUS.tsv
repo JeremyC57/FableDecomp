@@ -473,7 +473,7 @@ line	tag	address	correct_symbol	status	other_spellings
 478	534	00a868c0	?Calculate@CIPhysicsFacesSegmentBase@@KI_NABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@ABV?$CArray@G@@JAAVCPlane@@AAV4@4@Z	partial	?Calculate@CPhysicsFacesSegmentBranch@@SI_NABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@ABV?$CArray@G@@JPAVCPlane@@PAV4@4@Z
 479	534	00a86110	?CalculateDividingPlane@CIPhysicsFacesSegmentBase@@KI?AVCPlane@@ABV?$CArray@VC3DVector@@@@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@G@@J@Z	closed	
 480	534	009b4a20	?push_back@?$CArray@G@@QAEXABG@Z	open	?push_back@?$vector@G
-481	534	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ || ?IsActiveThre
+481	534	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ
 482	534	008ac9d0	?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@0@Z	partial	?erase@?$vector@ || ?erase@?$vector@VCScriptThing@@@@QAEPAVCScriptThing@@PAV2@0@Z
 483	534	00cd3152	?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@@Z	partial	?erase@?$vector@VCScriptThing@@ || ?erase@CScriptThingVector@@QAEPAVCScriptThing@@PAV2@@Z
 484	534	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	partial	?Compare@@YIJPBD0@Z || ?Compare@N006d41f0@@YIHPBD0@Z || ?Compare_00411570@@YIJPBD0@Z
@@ -980,7 +980,7 @@ line	tag	address	correct_symbol	status	other_spellings
 986	571	0099f570	??H@YI?AVCCharString@@ABV0@0@Z	closed	
 987	571	009ac700	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z	closed	
 988	571	00bdbb70	??0CEngineVSConstantLayoutBasic@@QAE@XZ	partial	??0CVertexShaderConstantLayout@N_00bdbb70@@QAE@XZ
-989	571	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ || ?IsActiveThre
+989	571	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ
 990	571	00cb7e50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	partial	?Add@CQR_EscortTraderScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?A
 991	571	00cbe2ff	?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z	partial	?IsWithinDistance@@YI_NABUScriptMethods@@ABVCScriptThing@@M@Z
 992	571	00cbe3ea	?IsDistanceBetweenThingsOver@@YI_NABVCScriptThing@@0M@Z	closed	
@@ -1004,7 +1004,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1010	572	00919a10	?ShouldBuyFromSeller@CAIStateGroup_BuyFromSeller@@AAE_NXZ	open	?CAIStateGroup_BuyFromSeller_ShouldBuyFromSeller@@YI_NPAUCAIStateGroup_BuyFromSeller@@@Z
 1011	572	0091a6f0	?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	closed	
 1012	573	00ee71a0	?HilightGuildTeleporter@CV_TrophyDealerScript@NScript@@QAEXXZ	closed	
-1013	573	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ || ?IsActiveThre
+1013	573	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ
 1014	574	0099e960	??9CCharString@@QBE_NPBD@Z	partial	??9CCharStringCmp@@QBE_NPBD@Z || ??9CCharStringMethods@@QBE_NPBD@Z || ?check@Str@@QAEDH@Z
 1015	574	0099f830	?GFIntToCharString@@YI?AVCCharString@@J@Z	closed	
 1016	574	0099f690	??H@YI?AVCCharString@@PBDABV0@@Z	partial	??H@YI?AVCCharString
@@ -1061,7 +1061,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1067	579	00f273b0	?_M_clear@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@IAEXXZ	closed	
 1068	579	00f27060	??0CHeroSoulsCreatureDef@@QAE@ABV0@@Z	closed	
 1069	579	00cbe716	?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z	closed	
-1070	579	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ || ?IsActiveThre
+1070	579	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ
 1071	579	00f33730	?resize@?$vector@VCConversation@@V?$allocator@VCConversation@@@std@@@std@@QAEXIABVCConversation@@@Z	partial	?resize@?$vector@VCConversation@@
 1072	580	00d34ec0	??$_Construct@VCFireHeartPatternDef@@V1@@std@@YIXPAVCFireHeartPatternDef@@ABV1@@Z	partial	Construct_DefWithByteVector_00d34ec0
 1073	580	00d34f00	??0?$vector@_NV?$allocator@_N@std@@@std@@QAE@ABV01@@Z	partial	??0CByteVector@@QAE@ABU0@@Z
@@ -1089,7 +1089,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1097	581	00e1f3a0	?EscortTrader@CQR_EscortTraderScript@NScript@@QAEXXZ	closed	
 1098	581	00ec1ef0	?Main@CRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@EAEXXZ	closed	
 1099	581	00ec1b70	?Alloc@CRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	closed	
-1100	581	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ || ?IsActiveThre
+1100	581	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ
 1101	581	00cb7e50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	partial	?Add@CQR_EscortTraderScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?A
 1102	mig2	0067c980	?Copy@CBlurredAttitudesDef@@QAEXPBVCDefClassBase@@@Z	no_binding	
 1103	mig2	00430370	??0CDefClassBase@@QAE@XZ	partial	??0CParentDefClassBase || ??0CParentDefClassBase@@QAE@XZ
@@ -1303,7 +1303,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1324	mig8	00e4b430	?Main@CM_TauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ	closed	
 1325	mig8	00e63730	?Init@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ	closed	
 1326	mig8	00e7bb30	?Main@CFishermanWasp@CV_FishermanScript@NScript@@EAEXXZ	closed	
-1327	mig8	00e95e80	?Main@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ	open	Main
+1327	mig8	00e95e80	?Main@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ	closed	
 1328	mig8	00eaef30	?Main@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@EAEXXZ	closed	
 1329	mig8	00ec0b00	?Init@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ	closed	
 1330	mig8	00ec0ba0	?Main@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ	closed	
@@ -2050,7 +2050,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2374	c639	00cd3ccb	?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z	partial	?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@
 2375	c639	00b91710	?InvalidateAll@CEngineSceneGridCell@@AAEXXZ	partial	?InvalidateAll@CSceneGridOwner_00b91710@@QAEXXZ
 2376	c639	00b8fdf0	?AddToList@CEngineInternalPrimitiveBase@@QAEXPAPAV1@@Z	closed	
-2377	c639	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ || ?IsActiveThre
+2377	c639	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ
 2378	c639	01436e58	?g_pPrimitiveOcclusionManager@@3PAVCEnginePrimitiveOcclusionManager@@A	partial	?GPPrimitiveOcclusionManager@NEngineInternal@@3PAVCEnginePrimitiveOcclusionManager@@A || ?g_camThing_b23a50@@3PAUGObj@@A || ?g_pPrimitiveOcclusionManager@@3PAUCEnginePrimitiveOcclusionManagerMethods@@A || ?g_pVideoOptionsSink@@3PAUCEngineVideoOptionsSink@@A
 2379	c639	0073aba0	?RemoveMode@CTCCreatureModeManager@@QAEXK@Z	closed	
 2380	c639	0049d870	?GetFrame@CWorld@@SIJXZ	closed	
@@ -3473,7 +3473,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3962	c711	0099eb40	?MakeOwnCopyOfDataOrEmptyString@CCharString@@IAEXXZ	partial	?Prepare@CThingMapManager@@QAEXXZ
 3963	c711	009a06b0	?Insert@?$CBasicString@D@@QAEXKPAD@Z	partial	?Insert@
 3964	c711	004bfae0	?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z	partial	?RemoveTintColour@CTCGraphicAppearance@@QAEXPAX@Z
-3965	c711	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ || ?IsActiveThre
+3965	c711	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ
 3966	c711	0090b8e0	?remove@?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAEXABQAVLSocket@LHNetworkLib@@@Z	partial	?remove@?$list@PAVLSocket@@ || ?remove@?$list@PAVLSocket@@@@QAEXABQAVLSocket@@@Z
 3967	c711	0090aa10	?CloseSocket@LSocketServer@LHNetworkLib@@QAEXPAVLSocket@2@@Z	partial	?CloseSocket@LSocketServer@@QAEXPAVLSocket@@@Z
 3968	c711	0099eb40	?MakeOwnCopyOfDataOrEmptyString@CCharString@@IAEXXZ	partial	?Prepare@CThingMapManager@@QAEXXZ
@@ -10560,8 +10560,8 @@ line	tag	address	correct_symbol	status	other_spellings
 13397	land1123nf303	00857e40	??0CCombatActionBase@@IAE@J@Z	partial	??0CBase_00857e40@@QAE@J@Z || ??0CCombatActionBase || ??0CCreatureActionBase@@QAE@J@Z
 13398	land1123nf303	008c4f50	??0CCreatureAction_ScorpionChargeStrike@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	open	??0CCreatureAction_ScorpionChargeStrike@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
 13399	land1123nf303	008e46d0	??0CCreatureAction_ScorpionSummon@@QAE@AAVCThingCreatureBase@@0@Z	closed	
-13400	land1123nf303	00976fc0	??0CCreatureAction_JackShotNear@@QAE@AAVCThingCreatureBase@@0@Z	no_binding	
-13401	land1123nf303	00977060	??0CCreatureAction_JackShotFar@@QAE@AAVCThingCreatureBase@@0@Z	no_binding	
+13400	land1123nf303	00976fc0	??0CCreatureAction_JackShotNear@@QAE@AAVCThingCreatureBase@@0@Z	closed	
+13401	land1123nf303	00977060	??0CCreatureAction_JackShotFar@@QAE@AAVCThingCreatureBase@@0@Z	closed	
 13402	land1123nf303	0097c760	??0CCreatureAction_ScorpionUnblockableLeftTurnAttack@@QAE@AAVCThingCreatureBase@@0@Z	closed	
 13403	land1123nf303	0097c830	??0CCreatureAction_ScorpionUnblockableRightTurnAttack@@QAE@AAVCThingCreatureBase@@0@Z	closed	
 13404	land1123nf303	0097c920	??0CCreatureAction_ScorpionPrepareTailPlunge@@QAE@AAVCThingCreatureBase@@0@Z	closed	
@@ -10725,10 +10725,23 @@ line	tag	address	correct_symbol	status	other_spellings
 13565	nf332	004dc5c7	?Alloc@CTCInventoryItem@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
 13566	nf332	004d2a44	?Alloc@CTCRandomAppearanceMorph@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
 13567	nf332	004d4bde	?Alloc@CTCSummonSpell@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
-13568	acctB_b24 PRIORITY	00e95380	?Return@TRetVoid@@QAEXXZ	open	?M@C00e95380@@QAEXXZ
+13568	acctB_b24 PRIORITY	00e95380	?Return@TRetVoid@@QAEXXZ	closed	
 13569	nf333	004d4759	?Alloc@CTCBoastingCrowdControl@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
 13570	nf333	004d3c31	?Alloc@CTCShapeManager@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
 13571	nf333	0083ebd0	?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z	partial	?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
 13572	nf334	00997f80	?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ	partial	@FableGetCurrentPath_00997F80@8
 13573	acctB_b24C7	00a3c310	?AddCombinationBlend@C3DAnimationBlendState@@QAEXABVC3DAnimationStateAlpha@@@Z	open	?AddCombinationBlend@C3DAnimationBlendState@@QAEXPAVC3DAnimationStateAlpha@@@Z
 13574	acctB_b24C7	004c2dd0	??0C3DAnimationBlendState@@QAE@XZ	open	??0C3DAnimationBlendState@
+13575	acctB_b24c	0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	closed	
+13576	acctB_b24c	0091f990	??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	partial	??0?$CIntelligentPointer@
+13577	nf336	00e95650	?GetParentScript@CM_QuestControl@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ	no_binding	
+13578	nf336	00e95660	?Init@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ	no_binding	
+13579	nf336	00e95730	?GetParentScript@CM_UndeadHere@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ	no_binding	
+13580	nf336	00e95740	?Init@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ	no_binding	
+13581	nf336	00e95c90	?GetParentScript@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ	no_binding	
+13582	nf336	00e95ca0	?Init@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ	no_binding	
+13583	nf336	00e95d70	?GetParentScript@CHHUndead@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ	no_binding	
+13584	nf336	00cdd410	?OnPredicateFail@CSpawnedFuncBase@@UAEXXZ	no_binding	
+13585	nf336	00cdd420	?OnInterrupted@CSpawnedFuncBase@@UAEXXZ	no_binding	
+13586	nf336	00e96660	?Main@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ	open	?Main@CM_HeroInsideHouse@
+13587	acctB_b24C8	0070c0d0	?GetMeshBank@CAnimateThing@@QBEABVCMeshDataBank@@XZ	open	?GetMeshBank@CAnimateThing@@QAEPAVCMeshDataBank@@XZ || ?GetMeshBank_2@CAnimateThing@@QAEPAVCMeshDataBank@@XZ

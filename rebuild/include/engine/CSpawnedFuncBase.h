@@ -26,6 +26,14 @@ namespace NScript { class CPredicateBase; }
 class CSpawnedFuncBase : public CSuspendableProcessMicrothread {
 public:
     CSpawnedFuncBase(const CCharString&, unsigned long);                 // 0x00CDD450
+#ifdef FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY
+    // Per-TU add-only opt-in (NF336, 2026-11-24, row 0x00E95F10): the destructor declared only (Ego_r.pdb + FableWin.pdb
+    // ??1CSpawnedFuncBase@@UAE@XZ, retail 0x00CDD4C0), for a TU that emits the CSpawnedFuncBase vtable (it expands the constructor,
+    // which stores 0x012C2F9C) where the copy retail links, ??_GCSpawnedFuncBase@@UAEPAXI@Z 0x00CDD4A0 (30 bytes), calls 0x00CDD4C0
+    // out of line: with the implicit destructor VC7.1 expands it into the emitted ??_G copy (56 bytes). Declaration only; it emits
+    // nothing, and the body stays the implicit one described above.
+    virtual ~CSpawnedFuncBase();                                         // 0x00CDD4C0
+#endif
     virtual void OnPredicateFail();                                      // slot 5  0x00CDD410 (order probable)
     virtual void OnInterrupted();                                        // slot 6  0x00CDD420 (order probable)
     unsigned long GetID() const;

@@ -1,0 +1,17 @@
+rc 2 flags /O2 /Oy /W3
+error	C2084	r_00e93e60.cpp	line 218 (+28)	function 'NScript::CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase *,CGameScriptInterfaceBase &)' already has a body
+error	C2084	r_00e95670.cpp	line 422 (+31)	function 'NScript::CV_HauntedHouseScript::CM_QuestControl::CM_QuestControl(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2084	r_00e95670.cpp	line 427 (+36)	function 'CCountedPointer<T> NScript::CV_HauntedHouseScript::CM_QuestControl::Alloc(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2264	r_00e95670.cpp	line 428 (+37)	'NScript::CV_HauntedHouseScript::CM_QuestControl::CM_QuestControl' : error in function definition or declaration; function not called
+error	C2084	r_00e95750.cpp	line 509 (+31)	function 'NScript::CV_HauntedHouseScript::CM_UndeadHere::CM_UndeadHere(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2084	r_00e95750.cpp	line 514 (+36)	function 'CCountedPointer<T> NScript::CV_HauntedHouseScript::CM_UndeadHere::Alloc(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2264	r_00e95750.cpp	line 515 (+37)	'NScript::CV_HauntedHouseScript::CM_UndeadHere::CM_UndeadHere' : error in function definition or declaration; function not called
+error	C2084	r_00e95cb0.cpp	line 596 (+31)	function 'NScript::CV_HauntedHouseScript::CM_HeroInsideHouse::CM_HeroInsideHouse(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2084	r_00e95cb0.cpp	line 601 (+36)	function 'CCountedPointer<T> NScript::CV_HauntedHouseScript::CM_HeroInsideHouse::Alloc(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2264	r_00e95cb0.cpp	line 602 (+37)	'NScript::CV_HauntedHouseScript::CM_HeroInsideHouse::CM_HeroInsideHouse' : error in function definition or declaration; function not called
+error	C2084	r_00e95e60.cpp	line 764 (+31)	function 'NScript::CV_HauntedHouseScript::CHHUndead::CHHUndead(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2084	r_00e95e60.cpp	line 769 (+36)	function 'CCountedPointer<T> NScript::CV_HauntedHouseScript::CHHUndead::Alloc(NScript::CV_HauntedHouseScript &,CScriptDataBase *,const CScriptThing &)' already has a body
+error	C2264	r_00e95e60.cpp	line 770 (+37)	'NScript::CV_HauntedHouseScript::CHHUndead::CHHUndead' : error in function definition or declaration; function not called
+error	C2084	r_00e96dd0.cpp	line 1013 (+29)	function 'NScript::CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase *,CGameScriptInterfaceBase &)' already has a body
+error	C2264	r_00e96dd0.cpp	line 1018 (+34)	'NScript::CV_HauntedHouseScript::CV_HauntedHouseScript' : error in function definition or declaration; function not called
+error	C2084	r_00e96e10.cpp	line 1050 (+29)	function 'NScript::CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase *,CGameScriptInterfaceBase &)' already has a body

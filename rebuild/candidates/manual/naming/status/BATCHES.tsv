@@ -1366,7 +1366,9 @@ T3	signature	CCreatureAction_GetOutOfBed	1	1	engine/CCreatureAction_GetOutOfBed.
 T3	signature	CCreatureAction_GoUnderground	1	1	engine/CCreatureAction_GoUnderground.h	008b8110
 T3	signature	CCreatureAction_JackFloatUp	1	1	engine/CCreatureAction_JackFloatUp.h	00977290
 T3	signature	CCreatureAction_JackScream	1	1	engine/CCreatureAction_JackScream.h	00977100
+T3	signature	CCreatureAction_JackShotFar	1	1	engine/CCreatureAction_JackShotFar.h	00977060
 T3	signature	CCreatureAction_JackShotFloat	1	1	engine/CCreatureAction_JackShotFloat.h	00976f30
+T3	signature	CCreatureAction_JackShotNear	1	1	engine/CCreatureAction_JackShotNear.h	00976fc0
 T3	signature	CCreatureAction_OnGenerate	1	1	engine/CCreatureAction_OnGenerate.h	0074dbb0
 T3	signature	CCreatureAction_OpenChest	1	1	engine/CCreatureAction_OpenChest.h	007ee7e0
 T3	signature	CCreatureAction_PerformExpression	1	1	engine/CCreatureAction_PerformExpression.h	008430b0
@@ -1646,7 +1648,7 @@ T3	other	CCharString	5	5		00403a00 00403a10 0099e500 0099ef90 0099f0a0
 T3	other	CDisplayManager	5	5	engine/CDisplayManager.h	009be800 009be8f0 009bef50 009bf160 009bf220
 T3	other	CEnvironmentSpellEffectInterpolator	5	6	engine/CEnvironmentSpellEffectInterpolator.h	006b8310 006b8350 006b8370 006b8550 006b8730
 T3	other	CHitLocation	5	5		00815280 00815290 008152a0 008152b0 00816390
-T3	other	CScriptBase	5	24	engine/CScriptBase.h	00cb7900 00cb7920 00cb7940 00cb7d60 00cb7e50
+T3	other	CScriptBase	5	23	engine/CScriptBase.h	00cb7900 00cb7920 00cb7940 00cb7d60 00cb7e50
 T3	other	CScriptGameResourceObjectScriptedThingBase	5	6	engine/CScriptGameResourceObjectScriptedThingBase.h	007e7310 007e7400 007e7430 007e7440 007e7460
 T3	other	CTCBase	5	8	engine/CTCBase.h	00686850 00686860 00686870 006868d0 00686aa0
 T3	other	CTCGraphicAppearance	5	7		004bbfc0 004bc180 004bfae0 004bff60 004bffc0
@@ -6359,7 +6361,6 @@ T3	-	CV_DemonDoorsScript	1	2	engine/CV_DemonDoorsScript.h	012e8b10
 T3	-	CV_FishermanScript	1	2	engine/CV_FishermanScript.h	012ea024
 T3	-	CV_GhostGrannyNecklaceScript	1	2	engine/CV_GhostGrannyNecklaceScript.h	012eba3c
 T3	-	CV_GuildMasterScript	1	2	engine/CV_GuildMasterScript.h	012ec138
-T3	-	CV_HauntedHouseScript	1	2	engine/CV_HauntedHouseScript.h	012ecb94
 T3	-	CV_HeroDollsScript	1	2	engine/CV_HeroDollsScript.h	012ece7c
 T3	-	CV_HiddenBootyScript	1	2	engine/CV_HiddenBootyScript.h	012ec9a4
 T3	-	CV_LostTraderScript	1	2	engine/CV_LostTraderScript.h	012edce8

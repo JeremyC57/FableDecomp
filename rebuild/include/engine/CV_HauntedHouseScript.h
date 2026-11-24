@@ -28,6 +28,17 @@ public:
     virtual void Init();                                                 // 0x00E93D80 (slot 3)
     virtual void OnPersist(CPersistContext&);                            // 0x00E93E60 (slot 4)
     void CheckRegionLeaving();                                           // 0x00E953E0
+#ifdef FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+    // Add-only opt-in (NF336, 2026-11-24; local-model debt named by acctB Gate 0): the PDB members the landed level-script rows
+    // define or call. Declarations only. Ego_r.pdb + FableWin.pdb: ?Alloc@CV_HauntedHouseScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@
+    // AAVCGameScriptInterfaceBase@@@Z (0x00E96DD0, stored by RegisterScripts 0x00CD8B2F) and
+    // ?SendBodyguardsToTheRightPlace@CV_HauntedHouseScript@NScript@@QAEXVCCharString@@0@Z (0x00E96C30); FableWin.pdb
+    // ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z (0x00E93D50, stores the vtable 0x012ECB94).
+    // Ego_r.pdb (release) has no ??1: the destructor is implicit (FABLE_RETAIL_CLEVELSCRIPTBASE, ??_G 0x00E96E10 calls ~CScriptBase).
+    CV_HauntedHouseScript(CScriptDataBase*, CGameScriptInterfaceBase&);  // 0x00E93D50
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); // 0x00E96DD0
+    void SendBodyguardsToTheRightPlace(CCharString, CCharString);       // 0x00E96C30
+#endif
     float UndeadBar;                                                     // +0x48
     long GuiCounter;                                                     // +0x4C
     bool CellarDoorOpen;                                                 // +0x50
@@ -70,6 +81,29 @@ public:
     class CHHUndead : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_HauntedHouseScript&, CScriptDataBase*, const CScriptThing&); // 0x00E95CD0
+#ifdef FABLE_RETAIL_CHHUNDEAD_MEMBERS
+        // Add-only opt-in (NF336, 2026-11-24): Ego_r.pdb CHHUndead (TPI field list 0x10B4C, sizeof 32): typedef TParentClass,
+        // protected reference ParentClass +0x14, protected PMasterData +0x18, private float RaiseUndeadBarAmount +0x1C, public ctor
+        // (+ compiler-generated copy), public virtual GetParentScript, public GetMasterData, private virtual Init / OnPredicateFail /
+        // Main, compiler-generated virtual destructor (no user ~CHHUndead: ??_G 0x00E95E60 calls ~CEntityScriptBase 0x00F35B40).
+        // Retail vtable 0x012ECD3C: 0 ??_G 0x00E95E60, 1 Main 0x00E95E80, 2 Init 0x00E95D80, 3 GetParentScript 0x00E95D70,
+        // 4 CEntityScriptBase::OnPersist 0x00CDEBC0, 5 OnPredicateFail 0x00E95DC0, 6 CEntityScriptBase::OnInterrupted 0x00CDEBE0.
+        // Spellings in both PDB name sets: ?Init@ / ?OnPredicateFail@ / ?Main@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ,
+        // ?GetParentScript@CHHUndead@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ (FableWin), ??0CHHUndead@..@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z (FableWin).
+        typedef CV_HauntedHouseScript TParentClass;
+        CHHUndead(CV_HauntedHouseScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+        CQ_SunnyvaleMasterData* GetMasterData();
+    protected:
+        CV_HauntedHouseScript& ParentClass;                              // +0x14
+        CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+    private:
+        float RaiseUndeadBarAmount;                                      // +0x1C
+        virtual void Init();                                             // 0x00E95D80 (slot 2)
+        virtual void OnPredicateFail();                                  // 0x00E95DC0 (slot 5)
+        virtual void Main();                                             // 0x00E95E80 (slot 1)
+    public:
+#endif
     };
     class CM_QuestControl : public CEntityScriptBase {
     public:
@@ -92,6 +126,24 @@ public:
     class CM_HeroInsideHouse : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_HauntedHouseScript&, CScriptDataBase*, const CScriptThing&); // 0x00E95BF0
+#ifdef FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+        // Add-only opt-in (NF336, 2026-11-24): Ego_r.pdb CM_HeroInsideHouse (TPI field list 0x10B5B, sizeof 28): typedef TParentClass,
+        // protected reference ParentClass +0x14, protected PMasterData +0x18, public ctor, public virtual GetParentScript, public
+        // GetMasterData, private virtual Init / Main, compiler-generated virtual destructor. Retail vtable 0x012ECD20: 0 ??_G 0x00E95CB0,
+        // 1 Main 0x00E96660, 2 Init 0x00E95CA0, 3 GetParentScript 0x00E95C90, 4..6 CEntityScriptBase's. FableWin.pdb spells
+        // ?Init@ / ?Main@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ and ?GetParentScript@..@@UBEPAVCScriptBase@@XZ.
+        typedef CV_HauntedHouseScript TParentClass;
+        CM_HeroInsideHouse(CV_HauntedHouseScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+        CQ_SunnyvaleMasterData* GetMasterData();
+    protected:
+        CV_HauntedHouseScript& ParentClass;                              // +0x14
+        CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+    private:
+        virtual void Init();                                             // 0x00E95CA0 (slot 2)
+        virtual void Main();                                             // 0x00E96660 (slot 1)
+    public:
+#endif
     };
 };
 }
@@ -99,6 +151,12 @@ FABLE_STATIC_ASSERT_AT(68, sizeof(NScript::CV_HauntedHouseScript) == 0x5C);
 
 #if defined(FABLE_RETAIL_CM_UNDEADHERE_MAIN) && defined(FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS)
 FABLE_STATIC_ASSERT_AT(87, sizeof(NScript::CV_HauntedHouseScript::CM_UndeadHere) == 0x20);
+#endif
+#ifdef FABLE_RETAIL_CHHUNDEAD_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_HauntedHouseScript::CHHUndead) == 0x20);
+#endif
+#ifdef FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_HauntedHouseScript::CM_HeroInsideHouse) == 0x1C);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

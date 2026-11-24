@@ -1,5 +1,5 @@
 // NScript::CV_HauntedHouseScript::CHHUndead::Main() -- haunted-house undead script: register an alive-filter over Me, start a script frame; unless done, when the parent script's flag (+0x50) is set remove Me (unless done by then), then run script frames until done
-// Leaf: Main
+// Leaf: ?Main@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ
 // Identity (naming wave 11): ?Main@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012ECD3C slot 1 is stored by the factory 0x00E95CD0, registered as "HHUndead" (site 0x00E94AD5)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E95E80, length 137 bytes.
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, the filter registration @ 0x00F35B10,
@@ -9,67 +9,42 @@
 // (CV_HauntedHouseScript*, the tested byte at +0x50 is unnamed in the PDB), PMasterData +0x18, RaiseUndeadBarAmount +0x1c.
 // Shape: as the landed CHTE_Prisoner::Main 0x00D69F50; the early exits are plain returns (the second IsDone test
 // jumps straight to the epilogue), the wait loop a `do/while`.
-namespace NScript { class CPredicateBase; }
-class CCPPointerInfo;
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
 #include "engine/CCountedPointer.h"
-// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CScriptThing.h"
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CGameScriptInterface.h"
-// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CV_HauntedHouseScript.h"
+#include "engine/CGameScriptInterfaceBase.h"
 #include "engine/CIsThingAlive.h"
-// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
-namespace NScript {
-}
-namespace NScript {
-}
-using NScript::CIsThingAlive;
-namespace NScript {
-class CV_HauntedHouseScript {
-public:
-    unsigned char _pad[0x50];
-    bool          m_raiseUndead;                   // +0x50
-public:
-    class CHHUndead;                        // the entity class below (naming wave 11)
-};
-}
-using NScript::CV_HauntedHouseScript;
-struct CQ_SunnyvaleMasterData;
-
-// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
-#include "engine/CEntityScriptBase.h"
-
-namespace NScript {
-class CV_HauntedHouseScript::CHHUndead : public CEntityScriptBase {
-public:
-        CV_HauntedHouseScript* ParentClass;            // +0x14
-    CQ_SunnyvaleMasterData* PMasterData;           // +0x18
-    float                  RaiseUndeadBarAmount;   // +0x1c
-private:
-    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
-public:
-};
-}
-
+// The flag at +0x50 is the PDB member CellarDoorOpen (the row-local model called it m_raiseUndead).
 void NScript::CV_HauntedHouseScript::CHHUndead::Main()
 {
     {
-        CIsThingAlive filter(Me);
+        NScript::CIsThingAlive filter(Me);
         SetPredicate(filter);
     }
-    Game->NewScriptFrame();
+    Game.NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;
-    if (ParentClass->m_raiseUndead) {
+    if (ParentClass.CellarDoorOpen) {
         if (IsActiveThreadTerminating())
             return;
-        Game->RemoveThing(Me, true, true);
+        Game.RemoveThing(Me, true, true);
     }
     do {
-        Game->NewScriptFrame();
+        Game.NewScriptFrame();
     } while (!IsActiveThreadTerminating());
 }

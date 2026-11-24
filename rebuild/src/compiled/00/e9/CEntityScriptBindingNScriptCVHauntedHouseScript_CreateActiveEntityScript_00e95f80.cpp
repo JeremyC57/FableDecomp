@@ -19,79 +19,40 @@
 // Shape: the counted-pointer destructor must have its body in the TU (`noinline`): with only a declaration VC7.1 swaps the two
 //   frame slots of the allocator's result temporary and the named copy and does not keep the copy's Data/Info in ebp/ebx for
 //   the later ShareData pushes. Both CActiveEntityScript constructors are `__forceinline` (a plain inline one stays a call).
-#include "fable_compiler.h"
-void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
-void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class CCharString {
-public:
-    void* PStringData;
-};
-class CCPPointerInfo {                                  // PDB ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
-public:
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(T* data);                           // 0x00CE10B0 (T = CActiveEntityScriptBase)
-    FABLE_FORCEINLINE CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __declspec(noinline) ~CCountedPointer()            // 0x00CE1000
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    FABLE_FORCEINLINE CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ShareData(T* data, CCPPointerInfo* info);      // 0x00CE1040 (T = CEntityScriptBase)
-    T* operator->() const { return Data; }
-};
-// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+// CCountedPointer: the shared engine/CCountedPointer.h with the per-TU forms the row-local template spelled (the (T*) constructor
+//   0x00CE10B0 called, the destructor 0x00CE1000 visible but called, ShareData 0x00CE1040 declared), as the landed shared-header
+//   CreateActiveEntityScript rows do (e.g. 0x00D7C2E0).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_DTOR
+#define FABLE_RETAIL_CCOUNTEDPOINTER_SHAREDATA_DECL_ONLY
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CScriptThing.h"
-// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
-#include "engine/CEntityScriptBase.h"
-// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
-//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
-//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
-#include "engine/CSpawnedFuncBase.h"
-// CActiveEntityScriptBase / CActiveEntityScript<T>: the retail models from the shared headers (engine/CActiveEntityScript.h:
-//   : CSpawnedFuncBase, vtable 0x012C3594, 0x58; PEntityScript +0x34, Flags +0x3C, EntityUID +0x40, Entity +0x48; Func +0x58,
-//   PParentScript +0x5C; both ctors inline, as retail expands them here).
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CV_HauntedHouseScript.h"
+#include "engine/CQ_SunnyvaleMasterData.h"
 #include "engine/CActiveEntityScript.h"
-class CScriptDataBase {
-public:
-    virtual ~CScriptDataBase();
-};
-namespace NScript { class CQ_SunnyvaleMasterData : public CScriptDataBase { }; }   // PDB base only (Ego_r.pdb: the master data class derives from CScriptDataBase); its members are not used here
-class CGameScriptInterfaceBase;
-// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-// CEntityScriptBindingBase / CEntityScriptBinding<T>: the retail models from the shared headers (engine/CEntityScriptBinding.h:
-//   0x1C; EntityScriptName +4, PParentScript +8, Func +0xC, ClassAllocFunc +0x10, ClassAllocValid +0x14, Flags +0x18).
 #include "engine/CEntityScriptBinding.h"
 template <class T>
 CCountedPointer<CActiveEntityScriptBase> CEntityScriptBinding<T>::CreateActiveEntityScript(const CScriptThing& thing, unsigned __int64 uid)
 {
     if (ClassAllocValid) {
-        CCountedPointer<CEntityScriptBase> script(ClassAllocFunc(*PParentScript, PParentScript->MasterScriptData, thing));
+        CCountedPointer<CEntityScriptBase> script(ClassAllocFunc(*PParentScript, &PParentScript->MasterScriptData, thing));
         script->Init();
         return CCountedPointer<CActiveEntityScriptBase>(new CActiveEntityScript<T>(thing, uid, PParentScript, script, Flags));
     }
     return CCountedPointer<CActiveEntityScriptBase>(new CActiveEntityScript<T>(thing, uid, PParentScript, Func, Flags));
-}
-namespace NScript {
-class CV_HauntedHouseScript : public CLevelScriptBase<NScript::CQ_SunnyvaleMasterData> {
-};
 }
 template class CEntityScriptBinding<NScript::CV_HauntedHouseScript>;

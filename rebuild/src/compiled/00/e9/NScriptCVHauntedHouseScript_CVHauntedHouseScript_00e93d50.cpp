@@ -11,26 +11,24 @@
 //   pointer typed as its CScriptDataBase base.
 // Shape: the intermediate CLevelScriptBase vtable store is dead and dropped by VC7.1; the inline base constructor's
 //   initialisers load the second argument first (Game, `mov eax,[esp+0xc]`) and store +0x40 before +0x44.
-class CScriptDataBase {
-public:
-    virtual ~CScriptDataBase();
-};
-namespace NScript { class CQ_SunnyvaleMasterData; }
-class CGameScriptInterfaceBase;
-class CPersistContext;
-// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-namespace NScript {
-class CV_HauntedHouseScript : public CLevelScriptBase<NScript::CQ_SunnyvaleMasterData> {
-public:
-    CV_HauntedHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
-    virtual void RegisterMain();
-    virtual void Main();
-};
-CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+// FABLE_RETAIL_CLEVELSCRIPTBASE left undefined here: ~CLevelScriptBase<T> stays declared out of line (the HEAD form), so this TU emits no unreferenced ??1?$CLevelScriptBase thunk (NF320 Q2).
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CV_HauntedHouseScript.h"
+NScript::CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>(data, game)
 {
-}
 }

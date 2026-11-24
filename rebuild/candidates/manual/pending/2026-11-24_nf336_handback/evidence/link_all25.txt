@@ -1,0 +1,93 @@
+# SUPERSEDED (NF336): pre-variant link run (implicit ~CLevelScriptBase form in 0x00E93D50 / 0x00E93E60 / 0x00E96DD0); final: link_final25.txt
+## HEAD set: H_00e93d50.obj H_00e93d80.obj H_00e93da0.obj H_00e93e30.obj H_00e93e40.obj H_00e93e60.obj H_00e953d0.obj H_00e953e0.obj H_00e955b0.obj H_00e95670.obj H_00e95690.obj H_00e95750.obj H_00e95bf0.obj H_00e95cb0.obj H_00e95cd0.obj H_00e95d80.obj H_00e95dc0.obj H_00e95e60.obj H_00e95e80.obj H_00e95f10.obj H_00e95f80.obj H_00e96c30.obj H_00e96dd0.obj H_00e96e10.obj H_00e95380.obj
+duplicates 7
+  DUP H_00e93e60.obj ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z in H_00e93d50.obj;
+  DUP H_00e95670.obj ?Alloc@CM_QuestControl@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z in H_00e955b0.obj;
+  DUP H_00e95750.obj ?Alloc@CM_UndeadHere@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z in H_00e95690.obj;
+  DUP H_00e95cb0.obj ?Alloc@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z in H_00e95bf0.obj;
+  DUP H_00e95e60.obj ?Alloc@CHHUndead@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z in H_00e95cd0.obj;
+  DUP H_00e96dd0.obj ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z in H_00e93d50.obj;
+  DUP H_00e96e10.obj ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z in H_00e93d50.obj;
+UNRESOLVED 4 ??0CScriptBase@@QAE@XZ
+UNRESOLVED 1 ??0CScriptProcessBase@@QAE@_NJM@Z
+UNRESOLVED 8 ??1CEntityScriptBase@@UAE@XZ
+UNRESOLVED 1 ??1CHHUndead@CV_HauntedHouseScript@NScript@@UAE@XZ
+UNRESOLVED 1 ??1CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UAE@XZ
+UNRESOLVED 1 ??1CM_QuestControl@CV_HauntedHouseScript@NScript@@UAE@XZ
+UNRESOLVED 1 ??1CM_UndeadHere@CV_HauntedHouseScript@NScript@@UAE@XZ
+UNRESOLVED 1 ??1CScriptBase@@UAE@XZ
+UNRESOLVED 3 ??1CSuspendableProcessMicrothread@@MAE@XZ
+UNRESOLVED 1 ??1CV_HauntedHouseScript@NScript@@UAE@XZ
+UNRESOLVED 1 ?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z
+UNRESOLVED 2 ?GetParentScript@CHHUndead@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 2 ?GetParentScript@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 2 ?GetParentScript@CM_QuestControl@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 2 ?GetParentScript@CM_UndeadHere@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 8 ?Init@CEntityScriptBase@@UAEXXZ
+UNRESOLVED 4 ?Init@CScriptBase@@MAEXXZ
+UNRESOLVED 1 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+UNRESOLVED 1 ?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ
+UNRESOLVED 1 ?IsActiveThreadTerminating@CV_HauntedHouseScript@NScript@@QAE_NXZ
+UNRESOLVED 2 ?Main@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ
+UNRESOLVED 2 ?Main@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ
+UNRESOLVED 2 ?Main@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ
+UNRESOLVED 4 ?Main@CScriptBase@@MAEXXZ
+UNRESOLVED 3 ?Main@CV_HauntedHouseScript@NScript@@UAEXXZ
+UNRESOLVED 8 ?OnInterrupted@CEntityScriptBase@@UAEXXZ
+UNRESOLVED 2 ?OnInterrupted@CSpawnedFuncBase@@UAEXXZ
+UNRESOLVED 8 ?OnPersist@CEntityScriptBase@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 8 ?OnPredicateFail@CEntityScriptBase@@UAEXXZ
+UNRESOLVED 2 ?OnPredicateFail@CSpawnedFuncBase@@UAEXXZ
+UNRESOLVED 4 ?RegisterMain@CScriptBase@@MAEXXZ
+UNRESOLVED 3 ?Restart@CSuspendableProcessMicrothread@@UAEXXZ
+UNRESOLVED 3 ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ
+UNRESOLVED 1 ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+UNRESOLVED 1 ?ShareData@?$CCountedPointer@VCEntityScriptBase@@@@QAEXPAVCEntityScriptBase@@PAVCCPPointerInfo@@@Z
+UNRESOLVED 3 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ
+UNRESOLVED 1 ?SuspendableProcess@?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@UAEXXZ
+## new set: 00e93d50.obj 00e93d80.obj 00e93da0.obj 00e93e30.obj 00e93e40.obj 00e93e60.obj 00e953d0.obj 00e953e0.obj 00e955b0.obj 00e95670.obj 00e95690.obj 00e95750.obj 00e95bf0.obj 00e95cb0.obj 00e95cd0.obj 00e95d80.obj 00e95dc0.obj 00e95e60.obj 00e95e80.obj 00e95f10.obj 00e95f80.obj H_00e96c30.obj 00e96dd0.obj 00e96e10.obj 00e95380.obj
+duplicates 7
+  DUP 00e93e60.obj ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z in 00e93d50.obj;
+  DUP 00e95670.obj ?Alloc@CM_QuestControl@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z in 00e955b0.obj;
+  DUP 00e95750.obj ?Alloc@CM_UndeadHere@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z in 00e95690.obj;
+  DUP 00e95cb0.obj ?Alloc@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z in 00e95bf0.obj;
+  DUP 00e95e60.obj ?Alloc@CHHUndead@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z in 00e95cd0.obj;
+  DUP 00e96dd0.obj ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z in 00e93d50.obj;
+  DUP 00e96e10.obj ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z in 00e93d50.obj;
+UNRESOLVED 4 ??0CScriptBase@@QAE@XZ
+UNRESOLVED 1 ??0CSuspendableProcessMicrothread@@IAE@_NJM@Z
+UNRESOLVED 8 ??1CEntityScriptBase@@UAE@XZ
+UNRESOLVED 4 ??1CScriptBase@@UAE@XZ
+UNRESOLVED 3 ??1CSuspendableProcessMicrothread@@MAE@XZ
+UNRESOLVED 1 ?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z
+UNRESOLVED 2 ?GetParentScript@CHHUndead@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 2 ?GetParentScript@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 2 ?GetParentScript@CM_QuestControl@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 2 ?GetParentScript@CM_UndeadHere@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ
+UNRESOLVED 8 ?Init@CEntityScriptBase@@UAEXXZ
+UNRESOLVED 2 ?Init@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ
+UNRESOLVED 2 ?Init@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ
+UNRESOLVED 2 ?Init@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ
+UNRESOLVED 4 ?Init@CScriptBase@@MAEXXZ
+UNRESOLVED 1 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+UNRESOLVED 2 ?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ
+UNRESOLVED 2 ?Main@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ
+UNRESOLVED 2 ?Main@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ
+UNRESOLVED 2 ?Main@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ
+UNRESOLVED 4 ?Main@CScriptBase@@MAEXXZ
+UNRESOLVED 4 ?Main@CV_HauntedHouseScript@NScript@@UAEXXZ
+UNRESOLVED 8 ?OnInterrupted@CEntityScriptBase@@UAEXXZ
+UNRESOLVED 3 ?OnInterrupted@CSpawnedFuncBase@@UAEXXZ
+UNRESOLVED 8 ?OnPersist@CEntityScriptBase@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 8 ?OnPredicateFail@CEntityScriptBase@@UAEXXZ
+UNRESOLVED 3 ?OnPredicateFail@CSpawnedFuncBase@@UAEXXZ
+UNRESOLVED 4 ?RegisterMain@CScriptBase@@MAEXXZ
+UNRESOLVED 4 ?Restart@CSuspendableProcessMicrothread@@UAEXXZ
+UNRESOLVED 4 ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ
+UNRESOLVED 1 ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+UNRESOLVED 1 ?ShareData@?$CCountedPointer@VCEntityScriptBase@@@@QAEXPAVCEntityScriptBase@@PAVCCPPointerInfo@@@Z
+UNRESOLVED 4 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ
+UNRESOLVED 1 ?SuspendableProcess@?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@UAEXXZ
+LK_DONE

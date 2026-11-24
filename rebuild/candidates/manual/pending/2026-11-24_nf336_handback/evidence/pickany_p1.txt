@@ -1,0 +1,113 @@
+# SUPERSEDED IN PART (NF336, 2026-11-24): pass-1 objects. 0x00E95F10 lines are v1 (see proof_00e95f10_v3.txt, vt_00e95f10_v3.txt); 0x00E93D50 / 0x00E93E60 / 0x00E96DD0 lines are the implicit ~CLevelScriptBase form, now parked (evidence/q2cand; final form: proof_levelscript_variant.txt); final per-row diffs: secdiff_final.txt.
+== H_00e93d50
+== 00e93d50
+NEQ 00cbd510 5 ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ not referenced by the leaf
+== H_00e93d80
+== 00e93d80
+== H_00e93da0
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ  00cdd440 5 ??_9@$B7AE 
+NEQ 00cdd4c0 76 ??1CSpawnedFuncBase@@UAE@XZ not referenced by the leaf
+== 00e93da0
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ  00cdd440 5 ??_9@$B7AE 
+NEQ 00cdd4c0 76 ??1CSpawnedFuncBase@@UAE@XZ not referenced by the leaf
+== H_00e93e30
+== 00e93e30
+== H_00e93e40
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+NEQ 00cdd4c0 76 ??1CSpawnedFuncBase@@UAE@XZ not referenced by the leaf
+== 00e93e40
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+NEQ 00cdd4c0 76 ??1CSpawnedFuncBase@@UAE@XZ not referenced by the leaf
+== H_00e93e60
+== 00e93e60
+NEQ 00cbd510 5 ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ not referenced by the leaf
+== H_00e953d0
+== 00e953d0
+== H_00e953e0
+== 00e953e0
+== H_00e955b0
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== 00e955b0
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== H_00e95670
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== 00e95670
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== H_00e95690
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== 00e95690
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== H_00e95750
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== 00e95750
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== H_00e95bf0
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== 00e95bf0
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== H_00e95cb0
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== 00e95cb0
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== H_00e95cd0
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== 00e95cd0
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== H_00e95d80
+== 00e95d80
+== H_00e95dc0
+== 00e95dc0
+== H_00e95e60
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== 00e95e60
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+== H_00e95e80
+== 00e95e80
+== H_00e95f10
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ  00cdd450 80 ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 
+== 00e95f10
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ  00cdd450 80 ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 
+NEQ 00cdd4c0 76 ??1CSpawnedFuncBase@@UAE@XZ not referenced by the leaf
+== H_00e96dd0
+== 00e96dd0
+NEQ 00cbd510 5 ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ not referenced by the leaf
+== H_00e96e10
+NEQ 00cbd510 5 ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ not referenced by the leaf
+== 00e96e10
+NEQ 00cbd510 5 ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ not referenced by the leaf

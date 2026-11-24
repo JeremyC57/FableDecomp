@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00975bb0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00975bb0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00975bb0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+00975bb0   RELOCATION_MATCH PASS   Update
+
+WINS: 1
+  00975bb0 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage1::Update
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupJackOfBladesStage1_Update_00975bb0

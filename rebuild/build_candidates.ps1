@@ -69154,9 +69154,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e95380'
-        Module = '_global'
-        Source = '00/e9/E2_E2_00e95380.cpp'
-        TestSource = '00/e9/E2_E2_00e95380_test.cpp'
+        Module = 'TRetVoid'
+        Source = '00/e9/TRetVoid_Return_00e95380.cpp'
+        TestSource = '00/e9/TRetVoid_Return_00e95380_test.cpp'
         PassPattern = 'OK_00e95380'
     }
     [pscustomobject]@{
@@ -203463,7 +203463,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e95d80'
-        Module = 'CHHUndead'
+        Module = 'NScript::CV_HauntedHouseScript::CHHUndead'
         Source = '00/e9/CHHUndead_Init_00e95d80.cpp'
         TestSource = '00/e9/CHHUndead_Init_00e95d80_test.cpp'
         PassPattern = '00e95d80_TEST PASS'
@@ -227227,7 +227227,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e95e80'
-        Module = 'CHHUndead'
+        Module = 'NScript::CV_HauntedHouseScript::CHHUndead'
         Source = '00/e9/CHHUndead_Main_00e95e80.cpp'
         TestSource = '00/e9/CHHUndead_Main_00e95e80_test.cpp'
         PassPattern = '00e95e80_TEST PASS'
@@ -403549,6 +403549,13 @@ $catalog = @(
         Source = '00/40/CUserProfileManager_SetAssignedInputMouse_00407ba0.cpp'
         TestSource = '00/40/CUserProfileManager_SetAssignedInputMouse_00407ba0_test.cpp'
         PassPattern = '00407ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00975bb0'
+        Module = 'CAIStateGroup_JackOfBladesStage1'
+        Source = '00/97/CAIStateGroupJackOfBladesStage1_Update_00975bb0.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesStage1_Update_00975bb0_test.cpp'
+        PassPattern = '00975bb0_TEST PASS'
     }
 )
 

@@ -5,35 +5,28 @@
 //   ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z in Ego_r.pdb / FableWin.pdb (rebuild/candidates/manual/naming/2026-11-04_anniversary/wave3/labels_alloc.tsv). The persisted keys are the PDB member names.
 // Was: CPersistable_00e93e60::PersistTransfer2_00e93e60(CPersistContext* context) -- persists the "CellarDoorOpen" and "HeroBeenToChest" byte flags at +0x50/+0x51 Retail: Fable.exe (TLC, VC7.1) function @ 0x00E93E60, oracle ... (catalog stand-in _unattributed).
 // Class: the class model of the landed constructor row 0x00E93D50 (rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScript_CVHauntedHouseScript_00e93d50.cpp); the PDB OnPersist declaration added; its bool CellarDoorOpen, bool HeroBeenToChest; members CellarDoorOpen +0x50, HeroBeenToChest +0x51 added at the offsets of the landed byte-matching source (the persisted keys are their names). CPersistContext: engine/CPersistContext.h. Only this member is graded.
-#include "engine/CPersistContext.h"
-class CScriptDataBase {
-public:
-    virtual ~CScriptDataBase();
-};
-namespace NScript { class CQ_SunnyvaleMasterData; }
-class CGameScriptInterfaceBase;
-class CPersistContext;
-// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-namespace NScript {
-class CV_HauntedHouseScript : public CLevelScriptBase<NScript::CQ_SunnyvaleMasterData> {
-public:
-    CV_HauntedHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
-    virtual void RegisterMain();
-    virtual void Main();
-public:
-    unsigned char _pad048[0x50 - 0x48];   // members not touched here
-    bool CellarDoorOpen;   // +0x50 (persisted under this name; offset from the landed byte-matching OnPersist)
-    bool HeroBeenToChest;   // +0x51 (persisted under this name; offset from the landed byte-matching OnPersist)
-public:
-    virtual void OnPersist(CPersistContext& context);   // PDB ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z (slot 4)
-};
-CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+// FABLE_RETAIL_CLEVELSCRIPTBASE left undefined here: ~CLevelScriptBase<T> stays declared out of line (the HEAD form), so this TU emits no unreferenced ??1?$CLevelScriptBase thunk (NF320 Q2).
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CV_HauntedHouseScript.h"
+#include "engine/CPersistContext.h"
+// The HEAD row also defined the constructor (the landed 0x00E93D50 body) in this TU; kept, so the object's COMDAT set is unchanged.
+NScript::CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>(data, game)
 {
-}
 }
 
 void NScript::CV_HauntedHouseScript::OnPersist(CPersistContext& context)

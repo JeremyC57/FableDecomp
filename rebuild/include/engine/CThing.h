@@ -341,7 +341,13 @@ public:
     bool IsLocal() const;
 #endif
     bool IsLevelLess() const;
+#ifdef FABLE_RETAIL_CTHING_ISDEAD_DIRECT
+    // Opt-in (B24A7, row 0x00975BB0): FableWin.pdb ?IsDead@CThing@@QBE_NXZ is 10i/22b at /Od, which `return Dead;` gives exactly (fwsize
+    // SAME); `return Dead!=0;` is 14i/32b. Same value (the one-bit field converted to bool). Body only: default path unchanged.
+    bool IsDead() const { return Dead; }
+#else
     bool IsDead() const { return Dead!=0; }
+#endif
 #ifdef FABLE_RETAIL_CTHING_SCANINCLUSION_OUTOFLINE
     // Plan phase 6 (2026-11-05): the same member called out of line, as retail does in the TUs of the 4 landed binders of 0x0048BC40
     // (catalog CThing::IsIncludedInThingScans; Ego_r.pdb / FableWin.pdb ?IsIncludedInThingScans@CThing@@QBE_NXZ). Everywhere else
@@ -842,4 +848,21 @@ public:
 };
 FABLE_STATIC_ASSERT_AT(703, sizeof(CThing)==0x98);
 
+#ifdef FABLE_RETAIL_CTHING_GETTCDRIVER_PHYSOBSTRUCTION_SIZE_OWNER
+// Fidelity: scaffolding, not retail (B24A7, row 0x00975BB0; size-pragma rule 2026-11-20, pattern of
+// FABLE_RETAIL_CDEFCLASSBASE_CREATURE_OWNER_SIZE_PASS26): the genuine GETTCDRIVER body specialised in the scope of its landed owner
+// 0x007890EA (rebuild/src/compiled/00/78/CThing_GetTCDriverCTCDPhysicalObstruction_007890ea.cpp sets optimize("s", on)), so the pick-any
+// COMDAT equals it; the presence test is written as the owner row has it (UsingComponents.test, out of line there). Ends with optimize("", on) (VC7.1 has no push / pop): no row-head optimize pragma before this include.
+#include "engine/CTCDPhysicalObstruction.h"
+#pragma optimize("s",on)
+template<> inline __declspec(noinline)
+bool CThing::GetTCDriver<CTCDPhysicalObstruction>(CTCDPhysicalObstruction** result) {
+    if(UsingComponents.test(CTCDPhysicalObstruction::StatGetInterfaceType())) {
+        *result=static_cast<CTCDPhysicalObstruction*>(PTCDriver);
+        return true;
+    }
+    return false;
+}
+#pragma optimize("",on)
+#endif
 #endif

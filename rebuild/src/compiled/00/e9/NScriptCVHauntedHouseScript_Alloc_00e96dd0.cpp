@@ -7,20 +7,29 @@
 //   (CLevelScriptBase<T>(data, game): Game +0x40, MasterScriptData +0x44, then the script vtable).
 // Model: engine/CLevelScriptBase.h; layout = Ego_r.pdb - 0x14 (the retail script base is 0x14 smaller), the members this
 //   body does not touch are one pad block.
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CV_HauntedHouseScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
-public:
-    CV_HauntedHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
-    virtual ~CV_HauntedHouseScript();    // ??1CV_HauntedHouseScript@NScript@@UAE@XZ
-    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game);
-    unsigned char _members48[0x5c - 0x48];    // +0x48 (the script's own members; retail sizeof 0x5C)
-};
-CScriptBase* __fastcall CV_HauntedHouseScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+// FABLE_RETAIL_CLEVELSCRIPTBASE left undefined here: ~CLevelScriptBase<T> stays declared out of line (the HEAD form), so this TU emits no unreferenced ??1?$CLevelScriptBase thunk (NF320 Q2).
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CV_HauntedHouseScript.h"
+// The Alloc expands the constructor (retail stores the vtable 0x012ECB94 in place): its body is visible here, inline.
+inline NScript::CV_HauntedHouseScript::CV_HauntedHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+    : CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>(data, game)
+{
+}
+CScriptBase* FABLE_FASTCALL NScript::CV_HauntedHouseScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
 {
     return new CV_HauntedHouseScript(data, game);
 }
-}
-typedef char ExactOwnerSize[sizeof(NScript::CV_HauntedHouseScript) == 0x5c ? 1 : -1];

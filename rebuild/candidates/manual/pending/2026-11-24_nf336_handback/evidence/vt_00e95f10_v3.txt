@@ -1,0 +1,31 @@
+## v3 (CSPAWNEDFUNCBASE_DTOR_DECL_ONLY), 2026-11-24
+##### 00e95f10.obj ??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@ v retail 012ECBA8: slots 7 v 7
+slot 0 CHECK retail 00E93E40 leaf=??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z table=-
+       ours ??_E?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z
+slot 1 SAME  retail 00A44880 leaf=?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ
+slot 2 SAME  retail 00A44840 leaf=?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ table=-
+       ours ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ
+slot 3 SAME  retail 00A447D0 leaf=?Restart@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours ?Restart@CSuspendableProcessMicrothread@@UAEXXZ
+slot 4 SAME  retail 00E93E30 leaf=?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ table=-
+       ours ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ
+slot 5 CHECK retail 00CDD410 leaf=(no Leaf) table=-
+       ours ?OnPredicateFail@CSpawnedFuncBase@@UAEXXZ
+slot 6 CHECK retail 00CDD420 leaf=(no Leaf) table=-
+       ours ?OnInterrupted@CSpawnedFuncBase@@UAEXXZ
+##### 00e95f10.obj ??_7CSpawnedFuncBase@@6B@ v retail 012C2F9C: slots 7 v 7
+slot 0 CHECK retail 00CDD4A0 leaf=??_GCSpawnedFuncBase@@UAEPAXI@Z table=-
+       ours ??_ECSpawnedFuncBase@@UAEPAXI@Z
+slot 1 SAME  retail 00A44880 leaf=?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ
+slot 2 SAME  retail 00A44840 leaf=?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ table=-
+       ours ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ
+slot 3 SAME  retail 00A447D0 leaf=?Restart@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours ?Restart@CSuspendableProcessMicrothread@@UAEXXZ
+slot 4 SAME  retail 00A44600 leaf=?SuspendableProcess@CASuspendableProcess@@UAEXXZ table=-
+       ours ?SuspendableProcess@CASuspendableProcess@@UAEXXZ
+slot 5 CHECK retail 00CDD410 leaf=(no Leaf) table=-
+       ours ?OnPredicateFail@CSpawnedFuncBase@@UAEXXZ
+slot 6 CHECK retail 00CDD420 leaf=(no Leaf) table=-
+       ours ?OnInterrupted@CSpawnedFuncBase@@UAEXXZ

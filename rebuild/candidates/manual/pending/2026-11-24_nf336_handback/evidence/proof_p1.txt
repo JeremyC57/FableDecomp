@@ -1,0 +1,45 @@
+# SUPERSEDED IN PART (NF336, 2026-11-24): pass-1 objects. 0x00E95F10 lines are v1 (see proof_00e95f10_v3.txt, vt_00e95f10_v3.txt); 0x00E93D50 / 0x00E93E60 / 0x00E96DD0 lines are the implicit ~CLevelScriptBase form, now parked (evidence/q2cand; final form: proof_levelscript_variant.txt); final per-row diffs: secdiff_final.txt.
+##### 00e93d50 renames: -
+NOT_EQ UNPAIRED new ['??1CScriptBase@@UAE@XZ', '?Init@CV_HauntedHouseScript@NScript@@UAEXXZ', '?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z']; DEF sets differ ['??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ']; UND sets differ ['??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ', '??1CScriptBase@@UAE@XZ', '?Init@CV_HauntedHouseScript@NScript@@UAEXXZ', '?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z']; section count 7 v 8; section .text bytes; section .text relocs sections=8 tables=??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@,??_7CV_HauntedHouseScript@NScript@@6B@
+##### 00e93d80 renames: -
+ALL_EQ sections=2 tables=-
+##### 00e93da0 renames: -
+ALL_EQ sections=11 tables=??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@
+##### 00e93e30 renames: -
+ALL_EQ sections=2 tables=-
+##### 00e93e40 renames: -
+ALL_EQ sections=8 tables=??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@
+##### 00e93e60 renames: -
+NOT_EQ UNPAIRED new ['??1CScriptBase@@UAE@XZ', '?Init@CV_HauntedHouseScript@NScript@@UAEXXZ']; DEF sets differ ['??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ']; UND sets differ ['??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ', '??1CScriptBase@@UAE@XZ', '?Init@CV_HauntedHouseScript@NScript@@UAEXXZ']; section count 10 v 11; section .text bytes; section .text relocs sections=11 tables=??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@,??_7CV_HauntedHouseScript@NScript@@6B@
+##### 00e953d0 renames: -
+ALL_EQ sections=2 tables=-
+##### 00e953e0 renames: -
+NOT_EQ UNPAIRED ?IsActiveThreadTerminating@CV_HauntedHouseScript@NScript@@QAE_NXZ cands=[]; UNPAIRED new ['?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ']; UND sets differ ['?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ', '?IsActiveThreadTerminating@CV_HauntedHouseScript@NScript@@QAE_NXZ']; section .text relocs sections=4 tables=-
+##### 00e955b0 renames: -
+NOT_EQ UNPAIRED ??1CM_QuestControl@CV_HauntedHouseScript@NScript@@UAE@XZ cands=[]; UNPAIRED new ['?Init@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ']; UND sets differ ['??1CM_QuestControl@CV_HauntedHouseScript@NScript@@UAE@XZ', '?Init@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ']; section .rdata relocs; section .text bytes; section .text relocs sections=12 tables=??_7CEntityScriptBase@@6B@,??_7CM_QuestControl@CV_HauntedHouseScript@NScript@@6B@
+##### 00e95670 renames: -
+NOT_EQ UNPAIRED new ['?Init@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ']; UND sets differ ['?Init@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ']; section .rdata relocs sections=12 tables=??_7CEntityScriptBase@@6B@,??_7CM_QuestControl@CV_HauntedHouseScript@NScript@@6B@
+##### 00e95690 renames: -
+NOT_EQ UNPAIRED ??1CM_UndeadHere@CV_HauntedHouseScript@NScript@@UAE@XZ cands=[]; UNPAIRED new ['?Init@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ']; UND sets differ ['??1CM_UndeadHere@CV_HauntedHouseScript@NScript@@UAE@XZ', '?Init@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ']; section .rdata relocs; section .text bytes; section .text relocs sections=12 tables=??_7CEntityScriptBase@@6B@,??_7CM_UndeadHere@CV_HauntedHouseScript@NScript@@6B@
+##### 00e95750 renames: -
+NOT_EQ UNPAIRED new ['?Init@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ']; UND sets differ ['?Init@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ']; section .rdata relocs sections=12 tables=??_7CEntityScriptBase@@6B@,??_7CM_UndeadHere@CV_HauntedHouseScript@NScript@@6B@
+##### 00e95bf0 renames: -
+NOT_EQ UNPAIRED ??1CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UAE@XZ cands=[]; UNPAIRED new ['?Init@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ']; UND sets differ ['??1CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UAE@XZ', '?Init@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ']; section .rdata relocs; section .text bytes; section .text relocs sections=12 tables=??_7CEntityScriptBase@@6B@,??_7CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@6B@
+##### 00e95cb0 renames: -
+NOT_EQ UNPAIRED new ['?Init@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ']; UND sets differ ['?Init@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ']; section .rdata relocs sections=12 tables=??_7CEntityScriptBase@@6B@,??_7CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@6B@
+##### 00e95cd0 renames: -
+NOT_EQ UNPAIRED ??1CHHUndead@CV_HauntedHouseScript@NScript@@UAE@XZ cands=[]; UNPAIRED new ['?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ', '?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ']; UND sets differ ['??1CHHUndead@CV_HauntedHouseScript@NScript@@UAE@XZ', '?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ', '?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ']; section .rdata relocs; section .text bytes; section .text relocs sections=12 tables=??_7CEntityScriptBase@@6B@,??_7CHHUndead@CV_HauntedHouseScript@NScript@@6B@
+##### 00e95d80 renames: -
+NOT_EQ UNPAIRED ?Init@CHHUndead@@QAEXXZ cands=[]; UNPAIRED new ['?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ']; DEF sets differ ['?Init@CHHUndead@@QAEXXZ', '?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ'] sections=2 tables=-
+##### 00e95dc0 renames: -
+ALL_EQ sections=8 tables=-
+##### 00e95e60 renames: -
+NOT_EQ UNPAIRED new ['?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ', '?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ']; UND sets differ ['?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ', '?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ']; section .rdata relocs sections=12 tables=??_7CEntityScriptBase@@6B@,??_7CHHUndead@CV_HauntedHouseScript@NScript@@6B@
+##### 00e95e80 renames: -
+ALL_EQ sections=9 tables=??_7CIsThingAlive@NScript@@6B@,??_7CPredicateBase@NScript@@6B@
+##### 00e95f10 renames: -
+NOT_EQ UNPAIRED ??0CScriptProcessBase@@QAE@_NJM@Z cands=[]; UNPAIRED __purecall cands=[]; UNPAIRED new ['??0CSuspendableProcessMicrothread@@IAE@_NJM@Z', '??1CCharString@@QAE@XZ', '??1CSuspendableProcessMicrothread@@MAE@XZ', '?OnInterrupted@CSpawnedFuncBase@@UAEXXZ', '?OnPredicateFail@CSpawnedFuncBase@@UAEXXZ', '?Restart@CSuspendableProcessMicrothread@@UAEXXZ', '?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ', '?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ', '?SuspendableProcess@CASuspendableProcess@@UAEXXZ']; DEF sets differ ['??1CSpawnedFuncBase@@UAE@XZ', '?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ']; UND sets differ ['??0CScriptProcessBase@@QAE@_NJM@Z', '??0CSuspendableProcessMicrothread@@IAE@_NJM@Z', '??1CCharString@@QAE@XZ', '??1CSpawnedFuncBase@@UAE@XZ']; section count 9 v 11 sections=11 tables=??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@,??_7CSpawnedFuncBase@@6B@
+##### 00e96dd0 renames: -
+NOT_EQ UNPAIRED ??1CV_HauntedHouseScript@NScript@@UAE@XZ cands=[]; UNPAIRED new ['??1CScriptBase@@UAE@XZ', '?Init@CV_HauntedHouseScript@NScript@@UAEXXZ', '?Main@CV_HauntedHouseScript@NScript@@UAEXXZ', '?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z', '?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ']; DEF sets differ ['??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ']; UND sets differ ['??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ', '??1CScriptBase@@UAE@XZ', '??1CV_HauntedHouseScript@NScript@@UAE@XZ', '?Init@CV_HauntedHouseScript@NScript@@UAEXXZ']; section count 8 v 9; section .text bytes sections=9 tables=??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@,??_7CV_HauntedHouseScript@NScript@@6B@
+##### 00e96e10 renames: -
+NOT_EQ UNPAIRED new ['?Init@CV_HauntedHouseScript@NScript@@UAEXXZ', '?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z']; UND sets differ ['?Init@CV_HauntedHouseScript@NScript@@UAEXXZ', '?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z']; section .rdata relocs sections=8 tables=??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@,??_7CV_HauntedHouseScript@NScript@@6B@

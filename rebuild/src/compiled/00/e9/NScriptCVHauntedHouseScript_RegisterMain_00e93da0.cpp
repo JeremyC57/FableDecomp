@@ -18,33 +18,26 @@
 // Shape: the new-expression's CCharString temporary is conditional (built only when new succeeded), so VC7.1 keeps a flag
 //   in ebx and destroys the temporary at the end only if bit 0 is set; the region name is the CCharString built by the inline
 //   SpawnFunction helper after the new-expression (arguments of AddSpawnedFunction would otherwise build it first).
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
-// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
-//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
-//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
-#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CV_HauntedHouseScript.h"
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
-class CPersistContext;
-// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CScriptBase.h"
-namespace NScript {
-class CV_HauntedHouseScript : public CScriptBase {
-public:
-    virtual void RegisterMain();
-    virtual void Main();
-};
-void CV_HauntedHouseScript::RegisterMain()
+void NScript::CV_HauntedHouseScript::RegisterMain()
 {
     AddSpawnedFunction(new CSpawnedFunc<CV_HauntedHouseScript>("Main", 0, this, &CV_HauntedHouseScript::Main), CCharString(""));
-}
 }
