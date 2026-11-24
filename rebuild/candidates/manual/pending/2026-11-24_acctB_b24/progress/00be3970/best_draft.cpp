@@ -1,6 +1,6 @@
 // CLandscapePatchTesselator::TesselateEdge(CPatchTesselationEdgeStrip* strip, long x, long y, bool vertical, bool flip, LANDSCAPE_EDGE_STRIP_SIDE side, unsigned short* indices) -- bridge one landscape edge strip to the adjacent patches' strips: for every span of the strip longer than one unit, fan the adjacent strips' vertices that fall inside it around the span's fan base vertex, then redirect the span's edge index
 // Grade: DIFFER(2392v2390) -- 25 dd blocks, all in the head (0x00BE3991..0x00BE3AC5 + the ebp pop): retail reloads Verts.Data for `start` (vert spilled at once, [Data+i*20+0Ah]) where ours reads start through vert; -1 in edx (retail) v ebp (ours, prologue push ebp); adjacent_index = 0 stored before FindVert (retail) v a shared zero (ours). Body from 0x00BE3AC9 to the epilogue is retail's.
-// Next: the loop-top Data reload (see NOTES.md B24C6: not address-taken-ness (x1), not compile order (c6/ord), not the 3 FableWin asserts as dead arms (y1..y3, z1..z6)).
+// Next (B24C11): FableWin 0x02CBCC00 has an unused `next = strip->GetVert(i + 1)` after vert and 3 asserts (NOTES B24C11); with them 27 / 30 blocks (0x00BE3FA3/AD operand order flips); the loop-top barrier is not a statement visible in the debug build.
 // Retail-asm: GFFloatToLongNear (engine/GFFloatToLongNear.h) at 0x00BE3DD0 / 0x00BE3E1F `fld dword ptr [esp+44h] ; fistp dword ptr [esp+48h/4Ch]` (float homed, bare dword fistp, low byte stored): a row that matches grades retail_asm.
 // Retail: Fable.exe @ 0x00BE3970, 2390 bytes (true extent; 0x00BE42D0 is a separate function), thiscall `ret 1Ch`, frame 0x6C. Identity: vtable 0x012A2B3C slot 0;
 //   Ego_r.pdb 0x009C3350 / FableWin.pdb 0x02CBCC00. Helpers (FableWin.pdb, no retail copy): AddFanBaseVertex, AddDuplicateEdgeVertex, AddCompositeVertex,
@@ -95,7 +95,9 @@ void CLandscapePatchTesselator::TesselateEdge(CPatchTesselationEdgeStrip* strip,
     long height = Data->PeekHeight();
     CPatchTesselationEdgeStrip* adjacent_strip = map->GetLandscapeMap()->GetEdgeStrip(x, y, length, side);
     long adjacent_index = 0;
-    if (adjacent_strip) adjacent_index = adjacent_strip->FindVert(vertical ? world_y : world_x);
+    if (adjacent_strip) {
+        adjacent_index = adjacent_strip->FindVert(vertical ? world_y : world_x);
+    }
     long previous = -1;
     for (long i = 0; i < strip->PeekVertexCount() - 1; i++) {
         CPatchTesselationEdgeStrip::CVertex& vert = strip->GetVert(i);
@@ -104,38 +106,38 @@ void CLandscapePatchTesselator::TesselateEdge(CPatchTesselationEdgeStrip* strip,
         if (end - start <= 1) {
             previous = -1;
         } else {
-        bool found = false;
-        long fan = -1;
-        if (adjacent_strip) {
-        while (adjacent_strip->GetMainAxisVertexWorldPos(adjacent_index) < end) {
-            if (adjacent_strip->GetMainAxisVertexWorldPos(adjacent_index) > start) {
-                found = true;
-                if (fan < 0) fan = AddFanBaseVertex(strip, i);
-                if (previous < 0) previous = AddDuplicateEdgeVertex(strip, i);
-                long added = AddCompositeVertex(strip, i, adjacent_strip, adjacent_index);
-                if (flip) AddPoly(fan, added, previous);
-                else AddPoly(fan, previous, added);
-                previous = added;
+            bool found = false;
+            long fan = -1;
+            if (adjacent_strip) {
+                while (adjacent_strip->GetMainAxisVertexWorldPos(adjacent_index) < end) {
+                    if (adjacent_strip->GetMainAxisVertexWorldPos(adjacent_index) > start) {
+                        found = true;
+                        if (fan < 0) fan = AddFanBaseVertex(strip, i);
+                        if (previous < 0) previous = AddDuplicateEdgeVertex(strip, i);
+                        long added = AddCompositeVertex(strip, i, adjacent_strip, adjacent_index);
+                        if (flip) AddPoly(fan, added, previous);
+                        else AddPoly(fan, previous, added);
+                        previous = added;
+                    }
+                    long pos = adjacent_strip->GetMainAxisVertexWorldPos(adjacent_index);
+                    if (++adjacent_index == adjacent_strip->PeekVertexCount()) {
+                        if (vertical) adjacent_strip = map->GetLandscapeMap()->GetEdgeStrip(x, pos, height - pos + world_y, side);
+                        else adjacent_strip = map->GetLandscapeMap()->GetEdgeStrip(pos, y, width - pos + world_x, side);
+                        if (!adjacent_strip) break;
+                        adjacent_index = adjacent_strip->FindVert(pos) + 1;
+                    }
+                }
+                if (found) {
+                    long added = AddDuplicateEdgeVertex(strip, i + 1);
+                    if (flip) AddPoly(fan, added, previous);
+                    else AddPoly(fan, previous, added);
+                    previous = added;
+                    indices[vert.IndexBufferIndex] = strip->GetFanBaseVert(vert.FanBaseIndex).VertexBufferIndex;
+                } else {
+                    previous = -1;
+                    indices[vert.IndexBufferIndex] = vert.VertexBufferIndex;
+                }
             }
-            long pos = adjacent_strip->GetMainAxisVertexWorldPos(adjacent_index);
-            if (++adjacent_index == adjacent_strip->PeekVertexCount()) {
-                if (vertical) adjacent_strip = map->GetLandscapeMap()->GetEdgeStrip(x, pos, height - pos + world_y, side);
-                else adjacent_strip = map->GetLandscapeMap()->GetEdgeStrip(pos, y, width - pos + world_x, side);
-                if (!adjacent_strip) break;
-                adjacent_index = adjacent_strip->FindVert(pos) + 1;
-            }
-        }
-        if (found) {
-            long added = AddDuplicateEdgeVertex(strip, i + 1);
-            if (flip) AddPoly(fan, added, previous);
-            else AddPoly(fan, previous, added);
-            previous = added;
-            indices[vert.IndexBufferIndex] = strip->GetFanBaseVert(vert.FanBaseIndex).VertexBufferIndex;
-        } else {
-            previous = -1;
-            indices[vert.IndexBufferIndex] = vert.VertexBufferIndex;
-        }
-        }
         }
     }
 }

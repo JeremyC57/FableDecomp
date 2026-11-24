@@ -129,3 +129,9 @@ loop shapes -- plus two existing lane devices, each needed: `#pragma inline_dept
 bytes equal the copy landed 0x00D62480 already emits (HEAD debt); `??1CSpawnedFuncBase` and `??_GCIsThingAlive` differ, not called, equal to
 landed rows' copies. **Question for A** (notes/00ed8680/ESCALATE.md): EXTRA_RULES 2026-11-21 does not list a differing copy the row's own
 function calls under a symbol HEAD already binds -- hold or debt?
+
+**Update on the twins (B24C11, debug build read):** FableWin's TesselateEdge (0x02CC14F0 water) gives the template's real text (an
+`adj_strip = 0` init, a `next_water` reference, asserts in the loop and helpers, `AddCompositeVertex(strip, i, adj_strip, adj_index, vertical)`,
+FableWin's FindFirstWaterAdjacentVertex / IterateThroughAdjacentVerts). With ALL of it (agent's c11/bd_full.cpp) the SEA twin still
+matches (fg and masked compare) and no longer needs the "start via GetWaterVertex(i)" device, so the staged sea text above will be superseded
+by that evidenced form once the water twin matches too (water: same 16-hunk register residue).

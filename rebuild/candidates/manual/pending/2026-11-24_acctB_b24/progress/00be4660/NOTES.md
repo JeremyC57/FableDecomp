@@ -237,3 +237,46 @@ hvar.py (header-overlay variants), var.py-style text variants. No payload for th
 - Callees: retail calls CArray<CTVertexWaterBackground>::push_back(const T&) 0x00BE4F90 x4 (the COMDAT right after the row, rep movsd
   of 14 dwords), vector<unsigned short>::_M_insert_overflow 0x005135D0 x10 (our copy EQ, pickany_vs_retail), GetEdgeStrip x4.
 - No new grade beyond the baseline. Next (unchanged from B24C5): the y-piece colouring order (c2prio on S-form water v sea).
+## B24C11 (2026-11-24) -- debug build read (owner's FableWin.exe on the lane)
+- Tools (c11/): pair.sh (= c3/pair.sh without the pipe into head), build.py + gr.sh (assemble water / sea TUs from one template body,
+  optional --asserts dead arms, --comp AddCompositeVertex), fwbody.py (FableWin-form body generator with switches), wdd.sh (water
+  listing + dd v c11/retail.dis), res.py / str.py (FableWin ILT-thunk names, assert strings). Baseline b0 = c3/gx/b_gba1.cpp:
+  water DIFFER(2381v2349) 16 hunks, sea RELOCATION_MATCH.
+- FableWin CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge 0x02CC14F0, statement by statement:
+  `adj_strip = 0; adj_index = 0; FindFirstWaterAdjacentVertex(..); previous = -1;` loop: `water = GetWaterVertex(i)`, `next_water =
+  GetWaterVertex(i + 1)`, `if (water.EdgeIndexBufferIndex == 0xffff) previous = -1; else { vert = GetVert(water.LVI); next_vert =
+  GetVert(next_water.LVI)` (both NEVER read) `start = Main(water.LVI); end = Main(next_water.LVI); if (end - start <= 1 ||
+  next_water.LVI != water.LVI + 1) previous = -1; else { found / fan; while (adj_strip && Main(..) < end) { ASSERT
+  "adj_strip_index<adj_strip->PeekWaterVertexCount()"; ... added = AddCompositeVertex(strip, i, adj_strip, adj_index, vertical)
+  (?AddCompositeVertex@..@@AAEGPAVCPatchTesselationEdgeStrip@@J0J_N@Z, body = AddDuplicateEdgeVertex on the adjacent strip) ...;
+  IterateThroughAdjacentVerts(..) } if (found) { ASSERT "last_new_edge_vertex>=0"; ... if (water.FanBaseIndex != 0xffff) { named
+  CWaterFanBaseVertex ref; indices[..] = ref.VertexBufferIndex; } else indices[..] = 0xffff; } else {...} } }`.
+  Water helpers (AddDuplicateEdgeVertex / AddCompositeVertex / AddFanBaseVertex) each carry ASSERT "vert.WorldX<MAX_SWORD" and
+  "vert.WorldY<MAX_SWORD" (fan.WorldX/Y in the fan helper; MAX_SWORD = 0x7fff by the /Od compare); the sea helpers have none.
+  FindFirstWaterAdjacentVertex 0x02CC5100: `strip = GetEdgeStrip(); loop { if (!strip) break; index = FindWaterVert(vertical ? y :
+  x); if (index < PeekWaterVertexCount()) break; size = PeekSize(); if (vertical) y += size; else x += size; length -= size; if
+  (length <= 0) { strip = 0; index = 0; break; } strip = GetEdgeStrip(); }`. IterateThroughAdjacentVerts 0x02CC54A0: `length = y +
+  length - PeekEndPos()` (x likewise) and `if (length <= 0) { strip = 0; index = 0; } else FindFirstWaterAdjacentVertex(..)`.
+- Graded (c11/gr.sh, one switch at a time on the S-form): next_water ref alone or unused vert refs alone: water 21 / sea DIFFER 10;
+  start through the `water` ref alone: water 17 / sea 19-20; `||` form, AddCompositeVertex, dead-arm asserts, adj_strip = 0,
+  named fan-base ref, the FableWin helper texts (c11/ov_f / ov_i1 / ov_i2 / ov_all): each inert (16 / RM).
+  The FULL FableWin form (all of them together: c11/bd_full.cpp, overlay c11/ov_c = repo-current + helper texts + an
+  AddCompositeVertex declaration under FABLE_RETAIL_CWATERPATCHTESSELATORBASE_COMPOSITE): water 16 hunks (byte-identical residue)
+  and SEA STILL RELOCATION_MATCH -> the evidenced template text; it replaces the "start through GetWaterVertex(i)" device (the
+  next_water / vert refs make start through `water` correct). c11/w_full.cpp, s_full.cpp.
+- Residue unchanged (c11/w_full.dd, 15 blocks): y param piece edx + `mov ebp,edx` (retail loads y straight into ebp at
+  0x00BE4689); loop i start `xor eax,eax .. mov [esp+44h],eax` v ours immediate store to [esp+40h]; the [esp+40h]/[esp+44h] slot pair
+  swapped; the rest are alignment jumps. Row-1 lesson tried: a zero-byte barrier (_ReadWriteBarrier) or a pointer store after
+  `water` makes water worse (35 / 36) -> row 2 does not lack row 1's ingredient.
+- Unexplained /Od detail (both TesselateEdges and FindFirst): `xor r,r ; je <loop init> ; jmp <function end>` right before the
+  main loop (FableWin 0x02CC15A1, 0x02CBCDDD, 0x02CC512D) -- a constant condition guarding the loop (macro?); not yet modelled.
+- (B24C11) Constant guard (FableWin's `xor r,r ; je ; jmp end` = `if (<constant 0>) return;`, by a VC7.1 /Od test of `if (!n) break`
+  -> `cmp ; jne ; jmp end`): `if (0) return;`, a `static const bool` false, a #define 0 after `previous = -1`, and `if (0) return;`
+  after FindFirst's first GetEdgeStrip (overlay c11/ov_g): all inert (16 / RM); a non-constant guard (extern const bool) emits code
+  (17 / sea 8). Row 1 likewise inert (../00be3970/c11/gd0 = 25).
+- (B24C11) Sea under the full form: q.py (verify_and_land compare, raw bytes with relocations masked) also says RELOCATION_MATCH
+  for c11/s_full.cpp; pick-any copies not re-checked. The staged sea text (00be4fe0/differ, start via GetWaterVertex(i)) may be
+  superseded by this evidenced form; c11/ov_c is a probe overlay (adds FABLE_RETAIL_CWATERPATCHTESSELATORBASE_COMPOSITE and the
+  FableWin helper texts onto the repo-current header) -- not yet a hand-back overlay.
+- (B24C11) differ/00be4660.cpp left as the z2 W-form (4 hunks, conflicts with the sea template); the evidenced full form is saved as
+  differ/00be4660_fwform.cpp (16 hunks). STATUS.tsv: my first write replaced the append log; restored from the earlier lines + B24C11.
