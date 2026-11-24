@@ -363,7 +363,7 @@ line	tag	address	correct_symbol	status	other_spellings
 367	529	00988110	?EnablePixelShaders@CShaderRenderManager@@QAEXXZ	closed	
 368	529	00988190	?DisablePixelShaders@CShaderRenderManager@@QAEXXZ	closed	
 369	529	0099b2c0	?ToCharString@CWideString@@QBE?AVCCharString@@XZ	closed	
-370	529	00998c90	?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z	partial	?ExpandPath@?A0x116aaba5@@YI?AVCWideString@@PAV2@0@Z
+370	529	00998c90	?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z	closed	
 371	529	0099ebf0	??0CCharString@@QAE@PBDJ@Z	partial	??0CCharString2@@QAE@HH@Z || ??0CCharString@@QAE@PBDH@Z || ??0CCharString@NFactory007f1b70@@QAE@PBDH@Z || ??0CCharString@X_006e11f0@@QAE@PBDH@Z || ??0CDeedReactionName@@QAE@HH@Z || ??0CRetailString@@QAE@PBDJ@Z || ??0CSectionName@@QAE@PBDH@Z || ??0InitGuard@@QAE@PAHH@Z || ??0ScopedGuard@@QAE@PBDH@Z || ?Ctor@CCharString@@QAEXPBDH@Z || ?Do@Helper@@QAEXPBDH@Z || ?Init@CCharString@@QAEXPBDH@Z || ?ctor@
 372	529	009ccdc0	?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z	partial	?FindEntry@CGraphicDataBank@@QAEKABVCCharString@@@Z || ?FindIndexBySymbol@CBankFileCallView@@QBEKABVCCharString@@@Z || ?GetFont@CFontBank@NUISystem@@QAEPAUCFont@2@ABVCCharString@2@@Z
 373	529	009cd620	?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z	partial	?AddEntry@CGraphicDataBank@@QAEXABVCCharString@@K0V?$CCountedPointer@UCBankStateBlock@@@@@Z
@@ -9947,7 +9947,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12409	land1122p26	00429fbe	?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z	closed	
 12410	land1122p26	00430046	?clear@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAEXXZ	closed	
 12411	land1122p26	00434d60	?IsRenderingNormalScene@CDisplayEngine@@QBE_NXZ	open	?IsActive@CFrontEnd@@QAE_NXZ
-12412	land1122p26	004a0ae0	?AutoSave@CWorld@@QAE_N_N@Z	open	?Save@CWorld@@QAEXH@Z
+12412	land1122p26	004a0ae0	?AutoSave@CWorld@@QAE_N_N@Z	closed	
 12413	land1122p26	004c2dd0	??0C3DAnimationBlendState@@QAE@XZ	open	??0C3DAnimationBlendState@
 12414	land1122p26	005121c0	?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ	no_binding	
 12415	land1122p26	005121d0	?GetWorkBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ	no_binding	
@@ -10726,3 +10726,9 @@ line	tag	address	correct_symbol	status	other_spellings
 13566	nf332	004d2a44	?Alloc@CTCRandomAppearanceMorph@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
 13567	nf332	004d4bde	?Alloc@CTCSummonSpell@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
 13568	acctB_b24 PRIORITY	00e95380	?Return@TRetVoid@@QAEXXZ	open	?M@C00e95380@@QAEXXZ
+13569	nf333	004d4759	?Alloc@CTCBoastingCrowdControl@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13570	nf333	004d3c31	?Alloc@CTCShapeManager@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13571	nf333	0083ebd0	?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z	partial	?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
+13572	nf334	00997f80	?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ	partial	@FableGetCurrentPath_00997F80@8
+13573	acctB_b24C7	00a3c310	?AddCombinationBlend@C3DAnimationBlendState@@QAEXABVC3DAnimationStateAlpha@@@Z	open	?AddCombinationBlend@C3DAnimationBlendState@@QAEXPAVC3DAnimationStateAlpha@@@Z
+13574	acctB_b24C7	004c2dd0	??0C3DAnimationBlendState@@QAE@XZ	open	??0C3DAnimationBlendState@
