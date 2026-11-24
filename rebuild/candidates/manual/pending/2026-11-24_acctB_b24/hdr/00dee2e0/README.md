@@ -1,0 +1,2 @@
+# 0x00DEE2E0 overlay (B24S2)
+- engine/NScript_CQ_SecretPassageScript.h: current repo header + FABLE_RETAIL_CQ_SECRETPASSAGESCRIPT_CMOTHERTORTURE (nested CMotherTorture : CEntityScriptBase, Ego_r.pdb 28-byte layout ParentClass* +0x14 / PMasterData +0x18; FableWin.pdb names; vtable 0x012DDE6C slots). Re-applied from the old hand838 overlay onto today's header, ParentClass a pointer per struct_layouts_egor.tsv.

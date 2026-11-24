@@ -163,3 +163,15 @@ Owner: "yes use it and mark inferred". Moved from held_needs_owner/ into rows/ a
 any binary on hand -- notes/0070d940_condition_evidence.md). Re-verified earlier: RELOCATION_MATCH PASS at stock flags, overlay hdr/0070d940/
 additive, every emitted copy EQ; warnings: DELTA_NOTIONAL_ZERO label, `_$E2` TU-local atexit thunk equal to retail 0x01229630. Link note for A:
 the row carries a verbatim copy of landed CAnimSet::GetMeshAnim 0x0070C900's body (your queued re-row onto the headers removes it).
+
+## 0x00DEE2E0 NScript::CQ_SecretPassageScript::CMotherTorture::Main: READY under A's combined pick-any rule (B24S2 final payload re-verified 2026-11-24: RELOCATION_MATCH PASS, stock flags, no warnings). Pick-any: the leaf-called `~MovieBase` copy differs from 0x006E7B80 but is identical to landed 0x00D62480's (the 0x00ED8680 case A landed as debt; needs the `// Pick-any:` note at landing); `~CIsThingAlive` / `??_GCScriptThing` not leaf-referenced, identical to 0x00DE9690's; `??_GCIsThingAlive` differs (NOVTABLE drops the base vtable store), not leaf-referenced. Earlier note:
+Coordinator re-verify of the agent's payload: RELOCATION_MATCH PASS at STOCK flags, strict vland, no warnings. Overlay
+NScript_CQ_SecretPassageScript.h +24, additive. Uses today's recipe (CIsThingAlive ctor / dtor under inline_depth(0) with
+CPREDICATEBASE_NOVTABLE, the H40 form of 0x00DE9690 / 0x00ED8680; WideScreen FORCEINLINE ctor opt-in). Ready once the agent's pick-any
+result is in.
+
+## Lane stopped (owner, 2026-11-24)
+Owner: "stop relaunching after two more agent finishes". The last agent (B24S2) has finished; no agent runs. Every unmatched row's state
+(best draft, notes, escalations) is in progress/<addr>/ and on the lane in /opt/fable_lane/w22/b24{a,b,c,d,e}/<addr>/. Open owner question
+left by B24S2: 0x00DF5000 matches (fg only, not raw-compared) if push_back is force-inlined for its TU -- accept such an opt-in or hold
+(progress/00df5000/ESCALATE.md).

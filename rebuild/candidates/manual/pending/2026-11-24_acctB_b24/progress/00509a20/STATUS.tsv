@@ -1,2 +1,2 @@
 address	name	grade	grades_used	note
-00509a20	CWorldMap::GetMapNavigationAreaUpdateInfo	DIFFER(3272v3120)	12	ported onto today headers (hdr/ overlay); overflow-path copy ctor split + frame +20 open
+00509a20	CWorldMap::GetMapNavigationAreaUpdateInfo	DIFFER(3272v3120)	14	in progress: overflow-path copy ctor split, frame +20, extra prologue zero (NOTES.md B24S2 section)

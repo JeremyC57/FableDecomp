@@ -19,3 +19,4 @@ TIMEOUT	NEEDS_PORT (B24A9): includes engine/CEngineThemeDef.h, which now lives o
 - Nested CScriptThing copy CALLED inside an expanded predicate / thread ctor: `#pragma inline_depth(0)` round the row-local inline
   CIsThingAlive ctor + FABLE_RETAIL_CPREDICATEBASE_NOVTABLE (H40), and round an explicit CSpawnedFunc1<..> ctor specialization (0x00ED5F50).
 B24A11: untouched (context spent on 0x00DE9690 / 0x00D04AE0 / 0x00D67890)
+- B24S2 (2026-11-24, last agent of the day): untouched -- context spent on 0x00DEE2E0 (matched), 0x00DF5000, 0x00509A20, 0x00DAADD0, 0x00EF9280.

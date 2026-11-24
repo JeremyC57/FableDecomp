@@ -1,0 +1,1 @@
+- 0x00DEE2E0: parked 'frame one dword short' residue was a stale model; re-port on today's headers (ParentClass pointer per Ego_r) + matched sibling preamble = match.

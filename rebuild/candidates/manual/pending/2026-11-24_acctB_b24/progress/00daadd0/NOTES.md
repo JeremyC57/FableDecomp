@@ -30,3 +30,9 @@
   which push_back has heuristic info and _Construct not (flag bit 2 of [sym+0x69] clear / no record [sym+0x99]); writer of bit 2 /
   record at c2 0x107FF746..0x107FF768. R0 would also need <= 3603.
 - Untested: FableWin's `if (false) {} else for` loop form; EXTRA_RULES.md not read this session.
+## B24S2 (2026-11-24): 2 grades, no change
+- s2/f1.cpp: FableWin's `if (false) {} else for (long i = 0; i < 5; ++i)` loop form = DIFFER(3406v3306) 35 hunks (unchanged; the split
+  is a budget question, not a frequency one, as the trace said: push_back score 37 << 74 everywhere).
+- Probe s2/p1.cpp (s2/ph overlay, diagnostic): `_Construct` as a template WITHOUT the `inline` keyword (hypothesis: flag bit 2 = declared
+  inline, which would send only _Construct to the budget test) = unchanged 3406v3306. So the keyword is not the bit.
+- Still open; ESCALATE.md hypothesis stands. Next: identify what writes [sym+0x69] bit 2 / [sym+0x99] at c2 0x107FF746..768 (B24A12).

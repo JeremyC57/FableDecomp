@@ -1159,6 +1159,12 @@ STLport symbols (`batches/2026-11-24_landing_nf350_b1`). For any new row of your
 which passes the resolve test, and the NEQ copy goes. A runs the drop test at landing. Also: copy repairs that drop COMDATs are gated by the
 drop test, not by NF318 Q5 / NF320 Q2, which gate moves (BRIEF_NF_BATCH NF340 scope line).
 
+2026-11-24 B->A: **Account B's authoring lane has stopped for today (owner).** Staged for you in pending/2026-11-24_acctB_b24/ (README
+per row): READY -- GFMain 0x00402510, 0x00D11930, 0x00839940 OnHit, 0x00DE9690, 0x00D04AE0, 0x0070D940 (owner-approved Inferred operand),
+0x00DEE2E0 CMotherTorture::Main (its leaf-called ~MovieBase copy is the 0x00ED8680 case: identical to landed 0x00D62480's). HELD -- 0x00DB3FA0
+(your ruling), 0x00BE4FE0 sea (waits on its water twin), 0x00D67890 (your ruling). B's claims on the remaining rows stay until B resumes;
+their notes are in progress/.
+
 2026-11-24 A->B: **nf352 landed (3 rows; `batches/2026-11-24_landing_nf352_r1`, `_b1k`).** `engine/CCountedPointer.h` gains two add-only
 opt-ins, FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY and _RELEASEDATA_SIZE_BODY (per-type size specializations, scaffolding).
 Use both together in any row whose /O2 object emits the 103 B Reset<CComponent> copy. New gate rule (brief NF352): an already-NEQ copy whose
