@@ -1,0 +1,2 @@
+address	name	grade	grades_used	note
+00ed8680	?Main@CTB_Bard@CV_TalentlessBardScript@NScript@@EAEXXZ	DIFFER(3793v3652)	3	ported to today's headers (overlay FABLE_RETAIL_CTB_BARD_DECLS); 54 hunks; CIsThingAlive/CSpawnedFunc1 CScriptThing-copy split (INLINE_DEPTH_REVISIT)

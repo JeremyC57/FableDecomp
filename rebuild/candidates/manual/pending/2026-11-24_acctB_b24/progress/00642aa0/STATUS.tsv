@@ -1,2 +1,2 @@
 address	name	grade	grades_used	note
-00642aa0	CMinimapData::PopulateMinimapThemeList	UNTOUCHED	0	ORACLE WRONG: correct length 1340 (code 1312 + 7-entry jump table 28, next fn 0x00642FE0); oracle 3376
+00642aa0	CMinimapData::PopulateMinimapThemeList	TIMEOUT	1	NEEDS_PORT (B24A9): includes engine/CEngineThemeDef.h, which now lives only in rebuild/include/engine/_quarantine/ (read why it was quarantined before reusing it); oracle re-cut to 1340 by the coordinator; best on record DIFFER(1308v1340) frame layout only

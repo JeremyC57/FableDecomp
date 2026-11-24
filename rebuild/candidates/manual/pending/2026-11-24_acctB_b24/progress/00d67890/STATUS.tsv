@@ -1,0 +1,2 @@
+address	name	grade	grades_used	note
+00d67890	?Main@CQ_GuildTrainingWoodsWillScript@NScript@@UAEXXZ	TIMEOUT	1	NEEDS_PORT (B24A9): includes engine/CQ_GuildTrainingWoodsWillScript.h, not in the repo (checked: no GuildTrainingWoodsWill header under rebuild/include, any prefix); best on record DIFFER(3472v3426) (resize(n) expansion)

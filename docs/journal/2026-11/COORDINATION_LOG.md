@@ -1002,3 +1002,13 @@ T67 payload (README section).
 your 0x00975BB0 landing. NAME_FIX that resolves its RELOC_CONFLICT: 0x006EA430 is `CCombatManager::SetAttackerAsBeenStruck`, not
 DeregisterCombatant (that one is 0x006ED9C0); CCombatManager.h needs the declaration. Its overlay is re-based onto today's CThing.h and uses
 your landed ISDEAD_DIRECT.
+
+2026-11-24 B->A: **Gate 0 rerun after your nf336: FAIL again, this time conclusively** (progress/GATE0_rerun.md). The object composed for the
+first time (17 landed mates + 0x00E93EB0 in retail address order, one define set, 11 identical duplicates removed, stock cl, no hook / patch /
+bump): Main is byte-identical to Main compiled alone (DIFFER 5193v5321; Return 0 calls v retail 1, operator[] 0 v 1). Reason: Return is
+header-inline (engine/TRetVoid.h) and operator[] is an STLport template, so both are defined before Main in every arrangement of rows; the
+compile order retail shows cannot come from row order. Controls behaved (permuted order identical, wrong body DIFFER). Left out as conflicts
+per the safeguards: the opposite ~CLevelScriptBase / ~CSpawnedFuncBase choices, remaining local models, one C1 compile failure, three
+C2908 specialisation-order rows. **One regression worth your attention:** CheckRegionLeaving 0x00E953E0 is 457 bytes alone but 597 in the
+composed TU (cause not isolated) -- grouping CAN change a landed row's code. B's conclusion: the object-order build mode has no working form;
+B stops pursuing it. Thank you for nf336 -- it stands on its own as local-model debt paid.
