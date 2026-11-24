@@ -1,0 +1,89 @@
+# H 00605570 src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructRegionDescription_00605570.cpp grade=RELOCATION_MATCH leaf=?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z flags=/d2inlT107 overlay=-
+# pk_all leaf ?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z source_a=True 
+PK  EQ  EQ  00405c10  b  pickany  5  leaf=n reach=n ??2@YAPAXIPAX@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0__false_type@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0forward_iterator_tag@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0bidirectional_iterator_tag@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?__stl_throw_out_of_range@std@@YAXPBD@Z
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?GetName@CRegion@@QBEABVCCharString@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  25  leaf=n reach=n ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+PK  NOADDR  NOADDR  -  -  pickany  6  leaf=n reach=n ?Get@CMainGameComponent@@SIPAV1@XZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  8  leaf=n reach=n ?GetCurrentMapNumber@CThing@@QBEJXZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?GetParentThing@CTCBase@@QAEAAVCThing@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  34  leaf=n reach=n ??0CUIRegionInfo@CTCInventoryMap@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?begin@?$vector@JV?$allocator@J@std@@@std@@QAEPAJXZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?end@?$vector@JV?$allocator@J@std@@@std@@QAEPAJXZ
+PK  NOADDR  NOADDR  -  -  pickany  20  leaf=n reach=n ??0?$CDefPointer@$$CBVCRegionDef@@@@QAE@ABV0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  10  leaf=n reach=n ?IsNull@?$CDefPointer@$$CBVCRegionDef@@@@QBE_NXZ
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+PK  NEQ  NEQ  00429c53  b  pickany  53  leaf=n reach=n ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??C?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?Get@?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  25  leaf=n reach=n ?size@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@QBEIXZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??0?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@W4ENullDef@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?Get@?$CDefPointer@$$CBVCRegionDef@@@@QBEPBVCRegionDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ?Release@?$CDefPointer@$$CBVCRegionDef@@@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+PK  NEQ  NEQ  004291de  b  pickany  53  leaf=n reach=n ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+PK  EQ  EQ  00428b10  b  pickany  11  leaf=n reach=y ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?begin@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@QAEPAVCUIRegionInfo@CTCInventoryMap@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ?Release@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  8  leaf=n reach=n ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+PK  NOADDR  NOADDR  -  -  pickany  8  leaf=n reach=n ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+PK  NOADDR  NOADDR  -  -  pickany  24  leaf=n reach=n ??$_Construct@VCUIRegionInfo@CTCInventoryMap@@V12@@std@@YAXPAVCUIRegionInfo@CTCInventoryMap@@ABV12@@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ?size@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEIXZ
+PK  NOADDR  NOADDR  -  -  pickany  24  leaf=n reach=n ??R?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@QBE_NABW4ETCInterfaceType@@0@Z
+PK  NOADDR  NOADDR  -  -  pickany  23  leaf=n reach=n ?_M_set@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@IAEXPAVCUIRegionInfo@CTCInventoryMap@@00@Z
+PK  NOADDR  NOADDR  -  -  pickany  31  leaf=n reach=n ?allocate@?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@QAEPAVCUIRegionInfo@CTCInventoryMap@@IPBX@Z
+PK  NOADDR  NOADDR  -  -  pickany  10  leaf=n reach=n ?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?deallocate@?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@QAEXPAVCUIRegionInfo@CTCInventoryMap@@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  17  leaf=n reach=n ??$max@I@std@@YAABIABI0@Z
+PK  NOADDR  NOADDR  -  -  pickany  48  leaf=n reach=n ??$__uninitialized_copy@PAVCUIRegionInfo@CTCInventoryMap@@PAV12@@std@@YAPAVCUIRegionInfo@CTCInventoryMap@@PAV12@00ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  46  leaf=n reach=n ??$__uninitialized_fill_n@PAVCUIRegionInfo@CTCInventoryMap@@IV12@@std@@YAPAVCUIRegionInfo@CTCInventoryMap@@PAV12@IABV12@ABU__false_type@0@@Z
+PK  EQ  EQ  0050e540  a,b  pickany  112  leaf=y reach=y ??$__find@PAJJ@std@@YIPAJPAJ0ABJABUrandom_access_iterator_tag@0@@Z
+PK  EQ  ADDR_CONFLICT(EQ)  00a7d0e0  c  pickany  112  leaf=y reach=y ??$__find@PAJJ@std@@YIPAJPAJ0ABJABUrandom_access_iterator_tag@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  48  leaf=n reach=n ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$_Destroy@VCUIRegionInfo@CTCInventoryMap@@@std@@YAXPAVCUIRegionInfo@CTCInventoryMap@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0random_access_iterator_tag@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??1?$CDefPointer@$$CBVCRegionDef@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??C?$CDefPointer@$$CBVCRegionDef@@@@QBEPBVCRegionDef@@XZ
+PK  NEQ  NEQ  00429c6f  a,b  pickany  103  leaf=y reach=y ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  15  leaf=n reach=n ??A?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@QAEAAVCUIRegionInfo@CTCInventoryMap@@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??1?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  15  leaf=n reach=n ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+PK  NOADDR  NOADDR  -  -  pickany  13  leaf=n reach=n ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+PK  EQ_AMBIG  EQ  0040f020  b  pickany  60  leaf=n reach=n ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+PK  EQ_AMBIG  EQ  006804c0  c  pickany  60  leaf=n reach=n ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  26  leaf=n reach=n ??$find@PAJJ@std@@YAPAJPAJ0ABJ@Z
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  50  leaf=n reach=n ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$__destroy_aux@PAVCUIRegionInfo@CTCInventoryMap@@@std@@YAXPAVCUIRegionInfo@CTCInventoryMap@@0ABU__false_type@0@@Z
+PK  EQ  EQ  00419650  b,c  pickany  19  leaf=n reach=n ?GetPRegionDef@CRegion@@QBE?AV?$CDefPointer@$$CBVCRegionDef@@@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  37  leaf=n reach=n ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+PK  NEQ  NEQ  0042b312  b  pickany  116  leaf=n reach=n ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$__destroy@PAVCUIRegionInfo@CTCInventoryMap@@V12@@std@@YAXPAVCUIRegionInfo@CTCInventoryMap@@00@Z
+PK  EQ  EQ  00410de0  b,c  pickany  63  leaf=n reach=n ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$_Destroy@PAVCUIRegionInfo@CTCInventoryMap@@@std@@YAXPAVCUIRegionInfo@CTCInventoryMap@@0@Z
+PK  EQ  EQ  004118c0  b  pickany  58  leaf=n reach=n ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  145  leaf=n reach=n ??$GetTC@VCTCHeroStats@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCHeroStats@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  14  leaf=n reach=n ?_M_clear@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@IAEXXZ
+PK  EQ  EQ  00618420  a,b  pickany  303  leaf=y reach=y ?_M_insert_overflow@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@IAEXPAVCUIRegionInfo@CTCInventoryMap@@ABV34@ABU__false_type@2@I_N@Z
+PK  NOADDR  NOADDR  -  -  pickany  64  leaf=n reach=n ?push_back@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@QAEXABVCUIRegionInfo@CTCInventoryMap@@@Z
+# old checker (pickany_vs_retail.py)
+OLD EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+OLD NEQ 00429c53 53 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ not referenced by the leaf
+OLD NEQ 004291de 53 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ not referenced by the leaf
+OLD EQ  00428b10 11 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z 
+OLD EQ  0050e540 112 ??$__find@PAJJ@std@@YIPAJPAJ0ABJABUrandom_access_iterator_tag@0@@Z 
+OLD NEQ 00429c6f 103 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z LEAF-REFERENCED
+OLD EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+OLD EQ  00419650 19 ?GetPRegionDef@CRegion@@QBE?AV?$CDefPointer@$$CBVCRegionDef@@@@XZ 
+OLD NEQ 0042b312 116 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z not referenced by the leaf
+OLD EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+OLD EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+OLD EQ  00618420 303 ?_M_insert_overflow@?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@IAEXPAVCUIRegionInfo@CTCInventoryMap@@ABV34@ABU__false_type@2@I_N@Z 

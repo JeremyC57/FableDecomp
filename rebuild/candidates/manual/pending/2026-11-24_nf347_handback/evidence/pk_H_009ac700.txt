@@ -1,0 +1,26 @@
+# H 009ac700 src=/home/user/FableDecomp/rebuild/src/compiled/00/9a/stdmap_operator_009ac700.cpp grade=RELOCATION_MATCH leaf=??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z flags= overlay=-
+# pk_all leaf ??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z source_a=True 
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0__false_type@std@@QAE@XZ
+PK  EQ  EQ  0041c820  b  pickany  16  leaf=n reach=n ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  19  leaf=n reach=n ??1?$pair@$$CBVCCharString@@V1@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  13  leaf=n reach=n ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@ABU01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  6  leaf=n reach=n ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QBEAAU?$pair@$$CBVCCharString@@V1@@1@XZ
+PK  NOADDR  NOADDR  -  -  pickany  32  leaf=n reach=n ??0?$pair@$$CBVCCharString@@V1@@std@@QAE@ABVCCharString@@0@Z
+PK  NOADDR  NOADDR  -  -  pickany  7  leaf=n reach=n ?key_comp@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QBE?AU?$less@VCCharString@@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@1@@Z
+PK  EQ  EQ  00429950  a,b  pickany  88  leaf=y reach=y ??M?$CBasicString@D@@QBE_NABV0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??$__default_constructed_aux@VCCharString@@@std@@YA?AVCCharString@@PAV1@ABU__false_type@0@@Z
+PK  NEQ  NEQ  009e6530  b  pickany  39  leaf=n reach=n ??MCCharString@@QBE_NABV0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  31  leaf=n reach=n ?insert@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@V1@@2@@Z
+PK  NOADDR  NOADDR  -  -  pickany  7  leaf=n reach=n ?key_comp@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QBE?AU?$less@VCCharString@@@2@XZ
+PK  NEQ  NEQ  0042aab3  b  pickany  43  leaf=n reach=n ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  21  leaf=n reach=n ?lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@2@ABVCCharString@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??$__default_constructed@VCCharString@@@std@@YA?AVCCharString@@PAV1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ?end@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  21  leaf=n reach=n ?lower_bound@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@2@ABVCCharString@@@Z
+# old checker (pickany_vs_retail.py)
+OLD EQ  0041c820 16 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+OLD EQ  00429950 88 ??M?$CBasicString@D@@QBE_NABV0@@Z 
+OLD NEQ 009e6530 39 ??MCCharString@@QBE_NABV0@@Z not referenced by the leaf
+OLD NEQ 0042aab3 43 ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z not referenced by the leaf

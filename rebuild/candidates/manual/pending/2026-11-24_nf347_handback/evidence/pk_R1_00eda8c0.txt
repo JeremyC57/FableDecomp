@@ -1,0 +1,36 @@
+# R1 00eda8c0 src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF347/work/probe/00eda8c0_R1.cpp grade=RELOCATION_MATCH leaf=?ProcessSongsAge@CV_TalentlessBardScript@NScript@@QAEXXZ flags=/d2inlT59 overlay=-
+# pk_all leaf ?ProcessSongsAge@CV_TalentlessBardScript@NScript@@QAEXXZ source_a=True 
+PK  EQ  EQ  00405c10  b  pickany  5  leaf=n reach=n ??2@YAPAXIPAX@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0__false_type@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?Get@?$CDefPointer@$$CBVCScriptDef@@@@QBEPBVCScriptDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  19  leaf=n reach=n ??$_Construct@VCCharString@@V1@@std@@YAXPAVCCharString@@ABV1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ?size@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QBEIXZ
+PK  NOADDR  NOADDR  -  -  pickany  23  leaf=n reach=n ?_M_set@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@00@Z
+PK  NOADDR  NOADDR  -  -  pickany  28  leaf=n reach=n ?allocate@?$allocator@VCCharString@@@std@@QAEPAVCCharString@@IPBX@Z
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?deallocate@?$allocator@VCCharString@@@std@@QAEXPAVCCharString@@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  17  leaf=n reach=n ??$max@I@std@@YAABIABI0@Z
+PK  NOADDR  NOADDR  -  -  pickany  47  leaf=n reach=n ??$__uninitialized_copy@PAVCCharString@@PAV1@@std@@YAPAVCCharString@@PAV1@00ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  45  leaf=n reach=y ??$__uninitialized_fill_n@PAVCCharString@@IV1@@std@@YAPAVCCharString@@PAV1@IABV1@ABU__false_type@0@@Z
+PK  EQ_AMBIG  EQ  004133a0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  NEQ  004509f8  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  004b75e0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  004b77e0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  006f8fa0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  0073d7a0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  0077e0a0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  009a9940  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  00a3f730  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  00a6e570  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  NEQ  00cd22a4  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??C?$CDefPointer@$$CBVCScriptDef@@@@QBEPBVCScriptDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ??$_Destroy@VCCharString@@@std@@YAXPAVCCharString@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  33  leaf=n reach=n ??$__destroy_aux@PAVCCharString@@@std@@YAXPAVCCharString@@0ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  33  leaf=n reach=n ??$__destroy@PAVCCharString@@V1@@std@@YAXPAVCCharString@@00@Z
+PK  NOADDR  NOADDR  -  -  pickany  33  leaf=n reach=n ??$_Destroy@PAVCCharString@@@std@@YAXPAVCCharString@@0@Z
+PK  NOADDR  NOADDR  -  -  pickany  49  leaf=n reach=y ?_M_clear@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXXZ
+PK  NEQ  NEQ  00433530  a,a2,b  pickany  258  leaf=y reach=y ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z
+PK  EQ  EQ  0044bff0  a,b  pickany  59  leaf=y reach=y ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z
+# old checker (pickany_vs_retail.py)
+OLD EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+OLD NEQ 00433530 258 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z not referenced by the leaf
+OLD EQ  0044bff0 59 ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z 

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00ea59e0   RELOCATION_MATCH PASS   Main
+00d58490   RELOCATION_MATCH PASS   Main
+00e8ef80   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00ea59e0 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderBrother::?Main@CLostTraderBrother@CV_LostTraderScript@NScript@@EAEXXZ
+  00d58490 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::?Main@CTheRealGuildmaster@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ
+  00e8ef80 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon::?Main@CGhostGrannySon@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ

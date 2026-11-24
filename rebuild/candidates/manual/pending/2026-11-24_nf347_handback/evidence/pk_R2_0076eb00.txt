@@ -1,0 +1,228 @@
+# R2 0076eb00 src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF347/work/probe/0076eb00_R2.cpp grade=RELOCATION_MATCH leaf=?InitialiseTrails@CTCWeaponTrail@@AAEXXZ flags=/d2inlT65 overlay=-
+# pk_all leaf ?InitialiseTrails@CTCWeaponTrail@@AAEXXZ source_a=True 
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+PK  EQ  EQ  00405c10  b  pickany  5  leaf=n reach=n ??2@YAPAXIPAX@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0__true_type@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0__false_type@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0forward_iterator_tag@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0bidirectional_iterator_tag@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  40  leaf=n reach=n ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+PK  EQ  EQ  0041c780  b  pickany  11  leaf=n reach=n ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+PK  EQ  EQ  0041c7a0  b  pickany  7  leaf=n reach=n ?_M_incr@_List_iterator_base@std@@QAEXXZ
+PK  EQ  EQ  0041c7c0  b  pickany  22  leaf=n reach=n ??9_List_iterator_base@std@@QBE_NABU01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?GetTCGraphicAppearance@CThing@@QAEPAVCTCGraphicAppearance@NGraphicAppearance@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?GetParentThing@CTCBase@@QAEAAVCThing@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  25  leaf=n reach=n ??0C3DVector@@QAE@ABV0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  19  leaf=n reach=n ?StatGetTypeName@CWeaponDef@@SI?AVCCharString@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  19  leaf=n reach=n ??1?$pair@VCCharString@@V1@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?PeekData@?$CBasicString@D@@QBEPBDXZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?GetLength@?$CBasicString@D@@QBEKXZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?begin@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?end@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0?$allocator@VCCharString@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$allocator@VCCharString@@@std@@QAE@XZ
+PK  EQ  EQ  0076dd40  b  pickany  32  leaf=n reach=n ??0?$pair@VCCharString@@V1@@std@@QAE@ABVCCharString@@0@Z
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??0?$CDefPointer@$$CBVCWeaponDef@@@@QAE@W4ENullDef@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?begin@?$vector@_NV?$allocator@_N@std@@@std@@QAEPA_NXZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?end@?$vector@_NV?$allocator@_N@std@@@std@@QAEPA_NXZ
+PK  NOADDR  NOADDR  -  -  pickany  6  leaf=n reach=n ?size@?$vector@_NV?$allocator@_N@std@@@std@@QBEIXZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?begin@?$vector@JV?$allocator@J@std@@@std@@QAEPAJXZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?end@?$vector@JV?$allocator@J@std@@@std@@QAEPAJXZ
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ?size@?$vector@JV?$allocator@J@std@@@std@@QBEIXZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?Get@?$CDefPointer@$$CBVCGlobalDef@@@@QBEPBVCGlobalDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?Get@?$CDefPointer@$$CBVCWeaponDef@@@@QBEPBVCWeaponDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ?Release@?$CDefPointer@$$CBVCWeaponDef@@@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$_STLP_alloc_proxy@PAVCCharString@@V1@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?begin@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?end@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ?size@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QBEIXZ
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?deallocate@?$allocator@VCCharString@@@std@@QAEXPAVCCharString@@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0?$allocator@U?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$allocator@U?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  31  leaf=n reach=n ?allocate@?$allocator@U?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEPAU?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@2@IPBX@Z
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?deallocate@?$allocator@U?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXPAU?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@2@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  5  leaf=n reach=n ??0?$allocator@VCCharString@@@std@@QAE@ABV01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  5  leaf=n reach=n ??0?$allocator@U?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@ABV01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  19  leaf=n reach=n ??$_Construct@VCCharString@@V1@@std@@YAXPAVCCharString@@ABV1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  40  leaf=n reach=n ??$__copy_ptrs@PA_NPA_N@std@@YAPA_NPA_N00ABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  40  leaf=n reach=n ??$__copy_ptrs@PAJPAJ@std@@YAPAJPAJ00ABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ?size@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QBEIXZ
+PK  NOADDR  NOADDR  -  -  pickany  23  leaf=n reach=n ?_M_set@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@V1@@2@00@Z
+PK  NOADDR  NOADDR  -  -  pickany  28  leaf=n reach=n ?allocate@?$allocator@U?$pair@VCCharString@@V1@@std@@@std@@QAEPAU?$pair@VCCharString@@V1@@2@IPBX@Z
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ?size@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QBEIXZ
+PK  NOADDR  NOADDR  -  -  pickany  23  leaf=n reach=n ?_M_set@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@00@Z
+PK  NOADDR  NOADDR  -  -  pickany  28  leaf=n reach=n ?allocate@?$allocator@VCCharString@@@std@@QAEPAVCCharString@@IPBX@Z
+PK  NOADDR  NOADDR  -  -  pickany  33  leaf=n reach=n ??0?$pair@VCCharString@@V1@@std@@QAE@ABU01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  7  leaf=n reach=n ?get_allocator@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QBE?AV?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?deallocate@?$allocator@U?$pair@VCCharString@@V1@@std@@@std@@QAEXPAU?$pair@VCCharString@@V1@@2@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??0?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??0?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  40  leaf=n reach=n ??$__uninitialized_copy@_N@std@@YAPA_NPB_N0PA_NABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  28  leaf=n reach=n ??$__copy_backward_ptrs@_N@std@@YAPA_NPB_N0PA_NABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  28  leaf=n reach=y ??$fill@PA_N_N@std@@YAXPA_N0AB_N@Z
+PK  NOADDR  NOADDR  -  -  pickany  40  leaf=n reach=n ??$__uninitialized_copy@J@std@@YAPAJPBJ0PAJABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  34  leaf=n reach=n ??$__copy_backward_ptrs@J@std@@YAPAJPBJ0PAJABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  30  leaf=n reach=y ??$fill@PAJJ@std@@YAXPAJ0ABJ@Z
+PK  NOADDR  NOADDR  -  -  pickany  34  leaf=n reach=y ??$__copy_backward_ptrs@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@std@@YAPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@PBV10@0PAV10@ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  30  leaf=n reach=y ??$fill@PAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V12@@std@@YAXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@0ABV10@@Z
+PK  NOADDR  NOADDR  -  -  pickany  17  leaf=n reach=n ??$max@I@std@@YAABIABI0@Z
+PK  NOADDR  NOADDR  -  -  pickany  47  leaf=n reach=y ??$__uninitialized_copy@PAVCCharString@@PAV1@@std@@YAPAVCCharString@@PAV1@00ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  45  leaf=n reach=y ??$__uninitialized_fill_n@PAVCCharString@@IV1@@std@@YAPAVCCharString@@PAV1@IABV1@ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  33  leaf=n reach=n ??$__copy@PAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@PAV12@H@std@@YIPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@PAV10@00ABUrandom_access_iterator_tag@0@PAH@Z
+PK  NOADDR  NOADDR  -  -  pickany  23  leaf=n reach=n ?_M_set@?$vector@_NV?$allocator@_N@std@@@std@@IAEXPA_N00@Z
+PK  NOADDR  NOADDR  -  -  pickany  25  leaf=n reach=n ?allocate@?$allocator@_N@std@@QAEPA_NIPBX@Z
+PK  NOADDR  NOADDR  -  -  pickany  23  leaf=n reach=n ?_M_set@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJ00@Z
+PK  NOADDR  NOADDR  -  -  pickany  28  leaf=n reach=n ?allocate@?$allocator@J@std@@QAEPAJIPBX@Z
+PK  NOADDR  NOADDR  -  -  pickany  23  leaf=n reach=n ?_M_set@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@IAEXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@00@Z
+PK  NOADDR  NOADDR  -  -  pickany  28  leaf=n reach=n ?allocate@?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@std@@QAEPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@IPBX@Z
+PK  NOADDR  NOADDR  -  -  pickany  48  leaf=n reach=n ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  13  leaf=n reach=n ??0?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@ABU01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?deallocate@?$allocator@_N@std@@QAEXPA_NI@Z
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?deallocate@?$allocator@J@std@@QAEXPAJI@Z
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?deallocate@?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@std@@QAEXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??$fill_n@PA_NI_N@std@@YAPA_NPA_NIAB_N@Z
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??$__uninitialized_fill_n@PA_NI_N@std@@YAPA_NPA_NIAB_NABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  29  leaf=n reach=n ??$fill_n@PAJIJ@std@@YAPAJPAJIABJ@Z
+PK  NOADDR  NOADDR  -  -  pickany  29  leaf=n reach=n ??$__uninitialized_fill_n@PAJIJ@std@@YAPAJPAJIABJABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$__destroy_aux@PA_N@std@@YAXPA_N0ABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$__destroy_aux@PAJ@std@@YAXPAJ0ABU__true_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  6  leaf=n reach=n ??D?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QBEABVCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ??E?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEAAU01@XZ
+PK  EQ_AMBIG  EQ  004133a0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  NEQ  004509f8  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  004b75e0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  004b77e0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  006f8fa0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  0073d7a0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  0077e0a0  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  009a9940  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  00a3f730  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  EQ  00a6e570  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  EQ_AMBIG  NEQ  00cd22a4  c  pickany  30  leaf=n reach=n ??_GCCharString@@QAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  49  leaf=n reach=n ??0CWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@QAE@ABV01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  40  leaf=n reach=n ??_G?$pair@VCCharString@@V1@@std@@QAEPAXI@Z
+PK  EQ  EQ  00403a00  b  pickany  11  leaf=n reach=n ?GetLength@CCharString@@QBEJXZ
+PK  EQ  EQ  00403a10  b  pickany  15  leaf=n reach=n ?GetAsCharArray@CCharString@@QBEPBDXZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0random_access_iterator_tag@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??D?$CDefPointer@$$CBVCThingBaseDef@@@@QBEABVCThingBaseDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??D?$CDefPointer@$$CBVCGlobalDef@@@@QBEABVCGlobalDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??1?$CDefPointer@$$CBVCWeaponDef@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??C?$CDefPointer@$$CBVCWeaponDef@@@@QBEPBVCWeaponDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  14  leaf=n reach=n ??1?$_Vector_base@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??0?$_STLP_alloc_proxy@PAVCCharString@@V1@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@PAVCCharString@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$_STLP_alloc_proxy@PAU?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@U12@V?$allocator@U?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@@std@@QAE@XZ
+PK  NEQ  NEQ  004da1a4  b  pickany  47  leaf=n reach=n ?clear@?$_List_base@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??0?$_STLP_alloc_proxy@PAU?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@U12@V?$allocator@U?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@1@PAU?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  26  leaf=n reach=n ??$find@PAVCCharString@@V1@@std@@YAPAVCCharString@@PAV1@0ABV1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  37  leaf=n reach=n ??$_Construct@U?$pair@VCCharString@@V1@@std@@U12@@std@@YAXPAU?$pair@VCCharString@@V1@@0@ABU10@@Z
+PK  NOADDR  NOADDR  -  -  pickany  37  leaf=n reach=n ??$__copy_ptrs@PAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@PAV12@@std@@YAPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@PAV10@00ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  13  leaf=n reach=n ?begin@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE?AU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  13  leaf=n reach=n ?begin@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QBE?AU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ?end@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QBE?AU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@XZ
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??$uninitialized_fill_n@PA_NI_N@std@@YAPA_NPA_NIAB_N@Z
+PK  NOADDR  NOADDR  -  -  pickany  29  leaf=n reach=y ??$uninitialized_fill_n@PAJIJ@std@@YAPAJPAJIABJ@Z
+PK  NOADDR  NOADDR  -  -  pickany  59  leaf=n reach=y ??$__uninitialized_copy@PAU?$pair@VCCharString@@V1@@std@@PAU12@@std@@YAPAU?$pair@VCCharString@@V1@@0@PAU10@00ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  57  leaf=n reach=y ??$__uninitialized_fill_n@PAU?$pair@VCCharString@@V1@@std@@IU12@@std@@YAPAU?$pair@VCCharString@@V1@@0@PAU10@IABU10@ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  20  leaf=n reach=n ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  50  leaf=n reach=n ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCWeaponDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$__destroy@PA_N_N@std@@YAXPA_N00@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$__destroy@PAJJ@std@@YAXPAJ00@Z
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ??$_Destroy@VCCharString@@@std@@YAXPAVCCharString@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  53  leaf=n reach=n ??$_Construct@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V12@@std@@YAXPAVCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@ABV12@@Z
+PK  NOADDR  NOADDR  -  -  pickany  21  leaf=n reach=n ??$_Destroy@U?$pair@VCCharString@@V1@@std@@@std@@YAXPAU?$pair@VCCharString@@V1@@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  81  leaf=n reach=n ?StartsWith@CCharString@@QBE_NABV1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?PeekBaseDef@CThing@@QBEABVCThingBaseDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  7  leaf=n reach=n ?PeekGlobalDef@CGameDefinitionManager@@QBEABVCGlobalDef@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  15  leaf=n reach=n ??0?$_Vector_base@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  32  leaf=n reach=n ??0?$_List_base@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@ABV?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@1@@Z
+PK  NEQ  NEQ  004db5bb  a2  pickany  62  leaf=n reach=y ??1?$_List_base@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@XZ
+PK  NEQ  NEQ  0042b1a6  a,b  pickany  182  leaf=y reach=y ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$_Destroy@PA_N@std@@YAXPA_N0@Z
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??$_Destroy@PAJ@std@@YAXPAJ0@Z
+PK  EQ  EQ  00462f42  b  pickany  14  leaf=n reach=n ?_M_clear@?$vector@_NV?$allocator@_N@std@@@std@@IAEXXZ
+PK  EQ  EQ  00440080  b  pickany  14  leaf=n reach=n ?_M_clear@?$vector@JV?$allocator@J@std@@@std@@IAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  33  leaf=n reach=n ??$__destroy_aux@PAVCCharString@@@std@@YAXPAVCCharString@@0ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  66  leaf=n reach=n ?_M_create_node@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@IAEPAU?$_List_node@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@2@ABVCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  41  leaf=n reach=n ??$__destroy_aux@PAU?$pair@VCCharString@@V1@@std@@@std@@YAXPAU?$pair@VCCharString@@V1@@0@0ABU__false_type@0@@Z
+PK  EQ  EQ  00414de0  b  pickany  15  leaf=n reach=n ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  32  leaf=n reach=n ??0?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@ABV?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@1@@Z
+PK  NEQ  NEQ  004db5bb  b  pickany  5  leaf=n reach=n ??1?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@XZ
+PK  NEQ  NEQ  004676bb  b  pickany  58  leaf=n reach=n ?erase@?$vector@_NV?$allocator@_N@std@@@std@@QAEPA_NPA_N0@Z
+PK  EQ  EQ  00440590  b  pickany  58  leaf=n reach=n ?erase@?$vector@JV?$allocator@J@std@@@std@@QAEPAJPAJ0@Z
+PK  NEQ  NEQ  00467831  b  pickany  201  leaf=n reach=y ?_M_insert_overflow@?$vector@_NV?$allocator@_N@std@@@std@@IAEXPA_NAB_NABU__true_type@2@I_N@Z
+PK  EQ  EQ  00440990  b  pickany  216  leaf=n reach=y ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z
+PK  NOADDR  NOADDR  -  -  pickany  33  leaf=n reach=n ??$__destroy@PAVCCharString@@V1@@std@@YAXPAVCCharString@@00@Z
+PK  NOADDR  NOADDR  -  -  pickany  41  leaf=n reach=n ??$__destroy@PAU?$pair@VCCharString@@V1@@std@@U12@@std@@YAXPAU?$pair@VCCharString@@V1@@0@00@Z
+PK  EQ  EQ  0076fc60  b  pickany  91  leaf=n reach=n ?insert@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE?AU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@U32@ABVCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  30  leaf=n reach=n ??_G?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEPAXI@Z
+PK  NEQ  NEQ  004676ef  a,b  pickany  267  leaf=y reach=y ?_M_fill_insert@?$vector@_NV?$allocator@_N@std@@@std@@QAEXPA_NIAB_N@Z
+PK  NEQ  NEQ  00440f00  a,a2,b,c  pickany  287  leaf=y reach=y ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+PK  NOADDR  NOADDR  -  -  pickany  33  leaf=n reach=n ??$_Destroy@PAVCCharString@@@std@@YAXPAVCCharString@@0@Z
+PK  NOADDR  NOADDR  -  -  pickany  49  leaf=n reach=n ?_M_clear@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  41  leaf=n reach=y ??$_Destroy@PAU?$pair@VCCharString@@V1@@std@@@std@@YAXPAU?$pair@VCCharString@@V1@@0@0@Z
+PK  EQ  EQ  0076fd40  a2,b  pickany  102  leaf=n reach=y ??$_M_insert_dispatch@U?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@1@U?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@1@1ABU__false_type@1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ??$_Destroy@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@std@@YAXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@@Z
+PK  NEQ  NEQ  00467686  b,c  pickany  85  leaf=n reach=n ?resize@?$vector@_NV?$allocator@_N@std@@@std@@QAEXIAB_N@Z
+PK  EQ  EQ  004428f0  b  pickany  87  leaf=n reach=n ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z
+PK  EQ  EQ  00414ea0  b  pickany  49  leaf=n reach=n ??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+PK  NEQ  NEQ  00433530  a,a2,b  pickany  248  leaf=y reach=y ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z
+PK  NOADDR  NOADDR  -  -  pickany  35  leaf=n reach=n ?_M_clear@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@IAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  32  leaf=n reach=n ??$insert@U?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@1@U?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@1@1@Z
+PK  NOADDR  NOADDR  -  -  pickany  78  leaf=n reach=y ??$__destroy_aux@PAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@std@@YAXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@0ABU__false_type@0@@Z
+PK  EQ  EQ  0044bff0  a,b  pickany  59  leaf=y reach=y ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z
+PK  NEQ  NEQ  007704a0  a2,b  pickany  237  leaf=n reach=y ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@V1@@2@ABU32@ABU__false_type@2@I_N@Z
+PK  EQ  EQ  00770050  b,c  pickany  63  leaf=n reach=y ??0?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@ABV01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  25  leaf=n reach=n ??$__destroy@PAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V12@@std@@YAXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@00@Z
+PK  NOADDR  NOADDR  -  -  pickany  19  leaf=n reach=n ??$_Construct@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V12@@std@@YAXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@ABV10@@Z
+PK  NOADDR  NOADDR  -  -  pickany  87  leaf=n reach=y ??$__uninitialized_fill_n@PAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@IV12@@std@@YAPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@PAV10@IABV10@ABU__false_type@0@@Z
+PK  EQ  EQ  007706a0  a,b,c  pickany  78  leaf=y reach=y ?push_back@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@V1@@2@@Z
+PK  NOADDR  NOADDR  -  -  pickany  25  leaf=n reach=n ??$_Destroy@PAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@std@@YAXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@0@Z
+PK  NOADDR  NOADDR  -  -  pickany  89  leaf=n reach=y ??$__uninitialized_copy@PAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@PAV12@@std@@YAPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@PAV10@00ABU__false_type@0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  30  leaf=n reach=n ??$uninitialized_fill_n@PAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@IV12@@std@@YAPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@0@PAV10@IABV10@@Z
+PK  NOADDR  NOADDR  -  -  pickany  42  leaf=n reach=n ?_M_clear@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@IAEXXZ
+PK  NEQ  NEQ  00770790  a2  pickany  72  leaf=n reach=y ?erase@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@PAV32@0@Z
+PK  NEQ  NEQ  00770810  b,c  pickany  226  leaf=n reach=y ?_M_insert_overflow@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@IAEXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z
+PK  NEQ  NEQ  00770990  a2,c  pickany  264  leaf=n reach=y ?_M_fill_insert@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@IABV32@@Z
+PK  NOADDR  NOADDR  -  -  pickany  66  leaf=n reach=n ?resize@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEXIABV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@@Z
+PK  EQ  EQ  00770d60  a,b  pickany  112  leaf=y reach=y ?resize@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEXI@Z
+# old checker (pickany_vs_retail.py)
+OLD EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+OLD EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+OLD EQ  0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ 
+OLD EQ  0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z 
+OLD EQ  0076dd40 32 ??0?$pair@VCCharString@@V1@@std@@QAE@ABVCCharString@@0@Z 
+OLD EQ  00403a00 11 ?GetLength@CCharString@@QBEJXZ 
+OLD EQ  00403a10 15 ?GetAsCharArray@CCharString@@QBEPBDXZ 
+OLD NEQ 004da1a4 47 ?clear@?$_List_base@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXXZ not referenced by the leaf
+OLD NEQ 0042b1a6 182 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z LEAF-REFERENCED
+OLD EQ  00462f42 14 ?_M_clear@?$vector@_NV?$allocator@_N@std@@@std@@IAEXXZ 
+OLD EQ  00440080 14 ?_M_clear@?$vector@JV?$allocator@J@std@@@std@@IAEXXZ 
+OLD EQ  00414de0 15 ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z 
+OLD NEQ 004db5bb 5 ??1?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@XZ not referenced by the leaf
+OLD NEQ 004676bb 58 ?erase@?$vector@_NV?$allocator@_N@std@@@std@@QAEPA_NPA_N0@Z not referenced by the leaf
+OLD EQ  00440590 58 ?erase@?$vector@JV?$allocator@J@std@@@std@@QAEPAJPAJ0@Z 
+OLD NEQ 00467831 201 ?_M_insert_overflow@?$vector@_NV?$allocator@_N@std@@@std@@IAEXPA_NAB_NABU__true_type@2@I_N@Z not referenced by the leaf
+OLD EQ  00440990 216 ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z 
+OLD EQ  0076fc60 91 ?insert@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE?AU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@U32@ABVCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@Z 
+OLD NEQ 004676ef 267 ?_M_fill_insert@?$vector@_NV?$allocator@_N@std@@@std@@QAEXPA_NIAB_N@Z LEAF-REFERENCED
+OLD NEQ 00440f00 287 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z LEAF-REFERENCED
+OLD EQ  0076fd40 102 ??$_M_insert_dispatch@U?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@1@U?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@1@1ABU__false_type@1@@Z 
+OLD NEQ 00467686 85 ?resize@?$vector@_NV?$allocator@_N@std@@@std@@QAEXIAB_N@Z not referenced by the leaf
+OLD EQ  004428f0 87 ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z 
+OLD EQ  00414ea0 49 ??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ 
+OLD NEQ 00433530 248 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z LEAF-REFERENCED
+OLD EQ  0044bff0 59 ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z 
+OLD NEQ 007704a0 237 ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@V1@@2@ABU32@ABU__false_type@2@I_N@Z not referenced by the leaf
+OLD EQ  00770050 63 ??0?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@ABV01@@Z 
+OLD EQ  007706a0 78 ?push_back@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@V1@@2@@Z 
+OLD NEQ 00770810 226 ?_M_insert_overflow@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@IAEXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z not referenced by the leaf
+OLD EQ  00770d60 112 ?resize@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEXI@Z 

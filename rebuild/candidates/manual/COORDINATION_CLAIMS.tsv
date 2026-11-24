@@ -514,3 +514,5 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF348 owner ports queued by NF345	naming	claimed	locks via nflocks owner NF348
 2026-11-24	A	q11260,q11271,q11274,q11277,q11280,q11281,q11283,q11286	naming	done	stale: NF101 round 9 finished 2026-11-19; closed at the nf346 landing
 2026-11-24	A	agent NF346 GetDef REREAD port	naming	done	batches/2026-11-24_landing_nf346_b1..p1 (64 rows); pending/2026-11-24_nf346_handback
+2026-11-24	A	agent NF349 size-mode GetDef copies in the rows NF346 skipped	naming	claimed	locks via nflocks owner NF349
+2026-11-24	A	agent NF347 INDEX_DECL_ONLY pilot and next debt groups	naming	done	batches/2026-11-24_landing_nf347_b1; pending/2026-11-24_nf347_handback

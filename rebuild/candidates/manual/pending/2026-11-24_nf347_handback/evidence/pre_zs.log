@@ -1,0 +1,5 @@
+10:53:39 ZS_PASS H_00e8ef80 src /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF347/batches/b1/orig/rows/00e8ef80.cpp /O2 /Oy /W3 /d2inlT72
+10:53:40 ZS_PASS N_00e8ef80 src /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF347/batches/b1/rows/00e8ef80.cpp /O2 /Oy /W3 /d2inlT72
+11:03:54 ZS_PASS T_0076eb00 test /home/user/FableDecomp/rebuild/tests/00/76/CTCWeaponTrail_InitialiseTrails_0076eb00_test.cpp /Od /W3
+11:04:54 ZS_PASS T_0099ba70 test /home/user/FableDecomp/rebuild/tests/00/99/CWideString_Sprintf_0099ba70_test.cpp /Od /W3
+11:04:55 ZS_PASS T_0099bb80 test /home/user/FableDecomp/rebuild/tests/00/99/CWideString_SprintfDynamic_0099bb80_test.cpp /Od /W3
