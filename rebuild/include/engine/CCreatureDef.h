@@ -83,6 +83,11 @@ class CCreatureDef : public CSubDefClassBase {
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:const CCreatureStatsDef& GetStatsDef()const{return *PStats;}
 #endif
+#if defined(FABLE_RETAIL_CCREATUREDEF_STATGETTYPENAME) && !defined(FABLE_RETAIL_CCREATUREDEF_DIALOGUEVOICES)
+    // Opt-in (B24B5, row 0x00839940): ?StatGetTypeName@CCreatureDef@@SI?AVCCharString@@XZ, the same inline body as the DIALOGUEVOICES
+    // branch below (GetSubDef<CCreatureDef> 0x00485815 builds "CCreatureDef" in place). No layout change.
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CCreatureDef", -1); }
+#endif
 public:
 #ifdef FABLE_RETAIL_CCREATUREDEF_DIALOGUEVOICES
     // Nested opt-in (chunk 760, row 0x006E2C00 CTCTalk::OnCreate): Ego_r.pdb CCreatureDef DialogueVoices

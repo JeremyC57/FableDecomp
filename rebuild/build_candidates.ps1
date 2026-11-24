@@ -403562,6 +403562,28 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVTalentlessBardScriptCTBBard_Main_00ed8680_test.cpp'
         PassPattern = '00ed8680_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00839940'
+        Module = 'CThingGameObject'
+        Source = '00/83/CThingGameObject_OnHit_00839940.cpp'
+        TestSource = '00/83/CThingGameObject_OnHit_00839940_test.cpp'
+        PassPattern = '00839940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de9690'
+        Module = 'NScript::CQ_RansomVictimScript::CRansomHelper'
+        Source = '00/de/NScriptCQRansomVictimScriptCRansomHelper_Main_00de9690.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScriptCRansomHelper_Main_00de9690_test.cpp'
+        PassPattern = '00de9690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d04ae0'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CAssassin1'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_Main_00d04ae0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_Main_00d04ae0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d04ae0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

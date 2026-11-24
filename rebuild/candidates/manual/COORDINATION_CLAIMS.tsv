@@ -507,3 +507,5 @@ date	account	item	kind	status	note
 2026-11-24	B	0x00509A20	author	claimed	agent B24E (next-largest parked rows)
 2026-11-24	B	0x00DEE2E0	author	claimed	agent B24E (next-largest parked rows)
 2026-11-24	B	0x00DF5000	author	claimed	agent B24E (next-largest parked rows)
+2026-11-24	A	agent NF346 GetDef REREAD port	naming	claimed	locks via nflocks owner NF346; excludes B claims/staged rows and Codex reservations
+2026-11-24	A	land Account B staged rows (OnHit, RansomHelper Main, Assassin1 Main)	landing	done	batches/2026-11-24_landing_acctB_b24e

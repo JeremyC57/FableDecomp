@@ -108,6 +108,26 @@ public:
     protected:
         NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
     };
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_ASSASSIN1
+    // Retail opt-in (chunk 845, re-applied by B24A11 2026-11-24 onto today's header): Ego_r.pdb CAssassin1 (28 bytes: CEntityScriptBase
+    //   0x14, ParentClass +0x14, PMasterData +0x18); vtable 0x012C8B9C: 0 scalar deleting dtor 0x00D04A40, 1 Main 0x00D04AE0, 2 Init
+    //   0x00D04A60, 3 GetParentScript 0x00D04A30, 4-6 the CEntityScriptBase OnPersist / OnPredicateFail / OnInterrupted (0x00CDEBC0..
+    //   0x00CDEBE0); Alloc 0x00D04990. Names: Ego_r.pdb / FableWin.pdb ?Main@ / ?Init@ / ?GetParentScript@ / ?Alloc@CAssassin1@
+    //   CQ_BanditCampBossBattleScript@NScript@@ (FableWin 0x03691C40 / 0x03691B40 / 0x03691B20 / 0x03691A10). Declarations only; existing
+    //   includers do not define the macro.
+    class CAssassin1 : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D04990
+        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00D04A30
+    private:
+        virtual void Main();                                             // slot 1 0x00D04AE0
+        virtual void Init();                                             // slot 2 0x00D04A60
+    protected:
+        NScript::CQ_BanditCampBossBattleScript & ParentClass;            // +0x14
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
+    };
+#endif
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_BANDITKING
     // Retail opt-in (chunk 800): Ego_r.pdb CBanditKing (32 bytes: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18,
     //   HealthBarIndex +0x1c -- Main 0x00D0A830 stores AddQuestInfoBar's result at [esi+1Ch]); vtable 0x012C9474: 0 scalar deleting
@@ -260,6 +280,9 @@ FABLE_STATIC_ASSERT_AT(229, sizeof(NScript::CQ_BanditCampBossBattleScript::CCamp
 FABLE_STATIC_ASSERT_AT(232, sizeof(NScript::CQ_BanditCampBossBattleScript::CBCGameMaster) == 0x24);
 #endif
 
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_ASSASSIN1
+FABLE_STATIC_ASSERT_AT(237, sizeof(NScript::CQ_BanditCampBossBattleScript::CAssassin1) == 0x1c);
+#endif
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_CAMPHOSTAGEGUARD
 FABLE_STATIC_ASSERT_AT(236, sizeof(NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard) == 0x20);
 #endif

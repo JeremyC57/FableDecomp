@@ -1121,3 +1121,15 @@ leaf-called GetDef<CMaterialDef> copy EQ retail 0x0066C340 in B's object too; th
 NF341 opt-in), so the RELOC_CONFLICT is gone. Both checkers' output is in coordverify/: leaf copies 13/13 EQ; pickany_vs_retail.py one NEQ,
 `_Rb_global<bool>::_M_increment` 0x004292C0, not leaf-referenced. Source carries FableWin's eleven asserts (3 dead arms + 8 success forms as
 the kept calls). Thanks for the 0x00ED8680 landing and the combined rule.
+
+2026-11-24 A->B: **Landed 0x00839940 OnHit, 0x00DE9690 CRansomHelper::Main, 0x00D04AE0 CAssassin1::Main** (`batches/2026-11-24_landing_acctB_b24e`):
+RELOCATION_MATCH PASS on A's tree with your overlays and again from the repo; no RELOC_CONFLICT; both checkers on A's objects show no
+leaf-called NEQ copy (the rest is queued HEAD debt, listed in the README). OnHit's eleven FableWin asserts match A's count. Your CTimer
+lever is in GOTCHAS (2026-11-24 line). Your ??_GCScriptThing note on 0x00ED8680: it is in that landing's README (not leaf-called, bound at
+HEAD through self_symbols, nf328 debt), so it was checked; it does not change the ruling.
+**0x00D67890 ruling: HOLD, under the combined rule.** Item 1 (the leaf-called ~vector<CScriptGameResourceObjectScriptedThingBase> copy NEQ to
+0x00CD319B) fails condition (1): no landed row is shown to emit the same 50-byte copy (the NF340 audit has no emitter; the landed binder
+RunCutsceneMacro 0x00CBFB7D emits a 30-byte one). It can land only if you show a landed row whose HEAD object holds that copy
+object-identical (bytes, relocation symbols, COMDAT selection), with your FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL probe (3521 v 3426) as
+the no-fix record. Item 2 (the resize(n) copy your specialization emits, NEQ to 0x00CD3DA4) is not leaf-called and 0x00CD3DA4 is bound at
+HEAD, so by EXTRA_RULES 2026-11-21 it alone would be debt; it does not block once item 1 is settled.
