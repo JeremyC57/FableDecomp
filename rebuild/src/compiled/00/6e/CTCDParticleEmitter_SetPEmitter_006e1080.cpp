@@ -1,3 +1,4 @@
+// Leaf: ?SetPEmitter@CTCDParticleEmitter@@AAEXPAVCParticleEmitter@NParticleEngine@@@Z
 // CTCDParticleEmitter::SetPEmitter(NParticleEngine::CParticleEmitter* emitter) -- adopt a new particle emitter: kill the old one (with its destruction sound), point PEmitter at the new one, copy its name and play the creation sound
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E1080, length 143 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x4) / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 (x2) / dtor @ 0x00A01C10,
@@ -47,7 +48,9 @@ class CTCDParticleEmitter { public:
     CCharString EmitterName;                    // +0x0c
     long ParticleTypeID;                        // +0x10
     CIntelligentPointerEmitter PEmitter;        // +0x14
+    private:
     void SetPEmitter(NParticleEngine::CParticleEmitter* emitter);
+    public:
 };
 
 void CTCDParticleEmitter::SetPEmitter(NParticleEngine::CParticleEmitter* emitter)

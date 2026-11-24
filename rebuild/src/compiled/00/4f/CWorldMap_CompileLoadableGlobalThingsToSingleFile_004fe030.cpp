@@ -122,7 +122,10 @@ class CWorldMap { public:
     CWorld* World;                                     // +0x08
     unsigned char _pad0c[0x20 - 0x0c];
     CMapInfoArray Maps;                                // +0x20
-    void LoadLoadableGlobalThingsForLevel(long map);   // 0x004FBF60
+    protected:
+    void LoadLoadableGlobalThingsForLevel(long map);
+    public:
+   // 0x004FBF60
     void CompileLoadableGlobalThingsToSingleFile(const CWideString& filename);
 };
 

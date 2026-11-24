@@ -136,7 +136,10 @@ public:
     ENetworkSuccess ResetAndOpenHTTPAndPrepareRequest(const LHString& request, const CCharString& key, bool flag);   // 0x0055F710
     ENetworkSuccess UpdateTransaction();             // 0x0055FB80
     int GetDecryptedDocument(LHStringVector& lines, const CCharString& key);   // 0x00560BB0
-    CCharString GetCachedMemberLogosAsString();      // 0x0055EA80
+    private:
+    CCharString GetCachedMemberLogosAsString();
+    public:
+      // 0x0055EA80
     CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return ((CWideString*)&name)->ToCharString(); }
     FABLE_FORCEINLINE bool OpenRequest(const CCharString& request)
     {

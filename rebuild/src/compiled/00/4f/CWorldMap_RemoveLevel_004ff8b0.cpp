@@ -49,7 +49,10 @@ public:
     unsigned char    _pad04[0x1c];
     CArray<CMapInfo> Maps;                      // +0x20 (PDB +0x24)
     void UnloadLevel(long map);                 // 0x004FEDE0
-    void ChangeMapPlacementValuesTo(long from, long to);   // 0x004FCAC0
+    protected:
+    void ChangeMapPlacementValuesTo(long from, long to);
+    public:
+   // 0x004FCAC0
 };
 
 void CWorldMap::RemoveLevel(long map)

@@ -99,7 +99,10 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
     unsigned long FrameOfLastWarning;           // +0x18
     long LastWarningID;                         // +0x1c
     CIntelligentPointer<CThingPlayerCreature> PPlayer;   // +0x20
-    bool IsAnotherGuardAdmonishingPlayer();     // 0x00939D00
+    private:
+    bool IsAnotherGuardAdmonishingPlayer();
+    public:
+     // 0x00939D00
     bool CheckForOtherGuardsNewWarning();       // 0x00939D70
 private:
     void RemoveMessageEventsAdded();            // 0x00939DD0 ?RemoveMessageEventsAdded@...@@AAEXXZ (private; Ego_r / FableWin; the donor Update calls it)

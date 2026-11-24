@@ -125,7 +125,10 @@ public:
     long GetExperiencePickUpMultiplier() const { return GetExperiencePickupMultiplierForParam(ExperienceMultiplierParam); }
     long GetExperienceFallbackMultiplierForMultiplier(long multiplier) const;   // 0x006D73D0
     long GetExperienceFallbackMultiplier() const { return GetExperienceFallbackMultiplierForMultiplier(GetExperiencePickUpMultiplier()); }
-    long GetNextExperienceFallbackMultiplier() const;       // 0x006D7430
+    private:
+    long GetNextExperienceFallbackMultiplier() const;
+    public:
+       // 0x006D7430
     private:
     long GetOnHitSoundIntensity() const;
     public:

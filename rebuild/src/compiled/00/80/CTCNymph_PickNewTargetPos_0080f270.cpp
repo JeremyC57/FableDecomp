@@ -285,7 +285,10 @@ class CTCNymph : public CTCBaseFrame { public:
     long TotalFadeTime;                                     // +0x64
     CIntelligentPointerConstThing PTarget;                  // +0x68
     bool IsDecentAttackRange(const C3DVector& target);      // 0x0080F190
-    float GetRandomFlightHeight() const;                    // 0x0080F130
+    protected:
+    float GetRandomFlightHeight();
+    public:
+                    // 0x0080F130
     protected:
     void PickNewTargetPos();
     public:

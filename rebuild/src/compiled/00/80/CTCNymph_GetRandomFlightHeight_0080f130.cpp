@@ -1,3 +1,4 @@
+// Leaf: ?GetRandomFlightHeight@CTCNymph@@IAEMXZ
 // CTCNymph::GetRandomFlightHeight() const -- a random height between the def's MinHeight and MaxHeight (1000 steps)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080F130, length 93 bytes.
 // Callees: CTCBase::GetWorld() @ 0x00686A70, CWorld::GetWorldSeed() @ 0x0049D810 (label "CVertexBufferWin32::DoSizeof"
@@ -38,10 +39,12 @@ protected:
 
 class CTCNymph : public CTCBase { public:
     const CNymphDef* PDef;                          // +0x0c
-    float GetRandomFlightHeight() const;
+    protected:
+    float GetRandomFlightHeight();
+    public:
 };
 
-float CTCNymph::GetRandomFlightHeight() const
+float CTCNymph::GetRandomFlightHeight()
 {
     unsigned long* seed = GetWorld().GetWorldSeed();
     unsigned long r = WorldRandomRange(*seed, 1000);

@@ -1,5 +1,5 @@
 // CTCHeroExperience::GetNextExperienceFallbackMultiplier() const -- the first fallback multiplier above the current pickup multiplier (the last fallback when none is)
-// Leaf: ?GetNextExperienceFallbackMultiplier@
+// Leaf: ?GetNextExperienceFallbackMultiplier@CTCHeroExperience@@ABEJXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D7430, length 84 bytes (+ int3 padding), thiscall plain `ret`.
 // Ego_r.pdb `?GetNextExperienceFallbackMultiplier@CTCHeroExperience@@ABEJXZ`; caller 0x006D86D6 (GetOnHitSoundIntensity,
 // this chunk). The manifest label "Combat_GetNextFlourishLevelAsFloat" is descriptive and wrong (it returns a long).
@@ -138,7 +138,9 @@ public:
         return multiplier;
     }
     long GetExperiencePickUpMultiplier() const { return GetExperiencePickupMultiplierForParam(ExperienceMultiplierParam); }
+    private:
     long GetNextExperienceFallbackMultiplier() const;
+    public:
 };
 
 long CTCHeroExperience::GetNextExperienceFallbackMultiplier() const

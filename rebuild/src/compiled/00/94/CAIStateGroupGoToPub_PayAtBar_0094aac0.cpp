@@ -30,7 +30,10 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     unsigned char _pub[0x64];                   // +0x14 pub/bar pointers, timers, bar point index (+0x74)
     C3DVector m_payPoint;                       // +0x78
     CRightHandedSet m_payOrientation;           // +0x84
-    bool GetPayPoint();                         // 0x009492A0
+    protected:
+    bool GetPayPoint();
+    public:
+                         // 0x009492A0
     bool WalkToPoint(C3DVector* pPoint, CRightHandedSet* pOrientation);   // 0x0094A6D0
     bool PayMoney();                            // 0x0094A840
     protected:

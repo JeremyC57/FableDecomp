@@ -65,7 +65,10 @@ class CTCBuyableHouse : public CTCBase { public:
     long              CurrentDressLevel;                // +0x1c
     unsigned char     _pad20[0x44 - 0x20];
     long              VirtualMoneyBags;                 // +0x44
-    long CountMoneyBags() const;                        // 0x006C04D0
+    private:
+    long CountMoneyBags();
+    public:
+                        // 0x006C04D0
     void DestroyMoneyBags(bool giveToHero);             // 0x006C0580
 private:
     bool GetRentMoneyPos(C3DVector& ret, long bag, long bags);   // 0x006C06D0 (Ego_r.pdb / FableWin.pdb: private, by reference)

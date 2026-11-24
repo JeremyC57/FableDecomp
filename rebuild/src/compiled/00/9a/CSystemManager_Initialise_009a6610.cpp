@@ -178,7 +178,10 @@ class CSystemManager : public CInitBaseClass { public:
     TErrorFunc ErrorFunc;                               // +0x174
     void* IMEMessageFunc;                               // +0x178
     void* MessageFilter;                                // +0x17c
-    void InitGUIDFromName(const char* name);            // 0x009A52F0
+    private:
+    void InitGUIDFromName(const char* name);
+    public:
+            // 0x009A52F0
     bool InitWindow(long width, long height);           // 0x009A64B0
     void Uninitialise();                                // 0x009A60D0
     void InitSystemColours();                           // 0x009A5490

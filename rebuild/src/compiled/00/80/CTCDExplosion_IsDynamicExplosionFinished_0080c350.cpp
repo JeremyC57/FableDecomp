@@ -1,3 +1,4 @@
+// Leaf: ?IsDynamicExplosionFinished@CTCDExplosion@@ABE_NXZ
 // CTCDExplosion::IsDynamicExplosionFinished() -- true once the explosion's evolution timer has run past the summed duration of all the def's explosion rings (in frames)
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -43,10 +44,12 @@ class CTCDExplosion { public:
     bool NeedToTriggerExplosion;                // +0x3d
     unsigned char Emitters[0x0c];               // +0x40 vector<pair<CIntelligentPointer<CThing>,long> >
     long ExplosionEvolutionTimer;               // +0x4c
-    bool IsDynamicExplosionFinished();
+    private:
+    bool IsDynamicExplosionFinished() const;
+    public:
 };
 
-bool CTCDExplosion::IsDynamicExplosionFinished()
+bool CTCDExplosion::IsDynamicExplosionFinished() const
 {
     long totalFrames = 0;
     long framesPerSecond = CMainGameComponent::GetConstantFPS();

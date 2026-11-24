@@ -175,7 +175,10 @@ class CTCVillage : public CTCBase { public:
     bool WasCurfewTime;                         // +0xb1
     unsigned char _padb2;
     bool AnnouncementsDisabled;                 // +0xb3
-    void ClearOutNullMembers();                 // 0x0065890B
+    private:
+    void ClearOutNullMembers();
+    public:
+                 // 0x0065890B
     void ReleaseInvalidTasks();                 // 0x0065BE32
     void UpdateCrowds();                        // 0x006594BB
     void UpdateSecuritySweepTasks();            // 0x0065C08A

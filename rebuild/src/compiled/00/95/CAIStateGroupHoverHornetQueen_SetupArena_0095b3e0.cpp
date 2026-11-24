@@ -82,7 +82,10 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
     unsigned char _pad14[0x1c - 0x14];
     C3DVector StartPos;                         // +0x1c
     C3DVector ArenaCentrePos;                   // +0x28
-    void SetUpCirclePoints();                   // 0x0095AB50
+    protected:
+    void SetUpCirclePoints();
+    public:
+                   // 0x0095AB50
     protected:
     void SetupArena();
     public:

@@ -178,7 +178,10 @@ class CTCDParticleEmitter : public CTCBase { public:
     CWorld* GetWorld();                                      // 0x00686A70 (CTCBase)
     void CreateParticleWaitingFor();                         // 0x006E14E0
     bool IsParticleCreationDisabled();                       // 0x006E0DF0
-    void SetParticleCreationDisabled(bool disabled);         // 0x006E0690
+    protected:
+    void SetParticleCreationDisabled(bool disabled);
+    public:
+         // 0x006E0690
     void UpdateEmitterCameraAttachment(bool interpolate);    // 0x006E0230
     FABLE_FORCEINLINE void SetPositionFrom(C3DVector position)
     {

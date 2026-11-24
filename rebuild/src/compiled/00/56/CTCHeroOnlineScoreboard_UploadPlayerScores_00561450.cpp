@@ -76,7 +76,10 @@ class CTCHeroOnlineScoreboard { public:
     CHttpScopedPtr PHttp;                            // +0x0c
     unsigned char  _pad10[0x54 - 0x10];
     long           TaskState;                        // +0x54
-    CCharString CreateStringFromMyScores();          // 0x0055F480
+    private:
+    CCharString CreateStringFromMyScores();
+    public:
+          // 0x0055F480
     ENetworkSuccess ResetAndOpenHTTPAndPrepareRequest(const LHString& request, const CCharString& key, bool flag);   // 0x0055F710
     ENetworkSuccess UpdateTransaction();             // 0x0055FB80
     int GetDecryptedDocument(LHStringVector& lines, const CCharString& key);   // 0x00560BB0

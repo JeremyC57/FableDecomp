@@ -120,7 +120,10 @@ class CTCDParticleEmitter { public:
     bool AttachedToThing : 1;                   // +0x45 bit 0
     bool AlwaysUpdate : 1;                      // +0x45 bit 1
     bool Asleep : 1;
-    void SetPEmitter(NParticleEngine::CParticleEmitter* emitter);   // 0x006E1080
+    private:
+    void SetPEmitter(NParticleEngine::CParticleEmitter* emitter);
+    public:
+   // 0x006E1080
     void CreateParticleWaitingFor();
 };
 

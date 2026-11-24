@@ -69,7 +69,10 @@ class CCombatActionBase:public CCreatureActionBase { public:
     long LastAnimStage;bool HitThing,HitCreature;long FrameUpdatePauseFrames;
     protected: void UpdateFacingDirection(); public: //00856B20
     void ProcessStrikeEvents(); //008597A0
-    void ProcessPlayerControl(); //00857B70
+    protected:
+    void ProcessPlayerControl();
+    public:
+ //00857B70
     protected: void ResetMeleeCombatAbilityEffects(); public: //00859660
     void FrameUpdate();
 };

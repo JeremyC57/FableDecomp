@@ -51,7 +51,10 @@ class CTCLook { public:
     float         HeadAngleRelToBodyYZ;              // +0x30
     unsigned char _pad34[0xcc - 0x34];
     bool          FirstTimeThrough;                  // +0xcc
-    void InitialiseHeadAnims();                      // 0x00752640
+    private:
+    void InitialiseHeadAnims();
+    public:
+                      // 0x00752640
     bool IsInsideAnimationRange() const;// 0x00751BC0  // NF35: Ego_r + FableWin ?IsInsideAnimationRange@CTCLook@@QBE_NXZ (const)
     void ImplementHeadSettings();
 private:

@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsAnotherGuardAdmonishingPlayer() -- is there a current
-// Leaf: ?IsAnotherGuardAdmonishingPlayer@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ
+// Leaf: ?IsAnotherGuardAdmonishingPlayer@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // "guard warning" message (type 0x1b) that did NOT originate from this creature; on a hit adopt its id and source.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00939D00, length 104 bytes (+ int3 padding).
@@ -153,7 +153,9 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBaseW {
     void* m_pWarningSource;                 // +0x14
     long m_frameWarned;                     // +0x18
     long m_lastWarningId;                   // +0x1c
+    private:
     bool IsAnotherGuardAdmonishingPlayer();
+    public:
 };
 
 bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsAnotherGuardAdmonishingPlayer()

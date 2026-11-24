@@ -48,7 +48,10 @@ public:
     long                    VirtualMoneyBags;           // +0x44
     bool                    HasPreviouslyBeenBuyable;   // +0x48
     bool                    IsResidential;              // +0x49
-    long CountMoneyBags() const;                        // 0x006C04D0
+    private:
+    long CountMoneyBags();
+    public:
+                        // 0x006C04D0
     void DestroyMoneyBags(bool giveToHero);             // 0x006C0580
     void OnSerialise(CPersistContext* context, bool full);
 };

@@ -46,7 +46,10 @@ public:
     CDefPointer<CHeroExperienceDef> PDef;       // +0x54
     CDefPointer<CHeroCombatDef>     PHeroCombatDef;   // +0x58
     CDefPointer<CHeroCombatDef> GetHeroCombatDef() const { return PHeroCombatDef; }
-    long GetNextExperienceFallbackMultiplier() const;     // 0x006D7430
+    private:
+    long GetNextExperienceFallbackMultiplier() const;
+    public:
+     // 0x006D7430
     private:
     long GetNextFlourishLevel() const;
     public:

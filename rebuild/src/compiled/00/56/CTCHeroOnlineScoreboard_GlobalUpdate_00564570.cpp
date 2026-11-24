@@ -53,7 +53,10 @@ public:
     ENetworkSuccess UploadPlayerScores();            // 0x00561450
     ENetworkSuccess DownloadListOfMyClans();         // 0x005615C0
     ENetworkSuccess DownloadMyClansLogos();          // 0x00561980
-    void ChooseAClan();                              // 0x0055FEC0
+    private:
+    void ChooseAClan();
+    public:
+                              // 0x0055FEC0
     ENetworkSuccess DownloadMemberListForSelectedClan();   // 0x00561DC0
     ENetworkSuccess DownloadLogosForThisClansMembers();    // 0x005621B0
     private: ENetworkSuccess DownloadScoreboardForSelectedClan(); public:   // 0x00563480

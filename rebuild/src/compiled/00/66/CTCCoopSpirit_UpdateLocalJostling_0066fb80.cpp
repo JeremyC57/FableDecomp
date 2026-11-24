@@ -1,5 +1,5 @@
 // CTCCoopSpirit::UpdateLocalJostling() -- for every other live player hero (not the main player, not the spirit's own player) closer than half a unit, push the spirit away from it with an acceleration of 0.4 times the offset
-// Leaf: ?UpdateLocalJostling@CTCCoopSpirit@@QAEXXZ
+// Leaf: ?UpdateLocalJostling@CTCCoopSpirit@@AAEXXZ
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066FB80, 261 bytes (+ int3 padding), plain `ret`.
 // Callees: CTCBase::GetPlayerManager @ 0x00686D40 (x2; manifest "CViewBase::GetDisplayEngine" is propagated),
@@ -46,7 +46,9 @@ protected:
 
 class CTCCoopSpirit : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
+    private:
     void UpdateLocalJostling();
+    public:
 };
 
 void CTCCoopSpirit::UpdateLocalJostling()

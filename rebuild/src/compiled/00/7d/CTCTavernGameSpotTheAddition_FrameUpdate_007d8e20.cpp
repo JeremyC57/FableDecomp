@@ -131,7 +131,10 @@ private:
     CThingObject* FindTarget(float range);        // 0x007D7C40 (Ego_r + FableWin ?FindTarget@CTCTavernGameSpotTheAddition@@AAEPAVCThingObject@@M@Z)
 public:
     void UpdatePointerScale();                    // 0x007D8C20
-    void PositionCover(float amount);             // 0x007D7F10
+    private:
+    void PositionCover(float amount);
+    public:
+             // 0x007D7F10
     void UpdateHighlightedObject();               // 0x007D8290
     void KillThing(CThing* thing);                // 0x005E9A60 (CTCTavernGame)
 };

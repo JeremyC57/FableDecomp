@@ -42,7 +42,10 @@ class CTCLook { public:
     unsigned char _pad4c[0xb4 - 0x4c];
     long          TimeToStopLooking;                 // +0xb4
     bool          OneFrameDelay;                     // +0xb8
-    void UpdateLookTimer();                          // 0x00751AD0
+    private:
+    void UpdateLookTimer();
+    public:
+                          // 0x00751AD0
     bool TrackNearestInterestingThing(bool track);
 private:
     void SetHeadTurnState(long state);               // 0x007517B0 (private: Ego_r.pdb / FableWin.pdb ?SetHeadTurnState@CTCLook@@AAEXJ@Z)

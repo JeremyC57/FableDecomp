@@ -82,7 +82,10 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
     long LastFrameWandered;                     // +0x18
     long FrameInitialised;                      // +0x1c
     long WavesWithoutCalling;                   // +0x20
-    bool CreatureWantsPlayersAttention();       // 0x0090F290
+    private:
+    bool CreatureWantsPlayersAttention() const;
+    public:
+       // 0x0090F290
     bool Wander();                              // 0x0090F320
     virtual void Update();
 };

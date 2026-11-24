@@ -1,5 +1,5 @@
 // CTCVillage::ClearOutNullMembers() -- removes the null entries from the village's building, people, patrol-node, torch, horn, gate, crop and marker lists
-// Leaf: ClearOutNullMembers
+// Leaf: ?ClearOutNullMembers@CTCVillage@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065890B, 247 bytes (plain `ret`, `leave`).
 // Callees: the CIntelligentPointer<T>(T*) converting ctors, out of line in this size TU (manifest "CIntelligentPointer<CThing
 //          const>" is propagated across the byte twins): <CThingBuilding> 0x0050F380, <CThingAICreature> 0x0050F3F0,
@@ -63,7 +63,9 @@ class CTCVillage { public:
     std::list< CIntelligentPointer<CThingTrackNode> >  VillagePatrols;     // +0x48
     unsigned char _pad_0x4c[0x24];
     std::list< CIntelligentPointer<CThingMarker> >     VillageMarkers;     // +0x70
+    private:
     void ClearOutNullMembers();
+    public:
 };
 
 void CTCVillage::ClearOutNullMembers()

@@ -1,3 +1,4 @@
+// Leaf: ?UpdateObservedThingInMelee@CGameCameraManager@@AAEXXZ
 // CGameCameraManager::UpdateObservedThingInMelee() -- when the current mode is interruptable (or a mode is pending), toggles the melee camera mode to follow the observed thing's melee state
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069AC30, length 96 bytes.
 // Callees: IsCameraModeInterruptable(CCountedPointer<const NCameraModes::CBase>) @ 0x00697A50 (a static, callee-cleaned:
@@ -99,7 +100,9 @@ private:
 public:
     void PushCombatCameraMode();                    // 0x0069A8B0 (Ego_r.pdb + FableWin.pdb; NF70 q10746)
     void RemoveCombatCameraMode();                  // 0x0069A920
+    private:
     void UpdateObservedThingInMelee();
+    public:
 };
 
 void CGameCameraManager::UpdateObservedThingInMelee()

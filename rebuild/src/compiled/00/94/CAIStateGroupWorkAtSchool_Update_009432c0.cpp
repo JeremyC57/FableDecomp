@@ -111,7 +111,10 @@ struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     CThing* GetRandomFreeSeatInBuilding(CThing* building);   // 0x009431E0
 };
 struct CAIStateGroup_WorkAtSchool : CAIStateGroup_UsesSeat {
-    bool MoveAndFace(C3DVector pos, float speed, C3DVector facing);   // 0x009425F0
+    protected:
+    bool MoveAndFace(C3DVector pos, float speed, C3DVector facing);
+    public:
+   // 0x009425F0
     bool CrouchAndTalk(float seconds);          // 0x009428A0
     bool StandAndTalk(float seconds);           // 0x00942C70
     bool SitAndTalk(float seconds);             // 0x00942820

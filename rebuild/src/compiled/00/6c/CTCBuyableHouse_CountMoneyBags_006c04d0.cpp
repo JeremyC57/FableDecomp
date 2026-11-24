@@ -1,5 +1,5 @@
 // CTCBuyableHouse::CountMoneyBags() const -- count the live things in the house's interface-0x21 thing list that carry the money-bag interface (0xCC)
-// Leaf: ?CountMoneyBags@CTCBuyableHouse@@QBEJXZ
+// Leaf: ?CountMoneyBags@CTCBuyableHouse@@AAEJXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C04D0, length 164 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x21 = bit 1 of
@@ -51,10 +51,12 @@ class CTCBuyableHouse {
 public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
-    long CountMoneyBags() const;
+    private:
+    long CountMoneyBags();
+    public:
 };
 
-long CTCBuyableHouse::CountMoneyBags() const
+long CTCBuyableHouse::CountMoneyBags()
 {
     long count = 0;
     CTCThingList_0x21* list;

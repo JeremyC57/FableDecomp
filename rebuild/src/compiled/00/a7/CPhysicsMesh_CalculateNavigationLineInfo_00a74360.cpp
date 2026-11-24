@@ -34,7 +34,10 @@ class CPhysicsMesh { public:
     bool             NavigationLineListInfo;       // +0x0c
     unsigned char    _pad0d[0x48 - 0x0d];
     CLineArrayVector NavigationLines;              // +0x48
-    long CalculateNumberOfNavigationLineLevels() const;   // 0x00A73DB0
+    private:
+    long CalculateNumberOfNavigationLineLevels() const;
+    public:
+   // 0x00A73DB0
     void ProcessNavigationLines();                 // 0x00A74180
     void CalculateNavigationLineInfo();
 };

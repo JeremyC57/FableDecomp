@@ -135,7 +135,10 @@ class CPlayerGui { public:
     NHeroInformationScreens::CManager*                      PHeroInfoScreensManager;    // +0x32c
     void ClearGui();                                        // 0x00438230
     private: void UpdateMoney(); public:                                     // 0x00439BB0
-    void UpdateRenown();                                    // 0x00439E00
+    private:
+    void UpdateRenown();
+    public:
+                                    // 0x00439E00
     void UpdateMorality();                                  // 0x00439F20
     private: void UpdateCrime(); public:                                     // 0x004385F0
     void Update(bool paused);

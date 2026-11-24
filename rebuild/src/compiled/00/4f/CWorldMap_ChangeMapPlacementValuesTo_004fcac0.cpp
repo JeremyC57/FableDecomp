@@ -1,3 +1,4 @@
+// Leaf: ?ChangeMapPlacementValuesTo@CWorldMap@@IAEXJJ@Z
 // CWorldMap::ChangeMapPlacementValuesTo(long, long) -- rewrites every map-placement cell holding one map number to another
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail 0x004FCAC0, 0x64 bytes (CWorldMap.cpp TU), no callees. Walks the MapPlacement grid (vector<unsigned short>,
@@ -106,7 +107,9 @@ public:
     unsigned short* MapPlacement_start;    // +0x6C vector<unsigned short>
     unsigned short* MapPlacement_finish;   // +0x70
     unsigned short* MapPlacement_eos;      // +0x74
+    protected:
     void ChangeMapPlacementValuesTo(long from, long to);
+    public:
 };
 
 void CWorldMap::ChangeMapPlacementValuesTo(long from, long to)

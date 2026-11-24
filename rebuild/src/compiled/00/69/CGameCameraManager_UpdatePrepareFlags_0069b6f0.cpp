@@ -51,7 +51,10 @@ class CGameCameraManager { public:
     bool          UsingCameraManually;                                  // +0x12c
     void PushCurrentManualMode();                                       // 0x006988B0
     void ReleaseScriptedControl();                                      // 0x00698950
-    void UpdateObservedThingInMelee();                                  // 0x0069AC30
+    private:
+    void UpdateObservedThingInMelee();
+    public:
+                                  // 0x0069AC30
     void UpdateObservedThingInBuilding();                               // 0x0069B650
     void UpdatePrepareFlags();
 };

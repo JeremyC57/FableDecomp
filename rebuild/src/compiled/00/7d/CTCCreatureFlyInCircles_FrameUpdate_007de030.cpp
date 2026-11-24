@@ -86,7 +86,10 @@ struct CTCCreatureFlyInCircles {
     CWorldMap* GetWorldMap();                           // 0x00686D30 (CTCBase)
     void ChangeMode();                                  // 0x007DDCC0
     protected: void PlayLoopAnim(); public:                                // 0x007DDDA0
-    void CheckForHits();                                // 0x007DD990
+    protected:
+    void CheckForHits();
+    public:
+                                // 0x007DD990
     void UpdateSwoop(C3DVector& pos, C3DVector& facing);    // 0x007DD540
     protected: void UpdateFlight(C3DVector& pos, C3DVector& facing); public:   // 0x007DD270
     void FrameUpdate();

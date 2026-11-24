@@ -1,5 +1,5 @@
 // CThingAICreature::UpdateMovement(float dt) -- a scripted-control creature (interface 0x1f) whose script task is idle or forced either yields to a higher-priority AI state group (interrupting the control) or force-resets its brain, runs one AI update, moves, updates the control and tracks the nearest interesting thing; otherwise (unless brain updates are suppressed) runs the brain and AI update and moves
-// Leaf: UpdateMovement
+// Leaf: ?UpdateMovement@CThingAICreature@@IAEXM@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: LowerBound @ 0x0040F020, CTCScriptedControl::IsActionListEmpty() const @ 0x007122C0, _ftol @ 0x00BFEA70,
@@ -133,7 +133,9 @@ public:
     CAIBrain* GetBrain() const { return Brain; }
     bool UpdateAI(bool forced, CBrainOutput* output, C3DVector* destination);   // 0x006D5D30
     bool UpdateBrain(long dt, CBrainOutput* output);   // 0x006D5A90
+    protected:
     void UpdateMovement(float dt);
+    public:
 };
 
 void CThingAICreature::UpdateMovement(float dt)

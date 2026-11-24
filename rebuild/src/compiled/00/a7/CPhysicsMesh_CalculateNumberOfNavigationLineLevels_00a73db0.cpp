@@ -1,6 +1,6 @@
 // CPhysicsMesh::CalculateNumberOfNavigationLineLevels() -- the highest i in 1..9 for which a helper point named "NAV_LAYER_0<i>" exists (0 when none)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A73DB0, length 153 bytes.
-// Leaf: CalculateNumberOfNavigationLineLevels
+// Leaf: ?CalculateNumberOfNavigationLineLevels@CPhysicsMesh@@ABEJXZ
 // Callees: GFIntToCharString(long) @ 0x0099F830 and operator+(const char*, const CCharString&) @ 0x0099F690 (both
 // __fastcall: hidden result in ecx), ~CCharString @ 0x0099EAE0 (x2), CVectorMap<CCharString,C3DHelperPoint>::LowerBound
 // @ 0x00A6F290, CCharString::operator< @ 0x009E6530 (the CCompareString "less"). Literal "NAV_LAYER_0" @ 0x0129DC80.
@@ -42,7 +42,9 @@ struct CHelperPointMap {                           // CVectorMap<CCharString, C3
 class CPhysicsMesh { public:
     unsigned char   _pad00[0x10];
     CHelperPointMap HelperPoints;                  // +0x10
+    private:
     long CalculateNumberOfNavigationLineLevels() const;
+    public:
 };
 
 long CPhysicsMesh::CalculateNumberOfNavigationLineLevels() const

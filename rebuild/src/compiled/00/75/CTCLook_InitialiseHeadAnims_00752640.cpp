@@ -1,5 +1,5 @@
 // CTCLook::InitialiseHeadAnims() -- build the vertical and horizontal head-turn animation entries: from the live parent creature's animations when it has them, otherwise from the appearance def's animation set (no-group filter)
-// Leaf: InitialiseHeadAnims
+// Leaf: ?InitialiseHeadAnims@CTCLook@@AAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00752640, 607 bytes, plain `ret`.
 // Callees: CThingCreatureBase::HasAnimation (virtual slot 73, +0x124), CThingCreatureBase::GetAnimFromName @ 0x00662A00,
@@ -87,7 +87,9 @@ class CTCLook { public:
     unsigned char _pad1c[0xbc - 0x1c];
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PHeadTurnAnimH;        // +0xbc
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PHeadTurnAnimV;        // +0xc4
+    private:
     void InitialiseHeadAnims();
+    public:
 };
 
 void CTCLook::InitialiseHeadAnims()

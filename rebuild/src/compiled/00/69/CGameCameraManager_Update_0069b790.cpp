@@ -34,7 +34,10 @@ private:
  void UpdateCleanupFlags(); //00697C60 ?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ (Ego_r / FableWin, private; NF93 q11378)
 public:
  void UpdateHeightLimits(); //00699670
- void UpdateCreatureControlAngleXY(); //00697760
+ private:
+ void UpdateCreatureControlAngleXY();
+ public:
+ //00697760
 private:
  void UpdateRightStickLookAround(); //00697CC0
 public:

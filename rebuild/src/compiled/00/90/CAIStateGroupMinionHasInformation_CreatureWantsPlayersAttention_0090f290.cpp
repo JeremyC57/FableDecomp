@@ -1,3 +1,4 @@
+// Leaf: ?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@ABE_NXZ
 // CAIStateGroup_MinionHasInformation::CreatureWantsPlayersAttention() -- the creature is in the "has information"
 // state (physics flag bit 2 set, bit 5 clear), the current player's hero is alive, and the creature's perceive
 // component has the player in extended line of sight.
@@ -154,10 +155,12 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBaseP {
     long LastFrameWandered;                     // +0x18
     long FrameInitialised;                      // +0x1c
     long WavesWithoutCalling;                   // +0x20
-    bool CreatureWantsPlayersAttention();
+    private:
+    bool CreatureWantsPlayersAttention() const;
+    public:
 };
 
-bool CAIStateGroup_MinionHasInformation::CreatureWantsPlayersAttention()
+bool CAIStateGroup_MinionHasInformation::CreatureWantsPlayersAttention() const
 {
     if (((CThingCreatureFlags*)PBrain->PCreature)->HasInformationFlag()) {
         if (!((CThingCreatureFlags*)PBrain->PCreature)->InformationGivenFlag()) {

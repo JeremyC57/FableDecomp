@@ -78,7 +78,10 @@ public:
     bool          WorldMapActive;                  // +0x234
     long          ActiveRegionIndex;               // +0x238
     void ResetPrimitiveHandles();                  // 0x005FC510 (NF306: Ego_r + FableWin; was ReleaseMapScreenPrimitives)
-    void FindQuestsForActiveRegion();              // 0x005FD0F0
+    private:
+    void FindQuestsForActiveRegion();
+    public:
+              // 0x005FD0F0
     void FindTeleportsForActiveRegion();           // 0x005FD1D0
     private: void TeleportToActiveRegion(); public:                 // 0x005FBFA0
     void ProcessButtonAReleased();

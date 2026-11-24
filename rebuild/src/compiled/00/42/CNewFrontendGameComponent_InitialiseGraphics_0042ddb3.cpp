@@ -1,5 +1,5 @@
 // CNewFrontendGameComponent::InitialiseGraphics() -- fetch the front-end menu font, then pick the best texture formats from the display manager and create the "GBANK_FRONT_END" graphic bank (mipmaps, 2048x2048 limit, dither) into m_pFrontEndGraphicBank; returns true
-// Leaf: ?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ
+// Leaf: ?InitialiseGraphics@CNewFrontendGameComponent@@AAE_NXZ
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
@@ -89,7 +89,9 @@ class CNewFrontendGameComponent { public:
     CCountedPointer<const CFontBank>  m_pMenuFont;              // +0x10
     unsigned char                     _pad18[0x40 - 0x18];
     CCountedPointer<CGraphicDataBank> m_pFrontEndGraphicBank;   // +0x40
+    private:
     bool InitialiseGraphics();
+    public:
 };
 
 bool CNewFrontendGameComponent::InitialiseGraphics()

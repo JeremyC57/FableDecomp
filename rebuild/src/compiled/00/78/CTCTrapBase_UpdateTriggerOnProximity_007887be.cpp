@@ -54,7 +54,10 @@ class CTCTrapBase { public:
     bool          LastTriggerOnProximity;       // +0x5a
     long          TrapType;                     // +0x5c ETrapType
     protected: void Reset(); public:                               // 0x00787BF1
-    void Trigger();                             // 0x00788229
+    protected:
+    void Trigger();
+    public:
+                             // 0x00788229
     void UpdateTriggerOnProximity();
 };
 

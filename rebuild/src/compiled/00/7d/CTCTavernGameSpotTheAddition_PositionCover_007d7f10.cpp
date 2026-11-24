@@ -1,5 +1,5 @@
 // CTCTavernGameSpotTheAddition::PositionCover(float fraction) -- swings the cover over the board along an eased arc: the eased fraction picks the angle, the cover sits (1 - cos) along and sin up from its board position
-// Leaf: PositionCover
+// Leaf: ?PositionCover@CTCTavernGameSpotTheAddition@@AAEXM@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D7F10, 187 bytes (`ret 4`). Ego_r.pdb
 // `?PositionCover@CTCTavernGameSpotTheAddition@@AAEXM@Z`.
@@ -73,7 +73,9 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     C3DVector     BoardPos;                     // +0x11c
     CRightHandedSet BoardRHSet;                 // +0x128
     void GetDef(CDefPointer<const CTavernGameSpotTheAdditionDef>* out) { ParentThing->PDef->GetSubDef(out); }
+    private:
     void PositionCover(float fraction);
+    public:
 };
 
 void CTCTavernGameSpotTheAddition::PositionCover(float fraction)

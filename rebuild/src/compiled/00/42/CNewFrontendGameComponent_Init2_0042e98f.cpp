@@ -96,7 +96,10 @@ public:
     NUISystem::CFrontEndManager*          m_pFrontEndManager;       // +0xb4
     unsigned char                         _pad0b8[0x144 - 0xb8];
     bool                                  WindowsMediaPlayerInstalled;   // +0x144
-    bool InitialiseGraphics();                           // 0x0042DDB3
+    private:
+    bool InitialiseGraphics();
+    public:
+                           // 0x0042DDB3
     private: void InitialiseSounds(); public:                             // 0x0042E17C
     void InitialiseInput();                              // 0x0042DEC5
     private: void Init2(); public:

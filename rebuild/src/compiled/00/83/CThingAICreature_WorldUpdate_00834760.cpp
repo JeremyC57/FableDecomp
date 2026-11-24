@@ -85,7 +85,10 @@ public:
 };
 class CThingAICreature : public CThingCreatureBase {
 public:
-    void UpdateMovement(float distanceToCamera);               // 0x008326A0
+    protected:
+    void UpdateMovement(float distanceToCamera);
+    public:
+               // 0x008326A0
     bool WorldUpdate();
 };
 #pragma pack(pop)

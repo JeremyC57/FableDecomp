@@ -100,7 +100,10 @@ class CTCDegradableBase { public:
         return false;
     }
     bool IsFullyDegraded() const;                           // 0x008EC900
-    const CDegradableInfo* GetDegradableInfoForHealthPercentage(float percentage);   // 0x008EC940
+    private:
+    const CDegradableInfo* GetDegradableInfoForHealthPercentage(float percentage);
+    public:
+   // 0x008EC940
     void ChangeMesh(const CEngineGraphic& graphic);         // 0x008EC9C0
     void ShowParticleEffects(long emitter);                 // 0x008ECA50
     private:

@@ -1,3 +1,4 @@
+// Leaf: ?CheckForHits@CTCCreatureFlyInCircles@@IAEXXZ
 // CTCCreatureFlyInCircles::CheckForHits() -- until it has been hit, look for a hit-by event on the flying creature caused by the hero's shot and remember it in HasBeenHit
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 //
@@ -95,7 +96,9 @@ struct CTCCreatureFlyInCircles : public CTCBase {
     CThingCreatureBase* Creature;                           // +0x0c
     unsigned char       _pad10[0x43 - 0x10];
     bool                HasBeenHit;                         // +0x43
+    protected:
     void CheckForHits();
+    public:
 };
 
 void CTCCreatureFlyInCircles::CheckForHits()
