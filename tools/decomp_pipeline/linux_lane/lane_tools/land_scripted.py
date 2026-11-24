@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Coordinator: land the ACCEPTed rows of a scripted naming route (flatten_pilot.py / access_fix.py run directory).
-usage (repo root, lane env sourced, S set): python3 -u land_scripted.py <run dir> <batch name> <queue tag> [--fix-unsigned-pad] [--release-t3 TAG]
---release-t3 TAG: a T3_PORT_QUEUE.tsv line of source TAG whose column-2 address is an accepted row of this run, and which is that address's
+usage (repo root, lane env sourced, S set): python3 -u land_scripted.py <run dir> <batch name> <queue tag> [--fix-unsigned-pad] [--release-t3 TAG[,TAG...]]
+--release-t3 TAG[,TAG...]: a T3_PORT_QUEUE.tsv line of a source TAG whose column-2 address is an accepted row of this run, and which is that address's
   only mention anywhere in the queue, does not reserve it (an agent pass the coordinator sent into those lines); the lines of the rows that
   land are closed: removed from the queue and kept in the batch's T3_CLOSED.tsv.
 Steps, in order (nothing is committed; the coordinator writes the README / HANDOFF / claims line and commits):
@@ -25,7 +25,7 @@ ent = ns.landed_rows()
 res = [l.split("\t") for l in open(f"{run}/RESULTS.tsv").read().splitlines()[1:]]
 acc = {r[0]: r for r in res if r[1] == "ACCEPT"}
 q = [l.split("\t") for l in open("rebuild/candidates/manual/naming/T3_PORT_QUEUE.tsv").read().splitlines()[1:]]
-rel_tag = argv[argv.index("--release-t3") + 1] if "--release-t3" in argv else None
+rel_tag = set(argv[argv.index("--release-t3") + 1].split(",")) if "--release-t3" in argv else None  # one tag or a comma list
 mentions = {}
 for i, r in enumerate(q):
     if len(r) > 2:
@@ -34,7 +34,7 @@ released = {}                                                   # address -> its
 if rel_tag:
     for a in acc:
         m = mentions.get(a, [])
-        if len(m) == 1 and q[m[0]][0] == rel_tag and q[m[0]][1].lower().replace("0x", "") == a: released[a] = m[0]
+        if len(m) == 1 and q[m[0]][0] in rel_tag and q[m[0]][1].lower().replace("0x", "") == a: released[a] = m[0]
 t3 = {a for a in mentions if a not in released}
 held = {}
 for a in acc:
