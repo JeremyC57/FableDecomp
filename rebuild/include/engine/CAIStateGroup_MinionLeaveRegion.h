@@ -8,6 +8,35 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONLEAVEREGION_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128A380 (RTTI .?AVCAIStateGroup_MinionLeaveRegion@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MinionLeaveRegion); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MinionLeaveRegion : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual bool IsRunnable();                                            // slot 11 0x0091E4A0 ?IsRunnable@CAIStateGroup_MinionLeaveRegion@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x0091E4B0 ?Update@CAIStateGroup_MinionLeaveRegion@@MAEXXZ
+public:
+    float         ExitPoint_X;                               // +0x14 C3DVector::X
+    float         ExitPoint_Y;                               // +0x18 C3DVector::Y
+    float         ExitPoint_Z;                               // +0x1c C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionLeaveRegion) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionLeaveRegion, ExitPoint_X) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionLeaveRegion, ExitPoint_Y) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionLeaveRegion, ExitPoint_Z) == 0x1c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -32,5 +61,6 @@ FABLE_STATIC_ASSERT_AT(25, offsetof(CAIStateGroup_MinionLeaveRegion, __vftable) 
 FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_MinionLeaveRegion, ExitPoint_X) == 0x14);
 FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_MinionLeaveRegion, ExitPoint_Y) == 0x18);
 FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_MinionLeaveRegion, ExitPoint_Z) == 0x1c);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MINIONLEAVEREGION_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONLEAVEREGION_H

@@ -1,0 +1,29 @@
+addr       parity           behav  name
+008fd99e   MATCH            PASS   AllowPriorityOverlap
+0090002c   MATCH            PASS   IsWorkCandle
+0090005d   MATCH            PASS   IsWorkCandle
+00911ef0   MATCH            PASS   IsRunnable
+00911f00   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00911f00   WARN RELOC_NAME: ?f1@@YIPAUChickenBegStageA@@PAX@Z -> 008fcf90 labelled 'CAIStateGroupBase::GetPlayerManager'
+00911f00   WARN RELOC_NAME: ?f4@@YIXPAX@Z -> 008fcf40 labelled 'CAIStateGroupBase::Terminate'
+00911f00   RELOCATION_MATCH PASS   Update
+0091ccb0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0091ccb0   RELOCATION_MATCH PASS   OnReplace
+0091e4a0   MATCH            PASS   IsRunnable
+00a87110   MATCH            PASS   HasChildren
+00b444d0   MATCH            PASS   GetRenderLayerMask
+00b444e0   MATCH            PASS   GetRenderLayerMask
+00bb1dd0   MATCH            PASS   IsBusy
+
+WINS: 11
+  008fd99e MATCH CAIStateGroup_KidWanderNearKids::?AllowPriorityOverlap@CAIStateGroup_KidWanderNearKids@@UAE_NXZ
+  0090002c MATCH CAIStateGroup_LightHomeCandle::?IsWorkCandle@CAIStateGroup_LightHomeCandle@@MAE_NXZ
+  0090005d MATCH CAIStateGroup_LightWorkCandle::?IsWorkCandle@CAIStateGroup_LightWorkCandle@@MAE_NXZ
+  00911ef0 MATCH CAIStateGroup_ChickenBeg::?IsRunnable@CAIStateGroup_ChickenBeg@@UAE_NXZ
+  00911f00 RELOCATION_MATCH CAIStateGroup_ChickenBeg::?Update@CAIStateGroup_ChickenBeg@@UAEXXZ
+  0091ccb0 RELOCATION_MATCH CAIStateGroup_MinionReactToNoise::?OnReplace@CAIStateGroup_MinionReactToNoise@@UAEXXZ
+  0091e4a0 MATCH CAIStateGroup_MinionLeaveRegion::?IsRunnable@CAIStateGroup_MinionLeaveRegion@@MAE_NXZ
+  00a87110 MATCH CPhysicsFacesSegmentLeaf::?HasChildren@CPhysicsFacesSegmentLeaf@@MBE_NXZ
+  00b444d0 MATCH CEngineInternalPrimitiveLight::?GetRenderLayerMask@CEngineInternalPrimitiveLight@@UBEKXZ
+  00b444e0 MATCH CEngineInternalPrimitiveShadowedSpotLight::?GetRenderLayerMask@CEngineInternalPrimitiveShadowedSpotLight@@UBEKXZ
+  00bb1dd0 MATCH CParticleSimulationRenderData::?IsBusy@CParticleSimulationRenderData@@UBE_NXZ

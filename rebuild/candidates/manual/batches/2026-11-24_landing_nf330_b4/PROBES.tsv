@@ -1,0 +1,11 @@
+class	vftable	verdict	slots	notes
+CAIStateGroup_ChickenBeg	01289514	OK	retail=14 emitted=14 same=13 slot0_alias=1	
+CAIStateGroup_KidWanderNearKids	01289798	OK	retail=14 emitted=14 same=14 slot0_alias=0	
+CAIStateGroup_LightHomeCandle	0128BDBC	OK	retail=17 emitted=17 same=17 slot0_alias=0	
+CAIStateGroup_LightWorkCandle	0128BE04	OK	retail=17 emitted=17 same=17 slot0_alias=0	
+CAIStateGroup_MinionLeaveRegion	0128A380	OK	retail=14 emitted=14 same=13 slot0_alias=1	
+CAIStateGroup_MinionReactToNoise	0128A104	OK	retail=14 emitted=14 same=13 slot0_alias=1	
+CEngineInternalPrimitiveLight	012A212C	OK	retail=29 emitted=29 same=28 slot0_alias=1	
+CEngineInternalPrimitiveShadowedSpotLight	012A21A4	OK	retail=29 emitted=29 same=28 slot0_alias=1	
+CParticleSimulationRenderData	012A56B0	OK	retail=2 emitted=2 same=1 slot0_alias=1	
+CPhysicsFacesSegmentLeaf	0129DEA4	OK	retail=5 emitted=5 same=4 slot0_alias=1	

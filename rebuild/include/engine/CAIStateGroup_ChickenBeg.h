@@ -8,6 +8,29 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01289514 (RTTI .?AVCAIStateGroup_ChickenBeg@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_ChickenBeg); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_ChickenBeg : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual bool IsRunnable();                                            // slot 11 0x00911EF0 ?IsRunnable@CAIStateGroup_ChickenBeg@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x00911F00 ?Update@CAIStateGroup_ChickenBeg@@UAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_ChickenBeg) == 0x14);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -23,5 +46,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_ChickenBeg) == 0x14);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_ChickenBeg, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_CHICKENBEG_H

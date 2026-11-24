@@ -1,3 +1,7 @@
+// Leaf: ?Update@CAIStateGroup_ChickenBeg@@UAEXXZ
+#define FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
 #include "engine/CAIStateGroup_ChickenBeg.h"
 
 struct ChickenBegStageA; class CThingPlayerCreature;
@@ -10,7 +14,10 @@ ChickenBegStageA* __fastcall f1(void* stateGroup);
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 void __fastcall f4(void* stateGroup);
 
-void __fastcall CAIStateGroup_ChickenBeg_Update(CAIStateGroup_ChickenBeg* stateGroup) {
+void CAIStateGroup_ChickenBeg::Update()
+{
+    CAIStateGroup_ChickenBeg* stateGroup = this;
     (&((CPlayerManager*)(f1(stateGroup)))->GetMainPlayer())->PeekPControlledCreature();
     f4(stateGroup);
 }
+// Flatten route (flatten_pilot v5, NF330): CAIStateGroup_ChickenBeg_Update -> CAIStateGroup_ChickenBeg::Update, the RTTI-placed PDB member; class model: engine/CAIStateGroup_ChickenBeg.h opt-in FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_VIRTUAL_MODEL, FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.

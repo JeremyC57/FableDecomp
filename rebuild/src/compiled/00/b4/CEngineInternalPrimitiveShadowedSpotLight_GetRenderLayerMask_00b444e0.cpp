@@ -1,4 +1,12 @@
-int __fastcall CEngineInternalPrimitiveShadowedSpotLight_GetRenderLayerMask()
+// Leaf: ?GetRenderLayerMask@CEngineInternalPrimitiveShadowedSpotLight@@UBEKXZ
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVESHADOWEDSPOTLIGHT_VIRTUAL_MODEL
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER
+#include "engine/CEngineInternalPrimitiveShadowedSpotLight.h"
+unsigned long CEngineInternalPrimitiveShadowedSpotLight::GetRenderLayerMask() const
 {
     return 1;
 }
+// Flatten route (flatten_pilot v5, NF330): CEngineInternalPrimitiveShadowedSpotLight_GetRenderLayerMask -> CEngineInternalPrimitiveShadowedSpotLight::GetRenderLayerMask, the RTTI-placed PDB member; class model: engine/CEngineInternalPrimitiveShadowedSpotLight.h opt-in FABLE_RETAIL_CENGINEINTERNALPRIMITIVESHADOWEDSPOTLIGHT_VIRTUAL_MODEL, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER.

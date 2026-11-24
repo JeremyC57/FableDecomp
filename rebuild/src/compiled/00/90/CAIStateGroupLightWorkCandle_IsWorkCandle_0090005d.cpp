@@ -1,4 +1,11 @@
-bool __fastcall CAIStateGroup_LightWorkCandle_IsWorkCandle()
+// Leaf: ?IsWorkCandle@CAIStateGroup_LightWorkCandle@@MAE_NXZ
+#define FABLE_RETAIL_CAISTATEGROUP_LIGHTWORKCANDLE_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUP_LIGHTHOMECANDLE_VIRTUAL_MODEL
+#include "engine/CAIStateGroup_LightWorkCandle.h"
+bool CAIStateGroup_LightWorkCandle::IsWorkCandle()
 {
     return true;
 }
+// Flatten route (flatten_pilot v5, NF330): CAIStateGroup_LightWorkCandle_IsWorkCandle -> CAIStateGroup_LightWorkCandle::IsWorkCandle, the RTTI-placed PDB member; class model: engine/CAIStateGroup_LightWorkCandle.h opt-in FABLE_RETAIL_CAISTATEGROUP_LIGHTWORKCANDLE_VIRTUAL_MODEL, FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_LIGHTHOMECANDLE_VIRTUAL_MODEL.

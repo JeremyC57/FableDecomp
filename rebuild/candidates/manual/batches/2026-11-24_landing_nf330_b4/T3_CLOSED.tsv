@@ -1,0 +1,12 @@
+source	address	unit	reason
+nf324	0x008FD99E	port	008fd99e skipped-port ?AllowPriorityOverlap@CAIStateGroup_KidWanderNearKids@@UAE_NXZ triage (header): model: engine/CAIStateGroup_KidWanderNearKids.h does not declare AllowPriorityOverlap and has no polymorphic class model (port)
+nf324	0x0090002C	port	0090002c skipped-port ?IsWorkCandle@CAIStateGroup_LightHomeCandle@@MAE_NXZ triage (header): model: engine/CAIStateGroup_LightHomeCandle.h does not declare IsWorkCandle and has no polymorphic class model (port)
+nf324	0x0090005D	port	0090005d skipped-port ?IsWorkCandle@CAIStateGroup_LightWorkCandle@@MAE_NXZ triage (header): model: engine/CAIStateGroup_LightWorkCandle.h does not declare IsWorkCandle and has no polymorphic class model (port)
+nf324	0x00911EF0	port	00911ef0 skipped-port ?IsRunnable@CAIStateGroup_ChickenBeg@@UAE_NXZ triage (header): model: engine/CAIStateGroup_ChickenBeg.h does not declare IsRunnable and has no polymorphic class model (port)
+nf324	0x00911F00	port	00911f00 skipped-port ?Update@CAIStateGroup_ChickenBeg@@UAEXXZ triage (header): model: engine/CAIStateGroup_ChickenBeg.h does not declare Update and has no polymorphic class model (port)
+nf324	0x0091CCB0	port	0091ccb0 skipped-port ?OnReplace@CAIStateGroup_MinionReactToNoise@@UAEXXZ triage (header): model: engine/CAIStateGroup_MinionReactToNoise.h does not declare OnReplace and has no polymorphic class model (port)
+nf324	0x0091E4A0	port	0091e4a0 skipped-port ?IsRunnable@CAIStateGroup_MinionLeaveRegion@@MAE_NXZ triage (header): model: engine/CAIStateGroup_MinionLeaveRegion.h does not declare IsRunnable and has no polymorphic class model (port)
+nf324	0x00A87110	port	00a87110 skipped-port ?HasChildren@CPhysicsFacesSegmentLeaf@@MBE_NXZ triage (header): model: engine/CPhysicsFacesSegmentLeaf.h does not declare HasChildren and has no polymorphic class model (port)
+nf324	0x00B444D0	port	00b444d0 skipped-port ?GetRenderLayerMask@CEngineInternalPrimitiveLight@@UBEKXZ triage (header): model: engine/CEngineInternalPrimitiveLight.h does not declare GetRenderLayerMask and has no polymorphic class model (port)
+nf324	0x00B444E0	port	00b444e0 skipped-port ?GetRenderLayerMask@CEngineInternalPrimitiveShadowedSpotLight@@UBEKXZ triage (header): model: engine/CEngineInternalPrimitiveShadowedSpotLight.h does not declare GetRenderLayerMask and has no polymorphic cla
+nf324	0x00BB1DD0	port	00bb1dd0 skipped-port ?IsBusy@CParticleSimulationRenderData@@UBE_NXZ triage (header): model: engine/CParticleSimulationRenderData.h does not declare IsBusy and has no polymorphic class model (port)

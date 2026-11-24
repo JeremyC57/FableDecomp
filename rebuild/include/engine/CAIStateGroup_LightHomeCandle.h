@@ -8,6 +8,38 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_LIGHTHOMECANDLE_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128BDBC (RTTI .?AVCAIStateGroup_LightHomeCandle@@ : CAIStateGroupBase), 17 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_LightHomeCandle); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CThingAICreature;
+class CThingBuilding;
+class CWorld;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_LightHomeCandle : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+public: static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc(); private:
+#endif
+protected:
+    virtual bool IsRunnable();                                            // slot 11 0x00946B50 ?IsRunnable@CAIStateGroup_LightHomeCandle@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x00946850 ?Update@CAIStateGroup_LightHomeCandle@@MAEXXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x00946620 ?InitStateGroup@CAIStateGroup_LightHomeCandle@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+    virtual CThingBuilding* GetBuilding();                                // slot 14 0x00946650 ?GetBuilding@CAIStateGroup_LightHomeCandle@@MAEPAVCThingBuilding@@XZ
+    virtual bool ShouldBeLit() const;                                     // slot 15 0x00946690 ?ShouldBeLit@CAIStateGroup_LightHomeCandle@@MBE_NXZ
+    virtual bool IsWorkCandle();                                          // slot 16 0x0090002C ?IsWorkCandle@CAIStateGroup_LightHomeCandle@@MAE_NXZ
+public:
+    unsigned char PCandle[0x8];                              // +0x14 CIntelligentPointer<CThing>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_LightHomeCandle) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_LightHomeCandle, PCandle) == 0x14);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -30,5 +62,6 @@ FABLE_STATIC_ASSERT_AT(23, sizeof(CAIStateGroup_LightHomeCandle) == 0x1c);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_LightHomeCandle, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(25, offsetof(CAIStateGroup_LightHomeCandle, f4) == 0x4);
 FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_LightHomeCandle, PCandle) == 0x14);
+#endif // FABLE_RETAIL_CAISTATEGROUP_LIGHTHOMECANDLE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_LIGHTHOMECANDLE_H

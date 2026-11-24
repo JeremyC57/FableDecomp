@@ -1,0 +1,12 @@
+address	verdict	old	new	reason
+008fd99e	ACCEPT	?CAIStateGroup_KidWanderNearKids_AllowPriorityOverlap@@YI_NXZ	?AllowPriorityOverlap@CAIStateGroup_KidWanderNearKids@@UAE_NXZ	objcheck ALL_EQ, MATCH PASS [route header]
+0090002c	ACCEPT	?CAIStateGroup_LightHomeCandle_IsWorkCandle@@YI_NXZ	?IsWorkCandle@CAIStateGroup_LightHomeCandle@@MAE_NXZ	objcheck ALL_EQ, MATCH PASS [route header]
+0090005d	ACCEPT	?CAIStateGroup_LightWorkCandle_IsWorkCandle@@YI_NXZ	?IsWorkCandle@CAIStateGroup_LightWorkCandle@@MAE_NXZ	objcheck ALL_EQ, MATCH PASS [route header]
+00911ef0	ACCEPT	?CAIStateGroup_ChickenBeg_IsRunnable@@YI_NXZ	?IsRunnable@CAIStateGroup_ChickenBeg@@UAE_NXZ	objcheck ALL_EQ, MATCH PASS [route header]
+00911f00	ACCEPT	?CAIStateGroup_ChickenBeg_Update@@YIXPAUCAIStateGroup_ChickenBeg@@@Z	?Update@CAIStateGroup_ChickenBeg@@UAEXXZ	objcheck ALL_EQ, RELOCATION_MATCH PASS [route header]
+0091ccb0	ACCEPT	?CAIStateGroup_MinionReactToNoise_OnReplace@@YIXPAUCAIStateGroup_MinionReactToNoise@@@Z	?OnReplace@CAIStateGroup_MinionReactToNoise@@UAEXXZ	objcheck ALL_EQ, RELOCATION_MATCH PASS [route header]
+0091e4a0	ACCEPT	?CAIStateGroup_MinionLeaveRegion_IsRunnable@@YI_NXZ	?IsRunnable@CAIStateGroup_MinionLeaveRegion@@MAE_NXZ	objcheck ALL_EQ, MATCH PASS [route header]
+00a87110	ACCEPT	?CPhysicsFacesSegmentLeaf_HasChildren@@YI_NXZ	?HasChildren@CPhysicsFacesSegmentLeaf@@MBE_NXZ	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00b444d0	ACCEPT	?CEngineInternalPrimitiveLight_GetRenderLayerMask@@YIHXZ	?GetRenderLayerMask@CEngineInternalPrimitiveLight@@UBEKXZ	objcheck ALL_EQ, MATCH PASS [route header]
+00b444e0	ACCEPT	?CEngineInternalPrimitiveShadowedSpotLight_GetRenderLayerMask@@YIHXZ	?GetRenderLayerMask@CEngineInternalPrimitiveShadowedSpotLight@@UBEKXZ	objcheck ALL_EQ, MATCH PASS [route header]
+00bb1dd0	ACCEPT	?CParticleSimulationRenderData_IsBusy@@YI_NPAVCParticleSimulationRenderData@@@Z	?IsBusy@CParticleSimulationRenderData@@UBE_NXZ	objcheck ALL_EQ, MATCH PASS [route header]

@@ -12,6 +12,50 @@
 #include "engine/CRGBFloatColour.h"
 #endif
 
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVELIGHT_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012A212C (RTTI .?AVCEngineInternalPrimitiveLight@@ : CEngineInternalPrimitiveBase), 29 slots; the declared slots are this class's overrides (RTTI-port labels name CEngineInternalPrimitiveLight); every other slot stays the base's.
+// Members: the flat model's lines below (its TYPED member opt-in kept as written; hand-merged, NF330), same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER.
+#include "engine/CEngineInternalPrimitiveBase.h"
+class CEnginePrimitive;
+#pragma pack(push, 1)
+class CEngineInternalPrimitiveLight : public CEngineInternalPrimitiveBase {
+public:
+    virtual void Update(const CEnginePrimitive&, unsigned long);          // slot 5 0x00B453D0 ?Update@CEngineInternalPrimitiveLight@@UAEXABVCEnginePrimitive@@K@Z
+    virtual unsigned long GetRenderLayerMask() const;                     // slot 28 0x00B444D0 ?GetRenderLayerMask@CEngineInternalPrimitiveLight@@UBEKXZ
+public:
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVELIGHT_TYPED
+    // NF151 opt-in (row 0x00B47FD0 CEngineLightingManager::AddLightPrimitive): the two Ego_r.pdb members typed (C3DVector WorldPos +0x48,
+    // CRGBFloatColour Colour +0x54, the PDB types the flattened names spell out); same offsets and size.
+    C3DVector       WorldPos;                                // +0x48
+    CRGBFloatColour Colour;                                  // +0x54
+#else
+    float         WorldPos_X;                                // +0x48 C3DVector::X
+    float         WorldPos_Y;                                // +0x4c C3DVector::Y
+    float         WorldPos_Z;                                // +0x50 C3DVector::Z
+    float         Colour_R;                                  // +0x54 CRGBFloatColour::R
+    float         Colour_G;                                  // +0x58 CRGBFloatColour::G
+    float         Colour_B;                                  // +0x5c CRGBFloatColour::B
+    float         Colour_A;                                  // +0x60 CRGBFloatColour::A
+#endif
+    float         Radius;                                    // +0x64
+    float         SpotRadius;                                // +0x68
+    unsigned long ChannelMask;                               // +0x6c
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveLight) == 0x70);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVELIGHT_TYPED
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, WorldPos) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour) == 0x54);
+#else
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, WorldPos_X) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour_R) == 0x54);
+#endif
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Radius) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, SpotRadius) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, ChannelMask) == 0x6c);
+#else
 #pragma pack(push, 1)
 class CEngineInternalPrimitiveLight {
 public:
@@ -70,5 +114,6 @@ FABLE_STATIC_ASSERT_AT(50, offsetof(CEngineInternalPrimitiveLight, Colour) == 0x
 FABLE_STATIC_ASSERT_AT(54, offsetof(CEngineInternalPrimitiveLight, Radius) == 0x64);
 FABLE_STATIC_ASSERT_AT(55, offsetof(CEngineInternalPrimitiveLight, SpotRadius) == 0x68);
 FABLE_STATIC_ASSERT_AT(56, offsetof(CEngineInternalPrimitiveLight, ChannelMask) == 0x6c);
+#endif // FABLE_RETAIL_CENGINEINTERNALPRIMITIVELIGHT_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVELIGHT_H

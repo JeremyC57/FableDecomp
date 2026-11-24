@@ -8,6 +8,51 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTONOISE_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128A104 (RTTI .?AVCAIStateGroup_MinionReactToNoise@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MinionReactToNoise); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MinionReactToNoise : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0091CC90 ?Initialise@CAIStateGroup_MinionReactToNoise@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual void OnActivate();                                            // slot 2 0x0091CF40 ?OnActivate@CAIStateGroup_MinionReactToNoise@@UAEXXZ
+    virtual void Cleanup();                                               // slot 9 0x0091CFA0 ?Cleanup@CAIStateGroup_MinionReactToNoise@@UAEXXZ
+    virtual void OnReplace();                                             // slot 10 0x0091CCB0 ?OnReplace@CAIStateGroup_MinionReactToNoise@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x0091CDC0 ?IsRunnable@CAIStateGroup_MinionReactToNoise@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x0091CCC0 ?Update@CAIStateGroup_MinionReactToNoise@@UAEXXZ
+public:
+    float         NoisePosition_X;                           // +0x14 C3DVector::X
+    float         NoisePosition_Y;                           // +0x18 C3DVector::Y
+    float         NoisePosition_Z;                           // +0x1c C3DVector::Z
+    bool          InvestigatingNoise;                        // +0x20
+    bool          FoundNoiseMaker;                           // +0x21
+    unsigned char _pad_0x22[0x2];                            // +0x22
+    long          FrameOfLastInteraction;                    // +0x24
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionReactToNoise) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToNoise, NoisePosition_X) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToNoise, NoisePosition_Y) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToNoise, NoisePosition_Z) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToNoise, InvestigatingNoise) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToNoise, FoundNoiseMaker) == 0x21);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToNoise, _pad_0x22) == 0x22);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToNoise, FrameOfLastInteraction) == 0x24);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -39,5 +84,6 @@ FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_MinionReactToNoise, NoisePosit
 FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_MinionReactToNoise, InvestigatingNoise) == 0x20);
 FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_MinionReactToNoise, FoundNoiseMaker) == 0x21);
 FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_MinionReactToNoise, FrameOfLastInteraction) == 0x24);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTONOISE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONREACTTONOISE_H

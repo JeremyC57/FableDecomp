@@ -8,6 +8,49 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESHADOWEDSPOTLIGHT_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012A21A4 (RTTI .?AVCEngineInternalPrimitiveShadowedSpotLight@@ : CEngineInternalPrimitiveBase), 29 slots; the declared slots are this class's overrides (RTTI-port labels name CEngineInternalPrimitiveShadowedSpotLight); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED, FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER.
+#include "engine/CEngineInternalPrimitiveBase.h"
+class CEnginePrimitive;
+#pragma pack(push, 1)
+class CEngineInternalPrimitiveShadowedSpotLight : public CEngineInternalPrimitiveBase {
+public:
+    virtual void Update(const CEnginePrimitive&, unsigned long);          // slot 5 0x00B45460 ?Update@CEngineInternalPrimitiveShadowedSpotLight@@UAEXABVCEnginePrimitive@@K@Z
+    virtual unsigned long GetRenderLayerMask() const;                     // slot 28 0x00B444E0 ?GetRenderLayerMask@CEngineInternalPrimitiveShadowedSpotLight@@UBEKXZ
+public:
+    float         WorldPos_X;                                // +0x48 C3DVector::X
+    float         WorldPos_Y;                                // +0x4c C3DVector::Y
+    float         WorldPos_Z;                                // +0x50 C3DVector::Z
+    float         Direction_X;                               // +0x54 C3DVector::X
+    float         Direction_Y;                               // +0x58 C3DVector::Y
+    float         Direction_Z;                               // +0x5c C3DVector::Z
+    float         Colour_R;                                  // +0x60 CRGBFloatColour::R
+    float         Colour_G;                                  // +0x64 CRGBFloatColour::G
+    float         Colour_B;                                  // +0x68 CRGBFloatColour::B
+    float         Colour_A;                                  // +0x6c CRGBFloatColour::A
+    float         Radius;                                    // +0x70
+    float         SpotRadius;                                // +0x74
+    float         ConeRadius;                                // +0x78
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveShadowedSpotLight) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, WorldPos_X) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, WorldPos_Y) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, WorldPos_Z) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Direction_X) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Direction_Y) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Direction_Z) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_R) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_G) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_B) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_A) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Radius) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, SpotRadius) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, ConeRadius) == 0x78);
+#else
 #pragma pack(push, 1)
 class CEngineInternalPrimitiveShadowedSpotLight {
 public:
@@ -45,20 +88,21 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveShadowedSpotLight) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, WorldPos_X) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, WorldPos_Y) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, WorldPos_Z) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Direction_X) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Direction_Y) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Direction_Z) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_R) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_G) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_B) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_A) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, Radius) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, SpotRadius) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveShadowedSpotLight, ConeRadius) == 0x78);
+FABLE_STATIC_ASSERT_AT(48, sizeof(CEngineInternalPrimitiveShadowedSpotLight) == 0x7c);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CEngineInternalPrimitiveShadowedSpotLight, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CEngineInternalPrimitiveShadowedSpotLight, WorldPos_X) == 0x48);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CEngineInternalPrimitiveShadowedSpotLight, WorldPos_Y) == 0x4c);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CEngineInternalPrimitiveShadowedSpotLight, WorldPos_Z) == 0x50);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CEngineInternalPrimitiveShadowedSpotLight, Direction_X) == 0x54);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CEngineInternalPrimitiveShadowedSpotLight, Direction_Y) == 0x58);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CEngineInternalPrimitiveShadowedSpotLight, Direction_Z) == 0x5c);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_R) == 0x60);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_G) == 0x64);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_B) == 0x68);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CEngineInternalPrimitiveShadowedSpotLight, Colour_A) == 0x6c);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CEngineInternalPrimitiveShadowedSpotLight, Radius) == 0x70);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CEngineInternalPrimitiveShadowedSpotLight, SpotRadius) == 0x74);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CEngineInternalPrimitiveShadowedSpotLight, ConeRadius) == 0x78);
+#endif // FABLE_RETAIL_CENGINEINTERNALPRIMITIVESHADOWEDSPOTLIGHT_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVESHADOWEDSPOTLIGHT_H

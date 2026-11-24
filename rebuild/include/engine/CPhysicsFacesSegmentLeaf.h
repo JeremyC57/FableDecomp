@@ -9,6 +9,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CPHYSICSFACESSEGMENTLEAF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0129DEA4 (RTTI .?AVCPhysicsFacesSegmentLeaf@@ : CIPhysicsFacesSegmentBase), 5 slots; the declared slots are this class's overrides (RTTI-port labels name CPhysicsFacesSegmentLeaf); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+#include "engine/CIPhysicsFacesSegmentBase.h"
+class C3DVector;
+#pragma pack(push, 1)
+class CPhysicsFacesSegmentLeaf : public CIPhysicsFacesSegmentBase {
+protected:
+    virtual bool HasChildren() const;                                     // slot 0 0x00A87110 ?HasChildren@CPhysicsFacesSegmentLeaf@@MBE_NXZ
+    virtual long Sizeof() const;                                          // slot 1 0x00A86100 ?Sizeof@CPhysicsFacesSegmentLeaf@@MBEJXZ
+    virtual long GetNoFaces() const;                                      // slot 2 0x00A860F0 ?GetNoFaces@CPhysicsFacesSegmentLeaf@@MBEJXZ
+    virtual ~CPhysicsFacesSegmentLeaf();                                  // slot 3 0x00A87120 ??_GCPhysicsFacesSegmentLeaf@@MAEPAXI@Z
+    virtual void GetPossibleCollisionSet(float, const C3DVector&, const C3DVector&, std::vector<long, std::allocator<long> >&) const; // slot 4 0x00A86E20 ?GetPossibleCollisionSet@CPhysicsFacesSegmentLeaf@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z
+public:
+    unsigned char TriangleListIndex[0xc];                    // +0x04 CArray<unsigned_short>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CPhysicsFacesSegmentLeaf) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CPhysicsFacesSegmentLeaf, TriangleListIndex) == 0x4);
+#else
 #pragma pack(push, 1)
 struct CPhysicsFacesSegmentLeaf {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -16,8 +37,9 @@ struct CPhysicsFacesSegmentLeaf {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CPhysicsFacesSegmentLeaf) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CPhysicsFacesSegmentLeaf, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CPhysicsFacesSegmentLeaf, TriangleListIndex) == 0x4);
+FABLE_STATIC_ASSERT_AT(19, sizeof(CPhysicsFacesSegmentLeaf) == 0x10);
+FABLE_STATIC_ASSERT_AT(20, offsetof(CPhysicsFacesSegmentLeaf, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(21, offsetof(CPhysicsFacesSegmentLeaf, TriangleListIndex) == 0x4);
+#endif // FABLE_RETAIL_CPHYSICSFACESSEGMENTLEAF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CPHYSICSFACESSEGMENTLEAF_H

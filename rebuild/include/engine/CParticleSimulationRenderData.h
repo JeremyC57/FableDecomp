@@ -8,6 +8,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CPARTICLESIMULATIONRENDERDATA_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012A56B0 (RTTI .?AVCParticleSimulationRenderData@@ : CBaseClassNonCopyable), 2 slots; the declared slots are this class's overrides (RTTI-port labels name CParticleSimulationRenderData); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+#include "engine/CBaseClassNonCopyable.h"
+#pragma pack(push, 1)
+class CParticleSimulationRenderData : public CBaseClassNonCopyable {
+public:
+#ifdef FABLE_RETAIL_CPARTICLESIMULATIONRENDERDATA_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x00BB6330 CCountedPointer<CParticleSimulationRenderData>::DeleteData): the vptr as the class's own -- vtable
+    // slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`). Same layout.
+    virtual ~CParticleSimulationRenderData();
+#else
+#endif
+public:
+    virtual bool IsBusy() const;                                          // slot 1 0x00BB1DD0 ?IsBusy@CParticleSimulationRenderData@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CParticleSimulationRenderData) == 0x4);
+#else
 #pragma pack(push, 1)
 class CParticleSimulationRenderData {
 public:
@@ -21,9 +42,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CParticleSimulationRenderData) == 0x4);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CParticleSimulationRenderData) == 0x4);
 #ifndef FABLE_RETAIL_CPARTICLESIMULATIONRENDERDATA_VIRTUAL_DTOR
-FABLE_STATIC_ASSERT(offsetof(CParticleSimulationRenderData, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(26, offsetof(CParticleSimulationRenderData, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CPARTICLESIMULATIONRENDERDATA_VIRTUAL_MODEL
 #endif
 
 #endif // FABLE_ENGINE_CPARTICLESIMULATIONRENDERDATA_H
