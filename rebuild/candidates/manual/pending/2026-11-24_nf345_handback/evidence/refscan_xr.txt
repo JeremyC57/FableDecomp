@@ -1,0 +1,7 @@
+== 00506940
+006403d0	?RemoveMap@CEngineManager@@QAEXJ@Z	x1
+== 005022f0
+006403d0	?RemoveMap@CEngineManager@@QAEXJ@Z	x1
+== 004ff8b0
+006403d0	?RemoveMap@CEngineManager@@QAEXJ@Z	x1
+== 0040cca0

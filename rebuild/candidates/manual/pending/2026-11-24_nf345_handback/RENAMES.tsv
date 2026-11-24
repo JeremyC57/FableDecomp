@@ -1,0 +1,12 @@
+kind	row	old	new	batch
+self	0063b890	?PointIsWithinCellBR@CWorldMap@@IBE_NPBVC3DVector@@0@Z	?PointIsWithinCellTR@CWorldMap@@IBE_NPBVC3DVector@@0@Z	b1 (U1)
+self	0063b920	?PointIsWithinCellTL@CWorldMap@@IBE_NPBVC3DVector@@0@Z	?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z	b1 (U1)
+self	0063b9b0	?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z	?PointIsWithinCellTL@CWorldMap@@IBE_NPBVC3DVector@@0@Z	b1 (U1)
+self	0063ba30	?PointIsWithinCellTR@CWorldMap@@IBE_NPBVC3DVector@@0@Z	?PointIsWithinCellBR@CWorldMap@@IBE_NPBVC3DVector@@0@Z	b1 (U1)
+caller	0059697a	?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z	?SetCameraBowYZInverted@CUserProfileManager@@QAEX_N0@Z	b1 (U2)
+caller	004fede0	?RemoveMap@CEngineManager@@QAEXJ@Z	?SetMapAsUnloaded@CEngineManager@@QAEXJ@Z	b1 (U3)
+caller	004feec0	?RemoveMap@CEngineManager@@QAEXJ@Z	?SetMapAsUnloaded@CEngineManager@@QAEXJ@Z	b1 (U3)
+caller	0041e6d3	?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z	?LoadGame@CTCInGameMenu@@QAEXJ@Z	b2 (D1)
+caller	00e1a990	?Init@CQ_WizardBattleScript@NScript@@QAEXXZ	?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ	b2 (D1)
+self	0042b587	_M_create_node map<CCharString,long> (J)	_M_create_node map<CCharString,unsigned long> (K)	b3
+pickany	0042b587	??0?$pair@$$CBVCCharString@@J@std@@QAE@ABU01@@Z (+ _Construct J)	??0?$pair@$$CBVCCharString@@K@std@@QAE@ABU01@@Z (+ _Construct K)	b3 (EQ at 004297db before and after)

@@ -2,9 +2,9 @@
 class C3DVector { public: float X, Y, Z; };
 class CWorldMap
 { public:
-    bool PointIsWithinCellBR(const C3DVector* point, const C3DVector* cell) const;
+    bool PointIsWithinCellTR(const C3DVector* point, const C3DVector* cell) const;
 };
-bool CWorldMap::PointIsWithinCellBR(const C3DVector* point, const C3DVector* cell) const
+bool CWorldMap::PointIsWithinCellTR(const C3DVector* point, const C3DVector* cell) const
 {
     float blockX = (float)(long)point->X;
     return blockX == cell->X
@@ -15,7 +15,7 @@ static bool T(const CWorldMap& w, float px, float py, float cx, float cy)
 {
     C3DVector p = { px, py, 0.0f };
     C3DVector c = { cx, cy, 0.0f };
-    return w.PointIsWithinCellBR(&p, &c);
+    return w.PointIsWithinCellTR(&p, &c);
 }
 int main()
 {

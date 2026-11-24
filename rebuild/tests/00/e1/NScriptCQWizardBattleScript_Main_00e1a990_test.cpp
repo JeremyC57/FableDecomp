@@ -9,13 +9,13 @@ class CGameScriptInterface { public:
 };
 struct CQ_WizardBattleScript {
     CGameScriptInterface* Game;
-    void Init() { Log("init"); }
+    void InitialiseVariables() { Log("init"); }
     void SpawnFunction(const char* name) { Log("spawn"); Log(name); }
     void AddEntityScriptBinding(const char* name, int flags) { Log("bind"); Log(name); Log(flags ? "1" : "0"); }
     void PostAddScriptedEntities() { Log("post"); }
     void Main()
     {
-        Init();
+        InitialiseVariables();
         AddEntityScriptBinding("HKC_VillagerScreamer", 1);
         AddEntityScriptBinding("HKC_ScreamerPoint", 1);
         AddEntityScriptBinding("ChasingScreamer", 1);

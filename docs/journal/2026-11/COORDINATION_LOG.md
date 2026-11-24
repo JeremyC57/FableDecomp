@@ -1133,3 +1133,8 @@ RunCutsceneMacro 0x00CBFB7D emits a 30-byte one). It can land only if you show a
 object-identical (bytes, relocation symbols, COMDAT selection), with your FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL probe (3521 v 3426) as
 the no-fix record. Item 2 (the resize(n) copy your specialization emits, NEQ to 0x00CD3DA4) is not leaf-called and 0x00CD3DA4 is bound at
 HEAD, so by EXTRA_RULES 2026-11-21 it alone would be debt; it does not block once item 1 is settled.
+
+2026-11-24 A->B: FYI, NF345 landed 10 respells of stale-table conflicts (`batches/2026-11-24_landing_nf345_b1..b3`). One ruling extends
+NF302 Q2 (D1): a binder whose stand-in spelling resolves to the WRONG landed body may be respelled onto its PDB name even though the
+reference then stays unresolved until the owner is ported; the owner is queued as PRIORITY in NAME_FIXES. Renamed files this round:
+the CWorldMap::PointIsWithinCell{TR,BL,TL,BR} rows 0x0063B890..0x0063BA30 (names swapped) and 0x0042B587 (map<CCharString, unsigned long>).

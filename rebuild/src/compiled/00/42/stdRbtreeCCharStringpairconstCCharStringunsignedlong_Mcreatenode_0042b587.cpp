@@ -1,10 +1,13 @@
-// std::_Rb_tree<CCharString, pair<const CCharString, long>, ...>::_M_create_node(const value_type&) -- mallocs a 0x18-byte node and copy-constructs the pair into it
-// Leaf: ?_M_create_node@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@ABU?$pair@$$CBVCCharString@@J@2@@Z
+// std::_Rb_tree<CCharString, pair<const CCharString, unsigned long>, ...>::_M_create_node(const value_type&) -- mallocs a 0x18-byte node and copy-constructs the pair into it
+// Leaf: ?_M_create_node@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@2@ABU?$pair@$$CBVCCharString@@K@2@@Z
 // Retail: Fable.exe @ 0x0042B587, 33 bytes, `ret 4`. Catalog label NScript::CDanyalTestScriptsData::Alloc is wrong. STLport
 // _M_create_node: malloc import 0x00BFEA0E (`push 18h`), placement new (null test) with the pair copy ctor
-// 0x004297DB (CCharString copy 0x0099EC30, then a 4-byte value copy) on node +0x10. Callers: the map's _M_insert 0x0042BCB5,
-// shared (identical-code folded) by several map<CCharString, 4-byte value> instantiations (e.g. the _M_upper_bound user
-// 0x009D34E0), so the value type is not unique; long stands for it here.
+// 0x004297DB (CCharString copy 0x0099EC30, then a 4-byte value copy) on node +0x10. Caller: the map's _M_insert 0x0042BCB5
+// (itself reached from insert_unique 0x0042BD4A, insert(hint) 0x0042C940 and insert_equal 0x009D34E0).
+// Element type (NF345, 2026-11-24): its only retail caller is that _M_insert 0x0042BCB5 (two calls; the exe has no other reference),
+// whose tree is the proven map<CCharString, unsigned long> (agent952: CCodeSectionManager's operator[] 0x0042D131) and whose object
+// binds the unsigned long spelling here; retail has no identical-code folding, so this body is that tree's own _M_create_node
+// (unsigned long), and 0x0046ECE7 is the long tree's (0x004759AD).
 // Opt: size TU (`pop ecx` after the cdecl malloc, `push dword ptr [esp+8]`).
 #pragma optimize("s", on)
 #include <stdlib.h>
@@ -56,4 +59,4 @@ protected:
 };
 }
 
-template std::_Rb_tree<CCharString, std::pair<const CCharString, long>, std::_Select1st<std::pair<const CCharString, long> >, std::less<CCharString>, std::allocator<std::pair<const CCharString, long> > >::_Link_type std::_Rb_tree<CCharString, std::pair<const CCharString, long>, std::_Select1st<std::pair<const CCharString, long> >, std::less<CCharString>, std::allocator<std::pair<const CCharString, long> > >::_M_create_node(const std::pair<const CCharString, long>&);
+template std::_Rb_tree<CCharString, std::pair<const CCharString, unsigned long>, std::_Select1st<std::pair<const CCharString, unsigned long> >, std::less<CCharString>, std::allocator<std::pair<const CCharString, unsigned long> > >::_Link_type std::_Rb_tree<CCharString, std::pair<const CCharString, unsigned long>, std::_Select1st<std::pair<const CCharString, unsigned long> >, std::less<CCharString>, std::allocator<std::pair<const CCharString, unsigned long> > >::_M_create_node(const std::pair<const CCharString, unsigned long>&);

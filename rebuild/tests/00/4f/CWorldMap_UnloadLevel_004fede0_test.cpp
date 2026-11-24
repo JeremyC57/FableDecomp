@@ -33,7 +33,7 @@ class CMap { public: int dummy; };
 class CMapInfo { public: CCountedPointer<CMap> PMap; bool Activated; };
 static long g_engineRemoved = -1, g_thingUnload = -1, g_thingMapRemoved = -1, g_navRemoved = -1; static bool g_unloadFlag = false;
 static bool g_navLoaded = false;
-class CEngineManager { public: static CEngineManager& Get() { static CEngineManager m; return m; } void RemoveMap(long m) { g_engineRemoved = m; } };
+class CEngineManager { public: static CEngineManager& Get() { static CEngineManager m; return m; } void SetMapAsUnloaded(long m) { g_engineRemoved = m; } };
 class CThingManager { public: void OnLevelUnload(long m, bool b) { g_thingUnload = m; g_unloadFlag = b; } };
 struct CThingMapManager { void RemoveGameMap(long m) { g_thingMapRemoved = m; } };
 class CNavigatorManager { public:
@@ -51,7 +51,7 @@ void CWorldMap::UnloadLevel(long map)
 {
     Maps[map].Activated = false;
     LoadedMaps.Erase(Find(LoadedMaps.Start, LoadedMaps.Finish, map, CIteratorTag()));
-    CEngineManager::Get().RemoveMap(map);
+    CEngineManager::Get().SetMapAsUnloaded(map);
     World->GetThingManager()->OnLevelUnload(map, true);
     Maps[map].PMap.Clear();
     PThingMapManager->RemoveGameMap(map);

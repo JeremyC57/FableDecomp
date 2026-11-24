@@ -1,12 +1,16 @@
-// CWorldMap::PointIsWithinCellTL(const C3DVector*, const C3DVector*) -- point lies in the cell's top-left triangle
+// CWorldMap::PointIsWithinCellBL(const C3DVector*, const C3DVector*) -- point lies in the cell's bottom-left triangle
+// Leaf: ?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail 0x0063B920, 0x7F bytes (world-map theme/height TU). Mangled ?PointIsWithinCellTL@CWorldMap@@IBE_NPBVC3DVector@@0@Z.
+// Retail 0x0063B920, 0x7F bytes (world-map theme/height TU). Mangled ?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z.
 // `point`'s X/Y are truncated with __ftol2 (0x00BFEA70) to find its block; the block must equal `cell`'s corner, and
 // the fractional parts must satisfy fx + fy <= 1 (pool 1.0f at 0x0122DED8; `test ah,41h ; jp`). The truncated X is
 // kept as a float in the dead first-parameter slot; Y is truncated again for the fraction. `return a && b && c`
 // gives the int-valued `mov eax,1` / `xor eax,eax` exits.
-// Name note: 0x0063B890 / 0x0063B920 / 0x0063B9B0 / 0x0063BA30 all carry propagated TL/BR labels; the
-// geometry (origin corner = TL: fx+fy <= 1) identifies this one as TL.
+// Name (NF345, 2026-11-24): the four cell rows were named from the triangle geometry; the PDB-order evidence settles them:
+//   ego_r.exe/Ego_r.pdb FindGroundCollisionPointWithinCell and FindThemeCollisionPointWithinCell call TR, BL, TL, BR in that order, and the
+//   retail callers 0x0063D0A0 / 0x0063D4A0 call 0x0063B890, 0x0063B920, 0x0063B9B0, 0x0063BA30 in that order; Ego_r.pdb's object order is
+//   TR < BL < TL < BR (sizes 0x90, 0x90, 0x80, 0x80; retail 129, 129, 123, 123), and the two sum-test bodies (fadd) are TR and BL in both.
+//   With y growing up, fx+fy > 1 is the top-right triangle, fx+fy <= 1 bottom-left, fx < fy top-left, fx >= fy bottom-right.
 #include "engine/C3DVector.h"
 
 class CWorldMap
@@ -19,7 +23,7 @@ protected:
     bool PointIsWithinCellBR(const C3DVector* point, const C3DVector* cell) const;
 };
 
-bool CWorldMap::PointIsWithinCellTL(const C3DVector* point, const C3DVector* cell) const
+bool CWorldMap::PointIsWithinCellBL(const C3DVector* point, const C3DVector* cell) const
 {
     float blockX = (float)(long)point->X;
     return blockX == cell->X

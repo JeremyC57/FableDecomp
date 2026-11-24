@@ -1,0 +1,20 @@
+== /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF345/TABLE_CHANGES.tsv
+{'delete': 1, 'add': 2, 'replace': 2} misses 0
+multi-target before 1 after 1 new []
+rc=0
+== /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF345/batches/b1/TABLE_CHANGES.tsv
+{'delete': 1, 'add': 2, 'replace': 1} misses 0
+multi-target before 1 after 1 new []
+rc=0
+== /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF345/batches/b2/TABLE_CHANGES.tsv
+{'replace': 2} misses 0
+multi-target before 1 after 1 new []
+rc=0
+== /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF345/batches/b3/TABLE_CHANGES.tsv
+{'replace': 1} misses 0
+multi-target before 1 after 1 new []
+rc=0
+== /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF345/work/TABLE_CHANGES_all.tsv
+{'delete': 1, 'add': 2, 'replace': 4} misses 0
+multi-target before 1 after 1 new []
+rc=0

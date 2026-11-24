@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z -> ?LoadGame@CTCInGameMenu@@QAEXJ@Z	0047d008	0041e6d3	b2 (decision): binder 0041e6d3 respelled to LoadGame (PDB); 0047d008 is the 10-byte LoadGameIndex(+0x64) setter; its owner still defines a stand-in, so the reference is unresolved before the owner port
+replace	?Init@CQ_WizardBattleScript@NScript@@QAEXXZ -> ?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ	00e1ad30	00e1a990	b2 (decision): binder 00e1a990 respelled to InitialiseVariables (FableWin Main calls it first; 00e1ad30 zeroes +0x48..+0x54); owner 00e1ad30 still defines a stand-in

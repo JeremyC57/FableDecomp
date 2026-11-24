@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0042b587   RELOCATION_MATCH PASS   _M_create_node
+
+WINS: 1
+  0042b587 RELOCATION_MATCH _global::?_M_create_node@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@2@ABU?$pair@$$CBVCCharString@@K@2@@Z

@@ -1,0 +1,4 @@
+##### 0041e6d3 renames: ?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z=?LoadGame@CTCInGameMenu@@QAEXJ@Z
+ALL_EQ sections=446 DEF=445 tables=??_7CAnimFilterBase@@6B@,??_7CAnimFilterNoGroup@@6B@,??_7CSurface@@6B@
+##### 00e1a990 renames: ?Init@CQ_WizardBattleScript@NScript@@QAEXXZ=?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ
+ALL_EQ sections=22 DEF=21 tables=??_7?$CEntityScriptBinding@VCQ_WizardBattleScript@NScript@@@@6B@,??_7?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@6B@

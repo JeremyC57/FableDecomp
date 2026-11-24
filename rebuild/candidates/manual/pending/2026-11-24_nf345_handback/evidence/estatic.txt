@@ -1,0 +1,8 @@
+NF345: the `_$E<n>` names are TU-local (COFF storage class 3 = IMAGE_SYM_CLASS_STATIC), so a reloc_bindings.tsv line for one only
+describes its own witness TU; a landed row of another TU defining the same `_$E<n>` name does not conflict with it.
+
+- `_$E2`: storage class 3 in the HEAD objects of 0x01219F00 and 0x0122A9A0 (compiled earlier this session, objects since cleaned).
+- `_$E3` (row 0x0121F7A0): HEAD object compiled with tools/nf.py hgrade (work/run_e3.log, lock NF345 0x0121F7A0), symbol table:
+    0121f7a0.obj _$E1 storage_class 3 section 3 .text$yc
+    0121f7a0.obj _$E3 storage_class 3 section 6 .text$yc
+  (.text$yc = the CRT dynamic-initializer / atexit thunk group). The table line `_$E3 -> 0x01229B40` (witness 0x0121EF70) is that TU's own.

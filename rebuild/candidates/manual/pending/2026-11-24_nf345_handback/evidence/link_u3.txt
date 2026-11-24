@@ -1,0 +1,11 @@
+## HEAD set: H_004fede0.obj H_004feec0.obj 00640430.obj 006403d0.obj
+duplicates 1
+  DUP H_004feec0.obj ?Find@@YIPAJPAJ0ABJABUCIteratorTag@@@Z in H_004fede0.obj;
+UNRESOLVED 1 ?Get@CEngineManager@@SIAAU1@XZ
+UNRESOLVED 1 ?Get@CEngineManager@@SIAAV1@XZ
+## new set: 004fede0.obj 004feec0.obj 00640430.obj 006403d0.obj
+duplicates 1
+  DUP 004feec0.obj ?Find@@YIPAJPAJ0ABJABUCIteratorTag@@@Z in 004fede0.obj;
+UNRESOLVED 1 ?Get@CEngineManager@@SIAAU1@XZ
+UNRESOLVED 1 ?Get@CEngineManager@@SIAAV1@XZ
+LK_DONE

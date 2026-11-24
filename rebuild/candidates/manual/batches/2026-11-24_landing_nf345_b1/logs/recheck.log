@@ -1,0 +1,47 @@
+addr       parity           behav  name
+004fede0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CMapInfo (engine/CMapInfo.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CEngineManager (engine/CEngineManager.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CThingMapManager (engine/CThingMapManager.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager (engine/CNavigatorManager.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004fede0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004fede0   RELOCATION_MATCH PASS   UnloadLevel
+004feec0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+004feec0   WARN SHARED_HEADER_AVAILABLE CMapInfo (engine/CMapInfo.h)
+004feec0   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+004feec0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004feec0   WARN SHARED_HEADER_AVAILABLE CEngineManager (engine/CEngineManager.h)
+004feec0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+004feec0   WARN SHARED_HEADER_AVAILABLE CThingMapManager (engine/CThingMapManager.h)
+004feec0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager (engine/CNavigatorManager.h)
+004feec0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004feec0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004feec0   RELOCATION_MATCH PASS   UnloadRegion
+0059697a   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+0059697a   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+0059697a   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+0059697a   RELOCATION_MATCH PASS   CreateNewProfile
+0063b890   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0063b890   WARN STANDIN_LEAF ?PointIsWithinCellTR@CWorldMap@@IBE_NPBVC3DVector@@0@Z (catalog CWorldMap::PointIsWithinCellBR; names another function)
+0063b890   RELOCATION_MATCH PASS   PointIsWithinCellBR
+0063b920   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0063b920   WARN STANDIN_LEAF ?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z (catalog CWorldMap::PointIsWithinCellTL; names another function)
+0063b920   RELOCATION_MATCH PASS   PointIsWithinCellTL
+0063b9b0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0063b9b0   WARN STANDIN_LEAF ?PointIsWithinCellTL@CWorldMap@@IBE_NPBVC3DVector@@0@Z (catalog CWorldMap::PointIsWithinCellBL; names another function)
+0063b9b0   RELOCATION_MATCH PASS   PointIsWithinCellBL
+0063ba30   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0063ba30   WARN STANDIN_LEAF ?PointIsWithinCellBR@CWorldMap@@IBE_NPBVC3DVector@@0@Z (catalog CWorldMap::PointIsWithinCellTR; names another function)
+0063ba30   RELOCATION_MATCH PASS   PointIsWithinCellTR
+
+WINS: 7
+  004fede0 RELOCATION_MATCH CWorldMap::?UnloadLevel@CWorldMap@@IAEXJ@Z
+  004feec0 RELOCATION_MATCH CWorldMap::?UnloadRegion@CWorldMap@@IAEXJ_N@Z
+  0059697a RELOCATION_MATCH NUISystem::CFrontEndManager::?CreateNewProfile@CFrontEndManager@NUISystem@@IAE_NAAVCWideString@@@Z
+  0063b890 RELOCATION_MATCH CWorldMap::?PointIsWithinCellTR@CWorldMap@@IBE_NPBVC3DVector@@0@Z
+  0063b920 RELOCATION_MATCH CWorldMap::?PointIsWithinCellBL@CWorldMap@@IBE_NPBVC3DVector@@0@Z
+  0063b9b0 RELOCATION_MATCH CWorldMap::?PointIsWithinCellTL@CWorldMap@@IBE_NPBVC3DVector@@0@Z
+  0063ba30 RELOCATION_MATCH CWorldMap::?PointIsWithinCellBR@CWorldMap@@IBE_NPBVC3DVector@@0@Z

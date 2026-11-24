@@ -49,8 +49,8 @@ public:
 };
 }
 
-template std::_Rb_tree<CCharString, std::pair<const CCharString, long>, std::_Select1st<std::pair<const CCharString, long> >, std::less<CCharString>, std::allocator<std::pair<const CCharString, long> > >::_Link_type std::_Rb_tree<CCharString, std::pair<const CCharString, long>, std::_Select1st<std::pair<const CCharString, long> >, std::less<CCharString>, std::allocator<std::pair<const CCharString, long> > >::_M_create_node(const std::pair<const CCharString, long>&);
-typedef std::pair<const CCharString, long> V;
+template std::_Rb_tree<CCharString, std::pair<const CCharString, unsigned long>, std::_Select1st<std::pair<const CCharString, unsigned long> >, std::less<CCharString>, std::allocator<std::pair<const CCharString, unsigned long> > >::_Link_type std::_Rb_tree<CCharString, std::pair<const CCharString, unsigned long>, std::_Select1st<std::pair<const CCharString, unsigned long> >, std::less<CCharString>, std::allocator<std::pair<const CCharString, unsigned long> > >::_M_create_node(const std::pair<const CCharString, unsigned long>&);
+typedef std::pair<const CCharString, unsigned long> V;
 typedef std::_Rb_tree<CCharString, V, std::_Select1st<V>, std::less<CCharString>, std::allocator<V> > T;
 int main()
 {

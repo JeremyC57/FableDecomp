@@ -1,0 +1,8 @@
+== 0040cca0 table HEAD v applied
+3a4
+> EQ EQ 0040b050 leaf=n reach=n ?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z
+26d26
+< NEQ NEQ 0040d2f0 leaf=n reach=n ?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z
+== 00506940 table HEAD v applied
+== 005022f0 table HEAD v applied
+== 004ff8b0 table HEAD v applied

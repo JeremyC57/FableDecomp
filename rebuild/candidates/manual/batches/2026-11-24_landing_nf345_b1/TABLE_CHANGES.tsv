@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+delete	?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z	0040d2f0	0059697a	U2: binder 0059697a respelled to SetCameraBowYZInverted (PDB; 0x0040D2F0 stores the Bow fields +0x12/+0x14/+0xD2/+0xD4); the Bow line at 0040d2f0 already exists (witness 0041e6d3)
+replace	?RemoveMap@CEngineManager@@QAEXJ@Z -> ?SetMapAsUnloaded@CEngineManager@@QAEXJ@Z	00640430	004fede0	U3: binder 004fede0 respelled to SetMapAsUnloaded (PDB; 00640430 self = SetMapAsUnloaded; ego_r UnloadLevel/UnloadRegion call it)
