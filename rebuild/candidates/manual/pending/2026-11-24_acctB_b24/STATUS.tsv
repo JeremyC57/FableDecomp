@@ -11,3 +11,4 @@ address	grade	bytes	test	module	name	flags	notes
 00ed8680	RELOCATION_MATCH	3652	PASS (VC7.1, lander check)	NScript::CV_TalentlessBardScript::CTB_Bard	Main		purity clean; 0 stale overlay header(s)
 00de9690	RELOCATION_MATCH	3412	PASS (VC7.1, lander check)	NScript::CQ_RansomVictimScript::CRansomHelper	Main		purity clean; 0 stale overlay header(s)
 00d04ae0	RELOCATION_MATCH	3623	PASS (VC7.1, lander check)	NScript::CQ_BanditCampBossBattleScript::CAssassin1	Main	/d2inlS15	purity clean; 0 stale overlay header(s)
+0070d940	RELOCATION_MATCH	2395	PASS (VC7.1, lander check)	CAnimateThing	CalcInterpolatedMeshAnim		Inferred always-true operand, owner-approved
