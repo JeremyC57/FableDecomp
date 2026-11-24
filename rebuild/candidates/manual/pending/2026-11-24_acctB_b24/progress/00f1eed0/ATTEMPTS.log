@@ -1,0 +1,65 @@
+03:06 00f1eed0 grade 00f1eed0.cpp SRC_FAIL -- baseline codex qp19 draft on current headers + PATCHES_OPEN + CRGBColour held patch
+03:09 00f1eed0 grade 00f1eed0.cpp DIFFER(9262v9262) hunks=6 -- baseline codex qp19 draft on current headers + PATCHES_OPEN + CRGBColour held patch
+03:13 00f1eed0 grade s1.cpp DIFFER(9302v9262) hunks=82 -- sensitivity: strip inline_depth regions after (s1) / before (s2) HUD stmt
+03:13 00f1eed0 grade s2.cpp DIFFER(9262v9262) hunks=6 -- sensitivity: strip inline_depth regions after (s1) / before (s2) HUD stmt
+03:13 00f1eed0 grade p60.cpp DIFFER(9262v9262) hunks=6 -- PROBE: N no-code inline Return() calls after HUD stmt (mechanism check, not a candidate)
+03:13 00f1eed0 grade p150.cpp DIFFER(9255v9262) hunks=18 -- PROBE: N no-code inline Return() calls after HUD stmt (mechanism check, not a candidate)
+03:13 00f1eed0 grade p300.cpp DIFFER(9237v9262) hunks=143 -- PROBE: N no-code inline Return() calls after HUD stmt (mechanism check, not a candidate)
+03:14 00f1eed0 grade vA.cpp DIFFER(9262v9262) hunks=6 -- named ref local in HUD stmt: creature / creatures vector / wave
+03:14 00f1eed0 grade vB.cpp DIFFER(9262v9262) hunks=6 -- named ref local in HUD stmt: creature / creatures vector / wave
+03:14 00f1eed0 grade vC.cpp DIFFER(9262v9262) hunks=6 -- named ref local in HUD stmt: creature / creatures vector / wave
+03:27 00f1eed0 grade s0.cpp DIFFER(9312v9262) hunks=161 /d2inlT74 -- DIAG device-free s0, /d2inlT74
+03:27 00f1eed0 grade s0.cpp DIFFER(8358v9262) hunks=213 /d2inlT60 -- DIAG device-free s0, /d2inlT60
+03:27 00f1eed0 grade s0.cpp DIFFER(10069v9262) hunks=215 /d2inlT90 -- DIAG device-free s0, /d2inlT90
+03:29 00f1eed0 grade i1.cpp SRC_FAIL -- include order: reversed / arena first / stdlib last
+03:29 00f1eed0 grade i2.cpp DIFFER(9262v9262) hunks=6 -- include order: reversed / arena first / stdlib last
+03:29 00f1eed0 grade i3.cpp DIFFER(8955v9262) hunks=291 -- include order: reversed / arena first / stdlib last
+00f1eed0 probe 1 lk run s2 (--syms): HUD sort site 10775.. L239 s2862 key 000165c1 vs t7465 key 00014a40 -> Codex numbers reproduce; symbol numbers recycle (kind 3 pool), not monotonic
+00f1eed0 probe 2 +60/+150/+300 _Fail_Val.Return() after HUD stmt -> p60 neutral (no flip), p150/p300 change code elsewhere
+00f1eed0 probe 3 named ref local (creature / creatures vector / wave) in HUD stmt -> all byte-neutral (forwarded)
+03:45 00f1eed0 grade g1.cpp DIFFER(9262v9262) hunks=6 -- drop getter-chain / CCountedPointer RELEASEDATA / C3DVECTOR opt-in (symbol count levers)
+03:45 00f1eed0 grade g2.cpp DIFFER(9614v9262) hunks=109 -- drop getter-chain / CCountedPointer RELEASEDATA / C3DVECTOR opt-in (symbol count levers)
+03:45 00f1eed0 grade g3.cpp SRC_FAIL -- drop getter-chain / CCountedPointer RELEASEDATA / C3DVECTOR opt-in (symbol count levers)
+03:46 00f1eed0 grade s2.cpp DIFFER(9038v9262) hunks=154 -- CScriptThing ctor/dtor body visibility d1
+03:46 00f1eed0 grade s2.cpp DIFFER(9262v9262) hunks=66 -- CScriptThing ctor/dtor body visibility d2
+03:46 00f1eed0 grade s2.cpp DIFFER(9074v9262) hunks=193 -- CScriptThing ctor/dtor body visibility d3
+03:46 00f1eed0 grade s2.cpp DIFFER(9262v9262) hunks=66 -- d2 detail
+03:51 00f1eed0 grade f1.cpp DIFFER(9262v9262) hunks=6 -- for-scope macro spellings: if(0); else / if(false){} else
+03:52 00f1eed0 grade f2.cpp DIFFER(9262v9262) hunks=6 -- for-scope macro spellings: if(0); else / if(false){} else
+03:52 00f1eed0 grade f4.cpp DIFFER(11061v9262) hunks=400 /Zc:forScope -- no for macro (plain, and /Zc:forScope)
+03:52 00f1eed0 grade f4.cpp DIFFER(11061v9262) hunks=400 /Zc:forScope -- no for macro (plain, and /Zc:forScope)
+03:52 00f1eed0 grade m1.cpp DIFFER(9374v9262) hunks=98 -- for-scope macro placement: after containers+string / after all includes / after containers+CCountedPointer
+03:52 00f1eed0 grade m2.cpp DIFFER(9374v9262) hunks=98 -- for-scope macro placement: after containers+string / after all includes / after containers+CCountedPointer
+03:52 00f1eed0 grade m3.cpp DIFFER(9374v9262) hunks=98 -- for-scope macro placement: after containers+string / after all includes / after containers+CCountedPointer
+00f1eed0 grade i1/i2/i3 include order reversed(SRC_FAIL)/arena-first(neutral 6 hunks)/stdlib-last(8955 291 hunks)
+00f1eed0 grade g1/g2/g3 drop GETTER_CHAIN (neutral) / drop CCOUNTEDPOINTER_RELEASEDATA (9614) / drop C3DVECTOR (SRC_FAIL)
+00f1eed0 grade d1/d2/d3 CScriptThing dtor decl-only (9038) / ctor decl-only (9262, 66 hunks frame) / both (9074)
+00f1eed0 grade f1/f2/f4 for-macro spellings if(0); / if(false){} neutral; no macro 11061
+00f1eed0 grade m1/m2/m3 for-macro after STLport containers include: 9374 98 hunks (macro must cover containers)
+00f1eed0 probe 4 lk p60 (60 Return() after HUD): HUD leaf 2862->2926 (+64), temps unchanged; all numbers >=1825 shift
+00f1eed0 probe 5 lk b60 (60 Return() before HUD loop): same +64 -> position-independent
+00f1eed0 probe 6 lk x1 (one pre-HUD exit removed): leaf 3102 (+240), code changes
+00f1eed0 probe 7 fsolve: temps fixed, numbers in [2000,4544) shifted by F in -814..-221 flips HUD and keeps all other sorts
+03:54 00f1eed0 grade o1.cpp DIFFER(9262v9262) hunks=6 -- sibling opt-ins: IMPLICIT_COPY / IMPLICIT_ASSIGNMENT / both+MOVIEBASE_OUTOFLINE_DTOR
+03:54 00f1eed0 grade o2.cpp DIFFER(9262v9262) hunks=6 -- sibling opt-ins: IMPLICIT_COPY / IMPLICIT_ASSIGNMENT / both+MOVIEBASE_OUTOFLINE_DTOR
+03:54 00f1eed0 grade o3.cpp DIFFER(9262v9262) hunks=6 -- sibling opt-ins: IMPLICIT_COPY / IMPLICIT_ASSIGNMENT / both+MOVIEBASE_OUTOFLINE_DTOR
+03:59 00f1eed0 grade o4.cpp SRC_FAIL -- sibling CLEVELSCRIPTBASE (Game pointer) instead of ORIGINAL_MEMBERS
+04:04 00f1eed0 grade h2.cpp DIFFER(9262v9262) hunks=11 -- CRGBColour ctor3 plain inline (no FORCEINLINE)
+04:04 00f1eed0 grade s2.cpp DIFFER(9262v9262) hunks=6 -- GetPos plain inline (no FORCEINLINE)
+04:05 00f1eed0 grade s2.cpp DIFFER(9262v9262) hunks=138 -- operator= plain inline (no FORCEINLINE)
+04:05 00f1eed0 grade s2.cpp DIFFER(9262v9262) hunks=6 -- GetTime plain inline (no FORCEINLINE)
+04:05 00f1eed0 grade s2.cpp DIFFER(9262v9262) hunks=6 -- overlay: GetPos+GetTime plain inline (two devices dropped)
+04:05 00f1eed0 grade r0.cpp DIFFER(9262v9262) hunks=10 -- drop inline_depth region 0 / 1 alone
+04:05 00f1eed0 grade r1.cpp DIFFER(9313v9262) hunks=84 -- drop inline_depth region 0 / 1 alone
+04:05 00f1eed0 grade r2.cpp DIFFER(9262v9262) hunks=6 -- drop inline_depth region 2 / 3 alone
+04:05 00f1eed0 grade r3.cpp DIFFER(9262v9262) hunks=6 -- drop inline_depth region 2 / 3 alone
+04:05 00f1eed0 grade r23.cpp DIFFER(9262v9262) hunks=6 -- drop inline_depth regions 2+3 (final wait cold return, PauseMyEntities ctor)
+04:05 00f1eed0 grade r0.cpp DIFFER(9262v9262) hunks=10 -- r0 detail
+04:11 00f1eed0 grade t_STLP_DESTROY_DISPATCH_FORCEINLINE.cpp DIFFER(9262v9262) hunks=6 -- STLport destroy-layer opt-ins (import-count lever)
+04:11 00f1eed0 grade t_STLP_DESTROY_AUX_NOINLINE.cpp DIFFER(8501v9262) hunks=138 -- STLport destroy-layer opt-ins (import-count lever)
+04:11 00f1eed0 grade t_STLP_VECTOR_ASSIGN.cpp DIFFER(9262v9262) hunks=6 -- STLport destroy-layer opt-ins (import-count lever)
+00f1eed0 grade o1/o2/o3 sibling IMPLICIT_COPY / IMPLICIT_ASSIGNMENT / +MOVIEBASE_OUTOFLINE_DTOR: all neutral; lk o3 leaf 2862
+00f1eed0 grade o4 Game pointer + CLEVELSCRIPTBASE: neutral; lk leaf 2862
+00f1eed0 grade h2 CRGBColour ctor3 inline: 11 hunks; GetPos inline 6 (neutral), operator= inline 138, GetTime inline 6 (neutral)
+00f1eed0 grade r0..r3 single inline_depth region drops: r0 10 hunks, r1 9313, r2 6, r3 6; r23 (both) 6 -> new best (cleaner), lk leaf 2862
+00f1eed0 grade t STLP_DESTROY_DISPATCH_FORCEINLINE 6 (lk leaf 2862) / DESTROY_AUX_NOINLINE 8501 / STLP_VECTOR_ASSIGN 6
