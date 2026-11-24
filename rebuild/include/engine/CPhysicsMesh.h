@@ -21,6 +21,10 @@ class C3DMeshVolume;
 #if defined(FABLE_RETAIL_CPHYSICSMESH_CALCULATEBOUNDINGINFO) && !defined(FABLE_RETAIL_CPHYSICSMESH_INTERSECTION_PASS23)
 #include "engine/CArray.h"
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATIONLINELEVELS
+#include "engine/CArray.h"
+#include "engine/C2DLineF.h"
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_INTERSECTION_PASS23
 #include "engine/CArray.h"
 #include "engine/C3DTriangle2.h"
@@ -45,6 +49,14 @@ public:
     // Ego_r.pdb / FableWin.pdb ?GetNavigationLevelAt@CPhysicsMesh@@QBEJABVC3DVector@@@Z (out of line at retail 0x00A73D10).
     const CVectorMap<long,C3DMeshVolume,CKeyPairCompareLess<long,C3DMeshVolume> >& GetNavigationContainmentVolumes() const { return NavigationContainmentVolumes; }
     long GetNavigationLevelAt(const C3DVector& position) const;   // 0x00A73D10
+#endif
+#ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATIONLINELEVELS
+    // NF394 opt-in (rows 0x00A73CF0 / 0x00A127C0): Ego_r.pdb (0x00C12630, lib_physics_mesh_2_navigation.obj) / FableWin.pdb (0x033C7680)
+    // ?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ (public, const, long), out of line at retail 0x00A73CF0 (the only referrer is
+    // CPhysicsMeshObject::GetNumberOfNavigationLineLevels 0x00A127C0's tail jump): NavigationLines.size() (FableWin's body calls
+    // ?size@?$vector@V?$CArray@VC2DLineF@@@@..@std@@QBEIXZ on the member). With it NavigationLines is typed (Ego_r.pdb
+    // CArray<CArray<C2DLineF> >, same 12 bytes at +0x48). Declaration only otherwise.
+    long GetNumberOfNavigationLineLevels() const;                        // 0x00A73CF0
 #endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_BOUNDS
     // Row 0x00724630: FableWin.pdb inline ?GetBoundingBox@CPhysicsMesh@@QBEABVC3DBoundingBox@@XZ and
@@ -109,7 +121,11 @@ private:
     unsigned char TotalFaceIndices[12];                //0x30 CArray<C3DTriangle2>
     unsigned char TotalPoints[12];                     //0x3c CArray<C3DVector>
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATIONLINELEVELS
+    CArray<CArray<C2DLineF> > NavigationLines;         //0x48
+#else
     unsigned char NavigationLines[12];                 //0x48 CArray<CArray<C2DLineF> >
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATION
     CVectorMap<long,C3DMeshVolume,CKeyPairCompareLess<long,C3DMeshVolume> > NavigationContainmentVolumes;    //0x54
 #else

@@ -7273,7 +7273,7 @@ address	symbol	status	leaf_given
 006a4df0	?IsInRange@CThingPhysical@@QAEJABVC3DVector@@M@Z	MATCH	IsInRange
 006a4e40	?CParticleSystem_GetNormalisedTime@@YIMPBUCParticleSystem@@@Z	RELOCATION_MATCH	GetNormalisedTime
 006a4e90	?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z	RELOCATION_MATCH	?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z
-006a4f10	?GetNoNavCollisionLineLists@CThingPhysical@@QAEPAXXZ	RELOCATION_MATCH	GetNoNavCollisionLineLists
+006a4f10	?GetNoNavCollisionLineLists@CThingPhysical@@QBEJXZ	RELOCATION_MATCH	?GetNoNavCollisionLineLists@CThingPhysical@@QBEJXZ
 006a4f60	?GetNavCollisionLineList@CThingPhysical@@QAEXPAUSCollisionLineList@@J@Z	RELOCATION_MATCH	GetNavCollisionLineList
 006a5250	?GetFloatThrough_006a5250@CClass_006a5250@@QAEMXZ	MATCH	GetFloatThrough_006a5250
 006a5260	?SetMaxHealth@CThingPhysical@@QAEXM_N@Z	MATCH	SetMaxHealth
@@ -17186,7 +17186,7 @@ address	symbol	status	leaf_given
 00a73840	?AddStringKeyedChunk@C3DAnimFile@@QAEXABVCCharString@@ABUSNamedChunk@@@Z	RELOCATION_MATCH	AddStringKeyedChunk
 00a73ae0	??1CRetailVector_SBufferEntry12@@QAE@XZ	RELOCATION_MATCH	??1CRetailVector_SBufferEntry12@
 00a73cc0	?CPhysicsMesh_scalar_deleting_destructor@@YIPAXPAVCPhysicsMesh@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00a73cf0	?DrawGetNoMaps@CWorldMap@@QAEJXZ	MATCH	DrawGetNoMaps
+00a73cf0	?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ	MATCH	?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ
 00a73d10	?GetNavigationLevelAt@CPhysicsMesh@@QBEJABVC3DVector@@@Z	RELOCATION_MATCH	GetNavigationLevelAt
 00a73d70	?GetNavigationLines@CPhysicsMesh@@QBEPBV?$CArray@VC2DLineF@@@@J@Z	MATCH	GetNavigationLines
 00a74560	??$__copy_backward@PAVC2DLineF@@PAV1@H@std@@YIPAVC2DLineF@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	MATCH	??$__copy_backward@PAVC2DLineF@@PAV1@H@std@@
@@ -27235,3 +27235,4 @@ address	symbol	status	leaf_given
 007a6e20	?SetupFacingDirection@CTCBattleCharge@@AAEXAAVC3DVector@@@Z	RELOCATION_MATCH	?SetupFacingDirection@CTCBattleCharge@@AAEXAAVC3DVector@@@Z
 007a9870	?SetupFacingDirection@CTCAssassinRush@@AAEXAAVC3DVector@@@Z	RELOCATION_MATCH	?SetupFacingDirection@CTCAssassinRush@@AAEXAAVC3DVector@@@Z
 0051a2f0	?erase@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Select1st@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@2@@2@@Z	RELOCATION_MATCH	?erase@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Select1st@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@2@@2@@Z
+00a127c0	?GetNumberOfNavigationLineLevels@CPhysicsMeshObject@@QBEJXZ	RELOCATION_MATCH	?GetNumberOfNavigationLineLevels@CPhysicsMeshObject@@QBEJXZ

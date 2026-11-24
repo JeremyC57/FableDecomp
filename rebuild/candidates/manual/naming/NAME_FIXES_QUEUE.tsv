@@ -13649,3 +13649,9 @@ nf385	(see note)	catalog labels / file names	NF385 q9: 0052cbf0 0054e5a0 005cbeb
 nf392	0x005BC277	??_G?$pair@VCMeshInfo@NGraphicAppearance@@VCEngineTextureMorphSet@@@std@@QAEPAXI@Z	FableWin.pdb name set + table line (witness 005bc29e) + retail: __destroy_aux<pair*> 0x005BC29E calls it with flag 0 at stride 0x18 (NF392)	??_GSRecord_005bc277
 nf392	0x005BC26F	??1?$pair@VCMeshInfo@NGraphicAppearance@@VCEngineTextureMorphSet@@@std@@QAE@XZ	FableWin.pdb name + retail 8 B add ecx,0Ch ; jmp 0x005BC0D3 (pair dtor destroying the set at +0x0C) (NF392)	-
 nf393	0x00B217D0	NParticleEngine::CPSCSplineBase::CSplinePosParamData::InterpolateTo	catalog label / file name (self respelt by nf393_b1; Ego_r + FableWin 0x02F5E500)	NParticleEngine::CSplinePosParamData::InterpolateTo
+nf394	0x004B87D0	std::list<CQuestManager::CBoast>::size	catalog label / file name (self respelt nf394_b1)	CGuiControlTreePane::SortTreeRecursively
+nf394	0x006CD240	std::list<CNavWayPoint>::size	catalog label / file name (self respelt nf394_b1)	CGuiControlTreePane::SortTreeRecursively
+nf394	0x00DA0ED0	std::list<CScriptThing>::size	catalog label / file name (self respelt nf394_b1)	CGuiControlTreePane::SortTreeRecursively
+nf394	0x00A73CF0	CPhysicsMesh::GetNumberOfNavigationLineLevels	catalog label / file name (self respelt nf394_b2)	CWorldMap::DrawGetNoMaps
+nf394	0x00A127C0	CPhysicsMeshObject::GetNumberOfNavigationLineLevels	catalog label / file name (self respelt nf394_b2; module was _global)	_global::Forward_DrawGetNoMaps_via0x4_00a127c0
+nf394	0x006A4F10	CThingPhysical::GetNoNavCollisionLineLists	catalog label check (self respelt nf394_b2 to the PDB const/long form)	-

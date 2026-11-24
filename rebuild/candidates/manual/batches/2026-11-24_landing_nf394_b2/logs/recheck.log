@@ -1,0 +1,15 @@
+addr       parity           behav  name
+006a4f10   WARN SHARED_HEADER_AVAILABLE CPhysicsMeshObject (engine/CPhysicsMeshObject.h)
+006a4f10   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+006a4f10   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+006a4f10   WARN RELOC_NAME: ?GetNumberOfNavigationLineLevels@CPhysicsMeshObject@@QBEJXZ -> 00a127c0 labelled '_global::Forward_DrawGetNoMaps_via0x4_00a127c0'
+006a4f10   RELOCATION_MATCH PASS   GetNoNavCollisionLineLists
+00a127c0   WARN RELOC_NAME: ?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ -> 00a73cf0 labelled 'CWorldMap::DrawGetNoMaps'
+00a127c0   RELOCATION_MATCH PASS   Forward_DrawGetNoMaps_via0x4_00a127c0
+00a73cf0   WARN STANDIN_LEAF ?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ (catalog CWorldMap::DrawGetNoMaps; names another function)
+00a73cf0   MATCH            PASS   DrawGetNoMaps
+
+WINS: 3
+  006a4f10 RELOCATION_MATCH CThingPhysical::?GetNoNavCollisionLineLists@CThingPhysical@@QBEJXZ
+  00a127c0 RELOCATION_MATCH _global::?GetNumberOfNavigationLineLevels@CPhysicsMeshObject@@QBEJXZ
+  00a73cf0 MATCH CWorldMap::?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ

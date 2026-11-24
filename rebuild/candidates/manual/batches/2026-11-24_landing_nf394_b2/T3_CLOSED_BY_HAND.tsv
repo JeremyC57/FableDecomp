@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf391	0x00A73CF0	unit	NF391 q9: 0x00A73CF0 = ?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ, 0x00A127C0 = ?GetNumberOfNavigationLineLevels@CPhysicsMeshObject@@QBEJXZ (both PDB names; path CThingPhysical::GetNoNavCollisionLineLists 0x006A4F10); the table line ?GetNoNavCollisionLineLists@CPhysicsMeshObject@@QBEPAXXZ -> 00a127c0 (witness 006a4f10) is wrong. Port as one unit (pending/2026-11-24_nf391_handback NAME_FIXES.tsv). | CLOSED nf394_b2 (2026-11-24): 00a73cf0 / 00a127c0 / 006a4f10 respelt as one unit, the wrong line replaced.

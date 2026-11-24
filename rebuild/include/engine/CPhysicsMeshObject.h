@@ -40,6 +40,14 @@ private:
     float OO_Scale;
 public:
     virtual ~CPhysicsMeshObject();
+#ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_NAVIGATIONLINELEVELS
+    // NF394 opt-in (rows 0x00A127C0 / 0x006A4F10): Ego_r.pdb (0x00B80500, lib_physics_mesh_object_2.obj, 8 bytes) / FableWin.pdb
+    // (0x031D2AC0) ?GetNumberOfNavigationLineLevels@CPhysicsMeshObject@@QBEJXZ (public, const, long), out of line at retail 0x00A127C0
+    // (`mov ecx,[ecx+4] ; jmp 0x00A73CF0`, the Mesh's CPhysicsMesh::GetNumberOfNavigationLineLevels, as Ego_r 0x00B80500 -> 0x00C12630).
+    // Called by CThingPhysical::GetNoNavCollisionLineLists 0x006A4F10 and the CTCGraphicAppearance navigation-mesh draw (0x004BD4C4 /
+    // 0x004BD5FB; FableWin DrawNavigationMesh). Declaration only: no layout change.
+    long GetNumberOfNavigationLineLevels() const;                        // 0x00A127C0
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT_ZEDGE
     // wf18 (row 0x007EB6A0): Ego_r.pdb ?GetBoundingBoxZEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ, out of line at 0x00A11BA0 (landed).
     C3DVector GetBoundingBoxZEdge() const;  // 0x00A11BA0
@@ -110,5 +118,5 @@ public:
     C3DVector GetBoundingBoxCentre() const;                              // 0x00A11AE0
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CPhysicsMeshObject)==0x40);
+FABLE_STATIC_ASSERT_AT(113, sizeof(CPhysicsMeshObject)==0x40);
 #endif

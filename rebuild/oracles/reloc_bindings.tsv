@@ -2201,7 +2201,7 @@ __isnan	00bfec26	0069ab80
 _JR_Helper@8	00687d50	006a40b0
 ?sub_4bfa50@@YIXPAUSub64@@HM@Z	004bfa50	006a4b80
 ?g_zeroTime@@3MB	0122dedc	006a4e40
-?GetNoNavCollisionLineLists@CPhysicsMeshObject@@QBEPAXXZ	00a127c0	006a4f10
+?GetNumberOfNavigationLineLevels@CPhysicsMeshObject@@QBEJXZ	00a127c0	006a4f10
 ?BuildCollisionLines@CPhysicsMeshObject@@QAEXPAUSCollisionLineList@@J@Z	00a12d20	006a4f60
 ?g_theMgr@@3PAUBlendMgr@@A	013b8a1c	006a5230
 ??_7CPhysicsMeshObject@@6B@	0125d084	006a6b80
@@ -39139,3 +39139,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ	009ab770	009ab770
 ??1?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAE@XZ	0051b720	0051b720
 ??1?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Select1st@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAE@XZ	0051af20	0051af20
+?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ	00a73cf0	00a127c0

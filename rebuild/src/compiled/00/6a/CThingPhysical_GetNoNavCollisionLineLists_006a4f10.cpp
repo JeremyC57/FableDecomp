@@ -1,8 +1,14 @@
-// CThingPhysical::GetNoNavCollisionLineLists() -- the no-nav collision line lists of the thing's physics mesh, or 0 without a physics TC / mesh
+// CThingPhysical::GetNoNavCollisionLineLists() const -- the number of navigation line levels of the thing's physics mesh, or 0 without a physics TC / mesh
+// Leaf: ?GetNoNavCollisionLineLists@CThingPhysical@@QBEJXZ
 // Retail: Fable.exe 0x006A4F10, 69 bytes.
 // Callees: CTCPhysicsBase vtable slot 93 (+0x174, mesh parameters, base 0x006B13B0 returns 0),
 // CTCPhysicsBase::GetPhysicsMeshObject 0x006B0850 (returns a 0x40-byte CPhysicsMeshObject by hidden
-// pointer), CPhysicsMeshObject::GetNoNavCollisionLineLists 0x00A127C0, ~CPhysicsMeshObject 0x00A127D0.
+// pointer), CPhysicsMeshObject::GetNumberOfNavigationLineLevels 0x00A127C0, ~CPhysicsMeshObject 0x00A127D0.
+// NF394 (T3 nf391 q9): self and callee respelt to the PDB names. Ego_r.pdb 0x00683F90 / FableWin.pdb 0x01F21C70
+// ?GetNoNavCollisionLineLists@CThingPhysical@@QBEJXZ (const, returns long; Ego_r's 71-byte body is instruction for instruction this one,
+// PhysicsTC at +0x70 and slot +0x184 there); both call ?GetNumberOfNavigationLineLevels@CPhysicsMeshObject@@QBEJXZ at this call site
+// (Ego_r 0x00683FB9 -> 0x00B80500, FableWin 0x01F21CCD -> 0x031D2AC0). Was ?GetNoNavCollisionLineLists@CThingPhysical@@QAEPAXXZ calling
+// the made-up ?GetNoNavCollisionLineLists@CPhysicsMeshObject@@QBEPAXXZ. The local model is kept (shared-header port queued, T3).
 // PhysicsTC is CThing +0x60 in retail (PDB +0x70); modelled locally (see 0x006A4D90).
 // Shape: the TC pointer in a named local (esi), the mesh object a by-value temporary in the 0x40-byte
 // frame whose out-of-line destructor runs after the chained call; the result rides in esi across it.
@@ -10,7 +16,7 @@ class CPhysicsMeshObject { public:
     void*         m_pMesh;                               // +0x04 counted mesh
     unsigned char _pad08[0x38];
     virtual ~CPhysicsMeshObject();                               // 0x00A127D0
-    void* GetNoNavCollisionLineLists() const;            // 0x00A127C0
+    long GetNumberOfNavigationLineLevels() const;        // 0x00A127C0
 };
 
 class CTCPhysicsBase { public:
@@ -23,13 +29,13 @@ public:
 class CThingPhysical { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                           // +0x60
-    void* GetNoNavCollisionLineLists();
+    long GetNoNavCollisionLineLists() const;
 };
 
-void* CThingPhysical::GetNoNavCollisionLineLists()
+long CThingPhysical::GetNoNavCollisionLineLists() const
 {
     CTCPhysicsBase* physics = PhysicsTC;
     if (physics && physics->GetPhysicsMeshParameters())
-        return physics->GetPhysicsMeshObject().GetNoNavCollisionLineLists();
+        return physics->GetPhysicsMeshObject().GetNumberOfNavigationLineLevels();
     return 0;
 }

@@ -1,0 +1,23 @@
+Proposed T3 updates (NF394, 2026-11-24)
+
+Close on landing:
+- T3 nf391 q10 (0x004B87D0, 0x006CD240, 0x00DA0ED0: made-up ?SortTreeRecursively@@YIHPAUTree@@@Z selves) -> b1. After it no landed row defines
+  ?SortTreeRecursively@@YIHPAUTree@@@Z (the 5 rows of nf391 b4 + b1 were all its definers; the VC7.1 link shows 2 duplicates of it gone).
+- T3 nf391 q9 (0x00A73CF0 / 0x00A127C0 GetNumberOfNavigationLineLevels, witness 0x006A4F10, the wrong table line
+  ?GetNoNavCollisionLineLists@CPhysicsMeshObject@@QBEPAXXZ -> 00a127c0) -> b2 (one unit; TABLE_CHANGES replaces the line).
+
+New lines:
+t1	0x00DA0E40	self + callee port	NScript::CQ_MinionCampScript::GetRandomSpawnPoint models std::list<CScriptThing> locally (CRetailList_CScriptThing);
+	port onto stlport/fable_containers.h list<CScriptThing> (FABLE_RETAIL_STLP_LIST_SIZE_DECL: retail calls size out of line at 0x00DA0E5E), self ->
+	?GetRandomSpawnPoint@CQ_MinionCampScript@NScript@@QAEXABV?$list@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@AAVCScriptThing@@@Z (both PDBs),
+	and replace the table line ?size@CRetailList_CScriptThing@@QBEIXZ -> 00da0ed0 with the list size spelling (b1's self). Until then 0x00DA0ED0 has two
+	spellings (the table's stand-in and its own Leaf), as it had at HEAD.
+t2	0x006A4F10	shared-header port	CThingPhysical::GetNoNavCollisionLineLists keeps local models of CThingPhysical (PhysicsTC at +0x60), CTCPhysicsBase
+	(93 placeholder virtuals) and CPhysicsMeshObject (vland SHARED_HEADER_AVAILABLE x3, pre-existing). Port onto engine/CThingPhysical.h,
+	engine/CTCPhysicsBase.h and engine/CPhysicsMeshObject.h (FABLE_RETAIL_CPHYSICSMESHOBJECT_NAVIGATIONLINELEVELS from b2).
+t3	0x004FB4B0	self respell	?DrawGetNoMaps@CWorldMap@@QAEJXZ -> ?DrawGetNoMaps@CWorldMap@@UBEJXZ (virtual const; CWorldMap's CIDrawWorldMap vftable
+	0x01244AB4 slot 0, FableWin same slot). Needs a class-model port (virtual); after b2 it is the only definer of the QAEJXZ spelling.
+t4	0x00A1E5C0	closed: compiled read-only after r3; its size<CNavWayPoint> copy is Any and EQ to 0x006CD240's (no debt).
+t5	tests	cosmetic	stale self-contained tests, all PASS against the new rows, left unchanged as in nf391 b4: 0x004B87D0 (defines its own
+	`SortTreeRecursively(Tree*)` copy), 0x006A4F10 (mirrors the old void* / non-const spelling), 0x00A73CF0 (a local CWorldMap::DrawGetNoMaps model),
+	0x00A127C0 (printf-only). Respell when convenient.
