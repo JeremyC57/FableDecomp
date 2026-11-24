@@ -146,7 +146,13 @@ public:
  bool IsComplete()const;
  bool IsFileCompleted(const CCharString&)const;
  float GetPercentComplete()const;
+#ifdef FABLE_RETAIL_CFILEINSTALLER_SETIGNORETIMESTAMP_INLINE
+    // b24c4 opt-in (row 0x00402510 GFMain): FableWin.pdb ?SetIgnoreTimeStampWhenCopying@CFileInstaller@@QAEX_N@Z is
+    // inline in retail (GFMain 0x00402610 `mov [eax+81h],bl` after the out-of-line Get 0x00404440). Same declaration, body visible.
+ void SetIgnoreTimeStampWhenCopying(bool value) { IgnoreTimeStampWhenCopying = value; }
+#else
  void SetIgnoreTimeStampWhenCopying(bool);
+#endif
  void ResetTotalNumberOfBytesWritten();
 protected:
  static void FABLE_CDECL BeginThread(void *);

@@ -94,6 +94,11 @@ struct GlyphBank;
 
 #pragma pack(push, 1)
 struct CStreamingFontBank {
+#ifdef FABLE_RETAIL_CSTREAMINGFONTBANK_SETUSEFIXEDFUNCTION
+    // b24c4 opt-in (row 0x00402510 GFMain): the same opt-in's declaration (Ego_r.pdb / FableWin.pdb
+    // ?SetUseFixedFunction@CStreamingFontBank@@SIX_N@Z, out of line at 0x009A0EF0) for the default layout too. Declaration only.
+    static void FABLE_FASTCALL SetUseFixedFunction(bool value);          // 0x009A0EF0
+#endif
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     long                    m_maxHeight;                     // +0x04 retail-only long (previous header)
     unsigned char           _pad_0x08[0x4];                  // +0x08

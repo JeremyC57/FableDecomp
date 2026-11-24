@@ -24,6 +24,13 @@ class CDefString;
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_PARSEENUMFORSYMBOLS
 class CStringParser;
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_STARTUP_SETTERS
+// The three flags the start-up setters write, spelled as the landed rows spell the addresses (Ego_d.pdb names them
+// ?CreateCompiledDefs@ / ?CreateChecksums@ / ?UsingCompiledDefs@CDefinitionManager@@1_NA: NAME_FIXES).
+extern bool g_bSaveBinaryDefinitions;                                // 0x0138E188 (CDefinitionManager::Compile 0x009B08C0)
+extern bool g_bCheckDefDependencies;                                 // 0x0138E189 (CDefinitionManager::CheckDependencies 0x009B05F0)
+extern bool g_bLoadBinaryDefinitions;                                // 0x013CA7D8 (CDefinitionManager::Compile 0x009B08C0)
+#endif
 class CDefinitionManager : public CResourceList {
     friend class CDefClassBase;
 public:
@@ -58,6 +65,16 @@ public:
 protected:
     static CWideString CompiledDefDirectory;                             // 0x013CA7DC
 public:
+#endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_STARTUP_SETTERS
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb / FableWin.pdb static setters
+    // ?SetCreatingCompiledDefs@ / ?SetCreateChecksums@ / ?SetUsingCompiledDefs@CDefinitionManager@@SIX_N@Z and
+    // ?SetCompiledDefDirectory@CDefinitionManager@@SIXABVCWideString@@@Z, all inline in retail (GFMain stores 0x0138E188 / 0x0138E189 /
+    // 0x013CA7D8 and assigns CompiledDefDirectory 0x013CA7DC in place). Needs FABLE_RETAIL_CDEFINITIONMANAGER_COMPILEDDEFDIR.
+    static void __fastcall SetCreatingCompiledDefs(bool value) { g_bSaveBinaryDefinitions = value; }
+    static void __fastcall SetCreateChecksums(bool value) { g_bCheckDefDependencies = value; }
+    static void __fastcall SetCompiledDefDirectory(const CWideString& directory) { CompiledDefDirectory = directory; }
+    static void __fastcall SetUsingCompiledDefs(bool value) { g_bLoadBinaryDefinitions = value; }
 #endif
     virtual ~CDefinitionManager();
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_SAVEBINARY_PASS23

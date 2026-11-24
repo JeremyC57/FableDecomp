@@ -11,6 +11,10 @@
 class CDefStringTable {
 public:
     void SetTableFilename(const CWideString& filename);   // 0x009D4A40
+#ifdef FABLE_RETAIL_CDEFSTRINGTABLE_LOADTABLE
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb ?LoadTable@CDefStringTable@@QAEX_N@Z, out of line at 0x009D4C30.
+    void LoadTable(bool read_only);                        // 0x009D4C30
+#endif
 protected:
     unsigned char StringData[0x30];                        // +0x00 StringMap, StringStream, StringCount, SharedCount, RandomID (opaque)
     CWideString   TableFilename;                           // +0x30

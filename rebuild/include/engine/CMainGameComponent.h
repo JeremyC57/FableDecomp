@@ -282,6 +282,11 @@ public:
     const CFontBank& PeekDebugFont()const{return *PDebugFont;}
 #endif
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_GENERATEMETFILES
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb / FableWin.pdb ?GenerateMetFilesFromLugFiles@CMainGameComponent@@SIXXZ,
+    // out of line at 0x00418C3B (GFMain 0x0040337F). Declaration only.
+    static void __fastcall GenerateMetFilesFromLugFiles();               // 0x00418C3B
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_GETPPLAYERINTERFACE
     // e06 egod opt-in (row 0x00805600): Ego_r.pdb / FableWin.pdb ?GetPPlayerInterface@CMainGameComponent@@QAEPAVCGamePlayerInterface@@XZ,
     // out of line at 0x00416359 (landed local models call it GetGamePlayerInterface: name fix). Declaration only.

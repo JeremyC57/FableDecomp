@@ -86,6 +86,11 @@ public:
 void DisplayCriticalMessage(const char*);
 #endif
 CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_INITIALISE
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb ?Initialise@CSystemManager@@QAE?AW4ESystemCode@@PBVCSystemManagerInit@@@Z,
+// out of line at 0x009A6610 (landed). Declaration only.
+ ESystemCode Initialise(const class CSystemManagerInit* init);          // 0x009A6610
+#endif
 #ifdef FABLE_RETAIL_CSYSTEMMANAGER
 // Ego_r.pdb + FableWin.pdb ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ (0x009A6460; GFPlayFullScreenXBoxMovie loops
 // until it returns 2). FableWin.pdb ?GetInputManager@CSystemManager@@QAEPAVCInputManager@@XZ is inline in the release

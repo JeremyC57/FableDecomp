@@ -13,6 +13,11 @@ class CASuspendableProcess;
 class CFileInformation;
 enum FileAccessType { FILE_ACCESS_NULL=0, FILE_ACCESS_READ=1, FILE_ACCESS_READ_WRITE=2, FILE_ACCESS_READ_WRITE_CREATE=3, FILE_ACCESS_CREATE=4 };
 // Original CAFile virtual order from Ego_r TPI and native CDiskFileWin32 vtable.
+#ifdef FABLE_RETAIL_CAFILE_SETCALLBACKS
+// Storage of the hard-disk error callback, 0x013BCA00: Ego_d.pdb ?m_harddiskErrorCallback@CAFile@@0P6IXPBD@ZA (a private static);
+// spelled here as the landed rows spell the address (?DebugMessage@@3P6IXPBD@ZA, CDiskFileWin32::Write 0x0099AA90; NAME_FIXES).
+extern void (__fastcall* DebugMessage)(const char*);                // 0x013BCA00
+#endif
 class CAFile : public CBaseClassNonCopyable {
 public:
 #ifdef FABLE_RETAIL_CAFILE_ERRORCALLBACK
@@ -33,6 +38,25 @@ protected:
 private:
     static ErrorCallbackType m_errorCallback;
 public:
+#endif
+#ifdef FABLE_RETAIL_CAFILE_SETCALLBACKS
+    // b24c4 opt-in (row 0x00402510 GFMain): FableWin.pdb ?SetErrorCallback@CAFile@@SIXP6IXXZ@Z /
+    // ?SetHardDiskErrorCallback@CAFile@@SIXP6IXPBD@Z@Z, inline in retail (GFMain stores 0x013BC9FC / 0x013BCA00 in place at
+    // 0x00402566 / 0x00402579). Needs FABLE_RETAIL_CAFILE_ERRORCALLBACK.
+    static void __fastcall SetErrorCallback(ErrorCallbackType callback) { m_errorCallback = callback; }
+    static void __fastcall SetHardDiskErrorCallback(void (__fastcall* callback)(const char*)) { DebugMessage = callback; }
+#endif
+#ifdef FABLE_RETAIL_CAFILE_CURRENTPATH
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb + FableWin.pdb ?SetCurrentPath@CAFile@@SIXABVCWideString@@@Z and
+    // ?GetProjectPath@CAFile@@SI?AVCWideString@@XZ, out of line in retail (0x009974F0 / 0x00997510). Declarations only.
+    static void __fastcall SetCurrentPath(const CWideString& path);   // 0x009974F0
+    static CWideString __fastcall GetProjectPath();                   // 0x00997510
+#endif
+#ifdef FABLE_RETAIL_CAFILE_DTOR_DECL_ONLY
+    // b24c4 opt-in (row 0x00402510 GFMain): FableWin.pdb ??1CAFile@@UAE@XZ declared, so a TU that destroys a
+    // CDiskFileWin32 emits no header-implicit ~CAFile copy (a 5-byte `jmp ~CBaseClassNonCopyable`, NEQ to the folded retail body
+    // 0x0099A300 `mov [ecx],vtable ; ret`; pick-any check, EXTRA_RULES 2026-11-20). Declaration only.
+    virtual ~CAFile();
 #endif
     static CCharString __fastcall GetRelativeFilePath(const CCharString&,const CCharString&);
     static void __fastcall SplitPath(const CCharString&,CCharString*,CCharString*,CCharString*,CCharString*);

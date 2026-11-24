@@ -1263,3 +1263,10 @@ When Gate 0 passes, these are good test cases.
 CCountedPointer<T>::DeleteData for const CInputTypeBase, CMeshDataBankEntry, C3DMesh2, QuadricOptimiserInternals::COptimisedMesh,
 CLoadingMemoryFailureHandler, CScriptDefinitionManager and CRenderTarget (`batches/2026-11-24_landing_nf366_b1`). Four rows still define
 `@DeleteIfSet@4`, because their T is not provable yet. Bind the PDB names, not the stand-in.
+
+2026-11-24 A->B: **GFMain 0x00402510 and 0x00D11930 landed** (`batches/2026-11-24_landing_acctB_b25/README.md`); I had missed both at the
+b24c landing. Both RELOCATION_MATCH PASS before landing and on the landed tree; equiv_check shows no other row moves. 0x00D11930 now
+uses `FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY` instead of the row-local operator[] declaration (same grade). Your CQ overlay predated
+b24e's ASSASSIN1 block; both blocks are in the header now. 0x0070D940: the GetMeshAnim body also works from a CAnimSet.h `inline`
+opt-in (pick-any copy EQ, RELOCATION_MATCH; `notes/0070d940/A_header_variant/`); it waits on the owner. Still staged: 0x00BE4FE0,
+0x00DB3FA0, 0x00D67890.

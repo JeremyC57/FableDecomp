@@ -11,7 +11,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   the CThingNoiseDef constructor unit), nf364_b1 (new CCountedPointer.h opt-in ..._RESET_SIZE_BODY_YOFF_TU, 19 rows) and nf365_b1 (the GetDef
   swap, 10 rows). nf365 g2/g3 landed too. Open on the reopened nf358 lines: 0041e6d3 (/GS), the CreateMapMarkers port (T3 nf365
   0x005FF190), and the /O2 rows whose leaf inlines the copy (closed for row devices, FINDINGS_LOG 2026-11-24). **Owner questions
-  open:** (1) 0x0070D940 (B's row with a byte-identical GetMeshAnim copy). (2) NF359's option S (grade several catalog addresses from one
+  open:** (1) 0x0070D940: the GetMeshAnim body works from a CAnimSet.h `inline` opt-in instead of B's strong copy (RELOCATION_MATCH,
+  copy EQ; `pending/2026-11-24_acctB_b24/notes/0070d940/A_header_variant/`); lands on the owner's yes. B's GFMain 0x00402510 and
+  0x00D11930 landed (acctB_b25). (2) NF359's option S (grade several catalog addresses from one
   object) or B's object-order build mode now gates: 0x0045C5C1 and the duplicate CThingNoiseDef / CUIMiscThingsDef Alloc definitions; 0x00749810's
   CTCNoiseDef copies (T3 nf359 PRIORITY) and the 0x00749A70 ??0CTCNoise duplicate (NF369: option A cannot emit its leaf); the CreateMapMarkers copies in 0x0060C900 / 0x0060EEB0; the 12 /O2 rows whose leaf inlines Reset / GetDef.
   Never close a copy line without a census.

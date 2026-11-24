@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00402510   WARN RELOC_NAME: ?DisableVTuneCollection@@YIXXZ -> 009d81e0 labelled '_global::ClearPendingFlag_009d81e0'
+00402510   WARN RELOC_NAME: ?GetLanguageFolder@NLocalisation@@YI?AVCCharString@@XZ -> 00415530 labelled '_global::MakeCCharString_English_00415530'
+00402510   WARN RELOC_NAME: ??1CAFile@@UAE@XZ -> 0099a300 labelled 'CBaseClassNonCopyable::~CBaseClassNonCopyable'
+00402510   WARN RELOC_NAME: ?SetNoHangulWordWrap@CXMVPlayer@@SIX_N@Z -> 009bc8a0 labelled '_global::SetLeftAlignText'
+00402510   WARN RELOC_NAME: ?TestDirForValidFilePermissions@@YIKABVCWideString@@@Z -> 00402130 labelled '_global::FableCheckMyDocumentsWritePermissions'
+00402510   WARN RELOC_ALIAS: _exit -> 00401284 is the import thunk 'MSVCR71.DLL::exit'
+00402510   RELOCATION_MATCH PASS   GFMain
+
+WINS: 1
+  00402510 RELOCATION_MATCH _global::GFMain
+addr       parity           behav  name
+00d11930   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00d11930 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::Main

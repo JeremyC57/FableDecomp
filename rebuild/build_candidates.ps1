@@ -403591,6 +403591,22 @@ $catalog = @(
         TestSource = '00/de/NScriptCQSecretPassageScriptCMotherTorture_Main_00dee2e0_test.cpp'
         PassPattern = '00dee2e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00402510'
+        Module = '_global'
+        Source = '00/40/global_GFMain_00402510.cpp'
+        TestSource = '00/40/global_GFMain_00402510_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr /GS'
+        PassPattern = '00402510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d11930'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CAssassinMarker'
+        Source = '00/d1/NScriptCQBanditCampBossBattleScriptCAssassinMarker_Main_00d11930.cpp'
+        TestSource = '00/d1/NScriptCQBanditCampBossBattleScriptCAssassinMarker_Main_00d11930_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d11930_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

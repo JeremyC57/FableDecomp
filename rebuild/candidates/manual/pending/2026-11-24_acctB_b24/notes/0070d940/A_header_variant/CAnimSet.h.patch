@@ -1,0 +1,24 @@
+--- hdr/0070d940/engine/CAnimSet.h (B overlay)
++++ CAnimSet.h with the A opt-in
+@@ -173,4 +173,21 @@
+     CurrentAlpha = alpha;
+ }
+ #endif
++#ifdef FABLE_RETAIL_CANIMSET_GETMESHANIM_INLINE_BODY
++// Retail opt-in (row 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim): the body of CAnimSet::GetMeshAnim 0x0070C900
++// (Ego_r.pdb / FableWin.pdb ?GetMeshAnim@CAnimSet@@QBE?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@M@Z). Both PDBs place it in
++// animate_thing.obj with CalcInterpolatedMeshAnim (egor_obj_functions.tsv / fablewin_obj_functions.tsv): retail compiled the body in
++// the caller's TU and kept it out of line. Without a visible body the caller's leaf grows (2610 v 2395). `inline` here gives the
++// caller the body as a pick-any COMDAT instead of a second strong definition of the landed 0x0070C900; the copy equals retail.
++#include "engine/C3DAnimationState.h"
++#include "engine/C3DAnimationTransitionState.h"
++inline CIVCountedPointer<C3DAnimationStateBase> CAnimSet::GetMeshAnim(float fraction) const
++{
++    CIVCountedPointer<C3DAnimationState> start(new C3DAnimationState(Anims[0],GetInterpolatedTime(fraction,0)));
++    if(Anims.size()==1) return start;
++    CIVCountedPointer<C3DAnimationState> end(new C3DAnimationState(Anims[1],GetInterpolatedTime(fraction,1)));
++    CIVCountedPointer<C3DAnimationTransitionState> transition(new C3DAnimationTransitionState(start,end,GetInterpolatedInternalAlpha(fraction,1)));
++    return transition;
++}
++#endif
+ #endif

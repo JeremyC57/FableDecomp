@@ -18,6 +18,11 @@ public:
     virtual bool OpenFileReadOnly(const CWideString&,unsigned long);
     virtual void OpenFileReadWrite(const CWideString&,unsigned long,unsigned long);
     virtual void Close();
+#ifdef FABLE_RETAIL_CBANKFILEASYNC_SETENABLEFAILUREHANDLING
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb ?SetEnableFailureHandling@CBankFileAsync@@SIX_N@Z, out of line
+    // in retail (0x009D5240, `mov cl,[..] ; call`). Declaration only.
+    static void __fastcall SetEnableFailureHandling(bool enable);        // 0x009D5240
+#endif
 #ifdef FABLE_RETAIL_CBANKFILEASYNC_DATA
     friend class CBankFileAsyncData;
 #endif

@@ -15,6 +15,12 @@ class CXMVPlayer {
 public:
     static void __fastcall SetClearColour(CRGBColour colour) { ClearColour = colour; }
     static void __fastcall SetSkipOnAnyButton(bool skip) { SkipOnAnyButton = skip; }
+#ifdef FABLE_RETAIL_CXMVPLAYER_TEXTLAYOUT_SETTERS
+    // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb ?SetLeftAlignText@CXMVPlayer@@SIX_N@Z /
+    // ?SetNoHangulWordWrap@CXMVPlayer@@SIX_N@Z, out of line in retail (0x009BC890 / 0x009BC8A0). Declarations only.
+    static void __fastcall SetLeftAlignText(bool left_align);          // 0x009BC890
+    static void __fastcall SetNoHangulWordWrap(bool no_wrap);          // 0x009BC8A0
+#endif
 private:
     static CRGBColour ClearColour;                                           // 0x013961E0 (descriptive)
     static bool SkipOnAnyButton;                                             // 0x013CA7E9 (descriptive)
