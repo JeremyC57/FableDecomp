@@ -33,3 +33,16 @@
   / inline_depth device at its lines 32-34 and 87-158 -- read it and grade once on c1 (probe d1 left only the ~CPredicateBase vptr store).
 - Unread this session: docs/pipeline/INLINE_DEPTH_REVISIT.md, $S/w22/b24a/SHARED_FORM.md, $S/w22/b24b/SHARED_FORM.md (required before exit work).
 - Port debt in differ/: local enums EScriptAIPriority / ETextGroupSelectionMethod (use engine/ headers) and the local inline ~CScriptThing.
+
+## B24S1 (2026-11-24) -- escalated as compile order (ESCALATE.md); differ/ = v/c2.cpp
+- Corrections: d2 was a NO-OP (FABLE_PROBE_CPREDICATEBASE_FORCEINLINE_DTOR existed nowhere); the real forceinline probe is d5fi/d7fi
+  (probe_hdr/ = a probe overlay with __forceinline ~CPredicateBase, NOT a row overlay): no effect. hdr/ is empty (no opt-ins needed).
+- Grades: baseline c1 3265 h24; d3/d4 TU-end inline_depth(1)/(2): 3282 h19 / 3234 h109; d5/d6 sibling 0x00EF87D0 device (explicit
+  specialisations of the five ~CPredicate_And under inline_depth(0), inline / forceinline): 3282 h19 = retail except 5 ~CPredicateBase
+  calls; d7/d8 same under depth 1/2: 3282 h19 / 3234 h109; e1 CArcherMan out-of-class inline dtor form: 3265 h24; d9/d10 dtor bodies
+  defined after Main: 3265 h24 (definition order irrelevant); c2 port (shared EScriptAIPriority.h via FABLE_RETAIL_PHASE1_ARCHER_PASS26,
+  ETextGroupSelectionMethod.h; local enums gone): 3265 h24, port debt cleared. Out-of-class inline ~CScriptThing kept (header contract).
+- Decisive diagnostic: inl/ override compile, 4 forced And-dtor decisions in Main = RELOCATION_MATCH (ESCALATE.md has the list).
+- Lesson: an inline split "temp dtor expanded at depth 1, nested template dtors called at depth 2, out-of-line copies fully expanded
+  and placed AFTER the caller" = the caller was compiled before the template instantiations (compile order); check the copies'
+  addresses relative to the caller and their xref callers first.

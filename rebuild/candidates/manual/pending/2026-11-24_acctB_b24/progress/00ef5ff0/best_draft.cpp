@@ -1,6 +1,6 @@
 // NScript::CPersonalScript_EmptyScript::CCinemaMan::Main() -- the cinema test man: guard the thread with "Me and the three cinema markers and both look-at targets are alive", take scripted control, then while the thread runs answer an aggressive / non-aggressive hero special ability with a screen message, or, when the hero talks to him, play the father-intro speech lines under a paused movie
-// Grade: DIFFER(3265v3265) stock, 24 hunks -- predicate temporaries: retail expands each temp ~CPredicate_And one level (own vptr, ~CIsThingAlive call, CALL of the nested ~CPredicate_And 0x00EF6DE0/6D90/6D50/5B50, base vptr store); ours rejects the And5 temp dtor (adj 82) and expands nested ones (adj 52..64 < T74). See NOTES.md.
-// Next idea: declared-only explicit specialisations of the four nested ~CPredicate_And (GOTCHAS chunk 790/791 lever) with the implicit dtor of the outermost type only
+// Grade: DIFFER(3265v3265) 24 hunks -- only the SetPredicate teardown: retail expands the And5 temp dtor at depth 1 and calls ~And4/~And3/~And2 (0x00EF6D90/0x00EF6D50/0x00EF5B50) at depth 2; stock c2 rejects the And5 temp (size 88) and expands the nested ones. Proven inline-decision-only (inl/force.json: 4 forced decisions = RELOCATION_MATCH); compile order -> ESCALATE.md
+// Next: waits for the object-order build mode (EXTRA_RULES 2026-11-24); no row device (ESCALATE.md lists the non-landable d5 form)
 // Leaf: ?Main@CCinemaMan@CPersonalScript_EmptyScript@NScript@@EAEXXZ
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CCHARSTRING
@@ -21,8 +21,9 @@
 #include "engine/CPersonalScript_EmptyScript.h"
 #include "engine/CIsThingAlive.h"
 #include "engine/CPredicate_And.h"
-enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, SCRIPT_AI_PRIORITY_MEDIUM=2, SCRIPT_AI_PRIORITY_HIGH=3, SCRIPT_AI_PRIORITY_HIGHEST=4 };
-enum ETextGroupSelectionMethod { GROUP_SELECT_NONE=0, GROUP_SELECT_RANDOM=1, GROUP_SELECT_RANDOM_NO_REPEAT=2, GROUP_SELECT_SEQUENTIAL=3, GROUP_SELECT_FIRST_ONLY=4 };
+#define FABLE_RETAIL_PHASE1_ARCHER_PASS26
+#include "engine/EScriptAIPriority.h"
+#include "engine/ETextGroupSelectionMethod.h"
 inline CScriptThing::~CScriptThing() { }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 #include "engine/TRetVoid.h"

@@ -1,2 +1,2 @@
 address	name	grade	grades_used	note
-00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan::Main	DIFFER(3265v3265)	12	in progress: predicate temp dtor depth split (NOTES.md)
+00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan::Main	DIFFER(3265v3265)	27	ESCALATED compile order: 4 forced c2 decisions = RELOCATION_MATCH (ESCALATE.md); waits for object-order build mode
