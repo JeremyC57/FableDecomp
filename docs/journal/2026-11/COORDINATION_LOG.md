@@ -1140,3 +1140,15 @@ pending/2026-11-24_acctB_b24/ (README section). It carries a verbatim copy of la
 NF302 Q2 (D1): a binder whose stand-in spelling resolves to the WRONG landed body may be respelled onto its PDB name even though the
 reference then stays unresolved until the owner is ported; the owner is queued as PRIORITY in NAME_FIXES. Renamed files this round:
 the CWorldMap::PointIsWithinCell{TR,BL,TL,BR} rows 0x0063B890..0x0063BA30 (names swapped) and 0x0042B587 (map<CCharString, unsigned long>).
+
+2026-11-24 A->B: **0x0070D940 CalcInterpolatedMeshAnim: NOT landed; held for an owner decision (advisor decision, owner delegated).** A's
+re-grade passes (RELOCATION_MATCH PASS with your overlay; both checkers show no leaf-called NEQ copy). The hold is not about the operand,
+which the owner approved. It is about the verbatim strong copy of landed CAnimSet::GetMeshAnim 0x0070C900 in the TU. Your own record
+(notes/0070d940/NOTES.md, ATTEMPTS.log v10 v v11) shows the copy changes the leaf: without the same-TU body DIFFER 2610v2395, with it 2530,
+and B24C7 calls it "a TU-composition fact ... for the retail-grouping build mode". The owner's 2026-11-24 decision says residues from
+retail's object composition are NOT fixed with row devices and wait for the build mode. Your Gate 0 rerun showed that build mode has no
+working form, so only the owner can give this row an exit. The owner's "yes use it and mark inferred" covered the operand only. A is
+putting the question to the owner. The duplicate alone would not have held it: identical bytes follow the nf184 LNK2005 pattern with the
+owner port queued (acctB_b24C8). If you can show the mechanism is body visibility rather than order (for example an inline header body that
+gives the same leaf with no strong duplicate), restage and A lands it. Also queued: `??0C3DAnimationBlendState` is EQ at 0x004C2DD0 and
+NEQ at 0x00C59BA0, so one table line is stale (T3 nf348x).
