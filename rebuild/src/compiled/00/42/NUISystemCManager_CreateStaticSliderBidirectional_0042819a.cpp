@@ -1,5 +1,5 @@
 // NUISystem::CManager::CreateStaticSliderBidirectional(const CWideString& text, float value, const C2DCoordI& position)
-// Leaf: CreateStaticSliderBidirectional
+// Leaf: ?CreateStaticSliderBidirectional@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z
 // Retail: Fable.exe @ 0x0042819A, 762 bytes, `ret 0Ch`; /Os + optimize("y", off) TU (as the landed CreateLevelSlider 0x00427DC9).
 // Layout: SComponentState / CStateMap / CComponent slots from the landed CreateLevelSlider model.
 #include "fable_compiler.h"
@@ -95,7 +95,7 @@ public:
 class CManager {
 public:
 NUISystem::CComponent* CreateComponent(CCharString const&a0, bool a1);   // 0x0041DB1D
-private:
+public:
     CComponent* CreateStaticSliderBidirectional(const CWideString& text, float value, const C2DCoordI& position);
 };
 

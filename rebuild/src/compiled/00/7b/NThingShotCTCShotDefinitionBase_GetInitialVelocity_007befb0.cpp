@@ -1,5 +1,5 @@
 // NThingShot::CTCShotDefinitionBase::GetInitialVelocity() -- the shot def's speed converted to per-frame units, scaled by a world-random factor in [0.8, 1.2]
-// Leaf: GetInitialVelocity
+// Leaf: ?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ
 // Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BEFB0, length 63 bytes (+1 int3 padding).
@@ -41,10 +41,10 @@ namespace NThingShot {
 class CTCShotDefinitionBase : public CTCBase { public:
     unsigned char        _pad[0x38];
     const CThingShotDef* PShotDef;           // +0x38 (PDB +0x3c)
-    float GetInitialVelocity();
+    protected: float GetInitialVelocity() const;
 };
 
-float CTCShotDefinitionBase::GetInitialVelocity()
+float CTCShotDefinitionBase::GetInitialVelocity() const
 {
     float speed = PShotDef->Speed / CMainGameComponent::GetConstantFPS();
     return ((0.5f - GFFloatRandom(1.0f, GetWorld().GetWorldSeed())) * 0.4f + 1.0f) * speed;

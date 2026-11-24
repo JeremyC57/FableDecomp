@@ -1,0 +1,34 @@
+## HEAD set: H_0041674a.obj H_00547e40.obj H_00645292.obj H_00541390.obj H_00b3b5d0.obj H_00595b24.obj H_00427dc9.obj H_0042819a.obj H_0066e985.obj H_009f2a40.obj H_008dba90.obj H_00b0a750.obj H_00878ce0.obj H_00f3a2e0.obj H_008520f0.obj H_00645f2e.obj H_004bd2e0.obj H_005d92f0.obj H_00753020.obj H_007befb0.obj H_006e28d0.obj H_0054f8e0.obj H_00406c20.obj H_008f8830.obj 00417001.obj 004166e2.obj 00547b90.obj 00652fa4.obj 005415f0.obj 00b3cb30.obj 0059697a.obj 0059899a.obj 005cdd86.obj 005ce0e6.obj 005d1f0c.obj 009c5310.obj 009d52d0.obj 009f2ac0.obj 00a02370.obj 00a02570.obj 00bd9c40.obj 00bda360.obj 00bda3d0.obj 00bda470.obj 00f370c0.obj 008dbb00.obj 00b0cad0.obj 00878f50.obj 00f3ae50.obj 00852560.obj 00852fd0.obj 00646762.obj 004c0560.obj 007cacb0.obj 00753e90.obj 007bbb3b.obj 006e3580.obj 0054fbc0.obj 00407e10.obj 00498490.obj 008f8f50.obj
+duplicates 2
+  DUP 005d1f0c.obj ?ConvertMap@CTCInventoryStats@@QAEXABV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAV?$list@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@3@@Z in 005ce0e6.obj;
+  DUP 00646762.obj ?GFAnchorToBottomLeft@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z in 00652fa4.obj;
+UNRESOLVED 2 ?AddProfileNameToScreens@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z
+UNRESOLVED 2 ?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@IAEXABVC3DVector@@0J@Z
+UNRESOLVED 1 ?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z
+UNRESOLVED 1 ?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@CI_NABULAddress@2@AAUsockaddr_in@@@Z
+UNRESOLVED 1 ?CreateLevelSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z
+UNRESOLVED 2 ?CreateStaticSliderBidirectional@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z
+UNRESOLVED 1 ?DrawChangeText@CStatBar@NPlayerGui@@IAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z
+UNRESOLVED 1 ?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z
+UNRESOLVED 1 ?FreeTextures@CMovie@NUISystem@@QAEXXZ
+UNRESOLVED 2 ?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ
+UNRESOLVED 1 ?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ
+UNRESOLVED 1 ?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ
+UNRESOLVED 1 ?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QBENXZ
+UNRESOLVED 1 ?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ
+UNRESOLVED 1 ?GetStartingRightHandedSet@CTCInventoryItem@@QBE?AVCRightHandedSet@@XZ
+UNRESOLVED 10 ?InternalAllocate@CMemoryAllocator@@IAEPAXJK_N@Z
+UNRESOLVED 1 ?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ
+UNRESOLVED 1 ?IsTurningBody@CTCLook@@AAE_NXZ
+UNRESOLVED 1 ?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ
+UNRESOLVED 1 ?SetUpParams@CProjectileWeapon@NCameraModes@@AAEXXZ
+UNRESOLVED 1 ?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@ABVCVertexShaderInput@@@Z
+UNRESOLVED 1 ?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z
+UNRESOLVED 1 ?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z
+## new set: 0041674a.obj 00547e40.obj 00645292.obj 00541390.obj 00b3b5d0.obj 00595b24.obj 00427dc9.obj 0042819a.obj 0066e985.obj 009f2a40.obj 008dba90.obj 00b0a750.obj 00878ce0.obj 00f3a2e0.obj 008520f0.obj 00645f2e.obj 004bd2e0.obj 005d92f0.obj 00753020.obj 007befb0.obj 006e28d0.obj 0054f8e0.obj 00406c20.obj 008f8830.obj 00417001.obj 004166e2.obj 00547b90.obj 00652fa4.obj 005415f0.obj 00b3cb30.obj 0059697a.obj 0059899a.obj 005cdd86.obj 005ce0e6.obj 005d1f0c.obj 009c5310.obj 009d52d0.obj 009f2ac0.obj 00a02370.obj 00a02570.obj 00bd9c40.obj 00bda360.obj 00bda3d0.obj 00bda470.obj 00f370c0.obj 008dbb00.obj 00b0cad0.obj 00878f50.obj 00f3ae50.obj 00852560.obj 00852fd0.obj 00646762.obj 004c0560.obj 007cacb0.obj 00753e90.obj 007bbb3b.obj 006e3580.obj 0054fbc0.obj 00407e10.obj 00498490.obj 008f8f50.obj
+duplicates 3
+  DUP 00652fa4.obj ?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z in 00645292.obj;
+  DUP 005d1f0c.obj ?ConvertMap@CTCInventoryStats@@QAEXABV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAV?$list@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@3@@Z in 005ce0e6.obj;
+  DUP 00646762.obj ?GFAnchorToBottomLeft@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z in 00652fa4.obj;
+UNRESOLVED 1 ?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@ABVCVertexShaderInput@@@Z
+LK_DONE

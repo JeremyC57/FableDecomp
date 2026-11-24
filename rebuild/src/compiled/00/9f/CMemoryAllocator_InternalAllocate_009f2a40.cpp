@@ -1,4 +1,5 @@
 // CMemoryAllocator::InternalAllocate(long size, unsigned long type, bool flag) -- allocate a tracked block: clamp the size to >= 1, add the 0x14 bytes of header/debug trailer, pick the size-class allocator of the allocator type (AllocSizeToAllocator[type][min(total, MaxFixedAllocationSizes[type] + 1)]), stamp its ID in the byte before the block when the block lies outside the reserved region, count it, and fill the debug info of the payload (block + 4)
+// Leaf: ?InternalAllocate@CMemoryAllocator@@IAEPAXJK_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F2A40, length 122 bytes.
 // Callees: the size-class allocator's virtual slot 0 (Allocate), CMemoryAllocator::InitDebugInfo @ 0x009F28D0 (landed).
 // Globals: the reserved region bounds 0x013CAAA4 / 0x013CAAA8.
@@ -29,6 +30,7 @@ class CMemoryAllocator { public:
     long MaxFixedAllocationSizes[15];
     CAllocSizeToAllocator* AllocSizeToAllocator[15];
     void InitDebugInfo(void* block, bool flag, long size);
+protected:
     void* InternalAllocate(long size, unsigned long type, bool flag);
 };
 void* CMemoryAllocator::InternalAllocate(long size, unsigned long type, bool flag)

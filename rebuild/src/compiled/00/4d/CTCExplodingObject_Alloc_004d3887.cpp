@@ -13,10 +13,10 @@ class CThing;
 
 class CTCExplodingObject { public:
     unsigned char _body[0x30];       // sizeof(CTCExplodingObject) = 0x30
-    CTCExplodingObject(CThing* owner);                   // 0x00750BE0
+    CTCExplodingObject(CThing& owner);                   // 0x00750BE0
 };
 
 CTCExplodingObject* __fastcall CTCExplodingObject_Alloc(CThing* owner)
 {
-    return new CTCExplodingObject(owner);
+    return new CTCExplodingObject(*owner);
 }

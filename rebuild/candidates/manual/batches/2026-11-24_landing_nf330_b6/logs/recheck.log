@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00906c00   MATCH            PASS   IsToFaceTarget
+00906c40   MATCH            PASS   IsToFaceTarget
+
+WINS: 2
+  00906c00 MATCH CCreatureAction_BanditKingAdvance::?IsToFaceTarget@CCreatureAction_BanditKingAdvance@@UBE_NXZ
+  00906c40 MATCH CCreatureAction_BanditKingBackOff::?IsToFaceTarget@CCreatureAction_BanditKingBackOff@@UBE_NXZ

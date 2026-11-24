@@ -52,3 +52,13 @@ CAIStateGroup_Gaze	0128FDEC	OK	retail=16 emitted=16 same=15 slot0_alias=1
 CCreatureAction_BanditKingAdvance	0128D924	OK	retail=81 emitted=81 same=80 slot0_alias=1	
 CCreatureAction_BanditKingBackOff	0128DA6C	OK	retail=81 emitted=81 same=80 slot0_alias=1	
 TOTAL {'OK': 53, 'FAIL': 0}
+CCreatureAction_StrafeForward[b6set+RTTI_DECLS]	0127FC84	DIFF1	retail=81 emitted=81 same=80 slot0_alias=0 slot12=SAME slot73=SAME slot11_Clone=DIFF(undeclared override 0x008C0270)	evidence/probe_strafe_bases.log (2)
+CCreatureAction_StrafeBackward[b6set+RTTI_DECLS]	0127FDCC	DIFF1	retail=81 emitted=81 same=79 slot0_alias=1 slot12=SAME slot73=SAME slot11_Clone=DIFF(undeclared override 0x008C02A0)	evidence/probe_strafe_bases.log (2)
+CCreatureAction_StrafeForward[definer6f5c10+RTTI_DECLS]	0127FC84	FAIL	retail=81 emitted=71 same=38 slot12=SAME slot73=absent(IsToFaceTarget emitted at slot 70: short CCombatActionBase model)	evidence/probe_strafe_bases.log (1)
+CCreatureAction_StrafeBackward[definer6f5c10+RTTI_DECLS]	0127FDCC	FAIL	retail=81 emitted=71 same=37 slot0_alias=1 slot12=SAME slot73=absent(IsToFaceTarget emitted at slot 70: short CCombatActionBase model)	evidence/probe_strafe_bases.log (1)
+CCreatureAction_StrafeForward[neg b6set no RTTI_DECLS]	0127FC84	NEG_FAIL_AS_REQUIRED	retail=81 emitted=81 same=78 slots 11/12/73 DIFF	evidence/probe_strafe_bases.log (2)
+CCreatureAction_StrafeBackward[neg b6set no RTTI_DECLS]	0127FDCC	NEG_FAIL_AS_REQUIRED	retail=81 emitted=81 same=77 slot0_alias=1 slots 11/12/73 DIFF	evidence/probe_strafe_bases.log (2)
+CCreatureAction_StrafeForward[ALT Clone declared, b6set]	0127FC84	OK	retail=81 emitted=81 same=81 slot0_alias=0	evidence/probe_strafe_bases.log (3); alt_clone/
+CCreatureAction_StrafeBackward[ALT Clone declared, b6set]	0127FDCC	OK	retail=81 emitted=81 same=80 slot0_alias=1	evidence/probe_strafe_bases.log (3); alt_clone/
+CCreatureAction_StrafeForward[FINAL b6v2 headers, base own ??_7, b6set]	0127FC84	OK	retail=81 emitted=81 same=81 slot0_alias=0	batches/b6/evidence/probe_base.log
+CCreatureAction_StrafeBackward[FINAL b6v2 headers, base own ??_7, b6set]	0127FDCC	OK	retail=81 emitted=81 same=80 slot0_alias=1	batches/b6/evidence/probe_base.log

@@ -1,5 +1,5 @@
 // CThingTrackNode::OnInitialActivate() -- base activation, then resolve the next/previous node UIDs to thing pointers (clearing the matching start/end flag when a UID is unset) and mark an isolated node as both start and end
-// Leaf: OnInitialActivate@CThingTrackNode
+// Leaf: ?OnInitialActivate@CThingTrackNode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00837830, length 160 bytes (plain `ret`).
 // Callees: CThing::OnInitialActivate @ 0x004C97B0 (direct base call), CThingManager::GetPThingWithUID(unsigned __int64) @ 0x0051ED80
 // (thiscall on the global object at 0x013B8A1C, map at +0x58; manifest label "CStopWatch::GetTicks" is propagated).
@@ -20,11 +20,11 @@ public:
     static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
 private:
  public:
-    void OnInitialActivate();                              // 0x004C97B0
+    virtual void OnInitialActivate();                      // 0x004C97B0 (virtual in both PDBs, called qualified)
 };
 
 class CThingGameObject : public CThing { public:                          // retail 0xd0 bytes
-    unsigned char _pad_0x00[0xd0];
+    unsigned char _pad_0x00[0xd0 - 4];                   // +0x04 (after CThing's vptr)
 };
 
 class CThingTrackNode : public CThingGameObject { public:

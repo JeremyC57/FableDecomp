@@ -13,10 +13,10 @@ class CThing;
 
 class CTCForcePushPower { public:
     unsigned char _body[0x28];       // sizeof(CTCForcePushPower) = 0x28
-    CTCForcePushPower(CThing* owner);                   // 0x007A54A0
+    CTCForcePushPower(CThing& owner);                   // 0x007A54A0
 };
 
 CTCForcePushPower* __fastcall CTCForcePushPower_Alloc(CThing* owner)
 {
-    return new CTCForcePushPower(owner);
+    return new CTCForcePushPower(*owner);
 }

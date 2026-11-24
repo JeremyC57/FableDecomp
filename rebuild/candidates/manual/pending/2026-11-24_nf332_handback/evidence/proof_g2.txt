@@ -1,0 +1,16 @@
+##### 00959f30 renames: ?IsRunnable@CAIStateGroup_EnemyCreatureBase@@QAE_NXZ=?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ ?IsRunnable@CAIStateGroup_HoverKeepInArea@@QAE_NXZ=?IsRunnable@CAIStateGroup_HoverKeepInArea@@UAE_NXZ
+ALL_EQ sections=5 tables=-
+##### 00865cf0 renames: ?IsActionReadyForInterruption@CCombatActionBase@@QBE_NXZ=?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ ?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseBase@@QBE_NXZ=?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseBase@@UBE_NXZ
+ALL_EQ sections=3 tables=-
+##### 00865dd0 renames: ?IsActionReadyForInterruption@CCombatActionBase@@QBE_NXZ=?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ ?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QBE_NXZ=?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UBE_NXZ
+ALL_EQ sections=3 tables=-
+##### 008d51d0 renames: ?GetAnimationTransitionOutTime@CCreatureActionBase@@QBEJXZ=?GetAnimationTransitionOutTime@CCreatureActionBase@@UBEJXZ ?GetAnimationTransitionOutTime@CCreatureAction_FireMissileWeapon@@QBEJXZ=?GetAnimationTransitionOutTime@CCreatureAction_FireMissileWeapon@@UBEJXZ
+ALL_EQ sections=3 tables=-
+##### 008dcb00 renames: ?OnDeactivate@CModeDragonFlying@NCreatureMode@@QAEXXZ=?OnDeactivate@CModeDragonFlying@NCreatureMode@@UAEXXZ ?OnDeactivate@CModeDragonStrafeBurninate@NCreatureMode@@QAEXXZ=?OnDeactivate@CModeDragonStrafeBurninate@NCreatureMode@@UAEXXZ
+ALL_EQ sections=15 tables=-
+##### 008d9060 renames: ?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@QAEXXZ=?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@UAEXXZ ?OnDeactivate@CModeStunned@NCreatureMode@@UAEXXZ=?OnDeactivate@CModeStunned@NCreatureMode@@EAEXXZ
+ALL_EQ sections=6 tables=-
+##### 007268d0 renames: ?OnCreate@CTCPhysicsNavigator@@QAEXXZ=?OnCreate@CTCPhysicsNavigator@@UAEXXZ ?OnCreate@CTCPhysicsStandard@@QAEXXZ=?OnCreate@CTCPhysicsStandard@@UAEXXZ
+ALL_EQ sections=3 tables=-
+##### 00837830 renames: ?OnInitialActivate@CThing@@QAEXXZ=?OnInitialActivate@CThing@@UAEXXZ ?OnInitialActivate@CThingTrackNode@@QAEXXZ=?OnInitialActivate@CThingTrackNode@@UAEXXZ
+ALL_EQ sections=3 tables=-

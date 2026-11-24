@@ -1,0 +1,86 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00959F30	CAIStateGroup_HoverKeepInArea	IsRunnable	?IsRunnable@CAIStateGroup_HoverKeepInArea@@UAE_NXZ	CAIStateGroup_HoverKeepInArea::IsRunnable	?IsRunnable@CAIStateGroup_HoverKeepInArea@@QAE_NXZ	Ego_r + FableWin name sets (exact); the base it overrides is virtual in both PDBs (NF303 Q1 / NF311 Q6)
+0x00865CF0	CCombatAction_GenericStrikeResponseBase	IsActionReadyForInterruption	?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseBase@@UBE_NXZ	CCombatAction_GenericStrikeResponseBase::IsActionReadyForInterruption	(no Leaf line) (HEAD object DEF ...QBE_NXZ)	Ego_r + FableWin name sets (exact); the base it overrides is virtual in both PDBs (NF303 Q1 / NF311 Q6)
+0x00865DD0	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	IsActionReadyForInterruption	?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UBE_NXZ	CCombatAction_GenericStrikeResponseKnockdownRecoverBase::IsActionReadyForInterruption	(no Leaf line) (HEAD object DEF ...QBE_NXZ)	Ego_r + FableWin name sets (exact); the base it overrides is virtual in both PDBs (NF303 Q1 / NF311 Q6)
+0x008D51D0	CCreatureAction_FireMissileWeapon	GetAnimationTransitionOutTime	?GetAnimationTransitionOutTime@CCreatureAction_FireMissileWeapon@@UBEJXZ	CCreatureAction_FireMissileWeapon::GetAnimationTransitionOutTime	(no Leaf line) (HEAD object DEF ...QBEJXZ)	Ego_r + FableWin name sets (exact); the base it overrides is virtual in both PDBs (NF303 Q1 / NF311 Q6)
+0x008DCB00	NCreatureMode::CModeDragonStrafeBurninate	OnDeactivate	?OnDeactivate@CModeDragonStrafeBurninate@NCreatureMode@@UAEXXZ	NCreatureMode::CModeDragonStrafeBurninate::OnDeactivate	?OnDeactivate@CModeDragonStrafeBurninate (prefix; HEAD object DEF ...QAEXXZ)	Ego_r + FableWin name sets (exact); the base it overrides is virtual in both PDBs (NF303 Q1 / NF311 Q6)
+0x008D9060	NCreatureMode::CModeStunned	OnDeactivate	?OnDeactivate@CModeStunned@NCreatureMode@@EAEXXZ	NCreatureMode::CModeStunned::OnDeactivate	?OnDeactivate@CModeStunned@ (prefix; HEAD object DEF ...UAEXXZ)	Ego_r + FableWin name sets (exact); the base it overrides is virtual in both PDBs (NF303 Q1 / NF311 Q6)
+0x007268D0	CTCPhysicsNavigator	OnCreate	?OnCreate@CTCPhysicsNavigator@@UAEXXZ	CTCPhysicsNavigator::OnCreate	(no Leaf line) (HEAD object DEF ...QAEXXZ)	Ego_r + FableWin name sets (exact); the base it overrides is virtual in both PDBs (NF303 Q1 / NF311 Q6)
+0x00837830	CThingTrackNode	OnInitialActivate	?OnInitialActivate@CThingTrackNode@@UAEXXZ	CThingTrackNode::OnInitialActivate	OnInitialActivate@CThingTrackNode (HEAD object DEF ...QAEXXZ)	Ego_r + FableWin name sets (exact); the base it overrides is virtual in both PDBs (NF303 Q1 / NF311 Q6)
+0x00541390		GetDataFromDef	?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ	GetDataFromDef	GetDataFromDef (HEAD object DEF ?GetDataFromDef@CDynamicList@NUISystem@@QAEXXZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x00B3B5D0		SetupVertexShaderResource	?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z	SetupVertexShaderResource	(no Leaf line) (HEAD object DEF ?SetupVertexShaderResource@CEngineResourceManager@@QAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x00595B24	NUISystem::CFrontEndManager	AddProfileNameToScreens	?AddProfileNameToScreens@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z	NUISystem::CFrontEndManager::AddProfileNameToScreens	?AddProfileNameToScreens@ (HEAD object DEF ?AddProfileNameToScreens@CFrontEndManager@NUISystem@@QAEXABVCWideString@@@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x00427DC9	NUISystem::CManager	CreateLevelSlider	?CreateLevelSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z	NUISystem::CManager::CreateLevelSlider	CreateLevelSlider (HEAD object DEF ?CreateLevelSlider@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x0042819A	NUISystem::CManager	CreateStaticSliderBidirectional	?CreateStaticSliderBidirectional@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	NUISystem::CManager::CreateStaticSliderBidirectional	CreateStaticSliderBidirectional (HEAD object DEF ?CreateStaticSliderBidirectional@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x0066E985	NHeroInformationScreens::CManager	RemoveAllPlayerModes	?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QBEXXZ	NHeroInformationScreens::CManager::RemoveAllPlayerModes	RemoveAllPlayerModes (HEAD object DEF ?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QAEXXZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x009F2A40	CMemoryAllocator	InternalAllocate	?InternalAllocate@CMemoryAllocator@@IAEPAXJK_N@Z	CMemoryAllocator::InternalAllocate	(no Leaf line) (HEAD object DEF ?InternalAllocate@CMemoryAllocator@@QAEPAXJK_N@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x008DBA90	NCreatureMode::CModeDragonFireBeam	KillBeamEffect	?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	NCreatureMode::CModeDragonFireBeam::KillBeamEffect	KillBeamEffect (HEAD object DEF ?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@QAEXXZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x00B0A750	NParticleEngine::CPSCUpdateNormal	GetCurrentFadeValue	?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ	NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue	GetCurrentFadeValue (HEAD object DEF ?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@QAEMXZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x00878CE0	NCameraModes::CProjectileWeapon	SetUpParams	?SetUpParams@CProjectileWeapon@NCameraModes@@AAEXXZ	NCameraModes::CProjectileWeapon::SetUpParams	(no Leaf line) (HEAD object DEF ?SetUpParams@CProjectileWeapon@NCameraModes@@QAEXXZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x00F3A2E0	CRangeCompressor	Compress	?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	CRangeCompressor::Compress	Compress (HEAD object DEF ?Compress@CRangeCompressor@@QAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x008520F0	NCameraModes::CScriptModuleFOVZoom	CalculateIncrementVector	?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@IAEXABVC3DVector@@0J@Z	NCameraModes::CScriptModuleFOVZoom::CalculateIncrementVector	CalculateIncrementVector (HEAD object DEF ?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@QAEXABVC3DVector@@0J@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x00645F2E	NPlayerGui::CStatBar	DrawChangeText	?DrawChangeText@CStatBar@NPlayerGui@@IAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z	NPlayerGui::CStatBar::DrawChangeText	DrawChangeText (HEAD object DEF ?DrawChangeText@CStatBar@NPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x004BD2E0	NGraphicAppearance::CTCGraphicAppearance	IsToReduceLODForDummiesAndHelpers	?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ	NGraphicAppearance::CTCGraphicAppearance::IsToReduceLODForDummiesAndHelpers	IsToReduceLODForDummiesAndHelpers (HEAD object DEF ?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x005D92F0	CTCInventoryItem	GetStartingRightHandedSet	?GetStartingRightHandedSet@CTCInventoryItem@@QBE?AVCRightHandedSet@@XZ	CTCInventoryItem::GetStartingRightHandedSet	(no Leaf line) (HEAD object DEF ?GetStartingRightHandedSet@CTCInventoryItem@@QAE?AVCRightHandedSet@@XZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x00753020	CTCLook	IsTurningBody	?IsTurningBody@CTCLook@@AAE_NXZ	CTCLook::IsTurningBody	(no Leaf line) (HEAD object DEF ?IsTurningBody@CTCLook@@QAE_NXZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x007BEFB0	NThingShot::CTCShotDefinitionBase	GetInitialVelocity	?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ	NThingShot::CTCShotDefinitionBase::GetInitialVelocity	GetInitialVelocity (HEAD object DEF ?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@QAEMXZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x006E28D0	CTCTalk	StopCurrentSpeech	?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z	CTCTalk::StopCurrentSpeech	(no Leaf line) (HEAD object DEF ?StopCurrentSpeech@CTCTalk@@QAEXPAVCTCSoundPlayer@@@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x0054F8E0	NUISystem::CText	FitInWindow	?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z	NUISystem::CText::FitInWindow	?FitInWindow@CText@NUISystem (HEAD object DEF ?FitInWindow@CText@NUISystem@@QAEJAAVCWideString@@ABVC2DBoxF@@@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x00406C20	CUserProfileManager	GetAutoSaveDisplayName	?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ	CUserProfileManager::GetAutoSaveDisplayName	(no Leaf line) (HEAD object DEF ?GetAutoSaveDisplayName@CUserProfileManager@@QAE?AVCWideString@@XZ)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x008F8830	LHNetworkLib::LSocket	ConvertLAddress2Sockaddr	?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@CI_NABULAddress@2@AAUsockaddr_in@@@Z	LHNetworkLib::LSocket::ConvertLAddress2Sockaddr	?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@ (HEAD object DEF ?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@SI_NABULAddress@2@AAUsockaddr_in@@@Z)	ENTRIES T2 access pdb_spelling (both PDB name sets)
+0x007D7B40	CTCTavernGameSpotTheAddition	LeaveGame	?LeaveGame@CTCTavernGameSpotTheAddition@@UAEXXZ	CTCTavernGameSpotTheAddition::LeaveGame	(no Leaf line) (HEAD object DEF ?vfunc_30@CTCTavernGameSpotTheAddition@@QAEXXZ)	both PDB name sets + retail RTTI vtable 0x0126F814 slot 30 = 0x007D7B40
+0x007CF460	CTCTavernGameShoveHaPenny	LeaveGame	?LeaveGame@CTCTavernGameShoveHaPenny@@UAEXXZ	CTCTavernGameShoveHaPenny::LeaveGame	(no Leaf line) (HEAD object DEF ?vfunc_30@CTCTavernGameShoveHaPenny@@QAEXXZ)	both PDB name sets + RTTI vtable 0x0126F2F4 slot 30
+0x007D4A90	CTCTavernGameCoinGolf	LeaveGame	?LeaveGame@CTCTavernGameCoinGolf@@UAEXXZ	CTCTavernGameCoinGolf::LeaveGame	(no Leaf line) (HEAD object DEF ?vfunc_30@CTCTavernGameCoinGolf@@QAEXXZ)	both PDB name sets + RTTI vtable 0x0126F49C slot 30
+0x007DAAA0	CTCTavernGameCardBlackjack	LeaveGame	?LeaveGame@CTCTavernGameCardBlackjack@@UAEXXZ	CTCTavernGameCardBlackjack::LeaveGame	(no Leaf line) (HEAD object DEF ?vfunc_30@CTCTavernGameCardBlackjack@@QAEXXZ)	both PDB name sets + RTTI vtable 0x0126F8F4 slot 30
+0x008EF110	CTCTavernGameCoinBase	LeaveGame	?LeaveGame@CTCTavernGameCoinBase@@UAEXXZ	CTCTavernGameCoinBase::LeaveGame	?LeaveGame@CTCTavernGameCoinBase@@QAEXXZ	both PDB name sets + RTTI vtable 0x0126F224 slot 30
+0x008F20F0	CTCTavernGameCardBase	LeaveGame	?LeaveGame@CTCTavernGameCardBase@@UAEXXZ	CTCTavernGameCardBase::LeaveGame	?LeaveGame@CTCTavernGameCardBase (prefix; HEAD DEF ...QAEXXZ)	both PDB name sets + RTTI vtable 0x01288294 slot 30
+0x007D4DE0	CTCTavernGameCardSorting	LeaveGame	?LeaveGame@CTCTavernGameCardSorting@@UAEXXZ	CTCTavernGameCardSorting::LeaveGame	(no Leaf line) (HEAD DEF ...QAEXXZ)	both PDB name sets + RTTI vtable 0x0126F5B4 slot 30
+0x007D5F60	CTCTavernGameCardPairs	LeaveGame	?LeaveGame@CTCTavernGameCardPairs@@UAEXXZ	CTCTavernGameCardPairs::LeaveGame	(no Leaf line) (HEAD DEF ...QAEXXZ)	both PDB name sets + RTTI vtable 0x0126F6FC slot 30
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00AEEFE0	?DatabaseClone@CParticleSystem@NParticleEngine@@QAEPAV12@XZ	?DatabaseClone@CParticleSystem@NParticleEngine@@QBEPAV12@XZ	0x00AF5960
+0x004A0370	?GetMaxCollectableRentValue@CTCBuyableHouse@@QAEJXZ	?GetMaxCollectableRentValue@CTCBuyableHouse@@QBEJXZ	0x006C0270
+0x006655A0	?GetActionSpeedMultiplier@CTCHaste@@QAEMXZ	?GetActionSpeedMultiplier@CTCHaste@@QBEMXZ	0x007FFFB0
+0x006655A0	?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QAEMXZ	?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QBEMXZ	0x006D6870
+0x00690480	?IsQuitMenuReceivingInput@CTCInGameMenu@@QAE_NXZ	?IsQuitMenuReceivingInput@CTCInGameMenu@@QBE_NXZ	0x0047D537
+0x0057D5A0	?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QAEJXZ	?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QBEJXZ	0x00766330
+0x007BDB66	?GetHeightZBelowPos@CWorldMap@@QAEMABVC3DVector@@@Z	?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z	0x0063E480
+0x008C2240	?GetHeightZBelowPos@CWorldMap@@QAEMABVC3DVector@@@Z	?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z	0x0063E480
+0x006E1620	?IsParticleCreationDisabled@CTCDParticleEmitter@@QAE_NXZ	?IsParticleCreationDisabled@CTCDParticleEmitter@@IBE_NXZ	0x006E0DF0
+0x00959F30	?IsRunnable@CAIStateGroup_EnemyCreatureBase@@QAE_NXZ	?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ	0x0091DD30
+0x00865CF0	?IsActionReadyForInterruption@CCombatActionBase@@QBE_NXZ	?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ	0x00856170
+0x00865DD0	?IsActionReadyForInterruption@CCombatActionBase@@QBE_NXZ	?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ	0x00856170
+0x008D51D0	?GetAnimationTransitionOutTime@CCreatureActionBase@@QBEJXZ	?GetAnimationTransitionOutTime@CCreatureActionBase@@UBEJXZ	0x006924C0
+0x008DCB00	?OnDeactivate@CModeDragonFlying@NCreatureMode@@QAEXXZ	?OnDeactivate@CModeDragonFlying@NCreatureMode@@UAEXXZ	0x008DC590
+0x008D9060	?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@QAEXXZ	?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@UAEXXZ	0x008D8F30
+0x007268D0	?OnCreate@CTCPhysicsStandard@@QAEXXZ	?OnCreate@CTCPhysicsStandard@@UAEXXZ	0x00724010
+0x00837830	?OnInitialActivate@CThing@@QAEXXZ	?OnInitialActivate@CThing@@UAEXXZ	0x004C97B0
+0x0041674A	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QBENXZ	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ	0x004166E2
+0x00547E40	?FreeTextures@CMovie@NUISystem@@QAEXXZ	?FreeTextures@CMovie@NUISystem@@IAEXXZ	0x00547B90
+0x007D7B40	?LeaveGame@CTCTavernGame@@QAEXXZ	?LeaveGame@CTCTavernGame@@UAEXXZ	0x005EC650
+0x008EF110	?LeaveGame@CTCTavernGame@@QAEXXZ	?LeaveGame@CTCTavernGame@@UAEXXZ	0x005EC650
+0x008F20F0	?LeaveGame@CTCTavernGame@@QAEXXZ	?LeaveGame@CTCTavernGame@@UAEXXZ	0x005EC650
+0x007CF460	?LeaveGame@CTCTavernGameCoinBase@@QAEXXZ	?LeaveGame@CTCTavernGameCoinBase@@UAEXXZ	0x008EF110
+0x007D4A90	?LeaveGame@CTCTavernGameCoinBase@@QAEXXZ	?LeaveGame@CTCTavernGameCoinBase@@UAEXXZ	0x008EF110
+0x007D4DE0	?LeaveGame@CTCTavernGameCardBase@@QAEXXZ	?LeaveGame@CTCTavernGameCardBase@@UAEXXZ	0x008F20F0
+0x007D5F60	?LeaveGame@CTCTavernGameCardBase@@QAEXXZ	?LeaveGame@CTCTavernGameCardBase@@UAEXXZ	0x008F20F0
+0x007DAAA0	?LeaveGame@CTCTavernGameCardBase@@QAEXXZ	?LeaveGame@CTCTavernGameCardBase@@UAEXXZ	0x008F20F0
+0x004D2C12	??0CTCActionUseBuyOrSteal@@QAE@PAVCThing@@@Z	??0CTCActionUseBuyOrSteal@@QAE@AAVCThing@@@Z	0x0072A630
+0x004DC004	??0CTCActionUseReadable@@QAE@PAVCThing@@@Z	??0CTCActionUseReadable@@QAE@AAVCThing@@@Z	0x004DA9D7
+0x004D92E8	??0CTCAmbientBird@@QAE@PAVCThing@@@Z	??0CTCAmbientBird@@QAE@AAVCThing@@@Z	0x004D5EFB
+0x004D44B8	??0CTCAnimationComplex@@QAE@PAVCThing@@@Z	??0CTCAnimationComplex@@QAE@AAVCThing@@@Z	0x0070B3F0
+0x004D5600	??0CTCDrainLife@@QAE@PAVCThing@@@Z	??0CTCDrainLife@@QAE@AAVCThing@@@Z	0x007C30E0
+0x004D3887	??0CTCExplodingObject@@QAE@PAVCThing@@@Z	??0CTCExplodingObject@@QAE@AAVCThing@@@Z	0x00750BE0
+0x004D624F	??0CTCFadeOutAndIn@@QAE@PAVCThing@@@Z	??0CTCFadeOutAndIn@@QAE@AAVCThing@@@Z	0x006C3C30
+0x004D5723	??0CTCFireballSpell@@QAE@PAVCThing@@@Z	??0CTCFireballSpell@@QAE@AAVCThing@@@Z	0x007C87F0
+0x004D5C47	??0CTCFish@@QAE@PAVCThing@@@Z	??0CTCFish@@QAE@AAVCThing@@@Z	0x007DFB20
+0x004D4D1B	??0CTCForcePushPower@@QAE@PAVCThing@@@Z	??0CTCForcePushPower@@QAE@AAVCThing@@@Z	0x007A54A0
+0x004D4B12	??0CTCForcePushed@@QAE@PAVCThing@@@Z	??0CTCForcePushed@@QAE@AAVCThing@@@Z	0x00798570
+0x004D5660	??0CTCGhostSword@@QAE@PAVCThing@@@Z	??0CTCGhostSword@@QAE@AAVCThing@@@Z	0x007C5560
+0x004D5630	??0CTCHealLife@@QAE@PAVCThing@@@Z	??0CTCHealLife@@QAE@AAVCThing@@@Z	0x007C4BD0
+0x004DC5C7	??0CTCInventoryItem@@QAE@PAVCThing@@@Z	??0CTCInventoryItem@@QAE@AAVCThing@@@Z	0x004DAEA9
+0x004D2A44	??0CTCRandomAppearanceMorph@@QAE@PAVCThing@@@Z	??0CTCRandomAppearanceMorph@@QAE@AAVCThing@@@Z	0x00728000
+0x004D4BDE	??0CTCSummonSpell@@QAE@PAVCThing@@@Z	??0CTCSummonSpell@@QAE@AAVCThing@@@Z	0x0079A6E0
+0x008915E0	?SetBoastAsCompleted_004af8f0@CQuestManager@@QAEXJVCCharString@@@Z	?SetBoastAsCompleted@CQuestManager@@QAEXJVCCharString@@@Z	0x004AF8F0
+0x007A7370	?Reset_007a7000@CTCBattleCharge@@QAEXXZ	?UpdateDirectionOverride@CTCBattleCharge@@AAEXXZ	0x007A7000
+0x008915B0	?SetBoastAsCompleted@CQuestManager@@QAEXJVCCharString@@@Z	?SetBoastAsFailed@CQuestManager@@QAEXJVCCharString@@@Z	0x004AF880

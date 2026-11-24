@@ -13,10 +13,10 @@ class CThing;
 
 class CTCFireballSpell { public:
     unsigned char _body[0x80];       // sizeof(CTCFireballSpell) = 0x80
-    CTCFireballSpell(CThing* owner);                   // 0x007C87F0
+    CTCFireballSpell(CThing& owner);                   // 0x007C87F0
 };
 
 CTCFireballSpell* __fastcall CTCFireballSpell_Alloc(CThing* owner)
 {
-    return new CTCFireballSpell(owner);
+    return new CTCFireballSpell(*owner);
 }

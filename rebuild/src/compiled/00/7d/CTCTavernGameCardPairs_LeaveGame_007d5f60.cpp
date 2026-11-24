@@ -1,4 +1,5 @@
 // CTCTavernGameCardPairs::LeaveGame() -- card-base LeaveGame, then kills the game's spawned card thing and clears the pointer
+// Leaf: ?LeaveGame@CTCTavernGameCardPairs@@UAEXXZ
 // Retail: Fable.exe @ 0x007D5F60, 34 bytes (CTCTavernGameCardPairs vtable 0x0126F6FC slot 30, the LeaveGame slot;
 //         byte-identical to the CTCTavernGameCardSorting override at 0x007D4DE0).
 // Callees: CTCTavernGameCardBase::LeaveGame 0x008F20F0, CTCTavernGame::KillThing 0x005E9A60
@@ -9,8 +10,8 @@
 class CThing;
 
 struct CTCTavernGameCardBase {
-    unsigned char _pad[0x140];
-    void LeaveGame();                   // 0x008F20F0
+    unsigned char _pad[0x140 - 4];      // +0x04 (after the vptr)
+    virtual void LeaveGame();           // 0x008F20F0 (slot 30, virtual in both PDBs; called qualified)
     void KillThing(CThing* thing);      // 0x005E9A60
 };
 

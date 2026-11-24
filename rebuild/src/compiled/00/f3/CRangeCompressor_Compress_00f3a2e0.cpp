@@ -1,5 +1,5 @@
 // CRangeCompressor::Compress(const unsigned char* source, long count, long stride, unsigned char* dest, const CArray<CScriptEntry>& entries) -- write each column's script entry header (flags, bit width, bias, gap start, set mask, kept mask) and its count values, transformed by the entry and bit-packed into dwords, then the 0x80 end marker; returns the bytes written
-// Leaf: Compress
+// Leaf: ?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F3A2E0, length 752 bytes (ret 0x14); PDB
 // ?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z.
 // Callees: CalcShuffleOperations 0x00F39E50 (landed); data: the byte-width masks 0x013AC944 (the landed
@@ -53,7 +53,7 @@ struct CRangeCompressor {
     long CalcShuffleOperations(unsigned long mask, unsigned long* runMasks, unsigned long* shifts);
     public:
    // 0x00F39E50
-    long Compress(const unsigned char* source, long count, long stride, unsigned char* dest, const CArray<CScriptEntry>& entries);
+    private: long Compress(const unsigned char* source, long count, long stride, unsigned char* dest, const CArray<CScriptEntry>& entries);
 };
 
 long CRangeCompressor::Compress(const unsigned char* source, long count, long stride, unsigned char* dest, const CArray<CScriptEntry>& entries)

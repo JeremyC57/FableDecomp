@@ -58,7 +58,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-class CWorldMap { public: float GetHeightZBelowPos(const C3DVector& pos); };   // 0x0063E480
+class CWorldMap { public: float GetHeightZBelowPos(const C3DVector& pos) const; };   // 0x0063E480
 struct CTrapSpawnDef { unsigned char _pad[0x3c]; long TrapObjectType; };   // +0x3c
 struct CTCTrapSpawner { unsigned char _pad[0x0c]; CTrapSpawnDef* Def; };   // TC 0xF5
 class CThingObject : public CThing { public:

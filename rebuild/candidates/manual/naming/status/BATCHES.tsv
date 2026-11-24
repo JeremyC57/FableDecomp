@@ -7,40 +7,25 @@ T0	catalog	pair	2	2		006fb460 00a70130
 T0	catalog	CFireEffectCreationSet	1	1		00c5d550
 T0	catalog	CGraphicFrame	1	1	engine/CGraphicFrame.h	0041c150
 T0	catalog	list	1	1		009f98d0
-T1	access	CTCHeroExperience	2	2	engine/CTCHeroExperience.h	006d6870 006d6ea0
-T1	access	CAIStateGroup_EnemyCreatureBase	1	1	engine/CAIStateGroup_EnemyCreatureBase.h	0091dd30
 T1	access	CBankFileAsync	1	1	engine/CBankFileAsync.h	009d5200
-T1	access	CCombatActionBase	1	1	engine/CCombatActionBase.h	00856170
 T1	access	CComponent	1	1		00531ec0
-T1	access	CCreatureActionBase	1	1	engine/CCreatureActionBase.h	006924c0
 T1	access	CDefinitionManager	1	1	engine/CDefinitionManager.h	009ad950
 T1	access	CEnginePrimitiveManager	1	1	engine/CEnginePrimitiveManager.h	00bacda0
 T1	access	CEnginePrimitiveOcclusionInfo	1	1	engine/CEnginePrimitiveOcclusionInfo.h	00b2f8b0
 T1	access	CFrontEndManager	1	1	engine/CFrontEndManager.h	005955ab
 T1	access	CKeyboardDX	1	1		00ab6450
-T1	access	CMainGameComponent	1	1	engine/CMainGameComponent.h	004166e2
-T1	access	CModeDragonFlying	1	1		008dc590
-T1	access	CModeOutOfActionBase	1	1		008d8f30
 T1	access	CMouseDX	1	1	engine/CMouseDX.h	00ab5710
-T1	access	CMovie	1	1	engine/CMovie.h	00547b90
-T1	access	CParticleSystem	1	1	engine/CParticleSystem.h	00af5960
 T1	access	CScriptGameResourceObjectScriptedThingBase	1	1	engine/CScriptGameResourceObjectScriptedThingBase.h	007e7450
 T1	access	CTCBase	1	1	engine/CTCBase.h	00686db0
-T1	access	CTCBuyableHouse	1	1	engine/CTCBuyableHouse.h	006c0270
-T1	access	CTCDParticleEmitter	1	1	engine/CTCDParticleEmitter.h	006e0df0
 T1	access	CTCHaste	1	1	engine/CTCHaste.h	007fffb0
-T1	access	CTCInGameMenu	1	1	engine/CTCInGameMenu.h	0047d537
+T1	access	CTCHeroExperience	1	1	engine/CTCHeroExperience.h	006d6ea0
 T1	access	CTCInventory	1	1	engine/CTCInventory.h	00582027
-T1	access	CTCObjectAugmentations	1	1	engine/CTCObjectAugmentations.h	00766330
 T1	access	CTCPhysicsStandard	1	1	engine/CTCPhysicsStandard.h	00724010
 T1	access	CTCSoundAtmosphere	1	1		007f53a0
 T1	access	CTCSoundPlayer	1	1	engine/CTCSoundPlayer.h	0066bc10
-T1	access	CTCTavernGame	1	1	engine/CTCTavernGame.h	005ec650
 T1	access	CTCTavernGameCardBase	1	1	engine/CTCTavernGameCardBase.h	008f1d40
-T1	access	CThing	1	1	engine/CThing.h	004c97b0
 T1	access	CThingPhysical	1	1	engine/CThingPhysical.h	006a4d20
 T1	access	CWideString	1	1		0099b4d0
-T1	access	CWorldMap	1	1	engine/CWorldMap.h	0063e480
 T1	standin_alias	CCountedPointer	22	23	engine/CCountedPointer.h	00436ba0 00443aa0 004850f9 0048afb0 004ad600 004ae510 0056c0f0 005ed2c0 006174f0 0065d5a0 00674e80 006d6210 006e46f0 007180b0 007222b0 0085a5a0 009a4400 00a4a910 00a8d7c0 00ac3a10 00aeca50 00b230e0
 T1	standin_alias	vector	17	16		00411910 004774d6 004e34b2 005bba94 005e3040 005f9074 006755e0 006fcf10 00708ca0 00722eb0 0082c620 0082c8a0 0086b2a0 00ad83a0 00b83df0 00b97af0 00cdbc90
 T1	standin_alias	GetSubDef	9	9		007086f0 0077e430 007a6ca0 007c8000 007e0540 007e1400 007f9330 007fe5b0 00810c80
@@ -49,11 +34,11 @@ T1	standin_alias	C3DAnimationUtil	7	5		00c55090 00c550b0 00c550f0 00c55110 00c56
 T1	standin_alias	CBankFile	6	5	engine/CBankFile.h	009cb960 009cbfe0 009ce370 009cfbc0 009d1160 009d1260
 T1	standin_alias	GetBestTaskForThing	6	6		0065f856 0065f884 00660034 00660062 00660090 006600be
 T1	standin_alias	remove_if	6	6		006603a0 006603dd 0066041a 00660457 00660494 0082c6e0
-T1	standin_alias	CQuestManager	5	3	engine/CQuestManager.h	004af610 004af8f0 004afc60 004b0c80 004b0d30
 T1	standin_alias	CTCInventoryBase	5	5		005bc5c6 005bdb94 005bdc08 005bf3f1 005bf91a
 T1	standin_alias	CTCInventoryExperience	5	3	engine/CTCInventoryExperience.h	0056ff3d 0056ffc5 005721fa 005746f7 005747a3
 T1	standin_alias	CThingCreatureBase	5	5	engine/CThingCreatureBase.h	006626a0 00663610 006647f0 00665e90 00666830
 T1	standin_alias	CWorldMap	5	4	engine/CWorldMap.h	004fb880 004fc210 004fc970 004fcb30 004fede0
+T1	standin_alias	CQuestManager	4	2	engine/CQuestManager.h	004af610 004afc60 004b0c80 004b0d30
 T1	standin_alias	CThing	4	4	engine/CThing.h	004c78a0 004c7a10 004c9c40 004ca1d0
 T1	standin_alias	FindMostRecentMessage	4	4		008abf20 0090dee0 0090edc0 00939cb0
 T1	standin_alias	GFSerialiseVectorBinaryIn	4	4		00463f9c 0046caf4 00472123 004e89f7
@@ -196,7 +181,6 @@ T1	standin_alias	CScriptGameResourceObjectScriptedThingBase	1	1	engine/CScriptGa
 T1	standin_alias	CScriptedControl	1	1		0069dfe0
 T1	standin_alias	CSteeringAgent	1	1	engine/CSteeringAgent.h	00a1c950
 T1	standin_alias	CSymbolMap	1	1	engine/CSymbolMap.h	009e5200
-T1	standin_alias	CTCBattleCharge	1	1	engine/CTCBattleCharge.h	007a7000
 T1	standin_alias	CTCBoastingCrowdControl	1	1	engine/CTCBoastingCrowdControl.h	007837c0
 T1	standin_alias	CTCBuyableHouse	1	1	engine/CTCBuyableHouse.h	006c0330
 T1	standin_alias	CTCChest	1	1	engine/CTCChest.h	00750050
@@ -336,39 +320,23 @@ T1	signature	CScriptBase	1	1	engine/CScriptBase.h	00cb7ee0
 T1	signature	CShaderRenderManager	1	1	engine/CShaderRenderManager.h	0098b860
 T1	signature	CShaderResource	1	1	engine/CShaderResource.h	00a5d7c0
 T1	signature	CTCAISummon	1	1		007fdeb0
-T1	signature	CTCActionUseBuyOrSteal	1	1		0072a630
-T1	signature	CTCActionUseReadable	1	1	engine/CTCActionUseReadable.h	004da9d7
-T1	signature	CTCAmbientBird	1	1		004d5efb
-T1	signature	CTCAnimationComplex	1	1	engine/CTCAnimationComplex.h	0070b3f0
 T1	signature	CTCBoastingCrowdControl	1	1	engine/CTCBoastingCrowdControl.h	00783730
 T1	signature	CTCCreatureOpinionOfHero	1	1	engine/CTCCreatureOpinionOfHero.h	00681ae0
-T1	signature	CTCDrainLife	1	1	engine/CTCDrainLife.h	007c30e0
 T1	signature	CTCEnemy	1	1	engine/CTCEnemy.h	0076cc00
-T1	signature	CTCExplodingObject	1	1	engine/CTCExplodingObject.h	00750be0
-T1	signature	CTCFadeOutAndIn	1	1	engine/CTCFadeOutAndIn.h	006c3c30
-T1	signature	CTCFireballSpell	1	1	engine/CTCFireballSpell.h	007c87f0
 T1	signature	CTCFireheartMinigame	1	1		007e79c0
-T1	signature	CTCFish	1	1	engine/CTCFish.h	007dfb20
-T1	signature	CTCForcePushPower	1	1		007a54a0
-T1	signature	CTCForcePushed	1	1	engine/CTCForcePushed.h	00798570
-T1	signature	CTCGhostSword	1	1	engine/CTCGhostSword.h	007c5560
 T1	signature	CTCGuard	1	1	engine/CTCGuard.h	007b2c70
-T1	signature	CTCHealLife	1	1	engine/CTCHealLife.h	007c4bd0
 T1	signature	CTCHeroMorph	1	1	engine/CTCHeroMorph.h	0071bcd0
 T1	signature	CTCIdleScheduler	1	1	engine/CTCIdleScheduler.h	00801920
 T1	signature	CTCInventory	1	1	engine/CTCInventory.h	00584b86
 T1	signature	CTCInventoryBase	1	1		005bf482
-T1	signature	CTCInventoryItem	1	1	engine/CTCInventoryItem.h	004daea9
 T1	signature	CTCInventoryMap	1	1	engine/CTCInventoryMap.h	005fb140
 T1	signature	CTCLook	1	1	engine/CTCLook.h	00753840
 T1	signature	CTCOpinionSource	1	1	engine/CTCOpinionSource.h	00771540
 T1	signature	CTCPhysicalShieldSpell	1	1	engine/CTCPhysicalShieldSpell.h	0079deb0
 T1	signature	CTCPhysicsBase	1	1	engine/CTCPhysicsBase.h	006b0460
-T1	signature	CTCRandomAppearanceMorph	1	1	engine/CTCRandomAppearanceMorph.h	00728000
 T1	signature	CTCScriptedControl	1	4	engine/CTCScriptedControl.h	007137d0
 T1	signature	CTCShapeManager	1	1	engine/CTCShapeManager.h	00762580
 T1	signature	CTCSolidToThing	1	1	engine/CTCSolidToThing.h	00770fa0
-T1	signature	CTCSummonSpell	1	1	engine/CTCSummonSpell.h	0079a6e0
 T1	signature	CTCTrapBase	1	1	engine/CTCTrapBase.h	0078839a
 T1	signature	CTCWeaponTrail	1	2	engine/CTCWeaponTrail.h	0076e4d0
 T1	signature	CTCWillLightning	1	1	engine/CTCWillLightning.h	007a0d90
@@ -1020,47 +988,29 @@ T1	other	deque	1	1		0059b039
 T1	other	queue	1	1		00410ed0
 T1	other	sort	1	1		00a351b0
 T1	other	swap	1	1		00a3fdc0
-T2	access	CManager	3	3	engine/CManager.h	00427dc9 0042819a 0066e985
 T2	access	CTCInventory	3	3	engine/CTCInventory.h	00581cfd 00581d4e 00581fa4
 T2	access	C3DMeshInfo	2	2	engine/C3DMeshInfo.h	00a24a80 00a25530
 T2	access	CTCShop	2	2	engine/CTCShop.h	00772720 00772790
-T2	access	CUserProfileManager	2	2	engine/CUserProfileManager.h	00406c20 00406f70
 T2	access	CAIStateGroup_GameMaster	1	1		0094ce60
 T2	access	CAIStateGroup_JackDragon	1	1	engine/CAIStateGroup_JackDragon.h	0094fbb0
 T2	access	CBankFileAsyncData	1	2	engine/CBankFileAsyncData.h	009d54e0
 T2	access	CCharString	1	2		0099ea60
 T2	access	CDrawQuickAccessIcons	1	1		00645292
-T2	access	CDynamicList	1	1		00541390
 T2	access	CEngineClothSimulationMeshBase	1	2	engine/CEngineClothSimulationMeshBase.h	00b80ad0
 T2	access	CEngineInternalPrimitiveSprite	1	1	engine/CEngineInternalPrimitiveSprite.h	00bad670
-T2	access	CEngineResourceManager	1	1	engine/CEngineResourceManager.h	00b3b5d0
 T2	access	CEngineSurfaceCompositionManager	1	1	engine/CEngineSurfaceCompositionManager.h	00b2c8e0
-T2	access	CFrontEndManager	1	1	engine/CFrontEndManager.h	00595b24
 T2	access	CGraphicInfo	1	1	engine/CGraphicInfo.h	009ff8d0
-T2	access	CMemoryAllocator	1	1	engine/CMemoryAllocator.h	009f2a40
-T2	access	CModeDragonFireBeam	1	1		008dba90
 T2	access	CNetworkClient	1	1	engine/CNetworkClient.h	004aeaa0
-T2	access	CPSCUpdateNormal	1	1	engine/CPSCUpdateNormal.h	00b0a750
 T2	access	CPlayerGui	1	1	engine/CPlayerGui.h	00439ab0
-T2	access	CProjectileWeapon	1	1		00878ce0
-T2	access	CRangeCompressor	1	1	engine/CRangeCompressor.h	00f3a2e0
-T2	access	CScriptModuleFOVZoom	1	1		008520f0
-T2	access	CStatBar	1	1		00645f2e
 T2	access	CTCFollowed	1	2	engine/CTCFollowed.h	006d5260
-T2	access	CTCGraphicAppearance	1	1		004bd2e0
 T2	access	CTCHeroOnlineScoreboard	1	2	engine/CTCHeroOnlineScoreboard.h	0055fb80
-T2	access	CTCInventoryItem	1	1	engine/CTCInventoryItem.h	005d92f0
 T2	access	CTCInventoryMap	1	1	engine/CTCInventoryMap.h	005fc840
 T2	access	CTCInventoryWeapons	1	1	engine/CTCInventoryWeapons.h	005c30d3
-T2	access	CTCLook	1	1	engine/CTCLook.h	00753020
-T2	access	CTCShotDefinitionBase	1	1		007befb0
-T2	access	CTCTalk	1	1	engine/CTCTalk.h	006e28d0
 T2	access	CTCTavernGameCardBase	1	1	engine/CTCTavernGameCardBase.h	008f1720
-T2	access	CText	1	1	engine/CText.h	0054f8e0
 T2	access	CThing	1	1	engine/CThing.h	004c72d0
 T2	access	CThingPhysical	1	2	engine/CThingPhysical.h	006a4e90
 T2	access	CThingPlayerCreature	1	2	engine/CThingPlayerCreature.h	006ac390
-T2	access	LSocket	1	1	engine/LSocket.h	008f8830
+T2	access	CUserProfileManager	1	1	engine/CUserProfileManager.h	00406f70
 T2	other	CCreatureActionBase	2	7	engine/CCreatureActionBase.h	006929e0 00693030
 T2	other	LSocket	2	4	engine/LSocket.h	008f87a0 008f8bb0
 T2	other	C3DAnimationInfo	1	2	engine/C3DAnimationInfo.h	00a269c0
@@ -7122,9 +7072,6 @@ T3	emit ?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ	(none)	1	1		00
 T3	emit ?IsParentDef@CDefClassBase@@UBE_NXZ	(none)	1	1		0042da70
 T3	emit ?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase	(none)	1	1		0042daa0
 T3	emit ?GetSizeofClass@CInventoryItemDef@@UAEKXZ	(none)	1	1		0044c12f
-T3	emit ?GetSizeofClass@CSmashableDef@@UAEKXZ	(none)	1	1		0044c229
-T3	emit ?GetSizeofClass@CActionUseDef@@UAEKXZ	(none)	1	1		0044c269
-T3	emit ?GetSizeofClass@CBonusItemDef@@UAEKXZ	(none)	1	1		0044c390
 T3	emit ?GetCombatAbilityDataType@CCombatAbilityData@@UBE?AW4ECombatAbilityDataType@@XZ	(none)	1	1		0044c45b
 T3	emit ?GetCombatAbilityDataType@CCombatAbilityMeleeAttackData@@UBE?AW4ECombatAbilityDa	(none)	1	1		0044c4a0
 T3	emit ?GetCombatAbilityDataType@CCombatAbilityStrafingData@@UBE?AW4ECombatAbilityDataT	(none)	1	1		0044c4ca
@@ -7132,14 +7079,11 @@ T3	emit ?GetCombatAbilityDataType@CCombatAbilityProjectileAttackData@@UBE?AW4ECo
 T3	emit ?GetSizeofClass@CCombatAbilityBlockCounterAttackDef@@UAEKXZ	(none)	1	1		0044c549
 T3	emit ?GetSizeofClass@CCombatAbilityFlourishCounterAttackDef@@UAEKXZ	(none)	1	1		0044c561
 T3	emit ?GetSizeofClass@CCombatAbilityStrafeDef@@UAEKXZ	(none)	1	1		0044c599
-T3	emit ?GetSizeofClass@CDragonActionSwoopDef@@UAEKXZ	(none)	1	1		0044c5cf
-T3	emit ?GetSizeofClass@CSummonerDef@@UAEKXZ	(none)	1	1		0044c695
 T3	emit ?GetSizeofClass@CExplosiveTrailDef@@UAEKXZ	(none)	1	1		0044c6ab
 T3	emit ??_GCPhysicsDef@@UAEPAXI@Z	(none)	1	1		0044f6ba
 T3	emit ??_ECTattooDef@@UAEPAXI@Z	(none)	1	1		0044fa51
 T3	emit ??_GCHairCardDef@@UAEPAXI@Z	(none)	1	1		0044faba
 T3	emit ??_ECThingMultiArrowShotDef@@UAEPAXI@Z	(none)	1	1		00450b79
-T3	emit ?Transfer@CSmashableDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		004522c6
 T3	emit ?Transfer@CHairCardDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		00452b04
 T3	emit ?Transfer@CCombatAbilityUseProjectileWeaponDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		00452bb4
 T3	emit ?Transfer@CAbilityDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		00452df1
@@ -7437,29 +7381,18 @@ T3	emit ??_EC3DPositionInterpolator@@UAEPAXI@Z	(none)	1	1		004c20f0
 T3	emit ??_EC3DAnimationInterpolator@@UAEPAXI@Z	(none)	1	1		004c3d10
 T3	emit ?GetSizeofClass@CLightDef@@UAEKXZ	(none)	1	1		004d33d8
 T3	emit ?GetSizeofClass@CSpotLightDef@@UAEKXZ	(none)	1	1		004d341e
-T3	emit ?GetSizeofClass@CHeroDef@@UAEKXZ	(none)	1	1		004d3464
 T3	emit ?GetSizeofClass@CEnemyDef@@UAEKXZ	(none)	1	1		004d3ddb
 T3	emit ?GetSizeofClass@CStockItemDef@@UAEKXZ	(none)	1	1		004d4110
-T3	emit ?GetSizeofClass@CTimeAppearanceFadeDef@@UAEKXZ	(none)	1	1		004d4156
 T3	emit ?GetSizeofClass@CHighlightItemDef@@UAEKXZ	(none)	1	1		004d458a
-T3	emit ?GetSizeofClass@CHeroCentreDef@@UAEKXZ	(none)	1	1		004d463c
-T3	emit ?GetSizeofClass@CShipDef@@UAEKXZ	(none)	1	1		004d489d
 T3	emit ?GetSizeofClass@CExpressionSubDef@@UAEKXZ	(none)	1	1		004d4b97
 T3	emit ?GetSizeofClass@CInterestingToVillagersDef@@UAEKXZ	(none)	1	1		004d4fe6
-T3	emit ?GetSizeofClass@CGuardDef@@UAEKXZ	(none)	1	1		004d500f
 T3	emit ?GetSizeofClass@CTavernDef@@UAEKXZ	(none)	1	1		004d5211
 T3	emit ?GetSizeofClass@CFireballSpellLevelDef@@UAEKXZ	(none)	1	1		004d538e
 T3	emit ?GetSizeofClass@CGoldDef@@UAEKXZ	(none)	1	1		004d584f
 T3	emit ?GetSizeofClass@CCoinGameObstacleDef@@UAEKXZ	(none)	1	1		004d597b
 T3	emit ?GetSizeofClass@CTavernGameCoinBaseDef@@UAEKXZ	(none)	1	1		004d5991
-T3	emit ?GetSizeofClass@CDecapitationDef@@UAEKXZ	(none)	1	1		004d5b15
-T3	emit ?GetSizeofClass@CFishDef@@UAEKXZ	(none)	1	1		004d5c89
 T3	emit ?GetSizeofClass@CKrakenTentacleDef@@UAEKXZ	(none)	1	1		004d5de7
 T3	emit ?GetSizeofClass@CNymphDef@@UAEKXZ	(none)	1	1		004d6177
-T3	emit ?GetSizeofClass@CSummonDef@@UAEKXZ	(none)	1	1		004d61a0
-T3	emit ?GetSizeofClass@CWillResponseDef@@UAEKXZ	(none)	1	1		004d649f
-T3	emit ?GetSizeofClass@COracleMinigameDef@@UAEKXZ	(none)	1	1		004d6601
-T3	emit ?GetSizeofClass@CFireheartMinigameDef@@UAEKXZ	(none)	1	1		004d665a
 T3	emit ?GetSizeofClass@CReadableDef@@UAEKXZ	(none)	1	1		004d7ae5
 T3	emit ??_ECBuyHouseDef@@UAEPAXI@Z	(none)	1	1		004d7b7f
 T3	emit ??_ECWifeDef@@UAEPAXI@Z	(none)	1	1		004d7bc5
@@ -7533,7 +7466,6 @@ T3	emit ?Transfer@CTimeAppearanceFadeDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1	
 T3	emit ?Transfer@CGiftDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		004de545
 T3	emit ?Transfer@CSummonableCreatureDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		004de891
 T3	emit ?GetSizeofClass@CFishingDef@@UAEKXZ	(none)	1	1		004de912
-T3	emit ?Transfer@CDecapitationDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		004ded4e
 T3	emit ?Transfer@CWallMountEffectsDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		004dedac
 T3	emit ?Transfer@CTeleporterDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		004def0f
 T3	emit ?Transfer@CHeroSpecialMovementDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		004def3d
@@ -7710,24 +7642,11 @@ T3	emit ?Alloc@CAnimComponentSetCreatureMode@@UBEPAVCAnimComponentBase@@XZ	(none
 T3	emit ?Alloc@CAnimComponentStrikeSpeedMultiplier@@UBEPAVCAnimComponentBase@@XZ	(none)	1	1		005df8e0
 T3	emit ??_GCCreatureAction_StartSneaking@@UAEPAXI@Z	(none)	1	1		0062d7d0
 T3	emit ??_ECCreatureAction_StopSneaking@@UAEPAXI@Z	(none)	1	1		0062d870
-T3	emit ?IsPreventingLookTurning@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ	(none)	1	1		0062db60
-T3	emit ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ	(none)	1	1		0062db70
-T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ	(none)	1	1		0062db80
 T3	emit ??_GCCreatureAction_PlayerInteractionGreet@@UAEPAXI@Z	(none)	1	1		0062db90
-T3	emit ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionInsult@@UBE_NXZ	(none)	1	1		0062dc50
-T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionInsult@@UBE_NXZ	(none)	1	1		0062dc60
 T3	emit ??_ECCreatureAction_PlayerInteractionInsult@@UAEPAXI@Z	(none)	1	1		0062dc70
-T3	emit ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionThreaten@@UBE_NXZ	(none)	1	1		0062dd30
-T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionThreaten@@UBE_NXZ	(none)	1	1		0062dd40
 T3	emit ??_GCCreatureAction_PlayerInteractionThreaten@@UAEPAXI@Z	(none)	1	1		0062dd50
-T3	emit ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionBribe@@UBE_NXZ	(none)	1	1		0062de10
-T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionBribe@@UBE_NXZ	(none)	1	1		0062de20
 T3	emit ??_GCCreatureAction_PlayerInteractionBribe@@UAEPAXI@Z	(none)	1	1		0062de30
-T3	emit ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionFlirt@@UBE_NXZ	(none)	1	1		0062def0
-T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionFlirt@@UBE_NXZ	(none)	1	1		0062df00
 T3	emit ??_GCCreatureAction_PlayerInteractionFlirt@@UAEPAXI@Z	(none)	1	1		0062df10
-T3	emit ?PerformAction@CCreatureAction_TavernGameMasterInteraction@@UAEXXZ	(none)	1	1		0062dfd0
-T3	emit ?IsToHaveEmptyHands@CCreatureAction_TavernGameMasterInteraction@@UBE_NXZ	(none)	1	1		0062dfe0
 T3	emit ??_GCCreatureAction_TavernGameMasterInteraction@@UAEPAXI@Z	(none)	1	1		0062dff0
 T3	emit ??_GCCreatureAction_Talk@@UAEPAXI@Z	(none)	1	1		0062e0b0
 T3	emit ??_GCCreatureActionBase@@UAEPAXI@Z	(none)	1	1		0062ed20
@@ -7786,10 +7705,6 @@ T3	emit ?PerformAction@CCreatureAction_SheatheItemToInventory_ForEnflame@@UAEXXZ
 T3	emit ?PerformAction@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAEXXZ	(none)	1	1		0069f7f0
 T3	emit ?PerformAction@CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UAEXXZ	(none)	1	1		0069f8a0
 T3	emit ??_GCTCParamsPhysicsBase@@UAEPAXI@Z	(none)	1	1		006a0730
-T3	emit ?IsToEvadeAllHits@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UBE_NXZ	(none)	1	1		006a07f0
-T3	emit ?IsAbleToBeAttacked@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UBE_N	(none)	1	1		006a0800
-T3	emit ?IsToEvadeAllHits@CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UBE_NXZ	(none)	1	1		006a0810
-T3	emit ?IsAbleToBeAttacked@CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UBE_N	(none)	1	1		006a0820
 T3	emit ??_GCCreatureAction_UseObject@@UAEPAXI@Z	(none)	1	1		006a0880
 T3	emit ??_ECCreatureAction_UnsheatheItemFromInventory@@UAEPAXI@Z	(none)	1	1		006a08b0
 T3	emit ??_ECCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEPAXI@Z	(none)	1	1		006a08d0
@@ -7897,16 +7812,12 @@ T3	emit ??_ECCreatureAction_RiseUp@@UAEPAXI@Z	(none)	1	1		0074ddd0
 T3	emit ??_GCCreatureAction_OnGenerate@@UAEPAXI@Z	(none)	1	1		0074ddf0
 T3	emit ??_GCCreatureAction_UndeadRiseUp@@UAEPAXI@Z	(none)	1	1		0074de10
 T3	emit ??_GCCreatureAction_UndeadIdleUnderground@@UAEPAXI@Z	(none)	1	1		0074de30
-T3	emit ?Transfer@CHeroCentreDef@@UAEXAAVCPersistContext@@@Z	(none)	1	1		0077d3a0
-T3	emit ?GetSizeofClass@CAIScratchpadDef@@UAEKXZ	(none)	1	1		007ac6e0
 T3	emit ??_GCAIScratchpadDef@@UAEPAXI@Z	(none)	1	1		007acaa0
 T3	emit ?Validate@CScriptGameResourceObjectScriptedThingBase@@MBEXXZ	(none)	1	1		007e72c0
 T3	emit ?WaitWhilePerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	(none)	1	1		007e7370
 T3	emit ??_ECCreatureAction_Read@@UAEPAXI@Z	(none)	1	1		007e8050
 T3	emit ??_GCCreatureAction_PickupGameObject@@UAEPAXI@Z	(none)	1	1		007eb0e0
 T3	emit ??_ECCreatureAction_AddRealObjectToInventory@@UAEPAXI@Z	(none)	1	1		007eb360
-T3	emit ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionViewQuests@@UBE_NXZ	(none)	1	1		007eb520
-T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionViewQuests@@UBE_NXZ	(none)	1	1		007eb530
 T3	emit ??_GCCreatureAction_PlayerInteractionViewQuests@@UAEPAXI@Z	(none)	1	1		007eb540
 T3	emit ??_GCCreatureAction_GiveMoneyToThing@@UAEPAXI@Z	(none)	1	1		007ed4e0
 T3	emit ??_GCCreatureAction_UseSwitch@@UAEPAXI@Z	(none)	1	1		007ee0a0
@@ -7922,8 +7833,6 @@ T3	emit ?DrawGetHeightMapSizeY@CMap@@UBEJXZ	(none)	1	1		00827860
 T3	emit ?DrawGetSeaLevel@CMap@@UBEMM@Z	(none)	1	1		00827870
 T3	emit ?Initialise@CCreatureAction_UseWallMount@@UAEXXZ	(none)	1	1		00842140
 T3	emit ?FinishAction@CCreatureAction_GetOutOfBed@@UAEXXZ	(none)	1	1		008421c0
-T3	emit ?PerformAction@CCreatureAction_DowseFire@@UAEXXZ	(none)	1	1		00842260
-T3	emit ?PerformAction@CCreatureAction_ShowLove@@UAEXXZ	(none)	1	1		008422f0
 T3	emit ?IsToHaveEmptyHands@CCreatureAction_PerformExpression@@UBE_NXZ	(none)	1	1		00842c20
 T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PerformExpression@@UBE_NXZ	(none)	1	1		00842c30
 T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PerformExpressionExtended@@UBE_NXZ	(none)	1	1		00842c40
@@ -7944,11 +7853,9 @@ T3	emit ??_ECCreatureAction_UseLamp@@UAEPAXI@Z	(none)	1	1		0084b300
 T3	emit ??_GCCreatureAction_UseWallMount@@UAEPAXI@Z	(none)	1	1		0084b330
 T3	emit ??_GCCreatureAction_ShopkeeperPutAway@@UAEPAXI@Z	(none)	1	1		0084b360
 T3	emit ??_ECCreatureAction_PickUpGenericBox@@UAEPAXI@Z	(none)	1	1		0084b3b0
-T3	emit ?PerformAction@CCreatureAction_FillBucket@@UAEXXZ	(none)	1	1		0084b420
 T3	emit ??_ECCreatureAction_FillBucket@@UAEPAXI@Z	(none)	1	1		0084b430
 T3	emit ??_GCCreatureAction_ShowLove@@UAEPAXI@Z	(none)	1	1		0084b460
 T3	emit ??_ECCreatureAction_PlayAnimationFromIndex@@UAEPAXI@Z	(none)	1	1		0084b4a0
-T3	emit ?PerformAction@CCreatureAction_Hammer@@UAEXXZ	(none)	1	1		0084b4c0
 T3	emit ??_GCCreatureAction_Hammer@@UAEPAXI@Z	(none)	1	1		0084b4d0
 T3	emit ??_ECCreatureAction_PickUpThingAtTable@@UAEPAXI@Z	(none)	1	1		0084b540
 T3	emit ??_GCCreatureAction_PickUpJugToFill@@UAEPAXI@Z	(none)	1	1		0084b570
@@ -7960,7 +7867,6 @@ T3	emit ?PerformAction@CCreatureAction_SpiritHitResponse@@UAEXXZ	(none)	1	1		008
 T3	emit ??_GCCreatureAction_SpiritHitResponse@@UAEPAXI@Z	(none)	1	1		008550c0
 T3	emit ??_GCCreatureAction_SpiritReturnToHero@@UAEPAXI@Z	(none)	1	1		008550e0
 T3	emit ??_ECCreatureAction_BlockBase@@UAEPAXI@Z	(none)	1	1		00855d20
-T3	emit ?IsOverrideableByActionOfSamePriority@CCreatureAction_BlockRespond@@UBE_NXZ	(none)	1	1		00855d40
 T3	emit ??_ECCreatureAction_BlockRespond@@UAEPAXI@Z	(none)	1	1		00855d90
 T3	emit ??_ECCreatureAction_BlockCounter@@UAEPAXI@Z	(none)	1	1		00855db0
 T3	emit ??_ECCreatureAction_StartBlocking@@UAEPAXI@Z	(none)	1	1		00855dd0
@@ -7997,8 +7903,6 @@ T3	emit ?FinishAction@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ	(no
 T3	emit ?FrameUpdate@CCreatureAction_InterruptableMidAttack@@UAEXXZ	(none)	1	1		0087c840
 T3	emit ??_ECCreatureAction_InterruptableMidAttackAutoTurn@@UAEPAXI@Z	(none)	1	1		0087e5c0
 T3	emit ??_ECCreatureAction_GeneralInterruptedAttack@@UAEPAXI@Z	(none)	1	1		0087e5f0
-T3	emit ?PerformAction@CCreatureAction_StabbedToDeath@@UAEXXZ	(none)	1	1		0087e830
-T3	emit ?GetAnimDelayTime@CCreatureAction_StabbedToDeath@@UBEJXZ	(none)	1	1		0087fe50
 T3	emit ?IsToPerformActionOnStrike@CCombatAction_KickThingOnGround@@UBE_NXZ	(none)	1	1		00880020
 T3	emit ?IsToHitProneThings@CCombatAction_KickThingOnGround@@UBE_NXZ	(none)	1	1		00880030
 T3	emit ??_GCCombatAction_KickThingOnGround@@UAEPAXI@Z	(none)	1	1		00880080
@@ -8118,16 +8022,6 @@ T3	emit ?FinishAction@CCreatureAction_TeleportIn@@UAEXXZ	(none)	1	1		008b9470
 T3	emit ?FinishAction@CCreatureAction_BuildUpDivineWrathSpell@@UAEXXZ	(none)	1	1		008b9480
 T3	emit ?FinishAction@CCreatureAction_BuildUpUnholyPowerSpell@@UAEXXZ	(none)	1	1		008b9490
 T3	emit ?IsToFaceTargetAtStart@CCreatureAction_FinishFireballSpell@@UBE_NXZ	(none)	1	1		008bdaf0
-T3	emit ?PerformAction@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UAEXXZ	(none)	1	1		008bdbd0
-T3	emit ?IsToEvadeAllHits@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ	(none)	1	1		008bdbe0
-T3	emit ?IsToCauseRecoil@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ	(none)	1	1		008bdbf0
-T3	emit ?IsAbleToBeAttacked@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ	(none)	1	1		008bdc00
-T3	emit ?IsPlayHitResponse@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ	(none)	1	1		008bdc10
-T3	emit ?PerformAction@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UAEXXZ	(none)	1	1		008bdcb0
-T3	emit ?IsToEvadeAllHits@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ	(none)	1	1		008bdcc0
-T3	emit ?IsToCauseRecoil@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ	(none)	1	1		008bdcd0
-T3	emit ?IsAbleToBeAttacked@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ	(none)	1	1		008bdce0
-T3	emit ?IsPlayHitResponse@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ	(none)	1	1		008bdcf0
 T3	emit ??_ECCreatureAction_CastWillForceSpell@@UAEPAXI@Z	(none)	1	1		008bdd00
 T3	emit ??_GCCreatureAction_BuildWillForceSpell@@UAEPAXI@Z	(none)	1	1		008bdd20
 T3	emit ??_GCCreatureAction_FinishWillForceSpell@@UAEPAXI@Z	(none)	1	1		008bdd40
@@ -8332,7 +8226,6 @@ T3	emit ??_GCCreatureAction_DragonRearUpInto@@UAEPAXI@Z	(none)	1	1		008f5700
 T3	emit ??_ECCreatureAction_DragonRearUpOutOf@@UAEPAXI@Z	(none)	1	1		008f5720
 T3	emit ?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	(none)	1	1		008fcfe0
 T3	emit ??_GCAIStateGroupBase@@UAEPAXI@Z	(none)	1	1		008fd29b
-T3	emit ?AllowPriorityOverlap@CAIStateGroup_KidWanderNearKids@@UAE_NXZ	(none)	1	1		008fd99e
 T3	emit ?AllowPriorityOverlap@CAIStateGroup_CleanHouse@@UAE_NXZ	(none)	1	1		008fdb67
 T3	emit ?AllowPriorityOverlap@CAIStateGroup_LookAtInterestingThings@@UAE_NXZ	(none)	1	1		008fdc8e
 T3	emit ?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ	(none)	1	1		008fe0ee
@@ -8431,9 +8324,7 @@ T3	emit ??_ECAIStateGroup_CleanHouse@@UAEPAXI@Z	(none)	1	1		008fff18
 T3	emit ??_GCAIStateGroup_CleanWork@@UAEPAXI@Z	(none)	1	1		008fff58
 T3	emit ??_GCAIStateGroup_SitForMeal@@UAEPAXI@Z	(none)	1	1		008fff98
 T3	emit ??_ECAIStateGroup_PrepareMeal@@UAEPAXI@Z	(none)	1	1		008fffe2
-T3	emit ?IsWorkCandle@CAIStateGroup_LightHomeCandle@@MAE_NXZ	(none)	1	1		0090002c
 T3	emit ??_ECAIStateGroup_LightHomeCandle@@UAEPAXI@Z	(none)	1	1		0090002f
-T3	emit ?IsWorkCandle@CAIStateGroup_LightWorkCandle@@MAE_NXZ	(none)	1	1		0090005d
 T3	emit ??_ECAIStateGroup_LightWorkCandle@@UAEPAXI@Z	(none)	1	1		00900060
 T3	emit ??_GCAIStateGroup_LookAtInterestingThings@@UAEPAXI@Z	(none)	1	1		009000a0
 T3	emit ?AllowPriorityOverlap@CAIStateGroup_WanderAroundShops@@UAE_NXZ	(none)	1	1		009000ef
@@ -8580,9 +8471,7 @@ T3	emit ??_GCAIStateGroup_CreatureTakeCover@@UAEPAXI@Z	(none)	1	1		00903408
 T3	emit ??_ECAIStateGroup_ScorpionKing@@UAEPAXI@Z	(none)	1	1		0090343a
 T3	emit ??_GCAIStateGroup_WhisperPotionCombat@@UAEPAXI@Z	(none)	1	1		0090348f
 T3	emit ??_GCScriptGameResourceObjectScriptedThing@@UAEPAXI@Z	(none)	1	1		009054d0
-T3	emit ?IsToFaceTarget@CCreatureAction_BanditKingAdvance@@UBE_NXZ	(none)	1	1		00906c00
 T3	emit ?GetIsToFaceTargetCone@CCreatureAction_BanditKingAdvance@@UBEMXZ	(none)	1	1		00906c10
-T3	emit ?IsToFaceTarget@CCreatureAction_BanditKingBackOff@@UBE_NXZ	(none)	1	1		00906c40
 T3	emit ?GetIsToFaceTargetCone@CCreatureAction_BanditKingBackOff@@UBEMXZ	(none)	1	1		00906c50
 T3	emit ??_GCCreatureAction_BanditKingAdvance@@UAEPAXI@Z	(none)	1	1		00906f00
 T3	emit ??_GCCreatureAction_BanditKingBackOff@@UAEPAXI@Z	(none)	1	1		00906f20
@@ -8591,15 +8480,8 @@ T3	emit ??_ECCreatureAction_FodderPrimaryAttack@@UAEPAXI@Z	(none)	1	1		00907530
 T3	emit ??_ECCreatureAction_FodderUnblockablePrimaryAttack@@UAEPAXI@Z	(none)	1	1		00907550
 T3	emit ??_ECCreatureAction_FodderSecondaryAttack@@UAEPAXI@Z	(none)	1	1		00907570
 T3	emit ??_ECCreatureAction_FodderIdle@@UAEPAXI@Z	(none)	1	1		00907590
-T3	emit ?IsVitalStrike@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ	(none)	1	1		00908060
-T3	emit ?IsKnockdownStrike@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ	(none)	1	1		00908070
-T3	emit ?IsBlockable@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ	(none)	1	1		00908080
 T3	emit ?GetEffectName@CCreatureAction_TrollAngryGroundPound@@MBE_NAAVCCharString@@@Z	(none)	1	1		00908090
-T3	emit ?IsToFaceTarget@CCreatureAction_TrollProjectileAttack@@UBE_NXZ	(none)	1	1		00908110
-T3	emit ?GetIsToFaceTargetCone@CCreatureAction_TrollProjectileAttack@@UBEMXZ	(none)	1	1		00908120
-T3	emit ?IsInterruptableDueToZoneChange@CCreatureAction_TrollProjectileAttack@@UBE_NXZ	(none)	1	1		00908130
 T3	emit ?GetEffectName@CCreatureAction_TrollProjectileAttack@@MBE_NAAVCCharString@@@Z	(none)	1	1		00908140
-T3	emit ?IsToEvadeAllHits@CCreatureAction_TrollTunnel@@UBE_NXZ	(none)	1	1		009081c0
 T3	emit ?GetEffectName@CCreatureAction_TrollTunnel@@MBE_NAAVCCharString@@@Z	(none)	1	1		009081d0
 T3	emit ??_GCCreatureAction_TrollWhackGroundBase@@UAEPAXI@Z	(none)	1	1		00908460
 T3	emit ??_ECCreatureAction_TrollAngryGroundPound@@UAEPAXI@Z	(none)	1	1		00908480
@@ -8619,24 +8501,15 @@ T3	emit ?IsRunnable@CAIStateGroup_MinionHasInformation@@UAE_NXZ	(none)	1	1		0090
 T3	emit ?OnReplace@CAIStateGroup_MinionListenToStory@@MAEXXZ	(none)	1	1		009106b0
 T3	emit ??_GCCreatureAction_DeclarePlayerACriminal@@UAEPAXI@Z	(none)	1	1		00910c90
 T3	emit ??_GCCreatureAction_OrderSecuritySweep@@UAEPAXI@Z	(none)	1	1		00911160
-T3	emit ?IsRunnable@CAIStateGroup_ChickenBeg@@UAE_NXZ	(none)	1	1		00911ef0
-T3	emit ?Update@CAIStateGroup_ChickenBeg@@UAEXXZ	(none)	1	1		00911f00
 T3	emit ?Cleanup@CAIStateGroup_BirdGroundWander@@UAEXXZ	(none)	1	1		009143c0
 T3	emit ?GetAnimExtraFlags@CCreatureAction_PutGoodsDown@@UBEKXZ	(none)	1	1		00915860
-T3	emit ?GetAnimExtraFlags@CCreatureAction_PickUpGoods@@UBEKXZ	(none)	1	1		00916600
 T3	emit ??_GCCreatureAction_PickUpGoods@@UAEPAXI@Z	(none)	1	1		00916610
 T3	emit ?IsRunnable@CAIStateGroup_ThrowLogsOnFire@@UAE_NXZ	(none)	1	1		00917110
 T3	emit ?InsideAtNight@CAIStateGroup_Gaze@@MAE_NXZ	(none)	1	1		00918ed0
 T3	emit ??_GCAIStateGroup_Gaze@@UAEPAXI@Z	(none)	1	1		00918ee0
-T3	emit ?GetOwner@CAIStateGroup_GazeOutside@@MAEPAVCThingBuilding@@XZ	(none)	1	1		00918f10
-T3	emit ?AllowPriorityOverlap@CAIStateGroup_GazeOutside@@MAE_NXZ	(none)	1	1		00918f20
 T3	emit ??_GCAIStateGroup_GazeOutside@@UAEPAXI@Z	(none)	1	1		00918f30
-T3	emit ?AllowPriorityOverlap@CAIStateGroup_GazeAtHome@@MAE_NXZ	(none)	1	1		00918f50
-T3	emit ?InsideAtNight@CAIStateGroup_GazeAtHome@@MAE_NXZ	(none)	1	1		00918f60
 T3	emit ??_ECAIStateGroup_GazeAtHome@@UAEPAXI@Z	(none)	1	1		00918f70
 T3	emit ??_ECAIStateGroup_GazeAtWork@@UAEPAXI@Z	(none)	1	1		00918f90
-T3	emit ?OnReplace@CAIStateGroup_MinionReactToNoise@@UAEXXZ	(none)	1	1		0091ccb0
-T3	emit ?IsRunnable@CAIStateGroup_MinionLeaveRegion@@MAE_NXZ	(none)	1	1		0091e4a0
 T3	emit ?IsRunnable@CAIStateGroup_TestTestTest@@UAE_NXZ	(none)	1	1		0091ea10
 T3	emit ?IsRunnable@CAIStateGroup_CreatureGoUnderground@@MAE_NXZ	(none)	1	1		00920710
 T3	emit ??_ECCreatureAction_RemoveFoodFromTable@@UAEPAXI@Z	(none)	1	1		00923b60
@@ -8847,7 +8720,6 @@ T3	emit ?ConvertIndexesToPointers@CNavBlockedQuadTreeNode@@MAEXABV?$map@JPAVCANa
 T3	emit ?GetNodeType@CNavNavigableLeafNode@@UBE?AW4ENavQuadTreeNodeType@@XZ	(none)	1	1		00a7f2b0
 T3	emit ??_GCNavQuadTree@@UAEPAXI@Z	(none)	1	1		00a85e20
 T3	emit ?Sizeof@CPhysicsFacesSegmentLeaf@@MBEJXZ	(none)	1	1		00a86100
-T3	emit ?HasChildren@CPhysicsFacesSegmentLeaf@@MBE_NXZ	(none)	1	1		00a87110
 T3	emit ??_GCPhysicsFacesSegmentLeaf@@MAEPAXI@Z	(none)	1	1		00a87120
 T3	emit ?GetType@CSBAgents@@UAE?AW4ESB_TYPE@CSB@@XZ	(none)	1	1		00a88910
 T3	emit ??_GC3DMeshStripifier@@UAEPAXI@Z	(none)	1	1		00a8e040
@@ -8914,8 +8786,6 @@ T3	emit ?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer
 T3	emit ?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$all	(none)	1	1		00b3aa90
 T3	emit ??_GCEngineInternalAttachedPrimitive@@UAEPAXI@Z	(none)	1	1		00b3acd0
 T3	emit ??_ECEngineResourceManager@@UAEPAXI@Z	(none)	1	1		00b3eca0
-T3	emit ?GetRenderLayerMask@CEngineInternalPrimitiveLight@@UBEKXZ	(none)	1	1		00b444d0
-T3	emit ?GetRenderLayerMask@CEngineInternalPrimitiveShadowedSpotLight@@UBEKXZ	(none)	1	1		00b444e0
 T3	emit ??_ECShaderLight@@UAEPAXI@Z	(none)	1	1		00b49300
 T3	emit ??_ECShaderDirectionalLight@@UAEPAXI@Z	(none)	1	1		00b499c0
 T3	emit ??_GCEngineLightingManager@@UAEPAXI@Z	(none)	1	2		00b4a4a0
@@ -8969,7 +8839,6 @@ T3	emit ?RenderPrimitive@CEnginePrimitiveManagerSprites@@UAE?AW4ERendered@@AAVCE
 T3	emit ?GetSupportedTypes@CEnginePrimitiveManagerSprites@@UBEXAAVCEnginePrimitiveTypeLi	(none)	1	1		00bb1600
 T3	emit ??_GCEnginePrimitiveManagerSprites@@UAEPAXI@Z	(none)	1	1		00bb18b0
 T3	emit ??_GCEnginePrimitiveManager2DSprites@@UAEPAXI@Z	(none)	1	1		00bb18e0
-T3	emit ?IsBusy@CParticleSimulationRenderData@@UBE_NXZ	(none)	1	1		00bb1dd0
 T3	emit ??_ECEngineClothRenderer@@UAEPAXI@Z	(none)	1	1		00bb6710
 T3	emit ?GetSupportedTypes@CEnginePrimitiveManagerWeatherMask@@UBEXAAVCEnginePrimitiveTy	(none)	1	1		00bb6be0
 T3	emit ??_GCEnginePrimitiveManagerWeatherMask@@UAEPAXI@Z	(none)	1	1		00bb6cc0
@@ -9228,7 +9097,6 @@ T3	emit ?Initialise@CAIStateGroup_HoverHornetQueen@@UAEXAAVCAIBrain@@AAVCThingAI
 T3	emit ?Update@CAIStateGroup_HoverHornetQueen@@UAEXXZ	CAIStateGroup_HoverHornetQueen	1	1	engine/CAIStateGroup_HoverHornetQueen.h	0095c1f0
 T3	emit ?GetStateGroupType@CAIStateGroup_HoverHornetQueen@@UBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_HoverHornetQueen_Methods	1	1		00903137
 T3	emit ?OnReplace@CAIStateGroup_HoverHornetQueen@@UAEXXZ	CAIStateGroup_HoverHornetQueen_Methods	1	1		0095ab30
-T3	emit ?IsRunnable@CAIStateGroup_HoverKeepInArea@@UAE_NXZ	CAIStateGroup_HoverKeepInArea	1	1	engine/CAIStateGroup_HoverKeepInArea.h	00959f30
 T3	emit ?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionR	CAIStateGroup_HoverMovementBase	1	1	engine/CAIStateGroup_HoverMovementBase.h	0091d7f0
 T3	emit ?IsRunnable@CAIStateGroup_IceTrollIcicleAssault@@MAE_NXZ	CAIStateGroup_IceTrollIcicleAssault	1	1	engine/CAIStateGroup_IceTrollIcicleAssault.h	00961fb0
 T3	emit ?Update@CAIStateGroup_IceTrollIcicleAttack@@MAEXXZ	CAIStateGroup_IceTrollIcicleAttack	1	1	engine/CAIStateGroup_IceTrollIcicleAttack.h	009621f0
@@ -9410,12 +9278,10 @@ T3	emit ?Clone@CCombatAction_GenericResponseToDrain@@UBEPAVCCreatureActionBase@@
 T3	emit ?Clone@CCombatAction_GenericResponseToExplosion@@EBEPAVCCreatureActionBase@@XZ	CCombatAction_GenericResponseToExplosion	1	1	engine/CCombatAction_GenericResponseToExplosion.h	0066a7b0
 T3	emit ?Clone@CCombatAction_GenericStrikeResponse@@EBEPAVCCreatureActionBase@@XZ	CCombatAction_GenericStrikeResponse	1	1	engine/CCombatAction_GenericStrikeResponse.h	00868500
 T3	emit ?SetHitter@CCombatAction_GenericStrikeResponseBase@@UAEXABVCThing@@@Z	CCombatAction_GenericStrikeResponseBase	1	1	engine/CCombatAction_GenericStrikeResponseBase.h	006f5720
-T3	emit ?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseBase@@UBE_NXZ	CCombatAction_GenericStrikeResponseBase	1	1	engine/CCombatAction_GenericStrikeResponseBase.h	00865cf0
 T3	emit ?IsOverrideableByActionOfSamePriority@CCombatAction_GenericStrikeResponseBase@@U	CCombatAction_GenericStrikeResponseBase	1	1	engine/CCombatAction_GenericStrikeResponseBase.h	00865e70
 T3	emit ?Clone@CCombatAction_GenericStrikeResponseKnockdown@@EBEPAVCCreatureActionBase@@	CCombatAction_GenericStrikeResponseKnockdown	1	1	engine/CCombatAction_GenericStrikeResponseKnockdown.h	00868400
 T3	emit ??_GCCombatAction_GenericStrikeResponseKnockdownRecover@@UAEPAXI@Z	CCombatAction_GenericStrikeResponseKnockdownRecover	1	1		007f05f0
 T3	emit ?IsToEvadeAllHits@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UBE_N	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	1	1	engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h	00865b30
-T3	emit ?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseKnockdownRecove	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	1	1	engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h	00865dd0
 T3	emit ?FrameUpdate@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	1	1	engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h	00866d80
 T3	emit ?Clone@CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath@@UBEPAVCCrea	CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath	1	1	engine/CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath.h	007f06d0
 T3	emit ?Clone@CCombatAction_Guildmaster_HealFollowersInto@@EBEPAVCCreatureActionBase@@X	CCombatAction_Guildmaster_HealFollowersInto	1	1		00978650
@@ -9687,7 +9553,6 @@ T3	emit ?Clone@CCreatureAction_FinishHealLifeSpell@@UBEPAVCCreatureActionBase@@X
 T3	emit ?Clone@CCreatureAction_FinishWillForceSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_FinishWillForceSpell	1	1	engine/CCreatureAction_FinishWillForceSpell.h	008be320
 T3	emit ?Clone@CCreatureAction_FinishWillTurncoatSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_FinishWillTurncoatSpell	1	1	engine/CCreatureAction_FinishWillTurncoatSpell.h	008be590
 T3	emit ?Clone@CCreatureAction_FireMissileTest@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_FireMissileTest	1	1		008d63c0
-T3	emit ?GetAnimationTransitionOutTime@CCreatureAction_FireMissileWeapon@@UBEJXZ	CCreatureAction_FireMissileWeapon	1	1	engine/CCreatureAction_FireMissileWeapon.h	008d51d0
 T3	emit ??_GCCreatureAction_FireMissileWeapon@@UAEPAXI@Z	CCreatureAction_FireMissileWeapon	1	1	engine/CCreatureAction_FireMissileWeapon.h	008d6140
 T3	emit ?Clone@CCreatureAction_FireMissileWeapon@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_FireMissileWeapon	1	1	engine/CCreatureAction_FireMissileWeapon.h	008d62f0
 T3	emit ?Clone@CCreatureAction_FodderIdle@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_FodderIdle	1	1	engine/CCreatureAction_FodderIdle.h	00907640

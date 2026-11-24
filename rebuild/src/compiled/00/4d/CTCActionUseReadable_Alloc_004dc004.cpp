@@ -13,10 +13,10 @@ class CThing;
 
 class CTCActionUseReadable { public:
     unsigned char _body[0x1c];       // sizeof(CTCActionUseReadable) = 0x1c
-    CTCActionUseReadable(CThing* owner);                   // 0x004DA9D7
+    CTCActionUseReadable(CThing& owner);                   // 0x004DA9D7
 };
 
 CTCActionUseReadable* __fastcall CTCActionUseReadable_Alloc(CThing* owner)
 {
-    return new CTCActionUseReadable(owner);
+    return new CTCActionUseReadable(*owner);
 }

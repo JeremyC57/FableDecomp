@@ -15,7 +15,7 @@ public:
 class CQuestManager
 {
 public:
-    void SetBoastAsCompleted_004af8f0(
+    void SetBoastAsCompleted(
         long boastId,
         CCharString boastName);
 };
@@ -34,7 +34,7 @@ void CGameScriptInterface::SetBoastAsCompleted(
 {
     CQuestManager* const questManager =
         (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
-    questManager->SetBoastAsCompleted_004af8f0(
+    questManager->SetBoastAsCompleted(
         boastId,
         boastName);
 }

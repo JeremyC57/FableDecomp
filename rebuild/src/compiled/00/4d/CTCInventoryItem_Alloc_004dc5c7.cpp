@@ -13,10 +13,10 @@ class CThing;
 
 class CTCInventoryItem { public:
     unsigned char _body[0x28];       // sizeof(CTCInventoryItem) = 0x28
-    CTCInventoryItem(CThing* owner);                   // 0x004DAEA9
+    CTCInventoryItem(CThing& owner);                   // 0x004DAEA9
 };
 
 CTCInventoryItem* __fastcall CTCInventoryItem_Alloc(CThing* owner)
 {
-    return new CTCInventoryItem(owner);
+    return new CTCInventoryItem(*owner);
 }

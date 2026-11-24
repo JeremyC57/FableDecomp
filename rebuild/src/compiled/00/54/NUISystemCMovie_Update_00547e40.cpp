@@ -227,7 +227,7 @@ class CMovie : public CChangingStateComponent { public:
     float                  Angle;                  // +0x190
     bool                   AttempToPlay;           // +0x194
     static CMovie*         PlayingMovie;           // 0x013B8AB4
-    void FreeTextures();                           // 0x00547B90
+    protected: void FreeTextures(); public:        // 0x00547B90 (Ego_r + FableWin: protected)
     void Update(float dt);
 };
 

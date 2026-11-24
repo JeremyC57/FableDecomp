@@ -1,0 +1,48 @@
+##### 0041674a renames: ?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QBENXZ=?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ
+ALL_EQ sections=5 tables=-
+##### 00547e40 renames: ?FreeTextures@CMovie@NUISystem@@QAEXXZ=?FreeTextures@CMovie@NUISystem@@IAEXXZ
+ALL_EQ sections=8 tables=-
+##### 00645292 renames: ?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z=?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z
+ALL_EQ sections=7 tables=-
+##### 00541390 renames: ?GetDataFromDef@CDynamicList@NUISystem@@QAEXXZ=?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ
+ALL_EQ sections=21 tables=-
+##### 00b3b5d0 renames: ?SetupVertexShaderResource@CEngineResourceManager@@QAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z=?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z
+ALL_EQ sections=5 tables=-
+##### 00595b24 renames: ?AddProfileNameToScreens@CFrontEndManager@NUISystem@@QAEXABVCWideString@@@Z=?AddProfileNameToScreens@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z
+ALL_EQ sections=11 tables=-
+##### 00427dc9 renames: ?CreateLevelSlider@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z=?CreateLevelSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z
+ALL_EQ sections=8 tables=-
+##### 0042819a renames: ?CreateStaticSliderBidirectional@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z=?CreateStaticSliderBidirectional@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z
+ALL_EQ sections=17 tables=-
+##### 0066e985 renames: ?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QAEXXZ=?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QBEXXZ
+ALL_EQ sections=7 tables=-
+##### 009f2a40 renames: ?InternalAllocate@CMemoryAllocator@@QAEPAXJK_N@Z=?InternalAllocate@CMemoryAllocator@@IAEPAXJK_N@Z
+ALL_EQ sections=2 tables=-
+##### 008dba90 renames: ?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@QAEXXZ=?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ
+ALL_EQ sections=18 tables=-
+##### 00b0a750 renames: ?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@QAEMXZ=?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ
+ALL_EQ sections=9 tables=-
+##### 00878ce0 renames: ?SetUpParams@CProjectileWeapon@NCameraModes@@QAEXXZ=?SetUpParams@CProjectileWeapon@NCameraModes@@AAEXXZ
+ALL_EQ sections=6 tables=-
+##### 00f3a2e0 renames: ?Compress@CRangeCompressor@@QAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z=?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z
+ALL_EQ sections=7 tables=-
+##### 008520f0 renames: ?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@QAEXABVC3DVector@@0J@Z=?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@IAEXABVC3DVector@@0J@Z
+ALL_EQ sections=6 tables=-
+##### 00645f2e renames: ?DrawChangeText@CStatBar@NPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z=?DrawChangeText@CStatBar@NPlayerGui@@IAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z
+ALL_EQ sections=3 tables=-
+##### 004bd2e0 renames: ?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ=?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ
+ALL_EQ sections=4 tables=-
+##### 005d92f0 renames: ?GetStartingRightHandedSet@CTCInventoryItem@@QAE?AVCRightHandedSet@@XZ=?GetStartingRightHandedSet@CTCInventoryItem@@QBE?AVCRightHandedSet@@XZ
+ALL_EQ sections=7 tables=-
+##### 00753020 renames: ?IsTurningBody@CTCLook@@QAE_NXZ=?IsTurningBody@CTCLook@@AAE_NXZ
+ALL_EQ sections=2 tables=-
+##### 007befb0 renames: ?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@QAEMXZ=?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ
+ALL_EQ sections=6 tables=-
+##### 006e28d0 renames: ?StopCurrentSpeech@CTCTalk@@QAEXPAVCTCSoundPlayer@@@Z=?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z
+ALL_EQ sections=2 tables=-
+##### 0054f8e0 renames: ?FitInWindow@CText@NUISystem@@QAEJAAVCWideString@@ABVC2DBoxF@@@Z=?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z
+ALL_EQ sections=5 tables=-
+##### 00406c20 renames: ?GetAutoSaveDisplayName@CUserProfileManager@@QAE?AVCWideString@@XZ=?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ
+ALL_EQ sections=7 tables=-
+##### 008f8830 renames: ?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@SI_NABULAddress@2@AAUsockaddr_in@@@Z=?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@CI_NABULAddress@2@AAUsockaddr_in@@@Z
+ALL_EQ sections=2 tables=-

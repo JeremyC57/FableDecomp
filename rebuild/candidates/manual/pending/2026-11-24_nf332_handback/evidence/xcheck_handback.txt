@@ -1,0 +1,149 @@
+OK   replace old line exists ?DatabaseClone@CParticleSystem@NParticleEngine@@QAEPAV12@XZ 00af5960 (table witness ['00aeefe0'])
+OK   replace new has no line ?DatabaseClone@CParticleSystem@NParticleEngine@@QBEPAV12@XZ 00af5960
+OK   replace old line exists ?GetMaxCollectableRentValue@CTCBuyableHouse@@QAEJXZ 006c0270 (table witness ['004a0370'])
+OK   replace new has no line ?GetMaxCollectableRentValue@CTCBuyableHouse@@QBEJXZ 006c0270
+OK   add has no line yet ?GetActionSpeedMultiplier@CTCHaste@@QBEMXZ 007fffb0
+OK   rewitness line exists ?GetActionSpeedMultiplier@CTCHaste@@QAEMXZ 007fffb0 (now ['006655a0'] -> 00647ab4)
+OK   replace old line exists ?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QAEMXZ 006d6870 (table witness ['006655a0'])
+OK   replace new has no line ?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QBEMXZ 006d6870
+OK   replace old line exists ?IsQuitMenuReceivingInput@CTCInGameMenu@@QAE_NXZ 0047d537 (table witness ['00690480'])
+OK   replace new has no line ?IsQuitMenuReceivingInput@CTCInGameMenu@@QBE_NXZ 0047d537
+OK   replace old line exists ?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QAEJXZ 00766330 (table witness ['0057d5a0'])
+OK   replace new has no line ?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QBEJXZ 00766330
+OK   delete line exists ?GetHeightZBelowPos@CWorldMap@@QAEMABVC3DVector@@@Z 0063e480
+OK   delete line exists ?IsParticleCreationDisabled@CTCDParticleEmitter@@QAE_NXZ 006e0df0
+OK   replace old line exists ?IsRunnable@CAIStateGroup_EnemyCreatureBase@@QAE_NXZ 0091dd30 (table witness ['00959f30'])
+OK   replace new has no line ?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ 0091dd30
+OK   replace old line exists ?IsActionReadyForInterruption@CCombatActionBase@@QBE_NXZ 00856170 (table witness ['00865cf0'])
+OK   replace new has no line ?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ 00856170
+OK   replace old line exists ?GetAnimationTransitionOutTime@CCreatureActionBase@@QBEJXZ 006924c0 (table witness ['008d51d0'])
+OK   replace new has no line ?GetAnimationTransitionOutTime@CCreatureActionBase@@UBEJXZ 006924c0
+OK   replace old line exists ?OnDeactivate@CModeDragonFlying@NCreatureMode@@QAEXXZ 008dc590 (table witness ['008dcb00'])
+OK   replace new has no line ?OnDeactivate@CModeDragonFlying@NCreatureMode@@UAEXXZ 008dc590
+OK   replace old line exists ?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@QAEXXZ 008d8f30 (table witness ['008d9060'])
+OK   replace new has no line ?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@UAEXXZ 008d8f30
+OK   add has no line yet ?OnCreate@CTCPhysicsStandard@@UAEXXZ 00724010
+OK   replace old line exists ?OnInitialActivate@CThing@@QAEXXZ 004c97b0 (table witness ['00837830'])
+OK   replace new has no line ?OnInitialActivate@CThing@@UAEXXZ 004c97b0
+OK   delete line exists ?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QBENXZ 004166e2
+OK   replace old line exists ?FreeTextures@CMovie@NUISystem@@QAEXXZ 00547b90 (table witness ['00547e40'])
+OK   replace new has no line ?FreeTextures@CMovie@NUISystem@@IAEXXZ 00547b90
+OK   replace old line exists ?LeaveGame@CTCTavernGame@@QAEXXZ 005ec650 (table witness ['007d7b40'])
+OK   replace new has no line ?LeaveGame@CTCTavernGame@@UAEXXZ 005ec650
+OK   replace old line exists ?LeaveGame@CTCTavernGameCoinBase@@QAEXXZ 008ef110 (table witness ['007cf460'])
+OK   replace new has no line ?LeaveGame@CTCTavernGameCoinBase@@UAEXXZ 008ef110
+OK   replace old line exists ?LeaveGame@CTCTavernGameCardBase@@QAEXXZ 008f20f0 (table witness ['007d4de0'])
+OK   replace new has no line ?LeaveGame@CTCTavernGameCardBase@@UAEXXZ 008f20f0
+OK   replace old line exists ??0CTCActionUseBuyOrSteal@@QAE@PAVCThing@@@Z 0072a630 (table witness ['004d2c12'])
+OK   replace new has no line ??0CTCActionUseBuyOrSteal@@QAE@AAVCThing@@@Z 0072a630
+OK   replace old line exists ??0CTCActionUseReadable@@QAE@PAVCThing@@@Z 004da9d7 (table witness ['004dc004'])
+OK   replace new has no line ??0CTCActionUseReadable@@QAE@AAVCThing@@@Z 004da9d7
+OK   replace old line exists ??0CTCAmbientBird@@QAE@PAVCThing@@@Z 004d5efb (table witness ['004d92e8'])
+OK   replace new has no line ??0CTCAmbientBird@@QAE@AAVCThing@@@Z 004d5efb
+OK   replace old line exists ??0CTCAnimationComplex@@QAE@PAVCThing@@@Z 0070b3f0 (table witness ['004d44b8'])
+OK   replace new has no line ??0CTCAnimationComplex@@QAE@AAVCThing@@@Z 0070b3f0
+OK   replace old line exists ??0CTCDrainLife@@QAE@PAVCThing@@@Z 007c30e0 (table witness ['004d5600'])
+OK   replace new has no line ??0CTCDrainLife@@QAE@AAVCThing@@@Z 007c30e0
+OK   replace old line exists ??0CTCExplodingObject@@QAE@PAVCThing@@@Z 00750be0 (table witness ['004d3887'])
+OK   replace new has no line ??0CTCExplodingObject@@QAE@AAVCThing@@@Z 00750be0
+OK   replace old line exists ??0CTCFadeOutAndIn@@QAE@PAVCThing@@@Z 006c3c30 (table witness ['004d624f'])
+OK   replace new has no line ??0CTCFadeOutAndIn@@QAE@AAVCThing@@@Z 006c3c30
+OK   replace old line exists ??0CTCFireballSpell@@QAE@PAVCThing@@@Z 007c87f0 (table witness ['004d5723'])
+OK   replace new has no line ??0CTCFireballSpell@@QAE@AAVCThing@@@Z 007c87f0
+OK   replace old line exists ??0CTCFish@@QAE@PAVCThing@@@Z 007dfb20 (table witness ['004d5c47'])
+OK   replace new has no line ??0CTCFish@@QAE@AAVCThing@@@Z 007dfb20
+OK   replace old line exists ??0CTCForcePushPower@@QAE@PAVCThing@@@Z 007a54a0 (table witness ['004d4d1b'])
+OK   replace new has no line ??0CTCForcePushPower@@QAE@AAVCThing@@@Z 007a54a0
+OK   replace old line exists ??0CTCForcePushed@@QAE@PAVCThing@@@Z 00798570 (table witness ['004d4b12'])
+OK   replace new has no line ??0CTCForcePushed@@QAE@AAVCThing@@@Z 00798570
+OK   replace old line exists ??0CTCGhostSword@@QAE@PAVCThing@@@Z 007c5560 (table witness ['004d5660'])
+OK   replace new has no line ??0CTCGhostSword@@QAE@AAVCThing@@@Z 007c5560
+OK   replace old line exists ??0CTCHealLife@@QAE@PAVCThing@@@Z 007c4bd0 (table witness ['004d5630'])
+OK   replace new has no line ??0CTCHealLife@@QAE@AAVCThing@@@Z 007c4bd0
+OK   replace old line exists ??0CTCInventoryItem@@QAE@PAVCThing@@@Z 004daea9 (table witness ['004dc5c7'])
+OK   replace new has no line ??0CTCInventoryItem@@QAE@AAVCThing@@@Z 004daea9
+OK   replace old line exists ??0CTCRandomAppearanceMorph@@QAE@PAVCThing@@@Z 00728000 (table witness ['004d2a44'])
+OK   replace new has no line ??0CTCRandomAppearanceMorph@@QAE@AAVCThing@@@Z 00728000
+OK   replace old line exists ??0CTCSummonSpell@@QAE@PAVCThing@@@Z 0079a6e0 (table witness ['004d4bde'])
+OK   replace new has no line ??0CTCSummonSpell@@QAE@AAVCThing@@@Z 0079a6e0
+OK   replace old line exists ?SetBoastAsCompleted_004af8f0@CQuestManager@@QAEXJVCCharString@@@Z 004af8f0 (table witness ['008915e0'])
+OK   replace new has no line ?SetBoastAsCompleted@CQuestManager@@QAEXJVCCharString@@@Z 004af8f0
+OK   replace old line exists ?Reset_007a7000@CTCBattleCharge@@QAEXXZ 007a7000 (table witness ['007a7370'])
+OK   replace new has no line ?UpdateDirectionOverride@CTCBattleCharge@@AAEXXZ 007a7000
+OK   replace old line exists ?SetBoastAsCompleted@CQuestManager@@QAEXJVCCharString@@@Z 004af880 (table witness ['008915b0'])
+OK   replace new has no line ?SetBoastAsFailed@CQuestManager@@QAEXJVCCharString@@@Z 004af880
+OK   both PDB name sets: ??0CTCActionUseBuyOrSteal@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCActionUseReadable@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCAmbientBird@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCAnimationComplex@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCDrainLife@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCExplodingObject@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCFadeOutAndIn@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCFireballSpell@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCFish@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCForcePushPower@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCForcePushed@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCGhostSword@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCHealLife@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCInventoryItem@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCRandomAppearanceMorph@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCSummonSpell@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?AddProfileNameToScreens@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@IAEXABVC3DVector@@0J@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@CI_NABULAddress@2@AAUsockaddr_in@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?CreateLevelSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?CreateStaticSliderBidirectional@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?DatabaseClone@CParticleSystem@NParticleEngine@@QBEPAV12@XZ (egor=True fablewin=True)
+OK   both PDB name sets: ?DrawChangeText@CStatBar@NPlayerGui@@IAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?FreeTextures@CMovie@NUISystem@@IAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetActionSpeedMultiplier@CTCHaste@@QBEMXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetAnimationTransitionOutTime@CCreatureActionBase@@UBEJXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetAnimationTransitionOutTime@CCreatureAction_FireMissileWeapon@@UBEJXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetMaxCollectableRentValue@CTCBuyableHouse@@QBEJXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QBEMXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QBEJXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GetStartingRightHandedSet@CTCInventoryItem@@QBE?AVCRightHandedSet@@XZ (egor=True fablewin=True)
+OK   both PDB name sets: ?InternalAllocate@CMemoryAllocator@@IAEPAXJK_N@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseBase@@UBE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UBE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?IsParticleCreationDisabled@CTCDParticleEmitter@@IBE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?IsQuitMenuReceivingInput@CTCInGameMenu@@QBE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?IsRunnable@CAIStateGroup_HoverKeepInArea@@UAE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?IsTurningBody@CTCLook@@AAE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?LeaveGame@CTCTavernGame@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?LeaveGame@CTCTavernGameCardBase@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?LeaveGame@CTCTavernGameCardBlackjack@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?LeaveGame@CTCTavernGameCardPairs@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?LeaveGame@CTCTavernGameCardSorting@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?LeaveGame@CTCTavernGameCoinBase@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?LeaveGame@CTCTavernGameCoinGolf@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?LeaveGame@CTCTavernGameShoveHaPenny@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?LeaveGame@CTCTavernGameSpotTheAddition@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?OnCreate@CTCPhysicsNavigator@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?OnCreate@CTCPhysicsStandard@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?OnDeactivate@CModeDragonFlying@NCreatureMode@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?OnDeactivate@CModeDragonStrafeBurninate@NCreatureMode@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?OnDeactivate@CModeStunned@NCreatureMode@@EAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?OnInitialActivate@CThing@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?OnInitialActivate@CThingTrackNode@@UAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QBEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?SetBoastAsCompleted@CQuestManager@@QAEXJVCCharString@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?SetBoastAsFailed@CQuestManager@@QAEXJVCCharString@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?SetUpParams@CProjectileWeapon@NCameraModes@@AAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?UpdateDirectionOverride@CTCBattleCharge@@AAEXXZ (egor=True fablewin=True)
+BAD 0 of table + names checks

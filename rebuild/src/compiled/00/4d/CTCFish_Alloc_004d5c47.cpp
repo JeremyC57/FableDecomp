@@ -13,10 +13,10 @@ class CThing;
 
 class CTCFish { public:
     unsigned char _body[0x1c];       // sizeof(CTCFish) = 0x1c
-    CTCFish(CThing* owner);                   // 0x007DFB20
+    CTCFish(CThing& owner);                   // 0x007DFB20
 };
 
 CTCFish* __fastcall CTCFish_Alloc(CThing* owner)
 {
-    return new CTCFish(owner);
+    return new CTCFish(*owner);
 }

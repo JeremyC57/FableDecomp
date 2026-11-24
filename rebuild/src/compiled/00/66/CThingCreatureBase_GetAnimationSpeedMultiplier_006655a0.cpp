@@ -78,9 +78,9 @@ class CTCLook { public:
     bool IsCurrentlyTurningViaAnimation() const;      // 0x00753B40
     float GetTurnAnimationSpeed();              // 0x00751B70
 };
-class CTCHaste { public: float GetActionSpeedMultiplier(); };          // 0x007FFFB0
+class CTCHaste { public: float GetActionSpeedMultiplier() const; };          // 0x007FFFB0
 class CTCHeroExperience { public:
-    float GetMeleeStrikeAnimationSpeedMultiplier();             // 0x006D6870
+    float GetMeleeStrikeAnimationSpeedMultiplier() const;             // 0x006D6870
     float GetMinStrikeSpeed();                                  // 0x006D6530
     float GetMaxStrikeSpeed();                                  // 0x006D6540
 };

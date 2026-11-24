@@ -13,10 +13,10 @@ class CThing;
 
 class CTCFadeOutAndIn { public:
     unsigned char _body[0x24];       // sizeof(CTCFadeOutAndIn) = 0x24
-    CTCFadeOutAndIn(CThing* owner);                   // 0x006C3C30
+    CTCFadeOutAndIn(CThing& owner);                   // 0x006C3C30
 };
 
 CTCFadeOutAndIn* __fastcall CTCFadeOutAndIn_Alloc(CThing* owner)
 {
-    return new CTCFadeOutAndIn(owner);
+    return new CTCFadeOutAndIn(*owner);
 }

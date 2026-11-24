@@ -1,0 +1,8 @@
+## HEAD set: H_007d7b40.obj H_008ef110.obj H_008f20f0.obj H_007cf460.obj H_007d4a90.obj H_007d4de0.obj H_007d5f60.obj H_007daaa0.obj 005ec650.obj
+duplicates 0
+UNRESOLVED 5 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ
+UNRESOLVED 3 ?LeaveGame@CTCTavernGame@@QAEXXZ
+## new set: 007d7b40.obj 008ef110.obj 008f20f0.obj 007cf460.obj 007d4a90.obj 007d4de0.obj 007d5f60.obj 007daaa0.obj 005ec650.obj
+duplicates 0
+UNRESOLVED 5 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ
+LK_DONE

@@ -13,10 +13,10 @@ class CThing;
 
 class CTCDrainLife { public:
     unsigned char _body[0x30];       // sizeof(CTCDrainLife) = 0x30
-    CTCDrainLife(CThing* owner);                   // 0x007C30E0
+    CTCDrainLife(CThing& owner);                   // 0x007C30E0
 };
 
 CTCDrainLife* __fastcall CTCDrainLife_Alloc(CThing* owner)
 {
-    return new CTCDrainLife(owner);
+    return new CTCDrainLife(*owner);
 }

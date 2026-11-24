@@ -1,0 +1,6 @@
+## HEAD set: H_008915b0.obj H_008915e0.obj 004af880.obj 004af8f0.obj
+duplicates 0
+UNRESOLVED 1 ?SetBoastAsCompleted_004af8f0@CQuestManager@@QAEXJVCCharString@@@Z
+## new set: 008915b0.obj 008915e0.obj 004af880.obj 004af8f0.obj
+duplicates 0
+LK_DONE

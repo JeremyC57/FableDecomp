@@ -1,4 +1,5 @@
 // CTCTavernGameCoinGolf::LeaveGame() -- LeaveGame override: coin-base LeaveGame, fade the table occupants back in, then (when the world hands out a camera manager) restore automatic camera control and reset the camera
+// Leaf: ?LeaveGame@CTCTavernGameCoinGolf@@UAEXXZ
 // Retail: Fable.exe @ 0x007D4A90, 69 bytes (vtable 0x0126F49C slot 30 = the LeaveGame slot).
 // Callees: CTCTavernGameCoinBase::LeaveGame 0x008EF110 (non-virtual base call),
 //          CTCTavernGameCoinGolf::FadeOutTableOccupants(bool) 0x007D46D0, CTCBase::GetWorld 0x00686A70
@@ -28,7 +29,7 @@ class CWorld { public:
 };
 
 class CTCBase
-{
+{ public: virtual ~CTCBase();   // Ego_r + FableWin ??1CTCBase@@UAE@XZ (declaration only: gives the hierarchy its retail vptr at +0)
 protected:
     CWorld& GetWorld() const;   // 0x00686A70
 };
@@ -38,16 +39,16 @@ public:
 };
 
 struct CTCTavernGameCoinBase : public CTCTavernGame {
-    unsigned char _pad[0x108];
-    void LeaveGame();                               // 0x008EF110
+    unsigned char _pad[0x108 - 4];                  // +0x04 (after the vptr)
+    virtual void LeaveGame();                       // 0x008EF110 (slot 30, virtual in both PDBs; called qualified)
 };
 
 class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     private: void FadeOutTableOccupants(bool fadeOut); public:       // 0x007D46D0
-    void vfunc_30();
+    void LeaveGame();                               // slot 30 (rtti-vtables 0x0126F49C)
 };
 
-void CTCTavernGameCoinGolf::vfunc_30()
+void CTCTavernGameCoinGolf::LeaveGame()
 {
     CTCTavernGameCoinBase::LeaveGame();
     FadeOutTableOccupants(true);

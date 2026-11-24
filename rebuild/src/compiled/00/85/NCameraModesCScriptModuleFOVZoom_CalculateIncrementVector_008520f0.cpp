@@ -1,5 +1,5 @@
 // NCameraModes::CScriptModuleFOVZoom::CalculateIncrementVector(const C3DVector& from, const C3DVector& to, long frames) -- Increment = (to - from) / frames
-// Leaf: CalculateIncrementVector
+// Leaf: ?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@IAEXABVC3DVector@@0J@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- C3DVector operators built through the (x, y, z) ctor keep diff.X/diff.Y on the FPU; the reciprocal passed inline as operator*'s float argument is homed in the dead `to` slot as retail
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008520F0, length 112 bytes (106 + int3 padding). No callees.
@@ -26,7 +26,7 @@ struct CScriptModuleFOVZoom {
     C3DVector     StartPos;                          // +0x74
     bool          ShortenOnOcclusion;                // +0x80
     bool          ResetCamera;                       // +0x81
-    void CalculateIncrementVector(const C3DVector& from, const C3DVector& to, long frames);
+    protected: void CalculateIncrementVector(const C3DVector& from, const C3DVector& to, long frames);
 };
 
 void CScriptModuleFOVZoom::CalculateIncrementVector(const C3DVector& from, const C3DVector& to, long frames)

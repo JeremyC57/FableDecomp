@@ -9,6 +9,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BANDITKINGBACKOFF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128DA6C (RTTI .?AVCCreatureAction_BanditKingBackOff@@ : CCreatureAction_StrafeBackward), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BanditKingBackOff); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_STRAFEBACKWARD_PROTOTYPE, FABLE_RETAIL_CCREATUREACTION_STRAFEBACKWARD_RTTI_DECLS.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCreatureAction_StrafeBackward.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BanditKingBackOff : public CCreatureAction_StrafeBackward {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00906F70 ?Clone@CCreatureAction_BanditKingBackOff@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x00906C40 ?IsToFaceTarget@CCreatureAction_BanditKingBackOff@@UBE_NXZ
+    virtual float GetIsToFaceTargetCone() const;                          // slot 78 0x00906C50 ?GetIsToFaceTargetCone@CCreatureAction_BanditKingBackOff@@UBEMXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BanditKingBackOff) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BanditKingBackOff {
 public:
@@ -27,7 +47,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BanditKingBackOff) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingBackOff, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_BanditKingBackOff) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_BanditKingBackOff, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_BANDITKINGBACKOFF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BANDITKINGBACKOFF_H

@@ -13,10 +13,10 @@ class CThing;
 
 class CTCRandomAppearanceMorph { public:
     unsigned char _body[0x2c];       // sizeof(CTCRandomAppearanceMorph) = 0x2c
-    CTCRandomAppearanceMorph(CThing* owner);                   // 0x00728000
+    CTCRandomAppearanceMorph(CThing& owner);                   // 0x00728000
 };
 
 CTCRandomAppearanceMorph* __fastcall CTCRandomAppearanceMorph_Alloc(CThing* owner)
 {
-    return new CTCRandomAppearanceMorph(owner);
+    return new CTCRandomAppearanceMorph(*owner);
 }

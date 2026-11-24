@@ -13,10 +13,10 @@ class CThing;
 
 class CTCForcePushed { public:
     unsigned char _body[0x50];       // sizeof(CTCForcePushed) = 0x50
-    CTCForcePushed(CThing* owner);                   // 0x00798570
+    CTCForcePushed(CThing& owner);                   // 0x00798570
 };
 
 CTCForcePushed* __fastcall CTCForcePushed_Alloc(CThing* owner)
 {
-    return new CTCForcePushed(owner);
+    return new CTCForcePushed(*owner);
 }

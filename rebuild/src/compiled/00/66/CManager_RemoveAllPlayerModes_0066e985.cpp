@@ -6,7 +6,7 @@
 // destructor frees the buffer through the allocator (`if (p) free(p)`, CRT free 0x00BFEA14).
 // Layout: retail NHeroInformationScreens::CManager as the landed 0x0066EA85 / 0x0066E941 (12-byte STLport vectors).
 // Callers 0x004A48E3, 0x0062B448.
-// Leaf: RemoveAllPlayerModes
+// Leaf: ?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QBEXXZ
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Shape: retail keeps the local vector's _M_start in ebx across the loop calls into the destructor (`test ebx,ebx ; push ebx`),
@@ -58,7 +58,7 @@ public:
     CVector<const CBase*> InventoryScreens;              // +0x10
     CVector<long>         ScrollBarIndices;              // +0x1c
     void GetAllRegisteredScreens(CVector<const CBase*>& screens) const;   // 0x0066E941
-    void RemoveAllPlayerModes();
+    void RemoveAllPlayerModes() const;
 };
 // Same-TU stand-in for GetAllRegisteredScreens 0x0066E941 (body is not the retail one): it never stores the vector's
 // address, so the local vector stays unaliased across the loop's calls and its _M_start stays in ebx for the destructor.
@@ -72,7 +72,7 @@ __declspec(noinline) void CManager::GetAllRegisteredScreens(CVector<const CBase*
     screens._M_end_of_storage = (const CBase**)source;
 }
 #pragma auto_inline(on)
-void CManager::RemoveAllPlayerModes()
+void CManager::RemoveAllPlayerModes() const
 {
     CPlayer* player = &CMainGameComponent::Get()->PPlayerManager->GetMainPlayer();
     unsigned int i = 0;

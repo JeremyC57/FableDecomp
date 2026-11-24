@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue() -- fade multiplier for the component: 1 unless fading is enabled; otherwise the normalised age is eased in (half-cosine table) before the packed fade-in end and eased out after the packed fade-out start
-// Leaf: GetCurrentFadeValue
+// Leaf: ?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ
 // Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B0A750, 0x1C8 bytes (padded to 464), `ret`, float in st0.
 // Callees: 0x00AEAA00 (the particle clock, float). Data: the 1025-entry cosine table at 0x013CD550, 1/1023 at 0x01266300,
@@ -37,9 +37,9 @@ class CPSCUpdateNormal { public:
     float         Lifetime;                         // +0x18
     unsigned char _pad1c[0x98 - 0x1c];
     long          Frame;                            // +0x98 (multiplied as an integer operand: fimul)
-    float GetCurrentFadeValue();
+    protected: float GetCurrentFadeValue() const;
 };
-float CPSCUpdateNormal::GetCurrentFadeValue()
+float CPSCUpdateNormal::GetCurrentFadeValue() const
 {
     if (!(FadeBits & 0x2000000))
         return 1.0f;

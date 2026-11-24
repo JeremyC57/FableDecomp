@@ -1,4 +1,14 @@
-bool __fastcall CCreatureAction_BanditKingAdvance_IsToFaceTarget()
+// Leaf: ?IsToFaceTarget@CCreatureAction_BanditKingAdvance@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_BANDITKINGADVANCE_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#define FABLE_RETAIL_CCREATUREACTION_STRAFEFORWARD_PROTOTYPE
+#define FABLE_RETAIL_CCREATUREACTION_STRAFEFORWARD_RTTI_DECLS
+#include "engine/CCreatureAction_BanditKingAdvance.h"
+bool CCreatureAction_BanditKingAdvance::IsToFaceTarget() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_BanditKingAdvance_IsToFaceTarget -> CCreatureAction_BanditKingAdvance::IsToFaceTarget, the RTTI-placed PDB member; class model: engine/CCreatureAction_BanditKingAdvance.h opt-in FABLE_RETAIL_CCREATUREACTION_BANDITKINGADVANCE_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_STRAFEFORWARD_PROTOTYPE, FABLE_RETAIL_CCREATUREACTION_STRAFEFORWARD_RTTI_DECLS.

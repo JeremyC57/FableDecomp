@@ -1,5 +1,5 @@
 // NUISystem::CText::FitInWindow(CWideString& text, const C2DBoxF& window) -- word-wrap the text to the window width line by line, rebuilding it with explicit newlines, and return the wrapped height in font lines (one font height when the window is empty)
-// Leaf: ?FitInWindow@CText@NUISystem
+// Leaf: ?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054F8E0, length 560 bytes, `ret 8`.
 //   FableWin.pdb: ?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z.
@@ -66,7 +66,7 @@ class CText : public CDraggableInto { public:
     CCountedPointer<CFontBank> PFont;              // +0x160
     virtual void v000();
     static unsigned int __fastcall GetCharWidthW(unsigned short c);   // 0x0054F4B0
-    long FitInWindow(CWideString& text, const C2DBoxF& window);
+    protected: long FitInWindow(CWideString& text, const C2DBoxF& window);
 };
 
 long CText::FitInWindow(CWideString& text, const C2DBoxF& window)

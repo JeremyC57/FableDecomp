@@ -1,4 +1,5 @@
 // CTCTavernGameCardBlackjack::LeaveGame() -- LeaveGame override: card-base LeaveGame, then clears the card vector at +0x318 (erase(begin(), end()))
+// Leaf: ?LeaveGame@CTCTavernGameCardBlackjack@@UAEXXZ
 // Retail: Fable.exe @ 0x007DAAA0, 59 bytes (vtable 0x0126F8F4 slot 30 = the LeaveGame slot; the
 //         CardSorting/CardPairs slot-30 overrides carry the LeaveGame label).
 // Callees: CTCTavernGameCardBase::LeaveGame 0x008F20F0, memmove 0x00BFEAE6.
@@ -31,16 +32,16 @@ struct CCardVector {                    // retail 12-byte vector<CTavernCard*>
 };
 
 struct CTCTavernGameCardBase {
-    unsigned char _pad[0x318];
-    void LeaveGame();                   // 0x008F20F0
+    unsigned char _pad[0x318 - 4];      // +0x04 (after the vptr)
+    virtual void LeaveGame();           // 0x008F20F0 (slot 30, virtual in both PDBs; called qualified)
 };
 
 struct CTCTavernGameCardBlackjack : CTCTavernGameCardBase {
     CCardVector m_cards;                // +0x318
-    void vfunc_30();
+    void LeaveGame();                   // slot 30 (rtti-vtables 0x0126F8F4)
 };
 
-void CTCTavernGameCardBlackjack::vfunc_30()
+void CTCTavernGameCardBlackjack::LeaveGame()
 {
     CTCTavernGameCardBase::LeaveGame();
     m_cards.Clear();

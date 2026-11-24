@@ -13,10 +13,10 @@ class CThing;
 
 class CTCSummonSpell { public:
     unsigned char _body[0x38];       // sizeof(CTCSummonSpell) = 0x38
-    CTCSummonSpell(CThing* owner);                   // 0x0079A6E0
+    CTCSummonSpell(CThing& owner);                   // 0x0079A6E0
 };
 
 CTCSummonSpell* __fastcall CTCSummonSpell_Alloc(CThing* owner)
 {
-    return new CTCSummonSpell(owner);
+    return new CTCSummonSpell(*owner);
 }

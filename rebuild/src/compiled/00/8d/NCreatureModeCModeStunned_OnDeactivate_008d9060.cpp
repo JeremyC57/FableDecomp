@@ -1,5 +1,5 @@
 // NCreatureMode::CModeStunned::OnDeactivate() -- vtable slot 6: the stunned creature gets its default targeting flags back, then the out-of-action base deactivation runs
-// Leaf: ?OnDeactivate@CModeStunned@
+// Leaf: ?OnDeactivate@CModeStunned@NCreatureMode@@EAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D9060, 72 bytes (+8 int3 padding).
 // Name: FableWin.pdb ?OnDeactivate@CModeStunned@NCreatureMode@@EAEXXZ; slot 6 of the vtable 0x01267C74 (rtti-vtables.tsv;
@@ -49,11 +49,11 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase
 };
 
 struct CModeOutOfActionBase : CModeBase {
-    void OnDeactivate();                   // 0x008D8F30
+    virtual void OnDeactivate();           // 0x008D8F30
 };
 
 struct CModeStunned : CModeOutOfActionBase {
-    virtual void OnDeactivate();
+    private: virtual void OnDeactivate(); public:
 };
 
 void CModeStunned::OnDeactivate()

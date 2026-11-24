@@ -1,0 +1,41 @@
+action	symbol	target	witness	note
+replace	?DatabaseClone@CParticleSystem@NParticleEngine@@QAEPAV12@XZ -> ?DatabaseClone@CParticleSystem@NParticleEngine@@QBEPAV12@XZ	00af5960	00aeefe0	witness now binds the PDB spelling; no line for it yet
+replace	?GetMaxCollectableRentValue@CTCBuyableHouse@@QAEJXZ -> ?GetMaxCollectableRentValue@CTCBuyableHouse@@QBEJXZ	006c0270	004a0370	witness now binds the PDB spelling; no line for it yet
+add	?GetActionSpeedMultiplier@CTCHaste@@QBEMXZ	007fffb0	006655a0	006655a0 now binds the PDB spelling
+rewitness	?GetActionSpeedMultiplier@CTCHaste@@QAEMXZ	007fffb0	00647ab4	00647ab4 still binds QAE through engine/CTCHaste.h (control object); 006655a0 moved to QBE
+replace	?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QAEMXZ -> ?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QBEMXZ	006d6870	006655a0	witness now binds the PDB spelling; no line for it yet
+replace	?IsQuitMenuReceivingInput@CTCInGameMenu@@QAE_NXZ -> ?IsQuitMenuReceivingInput@CTCInGameMenu@@QBE_NXZ	0047d537	00690480	witness now binds the PDB spelling; no line for it yet
+replace	?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QAEJXZ -> ?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QBEJXZ	00766330	0057d5a0	witness now binds the PDB spelling; no line for it yet
+delete	?GetHeightZBelowPos@CWorldMap@@QAEMABVC3DVector@@@Z	0063e480	007bdb66	no landed row binds QAE after this hand-back (both binders moved; 11 census controls bind QBE); the QBE line (0074a260) stays
+delete	?IsParticleCreationDisabled@CTCDParticleEmitter@@QAE_NXZ	006e0df0	006e1620	no landed row binds QAE after this hand-back; the IBE line (006e0fc0) stays
+replace	?IsRunnable@CAIStateGroup_EnemyCreatureBase@@QAE_NXZ -> ?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ	0091dd30	00959f30	witness now binds the PDB spelling; no line for it yet
+replace	?IsActionReadyForInterruption@CCombatActionBase@@QBE_NXZ -> ?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ	00856170	00865cf0	witness (and 00865dd0) now binds the PDB spelling; no line for it yet
+replace	?GetAnimationTransitionOutTime@CCreatureActionBase@@QBEJXZ -> ?GetAnimationTransitionOutTime@CCreatureActionBase@@UBEJXZ	006924c0	008d51d0	witness now binds the PDB spelling; no line for it yet
+replace	?OnDeactivate@CModeDragonFlying@NCreatureMode@@QAEXXZ -> ?OnDeactivate@CModeDragonFlying@NCreatureMode@@UAEXXZ	008dc590	008dcb00	witness now binds the PDB spelling; no line for it yet
+replace	?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@QAEXXZ -> ?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@UAEXXZ	008d8f30	008d9060	witness now binds the PDB spelling; no line for it yet
+add	?OnCreate@CTCPhysicsStandard@@UAEXXZ	00724010	007268d0	007268d0 now binds the PDB spelling; the QAE line keeps its witness 00724f80 (unchanged, port)
+replace	?OnInitialActivate@CThing@@QAEXXZ -> ?OnInitialActivate@CThing@@UAEXXZ	004c97b0	00837830	witness now binds the PDB spelling; no line for it yet
+delete	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QBENXZ	004166e2	0041674a	no landed row binds QBE after this hand-back; the IBE line (00417001) stays
+replace	?FreeTextures@CMovie@NUISystem@@QAEXXZ -> ?FreeTextures@CMovie@NUISystem@@IAEXXZ	00547b90	00547e40	witness now binds the PDB spelling; no line for it yet
+replace	?LeaveGame@CTCTavernGame@@QAEXXZ -> ?LeaveGame@CTCTavernGame@@UAEXXZ	005ec650	007d7b40	all three binders now bind the PDB spelling
+replace	?LeaveGame@CTCTavernGameCoinBase@@QAEXXZ -> ?LeaveGame@CTCTavernGameCoinBase@@UAEXXZ	008ef110	007cf460	self and both binders (007cf460, 007d4a90) now on the PDB spelling
+replace	?LeaveGame@CTCTavernGameCardBase@@QAEXXZ -> ?LeaveGame@CTCTavernGameCardBase@@UAEXXZ	008f20f0	007d4de0	self and the three binders (007d4de0, 007d5f60, 007daaa0) now on the PDB spelling
+replace	??0CTCActionUseBuyOrSteal@@QAE@PAVCThing@@@Z -> ??0CTCActionUseBuyOrSteal@@QAE@AAVCThing@@@Z	0072a630	004d2c12	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCActionUseReadable@@QAE@PAVCThing@@@Z -> ??0CTCActionUseReadable@@QAE@AAVCThing@@@Z	004da9d7	004dc004	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCAmbientBird@@QAE@PAVCThing@@@Z -> ??0CTCAmbientBird@@QAE@AAVCThing@@@Z	004d5efb	004d92e8	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCAnimationComplex@@QAE@PAVCThing@@@Z -> ??0CTCAnimationComplex@@QAE@AAVCThing@@@Z	0070b3f0	004d44b8	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCDrainLife@@QAE@PAVCThing@@@Z -> ??0CTCDrainLife@@QAE@AAVCThing@@@Z	007c30e0	004d5600	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCExplodingObject@@QAE@PAVCThing@@@Z -> ??0CTCExplodingObject@@QAE@AAVCThing@@@Z	00750be0	004d3887	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCFadeOutAndIn@@QAE@PAVCThing@@@Z -> ??0CTCFadeOutAndIn@@QAE@AAVCThing@@@Z	006c3c30	004d624f	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCFireballSpell@@QAE@PAVCThing@@@Z -> ??0CTCFireballSpell@@QAE@AAVCThing@@@Z	007c87f0	004d5723	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCFish@@QAE@PAVCThing@@@Z -> ??0CTCFish@@QAE@AAVCThing@@@Z	007dfb20	004d5c47	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCForcePushPower@@QAE@PAVCThing@@@Z -> ??0CTCForcePushPower@@QAE@AAVCThing@@@Z	007a54a0	004d4d1b	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCForcePushed@@QAE@PAVCThing@@@Z -> ??0CTCForcePushed@@QAE@AAVCThing@@@Z	00798570	004d4b12	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCGhostSword@@QAE@PAVCThing@@@Z -> ??0CTCGhostSword@@QAE@AAVCThing@@@Z	007c5560	004d5660	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCHealLife@@QAE@PAVCThing@@@Z -> ??0CTCHealLife@@QAE@AAVCThing@@@Z	007c4bd0	004d5630	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCInventoryItem@@QAE@PAVCThing@@@Z -> ??0CTCInventoryItem@@QAE@AAVCThing@@@Z	004daea9	004dc5c7	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCRandomAppearanceMorph@@QAE@PAVCThing@@@Z -> ??0CTCRandomAppearanceMorph@@QAE@AAVCThing@@@Z	00728000	004d2a44	witness now binds the PDB spelling; no line for it yet
+replace	??0CTCSummonSpell@@QAE@PAVCThing@@@Z -> ??0CTCSummonSpell@@QAE@AAVCThing@@@Z	0079a6e0	004d4bde	witness now binds the PDB spelling; no line for it yet
+replace	?SetBoastAsCompleted_004af8f0@CQuestManager@@QAEXJVCCharString@@@Z -> ?SetBoastAsCompleted@CQuestManager@@QAEXJVCCharString@@@Z	004af8f0	008915e0	witness now binds the PDB spelling; no line for it yet
+replace	?Reset_007a7000@CTCBattleCharge@@QAEXXZ -> ?UpdateDirectionOverride@CTCBattleCharge@@AAEXXZ	007a7000	007a7370	witness now binds the PDB spelling; no line for it yet
+replace	?SetBoastAsCompleted@CQuestManager@@QAEXJVCCharString@@@Z -> ?SetBoastAsFailed@CQuestManager@@QAEXJVCCharString@@@Z	004af880	008915b0	companion of entry 99: 0x004AF880 is CQuestManager::SetBoastAsFailed (its self DEFs ?SetBoastAsFailed@CQuestManager@@QAEXJVCCharString@@@Z, both PDB name sets); the binder 0x008915B0 (CGameScriptInterface::SetBoastAsFailed) called it under the SetBoastAsCompleted spelling, which after entry 99 would be a RELOC_CONFLICT (one spelling, two targets); no line for the new spelling yet

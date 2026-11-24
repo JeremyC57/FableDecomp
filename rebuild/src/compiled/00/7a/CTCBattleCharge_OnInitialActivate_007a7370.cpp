@@ -33,7 +33,7 @@ public:
 class CTCBattleCharge : public CTCBase {
 public:
     virtual void OnInitialActivate();
-    void Reset_007a7000();                               // 0x007A7000
+    private: void UpdateDirectionOverride(); public:     // 0x007A7000 (Ego_r + FableWin ?UpdateDirectionOverride@CTCBattleCharge@@AAEXXZ)
 };
 
 void CTCBattleCharge::OnInitialActivate()
@@ -45,5 +45,5 @@ void CTCBattleCharge::OnInitialActivate()
     if (!thing->IsDead() && thing->GetType() == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(true, (void*)false);
     else
-        Reset_007a7000();
+        UpdateDirectionOverride();
 }

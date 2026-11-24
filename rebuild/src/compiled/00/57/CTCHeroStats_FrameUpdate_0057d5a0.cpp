@@ -126,7 +126,7 @@ class CTCInventoryWeapons { public:                         // interface 0x13
 
 class CTCObjectAugmentations { public:                      // interface 0xBF
     long GetHealthToAddThisFrame() const;                  // 0x00766260
-    long GetStaminaToAddThisFrame();                 // 0x00766330
+    long GetStaminaToAddThisFrame() const;                 // 0x00766330
 };
 
 struct CStaminaRefillBlocker {                       // interface 0xA7

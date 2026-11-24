@@ -1,4 +1,5 @@
 // CTCInventoryItem::GetStartingRightHandedSet() -- the item def's starting orientation as a right-handed set
+// Leaf: ?GetStartingRightHandedSet@CTCInventoryItem@@QBE?AVCRightHandedSet@@XZ
 // Retail 0x005D92F0, 45 bytes (+3 int3), ret 4 (hidden CRightHandedSet result). Callers:
 // CTCHeroReceiveItems::GlobalUpdate (0x007CB2D9, 0x007CB3F6).
 // Shape: PDef (CDefPointer<const CInventoryItemDef>, +0x0C) is copied into a local -- inline add-ref
@@ -44,12 +45,12 @@ class CTCBase { public:
 class CTCInventoryItem : public CTCBase { public:
     CInventoryItemDefPointer PDef;                 // +0x0C
     CTCInventoryBase* PInventory;                  // +0x10
-    CRightHandedSet GetStartingRightHandedSet();
+    CRightHandedSet GetStartingRightHandedSet() const;
 private:
     static CRightHandedSet __fastcall GetRHSetFromOrientation(EInventoryObjectOrientation orientation);   // 0x005D8EF0 (Ego_r CI; naming wave 17, was a free __fastcall stand-in)
 };
 
-CRightHandedSet CTCInventoryItem::GetStartingRightHandedSet()
+CRightHandedSet CTCInventoryItem::GetStartingRightHandedSet() const
 {
     CInventoryItemDefPointer def(PDef);
     return GetRHSetFromOrientation((EInventoryObjectOrientation)def->Orientation);

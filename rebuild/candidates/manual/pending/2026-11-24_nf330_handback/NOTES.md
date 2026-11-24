@@ -122,3 +122,34 @@ HEAD entry is left out (head/HEAD_FROM_REPO.txt, NF329 D-f form); the new source
 - After the container restart the first Wine cl started the prefix services holding probe p1's capture pipe (cl.exe zombie); I killed those six service
   PIDs (spawned by my own cl, same start time) and warmed Wine with a detached run (LESSONS.md).
 - Slip: one command contained `sleep 0` (no wait in effect, but against the no-sleep rule); no other sleep or foreground wait.
+
+## Coordinator check after hand-back (2026-11-24): the Strafe base vftables (b6 / D1)
+- Tool tools/vprobe_base.py (vprobe2 without a _VIRTUAL_MODEL switch; ??_7 through the implicit copy ctor). Full log: evidence/probe_strafe_bases.log;
+  8 lines appended to evidence/probe_summary.tsv (none counted in the earlier "53 OK").
+- Definer 0x006F5C10's own macro set + _RTTI_DECLS: CCombatActionBase resolves to the SHORT model; the base emits 71 slots v retail 81, slot 12
+  Initialise SAME, IsToFaceTarget emitted at slot 70 (retail 73). The block is correct only on the full CCombatActionBase branch (FABLE_RETAIL_KRAKEN_ROAR /
+  LEADER_INITIALISE / BRIAR_ROSE / JACK_STAGE1_UPDATE). 0x006F5C10 does not define _RTTI_DECLS, so it is unaffected; the handed-back block has no Needs line.
+- b6 macro set + _RTTI_DECLS (scratch-TU `class CSoundPair; class CAnimationEntry;`, as the b6 derived headers supply): 81 v 81; slots 12 and 73 SAME at
+  0x008BEE60 / 0x008BFF70 (Forward) and 0x008BEEA0 / 0x008BFF80 (Backward); slot 11 Clone DIFF on both (undeclared override 0x008C0270 / 0x008C02A0);
+  Backward slot 0 the ??_E / ??_G alias. Negative (no _RTTI_DECLS): slots 11, 12, 73 DIFF. So the base's own ??_7 is NOT slot for slot; the b6 header
+  comment "the emitted vftable matches retail slot for slot (NF330 probe)" meant the derived probe and is wrong for the base.
+- Alt (alt_clone/, decision D1b): + `virtual CCreatureActionBase* Clone() const;` (RTTI label + both PDB sets), corrected comment + Needs note: base 81/81
+  (Forward), 80/81 + slot-0 alias (Backward); derived BanditKing probes unchanged; hdrcheck SAME. b6 rows not regraded against it, equiv not rerun.
+- Landed rows at the declared slots: slot 73 0x008BFF70 / 0x008BFF80 are STAND-INS (`bool __fastcall CCreatureAction_Strafe*_IsToFaceTarget()`, flat free
+  functions; nf324 T3 lines 3576 / 3577; not my ENTRIES, untouched). Slot 12 0x008BEE60 / 0x008BEEA0 carry the PDB spelling (?Initialise@..@@UAEXXZ, read
+  from source) on a row-local class model (shared-header rule, not a name issue). Slot 11 (undeclared) 0x008C0270 / 0x008C02A0 Clone rows are bound
+  non-virtual, non-const, returning CCombatActionBase* (stand-in spelling of ?Clone@..@@UBEPAVCCreatureActionBase@@XZ; not in T3_PORT_QUEUE).
+
+## b6 rebuilt on D1b (coordinator, after b1-b5 landed)
+- Locks re-claimed for 0x00906C00 / 0x00906C40 (lockall: 2 OK). Workspace b6v2/: tree = a fresh copy of the CURRENT rebuild/include (b1-b5 headers
+  landed) + only the four b6 headers (treesync: 0 synced, 0 stray, 0 stale); tools are my tools with the folder path retargeted to b6v2/.
+- Final Strafe headers: the repo header + the _RTTI_DECLS block (Clone slot 11, Initialise 12, IsToFaceTarget 73), a `// Needs` line (BASE_OBJECT,
+  DEF_CLASS_BASE, CCREATUREACTIONBASE and the full CCombatActionBase branch: KRAKEN_ROAR / LEADER_INITIALISE / BRIAR_ROSE / JACK_STAGE1_UPDATE), the
+  probe claim naming the base's own ??_7; pin_asserts pinned 1 each (BanditKing headers: 0 new pins, unchanged from the first b6).
+- Rows: gen (2 GEN, precheck PASS PASS PASS; sources identical to gen5) and grade run_b6v2 (HEAD and new at one work path): both ACCEPT, objcheck equal
+  + exactly /DEFAULTLIB:"libcp" (NF318 Q1), MATCH, landed test PASS, graded symbol = PDB symbol. Link: 0 LNK2005, unresolved sets equal (0).
+- Probes on the final tree: StrafeForward base 81/81; StrafeBackward base 80/81 + slot-0 alias; BanditKing derived slot lines identical to the first b6.
+- equiv_check over the include closure (6 headers; 1 landed row, 0x006F5C10): 0 lines. Planted control: 1 line (0x006F5C10 src), carrying both
+  Strafe tokens; the BanditKing headers have no landed includer. hdrcheck SAME x4; hdrcheck2 default=same x4, only the two _VIRTUAL_MODEL macros DIFF.
+- batches/b6 rewritten (the first b6 is in superseded/b6_v1; the two first-cut Strafe headers in superseded/hdr_v1). Byte scan 0 hits (743 files).
+- Slip: one read-only `git log -1` in a command (against the no-git rule); nothing else ran git.
