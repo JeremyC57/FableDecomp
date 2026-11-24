@@ -1,0 +1,4 @@
+- Wine VC7.1 cl/wineserver abort with "free(): invalid pointer" (rc -6/-11, SRC_FAIL with no text) when TMPDIR is set: unset TMPDIR TMP.
+- c2 compiles inline callees bottom-up and the caller inherits the callee's own-pipe body; a callee's IL size (trace `sz`) is spelling-insensitive.
+- A device that changes an inline callee's own pipe (inline_depth(0) on its definition) also changes the TU's pick-any COMDAT of it: check it against the owner address (0x00E241B0 here) before trusting the device.
+- The c2 inline trace (agent3009 inl tool, copied to $W/inl/run.sh) runs in seconds on a one-statement TU and ~6 min on a 14 KB Main.

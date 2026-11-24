@@ -1,0 +1,9 @@
+03:41 00d09010 grade v0.cpp DIFFER(5672v5864) hunks=17 /d2inlS15 -- baseline draft /d2inlS15
+03:41 00d09010 grade v0.cpp DIFFER(5672v5864) hunks=17 /d2inlS15 -- baseline full hunks
+03:42 00d09010 grade v1.cpp DIFFER(6016v5864) hunks=147 /d2inlS15 -- plain inline ~CTimer, /d2inlS15
+03:42 00d09010 grade v1.cpp DIFFER(5944v5864) hunks=231 -- plain inline ~CTimer, stock flags
+03:43 00d09010 grade v1.cpp DIFFER(5944v5864) hunks=231 -- natural inline ~CTimer stock (regrade for survey)
+03:43 00d09010 grade v2.cpp DIFFER(5800v5864) hunks=239 -- natural ~CTimer + v2 no movie/widescreen forceinline ctors / v3 plain CTimer accessors / v4 both
+03:43 00d09010 grade v3.cpp DIFFER(5928v5864) hunks=232 -- natural ~CTimer + v2 no movie/widescreen forceinline ctors / v3 plain CTimer accessors / v4 both
+03:44 00d09010 grade v4.cpp DIFFER(5768v5864) hunks=239 -- natural ~CTimer + v2 no movie/widescreen forceinline ctors / v3 plain CTimer accessors / v4 both
+probe 1 inline trace base/v1 -> natural ~CTimer expands exactly at retail's two hot exit groups

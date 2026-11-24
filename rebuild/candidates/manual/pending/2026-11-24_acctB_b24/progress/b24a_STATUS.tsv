@@ -1,0 +1,7 @@
+address	name	grade	grades_used	note
+00e20600	NScript::CQR_EscortTraderScript::CTraderToEscort::Main	DIFFER(14526v14510)	~45 grades + 7 probes	escalated: ESCALATE.md (inherit-own-pipe vs pick-any 0x00E241B0)
+00d09010	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main	DIFFER(5672v5864)	11 grades + 1 probe	in progress: plain inline ~CTimer (stock) gives retail exit shape; MovieBase dtor too costly (sz 25) -> see NOTES
+00e93eb0	NScript::CV_HauntedHouseScript::Main	untouched	0	
+00d01630	NScript::CQ_BanditCampScript::CGate1GuardOuter::Main	untouched	0	same hot-timer-exit residue as 00d09010
+00975bb0	CAIStateGroup_JackOfBladesStage1::Update	untouched	0	
+00d11930	NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::Main	untouched	0	
