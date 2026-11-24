@@ -178,7 +178,9 @@ def block_end(t, i):
 for r in rows:
     if r[2] != "T2" or r[3] != "access": continue
     a, good, old = r[0], r[6], r[7]
-    alias = r[8] if len(r) > 8 else ""
+    # the alias class is column 8 only of the 9-column rows the --wide route builds; OPEN.tsv rows (13 columns) have `landed` there,
+    # which read as an alias made every OPEN.tsv row skip (NF370, 2026-11-24)
+    alias = r[8] if len(r) == 9 else ""
     if only and a not in only: continue
     if len(new) >= mx: break
     if selfsym.get(a) and selfsym[a] != old and "--wide" not in argv and not BINDERS: res.append((a, "SKIP", old, good, "the measured self symbol is " + selfsym[a])); continue
