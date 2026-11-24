@@ -1,0 +1,2 @@
+005be028 rename check: ?IsAugmentation_005d9830@@YI_NJ@Z=?IsExpression@CTCInventoryItem@@SI_NJ@Z
+OK (expected ENTRIES stand-in -> pdb_spelling)

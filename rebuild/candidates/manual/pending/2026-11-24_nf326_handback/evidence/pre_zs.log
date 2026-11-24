@@ -1,0 +1,72 @@
+01:42:18 ZS_PASS ZS_00d19bd0 src /home/user/FableDecomp/rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage1_Main_00d19bd0.cpp /O2 /Oy /W3 /d2inlS15
+01:42:21 ZS_PASS ZS_00e1e960 src /home/user/FableDecomp/rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCMBanditTrigger_Main_00e1e960.cpp /O2 /Oy /W3
+01:42:22 ZS_PASS ZS_00d1a740 src /home/user/FableDecomp/rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage2_Main_00d1a740.cpp /O2 /Oy /W3 /d2inlS15
+01:42:26 ZS_PASS ZS_00d2d930 src /home/user/FableDecomp/rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930.cpp /O2 /Oy /W3 /d2inlS15
+01:42:29 ZS_PASS ZS_00e7c8e0 src /home/user/FableDecomp/rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFisherman_Main_00e7c8e0.cpp /O2 /Oy /W3
+01:42:29 ZS_PASS ZS_00d73970 src /home/user/FableDecomp/rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointCond_Main_00d73970.cpp /O2 /Oy /W3
+01:42:34 ZS_PASS ZS_00d75060 src /home/user/FableDecomp/rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_FinalRound_00d75060.cpp /O2 /Oy /W3
+01:42:35 ZS_PASS ZS_00ed5f50 src /home/user/FableDecomp/rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Main_00ed5f50.cpp /O2 /Oy /W3
+01:42:38 ZS_PASS ZS_00ee1500 src /home/user/FableDecomp/rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_Main_00ee1500.cpp /O2 /Oy /W3
+01:42:40 ZS_PASS ZS_00dca6d0 src /home/user/FableDecomp/rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Main_00dca6d0.cpp /O2 /Oy /W3
+01:42:41 ZS_PASS ZS_00f04cc0 src /home/user/FableDecomp/rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_Main_00f04cc0.cpp /O2 /Oy /W3
+01:42:44 ZS_PASS ZS_00e0d210 src /home/user/FableDecomp/rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingBoss_Main_00e0d210.cpp /O2 /Oy /W3
+01:42:45 ZS_PASS ZS_00f0d630 src /home/user/FableDecomp/rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_Main_00f0d630.cpp /O2 /Oy /W3
+01:42:49 ZS_PASS ZS_00f0fb70 src /home/user/FableDecomp/rebuild/src/compiled/00/f0/NScriptCQArenaScript_Main_00f0fb70.cpp /O2 /Oy /W3
+01:52:02 ZS_PASS ZSN_00d2d930 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00d2d930.cpp /O2 /Oy /W3 /d2inlS15
+01:52:04 ZS_PASS ZSN_00d73970 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00d73970.cpp /O2 /Oy /W3
+01:52:07 ZS_PASS ZSN_00e1e960 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00e1e960.cpp /O2 /Oy /W3
+01:52:08 ZS_PASS ZSN_00ed5f50 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00ed5f50.cpp /O2 /Oy /W3
+01:52:10 ZS_PASS ZSN_00ee1500 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00ee1500.cpp /O2 /Oy /W3
+01:52:13 ZS_PASS ZSN_00f04cc0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00f04cc0.cpp /O2 /Oy /W3
+01:54:43 ZS_PASS ZST_00d1fd30 test /home/user/FableDecomp/rebuild/tests/00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Main_00d1fd30_test.cpp /Od /W3
+01:54:45 ZS_PASS ZST_00d2d930 test /home/user/FableDecomp/rebuild/tests/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930_test.cpp /Od /W3
+01:54:49 ZS_PASS ZST_00d368d0 test /home/user/FableDecomp/rebuild/tests/00/d3/NScriptCQFireHeartScriptCFHGuildMaster_Main_00d368d0_test.cpp /Od /W3
+01:54:52 ZS_PASS ZST_00d38000 test /home/user/FableDecomp/rebuild/tests/00/d3/CPuzzleBlockMoon_TurnIntoASunSign_00d38000_test.cpp /Od /W3
+01:54:55 ZS_PASS ZST_00d706e0 test /home/user/FableDecomp/rebuild/tests/00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Main_00d706e0_test.cpp /Od /W3
+01:54:59 ZS_PASS ZST_00da8970 test /home/user/FableDecomp/rebuild/tests/00/da/NScriptCQMinionClifftopChaseScript_GuardComment_00da8970_test.cpp /Od /W3
+01:55:02 ZS_PASS ZST_00dd9520 test /home/user/FableDecomp/rebuild/tests/00/dd/NScriptCQPrisonEscapeRescueMotherScript_SplittingUpCutscene_00dd9520_test.cpp /Od /W3
+01:55:04 ZS_PASS ZST_00de3f90 test /home/user/FableDecomp/rebuild/tests/00/de/NScriptCQRansomVictimScript_MakeNPCComment_00de3f90_test.cpp /Od /W3
+01:55:07 ZS_PASS ZST_00e0de90 test /home/user/FableDecomp/rebuild/tests/00/e0/CUndeadRisingZombieAttacker_OnPredicateFail_00e0de90_test.cpp /Od /W3
+01:55:10 ZS_PASS ZST_00ed5f50 test /home/user/FableDecomp/rebuild/tests/00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Main_00ed5f50_test.cpp /Od /W3
+01:55:13 ZS_PASS ZST_00ed94d0 test /home/user/FableDecomp/rebuild/tests/00/ed/NScriptCVTalentlessBardScript_WatchForResetWanderCentre_00ed94d0_test.cpp /Od /W3
+01:55:15 ZS_PASS ZST_00ee1500 test /home/user/FableDecomp/rebuild/tests/00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_Main_00ee1500_test.cpp /Od /W3
+01:55:18 ZS_PASS ZST_00ee2a80 test /home/user/FableDecomp/rebuild/tests/00/ee/NScriptCVTravellingHeroesScript_DoConversation_00ee2a80_test.cpp /Od /W3
+01:55:21 ZS_PASS ZST_00ee6850 test /home/user/FableDecomp/rebuild/tests/00/ee/NScriptCVTourGuideScript_MoveToNextWaypoint_00ee6850_test.cpp /Od /W3
+01:55:23 ZS_PASS ZST_00f04cc0 test /home/user/FableDecomp/rebuild/tests/00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_Main_00f04cc0_test.cpp /Od /W3
+01:57:24 ZS_PASS ZSN_00d2d930 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00d2d930.cpp /O2 /Oy /W3 /d2inlS15
+01:57:29 ZS_PASS ZSN_00e1e960 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00e1e960.cpp /O2 /Oy /W3
+01:57:33 ZS_PASS ZSN_00ed5f50 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00ed5f50.cpp /O2 /Oy /W3
+01:57:37 ZS_PASS ZSN_00ee1500 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00ee1500.cpp /O2 /Oy /W3
+01:57:40 ZS_PASS ZSN_00f04cc0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00f04cc0.cpp /O2 /Oy /W3
+02:10:33 ZS_PASS ZS_00d15510 src /home/user/FableDecomp/rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Main_00d15510.cpp /O2 /Oy /W3
+02:10:34 ZS_PASS ZS_00d15a40 src /home/user/FableDecomp/rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_Main_00d15a40.cpp /O2 /Oy /W3
+02:10:35 ZS_PASS ZS_00d73c70 src /home/user/FableDecomp/rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointBackup_Main_00d73c70.cpp /O2 /Oy /W3
+02:10:36 ZS_PASS ZS_00da4e30 src /home/user/FableDecomp/rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrier_Main_00da4e30.cpp /O2 /Oy /W3
+02:10:37 ZS_PASS ZS_00da63f0 src /home/user/FableDecomp/rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMGuard_Main_00da63f0.cpp /O2 /Oy /W3
+02:10:38 ZS_PASS ZS_00daa260 src /home/user/FableDecomp/rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Main_00daa260.cpp /O2 /Oy /W3
+02:10:39 ZS_PASS ZS_00daa700 src /home/user/FableDecomp/rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionTrollSummoner_Main_00daa700.cpp /O2 /Oy /W3
+02:10:40 ZS_PASS ZS_00def3b0 src /home/user/FableDecomp/rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPScreamerTrigger_Main_00def3b0.cpp /O2 /Oy /W3
+02:10:41 ZS_PASS ZS_00e49980 src /home/user/FableDecomp/rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBlockingBandit_Main_00e49980.cpp /O2 /Oy /W3
+02:10:42 ZS_PASS ZS_00e5e0c0 src /home/user/FableDecomp/rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCMBodyGuardRespawn_Main_00e5e0c0.cpp /O2 /Oy /W3
+02:10:43 ZS_PASS ZS_00ec42f0 src /home/user/FableDecomp/rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_Main_00ec42f0.cpp /O2 /Oy /W3
+02:10:44 ZS_PASS ZS_00f045e0 src /home/user/FableDecomp/rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATSentry_Main_00f045e0.cpp /O2 /Oy /W3
+02:10:45 ZS_PASS ZS_00f051d0 src /home/user/FableDecomp/rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_Main_00f051d0.cpp /O2 /Oy /W3
+02:14:19 ZS_PASS ZSN_00d15510 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00d15510.cpp /O2 /Oy /W3
+02:14:20 ZS_PASS ZSN_00d15a40 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00d15a40.cpp /O2 /Oy /W3
+02:14:21 ZS_PASS ZSN_00d73c70 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00d73c70.cpp /O2 /Oy /W3
+02:14:22 ZS_PASS ZSN_00da4e30 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00da4e30.cpp /O2 /Oy /W3
+02:14:22 ZS_PASS ZSN_00da63f0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00da63f0.cpp /O2 /Oy /W3
+02:14:23 ZS_PASS ZSN_00daa260 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00daa260.cpp /O2 /Oy /W3
+02:14:24 ZS_PASS ZSN_00daa700 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00daa700.cpp /O2 /Oy /W3
+02:14:25 ZS_PASS ZSN_00def3b0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00def3b0.cpp /O2 /Oy /W3
+02:14:26 ZS_PASS ZSN_00e49980 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00e49980.cpp /O2 /Oy /W3
+02:14:26 ZS_PASS ZSN_00e5e0c0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00e5e0c0.cpp /O2 /Oy /W3
+02:14:28 ZS_PASS ZSN_00ec42f0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00ec42f0.cpp /O2 /Oy /W3
+02:14:29 ZS_PASS ZSN_00f045e0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00f045e0.cpp /O2 /Oy /W3
+02:14:30 ZS_PASS ZSN_00f051d0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00f051d0.cpp /O2 /Oy /W3
+02:14:38 ZS_PASS ZST_00f045e0 test /home/user/FableDecomp/rebuild/tests/00/f0/NScriptCQAmbushTradersScriptCATSentry_Main_00f045e0_test.cpp /Od /W3
+02:14:39 ZS_PASS ZST_00f051d0 test /home/user/FableDecomp/rebuild/tests/00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_Main_00f051d0_test.cpp /Od /W3
+02:20:12 ZS_PASS RZSN_00d73970 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00d73970.cpp /O2 /Oy /W3
+02:20:12 ZS_PASS RZSH_00d73970 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/orig/00d73970.cpp /O2 /Oy /W3
+02:20:12 ZS_PASS RZSN_00f04cc0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/rows/00f04cc0.cpp /O2 /Oy /W3
+02:20:13 ZS_PASS RZSH_00f04cc0 src /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF326/orig/00f04cc0.cpp /O2 /Oy /W3

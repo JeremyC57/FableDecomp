@@ -1,0 +1,16 @@
+##### 006ebdd0 renames: ?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@J@Z=?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 0092b3e0 renames: ?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@J@Z=?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
+sections head 15 new 15
+ALL_EQ text_sections_equal=8
+tables H=1 N=1
+##### 006ed510 renames: ?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@J@Z=?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
+sections head 57 new 57
+ALL_EQ text_sections_equal=49
+tables H=1 N=1
+##### 006ebee0 renames: ?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z=?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

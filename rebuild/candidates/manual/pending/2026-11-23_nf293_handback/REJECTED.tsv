@@ -1,0 +1,6 @@
+idx	address	class	reason
+8	0x0099E5F0	CCharString	T3: the only wrong binder 0x00AE8810 models SaveToFile(const CCharString& filename) and passes a CCharString; both PDBs have only SaveToFile(CAFile&) const: the call needs the real CAFile argument (the file object the original built), not a respell
+16	0x006E8C30	CCombatManager	T3 (sigdiff STANDIN): binder 0x006ED270 passes the stand-in UCAttackPatternPointer (PDB CDefPointer<const CAttackPatternDef> by value)
+17	0x006E9360	CCombatManager	T3: 0x00663B10 passes `const CThing&` where the PDB takes `const CThingCreatureBase&` (base for derived: a cast); 0x008E7040 / 0x008D8EA0 model a non-const pointer-returning GetCombatantInfo(const CThingCreatureBase*); the PDB const& result would need 0x008E7040's local `CAttackerIterator` retyped to a const iterator (a port of its local map model)
+22	0x009ED190	CConsole	T3: binder 0x004175E5 models Initialise(long width, long height, void* font); the PDB is (char, EInputKey, const CFontBank*): an enum and a class pointer the row's model lacks (the binder passes literals for the enum)
+26	0x008BB6F0	CCreatureAction_CastPhysicalShieldSpell	T3 (sigdiff STANDIN): binder 0x009092C0 passes the stand-in CRetailString (PDB CCharString)

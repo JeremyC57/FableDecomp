@@ -1,5 +1,5 @@
 // CTCAssassinRush::CreateTrailingEffect() -- start the rush's effects from the special-effects sub-def: the startup trail (scaled by the spell level over the ability's maximum) and the displacement trail, both attached to the rusher and kept updating, then fade in the radial blur centred above the rusher
-// Leaf: CreateTrailingEffect
+// Leaf: ?CreateTrailingEffect@CTCAssassinRush@@AAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail 0x007A9FE0, 912 bytes, `ret`. Callees: CDefClassBase::GetSubDef 0x00669580, CCharString 0x0099EBF0 / dtor
@@ -145,7 +145,9 @@ class CTCAssassinRush : public CTCBase { public:
     long                     SpellLevel;                // +0x8c
     unsigned char            _pad90[0x98 - 0x90];
     void*                    RadialBlurFadeKey;         // +0x98
+    private:
     void CreateTrailingEffect();
+    public:
 };
 
 void CTCAssassinRush::CreateTrailingEffect()

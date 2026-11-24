@@ -1,0 +1,1 @@
+00a66ad0 LIBCP_OK renames=?GetKeyName@CKeyboard_Methods@@QAE_NHH@Z=?GetKeyName@CKeyboard@@UBE_NW4EInputKey@@AAVCWideString@@@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

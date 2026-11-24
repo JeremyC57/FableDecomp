@@ -18,7 +18,7 @@ class CEnginePrimitiveManager { public:
  virtual ~CEnginePrimitiveManager();
  CEngineSceneArray* SceneList;bool Enable;
  CEnginePrimitiveManager(CEngineSceneArray*); //00bacdb0
- void RegisterEnable(const CCharString&); //00bacd80, retail no-op
+ void AddEnableConsoleVariable(const CCharString&); //00bacd80, retail no-op
 };
 class CEnginePrimitiveManagerLines : public CEnginePrimitiveManager { public:
  CVertexShader VertexShader;
@@ -26,6 +26,6 @@ class CEnginePrimitiveManagerLines : public CEnginePrimitiveManager { public:
 };
 CEnginePrimitiveManagerLines::CEnginePrimitiveManagerLines(CEngineSceneArray* scenes):CEnginePrimitiveManager(scenes),VertexShader()
 {
- { CCharString name("EnableLines",-1); RegisterEnable(name); }
+ { CCharString name("EnableLines",-1); AddEnableConsoleVariable(name); }
  VertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)13)->GetVertexShader("VSHADER_TRANSFORM_COL_TEX0");
 }

@@ -76,7 +76,7 @@ class CDeviceResetCallback { public: virtual void OnDeviceReset(); };
 class CSystemManager;
 class CDisplayManager { public:                       // 0x2c8 bytes
     unsigned char _body[0x2c8];
-    CDisplayManager(CSystemManager* owner);        // 0x009C0880
+    CDisplayManager(CSystemManager& owner);        // 0x009C0880 (Ego_r + FableWin AAV)
     void AddDeviceResetCallback(CDeviceResetCallback* callback);   // 0x009C0190
     bool Init(const CDisplayManagerInit& init, bool exclusive);    // 0x009C0E50
 };
@@ -114,9 +114,12 @@ struct CPProfile : CCountedPointer<CProfileManager> { void Reset(CProfileManager
 class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                    // +0x04
-    bool Initialise();                             // 0x0099A350
+    protected:
+    bool Initialise();
+    public:
+                             // 0x0099A350
 };
-class CScratchBuffer : public CInitBaseClass { public: void Initialise(long size); };   // 0x009F4910
+class CScratchBuffer : public CInitBaseClass { public: bool Initialise(long size); };   // 0x009F4910
 struct _RTL_CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 extern "C" __declspec(dllimport) void* __stdcall ConvertThreadToFiber(void* parameter);              // [0x0143FD68]
 extern "C" __declspec(dllimport) long __stdcall CoInitialize(void* reserved);                        // [0x01440644]
@@ -175,7 +178,10 @@ class CSystemManager : public CInitBaseClass { public:
     TErrorFunc ErrorFunc;                               // +0x174
     void* IMEMessageFunc;                               // +0x178
     void* MessageFilter;                                // +0x17c
-    void InitGUIDFromName(const char* name);            // 0x009A52F0
+    private:
+    void InitGUIDFromName(const char* name);
+    public:
+            // 0x009A52F0
     bool InitWindow(long width, long height);           // 0x009A64B0
     void Uninitialise();                                // 0x009A60D0
     void InitSystemColours();                           // 0x009A5490
@@ -238,7 +244,7 @@ long CSystemManager::Initialise(const CSystemManagerInit& init)
             CDisplayManagerInit displayInit(init.DisplayManagerInit);
             displayInit.WindowHandle = ApplicationWinHandle;
             displayInit.SkipConfigDetection = init.SkipConfigDetection;
-            PDisplayManager.Reset(new CDisplayManager(this));
+            PDisplayManager.Reset(new CDisplayManager(*this));
             PDisplayManager.Data->Init(displayInit, ExclusiveMode);
         }
         if (init.Flags & 1)

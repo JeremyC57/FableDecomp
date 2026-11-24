@@ -2,7 +2,7 @@
 // Leaf: ?ProcessInput@CInputProcessInventoryQuestsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068BC70, 2481 bytes, `ret 8`; vtable 0x0123782C slot 4 (.?AVCInputProcessInventoryQuestsScreen@@).
-// Names: 0x00687B30 / 0x00687BD0 keep the landed spellings IsEventButtonReleased / IsEventButtonHeld (one symbol, one address); chunk 829 evidence says they are swapped (queued land0711e).
+// Names: 0x00687B30 IsEventButtonHeld / 0x00687BD0 IsEventButtonReleased (EInputEvent codes + both PDBs; the swap chunk 829 queued as land0711e, applied 2026-11-22).
 // GS note: /GS -- the CGameEvent's 32-byte data array gives the cookie frame (as the landed siblings 0x0068B7C0 / 0x0068AE30).
 #include "fable_compiler.h"
 class CPlayer;
@@ -178,8 +178,8 @@ public:
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
 protected:
     bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event) const;                 // 0x00687B30
-    bool IsEventButtonHeld(const CInputEvent& event) const;             // 0x00687BD0
+    bool IsEventButtonHeld(const CInputEvent& event) const;                 // 0x00687B30
+    bool IsEventButtonReleased(const CInputEvent& event) const;             // 0x00687BD0
 public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;   // 0x00687CF0
     C2DVector GetMouseMovement(const CInputEvent& event) const { return event.MouseMovement; }
@@ -301,7 +301,7 @@ void CInputProcessInventoryQuestsScreen::ProcessInput(const CInputEvent& event, 
                 NUISystem::CManager::GetInstance()->SetEvent((NUISystem::EEvent)7);
                 processed.SetAsPerformedEvent();
             }
-        } else if (IsEventButtonReleased(event)) {
+        } else if (IsEventButtonHeld(event)) {
             if (IsEventGameAction((EGameAction)0x19, event)) {
                 NUISystem::CManager::GetInstance()->SetEvent((NUISystem::EEvent)0x1f);
                 processed.SetAsPerformedEvent();
@@ -347,7 +347,7 @@ void CInputProcessInventoryQuestsScreen::ProcessInput(const CInputEvent& event, 
                     map->PanMap(C2DVector(1.0f, 0.0f));
                 processed.SetAsPerformedEvent();
             }
-        } else if (IsEventButtonHeld(event)) {
+        } else if (IsEventButtonReleased(event)) {
             if (IsEventGameAction((EGameAction)0x19, event)) {
                 NUISystem::CManager::GetInstance()->SetEvent((NUISystem::EEvent)0x1c);
                 processed.SetAsPerformedEvent();
@@ -370,7 +370,7 @@ void CInputProcessInventoryQuestsScreen::ProcessInput(const CInputEvent& event, 
             processed.SetAsPerformedEvent();
         }
     } else {
-        if (IsEventButtonHeld(event)) {
+        if (IsEventButtonReleased(event)) {
             if (IsEventGameAction((EGameAction)0x23, event)) {
                 GetPInventory()->ProcessButtonAReleased();
                 processed.SetAsPerformedEvent();

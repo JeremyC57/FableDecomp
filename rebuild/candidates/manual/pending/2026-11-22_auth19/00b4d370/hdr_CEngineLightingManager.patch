@@ -1,0 +1,13 @@
+--- a/rebuild/include/engine/CEngineLightingManager.h
++++ b/rebuild/include/engine/CEngineLightingManager.h
+@@ -112,6 +112,10 @@
+ #endif
+ class CEngineLightingManager : public CEnginePrimitiveManager, public CEngineComponent {
+ public:
++#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_PEEKDIFFUSEVECTOR
++    // Retail opt-in (row 0x00B4D370): FableWin.pdb ?PeekDiffuseVector@CEngineLightingManager@@QBEABVC3DVector@@XZ (0x02D767C0), inline in retail.
++    const C3DVector& PeekDiffuseVector() const { return DiffuseVector; }
++#endif
+ #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_CALCSWLIGHTINGNOCLIP
+     // egod opt-in (e08, row 0x00B45CF0): Ego_r.pdb / FableWin.pdb
+     // ?CalcSWLightingNoClip@CEngineLightingManager@@QAEXABVC3DVector@@0ABVCEngineLocalLightArray@@AAVCRGBFloatColour@@@Z (Ego_d parameter

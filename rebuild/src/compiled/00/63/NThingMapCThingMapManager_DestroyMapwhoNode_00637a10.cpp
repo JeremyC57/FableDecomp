@@ -15,7 +15,7 @@
 #undef CThingMapManager
 class CThing {
 public:
-    bool IsMapwhoExempt() const;                // 0x004C7E30
+    bool IsLocal() const;                // 0x004C7E30 ?IsLocal@CThing@@QBE_NXZ (Ego_r + FableWin publics; Codex p27 NAME_FIXES line 45, caller 0x00637FC0); NF236: was the descriptive IsMapwhoExempt
 };
 class CTCMapwho;
 struct CThingMapCell;
@@ -45,7 +45,7 @@ class CThingMapManager : public CThingMapManagerDonor {
 
 void CThingMapManager::DestroyMapwhoNode(CTCMapwho* mapwho)
 {
-    if (mapwho->ParentThing->IsMapwhoExempt())
+    if (mapwho->ParentThing->IsLocal())
         return;
     if (mapwho->TLNode.PCell)
         RemoveMapwhoNodeFromCell(mapwho->TLNode.PCell, &mapwho->TLNode);

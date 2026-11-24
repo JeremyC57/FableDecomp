@@ -12,6 +12,10 @@ class CTCShotDefinitionMultiArrow : public CTCShotDefinitionBase {
 public: CTCShotDefinitionMultiArrow(CThing&); virtual ~CTCShotDefinitionMultiArrow();
 #endif
 protected:
+#ifdef FABLE_RETAIL_SHOT_UPDATEMOVEMENT_PASS26
+    // Both original PDBs protected virtual MAE; native caller's virtual slot.
+    virtual void UpdateMovement();
+#endif
     virtual void InitMovement();                                         // 0x007BCF7F
 private:
     C3DVector Acceleration;                                              // +0x9c

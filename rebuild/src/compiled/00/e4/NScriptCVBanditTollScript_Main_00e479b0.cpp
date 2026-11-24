@@ -12,11 +12,8 @@
 #include "engine/CEntityScriptBinding.h"
 
 #include "engine/CSpawnedFunc.h"
-inline const C3DVector& CScriptThing::GetPos() const
-{
-    if (!PImp.Data) return NullCoord;
-    return PImp.Data->GetPos();
-}
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
 
 void NScript::CV_BanditTollScript::Main()
 {

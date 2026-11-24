@@ -1,0 +1,16 @@
+## A: new non-fold objects (0x00BEAA00 0x00BF4220 0x00BFDD40 0x00BF38F0 0x00BEAAA0) + HEAD 0x00BEB490
+duplicates 0
+
+MAP 0001:00000480 ??_GCWaterPatchMesh@@UAEPAXI@Z 10001480 f i 00beaaa0.obj
+## B: A + the fold row 0x00BEB4D0 (the dtor TU compiled again)
+duplicates 1
+00beb4d0.obj : warning LNK4006: "public: virtual __thiscall CWaterPatchMesh::~CWaterPatchMesh(void)" (??1CWaterPatchMesh@@UAE@XZ) already defined in 00beaaa0.obj; second definition ignored
+MAP 0001:00000480 ??_GCWaterPatchMesh@@UAEPAXI@Z 10001480 f i 00beaaa0.obj
+## C (control): A + a second copy of 0x00BEAA00
+duplicates 1
+dup.obj : warning LNK4006: "public: void __thiscall CWaterPatchMesh::ReleaseBuffers(void)" (?ReleaseBuffers@CWaterPatchMesh@@QAEXXZ) already defined in 00beaa00.obj; second definition ignored
+MAP 0001:00000480 ??_GCWaterPatchMesh@@UAEPAXI@Z 10001480 f i 00beaaa0.obj
+## D: HEAD objects of the six rows + HEAD 0x00BEB490
+duplicates 0
+
+MAP 0001:00000560 ??_GCWaterPatchMesh@@UAEPAXI@Z 10001560 f i h490.obj

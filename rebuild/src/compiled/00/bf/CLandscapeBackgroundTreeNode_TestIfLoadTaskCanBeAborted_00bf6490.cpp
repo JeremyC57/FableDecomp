@@ -1,3 +1,4 @@
+// Leaf: ?TestIfLoadTaskCanBeAborted@CLandscapeBackgroundTreeNode@@AAE_NJ_N@Z
 // CLandscapeBackgroundTreeNode::TestIfLoadTaskCanBeAborted(long, bool) -- true when the node's pending load is no longer wanted: the band now required equals the current band, or the load in flight is on the wrong side of it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF6490, length 160 bytes.
 // Callees: the sub node's virtual IsPatch (slot 4) through the inline GetPatch / GetSplitBranch.
@@ -79,7 +80,9 @@ class CLandscapeBackgroundTreeNode : public CMovableResource { public:
             return (CLandscapeBackgroundSubNodeSplitBranch*)SubNode;
         return 0;
     }
+    private:
     bool TestIfLoadTaskCanBeAborted(long requiredBand, bool unused);
+    public:
 };
 class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:
     unsigned char _pad04[0x114];

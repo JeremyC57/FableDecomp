@@ -1,3 +1,4 @@
+// Leaf: ?SetMapPlacement@CWorldMap@@IAEXABVC2DBoxI@@J@Z
 // CWorldMap::SetMapPlacement(const C2DBoxI&, long) -- stamp a map number over the placement-grid cells a world box covers
 // Retail: Fable.exe @ 0x004FC9C0, 131 bytes, `ret 8`. PDB ?SetMapPlacement@CWorldMap@@IAEXABVC2DBoxI@@J@Z (protected). No callees.
 // Retail CWorldMap (the engine header engine/CWorldMap.h is the PDB layout with 16-byte containers; retail STLport
@@ -21,7 +22,9 @@ class CWorldMap { public:
     unsigned short* MapPlacement;               // +0x6C vector<unsigned short> start (PDB +0x7C)
     unsigned short* MapPlacementFinish;         // +0x70
     unsigned short* MapPlacementEnd;            // +0x74
+    protected:
     void SetMapPlacement(const C2DBoxI& box, long map);
+    public:
 };
 
 void CWorldMap::SetMapPlacement(const C2DBoxI& box, long map)

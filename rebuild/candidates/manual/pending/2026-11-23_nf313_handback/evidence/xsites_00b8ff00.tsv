@@ -1,0 +1,90 @@
+00b8ff00	call	00b3a918	00b3a910L CEngineInternalAttachedPrimitive::CEngineInternalAttachedPri
+00b8ff00	call	00b44ed0	00b44eb0L CEngineLightingManager::CreateInternalPrimitive
+00b8ff00	call	00b44efc	00b44eb0L CEngineLightingManager::CreateInternalPrimitive
+00b8ff00	call	00b46983	-
+00b8ff00	call	00b469a6	-
+00b8ff00	call	00b49437	-
+00b8ff00	call	00b49457	-
+00b8ff00	call	00b9ab53	00b9ab30L CEnginePrimitiveManagerRepeatedStaticMeshes::CreatePrimitive
+00b8ff00	call	00b9c62f	-
+00b8ff00	call	00b9c6a7	-
+00b8ff00	call	00b9e8ed	00b9e8c0L CEnginePrimitiveManager2DStaticMeshes::CreateInternalPrimiti
+00b8ff00	call	00ba0fe6	00ba0fc0L CEnginePrimitiveManagerStaticMeshesBase::AddStaticMesh
+00b8ff00	call	00ba785c	00ba7820L CEnginePrimitiveManagerStaticMeshesBase::CreateInternalPrimi
+00b8ff00	call	00ba78a5	00ba7820L CEnginePrimitiveManagerStaticMeshesBase::CreateInternalPrimi
+00b8ff00	call	00ba78f5	00ba7820L CEnginePrimitiveManagerStaticMeshesBase::CreateInternalPrimi
+00b8ff00	call	00ba7f8f	-
+00b8ff00	call	00ba80b7	-
+00b8ff00	call	00ba811f	-
+00b8ff00	call	00ba815b	-
+00b8ff00	call	00ba81e7	-
+00b8ff00	call	00baa337	-
+00b8ff00	call	00baa83d	00baa820L CEnginePrimitiveManagerRepeatedZSprites::CreateInternalPrimi
+00b8ff00	call	00baba93	00baba70L CEnginePrimitiveManagerRepeatedZSprites::CreatePrimitive
+00b8ff00	call	00bac647	-
+00b8ff00	call	00bacc07	00bacc00L CEngineInternalPrimitiveOcclusionGroup::CEngineInternalPrimi
+00b8ff00	call	00bacfb9	00bacf90L CEnginePrimitiveManagerSprites::CreateInternalPrimitive
+00b8ff00	call	00bacff9	00bacfd0L CEnginePrimitiveManager2DSprites::CreateInternalPrimitive
+00b8ff00	call	00bad026	00bacfd0L CEnginePrimitiveManager2DSprites::CreateInternalPrimitive
+00b8ff00	call	00bae183	00bae160L CEnginePrimitiveManagerSprites::AddSprite
+00b8ff00	call	00bb16ca	-
+00b8ff00	call	00bb170a	-
+00b8ff00	call	00bb172a	-
+00b8ff00	call	00bb6a0a	-
+00b8ff00	call	00bb6a7c	00bb6a50L CEnginePrimitiveManagerWeatherMask::CreateInternalPrimitive
+00b8ff00	call	00bb86bd	00bb8690L CEnginePrimitiveManagerParticleDecalGroup::CreateInternalPri
+00b8ff00	call	00bb8731	00bb8690L CEnginePrimitiveManagerParticleDecalGroup::CreateInternalPri
+00b8ff00	call	00bb97da	-
+00b8ff00	call	00bba0f0	-
+00b8ff00	call	00bba18b	-
+00b8ff00	call	00bba469	00bba440L CEnginePrimitiveManagerDecal::CreateInternalPrimitive
+00b8ff00	call	00bbbb2a	-
+00b8ff00	call	00bbced0	00bbceb0L CEnginePrimitiveManagerParticleGroup::CreateInternalPrimitiv
+00b8ff00	call	00bbdb2b	-
+00b8ff00	call	00bbea90	00bbea70L CEnginePrimitiveManagerParticleSpriteTrailGroup::CreateInter
+00b8ff00	call	00bbf12b	-
+00b8ff00	call	00bc144d	00bc1420L CEnginePrimitiveManagerParticleSpriteGroup::CreateInternalPr
+00b8ff00	call	00bc14c1	00bc1420L CEnginePrimitiveManagerParticleSpriteGroup::CreateInternalPr
+00b8ff00	call	00bc208a	-
+00b8ff00	call	00bc21eb	-
+00b8ff00	call	00bc343d	00bc3410L CEnginePrimitiveManagerParticleMeshGroup::CreateInternalPrim
+00b8ff00	call	00bc34b4	00bc3410L CEnginePrimitiveManagerParticleMeshGroup::CreateInternalPrim
+00b8ff00	call	00bc3ada	-
+00b8ff00	call	00bc3b8b	-
+00b8ff00	call	00bc4cfd	00bc4cd0L CEnginePrimitiveManagerParticleLineGroup::CreateInternalPrim
+00b8ff00	call	00bc4d71	00bc4cd0L CEnginePrimitiveManagerParticleLineGroup::CreateInternalPrim
+00b8ff00	call	00bc52ea	-
+00b8ff00	call	00bc538b	-
+00b8ff00	call	00bc5aa9	-
+00b8ff00	call	00bc5b89	00bc5b70L CEnginePrimitiveChangerManager::CreateInternalPrimitive
+00b8ff00	call	00bc6499	-
+00b8ff00	call	00bc6509	00bc64f0L CEnginePrimitiveGroupManager::CreateInternalPrimitive
+00b8ff00	call	00bc68d8	00bc68b0L CEnginePrimitiveManagerText::CreateInternalPrimitive
+00b8ff00	call	00bc6910	00bc68b0L CEnginePrimitiveManagerText::CreateInternalPrimitive
+00b8ff00	call	00bc79aa	-
+00b8ff00	call	00bc79df	-
+00b8ff00	call	00bc7a2a	-
+00b8ff00	call	00bc7d2a	-
+00b8ff00	call	00bc7e76	00bc7e50L CEnginePrimitiveManagerLines::CreateInternalPrimitive
+00b8ff00	call	00bca88a	-
+00b8ff00	call	00bca8dc	00bca8b0L CEnginePrimitiveManagerSpriteTrails::CreateInternalPrimitive
+00b8ff00	call	00bcd629	00bcd600L CEnginePrimitiveManagerWeaponTrails::CreateInternalPrimitive
+00b8ff00	call	00bcddea	-
+00b8ff00	call	00bcdf2a	-
+00b8ff00	call	00bcdf79	00bcdf50L CEnginePrimitiveManagerFlareSprites::CreateInternalPrimitive
+00b8ff00	call	00bce29f	-
+00b8ff00	call	00bd6bca	00bd6b90L CEnginePrimitiveManager2DAnimatedMeshes::CreateInternalPrimi
+00b8ff00	call	00bd6cf2	00bd6b90L CEnginePrimitiveManager2DAnimatedMeshes::CreateInternalPrimi
+00b8ff00	call	00bd6e32	00bd6df0L CEnginePrimitiveManagerAnimatedMeshesBase::CreateInternalPri
+00b8ff00	call	00bd6f30	00bd6df0L CEnginePrimitiveManagerAnimatedMeshesBase::CreateInternalPri
+00b8ff00	call	00bd7032	00bd6df0L CEnginePrimitiveManagerAnimatedMeshesBase::CreateInternalPri
+00b8ff00	call	00bd92ea	00bd92e0L CEngineInternalPrimitiveAnimatedMesh::CEngineInternalPrimiti
+00b8ff00	call	00bd93e2	-
+00b8ff00	call	00bd94ed	00bd94e0L CEngineInternalPrimitive2DAnimatedMesh::CEngineInternalPrimi
+00b8ff00	call	00bd95f2	-
+00b8ff00	call	00bd971d	00bd9710L CEngineInternalPrimitive2DMorphedAnimatedMesh::CEngineIntern
+00b8ff00	call	00bd983a	00bd9830L CEngineInternalPrimitiveAnimatedMeshFromFile::CEngineInterna
+00b8ff00	call	00bd994a	00bd9940L CEngineInternalPrimitiveMorphedAnimatedMesh::CEngineInternal
+00b8ff00	call	00be1a20	00be1a00L CEnginePrimitiveManager2DParticleGroup::CreateInternalPrimit
+00b8ff00	call	00be1adb	-
+00b8ff00	call	00be21fd	00be21f0L CEngineInternalPrimitive2DViewport::CEngineInternalPrimitive

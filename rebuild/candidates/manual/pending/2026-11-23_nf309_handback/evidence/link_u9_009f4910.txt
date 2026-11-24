@@ -1,0 +1,8 @@
+## HEAD set: H_009f4910.obj H_0099a350.obj
+duplicates 0
+
+UNRESOLVED 1 ?Init@CInitBaseClass@@QAE_NXZ
+## new set: N_009f4910.obj H_0099a350.obj
+duplicates 0
+
+LK_DONE

@@ -1,0 +1,7 @@
+q12712	?GFRandom@@YIKKPAK@Z	47	004cdae0	EQ
+q12712	?Get@CMainGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+q12712	?GetWorld@CMainGameComponent@@QAEAAVCWorld@@XZ	4	-	NO-OWNER
+q12712	?size@?$vector@JV?$allocator@J@std@@@std@@QBEIXZ	9	-	NO-OWNER
+q12712	?empty@?$vector@JV?$allocator@J@std@@@std@@QBE_NXZ	11	-	NO-OWNER
+q12712	?begin@?$vector@JV?$allocator@J@std@@@std@@QBEPBJXZ	3	-	NO-OWNER
+q12712	??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z	12	0040f220	EQ

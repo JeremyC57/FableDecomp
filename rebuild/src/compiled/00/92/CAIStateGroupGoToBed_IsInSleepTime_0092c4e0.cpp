@@ -1,3 +1,4 @@
+// Leaf: ?IsInSleepTime@CAIStateGroup_GoToBed@@QBE_NXZ
 // CAIStateGroup_GoToBed::IsInSleepTime() -- is the world clock inside this creature's sleep window?
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092C4E0, length 62 bytes.
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (manifest "CPlayer::GetCurrentMode" is a propagated label:
@@ -51,10 +52,10 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBase {
     long m_wakeTimeDelay;                       // +0x24 minutes past sleep end
     long m_pad28;                               // +0x28
     long m_state;                               // +0x2c
-    bool IsInSleepTime();
+    bool IsInSleepTime() const;
 };
 
-bool CAIStateGroup_GoToBed::IsInSleepTime()
+bool CAIStateGroup_GoToBed::IsInSleepTime() const
 {
     CGameTimeManager* pTime = GetWorld().m_pTime;
     long sleepEnd;

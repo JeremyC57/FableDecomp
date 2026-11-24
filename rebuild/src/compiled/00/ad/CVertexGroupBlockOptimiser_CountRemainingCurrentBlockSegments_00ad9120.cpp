@@ -1,5 +1,5 @@
 // CVertexGroupBlockOptimiser::CountRemainingCurrentBlockSegments() const -- how many distinct block segments the still-unused blocks of the current block belong to (1 when there is only one segment)
-// Leaf: ?CountRemainingCurrentBlockSegments@CVertexGroupBlockOptimiser@@
+// Leaf: ?CountRemainingCurrentBlockSegments@CVertexGroupBlockOptimiser@@ABEKXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD9120, 0xCF bytes (+ int3 padding), thiscall, plain `ret`, unsigned long.
 // Identity: Ego_r.pdb ?CountRemainingCurrentBlockSegments@CVertexGroupBlockOptimiser@@ABEKXZ (const, no argument);
 // the members match the retail layout of the landed CalcCurrentBestTheoreticalResult 0x00AD9D70: RemainingBlocks
@@ -134,7 +134,9 @@ public:
     unsigned char CurrentBlockSegmentGroups[0x0C];           // +0x24
     CLongArray    CurrentBlockSegmentIndices;                // +0x30
     unsigned long CurrentBlockSegmentCount;                  // +0x3C
+    private:
     unsigned long CountRemainingCurrentBlockSegments() const;
+    public:
 };
 
 unsigned long CVertexGroupBlockOptimiser::CountRemainingCurrentBlockSegments() const

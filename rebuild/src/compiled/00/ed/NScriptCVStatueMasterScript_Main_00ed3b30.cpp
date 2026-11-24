@@ -42,7 +42,8 @@ FABLE_SM_ENTITY(CStatueMasterChest)           // Alloc 0x00ED4770
 }
 
 inline CScriptThing::~CScriptThing() { }
-inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
 inline float __fastcall GFArcTan(double opposite, double adjacent)
 { return (float)atan2(opposite, adjacent) / (2.0f * 3.14159265358979323846f); }
 FABLE_FORCEINLINE float __fastcall GET_ROUNDED_ANGLE(float angle)

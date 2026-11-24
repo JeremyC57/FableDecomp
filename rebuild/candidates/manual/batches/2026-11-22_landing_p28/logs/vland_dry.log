@@ -1,0 +1,64 @@
+addr       parity           behav  name
+00491ad2   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00491ad2   WARN RELOC_ALIAS: _wcsstr -> 00bfeb2e is the import thunk 'MSVCR71.DLL::wcsstr'
+00491ad2   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00491ad2   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00491ad2   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00491ad2   RELOCATION_MATCH PASS   ProcessEmbeddedHighlightTags
+00559a90   RELOCATION_MATCH PASS   ProcessEvent
+00560d00   WARN RELOC_NAME: ??$?HDV?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z -> 00569690 labelled 'std::operator+<char, std::char_traits<char>, std::allocator<char>>'
+00560d00   RELOCATION_MATCH PASS   LogOnToRegistrationServer
+00647ab4   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+00647ab4   RELOCATION_MATCH PASS   Draw
+006c6040   WARN RELOC_NAME: ??$GetAllThings@VCThingAICreature@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_IsEligibleWitness@@@CThingSearchTools@@QBEXABVCThingFilter_IsEligibleWitness@@AAV?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z -> 006c9280 labelled 'CThingSearchTools::GetAllThings<CThingAICreature, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_IsEligibleWitness>'
+006c6040   WARN RELOC_NAME: ?push_back@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXABQAVCThingAICreature@@@Z -> 004ac4b0 labelled '_global::LinkedList_AppendNode'
+006c6040   WARN RELOC_NAME: ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 0048d400 labelled 'CThingSearchTools::GetAllThings<CThing,std::vector<CThing*>,CThingFilter_HasTC>'
+006c6040   RELOCATION_MATCH PASS   InformRelevantThingsOfDeed
+0078ecd0   RELOCATION_MATCH PASS   CTCDivineWrath
+007ebea0   RELOCATION_MATCH PASS   OnActionUse
+008101f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+008101f0   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+008101f0   WARN RELOC_ALIAS: __CItanh -> 00bfece2 is the import thunk 'MSVCR71.DLL::_CItanh'
+008101f0   WARN RELOC_NAME: ??$?0V?$CIntelligentPointer@VCThing@@@@H@?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@QAE@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@H@1@@Z -> 0080de90 labelled 'std::pair<CIntelligentPointer<CThing>, long>::pair<CIntelligentPointer<CThing>, long><CIntelligentPointer<CThing>, int>'
+008101f0   WARN RELOC_NAME: ?IsClosed@CTCTrapBase@@QBE_NXZ -> 00787c23 labelled 'C3DAnimation2::CanRelocateData'
+008101f0   RELOCATION_MATCH PASS   FrameUpdate
+008664f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+008664f0   RELOCATION_MATCH PASS   Initialise
+008e8060   WARN RELOC_NAME: ??$GetAllThings@VCThingMarker@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasScriptName@@@CThingSearchTools@@QBEXABVCThingFilter_HasScriptName@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 008e8ac0 labelled 'CThingSearchTools::GetAllThings<CThingMarker, std::vector<CThing *, std::allocator<CThing *>>, CThingFilter_HasScriptName>'
+008e8060   RELOCATION_MATCH PASS   OnActivate
+00a87960   RELOCATION_MATCH PASS   Process
+00ab7c20   WARN RELOC_ALIAS: _floor -> 00bfeb8a is the import thunk 'MSVCR71.DLL::floor'
+00ab7c20   RELOCATION_MATCH PASS   Render
+00b19c60   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b19c60   RELOCATION_MATCH PASS   PreparePrimitives
+00bbe090   RELOCATION_MATCH PASS   RenderSingleSpriteTrail
+00be6880   RELOCATION_MATCH PASS   BuildDefaultSection
+00d43db0   RELOCATION_MATCH PASS   Main
+00dc08c0   RELOCATION_MATCH PASS   WatchForGateTimer
+00dfd600   RELOCATION_MATCH PASS   AttackPeople
+00e03f70   RELOCATION_MATCH PASS   Main
+00e49020   RELOCATION_MATCH PASS   Main
+00ec32f0   RELOCATION_MATCH PASS   ChooseRandomBanditFromDefs
+
+WINS: 21
+  00491ad2 RELOCATION_MATCH CSubtitleRenderer::?ProcessEmbeddedHighlightTags@CSubtitleRenderer@@AAEXXZ
+  00559a90 RELOCATION_MATCH NUISystem::CScrollBar::?ProcessEvent@CScrollBar@NUISystem@@UAEXW4EEvent@2@@Z
+  00560d00 RELOCATION_MATCH CTCHeroOnlineScoreboard::?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z
+  00647ab4 RELOCATION_MATCH NPlayerGui::CDrawHealth::?Draw@CDrawHealth@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  006c6040 RELOCATION_MATCH CTCHeroOpinionDeedLog::?InformRelevantThingsOfDeed@CTCHeroOpinionDeedLog@@AAE_NJPAVCThingAICreature@@W4EOpinionPostDeedType@@PBVCFaction@@_N@Z
+  0078ecd0 RELOCATION_MATCH CTCDivineWrath::??0CTCDivineWrath@@QAE@AAVCThing@@@Z
+  007ebea0 RELOCATION_MATCH CTCActionUseBed::?OnActionUse@CTCActionUseBed@@UAEXAAVCThing@@@Z
+  008101f0 RELOCATION_MATCH CTCDExplosiveTrail::?FrameUpdate@CTCDExplosiveTrail@@UAEXXZ
+  008664f0 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdown::?Initialise@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ
+  008e8060 RELOCATION_MATCH NCreatureMode::CModeBriarRoseConcentrate::?OnActivate@CModeBriarRoseConcentrate@NCreatureMode@@UAEXXZ
+  00a87960 RELOCATION_MATCH CSBIAgents::?Process@CSBIAgents@@UAE_NPBVCSteeringAgent@@@Z
+  00ab7c20 RELOCATION_MATCH CStaticFontBank::?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z
+  00b19c60 RELOCATION_MATCH NParticleEngine::CPSCLight::?PreparePrimitives@CPSCLight@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+  00bbe090 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteTrailGroup::?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
+  00be6880 RELOCATION_MATCH CLandscapeBackgroundPatch::?BuildDefaultSection@CLandscapeBackgroundPatch@@QAEXXZ
+  00d43db0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CPreMeleeMaze::?Main@CPreMeleeMaze@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00dc08c0 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::?WatchForGateTimer@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ
+  00dfd600 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::?AttackPeople@CQ_TraderConflictGoodScript@NScript@@QAEXXZ
+  00e03f70 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CMagicBarrier::?Main@CMagicBarrier@CQ_TraderEscortScript@NScript@@EAEXXZ
+  00e49020 RELOCATION_MATCH NScript::CV_BanditTollScript::CTauntingBandit::?Main@CTauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+  00ec32f0 RELOCATION_MATCH NScript::CV_RandomPopulationSimScript::?ChooseRandomBanditFromDefs@CV_RandomPopulationSimScript@NScript@@QAE?AVCCharString@@XZ

@@ -1,0 +1,11 @@
+DEF  EQ   004365b0    60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+EXT  BOUND  00a01b10 ??0CBaseIntelligentPointer@@QAE@XZ
+DEF  DATA 0123e7d8     4 ??_7?$CIntelligentPointer@VCThingCreatureBase@@@@6B@
+EXT  BOUND  00a01b90 ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z
+EXT  BOUND  00a01b50 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
+EXT  BOUND  00a01c10 ??1CBaseIntelligentPointer@@UAE@XZ
+DEF  EQ   0040f020    60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+EXT  BOUND  00661ed0 ?GetCombatManager@CThingCreatureBase@@QAEAAVCCombatManager@@XZ
+EXT  BOUND  004c73d0 ?GetPos@CThing@@QBEABVC3DVector@@XZ
+EXT  BOUND  006cb620 ?IsAbleToNavigateFromPosToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0M@Z
+PROBLEMS 0

@@ -1,0 +1,21 @@
+addr       parity           behav  name
+004aa8b0   RELOCATION_MATCH PASS   GetName
+004aac20   MATCH            PASS   MsgIsKnockedOutBy
+004aac40   MATCH            PASS   MsgReceivedMoney
+004aac60   MATCH            PASS   MsgIsPresentedWithItem
+004aaca0   MATCH            PASS   MsgPerformedSpecialAbility
+004aad80   MATCH            PASS   MsgIsHitByAnyNonAggressiveSpecialAbilityFrom
+004aaee0   MATCH            PASS   MsgGetThingsKilled
+004aaf40   MATCH            PASS   MsgOnMoralityChanged
+004aaf60   MATCH            PASS   MsgOnCutSceneAnimEvent
+
+WINS: 9
+  004aa8b0 RELOCATION_MATCH CScriptThing::GetName
+  004aac20 MATCH CScriptThing::MsgIsKnockedOutBy
+  004aac40 MATCH CScriptThing::MsgReceivedMoney
+  004aac60 MATCH CScriptThing::MsgIsPresentedWithItem
+  004aaca0 MATCH CScriptThing::MsgPerformedSpecialAbility
+  004aad80 MATCH CScriptThing::?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing_Methods@@QAE_NH@Z
+  004aaee0 MATCH CScriptThing::MsgGetThingsKilled
+  004aaf40 MATCH CScriptThing::MsgOnMoralityChanged
+  004aaf60 MATCH CScriptThing::MsgOnCutSceneAnimEvent

@@ -1,10 +1,13 @@
+// Leaf: ?GetSizeofClass@CAbilityDef@@UAEKXZ
 #pragma optimize("s",on)
 typedef unsigned long ulong;
 
-class CAbilityDef { public:};
+class CAbilityDef { public:
+    virtual unsigned long GetSizeofClass();
+};
 
-ulong __fastcall CAbilityDef_GetSizeofClass(const CAbilityDef* self)
+unsigned long CAbilityDef::GetSizeofClass()
 {
-    (void)self;
     return 0x2c;
 }
+// Flatten route (flatten_pilot v4, NF324): CAbilityDef_GetSizeofClass -> CAbilityDef::GetSizeofClass, the RTTI-placed PDB member; class model: the row's local class model.

@@ -24,6 +24,10 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_PrisonRaceScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_GUARD_PASS27
+    // Both PDBs identify the quest constructor used by the binding factory.
+    CQ_PrisonRaceScript(CScriptDataBase*, CGameScriptInterfaceBase&);
+#endif
     virtual void RegisterMain();                                         // 0x00DDADA0
     virtual void Main();
     virtual void Init();                                                 // 0x00DDAD60
@@ -40,6 +44,10 @@ public:
     long ConversationIndex;                                              // +0x5c
     class CPrisonRaceGuard : public CEntityScriptBase {
     public:
+#ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_GUARD_PASS27
+        // FableWin 03873670 and the inlined retail construction at 00DDB4A0.
+        CPrisonRaceGuard(CQ_PrisonRaceScript&, CScriptDataBase*, const CScriptThing&);
+#endif
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_PrisonRaceScript&, CScriptDataBase*, const CScriptThing&);   // 0x00DDB4A0
         virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00DDB540
     private:
@@ -136,10 +144,10 @@ FABLE_STATIC_ASSERT_AT(76, sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceGuard
 FABLE_STATIC_ASSERT_AT(78, sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceWinningPostGuard) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_MAIN
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceWarden) == 0x1c);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRacer) == 0x20);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard) == 0x1c);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonRaceScript::CWaypointSpeedCheck) == 0x1c);
+FABLE_STATIC_ASSERT_AT(139, sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceWarden) == 0x1c);
+FABLE_STATIC_ASSERT_AT(140, sizeof(NScript::CQ_PrisonRaceScript::CPrisonRacer) == 0x20);
+FABLE_STATIC_ASSERT_AT(141, sizeof(NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard) == 0x1c);
+FABLE_STATIC_ASSERT_AT(142, sizeof(NScript::CQ_PrisonRaceScript::CWaypointSpeedCheck) == 0x1c);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

@@ -1,4 +1,6 @@
+// Leaf: ?ResetDeathRecoveryMarkerNameToDefault@CGameScriptInterface@@UBEXXZ
 // CGameScriptInterface::ResetDeathRecoveryMarkerNameToDefault
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
@@ -25,8 +27,9 @@ struct Node2 { void* p; };
 
 extern "C" void __fastcall FinalizeNode(void* n);      // this in ecx
 
-void __fastcall CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault(CGameScriptInterface* self)
+void CGameScriptInterface::ResetDeathRecoveryMarkerNameToDefault() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     ETCInterfaceType key;
     CPlayer* a = (&self->PlayerManager->GetMainPlayer());
     CThingPlayerCreature* obj = a->GetPControlledCreature();
@@ -43,3 +46,4 @@ void __fastcall CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault(CGame
     }
     FinalizeNode(found->second);
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault -> CGameScriptInterface::ResetDeathRecoveryMarkerNameToDefault, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

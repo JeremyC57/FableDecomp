@@ -12,8 +12,8 @@ class CEngineLandscapeMemoryManager { public:
 };
 // Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
 //   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 class CEngineStaticMapFileBlockManager { public:
     void AddRequest(long filePos, long size, bool highPriority);   // 0x00BE06B0
 };
@@ -30,7 +30,7 @@ struct CLandscapeBackgroundLoadTask {              // 16 bytes, no vtable, alloc
         : m_pOwner(0), m_pManager(manager), m_filePos(filePos), m_lod(lod), m_isPatchLoad(isPatchLoad) { }
     static void* operator new(unsigned int size, CMovableResource* owner)
     {
-        return g_pLandscapeRenderer->MemoryManager->AllocVirtual(size, owner);
+        return NEngineInternal::GPLandscapeRenderer->MemoryManager->AllocVirtual(size, owner);
     }
     static void operator delete(void*, CMovableResource*) { }
 };

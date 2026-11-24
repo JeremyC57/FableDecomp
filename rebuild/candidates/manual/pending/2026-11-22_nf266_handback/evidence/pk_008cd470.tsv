@@ -1,0 +1,10 @@
+008cd470	??0C3DVector@@QAE@MMM@Z	25	-	NO-OWNER
+008cd470	??0C3DVector@@QAE@ABV0@@Z	25	-	NO-OWNER
+008cd470	?GetType@CClass@@QBEKXZ	5	-	NO-OWNER
+008cd470	?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ	4	-	NO-OWNER
+008cd470	??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z	46	00487050	EQ
+008cd470	?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ	5	-	NO-OWNER
+008cd470	??0?$CCountedPointer@VCCreatureActionBase@@@@QAE@ABV0@@Z	25	-	NO-OWNER
+008cd470	??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ	53	0048c5c0	EQ
+008cd470	?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ	5	-	NO-OWNER
+008cd470	??C?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ	5	-	NO-OWNER

@@ -1,5 +1,5 @@
 // CThingCreatureBase::GetAnimMovementVector(long animIndex) -- the animation's movement vector rotated into world space by the creature's appearance position matrix (scale 1)
-// Leaf: ?GetAnimMovementVector@CThingCreatureBase@@QAE?AVC3DVector@@J@Z
+// Leaf: ?GetAnimMovementVector@CThingCreatureBase@@QBE?AVC3DVector@@J@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006626E0, length 178 bytes, `ret 8` (hidden C3DVector result + index).
 // Callees: CThing::PeekWorld @ 0x004C7AB0, the main mesh bank's GetAnimation(long) @ 0x00A242C0,
@@ -37,16 +37,16 @@ class CWorld { public:
 };
 namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
-    CMatrix3x4 GetPositionMatrix(float scale);  // 0x004BC800
+    CMatrix3x4 GetPositionMatrix(float scale) const;  // 0x004BC800; NF236: Ego_r / FableWin spelling QBE (const)
 };
 }
 using NGraphicAppearance::CTCGraphicAppearance;
 #include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public:
-    C3DVector GetAnimMovementVector(long animIndex);
+    C3DVector GetAnimMovementVector(long animIndex) const;
 };
 
-C3DVector CThingCreatureBase::GetAnimMovementVector(long animIndex)
+C3DVector CThingCreatureBase::GetAnimMovementVector(long animIndex) const
 {
     CMeshDataBank* bank = PeekWorld().PMainMeshBank;
     C3DVector movement = bank->PeekAnimation(animIndex)->MovementVector;

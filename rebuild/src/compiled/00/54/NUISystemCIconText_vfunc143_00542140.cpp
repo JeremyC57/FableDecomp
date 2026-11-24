@@ -12,7 +12,12 @@ class CDataBank { public:const CDataBankTextEntry* GetTextInfo(unsigned long)con
 }
 using NGameText::CDataBank;
 // GetTextDataBank is an inferred inline accessor name; offsets14/60 are retail evidence.
-struct Game {unsigned char Pad[0x14];CDataBank* Manager;FABLE_FORCEINLINE CDataBank* GetTextDataBank()const{return Manager;}};struct System {unsigned char Pad[0x60];CDataBank* Manager;FABLE_FORCEINLINE CDataBank* GetTextDataBank()const{return Manager;}};extern Game* Game_013b86a0;extern System* System_013b871c;
+struct Game {unsigned char Pad[0x14];CDataBank* Manager;FABLE_FORCEINLINE CDataBank* GetTextDataBank()const{return Manager;}};extern Game* Game_013b86a0;
+// NF230 (2026-11-22, q12621): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static; Ego_d.pdb LF_STMEMBER
+//   private; the header's spelling) read through the header's inline CNewFrontendGameComponent::Get() (FableWin.pdb ?Get@CNewFrontendGameComponent@@SIPAV1@XZ),
+//   the bank (m_pTextBank +0x60) through GetTextBank() (FableWin.pdb ?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ),
+//   as 0x0041CFB2 / 0x00446720 do; was the row-local `struct System` stand-in and ?System_013b871c@@3PAUSystem@@A.
+#include "engine/CNewFrontendGameComponent.h"
 namespace NUISystem {class CIconText { public:
 virtual void Slot000()=0;
 virtual void Slot001()=0;
@@ -169,7 +174,7 @@ unsigned char BeforeText[0x15c-4];CWideString Text;void SetValue(unsigned long);
 };
 void CIconText::SetValue(unsigned long id){
  if(id>0 && Game_013b86a0){if(Game_013b86a0->GetTextDataBank()->GetTextInfo(id)&&Game_013b86a0->GetTextDataBank()->GetPTextEntry(id,true))Text=Game_013b86a0->GetTextDataBank()->GetPTextEntry(id,true)->GetText();else Text=CWideString::NullString;}
- else if(id>0 && System_013b871c){if(System_013b871c->GetTextDataBank()->GetTextInfo(id)&&System_013b871c->GetTextDataBank()->GetPTextEntry(id,true))Text=System_013b871c->GetTextDataBank()->GetPTextEntry(id,true)->GetText();else Text=CWideString::NullString;}
+ else if(id>0 && CNewFrontendGameComponent::Get()){if(CNewFrontendGameComponent::Get()->GetTextBank().GetTextInfo(id)&&CNewFrontendGameComponent::Get()->GetTextBank().GetPTextEntry(id,true))Text=CNewFrontendGameComponent::Get()->GetTextBank().GetPTextEntry(id,true)->GetText();else Text=CWideString::NullString;}
  else Text=CWideString::NullString;
  UpdateText();
 }

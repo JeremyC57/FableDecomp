@@ -1,0 +1,138 @@
+entry	address	status	binders_respelled	note
+L1 (land1122p27)	0x004291DE	done-already (self leaf + every table spelling)	0	
+L2 (land1122p27)	0x00666310	deferred: held by NF236 / AUTH24 rows (00666310:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L3 (land1122p27)	0x006EAE20	blocked: rows left 0x006EB9F0 (CCombatManager_Retail stand-in token; needs a port onto CCombatManager.h); 0x006EB390 done (2 of 3 spellings)	0x006EB390	0x006EAE20 3 -> 2; 0x006EB9F0 (CCombatManager_Retail stand-in token) needs a port onto CCombatManager.h (NOTES)
+L4 (land1122p27)	0x0074F4F0	open: self row respell	0	
+L5 (land1122p27)	0x0074F530	open: self row respell	0	
+L6 (land1122p27)	0x00844740	done-already (self leaf; no table spelling: vtable slots unchecked)	0	held rows reference it: 00844740:p27held(NF236)
+L7 (land1122p27)	0x008575C0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	held rows reference it: 008575c0:p27held(NF236)
+L8 (land1122p27)	0x0092CDA0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L9 (land1122p27)	0x0095FB40	done-already (self leaf + every table spelling)	0	held rows reference it: 0095ef80:p27held(NF236)
+L10 (land1122p27)	0x009AE390	done-already (self leaf + every table spelling)	0	held rows reference it: 009ae390:p27held(NF236)
+L11 (land1122p27)	0x00404710	done (NAME_FIXES only: not landed)	0	catalog line for the 0x00404710 thunk; follow-up 0x00998A30 binds ~list at 0x004046B0 (NAME_FIXES)
+L12 (land1122p27)	0x00429C53	done-already (self leaf + every table spelling)	0	
+L13 (land1122p27)	0x00429FBE	open: self row respell	0	
+L14 (land1122p27)	0x0042A141	open: self row respell	0	
+L15 (land1122p27)	0x0042AB01	done-already (self leaf + every table spelling)	0	
+L16 (land1122p27)	0x0042AB1C	open: self row respell	0	
+L17 (land1122p27)	0x0042ABAF	open: self row respell	0	
+L18 (land1122p27)	0x0042ABCA	open: self row respell	0	
+L19 (land1122p27)	0x00435190	done-already (self leaf; no table spelling: vtable slots unchecked)	0	held rows reference it: 00435190:p27held(NF236)
+L20 (land1122p27)	0x00437640	open: self row respell	0	
+L21 (land1122p27)	0x00437650	open: self row respell	0	
+L22 (land1122p27)	0x00438A20	open: self row respell	0	
+L23 (land1122p27)	0x00446B40	open: self row respell	0	
+L24 (land1122p27)	0x00446B90	open: self row respell	0	
+L25 (land1122p27)	0x0048A4F0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L26 (land1122p27)	0x0048DB35	done	0x00548790 (+ self 0x0048DB35)	0x0048DB35 3 -> 1; with it 8 more CUserProfileManager getters 2 -> 1 (0x00548790 stand-ins) and 0x00548740 via 0x00548B50 (NOTES)
+L27 (land1122p27)	0x00497B60	open: binder respell	0	
+L28 (land1122p27)	0x0049C490	open: binder respell	0	
+L29 (land1122p27)	0x004A9710	open: self row respell	0	
+L30 (land1122p27)	0x004AC050	done (NAME_FIXES only: not landed)	0	catalog line for the 0x004AC050 thunk; follow-up 0x004AB490 has three binder spellings (NAME_FIXES)
+L31 (land1122p27)	0x004BC1A0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L32 (land1122p27)	0x004D6915	open: self row respell	0	
+L33 (land1122p27)	0x004D6931	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L34 (land1122p27)	0x004DDAB4	open: self row respell	0	
+L35 (land1122p27)	0x00531090	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L36 (land1122p27)	0x005348E0	open: self row respell	0	
+L37 (land1122p27)	0x00535470	deferred: held by NF236 / AUTH24 rows (00a90ae0:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L38 (land1122p27)	0x005C2DED	open: self row respell	0	
+L39 (land1122p27)	0x005C2DF5	open: self row respell	0	
+L40 (land1122p27)	0x005F807C	open: self row respell	0	
+L41 (land1122p27)	0x00625AF0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L42 (land1122p27)	0x006276F0	done-already (self leaf + every table spelling)	0	held rows reference it: 00628000:p27held(NF236)
+L43 (land1122p27)	0x00627BE0	done-already (self leaf + every table spelling)	0	held rows reference it: 00628000:p27held(NF236)
+L44 (land1122p27)	0x0064B1AC	done-already (self leaf + every table spelling)	0	
+L45 (land1122p27)	0x00659625	deferred: held by NF236 / AUTH24 rows (00659625:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L46 (land1122p27)	0x0066BD00	done-already (self leaf + every table spelling)	0	held rows reference it: 00665f90:p27held-target(NF236),008ef520:p27held(NF236)
+L47 (land1122p27)	0x006C5A80	done	0x004D3F50	0x006C5A80 2 -> 1
+L48 (land1122p27)	0x006D6110	open: self row respell	0	
+L49 (land1122p27)	0x006EB700	done-already (self leaf + every table spelling)	0	
+L50 (land1122p27)	0x006F8010	open: self row respell	0	
+L51 (land1122p27)	0x006FDA20	done-already (self leaf + every table spelling)	0	
+L52 (land1122p27)	0x00726BE0	deferred: held by NF236 / AUTH24 rows (00726be0:NF236,00726ce0:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L53 (land1122p27)	0x0072F380	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L54 (land1122p27)	0x00733290	done-already (self leaf + every table spelling)	0	held rows reference it: 0068eca0:NF236
+L55 (land1122p27)	0x00733480	done-already (self leaf + every table spelling)	0	
+L56 (land1122p27)	0x007334B0	done-already (self leaf + every table spelling)	0	
+L57 (land1122p27)	0x00733EE0	deferred: held by NF236 / AUTH24 rows (0068eca0:NF236)	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L58 (land1122p27)	0x0079A890	done-already (self leaf + every table spelling)	0	
+L59 (land1122p27)	0x0079BF30	done-already (self leaf + every table spelling)	0	
+L60 (land1122p27)	0x007B0000	done-already (self leaf + every table spelling)	0	
+L61 (land1122p27)	0x007B2990	deferred: held by NF236 / AUTH24 rows (009334f0:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L62 (land1122p27)	0x007B2E20	done-already (self leaf + every table spelling)	0	held rows reference it: 009334f0:p27held(NF236)
+L63 (land1122p27)	0x007B8840	done-already (self leaf + every table spelling)	0	
+L64 (land1122p27)	0x007C57C0	done-already (self leaf + every table spelling)	0	
+L65 (land1122p27)	0x007D04F0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L66 (land1122p27)	0x007F4B60	open: self row respell	0	
+L67 (land1122p27)	0x0081EA50	done-already (self leaf + every table spelling)	0	
+L68 (land1122p27)	0x0083E1F0	done-already (self leaf + every table spelling)	0	
+L69 (land1122p27)	0x00864170	done-already (self leaf + every table spelling)	0	held rows reference it: 009334f0:p27held(NF236)
+L70 (land1122p27)	0x008764E0	done-already (self leaf + every table spelling)	0	
+L71 (land1122p27)	0x008AA9B0	deferred: held by NF236 / AUTH24 rows (009392a0:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L72 (land1122p27)	0x008B83E0	deferred: held by NF236 / AUTH24 rows (0091c6a0:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L73 (land1122p27)	0x008CA5A0	done-already (self leaf + every table spelling)	0	held rows reference it: 0091c6a0:p27held(NF236)
+L74 (land1122p27)	0x008CA600	deferred: held by NF236 / AUTH24 rows (0091c6a0:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L75 (land1122p27)	0x008CA680	done-already (self leaf + every table spelling)	0	held rows reference it: 0091c6a0:p27held(NF236)
+L76 (land1122p27)	0x008CA700	done-already (self leaf + every table spelling)	0	held rows reference it: 0091c6a0:p27held(NF236)
+L77 (land1122p27)	0x008EEBE0	done-already (self leaf + every table spelling)	0	held rows reference it: 008ef520:p27held(NF236)
+L78 (land1122p27)	0x008EEC70	done-already (self leaf + every table spelling)	0	held rows reference it: 008ef520:p27held(NF236)
+L79 (land1122p27)	0x008EF520	done-already (self leaf; no table spelling: vtable slots unchecked)	0	held rows reference it: 008ef520:p27held(NF236)
+L80 (land1122p27)	0x008F5EB0	done (NAME_FIXES only: not landed)	0	catalog line; binder 0x008F61A0 already binds it
+L81 (land1122p27)	0x008F61A0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L82 (land1122p27)	0x008F6740	done-already (self leaf + every table spelling)	0	
+L83 (land1122p27)	0x008F69B0	open: self row respell	0	
+L84 (land1122p27)	0x008F6A90	done-already (self leaf + every table spelling)	0	
+L85 (land1122p27)	0x00906AC0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L86 (land1122p27)	0x0091C080	deferred: held by NF236 / AUTH24 rows (0091c6a0:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L87 (land1122p27)	0x0091EC30	done-already (self leaf; no table spelling: vtable slots unchecked)	0	held rows reference it: 0091ec30:p27held(NF236)
+L88 (land1122p27)	0x00938380	deferred: held by NF236 / AUTH24 rows (00938380:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L89 (land1122p27)	0x00947B70	deferred: held by NF236 / AUTH24 rows (00948880:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L90 (land1122p27)	0x00947BE0	done-already (self leaf + every table spelling)	0	held rows reference it: 00948880:p27held(NF236)
+L91 (land1122p27)	0x00951070	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L92 (land1122p27)	0x009535B0	open: self row respell	0	
+L93 (land1122p27)	0x00953750	done-already (self leaf + every table spelling)	0	
+L94 (land1122p27)	0x00953780	done-already (self leaf + every table spelling)	0	
+L95 (land1122p27)	0x009539A0	open: self row respell	0	
+L96 (land1122p27)	0x00953A00	open: self row respell	0	
+L97 (land1122p27)	0x009542B0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L98 (land1122p27)	0x00955620	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L99 (land1122p27)	0x009566C0	done-already (self leaf + every table spelling)	0	
+L100 (land1122p27)	0x00956870	open: self row respell	0	
+L101 (land1122p27)	0x0096DBA0	open: self row respell	0	
+L102 (land1122p27)	0x0096DBB0	open: self row respell	0	
+L103 (land1122p27)	0x0096E3F0	open: self row respell	0	
+L104 (land1122p27)	0x0096E4A0	deferred: held by NF236 / AUTH24 rows (0096df50:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L105 (land1122p27)	0x00993B10	blocked: needs the implicit ~CDataInputStream inlined (header / inline-budget question)	0	REJECTED.tsv; decision 3
+L106 (land1122p27)	0x009BBBF0	done	0x009AE150	0x009BBBF0 2 -> 1
+L107 (land1122p27)	0x009CBA80	open: self row respell	0	
+L108 (land1122p27)	0x009CBD30	deferred: held by NF236 / AUTH24 rows (009cec60:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L109 (land1122p27)	0x009CBD50	open: self row respell	0	
+L110 (land1122p27)	0x009CBD70	open: self row respell	0	
+L111 (land1122p27)	0x009CEC60	deferred: held by NF236 / AUTH24 rows (009cec60:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L112 (land1122p27)	0x00A276D0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L113 (land1122p27)	0x00A898D0	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L114 (land1122p27)	0x00A978C0	open: self row respell	0	
+L115 (land1122p27)	0x00AB15F0	open: self row respell	0	
+L116 (land1122p27)	0x00AB1740	done-already (self leaf + every table spelling)	0	
+L117 (land1122p27)	0x00B09D50	open: self row respell	0	
+L118 (land1122p27)	0x00B209C0	open: self row respell	0	
+L119 (land1122p27)	0x00B3E1A0	open: catalog-only (not landed)	0	
+L120 (land1122p27)	0x00B61DD0	deferred: held by NF236 / AUTH24 rows (00b61dd0:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L121 (land1122p27)	0x00B92950	done-already (self leaf + every table spelling)	0	held rows reference it: 00b92950:p27held(NF236)
+L122 (land1122p27)	0x00B975E0	open: self row respell	0	
+L123 (land1122p27)	0x00B97C10	done-already (self leaf + every table spelling)	0	
+L124 (land1122p27)	0x00C76880	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L125 (land1122p27)	0x00F00C90	done-already (self leaf; no table spelling: vtable slots unchecked)	0	
+L126 (land1122p27)	0x0138CEC4	deferred: held by NF236 / AUTH24 rows (00948880:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L127 (land1122p27)	0x0139AC60	deferred: held by NF236 / AUTH24 rows (00b92950:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L128 (land1122p27)	0x0139AC64	deferred: held by NF236 / AUTH24 rows (00b92950:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L129 (land1122p27)	0x01436EA8	deferred: held by NF236 / AUTH24 rows (00b412a0:p27held(NF236))	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L130 (land1122p27)	0x0051C920	blocked: needs a coordinator ruling (debt line, not a spelling claim)	0	NOTES decision 2
+L131 (land1122p27)	0x00628000	blocked: needs a coordinator ruling (debt line, not a spelling claim)	0	NOTES decision 2
+L132 (land1122p27)	0x0094FDF0	blocked: needs a coordinator ruling (debt line, not a spelling claim)	0	NOTES decision 2
+L133 (land1122p27)	0x007D1260	blocked: needs a coordinator ruling (debt line, not a spelling claim)	0	NOTES decision 2
+L134 (land1122auth24)	0x008EE790	done	self 0x008EE790 respelled (binder 0x00839420 already binds it)	0x008EE790 2 -> 1; 0x008EE890 2 -> 2 (stand-in find QAE -> QBE, TABLE_CHANGES)
+L135 (land1122auth24)	0x008EE720	done	self 0x008EE720 respelled (binder 0x00839420 already binds it)	0x008EE720 2 -> 1
+L136 (land1122auth24)	0x0122DEE0	deferred: held by NF236 / AUTH24 rows (0042ec7c:NF236,0068d890:NF236,006ebf70:p27held(NF236),00839420:lock:AUTH24,00880730:NF236)	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock
+L137 (land1122auth24)	0x0129BA3C	deferred: held by NF236 / AUTH24 rows (00435530:NF236,00666310:p27held(NF236),0068cac0:NF236,0068d890:NF236,00690030:NF236,006ebf70:p27held(NF236),006f2c00:p27held-target(NF236),007032f0:NF236,00726ce0:p27held(NF236),00839420:lock:AUTH24)	0	the row needing the edit is NF236 / a held p27 witness / a non-released lock

@@ -1,0 +1,11 @@
+004197b3 NEW(dtor-fold)	??1CGameComponent@@UAE@XZ	18	-	NO-OWNER
+004197b3 NEW(dtor-fold)	??_GCGameComponent@@UAEPAXI@Z	41	-	NO-OWNER
+004197b3 NEW(dtor-fold)	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	5	-	NO-OWNER
+004197b3 NEW(dtor-fold)	??1?$scoped_ptr@VCPlayerManager@@@@QAE@XZ	13	-	NO-OWNER
+004197b3 NEW(dtor-fold)	??1?$scoped_ptr@VCGamePlayerInterface@@@@QAE@XZ	13	-	NO-OWNER
+004197b3 NEW(dtor-fold)	??1?$scoped_ptr@VCWorld@@@@QAE@XZ	13	-	NO-OWNER
+004197b3 NEW(dtor-fold)	??1?$scoped_ptr@VCDisplayEngine@@@@QAE@XZ	13	-	NO-OWNER
+004197b3 NEW(dtor-fold)	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	5	-	NO-OWNER
+004197b3 NEW(dtor-fold)	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER
+004197b3 NEW(dtor-fold)	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ
+004197b3 NEW(dtor-fold)	??1CMainGameComponent@@UAE@XZ	193	-	NO-OWNER

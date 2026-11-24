@@ -33,7 +33,7 @@ class CEnginePrimitiveHandle { public:int Unrecovered00;CEnginePersistentPrimiti
 struct EngineMethods:CIEngine {typedef void(EngineMethods::*SetMethod)(CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);void SetPersistentPrimitive(CEnginePrimitiveHandle&h,const CEnginePrimitive&p,unsigned long f){(this->*static_cast<SetMethod*>(__vftable)[23])(h,p,f);}};
 class CEnginePrimitivePrepareInfo { public:unsigned char Unrecovered00[0x34];EngineMethods*Engine;};
 struct PlayerGuiAlphaView {unsigned char Unrecovered00[0x2a0];float Alpha;};extern PlayerGuiAlphaView*GlobalPlayerGui;
-struct GuiOracleDefView {unsigned char Unrecovered00[0x594];C2DVector OracleSymbolPos,OracleSymbolOffset;};GuiOracleDefView* __fastcall PeekGuiDef();C2DVector __fastcall GFAnchorToTopRight(const C2DVector&);
+struct GuiOracleDefView {unsigned char Unrecovered00[0x594];C2DVector OracleSymbolPos,OracleSymbolOffset;};GuiOracleDefView* __fastcall PeekGuiDef();namespace NPlayerGui{C2DVector __fastcall GFAnchorToTopRight(const C2DVector&);}using NPlayerGui::GFAnchorToTopRight;/*NF308: PDB scope*/
 struct OracleNode {OracleNode*Next,*Previous;long Graphic;};
 struct OracleList {OracleNode*Head;bool empty()const{return Head->Next==Head;}unsigned long size()const{unsigned long n=0;for(OracleNode*p=Head->Next;p!=Head;p=p->Next)++n;return n;}};
 struct DrawQuestNative {void*VTable;void*PlayerGui;void*PlayerManager;void*World;void*Component;void*Bank;bool Drawing;unsigned char Unrecovered19[0x40-0x19];OracleList OracleSymbols;std::vector<CEnginePrimitiveHandle> OraclePrimitiveHandles;

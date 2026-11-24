@@ -130,7 +130,10 @@ class CTCAssassinRush : public CTCBase { public:
     bool                    FakeCollideWithSomething;   // +0x9f
     long                    RushDelayFrameCount;        // +0xa0
     bool                    CompletedExitModes;         // +0xa4
-    void CreateTrailingEffect();                        // 0x007A9FE0
+    private:
+    void CreateTrailingEffect();
+    public:
+                        // 0x007A9FE0
     void RushForwards();                                // 0x007AAC50
     void CancelMove();                                  // 0x007AA480
     void FrameUpdate();

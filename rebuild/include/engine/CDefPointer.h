@@ -123,8 +123,14 @@ public:
 #endif
     CDefPointeeBase* InternalGetObject() const { return Object; }
     T* Get() const { return static_cast<T*>(Object); }
+#ifdef FABLE_RETAIL_CDEFPOINTER_ORIGINAL_DIRECT_DEREF_PASS26
+    // Original FableWin024d4e40 /024d4f30: after debug assertions both directly return Object, no Get call.
+    T* operator->() const { return static_cast<T*>(Object); }
+    T& operator*() const { return *static_cast<T*>(Object); }
+#else
     T* operator->() const { return Get(); }
     T& operator*() const { return *Get(); }
+#endif
     bool IsNull() const { return Object == 0; }
     unsigned long GetRefCount() const { return Object->GetRefCount(); }
 #ifdef FABLE_RETAIL_CDEFPOINTER_RESET

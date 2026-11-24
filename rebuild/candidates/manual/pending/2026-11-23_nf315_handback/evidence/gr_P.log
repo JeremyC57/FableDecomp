@@ -1,0 +1,4 @@
+H 0080f270 CTCNymph::PickNewTargetPos RELOCATION_MATCH flags= [] leaf=PickNewTargetPos
+H 008c8180 CCreatureAction_BanditKingLunge::PerformAction RELOCATION_MATCH flags= [] leaf=?PerformAction@CCreatureAction_BanditKingLunge
+H 0090c1a0 CAIStateGroup_MinionGuardFollowPlayer::IsRunnable RELOCATION_MATCH flags= [] leaf=
+GR_DONE

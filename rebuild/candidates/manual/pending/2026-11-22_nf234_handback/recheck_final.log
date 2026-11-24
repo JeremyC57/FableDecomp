@@ -1,0 +1,40 @@
+addr       parity           behav  name
+00495780   RELOCATION_MATCH PASS   Shutdown
+00496cf0   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager (engine/CGameJoystickManager.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+00496cf0   RELOCATION_MATCH PASS   Run
+00418b7a   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+  WARN leaf '~CMainGameComponent' matches no symbol in 00418b7a.obj; graded the largest function
+  WARN leaf '~CMainGameComponent' matches no symbol in 00418b7a.obj; graded the largest function
+00418b7a   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled '_global::Dtor_CCharStringBase_004131d0'
+00418b7a   RELOCATION_MATCH PASS   ~CMainGameComponent
+0121a2dc   WARN RELOC_CONFLICT: _$E2 -> 01228af1 here, 01228930 in landed 01219f00
+0121a2dc   WARN RELOC_NAME: _$E2 -> 01228af1 labelled '_global::Static__Dest_val_std__allocator_CCountedPointer_on_013b8760_01228af1'
+0121a2dc   RELOCATION_MATCH PASS   g_global_0121a2dc
+01228af1   RELOCATION_MATCH PASS   Static__Dest_val_std__allocator_CCountedPointer_on_013b8760_01228af1
+0042ea8f   RELOCATION_MATCH PASS   CNewFrontendGameComponent
+
+WINS: 6
+  00495780 RELOCATION_MATCH CFrontendGameComponent::?Shutdown@CFrontendGameComponent@@AAEXXZ
+  00496cf0 RELOCATION_MATCH CFrontendGameComponent::Run
+  00418b7a RELOCATION_MATCH CMainGameComponent::~CMainGameComponent
+  0121a2dc RELOCATION_MATCH _global::_$E1
+  01228af1 RELOCATION_MATCH _global::_$E2
+  0042ea8f RELOCATION_MATCH CNewFrontendGameComponent::??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z

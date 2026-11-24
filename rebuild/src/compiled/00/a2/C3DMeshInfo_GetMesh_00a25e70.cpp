@@ -94,7 +94,7 @@ class C3DMeshLODInfo : public CResource { public:
     void* MeshInfo;                        // +0x2c
     unsigned char LOD;                     // +0x30
     bool UsedMeshStats;                    // +0x31
-    bool BuildMesh(bool a, bool b);        // 0x00A24520
+private: bool BuildMesh(bool a, bool b); friend class C3DMeshInfo;   // 0x00A24520 ?BuildMesh@C3DMeshLODInfo@@AAE_N_N0@Z (private; the mesh info is its friend)
 };
 struct CMeshData {
     virtual void v00();

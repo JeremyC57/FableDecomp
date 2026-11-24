@@ -1,0 +1,14 @@
+addr       parity           behav  name
+004de33e   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004de33e   RELOCATION_MATCH PASS   Transfer
+004de881   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004de881   RELOCATION_MATCH PASS   Transfer
+004debc4   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004debc4   RELOCATION_MATCH PASS   Transfer
+00930d70   MATCH            PASS   InitStateGroup
+
+WINS: 4
+  004de33e RELOCATION_MATCH CEnemyDef::?Transfer@CEnemyDef@@UAEXAAVCPersistContext@@@Z
+  004de881 RELOCATION_MATCH CExpressionSubDef::?Transfer@CExpressionSubDef@@UAEXAAVCPersistContext@@@Z
+  004debc4 RELOCATION_MATCH CGoldDef::?Transfer@CGoldDef@@UAEXAAVCPersistContext@@@Z
+  00930d70 MATCH CAIStateGroup_MinionReactToCriminal::?InitStateGroup@CAIStateGroup_MinionReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z

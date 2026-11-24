@@ -1,0 +1,66 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x004962C0	CFrontendGameComponent	ChooseProfileNumber	?ChooseProfileNumber@CFrontendGameComponent@@AAEXJ@Z	CFrontendGameComponent::ChooseProfileNumber	?ChooseProfileNumber@CFrontendGameComponent@@QAEXJ@Z	Ego_r + FableWin AAE (private); binder 0x004963A0 already AAE (VC7.1 HEAD object); `private: ... public:` on the decl (line 78), Leaf respelled; D1c: the changed source fails clang only in its own line 46 (identical at HEAD), cl /Zs PASS (new + HEAD)
+0x0049D4E0	CWorld	IsHeroStateFileValid	?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z	CWorld::IsHeroStateFileValid	?IsHeroStateFileValid@CWorld@@QBE_NABVCWideString@@@Z	Ego_r + FableWin IBE; binder 0x004A2F10 already IBE; `protected: ... public:` on the decl (line 34); the Leaf line already said IBE (the HEAD object defined QBE)
+0x0049E9F0	CWorld	IsDisplayingMiniMapOnRegionLoad	?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ	CWorld::IsDisplayingMiniMapOnRegionLoad	?IsDisplayingMiniMapOnRegionLoad@CWorld@@QAE_NXZ	Ego_r + FableWin QBE; binders 0x004A3740 / 0x006495A8 already QBE; const on decl (line 20) + definition (line 23); no Leaf line (none added)
+0x006AC390	CThingPlayerCreature	IsExpressionAvailable	?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z	CThingPlayerCreature::IsExpressionAvailable	?IsExpressionAvailable@CThingPlayerCreature@@QAE_NABVCCharString@@@Z	Ego_r + FableWin QBE; binders 0x006AC430 / 0x0088FC90 already QBE; const on decl (line 99) + definition (line 104), Leaf respelled to the full mangled name; wider (R1, what the PDB-const body forces): the local stand-ins GetInterface / CInterfaceMap::Find (pick-any COMDATs, unreferenced) and the same-TU CInterfaceMap::LowerBound stand-in body (0x004365B0, strong, table witness) take const; LowerBound respells QAE -> QBE (TABLE_CHANGES replace; the real Ego_r CVectorMap::LowerBound is const)
+0x006AD970	CThingPlayerCreature	UpdatePlayerControl	?UpdatePlayerControl@CThingPlayerCreature@@QAEXXZ	CThingPlayerCreature::UpdatePlayerControl	?UpdatePlayerControl@CThingPlayerCreature@@AAEXXZ	Ego_r + FableWin QAE (public); binder 0x006AD9D0 already QAE; `public: ... private:` on the decl (line 27), Leaf respelled
+0x00A67FF0	CVolumeTexture	CalcByteLength	?CalcByteLength@CVolumeTexture@@IAEXXZ	CVolumeTexture::CalcByteLength	?CalcByteLength@CVolumeTexture@@QAEXXZ	Ego_r + FableWin IAE; binder 0x00A68370 already IAE; `protected: ... public:` on the decl (line 57); prefix Leaf unchanged
+0x00F3B970	CTriangleStripifier2	StripUnusedVerts	?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z	CTriangleStripifier2::StripUnusedVerts	?StripUnusedVerts@CTriangleStripifier2@@QAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z	Ego_r + FableWin AAE; `private: ... public:` on the decl (line 65); the Leaf line already said AAE (the HEAD object defined QAE). The only other binder 0x00F3D830 defines and calls its own strong same-TU QAE stand-in copy (left, T3, NAME_FIXES); its HEAD duplicate against the self disappears
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x0047EEE4	?GetPathNameFromFileName@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z	?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z	0x00408120
+0x004A00E0	?SaveGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z	?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	0x0049F4C0
+0x004A05C0	?SaveGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z	?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	0x0049F4C0
+0x004A2D70	?LoadGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z	?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	0x004A21F0
+0x004A3200	?IsHeroStateFileValid@CWorld@@QBE_NABVCWideString@@@Z	?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z	0x0049D4E0
+0x004A3200	?LoadGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z	?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	0x004A21F0
+0x004A3200	?LoadHeroStateInternal@CWorld@@QAE_NABVCWideString@@@Z	?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z	0x004A2D70
+0x006292D0	?SetAsPaused@CWorld@@QAEX_N@Z	?SetAsPaused@CWorld@@IAEX_N@Z	0x0049D8F0
+0x0063E3C0	?PeekDefinitionManager@CWorldMap@@QBEABVCGameDefinitionManager@@XZ	?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ	0x004FB310
+0x0064401C	?IsDisplayingMiniMapOnRegionLoad@CWorld@@QAE_NXZ	?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ	0x0049E9F0
+0x00644179	?IsDisplayingMiniMapOnRegionLoad@CWorld@@QAE_NXZ	?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ	0x0049E9F0
+0x006441BE	?IsDisplayingMiniMapOnRegionLoad@CWorld@@QAE_NXZ	?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ	0x0049E9F0
+0x006AD9D0	?UpdateAnimation@CThingCreatureBase@@QAEXM@Z	?UpdateAnimation@CThingCreatureBase@@IAEXM@Z	0x00665860
+0x00761740	?GetMinDistanceToTrack@CTrack@NShape@@QBE_NABVC3DVector@@AAM@Z	?GetMinDistanceToTrack@CTrack@NShape@@ABE_NABVC3DVector@@AAM@Z	0x00760E70
+0x00805890	?IsExpressionAvailable@CThingPlayerCreature@@QAE_NABVCCharString@@@Z	?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z	0x006AC390
+0x0082FD90	?UpdateAnimation@CThingCreatureBase@@QAEXM@Z	?UpdateAnimation@CThingCreatureBase@@IAEXM@Z	0x00665860
+0x00834760	?UpdateAnimation@CThingCreatureBase@@QAEXM@Z	?UpdateAnimation@CThingCreatureBase@@IAEXM@Z	0x00665860
+0x0083B610	?GetCurrentGraphic@CThingVillage@@QAEPBVCEngineGraphic@@XZ	?GetCurrentGraphic@CThingVillage@@IBEPBVCEngineGraphic@@XZ	0x0083B520
+0x0085D370	?InitMapwhoLevels@CThingMap@NThingMap@@QAEXXZ	?InitMapwhoLevels@CThingMap@NThingMap@@IAEXXZ	0x0085D180
+0x008AF780	?AttemptToSpeak@CombatDialogueManager@@QAEXXZ	?AttemptToSpeak@CombatDialogueManager@@AAEXXZ	0x008AF500
+0x008AFC40	?AttemptToSpeak@CombatDialogueManager@@QAEXXZ	?AttemptToSpeak@CombatDialogueManager@@AAEXXZ	0x008AF500
+0x00A0CFC0	?ReadNextNumber@CWStringParser@@QAE_NPAVCWParsedItem@@@Z	?ReadNextNumber@CWStringParser@@AAE_NPAVCWParsedItem@@@Z	0x00A0CDD0
+0x00A682E0	?CalcByteLength@CVolumeTexture@@QAEXXZ	?CalcByteLength@CVolumeTexture@@IAEXXZ	0x00A67FF0
+0x00AC4D70	?ConvertFrom@CVertexStreamConverter@@QAEXPBDW4EVertexStreamDataType@@AAVC4DVector@@ABVCVertexCompressionParams@@@Z	?ConvertFrom@CVertexStreamConverter@@AAEXPBDW4EVertexStreamDataType@@AAVC4DVector@@ABVCVertexCompressionParams@@@Z	0x00AC44D0
+0x00AC4D70	?ConvertTo@CVertexStreamConverter@@QAEXPADW4EVertexStreamDataType@@ABVC4DVector@@ABVCVertexCompressionParams@@@Z	?ConvertTo@CVertexStreamConverter@@AAEXPADW4EVertexStreamDataType@@ABVC4DVector@@ABVCVertexCompressionParams@@@Z	0x00AC4910
+0x00ADA240	?AddBlocks@CVertexGroupBlockOptimiser@@QAEXK@Z	?AddBlocks@CVertexGroupBlockOptimiser@@AAEXK@Z	0x00AD9F10
+0x0056F615	??0CActionParamString@NUISystem@@QAE@ABVCWideString@@@Z	??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z	0x0054DAE0
+0x005DD440	?TransferBinaryIn@CAnimationEntry@@QAEXPAVCMemoryDataInputStream@@@Z	?TransferBinaryIn@CAnimationEntry@@QAEXAAVCMemoryDataInputStream@@@Z	0x005DD090
+0x00825590	?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatBrush@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatBrush@@@@PAX@Z	?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatBrush@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatBrush@@@@PBX@Z	0x00824C50
+0x00825700	?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatHeightMapCell1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell1@@@@PAX@Z	?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatHeightMapCell1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell1@@@@PBX@Z	0x00824D30
+0x0085B8F0	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x0090FDB0	?GetUpFromSeat@CAIStateGroup_UsesSeat@@QAEXXZ	?GetUpFromSeat@CAIStateGroup_UsesSeat@@IAE_NXZ	0x00938A10
+0x00930A70	?FindPlayerInteractionEvent@CAIStateGroup_MinionReactToPlayerInteraction@@QAEPAVCMessageEvent@@XZ	?FindPlayerInteractionEvent@CAIStateGroup_MinionReactToPlayerInteraction@@ABEPBVCMessageEvent@@XZ	0x0092EDC0
+0x009689C0	?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NPAVC3DVector@@PAVCRightHandedSet@@@Z	?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z	0x00968230
+0x0097E890	?SetAsLookAtThing@CBrainOutput@@QAEXPBVCThing@@J@Z	?SetAsLookAtThing@CBrainOutput@@QAEXABVCThing@@J@Z	0x0093E760
+0x009D6060	??0CBankFileAsyncData@@QAE@PAXKAAVCBankFileAsync@@@Z	??0CBankFileAsyncData@@AAE@PAXKAAVCBankFileAsync@@@Z	0x009D5D30
+0x009D6100	??0CBankFileAsyncData@@QAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z	??0CBankFileAsyncData@@AAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z	0x009D5DF0
+0x00A39FE0	?IntersectsWith@C2DLineF@@QAE_NABV1@PAVC2DVector@@M@Z	?IntersectsWith@C2DLineF@@QBE_NABV1@AAVC2DVector@@M@Z	0x00A56C80
+0x00A57AD0	?IntersectsWith@C2DLineF@@QAE_NPBV1@PAVC2DVector@@M@Z	?IntersectsWith@C2DLineF@@QBE_NABV1@AAVC2DVector@@M@Z	0x00A56C80
+0x00AA0C50	?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z	?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXAAVC3DKeyframe@@KMABVC3DMesh2@@@Z	0x00A4D920
+0x00AE8980	?CreateSymbolMap@CBankFile@@QAEXPAVCSymbolMap@@_N@Z	?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z	0x009CC530
+0x00856B20	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x0087C660	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x0087C6B0	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x0087DA90	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x0087DC30	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x0087DCA0	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x0087DFA0	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x00969470	?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NPAVC3DVector@@PAVCRightHandedSet@@@Z	?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z	0x00968230
+0x0097EC00	?SetAsLookAtThing@CBrainOutput@@QAEXPBVCThing@@J@Z	?SetAsLookAtThing@CBrainOutput@@QAEXABVCThing@@J@Z	0x0093E760
+0x00A57BD0	?IntersectsWith@C2DLineF@@QAE_NPBV1@PAVC2DVector@@M@Z	?IntersectsWith@C2DLineF@@QBE_NABV1@AAVC2DVector@@M@Z	0x00A56C80
+0x00AA0DC0	?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z	?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXAAVC3DKeyframe@@KMABVC3DMesh2@@@Z	0x00A4D920
+0x0087DE50	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x0087E250	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x0087E450	?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z	?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z	0x005DBFD0
+0x00A92740	?ConvertToVBFormatRepeatingMesh@C3DPrimitive2@@QAEXPAX@Z	?ConvertToVBFormatRepeatingMesh@C3DPrimitive2@@AAEXPAVCTVertexMatrixIndexedNormTex1@@@Z	0x00A8F770

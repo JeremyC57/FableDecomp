@@ -115,7 +115,7 @@ class CUserProfileManager { public:                     // retail = Ego_r.pdb wi
     bool IsVerticalSyncEnabled() const;          // 0x00548710
     bool IsCameraResetting() const;              // 0x00548690
     bool IsCameraPCBowYZInverted() const;        // 0x005485D0
-    bool IsShowTargetingStatus() const;          // 0x00548740
+    bool GetShowTargetingStatus() const;          // 0x00548740
     bool IsTutorialSystemEnabled() const { return UseNewProfileValues ? TutorialSystemEnabledNewProfile : TutorialSystemEnabled; }
 };
 namespace NUISystem { class CManager { public:
@@ -180,7 +180,7 @@ void CTextSlider::AdjustValueToProfile()
         case 0x106: SelectedChild = CUserProfileManager::Get()->IsVerticalSyncEnabled(); break;
         case 0x140: SelectedChild = CUserProfileManager::Get()->IsCameraResetting(); break;
         case 0x13f: SelectedChild = CUserProfileManager::Get()->IsCameraPCBowYZInverted(); break;
-        case 0x143: SelectedChild = CUserProfileManager::Get()->IsShowTargetingStatus(); break;
+        case 0x143: SelectedChild = CUserProfileManager::Get()->GetShowTargetingStatus(); break;
         }
     }
     if (PreviouslySelectedChild != SelectedChild) {
@@ -231,7 +231,7 @@ unsigned long CUserProfileManager::GetScreenAspectRatio() const { g_last = "ASP"
 bool CUserProfileManager::IsVerticalSyncEnabled() const { g_last = "VSYNC"; return g_ret; }
 bool CUserProfileManager::IsCameraResetting() const { g_last = "CAMRESET"; return g_ret; }
 bool CUserProfileManager::IsCameraPCBowYZInverted() const { g_last = "BOW"; return g_ret; }
-bool CUserProfileManager::IsShowTargetingStatus() const { g_last = "TARGET"; return g_ret; }
+bool CUserProfileManager::GetShowTargetingStatus() const { g_last = "TARGET"; return g_ret; }
 
 bool CObserver::IsObservingEvent(long) { return false; }
 void CObserver::ObserveEvent(long) {}

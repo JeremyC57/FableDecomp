@@ -1,3 +1,4 @@
+// Leaf: ?InternalAlloc@CMemoryAllocatorFixedSize@@IAEKKPAPAX@Z
 // CMemoryAllocatorFixedSize::InternalAlloc(unsigned long size, void** out) -- allocate a raw block of `size` plus the alignment slack ((Alignment - 1) rounded down to 8) from the process heap; returns the real block size (HeapSize) or 0 when the request overflows 32 bits or the heap fails
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A65F40, length 100 bytes.
 // Callees: KERNEL32 GetProcessHeap (IAT 0x0143FD3C, kept in esi), HeapAlloc (IAT 0x0143FE88), HeapSize (IAT 0x0143FE84); flags 1 = HEAP_NO_SERIALIZE.
@@ -12,7 +13,9 @@ extern "C" __declspec(dllimport) unsigned long __stdcall HeapSize(void* heap, un
 struct CMemoryAllocatorFixedSize {
     unsigned char _base[0xc14];                    // vptr + CPerformanceStats
     unsigned long Alignment;                       // +0xc14 (CMemoryAllocatorBase)
+    protected:
     unsigned long InternalAlloc(unsigned long size, void** out);
+    public:
 };
 
 unsigned long CMemoryAllocatorFixedSize::InternalAlloc(unsigned long size, void** out)

@@ -1,3 +1,4 @@
+// Leaf: ?DeleteLayerMeshes@CEngineLandscapePatch@@AAEXXZ
 // CEngineLandscapePatch::DeleteLayerMeshes() -- deletes the polymorphic layer mesh at +8 (clearing its slot and the three-bit layer count at +0x3c) and returns the virtual-memory block at +0xc to the engine's landscape memory manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF3790, length 65 bytes.
 // Callees: the layer mesh's virtual slot 0 (scalar deleting destructor, flag 1: `delete`), CEngineLandscapeMemoryManager::FreeVirtual(void*) @ 0x00BD9B90 (on the
@@ -12,8 +13,8 @@ class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
 
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 
 class CEngineLandscapePatch { public:
     unsigned char        _pad[8];
@@ -21,7 +22,9 @@ class CEngineLandscapePatch { public:
     void*                m_pLayerBlock;            // +0x0c
     unsigned char        _pad10[0x2c];
     unsigned char        m_layerCount : 3;         // +0x3c bits 0-2
+    private:
     void DeleteLayerMeshes();
+    public:
 };
 
 void CEngineLandscapePatch::DeleteLayerMeshes()
@@ -32,7 +35,7 @@ void CEngineLandscapePatch::DeleteLayerMeshes()
         m_layerCount = 0;
     }
     if (m_pLayerBlock) {
-        g_pLandscapeRenderer->MemoryManager->FreeVirtual(m_pLayerBlock);
+        NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(m_pLayerBlock);
         m_pLayerBlock = 0;
     }
 }

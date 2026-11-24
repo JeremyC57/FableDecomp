@@ -59,7 +59,7 @@ public:
 
 class CThingCreatureBase {
 public:
-    const CAnimationEntry* GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
+    const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
     float GetAnimMovementDistance(long animIndex) const;                                 // 0x006627A0
     static const CWorld& PeekWorld() { return *CMainGameComponent::Get()->World; }
 };
@@ -69,7 +69,7 @@ bool __fastcall GetAnimDistanceAndIndexFromAnimName(const CThingCreatureBase& cr
                                                     long& index, float& distance)
 {
     CMeshDataBank* bank = CThingCreatureBase::PeekWorld().PMainMeshBank;
-    index = creature.GetAnimFromName(animName, 0)->BankIndex;
+    index = creature.GetAnimFromName(animName, 0).BankIndex;
     float duration = bank->PeekAnimation(index)->GetDuration();
     float speed = creature.GetAnimMovementDistance(index) / duration;
     distance = speed / (float)CMainGameComponent::GetConstantFPS();

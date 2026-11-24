@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00bfde20   RELOCATION_MATCH PASS   ~CLandscapeLayerMesh
+00bfddb0   MATCH            PASS   CanRelocateData
+
+WINS: 2
+  00bfde20 RELOCATION_MATCH CLandscapeLayerMesh::??1CLandscapeLayerMesh@@UAE@XZ
+  00bfddb0 MATCH CLandscapeLayerMesh::?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z

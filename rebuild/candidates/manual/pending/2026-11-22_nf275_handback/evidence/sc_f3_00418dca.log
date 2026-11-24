@@ -1,0 +1,38 @@
+pS 00418dca CMainGameComponent::CMainGameComponent RELOCATION_MATCH flags= [] leaf=??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+< 009c0190	?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z	x1
+> 009c0190	?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z	x1
+< 0122f174	??_7CMainGameComponent@@6BCComponentListEntry@@@	x1
+< 0122f180	??_7CMainGameComponent@@6BCBaseClass@@@	x1
+> 0122f174	??_7CMainGameComponent@@6BCDeviceResetCallback@@@	x1
+> 0122f180	??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@	x1
+--- symbols HEAD(<) new(>)
+< DEF ??0?$scoped_ptr@VCDisplayEngine@@@@QAE@XZ
+< DEF ??0?$scoped_ptr@VCGamePlayerInterface@@@@QAE@XZ
+< DEF ??0?$scoped_ptr@VCPlayerManager@@@@QAE@XZ
+< DEF ??0?$scoped_ptr@VCWorld@@@@QAE@XZ
+> DEF ??0?$scoped_ptr@VCDisplayEngine@@@boost@@QAE@PAVCDisplayEngine@@@Z
+> DEF ??0?$scoped_ptr@VCGamePlayerInterface@@@boost@@QAE@PAVCGamePlayerInterface@@@Z
+> DEF ??0?$scoped_ptr@VCPlayerManager@@@boost@@QAE@PAVCPlayerManager@@@Z
+> DEF ??0?$scoped_ptr@VCWorld@@@boost@@QAE@PAVCWorld@@@Z
+< DEF ??1CGameComponent@@UAE@XZ
+< DEF ??_7CMainGameComponent@@6BCBaseClass@@@
+< DEF ??_7CMainGameComponent@@6BCComponentListEntry@@@
+> DEF ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+> DEF ??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+< UND ??1CBaseClass@@UAE@XZ
+< UND ?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z
+> UND ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+> UND ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+< UND ?v00@CMainGameComponent@@UAEXXZ
+> UND ?GetInputs@CMainGameComponent@@MAEXXZ
+> UND ?Init@CMainGameComponent@@UAEXXZ
+> UND ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+> UND ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+> UND ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+> UND ?PostInit@CMainGameComponent@@MAEXXZ
+> UND ?Render@CMainGameComponent@@MAEXXZ
+> UND ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+> UND ?SetQuit@CMainGameComponent@@UAEXXZ
+> UND ?Update@CMainGameComponent@@MAEXXZ
+EXIT 0

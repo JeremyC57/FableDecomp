@@ -1,0 +1,234 @@
+#include "fable_compiler.h"
+#ifdef FABLE_RETAIL_CSTRINGPARSER
+#ifndef FABLE_ENGINE_CSTRINGPARSER_H
+#define FABLE_ENGINE_CSTRINGPARSER_H
+// Retail opt-in (Codex pass11): original TPI base and names; native offsets
+// +4/+8/+c/+10/+14/+18/+1c and total40 after STLport list correction.
+#include "engine/CBaseClass.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CParsedItem.h"
+// Layout: original pointer boundaries, size8, class keyV.
+class CStringParserCommentBoundaries {public:const char* PStart;const char* PEnd;};
+class CStringParser : public CBaseClass {
+public:
+#ifdef FABLE_RETAIL_CSTRINGPARSER_INLINE_CTOR
+    // Retail opt-in (chunk 2001, row 0x00AF4900 CParticleSystem::DatabaseSerialise): Ego_r.pdb / FableWin.pdb
+    // ??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z is inline in retail: its COMDAT 0x00404720 (called by CParticleEmitter::
+    // DatabaseSerialise 0x00AEF8E6) is CBaseClass(), the vtable 0x0122D874, Filename(), TempCharString(), Comments() (`mov [esi+14h],0`,
+    // the malloc'd 0x10-byte sentinel node), `TempCharString = text`, then Init(text's characters, callback, filename, offset) 0x009B9530;
+    // 0x00AF4CA1..0x00AF4D04 expand the same body in place. Init(const char*, ...) is the PDB overload the body calls.
+    CStringParser(const CCharString& text,void (__fastcall* errorCallback)(const CCharString&)=0,const CCharString& filename=CCharString(""),long baseLineOffset=0)
+    {
+        TempCharString=text;
+        Init(text.GetAsCharArray(),errorCallback,filename,baseLineOffset);
+    }
+#else
+    CStringParser(const CCharString&,void (__fastcall*)(const CCharString&)=0,const CCharString& filename=CCharString(""),long baseLineOffset=0);
+#endif
+#ifdef FABLE_RETAIL_CSTRINGPARSER_DTOR_OUTOFLINE
+    // Per-TU opt-in (wfD4, row 0x0049A0B0 CProgressDisplay::InitialiseTextures): Ego_r.pdb / FableWin.pdb ??1CStringParser@@UAE@XZ, out of line
+    // in retail (COMDAT 0x004047A0, landed; called at 0x0049A9F5 for the parser local) where the implicit destructor would expand. Declaration only.
+    virtual ~CStringParser();                                            // 0x004047A0
+#endif
+#ifdef FABLE_RETAIL_CSTRINGPARSER_SKIPUNTILWHITESPACE
+    // Opt-in (chunk 2010, row 0x005248B0): Ego_r.pdb ?SkipUntilWhitespace@CStringParser@@QAEJXZ, retail 0x009B9CE0 (bound by the landed
+    // 0x009BA4A0 ReadAsStringUntilWhitespace). Declaration only.
+    long SkipUntilWhitespace();                         // 0x009B9CE0
+#endif
+#ifdef FABLE_RETAIL_CSTRINGPARSER_READLINE
+    // Opt-in (chunk 2001, row 0x00AF4900): Ego_r.pdb ?ReadLineAsString@CStringParser@@QAE?AVCCharString@@XZ (0x009BA390). Declaration only.
+    CCharString ReadLineAsString();                     // 0x009BA390
+#endif
+    bool ReadAsStringUntilString(const CCharString&,CParsedItem&);
+    bool SkipPastString(const CCharString&);
+    bool SkipPastNextItemIfIs(const CCharString&);
+    bool SkipUntilString(const CCharString&);
+    CCharString ReadAsStringUntilString(const CCharString&);
+    long SkipPastNewline();
+    bool AtEnd(){return String[CursorPos.StringPos]==0;}
+    // pass 12 header wave (0x009BC120): Ego_r / FableWin ??0CStringParser@@QAE@ABV0@@Z, ?SkipPastWholeString@CStringParser@@QAE_NABVCCharString@@@Z,
+    // ?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z (out of line); ?GetStringPos@CStringParser@@QBEKXZ,
+    // ?GetFilename@CStringParser@@QBEABVCCharString@@XZ, ?GetErrorCallback@CStringParser@@QBEP6IXABVCCharString@@@ZXZ (inline in retail).
+    CStringParser(const CStringParser&);
+    bool SkipPastWholeString(const CCharString&);
+    CCharString ReadAsStringUntilPastString(const CCharString&);
+    unsigned long GetStringPos() const { return CursorPos.StringPos; }
+    const CCharString& GetFilename() const { return Filename; }
+    void (__fastcall *GetErrorCallback() const)(const CCharString&) { return ErrorCallback; }
+    // pass 12 header wave (0x00AE8D50): Ego_r / FableWin ?Init@CStringParser@@QAEXPBDP6IXABVCCharString@@@Z1J@Z,
+    // ?SetStringPos@CStringParser@@QAEXK@Z, ?SkipWhitespace@CStringParser@@QAEJXZ (out of line).
+    void Init(const char*,void (__fastcall*)(const CCharString&),const CCharString&,long);
+    void SetStringPos(unsigned long);
+    long SkipWhitespace();
+    // Codex pass 13 (row 0x009BB110 and its siblings): Ego_r / FableWin ??0CStringParser@@QAE@XZ, ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z,
+    // ?Init@CStringParser@@QAEXABVCCharString@@P6IX0@Z0J@Z, ?PeekNextItemType@..., ?ReadNextItem@..., ?ReadAsInteger@..., ?NextItemExists@...,
+    // ?ReadAsStringUntilWhitespace@... (out of line); ?GetLine@CStringParser@@QBEKXZ inline.
+#ifdef FABLE_RETAIL_CSTRINGPARSER_INLINE_DEFAULTCTOR
+    // Per-TU opt-in (chunk Q2, row 0x004C9120 CThing::Save): the default constructor expanded in place, as the CThing TU does for the
+    // parser of SerialiseThingInfo(bool, CCharString&, CSerialiseInfo&) (0x004C91FA..0x004C9241 and the landed 0x004C88E0: CBaseClass(),
+    // the vptr, the two strings, the comment list's node, then `String = 0`). Same members, no layout change.
+    CStringParser() { String = 0; }
+#else
+    CStringParser();
+#endif
+    CStringParser(const char*,void (__fastcall*)(const CCharString&)=0,const CCharString& filename=CCharString(""),long baseLineOffset=0);
+    void Init(const CCharString&,void (__fastcall*)(const CCharString&),const CCharString&,long);
+#ifdef FABLE_RETAIL_CSTRINGPARSER_INIT_STRING_INLINE
+    // Opt-in (chunk 2052, row 0x004A21F0): the body of the CCharString overload ?Init@CStringParser@@QAEXABVCCharString@@P6IX0@Z0J@Z
+    // (Ego_r.pdb), inline in retail: TempCharString = string (operator= 0x0099EFB0), then the const char* Init 0x009B9530 on the
+    // argument's characters (0x004A2624..0x004A2653 read the caller's string word, not TempCharString). Declared out of line above in the
+    // default path; this opt-in supplies the inline definition below the class.
+#endif
+    unsigned long GetLine() const { return CursorPos.Line; }
+    EParsedItemType PeekNextItemType();
+    bool ReadNextItem(CParsedItem&);
+#ifdef FABLE_RETAIL_CSTRINGPARSER_PEEKNEXTITEM
+    // Chunk 778 (row 0x00615E70): Ego_r.pdb ?PeekNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z (out of line, 0x009BA8C0).
+    bool PeekNextItem(CParsedItem&);
+#endif
+    long ReadAsInteger();
+#ifdef FABLE_RETAIL_CSTRINGPARSER_READASUHUGE
+    // Nested opt-in (chunk 779, row 0x00837E40 CThingTrackNode::ConstructFromLevelScript): Ego_r.pdb ?ReadAsUHUGE@CStringParser@@QAE_KXZ
+    // (retail 0x009BA5B0, result in edx:eax; bound by the landed CTCDRegionExit::OnSerialise 0x00779430), out of line. Declaration only.
+    unsigned __int64 ReadAsUHUGE();                     // 0x009BA5B0
+#endif
+    bool NextItemExists();
+#ifdef FABLE_RETAIL_CSTRINGPARSER_READQUOTED
+    // Nested opt-in (chunk 795, row 0x004B5500 CQuestManager::LoadGameState): Ego_r.pdb / FableWin.pdb
+    // ?ReadNextItemAsQuotedString@CStringParser@@QAE_NAAVCCharString@@@Z (retail 0x009BA1D0, landed; returns bool), out of line.
+    bool ReadNextItemAsQuotedString(CCharString&);      // 0x009BA1D0
+#endif
+    CCharString ReadAsStringUntilWhitespace();
+    CCharString ReadAsSymbol();
+    CCharString ReadAsString();
+    // chunk 751 (row 0x009BA650): Ego_r.pdb ?ReadAsFloat@CStringParser@@QAEMXZ and the protected ?Error@CStringParser@@IAEXABVCCharString@@@Z
+    // (0x009B95F0, landed).
+    float ReadAsFloat();
+    class CCursorPos {
+    public:
+        bool InQuotes;
+        unsigned long StringPos,Line;
+    };
+protected:
+    void Error(const CCharString&);
+#if defined(FABLE_RETAIL_CSTRINGPARSER_CALCINQUOTES_DECL) && !defined(FABLE_RETAIL_CSTRINGPARSER_MOVESTRINGPOS)
+    // NF129 (q4656, row 0x009B9BA0 SkipPastString): Ego_r.pdb / FableWin.pdb ?CalcInQuotes@CStringParser@@IBE_N_NPBD1@Z (protected const),
+    // called out of line at 0x009B9570 by SkipPastString / SkipPastWholeString (0x009B9BD5 / 0x009B9C35). Declaration only.
+    bool CalcInQuotes(bool,const char*,const char*) const;                // 0x009B9570
+#endif
+#ifdef FABLE_RETAIL_CSTRINGPARSER_MOVESTRINGPOS
+    // Chunk 756 (row 0x009B9D70 SkipPastNewline): Ego_r.pdb ?CalcInQuotes@CStringParser@@IBE_N_NPBD1@Z and ?MoveStringPos@CStringParser@@IAEXK@Z
+    // (protected). Inline: retail SkipPastNewline / SkipWhitespace expand both (the out-of-line CalcInQuotes copy is 0x009B9570).
+#ifdef FABLE_RETAIL_CSTRINGPARSER_MOVESTRINGPOS_EGOD
+    // hand4e nested opt-in (row 0x009B9D70): the two helpers in FableWin.pdb's statement order (CalcInQuotes 0x03058610: a while loop over
+    // pstart with the quote test and `in_quotes = !in_quotes`; MoveStringPos 0x030585A0: `if (n > 0)`, the end pointer pushed first as
+    // StringPos + n then + String, the start as String + StringPos) with Ego_d's parameter names (in_quotes, pstart, pend; n).
+    FABLE_FORCEINLINE bool CalcInQuotes(bool in_quotes,const char* pstart,const char* pend) const {
+        while(pstart!=pend) {
+            if(*pstart=='"'||*pstart=='\'')
+                in_quotes=!in_quotes;
+            ++pstart;
+        }
+        return in_quotes;
+    }
+    FABLE_FORCEINLINE void MoveStringPos(unsigned long n) {
+        if(n>0) {
+            CursorPos.InQuotes=CalcInQuotes(CursorPos.InQuotes,String+CursorPos.StringPos,String+(CursorPos.StringPos+n));
+            CursorPos.StringPos+=n;
+        }
+    }
+#else
+    FABLE_FORCEINLINE bool CalcInQuotes(bool inQuotes,const char* from,const char* to) const {
+        for(const char* p=from;p!=to;++p)
+            if(*p=='"'||*p=='\'')
+                inQuotes=!inQuotes;
+        return inQuotes;
+    }
+#ifdef FABLE_RETAIL_CSTRINGPARSER_TOKEN_MOVE
+    // Retail opt-in (Codex pass 17): native009b9e00 retains the original positive-count guard; capture the start pointer before scanning quotes.
+    FABLE_FORCEINLINE void MoveStringPos(unsigned long n) {
+        if(n>0) {
+            const char* from=String+CursorPos.StringPos;
+            CursorPos.InQuotes=CalcInQuotes(CursorPos.InQuotes,from,String+CursorPos.StringPos+n);
+            CursorPos.StringPos+=n;
+        }
+    }
+#else
+    FABLE_FORCEINLINE void MoveStringPos(unsigned long n) {
+        if(n) {
+            CursorPos.InQuotes=CalcInQuotes(CursorPos.InQuotes,String+CursorPos.StringPos,String+CursorPos.StringPos+n);
+            CursorPos.StringPos+=n;
+        }
+    }
+#endif
+#endif
+#endif
+    const char* String;
+    unsigned long BaseLineOffset;
+    CCharString Filename,TempCharString;
+    std::list<CStringParserCommentBoundaries> Comments;
+    void (__fastcall *ErrorCallback)(const CCharString&);
+    CCursorPos CursorPos;
+};
+FABLE_STATIC_ASSERT_AT(144, sizeof(CStringParser)==0x28);
+#ifdef FABLE_RETAIL_CSTRINGPARSER_INIT_STRING_INLINE
+inline void CStringParser::Init(const CCharString& string,void (__fastcall* errorCallback)(const CCharString&),const CCharString& filename,long baseLineOffset)
+{
+    TempCharString=string;
+    Init(string.GetAsCharArray(),errorCallback,filename,baseLineOffset);
+}
+#endif
+#endif
+#elif !defined(FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY)
+#ifndef FABLE_ENGINE_CSTRINGPARSER_H
+#define FABLE_ENGINE_CSTRINGPARSER_H
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CStringParser = 0x30.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CStringParser = 0x28.
+// Retail evidence: 0 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+class CCharStringData;
+struct _func___cdecl_void_CCharString_ptr;
+
+#pragma pack(push, 1)
+class CStringParser {
+public:
+    void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
+    void*                               String;              // +0x04 char *
+    unsigned long                       BaseLineOffset;      // +0x08
+    CCharStringData*                    Filename_PStringData; // +0x0c CCharString::PStringData
+    CCharStringData*                    TempCharString_PStringData; // +0x10 CCharString::PStringData
+    unsigned char                       Comments[0x4];       // +0x14 list<CStringParserCommentBoundaries,std::allocator<CStringParserCommentBoundaries>_>
+    _func___cdecl_void_CCharString_ptr* ErrorCallback;       // +0x18
+    unsigned char                       CursorPos[0xc];      // +0x1c CCursorPos
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT_AT(182, sizeof(CStringParser) == 0x28);
+FABLE_STATIC_ASSERT_AT(183, offsetof(CStringParser, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(184, offsetof(CStringParser, String) == 0x4);
+FABLE_STATIC_ASSERT_AT(185, offsetof(CStringParser, BaseLineOffset) == 0x8);
+FABLE_STATIC_ASSERT_AT(186, offsetof(CStringParser, Filename_PStringData) == 0xc);
+FABLE_STATIC_ASSERT_AT(187, offsetof(CStringParser, TempCharString_PStringData) == 0x10);
+FABLE_STATIC_ASSERT_AT(188, offsetof(CStringParser, Comments) == 0x14);
+FABLE_STATIC_ASSERT_AT(189, offsetof(CStringParser, ErrorCallback) == 0x18);
+FABLE_STATIC_ASSERT_AT(190, offsetof(CStringParser, CursorPos) == 0x1c);
+
+#endif // FABLE_ENGINE_CSTRINGPARSER_H
+
+#else
+#ifndef FABLE_ENGINE_CSTRINGPARSER_COMMENT_BOUNDARIES_H
+#define FABLE_ENGINE_CSTRINGPARSER_COMMENT_BOUNDARIES_H
+// Partial mode (NF245, 2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY
+// without FABLE_RETAIL_CSTRINGPARSER declares only the comment-list element, the same class as the full mode above (Ego_r.pdb:
+// CStringParserCommentBoundaries, size 8, char* PStart +0, char* PEnd +4), so a row that keeps its own CStringParser stand-in can
+// instantiate the shared stlport/fable_containers.h list<CStringParserCommentBoundaries> (its inline constructor allocates a node)
+// without a row-local model of the element. Add-only: with the macro undefined this branch is never reached.
+class CStringParserCommentBoundaries {public:const char* PStart;const char* PEnd;};
+#endif
+#endif

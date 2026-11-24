@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00717c50   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00717c50   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00717c50   RELOCATION_MATCH PASS   CActionTalkToThing
+
+WINS: 1
+  00717c50 RELOCATION_MATCH NTCScriptedControl::CActionTalkToThing::??0CActionTalkToThing

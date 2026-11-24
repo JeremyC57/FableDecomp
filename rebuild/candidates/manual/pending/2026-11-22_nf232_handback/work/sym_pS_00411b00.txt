@@ -1,0 +1,11 @@
+DEF ??$_Destroy@PAVCDateAndTime@@@std@@YAXPAVCDateAndTime@@0@Z
+DEF ??$_Destroy@VCDateAndTime@@@std@@YAXPAVCDateAndTime@@@Z
+DEF ??$__copy@PAVCDateAndTime@@PAV1@H@std@@YIPAVCDateAndTime@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+DEF ??$__copy_ptrs@PAVCDateAndTime@@PAV1@@std@@YAPAVCDateAndTime@@PAV1@00ABU__false_type@0@@Z
+DEF ??$__destroy@PAVCDateAndTime@@V1@@std@@YAXPAVCDateAndTime@@00@Z
+DEF ??$__destroy_aux@PAVCDateAndTime@@@std@@YAXPAVCDateAndTime@@0ABU__false_type@0@@Z
+DEF ??0__false_type@std@@QAE@XZ
+DEF ??0bidirectional_iterator_tag@std@@QAE@XZ
+DEF ??0forward_iterator_tag@std@@QAE@XZ
+DEF ??0random_access_iterator_tag@std@@QAE@XZ
+DEF ?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@0@Z

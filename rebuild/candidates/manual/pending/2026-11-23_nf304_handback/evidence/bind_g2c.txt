@@ -1,0 +1,30 @@
+#24 0082e780 ??1CScriptedMapBrush@@UAE@XZ
+   0082e780(self) - DEF=OK:??1CScriptedMapBrush@@UAE@XZ
+   00820f80 WRONG ??1CScriptedMapBrush@@QAE@XZ x1
+   008270c0 WRONG ?CScriptedMapBrush_dtor@@YIXPAVCScriptedMapBrush@@@Z x1
+#27 00555440 ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z
+   00555440(self) - DEF=WRONG:?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z
+   005559d0 WRONG ?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z x3
+   00555a90 OK ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z x4
+   005566a0 WRONG ?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z x1
+   00556810 WRONG ?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z x2
+   005570f0 WRONG ?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z x1
+#28 005556f0 ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z
+   005556f0(self) - DEF=WRONG:?UnhideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@@Z
+   00555a90 OK ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z x3
+   00556810 WRONG ?UnhideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@@Z x2
+#24 0082e780 ??1CScriptedMapBrush@@UAE@XZ
+   0082e780(self) - DEF=OK:??1CScriptedMapBrush@@UAE@XZ
+   00820f80 OK ??1CScriptedMapBrush@@UAE@XZ x1
+   008270c0 WRONG ?CScriptedMapBrush_dtor@@YIXPAVCScriptedMapBrush@@@Z x1
+#27 00555440 ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z
+   00555440(self) - DEF=OK:?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z
+   005559d0 OK ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z x3
+   00555a90 OK ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z x4
+   005566a0 OK ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z x1
+   00556810 OK ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z x2
+   005570f0 OK ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z x1
+#28 005556f0 ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z
+   005556f0(self) - DEF=OK:?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z
+   00555a90 OK ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z x3
+   00556810 OK ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z x2

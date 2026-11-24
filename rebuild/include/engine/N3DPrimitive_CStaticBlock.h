@@ -3,6 +3,9 @@
 #include "rebuild_abi.h"
 #include <stddef.h>
 class CTexture;
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADBINARY_PASS27
+class CMemoryDataInputStream;
+#endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_ORIGINAL_ACCESSORS
 namespace N3DPrimitive {
 class CBaseBlock {
@@ -36,6 +39,10 @@ private:
 namespace N3DPrimitive {
 // PDB complete base12/derived32 fields; native indexed stride32 and flags+a.
 class CBaseBlock {public:unsigned long PrimitiveCount,StartIndex;bool IsStrip,DegenerateTriangles;unsigned char ChangeFlags;
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADBINARY_PASS27
+    // FableWin 032FEE40, also in both constructors at native 00A94150 and 00A96270.
+    CBaseBlock() : PrimitiveCount(0), StartIndex(0), IsStrip(false), DegenerateTriangles(false), ChangeFlags(0) { }
+#endif
 #ifdef FABLE_RETAIL_CBASEBLOCK_ACCESSORS
     // Retail opt-in (chunk F2, row 0x00BCFB00): FableWin.pdb ?GetPrimitiveCount@CBaseBlock@N3DPrimitive@@QBEKXZ, ?GetStartIndex@..@@QBEKXZ
     // and ?GetPrimitiveType@..@@QBE?AW4EPrimitiveType@@XZ (inline in retail: the row reads +0 / +4 and forms 4 + (IsStrip != 0)).
@@ -50,7 +57,14 @@ class CBaseBlock {public:unsigned long PrimitiveCount,StartIndex;bool IsStrip,De
     void SaveBinary(class CDataOutputStream& stream);   // 0x00A8E6C0
 #endif
 };
-class CStaticBlock:public CBaseBlock {public:unsigned long DiffuseTextureFixupOffset,BumpTextureFixupOffset;CTexture* DiffuseTexture;CTexture* BumpTexture;long MaterialIndex;};
+class CStaticBlock:public CBaseBlock {public:unsigned long DiffuseTextureFixupOffset,BumpTextureFixupOffset;CTexture* DiffuseTexture;CTexture* BumpTexture;long MaterialIndex;
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADBINARY_PASS27
+    // FableWin 0330DAC0 initializes the pointers and fixups to zero and MaterialIndex to -1.
+    CStaticBlock() : DiffuseTextureFixupOffset(0), BumpTextureFixupOffset(0),
+                     DiffuseTexture(0), BumpTexture(0), MaterialIndex(-1) { }
+    void LoadBinary(CMemoryDataInputStream& is);                           // 00A8EA70
+#endif
+};
 }
 #endif
 FABLE_STATIC_ASSERT_AT(47, sizeof(N3DPrimitive::CBaseBlock)==12);

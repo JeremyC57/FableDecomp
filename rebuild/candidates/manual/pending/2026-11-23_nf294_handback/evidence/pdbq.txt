@@ -1,0 +1,7 @@
+egor=1 fablewin=1 ?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z
+egor=1 fablewin=1 ??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z
+egor=1 fablewin=1 ?Alloc@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+egor=1 fablewin=1 ?EntryExists@CBankFile@@QBE_NK@Z
+egor=1 fablewin=1 ?WritePadding@CBankFile@@AAEXK@Z
+egor=0 fablewin=1 ?Append@?$CBasicString@D@@QAEXDK@Z
+egor=1 fablewin=1 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z

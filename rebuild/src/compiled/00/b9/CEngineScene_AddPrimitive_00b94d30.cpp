@@ -57,7 +57,7 @@ class CEngineScene { public:
     long                          GridPrimitiveCount;       // +0x38
     long                          PersistentCount;          // +0x3c
     long                          NonPersistentCount;       // +0x40
-    CEngineSceneMap* GetMapAt(const C2DVector& position);   // 0x00B94BF0
+    CEngineSceneMap& GetMapAt(const C2DVector& position);   // 0x00B94BF0
     void AddPrimitive(CEngineInternalPrimitiveBase* primitive, unsigned long flags);
 };
 
@@ -68,7 +68,7 @@ void CEngineScene::AddPrimitive(CEngineInternalPrimitiveBase* primitive, unsigne
     if (!primitive->NonPersistent && primitive->Enable && (flags & 0x4001) == 1 && primitive->GetBoundingBoxWorldSpace(box)) {
         C3DVector centre = (box.Min + box.Max) * 0.5f;
         C3DVector extents = (box.Max - box.Min) * 0.5f;
-        GetMapAt(C2DVector(centre.X, centre.Y))->AddPrimitive(primitive, C2DVector(centre.X, centre.Y), extents.Length2D() * 2.0f);
+        GetMapAt(C2DVector(centre.X, centre.Y)).AddPrimitive(primitive, C2DVector(centre.X, centre.Y), extents.Length2D() * 2.0f);
         GridLayerMask |= layerMask;
         ++GridPrimitiveCount;
         return;

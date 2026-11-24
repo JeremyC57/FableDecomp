@@ -1,0 +1,12 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames)
+0x006d5050	CTCFollowed	RemoveEmoteIcon	?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z	CTCFollowed::RemoveEmoteIcon	?RemoveEmoteIcon@CTCFollowed@@QAEXAAVCThing@@@Z	both PDBs IAE (protected); HEAD object defines the QAE form (prefix Leaf `?RemoveEmoteIcon@`); access only (NF302 Q5 / NF304 Q6); its only QAE binder 0x006D5180 moves with it
+0x00701990	CReactionMatch_Sphere	TransferBinaryIn	?TransferBinaryIn@CReactionMatch_Sphere@@UAEXAAVCMemoryDataInputStream@@@Z	CReactionMatch_Sphere::TransferBinaryIn	?TransferBinaryIn@CReactionMatch_Sphere@@QAEXAAVCMemoryDataInputStream@@@Z	both PDBs UAE; the override follows its now-virtual local base (NF303 Q1); HEAD Leaf was the partial `TransferBinaryIn@CReactionMatch_Sphere`; no binders (0 call sites; one vftable slot, a QAE spelling can never be a slot)
+0x00835ac0	CThingDeadCreature	DrawPreparePrimitivesForRendering	?DrawPreparePrimitivesForRendering@CThingDeadCreature@@MAE_NABVCEnginePrimitivePrepareInfo@@@Z	CThingDeadCreature::DrawPreparePrimitivesForRendering	?DrawPreparePrimitivesForRendering@CThingDeadCreature@@QAE_NABVCEnginePrimitivePrepareInfo@@@Z	both PDBs MAE (protected virtual); NF303 Q1 plus an access label (question Q5); HEAD Leaf was the bare name; no binders (0 call sites; one vftable slot)
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x006d5180	?RemoveEmoteIcon@CTCFollowed@@QAEXAAVCThing@@@Z	?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z	0x006d5050
+0x00701990	?TransferBinaryIn@CReactionMatch@@QAEXAAVCMemoryDataInputStream@@@Z	?TransferBinaryIn@CReactionMatch@@UAEXAAVCMemoryDataInputStream@@@Z	0x006fefb0
+0x00835ac0	?DrawPreparePrimitivesForRendering@CThingPhysical@@QAE_NABVCEnginePrimitivePrepareInfo@@@Z	?DrawPreparePrimitivesForRendering@CThingPhysical@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z	0x006a64d0
+0x00709b10	??1C3DAnimationInterpolator@@QAE@XZ	??1C3DAnimationInterpolator@@UAE@XZ	0x004c2e90
+0x00708a30	??1C3DAnimationInterpolator@@QAE@XZ	??1C3DAnimationInterpolator@@UAE@XZ	0x004c2e90
+# Held (NOT for this landing; evidence/held_18/, entry 18): self 0x0097e330 ?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z -> IAEX_N; callers 0x00967930 / 0x00967b40 / 0x00968bc0 the same; 0x009689c0 (NF310 lock) still needed

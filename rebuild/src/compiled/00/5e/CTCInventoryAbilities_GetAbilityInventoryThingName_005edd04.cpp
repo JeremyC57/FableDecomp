@@ -1,3 +1,4 @@
+// Leaf: ?GetAbilityInventoryThingName@CTCInventoryAbilities@@ABE?AVCCharString@@W4EHeroAbility@@@Z
 // CTCInventoryAbilities::GetAbilityInventoryThingName(EHeroAbility ability) -- the inventory thing def name of an ability
 // Retail 0x005EDD04, 307 bytes including the 19-entry jump table at 0x005EDDEB (ret 8: hidden CCharString result
 // + ability). A dense switch over abilities 1..19 (`dec eax ; cmp eax,12h ; ja default ; jmp [table]`): every
@@ -16,10 +17,12 @@ class CCharString { public:
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 
 class CTCInventoryAbilities { public:
-    CCharString GetAbilityInventoryThingName(EHeroAbility ability);
+    private:
+    CCharString GetAbilityInventoryThingName(EHeroAbility ability) const;
+    public:
 };
 
-CCharString CTCInventoryAbilities::GetAbilityInventoryThingName(EHeroAbility ability)
+CCharString CTCInventoryAbilities::GetAbilityInventoryThingName(EHeroAbility ability) const
 {
     switch (ability) {
     case 1: return CCharString("HERO_ABILITY_FORCE_PUSH_INVENTORY_THING");

@@ -1,0 +1,10 @@
+## HEAD set: H_005be028.obj H_005ee418.obj H_006d77c0.obj H_0072e940.obj H_0077d4b0.obj H_00784600.obj H_007e00d0.obj H_006c9fa0.obj
+duplicates 0
+
+UNRESOLVED 7 ?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z
+UNRESOLVED 1 ?GiveTutorialForCategory@CUserProfileManager@@QAE_NW4ETutorialCategory@@_N@Z
+## new set: N_005be028.obj N_005ee418.obj N_006d77c0.obj N_0072e940.obj N_0077d4b0.obj N_00784600.obj N_007e00d0.obj H_006c9fa0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GiveTutorialForCategory@CUserProfileManager@@QAE_NW4ETutorialCategory@@_N@Z
+LK_DONE

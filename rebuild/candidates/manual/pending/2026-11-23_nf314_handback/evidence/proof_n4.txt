@@ -1,0 +1,13 @@
+##### 00692b30 renames: ?GetWorld@CThing@@QBEPAVCWorld@@XZ=?PeekWorld@CThing@@IBEABVCWorld@@XZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 006655a0 renames: ?GetWorld@CThing@@QAEPAVCWorld@@XZ=?PeekWorld@CThing@@IBEABVCWorld@@XZ
+sections head 12 new 12
+ALL_EQ text_sections_equal=10
+tables H=0 N=0
+##### 00717aa0 renames: ??0CActionTalkBase@@QAE@PAVCThing@@_N11@Z=??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z
+UNMAPPED old=['??1CActionTalkBase@@QAE@XZ'] new=['??1CActionTalkBase@NTCScriptedControl@@QAE@XZ']
+sections head 10 new 10
+ALL_EQ text_sections_equal=8
+tables H=1 N=1

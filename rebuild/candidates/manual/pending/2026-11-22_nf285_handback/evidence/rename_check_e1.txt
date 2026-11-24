@@ -1,0 +1,4 @@
+# rename check (string compare, expected per ENTRIES line 1 / D3)
+0048f50c OK ?GFAYToVY_009e1dd0@@YGMM@Z=?GFAYToVY@@YIMM@Z
+00437210 OK ?GFAYToVY_009e1dd0@@YIMM@Z=?GFAYToVY@@YIMM@Z
+0043e4d0 OK ?GFAYToVY_009e1dd0@@YIMM@Z=?GFAYToVY@@YIMM@Z

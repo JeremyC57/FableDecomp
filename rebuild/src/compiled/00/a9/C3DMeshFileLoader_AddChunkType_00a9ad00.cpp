@@ -1,5 +1,5 @@
 // C3DMeshFileLoader::AddChunkType(const CChunkedFileChunk& chunkType, CChunkedFileSuperChunk* parent) -- make a fresh prototype instance of a chunk type, register it with the parent super chunk and return a counted pointer to it
-// Leaf: ?AddChunkType@
+// Leaf: ?AddChunkType@C3DMeshFileLoader@@AAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@PAVCChunkedFileSuperChunk@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A9AD00, 119 bytes (+ int3 padding), thiscall `ret 0Ch` (hidden result,
 //   chunkType, parent; `this` unused), returns the hidden pointer.
@@ -66,7 +66,9 @@ public:
     CCountedPointer<CChunkedFileChunk> GroupChunkType;            // +0x58
     CCountedPointer<CChunkedFileChunk> PrimitiveClothChunkType;   // +0x60
     CCountedPointer<CChunkedFileChunk> SubMeshClothChunkType;     // +0x68
+    private:
     CCountedPointer<CChunkedFileChunk> AddChunkType(const CChunkedFileChunk& chunkType, CChunkedFileSuperChunk* parent);
+    public:
     void RegisterClothSubChunkType(const CChunkedFileChunk& chunkType);
 };
 

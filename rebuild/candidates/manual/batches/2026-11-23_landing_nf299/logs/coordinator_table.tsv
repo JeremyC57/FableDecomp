@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?GFGetIME@@YAPAUCIMECalls@@XZ	00404a80	00851860	coordinator: witness HEAD object binds ?Get@CIME@NUISystem@@SIAAV12@XZ (NF301 note); no landed source binds GFGetIME

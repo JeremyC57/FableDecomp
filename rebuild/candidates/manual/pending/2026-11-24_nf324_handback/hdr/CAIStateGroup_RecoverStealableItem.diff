@@ -1,0 +1,21 @@
+--- orig/hdr_CAIStateGroup_RecoverStealableItem.h	2026-11-24 01:17:39.459696689 +0000
++++ hdr/engine/CAIStateGroup_RecoverStealableItem.h	2026-11-24 01:17:39.497168396 +0000
+@@ -32,8 +32,17 @@
+     bool ReachedDestination;                                             // +0x34
+     long PickUpActionID;                                                 // +0x38
+     bool NeedsCleanup;                                                   // +0x3c
++#ifdef FABLE_RETAIL_CAISTATEGROUP_RECOVERSTEALABLEITEM_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x00901600: ?IsTimingCritical@CAIStateGroup_RecoverStealableItem@@UBE_NXZ (FableWin.pdb)
++public:
++    virtual bool IsTimingCritical() const;
++protected:
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_RecoverStealableItem) == 0x40);
++FABLE_STATIC_ASSERT_AT(36, sizeof(CAIStateGroup_RecoverStealableItem) == 0x40);
+ #else
+ 
+ #pragma pack(push, 1)

@@ -1,0 +1,73 @@
+diff --git a/rebuild/include/engine/CNewFrontendGameComponent.h b/rebuild/include/engine/CNewFrontendGameComponent.h
+index 64167ec5d7..75b44a9ed1 100644
+--- a/rebuild/include/engine/CNewFrontendGameComponent.h
++++ b/rebuild/include/engine/CNewFrontendGameComponent.h
+@@ -14,6 +14,10 @@
+ #include "engine/CDefPointer.h"
+ #include "engine/CStopWatch.h"
+ #include "fable_string.h"
++#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_FILENAMES_FILETIMES
++#include "stlport/fable_containers.h"
++#include "engine/CDateAndTime.h"
++#endif
+ class CEngineInterpolationInfo;
+ namespace NUISystem { class CFrontEndManager; }
+ #endif
+@@ -48,8 +52,19 @@ private:
+     // SaveGame +0x84 (Run 0x0042F43C), m_pFrontEndManager +0xB4, m_fLastUpdateTime +0xB8 / m_fLastRenderTime +0xBC (0x0042EC91),
+     // m_attractModeTimer +0x100, m_inputDelayTimer +0x120 (its m_bIsRunning read at +0x138, 0x0042F07F), WindowsMediaPlayerInstalled
+     // +0x144 (0x0042EDE2); the AVI members stay opaque.
++#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_FILENAMES_FILETIMES
++    // NF231 opt-in (row 0x0042EBB6 CNewFrontendGameComponent::Shutdown, needs FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RUN): the two
++    // STLport vectors typed as Ego_r.pdb (struct_layouts_egor.tsv: vector<CWideString,std::allocator<CWideString> > FileNames +0x6C,
++    // vector<CDateAndTime,std::allocator<CDateAndTime> > FileTimes) and Ego_d.pdb (field list 0x57888: FileNames type 0x7D2B
++    // std::vector<CWideString,std::allocator<CWideString> >, FileTimes type 0x1D9E0 std::vector<CDateAndTime,...>, both private)
++    // declare them; 12 bytes each in retail (+0x6C / +0x78, Shutdown 0x0042EC31 `lea ecx,[esi+6Ch]` -> erase 0x00412450, 0x0042EC3E `lea ecx,[esi+78h]` -> erase 0x00411B00).
++    // No layout change (same offsets and sizes as the opaque arrays below).
++    std::vector<CWideString> FileNames;                                  // +0x6C
++    std::vector<CDateAndTime> FileTimes;                                 // +0x78
++#else
+     unsigned char FileNames[0xc];                                        // +0x6C vector<CWideString>
+     unsigned char FileTimes[0xc];                                        // +0x78 vector<CDateAndTime>
++#endif
+     CWideString SaveGame;                                                // +0x84
+     unsigned char _pad_0x88[0xb4 - 0x88];                                // +0x88 PAVITextureShow .. XMVCodeLoaded
+     NUISystem::CFrontEndManager* m_pFrontEndManager;                     // +0xB4
+diff --git a/rebuild/include/engine/CStartupDefinitionManager.h b/rebuild/include/engine/CStartupDefinitionManager.h
+index 6bda83433a..bbc4f01236 100644
+--- a/rebuild/include/engine/CStartupDefinitionManager.h
++++ b/rebuild/include/engine/CStartupDefinitionManager.h
+@@ -12,6 +12,13 @@
+ class CStartupDefinitionManager : public CDefinitionManager {
+ public:
+     static CStartupDefinitionManager& __fastcall Get();
++#ifdef FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_SET
++    // NF231 opt-in (row 0x0042EBB6 CNewFrontendGameComponent::Shutdown): Ego_r.pdb 0x00441A90 / FableWin.pdb 0x01B31560
++    // ?Set@CStartupDefinitionManager@@SIXPAV1@@Z (public static __fastcall), out of line in retail at 0x004336B0 (`push ecx ;
++    // mov ecx,0x013B8760 ; call 0x00433D3A ; ret`: the pointer handed to the counted pointer PClass); Shutdown calls it with 0
++    // (0x0042EBD4 `xor ecx,ecx ; ... call 0x004336B0`). The landed 0x0042F5A9 binds the same spelling. Declaration only.
++    static void __fastcall Set(CStartupDefinitionManager* manager);      // 0x004336B0
++#endif
+ #ifdef FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_ISALLOCATED
+     // Nested opt-in (wf12 row 0x004085F0 CUserProfileManager::ResetAssignedInputs): FableWin.pdb
+     // ?IsAllocated@CStartupDefinitionManager@@SI_NXZ (0x018377B4 thunk / 0x01888A60 body, static __fastcall bool), inlined in
+@@ -29,7 +36,7 @@ protected:
+ public:
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CStartupDefinitionManager)==0xd0);
++FABLE_STATIC_ASSERT_AT(32, sizeof(CStartupDefinitionManager)==0xd0);
+ #ifdef FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_ISALLOCATED
+ #include "engine/CCountedPointer.h"
+ // The counted pointer at 0x013B8760 (Set stores it, Get 0x0043368D is `mov eax,[0x013B8760] ; ret`, atexit dtor 0x01228AF1 ->
+@@ -69,8 +76,8 @@ public:
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CStartupDefinitionManager) == 0xd0);
+-FABLE_STATIC_ASSERT(offsetof(CStartupDefinitionManager, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(72, sizeof(CStartupDefinitionManager) == 0xd0);
++FABLE_STATIC_ASSERT_AT(73, offsetof(CStartupDefinitionManager, __vftable) == 0x0);
+ 
+ #endif // FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER
+ 

@@ -1,0 +1,72 @@
+##### 005b37f7 renames: ?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z=?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z
+sections head 31 new 31
+ALL_EQ text_sections_equal=26
+tables H=2 N=2
+##### 005cd767 renames: ?GetAnimation@CAnimationSet@@QBEPAVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z=?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z
+sections head 28 new 28
+ALL_EQ text_sections_equal=23
+tables H=2 N=2
+##### 007a7bf0 renames: ??1CCreatureAction_UnsheatheItemFromInventory@@QAE@XZ=??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ
+sections head 10 new 10
+ALL_EQ text_sections_equal=7
+tables H=1 N=1
+##### 00740340 renames: ??0CModeStandBase@@QAE@PAVCThing@@@Z=??0CModeStandBase@@QAE@AAVCThing@@@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=6
+tables H=3 N=3
+##### 00477964 renames: ??4CParentDefClassBase@@QAEPAV0@AAV0@@Z=??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 006f9640 renames: ?Lookup@CSymbolMap@@QBE_NABVCCharString@@PAJ@Z=?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z
+sections head 16 new 16
+ALL_EQ text_sections_equal=15
+tables H=0 N=0
+##### 00ae85b0 renames: ?Lookup@CSymbolMap@@QAE_NABVCCharString@@PAJ@Z=?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 004ff440 renames: ?Get@?$CTBaseSingleton@VCEngineManager@@@@SIPAVCEngineManager@@XZ=?Get@?$CTBaseSingleton@VCEngineManager@@@@SIAAVCEngineManager@@XZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00750470 renames: ?GetAnimation@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ=?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ
+sections head 16 new 16
+ALL_EQ text_sections_equal=14
+tables H=0 N=0
+##### 008dbb30 renames: ?GetAnimateThing@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ=?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ
+sections head 23 new 23
+ALL_EQ text_sections_equal=19
+tables H=0 N=0
+##### 0098abf0 renames: ??1CVertexShaderConstantLayout@@QAE@XZ=??1CVertexShaderConstantLayout@@UAE@XZ
+sections head 17 new 17
+ALL_EQ text_sections_equal=12
+tables H=4 N=4
+##### 009574d0 renames: ?FinishUpdate@CAIStateGroupBase@@QAEXXZ=?Terminate@CAIStateGroupBase@@QAEXXZ
+sections head 11 new 11
+ALL_EQ text_sections_equal=8
+tables H=1 N=1
+##### 008ec260 renames: ?OnAnimationLoaded@CCombatActionBase@@QAEXXZ=?OnAnimationLoaded@CCombatActionBase@@MAEXXZ ?OnAnimationLoaded@CCreatureAction_UndeadRiseUp@@QAEXXZ=?OnAnimationLoaded@CCreatureAction_UndeadRiseUp@@UAEXXZ
+sections head 7 new 7
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 009c1050 renames: ?InitialiseDeviceState@CDisplayManager@@QAEXXZ=?ResizeWindowToBackBufferSize@CDisplayManager@@QAEXXZ
+sections head 7 new 7
+ALL_EQ text_sections_equal=5
+tables H=1 N=1
+##### 009bfb30 renames: ?GetDepthBufferFormat@CDisplayManager@@QAE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z=?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z
+sections head 9 new 9
+ALL_EQ text_sections_equal=4
+tables H=1 N=1
+##### 0056a980 renames: ?DetachAll@CTCBoastingCrowdControl@@QAEXXZ=?OnNoBoastsRemain@CTCBoastingCrowdControl@@QAEXXZ
+sections head 24 new 24
+ALL_EQ text_sections_equal=22
+tables H=0 N=0
+##### 00733690 renames: ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z=?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=11
+tables H=0 N=0
+##### 006ec4f0 renames: ?GetCombatTypeDef@CThingCreatureBase@@QAEPBVCCombatTypeDef@@XZ=?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ
+sections head 23 new 23
+ALL_EQ text_sections_equal=19
+tables H=1 N=1

@@ -8,6 +8,11 @@
 #include "LHHttp2.h"
 namespace LHNetworkLib {
 struct LHHttpHeaderStatus {
+#ifdef FABLE_RETAIL_SCOREBOARD_TRANSACTION_PASS28
+    // The native status object is constructed at 00569C50 and destroyed at 00569D30.
+    LHHttpHeaderStatus();
+    ~LHHttpHeaderStatus();
+#endif
     LH_HTTP_SERVER_CODES hsServerCode;                       // +0x00
     LHHttpHeaders  hsDocumentHeader;                         // +0x04
     std::string    hsLocation;                               // +0x1c

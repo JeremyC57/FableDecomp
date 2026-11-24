@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+# none: reloc_bindings.tsv has no line for any of the three AllowsCombinationAnims symbols (vtable slots only, no code reference; the table keeps no vtable-slot lines for the sibling slot rows either)

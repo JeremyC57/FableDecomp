@@ -1,0 +1,16 @@
+## ?IsMealTime@CAIStateGroup_SitForMeal@@ABE_NXZ callers=3
+    ?GetFoodFromCookingPot@CAIStateGroup_SitForMeal@@AAE_NXZ
+    ?IsRunnable@CAIStateGroup_SitForMeal@@MAE_NXZ
+    ?IsStateGroupStillValid@CAIStateGroup_SitForMeal@@MBE_NXZ
+## ?GetCombatWheelRadiusForAttacker@CCombatManager@@QBEMABVCThingCreatureBase@@@Z callers=1
+    ?GetProximityToBeConsideredNearToEnemyCreature@CAIStateGroup_MeleeCombatNearby2@@ABEMXZ
+## ?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z callers=8
+    ?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z
+    ?GetDefenderZone@CCombatManager@@QBE?AW4ECombatZone@@ABVCThingCreatureBase@@0J@Z
+    ?GetProximityToBeConsideredNearToEnemyCreature@CAIStateGroup_MeleeCombatNearby2@@ABEMXZ
+    ?IsEnemyCreatureInCombatPosition@CAIStateGroup_MeleeCombatNearby2@@ABE_NXZ
+    ?IsEnemyCreatureInCombatPosition@CAIStateGroup_MeleeCombatNearby@@ABE_NXZ
+    ?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby@@AAE_NXZ
+    ?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+    ?SetupNextSequenceForAttacker@CCombatManager@@AAEXAAUCCombatantInfo@@@Z
+## ?SetAttackerProngAsInvalid@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z callers=0

@@ -1,0 +1,18 @@
+## HEAD set: H_009183a0.obj H_00918880.obj H_009490d0.obj H_0094a0e0.obj H_00977b10.obj H_00977c40.obj H_0095a490.obj H_0095c1f0.obj 00918640.obj 0095b820.obj 0095b9e0.obj 0095bcf0.obj 00918510.obj 009185f0.obj 00949ab0.obj 0094a3b0.obj 00977e00.obj 0095a6c0.obj
+duplicates 0
+
+UNRESOLVED 1 ?Attack@CAIStateGroup_HoverHornetQueen@@QAEXXZ
+UNRESOLVED 1 ?DiveBomb@CAIStateGroup_HoverHornetQueen@@QAEXXZ
+UNRESOLVED 1 ?FallAsleep@CAIStateGroup_GoToPub@@IAE_NXZ
+UNRESOLVED 1 ?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ
+UNRESOLVED 1 ?FindFreeParticularGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@J_N@Z
+UNRESOLVED 1 ?GetBar@CAIStateGroup_GoToPub@@IAE_NXZ
+UNRESOLVED 1 ?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@IAE_NJ@Z
+UNRESOLVED 2 ?OnReplace@CAIStateGroup_Gaze@@MAEXXZ
+UNRESOLVED 1 ?Spawn@CAIStateGroup_HoverHornetQueen@@QAEXXZ
+UNRESOLVED 1 ?g_HornetDiveBombRange@@3MA
+## new set: 009183a0.obj 00918880.obj 009490d0.obj 0094a0e0.obj 00977b10.obj 00977c40.obj 0095a490.obj 0095c1f0.obj 00918640.obj 0095b820.obj 0095b9e0.obj 0095bcf0.obj 00918510.obj 009185f0.obj 00949ab0.obj 0094a3b0.obj 00977e00.obj 0095a6c0.obj
+duplicates 0
+
+UNRESOLVED 1 ?g_HornetDiveBombRange@@3MA
+LK_DONE

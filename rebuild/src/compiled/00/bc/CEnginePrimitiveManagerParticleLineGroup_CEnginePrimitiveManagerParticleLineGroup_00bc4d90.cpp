@@ -81,7 +81,10 @@ class CEnginePrimitiveManagerParticleLineGroup : public CEnginePrimitiveManager 
     CEngineParticleConstantBlock ConstantBlock[30];    // +0x80
     CEnginePrimitiveManagerParticleLineGroup(CEngineSceneArray* scenes);
     virtual ~CEnginePrimitiveManagerParticleLineGroup();
-    void BuildBuffers();                           // 0x00BC3E10
+    private:
+    void BuildBuffers();
+    public:
+                           // 0x00BC3E10
 };
 
 CEnginePrimitiveManagerParticleLineGroup::CEnginePrimitiveManagerParticleLineGroup(CEngineSceneArray* scenes)

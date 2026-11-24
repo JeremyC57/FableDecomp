@@ -64,6 +64,17 @@ struct CAIStateGroup_TavernServer {
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_TAVERNSERVER_FLAT_METHODS
+// Opt-in (NF285, 2026-11-22; row 0x00967650 IsRunnable): declarations only, no layout change, of the public members the flat-view
+// callers bind, as Ego_r.pdb / FableWin.pdb spell them (?<Name>@CAIStateGroup_TavernServer@@QAE_NXZ / QAEXXZ; the same addresses as
+// the _METHODS block of the retail branch, Ego_r donor order IsCarryingJug / GetServingPoint / FreeServingPoint / FreeBarPoint / GetJug).
+bool GetBar();                                                // 0x00966AF0
+bool IsCarryingJug();                                         // 0x00966CF0
+bool GetServingPoint();                                       // 0x00966DA0
+void FreeServingPoint();                                      // 0x009670A0
+void FreeBarPoint();                                          // 0x00967110
+bool GetJug();                                                // 0x00967180
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08

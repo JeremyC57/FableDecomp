@@ -59,11 +59,11 @@ public:
 };
 class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:
     unsigned char _body[4];
-    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);   // 0x00867AF0
+    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase& owner, bool flip);   // 0x00867AF0 (Ego_r + FableWin AAV)
 };
 class CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath : public CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:   // vtable 0x01271A64
     CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath(CThingCreatureBase* owner)
-        : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, false) { }
+        : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(*owner, false) { }
     virtual void v00();
 };
 class CResurrectionItemDef { public:

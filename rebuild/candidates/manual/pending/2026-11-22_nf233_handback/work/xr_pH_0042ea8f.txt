@@ -1,0 +1,9 @@
+004131a0	??0CMainGameComponentInit@@QAE@XZ	x1
+0051d8e0	??0CGameComponent@@QAE@PAVCGame@@@Z	x1
+0062f740	??0CStopWatch@@QAE@XZ	x3
+0099b6b0	??0CWideString@@QAE@PBG@Z	x1
+0099b800	??4CWideString@@QAEABV0@PBG@Z	x2
+009e1bc0	?GFGetTime@@YINXZ	x2
+0122d70c	_g_emptyWide	x1
+01230c94	??_7CNewFrontendGameComponent@@6BCGameComponentInterface@@@	x1
+01230ca0	??_7CNewFrontendGameComponent@@6BCBase@@@	x1

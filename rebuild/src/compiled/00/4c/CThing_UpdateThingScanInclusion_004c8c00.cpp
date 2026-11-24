@@ -50,7 +50,7 @@ public:
         }
         return false;
     }
-    void UpdateThingScanInclusion();
+    protected: void UpdateThingScanInclusion(); public:
 };
 void CThing::UpdateThingScanInclusion()
 {

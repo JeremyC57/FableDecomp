@@ -1,0 +1,22 @@
+79	008574d0	78	008c4f50	SetName	SetCombatAnimation	CLEAN	standin=--	pdb=EF	T_STAYOFF
+96	00a3a9c0	63	00a3aa40	ZAlloc	Alloc	PRIV	standin=--	pdb=EF	B_T3
+97	00a3aa00	12	00a3aa40	ZFree	Free	PRIV	standin=--	pdb=EF	B_T3
+98	00a3aa10	38	00996230	Init	Initialise	PRIV	standin=--	pdb=EF	
+118	007a4120	23	007a1870	DestroyObject	DeleteData	CLEAN	standin=--	pdb=EF	T_STAYOFF
+166	00996610	449	004b64e0	WriteBuffer	WriteCompressed	CLEAN	standin=--	pdb=EF	
+238	006988b0	147	00699090	Extra	PushCurrentManualMode	CLEAN	standin=--	pdb=EF	T_STAYOFF B_STAYOFF
+311	00a629d0	29	009cd850	DeallocateMemory	Clear	CLEAN	standin=--	pdb=EF	
+316	006dfda0	33	006e1620	SetHidden	SetParticleCreationDisabled	CLEAN	standin=--	pdb=-F	B_STAYOFF
+331	008fa9f0	133	008fadb0	Finalise	GetPointsList	CLEAN	standin=--	pdb=EF	
+342	00d89ad0	541	00d87cb0	PlayCutScene	PlayCutscene	CLEAN	standin=--	pdb=EF	B_STAYOFF
+350	00f3ae50	353	00f3afc0	CompressToBuffer	Compress	CLEAN	standin=--	pdb=EF	B_STAYOFF
+419	007338a0	102	007339e0	OnBlockHoldExpired	UnsetBlocking	CLEAN	standin=--	pdb=EF	B_STAYOFF
+442	0078f820	203	0072ba40	CancelAbilities	CancelMove	CLEAN	standin=--	pdb=EF	
+463	006c5920	117	007baf00	EndDeed	RemoveDeedStillSearchingForWitnesses	CLEAN	standin=--	pdb=EF	B_STAYOFF
+492	005fc510	197	00602f30	ReleaseMapScreenPrimitives	ResetPrimitiveHandles	CLEAN	standin=--	pdb=EF	B_STAYOFF
+499	007714b0	87	00771620	PushSourceDefIndex	PushNewSourceDef	CLEAN	standin=--	pdb=EF	
+501	007e60f0	183	007e61b0	PlaySound	PlaySoundW	CLEAN	standin=--	pdb=EF	
+521	0066add0	63	007c6da0	StopSample	StopAttachedSound	CLEAN	standin=--	pdb=EF	
+537	007ee540	84	0093ae80	GetVillage	GetPVillage	CLEAN	standin=--	pdb=EF	
+585	0098f380	24	0098f3a0	ThreadProc	BeginThread	PRIV	standin=--	pdb=EF	
+607	0099b4d0	62	0099bdb0	UnassignString_0099b4d0	UnassignString	PRIV	standin=--	pdb=EF	

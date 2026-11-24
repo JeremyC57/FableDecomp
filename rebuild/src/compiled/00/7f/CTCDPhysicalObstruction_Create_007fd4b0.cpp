@@ -92,7 +92,7 @@ public:
         Radius = radius;
     }
     static CThing* __fastcall Create(const C3DVector& startPos, const C3DVector& endPos, float radius);
-    void Construct(const C3DVector& pos);                       // 0x007FD430
+    private: void Construct(const C3DVector& pos); public:                       // 0x007FD430
 };
 
 CThing* __fastcall CTCDPhysicalObstruction::Create(const C3DVector& startPos, const C3DVector& endPos, float radius)

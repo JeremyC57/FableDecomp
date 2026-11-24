@@ -8,6 +8,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_GUARD_REACT_TO_BRIBE_PASS27
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThingPlayerCreature;
+
+class CAIStateGroup_MinionGuardReactToBribe : public CAIStateGroupBase {
+public:
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);
+    virtual bool IsRunnable();
+    virtual bool IsStillValid() const;
+    virtual void Update();
+    static CCharString FABLE_FASTCALL GetName();
+    static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+private:
+    CIntelligentPointer<CThingPlayerCreature> PHero;
+    long FrameLastReactedToReceiveing;
+    bool HasRecievedBribe;
+};
+FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_MinionGuardReactToBribe) == 0x24);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -33,5 +53,7 @@ FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_MinionGuardReactToBribe, __vft
 FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_MinionGuardReactToBribe, PHero) == 0x14);
 FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_MinionGuardReactToBribe, FrameLastReactedToReceiveing) == 0x1c);
 FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_MinionGuardReactToBribe, HasRecievedBribe) == 0x20);
+
+#endif
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONGUARDREACTTOBRIBE_H

@@ -13,10 +13,10 @@ class CThing;
 
 class CTCBerserk { public:
     unsigned char _body[0x74];       // sizeof(CTCBerserk) = 0x74
-    CTCBerserk(CThing* owner);                   // 0x0078C210
+    CTCBerserk(CThing& owner);                   // 0x0078C210
 };
 
 CTCBerserk* __fastcall CTCBerserk_Alloc(CThing* owner)
 {
-    return new CTCBerserk(owner);
+    return new CTCBerserk(*owner);
 }

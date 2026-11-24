@@ -1,0 +1,29 @@
+SAME	00845c70	?FinishAction@CCreatureAction_StartSneaking@@UAEXXZ	?FinishAction@CCreatureAction_StartSneaking@@UAEXXZ
+LEAF_DIFF	00865a90	?GetAnimDelayTime@CCreatureAction_BeDazed@@UBEJXZ	(no Leaf)
+SAME	006924d0	?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ	?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ
+LEAF_DIFF	0084a820	?GetAnimExtraFlags@CCreatureAction_DropGenericBox@@UBEKXZ	(no Leaf)
+LEAF_DIFF	00941ba0	?GetAnimExtraFlags@CCreatureAction_PlayHopscotch@@UBEKXZ	(no Leaf)
+LEAF_DIFF	00865a80	?GetAnimationTransitionInTime@CCreatureAction_BeDazed@@UBEJXZ	(no Leaf)
+SAME	008ed850	?Initialise@CCreatureAction_BeDazed@@UAEXXZ	?Initialise@CCreatureAction_BeDazed@@UAEXXZ
+LEAF_DIFF	008546a0	?Initialise@CCreatureAction_SpiritReturnToHero@@UAEXXZ	?CCreatureAction_SpiritReturnToHero_Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z
+LEAF_DIFF	0062d7c0	?IsPreventingNormalMovement@CCreatureAction_StartSneaking@@UBE_NXZ	(no Leaf)
+LEAF_DIFF	0062d860	?IsPreventingNormalMovement@CCreatureAction_StopSneaking@@UBE_NXZ	(no Leaf)
+LEAF_DIFF	00941bb0	?IsUsingAnimationMovement@CCreatureAction_PlayHopscotch@@UBE_NXZ	(no Leaf)
+SAME	008424a0	?PerformAction@CCreatureAction_ActivateZTarget@@UAEXXZ	?PerformAction@CCreatureAction_ActivateZTarget@@UAEXXZ
+LEAF_DIFF	00849320	?PerformAction@CCreatureAction_AlertToPlayer@@UAEXXZ	(no Leaf)
+LEAF_DIFF	00865a70	?PerformAction@CCreatureAction_BeDazed@@UAEXXZ	(no Leaf)
+LEAF_DIFF	00849140	?PerformAction@CCreatureAction_CallSpouseHome@@UAEXXZ	(no Leaf)
+LEAF_DIFF	009111f0	?PerformAction@CCreatureAction_Curiosity@@UAEXXZ	(no Leaf)
+SAME	00848d10	?PerformAction@CCreatureAction_DropGenericBox@@UAEXXZ	?PerformAction@CCreatureAction_DropGenericBox@@UAEXXZ
+SAME	00845fe0	?PerformAction@CCreatureAction_DropWeapon@@UAEXXZ	?PerformAction@CCreatureAction_DropWeapon@@UAEXXZ
+LEAF_DIFF	008424d0	?PerformAction@CCreatureAction_LookThroughWindow@@UAEXXZ	(no Leaf)
+LEAF_DIFF	00849250	?PerformAction@CCreatureAction_OrderSecuritySweep@@UAEXXZ	(no Leaf)
+LEAF_DIFF	0084b490	?PerformAction@CCreatureAction_PlayAnimationFromIndex@@UAEXXZ	(no Leaf)
+LEAF_DIFF	00941b90	?PerformAction@CCreatureAction_PlayHopscotch@@UAEXXZ	(no Leaf)
+LEAF_DIFF	008422e0	?PerformAction@CCreatureAction_ShowFear@@UAEXXZ	(no Leaf)
+SAME	00854720	?PerformAction@CCreatureAction_SpiritReturnToHero@@UAEXXZ	?PerformAction@CCreatureAction_SpiritReturnToHero@@UAEXXZ
+SAME	0084a290	?PerformAction@CCreatureAction_StartFillingTankard@@UAEXXZ	?PerformAction@CCreatureAction_StartFillingTankard@@UAEXXZ
+LEAF_DIFF	0062d7b0	?PerformAction@CCreatureAction_StartSneaking@@UAEXXZ	(no Leaf)
+SAME	0084a2f0	?PerformAction@CCreatureAction_StopFillingTankard@@UAEXXZ	?PerformAction@CCreatureAction_StopFillingTankard@@UAEXXZ
+SAME	00845bc0	?PerformAction@CCreatureAction_StopSneaking@@UAEXXZ	?PerformAction@CCreatureAction_StopSneaking@@UAEXXZ
+LEAF_DIFF	00842250	?PerformAction@CCreatureAction_YellOverHere@@UAEXXZ	(no Leaf)

@@ -34,7 +34,7 @@ public:
 class CFontBank;
 class CSubtitleRenderer {
 public:
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2);   // 0x00492F69
 };
 #include "engine/CCountedPointer.h"
@@ -101,7 +101,7 @@ void CTCTavernGame::SetStateAfterOK(CWideString text, CWideString okText, ETaver
             CCharString sound("TAVERN_GAME_OBJECT_SELECTION_CHANGE", -1);
             PlaySoundW(sound);
         }
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L"", okText, L"", 0xa2, 0.0f, false, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, L"", okText, L"", 0xa2, 0.0f, false, true);
         YesState = state;
         NoState = 0;
         AltState = 0;

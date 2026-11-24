@@ -73,7 +73,7 @@ class CEngineWaterRenderer { public:
     CPtrArray<CWaterPatchMesh>                SeaNonReflectiveForegroundRenderList;  // +0x250
     CPtrArray<CEngineWaterBackgroundSubPatch> SeaMidgroundRenderList;          // +0x25c
     CPtrArray<CEngineWaterBackgroundSubPatch> SeaAlphaedMidgroundRenderList;   // +0x268
-    bool ProcessSeaLoading();                      // 0x00B6DC40
+    private: bool ProcessSeaLoading(); public:                      // 0x00B6DC40
 };
 
 void CEngineWaterRenderer::FrameStart(const CEngineComponentParams& params)

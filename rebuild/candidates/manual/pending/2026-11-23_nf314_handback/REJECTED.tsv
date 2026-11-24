@@ -1,0 +1,5 @@
+address	reason
+0x004e1437	entry 66 (~CTCBase UAE): virtual ~CTCBase on the local base makes ~CTCKraken store its vptr and emit ??_7CTCKraken@@6B@ (DIFFER 94v88): a vtable appears; reverted (work/reverted/004e1437.cpp); decision Q4
+0x00717aa0	entry 73 (CActionTalkBase ctor): the re-scope into NTCScriptedControl renames the pick-any implicit base dtor onto ??1CActionTalkBase@NTCScriptedControl@@QAE@XZ, not the PDB UAE (NF307 D1); reverted (work/reverted/00717aa0.cpp)
+0x00740340	entry 61 (CModeStandBase ctor): binder-only CThing& respell leaves unresolved what HEAD resolved (the self defines PAV; 23 landed PAV binders); reverted (work/reverted/00740340.cpp); unit proposed (Q3)
+0x008c52c0	entry 76 (FinishAction MAE): a virtual FinishAction on the local CCombatActionBase changes the emitted ??_7CCreatureAction_WaspQueenDie@@6B@ table; not edited; decision Q4

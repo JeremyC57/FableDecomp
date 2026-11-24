@@ -45,7 +45,7 @@ class CTCPhysicsBase { public:
 };
 class CTCBase;
 class CTCLook { public:
-    void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
+    void LookAtPos(const C3DVector& position, long priority);   // 0x00753E90
 };
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
@@ -87,11 +87,11 @@ void CModeDragonLanded::FrameUpdate()
     if (delta.GetLength2D() < 12.5f && direction.Dot(C3DVector(0.0f, -1.0f, 0.0f)) > 0.96f)
         facing = true;
     if (UseHeadTurning && !facing) {
-        look->LookAtPos(&((CThing*)PTarget.GetPItem())->GetPos(), 10);
+        look->LookAtPos(((CThing*)PTarget.GetPItem())->GetPos(), 10);
     } else {
         C3DVector ahead = Owner->GetPhysicsTC()->GetForward() * 50.0f;
         C3DVector position = Owner->GetPos() + ahead;
-        look->LookAtPos(&position, 10);
+        look->LookAtPos(position, 10);
     }
 }
 }

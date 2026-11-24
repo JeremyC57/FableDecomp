@@ -4,6 +4,9 @@
 namespace NShape {
 class CSubdivisionTriangle:public CClosedShapeBase {
 public:
+#ifdef FABLE_RETAIL_NSHAPE_CONSTRUCTOR_BODIES_PASS26
+ CSubdivisionTriangle(CTCShapeManager& owner,const std::vector<C3DVector>& pnts):CClosedShapeBase(owner,pnts){GetUpDirection();}
+#endif
  virtual ~CSubdivisionTriangle();
  virtual bool IsPosInShape(const C3DVector&)const;
 private:
@@ -11,5 +14,5 @@ private:
  C3DVector UpDirection;
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NShape::CSubdivisionTriangle)==44);
+FABLE_STATIC_ASSERT_AT(14, sizeof(NShape::CSubdivisionTriangle)==44);
 #endif

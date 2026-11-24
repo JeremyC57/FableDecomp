@@ -1,0 +1,8 @@
+00495780 f4	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z	25	-	NO-OWNER
+00495780 f4	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	44	00419108	EQ
+00495780 f4	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	44	0042f948	EQ
+00495780 f4	?Reset@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@@Z	59	004194d1	EQ
+00495780 f4	?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z	59	0042fc13	EQ
+00495780 f4	?begin@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ	3	-	NO-OWNER
+00495780 f4	?end@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ	4	-	NO-OWNER
+00495780 f4	?clear@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXXZ	13	-	NO-OWNER

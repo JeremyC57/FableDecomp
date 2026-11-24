@@ -130,7 +130,10 @@ class CTCHeroOnlineScoreboard : public CTCBase { public:              // vtable 
     CComponent*      PConnectingMessage1;               // +0x64
     CTCHeroOnlineScoreboard(CThing* thing);
     virtual ~CTCHeroOnlineScoreboard();
-    void InitialiseActivityInfo();                      // 0x00562710
+    private:
+    void InitialiseActivityInfo();
+    public:
+                      // 0x00562710
 };
 
 CTCHeroOnlineScoreboard::CTCHeroOnlineScoreboard(CThing* thing)

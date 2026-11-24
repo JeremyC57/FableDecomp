@@ -1,0 +1,196 @@
+addr       parity           behav  name
+004067f0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+004067f0   MATCH            PASS   OnPreDeviceReset
+0044c313   MATCH            PASS   GetSizeofClass
+0044c329   MATCH            PASS   GetSizeofClass
+0044c5b9   WARN SHARED_HEADER_AVAILABLE CCombatAbilityUseProjectileWeaponDef (engine/CCombatAbilityUseProjectileWeaponDef.h)
+0044c5b9   MATCH            PASS   GetSizeofClass
+0044c5e5   MATCH            PASS   GetSizeofClass
+004525e3   WARN SHARED_HEADER_AVAILABLE CVillagePeopleDef (engine/CVillagePeopleDef.h)
+004525e3   MATCH            PASS   GetSizeofClass
+00453eb4   WARN SHARED_HEADER_AVAILABLE CCombatAbilityBlockHeavyWeaponAttackDef (engine/CCombatAbilityBlockHeavyWeaponAttackDef.h)
+00453eb4   MATCH            PASS   GetSizeofClass
+00454690   MATCH            PASS   GetSizeofClass
+00454f11   MATCH            PASS   GetSizeofClass
+00455584   MATCH            PASS   GetSizeofClass
+00455e8c   MATCH            PASS   GetSizeofClass
+00455ec6   WARN SHARED_HEADER_AVAILABLE CSoundThemeDef (engine/CSoundThemeDef.h)
+00455ec6   MATCH            PASS   GetSizeofClass
+00456511   MATCH            PASS   GetSizeofClass
+00456d3f   MATCH            PASS   GetSizeofClass
+00456f23   MATCH            PASS   GetSizeofClass
+00456fb8   WARN SHARED_HEADER_AVAILABLE COpinionPersonalityDef (engine/COpinionPersonalityDef.h)
+00456fb8   MATCH            PASS   GetSizeofClass
+00457028   MATCH            PASS   GetSizeofClass
+00457095   MATCH            PASS   GetSizeofClass
+004575da   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesBulletTimeDef (engine/CSpecialAbilitiesBulletTimeDef.h)
+004575da   MATCH            PASS   GetSizeofClass
+00457738   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesEnflameDef (engine/CSpecialAbilitiesEnflameDef.h)
+00457738   MATCH            PASS   GetSizeofClass
+00457916   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesDrainLifeDef (engine/CSpecialAbilitiesDrainLifeDef.h)
+00457916   MATCH            PASS   GetSizeofClass
+004579a2   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesHealLifeDef (engine/CSpecialAbilitiesHealLifeDef.h)
+004579a2   MATCH            PASS   GetSizeofClass
+00457de3   MATCH            PASS   GetSizeofClass
+00457eb6   MATCH            PASS   GetSizeofClass
+00457f8d   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesThunderLightningStormDef (engine/CSpecialAbilitiesThunderLightningStormDef.h)
+00457f8d   MATCH            PASS   GetSizeofClass
+004580ef   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesDivineWrathDef (engine/CSpecialAbilitiesDivineWrathDef.h)
+004580ef   MATCH            PASS   GetSizeofClass
+004583da   MATCH            PASS   GetSizeofClass
+004584e4   MATCH            PASS   GetSizeofClass
+004588c2   MATCH            PASS   GetSizeofClass
+00458c99   MATCH            PASS   GetSizeofClass
+0045934f   MATCH            PASS   GetSizeofClass
+00459549   MATCH            PASS   GetSizeofClass
+0045957e   MATCH            PASS   GetSizeofClass
+00459760   MATCH            PASS   GetSizeofClass
+00459795   MATCH            PASS   GetSizeofClass
+00459b53   MATCH            PASS   GetSizeofClass
+004af290   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004af290   RELOCATION_MATCH PASS   IsBetweenQuestStartAndFinishScreens
+004d46f5   MATCH            PASS   GetSizeofClass
+004d4c54   MATCH            PASS   GetSizeofClass
+004d52fa   MATCH            PASS   GetSizeofClass
+004d5c43   MATCH            PASS   GetSizeofClass
+004d5ccf   MATCH            PASS   GetSizeofClass
+004d5fa7   MATCH            PASS   GetSizeofClass
+004d7a5c   MATCH            PASS   GetSizeofClass
+004dd920   MATCH            PASS   GetSizeofClass
+004de200   MATCH            PASS   GetSizeofClass
+004de7f9   MATCH            PASS   GetSizeofClass
+004df4a0   MATCH            PASS   IsPlayer
+004e0bb9   MATCH            PASS   GetSizeofClass
+004e1533   MATCH            PASS   GetSizeofClass
+004e1744   MATCH            PASS   GetSizeofClass
+004e1765   MATCH            PASS   GetSizeofClass
+004e28b2   MATCH            PASS   GetSizeofClass
+004e377f   MATCH            PASS   GetSizeofClass
+004e3828   MATCH            PASS   GetSizeofClass
+004e383e   MATCH            PASS   GetSizeofClass
+004e394b   MATCH            PASS   GetSizeofClass
+004e399e   MATCH            PASS   GetSizeofClass
+004e3c20   MATCH            PASS   GetSizeofClass
+004e3e48   MATCH            PASS   GetSizeofClass
+004e3f3b   MATCH            PASS   GetSizeofClass
+004e3f77   MATCH            PASS   GetSizeofClass
+004eafa3   MATCH            PASS   GetSizeofClass
+0062ea20   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0062ea20   MATCH            PASS   GetAnimExtraFlags
+0062ea30   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0062ea30   MATCH            PASS   IsStrikeAction
+0067c510   MATCH            PASS   GetSizeofClass
+00697750   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00697750   MATCH            PASS   SetChangeInControlDirection
+00697ae0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00697ae0   WARN GENERIC_STRUCT module=CGameCameraManager (use engine/CGameCameraManager.h)
+00697ae0   MATCH            PASS   IsUsingScriptedCameraMode
+00698470   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00698470   WARN GENERIC_STRUCT module=CGameCameraManager (use engine/CGameCameraManager.h)
+00698470   WARN RELOC_NAME: ?Handle@@YIXPAUInner@@@Z -> 00878b00 labelled 'CTimedState_00878b00::ResetDuration'
+00698470   RELOCATION_MATCH PASS   SetProjectileWeaponFired
+00733100   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00733100   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00733100   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00733100   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+00733100   RELOCATION_MATCH PASS   IsUsingUnarmedCombatIdle
+007331c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+007331c0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+007331c0   RELOCATION_MATCH PASS   IsVulnerableToUnblockableAttack
+007333d0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+007333d0   MATCH            PASS   IsCurrentActionBlockable
+00744730   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+00744730   RELOCATION_MATCH PASS   SetLastAwareInfo
+0082a2a0   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082a2a0   RELOCATION_MATCH PASS   RemoveAllDeadMarkers
+0085bbf0   MATCH            PASS   IsClearingMovementVector
+008d0440   WARN SHARED_HEADER_AVAILABLE CGameScriptThing (engine/CGameScriptThing.h)
+008d0440   RELOCATION_MATCH PASS   GetPThing
+009ad950   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009ad950   WARN GENERIC_STRUCT module=CDefinitionManager (use engine/CDefinitionManager.h)
+009ad950   RELOCATION_MATCH PASS   ClearInstantiatedDefs
+00a4c1a0   WARN SHARED_HEADER_AVAILABLE C3DAnimation2 (engine/C3DAnimation2.h)
+00a4c1a0   WARN GENERIC_STRUCT module=C3DAnimation2 (use engine/C3DAnimation2.h)
+00a4c1a0   MATCH            PASS   HasRotation
+00bba330   MATCH            PASS   GetRenderLayerMask
+
+WINS: 79
+  004067f0 MATCH CUserProfileManager::?OnPreDeviceReset@CUserProfileManager@@MAEXXZ
+  0044c313 MATCH CSpecialAbilitiesDrainLifeDataDef::?GetSizeofClass@CSpecialAbilitiesDrainLifeDataDef@@UAEKXZ
+  0044c329 MATCH CSpecialAbilitiesForcePushDataDef::?GetSizeofClass@CSpecialAbilitiesForcePushDataDef@@UAEKXZ
+  0044c5b9 MATCH CCombatAbilityUseProjectileWeaponDef::?GetSizeofClass@CCombatAbilityUseProjectileWeaponDef@@UAEKXZ
+  0044c5e5 MATCH CDragonActionNapalmDef::?GetSizeofClass@CDragonActionNapalmDef@@UAEKXZ
+  004525e3 MATCH CVillagePeopleDef::?GetSizeofClass@CVillagePeopleDef@@UAEKXZ
+  00453eb4 MATCH CCombatAbilityBlockHeavyWeaponAttackDef::?GetSizeofClass@CCombatAbilityBlockHeavyWeaponAttackDef@@UAEKXZ
+  00454690 MATCH CTextureReplacementDef::?GetSizeofClass@CTextureReplacementDef@@UAEKXZ
+  00454f11 MATCH CThingSwitchDef::?GetSizeofClass@CThingSwitchDef@@UAEKXZ
+  00455584 MATCH CInventoryCategoryDef::?GetSizeofClass@CInventoryCategoryDef@@UAEKXZ
+  00455e8c MATCH CSimVoicesDef::?GetSizeofClass@CSimVoicesDef@@UAEKXZ
+  00455ec6 MATCH CSoundThemeDef::?GetSizeofClass@CSoundThemeDef@@UAEKXZ
+  00456511 MATCH CFactionDef::?GetSizeofClass@CFactionDef@@UAEKXZ
+  00456d3f MATCH COpinionDeedMaskDef::?GetSizeofClass@COpinionDeedMaskDef@@UAEKXZ
+  00456f23 MATCH CVillagerInteractionsDef::?GetSizeofClass@CVillagerInteractionsDef@@UAEKXZ
+  00456fb8 MATCH COpinionPersonalityDef::?GetSizeofClass@COpinionPersonalityDef@@UAEKXZ
+  00457028 MATCH COpinionSourceDef::?GetSizeofClass@COpinionSourceDef@@UAEKXZ
+  00457095 MATCH CSpecialAbilitiesAssassinRushDef::?GetSizeofClass@CSpecialAbilitiesAssassinRushDef@@UAEKXZ
+  004575da MATCH CSpecialAbilitiesBulletTimeDef::?GetSizeofClass@CSpecialAbilitiesBulletTimeDef@@UAEKXZ
+  00457738 MATCH CSpecialAbilitiesEnflameDef::?GetSizeofClass@CSpecialAbilitiesEnflameDef@@UAEKXZ
+  00457916 MATCH CSpecialAbilitiesDrainLifeDef::?GetSizeofClass@CSpecialAbilitiesDrainLifeDef@@UAEKXZ
+  004579a2 MATCH CSpecialAbilitiesHealLifeDef::?GetSizeofClass@CSpecialAbilitiesHealLifeDef@@UAEKXZ
+  00457de3 MATCH CSpecialAbilitiesSummonSpellDef::?GetSizeofClass@CSpecialAbilitiesSummonSpellDef@@UAEKXZ
+  00457eb6 MATCH CSpecialAbilitiesElectrocutedEffectDef::?GetSizeofClass@CSpecialAbilitiesElectrocutedEffectDef@@UAEKXZ
+  00457f8d MATCH CSpecialAbilitiesThunderLightningStormDef::?GetSizeofClass@CSpecialAbilitiesThunderLightningStormDef@@UAEKXZ
+  004580ef MATCH CSpecialAbilitiesDivineWrathDef::?GetSizeofClass@CSpecialAbilitiesDivineWrathDef@@UAEKXZ
+  004583da MATCH CSpecialAbilitiesCreatureTintDef::?GetSizeofClass@CSpecialAbilitiesCreatureTintDef@@UAEKXZ
+  004584e4 MATCH CAttackPatternDef::?GetSizeofClass@CAttackPatternDef@@UAEKXZ
+  004588c2 MATCH CCombatSequenceDef::?GetSizeofClass@CCombatSequenceDef@@UAEKXZ
+  00458c99 MATCH CMeleeCombatKnockdownEffects::?GetSizeofClass@CMeleeCombatKnockdownEffects@@UAEKXZ
+  0045934f MATCH CCreatureAbilityDef::?GetSizeofClass@CCreatureAbilityDef@@UAEKXZ
+  00459549 MATCH CThingGroupDef::?GetSizeofClass@CThingGroupDef@@UAEKXZ
+  0045957e MATCH CPlayerDef::?GetSizeofClass@CPlayerDef@@UAEKXZ
+  00459760 MATCH CEngineThemeGroupDef::?GetSizeofClass@CEngineThemeGroupDef@@UAEKXZ
+  00459795 MATCH CEngineThemeDef::?GetSizeofClass@CEngineThemeDef@@UAEKXZ
+  00459b53 MATCH CPlayerInventoryDef::?GetSizeofClass@CPlayerInventoryDef@@UAEKXZ
+  004af290 RELOCATION_MATCH CQuestManager::?IsBetweenQuestStartAndFinishScreens@CQuestManager@@QBE_NXZ
+  004d46f5 MATCH CBoastingPodiumDef::?GetSizeofClass@CBoastingPodiumDef@@UAEKXZ
+  004d4c54 MATCH CSummonableCreatureDef::?GetSizeofClass@CSummonableCreatureDef@@UAEKXZ
+  004d52fa MATCH CDrunkennessDef::?GetSizeofClass@CDrunkennessDef@@UAEKXZ
+  004d5c43 MATCH CWallMountEffectsDef::?GetSizeofClass@CWallMountEffectsDef@@UAEKXZ
+  004d5ccf MATCH CTeleporterDef::?GetSizeofClass@CTeleporterDef@@UAEKXZ
+  004d5fa7 MATCH CFishingRodDef::?GetSizeofClass@CFishingRodDef@@UAEKXZ
+  004d7a5c MATCH CSmokeGeneratorDef::?GetSizeofClass@CSmokeGeneratorDef@@UAEKXZ
+  004dd920 MATCH CCarryingDef::?GetSizeofClass@CCarryingDef@@UAEKXZ
+  004de200 MATCH CCreatureGeneratorDef::?GetSizeofClass@CCreatureGeneratorDef@@UAEKXZ
+  004de7f9 MATCH CCreatureModeDef::?GetSizeofClass@CCreatureModeDef@@UAEKXZ
+  004df4a0 MATCH CObstacleNavigatorExternalInterface::?IsPlayer@CObstacleNavigatorExternalInterface@@UBE_NXZ
+  004e0bb9 MATCH CParticleAttacherDef::?GetSizeofClass@CParticleAttacherDef@@UAEKXZ
+  004e1533 MATCH CMultiStaticMeshDef::?GetSizeofClass@CMultiStaticMeshDef@@UAEKXZ
+  004e1744 MATCH CRumbleDef::?GetSizeofClass@CRumbleDef@@UAEKXZ
+  004e1765 MATCH CSoundAtmospheresDef::?GetSizeofClass@CSoundAtmospheresDef@@UAEKXZ
+  004e28b2 MATCH CSkeletalMorphDef::?GetSizeofClass@CSkeletalMorphDef@@UAEKXZ
+  004e377f MATCH CHeroMorphDef::?GetSizeofClass@CHeroMorphDef@@UAEKXZ
+  004e3828 MATCH CClockDef::?GetSizeofClass@CClockDef@@UAEKXZ
+  004e383e MATCH CMazeBattleDef::?GetSizeofClass@CMazeBattleDef@@UAEKXZ
+  004e394b MATCH CWhisperBattleDef::?GetSizeofClass@CWhisperBattleDef@@UAEKXZ
+  004e399e MATCH CWaspQueenBattleDef::?GetSizeofClass@CWaspQueenBattleDef@@UAEKXZ
+  004e3c20 MATCH CBalverineBattleDef::?GetSizeofClass@CBalverineBattleDef@@UAEKXZ
+  004e3e48 MATCH CTrapDef::?GetSizeofClass@CTrapDef@@UAEKXZ
+  004e3f3b MATCH CIdleSchedulerDef::?GetSizeofClass@CIdleSchedulerDef@@UAEKXZ
+  004e3f77 MATCH CAreaOfEffectAttackDef::?GetSizeofClass@CAreaOfEffectAttackDef@@UAEKXZ
+  004eafa3 MATCH CShoveHaPennyRegionDef::?GetSizeofClass@CShoveHaPennyRegionDef@@UAEKXZ
+  0062ea20 MATCH CCombatActionBase::?GetAnimExtraFlags@CCombatActionBase@@UBEKXZ
+  0062ea30 MATCH CCombatActionBase::?IsStrikeAction@CCombatActionBase@@UBE_NXZ
+  0067c510 MATCH CBlurredAttitudesDef::?GetSizeofClass@CBlurredAttitudesDef@@UAEKXZ
+  00697750 MATCH CGameCameraManager::?SetChangeInControlDirection@CGameCameraManager@@UAEXXZ
+  00697ae0 MATCH CGameCameraManager::?IsUsingScriptedCameraMode@CGameCameraManager@@QBE_NXZ
+  00698470 RELOCATION_MATCH CGameCameraManager::?SetProjectileWeaponFired@CGameCameraManager@@QAEXXZ
+  00733100 RELOCATION_MATCH CTCCombat::?IsUsingUnarmedCombatIdle@CTCCombat@@QBE_NXZ
+  007331c0 RELOCATION_MATCH CTCCombat::?IsVulnerableToUnblockableAttack@CTCCombat@@QBE_NXZ
+  007333d0 MATCH CTCCombat::?IsCurrentActionBlockable@CTCCombat@@ABE_NXZ
+  00744730 RELOCATION_MATCH CTCPerceiveThing::?SetLastAwareInfo@CTCPerceiveThing@@AAEXXZ
+  0082a2a0 RELOCATION_MATCH CMiniMapDisplay::?RemoveAllDeadMarkers@CMiniMapDisplay@@IAEXXZ
+  0085bbf0 MATCH CCreatureActionHeroJump::?IsClearingMovementVector@CCreatureActionHeroJump@@UBE_NXZ
+  008d0440 RELOCATION_MATCH CGameScriptThing::?GetPThing@CGameScriptThing@@UBEPAVCThing@@XZ
+  009ad950 RELOCATION_MATCH CDefinitionManager::?ClearInstantiatedDefs@CDefinitionManager@@IAEXXZ
+  00a4c1a0 MATCH C3DAnimation2::?HasRotation@C3DAnimation2@@UBE_NXZ
+  00bba330 MATCH CEngineInternalPrimitiveDecal::?GetRenderLayerMask@CEngineInternalPrimitiveDecal@@UBEKXZ

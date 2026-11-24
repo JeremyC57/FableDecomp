@@ -49,7 +49,7 @@ struct CActionTalkBase {                        // retail 0x90 bytes
     unsigned char _base[0x2c];                  // +0x04 CActionBase words, PTargetThing, UpdateCounter, times
     CSubtitledMessageArray Messages;            // +0x30
     unsigned char _talk[0x54];                  // +0x3c .. +0x8f
-    CActionTalkBase(CThing* target, bool a, bool b, bool c);   // 0x00717950
+protected: CActionTalkBase(CThing& target, bool a, bool b, bool c); public:   // 0x00717950; NF294: Ego_r + FableWin ??0CActionTalkBase@NTCScriptedControl@@IAE@AAVCThing@@_N11@Z
 };
 
 struct CActionOverheadTalkToThing : CActionTalkBase {   // vtable 0x012659FC
@@ -60,7 +60,7 @@ struct CActionOverheadTalkToThing : CActionTalkBase {   // vtable 0x012659FC
 };
 
 CActionOverheadTalkToThing::CActionOverheadTalkToThing(CThing* target, const char* textName, long selectionMethod)
-    : CActionTalkBase(target, false, false, false)
+    : CActionTalkBase(*target, false, false, false)
     , ScrollText(false)
     , FinishedScroll(false)
 {

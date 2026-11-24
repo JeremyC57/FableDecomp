@@ -5,7 +5,7 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00688A80, length 283 bytes (+ int3 padding), `ret 8`.
 // Callees: CPlayer::PeekPControlledCreature @ 0x00487DD0, CInputProcessGameBase::GetEventGameActionVector(long, const
-//   CInputEvent&, C2DVector*) @ 0x00687D00 and IsEventButtonReleased @ 0x00687B30 (landed names), CInputEvent::
+//   CInputEvent&, C2DVector*) @ 0x00687D00 and IsEventButtonHeld @ 0x00687B30 (landed names), CInputEvent::
 //   GetDeviceType @ 0x00A03B50 / GetKey @ 0x00A03B70, CMemoryBuffer::Copy @ 0x009F1760, CProcessedInput::AddGameEvent
 //   @ 0x00A0D340, __security_check_cookie @ 0x00BFE9F9.
 // Layout: engine/CInputProcessGameBase.h (MyPlayer +0x18), modelled locally as in the landed 0x00690C70; CGameEvent
@@ -57,7 +57,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
 protected:   // Ego_r.pdb / FableWin.pdb protected const (NF70 q10789)
-    bool IsEventButtonReleased(const CInputEvent& event) const;      // 0x00687B30
+    bool IsEventButtonHeld(const CInputEvent& event) const;      // 0x00687B30
 public:
     bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const; // 0x00687D00
 };
@@ -72,7 +72,7 @@ void CInputProcessStrafe::ProcessInput(const CInputEvent& event, CProcessedInput
     C2DVector strafe;
     if (!GetControlMovementFromGameActionEvent((EGameAction)(0x3c), event, strafe))
         return;
-    if (event.GetDeviceType() == 2 && !IsEventButtonReleased(event))
+    if (event.GetDeviceType() == 2 && !IsEventButtonHeld(event))
         return;
     CGameEvent gameEvent(0x2b);
     if (creature == 0 || creature->IsDead())

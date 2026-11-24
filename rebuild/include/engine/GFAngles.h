@@ -69,7 +69,19 @@ template<class T> inline T FABLE_FASTCALL GFWrapReturn(const T& value, const T& 
 }
 FABLE_FORCEINLINE float FABLE_FASTCALL GFGetRoundedSignedAngle(float angle) { return GFWrapReturn(angle, -0.5f, 0.5f); }
 #pragma intrinsic(acos)
+#ifdef FABLE_RETAIL_GFANGLES_ARCCOS_PAREN_CAST
+// Retail opt-in (row 0x007602F0 NShape::IsShapeConvex, tc_geometric_shapes.obj): the same body with the narrowed arc cosine in its own
+// parentheses. VC7.1 keeps a parenthesised operand as a unit: one no-code float copy (IL 0x269) between the narrowing and the fmul by
+// 1/(2 pi) in each expansion. Retail's list scheduler needs that node at all three sites of the row: the loop's fmul after the three
+// last_line copy loads (0x007604A1), and two epilogue pops before `fadd [esp+10h]` (0x00760726). The out-of-line copy compiled from
+// this body is byte-equal to retail 0x005DB180, as the default body's is; /Od sizes are equal, so Ego_d (GFArcCos line 151, 35 B)
+// cannot tell the two apart. Inferred (ADVISOR_DECISIONS_B 2026-11-21 0x007602F0, the PAREN family: the parentheses are
+// not evidenced by Ego_d, only by retail's schedule); every landed GFArcCos user regrades equal with it. The default body stays for the
+// other includers.
+inline float FABLE_FASTCALL GFArcCos(double value) { return ((float)acos(value)) * 0.15915494f; }
+#else
 inline float FABLE_FASTCALL GFArcCos(double value) { return (float)acos(value) * 0.15915494f; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_GFANGLES_ANGLEXYTO_BODY
 // Retail opt-in (chunk 2041, row 0x006AB820 CThingPlayerCreature::ResolveFacingDirection): Ego_r.pdb / FableWin.pdb

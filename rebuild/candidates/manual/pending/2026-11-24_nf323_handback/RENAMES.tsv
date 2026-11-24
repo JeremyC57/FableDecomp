@@ -1,0 +1,29 @@
+## section 1: self renames (address	method	old_mangled_leaf	new_mangled_leaf	module)
+0084c6f0	Clone	?Clone@CCreatureAction_ShowFear@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ShowFear@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ShowFear
+0084c7d0	Clone	?Clone@CCreatureAction_AlertToPlayer@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_AlertToPlayer@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_AlertToPlayer
+009115a0	Clone	?Clone@CCreatureAction_OrderSecuritySweep@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_OrderSecuritySweep@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_OrderSecuritySweep
+009115d0	Clone	?Clone@CCreatureAction_Curiosity@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_Curiosity@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_Curiosity
+00916760	Clone	?Clone@CCreatureAction_PutGoodsDown@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PutGoodsDown@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_PutGoodsDown
+0084c6c0	Clone	?Clone@CCreatureAction_DropGenericBox@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_DropGenericBox@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DropGenericBox
+00941cc0	Clone	?Clone@CCreatureAction_PlayHopscotch@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayHopscotch@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_PlayHopscotch
+008683d0	Clone	?Clone@CCreatureAction_BeDazed@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BeDazed@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BeDazed
+0062f230	Clone	?Clone@CCreatureAction_StartSneaking@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_StartSneaking@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StartSneaking
+0062f260	Clone	?Clone@CCreatureAction_StopSneaking@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_StopSneaking@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StopSneaking
+0084c460	Clone	?Clone@CCreatureAction_PlayAnimationFromIndex@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayAnimationFromIndex@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_PlayAnimationFromIndex
+0084c7a0	Clone	?Clone@CCreatureAction_YellOverHere@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_YellOverHere@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_YellOverHere
+00855200	Clone	?Clone@CCreatureAction_SpiritReturnToHero@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_SpiritReturnToHero@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SpiritReturnToHero
+007ebb30	Clone	?Clone@CCreatureAction_LookThroughWindow@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_LookThroughWindow@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_LookThroughWindow
+007ed140	Clone	?Clone@CCreatureAction_DropWeapon@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_DropWeapon@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DropWeapon
+0084c010	Clone	?Clone@CCreatureAction_ActivateZTarget@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ActivateZTarget@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ActivateZTarget
+0084ca30	Clone	?Clone@CCreatureAction_StartFillingTankard@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_StartFillingTankard@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StartFillingTankard
+0084ca60	Clone	?Clone@CCreatureAction_StopFillingTankard@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_StopFillingTankard@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StopFillingTankard
+00933d50	Clone	?Clone@CCreatureAction_CallSpouseHome@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_CallSpouseHome@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CallSpouseHome
+004dea03	Transfer	?Transfer@CFireballSpellLevelDef_Methods@@QAEXPAVCPersistContext@@@Z	?Transfer@CFireballSpellLevelDef@@UAEXAAVCPersistContext@@@Z	CFireballSpellLevelDef
+00ab7910	GetRumbleWithID	?GetRumbleWithID@CJoystickDX_Methods@@QAEHH@Z	?GetRumbleWithID@CJoystickDX@@UAEPAVCActiveRumble@CJoystick@@J@Z	CJoystickDX
+00ab7920	PeekRumbleWithID	?PeekRumbleWithID@CJoystickDX_Methods@@QAEHH@Z	?PeekRumbleWithID@CJoystickDX@@UBEPBVCActiveRumble@CJoystick@@J@Z	CJoystickDX
+00a7d950	MakeRegion	?MakeRegion@CNavBlockedQuadTreeNode_Methods@@QAE_NHH@Z	?MakeRegion@CNavBlockedQuadTreeNode@@MAE_NPBVCNavRegion@@AAV?$list@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@@Z	CNavBlockedQuadTreeNode
+00a7d960	AddNavigableNodeNeighbouringSwitchableNodeToRegion	?AddNavigableNodeNeighbouringSwitchableNodeToRegion@CNavBlockedQuadTreeNode_Methods@@QAE_NHH@Z	?AddNavigableNodeNeighbouringSwitchableNodeToRegion@CNavBlockedQuadTreeNode@@MAE_NPBVCNavRegion@@AAV?$list@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@@Z	CNavBlockedQuadTreeNode
+00b4b6b0	RenderPrimitive	?RenderPrimitive@CEnginePrimitiveManager2DParticleGroup_Methods@@QAEHHHH@Z	?RenderPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	CEnginePrimitiveManager2DParticleGroup
+008e6f50	Clone	?Clone@CCreatureAction_CastStrengthMultiStrikeProper@@QBEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_CastStrengthMultiStrikeProper@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CastStrengthMultiStrikeProper
+00860290	Clone	?Clone@CCreatureAction_GetUpFromSitting@@QBEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_GetUpFromSitting@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_GetUpFromSitting
+## section 2: caller respellings: none (no landed row or table line binds an old spelling; exe census evidence/vt_emitters_*.tsv, Clone addresses referenced only by their vftables)

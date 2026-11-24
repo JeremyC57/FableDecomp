@@ -55,7 +55,7 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 class CTCHeroExperience { public:                         // the thing's interface 0x68
-    bool IsReadyToLevelUp();                       // 0x006D7CB0
+    bool IsReadyToLevelUp() const;                       // 0x006D7CB0
 };
 class CCharString { public:
     void* m_pData;

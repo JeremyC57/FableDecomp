@@ -18,7 +18,7 @@ class CPlayer { public: long removed; long mode; CPlayer() : removed(0), mode(0)
 struct CInputProcessGameBase {
     CPlayer* MyPlayer;
     bool IsEventButtonPressed(const CInputEvent& e) { return e.kind == 0x13; }
-    bool IsEventButtonHeld(const CInputEvent& e) { return e.kind == 0x15; }
+    bool IsEventButtonReleased(const CInputEvent& e) { return e.kind == 0x15; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.type == a; }
 };
 

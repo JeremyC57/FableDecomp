@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00956870   RELOCATION_MATCH PASS   CCombatAction_WillHealInto
+00956a20   RELOCATION_MATCH PASS   Clone
+00956940   WARN STANDIN_LEAF ??_GCCombatAction_WillHealInto@@UAEPAXI@Z (catalog CCombatAction_WillHealInto::`scalar_deleting_destructor'; names another function)
+00956940   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00955620   WARN RELOC_NAME: ?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+00955620   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+00955620   RELOCATION_MATCH PASS   Update
+006f8010   WARN STANDIN_LEAF ??_GCCreatureAction_CombatIdle@@UAEPAXI@Z (catalog CCreatureAction_CombatIdle::`scalar_deleting_destructor'; names another function)
+006f8010   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008c2ad0   WARN SHARED_HEADER_AVAILABLE CTCHealLife (engine/CTCHealLife.h)
+008c2ad0   WARN SHARED_HEADER_AVAILABLE CCombatAction_WillHealInto (engine/CCombatAction_WillHealInto.h)
+008c2ad0   RELOCATION_MATCH PASS   FinishAction
+008c0560   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c0560   WARN SHARED_HEADER_AVAILABLE CCombatAction_WillHealInto (engine/CCombatAction_WillHealInto.h)
+008c0560   RELOCATION_MATCH PASS   Initialise
+
+WINS: 7
+  00956870 RELOCATION_MATCH CCombatAction_WillHealInto::??0CCombatAction_WillHealInto@@QAE@AAVCThingCreatureBase@@J@Z
+  00956a20 RELOCATION_MATCH CCombatAction_WillHealInto::?Clone@CCombatAction_WillHealInto@@EBEPAVCCreatureActionBase@@XZ
+  00956940 RELOCATION_MATCH CCombatAction_WillHealInto::??_GCCombatAction_WillHealInto@@UAEPAXI@Z
+  00955620 RELOCATION_MATCH CAIStateGroup_MazeDefensiveMeleeCombat::?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ
+  006f8010 RELOCATION_MATCH CCreatureAction_CombatIdle::??_GCCreatureAction_CombatIdle@@UAEPAXI@Z
+  008c2ad0 RELOCATION_MATCH CCombatAction_WillHealInto::?FinishAction@CCombatAction_WillHealInto@@UAEXXZ
+  008c0560 RELOCATION_MATCH CCombatAction_WillHealInto::?Initialise@CCombatAction_WillHealInto@@UAEXXZ
+EXIT 0

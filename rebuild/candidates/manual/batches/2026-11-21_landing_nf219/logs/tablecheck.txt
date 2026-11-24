@@ -1,0 +1,4 @@
+reloc_bindings.tsv: removed 8 stand-in witnesses, added 3 (Allocate@CircularQueue for 0x00C44360 via 0x00C43EC0; NullString for 0x013BD804 via 0x0122A5E0; ??1CircularQueue for 0x00C3CF30 via 0x01214F88, first witness)
+distinct spellings per target, before / after:
+00c44550=3 00c44360=1 00c3cf30=0 00c443d0=2 00c3c360=21 0099b4d0=5 0099e9b0=4 013bd800=5 013bd804=5 
+00c44550=1 00c44360=1 00c3cf30=1 00c443d0=1 00c3c360=20 0099b4d0=5 0099e9b0=3 013bd800=4 013bd804=5 

@@ -18,8 +18,12 @@
 // _SOUNDCTOR + _TARGETCTOR) and fable_string.h first.
 class CCreatureAction_ThrowShotObject : public CCombatActionBase {
 public:
+#ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+    CCreatureAction_ThrowShotObject(CThingCreatureBase&, CThing&);       // 0x009566C0
+#else
     CCreatureAction_ThrowShotObject(CThingCreatureBase& creature, CThing& thing)
         : CCombatActionBase(creature, thing, 150, GetSoundPair(creature, "SWORD_SWING")) { }   // 0x009566C0
+#endif
 #ifdef FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLONE
     // NF148 opt-in (2026-11-20, q11785): Ego_r.pdb 0x0097B4B0 + FableWin.pdb 0x02BF6900
     // ?Clone@CCreatureAction_ThrowShotObject@@UBEPAVCCreatureActionBase@@XZ (public virtual const, over the protected

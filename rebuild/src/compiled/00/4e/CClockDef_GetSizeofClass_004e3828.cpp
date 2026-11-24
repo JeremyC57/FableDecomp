@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CClockDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CClockDef_GetSizeofClass()
+class CClockDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CClockDef::GetSizeofClass()
 {
     return 56;
 }

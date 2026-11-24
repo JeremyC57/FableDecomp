@@ -1,0 +1,10 @@
+##### 00ac3e00 renames: ?ReadFromFile@CParticleProgram@@QAE_NPAVCDataInputStream@@PAVCMovableResourceMemoryPool@@@Z=?ReadFromFile@CParticleProgram@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z
+ALL_EQ sections=22 DEF=21 tables=??_7C3DClothPrimitive@@6B@
+##### 00816000 renames: ?TransferIn@?$CPersistTraits@VCDefString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@PAVCDefString@@@Z=?TransferIn@?$CPersistTraits@VCDefString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCDefString@@@Z
+ALL_EQ sections=11 DEF=10 tables=-
+##### 005c0e41 renames: ?TransferOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXPAVCPersistContext@@PAVCCharString@@PAVCItem@NInventory@@@Z=?TransferOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABVCItem@NInventory@@@Z
+ALL_EQ sections=9 DEF=8 tables=-
+##### 005c20d8 renames: ?TransferIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXPAVCPersistContext@@PAVCStringParser@@PAVCItem@NInventory@@@Z=?TransferIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCItem@NInventory@@@Z
+ALL_EQ sections=9 DEF=8 tables=-
+##### 00ae3a30 renames: ?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@U?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAV?$CArray@VC3DGroup2@@@@@Z=?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAV?$CArray@VC3DGroup2@@@@@Z ?RemapBoneIndices@CParticleProgram@@QAEXAAV?$map@KKU?$less@K@std@@U?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z=?RemapBoneIndices@CParticleProgram@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z
+ALL_EQ sections=2 DEF=1 tables=-

@@ -1,0 +1,101 @@
+0089a510 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+0089a6e0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+0089a880 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+0089aa70 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+0089ef90 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+008a8af0 OK changed ?IsNull@CScriptThing@@UBE_NXZ; IsNull v retail BYTES_EQUAL, v self EQUAL
+00d15510 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d15a40 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d16570 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00d1fd30 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d2d930 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d368d0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d38000 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00d387a0 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00d40cf0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d41d00 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d45060 OK changed ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z; changed ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitBySpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL; MsgIsHitByAnySpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00d4a270 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; changed ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z; GetPos v retail BYTES_EQUAL, v self EQUAL; MsgIsHitBySpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00d524a0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d52e90 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d643a0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d67270 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d6a560 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d6d670 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d706e0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d71b30 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d73970 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d73c70 OK changed ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ; changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetDataString v retail BYTES_EQUAL, v self EQUAL; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d77690 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d7fe90 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d97170 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00da4e30 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self DIFF(bytes=True relocs=False)
+00da63f0 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00da6740 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00da8970 OK changed ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ; GetDataString v retail BYTES_EQUAL, v self EQUAL
+00daa260 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00daa700 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00dce230 OK changed ?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z; changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL; IsBeingCarriedBy v retail BYTES_EQUAL, v self EQUAL
+00dd35d0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00dd9520 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; changed ?GetAngleXY@CScriptThing@@UBEMXZ; GetPos v retail BYTES_EQUAL, v self EQUAL; GetAngleXY v retail BYTES_EQUAL, v self EQUAL
+00ddae40 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; changed ?GetAngleXY@CScriptThing@@UBEMXZ; GetPos v retail BYTES_EQUAL, v self EQUAL; GetAngleXY v retail BYTES_EQUAL, v self EQUAL
+00dde230 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00de3f90 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self DIFF(bytes=True relocs=False)
+00def3b0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e0de90 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; changed ?IsNull@CScriptThing@@UBE_NXZ; GetPos v retail BYTES_EQUAL, v self EQUAL; IsNull v retail BYTES_EQUAL, v self EQUAL
+00e0e040 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e1e960 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e1f0c0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e1fcf0 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e1fef0 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e2b090 OK changed ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ; GetDataString v retail BYTES_EQUAL, v self EQUAL
+00e2c100 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e2f170 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e331f0 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e338e0 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00e33b00 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00e36390 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e36d50 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e37e40 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e39140 OK changed ?IsNull@CScriptThing@@UBE_NXZ; IsNull v retail BYTES_EQUAL, v self EQUAL
+00e479b0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e49980 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e4b5b0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e4e0e0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; changed ?GetAngleXY@CScriptThing@@UBEMXZ; GetPos v retail BYTES_EQUAL, v self EQUAL; GetAngleXY v retail BYTES_EQUAL, v self EQUAL
+00e53d90 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e5e0c0 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00e64210 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e6a0b0 OK changed ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ; changed ?IsNull@CScriptThing@@UBE_NXZ; GetDefName v retail BYTES_EQUAL, v self EQUAL; IsNull v retail BYTES_EQUAL, v self EQUAL
+00e6ad20 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e6af20 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e6b750 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e7c010 OK changed ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; changed ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z; MsgIsHitBySpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL; MsgIsHitByAnySpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e7f7f0 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00e8b020 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e9aeb0 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00e9cb20 OK changed ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ; changed ?IsNull@CScriptThing@@UBE_NXZ; GetDefName v retail BYTES_EQUAL, v self EQUAL; IsNull v retail BYTES_EQUAL, v self EQUAL
+00e9dc80 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00ea1720 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00ec42f0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00ec5140 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00ed3b30 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00ed5f50 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00ed7320 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00ed94d0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00ed9790 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00edbd80 OK changed ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ; changed ?IsNull@CScriptThing@@UBE_NXZ; GetDefName v retail BYTES_EQUAL, v self EQUAL; IsNull v retail BYTES_EQUAL, v self EQUAL
+00edc980 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00edcb80 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00ee1500 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00ee2a80 OK changed ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ; changed ?IsNull@CScriptThing@@UBE_NXZ; GetDefName v retail BYTES_EQUAL, v self DIFF(bytes=True relocs=False); IsNull v retail BYTES_EQUAL, v self EQUAL
+00ee6850 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00ee95c0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00ef2290 OK changed ?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z; IsBeingCarriedBy v retail BYTES_EQUAL, v self EQUAL
+00ef4b40 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00f045e0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00f04cc0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00f051d0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00f061e0 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00f08590 OK changed ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ; changed ?IsNull@CScriptThing@@UBE_NXZ; GetDefName v retail BYTES_EQUAL, v self EQUAL; IsNull v retail BYTES_EQUAL, v self EQUAL
+00f09260 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL
+00f09950 OK changed ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z; MsgIsHitByAnyAggressiveSpecialAbilityFrom v retail BYTES_EQUAL, v self EQUAL

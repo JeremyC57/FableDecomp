@@ -9,7 +9,18 @@ template<class K,class V>class CParticleUpdateParameters:public CBaseClass {
 public:
  template<class T>class CParticleUpdateCCompareVector:public CKeyPairCompareLess<T,C3DVector>{};
  template<class T>class CParticleUpdateCCompareParamDesc:public CKeyPairCompareLess<T,CParticleUpdateParamDesc<K,V> >{};
+#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_GETVECTOR_PASS26
+ // Original02f36de0: nonzero key, Find, end check, output assignment; no extra locals.
+ bool GetVectorParam(C3DVector& dest,const K& id)const {
+  if(id){
+   typename CVectorMap<K,C3DVector,CParticleUpdateCCompareVector<K> >::const_iterator found=VectorParams.Find(id);
+   if(found!=VectorParams.end()){dest=found->second;return true;}
+  }
+  return false;
+ }
+#else
  bool GetVectorParam(C3DVector&,const K&)const;
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_GETUPDATEPARAM
  // Opt-in (wfD6, row 0x00B087C0): FableWin.pdb / Ego_r.pdb ?GetUpdateParam@?$CParticleUpdateParameters@KK@NParticleEngine@@QBE_NAAVC3DVector@@ABKM_NK@Z
  // (inline in retail: key test, CVectorMap::Find -> out-of-line LowerBound 0x00AF2C50, descriptor GetUpdateParam). Needs

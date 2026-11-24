@@ -28,6 +28,9 @@ class CLandscapeBackgroundSubNodeSplitBranch;
 #endif
 class CLandscapeBackgroundTreeNode : public CEngineLandscapeFreeableResource {
 public:
+#ifdef FABLE_RETAIL_BACKGROUND_VERTEX_HELPERS_PASS28
+    CEngineLandscapeMap* PeekMap() const { return Map; }
+#endif
     struct CLODLoadInfo {
         long FileBlockPos;
         long FileBlockSize;

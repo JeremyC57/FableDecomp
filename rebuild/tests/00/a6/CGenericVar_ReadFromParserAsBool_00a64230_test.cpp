@@ -197,7 +197,7 @@ FABLE_STATIC_ASSERT(offsetof(CStringParser, CursorPos) == 0x24);
 // Native parser is0x28 vs donor0x30 due to the native list. Only the true thiscall member is used.
 class CParsedItem;
 class CStringParser { public:CStringParser();void*VTable;unsigned char NativeState[0x24];bool ReadNextItem(CParsedItem&);}; // ctor PDB00492230, ReadNextItem009BA080/PDB00B0EB60
-class CParsedItem { public:CParsedItem(){} long Type;long Value;CCharString String;const CCharString& GetSymbol()const;}; // real ctor PDB01911740 constructs only String; GetSymbol009B9880/PDB00B0E400
+class CParsedItem { public:CParsedItem(){} long Type;long Value;CCharString String;const CCharString& GetString()const;}; // real ctor PDB01911740 constructs only String; GetString 0x009B9880 (GetSymbol is 0x009B9870)
 extern char EmptyString[]; //0129AAF4
 FABLE_FORCEINLINE CCharString::operator const char*()const{return !storage_?EmptyString:storage_->text;}
 extern "C" int __cdecl _stricmp(const char*,const char*); // MSVCR71.dll IAT014400EC via00BFEBA8
@@ -208,9 +208,9 @@ struct CGenericVarRef {CGenericVarRef(bool&);long Type;union{bool*ValBool;void*V
 bool CGenericVar::ReadFromParserAsBool(CStringParser& parser){
  CParsedItem item;
  if(parser.ReadNextItem(item)&&item.Type==2){
- bool same;{CCharString text("TRUE",-1);same=item.GetSymbol()==text;}
+ bool same;{CCharString text("TRUE",-1);same=item.GetString()==text;}
  if(same){ValBool=true;return true;}
- {CCharString text("FALSE",-1);same=item.GetSymbol()==text;}
+ {CCharString text("FALSE",-1);same=item.GetString()==text;}
  if(same){ValBool=false;return true;}
  }return false;
 }
@@ -231,7 +231,7 @@ CCharString::~CCharString(){--Live;++Destroyed;}
 const CCharString& CCharString::operator=(const char*t){if(t){storage_=&Pool[PoolN++];storage_->text=const_cast<char*>(t);storage_->owners=1;}else storage_=0;return *this;}
 CStringParser::CStringParser():VTable(0){}
 bool CStringParser::ReadNextItem(CParsedItem&i){++Reads;i.Type=ReadType;i.String=ReadText;return ReadResult;}
-const CCharString& CParsedItem::GetSymbol()const{++Symbols;return String;}
+const CCharString& CParsedItem::GetString()const{++Symbols;return String;}
 CGenericVar::CGenericVar():Padding(0),Type(4),ValSLONG(0),ValULONG(0),ValBool(false),ValFloat(0){}
 CGenericVarRef::CGenericVarRef(bool&b):Type(4),ValBool(&b){}
 #ifdef _MSC_VER

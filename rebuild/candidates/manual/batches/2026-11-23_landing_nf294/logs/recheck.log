@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00717bc0   RELOCATION_MATCH PASS   CActionOverheadTalkToThing
+00997800   RELOCATION_MATCH PASS   ReplacePathExtension
+009ce8d0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009ce8d0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009ce8d0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009ce8d0   WARN SHARED_HEADER_AVAILABLE CChecksumCacheFile (engine/CChecksumCacheFile.h)
+009ce8d0   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009ce8d0   RELOCATION_MATCH PASS   BeginUpdateEntries
+00a5eea0   RELOCATION_MATCH PASS   AdjustUpdateEntries
+00d80e40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d80e40   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d80e40   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsBriarScript (engine/CQ_HeroSoulsBriarScript.h)
+00d80e40   RELOCATION_MATCH PASS   Main
+
+WINS: 5
+  00717bc0 RELOCATION_MATCH NTCScriptedControl::CActionOverheadTalkToThing::??0CActionOverheadTalkToThing
+  00997800 RELOCATION_MATCH _global::ReplacePathExtension
+  009ce8d0 RELOCATION_MATCH CBankFile::BeginUpdateEntries
+  00a5eea0 RELOCATION_MATCH CStreamingFontDataBank::AdjustUpdateEntries
+  00d80e40 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::?Main@CQ_HeroSoulsBriarScript@NScript@@UAEXXZ

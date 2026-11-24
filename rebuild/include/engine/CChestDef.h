@@ -10,6 +10,40 @@
 
 class CCharStringData;
 
+#ifdef FABLE_RETAIL_CCHESTDEF_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123ACDC (RTTI .?AVCChestDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CChestDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CChestDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DE204 ?Transfer@CChestDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E0564 ?Copy@CChestDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D3840 ?GetSizeofClass@CChestDef@@UAEKXZ
+public:
+    bool             PersistOnOpening;                       // +0x25
+    unsigned char    _pad_0x26[0x2];                         // +0x26
+    long             OpenParticleEffect;                     // +0x28
+    bool             DisplayMessageOnEmpty;                  // +0x2c
+    unsigned char    _pad_0x2d[0x3];                         // +0x2d
+    CCharStringData* OpenAnimationForCreature_PStringData;   // +0x30 CCharString::PStringData
+    long             OpenerObject;                           // +0x34
+    long             OpenersRequired;                        // +0x38
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CChestDef) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CChestDef, PersistOnOpening) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CChestDef, _pad_0x26) == 0x26);
+FABLE_STATIC_ASSERT(offsetof(CChestDef, OpenParticleEffect) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CChestDef, DisplayMessageOnEmpty) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CChestDef, _pad_0x2d) == 0x2d);
+FABLE_STATIC_ASSERT(offsetof(CChestDef, OpenAnimationForCreature_PStringData) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CChestDef, OpenerObject) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CChestDef, OpenersRequired) == 0x38);
+#else
 #pragma pack(push, 1)
 class CChestDef {
 public:
@@ -34,13 +68,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CChestDef) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CChestDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CChestDef, PersistOnOpening) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CChestDef, OpenParticleEffect) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CChestDef, DisplayMessageOnEmpty) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CChestDef, OpenAnimationForCreature_PStringData) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CChestDef, OpenerObject) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CChestDef, OpenersRequired) == 0x38);
+FABLE_STATIC_ASSERT_AT(37, sizeof(CChestDef) == 0x3c);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CChestDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CChestDef, PersistOnOpening) == 0x25);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CChestDef, OpenParticleEffect) == 0x28);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CChestDef, DisplayMessageOnEmpty) == 0x2c);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CChestDef, OpenAnimationForCreature_PStringData) == 0x30);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CChestDef, OpenerObject) == 0x34);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CChestDef, OpenersRequired) == 0x38);
+#endif // FABLE_RETAIL_CCHESTDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCHESTDEF_H

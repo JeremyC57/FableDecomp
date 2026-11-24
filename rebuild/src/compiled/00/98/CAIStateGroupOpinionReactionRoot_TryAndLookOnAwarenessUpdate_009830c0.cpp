@@ -1,5 +1,5 @@
 // CAIStateGroup_OpinionReactionRoot::TryAndLookOnAwarenessUpdate() -- one look-at-position step towards the thing reacted to.
-// Leaf: ?TryAndLookOnAwarenessUpdate@CAIStateGroup_OpinionReactionRoot@@QAE_NXZ
+// Leaf: ?TryAndLookOnAwarenessUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009830C0, length 67 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (ThingReactingTo at +0x6b), CThing::GetPosition
@@ -42,7 +42,9 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     long CurrentReactionType;                   // +0x18
     bool ReactionFlags[79];                     // +0x1c
     CIntelligentPointer<CThingPos> ThingReactingTo;    // +0x6b CIntelligentPointer<CThing>
+    private:
     bool TryAndLookOnAwarenessUpdate();
+    public:
 };
 #pragma pack(pop)
 

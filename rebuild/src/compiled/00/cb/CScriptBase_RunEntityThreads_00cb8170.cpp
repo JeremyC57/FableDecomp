@@ -10,7 +10,7 @@
 //   The inlined erase is STLport 4.6's `__copy_ptrs(last, _M_finish, first, _TrivialAss())`; the counted copy
 //   0x00CBB120 gets a same-TU stand-in body that never reads its tag, so VC7.1 homes the random_access_iterator_tag
 //   temporary on the shared tag byte [esp+17h] with the two __false_type tags (declared only, it took [esp+16h]).
-// Leaf: ?RunEntityThreads@CScriptBase@@
+// Leaf: ?RunEntityThreads@CScriptBase@@IAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
@@ -220,8 +220,13 @@ public:
     CVectorMap<CCharString, CCountedPointer<CEntityScriptBindingBase>, CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;   // +0x18
     unsigned long     LastWorldUpdateFrame;                                                  // +0x28
     CSpawnedFuncBase* PActiveThread;                                                         // +0x2c
-    bool UpdateSpawnedFunction(CSpawnedFuncBase* func);                                      // 0x00CB7950
+    protected:
+    bool UpdateSpawnedFunction(CSpawnedFuncBase* func);
+    public:
+                                      // 0x00CB7950
+    protected:
     void RunEntityThreads();
+    public:
 };
 
 void CScriptBase::RunEntityThreads()

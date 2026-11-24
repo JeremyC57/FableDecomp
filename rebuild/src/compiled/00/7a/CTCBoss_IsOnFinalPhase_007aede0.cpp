@@ -1,3 +1,4 @@
+// Leaf: ?IsOnFinalPhase@CTCBoss@@QAE_NXZ
 // CTCBoss::IsOnFinalPhase() const -- true when the boss has no def or its current phase index has run past the def's phase-health list
 //
 // Retail 0x007AEDE0, 33 bytes. No callees. PBossDef (+0x0c) is the CDefPointer<const CBossDef>
@@ -33,11 +34,11 @@ class CTCBoss
     long          StrikesSinceHit;                  // +0x14
     long          currentBossPhase;                 // +0x18
 
-    bool IsOnFinalPhase() const;
+    bool IsOnFinalPhase();
 };
 #pragma pack(pop)
 
-bool CTCBoss::IsOnFinalPhase() const
+bool CTCBoss::IsOnFinalPhase()
 {
     if (PBossDef != 0)
     {

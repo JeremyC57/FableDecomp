@@ -1,0 +1,75 @@
+# q12744 definer census: VC7.1 objects (q.py, catalog flags) of the 72 landed rows whose source names map<unsigned long,long> / the tree; [DEF] / [UND] = the object defines / references
+# ??1?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@...@std@@QAE@XZ; [] = neither (the grade column is cut at 90 characters)
+### 0042c058 [] 0042c058 std::_Rb_tree<NUISystem::CComponent*,std::pair<NUISystem::CComponent* const,NUISy
+### 0045c8d3 [] 0045c8d3 CPersistContext::Transfer<CSpecialEffectsStringMap> RELOCATION_MATCH flags= []
+### 0045c77f [] 0045c77f CSpecialEffectsDef::Copy RELOCATION_MATCH flags= []
+### 0045c95a [] 0045c95a GFSerialiseMapBinaryIn<long, unsigned long, std::less<unsigned long>> RELOCATION_
+### 0045c811 [] 0045c811 std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1s
+### 0045c8a1 [] 0045c8a1 std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1s
+### 0045ca8f [] 0045ca8f std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1s
+### 0045ca09 [] 0045ca09 std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1s
+### 0045c79e [] 0045c79e std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1s
+### 005cd2a6 [] 005cd2a6 CTCInventoryStats::CTCInventoryStats RELOCATION_MATCH flags= []
+### 005cd2fe [] 005cd2fe CTCInventoryStats::~CTCInventoryStats RELOCATION_MATCH flags= []
+### 005ce0e6 [] 005ce0e6 CTCInventoryStats::ConstructPersonalityList RELOCATION_MATCH flags= []
+### 005cd6b7 [] 005cd6b7 CTCInventoryStats::ConvertMap RELOCATION_MATCH flags= []
+### 005cdc1c [] 005cdc1c CTCInventoryStats::Copy RELOCATION_MATCH flags= []
+### 005cdccb [] 005cdccb CTCInventoryStats::FrameUpdate RELOCATION_MATCH flags= []
+### 005cd33f [] 005cd33f CTCInventoryStats::OnCreate RELOCATION_MATCH flags= []
+### 005d8978 [] 005d8978 CPersistContext::TransferMap<long,unsigned long> RELOCATION_MATCH flags= []
+### 005d1f0c [] 005d1f0c CTCInventoryStats::ConstructPersonalityListPC RELOCATION_MATCH flags= []
+### 005d66ba [] 005d66ba CTCInventoryStats::SetCreatureAsKilled RELOCATION_MATCH flags= []
+### 005d83b3 [] 005d83b3 std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1s
+### 005d8446 [] 005d8446 std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1s
+### 005d8676 [] 005d8676 std::_Rb_tree::equal_range RELOCATION_MATCH flags= []
+### 005d8561 [] 005d8561 std::_Rb_tree::erase RELOCATION_MATCH flags= []
+### 005d8730 [] 005d8730 std::_Rb_tree::erase RELOCATION_MATCH flags= []
+### 005d87b6 [] 005d87b6 std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1s
+### 005d84f2 [] 005d84f2 std::_Rb_tree<unsigned long,std::pair<unsigned long const,long>,std::_Select1st<s
+### 005d86b2 [] 005d86b2 std::list<std::pair<CWideString,long> >::push_back RELOCATION_MATCH flags= []
+### 005d8548 [] 005d8548 std::map<unsigned long, long, std::less<unsigned long>, std::allocator<std::pair<
+### 005d8916 [] 005d8916 std::map<unsigned long,long,std::less<unsigned long>,std::allocator<std::pair<uns
+### 005d8933 [] 005d8933 std::map<unsigned long, long, std::less<unsigned long>, std::allocator<std::pair<
+### 00669d30 [] 00669d30 CSpecialEffectsDef::GetEffectFromString RELOCATION_MATCH flags= []
+### 00667450 [] 00667450 CThingCreatureBase::ReactToGenericStrike RELOCATION_MATCH flags= []
+### 0079acc0 [] 0079acc0 CTCSummonSpell::CreateMinion RELOCATION_MATCH flags= []
+### 0079b6f0 [] 0079b6f0 CTCSummonSpell::ResetMinionPos RELOCATION_MATCH flags= []
+### 007af0f0 [] 007af0f0 CTCRockTrollShield::OnHitAtPos RELOCATION_MATCH flags= []
+### 00a96da0 [DEF,] 00a96da0 CVertexGroupBlock::~CVertexGroupBlock RELOCATION_MATCH flags= []
+### 00a96e40 [] 00a96e40 std::map::map RELOCATION_MATCH flags= []
+### 00ad9720 [] 00ad9720 CArray<CVertexGroupBlock>::push_back RELOCATION_MATCH flags= []
+### 00ad8d10 [] 00ad8d10 CVertexGroupBlockList::HasBlock MATCH flags= []
+### 00ad9770 [DEF,] 00ad9770 CVertexGroupBlockList::RemoveAllSubsets RELOCATION_MATCH flags= []
+### 00ad9f10 [DEF,] 00ad9f10 CVertexGroupBlockOptimiser::AddBlocks RELOCATION_MATCH flags= ['/Gr']
+### 00ad9d10 [] 00ad9d10 CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResultNewBlock2 RELOCATION_
+### 00ad9d70 [] 00ad9d70 CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResult RELOCATION_MATCH fla
+### 00ad9b20 [] 00ad9b20 CVertexGroupBlockOptimiser::CalcCurrentBlockSegments RELOCATION_MATCH flags= []
+### 00ad8dd0 [] 00ad8dd0 CVertexGroupBlockOptimiser::CanInsertMoreBlocks MATCH flags= []
+### 00ad8ed0 [] 00ad8ed0 CVertexGroupBlockOptimiser::CountRemainingGroups RELOCATION_MATCH flags= []
+### 00ad94f0 [DEF,] 00ad94f0 CVertexGroupBlockOptimiser::FindBestStartingBlock RELOCATION_MATCH flags= []
+### 00ad92e0 [] 00ad92e0 CVertexGroupBlockOptimiser::InsertBlock RELOCATION_MATCH flags= []
+### 00ad9380 [] 00ad9380 CVertexGroupBlockOptimiser::PaintCurrentBlockSegment RELOCATION_MATCH flags= []
+### 00ada240 [] 00ada240 CVertexGroupBlockOptimiser::Process RELOCATION_MATCH flags= []
+### 00ad9980 [DEF,] 00ad9980 CVertexGroupBlockOptimiser::ReorderInput RELOCATION_MATCH flags= []
+### 00ad91f0 [] 00ad91f0 CVertexGroupBlock::AddGroup RELOCATION_MATCH flags= []
+### 00ad9260 [] 00ad9260 CVertexGroupBlock::AddGroupsFrom RELOCATION_MATCH flags= []
+### 00ad9030 [] 00ad9030 CVertexGroupBlock::CVertexGroupBlock RELOCATION_MATCH flags= []
+### 00ad8ca0 [] 00ad8ca0 CVertexGroupBlock::IsProperSubsetOf RELOCATION_MATCH flags= []
+### 00ad8c30 [] 00ad8c30 CVertexGroupBlock::IsSubsetOf RELOCATION_MATCH flags= []
+### 00adc250 [] 00adc250 std::_List_base<CVertexGroupBlock>::clear RELOCATION_MATCH flags= []
+### 00adc190 [] 00adc190 std::__destroy_aux RELOCATION_MATCH flags= ['/Gr']
+### 00adc330 [] 00adc330 std::__uninitialized_copy RELOCATION_MATCH flags= ['/Gr']
+### 00adc440 [] 00adc440 std::__uninitialized_copy RELOCATION_MATCH flags= ['/Gr']
+### 00adc3b0 [] 00adc3b0 std::__uninitialized_fill_n RELOCATION_MATCH flags= ['/Gr']
+### 00adcc80 [] 00adcc80 std::list<CVertexGroupBlock>::_M_insert_dispatch RELOCATION_MATCH flags= []
+### 00adc4e0 [] 00adc4e0 std::list<CVertexGroupBlock>::erase RELOCATION_MATCH flags= []
+### 00adce10 [UND,] 00adce10 std::list<CVertexGroupBlock>::push_back RELOCATION_MATCH flags= []
+### 00adcb90 [] 00adcb90 std::vector<CVertexGroupBlock>::reserve RELOCATION_MATCH flags= ['/Gr']
+### 00adc0d0 [] 00adc0d0 _global::Copy_SArrayTreePair18_00adc0d0 RELOCATION_MATCH flags= []
+### 00adc120 [] 00adc120 std::__copy<CVertexGroupBlock> (const) RELOCATION_MATCH flags= []
+### 00adc310 [UND,] 00adc310 std::_Construct<CVertexGroupBlock, CVertexGroupBlock> RELOCATION_MATCH flags= []
+### 00add020 [DEF,] 00add020 std::list<CVertexGroupBlock>::operator= RELOCATION_MATCH flags= []
+### 00adca30 [] 00adca30 std::vector<CVertexGroupBlock, std::allocator<CVertexGroupBlock>>::operator= RELO
+### 00adcfd0 [] 00adcfd0 std::vector<CVertexGroupBlock, std::allocator<CVertexGroupBlock>>::push_back RELO
+### 00adce60 [UND,] 00adce60 std::vector::_M_insert_overflow RELOCATION_MATCH flags= []
+DONE

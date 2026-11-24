@@ -1,3 +1,4 @@
+// Leaf: ?GetMovementOffsetAtTime@C3DAnimation2@@UBE?AVC3DVector@@M@Z
 // C3DAnimation2::GetMovementOffsetAtTime(float) -- the movement track's interpolated keyframe position at the given time as a C3DVector (hidden result pointer), or zero when there is no movement track
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4E100, length 77 bytes.
@@ -23,12 +24,12 @@ class C3DAnimationSequence { public:
 #include "engine/C3DVector.h"
 
 class C3DAnimation2 { public:
-    unsigned char _pad[0x40];
+    unsigned char _pad[0x3c];
     C3DAnimationSequence* MovementTrack;   // +0x40 CCountedPointer<C3DAnimationSequence>::m_pObject
-    C3DVector GetMovementOffsetAtTime(float time);
+    virtual C3DVector GetMovementOffsetAtTime(float time) const;
 };
 
-C3DVector C3DAnimation2::GetMovementOffsetAtTime(float time)
+C3DVector C3DAnimation2::GetMovementOffsetAtTime(float time) const
 {
     if (MovementTrack) {                   // the track path is the if-body: the zero path sits at the end
         C3DKeyframe keyframe;

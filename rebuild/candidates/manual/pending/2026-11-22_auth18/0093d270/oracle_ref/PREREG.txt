@@ -1,0 +1,1 @@
+PRE-REGISTERED (coordinator, per advisor 2026-11-22): one candidate, e1.cpp unchanged + CCombatManager.h:144 const float& return. Graded once. Oracle only, never landed.

@@ -4,11 +4,11 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006A8560, 99 bytes (`ret 4`).
 // Callees: GFHasScriptThing(CThing*) @ 0x004C7E70 (`__fastcall`; label "operator_new" propagated, landed),
 //   CInterfaceMap::LowerBound @ 0x004365B0, CTCScriptedControl's task-list empty test @ 0x007122C0 (auto label
-//   "CScriptTask_IsRunning"; landed callers call it IsTaskListEmpty / AreTasksEmpty).
+//   "CScriptTask_IsRunning"): Ego_r / FableWin ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ.
 // Layout: CThingFilter_HasScriptedControl (Ego_r.pdb 1 byte) = bool CheckForActive; retail CThing: interface bitset +0x20
 //   (TC 0x1f = CTCScriptedControl: the sign bit of word +0x20), CVectorMap +0x44; CTCScriptedControl Locked +0x18.
 // Shape: the agent160 GetTC form with the lookup key in the dead thing-argument slot (no frame: the function has no
-//   named locals); CTCScriptedControl::IsActive inline (`Locked || !IsTaskListEmpty()`).
+//   named locals); CTCScriptedControl::IsActive inline (`Locked || !IsActionListEmpty()`).
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -17,8 +17,8 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CTCScriptedControl { public:
     unsigned char _pad[0x18];
     bool Locked;                                // +0x18
-    bool IsTaskListEmpty();                     // 0x007122C0
-    bool IsActive() { return Locked || !IsTaskListEmpty(); }
+    bool IsActionListEmpty() const;             // 0x007122C0 ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ (Ego_r / FableWin; the donor IsActive calls it; self Leaf)
+    bool IsActive() { return Locked || !IsActionListEmpty(); }
 };
 class CThing { public:
     bool HasScriptThing() const;                // 0x004C7E70 ?HasScriptThing@CThing@@QBE_NXZ (Ego_r / FableWin; NF108 q4487)

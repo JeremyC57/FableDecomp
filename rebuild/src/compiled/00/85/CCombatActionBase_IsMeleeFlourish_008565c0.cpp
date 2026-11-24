@@ -1,13 +1,16 @@
+// Leaf: ?IsMeleeFlourish@CCombatActionBase@@MBE_NXZ
 class CCombatActionBase
 {
 public:
-    char pad[0xB8];
+    char pad[0xb4];
     unsigned long m_meleeFlourish;
 
-    bool IsMeleeFlourish();
+    protected:
+    virtual bool IsMeleeFlourish() const;
+    public:
 };
 
-bool CCombatActionBase::IsMeleeFlourish()
+bool CCombatActionBase::IsMeleeFlourish() const
 {
     if (m_meleeFlourish)
         return true;

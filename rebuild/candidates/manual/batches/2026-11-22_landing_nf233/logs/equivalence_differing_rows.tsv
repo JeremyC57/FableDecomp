@@ -1,0 +1,7 @@
+0042dc5f	src	DIFF		rebuild/src/compiled/00/42/CNewFrontendGameComponent_OnPreDeviceReset_0042dc5f.cpp
+0042dc60	src	DIFF		rebuild/src/compiled/00/42/CNewFrontendGameComponent_OnPostDeviceReset_0042dc60.cpp
+0042dc5c	src	DIFF		rebuild/src/compiled/00/42/CNewFrontendGameComponent_ChangeTextureColourDepth_0042dc5c.cpp
+0051d8e0	src	DIFF		rebuild/src/compiled/00/51/CGameComponent_CGameComponent_0051d8e0.cpp
+0042f50b	src	DIFF		rebuild/src/compiled/00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042f50b.cpp
+0042ea8f	src	DIFF		rebuild/src/compiled/00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042ea8f.cpp
+rows checked 57022 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/land233/equiv.tsv

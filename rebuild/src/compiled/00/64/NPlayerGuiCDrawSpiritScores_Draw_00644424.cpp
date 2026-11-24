@@ -1,9 +1,7 @@
 // NPlayerGui::CDrawSpiritScores::Draw -- draw each available player's score with a black shadow.
 // Native00644424,258bytes. Actual PlayerGui/PlayerManager/Player/FontBank/CWideString headers.
-// Calls4498C0 GetPlayer(long),44A2A0 GetSpiritScoreText(long,CWideString&)const
-// (PDB donor445C20, wrong native propagated DrawGetEnvironmentInfo name),
-// 449B60 GetMultiplayerColour(long)const,438010 Draw2DText (thunk to64B6DA).
-// Draw2DText signature PDB44AAD0: const vector/string/font/colour&,float,EEngine2DLayer,bool.
+// Calls4498C0 GetPlayer(long),44A2A0 GetSpiritScoreText(long,CWideString&)const (PDB donor445C20, wrong native propagated DrawGetEnvironmentInfo name),
+// 449B60 GetMultiplayerColour(long)const,438010 Draw2DText (thunk to64B6DA). Draw2DText signature PDB44AAD0: const vector/string/font/colour&,float,EEngine2DLayer,bool.
 // Main component header unavailable; its native font pointer1614C is used without claiming
 // a proved full-layout correspondence (donor PCutSceneMainFont occupies same offset).
 // Globals13961E8/13961F0 are double coordinate scales; literals retain widened float precision.
@@ -12,6 +10,8 @@
 // Leaf: Draw
 #pragma optimize("y",off)
 #pragma optimize("s",on)
+#define FABLE_RETAIL_CPLAYERMANAGER_MULTIPLAYERCOLOUR   // NF289: GetMultiplayerColour 0x00449B60 from CPlayerManager.h (Ego_r + FableWin QBE)
+class CRGBColour;   // NF289: the opt-in declares `class ::CRGBColour GetMultiplayerColour(long) const`; the class is defined below
 #define CPlayerGui CPlayerGuiLayout   // the header has no Draw2DText; the class below adds it under the Ego_r class name
 #include "engine/CPlayerGui.h"
 #undef CPlayerGui
@@ -23,7 +23,7 @@ class CEnginePrimitivePrepareInfo;
 class C2DVector { public:float X,Y;C2DVector(){}C2DVector(float x,float y):X(x),Y(y){} C2DVector operator+(const C2DVector&v)const{return C2DVector(X+v.X,Y+v.Y);}};
 class CRGBColour { public:unsigned char Blue,Green,Red,Alpha;CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a=255){Red=r;Green=g;Blue=b;Alpha=a;}};
 enum EEngine2DLayer {NativeLayer67=67};
-struct PlayerManagerMethods:CPlayerManager {CPlayer&GetPlayer(long);bool GetSpiritScoreText(long,CWideString&)const;CRGBColour GetMultiplayerColour(long)const;};
+struct PlayerManagerMethods:CPlayerManager {bool GetSpiritScoreText(long,CWideString&)const;};   // GetPlayer 0x004498C0 / GetMultiplayerColour 0x00449B60: the CPlayerManager.h members (NF289)
 class CPlayerGui:public CPlayerGuiLayout {public:void Draw2DText(const C2DVector&,const CWideString&,const CFontBank&,const CRGBColour&,float,EEngine2DLayer,bool);};   // 0x00438010 (Ego_r)
 struct MainComponentFontView {unsigned char UnrecoveredPrefix[0x1614c];CFontBank* Font;const CFontBank&GetFont()const{return *Font;}};
 extern double g_CoordinateWidth,g_CoordinateHeight;

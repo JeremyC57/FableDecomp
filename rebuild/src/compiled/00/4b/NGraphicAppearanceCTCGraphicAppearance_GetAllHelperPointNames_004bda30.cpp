@@ -22,7 +22,11 @@ extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
 class CCharString;
-template <class T> struct CStdVector;                       // std::vector<T> (the caller's names)
+// Name fix (NF217, 2026-11-21, q12369): the caller's names are STLport std::vector<CCharString> from the shared
+//   stlport/fable_containers.h (was a CStdVector stand-in; NF108's 0x004BDB40 pattern, respelled in place in the existing local
+//   C3DMeshObject model). Own leaf: both PDBs (Ego_r.pdb 0x004C0FC0, FableWin.pdb 0x01D0B490) spell it public const over
+//   std::vector<CCharString>&; the C3DMeshObject call binds the PDB ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z (0x00A35AF0).
+#include "stlport/fable_containers.h"
 
 struct SCountBlock {
     long m_references;                                      // +0
@@ -60,7 +64,7 @@ class C3DMeshObject : public CBaseClass { public:                              /
     float              Scale;                               // +0x74
     C3DMeshObject() : CBaseClass(), Mesh(), InversePositionMatrixSetup(false) { }
     virtual ~C3DMeshObject() { }
-    void GetAllHelperPointNames(CStdVector<CCharString>& names) const;   // 0x00A35AF0
+    void GetAllHelperPointNames(std::vector<CCharString>& names) const;   // 0x00A35AF0
 };
 
 namespace NGraphicAppearance {
@@ -124,11 +128,11 @@ class CTCGraphicAppearance { public:
         for (CComponentListNode* node = Components.m_head->m_next; node != Components.m_head; node = node->m_next)
             node->m_value->GetAllMeshes(meshes);
     }
-    void GetMeshObject(const CMeshInfo& info, float scale, C3DMeshObject& out) const;   // 0x004BC4F0
-    void GetAllHelperPointNames(CStdVector<CCharString>& names) const;
+    protected: void GetMeshObject(const CMeshInfo& info, float scale, C3DMeshObject& out) const; public:   // 0x004BC4F0
+    void GetAllHelperPointNames(std::vector<CCharString>& names) const;
 };
 
-void CTCGraphicAppearance::GetAllHelperPointNames(CStdVector<CCharString>& names) const
+void CTCGraphicAppearance::GetAllHelperPointNames(std::vector<CCharString>& names) const
 {
     CMeshVector meshes;
     GetAllMeshes(meshes);

@@ -1,0 +1,53 @@
+--- orig/hdr_CKickableDef.h	2026-11-24 01:19:40.166629337 +0000
++++ hdr/engine/CKickableDef.h	2026-11-24 01:19:40.211421635 +0000
+@@ -26,8 +26,16 @@
+     long             OpinionDeedFaction;                                 // +0x48
+     EOpinionDeedType OpinionDeedTypeToEnemies;                           // +0x4c
+     bool             IgnoreNavigationTest;                               // +0x50
++#ifdef FABLE_RETAIL_CKICKABLEDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x004D33C2: ?GetSizeofClass@CKickableDef@@UAEKXZ (FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CKickableDef) == 0x54);
++FABLE_STATIC_ASSERT_AT(30, sizeof(CKickableDef) == 0x54);
+ #else
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+@@ -60,19 +68,19 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CKickableDef) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, BaseDistanceToTravel) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, StrengthScaleRange) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, SpeedScaleRange) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, BaseSpeedScaleRange) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, RandomBase) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, RandomRange) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, ShotToAttach) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, OpinionDeedType) == 0x44);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, OpinionDeedFaction) == 0x48);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, OpinionDeedTypeToEnemies) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CKickableDef, IgnoreNavigationTest) == 0x50);
++FABLE_STATIC_ASSERT_AT(63, sizeof(CKickableDef) == 0x54);
++FABLE_STATIC_ASSERT_AT(64, offsetof(CKickableDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(65, offsetof(CKickableDef, BaseDistanceToTravel) == 0x28);
++FABLE_STATIC_ASSERT_AT(66, offsetof(CKickableDef, StrengthScaleRange) == 0x2c);
++FABLE_STATIC_ASSERT_AT(67, offsetof(CKickableDef, SpeedScaleRange) == 0x30);
++FABLE_STATIC_ASSERT_AT(68, offsetof(CKickableDef, BaseSpeedScaleRange) == 0x34);
++FABLE_STATIC_ASSERT_AT(69, offsetof(CKickableDef, RandomBase) == 0x38);
++FABLE_STATIC_ASSERT_AT(70, offsetof(CKickableDef, RandomRange) == 0x3c);
++FABLE_STATIC_ASSERT_AT(71, offsetof(CKickableDef, ShotToAttach) == 0x40);
++FABLE_STATIC_ASSERT_AT(72, offsetof(CKickableDef, OpinionDeedType) == 0x44);
++FABLE_STATIC_ASSERT_AT(73, offsetof(CKickableDef, OpinionDeedFaction) == 0x48);
++FABLE_STATIC_ASSERT_AT(74, offsetof(CKickableDef, OpinionDeedTypeToEnemies) == 0x4c);
++FABLE_STATIC_ASSERT_AT(75, offsetof(CKickableDef, IgnoreNavigationTest) == 0x50);
+ 
+ #endif // FABLE_RETAIL_CKICKABLEDEF
+ #endif // FABLE_ENGINE_CKICKABLEDEF_H

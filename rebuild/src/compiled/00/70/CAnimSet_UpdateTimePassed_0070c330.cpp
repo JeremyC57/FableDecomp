@@ -13,7 +13,7 @@
 // the flag load and store) as the fallthrough tail; the Forwards/Looping tests share one flag-byte load (al), and the
 // non-looping clamp goes through `float& current = CurrentPercentageComplete;` -- a store through the reference stops
 // VC7.1 reusing that byte for the final `Finished = true`, which retail does as `or byte ptr [esi+51h],2`.
-// Leaf: UpdateTimePassed
+// Leaf: ?UpdateTimePassed@CAnimSet@@AAEXM@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -78,7 +78,9 @@ private:
         return *bank->PeekAnimation(anim);
     }
 public:
+    private:
     void UpdateTimePassed(float time);
+    public:
 };
 
 void CAnimSet::UpdateTimePassed(float time)

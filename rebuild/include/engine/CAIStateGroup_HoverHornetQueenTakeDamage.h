@@ -8,6 +8,49 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEENTAKEDAMAGE_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128C7B4 (RTTI .?AVCAIStateGroup_HoverHornetQueenTakeDamage@@ : CAIStateGroup_HoverMovementBase), 23 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_HoverHornetQueenTakeDamage); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS, FABLE_RETAIL_CINTELLIGENTPOINTER, FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS, FABLE_RETAIL_CAISTATEGROUP_HOVERMOVEMENTBASE_MOVETOPOSANDFACEPOS.
+class CThingCreatureBase;
+#include "engine/CAIStateGroup_HoverMovementBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_HoverHornetQueenTakeDamage : public CAIStateGroup_HoverMovementBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0095A380 ?Initialise@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00900D78 ?GetStateGroupType@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void OnReplace();                                             // slot 10 0x0095A3B0 ?OnReplace@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x0095AA60 ?IsRunnable@CAIStateGroup_HoverHornetQueenTakeDamage@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x0095B280 ?Update@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXXZ
+    virtual bool IsCombatStateGroup() const;                              // slot 20 0x00900D75 ?IsCombatStateGroup@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE_NXZ
+public:
+    bool          LashOut;                                   // +0x1c
+    bool          bIsRangeAttack;                            // +0x1d
+    unsigned char _pad_0x1e[0x2];                            // +0x1e
+    long          RangeAttackCount;                          // +0x20
+    long          FrameOfLastHit;                            // +0x24
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverHornetQueenTakeDamage) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverHornetQueenTakeDamage, LashOut) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverHornetQueenTakeDamage, bIsRangeAttack) == 0x1d);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverHornetQueenTakeDamage, _pad_0x1e) == 0x1e);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverHornetQueenTakeDamage, RangeAttackCount) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverHornetQueenTakeDamage, FrameOfLastHit) == 0x24);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -37,5 +80,6 @@ FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_HoverHornetQueenTakeDamage, La
 FABLE_STATIC_ASSERT_AT(31, offsetof(CAIStateGroup_HoverHornetQueenTakeDamage, bIsRangeAttack) == 0x1d);
 FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_HoverHornetQueenTakeDamage, RangeAttackCount) == 0x20);
 FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_HoverHornetQueenTakeDamage, FrameOfLastHit) == 0x24);
+#endif // FABLE_RETAIL_CAISTATEGROUP_HOVERHORNETQUEENTAKEDAMAGE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_HOVERHORNETQUEENTAKEDAMAGE_H

@@ -1,0 +1,3 @@
+entry	address	status	binders_respelled	note
+L37 (land1122p27)	0x00535470	open: large family	0	vector<unsigned long> copy ctor 0x00535470: 26 code referencers, 6 table spellings (??0CULongVector, ??0?$vector@K@std@@, ??0?$CRetailVector@K@@, ??0CGroupArray@@, ?ctor@CCharString ...); census of the 24 uncompiled binders first
+L129 (land1122p27)	0x01436EA8	open: large family	0	0x01436EA8 data global: about 90 referencers (absolute) and 12+ table spellings; needs its own family pass

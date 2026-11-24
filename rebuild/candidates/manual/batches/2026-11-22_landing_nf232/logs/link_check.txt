@@ -1,0 +1,1 @@
+# link of the 6 rechecked objects (/FORCE): LNK4006 HEAD 0, landing 0; LNK2005 0. NF232's own sets: 4 rows + 10 co-definers 0 duplicates; 0x0054F410/70 the same 2 LNK4006 as HEAD (GetCRC v owner 0x00404310)

@@ -1,0 +1,5 @@
+entry	address	status	binders_respelled	note
+q12682	- (0x00741390 0x00743FE0 0x008AC4D0 0x00740420 0x008E31A0 + 0x008AC3F0)	done	28 vtable-slot bindings (18 of the five rows + 10 of 0x008AC3F0's re-laid vtable)	all six rows ported onto the shared headers (three add-only opt-ins on the mode headers); every CModeBase / CModeDragonHover / derived slot name now binds one address
+q12679	0x006A1620	partial (count-reducing: 4 -> 3)	1 (0x00664A10)	0x00664A10 ported onto CThingCreatureBase.h (+ add-only opt-in); 0x00890250 / 0x00890D80 blocked: whole-row stand-ins (a header port does not suffice: re-authoring / CGameScriptInterface + CScriptThing ports)
+q12676	-	open	0	not started (context)
+q12659	0x00418DCA	open	0	not started (the 469-includer proof does not fit this hand-back)

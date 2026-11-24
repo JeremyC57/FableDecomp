@@ -1,0 +1,8 @@
+## HEAD set: H_00733690.obj H_00662a00.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z
+## new set: N_00733690.obj H_00662a00.obj
+duplicates 0
+
+LK_DONE

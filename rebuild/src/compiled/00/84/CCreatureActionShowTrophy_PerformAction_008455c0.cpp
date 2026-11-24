@@ -81,7 +81,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDe
 class CThing;
 class CTCBase;
 class CTCTrophy { public:
-    void OnShownByCreature_006de8c0(CThing* creature);   // 0x006DE8C0
+    void OnShowTrophyPerformAction(CThing& creature);    // 0x006DE8C0 ?OnShowTrophyPerformAction@CTCTrophy@@QAEXAAVCThing@@@Z (Ego_r + FableWin; NF285, was OnShownByCreature_006de8c0(CThing*))
 };
 class CTCDParticleEmitter {
 public:
@@ -184,6 +184,6 @@ void CCreatureAction_ShowTrophy::PerformAction()
                     emitter->AttachToThing(*GetCreature(), 10, PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, 0.0f);
             }
         }
-        GetTrophy()->OnShownByCreature_006de8c0(GetCreature());
+        GetTrophy()->OnShowTrophyPerformAction(*GetCreature());
     }
 }

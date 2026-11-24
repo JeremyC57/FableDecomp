@@ -19,7 +19,7 @@ class CDataOutputStream {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long size);    // slot 4 (+0x10)
-    void WriteUShort(unsigned short value);              // 0x00993E80
+    void WriteUWORD(unsigned short value);              // 0x00993E80
 public:
     void WriteSLONG(long);   // 0x00993EB0
 };
@@ -36,7 +36,7 @@ template <class T> class CArray { public:
 
 class CRangeCompressor {
 public:
-    long Compress(void* data, long count, long stride, CArray<unsigned char>* output);   // 0x00F3AFC0
+    long Compress(const void* data, long count, long stride, CArray<unsigned char>& output);   // 0x00F3AFC0
 };
 
 // NF149 (q4552 / q4555..q4560): the buffers are the shared retail classes (engine/CVertexBufferWin32.h, engine/CIndexBuffer.h; Ego_r.pdb +
@@ -60,8 +60,8 @@ struct CEngineWaterBackgroundSubPatch_Methods : CEngineWaterBackgroundSubPatch {
 
 void CEngineWaterBackgroundSubPatch_Methods::Save(CDataOutputStream& stream, unsigned short a, unsigned short b, long c, long d)
 {
-    stream.WriteUShort(VertexCount);
-    stream.WriteUShort(PolyCount);
+    stream.WriteUWORD(VertexCount);
+    stream.WriteUWORD(PolyCount);
     stream.WriteSLONG(GetWaterType());
     long stride;
     switch (GetWaterType()) {
@@ -82,14 +82,14 @@ void CEngineWaterBackgroundSubPatch_Methods::Save(CDataOutputStream& stream, uns
     CRangeCompressor compressor;
     CArray<unsigned char> buffer;
     void* vertices = VertexBuffer->Lock(0, 0, 0);
-    long size = compressor.Compress(vertices, VertexCount, stride, &buffer);
+    long size = compressor.Compress(vertices, VertexCount, stride, buffer);
     stream.WriteSLONG(stride);
     stream.WriteSLONG(size);
     stream.Write(buffer.GetData(), size);
     VertexBuffer->Unlock();
     if (PolyCount != 0) {
         void* indices = IndexBuffer->Lock(0, 0, 0);
-        size = compressor.Compress(indices, PolyCount * 3, 2, &buffer);
+        size = compressor.Compress(indices, PolyCount * 3, 2, buffer);
         stream.WriteSLONG(size);
         stream.Write(buffer.GetData(), size);
         IndexBuffer->Unlock();

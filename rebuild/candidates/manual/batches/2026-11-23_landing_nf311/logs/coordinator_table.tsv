@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+rewitness	??1ScriptMethods@@UAE@XZ	004aa840	00d408b0	coordinator (NF311 Q4): old witness 0x008976F0 binds none of its ScriptMethods lines (compiled at landing); 0x00D408B0 binds it
+rewitness	??_7ScriptMethods@@6B@	01238c8c	00d408b0	coordinator (NF311 Q4): as above; 0x00D408B0 binds it

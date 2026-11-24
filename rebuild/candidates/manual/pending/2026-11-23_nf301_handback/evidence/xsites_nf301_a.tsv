@@ -1,0 +1,145 @@
+00449700	call	00407586	00407370L CUserProfileManager::ApplyValues
+00449700	call	00420f37	0041e6d3L NUISystem::CManager::Action
+00449700	call	00420f57	0041e6d3L NUISystem::CManager::Action
+00449700	call	00420f7d	0041e6d3L NUISystem::CManager::Action
+00449700	call	00420fa3	0041e6d3L NUISystem::CManager::Action
+00449700	call	00420fc9	0041e6d3L NUISystem::CManager::Action
+00449700	call	00420fef	0041e6d3L NUISystem::CManager::Action
+00449700	call	00421015	0041e6d3L NUISystem::CManager::Action
+00449700	call	0042103b	0041e6d3L NUISystem::CManager::Action
+00449700	call	004215a4	0041e6d3L NUISystem::CManager::Action
+00449700	call	00423097	0041e6d3L NUISystem::CManager::Action
+00449700	call	00423108	0041e6d3L NUISystem::CManager::Action
+00449700	call	00423178	0041e6d3L NUISystem::CManager::Action
+00449700	call	004231a9	0041e6d3L NUISystem::CManager::Action
+00449700	call	004231cc	0041e6d3L NUISystem::CManager::Action
+00449700	call	00426989	0041e6d3L NUISystem::CManager::Action
+00449700	call	00426d98	0041e6d3L NUISystem::CManager::Action
+00449700	call	00438382	00438310L CPlayerGui::ToggleLiveGui
+00449700	call	0043839e	00438310L CPlayerGui::ToggleLiveGui
+00449700	call	00446260	00446220L GetInputProcessEventFromUpdate
+00449910	call	00449964	00449960L CPlayerManager::GetMainPlayer
+004498c0	call	00449974	00449970L CPlayerManager::GetMainPlayer
+00449910	call	00449984	00449980L CPlayerManager::GetMainPlayerJoystickDeviceNumber
+004498c0	call	00449a35	00449a30L CPlayerManager::FreezePlayerControls
+004498c0	call	00449a55	00449a50L CPlayerManager::UnfreezePlayerControls
+00449910	call	00449a76	-
+004498c0	call	00449b05	-
+004498c0	call	00449b2a	00449b20L NUISystem::CSpellContainerList::AddChild
+004498c0	call	00449b45	00449b40L CPlayerManager::RemovePlayerCharacter
+004498c0	call	00449bf4	00449bf0L CPlayerManager::GetMainPlayerHeroCreature
+004498c0	call	00449c14	00449c10L CPlayerManager::GetMainPlayerHeroCreatureB
+004498c0	call	00449c76	-
+004498c0	call	00449c83	-
+004498c0	call	00449cc6	00449cb0L CPlayerManager::SwapToHero
+004498c0	call	00449cd3	00449cb0L CPlayerManager::SwapToHero
+00449910	call	00449d54	00449d20L CPlayerManager::IsMultiplayerGameActive
+00449910	call	00449d64	00449d20L CPlayerManager::IsMultiplayerGameActive
+004498c0	call	00449e26	00449d90L CPlayerManager::InitPlayerCharacter
+004498c0	call	00449e84	00449e60L CPlayerManager::LoadGameState
+004498c0	call	00449f9b	00449f90L CPlayerManager::SaveGameState
+00449910	call	0044a2bc	0044a2a0L CPlayerManager::DrawGetEnvironmentInfo
+00449700	call	00487527	00487520L CPlayer::IsMainPlayer
+00449700	call	00487ab9	00487aa0L CPlayer::InitJoystickDeviceNumber
+00449700	call	00487bda	00487bd0L CPlayer::UninitCharacter
+00449700	call	00487f3d	00487ef0L CPlayer::InitCharacterFromSave
+00449700	call	00487fba	00487fb0L CPlayer::InitPlayerGui
+00449700	call	004887cf	004887c0L CPlayer::SetupInitialPlayerMode
+00449700	call	004888d2	004888c0L CPlayer::SwitchPlayerCharactersWith
+00449700	call	004888ff	004888c0L CPlayer::SwitchPlayerCharactersWith
+00449700	call	00489e77	00489d40L CPlayer::CreateCharacter
+00449700	call	0048a044	00489d40L CPlayer::CreateCharacter
+00449700	call	0048a0f5	0048a070L CPlayer::InitCharacterAs
+00449700	call	0048a366	0048a210L CPlayer::PlayerInit
+004498c0	jmp	0049d853	0049d850L _global::Forward_GetPlayer_via0xc_0049d850
+004498c0	jmp	0049d863	-
+00449700	call	0049f299	0049f180L CWorld::ActivateWorld
+004498c0	call	004a5da5	004a5a40L CWorld::UpdateFrame
+00449910	call	004c7a23	004c7a10L CThing::PeekPlayer
+004498c0	call	004c7a43	004c7a30L CThing::GetPlayer
+00449910	call	004c7cb1	004c7ca0L CThing::GetJoystickDeviceNumber
+00517720	call	00519198	-
+00517720	call	0051a015	00519ff0L std::__copy<CNavigationAreaUpdate::CSwitchableBlockage const
+00404c50	call	005403bf	00540320L CEditBox::KeyPressed
+00404c50	call	0054e2e1	0054e280L NUISystem::CFrontEndScreen::ProcessEvent
+00449700	call	0055d745	0055d6c0L CTCPhotojournalCapture::DestroyScreen
+00449700	call	0055d7a6	0055d770L CTCPhotojournalCapture::ClosePhotojournalCapture
+00449700	call	005bc553	005bc527L NInventory::CTCInventoryBase::AddCloseInventoryEvent
+00449700	call	005ea9c0	005ea9b0L CTCTavernGame::CreateGamePiece
+00449700	call	005eb614	005eb590L CTCTavernGame::GivePrize
+00449700	call	005fae64	005fad40L CTCInventoryMap::TeleportHeroToGuildSealRecallLocation
+004498c0	call	005faf79	005faf50L CTCInventoryMap::DrawPreparePrimitivesForRendering
+00449700	call	005fb5ff	005fb4b0L CTCInventoryMap::TeleportHeroToBoastingArea
+00449700	call	00629cb0	00629c40L CWorld::EAControlledCreatureUseAbility
+004498c0	call	0064445e	00644424L Draw
+004498c0	call	0064c87e	0064c869L NPlayerGui::CDrawSpiritTargetingCursor::Draw
+004498c0	call	0064e321	-
+004498c0	call	0064e339	-
+00449700	call	0066fb99	0066fb80L CTCCoopSpirit::UpdateLocalJostling
+004498c0	call	0066fbc2	0066fb80L CTCCoopSpirit::UpdateLocalJostling
+004498c0	call	0066fdd4	0066fc90L CTCCoopSpirit::UpdateScreenRestrictingForces
+00449700	call	0066ff2e	0066ff20L CTCCoopSpirit::SwapToHero
+004498c0	call	0066ffa1	0066ff20L CTCCoopSpirit::SwapToHero
+00449700	call	00670729	00670710L CTCCoopSpirit::UpdateScore
+004498c0	call	0067073c	00670710L CTCCoopSpirit::UpdateScore
+006ff930	call	0067792a	006778a0L CPersistTraits<CReactionFrequencyTraitsArray>::TransferBinar
+00449700	call	0068afe9	0068ae30L CInputProcessInventoryMapScreen::ProcessInput
+00449700	call	0068b4d7	0068b2e0L CInputProcessInventoryExperienceScreen::ProcessInput
+00449700	call	0068b97e	0068b7c0L CInputProcessInventoryTradeScreen::ProcessInput
+00449700	call	0068c498	0068bc70L CInputProcessInventoryQuestsScreen::ProcessInput
+00449910	call	006a9d24	006a9d10L CThingPlayerCreature::vfunc_34
+00449700	call	006ad69a	006ad580L CThingPlayerCreature::OnCollision
+004498c0	call	006e72b8	-
+004498c0	call	006e7572	006e7550L CScriptGameResourceObjectMovie::~CScriptGameResourceObjectMo
+004498c0	call	006e7666	006e7630L CScriptGameResourceObjectMovie::CScriptGameResourceObjectMov
+00449700	call	00772bcb	00772bb0L CTCShop::AddSaleItem
+00449700	call	00773bcb	00773b20L CTCShop::OpenShoppingInterface
+00449700	call	0077d586	0077d4b0L CTCHeroCentre::OpenTrainingScreen
+00449700	call	0077d66a	0077d5b0L CTCHeroCentre::FrameUpdate
+00449700	call	00780206	007800b0L CTCHeroGuide::OpenQuestSelectInterface
+00449700	call	007b5994	007b57c0L CTCCarriedActionUseActivateQuest::OnActionUse
+00449700	call	007b682c	007b6810L CTCCrateStack::FillStack
+00449700	call	007dfdec	007dfcf0L CTCTeleporter::TeleportHero
+00449700	call	007e0084	007dff90L CTCTeleporter::StartTeleporting
+004498c0	call	007f9a1f	007f9960L CTCTargetingSpirit::UpdateTargetList
+00449910	call	0082d1e4	0082d1d0L CThingBuilding::GetHighlightInfo_slot34
+00449910	call	00830cc9	00830cb0L CThingAICreature::DrawGetThingDisplayInformation
+00449910	call	0083c6f1	0083c690L CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea
+004498c0	call	0083c70f	0083c690L CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea
+00449910	call	0083c86a	0083c800L CThingSwitch::TriggerPlayerResetWhenLeaves
+004498c0	call	0083c888	0083c800L CThingSwitch::TriggerPlayerResetWhenLeaves
+00449910	call	0083caff	0083ca90L CThingSwitch::SwitchTriggerPlayerOnlyOnceInArea
+004498c0	call	0083cb1d	0083ca90L CThingSwitch::SwitchTriggerPlayerOnlyOnceInArea
+00404c50	call	00851876	00851860L CVirtualKeyboard::Cancel
+00404b50	call	00851888	00851860L CVirtualKeyboard::Cancel
+00404c50	call	0085197c	00851920L CVirtualKeyboard::Confirm
+00404b50	call	0085198e	00851920L CVirtualKeyboard::Confirm
+00449700	call	008718fa	008718b0L NCreatureAction::CActionEventAddObject::Dispatch
+00449700	call	0087c563	-
+00449700	call	0087c5ba	0087c580L CPlayer::GlobalEventCreatureDied
+00449700	call	0088e196	0088e150L CGameScriptInterface::RespawnHero
+00449700	call	008fd0e4	008fd0a0L CAIStateGroupBase::CreateItem
+00449700	call	00944a9b	00944940L CAIStateGroup_WorkSawingWood::Update
+00961ab0	call	00961be9	00961b90L _global::IsThingInRangeOfPound
+00961ab0	call	00961ee6	00961e80L CAIStateGroup_IceTrollPoundGroundAttack::IsRunnable
+00517720	call	00a81d48	-
+00517720	call	00a81e4b	00a81e20L std::__unguarded_linear_insert
+00517720	call	00a81e64	00a81e20L std::__unguarded_linear_insert
+00517720	call	00a81fd7	00a81fc0L _Copy_impl<std::pair<CCharString,CCharString>*,std::_Copy_im
+00517720	call	00a82025	00a82000L std::__copy
+00517720	call	00a82134	00a820e0L std::__push_heap<std::pair<unsigned __int64, std::list<C2DLi
+00517720	call	00a82163	00a820e0L std::__push_heap<std::pair<unsigned __int64, std::list<C2DLi
+00517720	call	00a821ee	00a821c0L std::__copy_backward<std::pair<unsigned __int64, std::list<C
+00517720	call	00a82633	00a82620L _global::Fill_CElement4_00517720_00a82620
+00517720	call	00a82667	00a82650L _global::Copy_SListHandle04_00517720_00a82650
+00517720	call	00a827af	-
+00517720	call	00a82adc	00a82ac0L std::__copy_ptrs
+00517720	call	00a82b6f	00a82b10L std::iter_swap
+00517720	call	00a82b84	00a82b10L std::iter_swap
+00517720	call	00a82c3d	00a82be0L _Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDe
+00517720	call	00a82c6f	00a82be0L _Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDe
+00517720	call	00a8301c	-
+00517720	call	00a83251	00a83230L std::__copy_backward_ptrs<std::list<C2DLineF, std::allocator
+00517720	call	00a8358d	00a83570L std::__pop_heap
+00517720	call	00a840b6	00a84090L std::vector<list<C2DLineF> >::erase
+00517720	call	00a8442c	00a843f0L std::__linear_insert

@@ -1,3 +1,4 @@
+// Leaf: ?Close@CFileDataInputStream@@UAEXXZ
 // CFileDataInputStream::Close  (retail 0x00994300)
 // Faithful VC7.1 reconstruction.
 
@@ -37,7 +38,7 @@ public:
     void* buffer;                      // +0x1C
     int   bufferCount;                 // +0x20
 
-    void Close();
+    virtual void Close();             // slot 3 (vtbl+0x0C): rtti-vtables CFileDataInputStream slot 3; PDB UAE
 };
 
 void CFileDataInputStream::Close()

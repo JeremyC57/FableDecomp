@@ -69,7 +69,14 @@ template<> inline void allocator<CComponent*>::deallocate(CComponent** p, size_t
 #pragma optimize("s", on)
 #pragma auto_inline(off)
 #endif
-template<>
+// NF217 (2026-11-21, q12371): `inline` + a guarded noinline, as stlport/fable_containers.h's
+//   FABLE_RETAIL_STLP_FILL_N_NUISYSTEM_CCOMPONENT_SIZE_BODY spells the same instance: the copy is a pick-any COMDAT like the one
+//   0x006116E0 / 0x007E4B60 emit (one definition; it was a strong definition, LNK2005 beside them), still out of line and still
+//   compiled in this optimize("y" / "s") region (a non-template inline explicit specialization takes the mode at its definition).
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
 CComponent** FABLE_FASTCALL fill_n(CComponent** first, unsigned int n, CComponent* const& x)
 {
     for (; n > 0; --n, ++first)

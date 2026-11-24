@@ -34,7 +34,10 @@ class CTCDParticleEmitter { public:
     bool AttachedToCamera : 1;
     bool Moving : 1;
     bool IsParticleCreationDisabled() const;                // 0x006E0DF0
-    void SetParticleCreationDisabled(bool disabled);        // 0x006E0690
+    protected:
+    void SetParticleCreationDisabled(bool disabled);
+    public:
+        // 0x006E0690
     void SetAsDrawable(bool drawable);
 };
 

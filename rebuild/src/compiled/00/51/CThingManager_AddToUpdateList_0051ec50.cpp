@@ -1,5 +1,5 @@
-// CThingManager::AddToUpdateList(CThing* thing) -- appends the thing to the tail of its update list (selected by its list index) unless it is already linked, notifying its physics component
-// Leaf: AddToUpdateList
+// CThingManager::AddToUpdateList(CThing& thing) -- appends the thing to the tail of its update list (selected by its list index) unless it is already linked, notifying its physics component
+// Leaf: ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051EC50, length 100 bytes (+ int3 padding).
 // Callees: CTCPhysicsBase virtual slot 46 (+0xb8, the added-to-update-list notification).
 // Layout (retail, local model): CThing render links prev +0x7c / next +0x80, update links prev +0x84 / next +0x88, update-list
@@ -22,22 +22,22 @@ class CThingManager { public:
     ThingLList    RenderList;                   // +0x84 (PDB +0x9c)
     ThingLList*   UpdateLists;                  // +0x8c (PDB +0xa4: vector<ThingLList> begin)
     void RemoveFromRenderList(CThing* thing);
-    void AddToUpdateList(CThing* thing);
+    void AddToUpdateList(CThing& thing);
     void RemoveFromUpdateList(CThing* thing);
 };
 
-void CThingManager::AddToUpdateList(CThing* thing)
+void CThingManager::AddToUpdateList(CThing& thing)
 {
-    ThingLList* list = &UpdateLists[thing->GetType()];
-    if (thing->UpdateListNext || thing->UpdateListPrev || list->m_pHead == thing)
+    ThingLList* list = &UpdateLists[thing.GetType()];
+    if (thing.UpdateListNext || thing.UpdateListPrev || list->m_pHead == &thing)
         return;
-    if (thing->GetPhysicsTC())
-        thing->GetPhysicsTC()->OnAddedToUpdateList();
+    if (thing.GetPhysicsTC())
+        thing.GetPhysicsTC()->OnAddedToUpdateList();
     if (list->m_pTail)
-        list->m_pTail->UpdateListNext = thing;
+        list->m_pTail->UpdateListNext = &thing;
     else
-        list->m_pHead = thing;
-    thing->UpdateListPrev = list->m_pTail;
-    thing->UpdateListNext = 0;
-    list->m_pTail = thing;
+        list->m_pHead = &thing;
+    thing.UpdateListPrev = list->m_pTail;
+    thing.UpdateListNext = 0;
+    list->m_pTail = &thing;
 }

@@ -1,3 +1,4 @@
+// Leaf: ?IsAbleToTurnViaAnimation@CTCLook@@ABE_NXZ
 // CTCLook::IsAbleToTurnViaAnimation() -- turning via animation is allowed when the def allows it (combat or normal flag by the creature's combat state), no current action forbids it, turning animations exist, turning via animation is not disabled and the thing can use turning animations
 // Grade: RELOCATION_MATCH -- IS_ALIVE as a template taking `T* const&` bound straight to the PParentCreature member: retail then loads it into eax for the null/dead tests and copies it to ecx for the call (`mov ecx,eax`, twice); a by-value pointer parameter loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752480, length 137 bytes.
@@ -59,10 +60,12 @@ class CTCLook { public:
     CTurningAnim* TurningAnimsStart;                 // +0x8c TurningAnims (retail 12-byte vector)
     CTurningAnim* TurningAnimsFinish;                // +0x90
     CTurningAnim* TurningAnimsEnd;                   // +0x94
-    bool IsAbleToTurnViaAnimation();
+    private:
+    bool IsAbleToTurnViaAnimation() const;
+    public:
 };
 
-bool CTCLook::IsAbleToTurnViaAnimation()
+bool CTCLook::IsAbleToTurnViaAnimation() const
 {
     bool allowed;
     if (IS_ALIVE(PParentCreature) && PParentCreature->IsInMelee())

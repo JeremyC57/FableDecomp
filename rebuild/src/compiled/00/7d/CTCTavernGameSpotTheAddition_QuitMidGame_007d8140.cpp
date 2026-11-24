@@ -19,7 +19,10 @@ class CTCTavernGame : public CTCTavernGameDonor {
 };
 
 struct CTCTavernGameSpotTheAddition : CTCTavernGame {
-    void PositionCover(float amount);   // 0x007D7F10
+    private:
+    void PositionCover(float amount);
+    public:
+   // 0x007D7F10
     void QuitMidGame();
 };
 

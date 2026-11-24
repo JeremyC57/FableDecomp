@@ -14,6 +14,12 @@ public:
     CScrollBarOutside(const CScrollBarOutside&);
     virtual ~CScrollBarOutside();
     void GetDataFromDef();                                          // 0x00559230
+#ifdef FABLE_RETAIL_CSCROLLBAROUTSIDE_SCROLLBAR_PASS26
+    // Primary slots 150 through 152 in retail 0x0124B54C. Both donor PDBs agree on the signatures.
+    virtual void AddActionOnLeftClickedAbove(CCountedPointer<CAction>&); // 0x00559400
+    virtual void AddActionOnLeftClickedUnder(CCountedPointer<CAction>&); // 0x00559490
+    virtual void SetScrollBar(CComponent*);                            // 0x005590B0
+#endif
 #ifdef FABLE_RETAIL_CSCROLLBAROUTSIDE_ONLEFTCLICKED
     // Retail opt-in (wf2, row 0x005590C0): Ego_r.pdb / FableWin.pdb ?OnLeftClicked@CScrollBarOutside@NUISystem@@UAEXXZ, the override in
     // slot 146 of the primary vtable 0x0124B54C (rtti-vtables.tsv). Declaration only: no layout or vtable change.
@@ -25,5 +31,5 @@ protected:
     std::list<CCountedPointer<CAction> >* PActionsOnLeftClickedUnder; // +0x19c
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CScrollBarOutside) == 0x1a0);
+FABLE_STATIC_ASSERT_AT(28, sizeof(NUISystem::CScrollBarOutside) == 0x1a0);
 #endif

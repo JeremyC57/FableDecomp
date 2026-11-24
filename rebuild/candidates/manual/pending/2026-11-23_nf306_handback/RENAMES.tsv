@@ -1,0 +1,34 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames / leaf changes)
+0x0066b080	CTCSoundPlayer	InternalPlayAttachedSample	?InternalPlayAttachedSample@CTCSoundPlayer@@AAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z	CTCSoundPlayer::InternalPlayAttachedSample	?InternalPlayAttachedSample@CTCSoundPlayer (defined ?InternalPlayAttachedSample@CTCSoundPlayer@@QAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z)	Ego_r + FableWin AAE; access fix in place (private, NF302 Q5), Leaf written in full; no landed row bound the old QAE spelling (exe callers 0x0066B280 / 0x0066BA80 already bind AAE, 0x0066B300 moves to AAE in this unit)
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x0096ea50	?IsAttackerReadyToAttack@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z	?IsCreatureOnRotatingCombatRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	0x006e93c0
+0x0093db70	?CCombatWheel_ValidateSequencePosition@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z	?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	0x006e9700
+0x0093db70	?Combat_ProximityCalculation@CCombatManager@@QAEMPAVCThingCreatureBase@@@Z	?GetCombatWheelRadiusForAttacker@CCombatManager@@QBEMABVCThingCreatureBase@@@Z	0x006e9680
+0x0096e700	?IsPositionOccupied@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z	?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	0x006e9700
+0x0093e090	?OnCombatPositionUnreachable@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?SetAttackerProngAsInvalid@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	0x006e9d10
+0x00662550	?AddCreature@CCreatureInteraction@@QAEXPAVCThingCreatureBase@@@Z	?AddParticipant@CCreatureInteraction@@QAEXAAVCThingCreatureBase@@@Z	0x008631d0
+0x0049e370	?SetCameraThemes@CEnvironment@@QAEXJJPBJPBMJ@Z	?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z	0x006b3e60
+0x0076d460	?IsAlliedWith@CFaction@@QBE_NPBV1@@Z	?IsAlliedWithFaction@CFaction@@QBE_NABV1@@Z	0x006b9460
+0x00a032f0	?InternalAllocate@CHandleBasedMemoryPool@@QAE_NAAJJJ@Z	?Allocate@CHandleBasedMemoryPool@@QAE_NPAJKK@Z	0x00a03180
+0x00828590	?GetNextRegionOnWayToRegion@CRegionConnectionNode@@QAEJJPAVCRegionConnectionGraph@@@Z	?GetNextNodeOnWayToRegion@CRegionConnectionNode@@QBEJJABVCRegionConnectionGraph@@@Z	0x00828360
+0x00587a41	?ClearHighlights@CTCInventory@@QAEXJ@Z	?DeactivateAllEditBoxes@CTCInventory@@QAEX_N@Z	0x00582414
+0x0066b300	?PlayAttachedSampleIndex@CTCSoundPlayer@@QAEKPAVCASoundBank@@JPAVCSoundInit@@_N22@Z	?InternalPlayAttachedSample@CTCSoundPlayer@@AAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z	0x0066b080
+0x00b3b4f0	?ResizePoolByFormat@CTextureManager@@QAE_NJJ@Z	?ResizePoolTextureCount@CTextureManager@@QAE_NKK@Z	0x00a6abe0
+0x00945610	?Query_009455b0@CAIStateGroup_SitForMeal@@QAEEXZ	?IsMealTime@CAIStateGroup_SitForMeal@@ABE_NXZ	0x009455b0
+0x00945b90	?IsInMealHours@CAIStateGroup_WorkBase@@QAE_NXZ	?IsMealTime@CAIStateGroup_SitForMeal@@ABE_NXZ	0x009455b0
+0x00b324a0	?RegisterPrimitive@CEnginePrimitiveManager@@QAEXPAVCEngineInternalPrimitiveBase@@K@Z	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	0x00bacdd0
+0x00814d90	?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@PAVCThing@@@Z	?GetSphereBase@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@ABVCThing@@@Z	0x00814c70
+0x004fc8a0	?GetPMiniMapDisplay@CPlayerGui@@QAEPAVCMiniMapDisplay@@XZ	?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ	0x00437ce0
+0x0049f180	?ActivateMultipleQuests@CQuestManager@@QAE_NPAV?$CArray@VCCharString@@@@_N1@Z	?ActivateMultipleQuests@CQuestManager@@QAE_NABV?$CArray@VCCharString@@@@_N1@Z	0x004b4260
+0x0090fa60	?RemoveUser@CTCGatherPointBase@@QAEXPAVCThing@@@Z	?RemoveAsUser@CTCGatherPointBase@@QAEXABVCThing@@@Z	0x007ffdb0
+0x008c1f70	?PlaySound@CTCSoundPlayer@@QAEKJABVCSoundInit@@JJ@Z	?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z	0x0066ace0
+0x009492a0	?GetPickupSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3_N@Z	?GetPickupSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3_N@Z	0x007ba000
+0x0054e4b0	?SetUpChildrenForAcceptButton@NUISystem@@YIXPAVCComponent@1@0@Z	?SetPAcceptButtonRecursive@@YIXPAVCComponent@NUISystem@@0@Z	0x0054e350
+0x00923510	?GetPPlayerManager@CAIStateGroupBase@@QBEPBVCPlayerManager@@XZ	?PeekPlayerManager@CAIStateGroupBase@@IBEABVCPlayerManager@@XZ	0x008fcf80
+0x00602f30	?GetPMiniMapDisplay@CPlayerGui@@QAEPAVCMiniMapDisplay@@XZ	?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ	0x00437ce0
+0x00602f30	?ReleaseMapScreenPrimitives@CTCInventoryMap@@QAEXXZ	?ResetPrimitiveHandles@CTCInventoryMap@@QAEXXZ	0x005fc510
+0x005e4430	?GetQuestName@CTCQuestCard@@QAE?AVCWideString@@XZ	?GetQuestObjective@CTCQuestCard@@QBE?AVCWideString@@XZ	0x00702470
+# Section 2b (CONDITIONAL on question Q2, rows_conditional.txt)
+0x00b6e260	?IsQueryVisible@CEngineOcclusionManager@@QAEJK_N@Z	?GetResult@CEngineOcclusionManager@@QAEKK_N@Z	0x00b8d0b0
+0x00be79d0	?GetQueryResult@CEngineOcclusionManager@@QAEKJ_N@Z	?GetResult@CEngineOcclusionManager@@QAEKK_N@Z	0x00b8d0b0

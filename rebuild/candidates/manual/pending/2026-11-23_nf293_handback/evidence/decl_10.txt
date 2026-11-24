@@ -1,0 +1,483 @@
+#10 00857f30 CCombatActionBase [??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@AAVCThing@@JABVCSoundPair@@@Z]
+  00857f30(self) leaf=??0CCombatActionBase inc=0
+      L97: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L98: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L101: CCombatActionBase::CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound)
+  0066a690 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 250, CSoundPair())
+  00739a00 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  0074dac0 leaf=- inc=0
+      L32: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L42: : CCombatActionBase(owner, thing, 240, GetSoundPair(*owner, 0))
+  00855af0 leaf=- inc=0
+      L26: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L37: : CCombatActionBase(owner, target, actionCode, CSoundPair())
+  00855c40 leaf=??0CCreatureAction_BlockCounter@@QAE@AAVCThingCreatureBase@@0@Z inc=2
+      L23: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long code, const CSoundPair& sounds);
+      L32: : CCombatActionBase(creature, target, 150, CSoundPair())
+  0085c190 leaf=??0CCombatAction_ControlledStrafeJump inc=1
+      L39: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L52: : CCombatActionBase(owner, target, 150, CSoundPair())
+  0087cdf0 leaf=??0CCreatureAction_InterruptableMidAttackAutoTurn@@QAE@AAVCThingCreatureBase@@AAVCThing@@P inc=4
+      L259: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long priority, const CSoundPair& sounds);
+      L260: CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sounds);
+      L286: : CCombatActionBase(creature, target, 0x96, CSoundPair()), RequiredFacing(requiredFacing), PWeapon(weapon), PerformedStrikeEnd(false)
+  0087cf90 leaf=- inc=0
+      L26: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L37: : CCombatActionBase(owner, target, 200, CSoundPair())
+  0087fd20 leaf=??0CCombatAction_KickThingOnGround@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L65: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L77: : CCombatActionBase(&creature, &target, 150, CSoundPair())
+  0087fdf0 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008ae160 OFF leaf=??0CCreatureAction_InterruptableMidAttack@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L20: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L30: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008b7f80 leaf=- inc=0
+      L26: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L27: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L40: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008b8190 OFF leaf=??0CCreatureAction_LeapLong@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L7: class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObj
+      L9: CCreatureAction_LeapLong::CCreatureAction_LeapLong(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombatActionBase(creature,enemy,50,CSoundP
+  008b8200 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  008b8260 leaf=??0CCreatureAction_ProjectileCrouch@@QAE@AAVCThingCreatureBase@@0_N@Z inc=5
+      L245: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long priority, const CSoundPair& sounds);
+      L246: CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sounds);
+      L270: : CCombatActionBase(creature, target, 0x96, GetSoundPair(creature, "SWORD_SWING")), TurnToFaceTarget(turnToFaceTarget)
+  008b8310 leaf=??0CCreatureAction_ProjectileCrouch@@QAE@AAVCThingCreatureBase@@0ABVC3DVector@@@Z inc=5
+      L245: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long priority, const CSoundPair& sounds);
+      L246: CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sounds);
+      L270: : CCombatActionBase(creature, target, 0x96, GetSoundPair(creature, "SWORD_SWING")), TurnToFaceTarget(true), FacePos(facePos)
+  008b83e0 leaf=??0CCreatureAction_SummonCreatures@@QAE@AAVCThingCreatureBase@@0_N@Z inc=12
+      L61: : CCombatActionBase(creature, target, 150, GetSoundPair(creature, (const char*)0))
+  008b84a0 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008b8500 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008b9190 leaf=??0CCreatureAction_ScreamerDrainOutOf@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L20: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L30: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008bb0b0 leaf=- inc=0
+      L30: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L44: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008bb130 leaf=- inc=0
+      L50: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L51: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L67: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008bc0c0 leaf=??0CCreatureAction_CastWillHarvestSoulSpell@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=2
+      L23: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long code, const CSoundPair& sounds);
+      L32: : CCombatActionBase(creature, target, 150, CSoundPair())
+  008bce50 leaf=- inc=0
+      L18: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L19: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L30: : CCombatActionBase(owner, target, 145, CSoundPair())
+  008bcfb0 leaf=??0CCreatureAction_TeleportOut@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVC3DVector@@_N@Z inc=4
+      L29: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L30: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L42: : CCombatActionBase(owner, thing, 250, CSoundPair())
+  008bfa60 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008bfac0 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008bfb20 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008bfb80 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008bfbe0 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008bfc40 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008bfca0 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008bfd00 OFF leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008bfd60 OFF leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008bfda0 leaf=- inc=1
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L33: : CCombatActionBase(owner, target, 250, CSoundPair())
+  008c27b0 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  008c39a0 leaf=- inc=1
+      L43: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L54: : CCombatActionBase(owner, target, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  008c4e20 leaf=??0CCreatureAction_ScorpionChargeInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@M@Z inc=35
+      L107: : CCombatActionBase(creature, target, 150, GetSoundPair(creature, "SWORD_SWING"))
+  008c4ea0 leaf=??0CCreatureAction_ScorpionCharge@@QAE@PAVCThingCreatureBase@@PAVCThing@@M@Z inc=2
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L49: : CCombatActionBase(owner, target, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  008c4f50 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L47: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  008c5410 leaf=??0CCreatureAction_WaspQueenDiveAttack@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L11: class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObj
+      L13: CCreatureAction_WaspQueenDiveAttack::CCreatureAction_WaspQueenDiveAttack(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombatActionBase(cre
+  008c7390 leaf=??0CCreatureAction_TrollThrowProjectile@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVC3DVecto inc=3
+      L28: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L29: CCombatActionBase(const CCombatActionBase& other);
+      L41: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008c7400 leaf=??0CCreatureAction_TrollThrowProjectile@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z inc=3
+      L27: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L28: CCombatActionBase(const CCombatActionBase& other);
+      L40: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008c9410 leaf=- inc=0
+      L36: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L48: : CCombatActionBase(owner, target, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  008c94d0 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L49: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008c95b0 leaf=- inc=0
+      L14: CCombatActionBase(long actionCode);
+      L15: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L16: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L28: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008c9cc0 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "ATTACK"))
+  008ca5a0 leaf=??0CCreatureAction_NymphSummonInto@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L33: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L43: : CCombatActionBase(owner, target, 150, GetSoundPair(owner, (const char*)0))
+  008ca680 leaf=??0CCreatureAction_NymphShot@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L11: class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObj
+      L13: CCreatureAction_NymphShot::CCreatureAction_NymphShot(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombatActionBase(creature,enemy,150,GetS
+  008ca700 leaf=??0CCreatureAction_NymphIdleAfterShot@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L11: class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObj
+      L13: CCreatureAction_NymphIdleAfterShot::CCreatureAction_NymphIdleAfterShot(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombatActionBase(creat
+  008ca7c0 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008cbca0 leaf=- inc=1
+      L22: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008cbcf0 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008cbd90 leaf=- inc=2
+      L27: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L38: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008ccb80 leaf=- inc=0
+      L19: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L29: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008ccc10 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 254, CSoundPair())
+  008ccc70 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  008cccd0 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008ccd30 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  008ce040 leaf=??0CCreatureAction_CastAssassinRush@@QAE@PAVCThingCreatureBase@@PAVCThing@@_NJUCCountedPoi inc=1
+      L60: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L61: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L85: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008ce290 leaf=??0CCreatureAction_CastBattleCharge@@QAE@AAVCThingCreatureBase@@AAVCThing@@_NJ@Z inc=0
+      L25: CCombatActionBase(long actionCode);
+      L26: CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);
+      L27: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L47: : CCombatActionBase(&owner, &target, 150, CSoundPair())
+  008ce3f0 leaf=??0CCreatureAction_BuildUpBattleCharge@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=2
+      L23: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long code, const CSoundPair& sounds);
+      L32: : CCombatActionBase(creature, target, 140, CSoundPair())
+  008e45b0 leaf=??0CCreatureAction_ScorpionTailWithdraw inc=0
+      L35: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L45: : CCombatActionBase(owner, target, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  008e4640 leaf=??0CCreatureAction_ScorpionTailPlunge inc=0
+      L35: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L45: : CCombatActionBase(owner, target, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  008e46d0 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L47: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  008e49c0 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  008e6a70 leaf=- inc=0
+      L35: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L45: : CCombatActionBase(owner, target, 150, GetSoundPair(*owner, "VITAL_STRIKE"))
+  008e6bb0 leaf=??0CCreatureAction_CastStrengthMultiStrikeProper@@QAE@PAVCThingCreatureBase@@PAVCThing@@J@ inc=0
+      L78: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L79: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L91: : CCombatActionBase(owner, target, 150, CSoundPair())
+  008eda90 leaf=??0CCombatAction_FallStunned inc=0
+      L55: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L67: : CCombatActionBase(owner, thing ? thing : owner, 250, CSoundPair())
+  008f4d00 leaf=- inc=1
+      L22: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L36: : CCombatActionBase(owner, target, 150, CSoundPair())
+  00906380 leaf=- inc=8
+      L150: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds);
+      L159: : CCombatActionBase(owner, target, 50, CSoundPair()) { }
+      L167: : CCombatActionBase(owner, target, 50, CSoundPair()) { }
+  009064b0 leaf=?OnCreate@CCombatSequence_NonInterruptableBoxStrafe inc=0
+      L29: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds);
+      L43: : CCombatActionBase(owner, target, 50, CSoundPair()) { }
+  009066c0 leaf=?OnCreate@CCombatSequence_BanditAttackMiddle@@UAEXXZ inc=2
+      L21: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L27: CCreatureAction_InterruptableMidAttack(CThingCreatureBase& owner, CThing& target) : CCombatActionBase(owner, target, 150, CSoundPair()) { }
+  009067b0 leaf=OnCreate inc=0
+      L29: CCombatActionBase() { }
+      L30: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L66: : CCombatActionBase(owner, thing, 150, CSoundPair()) { }
+      L73: : CCombatActionBase(owner, thing, 50, CSoundPair()) { }
+  009068a0 leaf=?OnCreate@CCombatSequence_BanditIdleNear@@UAEXXZ inc=2
+      L26: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L32: CCreatureAction_LeapBack(CThingCreatureBase& owner, CThingCreatureBase& target) : CCombatActionBase(owner, target, 50, CSoundPair()) { }
+  00906940 leaf=?OnCreate@CCombatSequence_BanditIdleMiddle@@UAEXXZ inc=2
+      L26: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L32: CCreatureAction_CombatIdle(CThingCreatureBase& owner, CThingCreatureBase& target) : CCombatActionBase(owner, target, 50, CSoundPair()) { }
+  009069e0 leaf=?OnCreate@CCombatSequence_BanditBoast@@UAEXXZ inc=2
+      L26: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L32: CCreatureAction_CombatBoast(CThingCreatureBase& owner, CThingCreatureBase& target) : CCombatActionBase(owner, target, 50, CSoundPair()) { }
+  00906a80 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 50, CSoundPair())
+  00906ac0 leaf=??0CCreatureAction_CombatIdle@@QAE@AAVCThingCreatureBase@@0@Z inc=0
+      L27: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L36: : CCombatActionBase(owner, (CThing&)thing, 50, CSoundPair())
+  00906b00 leaf=??0CCreatureAction_CombatBoast@@QAE@AAVCThingCreatureBase@@0@Z inc=0
+      L27: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L36: : CCombatActionBase(owner, (CThing&)thing, 50, CSoundPair())
+  00906b40 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  00906ba0 leaf=??0CCreatureAction_InterruptableNearAttack@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L20: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L30: : CCombatActionBase(owner, target, 150, CSoundPair())
+  00907320 OFF leaf=??0CCreatureAction_FodderPrimaryAttack@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L33: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L43: : CCombatActionBase(owner, target, 150, GetSoundPair(owner, (const char*)0))
+  009073a0 OFF leaf=??0CCreatureAction_FodderUnblockablePrimaryAttack@@QAE@AAVCThingCreatureBase@@AAVCThing@@@ inc=1
+      L33: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L43: : CCombatActionBase(owner, target, 150, GetSoundPair(owner, (const char*)0))
+  00907440 OFF leaf=??0CCreatureAction_FodderSecondaryAttack@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L33: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L43: : CCombatActionBase(owner, target, 150, GetSoundPair(owner, (const char*)0))
+  009074c0 OFF leaf=??0CCreatureAction_FodderIdle@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L11: class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObj
+      L13: CCreatureAction_FodderIdle::CCreatureAction_FodderIdle(CThingCreatureBase& creature,CThing& enemy):CCombatActionBase(creature,enemy,50,GetSoundPair(cr
+  00907750 leaf=?OnCreate@CCombatSequence_TrollDoubleSwipe@@UAEXXZ inc=2
+      L21: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L27: CCreatureAction_TrollSwipe(CThingCreatureBase& owner, CThingCreatureBase& target) : CCombatActionBase(owner, target, 150, CSoundPair()) { }
+  00907840 leaf=?OnCreate@CCombatSequence_TrollDoubleSwipeNonMelee@@UAEXXZ inc=2
+      L21: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L27: CCreatureAction_TrollSwipe(CThingCreatureBase& owner, CThingCreatureBase& target) : CCombatActionBase(owner, target, 150, CSoundPair()) { }
+  00907fb0 leaf=??0CCreatureAction_TrollWhackGroundBase@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L20: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L30: : CCombatActionBase(owner, target, 150, CSoundPair())
+  00908000 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  009080b0 leaf=- inc=0
+      L26: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L37: : CCombatActionBase(owner, target, 150, CSoundPair())
+  009081f0 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  00908270 leaf=- inc=1
+      L27: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L38: : CCombatActionBase(owner, target, 50, CSoundPair())
+  009082d0 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  00908340 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  009083a0 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 250, CSoundPair())
+  00908400 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 250, CSoundPair())
+  00908a20 leaf=- inc=9
+      L150: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds);
+      L166: : CCombatActionBase(owner, target, 150, CSoundPair()) { }
+  00908b50 leaf=- inc=9
+      L150: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds);
+      L166: : CCombatActionBase(owner, target, 150, CSoundPair()) { }
+  00908c80 leaf=OnCreate inc=0
+      L31: CCombatActionBase() { }
+      L32: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L70: : CCombatActionBase(owner, thing, 150, CSoundPair()) { }
+  00909ba0 leaf=?OnCreate@CCombatSequenceWhisperAdvance inc=0
+      L28: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds);
+      L40: : CCombatActionBase(owner, target, 150, CSoundPair()) { }
+  00909cb0 leaf=?OnCreate@CCombatSequenceWhisperAttackCombo@@UAEXXZ inc=2
+      L21: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L27: CCreatureAction_InterruptableMidAttack(CThingCreatureBase& owner, CThing& target) : CCombatActionBase(owner, target, 150, CSoundPair()) { }
+  00909e30 leaf=?OnCreate@CCombatSequenceWhisperAttackBigCombo@@UAEXXZ inc=0
+      L32: CCombatActionBase() { }
+      L33: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L69: : CCombatActionBase(owner, thing, 150, CSoundPair()) { }
+  00909fd0 leaf=OnCreate inc=0
+      L31: CCombatActionBase() { }
+      L32: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L70: : CCombatActionBase(owner, thing, 150, CSoundPair()) { }
+  0090a0b0 leaf=?OnCreate@CCombatSequenceWhisperBoast@@UAEXXZ inc=2
+      L26: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L32: CCreatureAction_CombatBoast(CThingCreatureBase& owner, CThingCreatureBase& target) : CCombatActionBase(owner, target, 50, CSoundPair()) { }
+  0090a150 leaf=?OnCreate@CCombatSequenceWhisperIdles@@UAEXXZ inc=2
+      L26: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L32: CCreatureAction_CombatIdle(CThingCreatureBase& owner, CThingCreatureBase& target) : CCombatActionBase(owner, target, 50, CSoundPair()) { }
+  0090a1f0 leaf=?OnCreate@CCombatSequenceJacksCombo@@UAEXXZ inc=0
+      L31: CCombatActionBase() { }
+      L32: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L68: : CCombatActionBase(owner, thing, 150, CSoundPair()) { }
+  0090a690 OFF leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  0090a700 OFF leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  00925330 leaf=- inc=1
+      L27: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L38: : CCombatActionBase(owner, target, 0, CSoundPair())
+  00925440 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  009254c0 leaf=- inc=0
+      L29: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L30: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L42: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  00925560 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  009255e0 leaf=CCreatureAction_KrakenLowAttackLoop inc=0
+      L29: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L30: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L42: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  00925700 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  00925780 leaf=??0CCreatureAction_KrakenHighAttackLoop@?A0x inc=0
+      L32: CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);
+      L33: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L48: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  0094e5f0 OFF leaf=??0CCreatureAction_TrollGroundPound@@QAE@AAVCThingCreatureBase@@0@Z inc=2
+      L23: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long code, const CSoundPair& sounds);
+      L32: : CCombatActionBase(creature, target, 150, CSoundPair())
+  00953120 leaf=- inc=1
+      L42: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L52: : CCombatActionBase(owner, target, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  009531c0 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  00953260 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  00953300 leaf=- inc=0
+      L33: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L42: : CCombatActionBase(owner, target, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  00953370 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L46: : CCombatActionBase(owner, thing, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  009535b0 leaf=??0CCreatureAction_DragonFireBeamInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@M@Z inc=11
+      L61: : CCombatActionBase(creature, target, 250, GetSoundPair(creature, "SWORD_SWING"))
+  00953630 leaf=- inc=2
+      L51: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L62: : CCombatActionBase(owner, target, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  00957170 leaf=??0CCreatureAction_BriarRoseShotFarInto@@QAE@AAVCThingCreatureBase@@0@Z inc=10
+      L46: : CCombatActionBase(creature, enemy, 250, GetSoundPair(creature, "SWORD_SWING"))
+  0095ca00 leaf=??0CCreatureAction_WaspQueenPrimaryAttack@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L33: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L43: : CCombatActionBase(owner, target, 150, GetSoundPair(owner, (const char*)0))
+  0095cac0 OFF leaf=??0CCreatureAction_WaspQueenLashOutAttack@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L33: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L43: : CCombatActionBase(owner, target, 250, GetSoundPair(owner, (const char*)0))
+  0095cb80 leaf=??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@0@Z base CCombatActi inc=0
+      L39: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L49: : CCombatActionBase(&owner, (CThing*)&thing, 150, GetSoundPair(owner, "SWORD_SWING"))
+  009619c0 leaf=??0CCreatureAction_BanditKingLunge@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=6
+      L49: : CCombatActionBase(creature, target, 150, CSoundPair())
+  009621f0 leaf=?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ inc=5
+      L95: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L101: : CCombatActionBase(owner, target, 0x96, CSoundPair()) { }
+  00962920 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  00962990 leaf=??0CCreatureAction_IceTrollIcicleAssaultInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=6
+      L49: : CCombatActionBase(creature, target, 150, CSoundPair())
+  0096af60 leaf=DisappearJump inc=2
+      L128: CCombatActionBase(CThingCreatureBase* creature, CThing* target, long action, const CSoundPair& sound);
+      L135: : CCombatActionBase(creature, target, 0x96, CSoundPair()) { SetCombatAnimation("JUMP_INTO_SKY"); }
+  0096bf10 leaf=??0CCreatureAction_WhisperSommersaultForward@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L7: class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObj
+      L9: CCreatureAction_WhisperSommersaultForward::CCreatureAction_WhisperSommersaultForward(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombatAc
+  0096bf90 leaf=??0CCreatureAction_WhisperSommersaultBackward@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L7: class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObj
+      L9: CCreatureAction_WhisperSommersaultBackward::CCreatureAction_WhisperSommersaultBackward(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombat
+  0096c010 leaf=- inc=1
+      L24: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L35: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  0096db60 leaf=??0CCreatureAction_ScreamerIntoAggressive@?A0x inc=30
+      L108: : CCombatActionBase(creature, target, 150, CSoundPair())
+  0096ff10 leaf=?Update@CAIStateGroup_SummonerCharge@@UAEXXZ inc=4
+      L102: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L108: : CCombatActionBase(owner, thing, 150, CSoundPair()) { }
+  009702d0 leaf=- inc=0
+      L23: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L32: : CCombatActionBase(owner, thing, 150, CSoundPair())
+  00970420 leaf=??0CCreatureAction_SummonerChargeSuccess@ inc=1
+      L20: CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sound);
+      L31: : CCombatActionBase(owner, target, 150, CSoundPair())
+  00976e80 leaf=??0CCreatureAction_JackFlash@@QAE@AAVCThingCreatureBase@@0@Z inc=0
+      L35: CCombatActionBase(CThingCreatureBase& creature, CThing& thing, long actionCode, const CSoundPair& sound);
+      L47: : CCombatActionBase(owner, target, 250, GetSoundPair(owner, "SWORD_SWING"))
+  00976f30 leaf=- inc=0
+      L31: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L32: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L41: : CCombatActionBase(owner, thing, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  00976fc0 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L47: : CCombatActionBase(owner, thing, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  00977060 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L47: : CCombatActionBase(owner, thing, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  0097b3f0 leaf=- inc=0
+      L30: CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+      L31: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L44: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  0097c760 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L47: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  0097c830 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L47: : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
+  0097c920 leaf=- inc=0
+      L37: CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);
+      L47: : CCombatActionBase(owner, thing, 250, GetSoundPair(*owner, "SWORD_SWING"))
+  0097cf30 OFF leaf=??0CCreatureAction_VillagerAttack@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L33: CCombatActionBase(CThingCreatureBase& owner, CThing& thing, long actionCode, const CSoundPair& sound);
+      L43: : CCombatActionBase(owner, target, 150, GetSoundPair(owner, (const char*)0))
+  0097cf90 leaf=- inc=0
+      L33: CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
+      L43: : CCombatActionBase(owner, target, 150, GetSoundPair(*owner, 0))
+  0097cff0 OFF leaf=??0CCreatureAction_VillagerAdvance@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L11: class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObj
+      L13: CCreatureAction_VillagerAdvance::CCreatureAction_VillagerAdvance(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombatActionBase(creature,en
+  0097d050 OFF leaf=??0CCreatureAction_VillagerBackOff@@QAE@AAVCThingCreatureBase@@0@Z inc=1
+      L11: class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObj
+      L13: CCreatureAction_VillagerBackOff::CCreatureAction_VillagerBackOff(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombatActionBase(creature,en
+  no-local-decl rows: 6 (008b9010,009551a0,00955620,009566c0,0096ddb0,0096df50)

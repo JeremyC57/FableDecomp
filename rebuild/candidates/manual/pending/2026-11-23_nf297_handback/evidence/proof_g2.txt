@@ -1,0 +1,36 @@
+##### 008b7ff0 renames: ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z=??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z
+ALL_EQ sections=4 DEF=3 tables=??_7CCreatureAction_PlayCombatAnimation@@6B@
+##### 0092a8a0 renames: ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z=??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z
+ALL_EQ sections=19 DEF=18 tables=??_7CIntelligentPointerConstThing@@6B@
+##### 0092b3e0 renames: ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z=??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z
+ALL_EQ sections=15 DEF=14 tables=??_7CIntelligentPointerConstThing@@6B@
+##### 0095b680 renames: ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z=??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z
+ALL_EQ sections=5 DEF=4 tables=-
+##### 009621f0 renames: ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z=??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z ??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@@Z=??0CCreatureAction_RiseUp@@QAE@AAVCThingCreatureBase@@@Z
+ALL_EQ sections=35 DEF=34 tables=??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@,??_7CCreatureAction_IceTrollIcicleAttack@@6B@
+##### 009624d0 renames: ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z=??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z ??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@@Z=??0CCreatureAction_RiseUp@@QAE@AAVCThingCreatureBase@@@Z
+ALL_EQ sections=30 DEF=29 tables=-
+##### 008bd880 renames: ??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@@Z=??0CCreatureAction_RiseUp@@QAE@AAVCThingCreatureBase@@@Z
+ALL_EQ sections=4 DEF=3 tables=??_7CCreatureAction_RiseUp@@6B@
+##### 00909520 renames: ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@0ABVCCharString@@_N@Z=??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@0ABVCCharString@@_N@Z
+ALL_EQ sections=9 DEF=8 tables=-
+##### 009352c0 renames: ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@0ABVCCharString@@_N@Z=??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@0ABVCCharString@@_N@Z
+ALL_EQ sections=18 DEF=17 tables=??_7CIntelligentPointerConstThing@@6B@,??_7CIntelligentPointerCreature@@6B@
+##### 0072cd00 renames: ??0CCreatureAction_SheatheItemToInventory_ForDivineWrath@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z=??0CCreatureAction_SheatheItemToInventory_ForDivineWrath@@QAE@AAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z ??1CCreatureAction_SheatheItemToInventory_ForDivineWrath@@QAE@XZ=??1CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAE@XZ ?SHEATH_ACTION_NAME@?A0x97b4e070@@3VCCharString@@A=?SHEATH_ACTION_NAME@?A0x688ced0a@@3VCCharString@@A
+ALL_EQ sections=23 DEF=22 tables=??_7?$CIntelligentPointer@VCThing@@@@6B@
+##### 0072ce20 renames: ??0CCreatureAction_SheatheItemToInventory_ForUnholyPower@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z=??0CCreatureAction_SheatheItemToInventory_ForUnholyPower@@QAE@AAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z ??1CCreatureAction_SheatheItemToInventory_ForUnholyPower@@QAE@XZ=??1CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UAE@XZ ?SHEATH_ACTION_NAME@?A0xffcfae28@@3VCCharString@@A=?SHEATH_ACTION_NAME@?A0xf1b675b1@@3VCCharString@@A
+ALL_EQ sections=23 DEF=22 tables=??_7?$CIntelligentPointer@VCThing@@@@6B@
+##### 006df730 renames: ??0CCreatureAction_ShowTrophy@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@J@Z=??0CCreatureAction_ShowTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@J@Z
+ALL_EQ sections=10 DEF=9 tables=??_7?$CIntelligentPointer@VCThing@@@@6B@,??_7CCreatureAction_ShowTrophy@@6B@
+##### 0090f830 renames: ??1CCreatureAction_SitDown@@QAE@XZ=??1CCreatureAction_SitDown@@UAE@XZ ?SIT_ON_FLOOR_ANIM_NAME@?A0x4e04a8ea@@3VCCharString@@A=?SIT_ON_FLOOR_ANIM_NAME@?A0xb912895f@@3VCCharString@@A
+ALL_EQ sections=20 DEF=19 tables=??_7CAnimFilterBase@@6B@,??_7CAnimFilterOfGroup@@6B@,??_7CAnimFilterSit@@6B@,??_7CModeSitListen@@6B@
+##### 008cbd90 renames: ??0CCreatureAction_SummonerLightningOrbInto@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z=??0CCreatureAction_SummonerLightningOrbInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+ALL_EQ sections=9 DEF=8 tables=??_7?$CIntelligentPointer@VCThing@@@@6B@,??_7CCreatureAction_SummonerLightningOrbInto@@6B@
+##### 0096fcd0 renames: ??0CCreatureAction_SummonerLightningOrbInto@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z=??0CCreatureAction_SummonerLightningOrbInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+ALL_EQ sections=16 DEF=15 tables=-
+##### 007a7bf0 renames: ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCThing@@JJPAVCCreatureActionBase@@@Z=??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z
+ALL_EQ sections=10 DEF=9 tables=??_7?$CIntelligentPointer@VCThing@@@@6B@
+##### 00946850 renames: ??0CCreatureAction_UseObject@@QAE@PAVCThingCreatureBase@@PAVCThing@@_N@Z=??0CCreatureAction_UseObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@_N@Z ??1CCreatureAction_UseObject@@QAE@XZ=??1CCreatureAction_UseObject@@UAE@XZ
+ALL_EQ sections=13 DEF=12 tables=-
+##### 0069f230 renames: ??0CCreatureAction_UseObject@@QAE@PAVCThingCreatureBase@@PAVCThing@@_N@Z=??0CCreatureAction_UseObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@_N@Z
+ALL_EQ sections=9 DEF=8 tables=??_7?$CIntelligentPointer@VCThing@@@@6B@,??_7CCreatureAction_UseObject@@6B@

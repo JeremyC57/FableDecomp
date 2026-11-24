@@ -1,9 +1,11 @@
+// Leaf: ?SetBoastingEnabled@CGameScriptInterface@@UAEX_N@Z
 
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 extern unsigned char g_boastingEnabled;
 
-void __fastcall CGameScriptInterface_SetBoastingEnabled(CGameScriptInterface* self, void* edx, bool enabled)
+void CGameScriptInterface::SetBoastingEnabled(bool enabled)
 {
-    (void)self; (void)edx;
-    g_boastingEnabled = (unsigned char)enabled;
+g_boastingEnabled = (unsigned char)enabled;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_SetBoastingEnabled -> CGameScriptInterface::SetBoastingEnabled, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

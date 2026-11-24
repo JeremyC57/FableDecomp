@@ -1,0 +1,8 @@
+## HEAD set: H_00699090.obj H_006988b0.obj
+duplicates 0
+
+UNRESOLVED 1 ?Extra@CGameCameraManager@@QAEXXZ
+## new set: N_00699090.obj H_006988b0.obj
+duplicates 0
+
+LK_DONE

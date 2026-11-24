@@ -1,0 +1,8 @@
+## HEAD set: H_00bad040.obj H_00bacd80.obj
+duplicates 0
+
+UNRESOLVED 1 ?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+## new set: N_00bad040.obj H_00bacd80.obj
+duplicates 0
+
+LK_DONE

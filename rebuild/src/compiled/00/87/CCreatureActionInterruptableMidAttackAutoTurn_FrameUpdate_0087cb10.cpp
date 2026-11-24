@@ -26,7 +26,7 @@ class CTCEntityEvents { public:
     void AddEvent(NEntityEvents::CEventBase* event);                        // 0x008113C0
 };
 class CTCStealth { public:
-    bool IsAbleToFlourishDangerThings();                     // 0x007471A0
+    bool IsAbleToFlourishDangerThings() const;                     // 0x007471A0
 };
 class CTCCombat { public:
     unsigned char _pad00[0x94];

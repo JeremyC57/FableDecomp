@@ -13,6 +13,10 @@ struct CEngineCameraDesc {
 class CEngineCameraDesc {
 #endif
 public:
+#ifdef FABLE_RETAIL_CENGINECAMERADESC_DEFAULT_CTOR_PASS26
+ // FableWin 0x02D9D870 and Ego_d default construction at engine_camera.cpp:122.
+ CEngineCameraDesc() : StateValid(false) {}
+#endif
  C2DBoxF Window;
  CMatrix3x4 RotationMatrix;
  C3DVector WorldPosition;
@@ -21,5 +25,5 @@ public:
  float NearZPlane,FarZPlane,ZBufferStart,ZBufferEnd;
  bool StateValid;
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineCameraDesc)==108);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CEngineCameraDesc)==108);
 #endif

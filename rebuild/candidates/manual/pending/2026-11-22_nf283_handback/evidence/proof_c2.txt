@@ -1,0 +1,90 @@
+##### 00692db0 renames: ?UpdateActionMovement@CCreatureActionBase@@QAEXXZ=?UpdateActionMovement@CCreatureActionBase@@IAEXXZ
+sections head 5 new 5
+ALL_EQ 0
+DIFF	?EditUpdate@CCreatureActionBase@@UAEXM@Z
+funcs SAME=3 vtbl_H=0 vtbl_N=0
+##### 00692ec0 renames: ?HasPrecedingAction@CCreatureActionBase@@QAE_NXZ=?HasPrecedingAction@CCreatureActionBase@@QBE_NXZ
+sections head 16 new 16
+ALL_EQ 0
+ONLY_A	?HasPrecedingAction@CCreatureActionBase@@QAE_NXZ
+funcs SAME=13 vtbl_H=0 vtbl_N=0
+##### 008c9fe0 renames: ?DoEffect@CCreatureAction_NymphTeleportLimboBase@@QAEXXZ=?DoEffect@CCreatureAction_NymphTeleportLimboBase@@IAEXXZ
+sections head 18 new 18
+ALL_EQ 0
+ONLY_A	?DoEffect@CCreatureAction_NymphTeleportLimboBase@@QAEXXZ
+funcs SAME=12 vtbl_H=0 vtbl_N=0
+##### 008ca110 renames: ?DoEffect@CCreatureAction_NymphTeleportLimboBase@@QAEXXZ=?DoEffect@CCreatureAction_NymphTeleportLimboBase@@IAEXXZ
+sections head 16 new 16
+ALL_EQ 0
+DIFF	?PerformAction@CCreatureAction_NymphTeleportIntoLimbo@@UAEXXZ
+funcs SAME=13 vtbl_H=0 vtbl_N=0
+##### 006dd8f0 renames: ?FinishAction@CCreatureAction_UnsheatheItemFromInventory@@QAEXXZ=?FinishAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ ?FinishAction@CCreatureAction_UnsheatheToShowToSheatheTrophy@@QAEXXZ=?FinishAction@CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAEXXZ
+sections head 8 new 8
+ALL_EQ 0
+ONLY_A	?FinishAction@CCreatureAction_UnsheatheToShowToSheatheTrophy@@QAEXXZ
+funcs SAME=5 vtbl_H=2 vtbl_N=2
+##### 004b7980 renames: ?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z=?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z
+sections head 3 new 3
+ALL_EQ 0
+DIFF	??8CDefString@@QBE_NABVCCharString@@@Z
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 005b3440 renames: ?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z=?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	??8CDefString@@QBE_NPBD@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 005fa740 renames: ?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z=?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	??9CDefString@@QBE_NPBD@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 006aeb10 renames: ?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z=?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z
+sections head 3 new 3
+ALL_EQ 0
+DIFF	??8CDefString@@QBE_NABVCCharString@@@Z
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 0073e1d0 renames: ?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z=?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z
+sections head 3 new 3
+ALL_EQ 0
+DIFF	?Accepts@CAnimFilterOf3Groups@@UAEJPBVCAnimationEntry@@@Z
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 0076d640 renames: ?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z=?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z
+sections head 3 new 3
+ALL_EQ 0
+DIFF	??9CDefString@@QBE_NABVCCharString@@@Z
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 009ac9f0 renames: ?Error@CDefinitionManager@@QAEXABVCStringParser@@ABVCCharString@@@Z=?Error@CDefinitionManager@@IAEXABVCStringParser@@ABVCCharString@@@Z
+sections head 5 new 5
+ALL_EQ 0
+ONLY_A	?Error@CDefinitionManager@@QAEXABVCStringParser@@ABVCCharString@@@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 009ade90 renames: ?Error@CDefinitionManager@@QAEXABVCStringParser@@ABVCCharString@@@Z=?Error@CDefinitionManager@@IAEXABVCStringParser@@ABVCCharString@@@Z ?InstantiateDef@CDefinitionManager@@QAE_NABVCCharString@@0_N@Z=?InstantiateDef@CDefinitionManager@@IAE_NABVCCharString@@0_N@Z ?ParseEnumForSymbols@CDefinitionManager@@QAEXAAVCStringParser@@@Z=?ParseEnumForSymbols@CDefinitionManager@@IAEXAAVCStringParser@@@Z
+sections head 24 new 24
+ALL_EQ 0
+DIFF	?ParseStringForSymbols@CDefinitionManager@@IAEXPBD_N@Z
+funcs SAME=17 vtbl_H=2 vtbl_N=2
+##### 009b0ac0 renames: ?InstantiateDef@CDefinitionManager@@QAE_NABVCCharString@@0_N@Z=?InstantiateDef@CDefinitionManager@@IAE_NABVCCharString@@0_N@Z
+sections head 20 new 20
+ALL_EQ 0
+DIFF	?AddDefClass@CDefinitionManager@@QAEXABVCDefClassInit@@@Z
+funcs SAME=15 vtbl_H=0 vtbl_N=0
+##### 00435070 renames: ?RenderHeroDrunkenness@CDisplayEngine@@QBEXABVCInterpolationInfo@@@Z=?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z
+sections head 17 new 17
+ALL_EQ 0
+ONLY_A	?RenderHeroDrunkenness@CDisplayEngine@@QBEXABVCInterpolationInfo@@@Z
+funcs SAME=14 vtbl_H=0 vtbl_N=0
+##### 009bfb30 renames: ?SetupDepthAndBackBufferTextures@CDisplayManager@@QAE_NXZ=?SetupDepthAndBackBufferTextures@CDisplayManager@@AAE_NXZ
+sections head 9 new 9
+ALL_EQ 0
+DIFF	?ResetDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z
+funcs SAME=3 vtbl_H=1 vtbl_N=1
+##### 0064e019 renames: ?IsActive@CDrawMiniMap@NPlayerGui@@QAE_NXZ=?IsActive@CDrawMiniMap@NPlayerGui@@QBE_NXZ
+sections head 4 new 4
+ALL_EQ 0
+DIFF	?ToggleCentering@CDrawMiniMap@NPlayerGui@@QAEXXZ
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 00b314e0 renames: ?ProcessDebugScript@CEngineCamera@@QAEXXZ=?ProcessDebugScript@CEngineCamera@@AAEXXZ
+sections head 6 new 6
+ALL_EQ 0
+DIFF	?Process@CEngineCamera@@QAEX_N@Z
+funcs SAME=4 vtbl_H=0 vtbl_N=0

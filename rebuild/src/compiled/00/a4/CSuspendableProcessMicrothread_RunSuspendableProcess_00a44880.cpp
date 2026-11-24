@@ -42,7 +42,7 @@ public:
     MicroThreadInfo* PMicrothread;                 // +0x10
     virtual ~CSuspendableProcessMicrothread();
     virtual void RunSuspendableProcess();
-    static void __fastcall InternalSwitchToProcess(CSuspendableProcessMicrothread& process);   // 0x00A44660
+    protected: static void __fastcall InternalSwitchToProcess(CSuspendableProcessMicrothread& process); public:   // 0x00A44660
 };
 
 extern CSuspendableProcessMicrothread*  g_pScriptRunner;     // 0x013D2838

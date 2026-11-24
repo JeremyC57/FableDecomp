@@ -1,0 +1,16 @@
+##### 00843f50 renames: ??0CCreatureAction_ActivateQuest@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z=??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=3
+tables H=2 N=2
+##### 007f03d0 renames: ??0CCreatureAction_ActivateQuest@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z=??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z
+sections head 10 new 10
+ALL_EQ text_sections_equal=8
+tables H=0 N=0
+##### 007ef600 renames: ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@_N@Z=??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 007f01f0 renames: ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@_N@Z=??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z
+sections head 11 new 11
+ALL_EQ text_sections_equal=9
+tables H=0 N=0

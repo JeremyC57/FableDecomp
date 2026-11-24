@@ -1,0 +1,10 @@
+##### 00714900 renames: ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z=?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z=?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+ALL_EQ sections=16 DEF=15 tables=-
+##### 00714cc0 renames: ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z=?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+ALL_EQ sections=15 DEF=14 tables=-
+##### 008d8ea0 renames: ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z=?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+ALL_EQ sections=16 DEF=15 tables=-
+##### 008da610 renames: ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z=?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+ALL_EQ sections=17 DEF=16 tables=-
+##### 008db240 renames: ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z=?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+ALL_EQ sections=34 DEF=33 tables=-

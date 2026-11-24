@@ -1,5 +1,5 @@
 // CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& angleXY, float& angleYZ) const -- the XY / YZ angle differences from the body facing to the direction head->pos, or to the recovery angles when there is no live parent creature or pos is the head position
-// Leaf: ?GetAnglesFromBodyToPos@CTCLook@@QBEXABVC3DVector@@_NAAM2@Z
+// Leaf: ?GetAnglesFromBodyToPos@CTCLook@@ABEXABVC3DVector@@_NAAM2@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751C70, length 297 bytes (+ int3 padding), `ret 10h`; the second argument
@@ -47,11 +47,11 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
     return false;
 }
 
-float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& to);     // 0x00661540
+float __fastcall GFGetAngleXYTo(const C3DVector& from, const C3DVector& to);     // 0x00661540; NF296: PDB name, was AngleBetweenPositions
 // NF95 (2026-11-19, q11255): Ego_r.pdb 0x00767040 / FableWin.pdb 0x025B0370 ?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z (its landed self row
 //   and caller 0x00753E90 use it); was the stand-in AngleYZBetweenPositions.
 float __fastcall GFGetAngleYZTo(const C3DVector& from, const C3DVector& to);   // 0x00754E70
-float __stdcall AngleDifference(float a, float b);                                      // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);                                      // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 extern bool g_bQueryCreatureHeadPos;                                                    // 0x013BAE1B
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
@@ -73,7 +73,9 @@ class CTCLook { public:
             return PParentCreature->GetHeadPos(false);
         return CachedHeadPos;
     }
+    private:
     void GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& angleXY, float& angleYZ) const;
+    public:
 };
 #pragma pack(pop)
 
@@ -85,13 +87,13 @@ void CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& a
         C3DVector headPos = GetHeadPos();
         if ((float)fabs(pos.X - headPos.X) > DELTA_NOTIONAL_ZERO || (float)fabs(pos.Y - headPos.Y) > DELTA_NOTIONAL_ZERO ||
             (float)fabs(pos.Z - headPos.Z) > DELTA_NOTIONAL_ZERO) {
-            float xy = AngleBetweenPositions(headPos, pos);
+            float xy = GFGetAngleXYTo(headPos, pos);
             float yz = GFGetAngleYZTo(headPos, pos);
-            angleXY = AngleDifference(bodyXY, xy);
-            angleYZ = AngleDifference(bodyYZ, yz);
+            angleXY = GFGetSignedAngleDifference(bodyXY, xy);
+            angleYZ = GFGetSignedAngleDifference(bodyYZ, yz);
             return;
         }
     }
-    angleXY = AngleDifference(bodyXY, RecoveryAngleToLookAtXY);
-    angleYZ = AngleDifference(bodyYZ, RecoveryAngleToLookAtYZ);
+    angleXY = GFGetSignedAngleDifference(bodyXY, RecoveryAngleToLookAtXY);
+    angleYZ = GFGetSignedAngleDifference(bodyYZ, RecoveryAngleToLookAtYZ);
 }

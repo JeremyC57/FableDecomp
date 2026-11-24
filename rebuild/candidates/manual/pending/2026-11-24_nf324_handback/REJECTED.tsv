@@ -1,0 +1,12 @@
+address	pdb_spelling	reason
+00452bb4	?Transfer@CCombatAbilityUseProjectileWeaponDef@@UAEXAAVCPersistContext@@@Z	work/exp_b2 REJECT: objcheck: section .text bytes differ [route local] [the final tool now skips it: model: virtual target, local model has no leading vptr slot]
+004df3d4	?GetTerrainHeightAt@CObstacleNavigatorExternalInterface@@UBEMABVC3DVector@@@Z	work/exp_b1 REJECT: no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS')) [route local]
+004df46e	?PeekNavigatorMaxSpeed@CObstacleNavigatorExternalInterface@@UBEMABVC3DVector@@@Z	work/exp_b1 REJECT: no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS')) [route local]
+0051ce00	?IsMapUsed@CWorldMap@@UBE_NJ@Z	work/exp_b2 REJECT: objcheck: section .text bytes differ [route local] [return width: retail keeps the self's int / byte return where the PDB says bool / void: NF317 Q4, a PDB revision difference, not respelled]
+0065ed8e	?IsAnyCreatureAssignedToTask@CVillageTaskTorch@@UBE_NXZ	work/exp_b1 REJECT: new graded symbol ?IsAnyCreatureAssignedToTask@CVillageTaskTorch@@QBE_NXZ [route switch]
+0088e4d0	?IsScreenFadingOut@CGameScriptInterface@@UBE_NXZ	work/exp_b1 REJECT: objcheck: section .text bytes differ [route switch] [return width: retail keeps the self's int / byte return where the PDB says bool / void: NF317 Q4, a PDB revision difference, not respelled]
+0088f450	?IsHeroSleepingEnabled@CGameScriptInterface@@UBE_NXZ	work/exp_b1 REJECT: objcheck: section .text bytes differ [route switch] [return width: retail keeps the self's int / byte return where the PDB says bool / void: NF317 Q4, a PDB revision difference, not respelled]
+0088f560	?EntityCastLightningAtTarget@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z	work/exp_b1 REJECT: no object (head ('MATCH', 'PASS'), new ('SRC_FAIL', 'PASS')) [route switch]
+0088f950	?IsSavingEnabled@CGameScriptInterface@@UBE_NXZ	work/exp_b1 REJECT: objcheck: section .text bytes differ [route switch] [return width: retail keeps the self's int / byte return where the PDB says bool / void: NF317 Q4, a PDB revision difference, not respelled]
+009143c0	?Cleanup@CAIStateGroup_BirdGroundWander@@UAEXXZ	work/exp_b1 REJECT: objcheck: undefined symbols differ: +?h1_9143c0@@YIXPAVCAIStateGroup_BirdGroundWander@@@Z -?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z [route switch]
+00933da0	?IsRunnable@CAIStateGroup_MinionKidAnnoy@@UAE_NXZ	work/exp_b1 REJECT: new graded symbol ?IsRunnable@CAIStateGroup_MinionKidAnnoy@@MAE_NXZ [route switch]

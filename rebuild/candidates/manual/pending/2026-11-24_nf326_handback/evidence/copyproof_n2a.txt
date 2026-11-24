@@ -1,0 +1,11 @@
+0089a510 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+0089a6e0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+0089a880 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d643a0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d67270 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d71b30 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00da6740 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00e33b00 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00e39140 OK changed ?IsNull@CScriptThing@@UBE_NXZ; IsNull v retail BYTES_EQUAL, v self EQUAL
+00e7f7f0 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00f08590 OK changed ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ; changed ?IsNull@CScriptThing@@UBE_NXZ; GetDefName v retail BYTES_EQUAL, v self EQUAL; IsNull v retail BYTES_EQUAL, v self EQUAL

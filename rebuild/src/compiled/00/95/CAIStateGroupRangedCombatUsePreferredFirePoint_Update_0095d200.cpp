@@ -115,8 +115,11 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
     long TimeOutCounter;                        // +0x24
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
     void Terminate();                           // 0x008FCF40
-    bool IsStillRunnable();                     // 0x0095D0E0
-    bool AttackEnemy();                         // 0x0095D070
+    protected: bool IsStillRunnable(); public:                     // 0x0095D0E0
+    protected:
+    bool AttackEnemy();
+    public:
+                         // 0x0095D070
     virtual void Update();
 };
 

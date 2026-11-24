@@ -20,8 +20,14 @@ private:
     unsigned char _pad_0x25[0x3];                            // +0x25
 public:
     long          Gold;                                      // +0x28
+#ifdef FABLE_RETAIL_CGOLDDEF_TRANSFER_DECL
+    // Opt-in (NF320, 2026-11-23): declaration only, no layout change: Ego_r.pdb + FableWin.pdb ?Transfer@CGoldDef@@UAEXAAVCPersistContext@@@Z,
+    // named at 0x004DEBC4 by the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv); overrides CDefClassBase::Transfer (slot 18), no new slot.
+public:
+    virtual void Transfer(CPersistContext&);
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CGoldDef) == 0x2c);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CGoldDef) == 0x2c);
 #else
 
 #pragma pack(push, 1)
@@ -41,9 +47,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CGoldDef) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CGoldDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CGoldDef, Gold) == 0x28);
+FABLE_STATIC_ASSERT_AT(44, sizeof(CGoldDef) == 0x2c);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CGoldDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CGoldDef, Gold) == 0x28);
 
 #endif // FABLE_RETAIL_CGOLDDEF
 #endif // FABLE_ENGINE_CGOLDDEF_H

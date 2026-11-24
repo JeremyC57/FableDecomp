@@ -1,0 +1,48 @@
+pH 004197b3 CMainGameComponent::`scalar_deleting_destructor' RELOCATION_MATCH flags= [] leaf=?ScalarDeletingDestructor@CMainGameComponent@@QAEPAXI@Z
+pS 004197b3 CMainGameComponent::`scalar_deleting_destructor' RELOCATION_MATCH flags= [] leaf=??_GCMainGameComponent@@UAEPAXI@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+< 00418b7a	?Dtor@CMainGameComponent@@QAEXXZ	x1
+> 00418b7a	??1CMainGameComponent@@UAE@XZ	x1
+--- symbols HEAD(<) new(>)
+< DEF ?ScalarDeletingDestructor@CMainGameComponent@@QAEPAXI@Z
+> DEF ??0?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ
+> DEF ??0?$CCountedPointer@VCFontBank@@@@QAE@XZ
+> DEF ??0?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ
+> DEF ??0?$CCountedPointer@VCLUA@@@@QAE@XZ
+> DEF ??0?$scoped_ptr@VCDisplayEngine@@@boost@@QAE@PAVCDisplayEngine@@@Z
+> DEF ??0?$scoped_ptr@VCGamePlayerInterface@@@boost@@QAE@PAVCGamePlayerInterface@@@Z
+> DEF ??0?$scoped_ptr@VCPlayerManager@@@boost@@QAE@PAVCPlayerManager@@@Z
+> DEF ??0?$scoped_ptr@VCWorld@@@boost@@QAE@PAVCWorld@@@Z
+> DEF ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+> DEF ??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ
+> DEF ??1?$CCountedPointer@VCFontBank@@@@QAE@XZ
+> DEF ??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ
+> DEF ??1?$CCountedPointer@VCLUA@@@@QAE@XZ
+> DEF ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+> DEF ??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+> DEF ??_GCMainGameComponent@@UAEPAXI@Z
+> UND ??0CDiskFileWin32@@QAE@XZ
+> UND ??0CFrameRateSmoother@@QAE@XZ
+> UND ??0CGameComponent@@QAE@AAVCGame@@@Z
+> UND ??0CGameEventPackageSet@@QAE@XZ
+> UND ??0CInterpolationInfo@@QAE@XZ
+> UND ??0CMainGameComponentInit@@QAE@ABV0@@Z
+> UND ??0CNetworkClient@@QAE@XZ
+> UND ??0CRoughFrameCounter@@QAE@XZ
+> UND ??1CMainGameComponent@@UAE@XZ
+< UND ?Dtor@CMainGameComponent@@QAEXXZ
+> UND ??_GCMainGameComponent@@UAEPAXI@Z
+> UND ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+> UND ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+> UND ?GPDisplayManager@@3PAVCDisplayManager@@A
+> UND ?GetInputs@CMainGameComponent@@MAEXXZ
+> UND ?Init@CMainGameComponent@@UAEXXZ
+> UND ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+> UND ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+> UND ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+> UND ?PostInit@CMainGameComponent@@MAEXXZ
+> UND ?Render@CMainGameComponent@@MAEXXZ
+> UND ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+> UND ?SetQuit@CMainGameComponent@@UAEXXZ
+> UND ?Update@CMainGameComponent@@MAEXXZ
+> UND __fltused

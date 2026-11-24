@@ -32,6 +32,9 @@ protected:
     void ReleaseItems(float speed);                                      // 0x0074E6E0
 #endif
 protected:
+#ifdef FABLE_RETAIL_REWARD_PICKUP_PASS27
+    void CreateItemPickupContainer();
+#endif
     void AdjustTrajectoryVector(long row,C3DVector& direction) const;
 private:
     C3DVector GeneratePopoutVectorFromVars(long index,long count,long row,float spread) const;

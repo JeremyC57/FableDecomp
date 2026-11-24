@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00521AE0, `ret 0x24` (CCountedPointer is 8 bytes, the set 12).
 // Callees: NProgressDisplay::DisplayProgress 0x009E9F40 (__fastcall, the bool in dl), CCharString(const char*, long)
 //   0x0099EBF0 / CCharString() 0x0099E4B0 / ~CCharString 0x0099EAE0 / CCharString::LoadFromFile 0x0099F2E0, CStringParser
-//   ctor 0x00404720 + inline dtor (~list 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0), SkipPastNextItemIfIs
+//   ctor 0x00404720 + inline dtor (~_List_base 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0), SkipPastNextItemIfIs
 //   0x009B9E00, ReadAsFloat 0x009BA650, __ftol2, CThingManager::LoadEntitiesFromScript 0x00520D00, set _M_erase
 //   0x004ABA70, operator delete 0x00BFE9BC, free 0x00BFEA14.
 // Layout: CThingManager +0x80 load kind, +0x9a / +0x9b loading flags (descriptive); CCountedPointer {object, data}
@@ -19,7 +19,7 @@ class CCharString { public:
     CCharString();                                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
-    void LoadFromFile(CAFile* file, CASuspendableProcess* process, long size);   // 0x0099F2E0
+    void LoadFromFile(CAFile& file, CASuspendableProcess* process, long size);   // 0x0099F2E0 (Ego_r + FableWin AAV)
 };
 namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
@@ -80,14 +80,11 @@ __declspec(noinline) void CCharStringSet::_M_erase(SSetNode* node)
 struct CThingVector { CThing** _M_start; CThing** _M_finish; CThing** _M_end_of_storage; };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    void* m_pHead;
-    ~list();                           // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CStringParser : public CBaseClass { public:                        // retail 0x28 bytes
     char*                    String;                       // +0x04
     unsigned long            BaseLineOffset;               // +0x08
@@ -130,7 +127,7 @@ void CThingManager::LoadFromFile(CCountedPointer<CAFile> file, long version, CCh
     }
     NProgressDisplay::DisplayProgress("Thing Manager: Load From File", -1.0f, false, false);
     CCharString text;
-    text.LoadFromFile(file.Object, process, -1);
+    text.LoadFromFile(*file.Object, process, -1);
     CStringParser parser(text, 0, CCharString("", -1), 0);
     NProgressDisplay::DisplayProgress("Thing Manager: Load From File End", -1.0f, false, false);
     long fileVersion = 0;

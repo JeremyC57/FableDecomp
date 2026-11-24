@@ -79,8 +79,11 @@ class CTCCoopSpirit { public:
 
     void SetAppearanceParticle(const CCharString& name);   // 0x006705F0
     void UpdateMovement();                          // 0x00670820
-    void UpdateLocalJostling();                     // 0x0066FB80
-    void UpdateGravity();                           // 0x00670470
+    private:
+    void UpdateLocalJostling();
+    public:
+                     // 0x0066FB80
+    private: void UpdateHeightAboveGround(); public:                           // 0x00670470; NF296: PDB name, was UpdateGravity
     void UpdateScore();                             // 0x00670710
     void vfunc_9();
 };
@@ -91,7 +94,7 @@ void CTCCoopSpirit::vfunc_9()
         SetAppearanceParticle(PCoopSpiritDef->AppearanceParticle.GetString());
     UpdateMovement();
     UpdateLocalJostling();
-    UpdateGravity();
+    UpdateHeightAboveGround();
     if (ParentThing && ParentThing->m_lifeRemaining <= 0.0f)
         ParentThing->Kill(true);
     UpdateScore();

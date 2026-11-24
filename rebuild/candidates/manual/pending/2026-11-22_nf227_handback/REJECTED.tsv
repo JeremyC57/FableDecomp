@@ -1,0 +1,2 @@
+claim	reason
+user-declared ~CObservable() for 0x0042BEC0 (probe opt-in FABLE_RETAIL_COBSERVABLE_DTOR_DECL)	DIFFER 26 v 20: a user destructor stores the vptr (`mov [esi],??_7CObservable`), retail's compiler-generated one does not; the probe opt-in was removed from hdr/

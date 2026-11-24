@@ -3,7 +3,7 @@
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- a same-TU read-only noinline LowerBound body (0x006FAF80; the second escaping callee next to the __find_if body) packs the key copy into the dead anim slot
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F9640, 126 bytes, `ret 8`.
 // Label correction: catalog "AnimHasEvent_Check" is propagated; Ego_r.pdb `?AnimHasExtraEvent@CManager@NAnimationEvents@@`.
-// Callees: CVectorMap LowerBound 0x006FAF80, CSymbolMap::Lookup(const CCharString&, long*) 0x009E5170, __find_if
+// Callees: CVectorMap LowerBound 0x006FAF80, CSymbolMap::FindSymbol(const CCharString&, long&) const 0x009E5170, __find_if
 //   0x006F8EA0 (same-TU noinline body).
 // Tried (4): Find(const K&) (no key copy), the lookup in an inline helper, a __forceinline helper, this form.
 class CCharString;                                        // 4-byte string handle (only passed by reference here)
@@ -11,7 +11,7 @@ class CSymbolMap {                                        // retail 0x24 bytes
 public:
     unsigned char _body[0x24];
     unsigned long Lookup(const CCharString& name) const;              // 0x009E5120
-    bool Lookup(const CCharString& name, long* value) const;          // 0x009E5170
+    bool FindSymbol(const CCharString& name, long& value) const;      // 0x009E5170 ?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z (Ego_r / FableWin; the donor AnimHasExtraEvent calls it)
 };
 
 namespace std {
@@ -185,7 +185,7 @@ bool CManager::AnimHasExtraEvent(unsigned long anim, const CCharString& name) co
     const CSmallVector<CEvent, 32>* events = GetPExtraAnimEvents(anim);
     if (events) {
         long index = -1;
-        if (EventSymbols.Lookup(name, &index)) {
+        if (EventSymbols.FindSymbol(name, index)) {
             if (std::find_if(events->begin(), events->end(), CIsEventIndexEqualTo(index)) != events->end())
                 result = true;
         }

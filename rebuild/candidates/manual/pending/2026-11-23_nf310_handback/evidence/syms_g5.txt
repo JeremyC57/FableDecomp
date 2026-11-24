@@ -1,0 +1,50 @@
+## 009c8fb0
+16c16
+< UND ?ReadFromDataStream@CTextEntry@NGameText@@QAEXPAVCMemoryDataInputStream@@@Z
+---
+> UND ?ReadFromDataStream@CTextEntry@NGameText@@QAEXAAVCDataInputStream@@@Z
+## 00942a00
+19c19
+< UND ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@PAVCWorld@@_N@Z
+---
+> UND ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z
+## 00842e80
+4c4
+< UND ?TriggerMe@CThingPhysicalSwitch@@QAEXPAVCThingCreatureBase@@@Z
+---
+> UND ?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z
+## 00836a50
+1,4d0
+< DEF ??$_Destroy@PAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@std@@YAXPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@0@0@Z
+< DEF ??$_Destroy@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@std@@YAXPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@0@@Z
+< DEF ??$__destroy@PAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@U12@@std@@YAXPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@0@00@Z
+< DEF ??$__destroy_aux@PAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@std@@YAXPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@0@0ABU__false_type@0@@Z
+6,8d1
+< DEF ??0__false_type@std@@QAE@XZ
+< DEF ??1?$CArray@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@@QAE@XZ
+< DEF ??1?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+10,20d2
+< DEF ??1?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAE@XZ
+< DEF ??1?$_List_base@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@QAE@XZ
+< DEF ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCTCBase@@@std@@U12@V?$allocator@U?$_List_node@PAVCTCBase@@@std@@@2@@std@@QAE@XZ
+< DEF ??1?$_STLP_alloc_proxy@PAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@U12@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAE@XZ
+< DEF ??1?$_Vector_base@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAE@XZ
+< DEF ??1?$allocator@U?$_List_node@PAVCTCBase@@@std@@@std@@QAE@XZ
+< DEF ??1?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@std@@QAE@XZ
+< DEF ??1?$list@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@QAE@XZ
+< DEF ??1?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAE@XZ
+< DEF ??1CClass@@UAE@XZ
+< DEF ??1CThing@@UAE@XZ
+27d8
+< DEF ?Release@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXXZ
+30,32d10
+< DEF ?clear@?$_List_base@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@QAEXXZ
+< DEF ?deallocate@?$allocator@U?$_List_node@PAVCTCBase@@@std@@@std@@QAEXPAU?$_List_node@PAVCTCBase@@@2@I@Z
+< DEF ?deallocate@?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@std@@QAEXPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@I@Z
+35,36c13
+< UND ??1CBaseObject@@MAE@XZ
+< UND ??1CCharString@@QAE@XZ
+---
+> UND ??1CThing@@MAE@XZ
+46d22
+< UND _free

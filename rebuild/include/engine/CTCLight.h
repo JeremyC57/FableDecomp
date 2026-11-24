@@ -11,7 +11,11 @@ namespace NGraphicAppearance {class CPrimitive;}
 // Layout: complete both-PDB CTCLight; two native STLport vectors give size68.
 class CTCLight:public CTCBase,public NGraphicAppearance::CAGraphicAppearanceComponent {
 public:
+#ifdef FABLE_RETAIL_CTCLIGHT_ACTIVE_PASS27
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_LIGHT; }
+#else
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();
+#endif
 public:
  virtual ETCInterfaceType GetInterfaceType() const;
 public:
@@ -45,7 +49,11 @@ public:
 public:
  virtual void SetFromPropertiesStruct(const CGuiVarTransferStruct & p0);
 public:
+#ifdef FABLE_RETAIL_CTCLIGHT_ACTIVE_PASS27
+ bool IsActive() const { return Active; }
+#else
  bool IsActive() const;
+#endif
 public:
  void SetActive(bool p0);
 public:
@@ -129,5 +137,5 @@ protected:
 private:
  std::vector<NGraphicAppearance::CPrimitive*> FlareSprites,Lights;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCLight)==68);
+FABLE_STATIC_ASSERT_AT(132, sizeof(CTCLight)==68);
 #endif

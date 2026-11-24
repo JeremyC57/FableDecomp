@@ -79,6 +79,7 @@ class CThing { public:
 
 #define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
 #define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER_REFERENCE   // NF300: the PDB reference form (0x0066EB11)
 #include "engine/NHeroInformationScreens_CManager.h"
 
 #include "engine/CCountedPointer.h"
@@ -110,7 +111,7 @@ class CTCInventory : public CTCInventoryBase, public NHeroInformationScreens::CB
 
 void CTCInventory::OnCreate()
 {
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(*this);
     CDefPointer<const CCreatureDef> pdef;
     ParentThing->GetDef()->GetSubDef(&pdef);
     CCreatureDef* def = pdef.Object;

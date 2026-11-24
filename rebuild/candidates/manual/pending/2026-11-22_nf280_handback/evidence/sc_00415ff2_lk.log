@@ -1,0 +1,5 @@
+pS 00415ff2 CMainGameComponent::EventIsSystemEvent MATCH flags= [] leaf=?EventIsSystemEvent@CMainGameComponent@@IAE_NPBVCGameEvent@@@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?IsSystemEvent@T@@QAE_NPBUEvent@@@Z
+> DEF ?EventIsSystemEvent@CMainGameComponent@@IAE_NPBVCGameEvent@@@Z

@@ -1,3 +1,4 @@
+// Leaf: ?Update@CAIStateGroup_Clean@@MAEXXZ
 // CAIStateGroup_Clean::Update() -- wash the building's floor: 5..8 times pick a point a random distance (up to min(radius, 1.4)) and direction away from the last one, starting from a random point (up to min(radius, 4)) around the building's bounding centre at floor height; while the point is inside the building walk to it and play the wash-floor into / 1..2 loops / out-of animations; any failure terminates the group (a point outside idles first)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009175E0, 1064 bytes, plain ret, 8-aligned ebp frame.
 // Callees: GetPWorldSeed 0x008FCFD0, GFROR13 0x00497890, own virtual slot 14 (+0x38, the building), CTCPhysicsBase::
@@ -70,7 +71,9 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 #include "engine/CAIStateGroupBase.h"
 
 struct CAIStateGroup_Clean : public CAIStateGroupBase {
+    protected:
     virtual void Update();
+    public:
     virtual CThingBuilding* GetBuilding();      // slot 14 (+0x38), first after the base's 14 slots (0..13)
 
     bool Cleaning;                              // +0x14

@@ -14,12 +14,12 @@ class CThing { public:
 class CTCSoundPlayer { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
-    void UpdateSounds();                                    // 0x0066B370
+    void PlayAllSoundEvents();                                    // 0x0066B370; NF296: PDB name, was UpdateSounds
     void FrameUpdate();
 };
 
 void CTCSoundPlayer::FrameUpdate()
 {
     if (ParentThing->m_tcBits28 & 0x4000000)
-        UpdateSounds();
+        PlayAllSoundEvents();
 }

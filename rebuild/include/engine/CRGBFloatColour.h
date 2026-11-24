@@ -113,6 +113,15 @@ public:
     void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_BYTE_ASSIGN_PASS28
+    // Inline-budget: 00B19C60 expands all three byte-colour assignments; plain inline emits calls, and global thresholds alter other sites.
+    // FableWin's 141-byte assignment calls Initialise with each RGBA byte divided by 255. The native constant is the single-precision reciprocal.
+    FABLE_FORCEINLINE CRGBFloatColour& operator=(const CRGBColour& colour)
+    {
+        Initialise(colour.R / 255.0f, colour.G / 255.0f, colour.B / 255.0f, colour.A / 255.0f);
+        return *this;
+    }
+#endif
     CRGBFloatColour& operator*=(const CRGBFloatColour& other) { R *= other.R; G *= other.G; B *= other.B; A *= other.A; return *this; }
 #ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_TO_C3DVECTOR
     // egod opt-in (e08, row 0x00B45CF0 CEngineLightingManager::CalcSWLightingNoClip): FableWin.pdb ??BCRGBFloatColour@@QBE?AVC3DVector@@XZ

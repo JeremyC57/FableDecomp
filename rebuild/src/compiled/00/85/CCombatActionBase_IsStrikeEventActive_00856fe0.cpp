@@ -1,3 +1,4 @@
+// Leaf: ?IsStrikeEventActive@CCombatActionBase@@UBE_NXZ
 // CCombatActionBase::IsStrikeEventActive() const -- an active strike event (the one first to finish) exists
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00856FE0, length 67 bytes (+ int3 padding).
 // Callees: std::for_each<list<CCountedPointer<CStrikeEvent>>::const_iterator, CGetActiveStrikeEventThatIsFirstToFinish>
@@ -63,7 +64,7 @@ class CCombatActionBase { public:
         return for_each(StrikeEvents.begin(), StrikeEvents.end(),
                         CGetActiveStrikeEventThatIsFirstToFinish(FramesRunning)).m_pFirstToFinish;
     }
-    bool IsStrikeEventActive() const;
+    virtual bool IsStrikeEventActive() const;
 };
 
 bool CCombatActionBase::IsStrikeEventActive() const

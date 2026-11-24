@@ -104,7 +104,7 @@ class CCreatureAction_SummonerSheatheWeapon : public CCombatActionBase { public:
 };
 class CCreatureAction_SummonerLightningOrbInto : public CCombatActionBase { public:
     CBaseIntelligentPointer PTarget;            // +0x114
-    CCreatureAction_SummonerLightningOrbInto(CThingCreatureBase* owner, CThing* target);   // 0x008CBD90
+    CCreatureAction_SummonerLightningOrbInto(CThingCreatureBase& owner, CThing& target);   // 0x008CBD90
     ~CCreatureAction_SummonerLightningOrbInto();   // 0x00719C30
 };
 class CCreatureAction_SummonerLightningOrbOutOfGroundSmash : public CCombatActionBase { public:
@@ -178,7 +178,7 @@ void CAIStateGroup_SummonerLightningAttack::Update()
             if (AIAction_LookAtThing(1, PTarget, 1, 0.013888889f) != 1) {
                 if (IS_THING_ALIVE(PTarget)) {
                     CThingCreatureBase* creature = GetCreature();
-                    long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerLightningOrbInto(creature, ((CThing*)PTarget.GetPItem())), false);
+                    long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerLightningOrbInto(*creature, *((CThing*)PTarget.GetPItem())), false);
                     if (result == 1) {
                         Terminate();
                         return;

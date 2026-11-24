@@ -1,0 +1,30 @@
+addr       parity           behav  name
+00644424   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00644424   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00644424   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00644424   WARN RELOC_NAME: ?GetSpiritScoreText@PlayerManagerMethods@@QBE_NJAAVCWideString@@@Z -> 0044a2a0 labelled 'CPlayerManager::DrawGetEnvironmentInfo'
+00644424   RELOCATION_MATCH PASS   Draw
+00b92070   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00b92070   WARN SHARED_HEADER_AVAILABLE CPlane (engine/CPlane.h)
+00b92070   WARN SHARED_HEADER_AVAILABLE CShadowClipVolume (engine/CShadowClipVolume.h)
+00b92070   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00b92070   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo (engine/CEnginePrimitiveTypeInfo.h)
+00b92070   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b92070   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00b92070   WARN SHARED_HEADER_AVAILABLE CEngineSceneGridCell (engine/CEngineSceneGridCell.h)
+00b92070   RELOCATION_MATCH PASS   PreloadPrimitives
+009f35d0   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+009f35d0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+009f35d0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009f35d0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009f35d0   RELOCATION_MATCH PASS   CanDoProperSignedConversion
+004166a8   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004166a8   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004166a8   RELOCATION_MATCH PASS   CreatePlayers
+
+WINS: 4
+  00644424 RELOCATION_MATCH NPlayerGui_CDrawSpiritScores::Draw
+  00b92070 RELOCATION_MATCH CEngineSceneGrid::PreloadPrimitives
+  009f35d0 RELOCATION_MATCH CSurface::CanDoProperSignedConversion
+  004166a8 RELOCATION_MATCH CMainGameComponent::?CreatePlayers@CMainGameComponent@@IAEXXZ
+RF_DONE

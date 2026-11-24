@@ -1,0 +1,57 @@
+addr       parity           behav  name
+004fcb30   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+004fcb30   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+004fcb30   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+004fcb30   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+004fcb30   WARN SHARED_HEADER_AVAILABLE CMapInfo (engine/CMapInfo.h)
+004fcb30   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004fcb30   RELOCATION_MATCH PASS   GetMinPlayerDistanceFromMap
+00713ee0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00713ee0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00713ee0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00713ee0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00713ee0   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+00713ee0   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation (engine/CTCCreatureNavigation.h)
+00713ee0   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00713ee0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00713ee0   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)
+00713ee0   WARN RELOC_NAME: ?GetSneakSpeedTowards@CThing@@QAEMABVC3DVector@@@Z -> 00664cb0 labelled 'CThingCreatureBase::GetMaxSneakingSpeed'
+00713ee0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00713ee0   RELOCATION_MATCH PASS   Update
+007864c0   WARN SHARED_HEADER_AVAILABLE C3DSkeletalMorph (engine/C3DSkeletalMorph.h)
+007864c0   WARN SHARED_HEADER_AVAILABLE CTCSkeletalMorph (engine/CTCSkeletalMorph.h)
+007864c0   RELOCATION_MATCH PASS   ForceSkeletalMorph
+007baf00   WARN SHARED_HEADER_AVAILABLE CTCHeroOpinionDeedLog (engine/CTCHeroOpinionDeedLog.h)
+007baf00   WARN SHARED_HEADER_AVAILABLE CTCTrespassable (engine/CTCTrespassable.h)
+007baf00   WARN SHARED_HEADER_AVAILABLE COpinionReactionManager (engine/COpinionReactionManager.h)
+007baf00   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007baf00   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007baf00   WARN SHARED_HEADER_AVAILABLE CTCTrespasser (engine/CTCTrespasser.h)
+007baf00   RELOCATION_MATCH PASS   LeavingRegion
+00a99610   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE C3DAnimFileSequenceChunk (engine/C3DAnimFileSequenceChunk.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE C3DAnimFileObjectChunk (engine/C3DAnimFileObjectChunk.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a99610   RELOCATION_MATCH PASS   GetNonLoopingDuration
+00bdc3c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00bdc3c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bdc3c0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bdc3c0   RELOCATION_MATCH PASS   OnMapVisibilityChanged
+00bfc770   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00bfc770   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00bfc770   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00bfc770   WARN RELOC_NAME: ??$SaveVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z -> 00bfcf00 labelled 'CPatchTesselationEdgeStrip::SaveVerts<CPatchTesselationEdgeStrip::CVertex>'
+00bfc770   WARN RELOC_NAME: ??$SaveVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z -> 00bfcf90 labelled 'CPatchTesselationEdgeStrip::SaveVerts<CPatchTesselationEdgeStrip::CFanBaseVertex>'
+00bfc770   WARN RELOC_NAME: ??$SaveVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z -> 00bfd020 labelled 'CPatchTesselationEdgeStrip::SaveVerts<CPatchTesselationEdgeStrip::CWaterVertex>'
+00bfc770   RELOCATION_MATCH PASS   Save
+
+WINS: 7
+  004fcb30 RELOCATION_MATCH CWorldMap::GetMinPlayerDistanceFromMap
+  00713ee0 RELOCATION_MATCH NTCScriptedControl::CActionFollowCreature::?Update@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+  007864c0 RELOCATION_MATCH CTCSkeletalMorph::ForceSkeletalMorph
+  007baf00 RELOCATION_MATCH CTCTrespasser::LeavingRegion
+  00a99610 RELOCATION_MATCH C3DAnimFileRootChunk::GetNonLoopingDuration@C3DAnimFileRootChunk
+  00bdc3c0 RELOCATION_MATCH CEngineLandscapeMap::OnMapVisibilityChanged
+  00bfc770 RELOCATION_MATCH CPatchTesselationEdgeStrip::Save

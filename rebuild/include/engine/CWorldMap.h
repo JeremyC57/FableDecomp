@@ -34,6 +34,10 @@ extern const C2DCoordI g_BlockNeighbourOffsets[9];                    // 0x01385
 #endif
 class CWorldMap : public CBaseClassNonCopyable, public CIDrawWorldMap {
 public:
+#ifdef FABLE_RETAIL_CWORLDMAP_LOCAL_TO_WORLD_VECTOR_PASS26
+    // Ego_r 004CFC10 and FableWin 01C83290, called by LoadRoute on PeekWorldMap().
+    C2DVector ConvertLocalCoordsToWorldMapCoords(long region, const C2DVector& position) const;
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_IMPASSABILITYAROUND
     // Ego_r.pdb ?GetImpassabilityFactorAround@CWorldMap@@QBEXABVC3DVector@@AAV?$vector@MV?$allocator@M@std@@@std@@_N@Z (out of line,
     // retail 0x0063E3C0; called at 0x0072441E). Declaration only.
@@ -107,6 +111,11 @@ public:
 protected:
     virtual void LoadScriptBrushesFromFile(long, CCountedPointer<CAFile>);
     virtual long AllocateNewMap();
+#ifdef FABLE_RETAIL_CWORLDMAP_UNLOADLEVEL_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x004FF8A0 ForceUnload): Ego_r.pdb / FableWin.pdb ?UnloadLevel@CWorldMap@@IAEXJ@Z (protected,
+    // non-virtual; retail 0x004FEDE0, which the donor FableWin ForceUnload calls). Declaration only.
+    void UnloadLevel(long);                                                                              // 0x004FEDE0
+#endif
 public:
     // Ego_r.pdb / FableWin.pdb CWorldMap::ELoadType (nested; LF_ENUMERATE WAIT_FOR_LOAD = 0, DONT_WAIT_FOR_LOAD = 1, Codex pass 13
     // TPI evidence; 0x00501150 runs the level loader to completion for WAIT_FOR_LOAD), the protected
@@ -188,13 +197,28 @@ public:
 #endif
     bool IsPosInMap(const C3DVector&) const;
     bool IsPosPassable(const C2DCoordI&) const;
+#ifdef FABLE_RETAIL_EXPLOSIVE_TRAIL_UPDATE_PASS28
+    // Native 004fcc40 and both original PDB overload sets: the call uses create_pos directly.
+    bool IsPosPassable(const C3DVector&) const;
+#endif
     float GetGroundSizeZAt(const C3DVector&) const;
 #ifdef FABLE_RETAIL_CWORLDMAP_PASS22_WATERHEIGHT
     // Both original PDBs and native0063A420.
     float GetWaterSizeZAt(const C3DVector&)const;
 #endif
 protected:
+#ifdef FABLE_RETAIL_CWORLDMAP_PLAYERPOSITION_PASS27
+    // Ego_r nested record CPlayerPositionInfo. Set is at +0 and Pos at +1.
+#pragma pack(push, 1)
+    class CPlayerPositionInfo {
+    public:
+        bool Set;
+        C3DVector Pos;
+    };
+#pragma pack(pop)
+#else
     class CPlayerPositionInfo;
+#endif
     void UnloadRegion(long,bool);
     void SaveMapsToString(CCharString&);                      // 0x004FB990 ?SaveMapsToString@CWorldMap@@IAEXAAVCCharString@@@Z
     void SaveRegionsToString(CCharString&);                   // 0x004FD040 ?SaveRegionsToString@CWorldMap@@IAEXAAVCCharString@@@Z
@@ -297,7 +321,15 @@ public:
     // 0x004FBDE0, ?CompileLoadableGlobalThingsToSingleFile@CWorldMap@@IAEXABVCWideString@@@Z 0x004FE030,
     // ?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@@IAEXABVCWideString@@@Z 0x004FE2A0, ?LoadLoadableGlobalThings@CWorldMap@@IAEXXZ 0x004FDBC0,
     // ?LoadRegionGraph@CWorldMap@@QAEXABVCWideString@@@Z 0x00506D40. Declarations only.
+#ifdef FABLE_RETAIL_CWORLDMAP_ALLOCATEMAPUID_PROTECTED
+    // Add-only nested opt-in (NF293, 2026-11-23; row 0x00507C30): Ego_r.pdb + FableWin.pdb ?AllocateMapUID@CWorldMap@@IAEKJ@Z (protected,
+    // 0x004FCE20). Declaration only.
+protected:
+#endif
     unsigned long AllocateMapUID(long map);
+#ifdef FABLE_RETAIL_CWORLDMAP_ALLOCATEMAPUID_PROTECTED
+public:
+#endif
     bool IsMapPlacementPositionFree(const C2DBoxI& area);
     C2DBoxI GetLevelDimensions(const CCharString& levelName) const;
     void SaveWorldToBinaryFile(CWideString& filename);
@@ -497,6 +529,11 @@ public:
 #ifdef FABLE_RETAIL_CWORLDMAP_CYLINDER_QUERY
  // Retail opt-in (Codex pass23): original const-reference query, no data-layout change.
  float GetHeightZBelowPos(const C3DVector& pos) const;
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_FLAT_ISLOADINGANYMAP
+ // Add-only opt-in (naming agent NF292, 2026-11-23, binder 0x006E11F0 CTCDParticleEmitter::Create): Ego_r.pdb / FableWin.pdb
+ // ?IsLoadingAnyMap@CWorldMap@@QBE_NXZ (retail 0x004FB4A0), as the retail branch declares it. Declaration only: no layout change.
+ bool IsLoadingAnyMap() const;                                      // 0x004FB4A0
 #endif
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     long                    f4;                              // +0x04 retail-only long (previous header)

@@ -56,7 +56,7 @@ class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeo
     virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCreatureAction_DragonStrafeOutOf : public CCombatActionBase { public:
-    CCreatureAction_DragonStrafeOutOf(CThingCreatureBase* owner);   // 0x008E4AD0
+    CCreatureAction_DragonStrafeOutOf(CThingCreatureBase& owner);   // 0x008E4AD0
 };
 
 class CMainGameComponent {
@@ -91,7 +91,7 @@ void NCreatureMode::CModeDragonStrafe::FrameUpdate()
     CModeBase::FrameUpdate();
     CThingCreatureBase* creature = ParentThing;
     if (--Timer <= 0) {
-        creature->SetCurrentAction(CCreatureAction_DragonStrafeOutOf(creature));
+        creature->SetCurrentAction(CCreatureAction_DragonStrafeOutOf(*creature));
         return;
     }
     float step = Speed / CMainGameComponent::GetConstantFPS();

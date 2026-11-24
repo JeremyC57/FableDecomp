@@ -20,7 +20,7 @@ enum EScriptingStateGroups { EScriptingStateGroups_Default };
 template <class T> struct CPersistTraits {
     T DefaultVal;                                 // +0x00
     CPersistTraits() : DefaultVal() {}            // value-initialised: the `mov [esp+14h],0` before the jump
-    void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x007AD7F0 for T = EScriptingStateGroups
+    void TransferBinaryIn(CMemoryDataInputStream& stream, T& value);   // 0x007AD7F0 for T = EScriptingStateGroups
 };
 
 class CPersistContext_TransferableComponentGenericType { public:
@@ -59,7 +59,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         PSaveStream->WriteSLONG(value);
         break;
     case 2: {
-        traits.TransferBinaryIn(PLoadStream, &value);
+        traits.TransferBinaryIn(*PLoadStream, value);
         break;
     }
     case 1: {

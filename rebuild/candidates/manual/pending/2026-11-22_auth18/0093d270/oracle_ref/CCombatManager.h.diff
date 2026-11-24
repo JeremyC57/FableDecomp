@@ -1,0 +1,4 @@
+144c144
+<  float GetProximityForNavigation() const { return ProximityForNavigation; }
+---
+>  const float& GetProximityForNavigation() const { return ProximityForNavigation; }

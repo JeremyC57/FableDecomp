@@ -88,7 +88,7 @@ struct CEngineInternalPrimitiveGroup : CEngineInternalPrimitiveBase {
     unsigned char _pad38[0x50 - 0x38];
     std::vector<CEnginePrimitiveHandle> Primitives;    // +0x50
     unsigned long PrimitiveFlags;                      // +0x5c
-    void UpdateRenderLayerMask();                      // 0x00BC6180
+    private: void UpdateRenderLayerMask(); public:                      // 0x00BC6180
     void SetChildPrimitive(unsigned long index, const CEnginePrimitive& primitive, unsigned long flags);
 };
 

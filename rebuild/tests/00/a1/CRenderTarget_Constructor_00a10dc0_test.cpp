@@ -29,8 +29,8 @@ class CRenderTarget : public CBaseClass
     CSurface secondary14;
 
     CRenderTarget(
-        const CSurface& primary,
-        const CSurface& secondary);
+        CSurface& primary,
+        CSurface& secondary);
 
     virtual void VTableAnchor();
 };

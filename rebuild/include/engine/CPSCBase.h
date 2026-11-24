@@ -60,6 +60,11 @@ public:
 private: CParticleUpdateParamCallback<K,V>* Callback;V Index;
 };
 class CPSCBase:public CParticleUpdateParamCallback<unsigned long,unsigned long>{
+#ifdef FABLE_RETAIL_CPSCLIGHT_PREPARE_PRIMITIVES_PASS28
+public:
+    C3DVector GetCurrentPosition(const CParticleUpdateParameters<unsigned long, unsigned long>&,
+                                const unsigned long&, float, bool, unsigned long) const;
+#endif
 public:
 #ifdef FABLE_RETAIL_CPSCBASE_CTOR
  // Opt-in (hand3c, rows 0x00B012E0 CPSCRenderMesh / 0x00B103F0 CPSCEmitterGeneric ctors): Ego_r.pdb / FableWin.pdb
@@ -99,6 +104,10 @@ public:
 #ifndef FABLE_RETAIL_CPSCBASE_IMPLICIT_DTOR
  virtual ~CPSCBase();
 #endif // NF158 opt-in: implicit destructor (see FABLE_RETAIL_CPARTICLEUPDATEPARAMCALLBACK_IMPLICIT_DTOR).
+#ifdef FABLE_RETAIL_CPSCBASE_GETUPDATESTARTED_PASS27
+public:
+ bool GetUpdateStarted() const { return UpdateStarted; }
+#endif
 private: const CParticleSystem* ParticleSystem;bool UpdateStarted:1;
 protected: bool Initialised:1;
 };

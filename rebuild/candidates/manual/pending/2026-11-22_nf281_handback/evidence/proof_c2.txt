@@ -1,0 +1,20 @@
+##### 00a8fd40 renames: ?UploadToIndexBuffer@C3DPrimitive2@@QAE_NK@Z=?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z
+sections head 4 new 4
+ALL_EQ 0
+DIFF	?SaveBinary@C3DPrimitive2@@QAEXAAVCDataOutputStream@@@Z
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a92870 renames: ?UploadToIndexBuffer@C3DPrimitive2@@QAE_NK@Z=?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z
+sections head 7 new 7
+ALL_EQ 0
+DIFF	?UploadAnimatedBuffers@C3DPrimitive2@@QAE_NK@Z
+funcs SAME=5 vtbl_H=0 vtbl_N=0
+##### 00a932c0 renames: ?UploadToIndexBuffer@C3DPrimitive2@@QAE_NK@Z=?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?UploadRepeatedBuffers@C3DPrimitive2@@QAE_NKK@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00a93320 renames: ?UploadToIndexBuffer@C3DPrimitive2@@QAE_NK@Z=?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?UploadStaticBuffers@C3DPrimitive2@@QAE_NK@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0

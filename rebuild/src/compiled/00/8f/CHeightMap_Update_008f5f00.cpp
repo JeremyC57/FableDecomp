@@ -1,3 +1,4 @@
+// Leaf: ?Update@CHeightMap@@AAEXXZ
 // CHeightMap::Update() -- clear the per-cell Changed bit over every queued map update area (rows MinY..MaxY, columns MinX..MaxX, the cell at (SizeY - y) * (SizeX + 1) + x) and empty the queue
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F5F00, length 147 bytes. No callees.
 // Shape: the area index lives in the `push ecx` frame word; the area walks in edi (+0x24 = &area.MaxX); the
@@ -38,7 +39,9 @@ class CHeightMap { public:
     long                 SizeY;                    // +0x208
     long                 SizeXIncludingExtraCells; // +0x20c
     long                 SizeYIncludingExtraCells; // +0x210
+    private:
     void Update();
+    public:
     void Clear();
 };
 

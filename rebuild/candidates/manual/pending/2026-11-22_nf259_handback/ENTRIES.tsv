@@ -1,0 +1,5 @@
+qid	source	address	claim
+q12730	land1122nf255	0x0062EAC0 / 0x0062EAD0 / 0x00692670 / 0x00692880 / 0x006928B0	five CCombatActionBase-family vtable slot self rows still on free stand-ins (HEAD debt that 0x00955620's vtable already binds by PDB spelling): onto their PDB member spellings, each 2 -> 1
+q12731	land1122nf257	0x008B7A20 / 0x006F5C10 / 0x008C2AD0 / 0x008C0560 / 0x0096AE50	port the local class models onto the shared headers (now carrying the nf255 / nf257 opt-ins); 0x008C0560 also needs its Leaf line; count-neutral or better
+q12732	land1122nf255	0x008F41D0	port debt: DragonFireBeamInto::Initialise models its class locally; onto the nf255 header opt-in
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof

@@ -1,0 +1,1993 @@
+{
+  "row": "00baa870",
+  "status": "DIFFER",
+  "build_tag": "original_magnitude_selected_ordinary",
+  "result": {
+    "row": "00baa870",
+    "tag": "original_magnitude_selected_ordinary",
+    "source_sha256": "be5e19f5e976cc90d26c9915373769c6fcd1a8836d970d1b5e80abfb8bd2c5bb",
+    "requested_leaf": "?RenderFromSortList@CEnginePrimitiveManagerRepeatedZSprites@@AAEXAAVCEngineInternalPrimitiveRepeatedZSprite@@@Z",
+    "flags": [],
+    "retail_bytes": 4600,
+    "leaf": "?RenderFromSortList@CEnginePrimitiveManagerRepeatedZSprites@@AAEXAAVCEngineInternalPrimitiveRepeatedZSprite@@@Z",
+    "status": "DIFFER",
+    "object_bytes": 4600,
+    "matched_instructions": 1190,
+    "retail_instructions": 1198,
+    "built_instructions": 1198,
+    "hunks": 7,
+    "same_size_different_bytes": 61,
+    "pickany_complete": true,
+    "pickany_eq": 3,
+    "pickany_neq": 0,
+    "pickany_referenced_neq": 0
+  },
+  "relocations": [
+    {
+      "offset": 25,
+      "kind": 20,
+      "symbol": "?IsLoaded@C3DMeshInfo@@QBE_NXZ",
+      "retail_site": "00baa888",
+      "retail_target": "00a23e40",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 43,
+      "kind": 20,
+      "symbol": "?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z",
+      "retail_site": "00baa89a",
+      "retail_target": "00a256f0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 110,
+      "kind": 20,
+      "symbol": "?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z",
+      "retail_site": "00baa8dd",
+      "retail_target": "00a256f0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 135,
+      "kind": 6,
+      "symbol": "?GPPrimitiveRenderer@NEngineInternal@@3PAVCEnginePrimitiveRenderer@@A",
+      "retail_site": "00baa8f6",
+      "retail_target": "01436e80",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 174,
+      "kind": 20,
+      "symbol": "?GetMesh@C3DMeshInfo@@QBE_NAAV?$CCountedPointer@$$CBVC3DMesh2@@@@KK@Z",
+      "retail_site": "00baa91d",
+      "retail_target": "00a25e70",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 190,
+      "kind": 20,
+      "symbol": "??1?$CCountedPointer@$$CBVC3DMesh2@@@@QAE@XZ",
+      "retail_site": "00baa92d",
+      "retail_target": "00a36ec0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 208,
+      "kind": 6,
+      "symbol": "?g_pLocalDetailGenerator@@3PAVCEngineLocalDetailGenerator@@A",
+      "retail_site": "00baa93f",
+      "retail_target": "01436e88",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 221,
+      "kind": 6,
+      "symbol": "?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A",
+      "retail_site": "00baa94b",
+      "retail_target": "01436e9c",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 259,
+      "kind": 6,
+      "symbol": "?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A",
+      "retail_site": "00baa971",
+      "retail_target": "01436e9c",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 264,
+      "kind": 20,
+      "symbol": "?UpdateGlobalLightingStates@CEngineLightingManager@@QAEXXZ",
+      "retail_site": "00baa977",
+      "retail_target": "00b46c80",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 303,
+      "kind": 6,
+      "symbol": "?g_pEngineBillboardGenerator@@3PAVCEngineBillboardGenerator@@A",
+      "retail_site": "00baa99d",
+      "retail_target": "01436e4c",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 309,
+      "kind": 20,
+      "symbol": "?RenderBillboard@CEngineBillboardGenerator@@QAEXPBVC3DMesh2@@PAVCEngineBillboard@@MMJ@Z",
+      "retail_site": "00baa9a4",
+      "retail_target": "00b8b780",
+      "proof": "Ego_r 0x00a32ca0 and FableWin 0x02dbe530. Donor call +0x145 corresponds to retail 0x00baa9a4. The landing label fixes this symbol at 0x00b8b780.",
+      "proven": true
+    },
+    {
+      "offset": 330,
+      "kind": 20,
+      "symbol": "??1?$CCountedPointer@$$CBVC3DMesh2@@@@QAE@XZ",
+      "retail_site": "00baa9b9",
+      "retail_target": "00a36ec0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 335,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baa9be",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 351,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baa9ce",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 356,
+      "kind": 20,
+      "symbol": "?EnableVertexShaders@CShaderRenderManager@@QAEXXZ",
+      "retail_site": "00baa9d3",
+      "retail_target": "00987fe0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 361,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baa9d8",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 377,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baa9e8",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 382,
+      "kind": 20,
+      "symbol": "?EnablePixelShaders@CShaderRenderManager@@QAEXXZ",
+      "retail_site": "00baa9ed",
+      "retail_target": "00988110",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 388,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baa9f2",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 402,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baaa01",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 407,
+      "kind": 20,
+      "symbol": "?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z",
+      "retail_site": "00baaa06",
+      "retail_target": "0098b5e0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 412,
+      "kind": 6,
+      "symbol": "?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A",
+      "retail_site": "00baaa0b",
+      "retail_target": "013cb508",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 459,
+      "kind": 6,
+      "symbol": "?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A",
+      "retail_site": "00baaa39",
+      "retail_target": "01436e9c",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 497,
+      "kind": 6,
+      "symbol": "?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A",
+      "retail_site": "00baaa5f",
+      "retail_target": "01436e9c",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 502,
+      "kind": 20,
+      "symbol": "?UpdateGlobalLightingStates@CEngineLightingManager@@QAEXXZ",
+      "retail_site": "00baaa65",
+      "retail_target": "00b46c80",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 512,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00baaa6e",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 523,
+      "kind": 20,
+      "symbol": "?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z",
+      "retail_site": "00baaa7a",
+      "retail_target": "00988020",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 529,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00baaa7f",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 538,
+      "kind": 20,
+      "symbol": "?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z",
+      "retail_site": "00baaa89",
+      "retail_target": "00988140",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 563,
+      "kind": 6,
+      "symbol": "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+      "retail_site": "00baaaa1",
+      "retail_target": "01436ea0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 712,
+      "kind": 6,
+      "symbol": "__real@3f800000",
+      "retail_site": "00baab36",
+      "retail_target": "0122ded8",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 729,
+      "kind": 6,
+      "symbol": "__real@bf000000",
+      "retail_site": "00baab47",
+      "retail_target": "01238798",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 739,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00baab51",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 850,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baabc0",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 864,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baabce",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 878,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baabdc",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 890,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baabe8",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 904,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00baabf6",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 914,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00baac00",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 934,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baac14",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 961,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baac2f",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1012,
+      "kind": 6,
+      "symbol": "?GFastOneOverSqrtTable@@3PAKA",
+      "retail_site": "00baac61",
+      "retail_target": "013ce558",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 1058,
+      "kind": 6,
+      "symbol": "__real@40400000",
+      "retail_site": "00baac90",
+      "retail_target": "0122ded4",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1068,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00baac9a",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1096,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baacb6",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1108,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00baacc2",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1120,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00baacce",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1249,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baad4f",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1259,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baad59",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1269,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baad63",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1291,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baad79",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1305,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baad87",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1319,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baad95",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1399,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baade5",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1621,
+      "kind": 20,
+      "symbol": "__CIpow",
+      "retail_site": "00baaec4",
+      "retail_target": "00bfeb40",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 1656,
+      "kind": 20,
+      "symbol": "__CIpow",
+      "retail_site": "00baaee7",
+      "retail_target": "00bfeb40",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 1668,
+      "kind": 6,
+      "symbol": "__real@3f800000",
+      "retail_site": "00baaef2",
+      "retail_target": "0122ded8",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 1732,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00baaf32",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2101,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00bab0a3",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2113,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00bab0af",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2123,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00bab0b9",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2161,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00bab0df",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2173,
+      "kind": 6,
+      "symbol": "__real@00000000",
+      "retail_site": "00bab0eb",
+      "retail_target": "0122dedc",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2208,
+      "kind": 6,
+      "symbol": "__real@3f800000",
+      "retail_site": "00bab10e",
+      "retail_target": "0122ded8",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2252,
+      "kind": 20,
+      "symbol": "?GetTransitionFade@CEngineInternalPrimitiveRepeatedZSprite@@QBE?AVCEngineFadeDistance@@XZ",
+      "retail_site": "00bab13b",
+      "retail_target": "00baa460",
+      "proof": "Ego_r 0x00a60bf0 and FableWin 0x02ed27b0. Donor call +0x757 corresponds to retail 0x00bab13b. Complete emitted callee also matches.",
+      "proven": true
+    },
+    {
+      "offset": 2261,
+      "kind": 6,
+      "symbol": "__real@3da2f983",
+      "retail_site": "00bab143",
+      "retail_target": "012a52c0",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2268,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab14a",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2277,
+      "kind": 6,
+      "symbol": "__real@401921fb60000000",
+      "retail_site": "00bab153",
+      "retail_target": "0124f2b8",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2292,
+      "kind": 6,
+      "symbol": "__real@3c23d70a",
+      "retail_site": "00bab162",
+      "retail_target": "01230a5c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2309,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z",
+      "retail_site": "00bab174",
+      "retail_target": "00989a60",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2314,
+      "kind": 6,
+      "symbol": "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+      "retail_site": "00bab179",
+      "retail_target": "01436ea0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2347,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab199",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2355,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z",
+      "retail_site": "00bab1a2",
+      "retail_target": "00989b00",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2375,
+      "kind": 6,
+      "symbol": "__real@3f000000",
+      "retail_site": "00bab1b5",
+      "retail_target": "0122f59c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2396,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab1ca",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2403,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z",
+      "retail_site": "00bab1d2",
+      "retail_target": "00989b00",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2409,
+      "kind": 6,
+      "symbol": "__real@3f800000",
+      "retail_site": "00bab1d7",
+      "retail_target": "0122ded8",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2422,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab1e4",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2471,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z",
+      "retail_site": "00bab216",
+      "retail_target": "00989a60",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2527,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab21f",
+      "retail_target": "01436e14",
+      "proof": "Both ecx loads reach the SetUserVertexShaderConstant call at 0x00bab253 with immediate index 4 and no intervening ecx write.",
+      "proven": true
+    },
+    {
+      "offset": 2532,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z",
+      "retail_site": "00bab253",
+      "retail_target": "00989a60",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2555,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab269",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2594,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z",
+      "retail_site": "00bab291",
+      "retail_target": "00989a60",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2600,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab296",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2617,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z",
+      "retail_site": "00bab2a8",
+      "retail_target": "00989a60",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2641,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab2bf",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2649,
+      "kind": 6,
+      "symbol": "__real@3f800000",
+      "retail_site": "00bab2c7",
+      "retail_target": "0122ded8",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2675,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z",
+      "retail_site": "00bab2e2",
+      "retail_target": "00989b00",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2681,
+      "kind": 6,
+      "symbol": "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+      "retail_site": "00bab2e7",
+      "retail_target": "01436ea0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2700,
+      "kind": 20,
+      "symbol": "?Set@CPreTransposedBoneMatrix@@QAEXABVCMatrix3x4@@@Z",
+      "retail_site": "00bab2fb",
+      "retail_target": "00987f70",
+      "proof": "Ego_r 0x00ae45d0 and FableWin 0x0302f940. FableWin 0x02ed7600 constructor delegates to Set, expanded to the same retail 0x00bab2fb call.",
+      "proven": true
+    },
+    {
+      "offset": 2706,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab300",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2723,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstants@CShaderRenderManager@@QAEXKJPAM@Z",
+      "retail_site": "00bab312",
+      "retail_target": "009896d0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2728,
+      "kind": 6,
+      "symbol": "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+      "retail_site": "00bab317",
+      "retail_target": "01436ea0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2760,
+      "kind": 6,
+      "symbol": "__real@3c800000",
+      "retail_site": "00bab336",
+      "retail_target": "0125b24c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2766,
+      "kind": 6,
+      "symbol": "__real@3f90000000000000",
+      "retail_site": "00bab33c",
+      "retail_target": "012a2788",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2785,
+      "kind": 6,
+      "symbol": "__real@3c800000",
+      "retail_site": "00bab34f",
+      "retail_target": "0125b24c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2791,
+      "kind": 6,
+      "symbol": "__real@3f90000000000000",
+      "retail_site": "00bab355",
+      "retail_target": "012a2788",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2803,
+      "kind": 6,
+      "symbol": "__real@bc800000",
+      "retail_site": "00bab361",
+      "retail_target": "012a41b0",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2824,
+      "kind": 6,
+      "symbol": "__real@3c800000",
+      "retail_site": "00bab376",
+      "retail_target": "0125b24c",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2837,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab383",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2842,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z",
+      "retail_site": "00bab389",
+      "retail_target": "00989b00",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2848,
+      "kind": 6,
+      "symbol": "?GPPrimitiveRenderer@NEngineInternal@@3PAVCEnginePrimitiveRenderer@@A",
+      "retail_site": "00bab38e",
+      "retail_target": "01436e80",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2860,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab39a",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2881,
+      "kind": 6,
+      "symbol": "__real@3f800000",
+      "retail_site": "00bab3af",
+      "retail_target": "0122ded8",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2899,
+      "kind": 6,
+      "symbol": "__real@3f800000",
+      "retail_site": "00bab3c1",
+      "retail_target": "0122ded8",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2919,
+      "kind": 6,
+      "symbol": "__real@3f800000",
+      "retail_site": "00bab3d5",
+      "retail_target": "0122ded8",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2935,
+      "kind": 6,
+      "symbol": "__real@bf800000",
+      "retail_site": "00bab3e5",
+      "retail_target": "0122dee0",
+      "proof": "identical constant contents and width",
+      "proven": true
+    },
+    {
+      "offset": 2960,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z",
+      "retail_site": "00bab3ff",
+      "retail_target": "00989b00",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2973,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab40b",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2981,
+      "kind": 20,
+      "symbol": "?SetUserVertexShaderConstants@CShaderRenderManager@@QAEXKJPAM@Z",
+      "retail_site": "00bab414",
+      "retail_target": "009896d0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 2987,
+      "kind": 6,
+      "symbol": "?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A",
+      "retail_site": "00bab419",
+      "retail_target": "01436e98",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3016,
+      "kind": 6,
+      "symbol": "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+      "retail_site": "00bab437",
+      "retail_target": "01436e18",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3126,
+      "kind": 6,
+      "symbol": "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+      "retail_site": "00bab4a5",
+      "retail_target": "01436e18",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3233,
+      "kind": 6,
+      "symbol": "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+      "retail_site": "00bab510",
+      "retail_target": "01436e18",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3239,
+      "kind": 6,
+      "symbol": "?D3DAlphaFuncModeTable@CRenderStateManager@@0PAKA",
+      "retail_site": "00bab515",
+      "retail_target": "01396dd8",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3342,
+      "kind": 6,
+      "symbol": "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+      "retail_site": "00bab57d",
+      "retail_target": "01436e18",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3451,
+      "kind": 6,
+      "symbol": "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+      "retail_site": "00bab5ea",
+      "retail_target": "01436e18",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3561,
+      "kind": 6,
+      "symbol": "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+      "retail_site": "00bab658",
+      "retail_target": "01436e18",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3567,
+      "kind": 6,
+      "symbol": "?D3DTextureUVModeTable@CRenderStateManager@@0PAKA",
+      "retail_site": "00bab65d",
+      "retail_target": "01396dc8",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3670,
+      "kind": 6,
+      "symbol": "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+      "retail_site": "00bab6c5",
+      "retail_target": "01436e18",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3676,
+      "kind": 6,
+      "symbol": "?D3DTextureUVModeTable@CRenderStateManager@@0PAKA",
+      "retail_site": "00bab6ca",
+      "retail_target": "01396dc8",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3779,
+      "kind": 6,
+      "symbol": "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+      "retail_site": "00bab732",
+      "retail_target": "01436e18",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3785,
+      "kind": 6,
+      "symbol": "?D3DTextureFilterModeTable@CRenderStateManager@@0PAKA",
+      "retail_site": "00bab737",
+      "retail_target": "01396e58",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3888,
+      "kind": 6,
+      "symbol": "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+      "retail_site": "00bab79f",
+      "retail_target": "01436e18",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3894,
+      "kind": 6,
+      "symbol": "?D3DTextureFilterModeTable@CRenderStateManager@@0PAKA",
+      "retail_site": "00bab7a4",
+      "retail_target": "01396e58",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 3998,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab80c",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4069,
+      "kind": 20,
+      "symbol": "?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z",
+      "retail_site": "00bab854",
+      "retail_target": "0098b930",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4085,
+      "kind": 20,
+      "symbol": "?UpdatePixelShader@CShaderRenderManager@@AAEXXZ",
+      "retail_site": "00bab864",
+      "retail_target": "00988a20",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4097,
+      "kind": 20,
+      "symbol": "?UpdatePixelShaderConstants@CShaderRenderManager@@AAEXXZ",
+      "retail_site": "00bab870",
+      "retail_target": "00989bf0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4111,
+      "kind": 20,
+      "symbol": "?UpdateWorldSpaceFogTransform@CShaderRenderManager@@AAEXXZ",
+      "retail_site": "00bab87e",
+      "retail_target": "00989640",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4123,
+      "kind": 20,
+      "symbol": "?UpdateAmbient@CShaderRenderManager@@AAEXXZ",
+      "retail_site": "00bab88a",
+      "retail_target": "00989760",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4138,
+      "kind": 20,
+      "symbol": "?UpdateFogColour@CShaderRenderManager@@AAEXXZ",
+      "retail_site": "00bab899",
+      "retail_target": "009897c0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4152,
+      "kind": 20,
+      "symbol": "?UpdateLightGlobals@CShaderRenderManager@@AAEXXZ",
+      "retail_site": "00bab8a7",
+      "retail_target": "0098a760",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4169,
+      "kind": 20,
+      "symbol": "?ResetWorldTransform@CShaderRenderManager@@QAEXXZ",
+      "retail_site": "00bab8b8",
+      "retail_target": "00988290",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4181,
+      "kind": 20,
+      "symbol": "?UpdateCombinedProjectionTransform@CShaderRenderManager@@AAEXXZ",
+      "retail_site": "00bab8c4",
+      "retail_target": "00988a50",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4199,
+      "kind": 20,
+      "symbol": "?PrepareOcclusionTest@CEnginePrimitiveManagerOcclusionBase@@IAEXAAVCEngineInternalPrimitiveOcclusionBase@@W4ERenderPassType@@AAK@Z",
+      "retail_site": "00bab8d6",
+      "retail_target": "00b905a0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4215,
+      "kind": 6,
+      "symbol": "?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A",
+      "retail_site": "00bab8e5",
+      "retail_target": "01436e5c",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4220,
+      "kind": 20,
+      "symbol": "?StartOcclusionTest@CEngineOcclusionManager@@QAEXXZ",
+      "retail_site": "00bab8eb",
+      "retail_target": "00b8d090",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4250,
+      "kind": 6,
+      "symbol": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_site": "00bab909",
+      "retail_target": "01436e14",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4418,
+      "kind": 20,
+      "symbol": "?RealiseRenderState@CRenderStateManager@@QAEXXZ",
+      "retail_site": "00bab9b1",
+      "retail_target": "00a058c0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4465,
+      "kind": 6,
+      "symbol": "?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A",
+      "retail_site": "00bab9df",
+      "retail_target": "01436e5c",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4471,
+      "kind": 20,
+      "symbol": "?EndOcclusionTest@CEngineOcclusionManager@@QAEXK@Z",
+      "retail_site": "00bab9e6",
+      "retail_target": "00b8d0a0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4477,
+      "kind": 6,
+      "symbol": "?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A",
+      "retail_site": "00bab9eb",
+      "retail_target": "013cb508",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4482,
+      "kind": 20,
+      "symbol": "?RestoreCaptureBlock@CRenderStateManager@@QAEXXZ",
+      "retail_site": "00bab9f1",
+      "retail_target": "00a05840",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4495,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00bab9fe",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4500,
+      "kind": 20,
+      "symbol": "?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z",
+      "retail_site": "00baba03",
+      "retail_target": "0098b5e0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4513,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baba0f",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4522,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baba19",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4529,
+      "kind": 20,
+      "symbol": "?EnableVertexShaders@CShaderRenderManager@@QAEXXZ",
+      "retail_site": "00baba20",
+      "retail_target": "00987fe0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4536,
+      "kind": 20,
+      "symbol": "?DisableVertexShaders@CShaderRenderManager@@QAEXXZ",
+      "retail_site": "00baba27",
+      "retail_target": "009880e0",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4549,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baba33",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4558,
+      "kind": 6,
+      "symbol": "?SingletonInstance@CShaderRenderManager@@0V1@A",
+      "retail_site": "00baba3d",
+      "retail_target": "013bc470",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4565,
+      "kind": 20,
+      "symbol": "?EnablePixelShaders@CShaderRenderManager@@QAEXXZ",
+      "retail_site": "00baba44",
+      "retail_target": "00988110",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    },
+    {
+      "offset": 4583,
+      "kind": 20,
+      "symbol": "?DisablePixelShaders@CShaderRenderManager@@QAEXXZ",
+      "retail_site": "00baba56",
+      "retail_target": "00988190",
+      "proof": "reloc_bindings.tsv",
+      "proven": true
+    }
+  ],
+  "local_branches": [
+    {
+      "object_site": "00baa892",
+      "retail_site": "00baa892",
+      "object_target": "00baa8aa",
+      "retail_target": "00baa8aa",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa8b3",
+      "retail_site": "00baa8b3",
+      "object_target": "00baa8da",
+      "retail_target": "00baa8da",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa8c3",
+      "retail_site": "00baa8c3",
+      "object_target": "00baa8da",
+      "retail_target": "00baa8da",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa8c7",
+      "retail_site": "00baa8c7",
+      "object_target": "00baa8da",
+      "retail_target": "00baa8da",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa8cb",
+      "retail_site": "00baa8cb",
+      "object_target": "00baa8d6",
+      "retail_target": "00baa8d6",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa8d4",
+      "retail_site": "00baa8d4",
+      "object_target": "00baa8c0",
+      "retail_target": "00baa8c0",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa8d8",
+      "retail_site": "00baa8d8",
+      "object_target": "00baa8e2",
+      "retail_target": "00baa8e2",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa8f0",
+      "retail_site": "00baa8f0",
+      "object_target": "00baa9be",
+      "retail_target": "00baa9be",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa924",
+      "retail_site": "00baa924",
+      "object_target": "00baa93f",
+      "retail_target": "00baa93f",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa949",
+      "retail_site": "00baa949",
+      "object_target": "00baa9a9",
+      "retail_target": "00baa9a9",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa959",
+      "retail_site": "00baa959",
+      "object_target": "00baa95d",
+      "retail_target": "00baa95d",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa963",
+      "retail_site": "00baa963",
+      "object_target": "00baa977",
+      "retail_target": "00baa977",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa9cc",
+      "retail_site": "00baa9cc",
+      "object_target": "00baa9d8",
+      "retail_target": "00baa9d8",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baa9e6",
+      "retail_site": "00baa9e6",
+      "object_target": "00baa9f2",
+      "retail_target": "00baa9f2",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baaa47",
+      "retail_site": "00baaa47",
+      "object_target": "00baaa4b",
+      "retail_target": "00baaa4b",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baaa51",
+      "retail_site": "00baaa51",
+      "object_target": "00baaa65",
+      "retail_target": "00baaa65",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab0f8",
+      "retail_site": "00bab0f8",
+      "object_target": "00bab106",
+      "retail_target": "00bab106",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab104",
+      "retail_site": "00bab104",
+      "object_target": "00bab10a",
+      "retail_target": "00bab10a",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab11b",
+      "retail_site": "00bab11b",
+      "object_target": "00bab129",
+      "retail_target": "00bab129",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab127",
+      "retail_site": "00bab127",
+      "object_target": "00bab12d",
+      "retail_target": "00bab12d",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab453",
+      "retail_site": "00bab453",
+      "object_target": "00bab4aa",
+      "retail_target": "00bab4aa",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab460",
+      "retail_site": "00bab460",
+      "object_target": "00bab484",
+      "retail_target": "00bab484",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab48c",
+      "retail_site": "00bab48c",
+      "object_target": "00bab4a5",
+      "retail_target": "00bab4a5",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab4be",
+      "retail_site": "00bab4be",
+      "object_target": "00bab515",
+      "retail_target": "00bab515",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab4cb",
+      "retail_site": "00bab4cb",
+      "object_target": "00bab4ef",
+      "retail_target": "00bab4ef",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab4f7",
+      "retail_site": "00bab4f7",
+      "object_target": "00bab510",
+      "retail_target": "00bab510",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab52b",
+      "retail_site": "00bab52b",
+      "object_target": "00bab582",
+      "retail_target": "00bab582",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab538",
+      "retail_site": "00bab538",
+      "object_target": "00bab55c",
+      "retail_target": "00bab55c",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab564",
+      "retail_site": "00bab564",
+      "object_target": "00bab57d",
+      "retail_target": "00bab57d",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab593",
+      "retail_site": "00bab593",
+      "object_target": "00bab5f1",
+      "retail_target": "00bab5f1",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab5a0",
+      "retail_site": "00bab5a0",
+      "object_target": "00bab5c4",
+      "retail_target": "00bab5c4",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab5d1",
+      "retail_site": "00bab5d1",
+      "object_target": "00bab5ea",
+      "retail_target": "00bab5ea",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab5ef",
+      "retail_site": "00bab5ef",
+      "object_target": "00bab5f6",
+      "retail_target": "00bab5f6",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab606",
+      "retail_site": "00bab606",
+      "object_target": "00bab65d",
+      "retail_target": "00bab65d",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab613",
+      "retail_site": "00bab613",
+      "object_target": "00bab637",
+      "retail_target": "00bab637",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab63f",
+      "retail_site": "00bab63f",
+      "object_target": "00bab658",
+      "retail_target": "00bab658",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab673",
+      "retail_site": "00bab673",
+      "object_target": "00bab6d0",
+      "retail_target": "00bab6d0",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab680",
+      "retail_site": "00bab680",
+      "object_target": "00bab6a4",
+      "retail_target": "00bab6a4",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab6ac",
+      "retail_site": "00bab6ac",
+      "object_target": "00bab6c5",
+      "retail_target": "00bab6c5",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab6e0",
+      "retail_site": "00bab6e0",
+      "object_target": "00bab737",
+      "retail_target": "00bab737",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab6ed",
+      "retail_site": "00bab6ed",
+      "object_target": "00bab711",
+      "retail_target": "00bab711",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab719",
+      "retail_site": "00bab719",
+      "object_target": "00bab732",
+      "retail_target": "00bab732",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab74d",
+      "retail_site": "00bab74d",
+      "object_target": "00bab7aa",
+      "retail_target": "00bab7aa",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab75a",
+      "retail_site": "00bab75a",
+      "object_target": "00bab77e",
+      "retail_target": "00bab77e",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab786",
+      "retail_site": "00bab786",
+      "object_target": "00bab79f",
+      "retail_target": "00bab79f",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab7ba",
+      "retail_site": "00bab7ba",
+      "object_target": "00bab80c",
+      "retail_target": "00bab80c",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab7c7",
+      "retail_site": "00bab7c7",
+      "object_target": "00bab7eb",
+      "retail_target": "00bab7eb",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab7f3",
+      "retail_site": "00bab7f3",
+      "object_target": "00bab80c",
+      "retail_target": "00bab80c",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab822",
+      "retail_site": "00bab822",
+      "object_target": "00bab85d",
+      "retail_target": "00bab85d",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab83f",
+      "retail_site": "00bab83f",
+      "object_target": "00bab843",
+      "retail_target": "00bab843",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab860",
+      "retail_site": "00bab860",
+      "object_target": "00bab869",
+      "retail_target": "00bab869",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab86c",
+      "retail_site": "00bab86c",
+      "object_target": "00bab875",
+      "retail_target": "00bab875",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab87a",
+      "retail_site": "00bab87a",
+      "object_target": "00bab883",
+      "retail_target": "00bab883",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab886",
+      "retail_site": "00bab886",
+      "object_target": "00bab88f",
+      "retail_target": "00bab88f",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab895",
+      "retail_site": "00bab895",
+      "object_target": "00bab89e",
+      "retail_target": "00bab89e",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab8a3",
+      "retail_site": "00bab8a3",
+      "object_target": "00bab8ac",
+      "retail_target": "00bab8ac",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab8b4",
+      "retail_site": "00bab8b4",
+      "object_target": "00bab8bd",
+      "retail_target": "00bab8bd",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab8c0",
+      "retail_site": "00bab8c0",
+      "object_target": "00bab8c9",
+      "retail_target": "00bab8c9",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab8e3",
+      "retail_site": "00bab8e3",
+      "object_target": "00bab8f0",
+      "retail_target": "00bab8f0",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab953",
+      "retail_site": "00bab953",
+      "object_target": "00bab959",
+      "retail_target": "00bab959",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab957",
+      "retail_site": "00bab957",
+      "object_target": "00bab95b",
+      "retail_target": "00bab95b",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab95e",
+      "retail_site": "00bab95e",
+      "object_target": "00bab974",
+      "retail_target": "00bab974",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab97d",
+      "retail_site": "00bab97d",
+      "object_target": "00bab985",
+      "retail_target": "00bab985",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab98e",
+      "retail_site": "00bab98e",
+      "object_target": "00bab940",
+      "retail_target": "00bab940",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00bab9dd",
+      "retail_site": "00bab9dd",
+      "object_target": "00bab9eb",
+      "retail_target": "00bab9eb",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baba15",
+      "retail_site": "00baba15",
+      "object_target": "00baba2c",
+      "retail_target": "00baba2c",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baba1e",
+      "retail_site": "00baba1e",
+      "object_target": "00baba27",
+      "retail_target": "00baba27",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baba25",
+      "retail_site": "00baba25",
+      "object_target": "00baba2c",
+      "retail_target": "00baba2c",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baba39",
+      "retail_site": "00baba39",
+      "object_target": "00baba5b",
+      "retail_target": "00baba5b",
+      "target_aligned": true
+    },
+    {
+      "object_site": "00baba42",
+      "retail_site": "00baba42",
+      "object_target": "00baba56",
+      "retail_target": "00baba56",
+      "target_aligned": true
+    }
+  ],
+  "indirect_calls": [
+    {
+      "object_site": "00bab923",
+      "retail_site": "00bab923",
+      "object_slot": 400,
+      "retail_slot": 400,
+      "proven": true,
+      "identity": "IDirect3DDevice9::SetStreamSource"
+    },
+    {
+      "object_site": "00bab96e",
+      "retail_site": "00bab96e",
+      "object_slot": 260,
+      "retail_slot": 260,
+      "proven": true,
+      "identity": "IDirect3DDevice9::SetTexture"
+    },
+    {
+      "object_site": "00bab99e",
+      "retail_site": "00bab99e",
+      "object_slot": 416,
+      "retail_slot": 416,
+      "proven": true,
+      "identity": "IDirect3DDevice9::SetIndices"
+    },
+    {
+      "object_site": "00bab9cd",
+      "retail_site": "00bab9cd",
+      "object_slot": 328,
+      "retail_slot": 328,
+      "proven": true,
+      "identity": "IDirect3DDevice9::DrawIndexedPrimitive"
+    }
+  ],
+  "helpers": [
+    {
+      "symbol": "?GetMagnitude@C3DVector@@QBEMXZ",
+      "address": "00c25970",
+      "bytes": 33,
+      "status": "EQ",
+      "referenced": false,
+      "operands": []
+    },
+    {
+      "symbol": "??_H@YGXPAXIHP6EPAX0@Z@Z",
+      "address": "004038c0",
+      "bytes": 48,
+      "status": "EQ",
+      "referenced": false,
+      "operands": []
+    },
+    {
+      "symbol": "?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z",
+      "address": "009a0cf0",
+      "bytes": 79,
+      "status": "EQ",
+      "referenced": false,
+      "operands": []
+    },
+    {
+      "symbol": "?GetTransitionFade@CEngineInternalPrimitiveRepeatedZSprite@@QBE?AVCEngineFadeDistance@@XZ",
+      "address": "00baa460",
+      "bytes": 112,
+      "status": "EQ",
+      "referenced": true,
+      "operands": [
+        {
+          "offset": 14,
+          "kind": 6,
+          "symbol": "?GPPrimitiveRenderer@NEngineInternal@@3PAVCEnginePrimitiveRenderer@@A",
+          "retail_site": "00baa46d",
+          "retail_target": "01436e80",
+          "proof": "reloc_bindings.tsv",
+          "proven": true
+        }
+      ]
+    }
+  ],
+  "limitations": "Instruction alignment is used to locate the native operands because the leaf instruction schedules diverge. Mapped symbols and identical data contents are checked independently. The masks and addends came from the fresh COFF."
+}

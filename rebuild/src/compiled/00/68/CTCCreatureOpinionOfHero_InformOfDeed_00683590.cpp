@@ -75,7 +75,7 @@ template <class T> class CDefPointer { public:
     }
 };
 class COpinionDeed { public:
-    long Type;                                          // +0x00 EOpinionDeedType
+    EOpinionDeedType Type;                              // +0x00 EOpinionDeedType
 };
 class CTCHeroOpinionDeedLog { public:
     const COpinionDeed* GetDeedFromHandle(long handle) const;       // 0x006C58F0
@@ -91,7 +91,7 @@ protected:
 
 class CTCCreatureOpinionOfHero : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    void InformOfDeed(long deedType, long deedHandle, const COpinionDeedEffectsDef* effects, bool flag);   // 0x00682810
+    void InformOfDeed(EOpinionDeedType deedType, long deedHandle, const COpinionDeedEffectsDef& effects, bool flag);   // 0x00682810
     void InformOfDeed(long deedHandle, bool flag);
 };
 
@@ -103,6 +103,6 @@ void CTCCreatureOpinionOfHero::InformOfDeed(long deedHandle, bool flag)
         hero->GetInterface(&log, 0x51);
         COpinionDeed* deed = (COpinionDeed*)log->GetDeedFromHandle(deedHandle);
         if (deed)
-            InformOfDeed(deed->Type, deedHandle, log->PeekPDeedEffectsDef((EOpinionDeedType)(deed->Type)).Object, flag);
+            InformOfDeed(deed->Type, deedHandle, *log->PeekPDeedEffectsDef((EOpinionDeedType)(deed->Type)).Object, flag);
     }
 }

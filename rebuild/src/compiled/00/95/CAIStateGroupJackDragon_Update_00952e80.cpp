@@ -1,3 +1,4 @@
+// Leaf: ?Update@CAIStateGroup_JackDragon@@MAEXXZ
 // CAIStateGroup_JackDragon::Update() -- target the main player's character, then until the enemy dies or the group stops: advance the boss phase when ready and run the current dragon state's handler; terminate
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00952E80, length 384 bytes including the 24-byte jump table at 0x00952FE4.
@@ -129,7 +130,9 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
     void UpdateHover();                         // 0x00951FB0
     void UpdateStrafe();                        // 0x00950CF0
     void IntoGroundSwoop();                     // 0x00951430
+    protected:
     virtual void Update();
+    public:
 };
 
 void CAIStateGroup_JackDragon::Update()

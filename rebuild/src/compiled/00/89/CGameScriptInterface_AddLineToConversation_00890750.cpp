@@ -1,3 +1,4 @@
+// Leaf: ?AddLineToConversation@CGameScriptInterface@@UBEXJABVCCharString@@_NABVCScriptThing@@2@Z
 // CGameScriptInterface::AddLineToConversation @ 0x00890750 (retail 97 bytes, ret 0x14)
 // Genuine VC7.1 C++ reconstruction: plain compiler-emitted C++, no byte bakes.
 
@@ -36,13 +37,12 @@ struct CGSIAddLineToConversationWorld
     CScriptConversationManager* m_pConversationManager;   // +0x7C
 };
 
-// CGameScriptInterface: +0x00 vftable slot modelled as raw padding, +0x04 CWorld*.
+// CGameScriptInterface: +0x00 the vptr (AddLineToConversation is virtual: rtti-vtables CGameScriptInterface slot 366, PDB UBE), +0x04 CWorld*.
 class CGameScriptInterface
 { public:
-    unsigned char                    m_Pad0000[0x04];
     CGSIAddLineToConversationWorld*  m_pWorld;            // +0x04
 
-    void AddLineToConversation(
+    virtual void AddLineToConversation(
         long                conversationId,
         const CCharString&  line,
         bool                playDuringCutScenes,

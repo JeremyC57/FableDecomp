@@ -1,0 +1,71 @@
+--- orig/hdr_CGroundNavigatorExternalInterface.h	2026-11-24 00:00:53.262282603 +0000
++++ hdr/engine/CGroundNavigatorExternalInterface.h	2026-11-24 00:00:53.289986442 +0000
+@@ -10,18 +10,64 @@
+ 
+ class CThingCreatureBase;
+ 
++#ifdef FABLE_RETAIL_CGROUNDNAVIGATOREXTERNALINTERFACE_VIRTUAL_MODEL
++// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
++// 0x0125EC9C (RTTI .?AVCGroundNavigatorExternalInterface@@ : CNavigatorExternalInterface), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CGroundNavigatorExternalInterface); every other slot stays the base's.
++// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
++#include "engine/CNavigatorExternalInterface.h"
++class C2DVector;
++class C3DVector;
++class CNavigatorExternalInterface;
++class CSteeringAgent;
+ #pragma pack(push, 1)
+-class CGroundNavigatorExternalInterface {
++class CGroundNavigatorExternalInterface : public CNavigatorExternalInterface {
++public:
++    virtual bool IsMovementBlockedAt(const C3DVector&, const C3DVector&, bool&, bool&) const; // slot 0 0x006CDDF0 ?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z
++    virtual float GetTerrainDesirabilityAt(const C3DVector&) const;       // slot 1 0x006CD9B0 ?GetTerrainDesirabilityAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
++    virtual float GetTerrainHeightAt(const C3DVector&) const;             // slot 2 0x006CD9C0 ?GetTerrainHeightAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
++    virtual float GetThemeHeightAt(const C3DVector&) const;               // slot 3 0x006CD9E0 ?GetThemeHeightAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
++    virtual float FindPosZAt(const C3DVector&, bool) const;               // slot 4 0x006CD970 ?FindPosZAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@_N@Z
++    virtual float FindPosZAtIncludingThemes(const C3DVector&, bool) const; // slot 5 0x006CD990 ?FindPosZAtIncludingThemes@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@_N@Z
++    virtual float PeekNavigatorRadius(bool) const;                        // slot 6 0x006CDA10 ?PeekNavigatorRadius@CGroundNavigatorExternalInterface@@UBEM_N@Z
++    virtual C2DVector PeekNavigatorOrientation() const;                   // slot 7 0x006CDA50 ?PeekNavigatorOrientation@CGroundNavigatorExternalInterface@@UBE?AVC2DVector@@XZ
++    virtual C2DVector PeekNavigatorPosition2D() const;                    // slot 8 0x006CDA90 ?PeekNavigatorPosition2D@CGroundNavigatorExternalInterface@@UBE?AVC2DVector@@XZ
++    virtual C3DVector PeekNavigatorPosition3D() const;                    // slot 9 0x006CDAB0 ?PeekNavigatorPosition3D@CGroundNavigatorExternalInterface@@UBE?AVC3DVector@@XZ
++    virtual float PeekNavigatorMaxSpeed(const C3DVector&) const;          // slot 10 0x006CDAE0 ?PeekNavigatorMaxSpeed@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
++    virtual std::vector<CSteeringAgent const *, std::allocator<CSteeringAgent const *> >& GetNavigatorObstacles(); // slot 11 0x006CDC20 ?GetNavigatorObstacles@CGroundNavigatorExternalInterface@@UAEAAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ
++    virtual const std::vector<CSteeringAgent const *, std::allocator<CSteeringAgent const *> >& GetNavigatorObstacles() const; // slot 12 0x006CDBD0 ?GetNavigatorObstacles@CGroundNavigatorExternalInterface@@UBEABV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ
++    virtual std::vector<CSteeringAgent const *, std::allocator<CSteeringAgent const *> >* GetPNavigatorObstacles(); // slot 13 0x006CD7B0 ?GetPNavigatorObstacles@CGroundNavigatorExternalInterface@@UAEPAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@XZ
++    virtual const CSteeringAgent* GetPThingToNotAvoid() const;            // slot 14 0x006CDC70 ?GetPThingToNotAvoid@CGroundNavigatorExternalInterface@@UBEPBVCSteeringAgent@@XZ
++    virtual float GetProximityForDirectApproach() const;                  // slot 15 0x006CDD00 ?GetProximityForDirectApproach@CGroundNavigatorExternalInterface@@UBEMXZ
++    virtual long GetNavigationLevelAt(const C3DVector&) const;            // slot 16 0x006CDA00 ?GetNavigationLevelAt@CGroundNavigatorExternalInterface@@UBEJABVC3DVector@@@Z
++    virtual long GetConstantFPS() const;                                  // slot 17 0x006CDB00 ?GetConstantFPS@CGroundNavigatorExternalInterface@@UBEJXZ
++    virtual float GetMinPathCost() const;                                 // slot 18 0x006CDB50 ?GetMinPathCost@CGroundNavigatorExternalInterface@@UBEMXZ
++    virtual float GetMaxPathCost() const;                                 // slot 19 0x006CDB90 ?GetMaxPathCost@CGroundNavigatorExternalInterface@@UBEMXZ
++    virtual bool IsPlayer() const;                                        // slot 20 0x006CB5F0 ?IsPlayer@CGroundNavigatorExternalInterface@@UBE_NXZ
++    virtual bool IsDead() const;                                          // slot 21 0x006CDB20 ?IsDead@CGroundNavigatorExternalInterface@@UBE_NXZ
++    virtual float GetForwardNavigationWidthExtension() const;             // slot 22 0x006CDB10 ?GetForwardNavigationWidthExtension@CGroundNavigatorExternalInterface@@UBEMXZ
++    virtual CNavigatorExternalInterface* Clone() const;                   // slot 24 0x006CE650 ?Clone@CGroundNavigatorExternalInterface@@UBEPAVCNavigatorExternalInterface@@XZ
+ public:
+-    void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
+     CThingCreatureBase* Creature;                            // +0x04
+     float               Radius;                              // +0x08
+ };
+ #pragma pack(pop)
+-
+ FABLE_STATIC_ASSERT(sizeof(CGroundNavigatorExternalInterface) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CGroundNavigatorExternalInterface, __vftable) == 0x0);
+ FABLE_STATIC_ASSERT(offsetof(CGroundNavigatorExternalInterface, Creature) == 0x4);
+ FABLE_STATIC_ASSERT(offsetof(CGroundNavigatorExternalInterface, Radius) == 0x8);
++#else
++#pragma pack(push, 1)
++class CGroundNavigatorExternalInterface {
++public:
++    void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
++    CThingCreatureBase* Creature;                            // +0x04
++    float               Radius;                              // +0x08
++};
++#pragma pack(pop)
++
++FABLE_STATIC_ASSERT_AT(22, sizeof(CGroundNavigatorExternalInterface) == 0xc);
++FABLE_STATIC_ASSERT_AT(23, offsetof(CGroundNavigatorExternalInterface, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(24, offsetof(CGroundNavigatorExternalInterface, Creature) == 0x4);
++FABLE_STATIC_ASSERT_AT(25, offsetof(CGroundNavigatorExternalInterface, Radius) == 0x8);
++#endif // FABLE_RETAIL_CGROUNDNAVIGATOREXTERNALINTERFACE_VIRTUAL_MODEL
+ 
+ #endif // FABLE_ENGINE_CGROUNDNAVIGATOREXTERNALINTERFACE_H

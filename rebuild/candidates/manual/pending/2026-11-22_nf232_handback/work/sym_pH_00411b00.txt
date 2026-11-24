@@ -1,0 +1,2 @@
+DEF ?vector_push_back_copy@@YIPAVCActionInputControl@@PAUVectorPushBackCopyOverlay@@PAXPAV1@2@Z
+UND ?Vector_CopyImpl@@YIPAVCActionInputControl@@PAV1@00PAPAV1@PAX@Z

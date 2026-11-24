@@ -56,7 +56,7 @@ class CCombatManager { public:
     CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->second; }
     void RegisterAttackedCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked);   // 0x006ED270
     void RegisterAttackingCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked, bool flag);   // 0x006EDA80
-    void UpdateAttackingCombatantsList(CCombatantInfo& info, bool force);   // 0x006ED030
+    private: void UpdateAttackingCombatantsList(CCombatantInfo& info, bool force); public:   // 0x006ED030
     void RegisterCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked, bool flag);
 };
 

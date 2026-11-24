@@ -1,0 +1,16 @@
+0x00A249A0	?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z	definers(source grep C3DMeshInfo::RemoveLOD): 00a249a0
+0x00998170	?ParserReadPastDriveLabel@CAFile@@CI_NAAVCStringParser@@AAVCParsedItem@@@Z	definers(source grep CAFile::ParserReadPastDriveLabel): 00998170
+0x009183A0	?OnReplace@CAIStateGroup_Gaze@@MAEXXZ	definers(source grep CAIStateGroup_Gaze::OnReplace): 009183a0
+0x009490D0	?GetBar@CAIStateGroup_GoToPub@@IAE_NXZ	definers(source grep CAIStateGroup_GoToPub::GetBar): 009490d0
+0x0094A0E0	?FallAsleep@CAIStateGroup_GoToPub@@IAE_NXZ	definers(source grep CAIStateGroup_GoToPub::FallAsleep): 0094a0e0
+0x00977B10	?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ	definers(source grep CAIStateGroup_Guildmaster::FindAndStoreBodyguards): 00977b10
+0x0095A490	?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@IAE_NJ@Z	definers(source grep CAIStateGroup_HoverHornetQueen::IsRouteToPosBlockedByTarget): 0095a490
+0x0094FE30	?StayIdle@CAIStateGroup_JackDragon@@AAEXM@Z	definers(source grep CAIStateGroup_JackDragon::StayIdle): 0094fe30
+0x00951B20	?FlyOutOfGround@CAIStateGroup_JackDragon@@AAEXXZ	definers(source grep CAIStateGroup_JackDragon::FlyOutOfGround): 00951b20
+0x00915290	?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@AAEXXZ	definers(source grep CAIStateGroup_KidHurtSelfRunToMother::SendMessageToMother): 00915290
+0x0096EA50	?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@AAEXXZ	definers(source grep CAIStateGroup_MeleeCombatNearby::AttackEnemy): 0096ea50
+0x00930EE0	?IsValid@CAIStateGroup_MinionReactToCriminal@@ABE_NXZ	definers(source grep CAIStateGroup_MinionReactToCriminal::IsValid): 00930ee0
+0x0090F9C0	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ	definers(source grep CAIStateGroup_MinionSitOnSeatBase::IsRunnable): 0090f9c0
+0x00856B20	?UpdateFacingDirection@CCombatActionBase@@IAEXXZ	definers(source grep CCombatActionBase::UpdateFacingDirection): 00856b20
+0x00717450	?Update@CActionOverheadTalkToThing@NTCScriptedControl@@UAEXXZ	definers(source grep CActionOverheadTalkToThing::Update): 00717450
+0x0052C7E0	?Update@CChangingStateComponent@NUISystem@@UAEXM@Z	definers(source grep CChangingStateComponent::Update): 0052c7e0

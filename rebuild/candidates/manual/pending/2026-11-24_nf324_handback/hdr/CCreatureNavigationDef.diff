@@ -1,0 +1,39 @@
+--- orig/hdr_CCreatureNavigationDef.h	2026-11-24 01:19:04.042588092 +0000
++++ hdr/engine/CCreatureNavigationDef.h	2026-11-24 01:19:04.110960771 +0000
+@@ -25,8 +25,16 @@
+     float         Radius;                                    // +0x30
+     bool          AvoidDynamicObstacles;                     // +0x34
+     unsigned char _pad_0x35[0x3];                            // +0x35
++#ifdef FABLE_RETAIL_CCREATURENAVIGATIONDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x004D7A72: ?GetSizeofClass@CCreatureNavigationDef@@UAEKXZ (FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CCreatureNavigationDef) == 0x38);
++FABLE_STATIC_ASSERT_AT(29, sizeof(CCreatureNavigationDef) == 0x38);
+ #else
+ #pragma pack(push, 1)
+ class CCreatureNavigationDef {
+@@ -49,12 +57,12 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CCreatureNavigationDef) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureNavigationDef, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureNavigationDef, MinPathCost) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureNavigationDef, MaxPathCost) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureNavigationDef, Radius) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureNavigationDef, AvoidDynamicObstacles) == 0x34);
++FABLE_STATIC_ASSERT_AT(52, sizeof(CCreatureNavigationDef) == 0x38);
++FABLE_STATIC_ASSERT_AT(53, offsetof(CCreatureNavigationDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(54, offsetof(CCreatureNavigationDef, MinPathCost) == 0x28);
++FABLE_STATIC_ASSERT_AT(55, offsetof(CCreatureNavigationDef, MaxPathCost) == 0x2c);
++FABLE_STATIC_ASSERT_AT(56, offsetof(CCreatureNavigationDef, Radius) == 0x30);
++FABLE_STATIC_ASSERT_AT(57, offsetof(CCreatureNavigationDef, AvoidDynamicObstacles) == 0x34);
+ 
+ #endif // FABLE_RETAIL_CCREATURENAVIGATIONDEF
+ #endif // FABLE_ENGINE_CCREATURENAVIGATIONDEF_H

@@ -1,0 +1,30 @@
+##### 009cd850 renames: ?DeallocateMemory@CPackedUIntArray@@QAEXXZ=?Clear@CPackedUIntArray@@QAEXXZ
+sections head 16 new 16
+ALL_EQ text_sections_equal=15
+tables H=0 N=0
+##### 00666ea0 renames: ?PeekWorldMap@CThing@@QBEABVCWorldMap@@XZ=?PeekWorldMap@CThing@@IBEABVCWorldMap@@XZ
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 0099b560 renames: ?UnassignString@CWideString@@QAEXXZ=?UnassignString@CWideString@@IAEXXZ
+sections head 9 new 9
+ALL_EQ text_sections_equal=8
+tables H=0 N=0
+##### 0099b7d0 renames: ?Release@CWideString@@AAEXXZ=?UnassignString@CWideString@@IAEXXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0099bdb0 renames: ?UnassignString_0099b4d0@CWideString@@IAEXXZ=?UnassignString@CWideString@@IAEXXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 008d48f0 renames: ?GetPWeapon@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ=?GetPWeaponUsed@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ
+UNMAPPED old=['??$?RPAVCEventHitBy@NEntityEvents@@@?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithNoWeapon@?A0xbe94dc80@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@QBE_NPAVCEventHitBy@NEntityEvents@@@Z', '??$GetEvent@VCEventHitBy@NEntityEvents@@V?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithNoWeapon@?A0xbe94dc80@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@@CTCEntityEventsMethods@@QBE_NPAPAVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithNoWeapon@?A0xbe94dc80@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@@Z', '??RCEventFilter_HitEventWithNoWeapon@?A0xbe94dc80@@QBE_NPBVCEventHitBase@NEntityEvents@@@Z'] new=['??$?RPAVCEventHitBy@NEntityEvents@@@?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithNoWeapon@?A0x34fd2e6b@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@QBE_NPAVCEventHitBy@NEntityEvents@@@Z', '??$GetEvent@VCEventHitBy@NEntityEvents@@V?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithNoWeapon@?A0x34fd2e6b@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@@CTCEntityEventsMethods@@QBE_NPAPAVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithNoWeapon@?A0x34fd2e6b@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@@Z', '??RCEventFilter_HitEventWithNoWeapon@?A0x34fd2e6b@@QBE_NPBVCEventHitBase@NEntityEvents@@@Z']
+sections head 24 new 24
+ALL_EQ text_sections_equal=23
+tables H=0 N=0
+##### 008d49b0 renames: ?GetPWeapon@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ=?GetPWeaponUsed@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ
+UNMAPPED old=['??$?RPAVCEventHitBy@NEntityEvents@@@?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithWeapon@?A0xd5e67fc9@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@QBE_NPAVCEventHitBy@NEntityEvents@@@Z', '??$GetEvent@VCEventHitBy@NEntityEvents@@V?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithWeapon@?A0xd5e67fc9@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@@CTCEntityEventsMethods@@QBE_NPAPAVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithWeapon@?A0xd5e67fc9@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@@Z', '??RCEventFilter_HitEventWithWeapon@?A0xd5e67fc9@@QBE_NPBVCEventHitBase@NEntityEvents@@@Z'] new=['??$?RPAVCEventHitBy@NEntityEvents@@@?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithWeapon@?A0x5f8f8d22@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@QBE_NPAVCEventHitBy@NEntityEvents@@@Z', '??$GetEvent@VCEventHitBy@NEntityEvents@@V?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithWeapon@?A0x5f8f8d22@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@@CTCEntityEventsMethods@@QBE_NPAPAVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind4@VCIsHitEventHitByThingWithScriptName@NEntityEvents@@UCEventFilter_HitEventWithWeapon@?A0x5f8f8d22@@VCIsEventCreatedBeforeOrOn@2@VCIsEventCreatedAfter@2@@@@Z', '??RCEventFilter_HitEventWithWeapon@?A0x5f8f8d22@@QBE_NPBVCEventHitBase@NEntityEvents@@@Z']
+sections head 25 new 25
+ALL_EQ text_sections_equal=24
+tables H=0 N=0

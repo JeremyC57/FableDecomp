@@ -5,12 +5,12 @@ struct CQuestMgr { void Notify(int questName, char showScreen, int updateLogbook
 #include "engine/CTBaseSingletonNoDefaultAlloc.h"
 class CQuestManager;
 // 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
-extern char g_someFlag;
+namespace NGlobalConsole { extern bool GEnableRegionLockingSaveSystem; }   // 0x01375741 ?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA (Ego_r / FableWin / Ego_d publics; Codex p27 NAME_FIXES cross-reference); NF236: was char g_someFlag
 struct CGameScriptInterface_Methods : CGameScriptInterface { void SetQuestProgress(float v); };
 
 void __fastcall CGameScriptInterface_SetQuestAsCompleted(CGameScriptInterface* self, int, int questName, char showScreen, int updateLogbook, int showQuestCompleteScreen)
 {
     reinterpret_cast<CQuestMgr*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->Notify(questName, showScreen, updateLogbook, showQuestCompleteScreen);
-    if (!showScreen && g_someFlag) reinterpret_cast<CQuestMgr*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->Reload(questName);
+    if (!showScreen && NGlobalConsole::GEnableRegionLockingSaveSystem) reinterpret_cast<CQuestMgr*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->Reload(questName);
     ((CGameScriptInterface_Methods*)self)->SetQuestProgress(1.0f);
 }

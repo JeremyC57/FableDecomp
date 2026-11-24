@@ -35,7 +35,7 @@ class CActionParam { public:                                         // +0x00 vp
 };
 class CActionParamString : public CActionParam { public:             // sizeof 0x0C (operator new(0xC))
     unsigned char _body[0x04];
-    CActionParamString(const CWideString& text);                  // 0x0054DAE0
+    CActionParamString(CWideString& text);                        // 0x0054DAE0
 };
 class CAction { public:                                                  // retail 0x10 bytes
     long  ActionType;                                             // +0x00

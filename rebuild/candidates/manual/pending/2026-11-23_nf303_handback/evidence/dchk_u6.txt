@@ -1,0 +1,15 @@
+#629 00731e20 YES leaf=?OnCreate@CTCSpotLight@* 
+#630 00747820 YES leaf=??0CTCStealth* 
+#640 007aefd0 YES leaf=??0CTCBoss@@QAE@AAVCThing@@@Z 
+#641 007b0800 YES leaf=??0CTCFishing@@QAE@AAVCThing@@@Z 
+#642 007dfb20 YES leaf=??0CTCFish* 
+#651 007e5f00 YES leaf=??0CTCOracleMinigame* 
+#652 007e7640 YES leaf=??0CTCFireheartMinigame@@QAE@AAVCThing@@@Z 
+#654 007ea510 YES leaf=?OnCreate@CTCTargeted@* 
+#659 0080fd90 YES leaf=?OnInitialActivate@CTCNymph@* 
+#667 0096f6f0 NOTINFW []
+#667 0096f730 NOTINFW []
+## ?InitStateGroup@CAIStateGroup_SummonerLightningAttack@@UAEXABVCWorld@@AAVCThingAICreature@@@Z @02c6d230 len=656
+    ??$GetSubDef@VCSummonerDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z
+## ?InitStateGroup@CAIStateGroup_SummonerCharge@@UAEXABVCWorld@@AAVCThingAICreature@@@Z @02c6e260 len=656
+    ??$GetSubDef@VCSummonerDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z

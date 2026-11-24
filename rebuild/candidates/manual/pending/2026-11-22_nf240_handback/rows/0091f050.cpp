@@ -1,0 +1,85 @@
+// CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable() -- runnable while the creature carries a ranged weapon, its targeting component (interface 8) has a target it should attack, and it has no interface 0x93 component
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
+// Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0091F050, length 126 bytes (+ int3 padding).
+// Callees: CTCCarrying::IsThingCarryingRangedWeapon(const CThing&) @ 0x006A1620 (static __fastcall), the interface-map lower bound @ 0x004365B0
+// (a second instantiation of CVectorMap::LowerBound; interface 8 = bitset word 0 bit 8 -> `mov ecx,[eax+20h] ;
+// test ch,1`), the component's virtual slot 29 (+0x74, its current target), IsToAttackTarget(CThingAICreature*,
+// CThingCreatureBase*) @ 0x00864D00 (__fastcall: creature in ecx, target in edx).
+// Shape: nested ifs falling to one shared `xor al,al`; the lookup is split into the raw presence probe and a
+// pointer-returning find whose component goes straight into ecx as `this` of the virtual call (the out-parameter
+// GetInterface template routes it through eax); the creature is re-read from PBrain for every use; the
+// interface-0x93 test is the inline raw bitset probe (`test dword ptr [eax+30h],80000h ; jne false`).
+// Model: local (engine/CAIStateGroup_CreatureRangedCombatUseWillShield.h is a flattened base blob).
+#include "fable_compiler.h"
+// NF240 (q12673): 0x006A1620 is ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z (Ego_r.pdb 0x006C60F0 / FableWin.pdb
+//   0x02214CE0; the melee predicate is 0x006A15A0), declared by engine/CTCCarrying.h (PLAYERHIT_PASS26 opt-in, as the witness
+//   0x0091EC30); ETCInterfaceType now comes from the header CTCCarrying.h includes (was a local empty enum).
+#define FABLE_RETAIL_CTCCARRYING_PLAYERHIT_PASS26
+#include "engine/CTCCarrying.h"
+class CThingCreatureBase;
+class CThingAICreature;
+
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+
+class CThing { public:
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;                 // +0x44
+    unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* FindInterface(long interfaceType)    // the lookup half: component straight from the entry
+    {
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+        const CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
+    }
+};
+
+// NF34 name fix: Ego_r.pdb + FableWin.pdb ?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z.
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsToAttackTarget(CThingAICreature* creature, const CThingCreatureBase* target); }   // 0x00864D00
+
+struct CTCTargeting {                           // interface 8
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
+    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
+    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
+    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
+    virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
+    virtual CThingCreatureBase* GetTarget();    // slot 29 (+0x74)
+};
+
+class CAIBrain { public:
+    unsigned char _pad[0x18];
+    CThing* Creature;                           // +0x18
+};
+
+class CAIStateGroupBase { public:
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    long ScriptAIPriority;                      // +0x08
+    void* Name_PStringData;                     // +0x0c
+    unsigned char Terminated;                   // +0x10
+    unsigned char Priority;                     // +0x11
+    unsigned char Enabled;                      // +0x12
+    unsigned char _pad_0x13;
+};
+
+struct CAIStateGroup_CreatureRangedCombatUseWillShield : CAIStateGroupBase {
+    virtual bool IsRunnable();
+};
+
+bool CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable()
+{
+    if (CTCCarrying::IsThingCarryingRangedWeapon(*PBrain->Creature)) {
+        CThing* creature = PBrain->Creature;
+        if (creature->HasInterface(8)) {
+            CThingCreatureBase* target = ((CTCTargeting*)creature->FindInterface(8))->GetTarget();
+            if (target != 0 && NCreatureAI::IsToAttackTarget((CThingAICreature*)PBrain->Creature, target) && !PBrain->Creature->HasInterface(0x93))
+                return true;
+        }
+    }
+    return false;
+}

@@ -7,13 +7,37 @@
 // Codex pass 12 (verified_pending/00a9bbe0) class model, rebased onto our CChunkedFileChunk / CChunkedFileSuperChunk retail branches. Needs FABLE_RETAIL_CCHUNKEDFILECHUNK / FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK.
 #include "rebuild_abi.h"
 #include "engine/CChunkedFileSuperChunk.h"
+#ifdef FABLE_RETAIL_C3DMESHFILEHELPERSCHUNK_FINDERS
+class C3DMeshFileHelperPointChunk;
+class C3DMeshFileDummyObjectChunk;
+class C3DMeshFileConvexVolumeChunk;
+#endif
 class C3DMeshFileHelpersChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFileHelpersChunk();
+#ifdef FABLE_RETAIL_C3DMESHFILEHELPERSCHUNK_FINDERS
+    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): the twelve sub-chunk finders, FableWin.pdb
+    // ?FindFirstPoint / ?FindNextPoint / ?FindFirstDummy / ?FindNextDummy / ?FindFirstVolumeW / ?FindNextVolumeW@C3DMeshFileHelpersChunk@@
+    // in QBE (const result) and QAE forms; the const ones are out of line in retail and landed: FindFirstPoint 0x00AAA270, FindNextPoint
+    // 0x00AAA300 ("HPNT"), FindFirstDummy 0x00AAA550, FindNextDummy 0x00AAA5E0 ("HDMY"), FindFirstVolumeW 0x00AAA830, FindNextVolumeW
+    // 0x00AAA8C0 ("HCVL"); each wraps CChunkedFileSuperChunk::FindFirst/NextSubChunkOfType in a SetStaticCast. Declarations only.
+    CCountedPointer<const C3DMeshFileHelperPointChunk> FindFirstPoint() const;                                                         // 0x00AAA270
+    CCountedPointer<const C3DMeshFileHelperPointChunk> FindNextPoint(const CCountedPointer<const C3DMeshFileHelperPointChunk>&) const;   // 0x00AAA300
+    CCountedPointer<C3DMeshFileHelperPointChunk> FindFirstPoint();
+    CCountedPointer<C3DMeshFileHelperPointChunk> FindNextPoint(const CCountedPointer<const C3DMeshFileHelperPointChunk>&);
+    CCountedPointer<const C3DMeshFileDummyObjectChunk> FindFirstDummy() const;                                                         // 0x00AAA550
+    CCountedPointer<const C3DMeshFileDummyObjectChunk> FindNextDummy(const CCountedPointer<const C3DMeshFileDummyObjectChunk>&) const;   // 0x00AAA5E0
+    CCountedPointer<C3DMeshFileDummyObjectChunk> FindFirstDummy();
+    CCountedPointer<C3DMeshFileDummyObjectChunk> FindNextDummy(const CCountedPointer<const C3DMeshFileDummyObjectChunk>&);
+    CCountedPointer<const C3DMeshFileConvexVolumeChunk> FindFirstVolumeW() const;                                                      // 0x00AAA830
+    CCountedPointer<const C3DMeshFileConvexVolumeChunk> FindNextVolumeW(const CCountedPointer<const C3DMeshFileConvexVolumeChunk>&) const;   // 0x00AAA8C0
+    CCountedPointer<C3DMeshFileConvexVolumeChunk> FindFirstVolumeW();
+    CCountedPointer<C3DMeshFileConvexVolumeChunk> FindNextVolumeW(const CCountedPointer<const C3DMeshFileConvexVolumeChunk>&);
+#endif
     virtual const CCharString GetChunkDescription() const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileHelpersChunk) == 0x2C);
+FABLE_STATIC_ASSERT_AT(16, sizeof(C3DMeshFileHelpersChunk) == 0x2C);
 #endif // FABLE_ENGINE_C3DMESHFILEHELPERSCHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEHELPERSCHUNK_H
@@ -37,8 +61,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileHelpersChunk) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelpersChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(40, sizeof(C3DMeshFileHelpersChunk) == 0x2c);
+FABLE_STATIC_ASSERT_AT(41, offsetof(C3DMeshFileHelpersChunk, __vftable) == 0x0);
 
 #endif // FABLE_ENGINE_C3DMESHFILEHELPERSCHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEHELPERSCHUNK

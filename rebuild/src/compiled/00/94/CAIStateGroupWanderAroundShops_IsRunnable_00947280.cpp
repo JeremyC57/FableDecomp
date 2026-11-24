@@ -62,7 +62,7 @@ public:
     CIntelligentPointer<CThing> Shop;              // +0x14
     CIntelligentPointer<CThing> PrettyThing;       // +0x1c
     long NextFrameBuy;                          // +0x24
-    CThing* SelectPrettyThing(CThing* shop);    // 0x00947110
+    private: CThing* FindPrettyThingInShop(CThing* shop); public:    // 0x00947110; NF296: PDB name, was SelectPrettyThing
     virtual bool IsRunnable();
 };
 
@@ -79,7 +79,7 @@ bool CAIStateGroup_WanderAroundShops::IsRunnable()
             if (Shop.Get()->HasTC(TCI_SHOP_KEEPER))
                 PrettyThing = Shop;
             else
-                PrettyThing = SelectPrettyThing(Shop.Get());
+                PrettyThing = FindPrettyThingInShop(Shop.Get());
             if (IS_THING_ALIVE(PrettyThing))
                 return true;
         }

@@ -1,0 +1,6 @@
+## cmpobj HEAD v S1 00bda150: every function COMDAT
+     49 SAME
+## cmpobj HEAD v S1 00bd9ce0: every function COMDAT
+     49 SAME
+## COMDAT selection of the four helpers (1 = NODUPLICATES strong, 2 = ANY)
+HEAD: 1 (all four, both rows); S1: 2 (all four, both rows)

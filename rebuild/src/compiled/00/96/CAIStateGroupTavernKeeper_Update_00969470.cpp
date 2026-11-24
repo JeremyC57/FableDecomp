@@ -1,5 +1,5 @@
 // CAIStateGroup_TavernKeeper::Update() -- close the keeper's shop stock and reset the 0x23 component, walk back inside the pub if outside, then loop: serve payment requests (old jug point + receive payment), refill empty jug slots on the bar (fetch the jug, walk to it, fill it), or idle at random (do nothing / lean on the bar); terminates when stopped or any step fails
-// Leaf: ?Update@CAIStateGroup_TavernKeeper
+// Leaf: ?Update@CAIStateGroup_TavernKeeper@@MAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00969470, length 698 bytes (aligned `and esp,-8` frame, virtual slot 12).
@@ -7,7 +7,7 @@
 //   CTCShopKeeper::GetShopTC @ 0x00798F50 (x2), CTCShop::SetStockState @ 0x00773C00, the 0x23 component's 0x007EE540
 //   (manifest IS_THING_ALIVE<...> label is propagated), CThingBuilding::IsPointInside @ 0x0082D000, CThing::GetPosition
 //   @ 0x004C73D0 / GetPhysPos @ 0x004C7950, AIAction_MoveToPosProximity @ 0x0097E890, GetPaymentRequest 0x009683A0,
-//   GetOldJugPoint 0x00968860, ReceivePayment 0x009692C0, the brain's slot 2, IsStopping 0x008FD010, Terminate
+//   GetPaymentPoint 0x00968860, ReceivePayment 0x009692C0, the brain's slot 2, IsStopping 0x008FD010, Terminate
 //   0x008FCF40, CTCTavernBar::GetEmptyJugSlot 0x007BA1D0 / GetJug 0x007B9F60 (returns the jug pointer by value),
 //   WalkToPoint 0x00968230, FillJug 0x00968FA0, FreeBarPoint 0x00968950, GetPWorldSeed 0x008FCFD0 + GFROR13
 //   0x00497890 (inline random step), AIAction_DoNothing 0x0097E200, LeanOnBar 0x009689C0, CBaseIntelligentPointer.
@@ -95,7 +95,7 @@ struct CIntelligentPointerObject : CBaseIntelligentPointer {     // CIntelligent
     virtual void v00();
 };
 class CTCTavernBar { public:                           // interface 0xb9
-    bool GetEmptyJugSlot(CThing* creature, C3DVector* pos, CRightHandedSet* rh, long* actionPoint, long* slot);   // 0x007BA1D0
+    bool GetEmptyJugSlot(CThing& creature, C3DVector& pos, CRightHandedSet& rh, long& actionPoint, long& slot);   // 0x007BA1D0 (Ego_r / FableWin QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z)
     CIntelligentPointerObject GetJug(long slot);   // 0x007B9F60
 };
 struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
@@ -108,14 +108,16 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     C3DVector JugPos;                           // +0x38
     CRightHandedSet JugRHSet;                   // +0x44
     long JugSlot;                               // +0x5c
-    bool WalkToPoint(C3DVector* pos, CRightHandedSet* rh);   // 0x00968230
+    bool WalkToPoint(const C3DVector& pos, const CRightHandedSet& rh);   // 0x00968230
     bool GetPaymentRequest();                   // 0x009683A0
-    bool GetOldJugPoint();                      // 0x00968860
+    bool GetPaymentPoint();                     // 0x00968860
     void FreeBarPoint();                        // 0x00968950
     bool LeanOnBar();                           // 0x009689C0
     bool FillJug();                             // 0x00968FA0
     bool ReceivePayment();                      // 0x009692C0
+    protected:
     virtual void Update();
+    public:
 };
 
 void CAIStateGroup_TavernKeeper::Update()
@@ -142,7 +144,7 @@ void CAIStateGroup_TavernKeeper::Update()
     ((CThing*)PBar.GetPItem())->GetTC(TCI_TAVERN_BAR, &bar);
     for (;;) {
         if (GetPaymentRequest()) {
-            if (!GetOldJugPoint()) {
+            if (!GetPaymentPoint()) {
                 PBrain->WaitForNextUpdate();
                 if (IsStopping()) {
                     Terminate();
@@ -163,9 +165,9 @@ void CAIStateGroup_TavernKeeper::Update()
                 continue;
             }
         }
-        if (bar->GetEmptyJugSlot(GetCreature(), &JugPos, &JugRHSet, &JugActionPointIndex, &JugSlot)) {
+        if (bar->GetEmptyJugSlot(*GetCreature(), JugPos, JugRHSet, JugActionPointIndex, JugSlot)) {
             PJug = bar->GetJug(JugSlot);
-            if (!WalkToPoint(&JugPos, &JugRHSet)) {
+            if (!WalkToPoint(JugPos, JugRHSet)) {
                 FreeBarPoint();
                 Terminate();
                 return;

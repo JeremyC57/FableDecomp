@@ -94,7 +94,7 @@ class CThreadedFileManager : public CBaseClassNonCopyable { public:      // vtab
     float                  DeviceTimeSlice[2];              // +0x170
     CThreadedFileManager();
     virtual ~CThreadedFileManager();
-    static void __cdecl ThreadProc(void* manager);          // 0x0098F380
+    private: static void __cdecl BeginThread(void* manager); public:          // 0x0098F380; NF299: PDB name, was ThreadProc
 };
 
 CThreadedFileManager::CThreadedFileManager()
@@ -116,5 +116,5 @@ CThreadedFileManager::CThreadedFileManager()
             CurrentDeviceEndOfTimeSlice[device] = zero;
         }
     }
-    _beginthread(ThreadProc, 0x3000, this);
+    _beginthread(BeginThread, 0x3000, this);
 }

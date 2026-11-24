@@ -1,3 +1,4 @@
+// Leaf: ?RunCommandLine@CConsole@@AAEXXZ
 // CConsole::RunCommandLine() -- parse the front command line and run it: the first item must be a string naming a registered input (looked up lower-cased), which is executed with a copy of the whole line; otherwise report "unknown input - <name>" or "command line was not a string" to the user
 // Naming (agentNF31, 2026-11-12): CCharString::ToLower (0x0099ED10) respelled GetAsLowerCase: Ego_r.pdb 0x00AFA690 + FableWin.pdb
 //   0x02F61580 ?GetAsLowerCase@CCharString@@QBE?AV1@XZ (fable_string.h declares it at 0x0099ED10).
@@ -5,7 +6,7 @@
 // Callees: CCharString copy ctor 0x0099EC30, CCharString(const char*, long) 0x0099EBF0, default ctor 0x0099E4B0,
 //          dtor 0x0099EAE0, ToLower 0x0099ED10, `__fastcall` operator+(const char*, const CCharString&) 0x0099F690;
 //          CStringParser(const CCharString&, callback, const CCharString&, long) 0x00404720 and its inlined dtor
-//          (~list 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass 0x0099A2E0); CStringParser::ReadNextItem
+//          (~_List_base 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass 0x0099A2E0); CStringParser::ReadNextItem
 //          0x009BA080; CParsedItem::GetString 0x009B9880; the input map's find 0x009EED20; CConsole::SendMessageToUser
 //          0x009EB260; the input's virtual slot 1 (+0x04, Execute(const CCharString&, CConsole*)).
 //          Literals: "" 0x0122D70E, "unknown input - " 0x0129C4C8, "command line was not a string" 0x0129C4A8.
@@ -42,14 +43,11 @@ CCharString __fastcall operator+(const char* text, const CCharString& string);  
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {           // retail std::list<CStringParserCommentBoundaries>: sentinel only
-public:
-    void* m_pHead;
-    ~list();            // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CStringParser : public CBaseClass { public:         // retail 0x28 bytes
     char*                    String;        // +0x04
     unsigned long            BaseLineOffset;    // +0x08
@@ -66,7 +64,7 @@ class CParsedItem { public:                        // 12 bytes
     long        Type;                       // +0x00 (1 = symbol, 2 = identifier, 3 = number)
     long        Value;                      // +0x04
     CCharString Text;                       // +0x08
-    const CCharString& GetString();         // 0x009B9880
+    const CCharString& GetString() const;         // 0x009B9880
     const CCharString& GetSymbol();         // 0x009B9870
 };
 class CConsole;
@@ -111,7 +109,9 @@ class CConsole { public:
     CBaseClassLine BackCommandLine;         // +0x2c
     CCharString    HelpBarString;           // +0x3c
     CInputMap      RegisteredConsoleInputs; // +0x40
+    private:
     void RunCommandLine();
+    public:
     FABLE_FORCEINLINE SInputNode* FindInput(const CCharString& key) { return RegisteredConsoleInputs.find(key); }
 public:
     void SendMessageToUser(const CCharString&);   // 0x009EB260

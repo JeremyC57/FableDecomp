@@ -1,0 +1,3 @@
+H 0077c490 NGraphicAppearance::CTCGraphicAppearanceSprite::SetRotationAngle RELOCATION_MATCH flags= [] leaf=?SetRotationAngle@CTCGraphicAppearanceSprite@NGraphicAppearance@@QAEXM@Z
+H 00ed41d0 NScript::CV_StatueMasterScript::CStatueMasterStatue::Main RELOCATION_MATCH flags= [] leaf=?Main@CStatueMasterStatue@CV_StatueMasterScript@NScript@@EAEXXZ
+GR_DONE

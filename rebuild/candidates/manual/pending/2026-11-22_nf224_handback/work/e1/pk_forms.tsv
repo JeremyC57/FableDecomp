@@ -1,0 +1,68 @@
+00494840 HEAD	??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ	53	0042fc0e	NEQ:bytes(53 v 53)
+00494840 HEAD	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	53	0042f948	NEQ:bytes(53 v 53)
+00494840 HEAD	?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z	67	0042f9f2	NEQ:bytes(67 v 67)
+00494840 HEAD	??4?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV0@@Z	72	-	NO-OWNER
+00494840 HEAD	?InitGraphics@CFrontendGameComponent@@QAE_NXZ	187	-	NO-OWNER
+00494840 DRAFT	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	53	-	NO-OWNER
+00494840 DRAFT	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	53	0042f948	NEQ:bytes(53 v 53)
+00494840 DRAFT	?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z	67	0042f9f2	NEQ:bytes(67 v 67)
+00494840 DRAFT	??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z	72	0042fe34	NEQ:bytes(72 v 72)
+00494840 DRAFT	?InitGraphics@CFrontendGameComponent@@QAE_NXZ	187	-	NO-OWNER
+00494840 FORM_A	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	53	-	NO-OWNER
+00494840 FORM_A	?InitGraphics@CFrontendGameComponent@@QAE_NXZ	118	-	NO-OWNER
+00494840 FORM_B	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	53	-	NO-OWNER
+00494840 FORM_B	??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z	27	0042fe34	NEQ:bytes(27 v 27)
+00494840 FORM_B	?InitGraphics@CFrontendGameComponent@@QAE_NXZ	124	-	NO-OWNER
+00494840 FORM_C	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER
+00494840 FORM_C	?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z	40	0042f9f2	NEQ:bytes(40 v 40)
+00494840 FORM_C	??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z	43	0042fe34	NEQ:bytes(43 v 43)
+00494840 FORM_C	?InitGraphics@CFrontendGameComponent@@QAE_NXZ	111	-	NO-OWNER
+0054ed90 HEAD	?GetString@CDefString@NUISystem@@QBE?AVCCharString@@XZ	25	-	NO-OWNER
+0054ed90 HEAD	?GetFontBank@CSystemManager@NUISystem@@QBEPAUCFontBankSource@2@XZ	7	-	NO-OWNER
+0054ed90 HEAD	?DecRef@CRefCounted@NUISystem@@QAEXXZ	3	-	NO-OWNER
+0054ed90 HEAD	?GetRefCount@CRefCounted@NUISystem@@QBEJXZ	3	-	NO-OWNER
+0054ed90 HEAD	?ReleaseTemporary@CUIDef@NUISystem@@QAEXXZ	19	-	NO-OWNER
+0054ed90 HEAD	??1CDefPointer_CUIDef@NUISystem@@QAE@XZ	25	-	NO-OWNER
+0054ed90 HEAD	??CCDefPointer_CUIDef@NUISystem@@QBEPBVCUIDef@1@XZ	3	-	NO-OWNER
+0054ed90 HEAD	??1?$CCountedPointer@UCFontBank@NUISystem@@@NUISystem@@QAE@XZ	53	-	NO-OWNER
+0054ed90 HEAD	?ReleaseData@?$CCountedPointer@UCFontBank@NUISystem@@@NUISystem@@QAEXXZ	53	-	NO-OWNER
+0054ed90 HEAD	?ShareData@?$CCountedPointer@UCFontBank@NUISystem@@@NUISystem@@QAEXPAUCFontBank@2@PAVCCPPointerInfo@2@@Z	67	-	NO-OWNER
+0054ed90 HEAD	??4?$CCountedPointer@UCFontBank@NUISystem@@@NUISystem@@QAEAAV01@ABV01@@Z	72	-	NO-OWNER
+0054ed90 DRAFT	?GetString@CDefString@NUISystem@@QBE?AVCCharString@@XZ	25	-	NO-OWNER
+0054ed90 DRAFT	?GetFontBank@CSystemManager@NUISystem@@QBEPAVCFontManager@@XZ	7	-	NO-OWNER
+0054ed90 DRAFT	?DecRef@CRefCounted@NUISystem@@QAEXXZ	3	-	NO-OWNER
+0054ed90 DRAFT	?GetRefCount@CRefCounted@NUISystem@@QBEJXZ	3	-	NO-OWNER
+0054ed90 DRAFT	?ReleaseTemporary@CUIDef@NUISystem@@QAEXXZ	19	-	NO-OWNER
+0054ed90 DRAFT	??1CDefPointer_CUIDef@NUISystem@@QAE@XZ	25	-	NO-OWNER
+0054ed90 DRAFT	??CCDefPointer_CUIDef@NUISystem@@QBEPBVCUIDef@1@XZ	3	-	NO-OWNER
+0054ed90 DRAFT	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	53	-	NO-OWNER
+0054ed90 DRAFT	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	53	004057a0	NEQ:bytes(53 v 53)
+0054ed90 DRAFT	?ShareData@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@PAVCCPPointerInfo@@@Z	67	004190e2	NEQ:bytes(67 v 67)
+0054ed90 DRAFT	??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z	72	00419463	NEQ:bytes(72 v 72)
+0054ed90 FORM_A	?GetString@CDefString@NUISystem@@QBE?AVCCharString@@XZ	25	-	NO-OWNER
+0054ed90 FORM_A	?GetFontBank@CSystemManager@NUISystem@@QBEPAVCFontManager@@XZ	7	-	NO-OWNER
+0054ed90 FORM_A	?DecRef@CRefCounted@NUISystem@@QAEXXZ	3	-	NO-OWNER
+0054ed90 FORM_A	?GetRefCount@CRefCounted@NUISystem@@QBEJXZ	3	-	NO-OWNER
+0054ed90 FORM_A	?ReleaseTemporary@CUIDef@NUISystem@@QAEXXZ	19	-	NO-OWNER
+0054ed90 FORM_A	??1CDefPointer_CUIDef@NUISystem@@QAE@XZ	25	-	NO-OWNER
+0054ed90 FORM_A	??CCDefPointer_CUIDef@NUISystem@@QBEPBVCUIDef@1@XZ	3	-	NO-OWNER
+0054ed90 FORM_A	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	53	-	NO-OWNER
+0054ed90 FORM_B	?GetString@CDefString@NUISystem@@QBE?AVCCharString@@XZ	25	-	NO-OWNER
+0054ed90 FORM_B	?GetFontBank@CSystemManager@NUISystem@@QBEPAVCFontManager@@XZ	7	-	NO-OWNER
+0054ed90 FORM_B	?DecRef@CRefCounted@NUISystem@@QAEXXZ	3	-	NO-OWNER
+0054ed90 FORM_B	?GetRefCount@CRefCounted@NUISystem@@QBEJXZ	3	-	NO-OWNER
+0054ed90 FORM_B	?ReleaseTemporary@CUIDef@NUISystem@@QAEXXZ	19	-	NO-OWNER
+0054ed90 FORM_B	??1CDefPointer_CUIDef@NUISystem@@QAE@XZ	25	-	NO-OWNER
+0054ed90 FORM_B	??CCDefPointer_CUIDef@NUISystem@@QBEPBVCUIDef@1@XZ	3	-	NO-OWNER
+0054ed90 FORM_B	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	53	-	NO-OWNER
+0054ed90 FORM_B	??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z	27	00419463	NEQ:bytes(27 v 27)
+0054ed90 FORM_C	?GetString@CDefString@NUISystem@@QBE?AVCCharString@@XZ	25	-	NO-OWNER
+0054ed90 FORM_C	?GetFontBank@CSystemManager@NUISystem@@QBEPAVCFontManager@@XZ	7	-	NO-OWNER
+0054ed90 FORM_C	?DecRef@CRefCounted@NUISystem@@QAEXXZ	3	-	NO-OWNER
+0054ed90 FORM_C	?GetRefCount@CRefCounted@NUISystem@@QBEJXZ	3	-	NO-OWNER
+0054ed90 FORM_C	?ReleaseTemporary@CUIDef@NUISystem@@QAEXXZ	19	-	NO-OWNER
+0054ed90 FORM_C	??1CDefPointer_CUIDef@NUISystem@@QAE@XZ	25	-	NO-OWNER
+0054ed90 FORM_C	??CCDefPointer_CUIDef@NUISystem@@QBEPBVCUIDef@1@XZ	3	-	NO-OWNER
+0054ed90 FORM_C	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER
+0054ed90 FORM_C	?ShareData@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@PAVCCPPointerInfo@@@Z	40	004190e2	NEQ:bytes(40 v 40)
+0054ed90 FORM_C	??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z	43	00419463	NEQ:bytes(43 v 43)

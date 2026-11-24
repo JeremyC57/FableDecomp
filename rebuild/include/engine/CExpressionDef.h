@@ -76,6 +76,12 @@ FABLE_STATIC_ASSERT(sizeof(CExpressionDef)==144);
 #include "engine/CParentDefClassBase.h"
 enum EGameEventType;                                                 // MS forward enum (engine-wide; 4 bytes)
 enum EExpressionInventoryType {                                      // enumerator spellings unproven (see above)
+#ifdef FABLE_RETAIL_INVENTORY_EXPRESSIONS_PASS26
+    // Ego_d original enum 14C3D and the matching FableWin enum carry these spellings.
+    EXPRESSION_INVENTORY_SOCIAL=0, EXPRESSION_INVENTORY_RENOWN=1,
+    EXPRESSION_INVENTORY_ALIGNMENT=2, EXPRESSION_INVENTORY_STEALTH=3,
+    NUM_INVENTORY_EXPRESSIONS=4,
+#endif
     EXPRESSION_INVENTORY_TYPE_SOCIAL = 0,
     EXPRESSION_INVENTORY_TYPE_RENOWN = 1,
     EXPRESSION_INVENTORY_TYPE_ALIGNMENT = 2,
@@ -122,8 +128,8 @@ public:
     unsigned long TextTag;                                           // +0x88
     EExpressionInventoryType ExpressionType;                         // +0x8c
 };
-FABLE_STATIC_ASSERT(sizeof(CExpressionDef) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, ExpressionType) == 0x8c);
+FABLE_STATIC_ASSERT_AT(125, sizeof(CExpressionDef) == 0x90);
+FABLE_STATIC_ASSERT_AT(126, offsetof(CExpressionDef, ExpressionType) == 0x8c);
 #endif // FABLE_ENGINE_CEXPRESSIONDEF_H
 
 #endif

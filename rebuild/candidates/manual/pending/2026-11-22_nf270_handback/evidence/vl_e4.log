@@ -1,0 +1,6 @@
+addr       parity           behav  name
+0072caa0   RELOCATION_MATCH PASS   SetupAssassinRush
+
+WINS: 1
+  0072caa0 RELOCATION_MATCH CTCSpecialAbilities::?SetupAssassinRush@CTCSpecialAbilities@@AAE_NXZ
+VL_DONE 0

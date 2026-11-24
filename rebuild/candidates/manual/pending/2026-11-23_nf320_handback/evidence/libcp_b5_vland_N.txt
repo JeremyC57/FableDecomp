@@ -1,0 +1,1 @@
+009949f0 LIBCP_OK renames=?InternalReadNextSourceChunk@CCompressedMemoryDataInputStream_Retail@@QAEXPAPAEPAK@Z=?InternalReadNextSourceChunk@CCompressedMemoryDataInputStream@@EAEXAAPBEAAJ@Z ??C?$CScopedPointer@VCCompressorZlib@@@@QBEPAVCCompressorZlib@@XZ=??C?$scoped_ptr@VCCompressorZlib@@@boost@@QBEPAVCCompressorZlib@@XZ ; .drectve EQUAL ; sections=6

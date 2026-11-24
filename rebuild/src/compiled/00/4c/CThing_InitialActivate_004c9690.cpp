@@ -1,5 +1,5 @@
 // CThing::InitialActivate() -- advance the initialisation stage, mark activated, join the manager's update list, run each live component's initial-activate hook over a copy of the component map, and hide things whose def is not drawable (outside the special engine mode)
-// Leaf: ?InitialActivate@CThing
+// Leaf: ?InitialActivate@CThing@@UAEXXZ
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -45,7 +45,7 @@ struct CDefPointer {                             // CDefPointer<const CThingBase
 };
 class CThing;
 class CThingManager { public:
-    void AddToUpdateList(CThing* thing);         // 0x0051EC50
+    void AddToUpdateList(CThing& thing);         // 0x0051EC50
 };
 class CMainGameComponent {
 protected:
@@ -93,7 +93,8 @@ public:
     static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
 private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
+    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
+    virtual void InitialActivate();              // slot 9 (+0x24): rtti-vtables CThing slot 9; PDB UAE
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
     virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
@@ -133,14 +134,13 @@ private: public:
     unsigned char  AddingTCsPermitted : 1;
     unsigned char  InitialisationStage : 3;             // +0x94
     CDefPointer GetPBaseDef() const { return PBaseDef; }
-    void InitialActivate();
 };
 
 void CThing::InitialActivate()
 {
     ++InitialisationStage;
     Activated = true;
-    CThing::GetPCurrentThingManager()->AddToUpdateList(this);
+    CThing::GetPCurrentThingManager()->AddToUpdateList(*this);
     CComponentVector components(Components);
     SComponentPair* end = components._M_finish;
     for (SComponentPair* it = components._M_start; it != end; ++it) {

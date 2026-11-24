@@ -1,0 +1,70 @@
+##### 00522880
+17c17
+< UND ?GetInventoryOwner@CTCInventoryItem@@QAEPAVCThing@@XZ
+---
+> UND ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ
+##### 00846100
+47c47
+< UND ?ApplyAcceleration@CTCPhysicsBase@@QAEXPAVC3DVector@@@Z
+---
+> UND ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
+##### 00969470
+27c27
+< UND ?GetEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3@Z
+---
+> UND ?GetEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z
+##### 0040d350
+15c15
+< UND ?LoadGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z
+---
+> UND ?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z
+##### 0051e210
+1c1
+< DEF ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> DEF ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+##### 006ca120
+26c26
+< UND ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> UND ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+##### 00729cf0
+22c22
+< UND ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> UND ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+##### 0075d320
+22c22
+< UND ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> UND ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+##### 00779430
+15c15
+< UND ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> UND ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+##### 0077b0d0
+9c9
+< UND ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> UND ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+##### 007c9770
+13c13
+< UND ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> UND ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+##### 007e8460
+12c12
+< UND ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> UND ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+##### 007ee3d0
+11c11
+< UND ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> UND ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+##### 00800a60
+14c14
+< UND ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+---
+> UND ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z

@@ -1,5 +1,8 @@
 // CEngineSkyRenderer::BuildOuterSkyMesh(CTVertexColTex1**, unsigned short**, long, long) -- fill the outer sky dome: a top centre vertex and a 36-step ring of low/high vertex pairs (radius 6500, z -500 / 7000), then the cap fan and the band quads as an index list
-// Leaf: BuildOuterSkyMesh
+// Leaf: ?BuildOuterSkyMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z
+// Access (agentNF254, 2026-11-22, CODEXP27 L120 follow-on): Ego_r.pdb and FableWin.pdb spell ?BuildOuterSkyMesh@CEngineSkyRenderer@@AAEX...
+//   (private, as engine/CEngineSkyRenderer.h declares its siblings); the row-local declaration was public (QAE). In-place access respell of the
+//   HEAD local model; the only caller 0x00B620A0 binds the AAE spelling in the same hand-back.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B61B30, length 416 bytes, `ret 0x10` (this unused).
 // Layout: PDB CTVertexColTex1Base (24 bytes): X +0, Y +4, Z +8, DiffuseColour +0xc, U1 +0x10, V1 +0x14.
@@ -23,7 +26,7 @@ class CTVertexColTex1 { public:
 
 extern const float DELTA_NOTIONAL_ZERO;       // 0x0129BA3C (0.0001f, a writable global: loaded and negated)
 
-class CEngineSkyRenderer { public:
+class CEngineSkyRenderer { private:
     void BuildOuterSkyMesh(CTVertexColTex1** vertices, unsigned short** indices, long indexOffset, long vertexOffset);
 };
 

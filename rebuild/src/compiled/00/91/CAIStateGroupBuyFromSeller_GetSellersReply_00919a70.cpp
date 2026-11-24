@@ -28,7 +28,7 @@ class CMessageEventFilter_IsTargettedAtThing { public:
 
 class CMessageEventFilter_IsOriginatedByThing { public:
     long m_handle[2];
-    CMessageEventFilter_IsOriginatedByThing(CThing* thing);     // 0x006AF2B0
+    CMessageEventFilter_IsOriginatedByThing(const CThing& thing);     // 0x006AF2B0 (NF315: the PDB signature, Ego_r + FableWin)
 };
 
 template<class A, class B> class CFilter_Bind2 { public:
@@ -95,7 +95,7 @@ CMessageEvent* CAIStateGroup_BuyFromSeller::GetSellersReply(CThingCreatureBase* 
     CThing* creature = PBrain->Creature;
     CMessageEvent* reply;
     long status = AIAction_WaitForMessage(AI_ACTION_REPEAT_2,
-        CReplyFilter(CMessageEventFilter_IsOfType(0x10), CMessageEventFilter_IsOriginatedByThing((CThing*)seller),
+        CReplyFilter(CMessageEventFilter_IsOfType(0x10), CMessageEventFilter_IsOriginatedByThing(*(CThing*)seller),
             CMessageEventFilter_IsTargettedAtThing(*creature)),
         &reply);
     if (status == 2)

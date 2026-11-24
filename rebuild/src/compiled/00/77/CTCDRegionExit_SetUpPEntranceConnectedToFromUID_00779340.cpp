@@ -1,5 +1,5 @@
 // CTCDRegionExit::SetUpPEntranceConnectedToFromUID() -- resolve the saved connected-entrance UID to its thing; when that thing is not alive and the game allows it, forget a UID whose map is unknown, unused or already loaded
-// Leaf: SetUpPEntranceConnectedToFromUID
+// Leaf: ?SetUpPEntranceConnectedToFromUID@CTCDRegionExit@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00779340, length 224 bytes. Called only by the tail jump in
 // CTCDRegionExit::OnInitialActivate (vtable 0x0126AB54 slot 6, 0x00779420: `if (EntranceConnectedToUID) ...`).
 // Label correction: the catalog class "CTCActionUseScriptedHook" is wrong -- the UID at +0x20 and the unaligned
@@ -24,7 +24,7 @@ class CBaseObjectPointer;
 inline bool IsThingAlive(const CIntelligentPointer<CThing>& p) { return p.Get() && !p.Get()->IsDead(); }
 
 class CThingManager { public:
-    CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);   // 0x0051ED80; NF296: PDB name, was GetThingByUID
 };
 class CMainGameComponent { public:             // [0x013B8A1C]+0x1C: CTCBase::PeekComponent's const CMainGameComponent& (Ego_r.pdb)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -63,12 +63,14 @@ public:
     bool    ReversedOnMiniMap;                  // +0x28
     bool    HiddenOnMiniMap;                    // +0x29
     CIntelligentPointer<CThing> PEntranceConnectedTo;   // +0x2a
+    private:
     void SetUpPEntranceConnectedToFromUID();
+    public:
 };
 
 void CTCDRegionExit::SetUpPEntranceConnectedToFromUID()
 {
-    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager().GetThingByUID(EntranceConnectedToUID));
+    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager().GetPThingWithUID(EntranceConnectedToUID));
     if (IsThingAlive(PEntranceConnectedTo))
         return;
     if (!PeekComponent().IsSuppressed())

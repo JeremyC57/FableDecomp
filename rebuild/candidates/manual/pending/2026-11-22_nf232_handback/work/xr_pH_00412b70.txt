@@ -1,0 +1,4 @@
+00412450	?erase@?$CRetailVector@VCWideString@@@@QAEPAVCWideString@@PAV2@0@Z	x1
+004126e0	?insert@?$CRetailVector@VCWideString@@@@QAEXPAVCWideString@@IABV2@@Z	x1
+0099aed0	??0CWideString@@QAE@XZ	x1
+0099b510	??1CWideString@@QAE@XZ	x2

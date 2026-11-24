@@ -1,0 +1,11 @@
+04:58:55 PASS /home/user/FableDecomp/rebuild/tests/00/90/NBalverineCombat_SetLungedThisFrame_009054f0_test.cpp
+04:58:55 PASS /home/user/FableDecomp/rebuild/tests/00/8f/NPhysicsHelpers_GetLineThingSearchArea_008f58c0_test.cpp
+04:58:55 PASS /home/user/FableDecomp/rebuild/tests/00/64/NPlayerGui_GFAnchorToTopRight_00643ca1_test.cpp
+04:58:55 PASS /home/user/FableDecomp/rebuild/tests/00/9e/global_StopProgress_009e9f20_test.cpp
+04:58:55 PASS /home/user/FableDecomp/rebuild/tests/00/8c/CCreatureActionBalverineLungeAttack_Initialise_008cc8e0_test.cpp
+04:58:55 PASS /home/user/FableDecomp/rebuild/tests/00/7f/CTCDPhysicalObstruction_UpdateAdditionalImpulse_007fd580_test.cpp
+04:58:55 FAIL /home/user/FableDecomp/rebuild/tests/00/64/NPlayerGuiCDrawQuestInfo_DrawOracleSymbols_0064f6dc_test.cpp
+04:58:55 PASS /home/user/FableDecomp/rebuild/tests/00/64/NPlayerGuiCDrawPerceivers_Draw_0064499c_test.cpp
+04:58:55 PASS /home/user/FableDecomp/rebuild/tests/00/49/CWorld_StopAutoSaveProgress_0049e8c0_test.cpp
+04:58:55 PASS /home/user/FableDecomp/rebuild/tests/00/64/NPlayerGuiCDrawMiniMap_Draw_00648820_test.cpp
+04:58:55 PASS_NOWCHAR /home/user/FableDecomp/rebuild/tests/00/64/NPlayerGuiCDrawQuestInfo_DrawMiniGameInfo_0064d404_test.cpp

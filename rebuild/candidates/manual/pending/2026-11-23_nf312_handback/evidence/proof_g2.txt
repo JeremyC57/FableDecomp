@@ -1,0 +1,6 @@
+##### 0088f400 renames: ?SetCreatureGenerationGroupAsEnabled@CWorld@@QAIXW4ECreatureGroup@@_N@Z=?SetCreatureGenerationGroupAsEnabled@CWorld@@QAEXW4ECreatureGroup@@_N@Z ?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBIXW4ECreatureGroup@@_N@Z=?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBEXW4ECreatureGroup@@_N@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 006c0810 renames: ?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAVCBaseIntelligentPointer@@K@Z=?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z
+ALL_EQ sections=12 DEF=11 tables=-
+##### 008d66e0 renames: ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKPAUCThing@1@J@Z=?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z
+ALL_EQ sections=2 DEF=1 tables=-

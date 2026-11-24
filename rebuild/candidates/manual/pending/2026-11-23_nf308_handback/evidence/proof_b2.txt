@@ -1,0 +1,12 @@
+##### 006ea2c0 renames: ?PerformSequenceReset@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z=?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+sections head 39 new 39
+ALL_EQ text_sections_equal=35
+tables H=0 N=0
+##### 006eb390 renames: ?PerformSequenceReset@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z=?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+sections head 31 new 31
+ALL_EQ text_sections_equal=29
+tables H=1 N=1
+##### 006eb600 renames: ?PerformSequenceReset@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z=?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0

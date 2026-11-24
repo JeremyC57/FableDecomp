@@ -1,0 +1,2 @@
+HEAD object of 0x00b1b0c0 (work/obj/H_00b1b0c0.obj) references: ?GetScaleFactor@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEMABV?$CParticleUpdateParameters@KK@3@M@Z ?StartUpdate@CPSCSplineBase@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z 
+HEAD object of 0x008d43c0 (work/obj/H_008d43c0.obj) references: ?GetPWeaponUsed@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ 

@@ -10,6 +10,9 @@ class CThingBuilding; class CThingCreatureDef; class CCreatureActionBase;
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMATION
 class CAnimationEntry;                                                   // chunk 796 opt-in: GetAnimFromName's return type
 #endif
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+#include "engine/ECombatAnimationHandedness.h"
+#endif
 class CCreatureInteraction; class CTCCreatureModeManager;
 class CHeroCombatDef;
 #if defined(FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE) || defined(FABLE_RETAIL_CTHINGCREATUREBASE_GETCOMBATTYPEDEF)
@@ -25,6 +28,12 @@ enum ESex;
 class CCreatureAbilityDef;class CSoundPair;
 #endif
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28
+public:
+    // Both original symbol tables; native caller targets 00663490.
+    void SetBodyReorienterActive(bool active);
+private:
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ONDIE
 // NF62 opt-in (2026-11-17, row 0x006A9590 CThingPlayerCreature::OnDie, which calls it qualified last): Ego_r.pdb ?OnDie@CThingCreatureBase@@UAEXXZ
 // (public virtual; the CThing slot-11 override, out of line at 0x00663F50, vtable 0x0125AC38 is CThingCreatureBase's slot 11). Declaration only.
@@ -58,6 +67,10 @@ public:
  // Ego_r.pdb ?GetNominalMeshRadius / ?GetNominalMeshHeight / ?GetCurrentMeshRadius@CThingCreatureBase@@QBEMXZ (all out of line in retail).
  float GetNominalMeshRadius() const;                                     // 0x006625C0
  float GetNominalMeshHeight() const;                                     // 0x006625E0
+#ifdef FABLE_RETAIL_PHYSICAL_SHIELD_EFFECT_PASS26
+ float GetCurrentMeshHeight() const;
+ float GetApproxMaxMeshHeight() const;
+#endif
  float GetCurrentMeshRadius() const;                                     // 0x00664BA0
 private:
 #endif
@@ -242,7 +255,11 @@ protected:
     float TurnSpeed;
     CCountedPointer<CCreatureInteraction> PCreatureInteraction;
     CTCCreatureModeManager* PTCModeManager;
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+    ECombatAnimationHandedness PreviousActionHandedness;
+#else
     unsigned char PreviousActionHandedness[4];
+#endif
     long PreviousActionHandednessWF;
     unsigned char BodyReorienter[4];
     unsigned char CombatDebugGraphics[12];
@@ -273,6 +290,10 @@ public:
     bool IsFollowingHeroThroughTeleporters() const { return FollowHeroThroughTeleporters; }
 protected:
 #endif // FABLE_RETAIL_CTHINGCREATUREBASE_ISFOLLOWINGTELEPORTERS
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+    virtual bool OnCreate();
+    void PlayCreatureContinuousSounds();
+#endif
     void ReactToGenericStrike(const CHitParameters&);
     // FableWin-only ?PeekDefinition@CThingCreatureBase@@IBEABVCThingCreatureDef@@XZ (0x01D6DD10; inline in Ego_r and retail): the body
     // `return *PDef;` needs the complete CThingCreatureDef, so it is defined inline below once both classes are complete.
@@ -307,6 +328,9 @@ public:
     void SetAttackedByCreature(CThingCreatureBase* creature);           // 0x006624F0
 #endif
     bool IsInMelee()const;bool IsInMeleeAsAttacker()const;
+#ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+    bool IsAbleToStrafe() const;                                        // 0x006621A0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ISINMELEEASATTACKED
     // Opt-in (NF210, 2026-11-20, row 0x006EAC50): Ego_r.pdb (0x0053D2C0) + FableWin.pdb (0x01DA3370)
     // ?IsInMeleeAsAttacked@CThingCreatureBase@@QBE_NXZ, out of line at 0x00662430 (the IsInMeleeAsAttacker 0x00662410 twin; already bound
@@ -331,6 +355,9 @@ public:
         FABLE_STATIC_ASSERT_AT(223, offsetof(CThingCreatureBase,PQueuedActions)==0x108);
     }
     virtual void OnHit(CHitParameters&);
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    bool IsPickPocketable() const; // Both donor PDBs, retail 0x00665E90.
+#endif
     bool SetCurrentAction(const CCreatureActionBase&);
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETCURRENTACTION_COUNTED
     // NF83 opt-in (round 7, row 0x008D6C80 NCreatureMode::CModeSitBase::FrameUpdate): Ego_r.pdb 0x005429A0 / FableWin.pdb 0x01D94200
@@ -461,6 +488,21 @@ public:
     bool HasAnim(const CCharString& name, const class CAnimFilterBase& filter) const;                                           // 0x00662C70
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_UNSHEATHERANGEDWEAPON
+    // NF247 opt-in (q12679, row 0x00664A10): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?UnsheatheRangedWeapon@CThingCreatureBase@@QAEXXZ (public,
+    // the row's own leaf) and UnsheatheWeapon (out of line in retail at 0x006648D0, `push 1 ; push <def> ; mov ecx,esi ; call`), protected as
+    // in all three PDBs (?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z; NF249 q12690: its self row 0x006648D0 and binders 0x006649C0 /
+    // 0x00664A50 moved to IAE in the same unit, so the address keeps one spelling). The `public:` after it restores the region's access.
+    // Declarations only: no layout change (same line count as the NF247 form: no line below moves).
+    void UnsheatheRangedWeapon();                                                                                                // 0x00664A10
+protected: void UnsheatheWeapon(long weapon_def, bool primary); public:                                                         // 0x006648D0
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_UNSHEATHEMELEEWEAPON
+    // NF253 opt-in (q12711, rows 0x00890C80 / 0x006649C0): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ
+    // (public, out of line in retail at 0x006649C0: `call` from 0x00890CE7, 0x00664A67, 0x00666842, 0x008B7C37, 0x0096B61C). Declaration only.
+public:
+    void UnsheatheMeleeWeapon();                                                                                                 // 0x006649C0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHANDEDNESS
     // Retail opt-in (chunk 2026, row 0x0094E7B0 CAIStateGroup_EarthTroll::Update): Ego_r.pdb / FableWin.pdb
     // ?SetLastActionHandedness@CThingCreatureBase@@QAEXW4ECombatAnimationHandedness@@@Z (public, out of line in retail at 0x006619F0,
@@ -519,6 +561,10 @@ public:
     // ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (out of line in retail at 0x006622A0) and
     // ?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (0x00662D80; FableWin.pdb the same).
     // Declarations only: no layout change.
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HIDDENMINIMAP_PASS26
+    // Both original PDBs; native006626a0 and original02be4250 caller.
+    void SetHiddenOnMiniMap(bool hidden);
+#endif
     bool IsPerformingAnyAction() const;                                  // 0x006622A0
     const class CAnimationEntry& GetRandomAnimFromName(const CCharString& name, long index) const;   // 0x00662D80
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMDURATION

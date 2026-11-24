@@ -1,0 +1,8 @@
+## HEAD set: H_0078b410.obj H_00694d10.obj
+duplicates 0
+
+## new set: N_0078b410.obj H_00694d10.obj
+duplicates 0
+
+UNRESOLVED 1 ?Initialise@CCreatureActionBase@@UAEXXZ
+LK_DONE

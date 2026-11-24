@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CWallMountEffectsDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CWallMountEffectsDef_GetSizeofClass()
+class CWallMountEffectsDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CWallMountEffectsDef::GetSizeofClass()
 {
     return 52;
 }

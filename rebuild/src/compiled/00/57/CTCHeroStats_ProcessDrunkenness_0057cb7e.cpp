@@ -114,7 +114,7 @@ class CTCHeroStats : public CTCBase { public:
 
     const CWorld* GetConstWorld() const { return &PeekWorld(); }
     const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
-    float GetMaxDrunkenness();                       // 0x0057A89D
+    float GetMaxDrunkenness() const;                       // 0x0057A89D
     void Vomit();                                    // 0x0057B783
     void ProcessDrunkenness();
 };

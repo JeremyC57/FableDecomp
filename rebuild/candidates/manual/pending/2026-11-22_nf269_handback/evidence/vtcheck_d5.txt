@@ -1,0 +1,24 @@
+## H_00bfd480 ??_7CEngineWaterBackgroundSubPatch@@6B@
+0	00bfdc90	NOLINE	?v00@CEngineWaterBackgroundSubPatch@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfd5d0 COL@-4 sym ?
+## 00bfd480 ??_7CEngineWaterBackgroundSubPatch@@6B@
+0	00bfdc90	NOLINE	?v00@CEngineWaterBackgroundSubPatch@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfd5d0 COL@-4 sym ?
+## H_00bfd480 ??_7CMovableResource@@6B@
+0	009d5110	NOLINE	?v00@CMovableResource@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfea08 COL@-4 sym ?
+## 00bfd480 ??_7CMovableResource@@6B@
+0	009d5110	NOLINE	?v00@CMovableResource@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfea08 COL@-4 sym ?
+## H_00bfde20 ??_7CLandscapeLayerMesh@@6B@
+0	00bfe900	NOLINE	?v00@CMovableResource@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfde80 COL@-4 sym ?
+## 00bfde20 ??_7CLandscapeLayerMesh@@6B@
+0	00bfe900	NOLINE	?v00@CMovableResource@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfde80 COL@-4 sym ?
+## H_00bfde20 ??_7CMovableResource@@6B@
+0	009d5110	NOLINE	?v00@CMovableResource@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfea08 COL@-4 sym ?
+## 00bfde20 ??_7CMovableResource@@6B@
+0	009d5110	NOLINE	?v00@CMovableResource@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfea08 COL@-4 sym ?

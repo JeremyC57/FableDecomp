@@ -32,7 +32,7 @@ class CTCCreatureModeManager { public:
     virtual long GetModeType();             // slot 1
 };                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)             // the interface-49 component
     CModeBase& GetCurrentMode() const;                // 0x0073A6E0
-    void RestartCurrentMode();              // 0x0073A840
+    void RefreshCurrentMode();              // 0x0073A840; NF296: PDB name, was RestartCurrentMode
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
 
@@ -55,7 +55,7 @@ void CCreatureAction_BeDazed::Initialise()
     CTCCreatureModeManager* pModes;
     PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);   // result unchecked: the manager is assumed present
     if (pModes->GetCurrentMode().GetModeType() == 67)
-        pModes->RestartCurrentMode();
+        pModes->RefreshCurrentMode();
     else
         pModes->AddMode(67);
 }

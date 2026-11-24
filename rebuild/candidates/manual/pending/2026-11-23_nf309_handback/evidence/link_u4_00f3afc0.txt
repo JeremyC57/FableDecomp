@@ -1,0 +1,18 @@
+## HEAD set: H_00f3afc0.obj H_00f3ae50.obj
+duplicates 0
+
+UNRESOLVED 1 ?CalcCompressionScript@CRangeCompressor@@AAEJAAV?$CArray@UCScriptEntry@CRangeCompressor@@@@PBEJJJ@Z
+UNRESOLVED 1 ?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z
+UNRESOLVED 1 ?CompressToBuffer@CRangeCompressor@@QAEJPBXJJPAEJ@Z
+UNRESOLVED 1 ?Decompress@CRangeCompressor@@QAEXPBEJJPAX@Z
+UNRESOLVED 1 ?g_RangeCompressBytesIn@@3JA
+UNRESOLVED 1 ?g_RangeCompressBytesOut@@3JA
+## new set: N_00f3afc0.obj H_00f3ae50.obj
+duplicates 0
+
+UNRESOLVED 1 ?CalcCompressionScript@CRangeCompressor@@AAEJAAV?$CArray@UCScriptEntry@CRangeCompressor@@@@PBEJJJ@Z
+UNRESOLVED 1 ?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z
+UNRESOLVED 1 ?Decompress@CRangeCompressor@@QAEXPBEJJPAX@Z
+UNRESOLVED 1 ?g_RangeCompressBytesIn@@3JA
+UNRESOLVED 1 ?g_RangeCompressBytesOut@@3JA
+LK_DONE

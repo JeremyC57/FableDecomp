@@ -1,0 +1,13 @@
+006ebdd0	call	006ebf4f	006ebee0L CCombatRing::AssignAttackerToProng
+006ebdd0	call	006ebf63	006ebee0L CCombatRing::AssignAttackerToProng
+006ebdd0	call	006ed871	006ed510L CCombatManager::DeregisterAttackingCombatant
+006ebdd0	call	00890c06	00890ba0L CGameScriptInterface::EntitySheatheWeapons
+006ebdd0	call	00890c67	00890c10L CGameScriptInterface::EntityUnsheatheWeapons
+006ebdd0	call	00890d06	00890c80L CGameScriptInterface::EntityUnsheatheMeleeWeapon
+006ebdd0	call	00890e06	00890d80L CGameScriptInterface::EntityUnsheatheRangedWeapon
+006ebdd0	call	0091ed12	0091ec30L CAIStateGroup_CreatureRangedCombat2::Update
+006ebdd0	call	0092b491	0092b3e0L CAIStateGroup_SkillPractice::PracticeSkills
+006ebdd0	call	0092b75e	0092b3e0L CAIStateGroup_SkillPractice::PracticeSkills
+006ebdd0	call	0093bbc3	-
+006ebdd0	call	0093c1bc	0093c030L CAIStateGroup_SeekScriptTarget::Update
+006ebdd0	call	00979f8c	00979f70L CAIStateGroup_CreatureTakeCover::AttackTargetThing

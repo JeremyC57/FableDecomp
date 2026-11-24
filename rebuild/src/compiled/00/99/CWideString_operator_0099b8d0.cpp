@@ -35,7 +35,10 @@ class CWideStringData { public:
 
 class CWideString { public:
     CWideStringData* PStringData;   // +0x00
-    void MakeOwnCopyOfData();       // 0x0099B560
+    protected:
+    void MakeOwnCopyOfData();
+    public:
+       // 0x0099B560
     const wchar_t* GetText() const { return PStringData == 0 ? g_FableEmptyWideString : PStringData->Data._M_start; }
     const CWideString& operator+=(const CWideString& other);
 };

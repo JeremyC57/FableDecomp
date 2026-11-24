@@ -1,0 +1,8 @@
+## HEAD set: H_00997800.obj H_00997780.obj
+duplicates 0
+
+UNRESOLVED 1 ?MakePath@@YI?AVCWideString@@ABV1@000@Z
+## new set: N_00997800.obj H_00997780.obj
+duplicates 0
+
+LK_DONE

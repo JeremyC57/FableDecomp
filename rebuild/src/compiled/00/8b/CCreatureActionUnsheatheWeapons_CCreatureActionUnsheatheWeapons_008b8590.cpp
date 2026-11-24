@@ -11,6 +11,7 @@
 //   engine/CSoundPair.h and engine/EUnsheatheWeaponType.h (Ego_r.pdb enumerators: 2 = UNSHEATHE_ALL_WEAPONS). Evidence: Ego_r.pdb + FableWin.pdb
 //   ??0CCreatureAction_UnsheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z (one reference argument, `ret 4`); the landed callers already bind it.
 // Defines: the landed 0x00929340 BanditPlayDice::Update preamble (the class header's chain) + SOUNDCTOR.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CCREATUREACTIONBASE
 #define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE

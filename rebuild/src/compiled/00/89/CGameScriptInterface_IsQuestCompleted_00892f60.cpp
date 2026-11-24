@@ -4,7 +4,7 @@ class CCharString;
 class CQuestManager
 {
 public:
-    bool IsQuestCompleted(const CCharString& questName);
+    bool IsQuestCompleted(const CCharString& questName) const;
 };
 
 class CGameScriptInterface

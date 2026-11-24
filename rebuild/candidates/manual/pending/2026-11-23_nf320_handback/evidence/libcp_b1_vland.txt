@@ -1,0 +1,6 @@
+0042d970 LIBCP_OK renames=?CanAbortResourceLoad@CResource_Methods@@QAE_NH@Z=?CanAbortResourceLoad@CResource@@UBE_NJ@Z ; .drectve EQUAL ; sections=2
+0042da20 LIBCP_OK renames=?SetInstantiationName@CDefClassBase_Methods@@QAEXPBD@Z=?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z ; .drectve EQUAL ; sections=2
+0042da30 LIBCP_OK renames=?AddSubDef@CDefClassBase_Methods@@QAEXHHH@Z=?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z ; .drectve EQUAL ; sections=2
+0042da40 LIBCP_OK renames=?RemoveSubDef@CDefClassBase_Methods@@QAEXPBD@Z=?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z ; .drectve EQUAL ; sections=2
+0042da90 LIBCP_OK renames=?Validate@CDefClassBase_Methods@@QAEXHH@Z=?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z ; .drectve EQUAL ; sections=2
+004303c0 LIBCP_OK renames=?SetInstantiationName@CParentDefClassBase_Methods@@QAEXH@Z=?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

@@ -13,7 +13,7 @@
 //   CEngine::AddRenderLayer 0x00B262C0, CEngineLayerRenderer::AddComponent 0x00B2AC80 (inline operator<<), GFGetTime 0x009E1BC0.
 // Globals: the engine component pointers 0x01436E30..0x01436EAC, established spellings (NAME_FIXES_QUEUE c722/c723/c639 and the
 //   landed CEngine::SetVideoOptions 0x00B24690 ones); 0x01436E10 (the input manager), 0x01436E20 (the ENGINE def), 0x01436E24 (the
-//   ENVIRONMENT def), 0x01436E28 (the definition manager): descriptive (no PDB data symbol).
+//   ENVIRONMENT def), 0x01436E28 (the definition manager): NEngineInternal::GPDefinitionManager (PDB name).
 // Shape: the def names are plain string literals converted at the call (`GetDef("ENGINE", 1, &PEngineDef)`): retail builds the
 //   CCharString temporary first and re-leas it, and pushes &PEngineVideoOptionsDefs[i] after it; an explicit CCharString(...)
 //   argument passes the ctor's eax and pushes the def pointer before the ctor (DIFFER 5151v5174). The inline GetDef(name, index, def)
@@ -105,7 +105,7 @@ extern CInputManager*          g_pEngineInputManager_01436e10;   // 0x01436E10 (
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 extern const CEngineDef*       g_pEngineDef_01436e20;            // 0x01436E20 (descriptive)
 namespace NEngineInternal { extern const CEnvironmentDef* GPEnvironmentDef; }   // 0x01436E24 ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B (PDB PUBLIC, Codex pass 22; respelled 2026-11-16, was the descriptive g_pEngineEnvironmentDef)
-extern CDefinitionManager*     g_pEngineDefinitionManager;       // 0x01436E28 (descriptive, chunk 727)
+namespace NEngineInternal { extern const CDefinitionManager* GPDefinitionManager; }   // 0x01436E28 ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B (Ego_r / FableWin / Ego_d)
 namespace NEngineInternal { extern CEngine* GPEngine; }               // 0x01436EA4
 extern CEngineScreenEffectRadialBlurRenderer*   g_pRadialBlurRenderer_01436e30;      // 0x01436E30
 extern CEngineScreenEffectGlowRenderer*         g_pGlowRenderer_01436e34;            // 0x01436E34
@@ -132,7 +132,7 @@ extern CEngineStateBlocks*                      g_pEngineStateBlocks;           
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }                  // 0x01436E98
 namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }                     // 0x01436EA0
-extern CEngineLandscapeRenderer*                g_LandscapeRenderer_01436EA8;        // 0x01436EA8
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }        // 0x01436EA8 (Ego_r / FableWin / Ego_d PDB spelling)
 extern CEngineSurfaceCompositionManager*        g_pEngineSurfaceCompositionManager;  // 0x01436EAC
 #include "engine/GFGetTime.h"                          // 0x009E1BC0 ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb; NF133 q4294)
 
@@ -151,14 +151,14 @@ template <class T> bool CDefinitionManager::GetDef(const CCharString& name, long
 bool CEngine::Initialise(const CEngineInit& init)
 {
     Uninitialise();
-    g_pEngineDefinitionManager = init.DefinitionManager;
-    if (g_pEngineDefinitionManager) {
-        g_pEngineDefinitionManager->GetDef("ENGINE", 1, &PEngineDef);
+    NEngineInternal::GPDefinitionManager = init.DefinitionManager;
+    if (NEngineInternal::GPDefinitionManager) {
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE", 1, &PEngineDef);
         g_pEngineDef_01436e20 = PEngineDef.Get();
-        g_pEngineDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_LOW", &PEngineVideoOptionsDefs[0]);
-        g_pEngineDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_NORMAL", &PEngineVideoOptionsDefs[1]);
-        g_pEngineDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_HIGH", &PEngineVideoOptionsDefs[2]);
-        g_pEngineDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_HIGHEST", &PEngineVideoOptionsDefs[3]);
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_LOW", &PEngineVideoOptionsDefs[0]);
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_NORMAL", &PEngineVideoOptionsDefs[1]);
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_HIGH", &PEngineVideoOptionsDefs[2]);
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_HIGHEST", &PEngineVideoOptionsDefs[3]);
     }
     g_pEngineInputManager_01436e10 = GFGetSystemManager()->GetInputManager();
     NEngineInternal::GPDisplayManager = GFGetSystemManager()->GetDisplayManager();
@@ -187,11 +187,11 @@ bool CEngine::Initialise(const CEngineInit& init)
     AddEngineComponent(new CEngineSimulationManager(), g_pEngineSimulationManager, 0);
     AddEngineComponent(new CEngineShadowRenderer(), NEngineInternal::GPShadowRenderer, 0);
     if (init.InitFlags & 1) {
-        g_pEngineDefinitionManager->GetDef("ENVIRONMENT", 1, &PEnvironmentDef);
+        NEngineInternal::GPDefinitionManager->GetDef("ENVIRONMENT", 1, &PEnvironmentDef);
         NEngineInternal::GPEnvironmentDef = PEnvironmentDef.Get();
         AddEngineComponent(new CEngineWorldMap(init), NEngineInternal::GPEngineWorldMap, 0);
         AddEngineComponent(new CEngineWaterRenderer(init), g_pEngineWaterRenderer, 0);
-        AddEngineComponent(new CEngineLandscapeRenderer(memory_init), g_LandscapeRenderer_01436EA8, 0);
+        AddEngineComponent(new CEngineLandscapeRenderer(memory_init), NEngineInternal::GPLandscapeRenderer, 0);
         AddEngineComponent(new CEngineSkyRenderer(init), NEngineInternal::GPSkyRenderer, 0);
         AddEngineComponent(new CEngineWeatherRenderer(), g_pEngineWeatherRenderer, 0);
         AddEngineComponent(new CEngineLocalDetailGenerator((init.InitFlags & 4) != 0), g_pLocalDetailGenerator, 0);
@@ -201,10 +201,10 @@ bool CEngine::Initialise(const CEngineInit& init)
     }
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x1), static_cast<ERenderRenderLayerFlags>(0), 1));
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x2), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPShadowRenderer << NEngineInternal::GPPrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x4), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_LandscapeRenderer_01436EA8;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x4), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPLandscapeRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x8), static_cast<ERenderRenderLayerFlags>(1), 1)) << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x10), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x40), static_cast<ERenderRenderLayerFlags>(0), 1)) << g_LandscapeRenderer_01436EA8;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x40), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPLandscapeRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x20), static_cast<ERenderRenderLayerFlags>(1), 1)) << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x100), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x400), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
@@ -223,7 +223,7 @@ bool CEngine::Initialise(const CEngineInit& init)
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x200000), static_cast<ERenderRenderLayerFlags>(2), 1)) << NEngineInternal::GPPrimitiveRenderer << NEngineInternal::GPPrimitiveRenderer2D;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x400000), static_cast<ERenderRenderLayerFlags>(2), 1)) << NEngineInternal::GPPrimitiveRenderer << NEngineInternal::GPSkyRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x800000), static_cast<ERenderRenderLayerFlags>(2), 1)) << NEngineInternal::GPPrimitiveRenderer;
-    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x2000000), static_cast<ERenderRenderLayerFlags>(2), 1)) << g_LandscapeRenderer_01436EA8 << NEngineInternal::GPPrimitiveRenderer;
+    AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x2000000), static_cast<ERenderRenderLayerFlags>(2), 1)) << NEngineInternal::GPLandscapeRenderer << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x80), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x200), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPPrimitiveRenderer;
     AddRenderLayer(new CEngineLayerRenderer(static_cast<EEngineRenderLayer>(0x4000000), static_cast<ERenderRenderLayerFlags>(0), 1)) << NEngineInternal::GPScreenEffectOutlineGlow;

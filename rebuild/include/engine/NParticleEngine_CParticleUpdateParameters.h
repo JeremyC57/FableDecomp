@@ -9,7 +9,17 @@
 #include "engine/CBaseClass.h"
 #include "engine/C3DVector.h"
 #include "engine/CVectorMap.h"
+#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_VECTORKEY_PASS26
+#include <string.h>
+#include "engine/CCRC.h"
+#endif
 namespace NParticleEngine {
+#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_VECTORKEY_PASS26
+// Original FableWin 0x025F1360 calls strlen, then CCRC::Calc; retail Activate inlines this wrapper.
+inline unsigned long FABLE_FASTCALL MAKE_VECTOR_PARAM_FROM_BASE(unsigned long base, const char* parameter) {
+    return CCRC::Calc(base, parameter, (unsigned long)strlen(parameter));
+}
+#endif
 template <class K, class V> class CParticleUpdateParamCallback;
 template <class K, class V> class CParticleUpdateParamDesc : public CBaseClass {
 public:
@@ -42,8 +52,20 @@ public:
 #else
     CParticleUpdateParameters() { }
 #endif
+#ifndef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_IMPLICIT_DTOR
     virtual ~CParticleUpdateParameters();                    // 0x006E2500
+#else
+    // Opt-in (p25N / AUTH10, row 0x008E18D0; evidence AUTH15 2026-11-22): no user-declared destructor. Ego_d.pdb (field list 0x232B4),
+    // FableWin.pdb (0x232B4) and Ego_r.pdb (0x213ED) all list ~CParticleUpdateParameters<unsigned long,unsigned long> as
+    // `public virtual compiler-generated` (virtual through CBaseClass). The implicit one is expanded in the row's sky block and
+    // called at 0x008E1C3A, and its out-of-line COMDAT compares SAME with retail 0x006E2500 (??1?$CParticleUpdateParameters@KK@...).
+#endif
+#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_UPDATE_DECL_PASS26
+    // Original named COMDAT at native 0x0076C750, called by Activate.
+    void Update();
+#else
     void Update() { VectorParams.Update(); UpdateParams.Update(); }
+#endif
 };
 }
 #endif

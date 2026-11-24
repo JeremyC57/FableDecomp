@@ -1,0 +1,5 @@
+pH 00418dca CMainGameComponent::CMainGameComponent RELOCATION_MATCH flags= [] leaf=??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+diff: /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF280/work/xr_pS_00418dca.txt: No such file or directory
+--- symbols HEAD(<) new(>)
+diff: /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF280/work/sym_pS_00418dca.txt: No such file or directory

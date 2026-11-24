@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CMeleeCombatKnockdownEffects@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CMeleeCombatKnockdownEffects_GetSizeofClass()
+class CMeleeCombatKnockdownEffects { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CMeleeCombatKnockdownEffects::GetSizeofClass()
 {
     return 92;
 }

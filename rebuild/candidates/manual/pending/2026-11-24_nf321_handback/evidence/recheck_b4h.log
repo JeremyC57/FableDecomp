@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00a667c0   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00a667c0   WARN SHARED_HEADER_AVAILABLE CInputEventScanInfo (engine/CInputEventScanInfo.h)
+00a667c0   WARN SHARED_HEADER_AVAILABLE CMaintainedEvent (engine/CMaintainedEvent.h)
+00a667c0   WARN SHARED_HEADER_AVAILABLE CKeyboard (engine/CKeyboard.h)
+00a667c0   MATCH            PASS   EventScanStart
+
+WINS: 1
+  00a667c0 MATCH CKeyboard::EventScanStart

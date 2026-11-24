@@ -67,7 +67,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public:
-    bool ActivateMultipleQuests(CArray<CCharString>* quests, bool fromSave, bool showMessages);   // 0x004B4260
+    bool ActivateMultipleQuests(const CArray<CCharString>& quests, bool fromSave, bool showMessages);   // 0x004B4260 (NF306: Ego_r + FableWin QAE_NABV?$CArray; was the CArray<CCharString>* form)
     void PostBoastTransfer();                            // 0x004B2890
 };
 class CGameEvent { public:
@@ -104,7 +104,7 @@ void CWorld::ActivateWorld(bool loadedGame)
     NProfileTimer::StartProfile("Init GUI", 0);
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().InitialActivate();
     NProfileTimer::StartProfile("Init Quests", 0);
-    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateMultipleQuests((CArray<CCharString>*)InitialActiveQuests, false, true);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateMultipleQuests(*(CArray<CCharString>*)InitialActiveQuests, false, true);   // pre-existing cast over the header's untyped InitialActiveQuests branch (CWorld_PDB alias)
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PostBoastTransfer();
     NProfileTimer::EndProfile(0);
     CGameEvent event(GAME_EVENT_WORLD_ACTIVATED);

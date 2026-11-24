@@ -27,7 +27,31 @@ private: // Both complete original PDB types: Thing is private; see sol_cisthing
     CScriptThing Thing;                                                  // +0x04
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CIsThingAlive) == 0x10);
+#ifdef FABLE_RETAIL_CISTHINGALIVE_BANDIT_OWNERS_PASS27
+namespace NScript {
+inline CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}
+#ifdef _MSC_VER
+#pragma inline_depth(2)
+#endif
+// Inline-budget: the predicate scalar at 0x00CDF160 calls the member destructor.
+FABLE_FORCEINLINE CIsThingAlive::~CIsThingAlive() {}
+#ifdef _MSC_VER
+#pragma inline_depth()
+#endif
+
+inline bool CIsThingAlive::operator()() const
+{
+    return Thing.IsAlive();
+}
+
+inline CPredicateBase* CIsThingAlive::Clone() const
+{
+    return new CIsThingAlive(Thing);
+}
+}
+#endif
+
+FABLE_STATIC_ASSERT_AT(30, sizeof(NScript::CIsThingAlive) == 0x10);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CISTHINGALIVE_H

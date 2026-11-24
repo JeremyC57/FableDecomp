@@ -7,13 +7,13 @@
 //   sets Dirty; Sort() happens later). Ego_r.pdb is a Dinkumware build, so the STLport spellings follow the landed TU siblings.
 // Callees: malloc 0x00BFEA0E (the temporary's 0x18-byte list sentinel), list<C2DLineF>::_M_insert_dispatch 0x005152C0 (landed:
 //   `??$_M_insert_dispatch@U?$_List_iterator@VC2DLineF@@U?$_Const_traits@...`), the pair copy constructor 0x00A825D0 (landed
-//   `??0?$pair@...`), vector<pair<...> >::_M_insert_overflow 0x00A84C20 (landed `?_M_insert_overflow@`), list<C2DLineF>::~list
-//   0x005127A0 (landed `??1?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAE@XZ`).
+//   `??0?$pair@...`), vector<pair<...> >::_M_insert_overflow 0x00A84C20 (landed `?_M_insert_overflow@`), _List_base<C2DLineF>::~_List_base
+//   0x005127A0 (landed `??1?$_List_base@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAE@XZ`, list's `~list() {}` inline).
 // Shape (chunk 859): the stock STLport 4.6 text (`push_back(value_type(key, value)); Dirty = true;`, the pair ctor, the list copy
 //   constructor `insert(begin(), x.begin(), x.end())`, the _List_base ctor / dtor, the proxy's `_M_data(p)` init) with the BODIES
 //   of every out-of-line callee that receives the temporary's address defined in this TU, as retail's TU had them
 //   (_M_insert_dispatch 0x005152C0, the pair copy constructor 0x00A825D0, _M_insert_overflow 0x00A84C20 and its
-//   __uninitialized_copy / __uninitialized_fill_n / __destroy_aux helpers, ~list 0x005127A0). With the bodies visible VC7.1
+//   __uninitialized_copy / __uninitialized_fill_n / __destroy_aux helpers, ~_List_base 0x005127A0). With the bodies visible VC7.1
 //   treats the temporary as unaliased: the dead proxy zero store goes, the fresh sentinel's begin() folds to the sentinel,
 //   x.begin() / x.end() are loaded before the sentinel store (landed sibling 0x00A84500 lesson: with the callees only
 //   declared, VC7.1 treats the escaped temporary as aliased and keeps the store / reloads).
@@ -49,6 +49,9 @@ public:
     _STLP_alloc_proxy(const _MaybeReboundAlloc& a, _Value p) : _MaybeReboundAlloc(a), _M_data(p) { }
 };
 
+// NF246 (2026-11-22, the 0x005127A0 family, nf243 NOTES section 2): in-place respelling of the row-local list model (NF241's swap):
+//   the noinline moves from `~list() { }` to ~_List_base (same body), so the temporary's destructor call binds
+//   ??1?$_List_base@VC2DLineF@@..@std@@QAE@XZ at 0x005127A0, as retail. No class token added.
 // _list.h
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -80,7 +83,7 @@ public:
         n->_M_prev = n;
         _M_node._M_data = n;
     }
-    ~_List_base() { clear(); _M_node.deallocate(_M_node._M_data, 1); }
+    __declspec(noinline) ~_List_base() { clear(); _M_node.deallocate(_M_node._M_data, 1); }   // 0x005127A0 (out of line, as retail calls it)
     _STLP_alloc_proxy<_List_node<_Tp>*, _List_node<_Tp>, allocator<_List_node<_Tp> > > _M_node;
     void clear()
     {
@@ -100,7 +103,7 @@ public:
     typedef _List_iterator<_Tp, _Nonconst_traits<_Tp> > iterator;
     typedef _List_iterator<_Tp, _Const_traits<_Tp> > const_iterator;
     list(const list& x) : _List_base<_Tp, _Alloc>(x.get_allocator()) { insert(begin(), x.begin(), x.end()); }
-    __declspec(noinline) ~list() { }                    // 0x005127A0 (same-TU body: the inlined ~_List_base)
+    ~list() { }                                         // inline: the 5-byte jmp 0x00514280 when emitted
     _Alloc get_allocator() const { return _Alloc(); }
     iterator begin() { return iterator(this->_M_node._M_data->_M_next); }
     const_iterator begin() const { return const_iterator(this->_M_node._M_data->_M_next); }

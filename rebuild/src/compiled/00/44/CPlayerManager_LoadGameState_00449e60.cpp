@@ -19,10 +19,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CPlayerSave {                                   // Ego_r.pdb (16 bytes)
+namespace NPlayerManager { class CPlayerSave { public:  // Ego_r.pdb (16 bytes): NPlayerManager::CPlayerSave, class key V (NF304)
     unsigned __int64 CharacterUID;                     // +0x00
     CCharString      RegionName;                       // +0x08
-};
+}; }
 class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
     //   instances here: unsigned __int64 0x0044BB00; CCharString 0x004109A0
@@ -31,11 +31,11 @@ class CPlayer { public:
     unsigned char _pad00[0x28];
     long          PlayerID;                            // +0x28
     void UninitCharacter();                            // 0x00487BD0
-    bool InitCharacterFromSave(CPlayerSave* save);     // 0x00487EF0
+    bool InitCharacterFromSave(const NPlayerManager::CPlayerSave& save);     // 0x00487EF0
     long GetJoystickDeviceNumber() const;                      // 0x00487510
 };
 class CGameJoystickManager { public:
-    static CGameJoystickManager* __fastcall Get();     // 0x0049BB90
+    static CGameJoystickManager& __fastcall Get();     // 0x0049BB90 ?Get@CGameJoystickManager@@SIAAV1@XZ (Ego_r / FableWin: returns a reference)
     void SetMainPlayerJoystickDeviceNumber(long device);   // 0x0049BB30
 };
 
@@ -54,7 +54,7 @@ class CPlayerManager { public:
     vector<CPlayer*> Players;                          // +0x0c
     long             PlayerNeutral;                    // +0x18
     long             MainPlayer;                       // +0x1c
-    bool IsPlayerAssociatedWithJoystickDeviceNumber(long device);   // 0x004499E0
+    bool IsPlayerAssociatedWithJoystickDeviceNumber(long device) const;   // 0x004499E0
     CPlayer* GetPlayer(long id);                       // 0x004498C0
     FABLE_FORCEINLINE CPlayer* FindPlayer(long id)         // GetPlayer's body, expanded inline
     {
@@ -73,9 +73,9 @@ void CPlayerManager::LoadGameState(CPersistContext& context)
         if (IsPlayerAssociatedWithJoystickDeviceNumber(i) && MainPlayer != i)
             GetPlayer(i)->UninitCharacter();
     }
-    CPlayerSave save;
+    NPlayerManager::CPlayerSave save;
     context.Transfer("PlayerCharacterUID", save.CharacterUID, (unsigned __int64)0);
     context.Transfer<CCharString>("PlayerRegionName", save.RegionName, "");
-    FindPlayer(MainPlayer)->InitCharacterFromSave(&save);
-    CGameJoystickManager::Get()->SetMainPlayerJoystickDeviceNumber(FindPlayer(MainPlayer)->GetJoystickDeviceNumber());
+    FindPlayer(MainPlayer)->InitCharacterFromSave(save);
+    CGameJoystickManager::Get().SetMainPlayerJoystickDeviceNumber(FindPlayer(MainPlayer)->GetJoystickDeviceNumber());
 }

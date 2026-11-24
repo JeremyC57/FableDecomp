@@ -200,3 +200,207 @@ date	account	item	kind	status	note
 2026-11-21	B	0x00E20600, 0x00502E90, 0x00BD3070 (p25R); 0x00795300, 0x0078FD60, 0x00F1EED0 (p25Q, after 0x00521CF0)	author	claimed	Account B: the six largest parked UNMATCHED rows with no claim line or log entry naming them (owner, 2026-11-21: "after next reserved rows/functions are done, reserve the next set from the largest ones"); acctC round-six drafts in pending/2026-11-16_acctC_open (released 2026-11-16/18) are the starting points; UNMATCHED_ROWS status reserved (acctB p25R / p25Q, 2026-11-21)
 2026-11-21	B	0x00C4F600, 0x00B4D370, 0x00CF4EC0	author	claimed	Account B p25Q: the next three largest unclaimed parked rows (owner: next set from the largest; advisor: do not wait on stalled rows), while its stalled rows stay reserved in rotation; UNMATCHED_ROWS status reserved (acctB p25Q, 2026-11-21)
 2026-11-21	Codex	0x00E20600, 0x00795300, 0x0078FD60, 0x00F1EED0, 0x00C4F600, 0x00B0DC20, 0x00D01630, 0x0064FDB4	author	claimed	Codex hand-off pass 25 (owner: "put all those stalled rows into a handoff zip for chat gpt codex"; "make sure this account doesnt work on those rows now so codex can work on them"): moved from Account B, whose agents p25Q / p25S were taken off them; package source pending/2026-11-21_codex_pass25 (build.py, README_CODEX.md, PROMPT_CODEX.md, RESERVED.tsv); UNMATCHED_ROWS status reserved (Codex pass 25)
+2026-11-21	A	0x00502E90, 0x007602F0, 0x00763060, 0x008E18D0, 0x0093D270, 0x00A4EFC0, 0x00B4D370, 0x00BD3070, 0x00C73050, 0x00CF4EC0	author	released	released from Account B by the owner (2026-11-21: "unreserve the B account rows"); the ten rows still reserved (acctB ...) in UNMATCHED_ROWS.tsv go back to parked (old status kept as was:). Best sources and notes stay in pending/2026-11-20_p25_open and the folders the rows name
+2026-11-21	A	0x0093D270, 0x00C73050, 0x007602F0, 0x00763060, 0x008E18D0, 0x00A4EFC0, 0x00CF4EC0, 0x00B4D370, 0x00BD3070, 0x00502E90	author	claimed	Account A authoring agent AUTH1 (owner 2026-11-21: "start an authoring agent ... It should not park functions, but keep working until they match"): the ten rows released from Account B, worked smallest first; stalls escalate to the advisor in the coordinator chat, rows stay reserved
+2026-11-21	A	q12300,q11760,q11873,q12340,q12262,q12265	naming	claimed	round 10 agent NF215 (owner 2026-11-21: "start an agent to continue the naming"): rows 0096fa90 006e9310 006ea050 006d41f0 006d4180 006ed9e0 004115a0 00ee2a80 plus the ??8CBasicStringChar family rows it locks after its census
+2026-11-21	A	q12343,q6333,q6342	naming	done	NF214 hand-back landed as nf214 (batches/2026-11-21_landing_nf214): rows 00a2ed10 00a2f0f0 00a2f120 00a2f150 007e4b60 006116e0
+2026-11-21	A	q12339	naming	claimed	NF215: correction of the earlier NF215 line, whose q12340 meant q12339 (0x00662430 / binder 0x006ED9E0); q12340 itself is not claimed
+2026-11-21	A	q12300,q12339,q12262	naming	done	NF215 landed as nf215 (batches/2026-11-21_landing_nf215): rows 0096fa90 006ed9e0 004115a0 00859040 004afe20 006238a0; q11760 / q11873 / q12265 blocked
+2026-11-21	A	q12378,q12374	naming	claimed	round 10 agent NF216 (owner 2026-11-21: "you can continue the naming queue agent too"): rows 004a0d90 004fdcb0 004fe630 005a04f7 005a4cdd 005a5b31 0065a075 007d2cc0 00870e00 00870fc0 00871290 009acee0 009af1e0 00cbfb7d
+2026-11-21	A	0x00C73050	author	claimed	AUTH3 (Account A) takes 0x00C73050 alone; 0x00A4EFC0 / 0x0093D270 / the other AUTH1 rows stay reserved acctA AUTH1 (escalated, pending advisor / owner)
+2026-11-21	A	0x00C73050	author	done	landed as CAudioSource::UpdateStream (batches/2026-11-21_landing_auth3), AUTH3; RELOCATION_MATCH /d2inlT145
+2026-11-21	A	0x00A4EFC0	author	claimed	AUTH4 (Account A) takes 0x00A4EFC0 alone (c2 hook method; V1 AllocateType candidate under a new macro name)
+2026-11-21	A	q12378,q12374	naming	done	NF216 landed as nf216 (8 rows); 0x004FE630 0x00CBFB7D 0x005A5B31 0x005A04F7 0x0065A075 0x005A4CDD left (queued land1121nf216)
+2026-11-21	A	q12368,q12369,q12370,q12372,q12373,q12379,q12371,q12380	naming	claimed	round 10 agent NF217 (today's landing follow-ups): rows 00a35b30 00a35af0 00a35b50 006116e0 00577216 00c432f0 00c43a10 00c5b300 00c73050 0047e196 00c576e0 00c57460 00c57af0 00c57c90 00c57d80 00c72620 00c72800 00c72a40
+2026-11-21	A	q12368,q12369,q12370,q12372,q12373,q12379,q12371,q12380	naming	done	NF217 landed as nf217 (13 rows incl. 004bda30 004bdd70 00621720 00621c80 0066e7bd claimed during the pass)
+2026-11-21	A	q12385,q12384,q12386,q12377	naming	claimed	round 10 agent NF218 (nf217 follow-ups + the UnassignString family): rows 00c442f0 00c43810 0041d165 0047d78b 0056f30b 00621720 00c576e0 00c57c90 00c73050 0099e9b0 plus the family rows it locks after its census
+2026-11-21	A	q12385,q12384,q12386,q12377	naming	done	NF218 landed as nf218 (8 rows incl. 00621c80 from its draft; 0122a5e0 left, static pair queued)
+2026-11-21	A	0x00763060,0x007602F0	authoring	claimed	AUTH5 (NShape pair, one TU; VC10 re-measure of the Ego_d line rejections first). Rows were acctA AUTH1.
+2026-11-21	A	q12387,q12388,q12389,q12226,q12227,q12228,q12229,q12383	naming	claimed	round 10 agent NF219 (NullString static pair 0x01223EC0+0x0122A5E0, 0x00C44550 name, 0x0099B4D0 catalog, CCountedPointer ReleaseData family + 0x00429C53 dtor conflict, size-TU operator== opt-in); rows in its rows.txt (claim line late, agent started earlier)
+2026-11-21	A	0x00763060,0x007602F0	authoring	claimed	AUTH6 (bounded follow-up of AUTH5: 007602F0 lines 313/342 lifetime decode; 00763060 minimal-deviation grade / owner packet)
+2026-11-21	A	q12387,q12388,q12389	naming	done	NF219 landed as nf219 (8 rows); q12226-q12229 and q12383 open (to NF220)
+2026-11-21	A	q12226,q12227,q12228,q12229,q12401,q12383	naming	claimed	round 10 agent NF220 (CCountedPointer ReleaseData family, 0x0099C120 header port, size-TU operator== opt-in; CComponent dtor conflict census only): rows in its rows.txt
+2026-11-21	A	0x007602F0	author	done	landed as NShape::IsShapeConvex (batches/2026-11-21_landing_auth6), AUTH5 + AUTH6; RELOCATION_MATCH /Gr
+2026-11-21	A	0x00763060	authoring	parked-owner	AUTH6 escalated: owner question (n4 fitted v Ego_d-exact g1); no agent on it
+2026-11-21	A	0x00A4EFC0	authoring	claimed	AUTH7 (the advisor one-shot step: every Ego_d-evidenced correction as one set, VC10-calibrated; no open search)
+2026-11-21	A	0x00A4EFC0	authoring	parked-advisor	AUTH7 escalated (Ego_d-exact text, same residue 16; tie not header-set dependent); pending/2026-11-21_auth7
+2026-11-21	A	q12401,q12383	naming	done	NF220 landed as nf220 (3 rows); q12226-q12229 blocked (family ~40 rows; to a dedicated agent); q12383 remainder queued
+2026-11-22	A	Codex pass 26 (100 rows)	codex	done	landed 95 (batches/2026-11-22_landing_p26); 5 parked (pending/2026-11-22_codex_pass26_open)
+2026-11-22	A	q12226,q12227,q12228,q12229,q12402,q12403	naming	claimed	round 10 agent NF221 (the CCountedPointer ReleaseData family, ~40 rows, plus the 4-row CComponent ??1 pass): rows it locks after its census
+2026-11-22	A	Codex pass 27 (100 rows)	codex	reserved	100 parked near misses reserved for Codex (pending/2026-11-22_codex_pass27/RESERVED.tsv); package built from HEAD headers + pass 26 landing lessons
+2026-11-22	A	0x00763060,0x00B30B50,0x008E18D0,0x00CF4EC0,0x00B4D370,0x00BD3070,0x00502E90,0x0093D270	authoring	claimed	agent AUTH9 (FractureShape and SetCameraState as own rows first, then the AUTH1 rows; 0x00A4EFC0 waits on the advisor)
+2026-11-22	A	q12403	naming	done	NF221 landed as nf221 (4 rows); the ReleaseData family (q12226-q12229, q12402) stays blocked, 42 rows saved in pending/2026-11-22_nf221_handback
+2026-11-22	A	q12226,q12227,q12228,q12229,q12402	naming	claimed	agent NF222: finish the ReleaseData family (2 AcquireFont rows, 0x005BFF07) and hand it back whole
+2026-11-22	A	0x00763060	authoring	done	AUTH9: landed (batches/2026-11-22_landing_auth9_fractureshape)
+2026-11-22	A	0x00B30B50	authoring	done	AUTH9: landed (batches/2026-11-22_landing_auth9_setcamerastate)
+2026-11-22	A	0x008E18D0,0x00CF4EC0,0x00B4D370,0x00BD3070,0x00502E90,0x0093D270	authoring	claimed	agent AUTH10 (AUTH9 returned early on 0x008E18D0 with a hand-over; 0x00A4EFC0 waits on the advisor)
+2026-11-22	A	q12226,q12227,q12228,q12229,q12402	naming	done	NF221 + NF222 landed as nf222 (the ReleaseData family, 42 rows, whole)
+2026-11-22	A	q12548,q12550,q12551,q12552,q12553,q12554,q12555,q12556,q12557,q12558	naming	claimed	agent NF223: the CCountedPointer tail (DeleteData self rows, GetFont / OpenGraphicBank stand-ins, ~CManager), 0x00765B70, the 0x00B2FD60 label
+2026-11-22	A	q12548,q12550,q12551,q12552,q12553,q12554,q12555,q12556,q12557,q12558	naming	done	NF223 landed as nf223 (9 rows; 2 GetFont rows held, 0x0042DB20 rejected, queued q12559-q12561)
+2026-11-22	A	q12559,q12560,q12561	naming	claimed	agent NF224
+2026-11-22	A	0x00A4EFC0,0x008E18D0	authoring	claimed	agent AUTH11 (bounded steps per the 2026-11-22 advisor rulings)
+2026-11-22	A	q12559,q12560,q12561	naming	done	NF224 landed as nf224 (0x00415B80); q12559 / q12560 re-queued (q12562+)
+2026-11-22	A	0x00A4EFC0,0x008E18D0	authoring	done	AUTH11: 0x00A4EFC0 owner packet; 0x008E18D0 measured (pending/2026-11-22_auth11)
+2026-11-22	A	q12562,q12563,q12564	naming	claimed	agent NF225 (GetFont size-body probe, ~CManager evidence check, GPUniqueInstance)
+2026-11-22	A	0x00CF4EC0	authoring	claimed	agent AUTH12 (port onto shared headers, then measure; one row)
+2026-11-22	A	0x00A4EFC0	codex	reserved	one-row Codex hand-off for an owner second opinion (pending/2026-11-22_codex_row_00a4efc0)
+2026-11-22	A	q12562,q12563,q12564	naming	done	NF225 landed as nf225 (5 rows)
+2026-11-22	A	q12566,q12567,q12568,q12569,q12570	naming	claimed	agent NF226 (access specifiers, tests onto shared headers)
+2026-11-22	A	0x00CF4EC0	authoring	done	AUTH12: escalated (pending/2026-11-22_auth12), advisor ruling 2026-11-22
+2026-11-22	A	0x00CF4EC0	authoring	claimed	agent AUTH13 (four checks, then (a) pre-registered)
+2026-11-22	A	0x008E18D0	authoring	claimed	agent AUTH14 (two grades, per-site decision table)
+2026-11-22	A	0x008E18D0	authoring	claimed	agent AUTH15 (land-ready: test, notes, opt-in evidence, header proof)
+2026-11-22	A	0x00CF4EC0	authoring	claimed	agent AUTH16 (advisor ruling: (C) bounded, then (A))
+2026-11-22	A	q12566,q12567,q12568,q12569,q12570	naming	done	NF226 landed as nf226 (8 rows)
+2026-11-22	A	q12573-q12585	naming	claimed	agent NF227 (CManager vtable-slot self rows, CObservable, map / tree placeholders)
+2026-11-22	A	0x00CF4EC0	authoring	done	AUTH16: terminal (A), unlanded (pending/2026-11-22_auth16)
+2026-11-22	A	18 unlanded rows with /d2inl* drafts (scratch w22/auth17/ROWS.tsv)	authoring	claimed	agent AUTH17: default-inline-flag regrade sweep (measurement only)
+2026-11-22	A	0x008E18D0	authoring	done	AUTH15: landed
+2026-11-22	A	q12573-q12585	naming	done	NF227 landed as nf227 (20 rows)
+2026-11-22	A	18 /d2inl rows	authoring	done	AUTH17 sweep: no new match
+2026-11-22	A	q12589-q12604 (minus 0x0042BEC0)	naming	claimed	agent NF228 (nf227 follow-ups)
+2026-11-22	A	0x00A4EFC0	codex	done	landed as Inferred by owner decision (batches/2026-11-22_landing_codex_00a4efc0)
+2026-11-22	A	0x0093D270,0x00B4D370,0x00BD3070,0x00502E90	authoring	claimed	agent AUTH18 (the last four released AUTH1 rows; pending/2026-11-22_auth18/BRIEF.md)
+2026-11-22	A	q12589-q12604 (minus 0x0042BEC0)	naming	done	NF228 landed as nf228 (18 rows)
+2026-11-22	A	q12608-q12618	naming	claimed	agent NF229 (nf228 follow-ups)
+2026-11-22	A	0x0093D270	authoring	done	AUTH18: terminal (A) by advisor ruling (pending/2026-11-22_auth18/0093d270/TERMINAL.md)
+2026-11-22	A	0x00B4D370,0x00BD3070,0x00502E90	authoring	claimed	agent AUTH19 (continues AUTH18; pending/2026-11-22_auth19/BRIEF.md)
+2026-11-22	A	q12608-q12618	naming	done	NF229 landed as nf229 (12 rows)
+2026-11-22	A	q12620-q12624	naming	claimed	agent NF230 (nf229 follow-ups)
+2026-11-22	A	0x00B4D370,0x00BD3070,0x00502E90	authoring	claimed	agent AUTH20 (continues AUTH19 on 0x00B4D370; pending/2026-11-22_auth19/00b4d370/HANDOFF.md)
+2026-11-22	A	q12620-q12624	naming	done	NF230 landed as nf230 (18 rows)
+2026-11-22	A	q12625-q12628	naming	claimed	agent NF231 (nf230 follow-ups)
+2026-11-22	A	0x00B4D370,0x00BD3070,0x00502E90	authoring	claimed	agent AUTH21 (advisor ruling on AUTH20; pending/2026-11-22_auth21/BRIEF.md)
+2026-11-22	A	c2 comparator readout (lk / lka / fsolve)	tools	claimed	agent C2T1 (pending/2026-11-22_c2t1/BRIEF.md)
+2026-11-22	A	q12625,q12627,q12628	naming	done	NF231 landed as nf231 (3 rows)
+2026-11-22	A	q12629-q12634	naming	claimed	agent NF232 (nf231 follow-ups)
+2026-11-22	A	0x0066B370,0x00A68DE0,0x00839420,0x00651273,0x00816410	authoring	reserved	AUTH22 (Fable 5.2 authoring trial, owner 2026-11-22; pending/AUTHORING_MODEL_TRIAL.md)
+2026-11-22	A	0x00B4D370,0x00BD3070	authoring	parked-advisor	AUTH21 (last Opus run): both wait on the C2T1 comparator readout (pending/2026-11-22_auth21/)
+2026-11-22	A	0x00502E90,0x0066B370,0x00A68DE0,0x00839420,0x00651273,0x00816410	authoring	claimed	agent AUTH22 on Fable 5.2 (owner trial; pending/2026-11-22_auth22/BRIEF.md)
+2026-11-22	A	q12629-q12632	naming	done	NF232 landed as nf232 (6 rows)
+2026-11-22	A	q12635-q12640	naming	claimed	agent NF233 (nf232 follow-ups: CNewFrontendGameComponent family, 0x00495780)
+2026-11-22	A	c2 comparator readout (lk / lka / fsolve)	tools	done	C2T1: committed to lane_tools/c2probe/lk/ (advisor: accepted as an instrument)
+2026-11-22	A	0x00B4D370,0x00BD3070	tools	claimed	agent C2T2 (apply lk; pending/2026-11-22_c2t2/BRIEF.md)
+2026-11-22	A	q12636,q12638	naming	done	NF233 landed as nf233 (13 rows)
+2026-11-22	A	0x0066B370,0x00502E90	authoring	done	AUTH22 (Fable 5.2): 0x0066B370 matched pending owner; 0x00502E90 escalated (pending/2026-11-22_auth22/)
+2026-11-22	A	0x0066B370,0x00A68DE0,0x00839420,0x00651273,0x00816410,0x00502E90	authoring	claimed	agent AUTH23 on Fable 5.2 (pending/2026-11-22_auth23/BRIEF.md)
+2026-11-22	A	q12641-q12652	naming	claimed	agent NF234 (nf233 follow-ups)
+2026-11-22	A	0x0093D270	authoring	done	landed as Inferred by owner decision (batches/2026-11-22_landing_auth18_isrunnable)
+2026-11-22	A	q12641-q12652	naming	done	NF234 landed as nf234 (6 rows)
+2026-11-22	A	0x0066B370	authoring	done	landed as Inferred (owner) by AUTH22/AUTH23 on Fable 5.2 (batches/2026-11-22_landing_auth23_playallsoundevents)
+2026-11-22	A	q12653-q12658	naming	claimed	agent NF235 (nf234 follow-ups: vtable families)
+2026-11-22	A	0x00839420,0x00651273,0x00816410,0x00A68DE0,0x00502E90	authoring	claimed	agent AUTH24 on Fable 5.2 (pending/2026-11-22_auth24/BRIEF.md)
+2026-11-22	A	Codex pass 27 (100 rows)	codex	done	all 100 landed (batches/2026-11-22_landing_p27); IsEventButton swap applied
+2026-11-22	A	q12656-q12657	naming	done	agent NF235 landed (batches/2026-11-22_landing_nf235); q12658 blocked (queued with 0x00B261D0), q12659 released
+2026-11-22	A	q12663-q12667,q12659	naming	claimed	agent NF236 (nf235 follow-ups, IsEventButton QAE spelling, p27 held bindings)
+2026-11-22	A	0x00839420	authoring	done	AUTH24 (Fable 5.2) landed (batches/2026-11-22_landing_auth24_createeffectonhit); 0x00651273, 0x00816410, 0x00A68DE0, 0x00502E90 released
+2026-11-22	A	0x00651273,0x00816410,0x00A68DE0,0x00502E90	authoring	claimed	agent AUTH25 on Fable 5.2 (continues AUTH24)
+2026-11-22	A	Codex pass 28 (25 rows)	codex	reserved	the 25 longest parked rows with a graded draft, none had by a Codex pass (pending/2026-11-22_codex_pass28/RESERVED.tsv); package from post-p27 / nf235 / auth24 headers, NAMING_AND_HEADERS section 8 (p27 lessons)
+2026-11-22	A	0x00651273,0x00816410,0x00A68DE0,0x00502E90	authoring	released	AUTH25 stopped by the owner ("stop authoring"); 0x00651273 partial (p3/p4 DIFFER(1681v1681)) saved in pending/2026-11-22_auth25_stopped/
+2026-11-22	A	land1122p27 + land1122auth24 NAME_FIXES (137 lines)	naming	claimed	agent NF237, second naming agent beside NF236 ($S/w22/agentNF237/QUEUE_LINES.tsv; the 54 held-binding addresses stay with NF236)
+2026-11-22	A	q12663-q12667	naming	done	agent NF236 landed (batches/2026-11-22_landing_nf236); q12659 released (not started)
+2026-11-22	A	q12668-q12672,q12659	naming	claimed	agent NF238 (nf236 follow-ups, CEngine ctor/dtor unit, CMainGameComponent last) beside NF237
+2026-11-22	A	land1122p27 + land1122auth24 NAME_FIXES	naming	done	agent NF237 landed 8 rows (batches/2026-11-22_landing_nf237); 41 open + 22 deferred lines released for the next agent
+2026-11-22	A	NF237 open + deferred lines (63), 0x0122DEE0, 0x0049D800, 0x004046B0 / 0x004AB490	naming	claimed	agent NF239 beside NF238
+2026-11-22	A	q12668-q12671	naming	done	agent NF238 landed 9 rows (batches/2026-11-22_landing_nf238); q12672 / q12659 released (not started)
+2026-11-22	A	NF237 remaining lines	naming	done	agent NF239 landed 18 rows (batches/2026-11-22_landing_nf239); 0x0042ABAF / 0x0042ABCA held for NF241
+2026-11-22	A	q12673-q12676,q12659 + L38/L39	naming	claimed	agent NF240 (held p27 lines, CModeSitBench ctor, CEngine unit, CMainGameComponent)
+2026-11-22	A	NF239 open lines (42) + list<CComponent*> family + 0x004046B0 / 0x0049D800 / 0x01296F14	naming	claimed	agent NF241 beside NF240
+2026-11-22	A	q12673 + L38/L39	naming	done	agent NF240 landed 12 rows (batches/2026-11-22_landing_nf240); q12674 held as one unit; q12675-q12676 / q12659 released
+2026-11-22	A	q12677-q12679,q12676,q12659	naming	claimed	agent NF242 (held CModeSitBench unit + slot swap, CEngine unit, 0x006A1620 binders) beside NF241
+2026-11-22	A	NF239 open lines + list<CComponent*> family	naming	done	agent NF241 landed 36 rows (batches/2026-11-22_landing_nf241); the rest released to NF243
+2026-11-22	A	NF241 open lines (39) + 0x004046B0 family + DTOR_OUTOFLINE census + L108-L110	naming	claimed	agent NF243 beside NF242
+2026-11-22	A	q12677	naming	done	agent NF242 landed the 12-row CModeSitBench unit (batches/2026-11-22_landing_nf242); q12678-q12679 / q12676 / q12659 released
+2026-11-22	A	NF241 open lines etc.	naming	done	agent NF243 landed 5 rows (batches/2026-11-22_landing_nf243); 0x004046B0 family held, its 65 locks pass to NF245
+2026-11-22	A	0x004046B0 family	naming	done	agent NF245 landed 46 rows (batches/2026-11-22_landing_nf245); its entries 2-3 pass to NF246
+2026-11-22	A	CEngine unit / CModeBase follow-ups	naming	done	agent NF244 landed q12680 steps 1-2 + q12681 (batches/2026-11-22_landing_nf244); step 3 queued; entries 3-6 pass to NF247
+2026-11-22	A	wrong DTOR_OUTOFLINE families	naming	done	agent NF246 landed 17 rows (batches/2026-11-22_landing_nf246); its entry 2 passes to NF248
+2026-11-22	A	CModeBase slot bindings / 0x006A1620	naming	done	agent NF247 landed 7 rows (batches/2026-11-22_landing_nf247); q12676 / q12659 open
+2026-11-22	A	NF241 open CODEXP27 lines	naming	done	agent NF248 landed 10 rows / 7 lines (batches/2026-11-22_landing_nf248); 29 lines + E2 / E3 pass to NF250
+2026-11-22	A	UnsheatheWeapon / 0x00890D80 / CEngine step 3	naming	done	agent NF249 landed 5 rows + 4 header opt-ins (batches/2026-11-22_landing_nf249); CEngine pair held on 0x00B2AB10, passes to NF251
+2026-11-22	A	NF248 open CODEXP27 lines	naming	done	agent NF250 landed 12 rows (batches/2026-11-22_landing_nf250); L86 held, 5 blocked, the rest pass to NF252
+2026-11-22	A	CEngine pair / CIEngine stand-ins / 0.0 constant	naming	done	agent NF251 landed 16 rows (batches/2026-11-22_landing_nf251); q12703 / q12704 / q12659 pass to NF253
+2026-11-22	A	E3 0x01296F14 unit	naming	done	agent NF252 landed 6 rows (batches/2026-11-22_landing_nf252); remaining CODEXP27 lines pass to NF254
+2026-11-22	A	??_GCIEngine / UnsheatheMeleeWeapon / GetLocalSeed binder	naming	done	agent NF253 landed 4 rows (batches/2026-11-22_landing_nf253); the four blocked ctor rows pass to NF255
+2026-11-22	A	last CODEXP27 lines	naming	done	agent NF254 landed 11 rows (batches/2026-11-22_landing_nf254); L28 / L57 / L37 / L129 queued with plans
+2026-11-22	A	CCreatureAction L92 / L74	naming	done	agent NF255 landed 7 rows (batches/2026-11-22_landing_nf255); L72 / L100 / 0x0096B600 / 0x00418DCA pass to NF257
+2026-11-22	A	L28 / L57 / sky builders / L129 proof	naming	done	agent NF256 landed 4 rows (batches/2026-11-22_landing_nf256); L37 / L129 family pass to NF258
+2026-11-22	A	CCreatureAction L72 / L100 / 0x0096B600	naming	done	agent NF257 landed 9 rows (batches/2026-11-22_landing_nf257); q12659 + port debt pass to NF259
+2026-11-22	A	L37 vector<unsigned long> family	naming	done	agent NF258 landed 7 rows (batches/2026-11-22_landing_nf258); 0x009B0AC0 blocked; L129 passes to NF260
+2026-11-22	A	CCombatActionBase slot self rows / CCreatureAction port debt	naming	done	agent NF259 landed 11 rows (batches/2026-11-22_landing_nf259); q12659 open
+2026-11-22	A	L129 GPLandscapeRenderer units 1-2	naming	done	agent NF260 landed 54 rows (batches/2026-11-22_landing_nf260); the rest of L129 + 0x009B0AC0 pass to NF262
+2026-11-22	A	L129 units 3-4	naming	done	agent NF262 landed 4 rows (batches/2026-11-22_landing_nf262); recheck.py /Oy- fix; the rest of L129 + 0x009B0AC0 pass to NF263
+2026-11-22	A	CCombatActionBase slots 71-77 / pooled 0.5f	naming	done	agent NF261 landed 9 rows (batches/2026-11-22_landing_nf261); 0x00692890 held as a unit; q12743 / q12744 / q12659 pass to NF264
+2026-11-22	A	L129 GB unit	naming	done	agent NF263 landed 5 rows (batches/2026-11-22_landing_nf263); the rest of L129 + 0x009B0AC0 pass to NF265
+2026-11-22	A	AllowsCombinationAnims unit	naming	done	agent NF264 landed 24 rows (batches/2026-11-22_landing_nf264); q12743 / q12744 / q12659 + the four UBE binders pass to NF266
+2026-11-22	A	L129 DeleteTexture unit	naming	blocked	agent NF265: blocked on the CEngineLandscapeMemoryManager Delete trio family (pending/2026-11-22_nf265_handback/RULINGS.md); passes to NF267
+2026-11-22	A	UBE AllowsCombinationAnims binders / CastAssassinRush::Initialise	naming	done	agent NF266 landed 5 rows (batches/2026-11-22_landing_nf266); 0x0072CAA0 / q12744 / q12659 pass to NF268
+2026-11-22	A	L129 Delete trio family unit	naming	done	agent NF267 landed 7 rows + 3 headers (batches/2026-11-22_landing_nf267); rest of L129, 0x009B0AC0 and the D4 one-definition pass go to NF269
+2026-11-22	A	SetupAssassinRush / slot 3 PerformAction	naming	done	agent NF268 landed 3 rows + 1 header (batches/2026-11-22_landing_nf268); q12771 / q12744 rejected; slot 1, q12744 census and q12659 go to NF270
+2026-11-22	A	Delete binders (nf267 D5)	naming	done	agent NF269 landed 6 rows + 2 tests + 1 header (batches/2026-11-22_landing_nf269); its entries 2-5 go to NF271
+2026-11-22	A	L129 rest (LocalDetailEngine, 0x00B684F0 global)	naming	done	agent NF271 landed 4 rows + 1 test + 1 header (batches/2026-11-22_landing_nf271); CEngineGlobal family queued as a header unit; entries 2-5 go to NF272
+2026-11-22	A	slot 1 Validate port / WithHaste forwarder / map dtor mirror	naming	done	agent NF270 landed 6 rows + 3 tests + 2 headers (batches/2026-11-22_landing_nf270); q12659, the Clone rows and the CVertexGroupBlock dtor duplicate go to NF273
+2026-11-22	A	CWaterPatchMesh unit / 0x00BFDD40 split	naming	done	agent NF272 landed 6 rows + 3 tests + 2 headers (batches/2026-11-22_landing_nf272); the 0x00BEB490 ??_G measurement and D4 go to NF274
+2026-11-22	A	private Clone self rows / CVertexGroupBlock dtor copy	naming	done	agent NF273 landed 3 rows + 2 tests + 1 header (batches/2026-11-22_landing_nf273); 0x00AD94F0 rejected; q12659 and the owner-side dtor fix go to NF275
+2026-11-22	A	0x00BEB490 ??_G copy / D4 one definition	naming	done	agent NF274 landed 3 rows (batches/2026-11-22_landing_nf274); D4 S3 / the CLandscapeLayerMesh unit go to NF276
+2026-11-22	A	CLandscapeLayerMesh unit / D4 S3 + FreeVirtual owner	naming	done	agent NF276 landed 7 rows + 2 CompilerFlags (batches/2026-11-22_landing_nf276); 0x00BFE900 fold and the host-model tests go to NF277
+2026-11-22	A	q12659 CMainGameComponent ctor / CVertexGroupBlock owner dtor	naming	done	agent NF275 landed 3 rows + 7 headers (batches/2026-11-22_landing_nf275); the _M_erase split, 0x00ADCE60 port and test debt go to NF278
+2026-11-22	A	0x00BFE900 fold / CLandscapeLayerMesh tests	naming	done	agent NF277 landed 1 row + 3 tests (batches/2026-11-22_landing_nf277); 0x00BFD480 unit, the Verify rows and four tests go to NF279
+2026-11-22	A	CMainGameComponent slot self rows	naming	done	agent NF278 landed 4 rows (batches/2026-11-22_landing_nf278); 0x00416E78, the _M_erase port and 0x00ADCE60 go to NF280
+2026-11-22	A	CEngineWaterBackgroundSubPatch dtor unit	naming	done	agent NF279 landed 4 rows + 1 test + 1 header (batches/2026-11-22_landing_nf279); the Verify rows held for the dtor-row ports
+2026-11-22	A	GetInputs and its callee family	naming	done	agent NF280 landed 4 rows + 1 test + 3 headers (batches/2026-11-22_landing_nf280); the _M_erase port and 0x00ADCE60 stay queued
+2026-11-22	A	Codex pass 28	authoring	done	landed 21 of 25 rows (batches/2026-11-22_landing_p28); 0x00850A80 / 0x00879900 / 0x00A2F740 / 0x00D07490 parked and still reserved
+2026-11-22	A	tracker batches 1 (T1-access/T2, CCountedPointer DeleteData)	naming	done	agents NF281 / NF282 landed 113 rows (batches/2026-11-22_landing_nf281_282); continuations NF283 / NF284
+2026-11-22	A	tracker batch T1 standin_alias continuation (CCountedPointer DeleteData)	naming	done	agent NF284 landed 31 rows (batches/2026-11-22_landing_nf284); continuation NF285 (ENTRIES order), 12 deferred CCountedPointer entries a later T3 unit
+2026-11-22	A	tracker batch T1-access + T2 continuation	naming	done	agent NF283 landed 47 rows (batches/2026-11-22_landing_nf283); continuation NF286 (12 precheck retries + 131 unreached)
+2026-11-22	A	tracker batch T1 standin_alias continuation 2	naming	done	agent NF285 landed 18 rows + 1 header opt-in (batches/2026-11-22_landing_nf285); 67 ports queued T3; continuation NF287
+2026-11-23	A	tracker batch T1-access + T2 continuation 3	naming	done	agent NF286 landed 52 rows (batches/2026-11-23_landing_nf286); continuation NF288
+2026-11-23	A	tracker batch T1 standin_alias continuation 3	naming	done	agent NF287 landed 14 rows + 22 table-only fixes + 1 header opt-in (batches/2026-11-23_landing_nf287); continuation NF289
+2026-11-23	A	tracker batch T1-access + T2 continuation 4	naming	done	agent NF288 landed 70 rows (batches/2026-11-23_landing_nf288); continuation NF290 (+ T1 signature)
+2026-11-23	A	tracker batch T1 standin_alias continuation 4	naming	done	agent NF289 landed 4 rows + 1 header opt-in + 13 table lines (batches/2026-11-23_landing_nf289); continuation NF291
+2026-11-23	A	tracker batch T1 standin_alias, last entries	naming	done	agent NF291 landed 1 row + 1 header opt-in + 3 table lines (batches/2026-11-23_landing_nf291); 107 ports queued T3
+2026-11-23	A	tracker batches T1-access tail + T1 signature 1	naming	done	agent NF290 landed 58 rows (batches/2026-11-23_landing_nf290); continuation NF293
+2026-11-23	A	tracker batch T1 other class/ns 1	naming	done	agent NF294 landed 5 rows + 1 header opt-in + 7 table lines (batches/2026-11-23_landing_nf294); continuation NF295
+2026-11-23	A	tracker batch T1 other made-up names 1	naming	done	agent NF292 landed 47 rows + 4 header opt-ins (batches/2026-11-23_landing_nf292); continuation NF296
+2026-11-23	A	tracker batch T1 signature 2	naming	done	agent NF293 landed 51 rows + 3 header opt-ins (batches/2026-11-23_landing_nf293); continuation NF297; five family units queued T3
+2026-11-23	A	tracker batch T1 other class/ns 2	naming	done	agent NF295 landed 9 rows + 1 header opt-in (batches/2026-11-23_landing_nf295); continuation NF298
+2026-11-23	A	tracker batch T1 other made-up names 2	naming	done	agent NF296 landed 75 rows + 2 tests (batches/2026-11-23_landing_nf296); continuation NF299
+2026-11-23	A	tracker batch T1 signature 3	naming	done	agent NF297 landed 51 rows + 1 header opt-in (batches/2026-11-23_landing_nf297); continuation NF300
+2026-11-23	A	tracker batch T1 other class/ns 3	naming	done	agent NF298 landed 8 rows + 28 table lines (batches/2026-11-23_landing_nf298); continuation NF301
+2026-11-23	A	tracker batch T1 other class/ns 4	naming	done	agent NF301 landed 6 rows + 21 table lines (batches/2026-11-23_landing_nf301); continuation NF302
+2026-11-23	A	tracker batch T1 other made-up 3	naming	done	agent NF299 landed 38 rows + 34 table lines (batches/2026-11-23_landing_nf299); continuation NF303
+2026-11-23	A	tracker batch T1 signature 4	naming	done	agent NF300 landed 38 rows + 1 header opt-in + 28 table lines (batches/2026-11-23_landing_nf300); continuation NF304
+2026-11-23	A	tracker batch T1 other class/ns 5	naming	done	agent NF302 landed 14 rows + 6 header opt-ins + 21 table lines (batches/2026-11-23_landing_nf302); continuation NF305
+2026-11-23	A	tracker batch T1 other made-up 4	naming	done	agent NF303 landed 40 rows + 10 table lines (batches/2026-11-23_landing_nf303); continuation NF306
+2026-11-23	A	tracker batch T1 signature 5	naming	done	agent NF304 landed 61 rows + 1 test + 46 table lines (batches/2026-11-23_landing_nf304); continuation NF307
+2026-11-23	A	tracker batch T1 other class/ns 6	naming	done	agent NF305 landed 32 rows + 1 test + 19 table lines (batches/2026-11-23_landing_nf305); continuation NF308
+2026-11-23	A	tracker batch T1 other made-up 5	naming	done	agent NF306 landed 26 rows + 37 table lines (batches/2026-11-23_landing_nf306); continuation NF309
+2026-11-23	A	tracker batch T1 signature 6	naming	done	agent NF307 landed 23 rows + 15 table lines (batches/2026-11-23_landing_nf307); continuation NF310
+2026-11-23	A	tracker batch T1 other class/ns 7	naming	done	agent NF308 landed 10 rows + 8 table lines (batches/2026-11-23_landing_nf308); continuation NF311
+2026-11-23	A	tracker batch T1 signature 7	naming	done	agent NF310 landed 38 rows + 1 test + 24 table lines (batches/2026-11-23_landing_nf310); continuation NF312
+2026-11-23	A	tracker batch T1 other class/ns 8	naming	done	agent NF311 landed 6 rows + 11 table lines (batches/2026-11-23_landing_nf311); continuation NF313
+2026-11-23	A	tracker batch T1 leftovers 1	naming	done	agent NF309 landed 28 rows + 28 table lines (batches/2026-11-23_landing_nf309); continuation NF314
+2026-11-23	A	tracker batch T1 class/ns tail 1	naming	done	agent NF313 landed 22 rows + 10 table lines (batches/2026-11-23_landing_nf313); continuation NF315
+2026-11-23	A	tracker batch T1 signature 8	naming	done	agent NF312 landed 14 rows + 16 table lines (batches/2026-11-23_landing_nf312); signature list fully classified
+2026-11-23	A	tracker batch T1 signature held	naming	done	agent NF316 landed 14 rows + 6 table lines (batches/2026-11-23_landing_nf316)
+2026-11-23	A	tracker batch T1 leftovers 2	naming	done	agent NF314 landed 25 rows + 1 header opt-in + 26 table lines (batches/2026-11-23_landing_nf314)
+2026-11-23	A	tracker batch T1 in-place tail	naming	done	agent NF315 landed 20 rows + 8 table lines (batches/2026-11-23_landing_nf315)
+2026-11-23	A	flatten pilot 1 (scripted)	naming	done	79 rows by flatten_pilot.py (batches/2026-11-23_landing_flatten_pilot1)
+2026-11-23	A	flatten switch 1 (scripted)	naming	done	51 rows by flatten_pilot.py --switch (batches/2026-11-23_landing_flatten_switch1)
+2026-11-23	A	access 1 (scripted)	naming	done	170 rows by access_fix.py (batches/2026-11-23_landing_access1)
+2026-11-23	A	access 2 (scripted)	naming	done	188 rows by access_fix.py --wide (batches/2026-11-23_landing_access2)
+2026-11-23	A	access 3 (scripted)	naming	done	140 rows by access_fix.py --wide --virtual --ret (batches/2026-11-23_landing_access3)
+2026-11-23	A	alias 1 (scripted)	naming	done	29 rows by alias_header.py (batches/2026-11-23_landing_alias1)
+2026-11-23	A	access 4 (scripted)	naming	done	72 rows by access_fix.py --wide --virtual --ret (batches/2026-11-23_landing_access4)
+2026-11-23	A	binders 1 (scripted)	naming	done	16 callers by access_fix.py --binders (batches/2026-11-23_landing_binders1)
+2026-11-23	A	scripted-route in-place rejects (access1-4, binders1; 112 entries)	naming	done	agent NF317 landed 45 rows + 7 table lines (batches/2026-11-23_landing_nf317)
+2026-11-23	A	scripted-route header rejects (alias1, flatten-switch1; 122 entries)	naming	done	agent NF318 landed 88 rows (batches/2026-11-23_landing_nf318)
+2026-11-23	A	alias rows with the member absent from engine/X.h (190 entries)	naming	done	agent NF319 landed 44 rows + 31 header opt-ins (batches/2026-11-23_landing_nf319)
+2026-11-23	A	alias signature ports (144) and the CCreatureAction Clone header ports (23)	naming	done	agent NF320 landed 61 rows + 4 header opt-ins (batches/2026-11-23_landing_nf320)
+2026-11-23	A	body/callee ports onto the real class model (81 entries from the nf317-nf320 queue lines)	naming	done	agent NF321 landed 9 rows (batches/2026-11-24_landing_nf321)
+2026-11-23	A	flat-header class-model ports of RTTI-named virtuals (144 entries)	naming	done	agent NF322 landed 60 rows + 40 header opt-ins (batches/2026-11-24_landing_nf322)
+2026-11-23	A	CCreatureAction Clone family, the 6 FableWin-only declarations and other held rows (53 entries)	naming	done	agent NF323 landed 20 rows + 14 header opt-ins (batches/2026-11-24_landing_nf323); 7 held
+2026-11-24	A	flattened virtual-member pool (1,744 entries): extend flatten_pilot.py	naming	done	agent NF324 landed 678 rows + 122 header opt-ins (batches/2026-11-24_landing_nf324_b1..b7)
+2026-11-24	A	NF322 held/port continuation, two class-model defects, three NF321 requeues (89 entries)	naming	done	agent NF325 landed 31 rows + 37 headers, 1 new (batches/2026-11-24_landing_nf325)
+2026-11-24	A	CScriptThing / ScriptedThing pick-any unit (63 entries)	naming	done	agent NF326 landed 111 rows, the CScriptThing pick-any unit (batches/2026-11-24_landing_nf326)
+2026-11-24	A	items unblocked by the NF321-NF325 rulings (14 entries)	naming	done	agent NF327 landed 10 rows + 11 headers (batches/2026-11-24_landing_nf327); 4 held

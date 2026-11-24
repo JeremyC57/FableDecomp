@@ -1,5 +1,5 @@
 // CSmallVector<CCharString,8>::Clear() -- release the string array (destroy each element back to front, free the cookie block) and reset to empty
-// Leaf: ?Clear@
+// Leaf: ?Clear@?$CSmallVector@VCCharString@@$07@@IAEXXZ
 // Retail: Fable.exe @ 0x009D2110, 80 bytes. FableWin.pdb ?Clear@?$CSmallVector@VCCharString@@$07@@IAEXXZ (protected). Callees:
 //   CCharString::~CCharString 0x0099EAE0, operator delete[] 0x00BFEB1C.
 // Layout: Ego_r.pdb CSmallVector<T,8> = Start (T*, +0) and Size (+4, signed char); the shared model below is the
@@ -26,7 +26,7 @@ public:
     void resize(long n, const T& fill);
     void push_back(const T& value);
     T* erase(T* where);
-    void Clear();
+    protected: void Clear(); public:
     void Allocate(unsigned long n);
     void Copy(const CSmallVector& other);
 };

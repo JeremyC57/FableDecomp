@@ -32,7 +32,7 @@ public:
     unsigned char KillLocked : 1;
     unsigned char CreatedBySerialisation : 1;
     bool IsDead() const { return Dead; }
-    const CWorldMap& PeekWorldMap() const;                  // 0x004C79E0
+    protected: friend class CThingCreatureBase; const CWorldMap& PeekWorldMap() const; public:   // 0x004C79E0; NF299: PDB access (Ego_r + FableWin IBE, protected); the friend names the real class (its CThing base is flattened here)
 };
 class CWorldMap {
 public:

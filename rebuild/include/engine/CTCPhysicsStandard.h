@@ -25,6 +25,10 @@ class CThing;
 class CThingPhysicsMeshInfo;
 class CTCPhysicsStandard : public CTCPhysicsBase {
 public:
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_FLUSHNORMAL_PASS26
+    // Pass26 row00723e50: both original PDBs and native slot77 prove this override.
+    virtual void SetRHSetAsFlushOnNormal(const C3DVector& normal);
+#endif // FABLE_RETAIL_CTCPHYSICSSTANDARD_FLUSHNORMAL_PASS26
     virtual void ResetInterpolation();                       // slot 80 0x007236E0
 #ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_UPDATEINTERPOLATION
     // Nested opt-in (NF154, PRIORITY q3906 / q5088, row 0x00723730): Ego_r.pdb 0x0073A570 / FableWin.pdb 0x02526850
@@ -47,6 +51,10 @@ protected:
     virtual void UpdateOnSurface(std::vector<CThing*>& things, C3DVector& pos);              // slot 97
     virtual C2DBoxI GetPossibleCollidedWithArea() const;                                     // slot 98
     void PerformForceUpdates();                                                              // 0x008E5670
+#ifdef FABLE_RETAIL_CTCPHYSICSNAVIGATOR_MOVE_PASS27
+    // 00726CE0: protected const RemoveIntersectingCreaturesFromList per both donors and native 00724240.
+    void RemoveIntersectingCreaturesFromList(std::vector<CThing*>& thing_list) const;
+#endif
     void UpdateIsMoving();                                                                   // 0x008E5270
     void PerformStepBasedMovement(std::vector<CThing*>& things, C3DVector& pos);             // 0x008E5880
     void GetPossibleInteractedWithList(const C2DBoxI& area, std::vector<CThing*>& things, float range) const;   // 0x008E57D0

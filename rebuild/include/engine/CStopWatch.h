@@ -7,6 +7,12 @@
 #include "rebuild_abi.h"
 class CStopWatch {
 public:
+#ifdef FABLE_RETAIL_CSTOPWATCH_CTOR
+    // NF233 opt-in (rows 0x0042EA8F / 0x0042F50B, the CNewFrontendGameComponent ctor / dtor): the user default constructor,
+    // ??0CStopWatch@@QAE@XZ in Ego_r.pdb, FableWin.pdb and Ego_d.pdb (public), out of line in retail at 0x0062F740 (the ctor calls it
+    // for m_RepeatTimer / m_attractModeTimer / m_inputDelayTimer, 0x0042EB5B / 0x0042EB76 / 0x0042EB81). Declaration only; no layout change.
+    CStopWatch();                                                             // 0x0062F740
+#endif
     void Start();
     void StartZero();                                                         // 0x0062F800
     void Stop();                                                              // 0x0062F850
@@ -19,5 +25,5 @@ private:
     __int64 m_nPrevElapsedTicks;                                              // +0x10
     bool m_bIsRunning;                                                        // +0x18
 };
-FABLE_STATIC_ASSERT(sizeof(CStopWatch) == 0x20);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CStopWatch) == 0x20);
 #endif

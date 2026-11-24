@@ -1,0 +1,44 @@
+004e0f34 LIBCP_OK renames=?Copy@CFireballSpellLevelDef_Methods@@QAEXPBVCDefClassBase@@@Z=?Copy@CFireballSpellLevelDef@@UAEXPBVCDefClassBase@@@Z ; .drectve EQUAL ; sections=2
+0074dce0 LIBCP_OK renames=?IsToEvadeAllHits@CCreatureAction_UndeadRiseUp_Methods@@QAEEXZ=?IsToEvadeAllHits@CCreatureAction_UndeadRiseUp@@UBE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+0077ce00 LIBCP_OK renames=?Transfer@CHighlightItemDef_Transfer@@QAEXAAVCPersistContext@@@Z=?Transfer@CHighlightItemDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=12
+00844720 LIBCP_OK renames=?PerformAction@CCreatureAction_PickCrop_Methods@@QAEXXZ=?PerformAction@CCreatureAction_PickCrop@@UAEXXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+008b8660 LIBCP_OK renames=?IsToFaceTarget@CCreatureAction_PlayCombatAnimation_Methods@@QAEEXZ=?IsToFaceTarget@CCreatureAction_PlayCombatAnimation@@UBE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+008b8670 LIBCP_OK renames=?IsMovementUsingPhysics@CCreatureAction_PlayCombatAnimation_Methods@@QAEEXZ=?IsMovementUsingPhysics@CCreatureAction_PlayCombatAnimation@@UBE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+008b8680 LIBCP_OK renames=?IsAlwaysUseAnimationMovement@CCreatureAction_PlayCombatAnimation_Methods@@QAEEXZ=?IsAlwaysUseAnimationMovement@CCreatureAction_PlayCombatAnimation@@UBE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+008fe0ea LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_EnemyCreatureBase_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_EnemyCreatureBase@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+008fe7d5 LIBCP_OK renames=?PutWeaponAway@CAIStateGroup_BanditPlayDice_Methods@@QAE_NXZ=?PutWeaponAway@CAIStateGroup_BanditPlayDice@@MAE_NXZ ; .drectve EQUAL ; sections=2
+008ff55e LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_SeekScriptTarget_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_SeekScriptTarget@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+008ff9d2 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MBE?AW4EAIStateGroupType@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00900513 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_BalverineCornered_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_BalverineCornered@@MBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+00900572 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_BalverineJumpAtFleeingEnemy_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+00900772 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_MazeRangedCombat_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_MazeRangedCombat@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+0090083d LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleTeleport_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_MazeTutorialBattleTeleport@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+00900933 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_BriarRoseWillUse_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_BriarRoseWillUse@@UBE?AW4EAIStateGroupType@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00900f23 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_RangedCombatUsePreferredFirePoint_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UBE?AW4EAIStateGroupType@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00900f82 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@MBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+0090141e LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_VersusEnemyBase_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_VersusEnemyBase@@MBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+00901462 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_VersusScorpionKing_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_VersusScorpionKing@@MBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+0090188e LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_WhisperRetreat_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_WhisperRetreat@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+009018ef LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_Thunder_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_Thunder@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+009026c7 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_MazeTeleport_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_MazeTeleport@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+00902f92 LIBCP_OK renames=?IsTimingCritical@CAIStateGroup_CreatureUseCoverBase_Methods@@QAEEXZ=?IsTimingCritical@CAIStateGroup_CreatureUseCoverBase@@UBE_NXZ ; .drectve EQUAL ; sections=2
+00902f96 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_CreatureUseCoverBase_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_CreatureUseCoverBase@@MBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+0090310a LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_Guildmaster_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_Guildmaster@@UBE?AW4EAIStateGroupType@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00903154 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_CreatureAdvanceInCover_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_CreatureAdvanceInCover@@UBE?AW4EAIStateGroupType@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00903173 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_CreatureTakeCover_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_CreatureTakeCover@@UBE?AW4EAIStateGroupType@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+009031b6 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_ScorpionKing_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_ScorpionKing@@UBE?AW4EAIStateGroupType@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+009031f6 LIBCP_OK renames=?GetStateGroupType@CAIStateGroup_CreatureFindCover_Methods@@QAEHXZ=?GetStateGroupType@CAIStateGroup_CreatureFindCover@@UBE?AW4EAIStateGroupType@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00a02120 LIBCP_OK renames=?MoveResource@CHandleBasedMemoryPool_Methods@@QAEXPAXJ00K@Z=?MoveResource@CHandleBasedMemoryPool@@MAEXPAXJ00K@Z ; .drectve EQUAL ; sections=2
+00a427c0 LIBCP_OK renames=?IsDiskFile@CLipSyncDataBank_Methods@@QAE_NKK@Z=?IsDiskFile@CLipSyncDataBank@@MAE_NKK@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00a75a90 LIBCP_OK renames=?GetPreferabilityCost@CNavNavigableLeafNode_Methods@@QAEEXZ=?GetPreferabilityCost@CNavNavigableLeafNode@@UBEEXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00ab6ad0 LIBCP_OK renames=?GetXAxis@CJoystickDX_Methods@@QAEMXZ=?GetXAxis@CJoystickDX@@MAEMXZ ; .drectve EQUAL ; sections=2
+00ab6ae0 LIBCP_OK renames=?GetYAxis@CJoystickDX_Methods@@QAEMXZ=?GetYAxis@CJoystickDX@@MAEMXZ ; .drectve EQUAL ; sections=2
+00ab6af0 LIBCP_OK renames=?GetXAxis2@CJoystickDX_Methods@@QAEMXZ=?GetXAxis2@CJoystickDX@@MAEMXZ ; .drectve EQUAL ; sections=2
+00ab6b00 LIBCP_OK renames=?GetYAxis2@CJoystickDX_Methods@@QAEMXZ=?GetYAxis2@CJoystickDX@@MAEMXZ ; .drectve EQUAL ; sections=2
+00b23a70 LIBCP_OK renames=?IsPreloaded@CEngine_Methods@@QAE_NXZ=?IsPreloaded@CEngine@@UBE_NXZ ; .drectve EQUAL ; sections=2
+00b23b90 LIBCP_OK renames=?SetEnvironmentalEffectsAlwaysUpdate@CEngine_Methods@@QAEX_N@Z=?SetEnvironmentalEffectsAlwaysUpdate@CEngine@@UAEX_N@Z ; .drectve EQUAL ; sections=2
+00b5bd00 LIBCP_OK renames=?OnReleaseDefaultPoolResources@CEngineScreenEffectRadialBlurRenderer_Methods@@QAEXXZ=?OnReleaseDefaultPoolResources@CEngineScreenEffectRadialBlurRenderer@@UAEXXZ ; .drectve EQUAL ; sections=2
+00b5ec60 LIBCP_OK renames=?OnReleaseDefaultPoolResources@CEngineScreenEffectGlowRenderer_Methods@@QAEXXZ=?OnReleaseDefaultPoolResources@CEngineScreenEffectGlowRenderer@@UAEXXZ ; .drectve EQUAL ; sections=2
+00b86500 LIBCP_OK renames=?PeekSceneFilterFlags@CEngineSubPrimitiveRenderer_Methods@@QAEKXZ=?PeekSceneFilterFlags@CEngineSubPrimitiveRenderer@@UBEKXZ ; .drectve EQUAL ; sections=2
+00b86970 LIBCP_OK renames=?OnReleaseDefaultPoolResources@CEngineScreenEffectDisplacementRenderer_Methods@@QAEXXZ=?OnReleaseDefaultPoolResources@CEngineScreenEffectDisplacementRenderer@@UAEXXZ ; .drectve EQUAL ; sections=2
+00bbbe60 LIBCP_OK renames=?Update@CEngineInternalPrimitiveParticleGroup_Methods@@QAEXABVCEnginePrimitive@@K@Z=?Update@CEngineInternalPrimitiveParticleGroup@@UAEXABVCEnginePrimitive@@K@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

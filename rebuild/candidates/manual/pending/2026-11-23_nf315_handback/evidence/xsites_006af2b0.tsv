@@ -1,0 +1,10 @@
+006af2b0	call	0090ca82	0090ca60L CAIStateGroup_MinionGossip::OnReplace
+006af2b0	call	0090cfab	-
+006af2b0	call	0090ee73	0090ee20L CAIStateGroup_MinionKidCalledToMother::FindCallHomeEvent
+006af2b0	call	00919aa2	00919a70L CAIStateGroup_BuyFromSeller::GetSellersReply
+006af2b0	call	0092a78e	-
+006af2b0	call	00934bf8	00934920L CAIStateGroup_MinionKidGroupTag::IsRunnable
+006af2b0	call	00939df9	00939dd0L CAIStateGroup_MinionGuardReactToPlayerWithWeapon::RemoveMess
+006af2b0	call	00947e59	00947e20L CAIStateGroup_GoToPub::GetPaymentRequestReplyMessage
+006af2b0	call	009684c2	00968460L CAIStateGroup_TavernKeeper::GetPaymentFinishedMessage
+006af2b0	call	00968572	00968510L CAIStateGroup_TavernKeeper::GetPaymentCancelledMessage

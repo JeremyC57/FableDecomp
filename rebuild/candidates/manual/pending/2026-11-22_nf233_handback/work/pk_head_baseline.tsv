@@ -1,0 +1,14 @@
+0042f50b HEAD	??_GCGameComponent@@UAEPAXI@Z	41	00415940	NEQ:bytes(41 v 43)
+0042f50b HEAD	??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ	5	0042fc0e	EQ
+0042f50b HEAD	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ
+0042f50b HEAD	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	5	00429bf9	EQ
+0042f50b HEAD	??1?$CCountedPointer@VCASoundBank@@@@QAE@XZ	5	0042fbcb	EQ
+0042f50b HEAD	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	5	0042fcff	EQ
+0042f50b HEAD	??_GCNewFrontendGameComponent@@UAEPAXI@Z	28	004330d2	NEQ:relocs ??1CNewFrontendGameComponent@@UAE@XZ@0042f50b
+0042ea8f HEAD	??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ	44	0042fc0e	NEQ:bytes(44 v 44)
+0042ea8f HEAD	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	44	004194b5	NEQ:bytes(44 v 44)
+0042ea8f HEAD	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	44	00429bf9	NEQ:bytes(44 v 44)
+0042ea8f HEAD	??1?$CCountedPointer@VCASoundBank@@@@QAE@XZ	44	0042fbcb	NEQ:bytes(44 v 44)
+0042ea8f HEAD	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	44	0042fcff	NEQ:bytes(44 v 44)
+0042ea8f HEAD	??_GCNewFrontendGameComponent@@UAEPAXI@Z	28	004330d2	NEQ:relocs ??1CNewFrontendGameComponent@@UAE@XZ@0042f50b
+0051d8e0 HEAD	??_GCGameComponent@@UAEPAXI@Z	30	00415940	NEQ:bytes(30 v 43)

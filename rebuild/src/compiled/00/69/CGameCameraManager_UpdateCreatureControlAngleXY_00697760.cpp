@@ -1,3 +1,4 @@
+// Leaf: ?UpdateCreatureControlAngleXY@CGameCameraManager@@AAEXXZ
 // CGameCameraManager::UpdateCreatureControlAngleXY() -- refresh the hero control angle from the camera unless an angle change is latched (a change in control direction clears the latch), start/clear the no-control-movement frame stamp, then clear the per-frame ChangeInControlDirection / ControlNoControlMovement flags
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00697760, length 131 bytes (+ int3 padding).
 // Callees: CCamera::GetAngleXY @ 0x00A0C380 (on Camera +4, float result; catalog "Math_ComputeAngleXY"), the global frame-counter getter
@@ -29,7 +30,9 @@ class CGameCameraManager { public:
     bool          ControlNoControlMovement;                 // +0xbd
     unsigned char _padbe[2];
     long          ControlNoControlMovementStartFrame;       // +0xc0
+    private:
     void UpdateCreatureControlAngleXY();
+    public:
 };
 
 void CGameCameraManager::UpdateCreatureControlAngleXY()

@@ -1,0 +1,3 @@
+0047042a	src	DIFF		rebuild/src/compiled/00/47/CSoundMap_TransferBinaryIn_0047042a.cpp
+0047042a	test	DIFF		rebuild/tests/00/47/CSoundMap_TransferBinaryIn_0047042a_test.cpp
+rows checked 57021 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/26b70904-272a-4e3e-9e20-826a6b4892f1/scratchpad/cx_a4efc0/eq/equiv.tsv

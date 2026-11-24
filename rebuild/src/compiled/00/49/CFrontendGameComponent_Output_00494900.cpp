@@ -68,7 +68,7 @@ public:
 namespace NResourceDirectoryNames { CWideString __fastcall GetMiscDir(); }   // 0x0041A0A0
 CWideString __fastcall GFIntToWideString(long value);                    // 0x00405F00
 extern CDisplayManager* GPDisplayManager;                                // 0x013B8390
-extern CRenderManager* PRenderManager;                                   // 0x013B8384
+extern CRenderManager* GPRenderManager;                                   // 0x013B8384 (Ego_r / FableWin / Ego_d publics; NF236: was PRenderManager)
 extern double VIRTUAL_SCREEN_WIDTH;                                      // 0x013961E8
 extern double VIRTUAL_SCREEN_HEIGHT;                                     // 0x013961F0
 extern CCharString GVersionString;                                // 0x013B85E0
@@ -135,101 +135,101 @@ void CFrontendGameComponent::Output()
         SplashScreen.GetSurfaceLevel(0).LoadFromBitmapFileToPreallocatedSurface(NResourceDirectoryNames::GetMiscDir() + L"splash.tga", 2);
     }
     GPDisplayManager->BeginRender();
-    PRenderManager->SetVWindow(full_window);
-    PRenderManager->Draw2DTexture(C2DBoxF(0.0f, 0.0f, VIRTUAL_SCREEN_WIDTH, VIRTUAL_SCREEN_HEIGHT), CRGBColour(255, 255, 255, 255), SplashScreen, 0);
-    PRenderManager->SetVWindow(tv_window);
+    GPRenderManager->SetVWindow(full_window);
+    GPRenderManager->Draw2DTexture(C2DBoxF(0.0f, 0.0f, VIRTUAL_SCREEN_WIDTH, VIRTUAL_SCREEN_HEIGHT), CRGBColour(255, 255, 255, 255), SplashScreen, 0);
+    GPRenderManager->SetVWindow(tv_window);
     float y;
     float line_height;   // the font height as a named temporary: only then does retail's `mov eax,[esi+1E44h]` (CursorHighlight)
                          // schedule ahead of the `fadd` that steps y (every `y += MainFont->GetVFontMaxHeight()` spelling keeps it after)
     switch (Mode) {
     case 1:
-        PRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Fable " + GVersionString.ToWideString(), *MainFont, normal_colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Fable " + GVersionString.ToWideString(), *MainFont, normal_colour, 0);
         y = GFAYToVY(32.0f);
         colour = CursorHighlight == 1 ? highlight_colour : normal_colour;
-        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"1 - Single Player [" + GForceLevel + L"]", *MainFont, colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"1 - Single Player [" + GForceLevel + L"]", *MainFont, colour, 0);
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         colour = CursorHighlight == 2 ? highlight_colour : normal_colour;
-        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"2 - Select World", *MainFont, colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"2 - Select World", *MainFont, colour, 0);
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         colour = CursorHighlight == 3 ? highlight_colour : normal_colour;
-        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"3 - Select Save", *MainFont, colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"3 - Select Save", *MainFont, colour, 0);
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         colour = CursorHighlight == 6 ? highlight_colour : normal_colour;
-        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"6 - Quit", *MainFont, colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"6 - Quit", *MainFont, colour, 0);
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         colour = CursorHighlight == 7 ? highlight_colour : normal_colour;
-        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"7 - Switch to Release Front End", *MainFont, colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"7 - Switch to Release Front End", *MainFont, colour, 0);
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         break;
     case 10: {
-        PRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Select World to Load", *MainFont, normal_colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Select World to Load", *MainFont, normal_colour, 0);
         y = GFAYToVY(32.0f);
         for (long i = 0; i < 8 && WorldNamesOffset + i < WorldNames.size(); ++i) {
             colour = CursorHighlight == i + 1 ? highlight_colour : normal_colour;
-            PRenderManager->Draw2DText(C2DVector(0.0f, y), GFIntToWideString(i + 1) + L" - " + WorldNames[WorldNamesOffset + i], *MainFont, colour, 0);
+            GPRenderManager->Draw2DText(C2DVector(0.0f, y), GFIntToWideString(i + 1) + L" - " + WorldNames[WorldNamesOffset + i], *MainFont, colour, 0);
             line_height = MainFont->GetVFontMaxHeight();
             y += line_height;
         }
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         colour = CursorHighlight == 9 ? highlight_colour : normal_colour;
-        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"9 - Quit", *MainFont, colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"9 - Quit", *MainFont, colour, 0);
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         if (WorldNames.size() > 8) {
             colour = CursorHighlight == 0 ? highlight_colour : normal_colour;
-            PRenderManager->Draw2DText(C2DVector(0.0f, y), L"0 - See more worlds", *MainFont, colour, 0);
+            GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"0 - See more worlds", *MainFont, colour, 0);
             line_height = MainFont->GetVFontMaxHeight();
             y += line_height;
         }
         break;
     }
     case 11: {
-        PRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Select Save to Load", *MainFont, normal_colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Select Save to Load", *MainFont, normal_colour, 0);
         y = GFAYToVY(32.0f);
         for (long i = 0; i < 8 && SaveNamesOffset + i < SaveNames.size(); ++i) {
             colour = CursorHighlight == i + 1 ? highlight_colour : normal_colour;
-            PRenderManager->Draw2DText(C2DVector(0.0f, y), GFIntToWideString(i + 1) + L" - " + SaveNames[SaveNamesOffset + i], *MainFont, colour, 0);
+            GPRenderManager->Draw2DText(C2DVector(0.0f, y), GFIntToWideString(i + 1) + L" - " + SaveNames[SaveNamesOffset + i], *MainFont, colour, 0);
             line_height = MainFont->GetVFontMaxHeight();
             y += line_height;
         }
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         colour = CursorHighlight == 9 ? highlight_colour : normal_colour;
-        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"9 - Quit", *MainFont, colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"9 - Quit", *MainFont, colour, 0);
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         if (SaveNames.size() > 8) {
             colour = CursorHighlight == 0 ? highlight_colour : normal_colour;
-            PRenderManager->Draw2DText(C2DVector(0.0f, y), L"0 - See more saves", *MainFont, colour, 0);
+            GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"0 - See more saves", *MainFont, colour, 0);
             line_height = MainFont->GetVFontMaxHeight();
             y += line_height;
         }
         break;
     }
     case 12: {
-        PRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Select Profile", *MainFont, normal_colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, 0.0f), L"Select Profile", *MainFont, normal_colour, 0);
         y = GFAYToVY(32.0f);
         for (long i = 0; i < 8 && ProfileNamesOffset + i < ProfileNames.size(); ++i) {
             colour = CursorHighlight == i + 1 ? highlight_colour : normal_colour;
-            PRenderManager->Draw2DText(C2DVector(0.0f, y), GFIntToWideString(i + 1) + L" - " + ProfileNames[ProfileNamesOffset + i], *MainFont, colour, 0);
+            GPRenderManager->Draw2DText(C2DVector(0.0f, y), GFIntToWideString(i + 1) + L" - " + ProfileNames[ProfileNamesOffset + i], *MainFont, colour, 0);
             line_height = MainFont->GetVFontMaxHeight();
             y += line_height;
         }
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         colour = CursorHighlight == 9 ? highlight_colour : normal_colour;
-        PRenderManager->Draw2DText(C2DVector(0.0f, y), L"9 - Quit", *MainFont, colour, 0);
+        GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"9 - Quit", *MainFont, colour, 0);
         line_height = MainFont->GetVFontMaxHeight();
         y += line_height;
         if (ProfileNames.size() > 8) {
             colour = CursorHighlight == 0 ? highlight_colour : normal_colour;
-            PRenderManager->Draw2DText(C2DVector(0.0f, y), L"0 - See more profiles", *MainFont, colour, 0);
+            GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"0 - See more profiles", *MainFont, colour, 0);
             line_height = MainFont->GetVFontMaxHeight();
             y += line_height;
         }
@@ -237,20 +237,20 @@ void CFrontendGameComponent::Output()
             line_height = MainFont->GetVFontMaxHeight();
             y += line_height;
             colour = CursorHighlight == 10 ? highlight_colour : normal_colour;
-            PRenderManager->Draw2DText(C2DVector(0.0f, y), L"A - [Debug Profile]", *MainFont, colour, 0);
+            GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"A - [Debug Profile]", *MainFont, colour, 0);
             line_height = MainFont->GetVFontMaxHeight();
             y += line_height;
             colour = CursorHighlight == 11 ? highlight_colour : normal_colour;
-            PRenderManager->Draw2DText(C2DVector(0.0f, y), L"B - Create New Profile", *MainFont, colour, 0);
+            GPRenderManager->Draw2DText(C2DVector(0.0f, y), L"B - Create New Profile", *MainFont, colour, 0);
             line_height = MainFont->GetVFontMaxHeight();
             y += line_height;
         }
         break;
     }
     }
-    PRenderManager->Render2DDrawList(true);
+    GPRenderManager->Render2DDrawList(true);
     GPDisplayManager->EndRender();
     GPDisplayManager->SwapScreens();
-    PRenderManager->SetVWindow(full_window);
+    GPRenderManager->SetVWindow(full_window);
     font_manager->SetLoadFontGlyphsAsynchronously(load_asynchronously);
 }

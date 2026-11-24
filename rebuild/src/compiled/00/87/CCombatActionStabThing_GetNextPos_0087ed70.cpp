@@ -1,3 +1,4 @@
+// Leaf: ?GetNextPos@CCombatAction_StabThing@@UBE?AVC3DVector@@XZ
 // CCombatAction_StabThing::GetNextPos()const -- use stealth approach position on first frame and face target, otherwise retain current position.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native0087ED70,244 bytes; component54 CTCStealth, actual PDB GetPositionToMoveToForStabOn(CThing&,float&)const at donor759570 -> native746EC0.
@@ -54,7 +55,7 @@ struct CBaseObjectPointer{void* object;unsigned long refcount;};
  //00A01B50
 class CCombatAction_StabThing { public:
  virtual ~CCombatAction_StabThing();unsigned char _baseState[4];CBaseIntelligentPointer PCreature;unsigned char _beforeFrame[0xc];long FramesRunning;unsigned char _beforeTarget[0x88];CBaseIntelligentPointer PTarget;
- C3DVector GetNextPos()const;
+ virtual C3DVector GetNextPos()const;
 };
 C3DVector CCombatAction_StabThing::GetNextPos()const{
  if(FramesRunning==1){CTCStealth* stealth;if(reinterpret_cast<Creature*>(PCreature.GetPItem())->GetInterface(&stealth,54)&&reinterpret_cast<Creature*>(PTarget.GetPItem())&&!(reinterpret_cast<Creature*>(PTarget.GetPItem())->DeadFlags&1)){

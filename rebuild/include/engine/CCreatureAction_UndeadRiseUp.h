@@ -28,6 +28,15 @@ public:
     }
 protected:
     bool StillUnderground;                                               // +0x118
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNDEADRISEUP_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CCreatureAction_RiseUp chain declares at the same slot (no new slot).
+    // 0x0074DCE0 vtable 0x01268F44 slot 45: ?IsToEvadeAllHits@CCreatureAction_UndeadRiseUp@@UBE_NXZ (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual bool IsToEvadeAllHits() const;                            // 0x0074DCE0
+protected:
+#endif
 };
 #else
 #pragma pack(push, 1)

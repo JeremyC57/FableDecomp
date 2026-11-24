@@ -1,0 +1,238 @@
+GetDefName	00e6a0b0	DEF/sel=2+C	BYTES_DIFF	len=45	d:0143e8ec=?NullString@CScriptThing@@2VCCharString@@A 14:0099ec30=??0CCharString@@QAE@ABV0@@Z	SELF_DIFF bytes=False relocs=True
+GetDefName	00e9cb20	DEF/sel=2+C	BYTES_DIFF	len=45	d:0143e8ec=?NullString@CScriptThing@@2VCCharString@@A 14:0099ec30=??0CCharString@@QAE@ABV0@@Z	SELF_DIFF bytes=False relocs=True
+GetDefName	00edbd80	DEF/sel=2+C	BYTES_DIFF	len=45	d:0143e8ec=?NullString@CScriptThing@@2VCCharString@@A 14:0099ec30=??0CCharString@@QAE@ABV0@@Z	SELF_DIFF bytes=False relocs=True
+GetDefName	00ee2a80	DEF/sel=2+C	BYTES_DIFF	len=45	d:0143e8ec=?g_EmptyCharString@@3VCCharString@@A 14:0099ec30=??0CCharString@@QAE@ABV0@@Z	SELF_DIFF bytes=False relocs=False
+GetDataString	00d75060	DEF/sel=2+C	BYTES_EQUAL	len=42	d:0143e8ec=?NullString@CScriptThing@@2VCCharString@@A 14:0099ec30=??0CCharString@@QAE@ABV0@@Z	SELF_EQUAL
+GetDataString	00da8970	DEF/sel=2+C	BYTES_DIFF	len=45	d:0143e8ec=?NullString@CScriptThing@@2VCCharString@@A 14:0099ec30=??0CCharString@@QAE@ABV0@@Z	SELF_DIFF bytes=False relocs=True
+GetDataString	00df6010	DEF/sel=2+C	BYTES_DIFF	len=45	d:0143e8ec=?NullString@CScriptThing@@2VCCharString@@A 14:0099ec30=??0CCharString@@QAE@ABV0@@Z	SELF_DIFF bytes=False relocs=True
+GetDataString	00e2b090	DEF/sel=2+C	BYTES_DIFF	len=45	d:0143e8ec=?NullString@CScriptThing@@2VCCharString@@A 14:0099ec30=??0CCharString@@QAE@ABV0@@Z	SELF_DIFF bytes=False relocs=True
+GetDataString	00e5ebd0	DEF/sel=2+C	BYTES_EQUAL	len=42	d:0143e8ec=?NullString@CScriptThing@@2VCCharString@@A 14:0099ec30=??0CCharString@@QAE@ABV0@@Z	SELF_EQUAL
+SetDataString	00d17470	DEF/sel=2+C	BYTES_EQUAL	len=15		SELF_EQUAL
+SetDataString	00d38000	DEF/sel=2+C	BYTES_DIFF	len=17		SELF_DIFF bytes=False relocs=True
+SetDataString	00d387a0	DEF/sel=2+C	BYTES_DIFF	len=17		SELF_DIFF bytes=False relocs=True
+SetDataString	00e338e0	DEF/sel=2+C	BYTES_DIFF	len=17		SELF_DIFF bytes=False relocs=True
+GetPos	0089aa70	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	0089ef90	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d13580	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d17470	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d17f20	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d18df0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d19bd0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d1a740	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d1b200	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d1fd30	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d2d930	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d368d0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d40cf0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d41d00	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d43db0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d4a270	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d524a0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d52e90	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d6a560	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d6d670	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d706e0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d73970	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d75060	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d77690	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d7fe90	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00d8bcd0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00d973d0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00db2b10	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00db5330	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00dc4d70	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00dc5f80	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00dc7490	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00dce230	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00dd35d0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00dd9520	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00ddae40	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00ddb720	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00dde230	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00de3f90	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?g_ZeroVector@@3VC3DVector@@B	SELF_DIFF bytes=False relocs=False
+GetPos	00e03f70	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e055b0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e07640	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e0a820	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e0de90	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e0e040	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e0f8a0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e12580	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e1e960	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e1f0c0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e2c100	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e2f170	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e2ff00	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e33ea0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e36d50	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e37e40	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e44ea0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e479b0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e49020	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e4b5b0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e4e0e0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e50fd0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e63890	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e64210	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00e7c8e0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e84b80	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e87030	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00e8b020	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00ea1720	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00ea59e0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00ec68a0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00ed17d0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00ed3b30	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00ed5f50	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00ed94d0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00edd170	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00ee0c50	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00ee1500	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00ee57b0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00ee6850	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00ee95c0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00ef4b40	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00f04000	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00f04cc0	DEF/sel=2+C	BYTES_DIFF	len=21	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_DIFF bytes=False relocs=True
+GetPos	00f063b0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00f0c140	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00f0caa0	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetPos	00f0d630	DEF/sel=2+C	BYTES_EQUAL	len=18	8:0143e8e0=?NullCoord@CScriptThing@@1VC3DVector@@A	SELF_EQUAL
+GetAngleXY	00dd9520	DEF/sel=2+C	BYTES_DIFF	len=23	9:0122dedc=__real@00000000	SELF_DIFF bytes=False relocs=True
+GetAngleXY	00ddae40	DEF/sel=2+C	BYTES_DIFF	len=23	9:0122dedc=__real@00000000	SELF_DIFF bytes=False relocs=True
+GetAngleXY	00ddb720	DEF/sel=2+C	BYTES_EQUAL	len=20	9:0122dedc=__real@00000000	SELF_EQUAL
+GetAngleXY	00e03f70	DEF/sel=2+C	BYTES_EQUAL	len=20	9:0122dedc=__real@00000000	SELF_EQUAL
+GetAngleXY	00e4e0e0	DEF/sel=2+C	BYTES_DIFF	len=22	9:0122dedc=__real@00000000	SELF_DIFF bytes=False relocs=True
+MsgIsHitBySpecialAbilityFrom	00d45060	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitBySpecialAbilityFrom	00d4a270	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitBySpecialAbilityFrom	00e7c010	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnySpecialAbilityFrom	00d45060	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnySpecialAbilityFrom	00e7c010	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00d16570	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00d97170	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e1fcf0	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e1fef0	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e331f0	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e36390	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e53d90	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e6ad20	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e6af20	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e6b750	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e9aeb0	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00e9dc80	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00ec5140	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00ed7320	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00ed9790	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00edc980	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00edcb80	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00f061e0	DEF/sel=2+C	BYTES_DIFF	len=22		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00f09260	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+MsgIsHitByAnyAggressiveSpecialAbilityFrom	00f09950	DEF/sel=2+C	BYTES_DIFF	len=23		SELF_DIFF bytes=False relocs=True
+IsBeingCarriedBy	00dce230	DEF/sel=2+C	BYTES_DIFF	len=39		SELF_DIFF bytes=False relocs=True
+IsBeingCarriedBy	00ef2290	DEF/sel=2+C	BYTES_DIFF	len=39		SELF_DIFF bytes=False relocs=True
+IsNull	008a8af0	DEF/sel=2+C	BYTES_DIFF	len=30		SELF_DIFF bytes=False relocs=True
+IsNull	00e0de90	DEF/sel=2+C	BYTES_DIFF	len=30		SELF_DIFF bytes=False relocs=True
+IsNull	00e6a0b0	DEF/sel=2+C	BYTES_DIFF	len=21		SELF_DIFF bytes=False relocs=True
+IsNull	00e9cb20	DEF/sel=2+C	BYTES_DIFF	len=21		SELF_DIFF bytes=False relocs=True
+IsNull	00edbd80	DEF/sel=2+C	BYTES_DIFF	len=21		SELF_DIFF bytes=False relocs=True
+IsNull	00ee2a80	DEF/sel=2+C	BYTES_DIFF	len=21		SELF_DIFF bytes=False relocs=True
+??1	004aa840	DEF/sel=1+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	0089aa70	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	0089ef90	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	008a8af0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00cfe030	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d13580	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d16570	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d17470	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d40cf0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d43db0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d45060	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d4a270	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d52e90	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d6d670	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d706e0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d75060	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d77690	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d7fe90	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d8bcd0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00d97170	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00db5330	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00dc4d70	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00dc5f80	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00dd6a60	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ddae40	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ddb720	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00dde230	DEF/sel=1+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00de3f90	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00df6010	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e03f70	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e0a820	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e0de90	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e0e040	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e12580	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e1fcf0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e1fef0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e2b090	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e2f170	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e2ff00	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e331f0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e338e0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e36390	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e36d50	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e49020	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e4e0e0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e53d90	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e63890	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e64210	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e6a0b0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e6ad20	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e6af20	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e6b750	DEF/sel=1+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e7c010	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e7c8e0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e9aeb0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e9cb20	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00e9dc80	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ea1720	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ec5140	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ed3b30	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ed5f50	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ed7320	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ed94d0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ed9790	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00edbd80	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00edc980	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00edcb80	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00edd170	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ee1500	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ee57b0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00ee6850	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00f061e0	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00f09260	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00f09950	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00f0b130	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00f0c140	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??1	00f0fb70	DEF/sel=2+C	BYTES_EQUAL	len=66	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-
+??0	004abe90	DEF/sel=1+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	0089aa70	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	0089ef90	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	008a8af0	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00d4a270	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00d77690	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00d8bcd0	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00d973d0	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00da8970	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00db5330	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00dc4d70	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00dc5f80	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00dce230	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00de3f90	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00df6010	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00e0e040	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00e2ff00	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00e33ea0	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00e50fd0	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00e5ebd0	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00e63890	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00ed17d0	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-
+??0	00ee6850	DEF/sel=2+C	BYTES_EQUAL	len=33	8:01238c8c=??_7CScriptThing@@6B@	-

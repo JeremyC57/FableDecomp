@@ -10,12 +10,18 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class COracleMinigameTestScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_ORACLE_MAIN_TEST_PASS27
+    COracleMinigameTestScript(CScriptDataBase*, CGameScriptInterfaceBase&);
+#endif
     virtual void RegisterMain();
     virtual void Init();
     virtual void Main();
     bool MissionSucceeded;
     class COracleSpectator : public CEntityScriptBase {
     public:
+#ifdef FABLE_RETAIL_ORACLE_MAIN_TEST_PASS27
+        COracleSpectator(COracleMinigameTestScript&, CScriptDataBase*, const CScriptThing&);
+#endif
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(COracleMinigameTestScript&,CScriptDataBase*,const CScriptThing&);
         virtual CScriptBase* GetParentScript() const;
         CQ_SunnyvaleMasterData* GetMasterData();
@@ -54,6 +60,6 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::COracleMinigameTestScript)==0x4c);
-FABLE_STATIC_ASSERT(sizeof(NScript::COracleMinigameTestScript::COracleGamesmaster)==0x20);
+FABLE_STATIC_ASSERT_AT(57, sizeof(NScript::COracleMinigameTestScript)==0x4c);
+FABLE_STATIC_ASSERT_AT(58, sizeof(NScript::COracleMinigameTestScript::COracleGamesmaster)==0x20);
 #endif

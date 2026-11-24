@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CMazeBattleDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CMazeBattleDef_GetSizeofClass()
+class CMazeBattleDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CMazeBattleDef::GetSizeofClass()
 {
     return 96;
 }

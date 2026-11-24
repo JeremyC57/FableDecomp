@@ -13,8 +13,8 @@ struct Event { int kind; long action; Vec2 Position; float wheel; };
 struct Proc {
     MapTC* heroMap; bool hasMap; signed char playerNumber;
     bool IsEventButtonPressed(const Event& e) { return e.kind == PRESSED; }
-    bool IsEventButtonHeld(const Event& e) { return e.kind == HELD; }
     bool IsEventButtonReleased(const Event& e) { return e.kind == RELEASED; }
+    bool IsEventButtonHeld(const Event& e) { return e.kind == HELD; }
     bool IsEventGameAction(long a, const Event& e) { return e.action == a; }
     bool ProcessInput(const Event& event)
     {
@@ -30,7 +30,7 @@ struct Proc {
             else if (IsEventGameAction(0x27, event)) { if (!g_fe.busy) Send(5); }
             else if (IsEventGameAction(0x28, event)) { if (!g_fe.busy) Send(4); }
             else return false;
-        } else if (IsEventButtonHeld(event)) {
+        } else if (IsEventButtonReleased(event)) {
             if (IsEventGameAction(0x19, event)) Send(0x1c);
             else if (IsEventGameAction(0x4c, event)) Send(0x1d);
             else if (IsEventGameAction(0x48, event)) {
@@ -38,7 +38,7 @@ struct Proc {
                 GameEvent ge; ge.Type = 0x1b; ge.Player = -1; ge.Player = playerNumber;
                 g_lastGameEvent = ge; g_gameEvents++;
             } else return false;
-        } else if (IsEventButtonReleased(event)) {
+        } else if (IsEventButtonHeld(event)) {
             if (IsEventGameAction(0x19, event)) Send(0x1f);
             else if (IsEventGameAction(0x4c, event)) Send(0x20);
             else if (IsEventGameAction(0x58, event)) Send(6);
@@ -65,17 +65,17 @@ int main()
     bool ok = true;
     ok = ok && p.ProcessInput(Ev(PRESSED, 0x28)) && g_fe.lastEvent == 4;
     ok = ok && !p.ProcessInput(Ev(PRESSED, 0x99));
-    ok = ok && p.ProcessInput(Ev(HELD, 0x48)) && g_gameEvents == 1 && g_lastGameEvent.Type == 0x1b && g_lastGameEvent.Player == 2;
-    ok = ok && p.ProcessInput(Ev(RELEASED, 0x66)) && g_fe.lastEvent == 0xd && g_fe.zoom.X == -1.0f;
-    ok = ok && p.ProcessInput(Ev(RELEASED, 0x68)) && m.pans == 1 && m.pan.X == -1.0f && m.pan.Y == 0.0f;
+    ok = ok && p.ProcessInput(Ev(RELEASED, 0x48)) && g_gameEvents == 1 && g_lastGameEvent.Type == 0x1b && g_lastGameEvent.Player == 2;
+    ok = ok && p.ProcessInput(Ev(HELD, 0x66)) && g_fe.lastEvent == 0xd && g_fe.zoom.X == -1.0f;
+    ok = ok && p.ProcessInput(Ev(HELD, 0x68)) && m.pans == 1 && m.pan.X == -1.0f && m.pan.Y == 0.0f;
     p.hasMap = false;
-    ok = ok && p.ProcessInput(Ev(RELEASED, 0x69)) && m.pans == 1;
+    ok = ok && p.ProcessInput(Ev(HELD, 0x69)) && m.pans == 1;
     ok = ok && p.ProcessInput(Ev(OTHER, 0x47)) && g_fe.mouse.Y == 4.0f && g_fe.lastEvent == 0x19;
     ok = ok && p.ProcessInput(Ev(OTHER, 0x65)) && g_fe.scroll == 2;
     ok = ok && !p.ProcessInput(Ev(OTHER, 0x19));
     g_fe.busy = true; g_fe.lastEvent = 77;
     ok = ok && p.ProcessInput(Ev(PRESSED, 0x27)) && g_fe.lastEvent == 77;
-    ok = ok && !p.ProcessInput(Ev(HELD, 0x48)) && g_gameEvents == 1;
+    ok = ok && !p.ProcessInput(Ev(RELEASED, 0x48)) && g_gameEvents == 1;
     g_fe.busy = false;
     ok = ok && p.ProcessInput(Ev(PRESSED, 0x27)) && g_fe.lastEvent == 5;
     if (!ok) { std::printf("0068b2e0_TEST FAIL\n"); return 1; }

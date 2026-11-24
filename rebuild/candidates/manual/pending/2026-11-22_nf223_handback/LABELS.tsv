@@ -1,0 +1,3 @@
+file	line	address	action	old_name	new_name	evidence
+ghidra_out/labels_forge_autoname4.tsv	1598	00b2fd60	replace name (or delete the line: labels_landing_2026-11-07t.tsv line 2 already names it)	CPlane_InitializeFromCorners	CEngineCamera::SetupGamut	Ego_r.pdb + FableWin.pdb ?SetupGamut@CEngineCamera@@AAEXXZ (both PDBs carry it); landed caller 0x00B30B50 CEngineCamera::SetCameraState binds that spelling at 0x00B2FD60 (graded RELOCATION_MATCH, work/e7_hb.tsv; reloc_bindings line 39430); autoname4 was a body-shape guess (conf=high)
+ghidra_out/engine_api.tsv	37056	00b2fd60	regenerate or respell (derived dump carries the autoname)	CPlane_InitializeFromCorners	CEngineCamera::SetupGamut	same

@@ -1,0 +1,20 @@
+## 00beaa00
+sections head 2 new 2
+DIFF 0 .drectve .drectve bytes False relocs True 42 62
+NOT_EQ 1
+## 00bfdd40
+sections head 2 new 2
+DIFF 0 .drectve .drectve bytes False relocs True 42 62
+NOT_EQ 1
+## 00bfd480
+sections head 5 new 5
+ALL_EQ 0
+## 00bfde20
+sections head 5 new 5
+ALL_EQ 0
+## 00beaaa0
+sections head 2 new 2
+ALL_EQ 0
+## 00beb4d0
+sections head 2 new 2
+ALL_EQ 0

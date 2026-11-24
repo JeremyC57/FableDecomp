@@ -24,7 +24,7 @@ public:
     float FadeOutTime;                             // +0x180
     virtual void Update(float deltaTime);
     void Refresh();                                // 0x00557000
-    void ClearList();                              // 0x005567B0
+    protected: void ClearList(); public:                              // 0x005567B0
 };
 
 void CRedefinerList::Update(float deltaTime)

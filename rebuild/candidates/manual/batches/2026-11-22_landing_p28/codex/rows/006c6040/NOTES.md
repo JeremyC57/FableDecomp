@@ -1,0 +1,3 @@
+# CTCHeroOpinionDeedLog::InformRelevantThingsOfDeed
+
+All 2,377 bytes and 742 instructions match. All 65 primary operands and 26 emitted function copies pass after applying the documented getter correction and verifying the additional owners. The 46-byte GetDeedFromHandle calls the 71-byte member-template find<long>. The original ParentThing dereferences, the faction branch, and the cached list end iterators reproduce the native frame and scheduling. The self-contained RTM test runs the selected member with the original enumerator values and exercises both faction directions, guard duplicates, deed filtering, sleeping villagers, village notification and unknown-threat delivery.

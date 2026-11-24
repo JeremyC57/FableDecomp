@@ -1,5 +1,8 @@
 #ifndef FABLE_ENGINE_IDIRECT3DDEVICE9_H
 #define FABLE_ENGINE_IDIRECT3DDEVICE9_H
+#ifdef FABLE_RETAIL_ORIGINAL_PRIMITIVE_TO_D3D_PASS26
+#include "engine/Direct3D9Types.h"
+#endif // FABLE_RETAIL_ORIGINAL_PRIMITIVE_TO_D3D_PASS26
 // IDirect3DDevice9 (DirectX 9 SDK d3d9.h, DECLARE_INTERFACE_(IDirect3DDevice9, IUnknown)): the COM device interface the engine
 // calls through its vtable (Fable.exe imports d3d9.dll; Ego_r.pdb keys it `U`, ?Initialise@CShaderRenderManager@@QAEXPAVCRenderManager@@PAUIDirect3DDevice9@@@Z).
 // Methods in SDK order and with SDK names (slot N at +4N; e.g. SetTexture 65 +0x104, SetStreamSource 100 +0x190, SetIndices 104
@@ -124,7 +127,11 @@ struct IDirect3DDevice9 {
     virtual long __stdcall SetNPatchMode(float nSegments) = 0;   // slot 79 (+0x13c)
     virtual float __stdcall GetNPatchMode() = 0;   // slot 80 (+0x140)
     virtual long __stdcall DrawPrimitive(unsigned long PrimitiveType, unsigned int StartVertex, unsigned int PrimitiveCount) = 0;   // slot 81 (+0x144)
+#ifdef FABLE_RETAIL_ORIGINAL_PRIMITIVE_TO_D3D_PASS26
+    virtual long __stdcall DrawIndexedPrimitive(D3DPRIMITIVETYPE PrimitiveType, int BaseVertexIndex, unsigned int MinVertexIndex, unsigned int NumVertices, unsigned int startIndex, unsigned int primCount) = 0;   // slot 82 (+0x148)
+#else
     virtual long __stdcall DrawIndexedPrimitive(unsigned long PrimitiveType, int BaseVertexIndex, unsigned int MinVertexIndex, unsigned int NumVertices, unsigned int startIndex, unsigned int primCount) = 0;   // slot 82 (+0x148)
+#endif // FABLE_RETAIL_ORIGINAL_PRIMITIVE_TO_D3D_PASS26
     virtual long __stdcall DrawPrimitiveUP(unsigned long PrimitiveType, unsigned int PrimitiveCount, const void* pVertexStreamZeroData, unsigned int VertexStreamZeroStride) = 0;   // slot 83 (+0x14c)
     virtual long __stdcall DrawIndexedPrimitiveUP(unsigned long PrimitiveType, unsigned int MinVertexIndex, unsigned int NumVertices, unsigned int PrimitiveCount, const void* pIndexData, unsigned long IndexDataFormat, const void* pVertexStreamZeroData, unsigned int VertexStreamZeroStride) = 0;   // slot 84 (+0x150)
     virtual long __stdcall ProcessVertices(unsigned int SrcStartIndex, unsigned int DestIndex, unsigned int VertexCount, IDirect3DVertexBuffer9* pDestBuffer, IDirect3DVertexDeclaration9* pVertexDecl, unsigned long Flags) = 0;   // slot 85 (+0x154)

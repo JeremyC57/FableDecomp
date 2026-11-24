@@ -82,7 +82,7 @@ class CHeightMap : public CBaseClassNonCopyable { public:        // vtable 0x012
     long                 SizeXIncludingExtraCells; // +0x20c
     long                 SizeYIncludingExtraCells; // +0x210
     CHeightMap(CWorld* world, CMap* map, const SHeightMapSize& size);
-    void Clear();                                  // 0x008F6050
+private: void Clear();                             // 0x008F6050
 };
 
 CHeightMap::CHeightMap(CWorld* world, CMap* map, const SHeightMapSize& size)

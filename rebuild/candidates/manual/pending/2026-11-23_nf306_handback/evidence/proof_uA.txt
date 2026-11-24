@@ -1,0 +1,60 @@
+##### 00602f30 renames: ?ReleaseMapScreenPrimitives@CTCInventoryMap@@QAEXXZ=?ResetPrimitiveHandles@CTCInventoryMap@@QAEXXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 0096ea50 renames: ?IsAttackerReadyToAttack@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z=?IsCreatureOnRotatingCombatRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 0093db70 renames: ?CCombatWheel_ValidateSequencePosition@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z=?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z ?Combat_ProximityCalculation@CCombatManager@@QAEMPAVCThingCreatureBase@@@Z=?GetCombatWheelRadiusForAttacker@CCombatManager@@QBEMABVCThingCreatureBase@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 0096e700 renames: ?IsPositionOccupied@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z=?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 0093e090 renames: ?OnCombatPositionUnreachable@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z=?SetAttackerProngAsInvalid@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 00662550 renames: ?AddCreature@CCreatureInteraction@@QAEXPAVCThingCreatureBase@@@Z=?AddParticipant@CCreatureInteraction@@QAEXAAVCThingCreatureBase@@@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 0049e370 renames: ?SetCameraThemes@CEnvironment@@QAEXJJPBJPBMJ@Z=?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 0076d460 renames: ?IsAlliedWith@CFaction@@QBE_NPBV1@@Z=?IsAlliedWithFaction@CFaction@@QBE_NABV1@@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00a032f0 renames: ?InternalAllocate@CHandleBasedMemoryPool@@QAE_NAAJJJ@Z=?Allocate@CHandleBasedMemoryPool@@QAE_NPAJKK@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00828590 renames: ?GetNextRegionOnWayToRegion@CRegionConnectionNode@@QAEJJPAVCRegionConnectionGraph@@@Z=?GetNextNodeOnWayToRegion@CRegionConnectionNode@@QBEJJABVCRegionConnectionGraph@@@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00587a41 renames: ?ClearHighlights@CTCInventory@@QAEXJ@Z=?DeactivateAllEditBoxes@CTCInventory@@QAEX_N@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=11
+tables H=0 N=0
+##### 0066b300 renames: ?PlayAttachedSampleIndex@CTCSoundPlayer@@QAEKPAVCASoundBank@@JPAVCSoundInit@@_N22@Z=?InternalPlayAttachedSample@CTCSoundPlayer@@AAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00b3b4f0 renames: ?ResizePoolByFormat@CTextureManager@@QAE_NJJ@Z=?ResizePoolTextureCount@CTextureManager@@QAE_NKK@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00945610 renames: ?Query_009455b0@CAIStateGroup_SitForMeal@@QAEEXZ=?IsMealTime@CAIStateGroup_SitForMeal@@ABE_NXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00945b90 renames: ?IsInMealHours@CAIStateGroup_WorkBase@@QAE_NXZ=?IsMealTime@CAIStateGroup_SitForMeal@@ABE_NXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

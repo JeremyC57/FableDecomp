@@ -103,13 +103,13 @@ template <> __declspec(noinline) bool CDefinitionManager::GetDef<CThingBaseDef>(
 // NUISystem::CDeletion {Method, AssociatedParents} (engine/NUISystem_CDeletion.h): it goes to CComponent slot 62 (+0xF8)
 // SetDeletion(NUISystem::CDeletion) by value (engine/NUISystem_CComponent.h), so 0x0042BED4 / 0x0042CD84 are
 // ??0CDeletion@NUISystem@@QAE@XZ / ??0CDeletion@NUISystem@@QAE@ABV01@@Z (FABLE_RETAIL_CDELETION) and Method 1 = UI_DELETE_THIS_INSTANCE;
-// slot 3 is FindChild(CCharString), slot 93 MakeUnavailableDynamically (was Slot93). ~list<CComponent*> 0x0042ABCA is called out of
-// line while this TU's list<long> keeps its out-of-line _List_base: declared here as an explicit specialisation, as the row does for
-// list<long>::erase.
+// slot 3 is FindChild(CCharString), slot 93 MakeUnavailableDynamically (was Slot93). The AssociatedParents destructor call is
+// _List_base<CComponent*>::~_List_base 0x0042ABCA (NF241, 2026-11-22: was an explicit `~list()` specialisation binding
+// ??1?$list there; retail 0x0042B6D2 is list<CComponent*>'s own `~list() {}`, a 5-byte `jmp 0x0042ABCA`), declared out of line by
+// FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE like this TU's list<long> base.
 #define FABLE_RETAIL_CDELETION
 #include "engine/NUISystem_CComponent.h"
 #include "engine/NUISystem_CDeletion.h"
-template<> std::list<NUISystem::CComponent*, std::allocator<NUISystem::CComponent*> >::~list();   // 0x0042ABCA
 struct SClothingEntry { long SuitPart; NUISystem::CComponent* Component; };
 struct CClothingEntryVector {
     SClothingEntry* _M_start;

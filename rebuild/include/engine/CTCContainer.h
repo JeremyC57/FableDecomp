@@ -26,6 +26,11 @@ protected:
     void AddItemToInventory(CThing& item);                               // 0x008ED090
 #endif
 protected:
+#ifdef FABLE_RETAIL_REWARD_PICKUP_PASS27
+public:
+    void InsertItem(long,const CCharString&);
+protected:
+#endif
     std::vector<std::pair<long,CCharString> > ContainerItems;
 #ifdef FABLE_RETAIL_CTCCONTAINER_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).

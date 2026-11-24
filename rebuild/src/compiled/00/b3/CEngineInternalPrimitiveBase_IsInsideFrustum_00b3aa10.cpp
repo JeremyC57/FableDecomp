@@ -1,7 +1,10 @@
-// Leaf: ?IsInsideFrustum@CEngineInternalPrimitiveBase_Methods@@QAE_NHH@Z
-#include "engine/CEngineInternalPrimitiveBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CEngineInternalPrimitiveBase_Methods : CEngineInternalPrimitiveBase {
-    bool IsInsideFrustum(int camera, int a1);
-};
-bool CEngineInternalPrimitiveBase_Methods::IsInsideFrustum(int camera, int a1) { return true; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CEngineInternalPrimitiveBase.h under FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED with the PDB parameter / return types (was ?IsInsideFrustum@CEngineInternalPrimitiveBase_Methods@@QAE_NHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "stlport/fable_map.h"
+#include "engine/CEngineInternalPrimitiveBase.h"
+bool CEngineInternalPrimitiveBase::IsInsideFrustum(const CEngineCamera& camera, bool a1) { return true; }

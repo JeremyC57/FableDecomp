@@ -1,5 +1,5 @@
 // CGameScriptInterface::MsgOnBoastsMade(std::vector<std::pair<long, CCharString> >& boasts) const -- append (boast id, text) for every "boasts made" message (type 0x29) seen or heard since the previous frame; true when there was at least one
-// Leaf: MsgOnBoastsMade
+// Leaf: ?MsgOnBoastsMade@CGameScriptInterface@@UBE_NAAV?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A9AE0, length 344 bytes (`ret 4`, bool in al, 8-aligned ebp frame).
 // Callees: the frame getters 0x006E7510 / 0x006E7530, CMessageEventManager::FindAllMessages<CFilter_Bind2<IsOfType,
 //   CanBeSeenOrHeard>> @ 0x006178F0 (fills a std::list of message pointers) through CWorld+0x60, malloc @ 0x00BFEA0E /
@@ -11,35 +11,18 @@
 //   with the list destructor inlined into both returns.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-inline void* operator new(unsigned int, void* where) { return where; }
-class CCharString { public:
-    void* m_pData;
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-struct CBoastPair {                                     // std::pair<long, CCharString>
-    long        first;
-    CCharString second;
-    CBoastPair(const long& a, const CCharString& b) : first(a), second(b) {}
-    CBoastPair(const CBoastPair& o) : first(o.first), second(o.second) {}
-};
-struct __false_type { __false_type() {} };
-struct CBoastVector {                                   // STLport vector<pair<long, CCharString> >
-    CBoastPair* _M_start;
-    CBoastPair* _M_finish;
-    CBoastPair* _M_end_of_storage;
-    void _M_insert_overflow(CBoastPair* position, const CBoastPair& x, const __false_type&,
-                            unsigned long fill_len, bool atend);   // 0x0074FCE0
-    void push_back(const CBoastPair& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) CBoastPair(x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
+// NF254 (2026-11-22, CODEXP27 L4 / L5 family): the boast vector, its element and CCharString were the row-local CBoastVector / CBoastPair /
+//   CCharString stand-ins (0x0074FCE0 bound as ?_M_insert_overflow@CBoastVector@@..., the row's own leaf QBE over CBoastVector&); they now
+//   come from the shared headers (fable_string.h CCharString, stlport/fable_containers.h vector<pair<long, CCharString> > with the overflow
+//   declaration only: FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY), so the call binds the protected STLport spelling the self row 0x0074FCE0
+//   defines, and the row's own leaf is the PDB one: Ego_r.pdb and FableWin.pdb both spell
+//   ?MsgOnBoastsMade@CGameScriptInterface@@UBE_NAAV?$vector@U?$pair@JVCCharString@@@std@@...@std@@@Z (public virtual const: retail vtable
+//   0x01260F0C slot 34 holds 0x008A9AE0). The `virtual` is an in-place respell of the row's local CGameScriptInterface model (nf248 ruling 1 /
+//   nf250 ruling 4); the other local models are as at HEAD.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
 struct CBoastPayload {
     long        m_id;                                   // +0x00
     long        _pad04[2];
@@ -126,10 +109,10 @@ protected:
     long GetMinWorldFrameForMessages() const;   // 0x006E7510
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
 public:
-    bool MsgOnBoastsMade(CBoastVector& boasts) const;
+    virtual bool MsgOnBoastsMade(std::vector<std::pair<long, CCharString> >& boasts) const;   // vtable 0x01260F0C slot 34
 };
 
-bool CGameScriptInterface::MsgOnBoastsMade(CBoastVector& boasts) const
+bool CGameScriptInterface::MsgOnBoastsMade(std::vector<std::pair<long, CCharString> >& boasts) const
 {
     long frame = GetMinWorldFrameForMessages();
     long maxFrame = GetMaxWorldFrameForMessages();
@@ -138,7 +121,7 @@ bool CGameScriptInterface::MsgOnBoastsMade(CBoastVector& boasts) const
     messages->FindAllMessages(CMessageEventFilter_IsOfType(0x29) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame), found);
     for (SMessageNode* it = found._M_node->_M_next; it != found._M_node; it = it->_M_next) {
         CBoastPayload* boast = it->_M_data->m_extraData;
-        boasts.push_back(CBoastPair(boast->m_id, boast->m_text));
+        boasts.push_back(std::pair<long, CCharString>(boast->m_id, boast->m_text));
     }
     if (found.size() != 0)
         return true;

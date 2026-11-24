@@ -1577,3 +1577,55 @@ against CODAApi.lib, or stay compiled C++?
   defer3.py) breaks three landed same-TU helpers, so "COMDAT after X" is no evidence X took the budget path. 0x00BD3070: with no row
   asserts plus the landed FABLE_RETAIL_CARRAY_INDEX_ASSERT opt-in the re-based draft is equal length (11288v11288, 62 hunks of c2
   numbering ties); the cross-jump gap in the assert-free variants flips with assert count alone.
+- 2026-11-21 (A, landing p25): Codex pass 25 returned five VERIFIED_MATCH rows. All five leaves grade RELOCATION_MATCH + PASS under
+  strict headers. Two landed (0x00B0DC20, 0x00C4F600). Three are held because their objects define pick-any copies that differ from
+  Fable.exe at the owners' addresses: 0x0078FD60 / 0x00795300 (leaf-bound GetAllThingsInRoughArea x2, map::operator[] and
+  vector::push_back, newly bound) and 0x0064FDB4 (/Os: Clear, which a speed-mode scaffolding opt-in fixes, plus HasTC 0x004118C0 and
+  LowerBound 0x004365B0). Evidence: pending/2026-11-21_codex_pass25_open/held/HELD.md. Also, 0x00797740 (14 bytes) and 0x00797750
+  (11 bytes), just past 0x00795300's leaf end 0x00797734, are code that no manifest row covers.
+- 2026-11-21 (Account A, landing nf214): `rebuild/build_candidates.ps1` uses an entry's `CompilerFlags` INSTEAD of the default `/O2 /Oy /W3`
+  (`$entryFlags = ... -split ... else @('/O2','/Oy','/W3')`), so a bare value builds that row unoptimised. 15 landed entries carry one:
+  0x00C8DB10 '/Gr', 0x009A4350 / 0x009C6020 / 0x00BD9B90 / 0x00A02190 / 0x00A02220 / 0x009D61F0 / 0x009A1660 '/d2inlT114', 0x009D52D0
+  '/d2inlT78', 0x00BDE860 '/d2inlT91', 0x00E0A510 / 0x00DA8510 '/d2inlS22', 0x00B21E90 '/d2inlS84', 0x005414A0 '/d2inlS12', 0x004333B3
+  '/d2inlS34'. The lane's `recheck.py` also mis-grades them: it adds `/Oy-` to such an entry (0x005414A0 / 0x00E0A510 graded DIFFER in the
+  nf214 recheck and RELOCATION_MATCH with their own `// Flags:` lines). Fix: write each as `/O2 /Oy /W3 <extra>` (verify_and_land.py's own
+  form) and regrade; nf214's two new entries use the full form. Not changed in nf214 (outside its scope).
+- 2026-11-21 (Account A, NF215, landing nf215): 0x006D41F0 CPersistTraits<pair<CCharString,long>>::TransferIn stays blocked. The advisor
+  form (plain inline `CCharString::operator!=(const char*)`, the "(" test as `ReadAsSymbol() != "("`) grades DIFFER(307v295), the same
+  object as NF209 form 1: the != folds into the same Compare expansion as the == spelling. Against the hypothesis: retail has an
+  out-of-line `??9CCharString@@QBE_NPBD@Z` at 0x0099E960 (landed, 65 B, calls 0x004115A0) that FableWin.pdb 0x02F61900 places with the
+  CCharString .cpp bodies, and 0x006D41F0 never calls it. Still to try: a "(" test that reaches CBasicString<char>::Compare directly, with
+  the other two tests calling 0x004115A0. CCharString cannot call the protected static Compare, so that body changes fable_string.h access
+  (a header claim). Keep 0x006D41F0 / 0x006D4180 out of naming slices until then.
+- 2026-11-21 (Account A, NF216, landing nf216): VC7.1 compiles a template member's implicit instantiation (a pick-any COMDAT) in the `#pragma optimize` mode in
+  force at the END of the TU; moving the row-head optimize("s") after the header include (0x00CBFB7D f3) and an explicit
+  instantiation between optimize("t") and ("s") (0x005A5B31 f2) leave the size-mode copy, and an end-of-TU optimize("", on) gives
+  the owner copy but changes the leaf and 61 other COMDATs (0x005A5B31 f3). Ordinary inline functions, including a non-template
+  explicit specialization, take the mode at their definition: the 0x005A4CDD draft (Flags above) is the measured exception.
+- 2026-11-21 (Account A, NF216, landing nf216): 0x004FE630's NF62 residue (PStringData reloaded after each == call) is gone with TEXT_EQ_NOINLINE_COMPARE_ZERO +
+  COMPARE_BODY; what is left is a loop-counter register choice (DIFFER(453v440), above).
+- 2026-11-21 (Account A): VC10 SP1 (cl 16.00.40219.01) is on the lane as an evidence tool (docs/BUILDING.md "VC10 SP1"). With Ego_d's own
+  flags it reproduces Ego_d's sizes where VC7.1 /Od did not: C3DKeyframe::SetScaling 34 (VC7.1 30), GetMaximumAbsoluteComponent 259
+  (body 244; VC7.1 212). C3DAnimFileSequenceChunk::GetBoneName (47 v Ego_d 49) and C3DVectorWord::operator== (82 v 86) still differ under
+  VC10, so for those two the gap is a real text difference, not compiler drift. Earlier size-only "contradicts Ego_d" rejections, all
+  measured with VC7.1, should be re-measured with odall10.py before they are cited.
+- 2026-11-21 (Account A, correction to the VC10 entry above): GetBoneName and C3DVectorWord::operator== DO equal Ego_d under VC10 (49, 86).
+  The 47 / 82 came from a `.cod` parser bug: an instruction longer than 5 bytes wraps onto a continuation line (`\t00 00\t\t mov ...`)
+  that the regex skipped. The same bug is in AUTH1's `odl.py` and AUTH2's `odall.py` (pending/2026-11-21_auth1, _auth2; both patched
+  now): every /Od line size measured with them before this date undercounts lines holding a 6+ byte instruction (imm32 stores, fs:0,
+  far displacements). Re-measure before citing any such size. odall10.py also now skips EH unwind funclets (text$x), which a PDB line
+  table does not attribute to the function's lines. Two more corrections: (1) the flags first used were the game project's
+  (`-GS -GR- -Gd -D_STLP_DEBUG`, few objects); the libraries (871 FableLib / 231 BBB / 100 FableEngine / 20 ParticleSystem compilands) use
+  `-GS- -GR -Gr`, now `odall10.py --lib`. (2) Ego_d's library STL is VC10 Dinkumware; `odall10.py --stl` (VC10 headers) reproduces all 13
+  `vector<unsigned long>` members of lib_bank_file.obj, so STL statements are exact evidence only in that mode.
+- 2026-11-21 (Account A AUTH5, VC10 odall10 --stl, NShape pair in FableLib tc_geometric_shapes.obj): the earlier size rulings on the pair
+  were VC7.1 /Od measurements with a byte-dropping parser. Exact VC10 results: 0x00763060's "lines 199 / 204 leave no room for the
+  post-increment" rejection rested on attribution and is withdrawn (Ego_d 207 `find_if(it_start, ...)` 168 B, then 210 `it_start++;` 28 B);
+  0x007602F0's three-float edge constructor stays rejected (66 / 86 B v Ego_d 24 / 44 = `v = second - first; v.Normalise();`). With the
+  Ego_d text plus the Inferred PAREN_CAST opt-in 0x007602F0 matches retail bytes; Ego_d 313 / 342 are still unexplained. Equal size is
+  necessary, not sufficient. (Correction, AUTH6: p25Q's 197 decode `it_anchor = begin() + 1` measures 69 B, not 74, so size alone refutes
+  it; it is not an example of two texts measuring the same.)
+- 2026-11-21 (Account A AUTH6, 0x007602F0 landed): Ego_d's VC10 /Od sizes pin a construct's IL, not its spelling. Line 313's +9 B is a bool
+  compared with zero (`!= false`, `!= 0`, `!!(..)` all 100 B) and line 342's +12 B an explicit float narrowing (`(float)(..)`, float(),
+  static_cast all 122 B); VC7.1 /O2 folds both, so retail cannot select them. Label such spellings Inferred (spelling chosen inside the
+  family). A size gap equal to a destructor group is not proof of an extra object: check the frame (an extra iterator moves the locals).

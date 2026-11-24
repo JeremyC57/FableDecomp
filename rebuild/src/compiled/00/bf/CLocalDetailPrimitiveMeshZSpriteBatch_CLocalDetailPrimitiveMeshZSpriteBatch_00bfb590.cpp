@@ -8,6 +8,7 @@
 // ZSpriteEntries +0x3C, ObjectCount +0x40, ZSpriteHandle +0x48 (engine headers carry the donor layout, renderer +0xF58 vs retail +0x6B0).
 // Shape: Objects and ObjectCount are read into locals (the Objects load is scheduled above the vtable store); the manager local is kept in
 // the frame word across the object loop; the object array is destroyed by an
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer 0x01436EA8 (landed opt-in)
 #include "fable_compiler.h"
 #include "engine/CEnginePrimitiveRenderer.h"
 #define CMovableResource CMovableResourceDonor
@@ -157,17 +158,14 @@ class CEngineLandscapeMemoryManager : public CEngineLandscapeMemoryManagerLayout
 public:
     void FreeVirtual(void*);   // 0x00BD9B90
 };
-// Methods projection inherits the complete actual layout; no additional data.
-struct LandscapeMemoryMethods : CEngineLandscapeMemoryManager { void FreeAlignedVirtual(void*); }; // 0x00BD9B90
 // Actual complete donor header audited before grade. Native renderer projection follows
 // the retail manager access: 6B0, versus donor F58 after its larger MeshBuilder.
 #include "engine/CEngineLandscapeRenderer.h"
-struct LocalDetailEngine { unsigned char BeforeLandscapeMemory[0x6b0]; LandscapeMemoryMethods* LandscapeMemory; };
-extern LocalDetailEngine* g_LocalDetailEngine; // 0x01436EA8
+// The manager is reached as retail does: GPLandscapeRenderer (0x01436EA8) -> MemoryManager (+0x6B0).
 CLocalDetailPrimitiveMeshZSpriteBatch::~CLocalDetailPrimitiveMeshZSpriteBatch()
 {
  CObject* objects=Objects;
- LandscapeMemoryMethods* manager=g_LocalDetailEngine->LandscapeMemory;
+ CEngineLandscapeMemoryManager* manager=NEngineInternal::GPLandscapeRenderer->MemoryManager;
  long count=ObjectCount;
  if(objects){
   for(long i=0;i<count;++i) objects[i].~CObject();

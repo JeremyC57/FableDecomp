@@ -1,58 +1,16 @@
-#pragma optimize("s",on)
-// Leaf: @CAssoc_scalar_deleting_dtor@12
-#include "rebuild_abi.h"
-
-// CAssoc::`scalar deleting destructor' @ 0x0042a8e0
-// module: CAssoc   (thiscall, returns void*, 2 params)
-// VC7.1, x86, /O2 /Oy.
-//
-// OVER-CAPTURE: the 100-byte retail slice packs SEVEN contiguous routines with
-// NO inter-function padding (no int3 between them).  Only the LEADING 28-byte
-// (0x00..0x1b, `ret 4`) scalar deleting destructor belongs to CAssoc; it is the
-// only function reconstructed here.  real_len = 28.  The six trailing orphans
-//   0x1c  mov eax,[esp+4]; add eax,0x10; ret          (a +0x10 getter)
-//   0x24  mov eax,[esp+4]; add eax,0x10; ret          (identical getter copy)
-//   0x2c  test ecx,ecx; je .; push edx; call rel32; ret (guarded notify)
-//   0x37  test ecx,ecx; je .; copy 8 bytes edx->ecx; ret (guarded copy-out)
-//   0x46  … identical guarded copy-out
-//   0x55  … identical guarded copy-out
-// are separate functions and are intentionally NOT reproduced.
-//
-// Retail idiom (canonical MSVC scalar-deleting-destructor with an inlined
-// non-deleting destructor call):
-//   push esi; mov esi,ecx        ; self = this (ecx), kept in a callee-saved reg
-//   call <CAssoc::~CAssoc>       ; ecx still = this -> non-deleting dtor (thiscall)
-//   test byte ptr [esp+8],1      ; flags & 1 ?
-//   je  skip
-//   push esi; call operator delete; pop ecx
-// skip:
-//   mov eax,esi; pop esi; ret 4  ; return this
-//
-// The non-deleting destructor is thiscall (ecx = this); because `this` is still
-// live in ecx right after `mov esi,ecx`, it is modeled as a free __fastcall that
-// receives the object pointer in ecx.  operator delete is the ordinary __cdecl
-// global.  Both call rel32 targets are relocation-masked in parity, so the
-// concrete symbol addresses do not affect the byte match.  The deleting
-// destructor takes ecx = this and pops its single flags dword (`ret 4`); it is
-// modeled __fastcall with a trailing stack `flags` parameter and returns this.
-
-struct CAssoc;
-
-// Non-deleting destructor CAssoc::~CAssoc (thiscall / ecx = this), modeled as a
-// free __fastcall that takes the object pointer in ecx.
-extern "C" void FABLE_FASTCALL CAssoc_dtor(CAssoc* thisptr);
-
-// Global scalar operator delete (__cdecl).
-
-extern "C" void* FABLE_FASTCALL CAssoc_scalar_deleting_dtor(
-        CAssoc* thisptr,
-        int /*edx*/,
-        unsigned int flags)
-{
-    CAssoc_dtor(thisptr);
-
-    if (flags & 1)
-        operator delete(thisptr);
-
-    return thisptr;
-}
+// std::pair<const CCharString, CCountedPointer<NUISystem::CComponent> >::`scalar deleting destructor' -- destroy the pair (out-of-line ~pair 0x00429E16), free it when flags & 1, return this
+// Leaf: ??_G?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0042A8E0, 28 bytes, thiscall, `ret 4`: `push esi ; mov esi,ecx ; call 0x00429E16 ; test byte ptr [esp+8],1 ;
+//   je ; push esi ; call 0x00BFE9BC (operator delete) ; pop ecx ; mov eax,esi ; pop esi`.
+// Identity (NF230, 2026-11-22, q12620): Ego_r.pdb and FableWin.pdb both name ??_G?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAEPAXI@Z
+//   (S_GPROC32 in ui_manager.obj, NUISystem::CManager's TU); its call goes to 0x00429E16, the landed ~pair of the same pair. Was landed as
+//   the descriptive extern "C" @CAssoc_scalar_deleting_dtor@12 (catalog _global::ScalarDeletingDtor_0042a8e0, a propagated CAssoc label)
+//   calling the stand-in @CAssoc_dtor@4. The value type of NUISystem::CManager's BastardChildren map<CCharString, CCountedPointer<CComponent> >.
+// Model: engine/NUISystem_CManager.h (the map's value type), stlport/fable_containers.h _Destroy. Instantiating the pair's destructor
+//   (the explicit instantiation of std::_Destroy, the call the tree's _M_erase 0x0042B8FC makes) makes VC7.1 emit the pair's ??_G COMDAT
+//   with it (as in 0x0042B8FC's object, whose ??_G copy NF229 measured equal to these bytes). Defines and pragma as 0x0042B8FC (same retail TU).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#pragma optimize("s", on)
+#include "engine/CCountedPointer.h"
+#include "engine/NUISystem_CManager.h"
+template void std::_Destroy(std::pair<const CCharString, CCountedPointer<NUISystem::CComponent> >*);

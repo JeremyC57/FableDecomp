@@ -17,6 +17,9 @@
 #endif
 class CTCDPhysicalObstruction : public CTCDriverBase {
 public:
+#ifdef FABLE_RETAIL_POWERUP_SWORD_FIXTURE_PASS27
+    CTCDPhysicalObstruction(CThing& thing);
+#endif
     virtual void OnInitialActivate();                    // slot 6 0x007FD3C0
 #ifdef FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_CREATE
     // Retail opt-in (chunk 796, row 0x00951FB0 CAIStateGroup_JackDragon::UpdateHover): Ego_r.pdb

@@ -1,3 +1,4 @@
+// Leaf: ?Update@CEngineInternalPrimitiveGroup@@UAEXABVCEnginePrimitive@@K@Z
 // CEngineInternalPrimitiveGroup::Update  @ 00bc64d0
 // void __fastcall Update(CEngineInternalPrimitiveGroup*, CEnginePrimitive const&, unsigned long)
 
@@ -15,12 +16,12 @@ struct CInner {
 };
 
 struct CEngineInternalPrimitiveGroup {
-    char pad_0[0x50];   // +0x00 .. +0x4f
+    char pad_0[0x4c];   // +0x04 .. +0x4f (the vptr takes +0x00)
     CInner inner;       // +0x50
     char pad_54[0x5c-0x54];
     unsigned long m_5c; // +0x5c
 
-    void Update(const CEnginePrimitive& prim, unsigned long a3);
+    virtual void Update(const CEnginePrimitive& prim, unsigned long a3);
 };
 
 void CEngineInternalPrimitiveGroup::Update(const CEnginePrimitive& prim, unsigned long a3)

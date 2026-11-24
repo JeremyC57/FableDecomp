@@ -30,7 +30,7 @@ struct CAnimFilterOf2Groups {                  // Ego_r.pdb 0x14
     CCharString   Group2;                      // +8
     unsigned long Group1CRC;                   // +0xc
     unsigned long Group2CRC;                   // +0x10
-    void SetGroups(const CCharString& group1, const CCharString& group2);   // 0x0073E040
+    void SetCurrentGroupNames(const CCharString& group1, const CCharString& group2);   // 0x0073E040 (FableWin; NF292, was SetGroups)
 };
 
 #include "engine/ETCInterfaceType.h"
@@ -98,7 +98,7 @@ void NCreatureMode::CModeCrouch::OnActivate()
         CThing* weapon = ParentThing.GetTC<CTCCarrying>(0x46)->GetThingInPrimarySlot();
         if (weapon != 0 && weapon->HasTC(0x48)) {
             CTCWeapon* weaponTC = weapon->GetTC<CTCWeapon>(0x48);
-            Filter.SetGroups("CROUCH", weaponTC->GetAnimationGroupName());
+            Filter.SetCurrentGroupNames("CROUCH", weaponTC->GetAnimationGroupName());
         }
     }
     CTCInterface36* tc;

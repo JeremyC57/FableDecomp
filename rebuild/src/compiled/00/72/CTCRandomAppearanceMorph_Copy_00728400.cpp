@@ -45,7 +45,7 @@ class CTCRandomAppearanceMorph { public:
     unsigned char                _base[0x0c];               // +0x04 CTCAppearanceMorphBase body
     CCountedPointer_MeshMorphSet PMeshMorphSet;             // +0x10
     unsigned long                Seed;                      // +0x18
-    void UpdateMorphSet();                                  // 0x007280C0
+    private: void UpdateMorphSet(); public:                                  // 0x007280C0
     void Copy(const CTCRandomAppearanceMorph& other);
 };
 

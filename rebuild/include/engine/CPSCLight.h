@@ -10,6 +10,12 @@ namespace NParticleEngine {
 // Final CArray is12 bytes in TLC versus16 in donor; all field offsets and bitfields agree.
 class CPSCLight:public CPSCBase {public:
     virtual void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
+#ifdef FABLE_RETAIL_CPSCLIGHT_PREPARE_PRIMITIVES_PASS28
+    // Ego_r and FableWin virtual signature, retail slot 13 (0x00B19C60).
+    virtual void PreparePrimitives(float, const CEnginePrimitivePrepareInfo&, CParticleSystem&,
+        const CParticleUpdateParameters<unsigned long, unsigned long>&, CEnginePrimitiveHandle&);
+    float SmoothFadeValue(float) const;
+#endif
     long LightLifeTimer;
     long LightRespawnDelayTimer;
     bool LightIsAlive;

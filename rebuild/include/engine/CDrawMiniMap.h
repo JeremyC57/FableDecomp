@@ -113,4 +113,39 @@ protected:
 FABLE_STATIC_ASSERT_AT(93, sizeof(NPlayerGui::CDrawMiniMap) == 0x160);
 #endif
 
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWMINIMAP_TYPED_PASS26
+// Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): the real class NPlayerGui::CDrawMiniMap (RTTI
+// .?AVCDrawMiniMap@NPlayerGui@@, single base NPlayerGui::CDrawBase at +0, sizeof 0x28) with its members TYPED at the generated retail
+// offsets above (Ego_r.pdb struct_layouts names and types: CMiniMapDisplay MiniMap, C2DBoxF ScreenBox, three CFadeInFadeOutBase,
+// vector<pair<C3DVector,CCharString> > RegionExits). Same class as wfA2's FABLE_RETAIL_NPLAYERGUI_CDRAWMINIMAP_CLASS (opaque members);
+// the two are exclusive. Methods: Ego_r.pdb / FableWin.pdb ?Update@CDrawMiniMap@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+// (0x0064401C) and ?Draw@CDrawMiniMap@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z (0x00648820). Needs FABLE_RETAIL_CMINIMAPDISPLAY,
+// FABLE_RETAIL_C2DBOXF and the includer's CCharString (fable_string.h).
+#include "engine/NPlayerGui_CDrawBase.h"
+#include "engine/CMiniMapDisplay.h"
+#include "engine/C2DBoxF.h"
+#include "engine/C3DVector.h"
+#include "engine/CFadeInFadeOutBase.h"
+class CEnginePrimitivePrepareInfo;
+namespace NPlayerGui {
+class CDrawMiniMap : public CDrawBase {
+public:
+    void Update(const CEnginePrimitivePrepareInfo& interpolation);                     // 0x0064401C
+    void Draw(const CEnginePrimitivePrepareInfo& interpolation, bool drawing_hud);     // 0x00648820
+protected:
+    CMiniMapDisplay    MiniMap;                                          // +0x28
+    bool               Enabled;                                          // +0xe8
+    bool               Active;                                           // +0xe9
+    bool               OldActive;                                        // +0xea
+    bool               RegionChange;                                     // +0xeb
+    unsigned char      Alpha;                                            // +0xec
+    C2DBoxF            ScreenBox;                                        // +0xf0
+    CFadeInFadeOutBase FadeInOut;                                        // +0x100
+    CFadeInFadeOutBase TextFadeInOut;                                    // +0x11c
+    CFadeInFadeOutBase ScreenPosFadeInOut;                               // +0x138
+    std::vector<std::pair<C3DVector, CCharString> > RegionExits;         // +0x154
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NPlayerGui::CDrawMiniMap) == 0x160);
+#endif
 #endif // FABLE_ENGINE_CDRAWMINIMAP_H

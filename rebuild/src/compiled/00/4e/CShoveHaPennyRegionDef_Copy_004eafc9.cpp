@@ -1,12 +1,13 @@
+// Leaf: ?Copy@CShoveHaPennyRegionDef@@UAEXPBVCDefClassBase@@@Z
 #pragma optimize("s",on)
 // CShoveHaPennyRegionDef::Copy @ 0x004eafc9
 class CDefClassBase;
 
 class CShoveHaPennyRegionDef { public:
-    char pad[0x28];
+    char pad[0x24];
     unsigned int f28;   // +0x28
     unsigned int f2c;   // +0x2c
-    void Copy(const CDefClassBase* src);
+    virtual void Copy(const CDefClassBase* src);
 };
 
 // base Copy at 0x431f10 -- this in ecx, src pushed (__fastcall). Model as

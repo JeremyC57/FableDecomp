@@ -3,7 +3,7 @@
 // Callees: CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CThingCreatureBase::GetPossibleCombatAnimations
 // (const CCharString&, vector<const CAnimationEntry*>&) const @ 0x006668A0 (manifest "Animation_FilterAndCompile"; Ego_r.pdb name),
 // CTCBase::GetPWorldSeed() @ 0x00686DA0, GFROR13 @ 0x00497890 (`__fastcall`), CThingCreatureBase::GetAnimFromName(const
-// CCharString&, long) @ 0x00662A00, free @ 0x00BFEA14 (the vector storage). Literal "BLOCK_IDLE" @ 0x012670DC.
+// CCharString&, long) const @ 0x00662A00, free @ 0x00BFEA14 (the vector storage). Literal "BLOCK_IDLE" @ 0x012670DC.
 // Layout: engine/CTCCombat.h ParentCreature +0x24 (before any container, so the PDB offset holds in retail).
 // Shape: a local STLport vector (zeroed after the call's pushes) released with `if (first) free(first)`; the random pick is
 // the landed WorldRandomRange shape (seed advanced, GFROR13, `% n` guarded by n != 0) indexing *(begin() + r); the
@@ -49,7 +49,7 @@ template <class T> struct CRetailVector {               // STLport vector, 12 by
 };
 class CThingCreatureBase { public:
     bool GetPossibleCombatAnimations(const CCharString& name, CRetailVector<const CAnimationEntry*>& anims) const;   // 0x006668A0
-    CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
+    const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00 ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (Ego_r / FableWin)
 };
 struct CTCCombat_Methods : CTCCombat {
     const CAnimationEntry* GetBlockingAnimationEntry();
@@ -66,7 +66,7 @@ const CAnimationEntry* CTCCombat_Methods::GetBlockingAnimationEntry()
         unsigned long* seed = GetPWorldSeed();
         entry = anims[WorldRandomRange(*seed, count)];
     } else {
-        entry = ParentCreature->GetAnimFromName(name, 0);
+        entry = &ParentCreature->GetAnimFromName(name, 0);
     }
     return entry;
 }

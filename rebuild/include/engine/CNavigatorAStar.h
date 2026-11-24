@@ -119,6 +119,9 @@ private:
 private:
  void CullWayPoints(long);
 private:
+#ifdef FABLE_RETAIL_CNAVIGATORASTAR_MOVETOWARD_PASS26
+ float GetSpeedReducedForStartAndEnd(float speed,float proximity,const C2DVector& start_pos);
+#endif
  void MoveTowardNextWayPoint(const C3DVector &, float, float, C3DVector &, bool, bool, bool, bool);
 #ifdef FABLE_RETAIL_CNAVIGATORASTAR_RANDOMPOS
 private:
@@ -134,6 +137,9 @@ public:
  void UpdateGoal(const C3DVector &, C2DVector, C2DVector);
 public:
  void CalculateNavigableWidthOfLine(const C3DVector&);
+#ifdef FABLE_RETAIL_CNAVIGATORASTAR_MOVETOWARD_PASS26
+ void CalculateNavigableWidthOfLine(const CNavWayPoint&,const CNavWayPoint&,float&,float&,bool);
+#endif
 };
 #ifdef FABLE_RETAIL_CNAVIGATORASTAR_SEARCH_PASS23
 class CAStarStateTotalGreaterThan:public std::binary_function<const CNavigatorAStar::CAStarState*,const CNavigatorAStar::CAStarState*,bool> {

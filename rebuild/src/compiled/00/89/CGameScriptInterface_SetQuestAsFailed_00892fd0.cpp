@@ -16,13 +16,13 @@
 #define FABLE_RETAIL_CQUESTMANAGER_FINISHSCREEN
 #include "engine/CGameScriptInterface.h"
 #include "engine/CQuestManager.h"
-extern char g_someFlag;
+namespace NGlobalConsole { extern bool GEnableRegionLockingSaveSystem; }   // 0x01375741 ?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA (Ego_r / FableWin / Ego_d publics; Codex p27 NAME_FIXES cross-reference); NF236: was char g_someFlag
 struct CGameScriptInterface_Methods : CGameScriptInterface { void applyFloat(float v); };
 
 void CGameScriptInterface::SetQuestAsFailed(const CCharString& quest_name, bool show_screen, const CWideString& reason, bool silent) const
 {
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().SetQuestAsFailed(quest_name, show_screen, reason, silent);
-    if (!show_screen && g_someFlag)
+    if (!show_screen && NGlobalConsole::GEnableRegionLockingSaveSystem)
         CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnQuestFinishScreenDisplayed(quest_name);
     ((CGameScriptInterface_Methods*)this)->applyFloat(1.0f);
 }

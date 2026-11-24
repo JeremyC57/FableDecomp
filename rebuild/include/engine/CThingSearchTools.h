@@ -169,6 +169,9 @@ public:
     template<class Filter,class T> bool GetPFirstThing(const Filter& filter,T** out) const;
 #endif
 #endif
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_DECL_PASS26) && !defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_BODY)
+    template<class Filter,class Compare,class T> bool GetPBestThing(const Filter&,const Compare&,T**)const;
+#endif
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_BODY
     // Chunk 1012 (row 0x0049FFD0 CWorld::SetKickPos): GetPBestThing<Filter,Compare,T>, out of line in retail (Ego_r.pdb
     // ??$GetPBestThing@V?$CFilter_Bind2@V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@VCThingFilter_In2DRange@@@@
@@ -207,7 +210,7 @@ public:
     // Retail opt-in (Codex2026-11-10): both original PDBs and native00942390.
     template<class Filter,class Compare,class T> bool GetPBestThingInRoughArea(const C2DBoxI&,const Filter&,const Compare&,T**)const;
 #endif
-#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_COUNTERS_PASS26) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
     // Original raw PDB static members; native00942390 uses13b89a8/ac/b0.
     static unsigned long NoLookups,NoThingsScanned,SearchID;
 protected:
@@ -250,7 +253,12 @@ protected:
         return clipped_area;
     }
 public:
-    template<class T,class Container,class Filter> void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter_func,Container& things) const {
+    template<class T,class Container,class Filter>
+#if defined(_MSC_VER) && (defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_NOINLINE_PASS27) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_SEARCH_BUDGET_PASS27))
+    // Inline-budget: both TUs call the original rough-area scan.
+    __declspec(noinline)
+#endif
+    void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter_func,Container& things) const {
         unsigned long flags=T::StatGetTypeFlags();
         GetAllThingMapsInArea(area,const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps));
         ++NoLookups;

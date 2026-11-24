@@ -12,7 +12,10 @@ for m in re.finditer(r"\[pscustomobject\]@\{(.*?)\n\s*\}",bc,re.S):
         a=d['Address'].lower()
         if only is None or a in only: rows.append((a,'rebuild/src/compiled/'+d['Source'],'rebuild/tests/'+d['TestSource'] if d.get('TestSource') else None))
 def pp(tree,f):
-    args=['cpp','-P','-nostdinc','-undef','-D_MSC_VER=1310','-D_M_IX86=600','-D_WIN32','-x','c++','-I',tree,'-I',stub,f]
+    # -idirafter the repo include dir: unwind-funclet rows `#include "../src/compiled/..."` relative to the include tree, which only resolves
+    # from rebuild/include; a tree copied outside the repo used to miss it (stub) while the repo tree found it, so every such row "differed"
+    # (2026-11-22: AUTH21's 1,357-row and 0x0093D270's false positives). Searched last, so the tree's own headers still win.
+    args=['cpp','-P','-nostdinc','-undef','-D_MSC_VER=1310','-D_M_IX86=600','-D_WIN32','-x','c++','-I',tree,'-I',stub,'-idirafter',os.path.abspath('rebuild/include'),f]
     for _ in range(60):
         r=subprocess.run(args,capture_output=True,text=True,errors='replace')
         m=re.search(r"fatal error: ([^:\n]+): No such file",r.stderr)
@@ -23,6 +26,7 @@ def pp(tree,f):
     err=re.sub(r'^.*?(error|warning)','\\1',r.stderr,flags=re.M)
     err=err.replace(tree,'TREE')
     body=' '.join(r.stdout.split())
+    body=body.replace(tree,'TREE')   # __FILE__ in a header (GFDebugPDynamicCast.h) expands to the tree path; old and new trees differ only there (landing nf225)
     if os.environ.get('EQUIV_LOOSE'): body=re.sub(r'fable_static_assert_\d+','fable_static_assert_N',body)   # default is exact: VC7.1 codegen can depend on these names (row 0x007E2A60)   # the assert typedef name carries __LINE__      # token text only: blank lines and spacing differ when unrelated opt-in blocks are added
     return hashlib.sha1((body+'\n##ERR##\n'+'\n'.join(sorted(set(l for l in err.split('\n') if 'error' in l)))).encode()).hexdigest(), ('error' in r.stderr)
 def one(row):

@@ -1,3 +1,4 @@
+// Leaf: ?GetTimer@CGameScriptInterface@@UBEJJ@Z
 
 struct Node { char pad[0x14]; long value; /* +0x14 */ };
 
@@ -10,9 +11,9 @@ struct TimerMap {
 };
 
 class CGameScriptInterface { public:
-    char pad[0x3c];
+    char pad[0x38];
     TimerMap map;                // +0x3c
-    long GetTimer(long key) const;
+    virtual long GetTimer(long key) const;
 };
 
 long CGameScriptInterface::GetTimer(long key) const

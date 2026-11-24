@@ -61,7 +61,7 @@ class CEnginePrimitiveManager { public:                   // 0x0c bytes
     virtual ~CEnginePrimitiveManager();
     unsigned char _body[0x8];
     CEnginePrimitiveManager(CEngineSceneArray* scenes);   // 0x00BACDB0
-    void RegisterEnable(const CCharString& name);  // 0x00BACD80
+    void AddEnableConsoleVariable(const CCharString& name);  // 0x00BACD80
 };
 
 class CEnginePrimitiveManagerParticleDecalGroup : public CEnginePrimitiveManager { public:   // vtable 0x012A5998, 0x124 bytes
@@ -87,7 +87,7 @@ class CEnginePrimitiveManagerParticleDecalGroup : public CEnginePrimitiveManager
 CEnginePrimitiveManagerParticleDecalGroup::CEnginePrimitiveManagerParticleDecalGroup(CEngineSceneArray* scenes)
     : CEnginePrimitiveManager(scenes)
 {
-    RegisterEnable("EnableGroupDecals");
+    AddEnableConsoleVariable("EnableGroupDecals");
     PointLightShaderIndex[0] = 0;
     PointLightShaderIndex[1] = 1;
     PointLightShaderIndex[2] = 1;

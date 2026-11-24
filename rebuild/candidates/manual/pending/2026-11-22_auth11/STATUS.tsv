@@ -1,0 +1,3 @@
+address	state	best_grade	grades_used	best_source	note
+0x00A4EFC0	escalated	DIFFER(3491v3491) 16	5 (control, c1, 3 users) + 1 readout	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth7/00a4efc0/b3_00a4efc0.cpp	Step A done: overflow_check not assert-only (FableWin shows it); c1 no flip, users 35/15/9 -> OWNER_PACKET.md
+0x008E18D0	measured	DIFFER(1948v2073) stock (e5)	1 + 3 inl readouts	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth11/008e18d0/e5.cpp	Step B: MEASURE.md; 5 Ego_d-evidenced corrections; c2 hunt left to coordinator

@@ -45,7 +45,7 @@ struct CTCInterface1A {
 };
 class CTCWeapon { public:
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);   // 0x005DAC50
-    bool IsMeleeWeapon();                               // 0x005DAA70
+    bool IsProjectile() const;                               // 0x005DAA70; NF299: PDB name, was IsMeleeWeapon
 public:
     bool IsProjectileWeapon() const;   // 0x005DAA40
 };
@@ -90,7 +90,7 @@ CThing* CTCCarrying::RemoveThingFromPrimarySlot(bool unused)
             thing->GetTC<CTCAnimatingObject>(0x83)->PlayDefaultAnimation();
         if (!IsPrimarySlotFree()) {
             CThing* next = GetThingInPrimarySlot();
-            if (next && !(next->m_flags & 1) && next->HasTC(0x48) && next->GetTCConst<CTCWeapon>(0x48)->IsMeleeWeapon())
+            if (next && !(next->m_flags & 1) && next->HasTC(0x48) && next->GetTCConst<CTCWeapon>(0x48)->IsProjectile())
                 RemoveThing(*next);
         }
         return thing;

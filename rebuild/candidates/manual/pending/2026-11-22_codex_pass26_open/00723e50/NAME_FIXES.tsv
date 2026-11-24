@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00723e50	?SetRHSetAsFlushOnNormal@CTCPhysicsStandard@@UAEXABVC3DVector@@@Z	Ego_r 0x0073ADE0, FableWin 0x02526F60 and slot 77 of CTCPhysicsStandard vtable 0x01265F84.	_global::CCharacter_UpdateOrientation

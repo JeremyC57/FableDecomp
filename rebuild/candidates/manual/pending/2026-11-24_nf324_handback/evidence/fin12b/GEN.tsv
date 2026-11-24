@@ -1,0 +1,104 @@
+address	verdict	old	new	route	reason	bucket	name_fixes	switches	notes
+00401660	GEN	?CAFile_GetAlignment@@YIJPBVCAFile@@@Z	?GetAlignment@CAFile@@UBEJXZ	switch		generated	[]		
+0051da20	GEN	?CClassFactory_OnCreateClass@@YGXH@Z	?OnCreateClass@CClassFactory@@MAEXAAVCClass@@@Z	switch		generated	[]	FABLE_RETAIL_CCLASSFACTORY	
+0051da30	GEN	?CClassFactory_OnDeleteClass@@YGXH@Z	?OnDeleteClass@CClassFactory@@MAEXAAVCClass@@@Z	switch		generated	[]	FABLE_RETAIL_CCLASSFACTORY	
+0052add0	GEN	?CACompressor_CompressAsImage@@YGXHHHHHHHH@Z	?CompressAsImage@CACompressor@@UAEXPAXK0KJJJAAVCCompressionInfo@@@Z	switch		generated	[]	FABLE_RETAIL_CACOMPRESSOR	
+0052ade0	GEN	?CACompressor_Compress@@YGXHHHHH@Z	?Compress@CACompressor@@UAEXPAXK0KAAVCCompressionInfo@@@Z	switch		generated	[]	FABLE_RETAIL_CACOMPRESSOR	
+0052adf0	GEN	?CACompressor_Decompress@@YGXHHHHH@Z	?Decompress@CACompressor@@UAEXPAXK0KAAVCCompressionInfo@@@Z	switch		generated	[]	FABLE_RETAIL_CACOMPRESSOR	
+0052ae00	GEN	?CACompressor_SetQuality@@YGXH@Z	?SetQuality@CACompressor@@UAEXM@Z	switch		generated	[]	FABLE_RETAIL_CACOMPRESSOR	
+006924e0	GEN	?CCreatureActionBase_IsStrikeEvent@@YI_NPAXHH@Z	?IsStrikeEvent@CCreatureActionBase@@UBE_NJ@Z	switch		generated	[]	FABLE_RETAIL_CCREATUREACTIONBASE	pre v1 min-0/3
+00692550	GEN	?CCreatureActionBase_OnFrameUpdate@@YGXH@Z	?OnFrameUpdate@CCreatureActionBase@@UAEXM@Z	switch		generated	[]	FABLE_RETAIL_CCREATUREACTIONBASE	pre v1 min-0/3
+00692570	GEN	?CCreatureActionBase_IsActionReadyForInterruption@@YI_NXZ	?IsActionReadyForInterruption@CCreatureActionBase@@UBE_NXZ	switch		generated	[]	FABLE_RETAIL_CCREATUREACTIONBASE	pre v1 min-0/3
+00692710	GEN	?CCreatureActionBase_IsActionReadyForInterruptionByMovement@@YI_NPAXHH@Z	?IsActionReadyForInterruptionByMovement@CCreatureActionBase@@UBE_NABVC3DVector@@@Z	switch		generated	[]	FABLE_RETAIL_CCREATUREACTIONBASE	pre v1 min-0/3
+006927c0	GEN	?CCreatureActionBase_SetHitter@@YGXH@Z	?SetHitter@CCreatureActionBase@@UAEXABVCThing@@@Z	switch		generated	[]	FABLE_RETAIL_CCREATUREACTIONBASE	pre v1 min-0/3
+006927f0	GEN	?CCreatureActionBase_OnBlowBlocked@@YGXH@Z	?OnBlowBlocked@CCreatureActionBase@@UAEX_N@Z	switch		generated	[]	FABLE_RETAIL_CCREATUREACTIONBASE	pre v1 min-0/3
+006976f0	GEN	?CGameCameraManager_SetViewThing@@YGXH@Z	?SetViewThing@CGameCameraManager@@UAEXPBVCThingGameObject@@@Z	switch		generated	[]	FABLE_RETAIL_CGAMECAMERAMANAGER_FULL	pre v1 min-8/12
+008c93d0	GEN	?CCreatureAction_BanditKingThrowWeapons_IsToPerformActionOnStrike@@YI_NXZ	?IsToPerformActionOnStrike@CCreatureAction_BanditKingThrowWeapons@@UBE_NXZ	switch		generated	[]	FABLE_RETAIL_CCREATUREACTION_BANDITKINGTHROWWEAPONS	pre v1 min-26/34
+008fd285	GEN	?CAIStateGroupBase_InitStateGroup@@YGXHH@Z	?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	switch		generated	[]	FABLE_RETAIL_CAISTATEGROUPBASE,FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS	
+008fd3d9	GEN	?CAIStateGroup_MinionGossip_UseLineOfSight@@YI_NXZ	?UseLineOfSight@CAIStateGroup_MinionGossip@@MAE_NXZ	switch		generated	[]		pre v2 min-76/81
+009009cb	GEN	?CAIStateGroupBehaviourBase_InitLeaf@@YIXXZ	?InitLeaf@CAIStateGroupBehaviourBase@@MAEXXZ	switch		generated	[]	FABLE_RETAIL_CAISTATEGROUPBEHAVIOURBASE	pre v1 min-11/17
+009009cc	GEN	?CAIStateGroupBehaviourBase_OnActivateLeaf@@YIXXZ	?OnActivateLeaf@CAIStateGroupBehaviourBase@@MAEXXZ	switch		generated	[]	FABLE_RETAIL_CAISTATEGROUPBEHAVIOURBASE	pre v1 min-11/17
+009009cd	GEN	?CAIStateGroupBehaviourBase_CleanupLeaf@@YIXXZ	?CleanupLeaf@CAIStateGroupBehaviourBase@@MAEXXZ	switch		generated	[]	FABLE_RETAIL_CAISTATEGROUPBEHAVIOURBASE	pre v1 min-11/17
+00907f90	GEN	?CCreatureAction_TrollWhackGroundBase_InitAnimation@@YIXXZ	?InitAnimation@CCreatureAction_TrollWhackGroundBase@@MAEXXZ	switch		generated	[]	FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS	pre v1 min-36/41
+00907fa0	GEN	?CCreatureAction_TrollWhackGroundBase_GetEffectName@@YI_NPAXHH@Z	?GetEffectName@CCreatureAction_TrollWhackGroundBase@@MBE_NAAVCCharString@@@Z	switch		generated	[]	FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS	pre v1 min-36/41
+0090c7e0	GEN	?CAIStateGroup_MinionGossip_GetTimeToInitiate@@YIHXZ	?GetTimeToInitiate@CAIStateGroup_MinionGossip@@MBEJXZ	switch		generated	[]		pre v2 min-76/81
+0090c7f0	GEN	?CAIStateGroup_MinionGossip_GetTimeToRespond@@YIHXZ	?GetTimeToRespond@CAIStateGroup_MinionGossip@@MBEJXZ	switch		generated	[]		pre v2 min-76/81
+00918ec0	GEN	?CAIStateGroup_Gaze_GetOwner@@YIHXZ	?GetOwner@CAIStateGroup_Gaze@@MAEPAVCThingBuilding@@XZ	switch		generated	[]	FABLE_RETAIL_CAISTATEGROUP_GAZE	pre v1 min-32/35
+00993b90	GEN	?CDataInputStream_InternalReadNextSourceChunk@@YGXHH@Z	?InternalReadNextSourceChunk@CDataInputStream@@EAEXAAPBEAAJ@Z	switch		generated	[]	FABLE_RETAIL_CDATAINPUTSTREAM	
+00993ba0	GEN	?CDataInputStream_NeedsBufferedRead@@YI_NPAXHH@Z	?NeedsBufferedRead@CDataInputStream@@EAE_NJ@Z	switch		generated	[]	FABLE_RETAIL_CDATAINPUTSTREAM	
+00993bb0	GEN	?CDataInputStream_InternalReadUnbuffered@@YGXHH@Z	?InternalReadUnbuffered@CDataInputStream@@EAEXPAEJ@Z	switch		generated	[]	FABLE_RETAIL_CDATAINPUTSTREAM	
+0099a340	GEN	?CInitBaseClass_Validate@@YIXXZ	?Validate@CInitBaseClass@@UBEXXZ	switch		generated	[]	FABLE_RETAIL_CINITBASECLASS_VALIDATE	
+009fbf10	GEN	?CResource_ResetDebugMemoryInUse@@YIXXZ	?ResetDebugMemoryInUse@CResource@@UAEXXZ	switch		generated	[]	FABLE_RETAIL_DEF_CLASS_BASE	
+00a03a50	GEN	?CHandleBasedMemoryPool_ValidateResource@@YGXH@Z	?ValidateResource@CHandleBasedMemoryPool@@MAEXPAX@Z	switch		generated	[]		pre v2 min-0/2
+00a19ab0	GEN	?CClass_Save@@YGXH@Z	?Save@CClass@@UAEXAAVCCharString@@@Z	switch		generated	[]	FABLE_RETAIL_CCLASS	
+00a44600	GEN	?CASuspendableProcess_SuspendableProcess@@YIXXZ	?SuspendableProcess@CASuspendableProcess@@UAEXXZ	switch		generated	[]	FABLE_RETAIL_SUSPENDABLE_PROCESS	
+00aa7610	GEN	?CChunkedFileChunk_IsUnknownType@@YIHXZ	?IsUnknownType@CChunkedFileChunk@@UBEHXZ	switch		generated	[]	FABLE_RETAIL_CCHUNKEDFILECHUNK	
+00aa7620	GEN	?CChunkedFileChunk_IsSuperChunk@@YIHXZ	?IsSuperChunk@CChunkedFileChunk@@UBEHXZ	switch		generated	[]	FABLE_RETAIL_CCHUNKEDFILECHUNK	
+00b232f0	GEN	?CIEngine_SetEnvironmentalEffectsAlwaysUpdate@@YGXH@Z	?SetEnvironmentalEffectsAlwaysUpdate@CIEngine@@UAEX_N@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23300	GEN	?CIEngine_SetWorld@@YGXH@Z	?SetWorld@CIEngine@@UAEXPBVCIDrawWorld@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23310	GEN	?CIEngine_WorldFrameUpdate@@YGXH@Z	?WorldFrameUpdate@CIEngine@@UAEX_N@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23330	GEN	?CIEngine_SetVideoOptions@@YI_NPAXHH@Z	?SetVideoOptions@CIEngine@@UAE_NABVCEngineVideoOptions@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23360	GEN	?CIEngine__GetPrimitiveDrawDistanceFactor@@YIMPAX@Z	?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23370	GEN	?CIEngine_AddPrimitive@@YGXH@Z	?AddPrimitive@CIEngine@@UAEXABVCEnginePrimitive@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b233a0	GEN	?CIEngine_SetPrimitiveAnimation@@YGXHH@Z	?SetPrimitiveAnimation@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b233b0	GEN	?CIEngine_SetPrimitivePosition@@YGXHH@Z	?SetPrimitivePosition@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b233f0	GEN	?CIEngine_GetChildPrimitiveHandle@@YGXHHH@Z	?GetChildPrimitiveHandle@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23400	GEN	?CIEngine_ClearChildPrimitive@@YGXHH@Z	?ClearChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23410	GEN	?CIEngine_ClearAllChildPrimitives@@YGXH@Z	?ClearAllChildPrimitives@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23420	GEN	?CIEngine_SetAttachedPrimitive@@YGXHHHHHH@Z	?SetAttachedPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b234a0	GEN	?CIEngine_UpdateStaticMap@@YGXHHHH@Z	?UpdateStaticMap@CIEngine@@UAEXJABVCCharString@@KJ@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b234c0	GEN	?CIEngine_AddMap@@YGXHH@Z	?AddMap@CIEngine@@UAEXJJ@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b234d0	GEN	?CIEngine_RemoveMap@@YGXH@Z	?RemoveMap@CIEngine@@UAEXJ@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b234e0	GEN	?CIEngine_SetMapAsLoaded@@YGXH@Z	?SetMapAsLoaded@CIEngine@@UAEXJ@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b234f0	GEN	?CIEngine_SetMapAsUnloaded@@YGXH@Z	?SetMapAsUnloaded@CIEngine@@UAEXJ@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23500	GEN	?CIEngine_SetMapVisibilityAllMaps@@YGXH@Z	?SetMapVisibilityAllMaps@CIEngine@@UAEX_N@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23510	GEN	?CIEngine_SetMapVisibility@@YGXHH@Z	?SetMapVisibility@CIEngine@@UAEXJ_N@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23520	GEN	?CIEngine_AreaChanged@@YGXH@Z	?AreaChanged@CIEngine@@UAEXABVC2DBoxI@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23550	GEN	?CIEngine_IsActive@@YI_NPBVCIEngine@@@Z	?IsActive@CIEngine@@UBE_NXZ	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23560	GEN	?CIEngine_SetStaticMapFileForUse@@YGXH@Z	?SetStaticMapFileForUse@CIEngine@@UAEXABVCWideString@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23590	GEN	?CIEngine_StartNewScene@@YGXHH@Z	?StartNewScene@CIEngine@@UAEXKM@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b235a0	GEN	?CIEngine_CutscenePreload@@YGXHH@Z	?CutscenePreload@CIEngine@@UAEX_N0@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b235b0	GEN	?CIEngine_CutsceneAddCameraAngle@@YGXH@Z	?CutsceneAddCameraAngle@CIEngine@@UAEXABVCCamera@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b235f0	GEN	?CIEngine_SetScreenColourFilter@@YGXH@Z	?SetScreenColourFilter@CIEngine@@UAEXABVCEngineColourFilterSettings@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23600	GEN	?CIEngine_SetSpotlightShadowMode@@YGXH@Z	?SetSpotlightShadowMode@CIEngine@@UAEX_N@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23620	GEN	?CIEngine_UpdateDebugOverlay@@YGXHHH@Z	?UpdateDebugOverlay@CIEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23630	GEN	?CIEngine_EnableDebugOverlay@@YGXHHH@Z	?EnableDebugOverlay@CIEngine@@UAEXJ_N0@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23640	GEN	?CIEngine_SetGlobalLightingParameters@@YGXHHHH@Z	?SetGlobalLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23650	GEN	?CIEngine_Set2DPrimitiveLightingParameters@@YGXHHHH@Z	?Set2DPrimitiveLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23660	GEN	?CIEngine_SetRenderTargetTexture@@YGXH@Z	?SetRenderTargetTexture@CIEngine@@UAEXPBVCTexture@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23680	GEN	?CIEngine_FreeTextureFromEngineResourcePools@@YGXH@Z	?FreeTextureFromEngineResourcePools@CIEngine@@UAEXPAVCTexture@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b236e0	GEN	?CIEngine_Enable3DSceneRendering@@YGXH@Z	?Enable3DSceneRendering@CIEngine@@UAEX_N@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23700	GEN	?CIEngine_Enable2DSceneRendering@@YGXH@Z	?Enable2DSceneRendering@CIEngine@@UAEX_N@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23720	GEN	?CIEngine_OverrideRain@@YGXH@Z	?OverrideRain@CIEngine@@UAEXM@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23730	GEN	?CIEngine_OverrideSnow@@YGXH@Z	?OverrideSnow@CIEngine@@UAEXM@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b23740	GEN	?CIEngine_RenderColorFilteredQuad@@YGXHHHHHH@Z	?RenderColorFilteredQuad@CIEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z	switch		generated	[]	FABLE_RETAIL_CIENGINE	
+00b38830	GEN	?CEnginePrimitiveManager_Render2DPrimitive@@YGXHHH@Z	?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z	switch		generated	[]		
+00b38840	GEN	?CEnginePrimitiveManager_RenderNonsortedPrimitives@@YIXXZ	?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ	switch		generated	[]		
+00b38850	GEN	?CEnginePrimitiveManager_AddStaticShadowData@@YGXHH@Z	?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCShadowSceneContext@NEngineShadowRenderer@@@Z	switch		generated	[]		
+00b3a980	GEN	?CEngineInternalPrimitiveBase_GetChildPrimitive@@YIPAVCEnginePersistentPrimitiveBase@@PAVCEngineInternalPrimitiveBase@@HK@Z	?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3a9b0	GEN	?CEngineInternalPrimitiveBase_PostRender@@YIXXZ	?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3a9c0	GEN	?CEngineInternalPrimitiveBase_GetWorldPosition@@YI_NPAXHPAVC3DVector@@@Z	?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAVC3DVector@@@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3a9d0	GEN	?CEngineInternalPrimitiveBase_GetBoundingBoxTransform@@YI_NPAXHH@Z	?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3a9e0	GEN	?CEngineInternalPrimitiveBase_GetBoundingBoxWorldSpace@@YI_NPAXHH@Z	?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3a9f0	GEN	?CEngineInternalPrimitiveBase_GetBoundingSphereWorldSpace@@YI_NPAXHH@Z	?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingSphere@@@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3aa00	GEN	?CEngineInternalPrimitiveBase_GetBoundingSphereRadiusWorldSpace@@YI_NPAXHH@Z	?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3aa20	GEN	?CEngineInternalPrimitiveBase_GetObjectTransform@@YI_NPAXHH@Z	?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3aa30	GEN	?CEngineInternalPrimitiveBase_SetObjectTransform@@YI_NPAXHH@Z	?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3aa40	GEN	?CEngineInternalPrimitiveBase_SetAnimation@@YGXH@Z	?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3aa50	GEN	?CEngineInternalPrimitiveBase_SetPosition@@YGXH@Z	?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3aa80	GEN	?CEngineInternalPrimitiveBase_GetAsOcclusionPrimitive@@YIPAVCEngineInternalPrimitiveOcclusionBase@@PAVCEngineInternalPrimitiveBase@@@Z	?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b3b180	GEN	?CEngineResourceManager_WorldFrameUpdate@@YIXPAVCEngineResourceManager@@H_N@Z	?WorldFrameUpdate@CEngineResourceManager@@UAEX_N@Z	local		generated	[]		
+00b4a450	GEN	?CEnginePrimitiveManager_RenderSubPrimitive@@YGXHH@Z	?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	switch		generated	[]		
+00b4a460	GEN	?CEnginePrimitiveManager_RenderBoundingVolume@@YGXH@Z	?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@@Z	switch		generated	[]		
+00b4a470	GEN	?CEngineLightingManager_PeekSceneFilterFlags@@YIHXZ	?PeekSceneFilterFlags@CEngineLightingManager@@UBEKXZ	switch		generated	[]	FABLE_RETAIL_CENGINELIGHTINGMANAGER	
+00b8fd80	GEN	?CEngineInternalPrimitiveBase_Update@@YGXHH@Z	?Update@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitive@@K@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b8fdc0	GEN	?CEngineInternalPrimitiveBase_GetChildPrimitiveHandle@@YGXHH@Z	?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b8fdd0	GEN	?CEngineInternalPrimitiveBase_ClearChildPrimitive@@YGXH@Z	?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00b8fde0	GEN	?CEngineInternalPrimitiveBase_ClearAllChildPrimitives@@YIXPAVCEngineInternalPrimitiveBase@@@Z	?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ	switch		generated	[]	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED	pre v1 min-2/6
+00ba7fc0	GEN	?CEngineInternalPrimitiveMeshBase_GetTransformFrameStart@@YI_NPAXHH@Z	?GetTransformFrameStart@CEngineInternalPrimitiveMeshBase@@UBE_NAAVCMatrix3x4@@@Z	switch		generated	[]		pre v1 min-25/31
+00ba7fd0	GEN	?CEngineInternalPrimitiveMeshBase_GetTransformFrameEnd@@YI_NPAXHH@Z	?GetTransformFrameEnd@CEngineInternalPrimitiveMeshBase@@UBE_NAAVCMatrix3x4@@@Z	switch		generated	[]		pre v1 min-25/31
+00bacd90	GEN	?CEnginePrimitiveManager_FrameStart@@YIXXZ	?FrameStart@CEnginePrimitiveManager@@UAEXXZ	switch		generated	[]		
+00bacda0	GEN	?CEnginePrimitiveManager_FrameEnd@@YIXXZ	?FrameEnd@CEnginePrimitiveManager@@UAEXXZ	switch		generated	[]		
+00bce9f0	GEN	?CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameStart@@YI_NPAVCEngineInternalPrimitiveAnimatedMesh@@PAXAAVCMatrix3x4@@@Z	?GetTransformFrameStart@CEngineInternalPrimitiveAnimatedMesh@@UBE_NAAVCMatrix3x4@@@Z	local		generated	[]		
+00bd9b70	GEN	?CEngineLandscapeMemoryManager_RelocateData@@YGXHHHH@Z	?RelocateData@CEngineLandscapeMemoryManager@@EAEXJPAX0J@Z	switch		generated	[]	FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER,FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER_CTOR	
+00bf6b50	GEN	?CLandscapeBackgroundTreeNode_CanRelocateData@@YI_NPAVCLandscapeBackgroundTreeNode@@HJ@Z	?CanRelocateData@CLandscapeBackgroundTreeNode@@EBE_NJ@Z	local		generated	[]		

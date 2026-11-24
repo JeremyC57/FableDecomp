@@ -50,8 +50,10 @@ extern long NPCAttitudes[3];                                 // 0x0143E928 ?NPCA
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, SCRIPT_AI_PRIORITY_MEDIUM=2, SCRIPT_AI_PRIORITY_HIGH=3, SCRIPT_AI_PRIORITY_HIGHEST=4 };
 inline CScriptThing::~CScriptThing() { }
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
-inline bool CScriptThing::MsgIsHitByAnySpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitByAnySpecialAbilityFrom(attacker); }
-inline bool CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBySpecialAbilityFrom(ability, attacker); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AAD40 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline bool CScriptThing::MsgIsHitByAnySpecialAbilityFrom(const CCharString& attacker) const { const CScriptThing* imp = PImp.Data; if (!imp) return false; return imp->MsgIsHitByAnySpecialAbilityFrom(attacker); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AAD20 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline bool CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& attacker) const { const CScriptThing* imp = PImp.Data; if (!imp) return false; return imp->MsgIsHitBySpecialAbilityFrom(ability, attacker); }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 
 void NScript::CV_FishermanScript::NPCAttitudeProcess(CScriptThing Me)

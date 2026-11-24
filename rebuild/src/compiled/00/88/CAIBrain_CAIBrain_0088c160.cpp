@@ -105,7 +105,7 @@ class CAIBrain : public CAIBrainBase
     CAIBrain(const CMainGameComponent& component, CWorld& world, CThingManager& thingManager,
              CPlayerManager& playerManager, CThingAICreature& creature, CDefPointer<const CBrainDef> def);
     virtual void v00();
-    void InitStateGroups(CDefPointer<const CBrainDef> def);   // 0x0088BF30
+    private: void InitStateGroups(CDefPointer<const CBrainDef> def); public:   // 0x0088BF30
 };
 
 CAIBrain::CAIBrain(const CMainGameComponent& component, CWorld& world, CThingManager& thingManager,

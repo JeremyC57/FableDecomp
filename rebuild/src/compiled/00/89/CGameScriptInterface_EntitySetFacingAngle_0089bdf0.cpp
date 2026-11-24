@@ -14,11 +14,13 @@
 //   0x007010F0 / FableWin.pdb 0x02478510; engine/CTCCreatureNavigation.h); was the stand-in ?Reset@CTCType7@@QAEXXZ.
 // Shape: the look direction is the intrinsic cos/sin pair of `angle * (double)2pi` and a zero pitch read from a double
 //   in memory (0x0122ED70, not folded), X = sin(yaw)*cos(pitch), Y = cos(yaw)*cos(pitch), Z = sin(pitch).
+// NF251 (q12702): the zero pitch is the literal 0.0: VC7.1 does not fold the intrinsic cos / sin of it and loads it from its shared
+//   double constant __real@0000000000000000 (0x0122ED70), the spelling the CEngine ctor 0x00B260B0 and 0x00ADF1E0 bind; was the stand-in
+//   global ?g_zeroPitch@@3NB.
 #include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sin, cos)
 #include "engine/C3DVector.h"
-extern const double g_zeroPitch;                        // 0x0122ED70 (0.0)
 extern const double TWO_PI; // 0x0124F2B8 ((double)6.2831855f)
 struct CTCBase_Retail;
 class CTCBase;
@@ -85,9 +87,9 @@ void CGameScriptInterface::EntitySetFacingAngle(const CScriptThing& entity, floa
     if (look)
         look->StopLooking(0);
     if (!immediate && look) {
-        float cosPitch = (float)cos(g_zeroPitch);
+        float cosPitch = (float)cos(0.0);
         double yaw = angle * TWO_PI;
-        C3DVector direction((float)(sin(yaw) * cosPitch), (float)(cos(yaw) * cosPitch), (float)sin(g_zeroPitch));
+        C3DVector direction((float)(sin(yaw) * cosPitch), (float)(cos(yaw) * cosPitch), (float)sin(0.0));
         look->LookAtPos(entity.GetPos() + direction, 0x21);
         return;
     }

@@ -204,7 +204,10 @@ class CTCHeroStats : public CTCBase { public:
     CMarriageList            Marriages;                     // +0x1d8
     CTCHeroStats(CThing& owner);
     const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
-    long GetFatnessReducingFrequencyInFrames() const;   // 0x0057A60A
+    private:
+    long GetFatnessReducingFrequencyInFrames() const;
+    public:
+   // 0x0057A60A
 };
 
 CTCHeroStats::CTCHeroStats(CThing& owner)

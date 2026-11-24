@@ -1,0 +1,27 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	??1CManagerBase@NUISystem@@UAE@XZ	0042bec0	0041e641	stand-in: 0x0041E641 now binds ??1CObservable@NUISystem@@QAE@XZ
+delete	rebuild/oracles/reloc_bindings.tsv	??1SMember24@@QAE@XZ	0042b796	0041e641	stand-in: now the header STLport ~_Rb_tree of Keys (add line below)
+delete	rebuild/oracles/reloc_bindings.tsv	??1SMember60@@QAE@XZ	0042ab1c	0041e641	stand-in: now ??1?$_List_base@PAVCActionParam@NUISystem@@...@QAE@XZ, already in the table (witness 0x005954AD)
+delete	rebuild/oracles/reloc_bindings.tsv	??1SMember70@@QAE@XZ	0042b7d7	0041e641	stand-in: now the header STLport ~_Rb_tree of Layers (add line below)
+delete	rebuild/oracles/reloc_bindings.tsv	??1SMember88@@QAE@XZ	0042ce63	0041e641	stand-in: now the header STLport ~_Rb_tree of BastardChildren (add line below)
+delete	rebuild/oracles/reloc_bindings.tsv	??0CManager@NUISystem@@QAE@XZ	0041e3f6	0041e5f2	respelled: 0x0041E5F2 (and self 0x0041E3F6) now ??0CManager@NUISystem@@IAE@XZ
+delete	rebuild/oracles/reloc_bindings.tsv	??0CManagerBase@NUISystem@@QAE@XZ	0042be7b	0041e3f6	stand-in: now ??0CObservable@NUISystem@@QAE@XZ
+delete	rebuild/oracles/reloc_bindings.tsv	??0CKeyMap@NUISystem@@QAE@XZ	0042bf67	0041e3f6	stand-in: now the STLport map<EUsedKeys,long> no-argument constructor
+delete	rebuild/oracles/reloc_bindings.tsv	??0CLayerMap@NUISystem@@QAE@XZ	0042bf85	0041e3f6	stand-in: now the STLport map<long,EEngine2DLayer> no-argument constructor
+delete	rebuild/oracles/reloc_bindings.tsv	??0CChildrenMap@NUISystem@@QAE@XZ	0042d28b	0041e3f6	stand-in: now the STLport map<CCharString,CCountedPointer<CComponent> > no-argument constructor
+delete	rebuild/oracles/reloc_bindings.tsv	??0CActionParamList@NUISystem@@QAE@ABUSAllocator@1@@Z	0042ab01	0041e3f6	stand-in: now ??0?$_List_base@PAVCActionParam@NUISystem@@...@QAE@ABV?$allocator@...@1@@Z (folded list / _List_base ctor; the SRetailAllocator stand-in line, witness 0x0042BE50, stays: not this hand-back)
+delete	rebuild/oracles/reloc_bindings.tsv	?SetMetaLayer@CManager@NUISystem@@QAEXJ@Z	0041e1cd	0041e3f6	respelled: 0x0041E3F6 and self 0x0041E1CD now ?SetMetaLayer@CManager@NUISystem@@UAEXJ@Z
+keep	rebuild/oracles/reloc_bindings.tsv	??1CManager@NUISystem@@IAE@XZ	0041e641	0042fb40	keep (already there): now also the self row
+add	rebuild/oracles/reloc_bindings.tsv	??0CManager@NUISystem@@IAE@XZ	0041e3f6	0041e5f2	new spelling (Ego_r.pdb / FableWin.pdb, protected)
+add	rebuild/oracles/reloc_bindings.tsv	?SetMetaLayer@CManager@NUISystem@@UAEXJ@Z	0041e1cd	0041e3f6	new spelling (both PDBs; vtable 0x01230134 slot 34)
+add	rebuild/oracles/reloc_bindings.tsv	??0CObservable@NUISystem@@QAE@XZ	0042be7b	0041e3f6	PDB spelling (Ego_r 0x0043A1C1 / FableWin 0x01AE4FA4)
+add	rebuild/oracles/reloc_bindings.tsv	??1CObservable@NUISystem@@QAE@XZ	0042bec0	0041e641	PDB spelling (Ego_r 0x0043A209 / FableWin 0x01AE52FC); pick-any copy EQ 0x0042BEC0
+add	rebuild/oracles/reloc_bindings.tsv	??0?$map@W4EUsedKeys@CManager@NUISystem@@JU?$less@W4EUsedKeys@CManager@NUISystem@@@std@@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@XZ	0042bf67	0041e3f6	STLport spelling (FABLE_RETAIL_STLP_MAP); copy EQ
+add	rebuild/oracles/reloc_bindings.tsv	??0?$map@JW4EEngine2DLayer@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@3@@std@@QAE@XZ	0042bf85	0041e3f6	STLport spelling; copy EQ
+add	rebuild/oracles/reloc_bindings.tsv	??0?$map@VCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@@std@@QAE@XZ	0042d28b	0041e3f6	STLport spelling; copy EQ
+add	rebuild/oracles/reloc_bindings.tsv	??0?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z	0042ab01	0041e3f6	STLport spelling (folded alias of the list ctor, GOTCHAS nf104); copy EQ
+add	rebuild/oracles/reloc_bindings.tsv	??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@QAE@XZ	0042ce63	0041e641	STLport spelling; copy EQ
+add	rebuild/oracles/reloc_bindings.tsv	??1?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAE@XZ	0042b7d7	0041e641	STLport spelling; copy EQ
+add	rebuild/oracles/reloc_bindings.tsv	??1?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@XZ	0042b796	0041e641	STLport spelling; copy EQ
+note	rebuild/oracles/reloc_bindings.tsv	(in-copy bindings)	-	-	the pick-any copies bind further STLport symbols inside themselves (clear / _M_erase / _Rb_tree_base / _List_base, 0x0042A1E3 ... 0x0042AD10): work/owners.tsv "NF226" blocks, every one EQ its retail owner; add lines only if the gate needs them
+change	rebuild/build_candidates.ps1	PassPattern of 0x0042DB20	PASS_0042db20 -> 0042db20_TEST PASS	-	the new test prints both lines; the brief asks for <addr>_TEST PASS

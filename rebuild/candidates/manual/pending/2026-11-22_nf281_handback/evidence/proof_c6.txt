@@ -1,0 +1,70 @@
+##### 0094fe30 renames: ?StayIdle@CAIStateGroup_JackDragon@@QAEXM@Z=?StayIdle@CAIStateGroup_JackDragon@@AAEXM@Z
+sections head 6 new 6
+ALL_EQ 0
+ONLY_A	?StayIdle@CAIStateGroup_JackDragon@@QAEXM@Z
+funcs SAME=4 vtbl_H=0 vtbl_N=0
+##### 00951b20 renames: ?FlyOutOfGround@CAIStateGroup_JackDragon@@QAEXXZ=?FlyOutOfGround@CAIStateGroup_JackDragon@@AAEXXZ
+sections head 11 new 11
+ALL_EQ 0
+ONLY_A	?FlyOutOfGround@CAIStateGroup_JackDragon@@QAEXXZ
+funcs SAME=9 vtbl_H=0 vtbl_N=0
+##### 00915290 renames: ?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@QAEXXZ=?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@AAEXXZ
+sections head 24 new 24
+ALL_EQ 0
+ONLY_A	?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@QAEXXZ
+funcs SAME=19 vtbl_H=3 vtbl_N=3
+##### 0096ea50 renames: ?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@QAEXXZ=?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@AAEXXZ ?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby@@QAE_NXZ=?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby@@ABE_NXZ
+sections head 5 new 5
+ALL_EQ 0
+ONLY_A	?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@QAEXXZ
+funcs SAME=3 vtbl_H=0 vtbl_N=0
+##### 0093e2d0 renames: ?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ=?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ
+sections head 20 new 20
+ALL_EQ 0
+DIFF	?Update@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@UAEXXZ
+funcs SAME=17 vtbl_H=2 vtbl_N=2
+##### 0093e5e0 renames: ?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ=?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ
+sections head 8 new 8
+ALL_EQ 0
+DIFF	?Update@CAIStateGroup_MeleeCombatNearby2@@MAEXXZ
+funcs SAME=6 vtbl_H=0 vtbl_N=0
+##### 0096ee90 renames: ?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ=?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ
+sections head 9 new 9
+ALL_EQ 0
+DIFF	?Update@CAIStateGroup_MeleeCombatNearby@@MAEXXZ
+funcs SAME=6 vtbl_H=2 vtbl_N=2
+##### 00936020 renames: ?PutOutFire@CAIStateGroup_MinionPutOutFires@@QAE_NXZ=?PutOutFire@CAIStateGroup_MinionPutOutFires@@AAE_NXZ
+sections head 5 new 5
+ALL_EQ 0
+DIFF	?Update@CAIStateGroup_MinionPutOutFires@@UAEXXZ
+funcs SAME=3 vtbl_H=0 vtbl_N=0
+##### 00930ee0 renames: ?IsValid@CAIStateGroup_MinionReactToCriminal@@QAE_NXZ=?IsValid@CAIStateGroup_MinionReactToCriminal@@ABE_NXZ
+sections head 11 new 11
+ALL_EQ 0
+ONLY_A	?IsValid@CAIStateGroup_MinionReactToCriminal@@QAE_NXZ
+funcs SAME=9 vtbl_H=0 vtbl_N=0
+##### 00931010 renames: ?IsValid@CAIStateGroup_MinionReactToCriminal@@QBE_NXZ=?IsValid@CAIStateGroup_MinionReactToCriminal@@ABE_NXZ
+sections head 19 new 19
+ALL_EQ 0
+DIFF	?IsRunnable@CAIStateGroup_MinionReactToCriminal@@QAE_NXZ
+funcs SAME=14 vtbl_H=4 vtbl_N=4
+##### 00930a70 renames: ?InteractionFailed@CAIStateGroup_MinionReactToPlayerInteraction@@QAEXXZ=?InteractionFailed@CAIStateGroup_MinionReactToPlayerInteraction@@AAEXXZ
+sections head 13 new 13
+ALL_EQ 0
+DIFF	?IsRunnable@CAIStateGroup_MinionReactToPlayerInteraction@@UAE_NXZ
+funcs SAME=11 vtbl_H=0 vtbl_N=0
+##### 0095d200 renames: ?IsStillRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ=?IsStillRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ
+sections head 10 new 10
+ALL_EQ 0
+DIFF	?Update@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAEXXZ
+funcs SAME=7 vtbl_H=2 vtbl_N=2
+##### 0096c2e0 renames: ?FindHitEvent@CAIStateGroup_Thunder@@QAE_NXZ=?FindHitEvent@CAIStateGroup_Thunder@@IAE_NXZ
+sections head 24 new 24
+ALL_EQ 0
+DIFF	?IsRunnable@CAIStateGroup_Thunder@@UAE_NXZ
+funcs SAME=19 vtbl_H=4 vtbl_N=4
+##### 0096a7a0 renames: ?FindHitEvent@CAIStateGroup_WhisperRetreat@@QAE_NXZ=?FindHitEvent@CAIStateGroup_WhisperRetreat@@IAE_NXZ
+sections head 17 new 17
+ALL_EQ 0
+DIFF	?IsRunnableLeaf@CAIStateGroup_WhisperRetreat@@QAE_NXZ
+funcs SAME=13 vtbl_H=2 vtbl_N=2

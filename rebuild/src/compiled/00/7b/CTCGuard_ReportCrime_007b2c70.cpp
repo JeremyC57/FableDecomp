@@ -1,5 +1,5 @@
 // CTCGuard::ReportCrime(CTCVillage& village, long crime, EOpinionDeedType deedType, bool flagVillage) -- report the crime to the village (optionally flagging it), and make the village thing's opinion-of-hero component aware of the deed when it does not already know of it
-// Leaf: ?ReportCrime@CTCGuard@@QAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z
+// Leaf: ?ReportCrime@CTCGuard@@AAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B2C70, length 114 bytes (+14 int3 padding), `ret 10h`.
 // Ego_r.pdb: ?ReportCrime@CTCGuard@@AAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z
@@ -36,7 +36,9 @@ public:
 };
 class CTCGuard : public CTCBase {
 public:
+    private:
     void ReportCrime(CTCVillage& village, long crime, EOpinionDeedType deedType, bool flagVillage);
+    public:
 };
 
 void CTCGuard::ReportCrime(CTCVillage& village, long crime, EOpinionDeedType deedType, bool flagVillage)

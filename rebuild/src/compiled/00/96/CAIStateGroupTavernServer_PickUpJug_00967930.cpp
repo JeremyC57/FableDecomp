@@ -71,7 +71,7 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    void SetPushableByHero(bool pushable);                              protected: // 0x0097E330
+    protected: void SetPushableByHero(bool pushable);                   protected: // 0x0097E330 (NF313: IAE, both PDBs)
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool interruptible); public:   // 0x0097DB70
 };
 

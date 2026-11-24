@@ -1,0 +1,7 @@
+02:02:06 ZS_FAIL rc=2 /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF292/work/zs_ctl.cpp
+ZS_FAIL rc=2
+zs_ctl.cpp
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF292\work\zs_ctl.cpp(1) : error C2065: 'undeclared_token_nf292' : undeclared identifier
+02:02:06 ZS_OK /home/user/FableDecomp/rebuild/tests/00/54/NUISystemCFrontEndButton_GetDataFromDef_0054df50_test.cpp
+02:02:07 ZS_OK /home/user/FableDecomp/rebuild/tests/00/86/CHitParameters_IsShotStrike_008688c0_test.cpp
+ZS_DONE

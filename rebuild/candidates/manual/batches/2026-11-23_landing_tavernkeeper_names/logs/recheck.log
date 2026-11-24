@@ -1,0 +1,42 @@
+addr       parity           behav  name
+009687b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009687b0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+009687b0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009687b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009687b0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+009687b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TavernKeeper (engine/CAIStateGroup_TavernKeeper.h)
+009687b0   RELOCATION_MATCH PASS   IsHoldingJug
+00968860   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00968860   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00968860   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00968860   WARN SHARED_HEADER_AVAILABLE CTCNamedUserActionPoints (engine/CTCNamedUserActionPoints.h)
+00968860   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TavernKeeper (engine/CAIStateGroup_TavernKeeper.h)
+00968860   RELOCATION_MATCH PASS   GetPaymentPoint
+00968bc0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayIntoLoopOutOfAnimation (engine/CCreatureAction_PlayIntoLoopOutOfAnimation.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CTCTavernJug (engine/CTCTavernJug.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00968bc0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TavernKeeper (engine/CAIStateGroup_TavernKeeper.h)
+00968bc0   RELOCATION_MATCH PASS   OnReplace
+00969470   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00969470   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00969470   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayIntoLoopOutOfAnimation (engine/CCreatureAction_PlayIntoLoopOutOfAnimation.h)
+00969470   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00969470   WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)
+00969470   WARN SHARED_HEADER_AVAILABLE CTCShopKeeper (engine/CTCShopKeeper.h)
+00969470   WARN SHARED_HEADER_AVAILABLE CTCVillageMember (engine/CTCVillageMember.h)
+00969470   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00969470   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TavernKeeper (engine/CAIStateGroup_TavernKeeper.h)
+00969470   RELOCATION_MATCH PASS   Update
+
+WINS: 4
+  009687b0 RELOCATION_MATCH CAIStateGroup_TavernKeeper::?IsHoldingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ
+  00968860 RELOCATION_MATCH CAIStateGroup_TavernKeeper::?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ
+  00968bc0 RELOCATION_MATCH CAIStateGroup_TavernKeeper::?OnReplace@CAIStateGroup_TavernKeeper
+  00969470 RELOCATION_MATCH CAIStateGroup_TavernKeeper::?Update@CAIStateGroup_TavernKeeper

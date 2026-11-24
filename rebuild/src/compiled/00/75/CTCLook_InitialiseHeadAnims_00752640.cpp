@@ -1,10 +1,10 @@
 // CTCLook::InitialiseHeadAnims() -- build the vertical and horizontal head-turn animation entries: from the live parent creature's animations when it has them, otherwise from the appearance def's animation set (no-group filter)
-// Leaf: InitialiseHeadAnims
+// Leaf: ?InitialiseHeadAnims@CTCLook@@AAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00752640, 607 bytes, plain `ret`.
 // Callees: CThingCreatureBase::HasAnimation (virtual slot 73, +0x124), CThingCreatureBase::GetAnimFromName @ 0x00662A00,
 //   operator new @ 0x00BFEA1A / operator delete @ 0x00BFE9BC, NAnimationEntryBodge::CAnimEntryLite(const CAnimationEntry*)
-//   @ 0x0073A9B0, CCountedPointer<CAnimEntryLite>(CAnimEntryLite*) @ 0x0073D180 and operator= @ 0x00754F10, the animation
+//   @ 0x0073A9B0, CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(CAnimEntryLite*) @ 0x0073D180 and operator= @ 0x00754F10, the animation
 //   table's Find(name, filter*) @ 0x005DC2E0 and GetAnimation(name, index, filter&) @ 0x005DC340 (CAnimFilterNoGroup
 //   vtable 0x0122FFDC).
 // Data: the global head-turn animation names 0x013BACE8 (vertical) and 0x013BACE4 (horizontal) (CCharString globals).
@@ -48,7 +48,7 @@ class CThingCreatureBase { public:
     virtual bool HasAnimation(const CCharString& name, bool currentModeOnly) const;   // slot 73 (+0x124)
     unsigned char _pad04[0x91 - 0x04];
     unsigned char Flags91;                                 // +0x91 (bit 0: dead)
-    const CAnimationEntry* GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
+    const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
 };
 template<class T> inline bool IS_THING_ALIVE(T* const& p)
 {
@@ -60,10 +60,13 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
 }
 
 
-struct CAnimEntryLite {
-    unsigned char _data[0x10];
-    CAnimEntryLite(const CAnimationEntry* entry);          // 0x0073A9B0
-};
+// NF295 (2026-11-23): the shared header's NAnimationEntryBodge::CAnimEntryLite (Ego_r + FableWin
+//   ??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z, 16 bytes; by reference, so the call sites dereference the entry
+//   pointer: the same pushed value) replaces the global local struct; the counted pointer's ctor 0x0073D180 / operator= 0x00754F10 then bind
+//   the PDB CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> spellings.
+#include "engine/NAnimationEntryBodge_CAnimEntryLite.h"
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA   // NF295: the retail ReleaseData order (Data zeroed before Info), as the owner of ??4 0x00754F10 builds it, so the
+                                           //   now-shared pick-any ?ReleaseData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@ copy is the same body
 #include "engine/CCountedPointer.h"
 
 template <class T> class CDefPointer { public:
@@ -82,22 +85,24 @@ class CTCLook { public:
     unsigned char _pad14[0x18 - 0x14];
     CDefPointer<const CAppearanceDef> PAppearanceDef;      // +0x18
     unsigned char _pad1c[0xbc - 0x1c];
-    CCountedPointer<CAnimEntryLite> PHeadTurnAnimH;        // +0xbc
-    CCountedPointer<CAnimEntryLite> PHeadTurnAnimV;        // +0xc4
+    CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PHeadTurnAnimH;        // +0xbc
+    CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PHeadTurnAnimV;        // +0xc4
+    private:
     void InitialiseHeadAnims();
+    public:
 };
 
 void CTCLook::InitialiseHeadAnims()
 {
     if (IS_THING_ALIVE(PParentCreature)) {
         if (PParentCreature->HasAnimation(ST_HEAD_TURN_V, false))
-            PHeadTurnAnimV = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PParentCreature->GetAnimFromName(ST_HEAD_TURN_V, 0)));
+            PHeadTurnAnimV = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(PParentCreature->GetAnimFromName(ST_HEAD_TURN_V, 0)));
         if (PParentCreature->HasAnimation(ST_HEAD_TURN_H, false))
-            PHeadTurnAnimH = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PParentCreature->GetAnimFromName(ST_HEAD_TURN_H, 0)));
+            PHeadTurnAnimH = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(PParentCreature->GetAnimFromName(ST_HEAD_TURN_H, 0)));
     } else {
         if (PAppearanceDef->Animation.AnimExists(ST_HEAD_TURN_V, CAnimFilterNoGroup()))
-            PHeadTurnAnimV = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PAppearanceDef->Animation.GetAnimation(ST_HEAD_TURN_V, 0, CAnimFilterNoGroup())));
+            PHeadTurnAnimV = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(*PAppearanceDef->Animation.GetAnimation(ST_HEAD_TURN_V, 0, CAnimFilterNoGroup())));
         if (PAppearanceDef->Animation.AnimExists(ST_HEAD_TURN_H, CAnimFilterNoGroup()))
-            PHeadTurnAnimH = CCountedPointer<CAnimEntryLite>(new CAnimEntryLite(PAppearanceDef->Animation.GetAnimation(ST_HEAD_TURN_H, 0, CAnimFilterNoGroup())));
+            PHeadTurnAnimH = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(*PAppearanceDef->Animation.GetAnimation(ST_HEAD_TURN_H, 0, CAnimFilterNoGroup())));
     }
 }

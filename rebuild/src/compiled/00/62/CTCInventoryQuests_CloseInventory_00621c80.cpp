@@ -15,6 +15,11 @@
 //   +0x134, refresh flag +0x14D, previous hero-info screen +0x168.
 // NF48 (round 7): the CHandleVector stand-in is STLport 4.6.2 std::vector<CEnginePrimitiveHandle> from the shared stlport/fable_containers.h;
 // FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE keeps vector<CEnginePrimitiveHandle>::erase(iterator, iterator) 0x00440D70 out of line as retail calls it.
+// NF217 (2026-11-21, q12372): the local NHeroInformationScreens::CManager / CBase models are gone: the row uses the shared
+//   engine/NHeroInformationScreens_CManager.h (+ _CBase.h). 0x0066E799 now binds the PDB
+//   ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z (was the stand-in ?SetScreen@...@@QAEXJ@Z), both PDBs
+//   (Ego_r.pdb 0x006A0C9B, FableWin.pdb 0x02115ADC) and the reloc_bindings witness 0x00577216; the +0x130 CBase's slot 3 is the header's
+//   IsInventoryScreen (was the stand-in IsActive; 0x00577216 calls it there); the +0x168 member is Ego_r.pdb's EScreenType PreviousScreenType.
 #define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
 #include "stlport/fable_containers.h"
 #include "fable_compiler.h"
@@ -108,6 +113,7 @@ public:
     virtual void v41();
     virtual CPlayerPtr Slot42();                     // +0xA8
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
+    static void __fastcall OnCloseMenus();       // 0x0041D165 (Ego_r 0x0042D999 / FableWin 0x01B101F9 ?OnCloseMenus@CManager@NUISystem@@SIXXZ; was the free CloseMenus, NF218 q12384)
 };
 }
 struct CNodeListNode { CNodeListNode* _M_next; CNodeListNode* _M_prev; };
@@ -179,15 +185,8 @@ class CWorld { public:
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
-void __fastcall CloseMenus();                        // 0x0041D165
-namespace NHeroInformationScreens {
-class CManager { public: void SetScreen(long screen);        // 0x0066E799 (name unproven)
-};
-class CBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual bool IsActive();                         // slot 3 (+0x0C)
-};
-}
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
+#include "engine/NHeroInformationScreens_CManager.h"   // CBase (IsInventoryScreen slot 3), CManager::SelectScreenOfType 0x0066E799
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
@@ -222,13 +221,13 @@ class CTCInventoryQuests : public NInventory::CTCInventoryBase { public:
     unsigned char    _pad140[0x14d - 0x140];
     bool             NeedsRefresh;                   // +0x14d
     unsigned char    _pad14e[0x168 - 0x14e];
-    long             PreviousScreen;                 // +0x168
+    NHeroInformationScreens::EScreenType PreviousScreenType;   // +0x168 (Ego_r.pdb CTCInventoryQuests::PreviousScreenType is EScreenType)
     void BaseCloseInventory();                       // 0x005BD597 (CTCInventoryBase::CloseInventory)
     void CloseInventory();
 };
 void CTCInventoryQuests::CloseInventory()
 {
-    if (!Screen.IsActive()) {
+    if (!Screen.IsInventoryScreen()) {
         if (PSoundManager) {
             PSoundManager->SetGainFader(0x10, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
             PSoundManager->SetGainFader(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
@@ -240,7 +239,7 @@ void CTCInventoryQuests::CloseInventory()
         CMainGameComponent::Get()->World->Hud->SetEnabled(true);
         CWorld* world = (&GetWorld());
         world->InventoryClosedFrame = CWorld::GetFrame();
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->SetScreen(PreviousScreen);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->SelectScreenOfType(PreviousScreenType);
         for (unsigned long i = 0; i < Components.size(); ++i)
             delete Components[i];
         Components.clear();
@@ -249,7 +248,7 @@ void CTCInventoryQuests::CloseInventory()
         g_frontEndNodeList.clear();
         NUISystem::CManager::GetInstance()->Slot37();
         CMainGameComponent::Get()->World->Hud->Slot56(0, 0);
-        CloseMenus();
+        NUISystem::CManager::OnCloseMenus();
     }
     BaseCloseInventory();
     NeedsRefresh = true;

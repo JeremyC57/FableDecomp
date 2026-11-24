@@ -1,0 +1,50 @@
+== 0092a8a0
+0a1,13
+> enum EMovementType {
+>     AI_MOVEMENT_NULL = 0,
+>     AI_MOVEMENT_SNEAKING = 1,
+>     AI_MOVEMENT_SLOW_WALKING = 2,
+>     AI_MOVEMENT_WALKING = 3,
+>     AI_MOVEMENT_JOGGING = 4,
+>     AI_MOVEMENT_RUNNING = 5,
+>     AI_MOVEMENT_NON_CONSTANT_RUNNING = 6,
+>     AI_MOVEMENT_FLYING = 7,
+>     AI_MOVEMENT_HOVER_SLOW = 8,
+>     AI_MOVEMENT_HOVER_MEDIUM = 9,
+>     AI_MOVEMENT_HOVER_FAST = 10
+> };
+57a71
+> class CThingBuilding;
+69c83
+<     long AIAction_MinionWander(long movementType, CThing* building);
+---
+>     protected: EAIActionReturn AIAction_MinionWander(EMovementType movementType, CThingBuilding* building); public:
+142c156
+<             if (AIAction_MinionWander(3, 0) != 2 || !MoveToAppropriateDummy())
+---
+>             if (AIAction_MinionWander(AI_MOVEMENT_WALKING, 0) != 2 || !MoveToAppropriateDummy())
+== 0092b3e0
+0a1,13
+> enum EMovementType {
+>     AI_MOVEMENT_NULL = 0,
+>     AI_MOVEMENT_SNEAKING = 1,
+>     AI_MOVEMENT_SLOW_WALKING = 2,
+>     AI_MOVEMENT_WALKING = 3,
+>     AI_MOVEMENT_JOGGING = 4,
+>     AI_MOVEMENT_RUNNING = 5,
+>     AI_MOVEMENT_NON_CONSTANT_RUNNING = 6,
+>     AI_MOVEMENT_FLYING = 7,
+>     AI_MOVEMENT_HOVER_SLOW = 8,
+>     AI_MOVEMENT_HOVER_MEDIUM = 9,
+>     AI_MOVEMENT_HOVER_FAST = 10
+> };
+56a70
+> class CThingBuilding;
+68c82
+<     long AIAction_MinionWander(long movementType, CThing* building);
+---
+>     protected: EAIActionReturn AIAction_MinionWander(EMovementType movementType, CThingBuilding* building); public:
+139c153
+<             if (AIAction_MinionWander(3, 0) != 2 || !MoveToAppropriateDummy())
+---
+>             if (AIAction_MinionWander(AI_MOVEMENT_WALKING, 0) != 2 || !MoveToAppropriateDummy())

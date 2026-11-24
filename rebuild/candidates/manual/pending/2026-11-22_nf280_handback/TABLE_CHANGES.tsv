@@ -1,0 +1,8 @@
+action	symbol	target	witness	note
+remove	?ProcessEvent@CMainGameComponent@@QAEXPBVCGameEvent@@@Z	00415fe0	00416e78	0x00416E78 now binds the IAE spelling (line kept: witness 00416670)
+remove	?EventIsSystemEvent@CMainGameComponent@@QAE_NPBVCGameEvent@@@Z	00415ff2	00416e78	0x00416E78 now binds the IAE spelling (line kept: witness 0041649c)
+remove	?BeginEventPoll@CGamePlayerInterface@@QAEXXZ	004457f0	00416e78	made-up spelling; its only witness now binds ?Update@CGamePlayerInterface@@QAEXXZ
+add	?Update@CGamePlayerInterface@@QAEXXZ	004457f0	00416e78	PDB spelling (RENAMES section 1 0x004457F0); the self row defines it
+remove	?UpdateChecksum@CInputManager@@QAEXJPAVCChecksum@@@Z	009f4a90	00416e78	pointer stand-in; both PDBs spell ABV
+add	?UpdateChecksum@CInputManager@@QAEXJABVCChecksum@@@Z	009f4a90	00416e78	Ego_r.pdb 0x00B48620 + FableWin.pdb 0x030CD6D0; the self row 0x009F4A90 already defines it (evidence/sym_head_009f4a90.txt)
+# vtable slot 6 (0x00416E78) has no table line; flags: no CompilerFlags change for any row

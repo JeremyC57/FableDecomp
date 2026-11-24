@@ -1,0 +1,13 @@
+# rename check (string compare): each binder object renames exactly one symbol, the ENTRIES stand-in of its target onto the ENTRIES pdb_spelling
+008e9b60 008e97b0 OK ?ResetStrafeAnims_008e97b0@CModeStrafe@NCreatureMode@@AAEXXZ=?LockStrafingCombinationAnimsToMainAnim@CModeStrafe@NCreatureMode@@AAEXXZ
+00d17da0 00d17e70 OK ?RemoveBoastQuestInfo_00d17e70@CQ_BountyHuntScript@NScript@@QAEXXZ=?RemoveBoastQuestInfo@CQ_BountyHuntScript@NScript@@QAEXXZ
+007a9c80 007a9b10 OK ?SetupCameraFromStick_007a9b10@CTCAssassinRush@@QAEXXZ=?ResetCameraOnStick@CTCAssassinRush@@AAEXXZ
+0061b560 0061a9d0 OK ?QuestListHook_0061A9D0@CTCInventoryQuests@@QAEXXZ=?MoveToNextTestQuest@CTCInventoryQuests@@QAEXXZ
+0061b530 0061aa80 OK ?QuestListHook_0061AA80@CTCInventoryQuests@@QAEXXZ=?MoveToPreviousTestQuest@CTCInventoryQuests@@QAEXXZ
+004b1590 00702810 OK ?IsActivatable_00702810@CTCQuestCard@@QBE_NXZ=?IsActivatable@CTCQuestCard@@QBE_NXZ
+004b4aa0 00702810 OK ?IsActivatable_00702810@CTCQuestCard@@QBE_NXZ=?IsActivatable@CTCQuestCard@@QBE_NXZ
+008455c0 006de8c0 OK ?OnShownByCreature_006de8c0@CTCTrophy@@QAEXPAVCThing@@@Z=?OnShowTrophyPerformAction@CTCTrophy@@QAEXAAVCThing@@@Z
+00947840 00658bb9 OK ?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ=?IsEatTime@CTCVillage@@QBE_NXZ
+00947a30 00658bb9 OK ?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ=?IsEatTime@CTCVillage@@QBE_NXZ
+00665190 00664e50 OK ?IsThingInViewAngle_00664e50@CThingCreatureBase@@QAE_NPAVCThing@@M_N@Z=?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z
+00704150 007034d0 OK ?UpdateObject_007034d0@CThingObject@@QAEXXZ=?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ

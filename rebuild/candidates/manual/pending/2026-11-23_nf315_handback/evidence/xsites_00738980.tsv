@@ -1,0 +1,7 @@
+00738980	call	00733960	00733950L CTCCombat::HasAppropriateFollowingCombo
+00738980	call	00734582	00734570L CTCCombat::SetNextComboChainPos
+00738980	call	0073463e	007345d0L CTCCombat::GetAppropriateCombatAnimationFromList
+00738980	call	00738c9f	00738c90L CGetMaxComboStage::operator()
+00738980	call	00738ccc	-
+00738980	call	00738f4c	00738f30L std::for_each
+00738980	call	00738fa8	00738f90L CAnimationSet::IsAppropriateEntryExisting<CIsCombatAnimAppro

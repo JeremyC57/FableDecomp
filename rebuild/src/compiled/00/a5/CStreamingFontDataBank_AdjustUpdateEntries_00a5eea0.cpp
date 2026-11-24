@@ -7,10 +7,10 @@
 // engine/CStreamingFontDataBank.h, flattens the CBankFile base into padding).
 // Shape: the count lives in ebx, the index in esi, `this` in edi; Size is re-read after each iteration (the calls may
 // change the bank), the `&&` gives the two short-circuit tests with the increment on the fall-through.
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY   // NF294: CBankFile::EntryExists 0x009CC190 (Ego_r + FableWin ?EntryExists@CBankFile@@QBE_NK@Z) from the header
 #include "engine/CBankFile.h"
 
 struct CStreamingFontDataBank_Methods : CBankFile {
-    bool EntryExists(unsigned long index);                    // 0x009CC190 (CBankFile)
     bool EntrySetUpdate(unsigned long index, bool update);    // 0x009CC300 (CBankFile)
     unsigned long AdjustUpdateEntries();
 };

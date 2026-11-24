@@ -1,0 +1,50 @@
+CAIStateGroup_EnemyCreatureBase	OTHER	1 blocks
+  insert old50-49 new50-61:  => #ifdef FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_OVERRIDES |     // Opt-in (NF325, 2026-11-24): declarations only, no layout change. The four overrides the retail RTTI vftable 0x0128B8BC places und
+CAIStateGroup_MazeBase	SAME	inserted=21	pinned=0
+CAIStateGroup_MazeTutorialBattle	SAME	inserted=29	pinned=0
+CAIStateGroup_MazeTutorialBattleRespondToLightning	SAME	inserted=33	pinned=0
+CAIStateGroup_MazeTutorialBattleUseShield	SAME	inserted=33	pinned=0
+CAInputProcess	OTHER	3 blocks
+  insert old23-22 new23-27:  => #ifdef FABLE_RETAIL_CAINPUTPROCESS_INIT |     // Nested opt-in (NF325, 2026-11-24; needs FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE): declaration only. Retail vftable 0x0129CA10 |     // slot 2 = 0x00
+  replace old33-33 new38-38: FABLE_STATIC_ASSERT(sizeof(CAInputProcess) == 0x14); => FABLE_STATIC_ASSERT_AT(33, sizeof(CAInputProcess) == 0x14);
+  replace old58-63 new63-68: FABLE_STATIC_ASSERT(sizeof(CAInputProcess) == 0x14); | FABLE_STATIC_ASSERT(offsetof(CAInputProcess, __vftable) == 0x0); | FABLE_STATIC_ASSERT(offsetof(CAInputPr => FABLE_STATIC_ASSERT_AT(58, sizeof(CAInputProcess) == 0x14); | FABLE_STATIC_ASSERT_AT(59, offsetof(CAInputProcess, __vftable) == 0x0); | FABLE_STATIC_ASSERT_AT(60, offsetof(CAInputProcess, PPlayerInter
+CCombatSequenceBase	OTHER	4 blocks
+  replace old3-3 new3-3: #ifdef FABLE_RETAIL_COMBAT_SEQUENCE_SELECTION_PASS27 => #if defined(FABLE_RETAIL_COMBAT_SEQUENCE_SELECTION_PASS27) || defined(FABLE_RETAIL_CCOMBATSEQUENCEBASE) // NF325: + the class-model opt-in (NF322 Q1 ruling)
+  insert old25-24 new25-27:  => #ifdef FABLE_RETAIL_CCOMBATSEQUENCEBASE // NF325: retail access (RTTI vftable 0x01278FEC slots 16-18 + FableWin.pdb ?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ, ?OnStart@..@@MAEXXZ, 
+  insert old28-27 new31-33:  => #ifdef FABLE_RETAIL_CCOMBATSEQUENCEBASE | public: | #endif
+  replace old37-37 new43-43: FABLE_STATIC_ASSERT(sizeof(CCombatSequenceBase)==0x28); => FABLE_STATIC_ASSERT_AT(37, sizeof(CCombatSequenceBase)==0x28);
+CCombatSequenceUnblockableFacing	SAME	inserted=20	pinned=2
+CCombatSequenceWhisperAdvance	SAME	inserted=20	pinned=2
+CCombatSequenceWhisperAttackBigCombo	SAME	inserted=21	pinned=3
+CCombatSequenceWhisperBoast	SAME	inserted=20	pinned=2
+CCombatSequenceWhisperIdles	SAME	inserted=20	pinned=2
+CCombatSequenceWhisperLunge	SAME	inserted=20	pinned=2
+CCombatSequenceWhisperSortYourselfOut	SAME	inserted=25	pinned=2
+CCombatSequenceWhisperStrafeAround	SAME	inserted=20	pinned=2
+CCombatSequenceWhisperStrikeStrafeBack	SAME	inserted=20	pinned=2
+CCombatSequenceWhisperTooCloseLeapBack	SAME	inserted=20	pinned=2
+CCombatSequence_BanditAdvanceFar	SAME	inserted=19	pinned=2
+CCombatSequence_BanditAttackSide	SAME	inserted=21	pinned=2
+CCombatSequence_BanditKingAdvance	SAME	inserted=20	pinned=2
+CCombatSequence_BattleCharge	SAME	inserted=25	pinned=3
+CCombatSequence_FodderSecondaryAttack	SAME	inserted=20	pinned=2
+CCombatSequence_GenericLeader	SAME	inserted=19	pinned=2
+CCombatSequence_GenericRangedAttack	SAME	inserted=19	pinned=2
+CCombatSequence_ScorpionLungeAttack	SAME	inserted=28	pinned=3
+CCombatSequence_TrollBurrowPursue	SAME	inserted=19	pinned=2
+CCombatSequence_TrollDoubleSwipeNonMelee	SAME	inserted=20	pinned=2
+CCombatSequence_TrollOpeningGroundPound	SAME	inserted=25	pinned=3
+CCombatSequence_TrollRockPursue	SAME	inserted=19	pinned=2
+CCombatSequence_VillagerBackOff	SAME	inserted=19	pinned=2
+CCombatSequence_WillPhysicalShield	SAME	inserted=25	pinned=2
+CCombatSequence_WillPhysicalShieldNonMelee	SAME	inserted=25	pinned=2
+CEngineInternalPrimitiveBase	OTHER	2 blocks
+  insert old48-47 new48-51:  => #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER // NF325: retail vftable 0x012A3D7C slot 7 = (K, CEnginePrimitiveHandle&, const CEnginePrimitive&, K), slot 8 = (K, const CEngi
+  insert old50-49 new54-54:  => #endif
+CEngineInternalPrimitiveParticleGroup	OTHER	1 blocks
+  insert old65-64 new65-82:  => #endif | #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_RTTI_SLOTS |     // Opt-in (NF325, 2026-11-24): declarations only, no layout change. The overrides the retail RTTI vftable 0x012A59D4
+CEngineInternalPrimitiveParticleSpriteTrailGroup	SAME	inserted=28	pinned=6
+CInputProcessManager	OTHER	2 blocks
+  insert old15-14 new15-17:  => #ifdef FABLE_RETAIL_CINPUTPROCESSMANAGER_FRIEND_CAINPUTPROCESS // NF325 opt-in, declaration only: retail CAInputProcess::AddToInterface 0x00A0D2B0 calls the protected |  friend class CAInputProcess; /
+  replace old25-25 new28-28: FABLE_STATIC_ASSERT(sizeof(CInputProcessManager)==1784); => FABLE_STATIC_ASSERT_AT(25, sizeof(CInputProcessManager)==1784);
+CPhysicsFacesSegmentBranch	SAME	inserted=26	pinned=5

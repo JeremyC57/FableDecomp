@@ -1,3 +1,4 @@
+// Leaf: ?DoHeadTracking@CTCKraken@@AAEXXZ
 // CTCKraken::DoHeadTracking() -- turn the kraken's body toward the live target, capped per frame by the beam / targeting track speed
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -68,7 +69,7 @@ class CKrakenDef { public:
     float TargetingTrackSpeed;                          // +0x5c
 };
 
-float __stdcall AngleDifference(float a, float b);      // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);      // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 
 FABLE_FORCEINLINE float WrapAngle(float angle)
 {
@@ -103,7 +104,9 @@ class CTCKraken { public:
     long                    TentacleStrikeCounter;      // +0x4c
     bool                    TentacleReadyToStrike;      // +0x50
     bool                    HeadTrackTarget;            // +0x51
+    private:
     void DoHeadTracking();
+    public:
 };
 
 void CTCKraken::DoHeadTracking()
@@ -120,7 +123,7 @@ void CTCKraken::DoHeadTracking()
         const C3DVector& targetPos = target->GetPos();
         float angle = WrapAngle((float)atan2(targetPos.X - ownPos.X, targetPos.Y - ownPos.Y) * 0.15915494f);
         float facing = ParentThing->PhysicsTC->GetFacingAngleXY();
-        ParentThing->PhysicsTC->SetFacingAngleXY(WrapAngle(facing + Clamp(AngleDifference(facing, angle),
+        ParentThing->PhysicsTC->SetFacingAngleXY(WrapAngle(facing + Clamp(GFGetSignedAngleDifference(facing, angle),
                                                                           -(speed * (1.0f / 360.0f)),
                                                                           speed * (1.0f / 360.0f))));
     }

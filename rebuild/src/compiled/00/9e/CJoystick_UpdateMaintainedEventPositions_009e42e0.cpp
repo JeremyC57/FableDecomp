@@ -1,5 +1,5 @@
 // CJoystick::UpdateMaintainedEventPositions() -- re-stamp every maintained (held) joystick event with the stick's current position, keeping its button, value and start time
-// Leaf: UpdateMaintainedEventPositions
+// Leaf: ?UpdateMaintainedEventPositions@CJoystick@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E42E0, length 122 bytes.
 // Callees: the joystick's virtual stick-axis getters (slot 3 +0xc, slot 4 +0x10; implemented by CJoystickDX), and on each
 // event: CInputEvent::GetJoystickButton @ 0x00A03B90 (`movzx eax,byte ptr [ecx+8]`; PDB ?GetJoystickButton@CInputEvent@@QBEJXZ
@@ -52,7 +52,9 @@ public:
     bool                 ExclusiveMode;            // +0xd08
     unsigned char        _pad_0xd09[3];
     CMaintainedEventList MaintainedEventsList;     // +0xd0c
+    protected:
     void UpdateMaintainedEventPositions();
+    public:
 };
 
 void CJoystick::UpdateMaintainedEventPositions()

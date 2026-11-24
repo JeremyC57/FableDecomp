@@ -1,3 +1,4 @@
+// Leaf: ?GetTimeOfDay@CGameScriptInterface@@UBEJXZ
 #include <cstddef>
 
 class TimeOfDay
@@ -16,10 +17,10 @@ public:
 class CGameScriptInterface
 {
 public:
-    unsigned char pad_0[0x4];
+    
     TimeManager* pTimeManager;
 
-    long GetTimeOfDay() const;
+    virtual long GetTimeOfDay() const;
 };
 
 long CGameScriptInterface::GetTimeOfDay() const

@@ -1,0 +1,5 @@
+address	state	best_grade	grades_used	best_source	note
+0x0093D270	escalated	DIFFER(305v295)	3 (e1, e1 LTCG, e1 /Za SRC_FAIL)	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth18/0093d270/e1.cpp	ESCALATE.md: discriminator is reference v by-value return; flips (1)(2) closed; (A) proposed
+0x00B4D370	not started	-	0	-	-
+0x00BD3070	not started	-	0	-	-
+0x00502E90	not started	-	0	-	-

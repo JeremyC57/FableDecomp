@@ -112,7 +112,7 @@ class CPlayer { public:
     long          ID;                                        // +0x28
 };
 class CTCPhysicsBase { public:
-    void ApplyAcceleration(C3DVector* acceleration);         // 0x006B0210
+    void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210 (Ego_r / FableWin ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z)
 };
 class CThingObject { public:
     unsigned char   _pad00[0x60];
@@ -233,7 +233,7 @@ void CCreatureAction_WearGameObject::PerformAction()
                     thing = CThingObject::Create(id, position, player, 0, 0, name);
                 }
                 if (thing)
-                    thing->PPhysics->ApplyAcceleration(&velocity);
+                    thing->PPhysics->ApplyAcceleration(velocity);
             }
         }
     }

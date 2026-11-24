@@ -11,7 +11,7 @@
 // Shape: `Moving || OldMoving` on the two bit fields folds into `test al,3`; each persistence call arm keeps its own `pop ; ret`.
 namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
-    void SetActivePersistenceFlags(long flags); // 0x004BFFD0
+    void SetActivePersistenceFlags(unsigned long flags); // 0x004BFFD0
 };
 }
 using NGraphicAppearance::CTCGraphicAppearance;

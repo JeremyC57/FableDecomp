@@ -1,5 +1,5 @@
 // CEngineSceneGrid::MovePrimitivesUp() -- before a grid level is dropped, move the primitives of every one of its cells into the cell's parent on the coarser level
-// Leaf: MovePrimitivesUp
+// Leaf: ?MovePrimitivesUp@CEngineSceneGrid@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B91F00, 67 bytes, thiscall, `ret`.
 // Identity: Ego_r.pdb ?MovePrimitivesUp@CEngineSceneGrid@@AAEXXZ (the private grid pair MovePrimitivesUp/Down; this one
 //   hands each cell to its Parent). One caller 0x00B94785 in CEngineSceneMap::ResizeLevels, on the last grid level just
@@ -30,7 +30,9 @@ class CEngineSceneGrid { public:                          // 0x24 bytes (PDB lay
     CEngineSceneGrid*             LevelDown;       // +0x0c
     unsigned long                 Size;            // +0x10
     CArray<CEngineSceneGridCell*> GridCells;       // +0x14
+    private:
     void MovePrimitivesUp();
+    public:
 };
 
 void CEngineSceneGrid::MovePrimitivesUp()

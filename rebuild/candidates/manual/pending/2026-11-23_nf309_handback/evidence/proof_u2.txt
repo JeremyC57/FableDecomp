@@ -1,0 +1,8 @@
+##### 0078b410 renames: ?Initialise@CCreatureActionBase@@QAEXXZ=?Initialise@CCreatureActionBase@@UAEXXZ ?Initialise@CCreatureAction_HeroLoadRangedWeapon@@QAEXXZ=?Initialise@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ
+sections head 26 new 26
+ALL_EQ text_sections_equal=24
+tables H=0 N=0
+##### 0082d810 renames: ?WorldUpdate@CThingBuilding@@QAE_NXZ=?WorldUpdate@CThingBuilding@@UAE_NXZ ?WorldUpdate@CThingGameObject@@QAE_NXZ=?WorldUpdate@CThingGameObject@@UAE_NXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

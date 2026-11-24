@@ -1,0 +1,9 @@
+## HEAD set: H_007dd270.obj H_006925e0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetProgressRatio@CCreatureActionBase@@QAEMXZ
+## new set: N_007dd270.obj H_006925e0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetPercentageComplete@CCreatureActionBase@@QBEMXZ
+LK_DONE

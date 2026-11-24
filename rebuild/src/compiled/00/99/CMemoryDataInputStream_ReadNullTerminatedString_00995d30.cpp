@@ -1,3 +1,4 @@
+// Leaf: ?ReadNullTerminatedString@CMemoryDataInputStream@@UAE?AVCCharString@@XZ
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -41,7 +42,11 @@ class CCharString
 //   +0x18 sourceBase         (full source base pointer)
 class CMemoryDataInputStream
 { public:
-    void**   vtable;
+    virtual void _v00(); virtual void _v01();
+    virtual unsigned long GetPosition() const;   // slot 2: 0x00405FA0 ?GetPosition@CDataInputStream@@UBEKXZ, inherited (labels_rtti_port;
+                                                 // rtti-vtables CMemoryDataInputStream slot 2); called virtually here, no symbol
+    virtual void _v03(); virtual void _v04(); virtual void _v05();
+    // +0x00: the vptr (was `void** vtable`; slot 2 was called through it as a __fastcall pointer)
     long     position;      // +0x04
     long     sourceLength;  // +0x08
     char*    chunkBase;     // +0x0c
@@ -49,7 +54,7 @@ class CMemoryDataInputStream
     long     chunkLength;   // +0x14
     char*    sourceBase;    // +0x18
 
-    CCharString ReadNullTerminatedString();
+    virtual CCharString ReadNullTerminatedString();   // slot 6: rtti-vtables CMemoryDataInputStream slot 6; PDB UAE
 };
 
 // Single-register virtual call (this-only): typed __fastcall so the sole
@@ -57,11 +62,10 @@ class CMemoryDataInputStream
 // Called directly through the vtable slot expression (not via an
 // intermediate variable) so the compiler folds the load into the call
 // instruction itself, matching retail's 'call dword ptr [eax+8]'.
-typedef long (__fastcall *GetPositionFn)(CMemoryDataInputStream*);
 
 CCharString CMemoryDataInputStream::ReadNullTerminatedString()
 {
-    long curPos = ((GetPositionFn)vtable[2])(this);
+    long curPos = GetPosition();
     const char* text = sourceBase + curPos;
 
     CCharString temp(text, -1);
@@ -73,7 +77,7 @@ CCharString CMemoryDataInputStream::ReadNullTerminatedString()
 
     if (consumed > 0)
     {
-        __int64 newPosWide = ((GetPositionFn)vtable[2])(this) + (unsigned long)consumed;
+        __int64 newPosWide = GetPosition() + (unsigned long)consumed;
 
         if (newPosWide >= 0 && newPosWide <= 0x7fffffff)
         {

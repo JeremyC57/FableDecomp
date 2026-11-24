@@ -1,4 +1,5 @@
 // NUISystem::CZoomingComponent::ChangeState(unsigned long) -- on a non-zero state registers its input handler with the front end and gives it focus; on state 0 unregisters it; then the base ChangeState
+// Leaf: ?ChangeState@CZoomingComponent@NUISystem@@UAEXK@Z
 // Retail 0x005469E0, 0x62 bytes. CZoomingComponent primary vtable 0x01247DC4 slot 48 (the pointer at 0x01247E84;
 // same slot as the landed CControllerDisconnect::ChangeState 0x0042D6B2), so the class is verified from the vtable.
 // Callees: NUISystem::CFrontEndManager::GetInstance 0x0041E5F2 (`__fastcall`, no arguments); manager vtable slots
@@ -40,11 +41,11 @@ struct CComponentRoot_Retail {              // primary base: vptr only (ChangeSt
 
 class CChangingStateComponent : public CComponentRoot_Retail, public CInputHandler_Retail, public CComponentBase3_Retail { public:
     unsigned char _body[0x15c - 0x1c];      // +0x1c..+0x15c
-    void ChangeState(unsigned long state);  // 0x0052CF40 (virtual slot 48 in retail)
+    virtual void ChangeState(unsigned long state);  // 0x0052CF40 (virtual slot 48 in retail) ?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z (virtual in Ego_r / FableWin; called qualified here)
 };
 
 class CZoomingComponent : public CChangingStateComponent { public:   // vtables 0x01247DC4 / 0x01247DA0 / 0x01247D98
-    void ChangeState(unsigned long state);
+    virtual void ChangeState(unsigned long state);  // ?ChangeState@CZoomingComponent@NUISystem@@UAEXK@Z (Ego_r / FableWin)
 };
 
 void CZoomingComponent::ChangeState(unsigned long state)

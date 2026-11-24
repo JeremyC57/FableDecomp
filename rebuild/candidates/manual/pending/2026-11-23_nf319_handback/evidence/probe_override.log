@@ -1,0 +1,88 @@
+004e0f34 PROBE PASS CFireballSpellLevelDef :: virtual void Copy(const CDefClassBase*);
+0074dce0 PROBE PASS CCreatureAction_UndeadRiseUp :: virtual bool IsToEvadeAllHits() const;
+0077ce00 PROBE PASS CHighlightItemDef :: virtual void Transfer(CPersistContext&);
+00844720 PROBE PASS CCreatureAction_PickCrop :: virtual void PerformAction();
+008b8660 PROBE PASS CCreatureAction_PlayCombatAnimation :: virtual bool IsToFaceTarget() const;
+008b8670 PROBE PASS CCreatureAction_PlayCombatAnimation :: virtual bool IsMovementUsingPhysics() const;
+008b8680 PROBE PASS CCreatureAction_PlayCombatAnimation :: virtual bool IsAlwaysUseAnimationMovement() const;
+008fe0ea PROBE PASS CAIStateGroup_EnemyCreatureBase :: virtual EAIStateGroupType GetStateGroupType() const;
+008fe7d5 PROBE PASS CAIStateGroup_BanditPlayDice :: virtual bool PutWeaponAway();
+008ff55e PROBE PASS CAIStateGroup_SeekScriptTarget :: virtual EAIStateGroupType GetStateGroupType() const;
+008ff9d2 PROBE PASS CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose :: virtual EAIStateGroupType GetStateGroupType() const;
+00900513 PROBE PASS CAIStateGroup_BalverineCornered :: virtual EAIStateGroupType GetStateGroupType() const;
+00900572 PROBE PASS CAIStateGroup_BalverineJumpAtFleeingEnemy :: virtual EAIStateGroupType GetStateGroupType() const;
+00900772 PROBE PASS CAIStateGroup_MazeRangedCombat :: virtual EAIStateGroupType GetStateGroupType() const;
+0090083d PROBE PASS CAIStateGroup_MazeTutorialBattleTeleport :: virtual EAIStateGroupType GetStateGroupType() const;
+00900933 PROBE PASS CAIStateGroup_BriarRoseWillUse :: virtual EAIStateGroupType GetStateGroupType() const;
+00900f23 PROBE PASS CAIStateGroup_RangedCombatUsePreferredFirePoint :: virtual EAIStateGroupType GetStateGroupType() const;
+00900f82 PROBE PASS CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets :: virtual EAIStateGroupType GetStateGroupType() const;
+0090141e PROBE PASS CAIStateGroup_VersusEnemyBase :: virtual EAIStateGroupType GetStateGroupType() const;
+00901462 PROBE PASS CAIStateGroup_VersusScorpionKing :: virtual EAIStateGroupType GetStateGroupType() const;
+0090188e PROBE PASS CAIStateGroup_WhisperRetreat :: virtual EAIStateGroupType GetStateGroupType() const;
+009018ef PROBE PASS CAIStateGroup_Thunder :: virtual EAIStateGroupType GetStateGroupType() const;
+009026c7 PROBE PASS CAIStateGroup_MazeTeleport :: virtual EAIStateGroupType GetStateGroupType() const;
+00902f92 PROBE PASS CAIStateGroup_CreatureUseCoverBase :: virtual bool IsTimingCritical() const;
+00902f96 PROBE PASS CAIStateGroup_CreatureUseCoverBase :: virtual EAIStateGroupType GetStateGroupType() const;
+0090310a PROBE PASS CAIStateGroup_Guildmaster :: virtual EAIStateGroupType GetStateGroupType() const;
+00903154 PROBE PASS CAIStateGroup_CreatureAdvanceInCover :: virtual EAIStateGroupType GetStateGroupType() const;
+00903173 PROBE PASS CAIStateGroup_CreatureTakeCover :: virtual EAIStateGroupType GetStateGroupType() const;
+009031b6 PROBE PASS CAIStateGroup_ScorpionKing :: virtual EAIStateGroupType GetStateGroupType() const;
+009031f6 PROBE PASS CAIStateGroup_CreatureFindCover :: virtual EAIStateGroupType GetStateGroupType() const;
+00a02120 PROBE PASS CHandleBasedMemoryPool :: virtual void MoveResource(void*, long, void*, void*, unsigned long);
+00a427c0 PROBE PASS CLipSyncDataBank :: virtual bool IsDiskFile(unsigned long, unsigned long);
+00a75a90 PROBE PASS CNavNavigableLeafNode :: virtual unsigned char GetPreferabilityCost() const;
+00ab6ad0 PROBE PASS CJoystickDX :: virtual float GetXAxis();
+00ab6ae0 PROBE PASS CJoystickDX :: virtual float GetYAxis();
+00ab6af0 PROBE PASS CJoystickDX :: virtual float GetXAxis2();
+00ab6b00 PROBE PASS CJoystickDX :: virtual float GetYAxis2();
+00b23a70 PROBE PASS CEngine :: virtual bool IsPreloaded() const;
+00b23b90 PROBE PASS CEngine :: virtual void SetEnvironmentalEffectsAlwaysUpdate(bool);
+00b5bd00 PROBE PASS CEngineScreenEffectRadialBlurRenderer :: virtual void OnReleaseDefaultPoolResources();
+00b5ec60 PROBE PASS CEngineScreenEffectGlowRenderer :: virtual void OnReleaseDefaultPoolResources();
+00b86500 PROBE PASS CEngineSubPrimitiveRenderer :: virtual unsigned long PeekSceneFilterFlags() const;
+00b86970 PROBE PASS CEngineScreenEffectDisplacementRenderer :: virtual void OnReleaseDefaultPoolResources();
+00bbbe60 PROBE PASS CEngineInternalPrimitiveParticleGroup :: virtual void Update(const CEnginePrimitive&, unsigned long);
+004e0f34 CONTROL FAIL CFireballSpellLevelDef :: virtual void NF319MadeUpName(const CDefClassBase*);  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+0074dce0 CONTROL FAIL CCreatureAction_UndeadRiseUp :: virtual bool NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+0077ce00 CONTROL FAIL CHighlightItemDef :: virtual void NF319MadeUpName(CPersistContext&);  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00844720 CONTROL FAIL CCreatureAction_PickCrop :: virtual void NF319MadeUpName();  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+008b8660 CONTROL FAIL CCreatureAction_PlayCombatAnimation :: virtual bool NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+008b8670 CONTROL FAIL CCreatureAction_PlayCombatAnimation :: virtual bool NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+008b8680 CONTROL FAIL CCreatureAction_PlayCombatAnimation :: virtual bool NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+008fe0ea CONTROL FAIL CAIStateGroup_EnemyCreatureBase :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+008fe7d5 CONTROL FAIL CAIStateGroup_BanditPlayDice :: virtual bool NF319MadeUpName();  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+008ff55e CONTROL FAIL CAIStateGroup_SeekScriptTarget :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+008ff9d2 CONTROL FAIL CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00900513 CONTROL FAIL CAIStateGroup_BalverineCornered :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00900572 CONTROL FAIL CAIStateGroup_BalverineJumpAtFleeingEnemy :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00900772 CONTROL FAIL CAIStateGroup_MazeRangedCombat :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+0090083d CONTROL FAIL CAIStateGroup_MazeTutorialBattleTeleport :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00900933 CONTROL FAIL CAIStateGroup_BriarRoseWillUse :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00900f23 CONTROL FAIL CAIStateGroup_RangedCombatUsePreferredFirePoint :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00900f82 CONTROL FAIL CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+0090141e CONTROL FAIL CAIStateGroup_VersusEnemyBase :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00901462 CONTROL FAIL CAIStateGroup_VersusScorpionKing :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+0090188e CONTROL FAIL CAIStateGroup_WhisperRetreat :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+009018ef CONTROL FAIL CAIStateGroup_Thunder :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+009026c7 CONTROL FAIL CAIStateGroup_MazeTeleport :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00902f92 CONTROL FAIL CAIStateGroup_CreatureUseCoverBase :: virtual bool NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00902f96 CONTROL FAIL CAIStateGroup_CreatureUseCoverBase :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+0090310a CONTROL FAIL CAIStateGroup_Guildmaster :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00903154 CONTROL FAIL CAIStateGroup_CreatureAdvanceInCover :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00903173 CONTROL FAIL CAIStateGroup_CreatureTakeCover :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+009031b6 CONTROL FAIL CAIStateGroup_ScorpionKing :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+009031f6 CONTROL FAIL CAIStateGroup_CreatureFindCover :: virtual EAIStateGroupType NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00a02120 CONTROL FAIL CHandleBasedMemoryPool :: virtual void NF319MadeUpName(void*, long, void*, void*, unsigned long);  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00a427c0 CONTROL FAIL CLipSyncDataBank :: virtual bool NF319MadeUpName(unsigned long, unsigned long);  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00a75a90 CONTROL FAIL CNavNavigableLeafNode :: virtual unsigned char NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00ab6ad0 CONTROL FAIL CJoystickDX :: virtual float NF319MadeUpName();  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00ab6ae0 CONTROL FAIL CJoystickDX :: virtual float NF319MadeUpName();  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00ab6af0 CONTROL FAIL CJoystickDX :: virtual float NF319MadeUpName();  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00ab6b00 CONTROL FAIL CJoystickDX :: virtual float NF319MadeUpName();  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00b23a70 CONTROL FAIL CEngine :: virtual bool NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00b23b90 CONTROL FAIL CEngine :: virtual void NF319MadeUpName(bool);  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00b5bd00 CONTROL FAIL CEngineScreenEffectRadialBlurRenderer :: virtual void NF319MadeUpName();  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00b5ec60 CONTROL FAIL CEngineScreenEffectGlowRenderer :: virtual void NF319MadeUpName();  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00b86500 CONTROL FAIL CEngineSubPrimitiveRenderer :: virtual unsigned long NF319MadeUpName() const;  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00b86970 CONTROL FAIL CEngineScreenEffectDisplacementRenderer :: virtual void NF319MadeUpName();  ['NF319MadeUpName' marked 'override' but does not override any member functions]
+00bbbe60 CONTROL FAIL CEngineInternalPrimitiveParticleGroup :: virtual void NF319MadeUpName(const CEnginePrimitive&, unsigned long);  ['NF319MadeUpName' marked 'override' but does not override any member functions]

@@ -1,6 +1,6 @@
 // CMemoryAllocatorVariableSize::Validate() -- publish the two usage counters to the statistics globals, then for every area of every chunk (+0xc1c, next at +0x20; areas from +0x30, next at +0) ask the global allocator (0x013CAA90, 0x009F1F40) to check the payload (header + the aligned header size, both re-read from the globals each time)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A65330, length 96 bytes.
-// Leaf: Validate
+// Leaf: ?Validate@CMemoryAllocatorVariableSize@@UAEXXZ
 // Callees: 0x009F1F40 (thiscall on the global allocator). Shape: the aligned header size recomputed from the two GLOBALS inside the loop (the call may change them), the chunk in edi, the area in esi, `ret`.
 // Naming (NF161, 2026-11-20, q4196): the global allocator 0x013CAA90 is the protected static ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A
 //   (Ego_r.pdb / FableWin.pdb / Ego_d.pdb), reached through the public inline ?Get@CMemoryAllocator@@SIPAV1@XZ (FableWin.pdb / Ego_d.pdb) of
@@ -24,11 +24,11 @@ extern unsigned long g_LastAllocatorUsage_013d28d4;          // 0x013D28D4
 #include "engine/CMemoryAllocator.h"   // NF161 (q4196): was the stand-in CMemoryAllocator_00a65330 + extern g_pGlobalAllocator_013caa90
 
 class CMemoryAllocatorVariableSize { public:
-    unsigned char       _pad00[0xc14];
+    unsigned char _pad00[0xc10];
     unsigned long       m_usage;                   // +0xc14: the header size
     unsigned long       m_alignmentShift;          // +0xc18
     SVarChunk_00a65330* m_pFirstChunk;             // +0xc1c
-    void Validate();
+    virtual void Validate();
 };
 
 void CMemoryAllocatorVariableSize::Validate()

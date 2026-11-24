@@ -87,6 +87,10 @@ public:
     virtual void FrameStart(const CEngineComponentParams& params);   // 0x00B8DBE0
     virtual void FrameEnd(const CEngineComponentParams& params);     // 0x00B8DF50
 private:
+#ifdef FABLE_RETAIL_CENGINEOCCLUSIONMANAGER_BUILDUNITBOX_PASS26
+    // Both PDBs: private BuildUnitBox; original02dc6ba0 and native00b8d0d0.
+    void BuildUnitBox();
+#endif
     void SelectFlareTestVertexBuffer(unsigned long segments);        // 0x00B8DCD0
     COccluderSlot   OccluderSlots[2048];                             // +0x0c
     unsigned long   NextSlot;                                        // +0x400c

@@ -1,0 +1,20 @@
+009e9f20	call	00434f7a	00434f60L CDisplayEngine::WorldUpdate
+00643ca1	call	0048f0b2	0048e78eL CSubtitleRenderer::DrawButtonGraphics
+00643ca1	call	00490019	-
+009e9f20	call	0049e92d	0049e8c0L CWorld::StopAutoSaveProgress
+009e9f20	call	0049e949	0049e8c0L CWorld::StopAutoSaveProgress
+009e9f20	call	004a3109	004a2f10L CWorld::UpdateSaveGameLoad
+009e9f20	call	004a507f	004a3740L CWorld::UpdateRegionLoad
+009e9f20	call	004a5b5e	004a5a40L CWorld::UpdateFrame
+00643ca1	call	00644ac4	0064499cL NPlayerGui::CDrawPerceivers::Draw
+00643ca1	call	006489ac	00648820L NPlayerGui::CDrawMiniMap::Draw
+00643ca1	call	0064c782	0064bfbaL NPlayerGui::CDrawHighlightingTargetingCursor::Draw
+00643ca1	call	0064ca5a	0064ca15L NPlayerGui::CDrawWorldTime::Draw
+00643ca1	call	0064cae5	0064ca15L NPlayerGui::CDrawWorldTime::Draw
+00643ca1	call	0064d472	0064d404L NPlayerGui::CDrawQuestInfo::DrawMiniGameInfo
+00643ca1	call	0064f724	0064f6dcL DrawOracleSymbols
+00643ca1	call	00654463	00654438L NPlayerGui::CDrawQuestInfo::Draw
+008f58c0	call	007fd5ba	007fd580L CTCDPhysicalObstruction::UpdateAdditionalImpulse
+008f58c0	call	0080cd5c	-
+009e9f20	jmp	0088e974	0088e970L CGameScriptInterface::StopProgressDisplay
+009054f0	call	008cc9a6	008cc8e0L CCreatureAction_BalverineLungeAttack::Initialise

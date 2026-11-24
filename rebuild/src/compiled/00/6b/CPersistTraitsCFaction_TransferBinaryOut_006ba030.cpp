@@ -3,7 +3,7 @@
 // Callees: CCharString::CCharString() @ 0x0099E4B0, CPersistContext::CPersistContext(CCharString&) @ 0x009BAE10 (the
 //   saving context, writes into the string), CPersistTraits<CFaction>::TransferOut(CPersistContext*, CCharString*,
 //   const CFaction*) @ 0x006B91A0 (manifest "Faction_ExportToString"), CDataOutputStream::WriteULong @ 0x00993EA0,
-//   CDataOutputStream::WriteData(const void*, unsigned long) @ 0x00996610, ~CCharString @ 0x0099EAE0.
+//   CDataOutputStream::WriteCompressed(const void*, long) @ 0x00996610, ~CCharString @ 0x0099EAE0.
 // Layout: CCharString = pointer to CCharStringData { CBasicString<char> { char* PData; ulong StringLength; ... } }
 //   (the landed 0x00463334 model); the empty string reads as length 0 and the static "" 0x0129AAF4. CPersistContext is
 //   0x2C bytes (Ego_r.pdb) with no destructor. The traits holds the default CFaction (landed caller 0x006BABD0).
@@ -38,7 +38,7 @@ class CCharString { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteData(const void* data, unsigned long size);   // 0x00996610
+    void WriteCompressed(const void* data, long size);       // 0x00996610 ?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z (Ego_r / FableWin; donor TransferBinaryOut calls it)
 public:
     void WriteULONG(unsigned long);   // 0x00993EA0
 };
@@ -60,7 +60,7 @@ class CFaction { public:
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<CFaction> {
     CFaction DefaultVal;
-    void TransferOut(CPersistContext* context, CCharString* out, const CFaction* value);   // 0x006B91A0
+    void TransferOut(CPersistContext& context, CCharString& out, const CFaction& value);   // 0x006B91A0
     void TransferBinaryOut(CDataOutputStream* stream, const CFaction* value);
 };
 
@@ -68,8 +68,8 @@ void CPersistTraits<CFaction>::TransferBinaryOut(CDataOutputStream* stream, cons
 {
     CCharString text;
     CPersistContext context(text);
-    TransferOut(&context, &text, value);
+    TransferOut(context, text, *value);
     CDataOutputStream* out = (CDataOutputStream*)stream;
     out->WriteULONG(text.GetLength());
-    out->WriteData(text.GetString(), text.GetLength());
+    out->WriteCompressed(text.GetString(), text.GetLength());
 }

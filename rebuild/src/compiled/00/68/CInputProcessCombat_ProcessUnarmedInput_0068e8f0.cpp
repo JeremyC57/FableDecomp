@@ -1,5 +1,5 @@
 // CInputProcessCombat::ProcessUnarmedInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game action 0xb queues game event 0x16 carrying the CREATURE_ABILITY definition index (2 bytes) and the button pressure; game action 0xd / 0xe queue event 0x21 / 0x22 carrying a true byte
-// Leaf: ProcessUnarmedInput
+// Leaf: ?ProcessUnarmedInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
@@ -53,13 +53,17 @@ public:
     CDefinitionManager*     DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
+protected:
+    bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90; NF236: protected const (Ego_r / FableWin IBE)
+public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
     float GetButtonPressureForEvent(const CInputEvent& event);        // 0x00687D10
 };
 class CInputProcessCombat : public CInputProcessGameBase {
 public:
+    private:
     void ProcessUnarmedInput(const CInputEvent& event, CProcessedInput& processed);
+    public:
 };
 
 void CInputProcessCombat::ProcessUnarmedInput(const CInputEvent& event, CProcessedInput& processed)

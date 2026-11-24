@@ -1,0 +1,9 @@
+## HEAD set: H_0049d6b0.obj H_0049ddd0.obj H_0049dec0.obj H_00ae2230.obj H_0041a410.obj H_00ae18c0.obj
+duplicates 0
+
+UNRESOLVED 3 ?GetLevelsDirectory_0041a410@@YI?AVCWideString@@XZ
+UNRESOLVED 1 ?WriteVectors_00ae18c0@@YIXPBVC4DVector@@KAAVCDataOutputStream@@@Z
+## new set: N_0049d6b0.obj N_0049ddd0.obj N_0049dec0.obj N_00ae2230.obj H_0041a410.obj H_00ae18c0.obj
+duplicates 0
+
+LK_DONE

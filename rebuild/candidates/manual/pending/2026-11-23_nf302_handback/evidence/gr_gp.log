@@ -1,0 +1,3 @@
+H 00449bf0 CPlayerManager::GetMainPlayerHeroCreature RELOCATION_MATCH flags= [] leaf=GetMainPlayerHeroCreature
+H 00449c10 CPlayerManager::GetMainPlayerHeroCreatureB RELOCATION_MATCH flags= [] leaf=GetMainPlayerHeroCreatureB
+GR_DONE

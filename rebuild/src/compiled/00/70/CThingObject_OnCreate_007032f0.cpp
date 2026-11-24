@@ -64,9 +64,12 @@ class CTCBase { public:
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21();
     virtual CCharString GetClassName() const;          // slot 22 (+0x58)
 };
+namespace NGraphicAppearance {                          // NF308: the PDB scope (Ego_r / FableWin ?SetRotationAngle@CTCGraphicAppearanceSprite@NGraphicAppearance@@QAEXM@Z)
 struct CTCGraphicAppearanceSprite : CTCBase {
     void SetRotationAngle(float angle);                 // 0x0077C490
 };
+}
+using NGraphicAppearance::CTCGraphicAppearanceSprite;
 
 class CThingObjectDef { public:
     unsigned char  _pad00[0x70];
@@ -117,7 +120,9 @@ class CThing { public:
 class CThingPhysical : public CThing { public:
     unsigned char _pad94[0x9c - 0x94];                  // CThing rounds to 0x94
     float         Scale;                                // +0x9c
-    bool ValidateInitialisation();                      // 0x006A4D60
+protected:
+    bool ValidateInitialisation();                      // 0x006A4D60; NF236: Ego_r / FableWin spelling IAE (protected)
+public:
 };
 class CThingGameObject : public CThingPhysical { public:
     bool OnCreate();                                    // 0x00838A40

@@ -1,5 +1,5 @@
 // CAIStateGroup_GoToPub::GetPaymentRequestReplyMessage() -- wait for the barman's reply message (type 0x30) aimed at this creature; on arrival remove it and report success
-// Leaf: ?GetPaymentRequestReplyMessage@CAIStateGroup_GoToPub@@QAE_NXZ
+// Leaf: ?GetPaymentRequestReplyMessage@CAIStateGroup_GoToPub@@IAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00947E20, length 132 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PBarman at +0x2c),
 // CMessageEventFilter_IsTargettedAtThing(const CThing*) @ 0x006AF290 and
@@ -87,7 +87,9 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     CIntelligentPointer<CThing> PBar;               // +0x1c CIntelligentPointer<CThingObject>
     CIntelligentPointer<CThing> PTable;             // +0x24 CIntelligentPointer<CThingObject>
     CIntelligentPointer<CThing> PBarman;            // +0x2c CIntelligentPointer<CThingAICreature>
+    protected:
     bool GetPaymentRequestReplyMessage();
+    public:
 };
 long TmplSink_00947e20(const void* self, long seen, CMessageEvent** ppEvent);   // stand-in: the work AIAction_WaitForMessage does
 #pragma auto_inline(off)

@@ -22,6 +22,10 @@ public:
  virtual C3DVector DoAttractToPoint()=0;
  virtual C3DVector DoVelocityDamping()=0;
 protected:
+#ifdef FABLE_RETAIL_CPHYSICSFORCEMODELBASE_SET_ACCELERATION_PASS27
+ // Original FableWin 0x02B1F4A0 and native final store in 0x008FA660.
+ void SetAcceleration(const C3DVector& acceleration) { LinkedState.Acceleration = acceleration; }
+#endif
  C3DVector GetPosition(){return LinkedState.Position;}
  const CGameCameraManager& GetCameraManager() const {return CameraManager;}
  bool GetPointIntersection(const CWorldMap&,long,const C3DVector&,const C3DVector&,C3DVector&) {return false;}

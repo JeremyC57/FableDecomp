@@ -120,7 +120,7 @@ class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
 class CWorldMap { public:
-    void PopulateRegionWithVillagers(CThing* village);   // 0x00502E90
+    void PopulateRegionWithVillagers(CThing& village);   // 0x00502E90
 };
 class CTCLight { public:
     unsigned char _pad00[0x1c];
@@ -175,12 +175,15 @@ class CTCVillage : public CTCBase { public:
     bool WasCurfewTime;                         // +0xb1
     unsigned char _padb2;
     bool AnnouncementsDisabled;                 // +0xb3
-    void ClearOutNullMembers();                 // 0x0065890B
+    private:
+    void ClearOutNullMembers();
+    public:
+                 // 0x0065890B
     void ReleaseInvalidTasks();                 // 0x0065BE32
     void UpdateCrowds();                        // 0x006594BB
-    void UpdateTorchTasks();                    // 0x00659625
     void UpdateSecuritySweepTasks();            // 0x0065C08A
 private:
+    void UpdateTorchTasks();                    // 0x00659625 Ego_r/FableWin ?UpdateTorchTasks@CTCVillage@@AAEXXZ (private; NF239 CODEXP27 L45, was QAE)
     void UpdateHornTasks();                     // 0x0065BE6C Ego_r/FableWin ?UpdateHornTasks@CTCVillage@@AAEXXZ (private)
 public:
     void SetEnemyToHeroStatus();                // 0x0065A852
@@ -198,7 +201,7 @@ void CTCVillage::FrameUpdate()
     ReleaseInvalidTasks();
     UpdateCrowds();
     if (g_RepopulateVillages) {
-        GetWorldMap().PopulateRegionWithVillagers(ParentThing);
+        GetWorldMap().PopulateRegionWithVillagers(*ParentThing);
         g_RepopulateVillages = false;
     }
     bool torchesUpdated = false;

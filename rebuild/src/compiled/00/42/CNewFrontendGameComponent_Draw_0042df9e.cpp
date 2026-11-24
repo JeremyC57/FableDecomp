@@ -43,7 +43,7 @@
 double __fastcall GFGetTime();                                           // 0x009E1BC0 ?GFGetTime@@YINXZ
 extern double VIRTUAL_SCREEN_WIDTH;                                      // 0x013961E8
 extern double VIRTUAL_SCREEN_HEIGHT;                                     // 0x013961F0
-extern CRenderManager* PRenderManager;                                   // 0x013B8384
+extern CRenderManager* GPRenderManager;                                   // 0x013B8384 (Ego_r / FableWin / Ego_d publics; NF236: was PRenderManager)
 extern CDisplayManager* GPDisplayManager;                                // 0x013B8390
 class CInterpolationInfo {                                               // Ego_r.pdb 0x34 bytes; no shared header
 public:
@@ -73,21 +73,21 @@ void CNewFrontendGameComponent::Draw(const CEngineInterpolationInfo& interpolati
     m_fLastRenderTime = (float)GFGetTime();
     C2DBoxF screen(0.0f, 0.0f, (float)VIRTUAL_SCREEN_WIDTH, (float)VIRTUAL_SCREEN_HEIGHT);
     GFFPUSetRoundingNearest();
-    PRenderManager->SetFogEnable(false);
-    PRenderManager->SetVWindow(screen);
+    GPRenderManager->SetFogEnable(false);
+    GPRenderManager->SetVWindow(screen);
     GPDisplayManager->GetVVisibleTelevisionScreenArea();
-    PRenderManager->ClearRenderTarget(CRGBColour(0, 0, 0, 255), 0);
+    GPRenderManager->ClearRenderTarget(CRGBColour(0, 0, 0, 255), 0);
     GPDisplayManager->BeginRender();
     NUISystem::CFrontEndManager::GetInstance()->Draw(*m_pEngine, 0);
     if (NUISystem::CManager::GetInstance()->HasErrorMessage())
         NUISystem::CManager::GetInstance()->RenderErrorMessage(*m_pEngine);
     m_pEngine->Render(interpolation_info, 0);
-    PRenderManager->SetTextureMipMapMode(0, TEXTURE_MIPMAP_LINEAR);
-    PRenderManager->DrawBufferedPolys();
-    PRenderManager->Render2DDrawList(true);
+    GPRenderManager->SetTextureMipMapMode(0, TEXTURE_MIPMAP_LINEAR);
+    GPRenderManager->DrawBufferedPolys();
+    GPRenderManager->Render2DDrawList(true);
     NUISystem::CIME::Get().Render();
-    PRenderManager->DrawBufferedPolys();
-    PRenderManager->Render2DDrawList(true);
+    GPRenderManager->DrawBufferedPolys();
+    GPRenderManager->Render2DDrawList(true);
     GPDisplayManager->EndRender();
     GPDisplayManager->SwapScreens();
 }

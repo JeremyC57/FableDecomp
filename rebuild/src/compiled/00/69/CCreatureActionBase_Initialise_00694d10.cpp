@@ -1,5 +1,5 @@
 // CCreatureActionBase::Initialise() -- mark initialised; for an action with an animation entry that is not a combination anim, disable four creature-control flags (0x24, 0x25, 0x1f, 0x23) on the creature's interface-0x5A controller; update the action animation, optionally start at once, clear Finished
-// Leaf: Initialise
+// Leaf: ?Initialise@CCreatureActionBase@@UAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00694D10, 181 bytes, virtual `?Initialise@CCreatureActionBase@@UAEXXZ`.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThingCreatureBase::IsAnimCombinationAnim 0x00662820,
@@ -62,7 +62,7 @@ class CCreatureActionBase { public:
     virtual void v09();
     virtual void v10();
     virtual void v11();
-    virtual void v12();
+    virtual void Initialise();                  // slot 12 (+0x30): ?Initialise@CCreatureActionBase@@UAEXXZ (Ego_r / FableWin; vtmap land1122nf266)
     virtual void v13();
     virtual void v14();
     virtual void v15();
@@ -122,7 +122,6 @@ class CCreatureActionBase { public:
     unsigned char _pad64[0x74 - 0x64];
     CAnimationEntry* PAnimEntry_Data;           // +0x74 CCountedPointer<CAnimationEntry>::Data
     void UpdateActionAnimation();               // 0x00694890
-    void Initialise();
 };
 
 void CCreatureActionBase::Initialise()

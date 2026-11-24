@@ -1,0 +1,20 @@
+== 006a7b20
+1,2c1,2
+< DEF ??RCThingFilter_PosInContainmentVolume@@QBE_NPAVCThing@@@Z
+< DEF ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ
+---
+> DEF ??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z
+> DEF ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
+== 006698d0
+1c1
+< DEF ??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NPAVCThingBuilding@@@Z
+---
+> DEF ??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NABVCThingBuilding@@@Z
+8c8
+< DEF ??RCThingFilter_OverlappingSphere@@QBE_NPAVCThing@@@Z
+---
+> DEF ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z
+12c12
+< UND ??RCThingFilter_PosInContainmentVolume@@QBE_NPAVCThing@@@Z
+---
+> UND ??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z

@@ -1,3 +1,4 @@
+// Leaf: ?InitThingManager@CWorld@@IAE_NXZ
 // CWorld::InitThingManager() -- create the world's thing manager, replace (delete) any previous one and make it current
 // Retail: Fable.exe @ 0x0049EBF0, 100 bytes. PDB ?InitThingManager@CWorld@@IAE_NXZ (protected)
 // Callees: operator new 0x00BFEA1A (0xE8 bytes), CThingManager::CThingManager(const CMainGameComponent&,
@@ -45,7 +46,9 @@ class CWorld { public:
     scoped_ptr<CNavigatorManager> PNavigationManager;   // +0x48
     unsigned char           _pad4c[0x4];
     scoped_ptr<CThingManager> PThingManager;      // +0x50
+    protected:
     bool InitThingManager();
+    public:
 };
 
 bool CWorld::InitThingManager()

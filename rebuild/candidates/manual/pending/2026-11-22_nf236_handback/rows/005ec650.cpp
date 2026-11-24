@@ -1,0 +1,215 @@
+// CTCTavernGame::LeaveGame() -- stop playing: leave (or record) the state, announce the game master's departure, hand the hero back (mode, visibility, game player), close the game UI, pay out the money held, clear the text box, bet and subtitles
+// Leaf: ?LeaveGame@CTCTavernGame
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC650, 362 bytes (plain `ret`); CTCTavernGame vtable 0x012560BC slot 30.
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; CTCBase::GetWorld 0x00686A70 (manifest "CViewBase::
+//          GetDisplayEngine" is propagated); CThing::GetPos() const 0x004C73D0; CMessageEventManager::AddMessage
+//          0x00687540 (on the world's manager at +0x60); CPlayerManager::GetMainPlayer 0x00449970; CPlayer::RemoveMode
+//          0x00634190; CPlayer::GetPControlledCreature 0x00487DC0; the hero's virtual slot 28 (+0x70); CThing::SetInLimbo(bool)
+//          0x004C8CF0; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (interface 0xD0 = word 6 bit 16);
+//          CTCGamePlayer::SetGame(CTCTavernGame*) 0x005EDC00; CPlayerGui::Open 0x004374B0 (manifest "Open" is
+//          propagated); CTCTavernGame::GetHeroStats 0x005EB4B0; CTCHeroStats::SetMoney(long, bool) 0x0057A774;
+//          CTCTavernGame::ClearBox 0x005EC5C0, ::ClearBetAndMoney 0x005E9F30; CSubtitleRenderer::Clear(bool) 0x00492BAB;
+//          the virtual LeaveGame (slot 30) through the inline SetState.
+// Globals: quit request 0x013BAE1C, frames per second 0x01375550, CMainGameComponent::Get() 0x013B86A0, (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790.
+// Layout (retail, as the landed SetStateAfterTime 0x005E9B70): IsBeingPlayed +0x20, CurrentMoney +0x40, TavernGameState
+//          +0xc0, PreviousTavernGameState +0xc4, PGameMaster (CIntelligentPointer<CThingAICreature>, PDB +0xec) +0xd0; CPlayerGui
+//          subtitle renderer +0x18, a bool at +0x2bd.
+// Shape: SetState(0) is inlined (a pending quit calls LeaveGame virtually instead); the frame rate and the message
+//        manager are named locals read before the argument pushes (ebp, and the spilled `push ecx` word); the unchecked
+//        GetInterface (end/hit choice as one ternary, so the component lands in ecx) and the stats out pointer each sit
+//        in their own `{}` block so they share that single frame word.
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
+class CMessageEvent;
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
+#include "fable_compiler.h"
+class CTCBase;
+class CBaseObject;
+#include "engine/C3DVector.h"
+typedef long ETavernGameStates;
+
+extern bool g_bTavernGameQuitRequested;         // 0x013BAE1C
+
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThing { public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
+    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
+    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
+    virtual void SetVisible(bool visible);      // slot 28 (+0x70)
+    unsigned char _pad_0x04[0x1c];
+    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
+    CInterfaceMap m_interfaces;                 // +0x44
+    unsigned char _pad_0x54[0x3d];
+    unsigned char m_flags;                      // +0x91 bit 0: dead
+    bool IsDead() const { return (m_flags & 1) != 0; }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
+            return true;
+        }
+        return false;
+    }
+    const C3DVector& GetPos() const;       // 0x004C73D0
+    void SetInLimbo(bool inLimbo);              // 0x004C8CF0
+};
+class CThingPlayerCreature : public CThing { };
+
+struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointer
+    virtual void v00();
+    CBaseObject* m_pItem;                       // +4
+    CBaseObject* GetPItem() const;              // 0x00A01B50
+};
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
+    T* Get() const { return (T*)GetPItem(); }
+};
+
+class CMessageEventManager { public:
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long distance, const C3DVector& pos, CThing* source, CThing* extra, float a, float b, long c);   // 0x00687540
+};
+class CWorld { public:
+    unsigned char _pad[0x60];
+    CMessageEventManager* m_pMessages;          // +0x60
+};
+
+class CTCTavernGame;
+class CTCGamePlayer { public:
+    void SetGame(CTCTavernGame* game);          // 0x005EDC00
+};
+class CTCHeroStats { public:
+    void SetMoney(long money, bool notify);     // 0x0057A774
+};
+class CPlayer { public:
+    void RemoveMode(EPlayerMode mode);                 // 0x00634190
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
+};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
+    unsigned char   _pad_0x00[0x1c];
+    CPlayerManager* PlayerManager;              // +0x1c
+};
+class CSubtitleRenderer { public:
+    void Clear(bool now);                       // 0x00492BAB
+};
+#include "engine/CCountedPointer.h"
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:
+    unsigned char     _pad_0x00[0x18];
+    CSubtitleRenderer Subtitles;                // +0x18
+    unsigned char     _pad_0x19[0x2a4];
+    bool              m_bShowing;               // +0x2bd
+public:
+    void Open();   // 0x004374B0
+};
+
+class CTCBase
+{
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
+    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
+    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
+    virtual void LeaveGame();                   // slot 30 (+0x78)
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCTavernGame : public CTCBase {
+public:
+    virtual void LeaveGame();
+ public:
+    unsigned char     _pad_0x04[0x1c];
+    bool              IsBeingPlayed;            // +0x20
+    unsigned char     _pad_0x21[0x1f];
+    long              CurrentMoney;             // +0x40
+    unsigned char     _pad_0x44[0x7c];
+    ETavernGameStates TavernGameState;          // +0xc0
+    ETavernGameStates PreviousTavernGameState;  // +0xc4
+    unsigned char     _pad_0xc8[8];
+    CIntelligentPointer<CThing> PGameMaster; // +0xd0
+    void SetState(ETavernGameStates state)
+    {
+        if (g_bTavernGameQuitRequested) {
+            g_bTavernGameQuitRequested = false;
+            LeaveGame();
+            return;
+        }
+        PreviousTavernGameState = TavernGameState;
+        TavernGameState = state;
+    }
+    void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0
+protected:
+    void ClearBox();                            // 0x005EC5C0; NF236: Ego_r / FableWin spelling IAE (protected)
+public:
+protected:
+    void ClearBetAndMoney();                    // 0x005E9F30; NF236: Ego_r / FableWin spelling IAE (protected)
+public:
+};
+
+void CTCTavernGame::LeaveGame()
+{
+    IsBeingPlayed = false;
+    SetState(0);
+    if (PGameMaster.Get() && !PGameMaster.Get()->IsDead()) {
+        CThing* gameMaster = PGameMaster.Get();
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
+        CMessageEventManager* messages = GetWorld().m_pMessages;
+        messages->AddMessage((EMessageEventType)(0x40), framesPerSecond * 5, *((C3DVector*)&gameMaster->GetPos()),
+                                       PGameMaster.Get(), 0, 0.0f, 0.0f, 0);
+    }
+    CPlayer* player = &CMainGameComponent::Get()->PlayerManager->GetMainPlayer();
+    player->RemoveMode((EPlayerMode)(0x1a));
+    CThing* hero = player->GetPControlledCreature();
+    hero->SetVisible(true);
+    hero->SetInLimbo(false);
+    {
+        CTCGamePlayer* gamePlayer;
+        hero->GetInterface(&gamePlayer, 0xd0);
+        gamePlayer->SetGame(0);
+    }
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_bShowing = false;
+    {
+        CTCHeroStats* stats;
+        GetHeroStats(&stats);
+        stats->SetMoney(CurrentMoney, true);
+    }
+    ClearBox();
+    ClearBetAndMoney();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.Clear(false);
+}

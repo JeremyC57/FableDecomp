@@ -125,7 +125,7 @@ class CTCInventoryWeapons { public:                         // interface 0x13
 #pragma pack(pop)
 
 class CTCObjectAugmentations { public:                      // interface 0xBF
-    long GetHealthToAddThisFrame();                  // 0x00766260
+    long GetHealthToAddThisFrame() const;                  // 0x00766260
     long GetStaminaToAddThisFrame();                 // 0x00766330
 };
 
@@ -203,7 +203,10 @@ class CTCHeroStats : public CTCBase { public:
     const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     void UpdateAppearanceStats(bool force);          // 0x0057D23B
     void SetFatness(float fatness);                  // 0x0057B169
-    long GetFatnessReducingFrequencyInFrames() const;   // 0x0057A60A
+    private:
+    long GetFatnessReducingFrequencyInFrames() const;
+    public:
+   // 0x0057A60A
     void ProcessDrunkenness();                       // 0x0057CB7E
     void FrameUpdate();
 };

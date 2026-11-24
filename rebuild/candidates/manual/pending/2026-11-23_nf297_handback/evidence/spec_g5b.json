@@ -1,0 +1,2 @@
+{"00bcb800": [["    bool GetFrame(CGraphicFrame* frame, unsigned long frameIndex, unsigned long a, unsigned long b);", "    bool GetFrame(CGraphicFrame& frame, unsigned long frameIndex, unsigned long a, unsigned long b) const;", 1],
+              ["return Get(bankIndex)->GetFrame(frame, frameIndex, 0, 0);", "return Get(bankIndex)->GetFrame(*frame, frameIndex, 0, 0);", 1]]}

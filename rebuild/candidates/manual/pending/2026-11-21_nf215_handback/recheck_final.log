@@ -1,0 +1,35 @@
+addr       parity           behav  name
+0096fa90   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0096fa90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0096fa90   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+0096fa90   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0096fa90   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+0096fa90   WARN SHARED_HEADER_AVAILABLE CSummonerDef (engine/CSummonerDef.h)
+0096fa90   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0096fa90   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0096fa90   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0096fa90   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SummonerCharge (engine/CAIStateGroup_SummonerCharge.h)
+0096fa90   RELOCATION_MATCH PASS   IsRunnable
+006ed9e0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ed9e0   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+006ed9e0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ed9e0   RELOCATION_MATCH PASS   DeregisterDestroyedCombatant
+004115a0   MATCH            PASS   operator==
+006238a0   WARN SHARED_HEADER_AVAILABLE CTestQuest (engine/CTestQuest.h)
+006238a0   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+006238a0   RELOCATION_MATCH PASS   operator()
+004afe20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004afe20   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004afe20   RELOCATION_MATCH PASS   RemoveBoast
+00859040   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00859040   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00859040   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00859040   RELOCATION_MATCH PASS   GetThingDoingDamageFromCreatureAndEventName
+
+WINS: 6
+  0096fa90 RELOCATION_MATCH CAIStateGroup_SummonerCharge::IsRunnable
+  006ed9e0 RELOCATION_MATCH CCombatManager::?DeregisterDestroyedCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z
+  004115a0 MATCH CBasicString<char>::??8?$CBasicString@D@@QBE_NPBD@Z
+  006238a0 RELOCATION_MATCH CTestQuestNameCompare::??RCTestQuestNameCompare@@QBE_NPBVCTestQuest@@0@Z
+  004afe20 RELOCATION_MATCH CQuestManager::?RemoveBoast@CQuestManager@@QAEXJVCCharString@@@Z
+  00859040 RELOCATION_MATCH _global::?GetThingDoingDamageFromCreatureAndEventName@

@@ -1,14 +1,19 @@
 // CAIStateGroup_SummonerCharge::IsRunnable() -- once the next charge frame is reached and the summoner holds a live thing in its primary slot, charge a live enemy that lies (2D) between the def's near and far charge ranges and is either running away from combat (stealth timer >= 0) or a creature the summoner is fighting that the combat manager says is chargeable; latch it as the target
 // Leaf: IsRunnable
+// Name fix (NF215, 2026-11-21, q12300): callee spellings respelled in place on the row's existing local models: the stand-ins
+//   ?IsCreatureFightingThing@CCombatManager@@QBE_NABVCThingCreatureBase@@PBVCThing@@@Z / CheckSummonerChargeable -> the PDB
+//   ?IsAttackerOn@CCombatManager@@QBE_NABVCThingCreatureBase@@0@Z (0x006E9310) and
+//   ?IsDefenderDueForAttack@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (0x006EA050) the self rows carry; targeting slot 29
+//   returns CThingCreatureBase* (CTCTargetingBase::GetPBestEnemyCreatureForAttack, both PDBs; GOTCHAS wf7), so no cast.
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096FA90, length 451 bytes (plain `ret`, virtual slot 11).
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (evaluated for the static call), CWorld::GetWorldFrame @ 0x0049D870
 //          (static), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x46 CTCCarrying = bit 6 of +0x28, 8 the
 //          enemy source = bit 8 of +0x20, 0x36 CTCStealth = bit 22 of +0x24), CTCCarrying::GetThingInPrimarySlot
-//          @ 0x006A1440, the enemy source's virtual slot 29 (+0x74), CThing::GetPos @ 0x004C73D0 (x2),
-//          CThingCreatureBase::GetCombatManager @ 0x00661ED0, CCombatManager::IsCreatureFightingThing @ 0x006E9310 /
-//          CheckSummonerChargeable @ 0x006EA050, CIntelligentPointer<CThing>(CThing*) @ 0x004A96F0, CIntelligentPointer::
+//          @ 0x006A1440, the targeting component's virtual slot 29 (+0x74, GetPBestEnemyCreatureForAttack), CThing::GetPos @ 0x004C73D0 (x2),
+//          CThingCreatureBase::GetCombatManager @ 0x00661ED0, CCombatManager::IsAttackerOn @ 0x006E9310 /
+//          IsDefenderDueForAttack @ 0x006EA050, CIntelligentPointer<CThing>(CThing*) @ 0x004A96F0, CIntelligentPointer::
 //          operator= @ 0x004A9760, ~CBaseIntelligentPointer @ 0x00A01C10.
 // Layout: Ego_r.pdb CAIStateGroup_SummonerCharge (PTarget +0x14, PDef +0x1c, NextFrameToCharge +0x20) over the landed
 //          CAIStateGroupBase model (the generated header flattens the vptr); CSummonerDef ChargeRangeNear +0x3c /
@@ -44,8 +49,8 @@ class CThingCreatureBase : public CThing { public:
     CCombatManager& GetCombatManager();         // 0x00661ED0
 };
 class CCombatManager { public:
-    bool IsCreatureFightingThing(const CThingCreatureBase& creature, const CThing* thing) const;   // 0x006E9310
-    bool CheckSummonerChargeable(CThing* summoner);   // 0x006EA050
+    bool IsAttackerOn(const CThingCreatureBase& attacker, const CThingCreatureBase& defender) const;   // 0x006E9310
+    bool IsDefenderDueForAttack(const CThingCreatureBase& defender) const;   // 0x006EA050
 };
 class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
@@ -60,7 +65,7 @@ struct CTCEnemySource {                         // interface 8
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
-    virtual CThing* GetEnemy();                 // slot 29 (+0x74)
+    virtual CThingCreatureBase* GetPBestEnemyCreatureForAttack() const;   // slot 29 (+0x74) CTCTargetingBase::GetPBestEnemyCreatureForAttack (Ego_r.pdb + FableWin.pdb)
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -117,7 +122,7 @@ bool CAIStateGroup_SummonerCharge::IsRunnable()
         return false;
     CTCEnemySource* source;
     if (GetCreature()->GetTC(TCI_TARGETING, &source)) {
-        CThing* enemy = source->GetEnemy();
+        CThingCreatureBase* enemy = source->GetPBestEnemyCreatureForAttack();
         if (enemy && !enemy->IsDead()) {
             const C3DVector& from = GetCreature()->GetPos();
             const C3DVector& to = enemy->GetPos();
@@ -133,7 +138,7 @@ bool CAIStateGroup_SummonerCharge::IsRunnable()
                     }
                     if (enemy->GetTypeFlags() & 8) {
                         CCombatManager* combat = &GetCreature()->GetCombatManager();
-                        if (combat->IsCreatureFightingThing(*GetCreature(), enemy) && combat->CheckSummonerChargeable(enemy)) {
+                        if (combat->IsAttackerOn(*GetCreature(), *enemy) && combat->IsDefenderDueForAttack(*enemy)) {
                             PTarget = enemy;
                             return true;
                         }

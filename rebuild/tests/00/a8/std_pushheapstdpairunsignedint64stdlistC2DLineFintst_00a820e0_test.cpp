@@ -1,66 +1,64 @@
-// Link test for 0x00A820E0: the source object's std::__push_heap over pair<unsigned __int64, list<C2DLineF> > keeps a
-// max-heap on the unsigned 64-bit key and destroys its by-value element; list<C2DLineF>'s operator= (0x00517720) and
-// destructor (0x005127A0) are supplied here as counters.
-#include <cstdio>
-class C2DVector {
-public:
-    float X, Y;
-};
-class C2DLineF {                                   // 16 bytes (Ego_r.pdb)
-public:
-    C2DVector Point1;                              // +0x00
-    C2DVector Point2;                              // +0x08
-};
-
+// Behaviour test for 0x00A820E0 std::__push_heap<pair<unsigned __int64, list<C2DLineF> >*, int, pair<..>, CKeyPairCompareLess<..> > on
+// the shared headers (the row's macro set): every push keeps a max-heap on the UNSIGNED 64-bit key (keys chosen so that a signed, a
+// low-dword-only or a high-dword-only compare order them differently), each slot's list is a deep copy that identifies its key, and
+// the by-value element is destroyed (no shared nodes). list<C2DLineF>::operator= (out of line in retail, 0x00517720) is supplied here
+// as a counting deep copy.
+#define FABLE_RETAIL_STLP_DECAL_HEAP
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_INSERT_DISPATCH_NOINLINE
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#define FABLE_RETAIL_STLP_LIST_ASSIGN_POPBACK_DECL
+#include "stlport/fable_containers.h"
+#include "engine/C2DLineF.h"
+#include "engine/CVectorMap.h"
+#include <stdio.h>
+typedef std::list<C2DLineF> L;
+typedef std::pair<unsigned __int64, L> Elem;
+typedef CKeyPairCompareLess<unsigned __int64, L> Less;
+static int g_assigns = 0;
 namespace std {
-template <class _Tp> class allocator { };
-
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class list {                                       // STLport 4.6: one word, the sentinel node pointer
-public:
-    void* _M_node;
-    list<_Tp, _Alloc>& operator=(const list<_Tp, _Alloc>& __x);   // 0x00517720
-    ~list();                                       // 0x005127A0
-};
-
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
+template <> list<C2DLineF>& list<C2DLineF>::operator=(const list<C2DLineF>& x)
+{
+    ++g_assigns;
+    if (this != &x) {
+        clear();
+        for (const_iterator it = x.begin(); it != x.end(); ++it) push_back(*it);
+    }
+    return *this;
 }
-
-template <class K, class V> class CKeyPairCompareLess {
-public:
-    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
-};
-
-namespace std {
-template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
-void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val, _Compare __comp);   // from the source object (/Gr)
-static int g_assigns = 0, g_dtors = 0;
-template <> list<C2DLineF>& list<C2DLineF>::operator=(const list<C2DLineF>& __x) { ++g_assigns; _M_node = __x._M_node; return *this; }
-template <> list<C2DLineF>::~list() { ++g_dtors; }
 }
-typedef std::pair<unsigned __int64, std::list<C2DLineF> > Elem;
-typedef CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF> > Less;
+static void fill(L& l, int id) { for (int i = 0; i <= id % 3; ++i) { C2DLineF f; f.Point1.X = (float)id; f.Point1.Y = (float)i; f.Point2.X = 0.0f; f.Point2.Y = 0.0f; l.push_back(f); } }
+static bool same(const L& l, int id)
+{
+    int i = 0;
+    for (L::const_iterator it = l.begin(); it != l.end(); ++it, ++i)
+        if (it->Point1.X != (float)id || it->Point1.Y != (float)i) return false;
+    return i == id % 3 + 1;
+}
 int main()
 {
-    static int tags[8];
-    Elem h[10];
-    int n = 0;
-    unsigned __int64 keys[8] = { 9, ((unsigned __int64)3 << 32), 0xFFFFFFFFu, ((unsigned __int64)3 << 32) + 7, 1, 0, ((unsigned __int64)1 << 33), 5 };
-    for (int i = 0; i < 8; ++i) {
+    unsigned __int64 keys[8] = { 9, ((unsigned __int64)3 << 32), 0xFFFFFFFFu, ((unsigned __int64)3 << 32) + 7, 1, 0,
+                                 ((unsigned __int64)1 << 33), ((unsigned __int64)0x80000000u << 32) };
+    Elem h[8];
+    int id[8];
+    for (int n = 0; n < 8; ++n) {
         Elem v;
-        v.first = keys[i];
-        v.second._M_node = &tags[i];
-        int d0 = std::g_dtors;
+        v.first = keys[n];
+        fill(v.second, n);
+        h[n].first = 0;
         std::__push_heap(h, n, 0, v, Less());
-        ++n;
-        if (std::g_dtors != d0 + 1) { std::printf("00a820e0_TEST FAIL dtor\n"); return 1; }
-        for (int c = 1; c < n; ++c)
-            if (h[(c - 1) / 2].first < h[c].first) { std::printf("00a820e0_TEST FAIL heap\n"); return 1; }
+        for (int c = 1; c <= n; ++c)
+            if (h[(c - 1) / 2].first < h[c].first) { printf("00a820e0_TEST FAIL heap %d\n", n); return 1; }
     }
-    if (h[0].first != ((unsigned __int64)3 << 32) + 7 || h[0].second._M_node != &tags[3] || std::g_assigns < 8) { std::printf("00a820e0_TEST FAIL root\n"); return 1; }
-    std::printf("00a820e0_TEST PASS\n");
+    for (int s = 0; s < 8; ++s) {
+        int k = -1;
+        for (int j = 0; j < 8; ++j) if (keys[j] == h[s].first) k = j;
+        if (k < 0 || !same(h[s].second, k)) { printf("00a820e0_TEST FAIL slot %d\n", s); return 1; }
+        id[s] = k;
+        for (int t = 0; t < s; ++t)
+            if (h[t].second._M_node._M_data->_M_next == h[s].second._M_node._M_data->_M_next) { printf("00a820e0_TEST FAIL shared\n"); return 1; }
+    }
+    if (id[0] != 7 || g_assigns < 8) { printf("00a820e0_TEST FAIL root %d %d\n", id[0], g_assigns); return 1; }
+    printf("00a820e0_TEST PASS\n");
     return 0;
 }

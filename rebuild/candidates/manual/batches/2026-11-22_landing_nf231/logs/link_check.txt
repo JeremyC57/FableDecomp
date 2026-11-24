@@ -1,0 +1,1 @@
+# link of the 3 rechecked objects (/FORCE): LNK4006 HEAD 0, landing 0; LNK2005 0. NF231's own 16-object set: 1 LNK4006 (??1CNewFrontendGameComponent, 0x0042EA8F v 0x0042F50B), same as its HEAD control

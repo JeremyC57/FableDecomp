@@ -25,6 +25,9 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_AwakeningTheOracleScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_SCYTHE_BEFORE_TABLETS_PASS27
+    CQ_AwakeningTheOracleScript(CScriptDataBase*, CGameScriptInterfaceBase&);
+#endif
     virtual void RegisterMain();
     virtual void Main();                                                 // 0x00CFB080
     virtual void Init();                                                 // 0x00CFADD0
@@ -87,10 +90,22 @@ private:
     void RemoveCursedTablets();                                          // 0x00CFEE30
 };
 #endif
+#ifdef FABLE_RETAIL_SCYTHE_BEFORE_TABLETS_PASS27
+class CQ_AwakeningTheOracleScript::CScytheBeforeGettingTablets : public CEntityScriptBase {
+public:
+    CScytheBeforeGettingTablets(CQ_AwakeningTheOracleScript&, CScriptDataBase*, const CScriptThing&);
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_AwakeningTheOracleScript&, CScriptDataBase*, const CScriptThing&);
+    virtual CScriptBase* GetParentScript() const;
+private:
+    virtual void Main();
+    CQ_AwakeningTheOracleScript* ParentClass;
+    CQ_SunnyvaleMasterData* PMasterData;
+};
+#endif
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AwakeningTheOracleScript) == 0x98);
+FABLE_STATIC_ASSERT_AT(91,sizeof(NScript::CQ_AwakeningTheOracleScript) == 0x98);
 #ifdef FABLE_RETAIL_CQ_AWAKENINGTHEORACLESCRIPT_CORACLETABLET
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AwakeningTheOracleScript::COracleTablet) == 0x20);
+FABLE_STATIC_ASSERT_AT(93,sizeof(NScript::CQ_AwakeningTheOracleScript::COracleTablet) == 0x20);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

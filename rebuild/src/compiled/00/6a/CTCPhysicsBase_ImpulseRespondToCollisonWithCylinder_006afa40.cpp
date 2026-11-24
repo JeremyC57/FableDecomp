@@ -1,6 +1,6 @@
 // CTCPhysicsBase::ImpulseRespondToCollisonWithCylinder(const CPhysicsCollideResponse& response, C3DVector& velocity) const -- remove the velocity's component into the collision normal when it points into the surface
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- GetLength reads its components into z, y, x locals (retail's load order) and Dot sums in statement order Z, Y, X (`d = a.Z * b.Z; d += a.Y * b.Y; d += a.X * b.X;`), which keeps retail's dot order once the locals are reordered
-// Leaf: ?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@QBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z
+// Leaf: ?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@IBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AFA40, length 170 bytes (+ int3 padding), thiscall `ret 8`
 //   (`this` unused). Constant: 0.0f @ 0x0122DEDC. No calls.
 // Identity: Ego_r.pdb `?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@IBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z`
@@ -48,7 +48,7 @@ public:
 
 class CTCPhysicsBase {
 public:
-    bool ImpulseRespondToCollisonWithCylinder(const CPhysicsCollideResponse& response, C3DVector& velocity) const;
+    protected: bool ImpulseRespondToCollisonWithCylinder(const CPhysicsCollideResponse& response, C3DVector& velocity) const; public:
 };
 
 bool CTCPhysicsBase::ImpulseRespondToCollisonWithCylinder(const CPhysicsCollideResponse& response, C3DVector& velocity) const

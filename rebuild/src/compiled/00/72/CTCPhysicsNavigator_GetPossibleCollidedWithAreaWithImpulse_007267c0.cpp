@@ -1,5 +1,6 @@
 // CTCPhysicsNavigator::GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const -- the integer XY box the body can touch this frame: position +/- (radius + 1), stretched along velocity-plus-impulse, orientation-validated
-// Leaf: GetPossibleCollidedWithAreaWithImpulse
+// Leaf: ?GetPossibleCollidedWithAreaWithImpulse@CTCPhysicsNavigator@@ABE?AVC2DBoxI@@ABVC3DVector@@@Z
+// NF236 (2026-11-22, q12667): leaf-only self respell onto the Ego_r.pdb + FableWin.pdb spelling (access); every landed binder binds it after this hand-back.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007267C0, length 267 bytes (+ int3 padding), `ret 8` (hidden C2DBoxI result
 // + impulse). FableWin.pdb: ?GetPossibleCollidedWithAreaWithImpulse@CTCPhysicsNavigator@@ABE?AVC2DBoxI@@ABVC3DVector@@@Z
@@ -42,7 +43,9 @@ struct CTCPhysicsNavigator {
     long      OldPositionLastFrameSet;          // +0x24
     C3DVector Velocity;                         // +0x28
     float     Radius;                           // +0x34
-    C2DBoxI GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const;
+private:
+    C2DBoxI GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const;  // NF236: Ego_r + FableWin spelling ABE (private const)
+public:
 };
 
 C2DBoxI CTCPhysicsNavigator::GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const

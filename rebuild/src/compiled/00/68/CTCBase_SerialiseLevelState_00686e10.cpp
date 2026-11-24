@@ -19,23 +19,13 @@ public:
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
 };
-class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {                  // retail list<CStringParserCommentBoundaries>: the head pointer only
-public:
-    struct SNode { SNode* Next; SNode* Prev; char* PStart; char* PEnd; };
-    SNode* m_pHead;
-    list() : m_pHead(0)
-    {
-        SNode* node = (SNode*)malloc(sizeof(SNode));
-        node->Next = node;
-        node->Prev = node;
-        m_pHead = node;
-    }
-    ~list();                   // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (the visible out-of-line _List_base dtor) and the element by engine/CStringParser.h's partial mode: the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#define FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY
+#include "engine/CStringParser.h"
+#include "stlport/fable_containers.h"
 struct CCursorPos {
     bool          InQuotes;                        // +0x0
     unsigned long StringPos;                       // +0x4
@@ -68,8 +58,11 @@ public:
     void*         ParentThing;                     // +0x04
     bool          ToBeRemoved;                     // +0x08
     bool          IsInGlobalUpdateTCs;             // +0x09
-    bool BeginSerialising(bool saving, CCharString& data, CStringParser& parser, CPersistContext& context);   // 0x00686B00
-    void EndSerialising(bool saving, CCharString& data);                                                       // 0x006869E0
+    private:
+    bool BeginSerialising(bool saving, CCharString& data, CStringParser& parser, CPersistContext& context);
+    public:
+   // 0x00686B00
+    private: void EndSerialising(bool saving, CCharString& data); public:                                                       // 0x006869E0
     void SerialiseLevelState(bool saving, CCharString& data, bool arg);
 };
 

@@ -1,0 +1,2 @@
+00902ca7 LIBCP_OK renames=?GetBuilding@CAIStateGroup_ServeFoodAtHome_Methods@@QAEPAVCThingBuilding@@XZ=?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ ; .drectve EQUAL ; sections=2
+00902cdc LIBCP_OK renames=?GetBuilding@CAIStateGroup_ServeFoodAtTavern_Methods@@QAEPAVCThingBuilding@@XZ=?GetBuilding@CAIStateGroup_ServeFoodAtTavern@@MAEPAVCThingBuilding@@XZ ; .drectve EQUAL ; sections=2

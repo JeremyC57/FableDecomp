@@ -1,0 +1,13 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x004115A0	CBasicString<char>	operator==	??8?$CBasicString@D@@QBE_NPBD@Z	CBasicString<char>::operator==	??8CBasicStringChar@@QBE_NPBD@Z	Ego_r.pdb 0x0040C910 + FableWin.pdb 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z; body = the 88-byte out-of-line copy with Compare 0x00411570 expanded (MATCH on fable_string.h COMPARE_BODY + TEXT_EQ_COMPARE_ZERO, explicit instantiation; NF202 draft); 91 landed objects already reference or define the PDB spelling (census work/census.tsv); leaf-only rename (the catalog name is already CBasicString<char>::operator==)
+# Section 2
+0x0096FA90	?IsCreatureFightingThing@CCombatManager@@QBE_NABVCThingCreatureBase@@PBVCThing@@@Z	?IsAttackerOn@CCombatManager@@QBE_NABVCThingCreatureBase@@0@Z	0x006E9310
+0x0096FA90	?CheckSummonerChargeable@CCombatManager@@QAE_NPAVCThing@@@Z	?IsDefenderDueForAttack@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	0x006EA050
+0x006ED9E0	?IsCombatant@CThingCreatureBase@@QAE_NXZ	?IsInMeleeAsAttacked@CThingCreatureBase@@QBE_NXZ	0x00662430
+0x006238A0	??8CBasicStringChar@@QBE_NPBD@Z	??8?$CBasicString@D@@QBE_NPBD@Z	0x004115A0
+0x004AFE20	??8CBasicStringChar@@QBE_NPBD@Z	??8?$CBasicString@D@@QBE_NPBD@Z	0x004115A0
+0x004AFE20	?Compare_00411570@@YIJPBD0@Z	?Compare@?$CBasicString@D@@KIJPBD0@Z	0x00411570
+0x006238A0	??_C@_00CNPNBAHC@?$AA@ (in-object "" literal)	?NullChar@CCharString@@1DB	0x0129AAF4
+0x00859040	??8CBasicStringChar@@QBE_NPBD@Z	??8?$CBasicString@D@@QBE_NPBD@Z	0x004115A0
+0x00859040	?ReleaseData@CCharString@@QAEXXZ	?UnassignString@CCharString@@IAEXXZ	0x0099E9B0	(same-TU copies ~CCharString / copy ctor, not the leaf; also the copy's own defined name)
+0x00859040	?g_CCharStringLiveCount@@3JA	?g_CCharStringInstanceCount_013BD800@@3HA	0x013BD800	(same-TU copies ~CCharString / copy ctor, not the leaf)

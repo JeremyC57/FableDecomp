@@ -1,0 +1,5 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00870FC0	NCreatureAction::CActionEventCameraShake	SetDataFromString	?SetDataFromString@CActionEventCameraShake@NCreatureAction@@MAE_NABVCCharString@@@Z	vfunc_4	?SetDataFromString@CActionEventCameraShake@NCreatureAction@@UAE_NABVCCharString@@@Z	Ego_r.pdb 0x00811990 + FableWin.pdb 0x028371B0 (protected virtual MAE); engine/NCreatureActionEvents.h declares it protected; vtable 0x0125C10C slot; no landed referencer (callers.py none; absrefs.py: 0x0125C10C in no row; no landed row models a SetDataFromString slot of CActionEventCameraShake; no reloc_bindings line for either spelling)
+# Section 2
+caller	old_symbol	new_symbol	callee_address
+0x009AF1E0	?g_emptyLiteral_0129aaf4@@3QBDB	?NullChar@CCharString@@1DB	0x0129AAF4

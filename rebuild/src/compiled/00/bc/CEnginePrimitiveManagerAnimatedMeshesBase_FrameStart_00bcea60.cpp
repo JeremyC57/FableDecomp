@@ -1,7 +1,7 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test cannot fail (main only prints PASS))
 // CEnginePrimitiveManagerAnimatedMeshesBase::FrameStart() -- point the per-frame palette-skin shadow shader selectors at
 //   the colour-buffer shader set (shadow technique 2) or the depth-buffer set (otherwise)
-// Leaf: FrameStart
+// Leaf: ?FrameStart@CEnginePrimitiveManagerAnimatedMeshesBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BCEA60, 0xd0 bytes.
 // Layout: PDB (Ego_r) names; retail offsets equal the PDB (CVertexShader is 8 bytes): the selector pointers
 //   VertexShadersPalSkinShadowBufferRender +0x2e8 .. VertexShadersPalSkinDP3BumpSpotShadow +0x308; the shader arrays they
@@ -14,7 +14,7 @@ class CEngineShadowRenderer { public:
 };
 namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 struct CEnginePrimitiveManagerAnimatedMeshesBase {
-    unsigned char _pad000[0x98];
+    unsigned char _pad000[0x94];
     CVertexShader VertexShadersPalSkinDepthBufferShadow[4];             // +0x098
     CVertexShader VertexShadersPalSkinEnvDepthBufferShadow[4];          // +0x0b8
     CVertexShader VertexShadersPalSkinEnvBumpDepthBufferShadow[4];      // +0x0d8
@@ -44,7 +44,7 @@ struct CEnginePrimitiveManagerAnimatedMeshesBase {
     CVertexShader* VertexShadersPalSkinEnvSpotShadow;                   // +0x300
     CVertexShader* VertexShadersPalSkinEnvBumpSpotShadow;               // +0x304
     CVertexShader* VertexShadersPalSkinDP3BumpSpotShadow;               // +0x308
-    void FrameStart();
+    virtual void FrameStart();
 };
 void CEnginePrimitiveManagerAnimatedMeshesBase::FrameStart()
 {

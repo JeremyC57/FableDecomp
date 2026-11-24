@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DC9B0, length 170 bytes (virtual, `ret 8`).
 // Callees: this's virtual slot 8 (+0x20, the component reset), CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0, CStringParser::CStringParser @ 0x00404720 (landed), CCharString::~CCharString @ 0x0099EAE0,
-// TransferIn(CPersistContext*, CStringParser*, long*) @ 0x009E2590 (__fastcall), std::list<CStringParserCommentBoundaries>::~list
+// TransferIn(CPersistContext*, CStringParser*, long*) @ 0x009E2590 (__fastcall), std::_List_base<CStringParserCommentBoundaries>::~_List_base
 // @ 0x004046B0 (landed), CBaseClass::~CBaseClass @ 0x0099A2E0.
 // Shape: the landed sibling CAnimComponentFlags::Initialise (0x005DC3C0): the parser local, the inline parse helper whose
 // value is homed in the dead text-argument slot; the zero test picks one of two inlined parser-destructor tails.
@@ -22,14 +22,11 @@ class CCharString { public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {               // retail std::list<CStringParserCommentBoundaries>: sentinel only
-public:
-    void* m_pHead;
-    ~list();                // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 
 class CStringParser : public CBaseClass { public:                  // retail 0x28 bytes
     char* String;                               // +0x04

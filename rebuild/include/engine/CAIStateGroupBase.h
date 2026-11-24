@@ -49,6 +49,9 @@ class CThingCreatureBase; class CPlayerManager; class CWorldMap;    // chunk 795
 
 class CAIStateGroupBase : public CBaseClass {
 public:
+#ifdef FABLE_RETAIL_CAIBRAIN_INITGROUPS_PASS26
+    long GetPriority() const { return Priority; }
+#endif
     CAIStateGroupBase();                                                 // 0x008FD255 ??0CAIStateGroupBase@@QAE@XZ
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
     virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority,
@@ -322,9 +325,36 @@ FABLE_STATIC_ASSERT_AT(257, offsetof(CAIStateGroupBase, Enabled) == 0x12);
 
 class CAIBrain;
 class CCharStringData;
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_LOOKATPOS
+// NF287 add-only opt-in (2026-11-23, binder 0x0094A6D0 CAIStateGroup_GoToPub::WalkToPoint, whose local struct derives this flat view):
+// declaration only of the protected base member AIAction_LookAtPos 0x0097D580, Ego_r.pdb + FableWin.pdb
+// ?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z (a member's mangling carries no
+// class key, so the flat view gives the PDB spelling; protected, so only a derived class can call it). MS forward enums; the row
+// defines the enumerators it uses.
+class C3DVector;
+enum EAIActionReturn; enum EAIActionRepeat;
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_MOVETOPOS
+// NF295 add-only opt-in (2026-11-23, binder 0x0094A6D0 CAIStateGroup_GoToPub::WalkToPoint, whose local struct derives this flat view):
+// declaration only of the protected base member AIAction_MoveToPos 0x0097EC00, Ego_r.pdb + FableWin.pdb
+// ?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z
+// (protected; a member's mangling carries no class key, so the flat view gives the PDB spelling). MS forward enums; the row defines
+// the enumerators it uses.
+class C3DVector; class CThing;
+enum EAIActionReturn; enum EAIActionRepeat; enum EMovementType;
+#endif
 
 #pragma pack(push, 1)
 class CAIStateGroupBase {
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_LOOKATPOS
+protected:
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_MOVETOPOS
+protected:
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& reached, EMovementType movement, bool a, bool b,
+                                       const CThing* avoid, bool c, float speed);                         // 0x0097EC00
+#endif
 public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CAIBrain*        PBrain;                                 // +0x04

@@ -105,9 +105,10 @@ public:
         virtual void OnDeactivate();                        // slot 6 0x00739E60 (Active = false)
         virtual float GetMovementSpeed(const C3DVector& from, const C3DVector& to, EMovementType type) const;   // slot 7
         virtual bool IsIdleMode() const;                    // slot 8
-        virtual bool IsRemoveOnDeactivate() const;          // slot 9
+        virtual bool IsAllowingPlayerSpecialMovementMoves() const;   // slot 9
         virtual bool IsHoldWeaponWithBothHands() const;     // slot 10 0x0073A9F0
-        virtual bool IsAllowingPlayerSpecialMovementMoves() const;   // slot 11
+        virtual bool IsRemoveOnDeactivate() const;          // slot 11
+        // NF242 (q12677): slots 9 / 11 in retail order (vtable 0x012673CC; CModeStandBase 0x0073DA00 and CModeCarryingWeaponStand 0x008E35F0 override slot 9)
         CThing*       ParentThing;                          // +0x04
         unsigned char WeaponBasedFilter_[0xc];              // CAnimFilterOfGroup WeaponBasedFilter +0x08
         long          FramesBeforeRemovingSelf;             // +0x14

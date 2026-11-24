@@ -1,12 +1,13 @@
-// Leaf: ?CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameStart@@YI_NPAVCEngineInternalPrimitiveAnimatedMesh@@PAXAAVCMatrix3x4@@@Z
+// Leaf: ?GetTransformFrameStart@CEngineInternalPrimitiveAnimatedMesh@@UBE_NAAVCMatrix3x4@@@Z
 class CMatrix3x4 { public: char pad[64]; };
 
 class CEngineInternalPrimitiveAnimatedMesh { public:
-    char pad[0x58];
+    char pad[0x54];
     float m58;       // +0x58 (Scale)
     char pad2[0x88 - 0x5c];
     char m88[0x1c];  // +0x88
     char mA4[0x1c];  // +0xa4
+    virtual bool GetTransformFrameStart(class CMatrix3x4&) const;
 };
 
 // callee at 0xbebaa0: CEngineInternalPrimitiveMeshBase::CalcObjectMatrix (static __fastcall, Ego_r / FableWin; naming wave 11):
@@ -17,8 +18,10 @@ class CEngineInternalPrimitiveMeshBase { public:
     static void __fastcall CalcObjectMatrix(CMatrix3x4& matrix, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEBAA0 (Ego_r / FableWin)
 };
 
-bool __fastcall CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameStart(CEngineInternalPrimitiveAnimatedMesh* self, void* edxDummy, CMatrix3x4& mtx)
+bool CEngineInternalPrimitiveAnimatedMesh::GetTransformFrameStart(class CMatrix3x4& mtx) const
 {
+    CEngineInternalPrimitiveAnimatedMesh* self = const_cast<CEngineInternalPrimitiveAnimatedMesh*>(this);
     CEngineInternalPrimitiveMeshBase::CalcObjectMatrix(mtx, *(const C3DVector*)self->m88, *(const CRightHandedSet*)self->mA4, self->m58);
     return true;
 }
+// Flatten route (flatten_pilot v4, NF324): CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameStart -> CEngineInternalPrimitiveAnimatedMesh::GetTransformFrameStart, the RTTI-placed PDB member; class model: the row's local class model.

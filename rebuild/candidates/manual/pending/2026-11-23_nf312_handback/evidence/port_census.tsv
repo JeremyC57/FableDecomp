@@ -1,0 +1,91 @@
+idx	target	witness	flags	local_stl	standin_classes	shared_hdr_declaring	method_lines
+1	0076cc00	0065a852	OW	no	-	-	42:void RemoveEnemyThing(CThing* enemy);       // 0x0076CC00 | 69:enemy->RemoveEnemyThing(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
+2	005d8e90	00522880	OW	yes	-	-	103:CThing* GetInventoryOwner();                        // 0x005D8E90 | 158:&& ((CTCInventoryItem*)thing->GetTC(0x1a))->GetInventoryOwner() == hero)
+3	006b0210	00846100	OW	no	-	-	115:void ApplyAcceleration(C3DVector* acceleration);         // 0x006B0210 | 236:thing->PPhysics->ApplyAcceleration(&velocity);
+4	006b0460	006e1620	OW	no	-	-	68:void GetOrientationInterpolator(C3DOrientationInterpolator* out);   // 0x006B0460 | 211:ParentThing->PhysicsTC->GetOrientationInterpolator(&orientation);
+5	007b9f60	00967180	OW	no	CIntelligentPointerObject	-	121:CIntelligentPointerObject GetJug(long index);                    // 0x007B9F60 | 140:bool GetJug(); | 143:bool CAIStateGroup_TavernServer::GetJug()
+6	007ba1d0	00969470	OW	no	-	-	98:bool GetEmptyJugSlot(CThing* creature, C3DVector* pos, CRightHandedSet* rh, long* actionPo | 166:if (bar->GetEmptyJugSlot(GetCreature(), &JugPos, &JugRHSet, &JugActionPointIndex, &JugSlot
+7	0078839a	007bdb66	OW	no	-	-	69:void SetThingAsImmune(CThing* thing);               // 0x0078839A | 120:trap->SetThingAsImmune(PShooter.GetPItem());
+8	004c9030	005296b0	OE	no	-	-	
+8	004c9030	008385b0	OW	no	-	-	13:#include "engine/C3DVector.h" | 18:class CTCParamsPhysicsBase:public CTCParamsBase {public:C3DVector position;CRightHandedSet | 20:namespace NFactory008385b0 {
+9	006619f0	007339e0	OW	no	-	-	40:void SetLastActionHandedness(long handedness);         // 0x006619F0 | 118:ParentCreature->SetLastActionHandedness(0);
+10	00663260	00733910	-	no	-	-	34:const CAnimationSet* GetCombatAnimationSet();           // 0x00663260 | 44:const CAnimationSet* set = ParentCreature->GetCombatAnimationSet();
+10	00663260	00733950	OW	no	-	-	71:CAnimationSet* GetCombatAnimationSet();     // 0x00663260 | 94:CAnimationSet* set = ParentCreature->GetCombatAnimationSet(); | 100:CAnimationSet* chainSet = ParentCreature->GetCombatAnimationSet();
+11	006a7e70	005800d6	OW	no	-	-	38:bool operator()(const CThing& thing) const;                // 0x006A7BE0 | 41:bool operator()(const CThing& thing) const;                // 0x006A7E70 | 47:template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const { return m_firs
+12	006a7eb0	007f6df0	-	no	-	-	73:bool operator()(CThing* thing) const; };                    // 0x006A7570 | 75:bool operator()(CThing* thing) const { return IsAICreatureAwareOfMoreGenerous_00864600(Cre | 77:bool operator()(const CThing* thing) const; };              // 0x006A76A0
+13	006a7580	007f6df0	-	no	-	-	73:bool operator()(CThing* thing) const; };                    // 0x006A7570 | 75:bool operator()(CThing* thing) const { return IsAICreatureAwareOfMoreGenerous_00864600(Cre | 77:bool operator()(const CThing* thing) const; };              // 0x006A76A0
+14	0051e210	005fae90	OW	no	-	-	15:unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, unsigned long level | 34:*it = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), Paren
+15	00409fd0	0040a740	OFF,OE	no	-	-	54:void SaveGameState(CAFile* file);                       // 0x00409FD0 | 68:SaveGameState(&file);
+16	0040bca0	0040d350	OW	no	-	-	49:void LoadGameState(CAFile* file);                       // 0x0040BCA0 | 59:LoadGameState(&file);
+17	00ad89b0	00ad9d70	OW	no	CBoolArray,CRemainderArray	-	187:unsigned long CalcMinimumBlocks(const CRemainderArray& sizes, unsigned long& groupCount, C | 208:return CalcMinimumBlocks(remainders, groupCount, available, remainders.size(), 0) + result
+18	00501d30	00502170	-	yes	-	-	67:void GetLevelFilesFromWorldFile(const CWideString& worldFile, vector<CWideString>& levelFi | 74:void CWorldMap::GetLevelFilesFromWorldFile(const CWideString& worldFile, vector<CWideStrin | 84:GetLevelFilesFromWorldFile(worldFile, levelFiles);
+19	0063d4a0	0063db30	OW	no	-	-	73:protected:   // Ego_r.pdb: CreateLineSegment / FindMaxThemeZInCell / FindThemeCollisionPoi | 76:bool FindThemeCollisionPointWithinCell(const C3DVector* start, const C3DVector* end, const | 84:bool CWorldMap::FindThemeCollisionPointWithinCell(const C3DVector* start, const C3DVector*
+20	00799e30	007990c0	-	no	-	-	34:bool operator()(CThing* thing);                                                  // 0x0079
+21	006a7590	009650c0	-	yes	-	-	61:bool operator()(const CThing& thing) const;       // 0x006A7590 | 64:bool operator()(const CThing& thing) const;       // 0x006A8B40 | 68:bool operator()(const CThing& thing) const;       // 0x006A80A0
+22	006a7b20	006698d0	-	no	-	-	73:FABLE_FORCEINLINE bool operator()(CThing* thing) const | 89:bool operator()(CThing* thing) const;       // 0x006A7B20 | 95:template <class T> FABLE_FORCEINLINE bool operator()(T* thing) const { return First(thing)
+23	0049d930	0088f400	-	no	-	-	6:void __fastcall SetCreatureGenerationGroupAsEnabled( | 30:->SetCreatureGenerationGroupAsEnabled(creatureGroup, enabled);
+24	00493eab	0089af30	-	no	CMessagePtrList	-	69:template<class TFilter> long FindAllMessages(const TFilter& filter, CMessagePtrList& found | 100:template<class TFilter> long CMessageEventManager::FindAllMessages(const TFilter& filter,  | 128:if (manager->FindAllMessages(CMessageEventFilter_IsOfType(0x32), found) > 0) {
+25	00632830	006327a0	-	yes	-	-	31:void __fastcall GFSerialiseMapBinaryIn(CMemoryDataInputStream& stream, std::map<K, V, C>&  | 57:GFSerialiseMapBinaryIn(*PLoadStream, value);
+26	00632b90	00632af0	-	yes	-	-	29:void __fastcall GFSerialiseMapBinaryIn(CMemoryDataInputStream& stream, std::map<K, V, C>&  | 55:GFSerialiseMapBinaryIn(*PLoadStream, value);
+27	00412c70	0043318d	-	yes	-	-	26:template <class T> void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream& strea | 50:GFSerialiseVectorBinaryIn(*PLoadStream, v);
+28	0040fca0	0043318d	-	yes	-	-	27:template <class T> void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream& stream, s | 53:GFSerialiseVectorBinaryOut(*PSaveStream, v);
+29	0052b270	0051f980	-	yes	-	-	217:template <class TThing, class TContainer, class TFilter> void GetAllThings(const TFilter&  | 220:void CThingSearchTools::GetAllThings(const TFilter& filter, TContainer& result) | 257:CMainGameComponent::Get()->World->PThingSearchTools->GetAllThings<CThingAICreature>(CThing
+30	008786e0	00877d20	-	no	CThingConstPtrVector	-	39:template <class T, class C, class F> void GetAllThingsInRoughArea(const C2DBoxI& box, cons | 77:search->GetAllThingsInRoughArea<const CThingGameObject>(box, filter, ScanThings);
+31	007510d0	00750be0	OW	no	-	-	48:template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00751190 for T = | 50:void* Find_CThingBaseDef_GetSubDef(const void* owner);   // stand-in callee of the stand-i | 54:template <class T> __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<const T>
+32	0083ebd0	0083ee10	-	no	-	engine/LHStringFunctions_bodies.h	
+33	00bfc880	00bfc600	-	no	CMovableResourceHandler	-	75:template <class T> bool LoadVerts(CEdgeStipVertexArray<T>* verts, CMemoryDataInputStream*  | 84:if (!LoadVerts(&Verts, stream, handler)) | 86:if (!LoadVerts(&FanBaseVerts, stream, handler))
+34	00bfca20	00bfc600	-	no	CMovableResourceHandler	-	75:template <class T> bool LoadVerts(CEdgeStipVertexArray<T>* verts, CMemoryDataInputStream*  | 84:if (!LoadVerts(&Verts, stream, handler)) | 86:if (!LoadVerts(&FanBaseVerts, stream, handler))
+35	00bfcbc0	00bfc600	-	no	CMovableResourceHandler	-	75:template <class T> bool LoadVerts(CEdgeStipVertexArray<T>* verts, CMemoryDataInputStream*  | 84:if (!LoadVerts(&Verts, stream, handler)) | 86:if (!LoadVerts(&FanBaseVerts, stream, handler))
+36	00bfcd60	00bfc600	-	no	CMovableResourceHandler	-	75:template <class T> bool LoadVerts(CEdgeStipVertexArray<T>* verts, CMemoryDataInputStream*  | 84:if (!LoadVerts(&Verts, stream, handler)) | 86:if (!LoadVerts(&FanBaseVerts, stream, handler))
+37	0085f830	008d66e0	-	no	-	-	12:unsigned long __fastcall GetOldTargetFlagsAndReplaceWith(CThing* thing, long targetingType | 33:m_oldTargetFlags = GetOldTargetFlagsAndReplaceWith(m_pThing, 0);
+38	009ea060	0049e7c0	-	no	ProgressPointer	-	10:namespace NProgressDisplay{ProgressPointer __fastcall GetProgressDisplay();void __fastcall | 12:void AutoSave_StartProgress(){if(!gAutoSaveProgress_013b89c1){gPreviousProgress_013b89e0=N
+39	006e2b70	006e3440	-	yes	-	-	128:float __fastcall GetTargetGain(const CActiveDialogueInfo& info, const std::vector<CDialogu | 138:float targetGain = GetTargetGain(info, layerDefs);
+40	00660ae2	00659efc	OFF	no	-	-	64:template<class T> void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, con | 66:void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing); | 69:void CTCVillage::RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CTh
+41	00660b5d	00659efc	OFF	no	-	-	64:template<class T> void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, con | 66:void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing); | 69:void CTCVillage::RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CTh
+42	00660bd8	00659efc	OFF	no	-	-	64:template<class T> void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, con | 66:void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing); | 69:void CTCVillage::RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CTh
+43	00660c53	00659efc	OFF	no	-	-	64:template<class T> void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, con | 66:void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing); | 69:void CTCVillage::RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CTh
+44	00660cce	00659efc	OFF	no	-	-	64:template<class T> void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, con | 66:void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing); | 69:void CTCVillage::RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CTh
+45	00660d49	00659efc	OFF	no	-	-	64:template<class T> void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, con | 66:void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing); | 69:void CTCVillage::RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CTh
+46	00660787	00659ea9	-	no	-	-	33:template<class T> void RemoveThingFromTaskList(const CThing& thing, CTaskList<T>& tasks);  | 39:RemoveThingFromTaskList(thing, TorchTasks); | 40:RemoveThingFromTaskList(thing, HornTasks);
+47	00660894	00659ea9	-	no	-	-	33:template<class T> void RemoveThingFromTaskList(const CThing& thing, CTaskList<T>& tasks);  | 39:RemoveThingFromTaskList(thing, TorchTasks); | 40:RemoveThingFromTaskList(thing, HornTasks);
+48	0066090a	00659ea9	-	no	-	-	33:template<class T> void RemoveThingFromTaskList(const CThing& thing, CTaskList<T>& tasks);  | 39:RemoveThingFromTaskList(thing, TorchTasks); | 40:RemoveThingFromTaskList(thing, HornTasks);
+49	00660980	00659ea9	-	no	-	-	33:template<class T> void RemoveThingFromTaskList(const CThing& thing, CTaskList<T>& tasks);  | 39:RemoveThingFromTaskList(thing, TorchTasks); | 40:RemoveThingFromTaskList(thing, HornTasks);
+50	006609f6	00659ea9	-	no	-	-	33:template<class T> void RemoveThingFromTaskList(const CThing& thing, CTaskList<T>& tasks);  | 39:RemoveThingFromTaskList(thing, TorchTasks); | 40:RemoveThingFromTaskList(thing, HornTasks);
+51	00660a6c	00659ea9	-	no	-	-	33:template<class T> void RemoveThingFromTaskList(const CThing& thing, CTaskList<T>& tasks);  | 39:RemoveThingFromTaskList(thing, TorchTasks); | 40:RemoveThingFromTaskList(thing, HornTasks);
+52	00bfcf00	00bfc770	OW	no	-	-	35:template <class T> void SaveVerts(CEdgeStipVertexArray<T>* verts, CDataOutputStream* strea | 44:SaveVerts(&Verts, stream); | 45:SaveVerts(&FanBaseVerts, stream);
+53	00bfcf90	00bfc770	OW	no	-	-	35:template <class T> void SaveVerts(CEdgeStipVertexArray<T>* verts, CDataOutputStream* strea | 44:SaveVerts(&Verts, stream); | 45:SaveVerts(&FanBaseVerts, stream);
+54	00bfd020	00bfc770	OW	no	-	-	35:template <class T> void SaveVerts(CEdgeStipVertexArray<T>* verts, CDataOutputStream* strea | 44:SaveVerts(&Verts, stream); | 45:SaveVerts(&FanBaseVerts, stream);
+55	0059b4fe	005959ab	-	yes	-	-	36:template <class T> class deque { | 42:deque(const deque& x);                           // 0x0059B4FE | 43:~deque();                                        // 0x0059AC77
+56	00479449	00479369	-	yes	-	-	56:void push_back(const T& value);                                  // 0x00479449 | 80:out->push_back(value);
+57	0053cb20	0053852b	-	yes	-	-	51:template <class T, class A = allocator<T> > class list { | 56:__declspec(noinline) list(const A& a = A());   // 0x0053C94A (pair list) | 57:list(const list& other);                       // 0x0053CB20 (pair list)
+58	0042d1b7	0042d405	-	yes	-	-	15:V& operator[](const K& key);                         // 0x0042D1B7
+59	007aebe0	008ae510	-	yes	-	-	85:_Tp& operator[](const _Key& __k);                    // 0x007AEBE0
+60	005e0e20	005e1020	-	yes	-	-	38:CIVCountedPointer& operator=(const CIVCountedPointer& other)
+61	0046aca8	0046ab33	-	yes	-	-	61:void resize(unsigned int newSize);                      // 0x0046ACA8 | 82:out.resize(count);
+62	004e9f20	004e9d71	-	yes	-	-	64:void resize(size_type __new_size);                      // 0x004E9F20 (builds the _Tp() te | 85:out.resize(count);
+63	00581284	00581404	OW	yes	-	-	49:void resize(unsigned int newSize);                      // 0x00581284 | 70:out.resize(count);
+64	006c9d50	006c9e40	-	yes	-	-	55:void resize(unsigned int newSize);                      // 0x006C9D50 for pair<long, COpin | 107:out.resize(count);
+65	006d4a20	006d4b40	-	yes	-	-	64:void resize(unsigned int newSize);                      // 0x006D4A20 for pair<CCharString | 101:out.resize(count);
+66	006dd4a0	006dd580	OW	yes	-	-	55:void resize(unsigned int newSize);                      // 0x006DD4A0 | 79:out.resize(count);
+67	00721240	0071de20	-	yes	-	-	90:void reserve(unsigned int __n);                     // 0x00721240 | 133:things.reserve(Tattoos.size());
+68	007b5210	007b5370	-	yes	-	-	53:void resize(unsigned int newSize);                      // 0x007B5210 | 93:out.resize(count);
+69	00f33d90	00f33b90	OW	yes	-	-	70:void resize(long count);                              // 0x00F33D90 for this T | 115:value.resize(count);
+70	00f34bf0	00f349f0	-	yes	-	-	70:void resize(long count);                              // 0x00F34BF0 for this T | 115:value.resize(count);
+71	00f353f0	00f351f0	-	yes	-	-	70:void resize(long count);                              // 0x00F353F0 for this T | 115:value.resize(count);
+72	00405220	00405350	-	no	-	-	28:fable_u32 FABLE_FASTCALL TransferIMEColour( | 71:destination = TransferIMEColour(context, token, fallback); \
+73	00497890	0091b010	-	yes	-	-	138:long __fastcall GFROR13(unsigned long value);   // 0x00497890 | 142:*seed = GFROR13(*seed);
+74	005578a0	005580b0	-	no	-	-	24:bool __fastcall AreAllowedToCoexist(long a, long b);   // 0x005578A0 | 45:if (AreAllowedToCoexist(other.GameAction, Actions.front()))
+75	00778610	007786f0	-	no	-	-	26:bool __fastcall GFGetValPositionInLimitsLooping(float value, float start, float end, float | 115:if (GFGetValPositionInLimitsLooping(time, def->FadeInEnd, def->FadeOutStart, 0.0f, 1.0f, & | 117:else if (GFGetValPositionInLimitsLooping(time, def->FadeInStart, def->FadeInEnd, 0.0f, 1.0
+76	0088ae40	006c0810	-	no	CBaseIntelligentPointer	-	27:void __fastcall GFSerialisePointer(CPersistContext* context, const char* name, CBaseIntell | 58:GFSerialisePointer(context, "WifeLivingHere", &WifeLivingHere, ParentThing->GetCurrentMapN
+77	00942b30	009432c0	-	no	-	-	57:bool __fastcall GetDummyObjectRecursive(CThing* thing, const CCharString& name, long index | 145:GetDummyObjectRecursive(((CThing*)school.GetPItem()), name, 0, 0, &deskPos, &deskSet);
+78	009e1e70	00a0b560	-	no	-	-	24:void __fastcall GFVBoxToABox(const C2DBoxF& vbox, C2DBoxF& abox);   // 0x009E1E70 | 37:GFVBoxToABox(vwindow, awindow);
+78	009e1e70	00434b50	OFF	no	-	-	27:void __fastcall GFVBoxToABox(const C2DBoxF* vbox, C2DBoxF* abox);   // 0x009E1E70 | 39:GFVBoxToABox(&MainWindow, &box);
+79	009e21d0	0043a2a0	OFF	yes	-	-	51:void __fastcall GFACoordToVCoord(const C2DVector* acoord, C2DVector* vcoord);   // 0x009E2 | 115:GFACoordToVCoord(&pos, &vpos);
+80	00cbe0c7	00efb8c0	-	no	-	-	42:bool __fastcall FoundMessageIsThingHitBy(CScriptThing* thing, CScriptThing* hitter);   //  | 68:while (!FoundMessageIsThingHitBy(&Me, &Game->GetHero())) {
+81	00cbe7aa	00df2ab0	-	no	-	-	22:void __fastcall FadeInThing(const CScriptThing& thing, float time);   // 0x00CBE7AA | 91:FadeInThing(Me, 2.0f);
+82	00cbe814	00d89380	-	no	-	-	34:void __fastcall FadeOutThing(const CScriptThing& thing, float time, float alpha);   // 0x0 | 77:FadeOutThing(Me, 1.0f, 0.3f);
+83	00cbed00	00d17340	-	yes	-	-	54:bool __fastcall AreAllThingsInVectorDead(const vector<CScriptThing>& things);   // 0x00CBE | 80:if (AreAllThingsInVectorDead(grunts))
+83	00cbed00	00d1cac0	OW	no	CScriptThingVector	-	49:bool __fastcall AreAllThingsInVectorDead(const CScriptThingVector& things);   // 0x00CBED0 | 88:while (!AreAllThingsInVectorDead(grunts)) {
+84	00cbed82	00dc0830	OE	yes	-	-	139:void __fastcall KillAllThingsInVector(CGameScriptInterfaceBase& game, const std::vector<CS | 157:KillAllThingsInVector(*Game, bandits, false);
+84	00cbed82	00e1d690	-	yes	-	-	63:void __fastcall KillAllThingsInVector(CGameScriptInterfaceBase& gsi, const vector<CScriptT | 90:KillAllThingsInVector(*m_pInterface, screamers, false);
+85	00cbeed2	00dfe0f0	-	no	-	-	47:long FABLE_FASTCALL IsPlayerThreateningEntity(const CScriptThing&);   // 0x00CBEED2 ?IsPla | 99:if (IsPlayerThreateningEntity(Me) && rand() % 3 == 0) { | 206:if (ThreatenTimer.GetTime() == 0 && IsPlayerThreateningEntity(Me) && Game->IsPlayerHolding

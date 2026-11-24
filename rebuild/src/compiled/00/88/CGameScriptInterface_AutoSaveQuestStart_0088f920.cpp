@@ -1,15 +1,15 @@
+// Leaf: ?AutoSaveQuestStart@CGameScriptInterface@@UBEXXZ
 class CWorld
 {
 public:
-    void AutoSaveQuestStart();
+    bool AutoSaveQuestStart();                  // 0x004A0CD0 (PDB returns bool; NF310)
 };
 
 class CGameScriptInterface
 {
 public:
-    void* m_pVtbl;
-    CWorld* m_pWorld;
-    void AutoSaveQuestStart() const;
+        CWorld* m_pWorld;
+    virtual void AutoSaveQuestStart() const;
 };
 
 void CGameScriptInterface::AutoSaveQuestStart() const

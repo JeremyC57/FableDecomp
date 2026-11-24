@@ -29,6 +29,9 @@ class CPersistContext;
 
 class CTCTrophy : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_TROPHY; }
+#endif
     CTCTrophy(CThing&);                                                  // 0x006DDAE0
     virtual ~CTCTrophy();                                                // 0x006DDB80
     static CTCBase* __fastcall Alloc(CThing&);
@@ -80,6 +83,22 @@ public:
     bool IsMiniGameInProgress() const { return MinigameInProgress; }
 #endif // FABLE_RETAIL_CTCTROPHY_ISMINIGAMEINPROGRESS
 };
+#ifdef FABLE_RETAIL_CTCTROPHY_PLAYSOUND_BODY_PASS26
+#include "engine/CThing.h"
+#include "engine/CTCSoundPlayer.h"
+extern unsigned long g_InvalidSoundHandle;
+// Original PlaySoundW0249ed50, native006ddcd0; names from original scoped locals.
+inline unsigned long CTCTrophy::PlaySoundW(const CCharString& sound) {
+ if(ParentThing->HasTC(TCI_SOUND_PLAYER)) {
+  CTCSoundPlayer* sound_player;
+  if(ParentThing->GetTC(TCI_SOUND_PLAYER,&sound_player)) {
+   unsigned long handle=sound_player->PlayAttachedCriteria(sound,true,false,false,-1);
+   return handle;
+  }
+ }
+ return g_InvalidSoundHandle;
+}
+#endif
 FABLE_STATIC_ASSERT_AT(77, offsetof(CTCTrophy, PDef) == 0x0c);
 FABLE_STATIC_ASSERT_AT(78, offsetof(CTCTrophy, PendingGainedWitnessSounds) == 0x2c);
 FABLE_STATIC_ASSERT_AT(79, offsetof(CTCTrophy, AvailableWitnesses) == 0x34);

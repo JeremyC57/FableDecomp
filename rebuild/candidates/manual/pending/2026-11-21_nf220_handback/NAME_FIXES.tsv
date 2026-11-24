@@ -1,0 +1,6 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00403750	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	Gate A: grades RELOCATION_MATCH as ReleaseData (speed TU); its 3 /Os callers call the sibling T's ReleaseData bodies in the same member sequence (0x0042F50B); FableWin has the name; no jmp thunk (part of the q12226 family, not applied)	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ (self Leaf, 0x00418B7A)
+0x004194B5	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5-byte jmp 0x00419108; landed caller 0x0041AFA0 binds it so (q12226 family, not applied)	_Forward (self Leaf), _ForwardTarget_00419108
+0x00429BF9	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	5-byte jmp 0x0042918C (q12226 family, not applied)	_GFGetPreMainMemoryUsed (self Leaf)
+0x0042F948	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	44-byte release + jmp thunk 0x0042FC0E; callers 0x0042DD28 / 0x0042F50B bind const CFontBank; FableWin name (q12226 family, not applied)	??1?$CCountedPointer@VCUnprovenPointee_0042f948@@@@QAE@XZ
+0x00429C53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	entry-4 census: Ego_r 5-byte ??1 + retail 5-byte jmp 0x004291DE; 5 landed rows bind ??1 at 0x004291DE instead (NOTES)	??1<CComponent> at 0x004291DE (reloc_bindings witness 0x00570332)

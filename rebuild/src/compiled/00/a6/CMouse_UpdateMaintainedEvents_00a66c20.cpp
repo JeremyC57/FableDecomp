@@ -1,5 +1,5 @@
 // CMouse::UpdateMaintainedEvents() -- re-issue every maintained (held) mouse-button event with the drag movement since the press and the current time
-// Leaf: UpdateMaintainedEvents
+// Leaf: ?UpdateMaintainedEvents@CMouse@@IAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A66C20, length 688 bytes (incl. a 5-entry jump table + 27-entry byte index table), `ret`.
 // Callees: CMouse::GetPos (virtual slot 2, +8; CMouseDX's is `lea eax,[ecx+3414h]` @ 0x00AB5F00), CInputEvent::GetType @ 0x00A03B40
@@ -63,7 +63,9 @@ public:
     long                  NoStoredEvents;          // +0x3404
     long                  NoEventScansRunning;     // +0x3408
     SMaintainedEventNode* m_pMaintainedEvents;     // +0x340c list<CMaintainedEvent> head
+    protected:
     void UpdateMaintainedEvents();
+    public:
 };
 
 void CMouse::UpdateMaintainedEvents()

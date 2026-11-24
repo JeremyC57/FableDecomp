@@ -1,0 +1,3 @@
+0042ebb6	src	DIFF		rebuild/src/compiled/00/42/CNewFrontendGameComponent_Shutdown_0042ebb6.cpp
+0042ebb6	test	DIFF		rebuild/tests/00/42/CNewFrontendGameComponent_Shutdown_0042ebb6_test.cpp
+rows checked 57022 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/land231/equiv.tsv

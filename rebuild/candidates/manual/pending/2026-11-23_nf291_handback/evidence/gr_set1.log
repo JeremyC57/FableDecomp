@@ -1,0 +1,4 @@
+H 00896a30 CGameScriptInterface::SetQuestCardObjective RELOCATION_MATCH flags= [] leaf=
+H 00433670 NUISystem::CUIDef::Alloc RELOCATION_MATCH flags= [] leaf=
+H 007022e0 CTCShotDefinitionBase::CanBeHitByMeleeStrike MATCH flags= [] leaf=
+GR_DONE

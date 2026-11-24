@@ -1,3 +1,4 @@
+// Leaf: ?DestroyDevice@CDisplayManager@@AAEXXZ
 // CDisplayManager::DestroyDevice() -- release the back-buffer and depth-buffer surfaces, then the Direct3D device
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BE390, length 34 bytes.
 // Callees: CSurface::Uninitialise() @ 0x009F2E20 on BackBufferSurface (+0x2c) and DepthBufferSurface (+0x3c), IDirect3DDevice9
@@ -20,7 +21,9 @@ class CDisplayManager { public:
     CSurface          DepthBufferSurface;      // +0x3c
     unsigned char     _pad2[0xc];              // +0x4c BackBufferCopyTexture, D3D
     IDirect3DDevice9* D3DDevice;               // +0x58
+    private:
     void DestroyDevice();
+    public:
 };
 
 void CDisplayManager::DestroyDevice()

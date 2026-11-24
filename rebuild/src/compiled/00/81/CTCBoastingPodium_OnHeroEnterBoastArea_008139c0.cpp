@@ -90,9 +90,9 @@ private: public:
 };
 
 class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& button1, const CWideString& button2,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& button1, const CWideString& button2,
                  const CWideString& button3, unsigned long colour, float time, bool a, bool b);   // 0x00492F69
-    void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+    void SetText(const CFontBank& font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1 (NF313: the PDB parameter type, both PDBs)
 };
 class CPlayerGui { public:
     unsigned char     _pad00[0x18];
@@ -142,8 +142,8 @@ void CTCBoastingPodium::OnHeroEnterBoastArea(long boastID, bool canAfford, CThin
             NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
             CWideString goldText = bank->GetPTextEntry(entry, true)->GetText();
             goldText += L": " + GFIntToWideString(boast->Cost);
-            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, boast->Text, goldText, L"", L"", 0, 2.5f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, boast->Text, goldText, L"", L"", 0, 2.5f, false, true);
         }
     } else
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, "You do not have enough money to make this boast!", 0, 2.5f, false, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, "You do not have enough money to make this boast!", 0, 2.5f, false, true);
 }

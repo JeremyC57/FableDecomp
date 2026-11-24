@@ -1,3 +1,4 @@
+// Leaf: ?ReadNextString@CWStringParser@@AAE_NPAVCWParsedItem@@@Z
 // CWStringParser::ReadNextString(CWParsedItem*) -- read an identifier-like run (digits, letters, '_') as a string item
 // Retail: Fable.exe @ 0x00A0CE90, 113 bytes (+int3). PDB ?ReadNextString@CWStringParser@@AAE_NPAVCWParsedItem@@@Z (private).
 // CWStringParser (16 bytes, PDB): +0x04 String, +0x08 StringPos, +0x0C Line. CWParsedItem (12): +0 Type, +4 value, +8 String.
@@ -29,7 +30,9 @@ struct CWStringParser {
     unsigned long  Line;       // +0x0C
     bool ReadAsStringUntilNonWhitespace(CWParsedItem* item);
     bool ReadAsStringUntilWhitespace(CWParsedItem* item);
+    private:
     bool ReadNextString(CWParsedItem* item);
+    public:
 };
 
 bool CWStringParser::ReadNextString(CWParsedItem* item)

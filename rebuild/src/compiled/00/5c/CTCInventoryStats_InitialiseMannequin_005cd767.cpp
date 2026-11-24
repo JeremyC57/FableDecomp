@@ -38,7 +38,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {           // vtable 0x0122FFDC
     virtual CAnimFilterBase* Clone() const;
 };
 class CAnimationSet { public:
-    CAnimationEntry* GetAnimation(const CCharString& name, long n, const CAnimFilterBase& filter) const;   // 0x005DC340
+    const CAnimationEntry& GetAnim(const CCharString& name, long n, const CAnimFilterBase& filter) const;   // 0x005DC340 ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z (Ego_r / FableWin)
 };
 class CDefPointeeBase { public:
     virtual void v000();
@@ -177,8 +177,8 @@ void CTCInventoryStats::InitialiseMannequin()
     Mannequin->GetInterface(&complex, 0x5a);
     CDefPointer<CAppearanceDef> appearance;
     CDefPointer<CDefClassBase>(Mannequin->PBaseDef)->GetSubDef(&appearance);
-    CAnimationEntry* entry = appearance->Animation.GetAnimation("DEFAULT", 0, CAnimFilterNoGroup());
-    CAnimInit init(6, 0, entry->AnimIndex, 1, true, entry->GetAnimateThingFlags(), 100);
+    const CAnimationEntry& entry = appearance->Animation.GetAnim("DEFAULT", 0, CAnimFilterNoGroup());
+    CAnimInit init(6, 0, entry.AnimIndex, 1, true, entry.GetAnimateThingFlags(), 100);
     complex->GetAnimation().SetMainAnim(init, 1, 0);
     CTCHeroAttachableAppearanceModifiers* modifiers;
     if (Mannequin->GetInterface(&modifiers, 0x5e))

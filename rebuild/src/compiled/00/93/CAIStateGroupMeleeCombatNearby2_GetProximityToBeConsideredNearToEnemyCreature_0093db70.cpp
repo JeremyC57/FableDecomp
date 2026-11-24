@@ -1,9 +1,10 @@
+// Leaf: ?GetProximityToBeConsideredNearToEnemyCreature@CAIStateGroup_MeleeCombatNearby2@@ABEMXZ
 // CAIStateGroup_MeleeCombatNearby2::GetProximityToBeConsideredNearToEnemyCreature() -- the distance at which
 // the enemy counts as "near": the combat manager's proximity when the creature's combat-wheel sequence position
 // is valid, otherwise twice the creature's def radius scaled by 5/6, plus one metre.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093DB70, length 86 bytes (+ int3 padding).
-// Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (twice), CCombatManager::CCombatWheel_ValidateSequencePosition
-// (CThingCreatureBase*) @ 0x006E9700 (bool) and Combat_ProximityCalculation(CThingCreatureBase*) @ 0x006E9680
+// Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (twice), CCombatManager::IsCreatureOnOuterRing
+// (const CThingCreatureBase&) @ 0x006E9700 (bool) and GetCombatWheelRadiusForAttacker(const CThingCreatureBase&) @ 0x006E9680
 // (float in st0) on the world's combat manager at +0x4c. Pool constants: 0x012925CC = 0.8333333f (5/6),
 // 0x0122DED8 = 1.0f.
 // Shape: both branches read the creature into a named local BEFORE their world call (edi) and reach the combat
@@ -23,8 +24,8 @@ class CThingCreatureBase { public:
 };
 
 class CCombatManager { public:
-    bool CCombatWheel_ValidateSequencePosition(CThingCreatureBase* creature);   // 0x006E9700
-    float Combat_ProximityCalculation(CThingCreatureBase* creature);            // 0x006E9680
+    bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;               // 0x006E9700 (NF306: Ego_r + FableWin QBE; was CCombatWheel_ValidateSequencePosition(CThingCreatureBase*))
+    float GetCombatWheelRadiusForAttacker(const CThingCreatureBase& attacker) const;   // 0x006E9680 (NF306: Ego_r + FableWin QBE; was Combat_ProximityCalculation(CThingCreatureBase*))
 };
 
 class CWorld { public:
@@ -50,15 +51,17 @@ public:
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
     unsigned char PEnemy[8];                // +0x14 CIntelligentPointer<CThingCreatureBase>
     bool Archer;                            // +0x1c
-    float GetProximityToBeConsideredNearToEnemyCreature();
+    private:
+    float GetProximityToBeConsideredNearToEnemyCreature() const;
+    public:
 };
 
-float CAIStateGroup_MeleeCombatNearby2::GetProximityToBeConsideredNearToEnemyCreature()
+float CAIStateGroup_MeleeCombatNearby2::GetProximityToBeConsideredNearToEnemyCreature() const
 {
     CThingCreatureBase* creature = PBrain->Creature;
-    if (GetWorld().GetPCombatManager()->CCombatWheel_ValidateSequencePosition(creature)) {
+    if (GetWorld().GetPCombatManager()->IsCreatureOnOuterRing(*creature)) {
         CThingCreatureBase* combatant = PBrain->Creature;
-        return GetWorld().GetPCombatManager()->Combat_ProximityCalculation(combatant);
+        return GetWorld().GetPCombatManager()->GetCombatWheelRadiusForAttacker(*combatant);
     }
     float radius = PBrain->Creature->m_pDef->m_radius;
     return (radius + radius) * 0.8333333f + 1.0f;

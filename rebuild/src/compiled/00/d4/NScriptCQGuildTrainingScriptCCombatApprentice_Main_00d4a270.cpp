@@ -68,10 +68,12 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 extern CDefPointer<const CScriptDef> pGlobalScriptDef;   // 0x0143E90C
 void FABLE_FASTCALL RunCutsceneMacro(const CCharString&, std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>&, std::map<CCharString,bool>*, std::map<CCharString,CCharString>*, bool, bool);   // 0x00CBFB7D
 inline CScriptThing::~CScriptThing() { }
-FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
 inline bool CScriptThing::MsgIsHitByWithProjectileWeapon(const CCharString& attacker, float& damage) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitByWithProjectileWeapon(attacker, damage); }
-inline bool CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBySpecialAbilityFrom(ability, attacker); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AAD20 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline bool CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& attacker) const { const CScriptThing* imp = PImp.Data; if (!imp) return false; return imp->MsgIsHitBySpecialAbilityFrom(ability, attacker); }
 inline void CScriptThing::SetFriendsWithEverythingFlag(bool on) { if (PImp.Data) PImp.Data->SetFriendsWithEverythingFlag(on); }
 inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }

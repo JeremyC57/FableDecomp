@@ -91,7 +91,7 @@ public:
     void*               __vftable;
     unsigned char       _pad04[4];
     CMainGameComponent* Component;                      // +0x08
-    bool SaveGameStateInternal(const CWideString& path, bool flag);   // 0x0049F4C0
+    protected: bool SaveGameStateInternal(const CWideString& path, bool flag); public:   // 0x0049F4C0
 protected:
     bool SaveHeroStateInternal(const CWideString& name, bool flag);   // 0x004A00E0
 public:

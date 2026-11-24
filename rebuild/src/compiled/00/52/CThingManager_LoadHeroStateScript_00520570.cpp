@@ -5,7 +5,7 @@
 // inclusive form, result kept; both catalogued "ReadAsStringUntilString"), CStringParser::CStringParser(const
 // CCharString&, callback, const CCharString&, long) @ 0x00404720, CStringParser::SkipWhitespace @ 0x009B9C60,
 // CPersistContext text constructor @ 0x009BADD0, CThingManager::LoadSingleThing(CPersistContext&, long) @ 0x0051FD80,
-// and the inlined ~CStringParser (~list @ 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass @ 0x0099A2E0).
+// and the inlined ~CStringParser (~_List_base @ 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass @ 0x0099A2E0).
 // Strings: 0x01245A88 "NewThing", 0x01245A78 "END_THING_LEVEL", 0x0122D70E "".
 // Shape: the CStringParser / CPersistContext models of the landed CScriptBase::DoScriptDataPersist 0x00CB7CB0 (retail
 // parser 0x28 bytes, list 4 bytes; the context has a trivial destructor). The engine header CStringParser.h is the
@@ -19,14 +19,11 @@ class CCharString { public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {                  // retail std::list<CStringParserCommentBoundaries>: sentinel only
-public:
-    void* m_pHead;
-    ~list();                   // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08

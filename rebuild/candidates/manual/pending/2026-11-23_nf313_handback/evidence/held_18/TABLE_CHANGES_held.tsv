@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z	0097e330	00967b40	HELD with the entry-18 unit only (owner 0x0097E330 + 0x00967930 / 0x00967B40 / 0x00968BC0 + NF310-locked 0x009689C0); exe callers: 22 sites, landed 0x00944DB0 (own CAIStateGroupBaseI line) / 0x00945060 + 0x009692C0 (IAE via engine/CAIStateGroupBase.h) / the four QAE binders; 0 absolute references

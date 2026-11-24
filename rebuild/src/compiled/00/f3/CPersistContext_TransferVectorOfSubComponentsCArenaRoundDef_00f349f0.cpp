@@ -88,7 +88,10 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;           // +0x24
     CDataOutputStream*      PSaveStream;           // +0x28
     protected: void CheckCRC(const char* name); public:              // 0x00404500
-    void TransferVectorOfSubComponentsLoadText(const char* name, CPersistContext_TransferableVectorOfSubComponentsGenericType& item);   // 0x009BC120
+    protected:
+    void TransferVectorOfSubComponentsLoadText(const char* name, CPersistContext_TransferableVectorOfSubComponentsGenericType& item);
+    public:
+   // 0x009BC120
     template <class T> void TransferVectorOfSubComponents(const char* name, vector<T>& value);
 };
 

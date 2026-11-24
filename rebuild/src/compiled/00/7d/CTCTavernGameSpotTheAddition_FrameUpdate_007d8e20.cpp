@@ -48,7 +48,7 @@ namespace NGraphicAppearance {
 enum EAppearanceMeshEffectPriority { };
 class CTCGraphicAppearance { public:
     void SetAsHighlighted(float, float, const CRGBColour&, bool, bool, EAppearanceMeshEffectPriority, void*);   // 0x004C04C0
-    void ClearMeshEffect_004bffc0(void* key);                                                                  // 0x004BFFC0
+    void ClearHighlighted(void* key);                                                                  // 0x004BFFC0; NF296: PDB name, was ClearMeshEffect_004bffc0
 };
 }
 
@@ -131,7 +131,10 @@ private:
     CThingObject* FindTarget(float range);        // 0x007D7C40 (Ego_r + FableWin ?FindTarget@CTCTavernGameSpotTheAddition@@AAEPAVCThingObject@@M@Z)
 public:
     void UpdatePointerScale();                    // 0x007D8C20
-    void PositionCover(float amount);             // 0x007D7F10
+    private:
+    void PositionCover(float amount);
+    public:
+             // 0x007D7F10
     void UpdateHighlightedObject();               // 0x007D8290
     void KillThing(CThing* thing);                // 0x005E9A60 (CTCTavernGame)
 };
@@ -150,7 +153,7 @@ void CTCTavernGameSpotTheAddition::FrameUpdate()
             for (unsigned long i = 0; i < KnickKnacks.size(); ++i) {
                 NGraphicAppearance::CTCGraphicAppearance* appearance;
                 ((CThing*)KnickKnacks[i].Thing)->GetTC(TCI_GRAPHIC_APPEARANCE_NEW, &appearance);
-                appearance->ClearMeshEffect_004bffc0(this);
+                appearance->ClearHighlighted(this);
             }
             if (Selected < KnickKnacks.size() && Selected >= 0 && KnickKnacks[Selected].Thing) {
                 NGraphicAppearance::CTCGraphicAppearance* appearance;

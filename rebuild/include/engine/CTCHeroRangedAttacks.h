@@ -31,8 +31,16 @@ public:
  bool IsAimingRangedWeapon() const;
  bool IsLoadingRangedWeapon() const;
  bool IsInProcessOfFiringRangedWeapon() const;
+#ifdef FABLE_RETAIL_PROJECTILE_PRESSURE_PASS28
+ bool IsProjectileTargetingZLock() const { return GetProjectileTargetingZLockPressure() > 0.0f; }
+#else
  bool IsProjectileTargetingZLock() const;
+#endif
+#ifdef FABLE_RETAIL_PROJECTILE_PRESSURE_PASS28
+ float GetProjectileTargetingZLockPressure() const { return ProjectileWeaponZLockPressure; }
+#else
  float GetProjectileTargetingZLockPressure() const;
+#endif
  bool IsUsingProjectileTargetingAnalogueZoom() const;
  float GetProjectileTargetingZoomParameter() const;
  float GetProjectileWeaponFirstPersonTargetingModeZoomFOV() const;
@@ -91,8 +99,17 @@ FABLE_STATIC_ASSERT_AT(74, sizeof(CTCHeroRangedAttacks)==76);
 class CThingCreatureBase;
 class CHeroCombatDef;
 class CTCHeroRangedAttacks : public CTCBase {
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_TEST_CTORS_PASS27
+public:
+    CTCHeroRangedAttacks(CThing&);
+private:
+#endif
+
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_RANGED_ATTACKS; }
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_WEAPONABILITIES_PASS27
+    bool IsInProcessOfFiringRangedWeapon() const { return FireCycleInProgress; }
+#endif
     float GetPullBackAmount() const;                            // 0x00789A70
     float GetShotAccuracyFraction() const;                      // 0x00789A80
 #ifdef FABLE_RETAIL_CTCHERORANGEDATTACKS_PROJECTILEMODE

@@ -1,0 +1,52 @@
+006648d0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006648d0   RELOCATION_MATCH PASS   UnsheatheWeapon
+006649c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+006649c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006649c0   RELOCATION_MATCH PASS   UnsheatheMeleeWeapon
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CCombatTypeDef (engine/CCombatTypeDef.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00664a50   WARN RELOC_NAME: ?GetDefinitionManager@CThing@@QBEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+00664a50   RELOCATION_MATCH PASS   UnsheatheDefaultWeapon
+00664a10   RELOCATION_MATCH PASS   UnsheatheRangedWeapon
+00890d80   RELOCATION_MATCH PASS   EntityUnsheatheRangedWeapon
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UnsheatheWeapons (engine/CCreatureAction_UnsheatheWeapons.h)
+008b7ba0   WARN RELOC_NAME: ?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ -> 0073a840 labelled 'CTCCreatureModeManager::RestartCurrentMode'
+008b7ba0   RELOCATION_MATCH PASS   PerformAction
+00b260b0   WARN STANDIN_LEAF ??0EngineNative@@QAE@XZ (catalog CEngine::CEngine; names another function)
+00b260b0   RELOCATION_MATCH PASS   CEngine
+00b261d0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00b261d0   WARN SHARED_HEADER_AVAILABLE C2DExtentsF (engine/C2DExtentsF.h)
+00b261d0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00b261d0   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+00b261d0   WARN SHARED_HEADER_AVAILABLE CEngineVideoOptions (engine/CEngineVideoOptions.h)
+00b261d0   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00b261d0   WARN SHARED_HEADER_AVAILABLE CIEngine (engine/CIEngine.h)
+00b261d0   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+00b261d0   WARN SHARED_HEADER_AVAILABLE CSimpleMemoryPool (engine/CSimpleMemoryPool.h)
+00b261d0   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b261d0   RELOCATION_MATCH PASS   ~CEngine
+00b2ab10   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b2ab10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+006a1620   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+006a1620   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006a1620   RELOCATION_MATCH PASS   IsThingCarryingRangedWeapon

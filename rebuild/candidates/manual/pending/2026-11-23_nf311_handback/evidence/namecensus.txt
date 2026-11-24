@@ -1,0 +1,10 @@
+## RemoveEmoteIcon 3
+   src/compiled/00/6d/CTCFollowed_RemoveEmoteIcon_006d5050.cpp:66: void CTCFollowed::RemoveEmoteIcon(CThing& follower)
+   tests/00/6d/CTCFollowed_RemoveFollower_006d5180_test.cpp:113: void CTCFollowed::RemoveEmoteIcon(CThing&) { ++g_icons; }
+   tests/00/6d/CTCFollowed_RemoveEmoteIcon_006d5050_test.cpp:21: void RemoveEmoteIcon(CThing& follower)
+## SetPushableByHero 5
+   src/compiled/00/97/CAIStateGroupBase_SetPushableByHero_0097e330.cpp:56: void CAIStateGroupBase::SetPushableByHero(bool pushable)
+   tests/00/94/CAIStateGroupWorkHammerAnvil_OnReplace_00944db0_test.cpp:144: void CAIStateGroupBaseI::SetPushableByHero(bool pushable) { ++g_pushables; g_lastPushable = pushable; }
+   tests/00/97/CAIStateGroupBase_SetPushableByHero_0097e330_test.cpp:21: void CAIStateGroupBase::SetPushableByHero(bool pushable) { CTCBase* component; if (PBrain->Creature->GetInterface(0xaa, 
+   tests/00/96/CAIStateGroupTavernServer_PickUpJug_00967930_test.cpp:137: void CAIStateGroupBase::SetPushableByHero(bool pushable) { g_push[g_npush++ & 3] = pushable; }
+   tests/00/96/CAIStateGroupTavernKeeper_ReceivePayment_009692c0_test.cpp:10: void SetPushableByHero(bool b) { pushable = b; }

@@ -26,7 +26,7 @@ public:
     CArray<CMapInfo> Maps;                             // +0x20
     unsigned char    _pad2c[0xac - 0x2c];
     unsigned long    CurrentMapUIDCount;               // +0xAC (PDB +0xCC)
-    unsigned long AllocateMapUID(long map);
+protected: unsigned long AllocateMapUID(long map); public:   // Ego_r + FableWin ?AllocateMapUID@CWorldMap@@IAEKJ@Z (protected)
 };
 unsigned long CWorldMap::AllocateMapUID(long map)
 {

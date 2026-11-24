@@ -1,7 +1,6 @@
-// Leaf: ?CanMoveResource@CHandleBasedMemoryPool_Methods@@QAE_NHH@Z
-#include "engine/CHandleBasedMemoryPool.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CHandleBasedMemoryPool_Methods : CHandleBasedMemoryPool {
-    bool CanMoveResource(int x0, int x1);
-};
-bool CHandleBasedMemoryPool_Methods::CanMoveResource(int x0, int x1) { return true; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?CanMoveResource@CHandleBasedMemoryPool@@MAE_NPAXJ@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?CanMoveResource@CHandleBasedMemoryPool@@MAE_NPAXJ@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CHandleBasedMemoryPool.h under FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL with the PDB parameter / return types (was ?CanMoveResource@CHandleBasedMemoryPool_Methods@@QAE_NHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#include "engine/CHandleBasedMemoryPool.h"
+bool CHandleBasedMemoryPool::CanMoveResource(void * x0, long x1) { return true; }

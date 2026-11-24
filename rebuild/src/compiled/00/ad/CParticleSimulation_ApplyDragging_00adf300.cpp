@@ -1,5 +1,5 @@
 // CParticleSimulation::ApplyDragging(const CParticleContext& context) -- when dragging is enabled, take the context's 3x4 transform as a 4x4 matrix, blend it towards the reference matrix by (1 - DraggingStrength) and move the current and the last particle positions with it
-// Leaf: ApplyDragging
+// Leaf: ?ApplyDragging@CParticleSimulation@@AAEXABVCParticleContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADF300, 256 bytes, `ret 4`. PDB: ?ApplyDragging@CParticleSimulation@@AAEXABVCParticleContext@@@Z.
 //   Called from 0x00AE2CC7 and 0x00AE2D37.
 // Callees: CParticleContext virtual slot 3 (+0x0C, fills a CMatrix3x4; descriptive name), CMatrix4x4::AlignedSetInterpolate
@@ -59,7 +59,9 @@ public:
     bool                        DraggingEnable;         // +0x3c
     bool                        DraggingRotational;     // +0x3d
     float                       DraggingStrength;       // +0x40
+    private:
     void ApplyDragging(const CParticleContext& context);
+    public:
 };
 
 void CParticleSimulation::ApplyDragging(const CParticleContext& context)

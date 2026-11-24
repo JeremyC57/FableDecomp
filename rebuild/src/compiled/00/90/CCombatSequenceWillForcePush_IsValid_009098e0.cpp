@@ -1,5 +1,5 @@
 // CCombatSequence_WillForcePush::IsValid() -- valid unless the owner's will-power component (interface 0xCE) is inactive, or, for a non-enemy hero, the hero stands within 8 units
-// Leaf: IsValid
+// Leaf: ?IsValid@CCombatSequence_WillForcePush@@UBE_NXZ
 // NF167 (2026-11-20, q4949 / q4988): callee 0x0076D2F0 respelt from the free stand-in AreThingsEnemies(CThing*, CThing*) to the PDB static
 //   ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (Ego_r 0x0077B430 / FableWin 0x02606310) through the shared engine/CTCEnemy.h (the call
 //   dereferences both thing pointers; same fastcall registers).
@@ -77,10 +77,10 @@ class CCombatSequenceBase { public:
 };
 
 struct CCombatSequence_WillForcePush : CCombatSequenceBase {
-    virtual bool IsValid();
+    virtual bool IsValid() const;
 };
 
-bool CCombatSequence_WillForcePush::IsValid()
+bool CCombatSequence_WillForcePush::IsValid() const
 {
     const CTCAICreatureWillPowerIndicator* willPower;
     if (Creature->PeekTC(TCI_AICREATURE_WILL_POWER_INDICATOR, &willPower)) {

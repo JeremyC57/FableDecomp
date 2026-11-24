@@ -1,0 +1,7 @@
+# 0062eac0: defined / undefined external symbols, HEAD (<) v NF259 (>)
+1,2c1,2
+< DEF _CCombatActionBase_GetIsToFaceTargetCone
+< UND ?g_value_01259d18@@3MA
+---
+> DEF ?GetIsToFaceTargetCone@CCombatActionBase@@UBEMXZ
+> DEF __real@3de38e39

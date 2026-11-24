@@ -9,7 +9,7 @@
 // Shape: the inlined CMemoryDataInputStream::Read of the landed 0x007AD7F0 (64-bit position range check, chunk
 // memcpy fast path, overflow reader) into a float local homed in the dead stream-argument slot, then one store
 // of the local to SqRadius on every path.
-// Leaf: TransferBinaryIn@CReactionMatch_Sphere
+// Leaf: ?TransferBinaryIn@CReactionMatch_Sphere@@UAEXAAVCMemoryDataInputStream@@@Z
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -50,15 +50,15 @@ class COpinionSet { public:
 };
 
 class CReactionMatch { public:
-    void* __vftable;                                    // +0x00
+    // +0x00: the vptr (NF311: TransferBinaryIn is virtual, Ego_r.pdb + FableWin.pdb UAE)
     long  ReactionType;                                 // +0x04 EOpinionReactionType
-    void TransferBinaryIn(CMemoryDataInputStream& stream);  // 0x006FEFB0
+    virtual void TransferBinaryIn(CMemoryDataInputStream& stream);  // 0x006FEFB0
 };
 
 struct CReactionMatch_Sphere : CReactionMatch {
     COpinionSet Centre;                                 // +0x08
     float       SqRadius;                               // +0x14
-    void TransferBinaryIn(CMemoryDataInputStream& stream);
+    virtual void TransferBinaryIn(CMemoryDataInputStream& stream);
 };
 
 void CReactionMatch_Sphere::TransferBinaryIn(CMemoryDataInputStream& stream)

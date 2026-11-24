@@ -1,0 +1,24 @@
+addr	class	includes_header	declares_dtor_locally	flags	leaf	source
+006e2500	owner	no	yes	-	??1?$CParticleUpdateParameters@KK@NParticleEngine@@UAE@XZ	00/6e/NParticleEngineCParticleUpdateParametersunsignedlongunsignedlong_CParticleUpdateParameters_006e2500.cpp
+006e2550	no-op	no	no	-		00/6e/NParticleEngineCParticleUpdateParametersunsignedlongunsignedlong_scalardeletingdestructor_006e2550.cpp
+006e26c0	no-op	no	yes	-	??_GCParticleCreationParameters@CTCDParticleEmitter@@QAEPAXI@Z	00/6e/CTCDParticleEmitterCParticleCreationParameters_scalardeletingdestructor_006e26c0.cpp
+006e26f0	no-op	no	no	-		00/6e/CTCMapwho_OnDie_006e26f0.cpp
+00767da0	no-op	no (local model; detection false positive)	yes	-	?UpdateParticleAttachment@CTCObjectAugmentations@@AAEXV?$CIntelligentPointer@VCThing@@@@ABVCCharString@@1@Z	00/76/CTCObjectAugmentations_UpdateParticleAttachment_00767da0.cpp
+007a1380	live	yes	no	-	?Activate@CLightningBeam@CTCWillLightning@@QAEXXZ	00/7a/CTCWillLightningCLightningBeam_Activate_007a1380.cpp
+007a1b20	live	yes	no	-	?FrameUpdate@CLightningBeam@CTCWillLightning@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@PAK@Z	00/7a/CTCWillLightningCLightningBeam_FrameUpdate_007a1b20.cpp
+007be3e0	live	yes	no	-	?InitAttachedEffects@CTCShotDefinitionForcePushBall@NThingShot@@MAEXXZ	00/7b/NThingShotCTCShotDefinitionForcePushBall_InitAttachedEffects_007be3e0.cpp
+007be4e0	live	yes	no	-	?InitAttachedEffects@CTCShotDefinitionDrainLife@NThingShot@@MAEXXZ	00/7b/NThingShotCTCShotDefinitionDrainLife_InitAttachedEffects_007be4e0.cpp
+007c2480	live	yes	no	-	UpdateEffects	00/7c/CTCShotDefinitionBase_UpdateEffects_007c2480.cpp
+007c25a0	live	yes	no	-		00/7c/CTCShotDefinitionBase_InitAttachedEffects_007c25a0.cpp
+007f2dc0	live	yes	no	-	?FrameUpdate@CTCLightningNode@@UAEXXZ	00/7f/CTCLightningNode_FrameUpdate_007f2dc0.cpp
+008548b0	live	yes	no	-	?CreateAttackEffect@CCreatureAction_SpiritAttack@@AAEXXZ	00/85/CCreatureActionSpiritAttack_CreateAttackEffect_008548b0.cpp
+00854b90	no-op	no	yes	-	?FrameUpdate@CCreatureAction_SpiritAttack@@EAEXXZ	00/85/CCreatureActionSpiritAttack_FrameUpdate_00854b90.cpp
+008e16a0	live	yes	no	-	?FrameUpdate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	00/8e/NCreatureModeCModeScreamerSuperAttack_FrameUpdate_008e16a0.cpp
+008e20f0	live	yes	no	-	?FrameUpdate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ	00/8e/NCreatureModeCModeGuildmasterPowerUpShield_FrameUpdate_008e20f0.cpp
+008e24f0	live	yes	no	-	?FrameUpdate@CModeGuildmasterPowerUpSpeed@NCreatureMode@@UAEXXZ	00/8e/NCreatureModeCModeGuildmasterPowerUpSpeed_FrameUpdate_008e24f0.cpp
+008f7950	live	yes	no	/Gr	?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	00/8f/NCombatActionHelpers_CreateDustEffectForCreature_008f7950.cpp
+008f7bd0	no-op	no	yes	/Gr	CreateFootEffectForCreature	00/8f/global_CreateFootEffectForCreature_008f7bd0.cpp
+008f7e70	live	yes	no	-	?CreateEffect@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@JABVC3DVector@@PBVCCharString@@@Z	00/8f/NCombatActionHelpers_CreateEffect_008f7e70.cpp
+008f7f50	live	yes	no	-	?CreateEffect@NCombatActionHelpers@@YIXABVCThingCreatureBase@@JABVC3DVector@@1@Z	00/8f/NCombatActionHelpers_CreateEffect_008f7f50.cpp
+00af10e0	no-op	no	yes	-	??1CParticleEmitter	00/af/NParticleEngineCParticleEmitter_CParticleEmitter_00af10e0.cpp
+00af5900	no-op	no	yes	-	??1CParticleSystem	00/af/NParticleEngineCParticleSystem_CParticleSystem_00af5900.cpp

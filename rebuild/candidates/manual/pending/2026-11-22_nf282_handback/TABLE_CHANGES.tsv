@@ -1,0 +1,112 @@
+action	symbol	target	witness	note
+delete	?Destroy_00403600@@YIXPAX@Z	00403600	004a98c0	all binders moved (sole binder 0x004a98c0 respelled by NF282)
+delete	?Destroy_00403630@@YIXPAX@Z	00403630	00403db0	all binders moved (sole binder 0x00403db0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCFileInstaller@@@@SIXPAX@Z	00403630	00403db0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00403650@@YIXPAX@Z	00403650	00403e40	all binders moved (sole binder 0x00403e40 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDataBank@NGameText@@@@SIXPAX@Z	00403650	00403e40	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_004132f0@@YIXPAX@Z	004132f0	00413520	all binders moved (sole binder 0x00413520 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCConsole@@@@SIXPAX@Z	004132f0	00413520	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00419086@@YIXPAX@Z	00419086	0041956c	all binders moved (sole binder 0x0041956c respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@SIXPAX@Z	00419086	0041956c	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_0041bd80@@YIXPAX@Z	0041bd80	005669c0	all binders moved (sole binder 0x005669c0 respelled by NF282)
+delete	?Destroy_004361e0@@YIXPAX@Z	004361e0	004366b0	all binders moved (sole binder 0x004366b0 respelled by NF282)
+delete	?Destroy_00443580@@YIXPAX@Z	00443580	004441a0	all binders moved (sole binder 0x004441a0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@SIXPAX@Z	00443580	004441a0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_004435c0@@YIXPAX@Z	004435c0	00444210	all binders moved (sole binder 0x00444210 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawScreenFade@NPlayerGui@@@@SIXPAX@Z	004435c0	00444210	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443600@@YIXPAX@Z	00443600	00444280	all binders moved (sole binder 0x00444280 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawMoney@NPlayerGui@@@@SIXPAX@Z	00443600	00444280	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443640@@YIXPAX@Z	00443640	004442f0	all binders moved (sole binder 0x004442f0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawRenown@NPlayerGui@@@@SIXPAX@Z	00443640	004442f0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443680@@YIXPAX@Z	00443680	00444360	all binders moved (sole binder 0x00444360 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawMorality@NPlayerGui@@@@SIXPAX@Z	00443680	00444360	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_004436c0@@YIXPAX@Z	004436c0	004443d0	all binders moved (sole binder 0x004443d0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawExperience@NPlayerGui@@@@SIXPAX@Z	004436c0	004443d0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443700@@YIXPAX@Z	00443700	00444440	all binders moved (sole binder 0x00444440 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawCrime@NPlayerGui@@@@SIXPAX@Z	00443700	00444440	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443740@@YIXPAX@Z	00443740	004444b0	all binders moved (sole binder 0x004444b0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawReceivedItems@NPlayerGui@@@@SIXPAX@Z	00443740	004444b0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443780@@YIXPAX@Z	00443780	00444520	all binders moved (sole binder 0x00444520 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawFishingGame@NPlayerGui@@@@SIXPAX@Z	00443780	00444520	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443840@@YIXPAX@Z	00443840	004446e0	all binders moved (sole binder 0x004446e0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawDamage@NPlayerGui@@@@SIXPAX@Z	00443840	004446e0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_004438f0@@YIXPAX@Z	004438f0	00444830	all binders moved (sole binder 0x00444830 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawTargetInfo@NPlayerGui@@@@SIXPAX@Z	004438f0	00444830	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443930@@YIXPAX@Z	00443930	004448a0	all binders moved (sole binder 0x004448a0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawHighlightingTargetingCursor@NPlayerGui@@@@SIXPAX@Z	00443930	004448a0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443a20@@YIXPAX@Z	00443a20	00444a60	all binders moved (sole binder 0x00444a60 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawBettingHUD@NPlayerGui@@@@SIXPAX@Z	00443a20	00444a60	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443a60@@YIXPAX@Z	00443a60	00444ad0	all binders moved (sole binder 0x00444ad0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawProjectileTargetingCentre@NPlayerGui@@@@SIXPAX@Z	00443a60	00444ad0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00443b60@@YIXPAX@Z	00443b60	00444d00	all binders moved (sole binder 0x00444d00 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCDrawNPCName@NPlayerGui@@@@SIXPAX@Z	00443b60	00444d00	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00444d90@@YIXPAX@Z	00444d90	00445190	all binders moved (sole binder 0x00445190 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCStatBar@NPlayerGui@@@@SIXPAX@Z	00444d90	00445190	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00444dd0@@YIXPAX@Z	00444dd0	00445200	all binders moved (sole binder 0x00445200 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCCrimeStatBar@NPlayerGui@@@@SIXPAX@Z	00444dd0	00445200	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_0049bc20@@YIXPAX@Z	0049bc20	0049bce0	all binders moved (sole binder 0x0049bce0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCGameJoystickManager@@@@SIXPAX@Z	0049bc20	0049bce0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_004a8220@@YIXPAX@Z	004a8220	004a9a10	all binders moved (sole binder 0x004a9a10 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCQuestManager@@@@SIXPAX@Z	004a8220	004a9a10	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_004a8260@@YIXPAX@Z	004a8260	004a9a80	all binders moved (sole binder 0x004a9a80 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCSkeletalMorphResourceManager@@@@SIXPAX@Z	004a8260	004a9a80	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_004adc40@@YIXPAX@Z	004adc40	004adf80	all binders moved (sole binder 0x004adf80 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCMessageEventManager@@@@SIXPAX@Z	004adc40	004adf80	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_0050bcc0@@YIXPAX@Z	0050bcc0	0050f2b0	all binders moved (sole binder 0x0050f2b0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCWADBank@@@@SIXPAX@Z	0050bcc0	0050f2b0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_0050c210@@YIXPAX@Z	0050c210	0050faa0	all binders moved (sole binder 0x0050faa0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCMap@@@@SIXPAX@Z	0050c210	0050faa0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_0050c2e0@@YIXPAX@Z	0050c2e0	0050fb90	all binders moved (sole binder 0x0050fb90 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCLevelLoader@@@@SIXPAX@Z	0050c2e0	0050fb90	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_0051ccd0@@YIXPAX@Z	0051ccd0	0051cea0	all binders moved (sole binder 0x0051cea0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCRegionConnectionGraph@@@@SIXPAX@Z	0051ccd0	0051cea0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_0065d258@@YIXPAX@Z	0065d258	0065e198	all binders moved (sole binder 0x0065e198 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCVillageTaskPatrol@@@@SIXPAX@Z	0065d258	0065e198	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_0065d2b1@@YIXPAX@Z	0065d2b1	0065e2e0	all binders moved (sole binder 0x0065e2e0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@SIXPAX@Z	0065d2b1	0065e2e0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00672aa0@@YIXPAX@Z	00672aa0	00673500	all binders moved (sole binder 0x00673500 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCCreatureStatsDef@@@@SIXPAX@Z	00672aa0	00673500	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00674e50@@YIXPAX@Z	00674e50	00675060	all binders moved (sole binder 0x00675060 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCWoundMorphs@@@@SIXPAX@Z	00674e50	00675060	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_0067f650@@YIXPAX@Z	0067f650	0067fc10	all binders moved (sole binder 0x0067fc10 respelled by NF282)
+delete	?Destroy_006fd400@@YIXPAX@Z	006fd400	006fd460	all binders moved (sole binder 0x006fd460 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCManager@NAnimationEvents@@@@SIXPAX@Z	006fd400	006fd460	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00718080@@YIXPAX@Z	00718080	00718940	all binders moved (sole binder 0x00718940 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCScriptConversation@NTCScriptedControl@@@@SIXPAX@Z	00718080	00718940	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00771b30@@YIXPAX@Z	00771b30	00771b60	all binders moved (sole binder 0x00771b60 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCOpinionSet@@@@SIXPAX@Z	00771b30	00771b60	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00786a20@@YIXPAX@Z	00786a20	00786bf0	all binders moved (sole binder 0x00786bf0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VC3DSkeletalMorph@@@@SIXPAX@Z	00786a20	00786bf0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_008aa7e0@@YIXPAX@Z	008aa7e0	008ab230	all binders moved (sole binder 0x008ab230 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@SIXPAX@Z	008aa7e0	008ab230	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_008aa7f0@@YIXPAX@Z	008aa7f0	008ab2b0	all binders moved (sole binder 0x008ab2b0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@SIXPAX@Z	008aa7f0	008ab2b0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00991e00@@YIXPAX@Z	00991e00	00992170	all binders moved (sole binder 0x00992170 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCResourceBank@@@@SIXPAX@Z	00991e00	00992170	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_009b0e90@@YIXPAX@Z	009b0e90	009b1f50	all binders moved (sole binder 0x009b1f50 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCSymbolMap@@@@SIXPAX@Z	009b0e90	009b1f50	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_009e2960@@YIXPAX@Z	009e2960	009e3090	all binders moved (sole binder 0x009e3090 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCFontDataBank@@@@SIXPAX@Z	009e2960	009e3090	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_009e2970@@YIXPAX@Z	009e2970	009e3100	all binders moved (sole binder 0x009e3100 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCStreamingFontDataBank@@@@SIXPAX@Z	009e2970	009e3100	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00a110d0@@YIXPAX@Z	00a110d0	00a31640	all binders moved (sole binder 0x00a31640 respelled by NF282)
+delete	?Destroy_00a16270@@YIXPAX@Z	00a16270	00a16640	all binders moved (sole binder 0x00a16640 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCNavQuadTree@@@@SIXPAX@Z	00a16270	00a16640	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00a282f0@@YIXPAX@Z	00a282f0	00a29c50	all binders moved (sole binder 0x00a29c50 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VC3DAnimation2@@@@SIXPAX@Z	00a282f0	00a29c50	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00a44130@@YIXPAX@Z	00a44130	00a44170	all binders moved (sole binder 0x00a44170 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCLipSyncSampleData@@@@SIXPAX@Z	00a44130	00a44170	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00a51180@@YIXPAX@Z	00a51180	00a52be0	all binders moved (sole binder 0x00a52be0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCSimpleMemoryPool@@@@SIXPAX@Z	00a51180	00a52be0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00a6acb0@@YIXPAX@Z	00a6acb0	00a6ae60	all binders moved (sole binder 0x00a6ae60 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCVolumeTexture@@@@SIXPAX@Z	00a6acb0	00a6ae60	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00a8cb70@@YIXPAX@Z	00a8cb70	00a8d400	all binders moved (sole binder 0x00a8d400 respelled by NF282)
+delete	?Destroy_00a99fe0@@YIXPAX@Z	00a99fe0	00a9a420	all binders moved (sole binder 0x00a9a420 respelled by NF282)
+delete	?Destroy_00a9cb20@@YIXPAX@Z	00a9cb20	00a9ced0	all binders moved (sole binder 0x00a9ced0 respelled by NF282)
+delete	?Destroy_00ac3810@@YIXPAX@Z	00ac3810	00ac38a0	all binders moved (sole binder 0x00ac38a0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VC3DMeshPartitionElement@@@@SIXPAX@Z	00ac3810	00ac38a0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00ac3fd0@@YIXPAX@Z	00ac3fd0	00ac3ff0	all binders moved (sole binder 0x00ac3ff0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCParticleProgram@@@@SIXPAX@Z	00ac3fd0	00ac3ff0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?Destroy_00ad5ed0@@YIXPAX@Z	00ad5ed0	00ad65a0	all binders moved (sole binder 0x00ad65a0 respelled by NF282)
+delete	?Destroy_00ae91c0@@YIXPAX@Z	00ae91c0	00ae93e0	all binders moved (sole binder 0x00ae93e0 respelled by NF282)
+add	?DeleteData@?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@SIXPAX@Z	00ae91c0	00ae93e0	PDB spelling had no table line (self Leaf only); witness = respelled binder

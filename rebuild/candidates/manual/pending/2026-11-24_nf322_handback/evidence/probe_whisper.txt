@@ -1,0 +1,30 @@
+== CAIStateGroup_WhisperPotionCombat vftable 0128D5EC
+slot   0 0090348F DIFF     ours=??_ECAIStateGroup_WhisperPotionCombat@@UAEPAXI@Z retail_label=??_GCAIStateGroup_WhisperPotionCombat@@UAEPAXI@Z
+slot   1 0096A8B0 SAME     ours=?Initialise@CAIStateGroup_WhisperPotionCombat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroup_WhisperPotionCombat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 0091D8C0 DIFF     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 009031DA SAME     ours=?GetStateGroupType@CAIStateGroup_WhisperPotionCombat@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_WhisperPotionCombat@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0096A730 SAME     ours=?Cleanup@CAIStateGroup_WhisperPotionCombat@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_WhisperPotionCombat@@UAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0091DD30 DIFF     ours=?IsRunnable@CAIStateGroupBase@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ
+slot  12 0096B100 SAME     ours=?Update@CAIStateGroup_WhisperPotionCombat@@UAEXXZ retail_label=?Update@CAIStateGroup_WhisperPotionCombat@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 008FE0EE SAME     ours=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  15 0096AAD0 SAME     ours=?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@MAE_NXZ retail_label=?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@MAE_NXZ
+slot  16 008FE0F2 SAME     ours=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  17 008FE0F3 SAME     ours=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  18 008FE0F4 SAME     ours=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  19 008FE0FB SAME     ours=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  20 009031D7 SAME     ours=?IsCombatStateGroup@CAIStateGroup_WhisperPotionCombat@@UBE_NXZ retail_label=?IsCombatStateGroup@CAIStateGroup_WhisperPotionCombat@@UBE_NXZ
+slot  21 008FE102 SAME     ours=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ retail_label=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ
+retail slots 22, emitted slots 22; SAME 19 DIFF 3 NOLABEL 0
+
+CAIStateGroup_HoverAttack COMPILE_FAIL rc=2 \-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF322\work\tree\engine\CAIStateGroup_HoverMovementBase.h(18) : error C2061: syntax error : identifier 'EAIActionRepeat'
+CAIStateGroup_HoverHornetQueenTakeDamage COMPILE_FAIL rc=2 \-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF322\work\tree\engine\CAIStateGroup_HoverMovementBase.h(18) : error C2061: syntax error : identifier 'EAIActionRepeat'
+CAIStateGroup_HoverAttackArea COMPILE_FAIL rc=2 \-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF322\work\tree\engine\CAIStateGroup_HoverMovementBase.h(18) : error C2061: syntax error : identifier 'EAIActionRepeat'
+CAIStateGroup_HoverAttackUnlessTargetIsFleeing COMPILE_FAIL rc=2 \-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF322\work\tree\engine\CAIStateGroup_HoverMovementBase.h(18) : error C2061: syntax error : identifier 'EAIActionRepeat'
+PROBE_DONE

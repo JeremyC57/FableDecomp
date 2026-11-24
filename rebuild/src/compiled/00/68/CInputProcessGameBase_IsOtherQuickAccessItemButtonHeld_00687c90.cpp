@@ -1,3 +1,4 @@
+// Leaf: ?IsOtherQuickAccessItemButtonHeld@CInputProcessGameBase@@IBE_NJ@Z
 // CInputProcessGameBase::IsOtherQuickAccessItemButtonHeld  @ 0x00687c90
 // bool __fastcall (CInputProcessGameBase* this, long param)
 
@@ -20,10 +21,12 @@ struct CInputProcessGameBase
     char pad1[0x24 - 0x1C];
     CGamePlayerInterface* PGamePlayerInterface;   // +0x24
 
-    bool IsOtherQuickAccessItemButtonHeld(long param);
+    protected:
+    bool IsOtherQuickAccessItemButtonHeld(long param) const;
+    public:
 };
 
-bool CInputProcessGameBase::IsOtherQuickAccessItemButtonHeld(long param)
+bool CInputProcessGameBase::IsOtherQuickAccessItemButtonHeld(long param) const
 {
     return PGamePlayerInterface->IsOtherQuickAccessItemButtonHeld(param, MyPlayer->GetJoystickDeviceNumber());
 }

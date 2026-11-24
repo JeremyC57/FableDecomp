@@ -1,0 +1,11 @@
+addr       parity           behav  name
+008fd3dc   MATCH            PASS   IsTimingCritical
+009be210   MATCH            PASS   CountReferences
+00a39c40   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a39c40   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+00a39c40   RELOCATION_MATCH PASS   GetPathname
+
+WINS: 3
+  008fd3dc MATCH CAIStateGroup_MinionGossip::?IsTimingCritical@CAIStateGroup_MinionGossip@@UBE_NXZ
+  009be210 MATCH CVertexShader::?CountReferences@CVertexShader@@EAEKXZ
+  00a39c40 RELOCATION_MATCH CWADFile::?GetPathname@CWADFile@@UBE?AVCWideString@@XZ

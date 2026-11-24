@@ -1,0 +1,8 @@
+##### 006d5050 renames: ?RemoveEmoteIcon@CTCFollowed@@QAEXAAVCThing@@@Z=?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 006d5180 renames: ?RemoveEmoteIcon@CTCFollowed@@QAEXAAVCThing@@@Z=?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=10
+tables H=2 N=2

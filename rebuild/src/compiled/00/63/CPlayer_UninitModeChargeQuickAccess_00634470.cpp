@@ -12,22 +12,32 @@
 //   ?UninitModeChargeQuickAccess@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z (Ego_r / FableWin) and, under
 //   FABLE_RETAIL_PLAYER_REMOVEMODE, ?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z (0x00634190). Was the derived stand-in CPlayer_Methods
 //   with a long-typed RemoveMode.
+// NF295 (2026-11-23): re-ported onto the landed siblings' shape (0x00633A60 / 0x00633880 UninitMode<X>): FABLE_RETAIL_PLAYER_INPUTPROCESSES
+//   gives the scoped_ptr members and FABLE_RETAIL_CAINPUTPROCESS_REMOVEFROMINTERFACE the Ego_r.pdb ?RemoveFromInterface@CAInputProcess@@QAEXXZ
+//   (0x00A0D2D0) on the per-process headers' bases; was the reinterpret_cast stand-in CAInputProcessCalls.
 #define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_PLAYER_REMOVEMODE
+#define FABLE_RETAIL_PLAYER_INPUTPROCESSES
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_SCOPED_PTR_RESET
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_REMOVEFROMINTERFACE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CPlayer.h"
 #include "engine/EPlayerMode.h"
-class CProcessedInput;
-
-struct CAInputProcessCalls {
-    void RemoveFromInterface();                       // 0x00A0D2D0 (non-virtual)
-};
+#include "engine/CInputProcessQuickAccessItems.h"
+#include "engine/CInputProcessControlCreatureRightStick.h"
+#include "engine/CInputProcessCameraLookAround.h"
+#include "engine/CInputProcessCycleSpecialCameraModes.h"
+#include "engine/CInputProcessDebugControls.h"
 
 void CPlayer::UninitModeChargeQuickAccess(EPlayerMode mode, CProcessedInput* input)
 {
-    reinterpret_cast<CAInputProcessCalls*>(this->InputProcessQuickAccessItems_ptr)->RemoveFromInterface();
-    reinterpret_cast<CAInputProcessCalls*>(this->InputProcessControlCreatureRightStick_ptr)->RemoveFromInterface();
-    reinterpret_cast<CAInputProcessCalls*>(this->InputProcessRightStickLookAround_ptr)->RemoveFromInterface();
-    reinterpret_cast<CAInputProcessCalls*>(this->InputProcessCycleSpecialCameraModes_ptr)->RemoveFromInterface();
-    reinterpret_cast<CAInputProcessCalls*>(this->InputProcessDebugControls_ptr)->RemoveFromInterface();
+    InputProcessQuickAccessItems->RemoveFromInterface();
+    InputProcessControlCreatureRightStick->RemoveFromInterface();
+    InputProcessRightStickLookAround->RemoveFromInterface();
+    InputProcessCycleSpecialCameraModes->RemoveFromInterface();
+    InputProcessDebugControls->RemoveFromInterface();
     RemoveMode(PLAYER_MODE_CHARGE_QUICK_ACCESS);
 }

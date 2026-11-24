@@ -1,4 +1,6 @@
+// Leaf: ?StartSneaking@CGameScriptInterface@@UBEXXZ
 // CGameScriptInterface::StartSneaking @ 008a1300
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -33,8 +35,9 @@ struct M14 { char d; };
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern void __fastcall FinalCall(void* p);           // ecx
 
-void __fastcall CGameScriptInterface_StartSneaking(CGameScriptInterface* self)
+void CGameScriptInterface::StartSneaking() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     CPlayer* a = (&((CPlayerManager*)((M14*)self->PlayerManager))->GetMainPlayer());
     Obj* o = a->GetPControlledCreature();
     if (!o) return;
@@ -52,3 +55,4 @@ void __fastcall CGameScriptInterface_StartSneaking(CGameScriptInterface* self)
     }
     FinalCall(((void*)r->second));
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_StartSneaking -> CGameScriptInterface::StartSneaking, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

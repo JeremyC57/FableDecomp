@@ -69,7 +69,7 @@ public:
     struct CHenchmanComment { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_BodyGuardScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00E5F1C0
     struct CHenchmanRegionEntranceComment { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_BodyGuardScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00E5F5C0
     struct CHenchmanRegionExitComment { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_BodyGuardScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00E5F800
-    struct CBodyGuardRespawn { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_BodyGuardScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00E5DFF0
+    struct CM_BodyGuardRespawn { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_BodyGuardScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00E5DFF0
     CGameScriptInterface* Game;                         // +0x40
     void*                 Data;                         // +0x44
     void HenchmanDeductWages();                         // 0x00E5D9A0
@@ -84,7 +84,7 @@ void CV_BodyGuardScript::Main()
     AddEntityScriptBinding(new CEntityScriptBinding<CV_BodyGuardScript>("HenchmanComment", this, &CHenchmanComment::Alloc, 0));
     AddEntityScriptBinding(new CEntityScriptBinding<CV_BodyGuardScript>("HenchmanRegionEntranceComment", this, &CHenchmanRegionEntranceComment::Alloc, 0));
     AddEntityScriptBinding(new CEntityScriptBinding<CV_BodyGuardScript>("HenchmanRegionExitComment", this, &CHenchmanRegionExitComment::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CV_BodyGuardScript>("M_BodyGuardRespawn", this, &CBodyGuardRespawn::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CV_BodyGuardScript>("M_BodyGuardRespawn", this, &CM_BodyGuardRespawn::Alloc, 0));
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();
     AddSpawnedFunction(new CSpawnedFunc<CV_BodyGuardScript>("HenchmanDeductWages", 0, this, &CV_BodyGuardScript::HenchmanDeductWages), CCharString(""));

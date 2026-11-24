@@ -156,7 +156,7 @@ class CBankFile { public:
     bool RetailMode;                                // +0x8c
     bool ReadOnly;                                  // +0x8d
     unsigned char _pad_0x8e[0xd6];
-    virtual void NotifyEntryAdded(unsigned long type, unsigned long index, const CArray<char>& data);   // 0x009CBC20
+    protected: virtual void NotifyEntryAdded(unsigned long type, unsigned long index, const CArray<char>& data); public:   // 0x009CBC20
     bool IsReadOnly() const { return ReadOnly; }
 };
 

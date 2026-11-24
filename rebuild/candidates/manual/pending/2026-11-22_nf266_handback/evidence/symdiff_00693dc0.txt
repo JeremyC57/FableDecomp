@@ -1,0 +1,51 @@
+# 00693dc0: defined/undefined external symbols, HEAD (<) v new (>)
+29,30c29,30
+< UND ?AllowsCombinationAnims@CCreatureActionBase@@UBE_NXZ
+< UND ?CanAnimationTransitionOut@CCreatureActionBase@@UBE_NXZ
+---
+> UND ?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ
+> UND ?CanAnimationTransitionOut@CCreatureActionBase@@MBE_NXZ
+33,35c33,35
+< UND ?FrameUpdate@CCreatureActionBase@@UAEXXZ
+< UND ?GetActionSpeedParameter@CCreatureActionBase@@UBEMXZ
+< UND ?GetActionStartRunningTimeSeconds@CCreatureActionBase@@UBEMXZ
+---
+> UND ?FrameUpdate@CCreatureActionBase@@MAEXXZ
+> UND ?GetActionSpeedParameter@CCreatureActionBase@@MBEMXZ
+> UND ?GetActionStartRunningTimeSeconds@CCreatureActionBase@@MBEMXZ
+41c41
+< UND ?GetFrameUpdateTime@CCreatureActionBase@@UBEMXZ
+---
+> UND ?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ
+46c46
+< UND ?InitialiseActionMovement@CCreatureActionBase@@UAEXXZ
+---
+> UND ?InitialiseActionMovement@CCreatureActionBase@@MAEXXZ
+62c62
+< UND ?IsMovementUsingPhysics@CCreatureActionBase@@UBE_NXZ
+---
+> UND ?IsMovementUsingPhysics@CCreatureActionBase@@MBE_NXZ
+80,81c80,81
+< UND ?IsUsingAnimationMovement@CCreatureActionBase@@UBE_NXZ
+< UND ?IsUsingForcedMovement@CCreatureActionBase@@UBE_NXZ
+---
+> UND ?IsUsingAnimationMovement@CCreatureActionBase@@MBE_NXZ
+> UND ?IsUsingForcedMovement@CCreatureActionBase@@MBE_NXZ
+83c83
+< UND ?OnAnimationLoaded@CCreatureActionBase@@UAEXXZ
+---
+> UND ?OnAnimationLoaded@CCreatureActionBase@@MAEXXZ
+87c87
+< UND ?OverrideFaceWithDefault@CCreatureActionBase@@UBE_NXZ
+---
+> UND ?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ
+93c93
+< UND ?UpdateActionMoveToPos@CCreatureActionBase@@UAEXXZ
+---
+> UND ?UpdateActionMoveToPos@CCreatureActionBase@@MAEXXZ
+96c96
+< UND ?WaitForMeshToLoad@CCreatureActionBase@@UBE_NXZ
+---
+> UND ?WaitForMeshToLoad@CCreatureActionBase@@MBE_NXZ
+# function COMDATs (name size hash relocs) HEAD v new:
+identical (15 COMDATs)

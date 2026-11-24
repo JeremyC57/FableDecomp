@@ -1,0 +1,6 @@
+# NF279 lessons
+- A QAE -> UAE destructor port that makes the TU emit a vtable also binds every virtual slot's PDB spelling: list the slot rows' self leaves first (vtmap); stand-in slot leaves must move in the same hand-back or each slot address gains a spelling (0x00BFD5D0 / 0x00BFD390 here, 0x00BFDDB0 at nf276).
+- A shared header whose class needs virtuals only for some users takes them as one add-only opt-in block after `public:` (restore `public:` after private overrides); if its asserts are already `_AT`-pinned, adding lines above them is name-neutral (pin_asserts: 0).
+- A class operator delete that retail inlines but a header should not define (it needs the renderer / manager headers) can be declared in the header opt-in and defined `inline` out of class in the destructor's TU: VC7.1 still inlines it into the TU's ??_G (38 bytes, pk EQ).
+- A fold row that includes a CHANGED destructor file is graded before landing by putting a copy of the new file at `<overlay>/../src/compiled/...`: the by-path include resolves through the overlay's include dir before the repo's.
+- A catalog constructor whose body stores another class's vtable constant is that class's constructor (0x00BFD420 stores 0x012A8334 = CEngineWaterBackgroundSubPatch): absrefs.py on a vtable address finds such mislabelled rows in one scan.

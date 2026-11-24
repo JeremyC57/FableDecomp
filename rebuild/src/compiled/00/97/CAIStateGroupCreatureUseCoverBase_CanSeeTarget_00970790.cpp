@@ -11,7 +11,7 @@
 // built as `C3DVector(p.X, p.Y, p.Z + 1.2f)` (Z first: value-ctor arguments right to left); the intersection call's
 // arguments are pushed before the by-value mesh-object temporary is made; the bool is kept across its dtor.
 // Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (PCoverThing +0x1f); PTarget +0x14 (8-byte pointer before it).
-// Leaf: CanSeeTarget@CAIStateGroup_CreatureUseCoverBase
+// Leaf: ?CanSeeTarget@CAIStateGroup_CreatureUseCoverBase@@IAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CThing;
 
@@ -29,7 +29,7 @@ class CMeshIntersectionData { public: unsigned char _body[0x1c]; };
 class CPhysicsMeshObject { public:
     unsigned char _body[0x40 - 4];
     virtual ~CPhysicsMeshObject();                         // 0x00A127D0
-    bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* data);   // 0x00A12450
+    bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;   // 0x00A12450
 };
 struct CTCPhysicsBase {                           // vtable view: slot 93 (+0x174)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -78,7 +78,9 @@ struct CAIStateGroup_CreatureUseCoverBase {
     bool HasJumpOutAnims;                          // +0x1d
     bool TimingCritical;                           // +0x1e
     CIntelligentPointer<CThing> PCoverThing;           // +0x1f
+    protected:
     bool CanSeeTarget();
+    public:
 };
 #pragma pack(pop)
 
@@ -92,7 +94,7 @@ bool CAIStateGroup_CreatureUseCoverBase::CanSeeTarget()
             C3DVector to(target.X, target.Y, target.Z + 1.2f);
             CTCPhysicsBase* physics = PCoverThing.Get()->GetPhysicsTC();
             CMeshIntersectionData data;
-            bool blocked = physics->GetPhysicsMeshObject().GetPointIntersectionFromTo(&from, &to, &data);
+            bool blocked = physics->GetPhysicsMeshObject().GetPointIntersectionFromTo(from, to, data);
             if (blocked)
                 return false;
         }

@@ -1,0 +1,20 @@
+--- orig/hdr/engine/CNavBlockedQuadTreeNode.h	2026-11-24 00:39:24.492018409 +0000
++++ hdr/engine/CNavBlockedQuadTreeNode.h	2026-11-24 00:44:49.723961955 +0000
+@@ -21,6 +21,17 @@
+     // CNavigatorManager::OutputWorld copies the static blocked node GetNextNeighbour hands back (`push node ; call 0x00A76900`).
+     CNavBlockedQuadTreeNode(const CNavBlockedQuadTreeNode&);                             // 0x00A76900
+ #endif
++#ifdef FABLE_RETAIL_CNAVBLOCKEDQUADTREENODE_RTTI_DECLS
++    // Opt-in (NF323, 2026-11-24, NF320 Q3): declarations only, no layout change. Each is the member the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the FableWin.pdb spelling (protected: `M`); each overrides the
++    // CANavQuadTreeNode virtual at the same slot (no new slot).
++    // 0x00A7D950 vtable 0x0129DD3C slot 12: ?MakeRegion@CNavBlockedQuadTreeNode@@MAE_NPBVCNavRegion@@AAV?$list@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@@Z
++    // 0x00A7D960 vtable 0x0129DD3C slot 13: ?AddNavigableNodeNeighbouringSwitchableNodeToRegion@CNavBlockedQuadTreeNode@@MAE_NPBVCNavRegion@@AAV?$list@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@@Z
++protected:
++    virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);                                   // 0x00A7D950
++    virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);   // 0x00A7D960
++public:
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(21, sizeof(CNavBlockedQuadTreeNode) == 0x10);
+ #else // flattened Ego_r layout (the landed default, unchanged)

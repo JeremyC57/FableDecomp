@@ -1,0 +1,2 @@
+##### 00820f80 renames: ??1CScriptedMapBrush@@QAE@XZ=??1CScriptedMapBrush@@UAE@XZ
+ALL_EQ sections=7 DEF=6 tables=-

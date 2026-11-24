@@ -1,0 +1,72 @@
+addr       parity           behav  name
+008ee790   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008ee790   WARN SHARED_HEADER_AVAILABLE CMaterialDef (engine/CMaterialDef.h)
+008ee790   WARN RELOC_ALIAS: __CItanh -> 00bfece2 is the import thunk 'MSVCR71.DLL::_CItanh'
+008ee790   RELOCATION_MATCH PASS   GetBlendedSwordHitEffect
+008ee720   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008ee720   WARN SHARED_HEADER_AVAILABLE CMaterialDef (engine/CMaterialDef.h)
+008ee720   WARN RELOC_NAME: ?GetRandomGenerator@CEngineRandomOwner@@QAEPAUCRandomGenerator@@XZ -> 0049d800 labelled 'CVertexBufferWin32::DoSizeof'
+008ee720   RELOCATION_MATCH PASS   GetRandomBerserkedSwordHitParticleEffect
+00548790   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00548790   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+00548790   WARN RELOC_NAME: ?IsUsingHeadPhones@CUserProfileManager@@QBE_NXZ -> 00548630 labelled 'CUserProfileManager::IsCameraResetting'
+00548790   WARN RELOC_NAME: ?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ -> 0048db35 labelled 'CUserProfileManager::IsCameraResetting'
+00548790   WARN RELOC_NAME: ?IsShowingBuddyNames@CUserProfileManager@@QBE_NXZ -> 00548650 labelled 'CUserProfileManager::IsCameraResetting'
+00548790   WARN RELOC_NAME: ?GetResolution@CUserProfileManager@@QBEKXZ -> 005486b0 labelled 'CEditControlCentre::PeekConnectedToTrackNode'
+00548790   WARN RELOC_NAME: ?GetRefreshRate@CUserProfileManager@@QBEKXZ -> 005486d0 labelled 'CEditControlCentre::PeekConnectedToTrackNode'
+00548790   WARN RELOC_NAME: ?GetAntialiasing@CUserProfileManager@@QBEKXZ -> 00548670 labelled 'CEditControlCentre::PeekConnectedToTrackNode'
+00548790   WARN RELOC_NAME: ?GetScreenAspectRatio@CUserProfileManager@@QBEKXZ -> 005486f0 labelled 'CEditControlCentre::PeekConnectedToTrackNode'
+00548790   WARN RELOC_NAME: ?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ -> 00548740 labelled 'IsCameraResetting'
+00548790   RELOCATION_MATCH PASS   GetValueFromProfile
+00548b50   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00548b50   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00548b50   WARN SHARED_HEADER_AVAILABLE CObserver (engine/CObserver.h)
+00548b50   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00548b50   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00548b50   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00548b50   WARN RELOC_NAME: ?IsUsingHeadPhones@CUserProfileManager@@QBE_NXZ -> 00548630 labelled 'CUserProfileManager::IsCameraResetting'
+00548b50   WARN RELOC_NAME: ?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ -> 0048db35 labelled 'CUserProfileManager::IsCameraResetting'
+00548b50   WARN RELOC_NAME: ?IsShowingBuddyNames@CUserProfileManager@@QBE_NXZ -> 00548650 labelled 'CUserProfileManager::IsCameraResetting'
+00548b50   WARN RELOC_NAME: ?GetResolution@CUserProfileManager@@QBEKXZ -> 005486b0 labelled 'CEditControlCentre::PeekConnectedToTrackNode'
+00548b50   WARN RELOC_NAME: ?GetRefreshRate@CUserProfileManager@@QBEKXZ -> 005486d0 labelled 'CEditControlCentre::PeekConnectedToTrackNode'
+00548b50   WARN RELOC_NAME: ?GetAntialiasing@CUserProfileManager@@QBEKXZ -> 00548670 labelled 'CEditControlCentre::PeekConnectedToTrackNode'
+00548b50   WARN RELOC_NAME: ?GetScreenAspectRatio@CUserProfileManager@@QBEKXZ -> 005486f0 labelled 'CEditControlCentre::PeekConnectedToTrackNode'
+00548b50   WARN RELOC_NAME: ?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ -> 00548740 labelled 'IsCameraResetting'
+00548b50   RELOCATION_MATCH PASS   AdjustValueToProfile
+0048db35   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+0048db35   WARN STANDIN_LEAF ?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ (catalog CUserProfileManager::IsCameraResetting; names another function)
+0048db35   MATCH            PASS   IsCameraResetting
+004d3f50   WARN SHARED_HEADER_AVAILABLE CTCHeroOpinionDeedLog (engine/CTCHeroOpinionDeedLog.h)
+004d3f50   RELOCATION_MATCH PASS   Alloc
+006eb390   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CombatDialogueManager (engine/CombatDialogueManager.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006eb390   WARN RELOC_NAME: ?ApplyBlockResponse@CTCCombat@@QAEXPAVCThing@@@Z -> 00733cf0 labelled 'CTCCombat::UpdateGetHitCounterAttack'
+006eb390   RELOCATION_MATCH PASS   SetupNextSequenceForAttacker
+009ae150   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009ae150   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+009ae150   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+009ae150   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+009ae150   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009ae150   RELOCATION_MATCH PASS   CompileSubDefinition
+
+WINS: 8
+  008ee790 RELOCATION_MATCH CMaterialDef::?GetBlendedSwordHitEffect@CMaterialDef@@QBE_NJMAAJ0AAM@Z
+  008ee720 RELOCATION_MATCH CMaterialDef::?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ
+  00548790 RELOCATION_MATCH NUISystem::CTextSlider::?GetValueFromProfile@CTextSlider@NUISystem@@
+  00548b50 RELOCATION_MATCH NUISystem::CTextSlider::AdjustValueToProfile
+  0048db35 MATCH CUserProfileManager::?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ
+  004d3f50 RELOCATION_MATCH CTCHeroOpinionDeedLog::Alloc
+  006eb390 RELOCATION_MATCH CCombatManager::?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z
+  009ae150 RELOCATION_MATCH CDefinitionManager::CompileSubDefinition

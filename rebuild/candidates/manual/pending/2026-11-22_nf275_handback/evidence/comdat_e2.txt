@@ -1,0 +1,7 @@
+## pH
+DEF section 41 selection 1 (1=NODUPLICATES 2=ANY)
+REF from section 42 (no function symbol: .debug$F)
+## pS
+DEF section 41 selection 2 (1=NODUPLICATES 2=ANY)
+REF from section 42 (no function symbol: .debug$F)
+REF from section 43 ?ReferenceVertexGroupBlockDtor@?A0xe61cc6a9@@YAXXZ

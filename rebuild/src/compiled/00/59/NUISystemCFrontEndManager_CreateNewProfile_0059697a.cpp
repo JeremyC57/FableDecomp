@@ -1,5 +1,5 @@
 // NUISystem::CFrontEndManager::CreateNewProfile(CWideString&) -- create and switch to a new profile: needs free space, makes its folder, resets it to defaults, keeps the new-profile camera inversion, saves, and resets the main menu
-// Leaf: ?CreateNewProfile@CFrontEndManager@NUISystem@@QAE_NAAVCWideString@@@Z (Ego_r.pdb IAE @ 0x00602875, protected; modelled public)
+// Leaf: ?CreateNewProfile@CFrontEndManager@NUISystem@@IAE_NAAVCWideString@@@Z (Ego_r.pdb / FableWin.pdb IAE, protected)
 // Retail: Fable.exe @ 0x0059697A, 238 bytes, `ret 4`.
 // Body: ok = true; if !Get().IsEnoughSpaceForProfile() (0x004067C0) return false; Get().UseNewProfileValues = false;
 // if Get().GetProfileDir(name, true) (0x004082D0, CWideString temporary) has GetLength() (0x0099B220) zero, ok = false
@@ -59,7 +59,7 @@ public:
 namespace NUISystem {
 class CFrontEndManager {
 public:
-    bool CreateNewProfile(CWideString& name);
+    protected: bool CreateNewProfile(CWideString& name); public:
 protected:
     void AddProfileNameToScreens(const CWideString&);   // 0x00595B24
     void SetMainMenuDefName(const CCharString&);   // 0x00595A06

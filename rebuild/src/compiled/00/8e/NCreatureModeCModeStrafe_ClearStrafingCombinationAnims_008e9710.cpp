@@ -1,5 +1,5 @@
 // NCreatureMode::CModeStrafe::ClearStrafingCombinationAnims(bool) -- on a live parent with an animation component, finish the combination anims of types 0x1b and 0x19 (Finished set, ChangeAlphaBy = CurrentAlpha)
-// Leaf: ClearStrafingCombinationAnims
+// Leaf: ?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@AAEX_N@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9710, 149 bytes (`ret 4`; the bool argument is unused).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x5a = CTCAnimationComplex: word 2 bit 26),
@@ -44,7 +44,7 @@ namespace NCreatureMode {
 struct CModeStrafe {
     virtual void v00();
     CThing* ParentThing;                    // +0x04
-    void ClearStrafingCombinationAnims(bool immediately);
+    private: void ClearStrafingCombinationAnims(bool immediately); public:
 };
 
 void CModeStrafe::ClearStrafingCombinationAnims(bool immediately)

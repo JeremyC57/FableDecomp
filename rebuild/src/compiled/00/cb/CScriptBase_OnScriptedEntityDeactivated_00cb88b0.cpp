@@ -60,7 +60,10 @@ class CScriptBase {
 public:
     virtual ~CScriptBase();
     void OnScriptedEntityDeactivated(unsigned __int64 entityID, CScriptThing& entity, bool removing);
-    void SaveEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script);   // 0x00CB83D0
+    protected:
+    void SaveEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script);
+    public:
+   // 0x00CB83D0
 private:
     void*            Threads;                        // +0x04
     CEntityScriptMap EntityScripts;                  // +0x08

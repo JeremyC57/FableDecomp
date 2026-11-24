@@ -1,0 +1,3 @@
+01:57:32 ZS_PASS T_00507c30 test /home/user/FableDecomp/rebuild/tests/00/50/CWorldMap_LoadFromFile_00507c30_test.cpp /Od /W3
+01:57:32 ZS_PASS T_0098ecd0 test /home/user/FableDecomp/rebuild/tests/00/98/CThreadedFileManager_ProcessObjects_0098ecd0_test.cpp /Od /W3
+02:10:02 ZS_PASS T_00bd2a90 test /home/user/FableDecomp/rebuild/tests/00/bd/CEngineInternalPrimitiveAnimatedMesh_InitialiseBoneScalings_00bd2a90_test.cpp /Od /W3

@@ -1,0 +1,6 @@
+address	verdict	old	new	route	reason	bucket	name_fixes	switches	notes
+00445620	GEN	?CInputTypeXboxPadButtonEvent_GetType@@YIHPAX@Z	?GetType@CInputTypeXboxPadButtonEvent@@UBE?AW4EInputType@NControlSystem@@XZ	switch		generated	[]	FABLE_RETAIL_CINPUTTYPEXBOXPADBUTTONEVENT_VIRTUAL_MODEL	
+00445670	GEN	?CInputTypeXboxPadLeftStickEvent_GetType@@YIHPAX@Z	?GetType@CInputTypeXboxPadLeftStickEvent@@UBE?AW4EInputType@NControlSystem@@XZ	switch		generated	[]	FABLE_RETAIL_CINPUTTYPEXBOXPADLEFTSTICKEVENT_VIRTUAL_MODEL	
+004456d0	GEN	?CInputTypeXboxPadRightStickEvent_IsInputTypeWithMouseButton@@YI_NPAX0H@Z	?IsInputTypeWithMouseButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EMouseButtonControl@@@Z	switch		generated	[]	FABLE_RETAIL_CINPUTTYPEXBOXPADRIGHTSTICKEVENT_VIRTUAL_MODEL	
+00445770	GEN	?CInputTypeMouseWheelMovementUpEvent_GetType@@YIHPAX@Z	?GetType@CInputTypeMouseWheelMovementUpEvent@@UBE?AW4EInputType@NControlSystem@@XZ	switch		generated	[]	FABLE_RETAIL_CINPUTTYPEMOUSEWHEELMOVEMENTUPEVENT_VIRTUAL_MODEL	
+00b23360	GEN	?CIEngine__GetPrimitiveDrawDistanceFactor@@YIMPAX@Z	?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ	switch		generated	[]	FABLE_RETAIL_CIENGINE	

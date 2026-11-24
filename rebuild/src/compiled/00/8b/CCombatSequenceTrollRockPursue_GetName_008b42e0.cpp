@@ -1,27 +1,21 @@
-// CCombatSequence_TrollRockPursue_Methods::GetName - returns CCharString by value.
-// Leaf: ?GetName@CCombatSequence_TrollRockPursue_Methods@@QBEPAVCCharString@@PAV2@@Z
+// Leaf: ?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ
+// Class-model move (NF325, 2026-11-24): defined on the real class of engine/CCombatSequence_TrollRockPursue.h under FABLE_RETAIL_CCOMBATSEQUENCE_TROLLROCKPURSUE_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CCombatSequence_TrollRockPursue_Methods::GetName(CCharString* __ret) calling the stand-in CCharString::Init); the retail RTTI vftable placement names this PDB member here.
+//   The by-value PDB return builds the result through CCharString::CCharString(const char*, long) (0x0099EBF0, both PDBs ??0CCharString@@QAE@PBDJ@Z, its landed self row).
 // Retail: builds a CCharString from a string literal (len=-1) into the hidden
 // return buffer (esi) and returns that buffer.
-
+#define FABLE_RETAIL_CCOMBATSEQUENCE_TROLLROCKPURSUE_VIRTUAL_MODEL
+#define FABLE_RETAIL_CCOMBATSEQUENCEBASE
 #include "engine/CCombatSequence_TrollRockPursue.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString {
 public:
     CCharString(const char* s, long len);
-    // Construct-in-place without a null check (matches retail's unconditional ctor call).
-    void Init(const char* s, int len);
     void* m_data;
 };
 
 // String literal lives at 0x1278aec in retail.
 static const char* const s_name = "CombatSequence_TrollRockPursue";
 
-// __fastcall member of CCombatSequence_TrollRockPursue.
-struct CCombatSequence_TrollRockPursue_Methods : CCombatSequence_TrollRockPursue {
-    CCharString* GetName(CCharString* __ret) const;
-};
-
-CCharString* CCombatSequence_TrollRockPursue_Methods::GetName(CCharString* __ret) const {
-    __ret->Init(s_name, -1);
-    return __ret;
+CCharString CCombatSequence_TrollRockPursue::GetName() const {
+    return CCharString(s_name, -1);
 }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ); evidence: RTTI vtable slot + PDB name set.

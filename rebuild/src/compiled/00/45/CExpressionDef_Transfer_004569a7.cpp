@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CExpressionDef@@UAEXAAVCPersistContext@@@Z
 // CExpressionDef::Transfer(CPersistContext&) -- transfers expression definition fields.
 // Retail004569a7 length306. Quarantined donor CExpressionDef first member+0x40;
 // native+0x3c, all subsequent members -4. Native layout below uses donor names.
@@ -12,7 +13,7 @@ class CPersistContext { public:
  void TransferExpressionType(int&); //00456c21
 };
 class CExpressionDef { public:
- unsigned char DefinitionBase[0x3c];
+ unsigned char DefinitionBase[0x38];
  int Animation_TablePos, AnimationInto_TablePos, AnimationLoop_TablePos, AnimationOutOf_TablePos;
  int AnimationToOther_TablePos, AnimationToOtherInto_TablePos, AnimationToOtherLoop_TablePos, AnimationToOtherOutOf_TablePos;
  float SpriteDuration; int SpriteGraphic, SpriteOverrideText_TablePos, SoundCriteria_TablePos, LoopSoundCriteria_TablePos;
@@ -22,7 +23,7 @@ class CExpressionDef { public:
  bool Extendable, SheatheWeapons, ReplaceHeldItemWhenDone;
  unsigned int TextTag;
  int ExpressionType;
- void Transfer(CPersistContext& c);
+ virtual void Transfer(CPersistContext& c);
 };
 typedef char NativeExpressionSize[(sizeof(CExpressionDef)==0x90)?1:-1];
 typedef char NativeExpressionOffset[(offsetof(CExpressionDef,ExpressionType)==0x8c)?1:-1];

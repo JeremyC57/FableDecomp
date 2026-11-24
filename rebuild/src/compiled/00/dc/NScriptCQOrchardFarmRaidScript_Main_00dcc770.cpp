@@ -87,8 +87,8 @@ public:
     ALLOC(COrchardFarmWhisper, 0x00DCEF50)
     ALLOC(CCrateTeamMember, 0x00DCDE20)
     ALLOC(CFarmRearEntrance, 0x00DCF3D0)
-    ALLOC(CWhisperFarmRaidIntro, 0x00DCF540)
-    ALLOC(CWhisperMarker, 0x00DCF610)
+    ALLOC(CM_WhisperFarmRaidIntro, 0x00DCF540)
+    ALLOC(CMK_OFI_GWLL_WHIS2, 0x00DCF610)
 #undef ALLOC
     CGameScriptInterface* Game;                         // +0x40
     void*                 Data;                         // +0x44
@@ -111,8 +111,8 @@ void CQ_OrchardFarmRaidScript::Main()
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_OrchardFarmRaidScript>("GuardTeamMember", this, &CCrateTeamMember::Alloc, 1));
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_OrchardFarmRaidScript>("BanditTeamMember", this, &CCrateTeamMember::Alloc, 1));
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_OrchardFarmRaidScript>("FarmRearEntrance", this, &CFarmRearEntrance::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_OrchardFarmRaidScript>("M_WhisperFarmRaidIntro", this, &CWhisperFarmRaidIntro::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_OrchardFarmRaidScript>("MK_OFI_GWLL_WHIS2", this, &CWhisperMarker::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_OrchardFarmRaidScript>("M_WhisperFarmRaidIntro", this, &CM_WhisperFarmRaidIntro::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_OrchardFarmRaidScript>("MK_OFI_GWLL_WHIS2", this, &CMK_OFI_GWLL_WHIS2::Alloc, 0));
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();
     if (!Game->IsQuestActive("Q_OrchardFarm_Barricade"))

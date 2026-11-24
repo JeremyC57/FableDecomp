@@ -5,6 +5,7 @@
 //   Was a global QuadTreeElement (??1QuadTreeElement@@UAE@XZ).
 // Native0x00bdfa10 corrected length38; rtti VT012a7df0 slot0, actual destructor00bddfb0; not landscape patch.
 // Manager Deallocate00bd9b90 and engine global01436ea8 manager+6b0 independently audited.
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER // NEngineInternal::GPLandscapeRenderer, 0x01436EA8 (NF262)
 #define CEngineLandscapeMemoryManager CEngineLandscapeMemoryManagerLayout
 #include "engine/CEngineLandscapeMemoryManager.h"
 #undef CEngineLandscapeMemoryManager
@@ -19,10 +20,8 @@ public:
 #define CLocalDetailCacheMap CLocalDetailCacheMapDonor
 #include "engine/CLocalDetailCacheMap.h"
 #undef CLocalDetailCacheMap
-// EngineGlobal is a native renderer view; donor MemoryManager+0xf58 differs from retail+0x6b0.
-struct LandscapeMemory : CEngineLandscapeMemoryManager { }; //0x00bd9b90
-struct EngineGlobal { unsigned char EngineState[0x6b0]; LandscapeMemory* LandscapeMemoryManager; };
-extern EngineGlobal* gEngine; //0x01436ea8
+// NF262: the engine global 0x01436EA8 is NEngineInternal::GPLandscapeRenderer (both PDBs; MemoryManager +0x6B0 of the shared
+// CEngineLandscapeRenderer); was the EngineGlobal / LandscapeMemory stand-ins.
 class CLocalDetailCacheMap { public:
  class CQuadTreeElement; // nested (RTTI .?AVCQuadTreeElement@CLocalDetailCacheMap@@; Ego_r / FableWin)
 };
@@ -38,6 +37,6 @@ class CLocalDetailCacheMap::CQuadTreeElement:public MovableNative { public:
 };
 void* CLocalDetailCacheMap::CQuadTreeElement::ScalarDeletingDestructor(unsigned flags) {
  this->CLocalDetailCacheMap::CQuadTreeElement::~CQuadTreeElement();
- if(flags&1) gEngine->LandscapeMemoryManager->FreeVirtual(this);
+ if(flags&1) NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(this);
  return this;
 }

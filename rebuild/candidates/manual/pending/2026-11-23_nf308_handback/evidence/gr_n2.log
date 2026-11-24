@@ -1,0 +1,6 @@
+N 00967930 CAIStateGroup_TavernServer::PickUpJug RELOCATION_MATCH flags= [] leaf=?PickUpJug@CAIStateGroup_TavernServer@@QAE_NXZ
+N 00967b40 CAIStateGroup_TavernServer::FillTankard RELOCATION_MATCH flags= [] leaf=FillTankard
+N 00968bc0 CAIStateGroup_TavernKeeper::OnReplace RELOCATION_MATCH flags= [] leaf=?OnReplace@CAIStateGroup_TavernKeeper
+N 006eb390 CCombatManager::SetupNextSequenceForAttacker RELOCATION_MATCH flags= [] leaf=?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z
+N 006eb600 GetNextActionForCreature RELOCATION_MATCH flags= [] leaf=?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@AAVCThingCreatureBase@@@Z
+GR_DONE

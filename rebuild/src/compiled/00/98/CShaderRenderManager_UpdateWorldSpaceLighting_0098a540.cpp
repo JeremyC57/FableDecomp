@@ -2,7 +2,7 @@
 //   vertex-shader light array: each light fills LightSize float4 registers of LightBuffer (its Parameters when enabled, else
 //   (0,0,0,1)), contiguous dirty runs are flushed with one SetVertexShaderConstantF, then the attenuation table for the
 //   lights in use is uploaded and the dirty flags move from 0x200 to 0x100.
-// Leaf: UpdateWorldSpaceLighting
+// Leaf: ?UpdateWorldSpaceLighting@CShaderRenderManager@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0098A540, 544 bytes (539 + int3 padding), plain `ret`.
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, +0x178) through the inlined SetVSConstants 0x0098B930
 //   (`if (count != 0)` around the device call).
@@ -96,7 +96,9 @@ class CShaderRenderManager { public:
         if (count != 0)
             D3DDevice->SetVertexShaderConstantF(startRegister, (const float*)data, count);
     }
+    private:
     void UpdateWorldSpaceLighting();
+    public:
 };
 
 void CShaderRenderManager::UpdateWorldSpaceLighting()

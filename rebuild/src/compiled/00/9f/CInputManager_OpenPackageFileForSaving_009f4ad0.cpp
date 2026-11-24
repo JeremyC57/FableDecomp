@@ -1,3 +1,4 @@
+// Leaf: ?OpenPackageFileForSaving@CInputManager@@IAEXABVCVersion@@ABVCWideString@@@Z
 // CInputManager::OpenPackageFileForSaving(const CVersion& version, const CWideString& fileName) -- open the package file for writing (access 4, flags 2), write the 12-byte version header, rewind the package index
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F4AD0, length 52 bytes (+ int3 padding).
 // Callees: CDiskFileWin32::Open @ 0x0099A6A0 (vtable 0x0122D06C slot 1, virtual), CDiskFileWin32::Write(const void*, long, CASuspendableProcess*) @ 0x0099AA90 (slot 4).
@@ -24,7 +25,9 @@ class CInputManager { public:
     long           CurrentFilePackageIndex;         // +0x58
     long           TimeStamp;                       // +0x5c
     CDiskFileWin32 PackageFile;                     // +0x60
+    protected:
     void OpenPackageFileForSaving(const CVersion& version, const CWideString& fileName);
+    public:
 };
 
 void CInputManager::OpenPackageFileForSaving(const CVersion& version, const CWideString& fileName)

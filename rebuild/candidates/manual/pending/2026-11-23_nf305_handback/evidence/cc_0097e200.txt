@@ -1,0 +1,70 @@
+0090d030 NODECL incl=engine/fable_ai_action_enums.h,engine/EMessageEventType.h,engine/CThingAICreature.h,engine/CThingBuilding.h,engine/CTCGossip.h,engine/CTCCreatureModeM
+0090e5d0 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CDefPointer.h,engine/CIntelligentPointer.h,engine/CThingAICreature.h,engine/CTCCarrying.h,eng
+0090eec0 protected	nonconst	80	src/compiled/00/90/CAIStateGroupMinionKidCalledToMother_Update_0090eec0.cpp	EAIActionReturn AIAction_DoNothing(); public:
+0090f470 protected	nonconst	78	src/compiled/00/90/CAIStateGroupMinionHasInformation_Update_0090f470.cpp	EAIActionReturn AIAction_DoNothing(); public:
+0090f740 protected	nonconst	28	src/compiled/00/90/CAIStateGroupMinionSitOnSeatBase_Update_0090f740.cpp	EAIActionReturn AIAction_DoNothing();
+0090fdb0 protected	nonconst	105	src/compiled/00/90/CAIStateGroupMinionSitAtSchool_Update_0090fdb0.cpp	EAIActionReturn AIAction_DoNothing(); public:                  protected:
+00911d90 NODECL incl=engine/fable_ai_action_enums.h,engine/CAIStateGroupBase.h
+009175e0 NODECL incl=engine/fable_ai_action_enums.h,engine/CAIStateGroupBase.h
+00918b90 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CDefPointer.h,engine/CDefClassBase.h,engine/CIntelligentPointer.h,engine/CThing.h,engine/CTCB
+0091bcf0 NODECL incl=
+0091bd10 NODECL incl=engine/fable_ai_action_enums.h,engine/CAIStateGroupBase.h
+0091e4b0 NODECL incl=engine/CAIStateGroup_MinionLeaveRegion.h,engine/fable_ai_action_enums.h,engine/CAIBrain.h,engine/CWorld.h,engine/CThingSearchTools.h,engine/C3DVector.
+00920770 protected	nonconst	9	src/compiled/00/92/CAIStateGroupCreatureIdleUnderground_Update_00920770.cpp	protected: EAIActionReturn AIAction_DoNothing(); public:
+00920a00 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CThingAICreature.h,engine/CAIStateGroup_CreatureSeekEnemyUnderground.h,engine/CAIBrain.h,engi
+009224f0 public	nonconst	26	src/compiled/00/92/CAIStateGroupFreeze_Update_009224f0.cpp	EAIActionReturn AIAction_DoNothing();
+00922750 NODECL incl=engine/CThing.h,engine/CVectorMap.h,engine/CTCTalk.h
+00924c70 NODECL incl=engine/CThing.h,engine/CVectorMap.h,engine/CTCBase.h,engine/CIntelligentPointer.h,engine/CThingPhysical.h,engine/CThingCreatureBase.h,engine/CThingAIC
+00926060 NODECL incl=engine/fable_ai_action_enums.h,engine/CThing.h,engine/CTCBase.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engine/CPlayer.h,engine/CPlaye
+00929b10 protected	nonconst	160	src/compiled/00/92/CAIStateGroupMinionGuardBribed_Update_00929b10.cpp	EAIActionReturn AIAction_DoNothing(); public:
+0092a8a0 protected	nonconst	75	src/compiled/00/92/CAIStateGroupApprenticeHero_PracticeSkills_0092a8a0.cpp	protected: EAIActionReturn AIAction_DoNothing(); public:
+0092b3e0 protected	nonconst	85	src/compiled/00/92/CAIStateGroupSkillPractice_PracticeSkills_0092b3e0.cpp	protected: EAIActionReturn AIAction_DoNothing(); public:
+0092c070 NODECL incl=engine/C3DVector.h,engine/CVectorMap.h,engine/fable_ai_action_enums.h,engine/CAIStateGroupBase.h
+0092da20 NODECL incl=engine/CAIStateGroupBase.h,engine/CThingCreatureBase.h,engine/CThingAICreature.h,engine/CDefString.h,engine/CCreatureActionBase.h,engine/CCreatureActi
+00934870 protected	nonconst	59	src/compiled/00/93/CAIStateGroupMinionKidGroupTag_Update_00934870.cpp	EAIActionReturn AIAction_DoNothing();
+009357f0 protected	nonconst	112	src/compiled/00/93/CAIStateGroupMinionFaceHero_Update_009357f0.cpp	EAIActionReturn AIAction_DoNothing(); public:
+00936020 protected	nonconst	73	src/compiled/00/93/CAIStateGroupMinionPutOutFires_Update_00936020.cpp	EAIActionReturn AIAction_DoNothing(); public:
+009363d0 NODECL incl=engine/CThingAICreature.h,engine/CThingBuilding.h,engine/CTCFlammable.h,engine/CAIStateGroup_MinionWatchFires.h,engine/CAIBrain.h,engine/CCreatureActi
+009392a0 NODECL incl=engine/CMainGameComponent.h,engine/CThingAICreature.h,engine/CThingObject.h,engine/CAIStateGroup_SitRoundCampfire.h,engine/CAIBrain.h,engine/EAIAction
+0093a540 protected	nonconst	42	src/compiled/00/93/CAIStateGroupBanditSitRoundCampfire_Idle_0093a540.cpp	protected: EAIActionReturn AIAction_DoNothing(); public:
+00941690 NODECL incl=engine/fable_ai_action_enums.h,engine/CThing.h,engine/C3DVector.h,engine/CIntelligentPointer.h,engine/ThingAlive.h,engine/CThingAICreature.h,engine/CC
+00942c70 NODECL incl=engine/CThing.h,engine/CVectorMap.h
+009432c0 protected	nonconst	104	src/compiled/00/94/CAIStateGroupWorkAtSchool_Update_009432c0.cpp	EAIActionReturn AIAction_DoNothing(); public:
+00945bd0 NODECL incl=engine/CThing.h,engine/CTCBase.h,engine/CThingCreatureBase.h,engine/CThingAICreature.h,engine/CIntelligentPointer.h,engine/CAIStateGroupBase.h,engine/
+00946190 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CRightHandedSet.h,engine/CThing.h,engine/CTCBase.h,engine/CThingPhysical.h,engine/CThingCreat
+00947ca0 protected	nonconst	54	src/compiled/00/94/CAIStateGroupGoToPub_SitIdle_00947ca0.cpp	protected: EAIActionReturn AIAction_DoNothing(); public:
+00948880 NODECL incl=engine/CThingAICreature.h,engine/CThingObject.h,engine/CAIStateGroup_GoToPub.h,engine/CAIBrain.h,engine/CMainGameComponent.h,engine/CWorld.h,engine/Th
+00949380 NODECL incl=engine/EAIAction.h,engine/CThingAICreature.h,engine/CThingObject.h,engine/CAIStateGroupBase.h,engine/CAIBrain.h,engine/CSoundPair.h,engine/CCreatureAc
+0094b740 NODECL incl=engine/CThing.h,engine/CVectorMap.h
+0094c050 NODECL incl=engine/CAIStateGroupBase.h,engine/CIntelligentPointer.h,engine/C3DVector.h,engine/CThing.h,engine/CVectorMap.h,engine/CTCBase.h,engine/CThingCreatureB
+0094d020 protected	nonconst	163	src/compiled/00/94/CAIStateGroupGameMaster_Update_0094d020.cpp	EAIActionReturn AIAction_DoNothing();
+0094dd90 NODECL incl=engine/EAIAction.h,engine/C3DVector.h,engine/CThing.h,engine/CVectorMap.h,engine/CTCBase.h,engine/CIntelligentPointer.h,engine/CThingCreatureBase.h,en
+0094e7b0 NODECL incl=engine/CAIStateGroupBase.h,engine/CIntelligentPointer.h,engine/CAIStateGroup_TrollBase.h,engine/CAIStateGroup_EarthTroll.h,engine/CCreatureAction_Trol
+0094f000 protected	nonconst	39	src/compiled/00/94/CAIStateGroupFollowPlayer_Update_0094f000.cpp	EAIActionReturn AIAction_DoNothing(); public:
+0094fe30 public	nonconst	49	src/compiled/00/94/CAIStateGroupJackDragon_StayIdle_0094fe30.cpp	EAIActionReturn AIAction_DoNothing(); public:
+0094feb0 NODECL incl=engine/CAIStateGroup_JackDragon.h,engine/CAIStateGroupBase.h,engine/CAIBrain.h,engine/C3DVector.h,engine/CIntelligentPointer.h,engine/CMainGameCompone
+00950950 NODECL incl=engine/CVectorMap.h,engine/C3DVector.h
+00950c30 NODECL incl=engine/CThing.h,engine/CVectorMap.h,engine/C3DVector.h,engine/CTCCreatureModeManager.h
+00950cf0 NODECL incl=engine/C3DVector.h,engine/CTCPhysicsBase.h,engine/CThing.h,engine/CThingAICreature.h,engine/ThingAlive.h,engine/CAIStateGroup_JackDragon.h,engine/CAIB
+00952890 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CVectorMap.h,engine/CTCBase.h,engine/CIntelligentPointer.h,engine/CThingCreatureBase.h,engine/CThingAICreatu
+0095b6f0 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CThingAICreature.h,engine/CAIStateGroupBase.h,engine/CAIBrain.h,engine/CSoundPair.h,engine/CC
+0095ed80 protected	nonconst	30	src/compiled/00/95/CAIStateGroupOpinionReactionRoot_WaitForTextToLoadThenSpeak_0095ed80.cpp	EAIActionReturn AIAction_DoNothing(); public:
+00960120 NODECL incl=engine/fable_ai_action_enums.h,engine/EOpinionAttitudeType.h,engine/EOpinionDeedType.h,engine/ECreatureType.h,engine/CThingCreatureDef.h,engine/CThing
+00961640 NODECL incl=engine/fable_ai_action_enums.h,engine/CAIStateGroup_BanditKingThrowWeapons.h,engine/CAIBrain.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h
+00961880 NODECL incl=engine/fable_ai_action_enums.h,engine/CIntelligentPointer.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engine/CTCBoss.h,engine/CWorld.h,e
+009621f0 protected	nonconst	134	src/compiled/00/96/CAIStateGroupIceTrollIcicleAttack_Update_009621f0.cpp	EAIActionReturn AIAction_DoNothing(); public:
+009627c0 NODECL incl=engine/fable_ai_action_enums.h,engine/CIntelligentPointer.h,engine/ThingAlive.h,engine/CThingAICreature.h,engine/CTCStealth.h,engine/CAIStateGroupBase
+00967b40 protected	nonconst	91	src/compiled/00/96/CAIStateGroupTavernServer_FillTankard_00967b40.cpp	EAIActionReturn AIAction_DoNothing(); public:                  protected:
+00967d40 NODECL incl=engine/C3DVector.h,engine/fable_ai_action_enums.h,engine/CAIStateGroup_TavernServer.h,engine/CAIBrain.h,engine/CThingAICreature.h,engine/CThingObject.
+009692c0 NODECL incl=engine/EAIAction.h,engine/EMessageEventType.h,engine/C3DVector.h,engine/CThingAICreature.h,engine/CAIStateGroup_TavernKeeper.h,engine/CAIBrain.h,engin
+00969470 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CVectorMap.h,engine/fable_ai_action_enums.h,engine/CAIStateGroupBase.h
+00969cb0 NODECL incl=engine/CThing.h,engine/CVectorMap.h,engine/CIntelligentPointer.h,engine/CTCCreatureModeManager.h,engine/fable_ai_action_enums.h,engine/CAIStateGroupBa
+0096af60 protected	nonconst	169	src/compiled/00/96/CAIStateGroupWhisperPotionCombat_DisappearJump_0096af60.cpp	EAIActionReturn AIAction_DoNothing(); public:
+0096cd70 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CRightHandedSet.h,engine/CDefPointer.h,engine/CCountedPointer.h,engine/CIntelligentPointer.h,
+0096ec10 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CTCPhysicsBase.h,engine/CThingAICreature.h,engine/CIntelligentPointer.h,engine/CCombatManager
+0096fcd0 protected	nonconst	144	src/compiled/00/96/CAIStateGroupSummonerLightningAttack_Update_0096fcd0.cpp	EAIActionReturn AIAction_DoNothing(); public:
+0096ff10 protected	nonconst	146	src/compiled/00/96/CAIStateGroupSummonerCharge_Update_0096ff10.cpp	EAIActionReturn AIAction_DoNothing(); public:
+00974aa0 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CTCBase.h,engine/CIntelligentPointer.h,engine/CThingCreatureBase.h,engine/CThingAICreature.h,engine/CTCPhysi
+009756b0 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CThingAICreature.h,engine/CThingBaseDef.h,engine/CTCPhysicsBase.h,engine/NGraphicAppearance_C
+0097bda0 NODECL incl=engine/CAIStateGroupBase.h,engine/CIntelligentPointer.h,engine/CAIStateGroup_ScorpionKing.h,engine/CCreatureAction_ScorpionChargeInto.h,engine/CCreatu
+0097fbe0 protected	nonconst	112	src/compiled/00/97/CAIStateGroupBase_AIActionRunAwayFrom_0097fbe0.cpp	EAIActionReturn AIAction_DoNothing(); public:

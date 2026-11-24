@@ -1,0 +1,88 @@
+??$_Destroy@PAPAVCEngineComponent@@@std@@YAXPAPAVCEngineComponent@@0@Z	1	8bf7b464aaa2	
+??$_Destroy@PAPAVCEngineLayerRenderer@@@std@@YAXPAPAVCEngineLayerRenderer@@0@Z	1	8bf7b464aaa2	
+??$_Destroy@PAPAVCSurface@@@std@@YAXPAPAVCSurface@@0@Z	1	8bf7b464aaa2	
+??$_Destroy@PAVCCamera@@@std@@YAXPAVCCamera@@0@Z	1	8bf7b464aaa2	
+??$_Destroy@VCCamera@@@std@@YAXPAVCCamera@@@Z	1	8bf7b464aaa2	
+??$__destroy@PAPAVCEngineComponent@@PAV1@@std@@YAXPAPAVCEngineComponent@@00@Z	1	8bf7b464aaa2	
+??$__destroy@PAPAVCEngineLayerRenderer@@PAV1@@std@@YAXPAPAVCEngineLayerRenderer@@00@Z	1	8bf7b464aaa2	
+??$__destroy@PAPAVCSurface@@PAV1@@std@@YAXPAPAVCSurface@@00@Z	1	8bf7b464aaa2	
+??$__destroy@PAVCCamera@@V1@@std@@YAXPAVCCamera@@00@Z	1	8bf7b464aaa2	
+??$__destroy_aux@PAPAVCEngineComponent@@@std@@YAXPAPAVCEngineComponent@@0ABU__true_type@0@@Z	1	8bf7b464aaa2	
+??$__destroy_aux@PAPAVCEngineLayerRenderer@@@std@@YAXPAPAVCEngineLayerRenderer@@0ABU__true_type@0@@Z	1	8bf7b464aaa2	
+??$__destroy_aux@PAPAVCSurface@@@std@@YAXPAPAVCSurface@@0ABU__true_type@0@@Z	1	8bf7b464aaa2	
+??$__destroy_aux@PAVCCamera@@@std@@YAXPAVCCamera@@0ABU__false_type@0@@Z	1	8bf7b464aaa2	
+??0?$CArray@PAVCEngineComponent@@@@QAE@XZ	13	fd2dc41a70f4	
+??0?$CArray@PAVCEngineLayerRenderer@@@@QAE@XZ	13	fd2dc41a70f4	
+??0?$CArray@PAVCSurface@@@@QAE@XZ	13	fd2dc41a70f4	
+??0?$CArray@VCCamera@@@@QAE@XZ	13	fd2dc41a70f4	
+??0?$CDefPointer@$$CBVCEngineDef@@@@QAE@W4ENullDef@@@Z	11	2a18900a134c	
+??0?$CDefPointer@$$CBVCEngineVideoOptionsDef@@@@QAE@W4ENullDef@@@Z	11	2a18900a134c	
+??0?$CDefPointer@$$CBVCEnvironmentDef@@@@QAE@W4ENullDef@@@Z	11	2a18900a134c	
+??0?$_STLP_alloc_proxy@PAPAVCEngineComponent@@PAV1@V?$allocator@PAVCEngineComponent@@@std@@@std@@QAE@ABV?$allocator@PAVCEngineComponent@@@1@PAPAVCEngineComponent@@@Z	11	50b756da0d4b	
+??0?$_STLP_alloc_proxy@PAPAVCEngineLayerRenderer@@PAV1@V?$allocator@PAVCEngineLayerRenderer@@@std@@@std@@QAE@ABV?$allocator@PAVCEngineLayerRenderer@@@1@PAPAVCEngineLayerRenderer@@@Z	11	50b756da0d4b	
+??0?$_STLP_alloc_proxy@PAPAVCSurface@@PAV1@V?$allocator@PAVCSurface@@@std@@@std@@QAE@ABV?$allocator@PAVCSurface@@@1@PAPAVCSurface@@@Z	11	50b756da0d4b	
+??0?$_STLP_alloc_proxy@PAVCCamera@@V1@V?$allocator@VCCamera@@@std@@@std@@QAE@ABV?$allocator@VCCamera@@@1@PAVCCamera@@@Z	11	50b756da0d4b	
+??0?$_Vector_base@PAVCEngineComponent@@V?$allocator@PAVCEngineComponent@@@std@@@std@@QAE@ABV?$allocator@PAVCEngineComponent@@@1@@Z	15	443225058d4a	
+??0?$_Vector_base@PAVCEngineLayerRenderer@@V?$allocator@PAVCEngineLayerRenderer@@@std@@@std@@QAE@ABV?$allocator@PAVCEngineLayerRenderer@@@1@@Z	15	443225058d4a	
+??0?$_Vector_base@PAVCSurface@@V?$allocator@PAVCSurface@@@std@@@std@@QAE@ABV?$allocator@PAVCSurface@@@1@@Z	15	443225058d4a	
+??0?$_Vector_base@VCCamera@@V?$allocator@VCCamera@@@std@@@std@@QAE@ABV?$allocator@VCCamera@@@1@@Z	15	443225058d4a	
+??0?$allocator@PAVCEngineComponent@@@std@@QAE@ABV01@@Z	5	6af8cd187de1	
+??0?$allocator@PAVCEngineComponent@@@std@@QAE@XZ	3	03ca90960a9c	
+??0?$allocator@PAVCEngineLayerRenderer@@@std@@QAE@ABV01@@Z	5	6af8cd187de1	
+??0?$allocator@PAVCEngineLayerRenderer@@@std@@QAE@XZ	3	03ca90960a9c	
+??0?$allocator@PAVCSurface@@@std@@QAE@ABV01@@Z	5	6af8cd187de1	
+??0?$allocator@PAVCSurface@@@std@@QAE@XZ	3	03ca90960a9c	
+??0?$allocator@VCCamera@@@std@@QAE@ABV01@@Z	5	6af8cd187de1	
+??0?$allocator@VCCamera@@@std@@QAE@XZ	3	03ca90960a9c	
+??0?$vector@PAVCEngineComponent@@V?$allocator@PAVCEngineComponent@@@std@@@std@@QAE@ABV?$allocator@PAVCEngineComponent@@@1@@Z	15	443225058d4a	
+??0?$vector@PAVCEngineLayerRenderer@@V?$allocator@PAVCEngineLayerRenderer@@@std@@@std@@QAE@ABV?$allocator@PAVCEngineLayerRenderer@@@1@@Z	15	443225058d4a	
+??0?$vector@PAVCSurface@@V?$allocator@PAVCSurface@@@std@@@std@@QAE@ABV?$allocator@PAVCSurface@@@1@@Z	15	443225058d4a	
+??0?$vector@VCCamera@@V?$allocator@VCCamera@@@std@@@std@@QAE@ABV?$allocator@VCCamera@@@1@@Z	15	443225058d4a	
+??0C2DExtentsF@@QAE@MM@Z	18	0fa16c2a8160	
+??0C2DExtentsI@@QAE@JJ@Z	18	0fa16c2a8160	
+??0C3DVector@@QAE@XZ	3	03ca90960a9c	
+??0CDeviceResetCallback@@QAE@XZ	9	2cf42091f4b5	??_7CDeviceResetCallback@@6B@
+??0CEngine@@QAE@XZ	280	6f5052259090	??0CInitBaseClass@@QAE@XZ,__real@0000000000000000,??_7CDeviceResetCallback@@6B@,??_7CEngine@@6BCIEngine@@@,??_7CEngine@@6BCDeviceResetCallback@@@,__real@0000000000000000,??0CSimpleMemoryPool@@QAE@KK@Z
+??0CEngineVideoOptions@@QAE@XZ	56	bbb1a44dbb77	
+??0CIEngine@@IAE@XZ	22	1e1693c6b3fe	??0CInitBaseClass@@QAE@XZ,??_7CIEngine@@6B@
+??0CPreloadStats@CEngine@@QAE@XZ	28	2b43e23aa21f	__real@0000000000000000,__real@0000000000000000
+??0__false_type@std@@QAE@XZ	3	03ca90960a9c	
+??0__true_type@std@@QAE@XZ	3	03ca90960a9c	
+??1?$CArray@PAVCEngineComponent@@@@QAE@XZ	14	2a668cf6209e	_free
+??1?$CArray@PAVCEngineLayerRenderer@@@@QAE@XZ	14	2a668cf6209e	_free
+??1?$CArray@PAVCSurface@@@@QAE@XZ	14	2a668cf6209e	_free
+??1?$CArray@VCCamera@@@@QAE@XZ	14	2a668cf6209e	_free
+??1?$CDefPointer@$$CBVCEngineDef@@@@QAE@XZ	27	33158d070930	
+??1?$CDefPointer@$$CBVCEngineVideoOptionsDef@@@@QAE@XZ	27	33158d070930	
+??1?$CDefPointer@$$CBVCEnvironmentDef@@@@QAE@XZ	27	33158d070930	
+??1?$_STLP_alloc_proxy@PAPAVCEngineComponent@@PAV1@V?$allocator@PAVCEngineComponent@@@std@@@std@@QAE@XZ	1	8bf7b464aaa2	
+??1?$_STLP_alloc_proxy@PAPAVCEngineLayerRenderer@@PAV1@V?$allocator@PAVCEngineLayerRenderer@@@std@@@std@@QAE@XZ	1	8bf7b464aaa2	
+??1?$_STLP_alloc_proxy@PAPAVCSurface@@PAV1@V?$allocator@PAVCSurface@@@std@@@std@@QAE@XZ	1	8bf7b464aaa2	
+??1?$_STLP_alloc_proxy@PAVCCamera@@V1@V?$allocator@VCCamera@@@std@@@std@@QAE@XZ	1	8bf7b464aaa2	
+??1?$_Vector_base@PAVCEngineComponent@@V?$allocator@PAVCEngineComponent@@@std@@@std@@QAE@XZ	14	2a668cf6209e	_free
+??1?$_Vector_base@PAVCEngineLayerRenderer@@V?$allocator@PAVCEngineLayerRenderer@@@std@@@std@@QAE@XZ	14	2a668cf6209e	_free
+??1?$_Vector_base@PAVCSurface@@V?$allocator@PAVCSurface@@@std@@@std@@QAE@XZ	14	2a668cf6209e	_free
+??1?$_Vector_base@VCCamera@@V?$allocator@VCCamera@@@std@@@std@@QAE@XZ	14	2a668cf6209e	_free
+??1?$allocator@PAVCEngineComponent@@@std@@QAE@XZ	1	8bf7b464aaa2	
+??1?$allocator@PAVCEngineLayerRenderer@@@std@@QAE@XZ	1	8bf7b464aaa2	
+??1?$allocator@PAVCSurface@@@std@@QAE@XZ	1	8bf7b464aaa2	
+??1?$allocator@VCCamera@@@std@@QAE@XZ	1	8bf7b464aaa2	
+??1?$vector@PAVCEngineComponent@@V?$allocator@PAVCEngineComponent@@@std@@@std@@QAE@XZ	14	2a668cf6209e	_free
+??1?$vector@PAVCEngineLayerRenderer@@V?$allocator@PAVCEngineLayerRenderer@@@std@@@std@@QAE@XZ	14	2a668cf6209e	_free
+??1?$vector@PAVCSurface@@V?$allocator@PAVCSurface@@@std@@@std@@QAE@XZ	14	2a668cf6209e	_free
+??1?$vector@VCCamera@@V?$allocator@VCCamera@@@std@@@std@@QAE@XZ	14	2a668cf6209e	_free
+??1CIEngine@@UAE@XZ	11	fda4704fce0c	??_7CIEngine@@6B@,??1CInitBaseClass@@UAE@XZ
+??1CSimpleMemoryPool@@UAE@XZ	22	842b1a47c36d	??_7CSimpleMemoryPool@@6B@,?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ,??1CBaseClassNonCopyable@@MAE@XZ
+??_F?$CDefPointer@$$CBVCEngineVideoOptionsDef@@@@QAEXXZ	7	7f321250dfc3	
+??_GCEngine@@UAEPAXI@Z	30	6cfd6ed8ca17	??1CEngine@@UAE@XZ,??3@YAXPAX@Z
+??_GCIEngine@@UAEPAXI@Z	36	1ea7d4c3909e	??_7CIEngine@@6B@,??1CInitBaseClass@@UAE@XZ,??3@YAXPAX@Z
+??_GCSimpleMemoryPool@@UAEPAXI@Z	43	b1e80cd10c31	??_7CSimpleMemoryPool@@6B@,?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ,??1CBaseClassNonCopyable@@MAE@XZ,??3@YAXPAX@Z
+??_H@YGXPAXIHP6EPAX0@Z@Z	48	9776e8993c2d	
+??_I@YGXPAXIHP6EX0@Z@Z	49	abc6adec56f0	
+?Release@?$CDefPointer@$$CBVCEngineDef@@@@QAEXXZ	27	33158d070930	
+?Release@?$CDefPointer@$$CBVCEngineVideoOptionsDef@@@@QAEXXZ	27	33158d070930	
+?Release@?$CDefPointer@$$CBVCEnvironmentDef@@@@QAEXXZ	27	33158d070930	
+?deallocate@?$allocator@PAVCEngineComponent@@@std@@QAEXPAPAVCEngineComponent@@I@Z	18	505d01d7f126	_free
+?deallocate@?$allocator@PAVCEngineLayerRenderer@@@std@@QAEXPAPAVCEngineLayerRenderer@@I@Z	18	505d01d7f126	_free
+?deallocate@?$allocator@PAVCSurface@@@std@@QAEXPAPAVCSurface@@I@Z	18	505d01d7f126	_free
+?deallocate@?$allocator@VCCamera@@@std@@QAEXPAVCCamera@@I@Z	18	505d01d7f126	_free

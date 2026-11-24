@@ -24,6 +24,7 @@
 //   (Ego_r.pdb 0x00B15970 + FableWin.pdb 0x02F6EB80; CWideString&, the self row's leaf and what the other 13 landed callers bind), was
 //   the global ?ConstructString@@YI_NPAVCWideString@@J@Z (pointer; same bytes).
 #include <stddef.h>
+#define FABLE_RETAIL_CTCBUYABLEHOUSE_FLAT_GETPRICE   // NF302: ?GetPrice@CTCBuyableHouse@@QBEJXZ (both PDBs) from the header
 #include "engine/CTCBuyableHouse.h"
 
 class CTCBase;
@@ -45,8 +46,10 @@ class CPlayer { public:
 class CTCBase { protected:
     CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
 };
+#define FABLE_RETAIL_TUTORIAL_CATEGORIES_PASS26   // NF315: the shared ETutorialCategory enum (Ego_d TPI 0xCE58) for the PDB parameter type
+#include "engine/ETutorialCategory.h"
 class CTCHero { public:
-    bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
+    bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0 (NF315: ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z, Ego_r + FableWin)
 };
 
 namespace NGameText { bool __fastcall ConstructString(CWideString& text, long value); }   // 0x009C7B70
@@ -84,9 +87,8 @@ class CPlayerGui { public:
     CSubtitleRenderer SubtitleRenderer;                      // +0x18
 };
 
-struct CTCBuyableHouseCalls : CTCBuyableHouse {
-    long GetPrice();                                         // 0x006C0120
-};
+// GetPrice is CTCBuyableHouse::GetPrice() const 0x006C0120 (header opt-in above; NF302: was the stand-in
+// struct CTCBuyableHouseCalls, reached through casts of `house`).
 
 enum EHouseQuestion { HOUSE_QUESTION_NONE = 0, HOUSE_QUESTION_BUY = 1, HOUSE_QUESTION_RENT = 2 };
 class CTCActionUseBuyHouse : public CTCBase {
@@ -104,14 +106,14 @@ void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead()) {
         CTCHero* heroTC;
-        if (hero->GetTC(TCI_HERO, &heroTC) && heroTC->GiveTutorialForCategory(0x23, false))
+        if (hero->GetTC(TCI_HERO, &heroTC) && heroTC->GiveTutorialForCategory(TUTORIAL_CATEGORY_BUILDING_OWNERSHIP, false))
             return;
     }
     HouseQuestion = HOUSE_QUESTION_BUY;
     CWideString text;
     bool confirm = true;
     if (!house->OwnedByPlayer) {
-        long price = ((CTCBuyableHouseCalls*)house)->GetPrice();
+        long price = house->GetPrice();
         if (price != -1 && price <= money) {
             if (house->MaxDressLevel > 0)
                 text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_BUY");
@@ -130,7 +132,7 @@ void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
         else
             text = CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_SELL");
     }
-    NGameText::ConstructString(text, ((CTCBuyableHouseCalls*)house)->GetPrice());
+    NGameText::ConstructString(text, house->GetPrice());
     if (text != L"") {
         if (confirm) {
             WaitingForConfirmation = true;

@@ -1,3 +1,4 @@
+// Leaf: ?SetPTarget@CTCDivineWrath@@AAEXXZ
 // CTCDivineWrath::SetPTarget() -- clear the spell's target, then take the thing the caster is targeting (interface 8) when it is alive, of a targetable type and the caster is of the right type; Z-targeting follows the caster's player
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -70,7 +71,9 @@ class CTCDivineWrath { public:
     unsigned char _pad08[0x6d - 0x08];
     CIntelligentPointerCreature PTarget;                // +0x6d (PDB +0x71)
     bool IsZTargetting;                                 // +0x75 (PDB +0x79)
+    private:
     void SetPTarget();
+    public:
 };
 
 void CTCDivineWrath::SetPTarget()

@@ -1,0 +1,35 @@
+# 0x00BFD5D0 / 0x00BFD390 self-leaf ports (sc.sh HEAD v rows/, overlay hdr/)
+##### 00bfd5d0
+pH 00bfd5d0 CEngineWaterBackgroundSubPatch::RelocateData RELOCATION_MATCH flags= [] leaf=RelocateData
+pS 00bfd5d0 CEngineWaterBackgroundSubPatch::RelocateData RELOCATION_MATCH flags= [] leaf=?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?RelocateData@CEngineWaterBackgroundSubPatch_RelocateData@@QAEXJPAX0J@Z
+> DEF ?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z
+##### 00bfd390
+pH 00bfd390 CEngineWaterBackgroundSubPatch::CanRelocateData MATCH flags= [] leaf=
+pS 00bfd390 CEngineWaterBackgroundSubPatch::CanRelocateData MATCH flags= [] leaf=?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?Can@C@@QAE_NH@Z
+> DEF ?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z
+ALLDONE
+## pk new
+00bfd5d0 NEW	??$RelocatePointer@VCIndexBuffer@@@@YAXAAPAVCIndexBuffer@@PAX1@Z	21	-	NO-OWNER
+00bfd5d0 NEW	??$RelocatePointer@VCVertexBufferWin32@@@@YAXAAPAVCVertexBufferWin32@@PAX1@Z	21	-	NO-OWNER
+## pk HEAD
+00bfd5d0 HEAD	??$RelocatePointer@VCIndexBuffer@@@@YAXAAPAVCIndexBuffer@@PAX1@Z	21	-	NO-OWNER
+00bfd5d0 HEAD	??$RelocatePointer@VCVertexBufferWin32@@@@YAXAAPAVCVertexBufferWin32@@PAX1@Z	21	-	NO-OWNER
+00bfd5d0 HEAD	?RelocateData@CEngineWaterBackgroundSubPatch_RelocateData@@QAEXJPAX0J@Z	147	-	NO-OWNER
+00bfd390 HEAD	?Can@C@@QAE_NH@Z	18	-	NO-OWNER
+## leafcmp 0x00BFD5D0
+len 147 147 bytes_equal True
+relocs_equal True
+## leafcmp 0x00BFD390
+len 18 18 bytes_equal True
+relocs_equal True
+## objsec (leaf renamed)
+sections head 4 new 4
+ALL_EQ 0
+sections head 2 new 2
+ALL_EQ 0

@@ -1,0 +1,91 @@
+#### 005be028
+1161a1162,1259
+> enum ETutorialCategory {
+>     TUTORIAL_CATEGORY_COUNT = 95
+> };
+1163c1261
+<     bool GiveTutorialForCategory(long category, bool force);
+>     bool GiveTutorialForCategory(ETutorialCategory category, bool force);
+1229c1327
+<                 hero->GiveTutorialForCategory(3, false);
+>                 hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_BASIC_OBJECTS, false);
+1231,1232c1329,1330
+<                 hero->GiveTutorialForCategory(0x20, false);
+<             long category = CTCInventoryItem::GetTutorialCategory(itemDefIndex);
+>                 hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_TRADE_ITEM, false);
+>             ETutorialCategory category = CTCInventoryItem::GetTutorialCategory(itemDefIndex);
+#### 005ee418
+848a849,946
+> enum ETutorialCategory {
+>     TUTORIAL_CATEGORY_COUNT = 95
+> };
+850c948
+<     bool GiveTutorialForCategory(long category, bool force);
+>     bool GiveTutorialForCategory(ETutorialCategory category, bool force);
+998c1096
+<                 hero->GiveTutorialForCategory(2, false);
+>                 hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_ABILITY_CYCLING, false);
+#### 006d77c0
+1553c1553,1651
+< class CTCHero { public: bool GiveTutorialForCategory(long category, bool force); };
+> enum ETutorialCategory {
+>     TUTORIAL_CATEGORY_COUNT = 95
+> };
+> class CTCHero { public: bool GiveTutorialForCategory(ETutorialCategory category, bool force); };
+1656c1754
+<             hero->GiveTutorialForCategory(0x18, false);
+>             hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_LEVELLING_UP, false);
+#### 0072e940
+1686a1687,1784
+> enum ETutorialCategory {
+>     TUTORIAL_CATEGORY_COUNT = 95
+> };
+1688c1786
+<     bool GiveTutorialForCategory(long category, bool force);
+>     bool GiveTutorialForCategory(ETutorialCategory category, bool force);
+1834c1932
+<         if (hero->GetTC(TCI_HERO, &heroTC) && heroTC->GiveTutorialForCategory(0x23, false))
+>         if (hero->GetTC(TCI_HERO, &heroTC) && heroTC->GiveTutorialForCategory(TUTORIAL_CATEGORY_BUILDING_OWNERSHIP, false))
+#### 0077d4b0
+1436a1437,1534
+> enum ETutorialCategory {
+>     TUTORIAL_CATEGORY_COUNT = 95
+> };
+1438c1536
+<     bool GiveTutorialForCategory(long category, bool force);
+>     bool GiveTutorialForCategory(ETutorialCategory category, bool force);
+1515c1613
+<         if (hero->GetTC(TCI_HERO, &heroTC) && heroTC && heroTC->GiveTutorialForCategory(0xf, false)) {
+>         if (hero->GetTC(TCI_HERO, &heroTC) && heroTC && heroTC->GiveTutorialForCategory(TUTORIAL_CATEGORY_EXPERIENCE_SPENDING, false)) {
+#### 00784600
+1454a1455,1552
+> enum ETutorialCategory {
+>     TUTORIAL_CATEGORY_COUNT = 95
+> };
+1456c1554
+<     bool GiveTutorialForCategory(long category, bool force);
+>     bool GiveTutorialForCategory(ETutorialCategory category, bool force);
+1612c1710
+<                 hero->GiveTutorialForCategory(5, false);
+>                 hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_BOASTING, false);
+#### 007e00d0
+1452a1453,1550
+> enum ETutorialCategory {
+>     TUTORIAL_CATEGORY_COUNT = 95
+> };
+1454c1552
+<     bool GiveTutorialForCategory(long category, bool force);
+>     bool GiveTutorialForCategory(ETutorialCategory category, bool force);
+1665c1763
+<                 if (heroTC && heroTC->GiveTutorialForCategory(0x1f, false)) {
+>                 if (heroTC && heroTC->GiveTutorialForCategory(TUTORIAL_CATEGORY_TELEPORTING, false)) {
+#### 0091e050
+1768a1769,1770
+> enum EAIActionReturn {AI_ACTION_NULL=0,AI_ACTION_TERMINATE_PROCESS=1,AI_ACTION_FINISHED=2,AI_ACTION_FAILED=3,AI_ACTION_IN_PROGRESS=4};
+> enum EAIActionRepeat {ACTION_REPEAT_UNTIL_FINISHED=1,ACTION_REPEAT_CALLBACK=2};
+1789c1791
+<     long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);
+>     protected: EAIActionReturn AIAction_CombatPerformActionAndWait(const CCombatActionBase& action, bool wait); public:
+1844c1846
+<         if (AIAction_CombatPerformActionAndWait(action, false) != 2) {
+>         if (AIAction_CombatPerformActionAndWait(*action, false) != 2) {

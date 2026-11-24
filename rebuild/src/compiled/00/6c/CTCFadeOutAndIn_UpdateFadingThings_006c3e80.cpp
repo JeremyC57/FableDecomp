@@ -162,7 +162,7 @@ public:
     float Alpha;                                        // +0x10
     long FramesLeftForFade;                             // +0x14
     std::vector<CIntelligentPointer<CThing> > FadingThings;   // +0x18
-    void AddCarriedThingsOfThingToFadeList(const CThing& thing);   // 0x006C3CA0
+    private: void AddCarriedThingsOfThingToFadeList(const CThing& thing); public:   // 0x006C3CA0
     void UpdateFadingThings();
 };
 

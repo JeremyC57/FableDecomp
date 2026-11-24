@@ -108,8 +108,10 @@ private: public:                            // interface 0x4B
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
     void SetAlwaysUpdate(bool always);                  // 0x006E0590
 };
+#define FABLE_RETAIL_TUTORIAL_CATEGORIES_PASS26   // NF315: the shared ETutorialCategory enum (Ego_d TPI 0xCE58) for the PDB parameter type
+#include "engine/ETutorialCategory.h"
 class CTCHero { public:                                        // interface 0x29
-    bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
+    bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0 (NF315: ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z, Ego_r + FableWin)
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
@@ -228,7 +230,7 @@ void CTCTeleporter::FrameUpdate()
             if (!HeroInsideRadius) {
                 HeroInsideRadius = true;
                 CTCHero* heroTC = hero->GetInterface<CTCHero>(0x29);
-                if (heroTC && heroTC->GiveTutorialForCategory(0x1f, false)) {
+                if (heroTC && heroTC->GiveTutorialForCategory(TUTORIAL_CATEGORY_TELEPORTING, false)) {
                     WaitingForTutorialToFinish = true;
                     return;
                 }

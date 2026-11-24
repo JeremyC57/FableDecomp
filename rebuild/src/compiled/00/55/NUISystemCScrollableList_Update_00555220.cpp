@@ -1,5 +1,5 @@
 // NUISystem::CScrollableList::Update(float) -- after the arrow delay runs out, re-arm the visible rows and the shown arrows as event observers
-// Leaf: Update
+// Leaf: ?Update@CScrollableList@NUISystem@@UAEXM@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail 0x00555220, 368 bytes, ret 4. Callees: CChangingStateComponent::Update 0x0052C7E0, CFrontEndManager::GetInstance
 // 0x0041E5F2 and its AddObserver (slot 2, +0x08); the components' CObserver virtuals (base at +4): ProcessEvent slot 1,
@@ -56,7 +56,7 @@ class CScrollableList : public CChangingStateComponent { public:
     CComponent*   PDownArrow;            // +0x174
     bool          ShowUpArrow;           // +0x178
     bool          ShowDownArrow;         // +0x179
-    void Update(float dt);
+    virtual void Update(float dt);       // primary vftable slot 1: rtti-vtables NUISystem::CScrollableList slot 1; PDB UAE
 };
 
 void CScrollableList::Update(float dt)

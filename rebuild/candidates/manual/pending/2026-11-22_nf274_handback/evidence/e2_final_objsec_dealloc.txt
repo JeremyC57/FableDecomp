@@ -1,0 +1,19 @@
+## objsec HEAD v final rows/00bda150.cpp object
+sections head 50 new 50
+ALL_EQ 0
+## objsec S1 v final 00bda150
+ALL_EQ 0
+## objsec HEAD v final rows/00bd9ce0.cpp object
+sections head 50 new 50
+ALL_EQ 0
+## objsec S1 v final 00bd9ce0
+ALL_EQ 0
+## Deallocate copies (pk against 0x009A4350, FableWin ?Deallocate@CMemoryAllocator@@SIXPAX@Z out of line, and 0x009F2B20)
+H_00bda150@009a4350	?Deallocate@CMemoryAllocator@@SIXPAX@Z	63	009a4350	NEQ:bytes(63 v 92)
+H_00bda150@009f2b20	?Deallocate@CMemoryAllocator@@SIXPAX@Z	63	009f2b20	NEQ:bytes(63 v 108)
+S1_00bda150@009a4350	?Deallocate@CMemoryAllocator@@SIXPAX@Z	63	009a4350	NEQ:bytes(63 v 92)
+S1_00bda150@009f2b20	?Deallocate@CMemoryAllocator@@SIXPAX@Z	63	009f2b20	NEQ:bytes(63 v 108)
+S3_00bda150@009a4350	?Deallocate@CMemoryAllocator@@SIXPAX@Z	92	009a4350	EQ
+S3_00bda150@009f2b20	?Deallocate@CMemoryAllocator@@SIXPAX@Z	92	009f2b20	NEQ:bytes(92 v 108)
+H_00bd9b90@009a4350	?Deallocate@CMemoryAllocator@@SIXPAX@Z	92	009a4350	EQ
+H_00bd9b90@009f2b20	?Deallocate@CMemoryAllocator@@SIXPAX@Z	92	009f2b20	NEQ:bytes(92 v 108)

@@ -35,7 +35,7 @@ struct CFloatVector {                                        // STLport vector<f
 
 class CGameDefinitionManager { public: };
 class CWorldMap { public:
-    const CGameDefinitionManager& PeekDefinitionManager() const;      // 0x004FB310
+    protected: const CGameDefinitionManager& PeekDefinitionManager() const; public:      // 0x004FB310
     bool IsPosPassable(const C2DCoordI& pos) const;                   // 0x004FCBD0
     void GetImpassabilityFactorAround(const C3DVector& pos, CFloatVector& factors, bool unused) const;
 };

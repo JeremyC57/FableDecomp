@@ -1,0 +1,243 @@
+## HEAD set: H_004aa8d0.obj H_004aa900.obj H_004aa940.obj H_004aa9a0.obj H_004aa9e0.obj H_004aaa40.obj H_004ab150.obj 004aa930.obj 008a8af0.obj 00d17470.obj 00d38000.obj 00d387a0.obj 00d75060.obj 00dd9520.obj 00ddae40.obj 00ddb720.obj 00df6010.obj 00e03f70.obj 00e0de90.obj 00e2b090.obj 00e338e0.obj 00e4e0e0.obj 00e5ebd0.obj 00e6a0b0.obj 00e9cb20.obj 00edbd80.obj 00ee2a80.obj
+duplicates 0
+UNRESOLVED 1 ?Alloc@CAS_Ambusher@CV_AmbushScamScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CAS_Buddy@CV_AmbushScamScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CAS_Trickster@CV_AmbushScamScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CIsAGuard@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceStartingGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceWinningPostGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRacer@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_BanditFighter@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_BanditFollower@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_Villager@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+UNRESOLVED 3 ?AskHeroQuestion@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDABVCCharString@@22_N3@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_PrisonRaceScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_TraderConflictEvilScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_AmbushScamScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 16 ?DecrementScriptCounter@CScriptThing@@UAEXXZ
+UNRESOLVED 3 ?FireProjectileWeaponAtTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z
+UNRESOLVED 3 ?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z
+UNRESOLVED 3 ?FollowThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@M_N@Z
+UNRESOLVED 16 ?GetActivationTriggerStatus@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?GetCurrentMapName@CScriptThing@@UBE?AVCCharString@@XZ
+UNRESOLVED 16 ?GetCurrentScriptPriority@CScriptThing@@UBE?AW4EScriptAIPriority@@XZ
+UNRESOLVED 16 ?GetCurrentStateGroupType@CScriptThing@@UBE?AW4EAIStateGroupType@@XZ
+UNRESOLVED 1 ?GetDistanceBetweenThings@@YIMABVCScriptThing@@0@Z
+UNRESOLVED 16 ?GetFocalPos@CScriptThing@@UBE?AVC3DVector@@XZ
+UNRESOLVED 16 ?GetHomeMapName@CScriptThing@@UBE?AVCCharString@@XZ
+UNRESOLVED 16 ?GetHomePos@CScriptThing@@UBE?AVC3DVector@@XZ
+UNRESOLVED 16 ?GetName@CScriptThing@@UBEABVCCharString@@XZ
+UNRESOLVED 16 ?GetPThing@CScriptThing@@UBEPAVCThing@@XZ
+UNRESOLVED 16 ?GetPThingUniqueID@CScriptThing@@UBE_KXZ
+UNRESOLVED 16 ?GetScriptCounter@CScriptThing@@UAEJXZ
+UNRESOLVED 3 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+UNRESOLVED 1 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ
+UNRESOLVED 16 ?IncrementScriptCounter@CScriptThing@@UAEXXZ
+UNRESOLVED 16 ?IsAwareOfHero@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 3 ?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z
+UNRESOLVED 1 ?IsDistanceFromThingToPositionOver@@YI_NABVCScriptThing@@ABVC3DVector@@M@Z
+UNRESOLVED 16 ?IsEqualTo@CScriptThing@@MBE_NABV1@@Z
+UNRESOLVED 3 ?IsFollowActionRunning@CScriptGameResourceObjectScriptedThingBase@@UBE_NABVCScriptThing@@@Z
+UNRESOLVED 16 ?IsOpenDoor@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsSneaking@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsSummonedCreature@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsUnconscious@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsUsable@CScriptThing@@UBE_NXZ
+UNRESOLVED 3 ?MoveToAndPickUpGenericBox@CScriptGameResourceObjectScriptedThingBase@@UAEXAAVCScriptThing@@W4EScriptEntityMoveType@@_N@Z
+UNRESOLVED 3 ?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z
+UNRESOLVED 16 ?MsgAttackedWithBareHandsWithoutHittingAnything@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgAttackedWithMeleeWeaponWithoutHittingAnything@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgExpressionPerformedTo@CScriptThing@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 16 ?MsgGetThingsKilled@CScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z
+UNRESOLVED 16 ?MsgHitEnemyWithBareHands@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitEnemyWithMeleeWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitEnemyWithRangedWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitFriendWithBareHands@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitFriendWithMeleeWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitFriendWithRangedWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHowLongWasExpressionPerformed@CScriptThing@@UBEJXZ
+UNRESOLVED 16 ?MsgIsHitBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByWithDecapitate@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByWithFlourish@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByWithProjectileWeapon@CScriptThing@@UBE_NABVCCharString@@AAM@Z
+UNRESOLVED 16 ?MsgIsHitByWithWeapon@CScriptThing@@UBE_NABVCCharString@@0@Z
+UNRESOLVED 16 ?MsgIsKicked@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgIsKilledBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsKnockedOutBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsPresentedWithItem@CScriptThing@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsTalkedToBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsTriggeredBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsUsedBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgOnCutSceneAnimEvent@CScriptThing@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 16 ?MsgOnMoralityChanged@CScriptThing@@UBE_NAAJ@Z
+UNRESOLVED 16 ?MsgOpenedChest@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedAnyAggressiveSpecialAbility@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedAnyNonAggressiveSpecialAbility@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedAnySpecialAbility@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedFlourish@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedSpecialAbility@CScriptThing@@UBE_NW4EHeroAbility@@@Z
+UNRESOLVED 16 ?MsgPerformedSuccessfulFlourish@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgReceivedInventoryItem@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgReceivedMoney@CScriptThing@@UBE_NAAJ@Z
+UNRESOLVED 16 ?MsgTalkedToAnyone@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgWhoExpressedToMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 16 ?MsgWhoHitMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 16 ?MsgWhoKilledMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 16 ?MsgWhoKnockedMeOut@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 16 ?MsgWhoTalkedToMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 10 ?NullCoord@CScriptThing@@1VC3DVector@@A
+UNRESOLVED 10 ?NullString@CScriptThing@@2VCCharString@@A
+UNRESOLVED 3 ?PerformExpression@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@ABVCCharString@@@Z
+UNRESOLVED 16 ?SetActivationTriggerStatus@CScriptThing@@UAEX_N@Z
+UNRESOLVED 16 ?SetAsUsable@CScriptThing@@UAEX_N@Z
+UNRESOLVED 16 ?SetFriendsWithEverythingFlag@CScriptThing@@UAEX_N@Z
+UNRESOLVED 16 ?SetToKillOnLevelUnload@CScriptThing@@UAEX_N@Z
+UNRESOLVED 3 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelectionMethod@@_N22@Z
+UNRESOLVED 3 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+UNRESOLVED 3 ?StopFollowingThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z
+UNRESOLVED 3 ?SummonerLightningOrbAttackTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z
+UNRESOLVED 16 ?UpdateThingAttachment@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z
+UNRESOLVED 1 ?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@@Z
+## new set: 004aa8d0.obj 004aa900.obj 004aa940.obj 004aa9a0.obj 004aa9e0.obj 004aaa40.obj 004ab150.obj 004aa930.obj 008a8af0.obj 00d17470.obj 00d38000.obj 00d387a0.obj 00d75060.obj 00dd9520.obj 00ddae40.obj 00ddb720.obj 00df6010.obj 00e03f70.obj 00e0de90.obj 00e2b090.obj 00e338e0.obj 00e4e0e0.obj 00e5ebd0.obj 00e6a0b0.obj 00e9cb20.obj 00edbd80.obj 00ee2a80.obj
+duplicates 23
+  DUP 008a8af0.obj ?IsNull@CScriptThing@@UBE_NXZ in 004ab150.obj;
+  DUP 00d17470.obj ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z in 004aa930.obj;
+  DUP 00d38000.obj ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z in 004aa930.obj;
+  DUP 00d387a0.obj ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z in 004aa930.obj;
+  DUP 00d75060.obj ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ in 004aa900.obj;
+  DUP 00dd9520.obj ?GetAngleXY@CScriptThing@@UBEMXZ in 004aaa40.obj;
+  DUP 00ddae40.obj ?GetAngleXY@CScriptThing@@UBEMXZ in 004aaa40.obj;
+  DUP 00ddb720.obj ?GetAngleXY@CScriptThing@@UBEMXZ in 004aaa40.obj;
+  DUP 00df6010.obj ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ in 004aa900.obj;
+  DUP 00e03f70.obj ?GetAngleXY@CScriptThing@@UBEMXZ in 004aaa40.obj;
+  DUP 00e0de90.obj ?IsNull@CScriptThing@@UBE_NXZ in 004ab150.obj;
+  DUP 00e2b090.obj ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ in 004aa900.obj;
+  DUP 00e338e0.obj ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z in 004aa930.obj;
+  DUP 00e4e0e0.obj ?GetAngleXY@CScriptThing@@UBEMXZ in 004aaa40.obj;
+  DUP 00e5ebd0.obj ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ in 004aa900.obj;
+  DUP 00e6a0b0.obj ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ in 004aa8d0.obj;
+  DUP 00e6a0b0.obj ?IsNull@CScriptThing@@UBE_NXZ in 004ab150.obj;
+  DUP 00e9cb20.obj ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ in 004aa8d0.obj;
+  DUP 00e9cb20.obj ?IsNull@CScriptThing@@UBE_NXZ in 004ab150.obj;
+  DUP 00edbd80.obj ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ in 004aa8d0.obj;
+  DUP 00edbd80.obj ?IsNull@CScriptThing@@UBE_NXZ in 004ab150.obj;
+  DUP 00ee2a80.obj ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ in 004aa8d0.obj;
+  DUP 00ee2a80.obj ?IsNull@CScriptThing@@UBE_NXZ in 004ab150.obj;
+UNRESOLVED 1 ?Alloc@CAS_Ambusher@CV_AmbushScamScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CAS_Buddy@CV_AmbushScamScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CAS_Trickster@CV_AmbushScamScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CIsAGuard@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceStartingGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceWinningPostGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRacer@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_BanditFighter@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_BanditFollower@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_Villager@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+UNRESOLVED 3 ?AskHeroQuestion@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDABVCCharString@@22_N3@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_PrisonRaceScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_TraderConflictEvilScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_AmbushScamScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 16 ?DecrementScriptCounter@CScriptThing@@UAEXXZ
+UNRESOLVED 3 ?FireProjectileWeaponAtTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z
+UNRESOLVED 3 ?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z
+UNRESOLVED 3 ?FollowThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@M_N@Z
+UNRESOLVED 16 ?GetActivationTriggerStatus@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?GetCurrentScriptPriority@CScriptThing@@UBE?AW4EScriptAIPriority@@XZ
+UNRESOLVED 16 ?GetCurrentStateGroupType@CScriptThing@@UBE?AW4EAIStateGroupType@@XZ
+UNRESOLVED 1 ?GetDistanceBetweenThings@@YIMABVCScriptThing@@0@Z
+UNRESOLVED 16 ?GetHomeMapName@CScriptThing@@UBE?AVCCharString@@XZ
+UNRESOLVED 16 ?GetName@CScriptThing@@UBEABVCCharString@@XZ
+UNRESOLVED 16 ?GetPThing@CScriptThing@@UBEPAVCThing@@XZ
+UNRESOLVED 16 ?GetPThingUniqueID@CScriptThing@@UBE_KXZ
+UNRESOLVED 16 ?GetScriptCounter@CScriptThing@@UAEJXZ
+UNRESOLVED 3 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+UNRESOLVED 1 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ
+UNRESOLVED 16 ?IncrementScriptCounter@CScriptThing@@UAEXXZ
+UNRESOLVED 16 ?IsAwareOfHero@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 3 ?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z
+UNRESOLVED 1 ?IsDistanceFromThingToPositionOver@@YI_NABVCScriptThing@@ABVC3DVector@@M@Z
+UNRESOLVED 16 ?IsEqualTo@CScriptThing@@MBE_NABV1@@Z
+UNRESOLVED 3 ?IsFollowActionRunning@CScriptGameResourceObjectScriptedThingBase@@UBE_NABVCScriptThing@@@Z
+UNRESOLVED 16 ?IsOpenDoor@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsSneaking@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsSummonedCreature@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsUnconscious@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?IsUsable@CScriptThing@@UBE_NXZ
+UNRESOLVED 3 ?MoveToAndPickUpGenericBox@CScriptGameResourceObjectScriptedThingBase@@UAEXAAVCScriptThing@@W4EScriptEntityMoveType@@_N@Z
+UNRESOLVED 3 ?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z
+UNRESOLVED 16 ?MsgAttackedWithBareHandsWithoutHittingAnything@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgAttackedWithMeleeWeaponWithoutHittingAnything@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgExpressionPerformedTo@CScriptThing@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 16 ?MsgGetThingsKilled@CScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z
+UNRESOLVED 16 ?MsgHitEnemyWithBareHands@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitEnemyWithMeleeWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitEnemyWithRangedWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitFriendWithBareHands@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitFriendWithMeleeWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHitFriendWithRangedWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgHowLongWasExpressionPerformed@CScriptThing@@UBEJXZ
+UNRESOLVED 16 ?MsgIsHitBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByWithDecapitate@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByWithFlourish@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsHitByWithProjectileWeapon@CScriptThing@@UBE_NABVCCharString@@AAM@Z
+UNRESOLVED 16 ?MsgIsHitByWithWeapon@CScriptThing@@UBE_NABVCCharString@@0@Z
+UNRESOLVED 16 ?MsgIsKicked@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgIsKilledBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsKnockedOutBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsPresentedWithItem@CScriptThing@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsTalkedToBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsTriggeredBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgIsUsedBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 16 ?MsgOnCutSceneAnimEvent@CScriptThing@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 16 ?MsgOnMoralityChanged@CScriptThing@@UBE_NAAJ@Z
+UNRESOLVED 16 ?MsgOpenedChest@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedAnyAggressiveSpecialAbility@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedAnyNonAggressiveSpecialAbility@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedAnySpecialAbility@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedFlourish@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgPerformedSpecialAbility@CScriptThing@@UBE_NW4EHeroAbility@@@Z
+UNRESOLVED 16 ?MsgPerformedSuccessfulFlourish@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgReceivedInventoryItem@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgReceivedMoney@CScriptThing@@UBE_NAAJ@Z
+UNRESOLVED 16 ?MsgTalkedToAnyone@CScriptThing@@UBE_NXZ
+UNRESOLVED 16 ?MsgWhoExpressedToMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 16 ?MsgWhoHitMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 16 ?MsgWhoKilledMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 16 ?MsgWhoKnockedMeOut@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 16 ?MsgWhoTalkedToMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 10 ?NullCoord@CScriptThing@@1VC3DVector@@A
+UNRESOLVED 10 ?NullString@CScriptThing@@2VCCharString@@A
+UNRESOLVED 3 ?PerformExpression@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@ABVCCharString@@@Z
+UNRESOLVED 16 ?SetActivationTriggerStatus@CScriptThing@@UAEX_N@Z
+UNRESOLVED 16 ?SetAsUsable@CScriptThing@@UAEX_N@Z
+UNRESOLVED 16 ?SetFriendsWithEverythingFlag@CScriptThing@@UAEX_N@Z
+UNRESOLVED 16 ?SetToKillOnLevelUnload@CScriptThing@@UAEX_N@Z
+UNRESOLVED 3 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelectionMethod@@_N22@Z
+UNRESOLVED 3 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+UNRESOLVED 3 ?StopFollowingThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z
+UNRESOLVED 3 ?SummonerLightningOrbAttackTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z
+UNRESOLVED 16 ?UpdateThingAttachment@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z
+UNRESOLVED 1 ?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@@Z
+LK_DONE

@@ -1,0 +1,4 @@
+00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	x1
+004126e0	?_M_fill_insert@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXPAVCWideString@@IABV3@@Z	x1
+0099aed0	??0CWideString@@QAE@XZ	x1
+0099b510	??1CWideString@@QAE@XZ	x2

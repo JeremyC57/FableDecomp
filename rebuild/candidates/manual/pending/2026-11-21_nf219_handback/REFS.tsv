@@ -1,0 +1,799 @@
+target	site	row	row_name	kind
+0099b4d0	0099b5c2	0099b560	CWideString::MakeOwnCopyOfData	call
+0099b4d0	0099b5d3	0099b560	CWideString::MakeOwnCopyOfData	call
+0099b4d0	0099b646	-		call
+0099b4d0	0099b657	-		call
+0099b4d0	0099b74b	0099b720	CWideString::CWideString	call
+0099b4d0	0099b7e8	0099b7d0	CWideString::operator=	call
+0099b4d0	0099be1f	0099bdb0	CWideString::GetSubString	call
+0099b4d0	0099bedc	0099be70	operator+	call
+0099b4d0	0099bf9c	0099bf30	operator+	call
+0099b4d0	0099c031	0099bff0	_global::operator+	call
+0099b4d0	0099c0d4	-		call
+0099b4d0	0099c18c	0099c120	operator+	call
+0099b4d0	0099c3f6	-		call
+0099b4d0	0099ce98	-		call
+0099e9b0	0099eae0	0099eae0	CCharString::~CCharString	call
+0099e9b0	0099eb24	0099eaf0	CCharString::MakeOwnCopyOfData	call
+0099e9b0	0099eb33	0099eaf0	CCharString::MakeOwnCopyOfData	call
+0099e9b0	0099eb79	0099eb40	CCharString::MakeOwnCopyOfDataOrEmptyString	call
+0099e9b0	0099eb89	0099eb40	CCharString::MakeOwnCopyOfDataOrEmptyString	call
+0099e9b0	0099ec06	0099ebf0	CCharString::CCharString	call
+0099e9b0	0099ec56	0099ec30	CCharString::CCharString	call
+0099e9b0	0099ecdf	0099ec70	CCharString::GetSubString	call
+0099e9b0	0099ecf1	0099ec70	CCharString::GetSubString	call
+0099e9b0	0099ed6f	0099ed10	CCharString::GetAsLowerCase	call
+0099e9b0	0099edc2	0099ed10	CCharString::GetAsLowerCase	call
+0099e9b0	0099ee7f	0099ee20	CCharString::GetAsUpperCase	call
+0099e9b0	0099eed9	0099ee20	CCharString::GetAsUpperCase	call
+0099e9b0	0099ef48	0099ef40	CCharString::SetAsSubString	call
+0099e9b0	0099efc1	0099efb0	CCharString::operator=	call
+0099e9b0	0099efe9	0099efe0	CCharString::operator=	call
+0099e9b0	0099f056	0099f040	CCharString::operator=	call
+0099e9b0	0099f258	0099f1f0	CCharString::Sprintf	call
+0099e9b0	0099f2f0	0099f2e0	CCharString::LoadFromFile	call
+0099e9b0	0099f4a1	0099f450	CCharString::RemoveWhiteSpaceBegin	call
+0099e9b0	0099f4b7	0099f450	CCharString::RemoveWhiteSpaceBegin	call
+0099e9b0	0099f533	0099f4d0	CCharString::RemoveWhiteSpaceEnd	call
+0099e9b0	0099f549	0099f4d0	CCharString::RemoveWhiteSpaceEnd	call
+0099e9b0	0099f5ca	-		call
+0099e9b0	0099f5e0	-		call
+0099e9b0	0099f65a	-		call
+0099e9b0	0099f670	-		call
+0099e9b0	0099f707	0099f690	operator+(const char*, const CCharString&)	call
+0099e9b0	0099f71d	0099f690	operator+(const char*, const CCharString&)	call
+0099e9b0	0099f775	-		call
+0099e9b0	0099f78b	-		call
+0099e9b0	0099f7fa	-		call
+0099e9b0	0099f810	-		call
+0099e9b0	0099f87e	0099f830	GFIntToCharString	call
+0099e9b0	0099f894	0099f830	GFIntToCharString	call
+0099e9b0	0099f8fe	0099f8b0	_global::GFUIntToCharString	call
+0099e9b0	0099f914	0099f8b0	_global::GFUIntToCharString	call
+0099e9b0	0099f987	0099f930	GFUHUGEToCharString	call
+0099e9b0	0099f99d	0099f930	GFUHUGEToCharString	call
+0099e9b0	0099f9d4	0099f9b0	_global::GFBoolToCharString	call
+0099e9b0	0099fa09	0099f9b0	_global::GFBoolToCharString	call
+0099e9b0	0099fa66	0099fa50	CCharString::CCharString	call
+0099e9b0	0099fb1b	0099fa90	_global::GFByteSizeToCharString	call
+0099e9b0	0099fb47	0099fa90	_global::GFByteSizeToCharString	call
+0099e9b0	0099fbb4	-		call
+0099e9b0	0099fbeb	-		call
+0099e9b0	0099fc34	-		call
+0099e9b0	0099fc77	-		call
+0099e9b0	0099fca8	-		call
+0099e9b0	009a0861	-		call
+0099e9b0	009a0888	009a0880	CCharString::SetAsSubString	call
+0099e9b0	009a09f1	-		call
+0099e9b0	009a0a3c	-		call
+00c44550	00c3cf30	00c3cf30	_global::TailJmp_Release_00c3cf30	call
+00c44550	00c3cf78	00c3cf40	CAIStateGroup_CreatureUseCoverBase::~CAIStateGroup_CreatureUseCoverBase	call
+00c443d0	00c437d1	00c437c0	CAudioObject::FlushQueue	call
+00c443d0	00c43821	00c43810	CAudioObject::ReleaseQueue	call
+00c44550	00c43851	00c43810	CAudioObject::ReleaseQueue	call
+00c44360	00c43f1b	00c43ec0	CExclusiveAssert::CExclusiveAssert::OnQuestItemUsed	call
+00c44550	00c43f3f	00c43ec0	CExclusiveAssert::CExclusiveAssert::OnQuestItemUsed	call
+00c443d0	00c4455a	00c44550	CMarkedBuffer_00c44550::Release	call
+00c3cf30	01214f8e	01214f88	_global::Unwind@01214f88	call
+0099e9b0	0122a5e5	0122a5e0	std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	call
+013bd800	.text	0099e4ba	0099e4b0	CCharString::CCharString	absref
+013bd800	.text	0099eae7	0099eae0	CCharString::~CCharString	absref
+013bd800	.text	0099ebfb	0099ebf0	CCharString::CCharString	absref
+013bd800	.text	0099ec3b	0099ec30	CCharString::CCharString	absref
+013bd800	.text	0099ec49	0099ec30	CCharString::CCharString	absref
+013bd800	.text	0099ec73	0099ec70	CCharString::GetSubString	absref
+013bd800	.text	0099ec7e	0099ec70	CCharString::GetSubString	absref
+013bd800	.text	0099ecc5	0099ec70	CCharString::GetSubString	absref
+013bd800	.text	0099ecd2	0099ec70	CCharString::GetSubString	absref
+013bd800	.text	0099ecf8	0099ec70	CCharString::GetSubString	absref
+013bd800	.text	0099ed15	0099ed10	CCharString::GetAsLowerCase	absref
+013bd800	.text	0099ed24	0099ed10	CCharString::GetAsLowerCase	absref
+013bd800	.text	0099eda8	0099ed10	CCharString::GetAsLowerCase	absref
+013bd800	.text	0099edb5	0099ed10	CCharString::GetAsLowerCase	absref
+013bd800	.text	0099ee13	0099ed10	CCharString::GetAsLowerCase	absref
+013bd800	.text	0099ee25	0099ee20	CCharString::GetAsUpperCase	absref
+013bd800	.text	0099ee34	0099ee20	CCharString::GetAsUpperCase	absref
+013bd800	.text	0099eebf	0099ee20	CCharString::GetAsUpperCase	absref
+013bd800	.text	0099eecc	0099ee20	CCharString::GetAsUpperCase	absref
+013bd800	.text	0099ef2a	0099ee20	CCharString::GetAsUpperCase	absref
+013bd800	.text	0099f4be	0099f450	CCharString::RemoveWhiteSpaceBegin	absref
+013bd800	.text	0099f550	0099f4d0	CCharString::RemoveWhiteSpaceEnd	absref
+013bd800	.text	0099f573	-		absref
+013bd800	.text	0099f5b0	-		absref
+013bd800	.text	0099f5bd	-		absref
+013bd800	.text	0099f5e7	-		absref
+013bd800	.text	0099f603	-		absref
+013bd800	.text	0099f640	-		absref
+013bd800	.text	0099f64d	-		absref
+013bd800	.text	0099f677	-		absref
+013bd800	.text	0099f696	0099f690	operator+(const char*, const CCharString&)	absref
+013bd800	.text	0099f6aa	0099f690	operator+(const char*, const CCharString&)	absref
+013bd800	.text	0099f6f4	0099f690	operator+(const char*, const CCharString&)	absref
+013bd800	.text	0099f724	0099f690	operator+(const char*, const CCharString&)	absref
+013bd800	.text	0099f736	-		absref
+013bd800	.text	0099f762	-		absref
+013bd800	.text	0099f792	-		absref
+013bd800	.text	0099f7a3	-		absref
+013bd800	.text	0099f7e0	-		absref
+013bd800	.text	0099f7ed	-		absref
+013bd800	.text	0099f817	-		absref
+013bd800	.text	0099f836	0099f830	GFIntToCharString	absref
+013bd800	.text	0099f850	0099f830	GFIntToCharString	absref
+013bd800	.text	0099f861	0099f830	GFIntToCharString	absref
+013bd800	.text	0099f86b	0099f830	GFIntToCharString	absref
+013bd800	.text	0099f89b	0099f830	GFIntToCharString	absref
+013bd800	.text	0099f8b6	0099f8b0	_global::GFUIntToCharString	absref
+013bd800	.text	0099f8d0	0099f8b0	_global::GFUIntToCharString	absref
+013bd800	.text	0099f8e1	0099f8b0	_global::GFUIntToCharString	absref
+013bd800	.text	0099f8eb	0099f8b0	_global::GFUIntToCharString	absref
+013bd800	.text	0099f91b	0099f8b0	_global::GFUIntToCharString	absref
+013bd800	.text	0099f933	0099f930	GFUHUGEToCharString	absref
+013bd800	.text	0099f947	0099f930	GFUHUGEToCharString	absref
+013bd800	.text	0099f96a	0099f930	GFUHUGEToCharString	absref
+013bd800	.text	0099f97a	0099f930	GFUHUGEToCharString	absref
+013bd800	.text	0099f9a4	0099f930	GFUHUGEToCharString	absref
+013bd800	.text	0099f9bb	0099f9b0	_global::GFBoolToCharString	absref
+013bd800	.text	0099f9c5	0099f9b0	_global::GFBoolToCharString	absref
+013bd800	.text	0099fa5b	0099fa50	CCharString::CCharString	absref
+013bd800	.text	0099faa4	0099fa90	_global::GFByteSizeToCharString	absref
+013bd800	.text	0099fab9	0099fa90	_global::GFByteSizeToCharString	absref
+013bd800	.text	0099fb22	0099fa90	_global::GFByteSizeToCharString	absref
+013bd800	.text	0099fb4e	0099fa90	_global::GFByteSizeToCharString	absref
+013bd800	.text	0099fb64	-		absref
+013bd800	.text	0099fb71	-		absref
+013bd800	.text	0099fbf1	-		absref
+013bd800	.text	0099fc00	-		absref
+013bd800	.text	0099fc3a	-		absref
+013bd800	.text	0099fc49	-		absref
+013bd800	.text	0099fc82	-		absref
+013bd800	.text	0099fc8e	-		absref
+013bd800	.text	0099fc9b	-		absref
+013bd800	.text	0099fcf9	-		absref
+013bd800	.text	0099fd00	-		absref
+013bd800	.text	0099fd12	-		absref
+013bd800	.text	0099fd22	-		absref
+013bd800	.text	009a08b4	-		absref
+013bd800	.text	009a08d6	-		absref
+013bd800	.text	009a0a23	-		absref
+013bd800	.text	009a0a30	-		absref
+013bd800	.text	009a0a85	-		absref
+013bd800	.text	009a0a8d	-		absref
+013bd800	.text	01223ec7	01223ec0	CCharString::$E_NullString	absref
+013bd800	.text	0122a5ec	0122a5e0	std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	absref
+013bd804	.text	004af3df	004af3c0	CQuestManager::GetRegisteredQuestFromIndex	absref
+013bd804	.text	004af6b3	004af670	CQuestManager::GetAvailableQuestCardDefNameFromScriptName	absref
+013bd804	.text	004b05a8	004b0540	CQuestManager::GetActiveExclusiveQuestName	absref
+013bd804	.text	0077924b	007791f0	CTCDRegionExit::GetRegionName	absref
+013bd804	.text	007792be	00779260	CTCDRegionExit::GetDisplayName	absref
+013bd804	.text	0077932b	007792d0	CTCDRegionExit::GetNameOfRegionConnectingTo	absref
+013bd804	.text	0088e36c	0088e340	CGameScriptInterface::GetRegionName	absref
+013bd804	.text	009cd312	-		absref
+013bd804	.text	0122a5e1	0122a5e0	std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	absref
+00419108	00416e32	00416c8a	CMainGameComponent::InitGraphics	call
+004190b6	0041770d	004175e5	CMainGameComponent::Shutdown	call
+00419108	00417735	004175e5	CMainGameComponent::Shutdown	call
+00419108	00418ba6	00418b7a	CMainGameComponent::~CMainGameComponent	call
+004190b6	00418be5	00418b7a	CMainGameComponent::~CMainGameComponent	call
+00419108	00419141	00419134	CCountedPointer<NUISystem::CAction>::ShareData	call
+004190b6	00419423	-		call
+004190b6	0041942b	00419428	CCountedPointer<CPolymorphicData_00419428>::Reset	call
+00419108	004194b5	004194b5	_global::TailJmp__Dest_val_std__allocator_CCountedPointer_004194b5	call
+00419108	004194d4	004194d1	CCountedPointer<CPolymorphicData_004194D1>::Reset	call
+004194b5	0041b301	0041afa0	NUISystem::CSprite::Draw	call
+004291de	0041deed	0041ded2	NUISystem::CManager::ClearBastardChild	call
+004291de	0041def4	0041ded2	NUISystem::CManager::ClearBastardChild	call
+004291de	0041e695	0041e641	NUISystem::CManager::~CManager	call
+00419108	0041e6c5	0041e641	NUISystem::CManager::~CManager	call
+004291de	0041faef	0041e6d3	NUISystem::CManager::Action	call
+004291de	0041fca5	0041e6d3	NUISystem::CManager::Action	call
+004291de	0041fe38	0041e6d3	NUISystem::CManager::Action	call
+004291de	0041ffcb	0041e6d3	NUISystem::CManager::Action	call
+004291de	00420182	0041e6d3	NUISystem::CManager::Action	call
+004291de	00420315	0041e6d3	NUISystem::CManager::Action	call
+004291de	004204a5	0041e6d3	NUISystem::CManager::Action	call
+004291de	00420678	0041e6d3	NUISystem::CManager::Action	call
+004291de	00420816	0041e6d3	NUISystem::CManager::Action	call
+004291de	004217ee	0041e6d3	NUISystem::CManager::Action	call
+004291de	0042197e	0041e6d3	NUISystem::CManager::Action	call
+004291de	00421b1f	0041e6d3	NUISystem::CManager::Action	call
+004291de	00421cc0	0041e6d3	NUISystem::CManager::Action	call
+004291de	00422010	0041e6d3	NUISystem::CManager::Action	call
+004291de	00422ca5	0041e6d3	NUISystem::CManager::Action	call
+004291de	00422e43	0041e6d3	NUISystem::CManager::Action	call
+004291de	00423a5b	0041e6d3	NUISystem::CManager::Action	call
+004291de	00423f7a	0041e6d3	NUISystem::CManager::Action	call
+004291de	004240a1	0041e6d3	NUISystem::CManager::Action	call
+004291de	004249ca	0041e6d3	NUISystem::CManager::Action	call
+004291de	004249d5	0041e6d3	NUISystem::CManager::Action	call
+004291de	00424aec	0041e6d3	NUISystem::CManager::Action	call
+004291de	00424af7	0041e6d3	NUISystem::CManager::Action	call
+004291de	00424c40	0041e6d3	NUISystem::CManager::Action	call
+004291de	00424c4b	0041e6d3	NUISystem::CManager::Action	call
+004291de	00424c61	0041e6d3	NUISystem::CManager::Action	call
+004291de	00424c77	0041e6d3	NUISystem::CManager::Action	call
+004291de	00424e52	0041e6d3	NUISystem::CManager::Action	call
+004291de	0042530e	0041e6d3	NUISystem::CManager::Action	call
+004291de	00425324	0041e6d3	NUISystem::CManager::Action	call
+004291de	0042532f	0041e6d3	NUISystem::CManager::Action	call
+004291de	0042597a	0041e6d3	NUISystem::CManager::Action	call
+004291de	00425990	0041e6d3	NUISystem::CManager::Action	call
+004291de	0042599b	0041e6d3	NUISystem::CManager::Action	call
+004291de	00425f78	0041e6d3	NUISystem::CManager::Action	call
+004291de	00425f8e	0041e6d3	NUISystem::CManager::Action	call
+004291de	00425f99	0041e6d3	NUISystem::CManager::Action	call
+004291de	00426205	0041e6d3	NUISystem::CManager::Action	call
+004291de	004276af	00427216	NUISystem::CManager::CreateTickSlider	call
+004291de	00427b4d	00427216	NUISystem::CManager::CreateTickSlider	call
+004291de	00427b55	00427216	NUISystem::CManager::CreateTickSlider	call
+004291de	00427b5d	00427216	NUISystem::CManager::CreateTickSlider	call
+004291de	00427db3	00427216	NUISystem::CManager::CreateTickSlider	call
+004291de	00427dbb	00427216	NUISystem::CManager::CreateTickSlider	call
+004291de	004284e9	-		call
+004291de	004285ef	-		call
+004291de	00428848	-		call
+004291de	00428858	-		call
+004291de	00429217	0042920a	CCountedPointer<NUISystem::CComponent>::ShareData	call
+004291de	00429c53	00429c53	CCountedPointer<NUISystem::CComponent>::~CCountedPointer	call
+004291de	00429c72	00429c6f	CCountedPointer<NUISystem::CComponent>::Reset	call
+004291de	00429e1c	00429e16	std::pair<const CCharString, CCountedPointer<NUISystem::CComponent>>::~pair	call
+00419108	0042a9cb	0042a9b7	NUISystem::CManager::SetGraphicsBank	call
+004291de	0042d4b5	0042d45d	std::map<CCharString, CCountedPointer<NUISystem::CComponent> >::operator[]	call
+004291de	0042d4c5	0042d45d	std::map<CCharString, CCountedPointer<NUISystem::CComponent> >::operator[]	call
+0042f974	0042dd4d	0042dd28	CNewFrontendGameComponent::CleanUpInterfaces	call
+00419108	0042dd72	0042dd28	CNewFrontendGameComponent::CleanUpInterfaces	call
+00419108	0042deb3	0042ddb3	CNewFrontendGameComponent::InitialiseGraphics	call
+0042f974	0042f552	0042f50b	CNewFrontendGameComponent::~CNewFrontendGameComponent	call
+0042f9a0	0042f55a	0042f50b	CNewFrontendGameComponent::~CNewFrontendGameComponent	call
+00419108	0042f56a	0042f50b	CNewFrontendGameComponent::~CNewFrontendGameComponent	call
+0042f9a0	0042fbcb	-		call
+0042f974	0042fcff	-		call
+0042f974	0042fd07	0042fd04	CCountedPointer::Reset	call
+0042f9a0	0042fd72	0042fd6f	CCountedPointer::Reset	call
+004291de	00481c22	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00481c2d	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00481c38	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00481c43	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00481c4b	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00482288	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00482293	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	0048229e	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	004822a9	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00482417	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00482c89	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00482c91	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00482ce8	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00482cf0	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00482d2b	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00482d33	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	0048301a	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00483025	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00483030	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	0048303b	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00483046	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00483051	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	0048305c	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	0048306f	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00483082	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	0048308a	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00483092	004804de	CTCInGameMenu::OpenInGameMenuPC	call
+004291de	00484480	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	0048448b	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484496	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	004844a1	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	004844ac	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	004846d0	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	004846db	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	004846e6	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	004846f1	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484859	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484cea	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484cf5	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484d4c	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484d54	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484d8f	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484d97	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484efc	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484f07	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484f12	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484f1d	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484f28	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484f33	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484f3e	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484f51	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00484f64	004830a1	CTCInGameMenu::OpenInGameMenu	call
+004291de	00485530	00485524	NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::`scalar_deleting_destructor'	call
+004291de	0053b632	0053b321	NUISystem::CList::RemoveChild	call
+004291de	0053ba46	-		call
+004291de	0053bb2c	-		call
+004291de	0053bc0f	-		call
+004291de	0053bca6	-		call
+004291de	0053bd55	-		call
+004291de	0053bdec	-		call
+00429c53	0054522e	00544d20	NUISystem::CSpellContainerList::ProcessEvent	call
+00429c53	005643ff	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	0056440b	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	00564417	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	00564423	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	0056442c	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	0056448f	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	005644a4	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	005644b0	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	005644bc	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	005644c8	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	005644d4	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	005644e0	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	005644fb	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	00564542	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	0056455a	00563920	CTCHeroOnlineScoreboard::DisplayScoreboardGUI	call
+00429c53	0056bbb9	0056ad40	CTCBoastUI::Activate	call
+00429c53	0056bbce	0056ad40	CTCBoastUI::Activate	call
+00429c53	0056bbe3	0056ad40	CTCBoastUI::Activate	call
+00429c53	0056bbfb	0056ad40	CTCBoastUI::Activate	call
+00429c53	0056bc04	0056ad40	CTCBoastUI::Activate	call
+00429c53	0056bc4e	0056ad40	CTCBoastUI::Activate	call
+00429c53	0056bc66	0056ad40	CTCBoastUI::Activate	call
+00419108	0056f25a	0056f177	CTCInventoryExperience::GetExperienceStatPic	call
+004291de	0056f858	0056f69f	CTCInventoryExperience::AddMagicCategoryToList	call
+004291de	0056f860	0056f69f	CTCInventoryExperience::AddMagicCategoryToList	call
+004291de	0056f868	0056f69f	CTCInventoryExperience::AddMagicCategoryToList	call
+004291de	0056f870	0056f69f	CTCInventoryExperience::AddMagicCategoryToList	call
+004291de	0056f878	0056f69f	CTCInventoryExperience::AddMagicCategoryToList	call
+004291de	0056fa8b	0056f8a4	CTCInventoryExperience::AddMagicCategoryToListPC	call
+004291de	0056fa93	0056f8a4	CTCInventoryExperience::AddMagicCategoryToListPC	call
+004291de	0056fa9b	0056f8a4	CTCInventoryExperience::AddMagicCategoryToListPC	call
+004291de	0056faa3	0056f8a4	CTCInventoryExperience::AddMagicCategoryToListPC	call
+004291de	0056faab	0056f8a4	CTCInventoryExperience::AddMagicCategoryToListPC	call
+004291de	005710c1	00570332	CTCInventoryExperience::AddAbilityToList	call
+004291de	005710c9	00570332	CTCInventoryExperience::AddAbilityToList	call
+004291de	005711f4	00570332	CTCInventoryExperience::AddAbilityToList	call
+004291de	0057120c	00570332	CTCInventoryExperience::AddAbilityToList	call
+004291de	00571239	00570332	CTCInventoryExperience::AddAbilityToList	call
+004291de	00571241	00570332	CTCInventoryExperience::AddAbilityToList	call
+004291de	00571251	00570332	CTCInventoryExperience::AddAbilityToList	call
+004291de	00571261	00570332	CTCInventoryExperience::AddAbilityToList	call
+004291de	00571269	00570332	CTCInventoryExperience::AddAbilityToList	call
+004291de	0057203b	00571280	CTCInventoryExperience::AddAbilityToListPC	call
+004291de	00572043	00571280	CTCInventoryExperience::AddAbilityToListPC	call
+004291de	0057216e	00571280	CTCInventoryExperience::AddAbilityToListPC	call
+004291de	00572186	00571280	CTCInventoryExperience::AddAbilityToListPC	call
+004291de	005721b3	00571280	CTCInventoryExperience::AddAbilityToListPC	call
+004291de	005721bb	00571280	CTCInventoryExperience::AddAbilityToListPC	call
+004291de	005721cb	00571280	CTCInventoryExperience::AddAbilityToListPC	call
+004291de	005721db	00571280	CTCInventoryExperience::AddAbilityToListPC	call
+004291de	005721e3	00571280	CTCInventoryExperience::AddAbilityToListPC	call
+004291de	005735ba	005729d8	CTCInventoryExperience::AddStatToList	call
+004291de	005735c2	005729d8	CTCInventoryExperience::AddStatToList	call
+004291de	005736ee	005729d8	CTCInventoryExperience::AddStatToList	call
+004291de	0057370e	005729d8	CTCInventoryExperience::AddStatToList	call
+004291de	00573733	005729d8	CTCInventoryExperience::AddStatToList	call
+004291de	0057373b	005729d8	CTCInventoryExperience::AddStatToList	call
+004291de	0057375b	005729d8	CTCInventoryExperience::AddStatToList	call
+004291de	0057376b	005729d8	CTCInventoryExperience::AddStatToList	call
+004291de	00573773	005729d8	CTCInventoryExperience::AddStatToList	call
+004291de	0057439e	00573792	CTCInventoryExperience::AddStatToListPC	call
+004291de	005743a6	00573792	CTCInventoryExperience::AddStatToListPC	call
+004291de	005744d2	00573792	CTCInventoryExperience::AddStatToListPC	call
+004291de	005744f2	00573792	CTCInventoryExperience::AddStatToListPC	call
+004291de	00574517	00573792	CTCInventoryExperience::AddStatToListPC	call
+004291de	0057451f	00573792	CTCInventoryExperience::AddStatToListPC	call
+004291de	0057453f	00573792	CTCInventoryExperience::AddStatToListPC	call
+004291de	0057454f	00573792	CTCInventoryExperience::AddStatToListPC	call
+004291de	00574557	00573792	CTCInventoryExperience::AddStatToListPC	call
+004291de	005758cb	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	005758d3	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	005758db	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	005758e3	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	005758eb	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	005758f3	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	005758fb	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	00575903	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	00575913	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	0057591b	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	00575923	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	0057592b	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	0057593b	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	00575943	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	0057594b	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	0057595b	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	0057596b	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	00575973	00574885	CTCInventoryExperience::ConstructCategoryStrength	call
+004291de	00576b4c	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576b54	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576b5c	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576b64	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576b6c	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576b74	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576b7c	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576b84	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576b94	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576b9c	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576ba4	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576bac	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576bbc	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576bc4	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576bcc	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576bdc	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576bec	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	00576bf4	005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	call
+004291de	0057766d	00577216	CTCInventoryExperience::OpenInventoryInternal	call
+004291de	005780ab	00577ac0	CTCInventoryExperience::OpenInventoryInternalPC	call
+004291de	00582160	005820e7	CTCInventory::CreateMenuDesc	call
+004291de	005826ec	00582673	CTCInventory::CreateMenuDescPC	call
+004291de	00582f64	00582ace	CTCInventory::ConstructStyleEntry	call
+004291de	00583006	00582ace	CTCInventory::ConstructStyleEntry	call
+004291de	0058300e	00582ace	CTCInventory::ConstructStyleEntry	call
+004291de	0058361a	0058315b	CTCInventory::ConstructStyleEntryPC	call
+004291de	005836be	0058315b	CTCInventory::ConstructStyleEntryPC	call
+004291de	005836c6	0058315b	CTCInventory::ConstructStyleEntryPC	call
+004291de	00584ed0	00584b86	CTCInventory::AssignThingPC	call
+004291de	00584fd7	00584f15	CTCInventory::UnAssignThingPC	call
+004291de	00585e5d	0058578b	CTCInventory::OpenInventory	call
+004291de	005861b1	0058578b	CTCInventory::OpenInventory	call
+004291de	0058749f	0058578b	CTCInventory::OpenInventory	call
+004291de	00587651	0058578b	CTCInventory::OpenInventory	call
+004291de	00587659	0058578b	CTCInventory::OpenInventory	call
+004291de	005876de	0058578b	CTCInventory::OpenInventory	call
+004291de	005876ff	0058578b	CTCInventory::OpenInventory	call
+004291de	00587707	0058578b	CTCInventory::OpenInventory	call
+004291de	0058770f	0058578b	CTCInventory::OpenInventory	call
+004291de	0058a38b	0058a0c7	CTCInventory::ConstructItemEntry	call
+004291de	0058a710	0058a0c7	CTCInventory::ConstructItemEntry	call
+004291de	0058a718	0058a0c7	CTCInventory::ConstructItemEntry	call
+004291de	0058d83d	0058af10	CTCInventory::OpenPCOptionsMenu	call
+004291de	0058dbe5	0058af10	CTCInventory::OpenPCOptionsMenu	call
+004291de	0058e4bb	0058e208	CTCInventory::ConstructItemEntryPC	call
+004291de	0058e983	0058e208	CTCInventory::ConstructItemEntryPC	call
+004291de	0058e98b	0058e208	CTCInventory::ConstructItemEntryPC	call
+004291de	0058e993	0058e208	CTCInventory::ConstructItemEntryPC	call
+004291de	0058f1d4	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f5cb	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f5d3	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f5db	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f5e3	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f5fb	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f603	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f60b	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f61b	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f623	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058f633	0058f016	CTCInventory::ConstructItemCategoryList	call
+004291de	0058ff16	0058f9bc	CTCInventory::OpenPCPhotojournal	call
+004291de	0058ff26	0058f9bc	CTCInventory::OpenPCPhotojournal	call
+004291de	0059006c	0058f9bc	CTCInventory::OpenPCPhotojournal	call
+004291de	00590074	0058f9bc	CTCInventory::OpenPCPhotojournal	call
+004291de	00590084	0058f9bc	CTCInventory::OpenPCPhotojournal	call
+004291de	00590734	00590235	CTCInventory::GetItemsListUIComponent	call
+004291de	0059073c	00590235	CTCInventory::GetItemsListUIComponent	call
+004291de	00590744	00590235	CTCInventory::GetItemsListUIComponent	call
+004291de	005909b6	005907ab	CTCInventory::ConstructItemCategoryListPC	call
+004291de	00590ccc	005907ab	CTCInventory::ConstructItemCategoryListPC	call
+004291de	00590cd4	005907ab	CTCInventory::ConstructItemCategoryListPC	call
+004291de	00590cec	005907ab	CTCInventory::ConstructItemCategoryListPC	call
+004291de	00590cf4	005907ab	CTCInventory::ConstructItemCategoryListPC	call
+004291de	00590d04	005907ab	CTCInventory::ConstructItemCategoryListPC	call
+004291de	00590d0c	005907ab	CTCInventory::ConstructItemCategoryListPC	call
+004291de	00590d1c	005907ab	CTCInventory::ConstructItemCategoryListPC	call
+004291de	00591697	-		call
+004291de	005919f1	-		call
+004291de	005919f9	-		call
+004291de	00591a01	-		call
+00419108	00595998	005958f5	NUISystem::CFrontEndManager::Init	call
+004291de	005962b1	00595cc1	NUISystem::CFrontEndManager::ConstructFileDescription	call
+004291de	005962e9	00595cc1	NUISystem::CFrontEndManager::ConstructFileDescription	call
+004291de	005962f1	00595cc1	NUISystem::CFrontEndManager::ConstructFileDescription	call
+004291de	00596c31	00596a68	NUISystem::CFrontEndManager::CreateFrontEndButtonComponent	call
+004291de	00596c41	00596a68	NUISystem::CFrontEndManager::CreateFrontEndButtonComponent	call
+004291de	00596c49	00596a68	NUISystem::CFrontEndManager::CreateFrontEndButtonComponent	call
+004291de	00596fb0	00596cce	NUISystem::CFrontEndManager::RefreshAvailableProfiles	call
+004291de	00596fda	00596cce	NUISystem::CFrontEndManager::RefreshAvailableProfiles	call
+004291de	00596ff2	00596cce	NUISystem::CFrontEndManager::RefreshAvailableProfiles	call
+004291de	005971ed	00597006	NUISystem::CFrontEndManager::RefreshAvailableProfilesForDelete	call
+004291de	00597214	00597006	NUISystem::CFrontEndManager::RefreshAvailableProfilesForDelete	call
+004291de	0059891c	00598463	NUISystem::CFrontEndManager::RefreshAvailableSavedGamesForProfile	call
+004291de	00598953	00598463	NUISystem::CFrontEndManager::RefreshAvailableSavedGamesForProfile	call
+004291de	0059895b	00598463	NUISystem::CFrontEndManager::RefreshAvailableSavedGamesForProfile	call
+004291de	00598963	00598463	NUISystem::CFrontEndManager::RefreshAvailableSavedGamesForProfile	call
+004291de	0059897b	00598463	NUISystem::CFrontEndManager::RefreshAvailableSavedGamesForProfile	call
+004291de	005992e3	00598a1c	NUISystem::CFrontEndManager::BuildComponents	call
+004291de	005996aa	00598a1c	NUISystem::CFrontEndManager::BuildComponents	call
+004291de	0059cf3d	0059cb90	CTCInventoryTrade::AddWantedItemToList	call
+004291de	0059d19d	0059d0b8	CTCInventoryTrade::FinalConstructSubtitles	call
+004291de	0059d64e	0059d270	CTCInventoryTrade::AddWantedItemToListPC	call
+004291de	0059d74d	0059d65a	CTCInventoryTrade::FinalConstructSubtitlesPC	call
+004291de	0059dcfe	0059db82	CTCInventoryTrade::RefreshEntriesAmountsAndAvailabilities	call
+004291de	0059e839	0059e6bd	CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC	call
+004291de	0059f2f5	0059ed42	CTCInventoryTrade::AddSellItemToList	call
+004291de	0059faef	0059f51e	CTCInventoryTrade::AddSellItemToListPC	call
+004291de	005a04e8	0059fee3	CTCInventoryTrade::AddBuyItemToList	call
+004291de	005a07d3	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a12e3	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a1e1c	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a295e	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a2974	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a297c	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a2992	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a299a	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a29a2	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a29ba	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a29c2	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a29db	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a29e3	005a04f7	CTCInventoryTrade::ConstructNormalShopList	call
+004291de	005a2efb	005a29f4	CTCInventoryTrade::ConstructSpecialShopList	call
+004291de	005a2f0b	005a29f4	CTCInventoryTrade::ConstructSpecialShopList	call
+004291de	005a3067	005a29f4	CTCInventoryTrade::ConstructSpecialShopList	call
+004291de	005a307a	005a29f4	CTCInventoryTrade::ConstructSpecialShopList	call
+004291de	005a3093	005a29f4	CTCInventoryTrade::ConstructSpecialShopList	call
+004291de	005a420b	005a3e47	CTCInventoryTrade::ConstructBuyActionsList	call
+004291de	005a43a4	005a3e47	CTCInventoryTrade::ConstructBuyActionsList	call
+004291de	005a4553	005a3e47	CTCInventoryTrade::ConstructBuyActionsList	call
+004291de	005a45d8	005a3e47	CTCInventoryTrade::ConstructBuyActionsList	call
+004291de	005a45e8	005a3e47	CTCInventoryTrade::ConstructBuyActionsList	call
+004291de	005a493d	005a45f6	CTCInventoryTrade::ConstructSellActionsList	call
+004291de	005a4ab7	005a45f6	CTCInventoryTrade::ConstructSellActionsList	call
+004291de	005a4c58	005a45f6	CTCInventoryTrade::ConstructSellActionsList	call
+004291de	005a4cbf	005a45f6	CTCInventoryTrade::ConstructSellActionsList	call
+004291de	005a4ccf	005a45f6	CTCInventoryTrade::ConstructSellActionsList	call
+004291de	005a5151	005a4cdd	CTCInventoryTrade::ConstructActualSellInventoryPC	call
+004291de	005a5ae6	005a4cdd	CTCInventoryTrade::ConstructActualSellInventoryPC	call
+004291de	005a5afe	005a4cdd	CTCInventoryTrade::ConstructActualSellInventoryPC	call
+004291de	005a5b06	005a4cdd	CTCInventoryTrade::ConstructActualSellInventoryPC	call
+004291de	005a5da5	005a5b31	CTCInventoryTrade::ConstructActualWantedInventoryPC	call
+004291de	005a672d	005a5b31	CTCInventoryTrade::ConstructActualWantedInventoryPC	call
+004291de	005a6745	005a5b31	CTCInventoryTrade::ConstructActualWantedInventoryPC	call
+004291de	005a674d	005a5b31	CTCInventoryTrade::ConstructActualWantedInventoryPC	call
+004291de	005a7310	-		call
+004291de	005a7656	005a731f	CTCInventoryTrade::ConstructSellActionsListPC	call
+004291de	005a77c8	005a731f	CTCInventoryTrade::ConstructSellActionsListPC	call
+004291de	005a7961	005a731f	CTCInventoryTrade::ConstructSellActionsListPC	call
+004291de	005a79c8	005a731f	CTCInventoryTrade::ConstructSellActionsListPC	call
+004291de	005a79d8	005a731f	CTCInventoryTrade::ConstructSellActionsListPC	call
+004291de	005a7d9a	005a79e6	CTCInventoryTrade::ConstructBuyActionsListPC	call
+004291de	005a7f2b	005a79e6	CTCInventoryTrade::ConstructBuyActionsListPC	call
+004291de	005a80d2	005a79e6	CTCInventoryTrade::ConstructBuyActionsListPC	call
+004291de	005a8157	005a79e6	CTCInventoryTrade::ConstructBuyActionsListPC	call
+004291de	005a8167	005a79e6	CTCInventoryTrade::ConstructBuyActionsListPC	call
+004291de	005a91e0	005a8c66	CTCInventoryTrade::ConstructActualSpecialInventoryPC	call
+004291de	005a946d	005a8c66	CTCInventoryTrade::ConstructActualSpecialInventoryPC	call
+004291de	005a9475	005a8c66	CTCInventoryTrade::ConstructActualSpecialInventoryPC	call
+004291de	005a947d	005a8c66	CTCInventoryTrade::ConstructActualSpecialInventoryPC	call
+004291de	005a9485	005a8c66	CTCInventoryTrade::ConstructActualSpecialInventoryPC	call
+004291de	005a948d	005a8c66	CTCInventoryTrade::ConstructActualSpecialInventoryPC	call
+004291de	005a9495	005a8c66	CTCInventoryTrade::ConstructActualSpecialInventoryPC	call
+004291de	005aaf19	005a9cbe	CTCInventoryTrade::ConstructTradeDescriptionWeapon	call
+004291de	005ac0df	005aaf28	CTCInventoryTrade::ConstructTradeDescriptionClothing	call
+004291de	005ac4b1	-		call
+004291de	005ace9e	-		call
+004291de	005aceb6	-		call
+004291de	005acebe	-		call
+004291de	005ae6a1	005ad571	CTCInventoryTrade::ConstructTradeDescription	call
+004291de	005ae77d	005ae6af	CTCInventoryTrade::RefreshDescriptions	call
+004291de	005ae844	005ae6af	CTCInventoryTrade::RefreshDescriptions	call
+004291de	005aeac2	005ae9de	CTCInventoryTrade::RefreshBuyDescriptionsPC	call
+004291de	005aebd2	005aeaee	CTCInventoryTrade::RefreshSellDescriptionsPC	call
+004291de	005af3c9	005aecc0	CTCInventoryTrade::SellItem	call
+004291de	005af4ca	005aecc0	CTCInventoryTrade::SellItem	call
+004291de	005af557	005aecc0	CTCInventoryTrade::SellItem	call
+004291de	005aff6d	005af64e	CTCInventoryTrade::BuyItem	call
+004291de	005b0091	005af64e	CTCInventoryTrade::BuyItem	call
+004291de	005b3605	005b358c	CTCInventoryClothing::CreateMenuDesc	call
+004291de	005b368c	005b3613	CTCInventoryClothing::CreateMenuDescPC	call
+004291de	005b6ff7	005b6a66	CTCInventoryClothing::ConstructClothingListPC	call
+004291de	005b701b	005b6a66	CTCInventoryClothing::ConstructClothingListPC	call
+004291de	005b7033	005b6a66	CTCInventoryClothing::ConstructClothingListPC	call
+004291de	005b703b	005b6a66	CTCInventoryClothing::ConstructClothingListPC	call
+004291de	005b7662	005b70b8	CTCInventoryClothing::ConstructClothingList	call
+004291de	005b7680	005b70b8	CTCInventoryClothing::ConstructClothingList	call
+004291de	005b7688	005b70b8	CTCInventoryClothing::ConstructClothingList	call
+004291de	005b7690	005b70b8	CTCInventoryClothing::ConstructClothingList	call
+004291de	005b76a8	005b70b8	CTCInventoryClothing::ConstructClothingList	call
+004291de	005b76b0	005b70b8	CTCInventoryClothing::ConstructClothingList	call
+004291de	005b76b8	005b70b8	CTCInventoryClothing::ConstructClothingList	call
+004291de	005b76c0	005b70b8	CTCInventoryClothing::ConstructClothingList	call
+004291de	005b7a97	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b7b3a	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b7bd4	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b7c6e	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b7d04	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b7d9e	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b85ea	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b8605	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b8628	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b8660	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b868e	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b8699	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b86a4	005b76d1	CTCInventoryClothing::ConstructScreen	call
+004291de	005b8b55	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+004291de	005b8c0c	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+004291de	005b8cba	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+004291de	005b8d68	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+004291de	005b8e12	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+004291de	005b8ec0	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+004291de	005b9514	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+004291de	005b952c	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+004291de	005b9547	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+004291de	005b95a2	005b8743	CTCInventoryClothing::ConstructScreenPC	call
+00419108	005c008b	005bff07	NInventory::CTCInventoryBase::CTCInventoryBase	call
+004291de	005c3415	005c323a	CTCInventoryWeapons::ConstructWieldEntry	call
+004291de	005c3425	005c323a	CTCInventoryWeapons::ConstructWieldEntry	call
+004291de	005c342d	005c323a	CTCInventoryWeapons::ConstructWieldEntry	call
+004291de	005c368b	005c3444	CTCInventoryWeapons::ConstructWieldEntryPC	call
+004291de	005c36a3	005c3444	CTCInventoryWeapons::ConstructWieldEntryPC	call
+004291de	005c36ab	005c3444	CTCInventoryWeapons::ConstructWieldEntryPC	call
+004291de	005c4120	005c3e91	CTCInventoryWeapons::FinalConstructWeaponItemEntries	call
+004291de	005c44d2	005c3e91	CTCInventoryWeapons::FinalConstructWeaponItemEntries	call
+004291de	005c48eb	005c47d5	CTCInventoryWeapons::FinalConstructWeaponItemEntriesPC	call
+004291de	005c4af0	005c47d5	CTCInventoryWeapons::FinalConstructWeaponItemEntriesPC	call
+004291de	005c4ef9	005c47d5	CTCInventoryWeapons::FinalConstructWeaponItemEntriesPC	call
+004291de	005c5e23	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5e33	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5e43	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5e4b	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5eb7	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5ebf	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5ec7	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5ecf	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5ed7	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5ee7	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c5eff	005c574e	CTCInventoryWeapons::ConstructAugEntry	call
+004291de	005c65da	005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	call
+004291de	005c65ea	005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	call
+004291de	005c65fa	005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	call
+004291de	005c6602	005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	call
+004291de	005c6668	005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	call
+004291de	005c6670	005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	call
+004291de	005c6678	005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	call
+004291de	005c6688	005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	call
+004291de	005c66a0	005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	call
+004291de	005c6831	005c66b2	CTCInventoryWeapons::ConstructWeaponItemEntries	call
+004291de	005c6964	005c66b2	CTCInventoryWeapons::ConstructWeaponItemEntries	call
+004291de	005c82ea	005c8176	CTCInventoryWeapons::ConstructWeaponItemEntriesPC	call
+004291de	005c8413	005c8176	CTCInventoryWeapons::ConstructWeaponItemEntriesPC	call
+004291de	005c8675	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c8d94	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c900e	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c9022	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c902a	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c9032	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c903a	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c9042	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c904a	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c9052	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c905a	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c9062	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c906a	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c907a	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c9082	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c908a	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c909a	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c90a2	005c8459	CTCInventoryWeapons::ConstructScreen	call
+004291de	005c9956	005c90fc	CTCInventoryWeapons::ConstructWeaponDescriptionContainer	call
+004291de	005c9cdf	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca391	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca5b1	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca5c2	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca5ca	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca5d2	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca5da	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca5e2	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca5ea	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca5f2	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca5fa	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca60a	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca612	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca61a	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca62a	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005ca632	005c9a95	CTCInventoryWeapons::ConstructScreenPC	call
+004291de	005cb0cf	005cacb9	CTCInventoryWeapons::RefreshWeaponDescriptions	call
+004291de	005cb4ab	005cb2b0	CTCInventoryWeapons::SetThingAsActiveWeapon	call
+004291de	005cb5e0	005cb2b0	CTCInventoryWeapons::SetThingAsActiveWeapon	call
+004291de	005ccf75	005ccf0e	CTCInventoryStats::CreateTitle	call
+004291de	005cd063	005ccffc	CTCInventoryStats::CreateTitlePC	call
+004291de	005ce0c9	005cdd86	CTCInventoryStats::CreateExperienceSliders	call
+004291de	005d1e98	005ce0e6	CTCInventoryStats::ConstructPersonalityList	call
+004291de	005d6473	005d1f0c	CTCInventoryStats::ConstructPersonalityListPC	call
+004291de	005d66a6	005d64dd	CTCInventoryStats::AddHeroAbility	call
+004291de	005d6917	005d6748	CTCInventoryStats::ConstructExperienceList	call
+004291de	005d706a	005d6748	CTCInventoryStats::ConstructExperienceList	call
+004291de	005d7f9c	005d7081	CTCInventoryStats::ConstructExperienceListPC	call
+004291de	005ef49b	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005ef747	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005ef74f	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005ef757	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005ef8a0	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005ef8a8	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005ef8b0	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005ef9fc	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005efa04	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005efa0c	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005efd7a	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f0010	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f0018	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f0028	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f0038	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f01a3	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f035b	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f0509	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f058c	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f05a3	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f05ae	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f05b6	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f05be	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent	call
+004291de	005f0a30	005f077f	CTCInventoryAbilities::ContructItemLists	call
+004291de	005f0bb9	005f077f	CTCInventoryAbilities::ContructItemLists	call
+004291de	005f0c12	005f077f	CTCInventoryAbilities::ContructItemLists	call
+004291de	005f0c2a	005f077f	CTCInventoryAbilities::ContructItemLists	call
+004291de	005f0c32	005f077f	CTCInventoryAbilities::ContructItemLists	call
+004291de	005f0d36	005f0c5f	CTCInventoryAbilities::AssignAbility	call
+004291de	005f0ee1	005f0dc5	CTCInventoryAbilities::AssignAbilityPC	call
+004291de	005f119d	005f0dc5	CTCInventoryAbilities::AssignAbilityPC	call
+004291de	005f1296	005f11a9	CTCInventoryAbilities::UnAssignAbility	call
+004291de	005f13eb	005f1320	CTCInventoryAbilities::UnAssignAbilityPC	call
+004291de	005f151a	005f1320	CTCInventoryAbilities::UnAssignAbilityPC	call
+004291de	005f1946	005f1526	CTCInventoryAbilities::ConstructPCItemLists	call
+004291de	005f1aab	005f1526	CTCInventoryAbilities::ConstructPCItemLists	call
+004291de	005f1abb	005f1526	CTCInventoryAbilities::ConstructPCItemLists	call
+004291de	005f1ac3	005f1526	CTCInventoryAbilities::ConstructPCItemLists	call
+004291de	005f1adb	005f1526	CTCInventoryAbilities::ConstructPCItemLists	call
+004291de	005f1ae3	005f1526	CTCInventoryAbilities::ConstructPCItemLists	call
+004291de	005f1d80	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f1e27	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f1ed1	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f262d	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f2b6f	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f3218	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f360b	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f3613	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f361b	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f362b	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f364e	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f3656	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f365e	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f37d4	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f3984	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f3b32	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f3b9d	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f3ba8	005f1b10	CTCInventoryAbilities::ConstructPCMagicList	call
+004291de	005f4176	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f426a	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44ad	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44b5	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44bd	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44c5	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44d5	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44dd	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44e5	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44ed	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44f5	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f44fd	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f4505	005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	call
+004291de	005f4814	005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	call
+004291de	005f48a7	005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	call
+004291de	005f4a3a	005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	call
+004291de	005f4a42	005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	call
+004291de	005f4a52	005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	call
+004291de	005f4a5a	005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	call
+004291de	005f4a62	005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	call
+004291de	005f4a6a	005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	call
+004291de	005f4a72	005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	call
+004291de	005f513b	005f4c8f	CTCInventoryAbilities::GetExpressionsListUIComponent	call
+004291de	005f5143	005f4c8f	CTCInventoryAbilities::GetExpressionsListUIComponent	call
+004291de	005f514b	005f4c8f	CTCInventoryAbilities::GetExpressionsListUIComponent	call
+004291de	005f593e	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f5946	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f594e	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f5956	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f595e	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f5966	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f596e	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f5976	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f598e	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f5996	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f599e	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f59a6	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f59ae	005f519f	CTCInventoryAbilities::ConstructScreen	call
+004291de	005f60d8	-		call
+004291de	005f63ab	-		call
+004291de	005f63b3	-		call
+004291de	005f63bb	-		call
+00429c53	00602e09	00601310	CTCInventoryMap::ConstructQuestsScreenPC	call
+00429c53	00626504	00626110	CTCQuickAccessMenu::ContructItemLists	call
+00429c53	00626af5	00626750	CTCQuickAccessMenu::ContructItemLists	call

@@ -9,6 +9,9 @@
 #ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG
 #include "engine/CTCBase.h"
 #include "engine/EOpinionDeedType.h"
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_CTOR_PASS27
+#include "engine/CWitnessesSearchingDeed.h"
+#endif
 class C3DVector;
 class CThing;
 class CThingAICreature;
@@ -18,6 +21,14 @@ class COpinionDeedEffectsDef;
 enum EOpinionPostDeedType;
 class CTCHeroOpinionDeedLog : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_CTOR_PASS27
+    CTCHeroOpinionDeedLog(CThing&);
+    virtual ~CTCHeroOpinionDeedLog();
+    virtual void OnInitialActivate();
+    virtual void FrameUpdate();
+    virtual CCharString GetClassTypeName() const;
+    virtual ETCInterfaceType GetInterfaceType() const;
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_OPINION_DEED_LOG; }
     long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
                   EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990
@@ -49,7 +60,11 @@ private:
 #ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_COMPLETE
     // Retail opt-in (Codex pass18): Ego_r TPI19ce2 member order. Native004d3f51 allocates34a8;
     // dtor006c5d70 proves list+18, intelligent pointer+20 and92 reaction records of90 bytes.
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_CTOR_PASS27
+    std::list<CWitnessesSearchingDeed> OpinionDeedsSearchingForWitnesses;
+#else
     unsigned char OpinionDeedsSearchingForWitnesses[4]; // std::list<CWitnessesSearchingDeed>,+18
+#endif
     long NextHandle; // +1c
     CIntelligentPointer<CThing> VillageForCrimes; // +20
     long WeaponOutDeedHandle; // +28

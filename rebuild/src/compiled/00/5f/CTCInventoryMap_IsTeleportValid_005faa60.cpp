@@ -1,3 +1,4 @@
+// Leaf: ?IsTeleportValid@CTCInventoryMap@@QBE_NXZ
 // CTCInventoryMap::IsTeleportValid() -- true when the display engine's teleport flag is set and the map screen's secondary NHeroInformationScreens::CBase slot 3 reports no blocking state
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FAA60, 45 bytes (+3 int3 padding).
 // Callees: CViewBase::GetDisplayEngine-shaped accessor on `this` @ 0x00686A80 (returns the display engine; manifest
@@ -32,15 +33,15 @@ class CBase { public:                                // secondary base at +0x130
     virtual void v00();
     virtual void v04();
     virtual void v08();
-    virtual unsigned char IsBlocked();        // slot 3 (+0x0C)
+    virtual unsigned char IsBlocked() const;  // slot 3 (+0x0C); const: the PDB-const self calls it (ruling R1)
 };
 }
 
 class CTCInventoryMap : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
-    bool IsTeleportValid();
+    bool IsTeleportValid() const;
 };
 
-bool CTCInventoryMap::IsTeleportValid()
+bool CTCInventoryMap::IsTeleportValid() const
 {
     if (PeekWorld().m_teleportAllowed && !IsBlocked())
         return true;

@@ -1,0 +1,9 @@
+009943b0 LIBCP_OK renames=?NeedsBufferedRead@CFileDataInputStream_Methods@@QAE_NH@Z=?NeedsBufferedRead@CFileDataInputStream@@EAE_NJ@Z ; .drectve EQUAL ; sections=2
+00994590 LIBCP_OK renames=?NeedsBufferedRead@CCompressedMemoryDataInputStream_Methods@@QAE_NH@Z=?NeedsBufferedRead@CCompressedMemoryDataInputStream@@EAE_NJ@Z ; .drectve EQUAL ; sections=2
+00a39bb0 LIBCP_OK renames=?Read@CWADFile_Methods@@QAEXPAXKK@Z=?Read@CWADFile@@UAEXPAXJPAVCASuspendableProcess@@@Z ; .drectve EQUAL ; sections=2
+005dba80 LIBCP_OK renames=?TransferBinaryIn@CAnimComponentCombatHandedness_Transfer@@QAEXPAVCMemoryDataInputStream@@@Z=?TransferBinaryIn@CAnimComponentCombatHandedness@@UAEXAAVCMemoryDataInputStream@@@Z ; .drectve EQUAL ; sections=5
+005dbb60 LIBCP_OK renames=?TransferBinaryIn@CAnimComponentCombatComboChain_Transfer@@QAEXPAVCMemoryDataInputStream@@@Z=?TransferBinaryIn@CAnimComponentCombatComboChain@@UAEXAAVCMemoryDataInputStream@@@Z ; .drectve EQUAL ; sections=5
+005dbcd0 LIBCP_OK renames=?TransferBinaryIn@CAnimComponentCombatMisc_Transfer@@QAEXPAVCMemoryDataInputStream@@@Z=?TransferBinaryIn@CAnimComponentCombatMisc@@UAEXAAVCMemoryDataInputStream@@@Z ; .drectve EQUAL ; sections=5
+0088ec60 LIBCP_OK renames=?SetHeroGuideToShowQuestCardsWhenSpokenTo@CGameScriptInterface_Methods@@QAEXE@Z=?SetHeroGuideToShowQuestCardsWhenSpokenTo@CGameScriptInterface@@UAEX_N@Z ; .drectve EQUAL ; sections=2
+00892ec0 LIBCP_OK renames=?ActivateQuestWithoutLoadingResources@CGameScriptInterface_Methods@@QAEXPAVCCharString@@@Z=?ActivateQuestWithoutLoadingResources@CGameScriptInterface@@UBEXABVCCharString@@@Z ; .drectve EQUAL ; sections=4
+00b23a10 LIBCP_OK renames=?CutscenePreload@CEngine_Methods@@QAEX_NJ@Z=?CutscenePreload@CEngine@@UAEX_N0@Z ; .drectve EQUAL ; sections=2

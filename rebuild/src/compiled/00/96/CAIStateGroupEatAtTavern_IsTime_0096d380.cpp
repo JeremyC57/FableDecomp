@@ -1,5 +1,5 @@
 // CAIStateGroup_EatAtTavern::IsTime() -- the tavern is staffed and the village says the current time falls in
-// Leaf: ?IsTime@CAIStateGroup_EatAtTavern@@UAE_NXZ
+// Leaf: ?IsTime@CAIStateGroup_EatAtTavern@@MBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // the def's eating hours.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096D380, length 197 bytes (+ int3 padding). Vtable slot 15.
@@ -150,11 +150,15 @@ class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007E
 struct CAIStateGroup_EatAtTavern : CAIStateGroupBaseW {
     unsigned char _pad14[0x34];
     float m_time;                               // +0x48
-    bool IsStaffed();                           // 0x0096D2D0
-    virtual bool IsTime();                      // slot 15
+protected:
+    bool IsStaffed() const;                     // 0x0096D2D0 ?IsStaffed@CAIStateGroup_EatAtTavern@@IBE_NXZ (both PDBs)
+public:
+protected:
+    virtual bool IsTime() const;   // slot 15
+public:
 };
 
-bool CAIStateGroup_EatAtTavern::IsTime()
+bool CAIStateGroup_EatAtTavern::IsTime() const
 {
     const CTCVillager* villager;
     if (!IsStaffed())

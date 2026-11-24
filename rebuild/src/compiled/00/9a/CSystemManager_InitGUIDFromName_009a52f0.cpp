@@ -1,3 +1,4 @@
+// Leaf: ?InitGUIDFromName@CSystemManager@@AAEXPBD@Z
 // CSystemManager::InitGUIDFromName(const char*) -- build the application GUID from the first 16 name bytes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A52F0, length 61 bytes. No callees (strlen is the
 // inlined intrinsic: the `mov cl,[eax] ; inc eax ; test cl,cl ; jne` scan minus the start + 1).
@@ -27,7 +28,9 @@ class CSystemManager { public:
     _GUID         ApplicationGUID;          // +0x0c
     _GUID         BestGUID;                 // +0x1c
 
+    private:
     void InitGUIDFromName(const char* name);
+    public:
 };
 
 void CSystemManager::InitGUIDFromName(const char* name)

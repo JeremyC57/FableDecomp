@@ -1,5 +1,5 @@
 // CMouseDX::UpdateCurrentStatusFromEvent(const CMouseEvent* event) -- apply one buffered mouse event: button down/up flags, relative X/Y movement clamped to the back buffer, or an absolute position
-// Leaf: UpdateCurrentStatusFromEvent
+// Leaf: ?UpdateCurrentStatusFromEvent@CMouseDX@@IAEXPBVCMouseEvent@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB5190, length 347 bytes + an 11-entry jump table @ 0x00AB52F0, `ret 4`.
 // Ego_r.pdb: `?UpdateCurrentStatusFromEvent@CMouseDX@@IAEXPBVCMouseEvent@@@Z`.
 // Callees: GFGetSystemManager @ 0x009A4EC0 (display manager at +0x60, whose back-buffer CSurface sits at +0x2c),
@@ -66,7 +66,9 @@ public:
     bool          MMBOn;                            // +0x4849
     bool          RMBOn;                            // +0x484a
 
+    protected:
     void UpdateCurrentStatusFromEvent(const CMouseEvent* event);
+    public:
 };
 
 void CMouseDX::UpdateCurrentStatusFromEvent(const CMouseEvent* event)

@@ -67,10 +67,10 @@ class CDisplayManager { public:
     unsigned long     AdapterOrdinal;              // +0x60 D3DDeviceCaps.AdapterOrdinal
     unsigned char     _pad64[0x298 - 0x64];
     CPixelFormatArray BackBufferFormats;           // +0x298
-    _D3DDISPLAYMODE GetClosestMode(const C2DExtentsI& resolution, unsigned long colourDepth, bool fullScreen);
+private: _D3DDISPLAYMODE GetClosestMode(const C2DExtentsI& resolution, long colourDepth, bool fullScreen) const;
 };
 
-_D3DDISPLAYMODE CDisplayManager::GetClosestMode(const C2DExtentsI& resolution, unsigned long colourDepth, bool fullScreen)
+_D3DDISPLAYMODE CDisplayManager::GetClosestMode(const C2DExtentsI& resolution, long colourDepth, bool fullScreen) const
 {
     if (!fullScreen) {
         _D3DDISPLAYMODE mode;

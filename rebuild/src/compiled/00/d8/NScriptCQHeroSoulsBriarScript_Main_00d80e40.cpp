@@ -73,8 +73,8 @@ namespace NScript {
 class CQ_HeroSoulsBriarScript : public CScriptBase {
 public:
     struct CBriarRose { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_HeroSoulsBriarScript& parent, CScriptDataBase* data, const CScriptThing& thing); };          // 0x00D81630
-    struct CBriarRoseImposter { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_HeroSoulsBriarScript& parent, CScriptDataBase* data, const CScriptThing& thing); };  // 0x00D81750
-    struct CHSBMagicBarrier { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_HeroSoulsBriarScript& parent, CScriptDataBase* data, const CScriptThing& thing); };    // 0x00D81B60
+    struct CBRIAR_ROSE_IMPOSTER { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_HeroSoulsBriarScript& parent, CScriptDataBase* data, const CScriptThing& thing); };  // 0x00D81750
+    struct CHSB_MagicBarrier { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_HeroSoulsBriarScript& parent, CScriptDataBase* data, const CScriptThing& thing); };    // 0x00D81B60
     CGameScriptInterface*   Game;                       // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44
     bool                    PlayedBriarCS;              // +0x48
@@ -86,8 +86,8 @@ public:
 void CQ_HeroSoulsBriarScript::Main()
 {
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_HeroSoulsBriarScript>("BriarRose", this, &CBriarRose::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_HeroSoulsBriarScript>("BRIAR_ROSE_IMPOSTER", this, &CBriarRoseImposter::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_HeroSoulsBriarScript>("HSB_MagicBarrier", this, &CHSBMagicBarrier::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_HeroSoulsBriarScript>("BRIAR_ROSE_IMPOSTER", this, &CBRIAR_ROSE_IMPOSTER::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_HeroSoulsBriarScript>("HSB_MagicBarrier", this, &CHSB_MagicBarrier::Alloc, 0));
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();
     if (!PlayedBriarCS) {

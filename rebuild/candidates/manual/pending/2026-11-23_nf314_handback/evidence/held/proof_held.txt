@@ -1,0 +1,4 @@
+##### 00dc0300 renames: ?CleanupBandits@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ=?DepopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ
+sections head 18 new 18
+ALL_EQ text_sections_equal=10
+tables H=1 N=1

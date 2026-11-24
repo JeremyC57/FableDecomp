@@ -99,7 +99,7 @@ public:
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x34 - 0x08];
     float         Scale;                                    // +0x34
-    void GetMeshObject(const CMeshInfo& info, float interpolation, C3DMeshObject& out) const;
+    protected: void GetMeshObject(const CMeshInfo& info, float interpolation, C3DMeshObject& out) const; public:
 };
 
 void CTCGraphicAppearance::GetMeshObject(const CMeshInfo& info, float interpolation, C3DMeshObject& out) const

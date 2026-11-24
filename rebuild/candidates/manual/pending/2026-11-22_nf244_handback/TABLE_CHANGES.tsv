@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+# none: no reloc_bindings line names 0x0073DA00 / 0x00861900 / 0x008D6850 / 0x00743CB0 or a CIEngine / CEngine slot changed here (grep of rebuild/oracles/reloc_bindings.tsv)

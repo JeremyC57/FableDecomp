@@ -1,3 +1,4 @@
+// Leaf: ?SitIdle@CAIStateGroup_GoToPub@@IAE_NXZ
 // CAIStateGroup_GoToPub::SitIdle() -- in hands-off mode just idle, else play the SIT_AT_TABLE_LOOP animation and report whether it completed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00947CA0, length 143 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::AIAction_DoNothing @ 0x0097E200, CCharString::CCharString(const char*, long)
@@ -62,7 +63,9 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     bool HandsOffMode;                              // +0xa0
     bool UnderScriptControl;                        // +0xa1
     long TimeBeforeAskingForBeer;                   // +0xa4
+    protected:
     bool SitIdle();
+    public:
 };
 
 bool CAIStateGroup_GoToPub::SitIdle()

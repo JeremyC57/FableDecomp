@@ -3,7 +3,7 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00689DF0, 3827 bytes incl. the 9-entry jump table 0x0068ACA8 and its byte index 0x0068ACCC; `ret 8`.
 // Identity: vtable 0x012376F8 slot 4 (.?AVCInputProcessInventory@@), PDB ?ProcessInput@CInputProcessInventory@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z.
-// Names: 0x00687B30 / 0x00687BD0 keep the landed spellings IsEventButtonReleased / IsEventButtonHeld (one symbol, one address);
+// Names: 0x00687B30 / 0x00687BD0 keep the landed spellings IsEventButtonHeld / IsEventButtonReleased (one symbol, one address);
 //   chunk 829 evidence says they are swapped (queued land0711e).
 // GS note: /GS -- the CGameEvent's 32-byte data array gives the cookie frame (as the landed siblings 0x0068B7C0 / 0x0068BC70).
 #define FABLE_RETAIL_CTHING
@@ -165,8 +165,8 @@ public:
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
 protected:
     bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event) const;             // 0x00687B30
-    bool IsEventButtonHeld(const CInputEvent& event) const;                 // 0x00687BD0
+    bool IsEventButtonHeld(const CInputEvent& event) const;             // 0x00687B30
+    bool IsEventButtonReleased(const CInputEvent& event) const;                 // 0x00687BD0
 public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;   // 0x00687CF0
     C2DVector GetMouseMovement(const CInputEvent& event) const { return event.MouseMovement; }
@@ -405,7 +405,7 @@ notRedefined:
                 processed.SetAsPerformedEvent();
             }
         }
-    } else if (IsEventButtonReleased(event)) {
+    } else if (IsEventButtonHeld(event)) {
         if (IsEventGameAction((EGameAction)0x19, event)) {
             NUISystem::CManager::GetInstance()->SetEvent((NUISystem::EEvent)0x1f);
             processed.SetAsPerformedEvent();
@@ -457,7 +457,7 @@ notRedefined:
             NUISystem::CManager::GetInstance()->SetEvent((NUISystem::EEvent)0x15);
             processed.SetAsPerformedEvent();
         }
-    } else if (IsEventButtonHeld(event)) {
+    } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction((EGameAction)0x19, event)) {
             NUISystem::CManager::GetInstance()->SetEvent((NUISystem::EEvent)0x1c);
             processed.SetAsPerformedEvent();

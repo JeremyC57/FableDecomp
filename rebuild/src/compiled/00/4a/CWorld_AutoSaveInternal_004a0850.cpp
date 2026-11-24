@@ -1,5 +1,5 @@
 // CWorld::AutoSaveInternal(const CWideString&, bool) -- autosave the game unless there is no live hero or an autosave is already running
-// Leaf: ?AutoSaveInternal@CWorld@@QAE_NABVCWideString@@_N@Z
+// Leaf: ?AutoSaveInternal@CWorld@@IAE_NABVCWideString@@_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -37,7 +37,9 @@ class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; 
 class CWorld : public CWorldDonor {
  public:
     void SaveGameState(const CWideString& name, bool questScreens, bool b);   // 0x004A05C0
+    protected:
     bool AutoSaveInternal(const CWideString& name, bool b);
+    public:
 };
 
 bool CWorld::AutoSaveInternal(const CWideString& name, bool b)

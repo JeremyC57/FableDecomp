@@ -14,7 +14,7 @@
 class CRegionConnectionGraph;
 
 class CRegionConnectionNode { public:
-    long GetNextRegionOnWayToRegion(long toRegion, CRegionConnectionGraph* graph);   // 0x00828360
+    long GetNextNodeOnWayToRegion(long toRegion, const CRegionConnectionGraph& graph) const;   // 0x00828360 (NF306: Ego_r + FableWin QBE, const reference; was GetNextRegionOnWayToRegion(long, CRegionConnectionGraph*))
 };
 
 #include "engine/CCountedPointer.h"
@@ -45,6 +45,6 @@ long CRegionConnectionGraph::GetNextRegionOnWayToRegion(long fromRegion, long to
 {
     SRegionNodeEntry* it = GraphNodes.Find(fromRegion);
     if (it != GraphNodes.m_last)
-        return it->second->GetNextRegionOnWayToRegion(toRegion, this);
+        return it->second->GetNextNodeOnWayToRegion(toRegion, *this);
     return -1;
 }

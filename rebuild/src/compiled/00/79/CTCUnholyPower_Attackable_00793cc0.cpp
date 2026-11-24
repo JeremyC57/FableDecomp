@@ -1,5 +1,5 @@
 // CTCUnholyPower::Attackable(CThingCreatureBase* creature) -- a creature may be hit when it is an enemy of the caster, or always while a live z-target is friendly
-// Leaf: ?Attackable@CTCUnholyPower@@QAE_NPAVCThingCreatureBase@@@Z
+// Leaf: ?Attackable@CTCUnholyPower@@AAE_NPAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00793CC0, length 94 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3); AreThingsEnemies(CThing*, CThing*) @ 0x0076D2F0
 // (`__fastcall` bool, x2). Called from CTCUnholyPower::FrameUpdate @ 0x00795300 (vtable 0x0126BFDC slot 9); the chunk label "CTCDivineWrath" is propagated from the byte-identical 0x0078E7C0.
@@ -34,7 +34,9 @@ class CTCUnholyPower { public:
     unsigned char           _body[0x6d - 0x08];             // ToBeRemoved .. CutSceneCancel (+0x6c)
     CIntelligentPointer<CThing> PTarget;                        // +0x6d CIntelligentPointer<CThingCreatureBase>
     bool                    IsZTargetting;                  // +0x75
+    private:
     bool Attackable(CThingCreatureBase* creature);
+    public:
 };
 #pragma pack(pop)
 

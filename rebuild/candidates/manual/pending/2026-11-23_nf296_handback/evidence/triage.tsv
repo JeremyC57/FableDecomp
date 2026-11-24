@@ -1,0 +1,93 @@
+17	008fcf40	5	009574d0	FinishUpdate	Terminate	CLEAN	standin=--	pdb=EF	B_STAYOFF
+22	0097e270	92	0097e890	SetNavigationIgnoreThing	SetThingToNotAvoid	PRIV	standin=--	pdb=EF	
+23	0097e2d0	82	0097e890	SetNavigationSpeedScale	SetProximityForDirectApproach	PRIV	standin=--	pdb=EF	
+29	00939dd0	150	0093a080	RemoveMyWarningMessage	RemoveMessageEventsAdded	PRIV	standin=--	pdb=EF	
+37	00947110	354	00947280	SelectPrettyThing	FindPrettyThingInShop	PRIV	standin=--	pdb=EF	
+83	008574d0	78	008c4f50	SetName	SetCombatAnimation	CLEAN	standin=--	pdb=EF	
+100	00a3a9c0	63	00a3aa40	ZAlloc	Alloc	PRIV	standin=--	pdb=EF	B_T3
+101	00a3aa00	12	00a3aa40	ZFree	Free	PRIV	standin=--	pdb=EF	B_T3
+102	00a3aa10	38	00996230	Init	Initialise	PRIV	standin=--	pdb=EF	
+122	007a4120	23	007a1870	DestroyObject	DeleteData	CLEAN	standin=--	pdb=EF	
+130	006925a0	4	0069f670	GetPerformedAction	HasPerformedAction	CLEAN	standin=--	pdb=EF	
+130	006925a0	4	0069fc40	GetPerformedAction	HasPerformedAction	CLEAN	standin=--	pdb=EF	
+130	006925a0	4	00848ae0	GetCanItemBeQuickAssigned	HasPerformedAction	CLEAN	standin=--	pdb=EF	
+171	00996610	449	004b64e0	WriteBuffer	WriteCompressed	CLEAN	standin=--	pdb=EF	
+184	009bebb0	253	009bfb30	GetDepthBufferFormat	GetClosestDepthBufferFormat	PRIV	standin=-F	pdb=EF	
+203	00be3110	386	00be32a0	Initialise	BuildSharedIndexBuffers	PRIV	standin=--	pdb=EF	
+207	00b8d0d0	429	00b8d780	InitializeOcclusionBuffers	BuildUnitBox	PRIV	standin=--	pdb=EF	
+212	00b99860	386	00b99b50	FrameStartCommon	CalcFrameConstantSIMDVars	PRIV	standin=--	pdb=EF	
+247	00698540	603	0069b790	UpdateEarthQuakes	UpdateEarthquake	PRIV	standin=--	pdb=EF	
+248	006988b0	147	00699090	Extra	PushCurrentManualMode	CLEAN	standin=--	pdb=EF	
+270	00a043a0	35	007a9960	GetAnaloguePosition	GetJoystickPosition	CLEAN	standin=--	pdb=EF	
+270	00a043a0	35	005bc5c6	GetAnalogueVector	GetJoystickPosition	CLEAN	standin=--	pdb=EF	
+287	00416258	16	00417001	GetTimeSinceLastRenderFrameStart	GetPredictedTimeSinceLastRenderFrame	PRIV	standin=--	pdb=EF	
+323	00a629d0	29	009cd850	DeallocateMemory	Clear	CLEAN	standin=--	pdb=EF	
+328	006dfda0	33	006e1620	SetHidden	SetParticleCreationDisabled	CLEAN	standin=--	pdb=-F	
+343	008fa9f0	133	008fadb0	Finalise	GetPointsList	CLEAN	standin=--	pdb=EF	
+354	00d89ad0	541	00d87cb0	PlayCutScene	PlayCutscene	CLEAN	standin=--	pdb=EF	
+355	00d9f070	62	00d9ee20	IsSpawnPointToSpawn	ShouldSpawnPointSpawn	CLEAN	standin=--	pdb=-F	
+356	00dc0830	141	00dc0300	CleanupBandits	DepopulateLevel	CLEAN	standin=--	pdb=EF	B_STAYOFF
+359	004b0a30	102	00892f10	DeactivateQuestLater	AddPendingQuestToDeactivate	CLEAN	standin=--	pdb=EF	
+365	00f3ae50	353	00f3afc0	CompressToBuffer	Compress	CLEAN	standin=--	pdb=EF	B_STAYOFF
+368	006bbfa0	36	004fc190	ContainsMap	IsMapIncluded	CLEAN	standin=--	pdb=EF	
+382	00cb7d60	61	004afa60	BindsEntityScript	IsEntityScriptBound	CLEAN	standin=--	pdb=EF	
+385	00cb8220	16	004b4490	UpdateScript	RunSubThreads	CLEAN	standin=--	pdb=EF	
+392	0082e250	4	00820b80	GetBrushName	GetName	CLEAN	standin=--	pdb=EF	B_STAYOFF
+393	00a62050	122	00a62860	DeleteShaderEntries	CloseShaders	PRIV	standin=--	pdb=EF	
+420	007fdf60	210	0080fd30	GetMaxCreatureCount	GetNumberCanSummon	CLEAN	standin=--	pdb=EF	
+435	00783680	168	0056a980	DetachAll	OnNoBoastsRemain	CLEAN	standin=--	pdb=EF	
+440	006a1270	190	008ba3c0	IsPrimarySlotEmpty	IsPrimarySlotFree	CLEAN	standin=--	pdb=EF	
+442	007338a0	102	007339e0	OnBlockHoldExpired	UnsetBlocking	CLEAN	standin=--	pdb=EF	
+450	00670470	228	00670a10	UpdateGravity	UpdateHeightAboveGround	PRIV	standin=--	pdb=EF	
+455	0073a840	49	0069f670	UpdateFrontMode	RefreshCurrentMode	CLEAN	standin=--	pdb=EF	
+455	0073a840	49	0069fc40	OnUnsheatheFinished	RefreshCurrentMode	CLEAN	standin=--	pdb=EF	
+455	0073a840	49	008ed850	RestartCurrentMode	RefreshCurrentMode	CLEAN	standin=--	pdb=EF	
+456	0073a8a0	54	008c2490	HasMode	IsModeActive	CLEAN	standin=--	pdb=EF	
+468	0078f820	203	0072ba40	CancelAbilities	CancelMove	CLEAN	standin=--	pdb=EF	
+476	007e7880	88	007e7ac0	PlaySound	PlaySoundW	CLEAN	standin=--	pdb=EF	
+484	004bffc0	5	007d8e20	ClearMeshEffect_004bffc0	ClearHighlighted	CLEAN	standin=--	pdb=EF	
+490	0071be80	93	005ee887	SetWillMorphAmount	SetWill	CLEAN	standin=--	pdb=EF	
+491	0071c0c0	93	0057b0f7	SetSunTan	SetTan	CLEAN	standin=--	pdb=EF	
+493	006c5920	117	007baf00	EndDeed	RemoveDeedStillSearchingForWitnesses	CLEAN	standin=--	pdb=EF	
+499	0077cca0	117	0077cdd0	Update	DoStopRunning	PRIV	standin=--	pdb=EF	
+501	008018b0	97	00833010	OnNewBrain_008018b0	Clear	CLEAN	standin=--	pdb=EF	
+524	005fc510	197	00602f30	ReleaseMapScreenPrimitives	ResetPrimitiveHandles	CLEAN	standin=--	pdb=EF	
+528	007f0b10	340	007f14f0	CreateHeadEffect	DoDieFX	CLEAN	standin=--	pdb=EF	
+529	00751a80	7	00665260	GetHeadAngleOffset	GetLookAngleRelToBodyXY	CLEAN	standin=--	pdb=EF	
+533	007714b0	87	00771620	PushSourceDefIndex	PushNewSourceDef	CLEAN	standin=--	pdb=EF	
+535	007e60f0	183	007e61b0	PlaySound	PlaySoundW	CLEAN	standin=--	pdb=EF	
+536	007b7cd0	74	0057d8be	AddRenownEntry	AddRenownChange	CLEAN	standin=--	pdb=EF	
+541	0079dcb0	11	0072ac90	IsMoveActive	IsShieldActive	CLEAN	standin=--	pdb=EF	
+557	0066add0	63	007c6da0	StopSample	StopAttachedSound	CLEAN	standin=--	pdb=EF	
+560	0066b370	1808	0066bbf0	UpdateSounds	PlayAllSoundEvents	CLEAN	standin=--	pdb=EF	
+571	00794d90	203	0069f8b0	CancelAbilities	CancelMove	CLEAN	standin=--	pdb=EF	
+574	0065914b	25	00684210	IsCrimeHandled	HasCrimeBeenReported	CLEAN	standin=--	pdb=EF	
+574	0065914b	25	00930a70	IsDeedHandled	HasCrimeBeenReported	CLEAN	standin=--	pdb=EF	B_T3
+575	0065c2d0	158	0065c36e	ProcessCrimeDeeds	ClearCrimes	CLEAN	standin=--	pdb=EF	
+577	007ee540	84	0093ae80	GetVillage	GetPVillage	CLEAN	standin=--	pdb=EF	
+579	005daa00	49	00838bc0	HasDamage	IsMeleeWeapon	CLEAN	standin=--	pdb=EF	
+581	0076e6a0	?	00703590	DrawPreparePrimitivesForRendering	DrawAddWeaponTrails	CLEAN	standin=--	pdb=EF	
+600	006d5ab0	11	0065935e	ResetBrain	ForceAIReset	CLEAN	standin=--	pdb=EF	
+607	00661e70	12	00843c10	IsBusy	IsAbortingCurrentAction	CLEAN	standin=--	pdb=EF	B_STAYOFF
+607	00661e70	12	008c55b0	IsCollidingWithLandscape	IsAbortingCurrentAction	CLEAN	standin=--	pdb=EF	
+609	00662170	13	007363a0	GetCombatTypeIndex	GetCombatType	CLEAN	standin=--	pdb=EF	
+610	006621a0	17	0093d180	IsInCombatMode	IsAbleToStrafe	CLEAN	standin=--	pdb=EF	
+610	006621a0	17	0093e240	UsesCreatureModes	IsAbleToStrafe	CLEAN	standin=--	pdb=EF	
+616	00666d40	348	006cd990	FindPosZAt	GetHeightZBelowAt	CLEAN	standin=--	pdb=EF	
+621	0051ed80	32	0077b1c0	GetThingByUID	GetPThingWithUID	CLEAN	standin=--	pdb=EF	
+621	0051ed80	32	00730070	FindThingByUID	GetPThingWithUID	CLEAN	standin=--	pdb=EF	
+633	0098e7d0	?	0098ec40	RemovePendingRequests	CloseAllStreamsForFile	CLEAN	standin=--	pdb=EF	
+633	0098e7d0	?	0098ec70	RemovePending	CloseAllStreamsForFile	CLEAN	standin=--	pdb=EF	
+634	0098f380	24	0098f3a0	ThreadProc	BeginThread	PRIV	standin=--	pdb=EF	
+647	00e827a0	96	00e82650	InitialiseVariablesCheck	SetCompletedThisClub	CLEAN	standin=--	pdb=-F	
+649	00e9fec0	48	00e9fcd0	ResetMissionState	InitialiseVariables	CLEAN	standin=--	pdb=-F	
+652	0054e5d0	106	0054ea00	InitialiseFromDef	GetDataFromDef	CLEAN	standin=--	pdb=EF	
+654	00a67770	96	00a67ea0	InitialiseFromVolume	InitialiseFromVolumeTextureMipmap	CLEAN	standin=--	pdb=EF	
+658	009f73c0	?	009beeb0	OnPresent	OnPostSwapScreens	CLEAN	standin=--	pdb=EF	
+661	0099b4d0	62	0099bdb0	UnassignString_0099b4d0	UnassignString	PRIV	standin=--	pdb=EF	
+663	0048db13	22	0064401c	IsRegionLoadShowingMiniMap	IsPerformingRegionLoad	CLEAN	standin=--	pdb=EF	
+663	0048db13	22	00490927	IsInSpecialMode	IsPerformingRegionLoad	CLEAN	standin=--	pdb=EF	
+666	0049ea10	46	0088e400	SetEnabled	SetMiniMapEnabled	CLEAN	standin=--	pdb=EF	
+885	00405f00	62	00646010	LongToWideString	GFIntToWideString	PRIV	standin=--	pdb=EF	
+888	00661540	91	00751c70	AngleBetweenPositions	GFGetAngleXYTo	CLEAN	standin=--	pdb=EF	
+890	00754e70	117	00752930	AngleYZBetweenPositions	GFGetAngleYZTo	CLEAN	standin=--	pdb=EF	

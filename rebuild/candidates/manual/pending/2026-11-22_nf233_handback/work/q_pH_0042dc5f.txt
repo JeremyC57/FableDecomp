@@ -1,0 +1,1 @@
+0042dc5f CNewFrontendGameComponent::OnPreDeviceReset MATCH flags= []

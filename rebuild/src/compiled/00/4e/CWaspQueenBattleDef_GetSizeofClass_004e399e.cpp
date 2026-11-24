@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CWaspQueenBattleDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CWaspQueenBattleDef_GetSizeofClass()
+class CWaspQueenBattleDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CWaspQueenBattleDef::GetSizeofClass()
 {
     return 64;
 }

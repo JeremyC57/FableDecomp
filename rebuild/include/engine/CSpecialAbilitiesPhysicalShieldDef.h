@@ -9,6 +9,45 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_PHYSICAL_SHIELD_EFFECT_PASS26
+#include "engine/CParentDefClassBase.h"
+#include "engine/CDefString.h"
+#include "stlport/fable_containers.h"
+// Native RTTI 0123439C names CParentDefClassBase; Ego_r records the members in this order.
+class CSpecialAbilitiesPhysicalShieldDef : public CParentDefClassBase {
+public:
+    CDefString InitSound;
+    CDefString PowerUpSound[3];
+    CDefString CastSound;
+    CDefString LoopingSound[4];
+    CDefString EndSound;
+    float Health[4];
+    float LevelUpTimings[3];
+    float CamDist[4];
+    float CamHeight[4];
+    float CamFOV[4];
+    float CamSwitchTime[4];
+    float CastCamDist;
+    float CastCamHeight;
+    float CastCamFOV;
+    float CastCamSwitchTime;
+    float MinWidth;
+    std::vector<float> MaxWidth;
+    float BeenHitExtraWidth;
+    float BeenHitFadeOffTimeSecs;
+    float WobbleRate;
+    std::vector<float> ColorStartLevel1;
+    std::vector<float> ColorStartLevel2;
+    std::vector<float> ColorStartLevel3;
+    std::vector<float> ColorStartLevel4;
+    std::vector<float> ColorEnd;
+    std::vector<float> ColorHit;
+    float FadeOutPhysicalShieldTimeSecs;
+    std::vector<float> ManaDamage;
+    bool ShieldCoversCarriedItems;
+};
+FABLE_STATIC_ASSERT_AT(900,sizeof(CSpecialAbilitiesPhysicalShieldDef)==0x148);
+#else
 #pragma pack(push, 1)
 class CSpecialAbilitiesPhysicalShieldDef {
 public:
@@ -94,4 +133,5 @@ FABLE_STATIC_ASSERT_AT(88, offsetof(CSpecialAbilitiesPhysicalShieldDef, FadeOutP
 FABLE_STATIC_ASSERT_AT(89, offsetof(CSpecialAbilitiesPhysicalShieldDef, ManaDamage) == 0x138);
 FABLE_STATIC_ASSERT_AT(90, offsetof(CSpecialAbilitiesPhysicalShieldDef, ShieldCoversCarriedItems) == 0x144);
 
+#endif
 #endif // FABLE_ENGINE_CSPECIALABILITIESPHYSICALSHIELDDEF_H

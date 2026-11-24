@@ -51,7 +51,7 @@ struct CPhysicalPrimitiveSphere {
     virtual void v00();
     CDefString BaseName;                           // +0x04
     float      Radius;                             // +0x08
-    C3DVector GetDummyObjectOrigin(CThing* thing) const;   // 0x00814C70
+    C3DVector GetSphereBase(const CThing& thing) const;   // 0x00814C70 (NF306: Ego_r + FableWin QBE ?AVC3DVector ABVCThing; was GetDummyObjectOrigin(CThing*) const)
     float GetRadius(CThing* thing) const
     {
         float radius = Radius;
@@ -64,7 +64,7 @@ struct CPhysicalPrimitiveSphere {
 
 bool CPhysicalPrimitiveSphere::GetFirstIntersectionWithTriangle(const CThing& thing, const vector<C3DVector>& triangle, C3DVector& point, C3DVector& normal, float unused) const
 {
-    C3DVector centre = GetDummyObjectOrigin(const_cast<CThing*>(&thing));
+    C3DVector centre = GetSphereBase(thing);
     CSphere sphere(GetRadius(const_cast<CThing*>(&thing)), centre);
     return sphere.GetFirstIntersectionWithTriangle(triangle, point, normal);
 }

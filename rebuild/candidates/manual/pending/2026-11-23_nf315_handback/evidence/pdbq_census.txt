@@ -1,0 +1,11 @@
+egor=0 fablewin=0 ?GetState@CThingHolySite@@QAEEXZ
+egor=0 fablewin=0 ?GetState@CThingMarker@@QAEEXZ
+egor=0 fablewin=0 ?IsTaskRunning@CTCScriptControl@@QAE_NXZ
+egor=0 fablewin=0 ?IsRunning@CScriptTask@@QAE_NXZ
+egor=0 fablewin=0 @SymbolPair_Dtor@4
+egor=0 fablewin=0 ?RegisterEnable@CEnginePrimitiveManagerOcclusionBase@@QAEXABVCCharString@@@Z
+egor=0 fablewin=0 ?dtor@Pair@@QAEXXZ
+egor=0 fablewin=0 ?TransferBinaryIn@CReactionMatch_TransferBinaryIn@@QAEXAAVCMemoryDataInputStream@@@Z
+egor=0 fablewin=0 ?Refresh_0084d080@CTrack@NCameraModes@@QAEXXZ
+egor=0 fablewin=0 ?InitialiseNetworkBase@CNetworkClient@@QAE_NXZ
+egor=0 fablewin=0 ?GetPPlayerManager@CAIStateGroup_JackOfBladesBase@@QAEPAVCPlayerManager@@XZ

@@ -1,3 +1,4 @@
+// Leaf: ?SavePacketEvent@CGamePlayerInterface@@AAEXABVCInputEvent@@@Z
 // CGamePlayerInterface::SavePacketEvent(const CInputEvent& event) -- record an input event into the packet file: build a CSavedInputEvent holding the event, the game frame and (when the loader has a mouse device) the mouse position, and write its 0x78 bytes through the packet file
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00445A60, length 124 bytes (+ int3 padding). `ret 4`.
@@ -67,7 +68,9 @@ class CGamePlayerInterface { public:
     bool                PacketLoad;                     // +0x701
     unsigned char       _pad702[2];
     CDiskFileWin32      PacketFile;                     // +0x704
+    private:
     void SavePacketEvent(const CInputEvent& event);
+    public:
 };
 
 void CGamePlayerInterface::SavePacketEvent(const CInputEvent& event)

@@ -55,11 +55,11 @@ public:
 class CFontBank;
 class CSubtitleRenderer { public:
     void Clear(bool immediately);           // 0x00492BAB (NF104 q6429: Ego_r.pdb + FableWin.pdb ?Clear@CSubtitleRenderer@@QAEX_N@Z; no ClearText in either PDB)
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
         const CWideString& button2Text, const CWideString& button3Text, unsigned long flags, float time, bool clickPast, bool pauseGame);   // 0x00492973
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
         const CWideString& button2Text, unsigned long flags, float time, bool clickPast, bool pauseGame);   // 0x00492F69
-    void SetText(CFontBank* font, const CWideString& text, unsigned long flags, float time, bool clickPast, bool pauseGame);   // 0x00492E4B
+    void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float time, bool clickPast, bool pauseGame);   // 0x00492E4B
 };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -120,11 +120,11 @@ void CActionTalkToThing::DisplayText()
     if (AskingHeroQuestion) {
         if (QuestionButton3 == "") {
             CWideString name(L"");
-            GetPlayerGui()->SubtitleRenderer.SetText(GetFont(), GetCurrentText(), name,
+            GetPlayerGui()->SubtitleRenderer.SetText(*GetFont(), GetCurrentText(), name,
                 QuestionButton1.ToWideString(), QuestionButton2.ToWideString(), 4, 0.0f, false, true);
         } else {
             CWideString name(L"");
-            GetPlayerGui()->SubtitleRenderer.SetText(GetFont(), GetCurrentText(), name,
+            GetPlayerGui()->SubtitleRenderer.SetText(*GetFont(), GetCurrentText(), name,
                 QuestionButton1.ToWideString(), QuestionButton2.ToWideString(), QuestionButton3.ToWideString(), 4, 0.0f, false, true);
         }
     } else {
@@ -134,7 +134,7 @@ void CActionTalkToThing::DisplayText()
         CWideString text(Messages[CurrentMessageIndex].Text);
         CMainGameComponentFontView* view = PControl->PThing->PeekComponent();
         CFontBank* font = view->Font;
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(font, text, flags,
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*font, text, flags,
             (float)GameTurnDuration / CMainGameComponent::GetConstantFPS(), false, true);
         if (!SoundStartedPlaying)
             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ShowSubtitleBackground = false;

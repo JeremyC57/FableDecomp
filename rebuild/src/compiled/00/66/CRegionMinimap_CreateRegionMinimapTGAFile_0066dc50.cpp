@@ -32,7 +32,7 @@ class CSurface { public:                                  // vtable 0x0122F84C, 
     void*         PD3DSurface;                     // +0x04
     unsigned long AllocationSource;                // +0x08
     void*         PAllocatedMemory;                // +0x0c
-    bool InitialiseAsImage(const C2DExtentsI* extents, const CPixelFormat* format, bool flag);   // 0x009F3230
+    bool InitialiseAsImage(const C2DExtentsI& extents, const CPixelFormat& format, bool flag);   // 0x009F3230
 };
 class CTexture { public:
     void*         PD3DTexture;
@@ -77,7 +77,7 @@ struct CRegionMinimap {
         C2DExtentsI extents;
         extents.X = size;
         extents.Y = size;
-        RegionMinimapSurface.InitialiseAsImage(&extents, &format, false);
+        RegionMinimapSurface.InitialiseAsImage(extents, format, false);
     }
     void InitialiseRegionBox();                                    // 0x0066C7B0
     void PopulateRegionMinimap(const CWorldMap& worldMap);         // 0x0066CF00

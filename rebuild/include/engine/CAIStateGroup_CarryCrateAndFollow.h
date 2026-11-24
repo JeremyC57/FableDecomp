@@ -34,6 +34,15 @@ protected:
     bool GotActionPoint;                                                 // +0x2c
     long ActionPointIndex;                                               // +0x30
     long PickUpActionID;                                                 // +0x34
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x00901697: ?IsTimingCritical@CAIStateGroup_CarryCrateAndFollow@@UBE_NXZ (FableWin.pdb)
+public:
+    virtual bool IsTimingCritical() const;
+protected:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(30, sizeof(CAIStateGroup_CarryCrateAndFollow) == 0x38);
 #else

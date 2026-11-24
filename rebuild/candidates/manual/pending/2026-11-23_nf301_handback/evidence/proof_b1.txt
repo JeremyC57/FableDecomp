@@ -1,0 +1,25 @@
+##### 006778a0 map (1): ?CreateFromType@@YIPAVCReactionFrequencyTraits@@W4EReactionFrequencyType@@@Z=?CreateFromType@CReactionFrequencyTraits@@SIPAV1@W4EReactionFrequencyType@@@Z
+map_covers_symbol_diff=True
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 006b84b0 map (1): ??0CScreenEffectPriorityStack@@QAE@XZ=??0CScreenEffectPriorityStack@NScreenEffect@@QAE@XZ
+map_covers_symbol_diff=True
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00dc21f0 map (1): ?PopulateLevel@CQ_BanditRaidScript@@QAE_NXZ=?PopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAE_NXZ
+map_covers_symbol_diff=True
+sections head 20 new 20
+ALL_EQ text_sections_equal=12
+tables H=3 N=3
+##### 00717c50 map (1): ?GetMessageFromTextIndex@@YI?AVCSubtitledMessage@@KPBD@Z=?GetMessageFromTextIndex@CSubtitledMessage@@SI?AV1@KPBD@Z
+map_covers_symbol_diff=True
+sections head 17 new 17
+ALL_EQ text_sections_equal=15
+tables H=1 N=1
+##### 0092bcb0 map (1): ?GetPosition@CTCAvoidRegionExitView@@QAE?AVC3DVector@@XZ=?GetPosition@CTCAvoidRegionExit@@QAE?AVC3DVector@@XZ
+map_covers_symbol_diff=True
+sections head 9 new 9
+ALL_EQ text_sections_equal=8
+tables H=0 N=0

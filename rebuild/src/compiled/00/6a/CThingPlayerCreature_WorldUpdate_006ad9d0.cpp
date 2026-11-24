@@ -70,7 +70,7 @@ public:
     }
     void UpdateAction();                                       // 0x006643C0
     virtual bool WorldUpdate();                                // 0x006666A0 (Ego_r.pdb ?WorldUpdate@CThingCreatureBase@@UAE_NXZ, a virtual; NF70 q10814)
-    void UpdateAnimation(float step);                          // 0x00665860
+    protected: void UpdateAnimation(float step); public:                          // 0x00665860
 };
 class CThingPlayerCreature : public CThingCreatureBase {
 public:

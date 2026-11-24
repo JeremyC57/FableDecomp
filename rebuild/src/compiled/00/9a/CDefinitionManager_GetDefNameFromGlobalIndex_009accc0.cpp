@@ -1,3 +1,4 @@
+// Leaf: ?GetDefNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z
 
 struct CDefEntry
 {
@@ -19,10 +20,10 @@ class CDefinitionManager
     char pad[0xA4];
     CDefEntry** globalIndexTable;
 
-    CDefString GetDefNameFromGlobalIndex(long index);
+    CDefString GetDefNameFromGlobalIndex(long index) const;
 };
 
-CDefString CDefinitionManager::GetDefNameFromGlobalIndex(long index)
+CDefString CDefinitionManager::GetDefNameFromGlobalIndex(long index) const
 {
     CDefString result;
     result.name = globalIndexTable[index]->name;

@@ -1,10 +1,12 @@
+// Leaf: ?SetPosition@CDataInputStream@@UAEXK@Z
 
 class CDataInputStream
 {
 public:
-    void SetPosition(unsigned long pos);
+    virtual void _v00();                         // slot 0 (not modelled)
+    virtual void SetPosition(unsigned long pos); // slot 1: rtti-vtables CMemoryDataInputStream slot 1; PDB UAE
 
-    unsigned long m_unused0;   // +0x00
+    // +0x00: the vptr (was m_unused0)
     unsigned long m_cursor;    // +0x04
     unsigned long m_unused1;   // +0x08
     unsigned long m_window;    // +0x0c

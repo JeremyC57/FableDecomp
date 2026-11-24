@@ -100,7 +100,7 @@ class CMiniMapDisplay { public:
     bool                    MiniMapIsPrisonCourtyard2;    // +0x41
     bool                    MiniMapIsHeadsmansHillNorth;  // +0x42
     bool                    MiniMapIsHeadsmansHillSouth;  // +0x43
-    void DrawMarkers(CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front);   // 0x0082B7E0
+protected: void DrawMarkers(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front); public:   // 0x0082B7E0
     void DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front);
 };
 

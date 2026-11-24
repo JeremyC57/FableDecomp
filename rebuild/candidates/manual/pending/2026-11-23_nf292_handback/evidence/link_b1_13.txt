@@ -1,0 +1,8 @@
+## HEAD set: H_00a99610.obj H_00ab03d0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetFirstSequence@C3DAnimFileObjectChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileSequenceChunk@@@@XZ
+## new set: N_00a99610.obj H_00ab03d0.obj
+duplicates 0
+
+LK_DONE

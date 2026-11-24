@@ -8,7 +8,7 @@ class CMatrix3x4 { public:
 };
 
 class C3DBoundingBox { public:
-    void CalculateMatrix(CMatrix3x4* matrix) const;   // 0x00ADEBC0
+    void CalculateMatrix(CMatrix3x4& matrix) const;   // 0x00ADEBC0 (NF313: the PDB parameter type, both PDBs)
 };
 
 class CEngineCamera { public:
@@ -25,6 +25,6 @@ class CEngine { public:
 bool CEngine::ClipBox(const C3DBoundingBox& box)
 {
     CMatrix3x4 matrix;
-    box.CalculateMatrix(&matrix);
+    box.CalculateMatrix(matrix);
     return NEngineInternal::GPCamera->ClipBox(matrix);
 }

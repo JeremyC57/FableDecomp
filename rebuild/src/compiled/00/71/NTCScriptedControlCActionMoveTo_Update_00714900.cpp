@@ -108,11 +108,11 @@ class CNavigationInput { public:
     float     Speed;                            // +0x14
     CNavigationInput() : Proximity(0), MovementType(0), Speed(0) { }
 };
-struct CCreatureNavOutput {
+class CTCCreatureNavigation { public: class CCreatureNavOutput { public:   // interface 7; PDB CTCCreatureNavigation::CCreatureNavOutput (class key V, nested; NF307)
     long      NavResult;                        // +0x00 (0 arrived, 1 failed, 2 moving)
     C3DVector MovementVector;                   // +0x04
 };
-class CTCCreatureNavigation { public:                  // interface 7
+public:
     unsigned char _pad[0x56];
     bool Active;                                // +0x56
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
@@ -120,7 +120,7 @@ class CTCCreatureNavigation { public:                  // interface 7
     void SetNavigationTarget(const CNavigationInput& input);  // 0x006CB960 (PDB ?SetNavigationTarget@CTCCreatureNavigation@@QAEXABVCNavigationInput@@@Z)
 };
 class CTCLook { public:                                // interface 0x43
-    void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
+    void LookAtPos(const C3DVector& position, long priority);   // 0x00753E90
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b) const;// 0x007534B0  // NF35: Ego_r + FableWin ?IsPosInViewRange@CTCLook@@QBE_NABVC3DVector@@M_N1@Z (const)
     void StopLooking(long timeToStop);          // 0x00751B80
 };
@@ -267,7 +267,7 @@ void CActionMoveTo::Update()
         input.Destination = Pos;
         input.MovementType = MovementType;
     }
-    CCreatureNavOutput output = nav->GetNextNavPosOnRoute(input, false, AvoidDynamicObstacles, true, false, IgnorePathPreferability);
+    CTCCreatureNavigation::CCreatureNavOutput output = nav->GetNextNavPosOnRoute(input, false, AvoidDynamicObstacles, true, false, IgnorePathPreferability);
     nav->SetNavigationTarget(input);
     long result = output.NavResult;
     nav->Active = true;
@@ -281,7 +281,7 @@ void CActionMoveTo::Update()
         }
         CTCLook* look;
         if (PTCScript->ParentThing->GetInterface(&look, 0x43)) {
-            look->LookAtPos(&target, 0x21);
+            look->LookAtPos(target, 0x21);
             if (look->IsPosInViewRange(target, 0.41666666f, false, false))
                 PTCScript->ParentThing->PPhysics->SetFacingPos(target);
         }

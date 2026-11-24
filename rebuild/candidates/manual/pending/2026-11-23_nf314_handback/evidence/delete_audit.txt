@@ -1,0 +1,533 @@
+## entry 1 00a90900 old=?AddTriangleList@CDeviceIndependent@N3DPrimitive@@QAEXABVC3DMeshFileTrianglesChunk@@@Z witness=00a91640 landed_rows=1 data_refs=1 hits=2
+   HIT 00a91640:121 Data->AddTriangleList(*tris);
+   HIT 00a91640:176 Data->AddTriangleList(*blockTris);
+## entry 4 006988b0 old=?Extra@CGameCameraManager@@QAEXXZ witness=00699090 landed_rows=9 data_refs=2 hits=0
+## entry 33 00492e4b old=?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@KM_N2@Z witness=007132c0 landed_rows=12 data_refs=4 hits=0
+## entry 36 00939dd0 old=?RemoveMyWarningMessage@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ witness=0093a080 landed_rows=1 data_refs=0 hits=0
+## entry 44 0049bb90 old=?Get@CGameJoystickManager@@SIPAV1@XZ witness=00449e60 landed_rows=9 data_refs=0 hits=0
+## entry 56 005dc340 old=?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@ witness=005b37f7 landed_rows=30 data_refs=1 hits=7
+   HIT 0041e6d3:165 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 007306c0:52 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 00730c00:38 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 00730dd0:38 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 007502d0:44 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 00752640:26 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 007f90b0:42 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+## entry 56 005dc340 old=?GetAnimation@CAnimationSet@@QBEPAVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@ witness=005cd767 landed_rows=30 data_refs=1 hits=7
+   HIT 0041e6d3:165 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 007306c0:52 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 00730c00:38 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 00730dd0:38 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 007502d0:44 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 00752640:26 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+   HIT 007f90b0:42 const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;
+## entry 58 005cc091 old=??1CCreatureAction_UnsheatheItemFromInventory@@QAE@XZ witness=007a7bf0 landed_rows=21 data_refs=3 hits=8
+   HIT 008b96a0:69 ~CCreatureAction_UnsheatheItemFromInventory();
+   HIT 008b9740:69 ~CCreatureAction_UnsheatheItemFromInventory();
+   HIT 008b98d0:69 ~CCreatureAction_UnsheatheItemFromInventory();
+   HIT 008b9a60:69 ~CCreatureAction_UnsheatheItemFromInventory();
+   HIT 008b9bf0:69 ~CCreatureAction_UnsheatheItemFromInventory();
+   HIT 008bac40:103 ~CCreatureAction_UnsheatheItemFromInventory();
+   HIT 008cd820:39 ~CCreatureAction_UnsheatheItemFromInventory();
+   HIT 008cda30:48 ~CCreatureAction_UnsheatheItemFromInventory();
+## entry 62 00431ed0 old=??4CParentDefClassBase@@QAEPAV0@AAV0@@Z witness=00477964 landed_rows=110 data_refs=2 hits=0
+## entry 63 009e5170 old=?Lookup@CSymbolMap@@QBE_NABVCCharString@@PAJ@Z witness=006f9640 landed_rows=7 data_refs=4 hits=4
+   HIT 0040f7e0:36 bool Lookup(const CCharString& name, long* value) const;
+   HIT 006e0730:44 bool Lookup(const CCharString& name, long* value);
+   HIT 0077f650:40 bool Lookup(const CCharString& name, long* value) const;
+   HIT 009ad410:83 bool Lookup(const CCharString& name, long* value) const;
+## entry 63 009e5170 old=?Lookup@CSymbolMap@@QAE_NABVCCharString@@PAJ@Z witness=00ae85b0 landed_rows=7 data_refs=4 hits=4
+   HIT 0040f7e0:36 bool Lookup(const CCharString& name, long* value) const;
+   HIT 006e0730:44 bool Lookup(const CCharString& name, long* value);
+   HIT 0077f650:40 bool Lookup(const CCharString& name, long* value) const;
+   HIT 009ad410:83 bool Lookup(const CCharString& name, long* value) const;
+## entry 64 00436fb0 old=?Get@?$CTBaseSingleton@VCEngineManager@@@@SIPAVCEngineManager@@XZ witness=004ff440 landed_rows=15 data_refs=0 hits=0
+## entry 65 0070b460 old=?GetAnimation@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ witness=00750470 landed_rows=56 data_refs=4 hits=4
+   HIT 00732950:50 CAnimateThing* GetAnimation();
+   HIT 008bac40:56 CAnimateThing* GetAnimation();
+   HIT 008e0d20:56 CAnimateThing* GetAnimation();
+   HIT 008ea9f0:64 CAnimateThing* GetAnimation();
+## entry 65 0070b460 old=?GetAnimateThing@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ witness=008dbb30 landed_rows=56 data_refs=4 hits=4
+   HIT 00732950:50 CAnimateThing* GetAnimation();
+   HIT 008bac40:56 CAnimateThing* GetAnimation();
+   HIT 008e0d20:56 CAnimateThing* GetAnimation();
+   HIT 008ea9f0:64 CAnimateThing* GetAnimation();
+## entry 67 004c7ab0 old=?GetWorld@CThing@@QBEPAVCWorld@@XZ witness=00692b30 landed_rows=31 data_refs=6 hits=7
+   HIT 006619f0:19 CWorld* GetWorld();
+   HIT 00662040:36 CWorld* GetWorld();
+   HIT 006620a0:36 CWorld* GetWorld();
+   HIT 00692c80:34 CWorld* GetWorld()const;
+   HIT 00693030:27 CWorld* GetWorld();
+   HIT 0082d3b0:45 CWorld* GetWorld() const;
+   HIT 0083cd70:70 CWorld* GetWorld();
+## entry 67 004c7ab0 old=?GetWorld@CThing@@QAEPAVCWorld@@XZ witness=006655a0 landed_rows=31 data_refs=6 hits=7
+   HIT 006619f0:19 CWorld* GetWorld();
+   HIT 00662040:36 CWorld* GetWorld();
+   HIT 006620a0:36 CWorld* GetWorld();
+   HIT 00692c80:34 CWorld* GetWorld()const;
+   HIT 00693030:27 CWorld* GetWorld();
+   HIT 0082d3b0:45 CWorld* GetWorld() const;
+   HIT 0083cd70:70 CWorld* GetWorld();
+## entry 69 0098d710 old=??1CVertexShaderConstantLayout@@QAE@XZ witness=0098abf0 landed_rows=10 data_refs=5 hits=0
+## entry 71 008fcf40 old=?FinishUpdate@CAIStateGroupBase@@QAEXXZ witness=009574d0 landed_rows=211 data_refs=55 hits=0
+## entry 72 0097e200 old=?AIAction_DoNothing@CAIStateGroupBase@@QAEJXZ witness=00920770 landed_rows=70 data_refs=27 hits=7
+   HIT 0091e4b0:75 long AIAction_DoNothing(); void Update();
+   HIT 00922750:111 long AIAction_DoNothing();
+   HIT 00942c70:62 long AIAction_DoNothing();
+   HIT 0094b740:114 long AIAction_DoNothing();
+   HIT 0094feb0:110 void Terminate();bool IsStopping();long AIAction_DoNothing();
+   HIT 00950950:241 long AIAction_DoNothing();
+   HIT 00950c30:177 long AIAction_DoNothing();
+## entry 76 00859a20 old=?FinishAction@CCombatActionBase@@UAEXXZ witness=0085c120 landed_rows=113 data_refs=174 hits=391
+   HIT 008558d0:16 class CCreatureActionBase{public:virtual ~CCreatureActionBase(){}unsigned char _unmodeled04[4];CIntelligentPointer<CThingCreatureBase> PCreature;};cla
+   HIT 008558d0:17 class CCreatureAction_StartBlocking:public CCombatActionBase{public:virtual void FinishAction();};
+   HIT 008558d0:18 void CCreatureAction_StartBlocking::FinishAction(){CCombatActionBase::FinishAction();CTCCombat* nav;if(PCreature.GetPItem()->GetTC(TCI_COMBAT, &nav))n
+   HIT 0085b890:3 extern "C" void CCreatureActionHero180RunningTurn_FinishAction() { ForwardTarget(); }
+   HIT 0085baf0:9 extern "C" void FABLE_FASTCALL CCreatureActionHeroJump_FinishAction(FableDestVal_0085baf0_t* action)
+   HIT 0085c120:28 protected: virtual void FinishAction(); public:
+   HIT 0085c120:38 virtual void FinishAction();
+   HIT 0085c120:41 void CCombatAction_ControlledStrafeJump::FinishAction()
+   HIT 0085c120:43 CCombatActionBase::FinishAction();
+   HIT 00865e20:27 virtual void FinishAction();
+   HIT 00865e20:30 void CCreatureAction_Die::FinishAction()
+   HIT 008663d0:74 void CCombatAction_GenericStrikeResponseBase::FinishAction()
+   HIT 008663d0:76 CCombatActionBase::FinishAction();
+   HIT 00866e80:82 virtual void FinishAction(); public:
+   HIT 00866e80:89 virtual void FinishAction();
+   HIT 00866e80:92 void CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FinishAction()
+   HIT 00866e80:104 CCombatActionBase::FinishAction();
+   HIT 00867b40:93 void CCombatAction_GenericStrikeResponseKnockdown::FinishAction()
+   HIT 00867b40:95 CCombatActionBase::FinishAction();
+   HIT 00867d20:82 void CCombatAction_GenericResponseToExplosion::FinishAction()
+   HIT 00867d20:84 CCombatActionBase::FinishAction();
+   HIT 0087c770:3 extern "C" void CCreatureAction_InterruptableMidAttackAutoTurn_FinishAction() { ForwardTarget(); }
+   HIT 0087ebd0:76 void FinishAction();
+   HIT 0087ebd0:81 void FinishAction();
+   HIT 0087ebd0:84 void CCombatAction_KickThingOnGround::FinishAction()
+   HIT 0087ebd0:94 CCombatActionBase::FinishAction();
+   HIT 008b69d0:6 virtual void FinishAction();
+   HIT 008b69d0:9 void __fastcall UnsheatheWeapons_BaseFinishAction(CCreatureAction_UnsheatheWeapons_Methods* action);
+   HIT 008b69d0:11 void CCreatureAction_UnsheatheWeapons_Methods::FinishAction() {
+   HIT 008b69d0:14 UnsheatheWeapons_BaseFinishAction(this);
+   HIT 008b6a20:54 virtual void FinishAction();
+   HIT 008b6a20:64 virtual void FinishAction();
+   HIT 008b6a20:72 virtual void FinishAction();
+   HIT 008b6a20:75 void CCreatureAction_GoUnderground::FinishAction()
+   HIT 008b6a20:83 CCombatActionBase::FinishAction();
+   HIT 008b6a90:55 virtual void FinishAction();
+   HIT 008b6a90:63 virtual void FinishAction();
+   HIT 008b6a90:69 virtual void FinishAction();
+   HIT 008b6a90:72 void CCreatureAction_RiseUp::FinishAction()
+   HIT 008b6a90:80 CCombatActionBase::FinishAction();
+   HIT 008b74a0:57 protected: virtual void FinishAction(); public:
+   HIT 008b74a0:64 virtual void FinishAction();
+   HIT 008b74a0:68 void CCreatureAction_LeapLong::FinishAction()
+   HIT 008b74a0:72 CCombatActionBase::FinishAction();
+   HIT 008b8f30:40 protected: virtual void FinishAction(); public:
+   HIT 008b8f30:48 virtual void FinishAction();
+   HIT 008b8f30:51 void CCreatureAction_ScreamerDie::FinishAction()
+   HIT 008b8f30:58 CCombatActionBase::FinishAction();
+   HIT 008b9010:72 void CCreatureAction_ScreamerDrainAttack::FinishAction()
+   HIT 008b9010:81 CCombatActionBase::FinishAction();
+   HIT 008b93b0:10 void __fastcall CCreatureAction_ForcePushOutOf_FinishAction(
+   HIT 008b93d0:51 void CCreatureAction_ReleasePhysicalShieldSpell::FinishAction()
+   HIT 008b93d0:56 CCombatActionBase::FinishAction();
+   HIT 008b9470:3 extern "C" void CCreatureAction_TeleportIn_FinishAction() { ForwardTarget(); }
+   HIT 008b9480:3 extern "C" void CCreatureAction_BuildUpDivineWrathSpell_FinishAction() { ForwardTarget(); }
+   HIT 008b9490:3 extern "C" void CCreatureAction_BuildUpUnholyPowerSpell_FinishAction() { ForwardTarget(); }
+   HIT 008b96a0:57 virtual void FinishAction();
+   HIT 008b96a0:73 protected: virtual void FinishAction(); public:
+   HIT 008b96a0:76 virtual void FinishAction();
+   HIT 008b96a0:79 void CCreatureAction_FinishWillTurncoatSpell::FinishAction()
+   HIT 008b96a0:81 CCombatActionBase::FinishAction();
+   HIT 008b9740:57 virtual void FinishAction();
+   HIT 008b9740:73 protected: virtual void FinishAction(); public:
+   HIT 008b9740:76 virtual void FinishAction();
+   HIT 008b9740:79 void CCreatureAction_FinishDrainLifeSpell::FinishAction()
+   HIT 008b9740:81 CCombatActionBase::FinishAction();
+   HIT 008b98d0:57 virtual void FinishAction();
+   HIT 008b98d0:73 protected: virtual void FinishAction(); public:
+   HIT 008b98d0:76 virtual void FinishAction();
+   HIT 008b98d0:79 void CCreatureAction_FinishHealLifeSpell::FinishAction()
+   HIT 008b98d0:81 CCombatActionBase::FinishAction();
+   HIT 008b9a60:57 virtual void FinishAction();
+   HIT 008b9a60:73 protected: virtual void FinishAction(); public:
+   HIT 008b9a60:76 virtual void FinishAction();
+   HIT 008b9a60:79 void CCreatureAction_FinishGhostSwordSpell::FinishAction()
+   HIT 008b9a60:81 CCombatActionBase::FinishAction();
+   HIT 008b9bf0:57 virtual void FinishAction();
+   HIT 008b9bf0:73 protected: virtual void FinishAction(); public:
+   HIT 008b9bf0:76 virtual void FinishAction();
+   HIT 008b9bf0:79 void CCreatureAction_ReleaseWillSummonSpell::FinishAction()
+   HIT 008b9bf0:81 CCombatActionBase::FinishAction();
+   HIT 008ba140:266 virtual void FinishAction();
+   HIT 008ba140:294 virtual void FinishAction();
+   HIT 008ba140:297 void CCreatureAction_FinishWillForceSpell::FinishAction()
+   HIT 008ba140:299 CCombatActionBase::FinishAction();
+   HIT 008ba3c0:122 protected: virtual void FinishAction(); public:
+   HIT 008ba3c0:132 virtual void FinishAction();
+   HIT 008ba3c0:135 void CCreatureAction_CastWillEnflameSpell::FinishAction()
+   HIT 008ba3c0:137 CCombatActionBase::FinishAction();
+   HIT 008ba6b0:266 virtual void FinishAction();
+   HIT 008ba6b0:294 virtual void FinishAction();
+   HIT 008ba6b0:297 void CCreatureAction_ReleaseWillEnflameSpell::FinishAction()
+   HIT 008ba6b0:299 CCombatActionBase::FinishAction();
+   HIT 008ba790:63 protected: virtual void FinishAction(); public:
+   HIT 008ba790:70 virtual void FinishAction();
+   HIT 008ba790:73 void CCreatureAction_CastPhysicalShieldSpell::FinishAction()
+   HIT 008ba790:75 CCombatActionBase::FinishAction();
+   HIT 008baa90:267 virtual void FinishAction();
+   HIT 008baa90:304 virtual void FinishAction();
+   HIT 008baa90:307 void CCreatureAction_ReleaseWillLightningSpell::FinishAction()
+   HIT 008baa90:309 CCombatActionBase::FinishAction();
+   HIT 008bac40:107 void FinishAction();
+   HIT 008bac40:110 void FinishAction();
+   HIT 008bac40:113 void CCreatureAction_FinishFireballSpell::FinishAction()
+   HIT 008bac40:115 CCombatActionBase::FinishAction();
+   HIT 008bd3f0:32 void CCreatureAction_TeleportOut::FinishAction()
+   HIT 008bd3f0:40 CCombatActionBase::FinishAction();
+   HIT 008bf500:53 void CCreatureAction_GenericFireProjectileWeapon::FinishAction()
+   HIT 008bf500:77 CCombatActionBase::FinishAction();
+   HIT 008bf6a0:41 protected: virtual void FinishAction(); public:
+   HIT 008bf6a0:45 virtual void FinishAction();
+   HIT 008bf6a0:48 void CCreatureAction_GenericLoadProjectileWeapon::FinishAction()
+   HIT 008bf6a0:58 CCombatActionBase::FinishAction();
+   HIT 008c0440:3 extern "C" void CCreatureAction_ThunderLightningStorm_FinishAction() { ForwardTarget(); }
+   HIT 008c0450:3 extern "C" void CCreatureAction_JackScream_FinishAction() { ForwardTarget(); }
+   HIT 008c0b10:57 protected: virtual void FinishAction(); public:
+   HIT 008c0b10:64 virtual void FinishAction();
+   HIT 008c0b10:68 void CCreatureAction_WhisperSommersaultForward::FinishAction()
+   HIT 008c0b10:72 CCombatActionBase::FinishAction();
+   HIT 008c0c00:51 protected: virtual void FinishAction(); public:
+   HIT 008c0c00:59 virtual void FinishAction();
+   HIT 008c0c00:62 void CCreatureAction_JackFlash::FinishAction()
+   HIT 008c0c00:76 CCombatActionBase::FinishAction();
+   HIT 008c1180:31 protected: virtual void FinishAction(); public:
+   HIT 008c1180:38 virtual void FinishAction();
+   HIT 008c1180:41 void CCreatureAction_JackFloatUp::FinishAction()
+   HIT 008c1180:47 CCombatActionBase::FinishAction();
+   HIT 008c1260:32 protected: virtual void FinishAction(); public:
+   HIT 008c1260:39 virtual void FinishAction();
+   HIT 008c1260:42 void CCreatureAction_JackGetUp::FinishAction()
+   HIT 008c1260:48 CCombatActionBase::FinishAction();
+   HIT 008c19b0:29 virtual void FinishAction();
+   HIT 008c19b0:37 protected: virtual void FinishAction(); public:
+   HIT 008c19b0:41 virtual void FinishAction();
+   HIT 008c19b0:43 void CCombatAction_Guildmaster_HealFollowersRelease::FinishAction()
+   HIT 008c19b0:48 CCombatActionBase::FinishAction();
+   HIT 008c1ac0:29 virtual void FinishAction();
+   HIT 008c1ac0:37 protected: virtual void FinishAction(); public:
+   HIT 008c1ac0:41 virtual void FinishAction();
+   HIT 008c1ac0:43 void CCombatAction_Guildmaster_ShieldFollowersRelease::FinishAction()
+   HIT 008c1ac0:48 CCombatActionBase::FinishAction();
+   HIT 008c1bd0:29 virtual void FinishAction();
+   HIT 008c1bd0:37 protected: virtual void FinishAction(); public:
+   HIT 008c1bd0:41 virtual void FinishAction();
+   HIT 008c1bd0:43 void CCombatAction_Guildmaster_SpeedUpFollowersRelease::FinishAction()
+   HIT 008c1bd0:48 CCombatActionBase::FinishAction();
+   HIT 008c2490:33 virtual void FinishAction();
+   HIT 008c2490:44 virtual void FinishAction(); public:
+   HIT 008c2490:51 virtual void FinishAction();
+   HIT 008c2490:54 void CCreatureAction_JackFall::FinishAction()
+   HIT 008c2490:61 CCombatActionBase::FinishAction();
+   HIT 008c2980:58 void CCombatAction_WillForcePushInto::FinishAction()
+   HIT 008c2980:61 CCombatActionBase::FinishAction();
+   HIT 008c29f0:69 void CCombatAction_WillShieldInto::FinishAction()
+   HIT 008c29f0:77 CCombatActionBase::FinishAction();
+   HIT 008c2a80:58 void CCombatAction_WillEnflameInto::FinishAction()
+   HIT 008c2a80:61 CCombatActionBase::FinishAction();
+   HIT 008c2ad0:78 void CCombatAction_WillHealInto::FinishAction()
+   HIT 008c2ad0:96 CCombatActionBase::FinishAction();
+   HIT 008c2c50:59 void CCreatureAction_BriarRoseShotFarInto::FinishAction()
+   HIT 008c2c50:63 CCombatActionBase::FinishAction();
+   HIT 008c3e30:3 extern "C" void CCreatureAction_ScorpionChargeStrike_FinishAction() { ForwardTarget(); }
+   HIT 008c3f00:27 virtual void FinishAction();
+   HIT 008c3f00:30 void CCreatureAction_Die::FinishAction()
+   HIT 008c4020:21 protected: virtual void FinishAction(); public:
+   HIT 008c4020:28 virtual void FinishAction();
+   HIT 008c4020:31 void CCreatureAction_WaspQueenPrimaryAttack::FinishAction()
+   HIT 008c4020:33 CCombatActionBase::FinishAction();
+   HIT 008c40d0:21 protected: virtual void FinishAction(); public:
+   HIT 008c40d0:28 virtual void FinishAction();
+   HIT 008c40d0:31 void CCreatureAction_WaspQueenLashOutAttack::FinishAction()
+   HIT 008c40d0:33 CCombatActionBase::FinishAction();
+   HIT 008c40f0:159 virtual void FinishAction();
+   HIT 008c40f0:162 virtual void FinishAction();
+   HIT 008c40f0:165 void CCreatureAction_WaspQueenDiveAttack::FinishAction()
+   HIT 008c40f0:173 CCombatActionBase::FinishAction();
+   HIT 008c43b0:45 protected: virtual void FinishAction(); public:
+   HIT 008c43b0:54 virtual void FinishAction();
+   HIT 008c43b0:57 void CCreatureAction_ScorpionUnblockableLeftTurnAttack::FinishAction()
+   HIT 008c43b0:59 CCombatActionBase::FinishAction();
+   HIT 008c4430:45 protected: virtual void FinishAction(); public:
+   HIT 008c4430:54 virtual void FinishAction();
+   HIT 008c4430:57 void CCreatureAction_ScorpionUnblockableRightTurnAttack::FinishAction()
+   HIT 008c4430:59 CCombatActionBase::FinishAction();
+   HIT 008c4780:35 protected: virtual void FinishAction(); public:
+   HIT 008c4780:42 virtual void FinishAction();
+   HIT 008c4780:45 void CCreatureAction_ScorpionTailWithdraw::FinishAction()
+   HIT 008c4780:54 CCombatActionBase::FinishAction();
+   HIT 008c48a0:51 protected: virtual void FinishAction(); public:
+   HIT 008c48a0:67 virtual void FinishAction();
+   HIT 008c48a0:70 void CCreatureAction_ScorpionTailPlunge::FinishAction()
+   HIT 008c48a0:79 CCombatActionBase::FinishAction();
+   HIT 008c4990:47 void CCreatureAction_ScorpionPrepareTailPlunge::FinishAction()
+   HIT 008c4990:57 CCombatActionBase::FinishAction();
+   HIT 008c4b00:47 protected: virtual void FinishAction(); public:
+   HIT 008c4b00:54 virtual void FinishAction();
+   HIT 008c4b00:57 void CCreatureAction_ScorpionRecover::FinishAction()
+   HIT 008c4b00:66 CCombatActionBase::FinishAction();
+   HIT 008c52b0:4 void __fastcall CCreatureAction_ScorpionSummon_FinishAction(void* action){ dv_h1_008c4fd0(action); dv_h2_00859a20(action); }
+   HIT 008c52c0:68 void FinishAction();
+   HIT 008c52c0:83 void FinishAction();
+   HIT 008c52c0:86 void CCreatureAction_WaspQueenDeath::FinishAction()
+   HIT 008c52c0:91 CCombatActionBase::FinishAction();
+   HIT 008c5370:62 virtual void FinishAction();
+   HIT 008c5370:67 void CCreatureAction_WaspQueenDie::FinishAction()
+   HIT 008c5370:69 CCombatActionBase::FinishAction();
+   HIT 008c5490:88 virtual void FinishAction();
+   HIT 008c5490:196 protected: virtual void FinishAction(); public:
+   HIT 008c5490:254 virtual void FinishAction();
+   HIT 008c5490:265 virtual void FinishAction();
+   HIT 008c5490:275 void CCreatureAction_ScorpionChargeInto::FinishAction() {
+   HIT 008c5490:276 CCombatActionBase::FinishAction();
+   HIT 008c55b0:47 void FinishAction();
+   HIT 008c55b0:55 void FinishAction();
+   HIT 008c55b0:63 void CCreatureAction_ScorpionCharge::FinishAction()
+   HIT 008c55b0:71 CCombatActionBase::FinishAction();
+   HIT 008c5ff0:3 extern "C" void CCreatureAction_TrollAngryGroundPound_FinishAction() { ForwardTarget(); }
+   HIT 008c6060:3 extern "C" void CCreatureAction_WalkInto_FinishAction() { ForwardTarget(); }
+   HIT 008c6a50:35 protected: virtual void FinishAction(); public:
+   HIT 008c6a50:46 virtual void FinishAction();
+   HIT 008c6a50:49 void CCreatureAction_TrollThrowProjectile::FinishAction()
+   HIT 008c6a50:59 CCombatActionBase::FinishAction();
+   HIT 008c6ce0:204 virtual void FinishAction();
+   HIT 008c6ce0:211 protected: virtual void FinishAction(); public:
+   HIT 008c6ce0:216 virtual void FinishAction();
+   HIT 008c6ce0:219 void CCreatureAction_RockTrollShakeAndExplode::FinishAction()
+   HIT 008c6ce0:229 CCombatActionBase::FinishAction();
+   HIT 008c7480:43 virtual void FinishAction();
+   HIT 008c7480:49 virtual void FinishAction(); public:
+   HIT 008c7480:52 virtual void FinishAction();
+   HIT 008c7480:55 void CCreatureAction_TrollGroundPound::FinishAction()
+   HIT 008c7480:61 CCombatActionBase::FinishAction();
+   HIT 008c74f0:90 virtual void FinishAction();
+   HIT 008c74f0:199 protected: virtual void FinishAction(); public:
+   HIT 008c74f0:311 virtual void FinishAction();
+   HIT 008c74f0:317 virtual void FinishAction();
+   HIT 008c74f0:320 void CCreatureAction_RockTrollFallToDeath::FinishAction(){
+   HIT 008c74f0:328 CCombatActionBase::FinishAction();
+   HIT 008c8c30:106 virtual void FinishAction(); public:
+   HIT 008c8c30:121 virtual void FinishAction();
+   HIT 008c8c30:124 virtual void FinishAction();
+   HIT 008c8c30:127 void CCreatureAction_BanditKingLunge::FinishAction()
+   HIT 008c8c30:129 CCombatActionBase::FinishAction();
+   HIT 008c8f70:76 void FinishAction();
+   HIT 008c8f70:98 void FinishAction();
+   HIT 008c8f70:101 void CCreatureAction_BanditKingStuck::FinishAction()
+   HIT 008c8f70:103 CCombatActionBase::FinishAction();
+   HIT 008c91e0:62 void FinishAction();
+   HIT 008c91e0:78 void FinishAction();
+   HIT 008c91e0:81 void CCreatureAction_BanditKingStuckGetHit::FinishAction()
+   HIT 008c91e0:83 CCombatActionBase::FinishAction();
+   HIT 008c99c0:31 protected: virtual void FinishAction(); public:
+   HIT 008c99c0:36 virtual void FinishAction();
+   HIT 008c99c0:39 void CCreatureAction_HobbeSpellcasterAim::FinishAction()
+   HIT 008c99c0:41 CCombatActionBase::FinishAction();
+   HIT 008c9e40:54 void CCreatureAction_NymphSummonOutOf::FinishAction()
+   HIT 008c9e40:57 CCombatActionBase::FinishAction();
+   HIT 008cabe0:8 void BaseFinishAction();
+   HIT 008cabe0:14 void FinishAction();
+   HIT 008cabe0:17 void CCreatureAction_SummonerLightningOrbInto::FinishAction()
+   HIT 008cabe0:21 this->BaseFinishAction();
+   HIT 008cad00:3 extern "C" void CCreatureAction_SummonerDead_FinishAction() { ForwardTarget(); }
+   HIT 008cad10:27 protected: virtual void FinishAction(); public:
+   HIT 008cad10:33 virtual void FinishAction();
+   HIT 008cad10:36 void CCreatureAction_SummonerFlameSlice::FinishAction()
+   HIT 008cad10:38 CCombatActionBase::FinishAction();
+   HIT 008cb060:45 protected: virtual void FinishAction(); public:
+   HIT 008cb060:55 virtual void FinishAction();
+   HIT 008cb060:58 void CCreatureAction_SummonerSummonInto::FinishAction()
+   HIT 008cb060:60 CCombatActionBase::FinishAction();
+   HIT 008cb4a0:30 protected: virtual void FinishAction(); public:
+   HIT 008cb4a0:37 virtual void FinishAction();
+   HIT 008cb4a0:40 void CCreatureAction_SummonerLightningOrbOutOf::FinishAction()
+   HIT 008cb4a0:42 CCombatActionBase::FinishAction();
+   HIT 008cb5c0:30 protected: virtual void FinishAction(); public:
+   HIT 008cb5c0:37 virtual void FinishAction();
+   HIT 008cb5c0:40 void CCreatureAction_SummonerLightningOrbOutOfGroundSmash::FinishAction()
+   HIT 008cb5c0:42 CCombatActionBase::FinishAction();
+   HIT 008cb8f0:18 class CCreatureActionBase:public CBaseObject{public:CIntelligentPointer<CThingCreatureBase> PCreature;};class CCombatActionBase:public CCreatureAction
+   HIT 008cb8f0:19 class CCreatureAction_SummonerDie:public CCombatActionBase{public:virtual void FinishAction();};
+   HIT 008cb8f0:20 void CCreatureAction_SummonerDie::FinishAction(){CCombatActionBase::FinishAction();CTCCreatureModeManager* mode;if(PCreature.GetPItem()->GetTC(TCI_ENT
+   HIT 008cc8a0:71 virtual void FinishAction();
+   HIT 008cc8a0:78 virtual void FinishAction();
+   HIT 008cc8a0:83 virtual void FinishAction();
+   HIT 008cc8a0:86 void CCreatureAction_BalverineLungeAttack::FinishAction()
+   HIT 008cc8a0:90 CCombatActionBase::FinishAction();
+   HIT 008ccb00:73 protected: virtual void FinishAction(); public:
+   HIT 008ccb00:80 virtual void FinishAction();
+   HIT 008ccb00:83 void CCreatureAction_BalverineDropInFromSky::FinishAction()
+   HIT 008ccb00:90 CCombatActionBase::FinishAction();
+   HIT 008ccd70:186 protected: virtual void FinishAction(); public:
+   HIT 008ccd70:196 virtual void FinishAction();
+   HIT 008ccd70:199 void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
+   HIT 008ccd70:201 CCombatActionBase::FinishAction();
+   HIT 008cd820:80 void FinishAction();
+   HIT 008cd820:85 void FinishAction();
+   HIT 008cd820:88 void CCreatureAction_BattleChargeImpact::FinishAction()
+   HIT 008cd820:90 CCombatActionBase::FinishAction();
+   HIT 008cda30:89 void FinishAction();
+   HIT 008cda30:94 void FinishAction();
+   HIT 008cda30:97 void CCreatureAction_BattleChargeMiss::FinishAction()
+   HIT 008cda30:99 CCombatActionBase::FinishAction();
+   HIT 008cdcf0:63 protected: virtual void FinishAction(); public:
+   HIT 008cdcf0:70 virtual void FinishAction();
+   HIT 008cdcf0:73 void CCreatureAction_CastSkillMultiArrow::FinishAction()
+   HIT 008cdcf0:75 CCombatActionBase::FinishAction();
+   HIT 008cdd40:71 void CCreatureAction_ReleaseTimeSpell::FinishAction()
+   HIT 008cdd40:73 CCombatActionBase::FinishAction();
+   HIT 008cf610:55 void FinishAction();
+   HIT 008cf610:70 void FinishAction();
+   HIT 008cf610:73 void CCreatureAction_TentacleRise::FinishAction()
+   HIT 008cf610:79 CCombatActionBase::FinishAction();
+   HIT 008cf700:53 void FinishAction();
+   HIT 008cf700:67 void FinishAction();
+   HIT 008cf700:70 void CCreatureAction_TentacleStrikeInto::FinishAction()
+   HIT 008cf700:72 CCombatActionBase::FinishAction();
+   HIT 008cf7d0:91 protected: virtual void FinishAction(); public:
+   HIT 008cf7d0:103 virtual void FinishAction();
+   HIT 008cf7d0:112 void CCreatureAction_TentacleStrikeLoop::FinishAction()
+   HIT 008cf7d0:114 CCombatActionBase::FinishAction();
+   HIT 008e63b0:79 virtual void FinishAction();
+   HIT 008e63b0:87 virtual void FinishAction();
+   HIT 008e63b0:94 virtual void FinishAction();
+   HIT 008e63b0:98 void CCreatureAction_CastStrengthMultiStrikeProper::FinishAction()
+   HIT 008e63b0:105 CCombatActionBase::FinishAction();
+   HIT 008e6940:94 virtual void FinishAction();
+   HIT 008e6940:202 virtual void FinishAction();
+   HIT 008e6940:268 virtual void FinishAction();
+   HIT 008e6940:274 void CCreatureAction_ReleaseStrengthBerserk::FinishAction(){
+   HIT 008e6940:286 CCombatActionBase::FinishAction();
+   HIT 008e6ae0:58 void CCreatureAction_CastStrengthMultiStrike::FinishAction()
+   HIT 008e6ae0:60 CCombatActionBase::FinishAction();
+   HIT 008ec210:3 extern "C" void CCreatureAction_UndeadIdleUnderground_FinishAction() { ForwardTarget(); }
+   HIT 008ec470:36 void FinishAction();
+   HIT 008ec470:46 void FinishAction();
+   HIT 008ec470:49 void CCreatureAction_UndeadRiseUp::FinishAction()
+   HIT 008ec470:60 CCombatActionBase::FinishAction();
+   HIT 008ec700:50 void FinishAction();
+   HIT 008ec700:66 void FinishAction();
+   HIT 008ec700:69 void CCreatureAction_UndeadReturnToEarth::FinishAction()
+   HIT 008ec700:71 CCombatActionBase::FinishAction();
+   HIT 008f2f30:46 protected: virtual void FinishAction(); public:
+   HIT 008f2f30:50 virtual void FinishAction();
+   HIT 008f2f30:53 void CCreatureAction_DragonTakeOff::FinishAction()
+   HIT 008f2f30:67 CCombatActionBase::FinishAction();
+   HIT 008f2fb0:42 protected: virtual void FinishAction(); public:
+   HIT 008f2fb0:46 virtual void FinishAction();
+   HIT 008f2fb0:49 void CCreatureAction_DragonHoverOutOf::FinishAction()
+   HIT 008f2fb0:59 CCombatActionBase::FinishAction();
+   HIT 008f3c00:41 protected: virtual void FinishAction(); public:
+   HIT 008f3c00:45 virtual void FinishAction();
+   HIT 008f3c00:48 void CCreatureAction_DragonLand::FinishAction()
+   HIT 008f3c00:57 CCombatActionBase::FinishAction();
+   HIT 008f47e0:129 void FinishAction();
+   HIT 008f47e0:139 void FinishAction();
+   HIT 008f47e0:142 void CCreatureAction_DragonTakeOffIntoFlying::FinishAction()
+   HIT 008f47e0:162 CCombatActionBase::FinishAction();
+   HIT 00923da0:76 protected: virtual void FinishAction(); public:
+   HIT 00923da0:89 virtual void FinishAction();
+   HIT 00923da0:92 void CCreatureAction_KrakenRiseUp::FinishAction()
+   HIT 00923da0:97 CCombatActionBase::FinishAction();
+   HIT 00923ec0:33 protected: virtual void FinishAction(); public:
+   HIT 00923ec0:51 virtual void FinishAction();
+   HIT 00923ec0:54 void CCreatureAction_KrakenReturnToWater::FinishAction()
+   HIT 00923ec0:56 CCombatActionBase::FinishAction();
+   HIT 00924670:31 protected: virtual void FinishAction(); public:
+   HIT 00924670:53 virtual void FinishAction();
+   HIT 00924670:56 void CCreatureAction_KrakenLowAttackInto::FinishAction()
+   HIT 00924670:58 CCombatActionBase::FinishAction();
+   HIT 00924720:81 protected: virtual void FinishAction(); public:
+   HIT 00924720:110 virtual void FinishAction();
+   HIT 00924720:113 void CCreatureAction_KrakenLowChargeLoop::FinishAction()
+   HIT 00924720:115 CCombatActionBase::FinishAction();
+   HIT 00924880:27 protected: virtual void FinishAction(); public:
+   HIT 00924880:48 virtual void FinishAction();
+   HIT 00924880:51 void CCreatureAction_KrakenLowPoseInto::FinishAction()
+   HIT 00924880:53 CCombatActionBase::FinishAction();
+   HIT 00924a90:32 protected: virtual void FinishAction(); public:
+   HIT 00924a90:54 virtual void FinishAction();
+   HIT 00924a90:57 void CCreatureAction_KrakenHighAttackInto::FinishAction()
+   HIT 00924a90:59 CCombatActionBase::FinishAction();
+   HIT 00982b50:29 virtual void FinishAction();
+   HIT 00982b50:37 protected: virtual void FinishAction(); public:
+   HIT 00982b50:41 virtual void FinishAction();
+   HIT 00982b50:43 void CCreatureAction_BeetleTakeOff::FinishAction()
+   HIT 00982b50:48 CCombatActionBase::FinishAction();
+   HIT 00982bb0:29 virtual void FinishAction();
+   HIT 00982bb0:37 protected: virtual void FinishAction(); public:
+   HIT 00982bb0:41 virtual void FinishAction();
+   HIT 00982bb0:43 void CCreatureAction_BeetleLand::FinishAction()
+   HIT 00982bb0:48 CCombatActionBase::FinishAction();
+## entry 77 00859ef0 old=?OnAnimationLoaded@CCombatActionBase@@UAEXXZ witness=00923cd0 landed_rows=6 data_refs=292 hits=18
+   HIT 008b6530:4 struct CCreatureAction_GetUpFromSitting { char pad[0x10]; int m_a; int m_b; void OnAnimationLoaded(); };
+   HIT 008b6530:6 void CCreatureAction_GetUpFromSitting::OnAnimationLoaded(){
+   HIT 008bedc0:4 void OnAnimationLoaded();
+   HIT 008bedc0:6 void CCreatureAction_GenericAimProjectileWeapon_Methods::OnAnimationLoaded(){ oal_sub(this); this->f10 = 7; }
+   HIT 008c7f40:8 void BaseOnAnimationLoaded();
+   HIT 008c7f40:13 void OnAnimationLoaded();
+   HIT 008c7f40:16 void CCreatureAction_BanditKingLunge::OnAnimationLoaded()
+   HIT 008c7f40:18 BaseOnAnimationLoaded();
+   HIT 008c9dd0:6 void OnAnimationLoaded();
+   HIT 008c9dd0:9 void CCreatureAction_NymphGetHit_Methods::OnAnimationLoaded()
+   HIT 008ec260:94 protected: virtual void OnAnimationLoaded(); public:
+   HIT 008ec260:101 void OnAnimationLoaded();
+   HIT 008ec260:104 void CCreatureAction_UndeadRiseUp::OnAnimationLoaded()
+   HIT 008ec260:114 CCombatActionBase::OnAnimationLoaded();
+   HIT 00923cd0:10 protected: virtual void OnAnimationLoaded(); public:
+   HIT 00923cd0:17 virtual void OnAnimationLoaded();
+   HIT 00923cd0:20 void CCreatureAction_KrakenLowAttackInto::OnAnimationLoaded()
+   HIT 00923cd0:22 CCombatActionBase::OnAnimationLoaded();
+## entry 77 00859ef0 old=?OnAnimationLoaded@CCombatActionBase@@QAEXXZ witness=008ec260 landed_rows=6 data_refs=292 hits=18
+   HIT 008b6530:4 struct CCreatureAction_GetUpFromSitting { char pad[0x10]; int m_a; int m_b; void OnAnimationLoaded(); };
+   HIT 008b6530:6 void CCreatureAction_GetUpFromSitting::OnAnimationLoaded(){
+   HIT 008bedc0:4 void OnAnimationLoaded();
+   HIT 008bedc0:6 void CCreatureAction_GenericAimProjectileWeapon_Methods::OnAnimationLoaded(){ oal_sub(this); this->f10 = 7; }
+   HIT 008c7f40:8 void BaseOnAnimationLoaded();
+   HIT 008c7f40:13 void OnAnimationLoaded();
+   HIT 008c7f40:16 void CCreatureAction_BanditKingLunge::OnAnimationLoaded()
+   HIT 008c7f40:18 BaseOnAnimationLoaded();
+   HIT 008c9dd0:6 void OnAnimationLoaded();
+   HIT 008c9dd0:9 void CCreatureAction_NymphGetHit_Methods::OnAnimationLoaded()
+   HIT 008ec260:94 protected: virtual void OnAnimationLoaded(); public:
+   HIT 008ec260:101 void OnAnimationLoaded();
+   HIT 008ec260:104 void CCreatureAction_UndeadRiseUp::OnAnimationLoaded()
+   HIT 008ec260:114 CCombatActionBase::OnAnimationLoaded();
+   HIT 00923cd0:10 protected: virtual void OnAnimationLoaded(); public:
+   HIT 00923cd0:17 virtual void OnAnimationLoaded();
+   HIT 00923cd0:20 void CCreatureAction_KrakenLowAttackInto::OnAnimationLoaded()
+   HIT 00923cd0:22 CCombatActionBase::OnAnimationLoaded();
+## entry 78 009be490 old=?InitialiseDeviceState@CDisplayManager@@QAEXXZ witness=009c1050 landed_rows=2 data_refs=0 hits=0
+## entry 79 009bebb0 old=?GetDepthBufferFormat@CDisplayManager@@QAE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z witness=009bfb30 landed_rows=2 data_refs=0 hits=0
+## entry 86 00783680 old=?DetachAll@CTCBoastingCrowdControl@@QAEXXZ witness=0056a980 landed_rows=1 data_refs=0 hits=0
+## entry 87 00662a00 old=?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z witness=00733690 landed_rows=25 data_refs=11 hits=13
+   HIT 00663510:65 CAnimationEntry* GetAnimFromName(const CCharString& name, long index);
+   HIT 006635d0:17 CAnimationEntry* GetAnimFromName(const CCharString& name, long index);
+   HIT 008d6540:25 CAnimationEntry* GetAnimFromName(const CCharString& name, long index);
+   HIT 008d6cb0:67 CAnimationEntry* GetAnimFromName(const CCharString& name, long flags);
+   HIT 008d6cb0:68 CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilterBase* filter);
+   HIT 008d6e80:68 CAnimationEntry* GetAnimFromName(const CCharString& name, long flags);
+   HIT 008d6e80:69 CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilterBase* filter);
+   HIT 008d6f20:68 CAnimationEntry* GetAnimFromName(const CCharString& name, long flags);
+   HIT 008d6f20:69 CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilterBase* filter);
+   HIT 008d70a0:17 CAnimationEntry* GetAnimFromName(const CCharString& name, long index);
+   HIT 008d8b00:102 CAnimationEntry* GetAnimFromName(const CCharString& name, long index);
+   HIT 008e9110:58 CAnimationEntry* GetAnimFromName(const CCharString& name, long index);
+   HIT 008e9190:62 CAnimationEntry* GetAnimFromName(const CCharString& name, long flags);
+## entry 88 00666d10 old=?GetCombatTypeDef@CThingCreatureBase@@QAEPBVCCombatTypeDef@@XZ witness=006ec4f0 landed_rows=28 data_refs=20 hits=5
+   HIT 006e9700:36 const CCombatTypeDef* GetCombatTypeDef() const;
+   HIT 006eba60:18 ::CCombatTypeDef* GetCombatTypeDef();
+   HIT 00865ac0:32 const CCombatTypeDef* GetCombatTypeDef() const;
+   HIT 008b8bc0:33 CCombatTypeDef* GetCombatTypeDef();
+   HIT 0096aad0:45 CCombatTypeDef* GetCombatTypeDef();

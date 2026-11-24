@@ -1,0 +1,11 @@
+00ac6270 LIBCP_OK renames=?GetChunkDescription@C3DMeshFileEngineMaterialChunk_Methods@@QBE?AVCCharString@@XZ=?GetChunkDescription@C3DMeshFileEngineMaterialChunk@@UBE?BVCCharString@@XZ ; .drectve EQUAL ; sections=3
+00b28b40 LIBCP_OK renames=?PeekGlobalDiffuseColour@CIEngine_Methods@@QAE?AVCRGBFloatColour@@XZ=?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ ; .drectve EQUAL ; sections=3
+005db370 LIBCP_OK renames=?TransferBinaryOut@CAnimComponentCombatMisc_TransferBinaryOut@@QBEXAAVCDataOutputStream@@@Z=?TransferBinaryOut@CAnimComponentCombatMisc@@UBEXAAVCDataOutputStream@@@Z ; .drectve EQUAL ; sections=2
+004aa940 LIBCP_OK renames=?GetFocalPos@CScriptThing_Methods@@QBE?AVC3DVector@@XZ=?GetFocalPos@CScriptThing@@UBE?AVC3DVector@@XZ ; .drectve EQUAL ; sections=3
+004aa9a0 LIBCP_OK renames=?GetHomePos@CScriptThing_Methods@@QBE?AVC3DVector@@XZ=?GetHomePos@CScriptThing@@UBE?AVC3DVector@@XZ ; .drectve EQUAL ; sections=3
+004aa9e0 LIBCP_OK renames=?GetCurrentMapName@CScriptThing_Methods@@QAE?AVCCharString@@XZ=?GetCurrentMapName@CScriptThing@@UBE?AVCCharString@@XZ ; .drectve EQUAL ; sections=2
+0088de90 LIBCP_OK renames=?EntitySetAsAllowedToFollowHero@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@_N@Z=?EntitySetAsAllowedToFollowHero@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z ; .drectve EQUAL ; sections=2
+0088ded0 LIBCP_OK renames=?EntitySetAsAllowedToChangeRegionFollowingState@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@_N@Z=?EntitySetAsAllowedToChangeRegionFollowingState@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z ; .drectve EQUAL ; sections=2
+0088df20 LIBCP_OK renames=?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@_N@Z=?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z ; .drectve EQUAL ; sections=2
+0088dfd0 LIBCP_OK renames=?OpenHouseDoors@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@@Z=?OpenHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z ; .drectve EQUAL ; sections=2
+0088e000 LIBCP_OK renames=?CloseHouseDoors@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@@Z=?CloseHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z ; .drectve EQUAL ; sections=2

@@ -1,3 +1,4 @@
+// Leaf: ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z
 // CThingAICreature::GetSleepTimes(long& start, long& end) -- the creature's sleep window by age (child/adult/elderly) from its village's def, or from the definition manager's default village def when it has no village
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00833390, length 349 bytes (`ret 8`).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (the const copy; inlined GetTC on the
@@ -117,10 +118,10 @@ public:
 class CThingAICreature : public CThing { public:
     unsigned char      _pad4c[0xe0 - 0x4c];
     CThingCreatureDef* PDef;                                // +0xe0 CDefPointer<CThingCreatureDef const>::Object
-    void GetSleepTimes(long& start, long& end);
+    void GetSleepTimes(long& start, long& end) const;
 };
 
-void CThingAICreature::GetSleepTimes(long& start, long& end)
+void CThingAICreature::GetSleepTimes(long& start, long& end) const
 {
     if (HasTC(0x23)) {
         CTCVillage* village = GetTC<CTCVillageMember>(0x23)->GetPVillage();

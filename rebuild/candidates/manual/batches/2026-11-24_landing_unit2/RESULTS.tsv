@@ -1,0 +1,98 @@
+address	verdict	old	new	reason
+004166e2	ACCEPT	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QAENXZ	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00417001	ACCEPT	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QAENXZ	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004166e2
+0042ddb3	ACCEPT	?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ	?InitialiseGraphics@CNewFrontendGameComponent@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0042e98f	ACCEPT	?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ	?InitialiseGraphics@CNewFrontendGameComponent@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0042ddb3
+00439e00	ACCEPT	?UpdateRenown@CPlayerGui@@QAEXXZ	?UpdateRenown@CPlayerGui@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0043a080	ACCEPT	?UpdateRenown@CPlayerGui@@QAEXXZ	?UpdateRenown@CPlayerGui@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00439e00
+004fbf60	ACCEPT	?LoadLoadableGlobalThingsForLevel@CWorldMap@@QAEXJ@Z	?LoadLoadableGlobalThingsForLevel@CWorldMap@@IAEXJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004fdbc0	ACCEPT	?LoadLoadableGlobalThingsForLevel@CWorldMap@@QAEXJ@Z	?LoadLoadableGlobalThingsForLevel@CWorldMap@@IAEXJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004fbf60
+00506f30	ACCEPT	?LoadLoadableGlobalThingsForLevel@CWorldMap@@QAEXJ@Z	?LoadLoadableGlobalThingsForLevel@CWorldMap@@IAEXJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004fbf60
+004fe030	ACCEPT	?LoadLoadableGlobalThingsForLevel@CWorldMap@@QAEXJ@Z	?LoadLoadableGlobalThingsForLevel@CWorldMap@@IAEXJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004fbf60
+004fcac0	ACCEPT	?ChangeMapPlacementValuesTo@CWorldMap@@QAEXJJ@Z	?ChangeMapPlacementValuesTo@CWorldMap@@IAEXJJ@Z	objsec ALL_EQ, MATCH PASS
+004ff8b0	ACCEPT	?ChangeMapPlacementValuesTo@CWorldMap@@QAEXJJ@Z	?ChangeMapPlacementValuesTo@CWorldMap@@IAEXJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004fcac0
+004fcb30	ACCEPT	?GetMinPlayerDistanceFromMap@CWorldMap@@QAEJJ@Z	?GetMinPlayerDistanceFromMap@CWorldMap@@IBEJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00502850	ACCEPT	?GetMinPlayerDistanceFromMap@CWorldMap@@QAEJJ@Z	?GetMinPlayerDistanceFromMap@CWorldMap@@IBEJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004fcb30
+0055e850	ACCEPT	?GetCachedClanLogosAsString@CTCHeroOnlineScoreboard@@QAE?AVCCharString@@XZ	?GetCachedClanLogosAsString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00561980	ACCEPT	?GetCachedClanLogosAsString@CTCHeroOnlineScoreboard@@QAE?AVCCharString@@XZ	?GetCachedClanLogosAsString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0055e850
+0055ea80	ACCEPT	?GetCachedMemberLogosAsString@CTCHeroOnlineScoreboard@@QAE?AVCCharString@@XZ	?GetCachedMemberLogosAsString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+005621b0	ACCEPT	?GetCachedMemberLogosAsString@CTCHeroOnlineScoreboard@@QAE?AVCCharString@@XZ	?GetCachedMemberLogosAsString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0055ea80
+0055f480	ACCEPT	?CreateStringFromMyScores@CTCHeroOnlineScoreboard@@QAE?AVCCharString@@XZ	?CreateStringFromMyScores@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00561450	ACCEPT	?CreateStringFromMyScores@CTCHeroOnlineScoreboard@@QAE?AVCCharString@@XZ	?CreateStringFromMyScores@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0055f480
+0055fec0	ACCEPT	?ChooseAClan@CTCHeroOnlineScoreboard@@QAEXXZ	?ChooseAClan@CTCHeroOnlineScoreboard@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00564570	ACCEPT	?ChooseAClan@CTCHeroOnlineScoreboard@@QAEXXZ	?ChooseAClan@CTCHeroOnlineScoreboard@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0055fec0
+005fd0f0	ACCEPT	?FindQuestsForActiveRegion@CTCInventoryMap@@QAEXXZ	?FindQuestsForActiveRegion@CTCInventoryMap@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00602f30	ACCEPT	?FindQuestsForActiveRegion@CTCInventoryMap@@QAEXXZ	?FindQuestsForActiveRegion@CTCInventoryMap@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 005fd0f0
+0065890b	ACCEPT	?ClearOutNullMembers@CTCVillage@@QAEXXZ	?ClearOutNullMembers@CTCVillage@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0065c781	ACCEPT	?ClearOutNullMembers@CTCVillage@@QAEXXZ	?ClearOutNullMembers@CTCVillage@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0065890b
+0066fb80	ACCEPT	?UpdateLocalJostling@CTCCoopSpirit@@QAEXXZ	?UpdateLocalJostling@CTCCoopSpirit@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00670a10	ACCEPT	?UpdateLocalJostling@CTCCoopSpirit@@QAEXXZ	?UpdateLocalJostling@CTCCoopSpirit@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0066fb80
+00697760	ACCEPT	?UpdateCreatureControlAngleXY@CGameCameraManager@@QAEXXZ	?UpdateCreatureControlAngleXY@CGameCameraManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0069b790	ACCEPT	?UpdateCreatureControlAngleXY@CGameCameraManager@@QAEXXZ	?UpdateCreatureControlAngleXY@CGameCameraManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00697760
+0069ac30	ACCEPT	?UpdateObservedThingInMelee@CGameCameraManager@@QAEXXZ	?UpdateObservedThingInMelee@CGameCameraManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0069b6f0	ACCEPT	?UpdateObservedThingInMelee@CGameCameraManager@@QAEXXZ	?UpdateObservedThingInMelee@CGameCameraManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0069ac30
+006c04d0	ACCEPT	?CountMoneyBags@CTCBuyableHouse@@QBEJXZ	?CountMoneyBags@CTCBuyableHouse@@AAEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006c0810	ACCEPT	?CountMoneyBags@CTCBuyableHouse@@QBEJXZ	?CountMoneyBags@CTCBuyableHouse@@AAEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006c04d0
+006c0c90	ACCEPT	?CountMoneyBags@CTCBuyableHouse@@QBEJXZ	?CountMoneyBags@CTCBuyableHouse@@AAEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006c04d0
+006d7430	ACCEPT	?GetNextExperienceFallbackMultiplier@CTCHeroExperience@@QBEJXZ	?GetNextExperienceFallbackMultiplier@CTCHeroExperience@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006d74b0	ACCEPT	?GetNextExperienceFallbackMultiplier@CTCHeroExperience@@QBEJXZ	?GetNextExperienceFallbackMultiplier@CTCHeroExperience@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006d7430
+006d86d0	ACCEPT	?GetNextExperienceFallbackMultiplier@CTCHeroExperience@@QBEJXZ	?GetNextExperienceFallbackMultiplier@CTCHeroExperience@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006d7430
+006d7e70	ACCEPT	?OnComboMultiplierDecrease@CTCHeroExperience@@QAEXXZ	?OnComboMultiplierDecrease@CTCHeroExperience@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006d8580	ACCEPT	?OnComboMultiplierDecrease@CTCHeroExperience@@QAEXXZ	?OnComboMultiplierDecrease@CTCHeroExperience@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006d7e70
+006d80e0	ACCEPT	?OnComboMultiplierDecrease@CTCHeroExperience@@QAEXXZ	?OnComboMultiplierDecrease@CTCHeroExperience@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006d7e70
+006e0690	ACCEPT	?SetParticleCreationDisabled@CTCDParticleEmitter@@QAEX_N@Z	?SetParticleCreationDisabled@CTCDParticleEmitter@@IAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006e0fc0	ACCEPT	?SetParticleCreationDisabled@CTCDParticleEmitter@@QAEX_N@Z	?SetParticleCreationDisabled@CTCDParticleEmitter@@IAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006e0690
+006e1020	ACCEPT	?SetParticleCreationDisabled@CTCDParticleEmitter@@QAEX_N@Z	?SetParticleCreationDisabled@CTCDParticleEmitter@@IAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006e0690
+006e1620	ACCEPT	?SetParticleCreationDisabled@CTCDParticleEmitter@@QAEX_N@Z	?SetParticleCreationDisabled@CTCDParticleEmitter@@IAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006e0690
+006e1080	ACCEPT	?SetPEmitter@CTCDParticleEmitter@@QAEXPAVCParticleEmitter@NParticleEngine@@@Z	?SetPEmitter@CTCDParticleEmitter@@AAEXPAVCParticleEmitter@NParticleEngine@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006e13e0	ACCEPT	?SetPEmitter@CTCDParticleEmitter@@QAEXPAVCParticleEmitter@NParticleEngine@@@Z	?SetPEmitter@CTCDParticleEmitter@@AAEXPAVCParticleEmitter@NParticleEngine@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006e1080
+006e14e0	ACCEPT	?SetPEmitter@CTCDParticleEmitter@@QAEXPAVCParticleEmitter@NParticleEngine@@@Z	?SetPEmitter@CTCDParticleEmitter@@AAEXPAVCParticleEmitter@NParticleEngine@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006e1080
+00706040	ACCEPT	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@QAEXXZ	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00707930	ACCEPT	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@QAEXXZ	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00706040
+00707ad0	ACCEPT	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@QAEXXZ	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00706040
+00707970	ACCEPT	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@QAEXXZ	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00706040
+007079e0	ACCEPT	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@QAEXXZ	?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00706040
+00751ad0	ACCEPT	?UpdateLookTimer@CTCLook@@QAEXXZ	?UpdateLookTimer@CTCLook@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00753840	ACCEPT	?UpdateLookTimer@CTCLook@@QAEXXZ	?UpdateLookTimer@CTCLook@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00751ad0
+00753c70	ACCEPT	?UpdateLookTimer@CTCLook@@QAEXXZ	?UpdateLookTimer@CTCLook@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00751ad0
+00752640	ACCEPT	?InitialiseHeadAnims@CTCLook@@QAEXXZ	?InitialiseHeadAnims@CTCLook@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00753ba0	ACCEPT	?InitialiseHeadAnims@CTCLook@@QAEXXZ	?InitialiseHeadAnims@CTCLook@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00752640
+00788229	ACCEPT	?Trigger@CTCTrapBase@@QAEXXZ	?Trigger@CTCTrapBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007887be	ACCEPT	?Trigger@CTCTrapBase@@QAEXXZ	?Trigger@CTCTrapBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00788229
+007d7f10	ACCEPT	?PositionCover@CTCTavernGameSpotTheAddition@@QAEXM@Z	?PositionCover@CTCTavernGameSpotTheAddition@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+007d8140	ACCEPT	?PositionCover@CTCTavernGameSpotTheAddition@@QAEXM@Z	?PositionCover@CTCTavernGameSpotTheAddition@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007d7f10
+007d80c0	ACCEPT	?PositionCover@CTCTavernGameSpotTheAddition@@QAEXM@Z	?PositionCover@CTCTavernGameSpotTheAddition@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007d7f10
+007d83c0	ACCEPT	?PositionCover@CTCTavernGameSpotTheAddition@@QAEXM@Z	?PositionCover@CTCTavernGameSpotTheAddition@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007d7f10
+007d8e20	ACCEPT	?PositionCover@CTCTavernGameSpotTheAddition@@QAEXM@Z	?PositionCover@CTCTavernGameSpotTheAddition@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007d7f10
+007dd990	ACCEPT	?CheckForHits@CTCCreatureFlyInCircles@@QAEXXZ	?CheckForHits@CTCCreatureFlyInCircles@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007de030	ACCEPT	?CheckForHits@CTCCreatureFlyInCircles@@QAEXXZ	?CheckForHits@CTCCreatureFlyInCircles@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007dd990
+0080c350	ACCEPT	?IsDynamicExplosionFinished@CTCDExplosion@@QAE_NXZ	?IsDynamicExplosionFinished@CTCDExplosion@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0080d750	ACCEPT	?IsDynamicExplosionFinished@CTCDExplosion@@QAE_NXZ	?IsDynamicExplosionFinished@CTCDExplosion@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0080c350
+0080f130	ACCEPT	?GetRandomFlightHeight@CTCNymph@@QBEMXZ	?GetRandomFlightHeight@CTCNymph@@IAEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0080f270	ACCEPT	?GetRandomFlightHeight@CTCNymph@@QBEMXZ	?GetRandomFlightHeight@CTCNymph@@IAEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0080f130
+0082a960	ACCEPT	?UpdateMarkersInternal@CMiniMapDisplay@@QAEXXZ	?UpdateMarkersInternal@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0082b750	ACCEPT	?UpdateMarkersInternal@CMiniMapDisplay@@QAEXXZ	?UpdateMarkersInternal@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0082a960
+008326a0	ACCEPT	?UpdateMovement@CThingAICreature@@QAEXM@Z	?UpdateMovement@CThingAICreature@@IAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00834760	ACCEPT	?UpdateMovement@CThingAICreature@@QAEXM@Z	?UpdateMovement@CThingAICreature@@IAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 008326a0
+00857b70	ACCEPT	?ProcessPlayerControl@CCombatActionBase@@QAEXXZ	?ProcessPlayerControl@CCombatActionBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00859d80	ACCEPT	?ProcessPlayerControl@CCombatActionBase@@QAEXXZ	?ProcessPlayerControl@CCombatActionBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00857b70
+008ec940	ACCEPT	?GetDegradableInfoForHealthPercentage@CTCDegradableBase@@QAEPBVCDegradableInfo@@M@Z	?GetDegradableInfoForHealthPercentage@CTCDegradableBase@@AAEPBVCDegradableInfo@@M@Z	objsec ALL_EQ, MATCH PASS
+008ecac0	ACCEPT	?GetDegradableInfoForHealthPercentage@CTCDegradableBase@@QAEPBVCDegradableInfo@@M@Z	?GetDegradableInfoForHealthPercentage@CTCDegradableBase@@AAEPBVCDegradableInfo@@M@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 008ec940
+0090f290	ACCEPT	?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@QAE_NXZ	?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0090f470	ACCEPT	?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@QAE_NXZ	?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0090f290
+00939d00	ACCEPT	?IsAnotherGuardAdmonishingPlayer@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ	?IsAnotherGuardAdmonishingPlayer@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093a080	ACCEPT	?IsAnotherGuardAdmonishingPlayer@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ	?IsAnotherGuardAdmonishingPlayer@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00939d00
+009425f0	ACCEPT	?MoveAndFace@CAIStateGroup_WorkAtSchool@@QAE_NVC3DVector@@M0@Z	?MoveAndFace@CAIStateGroup_WorkAtSchool@@IAE_NVC3DVector@@M0@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009432c0	ACCEPT	?MoveAndFace@CAIStateGroup_WorkAtSchool@@QAE_NVC3DVector@@M0@Z	?MoveAndFace@CAIStateGroup_WorkAtSchool@@IAE_NVC3DVector@@M0@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009425f0
+00947e20	ACCEPT	?GetPaymentRequestReplyMessage@CAIStateGroup_GoToPub@@QAE_NXZ	?GetPaymentRequestReplyMessage@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094a840	ACCEPT	?GetPaymentRequestReplyMessage@CAIStateGroup_GoToPub@@QAE_NXZ	?GetPaymentRequestReplyMessage@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00947e20
+009492a0	ACCEPT	?GetPayPoint@CAIStateGroup_GoToPub@@QAE_NXZ	?GetPayPoint@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094aac0	ACCEPT	?GetPayPoint@CAIStateGroup_GoToPub@@QAE_NXZ	?GetPayPoint@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009492a0
+0095ab50	ACCEPT	?SetUpCirclePoints@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?SetUpCirclePoints@CAIStateGroup_HoverHornetQueen@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0095b3e0	ACCEPT	?SetUpCirclePoints@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?SetUpCirclePoints@CAIStateGroup_HoverHornetQueen@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0095ab50
+009a52f0	ACCEPT	?InitGUIDFromName@CSystemManager@@QAEXPBD@Z	?InitGUIDFromName@CSystemManager@@AAEXPBD@Z	objsec ALL_EQ, MATCH PASS
+009a6610	ACCEPT	?InitGUIDFromName@CSystemManager@@QAEXPBD@Z	?InitGUIDFromName@CSystemManager@@AAEXPBD@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009a52f0
+00a6c890	ACCEPT	?CalculateCentreOfGravity@CPhysicsMesh@@QAEXXZ	?CalculateCentreOfGravity@CPhysicsMesh@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a6da40	ACCEPT	?CalculateCentreOfGravity@CPhysicsMesh@@QAEXXZ	?CalculateCentreOfGravity@CPhysicsMesh@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a6c890
+00a73db0	ACCEPT	?CalculateNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ	?CalculateNumberOfNavigationLineLevels@CPhysicsMesh@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a74360	ACCEPT	?CalculateNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ	?CalculateNumberOfNavigationLineLevels@CPhysicsMesh@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a73db0

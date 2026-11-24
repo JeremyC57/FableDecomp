@@ -1,5 +1,5 @@
 // CTCEnemy::IsAllyOf(const CThing&) const -- the parent itself is an ally, an enemy never is, otherwise allied when both factions are known and the faction table allies them
-// Leaf: IsAllyOf
+// Leaf: ?IsAllyOf@CTCEnemy@@ABE_NABVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x0076D460, 132 bytes (`ret 4`). Ego_r.pdb `?IsAllyOf@CTCEnemy@@ABE_NABVCThing@@@Z`. Callees:
@@ -45,7 +45,7 @@ FABLE_FORCEINLINE CTCBase* GetTCIfPresent(const CThing& thing, long kind)
 }
 
 class CFaction { public:
-    bool IsAlliedWith(const CFaction* other) const;         // 0x006B9460
+    bool IsAlliedWithFaction(const CFaction& other) const;  // 0x006B9460 (NF306: Ego_r + FableWin QBE, const reference; was IsAlliedWith(const CFaction*))
 };
 
 class CTCEnemy { public:
@@ -55,8 +55,10 @@ class CTCEnemy { public:
     bool          IsInGlobalUpdateTCs;                      // +0x09
     unsigned char _pad0a[0x18 - 0x0a];                      // flags, EnemyThings, AllyThings (retail sizes)
     CFaction*     PFaction;                                 // +0x18
-    bool IsEnemyOf(const CThing& thing) const;              // 0x0076CCE0
+    private: bool IsEnemyOf(const CThing& thing) const; public:              // 0x0076CCE0
+    private:
     bool IsAllyOf(const CThing& thing) const;
+    public:
 };
 
 bool CTCEnemy::IsAllyOf(const CThing& thing) const
@@ -70,7 +72,7 @@ bool CTCEnemy::IsAllyOf(const CThing& thing) const
     {
         CFaction* otherFaction = ((const CTCEnemy*)GetTCIfPresent(thing, 0x49))->PFaction;
         if (otherFaction)
-            return faction->IsAlliedWith(otherFaction);
+            return faction->IsAlliedWithFaction(*otherFaction);
     }
     return false;
 }

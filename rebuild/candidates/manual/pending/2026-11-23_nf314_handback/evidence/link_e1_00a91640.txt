@@ -1,0 +1,8 @@
+## HEAD set: H_00a91640.obj H_00a90900.obj
+duplicates 0
+
+UNRESOLVED 1 ?AddTriangleList@CDeviceIndependent@N3DPrimitive@@QAEXABVC3DMeshFileTrianglesChunk@@@Z
+## new set: N_00a91640.obj H_00a90900.obj
+duplicates 0
+
+LK_DONE

@@ -1,0 +1,2 @@
+address	claim	reason
+0x00ADCE60	put the row back to the inline CVertexGroupBlock dtor (nf273 ruling 2b, "if it lands")	the owner change is held (decision 5), and the row's own inline copy is NEQ to 0x00A96DA0 (its local model declares ~map / ~vector out of line: 19 v 84 at nf273's HEAD), so against a pick-any owner it would be one more competing copy; it waits for a port onto engine/CVertexGroupBlock.h

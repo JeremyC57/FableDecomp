@@ -35,7 +35,8 @@ public:
     CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
     ~CScriptThing() { }
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
-    virtual const C3DVector& GetPos() const { if (PImp.Data == 0) return NullCoord; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+    virtual const C3DVector& GetPos() const { CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }   // slot 6 (+0x18)
     virtual void v07() const; virtual void v08() const; virtual void v09() const; virtual void v10() const; virtual void v11() const; virtual void v12() const;
     virtual void v13() const; virtual void v14() const; virtual void v15() const; virtual void v16() const; virtual void v17() const; virtual void v18() const;
     virtual void v19() const; virtual void v20() const; virtual void v21() const; virtual void v22() const; virtual void v23() const; virtual void v24() const;

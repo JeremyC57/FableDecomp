@@ -1,5 +1,5 @@
 // CTCMeleeTrap::UpdateAnimation() -- step the trap's animation by the thing's update time; while a triggered, non-continuous trap's opener is open start the continuous loop (type 2) or reset the trap, and once it has closed again finish the trigger (a type-4 trap kills itself)
-// Leaf: UpdateAnimation
+// Leaf: ?UpdateAnimation@CTCMeleeTrap@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the interface-presence stand-in CComponentBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00788555, 194 bytes (plain `ret`; PDB ?UpdateAnimation@CTCMeleeTrap@@AAEXXZ). The trap TU is
@@ -65,7 +65,7 @@ class CFadeInFadeOutBase { public:                             // 0x1c
     float         OpenTimer;                            // +0x10
     float         CloseTimer;                           // +0x14
     unsigned long ToColour;                             // +0x18 CRGBColour
-    bool IsOpen();                                      // 0x0048DA30
+    bool IsOpen() const;                                      // 0x0048DA30
 };
 class CTCBase
 {
@@ -84,13 +84,15 @@ class CTCTrapBase : public CTCBase { public:
     bool          Triggered;                            // +0x59
     bool          LastTriggerOnProximity;               // +0x5a
     long          TrapType;                             // +0x5c ETrapType
-    void Reset();                                       // 0x00787BF1
+    protected: void Reset(); public:                                       // 0x00787BF1
 };
 struct CTCMeleeTrap : CTCTrapBase {
     bool PlayingContinuous;                             // +0x60
     bool StrikeAnimation;                               // +0x61
     void InitialiseContinuousPlay();                    // 0x00788198
+    private:
     void UpdateAnimation();
+    public:
 };
 
 void CTCMeleeTrap::UpdateAnimation()

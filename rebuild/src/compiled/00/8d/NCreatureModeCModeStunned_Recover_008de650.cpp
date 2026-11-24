@@ -30,13 +30,13 @@ class CThingCreatureBase { public:
 class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:
     bool CanBeHit;                         // +0x114
     bool Flip;                             // +0x115
-    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);   // 0x00867AF0
+    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase& owner, bool flip);   // 0x00867AF0 (Ego_r + FableWin AAV)
 };
 
 class CCombatAction_RecoverFromStunned : public CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:   // vtable 0x0127851C
     virtual void v00();
     CCombatAction_RecoverFromStunned(CThingCreatureBase* owner)
-        : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, false)
+        : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(*owner, false)
     {
     }
 };

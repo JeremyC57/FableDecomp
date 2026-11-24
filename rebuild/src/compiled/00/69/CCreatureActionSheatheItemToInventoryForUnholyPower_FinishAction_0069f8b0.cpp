@@ -47,7 +47,7 @@ public:
 class CTCUnholyPower { public:
     unsigned char _pad[0x18];
     unsigned char m_isCancelled;            // +0x18
-    void CancelAbilities();                 // 0x00794D90
+    void CancelMove();                 // 0x00794D90; NF296: PDB name, was CancelAbilities
 };
 
 class CCreatureAction_SheatheItemToInventory { public:
@@ -66,6 +66,6 @@ void CCreatureAction_SheatheItemToInventory_ForUnholyPower::FinishAction()
     CTCUnholyPower* pPower;
     if (PCreature.GetPItem()->GetInterface(&pPower, 0x86)) {
         if (!pPower->m_isCancelled)
-            pPower->CancelAbilities();
+            pPower->CancelMove();
     }
 }

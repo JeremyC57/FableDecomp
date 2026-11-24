@@ -1,0 +1,4 @@
+06:39:58 PASS /home/user/FableDecomp/rebuild/tests/00/84/CCreatureActionActivateQuest_CCreatureActionActivateQuest_00843f50_test.cpp
+06:39:58 PASS /home/user/FableDecomp/rebuild/tests/00/7f/CTCCarriedActionUseSpade_OnActionUse_007f03d0_test.cpp
+06:39:58 PASS /home/user/FableDecomp/rebuild/tests/00/7e/CTCActionUseActivateQuest_OnActionUse_007ef600_test.cpp
+06:39:58 PASS /home/user/FableDecomp/rebuild/tests/00/7f/CTCCarriedActionUseFishingRod_OnActionUse_007f01f0_test.cpp

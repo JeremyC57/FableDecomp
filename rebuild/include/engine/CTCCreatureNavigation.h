@@ -56,6 +56,9 @@ public:
     virtual ~CTCCreatureNavigation();
 #endif
     void InterruptNavigation();
+#ifdef FABLE_RETAIL_GHOST_SWORD_ADD_PASS27
+    void SetAsAbleToMoveThroughSolidObjects(bool);                     // 0x006CB9D0
+#endif
 #ifdef FABLE_RETAIL_KID_EVADE_PASS23
     // Original PDB const member and donor02b68d59; native006cb840 receives a reference output.
     bool GetNearestFleePosition(const C3DVector&,float,C3DVector&) const;

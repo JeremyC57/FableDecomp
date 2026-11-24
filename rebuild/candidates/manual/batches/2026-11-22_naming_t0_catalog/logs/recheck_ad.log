@@ -1,0 +1,182 @@
+addr       parity           behav  name
+00a9a000   WARN STANDIN_LEAF ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z (catalog CCountedPointer<C3DAnimFile>::DeleteData; free function lacks its class)
+00a9a000   MATCH            PASS   DeleteData
+00a9a420   WARN RELOC_NAME: ?Destroy_00a99fe0@@YIXPAX@Z -> 00a99fe0 labelled '_global::DeleteViaVtable0_00a99fe0'
+00a9a420   WARN STANDIN_LEAF ?Reset@CCountedPointer_00a99fe0@@QAEXPAX@Z (catalog CCountedPointer<C3DAnimFileRootChunk>::Reset; address-only name)
+00a9a420   RELOCATION_MATCH PASS   Reset
+00a9cb50   WARN STANDIN_LEAF ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z (catalog CCountedPointer<C3DMeshFile>::DeleteData; free function lacks its class)
+00a9cb50   MATCH            PASS   DeleteData
+00ac38a0   WARN RELOC_NAME: ?Destroy_00ac3810@@YIXPAX@Z -> 00ac3810 labelled 'CCountedPointer<C3DMeshPartitionElement>::DeleteData'
+00ac38a0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00ac3810@@QAEXPAX@Z (catalog CCountedPointer<C3DMeshPartitionElement>::Reset; address-only name)
+00ac38a0   RELOCATION_MATCH PASS   Reset
+00ac3ff0   WARN RELOC_NAME: ?Destroy_00ac3fd0@@YIXPAX@Z -> 00ac3fd0 labelled 'CCountedPointer<CParticleProgram>::DeleteData'
+00ac3ff0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00ac3fd0@@QAEXPAX@Z (catalog CCountedPointer<CParticleProgram>::Reset; address-only name)
+00ac3ff0   RELOCATION_MATCH PASS   Reset
+00acf440   WARN STANDIN_LEAF ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z (catalog CCountedPointer<C3DMeshFilePrimitiveChunk>::DeleteData; free function lacks its class)
+00acf440   MATCH            PASS   DeleteData
+00ae93e0   WARN RELOC_NAME: ?Destroy_00ae91c0@@YIXPAX@Z -> 00ae91c0 labelled 'CCountedPointer<NParticleEngine::CParticleDataBank>::DeleteData'
+00ae93e0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00ae91c0@@QAEXPAX@Z (catalog CCountedPointer<NParticleEngine::CParticleDataBank>::Reset; address-only name)
+00ae93e0   RELOCATION_MATCH PASS   Reset
+00aecac0   WARN RELOC_NAME: ?Destroy_00aeca50@@YIXPAX@Z -> 00aeca50 labelled 'CCountedPointer::DeleteData'
+00aecac0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00aeca50@@QAEXPAX@Z (catalog CCountedPointer<NParticleEngine::CParticleEmitterManager>::Reset; address-only name)
+00aecac0   RELOCATION_MATCH PASS   Reset
+00aeccc0   WARN RELOC_NAME: ?Destroy_00aecca0@@YIXPAX@Z -> 00aecca0 labelled '_global::DeleteObject_00aecca0'
+00aeccc0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00aecca0@@QAEXPAX@Z (catalog CCountedPointer<NParticleEngine::CParticleEmitterDatabase>::Reset; address-only name)
+00aeccc0   RELOCATION_MATCH PASS   Reset
+00b23170   WARN RELOC_NAME: ?Destroy_00b230e0@@YIXPAX@Z -> 00b230e0 labelled 'CCountedPointer<NParticleEngine::CPSCSplineBase::CSplinePosParamData>::DeleteData'
+00b23170   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b230e0@@QAEXPAX@Z (catalog CCountedPointer<NParticleEngine::CPSCSplineBase::CSplinePosParamData>::Reset; address-only name)
+00b23170   RELOCATION_MATCH PASS   Reset
+00b23240   WARN RELOC_NAME: ?Destroy_00b231e0@@YIXPAX@Z -> 00b231e0 labelled '_global::DeleteSplineRandomOffsetData'
+00b23240   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b231e0@@QAEXPAX@Z (catalog CCountedPointer<NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData>::Reset; address-only name)
+00b23240   RELOCATION_MATCH PASS   Reset
+00b2e290   WARN RELOC_NAME: ?Destroy_00b2de20@@YIXPAX@Z -> 00b2de20 labelled 'CCountedPointer<CCompositeSurfaceCache>::DeleteData'
+00b2e290   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b2de20@@QAEXPAX@Z (catalog CCountedPointer<CCompositeSurfaceCache>::Reset; address-only name)
+00b2e290   RELOCATION_MATCH PASS   Reset
+00b37470   WARN RELOC_NAME: ?Destroy_00b36060@@YIXPAX@Z -> 00b36060 labelled 'CCountedPointer<CEnginePrimitiveManagerStaticMeshes>::DeleteData'
+00b37470   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36060@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerStaticMeshes>::Reset; address-only name)
+00b37470   RELOCATION_MATCH PASS   Reset
+00b37520   WARN RELOC_NAME: ?Destroy_00b36070@@YIXPAX@Z -> 00b36070 labelled 'CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes>::DeleteData'
+00b37520   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36070@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes>::Reset; address-only name)
+00b37520   RELOCATION_MATCH PASS   Reset
+00b375d0   WARN RELOC_NAME: ?Destroy_00b36080@@YIXPAX@Z -> 00b36080 labelled 'CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes>::DeleteData'
+00b375d0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36080@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes>::Reset; address-only name)
+00b375d0   RELOCATION_MATCH PASS   Reset
+00b37680   WARN RELOC_NAME: ?Destroy_00b36090@@YIXPAX@Z -> 00b36090 labelled 'CCountedPointer<CEnginePrimitiveManagerRepeatedZSprites>::DeleteData'
+00b37680   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36090@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerRepeatedZSprites>::Reset; address-only name)
+00b37680   RELOCATION_MATCH PASS   Reset
+00b37730   WARN RELOC_NAME: ?Destroy_00b360a0@@YIXPAX@Z -> 00b360a0 labelled 'CCountedPointer<CEnginePrimitiveManagerSprites>::DeleteData'
+00b37730   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b360a0@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerSprites>::Reset; address-only name)
+00b37730   RELOCATION_MATCH PASS   Reset
+00b377e0   WARN RELOC_NAME: ?Destroy_00b360b0@@YIXPAX@Z -> 00b360b0 labelled 'CCountedPointer<CEnginePrimitiveManagerFlareSprites>::DeleteData'
+00b377e0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b360b0@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerFlareSprites>::Reset; address-only name)
+00b377e0   RELOCATION_MATCH PASS   Reset
+00b37890   WARN RELOC_NAME: ?Destroy_00b360c0@@YIXPAX@Z -> 00b360c0 labelled 'CCountedPointer<CEnginePrimitiveManagerWeaponTrails>::DeleteData'
+00b37890   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b360c0@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerWeaponTrails>::Reset; address-only name)
+00b37890   RELOCATION_MATCH PASS   Reset
+00b37940   WARN RELOC_NAME: ?Destroy_00b360d0@@YIXPAX@Z -> 00b360d0 labelled 'CCountedPointer<CEnginePrimitiveManagerSpriteTrails>::DeleteData'
+00b37940   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b360d0@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerSpriteTrails>::Reset; address-only name)
+00b37940   RELOCATION_MATCH PASS   Reset
+00b379f0   WARN RELOC_NAME: ?Destroy_00b360e0@@YIXPAX@Z -> 00b360e0 labelled 'CCountedPointer<CEnginePrimitiveManagerLines>::DeleteData'
+00b379f0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b360e0@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerLines>::Reset; address-only name)
+00b379f0   RELOCATION_MATCH PASS   Reset
+00b37aa0   WARN RELOC_NAME: ?Destroy_00b360f0@@YIXPAX@Z -> 00b360f0 labelled 'CCountedPointer<CEnginePrimitiveManagerText>::DeleteData'
+00b37aa0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b360f0@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerText>::Reset; address-only name)
+00b37aa0   RELOCATION_MATCH PASS   Reset
+00b37b90   WARN RELOC_NAME: ?Destroy_00b36100@@YIXPAX@Z -> 00b36100 labelled 'CCountedPointer<CEnginePrimitiveOcclusionGroupManager>::DeleteData'
+00b37b90   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36100@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveOcclusionGroupManager>::Reset; address-only name)
+00b37b90   RELOCATION_MATCH PASS   Reset
+00b37c40   WARN RELOC_NAME: ?Destroy_00b36110@@YIXPAX@Z -> 00b36110 labelled 'CCountedPointer<CEnginePrimitiveGroupManager>::DeleteData'
+00b37c40   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36110@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveGroupManager>::Reset; address-only name)
+00b37c40   RELOCATION_MATCH PASS   Reset
+00b37cf0   WARN RELOC_NAME: ?Destroy_00b36120@@YIXPAX@Z -> 00b36120 labelled 'CCountedPointer<CEnginePrimitiveChangerManager>::DeleteData'
+00b37cf0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36120@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveChangerManager>::Reset; address-only name)
+00b37cf0   RELOCATION_MATCH PASS   Reset
+00b37da0   WARN RELOC_NAME: ?Destroy_00b36130@@YIXPAX@Z -> 00b36130 labelled 'CCountedPointer<CEngineClothRenderer>::DeleteData'
+00b37da0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36130@@QAEXPAX@Z (catalog CCountedPointer<CEngineClothRenderer>::Reset; address-only name)
+00b37da0   RELOCATION_MATCH PASS   Reset
+00b37e50   WARN RELOC_NAME: ?Destroy_00b36140@@YIXPAX@Z -> 00b36140 labelled 'CCountedPointer<CEnginePrimitiveManagerParticleLineGroup>::DeleteData'
+00b37e50   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36140@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerParticleLineGroup>::Reset; address-only name)
+00b37e50   RELOCATION_MATCH PASS   Reset
+00b37f00   WARN RELOC_NAME: ?Destroy_00b36150@@YIXPAX@Z -> 00b36150 labelled 'CCountedPointer<CEnginePrimitiveManagerParticleMeshGroup>::DeleteData'
+00b37f00   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36150@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerParticleMeshGroup>::Reset; address-only name)
+00b37f00   RELOCATION_MATCH PASS   Reset
+00b37fb0   WARN RELOC_NAME: ?Destroy_00b36160@@YIXPAX@Z -> 00b36160 labelled 'CCountedPointer<CEnginePrimitiveManagerParticleSpriteGroup>::DeleteData'
+00b37fb0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36160@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerParticleSpriteGroup>::Reset; address-only name)
+00b37fb0   RELOCATION_MATCH PASS   Reset
+00b38060   WARN RELOC_NAME: ?Destroy_00b36170@@YIXPAX@Z -> 00b36170 labelled 'CCountedPointer<CEnginePrimitiveManagerParticleSpriteTrailGroup>::DeleteData'
+00b38060   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36170@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerParticleSpriteTrailGroup>::Reset; address-only name)
+00b38060   RELOCATION_MATCH PASS   Reset
+00b38110   WARN RELOC_NAME: ?Destroy_00b36180@@YIXPAX@Z -> 00b36180 labelled 'CCountedPointer<CEnginePrimitiveManagerParticleGroup>::DeleteData'
+00b38110   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36180@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerParticleGroup>::Reset; address-only name)
+00b38110   RELOCATION_MATCH PASS   Reset
+00b381c0   WARN RELOC_NAME: ?Destroy_00b36190@@YIXPAX@Z -> 00b36190 labelled 'CCountedPointer<CEnginePrimitiveManagerDecal>::DeleteData'
+00b381c0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b36190@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerDecal>::Reset; address-only name)
+00b381c0   RELOCATION_MATCH PASS   Reset
+00b38270   WARN RELOC_NAME: ?Destroy_00b361a0@@YIXPAX@Z -> 00b361a0 labelled 'CCountedPointer<CEnginePrimitiveManagerParticleDecalGroup>::DeleteData'
+00b38270   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b361a0@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerParticleDecalGroup>::Reset; address-only name)
+00b38270   RELOCATION_MATCH PASS   Reset
+00b38320   WARN RELOC_NAME: ?Destroy_00b361b0@@YIXPAX@Z -> 00b361b0 labelled 'CCountedPointer<CEnginePrimitiveManagerWeatherMask>::DeleteData'
+00b38320   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b361b0@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManagerWeatherMask>::Reset; address-only name)
+00b38320   RELOCATION_MATCH PASS   Reset
+00b4b360   WARN RELOC_NAME: ?Destroy_00b4b020@@YIXPAX@Z -> 00b4b020 labelled 'CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>::DeleteData'
+00b4b360   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b4b020@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>::Reset; address-only name)
+00b4b360   RELOCATION_MATCH PASS   Reset
+00b4b410   WARN RELOC_NAME: ?Destroy_00b4b030@@YIXPAX@Z -> 00b4b030 labelled 'CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes>::DeleteData'
+00b4b410   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b4b030@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes>::Reset; address-only name)
+00b4b410   RELOCATION_MATCH PASS   Reset
+00b4b4c0   WARN RELOC_NAME: ?Destroy_00b4b040@@YIXPAX@Z -> 00b4b040 labelled 'CCountedPointer<CEnginePrimitiveManager2DSprites>::DeleteData'
+00b4b4c0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b4b040@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManager2DSprites>::Reset; address-only name)
+00b4b4c0   RELOCATION_MATCH PASS   Reset
+00b4b570   WARN RELOC_NAME: ?Destroy_00b4b050@@YIXPAX@Z -> 00b4b050 labelled 'CCountedPointer<CEnginePrimitive2DViewportManager>::DeleteData'
+00b4b570   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b4b050@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitive2DViewportManager>::Reset; address-only name)
+00b4b570   RELOCATION_MATCH PASS   Reset
+00b4b620   WARN RELOC_NAME: ?Destroy_00b4b060@@YIXPAX@Z -> 00b4b060 labelled 'CCountedPointer<CEnginePrimitiveManager2DParticleGroup>::DeleteData'
+00b4b620   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b4b060@@QAEXPAX@Z (catalog CCountedPointer<CEnginePrimitiveManager2DParticleGroup>::Reset; address-only name)
+00b4b620   RELOCATION_MATCH PASS   Reset
+00b8ebc0   WARN STANDIN_LEAF @CCountedPtr_assign@12 (catalog CCountedPointer<CVertexBufferWin32>::operator=; names another function)
+00b8ebc0   RELOCATION_MATCH PASS   operator=
+00b95a30   WARN RELOC_NAME: ?Destroy_00b94f90@@YIXPAX@Z -> 00b94f90 labelled '_global::DeleteViaVtable0_00b94f90'
+00b95a30   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b94f90@@QAEXPAX@Z (catalog CCountedPointer<CEngineSceneGrid>::Reset; address-only name)
+00b95a30   RELOCATION_MATCH PASS   Reset
+00b95aa0   WARN RELOC_NAME: ?Destroy_00b95000@@YIXPAX@Z -> 00b95000 labelled 'CCountedPointer<CEngineSceneMap>::DeleteData'
+00b95aa0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00b95000@@QAEXPAX@Z (catalog CCountedPointer<CEngineSceneMap>::Reset; address-only name)
+00b95aa0   RELOCATION_MATCH PASS   Reset
+00bb64a0   WARN RELOC_NAME: ?Destroy_00bb6330@@YIXPAX@Z -> 00bb6330 labelled 'CCountedPointer<CParticleSimulationRenderData>::DeleteData'
+00bb64a0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00bb6330@@QAEXPAX@Z (catalog CCountedPointer<CParticleSimulationRenderData>::Reset; address-only name)
+00bb64a0   RELOCATION_MATCH PASS   Reset
+00f39ca0   WARN RELOC_NAME: ?Destroy_00f38920@@YIXPAX@Z -> 00f38920 labelled 'sub_00f38920'
+00f39ca0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00f38920@@QAEXPAX@Z (catalog CCountedPointer<CRenderTarget>::Reset; address-only name)
+00f39ca0   RELOCATION_MATCH PASS   Reset
+00629060   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+  WARN leaf '??1CCreatureAction_ActivateQuest@' matches no symbol in 00629060.obj; graded the largest function
+  WARN leaf '??1CCreatureAction_ActivateQuest@' matches no symbol in 00629060.obj; graded the largest function
+00629060   WARN RELOC_NAME: ??1CMember_00a01c10@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00629060   WARN STANDIN_LEAF ??1CAggregate_00629060@@QAE@XZ (catalog CCreatureAction_ActivateQuest::~CCreatureAction_ActivateQuest; address-only name)
+00629060   RELOCATION_MATCH PASS   ~CCreatureAction_ActivateQuest
+
+WINS: 45
+  00a9a000 MATCH CCountedPointer<C3DAnimFile>::DeleteData
+  00a9a420 RELOCATION_MATCH CCountedPointer<C3DAnimFileRootChunk>::Reset
+  00a9cb50 MATCH CCountedPointer<C3DMeshFile>::DeleteData
+  00ac38a0 RELOCATION_MATCH CCountedPointer<C3DMeshPartitionElement>::Reset
+  00ac3ff0 RELOCATION_MATCH CCountedPointer<CParticleProgram>::Reset
+  00acf440 MATCH CCountedPointer<C3DMeshFilePrimitiveChunk>::DeleteData
+  00ae93e0 RELOCATION_MATCH CCountedPointer<NParticleEngine::CParticleDataBank>::Reset
+  00aecac0 RELOCATION_MATCH CCountedPointer<NParticleEngine::CParticleEmitterManager>::Reset
+  00aeccc0 RELOCATION_MATCH CCountedPointer<NParticleEngine::CParticleEmitterDatabase>::Reset
+  00b23170 RELOCATION_MATCH CCountedPointer<NParticleEngine::CPSCSplineBase::CSplinePosParamData>::Reset
+  00b23240 RELOCATION_MATCH CCountedPointer<NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData>::Reset
+  00b2e290 RELOCATION_MATCH CCountedPointer<CCompositeSurfaceCache>::Reset
+  00b37470 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerStaticMeshes>::Reset
+  00b37520 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes>::Reset
+  00b375d0 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerRepeatedStaticMeshes>::Reset
+  00b37680 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerRepeatedZSprites>::Reset
+  00b37730 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerSprites>::Reset
+  00b377e0 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerFlareSprites>::Reset
+  00b37890 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerWeaponTrails>::Reset
+  00b37940 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerSpriteTrails>::Reset
+  00b379f0 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerLines>::Reset
+  00b37aa0 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerText>::Reset
+  00b37b90 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveOcclusionGroupManager>::Reset
+  00b37c40 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveGroupManager>::Reset
+  00b37cf0 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveChangerManager>::Reset
+  00b37da0 RELOCATION_MATCH CCountedPointer<CEngineClothRenderer>::Reset
+  00b37e50 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerParticleLineGroup>::Reset
+  00b37f00 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerParticleMeshGroup>::Reset
+  00b37fb0 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerParticleSpriteGroup>::Reset
+  00b38060 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerParticleSpriteTrailGroup>::Reset
+  00b38110 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerParticleGroup>::Reset
+  00b381c0 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerDecal>::Reset
+  00b38270 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerParticleDecalGroup>::Reset
+  00b38320 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManagerWeatherMask>::Reset
+  00b4b360 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>::Reset
+  00b4b410 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes>::Reset
+  00b4b4c0 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManager2DSprites>::Reset
+  00b4b570 RELOCATION_MATCH CCountedPointer<CEnginePrimitive2DViewportManager>::Reset
+  00b4b620 RELOCATION_MATCH CCountedPointer<CEnginePrimitiveManager2DParticleGroup>::Reset
+  00b8ebc0 RELOCATION_MATCH CCountedPointer<CVertexBufferWin32>::@CCountedPtr_assign@12
+  00b95a30 RELOCATION_MATCH CCountedPointer<CEngineSceneGrid>::Reset
+  00b95aa0 RELOCATION_MATCH CCountedPointer<CEngineSceneMap>::Reset
+  00bb64a0 RELOCATION_MATCH CCountedPointer<CParticleSimulationRenderData>::Reset
+  00f39ca0 RELOCATION_MATCH CCountedPointer<CRenderTarget>::Reset
+  00629060 RELOCATION_MATCH CCreatureAction_ActivateQuest::??1CCreatureAction_ActivateQuest@

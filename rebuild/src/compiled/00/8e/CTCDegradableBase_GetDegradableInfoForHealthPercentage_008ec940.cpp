@@ -1,5 +1,5 @@
 // CTCDegradableBase::GetDegradableInfoForHealthPercentage(float) -- the degradation stage whose health band holds the percentage (stages sorted by falling health), null at or above the first stage or with no stages
-// Leaf: GetDegradableInfoForHealthPercentage
+// Leaf: ?GetDegradableInfoForHealthPercentage@CTCDegradableBase@@AAEPBVCDegradableInfo@@M@Z
 //
 // Retail 0x008EC940, 119 bytes (`ret 4`). Ego_r.pdb `?GetDegradableInfoForHealthPercentage@CTCDegradableBase
 // @@AAEPBVCDegradableInfo@@M@Z`. Callees: none direct; the def's virtual slot 1 when the copied def
@@ -51,7 +51,9 @@ class CTCDegradableBase { public:
     long                        LastWorldFrameHit;          // +0x0c
     CDefPointer<CDegradableDef> PDefinition;                // +0x10 CDefPointer<const CDegradableDef>
     CDefPointer<CDegradableDef> GetDefinition() const { return PDefinition; }
+    private:
     const CDegradableInfo* GetDegradableInfoForHealthPercentage(float healthPercentage);
+    public:
 };
 
 const CDegradableInfo* CTCDegradableBase::GetDegradableInfoForHealthPercentage(float healthPercentage)

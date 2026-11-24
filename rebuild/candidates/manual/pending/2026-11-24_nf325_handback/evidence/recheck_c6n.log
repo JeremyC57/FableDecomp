@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0090080b   MATCH            PASS   GetStateGroupType
+0090086f   MATCH            PASS   GetStateGroupType
+009008a1   MATCH            PASS   GetStateGroupType
+
+WINS: 3
+  0090080b MATCH CAIStateGroup_MazeTutorialBattle::?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@XZ
+  0090086f MATCH CAIStateGroup_MazeTutorialBattleRespondToLightning::?GetStateGroupType@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UBE?AW4EAIStateGroupType@@XZ
+  009008a1 MATCH CAIStateGroup_MazeTutorialBattleUseShield::?GetStateGroupType@CAIStateGroup_MazeTutorialBattleUseShield@@UBE?AW4EAIStateGroupType@@XZ

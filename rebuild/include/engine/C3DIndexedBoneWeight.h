@@ -5,8 +5,12 @@
 #include "rebuild_abi.h"
 class C3DIndexedBoneWeight {
 public:
+#ifdef FABLE_RETAIL_C3DINDEXEDBONEWEIGHT_CTOR_PASS27
+// 00A90AE0: FableWin emits the empty default constructor in resize(BoneWeights).
+    C3DIndexedBoneWeight() {}
+#endif
     unsigned long BoneIndex;   // +0x0
     unsigned long Weight;      // +0x4
 };
-FABLE_STATIC_ASSERT(sizeof(C3DIndexedBoneWeight) == 8);
+FABLE_STATIC_ASSERT_AT(11, sizeof(C3DIndexedBoneWeight) == 8);
 #endif

@@ -7,18 +7,19 @@
 // Virtual clone of a class that adds no data to its base: the implicit copy constructor is
 // inlined as the base copy constructor @ 0x0062EBC0 plus this class's vtable store
 // (0x012731E4, named through rtti-vtables.tsv). sizeof = 0xa8. One of 196 bodies of this shape.
-class CCreatureActionBase { public:
-    virtual void v00();
-    unsigned char _body[0xa8 - 4];    // sizeof(CCreatureActionBase) = sizeof(CCreatureAction_DropGenericBox) = 0xa8
-    CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
-};
+// Leaf: ?Clone@CCreatureAction_DropGenericBox@@UBEPAVCCreatureActionBase@@XZ
+// Clone port (NF323, 2026-11-24; NF317 Q3 / NF320 Q1): defined on the real class of engine/CCreatureAction_DropGenericBox.h over engine/CCreatureActionBase.h
+//   instead of the local one-slot stand-in model (was ?Clone@CCreatureAction_DropGenericBox@@QAEPAVCCreatureActionBase@@XZ). The inline implicit copy constructor stores
+//   the class vftable, so this TU emits ??_7CCreatureAction_DropGenericBox@@6B@ from the header model, slot for slot the retail table.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_COPYCTOR
+#define FABLE_RETAIL_CCREATUREACTION_GENERICBOX
+#define FABLE_RETAIL_CCREATUREACTION_DROPGENERICBOX_RTTI_DECLS
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCreatureAction_DropGenericBox.h"
 
-class CCreatureAction_DropGenericBox : public CCreatureActionBase { public:
-    virtual void v00();                    // own vtable; copy constructor implicit
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_DropGenericBox::Clone()
+CCreatureActionBase* CCreatureAction_DropGenericBox::Clone() const
 {
     return new CCreatureAction_DropGenericBox(*this);
 }

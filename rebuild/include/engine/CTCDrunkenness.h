@@ -15,6 +15,12 @@ private:
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_DRUNKENNESS; }
     bool IsDrunk() const { return Drunk; }
+#ifdef FABLE_RETAIL_GOTOPUB_DRINK_PASS27
+    void DrankSecs(float seconds) { const float& time = seconds; Drunkenness += time * DrunkennessDeltaPerSecondOfDrinking; }
+private:
+    static const float DrunkennessDeltaPerSecondOfDrinking;
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCDRUNKENNESS_DRANKFRAMES
     // NF167 opt-in (q4151, row 0x0093A8C0 CAIStateGroup_BanditSitRoundCampfire::Drink): Ego_r.pdb / FableWin.pdb
     // ?DrankFrames@CTCDrunkenness@@QAEXJ@Z (FableWin 0x02B7FA30, beside the Drink body 0x02B7F7B0; out-of-line COMDAT copy in retail at

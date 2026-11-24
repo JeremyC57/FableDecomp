@@ -1,0 +1,80 @@
+{
+  "views": {
+    "interface": {
+      "order": [
+        "interface",
+        "scythe",
+        "spectator"
+      ],
+      "exported_leafs": {
+        "?Main@CScytheBeforeGettingTablets@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ": {
+          "extent": 1852,
+          "matches": true
+        },
+        "?Main@COracleSpectator@COracleMinigameTestScript@NScript@@EAEXXZ": {
+          "extent": 1203,
+          "matches": true
+        },
+        "??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z": {
+          "extent": 87,
+          "matches": true
+        }
+      },
+      "table_points_to_selected_scalar": true
+    },
+    "scythe": {
+      "order": [
+        "scythe",
+        "interface",
+        "spectator"
+      ],
+      "exported_leafs": {
+        "?Main@CScytheBeforeGettingTablets@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ": {
+          "extent": 1852,
+          "matches": true
+        },
+        "?Main@COracleSpectator@COracleMinigameTestScript@NScript@@EAEXXZ": {
+          "extent": 1203,
+          "matches": true
+        },
+        "??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z": {
+          "extent": 46,
+          "matches": false
+        }
+      },
+      "table_points_to_selected_scalar": true
+    },
+    "spectator": {
+      "order": [
+        "spectator",
+        "interface",
+        "scythe"
+      ],
+      "exported_leafs": {
+        "?Main@CScytheBeforeGettingTablets@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ": {
+          "extent": 1852,
+          "matches": true
+        },
+        "?Main@COracleSpectator@COracleMinigameTestScript@NScript@@EAEXXZ": {
+          "extent": 1203,
+          "matches": true
+        },
+        "??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z": {
+          "extent": 30,
+          "matches": false
+        }
+      },
+      "table_points_to_selected_scalar": true
+    }
+  },
+  "compiler": "13.10.3077",
+  "check": "Private native image ownership test. Both individually tested script entries point at their eligible code, and the MovieBase slot resolves according to original object ordering. Unrelated game dependencies unresolved; this is not a full game replay.",
+  "row": "00cfce90",
+  "all_mapped_copies_pass": true,
+  "native_compiland": "game_script_interface.obj",
+  "in_row_copy_bytes": 46,
+  "retail_copy_bytes": 87,
+  "stock_checker_covers_scalar": false,
+  "retail_address": "006e7bd0",
+  "review": "The scalar is outside the package binding table. The row body directly installs the original vtable. Link game_script_interface.obj before the script objects to select the 87-byte scalar at the vtable slot. The supplied per-row tests and all mapped copy checks pass. Reversing the original object order changes the selected scalar."
+}

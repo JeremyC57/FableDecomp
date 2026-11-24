@@ -1,0 +1,275 @@
+entry	address	status	binders_respelled	note
+1	0x009e1e40	done	5	order 1. ?GFAYToVY@@YGMM@Z (0x009ddff0, 0x009dda50; __stdcall), ?GFAYToVY@@YIMM@Z (0x009dd210, 0x009dca80: the PDB name of 0x009E1DD0, which the HEAD link resolves into the wrong body) and ?GFVYToAY@@YGMM@Z (0x0048f230) -> ?GFVYToAY@@YIMM@Z
+2	0x0097d580	done-partial	1	order 2. Binder 0x0094A6D0 (CAIStateGroupGoToPubMethods : the flat CAIStateGroupBase view) now calls the protected base member through the new add-only opt-in FABLE_RETAIL_CAISTATEGROUPBASE_FLAT_AIACTION_LOOKATPOS (hdr/README.md); its own d
+3	0x009d1260	skipped-port	0	binder opened: the stand-in CBankFile_Retail is the binder's OWN class (it defines CBankFile_Retail::UpdateEntry; Leaf pins ?UpdateEntry@CBankFile@@): a flat-view opt-in cannot help; self port onto engine/CBankFile.h (the CBankFile_Retail x
+4	0x00a373b0	skipped-port	0	binder opened; identity verified: CNavigatorManager's RTTI direct base is CClassFactory (rtti_bases.tsv) and the self row 0x00A373B0 binds ??0CClassFactory@@IAE@E@Z (Ego_r 00b76c90); the binder pushes 5 (fits unsigned char). The stand-in CN
+5	0x0062f3b0	skipped-port	0	binder opened: local struct CBase_0062f3b0 (0x114 bytes) with a copy ctor stands for CCombatActionBase (engine/CCombatActionBase.h exists): renaming it is a new local model; port
+6	0x006f83c0	skipped-port	0	binder opened: local struct CBase_006f83c0 (0x148) stands for CCombatAction_GenericStrikeResponseBase (engine/ header exists): port
+7	0x006eae20	skipped-port	0	binder opened: CCombatManager_Retail is the binder's own class (with CThingCreatureBase_Retail / CCombatantInfo models), and the PDB member is private const-ref (ABE, ABUCCombatantInfo@@0) v the stand-in public non-const refs: port onto eng
+8	0x00a3aa40	skipped-port	0	binder opened: CCompressorZlib_Retail is the binder's own class (defines CCompressorZlib_Retail::Compress, no Leaf line); its self leaf is itself a stand-in, so moving the call means a self port onto engine/CCompressorZlib.h (T3)
+9	0x009eaf80	skipped-port	0	binder opened: CConsole_Retail is the binder's own class (0x009EB260 SendMessageToUser, itself entry 0x009eb260); PDB member private (AAE): self port with 0x009eb260
+10	0x009eb260	skipped-port	0	binder opened: namespace X_009eb590 { struct CConsole ... struct CCharString } (one-line local stand-in models); and the self row 0x009EB260 is CConsole_Retail (see 0x009eaf80): port
+11	0x0062ebc0	skipped-port	0	binder opened: local struct CBase_0062ebc0 (0xA8) with copy ctor stands for CCreatureActionBase: port
+12	0x00933cc0	skipped-port	0	binder opened: namespace N_00933cc0 { struct CCreatureAction_AlertToPlayer : CCreatureActionBase } with a (CThingAICreature*) ctor; PDB ??0CCreatureAction_CallSpouseHome(CThingCreatureBase&): stand-in class token and parameter types: port (
+13	0x00910b20	skipped-port	0	binder opened: namespace N_00910c30 { struct CCreatureAction_DeclarePlayerACriminal } (non-virtual QAE dtor v PDB virtual UAE): port with 0x00910c30
+14	0x00910c30	skipped-port	0	binder opened: same N_00910c30 model; ctor takes pointers v PDB references: port with 0x00910b20
+15	0x009074c0	skipped-port	0	binder opened (CCombatSequence*::OnCreate): local struct CCombatAction_<addr> : CCombatActionBase { _body; ctor(CThingCreatureBase*, CThing*) } stands for CCreatureAction_FodderIdle; engine/ header exists except where noted, the PDB ctor ta
+16	0x00907320	skipped-port	0	binder opened (CCombatSequence*::OnCreate): local struct CCombatAction_<addr> : CCombatActionBase { _body; ctor(CThingCreatureBase*, CThing*) } stands for CCreatureAction_FodderPrimaryAttack; engine/ header exists except where noted, the PD
+17	0x00907440	skipped-port	0	binder opened (CCombatSequence*::OnCreate): local struct CCombatAction_<addr> : CCombatActionBase { _body; ctor(CThingCreatureBase*, CThing*) } stands for CCreatureAction_FodderSecondaryAttack; engine/ header exists except where noted, the 
+18	0x009073a0	skipped-port	0	binder opened (CCombatSequence*::OnCreate): local struct CCombatAction_<addr> : CCombatActionBase { _body; ctor(CThingCreatureBase*, CThing*) } stands for CCreatureAction_FodderUnblockablePrimaryAttack; engine/ header exists except where no
+19	0x008c3810	skipped-port	0	binder opened: namespace N_008c3810 { struct CCreatureAction_GoUnderground : CCombatActionBase } stands for CCreatureAction_JackGetUp (engine/_quarantine header); pointer v reference ctor: port
+20	0x008b8190	skipped-port	0	binder opened (CCombatSequence*::OnCreate): local struct CCombatAction_<addr> : CCombatActionBase { _body; ctor(CThingCreatureBase*, CThing*) } stands for CCreatureAction_LeapLong; engine/ header exists except where noted, the PDB ctor take
+21	0x0090a700	skipped-port	0	binder opened (CCombatSequence*::OnCreate): local struct CCombatAction_<addr> : CCombatActionBase { _body; ctor(CThingCreatureBase*, CThing*) } stands for CCreatureAction_MidAttack360 (no header); engine/ header exists except where noted, t
+22	0x0090a690	skipped-port	0	binder opened (CCombatSequence*::OnCreate): local struct CCombatAction_<addr> : CCombatActionBase { _body; ctor(CThingCreatureBase*, CThing*) } stands for CCreatureAction_MidAttackFacing; engine/ header exists except where noted, the PDB ct
+23	0x0096c820	skipped-port	0	binder opened: namespace N_0096c820 { struct CCreatureAction_PutDownTankard : CCreatureAction_PlayAnimation } stands for CCreatureAction_StopEatingAtTable (no header); pointer v reference: port
+24	0x008bfce0	skipped-port	0	binder opened: namespace N_008bfce0 { struct C3DAnimFileHelpersChunk } in a 24-line ctor row; PDB ??0CCreatureAction_StrafeForward@@QAE@XZ (engine/ header exists): stand-in namespace class: port
+25	0x0097cff0	skipped-port	0	binder opened (CCombatSequence*::OnCreate): local struct CCombatAction_<addr> : CCombatActionBase { _body; ctor(CThingCreatureBase*, CThing*) } stands for CCreatureAction_VillagerAdvance; engine/ header exists except where noted, the PDB ct
+26	0x0097cf30	skipped-port	0	binder opened (CCombatSequence*::OnCreate): local struct CCombatAction_<addr> : CCombatActionBase { _body; ctor(CThingCreatureBase*, CThing*) } stands for CCreatureAction_VillagerAttack; engine/ header exists except where noted, the PDB cto
+27	0x00929fc0	skipped-port	0	entry 27: binder(s) opened (tri3): stand-in class token ?FindDummy@CAIStateGroupApprenticeHeroMethods@@QAEPAVCThingGameObject@@ABVCCharString@@@Z [0092a0c0 defines CAIStateGroupApprenticeHeroMethods]. A respell needs the real class / parame
+28	0x005bc934	skipped-port	0	entry 28: binder(s) opened (tri3): stand-in class token ?SetAsSelected@CCategory_Retail@@QAEX_N@Z [005bdd39 defines CCategory_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared
+29	0x006ea770	skipped-port	0	entry 29: binder(s) opened (tri3): stand-in class token ?GetPreferredPos@CCombatPositionMethods@@QAE?AVC3DVector@@PAVCThingAICreature@@@Z [0093dcd0 defines CCombatPositionMethods]. A respell needs the real class / parameter types (a new or 
+30	0x009a4400	skipped-port	0	entry 30: binder(s) opened (tri3): free stand-in function ?DestructFirstMember_009a4400@@YIXPAX@Z [00a437b0 free / out-of-scope stand-in] || free stand-in function ?DestructSecondMember_009a4400@@YIXPAX@Z [00af1bd0 free / out-of-scope stand
+31	0x0097d050	skipped-port	0	entry 31: binder(s) opened (tri3): stand-in class token ??0CCombatAction_0097d050@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z [00908c80 defines CCombatAction_0097d050]. A respell needs the real class / parameter types (a new or renamed local 
+32	0x00a62920	skipped-port	0	entry 32: binder(s) opened (tri3): stand-in class token ??0CCriticalSectionLock_Retail@@QAE@PAUCRITICAL_SECTION_Fable@@_N@Z [009d5b60 defines CCriticalSectionLock_Retail]. A respell needs the real class / parameter types (a new or renamed l
+33	0x00a62960	skipped-port	0	entry 33: binder(s) opened (tri3): stand-in class token ?Unlock@CCriticalSectionLock_Retail@@QAEXXZ [009d5b60 defines CCriticalSectionLock_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port on
+34	0x00a62980	skipped-port	0	entry 34: binder(s) opened (tri3): stand-in class token ?Lock@CCriticalSectionLock_Retail@@QAEXXZ [009d61f0 free / out-of-scope stand-in]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the sh
+35	0x00a629a0	skipped-port	0	entry 35: binder(s) opened (tri3): stand-in class token ??1CCriticalSectionLock_Retail@@QAE@XZ [009d5b60 defines CCriticalSectionLock_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto th
+36	0x009c8660	skipped-port	0	entry 36: binder(s) opened (tri3): stand-in class token ?Method_009c8660@CTwoStep_Retail@@QAEXXZ [009c8bf0 defines CTwoStep_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared h
+37	0x00993b20	skipped-port	0	entry 37: binder(s) opened (tri3): stand-in class token ??0CBase_00993b20@@QAE@XZ [00485400 defines CBase_00993b20]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): T3
+38	0x00993ca0	skipped-port	0	entry 38: binder(s) opened (tri3): stand-in class token ?ReadWithSrcChunkOverflow@CMemoryDataInputStreamAdapter@X_007565e0@@QAEXPAEH@Z [007565e0 defines CMemoryDataInputStreamAdapter,X_007565e0]. A respell needs the real class / parameter t
+39	0x00993e30	done-already	0	entry 39 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ?WriteEBOOL@CDataOutputStream@@QAEX_N@Z at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1. The stand-in class token is still named in 
+40	0x00993ea0	done-already	0	entry 40 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ?WriteULONG@CDataOutputStream@@QAEXK@Z at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1. The stand-in class token is still named in c
+41	0x00af8b00	done-pending-decision-3	1	entry 41 (part 3, in-place). The row's existing local NParticleEngine::CDecal model replaces `static void* operator new(unsigned int size) { return AllocateParticleMemory_00af8b00(size); }` with the declaration `static void* __fastcall oper
+42	0x0046644c	skipped-port	0	entry 42: binder(s) opened (tri3): stand-in class token ??0CDefClassBase@FableCopy_0067c9f0@@QAE@ABU01@@Z [0067c9f0 defines CDefClassBase,FableCopy_0067c9f0]. A respell needs the real class / parameter types (a new or renamed local model, o
+43	0x00434cd0	skipped-port	0	entry 43: binder(s) opened (tri3): stand-in class token ?SetAboutToRun@CDisplayEngine_Methods@@QAEXXZ [00434f60 defines CDisplayEngine_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto 
+44	0x0064b668	skipped-port	0	entry 44: binder(s) opened (tri3): free stand-in function ?h_0064da5c@@YIXPAUOH@@@Z [0064da5c free / out-of-scope stand-in]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): 
+45	0x00b48d40	skipped-port	0	entry 45: binder(s) opened (tri3): free stand-in function @MemberDtor_686df0_00b48d40@4 [00b495f0 free / out-of-scope stand-in]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared heade
+46	0x00b48e10	skipped-port	0	entry 46: binder(s) opened (tri3): free stand-in function @inner_dtor_00b48e10@4 [00b49640 free / out-of-scope stand-in]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): T3
+47	0x00b308e0	skipped-port	0	entry 47: binder(s) opened (tri3): stand-in class token ?ClipWorldSpaceBoundingBox@CEngineCameraMethods@@QBE_NABVC3DBoundingBox@@MAA_N@Z [00b91f50 defines CEngineCameraMethods]. A respell needs the real class / parameter types (a new or ren
+48	0x00bd9250	skipped-port	0	entry 48: binder(s) opened (tri3): free stand-in function ?AutoTinyCompositeDestructor_00bd9250@@YIXPAX@Z [00bd9a40 free / out-of-scope stand-in]. A respell needs the real class / parameter types (a new or renamed local model, or a port ont
+49	0x00b8fe60	skipped-port	0	entry 49: binder(s) opened (tri3): stand-in class token ?RemoveFromList@CPrimitiveMethods@@QAEXXZ [00b936e0 defines CPrimitiveMethods]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the share
+50	0x0042fa30	skipped-port	0	entry 50: binder(s) opened (tri3): stand-in class token ??0CMember_0042fa30Member@@QAE@XZ [00b288c0 defines CMember_0042fa30Member]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared h
+51	0x00bdc450	skipped-port	0	entry 51: binder(s) opened (tri3): free stand-in function ?cl_h_00bdc4f0@@YIXPAUS@@@Z [00bdc4f0 free / out-of-scope stand-in]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header)
+52	0x00bacf70	skipped-port	0	entry 52: binder(s) opened (tri3): stand-in class token ??0CEnginePrimitiveGroupManager@N_00bacf70@@QAE@PAUCEngineSceneArray@@@Z [00bce070 defines CEnginePrimitiveGroupManager,N_00bacf70]. A respell needs the real class / parameter types (a
+53	0x00b817d0	skipped-port	0	entry 53: binder(s) opened (tri3): stand-in class token ?AddSimulationInfo@CEngineSimulationManager_Methods@@QAEXABUSimulationInfoPointer@@_N1@Z [00b9de90 defines CEngineSimulationManager_Methods]. A respell needs the real class / parameter
+54	0x00b64550	skipped-port	0	entry 54: binder(s) opened (tri3): stand-in class token ?RenderSunFlare@CEngineSkyRenderer_Methods@@QAEXXZ [00b662f0 defines CEngineSkyRenderer_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a p
+55	0x00b64fa0	skipped-port	0	entry 55: binder(s) opened (tri3): stand-in class token ?RenderClouds@CEngineSkyRenderer_Methods@@QAEXM@Z [00b66190 defines CEngineSkyRenderer_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a po
+56	0x00b65a20	skipped-port	0	entry 56: binder(s) opened (tri3): stand-in class token ?RenderOuterSky@CEngineSkyRenderer_Methods@@QAEXM@Z [00b66190 defines CEngineSkyRenderer_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a 
+57	0x00b66190	skipped-port	0	entry 57: binder(s) opened (tri3): stand-in class token ?RenderSky@CEngineSkyRenderer_Methods@@QAEXMPBVC3DVector@@_N@Z [00b662f0 defines CEngineSkyRenderer_Methods]. A respell needs the real class / parameter types (a new or renamed local m
+58	0x00bf2880	skipped-port	0	entry 58: binder(s) opened (tri3): stand-in class token ??0CBase@N_00bf2880@@QAE@XZ [00bca770 defines CBase,N_00bf2880] || stand-in class token ??0CMember_00bf2880Member@@QAE@XZ [00bc9d60 defines CMember_00bf2880Member]. A respell needs the
+59	0x00bdbb70	skipped-port	0	entry 59: binder(s) opened (tri3): stand-in class token ??0CVertexShaderConstantLayout@N_00bdbb70@@QAE@XZ [00bdb080 defines CVertexShaderConstantLayout,N_00bdbb70]. A respell needs the real class / parameter types (a new or renamed local mo
+60	0x00886400	skipped-port	0	entry 60: binder(s) opened (tri3): stand-in class token ?TransitionToDefaultTheme@CEnvironmentThemePriorityStackEntry_006b3950@@QAEXM@Z [006b3950 defines CEnvironmentThemePriorityStackEntry_006b3950]. A respell needs the real class / parame
+61	0x00889f00	skipped-port	0	entry 61: binder(s) opened (tri3): stand-in class token ??4CElement12_00889f00@@QAEAAU0@ABU0@@Z [0088a490 defines CElement12_00889f00]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the share
+62	0x00434840	skipped-port	0	entry 62: binder(s) opened (tri3): stand-in class token ?Open@CFadeInFadeOutBase_Methods@@QAEXMMVCRGBColour@@@Z [0066ea46 defines CFadeInFadeOutBase_Methods]. A respell needs the real class / parameter types (a new or renamed local model, o
+63	0x00864f80	skipped-port	0	entry 63: binder(s) opened (tri3): stand-in class token ??0CElement8_00864f80@@QAE@ABU0@@Z [008658b0 defines CElement8_00864f80]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared head
+64	0x00704730	skipped-port	0	entry 64: binder(s) opened (tri3): stand-in class token ?GetNullScriptThing@GameScriptThingManager@@QAE?AUScriptMethods@@XZ [008d1890 defines GameScriptThingManager]. A respell needs the real class / parameter types (a new or renamed local 
+65	0x00a02db0	skipped-port	0	entry 65: binder(s) opened (tri3): stand-in class token ??1CBase_00a02db0@@QAE@XZ [00a14b40 defines CBase_00a02db0]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): T3
+66	0x0045324f	skipped-port	0	entry 66: binder(s) opened (tri3): stand-in class token ??0CMember_0045324fMember@@QAE@XZ [00453698 defines CMember_0045324fMember]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared h
+67	0x0045326d	skipped-port	0	entry 67: binder(s) opened (tri3): stand-in class token ??0CMember_0045326dMember@@QAE@XZ [0045368c defines CMember_0045326dMember]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared h
+68	0x008688f0	skipped-port	0	entry 68: binder(s) opened (tri3): free stand-in function ?cons_helper_008688f0@@YIXPAX@Z [00810f60 free / out-of-scope stand-in]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared hea
+69	0x0055b9a0	skipped-port	0	entry 69: binder(s) opened (tri3): stand-in class token ?OnUnhovered@CHoverable_Retail@@QAEXXZ [0055aef0 defines CHoverable_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared h
+70	0x009f69b0	skipped-port	0	entry 70: binder(s) opened (tri3): stand-in class token ??0CElement48_009f69b0@@QAE@ABU0@@Z [009f6fe0 defines CElement48_009f69b0]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared he
+71	0x00654daf	done-already	0	entry 71 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAE@ABV0@@Z at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1
+72	0x0065e133	skipped-port	0	entry 72: binder(s) opened (tri3): stand-in class token ??0CIntelligentPointerConstThing@N_007b82c0@N_0065e133@@QAE@PAVCThing@@@Z [00967650 defines CIntelligentPointerConstThing,N_007b82c0,N_0065e133]. A respell needs the real class / param
+73	0x005bc450	skipped-port	0	entry 73: binder(s) opened (tri3): stand-in class token ?IsSameItemTypeAsDefIndex@CItem_Methods@@QAE_NJ@Z [005bdec1 defines CItem_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the s
+74	0x005bd82e	done-partial (table only)	0	entry 74. The witness 0x005BD931 of ?GetInventoryItemDef@CItem_Methods@@QAE?AUCIVCountedPointer_Def@@XZ already binds the PDB ABE spelling at HEAD (stale_objbind2.tsv; CIVCountedPointer_Def is named only by two standalone tests): delete tha
+75	0x0075f180	skipped-port	0	entry 75: binder(s) opened (tri3): stand-in class token ??0SLipSyncSample_0075e460@@QAE@PBUSSampleSource_0075e460@@PBVC3DVector@@JJMMJ@Z [0075e460 defines SLipSyncSample_0075e460]. A respell needs the real class / parameter types (a new or 
+76	0x00a2cf50	open	0	not started
+77	0x00bf6130	open	0	not started
+78	0x00bf6160	open	0	not started
+79	0x00415fbc	open	0	not started
+80	0x0041e5f2	done-already	0	entry 80 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ?GetInstance@CManager@NUISystem@@SIPAV12@XZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 2
+81	0x005110b0	open	0	not started
+82	0x00513bf0	open	0	not started
+83	0x00a658e0	open	0	not started
+84	0x00994b40	open	0	not started
+85	0x00995e70	open	0	not started
+86	0x00996af0	open	0	not started
+87	0x0082a890	open	0	not started
+88	0x0082cac0	open	0	not started
+89	0x00a851e0	open	0	not started
+90	0x004ebba3	done-already	0	entry 90 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0CObjectAugmentationsDef@@QAE@XZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + add the PDB line
+91	0x007018b0	open	0	not started
+92	0x00477428	open	0	not started
+93	0x00ac96e0	open	0	not started
+94	0x00ae18c0	done	2	entry 94 (part 3, in-place). The free stand-in WriteVectors_00ae18c0 -> the protected static member `CParticleSimulation::WriteVectorArray(const C4DVector*, unsigned long, CDataOutputStream&)` (Ego_r 00bee2b0 + FableWin 03333430 KIX) declar
+95	0x004ddf0c	open	0	not started
+96	0x00487cf0	open	0	not started
+97	0x00489d40	open	0	not started
+98	0x006345c0	done-already	0	entry 98 (part 3, table-only). The witness 0x00487BD0 already binds ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z at HEAD (stale_objbind2.tsv); the other CPlayer_Methods rows that call AddMode (0x004887C0, 0x00634870, 0x00636E50) inherit / decl
+99	0x0043a2a0	open	0	not started
+100	0x00449b60	open	0	not started
+101	0x0044a530	open	0	not started
+102	0x004af3c0	open	0	not started
+103	0x004b0c80	open	0	not started
+104	0x0051a110	open	0	not started
+105	0x00a04630	open	0	not started
+106	0x00a059e0	open	0	not started
+107	0x00cd2ae2	open	0	not started
+108	0x004ae0e0	open	0	not started
+109	0x00905330	open	0	not started
+110	0x0069dfe0	open	0	not started
+111	0x00b4ced0	open	0	not started
+112	0x00455eac	done-already	0	entry 112 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0CSoundThemeDef@@QAE@XZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + add the PDB line
+113	0x00a1c950	open	0	not started
+114	0x004d4c3e	done-already	0	entry 114 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0CSummonableCreatureDef@@QAE@XZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + add the PDB line
+115	0x00415bd0	open	0	not started
+116	0x009e5200	open	0	not started
+117	0x006c0330	open	0	not started
+118	0x006c1150	open	0	not started
+119	0x006c17b0	open	0	not started
+120	0x006a2520	open	0	not started
+121	0x00736590	open	0	not started
+122	0x008ed040	open	0	not started
+123	0x008ed1f0	open	0	not started
+124	0x00779e10	open	0	not started
+125	0x007310c0	open	0	not started
+126	0x006c3b70	open	0	not started
+127	0x007e78e0	open	0	not started
+128	0x00780410	open	0	not started
+129	0x006d4d70	open	0	not started
+130	0x006d5850	open	0	not started
+131	0x006c59e0	open	0	not started
+132	0x006c5f80	open	0	not started
+133	0x005bd404	done-already	0	entry 133 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ?GetInitialCategoryRepeatDelay@CTCInventoryBase@NInventory@@UBEMXZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + add the PDB li
+134	0x005bd427	done-already	0	entry 134 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ?GetContinuedCategoryRepeatDelay@CTCInventoryBase@NInventory@@UBEMXZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + add the PDB 
+135	0x005bdcb4	done-already	0	entry 135 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ?HighlightNextItem@CTCInventoryBase@NInventory@@QAEXXZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + add the PDB line. The stan
+136	0x005bdcdc	done-already	0	entry 136 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ?HighlightPreviousItem@CTCInventoryBase@NInventory@@QAEXXZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + add the PDB line. The 
+137	0x005bf3f1	open	0	not started
+138	0x005bf91a	open	0	not started
+139	0x005b43a2	open	0	not started
+140	0x005b4a95	open	0	not started
+141	0x0056ff3d	open	0	not started
+142	0x0056ffc5	open	0	not started
+143	0x005d9320	open	0	not started
+144	0x00640bb0	open	0	not started
+145	0x007713c0	open	0	not started
+146	0x007022e0	open	0	not started
+147	0x005e4740	open	0	not started
+148	0x004d2b17	open	0	not started
+149	0x0074ac80	open	0	not started
+150	0x0066aeb0	open	0	not started
+151	0x0066b120	open	0	not started
+152	0x0072acf0	open	0	not started
+153	0x007f5890	open	0	not started
+154	0x008abb50	open	0	not started
+155	0x004d5853	open	0	not started
+156	0x00787bfe	open	0	not started
+157	0x007c7890	open	0	not started
+158	0x0065b349	open	0	not started
+159	0x0065bffa	open	0	not started
+160	0x00806ae0	open	0	not started
+161	0x004e1195	done-already	0	entry 161 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0CTavernGameCardBaseDef@@QAE@XZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + add the PDB line
+162	0x004a89d0	open	0	not started
+163	0x00a69f70	open	0	not started
+164	0x004c78a0	open	0	not started
+165	0x004c7a10	open	0	not started
+166	0x004c7a80	open	0	not started
+167	0x004c9c40	open	0	not started
+168	0x004ca1d0	open	0	not started
+169	0x00830eb0	open	0	not started
+170	0x00663610	open	0	not started
+171	0x006647f0	open	0	not started
+172	0x00666830	open	0	not started
+173	0x0051efc0	open	0	not started
+174	0x00cd4470	open	0	not started
+175	0x0062fe60	open	0	not started
+176	0x00429e29	open	0	not started
+177	0x0052e5d0	open	0	not started
+178	0x006250b0	open	0	not started
+179	0x00e2ab60	done-already	0	entry 179 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0CV_AmbushScamScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z at HEAD; the table line(s) are stale: TABLE_CHANGES dele
+180	0x00e54310	done-already	0	entry 180 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0CV_BookCollectingScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z at HEAD; the table line(s) are stale: TABLE_CHANGES 
+181	0x00e62830	done-already	0	entry 181 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0CV_ChickenKickingScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z at HEAD; the table line(s) are stale: TABLE_CHANGES 
+182	0x00eae910	done-already	0	entry 182 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0CV_MurderTwistFinalScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z at HEAD; the table line(s) are stale: TABLE_CHANGE
+183	0x00edc980	open	0	not started
+184	0x00edcb80	open	0	not started
+185	0x00ee2db0	open	0	not started
+186	0x00ac20c0	open	0	not started
+187	0x004525b3	done-already	0	entry 187 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??0CVillagePeopleDef@@QAE@XZ at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + add the PDB line
+188	0x004fb4a0	open	0	not started
+189	0x004fb880	open	0	not started
+190	0x004fc970	open	0	not started
+191	0x008eff40	open	0	not started
+192	0x008abf20	open	0	not started
+193	0x0090dee0	held-decision-2	0	entry 193 (part 3). In place in the row's existing local CMessageEventManager model: `template<class F> const CMessageEvent* FindMostRecentMessage(const F&) const;` called with the CFilter_Bind2 argument binds the PDB ??$FindMostRecentMessa
+194	0x0090edc0	open	0	not started
+195	0x00939cb0	open	0	not started
+196	0x0043151d	open	0	not started
+197	0x004e5a76	done-already	0	entry 197 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??$GFSerialiseMapBinaryIn@JVCDefString@@V?$CCompareDefString@J@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@VCDefString@@JV at HEAD; the table line
+198	0x004314c8	open	0	not started
+199	0x00475a51	open	0	not started
+200	0x0046367a	open	0	not started
+201	0x00463f9c	open	0	not started
+202	0x0046caf4	open	0	not started
+203	0x00472123	open	0	not started
+204	0x004e89f7	open	0	not started
+205	0x004acf90	open	0	not started
+206	0x005ed860	open	0	not started
+207	0x0065f856	open	0	not started
+208	0x0065f884	open	0	not started
+209	0x00660034	open	0	not started
+210	0x00660062	open	0	not started
+211	0x00660090	open	0	not started
+212	0x006600be	open	0	not started
+213	0x005e0300	done-already	0	entry 213 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ??$GetComponent@VCAnimComponentDelayTime@@@CAnimationEntry@@QBEXPAPBVCAnimComponentDelayTime@@@Z at HEAD; the table line(s) are stale: TABLE_CHA
+214	0x006b2660	open	0	not started
+215	0x008af0a0	open	0	not started
+216	0x00935040	open	0	not started
+217	0x007086f0	open	0	not started
+218	0x0077e430	open	0	not started
+219	0x007a6ca0	open	0	not started
+220	0x007c8000	open	0	not started
+221	0x007e0540	open	0	not started
+222	0x007e1400	open	0	not started
+223	0x007f5560	open	0	not started
+224	0x007f9330	open	0	not started
+225	0x007fe5b0	open	0	not started
+226	0x00810c80	open	0	not started
+227	0x008f9ca0	open	0	not started
+228	0x00874ee0	done-already	0	entry 228 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ?IsThemeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z at HEAD; the table line(s) are stale: TABLE_CHANGES delete 1 + 
+229	0x00874f10	done-already	0	entry 229 (order: part 3, pulled first as table-only: E2). Every stand-in witness already binds ?IsThemeToBlockPassabilityBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z at HEAD; the table line(s) are stale: TABLE_CHANGES delete
+230	0x0041a410	done	4	entry 230 (part 3, in-place, pulled first: E2). The free stand-in `CWideString __fastcall GetLevelsDirectory_0041a410()` -> `namespace NResourceDirectoryNames { CWideString __fastcall GetStaticMapDir(); }` (one line, line count kept). Ident
+231	0x00516180	open	0	not started
+232	0x007e39d0	open	0	not started
+233	0x009ac310	open	0	not started
+234	0x00ad64c0	open	0	not started
+235	0x00cd3640	open	0	not started
+236	0x00448380	open	0	not started
+237	0x004d6902	open	0	not started
+238	0x004d788d	open	0	not started
+239	0x004dd728	open	0	not started
+240	0x005799fd	open	0	not started
+241	0x005f8736	open	0	not started
+242	0x006b8e20	open	0	not started
+243	0x00825090	open	0	not started
+244	0x00827f80	open	0	not started
+245	0x00a7faf0	open	0	not started
+246	0x00ae98e0	open	0	not started
+247	0x00cd27b4	open	0	not started
+248	0x006603a0	open	0	not started
+249	0x006603dd	open	0	not started
+250	0x0066041a	open	0	not started
+251	0x00660457	open	0	not started
+252	0x00660494	open	0	not started
+253	0x00513700	open	0	not started
+254	0x00411910	open	0	not started
+255	0x004df88a	open	0	not started
+256	0x004e34b2	open	0	not started
+257	0x0056d490	open	0	not started
+258	0x005bba94	open	0	not started
+259	0x005e3040	open	0	not started
+260	0x006753b0	open	0	not started
+261	0x006755e0	open	0	not started
+262	0x006fcf10	open	0	not started
+263	0x00708ca0	open	0	not started
+264	0x00722eb0	open	0	not started
+265	0x0082c620	open	0	not started
+266	0x0082c8a0	open	0	not started
+267	0x0086b2a0	open	0	not started
+268	0x00ad83a0	open	0	not started
+269	0x00b83df0	open	0	not started
+270	0x00b97af0	open	0	not started
+271	0x00cdbc90	open	0	not started
+272	0x00f25ce0	open	0	not started
+-	0x009e1e10	done (outside ENTRIES)	5	GFVXToAX, the twin on the same declaration lines: ?GFAXToVX@@YGMM@Z (0x009ddff0, 0x009dda50: the name of 0x009E1DA0), ?GFAXToVX_009e1e10@@YIMM@Z (0x009dd210, 0x009dca80), ?GFVXToAX_009e1e10@@YGMM@Z (0x0048f230) -> ?GFVXToAX@@YIMM@Z; spellin
+-	0x009e1da0	done (outside ENTRIES)	1	0x00438AA0 calls 0x009E1DA0 (xsites_009e1da0.tsv) but declared it __stdcall GFVXToAX (0x009E1E10 name; no table line, so the tracker never saw it) -> ?GFAXToVX@@YIMM@Z; its comment had the converter direction backwards. Test unchanged; it f

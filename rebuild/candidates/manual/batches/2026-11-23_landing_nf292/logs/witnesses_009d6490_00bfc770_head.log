@@ -1,0 +1,19 @@
+addr       parity           behav  name
+009d6490   WARN SHARED_HEADER_AVAILABLE CCriticalSectionLock (engine/CCriticalSectionLock.h)
+009d6490   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009d6490   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009d6490   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+009d6490   WARN RELOC_NAME: ?RemoveBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z -> 009d5a30 labelled 'CLoadingMemoryFailureHandler::UnregisterBank'
+009d6490   RELOCATION_MATCH PASS   ~CBankFileAsync
+00bfc770   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00bfc770   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00bfc770   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00bfc770   WARN RELOC_NAME: ?WriteUShort@CDataOutputStream@@QAEXG@Z -> 00993e80 labelled 'CDataOutputStream::WriteUWORD'
+00bfc770   WARN RELOC_NAME: ??$SaveVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z -> 00bfcf00 labelled 'CPatchTesselationEdgeStrip::SaveVerts<CPatchTesselationEdgeStrip::CVertex>'
+00bfc770   WARN RELOC_NAME: ??$SaveVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z -> 00bfcf90 labelled 'CPatchTesselationEdgeStrip::SaveVerts<CPatchTesselationEdgeStrip::CFanBaseVertex>'
+00bfc770   WARN RELOC_NAME: ??$SaveVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z -> 00bfd020 labelled 'CPatchTesselationEdgeStrip::SaveVerts<CPatchTesselationEdgeStrip::CWaterVertex>'
+00bfc770   RELOCATION_MATCH PASS   Save
+
+WINS: 2
+  009d6490 RELOCATION_MATCH CBankFileAsync::??1CBankFileAsync@@UAE@XZ
+  00bfc770 RELOCATION_MATCH CPatchTesselationEdgeStrip::Save

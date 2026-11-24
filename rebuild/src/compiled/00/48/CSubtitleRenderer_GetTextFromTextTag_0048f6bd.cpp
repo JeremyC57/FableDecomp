@@ -92,7 +92,7 @@ public:
     bool          TextGroupHasEntriesRemaining;         // +0x28
     long          TextGroupIndex;                       // +0x2c
     CWideString   TextGroupTag;                         // +0x30
-    bool GetTextFromTextTag(const CWideString& tag, CWideString& text);
+    private: bool GetTextFromTextTag(const CWideString& tag, CWideString& text); public:
 };
 
 bool CSubtitleRenderer::GetTextFromTextTag(const CWideString& tag, CWideString& text)

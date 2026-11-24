@@ -1,0 +1,10 @@
+## HEAD set: H_00b6d940.obj H_00846660.obj H_00993c10.obj H_0084af90.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CEventTalkedTo@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ?SetPositionAssumeWithinSourceChunk@CMemoryDataInputStream@@QAEXK@Z
+## new set: N_00b6d940.obj N_00846660.obj H_00993c10.obj H_0084af90.obj
+duplicates 0
+
+UNRESOLVED 1 ?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z
+LK_DONE

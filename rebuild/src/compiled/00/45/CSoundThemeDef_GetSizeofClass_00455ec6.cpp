@@ -1,7 +1,11 @@
+// Leaf: ?GetSizeofClass@CSoundThemeDef@@UAEKXZ
 #pragma optimize("s",on)
-class CSoundThemeDef { public: char pad[0x64]; };
+class CSoundThemeDef { public: char pad[0x60];
+    public: virtual unsigned long GetSizeofClass();
+};
 
-unsigned long __fastcall CSoundThemeDef_GetSizeofClass(const CSoundThemeDef* self)
+unsigned long CSoundThemeDef::GetSizeofClass()
 {
+    const CSoundThemeDef* self = this;
     return 0x64;
 }

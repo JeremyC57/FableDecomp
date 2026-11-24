@@ -1,5 +1,5 @@
 // CShaderRenderManager::UpdateWorldSpaceFogTransform() -- upload FogTransform as one float4 vertex-shader constant at the layout's fog register and move the fog dirty bit from 0x2000 to 0x4000
-// Leaf: UpdateWorldSpaceFogTransform
+// Leaf: ?UpdateWorldSpaceFogTransform@CShaderRenderManager@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00989640, length 112 bytes (105 + int3 padding).
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, +0x178).
 // Shape: FogTransform copied into a C4DVector frame local through its inline memberwise copy ctor (direct
@@ -128,7 +128,9 @@ class CShaderRenderManager { public:
     C4DVector                    FogTransform;              // +0x370
     unsigned char                _pad380[0x3d8 - 0x380];
     unsigned int                 UpdateFlags;               // +0x3d8
+    private:
     void UpdateWorldSpaceFogTransform();
+    public:
 };
 
 void CShaderRenderManager::UpdateWorldSpaceFogTransform()

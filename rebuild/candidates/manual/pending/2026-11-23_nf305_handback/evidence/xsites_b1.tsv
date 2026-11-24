@@ -1,0 +1,323 @@
+0048da30	call	0048e81f	0048e78eL CSubtitleRenderer::DrawButtonGraphics
+004af610	call	0049ea9e	0049ea40L CWorld::IsCreatureGenerationEnabled
+004af610	call	004afc79	004afc60L CQuestManager::IsCreatureGenerationEnabled
+004af610	call	004b3b18	004b3a20L CQuestManager::DeactivateQuest
+004af610	call	004b3d2a	004b3ce0L CQuestManager::ActivateQuests
+004af610	call	004b3e8c	004b3ce0L CQuestManager::ActivateQuests
+004af610	call	004b44c8	004b4490L CQuestManager::Update
+007122c0	call	004c70f7	004c70f0L CTCScriptedControl::IsActive
+007122c0	call	004c8cc9	004c8c90L CThing::IsUnderScriptControl
+005ee02e	call	005727af	005726a0L CTCInventoryExperience::RecheckAvailabilities
+005ee02e	call	005ee105	005ee0e7L CTCInventoryAbilities::SetAllAbilitiesAsAvailable
+005ee02e	call	005ee8f3	005ee887L CTCInventoryAbilities::UpdateWillMorph
+005ee02e	call	005f3e99	005f3e7dL CTCInventoryAbilities::ForceAllAbilitiesToMaxLevel
+005ee02e	call	005f3ee6	005f3ecaL CTCInventoryAbilities::ForceAllAbilitiesToLevel
+005ee02e	call	005f3f30	005f3f14L CTCInventoryAbilities::ForceAllAbilitiesToNextLevel
+005ee02e	call	005f4c6b	005f4c45L CTCInventoryAbilities::GetAvailableAbilityDefs
+004af610	call	0061a91d	0061a8a0L CTCInventoryQuests::GetTestQuestsToDisplay
+004af610	call	0061b10a	0061ad60L CTCInventoryQuests::DrawActiveTestQuests
+0048da30	jmp	006441b5	00644179L NPlayerGui::CDrawMiniMap::IsFinishedOpening
+0048da30	call	006489d9	00648820L NPlayerGui::CDrawMiniMap::Draw
+0048da30	call	0064a6bc	0064a639L NPlayerGui::CDrawGuildSeal::Draw
+0048da30	call	0064d133	-
+0048da30	call	0064e08c	0064e019L NPlayerGui::CDrawMiniMap::ToggleCentering
+0048da30	call	00654005	00652fa4L NPlayerGui::CDrawQuickAccessIcons::Draw
+00662a00	call	006633eb	-
+00662a00	call	0066345b	-
+00662a00	call	00663542	00663510L CThingCreatureBase::InitialiseMovementSpeed
+00662a00	call	006635da	006635d0L CThingPlayerCreature::vfunc_69
+00662a00	call	00665998	00665860L CThingCreatureBase::UpdateAnimation
+00662a00	call	00665b02	00665860L CThingCreatureBase::UpdateAnimation
+00662a00	call	00665b86	00665860L CThingCreatureBase::UpdateAnimation
+00662a00	call	00665c3c	00665860L CThingCreatureBase::UpdateAnimation
+00662a00	call	006664d0	00666310L CThingCreatureBase::OnCreate
+00662a00	call	00666abf	006668a0L CThingCreatureBase::GetPossibleCombatAnimations
+00662a00	call	006924a3	-
+007122c0	call	006a85ae	006a8560L CThingFilter_HasScriptedControl::operator
+007122c0	call	006ad9ad	006ad970L CThingPlayerCreature::UpdatePlayerControl
+004af610	call	006c7086	-
+004af610	call	006c70ba	-
+005ee02e	call	006d7bd7	006d7b80L CTCHeroExperience::GetAbilityPossibleLevelUpAmount
+005ee02e	call	006d7d79	006d7cb0L CTCHeroExperience::IsReadyToLevelUp
+006d8170	call	006d89d3	006d8980L CTCHeroExperience::UpgradeTrainableStat
+006d83b0	call	006d89dc	006d8980L CTCHeroExperience::UpgradeTrainableStat
+006d8170	call	006d8aad	-
+006d83b0	call	006d8ab6	-
+006d8170	call	006d8ae4	006d8ad0L CTCHeroExperience::UpdateAbilitiesForAllStats
+006d83b0	call	006d8af3	006d8ad0L CTCHeroExperience::UpdateAbilitiesForAllStats
+006d8170	call	006d8b2d	006d8b00L CTCHeroExperience::OnInitialActivate
+006d83b0	call	006d8b3c	006d8b00L CTCHeroExperience::OnInitialActivate
+006d8170	call	006d8bd5	006d8b50L CTCHeroExperience::SetExperienceStatus
+006d83b0	call	006d8be4	006d8b50L CTCHeroExperience::SetExperienceStatus
+006d8170	call	006d8cd9	006d8ca0L CTCHeroExperience::Copy
+006d83b0	call	006d8ce8	006d8ca0L CTCHeroExperience::Copy
+00666d10	call	006e7ebc	006e7eb0L _global::GetPreferredCombatDistanceForAttacker
+00666d10	call	006e8081	006e8050L CDefendingCombatantInfo::CCombatRing::StretchRingThickness
+00666d10	call	006e82a4	-
+00666d10	call	006e8348	-
+00666d10	call	006e8356	-
+00666d10	call	006e8364	-
+00666d10	call	006e8a2a	006e89b0L CDefendingCombatantInfo::CCombatWheel::GetAttackerPlacementV
+00666d10	call	006e8a45	006e89b0L CDefendingCombatantInfo::CCombatWheel::GetAttackerPlacementV
+00666d10	call	006e9769	006e9700L CCombatManager::IsCreatureOnOuterRing
+00666d10	call	006e9a00	006e99b0L CCombatManager::GetDefenderZone
+00666d10	call	006e9a1a	006e99b0L CCombatManager::GetDefenderZone
+00666d10	call	006e9a2e	006e99b0L CCombatManager::GetDefenderZone
+00666d10	call	006e9a42	006e99b0L CCombatManager::GetDefenderZone
+00666d10	call	006e9a5c	006e99b0L CCombatManager::GetDefenderZone
+00666d10	call	006e9dd2	006e9d90L CCombatManager::SetAttackerRingAsRotating
+00666d10	call	006ea115	006ea0c0L CCombatManager::UpdateDefenderAttackPattern
+00666d10	call	006ea135	006ea0c0L CCombatManager::UpdateDefenderAttackPattern
+00666d10	call	006ea247	-
+00666d10	call	006ea255	-
+00666d10	call	006ea263	-
+00666d10	call	006ea367	006ea2c0L CCombatManager::PerformSequenceReset
+00666d10	call	006eb748	006eb700L CCombatManager::GetBestEnemyForCombatant
+00666d10	call	006ebaec	006eba60L CCombatManager::CCombatManager_RebuildCombatLists
+00666d10	call	006ebf22	006ebee0L CCombatRing::AssignAttackerToProng
+00666d10	call	006ebf85	006ebf70L CDefendingCombatantInfo::CCombatRing::AssignAttackersToRing
+00666d10	call	006ec509	006ec4f0L CCombatManager::FillCombatSequenceList
+00666d10	call	006ec8cc	006ec850L CDefendingCombatantInfo::CCombatWheel::Init
+00666d10	call	006ec9bb	006ec850L CDefendingCombatantInfo::CCombatWheel::Init
+00666d10	call	006f2c37	006f2c00L `anonymous namespace'::CGetBestFreeProngForAttacker::operato
+00666d10	call	006f2c6a	006f2c00L `anonymous namespace'::CGetBestFreeProngForAttacker::operato
+00666d10	call	006f2dfe	006f2de0L CGetBestAttackerForProng::operator()
+00666d10	call	006f2e31	006f2de0L CGetBestAttackerForProng::operator()
+00730c00	call	00731094	00730f90L CTCDoor::UpdateOpenStatusTriggerTypePerson
+00730c00	call	007310dc	007310c0L CTCDoor::UpdateOpenStatusTriggerTypeScript
+00730c00	call	007311c3	00731170L CTCDoor::OnSerialise
+00666d10	call	007331a3	007331a0L CTCCombat::IsAbleToBeKnockedDown
+00662a00	call	00733720	00733690L CTCCombat::GetBlockingAnimationEntry
+007122c0	call	00747ef9	00747da0L CTCStealth::FrameUpdate
+00662a00	call	00752696	00752640L CTCLook::InitialiseHeadAnims
+00662a00	call	00752717	00752640L CTCLook::InitialiseHeadAnims
+00787bf1	jmp	00787c02	00787bfeL CTCTrapBase::ManualDeactivate
+00787bf1	jmp	00787c12	00787c0cL CTCTrapBase::ManualReset
+0048da30	jmp	00787c1e	00787c1bL CTCTrapBase::IsOpen
+0048da30	call	007885d0	00788555L CTCMeleeTrap::UpdateAnimation
+00787bf1	call	007885e8	00788555L CTCMeleeTrap::UpdateAnimation
+0048da30	call	00788858	007887beL CTCTrapBase::UpdateTriggerOnProximity
+00787bf1	call	0078886a	007887beL CTCTrapBase::UpdateTriggerOnProximity
+0079ddb0	call	0079e3ba	0079e3a0L CTCPhysicalShieldSpell::Pause
+0079ddb0	call	0079e50f	0079e500L CSystemManager::UninitWindow
+007122c0	call	007e7747	007e76b0L CTCFireheartMinigame::FrameUpdate
+007122c0	call	008326e4	008326a0L CThingAICreature::UpdateMovement
+004af610	call	008440a0	00844090L CCreatureAction_ActivateQuest::FrameUpdate
+007122c0	call	008508fd	008508b0L CContextSensitiveItemDef::TargetCreatureLikelyToReactToDeed
+00666d10	call	00858d92	00858cc0L CCombatActionBase::OnBlowBlocked
+00662a00	call	008618d1	008618b0L NCreatureMode::GetAnimationFromCreature
+00662a00	call	008618e6	008618b0L NCreatureMode::GetAnimationFromCreature
+00662a00	call	00861cb1	00861c90L NCreatureMode::GetMovementSpeedFromAnimation
+00662a00	call	00861cc6	00861c90L NCreatureMode::GetMovementSpeedFromAnimation
+00662a00	call	008625d9	008621a0L CModeStandBase::OnActivate
+007122c0	call	008649ff	008648a0L NCreatureAI::IsWillingToAttackTarget
+007122c0	call	00864bbe	00864b30L NCreatureAI::IsOverridingFactionEnemyOnTarget
+00666d10	call	00865ac4	00865ac0L _global::IsKnockdownToStun
+0084d080	call	00871ff0	00871fd0L NCameraModes::CStringAndCageBase::UpdateXYVars
+0084d080	call	0087203a	00871fd0L NCameraModes::CStringAndCageBase::UpdateXYVars
+0084d080	call	008720f3	00872050L NCameraModes::CStringAndCageBase::UpdateZVars
+0084d080	call	0087223b	00872110L CStringAndCageBase::UpdateAutoGoBehind
+0084d080	call	008723e6	-
+0084d080	call	008729a3	008728c0L NCameraModes::CStringAndCageBase::Update
+0084d080	call	008729dc	008728c0L NCameraModes::CStringAndCageBase::Update
+0084d080	call	008736b0	-
+0084d080	call	0087a025	-
+0084d080	call	0087a5d0	-
+0084d080	call	0087b99c	0087b910L NCameraModes::CTrack::UpdateDesiredPos
+00666d10	call	0087c930	-
+004af610	jmp	00892f46	00892f40L CGameScriptInterface::IsQuestActive
+004af610	call	00896a62	00896a30L CGameScriptInterface::SetQuestCardObjective
+00666d10	call	008b8c30	008b8bc0L CCreatureAction_ScreamerDrainAttack::Initialise
+00662a00	call	008d655e	008d6540L NCreatureMode::CModeCarryingPlateStand::GetHoldingAnimIndex
+00662a00	call	008d6b9a	008d6ac0L NCreatureMode::CModeSitBase::AnimUpdate
+00662a00	call	008d6cd9	008d6cb0L NCreatureMode::CModeSleepBed::AnimUpdate
+00662a00	call	008d6ebc	008d6e80L NCreatureMode::CModeForcePushed::AnimUpdate
+00662a00	call	008d6f54	008d6f20L NCreatureMode::CModeRockTrollVulnerable::AnimUpdate
+00662a00	call	008d70dd	008d70a0L CModeDragonFlyingBase::AnimUpdate
+00662a00	call	008d714e	008d70a0L CModeDragonFlyingBase::AnimUpdate
+00662a00	call	008d8bc1	008d8b00L NCreatureMode::CModeCrouch::AnimUpdate
+00662a00	call	008d8c6c	008d8b00L NCreatureMode::CModeCrouch::AnimUpdate
+00662a00	call	008dd3ca	-
+00662a00	call	008e9095	008e9080L NCreatureMode::GetAnimDistanceAndIndexFromAnimName
+00662a00	call	008e9144	008e9110L NCreatureMode::CModeStrafe::GetMovementSpeed
+00662a00	call	008e9212	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+00662a00	call	008e92ba	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+00662a00	call	008e9362	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+00662a00	call	008e940b	008e9190L NCreatureMode::CModeStrafe::SetUpCombinationAnims
+00662a00	call	008e9bf3	-
+00662a00	call	008e9df0	-
+007122c0	call	009043fe	00904380L CScriptGameResourceObjectScriptedThing::WaitWhilePerformingT
+007122c0	call	00904f38	00904ee0L CScriptGameResourceObjectScriptedThing::IsPerformingScriptTa
+007122c0	call	00904f4b	00904ee0L CScriptGameResourceObjectScriptedThing::IsPerformingScriptTa
+00666d10	call	00905709	-
+00666d10	call	00905afb	-
+0097e200	call	0090d30a	0090d030L CAIStateGroup_MinionGossip::Update
+0097e200	call	0090dc7c	0090d030L CAIStateGroup_MinionGossip::Update
+0097e200	call	0090e88e	0090e5d0L CAIStateGroup_BanditGossip::Update
+0097e200	call	0090f08e	0090eec0L CAIStateGroup_MinionKidCalledToMother::Update
+0097e200	call	0090f5ef	0090f470L CAIStateGroup_MinionHasInformation::Update
+0097e200	call	0090f752	0090f740L CAIStateGroup_MinionSitOnSeatBase::Update
+0097e200	call	0090ff6c	0090fdb0L CAIStateGroup_MinionSitAtSchool::Update
+0097e200	call	009100cb	0090fdb0L CAIStateGroup_MinionSitAtSchool::Update
+0097e200	call	0091042b	-
+0097e200	call	00910488	-
+0097e200	call	00911ebf	00911d90L CAIStateGroup_ChickenPanic::Update
+0097e200	call	00914ead	-
+00662a00	call	00914f3f	00914f00L CAIStateGroup_KidHurtSelfRunToMother::PerformRandomLengthCry
+00662a00	call	00914fd6	00914f00L CAIStateGroup_KidHurtSelfRunToMother::PerformRandomLengthCry
+00662a00	call	00915046	00914f00L CAIStateGroup_KidHurtSelfRunToMother::PerformRandomLengthCry
+00662a00	call	009171d5	00917130L CAIStateGroup_ThrowLogsOnFire::Update
+0097e200	call	009179dc	009175e0L CAIStateGroup_Clean::Update
+00918880	call	009189a2	00918900L CAIStateGroup_GazeOutside::IsRunnable
+00918880	call	00918a1c	009189c0L CAIStateGroup_GazeAtHome::IsRunnable
+00918880	call	00918aa1	00918a40L CAIStateGroup_GazeAtWork::IsRunnable
+00918880	call	00918b18	00918ac0L CAIStateGroup_Gaze::InitCreaturePosition
+00918880	call	00918b5e	00918b50L CAIStateGroup_GazeAtWork::InitCreaturePosition
+00918880	call	00918b99	00918b90L CAIStateGroup_Gaze::Update
+0097e200	call	00918e8b	00918b90L CAIStateGroup_Gaze::Update
+0097e200	call	0091a193	-
+00662a00	call	0091b6e3	-
+0097e200	call	0091bcf5	0091bcf0L CAIStateGroup_StandStill::Update
+0097e200	call	0091bf6b	0091bd10L CAIStateGroup_BalverineWander::Update
+0097e200	call	0091e514	0091e4b0L CAIStateGroup_MinionLeaveRegion::Update
+0097e200	call	00920775	00920770L CAIStateGroup_CreatureIdleUnderground::Update
+0097e200	call	00920a17	00920a00L CAIStateGroup_CreatureSeekEnemyUnderground::Update
+0097e200	call	00920d87	00920a00L CAIStateGroup_CreatureSeekEnemyUnderground::Update
+0097e200	call	00921b40	-
+0097e200	call	00921baf	-
+0097e200	call	009224f5	009224f0L CAIStateGroup_Freeze::Update
+0097e200	call	009227eb	00922750L CAIStateGroup_Drunk::TalkToSelfUpdate
+0097e200	call	00924ce4	00924c70L CAIStateGroup_KrakenAttack::Update
+0097e200	call	00924e80	00924c70L CAIStateGroup_KrakenAttack::Update
+0097e200	call	0092502f	00924c70L CAIStateGroup_KrakenAttack::Update
+0097e200	call	00926197	00926060L CAIStateGroup_WifeGiveYouGift::Update
+0097e200	call	009273bf	-
+00918880	call	00927d84	00927c80L CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable
+0097e200	call	00929c68	00929b10L CAIStateGroup_MinionGuardBribed::Update
+0097e200	call	0092a4c9	-
+0097e200	call	0092a50b	-
+0097e200	call	0092a7d8	-
+0097e200	call	0092a874	-
+0097e200	call	0092a885	-
+0097e200	call	0092a8be	0092a8a0L CAIStateGroup_ApprenticeHero::PracticeSkills
+0097e200	call	0092b3fe	0092b3e0L CAIStateGroup_SkillPractice::PracticeSkills
+0097e200	call	0092c1fd	0092c070L CAIStateGroup_MinionWander::Update
+00662a00	call	0092db54	0092da20L CAIStateGroup_MinionSleep::Update
+00662a00	call	0092db82	0092da20L CAIStateGroup_MinionSleep::Update
+00662a00	call	0092dbc0	0092da20L CAIStateGroup_MinionSleep::Update
+00662a00	call	0092dc04	0092da20L CAIStateGroup_MinionSleep::Update
+0097e200	call	0092de71	0092da20L CAIStateGroup_MinionSleep::Update
+0097e200	call	0092df30	0092da20L CAIStateGroup_MinionSleep::Update
+0097e200	call	0092f11e	-
+0097e200	call	00930986	-
+0097e200	call	009315c6	-
+0097e200	call	009318e7	-
+0097e200	call	00931fb6	-
+0097e200	call	0093214b	-
+0097e200	call	00932267	-
+0097e200	call	009348f3	00934870L CAIStateGroup_MinionKidGroupTag::Update
+0097e200	call	00935946	009357f0L CAIStateGroup_MinionFaceHero::Update
+0097e200	call	0093605a	00936020L CAIStateGroup_MinionPutOutFires::Update
+0097e200	call	00936561	009363d0L CAIStateGroup_MinionWatchFires::Update
+0097e200	call	00939562	009392a0L CAIStateGroup_SitRoundCampfire::Update
+0097e200	call	0093a592	0093a540L CAIStateGroup_BanditSitRoundCampfire::Idle
+00666d10	call	0093dab6	-
+0097e200	call	009411ba	-
+0097e200	call	009418db	00941690L CAIStateGroup_KidPlayHopscotch::Update
+0097e200	call	00942ce8	00942c70L CAIStateGroup_WorkAtSchool::StandAndTalk
+0097e200	call	00942d0a	00942c70L CAIStateGroup_WorkAtSchool::StandAndTalk
+0097e200	call	0094355a	009432c0L CAIStateGroup_WorkAtSchool::Update
+0097e200	call	00945c77	00945bd0L CAIStateGroup_SitForMeal::Update
+0097e200	call	00946273	00946190L CAIStateGroup_PrepareMeal::Update
+0097e200	call	00947cb6	00947ca0L CAIStateGroup_GoToPub::SitIdle
+0097e200	call	009489f8	00948880L CAIStateGroup_GoToPub::Drink
+0097e200	call	00948aa4	00948880L CAIStateGroup_GoToPub::Drink
+0097e200	call	00948be2	00948880L CAIStateGroup_GoToPub::Drink
+0097e200	call	0094942c	00949380L CAIStateGroup_GoToPub::ThankBarmaid
+00662a00	call	009497d1	00949580L CAIStateGroup_GoToPub::WalktoSeatAndSit
+0097e200	call	0094af5a	-
+0097e200	call	0094b759	0094b740L CAIStateGroup_SitInPub::Update
+0097e200	call	0094b7bb	0094b740L CAIStateGroup_SitInPub::Update
+0097e200	call	0094c117	0094c050L CAIStateGroup_SellToBuyer::Update
+0097e200	call	0094c478	0094c050L CAIStateGroup_SellToBuyer::Update
+0097e200	call	0094d0a1	0094d020L CAIStateGroup_GameMaster::Update
+0097e200	call	0094e0b2	0094dd90L CAIStateGroup_RockTroll::Update
+0097e200	call	0094eba2	0094e7b0L CAIStateGroup_EarthTroll::Update
+0097e200	call	0094f06a	0094f000L CAIStateGroup_FollowPlayer::Update
+00666d10	call	0094f383	0094f180L CAIStateGroup_BalverineCornered::IsRunnable
+0097e200	call	0094fe47	0094fe30L CAIStateGroup_JackDragon::StayIdle
+0097e200	call	0094ff12	0094feb0L CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+0097e200	call	009509ba	00950950L CAIStateGroup_JackDragon::WaitForAnimLoop
+0097e200	call	00950ccd	00950c30L CAIStateGroup_JackDragon::StartFlying
+0097e200	call	00950fad	00950cf0L CAIStateGroup_JackDragon::UpdateStrafe
+0097e200	call	00952e24	00952890L CAIStateGroup_JackDragon::UpdateGround
+0097e200	call	00955600	-
+00666d10	call	00955729	00955620L CAIStateGroup_MazeDefensiveMeleeCombat::Update
+00666d10	call	00955e59	-
+0097e200	call	00955fc6	-
+0097e200	call	0095b773	0095b6f0L CAIStateGroup_HoverHornetQueen::KeepOutOfWay
+0097e200	call	0095edae	0095ed80L CAIStateGroup_OpinionReactionRoot::WaitForTextToLoadThenSpea
+0097e200	call	009605ce	00960120L CAIStateGroup_DeedReactionRoot::Update
+0097e200	call	00961662	00961640L CAIStateGroup_BanditKingThrowWeapons::Update
+0097e200	call	009618a2	00961880L CAIStateGroup_BanditKingLunge::Update
+0097e200	call	00962442	009621f0L CAIStateGroup_IceTrollIcicleAttack::Update
+0097e200	call	00962852	009627c0L CAIStateGroup_IceTrollIcicleAssault::Update
+0097e200	call	00966801	-
+0097e200	call	00967c4a	00967b40L CAIStateGroup_TavernServer::FillTankard
+0097e200	call	00967e9b	00967d40L CAIStateGroup_TavernServer::Update
+0097e200	call	00969389	009692c0L CAIStateGroup_TavernKeeper::ReceivePayment
+0097e200	call	009696f9	00969470L CAIStateGroup_TavernKeeper::Update
+0097e200	call	00969e42	00969cb0L CAIStateGroup_SleepOnFloor::Update
+00666d10	call	0096abeb	0096aad0L CAIStateGroup_WhisperPotionCombat::IsRunnableLeaf
+0097e200	call	0096b077	0096af60L CAIStateGroup_WhisperPotionCombat::DisappearJump
+00666d10	call	0096b250	-
+00666d10	call	0096b330	-
+00666d10	call	0096b4f2	-
+00666d10	call	0096b57d	-
+00662a00	call	0096cee4	0096cd70L CAIStateGroup_EatAtTable::Update
+0097e200	call	0096cf8d	0096cd70L CAIStateGroup_EatAtTable::Update
+00666d10	call	0096e19e	0096df50L CAIStateGroup_ScreamerPursueTarget::Update
+00666d10	call	0096e2e8	0096df50L CAIStateGroup_ScreamerPursueTarget::Update
+00666d10	call	0096e6d6	-
+0097e200	call	0096ed75	0096ec10L CAIStateGroup_MeleeCombatNearby::MoveToEnemyCreatureCombatPo
+0097e200	call	0096fe7a	0096fcd0L CAIStateGroup_SummonerLightningAttack::Update
+0097e200	call	009700f3	0096ff10L CAIStateGroup_SummonerCharge::Update
+00666d10	call	00972ee1	00972cc0L CAIStateGroup_JackOfBladesStage1::MeleeCombat
+0097e200	call	00974f56	00974aa0L CAIStateGroup_JackOfBladesStage2::Update
+0097e200	call	00974ffa	00974aa0L CAIStateGroup_JackOfBladesStage2::Update
+0097e200	call	0097581b	009756b0L CAIStateGroup_JackOfBladesStage3::Update
+0097e200	call	009758e6	009756b0L CAIStateGroup_JackOfBladesStage3::Update
+0097e200	call	009759a1	009756b0L CAIStateGroup_JackOfBladesStage3::Update
+0097e200	call	00975b61	009756b0L CAIStateGroup_JackOfBladesStage3::Update
+00666d10	call	009766e6	-
+0097e200	call	00976783	-
+00666d10	call	009769df	-
+0097e200	call	0097a499	-
+00666d10	call	0097bfc2	0097bda0L CAIStateGroup_ScorpionKing::UpdateCombat
+0097e200	call	0097c512	0097bda0L CAIStateGroup_ScorpionKing::UpdateCombat
+00666d10	call	0097ef88	0097ef60L CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThing
+00666d10	call	0097f1a8	-
+00666d10	call	0097f3c8	0097f3a0L CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToPos
+0097e200	call	0097fe32	0097fbe0L CAIStateGroupBase::AIAction_RunAwayFrom
+00662a00	call	00981a5f	-
+00662a00	call	00981ad1	-
+00662a00	call	00981c46	-
+00662a00	call	00981ccf	-
+0097e200	call	00985d02	-
+009a01c0	call	0099ef9f	0099ef90L C3DAnimationBlendState::AddCombinationBlend
+009a01c0	call	009a046f	009a0460L CBasicString<char>::Append
+009a01c0	call	009a04f0	009a04e0L CBasicString_AppendData
+009a01c0	jmp	009a0620	-
+009a01c0	call	009a0704	009a06b0L CBasicString<char>::Insert
+009a01c0	jmp	009a0840	-
+00b91710	call	00b8ff80	00b8ff70L CEngineInternalPrimitiveBase::NotifyReleased
+00b91710	call	00b9189c	00b91870L CEngineSceneGridCell::AddPrimitive
+00b91710	call	00b918f2	00b918b0L CEngineSceneGridCell::MovePrimitivesTo
+00b91710	call	00b91912	00b918b0L CEngineSceneGridCell::MovePrimitivesTo
+00b91710	call	00b9243f	00b92300L CEngineSceneGridCell::CreateOcclusionGroup
+00b91710	call	00b9384b	-
+00b91710	call	00b93994	00b93860L CEngineSceneGrid::MovePrimitivesDown
+00b91710	call	00b93cad	00b93b30L CEngineSceneMap::AddPrimitive
+00b30480	call	00b997f0	00b99710L CEnginePrimitiveManagerRepeatedStaticMeshes::ClipSubSections
+00b30480	call	00bddb12	00bdda80L CLocalDetailCacheMap::CQuadTreeElement::RenderUpdate
+00b30480	call	00bf9b21	00bf9aa0L CLocalDetailPrimitiveBase::ClipPrimitive

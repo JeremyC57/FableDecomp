@@ -1,0 +1,3 @@
+claim	source	reason
+"one of the four CIEngine.h declarations moves 0x0058578B; retire the other three" (q12680 step 1 premise)	landing nf242 ruling 3 / ENTRIES q12680	The 16-subset bisect shows the effect is non-additive: SCREENPOS alone and CONVERTWORLDPOS alone move it, RENDER and CONVERTSCREENPOS alone do not, RENDER + CONVERTSCREENPOS together do, and two triples keep it. Applied the largest matching set instead (NOTES entry 1).
+"0x00861900 returns 0.0 when the thing is an AI creature" (HEAD row comment)	HEAD source comment	The compared type is 2 = THING_TYPE_PLAYER_CREATURE (engine/CThingManager.h); THING_TYPE_AI_CREATURE is 1. Comment corrected in the port; bytes unchanged.

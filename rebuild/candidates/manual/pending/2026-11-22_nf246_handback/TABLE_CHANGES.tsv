@@ -1,0 +1,15 @@
+table	change	symbol	target	witness	note
+reloc_bindings.tsv	delete	??1?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAE@XZ	005127a0	00a85240	no landed row binds ~list<C2DLineF> at 0x005127A0 any more (all 7 moved); ~list is the thunk 0x00514280, which no landed row calls
+reloc_bindings.tsv	delete	??1SList8_00517720@N00a820e0@@QAE@XZ	005127a0	00a820e0	stale at HEAD: the witness 0x00A820E0 compiles ~list<C2DLineF> (today ~_List_base); SList8 survives only in its comment
+reloc_bindings.tsv	delete	??4SList8_00517720@N00a820e0@@QAEAAU01@ABU01@@Z	00517720	00a820e0	stale at HEAD: the witness binds ??4?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEAAV01@ABV01@@Z (already a line, witness 0x00A81E20)
+reloc_bindings.tsv	keep	??1?$_List_base@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAE@XZ	005127a0	00a81e20	unchanged (the self spelling now)
+reloc_bindings.tsv	delete	??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ	004ab4f0	0051a2f0	no landed row binds it any more (0x0051A2F0 and 0x005EB590 moved)
+reloc_bindings.tsv	keep	??1?$_List_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ	004ab4f0	004a3740	unchanged (the self spelling now)
+reloc_bindings.tsv	keep	??1?$list@PAVCThingAICreature@@@std@@QAE@XZ	004ab4f0	0051bf90	blocked witness (one-parameter local list model; it defines its own stand-in ~list)
+reloc_bindings.tsv	replace	??1?$list@PBVCThingAICreature@@V?$allocator@PBVCThingAICreature@@@std@@@std@@QAE@XZ -> ??1?$_List_base@PBVCThingAICreature@@V?$allocator@PBVCThingAICreature@@@std@@@std@@QAE@XZ	00685bc0	00682810	the witness now binds ~_List_base (so does 0x00986510)
+reloc_bindings.tsv	delete	??1?$list@PBVCThingAICreature@@@@QAE@XZ	00685bc0	00986510	0x00986510 now binds the ~_List_base line
+reloc_bindings.tsv	delete	??0?$list@PBVCThingAICreature@@@@QAE@ABU?$allocator@PBVCThingAICreature@@@@@Z	006860c0	00986510	0x00986510 now binds the std spelling (line kept, witness 0x00682810)
+reloc_bindings.tsv	delete	?GetWivesInMarriageState@CTCHeroStats@@QBEXAAU?$list@PBVCThingAICreature@@@@J@Z	0057ae53	00986510	0x00986510 now binds the PDB spelling (line kept, witness 0x00682810)
+reloc_bindings.tsv	keep	??0?$list@PBVCThingAICreature@@V?$allocator@PBVCThingAICreature@@@std@@@std@@QAE@ABV?$allocator@PBVCThingAICreature@@@1@@Z	006860c0	00682810	unchanged (the self spelling now)
+owners.tsv (hand-back)	note	~list / ~_List_base / list ctor lines	-	-	pk.py needs owners.tsv: ~list<C2DLineF> -> 0x00514280, ~list<CThingAICreature*> -> 0x004AC080, ~list<const CThingAICreature*> -> 0x006860E0 (no catalog rows; NAME_FIXES)
+reloc_bindings.tsv	keep	??0?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@ABV?$allocator@PAVCThingAICreature@@@1@@Z	004ac060	004a3740	unchanged (the self spelling now)

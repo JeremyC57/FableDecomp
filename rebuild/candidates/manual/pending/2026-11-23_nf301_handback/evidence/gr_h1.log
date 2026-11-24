@@ -1,0 +1,12 @@
+H 00449970 CPlayerManager::GetMainPlayer RELOCATION_MATCH flags= [] leaf=?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+H 00449960 CPlayerManager::GetMainPlayer RELOCATION_MATCH flags= [] leaf=?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ
+H 00487520 CPlayer::IsMainPlayer RELOCATION_MATCH flags= [] leaf=
+H 00cdd360 NScript::CQ_SunnyvaleMasterScript::Main RELOCATION_MATCH flags= [] leaf=?Main@CQ_SunnyvaleMasterScript@NScript@@UAEXXZ
+H 00a821c0 std::__copy_backward<std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *, std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *, int> RELOCATIO leaf=??$__copy_backward@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@PAU12@H@std@@YIPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+H 00961b90 _global::IsThingInRangeOfPound RELOCATION_MATCH flags= [] leaf=?IsThingInRangeOfPound@
+H 00f09640 NScript::CQ_AmbushTradersScript::CAT_BanditContact::Init RELOCATION_MATCH flags= [] leaf=?Init@CAT_BanditContact@CQ_AmbushTradersScript@NScript@@EAEXXZ
+H 00d167c0 NScript::CQ_BountyHuntScript::CBH_Hostage1::Init RELOCATION_MATCH flags= [] leaf=?Init@CBH_Hostage1@CQ_BountyHuntScript@NScript@@EAEXXZ
+H 00d16bb0 NScript::CQ_BountyHuntScript::CBH_Hostage2::Init RELOCATION_MATCH flags= [] leaf=?Init@CBH_Hostage2@CQ_BountyHuntScript@NScript@@EAEXXZ
+H 00851860 CVirtualKeyboard::Cancel RELOCATION_MATCH flags= [] leaf=
+H 006778a0 CPersistTraits<CReactionFrequencyTraitsArray>::TransferBinaryIn RELOCATION_MATCH flags= [] leaf=
+GR_DONE

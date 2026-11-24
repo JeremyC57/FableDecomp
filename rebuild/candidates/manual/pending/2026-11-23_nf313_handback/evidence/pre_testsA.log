@@ -1,0 +1,15 @@
+06:04:47 PASS /home/user/FableDecomp/rebuild/tests/00/b2/CEngine_ClipBox_00b242a0_test.cpp
+06:04:47 PASS /home/user/FableDecomp/rebuild/tests/00/ba/CEngineInternalPrimitiveOcclusionGroup_GetBoundingBoxTransform_00bacbd0_test.cpp
+06:04:47 PASS /home/user/FableDecomp/rebuild/tests/00/bc/CEngineInternalPrimitiveGroup_GetBoundingBoxTransform_00bc5fc0_test.cpp
+06:04:47 PASS /home/user/FableDecomp/rebuild/tests/00/86/CModeStandBase_SetUpMovementAnim_00861a80_test.cpp
+06:04:47 PASS /home/user/FableDecomp/rebuild/tests/00/b3/CEngineInternalAttachedPrimitive_CEngineInternalAttachedPrimitive_00b3a910_test.cpp
+06:04:47 PASS /home/user/FableDecomp/rebuild/tests/00/6c/CTCWife_InitiateDivorce_006cef20_test.cpp
+06:04:47 PASS /home/user/FableDecomp/rebuild/tests/00/72/CTCActionUseScriptedHook_OnActionUse_00729b20_test.cpp
+06:04:47 PASS /home/user/FableDecomp/rebuild/tests/00/78/CTCHeroGuide_OpenQuestSelectInterface_007800b0_test.cpp
+06:04:47 PASS_NOWCHAR /home/user/FableDecomp/rebuild/tests/00/81/CTCBoastingPodium_OnHeroEnterBoastArea_008139c0_test.cpp
+06:04:48 PASS /home/user/FableDecomp/rebuild/tests/00/84/CCreatureActionBuyThingFromShop_PerformAction_00849380_test.cpp
+06:04:48 FAIL /home/user/FableDecomp/rebuild/tests/00/7d/CTCWallMountEffects_OnWallMountUseAction_007df4b0_test.cpp
+06:04:48 PASS /home/user/FableDecomp/rebuild/tests/00/9d/CBankFileAsync_RestartAbortedReads_009d5a90_test.cpp
+06:04:48 PASS /home/user/FableDecomp/rebuild/tests/00/88/CGameScriptInterface_SetSoundThemesAsEnabledForRegion_0088e0b0_test.cpp
+06:04:48 PASS /home/user/FableDecomp/rebuild/tests/00/6e/CCombatManager_SetAttackerAsReadyToAttack_006ea450_test.cpp
+06:04:48 PASS /home/user/FableDecomp/rebuild/tests/00/6e/CCombatManager_UpdateAttackingCombatantSequenceResets_006eabb0_test.cpp

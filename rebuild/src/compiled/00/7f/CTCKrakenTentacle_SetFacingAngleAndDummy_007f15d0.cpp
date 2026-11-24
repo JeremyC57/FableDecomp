@@ -10,7 +10,7 @@ class CTCKrakenTentacle { public:
     unsigned char _pad_0x00[0x44];
     float         FacingAngle;                     // +0x44
     CCharString   DummyName;                       // +0x48
-    void ReturnToDesiredPos(bool immediately);     // 0x007F0F40
+    private: void ReturnToDesiredPos(bool immediately); public:     // 0x007F0F40
     void SetFacingAngleAndDummy(float facingAngle, const CCharString& dummyName);
 };
 

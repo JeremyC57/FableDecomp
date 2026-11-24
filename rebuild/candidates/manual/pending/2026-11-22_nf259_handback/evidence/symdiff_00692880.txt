@@ -1,0 +1,6 @@
+# 00692880: defined / undefined external symbols, HEAD (<) v NF259 (>)
+1c1,2
+< DEF ?CCreatureActionBase_OverrideFaceWithDefault@@YI_NPAVCCreatureActionBase@@@Z
+---
+> DEF ??C?$CCountedPointer@VCAnimationEntry@@@@QBEPAVCAnimationEntry@@XZ
+> DEF ?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ

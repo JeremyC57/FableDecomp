@@ -1,3 +1,4 @@
+// Leaf: ?InternalDeallocate@CMemoryAllocator@@IAEXPAX@Z
 // CMemoryAllocator::InternalDeallocate(void* block) -- release a tracked block: find its sub-allocator by ID, take its byte count off the per-tracking-ID total (from the debug info at the end of the block), fill the area with 0xCD, hand it back to the sub-allocator and count one allocation fewer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F2920, length 155 bytes.
 // Callees: CMemoryAllocator::GetAllocationSize @ 0x009F2390 (twice, the first result discarded -- the same inline debug-info accessor as the
@@ -50,7 +51,9 @@ class CMemoryAllocator { public:
         GetAllocationSize(block);
         return (SDebugInfo*)((unsigned char*)block + GetAllocationSize(block) - 0x14);
     }
+    protected:
     void InternalDeallocate(void* block);
+    public:
 };
 void CMemoryAllocator::InternalDeallocate(void* block)
 {

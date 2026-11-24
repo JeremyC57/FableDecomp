@@ -1,0 +1,9 @@
+## new five + HEAD controls 0x008B7A20 / 0x0091C6A0 / 0x006F5C10
+duplicates 0
+
+## HEAD five + the same controls
+duplicates 0
+
+## control: the new 0x008B83E0 object twice (must show LNK4006 / LNK2005)
+duplicates 1
+dup.obj : warning LNK4006: "public: __thiscall CCreatureAction_SummonCreatures::CCreatureAction_SummonCreatures(class CThingCreatureBase &,class CThingCreatureBase &,bool)" (??0CCreatureAction_SummonC

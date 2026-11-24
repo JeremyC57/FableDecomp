@@ -8,7 +8,7 @@
 //   RemapUIDForSerialisation 0x0051E210, CDefinitionManager::GetDefNameFromGlobalIndex 0x009ACCC0, CDefStringTable::GetString 0x009D49B0,
 //   the inlined SerialiseThingInfo(bool, CCharString&, CSerialiseInfo&) 0x004C88E0 (CBaseClass 0x0099A2D0 / 0x0099A2E0, malloc 0x00BFEA0E,
 //   CPersistContext::Init(CCharString&, const CDefinitionManager*) 0x009BAA10, SerialiseThingInfo(CPersistContext&, CSerialiseInfo&)
-//   0x004C81F0, ~list<CStringParserCommentBoundaries> 0x004046B0), SaveSerialiseCreatableTCs 0x004C72D0, CPersistContext(CCharString&)
+//   0x004C81F0, ~_List_base<CStringParserCommentBoundaries> 0x004046B0), SaveSerialiseCreatableTCs 0x004C72D0, CPersistContext(CCharString&)
 //   0x009BAE10, CBasicString<char>::operator==(const char*) 0x004115A0, operator+ 0x0099F570 / 0x0099F600 / 0x0099F690,
 //   CCharString::operator+= 0x0099F0A0, GFBoolToCharString 0x0099F9B0, IsLevelPersistent 0x004C82A0, CTCBase slot 20
 //   IsSerialisableForHeroState, CTCBase::SerialiseLevelState 0x00686E10.
@@ -40,7 +40,10 @@
 #define FABLE_RETAIL_CWORLD
 #define FABLE_RETAIL_CSTRINGPARSER
 #define FABLE_RETAIL_CSTRINGPARSER_INLINE_DEFAULTCTOR
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF245 (2026-11-22, the 0x004046B0 family): the out-of-line list destructor call binds _List_base<CStringParserCommentBoundaries>'s
+//   destructor 0x004046B0 (was FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, binding list's own name there; retail 0x00404710 is list's
+//   size-optimised `~list() {}`, a 5-byte `jmp 0x004046B0`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #define FABLE_RETAIL_CPERSISTCONTEXT
 #define FABLE_RETAIL_CPERSISTCONTEXT_STRINGSAVE
 #define FABLE_RETAIL_CGAMECOMPONENT

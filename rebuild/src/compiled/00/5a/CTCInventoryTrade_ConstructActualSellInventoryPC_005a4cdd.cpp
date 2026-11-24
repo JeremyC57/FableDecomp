@@ -13,7 +13,6 @@
 //   InitialiseSellableItems 0x0059D820 / InitialiseBuyableItems 0x005A30A1, the tree clears 0x0042ADE5 / 0x005B1C18 / 0x005B1C41 /
 //   0x005B21A1. Shape: the branch key is copied to a named local (`pBranch`, retail keeps it at [ebp+6Ch] for operator[]); the insert
 //   value is std::make_pair (key/value stored after the pair is built, `mov edx,edi ; inc edi`).
-#pragma optimize("s", on)
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
@@ -60,6 +59,13 @@
 #define FABLE_RETAIL_CTCINVENTORYITEM_KINDS
 #define FABLE_RETAIL_CDELETION
 #define FABLE_RETAIL_CRESOURCELIST
+// q12383 (NF220, 2026-11-21): the row-head `#pragma optimize("s", on)` moves after the fable_string.h include (the opt-in ends with
+//   optimize("", on), nf189); the CBasicString<char>::operator==(const char*) pick-any copy is the owner 0x004115A0 body through
+//   FABLE_RETAIL_CBASICSTRING_TEXT_EQ_OWNER_BODY (was the row-local out-of-class Compare / operator== template definitions).
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_OWNER_BODY
+#include "fable_string.h"
+#pragma optimize("s", on)
 #include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"
 #include "engine/CThingPlayerCreature.h"
@@ -95,27 +101,6 @@ namespace { extern CCharString CLOTHES_SUBTITLE; }                              
 namespace { extern CCharString ITEMS_SUBTITLE; }                                // "Items_Subtitle"
 namespace { extern CCharString CATEGORY_CHILD_SELL_LIST_STRING; }                                // "Category_Child_Sell_List"
 
-#pragma auto_inline(off)
-template <class T> long __fastcall CBasicString<T>::Compare(const T* a, const T* b)
-{
-    for (;;) {
-        T ca = *a;
-        if (ca == 0 && *b == 0)
-            return 0;
-        T cb = *b;
-        if (ca < cb)
-            return -1;
-        if (ca > cb)
-            return 1;
-        ++a;
-        ++b;
-    }
-}
-template <class T> bool CBasicString<T>::operator==(const T* text) const
-{
-    return Compare(PData, text) == 0;
-}
-#pragma auto_inline(on)
 
 // Same-TU body of InitialiseBuyableItems (CTCInventoryTrade.cpp defines it above this row; retail 0x005A30A1, called out of line at
 // the row's call site): the landed row's logic, written over the shared headers (landed local-model names -> Ego_r members:

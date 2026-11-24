@@ -1,0 +1,13 @@
+## HEAD set: H_005b37f7.obj H_005cd767.obj H_005dc340.obj
+duplicates 0
+
+UNRESOLVED 2 ?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ
+UNRESOLVED 1 ?GetAnimation@CAnimationSet@@QBEPAVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z
+UNRESOLVED 1 ?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z
+UNRESOLVED 2 ?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ
+## new set: N_005b37f7.obj N_005cd767.obj H_005dc340.obj
+duplicates 0
+
+UNRESOLVED 2 ?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ
+UNRESOLVED 2 ?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ
+LK_DONE

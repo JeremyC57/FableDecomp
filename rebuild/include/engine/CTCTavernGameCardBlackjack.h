@@ -23,6 +23,9 @@ public:
     virtual CWideString GetCurrentScore();
     virtual CWideString GetRequiredScore();
 #endif
+#ifdef FABLE_RETAIL_BLACKJACK_DEALCARDS_PASS26
+    virtual void DealCards();
+#endif
     virtual void NewRound();                                             // 32 0x007DB2E0
 #ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_TURNPLAYERCARDS
     // NF159 opt-in (q4271 / q4273, row 0x007DA290): Ego_r.pdb 0x007D7350 / FableWin.pdb 0x0275B760

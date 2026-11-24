@@ -54,7 +54,7 @@ class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() co
    // 0x00449960
 struct CTCVillager;
 class CTCVillage { public:
-    bool IsCrimeHandled(long handle);                        // 0x0065914B
+    bool HasCrimeBeenReported(long handle);                        // 0x0065914B; NF296: PDB name, was IsCrimeHandled
     void ReportCrime(long handle);                           // 0x0065CB6B
 };
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
@@ -121,7 +121,7 @@ FABLE_FORCEINLINE void ReportList(CTCHeroOpinionDeedLog* log, CTCVillage* villag
         if (deed && IsCrime(deed)) {
             if (deed->Type == 0x35 && deed->LinkedHandle != -1)
                 handle = deed->LinkedHandle;
-            if (!village->IsCrimeHandled(handle)) {
+            if (!village->HasCrimeBeenReported(handle)) {
                 if (informed)
                     informed->InformOfDeed(handle, false);
                 else

@@ -109,6 +109,12 @@ public:
 #endif
 
 class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {
+#ifdef FABLE_RETAIL_BED_USE_PASS28
+public:
+    // FableWin 02545650 and native read at +0xd9.
+    bool IsHeroSleepingEnabled() const { return HeroSleepingEnabled; }
+private:
+#endif
 public:
 #ifdef FABLE_RETAIL_CWORLD_NESTED_ESAVETYPE
     // Opt-in (agentNF54, rows 0x0049F4C0 / 0x004A21F0 / 0x004AB7F0): ESaveType is nested in CWorld -- both PDBs spell its
@@ -123,6 +129,12 @@ public:
     CWorld(const class CWorldInit&);
 #endif
     virtual ~CWorld();                                       // slot 0 (??1CWorld@@UAE@XZ 0x004A6AB0)
+#ifdef FABLE_RETAIL_CWORLD_QUEST_COMPLETION_SAVE_PASS26
+    // Both PDBs and native 0x004A0AE0 / 0x0049E740. FableWin setter 0x018A3AE0.
+    bool AutoSave(bool force_regular_auto_save);
+    static void FABLE_FASTCALL DeleteCheckPointSave();
+    void SetAutoSaveCheckPointExists(bool exists) { AutoSaveCheckPointExists = exists; }
+#endif
 #ifdef FABLE_RETAIL_CWORLD_CONSOLESETFREECAMERALOOKVECTOR
     // Opt-in (hand2b_more, row 0x0049ED80): Ego_r.pdb / FableWin.pdb
     // ?ConsoleSetFreeCameraLookVector@CWorld@@KIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z (protected static
@@ -194,6 +206,12 @@ public:
     static long GetFramesPerSecond();
 #endif
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
+#ifdef FABLE_RETAIL_CWORLD_GETLOCALSEED
+    // NF250 opt-in (row 0x0049D800 CWorld::GetLocalSeed): Ego_r.pdb / FableWin.pdb ?GetLocalSeed@CWorld@@QBEPAKXZ, out of line in retail at
+    // 0x0049D800 (`mov eax,[ecx+8] ; add eax,16140h`: &Component->LocalSeed; Ego_r donor order GetLocalSeed / GetWorldSeed = retail
+    // 0x0049D800 / 0x0049D810), called by the landed CMaterialDef::GetRandom*ParticleEffect rows. Declaration only; no layout change.
+    unsigned long* GetLocalSeed() const;                     // 0x0049D800 ?GetLocalSeed@CWorld@@QBEPAKXZ
+#endif
 #ifdef FABLE_RETAIL_CWORLD_SAVEGAMEMARKERPOS
     // Nested opt-in (row 0x006B08F0 CTCPhysicsBase::OnSerialise): FableWin.pdb ?GetSaveGameMarkerPos@CWorld@@QBEABVC3DVector@@XZ
     // (0x0184F602 thunk), inline in retail: the const& to the unaligned C3DVector at +0x141 read in place.
@@ -791,6 +809,10 @@ FABLE_STATIC_ASSERT_AT(536, sizeof(CWorld) == 0x198);
 #pragma pack(push, 1)
 class CWorld {
 public:
+#ifdef FABLE_RETAIL_CWORLD_INVENTORY_SERIALISE_PASS27
+    // FableWin 0236B884 and its inventory caller: read the flag at +0x103.
+    bool IsSerialisingNonPersistentQuestItems() const { return SerialisingNonPersistentQuestItems; }
+#endif
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -947,6 +969,12 @@ public:
     static long GetFramesPerSecond();
 #endif
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
+#ifdef FABLE_RETAIL_CWORLD_GETLOCALSEED
+    // NF250 opt-in (row 0x0049D800 CWorld::GetLocalSeed): Ego_r.pdb / FableWin.pdb ?GetLocalSeed@CWorld@@QBEPAKXZ, out of line in retail at
+    // 0x0049D800 (`mov eax,[ecx+8] ; add eax,16140h`: &Component->LocalSeed; Ego_r donor order GetLocalSeed / GetWorldSeed = retail
+    // 0x0049D800 / 0x0049D810), called by the landed CMaterialDef::GetRandom*ParticleEffect rows. Declaration only; no layout change.
+    unsigned long* GetLocalSeed() const;                     // 0x0049D800 ?GetLocalSeed@CWorld@@QBEPAKXZ
+#endif
 };
 #pragma pack(pop)
 

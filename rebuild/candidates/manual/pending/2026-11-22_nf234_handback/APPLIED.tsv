@@ -1,0 +1,13 @@
+entry	address	status	binders_respelled	note
+q12650	0x00495780	done (form beyond the approved pair: decision 1)	2 (0x00496CF0 Shutdown x3; 0x00495780 erase x2)	0x00412450 2 -> 1; 0x00495780 1 -> 1 (QAE -> AAE with its one binder)
+q12642	0x00415930	done (in place; decision 2)	1 (0x00418B7A vtable slot 4)	0x00415930 2 -> 1 (MAE only; census NOTES entry 2); no table line names the UAE spelling
+q12643	0x0122ECA4	blocked: family unit (CFrontendGameComponent ctor / dtor / slot rows)	0	0x00495620 is the only stand-in emitter; it moves with 0x00496070 (0x0123875C would grow) and the slot rows (NOTES entry 2)
+q12644	0x0122DE50	blocked: family unit (CMeshBankManager ctor / dtor) + 0x00B260B0	0	3 spellings at HEAD (0x00B260B0 NativeDeviceResetCallback found here); 0x00A0A110 moves with 0x00A0A150 (0x0129C980 would grow)
+q12645	0x0122F180 / 0x0122F174, 0x01238768 / 0x0123875C	blocked: family units	0	0x00418DCA alone for CMainGameComponent (typed-layout claim on CMainGameComponent.h, 469 includers); CFrontendGameComponent with q12643
+q12647	0x01228AF1	done (pair unit with q12651)	1 row (2 binders: 0x013B8760, 0x00433CC0)	0x013B8760 2 -> 1, 0x00433CC0 2 -> 1; LNK2005 PClass = static-pair debt
+q12651	0x013B8760, 0x01228AF1, 0x0121A2DC	done	2 rows	one TU, _$E1 / _$E2; catalog names from FableWin / Ego_r / Ego_d (RENAMES section 1)
+q12646	CEngineInterpolationInfo::CEngineInterpolationInfoSet	done (header claim, add-only opt-in; decision 3)	1 row (0x0042EA8F)	all three PDBs nest it; the default path keeps the top-level class; local top-level models stay in 0x0069ED40 / 0x0069EDE0 / 0x0069E980 / 0x0042FA30 / 0x00B25950 / 0x00B812F0 / 0x00B662F0 / 0x00BCEB40 / 0x01224900 (NOTES)
+q12649	CEngineInterpolationInfoSet	done with q12646	0	see q12646
+q12652	(tests)	partial	0	header tests for 0x00495780, 0x0121A2DC, 0x01228AF1 (a case per condition, shared headers, stubs for the out-of-line callees); the other changed rows and the nf233 list keep HEAD tests (context)
+q12641	0x004330D2	blocked: needs a device or ruling (write-up in NOTES; nothing landed)	0	no borrowed name
+q12648	0x004330D2	blocked with q12641	0	NOTES '0x004330D2'

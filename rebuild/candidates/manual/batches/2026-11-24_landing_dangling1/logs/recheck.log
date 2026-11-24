@@ -1,0 +1,41 @@
+addr       parity           behav  name
+006bfb90   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+006bfb90   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+006bfb90   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006bfb90   WARN SHARED_HEADER_AVAILABLE CBuyableHouseDef (engine/CBuyableHouseDef.h)
+006bfb90   WARN SHARED_HEADER_AVAILABLE CVillageDef (engine/CVillageDef.h)
+006bfb90   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+006bfb90   WARN SHARED_HEADER_AVAILABLE CTCVillageMember (engine/CTCVillageMember.h)
+006bfb90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006bfb90   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+006bfb90   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+006bfb90   RELOCATION_MATCH PASS   NeedsMainSignPost
+0099b770   RELOCATION_MATCH PASS   SetAsSubString
+0099b860   RELOCATION_MATCH PASS   operator=
+0099bf30   RELOCATION_MATCH PASS   operator+
+0099bff0   RELOCATION_MATCH PASS   operator+
+00f349f0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00f349f0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00f349f0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00f349f0   WARN SHARED_HEADER_AVAILABLE CArenaRoundDef (engine/CArenaRoundDef.h)
+00f349f0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVectorOfSubComponentsGenericType (engine/CPersistContext_TransferableVectorOfSubComponentsGenericType.h)
+00f349f0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVectorOfSubComponents (engine/CPersistContext_TransferableVectorOfSubComponents.h)
+00f349f0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00f349f0   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CArenaRoundDef>
+00f351f0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00f351f0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00f351f0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00f351f0   WARN SHARED_HEADER_AVAILABLE CHeroSoulsRoundDef (engine/CHeroSoulsRoundDef.h)
+00f351f0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVectorOfSubComponentsGenericType (engine/CPersistContext_TransferableVectorOfSubComponentsGenericType.h)
+00f351f0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVectorOfSubComponents (engine/CPersistContext_TransferableVectorOfSubComponents.h)
+00f351f0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00f351f0   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CHeroSoulsRoundDef>
+
+WINS: 7
+  006bfb90 RELOCATION_MATCH CTCBuyableHouse::?NeedsMainSignPost@CTCBuyableHouse@@AAE_NXZ
+  0099b770 RELOCATION_MATCH CWideString::?SetAsSubString@CWideString
+  0099b860 RELOCATION_MATCH CWideString::??4CWideString
+  0099bf30 RELOCATION_MATCH _global::??H@YI?AVCWideString@@ABV0@PBG@Z
+  0099bff0 RELOCATION_MATCH _global::??H@YI?AVCWideString
+  00f349f0 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@
+  00f351f0 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@

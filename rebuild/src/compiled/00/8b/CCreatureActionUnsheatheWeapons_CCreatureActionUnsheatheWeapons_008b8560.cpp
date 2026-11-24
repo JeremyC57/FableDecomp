@@ -5,7 +5,7 @@
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(long actionCode);     // 0x00857E40
+    protected: CCombatActionBase(long actionCode); public:     // 0x00857E40
 };
 
 class CCreatureAction_UnsheatheWeapons : public CCombatActionBase { public:   // vtable 0x0127B1B4

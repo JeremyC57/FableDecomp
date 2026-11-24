@@ -108,7 +108,7 @@ class CTCInventoryBase { public:                        // retail 0x130 bytes
     long            RHSetInvItemDefIndex;        // +0x128
     long            ParentMapNumber;             // +0x12c
 
-    long GetHighlightedItem();                   // 0x005BCAE3
+protected: long GetHighlightedItem() const; public:   // 0x005BCAE3 (both PDBs ?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ: protected, const; NF302)
     void ResetInventoryAnim(long item);          // 0x005BCD2D
     void OpenInventory();
 };

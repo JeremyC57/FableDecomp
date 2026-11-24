@@ -1,0 +1,26 @@
+1c1,2
+< DEF ?EntityUnsheatheMeleeWeapon@CGameScriptInterfaceMethods@@QBEXABUScriptMethods@@_N@Z
+---
+> DEF ??0CGameEvent@@QAE@J@Z
+> DEF ?EntityUnsheatheMeleeWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+3,4c4,8
+< DEF ?IsPlayer@CThingNative@@QBE_NXZ
+< UND ?AddData@GameEventMethods@@QAEXJPBX@Z
+---
+> DEF ?GetCombatManager@CWorld@@QAEAAVCCombatManager@@XZ
+> DEF ?GetPlayerNumber@CThing@@QBEKXZ
+> DEF ?GetTypeFlags@CThing@@QBEKXZ
+> DEF ?SetPlayer@CGameEvent@@QAEXJ@Z
+> UND ?AddData@CGameEvent@@QAEXJPBX@Z
+6c10
+< UND ?CreatureUnsheathWeapon@CCombatManager@@QAEXPAUCThingNative@@J@Z
+---
+> UND ?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
+8c12
+< UND ?IsThingCarryingMeleeWeapon@@YI_NPAUCThingNative@@@Z
+---
+> UND ?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z
+10c14
+< UND ?UnsheatheMeleeWeapon@CThingNative@@QAEXXZ
+---
+> UND ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ

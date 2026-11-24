@@ -1,6 +1,6 @@
 // CInputProcessJumpingAndRolling::ProcessJumping(const CInputEvent& event, CProcessedInput& processed) -- while jumping is enabled (global flag), a press of game action 0x1d queues game event 0x32 (jump)
 // Grade: DIFFER(116v112) -- /GS lane gap: both reference parameters shadowed into ebp/edi at entry; retail loads the event into edi after the flag test and re-reads `processed` late
-// Leaf: ProcessJumping
+// Leaf: ?ProcessJumping@CInputProcessJumpingAndRolling@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
@@ -38,14 +38,18 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13)
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
+protected:
+    bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90 (kind 0x13); NF236: protected const (Ego_r / FableWin IBE)
+    bool IsEventButtonReleased(const CInputEvent& event) const;                 // 0x00687BD0 (kind 0x15); NF236: protected const (Ego_r / FableWin IBE)
+public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 extern bool g_JumpingEnabled;                      // 0x013B86E5
 class CInputProcessJumpingAndRolling : public CInputProcessGameBase {
 public:
+    private:
     void ProcessJumping(const CInputEvent& event, CProcessedInput& processed);
+    public:
 };
 
 void CInputProcessJumpingAndRolling::ProcessJumping(const CInputEvent& event, CProcessedInput& processed)

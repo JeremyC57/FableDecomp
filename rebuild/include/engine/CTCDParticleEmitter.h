@@ -145,6 +145,9 @@ class CCharString;
 #ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE
 class C3DVector;
 #endif
+#ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_GETEMITTERPOSITION_PASS26
+class C3DVector;
+#endif
 #ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_UPDATEPARAMETERS
 namespace NParticleEngine { template<class A,class B> class CParticleUpdateParameters; }
 #endif
@@ -153,6 +156,10 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_PARTICLE_EMITTER; }
     void SetAlwaysUpdate(bool always_update);                                                          // 0x006E0590
     void AttachToThing(CThing& thing, long attach_type, const CCharString& helper_name, long helper_index, float offset);   // 0x006E0BE0
+#ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_GETEMITTERPOSITION_PASS26
+    // Ego_r 0x00534B30, FableWin 0x01D67100 and native Activate's returned position.
+    C3DVector GetEmitterPosition() const;                                 // 0x006E0620
+#endif
 #ifdef FABLE_RETAIL_CTCDPARTICLEEMITTER_UPDATEPARAMETERS
     // Nested opt-in (w22 agent2042, row 0x007F2DC0 CTCLightningNode::FrameUpdate): Ego_r.pdb / FableWin.pdb
     // ?SetEmitterUpdateParameters@CTCDParticleEmitter@@QAEXABV?$CParticleUpdateParameters@KK@NParticleEngine@@@Z (retail 0x006E11A0, landed).
@@ -162,6 +169,9 @@ public:
     // Ego_r ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z (retail 0x006E0880, static __fastcall). Needs C3DVector.h.
     // (C3DVector is forward-declared above for rows that include this header first: chunk 2053 row 0x0087F3A0, w22 rows 0x007F26B0 / 0x007F2DC0.)
     static CThing* __fastcall Create(long effect, const C3DVector& pos, bool flag);
+#ifdef FABLE_RETAIL_PHYSICAL_SHIELD_EFFECT_PASS26
+    static CThing* FABLE_FASTCALL Create(long, long, float, const C3DVector&, bool);
+#endif
 #endif
 };
 #endif

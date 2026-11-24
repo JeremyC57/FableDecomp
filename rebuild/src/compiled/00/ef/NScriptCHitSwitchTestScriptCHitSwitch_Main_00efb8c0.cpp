@@ -39,7 +39,7 @@ namespace NScript { class CPredicateBase; }
 inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
 using NScript::CIsThingConscious;
 
-bool __fastcall FoundMessageIsThingHitBy(CScriptThing* thing, CScriptThing* hitter);   // 0x00CBE0C7
+bool __fastcall FoundMessageIsThingHitBy(const CScriptThing& thing, const CScriptThing& hitter);   // 0x00CBE0C7
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08;
 //   SetPredicate(const NScript::CPredicateBase&) 0x00F35B10, IsActiveThreadTerminating() const 0x00F35B30) (agentNF25b: was an empty
@@ -65,7 +65,7 @@ void CHitSwitchTestScript::CHitSwitch::Main()
     if (IsActiveThreadTerminating())
         return;
     while (!IsActiveThreadTerminating()) {
-        while (!FoundMessageIsThingHitBy(&Me, &Game->GetHero())) {
+        while (!FoundMessageIsThingHitBy(Me, Game->GetHero())) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 return;

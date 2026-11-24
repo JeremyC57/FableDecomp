@@ -1,5 +1,5 @@
 // CAIStateGroup_CreatureUseCoverBase::IsRunnable() -- the creature's interface-8 component names an attack target that IsToAttackTarget accepts: remember it in PTargetThing and defer to the leaf test (slot 15)
-// Leaf: IsRunnable@CAIStateGroup_CreatureUseCoverBase
+// Leaf: ?IsRunnable@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970AB0, length 168 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inline CThing::GetInterface,
 // type 8 = word 0 bit 8: `test ch,1`), the component's virtual slot 29 (+0x74) returning the target thing,
@@ -118,7 +118,10 @@ struct CAIStateGroup_CreatureUseCoverBase
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
-    virtual bool IsRunnable();                      // slot 11 (+0x2c)
+    protected:
+    virtual bool IsRunnable();
+    public:
+                      // slot 11 (+0x2c)
     virtual void v12(); virtual void v13(); virtual void v14();
     virtual bool IsRunnableLeaf();                  // slot 15 (+0x3c)
     CAIBrain* PBrain;                               // +0x04

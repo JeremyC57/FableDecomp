@@ -1,0 +1,10 @@
+## HEAD set: H_005bd4ea.obj H_005bda1d.obj H_005bcae3.obj H_005bd273.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetHighlightedItem@CTCInventoryBase@NInventory@@QAEJXZ
+## new set: N_005bd4ea.obj N_005bda1d.obj H_005bcae3.obj H_005bd273.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ
+UNRESOLVED 1 ?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z
+LK_DONE

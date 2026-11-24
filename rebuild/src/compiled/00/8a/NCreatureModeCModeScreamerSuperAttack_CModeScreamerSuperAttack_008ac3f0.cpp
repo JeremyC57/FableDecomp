@@ -25,6 +25,9 @@
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #define FABLE_RETAIL_CMODESTANDBASE
 #define FABLE_RETAIL_CANIMFILTEROFGROUP_INLINE_CTOR
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS                     // NF247 (q12682): the full CModeBase vtable 0x012673CC, so this ctor's
+#define FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE           //   ??_7 binds slots 2-11 at retail 0x01278338's own entries (CModeStandBase's
+#define FABLE_RETAIL_NCREATUREMODE_CMODESCREAMERSUPERATTACK_GETANIMFILTER   // slot 2 / 7 / 9 overrides; the class's slot 3-6 overrides)
 #include "fable_string.h"
 #include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"

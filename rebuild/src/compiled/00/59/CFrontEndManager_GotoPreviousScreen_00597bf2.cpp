@@ -62,11 +62,12 @@ public:
     void Load();                                         // 0x0040D350
     static CUserProfileManager& __fastcall Get();        // 0x0040D2A0
 };
-class CNewFrontendGameComponent {
-public:
-    void ResetAttractModeTimer();                        // 0x0042DBEE
-    static CNewFrontendGameComponent* m_pNewFrontendGameComponent;   // 0x013B871C
-};
+// NF230 (2026-11-22, q12621): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A, the PRIVATE static (Ego_d.pdb LF_STMEMBER
+//   private, as the header declares it) read through the header's inline Get() (FableWin.pdb ?Get@CNewFrontendGameComponent@@SIPAV1@XZ);
+//   ResetAttractModeTimer from the opt-in below (Ego_r + FableWin ?ResetAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ). Was a row-local
+//   CNewFrontendGameComponent model with the static public (?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@2PAV1@A).
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RESETATTRACTMODETIMER
+#include "engine/CNewFrontendGameComponent.h"
 class CVirtualKeyboard {
 public:
     unsigned char _pad00[0x10];
@@ -101,7 +102,7 @@ void CFrontEndManager::GotoPreviousScreen(bool force)
         return;
     }
     CUserProfileManager::Get().Load();
-    CNewFrontendGameComponent::m_pNewFrontendGameComponent->ResetAttractModeTimer();
+    CNewFrontendGameComponent::Get()->ResetAttractModeTimer();
     CloseVirtualKeyboard(false);
     if (m_stackScreens.size() > 1) {
         if (m_stackScreens.top() == m_mapScreens[FRONTEND_SCREEN_27]) {

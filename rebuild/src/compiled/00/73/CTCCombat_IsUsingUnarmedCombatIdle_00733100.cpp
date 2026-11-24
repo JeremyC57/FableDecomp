@@ -1,4 +1,5 @@
 // CTCCombat::IsUsingUnarmedCombatIdle() @ 0x00733100 (retail): false while the owner's player is in mode 0x1b
+// Leaf: ?IsUsingUnarmedCombatIdle@CTCCombat@@QBE_NXZ
 // or 0x2f (CPlayer::HasMode @ 0x00634160 on CThing::GetPlayer() @ 0x004C7A10 -- the mode argument is pushed
 // before the GetPlayer call, which takes none), or while the owner carries a weapon (IsThingCarryingWeapon
 // @ 0x006A1540, __fastcall); true when the player's byte +0x217 is set; otherwise false while
@@ -29,10 +30,12 @@ class CTCCombat { public:
     CThing* obj;                                 // +0x04 owner
     char    pad2[0x14];
     int     count;                               // +0x1c
+    public: bool IsUsingUnarmedCombatIdle() const;
 };
 
-bool __fastcall CTCCombat_IsUsingUnarmedCombatIdle(CTCCombat* combat)
+bool CTCCombat::IsUsingUnarmedCombatIdle() const
 {
+    CTCCombat* combat = const_cast<CTCCombat*>(this);
     if (combat->obj->PeekPlayer().HasMode((EPlayerMode)0x1b))
         return false;
     if (combat->obj->PeekPlayer().HasMode((EPlayerMode)0x2f))

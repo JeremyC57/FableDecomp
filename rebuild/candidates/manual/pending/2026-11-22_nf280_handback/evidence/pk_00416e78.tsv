@@ -1,0 +1,7 @@
+e1	??0CChecksum@@QAE@JJJ@Z	32	-	NO-OWNER
+e1	?PeekWorldSeed@CMainGameComponent@@QBEKXZ	7	-	NO-OWNER
+e1	??0CGameEvent@@QAE@XZ	11	004159a0	EQ
+e1	?PeekWorldPos@CCamera@@QBEABVC3DVector@@XZ	3	-	NO-OWNER
+e1	?GetGameCamera@CWorld@@QAEPAVCAIGameCameraBase@@XZ	4	-	NO-OWNER
+e1	??C?$scoped_ptr@VCGamePlayerInterface@@@boost@@QBEPAVCGamePlayerInterface@@XZ	3	-	NO-OWNER
+e1	??C?$scoped_ptr@VCWorld@@@boost@@QBEPAVCWorld@@XZ	3	-	NO-OWNER

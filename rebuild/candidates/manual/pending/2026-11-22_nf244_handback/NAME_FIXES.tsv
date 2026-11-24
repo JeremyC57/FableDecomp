@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00B26010	?OnPreDeviceReset@CEngine@@EAEXXZ (private virtual)	Ego_r.pdb 0x009B0650 / FableWin.pdb 0x02C9AA40 (both EAE); CDeviceResetCallback vtable 0x012A0F30 slot	self row leaf ?OnPreDeviceReset@CEngine@@UAEXXZ (row-local CEngine model); engine/CEngine.h default branch declares it public: needs header claim (the step-2 opt-in already makes it private for its users)
+0x00B25D00	?OnPostDeviceReset@CEngine@@EAE_NXZ (private virtual)	Ego_r.pdb 0x009B0360 / FableWin.pdb 0x02C9ABC0 (both EAE); vtable 0x012A0F30 slot	self row leaf ?CEngine_OnPostDeviceReset@@YI_NPAVCEngine@@@Z (fastcall stand-in); CEngine.h default public as above

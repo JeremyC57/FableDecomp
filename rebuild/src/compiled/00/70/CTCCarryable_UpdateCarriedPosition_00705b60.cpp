@@ -47,7 +47,7 @@ protected:
 
 class CTCCarryable : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    bool GetCarriedPositionInfo(C3DVector* position, CRightHandedSet* orientation, bool forceUpdate, float time);   // 0x007055D0
+    bool GetCarriedPositionInfo(C3DVector& position, CRightHandedSet& orientation, bool forceUpdate, float time) const;   // 0x007055D0
     void UpdateCarriedPosition(bool forceUpdate);
 };
 
@@ -57,7 +57,7 @@ void CTCCarryable::UpdateCarriedPosition(bool forceUpdate)
         return;
     CRightHandedSet orientation;
     C3DVector position;
-    if (!GetCarriedPositionInfo(&position, &orientation, forceUpdate, 1.0f))
+    if (!GetCarriedPositionInfo(position, orientation, forceUpdate, 1.0f))
         return;
     ParentThing->PhysicsTC->SetFacingAnglesFromRHSet(orientation);
     if (!PeekWorldMap().IsPosInMap(position))

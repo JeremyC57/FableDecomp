@@ -1,5 +1,5 @@
 // CThingAICreature::OnCreate() -- creature-base create, def initialisation and validation, default weapons; then suspend the AI when the creature has no brain def or its brain def is BRAIN_NULL
-// Leaf: ?OnCreate@CThingAICreature
+// Leaf: ?OnCreate@CThingAICreature@@MAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00833A70, 299 bytes (+5 int3), virtual, `ret`, bool in al.
 // Callees: CThingCreatureBase::OnCreate @ 0x00666310, CThingAICreature::InitialiseFromDef @ 0x008338D0,
 //   CThingPhysical::ValidateInitialisation @ 0x006A4D60, CThingCreatureBase::CreateDefaultWeapons @ 0x00664680,
@@ -81,7 +81,6 @@ class CThingCreatureDef { public:
     long BrainDef;                              // +0xe8
 };
 class CThingCreatureBase { public:
-    void*         __vftable;
     unsigned char _pad04[0xe0 - 0x04];
     CThingCreatureDef* PDef;                    // +0xe0 CDefPointer<CThingCreatureDef const>::Object
     const CThingCreatureDef* GetCreatureDef() const { return PDef; }
@@ -89,8 +88,12 @@ class CThingCreatureBase { public:
     bool IsShowingDebugInfo : 1;                // +0x15e bit 0
     CDefinitionManager* GetDefinitionManager();  // 0x004C7990 (CThing)
     bool ValidateInitialisation();              // 0x006A4D60 (CThingPhysical)
-    void CreateDefaultWeapons();                // 0x00664680
-    bool OnCreate();                            // 0x00666310
+    protected:
+    void CreateDefaultWeapons();
+    public:
+                // 0x00664680
+protected:
+    virtual bool OnCreate();                            // 0x00666310 (protected virtual: FableWin / Ego_r ?OnCreate@CThingCreatureBase@@MAE_NXZ)
 };
 class CThingAICreature : public CThingCreatureBase { public:
     unsigned char _pad160[0x1c8 - 0x160];
@@ -102,8 +105,9 @@ class CThingAICreature : public CThingCreatureBase { public:
         Suspenders.InsertUnique(suspender);
         AISuspended = !Suspenders.empty();
     }
-    void InitialiseFromDef();                   // 0x008338D0
-    bool OnCreate();
+    protected: void InitialiseFromDef(); public:                   // 0x008338D0
+protected:
+    virtual bool OnCreate();            // protected virtual (both PDBs: MAE)
 };
 
 bool CThingAICreature::OnCreate()

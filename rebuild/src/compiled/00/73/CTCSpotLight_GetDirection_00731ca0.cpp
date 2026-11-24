@@ -1,5 +1,5 @@
 // CTCSpotLight::GetDirection() const -- the owner's facing flattened onto the XY plane and normalised, tilted down about its horizontal perpendicular by (0.25 - angle) where the angle is the overridden light info's or the def's
-// Leaf: GetDirection
+// Leaf: ?GetDirection@CTCSpotLight@@QAE?AVC3DVector@@XZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00731CA0, length 147 bytes (`ret 4`, C3DVector returned through the hidden pointer).
 // Callees: CTCPhysicsBase virtual slot 70 (+0x118, returns a stored C3DVector by value; CTCPhysicsStandard's override 0x00723C00 copies
@@ -45,10 +45,10 @@ class CTCSpotLight { public:
     void* PLightInfo_Info;                                      // +0x14
     const CSpotLightDef* PLightDef_Object;                      // +0x18 CDefPointer<const CSpotLightDef>::Object
     bool Overridden;                                            // +0x1c
-    C3DVector GetDirection() const;
+    C3DVector GetDirection();
 };
 
-C3DVector CTCSpotLight::GetDirection() const
+C3DVector CTCSpotLight::GetDirection()
 {
     C3DVector dir = ParentThing->GetPhysicsTC()->GetFacingVector();
     dir.Z = 0.0f;

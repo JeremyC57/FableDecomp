@@ -1,0 +1,26 @@
+#15 0079acc0 ?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z
+   0079acc0(self) - DEF=OK:?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z
+   0079b650 OK ?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z x1
+   0079b9d0 OK ?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z x1
+#20 007ba8c0 ?HasEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@@Z
+   007ba8c0(self) - DEF=OK:?HasEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@@Z
+   009689c0 OK ?HasEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@@Z x2
+#24 007941d0 ??0CTCUnholyPower@@QAE@AAVCThing@@@Z
+   007941d0(self) - DEF=OK:??0CTCUnholyPower@@QAE@AAVCThing@@@Z
+   004d4acc OK ??0CTCUnholyPower@@QAE@AAVCThing@@@Z x1
+#29 007df4b0 ?OnWallMountUseAction@CTCWallMountEffects@@QAE_NAAVCThingCreatureBase@@@Z
+   007df4b0(self) NOOBJ
+   007efe70 OK ?OnWallMountUseAction@CTCWallMountEffects@@QAE_NAAVCThingCreatureBase@@@Z x1
+#33 009f9de0 ?Unlock@CTexture@@QAEXK@Z
+   009f9de0(self) - DEF=WRONG:?Unlock@CTexture_Methods@@QAEXK@Z
+   0071bcd0 OK ?Unlock@CTexture@@QAEXK@Z x2
+   00a3b730 OK ?Unlock@CTexture@@QAEXK@Z x1
+   00a68910 OK ?Unlock@CTexture@@QAEXK@Z x1
+   00b3c5d0 OK ?Unlock@CTexture@@QAEXK@Z x1
+   00b67270 OK ?Unlock@CTexture@@QAEXK@Z x1
+#56 0051ec50 ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z
+   0051ec50(self) - DEF=OK:?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z
+   004c7c40 OK ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z x1
+   004c7c60 OK ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z x1
+   004c8da0 OK ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z x1
+   004c9690 OK ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z x1

@@ -1,3 +1,4 @@
+// Leaf: ?UpdateHiddenModifiers@CTCHeroAttachableAppearanceModifiers@@AAEXXZ
 // CTCHeroAttachableAppearanceModifiers::UpdateHiddenModifiers() -- marks every modifier visible, then hides any lower-layer modifier whose hide mask overlaps a visible higher-layer modifier
 #include "fable_compiler.h"
 template<class T> class CDefPointer;
@@ -106,7 +107,9 @@ class CTCHeroAttachableAppearanceModifiers : public CTCBase {
 public:
     unsigned char _pad0c[0x30 - 0x0c];
     vector< vector<CModifierEntry> > AppearanceModifiers;   // +0x30
+    private:
     void UpdateHiddenModifiers();
+    public:
 };
 
 // R&D I-3 sweep: a same-TU auto_inline(off) GetSubDef (fills only *out) makes the per-entry def pointers non-escaping;

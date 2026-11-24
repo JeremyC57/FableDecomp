@@ -1,0 +1,8 @@
+H 00aeabe0 NParticleEngine::CParticleEmitterManager::CreateDecalEmitter RELOCATION_MATCH flags= [] leaf=?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z
+H 00aee8c0 NParticleEngine::CParticleEmitter::Kill RELOCATION_MATCH flags= [] leaf=?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ
+H 00d6ed10 NScript::CQ_HangingTreeEvilScript::Alloc RELOCATION_MATCH flags= [] leaf=?Alloc@CQ_HangingTreeEvilScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+H 00d73610 NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPoint::Main RELOCATION_MATCH flags= [] leaf=?Main@CHTG_AmbushPoint@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+H 00b218b0 NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromIndex RELOCATION_MATCH flags= [] leaf=?TransformFromIndex@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@3@AAVC3DVector@@J@Z
+H 00e8b9c0 NScript::CV_GhostGrannyNecklaceScript::Main RELOCATION_MATCH flags= [] leaf=?Main@CV_GhostGrannyNecklaceScript@NScript@@UAEXXZ
+H 00adf610 CParticleSimulation::CopyFrom RELOCATION_MATCH flags= [] leaf=?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z
+GR_DONE

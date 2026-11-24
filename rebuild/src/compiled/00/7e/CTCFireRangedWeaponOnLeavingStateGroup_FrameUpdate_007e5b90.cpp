@@ -89,7 +89,7 @@ class CTCWeapon { public:
 };
 
 class CCombatManager { public:
-    CCombatActionBase* GetNextActionForCreature(CThingCreatureBase* creature);           // 0x006EB600
+    CCombatActionBase* GetNextActionForCreature(CThingCreatureBase& creature);           // 0x006EB600 (Ego_r + FableWin AAV)
     void SetCreatureAsAttemptedToPerformedAction(CThingCreatureBase* creature, bool performed);   // 0x006EA540
 };
 class CWorld { public:
@@ -134,7 +134,7 @@ void CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate()
     if (!QuitOut) {
         CThingCreatureBase* creature = (CThingCreatureBase*)ParentThing;
         if (creature->IsInMeleeAsAttacker()) {
-            CCombatActionBase* action = GetWorld().GetPCombatManager()->GetNextActionForCreature(creature);
+            CCombatActionBase* action = GetWorld().GetPCombatManager()->GetNextActionForCreature(*creature);
             if (creature->IsInMeleeAsAttacker()) {
                 bool performed = false;
                 if (action && !creature->IsPerformingAnyAction() && creature->SetCurrentAction(*action))

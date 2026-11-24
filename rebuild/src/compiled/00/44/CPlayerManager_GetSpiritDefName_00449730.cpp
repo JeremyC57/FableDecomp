@@ -1,3 +1,4 @@
+// Leaf: ?GetSpiritDefName@CPlayerManager@@QBE?AVCCharString@@J@Z
 // CPlayerManager::GetSpiritDefName(long player) -- the co-op spirit definition name for a player slot (0 ONE, 2 THREE, 3 FOUR, 1 and anything else TWO)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00449730, length 113 bytes + a 16-byte jump table (0x004497A4).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 into the hidden result pointer.
@@ -12,10 +13,10 @@ class CCharString { public:
 };
 
 class CPlayerManager { public:
-    CCharString GetSpiritDefName(long player);
+    CCharString GetSpiritDefName(long player) const;
 };
 
-CCharString CPlayerManager::GetSpiritDefName(long player)
+CCharString CPlayerManager::GetSpiritDefName(long player) const
 {
     switch (player) {
     case 0: return CCharString("COOP_SPIRIT_PLAYER_ONE", -1);

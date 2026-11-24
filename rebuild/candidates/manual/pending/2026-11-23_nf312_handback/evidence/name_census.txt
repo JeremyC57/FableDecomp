@@ -1,0 +1,103 @@
+## path includers of the 14 changed files
+00405350 NUISystemCIME_LoadIMESettings_00405350.cpp includers=0
+006698d0 CThingSearchTools_GetPFirstLeafThingCFilterBind2CThingFilterOverla_006698d0.cpp includers=0
+006a7b20 CThingFilterPosInContainmentVolume_operator_006a7b20.cpp includers=0
+006c0810 CTCBuyableHouse_OnSerialise_006c0810.cpp includers=0
+007990c0 CTCShopKeeper_RequiresNewCustomer_007990c0.cpp includers=0
+0088f400 CGameScriptInterface_SetCreatureGeneratorsCreatureGroupAsEnabled_0088f400.cpp includers=0
+008d66e0 NCreatureModeCModeUnderground_OnActivate_008d66e0.cpp includers=0
+009432c0 CAIStateGroupWorkAtSchool_Update_009432c0.cpp includers=0
+009650c0 CThingSearchTools_GetPBestThing_009650c0.cpp includers=0
+00d89380 NScriptCQHeroSoulsNostroScriptCNostro_Main_00d89380.cpp includers=0
+00df2380 NScriptCQSummoningTheShipScriptCSummonerAttacker_Main_00df2380.cpp includers=0
+00df2ab0 NScriptCQSummoningTheShipScriptCSummonerMinion_Main_00df2ab0.cpp includers=0
+00dfe0f0 NScriptCQTraderConflictGoodScriptCTraderToRescue_Main_00dfe0f0.cpp includers=0
+00efb8c0 NScriptCHitSwitchTestScriptCHitSwitch_Main_00efb8c0.cpp includers=0
+## locks owned by NF312
+00405350 006698d0 006a7b20 006c0810 007990c0 0088f400 008d66e0 009432c0 009650c0 00d89380 00df2380 00df2ab0 00dfe0f0 00efb8c0 
+## old (HEAD) symbols of the changed rows: reloc_bindings lines (symbol target witness)
+# ??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NPAVCThingBuilding@@@Z
+# ??RCThingFilter_IsPotentialCustomer@@QAE_NPAVCThing@@@Z
+??RCThingFilter_IsPotentialCustomer@@QAE_NPAVCThing@@@Z	00799e30	007990c0
+# ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThing@@@Z
+??RCThingFilter_ObjectHasProperty@@QBE_NABVCThing@@@Z	006a7590	009650c0
+# ??RCThingFilter_OverlappingSphere@@QBE_NPAVCThing@@@Z
+# ??RCThingFilter_PosInContainmentVolume@@QBE_NPAVCThing@@@Z
+??RCThingFilter_PosInContainmentVolume@@QBE_NPAVCThing@@@Z	006a7b20	006698d0
+# ?AreAllowedToCoexist@@YI_NJJ@Z
+?AreAllowedToCoexist@@YI_NJJ@Z	005578a0	005580b0
+# ?FadeInThing@@YIXABVCScriptThing@@M@Z
+?FadeInThing@@YIXABVCScriptThing@@M@Z	00cbe7aa	00df2ab0
+# ?FadeOutThing@@YIXABVCScriptThing@@MM@Z
+?FadeOutThing@@YIXABVCScriptThing@@MM@Z	00cbe814	00d89380
+# ?FoundMessageIsThingHitBy@@YI_NPAVCScriptThing@@0@Z
+?FoundMessageIsThingHitBy@@YI_NPAVCScriptThing@@0@Z	00cbe0c7	00efb8c0
+# ?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAVCBaseIntelligentPointer@@K@Z
+?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAVCBaseIntelligentPointer@@K@Z	0088ae40	006c0810
+# ?GetDummyObjectRecursive@@YI_NPAVCThing@@ABVCCharString@@JKPAVC3DVector@@PAVCRightHandedSet@@@Z
+?GetDummyObjectRecursive@@YI_NPAVCThing@@ABVCCharString@@JKPAVC3DVector@@PAVCRightHandedSet@@@Z	00942b30	009432c0
+# ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKPAUCThing@1@J@Z
+?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKPAUCThing@1@J@Z	0085f830	008d66e0
+# ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ
+# ?IsPlayerThreateningEntity@@YIJABVCScriptThing@@@Z
+?IsPlayerThreateningEntity@@YIJABVCScriptThing@@@Z	00cbeed2	00dfe0f0
+# ?SetCreatureGenerationGroupAsEnabled@CWorld@@QAIXW4ECreatureGroup@@_N@Z
+?SetCreatureGenerationGroupAsEnabled@CWorld@@QAIXW4ECreatureGroup@@_N@Z	0049d930	0088f400
+# ?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBIXW4ECreatureGroup@@_N@Z
+# ?TransferIMEColour@@YIIAAVCPersistContext@@ABVCCharString@@I@Z
+?TransferIMEColour@@YIIAAVCPersistContext@@ABVCCharString@@I@Z	00405220	00405350
+# ?front@CActionList@NUISystem@@QBEJXZ
+## new (PDB) symbols: reloc_bindings lines
+# ??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NABVCThingBuilding@@@Z
+# ??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z
+??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z	00799e30	0079a050
+# ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z
+??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z	006a7590	00936100
+# ??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z
+??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z	006689e0	00785dd0
+# ??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z
+??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z	006a7b20	00669110
+# ?AreAllowedToCoexist@@YI_NW4EGameAction@@0@Z
+# ?FadeInThing@@YIXAAVCScriptThing@@M@Z
+# ?FadeOutThing@@YIXAAVCScriptThing@@MM@Z
+# ?FoundMessageIsThingHitBy@@YI_NABVCScriptThing@@0@Z
+# ?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z
+# ?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z
+?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z	00942b30	00942b30
+# ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z
+# ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
+# ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z
+?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z	00cbeed2	00eb4710
+# ?SetCreatureGenerationGroupAsEnabled@CWorld@@QAEXW4ECreatureGroup@@_N@Z
+# ?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBEXW4ECreatureGroup@@_N@Z
+# ?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z
+# ?front@CActionList@NUISystem@@QBE?AW4EGameAction@@XZ
+## source definitions (Class::Method / free function bodies) of the touched names in rebuild/src/compiled
+# CThingFilter_PosInContainmentVolume::operator\(\)
+006a7b20 
+# CThingFilter_OverlappingSphere::operator\(\)
+006689e0 
+# CThingFilter_IsPotentialCustomer::operator\(\)
+00799e30 
+# CThingFilter_ObjectHasProperty::operator\(\)
+006a7590 
+# TransferIMEColour\s*\(
+00405220 00405350 
+# GetDummyObjectRecursive\s*\(
+00942b30 
+# FoundMessageIsThingHitBy\s*\(
+00cbe0c7 00efb8c0 
+# FadeInThing\s*\(
+00cbe7aa 
+# FadeOutThing\s*\(
+00cbe814 
+# IsPlayerThreateningEntity\s*\(
+00eb4710 00cbeed2 00dfe0f0 00e49020 
+# CWorld::SetCreatureGenerationGroupAsEnabled
+0049d930 
+# CGameScriptInterface::SetCreatureGeneratorsCreatureGroupAsEnabled
+0088f400 
+# GFSerialisePointer\s*\(
+006c0810 0088ae40 
+# GetOldTargetFlagsAndReplaceWith\s*\(
+0085f830 

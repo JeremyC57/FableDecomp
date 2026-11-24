@@ -1,3 +1,4 @@
+// Leaf: ?Update@CEngineInternalPrimitiveShadowedSpotLight@@UAEXABVCEnginePrimitive@@K@Z
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test runs a simplified algorithm (divides by 255, never uses g_ByteToFloat); signature differs from PDB; comment still says DIFFER)
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // CEngineInternalPrimitiveShadowedSpotLight::Update(const CEnginePrimitive&, unsigned long) -- copy the public shadowed
@@ -27,7 +28,7 @@ struct CEnginePrimitiveShadowedSpotLight : CEnginePrimitive {
 };
 extern const float g_OneOver255;                        // 0x01231724 = 1/255
 class CEngineInternalPrimitiveShadowedSpotLight { public:
-    unsigned char _base00[0x0c];
+    unsigned char _base00[0x8];
     unsigned long UpdateParam;                          // +0x0c (descriptive)
     unsigned char _base10[0x38];
     C3DVector WorldPos;                                 // +0x48
@@ -36,7 +37,7 @@ class CEngineInternalPrimitiveShadowedSpotLight { public:
     float Radius;                                       // +0x70
     float SpotRadius;                                   // +0x74
     float ConeRadius;                                   // +0x78
-    void Update(const CEnginePrimitive& primitive, unsigned long param);
+    virtual void Update(const CEnginePrimitive& primitive, unsigned long param);
 };
 void CEngineInternalPrimitiveShadowedSpotLight::Update(const CEnginePrimitive& primitive, unsigned long param)
 {

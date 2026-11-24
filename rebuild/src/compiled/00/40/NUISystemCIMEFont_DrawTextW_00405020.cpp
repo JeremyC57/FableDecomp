@@ -1,5 +1,6 @@
 // NUISystem::CIMEFont::DrawTextW(const unsigned short* text) -- draw IME text with the Arial font bank picked by height: the colour takes the composition alpha, a black drop shadow two units down-left is drawn first unless the colour is dark (all channels <= 0x60), then the text at the converted position
 // Shape: the address-taken `scale` local lands in the dead `text` parameter slot and is read once into ebp only when the
+// Names (NF223, 2026-11-22): the font comes from CFontManager::GetFont (engine/CFontManager.h; FableWin.pdb / Ego_r.pdb ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z, the self leaf of 0x009E2C80; was a local CFontBankSource stand-in); the HEAD-local system-manager model's +0x84 pointer is retyped CFontManager* in place.
 //   GetFontNameAndScale body is visible in the TU (same-TU noinline copy of the landed 0x00404970); each draw fetches the 2D
 //   render manager into a local before the call (retail evaluates it before the CWideString argument copy), and the main draw's
 //   C3DVector sits in its own block so it shares the shadow draw's slot (0x2c frame).
@@ -29,11 +30,7 @@ public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
 };
-#include "engine/CCountedPointer.h"
-class CFontBank;
-struct CFontBankSource {
-    CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
-};
+#include "engine/CFontManager.h"                        // CFontManager::GetFont 0x009E2C80 (was a local CFontBankSource stand-in)
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -45,7 +42,7 @@ class CRGBColour { public:
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 struct CRenderManager2D {
-    bool Draw3DScaledText(const C3DVector& position, float scale, CWideString text, CFontBank* font,
+    bool Draw3DScaledText(const C3DVector& position, float scale, CWideString text, const CFontBank& font,
                           const CRGBColour& colour, unsigned long flags);                 // 0x009DBFF0
 };
 class CDisplayManager { public:
@@ -56,8 +53,8 @@ class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CDisplayManager* DisplayManager;                    // +0x60
     unsigned char    _pad64[0x84 - 0x64];
-    CFontBankSource* FontBank;                          // +0x84
-    CFontBankSource* GetFontBank() const { return FontBank; }
+    CFontManager*    FontBank;                          // +0x84 (Ego_r.pdb PFontManager, the CCountedPointer<CFontManager>'s Data)
+    CFontManager*    GetFontBank() const { return FontBank; }
 };
 CSystemManager* __fastcall GFGetSystemManager();        // 0x009A4EC0
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
@@ -125,12 +122,12 @@ void CIMEFont::DrawTextW(const unsigned short* text)
         CRGBColour shadow(0, 0, 0, Colour.A);
         C3DVector shadowPosition3(shadowPosition.X, shadowPosition.Y, 0.0f);
         CRenderManager2D* renderManager = GFGetSystemManager()->DisplayManager->RenderManager2D;
-        renderManager->Draw3DScaledText(shadowPosition3, scale, wideText, font.Data, shadow, 0);
+        renderManager->Draw3DScaledText(shadowPosition3, scale, wideText, *font.Data, shadow, 0);
     }
     {
         C3DVector position3(position.X, position.Y, 0.0f);
         CRenderManager2D* renderManager = GFGetSystemManager()->DisplayManager->RenderManager2D;
-        renderManager->Draw3DScaledText(position3, scale, wideText, font.Data, Colour, 0);
+        renderManager->Draw3DScaledText(position3, scale, wideText, *font.Data, Colour, 0);
     }
 }
 }

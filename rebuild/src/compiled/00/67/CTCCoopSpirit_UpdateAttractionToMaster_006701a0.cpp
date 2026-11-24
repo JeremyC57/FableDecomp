@@ -1,3 +1,4 @@
+// Leaf: ?UpdateAttractionToMaster@CTCCoopSpirit@@AAEXXZ
 // CTCCoopSpirit::UpdateAttractionToMaster() -- once the spirit has not moved for a while, pull it towards its master's hero: an acceleration along the offset, scaled by how far beyond 1.5 units it is (capped at 2.5) times 1.027
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -77,7 +78,9 @@ class CTCCoopSpirit { public:
     C3DVector MovementVector;                   // +0x18
     CPlayer* Master;                            // +0x24
     C3DVector GetPos() const { return ParentThing->GetPos(); }   // by-value inline accessor
+    private:
     void UpdateAttractionToMaster();
+    public:
 };
 
 void CTCCoopSpirit::UpdateAttractionToMaster()

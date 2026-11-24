@@ -24,7 +24,10 @@ class CCreatureAction_FinishFireballSpell : public CCombatActionBase { public:  
     virtual void v00();
     CCreatureAction_FinishFireballSpell(CThingCreatureBase* owner);
     CCreatureAction_FinishFireballSpell(CThingCreatureBase* owner, CThing* target);
-    void SetAnims();                        // 0x008BAB70 (manifest, unique to this class)
+    private:
+    void SetAnims();
+    public:
+                        // 0x008BAB70 (manifest, unique to this class)
 };
 
 CCreatureAction_FinishFireballSpell::CCreatureAction_FinishFireballSpell(CThingCreatureBase* owner)

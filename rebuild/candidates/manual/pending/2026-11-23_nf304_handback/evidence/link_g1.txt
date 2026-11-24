@@ -1,0 +1,46 @@
+## HEAD set: H_006b8640.obj H_00aeb990.obj H_00668ab0.obj H_0063e950.obj H_00875e60.obj H_00970790.obj H_00449e60.obj H_00449cb0.obj H_00487fb0.obj H_00713850.obj H_00bfd0b0.obj H_00bfd670.obj H_00405020.obj H_0041a980.obj H_009ead60.obj H_00a10dc0.obj H_00b87680.obj H_00b89a20.obj 00884e90.obj 00884f60.obj 00884fe0.obj 00aee940.obj 00aeeba0.obj 00a650f0.obj 00a64e70.obj 00487ef0.obj 004888c0.obj 00439e00.obj 00439f20.obj 00437ae0.obj 0043b570.obj 004afbb0.obj 004b43d0.obj 004b4450.obj 004b3a20.obj 00f3afc0.obj 009dbff0.obj 009dd210.obj 009de3f0.obj 00a6a440.obj 009fc5c0.obj 00435530.obj 004385f0.obj 00439bb0.obj 00449970.obj 00449a30.obj 00449a50.obj 00449b20.obj 00449b40.obj 00449d90.obj 00449f90.obj 00498490.obj 00499880.obj 00499d90.obj 0049be90.obj 0049d850.obj 004a5a40.obj 004c7a30.obj 005faf50.obj 00637c80.obj 00644424.obj 0064c869.obj 0066cf00.obj 0066fb80.obj 0066fc90.obj 0066ff20.obj 00670710.obj 006e7550.obj 006e7630.obj 006fda20.obj 00745120.obj 007f9960.obj 00815070.obj 0083c690.obj 0083c800.obj 0083ca90.obj 0085cbd0.obj 00875b10.obj 008771a0.obj 008fbcb0.obj 009faf70.obj 00b89c30.obj 00bfcf00.obj 00bfcf90.obj 00bfd020.obj
+duplicates 0
+UNRESOLVED 1 ??0CPlayerGui@@QAE@PAVCMainGameComponent@@PAVCWorld@@PAVCGamePlayerInterface@@PAVCPlayerManager@@PAVCGraphicDataBank@@@Z
+UNRESOLVED 3 ??0CRenderTarget@@QAE@AAVCSurface@@0@Z
+UNRESOLVED 4 ?AttachTarget@CRenderTarget@@QAEXABVCSurface@@@Z
+UNRESOLVED 1 ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@2@@Z
+UNRESOLVED 1 ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@@@Z
+UNRESOLVED 1 ?ClearAllPrimitives@CParticleSystem@@QAEXPAVCEnginePrimitiveHandle@@@Z
+UNRESOLVED 2 ?Compress@CRangeCompressor@@QAEJPAXJJPAV?$CArray@E@@@Z
+UNRESOLVED 1 ?DetachTarget@CRenderTarget@@QAEXXZ
+UNRESOLVED 1 ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@J@Z
+UNRESOLVED 1 ?Draw2DBoxWithZ@CRenderManager2D@@QAE_NABVC2DBoxF@@MABVCRGBColour@@K@Z
+UNRESOLVED 1 ?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@PAVCGraphicDataBank@@KKK@Z
+UNRESOLVED 1 ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@PAVCFontBank@@ABVCRGBColour@@K@Z
+UNRESOLVED 15 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z
+UNRESOLVED 1 ?GetPlayer@CPlayerManager@@QAEPAUCPlayer@@J@Z
+UNRESOLVED 7 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z
+UNRESOLVED 3 ?GetPlayer@CPlayerManager@@QBEPBVCPlayer@@J@Z
+UNRESOLVED 2 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NABVC3DVector@@0PAVCMeshIntersectionData@@@Z
+UNRESOLVED 1 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NPBVC3DVector@@0PAVCMeshIntersectionData@@@Z
+UNRESOLVED 8 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+UNRESOLVED 1 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NPBVC3DVector@@0PAVCMeshIntersectionData@@@Z
+UNRESOLVED 1 ?InitCharacterFromSave@CPlayer@@QAE_NPAUCPlayerSave@@@Z
+UNRESOLVED 1 ?InsertIntoTree@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@1@0@Z
+UNRESOLVED 1 ?LoadPlayerCharacterFromGameState@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+UNRESOLVED 1 ?OnEntityInterrupted@CQuestManager@@QAEXPAVCThing@@@Z
+UNRESOLVED 1 ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@@_N@Z
+UNRESOLVED 1 ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@@_N@Z
+UNRESOLVED 1 ?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@@_N@Z
+UNRESOLVED 1 ?SwitchPlayerCharactersWith@CPlayer@@QAE_NPAU1@@Z
+UNRESOLVED 1 ?Uninitialise@CRenderTarget@@QAEXXZ
+## new set: 006b8640.obj 00aeb990.obj 00668ab0.obj 0063e950.obj 00875e60.obj 00970790.obj 00449e60.obj 00449cb0.obj 00487fb0.obj 00713850.obj 00bfd0b0.obj 00bfd670.obj 00405020.obj 0041a980.obj 009ead60.obj 00a10dc0.obj 00b87680.obj 00b89a20.obj 00884e90.obj 00884f60.obj 00884fe0.obj 00aee940.obj 00aeeba0.obj 00a650f0.obj 00a64e70.obj 00487ef0.obj 004888c0.obj 00439e00.obj 00439f20.obj 00437ae0.obj 0043b570.obj 004afbb0.obj 004b43d0.obj 004b4450.obj 004b3a20.obj 00f3afc0.obj 009dbff0.obj 009dd210.obj 009de3f0.obj 00a6a440.obj 009fc5c0.obj 00435530.obj 004385f0.obj 00439bb0.obj 00449970.obj 00449a30.obj 00449a50.obj 00449b20.obj 00449b40.obj 00449d90.obj 00449f90.obj 00498490.obj 00499880.obj 00499d90.obj 0049be90.obj 0049d850.obj 004a5a40.obj 004c7a30.obj 005faf50.obj 00637c80.obj 00644424.obj 0064c869.obj 0066cf00.obj 0066fb80.obj 0066fc90.obj 0066ff20.obj 00670710.obj 006e7550.obj 006e7630.obj 006fda20.obj 00745120.obj 007f9960.obj 00815070.obj 0083c690.obj 0083c800.obj 0083ca90.obj 0085cbd0.obj 00875b10.obj 008771a0.obj 008fbcb0.obj 009faf70.obj 00b89c30.obj 00bfcf00.obj 00bfcf90.obj 00bfd020.obj
+duplicates 0
+UNRESOLVED 4 ?AttachTarget@CRenderTarget@@QAEXABVCSurface@@@Z
+UNRESOLVED 2 ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@@@Z
+UNRESOLVED 1 ?ClearAllPrimitives@CParticleSystem@@QAEXPAVCEnginePrimitiveHandle@@@Z
+UNRESOLVED 1 ?DetachTarget@CRenderTarget@@QAEXXZ
+UNRESOLVED 1 ?Draw2DBoxWithZ@CRenderManager2D@@QAE_NABVC2DBoxF@@MABVCRGBColour@@K@Z
+UNRESOLVED 16 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z
+UNRESOLVED 7 ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z
+UNRESOLVED 3 ?GetPlayer@CPlayerManager@@QBEPBVCPlayer@@J@Z
+UNRESOLVED 12 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+UNRESOLVED 1 ?InsertIntoTree@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@1@0@Z
+UNRESOLVED 1 ?LoadPlayerCharacterFromGameState@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+UNRESOLVED 1 ?Uninitialise@CRenderTarget@@QAEXXZ
+LK_DONE

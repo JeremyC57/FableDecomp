@@ -1,3 +1,4 @@
+// Leaf: ?ProcessPlayerControl@CCombatActionBase@@IAEXXZ
 // CCombatActionBase::ProcessPlayerControl() -- permit late post-strike movement to finish action and reset combo
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -75,7 +76,10 @@ class CCombatActionBase:public CCreatureActionBase { public:
     long LastAnimStage;bool HitThing,HitCreature;long FrameUpdatePauseFrames;
     void UpdateFacingDirection(); //00856B20
     void ProcessStrikeEvents(); //008597A0
-    void ProcessPlayerControl(); //00857B70
+    protected:
+    void ProcessPlayerControl();
+    public:
+ //00857B70
     void ResetMeleeCombatAbilityEffects(); //00859660
     void FrameUpdate();
 };

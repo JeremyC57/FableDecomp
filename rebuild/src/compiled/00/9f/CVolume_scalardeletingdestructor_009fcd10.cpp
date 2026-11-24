@@ -6,10 +6,10 @@
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolume : public CBaseClass { public:              // vtable 0x0129C840
-    void ReleaseVolume(long flags);                // 0x00A67460
+    void Uninitialise(bool flags);                // 0x00A67460; NF299: PDB name, was ReleaseVolume (parameter bool per the PDB, was long)
     FABLE_FORCEINLINE virtual ~CVolume()
     {
-        ReleaseVolume(1);
+        Uninitialise(1);
     }
 };
 

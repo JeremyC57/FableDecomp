@@ -70,6 +70,10 @@ template<> class char_traits<char>
 {
 public:
     typedef char char_type;
+#ifdef FABLE_RETAIL_STLP_STRING_RANGE_ERASE_PASS28
+    // STLport char_traits::move, verified by the memmove site within retail 00569140.
+    static char* move(char* out, const char* in, size_t n) { return n ? static_cast<char*>(memmove(out, in, n)) : out; }
+#endif
     static void assign(char& a,const char& b) { a=b; }
     static size_t length(const char* p) { return strlen(p); }
     static int compare(const char* a,const char* b,size_t n) { return memcmp(a,b,n); }
@@ -284,6 +288,18 @@ public:
     _Self& operator=(const _Self& s) { if(&s!=this) assign(s._M_start,s._M_finish); return *this; }
     _Self& operator=(const C* s) { return assign(s,s+Traits::length(s)); }
     _Self& assign(const C* first,const C* last);
+#ifdef FABLE_RETAIL_STLP_STRING_RANGE_ERASE_PASS28
+    // STLport _string.h erases the tail including its terminator in the move.
+    iterator erase(iterator first, iterator last) {
+        if (first != last) {
+            Traits::move(first, last, this->_M_finish - last + 1);
+            iterator new_finish = this->_M_finish - (last - first);
+            _Destroy(new_finish + 1, this->_M_finish + 1);
+            this->_M_finish = new_finish;
+        }
+        return first;
+    }
+#endif
     template<class I> _Self& assign(I first,I last) { return _M_assign_dispatch(first,last,__false_type()); }
     _Self& append(const _Self& s) { return append(s._M_start,s._M_finish); }
     _Self& append(const C* s) { return append(s,s+Traits::length(s)); }
@@ -376,11 +392,16 @@ template<class C,class T,class A> basic_string<C,T,A>::basic_string(const C* s,c
 template<class C,class T,class A> basic_string<C,T,A>::basic_string(const basic_string<C,T,A>& s):_Base(s.get_allocator()) {
     _M_range_initialize(s._M_start,s._M_finish);
 }
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_WIDESTRING_EQ_DECL_PASS28
+// The ProcessEmbeddedHighlightTags TU calls the externally owned basic_string<unsigned short> equality at 0x0040F0A0.
+template<class C,class T,class A> bool __cdecl operator==(const basic_string<C,T,A>&,const basic_string<C,T,A>&);
+#else
 template<class C,class T,class A> inline bool
 __cdecl
 operator==(const basic_string<C,T,A>& x,const basic_string<C,T,A>& y) {
     return x.size()==y.size()&&T::compare(x.data(),y.data(),x.size())==0;
 }
+#endif
 #ifdef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_EXPLODE
 #define FABLE_SCOREBOARD_STLP_CALL __cdecl
 #else

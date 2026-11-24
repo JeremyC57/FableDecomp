@@ -4,7 +4,11 @@
 #include "engine/NUISystem_CUIState.h"
 #include "stlport/fable_map.h"
 namespace NUISystem {
+#ifdef FABLE_RETAIL_QUICKACCESS_MAGIC_TEST_PASS27
+struct CListState;
+#else
 class CListState;
+#endif
 // Complete original class; native base15c, three vectors12 and bit-vector16.
 class CList : public CChangingStateComponent {
 public: CList(long); virtual ~CList();

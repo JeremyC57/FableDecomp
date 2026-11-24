@@ -52,7 +52,10 @@ public:
     bool                            Restore;               // +0xea
     bool                            WaitWhileInactive;     // +0xeb
     bool                            AttachedToExternalWindow;   // +0xec
-    void ProcessWindowMessages();                          // 0x009A4F20
+    private:
+    void ProcessWindowMessages();
+    public:
+                          // 0x009A4F20
     void UpdateActive();
 };
 

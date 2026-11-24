@@ -75,7 +75,7 @@ class CThing { public:
     }
 };
 class CTCHeroStats { public:
-    void ApplyBonusItemEffects(CBonusItemDef* def);     // 0x0057C4F1
+    void ApplyBonusItemEffects(const CBonusItemDef& def);   // 0x0057C4F1
 };
 struct CTCShowableItem {
     void OnShowEnded();                                 // 0x005D8E50
@@ -97,7 +97,7 @@ void CTCCarriedActionUseRead::vfunc_28(CThing* user)
         bool found = thingDef->GetSubDef(&out);
         CDefHolder<CBonusItemDef> def(out.Object);
         if (found && user->GetInterface(&stats, 4))
-            stats->ApplyBonusItemEffects(def.Object);
+            stats->ApplyBonusItemEffects(*def.Object);
         AlreadyRead = true;
     }
     if (ParentThing->HasTC(0x1a))

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BEAB40, 345 bytes, thiscall, plain `ret`; private const, returns const EWaterType
 //   (Ego_r.pdb + FableWin.pdb ?GetWaterType@CWaterPatchMesh@@ABE?BW4EWaterType@@XZ). No callers in retail.
 // Callees: CEngineMap::PeekThemeId(long x, long y, long layer) const 0x00B43720 (three calls, layer 0/1/2),
-//   CDefinitionManager::GetDefClassIndexFromGlobalIndex(long) const 0x009ACCA0 on g_pEngineDefinitionManager 0x01436E28
+//   CDefinitionManager::GetDefClassIndexFromGlobalIndex(long) const 0x009ACCA0 on NEngineInternal::GPDefinitionManager 0x01436E28
 //   (three calls); inline CEngineLandscapeMap::PeekEngineMap (Map +0x14) and CEngineLandscapeRenderer::PeekTheme
 //   (retail's out-of-line copy is 0x00B43CE0; LandscapeThemes +0x4B8 of the renderer global 0x01436EA8, 0x38-byte
 //   CLandscapeTheme, WaterType +0x30).
@@ -18,8 +18,8 @@
 //   Layer 0 combines with the vertex's own type, which starts as none like in CEngineMap::PeekWaterType 0x00B40670, so
 //   its unset check folds late and leaves the plain second load. CombineWaterTypes and vertexType are descriptive
 //   names (found in no PDB); EWaterType enumerator names are not recovered (0 = none, 7 = overridable).
-// Descriptive (made-up) globals, no PDB data symbol: g_pEngineDefinitionManager 0x01436E28 (the only landed spelling,
-//   CEngine::Initialise 0x00B26360, also marked descriptive there) and g_pLandscapeRenderer 0x01436EA8 (the most
+// Globals: NEngineInternal::GPDefinitionManager 0x01436E28 (PDB name, Ego_r / FableWin / Ego_d publics; NF238 replaced the
+//   descriptive g_pEngineDefinitionManager), and the descriptive (made-up, no PDB data symbol) g_pLandscapeRenderer 0x01436EA8 (the most
 //   common typed, non-placeholder landed spelling: 8 rows declare it as CEngineLandscapeRenderer*, 44 older rows still use the
 //   placeholder g_pEngine_01436ea8, queued in NAME_FIXES; the type is backed by retail's read of LandscapeThemes at +0x4B8,
 //   0x00BEAC00).
@@ -29,6 +29,7 @@
 #define FABLE_RETAIL_CENGINELANDSCAPERENDERER_PEEKTHEME
 #define FABLE_RETAIL_CENGINEMAP_PEEK
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CWaterPatchMesh.h"
 #include "engine/CEngineLandscapeRenderer.h"
 #include "engine/CEngineMap.h"
@@ -44,8 +45,7 @@ public:
     long        PatchGridHeight;
     CEngineMap* Map;                                             // +0x14
 };
-extern CDefinitionManager*       g_pEngineDefinitionManager;     // 0x01436E28 (descriptive)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;           // 0x01436EA8 (descriptive)
+namespace NEngineInternal { extern const CDefinitionManager* GPDefinitionManager; }   // 0x01436E28 ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B (Ego_r / FableWin / Ego_d)
 static inline EWaterType CombineWaterTypes(EWaterType current, EWaterType themeType)
 {
     return (current == WATER_TYPE_NONE || current == WATER_TYPE_OVERRIDABLE) ? themeType : current;
@@ -62,17 +62,17 @@ const EWaterType CWaterPatchMesh::GetWaterType() const
             long theme0 = Map->PeekEngineMap()->PeekThemeId(x, y, 0);
             long theme1 = Map->PeekEngineMap()->PeekThemeId(x, y, 1);
             long theme2 = Map->PeekEngineMap()->PeekThemeId(x, y, 2);
-            theme0 = g_pEngineDefinitionManager->GetDefClassIndexFromGlobalIndex(theme0);
-            theme1 = g_pEngineDefinitionManager->GetDefClassIndexFromGlobalIndex(theme1);
-            theme2 = g_pEngineDefinitionManager->GetDefClassIndexFromGlobalIndex(theme2);
+            theme0 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme0);
+            theme1 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme1);
+            theme2 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme2);
             if (waterType == WATER_TYPE_NONE || waterType == WATER_TYPE_OVERRIDABLE) {
                 EWaterType vertexType = WATER_TYPE_NONE;
-                if (g_pLandscapeRenderer->PeekTheme(theme0).WaterType)
-                    waterType = CombineWaterTypes(vertexType, g_pLandscapeRenderer->PeekTheme(theme0).WaterType);
-                if (theme1 && g_pLandscapeRenderer->PeekTheme(theme1).WaterType) {
-                    waterType = CombineWaterTypes(waterType, g_pLandscapeRenderer->PeekTheme(theme1).WaterType);
-                    if (theme2 && g_pLandscapeRenderer->PeekTheme(theme2).WaterType) {
-                        waterType = CombineWaterTypes(waterType, g_pLandscapeRenderer->PeekTheme(theme2).WaterType);
+                if (NEngineInternal::GPLandscapeRenderer->PeekTheme(theme0).WaterType)
+                    waterType = CombineWaterTypes(vertexType, NEngineInternal::GPLandscapeRenderer->PeekTheme(theme0).WaterType);
+                if (theme1 && NEngineInternal::GPLandscapeRenderer->PeekTheme(theme1).WaterType) {
+                    waterType = CombineWaterTypes(waterType, NEngineInternal::GPLandscapeRenderer->PeekTheme(theme1).WaterType);
+                    if (theme2 && NEngineInternal::GPLandscapeRenderer->PeekTheme(theme2).WaterType) {
+                        waterType = CombineWaterTypes(waterType, NEngineInternal::GPLandscapeRenderer->PeekTheme(theme2).WaterType);
                     }
                 }
             }

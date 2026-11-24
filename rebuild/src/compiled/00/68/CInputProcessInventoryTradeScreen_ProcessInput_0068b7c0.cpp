@@ -5,7 +5,7 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068B7C0, length 1111 bytes, `ret 8`.
 // Callees: CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap LowerBound @ 0x0040F020, CInputProcessGameBase::
-//   IsEventButtonPressed @ 0x00687A90 / IsEventButtonHeld @ 0x00687BD0 / IsEventButtonReleased @ 0x00687B30 /
+//   IsEventButtonPressed @ 0x00687A90 / IsEventButtonReleased @ 0x00687BD0 / IsEventButtonHeld @ 0x00687B30 /
 //   IsEventGameAction @ 0x00687CF0, NUISystem::CManager::GetInstance @ 0x0041E5F2 (+ slot 0 SendEvent, slot 38
 //   +0x98, ScrollMenu @ 0x0041DA2D), CPlayerManager::GetMainPlayerNumber @ 0x00449700, CMainGameComponent::AddGameEvent
 //   @ 0x0041649C (on 0x013B86A0), CTCInventoryMap::PanMap @ 0x005FB140, CInputEvent::GetWheelDelta @ 0x00A03BB0,
@@ -37,8 +37,8 @@ protected:
     // Ego_r.pdb / FableWin.pdb spell them (?IsEventButton{Pressed,Held,Released}@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z,
     // protected const; engine/CInputProcessGameBase.h ZTARGET / MOVEMENT declare the same).
     bool IsEventButtonPressed(const CInputEvent& event) const;        // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event) const;       // 0x00687B30
-    bool IsEventButtonHeld(const CInputEvent& event) const;           // 0x00687BD0
+    bool IsEventButtonHeld(const CInputEvent& event) const;       // 0x00687B30
+    bool IsEventButtonReleased(const CInputEvent& event) const;           // 0x00687BD0
 };
 struct CMousePosition {
     float X, Y;
@@ -168,7 +168,7 @@ void CInputProcessInventoryTradeScreen::ProcessInput(const CInputEvent& event, C
             NUISystem::CManager::GetInstance()->SendEvent(4);
         else
             return;
-    } else if (IsEventButtonHeld(event)) {
+    } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1c);
         else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))
@@ -179,7 +179,7 @@ void CInputProcessInventoryTradeScreen::ProcessInput(const CInputEvent& event, C
             CMainGameComponent::Get()->AddGameEvent(closeEvent);
         } else
             return;
-    } else if (IsEventButtonReleased(event)) {
+    } else if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1f);
         else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))

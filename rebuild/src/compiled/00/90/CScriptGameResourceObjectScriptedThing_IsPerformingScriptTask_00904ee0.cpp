@@ -57,7 +57,7 @@ public:
 };
 
 class CTCScriptedControl { public:
-    bool IsActionListEmpty();                      // 0x007122C0
+    bool IsActionListEmpty() const;                      // 0x007122C0
 };
 
 struct CScriptGameResourceObjectScriptedThing_Methods : CScriptGameResourceObjectScriptedThing {

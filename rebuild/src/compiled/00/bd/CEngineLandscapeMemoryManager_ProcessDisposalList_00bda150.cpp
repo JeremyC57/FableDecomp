@@ -1,5 +1,9 @@
 // CEngineLandscapeMemoryManager::ProcessDisposalList() -- advance delayed resource destruction one generation: with delayed destruction off, free every disposal list; then destroy and free every texture, vertex buffer and index buffer queued in the generation after the current one
 // Leaf: ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
+// Flags: /d2inlT114
+// Inline-budget: /d2inlT114 (EXTRA_RULES 2026-11-08 preference 2; NF276 D4 S3) -- the owner 0x00BD9B90's own CompilerFlags, so this TU's
+//   pick-any FreeVirtual copy (and the inlined CMemoryAllocator::Deallocate) come out as the owner's 97-byte body (pk EQ 0x00BD9B90; at the
+//   default threshold 68 bytes, NEQ); the row's own leaf is unchanged at T114 (one retail TU, one setting).
 // Inline: the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
 //   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE) are plain inline; VC7.1 expands both here at its default threshold (NF145 sweep:
 //   MATCH with no inline control; the nf140 FABLE_FORCEINLINE is gone from the header).
@@ -15,7 +19,14 @@
 //   operator delete 0x009F1F90 (the inlined FreeVirtual 0x00BD9B90), free 0x00BFEA14 (list node).
 // Shape: `if (!EnableDelayedResourceDestruction) FreeDisposalList(); long index = (CurrentDisposalListIndex + 1) % 3;` then
 //   the three `while (list[index].size() != 0) { DeleteX(front); pop_front(); }` loops of the landed FreeDisposalList
-//   0x00BD9CE0 (same TU model: DeleteTexture / DeleteVertexBuffer / DeleteIndexBuffer / FreeVirtual auto-inlined).
+//   0x00BD9CE0 (same TU model: the private DeleteTextureBlockWhileBusy / DeleteVertexBufferBlockWhileBusy /
+//   DeleteIndexBufferBlockWhileBusy and FreeVirtual auto-inlined).
+// Names (NF267, 2026-11-22): the three destroy-now helpers were spelled with the public DeleteTexture / DeleteVertexBuffer /
+//   DeleteIndexBuffer names; those are the queue functions 0x00BDA110 / 0x00BDA0D0 / 0x00BDA090 (public, called only from other
+//   classes). The destroy-now bodies are the private ...BlockWhileBusy trio (Ego_r.pdb / FableWin.pdb / Ego_d.pdb, `AAE`): retail
+//   0x00BD9C00 / 0x00BD9C20 / 0x00BD9CC0 (out-of-line copies with no caller; VB / IB for the first two from Ego_r order only).
+// Fidelity: scaffolding, not retail (NF274, D4): the retail TU-mates FreeVirtual 0x00BD9B90 and the BlockWhileBusy trio are defined `inline`
+//   here and in 0x00BD9CE0, so both objects emit them pick-any (one definition; at HEAD both defined them strongly: 4 LNK4006); bytes unchanged.
 // NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
 // (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
 // statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
@@ -135,9 +146,11 @@ public:
     bool                        EnableDelayedResourceDestruction;   // +0x40
     virtual ~CEngineLandscapeMemoryManager();
     void FreeVirtual(void* block);                         // 0x00BD9B90
-    void DeleteIndexBuffer(CIndexBuffer* buffer);
-    void DeleteVertexBuffer(CVertexBufferWin32* buffer);
-    void DeleteTexture(CTexture* texture);                 // 0x00BD9CC0
+private:
+    void DeleteIndexBufferBlockWhileBusy(CIndexBuffer* buffer);         // 0x00BD9C20 (Ego_r order)
+    void DeleteVertexBufferBlockWhileBusy(CVertexBufferWin32* buffer);  // 0x00BD9C00 (Ego_r order)
+    void DeleteTextureBlockWhileBusy(CTexture* texture);                // 0x00BD9CC0
+public:
     void FreeDisposalList();                               // 0x00BD9CE0
 private:
     void ProcessDisposalList();                            // 0x00BDA150 (this row)
@@ -146,26 +159,26 @@ private:
     virtual bool CanRelocateData(long id) const;
 };
 
-void CEngineLandscapeMemoryManager::FreeVirtual(void* block)
+inline void CEngineLandscapeMemoryManager::FreeVirtual(void* block)
 {
     if (block) {
         CMemoryAllocator::Deallocate(block);
     }
 }
 
-void CEngineLandscapeMemoryManager::DeleteIndexBuffer(CIndexBuffer* buffer)
+inline void CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy(CIndexBuffer* buffer)
 {
     buffer->~CIndexBuffer();
     FreeVirtual(buffer);
 }
 
-void CEngineLandscapeMemoryManager::DeleteVertexBuffer(CVertexBufferWin32* buffer)
+inline void CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy(CVertexBufferWin32* buffer)
 {
     buffer->~CVertexBufferWin32();
     FreeVirtual(buffer);
 }
 
-void CEngineLandscapeMemoryManager::DeleteTexture(CTexture* texture)
+inline void CEngineLandscapeMemoryManager::DeleteTextureBlockWhileBusy(CTexture* texture)
 {
     texture->~CTexture();
     FreeVirtual(texture);
@@ -177,15 +190,15 @@ void CEngineLandscapeMemoryManager::ProcessDisposalList()
         FreeDisposalList();
     long index = (CurrentDisposalListIndex + 1) % 3;
     while (TextureDisposalList[index].size() != 0) {
-        DeleteTexture(TextureDisposalList[index].front());
+        DeleteTextureBlockWhileBusy(TextureDisposalList[index].front());
         TextureDisposalList[index].pop_front();
     }
     while (VertexBufferDisposalList[index].size() != 0) {
-        DeleteVertexBuffer(VertexBufferDisposalList[index].front());
+        DeleteVertexBufferBlockWhileBusy(VertexBufferDisposalList[index].front());
         VertexBufferDisposalList[index].pop_front();
     }
     while (IndexBufferDisposalList[index].size() != 0) {
-        DeleteIndexBuffer(IndexBufferDisposalList[index].front());
+        DeleteIndexBufferBlockWhileBusy(IndexBufferDisposalList[index].front());
         IndexBufferDisposalList[index].pop_front();
     }
 }

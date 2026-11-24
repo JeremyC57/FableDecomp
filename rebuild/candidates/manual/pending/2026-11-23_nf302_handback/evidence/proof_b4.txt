@@ -1,0 +1,4 @@
+##### 00704150 renames: ??$GetTC@UCTCShotDefinitionBase@@@CThingGameObject@@QAEPAUCTCShotDefinitionBase@@J@Z=??$GetTC@VCTCShotDefinitionBase@NThingShot@@@CThingGameObject@@QAEPAVCTCShotDefinitionBase@NThingShot@@J@Z ?Update@CTCShotDefinitionBase@@QAEXXZ=?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ
+sections head 13 new 13
+ALL_EQ text_sections_equal=11
+tables H=0 N=0

@@ -173,7 +173,7 @@ public:
 class CEnginePrimitiveManager { };
 class CEnginePrimitiveManagerParticleSpriteGroup : public CEnginePrimitiveManager {
 public:
-    void RenderSingleSprite(CEngineSubPrimitiveBase* subPrimitive, ERenderPassType pass);           // 0x00BC04F0
+    void RenderSingleSprite(CEngineSubPrimitiveBase& subPrimitive, ERenderPassType pass);           // 0x00BC04F0
 };
 struct CEnginePrimitiveManagerTable {
     unsigned char            _pad00[0x10];
@@ -202,6 +202,6 @@ void CEnginePrimitiveManagerSprites::RenderSubPrimitive(CEngineSubPrimitiveBase&
     SetStateConst(g_pRenderManagerCore->m_state2944, 0, g_pRenderManagerCore);
     NEngineInternal::GPLightingManager->UpdateGlobalLightingStates();
     NEngineInternal::GPShaderRenderManager->ResetWorldTransform();
-    group->RenderSingleSprite(&subPrimitive, pass);
+    group->RenderSingleSprite(subPrimitive, pass);
     NEngineInternal::GPShaderRenderManager->ResetWorldTransform();
 }

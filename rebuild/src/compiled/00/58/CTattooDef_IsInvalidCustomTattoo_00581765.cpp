@@ -44,10 +44,10 @@ class CUserProfileManager { public:
 };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CDiskFileWin32 { public:                                     // 0x1c bytes
-    void* __vftable;
+    // vptr +0x00: the virtual destructor below (Ego_r + FableWin ??1CDiskFileWin32@@UAE@XZ)
     unsigned char _pad04[0x18];
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
-    ~CDiskFileWin32();                                      // 0x00401630
+    virtual ~CDiskFileWin32();                              // 0x00401630
 };
 bool __fastcall FilesAreIdentical(CDiskFileWin32& a, CDiskFileWin32& b);   // 0x00998F60 (name inferred from use)
 class CTattooDef { public:

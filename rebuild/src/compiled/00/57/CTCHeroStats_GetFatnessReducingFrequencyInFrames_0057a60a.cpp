@@ -1,5 +1,5 @@
 // CTCHeroStats::GetFatnessReducingFrequencyInFrames() const -- frames between fatness reductions: ceil(fps * the def's fatness reduction rate * 60), or fps * 2440 when the rate is not above the minimum
-// Leaf: GetFatnessReducingFrequencyInFrames
+// Leaf: ?GetFatnessReducingFrequencyInFrames@CTCHeroStats@@ABEJXZ
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_framesPerSecond_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -35,7 +35,9 @@ public:
 };
 class CTCHeroStats : public CTCBase {
 public:
+    private:
     long GetFatnessReducingFrequencyInFrames() const;
+    public:
 };
 // the engine's inline-assembly FPU ceiling helper (0x004FA9A0 is its standalone copy): VC7.1 expands the __forceinline body in
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.

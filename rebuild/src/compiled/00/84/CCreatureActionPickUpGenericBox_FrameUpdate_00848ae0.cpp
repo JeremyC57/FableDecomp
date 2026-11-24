@@ -47,7 +47,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 protected:
     virtual void FrameUpdate();             // 0x00694020 (slot 56)
 public:
-    bool GetCanItemBeQuickAssigned();       // 0x006925A0
+    bool HasPerformedAction() const;       // 0x006925A0; NF296: PDB name, was GetCanItemBeQuickAssigned
 };
 class CCreatureAction_PickUpGenericBox : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PBox;           // +0xa8 the box being picked up
@@ -60,7 +60,7 @@ void CCreatureAction_PickUpGenericBox::FrameUpdate()
     if (IS_THING_ALIVE(PBox)) {
         const CTCCarryable* carryable;
         PBox.Get()->PeekTC(TCI_CARRYABLE, &carryable);
-        if (carryable->PCarryingTC && !GetCanItemBeQuickAssigned())
+        if (carryable->PCarryingTC && !HasPerformedAction())
             FinishAction();
     } else {
         FinishAction();

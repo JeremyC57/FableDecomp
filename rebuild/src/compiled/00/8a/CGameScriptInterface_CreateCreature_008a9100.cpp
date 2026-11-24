@@ -22,6 +22,7 @@
 //   ~CCombatActionBase 0x0062E900 bind the PDB spellings; Create is ?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z
 //   (init by reference); the def's +0x11C is CThingCreatureDef::DefaultOwner; GetDef<CThingCreatureDef> is the header member template with
 //   its noinline body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY, retail 0x00513160).
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

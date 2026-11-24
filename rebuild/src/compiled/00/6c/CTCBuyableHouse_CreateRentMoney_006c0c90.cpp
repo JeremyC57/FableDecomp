@@ -1,5 +1,5 @@
 // CTCBuyableHouse::CreateRentMoney() -- fold the gold bags lying in the house into the virtual count, add the rent bags due since the last payment day (moving that day on), cap at the def's MaxRentBags and lay out a small gold bag per virtual bag, owned by the house's thing and holding one bag's rent
-// Leaf: CreateRentMoney
+// Leaf: ?CreateRentMoney@CTCBuyableHouse@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail 0x006C0C90, 624 bytes, `ret`. Callees: CountMoneyBags 0x006C04D0, DestroyMoneyBags(bool) 0x006C0580,
@@ -65,7 +65,10 @@ class CTCBuyableHouse : public CTCBase { public:
     long              CurrentDressLevel;                // +0x1c
     unsigned char     _pad20[0x44 - 0x20];
     long              VirtualMoneyBags;                 // +0x44
-    long CountMoneyBags() const;                        // 0x006C04D0
+    private:
+    long CountMoneyBags();
+    public:
+                        // 0x006C04D0
     void DestroyMoneyBags(bool giveToHero);             // 0x006C0580
 private:
     bool GetRentMoneyPos(C3DVector& ret, long bag, long bags);   // 0x006C06D0 (Ego_r.pdb / FableWin.pdb: private, by reference)
@@ -86,7 +89,9 @@ public:
         const long* rents = PDef->Rent_First;
         return (long)(GetValueOfTrophies() * 0.1f + rents[CurrentDressLevel]);
     }
+    private:
     void CreateRentMoney();
+    public:
 };
 
 void CTCBuyableHouse::CreateRentMoney()

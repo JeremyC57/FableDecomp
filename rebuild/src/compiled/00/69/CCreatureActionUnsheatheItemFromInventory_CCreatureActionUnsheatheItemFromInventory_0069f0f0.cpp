@@ -1,153 +1,50 @@
 // CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_UnsheatheItemFromInventory -- configure unsheathe animation, item and owned follow-up action
 // Retail 0069F0F0,252 bytes. PDB signature confirms creature&, string&, item&, long,long, action*.
-// Base nativeA8 with genuine70-slot API; animation entry native16 follows PDB fields. No leaf generated header exists.
 // Leaf: ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z
 // NF95 (2026-11-19, q11253): the lookup is the PDB protected static CCreatureActionBase::GetRandomAnimFromName 0x006924B0 (Ego_r.pdb
 //   0x00518E00 / FableWin.pdb 0x01DB7950; was the free stand-in FindAnimation); the base constructor 0x00693B30 takes the PDB
 //   creature reference (??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z).
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
-#include <new>
-#define CCreatureActionBase CCreatureActionBasePdb
-#include "engine/CCreatureActionBase.h"
-#undef CCreatureActionBase
-#include "engine/CTCPhysicsBase.h"
-#include "engine/CBaseObject.h"
+// NF270 (2026-11-22, slot 1 port): moved off its local models (CCreatureActionBase, CSoundPair, CAnimationEntry, CIVCountedPointeeBase,
+//   CBaseIntelligentPointer / CIntelligentPointer, the derived class) onto the shared headers, in the define set of its landed sibling
+//   constructor 0x006A0150 (same class, same header): engine/CCreatureAction_UnsheatheItemFromInventory.h on the retail
+//   CCreatureActionBase (FABLE_RETAIL_CCREATUREACTIONBASE + _ANIMCTOR), engine/CAnimationEntry.h (TRANSITION_CTOR ??0CAnimationEntry@@QAE@ABV0@J@Z
+//   0x005DEC70, its CIVCountedPointer<CAnimComponentMap> released in place), CSoundPair, CIntelligentPointer<CThing> (PUnsheatheItem +0xA8)
+//   and CCountedPointer<CCreatureActionBase> (PFollowUpAction +0xB0, DeleteData 0x00668610). The emitted vtable now inherits slot 1 as
+//   ?Validate@CBaseObject@@UBEXXZ (retail 0x0125CCBC slot 1 = 0x0099A400; no PDB has a CCreatureActionBase::Validate) and binds slot 12
+//   as the private ?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ (Ego_r 0x006C59B0 / FableWin 0x02211670).
+#include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ANIMCTOR
+#define FABLE_RETAIL_CANIMATIONENTRY_TRANSITION_CTOR
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_MEMBER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
 #include "fable_string.h"
-class CThing;
-class CThingCreatureBase;
-class CTCWeaponTrail;
 #include "engine/C3DVector.h"
-class CThingCreatureBase;
-class CSoundPair { public: long first; long last; CSoundPair():first(0),last(0) {} };
-class CAnimationEntry;
-class CCreatureActionBase { public:
-    virtual ~CCreatureActionBase();
-    virtual void Validate() const;
-    virtual void EditUpdate(float elapsed);
-    virtual void PerformAction() = 0;
-    virtual void FinishAction();
-    virtual bool IsPlayingAnimation() const;
-    virtual long GetAnimDelayTime() const;
-    virtual long GetAnimationIndex() const;
-    virtual long GetAnimationTransitionInTime() const;
-    virtual long GetAnimationTransitionOutTime() const;
-    virtual unsigned long GetAnimExtraFlags() const;
-    virtual CCreatureActionBase* Clone() const = 0;
-    virtual void Initialise();
-    virtual bool IsStrikeEvent(long event) const;
-    virtual bool IsStrikeEventActive() const;
-    virtual bool IsStrikeAction() const;
-    virtual bool IsPartOfComboChain() const;
-    virtual bool IsStrikeEventFinishedBeingActive() const;
-    virtual bool IsVitalStrike() const;
-    virtual bool IsKnockdownStrike() const;
-    virtual bool IsBlockCounter() const;
-    virtual bool IsMeleeFlourish() const;
-    virtual bool IsActionWithStrikeEventHelperName() const;
-    virtual CCharString GetStrikeEventHelperName() const;
-    virtual bool IsOverrideableByActionOfSamePriority() const;
-    virtual void OnFrameUpdate(float elapsed);
-    virtual bool IsQueuable() const;
-    virtual bool IsActionReadyForInterruption() const;
-    virtual bool IsActionReadyForInterruptionByMovement(const C3DVector& vector) const;
-    virtual bool IsBlockable() const;
-    virtual bool IsAffectedByHaste() const;
-    virtual bool IsAffectedByHeroStats() const;
-    virtual bool IsPhysicsPushableByHero() const;
-    virtual bool IsAlwaysPhysicsPushableBySelfAvoidance() const;
-    virtual bool IsAlwaysUseAnimationMovement() const;
-    virtual bool IsClearingMovementVector() const;
-    virtual bool IsToHaveEmptyHands() const;
-    virtual bool IsToReplaceItemIfRemoved() const;
-    virtual bool IsAllowingAnimationMovementToMoveSpeakAndWaitCameras() const;
-    virtual bool IsPreventingQuickAccessItemUsage() const;
-    virtual void SetHitter(const CThing& thing);
-    virtual void SetHitDirection(C3DVector direction);
-    virtual void SetHitPosition(C3DVector position);
-    virtual CTCWeaponTrail* GetWeaponTrailUsedInStrikeAction(long& id) const;
-    virtual float GetTotalTimeSeconds() const;
-    virtual bool IsToEvadeAllHits() const;
-    virtual bool IsToCauseRecoil() const;
-    virtual bool IsAbleToBeAttacked() const;
-    virtual bool IsPlayHitResponse() const;
-    virtual bool IsPreventingNormalMovement() const;
-    virtual bool IsPreventingLookTurning() const;
-    virtual void OnBlowBlocked(bool blocked);
-    virtual void OnFollowUpActionFailedToAdd();
-    virtual void UpdateActionRunningTime();
-    virtual bool IsDecapitatingAttack() const;
-    virtual bool PreventSneaking() const;
-    virtual void FrameUpdate();
-    virtual bool IsUsingAnimationMovement() const;
-    virtual bool IsUsingForcedMovement() const;
-    virtual bool IsMovementUsingPhysics() const;
-    virtual void UpdateActionMoveToPos();
-    virtual void InitialiseActionMovement();
-    virtual float GetFrameUpdateTime() const;
-    virtual float GetActionSpeedParameter() const;
-    virtual float GetActionStartRunningTimeSeconds() const;
-    virtual bool OverrideFaceWithDefault() const;
-    virtual bool AllowsCombinationAnims() const;
-    virtual bool CanAnimationTransitionOut() const;
-    virtual void OnAnimationLoaded();
-    virtual bool WaitForMeshToLoad() const;
-    unsigned char nativeFields[0xa4]; // actual native state after its vptr; native size 0xA8
-    CCreatureActionBase(CThingCreatureBase&,float,float,const CAnimationEntry&,const CSoundPair&,long,long); // 00693B30
-protected:
-    // Ego_r.pdb 0x00518E00 / FableWin.pdb 0x01DB7950 protected static __fastcall (engine/CCreatureActionBase.h ANIMCTOR).
-    static const CAnimationEntry& __fastcall GetRandomAnimFromName(const CThingCreatureBase& creature, const CCharString& name);   // 0x006924B0
-public:
-    CCreatureActionBase(const CCreatureActionBase& other); // native copy ctor @0x0062EBC0
-    CCreatureActionBase(CThingCreatureBase* creature, const CSoundPair& sounds, long first, long second); // native @0x00693C70
-};
-struct CBaseObjectPointer { CBaseObject* object; unsigned long refcount; };
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer(); // ordinary destructor @0x00A01C10; deleting destructor @0x00A01C50
-    CBaseObjectPointer* PData;
-    CBaseIntelligentPointer();
-    CBaseObject* GetPItem() const;
-    void SetPItem(CBaseObject* item);
-};
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(reinterpret_cast<CBaseObject*>(item)); } // native initializer used by overload @0x0069F230
-    CIntelligentPointer(const CIntelligentPointer& other)
-        : CBaseIntelligentPointer()
-    {
-        SetPItem(other.GetPItem());
-    }
-};
-
-#define CIVCountedPointeeBase CIVCountedPointeeBaseLayout
-#include "engine/CIVCountedPointeeBase.h"
-#undef CIVCountedPointeeBase
-class CIVCountedPointeeBase { public:
-    virtual ~CIVCountedPointeeBase(); // slot0
-    virtual void Delete() const; // slot1 native0042D930 deletes this through slot0
-    unsigned long IVRefCount;
-    void Release() { if(--IVRefCount==0) Delete(); }
-};
-class CAnimComponentMap : public CIVCountedPointeeBase { public:};
-class CAnimationEntry { public:
-    long BankIndex,AnimName,GroupName;
-    CAnimComponentMap* Components;
-    CAnimationEntry(long bank,long transitionIn,long transitionOut,long flags); //005DED00 real seed overload
-    CAnimationEntry(const CAnimationEntry&,long transitionInTime); //005DEC70
-    ~CAnimationEntry() { if(Components) Components->Release(); }
-};
-// NF55 (2026-11-17): the follow-up action is the shared CCountedPointer<CCreatureActionBase> (engine/CCountedPointer.h, retail ctor:
-//   `if (Data) Info = new CCPPointerInfo(1, DeleteData, Data)`); its deleter is the PDB ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z
-//   (FableWin.pdb 0x01D7A6C0, retail 0x00668610). It was the ActionPointer / ActionPointerInfo stand-in with a made-up DeleteAction.
-#define FABLE_RETAIL_CCOUNTEDPOINTER
-#include "engine/CCountedPointer.h"
-class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
-    CIntelligentPointer<CThing> Item;
-    CCountedPointer<CCreatureActionBase> FollowUp;
-    virtual ~CCreatureAction_UnsheatheItemFromInventory();
-    virtual void Initialise();
-    virtual void PerformAction();
-    virtual void FinishAction();
-    virtual CCreatureActionBase* Clone() const;
-    CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase&,const CCharString&,CThing&,long,long,CCreatureActionBase*);
-};
-CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& creature,const CCharString& animation,CThing& item,long first,long second,CCreatureActionBase* followUp)
- : CCreatureActionBase(creature,-1.0f,0.0f,CAnimationEntry(GetRandomAnimFromName(creature,animation),0),CSoundPair(),first,second), Item(&item), FollowUp(followUp) {}
+#include "engine/CDefPointer.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingPhysical.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CSoundPair.h"
+#include "engine/CAnimationEntry.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCreatureAction_UnsheatheItemFromInventory.h"
+CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& creature, const CCharString& animation,
+        CThing& item, long first, long second, CCreatureActionBase* followUp)
+    : CCreatureActionBase(creature, -1.0f, 0.0f, CAnimationEntry(GetRandomAnimFromName(creature, animation), 0), CSoundPair(), first, second)
+    , PUnsheatheItem(&item)
+    , PFollowUpAction(followUp)
+{
+}

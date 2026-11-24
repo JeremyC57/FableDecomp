@@ -1,0 +1,8 @@
+copies compared with Fable.exe (relocations masked):
+0099c120 ??1CWideString@@QAE@XZ v 0x0099B510: 68 = 68, 0 diffs (with the owner-text opt-in; NF220's body gave 65 B, 42 diffs)
+0099c120 ?UnassignString@CWideString@@IAEXXZ v 0x0099B4D0: 62 = 62, 0 diffs (HEAD: 59 B strong, 40 diffs)
+0099c120 ??YCWideString@@QAEABV0@G@Z v 0x0099B9A0: HEAD 76 B 60 diffs, landing 74 B 62 diffs (strong same-TU copy, differed at HEAD: nf203 debt)
+0099c120 ?AllocStringData@CWideString@@... v 0x0099B3C0: HEAD 83 B 75 diffs, landing 64 B 55 diffs (same)
+005a4cdd / 005a5b31 ??8?$CBasicString@D@@QBE_NPBD@Z v 0x004115A0: HEAD 19 B 10 diffs, landing 88 = 88, 0 diffs
+005a4cdd ?__copy_trivial@std@@YAPAXPBX0PAX@Z (cdecl, 40 B; unbound): differs from 0x00405BA0 (a 30-B fastcall YI function) before and after; NF220's 'now equals its owner' does not hold under the catalog flags
+005a4cdd / 005a5b31 ??8CCharString@@QBE_NPBD@Z 35 -> 39 B: referenced only by .debug$F (no code reference), no retail copy reachable: debt

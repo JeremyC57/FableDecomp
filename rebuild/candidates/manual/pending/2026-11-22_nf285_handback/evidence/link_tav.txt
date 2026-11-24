@@ -1,0 +1,16 @@
+## HEAD set: H_00967650.obj H_00967b40.obj 00966af0.obj 00966cf0.obj 00966da0.obj 009670a0.obj 00967110.obj 00967180.obj
+duplicates 0
+
+UNRESOLVED 1 ?FreeBarPoint@CAIStateGroupTavernServerMethods@@QAEXXZ
+UNRESOLVED 1 ?FreeBarPoint_009670a0@CAIStateGroup_TavernServer@@QAEXXZ
+UNRESOLVED 1 ?FreeServingPoint@CAIStateGroupTavernServerMethods@@QAEXXZ
+UNRESOLVED 1 ?GetBar@CAIStateGroupTavernServerMethods@@QAE_NXZ
+UNRESOLVED 1 ?GetJug@CAIStateGroupTavernServerMethods@@QAE_NXZ
+UNRESOLVED 1 ?GetServingPoint@CAIStateGroupTavernServerMethods@@QAE_NXZ
+UNRESOLVED 1 ?IsCarryingJug@CAIStateGroupTavernServerMethods@@QAE_NXZ
+UNRESOLVED 1 ?IsServingPointValid@CAIStateGroup_TavernServer@@QAE_NXZ
+## new set: 00967650.obj 00967b40.obj 00966af0.obj 00966cf0.obj 00966da0.obj 009670a0.obj 00967110.obj 00967180.obj
+duplicates 0
+
+UNRESOLVED 1 ?IsServingPointValid@CAIStateGroup_TavernServer@@QAE_NXZ
+LK_DONE

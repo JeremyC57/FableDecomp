@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+delete	?IsQueryVisible@CEngineOcclusionManager@@QAEJK_N@Z	00b8d0b0	00b6e260	NF306 unit C, CONDITIONAL on question Q2 (entry 24): binder respelled GetResult
+delete	?GetQueryResult@CEngineOcclusionManager@@QAEKJ_N@Z	00b8d0b0	00be79d0	NF306 unit C, CONDITIONAL on question Q2 (entry 24): binder respelled GetResult

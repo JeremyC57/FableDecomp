@@ -1,0 +1,19 @@
+address	change	grade	test	grades_used	entries	note
+0x00B32660	0x0143B8D8 binder: ++g_engineFrameNumber -> CEngineInternalPrimitiveBase::IncrementFrameCounter() on the header opt-in CURRENTRENDERFRAME	RELOCATION_MATCH	HEAD test (host model, unchanged)	1	q12673	symbol diff: UND data symbol + DEF pick-any IncrementFrameCounter, EQ to its retail copy 0x00B31D30
+0x00B3AAA0	self leaf ?WasRendered@CEngineInternalPrimitiveBase_Methods@@QAEHXZ -> ?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ on the header (ATTACHED + PASS27); g_frame -> CurrentRenderFrame	RELOCATION_MATCH	new header test (links the row)	2	q12673	form 1 SRC_FAIL (prelude macros), form 2 match
+0x00B91760	0x0143B8D8 binder: in-place SetAsRendered + private static in the HEAD local model	RELOCATION_MATCH	HEAD test (host model, unchanged)	1	q12673	DEF pick-any SetAsRendered, EQ to its retail copy 0x00B91620 and to the witness 0x00B92950's
+0x00B92500	as 0x00B91760	RELOCATION_MATCH	HEAD test (unchanged)	1	q12673	
+0x00B92790	as 0x00B91760	RELOCATION_MATCH	HEAD test (unchanged)	1	q12673	
+0x00B92C20	0x0143B8D8 binder: header opt-in CURRENTRENDERFRAME (MSVC branch) + the same members in-place in the portable twin	RELOCATION_MATCH	HEAD test (host model, unchanged)	1	q12673	
+0x00B943F0	as 0x00B91760	RELOCATION_MATCH	HEAD test (unchanged)	1	q12673	
+0x00664A50	0x006A1620 binder: free stand-in -> CTCCarrying::IsThingCarryingRangedWeapon on CTCCarrying.h (PLAYERHIT_PASS26); local empty ETCInterfaceType enum -> header	RELOCATION_MATCH	HEAD test (unchanged)	1	q12673	
+0x0068F9D0	as 0x00664A50; local CTCCarrying model removed (header)	RELOCATION_MATCH	HEAD test (unchanged)	1	q12673	
+0x0091F050	as 0x00664A50 (the stand-in said Melee); comments corrected	RELOCATION_MATCH	HEAD test (unchanged)	1	q12673	
+0x005C2DED	L38 self rename: ?Run@T@@QAEXXZ -> ?IsMeleeWeaponDrawn@CTCInventoryWeapons@@QBE_NXZ on CTCInventoryWeapons.h; callee Run_006a15a0 -> CTCCarrying::IsThingCarryingMeleeWeapon	RELOCATION_MATCH	new header test (links the row)	1	q12673	catalog / file rename (RENAMES 1)
+0x005C2DF5	L39 self rename: ?Run@T@@QAEXXZ -> ?IsRangedWeaponDrawn@CTCInventoryWeapons@@QBE_NXZ; callee Run_006a1620 -> CTCCarrying::IsThingCarryingRangedWeapon	RELOCATION_MATCH	new header test (links the row)	1	q12673	catalog / file rename (RENAMES 1)
+0x00664A10	not changed: local CThingCreatureBase model has no CThing base (no conversion to const CThing& without a cast or a re-base)	-	-	0	q12673	blocked: CThingCreatureBase.h port
+0x00890250	not changed: the whole row is a stand-in (fake vtable struct, free EntityWieldsRanged(Entity*))	-	-	0	q12673	blocked: re-authoring on CGameScriptInterface / CThing headers
+0x00890D80	not changed: CThingNative stand-in argument	-	-	0	q12673	blocked: header port (CThingNative -> CThing)
+0x00740040	self row ported onto NCreatureMode_CModeSitFloor.h (PASS27 + new IMPLICIT_DTOR opt-in + the CMODEBASE / CModeSitBase slot opt-ins + CAnimFilterOfGroup INLINE_CTOR): own leaf ??0CModeSitBench@@QAE@PAVCThing@@@Z -> ??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z; vtable ??_7CModeSitBench@NCreatureMode@@6B@ with 12 PDB-spelled slots; base ctor -> PDB	RELOCATION_MATCH	HEAD test (host model, unchanged)	2	q12674	form 1 matched but its ??_G copy was NEQ (30 v 40, out-of-line ~CModeSitBench); form 2 (implicit dtor) EQ to 0x007400E0
+0x00739E70	self leaf ?vfunc_7@CClass_00739e70@@QAEMJJJ@Z -> ?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z on CTCCreatureModeManager.h (CMODEBASE_VIRTUALS)	RELOCATION_MATCH	new header test (links the row)	1	q12674	vtable slot 7; the bench vtable binds the PDB spelling
+0x00739E90	self leaf ?IsAllowingPlayerSpecialMovementMoves@CModeBase@@QAE_NXZ -> ?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ on CTCCreatureModeManager.h	MATCH	new header test (links the row)	1	q12674	vtable slot 9

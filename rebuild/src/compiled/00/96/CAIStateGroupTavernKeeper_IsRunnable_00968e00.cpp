@@ -1,5 +1,5 @@
 // CAIStateGroup_TavernKeeper::IsRunnable() -- for a village member with a live pub (adopted from the creature's workplace when needed) and a live or newly found bar, register the creature as the bar's keeper.
-// Leaf: ?IsRunnable@CAIStateGroup_TavernKeeper@@UAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_TavernKeeper@@MAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00968E00, length 416 bytes (+ int3 padding). Vtable slot 11.
@@ -73,7 +73,9 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     CBaseIntelligentPointer PBar;               // +0x1c CIntelligentPointer<CThingObject>
     CIntelligentPointerBuilding PPub;           // +0x24
     bool GetBar();                              // 0x00968650
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_TavernKeeper::IsRunnable()

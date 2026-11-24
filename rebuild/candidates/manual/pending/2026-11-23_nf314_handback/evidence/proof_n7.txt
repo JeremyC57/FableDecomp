@@ -1,0 +1,8 @@
+##### 004ff8b0 renames: ?Get@?$CTBaseSingleton@VCEngineManager@@@@SIPAVCEngineManager@@XZ=?Get@?$CTBaseSingleton@VCEngineManager@@@@SIAAVCEngineManager@@XZ
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00958000 renames: ?FinishUpdate@CAIStateGroupBase@@QAEXXZ=?Terminate@CAIStateGroupBase@@QAEXXZ
+sections head 10 new 10
+ALL_EQ text_sections_equal=7
+tables H=1 N=1

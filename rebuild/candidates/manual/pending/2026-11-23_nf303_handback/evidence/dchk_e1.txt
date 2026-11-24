@@ -1,0 +1,29 @@
+#1 008c4f50 NOTINFW []
+#1 008e46d0 NOTINFW []
+#1 0095cb80 YES leaf=??0CCreatureAction_QueenHornetShootBabies@@QAE@AAVCThingCreatureBase@@ 
+#1 00976fc0 NOTINFW []
+#1 00977060 NOTINFW []
+#1 0097c760 NOTINFW []
+#1 0097c830 NOTINFW []
+#1 0097c920 NOTINFW []
+## ??0CCreatureAction_ScorpionChargeStrike@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z @02a23cb0 len=256
+    ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+## ??0CCreatureAction_ScorpionChargeStrike@@QAE@ABV0@@Z @02a23e90 len=160
+## ??0CCreatureAction_ScorpionSummon@@QAE@AAVCThingCreatureBase@@0@Z @02851620 len=224
+    ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+## ??0CCreatureAction_ScorpionSummon@@QAE@ABV0@@Z @028517e0 len=48
+## ??0CCreatureAction_JackShotNear@@QAE@AAVCThingCreatureBase@@0@Z @02be9ab0 len=224
+    ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+## ??0CCreatureAction_JackShotNear@@QAE@ABV0@@Z @02be9c70 len=48
+## ??0CCreatureAction_JackShotFar@@QAE@AAVCThingCreatureBase@@0@Z @02be9cc0 len=224
+    ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+## ??0CCreatureAction_JackShotFar@@QAE@ABV0@@Z @02be9e80 len=48
+## ??0CCreatureAction_ScorpionUnblockableLeftTurnAttack@@QAE@AAVCThingCreatureBase@@0@Z @02c31d90 len=224
+    ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+## ??0CCreatureAction_ScorpionUnblockableLeftTurnAttack@@QAE@ABV0@@Z @02c31f80 len=48
+## ??0CCreatureAction_ScorpionUnblockableRightTurnAttack@@QAE@AAVCThingCreatureBase@@0@Z @02c31fd0 len=224
+    ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+## ??0CCreatureAction_ScorpionUnblockableRightTurnAttack@@QAE@ABV0@@Z @02c321c0 len=48
+## ??0CCreatureAction_ScorpionPrepareTailPlunge@@QAE@AAVCThingCreatureBase@@0@Z @02c32210 len=256
+    ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+## ??0CCreatureAction_ScorpionPrepareTailPlunge@@QAE@ABV0@@Z @02c323f0 len=144

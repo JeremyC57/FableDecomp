@@ -45,6 +45,20 @@ class C3DVector;
 // Full original Ego_r0x3580 data range, native STLport maps/arrays. External declaration only.
 class C3DMeshStats: public CMovableResource {
 public:
+#ifdef FABLE_RETAIL_C3DMESHSTATS_UNPACKNAMES
+ // Retail opt-in (NF214, q12343: rows 0x00A2F0F0 / 0x00A2F120 / 0x00A2F150): the packed-name queries, both PDBs (Ego_r.pdb
+ // 0x00B8E920.. / FableWin.pdb 0x031E4B50..): ?GetAllDummyObjectNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@..@std@@_N@Z,
+ // ?GetAllHelperPointNames@..QBE..._N@Z, ?GetDummyObjectNamesStartingWith@..QBE...ABVCCharString@@_N@Z, ?GetHelperPointNamesStartingWith@
+ // ..QBE...ABVCCharString@@_N@Z (public const) and the private const worker ?UnpackNames@C3DMeshStats@@ABEXAAV?$vector@VCCharString@@
+ // V?$allocator@VCCharString@@@std@@@std@@_NABVCCharString@@1@Z (`ABE`). Declarations only, no layout change; public again after.
+ void GetAllDummyObjectNames(std::vector<CCharString>& names,bool sort)const;                                      // 0x00A2F0F0
+ void GetAllHelperPointNames(std::vector<CCharString>& names,bool sort)const;                                      // 0x00A2F120
+ void GetDummyObjectNamesStartingWith(std::vector<CCharString>& names,const CCharString& prefix,bool sort)const;   // 0x00A2F150
+ void GetHelperPointNamesStartingWith(std::vector<CCharString>& names,const CCharString& prefix,bool sort)const;   // 0x00A2F170
+private:
+ void UnpackNames(std::vector<CCharString>& names,bool dummy_objects,const CCharString& prefix,bool sort)const;   // 0x00A2ED10
+public:
+#endif
 #ifdef FABLE_RETAIL_C3DMESHSTATS_BOUNDINGSPHERE
  // Opt-in (row 0x00B8B780): FableWin.pdb ?GetBoundingSphere@C3DMeshStats@@QBE?AVC3DBoundingSphere@@XZ (inline, by value).
  C3DBoundingSphere GetBoundingSphere() const { return BoundingSphere; }

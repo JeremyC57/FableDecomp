@@ -120,7 +120,10 @@ class CGameCameraManager { public:
     unsigned char _pad_0x12e[2];                    // +0x12e
     CDefPointer PCameraManagerSet;                  // +0x130 CDefPointer<const CCameraManagerSetDef>
     CDefPointer PDef;                               // +0x134 CDefPointer<const CCameraManagerDef>
-    void SetUpMainCameraManagerSetDef();            // 0x0069ADC0
+    private:
+    void SetUpMainCameraManagerSetDef();
+    public:
+            // 0x0069ADC0
     bool IsObservedThingInMelee();                  // 0x006994F0
     void AddMeleeCameraMode();                      // 0x0069A8B0
     void RemoveBuildingCameraMode();

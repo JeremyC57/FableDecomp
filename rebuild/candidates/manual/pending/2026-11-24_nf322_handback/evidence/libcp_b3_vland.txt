@@ -1,0 +1,12 @@
+006cd9b0 LIBCP_OK renames=?GetTerrainDesirabilityAt@CGroundNavigatorExternalInterface_Methods@@QAEMPAX@Z=?GetTerrainDesirabilityAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=3
+006cdab0 LIBCP_OK renames=?PeekNavigatorPosition3D@CGroundNavigatorExternalInterface_Methods@@QBE?AVC3DVector@@XZ=?PeekNavigatorPosition3D@CGroundNavigatorExternalInterface@@UBE?AVC3DVector@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=3
+004d3840 LIBCP_OK renames=?GetSizeofClass@CChestDef_Methods@@QAEHXZ=?GetSizeofClass@CChestDef@@UAEKXZ ; .drectve EQUAL ; sections=2
+004dd989 LIBCP_OK renames=?Transfer@CVillageMemberDef_Methods@@QAEXPAVCPersistContext@@@Z=?Transfer@CVillageMemberDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=2
+004ddb56 LIBCP_OK renames=?Transfer@CBuyHouseDef_Methods@@QAEXPAVCPersistContext@@@Z=?Transfer@CBuyHouseDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=2
+004de8b2 LIBCP_OK renames=?Transfer@COccupiableDef_Methods@@QAEXPAVCPersistContext@@@Z=?Transfer@COccupiableDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=2
+004de9a1 LIBCP_OK renames=?Transfer@CCrateStackDef_Methods@@QAEXAAVCPersistContext@@@Z=?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=3
+004def76 LIBCP_OK renames=?Transfer@CResurrectionItemDef_Methods@@QAEXPAVCPersistContext@@@Z=?Transfer@CResurrectionItemDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=2
+004df0f7 LIBCP_OK renames=?Transfer@CAICreatureWillPowerIndicatorDef_Methods@@QAEXPAVCPersistContext@@@Z=?Transfer@CAICreatureWillPowerIndicatorDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=2
+004df31c LIBCP_OK renames=?Transfer@CCameraCollisionDef_Methods@@QAEXPAVCPersistContext@@@Z=?Transfer@CCameraCollisionDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=2
+007b7d20 LIBCP_OK renames=?Transfer@COverheadDisplayDef_Transfer@@QAEXAAVCPersistContext@@@Z=?Transfer@COverheadDisplayDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=6
+007e1e30 LIBCP_OK renames=?Transfer@CCarriedReadableDef_Methods@@QAEXAAVCPersistContext@@@Z=?Transfer@CCarriedReadableDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=4

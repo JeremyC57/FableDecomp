@@ -1,0 +1,102 @@
+// CTCInventoryWeapons::CTCInventoryWeapons(CThing* thing) -- construct the weapons inventory: the inventory base, the screen base at +0x130, both active-weapon pointers, the primitive handle vector, the menu item map and the entries list
+// Leaf: ??0CTCInventoryWeapons
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3947, 169 bytes, `ret 4`; frame-pointer size TU
+// (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed dtor @ 0x005C39F0).
+// Label correction: the catalog calls this row "CTCWallMountEffects::CTCWallMountEffects"; the vtables it stores,
+// 0x01253FF4 (+0) and 0x01253FE0 (+0x130), are CTCInventoryWeapons' (rtti-vtables.tsv), and the members it builds
+// are CTCInventoryWeapons' PDB members at retail offsets.
+// Callees: NInventory::CTCInventoryBase::CTCInventoryBase(CThing*) @ 0x005BFF07, NHeroInformationScreens::CBase::CBase()
+//          @ 0x0066E734, CIntelligentPointer<CThing>::CIntelligentPointer(CThing*) @ 0x004A96F0 (x2),
+//          vector<CEnginePrimitiveHandle>::vector(size_type) @ 0x00485D30 (count 2), map<NUISystem::CComponent*,long>
+//          ctor @ 0x004DF81D, _List_base<NUISystem::CComponent*>::_List_base(const allocator&) @ 0x0042ABAF.
+// Shape: initialiser list in declaration order; only WeaponsList of the raw component pointers is zeroed; the list's
+// default allocator temporary lives in the dead argument slot (`lea eax,[ebp+0Bh]`).
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+
+class CThing;
+
+#pragma pack(push, 1)
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
+    CIntelligentPointer_CThing(CThing* thing);       // 0x004A96F0
+};
+#pragma pack(pop)
+
+// NF241 (2026-11-22, the list<CComponent*> family pass): the local CComponentList / SAllocator stand-ins replaced by the shared
+// STLport 4.6 list<NUISystem::CComponent*> (stlport/fable_containers.h). 0x0042ABAF is _List_base<CComponent*>'s constructor
+// (retail 0x0042B6A6 is list's own size-optimised list(const allocator&), `push [esp+8] ; mov esi,ecx ; call 0x0042ABAF`), which
+// this TU calls out of line (FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE); was ??0CComponentList@@QAE@ABUSAllocator@@@Z.
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
+namespace NUISystem { class CComponent; }
+struct CComponentItemMap {                           // std::map<NUISystem::CComponent*, long> (12 bytes)
+    void* _M_header; long _M_node_count; long _M_compare;
+    CComponentItemMap();                             // 0x004DF81D
+};
+struct CEnginePrimitiveHandleVector {                // std::vector<CEnginePrimitiveHandle> (12 bytes)
+    void* m_first; void* m_last; void* m_end;
+    CEnginePrimitiveHandleVector(unsigned long count);   // 0x00485D30
+};
+
+namespace NInventory {
+class CTCInventoryBase {                             // retail 0x130 bytes
+public:
+    CTCInventoryBase(CThing* thing);                 // 0x005BFF07
+    virtual ~CTCInventoryBase();
+    unsigned char _pad04[0x130 - 0x04];
+};
+}
+namespace NHeroInformationScreens {
+class CBase {                                        // secondary base, vtable stored by its out-of-line ctor
+public:
+    CBase();                                         // 0x0066E734
+    virtual void v00();
+};
+}
+
+class CDefIndex { public:                                   // a def table index
+    long Index;
+    CDefIndex(long index) : Index(index) {}
+};
+
+struct NUISystemComponent;
+class CTCInventoryWeapons : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
+public:
+    CIntelligentPointer_CThing   PActiveMeleeWeapon;            // +0x134
+    CDefIndex                    ActiveMeleeWeaponDefIndex;     // +0x13C
+    bool                         MeleeWeaponCarriedOnLoad;      // +0x140
+    CIntelligentPointer_CThing   PActiveRangedWeapon;           // +0x141
+    CDefIndex                    ActiveRangedWeaponDefIndex;    // +0x14C
+    bool                         RangedWeaponCarriedOnLoad;     // +0x150
+    CEnginePrimitiveHandleVector ActiveWeaponPrimitiveHandles;  // +0x154
+    long                         ConfiscatedActiveMeleeWeaponDefIndex;    // +0x160
+    long                         ConfiscatedActiveRangedWeaponDefIndex;   // +0x164
+    long                         PreviouslyWieldedMeleeWeaponDefIndex;    // +0x168
+    long                         PreviouslyWieldedRangedWeaponDefIndex;   // +0x16C
+    CComponentItemMap            WeaponMenuItemMap;             // +0x170
+    NUISystemComponent*          WeaponsList;                   // +0x17C
+    NUISystemComponent*          PAssignedRangedIcon;           // +0x180
+    NUISystemComponent*          PAssignedMeleeIcon;            // +0x184
+    NUISystemComponent*          PAssignedRangedMenuEntry;      // +0x188
+    NUISystemComponent*          PAssignedMeleeMenuEntry;       // +0x18C
+    NUISystemComponent*          PRangedList;                   // +0x190
+    NUISystemComponent*          PMeleeList;                    // +0x194
+    std::list<NUISystem::CComponent*> AvailableWeaponsEntries;  // +0x198
+    CTCInventoryWeapons(CThing* thing);
+    virtual ~CTCInventoryWeapons();
+    virtual void v00();
+};
+
+CTCInventoryWeapons::CTCInventoryWeapons(CThing* thing)
+    : NInventory::CTCInventoryBase(thing),
+      PActiveMeleeWeapon(0), ActiveMeleeWeaponDefIndex(0), MeleeWeaponCarriedOnLoad(false),
+      PActiveRangedWeapon(0), ActiveRangedWeaponDefIndex(0), RangedWeaponCarriedOnLoad(false),
+      ActiveWeaponPrimitiveHandles(2),
+      ConfiscatedActiveMeleeWeaponDefIndex(0), ConfiscatedActiveRangedWeaponDefIndex(0),
+      PreviouslyWieldedMeleeWeaponDefIndex(0), PreviouslyWieldedRangedWeaponDefIndex(0),
+      WeaponsList(0)
+{
+}

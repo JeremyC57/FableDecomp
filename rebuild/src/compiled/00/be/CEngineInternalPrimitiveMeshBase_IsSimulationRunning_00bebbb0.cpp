@@ -8,7 +8,7 @@ class CEngineSimulationBase { public:
 };
 
 class CEnginePrimitiveSimulationInfo { public:
-    CEngineSimulationBase* FindSimulation(long index);   // 0x00B812C0
+    CEngineSimulationBase* FindSimulation(unsigned long index);   // 0x00B812C0
 };
 
 class CEngineInternalPrimitiveMeshBase { public:          // the mesh base keeps its simulation info pointer at +0x64 (see RenderSubPrimitive @ 0x00BA6FA0, landed)

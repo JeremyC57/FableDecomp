@@ -1,5 +1,5 @@
 // CTCStealth::ClearDangerStatus() -- reset the in-danger cool-off timer; for the main player's creature also switch the danger music off and rain back on
-// Leaf: ClearDangerStatus
+// Leaf: ?ClearDangerStatus@CTCStealth@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00747090, length 74 bytes.
 // Callees: CThing::GetPlayer @ 0x004C7A30, CPlayer::IsMainPlayer @ 0x00487520, CTCBase::GetWorld() @ 0x00686A70 (twice;
 // manifest "CViewBase::GetDisplayEngine" is propagated), CMusicManager::EnableDangerMusic(bool) @ 0x006BDE50 (manifest
@@ -81,7 +81,9 @@ class CTCStealth : public CTCBase { public:
     CDangerThing* m_pDangerEnd;                             // +0x40
     long          MaxNumberOfDangerThings;                  // +0x44
     long          RegionBasedMaxNumberOfDangerThings;       // +0x48
+    private:
     void ClearDangerStatus();
+    public:
 };
 
 void CTCStealth::ClearDangerStatus()

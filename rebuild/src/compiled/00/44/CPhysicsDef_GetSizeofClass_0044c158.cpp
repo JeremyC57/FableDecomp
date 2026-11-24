@@ -1,8 +1,11 @@
+// Leaf: ?GetSizeofClass@CPhysicsDef@@UAEKXZ
 #pragma optimize("s",on)
-class CPhysicsDef { public: int _dummy; };
+class CPhysicsDef { public:
+    virtual unsigned long GetSizeofClass();
+};
 
-unsigned long __fastcall CPhysicsDef_GetSizeofClass(const CPhysicsDef* self)
+unsigned long CPhysicsDef::GetSizeofClass()
 {
-    (void)self;
     return 0x44;
 }
+// Flatten route (flatten_pilot v4, NF324): CPhysicsDef_GetSizeofClass -> CPhysicsDef::GetSizeofClass, the RTTI-placed PDB member; class model: the row's local class model.

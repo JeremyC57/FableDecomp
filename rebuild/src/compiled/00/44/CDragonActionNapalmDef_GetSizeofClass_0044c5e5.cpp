@@ -1,8 +1,11 @@
+// Leaf: ?GetSizeofClass@CDragonActionNapalmDef@@UAEKXZ
 #pragma optimize("s",on)
 typedef unsigned long ulong;
 
-ulong __fastcall CDragonActionNapalmDef_GetSizeofClass(const void* self)
+class CDragonActionNapalmDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CDragonActionNapalmDef::GetSizeofClass()
 {
+    const void* self = (void*)this;
     (void)self;
     return 0x38;
 }

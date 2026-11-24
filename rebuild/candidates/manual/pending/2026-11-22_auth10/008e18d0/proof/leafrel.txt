@@ -1,0 +1,26 @@
+DEF  DATA 0122ded8     4 __real@3f800000
+EXT  BOUND  00bfea70 __ftol2
+EXT  BOUND  004c73d0 ?GetPos@CThing@@QBEABVC3DVector@@XZ
+DEF  DATA 0126515c    16 ??_C@_0BA@POAMLDLH@WEAPON_FOCUS_01?$AA@
+EXT  BOUND  0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+EXT  BOUND  004c08c0 ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z
+EXT  BOUND  0099eae0 ??1CCharString@@QAE@XZ
+EXT  BOUND  00a01b50 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
+EXT  BOUND  00a14040 ?RotateXY@C3DVector@@QAEXM@Z
+DEF  EQ   0040f020    60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+DEF  DATA 0126c810    16 ??_C@_0BA@JNMFJDG@LIGHTNING_START?$AA@
+EXT  BOUND  0129a168 ?g_CRCTable@@3PAKA
+DEF  DATA 0126c800    14 ??_C@_0O@DJOMBEDN@LIGHTNING_END?$AA@
+EXT  BOUND  0099a2d0 ??0CBaseClass@@QAE@XZ
+DEF  DATA 0125ffdc     4 ??_7?$CParticleUpdateParameters@KK@NParticleEngine@@6B@
+DEF  EQ   0076ada0   209 ?_M_insert_overflow@?$vector@U?$pair@KVC3DVector@@@std@@V?$allocator@U?$pair@KVC3DVector@@@std@@@2@@std@@IAEXPAU?$pair@KVC3DVector@@@2@ABU32@ABU__false_type@2@I_N@Z
+EXT  BOUND  0076c000 ??$sort@PAU?$pair@KVC3DVector@@@std@@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KVC3DVector@@@0@0V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z
+EXT  BOUND  0076c1a0 ??$sort@PAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@0V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z
+EXT  BOUND  006e11a0 ?SetEmitterUpdateParameters@CTCDParticleEmitter@@QAEXABV?$CParticleUpdateParameters@KK@NParticleEngine@@@Z
+DEF  NEQ  006e2500    35 ??1?$CParticleUpdateParameters@KK@NParticleEngine@@UAE@XZ
+EXT  BOUND  006e0500 ?SetEmitterPosition@CTCDParticleEmitter@@QAEXABVC3DVector@@@Z
+DEF  DATA 0124e640     4 __real@41700000
+EXT  BOUND  00bfea0e _malloc
+EXT  BOUND  00bfea14 _free
+EXT  BOUND  0099a2e0 ??1CBaseClass@@UAE@XZ
+PROBLEMS 1

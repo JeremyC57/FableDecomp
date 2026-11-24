@@ -94,7 +94,10 @@ class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     }
     bool IsWearingAppearanceModifier(long defIndex, EHeroAttachableAppearanceModifierType type) const;
     void RemoveAllAppearanceModifiers(EHeroAttachableAppearanceModifierType type);
-    void UpdateHiddenModifiers();                // 0x00706040
+    private:
+    void UpdateHiddenModifiers();
+    public:
+                // 0x00706040
     void UpdateHiddenMaterials();                // 0x00706510
     void UpdateGraphics();                       // 0x007070D0
     void UploadChangesToGraphics();

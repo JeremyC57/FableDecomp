@@ -1,0 +1,10 @@
+00492fb4	call	004a38a2	004a3740L CWorld::UpdateRegionLoad
+00492fb4	call	0062a490	-
+00492fb4	call	007df580	007df4b0L CTCWallMountEffects::OnWallMountUseAction
+00492fb4	call	007df8e2	007df770L CTCWallMountEffects::FrameUpdate
+00492fb4	call	007ec0d5	007ebea0L CTCActionUseBed::OnActionUse
+00492fb4	call	007ec2ce	007ebea0L CTCActionUseBed::OnActionUse
+00492fb4	call	007ec393	007ebea0L CTCActionUseBed::OnActionUse
+00492fb4	call	007ec677	007ebea0L CTCActionUseBed::OnActionUse
+00492fb4	call	008927f6	008927b0L CGameScriptInterface::ShowOnScreenMessage
+00492fb4	call	0089e700	0089e540L CGameScriptInterface::GiveHeroYesNoQuestion

@@ -1,5 +1,5 @@
 // CTCSpecialAbilities::SetupTurncoatSpell() -- cast turncoat on the hero's current target: a live creature enemy that has a turncoat component which can be, and is not yet, turncoated gets a CTCTurncoatSpell component aimed at it; always returns false
-// Leaf: SetupTurncoatSpell
+// Leaf: ?SetupTurncoatSpell@CTCSpecialAbilities@@AAE_NXZ
 // NF167 (2026-11-20, q4949 / q4988): callee 0x0076D2F0 respelt from the free stand-in AreThingsEnemies(CThing*, CThing*) to the PDB static
 //   ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (Ego_r 0x0077B430 / FableWin 0x02606310) through the shared engine/CTCEnemy.h (the call
 //   dereferences both thing pointers; same fastcall registers).
@@ -83,7 +83,9 @@ class CTCSpecialAbilities { public:
     long CurrentAbility;                                // +0x10
     void* UndeadFollowers;                              // +0x14 list (retail 4 bytes)
     CThingCreatureBase* Creature;                       // +0x18
+    private:
     bool SetupTurncoatSpell();
+    public:
 };
 
 bool CTCSpecialAbilities::SetupTurncoatSpell()

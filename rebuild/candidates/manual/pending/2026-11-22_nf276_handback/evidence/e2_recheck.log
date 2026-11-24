@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00bda150   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bda150   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bda150   RELOCATION_MATCH PASS   ProcessDisposalList
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bd9ce0   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bd9ce0   RELOCATION_MATCH PASS   FreeDisposalList
+00bd9b90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bd9b90   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bd9b90   RELOCATION_MATCH PASS   FreeVirtual
+
+WINS: 3
+  00bda150 RELOCATION_MATCH CEngineLandscapeMemoryManager::?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
+  00bd9ce0 RELOCATION_MATCH CEngineLandscapeMemoryManager::?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ
+  00bd9b90 RELOCATION_MATCH CEngineLandscapeMemoryManager::?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z

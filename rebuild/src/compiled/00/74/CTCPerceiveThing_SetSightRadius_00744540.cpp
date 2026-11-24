@@ -8,7 +8,8 @@
 #include "engine/CTCPerceiveThing.h"
 #include "engine/CPerceivedThingDef.h"
 
-extern float g_fMinusOne;                   // 0x0122DEE0 (-1.0f)
+// 0x0122DEE0 is the compiler's -1.0f literal __real@bf800000 (NF239, 2026-11-22, coordinator ruling 4 nf237: ?g_fMinusOne@@3MA is
+//   in no PDB; was `extern float g_fMinusOne`).
 
 struct CTCPerceiveThing_Methods : CTCPerceiveThing {
     const CPerceivedThingDef* GetDef() const { return reinterpret_cast<const CPerceivedThingDef*>(PDef_Object); }
@@ -17,7 +18,7 @@ struct CTCPerceiveThing_Methods : CTCPerceiveThing {
 
 void CTCPerceiveThing_Methods::SetSightRadius(float radius)
 {
-    if (radius != g_fMinusOne) {
+    if (radius != -1.0f) {
         SightRadius = radius;
         return;
     }

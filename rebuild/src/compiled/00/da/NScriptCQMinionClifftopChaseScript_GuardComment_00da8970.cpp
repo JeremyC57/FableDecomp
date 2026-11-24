@@ -51,9 +51,11 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     virtual ~CScriptThing();                            // 0x004AA840
     virtual CCharString GetDataString() const           // 0x004AA900
     {
-        if (!PImp.Data)
+        // NF326 one-definition respell: the body in the shape of the self row 0x004AA900 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+        const CScriptThingImp* imp = PImp.Data;
+        if (imp == 0)
             return CScriptThing::NullString;
-        return PImp.Data->GetDataString();
+        return imp->GetDataString();
     }
 public:
     static CCharString NullString;                  // 0x0143E8EC ?NullString@CScriptThing@@2VCCharString@@A

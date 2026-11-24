@@ -1,0 +1,20 @@
+--- orig/hdr_CEnginePrimitiveRenderer2D.h	2026-11-24 01:19:11.569348488 +0000
++++ hdr/engine/CEnginePrimitiveRenderer2D.h	2026-11-24 01:19:11.623104653 +0000
+@@ -90,6 +90,17 @@
+ private:
+     unsigned char _pad_0xc[0x368];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+ #endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x00B4A5D0: ?FrameStart@CEnginePrimitiveRenderer2D@@UAEXABVCEngineComponentParams@@@Z (Ego_r.pdb + FableWin.pdb)
++public:
++    virtual void FrameStart(const class CEngineComponentParams&);
++    // 0x00B4A5E0: ?FrameEnd@CEnginePrimitiveRenderer2D@@UAEXABVCEngineComponentParams@@@Z (Ego_r.pdb + FableWin.pdb)
++    virtual void FrameEnd(const class CEngineComponentParams&);
++private:
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(69, sizeof(CEnginePrimitiveRenderer2D) == 0x374);
+ #else // generated flattened Ego_r layout (the landed default, unchanged)

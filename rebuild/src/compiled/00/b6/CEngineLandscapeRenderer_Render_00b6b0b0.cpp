@@ -83,13 +83,13 @@ class CEngineLandscapeRenderer { public:
     unsigned char _pad000[0x610];
     bool          RenderForegroundEnabled;         // +0x610
     bool          RenderBackgroundEnabled;         // +0x611
-    void RenderSortedPatches();                    // 0x00B68DA0
-    void SetupCommonStates();                      // 0x00B67480
-    void SetupForegroundStates();                  // 0x00B677D0
+    private: void RenderSortedPatches(); public:                    // 0x00B68DA0
+    private: void SetupCommonStates(); public:                      // 0x00B67480
+    private: void SetupForegroundStates(); public:                  // 0x00B677D0
 private:
     void SetupBackgroundStates();                  // 0x00B671A0 ?SetupBackgroundStates@CEngineLandscapeRenderer@@AAEXXZ (Ego_r; respelled from the stand-in UpdateLighting at the chunk 711 landing)
 public:
-    void PostRenderClearRenderStates();            // 0x00B67510
+    private: void PostRenderClearRenderStates(); public:            // 0x00B67510
     void Render(const CEngineRenderParams& params);
 };
 

@@ -1,0 +1,3 @@
+address	name	evidence
+004c7e30	CThing::IsLocal	Ego_r / FableWin order after GetTypeName; body reads the bool at +9 (NF238)
+007d7c10	CTCTavernGameSpotTheAddition::GetWinPhrase	vtable 0x0126F814 slot 42; Ego_r 0x007D4EC0 / FableWin 0x02753360 (NF238)

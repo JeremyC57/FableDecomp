@@ -1,0 +1,50 @@
+# NF269 D5: retail call sites of the queue trio / FreeVirtual in the six binder rows (xdis, mnemonics only, no bytes): for each call the
+# member load that feeds the push and the call. Bridge loop in 0x00BFD480: esi walks BridgeVertexBuffers (+0x20..), [esi-0x10] is BridgeIndexBuffers.
+## 00BEAA00
+00beaa03  mov eax, dword ptr [esi + 0x10]
+00beaa16  call 0xbda0d0
+00beaa1b  mov dword ptr [esi + 0x10], 0
+## 00BFDD40
+00bfdd43  mov eax, dword ptr [esi + 0x38]
+00bfdd56  call 0xbda0d0
+00bfdd5b  mov dword ptr [esi + 0x38], 0
+## 00BEAAA0
+00beaaa3  mov eax, dword ptr [esi + 0x14]
+00beaaa8  mov dword ptr [esi], 0x12a8134
+00beaab9  mov dword ptr [esi + 0x14], 0
+00beaac0  mov eax, dword ptr [esi + 0x10]
+00beaad3  call 0xbda0d0
+00beaad8  mov dword ptr [esi + 0x10], 0
+00beaadf  mov dword ptr [esi], 0x129b860
+00beaaf4  inc dword ptr [eax + 0x54]
+00beaaf7  mov edx, dword ptr [ecx + 0x10]
+## 00BEB4D0
+00beb4d3  mov eax, dword ptr [esi + 0x14]
+00beb4d8  mov dword ptr [esi], 0x12a8134
+00beb4e9  mov dword ptr [esi + 0x14], 0
+00beb4f0  mov eax, dword ptr [esi + 0x10]
+00beb503  call 0xbda0d0
+00beb508  mov dword ptr [esi + 0x10], 0
+00beb514  mov dword ptr [esi], 0x129b860
+00beb529  call 0xbd9b90
+## 00BFD480
+00bfd488  mov dword ptr [edi], 0x12a8334
+00bfd4a3  call 0xbda090
+00bfd4a8  mov eax, dword ptr [edi + 0xc]
+00bfd4bc  call 0xbda0d0
+00bfd4d0  mov eax, dword ptr [esi - 0x10]
+00bfd4e4  call 0xbda090
+00bfd4e9  mov eax, dword ptr [esi]
+00bfd4fb  call 0xbda0d0
+00bfd508  mov dword ptr [edi], 0x129b860
+## 00BFDE20
+00bfde23  mov eax, dword ptr [esi + 0x34]
+00bfde28  mov dword ptr [esi], 0x12a835c
+00bfde43  call 0xbda090
+00bfde48  mov eax, dword ptr [esi + 0x38]
+00bfde5c  call 0xbda0d0
+00bfde61  mov dword ptr [esi + 0x38], 0
+00bfde68  mov ecx, dword ptr [esi + 0x3c]
+00bfde6f  mov edx, dword ptr [ecx]
+00bfde73  call dword ptr [edx]
+00bfde75  mov dword ptr [esi], 0x129b860

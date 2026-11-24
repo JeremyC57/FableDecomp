@@ -1,0 +1,51 @@
+addr       parity           behav  name
+0074fce0   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@JVCCharString@@@std@@PAU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@00ABU__false_type@0@@Z -> 0074f4f0 labelled '_global::UninitCopy_SPairLongCSecond_0099ec30_0074f4f0'
+0074fce0   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAU?$pair@JVCCharString@@@std@@IU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@IABU10@ABU__false_type@0@@Z -> 0074f530 labelled '_global::UninitFillN_SPairLongCSecond_0099ec30_0074f530'
+0074fce0   RELOCATION_MATCH PASS   _M_insert_overflow
+0074f4f0   RELOCATION_MATCH PASS   UninitCopy_SPairLongCSecond_0099ec30_0074f4f0
+0074f530   RELOCATION_MATCH PASS   UninitFillN_SPairLongCSecond_0099ec30_0074f530
+008a9ae0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+008a9ae0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008a9ae0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+008a9ae0   RELOCATION_MATCH PASS   MsgOnBoastsMade
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CTCContainer (engine/CTCContainer.h)
+008ed1f0   RELOCATION_MATCH PASS   InsertItem
+008ed440   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CTCContainer (engine/CTCContainer.h)
+008ed440   RELOCATION_MATCH PASS   operator()
+00a978c0   WARN STANDIN_LEAF ??1CDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAE@XZ (catalog CCountedBufferPair_00a978c0::~CCountedBufferPair_00a978c0; names another function)
+00a978c0   RELOCATION_MATCH PASS   ~CCountedBufferPair_00a978c0
+00a978a0   WARN RELOC_NAME: ??1CDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAE@XZ -> 00a978c0 labelled 'CCountedBufferPair_00a978c0::~CCountedBufferPair_00a978c0'
+00a978a0   WARN STANDIN_LEAF ??_GCDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAEPAXI@Z (catalog N3DPrimitive::CAnimatedBlock::CDeviceIndependent::`scalar_deleting_destructor'; names another function)
+00a978a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a427a0   RELOCATION_MATCH PASS   Update
+00b620a0   RELOCATION_MATCH PASS   BuildBuffers
+00b61b30   WARN SHARED_HEADER_AVAILABLE CTVertexColTex1 (engine/CTVertexColTex1.h)
+00b61b30   WARN SHARED_HEADER_AVAILABLE CEngineSkyRenderer (engine/CEngineSkyRenderer.h)
+00b61b30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b61b30   RELOCATION_MATCH PASS   BuildOuterSkyMesh
+
+WINS: 11
+  0074fce0 RELOCATION_MATCH std::vector<std::pair<int,CCharString>>::?_M_insert_overflow@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@IAEXPAU?$pair@JVCCharString@@@2@ABU32@ABU__false_type@2@I_N@Z
+  0074f4f0 RELOCATION_MATCH _global::??$__uninitialized_copy@PAU?$pair@JVCCharString@@@std@@PAU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@00ABU__false_type@0@@Z
+  0074f530 RELOCATION_MATCH _global::??$__uninitialized_fill_n@PAU?$pair@JVCCharString@@@std@@IU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@IABU10@ABU__false_type@0@@Z
+  008a9ae0 RELOCATION_MATCH CGameScriptInterface::?MsgOnBoastsMade@CGameScriptInterface@@UBE_NAAV?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@@Z
+  008ed1f0 RELOCATION_MATCH CTCContainer::?InsertItem@CTCContainer@@QAEXJABVCCharString@@@Z
+  008ed440 RELOCATION_MATCH CCreateIndicesFromItemNames::??RCCreateIndicesFromItemNames@@QAEXABVCCharString@@@Z
+  00a978c0 RELOCATION_MATCH CCountedBufferPair_00a978c0::??1CDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAE@XZ
+  00a978a0 RELOCATION_MATCH N3DPrimitive::CAnimatedBlock::CDeviceIndependent::??_GCDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAEPAXI@Z
+  00a427a0 RELOCATION_MATCH CLipSyncDataBank::?Update@CLipSyncDataBank@@UAEXXZ
+  00b620a0 RELOCATION_MATCH CEngineSkyRenderer::?BuildBuffers@CEngineSkyRenderer@@AAEXXZ
+  00b61b30 RELOCATION_MATCH CEngineSkyRenderer::?BuildOuterSkyMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z

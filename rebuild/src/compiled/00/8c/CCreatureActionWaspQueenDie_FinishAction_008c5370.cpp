@@ -15,6 +15,7 @@
 //   0x00858030, engine/CSoundPair.h, CThing::Kill(bool) 0x004C9B80): SetCurrentAction 0x006644F0 and ~CCombatActionBase 0x0062E900 now bind the
 //   PDB spellings; own leaf QAE -> UAE (slot-4 override). CCreatureAction_WaspQueenDie has no shared header: it stays a row-local class on the
 //   shared CCombatActionBase with its FableWin.pdb inline ctor ??0CCreatureAction_WaspQueenDie@@QAE@AAVCThingCreatureBase@@J@Z (not in Ego_r).
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

@@ -16,6 +16,11 @@
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_SUBSTRING
 #define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+// Name fix (NF216, 2026-11-21, q12378): ported onto fable_string.h FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO +
+//   FABLE_RETAIL_CBASICSTRING_COMPARE_BODY (the local explicit specialization of CBasicString<char>::operator==(const char*) is dropped: the header body is visible to the TU as in retail, called out of line); the pick-any ??8?$CBasicString@D@@QBE_NPBD@Z copy
+//   this object carries is now the owner 0x004115A0's 88-byte body, equal in bytes and relocation targets.
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CDEFINITIONMANAGER
@@ -25,22 +30,6 @@
 #include "engine/CGameDefinitionManager.h"
 #include "engine/NCreatureActionEvents.h"
 
-// CBasicString<T>::operator==(const T*) is a template member, so its body is visible in this TU as in retail (the COMDAT the
-// linker kept is 0x004115A0; the landed same-TU sibling 0x00870FC0 carries the same body). With the body visible VC7.1 keeps the
-// type's string data in esi across the calls (`mov ecx,esi`); a declaration alone loads it into ecx and copies it.
-
-template<> bool CBasicString<char>::operator==(const char* text) const
-{
-    const signed char* first = (const signed char*)PData;
-    const signed char* second = (const signed char*)text;
-    int result = 0;
-    while (*first || *second) {
-        if (*first < *second) { result = -1; break; }
-        if (*first > *second) { result = 1; break; }
-        ++first; ++second;
-    }
-    return result == 0;
-}
 
 namespace { bool __fastcall GetDataFromEventString(const CCharString& data, long index, CCharString& out); }   // 0x00870C90
 

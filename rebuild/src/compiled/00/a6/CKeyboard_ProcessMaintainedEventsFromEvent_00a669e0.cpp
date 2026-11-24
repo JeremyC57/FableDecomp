@@ -20,7 +20,7 @@ class CInputEvent { public:                            // 0x34 bytes
     float         StartTime;                    // +0x30
     EInputEventType GetType() const;                                                   // 0x00A03B40
     EInputKey GetKey() const;                                                    // 0x00A03B70
-    void SetAsKeyboardKeyHeld(long key, double startTime, double currentTime);  // 0x00A03C20
+    void SetAsKeyboardKeyHeld(EInputKey key, double startTime, double currentTime);  // 0x00A03C20
 };
 class CMaintainedEvent { public:                       // CBaseClass-derived: vptr +0, Event +4
     virtual ~CMaintainedEvent();

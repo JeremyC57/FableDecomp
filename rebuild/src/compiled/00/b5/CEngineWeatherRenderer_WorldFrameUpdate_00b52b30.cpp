@@ -1,5 +1,5 @@
 // CEngineWeatherRenderer::WorldFrameUpdate(bool) -- per-frame weather update: unless forced, take the rain/snow/mist strengths from the current environment (honouring overrides), then on a full frame advance the particle time histories and the wind vector history
-// Leaf: WorldFrameUpdate
+// Leaf: ?WorldFrameUpdate@CEngineWeatherRenderer@@UAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B52B30, 665 bytes, `ret 4`. Callees: StartRaining 0x00B51EA0, StartSnowing 0x00B51F00, FadeRainToTarget 0x00B52870, FadeSnowToTarget 0x00B52900;
 //   environment provider slot 1 / environment slot 1 through the engine state 0x01436E8C; engine globals 0x01436E48 (wind direction +0x628, speed +0x644, full-frame flag +0x650).
 // Layout: CEngineWeatherSettings embedded at +0x114 (Ego_r.pdb field offsets + 0x114); the PDB header lists it as an opaque Settings blob, so the members are modelled flat.
@@ -76,7 +76,9 @@ class CEngineWeatherRenderer { public:
 private:
     void FadeRainToTarget(float a0);         // 0x00B52870
 void FadeSnowToTarget(float a0);         // 0x00B52900
+    public:
     virtual void WorldFrameUpdate(bool full);
+    private:
 };
 
 void CEngineWeatherRenderer::WorldFrameUpdate(bool full)

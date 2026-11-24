@@ -1,5 +1,5 @@
 // CNewFrontendGameComponent::InitialiseGraphics() -- fetch the front-end menu font, then pick the best texture formats from the display manager and create the "GBANK_FRONT_END" graphic bank (mipmaps, 2048x2048 limit, dither) into m_pFrontEndGraphicBank; returns true
-// Leaf: ?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ
+// Leaf: ?InitialiseGraphics@CNewFrontendGameComponent@@AAE_NXZ
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
@@ -58,38 +58,45 @@ class CSystemManager { public:
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
-struct CFont;
+// NF221 (family q12226 / q12402): the counted pointers are the shared engine/CCountedPointer.h (was the local CCountedPointer_0042fe34
+//   stand-in with a CFont pointee): m_pMenuFont is CCountedPointer<const CFontBank> and m_pFrontEndGraphicBank CCountedPointer<CGraphicDataBank>
+//   (Ego_r.pdb CNewFrontendGameComponent members). The menu font comes from CFontManager::GetFont (engine/CFontManager.h; FableWin.pdb /
+//   Ego_r.pdb ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z, the self leaf of 0x009E2C80; was a local
+//   CFontBank::GetFont stand-in), assigned through the converting member template 0x0042FE34
+//   (??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z, FableWin.pdb) and the temporary
+//   released by ReleaseData<CFontBank> 0x004057A0; the bank comes from CGraphicBankManager::OpenGraphicBank (FableWin.pdb / Ego_r.pdb, the
+//   self leaf of 0x009F83D0; was a local CGraphicDataBankManager::CreateAndInitialize stand-in; no header for the class: local declaration
+//   as the landed 0x0041E3F6 / 0x005BFF07), assigned by ??4<CGraphicDataBank> 0x004194BA and released by ReleaseData<CGraphicDataBank> 0x00419108.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_SHAREDATA_DECL_ONLY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_ASSIGN_DECL_ONLY
+// NF222: the converting assignment 0x0042FE34 is called out of line here; declared only (FABLE_RETAIL_CCOUNTEDPOINTER_CONVERTING_ASSIGN_DECL_ONLY),
+//   else this frame-pointer TU emits a pick-any ??$?4 copy with `push ebp` unlike the owner 0x0042FE34.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CONVERTING_ASSIGN_DECL_ONLY
+#include "engine/CCountedPointer.h"
+#include "engine/CFontManager.h"
+class CFontBank;
 class CGraphicDataBank;
-template <class T> class CCountedPointer_0042fe34 {
-public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer_0042fe34<T>& operator=(const CCountedPointer_0042fe34<T>& other);   // 0x0042FE34 (CFont) / 0x004194BA (CGraphicDataBank)
-    ~CCountedPointer_0042fe34();                            // 0x004057A0 (CFont) / 0x00419108 (CGraphicDataBank)
+class CGraphicBankManager { public:
+    CCountedPointer<CGraphicDataBank> OpenGraphicBank(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0
 };
-class CFontBank { public:
-    CCountedPointer_0042fe34<CFont> GetFont(const CCharString& name);   // 0x009E2C80
-};
-struct CGraphicDataBankManager {
-    CCountedPointer_0042fe34<CGraphicDataBank> CreateAndInitialize(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0
-};
-class CFontManager;
 extern CFontManager* PFontManager;                     // 0x013B838C
-class CGraphicBankManager;
 extern CGraphicBankManager* PGraphicBankManager;   // 0x013B837C
 namespace { extern CCharString DEFAULT_FRONT_END_FONT; }         // 0x013B875C
 
 class CNewFrontendGameComponent { public:
     unsigned char                     _pad00[0x10];
-    CCountedPointer_0042fe34<CFont>            m_pMenuFont;              // +0x10
+    CCountedPointer<const CFontBank>  m_pMenuFont;              // +0x10
     unsigned char                     _pad18[0x40 - 0x18];
-    CCountedPointer_0042fe34<CGraphicDataBank> m_pFrontEndGraphicBank;   // +0x40
+    CCountedPointer<CGraphicDataBank> m_pFrontEndGraphicBank;   // +0x40
+    private:
     bool InitialiseGraphics();
+    public:
 };
 
 bool CNewFrontendGameComponent::InitialiseGraphics()
 {
-    m_pMenuFont = ((CFontBank*)PFontManager)->GetFont(DEFAULT_FRONT_END_FONT);
+    m_pMenuFont = PFontManager->GetFont(DEFAULT_FRONT_END_FONT);
     CGraphicDataBankInit init;
     CSystemManager* system;
     system = GFGetSystemManager();
@@ -111,7 +118,7 @@ bool CNewFrontendGameComponent::InitialiseGraphics()
     init.AllowDither = true;
     {
         CCharString name("GBANK_FRONT_END", -1);
-        m_pFrontEndGraphicBank = ((CGraphicDataBankManager*)PGraphicBankManager)->CreateAndInitialize(name, init, true, true);
+        m_pFrontEndGraphicBank = PGraphicBankManager->OpenGraphicBank(name, init, true, true);
     }
     return true;
 }

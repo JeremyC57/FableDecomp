@@ -38,7 +38,7 @@ private:
     long AllocatedMemory,MaximumMemory;
     unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
 };
-FABLE_STATIC_ASSERT(sizeof(CResourceList)==0x3c);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CResourceList)==0x3c);
 #ifdef FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
 // Opt-in (chunk 2031): the CResource::TouchResource body (see engine/CResource.h): Head +0x04 (Head.PrevResource +0x10), CurrentFrame +0x2C.
 // FABLE_FORCEINLINE (owner 2026-11-01 rule): retail's only out-of-line copy, 0x0041B9C0 (this exact body; landed under the wrong name
@@ -75,19 +75,24 @@ public:
     unsigned long DebugStatsFrame;                           // +0x30
     unsigned long UnloadDelay;                               // +0x34
     unsigned long UnloadedThisFrame;                         // +0x38
+#ifdef FABLE_RETAIL_CRESOURCELIST_FLAT_UNLOADNEXTRESOURCE
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x009FC210 CResourceList::ShrinkResources): Ego_r.pdb / FableWin.pdb
+    // ?UnloadNextResource@CResourceList@@QAE_NK@Z (retail 0x009FC170, landed). Declaration only: no layout change.
+    bool UnloadNextResource(unsigned long frames);           // 0x009FC170
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CResourceList) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CResourceList, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CResourceList, Head) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CResourceList, ResourceCount) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CResourceList, AllocatedMemory) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CResourceList, MaximumMemory) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CResourceList, CurrentFrame) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CResourceList, DebugStatsFrame) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CResourceList, UnloadDelay) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CResourceList, UnloadedThisFrame) == 0x38);
+FABLE_STATIC_ASSERT_AT(81, sizeof(CResourceList) == 0x3c);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CResourceList, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CResourceList, Head) == 0x4);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CResourceList, ResourceCount) == 0x20);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CResourceList, AllocatedMemory) == 0x24);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CResourceList, MaximumMemory) == 0x28);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CResourceList, CurrentFrame) == 0x2c);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CResourceList, DebugStatsFrame) == 0x30);
+FABLE_STATIC_ASSERT_AT(89, offsetof(CResourceList, UnloadDelay) == 0x34);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CResourceList, UnloadedThisFrame) == 0x38);
 
 #endif // FABLE_RETAIL_CRESOURCELIST
 #endif // FABLE_ENGINE_CRESOURCELIST_H

@@ -25,11 +25,9 @@ class CCharString { public:
 class CCPPointerInfo;
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA930 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
     virtual void SetDataString(const CCharString& text)   // slot 4 (+0x10), 0x004AA930
-    {
-        if (PImp_Data)
-            PImp_Data->SetDataString(text);
-    }
+    { CScriptThing* imp = PImp_Data; if (imp) imp->SetDataString(text); }
     virtual void v005();
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
     CScriptThing*   PImp_Data;                     // +0x04

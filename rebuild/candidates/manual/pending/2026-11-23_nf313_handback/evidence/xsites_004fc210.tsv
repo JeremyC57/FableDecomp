@@ -1,0 +1,65 @@
+004fc210	call	00487c39	00487c20L CPlayer::LoadPlayerCharacterFromGameState
+004fc210	call	004fc981	004fc970L CWorldMap::SetRegionsAsConnectedInGraph
+004fc210	call	004fc98f	004fc970L CWorldMap::SetRegionsAsConnectedInGraph
+004fc210	call	00507ae4	005079c0L CWorldMap::LoadGameState
+004fc210	call	005fd55e	005fd410L CTCInventoryMap::GetRegionsToDisplay
+004fc210	call	005fe870	-
+004fc210	call	005fe960	-
+004fc210	call	005feae1	-
+004fc210	call	005feaf6	-
+004fc210	call	005fee45	-
+004fc210	call	005ff770	005ff190L CTCInventoryMap::CreateMapMarkers
+004fc210	call	005ff87d	005ff190L CTCInventoryMap::CreateMapMarkers
+004fc210	call	005ffa14	005ff190L CTCInventoryMap::CreateMapMarkers
+004fc210	call	005ffa8c	005ff190L CTCInventoryMap::CreateMapMarkers
+004fc210	call	005fff08	005ff190L CTCInventoryMap::CreateMapMarkers
+004fc210	call	005fff25	005ff190L CTCInventoryMap::CreateMapMarkers
+004fc210	call	00603205	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	00603265	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	0060343f	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	00603b6b	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	00603fcc	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	00604422	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	00604746	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	006049c7	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	00604d2e	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	006053c1	00603000L CTCInventoryMap::CreateMiniMapMarkers
+004fc210	call	006055c0	00605570L CTCInventoryMap::ConstructRegionDescription
+004fc210	call	00605616	00605570L CTCInventoryMap::ConstructRegionDescription
+004fc210	call	0060567f	00605570L CTCInventoryMap::ConstructRegionDescription
+004fc210	call	00605765	00605570L CTCInventoryMap::ConstructRegionDescription
+004fc210	call	00605aaf	00605570L CTCInventoryMap::ConstructRegionDescription
+004fc210	call	00606500	00606300L CTCInventoryMap::OnSerialise
+004fc210	call	0060654e	00606300L CTCInventoryMap::OnSerialise
+004fc210	call	0060cccf	0060c900L CTCInventoryMap::ConstructMapList
+004fc210	call	0060cd37	0060c900L CTCInventoryMap::ConstructMapList
+004fc210	call	0060d3e1	0060c900L CTCInventoryMap::ConstructMapList
+004fc210	call	0060d5c3	0060c900L CTCInventoryMap::ConstructMapList
+004fc210	call	0060d7bf	0060c900L CTCInventoryMap::ConstructMapList
+004fc210	call	0060dafd	0060c900L CTCInventoryMap::ConstructMapList
+004fc210	call	0060f29e	0060eeb0L CTCInventoryMap::ConstructPCMapList
+004fc210	call	0060f306	0060eeb0L CTCInventoryMap::ConstructPCMapList
+004fc210	call	0060fc61	0060eeb0L CTCInventoryMap::ConstructPCMapList
+004fc210	call	0060fe43	0060eeb0L CTCInventoryMap::ConstructPCMapList
+004fc210	call	0061003f	0060eeb0L CTCInventoryMap::ConstructPCMapList
+004fc210	call	0061046d	0060eeb0L CTCInventoryMap::ConstructPCMapList
+004fc210	call	0061bdd1	0061b610L CTCInventoryQuests::ConstructQuestList
+004fc210	call	0061e2e0	0061b610L CTCInventoryQuests::ConstructQuestList
+004fc210	call	0061eef1	0061e6d0L CTCInventoryQuests::ConstructQuestListPC
+004fc210	call	00621489	0061e6d0L CTCInventoryQuests::ConstructQuestListPC
+004fc210	call	0064ddcb	0064dd9aL NPlayerGui::CDrawMiniMap::UpdateRegionExitNames
+004fc210	call	00702221	007021f0L CTCQuestCard::GetTeleporterRegionName
+004fc210	call	0082885e	-
+004fc210	call	00828a09	-
+004fc210	call	0082b0bb	-
+004fc210	call	0082b1af	-
+004fc210	call	0088e0c2	0088e0b0L CGameScriptInterface::SetSoundThemesAsEnabledForRegion
+004fc210	call	0088e313	0088e300L CGameScriptInterface::IsRegionLoaded
+004fc210	call	00890563	00890550L CGameScriptInterface::IsRegionLoadedAndPreloaded
+004fc210	call	00891832	00891820L CGameScriptInterface::AddQuestRegion
+004fc210	call	00891e42	00891e30L CGameScriptInterface::GetWanderingPopulationScriptDefNameInR
+004fc210	call	00891f02	00891ef0L CGameScriptInterface::IsHeroAllowedHenchmenInRegion
+004fc210	call	00892d20	00892cf0L CGameScriptInterface::SetCreatureGeneratorsEnabled
+004fc210	call	00892db6	00892d80L CGameScriptInterface::IsCreatureGenerationEnabledForRegion
+004fc210	call	008932e6	008932d0L CGameScriptInterface::MsgIsRegionLoaded
+004fc210	call	00893376	00893360L CGameScriptInterface::MsgIsRegionUnloaded

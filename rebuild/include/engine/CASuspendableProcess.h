@@ -27,6 +27,11 @@ public:
     void StopSuspendableProcess();
     void TerminateProcess();
     static CASuspendableProcess* FABLE_FASTCALL GetPActiveProcess();
+#ifdef FABLE_RETAIL_CASUSPENDABLEPROCESS_ACTIVE_PASS27
+protected:
+    static CASuspendableProcess* PActiveProcess;
+public:
+#endif
 #ifdef FABLE_RETAIL_CASUSPENDABLEPROCESS_EXCEPTIONEXIT
     // Retail opt-in (chunk Q1, row 0x00A446A0 CSuspendableProcessMicrothread::ThreadEntry): the nested exception a terminated process
     // throws (RTTI .?AVCExceptionExit@CASuspendableProcess@@ 0x01397754; Ego_r.pdb CExceptionExit, 1 byte, no members). ThreadEntry's
@@ -39,7 +44,17 @@ public:
     float TimeProcessSliceStarted;                                       // +0x08
     float TimesliceLength;                                               // +0x0c
 };
-FABLE_STATIC_ASSERT(sizeof(CASuspendableProcess) == 0x10);
+#ifdef FABLE_RETAIL_CASUSPENDABLEPROCESS_ACTIVE_PASS27
+inline CASuspendableProcess* FABLE_FASTCALL CASuspendableProcess::GetPActiveProcess()
+{
+    return PActiveProcess;
+}
+inline bool CASuspendableProcess::IsSuspendableProcessStopping() const
+{
+    return StopRunning;
+}
+#endif
+FABLE_STATIC_ASSERT_AT(42, sizeof(CASuspendableProcess) == 0x10);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -57,13 +72,13 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CASuspendableProcess) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CASuspendableProcess, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CASuspendableProcess, Running) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CASuspendableProcess, StopRunning) == 0x5);
-FABLE_STATIC_ASSERT(offsetof(CASuspendableProcess, TerminateUsingExceptions) == 0x6);
-FABLE_STATIC_ASSERT(offsetof(CASuspendableProcess, TimeProcessSliceStarted) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CASuspendableProcess, TimesliceLength) == 0xc);
+FABLE_STATIC_ASSERT_AT(60, sizeof(CASuspendableProcess) == 0x10);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CASuspendableProcess, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CASuspendableProcess, Running) == 0x4);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CASuspendableProcess, StopRunning) == 0x5);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CASuspendableProcess, TerminateUsingExceptions) == 0x6);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CASuspendableProcess, TimeProcessSliceStarted) == 0x8);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CASuspendableProcess, TimesliceLength) == 0xc);
 
 #endif // FABLE_RETAIL_SUSPENDABLE_PROCESS
 

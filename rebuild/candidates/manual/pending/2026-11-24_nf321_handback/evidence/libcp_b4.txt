@@ -1,0 +1,1 @@
+00a667c0 LIBCP_OK renames=?EventScanStart@CKeyboard@@QAE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z=?EventScanStart@CKeyboard@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

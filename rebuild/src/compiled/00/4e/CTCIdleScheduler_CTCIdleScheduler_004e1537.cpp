@@ -38,11 +38,11 @@ class CTCIdleScheduler : public CTCBase { public:          // vtable 0x012426C4
     long           Preferred;                      // +0x24 EIdleStateGroup
     long           FrameLastChecked;               // +0x28
     CTCIdleScheduler(CThing& parent);
-    void Reset();                                  // 0x008018B0
+    void Clear();                                  // 0x008018B0; NF296: PDB name, was Reset
 };
 
 CTCIdleScheduler::CTCIdleScheduler(CThing& parent)
     : CTCBase(parent)
 {
-    Reset();
+    Clear();
 }

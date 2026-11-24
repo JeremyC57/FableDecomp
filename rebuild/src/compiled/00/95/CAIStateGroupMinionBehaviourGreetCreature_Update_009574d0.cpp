@@ -8,8 +8,8 @@
 // ("SG_CHICKEN_WANDER" @ 0x012593EC), CCreatureAction_PlayAnimation(creature, anim, float, sound, ...) @ 0x00843A80,
 // CAIStateGroupBase::AIAction_PerformActionAndWait @ 0x0097DB70, ~CCreatureActionBase @ 0x00693EF0, ~CCharString
 // @ 0x0099EAE0, the state-group finish call @ 0x008FCF40 (manifest "CXMVPlaybackInfo" is propagated and wrong).
-// Shape: a NAMED CCharString in the inner block; the action result is a named long (compared after the action dtor); `if (result != 2) { FinishUpdate(); return; }` inside the block
-// (FinishUpdate before the string dtor on that path), the common FinishUpdate after it. No engine header.
+// Shape: a NAMED CCharString in the inner block; the action result is a named long (compared after the action dtor); `if (result != 2) { Terminate(); return; }` inside the block
+// (Terminate before the string dtor on that path), the common Terminate after it. No engine header.
 // Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C.
 class CThing;
 class CThingCreatureBase;
@@ -41,7 +41,7 @@ class CCreatureActionBase { public:
 
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                      // +0xa8..+0xb3
-    CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
+    CCreatureAction_PlayAnimation(CThingCreatureBase& creature, const CCharString& animation, float blend,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00843A80
 };
 
@@ -57,7 +57,7 @@ class CAIStateGroupBase { public:
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long flags, float turnSpeed); public:   protected: // 0x0097D6F0
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool flag); public:   // 0x0097DB70 (EAIActionReturn)
-    void FinishUpdate();                            // 0x008FCF40
+    void Terminate();                               // 0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ (Ego_r / FableWin; the donor Update calls it)
 };
 
 struct CThingAlive { unsigned char _pad[0x91]; unsigned char m_flags91; };
@@ -80,12 +80,12 @@ void CAIStateGroup_MinionBehaviourGreetCreature::Update()
 {
     if (IS_THING_ALIVE(PCreatureToGreet) && AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PCreatureToGreet, 0xb, 0.013888889f) == 2) {
         CCharString animation("SG_CHICKEN_WANDER");
-        long result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+        long result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(*GetCreature(), animation, 0.0f,
                 CSoundPair(), false, true, false, 0, 0), false);
         if (result != 2) {
-            FinishUpdate();
+            Terminate();
             return;
         }
     }
-    FinishUpdate();
+    Terminate();
 }

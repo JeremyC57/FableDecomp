@@ -1,0 +1,12 @@
+##### 008c91b0 renames: ??0CCombatActionBase@@QAE@J@Z=??0CCombatActionBase@@IAE@J@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=4
+tables H=2 N=2
+##### 008ce3c0 renames: ??0CCombatActionBase@@QAE@J@Z=??0CCombatActionBase@@IAE@J@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 008cf8f0 renames: ??0CCombatActionBase@@QAE@J@Z=??0CCombatActionBase@@IAE@J@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=1 N=1

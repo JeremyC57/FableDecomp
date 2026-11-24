@@ -1,0 +1,21 @@
+## ?GFGetSignedAngleDifference@@YIMMM@Z callers=20
+    ?ApplyControlledAcceleration@CTCPhysicsControlled@@UAEXABVC3DVector@@M@Z
+    ?DoHeadTracking@CTCKraken@@AAEXXZ
+    ?FrameUpdate@CModeDragonFlying@NCreatureMode@@UAEXXZ
+    ?FrameUpdate@CModeDragonStrafeBurninate@NCreatureMode@@UAEXXZ
+    ?GetAnglesFromBodyToPos@CTCLook@@ABEXABVC3DVector@@_NAAM2@Z
+    ?GetBodySettingsSlowInFastOut@CTCLook@@ABEXAAM0MMM@Z
+    ?GetClosestTentacleToTarget@CTCKraken@@AAE_NAAV?$_List_iterator@V?$_List_val@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@std@@@Z
+    ?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z
+    ?GetTurningAngles@CTCLook@@AAE_NAAM0@Z
+    ?ImplementBodySettings@CTCLook@@AAEXXZ
+    ?Initialise@CCombatAction_GenericResponseToExplosion@@UAEXXZ
+    ?IsPosInViewAngle@CThingCreatureBase@@QBE_NABVC3DVector@@M_N1@Z
+    ?IsPosInViewRange@CTCLook@@QBE_NABVC3DVector@@M_N1@Z
+    ?IsThingBehindMe@?A0x624a2919@@YI_NABVCThing@@0@Z
+    ?ProcessInput@CEditInputProcessEditThings@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+    ?ReturnToDesiredPos@CTCKrakenTentacle@@AAEX_N@Z
+    ?SetEyesLooking@CTCLook@@AAEXABVC3DVector@@@Z
+    ?SetHeadLooking@CTCLook@@AAEXM_N0MM@Z
+    ?TrackTarget@CTCKrakenTentacle@@AAEXXZ
+    ?UpdateFacingDirection@CCombatActionBase@@IAEXXZ

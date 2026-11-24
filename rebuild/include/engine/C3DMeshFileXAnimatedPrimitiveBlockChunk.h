@@ -23,6 +23,16 @@ public:
     unsigned long BonesPerVertex;                   // +0x44
     CArray<unsigned long> VertexList;               // +0x48
     CArray<C3DIndexedBoneWeight> BoneWeights;       // +0x54
+#ifdef FABLE_RETAIL_ANIMATEDPRIMITIVEBLOCK_ACCESSORS_PASS27
+    // 00A90AE0: the five original FableWin getters at 032FF3F0 and 032FF4B0..032FF520.
+    CVertexGroupBlock GetGroupBlock() const { return GroupBlock; }
+    unsigned long GetVertexCount() const { return VertexList.size(); }
+    unsigned long GetBonesPerVertex() const { return BonesPerVertex; }
+    unsigned long GetVertex(unsigned long vertex) const { return VertexList[vertex]; }
+    C3DIndexedBoneWeight GetBoneWeight(unsigned long vertex, unsigned long bone) const {
+        return BoneWeights[vertex * BonesPerVertex + bone];
+    }
+#endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
     static const char* FABLE_FASTCALL GetStaticChunkType() { return "XAPB"; }   // FableWin ?GetStaticChunkType@C3DMeshFileXAnimatedPrimitiveBlockChunk@@SIPBDXZ
 #endif

@@ -1,6 +1,6 @@
 // CNavigatorManager::InterruptAllNavigators() -- interrupt every navigator (+8 of each node) on the navigator list at +0x18 through its virtual slot 18 (+0x48)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A14F40, length 48 bytes.
-// Leaf: InterruptAllNavigators
+// Leaf: ?InterruptAllNavigators@CNavigatorManager@@AAEXXZ
 // Shape: `this` in edi, the node in esi, the sentinel re-read for the loop test, the loop head aligned, `ret`.
 struct IListed_00a14f40 {
     virtual void v000();
@@ -32,7 +32,9 @@ struct SNode_00a14f40 {
 class CNavigatorManager { public:
     unsigned char _pad00[0x18];
     SNode_00a14f40*  m_pList;                         // +0x18: the sentinel
+    private:
     void InterruptAllNavigators();
+    public:
 };
 
 void CNavigatorManager::InterruptAllNavigators()

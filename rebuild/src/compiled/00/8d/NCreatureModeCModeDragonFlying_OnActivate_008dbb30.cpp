@@ -7,7 +7,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008DBB30, length 331 bytes (padded to 336), `ret`; vtable 0x0126868C slot 5.
 // Callees: CModeBase::OnActivate @ 0x0073AAC0, CThingAICreature::SuspendAI @ 0x00833A10, CVectorMap::LowerBound
 //          @ 0x0040F020 (inlined GetInterface, types 0x3a and 0x5a), SetThingAsNotBloodyWillableAtAll(CThing*, bool) @ 0x007E4040
-//          (`__fastcall`, bool in dl), CTCAnimationComplex::GetAnimateThing @ 0x0070B460 (returns +0xc; manifest label
+//          (`__fastcall`, bool in dl), CTCAnimationComplex::GetAnimation @ 0x0070B460 (returns +0xc; manifest label
 //          "CWorld::DrawGetEnvironment" is propagated), GetAnimIndex @ 0x0070B490, GetAnimDuration(long) @ 0x0070B4A0, virtual
 //          AnimUpdate(CAnimateThing&) (slot 2, CModeDragonFlyingBase 0x008D70A0) on `this`.
 // Globals: game frames per second (long) @ 0x01375550, 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8.
@@ -43,9 +43,9 @@ class CAnimateThing { public:
     float         TargetPlaybackSpeed;      // +0x20
 };
 class CTCAnimationComplex { public:                // the type-0x5a component
-    CAnimateThing* GetAnimateThing();       // 0x0070B460
-    long GetAnimIndex();                    // 0x0070B490
-    float GetAnimDuration(long animIndex);  // 0x0070B4A0
+    CAnimateThing& GetAnimation();          // 0x0070B460 ?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ (Ego_r / FableWin; the donor OnActivate calls it)
+    long GetAnimIndex() const;                    // 0x0070B490
+    float GetAnimDuration(long animIndex) const;  // 0x0070B4A0
 };
 void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
@@ -102,8 +102,8 @@ void CModeDragonFlying::OnActivate()
     StartSpeed = Speed;
     CTCAnimationComplex* animation = 0;
     ParentThing.GetTC(TCI_ANIMATION, &animation);
-    CAnimateThing* anim = animation->GetAnimateThing();
-    AnimUpdate(*anim);
+    CAnimateThing& anim = animation->GetAnimation();
+    AnimUpdate(anim);
     AnimLength = animation->GetAnimDuration(animation->GetAnimIndex());
     MovementDuringAnimationLoop = AnimLength * Speed;
     float frames = (float)CMainGameComponent::GetConstantFPS();
@@ -112,8 +112,8 @@ void CModeDragonFlying::OnActivate()
         rate = 0.0f;
     else if (rate > 1.0f)
         rate = 1.0f;
-    anim->PlaybackSpeed = rate;
-    anim->TargetPlaybackSpeed = rate;
+    anim.PlaybackSpeed = rate;
+    anim.TargetPlaybackSpeed = rate;
     FirstFrame = true;
     FlapCounter = 0;
 }

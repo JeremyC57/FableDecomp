@@ -1,0 +1,172 @@
+pH 00bbc130 RELOCATION_MATCH leaf=?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z flags=
+pS 00bbc130 RELOCATION_MATCH leaf=?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z flags=
+GRADE_DONE
+pH 00bbbf70 RELOCATION_MATCH leaf=RenderPrimitive flags=
+pS 00bbbf70 RELOCATION_MATCH leaf=RenderPrimitive flags=
+GRADE_DONE
+pH 00be0cd0 RELOCATION_MATCH leaf=Render2DPrimitive flags=
+pS 00be0cd0 RELOCATION_MATCH leaf=Render2DPrimitive flags=
+GRADE_DONE
+pH 005140a0 RELOCATION_MATCH leaf=_Push_heap flags=
+pS 005140a0 RELOCATION_MATCH leaf=_Push_heap flags=
+GRADE_DONE
+pH 00b98a50 RELOCATION_MATCH leaf=??0CEngineSubPrimitiveBase@ flags=
+GRADE_DONE
+pH 00bbddd0 RELOCATION_MATCH leaf=?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z flags=
+GRADE_DONE
+pH 00bbbdb0 RELOCATION_MATCH leaf=??0CEngineSubPrimitiveParticleGroup@@QAE@PAVCEngineInternalPrimitiveBase@@@Z flags=
+GRADE_DONE
+pH 00512410 RELOCATION_MATCH leaf=??R flags=
+GRADE_DONE
+pH 00514050 RELOCATION_MATCH leaf=??$__unguarded_linear_insert@PAPAVCThingBuilding@@PAV1@VCIsHouseLargerThan@@ flags=/Gr
+pS 00514050 RELOCATION_MATCH leaf=??$__unguarded_linear_insert@PAPAVCThingBuilding@@PAV1@VCIsHouseLargerThan@@ flags=/Gr
+GRADE_DONE
+pH 007be0f9 RELOCATION_MATCH leaf=OnCollision flags=
+pS 007be0f9 RELOCATION_MATCH leaf=OnCollision flags=
+GRADE_DONE
+pH 009b08c0 RELOCATION_MATCH leaf=?Compile@CDefinitionManager@@QAEXXZ flags=
+pS 009b08c0 DIFFER(506v506) leaf=?Compile@CDefinitionManager@@QAEXXZ flags=
+GRADE_DONE
+pH 008eddd0 RELOCATION_MATCH leaf=?FrameUpdate@CWillButtonHelperTimer@@QAEXXZ flags=
+pS 008eddd0 RELOCATION_MATCH leaf=?FrameUpdate@CWillButtonHelperTimer@@QAEXXZ flags=
+GRADE_DONE
+pH 00811830 RELOCATION_MATCH leaf=??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@W4EHeroAbility@@@Z flags=
+GRADE_DONE
+pH 00994780 RELOCATION_MATCH leaf=??1CFileDataInputStream@ flags=
+GRADE_DONE
+pH 00a6da40 RELOCATION_MATCH leaf=??0CPhysicsMesh flags=
+pS 00a6da40 RELOCATION_MATCH leaf=??0CPhysicsMesh flags=
+GRADE_DONE
+pH 00a6c850 RELOCATION_MATCH leaf=CalculateSegmentation flags=
+pS 00a6c850 RELOCATION_MATCH leaf=CalculateSegmentation flags=
+GRADE_DONE
+pH 00a669e0 RELOCATION_MATCH leaf=ProcessMaintainedEventsFromEvent flags=
+pS 00a669e0 RELOCATION_MATCH leaf=ProcessMaintainedEventsFromEvent flags=
+GRADE_DONE
+pH 00a86cd0 RELOCATION_MATCH leaf=?Create@CIPhysicsFacesSegmentBase@@SIPBV1@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@@Z flags=
+GRADE_DONE
+pH 00a6e9a0 RELOCATION_MATCH leaf=Reset flags=
+GRADE_DONE
+pH 00a03c20 MATCH leaf=SetAsKeyboardKeyPressed flags=
+GRADE_DONE
+pH 00445e90 MATCH leaf=?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z flags=
+GRADE_DONE
+pH 00bf6f80 RELOCATION_MATCH leaf=BuildDefaultSection flags=
+pS 00bf6f80 RELOCATION_MATCH leaf=BuildDefaultSection flags=
+GRADE_DONE
+pH 00522160 RELOCATION_MATCH leaf=?SaveEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataOutputStream@@JABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@4@@Z flags=
+pS 00522160 RELOCATION_MATCH leaf=?SaveEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataOutputStream@@JABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@4@@Z flags=
+GRADE_DONE
+pH 0095e6d0 RELOCATION_MATCH leaf=FindMostRecentMessage flags=
+pS 0095e6d0 RELOCATION_MATCH leaf=FindMostRecentMessage flags=
+GRADE_DONE
+pH 0082be60 RELOCATION_MATCH leaf=DrawMap flags=
+pS 0082be60 RELOCATION_MATCH leaf=DrawMap flags=
+GRADE_DONE
+pH 00891330 RELOCATION_MATCH leaf=IsDangerMusicEnabled flags=
+pS 00891330 RELOCATION_MATCH leaf=IsDangerMusicEnabled flags=
+GRADE_DONE
+pH 00be5e70 RELOCATION_MATCH leaf=??0CLandscapeBackgroundPatch@@QAE@PAVCLandscapeBackgroundTreeNode@@MMJJJJJJJPBVCSubPatchTreeLODLockElement@@1JJJ@Z flags=
+GRADE_DONE
+pH 00996cc0 RELOCATION_MATCH leaf=Write flags=
+GRADE_DONE
+pH 006af3f0 RELOCATION_MATCH leaf=??RCMessageEventFilter_IsMyDeadLeader@@QBE_NABVCMessageEvent@@@Z flags=
+GRADE_DONE
+pH 0082b7e0 RELOCATION_MATCH leaf=?DrawMarkers@CMiniMapDisplay@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@E_N@Z flags=
+GRADE_DONE
+pH 006bd840 MATCH leaf=?IsDangerMusicEnabled@CMusicManager@@QBE_NXZ flags=
+GRADE_DONE
+pH 0057713f RELOCATION_MATCH leaf=OnCreate flags=
+pS 0057713f RELOCATION_MATCH leaf=OnCreate flags=
+GRADE_DONE
+pH 0059c8f2 RELOCATION_MATCH leaf=OnCreate flags=
+pS 0059c8f2 RELOCATION_MATCH leaf=OnCreate flags=
+GRADE_DONE
+pH 005b36e9 RELOCATION_MATCH leaf=?OnCreate@CTCInventoryClothing@@UAEXXZ flags=
+pS 005b36e9 RELOCATION_MATCH leaf=?OnCreate@CTCInventoryClothing@@UAEXXZ flags=
+GRADE_DONE
+pH 005c3057 RELOCATION_MATCH leaf=OnCreate flags=
+pS 005c3057 RELOCATION_MATCH leaf=OnCreate flags=
+GRADE_DONE
+pH 005cd33f RELOCATION_MATCH leaf=OnCreate flags=
+pS 005cd33f RELOCATION_MATCH leaf=OnCreate flags=
+GRADE_DONE
+pH 005f4a86 RELOCATION_MATCH leaf=OnCreate flags=
+pS 005f4a86 RELOCATION_MATCH leaf=OnCreate flags=
+GRADE_DONE
+pH 00602e30 RELOCATION_MATCH leaf=?OnCreate@CTCInventoryMap@@UAEXXZ flags=
+pS 00602e30 RELOCATION_MATCH leaf=?OnCreate@CTCInventoryMap@@UAEXXZ flags=
+GRADE_DONE
+pH 00582944 RELOCATION_MATCH leaf=?OnCreate@CTCInventory@@QAEXXZ flags=
+pS 00582944 RELOCATION_MATCH leaf=?OnCreate@CTCInventory@@QAEXXZ flags=
+GRADE_DONE
+pH 0061a6a0 RELOCATION_MATCH leaf=?OnCreate@CTCInventoryQuests@@UAEXXZ flags=
+pS 0061a6a0 RELOCATION_MATCH leaf=?OnCreate@CTCInventoryQuests@@UAEXXZ flags=
+GRADE_DONE
+pH 0066eb11 RELOCATION_MATCH leaf=?RegisterScreen@CManager@NHeroInformationScreens@@QAEXABVCBase@2@@Z flags=
+GRADE_DONE
+pH 0045e808 RELOCATION_MATCH leaf=??$Transfer@PAVCOpinionPersonalityTraits@@@CPersistContext@@ flags=
+pS 0045e808 RELOCATION_MATCH leaf=??$Transfer@PAVCOpinionPersonalityTraits@@@CPersistContext@@ flags=
+GRADE_DONE
+pH 00aeefe0 RELOCATION_MATCH leaf=DatabaseCopy flags=
+pS 00aeefe0 RELOCATION_MATCH leaf=DatabaseCopy flags=
+GRADE_DONE
+pH 006bad20 RELOCATION_MATCH leaf=?TransferOut@?$CPersistContext_TransferableComponent flags=
+pS 006bad20 RELOCATION_MATCH leaf=?TransferOut@?$CPersistContext_TransferableComponent flags=
+GRADE_DONE
+pH 007ad6d0 RELOCATION_MATCH leaf=Transfer flags=
+pS 007ad6d0 RELOCATION_MATCH leaf=Transfer flags=
+GRADE_DONE
+pH 0045e8ed RELOCATION_MATCH leaf=?TransferBinaryIn@COpinionPersonalityTraits@@QAEXAAVCMemoryDataInputStream@@@Z flags=
+GRADE_DONE
+pH 00af4ee0 RELOCATION_MATCH leaf=DatabaseCopy flags=
+GRADE_DONE
+pH 006b91a0 RELOCATION_MATCH leaf=?TransferOut@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABVCFaction@@@Z flags=
+GRADE_DONE
+pH 007e3820 RELOCATION_MATCH leaf=TransferIn flags=
+GRADE_DONE
+pH 00ae1320 RELOCATION_MATCH leaf=?ClingToMesh@CParticleProgram@@ABEXAAVCParticleSimulation@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@@Z flags=
+GRADE_DONE
+pH 00ae3a30 RELOCATION_MATCH leaf=RemapBoneIndices flags=
+pS 00ae3a30 RELOCATION_MATCH leaf=RemapBoneIndices flags=
+GRADE_DONE
+pH 007b45a0 RELOCATION_MATCH leaf=Transfer flags=
+pS 007b45a0 RELOCATION_MATCH leaf=Transfer flags=
+GRADE_DONE
+pH 006ba030 RELOCATION_MATCH leaf=TransferBinaryOut flags=
+pS 006ba030 RELOCATION_MATCH leaf=TransferBinaryOut flags=
+GRADE_DONE
+pH 00816150 RELOCATION_MATCH leaf=?Init@CPhysicalPrimitiveCylinder@ flags=
+pS 00816150 RELOCATION_MATCH leaf=?Init@CPhysicalPrimitiveCylinder@ flags=
+GRADE_DONE
+pH 00ae3920 RELOCATION_MATCH leaf=?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAV?$CArray@VC3DGroup2@@@@@Z flags=
+GRADE_DONE
+pH 0047926c RELOCATION_MATCH leaf=?TransferBinaryIn@?$CPersistTraits@W4ECrimeSeverity@@@@QAEXAAVCMemoryDataInputStream@@AAW4ECrimeSeverity@@@Z flags=
+GRADE_DONE
+pH 006ba480 RELOCATION_MATCH leaf=?TransferIn@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCFaction@@@Z flags=
+GRADE_DONE
+pH 009e81e0 RELOCATION_MATCH leaf=?TransferIn@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC2DVector@@@Z flags=
+GRADE_DONE
+pH 00ac3bd0 RELOCATION_MATCH leaf=LoadBinary flags=
+pS 00ac3bd0 RELOCATION_MATCH leaf=LoadBinary flags=
+GRADE_DONE
+pH 004cc3f0 RELOCATION_MATCH leaf=Transfer flags=
+pS 004cc3f0 RELOCATION_MATCH leaf=Transfer flags=
+GRADE_DONE
+pH 006bace0 RELOCATION_MATCH leaf=?TransferIn@?$CPersistContext_TransferableComponent flags=
+pS 006bace0 RELOCATION_MATCH leaf=?TransferIn@?$CPersistContext_TransferableComponent flags=
+GRADE_DONE
+pH 00800400 RELOCATION_MATCH leaf=?TransferIn@?$CPersistContext_TransferableComponent flags=
+pS 00800400 RELOCATION_MATCH leaf=?TransferIn@?$CPersistContext_TransferableComponent flags=
+GRADE_DONE
+pH 00ae3c30 RELOCATION_MATCH leaf=?ReadFromFile@CParticleProgram@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z flags=
+GRADE_DONE
+pH 004cbc70 RELOCATION_MATCH leaf=TransferBinaryIn flags=
+GRADE_DONE
+pH 007ad7f0 RELOCATION_MATCH leaf=?TransferBinaryIn@?$CPersistTraits@W4EScriptingStateGroups@@@@QAEXAAVCMemoryDataInputStream@@AAW4EScriptingStateGroups@@@Z flags=
+GRADE_DONE
+pH 00ae2d20 RELOCATION_MATCH leaf=?SimulationStep@CParticleProgram@@QBEXAAVCParticleSimulation@@ABVCParticleContext@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@@Z flags=
+GRADE_DONE
+pH 00ae3a30 RELOCATION_MATCH leaf=RemapBoneIndices flags=
+pS 00ae3a30 RELOCATION_MATCH leaf=?RemapBoneIndices@CParticleProgram@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z flags=
+GRADE_DONE

@@ -1,5 +1,5 @@
 // CTCHeroRangedAttacks::LoadRangedWeapon() -- starts the hero's load action when the carried projectile weapon is alive and not yet loaded
-// Leaf: ?LoadRangedWeapon@CTCHeroRangedAttacks
+// Leaf: ?LoadRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078A2C0, 207 bytes.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (the hero's carrying component, type 0x46)
@@ -84,7 +84,7 @@ class CThingCreatureBase { public:
 
 class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:   // 0xB8 bytes in retail
     unsigned char _data_0xa8[0x10];
-    CCreatureAction_HeroLoadRangedWeapon(CThingCreatureBase* creature, CThing* weapon);   // 0x0078AE30
+    CCreatureAction_HeroLoadRangedWeapon(CThingCreatureBase& creature, CThing& weapon);   // 0x0078AE30
     ~CCreatureAction_HeroLoadRangedWeapon();         // 0x0078AB20
 };
 
@@ -98,7 +98,9 @@ class CTCHeroRangedAttacks { public:
     bool                Aiming;                      // +0x15
     bool                FireQueued;                  // +0x16
     bool                Loading;                     // +0x17
+    private:
     void LoadRangedWeapon();
+    public:
 };
 
 void CTCHeroRangedAttacks::LoadRangedWeapon()
@@ -109,6 +111,6 @@ void CTCHeroRangedAttacks::LoadRangedWeapon()
     if (IS_THING_ALIVE(weapon) && weapon->HasTC(0x48)) {
         CTCWeapon* tc = weapon->FindTC<CTCWeapon>(0x48);
         if (tc->IsProjectileWeapon() && !tc->IsProjectileWeaponLoaded() && !Loading)
-            PParentCreature->SetCurrentAction(CCreatureAction_HeroLoadRangedWeapon(PParentCreature, weapon));
+            PParentCreature->SetCurrentAction(CCreatureAction_HeroLoadRangedWeapon(*PParentCreature, *weapon));
     }
 }

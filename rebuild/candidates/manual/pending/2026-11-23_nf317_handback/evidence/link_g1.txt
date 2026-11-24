@@ -1,0 +1,15 @@
+## HEAD set: H_00979e90.obj H_0093dfc0.obj H_006c0f70.obj H_0072cd00.obj H_0072ce20.obj H_007339e0.obj H_00910570.obj H_009f5d70.obj H_00858130.obj 00979f70.obj 0097a630.obj 006c1250.obj 0072cf40.obj 009106b0.obj 009f5e10.obj
+duplicates 1
+  DUP H_00858130.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in H_0072cd00.obj;
+UNRESOLVED 1 ?CreateDressingSignPost@CTCBuyableHouse@@AAEXXZ
+UNRESOLVED 1 ?GetPActiveStrikeEvent@CCombatActionBase@@QAEPAVCStrikeEvent@1@XZ
+UNRESOLVED 2 ?IsStillRunnable@CAIStateGroup_CreatureTakeCover@@AAE_NXZ
+UNRESOLVED 1 ?LoadAllEventPackages@CInputManager@@QAEXABVCVersion@@AAVCDiskFileWin32@@@Z
+UNRESOLVED 1 ?SetupDivineWrath@CTCSpecialAbilities@@AAE_NXZ
+UNRESOLVED 1 ?SetupUnholyPower@CTCSpecialAbilities@@AAE_NXZ
+## new set: 00979e90.obj 0093dfc0.obj 006c0f70.obj 0072cd00.obj 0072ce20.obj 007339e0.obj 00910570.obj 009f5d70.obj 00858130.obj 00979f70.obj 0097a630.obj 006c1250.obj 0072cf40.obj 009106b0.obj 009f5e10.obj
+duplicates 1
+  DUP 00858130.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in 0072cd00.obj;
+UNRESOLVED 1 ?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ
+UNRESOLVED 1 ?LoadAllEventPackages@CInputManager@@QAEXABVCVersion@@AAVCDiskFileWin32@@@Z
+LK_DONE

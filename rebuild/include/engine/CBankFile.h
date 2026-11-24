@@ -12,6 +12,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CBANKFILE_UPDATE_PASS27
+#include "engine/CChecksumCacheFile.h"
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
 // Retail opt-in (wf13, row 0x009CCEF0 CBankFile::FindIndicesByFilename): typed Symbols / RuntimeData / PackedDataType /
 // FilenameIndices (Ego_r.pdb member types) and the inline entry queries that TU expands.
@@ -39,6 +42,12 @@ class CDateAndTime;class CBankStateBlock;class CDataOutputStream;class CBankFile
 #include "engine/CCountedPointer.h"
 class CBankStateBlock;
 #endif
+#ifdef FABLE_RETAIL_BANKFILE_INDEX_UPDATE_PASS26
+#include "engine/CVectorMap.h"
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_READENTRIES_PASS26
+class CFileDataInputStream;
+#endif
 class CBankFileEntryDependencies;
 class CCPPointerInfo;
 class CCharStringData;
@@ -63,6 +72,54 @@ public:
     virtual void Close();
     virtual void AddEntryMultipleFiles(const CCharString&,unsigned long,const CArray<CCharString>&,const CCountedPointer<CBankStateBlock>);
     virtual void Update();
+#ifdef FABLE_RETAIL_CBANKFILE_UPDATE_PASS27
+#ifdef FABLE_RETAIL_CBANKFILE_TEST_SUPPORT_PASS27
+    CBankFile();
+#endif
+    class CProgressCallback {
+    public:
+        virtual void SetProgress(unsigned long done, unsigned long total) = 0;
+        virtual void SetStatus(const CCharString& text) = 0;
+        virtual void WriteLog(const CCharString& text) = 0;
+    };
+    unsigned long CountEntries() const;
+    void BeginUpdateEntries();
+    void EndUpdateEntries();
+protected:
+#ifdef FABLE_RETAIL_CBANKFILE_PROGRESS_WRAPPERS_DECL
+    // Per-TU opt-in (NF243, 2026-11-22, CODEXP27 L108 / L110): Ego_r.pdb / FableWin.pdb ?SetBankUpdateStatus@CBankFile@@IAEXABVCCharString@@@Z
+    // and ?WriteBankLog@CBankFile@@IAEXABVCCharString@@@Z (protected), declared only: the self rows 0x009CBD30 (callback slot 1,
+    // `jmp [eax+4]`, `ret 4`; called from CBankFile::Update at 0x009CF27B) and 0x009CBD70 (slot 2, `jmp [eax+8]`) define them.
+    void SetBankUpdateStatus(const CCharString& text);                  // 0x009CBD30
+    void WriteBankLog(const CCharString& text);                         // 0x009CBD70
+#else
+    void SetBankUpdateStatus(const CCharString& text)
+    {
+        if (ProgressCallback)
+            ProgressCallback->SetStatus(text);
+    }
+    void WriteBankLog(const CCharString& text) {
+        if (ProgressCallback)
+            ProgressCallback->WriteLog(text);
+    }
+#endif
+private:
+    void DeleteEntry(unsigned long index);
+public:
+    unsigned long GetEntryChecksum(unsigned long index) const { return Checksums[index]; }
+private:
+#ifdef FABLE_RETAIL_CBANKFILE_PROGRESS_WRAPPERS_DECL
+    // NF243 (CODEXP27 L109): Ego_r.pdb / FableWin.pdb ?SetBankUpdateProgress@CBankFile@@AAEXKK@Z (private), declared only: the self
+    // row 0x009CBD50 (callback slot 0, `jmp [eax]`, `ret 8`) defines it.
+    void SetBankUpdateProgress(unsigned long done, unsigned long total); // 0x009CBD50
+#else
+    void SetBankUpdateProgress(unsigned long done, unsigned long total) {
+        if (ProgressCallback)
+            ProgressCallback->SetProgress(done, total);
+    }
+#endif
+public:
+#endif
 protected:
     virtual unsigned long GetDataFormatVersion()=0;
     virtual unsigned long AdjustUpdateEntries();
@@ -77,6 +134,11 @@ protected:
     virtual CDateAndTime GetLastModifiedTime(const CCharString&);
     virtual CCharString GetEnumerationType(unsigned long) const;
 public:
+#ifdef FABLE_RETAIL_CBANKFILE_GETALIGNMENT_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x00A39C70 CWADFile::GetAlignment): Ego_r.pdb / FableWin.pdb ?GetAlignment@CBankFile@@QBEKXZ, retail
+    // 0x009CBB80, which the donor FableWin CWADFile::GetAlignment calls on its Bank. Declaration only (needs FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS).
+    unsigned long GetAlignment() const;                                     // 0x009CBB80
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_GETBANKPATHNAME
     // NF177 opt-in (rows 0x009D56C0 / 0x009D5820 CBankFileAsync::OpenReadOnly / OpenFileReadOnly): Ego_r.pdb 0x00B19C30 + FableWin.pdb
     // 0x02F918E0 ?GetBankPathname@CBankFile@@QBE?AVCWideString@@XZ, out of line at 0x009CBF10 (CWideString by hidden pointer).
@@ -104,6 +166,18 @@ public:
         bool Valid;
         unsigned char _pad_0xa[0x2];
     };
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_GETSIZE_PASS26
+public:
+    // FableWin 0x02D96070 and donor composition call. Retail 0x00B2BA00 reads Size.
+    long GetSize() const { return Size; }
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_READENTRIES_PASS26
+private:
+    bool ReadEntryList(CFileDataInputStream& is,unsigned long max_index,unsigned long entry_count);
+    void PostInitEntries();
+public:
+    long GetSize() const { return Size; }
 #endif
     unsigned long               Size;                        // +0x04
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
@@ -183,13 +257,21 @@ public:
 #else
     unsigned char               FilenameIndices[0xc];        // +0xc4 multimap<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>_>
 #endif
+#ifdef FABLE_RETAIL_BANKFILE_INDEX_UPDATE_PASS26
+    CVectorMap<unsigned long,unsigned long> SymbolCRCIndices;
+#else
     unsigned char               SymbolCRCIndices[0x10];      // +0xd0 CVectorMap<unsigned_long,unsigned_long,CKeyPairCompareLess<unsigned_long,unsigned_long>_>
+#endif
     unsigned char               BlockOrder[0xc];             // +0xe0 CArray<unsigned_long>
     CProgressCallback*          ProgressCallback;            // +0xec
     CCharStringData*            HeaderEnumerationType_PStringData; // +0xf0 CCharString::PStringData
     bool                        WarningFlag;                 // +0xf4
     unsigned char               _pad_0xf5[0x3];              // +0xf5
+#ifdef FABLE_RETAIL_CBANKFILE_UPDATE_PASS27
+    CChecksumCacheFile          ChecksumCache;                // +0xf8
+#else
     unsigned char               ChecksumCache[0x18];         // +0xf8 CChecksumCacheFile
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_ENTRYQUERY
     // Chunk 749 (row 0x005502E0 NUISystem::CMesh::Draw): Ego_r.pdb ?EntryExists@CBankFile@@QBE_NK@Z (0x009CC190) and
     // ?GetEntryDataType@CBankFile@@QBEKK@Z (0x009CC210), both out of line.
@@ -253,6 +335,12 @@ public:
     // ?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z (Ego_r 0x00B1BF50 = retail 0x009CD620; the
     // bound CGraphicDataBank / CStaticMapBankFile spellings are wrong: NAME_FIXES.tsv), both out of line. Declarations only.
     unsigned long FindIndexBySymbol(const CCharString& symbol) const;                                  // 0x009CCDC0
+#ifdef FABLE_RETAIL_CBANKFILE_EDITOR_ENTRY_UPDATE
+    // FableWin SetupEditorAnimation calls these CBankFile members at the update sites.
+    void BeginUpdateEntries();                                               // 0x009CE8D0
+    void UpdateEntry(unsigned long index);                                   // 0x009CBA80
+    void EndUpdateEntries();                                                 // 0x009CEA70
+#endif
     void AddEntry(const CCharString& symbol, unsigned long data_type, const CCharString& filename,
                   CCountedPointer<CBankStateBlock> state_block);                                        // 0x009CD620
 #endif

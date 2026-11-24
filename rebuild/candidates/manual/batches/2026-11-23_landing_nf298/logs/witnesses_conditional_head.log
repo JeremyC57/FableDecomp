@@ -1,0 +1,28 @@
+addr       parity           behav  name
+00aeb6d0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00aeb6d0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00aeb6d0   WARN SHARED_HEADER_AVAILABLE C3DPositionInterpolator (engine/C3DPositionInterpolator.h)
+00aeb6d0   WARN SHARED_HEADER_AVAILABLE C3DOrientationInterpolator (engine/C3DOrientationInterpolator.h)
+00aeb6d0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00aeb6d0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterDatabase (engine/CParticleEmitterDatabase.h)
+00aeb6d0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterList (engine/CParticleEmitterList.h)
+00aeb6d0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00aeb6d0   WARN RELOC_NAME: ??0CEmitterPointer@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z -> 00ae9450 labelled 'CCountedPointer<NParticleEngine::CParticleEmitter>::CCountedPointer'
+00aeb6d0   WARN RELOC_NAME: ??1CEmitterPointer@@QAE@XZ -> 00ae94a0 labelled 'CCountedPointer<NParticleEngine::CParticleEmitter>::~CCountedPointer'
+00aeb6d0   RELOCATION_MATCH PASS   CreateEmitter
+00aeb790   RELOCATION_MATCH PASS   Create2DEmitter
+00d73970   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d73970   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript (engine/CQ_HangingTreeGoodScript.h)
+00d73970   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d73970   RELOCATION_MATCH PASS   Main
+00d73c70   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d73c70   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d73c70   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript (engine/CQ_HangingTreeGoodScript.h)
+00d73c70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d73c70   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  00aeb6d0 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::?CreateEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z
+  00aeb790 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC2DVector@@W4EEngine2DLayer@@_NABVCRightHandedSet@@@Z
+  00d73970 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointCond::?Main@CHTG_AmbushPointCond@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d73c70 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointBackup::?Main@CHTG_AmbushPointBackup@CQ_HangingTreeGoodScript@NScript@@EAEXXZ

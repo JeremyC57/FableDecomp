@@ -79,18 +79,18 @@ public:
         PD3DSurface->GetDesc(&desc);
         return C2DExtentsI(desc.Width, desc.Height);
     }
-    bool CanDoProperSignedConversion(const C2DBoxI* dst, const C2DBoxI* src, const CPixelFormat* format);   // 0x009F35D0
+    private: bool CanDoProperSignedConversion(const C2DBoxI* dst, const C2DBoxI* src, const CPixelFormat& format); public:   // 0x009F35D0
     bool InitialiseAsImage(const C2DExtentsI& dims, const CPixelFormat& format, bool dynamic);              // 0x009F3230
     CSurfaceLockedRect Lock(unsigned long flags);                                                          // 0x009F33E0
     void Unlock() { PD3DSurface->UnlockRect(); }
-    void CopyFromUnsignedDataToSignedSurface(const void* data, const CPixelFormat* format, long pitch);    // 0x009F36E0
+    private: void CopyFromUnsignedDataToSignedSurface(const void* data, const CPixelFormat& format, long pitch); public:    // 0x009F36E0
     void CopyFromSurface(const C2DBoxI* dstBox, const CSurface& source, const C2DBoxI* srcBox, unsigned long filter);
 };
 
 void CSurface::CopyFromSurface(const C2DBoxI* dstBox, const CSurface& source, const C2DBoxI* srcBox, unsigned long filter)
 {
     if (GetPixelFormat().IsSigned() && !source.GetPixelFormat().IsSigned()
-        && CanDoProperSignedConversion(0, 0, &CPixelFormat(D3DFMT_A8R8G8B8))) {
+        && CanDoProperSignedConversion(0, 0, CPixelFormat(D3DFMT_A8R8G8B8))) {
         CPixelFormat argb;
         argb.Initialise(D3DFMT_A8R8G8B8);
         CSurface temp;
@@ -98,7 +98,7 @@ void CSurface::CopyFromSurface(const C2DBoxI* dstBox, const CSurface& source, co
         temp.CopyFromSurface(dstBox, source, srcBox, 0xffffffff);
         {
             CSurfaceLockedRect locked = temp.Lock(0);
-            CopyFromUnsignedDataToSignedSurface(locked.PMem, &argb, locked.Pitch);
+            CopyFromUnsignedDataToSignedSurface(locked.PMem, argb, locked.Pitch);
         }
         temp.Unlock();
     } else {

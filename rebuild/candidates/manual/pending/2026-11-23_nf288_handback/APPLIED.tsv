@@ -1,0 +1,88 @@
+entry	address	status	binders_respelled	note
+1	0x009B9880	done	0x00A64230	0x00A64230 ReadFromParserAsBool: local CParsedItem model (line 11) declared GetSymbol; respelled to GetString (decl + both calls, lines 11 / 22 / 24; comment corrected: 0x009B9880 is GetString, 0x009B9870 GetSymbol); HEAD object relocated ?GetSymbol@ at both retail 0x009B9880 call sites, new relocates ?GetString@ x2 (xr); objsec ALL_EQ under that one rename. Test CHANGED (its row copy lines 200 / 211 / 213 and the stub line 234 now GetString; still counts the calls): clang PASS. Census (my VC7.1 HEAD objects, locked controls): all 9 other rows calling 0x009B9880 bind GetString, all 8 calling 0x009B9870 bind GetSymbol; reloc_bindings has no GetSymbol->009b9880 line (no table change)
+2	0x00598463	done	0x0059A238	binder 0x0059A238 (Action) `protected: ... public:` (line 260); self 0x00598463 IAE (VC7.1 HEAD object). Precheck: the CHANGED source fails plain clang only in its own line 369 (CWideString + L" ") and passes clang NOWCHAR (new + HEAD; the 0x00561980 pattern); its unchanged landed test (a row copy with stubs) passed D1b cl /Zs before the lock. objsec ALL_EQ; link: HEAD leaves QAE unresolved, the new set resolves IAE against the self
+3	0x004962C0	skipped-precheck		as entry 2: unchanged test cl /Zs PASS, but the CHANGED self source 0x004962C0 fails clang in its own line 46 (`unsigned int(...)` functional cast; HEAD identical). Edit prepared (work/prepared/004962c0.cpp: line 78 `private: ... public:`, Leaf AAEXJ), not compiled; binder 0x004963A0 declares it private (AAE by source). Decision asked
+4	0x0076CCE0	done	0x0076D460	binder 0x0076D460 (CTCEnemy::IsAllyOf) `private:` (line 58); 0x0076D2F0 already ABE (VC7.1 HEAD object); the self 0x0076CCE0 has no landed source (ABE stays unresolved in the link, as QBE was at HEAD)
+5	0x006C3CA0	done	0x006C3E80	binder 0x006C3E80 `private:` (line 165); self AAE (HEAD object); test D1 cl /Zs PASS (clang: VC7.1 <cwchar> only)
+6	0x007C86F0	done	0x008BAB70	binder 0x008BAB70 `const` (line 29); self QBE
+7	0x007E7580	done	0x007E7AC0	binder 0x007E7AC0 `const` removed (line 95; both PDBs QAE non-const, the self 0x007E7580 defines QAE; DelayedQuit is non-const)
+8	0x006D5260	skipped-held		the self 0x006D5260 defines QAE (no Leaf; line 85 public); 0x006D53C0 binds IAE; the other binder 0x006D5850 is NF287's entry (not compiled): moving the self to IAE would leave 0x006D5850's QAE unresolved. Proposed edit: self line 85 `protected:` together with NF287's 0x006D5850
+9	0x004BC4F0	done	0x004BC4F0,0x004BDA30,0x004BDB40,0x004BDD70,0x004BDE90,0x004BE000	self 0x004BC4F0 (line 102, prefix Leaf) and its 5 same-class binders (lines 131 / 128 / 127 / 119 / 118) `protected:`; 0x004C0560 already IBE; their ??_7C3DMeshObject tables byte- and relocation-identical (objsec)
+10	0x004BE000	done-partial	0x0072DDB0,0x0072DF50	binders 0x0072DDB0 (line 40) / 0x0072DF50 (line 33) `const`; 0x0072E130 QBE; self QBE; 0x007F8890 binds ?GetNoDummyObjects@CTCGraphicAppearance@@QAEJABVCCharString@@M@Z (no NGraphicAppearance namespace: a stand-in model, T3, NAME_FIXES)
+11	0x006D7F20	done-partial	0x006D7F20	T2 self `private:` (line 84), Leaf respelled; 0x006D8790 / 0x006D8830 already AAE; 0x006D8770 binds the free stand-in ?helper_6d7f20@@YGXH@Z (T1 standin_alias, NAME_FIXES)
+12	0x0055FB80	rejected		T3 (D3 pattern): 0x00560D00 defines a strong same-TU copy ?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE... (line 226, out of class, VC7.1 HEAD object DEF); moving the self 0x0055FB80 (QAE) to AAE gives a second strong AAE definer, and moving the 5 binders onto AAE would bind them to that copy. Not changed
+13	0x00560D00	done	0x00564570	binder 0x00564570 (CTCHeroOnlineScoreboard::GlobalUpdate) `private:` (line 51); self AAE
+14	0x00563480	done	0x00564570	same row, line 59; self AAE
+15	0x00563920	done	0x00564570	same row, line 60; self AAE
+16	0x0057A89D	done	0x0057CB7E	binder 0x0057CB7E `const` (line 117); 0x0057B43F QBE; self QBE
+17	0x0057AAD9	done-partial	0x0057BE71	binder 0x0057BE71 `const` (line 55); 4 other binders QBE; the self 0x0057AAD9 defines ?GetPercentageThroughRenownLevel@CTCHeroStats_Retail@@QBEMXZ (stand-in class, T3, NAME_FIXES), so QBE stays unresolved in the link as at HEAD
+18	0x0077C960	done	0x0077CD50	binder 0x0077CD50 `protected:` (struct model, line 104); self IAE
+19	0x00582027	done-partial	0x00582027,0x006AC690	DECISION (land or drop: the CLongVector change is wider than R1's examples). self 0x00582027 `const` on decl (line 22) + definition (line 25); wider (ruling R1 kind: what the PDB-const body forces): its local CLongVector stand-in gains `const long& operator[](unsigned long) const` on the existing operator[] line (its pick-any COMDAT respells ??ACLongVector@@QAEAAJK@Z -> QBEABJK, bytes equal, not in the table); binder 0x006AC690 `const` (line 57); 0x006AC430 QBE. 0x0058509F defines a strong same-TU QAE copy (line 44) and calls it: left (T3, NAME_FIXES); its HEAD LNK4006 against the self disappears
+20	0x005BDD39	decision		virtual, not compiled: the self 0x005BDD39 defines the stand-in ?GlobalUpdate@CTCInventoryBase_Retail@@UAEXM@Z (float parameter); binders 0x0056FC5D / 0x00591E8C declare it non-virtual (QAE) in local base models of classes that override it, 0x0059B717 / 0x005C2DFD bind _ForwardTarget_005bdd39 stand-ins: T3 port?
+21	0x005D9070	done	0x005D9070,0x009261F0	self 0x005D9070 `const` on decl (line 89) + definition (line 91), no Leaf; binder 0x009261F0 `const` (line 101); 0x007CACB0 QBE
+22	0x005FBFA0	done	0x00602F30	binder 0x00602F30 (ProcessButtonAReleased) `private:` (line 83); self AAE
+23	0x005FC840	rejected		T3: `const` on the self 0x005FC840 body forces `const` on its callee TeleportHeroToTeleporter 0x005FBD20 (clang: non-const call), whose self defines the stand-in signature ?TeleportHeroToTeleporter@CTCInventoryMap@@QAEXPAVCThing@@@Z (both PDBs QBEXAAVCThing@@, already bound by 0x005FBD90): port 0x005FBD20 first. Edit prepared (work/prepared/005fc840.cpp), not compiled
+24	0x005A8C66	done	0x005AE972	binder 0x005AE972 `private:` (line 137); self AAE
+25	0x005CA68E	done	0x005CAC8D	binder 0x005CAC8D `private:` (line 49); 0x005CB128 / 0x005CB2B0 and self AAE
+26	0x007FB4A0	done	0x007FB4A0	T2 self `private:` (line 51), Leaf respelled; 0x007FC9D0 AAE
+27	0x007FBB00	done	0x007FBB00,0x007FBC30	self 0x007FBB00 (line 157, no Leaf) and binder 0x007FBC30 (line 10) `private:`; 0x007FC9D0 AAE
+28	0x007FBC90	done	0x007FBC90,0x007FC8E0	T2 self `private:` (line 99), Leaf respelled; binder 0x007FC8E0 `private:` (line 122); 0x007FC9D0 AAE
+29	0x007F07A0	done	0x007F08B0	binder 0x007F08B0 `private:` (line 122); 0x007F0890 / 0x007F0B10 and self AAE
+30	0x007F0C70	done	0x007F14F0	binder 0x007F14F0 `private:` (line 105); self AAE
+31	0x007F0F40	done	0x007F14F0,0x007F15D0	binders 0x007F14F0 (line 106) / 0x007F15D0 (line 13) `private:`; self AAE
+32	0x00751DA0	done	0x00753C70	binder 0x00753C70 `private:` + `const` (line 98); self ABE
+33	0x00766660	done	0x00766A60	binder 0x00766A60 `private:` (two-line declaration, lines 91-92); the self 0x00766660 was not compiled (its HEAD source fails clang in engine/CTCObjectAugmentations.h line 107, `explicit instantiation cannot be inline`, not D1); its Leaf and the header declaration are AAE, so AAE stays unresolved in my link only because the self object is absent
+34	0x007674A0	done	0x007674A0	T2 self `private:` (line 122), Leaf respelled; 0x007676A0 AAE (HEAD object); 0x007677E0 not compiled (its HEAD source fails clang in engine/CTCObjectAugmentations.h line 107, not D1) and binds AAE through that header (private) by source
+35	0x00744830	done-partial	0x0090F290,0x009357F0	binders 0x0090F290 (line 122) / 0x009357F0 (line 64) `const`; 0x008D0BA0 / 0x00939ED0 QBE; the self 0x00744830 defines the free stand-in ?CTCPerceiveThing_IsPlayerExtendedLineOfSight@@YIHPAVCTCPerceiveThing@@@Z (T3, NAME_FIXES), so QBE stays unresolved in the link as QAE was at HEAD
+36	0x0079E420	done	0x0079E420,0x0079EB30	self 0x0079E420 (line 117, no Leaf) and binder 0x0079EB30 (line 43) `protected:`; 0x0079EC10 IAE
+37	0x006AFA40	done	0x006AFA40	T2 self `protected:` (line 51), Leaf respelled; 0x00725500 IBE (through engine/CTCPhysicsBase.h, protected)
+38	0x0075B000	done	0x0075B2D0	binder 0x0075B2D0 (OnCreate) `private:` (line 73); self AAE
+39	0x008004D0	done	0x0097F5B0	binder 0x0097F5B0 (CAIStateGroupBase::SetUpPreCalcNav) `const` (line 33); 0x00714370 and self QBE
+40	0x008008B0	done	0x00800A60	binder 0x00800A60 (OnSerialise) `private:` (line 47); self AAE
+41	0x00702400	done	0x005E4430	binder 0x005E4430 `const` (line 92); 0x0058578B / 0x0061B610 / 0x0061E6D0 and self QBE
+42	0x007280C0	done-partial	0x00728400,0x00728460,0x00728470	binders 0x00728400 (Copy, line 48) / 0x00728460 (AddToInterface, line 6) / 0x00728470 (OnCreate, line 45) `private:`; self AAE; 0x007283F0 binds _ForwardTarget_007280c0 (NAME_FIXES)
+43	0x007F53A0	decision		virtual, not compiled: the only QAE binder 0x007F50B0 (CTCSoundAtmosphereVillage::OnInitialActivate) models CTCSoundAtmosphere in a struct with no virtuals (base call); `virtual` there adds a vptr (layout / table change unless the leading pad is shrunk, R1). Same class of decision as NF286's 40 / 42
+44	0x0066BC10	rejected		T3 (D3 pattern): 0x0066BDF0 defines its own strong same-TU copy ?GetPotentialCriteriaStrings@CTCSoundPlayer@@QAE... and calls it; 0x0066BD00 already defines an AAE copy beside the self (HEAD duplicate); moving 0x0066BDF0 to AAE adds a third AAE definer (NAME_FIXES)
+45	0x006E2840	done	0x006E2840,0x00957A20,0x0096F570	self 0x006E2840 `const` on decl (line 15) + definition (line 18), no Leaf; binders 0x00957A20 (line 38) / 0x0096F570 (line 25) `const`; 0x00716B30 QBE
+46	0x007F9960	done	0x007F9B90	binder 0x007F9B90 (FrameUpdate) `protected:` (struct model, line 41); self IAE
+47	0x005E9AA0	decision		virtual, not compiled: the self 0x005E9AA0 defines the stand-in ?EndRound@C005e9aa0@@QAEXXZ (T3); binders 0x007D7BA0 / 0x008F1720 make non-virtual base calls on local CTCTavernGame models (QAE); 0x008EF190 UAE. T3 port with the self?
+48	0x005EA3C0	done	0x0094CE60	binder 0x0094CE60 `const` (line 72, one-line class model); self QBE
+49	0x008F1D40	decision		virtual, not compiled: the only QAE binder 0x007DA360 (CTCTavernGameCardBlackjack::FrameUpdate) declares the base FrameUpdate non-virtual beside 57 placeholder virtuals v00.. in its local CTCTavernGameCardBase model; `virtual` there adds a table slot (table change). T3 (slot-ordered shared model)?
+50	0x007D46D0	done	0x007D4A60,0x007D4A90	binders 0x007D4A60 (line 22) / 0x007D4A90 (line 46) `private:`; self AAE
+51	0x007881AD	done	0x007888B4	binder 0x007888B4 (FrameUpdate) `protected:` (line 65); self IAE
+52	0x00659EA9	done	0x00659EA9,0x0065B6DD	self 0x00659EA9 (line 34, no Leaf) and binder 0x0065B6DD (line 77) `private:`; 0x0065BE6C AAE (engine/CTCVillage.h); 0x0065B6DD test D1 cl /Zs PASS (clang: VC7.1 <functional> / <cwchar> only)
+53	0x004C8280	done	0x00522880	binder 0x00522880 (CThingManager::SaveMainPlayerCreatureState) `const` (line 88); the 6 other compiled binders and self QBE; 0x008ED1F0 is NF287's entry (not compiled; declares it const by source, line 64)
+54	0x004C8C00	done	0x004C8C00,0x004C8CF0,0x004C9B80,0x004C9CA0	self 0x004C8C00 (line 53, no Leaf) and binders 0x004C8CF0 (58) / 0x004C9B80 (55) / 0x004C9CA0 (54) `protected:`; 0x004C9C10 IAE (engine/CThing.h)
+55	0x008338D0	done	0x00833A70	binder 0x00833A70 (OnCreate) `protected:` (line 105); self IAE
+56	0x00863250	done	0x006622D0,0x00836260	binders 0x006622D0 (line 35) / 0x00836260 (line 102) `const`; self QBE
+57	0x00863280	done	0x00863E10	binder 0x00863E10 `private:` (line 25); self AAE
+58	0x00863CA0	done	0x00863E10	same row, line 23; self AAE
+59	0x006626E0	done	0x006626E0	T2 self `const` on decl (line 46) + definition (line 49), Leaf respelled; 0x00692C80 QBE
+60	0x00662880	done	0x00830360	binder 0x00830360 (CThingAICreature::ConstructFromParams, a derived-class call) `protected:` on the two-line declaration in its local CThingCreatureBase model (lines 64-65); 0x006A9DD0 and self IAE
+61	0x006628E0	open		not started
+62	0x00665860	open		not started
+63	0x0085D180	open		not started
+64	0x006378E0	open		not started
+65	0x006A4E90	open		not started
+66	0x006AC390	open		not started
+67	0x006AD970	open		not started
+68	0x0083B520	open		not started
+69	0x0098ECD0	open		not started
+70	0x00760E70	open		not started
+71	0x00F3B970	open		not started
+72	0x00408120	open		not started
+73	0x0040D350	open		not started
+74	0x00AD9F10	open		not started
+75	0x00AC44D0	open		not started
+76	0x00AC4910	open		not started
+77	0x00A67FF0	open		not started
+78	0x00A0CDD0	open		not started
+79	0x0049D4E0	open		not started
+80	0x0049D8F0	open		not started
+81	0x0049E9F0	open		not started
+82	0x0049F4C0	open		not started
+83	0x004A21F0	open		not started
+84	0x004A2D70	open		not started
+85	0x004FB310	open		not started
+86	0x004FCE20	open		not started
+87	0x008AF500	open		not started

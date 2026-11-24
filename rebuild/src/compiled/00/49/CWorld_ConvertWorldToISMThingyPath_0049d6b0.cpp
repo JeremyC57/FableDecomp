@@ -25,7 +25,7 @@ class CAFile {
 public:
     static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
 };  // 0x00997620
-CWideString __fastcall GetLevelsDirectory_0041a410();       // 0x0041A410 (L"Data\\Levels\\", hidden result in ecx)
+namespace NResourceDirectoryNames { CWideString __fastcall GetStaticMapDir(); }   // 0x0041A410 (L"Data\\Levels\\", hidden result in ecx; Ego_r + FableWin)
 class CWorld { public:
     CWideString ConvertWorldToISMThingyPath(const CWideString& world, bool xbox, bool runtime) const;
 };
@@ -35,15 +35,15 @@ CWideString CWorld::ConvertWorldToISMThingyPath(const CWideString& world, bool x
     CAFile::SplitPath(world, 0, 0, &name, 0);
     if (runtime) {
         if (xbox)
-            name = GetLevelsDirectory_0041a410() + name + (const wchar16*)L"_RT_XB.ism";
+            name = NResourceDirectoryNames::GetStaticMapDir() + name + (const wchar16*)L"_RT_XB.ism";
         else
-            name = GetLevelsDirectory_0041a410() + name + (const wchar16*)L"_RT.ism";
+            name = NResourceDirectoryNames::GetStaticMapDir() + name + (const wchar16*)L"_RT.ism";
     }
     else {
         if (xbox)
-            name = GetLevelsDirectory_0041a410() + name + (const wchar16*)L"_XB.ism";
+            name = NResourceDirectoryNames::GetStaticMapDir() + name + (const wchar16*)L"_XB.ism";
         else
-            name = GetLevelsDirectory_0041a410() + name + (const wchar16*)L".ism";
+            name = NResourceDirectoryNames::GetStaticMapDir() + name + (const wchar16*)L".ism";
     }
     return name;
 }

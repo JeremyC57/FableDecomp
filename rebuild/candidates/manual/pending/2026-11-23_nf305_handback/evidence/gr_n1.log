@@ -1,0 +1,18 @@
+N 00644179 NPlayerGui::CDrawMiniMap::IsFinishedOpening RELOCATION_MATCH flags= [] leaf=
+N 006d7cb0 CTCHeroExperience::IsReadyToLevelUp RELOCATION_MATCH flags= [] leaf=IsReadyToLevelUp
+N 006d8b50 CTCHeroExperience::SetExperienceStatus RELOCATION_MATCH flags= [] leaf=SetExperienceStatus
+N 006e9d90 CCombatManager::SetAttackerRingAsRotating RELOCATION_MATCH flags= [] leaf=SetAttackerRingAsRotating
+N 006ebee0 CCombatRing::AssignAttackerToProng RELOCATION_MATCH flags= [] leaf=
+N 00730f90 CTCDoor::UpdateOpenStatusTriggerTypePerson RELOCATION_MATCH flags= [] leaf=?UpdateOpenStatusTriggerTypePerson@CTCDoor@@QAEXXZ
+N 00788555 CTCMeleeTrap::UpdateAnimation RELOCATION_MATCH flags= [] leaf=UpdateAnimation
+N 0079e3a0 CTCPhysicalShieldSpell::Pause RELOCATION_MATCH flags= [] leaf=Pause
+N 00872050 NCameraModes::CStringAndCageBase::UpdateZVars RELOCATION_MATCH flags= [] leaf=UpdateZVars
+N 00892f40 CGameScriptInterface::IsQuestActive RELOCATION_MATCH flags= [] leaf=
+N 008e9080 NCreatureMode::GetAnimDistanceAndIndexFromAnimName RELOCATION_MATCH flags= [] leaf=?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z
+N 00904ee0 CScriptGameResourceObjectScriptedThing::IsPerformingScriptTask RELOCATION_MATCH flags= [] leaf=IsPerformingScriptTask
+N 009189c0 CAIStateGroup_GazeAtHome::IsRunnable RELOCATION_MATCH flags= [] leaf=?IsRunnable@CAIStateGroup_GazeAtHome@@UAE_NXZ
+N 0094fe30 CAIStateGroup_JackDragon::StayIdle RELOCATION_MATCH flags= [] leaf=?StayIdle@CAIStateGroup_JackDragon@@AAEXM@Z
+N 009a06b0 CBasicString<char>::Insert RELOCATION_MATCH flags= [] leaf=?Insert@
+N 00b8ff70 CEngineInternalPrimitiveBase::NotifyReleased RELOCATION_MATCH flags= [] leaf=
+N 00bdda80 CLocalDetailCacheMap::CQuadTreeElement::RenderUpdate RELOCATION_MATCH flags= [] leaf=RenderUpdate
+GR_DONE

@@ -1,0 +1,14 @@
+## h
+duplicates 1
+00890d80.obj : warning LNK4006: "public: __thiscall CGameEvent::CGameEvent(long)" (??0CGameEvent@@QAE@J@Z) already defined in 004159b0.obj; second definition ignored
+## n
+duplicates 3
+00890c80.obj : warning LNK4006: "public: __thiscall CGameEvent::CGameEvent(long)" (??0CGameEvent@@QAE@J@Z) already defined in 004159b0.obj; second definition ignored
+00890d80.obj : warning LNK4006: "public: __thiscall CGameEvent::CGameEvent(long)" (??0CGameEvent@@QAE@J@Z) already defined in 004159b0.obj; second definition ignored
+008ee720.obj : warning LNK4006: "unsigned long __fastcall GFRandom(unsigned long,unsigned long *)" (?GFRandom@@YIKKPAK@Z) already defined in 004cdae0.obj; second definition ignored
+## n1 (one object per TU)
+duplicates 3
+00890c80.obj : warning LNK4006: "public: __thiscall CGameEvent::CGameEvent(long)" (??0CGameEvent@@QAE@J@Z) already defined in 004159b0.obj; second definition ignored
+00890d80.obj : warning LNK4006: "public: __thiscall CGameEvent::CGameEvent(long)" (??0CGameEvent@@QAE@J@Z) already defined in 004159b0.obj; second definition ignored
+008ee720.obj : warning LNK4006: "unsigned long __fastcall GFRandom(unsigned long,unsigned long *)" (?GFRandom@@YIKKPAK@Z) already defined in 004cdae0.obj; second definition ignored
+DONE

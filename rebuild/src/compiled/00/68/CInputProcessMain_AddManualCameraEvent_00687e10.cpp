@@ -1,5 +1,5 @@
 // CInputProcessMain::AddManualCameraEvent(unsigned char on, CProcessedInput& input) -- queue game event 0x0B (the manual-camera toggle) carrying the one-byte on/off flag
-// Leaf: ?AddManualCameraEvent@CInputProcessMain@@
+// Leaf: ?AddManualCameraEvent@CInputProcessMain@@CIXEAAVCProcessedInput@@@Z
 // Flags: /GS
 //
 // Retail 0x00687E10, 89 bytes (+ int3 padding to 96), plain `ret` (private static __fastcall: the flag in cl, the input in
@@ -44,7 +44,9 @@ public:
 
 class CInputProcessMain {
 public:
+    private:
     static void __fastcall AddManualCameraEvent(unsigned char on, CProcessedInput& input);
+    public:
 };
 
 void __fastcall CInputProcessMain::AddManualCameraEvent(unsigned char on, CProcessedInput& input)

@@ -130,7 +130,7 @@
 
 extern double VIRTUAL_SCREEN_WIDTH;                                      // 0x013961E8
 extern double VIRTUAL_SCREEN_HEIGHT;                                     // 0x013961F0
-extern CRenderManager* PRenderManager;                                   // 0x013B8384
+extern CRenderManager* GPRenderManager;                                   // 0x013B8384 (Ego_r / FableWin / Ego_d publics; NF236: was PRenderManager)
 extern CDisplayManager* GPDisplayManager;                                // 0x013B8390
 extern CInputManager* GPInputManager;                                    // 0x013B8388
 extern CCharString GVersionString;                                       // 0x013B85E0
@@ -194,14 +194,14 @@ void CDisplayEngine::DoRender(const CInterpolationInfo* info, bool world_updated
     GFFPUSetRoundingNearest();
     g_LightsDrawnThisFrame = 0;
     CCamera camera(C3DVector(0.0f, 0.0f, 0.0f), C3DVector(1.0f, 0.0f, 0.0f), 0.25f, false);
-    PRenderManager->SetFogEnable(false);
-    PRenderManager->SetVWindow(MainWindow);
+    GPRenderManager->SetFogEnable(false);
+    GPRenderManager->SetVWindow(MainWindow);
     C2DBoxF window = MainWindow;
     C2DBoxF television_area = GPDisplayManager->GetVVisibleTelevisionScreenArea();
     g_013B8A0C = 0;
     g_013B8A10 = 0;
     GPDisplayManager->BeginRender();
-    PRenderManager->ClearRenderTarget(CRGBColour(0, 0, 0, 0), 0);
+    GPRenderManager->ClearRenderTarget(CRGBColour(0, 0, 0, 0), 0);
     if (IsRenderingNormalScene()) {
         CTBaseSingleton<CEngineManager>::Get().OnRender();
         if (NUISystem::CManager::GetInstance()->HasErrorMessage())
@@ -245,26 +245,26 @@ void CDisplayEngine::DoRender(const CInterpolationInfo* info, bool world_updated
         for (; i < count; ++i) {
             const CThing* thing = things[i];
             if (thing->HasBaseDef())
-                PRenderManager->Draw3DScaledText(C3DVector(VIRTUAL_SCREEN_WIDTH * 0.45f, GFAYToVY(45.0f) + GFAYToVY(16.0f) * i, 0.0f), 0.7f,
+                GPRenderManager->Draw3DScaledText(C3DVector(VIRTUAL_SCREEN_WIDTH * 0.45f, GFAYToVY(45.0f) + GFAYToVY(16.0f) * i, 0.0f), 0.7f,
                                                  thing->PeekBaseDef().GetInstantiationName().ToWideString(), PeekDebugFont(), CRGBColour(white, white, white, white), 0);
         }
     }
     if (g_RenderThrottlePaused_013b8629 && !GPInputManager->IsLoadingEvents())
-        PRenderManager->Draw2DText(C2DVector(VIRTUAL_SCREEN_WIDTH * 0.5, VIRTUAL_SCREEN_HEIGHT * 0.5), L"Recording!", PeekMainFont(), CRGBColour(white, white, white, white), 0);
+        GPRenderManager->Draw2DText(C2DVector(VIRTUAL_SCREEN_WIDTH * 0.5, VIRTUAL_SCREEN_HEIGHT * 0.5), L"Recording!", PeekMainFont(), CRGBColour(white, white, white, white), 0);
     if (g_DrawStatsText && Component->DebugNoFramesUnableToRender) {
-        PRenderManager->Draw2DText(C2DVector(VIRTUAL_SCREEN_WIDTH * 0.5, VIRTUAL_SCREEN_HEIGHT * 0.5), L"Frames behind " + GFIntToWideString(Component->DebugNoFramesUnableToRender), PeekMainFont(), CRGBColour(white, white, white, white), 0);
+        GPRenderManager->Draw2DText(C2DVector(VIRTUAL_SCREEN_WIDTH * 0.5, VIRTUAL_SCREEN_HEIGHT * 0.5), L"Frames behind " + GFIntToWideString(Component->DebugNoFramesUnableToRender), PeekMainFont(), CRGBColour(white, white, white, white), 0);
     }
     if (g_RenderThrottleEnabled_013b860c && !g_RenderThrottlePaused_013b8629 && GPInputManager->IsLoadingEvents())
-        PRenderManager->Draw2DText(C2DVector(VIRTUAL_SCREEN_WIDTH * 0.5, VIRTUAL_SCREEN_HEIGHT * 0.5), L"Skipping unrecorded frames!", PeekMainFont(), CRGBColour(white, white, white, white), 0);
+        GPRenderManager->Draw2DText(C2DVector(VIRTUAL_SCREEN_WIDTH * 0.5, VIRTUAL_SCREEN_HEIGHT * 0.5), L"Skipping unrecorded frames!", PeekMainFont(), CRGBColour(white, white, white, white), 0);
     if (CConsole::Get().IsActive())
         CConsole::Get().Draw(C2DBoxF(0.0f, 0.0f, VIRTUAL_SCREEN_WIDTH, (VIRTUAL_SCREEN_HEIGHT * 5.0) / 12.0));
     if (g_DrawBuildVersion) {
-        PRenderManager->Draw2DText(C2DVector(VIRTUAL_SCREEN_WIDTH * 0.1, VIRTUAL_SCREEN_HEIGHT - 2.0 * PeekMainFont().GetVFontMaxHeight()),
+        GPRenderManager->Draw2DText(C2DVector(VIRTUAL_SCREEN_WIDTH * 0.1, VIRTUAL_SCREEN_HEIGHT - 2.0 * PeekMainFont().GetVFontMaxHeight()),
                                    GVersionString.ToWideString(), PeekMainFont(), CRGBColour(white, white, white, white), 0);
     }
-    PRenderManager->SetTextureMipMapMode(0, TEXTURE_MIPMAP_LINEAR);
-    PRenderManager->DrawBufferedPolys();
-    PRenderManager->Render2DDrawList(true);
+    GPRenderManager->SetTextureMipMapMode(0, TEXTURE_MIPMAP_LINEAR);
+    GPRenderManager->DrawBufferedPolys();
+    GPRenderManager->Render2DDrawList(true);
     GPDisplayManager->EndRender();
     if (g_ScreenshotMode) {
         if (g_RenderThrottlePaused_013b8629 && GPInputManager->IsLoadingEvents()) {

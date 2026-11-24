@@ -1,0 +1,7 @@
+egor=1 fablewin=1 ?RemoveFromInterface@CAInputProcess@@QAEXXZ
+egor=0 fablewin=1 ?Reset@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@@Z
+egor=1 fablewin=1 ??0?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@PAVCAnimEntryLite@NAnimationEntryBodge@@@Z
+egor=1 fablewin=1 ?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z
+egor=0 fablewin=1 ?DeleteData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@SIXPAX@Z
+egor=0 fablewin=1 ??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z
+egor=1 fablewin=1 ??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z

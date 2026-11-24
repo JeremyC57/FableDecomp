@@ -10,6 +10,7 @@
 //   engine/CCombatActionBase.h (TARGETCTOR: the Ego_r.pdb (creature, target, priority, sound) constructor 0x00857F30) and engine/CSoundPair.h.
 //   Evidence: Ego_r.pdb + FableWin.pdb ??0CCreatureAction_BanditKingLunge@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z (the class's only
 //   non-copy constructor); the ported caller CAIStateGroup_BanditKingLunge::Update 0x00961880 binds it.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

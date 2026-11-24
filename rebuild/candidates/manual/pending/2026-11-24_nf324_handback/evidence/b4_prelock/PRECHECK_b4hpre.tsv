@@ -1,0 +1,16 @@
+address	new	head	test	variant	new_errors	head_errors
+00452b04	PASS	PASS	PASS	v1 min-15/20		
+0084a820	PASS	PASS	PASS	v1 min-2/8		
+008601b0	PASS	PASS	PASS	v1 min-18/22		
+008601c0	PASS	PASS	PASS	v1 min-18/22		
+00865a80	PASS	PASS	PASS	v1 min-1/8		
+00865a90	PASS	PASS	PASS	v1 min-1/8		
+00865b40	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/tree/engine/CCombatActionBase.h:448:1: error: 'fable_static_assert_245' declared as an array with a negative size | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/tree/engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h:33:1	
+009340f0	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/tree/engine/CAIStateGroup_MinionKidGroupTag.h:39:1: error: 'fable_static_assert_26' declared as an array with a negative size | 1 error generated.	
+00941ba0	PASS	PASS	PASS			
+00941bb0	PASS	PASS	PASS			
+00a75c10	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b4hpre/pre/00a75c10/new.cpp:7:89: error: no member named 'm_disabled' in 'CNavSwitchableLeafNode' | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b4hpre/pre/00a75c10/new.cpp:7:114: error: no member named 'b1c' in 'CNavSwitchableLeafNode	
+00a76530	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b4hpre/pre/00a76530/new.cpp:9:14: error: no member named 'm_disabled' in 'CNavSwitchableLeafNode' | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/b4hpre/pre/00a76530/new.cpp:10:18: error: no member named 'f_18' in 'CNavSwitchableLeafNod	
+00b2ad60	PASS	PASS	PASS			
+00b9c650	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/tree/engine/CEnginePrimitiveOcclusionInfo.h:17:1: error: 'fable_static_assert_6' declared as an array with a negative size | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/tree/engine/CEngineInternalPrimitiveOcclusionBase.h:37:91: error:	
+00bc5fb0	FAIL	PASS	PASS		/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/tree/engine/CEnginePrimitiveHandle.h:29:37: error: no member named 'GetRefCount' in 'CEnginePersistentPrimitiveBase' | /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF324/work/tree/engine/CEnginePrimitiveHandle.h:29:63: error: no member named 'Not	

@@ -29,6 +29,10 @@ public:
     // (landed). Declaration only.
     void FrameUpdate();                                                  // 0x006B8640
 #endif
+#ifdef FABLE_RETAIL_BATTLECHARGE_RADIAL_FLOAT_PASS27
+    void* RadialBlurFadeTo(float time, NScreenEffect::ScreenEffectPriority priority,
+        float threshold, float length, float intensity, float fade, float range, float twist);
+#endif
     void ScreenFilterSetFlags(const NScreenEffect::CScreenEffectPriorityStack::ThingGraphicArgPassers& things, void* handle);  // 0x006B83E0
 #ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADETO
     // Opt-in (chunk 1010, row 0x008A9880 CGameScriptInterface::ScreenFilterFadeTo): Ego_r.pdb

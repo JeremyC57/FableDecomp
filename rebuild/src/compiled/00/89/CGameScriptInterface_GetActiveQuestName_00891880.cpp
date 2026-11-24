@@ -1,3 +1,5 @@
+// Leaf: ?GetActiveQuestName@CGameScriptInterface@@UBE?AVCCharString@@XZ
+#define FABLE_RETAIL_NSCRIPT   // alias route: engine/CGameScriptInterface.h declares GetActiveQuestName under this class-model switch
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 // Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 class CCharString { public:
@@ -20,11 +22,8 @@ struct GameGlobal {
 class CQuestManager;
 // 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
-struct CGameScriptInterface_Methods : CGameScriptInterface {
-    CCharString GetActiveQuestName();
-};
 
-CCharString CGameScriptInterface_Methods::GetActiveQuestName()
+CCharString CGameScriptInterface::GetActiveQuestName() const
 {
     QuestObj* q = reinterpret_cast<GameGlobal*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->active;
     if (q)

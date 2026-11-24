@@ -1,0 +1,5 @@
+# CTCHeroOnlineScoreboard::LogOnToRegistrationServer
+
+All 1,860 bytes match, including the nine switch destinations. Every one of the 136 leaf relocations checks at its exact offset. All 21 mapped copies and ten additional function bodies were checked independently, including their 126 relocated operands. The native test executes the selected leaf with deterministic collaborators and checks both arguments to encryption and decryption, every return status in the registration switch, setup failure, pending transaction, success, and HTTP reset.
+
+FableWin debug locals identify req, result and the reply variables. The common result return restores the retail 0x9c frame, and the original early-return GetAsCharArray form resolves the last 44 masked bytes. The decryption buffer has the input length. Only encryption reserves 32 additional characters. The associated function at 0055F090 encrypts the CD key using the password hash. Its sibling at 0055F140 decrypts the session ticket with the CD key. The anonymous symbol hash varies with the native source path.

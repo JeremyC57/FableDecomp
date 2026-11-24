@@ -10,7 +10,7 @@
 // CCharString() 0x0099E4B0, CBaseClass::CBaseClass 0x0099A2D0 / ~CBaseClass 0x0099A2E0, malloc 0x00BFEA0E (list sentinel),
 // CStringParser::Init(char*, callback, const CCharString&, long) 0x009B9530, CStringParser::FindKeyword 0x009B9BA0,
 // CCRCSymbolMap::ParseEnum(CStringParser*, long) 0x00A38670 (catalog name unknown; the second argument's type is not
-// recoverable from this caller: a 4-byte value), list<CStringParserCommentBoundaries>::~list 0x004046B0. Vtable 0x0122D874.
+// recoverable from this caller: a 4-byte value), std::_List_base<CStringParserCommentBoundaries>::~_List_base 0x004046B0. Vtable 0x0122D874.
 // Layout: Ego_r.pdb CStringParser with the retail one-word list (0x28 bytes): String +4, BaseLineOffset +8, Filename +0xC,
 // TempCharString +0x10, Comments +0x14, ErrorCallback +0x18, CursorPos +0x1C.
 // Shape: as the landed sibling -- the parser is built by an inline constructor that calls Init (the "" filename temporary
@@ -30,22 +30,13 @@ struct SCommentNode {                                      // list<CStringParser
     char*         PStart;
     char*         PEnd;
 };
-class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {                                      // retail list: the sentinel pointer
-public:
-    SCommentNode* m_head;
-    list() : m_head(0)
-    {
-        SCommentNode* node = (SCommentNode*)malloc(sizeof(SCommentNode));
-        node->m_next = node;
-        node->m_prev = node;
-        m_head = node;
-    }
-    ~list();                                       // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (the visible out-of-line _List_base dtor) and the element by engine/CStringParser.h's partial mode: the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#define FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY
+#include "engine/CStringParser.h"
+#include "stlport/fable_containers.h"
 struct CCursorPos { long Line, Column, Offset; };
 typedef void (__fastcall* TErrorCallback)(const CCharString&);
 class CStringParser : public CBaseClass { public:                        // vtable 0x0122D874

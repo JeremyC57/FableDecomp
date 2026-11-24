@@ -1,0 +1,11 @@
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/44/CPlayerManager_GetMainPlayer_00449970_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/44/CPlayerManager_GetMainPlayer_00449960_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/48/CPlayer_IsMainPlayer_00487520_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/cd/NScriptCQSunnyvaleMasterScript_Main_00cdd360_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/a8/std_copybackwardstdpairunsignedint64stdlistC2DLineFs_00a821c0_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/96/global_IsThingInRangeOfPound_00961b90_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/f0/NScriptCQAmbushTradersScriptCATBanditContact_Init_00f09640_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/d1/NScriptCQBountyHuntScriptCBHHostage1_Init_00d167c0_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/d1/NScriptCQBountyHuntScriptCBHHostage2_Init_00d16bb0_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/85/CVirtualKeyboard_Cancel_00851860_test.cpp
+03:13:21 PASS /home/user/FableDecomp/rebuild/tests/00/67/CPersistTraitsCReactionFrequencyTraitsArray_TransferBinaryIn_006778a0_test.cpp

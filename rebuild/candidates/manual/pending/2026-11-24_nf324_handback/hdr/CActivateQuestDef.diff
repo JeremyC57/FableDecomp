@@ -1,0 +1,20 @@
+--- orig/hdr_CActivateQuestDef.h	2026-11-24 01:17:42.655915053 +0000
++++ hdr/engine/CActivateQuestDef.h	2026-11-24 01:17:42.700331494 +0000
+@@ -16,8 +16,16 @@
+     virtual void Copy(const CDefClassBase*);
+     CDefString ScriptName;                                   // +0x28
+     bool       LoadResources;                                // +0x2C
++#ifdef FABLE_RETAIL_CACTIVATEQUESTDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x004D506C: ?GetSizeofClass@CActivateQuestDef@@UAEKXZ (FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CActivateQuestDef) == 0x30);
++FABLE_STATIC_ASSERT_AT(20, sizeof(CActivateQuestDef) == 0x30);
+ #endif
+ #else
+ #ifndef FABLE_ENGINE_CACTIVATEQUESTDEF_H

@@ -1,0 +1,53 @@
+addr       parity           behav  name
+0041e641   WARN RELOC_NAME: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@QAE@XZ -> 0042ce63 labelled 'std::list<T_0042ce63>::~list'
+0041e641   WARN RELOC_NAME: ??1?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAE@XZ -> 0042b7d7 labelled 'std::list<T_0042b7d7>::~list'
+0041e641   WARN RELOC_NAME: ??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ -> 0042ab1c labelled 'std::list<T_0042ab1c>::~list'
+0041e641   WARN RELOC_NAME: ??1?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@XZ -> 0042b796 labelled 'std::list<T_0042b796>::~list'
+0041e641   WARN RELOC_NAME: ??1CObservable@NUISystem@@QAE@XZ -> 0042bec0 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0041e641   RELOCATION_MATCH PASS   ~CManager
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0041e3f6   WARN RELOC_NAME: ??0?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z -> 0042ab01 labelled 'Std_DoubleLinkedList_CreateNode'
+0041e3f6   RELOCATION_MATCH PASS   CManager
+0041e5f2   RELOCATION_MATCH PASS   GetInstance
+0041e1cd   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041e1cd   RELOCATION_MATCH PASS   SetMetaLayer
+00494840   RELOCATION_MATCH PASS   InitGraphics
+0054ed90   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+0054ed90   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+0054ed90   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0054ed90   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0054ed90   WARN SHARED_HEADER_AVAILABLE CText (engine/CText.h)
+0054ed90   WARN STANDIN_LEAF ?GetDataFromDef@CText@NUISystem@@QAEXXZ (catalog NUISystem::CDefString::GetString; names another function)
+0054ed90   RELOCATION_MATCH PASS   GetString
+0042fb40   RELOCATION_MATCH PASS   Clear
+0042db20   WARN STANDIN_LEAF ??_GCManager@NUISystem@@IAEPAXI@Z (catalog NUISystem::CManager::`scalar_deleting_destructor'; names another function)
+0042db20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0042e98f   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CStartupDefinitionManager (engine/CStartupDefinitionManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0042e98f   RELOCATION_MATCH PASS   Init2
+005954ad   WARN RELOC_NAME: ??1?$_Deque_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0059ac77 labelled '_unattributed::FreeBuffer'
+005954ad   WARN RELOC_NAME: ??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ -> 0042ab1c labelled 'std::list<T_0042ab1c>::~list'
+005954ad   WARN RELOC_NAME: ??1?$_Rb_tree@W4EEvent@NUISystem@@W412@U?$_Identity@W4EEvent@NUISystem@@@std@@U?$less@W4EEvent@NUISystem@@@4@V?$allocator@W4EEvent@NUISystem@@@4@@std@@QAE@XZ -> 0052e050 labelled 'CRetailTree_erase0052dca0::~CRetailTree_erase0052dca0'
+005954ad   RELOCATION_MATCH PASS   ~CFrontEndManager
+0041d03c   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041d03c   RELOCATION_MATCH PASS   RenderErrorMessage
+
+WINS: 11
+  0041e641 RELOCATION_MATCH NUISystem::CManager::??1CManager@NUISystem@@IAE@XZ
+  0041e3f6 RELOCATION_MATCH NUISystem::CManager::??0CManager@NUISystem@@IAE@XZ
+  0041e5f2 RELOCATION_MATCH NUISystem::CManager::?GetInstance@CManager@NUISystem@@SIPAV12@XZ
+  0041e1cd RELOCATION_MATCH NUISystem::CManager::?SetMetaLayer@CManager@NUISystem@@UAEXJ@Z
+  00494840 RELOCATION_MATCH CFrontendGameComponent::?InitGraphics@CFrontendGameComponent@@AAE_NXZ
+  0054ed90 RELOCATION_MATCH NUISystem::CDefString::GetDataFromDef@CText
+  0042fb40 RELOCATION_MATCH NUISystem::CManager::?Clear@CManager@NUISystem@@SIXXZ
+  0042db20 RELOCATION_MATCH NUISystem::CManager::??_GCManager@NUISystem@@IAEPAXI@Z
+  0042e98f RELOCATION_MATCH CNewFrontendGameComponent::?Init2@CNewFrontendGameComponent@@QAEXXZ
+  005954ad RELOCATION_MATCH NUISystem::CFrontEndManager::??1CFrontEndManager@NUISystem@@UAE@XZ
+  0041d03c RELOCATION_MATCH NUISystem::CManager::RenderErrorMessage

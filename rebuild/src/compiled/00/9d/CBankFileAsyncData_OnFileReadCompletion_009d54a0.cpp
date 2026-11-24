@@ -1,3 +1,4 @@
+// Leaf: ?OnFileReadCompletion@CBankFileAsyncData@@UAEX_N@Z
 // CBankFileAsyncData::OnFileReadCompletion(bool) -- the file thread is done: mark finished, nothing pending, completion to deliver
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D54A0, oracle length 63 bytes.
 // Callees: CCriticalSectionLock ctor @ 0x00A62920 / dtor @ 0x00A629A0.
@@ -53,7 +54,7 @@ class CBankFileAsyncData { public:
     bool                        m_finished;       // +0x44
     bool                        m_dataLocked;     // +0x45
     bool                        m_completionPending; // +0x46
-    void OnFileReadCompletion(bool success);     // 0x009D54A0
+    virtual void OnFileReadCompletion(bool success);     // 0x009D54A0
 };
 
 void CBankFileAsyncData::OnFileReadCompletion(bool success)

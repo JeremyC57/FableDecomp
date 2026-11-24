@@ -1,5 +1,5 @@
 // NUISystem::CMovie::ChangeState(EState newState) -- base state change; on entering state 3 (from another target state) create the shared video system if needed, stop the movie that is playing, open this movie's full path and, on success, size the component from the video, reset the primitive handle, notify the owner, recreate the 8888 movie texture and mark the movie playing; this becomes the playing movie
-// Leaf: ?ChangeState@CMovie
+// Leaf: ?ChangeState@CMovie@NUISystem@@UAEXK@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00547C90, length 432 bytes (427 + int3 padding), `ret 4`, no EH frame.
 // Callees: NUISystem::CChangingStateComponent::ChangeState 0x0052CF40 (qualified base call), operator new 0x00BFEA1A (0x8c),
 //   CVideoSys::CVideoSys 0x00A3BC70 / Close 0x00A3B380 / Init 0x00A3B9D0, CAFile::ConvertPathToFullPath 0x00999110 (`__fastcall`,
@@ -328,7 +328,7 @@ class CComponent { public:
     unsigned char _pad14c[0x15c - 0x14c];
 };
 class CChangingStateComponent : public CComponent { public:
-    void ChangeState(unsigned long newState);      // 0x0052CF40
+    virtual void ChangeState(unsigned long newState);      // 0x0052CF40 ?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z (virtual in Ego_r / FableWin; called qualified here)
 };
 
 class CMovie : public CChangingStateComponent { public:
@@ -344,7 +344,7 @@ class CMovie : public CChangingStateComponent { public:
     static CMovie*         PlayingMovie;           // 0x013B8AB4
     static CIEngine*       PEngine;                // 0x013B8AB8
     static CTexture*       MovieTexture;           // 0x013B8AC0
-    void ChangeState(unsigned long newState);
+    virtual void ChangeState(unsigned long newState);   // ?ChangeState@CMovie@NUISystem@@UAEXK@Z (Ego_r / FableWin)
 };
 
 void CMovie::ChangeState(unsigned long newState)

@@ -1,3 +1,4 @@
+// Leaf: ?InitDisplayEngine@CMainGameComponent@@IAEXXZ
 // CMainGameComponent::InitDisplayEngine() -- construct display engine from current graphics/world/surface settings.
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Native00417418 length217. Actual flattened headers retained; native CMainGameComponent header absent.
@@ -64,7 +65,9 @@ class CMainGameComponent { public:
  unsigned char BaseAndBanks[0x1c]; CPlayerManager* PPlayerManager; CGamePlayerInterface* PPlayerInterface;
  CWorld* PWorld; scoped_ptr<CDisplayEngine> PDisplayEngine;
  unsigned char LUAAndWorldState[0x1619c]; CGraphicDataBank* PMainGraphicBank; void* PMainGraphicBankInfo;
+ protected:
  void InitDisplayEngine();
+ public:
 };
 class CGameDefinitionManager {
 public:

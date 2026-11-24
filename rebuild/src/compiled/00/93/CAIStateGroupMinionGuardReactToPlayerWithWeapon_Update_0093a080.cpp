@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093A080, length 832 bytes (+ int3 padding), plain `ret`, frame 0xb8.
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90, IsPlayerCarryingWeapon
 // @ 0x00939E70, IsAnotherGuardAdmonishingPlayer @ 0x00939D00, CheckForOtherGuardsNewWarning @ 0x00939D70, the own-warning
-// removal @ 0x00939DD0 (manifest "CheckAndRemove"), AIAction_LookAtThing @ 0x0097D6F0, AIAction_MoveToThingProximity
+// removal RemoveMessageEventsAdded @ 0x00939DD0 (private; manifest "CheckAndRemove"), AIAction_LookAtThing @ 0x0097D6F0, AIAction_MoveToThingProximity
 // @ 0x0097E380 (its pointer argument built by the out-of-line ctor @ 0x00930D20), CAIStateGroupBase::GetPThingWorld
 // @ 0x008FCFA0 / GetPWorld @ 0x008FCFC0 / Terminate @ 0x008FCF40, CWorld::GetFrame @ 0x0049D870,
 // CThingCreatureBase::PeekPos @ 0x006A4D00, CThing::PeekPos @ 0x004C73D0, CMessageEventManager::AddMessage
@@ -99,10 +99,13 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
     unsigned long FrameOfLastWarning;           // +0x18
     long LastWarningID;                         // +0x1c
     CIntelligentPointer<CThingPlayerCreature> PPlayer;   // +0x20
-    bool IsAnotherGuardAdmonishingPlayer();     // 0x00939D00
+    private:
+    bool IsAnotherGuardAdmonishingPlayer();
+    public:
+     // 0x00939D00
     bool CheckForOtherGuardsNewWarning();       // 0x00939D70
-    void RemoveMyWarningMessage();              // 0x00939DD0
 private:
+    void RemoveMessageEventsAdded();            // 0x00939DD0 ?RemoveMessageEventsAdded@...@@AAEXXZ (private; Ego_r / FableWin; the donor Update calls it)
     bool IsPlayerCarryingWeapon() const;        // 0x00939E70 ?IsPlayerCarryingWeapon@...@@ABE_NXZ (private)
 public:
     FABLE_FORCEINLINE bool IsWithinWarningTime()
@@ -136,7 +139,7 @@ void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
                         return;
                     }
                     if (!IsPlayerCarryingWeapon()) {
-                        RemoveMyWarningMessage();
+                        RemoveMessageEventsAdded();
                         Terminate();
                         return;
                     }

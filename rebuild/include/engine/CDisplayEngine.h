@@ -7,6 +7,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
+#include "engine/CBaseClass.h"
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT
 #define FABLE_RETAIL_CFADEINFADEOUTBASE_ISACTIVE
 #include "engine/CFadeInFadeOutBase.h"
@@ -39,8 +42,23 @@ class CPlayerManager;
 class CWorld;
 
 #pragma pack(push, 1)
-class CDisplayEngine {
+class CDisplayEngine
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
+    : public CBaseClass
+#endif
+{
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
+protected:
+    // Ego_r and FableWin, matched to CDisplayEngine's retail vtable slot 1.
+    virtual bool InitEngine();         // 0x00435190
+    static float GamePrimitiveDefaultFadeRangeRatio;                     // 0x013B8774
+#endif
 public:
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_GETMAINWINDOW_PASS26
+    // Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): Ego_r.pdb ?GetMainWindow@CDisplayEngine@@QBE?AVC2DBoxF@@XZ,
+    // out of line at 0x00434B50 (the row passes a hidden result slot: `push eax ; call 0x00434B50`). Declaration only, no layout change.
+    class C2DBoxF GetMainWindow() const;                                // 0x00434B50
+#endif // FABLE_RETAIL_CDISPLAYENGINE_GETMAINWINDOW_PASS26
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_RECEIVEFEEDBACKGAMEEVENT
     // NF56 opt-in (rows 0x00434A30 and its caller 0x0041649C CMainGameComponent::AddGameEvent): Ego_r.pdb 0x00446820 / FableWin.pdb 0x01ADE350
     // ?ReceiveFeedbackGameEvent@CDisplayEngine@@QAEXPBVCGameEvent@@@Z (public), out of line in retail at 0x00434A30. Declaration only.
@@ -148,6 +166,10 @@ public:
     // inline in retail (the caller reads Engine3D +0x2C in place, 0x005E790E). Define FABLE_RETAIL_CIENGINE for the polymorphic CIEngine.
     CIEngine& Get3DEngine() { return *Engine3D; }
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_RENDERING_NORMAL_PASS26
+    // Ego_r 0x00446B60 and FableWin 0x01ADDD70. The latter returns !IsScreenFadeOut(), as does retail 0x00434D60.
+    bool IsRenderingNormalScene() const;
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY
     // Ego_r.pdb / FableWin.pdb names. Public: SetAboutToRun 0x00434CD0 / EndScreenFadeOut 0x00434C90 (?..@CDisplayEngine@@QAEXXZ, landed),
     // the inline ?IsInitialFadeActive@ / ?IsRenderingNormalScene@ / ?IsLetterBoxMode@CDisplayEngine@@QBE_NXZ (bytes tested in place in
@@ -160,7 +182,9 @@ public:
     void SetAboutToRun();                                                // 0x00434CD0
     void EndScreenFadeOut();                                             // 0x00434C90
     bool IsInitialFadeActive() const { return InitialFadeActive; }
+#ifndef FABLE_RETAIL_CDISPLAYENGINE_RENDERING_NORMAL_PASS26
     bool IsRenderingNormalScene() const { return DrawGame; }
+#endif
 #ifndef FABLE_RETAIL_CDISPLAYENGINE_ISLETTERBOXMODE
     bool IsLetterBoxMode() const { return LetterBox.Active; }
 #endif
@@ -173,7 +197,9 @@ protected:
     void RenderHeroDrunkenness(const CInterpolationInfo& info) const;   // 0x00435070
 public:
 #endif
+#ifndef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned long           EnginePreloadFlags;              // +0x04
     CMainGameComponent*     Component;                       // +0x08
     CPlayerManager*         PlayerManager;                   // +0x0c
@@ -233,7 +259,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT_AT(124, sizeof(CDisplayEngine) == 0x100);
+#ifndef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
 FABLE_STATIC_ASSERT_AT(125, offsetof(CDisplayEngine, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT_AT(126, offsetof(CDisplayEngine, EnginePreloadFlags) == 0x4);
 FABLE_STATIC_ASSERT_AT(127, offsetof(CDisplayEngine, Component) == 0x8);
 FABLE_STATIC_ASSERT_AT(128, offsetof(CDisplayEngine, PlayerManager) == 0xc);

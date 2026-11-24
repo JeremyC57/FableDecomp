@@ -50,7 +50,7 @@ class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { 
     unsigned char _anim[0x14];
     CCharString   LoopAnimName;                      // +0xBC
     CCharString   OutOfAnimName;                     // +0xC0
-    CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+    CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& creature, const CCharString& into,
         const CCharString& loop, const CCharString& outOf, float loopTime, bool b, long c, long d);   // 0x008427E0
 };
 
@@ -136,7 +136,7 @@ void CTCHeroStats::Vomit()
         seconds = (float)GetHeroStatsDef()->MaxVomitSeconds;
     float loopTime = (float)(GetHeroStatsDef()->MinVomitSeconds +
                              GFRandom((long)(seconds + 1.0f - GetHeroStatsDef()->MinVomitSeconds), GetPWorldSeed()));
-    CCreatureAction_PlayIntoLoopOutOfAnimation action(hero, "ST_PUKE_INTO", "ST_PUKE_LOOP", "ST_PUKE_OUTOF", loopTime,
+    CCreatureAction_PlayIntoLoopOutOfAnimation action(*hero, "ST_PUKE_INTO", "ST_PUKE_LOOP", "ST_PUKE_OUTOF", loopTime,
                                                       false, 0, 1);
     ++NumberOfVomits;
     CTCHeroOnlineScoreboard* scoreboard;

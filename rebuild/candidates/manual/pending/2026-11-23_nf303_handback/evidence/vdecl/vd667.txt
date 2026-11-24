@@ -1,0 +1,4 @@
+008cb250 - CCreatureActionSummonerLightningOrbOutOf_PerformAction_008cb | NODECL
+008cb940 - CCreatureActionSummonerDead_Initialise_008cb940.cpp | L59:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<CSummonerDef>* out); || L60:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);
+0096f6f0 - CAIStateGroupSummonerLightningAttack_InitStateGroup_0096f6f0 | L42:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CSummonerDef>* out);
+0096f730 - CAIStateGroupSummonerCharge_InitStateGroup_0096f730.cpp | L42:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CSummonerDef>* out);

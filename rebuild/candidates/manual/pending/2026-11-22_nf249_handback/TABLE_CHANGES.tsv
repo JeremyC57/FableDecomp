@@ -1,0 +1,9 @@
+action	table	line	note
+replace	rebuild/oracles/reloc_bindings.tsv	?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z	006648d0	006649c0 -> ?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z	006648d0	006649c0	q12690: no landed row emits the QAE spelling any more
+delete	rebuild/oracles/reloc_bindings.tsv	?IsThingCarryingRangedWeapon@@YI_NPAUCThingNative@@@Z	006a1620	00890d80	q12691: no landed row emits it any more
+delete	rebuild/oracles/reloc_bindings.tsv	?UnsheatheRangedWeapon@CThingNative@@QAEXXZ	00664a10	00890d80	q12691: no landed row emits it any more (witness of the PDB line stays 0x008B7BA0)
+delete	rebuild/oracles/reloc_bindings.tsv	??_7NativeDeviceResetCallback@@6B@	0122de50	00b260b0	q12692: no landed row emits it any more
+delete	rebuild/oracles/reloc_bindings.tsv	?InitialPreloadTime@@3NB	0122ed70	00b260b0	q12692: no landed row emits it any more
+delete	rebuild/oracles/reloc_bindings.tsv	??_7EngineNative@@6BCIEngineNative@@@	012a0f3c	00b260b0	q12692: no landed row emits it any more
+delete	rebuild/oracles/reloc_bindings.tsv	??_7EngineNative@@6BNativeDeviceResetCallback@@@	012a0f30	00b260b0	q12692: no landed row emits it any more
+add	rebuild/oracles/reloc_bindings.tsv	__real@0000000000000000	0122ed70	00b260b0	q12692: the compiler double constant 0.0 (the CPreloadStats ctor); 0x00ADF1E0 / 0x0089BDF0 keep their stand-ins (queued)

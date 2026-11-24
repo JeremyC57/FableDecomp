@@ -35,6 +35,12 @@
 #include "engine/CThingBaseDef.h"
 #include "engine/CIntelligentPointer.h"
 #include "engine/CCountedPointer.h"
+#ifdef FABLE_RETAIL_CTCTAVERNGAME_DRAW_PASS27
+// 005ECA50: FableWin exposes the real vector element and the four protected draw helpers.
+#include "engine/CArray.h"
+#include "engine/CEnginePrimitiveHandle.h"
+class CRGBColour;
+#endif
 class CEnginePrimitivePrepareInfo;
 #ifdef FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH
 class C3DVector;                                                         // PositionMesh parameter types
@@ -86,6 +92,9 @@ public:
     virtual CWideString GetTotalWinnings();                              // 49 0x005EA310
     virtual void DrawBetAndMoney(const CEnginePrimitivePrepareInfo&, float, float, float, float, float, float);   // 50 0x005EA400
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TAVERN_GAME; }   // ?StatGetInterfaceType@CTCTavernGame@@SI?AW4ETCInterfaceType@@XZ
+#ifdef FABLE_RETAIL_GOTOPUB_DRINK_PASS27
+    bool IsGameBeingPlayed() { return IsBeingPlayed; }
+#endif
     void SetState(ETavernGameStates);                                    // 0x005E9B20 ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z
 #ifdef FABLE_RETAIL_CTCTAVERNGAME_GETGAMESTATE
     // Opt-in (row 0x005EC270): FableWin.pdb ?GetGameState@CTCTavernGame@@QAE?AW4ETavernGameStates@1@XZ, inline (no Ego_r / retail copy).
@@ -132,6 +141,12 @@ public:
     void GetDef(CDefPointer<const CTavernGameDef>* def) { ParentThing->PeekBaseDef().GetSubDef(def); }   // ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z (inline)
 #endif
 protected:
+#ifdef FABLE_RETAIL_CTCTAVERNGAME_DRAW_PASS27
+    void RenderText(const CEnginePrimitivePrepareInfo&, float, float, CWideString, const CFontBank&, CRGBColour);
+    void ClearBetAndMoney();
+    void DrawBox(const CEnginePrimitivePrepareInfo&);
+    void ClearBox();
+#endif
     void SetStateAfterInstructions(unsigned long, CWideString, ETavernGameStates);            // 0x005EB180
     void SetStateAfterOK(CWideString, CWideString, ETavernGameStates);                        // 0x005EB080
     void SetStateAfterYesNo(CWideString, CWideString, ETavernGameStates, CWideString, ETavernGameStates);   // 0x005EAF30
@@ -152,7 +167,11 @@ public:
     long                LastBet;                             // +0x38
     long                TotalWinnings;                       // +0x3c
     long                CurrentMoney;                        // +0x40
+#ifdef FABLE_RETAIL_CTCTAVERNGAME_DRAW_PASS27
+    CArray<CEnginePrimitiveHandle> Handles;
+#else
     unsigned char       Handles[0xc];                        // +0x44 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+#endif
     unsigned char       BoxHandles[0xc];                     // +0x50 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char       BetHandles[0xc];                     // +0x5c vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char       MoneyHandles[0xc];                   // +0x68 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
@@ -184,21 +203,21 @@ public:
     bool                BetIncreasing;                       // +0xe8
     bool                HasPrizeBeenGiven;                   // +0xe9
 };
-FABLE_STATIC_ASSERT(sizeof(CTCTavernGame) == 0xf0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, UIComponents) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, LastRenderTime) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, IsBeingPlayed) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, NumRounds) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, Score) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, CurrentMoney) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PScoreFont) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, NewBestScore) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, YesState) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, TavernGameState) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, StateTimer) == 0xcc);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PGameMaster) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, GamePlayed) == 0xd8);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, HasPrizeBeenGiven) == 0xe9);
+FABLE_STATIC_ASSERT_AT(187,sizeof(CTCTavernGame) == 0xf0);
+FABLE_STATIC_ASSERT_AT(188,offsetof(CTCTavernGame, UIComponents) == 0xc);
+FABLE_STATIC_ASSERT_AT(189,offsetof(CTCTavernGame, LastRenderTime) == 0x18);
+FABLE_STATIC_ASSERT_AT(190,offsetof(CTCTavernGame, IsBeingPlayed) == 0x20);
+FABLE_STATIC_ASSERT_AT(191,offsetof(CTCTavernGame, NumRounds) == 0x24);
+FABLE_STATIC_ASSERT_AT(192,offsetof(CTCTavernGame, Score) == 0x2c);
+FABLE_STATIC_ASSERT_AT(193,offsetof(CTCTavernGame, CurrentMoney) == 0x40);
+FABLE_STATIC_ASSERT_AT(194,offsetof(CTCTavernGame, PScoreFont) == 0x80);
+FABLE_STATIC_ASSERT_AT(195,offsetof(CTCTavernGame, NewBestScore) == 0xa0);
+FABLE_STATIC_ASSERT_AT(196,offsetof(CTCTavernGame, YesState) == 0xa8);
+FABLE_STATIC_ASSERT_AT(197,offsetof(CTCTavernGame, TavernGameState) == 0xc0);
+FABLE_STATIC_ASSERT_AT(198,offsetof(CTCTavernGame, StateTimer) == 0xcc);
+FABLE_STATIC_ASSERT_AT(199,offsetof(CTCTavernGame, PGameMaster) == 0xd0);
+FABLE_STATIC_ASSERT_AT(200,offsetof(CTCTavernGame, GamePlayed) == 0xd8);
+FABLE_STATIC_ASSERT_AT(201,offsetof(CTCTavernGame, HasPrizeBeenGiven) == 0xe9);
 #else // flattened layout (the landed default)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CTCTavernGame = 0x108.
@@ -274,55 +293,55 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCTavernGame) == 0xf0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, UIComponents) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, LastRenderTime) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, IsBeingPlayed) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, GameWon) == 0x21);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, NumRounds) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, GameFinished) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, GameInSession) == 0x29);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, Score) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, Target) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, BaseBet) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, LastBet) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, TotalWinnings) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, CurrentMoney) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, Handles) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, BoxHandles) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, BetHandles) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, MoneyHandles) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, WinningsHandles) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PScoreFont_Data) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PScoreFont_Info) == 0x84);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PTargetFont_Data) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PTargetFont_Info) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PStatsFont_Data) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PStatsFont_Info) == 0x94);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, TargetTime) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, TargetRound) == 0x9c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, NewBestScore) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, Draw) == 0xa1);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, GameStarted) == 0xa2);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, NumConsecutiveRoundsWon) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, YesState) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, NoState) == 0xac);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, AltState) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, YesFunc) == 0xb4);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, NoFunc) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, AltFunc) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, TavernGameState) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PreviousTavernGameState) == 0xc4);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, NextTavernGameState) == 0xc8);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, StateTimer) == 0xcc);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PGameMaster) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, GamePlayed) == 0xd8);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, FrameBetWasLastChanged) == 0xdc);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, FrameBetChangeStarted) == 0xe0);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, Mult) == 0xe4);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, BetIncreasing) == 0xe8);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, HasPrizeBeenGiven) == 0xe9);
+FABLE_STATIC_ASSERT_AT(277,sizeof(CTCTavernGame) == 0xf0);
+FABLE_STATIC_ASSERT_AT(278,offsetof(CTCTavernGame, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(279,offsetof(CTCTavernGame, UIComponents) == 0xc);
+FABLE_STATIC_ASSERT_AT(280,offsetof(CTCTavernGame, LastRenderTime) == 0x18);
+FABLE_STATIC_ASSERT_AT(281,offsetof(CTCTavernGame, IsBeingPlayed) == 0x20);
+FABLE_STATIC_ASSERT_AT(282,offsetof(CTCTavernGame, GameWon) == 0x21);
+FABLE_STATIC_ASSERT_AT(283,offsetof(CTCTavernGame, NumRounds) == 0x24);
+FABLE_STATIC_ASSERT_AT(284,offsetof(CTCTavernGame, GameFinished) == 0x28);
+FABLE_STATIC_ASSERT_AT(285,offsetof(CTCTavernGame, GameInSession) == 0x29);
+FABLE_STATIC_ASSERT_AT(286,offsetof(CTCTavernGame, Score) == 0x2c);
+FABLE_STATIC_ASSERT_AT(287,offsetof(CTCTavernGame, Target) == 0x30);
+FABLE_STATIC_ASSERT_AT(288,offsetof(CTCTavernGame, BaseBet) == 0x34);
+FABLE_STATIC_ASSERT_AT(289,offsetof(CTCTavernGame, LastBet) == 0x38);
+FABLE_STATIC_ASSERT_AT(290,offsetof(CTCTavernGame, TotalWinnings) == 0x3c);
+FABLE_STATIC_ASSERT_AT(291,offsetof(CTCTavernGame, CurrentMoney) == 0x40);
+FABLE_STATIC_ASSERT_AT(292,offsetof(CTCTavernGame, Handles) == 0x44);
+FABLE_STATIC_ASSERT_AT(293,offsetof(CTCTavernGame, BoxHandles) == 0x50);
+FABLE_STATIC_ASSERT_AT(294,offsetof(CTCTavernGame, BetHandles) == 0x5c);
+FABLE_STATIC_ASSERT_AT(295,offsetof(CTCTavernGame, MoneyHandles) == 0x68);
+FABLE_STATIC_ASSERT_AT(296,offsetof(CTCTavernGame, WinningsHandles) == 0x74);
+FABLE_STATIC_ASSERT_AT(297,offsetof(CTCTavernGame, PScoreFont_Data) == 0x80);
+FABLE_STATIC_ASSERT_AT(298,offsetof(CTCTavernGame, PScoreFont_Info) == 0x84);
+FABLE_STATIC_ASSERT_AT(299,offsetof(CTCTavernGame, PTargetFont_Data) == 0x88);
+FABLE_STATIC_ASSERT_AT(300,offsetof(CTCTavernGame, PTargetFont_Info) == 0x8c);
+FABLE_STATIC_ASSERT_AT(301,offsetof(CTCTavernGame, PStatsFont_Data) == 0x90);
+FABLE_STATIC_ASSERT_AT(302,offsetof(CTCTavernGame, PStatsFont_Info) == 0x94);
+FABLE_STATIC_ASSERT_AT(303,offsetof(CTCTavernGame, TargetTime) == 0x98);
+FABLE_STATIC_ASSERT_AT(304,offsetof(CTCTavernGame, TargetRound) == 0x9c);
+FABLE_STATIC_ASSERT_AT(305,offsetof(CTCTavernGame, NewBestScore) == 0xa0);
+FABLE_STATIC_ASSERT_AT(306,offsetof(CTCTavernGame, Draw) == 0xa1);
+FABLE_STATIC_ASSERT_AT(307,offsetof(CTCTavernGame, GameStarted) == 0xa2);
+FABLE_STATIC_ASSERT_AT(308,offsetof(CTCTavernGame, NumConsecutiveRoundsWon) == 0xa4);
+FABLE_STATIC_ASSERT_AT(309,offsetof(CTCTavernGame, YesState) == 0xa8);
+FABLE_STATIC_ASSERT_AT(310,offsetof(CTCTavernGame, NoState) == 0xac);
+FABLE_STATIC_ASSERT_AT(311,offsetof(CTCTavernGame, AltState) == 0xb0);
+FABLE_STATIC_ASSERT_AT(312,offsetof(CTCTavernGame, YesFunc) == 0xb4);
+FABLE_STATIC_ASSERT_AT(313,offsetof(CTCTavernGame, NoFunc) == 0xb8);
+FABLE_STATIC_ASSERT_AT(314,offsetof(CTCTavernGame, AltFunc) == 0xbc);
+FABLE_STATIC_ASSERT_AT(315,offsetof(CTCTavernGame, TavernGameState) == 0xc0);
+FABLE_STATIC_ASSERT_AT(316,offsetof(CTCTavernGame, PreviousTavernGameState) == 0xc4);
+FABLE_STATIC_ASSERT_AT(317,offsetof(CTCTavernGame, NextTavernGameState) == 0xc8);
+FABLE_STATIC_ASSERT_AT(318,offsetof(CTCTavernGame, StateTimer) == 0xcc);
+FABLE_STATIC_ASSERT_AT(319,offsetof(CTCTavernGame, PGameMaster) == 0xd0);
+FABLE_STATIC_ASSERT_AT(320,offsetof(CTCTavernGame, GamePlayed) == 0xd8);
+FABLE_STATIC_ASSERT_AT(321,offsetof(CTCTavernGame, FrameBetWasLastChanged) == 0xdc);
+FABLE_STATIC_ASSERT_AT(322,offsetof(CTCTavernGame, FrameBetChangeStarted) == 0xe0);
+FABLE_STATIC_ASSERT_AT(323,offsetof(CTCTavernGame, Mult) == 0xe4);
+FABLE_STATIC_ASSERT_AT(324,offsetof(CTCTavernGame, BetIncreasing) == 0xe8);
+FABLE_STATIC_ASSERT_AT(325,offsetof(CTCTavernGame, HasPrizeBeenGiven) == 0xe9);
 
 #endif // FABLE_RETAIL_CTCTAVERNGAME
 #endif // FABLE_ENGINE_CTCTAVERNGAME_H

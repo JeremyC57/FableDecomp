@@ -6,6 +6,7 @@
 // FireProjectileOnHitEffect +0x7c, LightningProjectileOnHitEffect +0x80, FireAndLightningProjectileOnHitEffect +0x84.
 // Shape: a zero-initialised result local (edi = 0 up front) assigned in an if/else-if chain; each arm returns through its
 // own epilogue, the fall-through returns the local.
+#include "engine/EObjectAugmentationType.h"         // PDB parameter type of the two callees (NF310, ruling NF307 D3)
 class CObjectAugmentationsDef { public:
     unsigned char _pad00[0x7c];
     long          FireProjectileOnHitEffect;        // +0x7c
@@ -20,19 +21,19 @@ struct CTCBase_00766480 {
 
 class CTCObjectAugmentations : public CTCBase_00766480 { public:
     const CObjectAugmentationsDef* PDef;            // +0x0c CDefPointer
-    bool HasCombinationOfAugmentations(long types) const;   // 0x00766050
-    bool HasAugmentationOfType(long type) const;    // 0x007660C0
+    bool HasCombinationOfAugmentations(EObjectAugmentationType types) const;   // 0x00766050
+    bool HasAugmentationOfType(EObjectAugmentationType type) const;    // 0x007660C0
     long GetOnHitExplodingEffect() const;
 };
 
 long CTCObjectAugmentations::GetOnHitExplodingEffect() const
 {
     long effect = 0;
-    if (HasCombinationOfAugmentations(0xc))
+    if (HasCombinationOfAugmentations((EObjectAugmentationType)(OBJECT_AUGMENTATION_TYPE_FLAME | OBJECT_AUGMENTATION_TYPE_LIGHTNING)))
         effect = PDef->FireAndLightningProjectileOnHitEffect;
-    else if (HasAugmentationOfType(4))
+    else if (HasAugmentationOfType(OBJECT_AUGMENTATION_TYPE_FLAME))
         effect = PDef->FireProjectileOnHitEffect;
-    else if (HasAugmentationOfType(8))
+    else if (HasAugmentationOfType(OBJECT_AUGMENTATION_TYPE_LIGHTNING))
         effect = PDef->LightningProjectileOnHitEffect;
     return effect;
 }

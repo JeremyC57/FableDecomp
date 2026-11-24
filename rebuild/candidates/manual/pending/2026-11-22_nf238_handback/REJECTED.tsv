@@ -1,0 +1,2 @@
+address	claim	reason
+0x006F2C00	keep ??RCRotateThing as a folded alias of the prong functor	rejected: CRotateThing is a separate PDB functor (??RCRotateThing@@QBEXAAV?$CIntelligentPointer@VCThing@@@@@Z, applied to list<CIntelligentPointer<CThing> > in FableWin / Ego_d); the 0x006F3530 body walks 28-byte prongs with a 32-byte functor, which is CGetBestFreeProngForAttacker over vector<CProng>

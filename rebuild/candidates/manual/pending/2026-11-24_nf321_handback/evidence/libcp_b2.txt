@@ -1,0 +1,2 @@
+00891320 LIBCP_OK renames=?EnableDangerMusic@CGameScriptInterface_Methods@@QBEXW4EMusicSetType@@@Z=?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z ?CacheMusicSet_006bde50@CMusicTarget@@QAEXW4EMusicSetType@@@Z=?EnableDangerMusic@CMusicManager@@QAEX_N@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00a39c70 LIBCP_OK renames=?GetAlignment@CWADFile_Methods@@QAEXXZ=?GetAlignment@CWADFile@@UBEJXZ ?Run@CBankFileAsync@@QAEXXZ=?GetAlignment@CBankFile@@QBEKXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

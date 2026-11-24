@@ -1,0 +1,7 @@
+H 0097ec00 CAIStateGroupBase::AIAction_MoveToPos RELOCATION_MATCH flags= [] leaf=
+H 0073a9b0 CAnimEntryLite::CAnimEntryLite RELOCATION_MATCH flags= [] leaf=
+H 00863090 CCountedPointer_0073cc90::Reset RELOCATION_MATCH flags= [] leaf=
+H 00754f10 CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>::operator= RELOCATION_MATCH flags= [] leaf=??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z
+H 0073d180 CCountedPointer_0073cc90::CCountedPointer_0073cc90 RELOCATION_MATCH flags= [] leaf=
+H 00a0d2d0 CAInputProcess::RemoveFromInterface RELOCATION_MATCH flags= [] leaf=
+GR_DONE

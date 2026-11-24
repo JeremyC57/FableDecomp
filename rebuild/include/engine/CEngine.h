@@ -28,11 +28,44 @@ class CEngineLayerRenderer;
 #ifdef FABLE_RETAIL_CENGINE_PEEKVIDEOOPTIONSDEF_TYPED
 #include "engine/EEngineVideoOptionQuality.h"
 #endif
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+// NF249 opt-in (q12692, CEngine ctor 0x00B260B0 / dtor 0x00B261D0): the seven composite members typed (Ego_r.pdb CEngine member records,
+// retail offsets: STLport 12-byte CArrays), the nested CEngine::CPreloadStats, CEngineVideoOptions with its inline ctor, and the retail
+// polymorphic CSimpleMemoryPool. Each typed member replaces its opaque line only under this macro (the #else keeps the line verbatim).
+#ifndef FABLE_RETAIL_CENGINEVIDEOOPTIONS_CTOR
+#define FABLE_RETAIL_CENGINEVIDEOOPTIONS_CTOR
+#endif
+#ifndef FABLE_RETAIL_CSIMPLEMEMORYPOOL
+#define FABLE_RETAIL_CSIMPLEMEMORYPOOL
+#endif
+#include "engine/CArray.h"
+#include "engine/CCamera.h"
+#include "engine/CEngineVideoOptions.h"
+#include "engine/CSimpleMemoryPool.h"
+class CSurface;
+class CEngineComponent;
+#endif
 class CEngine : public CIEngine, public CDeviceResetCallback {
 public:
+#ifdef FABLE_RETAIL_CENGINE_RENDER_PASS26
+    virtual void Render(const CEngineInterpolationInfo& interpolation, unsigned long render_flags);
+private:
+    void UpdateOffGameTickProcessInfo(bool);
+    void LoadNewScene(const CEngineInterpolationInfo&);
+    void RenderFrame(const CEngineInterpolationInfo&);
+public:
+#endif
     virtual bool Initialise(const CEngineInit& init);                    // slot 2 0x00B26360 ?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+#ifdef FABLE_RETAIL_CENGINE_OVERRIDES
+    // NF244 (q12680 step 2): both PDBs make the two CDeviceResetCallback overrides private (?OnPreDeviceReset@CEngine@@EAEXXZ, Ego_r
+    // 0x009B0650 / FableWin 0x02C9AA40; ?OnPostDeviceReset@CEngine@@EAE_NXZ, 0x009B0360 / 0x02C9ABC0); the default keeps them public.
+private:
+#endif
     virtual void OnPreDeviceReset();                                     // 0x00B26010 ?OnPreDeviceReset@CEngine@@UAEXXZ
     virtual bool OnPostDeviceReset();                                    // 0x00B25D00 ?OnPostDeviceReset@CEngine@@UAE_NXZ
+#ifdef FABLE_RETAIL_CENGINE_OVERRIDES
+public:
+#endif
     virtual void Uninitialise();                                         // slot 85 0x00B25D80 ?Uninitialise@CEngine@@UAEXXZ (CEngine's first own virtual)
 #ifdef FABLE_RETAIL_CENGINE_SETPERSISTENTPRIMITIVE
     // NF172 opt-in (row 0x00B23BC0): the CIEngine slot-23 override, Ego_r.pdb / FableWin.pdb
@@ -69,12 +102,132 @@ public:
     // (Ego_d Engine_Simulation_Manager.obj, 20 debug bytes, first used by FrameStart; inline in retail: `fmul qword [GPEngine+98h]`).
     double GetNonInterpolatedWorldTime() const { return NonInterpolatedWorldTime; }
 #endif
+#ifdef FABLE_RETAIL_CENGINE_OVERRIDES
+    // NF244 opt-in (q12680 step 2, for the ctor / dtor rows 0x00B260B0 / 0x00B261D0): the CEngine ctor, the virtual dtor and every
+    // CIEngine override CEngine's vtable 0x012A0F3C holds (slots 2-85; Initialise / Uninitialise are declared above), Ego_r.pdb +
+    // FableWin.pdb ?<Name>@CEngine@@ spellings (each one in both dumps: hand-back hdr/README.md), retail override address per slot.
+    // Declarations only. Members another opt-in already declares are skipped when that opt-in is on. A row that uses this opt-in
+    // must also define FABLE_RETAIL_CIENGINE_RENDER (slot 8: the CIEngine default keeps its descriptive placeholder), as the
+    // RENDER_PASS26 rows do, and needs CIEngine.h's slot 11-13 PDB declarations (the default since NF244 q12680 step 1; on an older
+    // CIEngine.h also define FABLE_RETAIL_CIENGINE_SCREENPOS / _CONVERTSCREENPOS / _CONVERTWORLDPOS), or those three overrides become new
+    // slots after Uninitialise (85). Probe: a derived class's CIEngine-part vtable has 86 entries, slots 8 / 11-13 / 85 on these names.
+    CEngine();                                                                                           // 0x00B260B0 ??0CEngine@@QAE@XZ
+    virtual ~CEngine();                                                                                  //  0 0x00B261D0 ??1CEngine@@UAE@XZ
+    virtual void Release();                                                                          //  3 0x00B23990
+    virtual void SetCamera(const CCamera*);                                                          //  4 0x00B23B50
+    virtual void SetWindow(const C2DBoxF*);                                                          //  5 0x00B23B80
+    virtual void SetEnvironmentalEffectsAlwaysUpdate(bool);                                          //  6 0x00B23B90
+    virtual void SetWorld(const CIDrawWorld*);                                                       //  7 0x00B23E00
+#if !defined(FABLE_RETAIL_CENGINE_RENDER_PASS26)
+    virtual void Render(const CEngineInterpolationInfo&,unsigned long);                              //  8 0x00B27D90
+#endif
+    virtual void WorldFrameUpdate(bool);                                                             //  9 0x00B24030
+    virtual void PausedWorldFrameUpdate();                                                           // 10 0x00B240C0
+    virtual bool ConvertScreenPosToWorldPos(const C2DVector&,C3DVector&)const;                       // 11 0x00B23CF0
+#if !defined(FABLE_RETAIL_CIENGINE_CONVERTSCREENPOS)
+    virtual bool ConvertScreenPosToWorldPosAtViewDistance(float,const C2DVector&,C3DVector&)const;   // 12 0x00B24400
+#endif
+#if !defined(FABLE_RETAIL_CIENGINE_CONVERTWORLDPOS)
+    virtual bool ConvertWorldPosToScreenPos(const C3DVector&,C2DVector&)const;                       // 13 0x00B242D0
+#endif
+    virtual bool SetVideoOptions(const CEngineVideoOptions&);                                        // 14 0x00B24690
+    virtual bool PreChangeResolution();                                                              // 15 0x00B2AA20
+    virtual bool PostChangeResolution(unsigned long,unsigned long,unsigned long);                    // 16 0x00B2AA30
+    virtual float GetPrimitiveDrawDistanceFactor()const;                                             // 19 0x00B23D00
+    virtual void AddPrimitive(const CEnginePrimitive&);                                              // 20 0x00B23BB0
+    virtual bool ClipSphere(const C3DBoundingSphere&)const;                                          // 21 0x00B24150
+    virtual bool ClipBox(const C3DBoundingBox&)const;                                                // 22 0x00B242A0
+#if !defined(FABLE_RETAIL_CENGINE_SETPERSISTENTPRIMITIVE)
+    virtual void SetPersistentPrimitive(CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long); // 23 0x00B23BC0
+#endif
+    virtual void SetPrimitiveAnimation(CEnginePrimitiveHandle&,const CEnginePrimitiveAnimation&);    // 24 0x00B23BE0
+    virtual void SetPrimitivePosition(CEnginePrimitiveHandle&,const CEnginePrimitivePosition&);      // 25 0x00B23BF0
+    virtual unsigned long AddChildPrimitive(CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long); // 26 0x00B23C20
+    virtual void SetChildPrimitive(CEnginePrimitiveHandle&,unsigned long,const CEnginePrimitive&,unsigned long); // 28 0x00B23C50
+    virtual void SetChildPrimitive(CEnginePrimitiveHandle&,unsigned long,CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long); // 27 0x00B23C30
+    virtual void GetChildPrimitiveHandle(CEnginePrimitiveHandle&,unsigned long,CEnginePrimitiveHandle&); // 29 0x00B23C40
+    virtual void ClearChildPrimitive(CEnginePrimitiveHandle&,unsigned long);                         // 30 0x00B23C60
+    virtual void ClearAllChildPrimitives(CEnginePrimitiveHandle&);                                   // 31 0x00B23C70
+    virtual void SetAttachedPrimitive(CEnginePrimitiveHandle&,const CEnginePrimitive&,const CEnginePrimitiveAttachmentInfo&,const CEnginePrimitiveHandle&,long,unsigned long); // 32 0x00B23C80
+    virtual void CollectPrimitiveStatsForArea(std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > >&,const C2DBoxF&,EEnginePrimitiveStatIndex,unsigned long)const; // 33 0x00B23C90
+    virtual void ProcessPrimitiveStats(const std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > >&,EEnginePrimitiveStatIndex,unsigned long&,CArray<CCharString>&)const; // 34 0x00B23CA0
+    virtual const C3DAnimationInfo* GetEditorAnimation(const CWideString&)const;                     // 35 0x00B23CB0
+    virtual unsigned long AddCustomMorphTexture(CTexture&,const CCharString&)const;                  // 36 0x00B23CE0
+    virtual long GetStaticMapUpdatePassCount();                                                      // 37 0x00B2AA40
+    virtual void StartStaticMapUpdatePass(const CWideString&,long,const CStaticMapGenerationVisibiilityInfo&,const CArray<CCharString>&); // 38 0x00B23D80
+    virtual bool IsStaticMapNeedingUpdate(long,const CCharString&,unsigned long)const;               // 39 0x00B23D90
+    virtual void UpdateStaticMap(long,const CCharString&,unsigned long,long);                        // 40 0x00B23DA0
+    virtual void CloseStaticMapFile();                                                               // 41 0x00B23DB0
+    virtual void AddMap(long,long);                                                                  // 42 0x00B23E10
+    virtual void RemoveMap(long);                                                                    // 43 0x00B23E20
+    virtual void SetMapAsLoaded(long);                                                               // 44 0x00B23E30
+    virtual void SetMapAsUnloaded(long);                                                             // 45 0x00B23E60
+    virtual void SetMapVisibilityAllMaps(bool);                                                      // 46 0x00B23E50
+    virtual void SetMapVisibility(long,bool);                                                        // 47 0x00B23E40
+    virtual void AreaChanged(const C2DBoxI&);                                                        // 48 0x00B23DD0
+    virtual void OnActivate();                                                                       // 49 0x00B23DE0
+    virtual void SetStaticMapFileForUse(const CWideString&);                                         // 52 0x00B23DC0
+    virtual void SetLandscapeDebugTintColour(long,CRGBColour);                                       // 53 0x00B23DF0
+    virtual void ReloadLocalDetailDefs();                                                            // 54 0x00B23E70
+    virtual void StartNewScene(unsigned long,float);                                                 // 55 0x00B239A0
+    virtual void CutscenePreload(bool,bool);                                                         // 56 0x00B23A10
+    virtual void CutsceneAddCameraAngle(const CCamera&);                                             // 57 0x00B27D50
+    virtual void ChangeCameraAngle();                                                                // 58 0x00B23A50
+    virtual bool IsPreloaded()const;                                                                 // 59 0x00B23A70
+    virtual void UpdateTextureMorphCache(const CArray<CEngineTextureMorph>&,bool,float,const std::set<long,std::less<long>,std::allocator<long> >*);   // 60 0x00B239C0
+    virtual void SetScreenColourFilter(const CEngineColourFilterSettings&);                          // 61 0x00B23EC0
+#if !defined(FABLE_RETAIL_CENGINE_SETSPOTLIGHTSHADOWMODE)
+    virtual void SetSpotlightShadowMode(bool);                                                       // 62 0x00B23C00
+#endif
+    virtual void SetSeaBodyToRender(CCharString);                                                    // 63 0x00B23F00
+    virtual void UpdateDebugOverlay(long,const CRGBColour*,const C2DBoxI&);                          // 64 0x00B23E80
+    virtual void EnableDebugOverlay(long,bool,bool);                                                 // 65 0x00B23E90
+    virtual void SetGlobalLightingParameters(const C3DVector&,const CRGBFloatColour&,const CRGBFloatColour&,const CRGBFloatColour&); // 66 0x00B23EA0
+    virtual void Set2DPrimitiveLightingParameters(const C3DVector&,const CRGBFloatColour&,const CRGBFloatColour&,const CRGBFloatColour&); // 67 0x00B23EB0
+    virtual void SetRenderTargetTexture(const CTexture*);                                            // 68 0x00B23EF0
+    virtual CTexture* AllocateTextureFromEngineResourcePools(unsigned long,const C2DExtentsI&,long,const CPixelFormat&); // 69 0x00B23F40
+    virtual void FreeTextureFromEngineResourcePools(CTexture*);                                      // 70 0x00B23F50
+#if !defined(FABLE_RETAIL_CENGINE_GETMEMORYPOOLS)
+    virtual CMovableResourceMemoryPool* GetLoadingMemoryPool();                                      // 71 0x00B25C80
+#endif
+#if !defined(FABLE_RETAIL_CENGINE_GETMEMORYPOOLS)
+    virtual CMovableResourceMemoryPool* GetAnimationMemoryPool();                                    // 72 0x00B25CC0
+#endif
+#if !defined(FABLE_RETAIL_CENGINE_GETSCRATCHBUFFERTEXTUREMANAGER)
+    virtual CGPUScratchBufferTextureManager* GetScratchBufferTextureManager();                       // 73 0x00B23F60
+#endif
+    virtual bool DeallocateShadowBuffer();                                                           // 74 0x00B23F70
+    virtual void ReallocateShadowBuffer();                                                           // 75 0x00B23F80
+    virtual void Enable3DSceneRendering(bool);                                                       // 76 0x00B23F90
+    virtual bool Is3DSceneRenderingEnabled();                                                        // 77 0x00B23FC0
+    virtual void Enable2DSceneRendering(bool);                                                       // 78 0x00B23FD0
+    virtual bool Is2DSceneRenderingEnabled();                                                        // 79 0x00B24000
+    virtual void OverrideRain(float);                                                                // 80 0x00B24010
+    virtual void OverrideSnow(float);                                                                // 81 0x00B24020
+    virtual void RenderColorFilteredQuad(float,float,const C4DVector&,float,float,CTexture*);        // 82 0x00B25C00
+    virtual const CRGBFloatColour PeekGlobalDiffuseColour()const;                                    // 83 0x00B25D20
+    virtual const CRGBFloatColour PeekGlobalAmbientColour()const;                                    // 84 0x00B25D50
+#endif
 private:
     void SetDefaultRenderStates();                                       // 0x00B24850 ?SetDefaultRenderStates@CEngine@@AAEXXZ
     // ??$AddEngineComponent@V<T>@@@CEngine@@AAEXPAV<T>@@AAPAV1@E@Z (Ego_r.pdb; out of line in retail, one COMDAT per component:
     // 0x00B29930 .. 0x00B2A980): publish the component through its global pointer and append it to EngineComponents.
     template <class T> void AddEngineComponent(T* component, T*& global_pointer, unsigned char flag);
     CEngineLayerRenderer& AddRenderLayer(CEngineLayerRenderer* layer);   // 0x00B262C0 ?AddRenderLayer@CEngine@@AAEAAVCEngineLayerRenderer@@PAV2@@Z
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+public:
+    // Ego_r.pdb CEngine::CPreloadStats (32 bytes: LastFullPreloadTime +0, LastFullPreloadTimedOut +8, LastFastPreloadTime +0x10,
+    // LastFastPreloadTimedOut +0x18); the user-declared ctor is FableWin.pdb / Ego_d.pdb ??0CPreloadStats@CEngine@@QAE@XZ, inline in retail
+    // (expanded in the CEngine ctor 0x00B260B0: both times 0.0 from the double constant 0x0122ED70, both flags false).
+    class CPreloadStats {
+    public:
+        CPreloadStats() : LastFullPreloadTime(0.0), LastFullPreloadTimedOut(false), LastFastPreloadTime(0.0), LastFastPreloadTimedOut(false) { }
+        double LastFullPreloadTime;
+        bool   LastFullPreloadTimedOut;
+        double LastFastPreloadTime;
+        bool   LastFastPreloadTimedOut;
+    };
+#endif
 public:
     bool             EnableWireFrame;                                    // +0x10
     bool             EnableEngine;                                       // +0x11
@@ -92,8 +245,13 @@ public:
     bool             ActorsLoading;                                      // +0x38
     bool             CameraAngleChanged;                                 // +0x39
     unsigned char    _pad_0x3a[0x2];                                     // +0x3a
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CArray<CCamera>  PreloadCameras;                                     // +0x3c
+    CPreloadStats    PreloadStats;                                       // +0x48
+#else
     unsigned char    PreloadCameras[0xc];                                // +0x3c CArray<CCamera>
     unsigned char    PreloadStats[0x20];                                 // +0x48 CPreloadStats
+#endif
     C3DVector        PreloadedCameraPos;                                 // +0x68
     C3DVector        PreloadedLookVector;                                // +0x74
     float            StartNewSceneTransitionTime;                        // +0x80
@@ -110,7 +268,11 @@ public:
     bool             EnableScreenShotMode;                               // +0xbc
     bool             EnablePostDeviceReset;                              // +0xbd
     unsigned char    _pad_0xbe[0x2];                                     // +0xbe
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CEngineVideoOptions VideoOptions;                                    // +0xc0
+#else
     unsigned char    VideoOptions[0x34];                                 // +0xc0 CEngineVideoOptions
+#endif
     struct {                                                             // +0xf8 <unnamed-type-OffWorldTickProcessInfo> (0x20)
         bool         ProcessThisFrame;                                   //   +0x00
         bool         ProcessingEnabled;                                  //   +0x01
@@ -123,11 +285,21 @@ public:
     CDefPointer<const CEnvironmentDef>        PEnvironmentDef;           // +0x118
     CDefPointer<const CEngineDef>             PEngineDef;                // +0x11c
     CDefPointer<const CEngineVideoOptionsDef> PEngineVideoOptionsDefs[4];   // +0x120
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CSimpleMemoryPool FrameMemoryPool;                                   // +0x130
+    CArray<CSurface*> ScratchZBuffersD24S8;                              // +0x14c
+#else
     unsigned char    FrameMemoryPool[0x1c];                              // +0x130 CSimpleMemoryPool
     unsigned char    ScratchZBuffersD24S8[0xc];                          // +0x14c CArray<CSurface*>
+#endif
     long             AnisotropicFilteringLevel;                          // +0x158
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CArray<CEngineLayerRenderer*> RenderLayers;                          // +0x15c
+    CArray<CEngineComponent*>     EngineComponents;                      // +0x168
+#else
     unsigned char    RenderLayers[0xc];                                  // +0x15c CArray<CEngineLayerRenderer*>
     unsigned char    EngineComponents[0xc];                              // +0x168 CArray<CEngineComponent*>
+#endif
 #ifdef FABLE_RETAIL_CENGINE_PEEKVIDEOOPTIONSDEF_TYPED
     // NF56 opt-in (row 0x00B244F0, the out-of-line body): Ego_r.pdb 0x009AEB40 / FableWin.pdb 0x02CA1700
     // ?PeekVideoOptionsDef@CEngine@@QAEABVCEngineVideoOptionsDef@@W4EEngineVideoOptionQuality@@@Z on the typed retail members (returns
@@ -138,7 +310,11 @@ public:
 #ifdef FABLE_RETAIL_CENGINE_GETFRAMEMEMORYPOOL
     // Retail opt-in (agentC40, row 0x00BD2D90): FableWin.pdb ?GetFrameMemoryPool@CEngine@@QAEPAVCSimpleMemoryPool@@XZ (inline in retail:
     // `mov ecx,[GPEngine] ; add ecx,130h`, 0x00BD2DB8). No layout change (the member stays the opaque block).
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CSimpleMemoryPool* GetFrameMemoryPool() { return &FrameMemoryPool; }
+#else
     class CSimpleMemoryPool* GetFrameMemoryPool() { return (class CSimpleMemoryPool*)FrameMemoryPool; }
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT_AT(102, sizeof(CEngine) == 0x178);
@@ -150,6 +326,15 @@ FABLE_STATIC_ASSERT_AT(107, offsetof(CEngine, OffWorldTickProcessInfo) == 0xf8);
 FABLE_STATIC_ASSERT_AT(108, offsetof(CEngine, PEngineDef) == 0x11c);
 FABLE_STATIC_ASSERT_AT(109, offsetof(CEngine, AnisotropicFilteringLevel) == 0x158);
 FABLE_STATIC_ASSERT_AT(110, offsetof(CEngine, EngineComponents) == 0x168);
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(CEngine::CPreloadStats) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CEngine, PreloadCameras) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CEngine, PreloadStats) == 0x48);
+FABLE_STATIC_ASSERT(sizeof(CEngineVideoOptions) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CEngine, FrameMemoryPool) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CEngine, ScratchZBuffersD24S8) == 0x14c);
+FABLE_STATIC_ASSERT(offsetof(CEngine, RenderLayers) == 0x15c);
+#endif
 #else // generated flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngine = 0x188.

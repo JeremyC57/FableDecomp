@@ -8,6 +8,10 @@
 // from memory (`fld [esp] ; fmul [esp]`); as doubles both stay on the FPU stack (`fld st(0) ; fmul st(1)`) and the
 // scale is duplicated with `fld st(0)`, as retail.
 // The left-stick twin 0x0066F7D0 has the identical body.
+// Leaf: ?GetControlDirection@CInputTypeXboxPadRightStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CInputTypeXboxPadRightStickEvent.h under FABLE_RETAIL_CINPUTTYPEXBOXPADRIGHTSTICKEVENT_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CInputTypeXboxPadRightStickEvent_Methods::GetControlDirection); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CINPUTTYPEXBOXPADRIGHTSTICKEVENT_VIRTUAL_MODEL
 #include <math.h>
 #include "engine/CInputTypeXboxPadRightStickEvent.h"
 class C2DVector {
@@ -23,10 +27,7 @@ public:
     C2DVector GetJoystickPosition() const;   // 0x00A043A0
 };
 extern const float DELTA_NOTIONAL_ZERO;        // 0x0129BA3C (0.0001f)
-struct CInputTypeXboxPadRightStickEvent_Methods : CInputTypeXboxPadRightStickEvent {
-    C2DVector GetControlDirection(const CInputEvent& event) const;
-};
-C2DVector CInputTypeXboxPadRightStickEvent_Methods::GetControlDirection(const CInputEvent& event) const
+C2DVector CInputTypeXboxPadRightStickEvent::GetControlDirection(const CInputEvent& event) const
 {
     C2DVector position = event.GetJoystickPosition();
     double y = position.Y * -1.0f;

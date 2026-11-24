@@ -1,3 +1,4 @@
+// Leaf: ?GetFadeDistance@CEngineInternalPrimitiveRepeatedStaticMesh@@UBE?AVCEngineFadeDistance@@XZ
 // CEngineInternalPrimitiveRepeatedStaticMesh::GetFadeDistance() const -- the primitive's fade distances (+0x14 begin, +0x18 max) scaled by the view record's fade scale (+0x88), returned through the hidden pointer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B98DA0, length 51 bytes (64 with padding).
 // Callees: none. Globals: the view record @ 0x01436E80 (see CEngine::GetPrimitiveDrawDistanceFactor @ 0x00B23D00, landed). Shape: the scale is loaded once and
@@ -19,10 +20,10 @@ class CEngineFadeDistance { public:
 };
 
 class CEngineInternalPrimitiveRepeatedStaticMesh { public:
-    unsigned char _pad[0x14];
+    unsigned char _pad[0x10];
     float FadeDistance_FadeBeginDistance;          // +0x14
     float FadeDistance_MaxDrawDistance;            // +0x18
-    CEngineFadeDistance GetFadeDistance() const;
+    virtual CEngineFadeDistance GetFadeDistance() const;
 };
 
 CEngineFadeDistance CEngineInternalPrimitiveRepeatedStaticMesh::GetFadeDistance() const

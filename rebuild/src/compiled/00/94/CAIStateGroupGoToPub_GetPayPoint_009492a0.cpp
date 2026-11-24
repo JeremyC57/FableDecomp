@@ -1,5 +1,5 @@
 // CAIStateGroup_GoToPub::GetPayPoint() -- ask the pub bar's tavern-bar component for a pickup slot for this creature (fills BarPos/BarRHSet/BarActionPointIndex/BarIndex)
-// Leaf: ?GetPayPoint@CAIStateGroup_GoToPub@@QAE_NXZ
+// Leaf: ?GetPayPoint@CAIStateGroup_GoToPub@@IAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasTC + the ternary GetTC model on a GetPItem() thing local: the bar loads straight into ecx before the GetPickupSlot pushes
@@ -24,8 +24,8 @@ class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCTavernBar { public:                           // interface type 0xb9
-    bool GetPickupSlot(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, long* actionPointIndex,
-        long* barIndex, bool reserve);          // 0x007BA000
+    bool GetPickupSlot(CThing& creature, C3DVector& pos, CRightHandedSet& rhSet, long& actionPointIndex,
+        long& barIndex, bool reserve);          // 0x007BA000 (NF306: Ego_r + FableWin, references; was the pointer form)
 };
 
 class CBaseObject;
@@ -65,7 +65,9 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     bool HandsOffMode;                          // +0xa0
     bool UnderScriptControl;                    // +0xa1
     long TimeBeforeAskingForBeer;               // +0xa4
+    protected:
     bool GetPayPoint();
+    public:
 };
 
 bool CAIStateGroup_GoToPub::GetPayPoint()
@@ -74,7 +76,7 @@ bool CAIStateGroup_GoToPub::GetPayPoint()
     if (barThing->HasTC(TCI_TAVERN_BAR)) {
         CTCTavernBar* bar = ((CTCTavernBar*)&barThing->GetTC(TCI_TAVERN_BAR));
         CThing* creature = PBrain->PCreature;
-        if (bar->GetPickupSlot(creature, &BarPos, &BarRHSet, &BarActionPointIndex, &BarIndex, false))
+        if (bar->GetPickupSlot(*creature, BarPos, BarRHSet, BarActionPointIndex, BarIndex, false))
             return true;
     }
     return false;

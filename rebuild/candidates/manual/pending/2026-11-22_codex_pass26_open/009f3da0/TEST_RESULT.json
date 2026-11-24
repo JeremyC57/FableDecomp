@@ -1,0 +1,16 @@
+{
+  "test_sha256": "ec38d635b3d441154b33e7cda7f4742fc0bd8125e9127fb1380abab4b2c9d633",
+  "compiler": "13.10.3077",
+  "test_flags": [
+    "/Od",
+    "/W3",
+    "/GR-"
+  ],
+  "output": "009f3da0_TEST PASS",
+  "portable_cxx03": [
+    "-std=c++03",
+    "-pedantic-errors"
+  ],
+  "portable_output": "009f3da0_TEST PASS",
+  "body_sha256": "1776f2531693193b50abdd0d65cf14f7da06e6aaa3b7a1648273a34b37ad3e67"
+}

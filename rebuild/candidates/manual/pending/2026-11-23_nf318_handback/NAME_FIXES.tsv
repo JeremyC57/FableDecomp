@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x013B8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	landed rows 0x00892270 / 0x00892B30 bind it (naming wave 18); vland RELOC_NAME labels 0x013B8790 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass	?g_gameObj@@3PAUGameObj@@A (0x00891C30), ?g_obj@@3PAUCObj@@A (0x00892030)

@@ -1,0 +1,6 @@
+EQ  0064fdb4 0043dbf0 21 ??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_NABQBVCThingPlayerCreature@@@Z
+EQ  0064fdb4 0041a7e0 39 ??0C2DBoxF@@QAE@ABVC2DVector@@ABVC2DExtentsF@@@Z
+EQ  0064fdb4 004048e0 3 ??0CRGBColour@@QAE@XZ
+EQ  0064fdb4 0041be70 57 ?Clear@CEnginePrimitiveHandle@@QAEXXZ
+NEQ 0064fdb4 004118c0 8 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+NEQ 0064fdb4 004365b0 61 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z

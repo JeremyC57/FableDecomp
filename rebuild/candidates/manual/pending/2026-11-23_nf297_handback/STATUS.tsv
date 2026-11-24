@@ -1,0 +1,349 @@
+idx	address	class	tier	status	rows_changed	spellings_before_after	note
+1	0x0040A740	CUserProfileManager	T1	done-partial	0x0040D400,0x0040C790	3 -> 2 (AAE -> QAE; 0x00555CF0's NUISystem namespace spelling stays: NF295's T1 class/namespace area)	prefix item 1 (add-only opt-in): fable_user_profile.h FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC in BOTH branches (main FABLE_RETAIL_CUSERPROFILEMANAGER class, which 0x0040C790 sees, and the #else class 0x0040D400 sees): `public:` before / `private:` after `void Save();`, declaration only; asserts already _AT-pinned. 0x0040C790 was a second, untabled AAE binder (HEAD object UND ?Save@CUserProfileManager@@AAEXXZ, compiled) -- found by the exe census + scen, decision Q1. Users define the macro on one added line each (0x0040D400 + its landed test, which defines the Save stub through the header; 0x0040C790). Both PDB name sets QAE. objsec ALL_EQ x2; link: HEAD leaves AAE unresolved x2, the new set resolves QAE against the self 0x0040A740 (compiled control). equiv_check (all landed rows, old v new tree) + planted control: see NOTES. The other 43 census rows bind QAE from source (local `public:` models or engine/CUserProfileManager.h line 228 public): evidence/uncompiled_census_rows.tsv
+2	0x00842570	CCreatureAction_PlayAnimation	T1	skipped-port		2 (unchanged)	T3: the self 0x00842570 defines the stand-in PAV/PAV ctor and passes CAnimationEntry* to the CCreatureActionBase stand-in base (entry-24 family, T3 queue): a const CAnimationEntry& parameter would need a const_cast into the stand-in base; the only wrong binder 0x0097FA00 models CThingAICreature : CThing (no CThingCreatureBase in its hierarchy, and it declares CThingCreatureBase::GetRandomLoadedAnimFromName on CThingAICreature): a base-typed argument / stand-in model (nf105 debt)
+3	0x008B7F80	CCreatureAction_PlayCombatAnimation	T1	done-partial	0x00909520,0x009352C0	4 -> 3 (PAV/0 -> AAV/0)	binders 0x00909520 (decl line 28, call 77 `*GetCreature(), *GetTarget()`: both CThingCreatureBase* in its model) and 0x009352C0 (decl 101, call 165 `*GetCreature(), *hero`; hero is CThingCreatureBase*). Left (T3): 0x009091D0 (its GetTarget() returns CThing*: a base-typed second argument, and `long` flag), 0x009092C0 / 0x009093F0 (CRetailString stand-in). The self 0x008B7F80 defines the stand-in (PAV CThingCreatureBase, PAV CThing, _N): its second parameter is passed to the CCombatActionBase(CThingCreatureBase*, CThing*, ...) stand-in (entry-10 family) and its model only forward-declares CThingCreatureBase, so a CThingCreatureBase& -> CThing* conversion needs a new local model: T3 with the entry-10 family. Nobody binds the self's spelling, so the moves are free (unresolved both sides)
+4	0x008B7FF0	CCreatureAction_PlayCombatAnimation	T1	done	0x008B7FF0,0x0092A8A0,0x0092B3E0,0x0095B680,0x009621F0,0x009624D0	2 -> 1 (PAV -> AAV)	self 0x008B7FF0 (decl 27 + definition 30: `CThingCreatureBase& owner`; base call `CCombatActionBase(owner, ...)`, the base already AAV 0x00858030) moved with every PAV binder (one unit: they resolved against the self at HEAD): 0x0092A8A0 / 0x0092B3E0 / 0x0095B680 / 0x009621F0 / 0x009624D0 (decl + `*GetCreature()`; GetCreature() returns CThingCreatureBase* in each model). The other 15 census rows bind AAV through engine/CCreatureAction_PlayCombatAnimation.h (reference forms only) or a local reference decl. objsec ALL_EQ x6 (the self's own vtable unchanged); link: the new set resolves AAV against the self, nothing HEAD resolved is left unresolved
+5	0x008BD880	CCreatureAction_RiseUp	T1	done	0x008BD880,0x009621F0,0x009624D0	2 -> 1 (PAV -> AAV)	self 0x008BD880 (`CThingCreatureBase& owner`; `CCombatActionBase(owner, 240, GetSoundPair(owner, 0))`, both callees already take references) + binders 0x009621F0 / 0x009624D0 (decl + `*GetCreature()`). The other census rows bind AAV through engine/CCreatureAction_RiseUp.h (reference). objsec ALL_EQ x3
+6	0x0069F090	CCreatureAction_SheatheItemToInventory_ForDivineWrath	T1	done	0x0072CD00	2 -> 1 (PAV -> AAV)	binder 0x0072CD00 (decl line 52 `CThingCreatureBase& owner`, the local at line 80 `sheathe(*Creature, ...)`, Creature is CThingCreatureBase*); the self 0x0069F090 already defines the PDB spelling (compiled control). objsec ALL_EQ; link resolves it against the self
+7	0x0072D3E0	CCreatureAction_SheatheItemToInventory_ForDivineWrath	T1	done	0x0072CD00	2 -> 1 (QAE -> UAE)	binder 0x0072CD00 line 54 `virtual ~...()`: its local class already derives the polymorphic CCreatureActionBase model (virtual v00), so no layout or table change (tables: only ??_7?$CIntelligentPointer@VCThing@@ as at HEAD); the automatic `sheathe` is destroyed by a direct call. objsec ALL_EQ; link resolves UAE against the self 0x0072D3E0 (FableWin name set; Ego_r has no dtor name)
+8	0x0069F0C0	CCreatureAction_SheatheItemToInventory_ForUnholyPower	T1	done	0x0072CE20	2 -> 1 (PAV -> AAV)	as entry 6 (decl line 54, call line 82); self 0x0069F0C0 already PDB. objsec ALL_EQ
+9	0x0072D430	CCreatureAction_SheatheItemToInventory_ForUnholyPower	T1	done	0x0072CE20	2 -> 1 (QAE -> UAE)	as entry 7 (line 56); self 0x0072D430 defines UAE (FableWin). objsec ALL_EQ
+10	0x006DF730	CCreatureAction_ShowTrophy	T1	done-partial	0x006DF730	2 -> 2 (the self's stand-in DEF PAV/PAV -> PDB AAV/AAV; binder 0x006DD8F0 stays)	self 0x006DF730 (decl 55 + definition 59: `CThingCreatureBase& owner, CThing& trophy`; the stand-in base CCreatureActionBase(CThingCreatureBase*, ..., CAnimationEntry*, ...) and GetTableAnimation(CThingCreatureBase*, ...) get `&owner`, PTrophy(&trophy): no cast, their spellings unchanged). Its DEF had no binder (nobody bound PAV/PAV); 0x006DDD30 binds AAV/AAV through engine/CCreatureAction_ShowTrophy.h and now resolves. Left: 0x006DD8F0 (T3: the creature is a CThing* read from a CIntelligentPointer<CThing>; its own inline CCreatureAction_ShowToSheatheTrophy(CThing*, CThing*, ...) ctor, FableWin AAV/AAV, would need a cast). objsec ALL_EQ (its vtable unchanged)
+11	0x008AB9D0	CCreatureAction_SitDown	T1	skipped-port		2 (unchanged)	T3: the self 0x008AB9D0 takes the stand-in CCountedPointer_CModeSitBase and CAnimationEntry* into the entry-24 stand-in base; binder 0x0090F830 passes CThing* (base-typed) and CCountedPointer<CModeSitBase> (a stand-in global-namespace CModeSitBase, PDB NCreatureMode::CModeSitBase)
+12	0x008ABAA0	CCreatureAction_SitDown	T1	done	0x0090F830	2 -> 1 (QAE -> UAE)	binder 0x0090F830 (R1): its local CCreatureActionBase base had an explicit `void* __vftable;` member; it becomes `virtual void v00();` on the same line (the hidden vptr takes the member's place, every offset kept, no derived->base adjustment), and line 131 `virtual ~CCreatureAction_SitDown();`. No new table (the four tables are the HEAD ones), objsec ALL_EQ (the ?A0x path hash of the TU's SIT_ON_FLOOR_ANIM_NAME static differs only by compile path). The self 0x008ABAA0 defines a stand-in (CPhysicsMeshInfo_Derived_008abaa0), so UAE stays unresolved as QAE was (NAME_FIXES)
+13	0x008CBD90	CCreatureAction_SummonerLightningOrbInto	T1	done	0x008CBD90,0x0096FCD0	2 -> 1 (PAV/PAV -> AAV/AAV)	self 0x008CBD90 (`CThingCreatureBase& owner, CThing& thing`; the entry-10 stand-in base CCombatActionBase(CThingCreatureBase*, CThing*, ...) gets `&owner, &thing`, no cast, its spelling unchanged) + binder 0x0096FCD0 (decl 107; call 181 `*creature, *((CThing*)PTarget.GetPItem())`, the cast is HEAD text). 0x007175D0 binds AAV through engine/CCreatureAction_SummonerLightningOrbInto.h. objsec ALL_EQ x2 (the self's vtable unchanged)
+14	0x0069F0F0	CCreatureAction_UnsheatheItemFromInventory	T1	done-partial	0x007A7BF0	3 -> 2 (0x0069F1F0's PAV/PAV stays)	binder 0x007A7BF0 (decl line 49 `CThingCreatureBase& owner, ..., CThing& item`; call 92 `*creature, ..., *((CThing*)PItemRemoved.GetPItem())`, the cast is HEAD text); the self 0x0069F0F0 already PDB (compiled control: link resolves). Left (T3): 0x0069F1F0 (its own CCreatureAction_UnsheatheItemFromInventoryWithHasteAction ctor takes CCreatureActionBase* where both PDBs have void* first, and pointer creature / item: a self respell of 0x0069F1F0 with its member type, NAME_FIXES), and six rows 0x008B96A0 / 0x008B9740 / 0x008B98D0 / 0x008B9A60 / 0x008B9BF0 / 0x008BAC40 whose GetCreature() returns CThing* (base-typed: a cast)
+15	0x006290E0	CCreatureAction_UseObject	T1	done	0x00946850	2 -> 1 (QAE -> UAE)	binder 0x00946850 line 73 `virtual ~CCreatureAction_UseObject();` (its base model is polymorphic already). objsec ALL_EQ, no table. The self 0x006290E0 defines a stand-in (CCreatureAction_006290e0::DestroyMembers): UAE stays unresolved as QAE was (NAME_FIXES)
+16	0x0069F230	CCreatureAction_UseObject	T1	done	0x0069F230,0x00946850	2 -> 1 (PAV/PAV -> AAV/AAV)	self 0x0069F230 (`CThingCreatureBase& creature, CThing& usedThing`; base CCreatureActionBase(creature, ...) already AAV 0x00693C70; PUsedThing(&usedThing) into the CIntelligentPointer<CThing>(T*) ctor) + binder 0x00946850 (decl 72; call 148 `*GetCreature(), *PCandle.GetPItem()`). 0x0091B190 / 0x0093EA90 / 0x00940960 bind AAV (local reference decl / engine/CCreatureAction_UseObject.h). objsec ALL_EQ x2 (vtable unchanged)
+17	0x00994DC0	CDataInputStream	T1	done	0x00994DC0,0x009A77D0	2 -> 1 (DPA_N -> DAA_N)	self 0x00994DC0 (decl 57 + definition 62 `bool& found`; `found = false / true` at 67 / 73) + binder 0x009A77D0 (decl 51; calls 64 / 67 `found`), one unit: the binder bound the self's old spelling. 0x009A8170 binds DAA_N (passes `found`). objsec ALL_EQ x2; link resolves both sides
+18	0x009E9A70	CDateAndTime	T1	done	0x00829D90,0x009CB710,0x00A5F9D0,0x00A63AD0	2 -> 1 (JJJJJJJ -> JKKKKKK)	four binders' local CDateAndTime(long, long x6) decls -> (long, unsigned long x6); every call passes literals (009CB710 / 00A5F9D0 / 00A63AD0 `CDateAndTime(1, 1, 1, 1, 1, 0, 0)`; 0x00829D90's defaulted decl is used by `CDateAndTime cacheTime;` / `dataTime;`, default 0s, and was an untabled JJJJJJJ binder). 0x00995770 already declares the PDB types. objsec ALL_EQ x4; link: HEAD leaves JJJJJJJ unresolved x4, the new set resolves against the self 0x009E9A70 (control)
+19	0x009ADAE0	CDefinitionManager	T1	skipped-port		2 (unchanged)	T3: binder 0x009AE150 models the result as a global struct CDefPointer (PDB CDefPointer<CDefClassBase> template) and calls it public (PDB IAE)
+20	0x009B02E0	CDefinitionManager	T1	skipped-port		2 (unchanged)	decision Q2: the only wrong binder 0x00450BFF defines CGameDefinitionManager::~CGameDefinitionManager over a non-polymorphic CDefinitionManager model; `virtual` on the base dtor makes the row's own class polymorphic (its dtor would store a vptr and emit a table / ??_G, and its own DEF moves QAE -> UAE): a vtable appears, so stopped
+21	0x00401630	CDiskFileWin32	T1	done	0x00581765	2 -> 1 (QAE -> UAE)	binder 0x00581765 (R1): its local CDiskFileWin32 had an explicit `void* __vftable;` first member; that line becomes a comment and line 50 `virtual ~CDiskFileWin32();` gives the hidden vptr at +0x00 (every offset kept; no derived class, no ctor / virtual body in the TU, so no table: tables=-). objsec ALL_EQ; link: HEAD leaves QAE unresolved, the new set resolves UAE against the self 0x00401630 (control)
+22	0x0099A6A0	CDiskFileWin32	T1	skipped-port		2 (unchanged)	T3: the only wrong binder 0x009CC9F0 declares Open(const CWideString&, long, unsigned long) and calls `Open(..., 1, 4)`; the row declares no FileAccessType enum (a new local type, and the literal would need the enumerator)
+23	0x009BE2D0	CDisplayManager	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x009BFB30 passes the global stand-in struct CPresentationIntervalDesc (PDB nested CDisplayManager::CPresentationIntervalDesc) and calls it public
+24	0x009BE530	CDisplayManager	T1	done	0x009BE530,0x004022B0	2 -> 1 (_NH -> _NK)	self 0x009BE530 (decl 20 + definition 23 `unsigned long fmt`; the only use is `fmt == p[0]`, an equality compare: same code) + binder 0x004022B0 (decl 62; it passes the fable_u32 global and literals), one unit. 0x0041799B already K. objsec ALL_EQ x2
+25	0x009BF160	CDisplayManager	T1	done	0x00B4F510,0x00B869A0,0x00B87680,0x00B89140,0x00B89A20	2 -> 1 (QAEXPAV -> QAE_NAAV)	five binders' `void SetRenderTarget(CRenderTarget* target)` -> `bool SetRenderTarget(CRenderTarget& target)` (both PDBs return bool; every call discards the result) with `*` / no `&` at the calls (0x00B4F510's `(CRenderTarget*)RenderTarget` cast is HEAD text). The other census rows bind the PDB spelling through headers / local reference decls. The self 0x009BF160 defines a stand-in class CDisplayManagerSetRenderTargetView (NAME_FIXES), so the spelling stays unresolved as the old one was. objsec ALL_EQ x5
+26	0x009BF600	CDisplayManager	T1	done	0x009BF600,0x009BFB30	2 -> 1 (QAE..K_N -> ABE..J_N)	self 0x009BF600 (decl 70 `private: ... long colourDepth ... const;`, definition 73 `long colourDepth ... const`; the body reads members only through pointers and calls const-safe members; `format.GetColourDepth() - colourDepth` keeps its arithmetic) + binder 0x009BFB30 (line 160 `private: ... const; public:`; the caller CreateDevice is a CDisplayManager member, it passes the long BackBufferBitDepth). 0x009BF7E0 already binds ABE..J. objsec ALL_EQ x2
+27	0x009BF7E0	CDisplayManager	T1	skipped-port		3 (unchanged)	T3: binder 0x009C0E50 models ECreateDeviceSuccess / CCreateDeviceParameters at global scope (PDB nested in CDisplayManager, @1@); 0x009C1050 takes the parameters by pointer and returns long (stand-in model)
+28	0x0064A3ED	CDrawQuestInfo	T1	skipped-port		2 (unchanged)	T3: binder 0x0064FC23 models CQuestInfoElement as NPlayerGui::CQuestInfoElement (struct) where the PDB nests it in CDrawQuestInfo (a stand-in nesting) and calls it public
+29	0x009E4DA0	CDriveManager	T1	skipped-port		2 (unchanged)	T3: binder 0x00406E30 declares `long CreateDirectoryW(const CWideString&)` and compares the result with 1; the PDB returns EDriveReturn, which the row does not declare
+30	0x00AF88A0	CDynamicObjectHeap	T1	done	0x00AF88A0,0x00AF89C0	2 -> 1 (QAE -> AAE)	self 0x00AF88A0 (line 41 `private: void CreateMoreBlocks();`, its last member; the explicit instantiation ignores access) + binder 0x00AF89C0 (line 29 `private: ...; public:`, its caller Alloc is a member), one unit. 0x00AF8680 already declares it private (AAE). objsec ALL_EQ x2; link: HEAD left AAE unresolved (0x00AF8680), the new set resolves it
+31	0x00B83750	CEngineInternalPrimitiveAnimatedMesh	T1	skipped-port		2 (unchanged)	T3: the PDB GetBoneScalings is const and takes const C3DMesh2&; the self 0x00B83750 calls the non-const InitialiseBoneScalings and fills its cache map (would need const / mutable on the stand-in model), and binder 0x00B82100 keeps the result in a non-const C3DVector* local
+32	0x00BDCBB0	CEngineLandscapeMap	T1	skipped-port		2 (unchanged)	T3: the self 0x00BDCBB0 takes `long direction` (PDB LANDSCAPE_EDGE_STRIP_SIDE) and the row declares no such enum (it compares direction with 0 / 1 and passes it on)
+33	0x0041BF60	CEnginePrimitive2DSprite	T1	skipped-port		2 (unchanged)	T3 (stand-ins): self 0x0041BF60 and binder 0x00547F60 model the box by pointer, the layer / blend / interpolation enums as longs and the texture as void* / CTexture*
+34	0x00BACDB0	CEnginePrimitiveManager	T1	skipped-port		3 (unchanged)	T3 (stand-ins): binders model the scene list as CEngineSceneArray* / void* (PDB CArray<CEngineScene*>&)
+35	0x00BBAC60	CEnginePrimitiveManagerDecal	T1	done	0x00BBBB00	2 -> 1 (QAEXPAV -> IAEXAAV)	binder 0x00BBBB00 (line 15 `protected: void RenderLandscapeDecal(CEngineInternalPrimitiveDecal& decal); public:`; its caller RenderSubPrimitive is a member; call `*decal`). objsec ALL_EQ; the self 0x00BBAC60 (control) defines the PDB spelling
+36	0x00B90270	CEnginePrimitiveManagerOcclusionBase	T1	skipped-port		2 (unchanged)	T3 (stand-ins): binder 0x00BABB50 passes CEngineSceneArray* (PDB CArray<CEngineScene*>&); other census rows use void*
+37	0x00B903D0	CEnginePrimitiveManagerOcclusionBase	T1	skipped-port		3 (unchanged)	T3 (stand-ins): binders 0x00B906C0 / 0x00B90700 pass the mesh as void* (PDB C3DPrimitive2*) and call it public (PDB private)
+38	0x00BC04F0	CEnginePrimitiveManagerParticleSpriteGroup	T1	done	0x00BAD2E0	2 -> 1 (PAV -> AAV)	binder 0x00BAD2E0 (line 176 `CEngineSubPrimitiveBase& subPrimitive`; call 205 `subPrimitive`). objsec ALL_EQ; self 0x00BC04F0 (control) defines the PDB spelling
+39	0x00B99710	CEnginePrimitiveManagerRepeatedStaticMeshes	T1	skipped-port		3 (unchanged)	T3: the second spelling differs in a nested-name back-reference (@1 v @3) the stand-in nesting of CClipListElement produces; the self 0x00B99710 also binds itself public (QAE) from the same stand-in model
+40	0x00BCA950	CEnginePrimitiveManagerSpriteTrails	T1	done	0x00BCB800	2 -> 1 (PAV -> ABV)	binder 0x00BCB800 (line 240 `const CEngineInternalPrimitiveSpriteTrail& trail`; call 263 `*trail`). objsec ALL_EQ; self 0x00BCA950 (control) defines the PDB spelling
+41	0x00B2FAC0	CEnginePrimitiveOcclusionManager	T1	done	0x00BABF70	2 -> 1 (QAEKPAV -> QAEJAAV)	binder 0x00BABF70 (line 37 `long GetOccludedFrames(CEnginePrimitiveOcclusionInfo& info)`; its inline IsRecentlyVisible line 38 `GetOccludedFrames(*info) <= MaxOccludedFrames`: MaxOccludedFrames is unsigned long, so the compare stays unsigned). objsec ALL_EQ. The self 0x00B2FAC0 is a free stand-in (global_GetOccludedFrames; NAME_FIXES): unresolved both sides
+42	0x00B32AD0	CEnginePrimitiveRenderer	T1	skipped-port		2 (unchanged)	T3: binder 0x00B33010's local params model types Layer as long (it already casts it to EEngineRenderLayer at two other calls); the PDB parameter is the enum: a cast on a stand-in member type
+43	0x00B812C0	CEnginePrimitiveSimulationInfo	T1	done	0x00BEBBB0	2 -> 1 (J -> K)	binder 0x00BEBBB0 (line 11 `FindSimulation(unsigned long index)`; it passes its own long parameter: same push). objsec ALL_EQ; self 0x00B812C0 (control) defines K
+44	0x00B94BF0	CEngineScene	T1	done	0x00B94D30	2 -> 1 (PAV return -> AAV return)	binder 0x00B94D30 (line 60 `CEngineSceneMap& GetMapAt(...)`; call 71 `.AddPrimitive`). objsec ALL_EQ; self 0x00B94BF0 (control) defines the PDB spelling
+45	0x00B92250	CEngineSceneGrid	T1	skipped-port		2 (unchanged)	T3 (stand-in): the self 0x00B92250 takes a global struct CEnginePrimitiveEnumerator* (PDB CEngineSceneEnumerator&)
+46	0x00B939E0	CEngineSceneGrid	T1	skipped-port		2 (unchanged)	T3: binder 0x00B93CC0 passes `long layer` (PDB EEngineOcclusionLayer) and the row declares no such enum
+47	0x00B935C0	CEngineSceneGridCell	T1	done	0x00B935C0,0x00B937A0	2 -> 1 (QAE -> AAE)	self 0x00B935C0 (line 73 `private: CEngineSceneGridCell(...)`, its last member; HEAD DEF was QAE: a compiled control showed it, so the self moves with the binder as one unit) + binder 0x00B937A0 (line 29 `private: CEngineSceneGridCell(...); friend class CEngineSceneGrid;`, the class's last member; the caller GetCellCreate is a CEngineSceneGrid member). The friend is the real class (engine/CEngineSceneGridCell.h line 29 carries the same friend, with its evidence comment). objsec ALL_EQ x2 (the self's CEnginePrimitiveHandle table unchanged); link: HEAD resolved QAE self-to-binder, the new set resolves AAE (rule slip: the self was first compiled as a control, and its landed test was prechecked after its lock)
+48	0x00B93B30	CEngineSceneMap	T1	skipped-port		2 (unchanged)	T3 / decision: binder 0x00B94D30 calls CEngineSceneMap::AddPrimitive (PDB private, AAE, reference) from CEngineScene::AddPrimitive; private access from CEngineScene needs a friend the evidence does not show (engine/CEngineSceneMap.h names the grid, not the scene, as a friend)
+49	0x00BACA20	CEngineScenePrimitiveStatsEnumerator	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x00B321B0 passes the stand-in CPrimitiveStatMap* (PDB std::map<unsigned long, unsigned long>&) and a long for the enum
+50	0x00B98A50	CEngineSubPrimitiveBase	T1	open			not started
+51	0x00BBBDB0	CEngineSubPrimitiveParticleGroup	T1	open			not started
+52	0x00B84990	CEngineSubPrimitiveRenderer	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x00B849F0 passes the stand-in CSubList (PDB CArray<CEngineSubPrimitiveRenderer::CSortElement>&)
+53	0x00884E90	CEnvironmentSpellEffectInterface	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x006B8640 models CRadialBlurParams at global scope (PDB nested in CEnvironmentSpellEffectInterface)
+54	0x00884F60	CEnvironmentSpellEffectInterface	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): as entry 53 (CRadialBlurPositionParams)
+55	0x00884FE0	CEnvironmentSpellEffectInterface	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): as entry 53 (CScreenFilterParams)
+56	0x008854A0	CEnvironmentSpellEffectInterface	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x008857E0 uses the stand-in CBlurParams (PDB nested CRadialBlurParams)
+57	0x00885680	CEnvironmentSpellEffectInterface	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): as entry 56 (CBlurPositionParams)
+58	0x0084B010	CEventExpressionPerformedTo	T1	skipped-port		3 (unchanged)	T3: binder 0x008954A0 passes the stand-in CDefPointerExpressionDef; 0x009041A0 passes void* for the creature and a non-const CDefPointer<CExpressionDef> (casts / stand-ins)
+59	0x00811830	CEventHitBySpecialAbility	T1	open			not started
+60	0x0084AEE0	CEventShownItem	T1	skipped-port		2 (unchanged)	T3: binder 0x00845270 passes its CBaseIntelligentPointer PCreature member (a stand-in for the typed pointer) where the PDB takes CThing&
+61	0x00994700	CFileDataInputStream	T1	open			not started
+62	0x00994780	CFileDataInputStream	T1	open			not started
+63	0x009C3330	CFileInstaller	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x009C3AE0 models CBufferChunk at global scope (PDB nested in CFileInstaller) and calls it public (PDB protected)
+64	0x009C3A60	CFileInstaller	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): as entry 63 (AllocateBuffer)
+65	0x009C4440	CFileInstaller	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x009C53A0 passes the stand-in CFileInfoPointer (PDB CCountedPointer<const CFileInstaller::CFileInfo>&) non-const and public
+66	0x00698840	CGameCameraManager	T1	skipped-port		3 (unchanged)	T3 (sigdiff STANDIN): binders 0x00698C30 / 0x006988B0 pass the stand-ins CCameraDefPointer / CDefPointer_CCameraModeDef
+67	0x009F1650	CGameEventPackage	T1	done-partial	0x004AEAA0	3 -> 2 (PAV -> PBV)	binder 0x004AEAA0 (line 17 `void AddEvent(const CGameEvent* event)`; call 68 `&event`, unchanged). objsec ALL_EQ. 0x004AE9A0 / 0x009F1AC0 already bind PBV. Left: the self 0x009F1650 defines AddEvent(const CGameEvent&) (ABV, both PDBs PBV): a self respell through its body (NAME_FIXES), not done here
+68	0x00445E90	CGamePlayerInterface	T1	open			not started
+69	0x00446EF0	CGamePlayerInterface	T1	done	0x00447390	2 -> 1 (H -> J)	binder 0x00447390 (line 3 `void SetControlScheme(long value)`; it passes an int member, same push). 0x004473A0 / 0x00487DE0 already J. The self 0x00446EF0 has no landed source. objsec ALL_EQ
+70	0x006BB860	CGameTimeManager	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x006BBC30 passes the stand-in CGenericVarVector (PDB std::vector<CGenericVar>)
+71	0x006BB940	CGameTimeManager	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): as entry 70
+72	0x006BBE30	CGameTimeManager	T1	done	0x006BBE30,0x0065B0B4	2 -> 1 (PAJ -> AAJ)	self 0x006BBE30 (decl + definition `long& handle`; `handle = m_nextStopperHandle++`, Insert(&where, &handle), Erase(&handle): the stand-in set callees keep their pointer spellings) + binder 0x0065B0B4 (decl 59; call 89 `TimeStopIndex`), one unit. 0x0088FE80 already binds AAJ. objsec ALL_EQ x2
+73	0x009FF8D0	CGraphicInfo	T1	done-partial	0x00BCB800	2 -> 2 (the binder QAE PAV -> PDB QBE AAV; the self's own QAE AAV DEF stays)	binder 0x00BCB800 (line 200 `bool GetFrame(CGraphicFrame& frame, ...) const`; its inline wrapper line 217 `->GetFrame(*frame, ...)`). objsec ALL_EQ. The self 0x009FF8D0 defines GetFrame non-const (QAE..AAV; both PDBs QBE): a self respell needing its body const-checked (NAME_FIXES); 0x009DCA80 binds QBE
+74	0x00A86CD0	CIPhysicsFacesSegmentBase	T1	open			not started
+75	0x00A03C20	CInputEvent	T1	open			not started
+76	0x009F4C60	CInputManager	T1	open			not started
+77	0x009F4F70	CInputManager	T1	done	0x0041E10D	2 -> 1 (PAV -> ABV)	binder 0x0041E10D (line 24 `void RemoveEventFromQueue(const CInputEvent& event)`; call 47 `event`). objsec ALL_EQ; the self 0x009F4F70 (control) defines ABV
+78	0x00A0D810	CInputProcessManager	T1	skipped-port		2 (unchanged)	decision Q2 (as entry 20): the only wrong binder 0x00446BE0 defines ~CGamePlayerInterface over the polymorphic CInputProcessManager model; `virtual` on the base dtor would make the row's own dtor virtual (its DEF QAE -> UAE and a dtor slot in a table it references): a vtable changes, so stopped
+79	0x00512410	CIsHouseLargerThan	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x005140A0 passes non-const CThingBuilding* (PDB const) from a stand-in model
+80	0x00BE5BB0	CLandscapeBackgroundPatch	T1	skipped-port		2 (unchanged)	T3 (sigdiff STANDIN): binder 0x00BF6F80 passes the stand-in CLandscapeBackgroundTreeNode* (PDB CMovableResource*)
+81	0x00BE5E70	CLandscapeBackgroundPatch	T1	open			not started
+82	0x00BF9FA0	CLocalDetailPrimitiveMeshZSpriteBatch	T1	open			not started
+83	0x0041DB1D	CManager	T1	open			not started
+84	0x0041DB84	CManager	T1	open			not started
+85	0x0066E9E9	CManager	T1	open			not started
+86	0x0066EB11	CManager	T1	open			not started
+87	0x00A64E70	CMemoryAllocatorVariableSize	T1	open			not started
+88	0x00996CC0	CMemoryDataOutputStream	T1	open			not started
+89	0x009E97B0	CMemoryFile	T1	open			not started
+90	0x006AF3F0	CMessageEventFilter_IsMyDeadLeader	T1	open			not started
+91	0x0082B7E0	CMiniMapDisplay	T1	open			not started
+92	0x006BD840	CMusicManager	T1	open			not started
+93	0x00A1CBF0	CNavigatorAStar	T1	open			not started
+94	0x00A18F70	CNavigatorFlyer	T1	open			not started
+95	0x0045E8ED	COpinionPersonalityTraits	T1	open			not started
+96	0x00B21940	CPSCSplineBase	T1	open			not started
+97	0x00AEE940	CParticleEmitter	T1	open			not started
+98	0x00AF0610	CParticleEmitter	T1	open			not started
+99	0x00AE1320	CParticleProgram	T1	open			not started
+100	0x00AE3920	CParticleProgram	T1	open			not started
+101	0x00AE3C30	CParticleProgram	T1	open			not started
+102	0x00AF4EE0	CParticleSystem	T1	open			not started
+103	0x00AF5330	CParticleSystem	T1	open			not started
+104	0x00403FF0	CPersistTraits	T1	open			not started
+105	0x0040EFB0	CPersistTraits	T1	open			not started
+106	0x0040FE60	CPersistTraits	T1	open			not started
+107	0x0044B890	CPersistTraits	T1	open			not started
+108	0x0045E011	CPersistTraits	T1	open			not started
+109	0x0045ED25	CPersistTraits	T1	open			not started
+110	0x00464030	CPersistTraits	T1	open			not started
+111	0x00475B93	CPersistTraits	T1	open			not started
+112	0x0047926C	CPersistTraits	T1	open			not started
+113	0x004CBC70	CPersistTraits	T1	open			not started
+114	0x004E959D	CPersistTraits	T1	open			not started
+115	0x0057F9E9	CPersistTraits	T1	open			not started
+116	0x005C0A98	CPersistTraits	T1	open			not started
+117	0x005C0E81	CPersistTraits	T1	open			not started
+118	0x005C19A3	CPersistTraits	T1	open			not started
+119	0x005C2118	CPersistTraits	T1	open			not started
+120	0x0067AA40	CPersistTraits	T1	open			not started
+121	0x006B91A0	CPersistTraits	T1	open			not started
+122	0x006BA480	CPersistTraits	T1	open			not started
+123	0x006DC6A0	CPersistTraits	T1	open			not started
+124	0x007AD7F0	CPersistTraits	T1	open			not started
+125	0x007E3820	CPersistTraits	T1	open			not started
+126	0x007E3930	CPersistTraits	T1	open			not started
+127	0x009E81E0	CPersistTraits	T1	open			not started
+128	0x00A12450	CPhysicsMeshObject	T1	open			not started
+129	0x00487EF0	CPlayer	T1	open			not started
+130	0x004888C0	CPlayer	T1	open			not started
+131	0x00437AE0	CPlayerGui	T1	open			not started
+132	0x0043B570	CPlayerGui	T1	open			not started
+133	0x00F07B80	CQ_AmbushTradersScript	T1	open			not started
+134	0x004AFBB0	CQuestManager	T1	open			not started
+135	0x004B3A20	CQuestManager	T1	open			not started
+136	0x00F3AFC0	CRangeCompressor	T1	open			not started
+137	0x009DBFF0	CRenderManager2D	T1	open			not started
+138	0x009DD210	CRenderManager2D	T1	open			not started
+139	0x009DE3F0	CRenderManager2D	T1	open			not started
+140	0x00A10DC0	CRenderTarget	T1	open			not started
+141	0x009FC5C0	CResourceList	T1	open			not started
+142	0x009F4910	CScratchBuffer	T1	open			not started
+143	0x00CB7920	CScriptBase	T1	open			not started
+144	0x0082E600	CScriptedMapBrush	T1	open			not started
+145	0x0082E780	CScriptedMapBrush	T1	open			not started
+146	0x0082E910	CScriptedMapBrush	T1	open			not started
+147	0x0082E9C0	CScriptedMapBrush	T1	open			not started
+148	0x00555440	CScrollableList	T1	open			not started
+149	0x005556F0	CScrollableList	T1	open			not started
+150	0x0098B860	CShaderRenderManager	T1	open			not started
+151	0x00A5D7C0	CShaderResource	T1	open			not started
+152	0x00A7DB10	CSmallVector	T1	open			not started
+153	0x00872110	CStringAndCageBase	T1	open			not started
+154	0x00414E30	CStringParser	T1	open			not started
+155	0x009BA110	CStringParser	T1	open			not started
+156	0x00492973	CSubtitleRenderer	T1	open			not started
+157	0x00492E4B	CSubtitleRenderer	T1	open			not started
+158	0x00492F69	CSubtitleRenderer	T1	open			not started
+159	0x00493049	CSubtitleRenderer	T1	open			not started
+160	0x009F3230	CSurface	T1	open			not started
+161	0x009F35D0	CSurface	T1	open			not started
+162	0x009F36E0	CSurface	T1	open			not started
+163	0x009F37E0	CSurface	T1	open			not started
+164	0x009F4120	CSurface	T1	open			not started
+165	0x009F4590	CSurface	T1	open			not started
+166	0x009E5090	CSymbolMap	T1	open			not started
+167	0x00729B20	CTCActionUseScriptedHook	T1	open			not started
+168	0x007F7710	CTCActivationReceptorBase	T1	open			not started
+169	0x0078C210	CTCBerserk	T1	open			not started
+170	0x007827D0	CTCBoastingArea	T1	open			not started
+171	0x00782860	CTCBoastingArea	T1	open			not started
+172	0x00783730	CTCBoastingCrowdControl	T1	open			not started
+173	0x0079D360	CTCBulletTime	T1	open			not started
+174	0x007055D0	CTCCarryable	T1	open			not started
+175	0x006CB780	CTCCreatureNavigation	T1	open			not started
+176	0x006CBAC0	CTCCreatureNavigation	T1	open			not started
+177	0x00681AE0	CTCCreatureOpinionOfHero	T1	open			not started
+178	0x00682810	CTCCreatureOpinionOfHero	T1	open			not started
+179	0x007E4B60	CTCCreditsUI	T1	open			not started
+180	0x006E0480	CTCDParticleEmitter	T1	open			not started
+181	0x00730630	CTCDoor	T1	open			not started
+182	0x0071AC70	CTCEmoteIcon	T1	open			not started
+183	0x0076C8A0	CTCEnemy	T1	open			not started
+184	0x0076CC00	CTCEnemy	T1	open			not started
+185	0x004D6292	CTCFlashOnHit	T1	open			not started
+186	0x006D4E60	CTCFollowed	T1	open			not started
+187	0x006D50C0	CTCFollowed	T1	open			not started
+188	0x006D5180	CTCFollowed	T1	open			not started
+189	0x007986A0	CTCForcePushed	T1	open			not started
+190	0x004BFFD0	CTCGraphicAppearance	T1	open			not started
+191	0x004C0240	CTCGraphicAppearance	T1	open			not started
+192	0x00706640	CTCHeroAttachableAppearanceModifiers	T1	open			not started
+193	0x006D6660	CTCHeroExperience	T1	open			not started
+194	0x0057A6B8	CTCHeroStats	T1	open			not started
+195	0x0057BC6E	CTCHeroStats	T1	open			not started
+196	0x0057C4F1	CTCHeroStats	T1	open			not started
+197	0x008168B0	CTCHitLocations	T1	open			not started
+198	0x008169B0	CTCHitLocations	T1	open			not started
+199	0x00801920	CTCIdleScheduler	T1	open			not started
+200	0x00581DDB	CTCInventory	T1	open			not started
+201	0x00584B86	CTCInventory	T1	open			not started
+202	0x005EE49A	CTCInventoryAbilities	T1	open			not started
+203	0x005EEA9B	CTCInventoryAbilities	T1	open			not started
+204	0x005F0DC5	CTCInventoryAbilities	T1	open			not started
+205	0x005F1320	CTCInventoryAbilities	T1	open			not started
+206	0x005BF482	CTCInventoryBase	T1	open			not started
+207	0x005D8E90	CTCInventoryItem	T1	open			not started
+208	0x005FB140	CTCInventoryMap	T1	open			not started
+209	0x0061A8A0	CTCInventoryQuests	T1	open			not started
+210	0x00753E90	CTCLook	T1	open			not started
+211	0x007CD390	CTCMultiStrike	T1	open			not started
+212	0x00766050	CTCObjectAugmentations	T1	open			not started
+213	0x007660C0	CTCObjectAugmentations	T1	open			not started
+214	0x0079DEB0	CTCPhysicalShieldSpell	T1	open			not started
+215	0x006B0210	CTCPhysicsBase	T1	open			not started
+216	0x006B0460	CTCPhysicsBase	T1	open			not started
+217	0x00772120	CTCShop	T1	open			not started
+218	0x00773C00	CTCShop	T1	open			not started
+219	0x007751A0	CTCShop	T1	open			not started
+220	0x00770FA0	CTCSolidToThing	T1	open			not started
+221	0x00746EC0	CTCStealth	T1	open			not started
+222	0x00747B80	CTCStealth	T1	open			not started
+223	0x0079ACC0	CTCSummonSpell	T1	open			not started
+224	0x006E3180	CTCTalk	T1	open			not started
+225	0x007F5A70	CTCTargetingBase	T1	open			not started
+226	0x007B9F60	CTCTavernBar	T1	open			not started
+227	0x007BA1D0	CTCTavernBar	T1	open			not started
+228	0x007BA8C0	CTCTavernBar	T1	open			not started
+229	0x005EB4B0	CTCTavernGame	T1	open			not started
+230	0x005ECA50	CTCTavernGame	T1	open			not started
+231	0x0078839A	CTCTrapBase	T1	open			not started
+232	0x007941D0	CTCUnholyPower	T1	open			not started
+233	0x00658620	CTCVillage	T1	open			not started
+234	0x00658716	CTCVillage	T1	open			not started
+235	0x00659EFC	CTCVillage	T1	open			not started
+236	0x0065A8EE	CTCVillage	T1	open			not started
+237	0x007DF4B0	CTCWallMountEffects	T1	open			not started
+238	0x0076E4D0	CTCWeaponTrail	T1	open			not started
+239	0x007A0D90	CTCWillLightning	T1	open			not started
+240	0x009C8DE0	CTextEntry	T1	open			not started
+241	0x009F9DE0	CTexture	T1	open			not started
+242	0x009FA450	CTexture	T1	open			not started
+243	0x0081B0A0	CTextureMorphs	T1	open			not started
+244	0x004C8310	CThing	T1	open			not started
+245	0x004C9030	CThing	T1	open			not started
+246	0x00863750	CThingBodyReorienter	T1	open			not started
+247	0x008098B0	CThingCompare_BestForTargeting2	T1	open			not started
+248	0x006619F0	CThingCreatureBase	T1	open			not started
+249	0x00662B10	CThingCreatureBase	T1	open			not started
+250	0x00663260	CThingCreatureBase	T1	open			not started
+251	0x006644F0	CThingCreatureBase	T1	open			not started
+252	0x006668A0	CThingCreatureBase	T1	open			not started
+253	0x00835C80	CThingDeadCreature	T1	open			not started
+254	0x006A7550	CThingFilter_EnemyCreature	T1	open			not started
+255	0x006A7E70	CThingFilter_HasScriptData	T1	open			not started
+256	0x006A7930	CThingFilter_InMap	T1	open			not started
+257	0x006A76A0	CThingFilter_IsNot	T1	open			not started
+258	0x006A7EB0	CThingFilter_IsNotList	T1	open			not started
+259	0x00799E30	CThingFilter_IsPotentialCustomer	T1	open			not started
+260	0x006A7580	CThingFilter_IsThingAbleToBeEngagedInCombat	T1	open			not started
+261	0x006A7590	CThingFilter_ObjectHasProperty	T1	open			not started
+262	0x006A7B20	CThingFilter_PosInContainmentVolume	T1	open			not started
+263	0x0051E210	CThingManager	T1	open			not started
+264	0x0051EC50	CThingManager	T1	open			not started
+265	0x00520D00	CThingManager	T1	open			not started
+266	0x00525CD0	CThingManager	T1	open			not started
+267	0x006A5AF0	CThingPhysical	T1	open			not started
+268	0x0083DDC0	CThingPhysicalSwitch	T1	open			not started
+269	0x00877840	CTools	T1	open			not started
+270	0x00409090	CUserProfileManager	T1	open			not started
+271	0x00409FD0	CUserProfileManager	T1	open			not started
+272	0x0040BCA0	CUserProfileManager	T1	open			not started
+273	0x00AD89B0	CVertexGroupBlockOptimiser	T1	open			not started
+274	0x00A3B0F0	CVideoSys	T1	open			not started
+275	0x00A0CCD0	CWStringParser	T1	open			not started
+276	0x0099B800	CWideString	T1	open			not started
+277	0x0049D930	CWorld	T1	open			not started
+278	0x0049E080	CWorld	T1	open			not started
+279	0x004A0CD0	CWorld	T1	open			not started
+280	0x00500EB0	CWorldMap	T1	open			not started
+281	0x00501990	CWorldMap	T1	open			not started
+282	0x00501D30	CWorldMap	T1	open			not started
+283	0x00502E90	CWorldMap	T1	open			not started
+284	0x0050A650	CWorldMap	T1	open			not started
+285	0x0063D4A0	CWorldMap	T1	open			not started
+286	0x009BD020	CXMVPlayer	T1	open			not started
+287	0x00493EAB	FindAllMessages	T1	open			not started
+288	0x00632830	GFSerialiseMapBinaryIn	T1	open			not started
+289	0x00632B90	GFSerialiseMapBinaryIn	T1	open			not started
+290	0x00412C70	GFSerialiseVectorBinaryIn	T1	open			not started
+291	0x0040FCA0	GFSerialiseVectorBinaryOut	T1	open			not started
+292	0x0052B270	GetAllThings	T1	open			not started
+293	0x008786E0	GetAllThingsInRoughArea	T1	open			not started
+294	0x007510D0	GetSubDef	T1	open			not started
+295	0x0083EBD0	LHNetworkLib	T1	open			not started
+296	0x00BFC880	LoadVerts	T1	open			not started
+297	0x00BFCA20	LoadVerts	T1	open			not started
+298	0x00BFCBC0	LoadVerts	T1	open			not started
+299	0x00BFCD60	LoadVerts	T1	open			not started
+300	0x0085F830	NCreatureMode	T1	open			not started
+301	0x009EA060	NProgressDisplay	T1	open			not started
+302	0x006E2B70	NSpeechGainManager	T1	open			not started
+303	0x00660AE2	RemoveThingFromTask	T1	open			not started
+304	0x00660B5D	RemoveThingFromTask	T1	open			not started
+305	0x00660BD8	RemoveThingFromTask	T1	open			not started
+306	0x00660C53	RemoveThingFromTask	T1	open			not started
+307	0x00660CCE	RemoveThingFromTask	T1	open			not started
+308	0x00660D49	RemoveThingFromTask	T1	open			not started
+309	0x00660787	RemoveThingFromTaskList	T1	open			not started
+310	0x00660894	RemoveThingFromTaskList	T1	open			not started
+311	0x0066090A	RemoveThingFromTaskList	T1	open			not started
+312	0x00660980	RemoveThingFromTaskList	T1	open			not started
+313	0x006609F6	RemoveThingFromTaskList	T1	open			not started
+314	0x00660A6C	RemoveThingFromTaskList	T1	open			not started
+315	0x00BFCF00	SaveVerts	T1	open			not started
+316	0x00BFCF90	SaveVerts	T1	open			not started
+317	0x00BFD020	SaveVerts	T1	open			not started
+318	0x0059B4FE	deque	T1	open			not started
+319	0x00479449	list	T1	open			not started
+320	0x0053CB20	list	T1	open			not started
+321	0x0042D1B7	map	T1	open			not started
+322	0x007AEBE0	map	T1	open			not started
+323	0x005E0E20	pair	T1	open			not started
+324	0x0046ACA8	vector	T1	open			not started
+325	0x004E9F20	vector	T1	open			not started
+326	0x00581284	vector	T1	open			not started
+327	0x006C9D50	vector	T1	open			not started
+328	0x006D4A20	vector	T1	open			not started
+329	0x006DD4A0	vector	T1	open			not started
+330	0x00721240	vector	T1	open			not started
+331	0x007B5210	vector	T1	open			not started
+332	0x00F33D90	vector	T1	open			not started
+333	0x00F34BF0	vector	T1	open			not started
+334	0x00F353F0	vector	T1	open			not started
+335	0x00405220		T1	open			not started
+336	0x00497890		T1	open			not started
+337	0x005578A0		T1	open			not started
+338	0x00778610		T1	open			not started
+339	0x0088AE40		T1	open			not started
+340	0x00942B30		T1	open			not started
+341	0x009E1E70		T1	open			not started
+342	0x009E21D0		T1	open			not started
+343	0x00CBE0C7		T1	open			not started
+344	0x00CBE7AA		T1	open			not started
+345	0x00CBE814		T1	open			not started
+346	0x00CBED00		T1	open			not started
+347	0x00CBED82		T1	open			not started
+348	0x00CBEED2		T1	open			not started

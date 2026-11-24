@@ -1,0 +1,138 @@
+entry	address	census_row	class	note
+1	0x0040A740	0x0040AF90	shared-header/no-local-decl	
+1	0x0040A740	0x0040AFD0	shared-header/no-local-decl	
+1	0x0040A740	0x0040B010	shared-header/no-local-decl	
+1	0x0040A740	0x0040B050	shared-header/no-local-decl	
+1	0x0040A740	0x0040B090	shared-header/no-local-decl	
+1	0x0040A740	0x0040B0D0	shared-header/no-local-decl	
+1	0x0040A740	0x0040B110	shared-header/no-local-decl	
+1	0x0040A740	0x0040B150	shared-header/no-local-decl	
+1	0x0040A740	0x0040B190	shared-header/no-local-decl	
+1	0x0040A740	0x0040B1D0	shared-header/no-local-decl	
+1	0x0040A740	0x0040B210	shared-header/no-local-decl	
+1	0x0040A740	0x0040B250	shared-header/no-local-decl	
+1	0x0040A740	0x0040B290	shared-header/no-local-decl	
+1	0x0040A740	0x0040B2D0	shared-header/no-local-decl	
+1	0x0040A740	0x0040B310	shared-header/no-local-decl	
+1	0x0040A740	0x0040B350	shared-header/no-local-decl	
+1	0x0040A740	0x0040B390	shared-header/no-local-decl	
+1	0x0040A740	0x0040B3D0	shared-header/no-local-decl	
+1	0x0040A740	0x0040B410	shared-header/no-local-decl	
+1	0x0040A740	0x0040B450	shared-header/no-local-decl	
+1	0x0040A740	0x0040B490	shared-header/no-local-decl	
+1	0x0040A740	0x0040B4D0	shared-header/no-local-decl	
+1	0x0040A740	0x0040B510	shared-header/no-local-decl	
+1	0x0040A740	0x0040B550	shared-header/no-local-decl	
+1	0x0040A740	0x0040B590	shared-header/no-local-decl	
+1	0x0040A740	0x0040B5D0	shared-header/no-local-decl	
+1	0x0040A740	0x0040B610	shared-header/no-local-decl	
+1	0x0040A740	0x0040B650	shared-header/no-local-decl	
+1	0x0040A740	0x0040B690	shared-header/no-local-decl	
+1	0x0040A740	0x0040B6D0	shared-header/no-local-decl	
+1	0x0040A740	0x0040B710	shared-header/no-local-decl	
+1	0x0040A740	0x0040B750	shared-header/no-local-decl	
+1	0x0040A740	0x0040BB90	shared-header/no-local-decl	
+1	0x0040A740	0x0040BC50	shared-header/no-local-decl	fable_string.h
+1	0x0040A740	0x0040CCA0	shared-header/no-local-decl	
+1	0x0040A740	0x0040D2F0	shared-header/no-local-decl	
+1	0x0040A740	0x0041E6D3	shared-header/no-local-decl	engine/ETCInterfaceType.h,engine/CThing.h,engine/CTCBase.h
+1	0x0040A740	0x0047DA50	shared-header/no-local-decl	engine/CThing.h,engine/CVectorMap.h
+1	0x0040A740	0x0047E9AE	shared-header/no-local-decl	fable_compiler.h,stlport/fable_containers.h,engine/ETCInterfaceType.h
+1	0x0040A740	0x00555CF0	shared-header/no-local-decl	fable_compiler.h,engine/CObserver.h,fable_string.h
+1	0x0040A740	0x00582414	shared-header/no-local-decl	fable_compiler.h
+1	0x0040A740	0x0059697A	shared-header/no-local-decl	
+1	0x0040A740	0x0059A238	shared-header/no-local-decl	fable_compiler.h,engine/CTBaseSingleton.h,engine/CNewFrontendGameComponent.h
+3	0x008B7F80	0x009091D0	local-text	CCreatureAction_PlayCombatAnimation(CThingCreatureBase* owner, CThing* thing, const CCharString& animation, long flag);
+3	0x008B7F80	0x009092C0	shared-header/no-local-decl	engine/CCombatSequence_WillPhysicalShield.h,engine/CCreatureAction_PlayCombatAnimation.h,engine/CCreatureAction_CastPhysicalShieldSpell.h
+3	0x008B7F80	0x009093F0	shared-header/no-local-decl	engine/CCombatSequence_WillPhysicalShieldNonMelee.h,engine/CCreatureAction_PlayCombatAnimation.h,engine/CCreatureAction_CastPhysicalShieldSpell.h
+3	0x008B7F80	0x00974AA0	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/C3DVector.h
+4	0x008B7FF0	0x00712A80	shared-header/no-local-decl	fable_string.h,engine/ETCInterfaceType.h,engine/CThingCreatureBase.h
+4	0x008B7FF0	0x008B80E0	local-text	CCreatureAction_PlayCombatAnimation(CThingCreatureBase& creature, const CCharString& animation, bool flag);
+4	0x008B7FF0	0x008C2550	shared-header/no-local-decl	fable_compiler.h,engine/C3DVector.h,engine/CJackOfBladesBattleDef.h
+4	0x008B7FF0	0x008DF680	shared-header/no-local-decl	fable_compiler.h
+4	0x008B7FF0	0x0092ACE0	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/fable_ai_action_enums.h
+4	0x008B7FF0	0x0092AE70	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/fable_ai_action_enums.h
+4	0x008B7FF0	0x0092AFE0	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/fable_ai_action_enums.h
+4	0x008B7FF0	0x0094DD90	shared-header/no-local-decl	fable_string.h,engine/EAIAction.h,engine/C3DVector.h
+4	0x008B7FF0	0x0094E7B0	shared-header/no-local-decl	engine/CAIStateGroupBase.h,engine/CIntelligentPointer.h,engine/CAIStateGroup_TrollBase.h
+4	0x008B7FF0	0x009551A0	shared-header/no-local-decl	fable_string.h,engine/fable_ai_action_enums.h,engine/CAIStateGroupBase.h
+4	0x008B7FF0	0x009735D0	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/fable_ai_action_enums.h
+4	0x008B7FF0	0x00973DC0	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/fable_ai_action_enums.h
+4	0x008B7FF0	0x00974110	shared-header/no-local-decl	engine/CAIStateGroupBase.h,fable_string.h,stlport/fable_containers.h
+4	0x008B7FF0	0x00974770	shared-header/no-local-decl	engine/CThingAICreature.h,engine/CAIStateGroup_JackOfBladesStage1.h,engine/CAIBrain.h
+4	0x008B7FF0	0x009756B0	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/fable_ai_action_enums.h
+5	0x008BD880	0x008BC1A0	local-text	CCreatureAction_RiseUp(CThingCreatureBase& creature);
+5	0x008BD880	0x008C4FD0	shared-header/no-local-decl	fable_compiler.h,fable_string.h,stlport/fable_containers.h
+5	0x008BD880	0x00920960	shared-header/no-local-decl	fable_string.h,engine/CThing.h,engine/CTCBase.h
+5	0x008BD880	0x00920DC0	shared-header/no-local-decl	fable_string.h,engine/C3DVector.h,engine/CRightHandedSet.h
+5	0x008BD880	0x0094DBC0	shared-header/no-local-decl	engine/CAIStateGroupBase.h,engine/CIntelligentPointer.h,engine/CAIStateGroup_TrollBase.h
+10	0x006DF730	0x006DD8F0	local-text	CCreatureAction_ShowTrophy(CThing* creature, CThing* trophy, const CCharString& animName, long actionCode);
+10	0x006DF730	0x006DDD30	shared-header/no-local-decl	fable_string.h,engine/CThing.h,engine/CThingAICreature.h
+12	0x008ABAA0	0x008A8C60	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/CCountedPointer.h
+12	0x008ABAA0	0x00938380	shared-header/no-local-decl	fable_assert.h,engine/CThingAICreature.h,engine/CThingObject.h
+12	0x008ABAA0	0x009392A0	shared-header/no-local-decl	engine/CMainGameComponent.h,engine/CThingAICreature.h,engine/CThingObject.h
+12	0x008ABAA0	0x0093B1D0	shared-header/no-local-decl	fable_compiler.h,engine/CAIBrain.h,engine/CWorld.h
+12	0x008ABAA0	0x00949580	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/fable_ai_action_enums.h
+12	0x008ABAA0	0x0096CD70	shared-header/no-local-decl	fable_string.h,stlport/fable_containers.h,engine/fable_ai_action_enums.h
+13	0x008CBD90	0x007175D0	shared-header/no-local-decl	fable_string.h,engine/ETCInterfaceType.h,engine/CCountedPointer.h
+14	0x0069F0F0	0x0055F710	shared-header/no-local-decl	fable_compiler.h,engine/CTCHeroOnlineScoreboard.h
+14	0x0069F0F0	0x0069F1F0	local-text	CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase* owner, const CCharString& itemName, CThing* item, long a, long b, CCreatureAc
+14	0x0069F0F0	0x008B96A0	local-text	CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& animation, CThing* item,
+14	0x0069F0F0	0x008B9740	local-text	CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& animation, CThing* item,
+14	0x0069F0F0	0x008B98D0	local-text	CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& animation, CThing* item,
+14	0x0069F0F0	0x008B9A60	local-text	CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& animation, CThing* item,
+14	0x0069F0F0	0x008B9BF0	local-text	CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& animation, CThing* item,
+14	0x0069F0F0	0x008BA140	local-text	CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& creature, const CCharString& animName, CThing& item,
+14	0x0069F0F0	0x008BA6B0	local-text	CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& creature, const CCharString& animName, CThing& item,
+14	0x0069F0F0	0x008BAA90	local-text	CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& creature, const CCharString& animName, CThing& item,
+14	0x0069F0F0	0x008BAC40	local-text	CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& animation, CThing* item,
+14	0x0069F0F0	0x008CD820	local-text	CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& owner, const CCharString& animation, CThing& item,
+14	0x0069F0F0	0x008CDA30	local-text	CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& owner, const CCharString& animation, CThing& item,
+15	0x006290E0	0x0093EA90	shared-header/no-local-decl	engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CDefPointer.h
+16	0x0069F230	0x0091B190	local-text	CCreatureAction_UseObject(CThingCreatureBase& creature, CThing& usedThing, bool allowTurn);
+16	0x0069F230	0x0093EA90	shared-header/no-local-decl	engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CDefPointer.h
+16	0x0069F230	0x00940960	shared-header/no-local-decl	engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CDefPointer.h
+17	0x00994DC0	0x009A8170	shared-header/no-local-decl	stlport/fable_containers.h,fable_string.h,engine/CAFile.h
+18	0x009E9A70	0x00995770	local-text	CDateAndTime(long year, unsigned long month, unsigned long day, unsigned long hour, unsigned long minute,
+21	0x00401630	0x00416953	shared-header/no-local-decl	fable_string.h,engine/CAFile.h,engine/CDiskFileWin32.h
+21	0x00401630	0x00418B7A	shared-header/no-local-decl	fable_game.h,engine/CWorld.h,engine/CPlayerManager.h
+21	0x00401630	0x0047F58B	shared-header/no-local-decl	stlport/fable_containers.h,fable_string.h,engine/ETCInterfaceType.h
+21	0x00401630	0x004A1840	shared-header/no-local-decl	fable_compiler.h,fable_string.h,fable_profile.h
+21	0x00401630	0x00597228	shared-header/no-local-decl	stlport/fable_containers.h,fable_string.h,engine/CFrontEndManager.h
+21	0x00401630	0x00598463	shared-header/no-local-decl	stlport/fable_containers.h,stlport/fable_map.h,fable_string.h
+24	0x009BE530	0x0041799B	local-text	bool IsTextureBitDepthSupported(unsigned long depth);
+25	0x009BF160	0x00499880	shared-header/no-local-decl	fable_string.h,engine/C2DBoxI.h,engine/C2DBoxF.h
+25	0x009BF160	0x009FAF70	shared-header/no-local-decl	engine/IDirect3DDevice9.h,engine/Direct3D9Types.h,stlport/fable_containers.h
+25	0x009BF160	0x00B5CA70	shared-header/no-local-decl	fable_compiler.h,fable_assert.h,engine/CPixelFormat.h
+25	0x009BF160	0x00B5FAB0	shared-header/no-local-decl	engine/CDisplayManager.h,engine/CSurface.h,engine/CTexture.h
+25	0x009BF160	0x00B665E0	shared-header/no-local-decl	fable_compiler.h,engine/Direct3D9Types.h,engine/C3DVector.h
+25	0x009BF160	0x00B72180	shared-header/no-local-decl	fable_compiler.h,fable_string.h,engine/Direct3D9Types.h
+25	0x009BF160	0x00B7AD20	local-text	bool SetRenderTarget(CRenderTarget& target);
+25	0x009BF160	0x00B89C30	shared-header/no-local-decl	fable_assert.h,engine/Direct3D9Types.h,engine/CSurface.h
+25	0x009BF160	0x00B8B780	shared-header/no-local-decl	fable_compiler.h,fable_assert.h,engine/Direct3D9Types.h
+25	0x009BF160	0x00F39730	shared-header/no-local-decl	engine/C2DExtentsI.h,engine/CSystemManager.h,engine/CDisplayManager.h
+26	0x009BF600	0x009BF7E0	shared-header/no-local-decl	engine/C2DExtentsI.h,engine/CPixelFormat.h,engine/CDisplayManager.h
+38	0x00BC04F0	0x00BBC130	local-text	void RenderSingleSprite(CEngineSubPrimitiveBase& subPrimitive, ERenderPassType pass);
+40	0x00BCA950	0x00BBE090	shared-header/no-local-decl	engine/CRenderManager.h,engine/CRenderStateCaptureBlock.h,engine/CShaderRenderManager.h
+41	0x00B2FAC0	0x00B92950	shared-header/no-local-decl	stlport/fable_map.h,engine/CEngineCamera.h,engine/CEnginePrimitiveOcclusionManager.h
+41	0x00B2FAC0	0x00B936E0	shared-header/no-local-decl	fable_compiler.h,engine/CEngineInternalPrimitiveBase.h,engine/CEngineInternalPrimitiveOcclusionBase.h
+41	0x00B2FAC0	0x00B9A4A0	shared-header/no-local-decl	fable_compiler.h,engine/CMatrix3x4.h,engine/CEngineCameraDesc.h
+41	0x00B2FAC0	0x00BA1140	shared-header/no-local-decl	engine/CEngineFadeDistance.h,engine/CRGBColour.h,engine/CEnginePrimitiveHandle.h
+41	0x00B2FAC0	0x00BD71B0	shared-header/no-local-decl	engine/CEngineFadeDistance.h,engine/CRGBColour.h,engine/CEnginePrimitiveHandle.h
+43	0x00B812C0	0x00BA6FA0	local-text	CEngineSimulationBase* FindSimulation(unsigned long index);
+43	0x00B812C0	0x00BA77B0	local-text	CEngineSimulationBase* FindSimulation(unsigned long index);
+43	0x00B812C0	0x00BD7110	local-text	CEngineSimulationBase* FindSimulation(unsigned long index);
+47	0x00B935C0	0x00B93860	shared-header/no-local-decl	fable_compiler.h,rebuild_abi.h,engine/CEngineInternalPrimitiveBase.h
+67	0x009F1650	0x004AE9A0	local-text	void AddEvent(const CGameEvent* event);
+67	0x009F1650	0x009F1AC0	local-text	void AddEvent(const CGameEvent* event);
+69	0x00446EF0	0x004473A0	local-text	void SetControlScheme(long scheme);
+69	0x00446EF0	0x00487DE0	shared-header/no-local-decl	stlport/fable_containers.h,fable_string.h,engine/ETCInterfaceType.h
+72	0x006BBE30	0x0088FE80	local-text	void SetTimeAsStopped(bool stopped, long& time);
+73	0x009FF8D0	0x009DCA80	local-text	bool GetFrame(CGraphicFrame& frame, unsigned long frameIndex, unsigned long a, unsigned long flags) const;
+73	0x009FF8D0	0x009DD210	local-text	bool GetFrame(CGraphicFrame& frame, unsigned long frameIndex, unsigned long a, unsigned long flags) const;
+73	0x009FF8D0	0x00B64550	shared-header/no-local-decl	fable_compiler.h,fable_string.h,engine/C2DVector.h
+73	0x009FF8D0	0x00BB8EF0	shared-header/no-local-decl	fable_compiler.h,engine/CEnginePrimitiveManagerParticleDecalGroup.h,engine/CEngineInternalPrimitiveParticleDecalGroup.h
+73	0x009FF8D0	0x00BBE090	shared-header/no-local-decl	engine/CRenderManager.h,engine/CRenderStateCaptureBlock.h,engine/CShaderRenderManager.h
+73	0x009FF8D0	0x00BBF4A0	shared-header/no-local-decl	fable_compiler.h,engine/CEnginePrimitiveManagerParticleSpriteGroup.h,engine/CEngineInternalPrimitiveParticleSpriteGroup.h
+73	0x009FF8D0	0x00BC3F30	shared-header/no-local-decl	engine/CEngineRenderEnums.h,engine/CEnginePrimitiveManagerParticleLineGroup.h,engine/_quarantine/CEngineInternalPrimitiveParticleLineGroup.h
+77	0x009F4F70	0x0041E16E	local-text	void RemoveEventFromQueue(const CInputEvent& event);

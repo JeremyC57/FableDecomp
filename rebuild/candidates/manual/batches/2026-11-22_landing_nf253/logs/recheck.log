@@ -1,0 +1,42 @@
+00b23770   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00890c80   RELOCATION_MATCH PASS   EntityUnsheatheMeleeWeapon
+006649c0   RELOCATION_MATCH PASS   UnsheatheMeleeWeapon
+008ee720   RELOCATION_MATCH PASS   GetRandomBerserkedSwordHitParticleEffect
+00b23750   RELOCATION_MATCH PASS   CIEngine
+0049d800   MATCH            PASS   GetLocalSeed
+008e4100   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CCombatTypeDef (engine/CCombatTypeDef.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00664a50   WARN RELOC_NAME: ?GetDefinitionManager@CThing@@QBEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+00664a50   RELOCATION_MATCH PASS   UnsheatheDefaultWeapon
+00979f70   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+00979f70   RELOCATION_MATCH PASS   AttackTargetThing
+0049f180   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CEnvironmentSpellEffectInterpolator (engine/CEnvironmentSpellEffectInterpolator.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CEnvironment (engine/CEnvironment.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0049f180   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0049f180   WARN RELOC_NAME: ?RefreshScreenEffects@CEnvironmentSpellEffectInterpolator@@QAEXXZ -> 006b8410 labelled '_unattributed::GetTarget_006b8410'
+0049f180   RELOCATION_MATCH PASS   ActivateWorld
+008ee5a0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008ee5a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008ee5a0   WARN SHARED_HEADER_AVAILABLE CMaterialDef (engine/CMaterialDef.h)
+008ee5a0   RELOCATION_MATCH PASS   GetRandomSlideFootParticleEffect
+006648d0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006648d0   RELOCATION_MATCH PASS   UnsheatheWeapon

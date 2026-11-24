@@ -1,3 +1,4 @@
+// Leaf: ?UpdateInternalAlphas@CAnimSet@@AAEXXZ
 // CAnimSet::UpdateInternalAlphas() -- once per frame, copies every transition blend alpha's Current into Last
 // and stamps the frame the roll happened on.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070C2C0, length 67 bytes.
@@ -26,7 +27,9 @@ class CAnimSet { public:
     float LastPercentageComplete;                        // +0x20
     float Speed;                                         // +0x24
     unsigned long FrameInternalAlphasUpdated;            // +0x28
+    private:
     void UpdateInternalAlphas();
+    public:
 };
 
 void CAnimSet::UpdateInternalAlphas()

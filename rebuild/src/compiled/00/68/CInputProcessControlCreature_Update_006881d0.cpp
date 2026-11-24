@@ -21,8 +21,8 @@ public:
 };
 class CGamePlayerInterface {
 public:
-    bool IsSpellModeForced() const;                // 0x00445B90
-    bool IsExpressionShiftModeForced() const;      // 0x00445BB0
+    bool IsToggleSpells() const;                // 0x00445B90 ?IsToggleSpells@CGamePlayerInterface@@QBE_NXZ (Ego_r + FableWin; Codex p27 NAME_FIXES: the +0x49 toggle, FableWin call sites); NF236: was IsSpellModeForced
+    bool IsToggleExpressionShift() const;      // 0x00445BB0 ?IsToggleExpressionShift@CGamePlayerInterface@@QBE_NXZ (Ego_r + FableWin; Codex p27 NAME_FIXES: the +0x4C toggle); NF236: was IsExpressionShiftModeForced
     // NF171 (2026-11-20, q11704): in-place respell of the row's existing local declaration to Ego_r.pdb + FableWin.pdb
     //   ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z (const; enum parameters, the
     //   spelling engine/CGamePlayerInterface.h declares; was QAE_NJJJ). Actions GAME_ACTION_ACTIVATE_SPELL_MODE 86 / GAME_ACTION_EXPRESSION_SHIFT
@@ -47,13 +47,13 @@ public:
 
 void CInputProcessControlCreature::Update(CProcessedInput& processed)
 {
-    if (MyPlayer->SpellMode && !PGamePlayerInterface->IsSpellModeForced()) {
+    if (MyPlayer->SpellMode && !PGamePlayerInterface->IsToggleSpells()) {
         CGamePlayerInterface* gpi = PGamePlayerInterface;
         bool held = gpi->IsGameActionEventInQueue(GAME_ACTION_ACTIVATE_SPELL_MODE, (EInputButtonEventType)2, MyPlayer->GetJoystickDeviceNumber());
         if (!held)
             MyPlayer->SpellMode = held;
     }
-    if (MyPlayer->ExpressionShiftMode && !PGamePlayerInterface->IsExpressionShiftModeForced()) {
+    if (MyPlayer->ExpressionShiftMode && !PGamePlayerInterface->IsToggleExpressionShift()) {
         CGamePlayerInterface* gpi = PGamePlayerInterface;
         if (!gpi->IsGameActionEventInQueue(GAME_ACTION_EXPRESSION_SHIFT, (EInputButtonEventType)2, MyPlayer->GetJoystickDeviceNumber()))
             MyPlayer->ExpressionShiftMode = false;

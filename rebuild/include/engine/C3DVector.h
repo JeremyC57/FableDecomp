@@ -41,7 +41,8 @@ extern const float DELTA_NOTIONAL_ZERO;                                 // 0x012
 // exponent (0x17C - e) / 2, the 128-entry mantissa table 0x013CE558, one Newton step with 3.0f / 0.5f), the body the landed
 // 0x007AF0F0 / 0x006B3030 rows model locally.
 extern unsigned long GFastOneOverSqrtTable[128];                        // 0x013CE558
-#if defined(FABLE_RETAIL_GFFASTONEOVERSQRT_HOST_BITS_PASS23) && !defined(_MSC_VER)
+#if (defined(FABLE_RETAIL_GFFASTONEOVERSQRT_HOST_BITS_PASS23) && !defined(_MSC_VER)) || \
+    defined(FABLE_RETAIL_GFFASTONEOVERSQRT_PORTABLE_BITS_PASS26)
 // Host portability: the original unsigned-long bit word is32bits on VC7.1.
 // Copy float bits into a32-bit unsigned int on LP64 hosts; native text is unchanged.
 #include <string.h>
@@ -52,7 +53,12 @@ inline float FABLE_FASTCALL GFFastOneOverSqrt(float value) {
         ((unsigned int)GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);
     float r;
     memcpy(&r,&estimate,sizeof(r));
+#ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_PORTABLE_BITS_PASS26
+    // Bracket: retain the grouped seed square and original left-associated Newton products.
+    return (3.0f-((r*r)*value))*r*0.5f;
+#else
     return ((3.0f-((r*r)*value))*r)*0.5f;
+#endif // FABLE_RETAIL_GFFASTONEOVERSQRT_PORTABLE_BITS_PASS26
 }
 #else
 #ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_GROUPED
@@ -80,7 +86,56 @@ FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long 
 #else
 #ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_ORIGINAL_UNION
 union TFloatIntUnion {float Float;unsigned long Int;};
+#ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_ORIGINAL_UNION_SQUARE_PAREN_PASS26
+// Retail 0x0066C900 and FableWin 0x01ACE0A0 share the original union seed and Newton expression.
+// Bracket: group only the seed square to reproduce the two native instruction schedules.
+// Inline-budget: the original leaf expands both reciprocal-root computations at 0x0066C955
+// and 0x0066C9DE. Keep the existing shared helper's FABLE_FORCEINLINE spelling.
+FABLE_FORCEINLINE float FABLE_FASTCALL GFFastOneOverSqrt(float n)
+{
+    TFloatIntUnion seed;
+    seed.Int = (((0x17c - ((((TFloatIntUnion*)&n)->Int >> 23) & 0xff)) >> 1) << 23) |
+               (GFastOneOverSqrtTable[(((TFloatIntUnion*)&n)->Int >> 17) & 0x7f] << 15);
+    float r = seed.Float;
+    r = (3.0f - (r * r) * n) * r * 0.5f;
+    return r;
+}
+#else
+#ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_PORTABLE_SEED_FIELDS_PASS26
+// FableWin 01ACE0A0 and Ego_d agree on n, TFloatIntUnion seed, and r.
+// Copy the 32-bit representation through an unsigned int so both integer widths work.
+#include <string.h>
+inline float FABLE_FASTCALL GFFastOneOverSqrt(float n)
+{
+    unsigned int bits;
+    memcpy(&bits, &n, sizeof n);
+    TFloatIntUnion seed;
+    seed.Int = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
+               (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
+    float r;
+    bits = static_cast<unsigned int>(seed.Int);
+    memcpy(&r, &bits, sizeof r);
+    r = (3.0f - ((r * r) * n)) * r * 0.5f;
+    return r;
+}
+#else
+#ifdef FABLE_RETAIL_MESH_DUMMY_INVERSE_STEP_PASS26
+// FableWin 01ACE0A0 and Ego_d identify n, seed and r. The native leaf loads float constants
+// for the Newton step and schedules the exponent across the preceding vector store.
+// Inline-budget: both calls expand under the existing vector-header policy.
+FABLE_FORCEINLINE float FABLE_FASTCALL GFFastOneOverSqrt(float n) {
+    TFloatIntUnion seed;
+    seed.Int = (((0x17c - ((((TFloatIntUnion*)&n)->Int >> 23) & 0xff)) >> 1) << 23)
+             | (GFastOneOverSqrtTable[(((TFloatIntUnion*)&n)->Int >> 17) & 0x7f] << 15);
+    float r = seed.Float;
+    r = (3.0f - ((r * r) * n)) * r * 0.5f;
+    return r;
+}
+#else
 FABLE_FORCEINLINE float FABLE_FASTCALL GFFastOneOverSqrt(float n){TFloatIntUnion seed;seed.Int=(((0x17c-((((TFloatIntUnion*)&n)->Int>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(((TFloatIntUnion*)&n)->Int>>17)&0x7f]<<15);float r=seed.Float;r=(3.0f-r*r*n)*r*0.5f;return r;}
+#endif
+#endif // FABLE_RETAIL_GFFASTONEOVERSQRT_ORIGINAL_UNION_SQUARE_PAREN_PASS26
+#endif // FABLE_RETAIL_GFFASTONEOVERSQRT_PORTABLE_SEED_FIELDS_PASS26
 #else
 FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-r*r*value)*r*0.5f;}
 #endif
@@ -124,6 +179,9 @@ public:
     bool operator!=(const C3DVector& v) const {
         return fabs(X-v.X)>DELTA_NOTIONAL_ZERO || fabs(Y-v.Y)>DELTA_NOTIONAL_ZERO || fabs(Z-v.Z)>DELTA_NOTIONAL_ZERO;
     }
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_PLUSASSIGN2D_PASS27
+    const C3DVector& operator+=(const C2DVector& v) { X+=v.X; Y+=v.Y; return *this; }
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR_ADD2D
     // Retail opt-in (Codex pass17): original non-const value return, donor01cf3ca0.
@@ -204,6 +262,10 @@ public:
     // copy constructor), the C3DVector twin of C4DVector::ToC3DVector; inline in retail (no Fable.exe copy). The sprite trail
     // loop copies each trail position through it (Ego_d line 253 is 19 bytes: hidden return slot + operator-> + this call).
     C3DVector ToC3DVector() const { return *this; }
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_TOCOORDF_PASS26
+    // Original02584a60 and PDB signature, same copy conversion as ToC3DVector.
+    C3DVector ToC3DCoordF() const { return *this; }
 #endif
 #if defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_SUB)
     // Retail opt-in (agentC17; rows 0x00BA5260 RenderMeshPrimitive, 0x00BB30A0 / 0x00BB3E80 cloth): a default-constructed named result
@@ -454,7 +516,16 @@ public:
 #elif defined(FABLE_RETAIL_C3DVECTOR_INITIALISE_DIV2)
     FABLE_VECTOR_INLINE const C3DVector operator/(float v)const{float reciprocal=1.0f/v;C3DVector result;result.Initialise(X*reciprocal,Y*reciprocal,Z*reciprocal);return result;}
 #else
+#ifdef FABLE_RETAIL_C3DVECTOR_DIV_ZSPRITE_OWNER_GROUP_PASS26
+    // Bracket: preserve the native reciprocal products at 0x00BAB25C.
+    FABLE_VECTOR_INLINE const C3DVector operator/(float scale) const
+    {
+        float one_on_scale = 1.0f / scale;
+        return C3DVector(X * one_on_scale, Y * one_on_scale, (Z * one_on_scale));
+    }
+#else
     FABLE_VECTOR_INLINE const C3DVector operator/(float v)const{float reciprocal=1.0f/v;return C3DVector(X*reciprocal,Y*reciprocal,Z*reciprocal);}
+#endif // FABLE_RETAIL_C3DVECTOR_DIV_ZSPRITE_OWNER_GROUP_PASS26
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR_DIVASSIGN_RECIPROCAL_PAREN
     // INFERRED opt-in (hand4a w24, rows 0x00853670 / 0x008539C0 NCameraModes::CScriptModuleOpenChest / UseLamp::OnInitLeaf): the same
@@ -480,7 +551,13 @@ public:
     // parenthesis itself is in no donor.
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return ((float)sqrt(magnitude));}
 #else
+#ifdef FABLE_RETAIL_COMBAT_SEQUENCE_MAGNITUDE_GROUP_PASS27
+    // Bracket: grouping the X and Z squares puts the null store before the world load at 006EB123.
+    // Either square alone leaves the pair reversed. Grouping all three also misses.
+    FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=(X*X)+Y*Y+(Z*Z);return (float)sqrt(magnitude);}
+#else
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
+#endif
 #endif
 #endif
 #if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_X_THEN_YZ)
@@ -536,7 +613,11 @@ public:
     inline float GetMagnitude2D()const {return GFFastSqrt(X*X+Y*Y);}
 #endif
 #endif
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    FABLE_FORCEINLINE C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
+#else
     inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Retail branch (pass 12 header wave, 0x00AC2BE0 PartitionSpace): inline in retail; FableWin.pdb keeps out-of-line debug
     // copies ?LimitLower@C3DVector@@QAEXABV1@@Z 0x02E345C0 / ?LimitUpper@C3DVector@@QAEXABV1@@Z 0x02E34650, retail expands them
@@ -562,6 +643,17 @@ public:
     }
 #endif
     FABLE_VECTOR_INLINE C3DVector CrossWithUp() const {return C3DVector(Y,-X,0.0f);}
+#ifdef FABLE_RETAIL_C3DVECTOR_ANGLE_FORMALS_MAGNITUDE_PASS26
+    // Ego_d records the three arguments and cos_yz. FableWin 01DCB548 and 01DCB565
+    // form magnitude * cos_yz before evaluating the sine and cosine of anglexy.
+    FABLE_VECTOR_INLINE const C3DVector& InitialiseFromAngles(float anglexy, float angleyz, float magnitude) {
+        float cos_yz = GFCos(angleyz);
+        X = (magnitude * cos_yz) * GFSin(anglexy);
+        Y = (magnitude * cos_yz) * GFCos(anglexy);
+        Z = magnitude * GFSin(angleyz);
+        return *this;
+    }
+#else
 #ifdef FABLE_RETAIL_C3DVECTOR_INITFROMANGLES_GFSIN
     // Nested opt-in (chunk 2041, row 0x006AB820 ResolveFacingDirection): the body goes through GFCos / GFSin (double fastcall, float
     // angle) with the implicit double -> float stores. FableWin.pdb: ?GFSin@@YINM@Z 0x01DCB5D0 is the COMDAT right after
@@ -584,6 +676,7 @@ public:
         return *this;
     }
 #endif
+#endif // FABLE_RETAIL_C3DVECTOR_ANGLE_FORMALS_MAGNITUDE_PASS26
 #else
     float GetAngleXY() const;
 #endif

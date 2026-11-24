@@ -1,0 +1,28 @@
+## old self spellings in reloc_bindings.tsv (column 1, any target)
+?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z: ?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z 0051ec50 004c7c60;
+?IsTargetedThingOfType@CTCTargetingBase@@QBE_NK@Z: 
+??RCThingFilter_InMap@@QBE_NPAVCThing@@@Z: ??RCThingFilter_InMap@@QBE_NPAVCThing@@@Z 006a7930 006186f0;
+## old declaration text in rebuild/src/compiled
+src/compiled/00/7f/CTCTargetingBase_IsTargetedThingOfType_007f5a70.cpp:1:// CTCTargetingBase::IsTargetedThingOfType(unsigned long typeMask) const -- true when there is a targeted thing whose CTCTarget
+src/compiled/00/7f/CTCTargetingBase_IsTargetedThingOfType_007f5a70.cpp:29:    bool IsTargetedThingOfType(unsigned long typeMask) const;
+src/compiled/00/7f/CTCTargetingBase_IsTargetedThingOfType_007f5a70.cpp:32:bool CTCTargetingBase::IsTargetedThingOfType(unsigned long typeMask) const
+src/compiled/00/6a/CThingFilterInMap_operator_006a7930.cpp:1:// CThingFilter_InMap::operator()(CThing* thing) -- true when the thing has a physics component and the world map reports its position as l
+src/compiled/00/6a/CThingFilterInMap_operator_006a7930.cpp:33:bool CThingFilter_InMap::operator()(CThing* thing) const
+src/compiled/00/51/CThingManager_RemoveFromUpdateList_0051ecc0.cpp:24:    void AddToUpdateList(CThing* thing);
+src/compiled/00/51/CThingManager_AddToUpdateList_0051ec50.cpp:1:// CThingManager::AddToUpdateList(CThing* thing) -- appends the thing to the tail of its update list (selected by its list index) unless
+src/compiled/00/51/CThingManager_AddToUpdateList_0051ec50.cpp:25:    void AddToUpdateList(CThing* thing);
+src/compiled/00/51/CThingManager_AddToUpdateList_0051ec50.cpp:29:void CThingManager::AddToUpdateList(CThing* thing)
+src/compiled/00/51/CThingManager_RemoveFromRenderList_0051e000.cpp:25:    void AddToUpdateList(CThing* thing);
+src/compiled/00/4c/CThing_InitialActivate_004c9690.cpp:48:    void AddToUpdateList(CThing* thing);         // 0x0051EC50
+src/compiled/00/4c/CThing_OnCollision_004c8da0.cpp:27:    void AddToUpdateList(CThing* thing);             // 0x0051EC50
+src/compiled/00/4c/CThing_SetForceFrameUpdate_004c7c60.cpp:12:    void AddToUpdateList(CThing* thing);             // 0x0051EC50
+## inline bodies / declarations of the touched names in rebuild/include
+include/engine/CTCTargetingBase.h:39: bool IsTargetedThingOfType(ETargetingType p0) const;
+include/engine/CTCTargetingBase.h:112:public: bool IsTargetedThingOfType(ETargetingType type) const;           // 0x007F5A70
+include/engine/CThingFilter_InMap.h:10:class CThingFilter_InMap : public std::unary_function<CThing,bool> {
+include/engine/CThingFilter_InMap.h:15:    CThingFilter_InMap(const CWorldMap& world_map,long map_no):WorldMap(const_cast<CWorldMap*>(&world_map)),MapNo(map_no){}
+include/engine/CThingFilter_InMap.h:18:FABLE_STATIC_ASSERT(sizeof(CThingFilter_InMap)==8);
+## reading: 0x0051ECC0 / 0x0051E000 only DECLARE AddToUpdateList(CThing*) in their CThingManager models and never call it (no binding; not in the
+## exe census of 0x0051EC50). engine/CThingFilter_InMap.h declares operator()(const CThing&) const with no inline body (no COMDAT copy);
+## engine/CTCTargetingBase.h declares IsTargetedThingOfType(ETargetingType) const with no inline body. The two old-spelling table lines
+## (AddToUpdateList PAV witness 0x004C7C60, InMap PAV witness 0x006186F0) are deleted in TABLE_CHANGES.

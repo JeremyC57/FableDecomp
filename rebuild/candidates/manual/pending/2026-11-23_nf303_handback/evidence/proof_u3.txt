@@ -1,0 +1,8 @@
+##### 008e9710 renames: ?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@QAEX_N@Z=?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@AAEX_N@Z
+sections head 17 new 17
+ALL_EQ text_sections_equal=15
+tables H=0 N=0
+##### 008e9850 renames: ?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@QAEX_N@Z=?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@AAEX_N@Z
+sections head 16 new 16
+ALL_EQ text_sections_equal=14
+tables H=0 N=0

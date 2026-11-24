@@ -1,0 +1,3 @@
+# AUTH21 hdr_00bd3070.patch equivalence (equiv_check over all landed rows, finished after hand-back): NOT equivalent, 1357 differing lines (00BD1F70, 00BD71B0 and many 0x0121xxxx rows). Do not land the patch as is; find which opt-in leaks into the default token stream first.
+
+**Correction (2026-11-22, coordinator):** this result is a tool artifact. Every flagged 0x0121xxxx row is an unwind funclet whose `#include "../src/compiled/..."` resolves only from the repo tree, and the run compared a copied tree with the repo tree. equiv_check.py is fixed (`-idirafter rebuild/include`); rerun before judging the patch.

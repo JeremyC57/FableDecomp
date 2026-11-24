@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionWalkToMarker::IsRunnable() -- runnable when the creature's walk-to-marker component (0xAA) is in
-// Leaf: ?IsRunnable@CAIStateGroup_MinionWalkToMarker@@UAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_MinionWalkToMarker@@MAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // mode 8 or 9 and a thing with the component's marker script name exists.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00921630, length 175 bytes (+ int3 padding).
@@ -80,7 +80,9 @@ class CThingSearchTools { public:
 };
 
 struct CAIStateGroup_MinionWalkToMarker : CAIStateGroupBase {
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_MinionWalkToMarker::IsRunnable()

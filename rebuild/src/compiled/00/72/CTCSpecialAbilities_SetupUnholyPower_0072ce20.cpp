@@ -1,5 +1,5 @@
 // CTCSpecialAbilities::SetupUnholyPower() -- start the unholy-power cast on the hero: with a live item in the primary slot, sheathe it first (a heap cast action follows the sheathe), otherwise cast straight away; returns whether the action was set
-// Leaf: ?SetupUnholyPower
+// Leaf: ?SetupUnholyPower@CTCSpecialAbilities@@AAE_NXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072CE20, 286 bytes (plain `ret`). Ego_r.pdb `?SetupUnholyPower@CTCSpecialAbilities@@AAE_NXZ`.
 //   Label correction: the catalog row says SetupDivineWrath (propagated from the byte twin 0x0072CD00); the callees construct
@@ -51,9 +51,9 @@ class CCreatureAction_CastUnholyPowerSpell : public CCombatActionBase { public: 
 };
 class CCreatureAction_SheatheItemToInventory_ForUnholyPower : public CCreatureActionBase { public:   // vtable 0x0125CB9C
     unsigned char _pad04[0x114 - 0x04];
-    CCreatureAction_SheatheItemToInventory_ForUnholyPower(CThingCreatureBase* owner, const CCharString& slot,
+    CCreatureAction_SheatheItemToInventory_ForUnholyPower(CThingCreatureBase& owner, const CCharString& slot,
                                                           CCreatureActionBase* next, long flags);   // 0x0069F0C0
-    ~CCreatureAction_SheatheItemToInventory_ForUnholyPower();   // 0x0072D430
+    virtual ~CCreatureAction_SheatheItemToInventory_ForUnholyPower();   // 0x0072D430
 };
 class CThingCreatureBase : public CThing {
 public:
@@ -68,7 +68,9 @@ class CTCSpecialAbilities { public:
     long CurrentAbility;                                // +0x10
     void* UndeadFollowers;                              // +0x14 list (retail 4 bytes)
     CThingCreatureBase* Creature;                       // +0x18
+    private:
     bool SetupUnholyPower();
+    public:
 };
 
 bool CTCSpecialAbilities::SetupUnholyPower()
@@ -79,7 +81,7 @@ bool CTCSpecialAbilities::SetupUnholyPower()
     if (item && !item->IsDead()) {
         CCreatureAction_CastUnholyPowerSpell* cast = new CCreatureAction_CastUnholyPowerSpell(Creature);
         cast->PItem = item;
-        CCreatureAction_SheatheItemToInventory_ForUnholyPower sheathe(Creature, SHEATH_ACTION_NAME, cast, 0);
+        CCreatureAction_SheatheItemToInventory_ForUnholyPower sheathe(*Creature, SHEATH_ACTION_NAME, cast, 0);
         return Creature->SetCurrentAction(sheathe);
     }
     return Creature->SetCurrentAction(CCreatureAction_CastUnholyPowerSpell(Creature));

@@ -25,8 +25,8 @@ struct CMainGameComponentBank {
 
 class CPlayerGui { public:
     unsigned char _body[0x338];
-    CPlayerGui(CMainGameComponent* component, CWorld* world, CGamePlayerInterface* playerInterface,
-               CPlayerManager* playerManager, CGraphicDataBank* bank);   // 0x0043B570
+    CPlayerGui(const CMainGameComponent& component, CWorld& world, CGamePlayerInterface& playerInterface,
+               CPlayerManager& playerManager, const CGraphicDataBank& bank);   // 0x0043B570
     void Open();                                            // 0x004374B0
 };
 
@@ -52,8 +52,8 @@ void CPlayer_Methods::InitPlayerGui()
     if (number == PlayerManager->GetMainPlayerNumber()) {
         CGamePlayerInterface* playerInterface;
         CGraphicDataBank* bank;
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(new CPlayerGui(Component, World, playerInterface = PlayerInterface, PlayerManager,
-                                         bank = reinterpret_cast<CMainGameComponentBank*>(Component)->GraphicDataBank));
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(new CPlayerGui(*Component, *World, *(playerInterface = PlayerInterface), *PlayerManager,
+                                         *(bank = reinterpret_cast<CMainGameComponentBank*>(Component)->GraphicDataBank)));
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
     }
 }

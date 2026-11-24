@@ -33,7 +33,7 @@ class CLocalDetailCacheMap { public:
 class CEngineLandscapeRenderer { public:
     void DeleteMap(CEngineMap* map);                // 0x00B67180
 };
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }   // 0x01436EA8 (Ego_r / FableWin / Ego_d PDB spelling)
 class CEngineLocalDetailGenerator { public:
     void DeleteMap(CEngineMap* map);                // 0x00B59840
 };
@@ -127,8 +127,8 @@ void CEngineWorldMap::DeleteMap(long index)
         map->LocalDetailCacheMap->OnMapVisibilityChanged(false);
     if (Map)
         UnlinkMapFromWorld(MapList[index], index);
-    if (g_pLandscapeRenderer)
-        g_pLandscapeRenderer->DeleteMap(MapList[index]);
+    if (NEngineInternal::GPLandscapeRenderer)
+        NEngineInternal::GPLandscapeRenderer->DeleteMap(MapList[index]);
     if (g_pLocalDetailGenerator)
         g_pLocalDetailGenerator->DeleteMap(MapList[index]);
     delete MapList[index];

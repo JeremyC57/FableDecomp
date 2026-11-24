@@ -1,0 +1,52 @@
+## 0074e560
+24c24
+< UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z
+---
+> UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+## 0074fbb0
+8c8
+< UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z
+---
+> UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+## 0087e860
+33c33
+< UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z
+---
+> UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+## 008b76b0
+30c30
+< UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z
+---
+> UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+## 008c0820
+8c8
+< UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z
+---
+> UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+## 008f3e70
+26c26
+< UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z
+---
+> UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+## 009162f0
+17c17
+< UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z
+---
+> UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+## 0095b3e0
+31c31
+< UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z
+---
+> UND ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+## 006a7930
+1,2c1,2
+< DEF ??RCThingFilter_InMap@@QBE_NPAVCThing@@@Z
+< DEF ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ
+---
+> DEF ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z
+> DEF ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
+## 00417001
+22c22
+< UND ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z
+---
+> UND ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z

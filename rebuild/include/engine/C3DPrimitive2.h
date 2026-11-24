@@ -16,6 +16,9 @@
 #include "engine/CVertexBufferWin32.h"
 class C3DClothPrimitive;class C3DGroup2;class C3DMeshFilePrimitiveChunk;class C3DMeshFileTrianglesChunk;class C3DMeshFileXAnimatedPrimitiveBlockChunk;
 class CScopedMemoryHandle;
+#ifdef FABLE_RETAIL_CDEVICEINDEPENDENT_ADDTRIANGLELIST_PRIVATE
+class C3DPrimitive2;   // NF314 opt-in: forward declaration for the friend below
+#endif
 namespace N3DPrimitive {
 class CTriangleList;
 class CDeviceIndependent : public CBaseClassNonCopyable {
@@ -29,7 +32,17 @@ public:
     unsigned long GetTriangleListCount() const { return TriangleLists.size(); }                  // ?GetTriangleListCount@..@@QBEKXZ
     unsigned long GetTotalTriangleCount() const;                         // 0x00A8ECE0
     unsigned long GetTotalIndexCount() const;                            // 0x00A8ED30
+#ifdef FABLE_RETAIL_CDEVICEINDEPENDENT_ADDTRIANGLELIST_PRIVATE
+    // NF314 opt-in (row 0x00A91640): the PDB access. Ego_r.pdb and FableWin.pdb both spell ?AddTriangleList@CDeviceIndependent@N3DPrimitive@@AAEX
+    // ABVC3DMeshFileTrianglesChunk@@@Z (private); its only retail caller is C3DPrimitive2::InitialiseFromMeshFileData (0x00A919D6 / 0x00A9202A),
+    // so C3DPrimitive2 is a friend of the class.
+    friend class ::C3DPrimitive2;
+private:
+    void AddTriangleList(const C3DMeshFileTrianglesChunk& chunk);        // 0x00A90900 (private in Ego_r and FableWin)
+public:
+#else
     void AddTriangleList(const C3DMeshFileTrianglesChunk& chunk);        // 0x00A90900 (private in Ego_r)
+#endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_CONVERTSTATICBUMP
     // Overlay opt-in (hand4d, row 0x00A8F1B0 ConvertToVBFormatStaticBump): FableWin.pdb ?GetVertexCount@CDeviceIndependent@N3DPrimitive@@QBEKXZ
     // (0x032F8CB0 debug; inline in retail: the row reads the Vertices words in place).
@@ -86,6 +99,11 @@ class CAnimatedBlock : public CBaseBlock {
 public:
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
     void InitialiseFromMeshFileData(const C3DMeshFileXAnimatedPrimitiveBlockChunk& chunk, bool b);   // 0x00A90AE0
+#endif
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADBINARY_PASS27
+    // FableWin 032FEDD0 calls only the CBaseBlock and Data constructors.
+    CAnimatedBlock() { }
+    void LoadBinary(CMemoryDataInputStream& is);                           // 00A8EB10
 #endif
     unsigned long GetVertexCount() const { return VertexCount; }
     unsigned long GetGroupCount() const { return GroupCount; }
@@ -145,7 +163,11 @@ public:
     CArray<CCountedPointer<C3DClothPrimitive> > ClothPrimitives;          // +0x20
     boost::scoped_ptr<N3DPrimitive::CDeviceIndependent> Data;            // +0x2C
     boost::scoped_ptr<CVertexBufferWin32> VertexBuffer;                  // +0x30
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADBINARY_PASS27
+    boost::scoped_ptr<CIndexBuffer> IndexBuffer;                           // +0x34
+#else
     unsigned char IndexBuffer[4];                                        // +0x34
+#endif
 #else
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_RENDER
     // Opt-in (chunk 2060 row 0x00BA5260; re-based by bwf1 / agentC2 row 0x00BB3E80): BoundingSphere typed as Ego_r.pdb declares it
@@ -297,6 +319,14 @@ public:
     void FreeData();                                                     // 0x00A901E0
     static unsigned long FABLE_FASTCALL CalculateVertexSize(unsigned long flags, bool a, bool b);   // 0x00A910E0
 private:
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADBINARY_PASS27
+public:
+    // FableWin 032F8530 is the unsigned block count test.
+    bool IsAnimated() const { return AnimatedBlockCount > 0; }
+private:
+    void LoadVertexBuffer(CMemoryDataInputStream&, unsigned long, unsigned long,
+                          unsigned long, class CVertexCompressionParams&); // 00A91560
+#endif
     bool SetupVertexBuffer(EVertexType type, unsigned long size, unsigned long count, unsigned long flags);   // 0x00A8EDA0
     void AddMirroredTextureVertexIndex(const unsigned long* indices, unsigned long count);   // 0x00A90510
     void SetVertexBufferStatus(unsigned long status) { VertexBufferStatus |= status; }

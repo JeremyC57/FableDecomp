@@ -1,5 +1,5 @@
 // CTCHeroOnlineScoreboard::GetCachedMemberLogosAsString() -- "<member count>\r\n" then, per member in ClanMembers, "<id>\r\n<cached logo extension or 0>\r\n" (extension from the first SaveDir\MemberData\<id>\logo.* file)
-// Leaf: GetCachedMemberLogosAsString
+// Leaf: ?GetCachedMemberLogosAsString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ
 // Flags: /GS
 // Retail: Fable.exe @ 0x0055EA80, 560 bytes, `ret 4` (hidden CCharString result), /GS cookie (the find data holds a
 // wchar_t[260] name). Ego_r.pdb `?GetCachedMemberLogosAsString@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ`
@@ -96,7 +96,9 @@ public:
     CList<CClanInfo>        MyClans;                 // +0x38
     CWideString             SelectedClan;            // +0x3c
     CList<CClanMember>      ClanMembers;             // +0x40
+    private:
     CCharString GetCachedMemberLogosAsString();
+    public:
 };
 
 CCharString CTCHeroOnlineScoreboard::GetCachedMemberLogosAsString()

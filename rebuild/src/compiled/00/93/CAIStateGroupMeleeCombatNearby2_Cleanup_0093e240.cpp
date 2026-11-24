@@ -1,6 +1,6 @@
 // CAIStateGroup_MeleeCombatNearby2::Cleanup() -- deregister the creature from the combat manager if it is a registered combatant, and drop creature mode 0x19 when the creature uses modes
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the world in a named local and the combat manager chained from it (`world->m_pCombatManager->DeregisterCombatant(*creature)`): the manager loads straight into ecx after the GetPWorld call, then the creature push
-// Leaf: ?Cleanup@CAIStateGroup_MeleeCombatNearby2@@UAEXXZ
+// Leaf: ?Cleanup@CAIStateGroup_MeleeCombatNearby2@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E240, length 141 bytes (+ int3 padding); byte-identical
 // shape to CAIStateGroup_JackOfBladesBase::Cleanup (0x00972110).
@@ -31,7 +31,7 @@ class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    bool UsesCreatureModes();                   // 0x006621A0 (descriptive)
+    bool IsAbleToStrafe() const;                   // 0x006621A0 NF296: PDB name, was UsesCreatureModes
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -81,7 +81,9 @@ public:
 };
 
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
+    protected:
     virtual void Cleanup();
+    public:
 };
 
 void CAIStateGroup_MeleeCombatNearby2::Cleanup()
@@ -91,7 +93,7 @@ void CAIStateGroup_MeleeCombatNearby2::Cleanup()
         CWorld* world = &GetWorld();
         world->m_pCombatManager->DeregisterCombatant(*creature);
     }
-    if (PBrain->PCreature->UsesCreatureModes()) {
+    if (PBrain->PCreature->IsAbleToStrafe()) {
         CTCCreatureModeManager* modes;
         PBrain->PCreature->GetInterface(&modes, 0x31);
         modes->RemoveMode(0x19);

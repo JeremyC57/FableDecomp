@@ -61,12 +61,9 @@ class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01
             return NullString;
         return PImp.Data->GetName();
     }
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA8D0 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
     FABLE_FORCEINLINE virtual CCharString GetDefName() const       // slot 2 (+0x08) 0x004AA8D0
-    {
-        if (!PImp.Data)
-            return NullString;
-        return PImp.Data->GetDefName();
-    }
+    { CScriptThing* imp = PImp.Data; if (imp == 0) return NullString; return imp->GetDefName(); }
     virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011();
     virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017(); virtual void t018();
     virtual CScriptThing MsgWhoKilledMe() const         // slot 19 (+0x4c) 0x004ABE60
@@ -81,10 +78,9 @@ class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01
     virtual void t050(); virtual void t051(); virtual void t052(); virtual void t053(); virtual void t054(); virtual void t055(); virtual void t056(); virtual void t057(); virtual void t058(); virtual void t059();
     virtual void t060(); virtual void t061(); virtual void t062(); virtual void t063(); virtual void t064(); virtual void t065(); virtual void t066(); virtual void t067(); virtual void t068(); virtual void t069();
     virtual void t070(); virtual void t071(); virtual void t072(); virtual void t073(); virtual void t074(); virtual void t075(); virtual void t076();
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AB150 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
     virtual bool IsNull() const                         // slot 77 (+0x134) 0x004AB150
-    {
-        return PImp.Data == 0 || PImp.Data->IsNull();
-    }
+    { CScriptThing* imp = PImp.Data; return imp == 0 || imp->IsNull(); }
     FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
     static CCharString NullString;                      // 0x0143E8EC

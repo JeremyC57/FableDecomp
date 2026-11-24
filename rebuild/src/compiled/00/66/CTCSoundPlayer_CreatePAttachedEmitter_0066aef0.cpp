@@ -1,5 +1,5 @@
 // CTCSoundPlayer::CreatePAttachedEmitter(bool unattached) -- the attached sound emitter: the live one, else a new emitter at the owner's position when that position is inside the world map
-// Leaf: ?CreatePAttachedEmitter@CTCSoundPlayer@@QAEPAVCThingSoundEmitter@@_N@Z
+// Leaf: ?CreatePAttachedEmitter@CTCSoundPlayer@@AAEPAVCThingSoundEmitter@@_N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066AEF0, 165 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem const @ 0x00A01B50, CTCBase::GetWorld @ 0x00686A70, CWorld virtual slot 12
@@ -61,7 +61,9 @@ protected:
 };
 class CTCSoundPlayer : public CTCBase { public:
     CIntelligentPointer<CThingSoundEmitter> PAttachedEmitter;   // +0x0c
+    private:
     CThingSoundEmitter* CreatePAttachedEmitter(bool unattached);
+    public:
 };
 
 CThingSoundEmitter* CTCSoundPlayer::CreatePAttachedEmitter(bool unattached)

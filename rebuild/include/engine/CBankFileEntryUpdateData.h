@@ -19,6 +19,34 @@ class CBankStateBlock;
 template <class T, int N> class CSmallVector {
 public:
     CSmallVector() : Start(0), Size(0) { }
+#ifdef FABLE_RETAIL_CBANKFILE_READENTRIES_PASS26
+    explicit CSmallVector(unsigned long count): Start(0), Size(0) { Allocate(count); }
+    ~CSmallVector() { Clear(); }
+#ifdef FABLE_RETAIL_BANKFILE_FILENAME_COPY_SITE_PASS26
+    const CSmallVector& operator=(const CSmallVector& other) {
+        if(&other!=this) {
+            // Inline-budget: native 009D01F2 calls the copy after the identity check.
+#ifdef _MSC_VER
+#pragma inline_depth(0)
+#endif
+            Copy(other);
+#ifdef _MSC_VER
+#pragma inline_depth()
+#endif
+        }
+        return *this;
+    }
+#else
+    const CSmallVector& operator=(const CSmallVector& other) { if(this!=&other) Copy(other); return *this; }
+#endif
+    T& operator[](unsigned long index) { return Start[index]; }
+    bool empty() const { return Size==0; }
+protected:
+    void Allocate(unsigned long);
+    void Copy(const CSmallVector&);
+    void Clear() { if(Start) delete[] Start; Start=0; Size=0; }
+public:
+#endif
     T* Start;                                                       // +0x00
     signed char Size;                                               // +0x04
 };
@@ -42,6 +70,25 @@ private:
 public:
     unsigned long GetInfoSize() const { return InfoSize; }
     void ReadInfo(unsigned long offset, void* buffer, unsigned long size) const;   // 0x009CBE90
+private:
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_READENTRIES_PASS26
+private:
+    void SetStateBlockCRC(unsigned long value) { StateBlockCRC=value; }
+    void SetInfo(const CArray<char>& info) {
+        if(InfoBuffer){ delete[] InfoBuffer; InfoBuffer=0; }
+        InfoSize=0;
+        InfoSize=info.size();
+        if(InfoSize) {
+            InfoBuffer=new char[InfoSize];
+            memcpy(InfoBuffer,info.GetAsCArray(),InfoSize);
+        }
+    }
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_UPDATE_PASS27
+public:
+    unsigned long GetFileCount() const { return Filenames.Size; }
+    const CCharString& GetFilename(unsigned long index) const { return Filenames.Start[index]; }
 private:
 #endif
     bool RequiresUpdate;                                            // +0x14

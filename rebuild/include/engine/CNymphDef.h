@@ -8,6 +8,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_NYMPH_ATTACK_PASS27
+#include "engine/CSubDefClassBase.h"
+
+// Ego_r CNymphDef fields at +0x28 through +0x4C.
+class CNymphDef : public CSubDefClassBase {
+public:
+    float MinAttackRange;
+    float MaxHeight;
+    float MinHeight;
+    float CircleRange;
+    long FlyAroundTime;
+    long ShotTrapType;
+    long ShotsBeforeIdle;
+    float IdleTimeBetweenShots;
+    float FadeInTime;
+    float FadeOutTime;
+};
+FABLE_STATIC_ASSERT_AT(26, sizeof(CNymphDef) == 0x50);
+#else
 #pragma pack(push, 1)
 class CNymphDef {
 public:
@@ -34,17 +53,19 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CNymphDef) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, MinAttackRange) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, MaxHeight) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, MinHeight) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, CircleRange) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, FlyAroundTime) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, ShotTrapType) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, ShotsBeforeIdle) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, IdleTimeBetweenShots) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, FadeInTime) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CNymphDef, FadeOutTime) == 0x4c);
+FABLE_STATIC_ASSERT_AT(37, sizeof(CNymphDef) == 0x50);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CNymphDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CNymphDef, MinAttackRange) == 0x28);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CNymphDef, MaxHeight) == 0x2c);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CNymphDef, MinHeight) == 0x30);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CNymphDef, CircleRange) == 0x34);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CNymphDef, FlyAroundTime) == 0x38);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CNymphDef, ShotTrapType) == 0x3c);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CNymphDef, ShotsBeforeIdle) == 0x40);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CNymphDef, IdleTimeBetweenShots) == 0x44);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CNymphDef, FadeInTime) == 0x48);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CNymphDef, FadeOutTime) == 0x4c);
+
+#endif // FABLE_RETAIL_NYMPH_ATTACK_PASS27
 
 #endif // FABLE_ENGINE_CNYMPHDEF_H

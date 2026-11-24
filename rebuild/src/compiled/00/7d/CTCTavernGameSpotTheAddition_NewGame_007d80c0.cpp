@@ -59,7 +59,10 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     long    Selected;                           // +0x148
     bool    FirstRound;                         // +0x14c
     void GetSpotDef(CDefPointer<const CTavernGameSpotTheAdditionDef>* out) { ParentThing->DefHolder->GetSubDef(out); }
-    void PositionCover(float fraction);         // 0x007D7F10
+    private:
+    void PositionCover(float fraction);
+    public:
+         // 0x007D7F10
     void NewGame();
 };
 

@@ -1,0 +1,5 @@
+# planted control (typedef nf302_planted_<H> at line 1 of each of the 5 overlay headers): differing lines / distinct rows
+6481
+6218
+# real overlay: differing lines
+0

@@ -17,6 +17,16 @@
 class CCreatureAction_UndeadReturnToEarth : public CCombatActionBase {
 public:
     CCreatureAction_UndeadReturnToEarth(CThingCreatureBase& creature);   // 0x008EC6A0
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNDEADRETURNTOEARTH_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x008EC770: ?IsToEvadeAllHits@CCreatureAction_UndeadReturnToEarth@@UBE_NXZ (FableWin.pdb)
+public:
+    virtual bool IsToEvadeAllHits() const;
+    // 0x008EC780: ?GetAnimationTransitionInTime@CCreatureAction_UndeadReturnToEarth@@UBEJXZ (FableWin.pdb)
+    virtual long GetAnimationTransitionInTime() const;
+#endif
 };
 #else
 #pragma pack(push, 1)

@@ -61,8 +61,8 @@ class CThingCreatureBase { public:
     unsigned char _padb8[0xe0 - 0xb8];
     CThingCreatureDef* PDef;                    // +0xe0 CDefPointer<CThingCreatureDef const>::Object
     unsigned char _pade4[0x160 - 0xe4];
-    bool ConstructFromParams(long defIndex, const C3DVector& position, long creationType, CThingPhysical* originalThing,
-                             CThingPhysical* previousThing, const CCharString& scriptName, bool placeAtEndOfList);   // 0x00662880
+    protected: bool ConstructFromParams(long defIndex, const C3DVector& position, long creationType, CThingPhysical* originalThing,
+                             CThingPhysical* previousThing, const CCharString& scriptName, bool placeAtEndOfList); public:   // 0x00662880
 };
 class CThingAICreature : public CThingCreatureBase { public:
     unsigned char    _pad160[0x168 - 0x160];

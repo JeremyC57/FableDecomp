@@ -1,5 +1,5 @@
 // CTCKraken::GetCentreMarker() -- (unless the world is loading) find the kraken chamber building and the KRACKEN_CHAMBER_CENTRE marker in the 10x10 box around the kraken and target the hero
-// Leaf: ?GetCentreMarker@CTCKraken@@QAEXXZ
+// Leaf: ?GetCentreMarker@CTCKraken@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FBC90, length 436 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: the CTCBase accessors GetWorld @ 0x00686D60 (its slot 9, +0x24, a bool "loading" query; name descriptive),
@@ -96,7 +96,7 @@ class CTCKraken : public CTCBase { public:
     CIntelligentPointer<CThing> PChamber;                       // +0x10
     CIntelligentPointer<CThing> PCentreMarker;                  // +0x18
     CIntelligentPointer<CThing> PTarget;                        // +0x20
-    void GetCentreMarker();
+    private: void GetCentreMarker(); public:
 };
 
 void CTCKraken::GetCentreMarker()

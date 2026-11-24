@@ -126,18 +126,18 @@ public:
 };
 }
 
-class CNewFrontendGameComponent
-{
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void v04();                                   // slot 4 (+0x10)
-    unsigned char         _pad04[0x29 - 4];
-    bool                  m_bCreateGame;                  // +0x29
-    unsigned char         _pad2a[0x60 - 0x2a];
-    NGameText::CDataBank* m_pTextBank;                    // +0x60 (CCountedPointer Data)
-    void ResetAttractModeTimer();                         // 0x0042DBEE (m_attractModeTimer at +0x100; NF104 q6164: Ego_r.pdb 0x0043B042 + FableWin.pdb ?ResetAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ, was RestartAttractModeTimer)
-};
-extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
+// NF230 (2026-11-22, q12622): the row-local CNewFrontendGameComponent model (slot 4 `v04`, m_bCreateGame +0x29, m_pTextBank +0x60,
+//   ResetAttractModeTimer) and the stand-in ?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A -> engine/CNewFrontendGameComponent.h:
+//   0x013B871C is the private static ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (Ego_d.pdb LF_STMEMBER private; the header's spelling) read through
+//   the inline Get() (FableWin.pdb ?Get@CNewFrontendGameComponent@@SIPAV1@XZ); the bank through GetTextBank() (FableWin.pdb
+//   ?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ); 0x0F's slot 4 + `m_bCreateGame = true` is the inline
+//   StartGame() (Ego_r.pdb ?StartGame@CNewFrontendGameComponent@@QAEXXZ, the NF76 STARTGAME opt-in, as 0x00599E3F); 0x128's slot 4 is the
+//   public override SetQuit() (FableWin.pdb ?SetQuit@CNewFrontendGameComponent@@UAEXXZ; retail RTTI vtable slot 4 = 0x00430340: opt-in);
+//   ResetAttractModeTimer from its opt-in (Ego_r + FableWin ?ResetAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ 0x0042DBEE).
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_STARTGAME
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RESETATTRACTMODETIMER
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_SETQUIT
+#include "engine/CNewFrontendGameComponent.h"
 
 class CVirtualKeyboard
 {
@@ -257,7 +257,7 @@ protected:
     void LoadProfile(const CWideString& name);                    // 0x0059899A
 public:
     void GotoPreviousScreen(bool all);                            // 0x00597BF2
-    long RefreshAvailableSavedGamesForProfile();                  // 0x00598463
+    protected: long RefreshAvailableSavedGamesForProfile(); public:                  // 0x00598463
     void Action(const CCountedPointer<CAction>& action);
 };
 
@@ -298,8 +298,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
         }
     {
         CNewFrontendGameComponent* game = PGameComponent;
-        game->v04();
-        game->m_bCreateGame = true;
+        game->StartGame();
     }
         break;
     case 0x10:
@@ -348,7 +347,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
         else
         {
             GotoNextScreen(m_mapScreens[(FRONTEND_SCREEN)0x14], true);
-            g_pNewFrontendGameComponent->ResetAttractModeTimer();
+            CNewFrontendGameComponent::Get()->ResetAttractModeTimer();
             if (count > 0)
             {
                 CComponent* screenToDeactivate = PScreenToDeactivate;
@@ -366,7 +365,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
             CComponent* title = m_mapScreens[(FRONTEND_SCREEN)0x0a]->FindChild("UI_TEXT_DELETE_PROFILE_MENU_TITLE");
             if (title)
             {
-                CWideString text = g_pNewFrontendGameComponent->m_pTextBank->GetTextBySymbol("TEXT_GUI_MENU_DELETE_PROFILE");
+                CWideString text = CNewFrontendGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_DELETE_PROFILE");
                 title->SetText(text + L" " + parameter->Value, true, true);
             }
             GotoNextScreen(m_mapScreens[(FRONTEND_SCREEN)0x0a], false);
@@ -382,7 +381,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
             CActionParamString* parameter = (CActionParamString*)action->UIActionParams.front();
             if (message && parameter)
             {
-                CWideString text = g_pNewFrontendGameComponent->m_pTextBank->GetTextBySymbol("TEXT_GUI_MENU_INVALID_SAVE");
+                CWideString text = CNewFrontendGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_INVALID_SAVE");
                 NGameText::ConstructString(text, parameter->Value);
                 message->SetText(text, true, true);
             }
@@ -419,7 +418,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
             m_pVirtualKeyboard->Cancel();
         break;
     case 0x128:
-        g_pNewFrontendGameComponent->v04();
+        CNewFrontendGameComponent::Get()->SetQuit();
         break;
     case 0x129:
         GotoNextScreen(m_mapScreens[(FRONTEND_SCREEN)0x18], false);

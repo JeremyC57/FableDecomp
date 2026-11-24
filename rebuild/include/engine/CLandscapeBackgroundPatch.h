@@ -31,7 +31,24 @@ enum LANDSCAPE_EDGE_STRIP_SIDE { };                      // W4LANDSCAPE_EDGE_STR
 
 class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase {   // vtable 0x012A803C
 public:
+#ifdef FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28
+#ifdef FABLE_RETAIL_BACKGROUND_VERTEX_HELPERS_PASS28
+private:
+    long PeekWorldX() const;
+    long PeekWorldY() const;
+    static long __fastcall PackUVForVertexBuffer(float);
+    unsigned long PackVertexNormal(const C3DVector&);
+public:
+#endif
+    void BuildDefaultSection(); // Ego_r and FableWin, retail 0x00BE6880
+    static void __fastcall SetTargetVertexNormal(class CTVertexLandscapeBackground&, unsigned long);
+#endif
     CPatchTesselationEdgeStrip* GetEdgeStrip(LANDSCAPE_EDGE_STRIP_SIDE side);   // 0x00BE5C60
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_PATCH_CLEARTEXTURES
+    // Nested opt-in (NF265, row 0x00BE5C30): Ego_r.pdb / FableWin.pdb ?ClearTextures@CLandscapeBackgroundPatch@@QAEXXZ (Ego_r donor
+    // order ClearTextures / GetEdgeStrip / InvalidateEdge = retail 0x00BE5C30 / 0x00BE5C60 / 0x00BE5CA0). Declaration only.
+    void ClearTextures();                                                   // 0x00BE5C30
+#endif
 #ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_PATCH_RENDER
     // Opt-in (wf3, row 0x00BE7BE0): FableWin.pdb / Ego_r.pdb ?Render@CLandscapeBackgroundPatch@@QAEX_NAAJAA_N@Z (public),
     // ?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z and ?RenderWithOcclusion@CLandscapeBackgroundPatch@@AAEXAAJAA_N@Z (private;
@@ -71,14 +88,22 @@ public:
     bool                            SharedIndexBuffer;       // +0x119
     bool                            WaterOnlyPatch;          // +0x11a
     bool                            IsDefaultSection;        // +0x11b
+#ifdef FABLE_RETAIL_CLANDSCAPEBACKGROUNDPATCH_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x00BE5E50: ?CanRelocateData@CLandscapeBackgroundPatch@@UBE_NJ@Z (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual bool CanRelocateData(long) const;
+#endif
 };
 
-FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundPatch) == 0x11C);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Parent) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, EdgeStrips) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Texture) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, ZSorterHandle) == 0x100);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x11b);
+FABLE_STATIC_ASSERT_AT(76, sizeof(CLandscapeBackgroundPatch) == 0x11C);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CLandscapeBackgroundPatch, Parent) == 0x4);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CLandscapeBackgroundPatch, EdgeStrips) == 0x8);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CLandscapeBackgroundPatch, Texture) == 0xb8);
+FABLE_STATIC_ASSERT_AT(80, offsetof(CLandscapeBackgroundPatch, ZSorterHandle) == 0x100);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x11b);
 #else // FABLE_RETAIL_LANDSCAPE_BACKGROUND_PATCH
 #pragma pack(push, 1)
 class CLandscapeBackgroundPatch {
@@ -115,36 +140,36 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundPatch) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Parent) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, EdgeStrips) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Texture) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, IndexBuffer) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, VertexBuffer) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, BridgeIndexBuffers) == 0xc4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, BridgeVertexBuffers) == 0xd4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, BridgePolyCount) == 0xe4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, UVLockTreeU) == 0xec);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, UVLockTreeV) == 0xf0);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, WaterSubPatch) == 0xf4);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, MinZ) == 0xf8);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, MaxZ) == 0xfc);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, ZSorterHandle) == 0x100);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, VertexCount) == 0x104);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, PolyCountIncDegenerates) == 0x106);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, TextureWidthNeeded) == 0x108);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, TextureHeightNeeded) == 0x10a);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, MapX) == 0x10c);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, MapY) == 0x10e);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Width) == 0x110);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Height) == 0x112);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, LockedGridSpacingX) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, LockedGridSpacingY) == 0x116);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, LODBand) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, SharedIndexBuffer) == 0x119);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, WaterOnlyPatch) == 0x11a);
-FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x11b);
+FABLE_STATIC_ASSERT_AT(118, sizeof(CLandscapeBackgroundPatch) == 0x11c);
+FABLE_STATIC_ASSERT_AT(119, offsetof(CLandscapeBackgroundPatch, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(120, offsetof(CLandscapeBackgroundPatch, Parent) == 0x4);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CLandscapeBackgroundPatch, EdgeStrips) == 0x8);
+FABLE_STATIC_ASSERT_AT(122, offsetof(CLandscapeBackgroundPatch, Texture) == 0xb8);
+FABLE_STATIC_ASSERT_AT(123, offsetof(CLandscapeBackgroundPatch, IndexBuffer) == 0xbc);
+FABLE_STATIC_ASSERT_AT(124, offsetof(CLandscapeBackgroundPatch, VertexBuffer) == 0xc0);
+FABLE_STATIC_ASSERT_AT(125, offsetof(CLandscapeBackgroundPatch, BridgeIndexBuffers) == 0xc4);
+FABLE_STATIC_ASSERT_AT(126, offsetof(CLandscapeBackgroundPatch, BridgeVertexBuffers) == 0xd4);
+FABLE_STATIC_ASSERT_AT(127, offsetof(CLandscapeBackgroundPatch, BridgePolyCount) == 0xe4);
+FABLE_STATIC_ASSERT_AT(128, offsetof(CLandscapeBackgroundPatch, UVLockTreeU) == 0xec);
+FABLE_STATIC_ASSERT_AT(129, offsetof(CLandscapeBackgroundPatch, UVLockTreeV) == 0xf0);
+FABLE_STATIC_ASSERT_AT(130, offsetof(CLandscapeBackgroundPatch, WaterSubPatch) == 0xf4);
+FABLE_STATIC_ASSERT_AT(131, offsetof(CLandscapeBackgroundPatch, MinZ) == 0xf8);
+FABLE_STATIC_ASSERT_AT(132, offsetof(CLandscapeBackgroundPatch, MaxZ) == 0xfc);
+FABLE_STATIC_ASSERT_AT(133, offsetof(CLandscapeBackgroundPatch, ZSorterHandle) == 0x100);
+FABLE_STATIC_ASSERT_AT(134, offsetof(CLandscapeBackgroundPatch, VertexCount) == 0x104);
+FABLE_STATIC_ASSERT_AT(135, offsetof(CLandscapeBackgroundPatch, PolyCountIncDegenerates) == 0x106);
+FABLE_STATIC_ASSERT_AT(136, offsetof(CLandscapeBackgroundPatch, TextureWidthNeeded) == 0x108);
+FABLE_STATIC_ASSERT_AT(137, offsetof(CLandscapeBackgroundPatch, TextureHeightNeeded) == 0x10a);
+FABLE_STATIC_ASSERT_AT(138, offsetof(CLandscapeBackgroundPatch, MapX) == 0x10c);
+FABLE_STATIC_ASSERT_AT(139, offsetof(CLandscapeBackgroundPatch, MapY) == 0x10e);
+FABLE_STATIC_ASSERT_AT(140, offsetof(CLandscapeBackgroundPatch, Width) == 0x110);
+FABLE_STATIC_ASSERT_AT(141, offsetof(CLandscapeBackgroundPatch, Height) == 0x112);
+FABLE_STATIC_ASSERT_AT(142, offsetof(CLandscapeBackgroundPatch, LockedGridSpacingX) == 0x114);
+FABLE_STATIC_ASSERT_AT(143, offsetof(CLandscapeBackgroundPatch, LockedGridSpacingY) == 0x116);
+FABLE_STATIC_ASSERT_AT(144, offsetof(CLandscapeBackgroundPatch, LODBand) == 0x118);
+FABLE_STATIC_ASSERT_AT(145, offsetof(CLandscapeBackgroundPatch, SharedIndexBuffer) == 0x119);
+FABLE_STATIC_ASSERT_AT(146, offsetof(CLandscapeBackgroundPatch, WaterOnlyPatch) == 0x11a);
+FABLE_STATIC_ASSERT_AT(147, offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x11b);
 #endif // FABLE_RETAIL_LANDSCAPE_BACKGROUND_PATCH
 
 #endif // FABLE_ENGINE_CLANDSCAPEBACKGROUNDPATCH_H

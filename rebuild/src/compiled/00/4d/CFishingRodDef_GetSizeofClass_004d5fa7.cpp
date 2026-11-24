@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CFishingRodDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CFishingRodDef_GetSizeofClass()
+class CFishingRodDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CFishingRodDef::GetSizeofClass()
 {
     return 60;
 }

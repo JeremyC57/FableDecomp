@@ -1,5 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::SetUpCirclePoints() -- rebuild the circle markers from the live "WaspQueenCirclePos<n>" track things (n = 1, 2, ... until one is missing) within 60 units of the queen, and set the circle radius to the farthest marker's distance from the arena centre plus 12
-// Leaf: ?SetUpCirclePoints@CAIStateGroup_HoverHornetQueen@@QAEXXZ
+// Leaf: ?SetUpCirclePoints@CAIStateGroup_HoverHornetQueen@@IAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   template instance, manifest <CThingFilter_HasDefGlobalIndex, CThing>, in fact <CThingFilter_HasScriptName, CThing>) as a same-TU `template <class TFilter, class T>
 //   __declspec(noinline)` body: VC7.1 then knows only that call writes `marker`, keeps the one marker load in esi across the
@@ -84,7 +84,9 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
     long CurrentCirclePoint;                    // +0x4c
     std::vector<CIntelligentPointer<CThing> > CircleMarkers;   // +0x50
     long EnemyKnockDownFrame;                   // +0x5c
+    protected:
     void SetUpCirclePoints();
+    public:
 };
 
 void CAIStateGroup_HoverHornetQueen::SetUpCirclePoints()

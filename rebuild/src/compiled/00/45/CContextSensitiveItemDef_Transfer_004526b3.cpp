@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CContextSensitiveItemDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
 class CPersistContext { public:
@@ -5,13 +6,13 @@ class CPersistContext { public:
     template <class T> void Transfer(T& value);
 };
 class CContextSensitiveItemDef { public:
-    unsigned char _pad[0x28];
+    unsigned char _pad[0x24];
     Field f0; // 0x28
     Field f1; // 0x2c
     Field f2; // 0x30
     Field f3; // 0x34
     Field f4; // 0x38
-    void Transfer(CPersistContext& ctx);
+    virtual void Transfer(CPersistContext& ctx);
 };
 
 void CContextSensitiveItemDef::Transfer(CPersistContext& ctx)

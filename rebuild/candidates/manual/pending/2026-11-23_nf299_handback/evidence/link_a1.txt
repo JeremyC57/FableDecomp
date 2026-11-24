@@ -1,0 +1,69 @@
+## HEAD set: H_00996230.obj H_0052ada0.obj H_009967e0.obj H_00996a40.obj H_009c4330.obj H_0072ba40.obj H_0072b420.obj H_00771620.obj H_007e61b0.obj H_0093ae80.obj H_0098f3a0.obj H_006a1e00.obj H_00a3aa10.obj H_0078f820.obj H_00794d90.obj H_007714b0.obj H_007e60f0.obj H_007ee540.obj H_0098f380.obj H_005daa70.obj
+duplicates 1
+H_0052ada0.obj : warning LNK4006: "public: __thiscall CCompressorZlib::CCompressorZlib(void)" (??0CCompressorZlib@@QAE@XZ) already defined in H_00996230.obj; second definition ignored
+UNRESOLVED 4 ??1CCompressorZlib@@UAE@XZ
+UNRESOLVED 1 ?Alloc@CCompressorZlib@@CAPAXPAXII@Z
+UNRESOLVED 2 ?CancelAbilities@CTCDivineWrath@@QAEXXZ
+UNRESOLVED 2 ?CancelAbilities@CTCUnholyPower@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCAssassinRush@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCBattleCharge@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCBerserk@@QAEXXZ
+UNRESOLVED 2 ?CancelMove@CTCBulletTime@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCDrainLife@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCFireballSpell@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCForcePushPower@@QAEXXZ
+UNRESOLVED 2 ?CancelMove@CTCGhostSword@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCHealLife@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCMultiArrow@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCMultiStrike@@QAEXXZ
+UNRESOLVED 2 ?CancelMove@CTCPhysicalShieldSpell@@QAEXXZ
+UNRESOLVED 2 ?CancelMove@CTCSummonSpell@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCTurncoatSpell@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCWillEnflame@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCWillLightning@@QAEXXZ
+UNRESOLVED 1 ?CompressStream@CCompressorZlib@@QAEJPAEJ@Z
+UNRESOLVED 1 ?FinishCompressStream@CCompressorZlib@@QAEJPAEJPA_N@Z
+UNRESOLVED 1 ?Free@CCompressorZlib@@CAXPAX0@Z
+UNRESOLVED 1 ?GetVillage@CTCVillageMember@@QAEPAVCTCVillage@@XZ
+UNRESOLVED 5 ?GetWorkspaceSize@CCompressorZlib@@SAJXZ
+UNRESOLVED 1 ?HasStreamInput@CCompressorZlib@@QBE_NXZ
+UNRESOLVED 5 ?Init@CCompressorZlib@@QAEXXZ
+UNRESOLVED 1 ?InternalDecompress@CCompressorZlib@@QAEKPBXKPAXK@Z
+UNRESOLVED 1 ?IsMeleeWeapon@CTCWeapon@@QAE_NXZ
+UNRESOLVED 1 ?IsProjectileWeapon@CTCWeapon@@QBE_NXZ
+UNRESOLVED 1 ?PlaySound@CTCOracleMinigame@@QAEKABVCCharString@@@Z
+UNRESOLVED 1 ?PushSourceDefIndex@CTCOpinionSource@@QAE_NJ@Z
+UNRESOLVED 2 ?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z
+UNRESOLVED 1 ?ThreadProc@CThreadedFileManager@@SAXPAX@Z
+UNRESOLVED 1 ?v00@CCompressorZlib@@UAEXXZ
+## new set: N_00996230.obj N_0052ada0.obj N_009967e0.obj N_00996a40.obj N_009c4330.obj N_0072ba40.obj N_0072b420.obj N_00771620.obj N_007e61b0.obj N_0093ae80.obj N_0098f3a0.obj N_006a1e00.obj H_00a3aa10.obj H_0078f820.obj H_00794d90.obj H_007714b0.obj H_007e60f0.obj H_007ee540.obj H_0098f380.obj H_005daa70.obj
+duplicates 1
+N_0052ada0.obj : warning LNK4006: "public: __thiscall CCompressorZlib::CCompressorZlib(void)" (??0CCompressorZlib@@QAE@XZ) already defined in N_00996230.obj; second definition ignored
+UNRESOLVED 4 ??1CCompressorZlib@@UAE@XZ
+UNRESOLVED 1 ?Alloc@CCompressorZlib@@CAPAXPAXII@Z
+UNRESOLVED 1 ?CancelMove@CTCAssassinRush@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCBattleCharge@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCBerserk@@QAEXXZ
+UNRESOLVED 2 ?CancelMove@CTCBulletTime@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCDrainLife@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCFireballSpell@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCForcePushPower@@QAEXXZ
+UNRESOLVED 2 ?CancelMove@CTCGhostSword@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCHealLife@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCMultiArrow@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCMultiStrike@@QAEXXZ
+UNRESOLVED 2 ?CancelMove@CTCPhysicalShieldSpell@@QAEXXZ
+UNRESOLVED 2 ?CancelMove@CTCSummonSpell@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCTurncoatSpell@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCWillEnflame@@QAEXXZ
+UNRESOLVED 1 ?CancelMove@CTCWillLightning@@QAEXXZ
+UNRESOLVED 1 ?CompressStream@CCompressorZlib@@QAEJPAEJ@Z
+UNRESOLVED 1 ?FinishCompressStream@CCompressorZlib@@QAEJPAEJPA_N@Z
+UNRESOLVED 1 ?Free@CCompressorZlib@@CAXPAX0@Z
+UNRESOLVED 5 ?GetWorkspaceSize@CCompressorZlib@@SAJXZ
+UNRESOLVED 1 ?HasStreamInput@CCompressorZlib@@QBE_NXZ
+UNRESOLVED 1 ?InternalDecompress@CCompressorZlib@@QAEKPBXKPAXK@Z
+UNRESOLVED 1 ?IsProjectileWeapon@CTCWeapon@@QBE_NXZ
+UNRESOLVED 2 ?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z
+UNRESOLVED 1 ?v00@CCompressorZlib@@UAEXXZ
+LK_DONE

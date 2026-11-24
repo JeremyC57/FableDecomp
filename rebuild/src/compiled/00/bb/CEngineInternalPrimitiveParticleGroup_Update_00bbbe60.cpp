@@ -1,5 +1,14 @@
-#include "engine/CEngineInternalPrimitiveParticleGroup.h"
+// Leaf: ?Update@CEngineInternalPrimitiveParticleGroup@@UAEXABVCEnginePrimitive@@K@Z
+// Header route (NF319, 2026-11-23): defined on the real class of engine/CEngineInternalPrimitiveParticleGroup.h (was ?Update@CEngineInternalPrimitiveParticleGroup_Methods@@QAEXABVCEnginePrimitive@@K@Z); the retail RTTI vftable
+//   placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address; declared by the add-only opt-in
+//   FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_RTTI_DECLS. Bytes unchanged.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_RTTI_DECLS
 
+#include "engine/CEngineInternalPrimitiveParticleGroup.h"
 class CEnginePrimitive;
 
 struct CParticleVector4 {
@@ -20,15 +29,8 @@ struct CEnginePrimitiveUpdateView {
     CParticleVector4 transform;
 };
 
-struct CEngineInternalPrimitiveParticleGroup_Methods
-    : CEngineInternalPrimitiveParticleGroup {
-    void Update(const CEnginePrimitive& primitive, unsigned long key);
-};
 
-void CEngineInternalPrimitiveParticleGroup_Methods::Update(
-    const CEnginePrimitive& primitive,
-    unsigned long key)
-{
+void CEngineInternalPrimitiveParticleGroup::Update(const CEnginePrimitive& primitive, unsigned long key) {
     const CEnginePrimitiveUpdateView& source =
         (const CEnginePrimitiveUpdateView&)primitive;
     unsigned char* bytes = (unsigned char*)this;

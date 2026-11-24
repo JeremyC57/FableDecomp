@@ -1,0 +1,19 @@
+## H_00449bf0.obj external symbols matching the entry names
+?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z
+## H_00449c10.obj external symbols matching the entry names
+?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z
+## H_00eb15c0.obj external symbols matching the entry names
+?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@NScript@@QAEXABVCScriptThing@@@Z
+## H_00eb23e0.obj external symbols matching the entry names
+?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z
+## H_0056eccb.obj external symbols matching the entry names
+?ProcessInventoryInputDown@CTCInventoryBase@NInventory@@UAEXXZ
+?ProcessInventoryInputDown@CTCInventoryExperience@@UAEXXZ
+## H_00788198.obj external symbols matching the entry names
+_FableCam_788198@8
+## H_007c21a0.obj external symbols matching the entry names
+?Update@CTCShotDefinitionBase@@QAEXXZ
+## H_005bcae3.obj external symbols matching the entry names
+?GetHighlightedItem@CTCInventoryBase@@QAEJXZ
+## H_005bd273.obj external symbols matching the entry names
+?GetInventoryText@CTCInventoryBase@NInventory@@QAE?AVCWideString@@J@Z

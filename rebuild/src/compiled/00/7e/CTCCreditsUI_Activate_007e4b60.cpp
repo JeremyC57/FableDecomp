@@ -11,6 +11,29 @@
 // in esi across the virtual calls only when VC7.1 can see that _M_insert_overflow does not let `x` escape: retail had that
 // knowledge (link-time code generation), so a stand-in body is compiled above under `auto_inline(off)` (GOTCHAS wave 25 /
 // chunk 180; the lander grades only the Activate symbol).
+// Leaf: ?Activate@CTCCreditsUI@@QAEXVCCharString@@@Z
+// Flags: /d2inlS12
+// Inline-budget: /d2inlS12 -- only the size-optimised scaffolding COMDATs see it (the row body is /O2): it expands
+//   allocator::allocate -> malloc in the _M_insert_overflow copy as the owner 0x00485DBC does (smallest N, the 0x005414A0 sweep).
+// NF213 (2026-11-21, q6333 / q6342): the header-less CRetailVector stand-in (its same-TU explicit instantiation bound 0x00485DBC as
+//   ?_M_insert_overflow@?$CRetailVector@PAVCComponent@NUISystem@@@@QAE...K_N@Z) is the STLport vector<NUISystem::CComponent*> of
+//   stlport/fable_containers.h. push_back's growth call binds the protected IAE ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@
+//   V?$allocator@... (the 0x00485DBC self leaf). The body stays visible and out of line (OVERFLOW_OUTOFLINE, as the HEAD same-TU body);
+//   its pick-any copy is the owner's through FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY with
+//   COPY_TRIVIAL_OUTOFLINE + FILL_N_FASTCALL, and push_back's through FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY
+//   (Fidelity: scaffolding, not retail; owners 0x00485DBC / 0x00486024). The other local models are HEAD debt, unchanged.
+// NF214 (2026-11-21, q6333 / q6342, NF213 option d): the overflow body's callee fill_n<NUISystem::CComponent**> is visible and out of
+//   line through FABLE_RETAIL_STLP_FILL_N_NUISYSTEM_CCOMPONENT_SIZE_BODY (optimize("s", on), as its owner row 0x0048514C sets): with it
+//   declared only, the caller lost retail's register allocation (DIFFER 158v165). Its pick-any copy grades MATCH against 0x0048514C
+//   (23 bytes); the overflow copy equals the owner 0x00485DBC (137 = 137, bytes and relocations, both naming the same fill_n symbol).
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#define FABLE_RETAIL_STLP_COPY_TRIVIAL_OUTOFLINE
+#define FABLE_RETAIL_STLP_FILL_N_FASTCALL
+#define FABLE_RETAIL_STLP_FILL_N_NUISYSTEM_CCOMPONENT_SIZE_BODY
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY
+#include "rebuild_abi.h"
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* m_pData;
     ~CCharString();                                     // 0x0099EAE0
@@ -32,47 +55,6 @@ class CManager { public:
     static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
-struct __true_type { __true_type() { } };
-template <class T> struct CRetailVector {               // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned long fill_len, bool atend);   // 0x00485DBC
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            if (_M_finish)
-                *_M_finish = x;
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
-    }
-};
-#pragma auto_inline(off)
-extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-template <class T>
-void CRetailVector<T>::_M_insert_overflow(T* position, const T& x, const __true_type&, unsigned long fill_len, bool atend)
-{
-    unsigned long oldSize = _M_finish - _M_start;
-    unsigned long len = oldSize + (oldSize < fill_len ? fill_len : oldSize);
-    T* newStart = len ? (T*)malloc(len * sizeof(T)) : 0;
-    T* newFinish = newStart;
-    for (T* p = _M_start; p != position; ++p, ++newFinish)
-        *newFinish = *p;
-    for (unsigned long i = 0; i < fill_len; ++i, ++newFinish)
-        *newFinish = x;
-    if (!atend)
-        for (T* p = position; p != _M_finish; ++p, ++newFinish)
-            *newFinish = *p;
-    if (_M_start)
-        free(_M_start);
-    _M_start = newStart;
-    _M_finish = newFinish;
-    _M_end_of_storage = newStart + len;
-}
-template struct CRetailVector<NUISystem::CComponent*>;
-#pragma auto_inline(on)
 class CTCBase { public:
     virtual void v00();
     class CThing* ParentThing;                         // +0x04
@@ -81,7 +63,7 @@ class CTCBase { public:
 };
 class CTCCreditsUI : public CTCBase { public:
     bool Active;                                        // +0x0c
-    CRetailVector<NUISystem::CComponent*> Components;   // +0x10
+    std::vector<NUISystem::CComponent*> Components;   // +0x10
     bool Quitting;                                      // +0x1c
     CCharString CreditPart;                             // +0x20
     void Activate(CCharString part);

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00896a30   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00896a30   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00896a30   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+00896a30   WARN RELOC_NAME: ?IsQuestCardActive@QuestManagerMethods@@QBE_NABVCCharString@@@Z -> 004af610 labelled 'CQuestManager::IsQuestActive'
+00896a30   WARN RELOC_NAME: ?IsVignette@CTCQuestCard@@QBE_NXZ -> 007022e0 labelled 'CTCShotDefinitionBase::CanBeHitByMeleeStrike'
+00896a30   RELOCATION_MATCH PASS   SetQuestCardObjective
+
+WINS: 1
+  00896a30 RELOCATION_MATCH CGameScriptInterfaceMethods::SetQuestCardObjective
+RF_DONE

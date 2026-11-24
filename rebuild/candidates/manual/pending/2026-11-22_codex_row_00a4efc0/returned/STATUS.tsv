@@ -1,0 +1,5 @@
+address	role	status	retail_bytes	masked_differences	mapped_helper_equal	mapped_helper_different	behavior	note
+00a4efc0	target	VERIFIED_EXACT	3491	0	26	0	PASS	Full equality after 58 operand relocations. No mismatching recursive helper copies.
+00a50510	unchanged witness	LEAF_VERIFIED	1748	0	2	2	leaf regrade only	Two pre-existing helper mismatches also present on the supplied configuration.
+00aa0fa0	unchanged witness	LEAF_VERIFIED	4460	0	4	3	leaf regrade only	Three pre-existing helper mismatches also present on the supplied configuration.
+00bd2d90	unchanged witness	LEAF_VERIFIED	721	0	0	0	leaf regrade only	No mapped weak helper in the supplied checker.

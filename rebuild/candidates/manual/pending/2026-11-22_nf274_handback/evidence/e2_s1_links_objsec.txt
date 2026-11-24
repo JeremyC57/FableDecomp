@@ -1,0 +1,27 @@
+## link S1_00bda150 S1_00bd9ce0
+duplicates 0
+
+MAP 0001:00000340 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001340 f i S1_00bda150.obj
+## link S1_00bda150 S1_00bd9ce0 H_00bd9b90
+duplicates 1
+H_00bd9b90.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in S1_00bda150.obj; second definition ignored
+MAP 0001:00000340 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001340 f i S1_00bda150.obj
+## link H_00bd9b90 S1_00bda150 S1_00bd9ce0
+duplicates 2
+S1_00bda150.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in H_00bd9b90.obj; second definition ignored
+S1_00bd9ce0.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in H_00bd9b90.obj; second definition ignored
+MAP 0001:000000b0 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 100010b0 f H_00bd9b90.obj
+## link S1_00bda150 H_00bd9ce0
+duplicates 4
+H_00bd9ce0.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in S1_00bda150.obj; second definition ignored
+H_00bd9ce0.obj : warning LNK4006: "private: void __thiscall CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy(class CIndexBuffer *)" (?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z) already defined in S1_00
+H_00bd9ce0.obj : warning LNK4006: "private: void __thiscall CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy(class CVertexBufferWin32 *)" (?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z) already de
+H_00bd9ce0.obj : warning LNK4006: "private: void __thiscall CEngineLandscapeMemoryManager::DeleteTextureBlockWhileBusy(class CTexture *)" (?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z) already defined in S1_00bda150.obj; seco
+MAP 0001:00000340 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001340 f i S1_00bda150.obj
+## objsec HEAD v S1 00bda150
+sections head 50 new 50
+ALL_EQ 0
+## objsec HEAD v S1 00bd9ce0
+sections head 50 new 50
+ALL_EQ 0
+L1_DONE

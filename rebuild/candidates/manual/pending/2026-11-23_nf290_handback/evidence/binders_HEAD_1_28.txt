@@ -1,0 +1,121 @@
+#1 004962c0 ?ChooseProfileNumber@CFrontendGameComponent@@AAEXJ@Z
+   004962c0(self) - DEF=WRONG:?ChooseProfileNumber@CFrontendGameComponent@@QAEXJ@Z
+   004963a0 OK ?ChooseProfileNumber@CFrontendGameComponent@@AAEXJ@Z x4
+#3 00665860 ?UpdateAnimation@CThingCreatureBase@@IAEXM@Z
+   00665860(self) - DEF=OK:?UpdateAnimation@CThingCreatureBase@@IAEXM@Z
+   006ad9d0 WRONG ?UpdateAnimation@CThingCreatureBase@@QAEXM@Z x1
+   0082fd90 WRONG ?UpdateAnimation@CThingCreatureBase@@QAEXM@Z x1
+   00834760 WRONG ?UpdateAnimation@CThingCreatureBase@@QAEXM@Z x1
+#4 0085d180 ?InitMapwhoLevels@CThingMap@NThingMap@@IAEXXZ
+   0085d180(self) - DEF=OK:?InitMapwhoLevels@CThingMap@NThingMap@@IAEXXZ
+   0085d370 WRONG ?InitMapwhoLevels@CThingMap@NThingMap@@QAEXXZ x1
+#5 006378e0 ?GetThingMapwhoLevel@CThingMapManager@NThingMap@@IBEEM@Z
+   006378e0(self) - DEF=OK:?GetThingMapwhoLevel@CThingMapManager@NThingMap@@IBEEM@Z
+   00637f40 OK ?GetThingMapwhoLevel@CThingMapManager@NThingMap@@IBEEM@Z x1
+   00637fc0 OK ?GetThingMapwhoLevel@CThingMapManager@NThingMap@@IBEEM@Z x1
+#7 006ac390 ?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z
+   006ac390(self) - DEF=WRONG:?IsExpressionAvailable@CThingPlayerCreature@@QAE_NABVCCharString@@@Z
+   006ac430 OK ?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z x1
+   00805890 WRONG ?IsExpressionAvailable@CThingPlayerCreature@@QAE_NABVCCharString@@@Z x1
+   0088fc90 OK ?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z x1
+#8 006ad970 ?UpdatePlayerControl@CThingPlayerCreature@@QAEXXZ
+   006ad970(self) - DEF=WRONG:?UpdatePlayerControl@CThingPlayerCreature@@AAEXXZ
+   00550dc0 -
+   006ad9d0 OK ?UpdatePlayerControl@CThingPlayerCreature@@QAEXXZ x1
+#9 0083b520 ?GetCurrentGraphic@CThingVillage@@IBEPBVCEngineGraphic@@XZ
+   0083b520(self) - DEF=OK:?GetCurrentGraphic@CThingVillage@@IBEPBVCEngineGraphic@@XZ
+   0083b610 WRONG ?GetCurrentGraphic@CThingVillage@@QAEPBVCEngineGraphic@@XZ x1
+   0083b6b0 OK ?GetCurrentGraphic@CThingVillage@@IBEPBVCEngineGraphic@@XZ x1
+#10 0098ecd0 ?ProcessObjects@CThreadedFileManager@@AAEXXZ
+   0098ecd0(self) - DEF=WRONG:?ProcessObjects@CThreadedFileManager@@QAEXXZ
+   0098f2a0 OK ?ProcessObjects@CThreadedFileManager@@AAEXXZ x1
+#11 00760e70 ?GetMinDistanceToTrack@CTrack@NShape@@ABE_NABVC3DVector@@AAM@Z
+   00760e70(self) - DEF=OK:?GetMinDistanceToTrack@CTrack@NShape@@ABE_NABVC3DVector@@AAM@Z
+   00761740 WRONG ?GetMinDistanceToTrack@CTrack@NShape@@QBE_NABVC3DVector@@AAM@Z x1
+#12 00f3b970 ?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z
+   00f3b970(self) - DEF=WRONG:?StripUnusedVerts@CTriangleStripifier2@@QAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z
+   00f3d830 WRONG ?StripUnusedVerts@CTriangleStripifier2@@QAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z x1
+#13 00408120 ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z
+   00408120(self) - DEF=OK:?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z
+   004082d0 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   004091c0 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   0040bca0 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   0047e196 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   0047eee4 WRONG ?GetPathNameFromFileName@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z x2
+   0047fe83 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x3
+   004804de OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x5
+   004830a1 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x5
+   0049d4e0 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   004a00e0 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   004a05c0 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   004a0780 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   004a2d70 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   004a3200 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   004a34f0 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x1
+   004a5e90 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x4
+   00595cc1 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x2
+   00597df7 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x3
+   00598463 OK ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z x3
+#14 0040d350 ?Load@CUserProfileManager@@QAEXXZ
+   0040d350(self) - DEF=OK:?Load@CUserProfileManager@@QAEXXZ
+   0040d400 WRONG ?Load@CUserProfileManager@@AAEXXZ x1
+   00556470 OK ?Load@CUserProfileManager@@QAEXXZ x1
+   0059686d OK ?Load@CUserProfileManager@@QAEXXZ x1
+   00597bf2 OK ?Load@CUserProfileManager@@QAEXXZ x1
+#15 00ad9f10 ?AddBlocks@CVertexGroupBlockOptimiser@@AAEXK@Z
+   00ad9f10(self) OK ?AddBlocks@CVertexGroupBlockOptimiser@@AAEXK@Z x3 DEF=OK:?AddBlocks@CVertexGroupBlockOptimiser@@AAEXK@Z
+   00ada240 WRONG ?AddBlocks@CVertexGroupBlockOptimiser@@QAEXK@Z x1
+#16 00ac44d0 ?ConvertFrom@CVertexStreamConverter@@AAEXPBDW4EVertexStreamDataType@@AAVC4DVector@@ABVCVertexCompressionParams@@@Z
+   00ac44d0(self) - DEF=OK:?ConvertFrom@CVertexStreamConverter@@AAEXPBDW4EVertexStreamDataType@@AAVC4DVector@@ABVCVertexCompressionParams@@@Z
+   00ac4d70 WRONG ?ConvertFrom@CVertexStreamConverter@@QAEXPBDW4EVertexStreamDataType@@AAVC4DVector@@ABVCVertexCompressionParams@@@Z x1
+#17 00ac4910 ?ConvertTo@CVertexStreamConverter@@AAEXPADW4EVertexStreamDataType@@ABVC4DVector@@ABVCVertexCompressionParams@@@Z
+   00ac4910(self) - DEF=OK:?ConvertTo@CVertexStreamConverter@@AAEXPADW4EVertexStreamDataType@@ABVC4DVector@@ABVCVertexCompressionParams@@@Z
+   00ac4d70 WRONG ?ConvertTo@CVertexStreamConverter@@QAEXPADW4EVertexStreamDataType@@ABVC4DVector@@ABVCVertexCompressionParams@@@Z x1
+#18 00a67ff0 ?CalcByteLength@CVolumeTexture@@IAEXXZ
+   00a67ff0(self) - DEF=WRONG:?CalcByteLength@CVolumeTexture@@QAEXXZ
+   00a682e0 WRONG ?CalcByteLength@CVolumeTexture@@QAEXXZ x1
+   00a68370 OK ?CalcByteLength@CVolumeTexture@@IAEXXZ x1
+#19 00a0cdd0 ?ReadNextNumber@CWStringParser@@AAE_NPAVCWParsedItem@@@Z
+   00a0cdd0(self) - DEF=OK:?ReadNextNumber@CWStringParser@@AAE_NPAVCWParsedItem@@@Z
+   00a0cfc0 WRONG ?ReadNextNumber@CWStringParser@@QAE_NPAVCWParsedItem@@@Z x1
+#20 0049d4e0 ?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z
+   0049d4e0(self) - DEF=WRONG:?IsHeroStateFileValid@CWorld@@QBE_NABVCWideString@@@Z
+   004a2f10 OK ?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z x1
+   004a3200 WRONG ?IsHeroStateFileValid@CWorld@@QBE_NABVCWideString@@@Z x3
+#21 0049d8f0 ?SetAsPaused@CWorld@@IAEX_N@Z
+   0049d8f0(self) - DEF=WRONG:?SetAsPaused@CWorld@@QAEXD@Z
+   006292d0 WRONG ?SetAsPaused@CWorld@@QAEX_N@Z x1
+   00629da0 OK ?SetAsPaused@CWorld@@IAEX_N@Z x1
+#22 0049e9f0 ?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ
+   0049e9f0(self) - DEF=WRONG:?IsDisplayingMiniMapOnRegionLoad@CWorld@@QAE_NXZ
+   004a3740 OK ?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ x6
+   0064401c WRONG ?IsDisplayingMiniMapOnRegionLoad@CWorld@@QAE_NXZ x1
+   00644179 WRONG ?IsDisplayingMiniMapOnRegionLoad@CWorld@@QAE_NXZ x1
+   006441be WRONG ?IsDisplayingMiniMapOnRegionLoad@CWorld@@QAE_NXZ x1
+   006495a8 OK ?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ x1
+#23 0049f4c0 ?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+   0049f4c0(self) - DEF=OK:?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+   004a00e0 WRONG ?SaveGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z x1
+   004a05c0 WRONG ?SaveGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z x1
+#24 004a21f0 ?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+   004a21f0(self) - DEF=OK:?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+   004a2d70 WRONG ?LoadGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z x1
+   004a2f10 OK ?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z x1
+   004a3200 WRONG ?LoadGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z x2
+#25 004a2d70 ?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z
+   004a2d70(self) - DEF=OK:?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z
+   004a2f10 OK ?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z x1
+   004a3200 WRONG ?LoadHeroStateInternal@CWorld@@QAE_NABVCWideString@@@Z x2
+#26 004fb310 ?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ
+   004fb310(self) - DEF=
+   0063dd70 OK ?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ x1
+   0063e3c0 WRONG ?PeekDefinitionManager@CWorldMap@@QBEABVCGameDefinitionManager@@XZ x2
+   0063eb20 OK ?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ x1
+#27 004fce20 ?AllocateMapUID@CWorldMap@@IAEKJ@Z
+   004fce20(self) - DEF=WRONG:?AllocateMapUID@CWorldMap@@QAEKJ@Z
+   00506f30 WRONG ?AllocateMapUID@CWorldMap@@QAEKJ@Z x1
+   00507c30 WRONG ?AllocateMapUID@CWorldMap@@QAEKJ@Z x1
+#28 008af500 ?AttemptToSpeak@CombatDialogueManager@@AAEXXZ
+   008af500(self) - DEF=OK:?AttemptToSpeak@CombatDialogueManager@@AAEXXZ
+   008af780 WRONG ?AttemptToSpeak@CombatDialogueManager@@QAEXXZ x1
+   008afc40 WRONG ?AttemptToSpeak@CombatDialogueManager@@QAEXXZ x1

@@ -1,0 +1,599 @@
+addr       parity           behav  name
+00433fe0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00433fe0   WARN SHARED_HEADER_AVAILABLE CEngineDef (engine/CEngineDef.h)
+00433fe0   RELOCATION_MATCH PASS   Transfer
+00434120   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00434120   WARN SHARED_HEADER_AVAILABLE CEngineVideoOptionsDef (engine/CEngineVideoOptionsDef.h)
+00434120   RELOCATION_MATCH PASS   Transfer
+004526b3   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004526b3   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef (engine/CContextSensitiveItemDef.h)
+004526b3   WARN RELOC_NAME: ?PersistA_004526f7@CPersistContext@@QAEXPAX@Z -> 004526f7 labelled 'CPersistContext::Transfer<EContextSensitiveType>'
+004526b3   RELOCATION_MATCH PASS   Transfer
+004569a7   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004569a7   WARN SHARED_HEADER_AVAILABLE CExpressionDef (engine/CExpressionDef.h)
+004569a7   WARN RELOC_NAME: ?TransferDefIndex@CPersistContext@@QAEXAAH@Z -> 004522f4 labelled '_global::PersistTransfer_004522f4'
+004569a7   WARN RELOC_NAME: ?TransferGameEvent@CPersistContext@@QAEXAAH@Z -> 00456ad9 labelled 'CPersistContext::Transfer<EGameEventType>'
+004569a7   WARN RELOC_NAME: ?TransferExpressionType@CPersistContext@@QAEXAAH@Z -> 00456c21 labelled 'CPersistContext::Transfer<EExpressionInventoryType>'
+004569a7   RELOCATION_MATCH PASS   Transfer
+00456dfb   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00456dfb   WARN SHARED_HEADER_AVAILABLE CCombatDialogueDef (engine/CCombatDialogueDef.h)
+00456dfb   RELOCATION_MATCH PASS   Transfer
+004585fe   WARN SHARED_HEADER_AVAILABLE CPhysicalPrimitiveInit (engine/CPhysicalPrimitiveInit.h)
+004585fe   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004585fe   WARN SHARED_HEADER_AVAILABLE CHitLocationDef (engine/CHitLocationDef.h)
+004585fe   RELOCATION_MATCH PASS   Transfer
+00459582   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00459582   RELOCATION_MATCH PASS   Transfer
+00459615   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00459615   WARN SHARED_HEADER_AVAILABLE CPlayerMovementDef (engine/CPlayerMovementDef.h)
+00459615   RELOCATION_MATCH PASS   Transfer
+0046311f   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+0046311f   WARN RELOC_NAME: ?Copy_00431ed0@CDefClassBase@@QAEXPBV1@@Z -> 00431ed0 labelled 'CParentDefClassBase::operator='
+0046311f   WARN RELOC_NAME: ?Copy@SubVoices@@QAEXPBU1@@Z -> 0046313e labelled 'CSimVoice::operator='
+0046311f   RELOCATION_MATCH PASS   Copy
+004aaa10   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+004aaa10   RELOCATION_MATCH PASS   GetHomeMapName
+004aef50   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004aef50   MATCH            PASS   IsSaving
+004df4ca   WARN SHARED_HEADER_AVAILABLE CNavigatorExternalInterface (engine/CNavigatorExternalInterface.h)
+004df4ca   RELOCATION_MATCH PASS   Clone
+004e00e9   WARN SHARED_HEADER_AVAILABLE CQuestCardDef (engine/CQuestCardDef.h)
+004e00e9   MATCH            PASS   GetSizeofClass
+004e3fd0   WARN RELOC_NAME: ?Copy@CBaseDef@@QAEXPBVCDefClassBase@@@Z -> 00431f10 labelled 'CDefClassBase::operator='
+004e3fd0   WARN RELOC_NAME: ?Copy@CSubMember@@QAEXPBVCDefClassBase@@@Z -> 00432ee9 labelled 'std::vector<CCharString>::operator='
+004e3fd0   RELOCATION_MATCH PASS   Copy
+004e80e3   WARN SHARED_HEADER_AVAILABLE CKrakenDef (engine/CKrakenDef.h)
+004e80e3   RELOCATION_MATCH PASS   Transfer
+004eafc9   WARN RELOC_NAME: ?Copy@CBaseDef@@QAEXPBVCDefClassBase@@@Z -> 00431f10 labelled 'CDefClassBase::operator='
+004eafc9   RELOCATION_MATCH PASS   Copy
+00502460   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00502460   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+00502460   WARN SHARED_HEADER_AVAILABLE CMapInfo (engine/CMapInfo.h)
+00502460   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+00502460   RELOCATION_MATCH PASS   AllocateNewMap
+0057598a   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+0057598a   RELOCATION_MATCH PASS   IsTutorialPlayed
+00688a20   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00688a20   WARN SHARED_HEADER_AVAILABLE CInputProcessTargetLockCycleTargets (engine/CInputProcessTargetLockCycleTargets.h)
+00688a20   WARN RELOC_NAME: ?IsButtonHeld@CInputProcessTargetLockCycleTargets@@QAE_NJJ@Z -> 00687d50 labelled 'CInputProcessGameBase::IsGameActionEventInQueue'
+00688a20   RELOCATION_MATCH PASS   Update
+006893b0   WARN SHARED_HEADER_AVAILABLE CInputProcessInventoryBase (engine/CInputProcessInventoryBase.h)
+006893b0   MATCH            PASS   Init
+00692a20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00692a20   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00692a20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00692a20   RELOCATION_MATCH PASS   IsPreventingNormalMovement
+00692b30   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00692b30   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00692b30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00692b30   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00692b30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00692b30   RELOCATION_MATCH PASS   UpdateActionMoveToPos
+006b2c00   WARN SHARED_HEADER_AVAILABLE CEnvironment (engine/CEnvironment.h)
+006b2c00   RELOCATION_MATCH PASS   IsEnvironmentRequiringWeatherMasks
+006e7710   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+006e7710   WARN RELOC_NAME: ?LowerBound@TimerMap@@QAE?AUIter@@PBJ@Z -> 006e7c40 labelled 'std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long>>, std::less<long>, std::allocator<std::pair<long const, long>>>::find'
+006e7710   RELOCATION_MATCH PASS   GetTimer
+006f56c0   WARN SHARED_HEADER_AVAILABLE CCombatAction_GenericStrikeResponseBase (engine/CCombatAction_GenericStrikeResponseBase.h)
+006f56c0   MATCH            PASS   SetHitDirection
+007003a0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+007003a0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+007003a0   WARN SHARED_HEADER_AVAILABLE CReactionMatch_Sphere (engine/CReactionMatch_Sphere.h)
+007003a0   RELOCATION_MATCH PASS   TransferBinaryOut
+007d0070   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+007d0070   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+007d0070   RELOCATION_MATCH PASS   Transfer
+007da8b0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBlackjack (engine/CTCTavernGameCardBlackjack.h)
+007da8b0   MATCH            PASS   HasGoneBust
+00820790   WARN SHARED_HEADER_AVAILABLE CScriptedMapBrush (engine/CScriptedMapBrush.h)
+00820790   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00820790   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+00820790   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+00820790   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+00820790   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00820790   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+00820790   RELOCATION_MATCH PASS   ScriptedMapBrushAddThings
+008209c0   WARN SHARED_HEADER_AVAILABLE CScriptedMapBrush (engine/CScriptedMapBrush.h)
+008209c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008209c0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+008209c0   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+008209c0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+008209c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008209c0   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+008209c0   RELOCATION_MATCH PASS   ScriptedMapBrushRemoveThings
+00827890   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00827890   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+00827890   MATCH            PASS   DrawGetHeightMapExtents
+00843fc0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00843fc0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+00843fc0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00843fc0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+00843fc0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ActivateQuest (engine/CCreatureAction_ActivateQuest.h)
+00843fc0   RELOCATION_MATCH PASS   Initialise
+00844090   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00844090   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+00844090   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ActivateQuest (engine/CCreatureAction_ActivateQuest.h)
+00844090   RELOCATION_MATCH PASS   FrameUpdate
+008565c0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008565c0   MATCH            PASS   IsMeleeFlourish
+00856d30   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00856d30   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00856d30   RELOCATION_MATCH PASS   UpdateActionMoveToPos
+00856dd0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+00856dd0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00856dd0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00856dd0   WARN RELOC_NAME: ?GetPCreatureAnimationOwner@CCombatActionBase@@QBEPAUCAnimationOwner@@XZ -> 00692950 labelled 'CCreatureActionBase::PeekWorld'
+00856dd0   WARN RELOC_NAME: ?GetTotalTimeSeconds@CAnimation@@QBEMXZ -> 00a23ce0 labelled '_global::GetMember_float0x14_00a23ce0'
+00856dd0   RELOCATION_MATCH PASS   GetTotalTimeSeconds
+00856ea0   WARN SHARED_HEADER_AVAILABLE CMeleeCombatAbilityDef (engine/CMeleeCombatAbilityDef.h)
+00856ea0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00856ea0   RELOCATION_MATCH PASS   GetDamageMultiplier
+00856f80   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00856f80   RELOCATION_MATCH PASS   IsStrikeEvent
+00856fe0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00856fe0   RELOCATION_MATCH PASS   IsStrikeEventActive
+00857030   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00857030   MATCH            PASS   IsStrikeEventFinishedBeingActive
+008570d0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008570d0   RELOCATION_MATCH PASS   GetStrikeEventHelperName
+00857150   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00857150   RELOCATION_MATCH PASS   IsActionWithStrikeEventHelperName
+00857220   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00857220   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00857220   RELOCATION_MATCH PASS   IsBlockable
+00857cb0   WARN SHARED_HEADER_AVAILABLE CMeleeCombatAbilityDef (engine/CMeleeCombatAbilityDef.h)
+00857cb0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00857cb0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00857cb0   RELOCATION_MATCH PASS   IsDecapitatingAttack
+00858cc0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00858cc0   WARN SHARED_HEADER_AVAILABLE CCombatTypeDef (engine/CCombatTypeDef.h)
+00858cc0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00858cc0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00858cc0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_GeneralInterruptedAttack (engine/CCreatureAction_GeneralInterruptedAttack.h)
+00858cc0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00858cc0   RELOCATION_MATCH PASS   OnBlowBlocked
+00861430   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00861430   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00861430   WARN SHARED_HEADER_AVAILABLE CTCCrateStack (engine/CTCCrateStack.h)
+00861430   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00861430   WARN SHARED_HEADER_AVAILABLE CVillageTaskCarryCrate (engine/CVillageTaskCarryCrate.h)
+00861430   RELOCATION_MATCH PASS   IsValid
+0087ed70   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+0087ed70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0087ed70   WARN SHARED_HEADER_AVAILABLE CCombatAction_StabThing (engine/CCombatAction_StabThing.h)
+0087ed70   RELOCATION_MATCH PASS   GetNextPos
+0088de10   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0088de10   RELOCATION_MATCH PASS   GiveThingItemInHand
+0088ead0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0088ead0   MATCH            PASS   EntitySetAsDamageable
+0088f480   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f480   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0088f480   WARN RELOC_NAME: ?ApplyScriptBrush@CWorldMap_Retail@@QAEXABVCCharString@@J@Z -> 004fe510 labelled 'CMapBrushOwner004fe510::ApplyScriptedMapBrushByName'
+0088f480   RELOCATION_MATCH PASS   ApplyScriptBrush
+0088f920   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f920   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0088f920   RELOCATION_MATCH PASS   AutoSaveQuestStart
+0088fe30   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0088fe30   WARN RELOC_NAME: ?GetRoundedHour@TimeOfDay@@QAEJXZ -> 006bb300 labelled 'CGameTimeManager::GetTimeAs24HourClock'
+0088fe30   RELOCATION_MATCH PASS   GetTimeOfDay
+00890ff0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00890ff0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00890ff0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00890ff0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00890ff0   RELOCATION_MATCH PASS   CameraDefault
+00891720   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CCreatureAction_StabbedToDeath (engine/CCreatureAction_StabbedToDeath.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00891720   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00891720   WARN RELOC_NAME: ??0CCreatureAction_StabbedToDeath@@QAE@AAVCThingCreatureBase@@_N@Z -> 008ed650 labelled 'CCreatureAction_Die::CCreatureAction_Die'
+00891720   RELOCATION_MATCH PASS   ChangeHeroHealthBy
+00895a10   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00895a10   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00895a10   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00895a10   RELOCATION_MATCH PASS   GetBestFishWeight
+0089eec0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0089eec0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0089eec0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0089eec0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0089eec0   WARN RELOC_NAME: ?g_pPlayerGui@@3PAVCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+0089eec0   RELOCATION_MATCH PASS   SetRegionExitAsActive
+0089ef00   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0089ef00   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0089ef00   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0089ef00   MATCH            PASS   SetRegionEntranceAsActive
+008a0c60   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+008a0c60   WARN SHARED_HEADER_AVAILABLE CTCBoastUI (engine/CTCBoastUI.h)
+008a0c60   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008a0c60   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+008a0c60   RELOCATION_MATCH PASS   DeactivateBoastUi
+008c0b40   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+008c0b40   WARN RELOC_NAME: ?OnPropertyChanged@CBaseObject@@QAEXJ@Z -> 004c9840 labelled 'CThing::RemoveTC'
+008c0b40   RELOCATION_MATCH PASS   PerformAction
+008d0350   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008d0350   WARN SHARED_HEADER_AVAILABLE CGameScriptThing (engine/CGameScriptThing.h)
+008d0350   RELOCATION_MATCH PASS   SetDataString
+008d06c0   WARN SHARED_HEADER_AVAILABLE CGameScriptThing (engine/CGameScriptThing.h)
+008d06c0   RELOCATION_MATCH PASS   IsUsable
+008d0960   WARN SHARED_HEADER_AVAILABLE CGameScriptThing (engine/CGameScriptThing.h)
+008d0960   RELOCATION_MATCH PASS   SetFriendsWithEverythingFlag
+008d09d0   WARN SHARED_HEADER_AVAILABLE CGameScriptThing (engine/CGameScriptThing.h)
+008d09d0   RELOCATION_MATCH PASS   GetActivationTriggerStatus
+008d0a40   WARN SHARED_HEADER_AVAILABLE CGameScriptThing (engine/CGameScriptThing.h)
+008d0a40   RELOCATION_MATCH PASS   SetActivationTriggerStatus
+008d0b30   WARN SHARED_HEADER_AVAILABLE CGameScriptThing (engine/CGameScriptThing.h)
+008d0b30   RELOCATION_MATCH PASS   IsSneaking
+008d4670   WARN SHARED_HEADER_AVAILABLE CGameScriptThing (engine/CGameScriptThing.h)
+008d4670   MATCH            PASS   IncrementScriptCounter
+008f75b0   WARN SHARED_HEADER_AVAILABLE CHeightMapCell (engine/CHeightMapCell.h)
+008f75b0   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+008f75b0   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+008f75b0   MATCH            PASS   DrawGetEngineThemeAt
+008f75f0   WARN SHARED_HEADER_AVAILABLE CHeightMapCell (engine/CHeightMapCell.h)
+008f75f0   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+008f75f0   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+008f75f0   MATCH            PASS   DrawGetEngineBlendAt
+008fcec0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+008fcec0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+008fcec0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+008fcec0   RELOCATION_MATCH PASS   Initialise
+00903e20   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)
+00903e20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThing (engine/CScriptGameResourceObjectScriptedThing.h)
+00903e20   RELOCATION_MATCH PASS   MoveToThing
+009093f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009093f0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009093f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayCombatAnimation (engine/CCreatureAction_PlayCombatAnimation.h)
+009093f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastPhysicalShieldSpell (engine/CCreatureAction_CastPhysicalShieldSpell.h)
+009093f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009093f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+009093f0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillPhysicalShieldNonMelee (engine/CCombatSequence_WillPhysicalShieldNonMelee.h)
+009093f0   WARN RELOC_NAME: ??0CRetailString@@QAE@PBDJ@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+009093f0   WARN RELOC_CONFLICT: ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z -> 00905fd0 here, 00668d90 in landed 00664490
+009093f0   WARN RELOC_NAME: ?AddAction@CCombatSequence_WillPhysicalShieldNonMelee@@QAEXABV?$CCountedPointer@VCCreatureActionBase@@@@@Z -> 008b0b10 labelled 'CCombatSequenceBase::PushAction'
+009093f0   WARN RELOC_NAME: ?OnCreateBase@CCombatSequence_WillPhysicalShieldNonMelee@@QAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+009093f0   RELOCATION_MATCH PASS   OnCreate
+0090e590   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0090e590   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditGossip (engine/CAIStateGroup_BanditGossip.h)
+0090e590   RELOCATION_MATCH PASS   OnReplace
+0092eca0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToPlayerInteraction (engine/CAIStateGroup_MinionReactToPlayerInteraction.h)
+0092eca0   MATCH            PASS   InitStateGroup
+0096f010   MATCH            PASS   InitLeaf
+0096f020   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0096f020   RELOCATION_MATCH PASS   OnActivateLeaf
+00994360   WARN SHARED_HEADER_AVAILABLE CFileDataInputStream (engine/CFileDataInputStream.h)
+00994360   MATCH            PASS   InternalReadNextSourceChunk
+009943d0   WARN SHARED_HEADER_AVAILABLE CFileDataInputStream (engine/CFileDataInputStream.h)
+009943d0   MATCH            PASS   InternalReadUnbuffered
+009b0170   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+009b0170   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase (engine/CParentDefClassBase.h)
+009b0170   WARN RELOC_NAME: ?SortSubDefPairs@@YIXPAUCSubDefPair@@0UCKeyPairCompareLess@@@Z -> 009b84c0 labelled '_global::Sort_SElement12_009b84c0'
+009b0170   RELOCATION_MATCH PASS   RemoveSubDef
+009d54a0   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+009d54a0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009d54a0   WARN RELOC_NAME: ??0CCriticalSectionLock_Retail@@QAE@PAUCRITICAL_SECTION_Fable@@_N@Z -> 00a62920 labelled 'CCriticalSectionLock::CCriticalSectionLock'
+009d54a0   WARN RELOC_NAME: ??1CCriticalSectionLock_Retail@@QAE@XZ -> 00a629a0 labelled 'CCriticalSectionLock::~CCriticalSectionLock'
+009d54a0   RELOCATION_MATCH PASS   OnFileReadCompletion
+009d55d0   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+009d55d0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009d55d0   WARN RELOC_NAME: ??0CCriticalSectionLock_Retail@@QAE@PAUCRITICAL_SECTION_Fable@@_N@Z -> 00a62920 labelled 'CCriticalSectionLock::CCriticalSectionLock'
+009d55d0   WARN RELOC_NAME: ??1CCriticalSectionLock_Retail@@QAE@XZ -> 00a629a0 labelled 'CCriticalSectionLock::~CCriticalSectionLock'
+009d55d0   RELOCATION_MATCH PASS   CanRelocateData
+009d5670   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+009d5670   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009d5670   WARN RELOC_NAME: ??0CCriticalSectionLock_Retail@@QAE@PAUCRITICAL_SECTION_Fable@@_N@Z -> 00a62920 labelled 'CCriticalSectionLock::CCriticalSectionLock'
+009d5670   WARN RELOC_NAME: ??1CCriticalSectionLock_Retail@@QAE@XZ -> 00a629a0 labelled 'CCriticalSectionLock::~CCriticalSectionLock'
+009d5670   RELOCATION_MATCH PASS   RelocateData
+009e90c0   WARN SHARED_HEADER_AVAILABLE CBBBFileException (engine/CBBBFileException.h)
+009e90c0   WARN SHARED_HEADER_AVAILABLE CMemoryFile (engine/CMemoryFile.h)
+009e90c0   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009e90c0   RELOCATION_MATCH PASS   SetPosition
+009e9140   WARN SHARED_HEADER_AVAILABLE CExceptionBase (engine/CExceptionBase.h)
+009e9140   WARN SHARED_HEADER_AVAILABLE CBBBFileException (engine/CBBBFileException.h)
+009e9140   WARN SHARED_HEADER_AVAILABLE CMemoryFile (engine/CMemoryFile.h)
+009e9140   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009e9140   RELOCATION_MATCH PASS   MovePosition
+009e9730   WARN SHARED_HEADER_AVAILABLE CMemoryFile (engine/CMemoryFile.h)
+009e9730   RELOCATION_MATCH PASS   SetLength
+009ea3c0   RELOCATION_MATCH PASS   GetHelp
+009ea7d0   WARN SHARED_HEADER_AVAILABLE CConsoleCommandBase (engine/CConsoleCommandBase.h)
+009ea7d0   RELOCATION_MATCH PASS   GetHelp
+009f8380   RELOCATION_MATCH PASS   Sizeof
+00a1a150   WARN SHARED_HEADER_AVAILABLE CNavigatorAStar (engine/CNavigatorAStar.h)
+00a1a150   WARN RELOC_NAME: ?Notify@SubObject@@QAEXPAX@Z -> 00a155c0 labelled 'std::list<std::pair<long,const CNavigatorBase*> >::remove_if<CIsNavigator>'
+00a1a150   RELOCATION_MATCH PASS   Interrupt
+00a1a1a0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a1a1a0   WARN SHARED_HEADER_AVAILABLE CSteeringAgent (engine/CSteeringAgent.h)
+00a1a1a0   MATCH            PASS   IsCurrentNavigabilityBetter
+00a23de0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+00a23de0   WARN SHARED_HEADER_AVAILABLE C3DMeshLODInfo (engine/C3DMeshLODInfo.h)
+00a23de0   RELOCATION_MATCH PASS   IsResourceLoaded
+00a37060   WARN SHARED_HEADER_AVAILABLE CClassFactory (engine/CClassFactory.h)
+00a37060   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+00a37060   RELOCATION_MATCH PASS   GetClassNumberFromName
+00a3b1c0   WARN SHARED_HEADER_AVAILABLE CVideoSys (engine/CVideoSys.h)
+00a3b1c0   RELOCATION_MATCH PASS   Pause
+00a3b1f0   WARN SHARED_HEADER_AVAILABLE CVideoSys (engine/CVideoSys.h)
+00a3b1f0   RELOCATION_MATCH PASS   Stop
+00a3b330   WARN SHARED_HEADER_AVAILABLE CVideoSys (engine/CVideoSys.h)
+00a3b330   RELOCATION_MATCH PASS   IsFinished
+00a4e100   WARN SHARED_HEADER_AVAILABLE C3DKeyframe (engine/C3DKeyframe.h)
+00a4e100   WARN SHARED_HEADER_AVAILABLE C3DAnimationSequenceData (engine/C3DAnimationSequenceData.h)
+00a4e100   WARN SHARED_HEADER_AVAILABLE C3DAnimationSequence (engine/C3DAnimationSequence.h)
+00a4e100   WARN SHARED_HEADER_AVAILABLE C3DAnimation2 (engine/C3DAnimation2.h)
+00a4e100   RELOCATION_MATCH PASS   GetMovementOffsetAtTime
+00a64500   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorVariableSize (engine/CMemoryAllocatorVariableSize.h)
+00a64500   MATCH            PASS   GetLargestFreeAreaSize
+00a64560   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorVariableSize (engine/CMemoryAllocatorVariableSize.h)
+00a64560   RELOCATION_MATCH PASS   GetNoAllocatedAreas
+00a64db0   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorVariableSize (engine/CMemoryAllocatorVariableSize.h)
+00a64db0   RELOCATION_MATCH PASS   GetTotalMemoryAllocated
+00a64e20   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorVariableSize (engine/CMemoryAllocatorVariableSize.h)
+00a64e20   RELOCATION_MATCH PASS   GetHeaderOverhead
+00a651b0   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorVariableSize (engine/CMemoryAllocatorVariableSize.h)
+00a651b0   RELOCATION_MATCH PASS   GetAllocationSize
+00a651e0   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorVariableSize (engine/CMemoryAllocatorVariableSize.h)
+00a651e0   RELOCATION_MATCH PASS   GetAllocationSizeIncludingHeader
+00a65210   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorVariableSize (engine/CMemoryAllocatorVariableSize.h)
+00a65210   RELOCATION_MATCH PASS   GetTotalMemoryControlledByAllocator
+00a65330   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorVariableSize (engine/CMemoryAllocatorVariableSize.h)
+00a65330   RELOCATION_MATCH PASS   Validate
+00a660a0   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorFixedSize (engine/CMemoryAllocatorFixedSize.h)
+00a660a0   MATCH            PASS   GetAllAllocatedAreas
+00a66100   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorFixedSize (engine/CMemoryAllocatorFixedSize.h)
+00a66100   MATCH            PASS   GetAllocatedArea
+00a69e60   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00a69e60   WARN SHARED_HEADER_AVAILABLE CManagedTextureData (engine/CManagedTextureData.h)
+00a69e60   WARN SHARED_HEADER_AVAILABLE CManagedTexture (engine/CManagedTexture.h)
+00a69e60   MATCH            PASS   Sizeof
+00a76500   WARN SHARED_HEADER_AVAILABLE CNavNavigableLeafNode (engine/CNavNavigableLeafNode.h)
+00a76500   MATCH            PASS   GetMemoryUsage
+00a85fd0   WARN SHARED_HEADER_AVAILABLE CPhysicsFacesSegmentBranch (engine/CPhysicsFacesSegmentBranch.h)
+00a85fd0   MATCH            PASS   GetNoFaces
+00a860f0   WARN SHARED_HEADER_AVAILABLE CPhysicsFacesSegmentLeaf (engine/CPhysicsFacesSegmentLeaf.h)
+00a860f0   MATCH            PASS   GetNoFaces
+00aa7830   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00aa7830   WARN SHARED_HEADER_AVAILABLE CChunkedFileRawDataChunk (engine/CChunkedFileRawDataChunk.h)
+00aa7830   MATCH            PASS   WriteToFile
+00adfc60   WARN SHARED_HEADER_AVAILABLE CParticleSimulation (engine/CParticleSimulation.h)
+00adfc60   MATCH            PASS   RelocateData
+00ae04c0   WARN SHARED_HEADER_AVAILABLE CParticleProgram (engine/CParticleProgram.h)
+00ae04c0   MATCH            PASS   RelocateData
+00b23f90   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b23f90   MATCH            PASS   Enable3DSceneRendering
+00b24690   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE C2DExtentsF (engine/C2DExtentsF.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineVideoOptions (engine/CEngineVideoOptions.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter (engine/CEngineScreenEffectColourFilter.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b24690   WARN RELOC_NAME: ?OnVideoOptionsChanged@CEngineVideoOptionsSink@@QAEXXZ -> 00b2f740 labelled '_global::SetMemberConst_00b2f740'
+00b24690   RELOCATION_MATCH PASS   SetVideoOptions
+00b45460   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00b45460   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+00b45460   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive (engine/CEnginePrimitive.h)
+00b45460   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveShadowedSpotLight (engine/CEngineInternalPrimitiveShadowedSpotLight.h)
+00b45460   RELOCATION_MATCH PASS   Update
+00b6c990   WARN SHARED_HEADER_AVAILABLE CLandscapePatchTesselator (engine/CLandscapePatchTesselator.h)
+00b6c990   MATCH            PASS   GetBridgeVertexBufferSize
+00b8b550   WARN SHARED_HEADER_AVAILABLE CEngineComponentRenderParams (engine/CEngineComponentRenderParams.h)
+00b8b550   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectOutlineGlow (engine/CEngineScreenEffectOutlineGlow.h)
+00b8b550   RELOCATION_MATCH PASS   Render
+00b8ff70   WARN SHARED_HEADER_AVAILABLE CEngineSceneGridCell (engine/CEngineSceneGridCell.h)
+00b8ff70   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b8ff70   RELOCATION_MATCH PASS   NotifyReleased
+00b91920   WARN SHARED_HEADER_AVAILABLE CEngineSceneMap (engine/CEngineSceneMap.h)
+00b91920   MATCH            PASS   CalculateLevel
+00b98da0   WARN SHARED_HEADER_AVAILABLE CEngineFadeDistance (engine/CEngineFadeDistance.h)
+00b98da0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveRepeatedStaticMesh (engine/CEngineInternalPrimitiveRepeatedStaticMesh.h)
+00b98da0   RELOCATION_MATCH PASS   GetFadeDistance
+00b99b50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedStaticMeshes (engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h)
+00b99b50   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b99b50   RELOCATION_MATCH PASS   FrameStart
+00b9d020   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b9d020   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh (engine/CEngineInternalPrimitiveStaticMesh.h)
+00b9d020   MATCH            PASS   GetTransformFrameEnd
+00b9d100   WARN SHARED_HEADER_AVAILABLE CVertexShader (engine/CVertexShader.h)
+00b9d100   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer (engine/CEngineShadowRenderer.h)
+00b9d100   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerStaticMeshesBase (engine/CEnginePrimitiveManagerStaticMeshesBase.h)
+00b9d100   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b9d100   RELOCATION_MATCH PASS   FrameStart
+00b9db80   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b9db80   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00b9db80   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh (engine/CEngineInternalPrimitiveStaticMesh.h)
+00b9db80   RELOCATION_MATCH PASS   GetBoundingBoxWorldSpace
+00b9dbd0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00b9dbd0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b9dbd0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh (engine/CEngineInternalPrimitiveStaticMesh.h)
+00b9dbd0   MATCH            PASS   GetBoundingSphereWorldSpace
+00b9e490   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b9e490   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00b9e490   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DStaticMesh (engine/CEngineInternalPrimitive2DStaticMesh.h)
+00b9e490   RELOCATION_MATCH PASS   GetBoundingBoxWorldSpace
+00b9e4e0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00b9e4e0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b9e4e0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DStaticMesh (engine/CEngineInternalPrimitive2DStaticMesh.h)
+00b9e4e0   MATCH            PASS   GetBoundingSphereWorldSpace
+00bac0f0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveRepeatedZSprite (engine/CEngineInternalPrimitiveRepeatedZSprite.h)
+00bac0f0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedZSprites (engine/CEnginePrimitiveManagerRepeatedZSprites.h)
+00bac0f0   WARN RELOC_NAME: ?StartTextureUse@CGPUScratchBufferTextureManager@@QAEPAVCTexture@@J@Z -> 00f36ee0 labelled 'CGPUScratchBufferTextureManager::StartSurfaceUse'
+00bac0f0   WARN RELOC_NAME: ?EndSurfaceUse@CGPUScratchBufferTextureManager@@QAEXJ@Z -> 00f36f30 labelled '_global::Nop_ret4_00f36f30'
+00bac0f0   RELOCATION_MATCH PASS   RenderNonsortedPrimitives
+00bac320   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedZSprites (engine/CEnginePrimitiveManagerRepeatedZSprites.h)
+00bac320   RELOCATION_MATCH PASS   FrameEnd
+00bb6d50   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleDecal (engine/CEngineInternalPrimitiveParticleDecal.h)
+00bb6d50   MATCH            PASS   GetWorldPosition
+00bbbb40   MATCH            PASS   GetWorldPosition
+00bbbe40   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleGroup (engine/CEngineInternalPrimitiveParticleGroup.h)
+00bbbe40   MATCH            PASS   GetWorldPosition
+00bbce10   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00bbce10   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleGroup (engine/CEngineInternalPrimitiveParticleGroup.h)
+00bbce10   RELOCATION_MATCH PASS   ClearChildPrimitive
+00bbd1a0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleGroup (engine/CEngineInternalPrimitiveParticleGroup.h)
+00bbd1a0   RELOCATION_MATCH PASS   AddChildPrimitive
+00bbd200   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleGroup (engine/CEngineInternalPrimitiveParticleGroup.h)
+00bbd200   RELOCATION_MATCH PASS   ClearAllChildPrimitives
+00bc3d50   RELOCATION_MATCH PASS   GetWorldPosition
+00bcea60   WARN SHARED_HEADER_AVAILABLE CVertexShader (engine/CVertexShader.h)
+00bcea60   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer (engine/CEngineShadowRenderer.h)
+00bcea60   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerAnimatedMeshesBase (engine/CEnginePrimitiveManagerAnimatedMeshesBase.h)
+00bcea60   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00bcea60   RELOCATION_MATCH PASS   FrameStart
+00be61b0   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00be61b0   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00be61b0   WARN SHARED_HEADER_AVAILABLE CTesselationData (engine/CTesselationData.h)
+00be61b0   WARN SHARED_HEADER_AVAILABLE CLandscapeTesselatorBase (engine/CLandscapeTesselatorBase.h)
+00be61b0   WARN SHARED_HEADER_AVAILABLE CEngineWaterBackgroundSubPatch (engine/CEngineWaterBackgroundSubPatch.h)
+00be61b0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00be61b0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00be61b0   RELOCATION_MATCH PASS   UpdateTesselation
+00beb5c0   WARN SHARED_HEADER_AVAILABLE CEngineFadeDistance (engine/CEngineFadeDistance.h)
+00beb5c0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveMeshBase (engine/CEngineInternalPrimitiveMeshBase.h)
+00beb5c0   RELOCATION_MATCH PASS   GetFadeDistance
+00bf6d30   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf6d30   MATCH            PASS   OnPostParentRelocation
+
+WINS: 140
+  00433fe0 RELOCATION_MATCH CEngineDef::?Transfer@CEngineDef@@UAEXAAVCPersistContext@@@Z
+  00434120 RELOCATION_MATCH CEngineVideoOptionsDef::?Transfer@CEngineVideoOptionsDef@@UAEXAAVCPersistContext@@@Z
+  004526b3 RELOCATION_MATCH CContextSensitiveItemDef::?Transfer@CContextSensitiveItemDef@@UAEXAAVCPersistContext@@@Z
+  004569a7 RELOCATION_MATCH CExpressionDef::?Transfer@CExpressionDef@@UAEXAAVCPersistContext@@@Z
+  00456dfb RELOCATION_MATCH CCombatDialogueDef::?Transfer@CCombatDialogueDef@@UAEXAAVCPersistContext@@@Z
+  004585fe RELOCATION_MATCH CHitLocationDef::?Transfer@CHitLocationDef@@UAEXAAVCPersistContext@@@Z
+  00459582 RELOCATION_MATCH CPlayerDef::?Transfer@CPlayerDef@@UAEXAAVCPersistContext@@@Z
+  00459615 RELOCATION_MATCH CPlayerMovementDef::?Transfer@CPlayerMovementDef@@UAEXAAVCPersistContext@@@Z
+  0046311f RELOCATION_MATCH CSimVoicesDef::?Copy@CSimVoicesDef@@UAEXPBVCDefClassBase@@@Z
+  004aaa10 RELOCATION_MATCH CScriptThing::?GetHomeMapName@CScriptThing@@UBE?AVCCharString@@XZ
+  004aef50 MATCH CPersistContext::?IsSaving@CPersistContext@@QBE_NXZ
+  004df4ca RELOCATION_MATCH CObstacleNavigatorExternalInterface::?Clone@CObstacleNavigatorExternalInterface@@UBEPAVCNavigatorExternalInterface@@XZ
+  004e00e9 MATCH CQuestCardDef::?GetSizeofClass@CQuestCardDef@@UAEKXZ
+  004e3fd0 RELOCATION_MATCH CSoundAtmospheresDef::?Copy@CSoundAtmospheresDef@@UAEXPBVCDefClassBase@@@Z
+  004e80e3 RELOCATION_MATCH CKrakenDef::?Transfer@CKrakenDef@@UAEXAAVCPersistContext@@@Z
+  004eafc9 RELOCATION_MATCH CShoveHaPennyRegionDef::?Copy@CShoveHaPennyRegionDef@@UAEXPBVCDefClassBase@@@Z
+  00502460 RELOCATION_MATCH CWorldMap::?AllocateNewMap@CWorldMap@@MAEJXZ
+  0057598a RELOCATION_MATCH CTCInventoryExperience::?IsTutorialPlayed@CTCInventoryExperience@@QAE_NABVCCharString@@@Z
+  00688a20 RELOCATION_MATCH CInputProcessTargetLockCycleTargets::?Update@CInputProcessTargetLockCycleTargets@@UAEXAAVCProcessedInput@@@Z
+  006893b0 MATCH CInputProcessInventoryBase::?Init@CInputProcessInventoryBase@@UAEXXZ
+  00692a20 RELOCATION_MATCH CCreatureActionBase::?IsPreventingNormalMovement@CCreatureActionBase@@UBE_NXZ
+  00692b30 RELOCATION_MATCH CCreatureActionBase::?UpdateActionMoveToPos@CCreatureActionBase@@MAEXXZ
+  006b2c00 RELOCATION_MATCH CEnvironment::?IsEnvironmentRequiringWeatherMasks@CEnvironment@@QBE_NXZ
+  006e7710 RELOCATION_MATCH CGameScriptInterface::?GetTimer@CGameScriptInterface@@UBEJJ@Z
+  006f56c0 MATCH CCombatAction_GenericStrikeResponseBase::?SetHitDirection@CCombatAction_GenericStrikeResponseBase@@UAEXVC3DVector@@@Z
+  007003a0 RELOCATION_MATCH CReactionMatch_Sphere::?TransferBinaryOut@CReactionMatch_Sphere@@UBEXAAVCDataOutputStream@@@Z
+  007d0070 RELOCATION_MATCH CShoveHaPennyRegionDef::?Transfer@CShoveHaPennyRegionDef@@UAEXAAVCPersistContext@@@Z
+  007da8b0 MATCH CTCTavernGameCardBlackjack::?HasGoneBust@CTCTavernGameCardBlackjack@@QAE_NXZ
+  00820790 RELOCATION_MATCH CMap::?ScriptedMapBrushAddThings@CMap@@MAEXABVCScriptedMapBrush@@@Z
+  008209c0 RELOCATION_MATCH CMap::?ScriptedMapBrushRemoveThings@CMap@@MAEXABVCScriptedMapBrush@@@Z
+  00827890 MATCH CMap::?DrawGetHeightMapExtents@CMap@@UBE?AVC2DExtentsI@@XZ
+  00843fc0 RELOCATION_MATCH CCreatureAction_ActivateQuest::?Initialise@CCreatureAction_ActivateQuest@@UAEXXZ
+  00844090 RELOCATION_MATCH CCreatureAction_ActivateQuest::?FrameUpdate@CCreatureAction_ActivateQuest@@UAEXXZ
+  008565c0 MATCH CCombatActionBase::?IsMeleeFlourish@CCombatActionBase@@MBE_NXZ
+  00856d30 RELOCATION_MATCH CCombatActionBase::?UpdateActionMoveToPos@CCombatActionBase@@MAEXXZ
+  00856dd0 RELOCATION_MATCH CCombatActionBase::?GetTotalTimeSeconds@CCombatActionBase@@UBEMXZ
+  00856ea0 RELOCATION_MATCH CCombatActionBase::?GetDamageMultiplier@CCombatActionBase@@UBEMXZ
+  00856f80 RELOCATION_MATCH CCombatActionBase::?IsStrikeEvent@CCombatActionBase@@UBE_NJ@Z
+  00856fe0 RELOCATION_MATCH CCombatActionBase::?IsStrikeEventActive@CCombatActionBase@@UBE_NXZ
+  00857030 MATCH CCombatActionBase::?IsStrikeEventFinishedBeingActive@CCombatActionBase@@UBE_NXZ
+  008570d0 RELOCATION_MATCH CCombatActionBase::?GetStrikeEventHelperName@CCombatActionBase@@UBE?AVCCharString@@XZ
+  00857150 RELOCATION_MATCH CCombatActionBase::?IsActionWithStrikeEventHelperName@CCombatActionBase@@MBE_NXZ
+  00857220 RELOCATION_MATCH CCombatActionBase::?IsBlockable@CCombatActionBase@@MBE_NXZ
+  00857cb0 RELOCATION_MATCH CCombatActionBase::?IsDecapitatingAttack@CCombatActionBase@@MBE_NXZ
+  00858cc0 RELOCATION_MATCH CCombatActionBase::?OnBlowBlocked@CCombatActionBase@@UAEX_N@Z
+  00861430 RELOCATION_MATCH CVillageTaskCarryCrate::?IsValid@CVillageTaskCarryCrate@@UBE_NXZ
+  0087ed70 RELOCATION_MATCH CCombatAction_StabThing::?GetNextPos@CCombatAction_StabThing@@UBE?AVC3DVector@@XZ
+  0088de10 RELOCATION_MATCH CGameScriptInterface::?GiveThingItemInHand@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@_N@Z
+  0088ead0 MATCH CGameScriptInterface::?EntitySetAsDamageable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0088f480 RELOCATION_MATCH CGameScriptInterface::?ApplyScriptBrush@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  0088f920 RELOCATION_MATCH CGameScriptInterface::?AutoSaveQuestStart@CGameScriptInterface@@UBEXXZ
+  0088fe30 RELOCATION_MATCH CGameScriptInterface::?GetTimeOfDay@CGameScriptInterface@@UBEJXZ
+  00890ff0 RELOCATION_MATCH CGameScriptInterface::?CameraDefault@CGameScriptInterface@@UAEXXZ
+  00891720 RELOCATION_MATCH CGameScriptInterface::?ChangeHeroHealthBy@CGameScriptInterface@@UBEXM_N0@Z
+  00895a10 RELOCATION_MATCH CGameScriptInterface::?GetBestFishWeight@CGameScriptInterface@@UBEMABVCCharString@@@Z
+  0089eec0 RELOCATION_MATCH CGameScriptInterface::?SetRegionExitAsActive@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0089ef00 MATCH CGameScriptInterface::?SetRegionEntranceAsActive@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008a0c60 RELOCATION_MATCH CGameScriptInterface::?DeactivateBoastUi@CGameScriptInterface@@UBEXXZ
+  008c0b40 RELOCATION_MATCH CCreatureAction_WhisperSommersaultForward::?PerformAction@CCreatureAction_WhisperSommersaultForward@@UAEXXZ
+  008d0350 RELOCATION_MATCH CGameScriptThing::?SetDataString@CGameScriptThing@@UAEXABVCCharString@@@Z
+  008d06c0 RELOCATION_MATCH CGameScriptThing::?IsUsable@CGameScriptThing@@UBE_NXZ
+  008d0960 RELOCATION_MATCH CGameScriptThing::?SetFriendsWithEverythingFlag@CGameScriptThing@@UAEX_N@Z
+  008d09d0 RELOCATION_MATCH CGameScriptThing::?GetActivationTriggerStatus@CGameScriptThing@@UBE_NXZ
+  008d0a40 RELOCATION_MATCH CGameScriptThing::?SetActivationTriggerStatus@CGameScriptThing@@UAEX_N@Z
+  008d0b30 RELOCATION_MATCH CGameScriptThing::?IsSneaking@CGameScriptThing@@UBE_NXZ
+  008d4670 MATCH CGameScriptThing::?IncrementScriptCounter@CGameScriptThing@@UAEXXZ
+  008f75b0 MATCH CMap::?DrawGetEngineThemeAt@CMap@@UBEJJJJ@Z
+  008f75f0 MATCH CMap::?DrawGetEngineBlendAt@CMap@@UBEEJJJ@Z
+  008fcec0 RELOCATION_MATCH CAIStateGroupBase::?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  00903e20 RELOCATION_MATCH CScriptGameResourceObjectScriptedThing::?MoveToThing@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z
+  009093f0 RELOCATION_MATCH CCombatSequence_WillPhysicalShieldNonMelee::?OnCreate@CCombatSequence_WillPhysicalShieldNonMelee@@UAEXXZ
+  0090e590 RELOCATION_MATCH CAIStateGroup_BanditGossip::?OnReplace@CAIStateGroup_BanditGossip@@MAEXXZ
+  0092eca0 MATCH CAIStateGroup_MinionReactToPlayerInteraction::?InitStateGroup@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+  0096f010 MATCH CAIStateGroup_MinionBehaviourSad::?InitLeaf@CAIStateGroup_MinionBehaviourSad@@UAEXXZ
+  0096f020 RELOCATION_MATCH CAIStateGroup_MinionBehaviourSad::?OnActivateLeaf@CAIStateGroup_MinionBehaviourSad@@UAEXXZ
+  00994360 MATCH CFileDataInputStream::?InternalReadNextSourceChunk@CFileDataInputStream@@EAEXAAPBEAAJ@Z
+  009943d0 MATCH CFileDataInputStream::?InternalReadUnbuffered@CFileDataInputStream@@EAEXPAEJ@Z
+  009b0170 RELOCATION_MATCH CParentDefClassBase::?RemoveSubDef@CParentDefClassBase@@UAEXABVCCharString@@@Z
+  009d54a0 RELOCATION_MATCH CBankFileAsyncData::?OnFileReadCompletion@CBankFileAsyncData@@UAEX_N@Z
+  009d55d0 RELOCATION_MATCH CBankFileAsyncData::?CanRelocateData@CBankFileAsyncData@@UBE_NJ@Z
+  009d5670 RELOCATION_MATCH CBankFileAsyncData::?RelocateData@CBankFileAsyncData@@UAEXJPAX0J@Z
+  009e90c0 RELOCATION_MATCH CMemoryFile::?SetPosition@CMemoryFile@@UAEXJ@Z
+  009e9140 RELOCATION_MATCH CMemoryFile::?MovePosition@CMemoryFile@@UAEXJ@Z
+  009e9730 RELOCATION_MATCH CMemoryFile::?SetLength@CMemoryFile@@UAEXJ@Z
+  009ea3c0 RELOCATION_MATCH CConsoleVariable::?GetHelp@CConsoleVariable@@EAE?AVCCharString@@XZ
+  009ea7d0 RELOCATION_MATCH CConsoleCommandBase::?GetHelp@CConsoleCommandBase@@MAE?AVCCharString@@XZ
+  009f8380 RELOCATION_MATCH CGraphicBankManager::?Sizeof@CGraphicBankManager@@QBEKXZ
+  00a1a150 RELOCATION_MATCH CNavigatorAStar::?Interrupt@CNavigatorAStar@@UAEXXZ
+  00a1a1a0 MATCH CSteeringAgent::?IsCurrentNavigabilityBetter@CSteeringAgent@@QAE_NXZ
+  00a23de0 RELOCATION_MATCH C3DMeshLODInfo::?IsResourceLoaded@C3DMeshLODInfo@@UBE_NXZ
+  00a37060 RELOCATION_MATCH CClassFactory::?GetClassNumberFromName@CClassFactory@@IBEJABVCCharString@@@Z
+  00a3b1c0 RELOCATION_MATCH CVideoSys::?Pause@CVideoSys@@QAE_NXZ
+  00a3b1f0 RELOCATION_MATCH CVideoSys::?Stop@CVideoSys@@QAE_NXZ
+  00a3b330 RELOCATION_MATCH CVideoSys::?IsFinished@CVideoSys@@QAE_NXZ
+  00a4e100 RELOCATION_MATCH C3DAnimation2::?GetMovementOffsetAtTime@C3DAnimation2@@UBE?AVC3DVector@@M@Z
+  00a64500 MATCH CMemoryAllocatorVariableSize::?GetLargestFreeAreaSize@CMemoryAllocatorVariableSize@@UAEKXZ
+  00a64560 RELOCATION_MATCH CMemoryAllocatorVariableSize::?GetNoAllocatedAreas@CMemoryAllocatorVariableSize@@UAEKXZ
+  00a64db0 RELOCATION_MATCH CMemoryAllocatorVariableSize::?GetTotalMemoryAllocated@CMemoryAllocatorVariableSize@@UAEKXZ
+  00a64e20 RELOCATION_MATCH CMemoryAllocatorVariableSize::?GetHeaderOverhead@CMemoryAllocatorVariableSize@@UAEKXZ
+  00a651b0 RELOCATION_MATCH CMemoryAllocatorVariableSize::?GetAllocationSize@CMemoryAllocatorVariableSize@@UAEKPAX@Z
+  00a651e0 RELOCATION_MATCH CMemoryAllocatorVariableSize::?GetAllocationSizeIncludingHeader@CMemoryAllocatorVariableSize@@UAEKPAX@Z
+  00a65210 RELOCATION_MATCH CMemoryAllocatorVariableSize::?GetTotalMemoryControlledByAllocator@CMemoryAllocatorVariableSize@@UAEKXZ
+  00a65330 RELOCATION_MATCH CMemoryAllocatorVariableSize::?Validate@CMemoryAllocatorVariableSize@@UAEXXZ
+  00a660a0 MATCH CMemoryAllocatorFixedSize::?GetAllAllocatedAreas@CMemoryAllocatorFixedSize@@UAEKPAPAXK@Z
+  00a66100 MATCH CMemoryAllocatorFixedSize::?GetAllocatedArea@CMemoryAllocatorFixedSize@@UAEPAXJ@Z
+  00a69e60 MATCH CManagedTexture::?Sizeof@CManagedTexture@@QBEKXZ
+  00a76500 MATCH CNavNavigableLeafNode::?GetMemoryUsage@CNavNavigableLeafNode@@MBEKAAK000@Z
+  00a85fd0 MATCH CPhysicsFacesSegmentBranch::?GetNoFaces@CPhysicsFacesSegmentBranch@@MBEJXZ
+  00a860f0 MATCH CPhysicsFacesSegmentLeaf::?GetNoFaces@CPhysicsFacesSegmentLeaf@@MBEJXZ
+  00aa7830 MATCH CChunkedFileRawDataChunk::?WriteToFile@CChunkedFileRawDataChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
+  00adfc60 MATCH CParticleSimulation::?RelocateData@CParticleSimulation@@UAEXJPAX0J@Z
+  00ae04c0 MATCH CParticleProgram::?RelocateData@CParticleProgram@@UAEXJPAX0J@Z
+  00b23f90 MATCH CEngine::?Enable3DSceneRendering@CEngine@@UAEX_N@Z
+  00b24690 RELOCATION_MATCH CEngine::?SetVideoOptions@CEngine@@UAE_NABVCEngineVideoOptions@@@Z
+  00b45460 RELOCATION_MATCH CEngineInternalPrimitiveShadowedSpotLight::?Update@CEngineInternalPrimitiveShadowedSpotLight@@UAEXABVCEnginePrimitive@@K@Z
+  00b6c990 MATCH CLandscapePatchTesselator::?GetBridgeVertexBufferSize@CLandscapePatchTesselator@@EAEJXZ
+  00b8b550 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::?Render@CEngineScreenEffectOutlineGlow@@UAEXABVCEngineComponentRenderParams@@@Z
+  00b8ff70 RELOCATION_MATCH CEngineInternalPrimitiveBase::?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z
+  00b91920 MATCH CEngineSceneMap::?CalculateLevel@CEngineSceneMap@@ABEKM@Z
+  00b98da0 RELOCATION_MATCH CEngineInternalPrimitiveRepeatedStaticMesh::?GetFadeDistance@CEngineInternalPrimitiveRepeatedStaticMesh@@UBE?AVCEngineFadeDistance@@XZ
+  00b99b50 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::?FrameStart@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEXXZ
+  00b9d020 MATCH CEngineInternalPrimitiveStaticMesh::?GetTransformFrameEnd@CEngineInternalPrimitiveStaticMesh@@UBE_NAAVCMatrix3x4@@@Z
+  00b9d100 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?FrameStart@CEnginePrimitiveManagerStaticMeshesBase@@UAEXXZ
+  00b9db80 RELOCATION_MATCH CEngineInternalPrimitiveStaticMesh::?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveStaticMesh@@UAE_NAAVC3DBoundingBox@@@Z
+  00b9dbd0 MATCH CEngineInternalPrimitiveStaticMesh::?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveStaticMesh@@UAE_NAAVC3DBoundingSphere@@@Z
+  00b9e490 RELOCATION_MATCH CEngineInternalPrimitive2DStaticMesh::?GetBoundingBoxWorldSpace@CEngineInternalPrimitive2DStaticMesh@@UAE_NAAVC3DBoundingBox@@@Z
+  00b9e4e0 MATCH CEngineInternalPrimitive2DStaticMesh::?GetBoundingSphereWorldSpace@CEngineInternalPrimitive2DStaticMesh@@UAE_NAAVC3DBoundingSphere@@@Z
+  00bac0f0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::?RenderNonsortedPrimitives@CEnginePrimitiveManagerRepeatedZSprites@@UAEXXZ
+  00bac320 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::?FrameEnd@CEnginePrimitiveManagerRepeatedZSprites@@EAEXXZ
+  00bb6d50 MATCH CEngineInternalPrimitiveParticleDecal::?GetWorldPosition@CEngineInternalPrimitiveParticleDecal@@UAE_NAAVC3DVector@@@Z
+  00bbbb40 MATCH CEngineInternalPrimitiveDecal::?GetWorldPosition@CEngineInternalPrimitiveDecal@@UAE_NAAVC3DVector@@@Z
+  00bbbe40 MATCH CEngineInternalPrimitiveParticleGroup::?GetWorldPosition@CEngineInternalPrimitiveParticleGroup@@UAE_NAAVC3DVector@@@Z
+  00bbce10 RELOCATION_MATCH CEngineInternalPrimitiveParticleGroup::?ClearChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXK@Z
+  00bbd1a0 RELOCATION_MATCH CEngineInternalPrimitiveParticleGroup::?AddChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEKABVCEnginePrimitive@@K@Z
+  00bbd200 RELOCATION_MATCH CEngineInternalPrimitiveParticleGroup::?ClearAllChildPrimitives@CEngineInternalPrimitiveParticleGroup@@UAEXXZ
+  00bc3d50 RELOCATION_MATCH CEngineInternalPrimitiveParticleLine::?GetWorldPosition@CEngineInternalPrimitiveParticleLine@@UAE_NAAVC3DVector@@@Z
+  00bcea60 RELOCATION_MATCH CEnginePrimitiveManagerAnimatedMeshesBase::?FrameStart@CEnginePrimitiveManagerAnimatedMeshesBase@@UAEXXZ
+  00be61b0 RELOCATION_MATCH CLandscapeBackgroundPatch::?UpdateTesselation@CLandscapeBackgroundPatch@@UAEXXZ
+  00beb5c0 RELOCATION_MATCH CEngineInternalPrimitiveMeshBase::?GetFadeDistance@CEngineInternalPrimitiveMeshBase@@UBE?AVCEngineFadeDistance@@XZ
+  00bf6d30 MATCH CLandscapeBackgroundSubNodeSplitBranch::?OnPostParentRelocation@CLandscapeBackgroundSubNodeSplitBranch@@UAEXPAVCLandscapeBackgroundTreeNode@@@Z

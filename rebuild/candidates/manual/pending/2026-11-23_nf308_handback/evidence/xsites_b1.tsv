@@ -1,0 +1,1286 @@
+00409730	call	0040d38b	0040d350L CUserProfileManager::Load
+00414c90	call	00414c49	00413c50L InitialiseConsoleVariables
+00414c90	call	00414c78	00413c50L InitialiseConsoleVariables
+004c74f0	call	0041701c	00417001L CMainGameComponent::Render
+00414c90	call	004176b0	004175e5L CMainGameComponent::Shutdown
+004c74f0	call	00417826	00417747L CMainGameComponent::UpdateForcedTickSpeed
+00414c90	call	004184fb	-
+00414c90	call	00418955	-
+00414c90	call	0041897a	-
+00414c90	call	0042e4b4	0042e3eeL CNewFrontendGameComponent::Input
+00414c90	call	0042f77f	0042f75eL CNewFrontendGameComponent::Init
+0062fe60	jmp	00433683	00433670L NUISystem::CUIDef::Alloc
+00686d40	call	0047d22b	0047d21cL CTCInGameMenu::CloseInGameMenuViaGameEvent
+00686a70	call	0047d858	0047d78bL CTCInGameMenu::CloseInGameMenu
+00686d40	call	0047d964	0047d78bL CTCInGameMenu::CloseInGameMenu
+00686a70	call	0047e339	0047e196L CTCInGameMenu::SaveGame
+00686d40	call	0047e9d3	0047e9aeL CTCInGameMenu::GlobalUpdate
+00409730	call	0047ed2e	0047ed0aL CTCInGameMenu::VerifySignatureCached
+00686d40	call	00482d53	004804deL CTCInGameMenu::OpenInGameMenuPC
+00686d40	call	004830cb	004830a1L CTCInGameMenu::OpenInGameMenu
+00686d40	call	00484db6	004830a1L CTCInGameMenu::OpenInGameMenu
+0069e940	call	00487d7a	00487cf0L CPlayer::SetControlledCreature
+004c74f0	call	0049dfd0	0049dfb0L CWorld::Update
+004c74f0	call	0049e08a	0049e080L CWorld::RenderUpdate
+004c74f0	call	0049ec4b	0049ebf0L CWorld::InitThingManager
+00409730	call	004a220f	004a21f0L CWorld::LoadGameStateInternal
+004c74f0	call	004a2e9e	004a2e90L CWorld::Uninitialise
+006e0880	call	004a3bf6	004a3740L CWorld::UpdateRegionLoad
+006e0be0	call	004a3c42	004a3740L CWorld::UpdateRegionLoad
+006e0880	call	004a3da3	004a3740L CWorld::UpdateRegionLoad
+006e0880	call	004a56e3	004a3740L CWorld::UpdateRegionLoad
+006e0be0	call	004a572f	004a3740L CWorld::UpdateRegionLoad
+006e0880	call	004a579f	004a3740L CWorld::UpdateRegionLoad
+006e0be0	call	004a57eb	004a3740L CWorld::UpdateRegionLoad
+00686a70	call	004bd27f	004bd200L NGraphicAppearance::CTCGraphicAppearance::WasRenderedLastFra
+00686a70	call	004bd2a8	004bd200L NGraphicAppearance::CTCGraphicAppearance::WasRenderedLastFra
+00686a70	call	004be8a5	-
+00686a70	call	004bf245	-
+006a2220	call	004bfbab	004bfb40L NGraphicAppearance::CTCGraphicAppearance::SetLightingChannel
+006a2220	call	004bfea0	004bfe20L NGraphicAppearance::CTCGraphicAppearance::ClearMeshEffect
+006a2220	call	004c0344	004c0240L NGraphicAppearance::CTCGraphicAppearance::SetPMeshEffect
+005bff07	call	004e7ccc	004e7cc3L CTCInventoryClothing::CTCInventoryClothing
+004faff0	call	004fbf85	004fbf60L CWorldMap::LoadLoadableGlobalThingsForLevel
+006e0880	call	005006a5	-
+006e0880	call	005007c4	-
+006e0be0	call	00500862	-
+004faff0	call	005008f2	-
+004faff0	call	00500f01	00500eb0L CWorldMap::LoadThingsWithSectionNames
+004faff0	call	00502279	00502170L CWorldMap::CreateWorldLevelWad
+004faff0	call	00502650	00502620L CWorldMap::LoadLevel
+004c74f0	call	005236a1	00523540L CThingManager::CThingManager
+0052ab20	jmp	0052b892	-
+00407cd0	call	00557e40	00557d20L NUISystem::CKeyRedefiner::Redefine
+00686d40	call	0056bd3c	0056ad40L CTCBoastUI::Activate
+00686d40	call	0056bde1	0056ad40L CTCBoastUI::Activate
+00686d40	call	0056bec4	0056be00L CTCBoastUI::GlobalUpdate
+00686a70	call	0056f32d	0056f30bL CTCInventoryExperience::CloseInventory
+00686a70	call	0056f45e	0056f30bL CTCInventoryExperience::CloseInventory
+005c0121	call	005771a8	0057713fL CTCInventoryExperience::OnCreate
+005bff07	call	00578338	0057832dL CTCInventoryExperience::CTCInventoryExperience
+00686af0	call	0057ac04	0057abd6L CTCHeroStats::GetPMaritalHome
+00686af0	call	0057ae82	0057ae53L CTCHeroStats::GetWivesInMarriageState
+00686a70	call	0057b44b	0057b43fL CTCHeroStats::RenderHeroDrunkenness
+00686a70	call	0057c785	0057c4f1L CTCHeroStats::ApplyBonusItemEffects
+00686a70	call	0057c81b	0057c4f1L CTCHeroStats::ApplyBonusItemEffects
+006e0880	call	0057c92c	0057c4f1L CTCHeroStats::ApplyBonusItemEffects
+006e0be0	call	0057c971	0057c4f1L CTCHeroStats::ApplyBonusItemEffects
+00686a70	call	0057cb86	0057cb7eL CTCHeroStats::ProcessDrunkenness
+00686a70	call	0057d0d4	0057cdb5L CTCHeroStats::CTCHeroStats
+00686a70	call	0057d0f5	0057cdb5L CTCHeroStats::CTCHeroStats
+00686a70	call	0057d116	0057cdb5L CTCHeroStats::CTCHeroStats
+00686a70	call	0057d994	0057d990L CTCHeroStats::SetHeroKickPositionForCurrentRegion
+00686a70	call	0057d9eb	0057d990L CTCHeroStats::SetHeroKickPositionForCurrentRegion
+00686a70	call	0057dac8	0057d9fdL CTCHeroStats::UpdateOutstandingCrimes
+00686a70	call	0057dbf2	0057daf5L CTCHeroStats::GetOutstandingFineAndFramesLeft
+00686a70	call	0057df5e	0057de57L CTCHeroStats::PrepareToKickHeroToMostRecentSafeRegion
+00686a70	call	0057e058	0057df85L CTCHeroStats::KickHeroToMostRecentSafeRegion
+00686a70	call	0057e1bf	0057df85L CTCHeroStats::KickHeroToMostRecentSafeRegion
+00686a70	call	0057e2cd	0057df85L CTCHeroStats::KickHeroToMostRecentSafeRegion
+00686a70	call	0057e93b	0057e2f1L CTCHeroStats::OnSerialise
+00686a70	call	0057e95b	0057e2f1L CTCHeroStats::OnSerialise
+00686a70	call	0057eac5	0057e2f1L CTCHeroStats::OnSerialise
+00686a70	call	0057eadf	0057e2f1L CTCHeroStats::OnSerialise
+00686a70	call	00581c38	00581c1eL CTCInventory::StartGameRendering
+005c0121	call	005829a8	00582944L CTCInventory::OnCreate
+00686d40	call	005857a9	0058578bL CTCInventory::OpenInventory
+00686a70	call	00589fad	00589d30L CTCInventory::CloseInventory
+005bff07	call	00590d3e	00590d32L CTCInventory::CTCInventory
+00409730	call	005957fd	005957d9L NUISystem::CFrontEndManager::VerifySignatureCached
+005c0121	call	0059c959	0059c8f2L CTCInventoryTrade::OnCreate
+00686a70	call	0059e378	0059e2c7L CTCInventoryTrade::CloseInventoryPC
+005bff07	call	0059eb17	0059eb0cL CTCInventoryTrade::CTCInventoryTrade
+00686a70	call	0059f3c8	0059f304L CTCInventoryTrade::CloseInventory
+005c0121	call	005b3750	005b36e9L CTCInventoryClothing::OnCreate
+00686d40	call	005bc5d9	005bc5c6L CTCInventoryBase::GetRightStickPosition
+005bcafe	call	005bce9b	005bce49L CTCInventoryBase::DrawInventoryText
+00686d40	call	005be1b3	005be119L CTCInventoryBase::GetInventoryShoppingValidity
+005c0121	call	005c30be	005c3057L CTCInventoryWeapons::OnCreate
+005bff07	call	005c3952	005c3947L CTCInventoryWeapons::CTCInventoryWeapons
+006a2220	call	005caacc	005ca68eL CTCInventoryWeapons::SetupActiveWeaponsOnCarrier
+005bff07	call	005cd2ae	005cd2a6L CTCInventoryStats::CTCInventoryStats
+005c0121	call	005cd3a8	005cd33fL CTCInventoryStats::OnCreate
+00686a70	call	005d1c98	005ce0e6L CTCInventoryStats::ConstructPersonalityList
+00686a70	call	005d1d96	005ce0e6L CTCInventoryStats::ConstructPersonalityList
+00686a70	call	005d1e18	005ce0e6L CTCInventoryStats::ConstructPersonalityList
+00686a70	call	005d6271	005d1f0cL CTCInventoryStats::ConstructPersonalityListPC
+00686a70	call	005d636f	005d1f0cL CTCInventoryStats::ConstructPersonalityListPC
+00686a70	call	005d63ef	005d1f0cL CTCInventoryStats::ConstructPersonalityListPC
+00686af0	call	005d8eab	005d8e90L CTCInventoryItem::GetInventoryOwner
+00686a70	call	005e4220	005e41e0L CTCQuestCompletionUI::~CTCQuestCompletionUI
+00686a70	call	005e60c0	005e5f30L CTCQuestCompletionUI::ActivateReal
+00686a70	call	005e60cf	005e5f30L CTCQuestCompletionUI::ActivateReal
+00686d40	call	005e75ab	005e5f30L CTCQuestCompletionUI::ActivateReal
+00686a70	call	005e791d	005e78f0L CTCQuestCompletionUI::GlobalUpdate
+00686a70	call	005e7b06	005e78f0L CTCQuestCompletionUI::GlobalUpdate
+00686a70	call	005e7b57	005e78f0L CTCQuestCompletionUI::GlobalUpdate
+00686a70	call	005e7bad	005e78f0L CTCQuestCompletionUI::GlobalUpdate
+00686a70	call	005e7bec	005e78f0L CTCQuestCompletionUI::GlobalUpdate
+00686d40	call	005e7eeb	005e78f0L CTCQuestCompletionUI::GlobalUpdate
+00646a46	call	005ea490	005ea400L CTCTavernGame::DrawBetAndMoney
+00646a46	call	005ea57c	005ea400L CTCTavernGame::DrawBetAndMoney
+00646a46	call	005ea61f	005ea400L CTCTavernGame::DrawBetAndMoney
+00686d40	call	005eb513	005eb510L CTCTavernGame::PlayerHasBeenHit
+00686d40	call	005eba60	005eb9e0L CTCTavernGame::FrameUpdate
+00686a70	call	005ec072	005ebfa0L CTCTavernGame::CameraUseCameraPoint
+00686a70	call	005ec6ba	005ec650L CTCTavernGame::LeaveGame
+00686a70	call	005eec2a	005eea9bL CTCInventoryAbilities::OnSpecialAbilityUsed
+005bff07	call	005f3bdc	005f3bcfL CTCInventoryAbilities::CTCInventoryAbilities
+005c0121	call	005f4aed	005f4a86L CTCInventoryAbilities::OnCreate
+00686a70	call	005fad7d	005fad40L CTCInventoryMap::TeleportHeroToGuildSealRecallLocation
+00686a70	call	005fae74	005fad40L CTCInventoryMap::TeleportHeroToGuildSealRecallLocation
+00686af0	call	005faebe	005fae90L CTCInventoryMap::RemapUIDsForLoading
+00686a70	call	005fb518	005fb4b0L CTCInventoryMap::TeleportHeroToBoastingArea
+00686a70	call	005fb60f	005fb4b0L CTCInventoryMap::TeleportHeroToBoastingArea
+00686a70	call	005fbde4	005fbd90L CTCInventoryMap::TeleportHeroToGuild
+00686a70	call	005fc11e	005fc0c0L CTCInventoryMap::UpdateRegionsCorrespondances
+00686a70	call	005fc15b	005fc0c0L CTCInventoryMap::UpdateRegionsCorrespondances
+00686a70	call	005fc198	005fc0c0L CTCInventoryMap::UpdateRegionsCorrespondances
+00686a70	call	005fc1b3	005fc0c0L CTCInventoryMap::UpdateRegionsCorrespondances
+00686a70	call	005fcf9b	005fce60L CTCInventoryMap::CloseInventory
+005c0121	call	00602e9b	00602e30L CTCInventoryMap::OnCreate
+00686a70	call	00605d2c	-
+00686a70	call	00605ec3	-
+00686a70	call	00605f62	-
+00686a70	call	0060605c	-
+00686a70	call	006060fb	-
+005bff07	call	00606d2a	00606d20L CTCInventoryMap::CTCInventoryMap
+005bff07	call	0061a42a	0061a420L CTCInventoryQuests::CTCInventoryQuests
+005c0121	call	0061a715	0061a6a0L CTCInventoryQuests::OnCreate
+00414c90	call	0061abc0	0061ab30L CTCInventoryQuests::ActivateSelectedTestQuest
+00686a70	call	0061abf5	0061ab30L CTCInventoryQuests::ActivateSelectedTestQuest
+00414c90	call	0061ad24	0061ac60L CTCInventoryQuests::DeactivateSelectedTestQuest
+005bcafe	call	0061afec	0061ad60L CTCInventoryQuests::DrawActiveTestQuests
+005bcafe	call	0061b141	0061ad60L CTCInventoryQuests::DrawActiveTestQuests
+005bcafe	call	0061b1b7	0061ad60L CTCInventoryQuests::DrawActiveTestQuests
+00630350	call	0061de32	0061b610L CTCInventoryQuests::ConstructQuestList
+00630350	call	00620ee1	0061e6d0L CTCInventoryQuests::ConstructQuestListPC
+00686a70	call	006219ff	00621720L CTCInventoryQuests::CloseInventoryPC
+00686a70	call	00621db8	00621c80L CTCInventoryQuests::CloseInventory
+00686a70	call	00622137	-
+00686a70	call	00622200	-
+00686d40	call	00625f8e	00625ed0L CTCQuickAccessMenu::GlobalUpdate
+00686d40	call	006284d4	00628000L CTCQuickAccessMenu::Activate
+006a9640	call	0062d572	-
+00630350	call	00632ec4	00632e00L CPersistContext::TransferVectorOfSubComponents<CUIStateDef>
+0069e940	call	00633eb3	00633d80L CPlayer::InitModeControlCreature
+0069e940	call	00633f8f	00633f10L CPlayer::InitModeBoastUI
+0069e940	call	006340f6	00633ff0L CPlayer::InitModeQuickAccessMenu
+00686a70	call	00639ac0	00639a90L CTCRegionDisplay::SetCurrentAreaName
+00686a70	call	00639d89	00639ba0L CTCRegionDisplay::SetCurrentAreaName
+005bcafe	call	0063a127	-
+005bcafe	call	0063a1d3	-
+00661b40	call	0063e716	0063e6f0L CWorldMap::IsLineOfSight
+00661b40	call	0063e76d	0063e6f0L CWorldMap::IsLineOfSight
+00686a70	call	006585f1	006585eeL CTCVillage::NotifyHasApologised
+00686a70	call	00658607	00658604L CTCVillage::GetIsHeroEnemyOfGuards
+00686a70	call	006588e3	006588dcL CTCVillage::IncreaseHeroEnemyOfGuardsUntil
+00686d40	call	00659898	00659800L CTCVillage::CalculateSecuritySweepTasks
+00686a70	call	00659900	00659800L CTCVillage::CalculateSecuritySweepTasks
+00686a70	call	0065996a	00659800L CTCVillage::CalculateSecuritySweepTasks
+0065f7b4	call	00659d09	00659c7eL CTCVillage::AddCrateTasksFromAndTo
+0065f7b4	call	00659e04	00659c7eL CTCVillage::AddCrateTasksFromAndTo
+00686a70	call	0065a397	0065a28fL CTCVillage::GetNormalisedTimeLeftOnFines
+00686a70	call	0065a69f	0065a686L CTCVillage::PlayerCanApologiseForCurrentCrimes
+00686d40	call	0065a8a1	0065a852L CTCVillage::SetEnemyToHeroStatus
+00686d40	call	0065a8cf	0065a852L CTCVillage::SetEnemyToHeroStatus
+00686a70	call	0065aa0b	0065a8eeL CTCVillage::IsTimeToGoToSchool
+00686d40	call	0065ac13	0065ac0eL CTCVillage::BuildingContainsPlayer
+00686d40	call	0065af7e	-
+00686a70	call	0065b0c9	0065b0b4L CTCVillage::OnKill
+00686d40	call	0065b0e1	0065b0b4L CTCVillage::OnKill
+00686d40	call	0065c0e9	0065c08aL CTCVillage::UpdateSecuritySweepTasks
+00686a70	call	0065c20f	0065c1fcL CTCVillage::RemoveCrimeIfApologisable
+00686d40	call	0065ca9c	0065c781L CTCVillage::FrameUpdate
+00686d40	call	0065cc64	0065cb6bL CTCVillage::ReportCrime
+006e0880	call	0066387a	006637d0L CreateWeaponHitTargetEffect
+006e0880	call	00663fda	00663f50L CThingCreatureBase::OnDie
+00661b40	call	0066514e	006650e0L CThingCreatureBase::IsPosInViewAngle
+006a4d60	call	006665da	00666310L CThingCreatureBase::OnCreate
+004c7950	call	00667214	00666ef0L CThingCreatureBase::AutoPlaceNearBuilding
+00686a70	call	0066af1a	0066aef0L CTCSoundPlayer::CreatePAttachedEmitter
+00686d40	call	0066fb92	0066fb80L CTCCoopSpirit::UpdateLocalJostling
+00686d40	call	0066fbbb	0066fb80L CTCCoopSpirit::UpdateLocalJostling
+00686d40	call	0066fdcd	0066fc90L CTCCoopSpirit::UpdateScreenRestrictingForces
+006a9640	call	0066fde4	0066fc90L CTCCoopSpirit::UpdateScreenRestrictingForces
+00686d40	call	0066ff27	0066ff20L CTCCoopSpirit::SwapToHero
+00686d40	call	0066ff5e	0066ff20L CTCCoopSpirit::SwapToHero
+00686d40	call	0066ff72	0066ff20L CTCCoopSpirit::SwapToHero
+00686d40	call	0066ff82	0066ff20L CTCCoopSpirit::SwapToHero
+00686d40	call	0066ff9a	0066ff20L CTCCoopSpirit::SwapToHero
+006a9640	call	0067031c	006702e0L CTCCoopSpirit::UpdateAppliedMovement
+006e0970	call	00670573	00670560L CTCCoopSpirit::AddAppearanceParticle
+006e0be0	call	006705da	00670560L CTCCoopSpirit::AddAppearanceParticle
+006e0970	call	00670636	006705f0L CTCCoopSpirit::SetAppearanceParticle
+006e0be0	call	006706f6	006705f0L CTCCoopSpirit::SetAppearanceParticle
+00686d40	call	00670722	00670710L CTCCoopSpirit::UpdateScore
+00686d40	call	00670735	00670710L CTCCoopSpirit::UpdateScore
+00686a70	call	00681d02	-
+00686a70	call	00681e33	00681e30L CTCCreatureOpinionOfHero::SetOpinionReactionMask
+00686a70	call	00681e69	00681e60L CTCCreatureOpinionOfHero::SetPersonalityOverride
+00686a70	call	006820e5	006820e0L CTCCreatureOpinionOfHero::SetPersonalityOverride
+00686a70	call	0068220d	006821e0L CTCCreatureOpinionOfHero::SetOpinionDeedMask
+00686a70	call	006822e3	006822e0L CTCCreatureOpinionOfHero::SetOpinionDeedMask
+00686a70	call	00682404	006823d0L CTCCreatureOpinionOfHero::FrameUpdate
+00686d40	call	0068246e	006823d0L CTCCreatureOpinionOfHero::FrameUpdate
+00686d40	call	00682682	006823d0L CTCCreatureOpinionOfHero::FrameUpdate
+00686d40	call	00682823	00682810L CTCCreatureOpinionOfHero::InformOfDeed
+00686a70	call	00682be0	00682810L CTCCreatureOpinionOfHero::InformOfDeed
+00686a70	call	006833b3	00682810L CTCCreatureOpinionOfHero::InformOfDeed
+00686a70	call	006834b5	00682810L CTCCreatureOpinionOfHero::InformOfDeed
+00686a70	call	00683511	00682810L CTCCreatureOpinionOfHero::InformOfDeed
+00686a70	call	00683556	00682810L CTCCreatureOpinionOfHero::InformOfDeed
+00686d40	call	00683594	00683590L CTCCreatureOpinionOfHero::InformOfDeed
+00686d40	call	00683783	-
+00686a70	call	006837d5	-
+00686d40	call	00683b07	00683b00L CTCCreatureOpinionOfHero::ClearPendingDeeds
+00686a70	call	00683c3a	00683c10L CTCCreatureOpinionOfHero::GetGreetDialogueGroupIndex
+00414c90	call	006880ff	00687fd0L CInputProcessMain::ProcessInput
+006a2220	call	00694654	00694430L CCreatureActionBase::FinishAction
+00640030	call	0069e92d	-
+00640030	call	0069e95d	0069e940L NDisplayView::CView3DThirdPerson::CView3DThirdPerson
+00640030	call	0069eab6	0069e980L NDisplayView::CView3DBase::vfunc_3
+006a2220	call	006a2391	006a2370L CTCCarrying::OnSetInLimbo
+006a2220	call	006a2408	006a23e0L NRemap006a23e0::CTCCarrying::ResetAllCarriedThingsAsBypassFi
+00686a70	call	006a24b6	006a23e0L NRemap006a23e0::CTCCarrying::ResetAllCarriedThingsAsBypassFi
+006a06e0	call	006a5ff5	006a5d90L CThingPhysical::ConstructFromLevelScript
+0065f7b4	call	006a8bb1	-
+006a4d60	call	006aa0d4	006a9ef0L CThingPlayerCreature::OnCreate
+006a9640	call	006aae4b	006aabe0L CThingPlayerCreature::SetActionForMelee
+0052ab20	call	006ac933	006ac910L CThingPlayerCreature::Create
+006a9dd0	call	006ac950	006ac910L CThingPlayerCreature::Create
+006a06e0	call	006ac9ba	006ac910L CThingPlayerCreature::Create
+004c9ca0	call	006ac9d4	006ac910L CThingPlayerCreature::Create
+00686a70	call	006af620	006af620L CTCPhysicsBase::GetWorldMap
+00686a70	call	006af743	006af740L CTCPhysicsBase::UpdateOldPosition
+00686a70	call	006af7ab	006af790L CTCPhysicsBase::ResetInterpolation
+00686a70	call	006aff09	006aff00L CTCPhysicsBase::UpdateCollisionGroundIneractions
+00686a70	call	006b0c6d	006b0c10L CTCPhysicsBase::SetPosition
+00686a70	call	006b0cbf	006b0c10L CTCPhysicsBase::SetPosition
+00686a70	call	006b0d16	006b0c10L CTCPhysicsBase::SetPosition
+00686a70	call	006b0dcb	006b0c10L CTCPhysicsBase::SetPosition
+006e0880	call	006b41ea	006b3ff0L CEnvironment::Update
+00686d40	call	006c0639	006c0580L CTCBuyableHouse::DestroyMoneyBags
+00686d40	call	006c0a4f	006c0970L CTCBuyableHouse::CreateSignPost
+00686a70	call	006c0b79	-
+00686d40	call	006c0b92	-
+00686a70	call	006c12a0	006c1250L CTCBuyableHouse::FrameUpdate
+00686d40	call	006c17b4	006c17b0L CTCBuyableHouse::SetOwnedByPlayer
+006a2220	call	006c3cfb	006c3ca0L CTCFadeOutAndIn::AddCarriedThingsOfThingToFadeList
+00686a70	call	006c5b11	006c5a80L CTCHeroOpinionDeedLog::CTCHeroOpinionDeedLog
+00686a70	call	006c65e4	006c6040L CTCHeroOpinionDeedLog::InformRelevantThingsOfDeed
+00686d40	call	006c72a2	-
+00686a70	call	006ca46e	006ca400L CTCHero::SetTitle
+00686a70	call	006cb8fa	006cb8f0L CTCCreatureNavigation::IsCurrentlyNavigating
+00686a70	call	006cbdc5	-
+00686a70	call	006ceae3	006ceae0L CTCCreatureOpinionOfHero::ResetLastOpinionReactionFrame
+00686a70	call	006ceea7	006ceea0L CTCWife::IsOfferingSex
+00686d40	call	006cf3b5	006cf3b0L CTCWife::InitWifeAtEndOfMarriageFrescoStartFadeIn
+00686d40	call	006cf4b6	006cf480L CTCWife::InitWifeAtEndOfMarriageFrescoEndFadeIn
+00686a70	call	006cf585	006cf530L CTCWife::FindAppropriateGift
+00686a70	call	006cf5b6	006cf530L CTCWife::FindAppropriateGift
+00686d40	call	006cf9c6	006cf920L CTCWife::HaveSex
+00686d40	call	006cfc10	006cfc00L CTCWife::OnGreet
+00686a70	call	006d024b	006d0180L CTCWife::Divorce
+00686d40	call	006d027c	006d0180L CTCWife::Divorce
+00686a70	call	006d043a	006d0410L CTCWife::GetGreetDialogueGroupName
+00686a70	call	006d0643	006d0630L CTCWife::ReceivedNiceGiftIsOpinionReactionHappening
+00686a70	call	006d091d	006d0830L CTCWife::GlobalUpdate
+00686a70	call	006d0b7e	006d0830L CTCWife::GlobalUpdate
+00686a70	call	006d0ba8	006d0830L CTCWife::GlobalUpdate
+00686d40	call	006d0c31	006d0830L CTCWife::GlobalUpdate
+00686a70	call	006d0cbc	006d0830L CTCWife::GlobalUpdate
+00686d40	call	006d0ef5	006d0830L CTCWife::GlobalUpdate
+00686d40	call	006d0f4b	006d0830L CTCWife::GlobalUpdate
+00686a70	call	006d10fb	006d0830L CTCWife::GlobalUpdate
+00686a70	call	006d1146	006d0830L CTCWife::GlobalUpdate
+00686a70	call	006d16fb	006d1250L CTCWife::CheckAppearanceChanges
+00686d40	call	006d19d2	006d18a0L CTCWife::Marry
+00686a70	call	006d1c8e	006d18a0L CTCWife::Marry
+00686a70	call	006d1ed5	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d1f2e	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d1f6a	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d1fad	006d1e30L CTCWife::FrameUpdate
+00686d40	call	006d1ff1	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d20f3	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d21a4	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d21d7	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d220d	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d2244	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d25b0	006d1e30L CTCWife::FrameUpdate
+00686d40	call	006d28a6	006d1e30L CTCWife::FrameUpdate
+00686a70	call	006d53d6	006d53c0L CTCFollowed::FrameUpdate
+00686a70	call	006d55f2	006d53c0L CTCFollowed::FrameUpdate
+00686a70	call	006d568f	006d53c0L CTCFollowed::FrameUpdate
+00686a70	call	006d569e	006d53c0L CTCFollowed::FrameUpdate
+00686a70	call	006d7ede	006d7ec0L CTCHeroExperience::AddAttackOfTypeToAttackHistory
+00686a70	call	006d866c	006d8580L CTCHeroExperience::FrameUpdate
+00686a70	call	006d8878	006d8830L CTCHeroExperience::AddSuccessfulMultistrikeHit
+00686d40	call	006ddd64	006ddd30L CTCTrophy::OnTrophyUseAction
+00686d40	call	006ddda3	006ddd30L CTCTrophy::OnTrophyUseAction
+00686a70	call	006dde7b	006ddd30L CTCTrophy::OnTrophyUseAction
+00686d40	call	006de320	006de280L CTCTrophy::TerminateMinigame
+00686a70	call	006de896	006de280L CTCTrophy::TerminateMinigame
+00686a70	call	006def06	006deee0L CTCTrophy::GlobalUpdate
+00686a70	call	006df142	006deee0L CTCTrophy::GlobalUpdate
+00686a70	call	006e0256	-
+004c9ca0	call	006e0924	006e0880L CTCDParticleEmitter::Create
+006e0880	call	006e0996	006e0970L CTCDParticleEmitter::Create
+004c9ca0	call	006e0a22	-
+006e0e80	call	006e1101	006e1080L CTCDParticleEmitter::SetPEmitter
+006a06e0	call	006e12c7	006e11f0L CTCDParticleEmitter::Create
+004c9ca0	call	006e1306	006e11f0L CTCDParticleEmitter::Create
+00686a70	call	006e2ed8	006e2ed0L CTCTalk::GetCurrentLipSyncFrameData
+00686a70	call	006e2eee	006e2ed0L CTCTalk::GetCurrentLipSyncFrameData
+00686a70	call	006e36aa	006e3580L CTCTalk::PlaySpeech
+00686a70	call	007009b9	00700940L COpinionReactionManager::LogReaction
+006a06e0	call	00703263	00703210L CThingObject::Create
+006a06e0	call	007032b8	00703210L CThingObject::Create
+004c9ca0	call	007032d2	00703210L CThingObject::Create
+006a4d60	call	00703356	007032f0L CThingObject::OnCreate
+0077c490	call	00703457	007032f0L CThingObject::OnCreate
+006e0880	call	007038ab	007037d0L CThingObject::OnCollision
+00686a70	call	00706a22	00706950L CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierW
+00686a70	call	00706a67	00706950L CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierW
+00686a70	call	00706aad	00706950L CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierW
+00686a70	call	00712221	-
+00686a70	call	00712284	-
+00661b40	call	00716568	00715a70L NTCScriptedControl::CActionTalkBase::SetUpCamera
+00686a70	call	007166ef	00715a70L NTCScriptedControl::CActionTalkBase::SetUpCamera
+00686a70	call	00716d7c	00716b30L NTCScriptedControl::CActionTalkBase::SetUpTextAndSpeech
+006e0880	call	0071c8b2	0071c7c0L CTCHeroMorph::AddParticles
+006e0be0	call	0071c902	0071c7c0L CTCHeroMorph::AddParticles
+006e0be0	call	0071c932	0071c7c0L CTCHeroMorph::AddParticles
+006e0be0	call	0071c962	0071c7c0L CTCHeroMorph::AddParticles
+006e0880	call	0071cbe5	0071c9f0L CTCHeroMorph::UpdateIdleParticles
+006e0be0	call	0071cc3a	0071c9f0L CTCHeroMorph::UpdateIdleParticles
+006e0be0	call	0071cc6b	0071c9f0L CTCHeroMorph::UpdateIdleParticles
+006e0be0	call	0071cc9c	0071c9f0L CTCHeroMorph::UpdateIdleParticles
+00686a70	call	00722772	00722740L CTCSmokeGenerator::FrameUpdate
+006e0880	call	007227ae	00722740L CTCSmokeGenerator::FrameUpdate
+00686a70	call	0072370d	007236e0L CTCPhysicsStandard::ResetInterpolation
+00686a70	call	00723933	00723930L CTCPhysicsStandard::UpdateOldRHSet
+00686d40	call	007254b4	007254b0L CTCPhysicsControlled::AdjustThingListForDebugHelpers
+00686a70	call	00726d48	00726ce0L CTCPhysicsNavigator::Move
+00686a70	call	007292ba	00729200L CTCCreatureExpression::Update
+00686a70	call	0072945c	00729410L CTCCreatureExpression::SetExpression
+00686a70	call	007294d4	007294a0L CTCCreatureExpression::FrameUpdate
+00686a70	call	00729623	007294a0L CTCCreatureExpression::FrameUpdate
+00686a70	call	0072a0b0	0072a090L CTCActionUseScriptedHook::GlobalUpdate
+00686d40	call	0072a190	0072a090L CTCActionUseScriptedHook::GlobalUpdate
+00686a70	call	0072a2ba	0072a090L CTCActionUseScriptedHook::GlobalUpdate
+00686a70	call	0072a353	0072a090L CTCActionUseScriptedHook::GlobalUpdate
+006e0880	call	0072ab74	0072ab70L CTCSpecialAbilities::CreateParticleEffect
+00686d40	call	0072c236	0072c230L CTCUndeadSoul::FrameUpdate
+005bff07	call	0072db99	0072db90L CTCInventoryMagic::CTCInventoryMagic
+005c0121	call	0072dcba	0072dc70L CTCInventoryMagic::OnCreate
+006e0970	call	0072e16f	0072e130L CTCMeshAutomaticEntityCreator::CreateParticle
+006e0be0	call	0072e1a5	0072e130L CTCMeshAutomaticEntityCreator::CreateParticle
+00686d40	call	0072e947	0072e940L CTCActionUseBuyHouse::OnActionUseMain
+00686d40	call	0072eb57	0072eb40L CTCActionUseBuyHouse::ReceivedConfirmation
+00686d40	call	0072ebef	0072eb40L CTCActionUseBuyHouse::ReceivedConfirmation
+00686d40	call	0072ec7c	0072eb40L CTCActionUseBuyHouse::ReceivedConfirmation
+00686d40	call	0072edb7	0072ed10L CTCActionUseBuyHouse::OnActionUse
+00686a70	call	0072ee42	0072ee30L CTCActionUseBuyHouse::GlobalUpdate
+00686a70	call	0072f1fe	0072f170L CTCDummyVillager::SetupFromData
+00686a70	call	0072f249	0072f170L CTCDummyVillager::SetupFromData
+00686a70	call	0072fac3	0072f9e0L CTCDummyVillager::CanBeRecreated
+00686a70	call	0072fb51	0072f9e0L CTCDummyVillager::CanBeRecreated
+00686a70	call	0072fc16	-
+00686a70	call	0072fc26	-
+00686a70	call	0072fc5d	-
+00686a70	call	0072fcc7	-
+00686a70	call	0072fcd6	-
+00686d40	call	0072fd3e	-
+00686a70	call	0072fe2e	-
+00686a70	call	0072fe57	-
+00686a70	call	007302ea	00730070L CTCDummyVillager::OnInitialActivate
+00686a70	call	007309ac	007308f0L CTCDoor::UpdateAnimation
+00686a70	call	007309d0	007308f0L CTCDoor::UpdateAnimation
+00686a70	call	00731125	007310c0L CTCDoor::UpdateOpenStatusTriggerTypeScript
+006e0970	call	0073173d	00731680L CTCJackShield::EnableShield
+006e0880	call	00731926	007317d0L CTCJackPillar::Enable
+00686a70	call	007329b5	00732950L CTCClock::FrameUpdate
+00686a70	call	00732d55	00732d40L CTCWeatherVane::FrameUpdate
+00686a70	call	00735556	00735540L CTCCombat::CTCCombat
+006e0880	call	0073613c	00735fd0L CTCCombat::AttemptToStartParticle
+006e0880	call	00736191	00735fd0L CTCCombat::AttemptToStartParticle
+006e0be0	call	0073630c	00735fd0L CTCCombat::AttemptToStartParticle
+00686a70	call	0073b07a	0073afc0L CTCCreatureModeManager::SetupInitialMode
+00686a70	call	00744ce3	00744cb0L CTCPerceiveThing::OnHit
+007449b0	call	00744d99	00744d00L CTCPerceiveAlert::FindAlertEvent
+00686a70	call	00744e63	00744e30L CTCPerceiveThing::OnHitByMelee
+00686a70	call	00744eb3	00744e80L CTCPerceiveThing::OnHitByShot
+00686a70	call	00745002	00744fb0L CTCPerceiveThing::UpdateHearing
+00686a70	call	0074569b	00745120L CTCPerceiveThing::UpdateLineOfSight
+00686a70	call	007470b8	00747090L CTCStealth::ClearDangerStatus
+00686a70	call	007470c9	00747090L CTCStealth::ClearDangerStatus
+00686a70	call	00747124	00747110L CTCStealth::OnSetInLimbo
+00686a70	call	0074712d	00747110L CTCStealth::OnSetInLimbo
+00686a70	call	00747c18	00747b80L CTCStealth::SetAsInDanger
+00686a70	call	00747c29	00747b80L CTCStealth::SetAsInDanger
+00686a70	call	00748003	00747da0L CTCStealth::FrameUpdate
+00686a70	call	00748020	00747da0L CTCStealth::FrameUpdate
+00686a70	call	0074a2b3	0074a260L CTCCreatureGenerator::GetUndeadGenerationPoint
+00686a70	call	0074a310	0074a260L CTCCreatureGenerator::GetUndeadGenerationPoint
+00686a70	call	0074a3f8	0074a260L CTCCreatureGenerator::GetUndeadGenerationPoint
+00686a70	call	0074a41a	0074a260L CTCCreatureGenerator::GetUndeadGenerationPoint
+00686a70	call	0074a458	0074a260L CTCCreatureGenerator::GetUndeadGenerationPoint
+00686a70	call	0074b371	-
+00686a70	call	0074b406	-
+00686a70	call	0074b538	-
+00686a70	call	0074b8a3	0074b770L CTCCreatureGenerator::InitialiseCreatureGenerator
+00686a70	call	0074c1e6	-
+00686a70	call	0074c3e5	-
+006e0880	call	0074c487	-
+006e0be0	call	0074c514	-
+00686d40	call	0074ee99	0074ee90L CTCContainerRewardHero::RewardHeroWithItems
+00686a70	call	00750385	007502d0L CTCChest::InitClosed
+006e0880	call	007505d3	00750540L CTCChest::Open
+006e0be0	call	00750663	00750540L CTCChest::Open
+00686a70	call	00750c5a	00750be0L CTCExplodingObject::CTCExplodingObject
+006e0880	call	00750fd8	00750e30L CTCExplodingObject::FrameUpdate
+00661b40	call	00751b44	00751b30L CTCLook::GetHeadPos
+00686a70	call	00751bde	00751bc0L CTCLook::IsInsideAnimationRange
+00686a70	call	00751c3a	00751bc0L CTCLook::IsInsideAnimationRange
+00661b40	call	00751cc6	00751c70L CTCLook::GetAnglesFromBodyToPos
+00686a70	call	00752014	00752000L CTCLook::UpdateHeadPos
+00661b40	call	0075209d	00752000L CTCLook::UpdateHeadPos
+00686d40	call	007523f6	00752300L CTCLook::ImplementBodySettings
+00661b40	call	00752a23	00752930L CTCLook::SetEyesLooking
+00686a70	call	007533d3	00753380L CTCLook::FrameUpdateHeadInterested
+007573c0	call	007577bb	00757760L CTCWound::FrameUpdate
+00686a70	call	00757fb5	00757f90L CTCWound::AddPossibleWoundGivenStrikePoint
+00686a70	call	00759d91	00759d30L CTCPhysicsRigidBody::ComputeForces
+00686a70	call	00759dad	00759d30L CTCPhysicsRigidBody::ComputeForces
+00686a70	call	00759dca	00759d30L CTCPhysicsRigidBody::ComputeForces
+00686a70	call	0075c5f4	0075c5f0L CTCCameraPointDefinitionBase::FrameUpdate
+00686a70	call	0075cad6	0075cad0L CTCCameraPointTrack::UpdateActiveCameraPosition
+00686a70	call	0075d820	0075d580L CTCCameraPointScriptedSpline::UpdateCameraParams
+00686a70	call	0075e555	0075e4c0L CTCCameraPointScriptedSpline::OnSerialseLeaf
+00686a70	call	007609a0	00760990L CTCShapeManager::FrameUpdate
+006e0880	call	00766750	00766660L CTCObjectAugmentations::AttemptToStartParticle
+006e0880	call	00766798	00766660L CTCObjectAugmentations::AttemptToStartParticle
+006e0be0	call	007668fe	00766660L CTCObjectAugmentations::AttemptToStartParticle
+006e0880	call	00766fa8	-
+006e0be0	call	0076704e	-
+006e11a0	call	00767feb	00767da0L CTCObjectAugmentations::UpdateParticleAttachment
+00686a70	call	00770e88	00770e80L CTCSolidToThing::FrameUpdate
+00686a70	call	0077170d	00771660L CTCOpinionSource::OnCreate
+00686a70	call	007717a4	00771770L CTCOpinionSource::CleanupSource
+00686a70	call	00771df7	00771de0L CTCHeroPodium::FrameUpdate
+00686a70	call	00771e49	00771de0L CTCHeroPodium::FrameUpdate
+00686a70	call	007727bb	00772790L CTCShop::GetDaysTillRestock
+00686a70	call	007745cc	007744a0L CTCShop::CTCShop
+00686a70	call	007753cd	-
+00686a70	call	00775c12	00775b40L CTCShop::FrameUpdate
+00686a70	call	0077872b	007786f0L CTCTimeAppearanceFade::FrameUpdate
+004c9ca0	call	00778e20	-
+004c9ca0	call	00778f5d	-
+00686d40	call	00779091	00779080L CTCDRegionExit::MoveHeroThroughExit
+00686a70	call	007790c0	00779080L CTCDRegionExit::MoveHeroThroughExit
+00686a70	call	007791ca	00779080L CTCDRegionExit::MoveHeroThroughExit
+00686d40	call	007795d3	007795a0L CTCDRegionExit::~CTCDRegionExit
+004c9ca0	call	0077968d	-
+00686d40	call	007796d7	007796b0L CTCDRegionExit::FrameUpdate
+004c9ca0	call	00779ecf	00779e90L CTCDExperienceOrb::Create
+00686d40	call	00779f51	00779ef0L CTCDExperienceOrb::OnInitialActivate
+006e0880	call	0077a165	0077a130L CTCDExperienceOrb::CombineWithExperienceOrb
+006e0880	call	0077a233	0077a180L CTCDExperienceOrb::OnCollected
+00686d40	call	0077a71f	0077a430L CTCDExperienceOrb::FrameUpdate
+00686d40	call	0077a75c	0077a430L CTCDExperienceOrb::FrameUpdate
+00686a70	call	0077c4a9	0077c490L NGraphicAppearance::CTCGraphicAppearanceSprite::SetRotationA
+00686a70	call	0077ca74	0077c960L CTCHighlightItem::DoMovement
+006e0880	call	0077cc3b	0077cbe0L CTCHighlightItem::DoStartRunning
+006e0880	call	0077ccfc	0077cca0L CTCHighlightItem::DoStopRunning
+006e0970	call	0077f89c	0077f7e0L CTCHeroCentreDoorMarker::UpdateParticleTeleporter
+006e0be0	call	0077f956	0077f7e0L CTCHeroCentreDoorMarker::UpdateParticleTeleporter
+006e0970	call	0077fa2c	0077f970L CTCHeroCentreDoorMarker::UpdateParticleExperience
+006e0be0	call	0077fae6	0077f970L CTCHeroCentreDoorMarker::UpdateParticleExperience
+00686d40	call	0077fb39	0077fb00L CTCHeroCentreDoorMarker::FrameUpdate
+00686d40	call	007801ff	007800b0L CTCHeroGuide::OpenQuestSelectInterface
+006e0880	call	00780561	00780540L CFirePoint::SetAsBurning
+006e0be0	call	0078058f	00780540L CFirePoint::SetAsBurning
+006e0880	call	00780678	007805d0L NFire::CFirePoint::SetAsSmoldering
+006e0be0	call	007806a6	007805d0L NFire::CFirePoint::SetAsSmoldering
+006e0970	call	0078078e	00780700L NFire::CFirePoint::Reset
+006e0be0	call	007807ea	00780700L NFire::CFirePoint::Reset
+00686a70	call	00780cfd	00780c80L CTCFlammable::ExtinguishFire
+006e0970	call	00781f46	00781f10L CTCBoastingPosition::ActivatePosition
+006e0970	call	007824bb	00782390L CTCBoastingPosition::OnBoastAccepted
+00686d40	call	007828e7	007828e0L CTCBoastingArea::FrameUpdate
+00686d40	call	00782a9a	00782a90L CTCBoastingArea::OnKill
+00686a70	call	00784288	00784260L CTCCreatureGroupBoastingCrowd::EnterCrowdState
+00686a70	call	007843fb	00784260L CTCCreatureGroupBoastingCrowd::EnterCrowdState
+00686a70	call	00784578	00784500L CTCCreatureGroupBoastingCrowd::FrameUpdate
+00686a70	call	00784795	007846b0L CTCCreatureGroupBoastingCrowd::OnHeroLeaveBoastingArea
+00686a70	call	00784851	007846b0L CTCCreatureGroupBoastingCrowd::OnHeroLeaveBoastingArea
+00686a70	call	00784a21	007849c0L CTCCreatureGroupBoastingCrowd::OnHeroAttackCrowdMember
+00686a70	call	00784ade	007849c0L CTCCreatureGroupBoastingCrowd::OnHeroAttackCrowdMember
+00686a70	call	00784c14	00784bd0L CTCCreatureGroupBoastingCrowd::~CTCCreatureGroupBoastingCrow
+00686a70	call	007852bc	-
+00686a70	call	007856be	00785620L CTCVolumeContainmentTracker::Update
+006a2220	call	0078583a	00785620L CTCVolumeContainmentTracker::Update
+00686a70	call	00785bb3	00785b40L CTCVolumeContainmentTracker::FrameUpdate
+00686a70	call	00787584	00787580L CTCSwitchableNavigation::SetAsBlockingNavigation
+00686a70	call	007875d4	007875d0L CTCSwitchableNavigation::OnSetInLimbo
+00686a70	call	0078763b	00787620L CTCSwitchableNavigation::WouldBlockPos
+00686a70	call	00787694	00787690L CTCSwitchableNavigation::InitialActivate
+00686a70	call	007876da	007876d0L CTCSwitchableNavigation::~CTCSwitchableNavigation
+00686a70	call	00787849	-
+00686a70	call	0078797d	-
+00686d40	call	00787e3f	00787e12L CTCProjectileTrap::UpdateTrap
+00686a70	call	00787f5c	00787f29L CTCMeleeTrap::InitialiseStrikeAnimation
+00686a70	call	0078845c	00788406L CTCMeleeTrap::TriggerTrap
+00686a70	call	007884b1	00788406L CTCMeleeTrap::TriggerTrap
+00686a70	call	00788563	00788555L CTCMeleeTrap::UpdateAnimation
+00686a70	call	00788893	0078888aL CTCTrapBase::UpdateTrigger
+00686a70	call	007888bc	007888b4L CTCTrapBase::FrameUpdate
+00686a70	call	00788a15	-
+00436500	call	007895b6	0078954dL GetAllThingsInRoughArea<CThingCreatureBase,std::vector<CInte
+00436500	call	00789786	0078971dL GetAllThingsInRoughArea<CThingGameObject,std::vector<CThingG
+00686a70	call	0078a587	0078a390L CTCHeroRangedAttacks::FireRangedWeapon
+006e0be0	call	0078c5e7	0078c4c0L CTCBerserk::CreateStartingEffect
+00686a70	call	0078c913	-
+006e0be0	call	0078cbfb	-
+004bfae0	call	0078ce82	-
+00686a70	call	0078cf3b	-
+00686a70	call	0078d1dc	-
+00686a70	call	0078d2f4	0078d250L CTCBerserk::FrameUpdate
+00686a70	call	0078d778	0078d250L CTCBerserk::FrameUpdate
+00686a70	call	0078ef80	0078ecd0L CTCDivineWrath::CTCDivineWrath
+006e0be0	call	0078f1e5	0078ecd0L CTCDivineWrath::CTCDivineWrath
+006e0be0	call	0078f3cf	0078ecd0L CTCDivineWrath::CTCDivineWrath
+006e0be0	call	0078f437	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00686a70	call	0078f5b0	0078f5a0L CTCDivineWrath::~CTCDivineWrath
+00686a70	call	0078f710	0078f6e0L CTCDivineWrath::FinishMove
+00686a70	call	0078f9b5	0078f8f0L CTCDivineWrath::CancelForCutscene
+00686a70	call	00791388	-
+00686a70	call	007914fa	-
+00686a70	call	00791cd1	-
+00686a70	call	00791e50	-
+00686a70	call	007944a3	007941d0L CTCUnholyPower::CTCUnholyPower
+006e0be0	call	0079470c	007941d0L CTCUnholyPower::CTCUnholyPower
+006e0be0	call	00794866	007941d0L CTCUnholyPower::CTCUnholyPower
+006e0be0	call	007948ce	007941d0L CTCUnholyPower::CTCUnholyPower
+00686a70	call	00794ad0	00794ac0L CTCUnholyPower::~CTCUnholyPower
+00686a70	call	00794c43	00794c10L CTCUnholyPower::FinishMove
+00686a70	call	00794f25	00794e60L CTCUnholyPower::CancelForCutscene
+00686a70	call	00796928	-
+00686a70	call	00796a9a	-
+00686a70	call	00797271	-
+00686a70	call	007973f0	-
+00686d40	call	0079929e	00799140L CTCShopKeeper::CalcAreOtherPeopleInShop
+00686d40	call	0079960d	007993f0L CTCShopKeeper::WitnessedCrime
+00686a70	call	0079ab14	0079aa90L CTCSummonSpell::GetValidTeleportPos
+006e0be0	call	0079b2c2	0079acc0L CTCSummonSpell::CreateMinion
+006e0be0	call	0079b465	0079acc0L CTCSummonSpell::CreateMinion
+006e0be0	call	0079b4ef	0079acc0L CTCSummonSpell::CreateMinion
+006a2220	call	0079b5c0	0079acc0L CTCSummonSpell::CreateMinion
+006a2220	call	0079bb55	0079b9d0L CTCSummonSpell::FrameUpdate
+00686a70	call	0079c730	-
+00686a70	call	0079c797	0079c750L CTCBulletTime::PlayCreatureOnHitEffect
+00686a70	call	0079c7ab	0079c750L CTCBulletTime::PlayCreatureOnHitEffect
+00686a70	call	0079cb9d	0079c880L CTCBulletTime::FrameUpdate
+006e0be0	call	0079cd4f	0079cc80L CTCBulletTime::PlayEffect
+006e0be0	call	0079ce51	0079cc80L CTCBulletTime::PlayEffect
+00686a70	call	0079cfc0	0079cf30L CTCBulletTime::Pause
+00686a70	call	0079d028	0079d020L CTCBulletTime::ImmediateCancel
+00686a70	call	0079d077	0079d020L CTCBulletTime::ImmediateCancel
+00686a70	call	0079d11e	0079d110L CTCBulletTime::~CTCBulletTime
+00686a70	call	0079d176	0079d110L CTCBulletTime::~CTCBulletTime
+00686a70	call	0079d190	0079d110L CTCBulletTime::~CTCBulletTime
+00686a70	call	0079d62e	0079d360L CTCBulletTime::CTCBulletTime
+00686a70	call	0079d6bf	0079d360L CTCBulletTime::CTCBulletTime
+00686a70	call	0079d9e4	0079d7e0L CTCBulletTime::UnPause
+00686a70	call	0079dcd1	0079dcc0L CTCPhysicalShieldSpell::OnHitAtPos
+006e0be0	call	0079e020	0079deb0L CTCPhysicalShieldSpell::PlayEffect
+006e0be0	call	0079e218	0079deb0L CTCPhysicalShieldSpell::PlayEffect
+006e0be0	call	007a028b	007a00e0L CTCWillLightning::StartHandEffects
+006e0be0	call	007a02f4	007a00e0L CTCWillLightning::StartHandEffects
+00686a70	call	007a112e	007a0d90L CTCWillLightning::GetTargets
+00686a70	call	007a119f	007a0d90L CTCWillLightning::GetTargets
+00686a70	call	007a1284	007a0d90L CTCWillLightning::GetTargets
+00686a70	call	007a12e6	007a0d90L CTCWillLightning::GetTargets
+006e0be0	call	007a1572	007a1380L CTCWillLightning::CLightningBeam::Activate
+006e11a0	call	007a16d0	007a1380L CTCWillLightning::CLightningBeam::Activate
+00686a70	call	007a1981	007a1870L CTCWillLightning::MakeRandomBeam
+00686a70	call	007a1a15	007a1870L CTCWillLightning::MakeRandomBeam
+006e11a0	call	007a2564	007a1b20L CTCWillLightning::CLightningBeam::FrameUpdate
+00686a70	call	007a2bda	-
+006a9640	call	007a711e	007a7000L CTCBattleCharge::UpdateDirectionOverride
+006e0be0	call	007a7550	007a74a0L CTCBattleCharge::CleanUpEffects
+006e0be0	call	007a75d7	007a74a0L CTCBattleCharge::CleanUpEffects
+006e0880	call	007a786c	-
+006e0be0	call	007a7929	-
+006e0880	call	007a7994	-
+006e0be0	call	007a7a51	-
+006e0880	call	007a7abc	-
+006e0be0	call	007a7b79	-
+00686a70	call	007a82dc	007a7d20L CTCBattleCharge::CreateHitEffect
+00686a70	call	007a8a89	-
+006a9640	call	007a9a7e	007a9960L CTCAssassinRush::UpdateDirectionOverride
+00686a70	call	007a9b14	007a9b10L CTCAssassinRush::ResetCameraOnStick
+00686a70	call	007a9d05	007a9c80L CTCAssassinRush::SetupCameraOnStick
+00686a70	call	007a9d7a	007a9d60L CTCAssassinRush::~CTCAssassinRush
+006e0be0	call	007aa1a4	007a9fe0L CTCAssassinRush::CreateTrailingEffect
+006e0880	call	007aa203	007a9fe0L CTCAssassinRush::CreateTrailingEffect
+006e0be0	call	007aa2bb	007a9fe0L CTCAssassinRush::CreateTrailingEffect
+00686a70	call	007aa2d8	007a9fe0L CTCAssassinRush::CreateTrailingEffect
+00686d40	call	007aa487	007aa480L CTCAssassinRush::CancelMove
+00686a70	call	007aa54c	007aa4d0L CTCAssassinRush::FinalCleanup
+006a2220	call	007aa75a	007aa6b0L CTCAssassinRush::OnInitialActivate
+00686a70	call	007aa9f5	007aa9e0L CTCAssassinRush::GetValidTeleportPos
+00686a70	call	007aaeca	-
+00686a70	call	007aaf80	-
+00686a70	call	007ab13f	-
+00686a70	call	007ab240	007ab190L CTCAssassinRush::FrameUpdate
+00686a70	call	007ab297	007ab190L CTCAssassinRush::FrameUpdate
+00686a70	call	007ab30f	007ab190L CTCAssassinRush::FrameUpdate
+00686a70	call	007ab393	007ab190L CTCAssassinRush::FrameUpdate
+00686d40	call	007af061	007af050L CTCBoss::FrameUpdate
+006e0880	call	007af2b3	007af0f0L CTCRockTrollShield::OnHitAtPos
+006e0970	call	007b03a5	007b0360L CTCFishingSpot::FrameUpdate
+006e0be0	call	007b044f	007b0360L CTCFishingSpot::FrameUpdate
+006e0970	call	007b0498	007b0360L CTCFishingSpot::FrameUpdate
+006e0be0	call	007b0542	007b0360L CTCFishingSpot::FrameUpdate
+006e0970	call	007b058b	007b0360L CTCFishingSpot::FrameUpdate
+006e0be0	call	007b063b	007b0360L CTCFishingSpot::FrameUpdate
+00686a70	call	007b0b1c	007b0950L CTCFishing::FinishFishing
+00686d40	call	007b0ced	007b0cd0L CTCFishing::FrameUpdate
+00686a70	call	007b0dbb	007b0cd0L CTCFishing::FrameUpdate
+00686a70	call	007b0ec1	007b0cd0L CTCFishing::FrameUpdate
+00686a70	call	007b1075	007b0cd0L CTCFishing::FrameUpdate
+00686a70	call	007b1166	007b0cd0L CTCFishing::FrameUpdate
+00686a70	call	007b126d	007b0cd0L CTCFishing::FrameUpdate
+00686a70	call	007b1d99	-
+00686a70	call	007b1dab	-
+00686a70	call	007b1dd4	-
+00686a70	call	007b1dfd	-
+00686d40	call	007b3151	-
+00686d40	call	007b334b	-
+00686a70	call	007b33db	-
+00686a70	call	007b59d6	007b57c0L CTCCarriedActionUseActivateQuest::OnActionUse
+00686a70	call	007b5cc3	007b5ca0L CTCWaterWader::IsInWater
+00686a70	call	007b5cda	007b5ca0L CTCWaterWader::IsInWater
+006e0970	call	007b5ebb	-
+006e0970	call	007b5f85	-
+006e0be0	call	007b602e	-
+00686a70	call	007b6122	-
+00661b40	call	007b61e3	-
+006e0970	call	007b61ed	-
+006e0be0	call	007b628f	-
+0065f7b4	call	007b70e0	-
+0065f7b4	call	007b71ec	007b7140L std::copy_if
+00686a70	call	007b92ca	007b90f0L CTCTavernTable::OnInitialActivate
+00686a70	call	007ba5df	007ba550L CTCTavernBar::OnInitialActivate
+00686a70	call	007bb04b	007baf00L CTCTrespasser::LeavingRegion
+00686a70	call	007bb346	-
+00686a70	call	007bbb7f	007bbb3bL CTCShotDefinitionProjectile::InitMovement
+00686a70	call	007bbf35	007bbe34L NThingShot::CTCShotDefinitionSpreadShotProjectile::InitMovem
+00686a70	call	007bc08b	007bc004L NThingShot::CTCShotDefinitionNymphFun::InitMovement
+00686a70	call	007bcd96	-
+00686a70	call	007bcdca	-
+00686a70	call	007bcdef	-
+00686a70	call	007bcea0	-
+00686a70	call	007bcfeb	007bcf7fL NThingShot::CTCShotDefinitionMultiArrow::InitMovement
+00686a70	call	007bd0fd	007bcf7fL NThingShot::CTCShotDefinitionMultiArrow::InitMovement
+00686a70	call	007bd134	007bcf7fL NThingShot::CTCShotDefinitionMultiArrow::InitMovement
+007beff0	call	007bd4e5	007bd2d1L NThingShot::CTCShotDefinitionThrow::OnSubShotTrigger
+007beff0	call	007bd759	007bd527L NThingShot::CTCShotDefinitionProjectilePredictive::OnSubShot
+00686a70	call	007bd8b4	007bd845L CTCShotDefinitionDrainLife::InitMovement
+00686a70	call	007bd9b7	007bd845L CTCShotDefinitionDrainLife::InitMovement
+00686a70	call	007bd9ee	007bd845L CTCShotDefinitionDrainLife::InitMovement
+00686a70	call	007bda90	007bd845L CTCShotDefinitionDrainLife::InitMovement
+007bfe30	call	007bdad4	007bdac7L NThingShot::CTCShotDefinitionDrainLife::UpdateCollision
+0080f240	call	007bdcd2	007bdb66L NThingShot::CTCShotDefinitionNymphFun::OnCollision
+006e0880	call	007bddad	007bdd77L NThingShot::CTCShotDefinitionMultiArrow::InitAttachedEffects
+006e0be0	call	007bde13	007bdd77L NThingShot::CTCShotDefinitionMultiArrow::InitAttachedEffects
+006e0880	call	007be07e	007be05cL NThingShot::CTCShotDefinitionDrainLife::SetSoulEffect
+006e0be0	call	007be0e7	007be05cL NThingShot::CTCShotDefinitionDrainLife::SetSoulEffect
+006e0880	call	007be138	007be0f9L NThingShot::CTCShotDefinitionForcePushBall::OnCollision
+00686a70	call	007be31e	007be0f9L NThingShot::CTCShotDefinitionForcePushBall::OnCollision
+006e0880	call	007be408	007be3e0L NThingShot::CTCShotDefinitionForcePushBall::InitAttachedEffe
+006e0be0	call	007be470	007be3e0L NThingShot::CTCShotDefinitionForcePushBall::InitAttachedEffe
+006e11a0	call	007be4c6	007be3e0L NThingShot::CTCShotDefinitionForcePushBall::InitAttachedEffe
+006e0880	call	007be508	007be4e0L NThingShot::CTCShotDefinitionDrainLife::InitAttachedEffects
+006e0be0	call	007be570	007be4e0L NThingShot::CTCShotDefinitionDrainLife::InitAttachedEffects
+006e11a0	call	007be5c6	007be4e0L NThingShot::CTCShotDefinitionDrainLife::InitAttachedEffects
+00686a70	call	007befc0	007befb0L NThingShot::CTCShotDefinitionBase::GetInitialVelocity
+00661b40	call	007bf1b0	007bf000L NThingShot::GetCreatureFirePosAndOrientation
+00686a70	call	007bfa63	007bf790L NThingShot::CTCShotDefinitionBase::Init
+00686a70	call	007c0626	007c04a0L CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe
+00686a70	call	007c085b	007c0690L NThingShot::CTCShotDefinitionBase::Init
+007c0690	call	007c0e53	-
+007c0690	call	007c0f7e	007c0e80L NThingShot::CreateShot
+006e0880	call	007c170f	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+00686a70	call	007c1740	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+006e0880	call	007c176a	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+006e0880	call	007c17c1	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+006e0880	call	007c19ca	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+00686a70	call	007c19fb	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+006e0880	call	007c1a24	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+006e0880	call	007c1a7a	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+006e0880	call	007c1b50	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+00686a70	call	007c1b81	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+006e0880	call	007c1baa	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+006e0880	call	007c1c00	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+007c1000	call	007c2250	007c21a0L NThingShot::CTCShotDefinitionBase::Update
+00686a70	call	007c2266	007c21a0L NThingShot::CTCShotDefinitionBase::Update
+007c1000	call	007c2387	-
+007c0690	call	007c2450	-
+006e11a0	call	007c2586	007c2480L CTCShotDefinitionBase::UpdateEffects
+006e0880	call	007c25c5	007c25a0L CTCShotDefinitionBase::InitAttachedEffects
+006e0be0	call	007c26bf	007c25a0L CTCShotDefinitionBase::InitAttachedEffects
+006e11a0	call	007c2745	007c25a0L CTCShotDefinitionBase::InitAttachedEffects
+007c3a60	call	007c305b	007c3040L CTCDrainLife::SetAICast
+007c3a60	call	007c315c	007c30e0L CTCDrainLife::CTCDrainLife
+006e0be0	call	007c34bb	-
+006e0be0	call	007c4188	007c3fb0L CTCHealLife::FrameUpdate
+006e0be0	call	007c47fe	007c4430L CTCHealLife::StartHealingEffect
+006e0be0	call	007c4ade	007c4430L CTCHealLife::StartHealingEffect
+006e0be0	call	007c5bc1	007c57c0L CTCGhostSword::AddSword
+006e11a0	call	007c642d	-
+006e0be0	call	007c6c4f	007c6aa0L CTCTurncoatSpell::StartTurncoatingEffects
+006e0be0	call	007c6d6c	007c6aa0L CTCTurncoatSpell::StartTurncoatingEffects
+006e0be0	call	007c70ff	007c6e50L CTCTurncoatSpell::FrameUpdate
+006e0be0	call	007c7253	007c6e50L CTCTurncoatSpell::FrameUpdate
+006e0be0	call	007c7b4c	007c7a00L CTCTurncoat::ModifyTurncoatedness
+006e0be0	call	007c7e84	007c7c40L CTCTurncoat::FrameUpdate
+006e0be0	call	007c8eb8	007c8de0L CTCFireballSpell::ProcessLevellingUpFX
+006e0be0	call	007c9503	007c93b0L CTCFireballSpell::FrameUpdate
+00686a70	call	007c9c04	-
+00686a70	call	007cae1d	007cacb0L CTCHeroReceiveItems::GlobalUpdate
+00686d40	call	007cb459	007cacb0L CTCHeroReceiveItems::GlobalUpdate
+004bfae0	call	007cc178	007cc120L CTCMultiArrow::RemoveEffectOnWeapon
+006e0be0	call	007cc3cf	007cc2b0L CTCMultiArrow::CreateAmmoEffect
+006e0880	call	007cd188	007ccf50L CTCMultiStrike::ApplyEffectOnWeapon
+006e0880	call	007cd19e	007ccf50L CTCMultiStrike::ApplyEffectOnWeapon
+006e0be0	call	007cd2dc	007ccf50L CTCMultiStrike::ApplyEffectOnWeapon
+006e0be0	call	007cd5d8	007cd390L CTCMultiStrike::CTCMultiStrike
+004bfae0	call	007cd940	007cd930L CTCBurntEffect::FinalCleanup
+004bfae0	call	007cd96e	007cd930L CTCBurntEffect::FinalCleanup
+006e0880	call	007cddf2	007cdd10L CTCBurntEffect::Reset
+006e0be0	call	007cde4b	007cdd10L CTCBurntEffect::Reset
+006e0880	call	007cde58	007cdd10L CTCBurntEffect::Reset
+006e0be0	call	007cdeaf	007cdd10L CTCBurntEffect::Reset
+006e0880	call	007cdebc	007cdd10L CTCBurntEffect::Reset
+006e0be0	call	007cdf25	007cdd10L CTCBurntEffect::Reset
+006a2220	call	007ce0a5	007cdfe0L CTCBurntEffect::CTCBurntEffect
+004bfae0	call	007ce3a1	007ce390L CTCElectrocutedEffect::FinalCleanup
+004bfae0	call	007ce3d1	007ce3c0L CTCElectrocutedEffect::OnKill
+004bfae0	call	007ce401	007ce3f0L CTCElectrocutedEffect::OnRemove
+006e0880	call	007ce9e7	007ce7a0L CTCElectrocutedEffect::Reset
+006e0be0	call	007ceabe	007ce7a0L CTCElectrocutedEffect::Reset
+006a2220	call	007cebd4	007ceb00L CTCElectrocutedEffect::CTCElectrocutedEffect
+004bfae0	call	007cf050	007cf040L CTCCreatureTintEffect::FinalCleanup
+004bfae0	call	007cf07e	007cf040L CTCCreatureTintEffect::FinalCleanup
+006a2220	call	007cf1cf	007cf110L CTCCreatureTintEffect::CTCCreatureTintEffect
+00686a70	call	007cf46b	007cf460L CTCTavernGameShoveHaPenny::LeaveGame
+00686a70	call	007d34d8	007d34a0L CTCTavernGameCoinGolf::EnterGame
+00686a70	call	007d38b5	007d3820L CTCTavernGameCoinGolf::ProcessInput
+005ea9b0	call	007d4393	-
+00686a70	call	007d4aac	007d4a90L CTCTavernGameCoinGolf::LeaveGame
+005ea9b0	call	007d4e63	007d4e30L CTCTavernGameCardSorting::EnterGame
+005ea9b0	call	007d60e9	007d60c0L CTCTavernGameCardPairs::EnterGame
+00686a70	call	007d7b4b	007d7b40L CTCTavernGameSpotTheAddition::LeaveGame
+005ea9b0	call	007d804b	007d7fd0L CTCTavernGameSpotTheAddition::EnterGame
+005ea9b0	call	007d8452	007d83c0L CTCTavernGameSpotTheAddition::OnInitialActivate
+005ea9b0	call	007d925a	007d8e20L CTCTavernGameSpotTheAddition::FrameUpdate
+006e0880	call	007dd830	-
+006e0be0	call	007dd8b7	-
+00686a70	call	007ddf32	007ddda0L CTCCreatureFlyInCircles::PlayLoopAnim
+00686a70	call	007df056	007de710L CTCWallMount::AttachObject
+00686a70	call	007df1ef	007df130L CTCWallMount::UnattachObject
+00686d40	call	007df703	007df6a0L CTCWallMountEffects::DoEffect
+00686a70	call	007df786	007df770L CTCWallMountEffects::FrameUpdate
+00686a70	call	007dfd00	007dfcf0L CTCTeleporter::TeleportHero
+00686a70	call	007dfdfc	007dfcf0L CTCTeleporter::TeleportHero
+00686d40	call	007e01f6	007e00d0L CTCTeleporter::FrameUpdate
+006e0880	call	007e0331	007e00d0L CTCTeleporter::FrameUpdate
+006e0be0	call	007e03ba	007e00d0L CTCTeleporter::FrameUpdate
+006a2220	call	007e0c9c	007e0bf0L CTCEffectOnDie::FrameUpdate
+006e0880	call	007e0d68	007e0d00L CTCEffectOnDie::OnDie
+006e0880	call	007e1094	-
+006e0be0	call	007e10f7	-
+00686a70	call	007e1f85	007e1f70L CTCAmbientBird::OnInitialActivate
+00686a70	call	007e27c7	007e2790L CTCFineDialogue::IsAllowed
+00686a70	call	007e2a74	007e2a60L CTCFineDialogue::GlobalUpdate
+004bfae0	call	007e33dc	007e33b0L CTCFlashOnHit::FrameUpdate
+004bfae0	call	007e343d	007e3420L CTCFlashOnHit::~CTCFlashOnHit
+00686d40	call	007e4e57	007e4e30L CTCBetting::FrameUpdate
+00646a46	call	007e5724	007e5680L CTCBetting::DrawPreparePrimitivesForRendering
+00646a46	call	007e5799	007e5680L CTCBetting::DrawPreparePrimitivesForRendering
+00686a70	call	007e5c54	007e5b90L CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate
+00686a70	call	007e5c98	007e5b90L CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate
+00686d40	call	007e5ecd	007e5d20L CTCOracleMinigame::PlayGame
+00686a70	call	007e61b5	007e61b0L CTCOracleMinigame::FireOutput
+00686d40	call	007e62de	007e62d0L CTCOracleMinigame::Quit
+00686a70	call	007e661f	007e6450L CTCOracleMinigame::UpdateTints
+004bfae0	call	007e6668	007e6450L CTCOracleMinigame::UpdateTints
+00686a70	call	007e77f8	007e7760L CTCFireheartMinigame::SetHeroPos
+00686d40	call	007e7967	007e78e0L CTCFireheartMinigame::PlayGame
+00686d40	call	007e7a49	007e7a40L CTCFireheartMinigame::Quit
+004c9ca0	call	007e89c0	-
+00686d40	call	007eb72c	007eb6a0L CTCActionUseSearch::OnActionUse
+00686a70	call	007eb838	007eb6a0L CTCActionUseSearch::OnActionUse
+00686a70	call	007ebaf1	007ebab0L CTCActionUseWindow::OnActionUse
+00686d40	call	007ebeee	007ebea0L CTCActionUseBed::OnActionUse
+00686a70	call	007ec72d	-
+00686a70	call	007ec98a	-
+00686a70	call	007ecaf4	-
+00686d40	call	007ecb1a	-
+006e0880	call	007eeb62	007eeb20L CTCSmashableBarrier::Smash
+00686d40	call	007ef9eb	-
+006e0880	call	007efb68	-
+006e0be0	call	007efba0	-
+006e0be0	call	007efbd6	-
+006e0880	call	007f052a	007f04c0L CTCResurrectionItem::OnItemUsed
+006e0be0	call	007f0567	007f04c0L CTCResurrectionItem::OnItemUsed
+006e0880	call	007f0954	007f08b0L CTCKrakenTentacle::OnInitialActivate
+006e0be0	call	007f09b7	007f08b0L CTCKrakenTentacle::OnInitialActivate
+006e0880	call	007f0a1f	007f08b0L CTCKrakenTentacle::OnInitialActivate
+006e0be0	call	007f0ad3	007f08b0L CTCKrakenTentacle::OnInitialActivate
+006e0880	call	007f0b89	007f0b10L CTCKrakenTentacle::DoDieFX
+006e0be0	call	007f0c3d	007f0b10L CTCKrakenTentacle::DoDieFX
+00686a70	call	007f1977	007f1930L CTCDRumble::OnInitialActivate
+00686d40	call	007f19c9	007f1930L CTCDRumble::OnInitialActivate
+004c9ca0	call	007f1b3f	007f1ac0L CTCDRumble::Create
+006e0880	call	007f24bf	007f2410L CTCLightningOrb::OnDie
+00686a70	call	007f28dd	007f26b0L CTCLightningOrb::Initialise
+006e0880	call	007f2d1f	007f26b0L CTCLightningOrb::Initialise
+006e0be0	call	007f2d81	007f26b0L CTCLightningOrb::Initialise
+006e0880	call	007f3243	007f2dc0L CTCLightningNode::FrameUpdate
+006e11a0	call	007f33d4	007f2dc0L CTCLightningNode::FrameUpdate
+006e0880	call	007f4e52	007f4e10L CTCSmashableWindow::Smash
+00686a70	call	007f53c7	007f53b0L CTCSoundAtmosphere::FrameUpdate
+00686a70	call	007f53da	007f53b0L CTCSoundAtmosphere::FrameUpdate
+00686a70	call	007f5ae9	007f5ae0L CTCTargetingBase::UpdateNearestInterestingThing
+00686a70	call	007f5c4c	007f5ae0L CTCTargetingBase::UpdateNearestInterestingThing
+00686a70	call	007f6409	-
+00686d40	call	007f64d3	-
+006e0880	call	007f896f	007f8890L CTCParticleAttacher::AttachParticles
+006e0be0	call	007f89f6	007f8890L CTCParticleAttacher::AttachParticles
+006e0880	call	007f8a6c	007f8890L CTCParticleAttacher::AttachParticles
+006e0be0	call	007f8aef	007f8890L CTCParticleAttacher::AttachParticles
+00686d40	call	007f99e6	007f9960L CTCTargetingSpirit::UpdateTargetList
+00686d40	call	007f9a18	007f9960L CTCTargetingSpirit::UpdateTargetList
+006e0880	call	007fb790	007fb6a0L CTCKraken::StartBeamEffect
+006e0be0	call	007fb842	007fb6a0L CTCKraken::StartBeamEffect
+006e0880	call	007fb98a	007fb870L CTCKraken::KillBeamEffect
+006e0be0	call	007fb9ed	007fb870L CTCKraken::KillBeamEffect
+006e0880	call	007fbb50	007fbb00L CTCKraken::CreateHeadEffect
+006e0be0	call	007fbc02	007fbb00L CTCKraken::CreateHeadEffect
+00686d40	call	007fbdf5	007fbc90L CTCKraken::GetCentreMarker
+00686a70	call	007fc172	007fbe50L CTCKraken::UpdateBeamExplosion
+006e0880	call	007fc1ee	007fbe50L CTCKraken::UpdateBeamExplosion
+00686a70	call	007fc825	007fc820L CTCKraken::SetPhase
+00686d40	call	007fcaf4	007fc9d0L CTCKraken::FrameUpdate
+004c9ca0	call	007fd54d	007fd4b0L CTCDPhysicalObstruction::Create
+00686a70	call	007fe148	-
+00686a70	call	007fe16d	-
+00686a70	call	007fe288	-
+006e0880	call	007fe4b9	-
+004c9ca0	call	007ff7f3	007ff7d0L CTCDHeroSuit::Create
+00686a70	call	00801a59	00801a50L CTCIdleScheduler::ChooseNewIdle
+00686a70	call	00801bf9	00801be0L CTCIdleScheduler::IsPreferredIdle
+00686a70	call	0080359d	-
+00686a70	call	008037c0	-
+00686a70	call	008037de	-
+00686a70	call	00803d6c	00803d60L CTCTargetingPlayer::UpdateProjectileTargeting
+00686a70	call	0080403d	00804020L CTCTargetingPlayer::UpdateTargetList
+00686a70	call	00804b2c	00804020L CTCTargetingPlayer::UpdateTargetList
+006a7380	call	008060f5	008060c0L std::__find_if
+006a7380	call	0080610a	008060c0L std::__find_if
+006a7380	call	0080611f	008060c0L std::__find_if
+006a7380	call	00806130	008060c0L std::__find_if
+006a7380	call	00806166	008060c0L std::__find_if
+006a7380	call	00806177	008060c0L std::__find_if
+006a7380	call	00806188	008060c0L std::__find_if
+006a7380	call	00806d15	00806cf0L std::remove_copy_if
+006a7380	call	0080712b	-
+006a7380	call	00807ab5	00807a90L std::remove_copy_if
+006a7380	call	00807c6a	-
+006a7380	call	00807ccb	-
+006a7380	call	00807d2c	-
+006a7380	call	00807d8d	-
+006a7380	call	00807df4	-
+006a7380	call	00807e55	-
+006a7380	call	00807eb2	-
+006a7380	call	0080955b	-
+006a7380	call	00809d85	00809d60L std::remove_copy_if
+006a7380	call	00809fb8	00809f80L std::__find_if
+006a7380	call	0080a011	00809f80L std::__find_if
+006a7380	call	0080a030	00809f80L std::__find_if
+006a7380	call	0080a04b	00809f80L std::__find_if
+006a7380	call	0080a0a5	00809f80L std::__find_if
+006a7380	call	0080a0c0	00809f80L std::__find_if
+006a7380	call	0080a0db	00809f80L std::__find_if
+006a7380	call	0080a10b	-
+006a7380	call	0080a875	0080a850L std::remove_copy_if
+006a7380	call	0080a94a	0080a910L std::__find_if
+006a7380	call	0080a969	0080a910L std::__find_if
+006a7380	call	0080a988	0080a910L std::__find_if
+006a7380	call	0080a9a7	0080a910L std::__find_if
+006a7380	call	0080a9f3	0080a910L std::__find_if
+006a7380	call	0080aa0e	0080a910L std::__find_if
+006a7380	call	0080aa29	0080a910L std::__find_if
+004c9ca0	call	0080c4db	0080c460L CTCDExplosion::Create
+004c9ca0	call	0080c56a	0080c500L CTCDExplosion::Create
+00686a70	call	0080d20f	0080d0b0L CTCDExplosion::CreateStaticExplosion
+00686a70	call	0080d316	-
+00686a70	call	0080d4c9	-
+00686a70	call	0080d63c	-
+00686a70	call	0080f135	0080f130L CTCNymph::GetRandomFlightHeight
+00686a70	call	0080f31f	0080f270L CTCNymph::PickNewTargetPos
+00686a70	call	0080f417	0080f270L CTCNymph::PickNewTargetPos
+00686a70	call	0080f4d8	0080f270L CTCNymph::PickNewTargetPos
+00686a70	call	0080f5b5	0080f270L CTCNymph::PickNewTargetPos
+006e0880	call	0080f73e	0080f5e0L CTCNymph::StartFlyingAround
+006e0be0	call	0080f7f7	0080f5e0L CTCNymph::StartFlyingAround
+006e0880	call	0080f92d	0080f870L CTCNymph::StopFlyingAround
+006e0be0	call	0080f9e6	0080f870L CTCNymph::StopFlyingAround
+00686a70	call	0080faee	0080fad0L CTCNymph::FrameUpdate
+006a06e0	call	008101a5	-
+004c9ca0	call	008101bf	-
+00686a70	call	0081061b	008101f0L CTCDExplosiveTrail::FrameUpdate
+00686a70	call	008106b5	008101f0L CTCDExplosiveTrail::FrameUpdate
+00686a70	call	008113c6	008113c0L CTCEntityEvents::AddEvent
+00686a70	call	00811453	00811450L CTCEntityEvents::FrameUpdate
+007beff0	call	008117fe	00811760L NEntityEvents::CEventHitBase::CEventHitBase
+007beff0	call	00811814	00811760L NEntityEvents::CEventHitBase::CEventHitBase
+006a06e0	call	0082d988	0082d920L CThingBuilding::Create
+004c9ca0	call	0082d9a2	0082d920L CThingBuilding::Create
+007449b0	call	008328b5	00832840L CThingAICreature::OnCollision
+006a06e0	call	00833894	00833800L CThingAICreature::Create
+004c9ca0	call	008338ae	00833800L CThingAICreature::Create
+006a4d60	call	00833a9b	00833a70L CThingAICreature::OnCreate
+004c9ca0	call	00835a5b	00835a20L CTCDNone::Create
+006a06e0	call	00835ddd	00835c80L CThingDeadCreature::Create
+004c9ca0	call	00835df7	00835c80L CThingDeadCreature::Create
+006a06e0	call	0083608d	00835fd0L CThingDeadCreature::OnCreate
+006e0880	call	00836359	00836260L CThingDeadCreature::WorldUpdate
+006e0be0	call	0083639f	00836260L CThingDeadCreature::WorldUpdate
+004c9ca0	call	00836a2b	008369f0L CThingSoundEmitter::Create
+006a06e0	call	008384a1	008383d0L CThingTrackNode::Create
+004c9ca0	call	008384bb	008383d0L CThingTrackNode::Create
+006a06e0	call	00838638	008385b0L CThingNoise::Create
+004c9ca0	call	00838652	008385b0L CThingNoise::Create
+006e0880	call	008398a3	00839420L NThingHelpers::CreateEffectOnHit
+006e11a0	call	00839915	00839420L NThingHelpers::CreateEffectOnHit
+007beff0	call	0083a310	-
+006a06e0	call	0083b863	0083b7f0L CThingVillage::Create
+004c9ca0	call	0083b87d	0083b7f0L CThingVillage::Create
+006a06e0	call	0083bc52	0083bbf0L CThingHolySite::Create
+004c9ca0	call	0083bc6c	0083bbf0L CThingHolySite::Create
+006a06e0	call	0083c650	0083c5d0L CThingSwitch::Create
+004c9ca0	call	0083c66a	0083c5d0L CThingSwitch::Create
+006a06e0	call	0083d514	0083d460L CThingMarker::Create
+004c9ca0	call	0083d52a	0083d460L CThingMarker::Create
+006a06e0	call	0083dc4f	0083dbe0L CThingPhysicalSwitch::Create
+004c9ca0	call	0083dc69	0083dbe0L CThingPhysicalSwitch::Create
+008f8a80	call	0083f9fc	0083f9b0L LHNetworkLib::LHHttp2::Open
+008f9780	call	0083ff8f	0083ff80L LHNetworkLib::LHHttp2::Reset
+008f8c70	call	0084007a	00840070L LHNetworkLib::LHHttp2::Close
+008f9780	call	00840087	00840070L LHNetworkLib::LHHttp2::Close
+008f8c70	call	008410da	008410d0L LHNetworkLib::LHHttp2::~LHHttp2
+008f9780	call	008410e7	008410d0L LHNetworkLib::LHHttp2::~LHHttp2
+008f9780	call	008413d3	008413d0L LSocket::`scalar deleting destructor'
+00663b10	call	00843028	00842fd0L CCreatureAction_MagicBlast::PerformAction
+006a4df0	call	008445e5	008445a0L CCreatureAction_KillCreature::PerformAction
+006e0880	call	008454f9	00845350L CCreatureAction_ShowTrophy::Initialise
+006e0be0	call	00845593	00845350L CCreatureAction_ShowTrophy::Initialise
+006e0880	call	00845743	008455c0L CCreatureAction_ShowTrophy::PerformAction
+006e0be0	call	008457d3	008455c0L CCreatureAction_ShowTrophy::PerformAction
+00661b40	call	008462bc	00846100L CCreatureAction_WearGameObject::PerformAction
+00661b40	call	008465cb	00846410L CCreatureAction_Undress::PerformAction
+007449b0	call	0084936e	00849320L CCreatureAction_AlertToPlayer::PerformAction
+006e0880	call	00854999	008548b0L CCreatureAction_SpiritAttack::CreateAttackEffect
+006e0be0	call	00854a58	008548b0L CCreatureAction_SpiritAttack::CreateAttackEffect
+006e11a0	call	00854b47	008548b0L CCreatureAction_SpiritAttack::CreateAttackEffect
+006e11a0	call	00854db0	00854b90L CCreatureAction_SpiritAttack::FrameUpdate
+006a4df0	call	00854ee7	00854dd0L CCreatureAction_SpiritAttack::PerformAction
+006a9640	call	00857c18	00857b70L ProcessPlayerControl
+00661b40	call	0085ee5f	0085ee50L NCreatureMode::GetStunnedEffectCreationPos
+00686a70	call	008650e6	008650e0L CTCCreatureHitNotification::UpdateHitNotification
+00686a70	call	0086522e	-
+004c9ca0	call	00870bed	00870bb0L CTCDInternalMarker::Create
+00663b10	call	0087151a	-
+006e0880	call	00871b57	-
+006e0be0	call	00871c64	-
+006e0880	call	0087fc63	0087f3a0L CCombatAction_KickThingOnGround::PerformAction
+006af630	call	00880205	00880200L NUISystem::CSpellContainerList::AddChild
+006af630	call	0088022c	00880220L CTCPhysicsBase::HasCollidedWithLandscapeAt
+006af630	call	0088024e	00880220L CTCPhysicsBase::HasCollidedWithLandscapeAt
+007449b0	call	0089d154	0089d0e0L CGameScriptInterface::EntitySetAsAwareOfThing
+006a2220	call	0089db41	0089da70L CGameScriptInterface::EntitySetAlpha
+006e0970	call	0089f941	0089f910L CGameScriptInterface::CreateEffect
+006e0be0	call	0089f98a	0089f910L CGameScriptInterface::CreateEffect
+006e0970	call	0089f9f0	0089f9e0L CGameScriptInterface::CreateEffect
+006e0880	call	008b75b8	008b74d0L CCreatureAction_OnGenerate::Initialise
+006e0880	call	008b7ab1	008b7a20L CCreatureAction_SummonCreatures::Initialise
+006e0880	call	008b8e31	008b8d30L CCreatureAction_ScreamerDie::Initialise
+006e0be0	call	008b8ef0	008b8d30L CCreatureAction_ScreamerDie::Initialise
+006e0880	call	008b9f01	008b9e50L CCreatureAction_TeleportOut::Initialise
+006e0880	call	008b9fd1	008b9f20L CCreatureAction_TeleportIn::Initialise
+00663b10	call	008bf3da	008bf280L CCreatureAction_GenericFireProjectileWeapon::PerformAction
+00663b10	call	008c0a3c	008c0900L CCreatureAction_BriarRoseShotFarOutof::PerformAction
+007c0690	call	008c0abc	008c0900L CCreatureAction_BriarRoseShotFarOutof::PerformAction
+006e0880	call	008c0f95	008c0ea0L CCreatureAction_JackDeathInto::Initialise
+006e0880	call	008c1072	008c0fb0L CCreatureAction_JackFloatUp::PerformAction
+006e0880	call	008c10c0	008c0fb0L CCreatureAction_JackFloatUp::PerformAction
+006e0be0	call	008c1150	008c0fb0L CCreatureAction_JackFloatUp::PerformAction
+006e0880	call	008c1dd6	008c1c30L CCreatureAction_BriarRoseConcentrateInto::Initialise
+006e0880	call	008c2100	008c1f70L CCreatureAction_BriarRoseInvulnerableTeleport::Initialise
+006e0880	call	008c2b68	008c2ad0L CCombatAction_WillHealInto::FinishAction
+006e0be0	call	008c2baa	008c2ad0L CCombatAction_WillHealInto::FinishAction
+006e0880	call	008c4233	008c4170L CCreatureAction_ScorpionKingDeath::Initialise
+006e0880	call	008c4c49	008c4b80L CCombatAction_StrikeResponseScorpionKing::Initialise
+006e0be0	call	008c4c8b	008c4b80L CCombatAction_StrikeResponseScorpionKing::Initialise
+006e0880	call	008c4d75	008c4cb0L CCreatureAction_WaspQueenDeath::Initialise
+006e0be0	call	008c4df6	008c4cb0L CCreatureAction_WaspQueenDeath::Initialise
+00663b10	call	008c6449	008c6430L CCreatureAction_TrollProjectileAttack::PerformAction
+00663b10	call	008c6930	008c6860L CCreatureAction_TrollThrowProjectile::PerformAction
+007c0690	call	008c69f8	008c6860L CCreatureAction_TrollThrowProjectile::PerformAction
+006e0880	call	008c82ea	008c8180L CCreatureAction_BanditKingLunge::PerformAction
+006e0be0	call	008c8353	008c8180L CCreatureAction_BanditKingLunge::PerformAction
+006e0880	call	008c8465	008c8380L CCreatureAction_BanditKingStuck::Initialise
+006e0be0	call	008c851a	008c8380L CCreatureAction_BanditKingStuck::Initialise
+006e0880	call	008c8702	008c8550L CCreatureAction_BanditKingUnstuck::Initialise
+006e0be0	call	008c876b	008c8550L CCreatureAction_BanditKingUnstuck::Initialise
+006e0880	call	008c8866	008c87a0L CCreatureAction_BanditKingStuckGetHit::Initialise
+006e0be0	call	008c8921	008c87a0L CCreatureAction_BanditKingStuckGetHit::Initialise
+00663b10	call	008c8b7a	008c89d0L CCreatureAction_BanditKingThrowWeapons::PerformAction
+006e0880	call	008c9ae3	008c9a40L _global::AttachEffectToStaff
+006e0be0	call	008c9b4e	008c9a40L _global::AttachEffectToStaff
+006e0880	call	008ca07a	008c9fe0L CCreatureAction_NymphTeleportLimboBase::DoEffect
+006e0be0	call	008ca0e1	008c9fe0L CCreatureAction_NymphTeleportLimboBase::DoEffect
+006e0880	call	008ca3b1	008ca310L CCreatureAction_NymphGetHit::PerformAction
+006e0be0	call	008ca41a	008ca310L CCreatureAction_NymphGetHit::PerformAction
+006e0880	call	008cbb55	008cb940L CCreatureAction_SummonerDead::Initialise
+008cd0d0	call	008cc984	008cc8e0L CCreatureAction_BalverineLungeAttack::Initialise
+008cd0d0	call	008ccefb	008ccd70L CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction
+006e0be0	call	008cd908	008cd820L CCreatureAction_BattleChargeImpact::FinishAction
+006e0be0	call	008cd999	008cd820L CCreatureAction_BattleChargeImpact::FinishAction
+006e0be0	call	008cdb12	008cda30L CCreatureAction_BattleChargeMiss::FinishAction
+006e0be0	call	008cdba3	008cda30L CCreatureAction_BattleChargeMiss::FinishAction
+006e0be0	call	008ce8bb	008ce6f0L CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSki
+008d46d0	call	008d0521	008d04e0L CGameScriptThing::MsgIsKilledBy
+008d46d0	call	008d0646	008d0610L CGameScriptThing::MsgWhoKilledMe
+00663b10	call	008d519b	008d5110L CCreatureAction_FireMissileWeapon::CCreatureAction_FireMissi
+00663b10	call	008d59e1	008d5970L CCreatureAction_FireMissileTest::PerformAction
+007c0690	call	008d5de3	-
+006e0880	call	008d72ca	008d7270L NCreatureMode::CModeOutOfActionBase::OnActivate
+006e0880	call	008d8062	008d7f10L NCreatureMode::CModeJackOfBladesFlash::OnActivate
+006e0880	call	008d83eb	008d8330L NCreatureMode::CModeScreamerSuperAttack::OnActivate
+006e0880	call	008d97cc	008d9740L NCreatureMode::CModeJackOfBladesFloat::OnActivate
+006e0be0	call	008d9842	008d9740L NCreatureMode::CModeJackOfBladesFloat::OnActivate
+006e0880	call	008d990c	008d9870L NCreatureMode::CModeJackOfBladesScream::OnActivate
+006e0be0	call	008d9985	008d9870L NCreatureMode::CModeJackOfBladesScream::OnActivate
+006e0880	call	008d9f7c	008d9e30L NCreatureMode::CModeScorpionKingTailPlunge::OnActivate
+006e0880	call	008da007	008d9e30L NCreatureMode::CModeScorpionKingTailPlunge::OnActivate
+006e0be0	call	008da071	008d9e30L NCreatureMode::CModeScorpionKingTailPlunge::OnActivate
+006e0880	call	008da29b	008da0f0L NCreatureMode::CModeScorpionKingTailPlunge::Spike
+006e0880	call	008da4f2	008da410L NCreatureMode::CModeScreamerAggressive::OnActivate
+006e0be0	call	008da59f	008da410L NCreatureMode::CModeScreamerAggressive::OnActivate
+006e0880	call	008dab02	008daa80L NCreatureMode::CModeThunderLightningStorm::CreateSkyBeam
+006e0880	call	008dab9f	008daa80L NCreatureMode::CModeThunderLightningStorm::CreateSkyBeam
+006e0be0	call	008dac49	008daa80L NCreatureMode::CModeThunderLightningStorm::CreateSkyBeam
+006e0880	call	008dad30	008dacb0L NCreatureMode::CModeThunderLightningStorm::CreateHandGlow
+006e0be0	call	008dadda	008dacb0L NCreatureMode::CModeThunderLightningStorm::CreateHandGlow
+006e0880	call	008daeb2	008dae10L NCreatureMode::CModeSummonerLightningOrb::OnActivate
+006e0be0	call	008daf48	008dae10L NCreatureMode::CModeSummonerLightningOrb::OnActivate
+006e0880	call	008daf96	008dae10L NCreatureMode::CModeSummonerLightningOrb::OnActivate
+006e0880	call	008db71e	008db620L CModeDragonFireBeam::StartBeamEffect
+006e0be0	call	008db7d3	008db620L CModeDragonFireBeam::StartBeamEffect
+006e0880	call	008dc81b	008dc720L NCreatureMode::CModeDragonStrafeBurninate::StartBeamEffect
+006e0be0	call	008dc8d7	008dc720L NCreatureMode::CModeDragonStrafeBurninate::StartBeamEffect
+006e0880	call	008dd4a3	-
+006e0be0	call	008dd51c	-
+006e0880	call	008dd56c	-
+006e0be0	call	008dd5aa	-
+006e0880	call	008dd5fe	-
+006e0be0	call	008dd677	-
+008e3240	call	008dd803	008dd7e0L CModeThunderLightningStorm::UpdateDamage
+006e0880	call	008ddb6d	008ddad0L NCreatureMode::CModeThunderLightningStorm::CreateLightningBe
+006e0880	call	008ddcab	008ddad0L NCreatureMode::CModeThunderLightningStorm::CreateLightningBe
+006e0880	call	008dded5	008ddd70L NCreatureMode::CModeGuildmasterPowerUpHeal::OnActivate
+006e0be0	call	008ddf13	008ddd70L NCreatureMode::CModeGuildmasterPowerUpHeal::OnActivate
+006e0880	call	008de9f9	-
+006e0880	call	008dedf3	-
+006e0880	call	008df5ab	008df510L NCreatureMode::CModeScorpionKingTailPlunge::Recover
+006e0880	call	008e02d7	008e0060L NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate
+006e0880	call	008e0615	008e03b0L NCreatureMode::CModeGuildmasterPowerUpSpeed::OnActivate
+006e0880	call	008e0ae4	008e0a10L NCreatureMode::CModeScorpionKingVulnerable::FrameUpdate
+006e0be0	call	008e0b2d	008e0a10L NCreatureMode::CModeScorpionKingVulnerable::FrameUpdate
+006e11a0	call	008e189b	008e16a0L NCreatureMode::CModeScreamerSuperAttack::FrameUpdate
+006e11a0	call	008e1c31	008e18d0L NCreatureMode::CModeThunderLightningStorm::UpdateLightningBe
+006e11a0	call	008e2093	008e18d0L NCreatureMode::CModeThunderLightningStorm::UpdateLightningBe
+006e11a0	call	008e23f6	008e20f0L NCreatureMode::CModeGuildmasterPowerUpShield::FrameUpdate
+006e11a0	call	008e2834	008e24f0L NCreatureMode::CModeGuildmasterPowerUpSpeed::FrameUpdate
+006e0880	call	008e7b22	008e7a00L NCreatureMode::CModeBriarRoseTeleportInvulnerable::OnActivat
+006e0880	call	008e858f	008e8060L NCreatureMode::CModeBriarRoseConcentrate::OnActivate
+006e0be0	call	008e85d9	008e8060L NCreatureMode::CModeBriarRoseConcentrate::OnActivate
+006e0880	call	008e8664	008e8060L NCreatureMode::CModeBriarRoseConcentrate::OnActivate
+006e0be0	call	008e86f4	008e8060L NCreatureMode::CModeBriarRoseConcentrate::OnActivate
+006e0880	call	008eb5ed	008eacb0L NCreatureMode::CModeHoverBase::OnActivate
+006e0be0	call	008eb671	008eacb0L NCreatureMode::CModeHoverBase::OnActivate
+006e0880	call	008ec2f7	008ec260L CCreatureAction_UndeadRiseUp::OnAnimationLoaded
+006e0880	call	008ec3b7	008ec320L CCreatureAction_UndeadReturnToEarth::Initialise
+006a2220	call	008ec5b7	008ec4f0L CCreatureAction_UndeadIdleUnderground::Initialise
+006e0880	call	008eca6a	008eca50L CTCDegradableBase::ShowParticleEffects
+006e0be0	call	008ecaa1	008eca50L CTCDegradableBase::ShowParticleEffects
+00686a70	call	008ecc84	008ecc80L CTCDegradableBase::OnHit
+00686d40	call	008ed0d9	008ed090L CTCContainer::AddItemToInventory
+005ea9b0	call	008ef3bc	008ef390L CTCTavernGameCoinBase::EnterGame
+005ea9b0	call	008ef3cd	008ef390L CTCTavernGameCoinBase::EnterGame
+005ea9b0	call	008ef3de	008ef390L CTCTavernGameCoinBase::EnterGame
+005ea9b0	call	008efa2c	008efa00L CTCTavernGameCoinBase::AddNewCoin
+005ea9b0	call	008f1f53	-
+00686a70	call	008f2249	008f20f0L CTCTavernGameCardBase::LeaveGame
+006e0880	call	008f259a	008f2580L CTCTavernGameCardBase::AddPointerParticleEffect
+006e0be0	call	008f2644	008f2580L CTCTavernGameCardBase::AddPointerParticleEffect
+00663b10	call	008f3076	008f3020L CCreatureAction_DragonFlight::PerformAction
+00663b10	call	008f323c	008f3100L CCreatureAction_DragonLandFireball::PerformAction
+007c0690	call	008f32bc	008f3100L CCreatureAction_DragonLandFireball::PerformAction
+00663b10	call	008f344c	008f3310L CCreatureAction_DragonFireBlastBase::PerformAction
+00663b10	call	008f377e	008f3630L CCreatureAction_DragonRearUpFull::PerformAction
+006e0880	call	008f397a	008f3630L CCreatureAction_DragonRearUpFull::PerformAction
+006e0880	call	008f79e1	008f7950L NCombatActionHelpers::CreateDustEffectForCreature
+006e11a0	call	008f7a5c	008f7950L NCombatActionHelpers::CreateDustEffectForCreature
+006e0880	call	008f7b16	-
+006e0be0	call	008f7b61	-
+006e11a0	call	008f7bae	-
+006e0880	call	008f7c3f	008f7bd0L _global::CreateFootEffectForCreature
+006e0be0	call	008f7c9f	008f7bd0L _global::CreateFootEffectForCreature
+006e11a0	call	008f7d1a	008f7bd0L _global::CreateFootEffectForCreature
+006e0880	call	008f7d9e	-
+006e11a0	call	008f7e19	-
+006e0880	call	008f7e8e	008f7e70L NCombatActionHelpers::CreateEffect
+006e0be0	call	008f7eb8	008f7e70L NCombatActionHelpers::CreateEffect
+006e11a0	call	008f7f2d	008f7e70L NCombatActionHelpers::CreateEffect
+006e0880	call	008f7f65	008f7f50L NCombatActionHelpers::CreateEffect
+006e11a0	call	008f7ff0	008f7f50L NCombatActionHelpers::CreateEffect
+008f82e0	call	008f845d	008f8440L LSocket::TryToSendDataFromQueue
+008f86f0	call	008f87d7	008f87a0L LHNetworkLib::LSocket::CreateSocket
+008f86f0	call	008f8847	008f8830L LHNetworkLib::LSocket::ConvertLAddress2Sockaddr
+008f87a0	call	008f891d	008f8910L LSocket::Bind
+008f8870	call	008f8964	-
+008f8870	call	008f8974	-
+008fa120	call	008f8b31	008f8a80L LHNetworkLib::LSocket::LSocket
+008f8bb0	call	008f8c57	008f8c00L LSocket::Attach
+008f8bb0	call	008f8c61	008f8c00L LSocket::Attach
+0090aa10	call	008f8c9c	008f8c70L LHNetworkLib::LSocket::Close
+008fa120	call	008f8ca3	008f8c70L LHNetworkLib::LSocket::Close
+008f86f0	call	008f8d3a	008f8cc0L LSocket::Listen
+008f87a0	call	008f8fcc	008f8f50L LHNetworkLib::LSocket::Send
+008f82e0	call	008f901f	008f8f50L LHNetworkLib::LSocket::Send
+008f8c70	call	008f92f2	008f8f50L LHNetworkLib::LSocket::Send
+008f87a0	call	008f9392	008f9320L LSocket::Receive
+008f8870	call	008f939e	008f9320L LSocket::Receive
+008f8bb0	call	008f947a	008f9320L LSocket::Receive
+008f8c70	call	008f9789	008f9780L LSocket::~LSocket
+008f86f0	call	008f9857	008f9820L LSocket::Open
+008f86f0	call	008f98c2	008f9820L LSocket::Open
+008f8870	call	008f9945	008f9820L LSocket::Open
+008f9780	call	008f9bd9	-
+00877720	call	008fafc1	008faf70L NCameraModes::CPhysicsForceModelBase::DoThingEvasion
+008cd0d0	call	0090556c	00905550L NBalverineCombat::CanLungeThisFrame
+008e3240	call	0090909a	00909070L CCombatSequence_BattleCharge::OnCreate
+008f8c70	call	0090aa53	0090aa40L LHNetworkLib::LSocketServer::~LSocketServer
+008f9780	call	0090aa60	0090aa40L LHNetworkLib::LSocketServer::~LSocketServer
+008f9780	call	0090aab9	0090aa40L LHNetworkLib::LSocketServer::~LSocketServer
+008f9780	call	0090aae9	0090aa40L LHNetworkLib::LSocketServer::~LSocketServer
+008f8a80	call	0090b099	0090b080L LSocketServer::RequestListener
+008f8870	call	0090b0ce	0090b080L LSocketServer::RequestListener
+008f9780	call	0090b0fe	0090b080L LSocketServer::RequestListener
+008f8a80	call	0090b2a5	0090b160L LHNetworkLib::LSocketServer::Think
+0090b160	call	0090b45e	0090b450L LSocketServer::CheckForAcceptedConnectionsOnSocket
+006a4df0	call	0091b494	0091b3a0L CAIStateGroup_SeekPerceivedThing::RunToPerceivedThingPositio
+006a4df0	call	0091b4bd	0091b3a0L CAIStateGroup_SeekPerceivedThing::RunToPerceivedThingPositio
+006a4df0	call	0091b4dd	0091b3a0L CAIStateGroup_SeekPerceivedThing::RunToPerceivedThingPositio
+008d46d0	call	0091ceb7	0091cdc0L CAIStateGroupMinionReactToNoiseMethods::IsRunnable
+006a4df0	call	0091dc97	-
+006a4df0	call	0091dd16	-
+008d46d0	call	0092263b	00922600L CAIStateGroup_Drunk::IsRunnable
+008d46d0	call	009226ec	009226b0L CAIStateGroup_Drunk::IsStillValid
+008d46d0	call	0092c621	0092c5a0L CAIStateGroup_MinionSleep::IsStillValid
+008d46d0	call	0092edfb	0092edc0L CAIStateGroup_MinionReactToPlayerInteraction::FindPlayerInte
+008d46d0	call	0092f27c	0092f240L CAIStateGroup_MinionReactToPlayerInteraction::InteractionFai
+008d46d0	call	009304c4	-
+004c7950	call	00931813	-
+004c7950	call	0093b2b1	0093b1d0L CAIStateGroup_BanditSitRoundCampfire::Update
+0065f7b4	call	00943d96	-
+008d46d0	call	0094bffb	0094bfc0L CAIStateGroup_SellToBuyer::GetBuyersOrder
+00956590	call	00954dd1	00954cd0L CAIStateGroup_MazeTutorialBattleUseShield::IsRunnable
+00686a70	call	0096084e	00960760L CAIStateGroup_DeedReactionRoot::OnReplace
+004c7950	call	00969566	00969470L CAIStateGroup_TavernKeeper::Update
+008d46d0	call	00969791	00969760L CAIStateGroupBase::WaitForMessageEvent
+00956590	call	0096a7e8	0096a7a0L CAIStateGroup_WhisperRetreat::IsRunnableLeaf
+00956590	call	0096b44b	-
+008e3240	call	0096c352	0096c2e0L CAIStateGroup_Thunder::IsRunnable
+008d46d0	call	0096e22a	0096df50L CAIStateGroup_ScreamerPursueTarget::Update
+006e0880	call	00973d0a	-
+006e0880	call	00974967	00974770L CAIStateGroup_JackOfBladesStage1::PowerUpSword
+006e0be0	call	00974a1a	00974770L CAIStateGroup_JackOfBladesStage1::PowerUpSword
+007449b0	call	0097a6bd	0097a630L CAIStateGroup_CreatureTakeCover::Update
+007449b0	call	0097cd52	0097ccd0L CAIStateGroup_CreatureFindCover::Update
+008d46d0	call	0097d3fe	0097d360L CAIStateGroupBase::AIAction_WaitForMessage
+00a63150	call	009e2884	009e2830L CVertexBufferWin32::CVertexBufferWin32
+00a63150	call	009e2fc9	009e2e30L CFontManager::CFontManager
+00a63150	call	00a8ee3a	00a8eda0L C3DPrimitive2::SetupVertexBuffer
+00ac20d0	call	00a90887	00a90860L C3DPrimitive2::Sizeof
+00a90630	call	00a90fe4	00a90fc0L ExternalRetry_00a90fc0::Convert
+00a90630	call	00a91011	00a90fc0L ExternalRetry_00a90fc0::Convert
+00a90630	call	00a91116	00a910e0L C3DPrimitive2::CalculateVertexSize
+00a90560	call	00a9114f	00a910e0L C3DPrimitive2::CalculateVertexSize
+00a90630	call	00a911ef	00a91180L C3DPrimitive2::ConvertToVBFormatAnimated
+00a90560	call	00a913b4	00a91390L ExternalRetry_00a91390::Convert
+00a90560	call	00a913e1	00a91390L ExternalRetry_00a91390::Convert
+00a90630	call	00a914d4	00a914b0L C3DPrimitive2::UploadToVertexBufferAnimated
+00a90560	call	00a9279e	00a92740L C3DPrimitive2::ConvertToVBFormatStatic
+00a90560	call	00a93222	00a931f0L C3DPrimitive2::UploadToVertexBufferStatic
+00ac20d0	jmp	00a94860	-
+00ac20d0	call	00a95666	-
+00a90630	call	00a9869a	00a98680L N3DPrimitive::CVertexShaderInputAnimated::CVertexShaderInput
+00a90560	call	00a9872a	00a98710L N3DPrimitive::CVertexShaderInputStatic::CVertexShaderInputSt
+00ab3740	call	00ab37d5	00ab37b0L CVertexStreamFormat::CalculateVertexSize
+00ab3740	call	00ac4e73	00ac4d70L CVertexStreamConverter::ConvertStream
+00ab3740	call	00ac4e84	00ac4d70L CVertexStreamConverter::ConvertStream
+00a90560	call	00b3d1ce	00b3cb30L CEngineResourceManager::CEngineResourceManager
+00a90630	call	00b3d1f4	00b3cb30L CEngineResourceManager::CEngineResourceManager
+00a90560	call	00b3d5df	00b3cb30L CEngineResourceManager::CEngineResourceManager
+00a90630	call	00b3d601	00b3cb30L CEngineResourceManager::CEngineResourceManager
+00a63150	call	00b515a6	00b51570L CEngineWeatherRenderer::BuildBuffers
+00a63150	call	00b51730	00b51570L CEngineWeatherRenderer::BuildBuffers
+00a63150	call	00b518fb	00b51570L CEngineWeatherRenderer::BuildBuffers
+00a63150	call	00b6203e	00b61ff0L CEngineSkyRenderer::BuildStarFieldVB
+00a63150	call	00b620d1	00b620a0L BuildBuffers
+00a63150	call	00b6da1a	00b6d940L CEngineWaterRenderer::LoadCompressedBuffer
+00a63150	call	00b6f825	00b6edf0L CEngineWaterRenderer::BuildConstantBuffers
+00a63150	call	00b8d0f9	00b8d0d0L CEngineOcclusionManager::BuildUnitBox
+00a63150	call	00b8dd97	00b8dcd0L CEngineOcclusionManager::SelectFlareTestVertexBuffer
+00a63150	call	00baa6bf	00baa6a0L BuildBuffers
+00a63150	call	00bb263d	00bb2540L CEngineClothRenderer::RenderPolygons
+00a63150	call	00bbf3a5	00bbf380L BuildBuffers
+00a63150	call	00bc3e35	00bc3e10L BuildBuffers
+00a63150	call	00bc814c	-
+00ac20d0	call	00bc9d4c	-
+00ac20d0	call	00bca1ef	-
+00ac20d0	call	00bca2e2	-
+00ac20d0	call	00bca62f	-
+00ac20d0	call	00bca68a	-
+00ac20d0	call	00bcad7c	00bca950L CEnginePrimitiveManagerSpriteTrails::RenderSpriteTrail
+00ac20d0	call	00bcadc6	00bca950L CEnginePrimitiveManagerSpriteTrails::RenderSpriteTrail
+00ac20d0	call	00bcb7c1	00bca950L CEnginePrimitiveManagerSpriteTrails::RenderSpriteTrail
+00ac20d0	call	00bcce57	00bcc800L CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
+00ac20d0	call	00bcceb1	00bcc800L CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
+00ac20d0	call	00bcd3ff	00bcc800L CEnginePrimitiveManagerWeaponTrails::RenderWeaponTrail
+00a63150	call	00bda458	00bda3d0L CEngineLandscapeMemoryManager::AllocateVertexBuffer
+00a63150	call	00be92cd	00be91e0L CWaterSeaGenerator::LoadSea
+00ac20d0	call	00bf3307	-
+00ac20d0	call	00bf3311	-
+00a63150	call	00bf33ff	00bf3380L CEngineVertexBufferPool::BuildNewBuffer
+00ed4420	call	00ed4272	00ed41d0L NScript::CV_StatueMasterScript::CStatueMasterStatue::Main
+00ed4420	call	00ed45b3	00ed45a0L NScript::CV_StatueMasterScript::CStatueMasterCellarDoors::Ma
+00ed4420	call	00ed4836	00ed4830L NScript::CV_StatueMasterScript::CStatueMasterChest::Main

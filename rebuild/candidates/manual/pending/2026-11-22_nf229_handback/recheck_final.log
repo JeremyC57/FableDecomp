@@ -1,0 +1,50 @@
+addr       parity           behav  name
+0042b8fc   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@Z -> 0042b8fc labelled 'CEngineInternalPrimitiveBase::ClearPrimitiveList'
+0042b8fc   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@Z (catalog CEngineInternalPrimitiveBase::ClearPrimitiveList; names another function)
+0042b8fc   RELOCATION_MATCH PASS   ClearPrimitiveList
+0042a264   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@Z -> 0042a264 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+0042a264   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@Z (catalog LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray; names another function)
+0042a264   RELOCATION_MATCH PASS   BuildTreeArray
+0042a237   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@@Z -> 0042a237 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+0042a237   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@@Z (catalog LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray; names another function)
+0042a237   RELOCATION_MATCH PASS   BuildTreeArray
+0042ac9f   WARN STANDIN_LEAF ??0?$_Rb_tree_base@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@1@@Z (catalog Allocator_Alloc_24bytes; names another function)
+0042ac9f   RELOCATION_MATCH PASS   Allocator_Alloc_24bytes
+0042acec   WARN STANDIN_LEAF ??0?$_Rb_tree_base@U?$pair@$$CBJW4EEngine2DLayer@@@std@@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@1@@Z (catalog LinkedList_Initialize; names another function)
+0042acec   RELOCATION_MATCH PASS   LinkedList_Initialize
+0042ad10   WARN STANDIN_LEAF ??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@1@@Z (catalog Allocator_Alloc_28bytes; names another function)
+0042ad10   RELOCATION_MATCH PASS   Allocator_Alloc_28bytes
+0042ae33   WARN STANDIN_LEAF ?_M_lower_bound@?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@ABEPAU_Rb_tree_node_base@2@ABJ@Z (catalog BinaryTree_Find; names another function)
+0042ae33   MATCH            PASS   BinaryTree_Find
+0042ac0a   RELOCATION_MATCH PASS   StdList_Ctor_0042ac0a
+00446720   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00446720   WARN SHARED_HEADER_AVAILABLE CKeyboard (engine/CKeyboard.h)
+00446720   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+00446720   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00446720   WARN SHARED_HEADER_AVAILABLE CActionInputControl (engine/CActionInputControl.h)
+00446720   RELOCATION_MATCH PASS   GetActionName
+00558170   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00558170   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00558170   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+00558170   RELOCATION_MATCH PASS   GetActionText
+00599d5c   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00599d5c   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+00599d5c   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager (engine/CGameJoystickManager.h)
+00599d5c   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+00599d5c   RELOCATION_MATCH PASS   DoPressStart
+0042be50   RELOCATION_MATCH PASS   CAction
+
+WINS: 12
+  0042b8fc RELOCATION_MATCH _global::?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@Z
+  0042a264 RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@Z
+  0042a237 RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@@Z
+  0042ac9f RELOCATION_MATCH _global::??0?$_Rb_tree_base@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@1@@Z
+  0042acec RELOCATION_MATCH _global::??0?$_Rb_tree_base@U?$pair@$$CBJW4EEngine2DLayer@@@std@@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@1@@Z
+  0042ad10 RELOCATION_MATCH _global::??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@1@@Z
+  0042ae33 MATCH _global::?_M_lower_bound@?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@ABEPAU_Rb_tree_node_base@2@ABJ@Z
+  0042ac0a RELOCATION_MATCH _global::??0?$_List_base@PAVCObserver@NUISystem@@V?$allocator@PAVCObserver@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCObserver@NUISystem@@@1@@Z
+  00446720 RELOCATION_MATCH _global::?GetActionName@@
+  00558170 RELOCATION_MATCH NUISystem::CKeyRedefiner::?GetActionText@CKeyRedefiner@NUISystem@@
+  00599d5c RELOCATION_MATCH NUISystem::CFrontEndManager::?DoPressStart@CFrontEndManager@NUISystem@@IAEXXZ
+  0042be50 RELOCATION_MATCH NUISystem::CAction::??0CAction@NUISystem@@QAE@XZ
+VLAND_EXIT 0

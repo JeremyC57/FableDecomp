@@ -1,3 +1,4 @@
+// Leaf: ?GetNoFaces@CPhysicsFacesSegmentLeaf@@MBEJXZ
 // CPhysicsFacesSegmentLeaf::GetNoFaces() -- the element count of the 2-byte-element range at +0x4/+0x8
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A860F0, oracle length 9 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
@@ -10,13 +11,15 @@
 struct SElement { unsigned char _body[0x2]; };
 
 struct CPhysicsFacesSegmentLeaf {
-    unsigned char _pad[0x4];
+    
     SElement* m_first;                     // +0x4
     SElement* m_last;                      // +0x8
-    long GetNoFaces();
+    protected:
+    virtual long GetNoFaces() const;
+    public:
 };
 
-long CPhysicsFacesSegmentLeaf::GetNoFaces()
+long CPhysicsFacesSegmentLeaf::GetNoFaces() const
 {
     return m_last - m_first;
 }

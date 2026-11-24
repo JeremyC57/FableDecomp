@@ -1,0 +1,6 @@
+# link of the 48 rechecked objects (/FORCE); LNK4006 per symbol; HEAD control = the same set without 0x007602F0
+HEAD
+      1 ?DrawPrimitiveLineOverLandscape@NShape@@YIXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@22ABVCRGBColour@@@Z
+landing
+      1 ?DrawPrimitiveLineOverLandscape@NShape@@YIXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@22ABVCRGBColour@@@Z
+pick-any ?GFArcCos@@YIMN@Z in 0x007602F0's object v retail 0x005DB180: 18 B, 2 relocations masked, 0 differing bytes (then int3 padding)

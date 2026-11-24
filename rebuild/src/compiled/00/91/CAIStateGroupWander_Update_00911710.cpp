@@ -76,7 +76,7 @@ class CCreatureActionBase { public:
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
-    CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
+    CCreatureAction_PlayAnimation(CThingCreatureBase& creature, const CCharString& animation, float blend,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00843A80
 };
 
@@ -139,7 +139,7 @@ void CAIStateGroup_Wander::Update()
         bool failed;
         {
             CCharString animation("ST_IDLE");
-            failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+            failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(*GetCreature(), animation, 0.0f,
                 CSoundPair(), false, true, false, 0, 0), false) != 2;
         }
         if (failed)

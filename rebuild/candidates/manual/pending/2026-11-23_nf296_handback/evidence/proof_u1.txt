@@ -1,0 +1,56 @@
+##### 00d9ee20 renames: ?IsSpawnPointToSpawn@CQ_MinionCampScript@NScript@@QAE_NABVCScriptThing@@@Z=?ShouldSpawnPointSpawn@CQ_MinionCampScript@NScript@@QAE_NABVCScriptThing@@@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=7
+tables H=2 N=2
+##### 00892f10 renames: ?DeactivateQuestLater@CQuestManager@@QAEXABVCCharString@@K@Z=?AddPendingQuestToDeactivate@CQuestManager@@QAEXABVCCharString@@K@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 004fc190 renames: ?ContainsMap@CRegion@@QBE_NJ@Z=?IsMapIncluded@CRegion@@QBE_NJ@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 0057b0f7 renames: ?SetSunTan@CTCHeroMorph@@QAEXM@Z=?SetTan@CTCHeroMorph@@QAEXM@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 007f14f0 renames: ?CreateHeadEffect@CTCKrakenTentacle@@QAEXXZ=?DoDieFX@CTCKrakenTentacle@@QAEXXZ
+sections head 11 new 11
+ALL_EQ text_sections_equal=8
+tables H=0 N=0
+##### 0057d8be renames: ?AddRenownEntry@CTCOverheadDisplay@@QAEXM@Z=?AddRenownChange@CTCOverheadDisplay@@QAEXM@Z
+sections head 11 new 11
+ALL_EQ text_sections_equal=9
+tables H=0 N=0
+##### 0066bbf0 renames: ?UpdateSounds@CTCSoundPlayer@@QAEXXZ=?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0069f8b0 renames: ?CancelAbilities@CTCUnholyPower@@QAEXXZ=?CancelMove@CTCUnholyPower@@QAEXXZ
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 00e82650 renames: ?InitialiseVariablesCheck@CV_FisticuffsClubScript@NScript@@QAEXXZ=?SetCompletedThisClub@CV_FisticuffsClubScript@NScript@@QAEXXZ
+sections head 10 new 10
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 00e9fcd0 renames: ?ResetMissionState@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ=?InitialiseVariables@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ
+sections head 17 new 17
+ALL_EQ text_sections_equal=9
+tables H=2 N=2
+##### 0054ea00 renames: ?InitialiseFromDef@CViewport@NUISystem@@QAEXXZ=?GetDataFromDef@CViewport@NUISystem@@QAEXXZ
+sections head 10 new 10
+ALL_EQ text_sections_equal=5
+tables H=4 N=4
+##### 00a67ea0 renames: ?InitialiseFromVolume@CVolume@@QAEXPAUIDirect3DVolume9@@@Z=?InitialiseFromVolumeTextureMipmap@CVolume@@QAEXPAUIDirect3DVolume9@@@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=4
+tables H=1 N=1
+##### 009beeb0 renames: ?OnPresent@CVsyncCallbackTimer@@QAEXXZ=?OnPostSwapScreens@CVsyncCallbackTimer@@QAEXXZ
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 0088e400 renames: ?SetEnabled@CWorld@@QAEX_N@Z=?SetMiniMapEnabled@CWorld@@QAEX_N@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

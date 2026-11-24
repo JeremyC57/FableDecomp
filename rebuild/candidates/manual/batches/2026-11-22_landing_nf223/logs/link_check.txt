@@ -1,0 +1,17 @@
+# link of the 20 rechecked objects (/FORCE); LNK4006 per symbol: HEAD 8, landing 6
+HEAD
+      1 ??$__copy@PAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+      1 ??$__destroy_aux@PAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@@std@@YIXPAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@0ABU__false_type@0@@Z
+      1 ?Compare@?$CBasicString@D@@KIJPBD0@Z
+      1 ?FractureShape@NShape@@YIXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAW4ECirculationOrder@1@AAV?$vector@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@V?$allocator@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@2@@3@2@Z
+      1 ?IsLineIntersectingWithOthersInList@NShape@@YI_NABVC2DLineF@@ABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+      1 ?IsTriangleWithPointsInside@NShape@@YI_NABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@0W4ECirculationOrder@1@@Z
+      1 o6.obj : warning LNK4006: @DeleteIfSet@4 already defined in o3.obj; second definition ignored
+      1 o8.obj : warning LNK4006: @DeleteIfSet@4 already defined in o3.obj; second definition ignored
+landing
+      1 ??$__copy@PAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+      1 ??$__destroy_aux@PAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@@std@@YIXPAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@0ABU__false_type@0@@Z
+      1 ?Compare@?$CBasicString@D@@KIJPBD0@Z
+      1 ?FractureShape@NShape@@YIXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAW4ECirculationOrder@1@AAV?$vector@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@V?$allocator@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@2@@3@2@Z
+      1 ?IsLineIntersectingWithOthersInList@NShape@@YI_NABVC2DLineF@@ABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+      1 ?IsTriangleWithPointsInside@NShape@@YI_NABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@0W4ECirculationOrder@1@@Z

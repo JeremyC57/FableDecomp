@@ -1,5 +1,5 @@
 // CBankFileEntryUpdateData::Equals(const CArray<CCharString>& filenames, CCountedPointer<CBankStateBlock> stateBlock) const -- the update record still matches when the state block's CRC and every source filename are unchanged
-// Leaf: ?Equals@CBankFileEntryUpdateData@@
+// Leaf: ?Equals@CBankFileEntryUpdateData@@ABE_NABV?$CArray@VCCharString@@@@V?$CCountedPointer@VCBankStateBlock@@@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CC750, length 235 bytes (+5 int3), ret 0xc. Ego_r.pdb
@@ -45,7 +45,9 @@ public:
     CSmallVector<CCharString, 8> Filenames;        // +0x0c
     bool RequiresUpdate;                           // +0x14
     bool Exists;                                   // +0x15
+    private:
     bool Equals(const CArray<CCharString>& filenames, CCountedPointer<CBankStateBlock> stateBlock) const;
+    public:
 };
 
 bool CBankFileEntryUpdateData::Equals(const CArray<CCharString>& filenames, CCountedPointer<CBankStateBlock> stateBlock) const

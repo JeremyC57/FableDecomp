@@ -1,7 +1,8 @@
+// Leaf: ?IsRunnable@CAIStateGroup_SitForMeal@@MAE_NXZ
 // CAIStateGroup_SitForMeal::IsRunnable() -- a meal is due on a new day, during meal hours, when a cooking pot exists
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00945B90, length 49 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (PBrain -> +0x1c -> +0x24), the world's
-// day counter read through its clock object (+0x1c -> +0x14), IsInMealHours @ 0x009455B0 (the
+// day counter read through its clock object (+0x1c -> +0x14), IsMealTime @ 0x009455B0 (was IsInMealHours; the
 // manifest's propagated "IsInSchoolHours": the creature's CTCVillage interface asks for the hour
 // window), GetPCookingPot @ 0x00945A90 (CThing* or null).
 // Shape: three tests in a row with one shared `xor al,al` false tail; the day comparison is
@@ -27,14 +28,16 @@ public:
 };
 
 struct CAIStateGroup_WorkBase : CAIStateGroupBase {
-    bool IsInMealHours();                       // 0x009455B0
 };
 
 struct CAIStateGroup_SitForMeal : CAIStateGroup_WorkBase {
     unsigned char _pad2[0x30];                  // +0x14..+0x43 seat / pot pointers
     long DayLastAte;                            // +0x44
+    protected:
     virtual bool IsRunnable();
+    public:
 private:
+    bool IsMealTime() const;                    // 0x009455B0 (NF306: Ego_r + FableWin ?IsMealTime@CAIStateGroup_SitForMeal@@ABE_NXZ; was CAIStateGroup_WorkBase::IsInMealHours())
     CThing* GetPCookingPot() const;                   // 0x00945A90
 public:
 };
@@ -42,7 +45,7 @@ public:
 bool CAIStateGroup_SitForMeal::IsRunnable()
 {
     if (GetWorld().m_pClock->m_day != DayLastAte) {
-        if (IsInMealHours()) {
+        if (IsMealTime()) {
             if (GetPCookingPot() != 0)
                 return true;
         }

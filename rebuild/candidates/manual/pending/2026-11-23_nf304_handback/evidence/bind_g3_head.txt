@@ -1,0 +1,96 @@
+#35 00492973 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@1111KM_N2@Z
+   00492973(self) - DEF=OK:?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@1111KM_N2@Z
+   00492bab OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@1111KM_N2@Z x1
+   00492e4b OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@1111KM_N2@Z x1
+   00492ed1 NOOBJ
+   00492f69 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@1111KM_N2@Z x1
+   00492fb4 NOOBJ
+   00493049 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@1111KM_N2@Z x1
+   005eadc0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@1111KM_N2@Z x1
+   006dd7e0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@1111KM_N2@Z x1
+   007132c0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@1111KM_N2@Z x1
+   00892a80 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@1111KM_N2@Z x1
+#36 00492e4b ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z
+   00492e4b(self) - DEF=OK:?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z
+   006d0830 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z x1
+   007132c0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@KM_N2@Z x1
+   0072e710 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z x1
+   0072e810 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z x1
+   0072e940 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z x1
+   0074ee90 NOOBJ
+   00750110 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z x1
+   007cacb0 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z x1
+   007e27f0 WRONG ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_NK@Z x2
+   007e2a60 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z x1
+   009261f0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@PBVCWideString@@KM_N2@Z x1
+   0092fab0 NOOBJ
+#37 00492f69 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z
+   00492f69(self) - DEF=WRONG:?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@111KM_N2@Z
+   005e9c50 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   005e9d60 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   005eaf30 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   005eb080 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   005eb180 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   006dd7e0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   007132c0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   007e4e30 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   007e7ac0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   007ebea0 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   008139c0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@111KM_N2@Z x1
+   0092fab0 NOOBJ
+#38 00493049 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@1111KM_N2@Z
+   00493049(self) - DEF=OK:?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@1111KM_N2@Z
+   008929d0 WRONG ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@1111KM_N2@Z x1
+   0089e540 OK ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@1111KM_N2@Z x1
+#45 009e5090 ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z
+   009e5090(self) - DEF=OK:?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z
+   0066b370 OK ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z x1
+   006e0730 OK ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z x1
+   006f9be0 OK ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z x1
+   006fc8e0 OK ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z x1
+   006fcc80 NOOBJ
+#46 00729b20 ?OnActionUse@CTCActionUseScriptedHook@@QAEXAAVCThing@@@Z
+   00729b20(self) - DEF=OK:?OnActionUse@CTCActionUseScriptedHook@@QAEXAAVCThing@@@Z
+   0069fe60 WRONG ?OnActionUse@CTCActionUseScriptedHook@@QAEXPAVCThing@@@Z x1
+#47 007f7710 ??0CTCActivationReceptorBase@@QAE@AAVCThing@@@Z
+   007f7710(self) - DEF=OK:??0CTCActivationReceptorBase@@QAE@AAVCThing@@@Z
+   004de623 OK ??0CTCActivationReceptorBase@@QAE@AAVCThing@@@Z x1
+   004de660 WRONG ??0CTCActivationReceptorBase@@QAE@PAVCThing@@@Z x1
+   004de68b WRONG ??0CTCActivationReceptorBase@@QAE@PAVCThing@@@Z x1
+   004e07e3 WRONG ??0CTCActivationReceptorBase@@QAE@PAVCThing@@@Z x1
+#48 0078c210 ??0CTCBerserk@@QAE@AAVCThing@@@Z
+   0078c210(self) - DEF=OK:??0CTCBerserk@@QAE@AAVCThing@@@Z
+   004d4a69 WRONG ??0CTCBerserk@@QAE@PAVCThing@@@Z x1
+#49 007827d0 ?OnHeroEnteringArea@CTCBoastingArea@@AAEXAAVCThing@@@Z
+   007827d0(self) - DEF=OK:?OnHeroEnteringArea@CTCBoastingArea@@AAEXAAVCThing@@@Z
+   007828e0 WRONG ?OnHeroEnteringArea@CTCBoastingArea@@QAEXPAVCThing@@@Z x1
+#50 00782860 ?OnHeroLeavingArea@CTCBoastingArea@@AAEXAAVCThing@@@Z
+   00782860(self) - DEF=OK:?OnHeroLeavingArea@CTCBoastingArea@@AAEXAAVCThing@@@Z
+   007828e0 WRONG ?OnHeroLeavingArea@CTCBoastingArea@@QAEXPAVCThing@@@Z x2
+   00782a90 WRONG ?OnHeroLeavingArea@CTCBoastingArea@@QAEXPAVCThing@@@Z x1
+#52 0079d360 ??0CTCBulletTime@@QAE@AAVCThing@@@Z
+   0079d360(self) - DEF=OK:??0CTCBulletTime@@QAE@AAVCThing@@@Z
+   004d4c58 WRONG ??0CTCBulletTime@@QAE@PAVCThing@@@Z x1
+#53 007055d0 ?GetCarriedPositionInfo@CTCCarryable@@QBE_NAAVC3DVector@@AAVCRightHandedSet@@_NM@Z
+   007055d0(self) NOOBJ
+   00705b00 WRONG ?GetCarriedPositionInfo@CTCCarryable@@QAE_NPAVC3DVector@@PAVCRightHandedSet@@_NM@Z x1
+   00705b60 WRONG ?GetCarriedPositionInfo@CTCCarryable@@QAE_NPAVC3DVector@@PAVCRightHandedSet@@_NM@Z x1
+   0076e2f0 OK ?GetCarriedPositionInfo@CTCCarryable@@QBE_NAAVC3DVector@@AAVCRightHandedSet@@_NM@Z x1
+#54 006cb780 ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@M0MAAV2@@Z
+   006cb780(self) - DEF=WRONG:?GetNearbyDirectedPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@M0MPAV2@@Z
+   004a3740 OK ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@M0MAAV2@@Z x1
+   0095e900 WRONG ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@M0MPAV2@@Z x1
+   0097fbe0 WRONG ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@M0MPAV2@@Z x1
+   009804a0 WRONG ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@M0MPAV2@@Z x1
+   00984f60 OK ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@M0MAAV2@@Z x1
+#58 007e4b60 ?Activate@CTCCreditsUI@@QAEXVCCharString@@@Z
+   007e4b60(self) - DEF=OK:?Activate@CTCCreditsUI@@QAEXVCCharString@@@Z
+   00896df0 WRONG ?Activate@CTCCreditsUI@@QAIXVCCharString@@@Z x1
+#59 006e0480 ?SetEmitterOrientation@CTCDParticleEmitter@@QAEXABVCRightHandedSet@@@Z
+   006e0480(self) - DEF=OK:?SetEmitterOrientation@CTCDParticleEmitter@@QAEXABVCRightHandedSet@@@Z
+   006637d0 OK ?SetEmitterOrientation@CTCDParticleEmitter@@QAEXABVCRightHandedSet@@@Z x1
+   00750540 -
+   0089f9e0 OK ?SetEmitterOrientation@CTCDParticleEmitter@@QAEXABVCRightHandedSet@@@Z x1
+#60 00730630 ??0CTCDoor@@QAE@AAVCThing@@@Z
+   00730630(self) - DEF=OK:??0CTCDoor@@QAE@AAVCThing@@@Z
+   004d32da WRONG ??0CTCDoor@@QAE@PAVCThing@@@Z x1

@@ -1,0 +1,4 @@
+entry	address	status	binders_respelled	note
+1 (Clone self rows)	0x006A0E50 / 0x006A0D20	done	0 (slot-11 binders already EBE)	both RELOCATION_MATCH + PASS on the shared headers; 0x006A0E50 2 -> 1 spelling, 0x006A0D20 2 -> 1
+2 (CVertexGroupBlock dtor duplicate)	0x00AD94F0 / 0x00ADCE60	partly done: 0x00ADCE60 done (needs a ruling), 0x00AD94F0 rejected	0 (the new reference binds the owner's own leaf ??1CVertexGroupBlock@@QAE@XZ)	0x00ADCE60 RELOCATION_MATCH + PASS, its NEQ copy gone; 0x00AD94F0: retail expands the dtor inline, declare-only DIFFER(420v536), its copy is EQ pick-any: the remaining LNK4006 is the owner 0x00A96DA0's strong definition (decision)
+3 (q12659)	0x00418DCA	open (not started; context)	-	needs the 469-includer proof

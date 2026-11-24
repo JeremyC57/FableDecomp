@@ -19,15 +19,23 @@ class Coin : public Mass {
 public:
     Coin(float x, float radius, CThing* thing, bool owned);             // ??0Coin@@QAE@MMPAVCThing@@_N@Z (argument names descriptive)
     Coin(const Coin&);                                                   // ??0Coin@@QAE@ABV0@@Z 0x008EFF40
-    void Update(float);                                                  // ?Update@Coin@@QAEXM@Z
+#ifdef FABLE_RETAIL_COIN_UPDATE_PASS27
+    void Update(float time_delta) { Mass::Update(time_delta); }
+#else
+    void Update(float);
+#endif                                                  // ?Update@Coin@@QAEXM@Z
     void UpdateSound(bool);                                              // ?UpdateSound@Coin@@QAEX_N@Z 0x008EF400
     bool                        Owned;                                   // +0x24
     CIntelligentPointer<CThing> Thing;                                   // +0x25
     float                       Radius;                                  // +0x30
+#ifdef FABLE_RETAIL_COIN_OWNER_TYPE_PASS26
+    int                         Owner;                                  // +0x34, both PDB records
+#else
     long                        Owner;                                   // +0x34 (PDB int)
+#endif
     unsigned long               Sound;                                   // +0x38
 };
-FABLE_STATIC_ASSERT(offsetof(Coin, Owned) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(Coin, Radius) == 0x30);
-FABLE_STATIC_ASSERT(sizeof(Coin) == 0x3c);
+FABLE_STATIC_ASSERT_AT(30, offsetof(Coin, Owned) == 0x24);
+FABLE_STATIC_ASSERT_AT(31, offsetof(Coin, Radius) == 0x30);
+FABLE_STATIC_ASSERT_AT(32, sizeof(Coin) == 0x3c);
 #endif

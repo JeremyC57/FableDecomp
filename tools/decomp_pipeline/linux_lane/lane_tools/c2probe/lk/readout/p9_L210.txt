@@ -1,0 +1,85 @@
+# ?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z: 2118 sorts, 2757 comparator calls
+ 3927 a L210   op278  [0]v[1] B1 count 0001024b 00000004 X=587    Y=None   rule -  s587:_rotated_point | c4
+ 3928 a L210   op278  [0]v[1] B1 count 0001012e 00000010 X=302    Y=None   rule -  s302 | c10
+ 3929 a L210   op278  [0]v[1] B1 count 0001024b 00000008 X=587    Y=None   rule -  s587:_rotated_point | c8
+ 3931 a L210   op278  [0]v[1] B1 count 0001012e 00000030 X=302    Y=None   rule -  s302 | c30
+ 3988 a L210   op278  [0]v[1] B1 count 0001012e 00000004 X=302    Y=None   rule -  s302 | c4
+ 3989 a L210   op278  [0]v[1] B1 count 0001024b 00000004 X=587    Y=None   rule -  s587:_rotated_point | c4
+ 3990 a L210   op278  [0]v[1] B1 count 0001012e 00000014 X=302    Y=None   rule -  s302 | c14
+ 3991 a L210   op278  [0]v[1] B1 count 0001024b 00000008 X=587    Y=None   rule -  s587:_rotated_point | c8
+ 3993 a L210   op278  [0]v[1] B1 count 0001012e 00000034 X=302    Y=None   rule -  s302 | c34
+ 4050 a L210   op278  [0]v[1] B1 count 0001012e 00000008 X=302    Y=None   rule -  s302 | c8
+ 4051 a L210   op278  [0]v[1] B1 count 0001024b 00000004 X=587    Y=None   rule -  s587:_rotated_point | c4
+ 4052 a L210   op278  [0]v[1] B1 count 0001012e 00000018 X=302    Y=None   rule -  s302 | c18
+ 4053 a L210   op278  [0]v[1] B1 count 0001024b 00000008 X=587    Y=None   rule -  s587:_rotated_point | c8
+ 4055 a L210   op278  [0]v[1] B1 count 0001012e 00000038 X=302    Y=None   rule -  s302 | c38
+ 4109 b L210   op27a  [0]v[1] B1 hash  0001f900 0001b0a0 X=1992   Y=1413   rule 1  s1992 | s1413
+ 4112 a L210   op278  [0]v[1] B1 count 0001012e 0000000c X=302    Y=None   rule -  s302 | cc
+ 4113 a L210   op278  [0]v[1] B1 count 0001024b 00000004 X=587    Y=None   rule -  s587:_rotated_point | c4
+ 4114 a L210   op278  [0]v[1] B1 count 0001012e 0000001c X=302    Y=None   rule -  s302 | c1c
+ 4115 a L210   op278  [0]v[1] B1 count 0001024b 00000008 X=587    Y=None   rule -  s587:_rotated_point | c8
+ 4117 a L210   op278  [0]v[1] B1 count 0001012e 0000003c X=302    Y=None   rule -  s302 | c3c
+ 4174 a L210   op278  [0]v[1] B1 count 0001024b 00000004 X=587    Y=None   rule -  s587:_rotated_point | c4
+ 4175 a L210   op278  [0]v[1] B1 count 0001024b 00000008 X=587    Y=None   rule -  s587:_rotated_point | c8
+22299 b L210   op278  [0]v[1] B1 hash  01035d70 01035a30 X=None   Y=None   rule -  s1998 s1422 | s1990 s1413
+22299 b L210   op278  [2]v[3] B1 need  010306f2 0001fbc0 X=None   Y=2014   rule -  s2006 s2096 | s2014
+22299 b L210   op278  [0]v[2] B1 hash  01035d70 010306f2 X=None   Y=None   rule -  s1998 s1422 | s2006 s2096
+22299 b L210   op278  [1]v[2] B1 hash  01035a30 010306f2 X=None   Y=None   rule -  s1990 s1413 | s2006 s2096
+22344 b L210   op278  [0]v[1] B1 hash  01035df0 01035ab0 X=None   Y=None   rule -  s2002 s1422 | s1994 s1413
+22344 b L210   op278  [2]v[3] B1 need  01030772 0001fc40 X=None   Y=2018   rule -  s2010 s2096 | s2018
+22344 b L210   op278  [0]v[2] B1 hash  01035df0 01030772 X=None   Y=None   rule -  s2002 s1422 | s2010 s2096
+22344 b L210   op278  [1]v[2] B1 hash  01035ab0 01030772 X=None   Y=None   rule -  s1994 s1413 | s2010 s2096
+22494 b L210   op278  [0]v[1] B1 hash  01035d70 01035a30 X=None   Y=None   rule -  s1998 s1422 | s1990 s1413
+22494 b L210   op278  [2]v[3] B1 need  010306f2 0001fbc0 X=None   Y=2014   rule -  s2006 s2096 | s2014
+22494 b L210   op278  [0]v[2] B1 hash  01035d70 010306f2 X=None   Y=None   rule -  s1998 s1422 | s2006 s2096
+22494 b L210   op278  [1]v[2] B1 hash  01035a30 010306f2 X=None   Y=None   rule -  s1990 s1413 | s2006 s2096
+22539 b L210   op278  [0]v[1] B1 hash  01035df0 01035ab0 X=None   Y=None   rule -  s2002 s1422 | s1994 s1413
+22539 b L210   op278  [2]v[3] B1 need  01030772 0001fc40 X=None   Y=2018   rule -  s2010 s2096 | s2018
+22539 b L210   op278  [0]v[2] B1 hash  01035df0 01030772 X=None   Y=None   rule -  s2002 s1422 | s2010 s2096
+22539 b L210   op278  [1]v[2] B1 hash  01035ab0 01030772 X=None   Y=None   rule -  s1994 s1413 | s2010 s2096
+32678 b L210   op27a  [0]v[1] B1 hash  0001f9c0 0001b1c0 X=1998   Y=1422   rule 1  s1998 | s1422
+32679 b L210   op27a  [0]v[1] B1 hash  0001f8c0 0001b0a0 X=1990   Y=1413   rule 1  s1990 | s1413
+32680 b L210   op27a  [0]v[1] B1 hash  0001fac0 00010601 X=2006   Y=2096   rule 1  s2006 | s2096
+32681 b L210   op278  [0]v[1] B1 hash  01035d70 01035a30 X=None   Y=None   rule -  s1998 s1422 | s1990 s1413
+32681 b L210   op278  [2]v[3] B1 need  010306f2 0001fbc0 X=None   Y=2014   rule -  s2006 s2096 | s2014
+32681 b L210   op278  [0]v[2] B1 hash  01035d70 010306f2 X=None   Y=None   rule -  s1998 s1422 | s2006 s2096
+32681 b L210   op278  [1]v[2] B1 hash  01035a30 010306f2 X=None   Y=None   rule -  s1990 s1413 | s2006 s2096
+32723 b L210   op27a  [0]v[1] B1 hash  0001fa40 0001b1c0 X=2002   Y=1422   rule 1  s2002 | s1422
+32724 b L210   op27a  [0]v[1] B1 hash  0001f940 0001b0a0 X=1994   Y=1413   rule 1  s1994 | s1413
+32725 b L210   op27a  [0]v[1] B1 hash  0001fb40 00010601 X=2010   Y=2096   rule 1  s2010 | s2096
+32726 b L210   op278  [0]v[1] B1 hash  01035df0 01035ab0 X=None   Y=None   rule -  s2002 s1422 | s1994 s1413
+32726 b L210   op278  [2]v[3] B1 need  01030772 0001fc40 X=None   Y=2018   rule -  s2010 s2096 | s2018
+32726 b L210   op278  [0]v[2] B1 hash  01035df0 01030772 X=None   Y=None   rule -  s2002 s1422 | s2010 s2096
+32726 b L210   op278  [1]v[2] B1 hash  01035ab0 01030772 X=None   Y=None   rule -  s1994 s1413 | s2010 s2096
+32775 b L210   op27a  [0]v[1] B1 hash  0001b0a0 000191c0 X=1413   Y=1166   rule 1  s1413 | s1166
+32776 b L210   op27a  [0]v[1] B1 hash  0001f980 0001b1c0 X=1996   Y=1422   rule 1  s1996 | s1422
+32777 b L210   op27a  [0]v[1] B1 hash  0001fa80 00010601 X=2004   Y=2096   rule 1  s2004 | s2096
+32778 b L210   op278  [0]v[1] B1 hash  0103d450 01035d30 X=None   Y=None   rule -  s1413 s1166 | s1996 s1422
+32778 b L210   op278  [2]v[3] B1 need  010306b2 0001fb80 X=None   Y=2012   rule -  s2004 s2096 | s2012
+32778 b L210   op278  [0]v[2] B1 hash  0103d450 010306b2 X=None   Y=None   rule -  s1413 s1166 | s2004 s2096
+32778 b L210   op278  [1]v[2] B1 hash  01035d30 010306b2 X=None   Y=None   rule -  s1996 s1422 | s2004 s2096
+32779 b L210   op27a  [0]v[1] B1 need  020c85c5 00013600 X=561    Y=6360   rule 1  t561=> | t6360
+32787 b L210   op27a  [0]v[1] B1 hash  0001b160 00013600 X=1419   Y=6360   rule 1  s1419:_y | t6360
+32844 b L210   op27a  [0]v[1] B1 hash  0001f9c0 0001b1c0 X=1998   Y=1422   rule 1  s1998 | s1422
+32845 b L210   op27a  [0]v[1] B1 hash  0001f8c0 0001b0a0 X=1990   Y=1413   rule 1  s1990 | s1413
+32846 b L210   op27a  [0]v[1] B1 hash  0001fac0 00010601 X=2006   Y=2096   rule 1  s2006 | s2096
+32847 b L210   op278  [0]v[1] B1 hash  01035d70 01035a30 X=None   Y=None   rule -  s1998 s1422 | s1990 s1413
+32847 b L210   op278  [2]v[3] B1 need  010306f2 0001fbc0 X=None   Y=2014   rule -  s2006 s2096 | s2014
+32847 b L210   op278  [0]v[2] B1 hash  01035d70 010306f2 X=None   Y=None   rule -  s1998 s1422 | s2006 s2096
+32847 b L210   op278  [1]v[2] B1 hash  01035a30 010306f2 X=None   Y=None   rule -  s1990 s1413 | s2006 s2096
+32889 b L210   op27a  [0]v[1] B1 hash  0001fa40 0001b1c0 X=2002   Y=1422   rule 1  s2002 | s1422
+32890 b L210   op27a  [0]v[1] B1 hash  0001f940 0001b0a0 X=1994   Y=1413   rule 1  s1994 | s1413
+32891 b L210   op27a  [0]v[1] B1 hash  0001fb40 00010601 X=2010   Y=2096   rule 1  s2010 | s2096
+32892 b L210   op278  [0]v[1] B1 hash  01035df0 01035ab0 X=None   Y=None   rule -  s2002 s1422 | s1994 s1413
+32892 b L210   op278  [2]v[3] B1 need  01030772 0001fc40 X=None   Y=2018   rule -  s2010 s2096 | s2018
+32892 b L210   op278  [0]v[2] B1 hash  01035df0 01030772 X=None   Y=None   rule -  s2002 s1422 | s2010 s2096
+32892 b L210   op278  [1]v[2] B1 hash  01035ab0 01030772 X=None   Y=None   rule -  s1994 s1413 | s2010 s2096
+32941 b L210   op27a  [0]v[1] B1 hash  0001b0a0 000191c0 X=1413   Y=1166   rule 1  s1413 | s1166
+32942 b L210   op27a  [0]v[1] B1 hash  0001f980 0001b1c0 X=1996   Y=1422   rule 1  s1996 | s1422
+32943 b L210   op27a  [0]v[1] B1 hash  0001fa80 00010601 X=2004   Y=2096   rule 1  s2004 | s2096
+32944 b L210   op278  [0]v[1] B1 hash  0103d450 01035d30 X=None   Y=None   rule -  s1413 s1166 | s1996 s1422
+32944 b L210   op278  [2]v[3] B1 need  010306b2 0001fb80 X=None   Y=2012   rule -  s2004 s2096 | s2012
+32944 b L210   op278  [0]v[2] B1 hash  0103d450 010306b2 X=None   Y=None   rule -  s1413 s1166 | s2004 s2096
+32944 b L210   op278  [1]v[2] B1 hash  01035d30 010306b2 X=None   Y=None   rule -  s1996 s1422 | s2004 s2096
+32945 b L210   op27a  [0]v[1] B1 need  020c85c5 00013600 X=608    Y=6360   rule 1  t608=> | t6360
+32953 b L210   op27a  [0]v[1] B1 hash  0001b160 00013600 X=1419   Y=6360   rule 1  s1419:_y | t6360

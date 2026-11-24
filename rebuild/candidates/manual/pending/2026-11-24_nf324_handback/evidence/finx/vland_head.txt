@@ -1,0 +1,5 @@
+00445620   MATCH            PASS   GetType
+00445670   MATCH            PASS   GetType
+004456d0   MATCH            PASS   IsInputTypeWithMouseButton
+00445770   MATCH            PASS   GetType
+00b23360   RELOCATION_MATCH PASS   GetPrimitiveDrawDistanceFactor

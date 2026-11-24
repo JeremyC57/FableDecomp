@@ -1,0 +1,4 @@
+claim	reason
+0x00496CF0 on the full engine/CSystemManager.h	the full header needs the Win32 types (HWND, CSystemManager.h line 57) and a negative-subscript assert fires without them; the HEAD in-place local CSystemManager model on the partial ESYSTEMRETURN_ONLY mode stays (vland WARN SHARED_HEADER_AVAILABLE, as at HEAD)
+0x00A0A150 dtor with Reset(0) over the default (Info-first) ReleaseData	RELOCATION_MATCH, but its pick-any copies ReleaseData / Reset / DeleteData<CMeshDataBank> were NEQ their owners 0x0042918C / 0x0042FC86 / 0x00428AE7 (/O2 bodies v the owners' size bodies); replaced by the RELEASEDATA + size-body + DELETEDATA_DECL_ONLY form (all EQ)
+0x00A0A110 ctor without FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE	RELOCATION_MATCH, but the TU then carried a ~CCountedPointer<CMeshDataBank> pick-any copy NEQ its owner 0x00429BF9 (and the clear / CMeshDataBankInfo copies); with the opt-in (retail's clear 0x00A0A720 is out of line) none is emitted

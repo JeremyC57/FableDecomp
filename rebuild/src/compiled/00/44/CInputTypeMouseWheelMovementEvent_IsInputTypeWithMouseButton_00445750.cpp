@@ -1,8 +1,7 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-// Leaf: ?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementEvent_Methods@@QAE_NH@Z
+// Leaf: ?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EMouseButtonControl@@@Z
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CInputTypeMouseWheelMovementEvent.h under FABLE_RETAIL_CINPUTTYPEMOUSEWHEELMOVEMENTEVENT_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CInputTypeMouseWheelMovementEvent_Methods::IsInputTypeWithMouseButton); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CINPUTTYPEMOUSEWHEELMOVEMENTEVENT_VIRTUAL_MODEL
 #include "engine/CInputTypeMouseWheelMovementEvent.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CInputTypeMouseWheelMovementEvent_Methods : CInputTypeMouseWheelMovementEvent {
-    bool IsInputTypeWithMouseButton(int a0);
-};
-bool CInputTypeMouseWheelMovementEvent_Methods::IsInputTypeWithMouseButton(int a0) { return false; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EMouseButtonControl@@@Z); evidence: RTTI vtable slot + PDB name set.
+bool CInputTypeMouseWheelMovementEvent::IsInputTypeWithMouseButton(EMouseButtonControl a0) const { return false; }

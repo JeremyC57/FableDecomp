@@ -1,0 +1,5 @@
+reloc_bindings.tsv: removed 4 stand-in witnesses, added 2 (0x0096FA90's PDB leaves for 0x006E9310 / 0x006EA050, first witnesses)
+spellings per target, before / after:
+004115a0=4 00662430=2 006e9310=1 006ea050=1 0099e9b0=5 00411570=4 013bd800=5 0129aaf4=18 
+004115a0=3 00662430=1 006e9310=1 006ea050=1 0099e9b0=5 00411570=4 013bd800=5 0129aaf4=18 
+old-spelling scan of all 4509 objects: 0 rows reference ??8CBasicStringChar / IsCombatant / IsCreatureFightingThing / CheckSummonerChargeable as an external; 13 rows define a dead ??8CBasicStringChar copy (only .debug$F relocations, no code reference): 00cbf9de 00d91320 00dcdf60 00e2e520 00e32080 00e569d0 00e5f2b0 00e6a000 00ec2240 00ee07e0 00ee2a80 00eec410 00f058d0

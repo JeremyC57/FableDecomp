@@ -43,7 +43,7 @@ class CTCSummonSpell { public:
 private:
     static long CurrentCreatureGlobalDefNum;   // 0x0138306C ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA (Ego_r + FableWin S_PUB32; private LF_STMEMBER)
 public:
-    void CreateMinion(const C3DVector& position, const C3DVector& direction);   // 0x0079ACC0
+    void CreateMinion(const C3DVector& position, const C3DVector* direction);   // 0x0079ACC0
     void SetSummonCreatureGlobalDefNum(long defNum, const C3DVector& position, const C3DVector& direction);
 };
 #pragma pack(pop)
@@ -59,5 +59,5 @@ void CTCSummonSpell::SetSummonCreatureGlobalDefNum(long defNum, const C3DVector&
         }
     }
     Minion.Get()->Kill(true);
-    CreateMinion(position, direction);
+    CreateMinion(position, &direction);
 }

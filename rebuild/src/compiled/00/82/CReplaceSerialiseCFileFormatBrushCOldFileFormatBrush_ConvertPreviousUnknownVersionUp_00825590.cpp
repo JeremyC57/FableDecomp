@@ -37,7 +37,7 @@ public:
     unsigned long ByteLength;                          // +0x00
     unsigned char SerialiseVersionNumber;              // +0x04
     static unsigned short __fastcall GetClassVersionNumber() { return (unsigned short)V; }
-    static CCountedPointer<T> __fastcall ConvertPreviousUnknownVersionUp(void* data);
+    static CCountedPointer<T> __fastcall ConvertPreviousUnknownVersionUp(const void* data);
 };
 template <class T, class TOld> class CReplaceSerialise {
 public:
@@ -69,7 +69,7 @@ public:
 
 template <>
 CCountedPointer<COldFileFormatBrush> __fastcall
-CBaseSerialise<COldFileFormatBrush, 1>::ConvertPreviousUnknownVersionUp(void* data);   // 0x00824C50
+CBaseSerialise<COldFileFormatBrush, 1>::ConvertPreviousUnknownVersionUp(const void* data);   // 0x00824C50
 template <class T, class TOld>
 CCountedPointer<T> __fastcall CReplaceSerialise<T, TOld>::ConvertPreviousUnknownVersionUp(void* data)
 {

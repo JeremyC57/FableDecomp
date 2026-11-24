@@ -1,0 +1,21 @@
+## HEAD set: 0042d970.obj 0042da20.obj 0042da30.obj 0042da40.obj 0042da90.obj 004303c0.obj 0049e1a0.obj 0049e1c0.obj 004aa8b0.obj 004aac20.obj 004aac40.obj 004aac60.obj 004aaca0.obj 004aad80.obj 004aaee0.obj 004aaf40.obj 004aaf60.obj 004ae8c0.obj 004fb2e0.obj 005dba80.obj 005dbb60.obj 005dbcd0.obj 00692590.obj 00697050.obj 00697060.obj 006e7d30.obj 0081e220.obj 0081e230.obj 0081e240.obj 0088ec60.obj 00892ec0.obj 0094f080.obj 0094f170.obj 009943b0.obj 00994590.obj 009949f0.obj 009a0b20.obj 009cbc40.obj 00a03a40.obj 00a18ef0.obj 00a18f10.obj 00a19bb0.obj 00a39bb0.obj 00a39bf0.obj 00a66ad0.obj 00b23a10.obj 00b2f5c0.obj 00b3aa10.obj 00b3aac0.obj 00b98e00.obj 00bacbc0.obj 00bb6de0.obj 00bbf370.obj 00bc2470.obj 00bc3af0.obj 00bc3e00.obj 00bcdf10.obj
+duplicates 0
+UNRESOLVED 1 ?ActivateQuest@CQuestManager@@QAE_NABVCCharString@@_N1@Z
+UNRESOLVED 1 ?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z
+UNRESOLVED 1 ?NullString@CScriptThing@@2VCCharString@@A
+UNRESOLVED 1 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A
+UNRESOLVED 1 ?ReadEntryData@CBankFile@@QAEXKKPAXK@Z
+UNRESOLVED 3 ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z
+UNRESOLVED 1 ?m_errorCallback@CAFile@@0P6IXXZA
+UNRESOLVED 1 __fltused
+## new set: 0042d970.obj 0042da20.obj 0042da30.obj 0042da40.obj 0042da90.obj 004303c0.obj 0049e1a0.obj 0049e1c0.obj 004aa8b0.obj 004aac20.obj 004aac40.obj 004aac60.obj 004aaca0.obj 004aad80.obj 004aaee0.obj 004aaf40.obj 004aaf60.obj 004ae8c0.obj 004fb2e0.obj 005dba80.obj 005dbb60.obj 005dbcd0.obj 00692590.obj 00697050.obj 00697060.obj 006e7d30.obj 0081e220.obj 0081e230.obj 0081e240.obj 0088ec60.obj 00892ec0.obj 0094f080.obj 0094f170.obj 009943b0.obj 00994590.obj 009949f0.obj 009a0b20.obj 009cbc40.obj 00a03a40.obj 00a18ef0.obj 00a18f10.obj 00a19bb0.obj 00a39bb0.obj 00a39bf0.obj 00a66ad0.obj 00b23a10.obj 00b2f5c0.obj 00b3aa10.obj 00b3aac0.obj 00b98e00.obj 00bacbc0.obj 00bb6de0.obj 00bbf370.obj 00bc2470.obj 00bc3af0.obj 00bc3e00.obj 00bcdf10.obj
+duplicates 0
+UNRESOLVED 1 ?ActivateQuest@CQuestManager@@QAE_NABVCCharString@@_N1@Z
+UNRESOLVED 1 ?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z
+UNRESOLVED 1 ?NullString@CScriptThing@@2VCCharString@@A
+UNRESOLVED 1 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A
+UNRESOLVED 1 ?ReadEntryData@CBankFile@@QAEXKKPAXK@Z
+UNRESOLVED 3 ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z
+UNRESOLVED 1 ?m_errorCallback@CAFile@@0P6IXXZA
+UNRESOLVED 1 __fltused
+LK_DONE

@@ -1,0 +1,24 @@
+## HEAD set: H_00b63010.obj H_0048f6bd.obj H_0048f7c0.obj H_0048f881.obj H_00a44880.obj H_008dbb30.obj H_00753930.obj H_00686e10.obj H_0074f080.obj H_00659c7e.obj H_00915890.obj H_007de030.obj H_0077d190.obj H_006827a0.obj H_007fd4b0.obj H_007f1ac0.obj H_00730f90.obj H_0071ae90.obj 00988290.obj 009e1280.obj 00871fd0.obj 008728c0.obj 0048f939.obj 00492973.obj 00493281.obj 00a44660.obj 0070b490.obj 008dbc80.obj 0070b4a0.obj 006869e0.obj 0074ec50.obj 007b6660.obj 00861430.obj 00915b60.obj 007dd270.obj 007ddda0.obj 0077d330.obj 0076cc00.obj 008648a0.obj 007fd430.obj 007f18b0.obj 00730dd0.obj 0071ad20.obj
+duplicates 1
+  DUP 009e1280.obj ?PrepareForRender@CShaderRenderManager@@QAEXK@Z in H_00b63010.obj;
+UNRESOLVED 1 ?Close@CTCDoor@@QAEXXZ
+UNRESOLVED 1 ?Construct@CTCDPhysicalObstruction@@QAEXABVC3DVector@@@Z
+UNRESOLVED 1 ?Construct@CTCDRumble@@QAEXABVC3DVector@@@Z
+UNRESOLVED 1 ?CreateItemPickupContainer@CTCContainerRewardHero@@QAEXXZ
+UNRESOLVED 1 ?DrawEmoteTypeIcon@CTCEmoteIcon@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+UNRESOLVED 1 ?EndSerialising@CTCBase@@QAEX_NAAVCCharString@@@Z
+UNRESOLVED 2 ?GetAnimDuration@CTCAnimationComplex@@QAEMJ@Z
+UNRESOLVED 1 ?GetAnimIndex@CTCAnimationComplex@@QAEJXZ
+UNRESOLVED 2 ?GetNumCrates@CTCCrateStack@@QAEJXZ
+UNRESOLVED 3 ?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z
+UNRESOLVED 1 ?InternalSwitchToProcess@CSuspendableProcessMicrothread@@SIXAAV1@@Z
+UNRESOLVED 2 ?IsHeroOpinionEnemy@CTCCreatureOpinionOfHero@@QBE_NXZ
+UNRESOLVED 1 ?PlayLoopAnim@CTCCreatureFlyInCircles@@QAEXXZ
+UNRESOLVED 1 ?ResetWorldTransform@CShaderRenderManager@@AAEXXZ
+UNRESOLVED 1 ?UpdateAnimation@CTCCreatureHive@@AAEXXZ
+UNRESOLVED 1 ?UpdateFlight@CTCCreatureFlyInCircles@@QAEXAAVC3DVector@@0@Z
+## new set: 00b63010.obj 0048f6bd.obj 0048f7c0.obj 0048f881.obj 00a44880.obj 008dbb30.obj 00753930.obj 00686e10.obj 0074f080.obj 00659c7e.obj 00915890.obj 007de030.obj 0077d190.obj 006827a0.obj 007fd4b0.obj 007f1ac0.obj 00730f90.obj 0071ae90.obj 00988290.obj 009e1280.obj 00871fd0.obj 008728c0.obj 0048f939.obj 00492973.obj 00493281.obj 00a44660.obj 0070b490.obj 008dbc80.obj 0070b4a0.obj 006869e0.obj 0074ec50.obj 007b6660.obj 00861430.obj 00915b60.obj 007dd270.obj 007ddda0.obj 0077d330.obj 0076cc00.obj 008648a0.obj 007fd430.obj 007f18b0.obj 00730dd0.obj 0071ad20.obj
+duplicates 1
+  DUP 009e1280.obj ?PrepareForRender@CShaderRenderManager@@QAEXK@Z in 00b63010.obj;
+UNRESOLVED 1 ?Close@CTCDoor@@IAEXXZ
+LK_DONE

@@ -1,0 +1,4 @@
+0099a2f0	??0CBaseClassNonCopyable@@IAE@XZ	x1
+0122de50	??_7CDeviceResetCallback@@6B@	x1
+0122eca4	??_7CGameComponent@@6BCDeviceResetCallback@@@	x1
+0122ecb0	??_7CGameComponent@@6BCBaseClassNonCopyable@@@	x1

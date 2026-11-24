@@ -26,7 +26,15 @@ namespace NSpeechGainManager { enum EDialogueLayer; }                    // MS f
 #pragma pack(push, 1)
 class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase {
 private:
+#ifdef FABLE_RETAIL_OPINION_FILTER_PASS27
+    friend class CIsOpinionSourceWithReaction;
+    static const class COpinionReactionBehaviour Behaviours[79];
+#endif
     EAIActionReturn WaitForTextToLoadThenSpeak(const CCharString& text, NSpeechGainManager::EDialogueLayer layer);   // 0x0095ED80
+#ifdef FABLE_RETAIL_OPINIONREACTIONROOT_FLEEUPDATE_PASS26
+    // Original private procedure in Ego_r 0x009A6280 and FableWin 0x02C79150.
+    bool FleeUpdate();
+#endif
     EAIActionReturn SayToThingReactingTo(const CCharString& text);      // 0x0095EE70
     bool WifeFeelingUpdate(EOpinionAttitudeType attitude);              // 0x00982EB0
     bool WifeGeneralUpdate(EOpinionAttitudeType attitude);              // 0x00982F10
@@ -51,7 +59,15 @@ private:
 #endif
 public:
     CTCTalk*      PTCTalk;                                   // +0x14
+#ifdef FABLE_RETAIL_OPINIONREACTIONROOT_ISRUNNABLE_PASS27
+    virtual bool IsRunnable();
+    EOpinionReactionType CurrentReactionType;
+private:
+    static const COpinionReactionBehaviour Behaviours[79];
+public:
+#else
     unsigned char CurrentReactionType[0x4];                  // +0x18 EOpinionReactionType
+#endif
     bool          ReactionFlags[79];                         // +0x1c
 #ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_THINGREACTINGTO
     // NF86 nested opt-in (round 7, q11108 binder, row 0x0095EE70 SayToThingReactingTo; with _WIFEUPDATE): ThingReactingTo as its Ego_r.pdb type
@@ -63,7 +79,11 @@ public:
     unsigned char ThingReactingTo[0x9];                      // +0x6b CIntelligentPointer<CThing>
     unsigned char _pad_0x74[0x4];                            // +0x74
 #endif
+#ifdef FABLE_RETAIL_OPINIONREACTIONROOT_ISRUNNABLE_PASS27
+    bool (CAIStateGroup_OpinionReactionRoot::*CurrentUpdateFunc)();
+#else
     unsigned char CurrentUpdateFunc[0x10];                   // +0x78 pmf_3dbe901f
+#endif
     bool          LastRunWasTryAndLook;                      // +0x88
     bool          ReactingToPlayer;                          // +0x89
     bool          AllowSpeechOnNonPureAISpeaker;             // +0x8a

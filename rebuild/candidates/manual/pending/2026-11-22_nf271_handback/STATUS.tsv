@@ -1,0 +1,10 @@
+address	change	grade	test	grades_used	entries	note
+0x00BD9CA0	self rename onto the PDB leaf; ported onto the retail branch of engine/CEngineLandscapeMemoryManager.h (new opt-in _FREEVIRTUALALIGNED); test rewritten on the header (links the row)	RELOCATION_MATCH	PASS	1+recheck	E1 unit A	objsec: all sections EQ but .drectve (+libcp); leaf ?FreeVirtualAligned@CEngineLandscapeMemoryManagerMethods -> @CEngineLandscapeMemoryManager; Leaf line added (HEAD had none)
+0x00BFAAE0	binder: 0x01436EA8 -> GPLandscapeRenderer (landed opt-in); 0x00BD9CA0 FreeAlignedVirtual@LandscapeMemoryMethods x3 -> FreeVirtualAligned@CEngineLandscapeMemoryManager (declared on the row-local manager model, in place); LocalDetailEngine / LandscapeMemoryMethods stand-ins deleted	RELOCATION_MATCH	PASS (HEAD test, self-contained)	1+recheck	E1 unit A	objsec ALL_EQ with the two renames; vtcheck HEAD = new; pk identical
+0x00BFB590	binder: 0x01436EA8 -> GPLandscapeRenderer; LocalDetailEngine / LandscapeMemoryMethods stand-ins deleted	RELOCATION_MATCH	PASS (HEAD test, self-contained)	1+recheck	E1 unit A	objsec ALL_EQ with the rename; vtcheck HEAD = new; pk identical
+0x00BD9B90	witness only (unchanged)	RELOCATION_MATCH	PASS	recheck	E1 unit A	HEAD object used for the link check
+0x00B684F0	binder: 0x01436EA8 ?g_pEngineGlobal_01436EA8 -> GPLandscapeRenderer (landed opt-in); CEngineGlobal_01436EA8 stand-in deleted; Leaf line added (pinned from the HEAD object)	RELOCATION_MATCH	PASS (HEAD test, self-contained)	1+final	E1 unit B	objsec ALL_EQ with the rename; pk identical; no vtable; CallView callee stand-ins and the self CallView leaf left (port)
+0x00BE61B0	none (read-only census)	-	-	0	E1 CEngineGlobal	blocked: port (NOTES)
+0x00BE79D0	none (read-only census)	-	-	0	E1 CEngineGlobal	blocked: port (NOTES)
+0x00BF8030	none (read-only census)	-	-	0	E1 CEngineGlobal	blocked: port (NOTES)
+0x00BF84C0	none (read-only census)	-	-	0	E1 CEngineGlobal	blocked: port (count-neutral alone; NOTES)

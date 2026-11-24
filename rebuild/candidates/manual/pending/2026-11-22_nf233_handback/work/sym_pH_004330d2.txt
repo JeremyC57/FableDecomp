@@ -1,0 +1,3 @@
+DEF ?ScalarDeletingDestructor@CNewFrontendGameComponent@@QAEPAXI@Z
+UND ??3@YAXPAX@Z
+UND ?Dtor@CNewFrontendGameComponent@@QAEXXZ

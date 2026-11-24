@@ -4,6 +4,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C576E0, length 79 bytes.
 // Callees: CAudioContext::GetProcAddress 0x00C4D740, GetProcAddress (IAT 0x0143FE44), the resolved entry point (cdecl);
 //          "alSourceUnqueueBuffers" @ 0x012B8EAC is pushed once before the branch.
+// Inferred: named resolved address (NF217, 2026-11-21, q12380) -- the SourceUnqueueBuffers resolver keeps the resolved entry point in a
+//   named `void* proc` before the member store and calls through the member, the one spelling of landed 0x00C73050 CAudioSource::UpdateStream
+//   (batches/2026-11-21_landing_auth3; AUTH3 measured this text on 0x00C576E0: pending/2026-11-21_auth3/00c73050/cons/), so the TU has one
+//   spelling of CAudioContext::SourceUnqueueBuffers. The bytes do not tell it from the HEAD ternary here (same grade); 0x00C73050's do.
+//   The other resolvers stay on the ternary.
+// One definition (NF218, 2026-11-21, q12386): the member is `inline` and emitted pick-any through the anonymous-namespace address helper
+//   below (nf86 / nf88), as 0x00C57C90 / 0x00C73050 emit it; it was a strong definition (1 LNK4006 against those copies).
 struct CAudioContext;
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* name);   // IAT 0x0143FE44
 
@@ -41,10 +48,21 @@ struct CAudioContext {
     long GetEnumValue(const char* name);                 // 0x00C57730
 };
 
-void CAudioContext::SourceUnqueueBuffers(unsigned long source, long count, unsigned long* buffers)
+inline void CAudioContext::SourceUnqueueBuffers(unsigned long source, long count, unsigned long* buffers)
 {
-    if (!pfnSourceUnqueueBuffers)
-        pfnSourceUnqueueBuffers = (PFN_alSourceUnqueueBuffers)(UseALGetProcAddress ? GetProcAddress("alSourceUnqueueBuffers")
-                                                                                   : ::GetProcAddress(Module, "alSourceUnqueueBuffers"));
+    if (!pfnSourceUnqueueBuffers) {
+        void* proc = UseALGetProcAddress ? GetProcAddress("alSourceUnqueueBuffers") : ::GetProcAddress(Module, "alSourceUnqueueBuffers");
+        pfnSourceUnqueueBuffers = (PFN_alSourceUnqueueBuffers)proc;
+    }
     pfnSourceUnqueueBuffers(source, count, buffers);
+}
+
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the inline SourceUnqueueBuffers so this object emits it out of line as a
+// pick-any COMDAT, the same selection as the copies landed 0x00C57C90 / 0x00C73050 emit from their in-class definitions (one definition
+// at link; GOTCHAS landing nf86 / nf88). Internal to this TU; never called.
+void (CAudioContext::* ReferenceSourceUnqueueBuffers())(unsigned long, long, unsigned long*)
+{
+    return &CAudioContext::SourceUnqueueBuffers;
+}
 }

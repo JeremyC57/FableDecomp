@@ -1,3 +1,4 @@
+// Leaf: ?DisplayGameInfo@CGameScriptInterface@@UBEXABVCCharString@@@Z
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
 // CGameScriptInterface::DisplayGameInfo(const CCharString&) const -- show narrow game-info text through the player GUI's subtitle
 //   renderer, with four empty substitution strings
@@ -10,6 +11,7 @@
 //   NPlayerGui::CDrawSpiritScores::Draw 0x00644424). CGameScriptInterface_Methods is the lane's method carrier for a
 //   generated data-only header, so the virtual is defined non-virtually here (the body is identical).
 #include <stddef.h>
+#define FABLE_RETAIL_NSCRIPT   // alias route: engine/CGameScriptInterface.h declares DisplayGameInfo under this class-model switch
 #include "engine/CGameScriptInterface.h"
 #include "engine/CPlayerGui.h"
 class CCharString {
@@ -20,15 +22,15 @@ public:
 };
 class CFontBank;
 class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CCharString& text, const CCharString& a, const CCharString& b, const CCharString& c, const CCharString& d,
+    void SetText(const CFontBank& font, const CCharString& text, const CCharString& a, const CCharString& b, const CCharString& c, const CCharString& d,
                  unsigned long colour, float time, bool b1, bool b2);   // 0x00493049
 };
 struct CMainGameComponentFontView { unsigned char _prefix[0x1614c]; CFontBank* Font; };   // +0x1614C
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void DisplayGameInfo(const CCharString& text) const;
+
 };
-void CGameScriptInterface_Methods::DisplayGameInfo(const CCharString& text) const
+void CGameScriptInterface::DisplayGameInfo(const CCharString& text) const
 {
     // the four empty substitutions are named locals: retail builds all four before pushing any argument
     CCharString d("");
@@ -36,5 +38,5 @@ void CGameScriptInterface_Methods::DisplayGameInfo(const CCharString& text) cons
     CCharString b("");
     CCharString a("");
     reinterpret_cast<CSubtitleRenderer*>(g_pPlayerGui->SubtitleRenderer)->SetText(
-        reinterpret_cast<CMainGameComponentFontView*>(Component)->Font, text, a, b, c, d, 0x2a, 0.0f, true, true);
+        *reinterpret_cast<CMainGameComponentFontView*>(Component)->Font, text, a, b, c, d, 0x2a, 0.0f, true, true);
 }

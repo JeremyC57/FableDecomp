@@ -1,3 +1,4 @@
+// Leaf: ?Cleanup@CAIStateGroup_MinionFollowThing@@MAEXXZ
 // CAIStateGroup_MinionFollowThing::Cleanup() -- undo the follow set-up: flag the creature's 0xAA component, remove
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // the creature as a follower of the followee (when it was added and the creature is dead or flagged), restore the
@@ -155,7 +156,7 @@ struct CTCFollowerState {                       // interface 0xAA
     bool m_followStopped;                       // +0x7b
 };
 class CTCFollowed { public:                            // interface 0xBC
-    void RemoveFollower(CThing* follower);      // 0x006D5180
+    void RemoveFollower(CThing& follower);      // 0x006D5180
 };
 class CTCCreatureNavigation { public:                  // interface 7
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
@@ -173,7 +174,9 @@ struct CAIStateGroup_MinionFollowThing : CAIStateGroupBase {
     bool ExpressionUsed;                        // +0x22
     bool FollowerAdded;                         // +0x23
     long CurrentMovementType;                   // +0x24
+    protected:
     virtual void Cleanup();
+    public:
 };
 
 void CAIStateGroup_MinionFollowThing::Cleanup()
@@ -189,7 +192,7 @@ void CAIStateGroup_MinionFollowThing::Cleanup()
             if (followee->HasTC(0xbc)) {
                 CTCFollowed* followed;
                 followee->GetInterfaceV(&followed, 0xbc);
-                followed->RemoveFollower(PBrain->PCreature);
+                followed->RemoveFollower(*PBrain->PCreature);
             }
         }
         FollowerAdded = false;

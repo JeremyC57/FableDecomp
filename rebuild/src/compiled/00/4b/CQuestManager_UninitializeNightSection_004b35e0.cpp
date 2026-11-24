@@ -120,7 +120,7 @@ class CWorld { public:
 class CQuestManager : public CQuestManagerDonor {
  public:
     void BuildLoadSections(CSectionSet* sections);   // 0x004B2CA0
-    CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& section);   // 0x004AF350
+    CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& section) const;   // 0x004AF350
     void UninitializeNightSection();
 };
 

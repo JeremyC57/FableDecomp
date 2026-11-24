@@ -1,0 +1,9 @@
+address	state	best_grade	grades_used	best_source	note
+0x00763060	landed	RELOCATION_MATCH	14	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth9/00763060/NShape_FractureShape_00763060.cpp	test PASS; TU-mate copies of 0x00760020/0x00760190; 0x007634E0 P1 (required) / P2 (optional) patches in ../007634e0
+0x00B30B50	landed	RELOCATION_MATCH	5	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth9/00b30b50/CEngineCamera_SetCameraState_00b30b50.cpp	test PASS; 0x00B31160 keeps TU-mate copy, P1 comment patch in ../00b31160
+0x008E18D0	working (early return)	DIFFER(2045v2073) default; DIFFER(2149v2073) /Gr /d2inlT65	5	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth9/008e18d0/b0.cpp	wrapper spelling neutral; HANDOVER.md (next step: bounded inl.py hunt)
+0x00CF4EC0	not started	-	0	-	AUTH9 returned early (context); lock still AUTH9; history pending/2026-11-21_auth1..4
+0x00B4D370	not started	-	0	-	AUTH9 returned early (context); lock still AUTH9; history pending/2026-11-21_auth1..4
+0x00BD3070	not started	-	0	-	AUTH9 returned early (context); lock still AUTH9; history pending/2026-11-21_auth1..4
+0x00502E90	not started	-	0	-	AUTH9 returned early (context); lock still AUTH9; history pending/2026-11-21_auth1..4
+0x0093D270	not started	-	0	-	AUTH9 returned early (context); lock still AUTH9; history pending/2026-11-21_auth1..4

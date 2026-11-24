@@ -1,0 +1,30 @@
+--- orig/hdr/engine/CCreatureAction_PlayHopscotch.h	2026-11-24 00:07:38.503367046 +0000
++++ hdr/engine/CCreatureAction_PlayHopscotch.h	2026-11-24 00:44:49.697409633 +0000
+@@ -19,6 +19,16 @@
+     CCreatureAction_PlayHopscotch(CThingCreatureBase& owner);                // 0x00941B20
+     virtual void PerformAction();                                            // 0x00941B90..0x00941CC0 (same TU, out of line)
+     virtual CCreatureActionBase* Clone() const;
++#ifdef FABLE_RETAIL_CCREATUREACTION_PLAYHOPSCOTCH_RTTI_DECLS
++    // NF323 add-only (2026-11-24, NF320 Q1): the retail overrides the Clone TU's vftable needs. Declarations only; each overrides
++    // the CCreatureActionBase virtual at the same slot (no new slot). Retail vftable 0x0129274C, RTTI-port label + FableWin.pdb:
++    // slot 10 = 0x00941BA0 ?GetAnimExtraFlags@CCreatureAction_PlayHopscotch@@UBEKXZ;
++    // slot 57 = 0x00941BB0 ?IsUsingAnimationMovement@CCreatureAction_PlayHopscotch@@UBE_NXZ (public here; protected in the base).
++public:
++    virtual unsigned long GetAnimExtraFlags() const;
++    virtual bool IsUsingAnimationMovement() const;
++public:
++#endif
+ };
+ #else
+ #pragma pack(push, 1)
+@@ -30,8 +40,8 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayHopscotch) == 0xa8);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayHopscotch, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(33, sizeof(CCreatureAction_PlayHopscotch) == 0xa8);
++FABLE_STATIC_ASSERT_AT(34, offsetof(CCreatureAction_PlayHopscotch, __vftable) == 0x0);
+ 
+ #endif
+ #endif // FABLE_ENGINE_CCREATUREACTION_PLAYHOPSCOTCH_H

@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x01375732	?EnableUnknownThreatDeedPostings@NGlobalConsole@@3_NA	FableWin PUB32/GDATA32 at 04A40A15 and Ego_d PUB32 at section 4 + A15. The two native and donor feature gates agree.	GDeedUnknownThreatWitnesses
+0x00810FC0	?GetPHitBy@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ	Ego_r 008070E0 and FableWin 025A7C50 and settled correction land1122p26; +8 then +50h event payload getter.	?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ

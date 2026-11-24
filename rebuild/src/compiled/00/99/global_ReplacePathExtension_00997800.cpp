@@ -11,13 +11,13 @@
 // Shape: the three locals in declaration order (drive, directory, name), MakePath's result built straight into the
 // hidden return slot.
 #define FABLE_RETAIL_CAFILE_SPLITPATH_WIDE
+#define FABLE_RETAIL_CAFILE_MAKEPATH   // NF294 add-only opt-in: CAFile::MakePath 0x00997780 (Ego_r + FableWin ?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z; was the free stand-in)
 #include "engine/CAFile.h"                         // CAFile::SplitPath(const CWideString&, ...) 0x00997620 (Ego_r.pdb); fable_string.h CWideString
-CWideString __fastcall MakePath(const CWideString& drive, const CWideString& directory, const CWideString& name, const CWideString& extension);   // 0x00997780
 CWideString __fastcall ReplacePathExtension(const CWideString& path, const CWideString& extension)
 {
     CWideString drive;
     CWideString directory;
     CWideString name;
     CAFile::SplitPath(path, &drive, &directory, &name, 0);
-    return MakePath(drive, directory, name, extension);
+    return CAFile::MakePath(drive, directory, name, extension);
 }

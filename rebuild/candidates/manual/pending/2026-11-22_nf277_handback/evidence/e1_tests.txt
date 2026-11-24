@@ -1,0 +1,26 @@
+### new test alone (expect link failure)
+CL rc 0
+t.cpp
+LINK rc 96
+t.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall CLandscapeLayerMesh::~CLandscapeLayerMesh(void)" (??1CLandscapeLayerMesh@@UAE@XZ) referenced in function "int __cdecl RunDestructor(bool,void * *)" (?RunDestructor@@YAH_NPAPAX@Z)
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF277\work\tst_5hdu6zgy\t.exe : fatal error LNK1120: 1 unresolved externals
+WORKDIR /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF277/work/tst_5hdu6zgy
+### new test + fold object
+CL rc 0
+t.cpp
+LINK rc 0
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+RUN rc 0
+00bfe900_TEST PASS
+
+PATTERN PASS
+### HEAD test alone
+CL rc 0
+t.cpp
+LINK rc 0
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+RUN rc 0
+00bfe900_TEST PASS
+
+PATTERN PASS
+TSTDONE

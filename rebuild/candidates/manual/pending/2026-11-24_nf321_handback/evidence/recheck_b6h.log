@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00abfd70   RELOCATION_MATCH PASS   GetChunkInfo
+
+WINS: 1
+  00abfd70 RELOCATION_MATCH C3DMeshFileMaterialExtChunk::GetChunkInfo

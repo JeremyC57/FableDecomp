@@ -1,0 +1,32 @@
+== ghidra_out/egor_pdb_names.tsv
+?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ
+?CanAnimationTransitionOut@CCreatureActionBase@@MBE_NXZ
+?FrameUpdate@CCreatureActionBase@@MAEXXZ
+?GetActionSpeedParameter@CCreatureActionBase@@MBEMXZ
+?GetActionStartRunningTimeSeconds@CCreatureActionBase@@MBEMXZ
+?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ
+?InitialiseActionMovement@CCreatureActionBase@@MAEXXZ
+?IsMovementUsingPhysics@CCreatureActionBase@@MBE_NXZ
+?IsUsingAnimationMovement@CCreatureActionBase@@MBE_NXZ
+?IsUsingForcedMovement@CCreatureActionBase@@MBE_NXZ
+?OnAnimationLoaded@CCreatureActionBase@@MAEXXZ
+?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ
+?PreventSneaking@CCreatureActionBase@@UBE_NXZ
+?UpdateActionMoveToPos@CCreatureActionBase@@MAEXXZ
+?WaitForMeshToLoad@CCreatureActionBase@@MBE_NXZ
+== ghidra_out/fablewin_pdb_names.tsv
+?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ
+?CanAnimationTransitionOut@CCreatureActionBase@@MBE_NXZ
+?FrameUpdate@CCreatureActionBase@@MAEXXZ
+?GetActionSpeedParameter@CCreatureActionBase@@MBEMXZ
+?GetActionStartRunningTimeSeconds@CCreatureActionBase@@MBEMXZ
+?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ
+?InitialiseActionMovement@CCreatureActionBase@@MAEXXZ
+?IsMovementUsingPhysics@CCreatureActionBase@@MBE_NXZ
+?IsUsingAnimationMovement@CCreatureActionBase@@MBE_NXZ
+?IsUsingForcedMovement@CCreatureActionBase@@MBE_NXZ
+?OnAnimationLoaded@CCreatureActionBase@@MAEXXZ
+?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ
+?PreventSneaking@CCreatureActionBase@@UBE_NXZ
+?UpdateActionMoveToPos@CCreatureActionBase@@MAEXXZ
+?WaitForMeshToLoad@CCreatureActionBase@@MBE_NXZ

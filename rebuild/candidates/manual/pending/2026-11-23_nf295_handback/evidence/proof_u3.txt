@@ -1,0 +1,10 @@
+##### 00752640 renames: ??0?$CCountedPointer@UCAnimEntryLite@@@@QAE@PAUCAnimEntryLite@@@Z=??0?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@PAVCAnimEntryLite@NAnimationEntryBodge@@@Z ??0CAnimEntryLite@@QAE@PBVCAnimationEntry@@@Z=??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z ??1?$CCountedPointer@UCAnimEntryLite@@@@QAE@XZ=??1?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@XZ ??4?$CCountedPointer@UCAnimEntryLite@@@@QAEAAV0@ABV0@@Z=??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z ?DeleteData@?$CCountedPointer@UCAnimEntryLite@@@@SIXPAX@Z=?DeleteData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@SIXPAX@Z ?ReleaseData@?$CCountedPointer@UCAnimEntryLite@@@@QAEXXZ=?ReleaseData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXXZ ?ShareData@?$CCountedPointer@UCAnimEntryLite@@@@QAEXPAUCAnimEntryLite@@PAVCCPPointerInfo@@@Z=?ShareData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@PAVCCPPointerInfo@@@Z
+sections head 19 new 19
+DIFF 9 .text .text bytes False relocs False 8 67
+    (2, '??3@YAXPAX@Z', 20) | (40, '??3@YAXPAX@Z', 20)
+DIFF 10 .text .text bytes False relocs False 53 8
+    (31, '??3@YAXPAX@Z', 20) | (2, '??3@YAXPAX@Z', 20)
+DIFF 16 .text .text bytes False relocs False 67 53
+    (40, '??3@YAXPAX@Z', 20) | (31, '??3@YAXPAX@Z', 20)
+bad 3 text_sections_equal=13
+tables H=2 N=2

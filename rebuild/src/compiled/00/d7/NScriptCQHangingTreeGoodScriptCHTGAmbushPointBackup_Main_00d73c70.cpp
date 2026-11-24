@@ -71,9 +71,11 @@ public:
  virtual ~CScriptThing();                                   // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
  virtual void v1(); virtual void v2();
- virtual CCharString GetDataString() const { if (PImp.Data == 0) return CScriptThing::NullString; return PImp.Data->GetDataString(); }   // slot 3
+ // NF326 one-definition respell: the body in the shape of the self row 0x004AA900 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+ virtual CCharString GetDataString() const { CScriptThingImp* imp = PImp.Data; if (imp == 0) return CScriptThing::NullString; return imp->GetDataString(); }   // slot 3
  virtual void v4(); virtual void v5();
- virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }      // slot 6
+ // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+ virtual const C3DVector& GetPos() const { CScriptThingImp* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPosition(); }      // slot 6
 public:
     static CCharString NullString;                  // 0x0143E8EC ?NullString@CScriptThing@@2VCCharString@@A
 };

@@ -19,7 +19,7 @@
 //   (positions +0x0C / +0x18), dead flag bit 0 of +0x91, +0x178 bit 0; CPlayer +0x34 CIntelligentPointer<CThing>.
 #include <math.h>
 #pragma intrinsic(fmod)
-float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);   // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 template <class T> inline const T& Clamp(const T& value, const T& low, const T& high)
@@ -110,7 +110,7 @@ void CTCLook::ImplementBodySettings()
     if (IS_THING_ALIVE(PParentCreature) && PParentCreature->IsInMelee())
         maxTurnSpeed = PDef->CombatMaxTurnSpeed;
     float current = ParentThing->PPlacement->GetAngleXY();
-    float newAngle = current + Clamp(AngleDifference(current, BodyAngleXY), -(maxTurnSpeed * (1.0f / 360.0f)), maxTurnSpeed * (1.0f / 360.0f));
+    float newAngle = current + Clamp(GFGetSignedAngleDifference(current, BodyAngleXY), -(maxTurnSpeed * (1.0f / 360.0f)), maxTurnSpeed * (1.0f / 360.0f));
     if (newAngle < 0.0f || newAngle >= 1.0f) {
         newAngle = (float)fmod((double)newAngle, 1.0);
         if (newAngle < 0.0f)

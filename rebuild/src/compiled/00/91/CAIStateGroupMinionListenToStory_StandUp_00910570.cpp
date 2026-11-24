@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionListenToStory::StandUp() -- when the minion's current creature mode is 10 (sitting on the floor), try a CCreatureAction_GetUpFromSitting with the ST_STAND_UP_FROM_FLOOR animation: hand a clone to the brain's output if the creature is free to perform it, then remove mode 10 either way
-// Leaf: ?StandUp@CAIStateGroup_MinionListenToStory@@
+// Leaf: ?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets); the local CCountBlock (= CCPPointerInfo) members Count->RefCount, Deleter->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
@@ -125,7 +125,9 @@ public:
 
 class CAIStateGroup_MinionListenToStory : public CAIStateGroupBase {
 public:
+    protected:
     void StandUp();
+    public:
 };
 
 void CAIStateGroup_MinionListenToStory::StandUp()

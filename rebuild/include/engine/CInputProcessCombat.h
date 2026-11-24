@@ -9,12 +9,20 @@
 #include "rebuild_abi.h"
 #include "engine/CInputProcessGameBase.h"
 #include "engine/CJoystickPositionTracker.h"
+#ifdef FABLE_RETAIL_COMBAT_INPUT_PASS26
+class CInputEvent;
+class CProcessedInput;
+#endif
 class CInputProcessCombat : public CInputProcessGameBase {
+#ifdef FABLE_RETAIL_COMBAT_INPUT_PASS26
+private:
+    void ProcessCombatInput(const CInputEvent& event,CProcessedInput& processed_input);
+#endif
 public:
     CInputProcessCombat(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init), LastPositionTrackerFrameUpdate(0), NumberOfFramesAttackHeld(0) { }
     CJoystickPositionTracker PositionTracker;                       // +0x28
     long LastPositionTrackerFrameUpdate;                            // +0x50
     long NumberOfFramesAttackHeld;                                  // +0x54
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessCombat) == 0x58);
+FABLE_STATIC_ASSERT_AT(19, sizeof(CInputProcessCombat) == 0x58);
 #endif // FABLE_ENGINE_CINPUTPROCESSCOMBAT_H

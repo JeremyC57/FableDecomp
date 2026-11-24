@@ -1,0 +1,1 @@
+00abfd70 LIBCP_OK renames=?GetChunkInfo@C3DMeshFileMaterialExtChunk_Methods@@QBE?AVCCharString@@XZ=?GetChunkInfo@C3DMeshFileMaterialExtChunk@@UBE?BVCCharString@@XZ ; .drectve EQUAL ; sections=3

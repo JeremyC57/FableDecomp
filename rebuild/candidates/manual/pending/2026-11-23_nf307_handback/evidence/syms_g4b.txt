@@ -1,0 +1,17 @@
+## 00714900
+< UND ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z
+> UND ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z
+< UND ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z
+> UND ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+## 00714cc0
+< UND ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z
+> UND ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+## 008d8ea0
+< UND ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z
+> UND ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+## 008da610
+< UND ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z
+> UND ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+## 008db240
+< UND ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z
+> UND ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z

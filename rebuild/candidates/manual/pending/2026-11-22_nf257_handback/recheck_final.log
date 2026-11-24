@@ -1,0 +1,86 @@
+addr       parity           behav  name
+008b83c0   RELOCATION_MATCH PASS   CCreatureAction_SummonCreatures
+008b83e0   RELOCATION_MATCH PASS   CCreatureAction_SummonCreatures
+008b8440   RELOCATION_MATCH PASS   CCreatureAction_SummonCreatures
+008b87a0   WARN STANDIN_LEAF ??_GCCreatureAction_SummonCreatures@@UAEPAXI@Z (catalog CCreatureAction_SummonCreatures::`scalar_deleting_destructor'; names another function)
+008b87a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008b89a0   RELOCATION_MATCH PASS   Clone
+00956870   RELOCATION_MATCH PASS   CCombatAction_WillHealInto
+00956940   WARN STANDIN_LEAF ??_GCCombatAction_WillHealInto@@UAEPAXI@Z (catalog CCombatAction_WillHealInto::`scalar_deleting_destructor'; names another function)
+00956940   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00956a20   RELOCATION_MATCH PASS   Clone
+0096b600   RELOCATION_MATCH PASS   Update
+0091c6a0   WARN RELOC_NAME: ?ClearReadyToAttackFlags@CTCNymph@@QAEXXZ -> 0091c080 labelled 'CAIStateGroupWithBuilding_0091c080::Cleanup'
+0091c6a0   RELOCATION_MATCH PASS   Update
+006f5c10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SummonCreatures (engine/CCreatureAction_SummonCreatures.h)
+006f5c10   WARN RELOC_NAME: ??1?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 00695d90 labelled '_global::Dtor_CountedPtrAt0x8_00695d90'
+006f5c10   WARN RELOC_NAME: ??1?$pair@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 006f5260 labelled '_global::Dtor_CountedPtrAt0x8_006f5260'
+006f5c10   RELOCATION_MATCH PASS   StatRegisterClass
+008b7a20   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008b7a20   WARN SHARED_HEADER_AVAILABLE CSummonDef (engine/CSummonDef.h)
+008b7a20   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008b7a20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SummonCreatures (engine/CCreatureAction_SummonCreatures.h)
+008b7a20   RELOCATION_MATCH PASS   Initialise
+00955620   WARN RELOC_NAME: ?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+00955620   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+00955620   RELOCATION_MATCH PASS   Update
+006f8010   WARN STANDIN_LEAF ??_GCCreatureAction_CombatIdle@@UAEPAXI@Z (catalog CCreatureAction_CombatIdle::`scalar_deleting_destructor'; names another function)
+006f8010   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008c2ad0   WARN SHARED_HEADER_AVAILABLE CTCHealLife (engine/CTCHealLife.h)
+008c2ad0   WARN SHARED_HEADER_AVAILABLE CCombatAction_WillHealInto (engine/CCombatAction_WillHealInto.h)
+008c2ad0   RELOCATION_MATCH PASS   FinishAction
+008c0560   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c0560   WARN SHARED_HEADER_AVAILABLE CCombatAction_WillHealInto (engine/CCombatAction_WillHealInto.h)
+008c0560   RELOCATION_MATCH PASS   Initialise
+0096ae50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastAssassinRush (engine/CCreatureAction_CastAssassinRush.h)
+0096ae50   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+0096ae50   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WhisperRetreat (engine/CAIStateGroup_WhisperRetreat.h)
+0096ae50   RELOCATION_MATCH PASS   UseWill
+008fe547   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WhisperRetreat (engine/CAIStateGroup_WhisperRetreat.h)
+008fe547   RELOCATION_MATCH PASS   GetName
+0090188e   MATCH            PASS   GetStateGroupType
+0096a260   WARN RELOC_NAME: ??$GetEvent@VCEventHitBy@NEntityEvents@@V?$CFilter_Bind3@VCIsHitEventHitByShot@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsEventCreatedAfter@2@@@@CTCEntityEvents@@QBE_NPAPAVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind3@VCIsHitEventHitByShot@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsEventCreatedAfter@2@@@@Z -> 0096bac0 labelled 'CTCEntityEvents::GetEvent<NEntityEvents::CEventHitBy,CFilter_Bind3<...>>'
+0096a260   WARN RELOC_NAME: ??$GetEvent@VCEventHitBySpecialAbility@NEntityEvents@@VCIsEventCreatedAfter@2@@CTCEntityEvents@@QBE_NPAPAVCEventHitBySpecialAbility@NEntityEvents@@ABVCIsEventCreatedAfter@2@@Z -> 0096bc20 labelled 'CTCEntityEvents::GetEvent<NEntityEvents::CEventHitBySpecialAbility,NEntityEvents::CIsEventCreatedAfter>'
+0096a260   RELOCATION_MATCH PASS   FindHitEvent
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionFindPersonalSpace (engine/CAIStateGroup_MinionFindPersonalSpace.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionGuardReactToBodyFoundMessage (engine/CAIStateGroup_MinionGuardReactToBodyFoundMessage.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditSitRoundCampfire (engine/CAIStateGroup_BanditSitRoundCampfire.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionFaceHero (engine/CAIStateGroup_MinionFaceHero.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionPutOutFires (engine/CAIStateGroup_MinionPutOutFires.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToCorpse (engine/CAIStateGroup_MinionReactToCorpse.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BirdStartled (engine/CAIStateGroup_BirdStartled.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskPatrol (engine/CAIStateGroup_VillageTaskPatrol.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskSecuritySweep (engine/CAIStateGroup_VillageTaskSecuritySweep.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkInWarehouse (engine/CAIStateGroup_WorkInWarehouse.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_NymphAttack (engine/CAIStateGroup_NymphAttack.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesStage3 (engine/CAIStateGroup_JackOfBladesStage3.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureSeekEnemyUnderground (engine/CAIStateGroup_CreatureSeekEnemyUnderground.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ScreamerPursueTarget (engine/CAIStateGroup_ScreamerPursueTarget.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SetupWares (engine/CAIStateGroup_SetupWares.h)
+0121f86f   WARN RELOC_CONFLICT: _$E2 -> 0122a20a here, 01228930 in landed 01219f00
+0121f86f   WARN RELOC_NAME: _$E2 -> 0122a20a labelled 'CAIBrain::DestroyStateGroupInfo'
+0121f86f   RELOCATION_MATCH PASS   `dynamic initializer for 'StateGroupInfo'' (object symbol _$E1 of its TU)
+
+WINS: 21
+  008b83c0 RELOCATION_MATCH CCreatureAction_SummonCreatures::??0CCreatureAction_SummonCreatures@@QAE@XZ
+  008b83e0 RELOCATION_MATCH CCreatureAction_SummonCreatures::??0CCreatureAction_SummonCreatures@@QAE@AAVCThingCreatureBase@@0_N@Z
+  008b8440 RELOCATION_MATCH CCreatureAction_SummonCreatures::??0CCreatureAction_SummonCreatures@@QAE@AAVCThingCreatureBase@@@Z
+  008b87a0 RELOCATION_MATCH CCreatureAction_SummonCreatures::??_GCCreatureAction_SummonCreatures@@UAEPAXI@Z
+  008b89a0 RELOCATION_MATCH CCreatureAction_SummonCreatures::?Clone@CCreatureAction_SummonCreatures@@UBEPAVCCreatureActionBase@@XZ
+  00956870 RELOCATION_MATCH CCombatAction_WillHealInto::??0CCombatAction_WillHealInto@@QAE@AAVCThingCreatureBase@@J@Z
+  00956940 RELOCATION_MATCH CCombatAction_WillHealInto::??_GCCombatAction_WillHealInto@@UAEPAXI@Z
+  00956a20 RELOCATION_MATCH CCombatAction_WillHealInto::?Clone@CCombatAction_WillHealInto@@EBEPAVCCreatureActionBase@@XZ
+  0096b600 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?Update@CAIStateGroup_WhisperRetreat@@UAEXXZ
+  0091c6a0 RELOCATION_MATCH CAIStateGroup_NymphAttack::?Update@CAIStateGroup_NymphAttack@@UAEXXZ
+  006f5c10 RELOCATION_MATCH CCreatureActionBase::?StatRegisterClass@CCreatureActionBase@@SIXXZ
+  008b7a20 RELOCATION_MATCH CCreatureAction_SummonCreatures::?Initialise@CCreatureAction_SummonCreatures@@UAEXXZ
+  00955620 RELOCATION_MATCH CAIStateGroup_MazeDefensiveMeleeCombat::?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ
+  006f8010 RELOCATION_MATCH CCreatureAction_CombatIdle::??_GCCreatureAction_CombatIdle@@UAEPAXI@Z
+  008c2ad0 RELOCATION_MATCH CCombatAction_WillHealInto::?FinishAction@CCombatAction_WillHealInto@@UAEXXZ
+  008c0560 RELOCATION_MATCH CCombatAction_WillHealInto::?Initialise@CCombatAction_WillHealInto@@UAEXXZ
+  0096ae50 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ
+  008fe547 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?GetName@CAIStateGroup_WhisperRetreat@@SI?AVCCharString@@XZ
+  0090188e MATCH CAIStateGroup_WhisperRetreat::?GetStateGroupType@CAIStateGroup_WhisperRetreat_Methods@@QAEHXZ
+  0096a260 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?FindHitEvent@CAIStateGroup_WhisperRetreat@@IAE_NXZ
+  0121f86f RELOCATION_MATCH CAIBrain::_$E1
+EXIT 0

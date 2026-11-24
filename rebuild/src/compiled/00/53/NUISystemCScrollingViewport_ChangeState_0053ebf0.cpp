@@ -1,5 +1,5 @@
 // NUISystem::CScrollingViewport::ChangeState(unsigned long) -- (un)register the viewport and its scroll bars as front-end observers on activate/deactivate
-// Leaf: ChangeState
+// Leaf: ?ChangeState@CScrollingViewport@NUISystem@@UAEXK@Z
 // Retail 0x0053EBF0, 336 bytes, ret 4. Callees: CManager::GetInstance 0x0041E5F2 (__fastcall), the manager's
 // AddObserver (slot 2, +0x08) / RemoveObserver (slot 5, +0x14), CObserver::ObserveEvent (slot 3, +0x0C, virtual here),
 // CChangingStateComponent::ChangeState 0x0052CF40. Global: the active scrolling viewport 0x013B8AAC.
@@ -20,10 +20,12 @@ struct CObserver {
 struct IViewportSecondaryB {
     virtual void b00();
 };
-struct CChangingStateComponent : IViewportPrimary, CObserver, IViewportSecondaryB {
+namespace NUISystem {                                    // PDB class NUISystem::CChangingStateComponent (was a global struct model)
+class CChangingStateComponent : public IViewportPrimary, public CObserver, public IViewportSecondaryB { public:
     unsigned char _pad1c[0x188 - 0x1c];
-    void ChangeState(unsigned long state);               // 0x0052CF40
+    virtual void ChangeState(unsigned long state);       // 0x0052CF40 ?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z (virtual in Ego_r / FableWin; called qualified here)
 };
+}
 namespace NUISystem { class CManager { public:
     virtual void v000(); virtual void v001();
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
@@ -44,7 +46,7 @@ class CScrollingViewport : public CChangingStateComponent { public:
     bool  Changed;                                       // +0x190
     float OffsetToUseAbove;                              // +0x194
     float OffsetToUseUnder;                              // +0x198
-    void ChangeState(unsigned long state);
+    virtual void ChangeState(unsigned long state);       // ?ChangeState@CScrollingViewport@NUISystem@@UAEXK@Z (Ego_r / FableWin)
 };
 
 void CScrollingViewport::ChangeState(unsigned long state)

@@ -1,0 +1,17 @@
+## HEAD set: H_00731e20.obj H_00747820.obj H_007aefd0.obj H_007b0800.obj H_007dfb20.obj H_007e5f00.obj H_007e7640.obj H_007ea510.obj H_0080fd90.obj H_0096f6f0.obj H_0096f730.obj H_007325d0.obj H_00748900.obj H_007afa90.obj H_007b2540.obj H_007b2600.obj H_007e6e00.obj H_007e7d80.obj H_007ea960.obj H_0080fe60.obj H_008cbff0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCFireheartMinigameDef@@@@@Z
+UNRESOLVED 1 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCFishingDef@@@@@Z
+UNRESOLVED 2 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z
+UNRESOLVED 1 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCTargetingDef@@@@@Z
+UNRESOLVED 1 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBossDef@@@@@Z
+UNRESOLVED 1 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishDef@@@@@Z
+UNRESOLVED 1 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCNymphDef@@@@@Z
+UNRESOLVED 1 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOracleMinigameDef@@@@@Z
+UNRESOLVED 1 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z
+UNRESOLVED 1 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStealthDef@@@@@Z
+## new set: N_00731e20.obj N_00747820.obj N_007aefd0.obj N_007b0800.obj N_007dfb20.obj N_007e5f00.obj N_007e7640.obj N_007ea510.obj N_0080fd90.obj N_0096f6f0.obj N_0096f730.obj H_007325d0.obj H_00748900.obj H_007afa90.obj H_007b2540.obj H_007b2600.obj H_007e6e00.obj H_007e7d80.obj H_007ea960.obj H_0080fe60.obj H_008cbff0.obj
+duplicates 0
+
+LK_DONE

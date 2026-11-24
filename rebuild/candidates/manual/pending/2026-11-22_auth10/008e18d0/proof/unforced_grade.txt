@@ -1,0 +1,1 @@
+008e18d0 NCreatureMode::CModeThunderLightningStorm::UpdateLightningBeams DIFFER(2044v2073) flags= ['/Gr', '/d2inlT65']

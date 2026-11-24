@@ -1,0 +1,94 @@
+# ?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z: 2118 sorts, 2757 comparator calls
+   46 a L11    op278  [0]v[1] B1 count 00010006 00000010 X=6      Y=None   rule -  s6:_view_mat | c10
+   47 a L11    op278  [0]v[1] B1 count 00010006 00000020 X=6      Y=None   rule -  s6:_view_mat | c20
+   49 a L11    op278  [0]v[1] B1 count 00010006 00000014 X=6      Y=None   rule -  s6:_view_mat | c14
+   76 a L11    op278  [0]v[1] B1 count 00010006 0000001c X=6      Y=None   rule -  s6:_view_mat | c1c
+   78 a L11    op278  [0]v[1] B1 count 00010006 00000004 X=6      Y=None   rule -  s6:_view_mat | c4
+  106 a L11    op278  [0]v[1] B1 count 00010006 0000000c X=6      Y=None   rule -  s6:_view_mat | cc
+  110 a L11    op278  [0]v[1] B1 count 00010006 00000008 X=6      Y=None   rule -  s6:_view_mat | c8
+  240 a L11    op278  [0]v[1] B1 count 00010006 00000018 X=6      Y=None   rule -  s6:_view_mat | c18
+  242 a L11    op278  [0]v[1] B1 count 00010006 0000000c X=6      Y=None   rule -  s6:_view_mat | cc
+  283 a L11    op278  [0]v[1] B1 count 00010006 00000018 X=6      Y=None   rule -  s6:_view_mat | c18
+  284 a L11    op278  [0]v[1] B1 count 00010006 00000010 X=6      Y=None   rule -  s6:_view_mat | c10
+  322 a L11    op278  [0]v[1] B1 count 00010006 0000001c X=6      Y=None   rule -  s6:_view_mat | c1c
+  323 a L11    op278  [0]v[1] B1 count 00010006 00000008 X=6      Y=None   rule -  s6:_view_mat | c8
+  325 a L11    op278  [0]v[1] B1 count 00010006 00000020 X=6      Y=None   rule -  s6:_view_mat | c20
+  352 a L11    op278  [0]v[1] B1 count 00010009 00000004 X=9      Y=None   rule -  s9 | c4
+  363 a L11    op278  [0]v[1] B1 count 00010006 00000020 X=6      Y=None   rule -  s6:_view_mat | c20
+  486 a L11    op278  [0]v[1] B1 count 00010006 00000014 X=6      Y=None   rule -  s6:_view_mat | c14
+  526 a L11    op278  [0]v[1] B1 count 00010006 00000004 X=6      Y=None   rule -  s6:_view_mat | c4
+  564 a L11    op278  [0]v[1] B1 count 00010006 00000024 X=6      Y=None   rule -  s6:_view_mat | c24
+  568 a L11    op278  [0]v[1] B1 count 00010009 00000018 X=9      Y=None   rule -  s9 | c18
+  627 a L11    op278  [0]v[1] B1 count 00010009 00000004 X=9      Y=None   rule -  s9 | c4
+14010 b L11    op27a  [0]v[1] B1 hash  0001d300 0001d2e0 X=1688   Y=1687   rule 1  s1688 | s1687
+14011 b L11    op27a  [0]v[1] B1 hash  0001d340 0001d320 X=1690   Y=1689   rule 1  s1690 | s1689
+14100 b L11    op27a  [0]v[1] B1 hash  0001d3a0 0001d320 X=1693   Y=1689   rule 1  s1693 | s1689
+14101 b L11    op27a  [0]v[1] B1 hash  0001d3c0 0001d300 X=1694   Y=1688   rule 1  s1694 | s1688
+14190 b L11    op27a  [0]v[1] B1 hash  0001d3c0 0001d340 X=1694   Y=1690   rule 1  s1694 | s1690
+14191 b L11    op27a  [0]v[1] B1 hash  0001d3a0 0001d2e0 X=1693   Y=1687   rule 1  s1693 | s1687
+14297 b L11    op278  [0]v[1] B1 hash  01038970 010388b0 X=None   Y=None   rule -  s1830 s1682 | s1828 s1680
+14297 b L11    op278  [0]v[2] B1 hash  01038970 01036830 X=None   Y=None   rule -  s1830 s1682 | s1678 s601
+14297 b L11    op278  [1]v[2] B1 hash  010388b0 01036830 X=None   Y=None   rule -  s1828 s1680 | s1678 s601
+14342 b L11    op278  [0]v[1] B1 hash  01038a30 01038970 X=None   Y=None   rule -  s1836 s1682 | s1834 s1680
+14342 b L11    op278  [0]v[2] B1 hash  01038a30 010388b0 X=None   Y=None   rule -  s1836 s1682 | s1832 s1678
+14342 b L11    op278  [1]v[2] B1 hash  01038970 010388b0 X=None   Y=None   rule -  s1834 s1680 | s1832 s1678
+14387 b L11    op278  [0]v[1] B1 hash  01038af0 01038a30 X=None   Y=None   rule -  s1842 s1682 | s1840 s1680
+14387 b L11    op278  [0]v[2] B1 hash  01038af0 01038970 X=None   Y=None   rule -  s1842 s1682 | s1838 s1678
+14387 b L11    op278  [1]v[2] B1 hash  01038a30 01038970 X=None   Y=None   rule -  s1840 s1680 | s1838 s1678
+29320 b L11    op27a  [0]v[1] B1 hash  0001d3a0 0001d320 X=1693   Y=1689   rule 1  s1693 | s1689
+29321 b L11    op27a  [0]v[1] B1 hash  0001d3c0 0001d300 X=1694   Y=1688   rule 1  s1694 | s1688
+29336 b L11    op27a  [0]v[1] B1 hash  0001d3c0 0001d340 X=1694   Y=1690   rule 1  s1694 | s1690
+29337 b L11    op27a  [0]v[1] B1 hash  0001d3a0 0001d2e0 X=1693   Y=1687   rule 1  s1693 | s1687
+29352 b L11    op27a  [0]v[1] B1 hash  0001d300 0001d2e0 X=1688   Y=1687   rule 1  s1688 | s1687
+29353 b L11    op27a  [0]v[1] B1 hash  0001d340 0001d320 X=1690   Y=1689   rule 1  s1690 | s1689
+29395 b L11    op27a  [0]v[1] B1 hash  00016780 00014b40 X=5534   Y=602    rule 0! t5534 | s602
+29396 b L11    op27a  [0]v[1] B1 hash  0001e440 00016600 X=1826   Y=5528   rule 1  s1826 | t5528
+29397 b L11    op27a  [0]v[1] B1 hash  0001e420 000164c0 X=1825   Y=5523   rule 1  s1825 | t5523
+29398 b L11    op278  [0]v[1] B1 hash  0103fe30 0103b070 X=None   Y=None   rule -  t5534 s602 | s1826 t5528
+29398 b L11    op278  [0]v[2] B1 hash  0103fe30 0103add0 X=None   Y=None   rule -  t5534 s602 | s1825 t5523
+29398 b L11    op278  [1]v[2] B1 hash  0103b070 0103add0 X=None   Y=None   rule -  s1826 t5528 | s1825 t5523
+29406 b L11    op27a  [0]v[1] B1 hash  00016780 00014ac0 X=5534   Y=598    rule 0! t5534 | s598:_rec
+29434 b L11    op27a  [0]v[1] B1 hash  0001e440 0001d340 X=1826   Y=1690   rule 1  s1826 | s1690
+29435 b L11    op27a  [0]v[1] B1 hash  0001e420 0001d300 X=1825   Y=1688   rule 1  s1825 | s1688
+29436 b L11    op27a  [0]v[1] B1 need  02089fde 00014ac0 X=1456   Y=598    rule 0  t1456=> | s598:_rec
+29464 b L11    op27a  [0]v[1] B1 hash  0001e420 0001d320 X=1825   Y=1689   rule 1  s1825 | s1689
+29465 b L11    op27a  [0]v[1] B1 hash  0001e440 0001d2e0 X=1826   Y=1687   rule 1  s1826 | s1687
+29466 b L11    op27a  [0]v[1] B1 need  02089f3e 00014ac0 X=5253   Y=598    rule 0  t5253=> | s598:_rec
+29474 b L11    op27a  [0]v[1] B1 hash  000164c0 00014ac0 X=5523   Y=598    rule 0! t5523 | s598:_rec
+29502 b L11    op27a  [0]v[1] B1 hash  0001d300 00014b40 X=1688   Y=602    rule 1  s1688 | s602
+29503 b L11    op27a  [0]v[1] B1 hash  0001e440 0001d3a0 X=1826   Y=1693   rule 1  s1826 | s1693
+29504 b L11    op27a  [0]v[1] B1 need  0208815e 00014ac0 X=1145   Y=598    rule 0  t1145=> | s598:_rec
+29532 b L11    op27a  [0]v[1] B1 hash  0001e440 0001d3c0 X=1826   Y=1694   rule 1  s1826 | s1694
+29533 b L11    op27a  [0]v[1] B1 hash  0001d320 00014b40 X=1689   Y=602    rule 1  s1689 | s602
+29534 b L11    op27a  [0]v[1] B1 need  02085fde 00014ac0 X=841    Y=598    rule 1  t841=> | s598:_rec
+29542 b L11    op27a  [0]v[1] B1 hash  00016600 00014ac0 X=5528   Y=598    rule 0! t5528 | s598:_rec
+29570 b L11    op27a  [0]v[1] B1 hash  0001e420 0001d3a0 X=1825   Y=1693   rule 1  s1825 | s1693
+29571 b L11    op27a  [0]v[1] B1 hash  0001d340 00014b40 X=1690   Y=602    rule 1  s1690 | s602
+29572 b L11    op27a  [0]v[1] B1 need  02085fbe 00014ac0 X=795    Y=598    rule 1  t795=> | s598:_rec
+29600 b L11    op27a  [0]v[1] B1 hash  0001d2e0 00014b40 X=1687   Y=602    rule 1  s1687 | s602
+29601 b L11    op27a  [0]v[1] B1 hash  0001e420 0001d3c0 X=1825   Y=1694   rule 1  s1825 | s1694
+29602 b L11    op27a  [0]v[1] B1 need  0208817e 00014ac0 X=785    Y=598    rule 1  t785=> | s598:_rec
+29617 a L11    op278  [0]v[1] B1 hash  0102e4f0 0102e4b0 X=None   Y=None   rule -  s1830 | s1828
+29617 a L11    op278  [0]v[2] B1 hash  0102e4f0 01024b50 X=None   Y=None   rule -  s1830 | s601
+29617 a L11    op278  [1]v[2] B1 hash  0102e4b0 01024b50 X=None   Y=None   rule -  s1828 | s601
+29626 a L11    op278  [0]v[1] B1 hash  0001e4c0 0001e480 X=1830   Y=1828   rule 1  s1830 | s1828
+29636 b L11    op278  [0]v[1] B1 hash  0001e4c0 0001e480 X=1830   Y=1828   rule 1  s1830 | s1828
+29636 b L11    op278  [0]v[2] B1 hash  0001e4c0 00014b20 X=1830   Y=601    rule 1  s1830 | s601
+29636 b L11    op278  [1]v[2] B1 hash  0001e480 00014b20 X=1828   Y=601    rule 1  s1828 | s601
+29637 b L11    op27a  [0]v[1] B1 need  0104da6e 00000000 X=None   Y=None   rule -  s1830 s1828 s601 | 
+29652 a L11    op278  [0]v[1] B1 hash  0102e5b0 0102e570 X=None   Y=None   rule -  s1836 | s1834
+29652 a L11    op278  [0]v[2] B1 hash  0102e5b0 0102e530 X=None   Y=None   rule -  s1836 | s1832
+29652 a L11    op278  [1]v[2] B1 hash  0102e570 0102e530 X=None   Y=None   rule -  s1834 | s1832
+29661 a L11    op278  [0]v[1] B1 hash  0001e580 0001e540 X=1836   Y=1834   rule 1  s1836 | s1834
+29671 b L11    op278  [0]v[1] B1 hash  0001e580 0001e540 X=1836   Y=1834   rule 1  s1836 | s1834
+29671 b L11    op278  [0]v[2] B1 hash  0001e580 0001e500 X=1836   Y=1832   rule 1  s1836 | s1832
+29671 b L11    op278  [1]v[2] B1 hash  0001e540 0001e500 X=1834   Y=1832   rule 1  s1834 | s1832
+29672 b L11    op27a  [0]v[1] B1 need  0104442e 00000000 X=None   Y=None   rule -  s1836 s1834 s1832 | 
+29687 a L11    op278  [0]v[1] B1 hash  0102e670 0102e630 X=None   Y=None   rule -  s1842 | s1840
+29687 a L11    op278  [0]v[2] B1 hash  0102e670 0102e5f0 X=None   Y=None   rule -  s1842 | s1838
+29687 a L11    op278  [1]v[2] B1 hash  0102e630 0102e5f0 X=None   Y=None   rule -  s1840 | s1838
+29696 a L11    op278  [0]v[1] B1 hash  0001e640 0001e600 X=1842   Y=1840   rule 1  s1842 | s1840
+29706 b L11    op278  [0]v[1] B1 hash  0001e640 0001e600 X=1842   Y=1840   rule 1  s1842 | s1840
+29706 b L11    op278  [0]v[2] B1 hash  0001e640 0001e5c0 X=1842   Y=1838   rule 1  s1842 | s1838
+29706 b L11    op278  [1]v[2] B1 hash  0001e600 0001e5c0 X=1840   Y=1838   rule 1  s1840 | s1838
+29707 b L11    op27a  [0]v[1] B1 need  0104496e 00000000 X=None   Y=None   rule -  s1842 s1840 s1838 | 

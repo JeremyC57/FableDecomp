@@ -1,0 +1,47 @@
+[
+  {
+    "symbol": "??$find@J@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Const_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@1@ABJ@Z",
+    "correct_target": "0x006C7830",
+    "evidence": "Ego_d and STLport tree lookup take the long key. Both the matched retail caller and the GetDeedFromHandle owner call the same instantiation."
+  },
+  {
+    "symbol": "??0CThingFilter_IsEligibleWitness@@QAE@PBVCOpinionDeed@@AAVCThing@@_NPAVCThingAICreature@@PBVCFaction@@22@Z",
+    "correct_target": "0x006C8DE0",
+    "evidence": "FableWin 01F27B70, Ego_r named constructor, and all three native witness search sites agree on the typed argument list."
+  },
+  {
+    "symbol": "??$GetAllThings@VCThingAICreature@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_IsEligibleWitness@@@CThingSearchTools@@QBEXABVCThingFilter_IsEligibleWitness@@AAV?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z",
+    "correct_target": "0x006C9280",
+    "evidence": "Ego_d names the list and filter. FableWin and both retail calls agree on the specialization. The entire independent owner matches."
+  },
+  {
+    "symbol": "??$find@U?$_List_iterator@PAVCThingAICreature@@U?$_Nonconst_traits@PAVCThingAICreature@@@std@@@std@@PAVCThingAICreature@@@std@@YI?AU?$_List_iterator@PAVCThingAICreature@@U?$_Nonconst_traits@PAVCThingAICreature@@@std@@@0@U10@0ABQAVCThingAICreature@@@Z",
+    "correct_target": "0x006C4FC0",
+    "evidence": "Both typed native callers search their creature list by a creature pointer. STLport, FableWin caller and complete 34-byte owner agree."
+  },
+  {
+    "symbol": "?push_back@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXABQAVCThingAICreature@@@Z",
+    "correct_target": "0x004AC4B0",
+    "evidence": "Ego_d types both lists. Four calls in this retail leaf use this owner. The complete typed 45-byte body matches."
+  },
+  {
+    "symbol": "?EnableUnknownThreatDeedPostings@NGlobalConsole@@3_NA",
+    "correct_target": "0x01375732",
+    "evidence": "FableWin PUB32/GDATA32 at 04A40A15 and Ego_d PUB32 at section 4 + A15. The two native and donor feature gates agree."
+  },
+  {
+    "symbol": "?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z",
+    "correct_target": "0x00682810",
+    "evidence": "FableWin 01F44300 and Ego_r 00590470 both record this exact signature. Three retail deed notifications resolve here."
+  },
+  {
+    "symbol": "?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ",
+    "correct_target": "0x005121C0",
+    "evidence": "FableWin 01C9F450, native +168 field getter, 11 matching bytes and matching GetPItem relocation. Settled correction land1122p26."
+  },
+  {
+    "symbol": "?GetWorkBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ",
+    "correct_target": "0x005121D0",
+    "evidence": "FableWin 01C9F470, native +170 field getter, 11 matching bytes and matching GetPItem relocation. Settled correction land1122p26."
+  }
+]

@@ -27,6 +27,10 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_HobbeCaveScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_HOBBE_BANDIT_COMMENT_PASS27
+    // FableWin 037C1010 and the retail quest Alloc.
+    CQ_HobbeCaveScript(CScriptDataBase*, CGameScriptInterfaceBase&);
+#endif
     virtual void RegisterMain();                                         // 0x00D8DC00 (slot 1)
     virtual void Main();                                                 // 0x00D8DD10 (slot 2)
     virtual void Init();                                                 // 0x00D8D640 (slot 3)
@@ -74,6 +78,23 @@ public:
     class CJamesCommentMarker;                                           // Alloc 0x00D906D0
     class CJamesCommentMarkerAdv;                                        // Alloc 0x00D90A50
     class CBanditCommentMarker;                                          // Alloc 0x00D901B0
+#ifdef FABLE_RETAIL_HOBBE_BANDIT_COMMENT_PASS27
+    // Both donor layouts, original private Main and the retail slot 1.
+    class CBanditCommentMarker : public CEntityScriptBase {
+    public:
+        // FableWin 037D54D0 and 037D5520; the constructor is inlined at 00D901B0.
+        CBanditCommentMarker(CQ_HobbeCaveScript&, CScriptDataBase*, const CScriptThing&);
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HobbeCaveScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+    private:
+        virtual void Init();
+        virtual void Main();
+    protected:
+        CQ_HobbeCaveScript* ParentClass;
+        CQ_SunnyvaleMasterData* PMasterData;
+    };
+    FABLE_STATIC_ASSERT(sizeof(CBanditCommentMarker) == 0x1c);
+#endif
     class CBanditSacrifice;                                              // Alloc 0x00D90E90
     class CBanditInRoomSample;                                           // Alloc 0x00D90FF0
     class CCheckTheSilverKeyChest;                                       // Alloc 0x00D91250
@@ -167,16 +188,16 @@ public:
 };
 #endif
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript) == 0x78);
+FABLE_STATIC_ASSERT_AT(170, sizeof(NScript::CQ_HobbeCaveScript) == 0x78);
 #ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_HOBBEROAMING
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript::CHobbeRoaming) == 0x1c);
+FABLE_STATIC_ASSERT_AT(172, sizeof(NScript::CQ_HobbeCaveScript::CHobbeRoaming) == 0x1c);
 #endif
 #ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_CBANDITSACRIFICE_MAIN
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript::CBanditSacrifice) == 0x3c);
+FABLE_STATIC_ASSERT_AT(175, sizeof(NScript::CQ_HobbeCaveScript::CBanditSacrifice) == 0x3c);
 #endif
 
 #ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_CHOBBESPAWN_MAIN
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeCaveScript::CHobbeSpawn) == 0x20);
+FABLE_STATIC_ASSERT_AT(179, sizeof(NScript::CQ_HobbeCaveScript::CHobbeSpawn) == 0x20);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

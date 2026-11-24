@@ -135,7 +135,7 @@ class CCombatActionBase { public:
     bool  HasStrikeEventResetCombo;                    // +0xd9
     bool  HasMovementEventInterrupt;                   // +0xda
     unsigned char _paddb[0x114 - 0xdb];
-    void SetupCombatInterrupts();
+    protected: void SetupCombatInterrupts(); public:
 };
 
 void CCombatActionBase::SetupCombatInterrupts()

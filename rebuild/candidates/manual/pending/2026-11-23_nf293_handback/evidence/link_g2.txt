@@ -1,0 +1,13 @@
+## HEAD set: H_0098ecd0.obj H_0040d400.obj H_004fce20.obj H_00506f30.obj H_00507c30.obj 0098f2a0.obj 0040d350.obj
+duplicates 0
+UNRESOLVED 1 ?GetProfilePathname@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z
+UNRESOLVED 1 ?Load@CUserProfileManager@@AAEXXZ
+UNRESOLVED 1 ?LoadGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z
+UNRESOLVED 1 ?ProcessObjects@CThreadedFileManager@@AAEXXZ
+UNRESOLVED 1 ?Save@CUserProfileManager@@AAEXXZ
+## new set: 0098ecd0.obj 0040d400.obj 004fce20.obj 00506f30.obj 00507c30.obj 0098f2a0.obj 0040d350.obj
+duplicates 0
+UNRESOLVED 1 ?GetProfilePathname@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z
+UNRESOLVED 1 ?LoadGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z
+UNRESOLVED 1 ?Save@CUserProfileManager@@AAEXXZ
+LK_DONE

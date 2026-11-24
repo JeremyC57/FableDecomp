@@ -1,0 +1,16 @@
+00492ed1	call	0059db72	0059dabbL CTCInventoryTrade::ShowWarningIfNeeded
+00492ed1	call	006c1350	006c1250L CTCBuyableHouse::FrameUpdate
+00492ed1	call	006cef6c	006cef20L CTCWife::InitiateDivorce
+00492ed1	call	006d120c	006d0830L CTCWife::GlobalUpdate
+00492ed1	call	00729b81	00729b20L CTCActionUseScriptedHook::OnActionUse
+00492ed1	call	00729bac	00729b20L CTCActionUseScriptedHook::OnActionUse
+00492ed1	call	0078025a	007800b0L CTCHeroGuide::OpenQuestSelectInterface
+00492ed1	call	00813b5b	008139c0L CTCBoastingPodium::OnHeroEnterBoastArea
+00492ed1	call	00848299	-
+00492ed1	call	0084847d	-
+00492ed1	call	0084955b	00849380L CCreatureAction_BuyThingFromShop::PerformAction
+00492ed1	call	00849857	00849700L CCreatureAction_StealThingFromShop::PerformAction
+00492ed1	call	008927a3	00892780L CGameScriptInterface::ShowOnScreenMessage
+00492ed1	call	0091cdab	-
+00492ed1	call	009305fb	-
+00492ed1	call	00957c1b	-

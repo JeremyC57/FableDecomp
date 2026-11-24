@@ -1,0 +1,115 @@
+21	00453ed2	DEFLINE	00/46/CCombatAbilityBlockUnarmedAttackDef_Copy_00463bdb.cpp	void CCombatAbilityFlourishCounterAttackDef::Copy(
+26	004aa980	DEFLINE	00/d6/NScriptCQHangingTreeEvilScript_Conclusion_00d6d670.cpp	inline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Main_00d6a560.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_Main_00d524a0.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/d5/NScriptCQGuildTrainingPreMeleeScriptCTheRealGuildmaster_Main_00d52e90.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/e6/NScriptCVChickenKickingScriptCSpectator_Main_00e63890.cpp	inline const C3DVector& CScriptThing::GetPos()const{if(PImp.IsNull())return NullCoord;return PImp->GetPos();}
+26	004aa980	DEFLINE	00/e6/NScriptCVChickenKickingScriptCKickedChicken_Main_00e64210.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Main_00d8bcd0.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if(PImp.IsNull()) return NullCoord; return PImp->GetPo
+26	004aa980	DEFLINE	00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Main_00d8abf0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if(PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d7/NScriptCQHeroSoulsArenaScript_WatchForRoundsInArena_00d7fe90.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Main_00d706e0.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/d7/NScriptCQHangingTreeGoodScript_FinalRound_00d75060.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d7/NScriptCQHangingTreeGoodScript_DoCutscene_00d77690.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Main_00d973d0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/ed/NScriptCVStatueMasterScript_Main_00ed3b30.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_Main_00edd170.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/ed/NScriptCVTalentlessBardScript_WatchForResetWanderCentre_00ed94d0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Main_00ed5f50.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/ed/NScriptCVSingingStonesScriptCManWithDoorName_Main_00ed17d0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if(PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e0/CUndeadRisingZombieAttacker_OnPredicateFail_00e0de90.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/e0/NScriptCQUndeadRisingScript_ActivateNextLamp_00e0e040.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const
+26	004aa980	DEFLINE	00/e0/NScriptCQWaspBossScriptCWaspHelper_Main_00e0f8a0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e0/NScriptCQTraderEscortScriptCEndTrader_Main_00e055b0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if(PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e0/NScriptCQTraderEscortScriptCMagicBarrier_Main_00e03f70.cpp	inline const C3DVector& CScriptThing::GetPos() const
+26	004aa980	DEFLINE	00/e0/NScriptCQTraderEscortScript_TurnToBalv_00e0a820.cpp	inline const C3DVector& CScriptThing::GetPos()const { if(PImp.IsNull())return NullCoord;return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_Main_00e07640.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/e1/NScriptCQREscortTraderScript_DoMission_00e1f0c0.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const    // slot 6 0x004AA980, inlined here
+26	004aa980	DEFLINE	00/e1/NScriptCQREscortTraderScriptCMBanditTrigger_Main_00e1e960.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/e1/NScriptCQWaspBossScript_DoMission_00e12580.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/89/CGameScriptInterface_GetNearestEnabledDiggingSpot_0089ef90.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.Data == 0) return NullCoord; return PImp.Data->GetPos();
+26	004aa980	DEFLINE	00/89/CGameScriptInterface_GetFurthestWithDefName_0089aa70.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.Data == 0) return NullCoord; return PImp.Data->GetPos();
+26	004aa980	DEFLINE	00/d3/NScriptCQFireHeartScriptCFHGuildMaster_Main_00d368d0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/ec/NScriptCVSickChildScriptCSickChildsSister_Main_00ec68a0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e8/NScriptCVFisticuffsClubScriptCTyler_Main_00e87030.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e8/NScriptCVFisticuffsClubScriptCRingFighter_Main_00e8b020.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_Main_00e84b80.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Main_00d1fd30.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_Main_00d18df0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d1/NScriptCQBountyHuntScript_SpawnBanditGangGrunts_00d17470.cpp	inline const C3DVector& CScriptThing::GetPos() const { if(PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d1/NScriptCQBountyHuntScriptCBHHostage2_Main_00d1a740.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Main_00d1b200.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d1/NScriptCQBountyHuntScriptCBHHostage1_Main_00d19bd0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d1/NScriptCQBountyHuntScript_Main_00d13580.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_Main_00d17f20.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageWoman_Main_00dc5f80.cpp	inline const C3DVector& CScriptThing::GetPos() const { if(PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_Main_00dce230.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageMan_Main_00dc4d70.cpp	inline const C3DVector& CScriptThing::GetPos() const { if(PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_Main_00dc7490.cpp	inline const C3DVector& CScriptThing::GetPos() const { if(PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/d4/NScriptCQGuildTrainingScriptCSkillTarget_Main_00d41d00.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/d4/NScriptCQGuildTrainingScriptCPreMeleeMaze_Main_00d43db0.cpp	inline const C3DVector& CScriptThing::GetPos() const
+26	004aa980	DEFLINE	00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Main_00d40cf0.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/d4/NScriptCQGuildTrainingScriptCCombatApprentice_Main_00d4a270.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/f0/NScriptCQAmbushTradersScriptCATPhase1Archer_Main_00f04000.cpp	inline const C3DVector& CScriptThing::GetPos() const {
+26	004aa980	DEFLINE	00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Main_00f063b0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_Main_00f0d630.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/f0/NScriptCQAmbushTradersScript_PhaseTwo_00f0c140.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_Main_00f04cc0.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_Main_00f0caa0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e7/NScriptCVFishermanScriptCFisherman_Main_00e7c8e0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e2/NScriptCVAmbushScamScriptCASTrickster_Main_00e2c100.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/e2/NScriptCVAmbushScamScriptCASBuddy_Main_00e2ff00.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e2/NScriptCVAmbushScamScript_SpringAmbush_00e2f170.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_Main_00e37e40.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/e3/NScriptCVArcheryCompetitionScriptCACOwner_Main_00e33ea0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e3/NScriptCVArcheryCompetitionScriptCACDummyMoving_Main_00e36d50.cpp	inline const C3DVector& CScriptThing::GetPos() const
+26	004aa980	DEFLINE	00/ee/NScriptCVTravellingHeroesScriptCTHTriggerBowerstone_Main_00ee0c50.cpp	inline const C3DVector& CScriptThing::GetPos() const { if(!PImp.Get()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/ee/NScriptCVTourGuideScript_MoveToNextWaypoint_00ee6850.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/ee/NScriptCVTourGuideScriptCTourGuideGuide_Main_00ee57b0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_Main_00ee1500.cpp	inline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/ee/NScriptCExpressionFishScript_Main_00ee95c0.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/dd/NScriptCQPrisonEscapeRescueMotherScript_SplittingUpCutscene_00dd9520.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_Main_00ddb720.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const
+26	004aa980	DEFLINE	00/dd/NScriptCQPrisonRaceScript_Main_00ddae40.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/dd/NScriptCQPrisonEscapeRescueMotherScript_WatchHeroEscapeStatus_00dd35d0.cpp	inline const C3DVector& CScriptThing::GetPos() const
+26	004aa980	DEFLINE	00/dd/NScriptCQPrisonWardenGameScript_WardenKeyMiniGame_00dde230.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/e4/NScriptCVBanditTollScript_Main_00e479b0.cpp	inline const C3DVector& CScriptThing::GetPos() const
+26	004aa980	DEFLINE	00/e4/NScriptCVBanditTollScriptCTollBandit_Main_00e4b5b0.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->Ge
+26	004aa980	DEFLINE	00/e4/NScriptCVBanditTollScriptCTollBandit_SetUpBanditToll_00e4e0e0.cpp	inline const C3DVector& CScriptThing::GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/e4/NScriptCVBanditTollScriptCTauntingBandit_Main_00e49020.cpp	inline const C3DVector& CScriptThing::GetPos() const
+26	004aa980	DEFLINE	00/e4/NScriptCVBordelloScriptCBordelloClient_Main_00e44ea0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelMan_Main_00db5330.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_Main_00db2b10.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_Main_00e50fd0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/ea/NScriptCVKnotholeGladeGatesScript_DoInitialBalverineAttack_00ea1720.cpp	FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+26	004aa980	DEFLINE	00/ea/NScriptCVLostTraderScriptCLostTraderBrother_Main_00ea59e0.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+26	004aa980	DEFLINE	00/ef/NScriptCPersonalScriptEmptyScriptCTestPerson_Main_00ef4b40.cpp	inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+31	004aad20	DEFLINE	00/d4/NScriptCQGuildTrainingScript_CheckFriendlyAttacks_00d45060.cpp	inline bool CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& attacker) const { if (!P
+31	004aad20	DEFLINE	00/d4/NScriptCQGuildTrainingScriptCCombatApprentice_Main_00d4a270.cpp	inline bool CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& attacker) const { if (!P
+31	004aad20	DEFLINE	00/e7/NScriptCVFishermanScript_NPCAttitudeProcess_00e7c010.cpp	inline bool CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& attacker) const { if (!P
+32	004aad40	DEFLINE	00/d4/NScriptCQGuildTrainingScript_CheckFriendlyAttacks_00d45060.cpp	inline bool CScriptThing::MsgIsHitByAnySpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data) return fa
+32	004aad40	DEFLINE	00/e7/NScriptCVFishermanScript_NPCAttitudeProcess_00e7c010.cpp	inline bool CScriptThing::MsgIsHitByAnySpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data) return fa
+33	004aad60	DEFLINE	00/e6/NScriptCVChapelOfEvilScript_WatchForAcolyteDeath_00e6ad20.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/e6/CVChapelOfEvilScript_WatchForAcolyteHit_00e6af20.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/e6/NScriptCVChapelOfEvilScript_WatchForRegionEntry_00e6b750.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/d9/NScriptCQHobbeCaveScript_CheckJamesKilled_00d97170.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/ed/NScriptCVTalentlessBardScript_WatchForAttack_00ed9790.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/ed/NScriptCVSwordInTheStoneScript_WatchForDeathDuringSwordPull_00ed7320.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteDeath_00edc980.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteHit_00edcb80.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/e0/NScriptCQUndeadRisingScriptCUndeadRisingBoss_Main_00e0d210.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/e1/NScriptCQREscortTraderScript_WatchForExpressionWait_00e1fef0.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/e1/NScriptCQREscortTraderScript_WatchForExpressionFollow_00e1fcf0.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/e9/NScriptCVHeroDuelScript_SecondFleeCutscene_00e9aeb0.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/e9/NScriptCVIntroductionToTrophiesScript_WatchForAttack_00e9dc80.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/ec/NScriptCVRockTrollFirstEncounterScript_WatchForRockTrollHit_00ec5140.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/d1/NScriptCQBountyHuntScript_WatchForDeputy1Killed_00d16570.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/f0/NScriptCQAmbushTradersScript_WatchForHeroAttackOnContact_00f09950.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/f0/NScriptCQAmbushTradersScript_WatchForHeroAttackOnSentry_00f09260.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/f0/NScriptCQAmbushTradersScript_WatchForHeroAttackOnBandit_00f061e0.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (PImp.Data) 
+33	004aad60	DEFLINE	00/e3/NScriptCVArcheryCompetitionScript_WatchForOwnerKilled_00e331f0.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/e3/NScriptCVArcheryCompetitionScript_WatchForAttack_00e36390.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+33	004aad60	DEFLINE	00/e5/NScriptCVBeardyBaldyScript_WatchForAttack_00e53d90.cpp	inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data)
+38	004aafe0	DEFLINE	00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_Main_00dce230.cpp	FABLE_FORCEINLINE bool CScriptThing::IsBeingCarriedBy(const CCharString& carrier) const { return PImp.Data && PImp.Data-
+38	004aafe0	DEFLINE	00/ef/NScriptCPersonalScriptEmptyScriptCSwordChest_Main_00ef2290.cpp	FABLE_FORCEINLINE bool CScriptThing::IsBeingCarriedBy(const CCharString& name) const { return PImp.Data && PImp.Data->Is

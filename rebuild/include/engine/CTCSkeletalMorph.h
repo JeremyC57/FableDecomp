@@ -18,11 +18,15 @@ public:
         return TCI_SKELETAL_MORPH;
     }
     const CCountedPointer<C3DSkeletalMorph> GetPSkeletalMorph() const;
+#ifdef FABLE_RETAIL_CTCSKELETALMORPH_RANDOM_PASS26
+    void ClearSkeletalMorphs(long id);
+    void AddSkeletalMorph(long id,const CCharString& name,float strength);
+#endif
 private:
     class CSkeletalMorph;
     bool Changed;
     CArray<CSkeletalMorph> Morphs;
     CCountedPointer<C3DSkeletalMorph> PSkeletalMorph;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCSkeletalMorph) == 0x24);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CTCSkeletalMorph) == 0x24);
 #endif

@@ -1,5 +1,7 @@
 // CThingCreatureBase::UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot) -- take the weapon of that def out of the carrying component (or create one at the creature's position) and put it in the carryable def's active or secondary-active carry slot
-// Leaf: ?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z
+// Leaf: ?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z
+// NF249 (q12690): UnsheatheWeapon (0x006648D0) is protected in Ego_r.pdb / FableWin.pdb / Ego_d.pdb (?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z;
+//   bsim: Ego_r 0x00540710 = retail 0x006648D0); the self row and its binders 0x006649C0 / 0x00664A50 / 0x00664A10 move to IAE as one unit.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006648D0, length 233 bytes, `ret 8`.
@@ -74,8 +76,8 @@ class CThingObject { public:
 };
 
 class CThingCreatureBase : public CThing {
-public:
-    void UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot);
+protected:
+    void UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot);   // protected (three PDBs)
 };
 
 void CThingCreatureBase::UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot)

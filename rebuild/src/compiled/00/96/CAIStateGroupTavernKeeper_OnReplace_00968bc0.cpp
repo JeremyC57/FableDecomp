@@ -1,10 +1,10 @@
 // CAIStateGroup_TavernKeeper::OnReplace() -- finish any running action; if the keeper still holds the jug, take it out of the carry slot and put it back on the bar (reset its physics position and orientation, mark it on the bar); drop mode 0x2b, free and clear the bar point, and make the keeper pushable again
-// Leaf: ?OnReplace@CAIStateGroup_TavernKeeper
+// Leaf: ?OnReplace@CAIStateGroup_TavernKeeper@@MAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00968BC0, length 570 bytes (plain `ret`, virtual slot 10).
-// Callees: CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0 / FinishCurrentAction @ 0x00662650, IsCarryingJug
-//   @ 0x009687B0 (manifest names it CAIStateGroup_TavernServer; called on the keeper, PJug +0x14 in both), CVectorMap::
+// Callees: CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0 / FinishCurrentAction @ 0x00662650, IsHoldingJug
+//   @ 0x009687B0 (was filed as CAIStateGroup_TavernServer::IsCarryingJug; called on the keeper, PJug +0x14 in both), CVectorMap::
 //   LowerBound @ 0x0040F020 (inlined ternary GetInterface: 0x47 on the jug, 0x46 carrying, 0xbb tavern jug, 0x31 mode
 //   manager, 0xb9 bar), 0x00705D00 (the jug's item id; manifest "CTCTavernGame::GetBanter" is propagated), CTCCarrying
 //   0x006A11F0 (find by id) / RemoveThingInCarrySlot 0x006A16A0, CTCTavernJug::ReplaceJug (landed 0x00968090, inlined
@@ -77,7 +77,7 @@ class CAIStateGroupBase { public:
     CThing* GetCreature() const { return PBrain->PCreature; }
     CThingCreatureBase* GetCreatureBase() const { return (CThingCreatureBase*)PBrain->PCreature; }
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    void SetPushableByHero(bool pushable);      // 0x0097E330
+    protected: void SetPushableByHero(bool pushable); public:      // 0x0097E330 (NF313: IAE, both PDBs)
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
 };
 class CTCCarrying { public:                            // interface 0x46 on the creature
@@ -156,16 +156,18 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     CRightHandedSet JugRHSet;                   // +0x44
     long JugSlot;                               // +0x5c
     CThingCreatureBase* GetAICreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
-    bool IsCarryingJug();                       // 0x009687B0 (manifest CAIStateGroup_TavernServer::IsCarryingJug)
+    bool IsHoldingJug();                        // 0x009687B0 (Ego_r + FableWin)
     void FreeBarPoint();                        // 0x00968950
+    protected:
     virtual void OnReplace();
+    public:
 };
 
 void CAIStateGroup_TavernKeeper::OnReplace()
 {
     if (GetAICreature()->IsPerformingAnyAction())
         GetAICreature()->FinishCurrentAction();
-    if (IsCarryingJug()) {
+    if (IsHoldingJug()) {
         CTCCarryable* carryable;
         ((CThing*)PJug.GetPItem())->GetTC(TCI_CARRYABLE, &carryable);
         long id = carryable->GetCarrySlotPassive();

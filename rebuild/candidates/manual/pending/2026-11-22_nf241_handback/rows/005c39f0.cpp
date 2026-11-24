@@ -1,0 +1,108 @@
+// CTCInventoryWeapons::~CTCInventoryWeapons() -- releases both active-weapon pointers, then the menu list, the item map and the primitive handles, then the screen and inventory bases
+// Leaf: ??1CTCInventoryWeapons
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C39F0, 165 bytes; frame-pointer size TU
+// (`#pragma optimize("y", off)` + `optimize("s", on)`). Label correction: the catalog calls this row
+// "~CTCInventoryAbilities"; the vtables it stores, 0x01253FF4 (+0) and 0x01253FE0 (+0x130), are CTCInventoryWeapons'
+// (rtti-vtables.tsv), and the members it destroys are CTCInventoryWeapons' PDB members.
+// Callees: CIntelligentPointer<CThing>::CIntelligentPointer(CThing*) @ 0x004A96F0, ::operator= @ 0x004A9760,
+//          CBaseIntelligentPointer::~CBaseIntelligentPointer() @ 0x00A01C10 (x4), list<NUISystem::CComponent*> dtor
+//          @ 0x0042ABCA, map<NUISystem::CComponent*,long> dtor @ 0x004DD1C4 (landed as ~CClothingItemMap),
+//          vector<CEnginePrimitiveHandle> dtor @ 0x00440C40 (landed as ~CRetailHandleVector), NInventory::
+//          CTCInventoryBase::~CTCInventoryBase() @ 0x005C00A0.
+// Shape: both vtables stored first; each weapon pointer is cleared with `PX = 0` (an implicit conversion
+// temporary in the 8-byte frame, re-addressed with `lea` after its ctor, assigned out of line and destroyed); members die in reverse order; the
+// NHeroInformationScreens::CBase secondary base's inline destructor stores its vtable 0x0123A3E0 just before the
+// primary base destructor.
+// Layout: Ego_r.pdb CTCInventoryWeapons at retail offsets (CTCInventoryBase is 0x130 bytes in retail):
+// PActiveMeleeWeapon +0x134, PActiveRangedWeapon +0x141 (the PDB's odd offset: pack(1) on the pointer classes
+// only), ActiveWeaponPrimitiveHandles +0x154, WeaponMenuItemMap +0x170, AvailableWeaponsEntries +0x198.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+
+class CThing;
+
+#pragma pack(push, 1)
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
+public:
+    CIntelligentPointer(T* thing);       // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+#pragma pack(pop)
+
+// NF156 (2026-11-20, q4776): the local CComponentList stand-in replaced by the shared STLport std::list<NUISystem::CComponent*>
+//   (stlport/fable_containers.h); ~list 0x0042ABCA stays out of line with its body visible (FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, as
+//   the landed list<CComponent*> callers 0x00583815 / 0x005A887D).
+// NF241 (2026-11-22, the list<CComponent*> family pass): the out-of-line list destructor call binds _List_base<CComponent*>'s
+//   destructor 0x0042ABCA (was FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, binding list's own name there; retail 0x0042B6D2 is list's
+//   size-optimised `~list() {}`, a 5-byte `jmp 0x0042ABCA`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#include "stlport/fable_containers.h"
+namespace NUISystem { class CComponent; }
+struct CClothingItemMap {                            // std::map<NUISystem::CComponent*, long> (12 bytes)
+    void* _M_header; unsigned long _M_node_count; unsigned char _M_key_compare;
+    ~CClothingItemMap();                             // 0x004DD1C4
+};
+struct CRetailHandleVector {                         // std::vector<CEnginePrimitiveHandle> (12 bytes)
+    void* _M_start; void* _M_finish; void* _M_end_of_storage;
+    ~CRetailHandleVector();                          // 0x00440C40
+};
+
+namespace NInventory {
+class CTCInventoryBase { public:                            // retail 0x130 bytes
+    unsigned char _pad04[0x12C];
+    virtual ~CTCInventoryBase();                     // 0x005C00A0
+};
+}
+namespace NHeroInformationScreens {
+class CBase { public:                                       // vtable 0x0123A3E0
+    virtual void v00();
+    virtual ~CBase() {}
+};
+}
+
+struct NUISystemComponent;
+class CTCInventoryWeapons : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
+public:
+    CIntelligentPointer<CThing> PActiveMeleeWeapon;   // +0x134
+    long                       ActiveMeleeWeaponDefIndex;   // +0x13C
+    bool                       MeleeWeaponCarriedOnLoad;    // +0x140
+    CIntelligentPointer<CThing> PActiveRangedWeapon;  // +0x141
+    long                       ActiveRangedWeaponDefIndex;  // +0x14C
+    bool                       RangedWeaponCarriedOnLoad;   // +0x150
+    CRetailHandleVector        ActiveWeaponPrimitiveHandles;   // +0x154
+    long                       ConfiscatedActiveMeleeWeaponDefIndex;    // +0x160
+    long                       ConfiscatedActiveRangedWeaponDefIndex;   // +0x164
+    long                       PreviouslyWieldedMeleeWeaponDefIndex;    // +0x168
+    long                       PreviouslyWieldedRangedWeaponDefIndex;   // +0x16C
+    CClothingItemMap           WeaponMenuItemMap;    // +0x170
+    NUISystemComponent*        WeaponsList;          // +0x17C
+    NUISystemComponent*        PAssignedRangedIcon;  // +0x180
+    NUISystemComponent*        PAssignedMeleeIcon;   // +0x184
+    NUISystemComponent*        PAssignedRangedMenuEntry;   // +0x188
+    NUISystemComponent*        PAssignedMeleeMenuEntry;    // +0x18C
+    NUISystemComponent*        PRangedList;          // +0x190
+    NUISystemComponent*        PMeleeList;           // +0x194
+    std::list<NUISystem::CComponent*> AvailableWeaponsEntries;   // +0x198
+    virtual void v00();
+    virtual ~CTCInventoryWeapons();
+};
+
+CTCInventoryWeapons::~CTCInventoryWeapons()
+{
+    PActiveMeleeWeapon = 0;
+    PActiveRangedWeapon = 0;
+}

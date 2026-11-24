@@ -1,0 +1,24 @@
+H 0094fe30 CAIStateGroup_JackDragon::StayIdle RELOCATION_MATCH flags= [] leaf=?StayIdle@CAIStateGroup_JackDragon@@AAEXM@Z
+H 009189c0 CAIStateGroup_GazeAtHome::IsRunnable RELOCATION_MATCH flags= [] leaf=?IsRunnable@CAIStateGroup_GazeAtHome@@UAE_NXZ
+H 00872050 NCameraModes::CStringAndCageBase::UpdateZVars RELOCATION_MATCH flags= [] leaf=UpdateZVars
+H 00efc500 NScript::CPersonalScript_AardvarkScript::Main RELOCATION_MATCH flags= [] leaf=Main
+H 009a06b0 CBasicString<char>::Insert RELOCATION_MATCH flags= [] leaf=?Insert@
+H 0099f0a0 CCharString::operator+= RELOCATION_MATCH flags= [] leaf=
+H 00bdda80 CLocalDetailCacheMap::CQuadTreeElement::RenderUpdate RELOCATION_MATCH flags= [] leaf=RenderUpdate
+H 00b8ff70 CEngineInternalPrimitiveBase::NotifyReleased RELOCATION_MATCH flags= [] leaf=
+H 00644179 NPlayerGui::CDrawMiniMap::IsFinishedOpening RELOCATION_MATCH flags= [] leaf=
+H 00892f40 CGameScriptInterface::IsQuestActive RELOCATION_MATCH flags= [] leaf=
+H 00730f90 CTCDoor::UpdateOpenStatusTriggerTypePerson RELOCATION_MATCH flags= [] leaf=?UpdateOpenStatusTriggerTypePerson@CTCDoor@@QAEXXZ
+H 006d8b50 CTCHeroExperience::SetExperienceStatus RELOCATION_MATCH flags= [] leaf=SetExperienceStatus
+H 006d7cb0 CTCHeroExperience::IsReadyToLevelUp RELOCATION_MATCH flags= [] leaf=IsReadyToLevelUp
+H 0079e3a0 CTCPhysicalShieldSpell::Pause RELOCATION_MATCH flags= [] leaf=Pause
+H 00904ee0 CScriptGameResourceObjectScriptedThing::IsPerformingScriptTask RELOCATION_MATCH flags= [] leaf=IsPerformingScriptTask
+H 00788555 CTCMeleeTrap::UpdateAnimation RELOCATION_MATCH flags= [] leaf=UpdateAnimation
+H 0083b610 CThingVillage::OnCreate RELOCATION_MATCH flags= [] leaf=OnCreate@CThingVillage
+H 00582944 CTCInventory::OnCreate RELOCATION_MATCH flags= [] leaf=?OnCreate@CTCInventory@@QAEXXZ
+H 008e9080 NCreatureMode::GetAnimDistanceAndIndexFromAnimName RELOCATION_MATCH flags= [] leaf=?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z
+H 008d6da0 NCreatureMode::CModeConversation::AnimUpdate RELOCATION_MATCH flags= [] leaf=AnimUpdate
+H 006e9d90 CCombatManager::SetAttackerRingAsRotating RELOCATION_MATCH flags= [] leaf=SetAttackerRingAsRotating
+H 006ebee0 CCombatRing::AssignAttackerToProng RELOCATION_MATCH flags= [] leaf=
+H 008d7730 NCreatureMode::CModeJackOfBladesFloat::OnDeactivate RELOCATION_MATCH flags= [] leaf=OnDeactivate
+GR_DONE

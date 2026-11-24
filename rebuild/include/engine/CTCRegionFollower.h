@@ -15,6 +15,12 @@ class CThing;
 class CTCRegionFollower : public CTCBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_REGION_FOLLOWER; }
+#ifdef FABLE_RETAIL_GHOST_SWORD_FIXTURE_PASS27
+    CTCRegionFollower(CThing&);
+#endif
+#ifdef FABLE_RETAIL_GHOST_SWORD_ADD_PASS27
+    void AddFollower(CThing& thing);                                    // 0x006AEDC0
+#endif
     bool IsRegionFollower(const CThing* thing) const;                    // 0x006AEB60
 #ifdef FABLE_RETAIL_CTCREGIONFOLLOWER_REGIONLOAD
     // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?IsCreatureFollowingHeroAcrossRegions@CTCRegionFollower@@QBE_NABVCThingAICreature@@@Z

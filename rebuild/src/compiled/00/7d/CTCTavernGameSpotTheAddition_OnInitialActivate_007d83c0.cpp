@@ -129,7 +129,10 @@ struct CTCTavernGameSpotTheAddition : public CTCBase {
     long GamePositionActionPointIndex;                  // +0x174
     void OnInitialActivateBase();                       // 0x005EA650
     void* CreateGamePiece(long type);                   // 0x005EA9B0
-    void PositionCover(float t);                        // 0x007D7F10
+    private:
+    void PositionCover(float t);
+    public:
+                        // 0x007D7F10
     void OnInitialActivate();
 };
 #pragma pack(pop)

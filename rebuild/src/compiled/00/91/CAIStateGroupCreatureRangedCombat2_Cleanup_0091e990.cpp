@@ -1,5 +1,5 @@
 // CAIStateGroup_CreatureRangedCombat2::Cleanup() -- on world shutdown just cleans up the ranged weapon; otherwise adds the "fire ranged weapon on leaving state group" component and (unless a strafe was added) triggers it; clears AddedStrafe
-// Leaf: ?Cleanup@CAIStateGroup_CreatureRangedCombat2@@UAEXXZ
+// Leaf: ?Cleanup@CAIStateGroup_CreatureRangedCombat2@@MAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091E990, length 114 bytes (+ int3 padding).
 // Callees: the state group's world accessor @ 0x008FCFC0 (PBrain->+0x1c->+0x24; a twin of 0x008FCFA0), the
 // world's virtual slot 12 (+0x30) whose result carries a flag byte at +0xd4, CleanupRangedWeapon(CThing*)
@@ -82,7 +82,9 @@ public:
 struct CAIStateGroup_CreatureRangedCombat2 : CAIStateGroupBase {
     unsigned char PTargetThing[8];                          // +0x14 CIntelligentPointer<CThingCreatureBase>
     bool AddedStrafe;                                       // +0x1c
+    protected:
     virtual void Cleanup();
+    public:
 };
 
 void CAIStateGroup_CreatureRangedCombat2::Cleanup()

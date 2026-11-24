@@ -1,3 +1,4 @@
+// Leaf: ?IsVerticalSyncEnabled@CUserProfileManager@@QBE_NXZ
 // CUserProfileManager::IsVerticalSyncEnabled()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00548710, oracle length 18 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
@@ -18,10 +19,10 @@ class CUserProfileManager { public:
     bool          VerticalSyncEnabled;         // +0x50 (PDB)
     unsigned char _pad_after[0x10c - 0x50 - 1];
     bool          VerticalSyncEnabledNewProfile; // +0x10c (retail; PDB +0x110)
-    bool IsVerticalSyncEnabled();
+    bool IsVerticalSyncEnabled() const;
 };
 
-bool CUserProfileManager::IsVerticalSyncEnabled()
+bool CUserProfileManager::IsVerticalSyncEnabled() const
 {
     if (this->UseNewProfileValues)
         return this->VerticalSyncEnabledNewProfile;

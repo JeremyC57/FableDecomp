@@ -1,0 +1,6 @@
+VT ??_7CIntelligentPointerThing@@6B@ slots 2 retail NONE
+  0 ??_ECIntelligentPointerThing@@UAEPAXI@Z
+  1 ?v00@CIntelligentPointerThing@@UAEXXZ
+VT ??_7CIntelligentPointerCreature@@6B@ slots 2 retail NONE
+  0 ??_ECIntelligentPointerCreature@@UAEPAXI@Z
+  1 ?v00@CIntelligentPointerCreature@@UAEXXZ

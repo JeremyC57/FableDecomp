@@ -28,7 +28,8 @@
 template<class T> inline bool CBasicString<T>::operator==(const T* text) const { return Compare(PData,text)==0; }
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::~CScriptThing() { }
-inline CCharString CScriptThing::GetDataString() const { if (!PImp.Data) return NullString; return PImp.Data->GetDataString(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA900 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline CCharString CScriptThing::GetDataString() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullString; return imp->GetDataString(); }
 
 void NScript::CV_AmbushScamScript::Main()
 {

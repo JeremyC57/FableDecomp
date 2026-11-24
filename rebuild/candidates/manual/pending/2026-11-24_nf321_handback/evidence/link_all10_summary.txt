@@ -1,0 +1,10 @@
+/FORCE link (nf.py link all10, LINK= cleared): HEAD set = the 10 rows' HEAD vland objects + 8 owner controls (HEAD objects of 0x004FEDE0, 0x006BDE50,
+0x006E71F0, 0x006E7270, 0x008FCEC0, 0x009CBB80, 0x00B2FBF0, 0x00B314E0); new set = the 10 rows' new vland objects + the same 8 controls.
+duplicates: 0 (HEAD), 0 (new)
+unresolved only in HEAD (stand-ins gone): ?AddExclusiveObserver@CEngineCamera@@QAEXPAVCCamera@@@Z, ?CacheMusicSet_006bde50@CMusicTarget@@QAEXW4EMusicSetType@@@Z,
+  ?Impl@CWorldMap_Methods@@QAEXJ@Z, ?Initialise@CAIStateGroupBase_Retail@@QAEX...JJ...@Z, ?Run@CBankFileAsync@@QAEXXZ, ?helperA@/?helperB@CGameScriptInterface_Methods@@
+unresolved only in new: the PDB names whose owner rows still define stand-ins (NF302 Q2; queued in NAME_FIXES.tsv):
+  ?EndFadeScreen@CGameScriptInterface@@IAEXXZ (owner ?Run@T@@), ?GetAlignment@CBankFile@@QBEKXZ (owner DrawGetEnvironment),
+  ?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z (owner ?M@C_00b2fbf0@@), ?UnloadLevel@CWorldMap@@IAEXJ@Z (owner defines QAE)
+newly resolved: ?Rest@CGameScriptInterface@@IBEXM@Z, ?Initialise@CAIStateGroupBase@@UAE...@Z, ?EnableDangerMusic@CMusicManager@@QAEX_N@Z (their owners define them)
+nothing HEAD resolved goes unresolved; __fltused 2 -> 3 references (0x0088E520's float argument; a CRT symbol, unresolved here only because of /NODEFAULTLIB)

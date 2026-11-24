@@ -21,8 +21,8 @@ class C3DSkeletalMorphParameter { public:
     void SetCurrentValue(float value);                  // 0x00A45370
 };
 class C3DSkeletalMorph { public:
-    void ClearParameters();                             // 0x00A45410
-    void ApplyParameters();                             // 0x00A45330
+    void Reset();                             // 0x00A45410
+    void NotifyParamUpdate();                           // 0x00A45330 (Ego_r + FableWin; NF292, was ApplyParameters)
 public:
     void AddMorphParameter(CCountedPointer<C3DSkeletalMorphParameter> const&);   // 0x00A45470
 };
@@ -40,9 +40,9 @@ class CTCSkeletalMorph { public:
 void CTCSkeletalMorph::ForceSkeletalMorph(C3DSkeletalMorphTarget* target)
 {
     Changed = false;
-    PSkeletalMorph->ClearParameters();
+    PSkeletalMorph->Reset();
     CCountedPointer<C3DSkeletalMorphParameter> parameter(new C3DSkeletalMorphParameter(target));
     PSkeletalMorph->AddMorphParameter(parameter);
     parameter->SetCurrentValue(1.0f);
-    PSkeletalMorph->ApplyParameters();
+    PSkeletalMorph->NotifyParamUpdate();
 }

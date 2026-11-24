@@ -1,5 +1,5 @@
 // CAIStateGroup_WorkSawingWood::IsRunnable() -- in work hours, unless the creature's current mode is 0x22 or 6, pick the nearest live object owned by the creature's workplace that is a thing class 5 object with property bit 4 and a free action point (interface 0x2D), latch it as the saw horse and run
-// Leaf: ?IsRunnable@CAIStateGroup_WorkSawingWood
+// Leaf: ?IsRunnable@CAIStateGroup_WorkSawingWood@@MAE_NXZ
 // NF131 (2026-11-20, q4946): the row-local CAIStateGroupBase model gives way to the retail engine/CAIStateGroupBase.h (FABLE_RETAIL_CAISTATEGROUPBASE,
 //   _MEMBERS) and engine/CAIStateGroup_WorkBase.h; the class is re-based on CAIStateGroup_WorkBase<CAIStateGroupBase> (RTTI ghidra_out/rtti_bases.tsv),
 //   so the call to 0x0091A6F0 binds ?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ (Ego_r.pdb 0x0093E1A0 + FableWin.pdb
@@ -158,7 +158,9 @@ struct CAIStateGroup_WorkSawingWood : CAIStateGroup_WorkBase<CAIStateGroupBase> 
     bool TookActionPoint;                       // +0x14
     CIntelligentPointer<CThing> PSawHorse;          // +0x15 CIntelligentPointer<CThingObject>
     CThingWorker* GetCreature() const { return (CThingWorker*)PBrain->PCreature; }
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 // R&D I-3 sweep: a same-TU auto_inline(off) body for the list dtor 0x004B96F0 (clears its own nodes and frees the
 // sentinel) makes the copied list non-escaping, which gives retail's register and frame choices.

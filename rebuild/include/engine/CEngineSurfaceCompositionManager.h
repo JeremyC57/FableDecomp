@@ -56,7 +56,15 @@ public:
 #if defined(FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_MEMBERS)
     virtual ~CEngineSurfaceCompositionManager();                         // 0x00B2D1B0 (landed)
     void ChangeSceneForTextureBank();                                    // 0x00B2AD80
+#ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITION_GETCOMPOSED_PASS26
+    // Both donor signatures and retail 0x00B2B9B0.
+    bool GetComposedSurface(CGraphicFrame&, class CCompositeSurfaceInfo&, unsigned long, bool);
+#endif
 private:
+#ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITION_GETCOMPOSED_PASS26
+    // Ego_r 0x009CBE40 and FableWin 0x02D8B9F0, retail 0x00B2AE60.
+    unsigned long FindIndexInCompletedBank(const CEngineTextureMorph&) const;
+#endif
     // ?RenderToTexture@CEngineSurfaceCompositionManager@@AAEXAAVCTexture@@ABVC2DExtentsI@@_N2ABVCEngineTextureMorph@@ABV?$CArray@VCGraphicFrame@@@@J@Z
     // (Ego_r.pdb; private; retail `ret 1Ch`).
     void RenderToTexture(CTexture& texture, const C2DExtentsI& extents, bool alpha, bool unused_flag,

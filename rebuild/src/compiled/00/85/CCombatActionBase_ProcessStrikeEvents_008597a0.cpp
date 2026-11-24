@@ -122,7 +122,7 @@ class CCombatActionBase : public CCreatureActionBase { public:      // retail si
     CIntelligentPointer<CThing> LastWeaponUsedInStrike;        // +0x100
     unsigned char    _pad108[0x114 - 0x108];
     CStrikeEvent* GetFirstActiveStrikeEvent();         // 0x00856E50
-    CThing* GetWeaponUsedInStrikeAction();             // 0x00857070
+    CThing* GetWeaponUsedInStrikeAction() const;             // 0x00857070
     void PerformPossibleDamageAction(float fraction);  // 0x008591E0
     void ProcessStrikeEvents();
 };

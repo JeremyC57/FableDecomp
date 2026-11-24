@@ -1,8 +1,7 @@
-// Leaf: ?PeekThingManager@CWorld_Methods@@QAEAAVCThingManager@@XZ
-#include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
+// Leaf: ?PeekThingManager@CWorld@@UBEABVCThingManager@@XZ
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CWorld.h under FABLE_RETAIL_CWORLD with the PDB parameter / return types (was ?PeekThingManager@CWorld_Methods@@QAEAAVCThingManager@@XZ);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CWORLD
+#include "engine/CWorld.h"
 class CThingManager;
-struct CWorld_Methods : CWorld {
-    CThingManager& PeekThingManager();
-};
-CThingManager& CWorld_Methods::PeekThingManager(){ return *this->PThingManager_ptr; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?PeekThingManager@CWorld@@UBEABVCThingManager@@XZ); evidence: RTTI vtable slot + PDB name set.
+const CThingManager& CWorld::PeekThingManager() const { return *this->PThingManager_ptr; }

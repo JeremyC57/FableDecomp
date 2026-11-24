@@ -1,7 +1,7 @@
 // CChunkedFileLoader::LoadChunkedFile(CChunkedFile& chunk, CDataInputStream& stream) -- read a chunked file's header: the ">>>>"
 //   file id and the loader's supported file type (CChunkedFileException on either mismatch), the version and the file comment,
 //   then the root chunk's type (exception unless it matches the root chunk) and size, and hand the stream to the root chunk
-// Leaf: ?LoadChunkedFile@CChunkedFileLoader@@
+// Leaf: ?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AA79C0, 683 bytes, ret 8; PDB ?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@
 //   AAVCDataInputStream@@@Z. No EH frame (throws without /EHsc): CChunkedFileException is an empty class (throw info 0x01369548,
 //   type descriptor .?AVCChunkedFileException@@), thrown through _CxxThrowException 0x00BFEB84 from the dead stream-arg slot.
@@ -82,7 +82,9 @@ class CChunkedFileLoader { public:
     virtual void v0();
     long ReadUnknownChunkTypes;                         // +0x04
     char SupportedFileType[5];                          // +0x08
+    protected:
     void LoadChunkedFile(CChunkedFile& chunk, CDataInputStream& stream);
+    public:
 };
 
 void CChunkedFileLoader::LoadChunkedFile(CChunkedFile& chunk, CDataInputStream& stream)

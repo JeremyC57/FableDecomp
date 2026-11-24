@@ -1,3 +1,4 @@
+// Leaf: ?LoadLoadableGlobalThingsForLevel@CWorldMap@@IAEXJ@Z
 // CWorldMap::LoadLoadableGlobalThingsForLevel(long) -- open the level's global-things file (from the level WAD bank when one is in use, else from disk) and hand it to the thing manager
 // ToWideString call, the CDiskFileWin32 path push, the by-value copy's Data load and the World vtable load
 // Retail: Fable.exe @ 0x004FBF60, 240 bytes. PDB ?LoadLoadableGlobalThingsForLevel@CWorldMap@@IAEXJ@Z (protected)
@@ -122,7 +123,9 @@ class CWorldMap { public:
     bool                      UseLevelWADBank;               // +0xA8 (PDB +0xC8)
 
     static CWideString __fastcall GetThingFilenameFromLevelFilename(const CWideString& level);   // 0x004FAFF0
+    protected:
     void LoadLoadableGlobalThingsForLevel(long level);
+    public:
 };
 
 void CWorldMap::LoadLoadableGlobalThingsForLevel(long level)

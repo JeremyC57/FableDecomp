@@ -1,0 +1,8 @@
+## HEAD set: H_0088f400.obj H_006c0810.obj H_008d66e0.obj 0049d930.obj 0088ae40.obj 0085f830.obj
+duplicates 0
+UNRESOLVED 1 ?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAVCBaseIntelligentPointer@@K@Z
+UNRESOLVED 1 ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKPAUCThing@1@J@Z
+UNRESOLVED 1 ?SetCreatureGenerationGroupAsEnabled@CWorld@@QAIXW4ECreatureGroup@@_N@Z
+## new set: 0088f400.obj 006c0810.obj 008d66e0.obj 0049d930.obj 0088ae40.obj 0085f830.obj
+duplicates 0
+LK_DONE

@@ -1,5 +1,5 @@
 // CTCNymph::PickNewTargetPos() -- rebuild the five-point flight spline: from the last spline point (or the effect's position) through the effect's position to a point above the target (or the fly-around point), then two random valid positions around it raised to at least the target's height, each lifted to the ground height below plus a random flight height; restamp the target tick
-// Leaf: PickNewTargetPos
+// Leaf: ?PickNewTargetPos@CTCNymph@@IAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080F270, 878 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, CTCBase::GetWorld @ 0x00686A70,
@@ -285,8 +285,13 @@ class CTCNymph : public CTCBaseFrame { public:
     long TotalFadeTime;                                     // +0x64
     CIntelligentPointerConstThing PTarget;                  // +0x68
     bool IsDecentAttackRange(const C3DVector& target);      // 0x0080F190
-    float GetRandomFlightHeight() const;                    // 0x0080F130
+    protected:
+    float GetRandomFlightHeight();
+    public:
+                    // 0x0080F130
+    protected:
     void PickNewTargetPos();
+    public:
 };
 
 

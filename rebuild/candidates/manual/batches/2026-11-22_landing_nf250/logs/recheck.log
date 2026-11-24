@@ -1,0 +1,39 @@
+0049d800   MATCH            PASS   GetLocalSeed
+004a9710   WARN STANDIN_LEAF ??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z (catalog CIntelligentPointer<CThing>::`scalar_deleting_destructor'; names another function)
+004a9710   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004d6915   WARN STANDIN_LEAF ??_G?$CIntelligentPointer@VCThingCreatureBase@@@@UAEPAXI@Z (catalog CIntelligentPointer<CThingCreatureBase>::`scalar_deleting_destructor'; names another function)
+004d6915   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f8010   WARN STANDIN_LEAF ??_GCCreatureAction_CombatIdle@@UAEPAXI@Z (catalog CCreatureAction_CombatIdle::`scalar_deleting_destructor'; names another function)
+006f8010   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008aa9b0   WARN STANDIN_LEAF ??$?0VCModeSitFloor@NCreatureMode@@@?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@ABV?$CCountedPointer@VCModeSitFloor@NCreatureMode@@@@@Z (catalog CCountedPointer<NCreatureMode::CModeSitBase>::CCountedPointer<NCreatureMode::CModeSitFloor>; names another function)
+008aa9b0   MATCH            PASS   CModeSitFloor>
+008ee720   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008ee720   WARN SHARED_HEADER_AVAILABLE CMaterialDef (engine/CMaterialDef.h)
+008ee720   WARN RELOC_NAME: ?GetRandomGenerator@CEngineRandomOwner@@QAEPAUCRandomGenerator@@XZ -> 0049d800 labelled 'CWorld::GetLocalSeed'
+008ee720   RELOCATION_MATCH PASS   GetRandomBerserkedSwordHitParticleEffect
+00951fb0   RELOCATION_MATCH PASS   UpdateHover
+009539a0   WARN STANDIN_LEAF ??_GCCreatureAction_DragonHoverOutOf@@UAEPAXI@Z (catalog CCreatureAction_DragonHoverOutOf::`scalar_deleting_destructor'; names another function)
+009539a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00953a00   WARN STANDIN_LEAF ??_GCCreatureAction_DragonFireBlastForward@@UAEPAXI@Z (catalog CCreatureAction_DragonFireBlastForward::`scalar_deleting_destructor'; names another function)
+00953a00   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00955620   WARN RELOC_NAME: ?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+00955620   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+00955620   RELOCATION_MATCH PASS   Update
+0096d780   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+0096d780   WARN SHARED_HEADER_AVAILABLE CAdaptThingCompareToSTLComparitor (engine/CAdaptThingCompareToSTLComparitor.h)
+0096d780   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+0096d780   RELOCATION_MATCH PASS   __unguarded_insertion_sort_aux
+0096d980   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+0096d980   WARN SHARED_HEADER_AVAILABLE CAdaptThingCompareToSTLComparitor (engine/CAdaptThingCompareToSTLComparitor.h)
+0096d980   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+0096d980   RELOCATION_MATCH PASS   __insertion_sort
+0096e410   WARN SHARED_HEADER_AVAILABLE CAdaptThingCompareToSTLComparitor (engine/CAdaptThingCompareToSTLComparitor.h)
+0096e410   RELOCATION_MATCH PASS   __introsort_loop
+0096e4a0   RELOCATION_MATCH PASS   sort<CThing**, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> >
+00ab15f0   RELOCATION_MATCH PASS   FindChildIndex
+00ab1740   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00ab1740   RELOCATION_MATCH PASS   AssignAnimation
+00b209c0   WARN SHARED_HEADER_AVAILABLE CPSCSplineBase (engine/CPSCSplineBase.h)
+00b209c0   RELOCATION_MATCH PASS   GetApproximateSplineLength
+00b3e580   RELOCATION_MATCH PASS   CCountedPointer
+008f69b0   RELOCATION_MATCH PASS   vector

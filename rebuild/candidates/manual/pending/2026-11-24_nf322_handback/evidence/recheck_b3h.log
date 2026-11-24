@@ -1,0 +1,41 @@
+addr       parity           behav  name
+006cd9b0   RELOCATION_MATCH PASS   GetTerrainDesirabilityAt
+006cdab0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006cdab0   MATCH            PASS   PeekNavigatorPosition3D
+004d3840   MATCH            PASS   GetSizeofClass
+004dd989   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004dd989   RELOCATION_MATCH PASS   Transfer
+004ddb56   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004ddb56   RELOCATION_MATCH PASS   Transfer
+004de8b2   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004de8b2   RELOCATION_MATCH PASS   Transfer
+004de9a1   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004de9a1   RELOCATION_MATCH PASS   Transfer
+004def76   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004def76   RELOCATION_MATCH PASS   Transfer
+004df0f7   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004df0f7   RELOCATION_MATCH PASS   Transfer
+004df31c   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004df31c   RELOCATION_MATCH PASS   Transfer
+007b7d20   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+007b7d20   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+007b7d20   RELOCATION_MATCH PASS   Transfer
+007e1e30   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+007e1e30   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+007e1e30   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+007e1e30   WARN RELOC_NAME: ?ReadBinary@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z -> 0044fc00 labelled 'CDefString::TransferBinaryIn'
+007e1e30   RELOCATION_MATCH PASS   Transfer
+
+WINS: 12
+  006cd9b0 RELOCATION_MATCH CGroundNavigatorExternalInterface::GetTerrainDesirabilityAt
+  006cdab0 MATCH CGroundNavigatorExternalInterface::PeekNavigatorPosition3D
+  004d3840 MATCH CChestDef::?GetSizeofClass@CChestDef_Methods@@QAEHXZ
+  004dd989 RELOCATION_MATCH CVillageMemberDef::Transfer
+  004ddb56 RELOCATION_MATCH CBuyHouseDef::Transfer
+  004de8b2 RELOCATION_MATCH COccupiableDef::Transfer
+  004de9a1 RELOCATION_MATCH CCrateStackDef::Transfer
+  004def76 RELOCATION_MATCH CResurrectionItemDef::Transfer
+  004df0f7 RELOCATION_MATCH CAICreatureWillPowerIndicatorDef::Transfer
+  004df31c RELOCATION_MATCH CCameraCollisionDef::Transfer
+  007b7d20 RELOCATION_MATCH COverheadDisplayDef::Transfer
+  007e1e30 RELOCATION_MATCH CCarriedReadableDef::Transfer

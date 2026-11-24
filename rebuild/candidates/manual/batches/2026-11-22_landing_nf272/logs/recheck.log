@@ -1,0 +1,67 @@
+addr       parity           behav  name
+00beaa00   RELOCATION_MATCH PASS   ReleaseBuffers
+00bf4220   DIFFER(615v634)  PASS   UpdateForeground
+00bfdd40   RELOCATION_MATCH PASS   DeleteForegroundVertexBuffer
+00bf38f0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf38f0   RELOCATION_MATCH PASS   Clear
+00beaaa0   RELOCATION_MATCH PASS   ~CWaterPatchMesh
+00beb4d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00beb490   RELOCATION_MATCH PASS   CWaterPatchMesh
+00bda0d0   RELOCATION_MATCH PASS   DeleteVertexBuffer
+00bf5a30   WARN RELOC_NAME: ??2CWaterPatchMesh@@SIPAXIPAVCMovableResource@@@Z -> 00bea7e0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf5a30   RELOCATION_MATCH PASS   CreateFromStream
+00bfde20   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfde20   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfde20   RELOCATION_MATCH PASS   ~CLandscapeLayerMesh
+00bfdd70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfdd70   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfdd70   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bfdd70   RELOCATION_MATCH PASS   OnPostRelocation
+00bfde80   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bfde80   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfde80   WARN RELOC_NAME: ?OnPostRelocation@CIndexBuffer@@QAEXXZ -> 00ac1f60 labelled '_global::Nop_ret0_00ac1f60'
+00bfde80   RELOCATION_MATCH PASS   RelocateData
+00b751f0   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b751f0   RELOCATION_MATCH PASS   RenderIceForeground
+00b761d0   WARN RELOC_NAME: ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B -> 01436e24 labelled 'g_pEngineEnvironmentDef'
+00b761d0   RELOCATION_MATCH PASS   RenderForeground
+00b77370   WARN RELOC_NAME: ??_GCGraphicFrameData@@QAEPAXI@Z -> 0041bdf0 labelled 'CGraphicFrameData::`scalar deleting destructor''
+00b77370   RELOCATION_MATCH PASS   RenderSeaReflectiveForeground
+00beab20   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+00beab20   WARN SHARED_HEADER_AVAILABLE CWaterPatchMesh (engine/CWaterPatchMesh.h)
+00beab20   MATCH            PASS   RelocateData
+00beab40   RELOCATION_MATCH PASS   GetWaterType
+00beaca0   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00beaca0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00beaca0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00beaca0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00beaca0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00beaca0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00beaca0   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00beaca0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00beaca0   RELOCATION_MATCH PASS   Render
+00beae50   RELOCATION_MATCH PASS   Load
+00bf5b50   MATCH            PASS   pair<C3DBoundingBox,CWaterPatchMesh*>*>
+00bf5bb0   MATCH            PASS   pair<C3DBoundingBox,CWaterPatchMesh*> >
+
+WINS: 20
+  00beaa00 RELOCATION_MATCH CWaterPatchMesh::?ReleaseBuffers@CWaterPatchMesh@@QAEXXZ
+  00bfdd40 RELOCATION_MATCH CLandscapeLayerMesh::?DeleteForegroundVertexBuffer@CLandscapeLayerMesh@@QAEXXZ
+  00bf38f0 RELOCATION_MATCH CEngineLandscapePatch::?Clear@CEngineLandscapePatch@@QAEXXZ
+  00beaaa0 RELOCATION_MATCH CWaterPatchMesh::??1CWaterPatchMesh@@UAE@XZ
+  00beb4d0 RELOCATION_MATCH CWaterPatchMesh::??_GCWaterPatchMesh@@UAEPAXI@Z
+  00beb490 RELOCATION_MATCH CWaterPatchMesh::??0CWaterPatchMesh@@QAE@PBVCEngineLandscapeMap@@AAVCDataInputStream@@AAVC2DCoordI@@@Z
+  00bda0d0 RELOCATION_MATCH CEngineLandscapeMemoryManager::?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+  00bf5a30 RELOCATION_MATCH CWaterPatchMesh::?CreateFromStream@CWaterPatchMesh@@SGPAV1@PAVCMovableResource@@PAVCEngineLandscapeMap@@PAVCDataInputStream@@@Z
+  00bfde20 RELOCATION_MATCH CLandscapeLayerMesh::??1CLandscapeLayerMesh@@QAE@XZ
+  00bfdd70 RELOCATION_MATCH CLandscapeLayerMesh::OnPostRelocation
+  00bfde80 RELOCATION_MATCH CLandscapeLayerMesh::?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+  00b751f0 RELOCATION_MATCH CEngineWaterRenderer::?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z
+  00b761d0 RELOCATION_MATCH CEngineWaterRenderer::?RenderForeground@CEngineWaterRenderer@@AAEXM@Z
+  00b77370 RELOCATION_MATCH CEngineWaterRenderer::?RenderSeaReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z
+  00beab20 MATCH CWaterPatchMesh::?RelocateData@CWaterPatchMesh@@UAEXJPAX0J@Z
+  00beab40 RELOCATION_MATCH CWaterPatchMesh::?GetWaterType@CWaterPatchMesh@@ABE?BW4EWaterType@@XZ
+  00beaca0 RELOCATION_MATCH CWaterPatchMesh::Render
+  00beae50 RELOCATION_MATCH CWaterPatchMesh::?Load@CWaterPatchMesh@@AAE_NAAVCDataInputStream@@@Z
+  00bf5b50 MATCH std::??$__uninitialized_copy@PAU?$pair@VC3DBoundingBox@@PAVCWaterPatchMesh@@@std@@PAU12@@std@@YIPAU?$pair@VC3DBoundingBox@@PAVCWaterPatchMesh@@@0@PAU10@00ABU__false_type@0@@Z
+  00bf5bb0 MATCH std::??$__uninitialized_fill_n@PAU?$pair@VC3DBoundingBox@@PAVCWaterPatchMesh@@@std@@IU12@@std@@YIPAU?$pair@VC3DBoundingBox@@PAVCWaterPatchMesh@@@0@PAU10@IABU10@ABU__false_type@0@@Z

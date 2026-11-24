@@ -1,0 +1,47 @@
+#1 00884e90 ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z
+   00884e90(self) - DEF=OK:?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z
+   006b8640 OK ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z x1
+#2 00884f60 ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z
+   00884f60(self) - DEF=OK:?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z
+   006b8640 OK ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z x1
+#3 00884fe0 ?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@1@_N@Z
+   00884fe0(self) - DEF=OK:?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@1@_N@Z
+   006b8640 OK ?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@1@_N@Z x1
+#6 00aee940 ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@@@Z
+   00aee940(self) - DEF=WRONG:?ClearAllPrimitives@CParticleEmitter@@QAEXPAVCIEngine@@@Z
+   00aeb990 OK ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@@@Z x1
+   00aeeba0 OK ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@@@Z x1
+#7 00a12450 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+   0063e950 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   00668ab0 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   00875e60 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   00970790 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+#8 00487ef0 ?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+   00487ef0(self) - DEF=OK:?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+   00449e60 OK ?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z x1
+#9 004888c0 ?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z
+   004888c0(self) - DEF=OK:?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z
+   00449cb0 OK ?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z x1
+#11 0043b570 ??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z
+   0043b570(self) - DEF=OK:??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z
+   00487fb0 OK ??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z x1
+#13 004afbb0 ?OnEntityInterrupted@CQuestManager@@QAEXAAVCThing@@@Z
+   004afbb0(self) - DEF=OK:?OnEntityInterrupted@CQuestManager@@QAEXAAVCThing@@@Z
+   00713850 OK ?OnEntityInterrupted@CQuestManager@@QAEXAAVCThing@@@Z x1
+#15 00f3afc0 ?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z
+   00f3afc0(self) - DEF=OK:?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z
+   00bfd0b0 OK ?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z x1
+   00bfd670 OK ?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z x2
+#16 009dbff0 ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+   009dbff0(self) - DEF=OK:?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+   00405020 OK ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z x2
+#17 009dd210 ?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z
+   009dd210(self) - DEF=OK:?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z
+   0041a980 OK ?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z x1
+#18 009de3f0 ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z
+   009de3f0(self) - DEF=OK:?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z
+   009ead60 OK ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z x1
+#19 00a10dc0 ??0CRenderTarget@@QAE@AAVCSurface@@0@Z
+   00a10dc0(self) - DEF=OK:??0CRenderTarget@@QAE@AAVCSurface@@0@Z
+   00b87680 OK ??0CRenderTarget@@QAE@AAVCSurface@@0@Z x1
+   00b89a20 OK ??0CRenderTarget@@QAE@AAVCSurface@@0@Z x1

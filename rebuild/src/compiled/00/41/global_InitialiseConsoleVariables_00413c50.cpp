@@ -148,7 +148,7 @@ public:
     long  AnimationPoolSize;                                                        // +0x20
     long  ClothPoolSize;                                                            // +0x24
 };
-extern CEngineMemoryInit g_DefaultEngineMemoryInit;                                 // 0x0137549C
+extern CEngineMemoryInit GEngineMemoryInit;                                 // 0x0137549C (Ego_r / FableWin / Ego_d publics; NF236: was g_DefaultEngineMemoryInit)
 void __fastcall GConsoleSetLevel(const std::vector<CGenericVar>& args);             // 0x00413800
 void __fastcall GConsoleSetStartingHolySite(const std::vector<CGenericVar>& args);  // 0x00413840
 void __fastcall GConsoleEnableCodeSectionLoading(const std::vector<CGenericVar>& args);// 0x00413880
@@ -161,7 +161,7 @@ extern bool g_bUseCompiledGlobalThings;                                         
 extern bool g_bUseCompiledDefs;                                                     // 0x013B8617
 extern bool g_bUseCompiledWorldFiles;                                               // 0x013B8618
 extern bool g_bUseCompiledSoundSymbols;                                             // 0x013B8619
-extern bool g_WADBuildEnabled;                                                      // 0x01375459 (bound name)
+extern bool GAllowDataGeneration;                                                      // 0x01375459 (bound name) (Ego_r / FableWin / Ego_d publics; NF236: was g_WADBuildEnabled)
 extern long g_InstallerBufferSize;                                                  // 0x01375494
 extern long g_NoInstallBuffers;                                                     // 0x01375498
 extern bool g_bExecuteUserSettingsFile;                                             // 0x01375444 (descriptive)
@@ -181,19 +181,19 @@ void __fastcall InitialiseConsoleVariables()
     CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("UseCompiledDefs", g_bUseCompiledDefs));
     CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("UseCompiledWorldFiles", g_bUseCompiledWorldFiles));
     CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("UseCompiledSoundSymbols", g_bUseCompiledSoundSymbols));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("AllowDataGeneration", g_WADBuildEnabled));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("AllowDataGeneration", GAllowDataGeneration));
     CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("InstallerBufferSize", g_InstallerBufferSize));
     CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("NoInstallBuffers", g_NoInstallBuffers));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("LandscapePoolSize", g_DefaultEngineMemoryInit.LandscapePoolSize));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("LandscapePhysicalMemoryRatio", g_DefaultEngineMemoryInit.LandscapePhysicalMemoryRatio));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("LandscapeVirtualMemoryMinSize", g_DefaultEngineMemoryInit.LandscapeVirtualMemoryMinSize));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("MeshPoolSize", g_DefaultEngineMemoryInit.MeshPoolSize));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("MeshStatsPoolSize", g_DefaultEngineMemoryInit.MeshStatsPoolSize));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("MeshPhysicalMemoryRatio", g_DefaultEngineMemoryInit.MeshPhysicalMemoryRatio));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("HiresTextureMemory", g_DefaultEngineMemoryInit.HiresTextureMemory));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("PhysicsMeshPoolSize", g_DefaultEngineMemoryInit.PhysicsMeshPoolSize));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("AnimationPoolSize", g_DefaultEngineMemoryInit.AnimationPoolSize));
-    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("ClothPoolSize", g_DefaultEngineMemoryInit.ClothPoolSize));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("LandscapePoolSize", GEngineMemoryInit.LandscapePoolSize));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("LandscapePhysicalMemoryRatio", GEngineMemoryInit.LandscapePhysicalMemoryRatio));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("LandscapeVirtualMemoryMinSize", GEngineMemoryInit.LandscapeVirtualMemoryMinSize));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("MeshPoolSize", GEngineMemoryInit.MeshPoolSize));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("MeshStatsPoolSize", GEngineMemoryInit.MeshStatsPoolSize));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("MeshPhysicalMemoryRatio", GEngineMemoryInit.MeshPhysicalMemoryRatio));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("HiresTextureMemory", GEngineMemoryInit.HiresTextureMemory));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("PhysicsMeshPoolSize", GEngineMemoryInit.PhysicsMeshPoolSize));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("AnimationPoolSize", GEngineMemoryInit.AnimationPoolSize));
+    CTBaseSingleton<CConsole>::Get().AddInput(new CConsoleVariable("ClothPoolSize", GEngineMemoryInit.ClothPoolSize));
     if (CAFile::PathExists(L"default_userst.ini"))
         CTBaseSingleton<CConsole>::Get().RunScript(L"default_userst.ini");
     if (g_bExecuteUserSettingsFile)

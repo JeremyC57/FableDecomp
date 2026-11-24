@@ -1,5 +1,5 @@
 // CThingObject::WorldUpdate() -- vtable slot 19: after the game-object update, count down the die-off timer (unless held by TC 0x47 or a shot TC), kill the object when its health is gone or its die-off time is up, else run its own update and the shot component's
-// Leaf: ?WorldUpdate@CThingObject
+// Leaf: ?WorldUpdate@CThingObject@@UAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00704150, length 215 bytes, `ret`, bool in al; slot 19 of vtable 0x01264DCC =
 //   CThingObject (rtti-vtables.tsv; CThingGameObject's slot 19 is 0x00838BA0, landed callers name it WorldUpdate).
@@ -25,19 +25,20 @@ struct CTCShotDefinitionBase {
     void Update();                              // 0x007C21A0
 };
 
-class CThing {
+class CThing {                                  // polymorphic in retail (vptr at +0); only the virtual this row overrides is declared
 public:
+    virtual bool WorldUpdate();                 // ?WorldUpdate@CThing@@UAE_NXZ (Ego_r / FableWin)
     void Kill(bool immediately);                // 0x004C9B80
 };
 
 class CThingGameObject : public CThing {
 public:
-    unsigned char _pad00[0x20];
+    unsigned char _pad04[0x1c];                 // +0x04 (CThing's vptr at +0)
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad54[0x60];
     float Health;                               // +0xb4 (CThingPhysical)
-    bool WorldUpdate();                         // 0x00838BA0 (slot 19)
+    virtual bool WorldUpdate();                 // 0x00838BA0 (slot 19) ?WorldUpdate@CThingGameObject@@UAE_NXZ (Ego_r / FableWin; called qualified here)
     bool HasTC(long type) const
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31)))
@@ -75,13 +76,13 @@ public:
     const CThingObjectDef* PDef;                // +0xd0
     long DieOffTimer;                           // +0xd4
     bool DiesOff;                               // +0xd8
-    void UpdateObject_007034d0();               // 0x007034D0
+protected: void WorldUpdateWeaponTrails(); public:   // 0x007034D0 ?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ (Ego_r + FableWin, protected; NF285, was public UpdateObject_007034d0)
     FABLE_FORCEINLINE bool IsDieOffHeld() const
     {
         const CTCDieOffHold_47* hold;
         return GetInterface(&hold, 0x47) && hold->HoldCount != 0;
     }
-    bool WorldUpdate();
+    virtual bool WorldUpdate();                 // ?WorldUpdate@CThingObject@@UAE_NXZ (Ego_r / FableWin)
 };
 
 bool CThingObject::WorldUpdate()
@@ -94,7 +95,7 @@ bool CThingObject::WorldUpdate()
             --DieOffTimer;
     }
     if (!(Health <= 0.0f) && (!diesOff || DieOffTimer > 0)) {
-        UpdateObject_007034d0();
+        WorldUpdateWeaponTrails();
         if (HasTC(0x77))
             GetTC<CTCShotDefinitionBase>(0x77)->Update();
         return false;

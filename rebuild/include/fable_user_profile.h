@@ -43,6 +43,14 @@ class CConfigOptionsDefaultsDef;                                         // chun
 template <class T> class CDefPointer;                                    // engine/CDefPointer.h (by-value return: complete at the definition)
 class CUserProfileManager : public CBaseClassNonCopyable, public CDeviceResetCallback
 {
+#ifdef FABLE_RETAIL_PROJECTILE_UPDATE_PASS28
+public:
+    // FableWin 029ccb70/029ccbb0 and the native Update profile accesses.
+    bool IsCameraFPBowXYInverted() const { return UseNewProfileValues ? CameraFPBowXYInvertedNewProfile : CameraFPBowXYInverted; }
+    bool IsCameraFPBowYZInverted() const { return UseNewProfileValues ? CameraFPBowYZInvertedNewProfile : CameraFPBowYZInverted; }
+    float GetCameraSensitivity() const { return UseNewProfileValues ? CameraSensitivityNewProfile : CameraSensitivity; }
+private:
+#endif
 public:
     CUserProfileManager();
     virtual ~CUserProfileManager();
@@ -66,6 +74,10 @@ public:
     // Retail opt-in addition (chunk 719): the config-options defaults def (landed 0x004083E0) and the four detail caps that read it,
     // Ego_r.pdb / FableWin.pdb QBE members in Ego_r order (0x00406D40 / D80 / DC0 / E00 = retail 0x004084B0 / 0x00408500 /
     // 0x00408550 / 0x004085A0; fields MaxEffectsDetail +0x70, MaxTextureDetail +0x58, MaxShadowDetail +0x60, MaxMeshDetail +0x68).
+#ifdef FABLE_RETAIL_PROFILE_DEFAULT_NAME_PASS26
+    // Both original PDBs identify this const public accessor, native 004065D0.
+    CWideString GetDefaultProfileName() const;
+#endif
     CDefPointer<const CConfigOptionsDefaultsDef> GetConfigOptionsDefaultsDef() const;   // 0x004083E0
     float GetMaxEffectsDetail() const;                                   // 0x004084B0
     float GetMaxTextureDetail() const;                                   // 0x00408500
@@ -138,7 +150,15 @@ protected:
     virtual bool OnPostDeviceReset();                                    // ?OnPostDeviceReset@CUserProfileManager@@MAE_NXZ
 private:
     void Load();
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+    // Add-only opt-in (NF297, 2026-11-23; row 0x0040C790 CUserProfileManager::SetDefaultValues): Ego_r.pdb + FableWin.pdb
+    // ?Save@CUserProfileManager@@QAEXXZ (public, 0x0040A740; the self and 0x0040B690 / 0x0041E6D3 bind QAE). Declaration only.
+public:
+#endif
     void Save();
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+private:
+#endif
     CWideString   ProfileName;                                           // +0x08
     bool          UseNewProfileValues;                                   // +0x0C
     bool          SubtitlingEnabled;                                     // +0x0D
@@ -240,7 +260,12 @@ private:
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RENDERUIBACKGROUND
     unsigned char _pad_defaults_124[0x138-0x124];
     CTexture*     PBackBufferTexture;                                    // +0x138
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_CTOR_PASS26
+    bool VideoChangesAccepted; // Ego_r +0x140; the retail constructor initializes +0x13c.
+    unsigned char _pad_defaults_13d[3];
+#else
     unsigned char _pad_defaults_13c[0x140-0x13c];
+#endif
 #else
     unsigned char _pad_defaults_124[0x140-0x124];
 #endif
@@ -250,7 +275,13 @@ private:
     CTexture*     PBackBufferTexture;                                    // +0x138
     unsigned char _pad_0x13c[0x140 - 0x13c];                             // VideoChangesAccepted (opaque)
 #else
-    unsigned char _pad_0x100[0x140 - 0x100];                             // +0x100 MeshDetailNewProfile .. (opaque)
+#ifdef FABLE_RETAIL_PROJECTILE_UPDATE_PASS28
+    unsigned char _pad_camera_100[0x30];
+    float CameraSensitivityNewProfile; // Ego_r +0x134, retail +0x130
+    unsigned char _pad_camera_134[0xc];
+#else
+    unsigned char _pad_0x100[0x140 - 0x100];
+#endif                             // +0x100 MeshDetailNewProfile .. (opaque)
 #endif
 #endif
 public:
@@ -279,8 +310,24 @@ public:
         bool loadProfile);
 
 private:
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_LOAD_PUBLIC
+    // Add-only opt-in (NF293, 2026-11-23; row 0x0040D400 CUserProfileManager::SetProfileName): Ego_r.pdb + FableWin.pdb
+    // ?Load@CUserProfileManager@@QAEXXZ (public, 0x0040D350; the self and 0x00556470 / 0x0059686D / 0x00597BF2 bind QAE). Declaration only.
+public:
+#endif
     void Load();
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_LOAD_PUBLIC
+private:
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+    // Add-only opt-in (NF297, 2026-11-23; row 0x0040D400 CUserProfileManager::SetProfileName): Ego_r.pdb + FableWin.pdb
+    // ?Save@CUserProfileManager@@QAEXXZ (public, 0x0040A740; the self and 0x0040B690 / 0x0041E6D3 bind QAE). Declaration only.
+public:
+#endif
     void Save();
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+private:
+#endif
 
     void* primaryVTable_;
     void* secondaryVTable_;

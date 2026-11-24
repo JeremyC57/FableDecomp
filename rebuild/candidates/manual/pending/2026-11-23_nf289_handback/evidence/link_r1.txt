@@ -1,0 +1,10 @@
+## HEAD set: H_00644424.obj H_00449b60.obj H_004498c0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetMultiplayerColour@PlayerManagerMethods@@QBE?AVCRGBColour@@J@Z
+UNRESOLVED 1 ?GetPlayer@PlayerManagerMethods@@QAEAAVCPlayer@@J@Z
+## new set: N_00644424.obj H_00449b60.obj H_004498c0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetMultiplayerColour@CPlayerManager@@QBE?AVCRGBColour@@J@Z
+LK_DONE

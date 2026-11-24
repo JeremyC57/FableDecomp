@@ -33,9 +33,11 @@ public:
     virtual void v004(); virtual void v005();
     virtual const C3DVector& GetPos() const        // slot 6 (+0x18), 0x004AA980
     {
-        if (!PImp_Data)
+        // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+        const CScriptThing* imp = PImp_Data;
+        if (imp == 0)
             return NullCoord;
-        return PImp_Data->GetPos();
+        return imp->GetPos();
     }
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08

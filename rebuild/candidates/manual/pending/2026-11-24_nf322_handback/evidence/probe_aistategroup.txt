@@ -1,0 +1,273 @@
+== CAIStateGroup_BanditKingCharge vftable 0128CA38
+slot   0 0090124E SAME     ours=??_ECAIStateGroup_BanditKingCharge@@UAEPAXI@Z retail_label=??_ECAIStateGroup_BanditKingCharge@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 0090124A SAME     ours=?GetStateGroupType@CAIStateGroup_BanditKingCharge@@MBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_BanditKingCharge@@MBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 009612F0 SAME     ours=?IsRunnable@CAIStateGroup_BanditKingCharge@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_BanditKingCharge@@MAE_NXZ
+slot  12 00961790 SAME     ours=?Update@CAIStateGroup_BanditKingCharge@@MAEXXZ retail_label=?Update@CAIStateGroup_BanditKingCharge@@MAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 14 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_CreatureRangedCombatUseWillShield vftable 0128A484
+slot   0 00900E90 SAME     ours=??_ECAIStateGroup_CreatureRangedCombatUseWillShield@@UAEPAXI@Z retail_label=??_ECAIStateGroup_CreatureRangedCombatUseWillShield@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FE284 SAME     ours=?GetStateGroupType@CAIStateGroup_CreatureRangedCombatUseWillShield@@MBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_CreatureRangedCombatUseWillShield@@MBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0091F050 SAME     ours=?IsRunnable@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAE_NXZ
+slot  12 0091F0D0 SAME     ours=?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ retail_label=?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 14 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_IceTrollIcicleAttack vftable 0128CAEC
+slot   0 00901338 DIFF     ours=??_ECAIStateGroup_IceTrollIcicleAttack@@UAEPAXI@Z retail_label=??_GCAIStateGroup_IceTrollIcicleAttack@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00901334 SAME     ours=?GetStateGroupType@CAIStateGroup_IceTrollIcicleAttack@@MBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_IceTrollIcicleAttack@@MBE?AW4EAIStateGroupType@@XZ
+slot   9 00961E10 SAME     ours=?Cleanup@CAIStateGroup_IceTrollIcicleAttack@@MAEXXZ retail_label=?Cleanup@CAIStateGroup_IceTrollIcicleAttack@@MAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 00961CA0 SAME     ours=?IsRunnable@CAIStateGroup_IceTrollIcicleAttack@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_IceTrollIcicleAttack@@MAE_NXZ
+slot  12 009621F0 SAME     ours=?Update@CAIStateGroup_IceTrollIcicleAttack@@MAEXXZ retail_label=?Update@CAIStateGroup_IceTrollIcicleAttack@@MAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_IceTrollPoundGroundAttack vftable 0128CB28
+slot   0 00901386 SAME     ours=??_ECAIStateGroup_IceTrollPoundGroundAttack@@UAEPAXI@Z retail_label=??_ECAIStateGroup_IceTrollPoundGroundAttack@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00901382 SAME     ours=?GetStateGroupType@CAIStateGroup_IceTrollPoundGroundAttack@@MBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_IceTrollPoundGroundAttack@@MBE?AW4EAIStateGroupType@@XZ
+slot   9 00961F40 SAME     ours=?Cleanup@CAIStateGroup_IceTrollPoundGroundAttack@@MAEXXZ retail_label=?Cleanup@CAIStateGroup_IceTrollPoundGroundAttack@@MAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 00961E80 SAME     ours=?IsRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@MAE_NXZ
+slot  12 009624D0 SAME     ours=?Update@CAIStateGroup_IceTrollPoundGroundAttack@@MAEXXZ retail_label=?Update@CAIStateGroup_IceTrollPoundGroundAttack@@MAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 14 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_IdleAtHome vftable 01289A10
+slot   0 008FFEBC SAME     ours=??_ECAIStateGroup_IdleAtHome@@UAEPAXI@Z retail_label=??_ECAIStateGroup_IdleAtHome@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 00917330 SAME     ours=?InitCreaturePosition@CAIStateGroup_IdleAtHome@@MAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroup_IdleAtHome@@MAE_NXZ
+slot   4 008FDB24 SAME     ours=?AllowPriorityOverlap@CAIStateGroup_IdleAtHome@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroup_IdleAtHome@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 00917320 SAME     ours=?IsRunnable@CAIStateGroup_IdleAtHome@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_IdleAtHome@@MAE_NXZ
+slot  12 00917380 SAME     ours=?Update@CAIStateGroup_IdleAtHome@@MAEXXZ retail_label=?Update@CAIStateGroup_IdleAtHome@@MAEXXZ
+slot  13 00917300 SAME     ours=?InitStateGroup@CAIStateGroup_IdleAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_IdleAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 14 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_MinionGuardReactToCriminal vftable 0128B230
+slot   0 008FED2B DIFF     ours=??_ECAIStateGroup_MinionGuardReactToCriminal@@UAEPAXI@Z retail_label=??_GCAIStateGroup_MinionGuardReactToCriminal@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 00932980 SAME     ours=?IsStillValid@CAIStateGroup_MinionGuardReactToCriminal@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroup_MinionGuardReactToCriminal@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 009331E0 SAME     ours=?OnReplace@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ retail_label=?OnReplace@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ
+slot  11 00932990 SAME     ours=?IsRunnable@CAIStateGroup_MinionGuardReactToCriminal@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_MinionGuardReactToCriminal@@UAE_NXZ
+slot  12 00932B50 SAME     ours=?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ retail_label=?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ
+slot  13 00932960 SAME     ours=?InitStateGroup@CAIStateGroup_MinionGuardReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_MinionGuardReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_MinionKidCalledToMother vftable 01288F48
+slot   0 008FEF6F DIFF     ours=??_ECAIStateGroup_MinionKidCalledToMother@@UAEPAXI@Z retail_label=??_GCAIStateGroup_MinionKidCalledToMother@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0090EEB0 SAME     ours=?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ
+slot  12 0090EEC0 SAME     ours=?Update@CAIStateGroup_MinionKidCalledToMother@@UAEXXZ retail_label=?Update@CAIStateGroup_MinionKidCalledToMother@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_MinionLeaveRegion vftable 0128A380
+slot   0 00900DC2 DIFF     ours=??_ECAIStateGroup_MinionLeaveRegion@@UAEPAXI@Z retail_label=??_GCAIStateGroup_MinionLeaveRegion@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0091E4A0 SAME     ours=?IsRunnable@CAIStateGroup_MinionLeaveRegion@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_MinionLeaveRegion@@MAE_NXZ
+slot  12 0091E4B0 SAME     ours=?Update@CAIStateGroup_MinionLeaveRegion@@MAEXXZ retail_label=?Update@CAIStateGroup_MinionLeaveRegion@@MAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_MinionReactToNoise vftable 0128A104
+slot   0 00900B25 DIFF     ours=??_ECAIStateGroup_MinionReactToNoise@@UAEPAXI@Z retail_label=??_GCAIStateGroup_MinionReactToNoise@@UAEPAXI@Z
+slot   1 0091CC90 SAME     ours=?Initialise@CAIStateGroup_MinionReactToNoise@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroup_MinionReactToNoise@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 0091CF40 SAME     ours=?OnActivate@CAIStateGroup_MinionReactToNoise@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_MinionReactToNoise@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0091CFA0 SAME     ours=?Cleanup@CAIStateGroup_MinionReactToNoise@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_MinionReactToNoise@@UAEXXZ
+slot  10 0091CCB0 SAME     ours=?OnReplace@CAIStateGroup_MinionReactToNoise@@UAEXXZ retail_label=?OnReplace@CAIStateGroup_MinionReactToNoise@@UAEXXZ
+slot  11 0091CDC0 SAME     ours=?IsRunnable@CAIStateGroup_MinionReactToNoise@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_MinionReactToNoise@@UAE_NXZ
+slot  12 0091CCC0 SAME     ours=?Update@CAIStateGroup_MinionReactToNoise@@UAEXXZ retail_label=?Update@CAIStateGroup_MinionReactToNoise@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_MinionReactToPlayerInteraction vftable 0128B1B8
+slot   0 008FEC80 SAME     ours=??_ECAIStateGroup_MinionReactToPlayerInteraction@@UAEPAXI@Z retail_label=??_ECAIStateGroup_MinionReactToPlayerInteraction@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FEC7D SAME     ours=?IsTimingCritical@CAIStateGroup_MinionReactToPlayerInteraction@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroup_MinionReactToPlayerInteraction@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 0092ECC0 SAME     ours=?OnReplace@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ retail_label=?OnReplace@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ
+slot  11 00930A70 SAME     ours=?IsRunnable@CAIStateGroup_MinionReactToPlayerInteraction@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_MinionReactToPlayerInteraction@@UAE_NXZ
+slot  12 00930480 SAME     ours=?Update@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ retail_label=?Update@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ
+slot  13 0092ECA0 SAME     ours=?InitStateGroup@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 14 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_ReactToDeadLeader vftable 0128C8D0
+slot   0 00900FD4 DIFF     ours=??_ECAIStateGroup_ReactToDeadLeader@@UAEPAXI@Z retail_label=??_GCAIStateGroup_ReactToDeadLeader@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00900FD0 SAME     ours=?GetStateGroupType@CAIStateGroup_ReactToDeadLeader@@MBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_ReactToDeadLeader@@MBE?AW4EAIStateGroupType@@XZ
+slot   9 0095E340 SAME     ours=?Cleanup@CAIStateGroup_ReactToDeadLeader@@MAEXXZ retail_label=?Cleanup@CAIStateGroup_ReactToDeadLeader@@MAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0095E350 SAME     ours=?IsRunnable@CAIStateGroup_ReactToDeadLeader@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_ReactToDeadLeader@@MAE_NXZ
+slot  12 0095E470 SAME     ours=?Update@CAIStateGroup_ReactToDeadLeader@@MAEXXZ retail_label=?Update@CAIStateGroup_ReactToDeadLeader@@MAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_SeekEnemy vftable 0128B7C8
+slot   0 008FF514 SAME     ours=??_ECAIStateGroup_SeekEnemy@@UAEPAXI@Z retail_label=??_ECAIStateGroup_SeekEnemy@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FF510 SAME     ours=?GetStateGroupType@CAIStateGroup_SeekEnemy@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_SeekEnemy@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0093BDF0 SAME     ours=?Cleanup@CAIStateGroup_SeekEnemy@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_SeekEnemy@@UAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0093B740 SAME     ours=?IsRunnable@CAIStateGroup_SeekEnemy@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_SeekEnemy@@UAE_NXZ
+slot  12 0093B9F0 SAME     ours=?Update@CAIStateGroup_SeekEnemy@@UAEXXZ retail_label=?Update@CAIStateGroup_SeekEnemy@@UAEXXZ
+slot  13 0093B6F0 SAME     ours=?InitStateGroup@CAIStateGroup_SeekEnemy@@UAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_SeekEnemy@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 14 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_StealthSeekEnemy vftable 0128B840
+slot   0 008FF5B0 DIFF     ours=??_ECAIStateGroup_StealthSeekEnemy@@UAEPAXI@Z retail_label=??_GCAIStateGroup_StealthSeekEnemy@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FF5AC SAME     ours=?GetStateGroupType@CAIStateGroup_StealthSeekEnemy@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_StealthSeekEnemy@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0093C420 SAME     ours=?Cleanup@CAIStateGroup_StealthSeekEnemy@@EAEXXZ retail_label=?Cleanup@CAIStateGroup_StealthSeekEnemy@@EAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0093C2F0 SAME     ours=?IsRunnable@CAIStateGroup_StealthSeekEnemy@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_StealthSeekEnemy@@UAE_NXZ
+slot  12 0093C830 SAME     ours=?Update@CAIStateGroup_StealthSeekEnemy@@UAEXXZ retail_label=?Update@CAIStateGroup_StealthSeekEnemy@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_SummonerCharge vftable 0128D2DC
+slot   0 00902F2D DIFF     ours=??_ECAIStateGroup_SummonerCharge@@UAEPAXI@Z retail_label=??_GCAIStateGroup_SummonerCharge@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00902D57 SAME     ours=?GetStateGroupType@CAIStateGroup_SummonerCharge@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_SummonerCharge@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0096FC60 SAME     ours=?Cleanup@CAIStateGroup_SummonerCharge@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_SummonerCharge@@UAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0096FA90 SAME     ours=?IsRunnable@CAIStateGroup_SummonerCharge@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_SummonerCharge@@UAE_NXZ
+slot  12 0096FF10 SAME     ours=?Update@CAIStateGroup_SummonerCharge@@UAEXXZ retail_label=?Update@CAIStateGroup_SummonerCharge@@UAEXXZ
+slot  13 0096F730 SAME     ours=?InitStateGroup@CAIStateGroup_SummonerCharge@@UAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_SummonerCharge@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+== CAIStateGroup_SummonerLightningAttack vftable 0128D2A0
+slot   0 00902ED3 SAME     ours=??_ECAIStateGroup_SummonerLightningAttack@@UAEPAXI@Z retail_label=??_ECAIStateGroup_SummonerLightningAttack@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00902D2B SAME     ours=?GetStateGroupType@CAIStateGroup_SummonerLightningAttack@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_SummonerLightningAttack@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0096FA20 SAME     ours=?Cleanup@CAIStateGroup_SummonerLightningAttack@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_SummonerLightningAttack@@UAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0096F770 SAME     ours=?IsRunnable@CAIStateGroup_SummonerLightningAttack@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_SummonerLightningAttack@@UAE_NXZ
+slot  12 0096FCD0 SAME     ours=?Update@CAIStateGroup_SummonerLightningAttack@@UAEXXZ retail_label=?Update@CAIStateGroup_SummonerLightningAttack@@UAEXXZ
+slot  13 0096F6F0 SAME     ours=?InitStateGroup@CAIStateGroup_SummonerLightningAttack@@UAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_SummonerLightningAttack@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 14 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_SummonerSummon vftable 0128CF80
+slot   0 00901EAD DIFF     ours=??_ECAIStateGroup_SummonerSummon@@UAEPAXI@Z retail_label=??_GCAIStateGroup_SummonerSummon@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00901EA9 SAME     ours=?GetStateGroupType@CAIStateGroup_SummonerSummon@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_SummonerSummon@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0096E540 SAME     ours=?IsRunnable@CAIStateGroup_SummonerSummon@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_SummonerSummon@@UAE_NXZ
+slot  12 0096E610 SAME     ours=?Update@CAIStateGroup_SummonerSummon@@UAEXXZ retail_label=?Update@CAIStateGroup_SummonerSummon@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+retail slots 14, emitted slots 14; SAME 13 DIFF 1 NOLABEL 0
+
+PROBE_DONE

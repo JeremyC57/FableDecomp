@@ -31,7 +31,11 @@ public:
     virtual void OnInitialActivate();                                    // ?OnInitialActivate@CTCTavernTankard@@UAEXXZ
     virtual ETCInterfaceType GetInterfaceType() const;                   // ?GetInterfaceType@CTCTavernTankard@@UBE?AW4ETCInterfaceType@@XZ
     virtual CCharString GetClassTypeName() const;                        // ?GetClassTypeName@CTCTavernTankard@@UBE?AVCCharString@@XZ
-    CThingAICreature* GetBarmaid();                                      // ?GetBarmaid@CTCTavernTankard@@QAEPAVCThingAICreature@@XZ
+#ifdef FABLE_RETAIL_GOTOPUB_DRINK_PASS27
+    CThingAICreature* GetBarmaid() { return PBarmaid.Get(); }
+#else
+    CThingAICreature* GetBarmaid();
+#endif                                      // ?GetBarmaid@CTCTavernTankard@@QAEPAVCThingAICreature@@XZ
     void SetBarmaid(CThingAICreature*);                                  // ?SetBarmaid@CTCTavernTankard@@QAEXPAVCThingAICreature@@@Z
     void ReplaceTankard();                                               // ?ReplaceTankard@CTCTavernTankard@@QAEXXZ
     float                                 Fullness;                      // +0x0C
@@ -39,7 +43,7 @@ public:
     C3DVector                             Pos;                           // +0x28
     CIntelligentPointer<CThingAICreature> PBarmaid;                      // +0x34
 };
-FABLE_STATIC_ASSERT(offsetof(CTCTavernTankard, RHSet) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernTankard, Pos) == 0x28);
-FABLE_STATIC_ASSERT(sizeof(CTCTavernTankard) == 0x3C);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CTCTavernTankard, RHSet) == 0x10);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CTCTavernTankard, Pos) == 0x28);
+FABLE_STATIC_ASSERT_AT(44, sizeof(CTCTavernTankard) == 0x3C);
 #endif

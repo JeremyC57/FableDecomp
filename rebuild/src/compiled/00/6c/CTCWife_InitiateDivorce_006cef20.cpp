@@ -45,7 +45,7 @@ private: public:
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
 class CSubtitleRenderer { public:                         // embedded at CPlayerGui+0x18
-    void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+    void SetText(const CFontBank& font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1 (NF313: the PDB parameter type, both PDBs)
 };
 namespace NHeroInformationScreens {
 class CManager { public:
@@ -99,7 +99,7 @@ void CTCWife::InitiateDivorce()
 {
     if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->m_screenActive)
         return;
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitleRenderer.SetText(CMainGameComponent::Get()->m_pFontBank,
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitleRenderer.SetText(*CMainGameComponent::Get()->m_pFontBank,
         *(const CCharString*)PHeroMarriageDef->TextGuiWifeDivorceOccurred, 0x22, 0.0f, true, true);
     WaitingForDivorce = true;
     AddToGlobalTCs();

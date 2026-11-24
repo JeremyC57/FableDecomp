@@ -1,3 +1,4 @@
+// Leaf: ?IsUnreportedCrimeKnown@CAIStateGroup_GoToBed@@IBE_NXZ
 // CAIStateGroup_GoToBed::IsUnreportedCrimeKnown() -- does this creature know of a hero crime it should run to report, or an ongoing crime against its home?
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -96,10 +97,12 @@ class CAIStateGroupBase { public:
 struct CAIStateGroup_GoToBed : CAIStateGroupBase {
     CBaseIntelligentPointer PBed;               // +0x14
     bool IsBedSleepPointMarker;                 // +0x1c
-    bool IsUnreportedCrimeKnown();
+    protected:
+    bool IsUnreportedCrimeKnown() const;
+    public:
 };
 
-bool CAIStateGroup_GoToBed::IsUnreportedCrimeKnown()
+bool CAIStateGroup_GoToBed::IsUnreportedCrimeKnown() const
 {
     if (PBrain->GetPCreature()->HasTC(0x23)
         && PBrain->GetPCreature()->GetTC<CTCVillageMember>(0x23)->GetPVillage()

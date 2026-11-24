@@ -39,6 +39,9 @@
 #define FABLE_RETAIL_CIENGINE_CONVERTWORLDPOS
 #define FABLE_RETAIL_CFONTBANK
 #define FABLE_RETAIL_CFONTBANK_VSTRINGWIDTH
+// NF221: the row object now calls ReleaseData<CFontBank> (0x004057A0) out of line (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY);
+//   this test TU supplies that body (the header's Data-first release, explicitly instantiated at the end).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_CFADEINFADEOUTBASE_ISACTIVE
 #define FABLE_RETAIL_CFADEINFADEOUTBASE_FADE
 #define FABLE_RETAIL_CFADEINFADEOUTBASE_ISOPEN_OUTOFLINE
@@ -267,3 +270,4 @@ int main()
     if (!fails) printf("0048e78e_TEST PASS\n");
     return fails;
 }
+template void CCountedPointer<CFontBank>::ReleaseData();   // NF221: the out-of-line release the row object calls

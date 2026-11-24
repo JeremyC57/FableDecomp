@@ -1,0 +1,3 @@
+# link of the 6 rechecked objects (/FORCE): LNK4006 HEAD 0, landing 1 (PClass: the pair TU compiled for both rows; accepted pair debt); LNK2005 0
+0a1
+>       1 ?PClass@CStartupDefinitionManager@@1V?$CCountedPointer@VCStartupDefinitionManager@@@@A

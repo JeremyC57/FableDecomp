@@ -13,19 +13,19 @@ struct Profile {
     bool IsCameraXYInverted() const { return flags[0]; }
     bool IsCameraYZInverted() const { return flags[1]; }
     bool IsVibrationEnabled() const { return flags[2]; }
-    bool IsCameraResetting() const { return flags[3]; }
-    bool GetOption48DB35() const { return flags[4]; }
-    bool GetOption548650() const { return flags[5]; }
+    bool IsUsingHeadPhones() const { return flags[3]; }
+    bool IsSubtitlingEnabled() const { return flags[4]; }
+    bool IsShowingBuddyNames() const { return flags[5]; }
     bool IsGuildMasterEnabled() const { return flags[6]; }
     bool IsHUDTooltipEnabled() const { return flags[7]; }
     bool IsVerticalSyncEnabled() const { return flags[8]; }
-    bool GetOption548690() const { return flags[9]; }
+    bool IsCameraResetting() const { return flags[9]; }
     bool IsCameraPCBowYZInverted() const { return flags[10]; }
-    bool GetOption548740() const { return flags[11]; }
-    int GetOption5486B0() const { return longs[0]; }
-    int GetOption548670() const { return longs[1]; }
-    int GetOption5486F0() const { return longs[2]; }
-    int GetOption5486D0() const { return longs[3]; }
+    bool GetShowTargetingStatus() const { return flags[11]; }
+    int GetResolution() const { return longs[0]; }
+    int GetAntialiasing() const { return longs[1]; }
+    int GetScreenAspectRatio() const { return longs[2]; }
+    int GetRefreshRate() const { return longs[3]; }
     int GetMaxResolution() const { return maxResolution; }
     int GetMaxAntialiasing() const { return maxAntialiasing; }
     int GetMaxRefreshRate() const { return maxRefreshRate; }
@@ -47,30 +47,30 @@ struct Slider {
         case 0x2b: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsCameraXYInverted(); break;
         case 0x2c: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsCameraYZInverted(); break;
         case 0x2d: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsVibrationEnabled(); break;
-        case 0x2e: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsCameraResetting(); break;
-        case 0x2f: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetOption48DB35(); break;
+        case 0x2e: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsUsingHeadPhones(); break;
+        case 0x2f: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsSubtitlingEnabled(); break;
         case 0x53: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetOption17(); break;
         case 0x5d: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsGuildMasterEnabled(); break;
         case 0x5e: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsHUDTooltipEnabled(); break;
-        case 0x54: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetOption548650(); break;
+        case 0x54: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsShowingBuddyNames(); break;
         case 0x139: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->Option78 != 0; break;
         case 0x102:
-            SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetOption5486B0();
+            SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetResolution();
             MaxChild = Get()->GetMaxResolution();
             break;
         case 0x13d:
-            SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetOption5486D0();
+            SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetRefreshRate();
             MaxChild = Get()->GetMaxRefreshRate();
             break;
         case 0x109:
-            SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetOption548670();
+            SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetAntialiasing();
             MaxChild = Get()->GetMaxAntialiasing();
             break;
-        case 0x12c: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetOption5486F0(); break;
+        case 0x12c: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetScreenAspectRatio(); break;
         case 0x106: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsVerticalSyncEnabled(); break;
-        case 0x140: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetOption548690(); break;
+        case 0x140: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsCameraResetting(); break;
         case 0x13f: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->IsCameraPCBowYZInverted(); break;
-        case 0x143: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetOption548740(); break;
+        case 0x143: SelectedChild = PreviouslySelectedChild = StartSelectedChild = Get()->GetShowTargetingStatus(); break;
         }
     }
 };

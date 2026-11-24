@@ -1,0 +1,7 @@
+# 0096ae50: defined / undefined external symbols, HEAD (<) v NF259 (>)
+4a5
+> DEF ??1CCreatureAction_CastAssassinRush@@UAE@XZ
+24c25
+< UND ??1CCreatureAction_CastAssassinRush@@UAE@XZ
+---
+> UND ??1CCombatActionBase@@UAE@XZ

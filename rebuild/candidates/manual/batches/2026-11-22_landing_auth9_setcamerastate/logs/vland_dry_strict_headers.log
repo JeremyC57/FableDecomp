@@ -1,0 +1,3 @@
+00b30b50   WARN RELOC_NAME: ?SetupGamut@CEngineCamera@@AAEXXZ -> 00b2fd60 labelled 'CPlane_InitializeFromCorners'
+00b30b50   RELOCATION_MATCH PASS   SetCameraState
+WINS: 1

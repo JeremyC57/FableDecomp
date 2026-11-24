@@ -1,5 +1,5 @@
 // CEngineWorldMap::AutoBuildWorldMapGrid() -- when no grid exists yet, take the bounding box (in world cells) of every loaded map, build a 32-cell aligned grid of map indices around it (filled with -1) and link every map into it
-// Leaf: AutoBuildWorldMapGrid
+// Leaf: ?AutoBuildWorldMapGrid@CEngineWorldMap@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B40070, length 368 bytes (with int3 padding; body 0x169), plain `ret`.
 // Callees: operator new[] @ 0x00BFEB22 (MSVCR71 import), CEngineWorldMap::LinkMapToWorld(CEngineMap*, long) @ 0x00B3EDF0.
 // Layout: engine/CEngineWorldMap.h names (Map +0x0c, MapArrayWidth +0x10, MapArrayHeight +0x14, MapOffsetX +0x18,
@@ -39,7 +39,9 @@ class CEngineWorldMap { public:
     long                MapOffsetY;              // +0x1c
     CArray<CEngineMap*> MapList;                 // +0x20
     void LinkMapToWorld(CEngineMap* map, long index);   // 0x00B3EDF0
+    private:
     void AutoBuildWorldMapGrid();
+    public:
 };
 
 void CEngineWorldMap::AutoBuildWorldMapGrid()

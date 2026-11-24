@@ -1,0 +1,8 @@
+## HEAD set: H_00a8fd40.obj H_00a92870.obj H_00a932c0.obj H_00a93320.obj 00a8f9e0.obj
+duplicates 0
+
+UNRESOLVED 4 ?UploadToIndexBuffer@C3DPrimitive2@@QAE_NK@Z
+## new set: 00a8fd40.obj 00a92870.obj 00a932c0.obj 00a93320.obj 00a8f9e0.obj
+duplicates 0
+
+LK_DONE

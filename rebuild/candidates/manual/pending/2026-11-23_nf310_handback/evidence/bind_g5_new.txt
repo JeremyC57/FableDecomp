@@ -1,0 +1,24 @@
+#28 0065a8ee ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z
+   0065a8ee(self) - DEF=OK:?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z
+   0090fd20 WRONG ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThing@@PAVCWorld@@_N@Z x1
+   00942a00 OK ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z x1
+#32 009c8de0 ?ReadFromDataStream@CTextEntry@NGameText@@QAEXAAVCDataInputStream@@@Z
+   009c8de0(self) - DEF=OK:?ReadFromDataStream@CTextEntry@NGameText@@QAEXAAVCDataInputStream@@@Z
+   009c8fb0 OK ?ReadFromDataStream@CTextEntry@NGameText@@QAEXAAVCDataInputStream@@@Z x1
+#36 004c8310 ??1CThing@@MAE@XZ
+   004c8310(self) - DEF=OK:??1CThing@@MAE@XZ
+   004cd3e0 WRONG ?CThing_dtor@@YIXPAVCThing@@@Z x1
+   006a5d50 WRONG ??1CThing@@UAE@XZ x1
+   00836a50 OK ??1CThing@@MAE@XZ x1
+   00838740 WRONG ?Destroy@CThingNoise@@QAEXXZ x1
+#37 004c9030 ??0CThing@@IAE@K@Z
+   004c9030(self) - DEF=WRONG:??0CThing@@QAE@K@Z
+   004ca1d0 NOOBJ
+   005296b0 NOOBJ
+   008367b0 OK ??0CThing@@IAE@K@Z x1
+   00838530 WRONG ??0CThing@N_004c9030@@QAE@J@Z x1
+   008385b0 OK ??0CThing@@IAE@K@Z x1
+#60 0083ddc0 ?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z
+   0083ddc0(self) - DEF=OK:?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z
+   00842e80 OK ?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z x1
+# NOTE (NF310): 0x008367B0 / 0x008385B0 above are the HELD binder halves of entry 37 (held/, not in rows/: their self 0x004C9030 still defines QAE@K, decision D2); 0x00836A50 was the entry 36 probe, reverted (objsec NOT_EQ, decision D3).

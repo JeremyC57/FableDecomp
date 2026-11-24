@@ -1,0 +1,13 @@
+{
+ "004aeaa0": [["    void AddEvent(CGameEvent* event);", "    void AddEvent(const CGameEvent* event);", 1]],
+ "00447390": [["    void SetControlScheme(int value);", "    void SetControlScheme(long value);", 1]],
+ "006bbe30": [["    void SetTimeAsStopped(bool stopped, long* handle);\n", "    void SetTimeAsStopped(bool stopped, long& handle);\n", 1],
+              ["void CGameTimeManager::SetTimeAsStopped(bool stopped, long* handle)", "void CGameTimeManager::SetTimeAsStopped(bool stopped, long& handle)", 1],
+              ["        *handle = m_nextStopperHandle++;", "        handle = m_nextStopperHandle++;", 1],
+              ["m_stoppers.Insert(&where, handle);", "m_stoppers.Insert(&where, &handle);", 1],
+              ["m_stoppers.Erase(handle);", "m_stoppers.Erase(&handle);", 1]],
+ "0065b0b4": [["void SetTimeAsStopped(bool stopped, long* stopIndex);", "void SetTimeAsStopped(bool stopped, long& stopIndex);", 1],
+              ["SetTimeAsStopped(false, &TimeStopIndex);", "SetTimeAsStopped(false, TimeStopIndex);", 1]],
+ "0041e10d": [["    void RemoveEventFromQueue(CInputEvent* event);", "    void RemoveEventFromQueue(const CInputEvent& event);", 1],
+              ["m_pInputManager->RemoveEventFromQueue(&event);", "m_pInputManager->RemoveEventFromQueue(event);", 1]]
+}

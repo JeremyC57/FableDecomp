@@ -8,6 +8,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128A484 (RTTI .?AVCAIStateGroup_CreatureRangedCombatUseWillShield@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_CreatureRangedCombatUseWillShield); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+#include "engine/CAIStateGroupBase.h"
+enum EAIStateGroupType;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_CreatureRangedCombatUseWillShield : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x008FE284 ?GetStateGroupType@CAIStateGroup_CreatureRangedCombatUseWillShield@@MBE?AW4EAIStateGroupType@@XZ
+    virtual bool IsRunnable();                                            // slot 11 0x0091F050 ?IsRunnable@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x0091F0D0 ?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureRangedCombatUseWillShield) == 0x14);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -23,5 +47,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_CreatureRangedCombatUseWillShield) == 0x14);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_CreatureRangedCombatUseWillShield, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_H

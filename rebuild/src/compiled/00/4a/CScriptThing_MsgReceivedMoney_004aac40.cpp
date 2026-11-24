@@ -1,49 +1,22 @@
-#include "rebuild_abi.h"
-#include "engine/CScriptThing.h"
+// CScriptThing::MsgReceivedMoney -- forwards to the implementation object through the private PImp (null -> false)
+// Leaf: ?MsgReceivedMoney@CScriptThing@@UBE_NAAJ@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT with the PDB parameter
+//   type (was ?MsgReceivedMoney@CScriptThing_Methods@@QAE_NH@Z); the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+//   The body forwards through the private PImp (CCountedPointer<CScriptThing>, Data at +0x04) as the landed NScript in-TU copies spell
+//   it; the forwarded call is the pointee's own virtual (vtable slot / address: 34 0x004AAC40).
 // CScriptThing::MsgReceivedMoney @ 0x004aac40
 // mov ecx,[ecx+4]; test; jne L; xor al,al; ret 4; L: mov eax,[ecx]; jmp [eax+0x88]
-// Proxy: forward to the wrapped implementation object at this->f4; false when absent.
-struct CScriptThingInner {
-  virtual bool m0(int a0);
-  virtual bool m1(int a0);
-  virtual bool m2(int a0);
-  virtual bool m3(int a0);
-  virtual bool m4(int a0);
-  virtual bool m5(int a0);
-  virtual bool m6(int a0);
-  virtual bool m7(int a0);
-  virtual bool m8(int a0);
-  virtual bool m9(int a0);
-  virtual bool m10(int a0);
-  virtual bool m11(int a0);
-  virtual bool m12(int a0);
-  virtual bool m13(int a0);
-  virtual bool m14(int a0);
-  virtual bool m15(int a0);
-  virtual bool m16(int a0);
-  virtual bool m17(int a0);
-  virtual bool m18(int a0);
-  virtual bool m19(int a0);
-  virtual bool m20(int a0);
-  virtual bool m21(int a0);
-  virtual bool m22(int a0);
-  virtual bool m23(int a0);
-  virtual bool m24(int a0);
-  virtual bool m25(int a0);
-  virtual bool m26(int a0);
-  virtual bool m27(int a0);
-  virtual bool m28(int a0);
-  virtual bool m29(int a0);
-  virtual bool m30(int a0);
-  virtual bool m31(int a0);
-  virtual bool m32(int a0);
-  virtual bool m33(int a0);
-  virtual bool m34(int a0);
-};
-struct CScriptThing_Methods : CScriptThing { bool MsgReceivedMoney(int a0); };
-bool CScriptThing_Methods::MsgReceivedMoney(int a0)
+// Preamble: the landed precedent CThingSwitch_vectordeletingdestructor_00ea86c0.cpp (CCountedPointer before the NScript class model).
+#include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_NSCRIPT
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CScriptThing.h"
+
+bool CScriptThing::MsgReceivedMoney(long& money) const
 {
-    CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
-    if (!p) return false;
-    return p->m34(a0);
+    const CScriptThing* imp = PImp.Data;
+    if (imp == 0)
+        return false;
+    return imp->MsgReceivedMoney(money);
 }

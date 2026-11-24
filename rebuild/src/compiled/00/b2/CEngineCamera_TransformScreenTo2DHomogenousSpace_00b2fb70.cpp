@@ -1,3 +1,4 @@
+// Leaf: ?TransformScreenTo2DHomogenousSpace@CEngineCamera@@QAEXAAVC2DVector@@@Z
 // CEngineCamera::TransformScreenTo2DHomogenousSpace(C2DVector&) const -- map a screen position into the -1..1 homogeneous square: (p - origin) / half-size * 2 - 1, with Y flipped
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2FB70, length 53 bytes.
 // Callees: none. Constant 1.0 (0x0122DED8). Shape: pure x87 per component -- `fsub origin ; fdiv size ; fadd st,st(0)` (the `* 2` is a self-add) `; fsub 1.0`;
@@ -14,10 +15,10 @@ class CEngineCamera { public:
     unsigned char _pad1c[0xb0 - 0x1c];
     float m_screenScaleX;                          // +0xb0
     float m_screenScaleY;                          // +0xb4
-    void TransformScreenTo2DHomogenousSpace(C2DVector& position) const;
+    void TransformScreenTo2DHomogenousSpace(C2DVector& position);
 };
 
-void CEngineCamera::TransformScreenTo2DHomogenousSpace(C2DVector& position) const
+void CEngineCamera::TransformScreenTo2DHomogenousSpace(C2DVector& position)
 {
     position.X = (position.X - m_screenOriginX) / m_screenScaleX * 2.0f - 1.0f;
     position.Y = -((position.Y - m_screenOriginY) / m_screenScaleY * 2.0f - 1.0f);

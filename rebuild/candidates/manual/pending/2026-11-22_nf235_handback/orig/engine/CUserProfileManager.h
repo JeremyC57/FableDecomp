@@ -1,0 +1,378 @@
+#ifndef FABLE_ENGINE_CUSERPROFILEMANAGER_H
+#define FABLE_ENGINE_CUSERPROFILEMANAGER_H
+#if defined(FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME) || defined(FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME_MEMBER)
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
+#include "fable_string.h"
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVELIST
+#include "fable_string.h"
+#include "engine/CDateAndTime.h"
+#include "stlport/fable_containers.h"
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
+#include "fable_string.h"
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VOLUME
+#include "fable_string.h"
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
+#include "engine/CActionInputControl.h"
+#include "stlport/fable_containers.h"
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYMODES
+#include "engine/CDisplayModeDesc.h"
+#include "stlport/fable_containers.h"
+#endif
+// CUserProfileManager (new, chunk 765): only the two methods row 0x006C9FD0 calls are modelled. Ego_r.pdb and FableWin.pdb
+// both spell the singleton accessor ?Get@CUserProfileManager@@SIAAV1@XZ (static __fastcall, returns a reference; retail
+// 0x0040D2A0 lazily news 0x140 bytes into 0x013B7D4C); ?ProcessPendingTutorials@CUserProfileManager@@QAEXXZ = retail 0x0040BB30.
+// Landed rows (e.g. NUISystemCSlider_GetValueFromProfile_0054bbb0.cpp) declare the same Get locally.
+class CUserProfileManager {
+public:
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_ORIGINAL_TARGETING_QUERY
+    // Retail opt-in (Codex pass22): both original TPI method records; donor020FF164 selects these two fields.
+    bool GetShowTargetingStatus() const { return UseNewProfileValues ? ShowTargetingStatusNewProfile : ShowTargetingStatus; }
+#endif
+#ifdef FABLE_RETAIL_PCMOUSELOOK_PASS24
+    bool IsCameraXYInverted() const { return UseNewProfileValues ? CameraXYInvertedNewProfile : CameraXYInverted; }
+    bool IsCameraYZInverted() const { return UseNewProfileValues ? CameraYZInvertedNewProfile : CameraYZInverted; }
+    bool IsCameraPCBowXYInverted() const { return UseNewProfileValues ? CameraPCBowXYInvertedNewProfile : CameraPCBowXYInverted; }
+    bool IsCameraPCBowYZInverted() const { return UseNewProfileValues ? CameraPCBowYZInvertedNewProfile : CameraPCBowYZInverted; }
+    bool IsCameraResetting() const { return UseNewProfileValues ? CameraResettingNewProfile : CameraResetting; }
+    float GetCameraSensitivity() const { return UseNewProfileValues ? CameraSensitivityNewProfile : CameraSensitivity; }
+    unsigned char _pad_00[0x0c];
+    bool UseNewProfileValues;
+    unsigned char _pad_0d[2];
+    bool CameraXYInverted, CameraYZInverted;
+    unsigned char _pad_11[2];
+    bool CameraPCBowXYInverted, CameraPCBowYZInverted;
+    unsigned char _pad_15[0x79-0x15];
+    bool CameraResetting;
+    unsigned char _pad_7a[2];
+    float CameraSensitivity;
+    unsigned char _pad_80[0xcf-0x80];
+    bool CameraXYInvertedNewProfile, CameraYZInvertedNewProfile;
+    unsigned char _pad_d1[2];
+    bool CameraPCBowXYInvertedNewProfile, CameraPCBowYZInvertedNewProfile;
+    unsigned char _pad_d5[0x12c-0xd5];
+    bool CameraResettingNewProfile;
+    unsigned char _pad_12d[3];
+    float CameraSensitivityNewProfile;
+    unsigned char _pad_134[12];
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_CYLINDER_INPUT
+ // Retail opt-in (Codex pass23): original FableWin methods and native0085c4a4..0085c54d.
+ bool IsCameraPCViewHeroXYInverted() const { return UseNewProfileValues ? CameraPCViewHeroXYInvertedNewProfile : CameraPCViewHeroXYInverted; }
+ bool IsCameraPCViewHeroYZInverted() const { return UseNewProfileValues ? CameraPCViewHeroYZInvertedNewProfile : CameraPCViewHeroYZInverted; }
+ float GetCameraSensitivity() const { return UseNewProfileValues ? CameraSensitivityNewProfile : CameraSensitivity; }
+ unsigned char _pad_cyl_00[12];
+ bool UseNewProfileValues;
+ unsigned char _pad_cyl_0d[8];
+ bool CameraPCViewHeroXYInverted,CameraPCViewHeroYZInverted;
+ unsigned char _pad_cyl_17[0x7c-0x17];
+ float CameraSensitivity;
+ unsigned char _pad_cyl_80[0xd5-0x80];
+ bool CameraPCViewHeroXYInvertedNewProfile,CameraPCViewHeroYZInvertedNewProfile;
+ unsigned char _pad_cyl_d7[0x130-0xd7];
+ float CameraSensitivityNewProfile;
+ unsigned char _pad_cyl_134[12];
+#endif
+    static CUserProfileManager& __fastcall Get();                         // 0x0040D2A0
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIRTUAL_DTOR
+    // Retail opt-in (agentFAM10, 2026-11-12, row 0x0040D830 CCountedPointer<CUserProfileManager>::DeleteData): the class is polymorphic
+    // (RTTI vtable .?AVCUserProfileManager@@ stored by the ctor 0x0040CEC0) and vtable slot 0 is its scalar deleting destructor (the
+    // deleter's `push 1; call [eax]`). Declaration only, for a row that models no members: the VOLUME / SCOREBOARD layout opt-ins
+    // already count the vptr in their leading pad, so do not combine them with this one.
+    virtual ~CUserProfileManager();
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_UIBACKGROUND
+    // Retail opt-in (Codex pass19): both PDBs and donor01885a90/native004075c0.
+    void RenderUIBackground(float);
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME
+    // agentFAM09 opt-in (row 0x01219EC0, its dynamic initializer): the profile file name, Ego_r.pdb / FableWin.pdb `dynamic
+    // initializer for 'CUserProfileManager::m_strProfileName'', L"Profile.bin" at 0x013B7D54; private static per Anniv360 Test PDB
+    // (third source) ?m_strProfileName@CUserProfileManager@@0VCWideString@@A. Declaration only: no layout change.
+private:
+    static CWideString m_strProfileName;                                  // 0x013B7D54
+public:
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PROFILENAME_MEMBER
+    // Retail opt-in (wf19, row 0x0055D180): struct_layouts_egor.tsv CUserProfileManager ProfileName (CWideString) at +0x08 after the vptr and
+    // CBaseClass; read in place by TakeQuickScreenshot (lea edx,[eax+8]) for GetValidProfileName. Layout-only prefix: do not combine with
+    // the VOLUME / SCOREBOARD layout opt-ins.
+    unsigned char _pad_profilename_0x00[0x08];                           // +0x00 vptr, CBaseClass
+    CWideString ProfileName;                                              // +0x08
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
+    // Retail opt-in (chunk F2, row 0x00406AE0): Ego_r.pdb / FableWin.pdb ?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z
+    // (0x00406610) and ?GetManualSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@J@Z (0x00406AE0). Declarations only.
+    CWideString GetManualSaveFileName(long slot) const;                  // 0x00406610
+    CWideString GetManualSaveDisplayName(long slot) const;               // 0x00406AE0
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_GETMANUALSAVEBASEFILENAME_INLINE
+    // NF143 opt-in (q4285, row 0x00406610 GetManualSaveFileName): Ego_r.pdb 0x00405250 / FableWin.pdb 0x0187B570
+    // ?GetManualSaveBaseFileName@CUserProfileManager@@QBE?AVCWideString@@XZ (retail 0x004065F0: L"Save" through 0x0099B6B0; donor order
+    // GetManualSaveBaseFileName, GetManualSaveFileName = retail 0x004065F0, 0x00406610). Retail expands it in its TU-mate 0x00406610
+    // (0x0040664B..0x00406654, the left operand of the CWideString operator+ built after the right one); no call or address reference
+    // reaches 0x004065F0 in Fable.exe (it is the TU's unreferenced out-of-line copy; row 0x004065F0 emits it as the pick-any COMDAT).
+    // The body is visible here so the one-TU-per-row build can expand it; needs FABLE_RETAIL_CWIDESTRING (implicit literal conversion).
+    CWideString GetManualSaveBaseFileName() const { return L"Save"; }    // 0x004065F0
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVESLOTS
+    // Retail opt-in (bwf2 row 0x004830A1 CTCInGameMenu::OpenInGameMenu): Ego_r.pdb / FableWin.pdb save-slot name helpers, out of line.
+    // The four already declared by the second FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES block (chunk 2003, same spellings and
+    // addresses) are declared here only without that opt-in.
+    CWideString GetAutoSaveFileName() const;                             // 0x00406690 ?GetAutoSaveFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+#ifndef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
+    CWideString GetEmptySlotName() const;                                // 0x00406A80 ?GetEmptySlotName@CUserProfileManager@@QBE?AVCWideString@@XZ
+    CWideString GetPathNameFromFileName(const CWideString& fileName, bool b) const;   // 0x00408120
+    CWideString GetSaveDisplayNameFromFileName(const CWideString& fileName, long slot) const;   // 0x00407E10
+    bool IsDebugProfile() const;                                         // 0x00407030 (ICF-folded `return false` body)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETSAVESLOT
+    // Ego_r / FableWin original public thiscall signature; native SaveGame 0x0047E2CA calls 0x0040BC50.
+    void SetSaveSlotFileName(long slot, const CWideString& name);
+#endif
+    void ProcessPendingTutorials();                                      // 0x0040BB30
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_GETPROFILEDIR
+    // NF66 opt-in (rows 0x00596CCE / 0x00597006): Ego_r.pdb 0x00406C00 / FableWin.pdb 0x0187D400
+    // ?GetProfileDir@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z, out of line in retail (0x004082D0). Declaration only.
+    CWideString GetProfileDir(const CWideString& profile, bool create);  // 0x004082D0
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
+    // Opt-in (chunk 2003, row 0x00598463 CFrontEndManager::RefreshAvailableSavedGamesForProfile): Ego_r.pdb / FableWin.pdb spellings,
+    // out of line in retail. IsDebugProfile is retail's two-byte `xor al,al ; ret` 0x00407030 (FableWin.pdb lays it right before
+    // SetProfileName / DeleteProfile, retail right before DeleteProfile 0x00407040); GetEmptySlotName 0x00406A80 looks up
+    // "TEXT_GUI_SAVE_EMPTY_SLOT"; GetSaveDisplayNameFromFileName 0x00407E10 and GetPathNameFromFileName 0x00408120 (both hidden
+    // result). FableWin.pdb ?GetProfileName@CUserProfileManager@@QBEABVCWideString@@XZ is inline in retail (`lea edx,[eax+8]`,
+    // 0x00598510): ProfileName is Ego_r.pdb's member at +0x08 (vptr, CBaseClass word, then ProfileName). Not combinable with the
+    // VOLUME / TARGETINGSTATUS / SCOREBOARD layout blocks (own pad).
+    bool IsDebugProfile() const;                                                      // 0x00407030
+    CWideString GetEmptySlotName() const;                                             // 0x00406A80
+    CWideString GetSaveDisplayNameFromFileName(const CWideString&, long) const;       // 0x00407E10
+    CWideString GetPathNameFromFileName(const CWideString&, bool) const;             // 0x00408120
+    const CWideString& GetProfileName() const { return ProfileName; }
+    unsigned char _pad_sn_0x00[0x8];                                                  // vptr, CBaseClass word
+    CWideString ProfileName;                                                          // +0x08
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVELIST
+    // Opt-in (chunk 2013, row 0x00597DF7 CFrontEndManager::GetSavedGameNames): Ego_r.pdb spellings, out of line in retail.
+    // GetSortedSaveNamesAndTimes 0x004091C0 (the names and the frontend's vector<CDateAndTime> pushed, 0x00597E53..0x00597E5C),
+    // GetAutoSaveFileName 0x00406690 (hidden result), GetMaxSaveSlots 0x004067B0 (`mov eax,32h ; ret`), GetSaveSlotFileName
+    // 0x00407360 (returns a reference: no hidden slot at 0x00598231..0x00598255). Declarations only; needs the CWideString,
+    // CDateAndTime and STLport vector declarations (fable_string.h, engine/CDateAndTime.h, stlport/fable_containers.h).
+    void GetSortedSaveNamesAndTimes(std::vector<CWideString>&, std::vector<CDateAndTime>&);   // 0x004091C0
+    CWideString GetAutoSaveFileName() const;                                          // 0x00406690
+    long GetMaxSaveSlots() const;                                                     // 0x004067B0
+    const CWideString& GetSaveSlotFileName(long) const;                               // 0x00407360
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_HUDTOOLTIP
+    // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?GetAssignedInputForAction@CUserProfileManager@@QAE_NW4EGameAction@@_NPAVCActionInputControl@@@Z
+    // (0x00408C90) and FableWin.pdb ?IsHUDTooltipEnabled@CUserProfileManager@@QBE_NXZ (inline: `cmp byte [eax+0Ch] ; [eax+0D9h] / [eax+19h]`);
+    // HUDTooltipEnabled +0x19 (Ego_r, before the first vector) and HUDTooltipEnabledNewProfile +0xD9 (Ego_r 0xDD - 4). Own pads.
+    bool GetAssignedInputForAction(EGameAction action, bool passive, CActionInputControl* control);   // 0x00408C90
+    bool IsHUDTooltipEnabled() const { return UseNewProfileValues ? HUDTooltipEnabledNewProfile : HUDTooltipEnabled; }
+    unsigned char _pad_ht_0x00[0xc];                                     // vptr, CBaseClass, ProfileName
+    bool UseNewProfileValues;                                            // +0x0c
+    unsigned char _pad_ht_0x0d[0x19 - 0xd];
+    bool HUDTooltipEnabled;                                              // +0x19
+    unsigned char _pad_ht_0x1a[0xd9 - 0x1a];
+    bool HUDTooltipEnabledNewProfile;                                    // +0xd9
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_CONTEXTITEMINPUT
+    // Retail opt-in (agentC38, row 0x00652FA4): Ego_r.pdb ?GetAssignedInputForContextSensitiveItemAction@CUserProfileManager@@QAE_NW4EGameAction@@_NJAAVCActionInputControl@@@Z (0x00408F50, landed).
+    bool GetAssignedInputForContextSensitiveItemAction(EGameAction action, bool passive, long slot, CActionInputControl& control);   // 0x00408F50
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS
+    // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the option setters the UI actions call, out of line in
+    // retail, FableWin.pdb / Ego_r.pdb spellings (?SetGamma@CUserProfileManager@@QAEXM_N@Z ...; the second bool is "use the new
+    // profile's copy", false from every UI action). Declarations only.
+    void SetSubtitlingEnabled(bool, bool);                               // 0x0040AF90
+    void SetVibrationEnabled(bool, bool);                                // 0x0040AFD0
+    void SetCameraXYInverted(bool, bool);                                // 0x0040B010
+    void SetCameraYZInverted(bool, bool);                                // 0x0040B050
+    void SetTutorialSystemEnabled(bool, bool);                           // 0x0040B210
+    void SetGuildMasterEnabled(bool, bool);                              // 0x0040B250
+    void SetHUDTooltipEnabled(bool, bool);                               // 0x0040B290
+    void SetGamma(float, bool);                                          // 0x0040B2D0
+    void SetHUDAlpha(float, bool);                                       // 0x0040B310
+    void SetMusicVolume(float, bool);                                    // 0x0040B350
+    void SetSoundVolume(float, bool);                                    // 0x0040B390
+    void SetDialogueVolume(float, bool);                                 // 0x0040B3D0
+    void SetUsingHeadPhones(bool, bool);                                 // 0x0040B410
+    void SetShowingBuddyNames(bool, bool);                               // 0x0040B450
+    void SetShowTargetingStatus(bool, bool);                             // 0x0040B490
+    void SetAntialiasing(unsigned long, bool);                           // 0x0040B4D0
+    void SetCameraResetting(bool, bool);                                 // 0x0040B510
+    void SetCameraSensitivity(float, bool);                              // 0x0040B550
+    void SetShadowDetail(float, bool);                                   // 0x0040B590
+    void SetTextureDetail(float, bool);                                  // 0x0040B5D0
+    void SetMeshDetail(float, bool);                                     // 0x0040B610
+    void SetEffectsDetail(float, bool);                                  // 0x0040B650
+    void SetResolution(unsigned long, bool);                             // 0x0040B690
+    void SetRefreshRate(unsigned long, bool);                            // 0x0040B6D0
+    void SetScreenAspectRatio(unsigned long, bool);                      // 0x0040B710
+    void SetVerticalSyncEnabled(bool, bool);                             // 0x0040B750
+    void SetCameraBowYZInverted(bool, bool);                             // 0x0040D2F0
+    void Save();                                                         // 0x0040A740
+    void Apply();                                                        // 0x0040BC80
+    void SetDefaultValuesGameplay();                                     // 0x00408360 (RESTORE_DEFAULTS_GAMEPLAY 0x004210DF)
+    void SetDefaultValuesAudio();                                        // 0x004083B0 (RESTORE_DEFAULTS_AUDIO 0x0042116A)
+    // FableWin.pdb ?SetNewProfileToUseWASD@CUserProfileManager@@QAEX_N@Z and ?WereVideoChangesAccepted@CUserProfileManager@@QBE_NXZ,
+    // inline in retail (Action writes the byte +0x78 in place, 0x004212B3, and tests the byte +0x13C, 0x0042151E). The members
+    // (Ego_r.pdb NewProfileToUseWASD +0x80 / VideoChangesAccepted +0x140, retail -8 / -4 after the 12-byte STLport vectors) stay
+    // opaque in this opt-in, so the accessors read their bytes.
+    void SetNewProfileToUseWASD(bool use) { reinterpret_cast<bool*>(this)[0x78] = use; }
+    bool WereVideoChangesAccepted() const { return reinterpret_cast<const bool*>(this)[0x13c]; }
+    void SetDefaultValuesVideo();                                        // 0x004093E0
+    void CaptureBackBufferForUIBackground();                             // 0x00406CC0
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYDIALOG
+    // agentQ7 (2026-11-11, row 0x0047E9AE CTCInGameMenu::GlobalUpdate): FableWin.pdb ?SetDisplayDialogOnOptionsChanged@CUserProfileManager@@QAEX_N@Z,
+    // inline in retail (the row writes the byte +0x34 in place twice around Apply / Save). The member (Ego_r.pdb DisplayDialogOnOptionsChanged
+    // +0x34, before the first STLport vector, so the same offset in retail) stays opaque here, as in the SETTERS block's accessors.
+    void SetDisplayDialogOnOptionsChanged(bool display) { reinterpret_cast<bool*>(this)[0x34] = display; }
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYMODES
+    // Opt-in (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): Ego_r.pdb
+    // ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ, out of
+    // line in retail at 0x00406880 (`lea eax,[ecx+80h] ; ret`: DisplayModes, Ego_r.pdb +0x88 less two 4-byte-smaller STLport vectors).
+    const std::vector<CDisplayModeDesc>& GetDisplayModes() const;        // 0x00406880
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VOLUME
+    // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): the profile volumes and their Ego_r.pdb accessors
+    // ?GetSoundVolume@CUserProfileManager@@QBEMXZ / ?GetDialogueVolume@CUserProfileManager@@QBEMXZ (out of line at 0x0047CFC2 /
+    // 0x0047CFD3 for the slider TU, expanded in place here: `cmp byte [eax+0Ch] ; mov [eax+0E4h] / [eax+24h]`, 0x005E7980).
+    // Retail offsets = Ego_r.pdb before the first vector (UseNewProfileValues +0x0C, SoundVolume +0x24, MusicVolume +0x28,
+    // DialogueVolume +0x2C) and Ego_r.pdb - 4 after it (SoundVolumeNewProfile +0xE4, MusicVolumeNewProfile +0xE8,
+    // DialogueVolumeNewProfile +0xEC). Combinable with FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD.
+    float GetSoundVolume() const { return UseNewProfileValues ? SoundVolumeNewProfile : SoundVolume; }
+    float GetDialogueVolume() const { return UseNewProfileValues ? DialogueVolumeNewProfile : DialogueVolume; }
+    unsigned char _pad_vol_0x00[0xc];                                    // vptr, CBaseClass, ProfileName
+    bool UseNewProfileValues;                                            // +0x0c
+    unsigned char _pad_vol_0x0d[0x24 - 0xd];                             // SubtitlingEnabled .. HUDAlpha
+    float SoundVolume;                                                   // +0x24
+    float MusicVolume;                                                   // +0x28
+    float DialogueVolume;                                                // +0x2c
+    unsigned char _pad_vol_0x30[0xe4 - 0x30];                            // UsingHeadPhones .. HUDAlphaNewProfile
+    float SoundVolumeNewProfile;                                         // +0xe4
+    float MusicVolumeNewProfile;                                         // +0xe8
+    float DialogueVolumeNewProfile;                                      // +0xec
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETSOUNDASMUTED
+    // agentNF29 name-fix opt-in (row 0x00408340 itself): Ego_r.pdb 0x004062F0 + FableWin.pdb 0x0187E2D0
+    // ?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z (public, bool). Declaration only: no layout change.
+    void SetSoundAsMuted(bool muted);                                    // 0x00408340
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
+    // Retail opt-in (chunk F1, row 0x00407CD0): FableWin.pdb / Ego_r.pdb ?RedefineControlPassive@CUserProfileManager@@QAEXABVCActionInputControl@@0J@Z
+    // (0x00407CD0), ?ApplyValues@CUserProfileManager@@IAEXXZ (0x00407370, landed; PROTECTED in both PDBs) and the Ego_r.pdb member AssignedInputsPassive
+    // (vector<CActionInputControl>, +0x54 in both; retail reads its start / finish at [this+54h] / [this+58h]). Not combinable with the
+    // other layout blocks (own pad).
+protected:
+    void ApplyValues();                                                  // 0x00407370 (IAE: protected)
+public:
+    void RedefineControlPassive(const CActionInputControl& new_control,const CActionInputControl& old_control,long index);   // 0x00407CD0
+    unsigned char _pad_pi_0x00[0x54];                                    // vptr, CBaseClass, ProfileName .. the option values
+    std::vector<CActionInputControl> AssignedInputsPassive;              // +0x54
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RESETASSIGNEDINPUTS
+    // Retail opt-in (wf12 row 0x004085F0): Ego_r.pdb / FableWin.pdb ?ResetAssignedInputs@CUserProfileManager@@QAEXXZ (public) and the
+    // Ego_r.pdb member AssignedInputsAggressive (vector<CActionInputControl>, Ego_r +100, retail +0x60 behind the 12-byte passive vector).
+    std::vector<CActionInputControl> AssignedInputsAggressive;           // +0x60
+    void ResetAssignedInputs();                                          // 0x004085F0
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RESETASSIGNEDINPUTSWASD
+    // e01 opt-in (row 0x00408820): Ego_r.pdb ?ResetAssignedInputsWASD@CUserProfileManager@@QAEXXZ (public, right after
+    // ResetAssignedInputs) + Ego_d.pdb user_profile_manager.obj record. Declaration only: no layout change.
+    void ResetAssignedInputsWASD();                                      // 0x00408820
+#endif
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_TARGETINGSTATUS
+    // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the targeting-status pair the row
+    // selects by UseNewProfileValues (`cmp byte [eax+0Ch],0 ; mov al,[eax+134h] / [eax+6Ch]`): Ego_r.pdb ShowTargetingStatus (+0x74
+    // there, after two 16-byte vectors that are 12 in retail: +0x6C) and ShowTargetingStatusNewProfile (+0x138 there; retail +0x134,
+    // the VOLUME block's -4 rule for the new-profile members). Not combinable with the VOLUME layout block above (own pads).
+    unsigned char _pad_ts_0x00[0xc];                                     // vptr, CBaseClass, ProfileName
+    bool UseNewProfileValues;                                            // +0x0c
+    unsigned char _pad_ts_0x0d[0x6c - 0xd];                              // SubtitlingEnabled .. AssignedInputsAggressive
+    bool ShowTargetingStatus;                                            // +0x6c
+    unsigned char _pad_ts_0x6d[0x134 - 0x6d];                            // EffectsDetail .. CameraSensitivityNewProfile
+    bool ShowTargetingStatusNewProfile;                                  // +0x134
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_AUDIODEFAULTS
+    // agentNF28 repair opt-in (row 0x004083B0 ?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ, Ego_r.pdb 0x00406350 / FableWin.pdb
+    // 0x01881DC0; declared in the SETTERS block): the audio option members the row writes, Ego_r.pdb names and offsets (before the
+    // first STLport vector, so the same offsets in retail: SoundVolume +0x24 .. DialogueVolume +0x2C, UsingHeadPhones +0x30,
+    // SoundsMuted +0x31; retail 0x004083B2..0x004083C9), and the protected ?ApplyValues@CUserProfileManager@@IAEXXZ (0x00407370)
+    // the row tail-calls. Not combinable with the other layout blocks (own pad).
+#ifndef FABLE_RETAIL_CUSERPROFILEMANAGER_PASSIVEINPUTS
+protected:
+    void ApplyValues();                                                  // 0x00407370 (IAE: protected)
+public:
+#endif
+    unsigned char _pad_ad_0x00[0x24];                                    // vptr, CBaseClass, ProfileName .. HUDAlpha
+    float SoundVolume;                                                   // +0x24
+    float MusicVolume;                                                   // +0x28
+    float DialogueVolume;                                                // +0x2c
+    bool UsingHeadPhones;                                                // +0x30
+    bool SoundsMuted;                                                    // +0x31
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
+    // Nested opt-in (chunk 777, row 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest): the scoreboard settings and
+    // their FableWin.pdb accessors (?GetScoreboardUserName@CUserProfileManager@@QAE?AVCWideString@@XZ, ..ProxyIp.., ?GetScoreboardProxyPort
+    // @CUserProfileManager@@QAEJXZ, ?GetScoreboardServerPort@..@QAEJXZ; inline in retail, which copies the CWideString member with the
+    // copy constructor 0x0099B720 and reads the ports in place). Retail offsets = Ego_r.pdb - 4 (STLport vectors 12, the deque-backed
+    // queue 0x28): ScoreBoardUserName +0x110 (0x0055F8A8), ScoreBoardProxyIp +0x118 (0x0055F759), ScoreBoardProxyPort +0x11C
+    // (0x0055F7B9), ScoreBoardServerPort +0x120 (0x0055F830). The members before them stay opaque.
+    CWideString GetScoreboardUserName() { return ScoreBoardUserName; }
+    CWideString GetScoreboardPassword() { return ScoreBoardPassword; }
+    CWideString GetScoreboardProxyIp() { return ScoreBoardProxyIp; }
+    long GetScoreboardProxyPort() { return ScoreBoardProxyPort; }
+    long GetScoreboardServerPort() { return ScoreBoardServerPort; }
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VOLUME
+    unsigned char _pad_0[0x110 - 0xf0];                                  // UsingHeadPhonesNewProfile .. StereoReversedNewProfile
+#else
+    unsigned char _pad_0[0x110];                                         // ProfileName .. StereoReversedNewProfile
+#endif
+    CWideString ScoreBoardUserName;                                      // +0x110
+    CWideString ScoreBoardPassword;                                      // +0x114
+    CWideString ScoreBoardProxyIp;                                       // +0x118
+    long ScoreBoardProxyPort;                                            // +0x11c
+    long ScoreBoardServerPort;                                           // +0x120
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SUBTITLING
+    // NF55 opt-in (2026-11-17, row 0x0088F890 CGameScriptInterface::PlayAVIMovie): FableWin.pdb ?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ
+    // (0x01A63103; inline in retail: `call Get ; cmp byte ptr [eax+0Ch],0 ; mov al,[eax+0CDh] / [eax+0Dh]`), the same shape as the GAMMA /
+    // VOLUME blocks. Retail offsets = Ego_r.pdb before the first vector (UseNewProfileValues +0x0C, SubtitlingEnabled +0x0D) and Ego_r.pdb
+    // - 4 after it (SubtitlingEnabledNewProfile +0xD1 there, +0xCD in retail). Layout-only block: not combinable with the other layout
+    // opt-ins (own pads).
+    bool IsSubtitlingEnabled() const { return UseNewProfileValues ? SubtitlingEnabledNewProfile : SubtitlingEnabled; }
+    unsigned char _pad_sub_0x00[0xc];                                    // vptr, CBaseClass, ProfileName
+    bool UseNewProfileValues;                                            // +0x0c
+    bool SubtitlingEnabled;                                              // +0x0d
+    unsigned char _pad_sub_0x0e[0xcd - 0xe];                             // VibrationEnabled .. DisplayTutorialsDuringCutscenes
+    bool SubtitlingEnabledNewProfile;                                    // +0xcd
+#endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_GAMMA
+    // Retail opt-in (wfA2, row 0x00439070 CPlayerGui::DrawPreparePrimitivesForEngine): FableWin.pdb ?GetGamma@CUserProfileManager@@QBEMXZ /
+    // ?GetHUDAlpha@CUserProfileManager@@QBEMXZ, expanded in place in retail (`call Get ; cmp byte ptr [eax+0Ch],0 ; fld [eax+0DCh] / fld
+    // [eax+1Ch]` and `fld [eax+0E0h] / fld [eax+20h]`, 0x004390AA..0x004390E4), the same shape as the VOLUME block's GetSoundVolume.
+    // Retail offsets = Ego_r.pdb before the first vector (UseNewProfileValues +0x0C, Gamma +0x1C, HUDAlpha +0x20) and Ego_r.pdb - 4 after
+    // it (GammaNewProfile +0xDC, HUDAlphaNewProfile +0xE0). Layout-only block: not combinable with the VOLUME / SCOREBOARD / PROFILENAME_MEMBER
+    // layout opt-ins (own pads).
+    float GetGamma() const { return UseNewProfileValues ? GammaNewProfile : Gamma; }
+    float GetHUDAlpha() const { return UseNewProfileValues ? HUDAlphaNewProfile : HUDAlpha; }
+    unsigned char _pad_gamma_0x00[0xc];                                  // vptr, CBaseClass, ProfileName
+    bool UseNewProfileValues;                                            // +0x0c
+    unsigned char _pad_gamma_0x0d[0x1c - 0xd];                           // SubtitlingEnabled .. CameraPCViewHeroYZInverted
+    float Gamma;                                                         // +0x1c
+    float HUDAlpha;                                                      // +0x20
+    unsigned char _pad_gamma_0x24[0xdc - 0x24];                          // SoundVolume .. HUDTooltipEnabledNewProfile
+    float GammaNewProfile;                                               // +0xdc
+    float HUDAlphaNewProfile;                                            // +0xe0
+#endif
+};
+#endif

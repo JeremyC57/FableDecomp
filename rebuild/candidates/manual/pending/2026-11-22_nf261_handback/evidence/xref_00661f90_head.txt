@@ -1,0 +1,3 @@
+# xref.py 00661f90 on the head object
+000e	dir32	0122f59c	?g_scale@@3MA
+0014	dir32	01230a5c	?g_thresh@@3MA

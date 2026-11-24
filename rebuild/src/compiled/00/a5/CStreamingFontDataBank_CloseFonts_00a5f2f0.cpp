@@ -1,6 +1,6 @@
 // CStreamingFontDataBank::CloseFonts() -- unload and delete every streaming font entry, empty the font table and forget the bank's file name
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A5F2F0, 161 bytes (+ int3 padding), `ret`.
-// Leaf: CloseFonts
+// Leaf: ?CloseFonts@CStreamingFontDataBank@@AAEXXZ
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Callees: CStreamingFontDataBankEntry virtuals (vtable 0x0129D5B4, RTTI): slot 0 deleting destructor (`push 1`),
 //   slot 1 IsLoaded (0x00A5F220), slot 2 CanUnload (0x00A5F230, result unused), slot 3 Unload (0x00A5F250);
@@ -36,7 +36,9 @@ public:
     unsigned char                        StateBlock[0x14];   // +0x164 CStreamingFontBankStateBlock
     CArray<CStreamingFontDataBankEntry*> Fonts;         // +0x178
     CCharString                          Filename;      // +0x184
+    private:
     void CloseFonts();
+    public:
 };
 
 void CStreamingFontDataBank::CloseFonts()

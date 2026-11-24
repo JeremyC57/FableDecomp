@@ -381,6 +381,10 @@ private:
  bool AddInventoryItem(const NInventory::CItem&);
 #else
 
+#ifdef FABLE_RETAIL_QUICKACCESS_MAGIC_TEST_PASS27
+public: CTCInventoryBase(CThing&);
+#endif
+
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_PASS22_DTOR
 // Ego_r00622F92 / FableWin02364804; native005C00A0, kept out of line.
 public: virtual ~CTCInventoryBase();
@@ -704,7 +708,12 @@ private:
 #endif
  long GlobalDefIndex,SelectedCategoryIndex;
  const CGraphicDataBank* GraphicManager;
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_SERIALISED_PASS27
+ CCountedPointer<std::vector<CItem> > SerialisedItems;
+ CCountedPointer<std::vector<CCharString> > SerialisedSelectedItems;
+#else
  unsigned char SerialisedItems[8],SerialisedSelectedItems[8];
+#endif
  bool Dying,CategoryMoving;
  float CategoryMovement,CategoryMovementDirection;
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED

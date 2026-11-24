@@ -1,0 +1,26 @@
+0122f180	.text	00418b83	00418b7a	CMainGameComponent::~CMainGameComponent
+0122f180	.text	00418ddc	00418dca	CMainGameComponent::CMainGameComponent
+0122eca4	.text	00415909	-	
+0122eca4	.text	0041594c	00415940	CGameComponent::`scalar deleting destructor'
+0122eca4	.text	00418c2f	00418b7a	CMainGameComponent::~CMainGameComponent
+0122eca4	.text	0042f59d	0042f50b	CNewFrontendGameComponent::~CNewFrontendGameComponent
+0122eca4	.text	0049576a	00495620	CFrontendGameComponent::~CFrontendGameComponent
+0122eca4	.text	0051d907	0051d8e0	CGameComponent::CGameComponent
+01238768	.text	0049562e	00495620	CFrontendGameComponent::~CFrontendGameComponent
+01238768	.text	00496082	00496070	CFrontendGameComponent::CFrontendGameComponent
+0122ecb0	.text	00415902	-	
+0122ecb0	.text	00415945	00415940	CGameComponent::`scalar deleting destructor'
+0122ecb0	.text	00418c28	00418b7a	CMainGameComponent::~CMainGameComponent
+0122ecb0	.text	0042f596	0042f50b	CNewFrontendGameComponent::~CNewFrontendGameComponent
+0122ecb0	.text	00495763	00495620	CFrontendGameComponent::~CFrontendGameComponent
+0122ecb0	.text	0051d900	0051d8e0	CGameComponent::CGameComponent
+0122de50	.text	00406324	-	
+0122de50	.text	0040ced1	0040cec0	CUserProfileManager::CUserProfileManager
+0122de50	.text	0051d8eb	0051d8e0	CGameComponent::CGameComponent
+0122de50	.text	00a0a11b	00a0a110	CMeshBankManager::CMeshBankManager
+0122de50	.text	00b260c7	00b260b0	CEngine::CEngine
+0122f174	.text	00418b8a	00418b7a	CMainGameComponent::~CMainGameComponent
+0122f174	.text	00418de5	00418dca	CMainGameComponent::CMainGameComponent
+0123875c	.text	00495635	00495620	CFrontendGameComponent::~CFrontendGameComponent
+0123875c	.text	00496089	00496070	CFrontendGameComponent::CFrontendGameComponent
+00415930	.rdata	0122ecc0	-	

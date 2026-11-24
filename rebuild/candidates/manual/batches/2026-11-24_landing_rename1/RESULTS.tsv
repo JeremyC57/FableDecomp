@@ -1,0 +1,20 @@
+address	verdict	old	new	reason
+00786700	SKIP	?ClearMorphParameters@C3DSkeletalMorph@@QAEXXZ	?Reset@C3DSkeletalMorph@@QAEXXZ	the caller already uses the identifier Reset
+006e1620	SKIP	?SetHidden@CParticleEmitter@NParticleEngine@@QAEX_N@Z	?SetParticleCreationDisabled@CParticleEmitter@NParticleEngine@@QAEX_N@Z	the caller already uses the identifier SetParticleCreationDisabled
+008915e0	SKIP	?SetBoastAsCompleted_004af8f0@CQuestManager@@QAEXJVCCharString@@@Z	?SetBoastAsCompleted@CQuestManager@@QAEXJVCCharString@@@Z	the caller already uses the identifier SetBoastAsCompleted
+00691470	SKIP	?Quit@CTCCreditsUI@@QAEXXZ	?Deactivate@CTCCreditsUI@@QAEXXZ	the caller already uses the identifier Deactivate
+009e5250	SKIP	?Clear@?$CVectorMap@VCCharString@@VCSymbolInfo@CSymbolMap@@V?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@@QAEXXZ	?DeallocateMemory@?$CVectorMap@VCCharString@@VCSymbolInfo@CSymbolMap@@V?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@@QAEXXZ	the caller's own symbol contains the identifier
+00713ee0	ACCEPT	?Get2DDistance@@YIMABVC2DVector@@0@Z	?GFGet2DBoxDistance@@YIMABVC2DVector@@0@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009e1ad0
+004fcb30	ACCEPT	?GetDistanceTo@C2DBoxI@@QBEJABVC2DCoordI@@@Z	?GetDistance@C2DBoxI@@QBEJABVC2DCoordI@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a3a180
+00a99610	ACCEPT	?GetFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a99110
+007864c0	ACCEPT	?ClearParameters@C3DSkeletalMorph@@QAEXXZ	?Reset@C3DSkeletalMorph@@QAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a45410
+00bfc770	ACCEPT	?WriteUShort@CDataOutputStream@@QAEXG@Z	?WriteUWORD@CDataOutputStream@@QAEXG@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00993e80
+00bdc180	REJECT			no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'LINK_FAIL'))
+00bdc3c0	ACCEPT	?RemoveFinished@CEngineStaticMapFileBlockManager@@QAEXXZ	?DeleteUnusedBlocks@CEngineStaticMapFileBlockManager@@QAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00be04f0
+00bf84c0	ACCEPT	?StartLoading@CLandscapeBackgroundLoadTask@@QAEXXZ	?ReleaseFileBlockLoad@CLandscapeBackgroundLoadTask@@QAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00bf6410
+00af5900	SKIP	?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ	?DeleteAllDecals@CParticleSystem@NParticleEngine@@QAEXXZ	held: other landed rows still reference the old spelling (ref_scan refs1); needs the unit route
+008fadb0	SKIP	?Finalise@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ	?GetPointsList@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ	held: other landed rows still reference the old spelling (ref_scan refs1); needs the unit route
+00dc0300	ACCEPT	?CleanupBandits@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ	?DepopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00dc0830
+007e9360	SKIP	?UpdateMaxExitWeight@CTCAvoidRegionExit@@QAEXXZ	?UpdateBestDist@CTCAvoidRegionExit@@QAEXXZ	held: other landed rows still reference the old spelling (ref_scan refs1); needs the unit route
+007baf00	ACCEPT	?EndDeed@CTCHeroOpinionDeedLog@@QAEXJ@Z	?RemoveDeedStillSearchingForWitnesses@CTCHeroOpinionDeedLog@@QAEXJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006c5920
+007868a0	ACCEPT	?AddMorph@CTCSkeletalMorph@@QAEXJABVCCharString@@M@Z	?AddSkeletalMorph@CTCSkeletalMorph@@QAEXJABVCCharString@@M@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00786670

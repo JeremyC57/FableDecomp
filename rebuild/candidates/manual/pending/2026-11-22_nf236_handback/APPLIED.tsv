@@ -1,0 +1,7 @@
+entry	address	status	binders_respelled	note
+q12663	0x013B7D58	done	3 (0x004189C2, 0x00412F90, 0x0042EC7C; extern lines)	3 -> 1 spelling (absrefs: 4 binder rows, 9 sites; 0x00496CF0 already on the PDB name)
+q12664	0x004065D0	done (self rename + header port; GetAutoSaveFileName = 0x00406690)	0 (both binders already bind GetDefaultProfileName)	catalog / leaf / file name -> GetDefaultProfileName (RENAMES section 1); 0x004065D0 2 -> 1; new header test
+q12665	0x00687BD0	done (7 binders, not 1: the table keeps one witness)	7 Released (0x0068C760 0x0068C7F0 0x0068CAC0 0x0068F180 0x00690030 0x00690390 0x00690D30) + 12 Pressed (0x00690030 and 11 more)	0x00687BD0 2 -> 1; 0x00687A90 stays 2 (QAE binders 13 -> 1: 0x007E5230 CTCBetting, a non-derived caller, needs a friend / ruling)
+q12666	-	done (5 header tests; rows unchanged)	0	0x00495620 0x00496070 0x00496CF0 0x00A0A110 0x00A0A150; 0x00496CF0 keeps the row's in-place CSystemManager shape (the full header needs Win32 types)
+q12667	- (54 held lines)	partly done: 21 of 54 lines restorable (14 addresses on one spelling, 7 count-reducing, self leaves counted); 33 listed with reasons (NOTES entry 5)	28 binder rows (27 + 0x0042EC7C, which also carries q12663) + 6 leaf-only self rows + 0x00406690 (q12664 follow-up)	TABLE_CHANGES (q12667 part): 21 adds, 23 deletes (retired or stale old lines); no address grows
+q12659	0x00418DCA	not started (left: the brief says only with the full 469-includer equivalence proof; context went to entry 5)	0	

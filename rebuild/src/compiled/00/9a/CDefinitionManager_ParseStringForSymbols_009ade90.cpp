@@ -23,23 +23,13 @@ public:
     ~CCharString();                                // 0x0099EAE0
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    struct SNode { SNode* Next; SNode* Prev; char* PStart; char* PEnd; };
-    SNode* m_pHead;
-    list() : m_pHead(0)
-    {
-        SNode* node = (SNode*)malloc(sizeof(SNode));
-        node->Next = node;
-        node->Prev = node;
-        m_pHead = node;
-    }
-    ~list();                   // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (the visible out-of-line _List_base dtor) and the element by engine/CStringParser.h's partial mode: the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#define FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY
+#include "engine/CStringParser.h"
+#include "stlport/fable_containers.h"
 struct CCursorPos {
     bool          InQuotes;
     unsigned long StringPos;
@@ -68,9 +58,9 @@ class CDefinitionManager { public:
     unsigned char  _pad000[0xb0];
     TErrorCallback ErrorCallback;                  // +0xb0
     CCharString    CurrentFilename;                // +0xb4
-    bool InstantiateDef(const CCharString& className, const CCharString& instanceName, bool isTemplate);   // 0x009ADC90
-    void Error(const CStringParser& parser, const CCharString& message);   // 0x009AC9F0
-    void ParseEnumForSymbols(CStringParser& parser);   // 0x009ACEE0
+    protected: bool InstantiateDef(const CCharString& className, const CCharString& instanceName, bool isTemplate); public:   // 0x009ADC90
+    protected: void Error(const CStringParser& parser, const CCharString& message); public:   // 0x009AC9F0
+    protected: void ParseEnumForSymbols(CStringParser& parser); public:   // 0x009ACEE0
 protected:
     void ParseStringForSymbols(const char* text, bool instantiate);   // protected (Ego_r.pdb / FableWin.pdb IAE)
 };

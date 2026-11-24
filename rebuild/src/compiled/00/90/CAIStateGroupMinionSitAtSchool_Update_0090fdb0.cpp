@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionSitAtSchool::Update() -- read the village school times, pick a randomly staggered end time, walk (seat within 10 units) or run to the seat and sit; then idle while the time of day stays in the school window (leaving at a 1-in-5-seconds random once it is over), raising a hand at random intervals while the village has a lesson on; finally get up and Terminate()
-// Leaf: ?Update@CAIStateGroup_MinionSitAtSchool@@UAEXXZ
+// Leaf: ?Update@CAIStateGroup_MinionSitAtSchool@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -117,11 +117,17 @@ public:
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     CIntelligentPointer<CThing> PSeat;              // +0x14
     bool MoveToSeat(long movementType);         // 0x009385F0
+    // Name fix (NF239, 2026-11-22, CODEXP27 L88): SitInSeat is protected in Ego_r + FableWin (?SitInSeat@CAIStateGroup_UsesSeat@@IAE_NXZ,
+    //   the self row 0x00938380's leaf); was public (QAE).
+protected:
     bool SitInSeat();                           // 0x00938380
-    void GetUpFromSeat();                       // 0x00938A10
+public:
+    protected: bool GetUpFromSeat(); public:    // 0x00938A10
 };
 struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_UsesSeat {
+    protected:
     virtual void Update();
+    public:
 };
 
 void CAIStateGroup_MinionSitAtSchool::Update()

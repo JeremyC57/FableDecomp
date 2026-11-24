@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00aa7740   MATCH            PASS   IsUnknownType
+
+WINS: 1
+  00aa7740 MATCH CChunkedFileRawDataChunk::?IsUnknownType@CChunkedFileRawDataChunk@@UBEHXZ

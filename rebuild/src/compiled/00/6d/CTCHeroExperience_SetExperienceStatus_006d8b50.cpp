@@ -32,8 +32,8 @@ public:
     long                ExperiencePointsAvailableToSpend;   // +0x14
     CRetailVector<long> StatExperiencePoints;   // +0x18
     CRetailVector<long> TrainableStatLevels;    // +0x24
-    void UpdateAbilitiesForStat(EHeroTrainableStatType stat, bool b);   // 0x006D8170
-    void OnStatLevelChange(bool b);                                     // 0x006D83B0
+    private: void UpdateAbilitiesForStat(EHeroTrainableStatType stat, bool b);   // 0x006D8170
+    void OnStatLevelChange(bool b); public:                                     // 0x006D83B0
     void SetExperienceStatus(const CRetailVector<long>& status);
 };
 

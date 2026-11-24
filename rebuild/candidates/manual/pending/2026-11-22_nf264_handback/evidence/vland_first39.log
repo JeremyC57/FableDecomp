@@ -1,0 +1,114 @@
+addr       parity           behav  name
+0062ea10   MATCH            PASS   AllowsCombinationAnims
+006f57b0   MATCH            PASS   AllowsCombinationAnims
+006f5c10   WARN RELOC_NAME: ??1?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 00695d90 labelled '_global::Dtor_CountedPtrAt0x8_00695d90'
+006f5c10   WARN RELOC_NAME: ??1?$pair@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 006f5260 labelled '_global::Dtor_CountedPtrAt0x8_006f5260'
+006f5c10   RELOCATION_MATCH PASS   StatRegisterClass
+00692890   RELOCATION_MATCH PASS   AllowsCombinationAnims
+006df800   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheToShowToSheatheTrophy
+007175d0   RELOCATION_MATCH PASS   vfunc_1
+0074ace0   RELOCATION_MATCH PASS   UpdateUndead
+007af490   RELOCATION_MATCH PASS   KillHelpers
+0085ff10   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0085ff10   RELOCATION_MATCH PASS   GetUpFromSitting
+008a9100   RELOCATION_MATCH PASS   CreateCreature
+
+WINS: 10
+  0062ea10 MATCH CCombatActionBase::?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ
+  006f57b0 MATCH CCombatAction_StrikeResponseScorpionKing::?AllowsCombinationAnims@CCombatAction_StrikeResponseScorpionKing@@UBE_NXZ
+  006f5c10 RELOCATION_MATCH CCreatureActionBase::?StatRegisterClass@CCreatureActionBase@@SIXXZ
+  00692890 RELOCATION_MATCH CCreatureActionBase::?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ
+  006df800 RELOCATION_MATCH CCreatureAction_UnsheatheToShowToSheatheTrophy::??0CCreatureAction_UnsheatheToShowToSheatheTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z
+  007175d0 RELOCATION_MATCH NTCScriptedControl::CActionSummonerLightningAttackTarget::?Update@CActionSummonerLightningAttackTarget@NTCScriptedControl@@UAEXXZ
+  0074ace0 RELOCATION_MATCH CTCCreatureGenerator::?UpdateUndead@CTCCreatureGenerator@@IAEXXZ
+  007af490 RELOCATION_MATCH CTCBoss::?KillHelpers@CTCBoss@@QAEXXZ
+  0085ff10 RELOCATION_MATCH NCreatureMode::?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z
+  008a9100 RELOCATION_MATCH CGameScriptInterface::?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z
+EXIT 0
+addr       parity           behav  name
+008b8590   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheWeapons
+008b9010   RELOCATION_MATCH PASS   FinishAction
+008c2550   RELOCATION_MATCH PASS   FinishAction
+008c2c50   RELOCATION_MATCH PASS   FinishAction
+008c4e20   RELOCATION_MATCH PASS   CCreatureAction_ScorpionChargeInto
+008c5370   RELOCATION_MATCH PASS   FinishAction
+008e08c0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008e08c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008e08c0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008e08c0   WARN SHARED_HEADER_AVAILABLE CCombatAction_GenericStrikeResponseKnockdownRecoverBase (engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h)
+008e08c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008e08c0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008e08c0   RELOCATION_MATCH PASS   Recover
+008e20f0   WARN RELOC_NAME: ??$sort@PAU?$pair@KVC3DVector@@@std@@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KVC3DVector@@@0@0V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z -> 0076c000 labelled 'std::sort<std::pair<unsigned long, C3DVector> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareVector<unsigned long>>'
+008e20f0   WARN RELOC_NAME: ??$sort@PAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@0V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z -> 0076c1a0 labelled 'std::sort<std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long>> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareParamDesc<unsigned long>>'
+008e20f0   RELOCATION_MATCH PASS   FrameUpdate
+008e24f0   WARN RELOC_NAME: ??$sort@PAU?$pair@KVC3DVector@@@std@@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KVC3DVector@@@0@0V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z -> 0076c000 labelled 'std::sort<std::pair<unsigned long, C3DVector> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareVector<unsigned long>>'
+008e24f0   WARN RELOC_NAME: ??$sort@PAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@0V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z -> 0076c1a0 labelled 'std::sort<std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long>> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareParamDesc<unsigned long>>'
+008e24f0   RELOCATION_MATCH PASS   FrameUpdate
+008e68e0   RELOCATION_MATCH PASS   CCreatureAction_ReleaseStrengthBerserk
+
+WINS: 10
+  008b8590 RELOCATION_MATCH CCreatureAction_UnsheatheWeapons::??0CCreatureAction_UnsheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z
+  008b9010 RELOCATION_MATCH CCreatureAction_ScreamerDrainAttack::?FinishAction@CCreatureAction_ScreamerDrainAttack@@UAEXXZ
+  008c2550 RELOCATION_MATCH CCombatAction_StrikeResponseJackOfBladesIntoRush::?FinishAction@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ
+  008c2c50 RELOCATION_MATCH CCreatureAction_BriarRoseShotFarInto::?FinishAction@CCreatureAction_BriarRoseShotFarInto@@UAEXXZ
+  008c4e20 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::??0CCreatureAction_ScorpionChargeInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@M@Z
+  008c5370 RELOCATION_MATCH CCreatureAction_WaspQueenDie::?FinishAction@CCreatureAction_WaspQueenDie@@UAEXXZ
+  008e08c0 RELOCATION_MATCH NCreatureMode::CModeCreatureIsProjectile::Recover
+  008e20f0 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpShield::?FrameUpdate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ
+  008e24f0 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpSpeed::?FrameUpdate@CModeGuildmasterPowerUpSpeed@NCreatureMode@@UAEXXZ
+  008e68e0 RELOCATION_MATCH CCreatureAction_ReleaseStrengthBerserk::??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z
+EXIT 0
+addr       parity           behav  name
+008e8c20   RELOCATION_MATCH PASS   ~CCreatureAction_BriarRoseConcentrateInto
+008e8cb0   RELOCATION_MATCH PASS   ~CCreatureAction_BriarRoseInvulnerableTeleport
+00924c70   WARN SHARED_HEADER_AVAILABLE CKrakenDef (engine/CKrakenDef.h)
+00924c70   WARN SHARED_HEADER_AVAILABLE CTCBoss (engine/CTCBoss.h)
+00924c70   WARN SHARED_HEADER_AVAILABLE CTCKraken (engine/CTCKraken.h)
+00924c70   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00924c70   RELOCATION_MATCH PASS   Update
+00951430   RELOCATION_MATCH PASS   IntoGroundSwoop
+00952890   RELOCATION_MATCH PASS   UpdateGround
+009531a0   RELOCATION_MATCH PASS   ~CCreatureAction_DragonRearUpFull
+009537b0   RELOCATION_MATCH PASS   CCreatureAction_DragonBurninateInto
+009551a0   RELOCATION_MATCH PASS   Update
+00956960   RELOCATION_MATCH PASS   Clone
+00957170   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseShotFarInto
+
+WINS: 10
+  008e8c20 RELOCATION_MATCH CCreatureAction_BriarRoseConcentrateInto::??1CCreatureAction_BriarRoseConcentrateInto@@UAE@XZ
+  008e8cb0 RELOCATION_MATCH CCreatureAction_BriarRoseInvulnerableTeleport::??1CCreatureAction_BriarRoseInvulnerableTeleport@@UAE@XZ
+  00924c70 RELOCATION_MATCH CAIStateGroup_KrakenAttack::?Update@CAIStateGroup_KrakenAttack@@MAEXXZ
+  00951430 RELOCATION_MATCH CAIStateGroup_JackDragon::?IntoGroundSwoop@CAIStateGroup_JackDragon@@AAEXXZ
+  00952890 RELOCATION_MATCH CAIStateGroup_JackDragon::?UpdateGround@CAIStateGroup_JackDragon@@AAEXXZ
+  009531a0 RELOCATION_MATCH CCreatureAction_DragonRearUpFull::??1CCreatureAction_DragonRearUpFull@@UAE@XZ
+  009537b0 RELOCATION_MATCH CCreatureAction_DragonBurninateInto::??0CCreatureAction_DragonBurninateInto@@QAE@AAVCThingCreatureBase@@AAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@MM22@Z
+  009551a0 RELOCATION_MATCH CAIStateGroup_MazeRangedCombat::?Update@CAIStateGroup_MazeRangedCombat@@UAEXXZ
+  00956960 RELOCATION_MATCH CCreatureAction_ThrowShotObject::?Clone@CCreatureAction_ThrowShotObject@@UBEPAVCCreatureActionBase@@XZ
+  00957170 RELOCATION_MATCH CCreatureAction_BriarRoseShotFarInto::??0CCreatureAction_BriarRoseShotFarInto@@QAE@AAVCThingCreatureBase@@0@Z
+EXIT 0
+addr       parity           behav  name
+00957300   RELOCATION_MATCH PASS   ~CCreatureAction_BriarRoseForcePush
+009619c0   RELOCATION_MATCH PASS   CCreatureAction_BanditKingLunge
+00962990   RELOCATION_MATCH PASS   CCreatureAction_IceTrollIcicleAssaultInto
+0096ae50   RELOCATION_MATCH PASS   UseWill
+009735d0   RELOCATION_MATCH PASS   RushToPos
+00974110   WARN RELOC_NAME: ??$__find_if@PAVC3DVector@@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@0V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@ABUrandom_access_iterator_tag@0@@Z -> 008aac50 labelled 'std::__find_if<C3DVector *, std::unary_negate<CVectorFilter_FurtherFromPointThan>>'
+00974110   WARN RELOC_NAME: ??$remove_copy_if@PAVC3DVector@@PAV1@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@00V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@@Z -> 008ab710 labelled 'std::remove_copy_if<C3DVector *, C3DVector *, std::unary_negate<CVectorFilter_FurtherFromPointThan>>'
+00974110   RELOCATION_MATCH PASS   Summon
+009756b0   RELOCATION_MATCH PASS   Update
+0097bda0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0097bda0   RELOCATION_MATCH PASS   UpdateCombat
+0097c900   RELOCATION_MATCH PASS   ~CCreatureAction_ScorpionChargeInto
+
+WINS: 9
+  00957300 RELOCATION_MATCH CCreatureAction_BriarRoseForcePush::??1CCreatureAction_BriarRoseForcePush@@UAE@XZ
+  009619c0 RELOCATION_MATCH CCreatureAction_BanditKingLunge::??0CCreatureAction_BanditKingLunge@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+  00962990 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAssaultInto::??0CCreatureAction_IceTrollIcicleAssaultInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+  0096ae50 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ
+  009735d0 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::?RushToPos@CAIStateGroup_JackOfBladesBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z
+  00974110 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::?Summon@CAIStateGroup_JackOfBladesBase@@IAEXJ_N@Z
+  009756b0 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage3::?Update@CAIStateGroup_JackOfBladesStage3@@UAEXXZ
+  0097bda0 RELOCATION_MATCH CAIStateGroup_ScorpionKing::?UpdateCombat@CAIStateGroup_ScorpionKing@@IAEXXZ
+  0097c900 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::??1CCreatureAction_ScorpionChargeInto@@UAE@XZ
+EXIT 0

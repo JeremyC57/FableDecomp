@@ -1,0 +1,127 @@
+## 007f4d50
+0a1,23
+> enum EHeroAbility {
+>  HERO_ABILITY_NULL=0,
+>  HERO_ABILITY_FORCE_PUSH=1,
+>  HERO_ABILITY_TIME_SPELL=2,
+>  HERO_ABILITY_ENFLAME_SPELL=3,
+>  HERO_ABILITY_PHYSICAL_SHIELD_SPELL=4,
+>  HERO_ABILITY_TURNCOAT_SPELL=5,
+>  HERO_ABILITY_DRAIN_LIFE_SPELL=6,
+>  HERO_ABILITY_RAISE_DEAD_SPELL=7,
+>  HERO_ABILITY_BERSERK=8,
+>  HERO_ABILITY_DOUBLE_STRIKE=9,
+>  HERO_ABILITY_SUMMON_SPELL=10,
+>  HERO_ABILITY_LIGHTNING_SPELL=11,
+>  HERO_ABILITY_BATTLE_CHARGE=12,
+>  HERO_ABILITY_ASSASSIN_RUSH=13,
+>  HERO_ABILITY_HEAL_LIFE_SPELL=14,
+>  HERO_ABILITY_GHOST_SWORD_SPELL=15,
+>  HERO_ABILITY_FIREBALL_SPELL=16,
+>  HERO_ABILITY_MULTI_ARROW=17,
+>  HERO_ABILITY_DIVINE_WRATH_SPELL=18,
+>  HERO_ABILITY_UNHOLY_POWER_SPELL=19,
+>  MAX_NUMBER_OF_HERO_ABILITIES=20
+> };
+846c869
+<  long Ability;
+---
+>  EHeroAbility Ability;
+885c908
+<  void OnSpecialAbilityUsed(long ability, bool used);
+---
+>  void OnSpecialAbilityUsed(EHeroAbility ability, bool used);
+## 007f5a70
+1434a1435
+> enum ETargetingType { TARGETING_NULL=0, TARGETING_USABLE=1, TARGETING_TALKABLE=2, TARGETING_STAB=4, TARGETING_SHOOTABLE=8, TARGETING_MELEE=16, TARGETING_ZTARGETING=32 };
+1447c1448
+<  bool IsTargetedThingOfType(unsigned long typeMask) const;
+---
+>  bool IsTargetedThingOfType(ETargetingType typeMask) const;
+1449c1450
+< bool CTCTargetingBase::IsTargetedThingOfType(unsigned long typeMask) const
+---
+> bool CTCTargetingBase::IsTargetedThingOfType(ETargetingType typeMask) const
+## 007ed170
+0a1
+> enum ETargetingType { TARGETING_NULL=0, TARGETING_USABLE=1, TARGETING_TALKABLE=2, TARGETING_STAB=4, TARGETING_SHOOTABLE=8, TARGETING_MELEE=16, TARGETING_ZTARGETING=32 };
+915c916
+<  bool IsTargetedThingOfType(long type);
+---
+>  bool IsTargetedThingOfType(ETargetingType type) const;
+937c938
+<  if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)) {
+---
+>  if (targeting->IsTargetedThingOfType(TARGETING_TALKABLE) && targeting->CanInteractWithTarget(2)) {
+## 007ed2c0
+0a1
+> enum ETargetingType { TARGETING_NULL=0, TARGETING_USABLE=1, TARGETING_TALKABLE=2, TARGETING_STAB=4, TARGETING_SHOOTABLE=8, TARGETING_MELEE=16, TARGETING_ZTARGETING=32 };
+922c923
+<  bool IsTargetedThingOfType(long type);
+---
+>  bool IsTargetedThingOfType(ETargetingType type) const;
+948c949
+<  if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)) {
+---
+>  if (targeting->IsTargetedThingOfType(TARGETING_TALKABLE) && targeting->CanInteractWithTarget(2)) {
+## 007ed560
+0a1
+> enum ETargetingType { TARGETING_NULL=0, TARGETING_USABLE=1, TARGETING_TALKABLE=2, TARGETING_STAB=4, TARGETING_SHOOTABLE=8, TARGETING_MELEE=16, TARGETING_ZTARGETING=32 };
+1206c1207
+<  bool IsTargetedThingOfType(long type);
+---
+>  bool IsTargetedThingOfType(ETargetingType type) const;
+1237c1238
+<  if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)
+---
+>  if (targeting->IsTargetedThingOfType(TARGETING_TALKABLE) && targeting->CanInteractWithTarget(2)
+## 007ed870
+0a1
+> enum ETargetingType { TARGETING_NULL=0, TARGETING_USABLE=1, TARGETING_TALKABLE=2, TARGETING_STAB=4, TARGETING_SHOOTABLE=8, TARGETING_MELEE=16, TARGETING_ZTARGETING=32 };
+937c938
+<  bool IsTargetedThingOfType(long type);
+---
+>  bool IsTargetedThingOfType(ETargetingType type) const;
+984c985
+<  void ApplyBonusItemEffects(CBonusItemDef* def);
+---
+>  void ApplyBonusItemEffects(const CBonusItemDef& def);
+996c997
+<  if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)) {
+---
+>  if (targeting->IsTargetedThingOfType(TARGETING_TALKABLE) && targeting->CanInteractWithTarget(2)) {
+1005c1006
+<  stats->ApplyBonusItemEffects(def.Object);
+---
+>  stats->ApplyBonusItemEffects(*def.Object);
+## 00766480
+0a1,11
+> enum EObjectAugmentationType {
+>  OBJECT_AUGMENTATION_TYPE_NONE = 0,
+>  OBJECT_AUGMENTATION_TYPE_SHARPENING = 0x01,
+>  OBJECT_AUGMENTATION_TYPE_SILVER = 0x02,
+>  OBJECT_AUGMENTATION_TYPE_FLAME = 0x04,
+>  OBJECT_AUGMENTATION_TYPE_LIGHTNING = 0x08,
+>  OBJECT_AUGMENTATION_TYPE_PIERCING = 0x10,
+>  OBJECT_AUGMENTATION_TYPE_HEALTH_REGENERATION = 0x20,
+>  OBJECT_AUGMENTATION_TYPE_WILL_REGENERATION = 0x40,
+>  OBJECT_AUGMENTATION_TYPE_EXPERIENCE = 0x80
+> };
+13,14c24,25
+<  bool HasCombinationOfAugmentations(long types) const;
+<  bool HasAugmentationOfType(long type) const;
+---
+>  bool HasCombinationOfAugmentations(EObjectAugmentationType types) const;
+>  bool HasAugmentationOfType(EObjectAugmentationType type) const;
+20c31
+<  if (HasCombinationOfAugmentations(0xc))
+---
+>  if (HasCombinationOfAugmentations((EObjectAugmentationType)(OBJECT_AUGMENTATION_TYPE_FLAME | OBJECT_AUGMENTATION_TYPE_LIGHTNING)))
+22c33
+<  else if (HasAugmentationOfType(4))
+---
+>  else if (HasAugmentationOfType(OBJECT_AUGMENTATION_TYPE_FLAME))
+24c35
+<  else if (HasAugmentationOfType(8))
+---
+>  else if (HasAugmentationOfType(OBJECT_AUGMENTATION_TYPE_LIGHTNING))

@@ -71,7 +71,7 @@ template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& 
 }
 
 class CTCInventory { public:                                    // TC type 0x11
-    bool IsButtonHeldForExpression(const CCharString& expression);  // 0x00582A16
+    bool IsButtonHeldForExpression(const CCharString& expression) const;  // 0x00582A16
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0

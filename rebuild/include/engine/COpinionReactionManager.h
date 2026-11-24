@@ -26,6 +26,23 @@ enum EOpinionAttitudeType;
 class CTCOpinionSource;
 #endif
 class COpinionReactionManager {
+#ifdef FABLE_RETAIL_OPINIONREACTIONROOT_ISRUNNABLE_PASS27
+public:
+    const CThing* PeekThingOpinionSource() const { return PThingOpinionSource.Get(); }
+    const std::list<CIntelligentPointer<const CThing> >& PeekOpinionSourcesList() const { return OpinionSourcesList; }
+    EOpinionTargetingConditionType GetTargetingCondition(EOpinionReactionType type) const {
+        return (EOpinionTargetingConditionType)TargetingCondition[type];
+    }
+    bool GetAllowWhileCarrying(EOpinionReactionType type) const { return AllowWhileCarrying[type]; }
+    EOpinionReactionType GetReactionType(const CThing& thing, const bool* flags, const CTCOpinionSource* source) const {
+        return GetAttitudeOrReactionType(thing, false, flags, source);
+    }
+#endif
+
+#ifdef FABLE_RETAIL_OPINION_STRENGTH_PASS26
+private:
+    void GetOpinions(const CTCCreatureOpinionOfHero* ptc_opinion,COpinionSet& opinions,const CTCOpinionSource* ptc_source) const;
+#endif
 #ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_CTOR
     // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0COpinionReactionManager@@QAE@ABVCWorld@@@Z, retail 0x007004B0. Declaration only.
 public:
@@ -63,6 +80,15 @@ private:
     // Exact private static const array spelling in both PDBs; native013babd0.
     static const CCharString AttitudeStrings[18];
 public:
+#endif
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+    bool AttachOpinionSource(CThing&,long,class CTCOpinionSource**) const;
+#endif
+#ifdef FABLE_RETAIL_OPINION_FILTER_PASS27
+    bool GetAllowWhileFollowingPlayer(EOpinionReactionType type) const { return AllowWhileFollowingPlayer[type]; }
+    EOpinionReactionType GetReactionType(const CThing& thing,const bool* flags,const CTCOpinionSource* source) const {
+        return GetAttitudeOrReactionType(thing,false,flags,source);
+    }
 #endif
     void SetThingOpinionSource(CThing* thing);                           // 0x00700770
 #ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYERASSTRING
@@ -126,6 +152,9 @@ private:
 #endif
 #endif
 private:
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_CTOR_PASS27
+    friend class CTCHeroOpinionDeedLog;
+#endif
     CDefPointer<const COpinionReactionManagerDef> PDef;                  // +0x000
     CWorld* World;                                                       // +0x004
     bool ReactionFlagsTemp[79];                                          // +0x008

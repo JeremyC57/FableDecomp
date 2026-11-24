@@ -1,5 +1,5 @@
 // CTCShopKeeper::GetFriendlynessIndicator() const -- text key for the keeper's attitude: compare the shop's base price multiplier against its attitude multiplier and return LIKES (< 0.2), NEUTRAL (< 0.55) or DISLIKES; "" without a shop
-// Leaf: GetFriendlynessIndicator
+// Leaf: ?GetFriendlynessIndicator@CTCShopKeeper@@QAE?AVCCharString@@XZ
 // Retail: Fable.exe 0x00799350, 151 bytes (`ret 4`, CCharString returned through the hidden pointer).
 // Callees: CTCShopKeeper::GetShopTC() const @ 0x00798F50, two CTCShop float getters @ 0x00773790 and @ 0x007735D0
 // (both labelled "GetAttitudeBuyPriceMultiplier" in the manifest; one is a propagation, names unverified),
@@ -20,10 +20,10 @@ class CTCShop { public:
 };
 class CTCShopKeeper { public:
     CTCShop* GetShopTC() const;                     // 0x00798F50
-    CCharString GetFriendlynessIndicator() const;
+    CCharString GetFriendlynessIndicator();
 };
 
-CCharString CTCShopKeeper::GetFriendlynessIndicator() const
+CCharString CTCShopKeeper::GetFriendlynessIndicator()
 {
     CTCShop* shop = GetShopTC();
     if (shop) {

@@ -80,6 +80,9 @@ public:
     void InitWifeAtEndOfMarriageFrescoEndFadeIn();           // 0x006CF480 ?InitWifeAtEndOfMarriageFrescoEndFadeIn@CTCWife@@QAEXXZ
     bool IsCourtableAndNotBlockingIt() const;                // 0x006CF810 ?IsCourtableAndNotBlockingIt@CTCWife@@QBE_NXZ
     bool IsCourtingHero() const;                             // 0x006CF890 ?IsCourtingHero@CTCWife@@QBE_NXZ
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    bool HasReceivedWeddingRing() const { return ReceivedWeddingRing; } // FableWin 0x02488490.
+#endif
     bool IsInLoveWithHero() const;                           // 0x006CF900 ?IsInLoveWithHero@CTCWife@@QBE_NXZ
     bool IsOfferingSex() const;                              // 0x006CEEA0 ?IsOfferingSex@CTCWife@@QBE_NXZ (chunk 867, row 0x0064BFBA)
     void HaveSex();                                          // 0x006CF920 ?HaveSex@CTCWife@@QAEXXZ

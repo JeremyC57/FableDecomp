@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CCarryingDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CCarryingDef_GetSizeofClass()
+class CCarryingDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CCarryingDef::GetSizeofClass()
 {
     return 56;
 }

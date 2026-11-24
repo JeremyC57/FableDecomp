@@ -8,7 +8,10 @@
 #define FABLE_RETAIL_STLP_HEAP
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_INSERT_DISPATCH_NOINLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF246 (2026-11-22, the 0x005127A0 family, nf243 NOTES section 2): FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE (a noinline `~list() {}`, so the
+//   leaf called ~list and bound it at 0x005127A0) -> FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE (NF241's swap): ~list inline, the
+//   leaf calls ~_List_base<C2DLineF> 0x005127A0 out of line, as retail (the 5-byte ~list jmp is 0x00514280).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #define FABLE_RETAIL_STLP_LIST_ASSIGN_POPBACK_DECL
 #include "stlport/fable_containers.h"
 #include "engine/C2DLineF.h"

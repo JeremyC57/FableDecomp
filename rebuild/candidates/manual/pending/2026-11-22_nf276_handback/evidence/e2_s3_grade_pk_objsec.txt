@@ -1,0 +1,72 @@
+##### 00bda150
+pH 00bda150 CEngineLandscapeMemoryManager::ProcessDisposalList RELOCATION_MATCH flags= [] leaf=?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
+pS 00bda150 CEngineLandscapeMemoryManager::ProcessDisposalList RELOCATION_MATCH flags= ['/d2inlT114'] leaf=?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+##### 00bd9ce0
+pH 00bd9ce0 CEngineLandscapeMemoryManager::FreeDisposalList RELOCATION_MATCH flags= [] leaf=?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ
+pS 00bd9ce0 CEngineLandscapeMemoryManager::FreeDisposalList RELOCATION_MATCH flags= ['/d2inlT114'] leaf=?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+ALLDONE
+# pk (non-trivial owners only)
+00bda150 NEW	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z	11	0041c780	EQ
+00bda150 NEW	?_M_incr@_List_iterator_base@std@@QAEXXZ	7	0041c7a0	EQ
+00bda150 NEW	??9_List_iterator_base@std@@QBE_NABU01@@Z	22	0041c7c0	EQ
+00bda150 NEW	?Deallocate@CMemoryAllocator@@SIXPAX@Z	92	009a4350	EQ
+00bda150 NEW	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	97	00bd9b90	EQ
+00bda150 NEW	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z	101	00bd9c20	NEQ:bytes(101 v 101)
+00bda150 NEW	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z	101	00bd9c00	NEQ:bytes(101 v 101)
+00bda150 NEW	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z	104	00bd9cc0	NEQ:bytes(104 v 104)
+00bd9ce0 NEW	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z	11	0041c780	EQ
+00bd9ce0 NEW	?_M_incr@_List_iterator_base@std@@QAEXXZ	7	0041c7a0	EQ
+00bd9ce0 NEW	??9_List_iterator_base@std@@QBE_NABU01@@Z	22	0041c7c0	EQ
+00bd9ce0 NEW	?Deallocate@CMemoryAllocator@@SIXPAX@Z	92	009a4350	EQ
+00bd9ce0 NEW	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	97	00bd9b90	EQ
+00bd9ce0 NEW	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z	101	00bd9c20	NEQ:bytes(101 v 101)
+00bd9ce0 NEW	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z	101	00bd9c00	NEQ:bytes(101 v 101)
+00bd9ce0 NEW	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z	104	00bd9cc0	NEQ:bytes(104 v 104)
+00bda150 HEAD	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z	11	0041c780	EQ
+00bda150 HEAD	?_M_incr@_List_iterator_base@std@@QAEXXZ	7	0041c7a0	EQ
+00bda150 HEAD	??9_List_iterator_base@std@@QBE_NABU01@@Z	22	0041c7c0	EQ
+00bda150 HEAD	?Deallocate@CMemoryAllocator@@SIXPAX@Z	63	009a4350	NEQ:bytes(63 v 92)
+00bda150 HEAD	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	68	00bd9b90	NEQ:bytes(68 v 97)
+00bda150 HEAD	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z	72	00bd9c20	NEQ:bytes(72 v 72)
+00bda150 HEAD	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z	72	00bd9c00	NEQ:bytes(72 v 72)
+00bda150 HEAD	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z	75	00bd9cc0	NEQ:bytes(75 v 75)
+00bd9ce0 HEAD	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z	11	0041c780	EQ
+00bd9ce0 HEAD	?_M_incr@_List_iterator_base@std@@QAEXXZ	7	0041c7a0	EQ
+00bd9ce0 HEAD	??9_List_iterator_base@std@@QBE_NABU01@@Z	22	0041c7c0	EQ
+00bd9ce0 HEAD	?Deallocate@CMemoryAllocator@@SIXPAX@Z	63	009a4350	NEQ:bytes(63 v 92)
+00bd9ce0 HEAD	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	68	00bd9b90	NEQ:bytes(68 v 97)
+00bd9ce0 HEAD	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z	72	00bd9c20	NEQ:bytes(72 v 72)
+00bd9ce0 HEAD	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z	72	00bd9c00	NEQ:bytes(72 v 72)
+00bd9ce0 HEAD	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z	75	00bd9cc0	NEQ:bytes(75 v 75)
+# objsec HEAD(S1 landed) v S3 00bda150
+DIFF 35 .text .text bytes False relocs False 63 92
+DIFF 36 .text .text bytes False relocs False 68 97
+DIFF 37 .text .text bytes False relocs False 72 101
+DIFF 38 .text .text bytes False relocs False 72 101
+DIFF 39 .text .text bytes False relocs False 75 104
+NOT_EQ 5
+# cmpobj (non-SAME)
+DIFF	?Deallocate@CMemoryAllocator@@SIXPAX@Z
+DIFF	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z
+DIFF	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z
+DIFF	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z
+DIFF	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+44
+# objsec HEAD(S1 landed) v S3 00bd9ce0
+DIFF 35 .text .text bytes False relocs False 63 92
+DIFF 36 .text .text bytes False relocs False 68 97
+DIFF 37 .text .text bytes False relocs False 72 101
+DIFF 38 .text .text bytes False relocs False 72 101
+DIFF 39 .text .text bytes False relocs False 75 104
+NOT_EQ 5
+# cmpobj (non-SAME)
+DIFF	?Deallocate@CMemoryAllocator@@SIXPAX@Z
+DIFF	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z
+DIFF	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z
+DIFF	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z
+DIFF	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+44

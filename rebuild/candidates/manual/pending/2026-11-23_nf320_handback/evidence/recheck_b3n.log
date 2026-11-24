@@ -1,0 +1,21 @@
+addr       parity           behav  name
+004aa8b0   RELOCATION_MATCH PASS   GetName
+004aac20   MATCH            PASS   MsgIsKnockedOutBy
+004aac40   MATCH            PASS   MsgReceivedMoney
+004aac60   MATCH            PASS   MsgIsPresentedWithItem
+004aaca0   MATCH            PASS   MsgPerformedSpecialAbility
+004aad80   MATCH            PASS   MsgIsHitByAnyNonAggressiveSpecialAbilityFrom
+004aaee0   MATCH            PASS   MsgGetThingsKilled
+004aaf40   MATCH            PASS   MsgOnMoralityChanged
+004aaf60   MATCH            PASS   MsgOnCutSceneAnimEvent
+
+WINS: 9
+  004aa8b0 RELOCATION_MATCH CScriptThing::?GetName@CScriptThing@@UBEABVCCharString@@XZ
+  004aac20 MATCH CScriptThing::?MsgIsKnockedOutBy@CScriptThing@@UBE_NABVCCharString@@@Z
+  004aac40 MATCH CScriptThing::?MsgReceivedMoney@CScriptThing@@UBE_NAAJ@Z
+  004aac60 MATCH CScriptThing::?MsgIsPresentedWithItem@CScriptThing@@UBE_NAAVCCharString@@@Z
+  004aaca0 MATCH CScriptThing::?MsgPerformedSpecialAbility@CScriptThing@@UBE_NW4EHeroAbility@@@Z
+  004aad80 MATCH CScriptThing::?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z
+  004aaee0 MATCH CScriptThing::?MsgGetThingsKilled@CScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z
+  004aaf40 MATCH CScriptThing::?MsgOnMoralityChanged@CScriptThing@@UBE_NAAJ@Z
+  004aaf60 MATCH CScriptThing::?MsgOnCutSceneAnimEvent@CScriptThing@@UBE_NAAVCCharString@@@Z

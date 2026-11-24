@@ -1,0 +1,804 @@
+entry	address	status	binders_respelled	note
+1	0x008574d0	done	8	entry 1 (NF299 skipped-held 79; the NF297 / NF298 holder landed). The eight generated combat-action constructors (ScorpionChargeStrike, ScorpionSummon, QueenHornetShootBabies, JackShotNear, JackShotFa
+2	0x007a4120	done-partial	1	entry 2 (NF299 skipped-held 118). Binder CTCWillLightning::MakeRandomBeam's local CCountedPointer template model named the deleter DestroyObject: respelled DeleteData (FableWin + Ego_r ?DeleteData@?$C
+3	0x006988b0	skipped-held	0	entry 3 (NF299 238): the sole stand-in binder 0x00699090 (?Extra@CGameCameraManager@@QAEXXZ) is an NF302 spelling witness (its entry 0x00698A30), and the target itself is an NF300 witness: stay-off.
+4	0x0099a350	done-partial	3	entry 4 (NF299 skipped-held 258). Three binders with no table line declared `bool Init();` public on their local CInitBaseClass: respelled protected Initialise (Ego_r + FableWin ?Initialise@CInitBaseC
+5	0x006dfda0	skipped-held	0	entry 5 (NF299 316): the sole binder 0x006E1620 (SetHidden) is an NF300 spelling witness (its entry 0x006B0460): stay-off.
+6	0x009bc120	skipped-held	0	entry 6 (NF299 skipped-held 325). The public-form (QAE) binders 0x00F33B90 / 0x00F349F0 / 0x00F351F0 and the TransferSubComponentVectorLoadText binders 0x00F27EA0 / 0x00F28610 are NF300 / NF302 spelli
+7	0x00d89ad0	done	1	entry 7 (NF299 skipped-held 342). Binder NScript::CQ_HeroSoulsNostroScript::Main declared PlayCutScene: respelled PlayCutscene (Ego_r + FableWin ?PlayCutscene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCC
+8	0x00f3ae50	skipped-held	0	entry 8 (NF299 350): the sole binder 0x00F3AFC0 (CompressToBuffer) is an NF300 ENTRY target (?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z): stay-off.
+9	0x007338a0	skipped-held	0	entry 9 (NF299 419): the sole binder 0x007339E0 (OnBlockHoldExpired) is an NF300 spelling witness (its entry 0x006619F0): stay-off.
+10	0x006c5920	skipped-held	0	entry 10 (NF299 463): binder 0x007BAF00 (EndDeed) is an NF302 spelling witness (its entry 0x007008C0); 0x006C6010 binds the stand-in class CDeedOwner_006c6010 (port). The self row has no Leaf line.
+11	0x005fc510	skipped-held	0	entry 11 (NF299 492): the sole binder 0x00602F30 (ReleaseMapScreenPrimitives) is an NF302 spelling witness (its entry 0x005BC65C): stay-off.
+12	0x00702470	skipped-held	0	entry 12 (NF299 508): the sole stand-in binder 0x005E4430 (?GetQuestName@CTCQuestCard@@QAE...) is an NF300 spelling witness (its entry 0x0041DB1D). Note: GetQuestName is itself a PDB member (?GetQuest
+13	0x0052cf40	skipped (decision Q1)	0	entry 13 (NF299 VIRT 66), read per binder (tools/vdecl.py, work/vd13.txt): 0x005469E0 (QAE witness, CZoomingComponent), 0x00547C90 (CMovie), 0x00557C10 (CKeyRedefiner) and 0x0054A990 (CSlider) declare
+14	0x00859a20	done-partial	2	entry 14 (NF299 VIRT entry 82), ruling NF299 Q3 not needed: the two public-virtual binders (CCreatureAction_TentacleStrikeLoop / KrakenLowPoseInto::FinishAction) only lacked the access: `protected:` o
+15	0x00859ef0	done-partial	1	entry 15 (NF299 VIRT entry 83): binder CCreatureAction_KrakenLowAttackInto::OnAnimationLoaded (the UAE witness) declared the base public virtual: `protected:` added (Ego_r + FableWin ?OnAnimationLoade
+16	0x00694d10	skipped (decision Q1)	0	entry 16 (NF299 VIRT 133): the QAE witness 0x0078B410 declares base and override plain (self flip to ?Initialise@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ, the PDB spelling): decision Q1. 0x008546A
+17	0x008621a0	skipped (decision Q1 / port)	0	entry 17 (NF299 VIRT 291): global-scope plain binders 0x008D87C0 (QAE witness) and 0x008E7A00 have plain overrides (self flip to the PDB UAE spellings, decision Q1). 0x008D66E0 (stay-off), 0x008D6920,
+18	0x00838ba0	skipped (decision Q1)	0	entry 18 (NF299 VIRT 572): 0x0082D810 (QAE witness, CThingBuilding) and 0x00836260 (CThingDeadCreature) declare base and override plain (self flip to the PDB ?WorldUpdate@CThingBuilding@@UAE_NXZ / ?Wo
+19	0x00654b36	skipped-port (census)	0	entry 19: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the s
+20	0x00654bc0	skipped-port (census)	0	entry 20: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+21	0x00654c8f	skipped-port (census)	0	entry 21: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+22	0x00654c4a	skipped-port (census)	0	entry 22: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+23	0x00a2acc0	skipped-port (census)	0	entry 23: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+24	0x00689270	skipped-port (census)	0	entry 24: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+25	0x00a4ef90	skipped-port (census)	0	entry 25: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+26	0x00a9aec0	skipped-port (census)	0	entry 26: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+27	0x00a9af50	skipped-port (census)	0	entry 27: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+28	0x00a358f0	skipped-port (census)	0	entry 28: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+29	0x00ac27a0	skipped-port (census)	0	entry 29: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: th
+30	0x00a44c90	skipped-port (census)	0	entry 30: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+31	0x00998570	skipped-port (census)	0	entry 31: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+32	0x00998f60	skipped-port (census)	0	entry 32: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+33	0x009994a0	skipped-port (census)	0	entry 33: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+34	0x00999c50	skipped-port (census)	0	entry 34: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+35	0x008fcf80	open	0	entry 35: not reached; in-place-shaped lines (SAME_NEAR 1, STANDIN 1): next batch.
+36	0x008fcf90	open	0	entry 36: not reached; in-place-shaped lines (FREE 1, SAME_NEAR 1, STANDIN 2, WRONGCLASS 7): next batch.
+37	0x008fcfa0	skipped-port (census)	0	entry 37: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 3, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+38	0x008fd288	skipped-port (census)	0	entry 38: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 5; tools/census303.py, evidence/census.tsv).
+39	0x009130d0	skipped-port (census)	0	entry 39: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2; tools/census303.py, evidence/census.tsv).
+40	0x008fdcca	skipped-port (census)	0	entry 40: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+41	0x0094a3b0	skipped-port (census)	0	entry 41: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the s
+42	0x00903046	skipped-port (census)	0	entry 42: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 3, STANDIN 1; tools/census303.py, evidence/census.tsv).
+43	0x00946ae0	skipped-port (census)	0	entry 43: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+44	0x009455b0	open	0	entry 44: not reached; in-place-shaped lines (SAME_NEAR 1, WRONGCLASS 1): next batch.
+45	0x00902f49	skipped-port (census)	0	entry 45: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+46	0x00902eef	skipped-port (census)	0	entry 46: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+47	0x00901750	skipped-port (census)	0	entry 47: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+48	0x00917050	skipped-port (census)	0	entry 48: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+49	0x009170b0	skipped-port (census)	0	entry 49: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+50	0x00940120	skipped-port (census)	0	entry 50: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+51	0x00a0d3d0	skipped-port (census)	0	entry 51: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 12; tools/census303.py, evidence/census.tsv).
+52	0x00739db0	skipped-port (census)	0	entry 52: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-i
+53	0x0070c050	skipped-port (census)	0	entry 53: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2; tools/census303.py, evidence/census.tsv).
+54	0x0070d8c0	skipped-port (census)	0	entry 54: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+55	0x0070e8b0	skipped-port (census)	0	entry 55: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2; tools/census303.py, evidence/census.tsv).
+56	0x005dc340	open	0	entry 56: not reached; in-place-shaped lines (SAME_NEAR 2): next batch.
+57	0x00726160	skipped-port (census)	0	entry 57: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+58	0x004585bd	skipped-port (census)	0	entry 58: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+59	0x004e1cfc	skipped-port (census)	0	entry 59: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+60	0x00454088	skipped-port (census)	0	entry 60: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+61	0x009ccdc0	skipped-port (census)	0	entry 61: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 2; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes
+62	0x009d58d0	skipped-port (census)	0	entry 62: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+63	0x009d67e0	skipped-port (census)	0	entry 63: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stan
+64	0x009d68a0	skipped-port (census)	0	entry 64: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2, STANDIN 1; tools/census303.py, evidence/census.tsv).
+65	0x0066e734	skipped-port (census)	0	entry 65: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+66	0x0099a2d0	skipped-port (census)	0	entry 66: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 4; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engin
+67	0x0099a2e0	skipped-port (census)	0	entry 67: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2, WRONGCLASS 3; tools/census303.py, evidence/census.tsv).
+68	0x00a01b10	skipped-port (census)	0	entry 68: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 13, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+69	0x00a01b50	skipped-port (census)	0	entry 69: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 11, SAME_TYPEDIFF 7, STANDIN 20, WRONGCLASS 6; tools/census303.py, evidence/census.tsv).
+70	0x0099a3b0	skipped-port (census)	0	entry 70: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+71	0x0099a430	skipped-port (census)	0	entry 71: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+72	0x009a0390	skipped-port (census)	0	entry 72: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv).
+73	0x00453c58	skipped-port (census)	0	entry 73: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-i
+74	0x00462b15	skipped-port (census)	0	entry 74: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+75	0x00454183	skipped-port (census)	0	entry 75: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+76	0x004c5fa0	skipped-port (census)	0	entry 76: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+77	0x00a38420	skipped-port (census)	0	entry 77: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+78	0x005bc99c	skipped-port (census)	0	entry 78: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+79	0x005c2739	skipped-port (census)	0	entry 79: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+80	0x0065564b	skipped-port (census)	0	entry 80: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+81	0x0052ccf0	skipped-port (census; opened)	0	entry 81: filt.py called the witness STALE, but its HEAD object still binds the wrong-class destructor ~CDraggableInto (CTextSlider's local base model): wrong class, port.
+82	0x0099e960	done-partial	1	entry 82: the stand-in row 0x006BBF20 (catalog CRegion::GetDisplayName, a free __fastcall CRegion_GetDisplayName) declared `bool Compare(const char*) const` on its local CCharString and called it at 0
+83	0x0099eae0	skipped-port (census)	0	entry 83: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 31, STANDIN 23, WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+84	0x0099eb40	skipped-port (census)	0	entry 84: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the s
+85	0x0099ebf0	open	0	entry 85: not reached; in-place-shaped lines (SAME_NEAR 1, SAME_TYPEDIFF 5, STANDIN 34): next batch.
+86	0x00a36f80	skipped-port (census)	0	entry 86: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+87	0x009f0320	skipped-port (census)	0	entry 87: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+88	0x00453e1a	skipped-port (census)	0	entry 88: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+89	0x00453f18	skipped-port (census)	0	entry 89: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+90	0x0044c4d5	skipped-port (census)	0	entry 90: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+91	0x0044c4ab	skipped-port (census)	0	entry 91: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+92	0x008571c0	skipped-port (census)	0	entry 92: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+93	0x00857520	skipped-port (census)	0	entry 93: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 2; tools/census303.py, evidence/census.tsv).
+94	0x00857e40	done-partial	7	entry 94: seven combat-action constructors (SummonerFlameSlice, GenericStrikeResponseBase, UnsheatheWeapons, ScreamerDie, BanditKingStuckGetHit, CastBattleCharge, TentacleStrikeGetHit) declared the on
+95	0x0045e55a	skipped-port (census)	0	entry 95: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+96	0x006e92c0	skipped-port (census)	0	entry 96: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stan
+97	0x006e93c0	open	0	entry 97: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+98	0x006e9680	open	0	entry 98: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+99	0x006e9700	open	0	entry 99: not reached; in-place-shaped lines (SAME_NEAR 2, STANDIN 1): next batch.
+100	0x006e9d10	open	0	entry 100: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+101	0x008b0b10	skipped-port (census)	0	entry 101: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2, STANDIN 2, WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+102	0x006e89b0	skipped-port (census)	0	entry 102: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+103	0x006e9200	skipped-port (census)	0	entry 103: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+104	0x0052f1b0	skipped-port (census)	0	entry 104: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+105	0x00533bc0	skipped-port (census)	0	entry 105: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+106	0x00434660	skipped-port (census)	0	entry 106: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+107	0x00a75430	skipped-port (census)	0	entry 107: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+108	0x00431e80	skipped-port (census)	0	entry 108: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+109	0x00432180	skipped-port (census)	0	entry 109: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+110	0x00403d20	skipped-port (census)	0	entry 110: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+111	0x0041915a	skipped-port (census)	0	entry 111: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+112	0x00429c15	skipped-port (census)	0	entry 112: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+113	0x00450142	skipped-port (census)	0	entry 113: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+114	0x0048c5c0	skipped-port (census)	0	entry 114: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+115	0x004b6ad0	skipped-port (census)	0	entry 115: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+116	0x0056c050	skipped-port (census)	0	entry 116: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+117	0x0056c880	skipped-port (census)	0	entry 117: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+118	0x005c07e4	skipped-port (census)	0	entry 118: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+119	0x005c0800	skipped-port (census)	0	entry 119: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+120	0x00654b0a	skipped-port (census)	0	entry 120: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<P
+121	0x00654c63	skipped-port (census)	0	entry 121: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<P
+122	0x00695880	skipped-port (census)	0	entry 122: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+123	0x006e7ab0	skipped-port (census)	0	entry 123: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+124	0x006ee3d0	skipped-port (census)	0	entry 124: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+125	0x008ab1e0	skipped-port (census)	0	entry 125: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+126	0x00a36ec0	skipped-port (census)	0	entry 126: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+127	0x00ae9450	skipped-port (census)	0	entry 127: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+128	0x00ae94a0	skipped-port (census)	0	entry 128: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+129	0x00ce1000	skipped-port (census)	0	entry 129: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+130	0x008ed440	skipped-port (census)	0	entry 130: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+131	0x008ed3b0	skipped-port (census)	0	entry 131: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+132	0x00692620	skipped-port (census)	0	entry 132: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+133	0x00692910	skipped-port (census)	0	entry 133: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, WRONGCLASS 3; tools/census303.py, evidence/census.tsv).
+134	0x00692940	skipped-port (census)	0	entry 134: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+135	0x00692950	skipped-port (census)	0	entry 135: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+136	0x00692990	skipped-port (census)	0	entry 136: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+137	0x00693ef0	skipped-port (census)	0	entry 137: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+138	0x00694430	skipped-port (census)	0	entry 138: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+139	0x00922f50	skipped-port (census)	0	entry 139: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+140	0x008ed650	skipped-port (census; opened)	0	entry 140: not stale; the witness models the CCreatureAction_Die ctor as another real class's (StabbedToDeath): wrong class, port.
+141	0x007ecfd0	skipped-port (census)	0	entry 141: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+142	0x0062eb50	skipped-port (census)	0	entry 142: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+143	0x008ae160	skipped-port (census)	0	entry 143: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+144	0x00977690	skipped-port (census)	0	entry 144: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+145	0x007eb030	skipped-port (census)	0	entry 145: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+146	0x008b8a10	skipped-port (census)	0	entry 146: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+147	0x00718710	skipped-port (census)	0	entry 147: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+148	0x008c5dc0	skipped-port (census)	0	entry 148: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+149	0x007ed780	skipped-port (census)	0	entry 149: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+150	0x00842a80	skipped-port (census)	0	entry 150: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+151	0x00842af0	skipped-port (census)	0	entry 151: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+152	0x008bfd60	skipped-port (census)	0	entry 152: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+153	0x008bfd00	skipped-port (census)	0	entry 153: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+154	0x0094e5f0	skipped-port (census)	0	entry 154: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+155	0x005cc091	open	0	entry 155: not reached; in-place-shaped lines (SAME_SIGEQ 1, STANDIN 1): next batch.
+156	0x00843610	skipped-port (census)	0	entry 156: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+157	0x0095cac0	skipped-port (census)	0	entry 157: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+158	0x00456010	skipped-port (census)	0	entry 158: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+159	0x008631d0	open	0	entry 159: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+160	0x00453b4d	skipped-port (census)	0	entry 160: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+161	0x00f2a0d0	skipped-port (census)	0	entry 161: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+162	0x00995030	skipped-port (census)	0	entry 162: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 2; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG s
+163	0x009950f0	skipped-port (census)	0	entry 163: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+164	0x00993eb0	skipped-port (census)	0	entry 164: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 5; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+165	0x00993ee0	skipped-port (census)	0	entry 165: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+166	0x00993f30	skipped-port (census)	0	entry 166: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+167	0x00993f90	skipped-port (census)	0	entry 167: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+168	0x00993fd0	skipped-port (census)	0	entry 168: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+169	0x00994230	skipped-port (census)	0	entry 169: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+170	0x009e9ab0	skipped-port (census)	0	entry 170: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv).
+171	0x00af7c10	skipped-port (census)	0	entry 171: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+172	0x00af8ad0	skipped-port (census)	0	entry 172: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes e
+173	0x00431f10	skipped-port (census; opened)	0	entry 173: not stale; the copy-backward helper models CDefClassBase::operator= as the stand-in class CRecordHead (plus three other stand-in / wrong-class copy spellings): port.
+174	0x0044fc00	open	0	entry 174: not reached; in-place-shaped lines (SAME_NEAR 1, SAME_TYPEDIFF 3, STANDIN 2): next batch.
+175	0x005fa740	skipped-port (census)	0	entry 175: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+176	0x009ad2e0	skipped-port (census)	0	entry 176: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+177	0x009ad410	skipped-port (census)	0	entry 177: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3, WRONGCLASS 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness include
+178	0x009b0ac0	skipped-port (census)	0	entry 178: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+179	0x00454434	skipped-port (census)	0	entry 179: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+180	0x0099a920	skipped-port (census)	0	entry 180: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+181	0x00434b50	skipped-port (census)	0	entry 181: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+182	0x009bee00	skipped-port (census)	0	entry 182: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+183	0x009c05c0	skipped-port (census)	0	entry 183: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: t
+184	0x00453fc9	skipped-port (census)	0	entry 184: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+185	0x00657c80	skipped-port (census)	0	entry 185: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+186	0x00644627	skipped-port (census)	0	entry 186: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+187	0x00647319	skipped-port (census)	0	entry 187: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+188	0x00441b90	skipped-port (census)	0	entry 188: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+189	0x009e4bc0	skipped-port (census)	0	entry 189: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+190	0x00af8780	skipped-port (census)	0	entry 190: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+191	0x00b48c70	skipped-port (census)	0	entry 191: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+192	0x00b24500	skipped-port (census)	0	entry 192: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+193	0x00b59710	skipped-port (census)	0	entry 193: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+194	0x004343f0	skipped-port (census)	0	entry 194: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+195	0x00b396e0	skipped-port (census)	0	entry 195: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+196	0x00b8fd40	skipped-port (census)	0	entry 196: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 6; tools/census303.py, evidence/census.tsv).
+197	0x00bd9af0	skipped-port (census)	0	entry 197: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2, STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+198	0x00bd9ce0	skipped-port (census)	0	entry 198: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+199	0x00b47fd0	skipped-port (census)	0	entry 199: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+200	0x006404b0	skipped-port (census)	0	entry 200: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+201	0x00b8d0b0	open	0	entry 201: not reached; in-place-shaped lines (SAME_NEAR 2): next batch.
+202	0x00af0880	skipped-port (census)	0	entry 202: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+203	0x00655048	skipped-port (census)	0	entry 203: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+204	0x00bacdd0	open	0	entry 204: not reached; in-place-shaped lines (SAME_NEAR 1, STANDIN 1): next batch.
+205	0x00bebc30	skipped-port (census)	0	entry 205: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the 
+206	0x00b2f8e0	skipped-port (census)	0	entry 206: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+207	0x00b94060	skipped-port (census)	0	entry 207: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+208	0x00b919c0	skipped-port (census)	0	entry 208: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2; tools/census303.py, evidence/census.tsv).
+209	0x00b38890	skipped-port (census)	0	entry 209: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+210	0x00b80b70	skipped-port (census)	0	entry 210: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+211	0x00be0400	skipped-port (census)	0	entry 211: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 3; tools/census303.py, evidence/census.tsv).
+212	0x00beb550	skipped-port (census)	0	entry 212: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2, WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+213	0x00b98b10	skipped-port (census)	0	entry 213: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+214	0x00b842b0	skipped-port (census)	0	entry 214: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+215	0x006ca950	skipped-port (census)	0	entry 215: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+216	0x00bf29e0	skipped-port (census)	0	entry 216: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2, SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+217	0x00434540	skipped-port (census)	0	entry 217: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+218	0x00f35b10	skipped-port (census)	0	entry 218: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 4; tools/census303.py, evidence/census.tsv).
+219	0x00f35b40	skipped-port (census)	0	entry 219: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+220	0x006b3880	skipped-port (census)	0	entry 220: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+221	0x006b3950	skipped-port (census)	0	entry 221: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+222	0x006b3e60	open	0	entry 222: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+223	0x008899c0	skipped-port (census)	0	entry 223: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+224	0x0084b100	skipped-port (census)	0	entry 224: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+225	0x004542d4	skipped-port (census)	0	entry 225: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+226	0x006b9460	open	0	entry 226: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+227	0x006b94e0	skipped-port (census)	0	entry 227: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+228	0x006b9510	skipped-port (census)	0	entry 228: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+229	0x006b9530	skipped-port (census)	0	entry 229: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+230	0x0045d2fc	skipped-port (census)	0	entry 230: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+231	0x004348d0	skipped-port (census)	0	entry 231: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 2; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engi
+232	0x00f344c0	skipped-port (census)	0	entry 232: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+233	0x009c3590	skipped-port (census)	0	entry 233: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+234	0x009c4120	skipped-port (census)	0	entry 234: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+235	0x006fcc80	skipped-port (census)	0	entry 235: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+236	0x004e0a1f	skipped-port (census)	0	entry 236: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+237	0x004d9861	skipped-port (census)	0	entry 237: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+238	0x0044c6b0	skipped-port (census)	0	entry 238: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+239	0x009f1760	skipped-port (census)	0	entry 239: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+240	0x0049bb40	skipped-port (census)	0	entry 240: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+241	0x0049bb50	skipped-port (census)	0	entry 241: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+242	0x006e7510	skipped-port (census)	0	entry 242: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 3, STANDIN 2; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engi
+243	0x006e7530	skipped-port (census)	0	entry 243: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 3, STANDIN 2; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engi
+244	0x006bb300	skipped-port (census)	0	entry 244: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+245	0x00a01d40	skipped-port (census)	0	entry 245: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+246	0x00a03180	open	0	entry 246: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+247	0x00851b50	skipped-port (census)	0	entry 247: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+248	0x00851bd0	skipped-port (census)	0	entry 248: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+249	0x004ebb1c	skipped-port (census)	0	entry 249: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+250	0x00f270d0	skipped-port (census)	0	entry 250: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+251	0x00f27650	skipped-port (census)	0	entry 251: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+252	0x00453cea	skipped-port (census)	0	entry 252: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+253	0x00404a80	skipped (no stand-in table line)	0	entry 253: the target has no table spelling other than the PDB one; the split is the self row (T3 self).
+254	0x004051c0	skipped-port (census)	0	entry 254: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+255	0x0098db20	skipped-port (census)	0	entry 255: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+256	0x00a03b50	skipped-port (census)	0	entry 256: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+257	0x00a043d0	skipped-port (census)	0	entry 257: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+258	0x009f4e20	skipped-port (census)	0	entry 258: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+259	0x004ad3d0	skipped-port (census)	0	entry 259: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+260	0x004a96f0	skipped-port (census)	0	entry 260: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 5, WRONGCLASS 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness include
+261	0x004a9760	skipped-port (census)	0	entry 261: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+262	0x0050f380	skipped-port (census)	0	entry 262: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+263	0x00668b60	skipped-port (census)	0	entry 263: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+264	0x004554c6	skipped-port (census)	0	entry 264: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+265	0x00ef7ab0	skipped-port (census)	0	entry 265: stand-in class CIsThingStored (?A0x... NScript functor) for ~CIsThingConscious; port.
+266	0x005c0c24	skipped-port (census)	0	entry 266: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+267	0x004540f1	skipped-port (census)	0	entry 267: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+268	0x00bf8c10	open	0	entry 268: not reached; in-place-shaped lines (SAME_SIGEQ 1): next batch.
+269	0x00a57ef0	skipped-port (census)	0	entry 269: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+270	0x00a42830	skipped-port (census)	0	entry 270: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: t
+271	0x0053b7f0	skipped-port (census)	0	entry 271: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+272	0x006f96c0	skipped-port (census)	0	entry 272: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+273	0x00821850	skipped-port (census)	0	entry 273: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+274	0x004625fd	skipped-port (census)	0	entry 274: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+275	0x009e9390	skipped-port (census)	0	entry 275: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+276	0x00a24250	skipped-port (census)	0	entry 276: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+277	0x00a24280	skipped-port (census)	0	entry 277: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+278	0x00a26530	skipped-port (census)	0	entry 278: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+279	0x0082a1d0	skipped-port (census)	0	entry 279: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+280	0x00739e20	skipped-port (census)	0	entry 280: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 6; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+281	0x0073ac50	skipped-port (census)	0	entry 281: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 4; tools/census303.py, evidence/census.tsv).
+282	0x00742e60	skipped-port (census)	0	entry 282: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+283	0x008d7580	skipped-port (census)	0	entry 283: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+284	0x008d71d0	skipped-port (census)	0	entry 284: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 7; tools/census303.py, evidence/census.tsv).
+285	0x00861d00	skipped-port (census)	0	entry 285: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 3, STANDIN 1, WRONGCLASS 2; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness
+286	0x00861e00	open	0	entry 286: not reached; in-place-shaped lines (SAME_NEAR 1, STANDIN 2): next batch.
+287	0x0073e410	skipped-port (census)	0	entry 287: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+288	0x00a62e20	skipped-port (census)	0	entry 288: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+289	0x006bdea0	skipped-port (census)	0	entry 289: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+290	0x006bdef0	skipped-port (census)	0	entry 290: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+291	0x006bdf40	skipped-port (census)	0	entry 291: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+292	0x006bdf90	skipped-port (census)	0	entry 292: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+293	0x00a79240	skipped-port (census)	0	entry 293: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+294	0x00a77710	skipped-port (census)	0	entry 294: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+295	0x00a1e5c0	skipped-port (census)	0	entry 295: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+296	0x006feae0	skipped-port (census)	0	entry 296: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+297	0x00701750	skipped-port (census)	0	entry 297: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+298	0x00ad0100	skipped-port (census)	0	entry 298: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+299	0x00acd500	skipped-port (census)	0	entry 299: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+300	0x00af7fb0	skipped-port (census)	0	entry 300: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+301	0x00af7ed0	skipped-port (census)	0	entry 301: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+302	0x00af8020	skipped-port (census)	0	entry 302: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+303	0x00af28c0	skipped-port (census)	0	entry 303: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+304	0x00af7d10	skipped-port (census)	0	entry 304: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+305	0x00b215e0	open	0	entry 305: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+306	0x00430370	skipped-port (census)	0	entry 306: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<P
+307	0x00431ed0	open	0	entry 307: not reached; in-place-shaped lines (FREE 1, SAME_NEAR 1, STANDIN 2, WRONGCLASS 2): next batch.
+308	0x00af7b60	skipped-port (census)	0	entry 308: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+309	0x00af8650	skipped-port (census)	0	entry 309: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+310	0x00adf460	skipped-port (census)	0	entry 310: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+311	0x00ae0540	skipped-port (census)	0	entry 311: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+312	0x00ae2510	skipped-port (census)	0	entry 312: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+313	0x00af56e0	skipped-port (census)	0	entry 313: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the 
+314	0x006e2500	skipped-port (census)	0	entry 314: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv).
+315	0x00404500	skipped-port (census)	0	entry 315: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 7, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+316	0x009baa70	skipped-port (census)	0	entry 316: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+317	0x0040f8a0	open	0	entry 317: not reached; in-place-shaped lines (SAME_NEAR 1, STANDIN 1): next batch.
+318	0x00452335	skipped-port (census)	0	entry 318: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+319	0x009e2560	skipped-port (census)	0	entry 319: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 6; tools/census303.py, evidence/census.tsv).
+320	0x008158d0	skipped-port (census)	0	entry 320: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+321	0x00814c70	open	0	entry 321: not reached; in-place-shaped lines (SAME_NEAR 1, WRONGCLASS 1): next batch.
+322	0x008fb170	skipped-port (census)	0	entry 322: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+323	0x00a6c560	skipped-port (census)	0	entry 323: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+324	0x00487510	skipped-port (census)	0	entry 324: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+325	0x00487dd0	skipped-port (census)	0	entry 325: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+326	0x00634160	skipped-port (census)	0	entry 326: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+327	0x00437ce0	open	0	entry 327: not reached; in-place-shaped lines (FREE 1, SAME_NEAR 1, STANDIN 2): next batch.
+328	0x00438310	skipped-port (census)	0	entry 328: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+329	0x00459b73	skipped-port (census)	0	entry 329: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+330	0x0044a140	skipped-port (census)	0	entry 330: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+331	0x00ef7b50	skipped-port (census)	0	entry 331: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+332	0x004b0160	skipped-port (census)	0	entry 332: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+333	0x004b02f0	skipped-port (census)	0	entry 333: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+334	0x004b1d30	skipped-port (census)	0	entry 334: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+335	0x004b4260	open	0	entry 335: not reached; in-place-shaped lines (SAME_NEAR 1, STANDIN 2): next batch.
+336	0x0046ee2d	skipped-port (census)	0	entry 336: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+337	0x0086bc10	skipped-port (census)	0	entry 337: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: t
+338	0x0086c4d0	skipped-port (census)	0	entry 338: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+339	0x00677620	skipped-port (census)	0	entry 339: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+340	0x00556470	skipped-port (census)	0	entry 340: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+341	0x00828360	open	0	entry 341: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+342	0x0066c6a0	skipped-port (census)	0	entry 342: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+343	0x00f29fa0	skipped-port (census)	0	entry 343: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+344	0x009d8cf0	skipped-port (census)	0	entry 344: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+345	0x009fbec0	skipped-port (census)	0	entry 345: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+346	0x009fc440	skipped-port (census)	0	entry 346: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+347	0x009fc550	skipped-port (census)	0	entry 347: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv).
+348	0x009fc410	skipped-port (census)	0	entry 348: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+349	0x009fc430	skipped-port (census)	0	entry 349: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+350	0x009fc690	skipped-port (census)	0	entry 350: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+351	0x009fc020	skipped-port (census)	0	entry 351: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+352	0x008814c0	skipped-port (census)	0	entry 352: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+353	0x00882fe0	skipped-port (census)	0	entry 353: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+354	0x00cb7e50	skipped-port (census)	0	entry 354: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 16; tools/census303.py, evidence/census.tsv).
+355	0x00cb8110	skipped-port (census)	0	entry 355: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv).
+356	0x006e5990	skipped-port (census)	0	entry 356: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+357	0x00f29f40	skipped-port (census)	0	entry 357: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+358	0x007e72a0	skipped-port (census)	0	entry 358: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+359	0x008abd10	skipped-port (census)	0	entry 359: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+360	0x004abe90	skipped-port (census)	0	entry 360: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2, STANDIN 8; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness incl
+361	0x007046d0	skipped-port (census)	0	entry 361: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+362	0x00455e59	skipped-port (census)	0	entry 362: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+363	0x0046313e	skipped-port (census)	0	entry 363: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+364	0x009d2110	done-partial	3	entry 364: Clear is protected in both PDBs (?Clear@?$CSmallVector@VCCharString@@$07@@IAEXXZ; the owner row's own comment cites FableWin). Binders CSmallVector<CCharString,8>::Allocate / resize declare
+365	0x0065fba4	skipped-port (census)	0	entry 365: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+366	0x004573fd	skipped-port (census)	0	entry 366: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+367	0x004604cf	skipped-port (census)	0	entry 367: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+368	0x00458111	skipped-port (census)	0	entry 368: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+369	0x00457936	skipped-port (census)	0	entry 369: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+370	0x004533c5	skipped-port (census)	0	entry 370: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv).
+371	0x00b216f0	open	0	entry 371: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+372	0x0065431d	skipped-port (census)	0	entry 372: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+373	0x00442280	skipped-port (census)	0	entry 373: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 4; tools/census303.py, evidence/census.tsv).
+374	0x009b9a20	open	0	entry 374: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+375	0x009ba790	skipped-port (census)	0	entry 375: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+376	0x009f2e70	skipped-port (census)	0	entry 376: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+377	0x00a44690	skipped-port (census)	0	entry 377: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+378	0x00a446a0	skipped-port (census)	0	entry 378: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+379	0x009e5170	open	0	entry 379: not reached; in-place-shaped lines (SAME_NEAR 2): next batch.
+380	0x009e5c90	skipped-port (census)	0	entry 380: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+381	0x00436fb0	open	0	entry 381: not reached; in-place-shaped lines (FREE 1, SAME_NEAR 1, WRONGCLASS 3): next batch.
+382	0x008ae5e0	skipped-port (census)	0	entry 382: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+383	0x008ae660	skipped-port (census)	0	entry 383: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+384	0x008ae810	skipped-port (census)	0	entry 384: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+385	0x008ae890	skipped-port (census)	0	entry 385: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+386	0x008aea40	skipped-port (census)	0	entry 386: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+387	0x004e1856	skipped-port (census)	0	entry 387: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+388	0x004da967	skipped-port (census)	0	entry 388: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+389	0x007eac10	skipped-port (census)	0	entry 389: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+390	0x004dc03d	skipped-port (census)	0	entry 390: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+391	0x007f7700	skipped-port (census)	0	entry 391: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+392	0x0070b460	open	0	entry 392: not reached; in-place-shaped lines (SAME_NEAR 2, STANDIN 4): next batch.
+393	0x0070b470	skipped-port (census)	0	entry 393: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+394	0x006867f0	skipped-port (census)	0	entry 394: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+395	0x00686830	open	0	entry 395: not reached; in-place-shaped lines (SAME_SIGEQ 1, STANDIN 3): next batch.
+396	0x006869d0	skipped-port (census)	0	entry 396: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+397	0x00686f60	skipped-port (census)	0	entry 397: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+398	0x0078c150	skipped-port (census)	0	entry 398: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+399	0x007e51d0	skipped-port (census)	0	entry 399: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+400	0x00783240	skipped-port (census)	0	entry 400: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+401	0x004e7578	skipped-port (census)	0	entry 401: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+402	0x007af6c0	skipped-port (census)	0	entry 402: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+403	0x0075db90	skipped-port (census)	0	entry 403: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+404	0x00705cc0	skipped-port (census)	0	entry 404: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+405	0x006a1620	skipped-port (census)	0	entry 405: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+406	0x00733cf0	skipped-port (census)	0	entry 406: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+407	0x007340b0	skipped-port (census)	0	entry 407: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+408	0x00734190	skipped-port (census)	0	entry 408: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+409	0x007352d0	skipped-port (census)	0	entry 409: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+410	0x008ed010	skipped-port (census)	0	entry 410: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+411	0x0074e6b0	skipped-port (census)	0	entry 411: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+412	0x0074ee90	skipped-port (census)	0	entry 412: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+413	0x004e5c71	skipped-port (census)	0	entry 413: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+414	0x007846b0	skipped-port (census)	0	entry 414: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+415	0x004de6ed	skipped-port (census)	0	entry 415: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 3; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+416	0x0080c460	skipped-port (census)	0	entry 416: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 5; tools/census303.py, evidence/census.tsv).
+417	0x0080c500	skipped-port (census)	0	entry 417: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+418	0x0080cbf0	skipped-port (census)	0	entry 418: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+419	0x006e0f10	skipped-port (census)	0	entry 419: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+420	0x007fd3d0	skipped-port (census)	0	entry 420: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+421	0x007fd4b0	skipped-port (census)	0	entry 421: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+422	0x004dcdfd	skipped-port (census)	0	entry 422: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+423	0x007f1ac0	skipped-port (census)	0	entry 423: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+424	0x00702aa0	skipped-port (census)	0	entry 424: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+425	0x004dcbce	skipped-port (census)	0	entry 425: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+426	0x004d607c	skipped-port (census)	0	entry 426: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+427	0x0071aab0	skipped-port (census)	0	entry 427: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+428	0x0076d1b0	open	0	entry 428: not reached; in-place-shaped lines (SAME_NEAR 1, STANDIN 1): next batch.
+429	0x00811340	skipped-port (census)	0	entry 429: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3, WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+430	0x00811380	skipped-port (census)	0	entry 430: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+431	0x004d7d7e	skipped-port (census)	0	entry 431: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+432	0x004dc7c8	skipped-port (census)	0	entry 432: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+433	0x007e5b40	skipped-port (census)	0	entry 433: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+434	0x00780400	skipped-port (census)	0	entry 434: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+435	0x004e0ae8	skipped-port (census)	0	entry 435: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 3; tools/census303.py, evidence/census.tsv).
+436	0x007ffdb0	open	0	entry 436: not reached; in-place-shaped lines (SAME_NEAR 1, STANDIN 1): next batch.
+437	0x004bd200	skipped-port (census)	0	entry 437: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 2; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the 
+438	0x004be490	skipped-port (census)	0	entry 438: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+439	0x004be4e0	skipped-port (census)	0	entry 439: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 3; tools/census303.py, evidence/census.tsv).
+440	0x004bfa50	skipped-port (census)	0	entry 440: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+441	0x004dcf4e	skipped-port (census)	0	entry 441: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+442	0x006d6570	skipped-port (census)	0	entry 442: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+443	0x006d72d0	skipped-port (census)	0	entry 443: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2; tools/census303.py, evidence/census.tsv).
+444	0x006d7f20	skipped-port (census)	0	entry 444: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+445	0x006d8830	skipped-port (census)	0	entry 445: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+446	0x006c5630	skipped-port (census)	0	entry 446: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+447	0x00789a60	skipped-port (census)	0	entry 447: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+448	0x007cab30	skipped-port (census)	0	entry 448: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+449	0x0057a57a	skipped-port (census)	0	entry 449: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+450	0x0057a753	skipped-port (census)	0	entry 450: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+451	0x005814e5	skipped-port (census)	0	entry 451: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+452	0x004e7e7f	skipped-port (census)	0	entry 452: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+453	0x0047dbb8	skipped-port (census)	0	entry 453: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+454	0x0047e07f	skipped-port (census)	0	entry 454: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+455	0x004dc916	skipped-port (census)	0	entry 455: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+456	0x00582414	open	0	entry 456: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+457	0x00584157	skipped-port (census)	0	entry 457: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+458	0x005bc499	skipped-port (census)	0	entry 458: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+459	0x005bc638	skipped-port (census)	0	entry 459: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+460	0x005bc649	skipped-port (census)	0	entry 460: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+461	0x005bc68f	skipped-port (census)	0	entry 461: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+462	0x005bc692	skipped-port (census)	0	entry 462: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+463	0x005bc693	skipped-port (census)	0	entry 463: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+464	0x005bc6ed	skipped-port (census)	0	entry 464: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 3; tools/census303.py, evidence/census.tsv).
+465	0x005bce2f	skipped-port (census)	0	entry 465: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+466	0x005bd597	skipped-port (census)	0	entry 466: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+467	0x005bdd8c	skipped-port (census)	0	entry 467: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+468	0x005c00a0	skipped-port (census)	0	entry 468: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample:
+469	0x004dc600	skipped-port (census)	0	entry 469: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+470	0x005d8e50	skipped-port (census)	0	entry 470: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 4; tools/census303.py, evidence/census.tsv).
+471	0x005d9630	skipped-port (census)	0	entry 471: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+472	0x005d97f0	skipped-port (census)	0	entry 472: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+473	0x005d98b0	skipped-port (census)	0	entry 473: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+474	0x0060eeb0	skipped-port (census)	0	entry 474: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+475	0x005cdbbe	skipped-port (census)	0	entry 475: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+476	0x007fc210	skipped-port (census)	0	entry 476: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+477	0x00787dbc	skipped-port (census)	0	entry 477: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+478	0x004537e9	skipped-port (census)	0	entry 478: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample:
+479	0x004d95eb	skipped-port (census)	0	entry 479: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+480	0x007e5f70	skipped-port (census)	0	entry 480: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+481	0x004e0bf6	skipped-port (census)	0	entry 481: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+482	0x0071a8f0	skipped-port (census)	0	entry 482: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+483	0x0071a940	skipped-port (census)	0	entry 483: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+484	0x0055dc00	skipped-port (census)	0	entry 484: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+485	0x0079e580	skipped-port (census)	0	entry 485: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+486	0x006b0780	skipped-port (census)	0	entry 486: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness include
+487	0x00639ba0	skipped-port (census)	0	entry 487: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+488	0x006aeba0	skipped-port (census)	0	entry 488: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+489	0x004dccd2	skipped-port (census)	0	entry 489: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+490	0x00761b50	skipped-port (census)	0	entry 490: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+491	0x007624e0	skipped-port (census)	0	entry 491: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+492	0x007bf2b0	skipped-port (census)	0	entry 492: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 4; tools/census303.py, evidence/census.tsv).
+493	0x004dc9d2	skipped-port (census)	0	entry 493: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 6; tools/census303.py, evidence/census.tsv).
+494	0x00727580	skipped-port (census)	0	entry 494: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+495	0x004db004	skipped-port (census)	0	entry 495: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+496	0x00770e50	skipped-port (census)	0	entry 496: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+497	0x00770f20	skipped-port (census)	0	entry 497: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+498	0x0066ace0	open	0	entry 498: not reached; in-place-shaped lines (SAME_NEAR 1, STANDIN 1): next batch.
+499	0x0066ae60	skipped-port (census)	0	entry 499: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+500	0x0066b080	open	0	entry 500: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+501	0x0072b3b0	skipped-port (census)	0	entry 501: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+502	0x007f4fc0	skipped-port (census)	0	entry 502: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+503	0x004d483f	skipped-port (census)	0	entry 503: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+504	0x004dbf56	skipped-port (census)	0	entry 504: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+505	0x007ba000	open	0	entry 505: not reached; in-place-shaped lines (SAME_NEAR 2): next batch.
+506	0x005ea000	skipped-port (census)	0	entry 506: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+507	0x005ea650	skipped-port (census)	0	entry 507: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+508	0x005eda50	skipped-port (census)	0	entry 508: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+509	0x0094d430	skipped-port (census)	0	entry 509: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+510	0x007b9090	skipped-port (census)	0	entry 510: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+511	0x004ddf6f	skipped-port (census)	0	entry 511: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+512	0x00658e90	skipped-port (census)	0	entry 512: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+513	0x004dc659	skipped-port (census)	0	entry 513: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+514	0x005da810	skipped-port (census)	0	entry 514: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+515	0x006cfe80	skipped-port (census)	0	entry 515: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+516	0x007a44c0	skipped-port (census)	0	entry 516: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+517	0x007e4330	skipped-port (census)	0	entry 517: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+518	0x00a6abe0	open	0	entry 518: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+519	0x004c7380	skipped-port (census)	0	entry 519: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+520	0x004c73d0	skipped-port (census)	0	entry 520: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+521	0x004c7820	skipped-port (census)	0	entry 521: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 3; tools/census303.py, evidence/census.tsv).
+522	0x004c7990	skipped-port (census)	0	entry 522: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2, STANDIN 1, WRONGCLASS 2; tools/census303.py, evidence/census.tsv); in the 1-
+523	0x004c79f0	open	0	entry 523: not reached; in-place-shaped lines (SAME_NEAR 1, WRONGCLASS 2): next batch.
+524	0x004c7ab0	open	0	entry 524: not reached; in-place-shaped lines (FREE 2, SAME_NEAR 2, STANDIN 1, WRONGCLASS 4): next batch.
+525	0x004c7ac0	skipped-port (census)	0	entry 525: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+526	0x004c7e50	skipped-port (census)	0	entry 526: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 9, WRONGCLASS 2; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness include
+527	0x004c8050	skipped-port (census)	0	entry 527: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+528	0x004c9840	skipped-port (census)	0	entry 528: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 6, WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+529	0x00512210	skipped-port (census)	0	entry 529: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+530	0x00512260	skipped-port (census)	0	entry 530: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+531	0x008300d0	skipped-port (census)	0	entry 531: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+532	0x00463950	skipped-port (census)	0	entry 532: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 2, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+533	0x00863790	skipped-port (census)	0	entry 533: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+534	0x0082d2d0	open	0	entry 534: not reached; in-place-shaped lines (SAME_NEAR 1, SAME_TYPEDIFF 3): next batch.
+535	0x0082d920	skipped-port (census)	0	entry 535: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+536	0x00661d20	open	0	entry 536: not reached; in-place-shaped lines (SAME_NEAR 1, SAME_TYPEDIFF 1, WRONGCLASS 1): next batch.
+537	0x00661ff0	skipped-port (census)	0	entry 537: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1, WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+538	0x006627f0	skipped-port (census)	0	entry 538: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+539	0x00664490	skipped-port (census)	0	entry 539: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+540	0x00665190	skipped-port (census)	0	entry 540: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+541	0x00665260	skipped-port (census)	0	entry 541: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+542	0x006a7270	skipped-port (census)	0	entry 542: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+543	0x006a8a80	skipped-port (census; opened)	0	entry 543: not stale; stand-in filter class CThingFilter_OnFire for CThingFilter_IsOnFire: port.
+544	0x00529ad0	skipped-port (census)	0	entry 544: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+545	0x005239c0	open	0	entry 545: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+546	0x0083d460	skipped-port (census)	0	entry 546: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+547	0x004536ae	skipped-port (census)	0	entry 547: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+548	0x005296b0	open	0	entry 548: not reached; in-place-shaped lines (SAME_NEAR 1, WRONGCLASS 1): next batch.
+549	0x006a4d00	skipped-port (census)	0	entry 549: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+550	0x006a6880	skipped-port (census)	0	entry 550: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+551	0x0083d6d0	skipped-port (census)	0	entry 551: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+552	0x006aa230	skipped-port (census)	0	entry 552: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+553	0x006ac200	skipped-port (census)	0	entry 553: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+554	0x006ac690	skipped-port (census)	0	entry 554: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+555	0x0049c770	skipped-port (census)	0	entry 555: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness incl
+556	0x00877c40	skipped-port (census)	0	entry 556: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 3; tools/census303.py, evidence/census.tsv).
+557	0x00f3ea50	skipped-port (census)	0	entry 557: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2; tools/census303.py, evidence/census.tsv).
+558	0x00433670	skipped-port (census)	0	entry 558: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+559	0x0052e580	skipped-port (census)	0	entry 559: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+560	0x00ad4a70	skipped-port (census)	0	entry 560: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+561	0x00406cc0	skipped-port (census)	0	entry 561: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+562	0x004071c0	skipped-port (census)	0	entry 562: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+563	0x00407370	skipped-port (census)	0	entry 563: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+564	0x00408340	skipped-port (census)	0	entry 564: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+565	0x004085f0	skipped-port (census)	0	entry 565: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+566	0x0040d2a0	skipped-port (census)	0	entry 566: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 3, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+567	0x00e5e240	skipped-port (census)	0	entry 567: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+568	0x00e96c30	skipped-port (census)	0	entry 568: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+569	0x0098d710	open	0	entry 569: not reached; in-place-shaped lines (SAME_SIGEQ 1, STANDIN 1): next batch.
+570	0x00ab37b0	skipped-port (census)	0	entry 570: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv).
+571	0x009f70e0	skipped-port (census)	0	entry 571: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+572	0x009f7250	skipped-port (census)	0	entry 572: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+573	0x009f7330	skipped-port (census)	0	entry 573: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+574	0x0099aed0	skipped-port (census)	0	entry 574: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+575	0x0099b510	skipped-port (census)	0	entry 575: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 4, STANDIN 1; tools/census303.py, evidence/census.tsv).
+576	0x0049d810	skipped-port (census)	0	entry 576: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB 
+577	0x0049d880	skipped-port (census)	0	entry 577: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+578	0x004a0940	skipped-port (census)	0	entry 578: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+579	0x004fb490	skipped-port (census)	0	entry 579: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the 
+580	0x004fc180	skipped-port (census)	0	entry 580: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+581	0x004fc560	skipped-port (census)	0	entry 581: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+582	0x004fe5b0	skipped-port (census)	0	entry 582: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+583	0x00502620	skipped-port (census)	0	entry 583: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); HDRFLAG: a witness includes engine/<PDB cla
+584	0x0063a300	skipped-port (census)	0	entry 584: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+585	0x0063b7f0	open	0	entry 585: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+586	0x009bcf70	skipped-port (census)	0	entry 586: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+587	0x004ab8b0	open	0	entry 587: not reached; in-place-shaped lines (SAME_NEAR 2, STANDIN 1): next batch.
+588	0x00bfb750	open	0	entry 588: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+589	0x0045c95a	skipped-port (census)	0	entry 589: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+590	0x0045c91d	skipped-port (census)	0	entry 590: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+591	0x00466aa7	skipped-port (census)	0	entry 591: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+592	0x00466a75	skipped-port (census)	0	entry 592: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: t
+593	0x005e0280	open	0	entry 593: not reached; in-place-shaped lines (FREE 1, SAME_NEAR 1, STANDIN 1): next batch.
+594	0x005e0380	open	0	entry 594: not reached; in-place-shaped lines (FREE 1, SAME_NEAR 1): next batch.
+595	0x00738a00	skipped-port (census)	0	entry 595: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+596	0x0085ad30	skipped-port (census)	0	entry 596: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+597	0x0043ff30	skipped-port (census)	0	entry 597: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+598	0x00528760	skipped-port (census)	0	entry 598: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+599	0x00593666	skipped-port (census)	0	entry 599: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+600	0x005c0c99	skipped-port (census)	0	entry 600: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+601	0x006a3060	open	0	entry 601: not reached; in-place-shaped lines (SAME_NEAR 1, SAME_TYPEDIFF 1): next batch.
+602	0x0078b230	skipped-port (census)	0	entry 602: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+603	0x0079bd80	skipped-port (census)	0	entry 603: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+604	0x007a35d0	open	0	entry 604: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+605	0x007cd760	skipped-port (census)	0	entry 605: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+606	0x0083cfa0	open	0	entry 606: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+607	0x0056d050	done-partial (conditional, decision Q2)	1	entry 607: CAIStateGroup_MinionWalkToMarker::IsRunnable declared a non-template GetPFirstThing(const CThingFilter_HasScriptName&, CThing**) const: now the member template `template <class F, class T> 
+608	0x00910740	done (conditional, decision Q2)	1	entry 608: CAIStateGroup_MinionListenToStory::IsRunnable (sole caller) declared the non-template form; member template as entry 607 (??$GetPFirstThing@VCThingFilter_HasDefGlobalIndex@@VCThing@@@CThing
+609	0x006af520	skipped-port (census)	0	entry 609: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the 
+610	0x0042b0a2	open	0	entry 610: not reached; in-place-shaped lines (SAME_NEAR 1, WRONGCLASS 2): next batch.
+611	0x0042b248	skipped-port (census)	0	entry 611: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+612	0x004dc858	skipped-port (census)	0	entry 612: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+613	0x00580034	skipped-port (census)	0	entry 613: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+614	0x005936c2	open	0	entry 614: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+615	0x005da180	skipped-port (census)	0	entry 615: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+616	0x005da300	skipped-port (census)	0	entry 616: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+617	0x00685c00	open	0	entry 617: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+618	0x00696130	open	0	entry 618: not reached; in-place-shaped lines (SAME_NEAR 1, WRONGCLASS 1): next batch.
+619	0x006a2fa0	open	0	entry 619: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+620	0x006cd2f0	open	0	entry 620: not reached; in-place-shaped lines (SAME_NEAR 1, SAME_TYPEDIFF 2): next batch.
+621	0x006d3d00	skipped-port (census)	0	entry 621: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+622	0x006d3dc0	skipped-port (census)	0	entry 622: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+623	0x006d3ef0	skipped-port (census)	0	entry 623: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+624	0x006daa90	open	0	entry 624: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+625	0x00702930	open	0	entry 625: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+626	0x0071f930	skipped-port (census)	0	entry 626: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+627	0x00722d30	skipped-port (census)	0	entry 627: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: t
+628	0x0072ef60	skipped-port (census)	0	entry 628: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+629	0x007325d0	done (conditional, decision Q2)	1	entry 629: binder 0x00731E20 declared a non-template `bool GetSubDef(CDefPointer<const CSpotLightDef>*)` on its local CDefClassBase; both PDBs name the member template instance ??$GetSubDef@VCSpotLigh
+630	0x00748900	done (conditional, decision Q2)	1	entry 630: binder 0x00747820 declared a non-template `bool GetSubDef(CDefPointer<const CStealthDef>*)` on its local CDefClassBase; both PDBs name the member template instance ??$GetSubDef@VCStealthDef
+631	0x0074d160	skipped-port (census)	0	entry 631: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+632	0x0074f7d0	open	0	entry 632: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+633	0x00778900	skipped-port (census)	0	entry 633: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+634	0x0077d080	skipped-port (census)	0	entry 634: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 2; tools/census303.py, evidence/census.tsv).
+635	0x007815a0	skipped-port (census)	0	entry 635: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+636	0x00787060	open	0	entry 636: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+637	0x00788e53	skipped-port (census)	0	entry 637: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+638	0x0079c4b0	skipped-port (census)	0	entry 638: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+639	0x007ad9c0	open	0	entry 639: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+640	0x007afa90	done (conditional, decision Q2)	1	entry 640: binder 0x007AEFD0 declared a non-template `bool GetSubDef(CDefPointer<const CBossDef>*)` on its local CDefClassBase; both PDBs name the member template instance ??$GetSubDef@VCBossDef@@@CDe
+641	0x007b2540	done (conditional, decision Q2)	1	entry 641: binder 0x007B0800 declared a non-template `bool GetSubDef(CDefPointer<const CFishingDef>*) (non-const)` on its local CDefClassBase; both PDBs name the member template instance ??$GetSubDef@
+642	0x007b2600	done (conditional, decision Q2)	1	entry 642: binder 0x007DFB20 declared a non-template `bool GetSubDef(CDefPointer<const CFishDef>*)` on its local CDefClassBase; both PDBs name the member template instance ??$GetSubDef@VCFishDef@@@CDe
+643	0x007b44e0	skipped-port (census)	0	entry 643: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+644	0x007b5680	open	0	entry 644: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+645	0x007bb920	skipped-port (census)	0	entry 645: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+646	0x007be7ea	skipped-port (census)	0	entry 646: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: t
+647	0x007df9e0	skipped-port (census)	0	entry 647: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+648	0x007e1230	open	0	entry 648: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+649	0x007e1d30	open	0	entry 649: not reached; in-place-shaped lines (SAME_NEAR 2, SAME_SIGEQ 1): next batch.
+650	0x007e5820	open	0	entry 650: not reached; in-place-shaped lines (SAME_NEAR 2): next batch.
+651	0x007e6e00	done (conditional, decision Q2)	1	entry 651: binder 0x007E5F00 declared a non-template `bool GetSubDef(CDefPointer<const COracleMinigameDef>*)` on its local CDefClassBase; both PDBs name the member template instance ??$GetSubDef@VCOra
+652	0x007e7d80	done (conditional, decision Q2)	1	entry 652: binder 0x007E7640 declared a non-template `bool GetSubDef(CDefPointer<const CFireheartMinigameDef>*) (non-const)` on its local CDefClassBase; both PDBs name the member template instance ??$
+653	0x007e8200	skipped-port (census)	0	entry 653: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+654	0x007ea960	done-partial (conditional, decision Q2)	1	entry 654: binder 0x007EA510 declared a non-template `bool GetSubDef(CDefPointer<const CTargetingDef>*) (non-const)` on its local CDefClassBase; both PDBs name the member template instance ??$GetSubDe
+655	0x007f16b0	skipped-port (census)	0	entry 655: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+656	0x007f1ee0	skipped-port (census)	0	entry 656: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+657	0x007f87a0	skipped-port (census)	0	entry 657: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+658	0x007fcd50	open	0	entry 658: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+659	0x0080fe60	done (conditional, decision Q2)	1	entry 659: binder 0x0080FD90 declared a non-template `bool GetSubDef(CDefPointer<const CNymphDef>*)` on its local CDefClassBase; both PDBs name the member template instance ??$GetSubDef@VCNymphDef@@@C
+660	0x0087c490	skipped-port (census)	0	entry 660: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+661	0x008c33e0	skipped-port (census)	0	entry 661: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 2; tools/census303.py, evidence/census.tsv).
+662	0x008c3510	skipped-port (census)	0	entry 662: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+663	0x008c5a50	open	0	entry 663: not reached; in-place-shaped lines (SAME_NEAR 1, SAME_TYPEDIFF 1, STANDIN 1): next batch.
+664	0x008c78f0	skipped-port (census)	0	entry 664: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, STANDIN 1; tools/census303.py, evidence/census.tsv).
+665	0x008c79b0	skipped-port (census)	0	entry 665: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: t
+666	0x008c7a70	skipped-port (census)	0	entry 666: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+667	0x008cbff0	done-partial (conditional, decision Q2)	2	entry 667: CAIStateGroup_SummonerLightningAttack / SummonerCharge::InitStateGroup declared non-template non-const GetSubDef(CDefPointer<const CSummonerDef>*): member template + const, as entry 629 (bo
+668	0x008e3300	skipped-port (census)	0	entry 668: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+669	0x008f00f0	skipped-port (census)	0	entry 669: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+670	0x0040dce0	open	0	entry 670: not reached; in-place-shaped lines (SAME_NEAR 1, SAME_SIGEQ 1, SAME_TYPEDIFF 1): next batch.
+671	0x004cc340	open	0	entry 671: not reached; in-place-shaped lines (SAME_NEAR 1, SAME_TYPEDIFF 1): next batch.
+672	0x0083f420	skipped-port (census)	0	entry 672: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+673	0x008f8210	skipped-port (census)	0	entry 673: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+674	0x006f90b0	skipped-port (census)	0	entry 674: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 4; tools/census303.py, evidence/census.tsv).
+675	0x008f78e0	skipped-port (census)	0	entry 675: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+676	0x0085ee50	skipped-port (census)	0	entry 676: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+677	0x0085f3e0	skipped-port (census)	0	entry 677: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+678	0x008e8e50	skipped-port (census)	0	entry 678: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+679	0x0068eb20	skipped-port (census)	0	entry 679: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+680	0x00aeaa00	skipped-port (census)	0	entry 680: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 3; tools/census303.py, evidence/census.tsv).
+681	0x00aeaa80	skipped-port (census)	0	entry 681: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+682	0x00aeaad0	skipped-port (census)	0	entry 682: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+683	0x00aeaae0	skipped-port (census)	0	entry 683: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1, WRONGCLASS 2; tools/census303.py, evidence/census.tsv).
+684	0x00aeab00	skipped-port (census)	0	entry 684: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+685	0x00aeab10	skipped-port (census)	0	entry 685: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+686	0x00aebea0	skipped-port (census)	0	entry 686: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+687	0x008f5970	skipped-port (census)	0	entry 687: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+688	0x008f5ba0	skipped-port (census)	0	entry 688: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+689	0x0041a080	skipped-port (census)	0	entry 689: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+690	0x0041a1a0	skipped-port (census)	0	entry 690: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+691	0x0041a2b0	skipped-port (census)	0	entry 691: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+692	0x0041a3f0	skipped-port (census)	0	entry 692: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+693	0x0041a5b0	skipped-port (census)	0	entry 693: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+694	0x007f1840	skipped-port (census)	0	entry 694: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+695	0x007ea2f0	skipped-port (census)	0	entry 695: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+696	0x00516e10	open	0	entry 696: not reached; in-place-shaped lines (SAME_NEAR 1): next batch.
+697	0x005797fa	skipped-port (census)	0	entry 697: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+698	0x00405a60	skipped-port (census)	0	entry 698: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+699	0x005d8978	skipped-port (census)	0	entry 699: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-
+700	0x008fc430	open	0	entry 700: not reached; in-place-shaped lines (SAME_SIGEQ 1): next batch.
+701	0x007f7b70	skipped-port (census)	0	entry 701: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+702	0x007fda80	skipped-port (census)	0	entry 702: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+703	0x004add30	skipped-port (census)	0	entry 703: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+704	0x004ae080	skipped-port (census)	0	entry 704: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+705	0x0059b039	skipped-port (census)	0	entry 705: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+706	0x00519420	skipped-port (census)	0	entry 706: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+707	0x0055c4c0	skipped-port (census)	0	entry 707: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+708	0x00579a1c	skipped-port (census)	0	entry 708: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+709	0x00a37940	skipped-port (census)	0	entry 709: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+710	0x00430345	skipped-port (census)	0	entry 710: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+711	0x00453554	skipped-port (census)	0	entry 711: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+712	0x004df81d	skipped-port (census)	0	entry 712: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+713	0x004df86c	skipped-port (census)	0	entry 713: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+714	0x004df8e9	skipped-port (census)	0	entry 714: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+715	0x004dfa89	skipped-port (census)	0	entry 715: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+716	0x005bbbf3	skipped-port (census)	0	entry 716: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+717	0x00802190	skipped-port (census)	0	entry 717: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+718	0x00a96e40	skipped-port (census)	0	entry 718: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv). One of the stand-ins is the STLport _Rb_
+719	0x00cdbfb0	skipped-port (census)	0	entry 719: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv). One of the stand-ins is the STLport _Rb_
+720	0x004d9d2f	skipped-port (census)	0	entry 720: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+721	0x0059256c	skipped-port (census)	0	entry 721: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+722	0x005930f3	skipped-port (census)	0	entry 722: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2; tools/census303.py, evidence/census.tsv).
+723	0x00a825d0	skipped-port (census)	0	entry 723: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+724	0x00bed640	skipped-port (census)	0	entry 724: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+725	0x00cba520	skipped-port (census)	0	entry 725: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+726	0x00cba700	skipped-port (census)	0	entry 726: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+727	0x00410ed0	skipped-port (census)	0	entry 727: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+728	0x004b9250	skipped-port (census)	0	entry 728: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+729	0x00a155c0	skipped-port (census)	0	entry 729: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+730	0x00451b07	skipped (STL fold, nf104)	0	entry 730: the only other spelling is the STLport ~_Rb_tree<EWeaponClass,...> that binder 0x00465C54 binds at this address; ~set is the implicit destructor tail-calling ~_Rb_tree (GOTCHAS nf32 / nf104
+731	0x004ad460	skipped-port (census)	0	entry 731: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+732	0x00514400	skipped-port (census)	0	entry 732: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv).
+733	0x005157f0	skipped-port (census)	0	entry 733: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+734	0x0081c7d0	skipped-port	0	entry 734: binder std::__partial_sort<pair<unsigned long, CSkeletalMorphs::CEntry>*,...> defines a same-TU NOINLINE body under the made-up name `__sort_heap` (STLport 4.6 has none; __partial_sort ends
+735	0x0086c890	skipped-port	0	entry 735: as entry 734 (CRandomAppearanceMorph::CTextureMorph pair): the binder's same-TU `__sort_heap` stand-in body differs from the owner sort_heap; T3.
+736	0x009b5af0	skipped-port	0	entry 736: as entry 734 (CDefClassBase::CSubDefInfo pair): T3.
+737	0x00410460	skipped-port (census)	0	entry 737: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+738	0x00431f90	skipped-port (census)	0	entry 738: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2, WRONGCLASS 3; tools/census303.py, evidence/census.tsv).
+739	0x004433f0	skipped-port (census)	0	entry 739: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+740	0x00454886	skipped-port (census)	0	entry 740: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+741	0x00456263	skipped-port (census)	0	entry 741: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+742	0x0045baaa	skipped-port (census)	0	entry 742: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+743	0x0045c64d	skipped-port (census)	0	entry 743: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+744	0x00460c41	skipped-port (census)	0	entry 744: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+745	0x00461da1	skipped-port (census)	0	entry 745: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+746	0x004624c6	skipped-port (census)	0	entry 746: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+747	0x00462cb0	skipped-port (census)	0	entry 747: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+748	0x0046eabd	skipped-port (census)	0	entry 748: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+749	0x0046f565	skipped-port (census)	0	entry 749: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+750	0x004772a7	skipped-port (census)	0	entry 750: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+751	0x004ad520	skipped-port (census)	0	entry 751: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 7; tools/census303.py, evidence/census.tsv).
+752	0x004ae040	skipped-port (census)	0	entry 752: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv).
+753	0x004cc290	skipped-port (census)	0	entry 753: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 3; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+754	0x004d07a0	skipped-port (census)	0	entry 754: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+755	0x004e201f	skipped-port (census)	0	entry 755: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+756	0x004e24ba	skipped-port (census)	0	entry 756: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+757	0x004eb6e7	skipped-port (census)	0	entry 757: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+758	0x004ebe1a	skipped-port (census)	0	entry 758: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+759	0x004f9408	skipped-port (census)	0	entry 759: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+760	0x00514160	skipped-port (census)	0	entry 760: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 4, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+761	0x00514eb0	skipped-port (census)	0	entry 761: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+762	0x0051b4c0	skipped-port (census)	0	entry 762: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+763	0x00535470	skipped-port (census)	0	entry 763: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+764	0x0057fcdd	skipped-port (census)	0	entry 764: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+765	0x005947b6	skipped-port (census)	0	entry 765: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+766	0x005c1e30	skipped-port (census)	0	entry 766: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 2, STANDIN 1; tools/census303.py, evidence/census.tsv).
+767	0x00624a30	skipped-port (census)	0	entry 767: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+768	0x0062ed40	skipped-port (census)	0	entry 768: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+769	0x00673e10	skipped-port (census)	0	entry 769: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 6; tools/census303.py, evidence/census.tsv).
+770	0x006741e0	skipped-port (census)	0	entry 770: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2, WRONGCLASS 3; tools/census303.py, evidence/census.tsv).
+771	0x00674300	skipped-port (census)	0	entry 771: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+772	0x0067d450	skipped-port (census)	0	entry 772: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+773	0x006a3c70	skipped-port (census)	0	entry 773: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+774	0x006e6a30	skipped-port (census)	0	entry 774: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+775	0x006f19f0	skipped-port (census)	0	entry 775: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+776	0x006f20a0	skipped-port (census)	0	entry 776: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+777	0x007101a0	skipped-port (census)	0	entry 777: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+778	0x00710700	skipped-port (census)	0	entry 778: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+779	0x00719470	skipped-port (census)	0	entry 779: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+780	0x0074da40	skipped-port (census)	0	entry 780: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+781	0x0075b8d0	skipped-port (census)	0	entry 781: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 2; tools/census303.py, evidence/census.tsv).
+782	0x0076fb00	skipped-port (census)	0	entry 782: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+783	0x00787340	skipped-port (census)	0	entry 783: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+784	0x00824dd0	skipped-port (census)	0	entry 784: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+785	0x009f9930	skipped-port (census)	0	entry 785: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+786	0x00a01820	skipped-port (census)	0	entry 786: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+787	0x00a5e9c0	skipped-port (census)	0	entry 787: every stand-in table line binds through a made-up scope, a free function or another real class (WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+788	0x00a80b80	skipped-port (census)	0	entry 788: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+789	0x00a8d750	skipped-port (census)	0	entry 789: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+790	0x00aa9330	skipped-port (census)	0	entry 790: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+791	0x00ad2730	skipped-port (census)	0	entry 791: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+792	0x00bbdd40	skipped-port (census)	0	entry 792: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+793	0x00d34f00	skipped-port (census)	0	entry 793: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the sta
+794	0x00f25d20	skipped-port (census)	0	entry 794: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+795	0x00f25f90	skipped-port (census)	0	entry 795: every stand-in table line binds through a made-up scope, a free function or another real class (STANDIN 1; tools/census303.py, evidence/census.tsv).
+796	0x004978a0	skipped-port (census)	0	entry 796: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+797	0x0054e350	open	0	entry 797: not reached. The stand-in is the free ?SetUpChildrenForAcceptButton@NUISystem@@ (namespace NUISystem) for the global PDB ?SetPAcceptButtonRecursive@@YIXPAVCComponent@NUISystem@@0@Z; census3
+798	0x0070bd80	skipped-port (census)	0	entry 798: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+799	0x009a4ec0	skipped-port (census)	0	entry 799: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, SAME_TYPEDIFF 2; tools/census303.py, evidence/census.tsv).
+800	0x00a0db60	open	0	entry 800: not reached; in-place-shaped lines (SAME_SIGEQ 1): next batch.
+801	0x00a441e0	done	11	entry 801: eleven landed callers (CThingCreatureBase::IsPosInViewAngle, CTCPhysicsControlled::ApplyControlledAcceleration, six CTCLook members, CTCKraken DoHeadTracking / GetClosestTentacleToTarget, C
+802	0x00cbe0c0	skipped-port (census)	0	entry 802: every stand-in table line binds through a made-up scope, a free function or another real class (SAME_TYPEDIFF 1; tools/census303.py, evidence/census.tsv).
+-	0x008e9710	done	2	prefix item (NF299 Q5): the owner row defined ?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@QAEX_N@Z (public) where Ego_r + FableWin name only AAEX_N (private; donor caller SetChangeOfWeap

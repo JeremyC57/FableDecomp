@@ -1,5 +1,5 @@
 // CTCBed::UpdateAnimation() -- while the bed animates: once the get-in animation has (almost) finished switch to the looping sleep animation, once the get-out animation has finished mark the bed empty; stop animating when the player has run out of animations
-// Leaf: UpdateAnimation
+// Leaf: ?UpdateAnimation@CTCBed@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007468C0, 245 bytes (+11 int3 padding), `ret`.
@@ -86,7 +86,9 @@ public:
             complex = ((CTCAnimationComplex*)&ParentThing->GetTC(TCI_ANIMATION));
         return complex;
     }
+    private:
     void UpdateAnimation();
+    public:
 };
 
 void CTCBed::UpdateAnimation()

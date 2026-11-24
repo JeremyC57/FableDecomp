@@ -34,13 +34,13 @@ class CDisplayManager
     fable_u8 unknown0C[0x1BC];
     fable_i32 displayWidth1C8;
 
-    bool IsTextureBitDepthSupported(int bitDepth);
+    bool IsTextureBitDepthSupported(unsigned long bitDepth);
 };
 #pragma pack(pop)
 
 struct CXMVPlayer
 {
-    static void GlobalRegisterPlayer();
+    static void __fastcall GlobalRegisterPlayer();   // PDB SIXXZ, as the row (NF310)
 };
 
 extern bool FABLE_FASTCALL GFInitialise();
@@ -108,13 +108,13 @@ FableEngineRoot* FABLE_FASTCALL AddChildPrimitive()
     return &g_engineRoot;
 }
 
-bool CDisplayManager::IsTextureBitDepthSupported(int bitDepth)
+bool CDisplayManager::IsTextureBitDepthSupported(unsigned long bitDepth)
 {
     g_bitDepthArguments[g_bitDepthCalls++] = bitDepth;
     return bitDepth == g_supportedBitDepth;
 }
 
-void CXMVPlayer::GlobalRegisterPlayer()
+void __fastcall CXMVPlayer::GlobalRegisterPlayer()
 {
     ++g_xmvCalls;
 }

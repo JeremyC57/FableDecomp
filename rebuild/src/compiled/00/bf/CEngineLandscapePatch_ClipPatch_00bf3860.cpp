@@ -1,3 +1,4 @@
+// Leaf: ?ClipPatch@CEngineLandscapePatch@@AAE_NXZ
 // CEngineLandscapePatch::ClipPatch() -- tests the patch's bounding box against the first four planes of the engine camera's frustum; false as soon as the box lies wholly outside one plane
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF3860, length 140 bytes (144 with padding).
@@ -25,7 +26,9 @@ class CEngineLandscapePatch { public:
     unsigned char _pad00[0x20];
     C3DVector     m_boxMin;                        // +0x20
     C3DVector     m_boxMax;                        // +0x2C
+    private:
     bool ClipPatch();
+    public:
 };
 
 bool CEngineLandscapePatch::ClipPatch()

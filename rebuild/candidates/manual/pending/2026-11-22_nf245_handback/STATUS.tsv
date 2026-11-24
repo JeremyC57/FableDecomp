@@ -1,0 +1,50 @@
+address	change	grade	test	grades_used	entries	note
+0x00404690	self rename std_list_node_Init -> _List_base(const allocator&) (shared header explicit instantiation); test rewritten on the shared headers	RELOCATION_MATCH	PASS	1	E1	
+0x004046B0	self rename ~list -> ~_List_base (row onto engine/CStringParser.h partial mode + stlport/fable_containers.h); new shared-header test	RELOCATION_MATCH	PASS	1	E1	
+0x004046F0	self rename ListNode_Create_Circular -> list(const allocator&) (shared header explicit instantiation); test rewritten on the shared headers	RELOCATION_MATCH	PASS	1	E1	
+0x004047A0	binder: local list -> shared list (BASE_OUTOFLINE + CStringParser.h partial mode)	RELOCATION_MATCH	PASS	1	E1	row-local CStringParserCommentBoundaries definition replaced by the partial mode
+0x004047D0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x004138D0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x004B3760	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x004B6380	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x004C88E0	binder: local list -> shared list (BASE_DTOR_VISIBLE_NOINLINE + CStringParser.h partial mode)	RELOCATION_MATCH	PASS	1	E1	
+0x004C8A30	binder: local list -> shared list (BASE_DTOR_VISIBLE_NOINLINE + CStringParser.h partial mode)	RELOCATION_MATCH	PASS	1	E1	
+0x004C9120	binder: swap DTOR_OUTOFLINE -> BASE_DTOR_VISIBLE_NOINLINE	RELOCATION_MATCH	PASS	1	E1	
+0x004CA230	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x004CAA00	binder: swap DTOR_OUTOFLINE -> BASE_DTOR_VISIBLE_NOINLINE	RELOCATION_MATCH	PASS	1	E1	
+0x00520570	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x00521AE0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DC3C0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DC450	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DC4D0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DC550	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DC650	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DC730	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DC7B0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DC8B0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DC9B0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x005DCA60	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	2	E1	form 2: the local CStringParser model corrected to the retail 0x28 layout (the 8-byte list stand-in had shifted ErrorCallback / CursorPos)
+0x00686E10	binder: local list -> shared list (BASE_DTOR_VISIBLE_NOINLINE + CStringParser.h partial mode)	RELOCATION_MATCH	PASS	1	E1	
+0x006BA8B0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x006BBBA0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x00814260	binder: swap DTOR_OUTOFLINE -> BASE_DTOR_VISIBLE_NOINLINE	RELOCATION_MATCH	PASS	1	E1	
+0x00816000	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x00816150	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x00998A30	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x009ADE90	binder: local list -> shared list (BASE_DTOR_VISIBLE_NOINLINE + CStringParser.h partial mode)	RELOCATION_MATCH	PASS	1	E1	
+0x009AE150	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x009AF1E0	binder: local list -> shared list (BASE_DTOR_VISIBLE_NOINLINE + CStringParser.h partial mode)	RELOCATION_MATCH	PASS	1	E1	row-local CStringParserCommentBoundaries definition and _List_node models replaced
+0x009BBA40	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x009E5AD0	binder: local list -> shared list (BASE_DTOR_VISIBLE_NOINLINE + CStringParser.h partial mode)	RELOCATION_MATCH	PASS	1	E1	
+0x009EB2C0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x009EB430	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x009EC430	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x009EC710	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x009EC890	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	2	E1	form 2: its local vector stand-in also moved onto the shared vector, with FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE (vector<char>(size_type) 0x00411910 stays a call; form 1 emitted a NEQ pick-any copy)
+0x00A38E50	binder: local list -> shared list (BASE_DTOR_VISIBLE_NOINLINE + CStringParser.h partial mode)	RELOCATION_MATCH	PASS	1	E1	
+0x00CB7CB0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x00CB7DA0	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x00CB8690	binder: local list -> shared list (BASE_OUTOFLINE)	RELOCATION_MATCH	PASS	1	E1	
+0x00501D30	none (blocked, nf243 ruling 2 (a))	HEAD	HEAD	0	E1	stays on ~list until its vector / map port (NF243 NOTES section 1: 3 failed forms on 0x00501D30; local _Rb_tree / map models on 0x00756D00 / 0x007AE3D0)
+0x00756D00	none (blocked, nf243 ruling 2 (a))	HEAD	HEAD	0	E1	stays on ~list until its vector / map port (NF243 NOTES section 1: 3 failed forms on 0x00501D30; local _Rb_tree / map models on 0x00756D00 / 0x007AE3D0)
+0x007AE3D0	none (blocked, nf243 ruling 2 (a))	HEAD	HEAD	0	E1	stays on ~list until its vector / map port (NF243 NOTES section 1: 3 failed forms on 0x00501D30; local _Rb_tree / map models on 0x00756D00 / 0x007AE3D0)

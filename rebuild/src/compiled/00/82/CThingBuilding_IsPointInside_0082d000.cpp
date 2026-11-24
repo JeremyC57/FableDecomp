@@ -19,7 +19,7 @@ extern const CCharString BUILDING_BOUNDRY;     // 0x013BAC98
 class CPhysicsMeshObject { public:
     unsigned char _body[0x40 - 4];
     virtual ~CPhysicsMeshObject();                                                      // 0x00A127D0
-    bool IsInContainmentVolume(const CCharString& volume, const C3DVector& pos, float tolerance);  // 0x00A128E0
+    bool IsInContainmentVolume(const CCharString& volume, const C3DVector& pos, float tolerance) const;  // 0x00A128E0
 };
 
 class CTCPhysicsBase { public:

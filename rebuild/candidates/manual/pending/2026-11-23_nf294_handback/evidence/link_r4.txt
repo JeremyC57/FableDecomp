@@ -1,0 +1,9 @@
+## HEAD set: H_009ce8d0.obj H_009ccb20.obj
+duplicates 0
+
+UNRESOLVED 1 ?WriteZeros@CBankFile@@QAEXK@Z
+## new set: N_009ce8d0.obj H_009ccb20.obj
+duplicates 0
+
+UNRESOLVED 1 ?WritePadding@CBankFile@@AAEXK@Z
+LK_DONE

@@ -19,7 +19,7 @@ class C2DVector { public:
     C2DVector operator+(const C2DVector& o) const { return C2DVector(X + o.X, Y + o.Y); }
 };
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-C2DVector __fastcall GFAnchorToTopRight(const C2DVector& in);         // 0x00643CA1
+namespace NPlayerGui { C2DVector __fastcall GFAnchorToTopRight(const C2DVector& in); } using NPlayerGui::GFAnchorToTopRight;   // 0x00643CA1 (NF308: PDB scope)
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);  // 0x009E21D0
 class CWideString {
 public:

@@ -7,7 +7,7 @@
 #include "fable_string.h"
 
 class CTCKraken { public:
-    void CreateHeadEffect(const CCharString& effectName);   // 0x007FBB00
+    private: void CreateHeadEffect(const CCharString& effectName); public:   // 0x007FBB00
     void StartHeadEffects();
 };
 

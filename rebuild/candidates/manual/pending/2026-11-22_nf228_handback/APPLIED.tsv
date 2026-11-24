@@ -1,0 +1,6 @@
+entry	address	status	binders_respelled	note
+1 (q12590-q12596, q12601)	0x0042A879 0x0042D246 0x0042C02F 0x0042ACC3 0x0042AC76 0x0042B76C 0x0042B7AD 0x0042B7EE 0x0042AB01 + 0x0041E1CD	done	0x0041E1CD (18 calls: ??ACLayerTree -> STLport operator[]); 0x0042D246 callees 0x0042AE33 / 0x0042CE46	each address one spelling except 0x0042AB01 (folded list-ctor alias, queued); second-layer self rows queued (NAME_FIXES)
+2 (q12597, q12604)	0x0042BE7B	done	0x0042BE7B own calls: CRetailListBase -> STLport _List_base<CObserver*> (0x0042AC0A); vtable slot 0 ?v00 -> SetEvent (0x0055CB10)	new test on the header; self row 0x0042AC0A queued
+3 (q12598, q12599)	0x004299A8 / 0x013B871C	done (0x004299A8); partial (0x013B871C: 0x0041E3F6 moved, 6 sources left)	0x0041E3F6 both binders	two add-only header opt-ins (hdr/README.md)
+4 (q12603)	nf227 tests	partial	-	new header tests for the 6 STL rows (+ the 12 changed rows); open: 0x0042BE50 and the 12 vtable-slot rows
+q12589 / q12600	0x0042BEC0	not mine (needs a ruling)		

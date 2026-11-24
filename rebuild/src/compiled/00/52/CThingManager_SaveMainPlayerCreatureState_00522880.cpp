@@ -85,7 +85,7 @@ public:
     short CurrentMapNumber;                             // +0x8e
     unsigned char _pad90;
     unsigned char Flags91;                              // +0x91
-    bool IsGameStatePersisted();                        // 0x004C8280
+    bool IsGameStatePersisted() const;                        // 0x004C8280
     bool IsLevelLess();                                 // 0x004C7930
     void SetCurrentMapNumber(long map);                 // 0x004C7580
     FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
@@ -100,7 +100,7 @@ public:
     }
 };
 class CTCInventoryItem { public:
-    CThing* GetInventoryOwner();                        // 0x005D8E90
+    const CThing* GetInventoryOwner() const;            // 0x005D8E90 (Ego_r / FableWin ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ)
 };
 class CThingCreature : public CThing { };
 class CThingPlayerCreature : public CThingCreature { };

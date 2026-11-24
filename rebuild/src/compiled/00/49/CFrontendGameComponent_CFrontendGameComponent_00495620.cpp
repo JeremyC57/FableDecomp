@@ -2,6 +2,13 @@
 // Leaf: ??1CFrontendGameComponent (Ego_r.pdb ??1CFrontendGameComponent@@UAE@XZ)
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe @ 0x00495620, 344 bytes, ends in a tail jump to CBaseClassNonCopyable::~CBaseClassNonCopyable 0x0099A300.
+// Header port (NF235, 2026-11-22, q12656): the local CBaseClassNonCopyable / CGameComponentInterface / CGameComponent / CWideString /
+//   CWideStringVector / CFrontendGameComponent models replaced by the shared headers: engine/CGameComponent.h (DTOR_INLINE: the empty
+//   inline ~CGameComponent, both base vtable stores then the tail jump to ~CBaseClassNonCopyable 0x0099A300), fable_string.h,
+//   stlport/fable_containers.h (std::vector<CWideString>) and engine/CFrontendGameComponent.h (CTOR_DTOR: the typed layout; SETQUIT:
+//   the slot-4 override). The two vtables now carry their PDB / RTTI names ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+//   (0x01238768) / ??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@ (0x0123875C) and their retail slots (all three PDBs; RTTI COL
+//   0x013330F0 / 0x0133309C).
 // Body: vtables 0x01238768 / 0x0123875C (this class at +0 / +4); ~CTexture 0x009F9F70 (SplashScreen); ~CWideString
 // 0x0099B510 (WorldToLoad, SaveToLoad and every vector element); free 0x00BFEA14 (each vector's storage); the counted
 // pointers' inline release (destroy function, operator delete 0x00BFE9BC, then Data and Info zeroed); base vtables
@@ -17,62 +24,17 @@
 // pointer is the CText model (Release, then Data = Info = 0).
 // Opt: /O2 (16-aligned entry).
 #include "fable_compiler.h"
-extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
-};
-struct CGameComponentInterface {
-    virtual void v00();
-};
-class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
-    bool m_bShutDown;                                      // +0x08
-    virtual FABLE_FORCEINLINE ~CGameComponent() { }
-};
-#include "engine/CCountedPointer.h"
-class CWideString { public:
-    void* PStringData;
-    ~CWideString();                                        // 0x0099B510
-};
-struct CWideStringVector {                                 // STLport vector<CWideString>
-    CWideString* _M_start;
-    CWideString* _M_finish;
-    CWideString* _M_end_of_storage;
-    static FABLE_FORCEINLINE void _Destroy(CWideString* first, CWideString* last)
-    {
-        for (; first != last; ++first)
-            first->~CWideString();
-    }
-    ~CWideStringVector()
-    {
-        _Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-};
+#define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CTEXTURE
-#include "engine/CTexture.h"   // NF139: was a local CTexture model (out-of-line ~CTexture bound ??1CTexture at 0x009F9F70)
-class CGraphicDataBank; class CFontBank;
-enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
-struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768 / 0x0123875C
-    unsigned char                     _pad00c[0x1dfc - 0x0c];
-    CCountedPointer<CGraphicDataBank> PTempGraphics;              // +0x1dfc
-    CCountedPointer<const CFontBank>  MainFont;                   // +0x1e04
-    CWideStringVector                 ProfileNames;               // +0x1e0c
-    long                              ProfileNamesOffset;         // +0x1e18
-    CWideStringVector                 SaveNames;                  // +0x1e1c
-    long                              SaveNamesOffset;            // +0x1e28
-    CWideString                       SaveToLoad;                 // +0x1e2c
-    CWideStringVector                 WorldNames;                 // +0x1e30
-    long                              WorldNamesOffset;           // +0x1e3c
-    CWideString                       WorldToLoad;                // +0x1e40
-    long                              CursorHighlight;            // +0x1e44
-    double                            TimeLastMovementHappened;   // +0x1e48
-    bool                              StartedRepeatingMovement;   // +0x1e50
-    ECursorMovement                   CurrentMovement;            // +0x1e54
-    CTexture                          SplashScreen;               // +0x1e58
-    virtual ~CFrontendGameComponent();
-};
+#define FABLE_RETAIL_CGAMECOMPONENT_DTOR_INLINE
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_SETQUIT
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_CTOR_DTOR
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CTexture.h"
+#include "engine/CGameComponent.h"
+#include "engine/CFrontendGameComponent.h"
 
 CFrontendGameComponent::~CFrontendGameComponent()
 {

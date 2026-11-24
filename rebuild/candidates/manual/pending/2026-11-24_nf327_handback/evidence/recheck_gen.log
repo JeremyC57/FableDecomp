@@ -1,0 +1,7 @@
+addr       parity           behav  name
+009680d0   RELOCATION_MATCH PASS   Clone
+00a86030   MATCH            PASS   GetPossibleCollisionSet
+
+WINS: 2
+  009680d0 RELOCATION_MATCH CCreatureAction_PickUpJug::?Clone@CCreatureAction_PickUpJug@@UBEPAVCCreatureActionBase@@XZ
+  00a86030 MATCH CPhysicsFacesSegmentBranch::?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z

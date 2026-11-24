@@ -1,0 +1,37 @@
+004ab4f0	004a5088	004a3740	CWorld::UpdateRegionLoad
+004ab4f0	004ac080	-	
+005127a0	00514280	-	
+005127a0	00515613	-	
+004ab4f0	00515aa3	-	
+004ab4f0	00516f16	00516f10	_global::ScalarDeletingDtor_00516f10
+005127a0	00517656	00517650	_unattributed::ScalarDeletingDestructor_COwner_00517650
+004ab4f0	00518d43	-	
+005127a0	005190f3	-	
+004ab4f0	00519584	00519560	_unattributed::Erase_CRetailTree_00519560
+004ab4f0	0051a314	0051a2f0	std::_Rb_tree<CThingBuilding *, std::pair<CThingBuilding const *, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>>, std::_Select1st<std::pair<CThingBuilding const *, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>>>, std::less<CThingBuilding *>, std::allocator<std::pair<CThingBuilding const *, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>>>>::erase
+004ab4f0	0051c030	0051bf90	std::map<CThingBuilding*, list<CThingAICreature*> >::operator[]
+004ab4f0	0051c039	0051bf90	std::map<CThingBuilding*, list<CThingAICreature*> >::operator[]
+004ab4f0	005eb7df	005eb590	CTCTavernGame::GivePrize
+00685bc0	00683082	00682810	CTCCreatureOpinionOfHero::InformOfDeed
+00685bc0	006860e0	-	
+004ab4f0	006c5f62	006c5e90	CTCHeroOpinionDeedLog::IsDeedWitnessed
+00685bc0	00985be9	-	
+00685bc0	00986674	00986510	CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable
+00685bc0	009866a6	00986510	CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable
+005127a0	00a81033	00a81030	_global::ScalarDeletingDtor_00a81030
+005127a0	00a81463	-	
+005127a0	00a81c40	-	
+005127a0	00a81d66	00a81d60	std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>::`scalar deleting destructor'
+005127a0	00a81e6d	00a81e20	std::__unguarded_linear_insert
+005127a0	00a8216c	00a820e0	std::__push_heap<std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *, int, std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>, CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>>
+005127a0	00a829d3	-	
+005127a0	00a82b8d	00a82b10	std::iter_swap
+005127a0	00a82cd5	00a82be0	_Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std::pair<long,long>,class_CEngineTextureDecal>,CKeyPairCompareLess<std::_Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std
+005127a0	00a835f1	00a83570	std::__pop_heap
+005127a0	00a83d0a	00a83cc0	std::__unguarded_partition
+005127a0	00a84435	00a843f0	std::__linear_insert
+005127a0	00a84460	00a843f0	std::__linear_insert
+005127a0	00a8476e	00a84690	std::vector<std::list<C2DLineF, std::allocator<C2DLineF>>, std::allocator<std::list<C2DLineF, std::allocator<C2DLineF>>>>::_M_fill_insert
+005127a0	00a8527c	00a85240	std::vector<list<C2DLineF> >::resize
+005127a0	00a852a5	00a85240	std::vector<list<C2DLineF> >::resize
+005127a0	00a8532e	00a852b0	CVectorMap<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>, CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>>::Insert

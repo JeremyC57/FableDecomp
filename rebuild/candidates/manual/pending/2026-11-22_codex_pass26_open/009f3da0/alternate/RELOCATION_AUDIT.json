@@ -1,0 +1,160 @@
+{
+  "final_6a20af7d676e_c32d883f_surfaceproof": [
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 127,
+      "kind": 20,
+      "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+      "retail": "0x009E3830"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 141,
+      "kind": 6,
+      "symbol": "?GD3DFormats@@3QBVCD3DFormatInfo@@B",
+      "retail": "0x0129BA40"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 159,
+      "kind": 6,
+      "symbol": "??_7CSurface@@6B@",
+      "retail": "0x0122F84C"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 182,
+      "kind": 20,
+      "symbol": "?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z",
+      "retail": "0x009F33E0"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 216,
+      "kind": 20,
+      "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+      "retail": "0x009E3830"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 272,
+      "kind": 20,
+      "symbol": "?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z",
+      "retail": "0x009F3230"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 286,
+      "kind": 20,
+      "symbol": "?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z",
+      "retail": "0x009F37E0"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 301,
+      "kind": 20,
+      "symbol": "?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z",
+      "retail": "0x009F33E0"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 563,
+      "kind": 6,
+      "symbol": "??_7CSurface@@6B@",
+      "retail": "0x0122F84C"
+    },
+    {
+      "owner": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+      "offset": 30,
+      "kind": 20,
+      "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+      "retail": "0x009E3830"
+    }
+  ],
+  "final_6a20af7d676e_9404c43e_expansion_control": [
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 127,
+      "kind": 20,
+      "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+      "retail": "0x009E3830"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 141,
+      "kind": 6,
+      "symbol": "?GD3DFormats@@3QBVCD3DFormatInfo@@B",
+      "retail": "0x0129BA40"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 159,
+      "kind": 6,
+      "symbol": "??_7CSurface@@6B@",
+      "retail": "0x0122F84C"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 182,
+      "kind": 20,
+      "symbol": "?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z",
+      "retail": "0x009F33E0"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 216,
+      "kind": 20,
+      "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+      "retail": "0x009E3830"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 272,
+      "kind": 20,
+      "symbol": "?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z",
+      "retail": "0x009F3230"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 286,
+      "kind": 20,
+      "symbol": "?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z",
+      "retail": "0x009F37E0"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 301,
+      "kind": 20,
+      "symbol": "?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z",
+      "retail": "0x009F33E0"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 563,
+      "kind": 6,
+      "symbol": "??_7CSurface@@6B@",
+      "retail": "0x0122F84C"
+    },
+    {
+      "owner": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+      "offset": 30,
+      "kind": 20,
+      "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+      "retail": "0x009E3830"
+    },
+    {
+      "owner": "?GetWidth@CSurface@@QBEKXZ",
+      "offset": 8,
+      "kind": 20,
+      "symbol": "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ",
+      "retail": "0x009F2F90"
+    },
+    {
+      "owner": "?GetHeight@CSurface@@QBEKXZ",
+      "offset": 8,
+      "kind": 20,
+      "symbol": "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ",
+      "retail": "0x009F2F90"
+    }
+  ]
+}

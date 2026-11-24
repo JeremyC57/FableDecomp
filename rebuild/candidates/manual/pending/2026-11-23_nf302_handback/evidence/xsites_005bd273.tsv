@@ -1,0 +1,15 @@
+005bd273	call	0056ef14	0056eef6L CTCInventoryExperience::GetScreenName
+005bd273	call	0056f2a0	0056f26fL CTCInventoryExperience::GetExperienceStatName
+005bd273	call	0056f2ee	0056f2bdL CTCInventoryExperience::GetExperienceAbilityName
+005bd273	call	0056fe61	0056fdc3L CTCInventoryExperience::GetExperienceStatDescription
+005bd273	call	0056ff08	0056fe7cL CTCInventoryExperience::GetExperienceAbilityDescription
+005bd273	call	00582091	00582073L CTCInventory::GetScreenName
+005bd273	call	0059c7ae	0059c790L CTCInventoryTrade::GetScreenName
+005bd273	call	005b3573	005b3555L CTCInventoryClothing::GetScreenName
+005bd273	call	005bdabe	005bda1dL NInventory::CCategory::GetHighlightedItemText
+005bd273	call	005bdb09	005bdac5L CCategory::GetCategoryName
+005bd273	call	005c2fc8	005c2faaL CTCInventoryWeapons::GetScreenName
+005bd273	call	005ccef5	005cced7L CTCInventoryStats::GetScreenName
+005bd273	call	005edfc0	005edfa2L CTCInventoryAbilities::GetScreenName
+005bd273	call	005faf31	005faf10L CTCInventoryMap::vfunc_0
+005bd273	call	0061a241	0061a220L CTCInventoryQuests::vfunc_0

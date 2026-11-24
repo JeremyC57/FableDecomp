@@ -1,0 +1,2 @@
+## ?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@AAEX_N@Z callers=1
+    ?SetChangeOfWeapon@CModeStrafe@NCreatureMode@@AAEXPBVCThing@@@Z

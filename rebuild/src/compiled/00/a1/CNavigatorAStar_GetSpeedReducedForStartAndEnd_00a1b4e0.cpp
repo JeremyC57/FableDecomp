@@ -1,5 +1,5 @@
 // CNavigatorAStar::GetSpeedReducedForStartAndEnd(float, float, const C2DVector&) -- on the last leg of a route (one way point left) slow down near the end: inside speed+distance of it run at 35% speed, inside 3*speed+distance at 65%; otherwise clear SlowedDownForLastPoint and keep the speed
-// Leaf: GetSpeedReducedForStartAndEnd
+// Leaf: ?GetSpeedReducedForStartAndEnd@CNavigatorAStar@@AAEMMMABVC2DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1B4E0, 188 bytes (+ int3 padding; `ret 0Ch`), float result on the x87 stack.
 // Callees: none (the STLport list size() walk is inline). Float pool: 3.0f 0x0122DED4, 0.35f 0x0129CBB0, 0.65f 0x0129CBB4.
 // Layout: Ego_r.pdb CNavigatorAStar with STLport containers: Route (list<CNavWayPoint>, a 4-byte header pointer; node data +8,
@@ -40,7 +40,9 @@ public:
     list<CNavWayPoint> Route;                      // +0x8c
     unsigned char      _pad90[0x2f];
     bool               SlowedDownForLastPoint;     // +0xbf
+    private:
     float GetSpeedReducedForStartAndEnd(float speed, float slowDownDistance, const C2DVector& pos);
+    public:
 };
 
 float CNavigatorAStar::GetSpeedReducedForStartAndEnd(float speed, float slowDownDistance, const C2DVector& pos)

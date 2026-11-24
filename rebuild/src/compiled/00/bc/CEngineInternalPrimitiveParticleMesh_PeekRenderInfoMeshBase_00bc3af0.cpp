@@ -1,8 +1,13 @@
-// Leaf: ?PeekRenderInfoMeshBase@CEngineInternalPrimitiveParticleMesh_Methods@@QAEPAVCEngineLocalLightArray@@XZ
-#include "engine/CEngineInternalPrimitiveParticleMesh.h"  // retyped onto the PDB layout; byte parity re-verified
-class CEngineLocalLightArray;
-struct CEngineInternalPrimitiveParticleMesh_Methods : CEngineInternalPrimitiveParticleMesh {
-    CEngineLocalLightArray* PeekRenderInfoMeshBase();
-};
-CEngineLocalLightArray* CEngineInternalPrimitiveParticleMesh_Methods::PeekRenderInfoMeshBase() { return (CEngineLocalLightArray*)&this->RenderInfo_Lights; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?PeekRenderInfoMeshBase@CEngineInternalPrimitiveParticleMesh@@UBEPBVCEngineRenderInfoMeshBase@@XZ); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?PeekRenderInfoMeshBase@CEngineInternalPrimitiveParticleMesh@@UBEPBVCEngineRenderInfoMeshBase@@XZ
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CEngineInternalPrimitiveParticleMesh.h under FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEMESH_CLASS with the PDB parameter / return types (was ?PeekRenderInfoMeshBase@CEngineInternalPrimitiveParticleMesh_Methods@@QAEPAVCEngineLocalLightArray@@XZ);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEMESH_CLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
+#include "stlport/fable_map.h"
+#include "engine/CEnginePrimitiveParticleMesh.h"
+#include "engine/CEngineInternalPrimitiveParticleMesh.h"
+const CEngineRenderInfoMeshBase* CEngineInternalPrimitiveParticleMesh::PeekRenderInfoMeshBase() const { return (const CEngineRenderInfoMeshBase*)&this->RenderInfo_Lights; }   // the header flattens the CEngineRenderInfoMeshBase member at +0x7C into its words

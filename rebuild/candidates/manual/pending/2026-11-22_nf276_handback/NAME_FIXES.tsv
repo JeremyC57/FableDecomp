@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x012A835C	??_7CLandscapeLayerMesh@@6B@	RTTI .?AVCLandscapeLayerMesh@@ vtable (rtti-vtables / vtmap); the destructor 0x00BFDE20 and ??_G 0x00BFE900 rows emit / bind ??_7CLandscapeLayerMesh@@6B@ (table line, witness 0x00BFDE20); HEAD split, unchanged by NF276	?CLandscapeLayerMesh_vtbl@@3PAXA (ctor row 0x00BFDDD0, a flat local model storing the address of an extern stand-in)

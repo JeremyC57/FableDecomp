@@ -1,0 +1,6 @@
+05:56:30 PASS /home/user/FableDecomp/rebuild/src/compiled/00/97/CAIStateGroupBase_SetPushableByHero_0097e330.cpp
+05:56:30 PASS /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupTavernServer_PickUpJug_00967930.cpp
+05:56:30 PASS /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupTavernServer_FillTankard_00967b40.cpp
+05:56:31 PASS /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0.cpp
+05:56:31 PASS /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_LeanOnBar_009689c0.cpp
+05:56:31 PASS /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_ReceivePayment_009692c0.cpp

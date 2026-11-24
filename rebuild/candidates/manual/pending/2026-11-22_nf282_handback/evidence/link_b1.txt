@@ -1,0 +1,80 @@
+## HEAD set: H_004a98c0.obj H_00403db0.obj H_00403e40.obj H_00413520.obj H_0041956c.obj H_005669c0.obj H_004366b0.obj H_004441a0.obj H_00444210.obj H_00444280.obj H_004442f0.obj H_00444360.obj H_004443d0.obj H_00444440.obj H_004444b0.obj H_00444520.obj H_004446e0.obj H_00444830.obj H_004448a0.obj H_00444a60.obj H_00444ad0.obj H_00444d00.obj H_00445190.obj H_00445200.obj H_0049bce0.obj H_004a9a10.obj H_004a9a80.obj H_004adf80.obj H_0050f2b0.obj H_0050faa0.obj H_0050fb90.obj H_0051cea0.obj H_0065e198.obj H_0065e2e0.obj H_00673500.obj H_00675060.obj H_0067fc10.obj H_006fd460.obj H_00718940.obj H_00771b60.obj H_00786bf0.obj H_008ab230.obj H_008ab2b0.obj H_00992170.obj H_009b1f50.obj H_009e3090.obj H_009e3100.obj H_00a31640.obj H_00a16640.obj H_00a29c50.obj H_00a44170.obj H_00a52be0.obj H_00a6ae60.obj H_00a8d400.obj H_00a9a420.obj H_00a9ced0.obj H_00ac38a0.obj H_00ac3ff0.obj H_00ad65a0.obj H_00ae93e0.obj 00403600.obj 00403630.obj 00403650.obj 004132f0.obj 00419086.obj 0041bd80.obj 004361e0.obj 00443580.obj 004435c0.obj 00443600.obj 00443640.obj 00443680.obj 004436c0.obj 00443700.obj 00443740.obj 00443780.obj 00443840.obj 004438f0.obj 00443930.obj 00443a20.obj 00443a60.obj 00443b60.obj 00444d90.obj 00444dd0.obj 0049bc20.obj 004a8220.obj 004a8260.obj 0050bcc0.obj 0050c210.obj 0050c2e0.obj 0051ccd0.obj 0065d258.obj 0065d2b1.obj 00672aa0.obj 00674e50.obj 0067f650.obj 006fd400.obj 00718080.obj 00771b30.obj 00786a20.obj 008aa7e0.obj 008aa7f0.obj 00991e00.obj 009b0e90.obj 009e2960.obj 009e2970.obj 00a110d0.obj 00a16270.obj 00a282f0.obj 00a44130.obj 00a51180.obj 00a6acb0.obj 00a8cb70.obj 00a99fe0.obj 00a9cb20.obj 00ac3810.obj 00ac3fd0.obj 00ad5ed0.obj 00ae91c0.obj
+duplicates 4
+00444dd0.obj : warning LNK4006: "void __cdecl DefineStatBarDestructor(class NPlayerGui::CStatBar *)" (?DefineStatBarDestructor@@YAXPAVCStatBar@NPlayerGui@@@Z) already defined in 00444d90.obj; second definition ignored
+00a110d0.obj : warning LNK4006: "void __fastcall DeleteData(struct AutoTinyVirtualObject *)" (?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) already defined in 0067f650.obj; second definition ignored
+00a99fe0.obj : warning LNK4006: "void __fastcall DeleteData(struct AutoTinyVirtualObject *)" (?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) already defined in 0067f650.obj; second definition ignored
+00a9cb20.obj : warning LNK4006: "void __fastcall DeleteData(struct AutoTinyVirtualObject *)" (?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) already defined in 0067f650.obj; second definition ignored
+UNRESOLVED 1 ?Destroy_00403600@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00403630@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00403650@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_004132f0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00419086@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_0041bd80@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_004361e0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443580@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_004435c0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443600@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443640@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443680@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_004436c0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443700@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443740@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443780@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443840@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_004438f0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443930@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443a20@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443a60@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00443b60@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00444d90@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00444dd0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_0049bc20@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_004a8220@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_004a8260@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_004adc40@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_0050bcc0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_0050c210@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_0050c2e0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_0051ccd0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_0065d258@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_0065d2b1@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00672aa0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00674e50@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_0067f650@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_006fd400@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00718080@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00771b30@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00786a20@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_008aa7e0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_008aa7f0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00991e00@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_009b0e90@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_009e2960@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_009e2970@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a110d0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a16270@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a282f0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a44130@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a51180@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a6acb0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a8cb70@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a99fe0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a9cb20@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00ac3810@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00ac3fd0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00ad5ed0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00ae91c0@@YIXPAX@Z
+## new set: 004a98c0.obj 00403db0.obj 00403e40.obj 00413520.obj 0041956c.obj 005669c0.obj 004366b0.obj 004441a0.obj 00444210.obj 00444280.obj 004442f0.obj 00444360.obj 004443d0.obj 00444440.obj 004444b0.obj 00444520.obj 004446e0.obj 00444830.obj 004448a0.obj 00444a60.obj 00444ad0.obj 00444d00.obj 00445190.obj 00445200.obj 0049bce0.obj 004a9a10.obj 004a9a80.obj 004adf80.obj 0050f2b0.obj 0050faa0.obj 0050fb90.obj 0051cea0.obj 0065e198.obj 0065e2e0.obj 00673500.obj 00675060.obj 0067fc10.obj 006fd460.obj 00718940.obj 00771b60.obj 00786bf0.obj 008ab230.obj 008ab2b0.obj 00992170.obj 009b1f50.obj 009e3090.obj 009e3100.obj 00a31640.obj 00a16640.obj 00a29c50.obj 00a44170.obj 00a52be0.obj 00a6ae60.obj 00a8d400.obj 00a9a420.obj 00a9ced0.obj 00ac38a0.obj 00ac3ff0.obj 00ad65a0.obj 00ae93e0.obj 00403600.obj 00403630.obj 00403650.obj 004132f0.obj 00419086.obj 0041bd80.obj 004361e0.obj 00443580.obj 004435c0.obj 00443600.obj 00443640.obj 00443680.obj 004436c0.obj 00443700.obj 00443740.obj 00443780.obj 00443840.obj 004438f0.obj 00443930.obj 00443a20.obj 00443a60.obj 00443b60.obj 00444d90.obj 00444dd0.obj 0049bc20.obj 004a8220.obj 004a8260.obj 0050bcc0.obj 0050c210.obj 0050c2e0.obj 0051ccd0.obj 0065d258.obj 0065d2b1.obj 00672aa0.obj 00674e50.obj 0067f650.obj 006fd400.obj 00718080.obj 00771b30.obj 00786a20.obj 008aa7e0.obj 008aa7f0.obj 00991e00.obj 009b0e90.obj 009e2960.obj 009e2970.obj 00a110d0.obj 00a16270.obj 00a282f0.obj 00a44130.obj 00a51180.obj 00a6acb0.obj 00a8cb70.obj 00a99fe0.obj 00a9cb20.obj 00ac3810.obj 00ac3fd0.obj 00ad5ed0.obj 00ae91c0.obj
+duplicates 4
+00444dd0.obj : warning LNK4006: "void __cdecl DefineStatBarDestructor(class NPlayerGui::CStatBar *)" (?DefineStatBarDestructor@@YAXPAVCStatBar@NPlayerGui@@@Z) already defined in 00444d90.obj; second definition ignored
+00a110d0.obj : warning LNK4006: "void __fastcall DeleteData(struct AutoTinyVirtualObject *)" (?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) already defined in 0067f650.obj; second definition ignored
+00a99fe0.obj : warning LNK4006: "void __fastcall DeleteData(struct AutoTinyVirtualObject *)" (?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) already defined in 0067f650.obj; second definition ignored
+00a9cb20.obj : warning LNK4006: "void __fastcall DeleteData(struct AutoTinyVirtualObject *)" (?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) already defined in 0067f650.obj; second definition ignored
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VC3DAnimFileRootChunk@@@@SIXPAX@Z
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VC3DBone2@@@@SIXPAX@Z
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VC3DMeshFileRootChunk@@@@SIXPAX@Z
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VCContainmentVolume@@@@SIXPAX@Z
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VCMessageEventManager@@@@SIXPAX@Z
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@SIXPAX@Z
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VCTexture@@@@SIXPAX@Z
+LK_DONE

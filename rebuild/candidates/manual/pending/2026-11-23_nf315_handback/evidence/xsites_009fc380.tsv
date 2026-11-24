@@ -1,0 +1,7 @@
+009fc380	call	009c8177	009c80f0L NGameText::CDataBankGroupEntry::BeginLoading
+009fc380	call	009c83c7	009c8340L BeginLoading
+009fc380	call	009fe427	009fe380L CGraphicInfoFrame::CFrameData::CFrameData
+009fc380	call	009ff429	009ff220L CGraphicInfoFrame::CFrameData::UploadFrame
+009fc380	call	00a247e7	00a24520L C3DMeshLODInfo::BuildMesh
+009fc380	call	00a24ede	00a24d70L C3DAnimationInfo::CAnimationData::BuildSharedAnimation
+009fc380	call	00b2c4ce	00b2c460L CEngineSurfaceCompositionManager::AddSurface

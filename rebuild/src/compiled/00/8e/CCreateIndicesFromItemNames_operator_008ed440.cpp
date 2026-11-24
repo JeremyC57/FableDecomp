@@ -19,17 +19,18 @@
 //   `_M_insert_overflow(finish, x, __false_type(), 1, true)` as a same-TU noinline STAND-IN body (only the call is
 //   graded; it reads `x` and never touches the tag, so the empty tag shares the dead-argument slot of the live
 //   temporary, GOTCHAS b48) and STLport's MSVC `pair` copy constructor.
-extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
-inline void* operator new(unsigned int, void* __p) { return __p; }
-
-class CCharString {
-public:
-    void* PStringData;                          // +0x00
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);      // 0x0099EC30
-    ~CCharString();                             // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
+// NF254 (2026-11-22, CODEXP27 L4 / L5 family): CCharString and the whole namespace-std model (pair, allocator, _Vector_base, vector with a
+//   53-byte same-TU STAND-IN _M_insert_overflow body under the STLport name) were row-local; they now come from the shared headers
+//   (fable_string.h CCharString; stlport/fable_containers.h vector with the real STLport 4.6 _vector.c overflow body visible and kept out
+//   of line, FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE, and its out-of-line __fastcall helpers FABLE_STLP_OUTOFLINE_UNINIT_COPY / _FILL_N,
+//   the 0x0074FCE0 recipe), so the pick-any _M_insert_overflow copy this object defines is the owner's body, not a stand-in. The other
+//   local models are as at HEAD.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#define FABLE_STLP_OUTOFLINE_UNINIT_COPY
+#define FABLE_STLP_OUTOFLINE_UNINIT_FILL_N
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
 
 class CDefString {                              // 4 bytes, an index into the def string table
 public:
@@ -53,87 +54,6 @@ class CGameDefinitionManager : public CDefinitionManager {
 public:
     static CGameDefinitionManager& __fastcall Get();                 // 0x0044C6B0
 };
-
-namespace std {
-struct __false_type { __false_type() {} };
-struct random_access_iterator_tag { random_access_iterator_tag() {} };
-
-template <class _T1, class _T2> struct pair {
-    _T1 first;                                  // +0x00
-    _T2 second;                                 // +0x04
-    pair(const _T1& __a, const _T2& __b) : first(__a), second(__b) {}
-    pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) {}   // STLport's MSVC copy ctor
-};
-
-template <class _Tp> class allocator {
-public:
-    allocator() {}
-    void deallocate(_Tp* __p, unsigned int) { free(__p); }
-};
-
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) {}
-};
-
-template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for ( ; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;                              // +0x00
-    _Tp* _M_finish;                             // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) {}
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-};
-
-template <class _Tp, class _Alloc = allocator<_Tp> >
-class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef _Tp* iterator;
-    typedef _Alloc allocator_type;
-    explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) {}
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-    iterator begin() { return this->_M_start; }
-    iterator end() { return this->_M_finish; }
-#pragma auto_inline(off)
-    // CCharString 0x00433530, pair<long, CCharString> 0x0074FCE0. Same-TU noinline STAND-IN body (only its call
-    // matters): it reads `x` and never touches the empty tag, so VC7.1 homes the tag on the live temporary's slot.
-    protected:
-    __declspec(noinline) void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&,
-                                                 unsigned int __fill_len, bool __atend)
-    {
-        if (__atend && __fill_len == 1 && __position == this->_M_finish)
-            _Construct(this->_M_start, __x);
-    }
-    public:
-#pragma auto_inline(on)
-    void push_back(const _Tp& __x)
-    {
-        if (this->_M_finish != this->_M_end_of_storage._M_data) {
-            _Construct(this->_M_finish, __x);
-            ++this->_M_finish;
-        }
-        else
-            _M_insert_overflow(this->_M_finish, __x, __false_type(), 1UL, true);
-    }
-};
-
-template <class _InputIter, class _Function>
-_Function __fastcall for_each(_InputIter __first, _InputIter __last, _Function __f);   // 0x008ED4D0 / 0x008ED510
-}
 
 typedef std::pair<long, CCharString> CContainerItem;
 

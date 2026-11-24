@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00495620   RELOCATION_MATCH PASS   ~CFrontendGameComponent
+00496070   WARN RELOC_NAME: ?GetDefaultProfileName@CUserProfileManager@@QBE?AVCWideString@@XZ -> 004065d0 labelled 'CUserProfileManager::GetAutoSaveFileName'
+00496070   RELOCATION_MATCH PASS   CFrontendGameComponent
+00496cf0   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00496cf0   RELOCATION_MATCH PASS   Run
+00494370   MATCH            PASS   SetQuit
+00494350   MATCH            PASS   OnPreDeviceReset
+00494360   MATCH            PASS   OnPostDeviceReset
+00a0a110   RELOCATION_MATCH PASS   CMeshBankManager
+00a0a150   RELOCATION_MATCH PASS   ~CMeshBankManager
+00a09d80   MATCH            PASS   OnPostDeviceReset
+
+WINS: 9
+  00495620 RELOCATION_MATCH CFrontendGameComponent::??1CFrontendGameComponent
+  00496070 RELOCATION_MATCH CFrontendGameComponent::??0CFrontendGameComponent
+  00496cf0 RELOCATION_MATCH CFrontendGameComponent::?Run@CFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  00494370 MATCH CFrontendGameComponent::?SetQuit@CFrontendGameComponent@@UAEXXZ
+  00494350 MATCH CFrontendGameComponent::?OnPreDeviceReset@CFrontendGameComponent@@UAEXXZ
+  00494360 MATCH CFrontendGameComponent::?OnPostDeviceReset@CFrontendGameComponent@@UAE_NXZ
+  00a0a110 RELOCATION_MATCH CMeshBankManager::??0CMeshBankManager@@QAE@XZ
+  00a0a150 RELOCATION_MATCH CMeshBankManager::??1CMeshBankManager@@UAE@XZ
+  00a09d80 MATCH CMeshBankManager::?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ

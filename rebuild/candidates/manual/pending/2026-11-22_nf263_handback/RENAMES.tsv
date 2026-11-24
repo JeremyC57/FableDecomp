@@ -1,0 +1,14 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00BF36A0	CEngineLandscapePatch	operator_delete	??3CEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	CEngineSubPrimitiveBase::operator_new	?fn_00bf36a0@@YIPAXH@Z	Ego_r.pdb + FableWin.pdb name sets (placement form); retail quartet ??2 0x00BF3680 / ??3 0x00BF36A0 / ??_U 0x00BF36C0 (landed, same placement form) / ??_V 0x00BF36E0 in Ego_r's order; callers pass edx=0 (0x00BDD431, stub 0x00BDBF70); body = FreeVirtual(block) on GPLandscapeRenderer->MemoryManager
+0x00BF36E0	CEngineLandscapePatch	operator_delete[]	??_VCEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	CEngineSubPrimitiveBase::operator_new	?fn_00bf36e0@@YIPAXH@Z	Ego_r.pdb + FableWin.pdb name sets (placement form); quartet order as above; array arm of the vector deleting destructor 0x00BDD3E0 calls it with edx=0 (0x00BDD414), stub 0x00BDBF80
+0x00BF9920	CLocalDetailPrimitiveMesh	operator_delete	??3CLocalDetailPrimitiveMesh@@SIXPAXPAVCMovableResource@@@Z	CEngineSubPrimitiveBase::operator_new	?fn_00bf36a0@@YIPAXH@Z	Ego_r.pdb + FableWin.pdb name sets (placement form); retail quartet ??2 0x00BF9900 (landed, same placement form) / ??3 0x00BF9920 / ??_U 0x00BF9940 / ??_V 0x00BF9960 in Ego_r's order; scalar deleting destructor 0x00BDFD60 calls it with edx=0 (0x00BDFD6F); old leaf was 0x00BF36A0's symbol (one symbol defined by two rows at HEAD)
+# Section 2
+0x00BF36A0	?g_00bf36a0@@3PAUGB@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8
+0x00BF36A0	?m@That2@@QAEPAXH@Z	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	0x00BD9B90
+0x00BF36E0	?g_00bf36e0@@3PAUGB@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8
+0x00BF36E0	?m@That2@@QAEPAXH@Z	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	0x00BD9B90
+0x00BF9920	?g_00bf36a0@@3PAUGB@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8
+0x00BF9920	?m@That2@@QAEPAXH@Z	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	0x00BD9B90
+0x00BDD3E0	??3CEngineLandscapePatch@@SIXPAXJ@Z	??3CEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	0x00BF36A0
+0x00BDD3E0	??_VCEngineLandscapePatch@@SIXPAXJ@Z	??_VCEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	0x00BF36E0
+0x00BDFD60	?CLocalDetailPrimitiveMesh_dealloc@@YIXPAUCLocalDetailPrimitiveMesh@@H@Z	??3CLocalDetailPrimitiveMesh@@SIXPAXPAVCMovableResource@@@Z	0x00BF9920

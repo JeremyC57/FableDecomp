@@ -42,7 +42,8 @@ public:
     virtual void v1(); virtual void v2();
     virtual CCharString GetDataString() const;      // slot 3 (+0x0c)
     virtual void v4(); virtual void v5();
-    virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }   // slot 6
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+    virtual const C3DVector& GetPos() const { CScriptThingImp* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPosition(); }   // slot 6
 };
 struct CScriptThingVector {                         // STLport vector<CScriptThing>, 12 bytes
     CScriptThing* _M_start;

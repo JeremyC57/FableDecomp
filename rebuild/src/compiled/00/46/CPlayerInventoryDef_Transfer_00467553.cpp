@@ -1,4 +1,4 @@
-// Leaf: ?Transfer@CPlayerInventoryDef@@QAEXAAVCPersistContext@@@Z
+// Leaf: ?Transfer@CPlayerInventoryDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 // Name fix (agentNF54): the local CPersistContext stand-in replaced by the shared engine/CPersistContext.h and the opaque 12-byte
 //   fields by the Ego_r.pdb members (Slot / MaxInSlot / InitialAmount vector<long>, IsUsable vector<bool>, InitialSelectedSlot long;
@@ -10,13 +10,13 @@
 #include "stlport/fable_containers.h"
 #include "engine/CPersistContext.h"
 class CPlayerInventoryDef { public:
-    unsigned char _pad[0x3c];
+    unsigned char _pad[0x38];
     std::vector<long> Slot;          // 0x3c
     std::vector<long> MaxInSlot;     // 0x48
     std::vector<long> InitialAmount; // 0x54
     std::vector<bool> IsUsable;      // 0x60
     long InitialSelectedSlot;        // 0x6c
-    void Transfer(CPersistContext& ctx);
+    virtual void Transfer(CPersistContext& ctx);
 };
 
 void CPlayerInventoryDef::Transfer(CPersistContext& ctx)

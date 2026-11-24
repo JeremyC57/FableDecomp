@@ -1,0 +1,6 @@
+idx	address	class	reason
+9	0x005955AB	CFrontEndManager	T3 (D3 pattern): the only QAE binder 0x00599D5C defines a same-TU strong copy of GetProfileNames on its public local decl; respelling it IAE gives a second strong IAE definer beside the self (LNK2005)
+13	0x00AB6450	CKeyboardDX	T3 (D2 pattern): the only binder 0x00AB64E0 is the CKeyboardDX ctor; its local model emits ??_7CKeyboardDX; `virtual` on SetExclusiveMode adds a slot (no base slot modelled): table change
+14	0x00BE6F70	CLandscapeBackgroundPatch	T3: the self's declaration is in rebuild/include/candidates/landscape_background_patch_render_compiled.h (a shared-header access change)
+21	0x00AB5710	CMouseDX	T3 (D2 pattern): as entry 13, binder 0x00AB5D00 (the CMouseDX ctor, emits ??_7CMouseDX)
+50	0x00686DB0	CTCBase	T3 (D1 pattern): the only binder 0x00731BF0 is the free stand-in CTCSpotLight_FrameUpdate; a protected callee needs a friend naming the stand-in

@@ -6,7 +6,7 @@
 // unsigned count gives `jbe`; the bit scan is a count-down `for` from bit 31 that breaks on the first set bit with
 // the width `bit + 1`, and the size is the unsigned `(Size() * bits + 31) / 32 * 4`.
 // Size() is called at the loop test and again in the result (a count local changes the register allocation).
-// Leaf: CalcMemoryNeededBitCompressed
+// Leaf: ?CalcMemoryNeededBitCompressed@CRangeCompressor@@AAEJABV?$CArray@K@@@Z
 template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
@@ -14,7 +14,9 @@ template<class T> class CArray { public:                       // retail CArray<
 };
 
 struct CRangeCompressor {
+    private:
     long CalcMemoryNeededBitCompressed(const CArray<unsigned long>& values);
+    public:
 };
 
 long CRangeCompressor::CalcMemoryNeededBitCompressed(const CArray<unsigned long>& values)

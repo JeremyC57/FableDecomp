@@ -1,14 +1,10 @@
+// Leaf: ?GetChunkInfo@CChunkedFileChunk@@UBE?BVCCharString@@XZ
+// Switch route (NF318, 2026-11-23): defined on the real class of engine/CChunkedFileChunk.h (class-model switch FABLE_RETAIL_CCHUNKEDFILECHUNK; was ?GetChunkInfo@CChunkedFileChunk_Methods@@QBE?AVCCharString@@XZ);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address. Bytes unchanged.
+#define FABLE_RETAIL_CCHUNKEDFILECHUNK
 #include "engine/CChunkedFileChunk.h"  // retyped onto the PDB layout; byte parity re-verified
-class CCharString { public:
-    CCharString(const char* lit, long len);
-    int dummy;
-};
 
-struct CChunkedFileChunk_Methods : CChunkedFileChunk {
-    CCharString GetChunkInfo() const;
-};
-
-CCharString CChunkedFileChunk_Methods::GetChunkInfo() const
+const CCharString CChunkedFileChunk::GetChunkInfo() const
 {
     return CCharString((const char*)0x122d70e, -1);
 }

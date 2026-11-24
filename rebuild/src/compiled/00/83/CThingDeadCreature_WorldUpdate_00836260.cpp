@@ -1,7 +1,7 @@
 // CThingDeadCreature::WorldUpdate() -- game-object update and body reorientation; then, for a creature def that persists after death, count the body's life down and, two seconds before the end, spawn the decay effect at the body and fade it out once; when the fade has finished kill the body
 // NF167 (2026-11-20, q11702): 0x006C3B70 respelt in place on the row's own local CTCFadeOutAndIn model from the invented Fade(float, bool) to
 //   ?FadeOut@CTCFadeOutAndIn@@QAEXM_N@Z (Ego_r.pdb + FableWin.pdb; engine/CTCFadeOutAndIn.h); no PDB has a member Fade.
-// Leaf: ?WorldUpdate@CThingDeadCreature
+// Leaf: ?WorldUpdate@CThingDeadCreature@@UAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
@@ -99,7 +99,7 @@ private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThingBodyReorienter { public:
-    bool IsUpdateNeeded();                              // 0x00863250
+    bool IsUpdateNeeded() const;                              // 0x00863250
     void UpdateBodyReorienation();                      // 0x00863E10
     void SetFlag_00863260(bool value);                  // 0x00863260
 };
@@ -117,7 +117,7 @@ public:
 
 class CThing {
 public:
-    void* __vftable;
+    virtual bool WorldUpdate();                         // vptr at +0; ?WorldUpdate@CThing@@UAE_NXZ (Ego_r / FableWin; was the flattened void* __vftable)
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -171,7 +171,7 @@ class CThingGameObject : public CThing {
 public:
     unsigned char _pad94[0xb4 - 0x94];
     float Health;                                       // +0xb4
-    bool WorldUpdate();                                 // 0x00838BA0
+    virtual bool WorldUpdate();                         // 0x00838BA0 ?WorldUpdate@CThingGameObject@@UAE_NXZ (Ego_r / FableWin; called qualified here)
 };
 class CThingDeadCreature : public CThingGameObject {
 public:
@@ -187,7 +187,7 @@ public:
         GetDefinitionManager()->GetDef(m_defGlobalIndex, &def);
         return *def;
     }
-    bool WorldUpdate();
+    virtual bool WorldUpdate();                         // ?WorldUpdate@CThingDeadCreature@@UAE_NXZ (Ego_r / FableWin)
 };
 
 bool CThingDeadCreature::WorldUpdate()

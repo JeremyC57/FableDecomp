@@ -13,10 +13,10 @@ class CThing;
 
 class CTCDivineWrath { public:
     unsigned char _body[0xc8];       // sizeof(CTCDivineWrath) = 0xc8
-    CTCDivineWrath(CThing* owner);                   // 0x0078ECD0
+    CTCDivineWrath(CThing& owner);                   // 0x0078ECD0 ??0CTCDivineWrath@@QAE@AAVCThing@@@Z (Ego_r / FableWin)
 };
 
 CTCDivineWrath* __fastcall CTCDivineWrath_Alloc(CThing* owner)
 {
-    return new CTCDivineWrath(owner);
+    return new CTCDivineWrath(*owner);
 }

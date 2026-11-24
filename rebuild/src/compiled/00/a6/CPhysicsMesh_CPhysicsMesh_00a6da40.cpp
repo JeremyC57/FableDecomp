@@ -55,7 +55,7 @@ class CCircle { public: float X, Y, Radius; };
 
 class CIPhysicsFacesSegmentBase {
 public:
-    static CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& faces, const CArray<C3DVector>& points);   // 0x00A86CD0
+    static const CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& faces, const CArray<C3DVector>& points);   // 0x00A86CD0
 };
 #include "engine/CCountedPointer.h"
 
@@ -91,7 +91,10 @@ public:
 private:
     void CalculateBoundingInfo();                                   // 0x00A6C640 ?CalculateBoundingInfo@CPhysicsMesh@@AAEXXZ (Ego_r + FableWin, private; NF93 q11326)
 public:
-    void CalculateCentreOfGravity();                                // 0x00A6C890
+    private:
+    void CalculateCentreOfGravity();
+    public:
+                                // 0x00A6C890
     void GetContainmentDataFromFileData(const C3DMeshFile& file);   // 0x00A6D670
     void CalculateSegmentation()
     {

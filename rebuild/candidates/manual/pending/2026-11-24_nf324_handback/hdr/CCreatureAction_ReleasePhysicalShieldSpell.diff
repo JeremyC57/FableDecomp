@@ -1,0 +1,21 @@
+--- orig/hdr_CCreatureAction_ReleasePhysicalShieldSpell.h	2026-11-24 01:18:37.301379670 +0000
++++ hdr/engine/CCreatureAction_ReleasePhysicalShieldSpell.h	2026-11-24 01:18:37.383068158 +0000
+@@ -18,6 +18,18 @@
+ class CCreatureAction_ReleasePhysicalShieldSpell : public CCombatActionBase {
+ public:
+     virtual void FinishAction();                                         // 0x008B93D0
++#ifdef FABLE_RETAIL_CCREATUREACTION_RELEASEPHYSICALSHIELDSPELL_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x008BD9B0: ?PerformAction@CCreatureAction_ReleasePhysicalShieldSpell@@UAEXXZ (FableWin.pdb)
++public:
++    virtual void PerformAction();
++    // 0x008BD9C0: ?IsToCauseRecoil@CCreatureAction_ReleasePhysicalShieldSpell@@UBE_NXZ (FableWin.pdb)
++    virtual bool IsToCauseRecoil() const;
++    // 0x008BD9D0: ?IsAbleToBeAttacked@CCreatureAction_ReleasePhysicalShieldSpell@@UBE_NXZ (FableWin.pdb)
++    virtual bool IsAbleToBeAttacked() const;
++#endif
+ };
+ #else
+ 

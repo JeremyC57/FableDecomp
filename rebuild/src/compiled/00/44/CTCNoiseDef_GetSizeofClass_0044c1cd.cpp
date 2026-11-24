@@ -1,12 +1,13 @@
-// Leaf: ?CTCNoiseDef_GetSizeofClass@@YIKPBVCActionUseDef@@@Z
+// Leaf: ?GetSizeofClass@CTCNoiseDef@@UAEKXZ
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CTCNoiseDef.h"
 #pragma optimize("s",on)
 typedef unsigned long ulong;
 
 class CActionUseDef { public:};
 
-ulong __fastcall CTCNoiseDef_GetSizeofClass(const CActionUseDef* self)
+unsigned long CTCNoiseDef::GetSizeofClass()
 {
-    (void)self;
     return 0x34;
 }
-// Stand-in (owner rule 2026-11-05): CTCNoiseDef_GetSizeofClass for CTCNoiseDef::GetSizeofClass; RTTI vtable slot ?GetSizeofClass@CTCNoiseDef@@UAEKXZ + PDB name set (fablewin).
+// Flatten route (flatten_pilot v4, NF324): CTCNoiseDef_GetSizeofClass -> CTCNoiseDef::GetSizeofClass, the RTTI-placed PDB member; class model: engine/CTCNoiseDef.h under its default branch.

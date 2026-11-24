@@ -1,6 +1,7 @@
 // CLocalDetailPrimitiveRepeatedMesh::~CLocalDetailPrimitiveRepeatedMesh() -- free five landscape blocks and release primitive handle
 // Leaf: ??1CLocalDetailPrimitiveRepeatedMesh
 // Native0x00BFAAE0 length177; MemoryManager donor+F58 differs from retail+6B0.
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer 0x01436EA8 (landed opt-in)
 #include "fable_compiler.h"
 #include "engine/CEnginePrimitiveRenderer.h"
 #define CMovableResource CMovableResourceDonor
@@ -149,20 +150,18 @@ class CEngineLandscapeMemoryManager : public CEngineLandscapeMemoryManagerLayout
 {
 public:
     void FreeVirtual(void*);   // 0x00BD9B90
+    void FreeVirtualAligned(void*);   // 0x00BD9CA0 ?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z (Ego_r + FableWin)
 };
-// Methods projection inherits the complete actual layout; no additional data.
-struct LandscapeMemoryMethods : CEngineLandscapeMemoryManager { void FreeAlignedVirtual(void*); }; // 0x00BD9B90
 // Actual complete donor header audited before grade. Native renderer projection follows
 // the retail manager access: 6B0, versus donor F58 after its larger MeshBuilder.
 #include "engine/CEngineLandscapeRenderer.h"
-struct LocalDetailEngine { unsigned char BeforeLandscapeMemory[0x6b0]; LandscapeMemoryMethods* LandscapeMemory; };
-extern LocalDetailEngine* g_LocalDetailEngine; // 0x01436EA8
+// The manager is reached as retail does: GPLandscapeRenderer (0x01436EA8) -> MemoryManager (+0x6B0).
 CLocalDetailPrimitiveRepeatedMesh::~CLocalDetailPrimitiveRepeatedMesh()
 {
- LandscapeMemoryMethods* manager=g_LocalDetailEngine->LandscapeMemory;
+ CEngineLandscapeMemoryManager* manager=NEngineInternal::GPLandscapeRenderer->MemoryManager;
  manager->FreeVirtual(WindDelayArray);
- manager->FreeAlignedVirtual(LandscapeNormalArray);
- manager->FreeAlignedVirtual(SubSections);
+ manager->FreeVirtualAligned(LandscapeNormalArray);
+ manager->FreeVirtualAligned(SubSections);
  manager->FreeVirtual(ObjectMatricies);
- manager->FreeAlignedVirtual(ObjectOffsets);
+ manager->FreeVirtualAligned(ObjectOffsets);
 }

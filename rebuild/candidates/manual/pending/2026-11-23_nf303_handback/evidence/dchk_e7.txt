@@ -1,0 +1,2 @@
+## ?Main@CQ_HeroSoulsNostroScript@NScript@@UAEXXZ @037b5380 len=3216
+    ?PlayCutscene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z

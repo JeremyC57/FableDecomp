@@ -1,3 +1,4 @@
+// Leaf: ?WriteTable@CDefStringTable@@QBEXAAVCDataOutputStream@@@Z
 // CDefStringTable::WriteTable(CDataOutputStream&) -- write the magic, random id, string count, blob size and the string blob
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D4A50, length 96 bytes.
 // Callees: CDataOutputStream::WriteULONG @ 0x00993EA0 (four times), CMemoryDataOutputStream::GetLength @ 0x00994B40 and
@@ -24,15 +25,15 @@ struct CDefStringTable {
     unsigned long           StringCount;           // +0x24
     unsigned long           SharedCount;           // +0x28
     unsigned long           RandomID;              // +0x2c
-    void WriteTable(CDataOutputStream& stream);
+    void WriteTable(CDataOutputStream& stream) const;
 };
 
-void CDefStringTable::WriteTable(CDataOutputStream& stream)
+void CDefStringTable::WriteTable(CDataOutputStream& stream) const
 {
     stream.WriteULONG(0x7ab1e);
     stream.WriteULONG(RandomID);
     stream.WriteULONG(StringCount);
-    CMemoryDataOutputStream* data = &StringStream;
+    const CMemoryDataOutputStream* data = &StringStream;
     unsigned long size = data->GetLength();
     stream.WriteULONG(size);
     stream.WriteData(((void*)data->PeekData()), size);

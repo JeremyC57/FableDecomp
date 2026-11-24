@@ -1,0 +1,82 @@
+[
+  {
+    "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "offset": 127,
+    "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+    "retail": "0x009E3830",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "offset": 141,
+    "symbol": "?GD3DFormats@@3QBVCD3DFormatInfo@@B",
+    "retail": "0x0129BA40",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "offset": 159,
+    "symbol": "??_7CSurface@@6B@",
+    "retail": "0x0122F84C",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "offset": 182,
+    "symbol": "?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z",
+    "retail": "0x009F33E0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "offset": 216,
+    "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+    "retail": "0x009E3830",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "offset": 272,
+    "symbol": "?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z",
+    "retail": "0x009F3230",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "offset": 286,
+    "symbol": "?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z",
+    "retail": "0x009F37E0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "offset": 301,
+    "symbol": "?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z",
+    "retail": "0x009F33E0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "offset": 563,
+    "symbol": "??_7CSurface@@6B@",
+    "retail": "0x0122F84C",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+    "offset": 30,
+    "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+    "retail": "0x009E3830",
+    "addend": 0,
+    "verified_by": "binding table"
+  }
+]

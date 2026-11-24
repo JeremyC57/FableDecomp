@@ -1,0 +1,24 @@
+##### 006412b0 renames: ?RemovePrimitive@CTCGraphicAppearance@@QAEXPAVCPrimitive@NGraphicAppearance@@@Z=?RemovePrimitive@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCPrimitive@2@@Z
+sections head 14 new 14
+ALL_EQ text_sections_equal=12
+tables H=0 N=0
+##### 00ed99d0 renames: ?ProcessSongsAge@CV_TalentlessBardScript@@QAEXXZ=?ProcessSongsAge@CV_TalentlessBardScript@NScript@@QAEXXZ ?ProcessSongsClothes@CV_TalentlessBardScript@@QAEXXZ=?ProcessSongsClothes@CV_TalentlessBardScript@NScript@@QAEXXZ ?ProcessSongsMarriage@CV_TalentlessBardScript@@QAEXXZ=?ProcessSongsMarriage@CV_TalentlessBardScript@NScript@@QAEXXZ ?ProcessSongsMorality@CV_TalentlessBardScript@@QAEXXZ=?ProcessSongsMorality@CV_TalentlessBardScript@NScript@@QAEXXZ ?ProcessSongsQuestComplete@CV_TalentlessBardScript@@QAEXXZ=?ProcessSongsQuestComplete@CV_TalentlessBardScript@NScript@@QAEXXZ ?ProcessSongsRenown@CV_TalentlessBardScript@@QAEXXZ=?ProcessSongsRenown@CV_TalentlessBardScript@NScript@@QAEXXZ
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 00581cfd renames: ?GetEngineGraphic@@YI?AVCEngineGraphic@@J@Z=?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00581fa4 renames: ?GetEngineGraphic@@YI?AVCEngineGraphic@@J@Z=?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 005bcd2d renames: ?GetStartingRightHandedSet@@YI?AVCRightHandedSet@@J@Z=?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00581d8e renames: ?GetContextSensitiveType@@YI?AW4EContextSensitiveType@@J@Z=?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0

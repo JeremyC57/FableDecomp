@@ -1,0 +1,15 @@
+--- rebuild/include/engine/NParticleEngine_CParticleUpdateParameters.h
++++ overlay/engine/NParticleEngine_CParticleUpdateParameters.h
+@@ -42,7 +42,12 @@
+ #else
+     CParticleUpdateParameters() { }
+ #endif
++#ifndef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_IMPLICIT_DTOR
+     virtual ~CParticleUpdateParameters();                    // 0x006E2500
++#else
++    // Opt-in (p25N, row 0x008E18D0; re-made by AUTH1): no user-declared destructor -- the implicit one (virtual through CBaseClass)
++    // is expanded in the row's sky block and its out-of-line COMDAT compares SAME with retail 0x006E2500 (p25N cmpcomdat).
++#endif
+     void Update() { VectorParams.Update(); UpdateParams.Update(); }
+ };
+ }

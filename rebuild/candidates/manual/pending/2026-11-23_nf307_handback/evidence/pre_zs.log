@@ -1,0 +1,8 @@
+04:39:32 ZS_PASS ZT_00682810 test /home/user/FableDecomp/rebuild/tests/00/68/CTCCreatureOpinionOfHero_InformOfDeed_00682810_test.cpp /Od /W3
+04:39:33 ZS_PASS ZT_006c6040 test /home/user/FableDecomp/rebuild/tests/00/6c/CTCHeroOpinionDeedLog_InformRelevantThingsOfDeed_006c6040_test.cpp /Od /W3
+04:39:34 ZS_PASS ZT_007993f0 test /home/user/FableDecomp/rebuild/tests/00/79/CTCShopKeeper_WitnessedCrime_007993f0_test.cpp /Od /W3
+04:39:34 ZS_PASS ZT_0089feb0 test /home/user/FableDecomp/rebuild/tests/00/89/CGameScriptInterface_AddCrimeCommitted_0089feb0_test.cpp /Od /W3
+04:51:28 ZS_PASS ZT_0076c8a0 test /home/user/FableDecomp/rebuild/tests/00/76/CTCEnemy_CTCEnemy_0076c8a0_test.cpp /Od /W3
+04:51:28 ZS_PASS ZT_004c9120 test /home/user/FableDecomp/rebuild/tests/00/4c/CThing_Save_004c9120_test.cpp /Od /W3
+04:51:28 ZS_PASS ZT_004a3740 test /home/user/FableDecomp/rebuild/tests/00/4a/CWorld_UpdateRegionLoad_004a3740_test.cpp /Od /W3
+04:55:33 ZS_PASS ZT_0064ae80 test /home/user/FableDecomp/rebuild/tests/00/64/NPlayerGuiCDrawAbilityButtons_DrawAbilityButton_0064ae80_test.cpp /Od /W3

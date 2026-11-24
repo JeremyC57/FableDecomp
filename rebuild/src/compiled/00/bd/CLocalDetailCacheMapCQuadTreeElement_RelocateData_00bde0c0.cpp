@@ -15,6 +15,7 @@
 // collections passing the group as owner). The in-place integer re-base helper is the one of 0x00BDDDE0/0x00BDDEE0.
 // CMovableResource (engine/CMovableResource.h: the vptr word only; its virtuals are slot 0 the destructor, slot 1
 // RelocateData, slot 2 CanRelocateData) is the base of the element and of the group collections.
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CMovableResource.h"
 
 class CEngineLandscapeMemoryManager { public:
@@ -23,7 +24,6 @@ class CEngineLandscapeMemoryManager { public:
 // Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
 //   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 
 template <class T> inline void RelocatePointer(T*& p, void* oldBase, void* newBase)
 {
@@ -46,7 +46,7 @@ struct CObjectCacheGroupCollection : CMovableResource {   // CLocalDetailCacheMa
     CObjectTypeCollection*       ObjectTypeCollections; // +0x20
     void OnPostRelocation()
     {
-        CEngineLandscapeMemoryManager* manager = g_pLandscapeRenderer->MemoryManager;
+        CEngineLandscapeMemoryManager* manager = NEngineInternal::GPLandscapeRenderer->MemoryManager;
         for (CObjectTypeCollection* collection = ObjectTypeCollections; collection; collection = collection->Next)
             manager->RebindBlockOwner(collection, this);
     }

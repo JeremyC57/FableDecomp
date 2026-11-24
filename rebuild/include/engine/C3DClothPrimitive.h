@@ -8,7 +8,12 @@
 #include "rebuild_abi.h"
 #include "engine/CCountedPointer.h"
 class CParticleProgram;
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADBINARY_PASS27
+#include "engine/CBaseClassNonCopyable.h"
+class C3DClothPrimitive : public CBaseClassNonCopyable {
+#else
 class C3DClothPrimitive {
+#endif
 public:
 #ifdef FABLE_RETAIL_C3DCLOTHPRIMITIVE_CTOR
     // Opt-in (acctC wfE8, row 0x00A91640 C3DPrimitive2::InitialiseFromMeshFileData; moved here from the row's local model at landing gn):
@@ -43,6 +48,11 @@ public:
     // FABLE_RETAIL_CPARTICLESIMULATIONRENDERDATA_VIRTUAL_DTOR. Same layout. Not combinable with FABLE_RETAIL_C3DCLOTHPRIMITIVE_CTOR
     // (which declares the destructor non-virtual).
     virtual ~C3DClothPrimitive();
+#ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADBINARY_PASS27
+    // FableWin 032FE500 initializes the base, vtable and ParticleProgram only.
+    C3DClothPrimitive() { }
+    bool LoadBinary(class CMemoryDataInputStream&, class CMovableResourceMemoryPool*); // 00AC3BD0
+#endif
 #else
     void* _vftable;
 #endif

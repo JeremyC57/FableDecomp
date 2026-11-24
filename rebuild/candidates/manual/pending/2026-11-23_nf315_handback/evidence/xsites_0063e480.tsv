@@ -1,0 +1,18 @@
+0063e480	call	0074a467	0074a260L CTCCreatureGenerator::GetUndeadGenerationPoint
+0063e480	call	007bbed5	007bbe34L NThingShot::CTCShotDefinitionSpreadShotProjectile::InitMovem
+0063e480	call	007bc05f	007bc004L NThingShot::CTCShotDefinitionNymphFun::InitMovement
+0063e480	call	007bdc3a	007bdb66L NThingShot::CTCShotDefinitionNymphFun::OnCollision
+0063e480	call	007dd714	-
+0063e480	call	007f27bf	007f26b0L CTCLightningOrb::Initialise
+0063e480	call	0080d47f	-
+0063e480	call	0080f3c5	0080f270L CTCNymph::PickNewTargetPos
+0063e480	call	0080f48a	0080f270L CTCNymph::PickNewTargetPos
+0063e480	call	0080f54b	0080f270L CTCNymph::PickNewTargetPos
+0063e480	call	008106e8	008101f0L CTCDExplosiveTrail::FrameUpdate
+0063e480	call	0085c778	0085c470L NCameraModes::CMoveOnCylinder::Update
+0063e480	call	008c235e	008c2240L CCreatureAction_JackScream::PerformAction
+0063e480	call	008c9f96	008c9f40L CCreatureAction_NymphGetHitDie::FrameUpdate
+0063e480	call	008ca57f	008ca4a0L CCreatureAction_NymphGetHitDie::Initialise
+0063e480	call	008dca59	008dc900L NCreatureMode::CModeDragonStrafeBurninate::UpdateBeam
+0063e480	call	0094f14f	0094f090L CAIStateGroup_BalverineCornered::GetLandPos
+0063e480	call	0097405c	00973dc0L CAIStateGroup_JackOfBladesBase::SummonPillars

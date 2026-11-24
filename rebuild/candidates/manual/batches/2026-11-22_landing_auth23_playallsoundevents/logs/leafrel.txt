@@ -1,0 +1,39 @@
+EXT  BOUND  0137e974 ?g_bSoundEnabled@@3_NA
+EXT  BOUND  01375758 ?g_bPlayAnimationSoundEvents@@3_NA
+EXT  BOUND  013b86a0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A
+EXT  BOUND  004c73d0 ?GetPos@CThing@@QBEABVC3DVector@@XZ
+EXT  BOUND  006614f0 ?GFWorld3DDistanceSmallerThan@@YI_NABVC3DVector@@0M@Z
+DEF  EQ   0040f020    60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+EXT  BOUND  0099e4b0 ??0CCharString@@QAE@XZ
+DEF  EQ   0065f604   162 ??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+EXT  BOUND  0099efb0 ??4CCharString@@QAEABV0@ABV0@@Z
+DEF  DATA 0122d70e     1 ??_C@_00CNPNBAHC@?$AA@
+EXT  BOUND  0099e960 ??9CCharString@@QBE_NPBD@Z
+EXT  BOUND  004c7a80 ?GetSampleBank@CThing@@QBEAAVCASoundBank@@XZ
+EXT  BOUND  00686d20 ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ
+EXT  BOUND  0063adf0 ?GetStrongestEngineThemeAt@CWorldMap@@QBEJABVC3DVector@@AAJ@Z
+EXT  BOUND  006869d0 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+DEF  EQ   0063f3a0   108 ??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z
+EXT  BOUND  004c7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ
+DEF  EQ   0066c340   108 ??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+DEF  EQ   00415dd0    25 ??BCDefString@@QBE?AVCCharString@@XZ
+EXT  BOUND  0099eae0 ??1CCharString@@QAE@XZ
+EXT  BOUND  0070b460 ?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ
+EXT  BOUND  006f90c0 ?GetSoundEventManager@NAnimationEvents@@YIAAVCManager@1@XZ
+EXT  BOUND  0070d100 ?GetAllCombinationAnims@CAnimateThing@@QAEXAAV?$vector@PAVCAnimSet@@V?$allocator@PAVCAnimSet@@@std@@@std@@@Z
+DEF  EQ   0066c4d0    50 ?push_back@?$vector@PAVCAnimSet@@V?$allocator@PAVCAnimSet@@@std@@@std@@QAEXABQAVCAnimSet@@@Z
+DEF  DATA 0122dedc     4 __real@00000000
+EXT  BOUND  006f99b0 ?GetAnimEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@MM@Z
+EXT  BOUND  009e5090 ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z
+EXT  BOUND  00a01b50 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
+EXT  BOUND  0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+DEF  DATA 0123542c     2 ??_C@_01ICJEACDI@?$DL?$AA@
+EXT  BOUND  0099f100 ??YCCharString@@QAEABV0@PBD@Z
+EXT  BOUND  0099ec30 ??0CCharString@@QAE@ABV0@@Z
+EXT  BOUND  0099f600 ??H@YI?AVCCharString@@ABV0@PBD@Z
+EXT  BOUND  0099f570 ??H@YI?AVCCharString@@ABV0@0@Z
+EXT  BOUND  0066b120 ?InternalPlaySoundEvent@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z
+EXT  BOUND  0129d25c ?g_InvalidSoundHandle@@3KB
+EXT  BOUND  00bfeb1c ??_V@YAXPAX@Z
+EXT  BOUND  00bfea14 _free
+PROBLEMS 0

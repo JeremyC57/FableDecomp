@@ -1,3 +1,4 @@
+// Leaf: ?Copy@CSoundAtmospheresDef@@UAEXPBVCDefClassBase@@@Z
 // CSoundAtmospheresDef::Copy 0x004e3fd0
 // Real C++ member methods -> native __fastcall (this in ecx, src on stack,
 // callee cleans with ret 4). Retail never touches edx; member calls avoid it.
@@ -12,9 +13,9 @@ struct CBaseDef {               // base copy @ 0x431f10, invoked on self+0
 };
 
 class CSoundAtmospheresDef { public:
-    char pad[0x28];
+    char pad[0x24];
     CSubMember sub;             // at +0x28
-    void Copy(const CDefClassBase* src);
+    virtual void Copy(const CDefClassBase* src);
 };
 
 void CSoundAtmospheresDef::Copy(const CDefClassBase* src)

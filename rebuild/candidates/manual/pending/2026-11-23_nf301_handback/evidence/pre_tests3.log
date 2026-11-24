@@ -1,0 +1,6 @@
+03:19:54 PASS /home/user/FableDecomp/rebuild/tests/00/6f/CReactionFrequencyTraits_CreateFromType_006ff930_test.cpp
+03:19:54 FAIL /home/user/FableDecomp/rebuild/tests/00/88/NScreenEffectCScreenEffectPriorityStack_CScreenEffectPriorityStack_00881370_test.cpp
+03:19:54 PASS_NOWCHAR /home/user/FableDecomp/rebuild/tests/00/dc/NScriptCQOakValeBanditRaidScript_PopulateLevel_00dc0300_test.cpp
+03:19:54 PASS /home/user/FableDecomp/rebuild/tests/00/4c/CSubtitledMessage_GetMessageFromTextIndex_004cea60_test.cpp
+03:19:55 PASS /home/user/FableDecomp/rebuild/tests/00/92/CTCAvoidRegionExit_GetPosition_0092bd80_test.cpp
+03:19:55 PASS /home/user/FableDecomp/rebuild/tests/00/66/CTCCoopSpirit_UpdateScreenRestrictingForces_0066fc90_test.cpp

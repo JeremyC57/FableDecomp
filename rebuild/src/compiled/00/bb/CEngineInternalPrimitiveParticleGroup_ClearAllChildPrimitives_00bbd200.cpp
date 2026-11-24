@@ -1,5 +1,5 @@
 // CEngineInternalPrimitiveParticleGroup::ClearAllChildPrimitives() -- empty the primitive-handle list, the id-to-iterator table and the free-id list (each cleared, then resized to zero)
-// Leaf: ClearAllChildPrimitives
+// Leaf: ?ClearAllChildPrimitives@CEngineInternalPrimitiveParticleGroup@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BBD200, 190 bytes.
 // Callees: list<CEnginePrimitiveHandle>::clear 0x00834F90 and ::resize(size_type) 0x00BBDCB0 (landed), the iterator vector's
 //   erase(first, last) 0x00BBD7B0 (landed) and insert(position, n, const T&) 0x00BBD950, list<long>::resize(size_type,
@@ -80,11 +80,11 @@ struct CLongList {                                     // STLport list<long> (4 
 };
 
 struct CEngineInternalPrimitiveParticleGroup {
-    unsigned char   _pad00[0x48];
+    unsigned char _pad00[0x44];
     CHandleList     Primitives;                        // +0x48
     CIteratorVector PrimitiveIDToIterator;             // +0x4c
     CLongList       FreePrimitiveIDs;                  // +0x58
-    void ClearAllChildPrimitives();
+    virtual void ClearAllChildPrimitives();
 };
 
 void CEngineInternalPrimitiveParticleGroup::ClearAllChildPrimitives()

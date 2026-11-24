@@ -9,6 +9,9 @@
 #pragma comment(linker, "/alternatename:@CallRow@12=?ReorderInput@CVertexGroupBlockOptimiser@@QAEXABVCVertexGroupBlockList@@@Z")
 #pragma comment(linker, "/alternatename:??0?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z=@MapCopy@12")
 #pragma comment(linker, "/alternatename:??4?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEAAV01@ABV01@@Z=@TreeAssign@12")
+// NF270 (q12744): the row now declares the map<unsigned long,long> tree destructor only (FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY, as
+// 0x00ADCE10 / 0x00ADC310); its ~map COMDAT tail-jumps to it, so it is the fourth external the object leaves undefined.
+#pragma comment(linker, "/alternatename:??1?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@XZ=@TreeDtor@8")
 
 static int g_fail = 0, g_run = 0;
 static void Check(bool ok, int line) { if (!ok) { g_fail = 1; printf("check failed at line %d (run %d)\n", line, g_run); } }
@@ -26,6 +29,8 @@ extern "C" void __fastcall CallRow(Opt* self, void*, const BVec* solution);
 static int g_mapCopies = 0, g_treeAssigns = 0, g_destroyed = 0;
 extern "C" Map* __fastcall MapCopy(Map* self, void*, const Map* other) { ++g_mapCopies; *self = *other; return self; }
 extern "C" Map* __fastcall TreeAssign(Map* self, void*, const Map* other) { ++g_treeAssigns; *self = *other; return self; }
+static int g_treeDtors = 0;
+extern "C" void __fastcall TreeDtor(Map*, void*) { ++g_treeDtors; }
 class CVertexGroupBlock;
 namespace std {                                    // the object's __fastcall std::__destroy_aux<CVertexGroupBlock*> (an explicit
 struct __false_type;                               // specialization gives the exact decorated name; /alternatename does not bind ??$ names)

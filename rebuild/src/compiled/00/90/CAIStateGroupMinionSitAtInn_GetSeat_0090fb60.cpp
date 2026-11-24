@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionSitAtInn::GetSeat(CThing* owner) -- ask the owner building's tavern component for a free seat
-// Leaf: ?GetSeat@CAIStateGroup_MinionSitAtInn@@UAEXPAVCThing@@@Z
+// Leaf: ?GetSeat@CAIStateGroup_MinionSitAtInn@@MAEXPAVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // for the creature and keep it in PSeat.
@@ -108,7 +108,9 @@ struct CThingF : CThing {
 
 struct CAIStateGroup_MinionSitAtInn : CAIStateGroupBase {
     CIntelligentPointerThing PSeat;             // +0x14 CIntelligentPointer<CThingObject>
+    protected:
     virtual void GetSeat(CThing* owner);
+    public:
 };
 
 void CAIStateGroup_MinionSitAtInn::GetSeat(CThing* owner)

@@ -74,6 +74,20 @@ public:
     class CM_QuestControl : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_HauntedHouseScript&, CScriptDataBase*, const CScriptThing&); // 0x00E955B0
+#ifdef FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+        // Pass26 00e96110: original nested entity layout, same base/parent/master order as CM_UndeadHere.
+        // Main private virtual spelling is independently attested in Ego_r and FableWin.
+        typedef CV_HauntedHouseScript TParentClass;
+        CM_QuestControl(CV_HauntedHouseScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+        CQ_SunnyvaleMasterData* GetMasterData();
+    private:
+        virtual void Init();
+        virtual void Main();
+    protected:
+        CV_HauntedHouseScript& ParentClass;
+        CQ_SunnyvaleMasterData* PMasterData;
+#endif
     };
     class CM_HeroInsideHouse : public CEntityScriptBase {
     public:
@@ -84,7 +98,7 @@ public:
 FABLE_STATIC_ASSERT_AT(68, sizeof(NScript::CV_HauntedHouseScript) == 0x5C);
 
 #if defined(FABLE_RETAIL_CM_UNDEADHERE_MAIN) && defined(FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS)
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_HauntedHouseScript::CM_UndeadHere) == 0x20);
+FABLE_STATIC_ASSERT_AT(87, sizeof(NScript::CV_HauntedHouseScript::CM_UndeadHere) == 0x20);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

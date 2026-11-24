@@ -1,5 +1,5 @@
 // NPlayerGui::CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos, long graphic, long value, long effect, const CWideString& text, unsigned char alpha, bool withText, bool flag) -- draw the box through the static helper, place the change text (right-aligned under the box when shown) and keep the box's particle effect alive at the text position
-// Leaf: DrawStatBox@CStatBar
+// Leaf: ?DrawStatBox@CStatBar@NPlayerGui@@MAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@JJJABVCWideString@@E_N4@Z
 // Naming (NF173, 2026-11-20): q11968: 0x00AED090 is Ego_r.pdb 0x00AB1EE0 / FableWin.pdb 0x02F072A0 ?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXABVC2DVector@@W4EEngine2DLayer@@@Z (position by const reference); respelled in place, bytes unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
@@ -111,8 +111,11 @@ class CStatBar { public:
     static void __fastcall DrawStatBox(const CEnginePrimitivePrepareInfo& info, CRetailVector<CEnginePrimitiveHandle>& handles,
         const C2DVector& pos, long graphic, const CWideString& text, long value, unsigned char alpha, bool withText, bool flag,
         bool extra);                                                    // 0x00645853
-    void DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos, long graphic,
-        long value, long effect, const CWideString& text, unsigned char alpha, bool withText, bool flag);
+    virtual void v01();
+protected:
+    virtual void DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos, long graphic,
+        long value, long effect, const CWideString& text, unsigned char alpha, bool withText, bool flag);   // slot 2: rtti-vtables NPlayerGui::CStatBar slot 2; PDB MAE
+public:
 };
 
 void CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos,

@@ -1,0 +1,21 @@
+## 004d3d69
+< UND ??0CTCEnemy@@QAE@PAVCThing@@@Z
+> UND ??0CTCEnemy@@QAE@AAVCThing@@@Z
+## 004d94ab
+< UND ??0CTCFlashOnHit@@QAE@PAVCThing@@@Z
+> UND ??0CTCFlashOnHit@@QAE@AAVCThing@@@Z
+## 009212c0
+< UND ?AddFollower@CTCFollowed@@QAEXPAVCThing@@_N@Z
+> UND ?AddFollower@CTCFollowed@@QAEXAAVCThing@@_N@Z
+## 00921870
+< UND ?RemoveFollower@CTCFollowed@@QAEXPAVCThing@@@Z
+> UND ?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z
+## 007be0f9
+< UND ?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MPAVCThing@@@Z
+> UND ?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z
+## 006afd60
+< UND ?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXJ@Z
+> UND ?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z
+## 006d7960
+< UND ?GetTotalStatLevel@CTCHeroExperience@@QBEJJ@Z
+> UND ?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z

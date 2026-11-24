@@ -1,7 +1,10 @@
-class CSpecialAbilitiesUnholyPowerDef;
+// Leaf: ?GetSizeofClass@CSpecialAbilitiesUnholyPowerDef@@UAEKXZ
 
-unsigned long __fastcall CSpecialAbilitiesUnholyPowerDef_GetSizeofClass(const CSpecialAbilitiesUnholyPowerDef* self)
+#define FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_RTTI_DECLS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#include "engine/CSpecialAbilitiesUnholyPowerDef.h"
+unsigned long CSpecialAbilitiesUnholyPowerDef::GetSizeofClass()
 {
-    (void)self;
     return 0xfc;
 }
+// Flatten route (flatten_pilot v4, NF324): CSpecialAbilitiesUnholyPowerDef_GetSizeofClass -> CSpecialAbilitiesUnholyPowerDef::GetSizeofClass, the RTTI-placed PDB member; class model: engine/CSpecialAbilitiesUnholyPowerDef.h opt-in FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_RTTI_DECLS (preamble of CTCInventoryAbilities_IsAbleToUseAbility_005ee49a.cpp).

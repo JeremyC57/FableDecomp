@@ -1,0 +1,20 @@
+--- orig/hdr_CCombatAction_GenericStrikeResponseBase.h	2026-11-24 01:17:51.033426382 +0000
++++ hdr/engine/CCombatAction_GenericStrikeResponseBase.h	2026-11-24 01:17:51.078027370 +0000
+@@ -38,6 +38,17 @@
+     bool MoveOnHitOverride,CreateDustEffect;
+     long FrameForDust;
+     unsigned char DustTravelDirection[12];
++#ifdef FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x006F56B0: ?GetAnimationTransitionInTime@CCombatAction_GenericStrikeResponseBase@@UBEJXZ (FableWin.pdb)
++public:
++    virtual long GetAnimationTransitionInTime() const;
++    // 0x00865E00: ?IsToCauseRecoil@CCombatAction_GenericStrikeResponseBase@@UBE_NXZ (Ego_r.pdb + FableWin.pdb)
++    virtual bool IsToCauseRecoil() const;
++protected:
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(32, sizeof(CCombatAction_GenericStrikeResponseBase)==0x148);
+ #endif

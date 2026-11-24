@@ -1,0 +1,12 @@
+entry	address	status	binders_respelled	note
+q12608	0x0042B8FC	done	0x0042B8FC own calls: ?Cleanup_00429e16@SubObject -> ~pair (0x00429E16); self recursion	self row on the STLport _M_erase; binder 0x0042C02F already on it (nf228)
+q12609	0x0042A264	done	self recursion	self row on the STLport _M_erase (binder 0x0042ACC3)
+q12610	0x0042A237	done	self recursion	self row on the STLport _M_erase (binder 0x0042AC76)
+q12611	0x0042AC9F	done	-	self row on the STLport _Rb_tree_base ctor (binder 0x0042B76C)
+q12612	0x0042ACEC	done	-	self row on the STLport _Rb_tree_base ctor (binder 0x0042B7AD)
+q12613	0x0042AD10	done	-	self row on the STLport _Rb_tree_base ctor (binder 0x0042B7EE)
+q12614	0x0042AE33	done	-	self row on the STLport _M_lower_bound (binder 0x0042D246); MATCH
+q12615	0x0042AC0A	done	-	self row on the STLport _List_base<CObserver*> ctor (binder 0x0042BE7B)
+q12616	0x013B871C	partial	0x00446720 (x2), 0x00558170, 0x00599D5C: ?g_ -> the PDB static through the header's Get()	0x0042EBB6 / 0x0041D0A8 blocked (needs header claim), 0x0059A238 open (context); census found two more stand-in spellings (NAME_FIXES)
+q12617	0x0042B8FC	done	-	the held table line is added (TABLE_CHANGES), the self row now defines it
+q12618	(13 rows)	partial	-	0x0042BE50: new header test (PASS); the 12 CManager / CObservable vtable-slot rows open (context). Plus new header tests for the 8 entry-1 rows

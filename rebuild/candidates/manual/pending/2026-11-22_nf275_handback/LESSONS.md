@@ -1,0 +1,7 @@
+# NF275 lessons (one line each)
+- A class header port that types a member with an inline virtual dtor (the real CDiskFileWin32) makes VC7.1 emit that dtor, the vtable it stores and every inline callee as pick-any copies even in a ctor with no EH frame (referenced from .debug$F): read the f1 symbol diff, then make the dtor declaration-only for that TU (DTOR_DECL_ONLY) rather than chase owners for each copy.
+- A header-implicit dtor of a class whose members stay opaque (CNetworkClient's Server) is shorter than retail's (5 v 19 bytes): declare the dtor out of line in the opt-in, never let that TU emit it.
+- Two rows that emit the same vtable COMDAT (ctor and dtor of one class) must bind the same slot spellings: vtcheck both objects slot by slot; an access difference in one row's local model (public v the PDB's protected) is fixed in place and makes the pair a family.
+- The vtable-slot spelling census has no table lines: list each slot target's self Leaf plus every emitter's slot symbol by hand (0x00416E78's self QAE stand-in would have grown with MAE unless 0x00418B7A moved too).
+- engine/CDisplayManager.h declares AddDeviceResetCallback only under FABLE_RETAIL_CDISPLAYMANAGER and needs Direct3D9Types.h + Win32Types.h first.
+- Before holding a strong-to-pick-any owner change on competing pick-any copies, relink the HEAD set with the owner LAST: under /FORCE the linker keeps the first definition it meets (LNK4006 "second definition ignored" can name the strong owner), so the competition already exists at HEAD.

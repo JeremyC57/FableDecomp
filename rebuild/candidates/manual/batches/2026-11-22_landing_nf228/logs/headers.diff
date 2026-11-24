@@ -1,0 +1,40 @@
+diff --git a/rebuild/include/engine/CGameComponent.h b/rebuild/include/engine/CGameComponent.h
+index d45a3b1a3f..192ad58a10 100644
+--- a/rebuild/include/engine/CGameComponent.h
++++ b/rebuild/include/engine/CGameComponent.h
+@@ -13,11 +13,17 @@ public:
+     virtual void Init();
+     virtual bool Run(CGameComponent**)=0;
+     virtual void ChangeTextureColourDepth(long)=0;
++#ifdef FABLE_RETAIL_CGAMECOMPONENT_ISRUNNING
++    // NF228 opt-in (2026-11-22, row 0x0041E3F6 NUISystem::CManager::CManager): FableWin.pdb 0x01AE52EA ?IsRunning@CGameComponent@@QAE_NXZ
++    // (public, non-const, bool) and the retail body that reads Running +9 in place (0x0041E558 `cmp byte ptr [eax+9],bl` on the
++    // front-end component). Inline, as retail expands it.
++    bool IsRunning() { return Running; }
++#endif
+ protected:
+     virtual void SetQuit();
+     bool Quit;
+     bool Running;
+     CGame& Game;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CGameComponent)==0x10);
++FABLE_STATIC_ASSERT_AT(22, sizeof(CGameComponent)==0x10);
+ #endif
+diff --git a/rebuild/include/engine/NUISystem_CUIScreenUnitConverter.h b/rebuild/include/engine/NUISystem_CUIScreenUnitConverter.h
+index 833a26b6cc..a42f84b33c 100644
+--- a/rebuild/include/engine/NUISystem_CUIScreenUnitConverter.h
++++ b/rebuild/include/engine/NUISystem_CUIScreenUnitConverter.h
+@@ -12,6 +12,12 @@ public:
+     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ, retail 0x0040F0E0 (landed). Declaration only.
+     static void __fastcall ResetDimensions();                // 0x0040F0E0
+ #endif
++#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_SETISUSINGRELATIVECOORDS
++    // NF228 opt-in (2026-11-22, row 0x0041E3F6 NUISystem::CManager::CManager): Ego_r.pdb 0x00438D8A / FableWin.pdb 0x01AE527F
++    // ?SetIsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@SIX_N@Z (public static __fastcall), retail 0x004299A8 (landed; the
++    // constructor's `mov cl,1 ; call`). Declaration only.
++    static void __fastcall SetIsUsingRelativeCoords(bool relative);   // 0x004299A8
++#endif
+ #if defined(FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS)
+     // Both original complete types, exact private PUBLICs and GDATA32 declarations.
+ private:

@@ -47,7 +47,7 @@ class C3DGroup2 { public:
 
 class CParticleProgram { public:
     CParticleProgram();                                            // 0x00AE3550
-    bool ReadFromFile(CDataInputStream* in, CMovableResourceMemoryPool* pool);   // 0x00AE3C30
+    bool ReadFromFile(CDataInputStream& in, CMovableResourceMemoryPool& pool);   // 0x00AE3C30
     void ReserveGroups(unsigned long count);                       // 0x00AE3330
     void AddGroup(const C3DGroup2& group);                         // 0x00AE37D0
     unsigned char _body[0x140];
@@ -77,7 +77,7 @@ C3DClothPrimitive::C3DClothPrimitive(const C3DMeshFileClothChunk* chunk)
     ParticleProgram.Reset(new CParticleProgram);
     const void* data = chunk->ProgramData.GetData();
     CMemoryDataInputStream stream(data, chunk->ProgramData.size());
-    ParticleProgram->ReadFromFile(&stream, N3DMeshAllocators::ClothMemoryPool);
+    ParticleProgram->ReadFromFile(stream, *N3DMeshAllocators::ClothMemoryPool);
     MaterialIndex = chunk->MaterialIndex;
     unsigned long groupCount = chunk->CountSubChunksOfType("VGRP");
     ParticleProgram->ReserveGroups(groupCount);

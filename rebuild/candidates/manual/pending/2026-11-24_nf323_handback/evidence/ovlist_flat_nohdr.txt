@@ -1,0 +1,48 @@
+CCreatureAction_StartSneaking vt=01258dfc slots=70
+   slot  0 0062D7D0 ??_GCCreatureAction_StartSneaking@@UAEPAXI@Z eg=0 fw=1
+   slot  3 0062D7B0 ?PerformAction@CCreatureAction_StartSneaking@@UAEXXZ eg=0 fw=1
+   slot  4 00845C70 ?FinishAction@CCreatureAction_StartSneaking@@UAEXXZ eg=1 fw=1
+   slot 11 0062F230 ?Clone@CCreatureAction_StartSneaking@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+   slot 49 0062D7C0 ?IsPreventingNormalMovement@CCreatureAction_StartSneaking@@UBE_NXZ eg=0 fw=1
+CCreatureAction_StopSneaking vt=01258f24 slots=70
+   slot  0 0062D870 ??_ECCreatureAction_StopSneaking@@UAEPAXI@Z eg=0 fw=1
+   slot  3 00845BC0 ?PerformAction@CCreatureAction_StopSneaking@@UAEXXZ eg=1 fw=1
+   slot 11 0062F260 ?Clone@CCreatureAction_StopSneaking@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+   slot 49 0062D860 ?IsPreventingNormalMovement@CCreatureAction_StopSneaking@@UBE_NXZ eg=0 fw=1
+CCreatureAction_PlayAnimationFromIndex vt=0127507c slots=70
+   slot  0 0084B4A0 ??_ECCreatureAction_PlayAnimationFromIndex@@UAEPAXI@Z eg=0 fw=1
+   slot  3 0084B490 ?PerformAction@CCreatureAction_PlayAnimationFromIndex@@UAEXXZ eg=0 fw=1
+   slot 11 0084C460 ?Clone@CCreatureAction_PlayAnimationFromIndex@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+CCreatureAction_YellOverHere vt=0127331c slots=70
+   slot  0 0084AB80 ??_ECCreatureAction_YellOverHere@@UAEPAXI@Z eg=0 fw=1
+   slot  3 00842250 ?PerformAction@CCreatureAction_YellOverHere@@UAEXXZ eg=1 fw=1
+   slot 11 0084C7A0 ?Clone@CCreatureAction_YellOverHere@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+CCreatureAction_SpiritReturnToHero vt=01275c54 slots=70
+   slot  0 008550E0 ??_GCCreatureAction_SpiritReturnToHero@@UAEPAXI@Z eg=0 fw=1
+   slot  3 00854720 ?PerformAction@CCreatureAction_SpiritReturnToHero@@UAEXXZ eg=1 fw=1
+   slot 11 00855200 ?Clone@CCreatureAction_SpiritReturnToHero@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+   slot 12 008546A0 ?Initialise@CCreatureAction_SpiritReturnToHero@@UAEXXZ eg=1 fw=1
+CCreatureAction_LookThroughWindow vt=01270fbc slots=70
+   slot  0 007EBA90 ??_ECCreatureAction_LookThroughWindow@@UAEPAXI@Z eg=0 fw=1
+   slot  3 008424D0 ?PerformAction@CCreatureAction_LookThroughWindow@@UAEXXZ eg=1 fw=1
+   slot 11 007EBB30 ?Clone@CCreatureAction_LookThroughWindow@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+CCreatureAction_DropWeapon vt=01271274 slots=70
+   slot  0 007ED040 ??_ECCreatureAction_DropWeapon@@UAEPAXI@Z eg=0 fw=1
+   slot  3 00845FE0 ?PerformAction@CCreatureAction_DropWeapon@@UAEXXZ eg=1 fw=1
+   slot 11 007ED140 ?Clone@CCreatureAction_DropWeapon@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+CCreatureAction_ActivateZTarget vt=012738ec slots=70
+   slot  0 0084AAA0 ??_ECCreatureAction_ActivateZTarget@@UAEPAXI@Z eg=0 fw=1
+   slot  3 008424A0 ?PerformAction@CCreatureAction_ActivateZTarget@@UAEXXZ eg=1 fw=1
+   slot 11 0084C010 ?Clone@CCreatureAction_ActivateZTarget@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+CCreatureAction_StartFillingTankard vt=01273d6c slots=70
+   slot  0 0084AC00 ??_GCCreatureAction_StartFillingTankard@@UAEPAXI@Z eg=0 fw=1
+   slot  3 0084A290 ?PerformAction@CCreatureAction_StartFillingTankard@@UAEXXZ eg=1 fw=1
+   slot 11 0084CA30 ?Clone@CCreatureAction_StartFillingTankard@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+CCreatureAction_StopFillingTankard vt=01273e9c slots=70
+   slot  0 0084AC20 ??_ECCreatureAction_StopFillingTankard@@UAEPAXI@Z eg=0 fw=1
+   slot  3 0084A2F0 ?PerformAction@CCreatureAction_StopFillingTankard@@UAEXXZ eg=1 fw=1
+   slot 11 0084CA60 ?Clone@CCreatureAction_StopFillingTankard@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1
+CCreatureAction_CallSpouseHome vt=0129203c slots=70
+   slot  0 00933D30 ??_ECCreatureAction_CallSpouseHome@@UAEPAXI@Z eg=0 fw=1
+   slot  3 00849140 ?PerformAction@CCreatureAction_CallSpouseHome@@UAEXXZ eg=1 fw=1
+   slot 11 00933D50 ?Clone@CCreatureAction_CallSpouseHome@@UBEPAVCCreatureActionBase@@XZ eg=1 fw=1

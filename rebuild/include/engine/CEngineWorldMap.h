@@ -49,6 +49,23 @@ public:
     // owns world cell (x, y) from the 32x32-cell index grid Map (0 or less = none), NULL off the grid. Expanded in
     // CEngineMap::PeekThemeId 0x00B43720 (`test edx,edx ; jl` .. `shl ebp,5 ; cmp` .. `movsx eax,word [edx+eax*2] ; test ; jle`
     // .. `mov eax,[edx+eax*4]`) and its two siblings.
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_GETMAP_ORIGINAL_PASS26
+    // Pass26 00b43720/00b43870/00b439c0. Original donor02cc98a0
+    // subtracts offsets in the callee, then positive nested tests and direct MapList[].
+    CEngineMap* GetMap(long world_x,long world_y) const
+    {
+        world_x-=MapOffsetX;
+        world_y-=MapOffsetY;
+        if (world_x>=0 && world_y>=0) {
+            if (world_x<MapArrayWidth*32 && world_y<MapArrayHeight*32) {
+                long index=Map[(world_x>>5)+(world_y>>5)*MapArrayWidth];
+                if (index>0) return MapList[index];
+                else return 0;
+            }
+        }
+        return 0;
+    }
+#else
     CEngineMap* GetMap(long x, long y) const
     {
         if (x < 0 || y < 0 || x >= MapArrayWidth * 32 || y >= MapArrayHeight * 32)
@@ -58,6 +75,7 @@ public:
             return 0;
         return GetMap(index);
     }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CENGINEWORLDMAP_PEEKLANDSCAPE
     // Retail opt-in (chunk 2037, row 0x00B52DD0 CEngineWeatherRenderer::ClipBoxToLandscape): FableWin.pdb

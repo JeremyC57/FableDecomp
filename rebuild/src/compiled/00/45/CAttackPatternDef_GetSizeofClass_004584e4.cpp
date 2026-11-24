@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CAttackPatternDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CAttackPatternDef_GetSizeofClass()
+class CAttackPatternDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CAttackPatternDef::GetSizeofClass()
 {
     return 72;
 }

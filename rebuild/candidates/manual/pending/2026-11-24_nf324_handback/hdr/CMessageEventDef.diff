@@ -1,0 +1,16 @@
+--- orig/hdr_CMessageEventDef.h	2026-11-24 01:19:44.126555610 +0000
++++ hdr/engine/CMessageEventDef.h	2026-11-24 01:19:44.176428942 +0000
+@@ -22,5 +22,13 @@
+ // ?Alloc@CMessageEventDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+ public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+ #endif
++#ifdef FABLE_RETAIL_CMESSAGEEVENTDEF_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x004556CA: ?GetSizeofClass@CMessageEventDef@@UAEKXZ (FableWin.pdb)
++public:
++    virtual unsigned long GetSizeofClass();
++#endif
+ };
+ #endif

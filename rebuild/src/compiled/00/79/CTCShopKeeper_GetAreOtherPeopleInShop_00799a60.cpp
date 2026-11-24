@@ -12,7 +12,10 @@ class CTCShopKeeper { public:
     bool          m_areOtherPeopleInShop;    // +0x2c
     unsigned char _pad2d[3];
     long          m_lastCheckTime;           // +0x30
-    bool CalcAreOtherPeopleInShop();         // 0x00799140
+    private:
+    bool CalcAreOtherPeopleInShop();
+    public:
+         // 0x00799140
     bool GetAreOtherPeopleInShop(bool force);
 };
 

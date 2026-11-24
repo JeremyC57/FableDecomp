@@ -1,5 +1,5 @@
 // CTCFollowed::AddEmoteIcon(CThing&) -- show the follower emote icon (from the global defs) over a follower that has an emote-icon component, when the parent wants follower icons and the follower is not already showing it
-// Leaf: AddEmoteIcon
+// Leaf: ?AddEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x006D4FD0, 117 bytes (`ret 4`). Ego_r.pdb `?AddEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z`. Callees:
@@ -62,7 +62,9 @@ protected:
 
 class CTCFollowed : public CTCBase { public:
     CThing* ParentThing;                                    // +0x04 (CTCBase)
+    protected:
     void AddEmoteIcon(CThing& follower);
+    public:
 };
 
 void CTCFollowed::AddEmoteIcon(CThing& follower)

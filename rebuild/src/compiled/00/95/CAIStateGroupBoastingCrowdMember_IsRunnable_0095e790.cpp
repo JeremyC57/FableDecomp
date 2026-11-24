@@ -1,5 +1,5 @@
 // CAIStateGroup_BoastingCrowdMember::IsRunnable() -- the live hero runs a boasting crowd (interface 0x73) whose current group is active (state not 0 or 10) and accepts this creature: target the group's boaster
-// Leaf: ?IsRunnable@CAIStateGroup_BoastingCrowdMember@@QAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_BoastingCrowdMember@@MAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retry 10b (combined getter sweep, FIXES B-15): the player manager and the brain's creature are read through inline getters (`g_pEngine->GetPlayerManager()`, `PBrain->GetCreature()`); plain member reads give the parked register difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095E790, length 209 bytes (+ int3 padding).
@@ -78,7 +78,9 @@ struct CAIStateGroup_BoastingCrowdMember
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
     CIntelligentPointer<CThing> PTargetThing;          // +0x14
-    bool IsRunnable();
+    protected:
+    virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_BoastingCrowdMember::IsRunnable()

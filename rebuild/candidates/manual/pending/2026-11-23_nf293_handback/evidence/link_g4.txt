@@ -1,0 +1,33 @@
+## HEAD set: H_007e5b90.obj H_0091e050.obj H_009967e0.obj H_00996990.obj H_00996a40.obj H_00419d90.obj H_00855b50.obj H_008bb200.obj H_00909520.obj H_008e0780.obj H_008e07f0.obj H_0092a8a0.obj H_0092b3e0.obj H_0097ef60.obj H_0097f3a0.obj H_007ed170.obj H_007ed2c0.obj H_0078a2c0.obj H_007eb1a0.obj 006eb600.obj 009ebb30.obj 008e4a60.obj 008e4ad0.obj 008d5110.obj 0062d9e0.obj 0078ae30.obj 00843700.obj 00a3ab90.obj
+duplicates 0
+UNRESOLVED 1 ??0CConsoleCommandParameters@@QAE@ABV0@@Z
+UNRESOLVED 1 ??0CConsoleCommandParameters@@QAE@J@Z
+UNRESOLVED 2 ??0CCreatureAction_AimMissileWeapon@@QAE@PAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ??0CCreatureAction_BlockBase@@QAE@PAVCThingCreatureBase@@0JJ@Z
+UNRESOLVED 1 ??0CCreatureAction_DragonFireBeamOutOf@@QAE@PAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ??0CCreatureAction_DragonStrafeOutOf@@QAE@PAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ??0CCreatureAction_Drink@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
+UNRESOLVED 4 ??0CCreatureAction_FireMissileWeapon@@QAE@PAVCThingCreatureBase@@PBVCThing@@@Z
+UNRESOLVED 2 ??0CCreatureAction_GiveItemToThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@1@Z
+UNRESOLVED 1 ??0CCreatureAction_HeroLoadRangedWeapon@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
+UNRESOLVED 1 ??0CCreatureAction_PickUpGenericBox@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
+UNRESOLVED 1 ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@0ABVCCharString@@_N@Z
+UNRESOLVED 2 ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z
+UNRESOLVED 1 ??1CCreatureAction_BlockBase@@UAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_HeroLoadRangedWeapon@@QAE@XZ
+UNRESOLVED 2 ?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@PAVCThingCreatureBase@@@Z
+UNRESOLVED 3 ?SetStreamInput@CCompressorZlib@@QAEXPBXJ@Z
+UNRESOLVED 1 ?v00@CCreatureAction_CastWillForceSpell@@UAEXXZ
+## new set: 007e5b90.obj 0091e050.obj 009967e0.obj 00996990.obj 00996a40.obj 00419d90.obj 00855b50.obj 008bb200.obj 00909520.obj 008e0780.obj 008e07f0.obj 0092a8a0.obj 0092b3e0.obj 0097ef60.obj 0097f3a0.obj 007ed170.obj 007ed2c0.obj 0078a2c0.obj 007eb1a0.obj 006eb600.obj 009ebb30.obj 008e4a60.obj 008e4ad0.obj 008d5110.obj 0062d9e0.obj 0078ae30.obj 00843700.obj 00a3ab90.obj
+duplicates 0
+UNRESOLVED 1 ??0CConsoleCommandParameters@@QAE@ABV0@@Z
+UNRESOLVED 2 ??0CCreatureAction_AimMissileWeapon@@QAE@PAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ??0CCreatureAction_BlockBase@@QAE@AAVCThingCreatureBase@@0JJ@Z
+UNRESOLVED 1 ??0CCreatureAction_Drink@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
+UNRESOLVED 1 ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@0ABVCCharString@@_N@Z
+UNRESOLVED 2 ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z
+UNRESOLVED 1 ??1CCreatureAction_BlockBase@@UAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_HeroLoadRangedWeapon@@QAE@XZ
+UNRESOLVED 3 ?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z
+UNRESOLVED 1 ?v00@CCreatureAction_CastWillForceSpell@@UAEXXZ
+LK_DONE

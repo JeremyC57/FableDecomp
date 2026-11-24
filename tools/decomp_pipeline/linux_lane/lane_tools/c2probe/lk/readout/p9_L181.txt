@@ -1,0 +1,7 @@
+# ?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z: 2118 sorts, 2757 comparator calls
+ 3301 a L181   op278  [0]v[1] B1 count 000101be 00000004 X=446    Y=None   rule -  s446 | c4
+20017 b L181   op278  [0]v[1] B1 count 00010020 000002bc X=1      Y=None   rule -  s1:_this | c2bc
+32244 b L181   op27a  [0]v[1] B1 count 00013760 00000000 X=443    Y=None   rule -  s443:_end_frustrum_width | 
+32300 b L181   op27a  [0]v[1] B1 tie   0001a6e0 0001a6e0 X=1335   Y=1335   rule 1  s1335 | s1335
+32301 b L181   op27a  [0]v[1] B1 tie   000104c1 000104c1 X=2086   Y=2086   rule 1  s2086 | s2086
+32302 b L181   op278  [0]v[1] B1 hash  0103f4d0 01030e73 X=None   Y=None   rule -  s1335 s1335 | s2086 s2086

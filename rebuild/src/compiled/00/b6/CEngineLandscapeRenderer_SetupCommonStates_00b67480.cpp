@@ -31,7 +31,7 @@ class CShaderRenderManager { public:
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }     // 0x01436E14
 
 class CEngineLandscapeRenderer { public:
-    void SetupCommonStates();
+    private: void SetupCommonStates(); public:
 };
 
 void CEngineLandscapeRenderer::SetupCommonStates()

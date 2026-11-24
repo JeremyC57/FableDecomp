@@ -1,0 +1,39 @@
+#30	00bbce10	MADEUP:CIdList	?remove@CIdList@@QAEXABJ@Z	52: void remove(const long& value);                // 0x0084ACE0
+#40	004ea2c9	WRONGCLASS:CArray<class CEngin	?resize@?$CArray@VCEngineGraphic@@@@QAEXK@Z	53: void resize(unsigned long count);                   // 0x004EA398
+#50	0077dbc0	MADEUP:CThingPointerVector	?resize@CThingPointerVector@@QAEXI@Z	45: void resize(unsigned int n);                                        // 0x00739B40
+#60	009c82c0	WRONGCLASS:CArray<class NGameT	?reserve@?$CArray@VCDataBankGroupEntry@NGameText@@@@QAEXK@Z	25: void reserve(unsigned long size);
+#70	0042dc94	MADEUP:ERRORMESSAGE_TYPE	?ShowErrorMessage@CManager@NUISystem@@SIXW4ERRORMESSAGE_TYPE@2@@Z	20: static void __fastcall ShowErrorMessage(ERRORMESSAGE_TYPE type);   // 0x0041E61B (GetInstance()->ShowErrorMessage)
+#80	00864600	FREE	?h_00864600@@YGHHPAX@Z	1: int __stdcall h_00864600(int arg, void* p);
+#80	008645e0	HASH	?IsAwareOfThingImplementation@?A0x9c087913@@YI_NPBVCThingAICreature@@P	27: bool __fastcall IsAwareOfThingImplementation(const CThingAICreature* creature, const CThing* thing, bool check_line_
+#90	0094f640	MADEUP:CCorneredMethods,Perfor	?PerformActionAndWait@CCorneredMethods@@QAEJPBVCCombatActionBase@@_N@Z	75: long PerformActionAndWait(const CCombatActionBase*,bool); // 0097DA40
+#90	0094f730	MADEUP:CJumpAtFleeingMethods,P	?PerformActionAndWait@CJumpAtFleeingMethods@@QAEJPBVCCombatActionBase@	39: long PerformActionAndWait(const CCombatActionBase*,bool); // 0097DA40
+#90	0096e610	MADEUP:CAIStateGroup_SummonerS	?AIAction_CombatPerformActionAndWait@CAIStateGroup_SummonerSummon_Meth	78: long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
+#90	0091e050	SIG	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombat	68: long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
+#90	0096fcd0	SIG	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCreatu	146: long AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DA40
+#90	00961790	WRONGCLASS:CAIStateGroup_Bandi	?AIAction_CombatPerformActionAndWait@CAIStateGroup_BanditKingCharge@@Q	96: long AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DA40
+#90	0095b280	MADEUP:CAIStateGroupHoverHorne	?AIAction_CombatPerformActionAndWait@CAIStateGroupHoverHornetQueenTake	103: long AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DA40
+#100	0044c47b	SIG	??0CCombatAbilityData@@QAE@J@Z	13: class CCombatAbilityData { public:                    // vtable 0x01232484, 0x18 bytes
+#100	00452b4d	MADEUP:ScopeGuard,init	?init@ScopeGuard@@QAEXH@Z	18: struct ScopeGuard { char buf[0x18]; void init(int flag); };
+#100	00453de0	MADEUP:CCombatAbilityData_Call	??0CCombatAbilityData_Calls@@QAE@J@Z	16: struct CCombatAbilityData_Calls {                           // 0x18 bytes (vtable 0x01232484)
+#110	008a99f0	MADEUP:CEnvironmentSpellEffect	?SetBypassScreenFilter@CEnvironmentSpellEffectInterfaceMethods@@QAEXAB	139: struct CEnvironmentSpellEffectInterfaceMethods{void SetBypassScreenFilter(const PointerVector&,void*);}; //006B83E0
+#110	006a23e0	MADEUP:NRemap006a23e0,CEnviron	?SetBypassScreenFilter@CEnvironmentSpellEffectInterfaceMethods@NRemap0	19: struct CEnvironmentSpellEffectInterfaceMethods {void SetBypassScreenFilter(vector&,int);};struct Scene {char pad[650
+#120	00b2c460	SIG	?AddResource@CResourceBank@@QAEXPAVCResource@@@Z	86: void AddResource(CResource* resource);                  // 0x009FC380
+#120	009fe380	MADEUP:AddResource_009fc380	?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z	23: class CResourceBank { public:void* Vtable;CResourceList ResourceList;void AddResource_009fc380(CResource*);}; //009f
+#130	0095d310	MADEUP:CThingB	?GetThingInPrimarySlot@CTCCarrying@@QAEPAUCThingB@@XZ	137: CThingB* GetThingInPrimarySlot();           // 0x006A1440
+#130	00715110	MADEUP:GetWeaponInHand	?GetWeaponInHand@CTCInventoryAbilities@@QBEPAVCThing@@XZ	40: class CTCInventoryAbilities { public: CThing* GetWeaponInHand() const; };    // 0x006A1440
+#130	008d9530	MADEUP:CarryingMethods,ThingNa	?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ	45: struct CarryingMethods{ThingNative*GetThingInPrimarySlot();}; //6A1440: walks carry list and chooses primary entity
+#140	009d5650	MADEUP:Reader,Arg2c	?Read@Reader@@QAEHPAUArg2c@@@Z	8: int Read(Arg2c* p);
+#140	009d5a90	SIG	?AddObject@CThreadedFile@@QAEKPAVCThreadedFileObjectDesc@@@Z	27: unsigned long AddObject(CThreadedFileObjectDesc* desc);              // 0x0098F350
+#150	00679740	MADEUP:CAttitudeFloatMap	?GFSerialiseMapBinaryOut@@YIXPAVCDataOutputStream@@PAUCAttitudeFloatMa	21: void __fastcall GFSerialiseMapBinaryOut(CDataOutputStream* stream, Name* value); \
+#160	0091a9b0	MADEUP:FindThingsInRoughArea	?FindThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter	128: void FindThingsInRoughArea(const C2DBoxI& area, const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>& fi
+#170	007c04a0	MADEUP:CSoundDefPtr	?GetSubDef@CDefClassBase@@QAE_NPAUCSoundDefPtr@@@Z	49: class CDefClassBase { public: bool GetSubDef(CSoundDefPtr* out); };   // 0x0065F604
+#170	0066b040	MADEUP:CThingDef,CSoundPlayerD	?GetSubDef@CThingDef@@QBE_NPAV?$CDefPointer@UCSoundPlayerDef@@@@@Z	41: bool GetSubDef(CDefPointer<CSoundPlayerDef>* out) const;   // 0x0065F604
+#170	0066b1d0	MADEUP:GetSubDef_0065f604,CDef	?GetSubDef_0065f604@CDefClassBase@@QAE_NAAU?$CDefOut@VCEntitySoundDef@	49: bool GetSubDef_0065f604(CDefOut<CEntitySoundDef>& out);   // 0x0065F604
+#170	006594bb	SIG	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@V	154: template <class T> bool GetSubDef(CDefPointer<T>* out) const;   // 0x0065F604 for T = const CEntitySoundDef
+#170	006e0be0	SIG	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCEntitySoundDef@@@@@Z	51: bool GetSubDef(CDefPointer<CEntitySoundDef>* out);      // 0x0065F604
+#170	00665f90	MADEUP:CCreatureSoundSubDef	?GetSubDef@CThingCreatureDef@@QAE_NPAV?$CDefPointer@UCCreatureSoundSub	52: bool GetSubDef(CDefPointer<CCreatureSoundSubDef>* out);   // 0x0065F604
+#180	0057d990	MADEUP:CCrimeStatusMap	??ACCrimeStatusMap@@QAEAAUMirroredCriminalStatus@@ABVCCharString@@@Z	NOHIT
+#190	0047c290	SIG	??0?$vector@VCQuestObjectiveDesc@CHeroLogBook@@@std@@QAE@ABV01@@Z	19: template <class T> class vector {
+#190	0047c250	MADEUP:CDefInfoContainer	??0CDefInfoContainer@@QAE@ABU0@@Z	21: struct CDefInfoContainer {                       // 12-byte container (vector-like)
+#200	006946c0	MADEUP:CActionEventVector	?push_back@CActionEventVector@@QAEXABV?$CCountedPointer@VCActionEventB	127: void push_back(const CActionEventPointer& value);       // 0x00696FE0
+#210	00aecbf0	FREE	?CTCMapwho_Cleanup@@YIXPAVCTCMapwho@@@Z	9: void __fastcall CTCMapwho_Cleanup(CTCMapwho* self);

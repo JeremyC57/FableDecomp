@@ -1,0 +1,12 @@
+004dea03 PROBE PASS CFireballSpellLevelDef :: virtual void Transfer(CPersistContext&)
+004dea03 CONTROL FAIL CFireballSpellLevelDef :: virtual void NF323MadeUpName(CPersistContext&)  ['NF323MadeUpName' marked 'override' but does not override any member functions]
+00ab7910 PROBE PASS CJoystickDX :: virtual CJoystick::CActiveRumble* GetRumbleWithID(long)
+00ab7910 CONTROL FAIL CJoystickDX :: virtual CJoystick::CActiveRumble* NF323MadeUpName(long)  ['NF323MadeUpName' marked 'override' but does not override any member functions]
+00ab7920 PROBE PASS CJoystickDX :: virtual const CJoystick::CActiveRumble* PeekRumbleWithID(long) const
+00ab7920 CONTROL FAIL CJoystickDX :: virtual const CJoystick::CActiveRumble* NF323MadeUpName(long) const  ['NF323MadeUpName' marked 'override' but does not override any member functions]
+00a7d950 PROBE PASS CNavBlockedQuadTreeNode :: virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&)
+00a7d950 CONTROL FAIL CNavBlockedQuadTreeNode :: virtual bool NF323MadeUpName(const CNavRegion*, std::list<CANavQuadTreeNode*>&)  ['NF323MadeUpName' marked 'override' but does not override any member functions]
+00a7d960 PROBE PASS CNavBlockedQuadTreeNode :: virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&)
+00a7d960 CONTROL FAIL CNavBlockedQuadTreeNode :: virtual bool NF323MadeUpName(const CNavRegion*, std::list<CANavQuadTreeNode*>&)  ['NF323MadeUpName' marked 'override' but does not override any member functions]
+00b4b6b0 PROBE PASS CEnginePrimitiveManager2DParticleGroup :: virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&)
+00b4b6b0 CONTROL FAIL CEnginePrimitiveManager2DParticleGroup :: virtual ERendered NF323MadeUpName(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&)  ['NF323MadeUpName' marked 'override' but does not override any member functions]

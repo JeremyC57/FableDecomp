@@ -3,7 +3,8 @@
 // Retail: 0x005AECC0,2446bytes,thiscall.
 #define FABLE_RETAIL_CDELETION_BODIES
 #define FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST
+// NF241 (2026-11-22): FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST dropped: 0x0042ABCA is _List_base<CComponent*>::~_List_base (retail
+//   0x0042B6D2, list's own `~list() {}`, is a 5-byte `jmp 0x0042ABCA`); the default header path calls it. Same bytes.
 #define FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE
 #define FABLE_RETAIL_STLP_LIST_CTORS_PASS22
 #define FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE

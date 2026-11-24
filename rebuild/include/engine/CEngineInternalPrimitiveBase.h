@@ -27,6 +27,17 @@ template<class T>class CIVCountedPointer;
 class CEngineInternalPrimitiveBase : public CEnginePersistentPrimitiveBase {
 public:
  CEngineInternalPrimitiveBase(long,unsigned long);
+#ifdef FABLE_RETAIL_SCENEGRID_VISIBILITY_PASS27
+ // Original FableWin methods, expanded at 0x00B92950.
+ unsigned long GetRenderLayerMask() const { return RenderLayerMask; }
+ void SetAsRendered() { LastFrameRendered = CurrentRenderFrame; }
+ void RemoveFromList();                                                        // retail 0x00B8FE60
+private:
+ static unsigned short CurrentRenderFrame;
+public:
+ void SetGridCell(CEngineSceneGridCell* cell) { GridCell = cell; }
+ void AddToList(CEngineInternalPrimitiveBase** list);
+#endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_NEXT_PASS23
  // Both original PDB public const getter; private original field at38.
  CEngineInternalPrimitiveBase* GetNextPrimitive() const {return NextPrimitive;}
@@ -34,8 +45,13 @@ public:
  virtual ~CEngineInternalPrimitiveBase();
  virtual void Update(const CEnginePrimitive&,unsigned long);
  virtual unsigned long AddChildPrimitive(const CEnginePrimitive&,unsigned long);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER // NF325: retail vftable 0x012A3D7C slot 7 = (K, CEnginePrimitiveHandle&, const CEnginePrimitive&, K), slot 8 = (K, const CEnginePrimitive&, K); VC7.1 lays an overloaded virtual pair out in reverse declaration order, so the three-argument one is declared first (emitted-vftable probe, NF325 evidence/probe_*.txt)
+ virtual void SetChildPrimitive(unsigned long,const CEnginePrimitive&,unsigned long);
+ virtual void SetChildPrimitive(unsigned long,CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);
+#else
  virtual void SetChildPrimitive(unsigned long,CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);
  virtual void SetChildPrimitive(unsigned long,const CEnginePrimitive&,unsigned long);
+#endif
  virtual void GetChildPrimitiveHandle(unsigned long,CEnginePrimitiveHandle&);
  virtual void ClearChildPrimitive(unsigned long);
  virtual void ClearAllChildPrimitives();
@@ -222,6 +238,19 @@ class CEngineSceneGridCell;
 #pragma pack(push, 1)
 class CEngineInternalPrimitiveBase {
 public:
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTRENDERFRAME
+    // Opt-in (NF240, 2026-11-22, rows 0x00B32660 CEnginePrimitiveRenderer::FrameStart / 0x00B92C20 CEngineSceneGrid::RenderCellAll):
+    // the frame counter @ 0x0143B8D8 is ?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA (a private static ushort; Ego_r.pdb,
+    // FableWin.pdb, Ego_d.pdb). Its two public accessors, inline in retail: ?SetAsRendered@CEngineInternalPrimitiveBase@@QAEXXZ
+    // (FableWin.pdb / Ego_d.pdb; the store to +0x36 the scene renderers expand, as in the PASS27 block above) and
+    // ?IncrementFrameCounter@CEngineInternalPrimitiveBase@@SIXXZ (FableWin.pdb / Ego_d.pdb; retail FrameStart 0x00B3271B
+    // `inc word ptr [0x0143B8D8]`). Static members only: no layout change.
+    void SetAsRendered() { LastFrameRendered = CurrentRenderFrame; }
+    static void FABLE_FASTCALL IncrementFrameCounter() { ++CurrentRenderFrame; }
+private:
+    static unsigned short CurrentRenderFrame;                // 0x0143B8D8
+public:
+#endif
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08

@@ -1,3 +1,4 @@
+// Leaf: ?Render@CEngineScreenEffectOutlineGlow@@UAEXABVCEngineComponentRenderParams@@@Z
 // CEngineScreenEffectOutlineGlow::Render(const CEngineComponentRenderParams& params) -- when enabled (+8) and the params' kind (+4) is the outline pass (0x4000000): apply the outline, then release the textures
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B8B550, length 39 bytes.
 // Callees: ApplyOutline @ 0x00B89C30 and the texture release @ 0x00B89080 (both on `this`). Shape: the flag byte through al, the immediate compare on the params word,
@@ -8,13 +9,13 @@ class CEngineComponentRenderParams { public:
 };
 
 class CEngineScreenEffectOutlineGlow { public:
-    unsigned char _pad[8];
+    unsigned char _pad[0x4];
     bool          m_enabled;                       // +0x08
-    void ApplyOutline();                           // 0x00B89C30
+    private: void ApplyOutline(); public:                           // 0x00B89C30
 private:
     void FinishWithDynamicTextures();              // 0x00B89080 (NF35: Ego_r + FableWin ?FinishWithDynamicTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ)
 public:
-    void Render(const CEngineComponentRenderParams& params);
+    virtual void Render(const CEngineComponentRenderParams& params);
 };
 
 void CEngineScreenEffectOutlineGlow::Render(const CEngineComponentRenderParams& params)

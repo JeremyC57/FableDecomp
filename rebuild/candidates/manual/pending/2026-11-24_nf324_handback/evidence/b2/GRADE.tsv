@@ -1,0 +1,78 @@
+address	verdict	old	new	route	reason
+0044c158	ACCEPT	?CPhysicsDef_GetSizeofClass@@YIKPBVCPhysicsDef@@@Z	?GetSizeofClass@CPhysicsDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+0044c1cd	ACCEPT	?CTCNoiseDef_GetSizeofClass@@YIKPBVCActionUseDef@@@Z	?GetSizeofClass@CTCNoiseDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+0044c364	ACCEPT	?CCoopSpiritDef_GetSizeofClass@@YIKPBVCCoopSpiritDef@@@Z	?GetSizeofClass@CCoopSpiritDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+0044c41e	ACCEPT	?CCombatAbilityData_TransferBinaryOut@@YIXPAVCCombatAbilityData@@PAXPAVCDataOutputStream@@H@Z	?TransferBinaryOut@CCombatAbilityData@@UBEXAAVCDataOutputStream@@ABV1@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+0044c579	ACCEPT	?CCombatAbilityGetHitCounterAttackDef_GetSizeofClass@@YIKPBVCCombatAbilityGetHitCounterAttackDef@@@Z	?GetSizeofClass@CCombatAbilityGetHitCounterAttackDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+0044c611	ACCEPT	?CAugmentationDef_GetSizeofClass@@YIKPBX@Z	?GetSizeofClass@CAugmentationDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+0044c67f	ACCEPT	?CGuildMasterDef_GetSizeofClass@@YIKPBVCGuildMasterDef@@@Z	?GetSizeofClass@CGuildMasterDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+0045212a	ACCEPT	?CPhysicsDef_Transfer@@YIXPAVCPhysicsDef@@HPAVCPersistContext@@@Z	?Transfer@CPhysicsDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00452184	ACCEPT	?CTCNoiseDef_Transfer@@YIXPAVCTCNoiseDef@@PAXPAVCPersistContext@@@Z	?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00452256	ACCEPT	?CCarrySlotDef_Transfer@@YIXPAVCCarrySlotDef@@PAXPAVCPersistContext@@@Z	?Transfer@CCarrySlotDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00452b93	ACCEPT	?CCombatAbilityStrafeDef_Transfer@@YIXPAVCCombatAbilityStrafeDef@@HPAVCPersistContext@@@Z	?Transfer@CCombatAbilityStrafeDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00452bb4	REJECT	?CCombatAbilityUseProjectileWeaponDef_Transfer@@YIXPAVCCombatAbilityUseProjectileWeaponDef@@PAXPAVCPersistContext@@@Z	?Transfer@CCombatAbilityUseProjectileWeaponDef@@UAEXAAVCPersistContext@@@Z	local	objcheck: section .text bytes differ
+00452c94	ACCEPT	?CDragonActionNapalmDef_Transfer@@YIXPAVCDragonActionNapalmDef@@HPAVCPersistContext@@@Z	?Transfer@CDragonActionNapalmDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00453ece	ACCEPT	?CCombatAbilityBlockProjectileWeaponAttackDef_GetSizeofClass@@YIKPBVCCombatAbilityBlockProjectileWeaponAttackDef@@@Z	?GetSizeofClass@CCombatAbilityBlockProjectileWeaponAttackDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+00454643	ACCEPT	?CSpecialEffectsDef_GetSizeofClass@@YIKPAVCSpecialEffectsDef@@@Z	?GetSizeofClass@CSpecialEffectsDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+004556ce	ACCEPT	?CMessageEventDef_Transfer@@YIXPAVCMessageEventDef@@PAXPAVCPersistContext@@@Z	?Transfer@CMessageEventDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00455ca7	ACCEPT	?CEngineLocalDetailGeneratorDef_GetSizeofClass@@YIKPBVCEngineLocalDetailGeneratorDef@@@Z	?GetSizeofClass@CEngineLocalDetailGeneratorDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+00456818	ACCEPT	?CCameraManagerSetDef_Transfer@@YIXPAVCCameraManagerSetDef@@PAXPAVCPersistContext@@@Z	?Transfer@CCameraManagerSetDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+0045687f	ACCEPT	?CHeroPostcardGeneratorDef_GetSizeofClass@@YIKPBVCHeroPostcardGeneratorDef@@@Z	?GetSizeofClass@CHeroPostcardGeneratorDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+00456883	ACCEPT	?CHeroPostcardGeneratorDef_Transfer@@YIXPAVCHeroPostcardGeneratorDef@@HPAVCPersistContext@@@Z	?Transfer@CHeroPostcardGeneratorDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00456cfb	ACCEPT	?COpinionReactionMaskDef_GetSizeofClass@@YIKPBVCOpinionReactionMaskDef@@@Z	?GetSizeofClass@COpinionReactionMaskDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+00456d9e	ACCEPT	?COpinionDeedEffectsDef_GetSizeofClass@@YIKPBVCOpinionDeedEffectsDef@@@Z	?GetSizeofClass@COpinionDeedEffectsDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+00456f27	ACCEPT	?CVillagerInteractionsDef_Transfer@@YIXPAVCVillagerInteractionsDef@@PAXPAVCPersistContext@@@Z	?Transfer@CVillagerInteractionsDef@@UAEXAAVCPersistContext@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+004571e8	ACCEPT	?CSpecialAbilitiesMultiStrikeDef_GetSizeofClass@@YIKPBVCSpecialAbilitiesMultiStrikeDef@@@Z	?GetSizeofClass@CSpecialAbilitiesMultiStrikeDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+004573db	ACCEPT	?CSpecialAbilitiesBerserkDef_GetSizeofClass@@YIKPBVCSpecialAbilitiesBerserkDef@@@Z	?GetSizeofClass@CSpecialAbilitiesBerserkDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+00457f0f	ACCEPT	?CSpecialAbilitiesDrunkennessDef_GetSizeofClass@@YIKPBVCSpecialAbilitiesDrunkennessDef@@@Z	?GetSizeofClass@CSpecialAbilitiesDrunkennessDef@@UAEKXZ	local	objcheck ALL_EQ, MATCH PASS
+0046ee66	ACCEPT	?CQuickAccessItemButtonGuiDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CQuickAccessItemButtonGuiDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+0046f1ff	ACCEPT	?CAbilityButtonGuiDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CAbilityButtonGuiDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+0046f723	ACCEPT	?CLensFlareElementDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CLensFlareElementDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+00471f93	ACCEPT	?COpinionDeedReactionDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@COpinionDeedReactionDef@@UAEKXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+004732da	ACCEPT	?CEnvironmentThemeDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CEnvironmentThemeDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+00477424	ACCEPT	?CEngineLocalDetailLayerDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CEngineLocalDetailLayerDef@@UAEKXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00477698	ACCEPT	?CEngineLocalDetailObjectDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CEngineLocalDetailObjectDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+004784e0	ACCEPT	?CAppearanceModifierScalingDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CAppearanceModifierScalingDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+004aacc0	ACCEPT	?CScriptThing_MsgPerformedAnySpecialAbility@@YI_NPAVCScriptThing@@@Z	?MsgPerformedAnySpecialAbility@CScriptThing@@UBE_NXZ	local	objcheck ALL_EQ, MATCH PASS
+004aada0	ACCEPT	?CScriptThing_MsgOpenedChest@@YI_NPAVCScriptThing@@@Z	?MsgOpenedChest@CScriptThing@@UBE_NXZ	local	objcheck ALL_EQ, MATCH PASS
+004d6670	ACCEPT	?CLightningOrbDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CLightningOrbDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+004de8f1	ACCEPT	?CBossDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CBossDef@@UAEKXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+004e26b6	ACCEPT	?CWeaponDef_GetSizeofClass@@YIKPAVCWeaponDef@@@Z	?GetSizeofClass@CWeaponDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+004eac55	ACCEPT	?CPrizeScoreDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CPrizeScoreDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+004ebe16	ACCEPT	?CCardPositionsDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CCardPositionsDef@@UAEKXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+004ec0af	ACCEPT	?CCardDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CCardDef@@UAEKXZ	switch	objcheck ALL_EQ, MATCH PASS
+0051ce00	REJECT	?CWorldMap_IsMapUsed@@YIEPAVCWorldMap@@HH@Z	?IsMapUsed@CWorldMap@@UBE_NJ@Z	local	objcheck: section .text bytes differ
+0062e9f0	ACCEPT	?CCombatActionBase_PerformAction@@YIXXZ	?PerformAction@CCombatActionBase@@UAEXXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0062ea00	ACCEPT	?CCombatActionBase_GetAnimDelayTime@@YIJPBVCCombatActionBase@@@Z	?GetAnimDelayTime@CCombatActionBase@@UBEJXZ	local	objcheck ALL_EQ, MATCH PASS
+0084a850	ACCEPT	?CCreatureAction_PlayIntoLoopOutOfAnimation_PerformAction@@YIXXZ	?PerformAction@CCreatureAction_PlayIntoLoopOutOfAnimation@@UAEXXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0084b210	ACCEPT	?CCreatureAction_BlowHorn_PerformAction@@YIXXZ	?PerformAction@CCreatureAction_BlowHorn@@UAEXXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0084b220	ACCEPT	?CCreatureAction_BlowHorn_IsToHaveEmptyHands@@YI_NXZ	?IsToHaveEmptyHands@CCreatureAction_BlowHorn@@UBE_NXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0084b230	ACCEPT	?CCreatureAction_BlowHorn_IsToReplaceItemIfRemoved@@YI_NXZ	?IsToReplaceItemIfRemoved@CCreatureAction_BlowHorn@@UBE_NXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+0088e910	ACCEPT	?CGameScriptInterface_SetAllowScreenFadingOnNextRegionChange@@YIXPAVCGameScriptInterface@@HD@Z	?SetAllowScreenFadingOnNextRegionChange@CGameScriptInterface@@UAEX_N@Z	switch	objcheck ALL_EQ, MATCH PASS
+0088e920	ACCEPT	?CGameScriptInterface_SetAllowScreenFadingIfAlreadyFaded@@YIXPAVCGameScriptInterface@@HD@Z	?SetAllowScreenFadingIfAlreadyFaded@CGameScriptInterface@@UAEX_N@Z	switch	objcheck ALL_EQ, MATCH PASS
+0088e930	ACCEPT	?CGameScriptInterface_SetToDisplayTutorialsDuringCutscenes@@YIXPAXHD@Z	?SetToDisplayTutorialsDuringCutscenes@CGameScriptInterface@@UBEX_N@Z	switch	objcheck ALL_EQ, RELOCATION_MATCH PASS
+0088ec90	ACCEPT	?CGameScriptInterface_CameraSetCameraPreloadFlag@@YIXPAVCGameScriptInterface@@PAXD@Z	?CameraSetCameraPreloadFlag@CGameScriptInterface@@UBEX_N@Z	switch	objcheck ALL_EQ, MATCH PASS
+0088f410	ACCEPT	?CGameScriptInterface_SetTeleportingAsActive@@YIXPAVCGameScriptInterface@@HD@Z	?SetTeleportingAsActive@CGameScriptInterface@@UBEX_N@Z	switch	objcheck ALL_EQ, MATCH PASS
+0088f430	ACCEPT	?CGameScriptInterface_SetRegionTextDisplayAsActive@@YIXPAVCGameScriptInterface@@PAXD@Z	?SetRegionTextDisplayAsActive@CGameScriptInterface@@UBEX_N@Z	switch	objcheck ALL_EQ, MATCH PASS
+0088f440	ACCEPT	?CGameScriptInterface_SetHeroSleepingAsEnabled@@YIXPAVCGameScriptInterface@@HD@Z	?SetHeroSleepingAsEnabled@CGameScriptInterface@@UBEX_N@Z	switch	objcheck ALL_EQ, MATCH PASS
+0088f470	ACCEPT	?CGameScriptInterface_SetSummonerDeathExplosionAffectsHero@@YIXPAVCGameScriptInterface@@HD@Z	?SetSummonerDeathExplosionAffectsHero@CGameScriptInterface@@UBEX_N@Z	switch	objcheck ALL_EQ, MATCH PASS
+0088f940	ACCEPT	?CGameScriptInterface_SetSavingAsEnabled@@YIXPAVCGameScriptInterface@@HD@Z	?SetSavingAsEnabled@CGameScriptInterface@@UBEX_N@Z	switch	objcheck ALL_EQ, MATCH PASS
+0088fae0	ACCEPT	?CGameScriptInterface_SetCheapHeadLooking@@YGXD@Z	?SetCheapHeadLooking@CGameScriptInterface@@UAEX_N@Z	switch	objcheck ALL_EQ, RELOCATION_MATCH PASS
+0088fb60	ACCEPT	?CGameScriptInterface_SetBettingAccept@@YGXD@Z	?SetBettingAccept@CGameScriptInterface@@UAEX_N@Z	switch	objcheck ALL_EQ, RELOCATION_MATCH PASS
+0088fb80	ACCEPT	?CGameScriptInterface_SetBettingAmount@@YGXH@Z	?SetBettingAmount@CGameScriptInterface@@UAEXJ@Z	switch	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00892050	ACCEPT	?CGameScriptInterface_SetHUDEnabled@@YGXD@Z	?SetHUDEnabled@CGameScriptInterface@@UBEX_N@Z	switch	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00899c10	ACCEPT	?CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon@@YI_NPAXKPAM@Z	?IsPlayerCreatureReadyToFireProjectileWeapon@CGameScriptInterface@@UBE_NAAM@Z	switch	objcheck ALL_EQ, RELOCATION_MATCH PASS
+008aa330	ACCEPT	?CGameScriptInterface_AddGossipVillages@@YIXPAVCGameScriptInterface@@PAXVCCharString@@@Z	?AddGossipVillages@CGameScriptInterface@@UAEXVCCharString@@@Z	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+008bff10	ACCEPT	?CCreatureAction_GenericLeaderCommand_IsToFaceTargetAtStart@@YI_NXZ	?IsToFaceTargetAtStart@CCreatureAction_GenericLeaderCommand@@UBE_NXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+009fd0b0	ACCEPT	?CGraphicDataBank_GetDataFormatVersion@@YIHXZ	?GetDataFormatVersion@CGraphicDataBank@@MAEKXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00a19bc0	ACCEPT	?CANavQuadTreeNode_SetUpNeighboursWithLeaf@@YGXHH@Z	?SetUpNeighboursWithLeaf@CANavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAV1@@Z	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00a19bd0	ACCEPT	?CANavQuadTreeNode_SetUpNeighbours@@YGXHH@Z	?SetUpNeighbours@CANavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAV1@@Z	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00a19be0	ACCEPT	?CANavQuadTreeNode_CalculateChildrenNeighbours@@YIXXZ	?CalculateChildrenNeighbours@CANavQuadTreeNode@@MAEXXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00a19bf0	ACCEPT	?CANavQuadTreeNode_RemoveNeighbours@@YIXXZ	?RemoveNeighbours@CANavQuadTreeNode@@MAEXXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00a5f420	ACCEPT	?CStreamingFontDataBank_Close@@YIXPAVCStreamingFontDataBank@@@Z	?Close@CStreamingFontDataBank@@UAEXXZ	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00a635c0	ACCEPT	?CFontDataBank_Close@@YIXPAVCFontDataBank@@@Z	?Close@CFontDataBank@@UAEXXZ	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00ab78d0	ACCEPT	?CJoystickDX_Update@@YIXPAUCJoystickDX@@@Z	?Update@CJoystickDX@@UAEXXZ	local	objcheck ALL_EQ, RELOCATION_MATCH PASS
+00b23df0	ACCEPT	?CEngine_SetLandscapeDebugTintColour@@YGXHH@Z	?SetLandscapeDebugTintColour@CEngine@@UAEXJVCRGBColour@@@Z	switch	objcheck ALL_EQ, MATCH PASS
+00b6d500	ACCEPT	?CEngineWaterRenderer_FrameEnd@@YGXH@Z	?FrameEnd@CEngineWaterRenderer@@UAEXABVCEngineComponentParams@@@Z	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00b7ed70	ACCEPT	?CEngineWaterRenderer_PeekSceneFilterFlags@@YIHXZ	?PeekSceneFilterFlags@CEngineWaterRenderer@@UBEKXZ	switch	objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS
+00b8b5a0	ACCEPT	?CEngineScreenEffectOutlineGlow_PeekSceneFilterFlags@@YIHXZ	?PeekSceneFilterFlags@CEngineScreenEffectOutlineGlow@@UBEKXZ	switch	objcheck ALL_EQ, MATCH PASS

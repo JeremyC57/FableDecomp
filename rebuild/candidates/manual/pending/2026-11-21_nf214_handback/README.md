@@ -1,5 +1,7 @@
 # NF214 hand-back (Account A, 2026-11-21): pending landing, NOT applied
 
+**LANDED 2026-11-21 as nf214** (`rebuild/candidates/manual/batches/2026-11-21_landing_nf214/README.md`). The text below is the pre-landing note.
+
 Owner (2026-11-21): "after that task and the current agent finish, no more agents or naming for now". NF214 was the last agent. Its
 hand-back is saved here unapplied so it survives the session; nothing in rebuild/src, rebuild/tests or rebuild/include has changed.
 Land it with the usual naming-landing procedure (docs/HANDOFF.md, Account A) when naming resumes. The rows stay locked to NF214

@@ -1,0 +1,2 @@
+duplicates 1
+dup_0069f0f0.obj : warning LNK4006: "public: __thiscall CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_UnsheatheItemFromInventory(class CThingCreatureBase &,class CCharString const &,class CThing &,long,long,class CCreatureActionBase *)" (??0CCrea

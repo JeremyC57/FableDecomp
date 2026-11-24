@@ -1,0 +1,17 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0073a9b0	NAnimationEntryBodge::CAnimEntryLite	CAnimEntryLite	??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z	CAnimEntryLite::CAnimEntryLite	??0CAnimEntryLite@@QAE@ABVCAnimationEntry@@@Z	Ego_r + FableWin name sets; landed binder 0x00861E60 binds it (table PDB line); shared header engine/NAnimationEntryBodge_CAnimEntryLite.h; objsec ALL_EQ
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x0093cb20	?AIAction_MoveToPos@CAIStateGroup_NonVillageGuardPatrol@@QAEJJVC3DVector@@AA_NJ_N2PBVCThing@@2M@Z	?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z	0x0097ec00
+0x0094a6d0	?AIAction_MoveToPos@CAIStateGroupGoToPubMethods@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@PA_NW4EMovementType@@_N4PAVCThing@@4M@Z	?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z	0x0097ec00
+0x0091e4b0	?AIAction_MoveToPos@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJJVC3DVector@@PA_NJ_N2PAVCThing@@2M@Z	?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z	0x0097ec00
+0x00634470	?RemoveFromInterface@CAInputProcessCalls@@QAEXXZ	?RemoveFromInterface@CAInputProcess@@QAEXXZ	0x00a0d2d0
+0x008e9190	??0CAnimEntryLite@@QAE@ABVCAnimationEntry@@@Z	??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z	0x0073a9b0
+0x008e9190	?Reset@?$CCountedPointer@UCAnimEntryLite@@@@QAEXPAUCAnimEntryLite@@@Z	?Reset@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@@Z	0x00863090
+0x00752640	??0CAnimEntryLite@@QAE@PBVCAnimationEntry@@@Z	??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z	0x0073a9b0
+0x00752640	??0?$CCountedPointer@UCAnimEntryLite@@@@QAE@PAUCAnimEntryLite@@@Z	??0?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@PAVCAnimEntryLite@NAnimationEntryBodge@@@Z	0x0073d180
+0x00752640	??4?$CCountedPointer@UCAnimEntryLite@@@@QAEAAV0@ABV0@@Z	??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z	0x00754f10
+0x00752640	?DeleteData@?$CCountedPointer@UCAnimEntryLite@@@@SIXPAX@Z	?DeleteData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@SIXPAX@Z	0x0073cc90
+# (the DeleteData line above is the relocation of the in-object CCountedPointer(T*) ctor COMDAT, not a direct call from the row function)
+0x00b6d940	?SetPositionAssumeWithinSourceChunk@CMemoryDataInputStream@@QAEXK@Z	?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z	0x00993c10
+0x00846660	??0CEventTalkedTo@@QAE@PAVCThing@@@Z	??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z	0x0084af90
+# In-object COMDAT renames with no retail table line (unreferenced pick-any inline copies, bytes unchanged): 0x00752640 ??1 / ReleaseData / ShareData of CCountedPointer<CAnimEntryLite> -> the NAnimationEntryBodge spelling; 0x008E9190 ?Clear@?$CCountedPointer@UCAnimEntryLite@@@@QAEXXZ -> ?Clear@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXXZ (Clear is the local model's made-up inline name, in no PDB: see NOTES)

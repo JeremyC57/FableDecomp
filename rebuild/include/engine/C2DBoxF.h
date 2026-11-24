@@ -117,7 +117,26 @@ inline C2DBoxF::C2DBoxF(const C2DVector& centre,float radius):TLX(centre.X-radiu
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_EXTENTS)
 #include "engine/C2DVector.h"
 #include "engine/C2DExtentsF.h"
+#if defined(FABLE_RETAIL_C2DBOXF_EXTENTS_OWNER_SPEED_PASS26) && defined(_MSC_VER)
+// Exact native owner profile; genuine constructor body only.
+#pragma optimize("t",on)
+#pragma optimize("y",on)
+#endif
+#ifdef FABLE_RETAIL_C2DBOXF_EXTENTS_BODY_PASS26
+// FableWin 0x018B13C0 writes the two point coordinates followed by the bounds sums.
+inline C2DBoxF::C2DBoxF(const C2DVector& top_left, const C2DExtentsF& extents)
+{
+    TLX = top_left.X;
+    TLY = top_left.Y;
+    BRX = top_left.X + extents.X;
+    BRY = top_left.Y + extents.Y;
+}
+#else
 inline C2DBoxF::C2DBoxF(const C2DVector& top_left,const C2DExtentsF& extents):TLX(top_left.X),TLY(top_left.Y),BRX(top_left.X+extents.X),BRY(top_left.Y+extents.Y){}
+#endif
+#if defined(FABLE_RETAIL_C2DBOXF_EXTENTS_OWNER_SPEED_PASS26) && defined(_MSC_VER)
+#pragma optimize("",on)
+#endif
 #endif
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CORNERS)
 #include "engine/C2DVector.h"

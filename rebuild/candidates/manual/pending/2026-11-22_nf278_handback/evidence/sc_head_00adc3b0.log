@@ -1,0 +1,5 @@
+pH 00adc3b0 std::__uninitialized_fill_n RELOCATION_MATCH flags= ['/Gr'] leaf=??$__uninitialized_fill_n@PAVCVertexGroupBlock
+--- reloc (target symbol count) HEAD(<) new(>)
+diff: /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF278/work/xr_pS_00adc3b0.txt: No such file or directory
+--- symbols HEAD(<) new(>)
+diff: /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF278/work/sym_pS_00adc3b0.txt: No such file or directory

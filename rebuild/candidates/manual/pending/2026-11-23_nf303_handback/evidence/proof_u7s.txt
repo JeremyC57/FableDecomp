@@ -1,0 +1,4 @@
+##### 009d2110 renames: ?Clear@?$CSmallVector@VCCharString@@$07@@QAEXXZ=?Clear@?$CSmallVector@VCCharString@@$07@@IAEXXZ
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0

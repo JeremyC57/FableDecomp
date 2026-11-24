@@ -1,3 +1,4 @@
+// Leaf: ?WordWrapText@CProgressDisplay@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z
 // CProgressDisplay::WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const -- break the text into lines that fit the box width, each line followed by a newline
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00497A60, length 202 bytes (+ int3 padding), `ret 10h` (hidden result + 3).
 // Identity: Ego_r.pdb `?WordWrapText@CProgressDisplay@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z` (the free
@@ -40,7 +41,9 @@ const wchar_t* __fastcall WordWrap_FindNextLineW(const wchar_t* text, unsigned i
 static const wchar_t s_newLine[] = { '\n', 0 };          // 0x01231728
 
 struct CProgressDisplay {
+    private:
     CWideString WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const;
+    public:
 };
 
 CWideString CProgressDisplay::WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const

@@ -27,6 +27,11 @@ public:
     };
     CEngineMap(const CIDrawMap*,long,long,long,long,long,CCharString,bool);
     ~CEngineMap();
+#ifdef FABLE_RETAIL_CENGINEMAP_OPENRETAILSTATICMAP_PASS26
+    // Original Ego_d/FableWin method, actual caller donor02d62360; declaration only.
+    void OpenRetailStaticMap(class CStaticMapBankFile&, class CDataInputStream&,
+        std::map<CCharString,long>&);
+#endif
 #ifdef FABLE_RETAIL_CENGINEMAP_OPENDEVELOPMENTSTATICMAP
     // NF65 overlay opt-in (row 0x00B42750 CEngineWorldMap::OpenStaticMaps): Ego_r.pdb 0x009E31E0
     // ?OpenDevelopmentStaticMap@CEngineMap@@QAEXAAVCStaticMapBankFile@@W4STATIC_MAP_OPEN_STATE@1@@Z (public), out of line at 0x00B42530 (the
@@ -73,6 +78,10 @@ public:
     // ?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z) and the private inline ?QuantiseLandscapeHeight@CEngineMap@@ABEMM@Z (FableWin).
     long PeekWidth() const { return MapWidth; }
     long PeekHeight() const { return MapHeight; }
+#ifdef FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28
+    // FableWin PeekWorldPosition and Ego_r MapWorldPosition, loaded at +0x0c in 0x00BE6880.
+    const C3DVector& PeekWorldPosition() const { return MapWorldPosition; }
+#endif
     long PeekWorldX() const { return WorldPosX; }
     long PeekWorldY() const { return WorldPosY; }
     const CIDrawMap* PeekGameMap() const { return GameMap; }
@@ -177,6 +186,31 @@ extern CEngineWorldMap* g_pEngineWorldMap;   // 0x01436E8C (landed spelling, CEn
 #define FABLE_CENGINEMAP_WORLDMAP g_pEngineWorldMap
 #endif
 
+#ifdef FABLE_RETAIL_CENGINEMAP_PEEKTHEMEID_ORIGINAL_PASS27
+// FableWin 0x02D5CE80 and Pass26 retail 0x00B43720: GetMap receives world coordinates
+// and handles the map origin itself. Shared by callers that expand this inline member.
+inline long CEngineMap::PeekThemeId(long xp, long yp, long level) const
+{
+    if (!MapHasDataAtPoint(xp,yp)) {
+        CEngineMap* map = NEngineInternal::GPEngineWorldMap->GetMap(
+            PeekWorldX() + xp,
+            PeekWorldY() + yp);
+        if (map && map->MapHasDataAtPoint(PeekWorldX() + xp - map->PeekWorldX(), PeekWorldY() + yp - map->PeekWorldY()))
+            return map->PeekThemeId(PeekWorldX() + xp - map->PeekWorldX(), PeekWorldY() + yp - map->PeekWorldY(), level);
+        if (xp < 0)
+            xp = 0;
+        else if (xp > PeekWidth() - 1)
+            xp = PeekWidth() - 1;
+        if (yp < 0)
+            yp = 0;
+        else if (yp > PeekHeight() - 1)
+            yp = PeekHeight() - 1;
+    }
+    if (GameMap)
+        return GameMap->DrawGetEngineThemeAt(xp, yp, level);
+    return 0;
+}
+#else
 inline long CEngineMap::PeekThemeId(long x, long y, long layer) const
 {
     if (x >= PeekWidth() || y >= PeekHeight() || x < 0 || y < 0 || !GameMap) {
@@ -208,6 +242,8 @@ inline long CEngineMap::PeekThemeId(long x, long y, long layer) const
         return GameMap->DrawGetEngineThemeAt(x, y, layer);
     return 0;
 }
+
+#endif
 
 inline unsigned char CEngineMap::PeekThemeBlend(long x, long y, long layer) const
 {

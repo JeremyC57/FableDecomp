@@ -12,6 +12,15 @@
 namespace NCreatureMode {
 class CModeScreamerAggressive : public CModeStandBase {
 public:
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESCREAMERAGGRESSIVE_VTABLE
+    // NF247 opt-in (q12682, row 0x00741390, the implicit destructor that the ctor's vtable emission materialises): the (CThing&)
+    // constructor ??0CModeScreamerAggressive@NCreatureMode@@QAE@AAVCThing@@@Z, slot 1 ?GetType@CModeScreamerAggressive@NCreatureMode@@UBEKXZ
+    // (0x00741350) and slot 4 ?GetAnimFilter@CModeScreamerAggressive@NCreatureMode@@UBEABVCAnimFilterBase@@XZ (0x00741360), each in
+    // Ego_r.pdb / FableWin.pdb / Ego_d.pdb; vtable 0x012681EC slots 1 / 4. Declarations only: no layout change.
+    CModeScreamerAggressive(CThing& thing);
+    virtual unsigned long GetType() const;                               // 0x00741350
+    virtual const CAnimFilterBase& GetAnimFilter() const;                // 0x00741360
+#endif
     virtual void FrameUpdate();                                          // 0x008DA610
     virtual void OnActivate();                                           // 0x008DA410
     virtual void OnDeactivate();                                         // 0x008DA690
@@ -22,9 +31,9 @@ private:
     static void CheckRetailLayout();
 };
 inline void CModeScreamerAggressive::CheckRetailLayout() {
-    FABLE_STATIC_ASSERT(sizeof(CModeScreamerAggressive) == 0x84);
-    FABLE_STATIC_ASSERT(offsetof(CModeScreamerAggressive, PEffect) == 0x74);
-    FABLE_STATIC_ASSERT(offsetof(CModeScreamerAggressive, PTarget) == 0x7c);
+    FABLE_STATIC_ASSERT_AT(25, sizeof(CModeScreamerAggressive) == 0x84);
+    FABLE_STATIC_ASSERT_AT(26, offsetof(CModeScreamerAggressive, PEffect) == 0x74);
+    FABLE_STATIC_ASSERT_AT(27, offsetof(CModeScreamerAggressive, PTarget) == 0x7c);
 }
 }
 #endif

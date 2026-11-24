@@ -1,0 +1,2 @@
+  WARN leaf 'vfunc_143' matches no symbol in 00542140.obj; graded the largest function
+00542140 NUISystem::CIconText::vfunc_143 RELOCATION_MATCH flags= []

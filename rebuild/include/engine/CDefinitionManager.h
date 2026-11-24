@@ -250,6 +250,70 @@ bool CDefClassBase::GetSubDef(CDefPointer<const T>* out)const
  }
  return false;
 }
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CENTITYSOUNDDEF_SIZE_BODY
+// Nested opt-in (AUTH23 2026-11-22, row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents). Fidelity: scaffolding, not retail: it is for link
+// determinism and makes no claim about retail's text. A /O2 TU that keeps the GetSubDef body visible emits its own pick-any copy of
+// ??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z (182 B), while retail's linker kept the
+// copy of the owner row 0x0065F604 (162 B), which was built in a frame-pointer size TU and sets these same two pragmas itself
+// (rebuild/src/compiled/00/65/CDefClassBase_GetSubDefCEntitySoundDef_0065f604.cpp: optimize("y", off) / optimize("s", on)). VC7.1 takes a
+// template instance's optimize mode at the end of the TU, so a pragma pair around the template does nothing and a row-tail pragma re-modes
+// every instance; an `inline` explicit specialization is an ordinary definition and takes the mode at this point. Its body is the template
+// body above with T = CEntitySoundDef, token for token. The pair ends with optimize("", on), which restores the command-line default
+// (VC7.1 has no push / pop for optimize), so this is valid only in a TU with no optimize pragma above this include.
+#include "engine/CEntitySoundDef.h"
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefClassBase::GetSubDef<CEntitySoundDef>(CDefPointer<const CEntitySoundDef>* out)const
+{
+ const CSubDefInfo* info=GetPSubDefInfo(CEntitySoundDef::StatGetTypeName());
+ if(info){
+  CDefPointer<const CDefClassBase> def=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
+  out->SetDynamicCast(def);
+  return true;
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CCREATUREDEF_SIZE_BODY
+// Nested opt-in (AUTH24 2026-11-22, row 0x00839420 NThingHelpers::CreateEffectOnHit): the CCreatureDef twin of the block above, same
+// device and same conditions. Fidelity: scaffolding, not retail: it is for link determinism and makes no claim about retail's text. A /O2
+// TU that keeps the GetSubDef body visible emits its own pick-any copy of
+// ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z (182 B), while retail's linker kept the copy of
+// the owner row 0x00485815 (162 B), which was built in a frame-pointer size TU and sets these same two pragmas itself
+// (rebuild/src/compiled/00/48/CDefClassBase_GetSubDefCCreatureDef_00485815.cpp: optimize("y", off) / optimize("s", on)). The body is the
+// template body above with T = CCreatureDef, token for token; it needs a CCreatureDef.h branch with the inline StatGetTypeName (e.g.
+// FABLE_RETAIL_CCREATUREDEF_DIALOGUEVOICES). The pair ends with optimize("", on), which restores the command-line default (VC7.1 has no
+// push / pop for optimize), so this is valid only in a TU with no optimize pragma above this include.
+#include "engine/CCreatureDef.h"
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out)const
+{
+ const CSubDefInfo* info=GetPSubDefInfo(CCreatureDef::StatGetTypeName());
+ if(info){
+  CDefPointer<const CDefClassBase> def=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
+  out->SetDynamicCast(def);
+  return true;
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
 #endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_INDEX_BODY
 // Nested opt-in (chunk 1012, row 0x006B1A20 CAtmosProcess::UpdateDayNightAtmosSounds): the same-TU body of the by-class-index
@@ -352,16 +416,49 @@ template<class T> bool CDefinitionManager::GetDef(const CCharString& name, CDefP
 #endif
 {
     CDefPointer<const CDefClassBase> def = GetPDefFromInstantiationName(name);
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_ORIGINAL_PASS26
+    // FableWin 0x01D7D8F0 calls Get and SetDynamicCast in that order.
+    if (def.Get()) {
+        out->SetDynamicCast(def);
+        return true;
+    }
+#else
     if (!def.IsNull()) {
         *out = def;
         return true;
     }
+#endif
     return false;
 }
 #if defined(_MSC_VER)
 #pragma auto_inline(on)
 #endif
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_ENGINE_GETDEF_PASS27
+#include "engine/CEngineDef.h"
+// Fidelity: scaffolding, not retail.
+// The display TU uses this same body from the size-mode GetDef<CEngineDef> owner
+// at 0x00430096. The old verified owner source sets optimize("y", off) and
+// optimize("s", on). The block resets with optimize("", on). A consuming TU
+// must put other optimize pragmas after this header.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+#pragma auto_inline(off)
+template<> inline __declspec(noinline) bool CDefinitionManager::GetDef<CEngineDef>(const CCharString& type_name, long index, CDefPointer<const CEngineDef>* out) const
+{
+    if (index <= 0)
+        return false;
+    CDefPointer<const CDefClassBase> def = GetPDefFromClassIndex(type_name, index);
+    if (!def.IsNull()) {
+        out->SetDynamicCast(def);
+        return true;
+    }
+    return false;
+}
+#pragma auto_inline(on)
+#pragma optimize("", on)
+#endif
+
 #else
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CDefinitionManager = 0xf0.

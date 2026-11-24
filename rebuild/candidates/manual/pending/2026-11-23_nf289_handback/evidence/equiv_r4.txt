@@ -1,0 +1,13 @@
+# equiv_check engine/CPlayerManager.h (repo tree v symlink farm work/eqtree_r4 = repo + NF289 overlay; S=$A/pE)
+# addr-file (tools/incl.py engine/CPlayerManager.h): 17 headers' transitive landed includers plus every row including a relative path: 2112 rows
+differing: 0
+# control (work/ctlhdr: a member typedef planted in the flat class just above the new opt-in, outside it), same rows: differing 493 (first lines):
+00896df0	src	DIFF		rebuild/src/compiled/00/89/CGameScriptInterface_KickOffCreditsScreen_00896df0.cpp
+004c7a10	src	DIFF		rebuild/src/compiled/00/4c/CThing_PeekPlayer_004c7a10.cpp
+008902b0	src	DIFF		rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroChild_008902b0.cpp
+008913c0	src	DIFF		rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroInTavernGame_008913c0.cpp
+00890370	src	DIFF		rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHealth_00890370.cpp
+008903a0	src	DIFF		rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHealthMax_008903a0.cpp
+008903d0	src	DIFF		rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHealthPercentage_008903d0.cpp
+00896fd0	src	DIFF		rebuild/src/compiled/00/89/CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault_00896fd0.cpp
+# FABLE_STATIC_ASSERT lines in the header that are not FABLE_STATIC_ASSERT_AT: none (pin_asserts has nothing to pin)

@@ -10,7 +10,7 @@
 // Vtable: N3DPrimitive::CVertexShaderInputStatic 0x0129DFB8 (stored by the inline derived ctor).
 // Retail offsets (PDB - 4): VertexBuffer +0x30 (CVertexBufferWin32: compression params +0x14), VertexBufferStatus +0x38,
 // RepeatingMeshReps +8, Data (scoped_ptr<N3DPrimitive::CDeviceIndependent>, 32-byte vertex vector at +4) +0x2c.
-// Leaf: UploadToVertexBufferStatic@C3DPrimitive2
+// Leaf: ?UploadToVertexBufferStatic@C3DPrimitive2@@AAE_NK@Z
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // NF149 (q4552 / q4559 / q4560): the vertex buffer is the shared retail CVertexBufferWin32 (engine/CVertexBufferWin32.h, which brings
 // engine/CVertexCompressionParams.h; Ego_r.pdb + FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0); was a local
@@ -62,7 +62,9 @@ private:
     bool SetupVertexBuffer(EVertexType vertexType, unsigned long vertexSize, unsigned long vertexCount, unsigned long flags);   // 0x00A8EDA0
 public:
     void ConvertToVBFormatStatic(void* data, unsigned long vertexSize, unsigned long flags, CVertexCompressionParams* params);   // 0x00A92740
+    private:
     bool UploadToVertexBufferStatic(unsigned long flags);
+    public:
 };
 
 bool C3DPrimitive2::UploadToVertexBufferStatic(unsigned long flags)

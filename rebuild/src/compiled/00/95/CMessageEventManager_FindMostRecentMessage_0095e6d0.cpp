@@ -14,7 +14,7 @@ struct CMessageList {                              // list<CMessageEvent>: one s
 
 class CMessageEventFilter_IsMyDeadLeader { public:
     long m_leader;                                 // the (8-byte) filter state: a thing pointer or UID
-    bool operator()(CMessageEvent* event) const;   // 0x006AF3F0
+    bool operator()(const CMessageEvent& event) const;   // 0x006AF3F0
 };
 
 class CWorld;
@@ -25,7 +25,7 @@ class CMessageEventManager { public:
     {
         for (SMessageNode* node = Messages.m_pHead->m_pNext; node != Messages.m_pHead; node = node->m_pNext) {
             CMessageEvent* event = node->GetEvent();   // a local: retail keeps node + 8 in a register and returns it
-            if (filter(event))
+            if (filter(*event))
                 return event;
         }
         return 0;

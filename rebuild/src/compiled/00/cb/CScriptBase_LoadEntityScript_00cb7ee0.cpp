@@ -1,5 +1,5 @@
 // CScriptBase::LoadEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script) -- if a persisted script text exists for the entity, feed a copy of it to the entity script's persist loader
-// Leaf: LoadEntityScript
+// Leaf: ?LoadEntityScript@CScriptBase@@IAEX_KAAVCActiveEntityScriptBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB7EE0, length 117 bytes (+11 int3 padding).
 // Catalog name "CScriptBase::LoadOrCreatePersistInfo"; the PDB CScriptBase member list has
 // ?LoadEntityScript@CScriptBase@@IAEX_KAAVCActiveEntityScriptBase@@@Z, the only (_K, CActiveEntityScriptBase&)
@@ -58,7 +58,9 @@ class CActiveEntityScriptBase;
 class CScriptBase {
 public:
     virtual ~CScriptBase();
+    protected:
     void LoadEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script);
+    public:
 protected:
     void DoEntityScriptPersist(CActiveEntityScriptBase& script, CCharString& text, bool saving);   // 0x00CB7DA0 (protected in both PDBs: IAE)
 private:

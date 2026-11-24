@@ -24,6 +24,9 @@ public:
     // Original public overrides in both complete PDB types; existing base slots.
     virtual CThing* GetPTargetedThing()const;
     virtual void SetPTargetedThing(CThing*);
+#ifdef FABLE_RETAIL_TARGETING_PLAYER_TEST_PASS27
+    CTCTargetingPlayer(CThing& thing);
+#endif
     virtual CThing* GetPTargetLockedThing()const;
     enum ETargetNextThingMethod { TARGET_NEXT_NULL=0,TARGET_NEXT_NEXT=1,TARGET_NEXT_LEFT=2,TARGET_NEXT_RIGHT=3 };
     typedef std::vector<NPlayerTargeting::CTargetPoint> TTargetPointList;

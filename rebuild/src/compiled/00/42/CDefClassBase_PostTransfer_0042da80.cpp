@@ -1,9 +1,7 @@
 // Empty virtual hook (CGameComponent::Init and friends): __fastcall this=ecx, no args,
-// Leaf: ?PostTransfer@CDefClassBase_Methods@@QAEXXZ
+// Leaf: ?PostTransfer@CDefClassBase@@UAEXXZ
 // no cleanup -> a bare `ret`.
+#define FABLE_RETAIL_DEF_CLASS_BASE   // alias route: engine/CDefClassBase.h declares PostTransfer under this class-model switch
 #include "engine/CDefClassBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CDefClassBase_Methods : CDefClassBase {
-    void PostTransfer();
-};
-void CDefClassBase_Methods::PostTransfer() {}
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?PostTransfer@CDefClassBase@@UAEXXZ); evidence: RTTI vtable slot + PDB name set.
+void CDefClassBase::PostTransfer() {}
+// Was defined on a stand-in alias class (owner rule 2026-11-05); now the real member, through the class-model switch above (alias route, 2026-11-23).

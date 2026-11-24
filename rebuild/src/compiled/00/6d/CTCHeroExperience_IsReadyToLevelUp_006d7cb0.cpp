@@ -38,7 +38,7 @@ public:
 };
 enum EHeroAbility { HERO_ABILITY_NONE = 0 };
 class CTCInventoryAbilities { public:
-    bool IsAbilityPotentiallyAvailable(EHeroAbility ability);       // 0x005EE02E
+    bool IsAbilityPotentiallyAvailable(EHeroAbility ability) const;       // 0x005EE02E
     long GetAbilityLevel(EHeroAbility ability) const;                     // 0x005EDE93
     long GetAbilityStatType(EHeroAbility ability);                  // 0x005EDEEB
     long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool flag) const;   // 0x005EE77C (Ego_r/FableWin QBE)

@@ -1,0 +1,3 @@
+duplicates 2
+00599e3f.obj : warning LNK4006: "public: __thiscall std::vector<class CWideString,class std::allocator<class CWideString> >::~vector<class CWideString,class std::allocator<class CWideString> >(void)" (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@
+0059a238.obj : warning LNK4006: "public: class NUISystem::CComponent * & __thiscall std::map<enum FRONTEND_SCREEN,class NUISystem::CComponent *,struct std::less<enum FRONTEND_SCREEN>,class std::allocator<struct std::pair<enum FRONTEND_SCREEN const,class NUISys

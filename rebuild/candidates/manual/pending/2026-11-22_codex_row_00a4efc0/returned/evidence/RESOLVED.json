@@ -1,0 +1,14 @@
+{
+  "address": "00a4efc0",
+  "retail_image_sha1": "39fd416ba23a91a89713ec80c789f57ddb22e2c8",
+  "retail_extent": 3491,
+  "relocation_resolved_differing_bytes": 0,
+  "relocation_resolved_leaf_sha256": "5930397abb1c56784d2230e405994eb850dd789983cdacd78d1210956416635a",
+  "primary_operands": 58,
+  "distinct_primary_symbols": 23,
+  "mapped_weak_equal": 26,
+  "mapped_weak_different": 0,
+  "recursive_equal_copies": 25,
+  "nested_operands": 48,
+  "vs2003_and_project_header_leaf_and_relocations_identical": true
+}

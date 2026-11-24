@@ -78,7 +78,10 @@ class CTCRegionFollower { public:
     CThing*                                       m_pThing;     // +0x04
     unsigned char                                 m_pad08[0x04];
     CRetailList< CIntelligentPointer<CThing> >    Followers;    // +0x0c
-    void CullNullFollowers();                                   // 0x006AECF0
+    protected:
+    void CullNullFollowers();
+    public:
+                                   // 0x006AECF0
     void GetFollowers(CRetailVector<CThing*>* out);
 };
 

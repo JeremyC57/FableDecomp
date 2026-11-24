@@ -1,3 +1,4 @@
+// Leaf: ?GetActivationTriggerStatus@CGameScriptThing@@UBE_NXZ
 // CGameScriptThing::GetActivationTriggerStatus() const -- the activation-trigger flag (+0x18) of the scripted thing's kind-0x66 component; false when the thing is gone or dead
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D09D0, length 112 bytes (padded).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three calls), the const component-map LowerBound @ 0x004365B0 (kind 0x66).
@@ -82,10 +83,9 @@ struct CTCActivationTrigger_Retail {
     bool           m_status;                       // +0x18
 };
 class CGameScriptThing { public:
-    void*                   m_pVtbl;               // +0x00
-    unsigned char           _pad04[8];
+        unsigned char           _pad04[8];
     CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>
-    bool GetActivationTriggerStatus() const;
+    virtual bool GetActivationTriggerStatus() const;
 };
 
 bool CGameScriptThing::GetActivationTriggerStatus() const

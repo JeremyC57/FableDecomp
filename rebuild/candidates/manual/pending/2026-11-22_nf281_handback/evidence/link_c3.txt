@@ -1,0 +1,9 @@
+## HEAD set: H_00998010.obj H_00998210.obj H_00998170.obj 009975e0.obj 00997da0.obj
+duplicates 0
+
+UNRESOLVED 1 ?IsForbiddenSymbolInComponent@CAFile@@SI_NABVCCharString@@@Z
+UNRESOLVED 1 ?ParserIsSeparatorNext@CAFile@@SI_NAAVCStringParser@@@Z
+## new set: 00998010.obj 00998210.obj 00998170.obj 009975e0.obj 00997da0.obj
+duplicates 0
+
+LK_DONE

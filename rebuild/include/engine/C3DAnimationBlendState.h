@@ -26,7 +26,12 @@ template <class T> class CIVCountedPointer;
 class C3DAnimationBlendState : public CBaseClass {
 public:
 #ifndef FABLE_RETAIL_C3DANIMATIONINTERPOLATOR_IMPLICIT
-    C3DAnimationBlendState();                                            // 0x004C2DD0
+#ifdef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_CTOR_BODY_PASS26
+    // Original donor default ctor calls CBaseClass then clears Data; native expands four times in0070e710.
+    C3DAnimationBlendState():Data(0){}
+#else
+    C3DAnimationBlendState();
+#endif                                            // 0x004C2DD0
 #ifndef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_GENERATED_SPECIALS_PASS23
     C3DAnimationBlendState(const C3DAnimationBlendState&);
     virtual ~C3DAnimationBlendState();                                   // 0x004C2DF0

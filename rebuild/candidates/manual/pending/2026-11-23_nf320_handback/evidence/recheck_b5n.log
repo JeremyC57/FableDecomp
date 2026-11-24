@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0049e1a0   MATCH            PASS   DrawGetWorldMap
+009949f0   RELOCATION_MATCH PASS   InternalReadNextSourceChunk
+004fb2e0   MATCH            PASS   IsMapChangeable
+004fc130   MATCH            PASS   GetMapAt
+004fc150   MATCH            PASS   PeekMapAt
+
+WINS: 5
+  0049e1a0 MATCH CWorld::?DrawGetWorldMap@CWorld@@UBEPBVCIDrawWorldMap@@XZ
+  009949f0 RELOCATION_MATCH CCompressedMemoryDataInputStream::?InternalReadNextSourceChunk@CCompressedMemoryDataInputStream@@EAEXAAPBEAAJ@Z
+  004fb2e0 MATCH CWorldMap::?IsMapChangeable@CWorldMap@@UBE_NJ@Z
+  004fc130 MATCH CWorldMap::?GetMapAt@CWorldMap@@UAEAAVCMap@@ABVC2DCoordI@@@Z
+  004fc150 MATCH CWorldMap::?PeekMapAt@CWorldMap@@UBEABVCMap@@ABVC2DCoordI@@@Z

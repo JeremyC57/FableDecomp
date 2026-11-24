@@ -1,0 +1,10 @@
+rows checked 6 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF257/work/equiv24.tsv
+DONE 0
+# address list:
+008fe547
+0090188e
+0096a260
+0121f86f
+0096b600
+0096ae50
+# 0x0096B600 and 0x0096AE50 are in the list as controls (0x0096B600 HEAD source does not include the header; its new source is rows/0096b600.cpp)

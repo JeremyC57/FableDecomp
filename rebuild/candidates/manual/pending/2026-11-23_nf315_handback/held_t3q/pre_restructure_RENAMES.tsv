@@ -1,0 +1,27 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames)
+0x00843f50	CCreatureAction_ActivateQuest	CCreatureAction_ActivateQuest	??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z	CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest	??0CCreatureAction_ActivateQuest@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z	both PDBs (tools/pdbq.sh); HEAD object defines the pointer form (no Leaf line); parameter type only, bytes equal (objsec ALL_EQ); the one landed binder of the old self spelling (0x007F03D0) moves with it (NF304 Q6)
+0x006ebdd0	CCombatManager	CreatureUnsheathWeapon	?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z	CCombatManager::CreatureUnsheathWeapon	?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@J@Z	both PDBs (tools/pdbq.sh) + engine/CCombatManager.h; HEAD object defines the pointer / long form (no Leaf line); parameter types only, bytes equal (objsec ALL_EQ); both landed binders of the old self spelling (0x0092B3E0, 0x006ED510) move with it (NF304 Q6)
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00919a70	??0CMessageEventFilter_IsOriginatedByThing@@QAE@PAVCThing@@@Z	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	0x006af2b0
+0x00934920	??0CMessageEventFilter_IsOriginatedByThing@@QAE@PAVCThing@@@Z	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	0x006af2b0
+0x008c9f40	?GetHeightZBelowPos@CWorldMap@@QAEMPBVC3DVector@@@Z	?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z	0x0063e480
+0x008ca4a0	?GetHeightZBelowPos@CWorldMap@@QAEMPBVC3DVector@@@Z	?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z	0x0063e480
+0x006d56e0	?RemoveEmoteIcon@CTCFollowed@@QAEXPAVCThingAICreature@@@Z	?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z	0x006d5050
+0x0091e050	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z	0x0097da40
+0x009621f0	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z	0x0097da40
+0x009624d0	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z	0x0097da40
+0x00b2c460	?AddResource@CResourceBank@@QAEXPAVCResource@@@Z	?AddResource@CResourceBank@@QAEXAAVCResource@@@Z	0x009fc380
+0x005be028	?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z	?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z	0x006c9fa0
+0x005ee418	?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z	?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z	0x006c9fa0
+0x006d77c0	?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z	?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z	0x006c9fa0
+0x0072e940	?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z	?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z	0x006c9fa0
+0x0077d4b0	?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z	?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z	0x006c9fa0
+0x00784600	?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z	?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z	0x006c9fa0
+0x007e00d0	?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z	?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z	0x006c9fa0
+0x007f03d0	??0CCreatureAction_ActivateQuest@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z	??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z	0x00843f50
+0x007ef600	??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@_N@Z	??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z	0x00843f50
+0x007f01f0	??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@_N@Z	??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z	0x00843f50
+0x0092b3e0	?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@J@Z	?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z	0x006ebdd0
+0x006ed510	?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@J@Z	?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z	0x006ebdd0
+0x006ebee0	?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z	?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z	0x006ebdd0

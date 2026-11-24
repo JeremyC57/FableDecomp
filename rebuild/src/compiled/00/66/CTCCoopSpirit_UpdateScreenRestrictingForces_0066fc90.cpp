@@ -2,7 +2,7 @@
 //   and the force-ctor load order).
 // pixels of an edge push the owning hero's creature back towards the middle (rotated into its movement frame, scaled and
 // clamped); count the frames the spirit spends off screen and after five seconds' worth make it return to the hero
-// Leaf: UpdateScreenRestrictingForces
+// Leaf: ?UpdateScreenRestrictingForces@CTCCoopSpirit@@AAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -95,7 +95,9 @@ class CTCCoopSpirit : public CTCBase { public:
     CThingCreatureBase* ParentThing;                         // +0x04
     unsigned char _pad08[0x14 - 0x08];
     long          OffScreenFrames;                           // +0x14
+    private:
     void UpdateScreenRestrictingForces();
+    public:
 };
 
 void CTCCoopSpirit::UpdateScreenRestrictingForces()

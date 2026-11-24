@@ -5,7 +5,7 @@
 //        argument slot); end() is the header node pointer, the mapped string sits at node+0x14 (STLport _Rb_tree_node:
 //        colour, parent, left, right, then the pair). The by-value CDefPointer's inline destructor runs on both paths:
 //        `dec [p+4] ; jne`, then virtual slot 1 (the def's self-release).
-// Leaf: AddCameraTagFromIndex
+// Leaf: ?AddCameraTagFromIndex@CSubtitledMessage@@AAE_NJMV?$CDefPointer@$$CBVCGlobalDef@@@@@Z
 class CCharString {
 public:
     void* m_pStringData;
@@ -48,7 +48,9 @@ template <class T> class CDefPointer { public:
 class CSubtitledMessage {
 public:
     bool AddCameraTagFromText(float time, const CCharString& text);   // 0x004CDC40
+    private:
     bool AddCameraTagFromIndex(long index, float time, CDefPointer<const CGlobalDef> def);
+    public:
 };
 
 bool CSubtitledMessage::AddCameraTagFromIndex(long index, float time, CDefPointer<const CGlobalDef> def)

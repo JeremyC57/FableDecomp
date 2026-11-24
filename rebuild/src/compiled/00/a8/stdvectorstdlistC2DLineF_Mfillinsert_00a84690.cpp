@@ -5,11 +5,15 @@
 //   overflow branch is this vector's _M_insert_overflow 0x00A84270. The landed resize binds it with an invented
 //   `vector_allocator` second argument; the allocator here is std::allocator, as the landed operator= 0x00A83D70 of the
 //   same vector (via CNavigationLayer::operator=) spells it.
-// Callees: list<C2DLineF> copy ctor 0x00518D80 and dtor 0x005127A0 (the local x copy, out of line), __uninitialized_copy
+// Callees: list<C2DLineF> copy ctor 0x00518D80 and the list base dtor _List_base<C2DLineF>::~_List_base 0x005127A0 (the local x copy,
+//   out of line), __uninitialized_copy
 //   0x00A831D0, __copy_backward_ptrs 0x00A83230, __uninitialized_fill_n 0x00A826D0, fill 0x00A82620 (all __fastcall),
 //   _M_insert_overflow 0x00A84270.
 // Shape: STLport 4.6 vector.c `_M_fill_insert` verbatim (no EH); the tag-taking helpers are same-TU noinline stand-ins
 //   that never read their tags, so the tags are homed on argument slots as in retail.
+// NF246 (2026-11-22, the 0x005127A0 family, nf243 NOTES section 2): in-place respelling of the row-local list model: the declared
+//   destructor moves from `list` to `_List_base` (list's implicit inline destructor calls it), so the x copy's destructor call binds
+//   ??1?$_List_base@VC2DLineF@@..@std@@QAE@XZ at 0x005127A0, as retail. No class token added; nothing new defined.
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -75,6 +79,7 @@ public:
         __n->_M_prev = __n;
         _M_node._M_data = __n;
     }
+    ~_List_base();                                         // 0x005127A0 (list's `~list() {}` is the 5-byte jmp 0x00514280)
     _AllocProxy _M_node;
 };
 template <class _Tp, class _Alloc = allocator<_Tp> >
@@ -87,7 +92,6 @@ public:
     const_iterator begin() const { return const_iterator((_Node*)(this->_M_node._M_data->_M_next)); }
     const_iterator end() const { return const_iterator(this->_M_node._M_data); }
     list(const list<_Tp, _Alloc>& __x);                   // 0x00518D80
-    ~list();                                               // 0x005127A0
 };
 #pragma auto_inline(off)
 template <class _InputIter, class _ForwardIter>

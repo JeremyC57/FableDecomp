@@ -1,0 +1,7 @@
+# 00d01630 retry findings
+
+The selected leaf retains the source with both original post-wait termination checks. Retail and this source take the same observable cleanup sequence for all 46 cancellation checks after inline timer deregistration is identified with its real destructor call. Native and checked builds still differ in where the code for destruction is expanded. The local operand audit now accounts for all 242 emitted relocation operands.
+
+A conventional single-statement SAY macro around eleven utterances produced 5,177 bytes and 36 differing groups. Its unoptimized code adds eleven conditionals. The checked donor has 123 conditional decisions. The original structure reproduces all 123 observable-successor signatures, while the SAY rewrite reproduces only 90 out of its own 134. The alternative is rejected. Changing the legacy loop spelling, using implicit movie and pause constructors, and changing the optimization of the actual movie member produced no closer admissible version.
+
+The selected TU also emits a 25-byte movie destructor for a 66-byte separately owned native body. Removing the declaration-only movie counted-pointer destructor lets the compiler emit the original 66 bytes. Across the three measured shared-resource configurations the parent then builds to 5,116 bytes and 58 groups. The tradeoff is important when linking an assembled project. See RESOURCE_HELPERS.json for the selected and diagnostic helper bodies.

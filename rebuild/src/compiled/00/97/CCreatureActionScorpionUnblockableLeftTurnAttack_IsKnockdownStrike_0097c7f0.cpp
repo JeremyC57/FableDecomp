@@ -1,4 +1,11 @@
-bool __fastcall CCreatureAction_ScorpionUnblockableLeftTurnAttack_IsKnockdownStrike()
+// Leaf: ?IsKnockdownStrike@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK_RTTI_DECLS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK
+#include "engine/CCreatureAction_ScorpionUnblockableLeftTurnAttack.h"
+bool CCreatureAction_ScorpionUnblockableLeftTurnAttack::IsKnockdownStrike() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v4, NF324): CCreatureAction_ScorpionUnblockableLeftTurnAttack_IsKnockdownStrike -> CCreatureAction_ScorpionUnblockableLeftTurnAttack::IsKnockdownStrike, the RTTI-placed PDB member; class model: engine/CCreatureAction_ScorpionUnblockableLeftTurnAttack.h opt-in FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK, FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK_RTTI_DECLS (preamble of CAIStateGroupScorpionKing_UpdateCombat_0097bda0.cpp).

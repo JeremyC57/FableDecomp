@@ -1,0 +1,123 @@
+{
+  "row": "00723e50",
+  "status": "DIFFER",
+  "build_tag": "partial_tree_1d4aa74860b1_6f1ab3a8",
+  "header_tree": "1d4aa74860b1",
+  "result": {
+    "row": "00723e50",
+    "tag": "partial_tree_1d4aa74860b1_6f1ab3a8",
+    "source_sha256": "6f1ab3a87280618db90e9ec8cb818e1706df0d4650d004e88a87359b27794d06",
+    "requested_leaf": "?SetRHSetAsFlushOnNormal@CTCPhysicsStandard@@UAEXABVC3DVector@@@Z",
+    "flags": [],
+    "retail_bytes": 310,
+    "leaf": "?SetRHSetAsFlushOnNormal@CTCPhysicsStandard@@UAEXABVC3DVector@@@Z",
+    "status": "DIFFER",
+    "object_bytes": 310,
+    "matched_instructions": 96,
+    "retail_instructions": 98,
+    "built_instructions": 98,
+    "hunks": 3,
+    "same_size_different_bytes": 15,
+    "pickany_complete": true,
+    "pickany_eq": 0,
+    "pickany_neq": 0,
+    "pickany_referenced_neq": 0
+  },
+  "relocations": [
+    {
+      "symbol": "__real@3e800000",
+      "object_offset": 27,
+      "retail_offset": 31,
+      "retail_target": "0x0123078C",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "__real@0000000000000000",
+      "object_offset": 33,
+      "retail_offset": 37,
+      "retail_target": "0x0122ED70",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "__real@401921fb60000000",
+      "object_offset": 54,
+      "retail_offset": 54,
+      "retail_target": "0x0124F2B8",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "__real@0000000000000000",
+      "object_offset": 76,
+      "retail_offset": 76,
+      "retail_target": "0x0122ED70",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "?GFastOneOverSqrtTable@@3PAKA",
+      "object_offset": 180,
+      "retail_offset": 180,
+      "retail_target": "0x013CE558",
+      "addend": 0,
+      "verified_by": "named native seed table at retail target and 4-byte element scale"
+    },
+    {
+      "symbol": "__real@40400000",
+      "object_offset": 216,
+      "retail_offset": 216,
+      "retail_target": "0x0122DED4",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "__real@3f000000",
+      "object_offset": 226,
+      "retail_offset": 226,
+      "retail_target": "0x0122F59C",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    }
+  ],
+  "virtual_calls": [
+    {
+      "name": "UpdateOldRHSet",
+      "call_site": "0x00723E59",
+      "slot": 95,
+      "table": "0x01265F84",
+      "base_target": "0x00723930"
+    },
+    {
+      "name": "GetFacingAngleXY",
+      "call_site": "0x00723E63",
+      "slot": 63,
+      "table": "0x01265F84",
+      "base_target": "0x00723B30"
+    }
+  ],
+  "local_jumps": [],
+  "corrected_operand_site_mask_diff_count": 21,
+  "nonmatching_window": [
+    "0x19",
+    "0x2f"
+  ],
+  "test": {
+    "test_sha256": "ade91b01d43d325b89b164a57089220c739a2d482dc358edc5ad01da1be12111",
+    "compiler": "13.10.3077",
+    "test_flags": [
+      "/Od",
+      "/W3",
+      "/GR-"
+    ],
+    "output": "00723e50_TEST PASS",
+    "source_sha256": "6f1ab3a87280618db90e9ec8cb818e1706df0d4650d004e88a87359b27794d06",
+    "tag": "partial_tree_1d4aa74860b1_6f1ab3a8",
+    "test_scenarios": 561,
+    "alias_cases": 24,
+    "method_body_verbatim": true,
+    "owner_and_query_adapters": true,
+    "portable_test": "GCC LP64 strict C++03 with ASan and UBSan: PASS"
+  }
+}

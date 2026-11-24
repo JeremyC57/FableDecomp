@@ -1,0 +1,43 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames / leaf changes)
+0x0077cca0	CTCHighlightItem	DoStopRunning	?DoStopRunning@CTCHighlightItem@@IAEXXZ	CTCHighlightItem::DoStopRunning	DoStopRunning (defined ?DoStopRunning@CTCHighlightItem@@QAEXXZ)	Ego_r + FableWin IAE; access fix in place (protected), Leaf line written in full
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x0077d140	?DoStopRunning@CTCHighlightItem@@QAEXXZ	?DoStopRunning@CTCHighlightItem@@IAEXXZ	0x0077cca0
+0x00996230	?Init@CCompressorZlib@@QAEXXZ	?Initialise@CCompressorZlib@@AAEXXZ	0x00a3aa10
+0x0052ada0	?Init@CCompressorZlib@@QAEXXZ	?Initialise@CCompressorZlib@@AAEXXZ	0x00a3aa10
+0x009967e0	?Init@CCompressorZlib@@QAEXXZ	?Initialise@CCompressorZlib@@AAEXXZ	0x00a3aa10
+0x00996a40	?Init@CCompressorZlib@@QAEXXZ	?Initialise@CCompressorZlib@@AAEXXZ	0x00a3aa10
+0x009c4330	?Init@CCompressorZlib@@QAEXXZ	?Initialise@CCompressorZlib@@AAEXXZ	0x00a3aa10
+0x0072ba40	?CancelAbilities@CTCDivineWrath@@QAEXXZ	?CancelMove@CTCDivineWrath@@QAEXXZ	0x0078f820
+0x0072ba40	?CancelAbilities@CTCUnholyPower@@QAEXXZ	?CancelMove@CTCUnholyPower@@QAEXXZ	0x00794d90
+0x0072b420	?CancelAbilities@CTCDivineWrath@@QAEXXZ	?CancelMove@CTCDivineWrath@@QAEXXZ	0x0078f820
+0x0072b420	?CancelAbilities@CTCUnholyPower@@QAEXXZ	?CancelMove@CTCUnholyPower@@QAEXXZ	0x00794d90
+0x00771620	?PushSourceDefIndex@CTCOpinionSource@@QAE_NJ@Z	?PushNewSourceDef@CTCOpinionSource@@QAE_NJ@Z	0x007714b0
+0x007e61b0	?PlaySound@CTCOracleMinigame@@QAEKABVCCharString@@@Z	?PlaySoundW@CTCOracleMinigame@@QAEKABVCCharString@@@Z	0x007e60f0
+0x0093ae80	?GetVillage@CTCVillageMember@@QAEPAVCTCVillage@@XZ	?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ	0x007ee540
+0x0098f3a0	?ThreadProc@CThreadedFileManager@@SAXPAX@Z	?BeginThread@CThreadedFileManager@@CAXPAX@Z	0x0098f380
+0x006a1e00	?IsMeleeWeapon@CTCWeapon@@QAE_NXZ	?IsProjectile@CTCWeapon@@QBE_NXZ	0x005daa70
+0x004b64e0	?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z	?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	0x00996610
+0x00a2eaa0	?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z	?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	0x00996610
+0x00a75400	?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z	?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	0x00996610
+0x00a89450	?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z	?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	0x00996610
+0x00a8fd40	?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z	?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	0x00996610
+0x00ac3b00	?WriteData@CDataOutputStream@@QAEXPBXK@Z	?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	0x00996610
+0x009fccf0	?ReleaseResources@CVolume@@QAEXH@Z	?Uninitialise@CVolume@@QAEX_N@Z	0x00a67460
+0x009fcd10	?ReleaseVolume@CVolume@@QAEXJ@Z	?Uninitialise@CVolume@@QAEX_N@Z	0x00a67460
+0x009fcd40	?ReleaseVolume@CVolume@@QAEX_N@Z	?Uninitialise@CVolume@@QAEX_N@Z	0x00a67460
+0x00a68130	?ReleaseVolume@CVolume@@QAEX_N@Z	?Uninitialise@CVolume@@QAEX_N@Z	0x00a67460
+0x00a69550	?ReleaseVolume@CVolume@@QAEX_N@Z	?Uninitialise@CVolume@@QAEX_N@Z	0x00a67460
+0x00a67ea0	?ReleaseVolume@CVolume@@QAEX_N@Z	?Uninitialise@CVolume@@QAEX_N@Z	0x00a67460
+0x009cd850	?DeallocateMemory@CPackedUIntArray@@QAEXXZ	?Clear@CPackedUIntArray@@QAEXXZ	0x00a629d0
+0x00666ea0	?PeekWorldMap@CThing@@QBEABVCWorldMap@@XZ	?PeekWorldMap@CThing@@IBEABVCWorldMap@@XZ	0x004c79e0
+0x0099b560	?UnassignString@CWideString@@QAEXXZ	?UnassignString@CWideString@@IAEXXZ	0x0099b4d0
+0x0099b7d0	?Release@CWideString@@AAEXXZ	?UnassignString@CWideString@@IAEXXZ	0x0099b4d0
+0x0099bdb0	?UnassignString_0099b4d0@CWideString@@IAEXXZ	?UnassignString@CWideString@@IAEXXZ	0x0099b4d0
+0x008d48f0	?GetPWeapon@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ	?GetPWeaponUsed@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ	0x00810fd0
+0x008d49b0	?GetPWeapon@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ	?GetPWeaponUsed@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ	0x00810fd0
+0x008d70a0	?FindCombinationAnim@CAnimateThing@@QAEPAVCAnimSet@@J@Z	?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z	0x0070c4e0
+0x008d88a0	?FindCombinationAnim@CAnimateThing@@QAEPAVCAnimSet@@J@Z	?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z	0x0070c4e0
+0x008e97b0	?FindCombinationAnim@CAnimateThing@@QAEPAVCAnimSet@@J@Z	?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z	0x0070c4e0
+0x007c6da0	?StopSample@CTCSoundPlayer@@QAEXK@Z	?StopAttachedSound@CTCSoundPlayer@@QAEXK@Z	0x0066add0
+0x00a67ff0	?ReleaseVolume@CVolume@@QAEX_N@Z	?Uninitialise@CVolume@@QAEX_N@Z	0x00a67460

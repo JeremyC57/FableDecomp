@@ -1,3 +1,4 @@
+// Leaf: ?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby2@@AAE_NXZ
 // CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition() -- keep moving (to within 0.5) towards the combat manager's preferred position for the creature, refreshing it every fifth frame (UID-staggered) or after 6 frames; tells the manager when the position proves unreachable; false when the creature stops being a combatant or a move fails, true once in position or no longer runnable
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E090, length 428 bytes (+ int3 padding).
@@ -94,7 +95,7 @@ class CTCCreatureNavigation { public:                  // interface 7
 class CCombatManager { public:
     C3DVector GetPreferredPos(const CThingCreatureBase& creature) const;        // 0x006EA770
     bool IsCreatureOnRotatingCombatRing(CThingCreatureBase* creature);  // 0x006E9700
-    void OnCombatPositionUnreachable(CThingCreatureBase* creature);     // 0x006E9D10 (autoname label only; called when the move returns 3)
+    void SetAttackerProngAsInvalid(CThingCreatureBase& attacker);       // 0x006E9D10 (NF306: Ego_r + FableWin QAE, reference; was OnCombatPositionUnreachable(CThingCreatureBase*); called when the move returns 3)
 };
 class CWorld { public:
     unsigned char _pad0[0x4c];
@@ -126,7 +127,9 @@ struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
     virtual bool IsStillRunnable(bool checkEnemy);  // slot 14 (+0x38), first after the base's 14 slots (0..13)
     CIntelligentPointerCreature PEnemy;         // +0x14
     bool IsEnemyCreatureInCombatPosition();     // 0x0093DCD0
+    private:
     bool MoveToEnemyCreatureCombatPosition();
+    public:
 };
 
 bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
@@ -157,7 +160,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
                 if (PBrain->PCreature->IsInMeleeAsAttacker()) {
                     CThingCreatureBase* self = PBrain->PCreature;
                     CWorld* w = &GetWorld();
-                    w->CombatManager->OnCombatPositionUnreachable(self);
+                    w->CombatManager->SetAttackerProngAsInvalid(*self);
                 }
             } else if (result != 4 && result != 2)
                 return false;

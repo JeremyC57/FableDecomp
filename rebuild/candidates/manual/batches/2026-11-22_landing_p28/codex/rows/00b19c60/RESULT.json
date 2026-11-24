@@ -1,0 +1,32 @@
+{
+  "include_snapshot": "cd9640ec9d46c9ba5ee9fae1afe9053ebae20b5c7dea761b4f172438c83014aa",
+  "tag": "handback_cd9640ec9d_ed71a77",
+  "compile": {
+    "row": "00b19c60",
+    "tag": "handback_cd9640ec9d_ed71a77",
+    "source_sha256": "ed71a77ce86e125975f64fc97539665fbfb27ce0425b15fd574fcecc1d6e435a",
+    "requested_leaf": "?PreparePrimitives@CPSCLight@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z",
+    "flags": [],
+    "retail_bytes": 2516,
+    "leaf": "?PreparePrimitives@CPSCLight@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z",
+    "status": "MASKED_EQUAL",
+    "object_bytes": 2516,
+    "matched_instructions": 675,
+    "retail_instructions": 675,
+    "built_instructions": 675,
+    "hunks": 0,
+    "same_size_different_bytes": 0,
+    "pickany_complete": true,
+    "pickany_eq": 2,
+    "pickany_neq": 0,
+    "pickany_referenced_neq": 0
+  },
+  "tested": true,
+  "test_sha256": "7ec779909f5a1e875d549a4ddec96914a487a67bcfdb415e72746358c2ce6000",
+  "grade": "RELOCATION_MATCH",
+  "symbol_table_checked": true,
+  "effective_pickany_eq": 2,
+  "effective_pickany_neq": 0,
+  "effective_pickany_referenced_neq": 0,
+  "strong_same_tu_copies": "none"
+}

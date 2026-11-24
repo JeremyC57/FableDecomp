@@ -91,8 +91,8 @@ public:
     long  AnimationPoolSize;
     long  ClothPoolSize;
 };
-extern CEngineMemoryInit g_DefaultEngineMemoryInit;      // 0x0137549C
-extern bool g_WADBuildEnabled;                           // 0x01375459
+extern CEngineMemoryInit GEngineMemoryInit;      // 0x0137549C (Ego_r / FableWin / Ego_d publics; NF236: was g_DefaultEngineMemoryInit)
+extern bool GAllowDataGeneration;                           // 0x01375459 (Ego_r / FableWin / Ego_d publics; NF236: was g_WADBuildEnabled)
 extern bool g_bUseLegacyFrontend;                        // 0x013B8642
 
 class CDefinitionManager;
@@ -330,8 +330,8 @@ void CNewFrontendGameComponent::InitialiseEngine()
     init.DefinitionManager = &CStartupDefinitionManager::Get();
     init.WriteableEngineCacheResourcePath = NResourceDirectoryNames::GetWriteableEngineCacheDir();
     init.EngineDef = (CEngineDef*)engine_def.Object;
-    init.MemoryInit = g_DefaultEngineMemoryInit;
-    init.InitFlags |= g_WADBuildEnabled ? 4 : 0;
+    init.MemoryInit = GEngineMemoryInit;
+    init.InitFlags |= GAllowDataGeneration ? 4 : 0;
     if (g_bUseLegacyFrontend)
         init.InitFlags |= 0x20;
 

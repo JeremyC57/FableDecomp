@@ -1,0 +1,7 @@
+00619fd0	src	DIFF		rebuild/src/compiled/00/61/CTCInventoryQuests_IsInventoryScreen_00619fd0.cpp
+0061a000	src	DIFF		rebuild/src/compiled/00/61/CTCInventoryQuests_GetPlayerMode_0061a000.cpp
+0061a010	src	DIFF		rebuild/src/compiled/00/61/CTCInventoryQuests_GetScreenType_0061a010.cpp
+00624da0	src	DIFF		rebuild/src/compiled/00/62/CTCInventoryQuests_OnChangeCategory_00624da0.cpp
+00624db0	src	DIFF		rebuild/src/compiled/00/62/CTCInventoryQuests_IsComponentSerialisable_00624db0.cpp
+00582944	src	DIFF		rebuild/src/compiled/00/58/CTCInventory_OnCreate_00582944.cpp
+0061a6a0	src	DIFF		rebuild/src/compiled/00/61/CTCInventoryQuests_OnCreate_0061a6a0.cpp

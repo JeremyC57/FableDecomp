@@ -1,0 +1,55 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x006A98F0	CThingPlayerCreature	SerialiseGameState	?SerialiseGameState@CThingPlayerCreature@@UAE_NAAVCPersistContext@@@Z	CThingPlayerCreature::SerialiseGameState	?SerialiseGameState@CThingPlayerCreature@@QAE_NAAVCPersistContext@@@Z	Ego_r + FableWin UAE (vtable 0x012457FC slot 3); `virtual` on the override and on the local base model (prefix ruling R1, pad shrunk on its own line); objsec ALL_EQ, no table
+0x009CC530	CBankFile	CreateSymbolMap	?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z	CBankFile::CreateSymbolMap	?CreateSymbolMap@CBankFile@@QAEXAAVCSymbolMap@@_N@Z	Ego_r + FableWin QBE; const on decl + definition (prefix ruling: the only other renamed symbols are the unreferenced pick-any GetSymbol / CArray<CCharString>::operator[] COMDATs); objsec ALL_EQ
+0x0098ECD0	CThreadedFileManager	ProcessObjects	?ProcessObjects@CThreadedFileManager@@AAEXXZ	CThreadedFileManager::ProcessObjects	?ProcessObjects@CThreadedFileManager@@QAEXXZ	Ego_r + FableWin AAE; add-only opt-in FABLE_RETAIL_CTHREADEDFILEMANAGER_PROCESSOBJECTS_PRIVATE (engine/CThreadedFileManager.h), Leaf respelled; objsec ALL_EQ
+0x004FCE20	CWorldMap	AllocateMapUID	?AllocateMapUID@CWorldMap@@IAEKJ@Z	CWorldMap::AllocateMapUID	?AllocateMapUID@CWorldMap@@QAEKJ@Z	Ego_r + FableWin IAE; `protected: ... public:` (line 29); the Leaf already said IAE, the HEAD object defined QAE; objsec ALL_EQ
+0x00867AF0	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@AAVCThingCreatureBase@@_N@Z	CCombatAction_GenericStrikeResponseKnockdownRecoverBase::CCombatAction_GenericStrikeResponseKnockdownRecoverBase	??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@PAVCThingCreatureBase@@_N@Z	Ego_r + FableWin AAV; `CThingCreatureBase& owner` on decl + definition, base call `owner`; objsec ALL_EQ
+0x008BB200	CCreatureAction_CastWillForceSpell	CCreatureAction_CastWillForceSpell	??0CCreatureAction_CastWillForceSpell@@QAE@AAVCThingCreatureBase@@J_NABVCCharString@@@Z	CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell	??0CCreatureAction_CastWillForceSpell@@QAE@PAVCThingCreatureBase@@J_NABVCCharString@@@Z	Ego_r + FableWin AAV; `CThingCreatureBase& owner` on decl + definition, base call `owner`; objsec ALL_EQ
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x006A98F0	?SerialiseGameState@CThingCreatureBase@@QAE_NAAVCPersistContext@@@Z	?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z	0x006628E0
+0x0040D400	?Load@CUserProfileManager@@AAEXXZ	?Load@CUserProfileManager@@QAEXXZ	0x0040D350
+0x00506F30	?AllocateMapUID@CWorldMap@@QAEKJ@Z	?AllocateMapUID@CWorldMap@@IAEKJ@Z	0x004FCE20
+0x00507C30	?AllocateMapUID@CWorldMap@@QAEKJ@Z	?AllocateMapUID@CWorldMap@@IAEKJ@Z	0x004FCE20
+0x00434E10	??0CCamera@@QAE@ABVC3DVector@@0MJ@Z	??0CCamera@@QAE@ABVC3DVector@@0M_N@Z	0x00A0BF20
+0x007F04C0	??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@PAVCThingCreatureBase@@_N@Z	??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@AAVCThingCreatureBase@@_N@Z	0x00867AF0
+0x008DE650	??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@PAVCThingCreatureBase@@_N@Z	??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@AAVCThingCreatureBase@@_N@Z	0x00867AF0
+0x008E08C0	??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@PAVCThingCreatureBase@@_N@Z	??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@AAVCThingCreatureBase@@_N@Z	0x00867AF0
+0x008DFFD0	??0CCombatAction_Guildmaster_HealFollowersRelease@@QAE@PAVCThingCreatureBase@@@Z	??0CCombatAction_Guildmaster_HealFollowersRelease@@QAE@AAVCThingCreatureBase@@@Z	0x008E4860
+0x008A9610	??0CCombatAction_RecoverFromStunned@@QAE@AAVCThingCreatureBase@@PAV1@@Z	??0CCombatAction_RecoverFromStunned@@QAE@AAVCThingCreatureBase@@_N@Z	0x008AE1B0
+0x008C2810	??0CCombatAction_WillForcePushInto@@QAE@PAVCThingCreatureBase@@@Z	??0CCombatAction_WillForcePushInto@@QAE@AAVCThingCreatureBase@@@Z	0x008C38B0
+0x00956460	??0CCombatAction_WillShieldInto@@QAE@PAVCThingCreatureBase@@MM@Z	??0CCombatAction_WillShieldInto@@QAE@AAVCThingCreatureBase@@MM@Z	0x00956760
+0x00521AE0	?LoadFromFile@CCharString@@QAEXPAVCAFile@@PAVCASuspendableProcess@@J@Z	?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z	0x0099F2E0
+0x007E5B90	?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@PAVCThingCreatureBase@@@Z	?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@AAVCThingCreatureBase@@@Z	0x006EB600
+0x0091E050	?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@PAVCThingCreatureBase@@@Z	?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@AAVCThingCreatureBase@@@Z	0x006EB600
+0x009967E0	?SetStreamInput@CCompressorZlib@@QAEXPBXJ@Z	?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z	0x00A3AB90
+0x00996990	?SetStreamInput@CCompressorZlib@@QAEXPBXJ@Z	?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z	0x00A3AB90
+0x00996A40	?SetStreamInput@CCompressorZlib@@QAEXPBXJ@Z	?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z	0x00A3AB90
+0x00419D90	??0CConsoleCommandParameters@@QAE@J@Z	??0CConsoleCommandParameters@@QAE@W4EGenericVarType@@@Z	0x009EBB30
+0x00855B50	??0CCreatureAction_BlockBase@@QAE@PAVCThingCreatureBase@@0JJ@Z	??0CCreatureAction_BlockBase@@QAE@AAVCThingCreatureBase@@0JJ@Z	0x00855AF0
+0x00909520	??0CCreatureAction_CastWillForceSpell@@QAE@PAVCThingCreatureBase@@J_NABVCCharString@@@Z	??0CCreatureAction_CastWillForceSpell@@QAE@AAVCThingCreatureBase@@J_NABVCCharString@@@Z	0x008BB200
+0x008E0780	??0CCreatureAction_DragonFireBeamOutOf@@QAE@PAVCThingCreatureBase@@@Z	??0CCreatureAction_DragonFireBeamOutOf@@QAE@AAVCThingCreatureBase@@@Z	0x008E4A60
+0x008E07F0	??0CCreatureAction_DragonStrafeOutOf@@QAE@PAVCThingCreatureBase@@@Z	??0CCreatureAction_DragonStrafeOutOf@@QAE@AAVCThingCreatureBase@@@Z	0x008E4AD0
+0x0092A8A0	??0CCreatureAction_FireMissileWeapon@@QAE@PAVCThingCreatureBase@@PBVCThing@@@Z	??0CCreatureAction_FireMissileWeapon@@QAE@AAVCThingCreatureBase@@PBVCThing@@@Z	0x008D5110
+0x0092B3E0	??0CCreatureAction_FireMissileWeapon@@QAE@PAVCThingCreatureBase@@PBVCThing@@@Z	??0CCreatureAction_FireMissileWeapon@@QAE@AAVCThingCreatureBase@@PBVCThing@@@Z	0x008D5110
+0x0097EF60	??0CCreatureAction_FireMissileWeapon@@QAE@PAVCThingCreatureBase@@PBVCThing@@@Z	??0CCreatureAction_FireMissileWeapon@@QAE@AAVCThingCreatureBase@@PBVCThing@@@Z	0x008D5110
+0x0097F3A0	??0CCreatureAction_FireMissileWeapon@@QAE@PAVCThingCreatureBase@@PBVCThing@@@Z	??0CCreatureAction_FireMissileWeapon@@QAE@AAVCThingCreatureBase@@PBVCThing@@@Z	0x008D5110
+0x007ED170	??0CCreatureAction_GiveItemToThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@1@Z	??0CCreatureAction_GiveItemToThing@@QAE@AAVCThingCreatureBase@@AAVCThing@@1@Z	0x0062D9E0
+0x007ED2C0	??0CCreatureAction_GiveItemToThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@1@Z	??0CCreatureAction_GiveItemToThing@@QAE@AAVCThingCreatureBase@@AAVCThing@@1@Z	0x0062D9E0
+0x0078A2C0	??0CCreatureAction_HeroLoadRangedWeapon@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	??0CCreatureAction_HeroLoadRangedWeapon@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	0x0078AE30
+0x007EB1A0	??0CCreatureAction_PickUpGenericBox@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	??0CCreatureAction_PickUpGenericBox@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	0x00843700
+0x007EBAB0	??0CCreatureAction_LookThroughWindow@@QAE@AAVCThingAICreature@@@Z	??0CCreatureAction_LookThroughWindow@@QAE@AAVCThingCreatureBase@@@Z	0x007EBA20
+0x00911710	??0CCreatureAction_PlayAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z	??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z	0x00843A80
+0x009118A0	??0CCreatureAction_PlayAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z	??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z	0x00843A80
+0x009574D0	??0CCreatureAction_PlayAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z	??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z	0x00843A80
+0x0057B783	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z	0x008427E0
+0x0093A5C0	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@11M_N22@Z	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z	0x008427E0
+0x0093A8C0	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@11M_N22@Z	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z	0x008427E0
+0x009689C0	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z	0x008427E0
+0x00843C10	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@1JM_NJJ@Z	??0CCreatureAction_PlayIntoLoopOutOfAnimation@@AAE@AAVCThingCreatureBase@@ABVCCharString@@1JM_NJJ@Z	0x008428B0
+0x009AD6E0	?DecompressDefinitionData@CDefinitionManager@@QAEXPAVCMemoryDataInputStream@@K@Z	?DecompressDefinitionData@CDefinitionManager@@IBEXAAVCMemoryDataInputStream@@K@Z	0x009AD5F0
+0x009A6610	??0CDisplayManager@@QAE@PAVCSystemManager@@@Z	??0CDisplayManager@@QAE@AAVCSystemManager@@@Z	0x009C0880
+0x00B83750	?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QAEXPAVC3DMesh2@@@Z	?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z	0x00BD2A90
+0x00B24690	?UpdateLoadingDistanceVideoOptions@CEngineLocalDetailGenerator@@QAEXPAVCEngineVideoOptionsDef@@@Z	?UpdateLoadingDistanceVideoOptions@CEngineLocalDetailGenerator@@QAEXABVCEngineVideoOptionsDef@@@Z	0x00B59870
+0x00B6E260	?RenderOcclusionBox@CEngineOcclusionManager@@QAEJABVCMatrix3x4@@@Z	?RenderOcclusionBox@CEngineOcclusionManager@@QAEKABVCMatrix3x4@@@Z	0x00B8D420
+0x00BE79D0	?RenderOcclusionBox@CEngineOcclusionManager@@QAEJABVCMatrix3x4@@@Z	?RenderOcclusionBox@CEngineOcclusionManager@@QAEKABVCMatrix3x4@@@Z	0x00B8D420

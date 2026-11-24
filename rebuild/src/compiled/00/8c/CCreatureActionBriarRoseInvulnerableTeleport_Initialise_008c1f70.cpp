@@ -113,7 +113,7 @@ public:
     }
 };
 class CTCSoundPlayer { public:                                 // interface 0x10
-    unsigned long PlaySound(long sound, const CSoundInit& init, long a, long b);   // 0x0066ACE0
+    unsigned long PlayUnattachedSample(long sound, const CSoundInit& init, bool a, bool b);   // 0x0066ACE0 (NF306: Ego_r + FableWin QAEKJABVCSoundInit@@_N1; was PlaySound(long, const CSoundInit&, long, long))
 };
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -193,6 +193,6 @@ void CCreatureAction_BriarRoseInvulnerableTeleport::Initialise()
     if (((CThing*)PCreature.GetPItem())->GetInterface(&soundPlayer, 0x10) && CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&sounds)) {
         const long* sound = sounds->SoundMap.GetPSound("TELEPORT_AWAY_WANK");
         if (sound)
-            soundPlayer->PlaySound(*sound, CSoundInit(), 0, 0);
+            soundPlayer->PlayUnattachedSample(*sound, CSoundInit(), false, false);
     }
 }

@@ -20,8 +20,10 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+#define FABLE_RETAIL_TUTORIAL_CATEGORIES_PASS26   // NF315: the shared ETutorialCategory enum (Ego_d TPI 0xCE58) for the PDB parameter type
+#include "engine/ETutorialCategory.h"
 class CTCHero { public:                                // interface 0x29
-    bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
+    bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0 (NF315: ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z, Ego_r + FableWin)
 };
 struct SListNode { SListNode* next; SListNode* prev; };
 #include "engine/CCountedPointer.h"
@@ -63,7 +65,7 @@ void CTCCreatureGroupBoastingCrowd::OnHeroApproachBoastingArea()
             if (heroThing->HasTC(TCI_HERO))
                 hero = ((CTCHero*)&heroThing->GetTC(TCI_HERO));
             if (hero)
-                hero->GiveTutorialForCategory(5, false);
+                hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_BOASTING, false);
         }
         EnterCrowdState(1);
     }

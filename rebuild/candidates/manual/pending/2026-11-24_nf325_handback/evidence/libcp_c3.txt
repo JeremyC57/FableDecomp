@@ -1,0 +1,1 @@
+00a85fb0 LIBCP_OK renames=?Sizeof@CPhysicsFacesSegmentBranch_Methods@@QAEJXZ=?Sizeof@CPhysicsFacesSegmentBranch@@MBEJXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

@@ -1,0 +1,8 @@
+01:47:15 ZS_FAIL rc=2 /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF292/work/zs_ctl.cpp
+ZS_FAIL rc=2
+zs_ctl.cpp
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF292\work\zs_ctl.cpp(1) : error C2065: 'undeclared_token_nf292' : undeclared identifier
+01:47:15 ZS_OK /home/user/FableDecomp/rebuild/tests/00/6e/CTCDParticleEmitter_Create_006e11f0_test.cpp
+01:47:15 ZS_OK /home/user/FableDecomp/rebuild/tests/00/a9/C3DAnimFileSaver_SaveAnimFileCompressed_00a99840_test.cpp
+01:47:16 ZS_OK /home/user/FableDecomp/rebuild/tests/00/a9/C3DMeshFileSaver_SaveMeshFileCompressed_00a9ba70_test.cpp
+ZS_DONE

@@ -1,0 +1,27 @@
+addr       parity           behav  name
+0062ea40   MATCH            PASS   IsToUseRotationInAnimation
+0062ea50   MATCH            PASS   IsToAlignWithGroundNormal
+0062ea60   MATCH            PASS   IsToFaceTarget
+0062ea70   MATCH            PASS   IsToFaceTargetAtStart
+0062ea80   MATCH            PASS   GetActionMovementVector
+0062eaa0   MATCH            PASS   IsToPerformActionOnStrike
+0062eab0   MATCH            PASS   IsToHitProneThings
+00692890   RELOCATION_MATCH PASS   AllowsCombinationAnims
+00661f90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00661f90   WARN GENERIC_STRUCT module=CThingCreatureBase (use engine/CThingCreatureBase.h)
+00661f90   RELOCATION_MATCH PASS   GetCombatRadius
+00b0a750   WARN SHARED_HEADER_AVAILABLE CPSCUpdateNormal (engine/CPSCUpdateNormal.h)
+00b0a750   RELOCATION_MATCH PASS   GetCurrentFadeValue
+
+WINS: 10
+  0062ea40 MATCH CCombatActionBase::?IsToUseRotationInAnimation@CCombatActionBase@@UBE_NXZ
+  0062ea50 MATCH CCombatActionBase::?IsToAlignWithGroundNormal@CCombatActionBase@@UBE_NXZ
+  0062ea60 MATCH CCombatActionBase::?IsToFaceTarget@CCombatActionBase@@UBE_NXZ
+  0062ea70 MATCH CCombatActionBase::?IsToFaceTargetAtStart@CCombatActionBase@@UBE_NXZ
+  0062ea80 MATCH CCombatActionBase::?GetActionMovementVector@CCombatActionBase@@UBE?AVC3DVector@@XZ
+  0062eaa0 MATCH CCombatActionBase::?IsToPerformActionOnStrike@CCombatActionBase@@UBE_NXZ
+  0062eab0 MATCH CCombatActionBase::?IsToHitProneThings@CCombatActionBase@@UBE_NXZ
+  00692890 RELOCATION_MATCH CCreatureActionBase::?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ
+  00661f90 RELOCATION_MATCH CThingCreatureBase::GetCombatRadius
+  00b0a750 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue
+EXIT 0

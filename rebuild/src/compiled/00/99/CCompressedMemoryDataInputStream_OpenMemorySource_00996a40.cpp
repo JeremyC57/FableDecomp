@@ -20,10 +20,10 @@ class CACompressor { public:                                           // landed
 class CCompressorZlib : public CACompressor { public:                         // vtable 0x01245974, retail 0x58 bytes
     unsigned char _zlib[0x58 - 0x1c];
     static long GetWorkspaceSize();                             // 0x00A3A7D0
-    void Init();                                                // 0x00A3AA10
-    void SetStreamInput(const void* source, long sourceSize);   // 0x00A3AB90
+    private: void Initialise(); public:                                                // 0x00A3AA10; NF299: PDB name, was Init
+    void SetStreamInput(const void* source, unsigned long sourceSize);   // 0x00A3AB90 (Ego_r + FableWin PBXK)
     virtual ~CCompressorZlib();
-    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Init(); }
+    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Initialise(); }
 };
 
 struct CBaseClassNonCopyable {

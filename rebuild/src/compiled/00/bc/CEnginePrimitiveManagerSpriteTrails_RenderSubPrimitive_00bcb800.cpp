@@ -197,7 +197,7 @@ class CGraphicFrame { public:
 };
 class CGraphicInfo { public:                              // 0x2c bytes
     unsigned char _pad[0x2c];
-    bool GetFrame(CGraphicFrame* frame, unsigned long frameIndex, unsigned long a, unsigned long b);   // 0x009FF8D0
+    bool GetFrame(CGraphicFrame& frame, unsigned long frameIndex, unsigned long a, unsigned long b) const;   // 0x009FF8D0
 };
 template <class T> struct CRetailVector {
     T* m_pFirst;
@@ -214,7 +214,7 @@ struct CGraphicBank {
     FABLE_FORCEINLINE CGraphicInfo* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
     FABLE_FORCEINLINE bool GetFrame(CGraphicFrame* frame, unsigned long bankIndex, unsigned long frameIndex)
     {
-        return Get(bankIndex)->GetFrame(frame, frameIndex, 0, 0);
+        return Get(bankIndex)->GetFrame(*frame, frameIndex, 0, 0);
     }
 };
 struct CEngineGlobal_01436e98 {
@@ -237,7 +237,7 @@ class CEnginePrimitiveManagerSpriteTrails { public:
     bool          Enable;                          // +0x08
     CVertexShader VertexShader;                    // +0x0c (engine/CVertexShader.h; was an anonymous {vptr, Data} pair)
     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long pass);
-    void RenderSpriteTrail(CEngineInternalPrimitiveSpriteTrail* trail, bool textured);   // 0x00BCA950
+    void RenderSpriteTrail(const CEngineInternalPrimitiveSpriteTrail& trail, bool textured);   // 0x00BCA950
 };
 
 void CEnginePrimitiveManagerSpriteTrails::RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long pass)
@@ -260,6 +260,6 @@ void CEnginePrimitiveManagerSpriteTrails::RenderSubPrimitive(CEngineSubPrimitive
         SetStateConst(g_pRenderManagerCore->m_state2f84, g_renderStateDefault_01396dd0, g_pRenderManagerCore);
         NEngineInternal::GPShaderRenderManager->ResetWorldTransform();
         SetStateConst(g_pRenderManagerCore->m_state2944, 0, g_pRenderManagerCore);
-        RenderSpriteTrail(trail, true);
+        RenderSpriteTrail(*trail, true);
     }
 }

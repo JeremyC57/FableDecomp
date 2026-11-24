@@ -1,3 +1,4 @@
+// Leaf: ?RenderWithOcclusion@CLandscapeBackgroundPatch@@AAEXAAJAA_N@Z
 // CLandscapeBackgroundPatch::RenderWithOcclusion(long& queryHandle, bool& occluded) -- render a landscape patch under hardware occlusion queries: with occlusion off just render; with no pending query render inside a new query; otherwise, if last frame's query found no pixels, draw the patch's bounding box as the next query (clearing the parent chain's visibility the first time), else render it again inside a new query
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE79D0, 526 bytes (+ int3 padding), `ret 8`.
@@ -29,7 +30,7 @@ class CEngineOcclusionManager { public:
     void StartOcclusionTest();                     // 0x00B8D090 (NF34: Ego_r + FableWin)
     void EndOcclusionTest(unsigned long handle);         // 0x00B8D0A0 (NF34: Ego_r + FableWin)
     unsigned long GetQueryResult(long handle, bool wait);   // 0x00B8D0B0
-    long RenderOcclusionBox(const CMatrix3x4& box); // 0x00B8D420
+    unsigned long RenderOcclusionBox(const CMatrix3x4& box); // 0x00B8D420 (Ego_r + FableWin QAEK)
     FABLE_FORCEINLINE long AddQuery()
     {
         unsigned long index = QueryCount;
@@ -65,8 +66,13 @@ class CLandscapeBackgroundPatch { public:
     unsigned short                MapY;             // +0x10e
     unsigned short                Width;            // +0x110
     unsigned short                Height;           // +0x112
-    bool Render(bool full);                         // 0x00BE6F70
+    private:
+    bool Render(bool full);
+    public:
+                         // 0x00BE6F70
+    private:
     void RenderWithOcclusion(long& queryHandle, bool& occluded);
+    public:
 };
 
 void CLandscapeBackgroundPatch::RenderWithOcclusion(long& queryHandle, bool& occluded)

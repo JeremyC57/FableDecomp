@@ -1,0 +1,5 @@
+# 00b0a750 defined/undefined externals: HEAD (<) v NF261 (>)
+6a7
+> DEF __real@44800000
+10d10
+< UND ?g_cosTableScale@@3MB

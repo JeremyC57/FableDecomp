@@ -27,7 +27,7 @@ class CAIStateGroupBase { public:
     bool          Enabled;                               // +0x12
     void Terminate();                                    // 0x008FCF40 (Terminated = true)
     void CleanupMain();                                  // 0x008FD050
-    bool IsEnabledAndRunnable();                         // 0x008FCF10
+    bool IsRunnableMain();                         // 0x008FCF10
     void Activate();                                     // 0x008FCF50
 };
 struct CStateGroupEntry {

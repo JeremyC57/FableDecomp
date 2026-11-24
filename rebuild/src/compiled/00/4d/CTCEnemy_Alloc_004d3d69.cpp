@@ -13,10 +13,10 @@ class CThing;
 
 class CTCEnemy { public:
     unsigned char _body[0x1c];       // sizeof(CTCEnemy) = 0x1c
-    CTCEnemy(CThing* owner);                   // 0x0076C8A0
+    CTCEnemy(CThing& owner);                   // 0x0076C8A0
 };
 
 CTCEnemy* __fastcall CTCEnemy_Alloc(CThing* owner)
 {
-    return new CTCEnemy(owner);
+    return new CTCEnemy(*owner);
 }

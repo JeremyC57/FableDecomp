@@ -1,0 +1,6 @@
+duplicates 0
+
+UNRESOLVED 2 ?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ
+UNRESOLVED 1 ?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ
+UNRESOLVED 2 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+UNRESOLVED 1 ?PerformAction@CCreatureAction_UseObject@@UAEXXZ

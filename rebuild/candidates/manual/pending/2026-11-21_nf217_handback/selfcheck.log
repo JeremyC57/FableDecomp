@@ -1,0 +1,139 @@
+# NF217 selfcheck (by hand, 2026-11-21)
+## 1. recheck_final.log: every hand-back row MATCH/RELOCATION_MATCH + PASS
+0047e196 RELOCATION_MATCH PASS
+004bda30 RELOCATION_MATCH PASS
+004bdd70 RELOCATION_MATCH PASS
+006116e0 RELOCATION_MATCH PASS
+00621720 RELOCATION_MATCH PASS
+00621c80 RELOCATION_MATCH PASS
+0066e7bd MATCH PASS
+00a35af0 RELOCATION_MATCH PASS
+00a35b30 RELOCATION_MATCH PASS
+00a35b50 RELOCATION_MATCH PASS
+00c432f0 RELOCATION_MATCH PASS
+00c576e0 RELOCATION_MATCH PASS
+00c57c90 RELOCATION_MATCH PASS
+## 2. defined-symbol diff, HEAD object v hand-back object (cl-only, same flags)
+### 0047e196
+### 004bda30
+< ?GetAllHelperPointNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAU?$CStdVector@VCCharString@@@@@Z
+> ?GetAllHelperPointNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+### 004bdd70
+< ?GetDummyObjectNamesStartingWith@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAU?$CStdVector@VCCharString@@@@ABVCCharString@@@Z
+> ?GetDummyObjectNamesStartingWith@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z
+### 006116e0
+### 00621720
+### 00621c80
+### 0066e7bd
+< ?CManager_GetCurrentScreen@@YIPAUCBase@@PAUCManager@@@Z
+> ??A?$vector@PBVCBase@NHeroInformationScreens@@V?$allocator@PBVCBase@NHeroInformationScreens@@@std@@@std@@QAEAAPBVCBase@NHeroInformationScreens@@I@Z
+> ?GetCurrentScreen@CManager@NHeroInformationScreens@@QAEPBVCBase@2@XZ
+> ?begin@?$vector@PBVCBase@NHeroInformationScreens@@V?$allocator@PBVCBase@NHeroInformationScreens@@@std@@@std@@QAEPAPBVCBase@NHeroInformationScreens@@XZ
+### 00a35af0
+< ?fn_00a35b30@@YIXPAUBL@@HH@Z
+> ??C?$CCountedPointer@$$CBVC3DMeshStats@@@@QBEPBVC3DMeshStats@@XZ
+> ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+### 00a35b30
+< ?fn_00a35b30@@YIXPAUBL@@HH@Z
+> ??C?$CCountedPointer@$$CBVC3DMeshStats@@@@QBEPBVC3DMeshStats@@XZ
+> ?GetAllDummyObjectNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+### 00a35b50
+< ?ConstructString@@YI_NPAVCWideString@@HPAXJ@Z
+> ??C?$CCountedPointer@$$CBVC3DMeshStats@@@@QBEPBVC3DMeshStats@@XZ
+> ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z
+### 00c432f0
+< ?ReportMark@CMarkedBufferOwner_00c43810@@QAEXXZ
+> ?ReportQueueInfo@CAudioObject@@QAEXXZ
+### 00c576e0
+### 00c57c90
+## 3. function-body diff (comdiff, relocation fields zeroed), HEAD v hand-back
+### 006116e0
+functions head=19 form=19
+### 00621720
+functions head=20 form=20
+### 00621c80
+functions head=20 form=20
+### 0047e196
+functions head=47 form=47
+### 00c576e0
+functions head=1 form=1
+### 00c57c90
+functions head=3 form=3
+## 4. FABLE_RETAIL_* macros used by the rows resolve in rebuild/include or hdr/
+(none unresolved unless listed)
+## 5. Spelling census per renamed / respelled address (REFS.tsv callers + absrefs; each landed referencer's bound symbol from its compiled object)
+0x00A35B30  before 2 (self ?fn_00a35b30 stand-in; 0x004BDB40 PDB)                      after 1 (PDB; self + 0x004BDB40)
+0x00A35AF0  before 2 (self ?fn_00a35b30 stand-in; 0x004BDA30 CStdVector stand-in)      after 1 (PDB; self + 0x004BDA30)
+0x00A35B50  before 2 (self ConstructString stand-in; 0x004BDD70 CStdVector stand-in)   after 1 (PDB; self + 0x004BDD70)
+0x004BDA30  before 2 (self CStdVector leaf; 0x0076EB00 PDB)                            after 1 (PDB)
+0x004BDD70  before 1 (self CStdVector leaf; no landed referencer)                      after 1 (PDB)
+0x0066E799  before 3 (10 binders + self PDB; 0x006116E0 SetCurrentScreenType; 0x00621720 / 0x00621C80 SetScreen)   after 1
+0x0066E7BD  before 3 (4 binders PDB; 0x006116E0 QAEPAV; self free-function stand-in)   after 1
+0x00C432F0  before 2 (self ReportMark placeholder; 3 binders ReportQueueInfo)          after 1
+0x00C442F0  before 4 (self GetMark@CMarkedBuffer_00c44550; 0x00C432F0 GetMark@CMarkedBuffer_00c43810; 0x00C437C0 GetInfo QAEAAU; 0x00C43810 GetInfo QAEX)  after 3 (0x00C432F0 joins 0x00C437C0's)
+0x00A2F0F0 / 0x00A2F120 / 0x00A2F150 (callees): the wrappers drop the stand-ins ?h@N / ?h_00a2f120@N / ?Build@Inner and bind the landed self leaves: each 2 -> 1
+No address gains a spelling. RENAMES.tsv: section 1 = 7 self renames (5 wrappers/binders + 0x0066E7BD + 0x00C432F0), section 2 = 10 binder respellings.
+## 6. undefined-symbol (external reference) diff, HEAD object v hand-back object
+### 0047e196
+### 004bda30
+< ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAU?$CStdVector@VCCharString@@@@@Z
+> ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+### 004bdd70
+< ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAU?$CStdVector@VCCharString@@@@ABVCCharString@@@Z
+> ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z
+### 006116e0
+< ?GetCurrentScreen@CManager@NHeroInformationScreens@@QAEPAVCBase@2@XZ
+> ?GetCurrentScreen@CManager@NHeroInformationScreens@@QAEPBVCBase@2@XZ
+< ?SetCurrentScreenType@CManager@NHeroInformationScreens@@QAEXJ@Z
+> ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z
+### 00621720
+< ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z
+> ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z
+### 00621c80
+< ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z
+> ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z
+### 0066e7bd
+### 00a35af0
+< ?h_00a2f120@N@@QAEXHH@Z
+> ?GetAllHelperPointNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z
+### 00a35b30
+< ?h@N@@QAEXHH@Z
+> ?GetAllDummyObjectNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z
+### 00a35b50
+< ?Build@Inner@@QAE_NPAXJH@Z
+> ?GetDummyObjectNamesStartingWith@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@_N@Z
+### 00c432f0
+< ?GetMark@CMarkedBuffer_00c43810@@QAEXAAUSBufferMark_00c43810@@@Z
+> ?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z
+### 00c576e0
+### 00c57c90
+## 7. WARN kinds, HEAD recheck (work/headrc/head_recheck.log) v recheck_final.log, the 13 rows
+2c2
+< 004bda30 WARN RELOC_NAME: ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAU?$CStdVector@VCCharString@@@@@Z -> 00a35af0 labelled 'CMainGameCompo
+---
+> 004bda30 WARN RELOC_NAME: ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 
+5c5
+< 004bdd70 WARN RELOC_NAME: ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAU?$CStdVector@VCCharString@@@@ABVCCharString@@@Z -> 00a35b50
+---
+> 004bdd70 WARN RELOC_NAME: ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@st
+11d10
+< 006116e0 WARN RELOC_NAME: ?SetCurrentScreenType@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled 'NHeroInformationScreens::CMa
+19d17
+< 00621720 WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled 'NHeroInformationScreens::CManager::Sele
+32d29
+< 00621c80 WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled 'NHeroInformationScreens::CManager::Sele
+44,50c41,45
+< 0066e7bd WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+< 00a35af0 WARN RELOC_NAME: ?h_00a2f120@N@@QAEXHH@Z -> 00a2f120 labelled 'C3DMeshStats::GetAllHelperPointNames'
+< 00a35af0 WARN STANDIN_LEAF ?fn_00a35b30@@YIXPAUBL@@HH@Z (catalog CMainGameComponent::BeginInputLoading; address-only name)
+< 00a35b30 WARN RELOC_NAME: ?h@N@@QAEXHH@Z -> 00a2f0f0 labelled 'C3DMeshStats::GetAllDummyObjectNames'
+< 00a35b30 WARN STANDIN_LEAF ?fn_00a35b30@@YIXPAUBL@@HH@Z (catalog CMainGameComponent::BeginInputLoading; address-only name)
+< 00a35b50 WARN RELOC_NAME: ?Build@Inner@@QAE_NPAXJH@Z -> 00a2f150 labelled 'C3DMeshStats::GetDummyObjectNamesStartingWith'
+< 00a35b50 WARN STANDIN_LEAF ?ConstructString@@YI_NPAVCWideString@@HPAXJ@Z (catalog NGameText::ConstructString; free function lacks its class)
+---
+> 00a35af0 WARN STANDIN_LEAF ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z (c
+> 00a35b30 WARN STANDIN_LEAF ?GetAllDummyObjectNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z (c
+> 00a35b50 WARN STANDIN_LEAF ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@s
+> 00c432f0 WARN RELOC_NAME: ?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z -> 00c442f0 labelled 'CMarkedBuffer_00c44550::GetMark'
+> 00c432f0 WARN STANDIN_LEAF ?ReportQueueInfo@CAudioObject@@QAEXXZ (catalog CMarkedBufferOwner_00c43810::ReportMark; names another function)
+(only removals, the respelled binders' RELOC_NAME lines, the new self leaves' STANDIN_LEAF catalog-name notes (RENAMES section 1 fixes the catalog), and 0x00C432F0's forced GetInfo RELOC_NAME; no new SHARED_HEADER / local-model / purity warning)

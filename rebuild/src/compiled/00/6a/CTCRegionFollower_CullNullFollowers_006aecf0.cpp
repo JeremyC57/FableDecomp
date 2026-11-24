@@ -1,5 +1,5 @@
 // CTCRegionFollower::CullNullFollowers() -- walk the Followers list and erase every entry whose intelligent pointer no longer refers to a thing
-// Leaf: CullNullFollowers
+// Leaf: ?CullNullFollowers@CTCRegionFollower@@IAEXXZ
 // Retail: Fable.exe 0x006AECF0, 137 bytes (plain `ret`; VC7.1 aligns the frame itself, `and esp,-8`, for the 8-byte
 // CIntelligentPointer local, as in the landed CTCShopKeeper::EmptyCustomerList 0x00798E10).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, GetPItem @ 0x00A01B50 (x2), SetPItem @ 0x00A01B90,
@@ -57,7 +57,9 @@ class CTCRegionFollower { public:
     bool          ToBeRemoved;                      // +0x08
     bool          IsInGlobalUpdateTCs;              // +0x09
     CFollowerList Followers;                        // +0x0c
+    protected:
     void CullNullFollowers();
+    public:
 };
 
 void CTCRegionFollower::CullNullFollowers()

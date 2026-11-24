@@ -1,0 +1,2 @@
+address	claim	reason
+0x00495780	form f3 (the approved CGRAPHICDATABANK_RELEASEDATA_SIZE_BODY + DELETEDATA_DECL_ONLY pair alone)	leaf RELOCATION_MATCH but the two Reset pick-any copies NEQ their owners (103 B /O2 with ReleaseData expanded v owners 0x004194D1 / 0x0042FC13, 59 B size bodies calling ReleaseData): the approved pair is not enough; f4 adds the two RESET size bodies

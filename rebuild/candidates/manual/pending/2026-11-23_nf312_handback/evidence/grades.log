@@ -1,0 +1,157 @@
+pH 009650c0 RELOCATION_MATCH leaf=GetPBestThing flags=
+pH 00405350 RELOCATION_MATCH leaf=LoadIMESettings flags=
+pH 007990c0 RELOCATION_MATCH leaf=RequiresNewCustomer flags=
+pS 009650c0 RELOCATION_MATCH leaf=GetPBestThing flags=
+pS 007990c0 RELOCATION_MATCH leaf=RequiresNewCustomer flags=
+GRADE_DONE
+GRADE_DONE
+pS 00405350 RELOCATION_MATCH leaf=LoadIMESettings flags=
+GRADE_DONE
+pH 009432c0 RELOCATION_MATCH leaf=Update flags=
+pS 009432c0 RELOCATION_MATCH leaf=Update flags=
+GRADE_DONE
+pH 00df2ab0 RELOCATION_MATCH leaf=?Main@CSummonerMinion@CQ_SummoningTheShipScript@NScript@@EAEXXZ flags=
+pH 00d89380 RELOCATION_MATCH leaf=Main flags=
+pH 00efb8c0 RELOCATION_MATCH leaf=?Main@CHitSwitch@CHitSwitchTestScript@NScript@@EAEXXZ flags=
+pS 00df2ab0 RELOCATION_MATCH leaf=?Main@CSummonerMinion@CQ_SummoningTheShipScript@NScript@@EAEXXZ flags=
+pH 00df2380 RELOCATION_MATCH leaf=?Main@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ flags=
+GRADE_DONE
+pS 00d89380 RELOCATION_MATCH leaf=Main flags=
+GRADE_DONE
+pS 00efb8c0 RELOCATION_MATCH leaf=?Main@CHitSwitch@CHitSwitchTestScript@NScript@@EAEXXZ flags=
+GRADE_DONE
+pS 00df2380 RELOCATION_MATCH leaf=?Main@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ flags=
+GRADE_DONE
+pH 006a7590 MATCH leaf=??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z flags=
+GRADE_DONE
+pH 00405220 RELOCATION_MATCH leaf=?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z flags=
+GRADE_DONE
+pH 00942b30 RELOCATION_MATCH leaf=?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z flags=
+GRADE_DONE
+pH 00dfe0f0 RELOCATION_MATCH leaf=?Main@CTraderToRescue@CQ_TraderConflictGoodScript@NScript@@EAEXXZ flags=
+pH 00cbe814 RELOCATION_MATCH leaf=?FadeOutThing@@YIXAAVCScriptThing@@MM@Z flags=
+GRADE_DONE
+pH 00cbe7aa RELOCATION_MATCH leaf=?FadeInThing@@YIXAAVCScriptThing@@M@Z flags=
+pH 00cbeed2 RELOCATION_MATCH leaf=?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z flags=
+GRADE_DONE
+GRADE_DONE
+pS 00dfe0f0 RELOCATION_MATCH leaf=?Main@CTraderToRescue@CQ_TraderConflictGoodScript@NScript@@EAEXXZ flags=
+GRADE_DONE
+pH 00936100 RELOCATION_MATCH leaf=??$GetPBestLeafThing@VCThingFilter_ObjectHasProperty@@VCThingCompare_Nearest@@VCThingObject@@@CThingSearchTools@@QBE_NABVCThingFilter_ObjectHasProperty@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z flags=
+GRADE_DONE
+pH 0091adb0 RELOCATION_MATCH leaf=??$GetAllThingsInRoughArea@VCThingObject@@V?$list@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_In2DRange@@@@AAV?$list@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z flags=
+GRADE_DONE
+pH 00799e30 RELOCATION_MATCH leaf=??RCThingFilter_IsPotentialCustomer flags=
+GRADE_DONE
+pH 0079a280 RELOCATION_MATCH leaf=??$GetPFirstThingInRoughArea@VCThingFilter_IsPotentialCustomer@@VCThingCreatureBase@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsPotentialCustomer@@PAPAVCThingCreatureBase@@@Z flags=
+GRADE_DONE
+pH 00eb4710 RELOCATION_MATCH leaf=?IsFeelingThreatened@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAE_NXZ flags=
+GRADE_DONE
+pH 00e49020 RELOCATION_MATCH leaf=?Main@CTauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ flags=default
+GRADE_DONE
+pH 00cbe0c7 MATCH leaf=?FoundMessageIsThingHitBy@@YI_NABVCScriptThing@@0@Z flags=
+GRADE_DONE
+pH 00965e80 RELOCATION_MATCH leaf=GetPBestThing flags=
+GRADE_DONE
+pH 0079a050 RELOCATION_MATCH leaf=??$GetPBestThingInRoughArea@VCThingFilter_IsPotentialCustomer@@VCThingCompare_Nearest@@VCThingCreatureBase@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsPotentialCustomer@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z flags=
+GRADE_DONE
+pH 00964230 RELOCATION_MATCH leaf=??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@VCThingCompare_Nearest@@VCThingObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z flags=
+GRADE_DONE
+pH 0088f400 RELOCATION_MATCH leaf=SetCreatureGeneratorsCreatureGroupAsEnabled flags=
+pH 008d66e0 RELOCATION_MATCH leaf=OnActivate flags=
+pH 005580b0 RELOCATION_MATCH leaf=ClearDuplicateDefinitions flags=
+pS 0088f400 RELOCATION_MATCH leaf=?SetCreatureGeneratorsCreatureGroupAsEnabled@CGameScriptInterface@@UBEXW4ECreatureGroup@@_N@Z flags=
+GRADE_DONE
+pS 008d66e0 RELOCATION_MATCH leaf=OnActivate flags=
+GRADE_DONE
+pS 005580b0 RELOCATION_MATCH leaf=ClearDuplicateDefinitions flags=
+GRADE_DONE
+pH 006c0810 RELOCATION_MATCH leaf=OnSerialise flags=
+pS 006c0810 RELOCATION_MATCH leaf=OnSerialise flags=
+GRADE_DONE
+pH 005578a0 RELOCATION_MATCH leaf=?AreAllowedToCoexist@@YI_NW4EGameAction@@0@Z flags=
+GRADE_DONE
+pH 0049d930 MATCH leaf=?SetCreatureGenerationGroupAsEnabled@CWorld@@QAEXW4ECreatureGroup@@_N@Z flags=
+GRADE_DONE
+pH 0088ae40 RELOCATION_MATCH leaf=?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z flags=
+GRADE_DONE
+pH 0085f830 RELOCATION_MATCH leaf=?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z flags=
+GRADE_DONE
+pH 009dc870 RELOCATION_MATCH leaf=?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCUVBox@@ABVCRGBColour@@AAVCTexture@@K@Z flags=
+pH 00a0b560 RELOCATION_MATCH leaf=?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z flags=
+GRADE_DONE
+pH 009dc6e0 RELOCATION_MATCH leaf=?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@AAVCTexture@@K@Z flags=
+GRADE_DONE
+pH 009e1e70 RELOCATION_MATCH leaf=?GFVBoxToABox@ flags=
+GRADE_DONE
+GRADE_DONE
+pH 00cbed82 MATCH leaf=?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z flags=
+GRADE_DONE
+pH 00cbed00 MATCH leaf=?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z flags=
+GRADE_DONE
+pH 00d17340 RELOCATION_MATCH leaf=WatchForAllGruntsKilled flags=
+GRADE_DONE
+pH 00d18b20 RELOCATION_MATCH leaf=?WatchForDeputy1GruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ flags=
+GRADE_DONE
+pH 00d1c9e0 RELOCATION_MATCH leaf=?WatchForLeaderGruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ flags=
+GRADE_DONE
+pH 00d19af0 RELOCATION_MATCH leaf=?WatchForDeputy2GruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ flags=
+GRADE_DONE
+pH 00d20790 RELOCATION_MATCH leaf=WatchForWinLoseConditions flags=
+GRADE_DONE
+pH 00d6be20 RELOCATION_MATCH leaf=MonitorEnemies flags=
+GRADE_DONE
+pH 00d91740 RELOCATION_MATCH leaf=RescuedBandit flags=
+GRADE_DONE
+pH 00d74430 RELOCATION_MATCH leaf=?DoMission@CQ_HangingTreeGoodScript@NScript@@QAEXXZ flags=
+GRADE_DONE
+pH 00def760 RELOCATION_MATCH leaf=?Main@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ flags=
+GRADE_DONE
+pH 00df0200 RELOCATION_MATCH leaf=BossBlockingPrisonPassage flags=
+GRADE_DONE
+pH 00e2fc50 RELOCATION_MATCH leaf=?WatchForAllAmbushersDead@CV_AmbushScamScript@NScript@@QAEXXZ flags=
+GRADE_DONE
+pH 00edd060 RELOCATION_MATCH leaf=?WatchForAcolyteExit@CV_TempleOfLightScript@NScript@@QAEXXZ flags=
+GRADE_DONE
+pH 00f09cd0 RELOCATION_MATCH leaf=WatchForRegionClear flags=
+GRADE_DONE
+pH 00e12580 RELOCATION_MATCH leaf=?DoMission@CQ_WaspBossScript@NScript@@QAEXXZ flags=/d2inlT60
+GRADE_DONE
+pH 00e74d70 RELOCATION_MATCH leaf=?Main@CDF_SummonsCreatures@CV_DemonDoorsScript@NScript@@EAEXXZ flags=
+GRADE_DONE
+pH 00e1d690 RELOCATION_MATCH leaf=CleanUp flags=
+GRADE_DONE
+pH 00ed2a50 RELOCATION_MATCH leaf=WatchForRegionLeaving flags=
+GRADE_DONE
+pH 00ee6a40 RELOCATION_MATCH leaf=?WatchForNoFollowers@CV_TourGuideScript@NScript@@QAEXXZ flags=
+GRADE_DONE
+pH 00d30030 RELOCATION_MATCH leaf=?JackOfBladesBossBattle@CQ_EndGameBossBattleScript@NScript@@QAEXXZ flags=/d2inlS25
+GRADE_DONE
+pH 00e87030 RELOCATION_MATCH leaf=?Main@CTyler@CV_FisticuffsClubScript@NScript@@EAEXXZ flags=
+GRADE_DONE
+pH 00d75060 RELOCATION_MATCH leaf=?FinalRound@CQ_HangingTreeGoodScript@NScript@@QAEXXZ flags=
+GRADE_DONE
+pH 00def3b0 RELOCATION_MATCH leaf=?Main@CSP_ScreamerTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ flags=
+GRADE_DONE
+pH 00d9a190 RELOCATION_MATCH leaf=?Main@CQ_HobbeToothContestScript@NScript@@UAEXXZ flags=
+GRADE_DONE
+pH 00db97a0 RELOCATION_MATCH leaf=?Main@CNOVI_Theresa@CQ_NewOakValeIntroScript@NScript@@EAEXXZ flags=
+GRADE_DONE
+pH 00e0b160 RELOCATION_MATCH leaf=?Main@CQ_UndeadRisingScript@NScript@@UAEXXZ flags=
+GRADE_DONE
+pH 006e7740 RELOCATION_MATCH leaf=??0CGameScriptInterface flags=
+GRADE_DONE
+pH 006698d0 RELOCATION_MATCH leaf=GetPFirstLeafThing flags=
+pH 006a7b20 RELOCATION_MATCH leaf=??RCThingFilter_PosInContainmentVolume flags=
+pS 006698d0 RELOCATION_MATCH leaf=GetPFirstLeafThing flags=
+GRADE_DONE
+pS 006a7b20 RELOCATION_MATCH leaf=??RCThingFilter_PosInContainmentVolume@@QBE_NABVCThing@@@Z flags=
+GRADE_DONE
+pH 00669110 RELOCATION_MATCH leaf=??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@VCThingFilter_PosInContainmentVolume@@@@QBE_NABVCThingBuilding@@@Z flags=
+GRADE_DONE
+pH 006689e0 RELOCATION_MATCH leaf=??RCThingFilter_OverlappingSphere@@QBE_NABVCThing@@@Z flags=
+GRADE_DONE
+pH 0091b010 RELOCATION_MATCH leaf=?AcquireWorkSpot@CAIStateGroup_HandyMan@@AAE_NXZ flags=
+GRADE_DONE
+pH 008ed590 DIFFER(141v166) leaf=GetRandomObject flags=
+GRADE_DONE

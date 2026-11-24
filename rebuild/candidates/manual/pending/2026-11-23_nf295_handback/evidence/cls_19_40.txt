@@ -1,0 +1,350 @@
+#19 00ce10b0 [CCountedPointer] self=Y :: ??0?$CCountedPointer@VCActiveEntityScriptBase@@@@QAE@PAVCActiveEntityScriptBase@@@Z
+   header engine/CCountedPointer.h: leaf lines NONE
+   = PDB wit 00cf66e0
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@ExternalRetry_00ce0ef0@@@@QAE@PAUCActiveEntityScriptBase@ExternalRetry_00ce0ef0@@@Z wit=00ce0ef0
+      CEntityScriptBinding_CreateActiveEntityScript_00ce0ef0.cpp (37 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d7c2e0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00d7c2e0@@@Z wit=00d7c2e0
+      CEntityScriptBinding_CreateActiveEntityScript_00d7c2e0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d7fab0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00d7fab0@@@Z wit=00d7fab0
+      CEntityScriptBinding_CreateActiveEntityScript_00d7fab0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d82210@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00d82210@@@Z wit=00d82210
+      CEntityScriptBinding_CreateActiveEntityScript_00d82210.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d844a0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00d844a0@@@Z wit=00d844a0
+      CEntityScriptBinding_CreateActiveEntityScript_00d844a0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d89580@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00d89580@@@Z wit=00d89580
+      CEntityScriptBinding_CreateActiveEntityScript_00d89580.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d8a960@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00d8a960@@@Z wit=00d8a960
+      CEntityScriptBinding_CreateActiveEntityScript_00d8a960.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d915b0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00d915b0@@@Z wit=00d915b0
+      CEntityScriptBinding_CreateActiveEntityScript_00d915b0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d9d930@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00d9d930@@@Z wit=00d9d930
+      CEntityScriptBinding_CreateActiveEntityScript_00d9d930.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00d9ffd0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00d9ffd0@@@Z wit=00d9ffd0
+      CEntityScriptBinding_CreateActiveEntityScript_00d9ffd0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00da8320@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00da8320@@@Z wit=00da8320
+      CEntityScriptBinding_CreateActiveEntityScript_00da8320.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00db8520@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00db8520@@@Z wit=00db8520
+      CEntityScriptBinding_CreateActiveEntityScript_00db8520.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dc0170@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00dc0170@@@Z wit=00dc0170
+      CEntityScriptBinding_CreateActiveEntityScript_00dc0170.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dc8700@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00dc8700@@@Z wit=00dc8700
+      CEntityScriptBinding_CreateActiveEntityScript_00dc8700.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dcf790@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00dcf790@@@Z wit=00dcf790
+      CEntityScriptBinding_CreateActiveEntityScript_00dcf790.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dd9300@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00dd9300@@@Z wit=00dd9300
+      CEntityScriptBinding_CreateActiveEntityScript_00dd9300.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00ddc7d0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00ddc7d0@@@Z wit=00ddc7d0
+      CEntityScriptBinding_CreateActiveEntityScript_00ddc7d0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00ddeee0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00ddeee0@@@Z wit=00ddeee0
+      CEntityScriptBinding_CreateActiveEntityScript_00ddeee0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dec5b0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00dec5b0@@@Z wit=00dec5b0
+      CEntityScriptBinding_CreateActiveEntityScript_00dec5b0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00def220@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00def220@@@Z wit=00def220
+      CEntityScriptBinding_CreateActiveEntityScript_00def220.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df3550@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00df3550@@@Z wit=00df3550
+      CEntityScriptBinding_CreateActiveEntityScript_00df3550.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df4a50@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00df4a50@@@Z wit=00df4a50
+      CEntityScriptBinding_CreateActiveEntityScript_00df4a50.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00df99f0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00df99f0@@@Z wit=00df99f0
+      CEntityScriptBinding_CreateActiveEntityScript_00df99f0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00dfc100@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00dfc100@@@Z wit=00dfc100
+      CEntityScriptBinding_CreateActiveEntityScript_00dfc100.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00e05170@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00e05170@@@Z wit=00e05170
+      CEntityScriptBinding_CreateActiveEntityScript_00e05170.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@HenchmenBinding@@@@QAE@PAUCActiveEntityScriptBase@HenchmenBinding@@@Z wit=00efa210
+      CEntityScriptBinding_CreateActiveEntityScript_00efa210.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efad80@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00efad80@@@Z wit=00efad80
+      CEntityScriptBinding_CreateActiveEntityScript_00efad80.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efb9c0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00efb9c0@@@Z wit=00efb9c0
+      CEntityScriptBinding_CreateActiveEntityScript_00efb9c0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efbf80@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00efbf80@@@Z wit=00efbf80
+      CEntityScriptBinding_CreateActiveEntityScript_00efbf80.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00efda90@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00efda90@@@Z wit=00efda90
+      CEntityScriptBinding_CreateActiveEntityScript_00efda90.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00eff5c0@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00eff5c0@@@Z wit=00eff5c0
+      CEntityScriptBinding_CreateActiveEntityScript_00eff5c0.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f01150@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00f01150@@@Z wit=00f01150
+      CEntityScriptBinding_CreateActiveEntityScript_00f01150.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f01d20@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00f01d20@@@Z wit=00f01d20
+      CEntityScriptBinding_CreateActiveEntityScript_00f01d20.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@EntityScriptBinding_00f09b10@@@@QAE@PAUCActiveEntityScriptBase@EntityScriptBinding_00f09b10@@@Z wit=00f09b10
+      CEntityScriptBinding_CreateActiveEntityScript_00f09b10.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+   S ??0?$CCountedPointer@UCActiveEntityScriptBase@ArenaBinding@@@@QAE@PAUCActiveEntityScriptBase@ArenaBinding@@@Z wit=00f1cb50
+      CEntityScriptBinding_CreateActiveEntityScript_00f1cb50.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CCountedPointer.h" "engine/CScriptThing.h" "engine/CEntityScriptBase.h"
+#20 006929e0 [CCreatureActionBase] self=- :: ?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z
+   header engine/CCreatureActionBase.h: leaf lines NONE
+   S ?SetMoveToPos@CCombatActionBase@@QAEXABVC3DVector@@@Z wit=00856d30
+      CCombatActionBase_UpdateActionMoveToPos_00856d30.cpp (62 lines)
+      inc: "engine/C3DVector.h" "engine/CThing.h" "engine/CIntelligentPointer.h"
+      def 30: class CCombatActionBase { public:
+      51| void SetMoveToPos(const C3DVector& pos);
+      61| SetMoveToPos(pos);
+   = PDB wit 00849be0
+   S ?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z wit=0069fe60 SIBWIT
+      CCreatureActionUseObject_PerformAction_0069fe60.cpp (87 lines)
+      inc: "fable_compiler.h" "engine/CThing.h" "engine/CVectorMap.h" "engine/CIntelligentPointer.h"
+      def 57: class CCreatureActionBase { public:
+      62| void SetMoveToPos(const C3DVector& pos);
+      71| SetMoveToPos(((CThing*)PCreature.GetPItem())->GetPos());
+#21 00692a50 [CCreatureActionBase] self=Y :: ?IsUsingActionMovement@CCreatureActionBase@@QBE_NXZ
+   header engine/CCreatureActionBase.h: leaf lines NONE
+   S ?IsUsingActionMovement@CCombatActionBase@@QAE_NXZ wit=00856d30
+      CCombatActionBase_UpdateActionMoveToPos_00856d30.cpp (62 lines)
+      inc: "engine/C3DVector.h" "engine/CThing.h" "engine/CIntelligentPointer.h"
+      def 30: class CCombatActionBase { public:
+      50| bool IsUsingActionMovement();
+      59| if (creature->GetAnimMovementDistance(GetAnimationIndex()) > 0.0001f || IsUsingActionMovement() || PreferredFinalPosSet)
+   = PDB wit 00865b50
+#22 00692bc0 [CCreatureActionBase] self=Y :: ?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ
+   header engine/CCreatureActionBase.h: leaf lines 194[FABLE_RETAIL_CCREATUREACTIONBASE]
+   S ?GetFrameUpdateTime@CCombatActionBase@@QBEMXZ wit=008571c0 OFFLIMITS SIBWIT
+      CCombatActionBase_GetFrameUpdateTime_008571c0.cpp (60 lines)
+      inc: 
+      def 37: class CCombatActionBase : public CCreatureActionBase {
+      34| virtual float GetFrameUpdateTime() const;
+      47| virtual float GetFrameUpdateTime() const;
+      50| float CCombatActionBase::GetFrameUpdateTime() const
+#23 00692c10 [CCreatureActionBase] self=Y :: ?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ
+   header engine/CCreatureActionBase.h: leaf lines NONE
+   = PDB wit 0087ca30
+   S ?GetWorldMap@CCombatActionBase@@QAEPAVCWorldMap@@XZ wit=00865c20 SIBWIT
+      CCombatActionGenericStrikeResponseBase_FrameUpdate_00865c20.cpp (98 lines)
+      inc: "stlport/fable_containers.h"
+      def 55: class CCombatActionBase {
+      70| CWorldMap* GetWorldMap();
+      90| NCombatActionHelpers::CreateDustEffectForCreature(*dustCreature, *GetWorldMap(), *GetDefinitionManager(), DustTravelDirection, 0);
+   S ?GetWorldMap@CCombatActionBase@@QBEPAVCWorldMap@@XZ wit=008c2240 SIBWIT
+      CCreatureActionJackScream_PerformAction_008c2240.cpp (170 lines)
+      inc: "fable_compiler.h" "engine/C3DVector.h" "engine/CVectorMap.h"
+      def 120: class CCombatActionBase { public:
+      127| CWorldMap* GetWorldMap() const;
+      153| target.Z = GetWorldMap()->GetHeightZBelowPos(target);
+#24 00693030 [CCreatureActionBase] self=- :: ?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z
+   header engine/CCreatureActionBase.h: leaf lines 281[FABLE_RETAIL_CCREATUREACTIONBASE_SETANIMATION]
+   S ?SetAnimation@CCreatureActionBase@@QAEXABVCAnimationEntry@@MM@Z wit=00693b30 OFFLIMITS
+      CCreatureActionBase_CCreatureActionBase_00693b30.cpp (159 lines)
+      inc: "engine/CCreatureActionBase.h" "fable_string.h" "engine/C3DVector.h" "engine/CBaseObject.h" "engine/CIntelligentPointer.h"
+      def 61: class CCreatureActionBase : public CBaseObject { public:
+      147| void SetAnimation(const CAnimationEntry&,float,float);
+      156| SetAnimation(entry,duration,fraction);
+   S ?SetAnimation@CCombatActionBase@@QAEXPBVCAnimationEntry@@MM@Z wit=00856ac0
+      CCombatActionBase_SetupCombatAnimation_00856ac0.cpp (61 lines)
+      inc: 
+      def 47: class CCombatActionBase { public:
+      54| void SetAnimation(const CAnimationEntry* entry, float start, float end);
+      60| SetAnimation(CombatAnimations[PCreature.GetPItem()->GetAppropriateCombatAnimationFromList(CombatAnimations)], -1.0f, 1.0f);
+   S ?SetAnimation@CCreatureActionBase@@QAEXPBVCAnimationEntry@@MM@Z wit=00857520 OFFLIMITS
+      CCombatActionBase_Initialise_00857520.cpp (71 lines)
+      inc: "engine/CThing.h" "engine/CVectorMap.h" "engine/CIntelligentPointer.h"
+      def 40: class CCreatureActionBase { public:
+      49| void SetAnimation(const CAnimationEntry* entry, float blendIn, float speed);
+      64| SetAnimation(CombatAnimations[index], -1.0f, 1.0f);
+   = PDB wit 00847df0
+#25 00845ce0 [CCreatureAction_DropWeapon] self=Y :: ?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z
+   header engine/CCreatureAction_DropWeapon.h: absent
+   = PDB wit 00845fe0
+   S ?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@PAVCThingCreatureBase@@@Z wit=0084a5f0
+      CCreatureActionPickupGameObject_PerformAction_0084a5f0.cpp (234 lines)
+      inc: "fable_compiler.h" "fable_string.h" "engine/CDefPointer.h" "engine/CCarryableDef.h" "engine/CDefClassBase_GetSubDef.h" "engine/CCreatureAction_PickupGameObject.h" "engine/CCreatureActionBase.h" "engin
+      209| void __fastcall DropWeapon(CThing*,CTCCarrying*,CThingCreatureBase*);
+      229| if(existing)DropWeapon(existing,carrying,PCreature);
+   S ?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@0@Z wit=0069f9e0 SIBWIT
+      CCreatureActionUnsheatheItemFromInventory_PerformAction_0069f9e0.cpp (174 lines)
+      inc: "fable_compiler.h" "engine/CVectorMap.h" "fable_string.h" "engine/CDefPointer.h" "engine/CCarryableDef.h" "engine/CDefClassBase_GetSubDef.h"
+      97| void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);
+      135| DropWeapon(held, carrying, GetCreature());
+#26 008b7cf0 [CCreatureAction_UnsheatheWeapons] self=Y :: ?ShouldPlayUnsheatheWeaponAction@CCreatureAction_UnsheatheWeapons@@SI_NABVCThingCreatureBase@@W4EUnsheatheWeaponType@@AA_N2@Z
+   header engine/CCreatureAction_UnsheatheWeapons.h: leaf lines NONE
+   S ?ShouldPlayUnsheatheWeaponAction@@YI_NPAVCThingCreatureBase@@JPA_N1@Z wit=006ebdd0
+      CCombatManager_CreatureUnsheathWeapon_006ebdd0.cpp (197 lines)
+      inc: "engine/CThingCreatureBase.h" "engine/CTCCombat.h" "engine/CCreatureAction_UnsheatheWeapons.h" "engine/_quarantine/CCombatActionBase.h" "engine/CCreatureActionBase.h" "fable_string.h" "engine/CVectorM
+      171| extern bool FABLE_FASTCALL ShouldPlayUnsheatheWeaponAction(CThingCreatureBase*,long,bool*,bool*);
+      179| if(!ShouldPlayUnsheatheWeaponAction(creature,weapon,&animate,&secondary)) return;
+   S ?ShouldPlayUnsheatheWeaponAction@@YI_NPAVCThing@@W4EUnsheatheWeaponType@@PA_N2@Z wit=008b7ed0
+      CCreatureActionUnsheatheWeapons_Initialise_008b7ed0.cpp (71 lines)
+      inc: "engine/CThing.h" "engine/CVectorMap.h"
+      28| bool __fastcall ShouldPlayUnsheatheWeaponAction(CThing* creature, EUnsheatheWeaponType type, bool* pCanUnsheathe,
+      62| ShouldPlayUnsheatheWeaponAction(PCreature, WeaponType, &canUnsheathe, &sheathe);
+#27 00a593f0 [CCylinder] self=Y :: ?GetFirstIntersectionWithTriangle@CCylinder@NBBBMaths@@QBE_NABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@1@Z
+   header engine/CCylinder.h: absent
+   S ?GetFirstIntersectionWithTriangle@CCylinder@@QBE_NPBXPAVC3DVector@@1@Z wit=00815c40
+      NHitLocationsCPhysicalPrimitiveCylinder_GetFirstIntersectionWithTriangle_00815c4 (68 lines)
+      inc: "engine/C3DVector.h"
+      def 35: struct CCylinder {
+      41| bool GetFirstIntersectionWithTriangle(const void* triangle, C3DVector* point, C3DVector* normal) const;
+      58| bool GetFirstIntersectionWithTriangle(CThing* thing, const void* triangle, C3DVector* point, C3DVector* normal, long unused) const;
+      61| bool CPhysicalPrimitiveCylinder::GetFirstIntersectionWithTriangle(CThing* thing, const void* triangle, C3DVector* point, C3DVector* normal, long unused) const
+#28 00a59fd0 [CCylinder] self=Y :: ?GetFirstIntersectionWithFiniteLine@CCylinder@NBBBMaths@@QBE_NABVC3DVector@@0AAV3@1@Z
+   header engine/CCylinder.h: absent
+   S ?GetFirstIntersectionWithFiniteLine@CCylinder@@QBE_NABVC3DVector@@0PAV2@1@Z wit=00815ba0 SIBWIT
+      CPhysicalPrimitiveCylinder_GetFirstIntersectionWithFiniteLine_00815ba0.cpp (68 lines)
+      inc: "engine/C3DVector.h"
+      def 35: struct CCylinder {
+      40| bool GetFirstIntersectionWithFiniteLine(const C3DVector& start, const C3DVector& end, C3DVector* point, C3DVector* normal) const;
+      57| bool GetFirstIntersectionWithFiniteLine(CThing* thing, const C3DVector& start, const C3DVector& end, C3DVector* point, C3DVector* normal, long unused) const;
+      61| bool CPhysicalPrimitiveCylinder::GetFirstIntersectionWithFiniteLine(CThing* thing, const C3DVector& start, const C3DVector& end, C3DVector* point, C3DVector* normal, long unused) c
+#29 009c8990 [CDataBank] self=Y :: ?GetAllTextEntriesForNarrator@CDataBank@NGameText@@QBEXABVCCharString@@AAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@K@Z
+   header engine/CDataBank.h: absent
+   S ?GetAllTextEntriesForNarrator@CTextDataBank@@QAEXABVCCharString@@AAUCStringSet@@J@Z wit=008a0cb0
+      CGameScriptInterface_DebugGetAllTextEntriesForTargetedThing_008a0cb0.cpp (153 lines)
+      inc: "fable_compiler.h" "engine/CPlayerManager.h"
+      def 66: struct CTextDataBank {
+      67| void GetAllTextEntriesForNarrator(const CCharString& narrator, CStringSet& entries, long language);
+      145| bank->GetAllTextEntriesForNarrator(text->GetBankHandle(), entries, g_TextLanguage);
+      147| bank->GetAllTextEntriesForNarrator(text->GetBankHandle() + "_1_5", entries, g_TextLanguage);
+#30 00993c10 [CDataInputStream] self=- :: ?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z
+   header engine/CDataInputStream.h: leaf lines 140[FABLE_RETAIL_CDATAINPUTSTREAM_CHUNKSEEK] 146[!FABLE_RETAIL_CDATAINPUTSTREAM_CHUNKSEEK]
+   S ?SetPositionAssumeWithinSourceChunk@CMemoryDataInputStream@@QAEXK@Z wit=00b6d940
+      CEngineWaterRenderer_LoadCompressedBuffer_00b6d940.cpp (111 lines)
+      inc: "fable_compiler.h" "engine/EVertexType.h" "engine/EVertexBufferPool.h" "engine/EIndexBufferFormat.h" "engine/EIndexBufferPool.h" "engine/EPrimitiveType.h" "engine/CVertexBufferWin32.h" "engine/CIndexB
+      def 17: class CDataInputStream { friend class CMemoryDataInputStream;
+      def 20: class CMemoryDataInputStream { public:
+      30| void SetPositionAssumeWithinSourceChunk(unsigned long position);
+      59| SetPositionAssumeWithinSourceChunk(position + size);
+   = PDB wit 00521240
+#31 00996390 [CDataInputStream] self=- :: ?ReadPresizedString@CDataInputStream@@QAE?AVCCharString@@XZ
+   header engine/CDataInputStream.h: leaf lines 74[FABLE_RETAIL_CDATAINPUTSTREAM_LOADGAME_PASS24]
+   = PDB wit 004fb4f0
+   S ?ReadPresizedString@CMemoryDataInputStream@@QAE?AVCCharString@@XZ wit=006bc510 SIBWIT
+      CRegion_LoadBinary_006bc510.cpp (162 lines)
+      inc: "fable_compiler.h" "stlport/fable_containers.h"
+      def 24: class CDataInputStream { friend class CMemoryDataInputStream;
+      def 27: class CMemoryDataInputStream : public CDataInputStream { public:
+      34| CCharString ReadPresizedString();
+      143| Name = stream->ReadPresizedString();
+      144| DisplayName = stream->ReadPresizedString();
+#32 009959f0 [CDataOutputStream] self=Y :: ?WriteString@CDataOutputStream@@QAEXABVCCharString@@@Z
+   header engine/CDataOutputStream.h: leaf lines 47[FABLE_RETAIL_CDATAOUTPUTSTREAM_WRITESTRING]
+   S ?WriteString@CDataOutputStreamWriter@@QAEXABVCCharString@@@Z wit=00614620
+      global_GFSerialiseVectorBinaryOut_00614620.cpp (82 lines)
+      inc: "fable_compiler.h" "engine/CDataOutputStream.h"
+      def 25: struct CDataOutputStreamWriter : CDataOutputStream {
+      26| void WriteString(const CCharString& text);
+      67| stream.WriteString(value->UIDefName);
+   = PDB wit 00aad150
+#33 004b7980 [CDefString] self=- :: ??8CDefString@@QBE_NABVCCharString@@@Z
+   header engine/CDefString.h: leaf lines NONE
+   S @helper_4b7980@4 wit=006a7c00
+      CThingFilterHasInstantiationName_operator_006a7c00.cpp (39 lines)
+      inc: 
+      31| extern "C" bool __fastcall helper_4b7980(void* ecx);
+      38| return helper_4b7980(r);
+   = PDB wit 00891db0
+   S ??8CDefString@NErase005dcf70@@QBE_NABUCCharString@1@@Z wit=005dcf70 SIBWIT
+      global_CParticleMorphsFindAndSortByName_005dcf70.cpp (48 lines)
+      inc: "fable_compiler.h" "engine/CCRC.h"
+#34 009d49b0 [CDefStringTable] self=Y :: ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z
+   header engine/CDefStringTable.h: leaf lines NONE
+   = PDB wit 008d1ca0
+   S ?GetString@CDefStringTable@NErase005dcf70@@QAE?AUCCharString@2@H@Z wit=005dcf70 SIBWIT
+      global_CParticleMorphsFindAndSortByName_005dcf70.cpp (48 lines)
+      inc: "fable_compiler.h" "engine/CCRC.h"
+      def 26: struct CDefStringTable {
+      28| __declspec(noinline) CCharString GetString(int index){if(index==-1)return CCharString();return CCharString(buffer.Start()+index+4);}
+      34| FABLE_FORCEINLINE CCharString GetString()const{CCharString result=g_DefStringTable.GetString(index);return result;}
+      47| void Manager::RemoveMatching(const CCharString& name){unsigned crc=CCRC::Calc(0,name.Text(),name.Size());for(Entry* p=Begin();p!=last;){bool found=p->crc==crc&&p->name==key.GetStri
+#35 004663e7 [CDialogueLayerDef] self=- :: ??0CDialogueLayerDef@NSpeechGainManager@@QAE@ABV01@@Z
+   header engine/CDialogueLayerDef.h: absent
+   S ??0CDialogueLayerDef@@QAE@ABU0@@Z wit=00472e58
+      global_UninitFillNCDialogueLayerDef00472e58_00472e58.cpp (26 lines)
+      inc: 
+   = PDB wit 00472c2a
+#36 00645099 [CDrawAbilityButtons] self=Y :: ?DrawButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z
+   header engine/CDrawAbilityButtons.h: absent
+   = PDB wit 00651b04
+   S ?DrawButton@CDrawAbilityButtonsPC@NPlayerGui@@QAEXPAVCEnginePrimitivePrepareInfo@@PAVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z wit=00658020 SIBWIT
+      NPlayerGuiCDrawAbilityButtonsPC_DrawExpressionButton_00658020.cpp (156 lines)
+      inc: "fable_compiler.h"
+      def 103: struct CDrawAbilityButtonsPC : CDrawBase {
+      107| void DrawButton(CEnginePrimitivePrepareInfo* info, C2DVector* pos, float scale, long button, long graphic, bool flag,
+      150| DrawButton(info, &pos, buttonScale, button, graphic, false, layer);
+#37 0064cc65 [CDrawBase] self=- :: ??0CDrawBase@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z
+   header engine/CDrawBase.h: absent
+   = PDB wit 0064e1be
+   S ??0CDrawBase@@QAE@PAVCPlayerGui@@PAX@Z wit=0064d2a9
+      NPlayerGuiCDrawSpiritsHealth_CDrawSpiritsHealth_0064d2a9.cpp (27 lines)
+      inc: 
+   S ??0CDrawBase@NPlayerGui@@QAE@PAVCPlayerGui@@PAX@Z wit=0064dab4
+      NPlayerGuiCDrawTargetInfo_CDrawTargetInfo_0064dab4.cpp (42 lines)
+      inc: 
+#38 00643e2e [CDrawMiniMap] self=- :: ?SetAsActive@CDrawMiniMap@NPlayerGui@@QAEX_N@Z
+   header engine/CDrawMiniMap.h: leaf lines NONE
+   S ?SetAsActive@CDrawMiniMap@@QAEX_N@Z wit=0064401c SIBWIT
+      NPlayerGuiCDrawMiniMap_Update_0064401c.cpp (109 lines)
+      inc: 
+      def 59: struct CDrawMiniMap {
+      70| void SetAsActive(bool active);
+      105| SetAsActive(world->MiniMapActive);
+      107| SetAsActive(false);
+   = PDB wit 00438460
+#39 00644efd [CDrawQuestInfo] self=Y :: ?UpdateMiniGame@CDrawQuestInfo@NPlayerGui@@QAEXMJJ@Z
+   header engine/CDrawQuestInfo.h: absent
+   S ?method@Inner@@QAEXHHH@Z wit=00891c80
+      CGameScriptInterface_UpdateMiniGameInfoBar_00891c80.cpp (21 lines)
+      inc: "engine/CCountedPointer.h"
+      def 4: struct Inner {
+      5| void method(int a, int b, int c);
+      20| CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().p1c8->method(param, 0, 0);
+   S ?UpdateMiniGame@CDrawQuestInfo@@QAEXMJJ@Z wit=006df480
+      CTCTrophy_FrameUpdate_006df480.cpp (120 lines)
+      inc: "engine/CCountedPointer.h"
+      def 49: struct CDrawQuestInfo {
+      50| void UpdateMiniGame(float timeFraction, long gained, long total);
+      118| CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().PDrawQuestInfo->UpdateMiniGame(fraction, MinigameStartingWitnessCount - NumberOfWitnessesLeft,
+   = PDB wit 00649e8b
+#40 00654593 [CDrawQuestInfo] self=- :: ?DisplayMiniGameInfo@CDrawQuestInfo@NPlayerGui@@QAEX_NW4EMiniGameType@@J@Z
+   header engine/CDrawQuestInfo.h: absent
+   S ?Show@Target@@QAEXHHH@Z wit=00891c60
+      CGameScriptInterface_DisplayMiniGameInfo_00891c60.cpp (21 lines)
+      inc: "engine/CCountedPointer.h"
+      def 4: struct Target {
+      5| void Show(int display, int gameType, int zero);
+      20| CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().target->Show(display, gameType, 0);
+   = PDB wit 007e6750
+   S ?DisplayMiniGameInfo@CDrawQuestInfo@@QAEXJJJ@Z wit=007b0cd0
+      CTCFishing_FrameUpdate_007b0cd0.cpp (430 lines)
+      inc: "engine/CThing.h" "engine/CVectorMap.h" "engine/CCountedPointer.h" "engine/CDefPointer.h" "stlport/fable_containers.h" "engine/CIntelligentPointer.h"
+      def 176: class CDrawQuestInfo {
+      178| void DisplayMiniGameInfo(long show, long type, long value);
+      255| CPlayerGui::Get().PQuestInfo->DisplayMiniGameInfo(1, 1, 0);
+   S ?DisplayMiniGameInfo@CDrawQuestInfo@@QAEX_NJJ@Z wit=007b0950 SIBWIT
+      CTCFishing_FinishFishing_007b0950.cpp (178 lines)
+      inc: "fable_compiler.h" "engine/CThing.h" "engine/C3DVector.h" "engine/CMainGameComponent.h" "engine/CVectorMap.h" "engine/CMessageEventManager.h" "engine/CPlayerManager.h" "engine/CCountedPointer.h"
+      def 102: class CDrawQuestInfo {
+      104| void DisplayMiniGameInfo(bool show, long type, long value);
+      154| CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().PQuestInfo->DisplayMiniGameInfo(false, 1, 0);

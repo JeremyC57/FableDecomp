@@ -1,0 +1,76 @@
+##### 00a99610 renames: ?GetFirstSequence@C3DAnimFileObjectChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileSequenceChunk@@@@XZ=?FindFirstSequence@C3DAnimFileObjectChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileSequenceChunk@@@@XZ
+sections head 14 new 14
+ALL_EQ text_sections_equal=10
+tables H=0 N=0
+##### 00a9f2f0 renames: ?CalcLocalBoneTransformations@C3DAnimation2@@QBEXPAVC3DKeyframe@@KM@Z=?CalcLocalTransformations@C3DAnimation2@@QBEXPAVC3DKeyframe@@KM@Z ?CalcLocalBoneTransformationsRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z=?CalcLocalTransformationsRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 007864c0 renames: ?ApplyParameters@C3DSkeletalMorph@@QAEXXZ=?NotifyParamUpdate@C3DSkeletalMorph@@QAEXXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00786700 renames: ?ResetCombinedMorph@C3DSkeletalMorph@@QAEXXZ=?NotifyParamUpdate@C3DSkeletalMorph@@QAEXXZ
+sections head 42 new 42
+ALL_EQ text_sections_equal=39
+tables H=2 N=2
+##### 00833ba0 renames: ?OnLevelUnload@CAIBrain@@QAEXXZ=?OnKill@CAIBrain@@QAEXXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 0088bac0 renames: ?IsEnabledAndRunnable@CAIStateGroupBase@@QAE_NXZ=?IsRunnableMain@CAIStateGroupBase@@QAE_NXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0073e9d0 renames: ?SetGroups@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z=?SetCurrentGroupNames@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=2
+tables H=2 N=2
+##### 0073ea70 renames: ?SetGroups@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z=?SetCurrentGroupNames@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=1 N=1
+##### 0073fdb0 renames: ?SetGroups@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z=?SetCurrentGroupNames@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z
+sections head 11 new 11
+ALL_EQ text_sections_equal=4
+tables H=3 N=3
+##### 0073fea0 renames: ?SetGroups@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z=?SetCurrentGroupNames@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=6
+tables H=3 N=3
+##### 008d89c0 renames: ?SetGroups@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z=?SetCurrentGroupNames@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=11
+tables H=0 N=0
+##### 009380e0 renames: ?SetGroups@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z=?SetCurrentGroupNames@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=6
+tables H=3 N=3
+##### 009381b0 renames: ?SetGroups@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z=?SetCurrentGroupNames@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=6
+tables H=3 N=3
+##### 007306c0 renames: ?Reset@CAnimateThing@@QAEXXZ=?ClearAllAnims@CAnimateThing@@QAEXXZ ?SDoorCloseAnim@?A0x3e7923f3@@3VCCharString@@B=?SDoorCloseAnim@?A0xb410d118@@3VCCharString@@B ?SDoorOpenAnim@?A0x3e7923f3@@3VCCharString@@B=?SDoorOpenAnim@?A0xb410d118@@3VCCharString@@B ?SetBlocking@CTCSwitchableNavigation@@QAEX_N@Z=?SetAsBlockingNavigation@CTCSwitchableNavigation@@QAEX_N@Z ?SetMainAnim@CAnimateThing@@QAEXABVCAnimInit@@@Z=?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z
+sections head 29 new 29
+ALL_EQ text_sections_equal=26
+tables H=2 N=2
+##### 007502d0 renames: ?Reset@CAnimateThing@@QAEXXZ=?ClearAllAnims@CAnimateThing@@QAEXXZ
+sections head 25 new 25
+ALL_EQ text_sections_equal=21
+tables H=2 N=2
+##### 00730c00 renames: ?SDoorOpenAnim@?A0x6eaa41e8@@3VCCharString@@B=?SDoorOpenAnim@?A0xe4c3b303@@3VCCharString@@B ?SetBlocking@CTCSwitchableNavigation@@QAEX_N@Z=?SetAsBlockingNavigation@CTCSwitchableNavigation@@QAEX_N@Z
+sections head 30 new 30
+ALL_EQ text_sections_equal=26
+tables H=2 N=2
+##### 00730dd0 renames: ?SDoorCloseAnim@?A0x8f0f7dfd@@3VCCharString@@B=?SDoorCloseAnim@?A0x05668f16@@3VCCharString@@B ?SetBlocking@CTCSwitchableNavigation@@QAEX_N@Z=?SetAsBlockingNavigation@CTCSwitchableNavigation@@QAEX_N@Z
+sections head 30 new 30
+ALL_EQ text_sections_equal=26
+tables H=2 N=2
+##### 009cb960 renames: ?GetRetailBankPath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z=?GetRetailBankFilePath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z ?RegisterRetailBank@CBankFileManager@@QAEXABVCCharString@@PAVCBankFile@@@Z=?RegisterBank@CBankFileManager@@QAEXABVCCharString@@PAVCBankFile@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 005c024a renames: ?SetOwner@CCategory@NInventory@@QAEXPAVCThing@@@Z=?SetCategoryThingAssociation@CCategory@NInventory@@QAEXPAVCThing@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0

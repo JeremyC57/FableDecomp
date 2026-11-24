@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+# L92: none; the three table lines of the class stay (??_7CCreatureAction_DragonFireBeamInto@@6B@ 01293e54 009535b0 -- the witness still emits it; ??0CCreatureAction_DragonFireBeamInto@@QAE@AAV... 009535b0 00951fb0). The stand-in lines ??0CBase_0062f3b0@@QAE@ABU0@@Z 0062f3b0 (witness 006f8280) and ??0CCombatActionBase@@QAE@PAV... 00857f30 (witness 0066a690) have other witnesses and other binders: they stay.
+delete	?base_FinishAction_859a20@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z	00859a20	008c9e40	L74: the witness row 0x008C9E40 now binds ?FinishAction@CCombatActionBase@@MAEXXZ (already a table line, witness 008ba140); no other landed row binds the stand-in (it names this row's own class)
+# L74 keeps ??_7CCreatureAction_NymphSummonOutOf@@6B@ 01282354 008ca600 and ??0CCreatureAction_NymphSummonOutOf@@QAE@AAV... 008ca600 0091c6a0.

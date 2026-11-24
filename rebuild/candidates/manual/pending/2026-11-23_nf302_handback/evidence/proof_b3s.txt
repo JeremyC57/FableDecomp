@@ -1,0 +1,4 @@
+##### 005bd273 renames: ?GetInventoryText@CTCInventoryBase@NInventory@@QAE?AVCWideString@@J@Z=?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0

@@ -1,5 +1,5 @@
 // CAIStateGroup_RangedCombatUsePreferredFirePoint::AttackEnemy() -- when the creature may attack and stands within
-// Leaf: ?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ
+// Leaf: ?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // 0.05 (squared 0.0025) of its fire point in the XY plane, pump the combat actions; false when they report 1.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095D070, length 108 bytes (+ int3 padding).
@@ -84,7 +84,9 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
     CIntelligentPointer<CThing> PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
     CIntelligentPointer<CThing> PFirePoint;         // +0x1c CIntelligentPointer<CThing>
     long TimeOutCounter;                        // +0x24
+    protected:
     bool AttackEnemy();
+    public:
     // the creature is a named local read before the fire-point position; the 2D delta is built by the by-value
     // `operator-` and `X*X + Y*Y` compared with the tolerance
     FABLE_FORCEINLINE bool IsAwayFromFirePoint()

@@ -1,0 +1,13 @@
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/91/CAIStateGroupGazeOutside_IsRunnable_00918900.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/91/CAIStateGroupGaze_InitCreaturePosition_00918ac0.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/91/CAIStateGroupGazeAtWork_InitCreaturePosition_00918b50.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/64/NPlayerGuiCDrawMiniMap_ToggleCentering_0064e019.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/78/CTCTrapBase_UpdateTriggerOnProximity_007887be.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/4b/CQuestManager_Update_004b4490.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_WaitWhilePerformingTasks_00904380.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/75/CTCLook_InitialiseHeadAnims_00752640.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6e/CCombatManager_PerformSequenceReset_006ea2c0.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/85/CCombatActionBase_OnBlowBlocked_00858cc0.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/97/CAIStateGroupBase_AIActionProjectileAttackAndStrafeToThingProximit_0097ef60.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/97/CAIStateGroupBase_AIActionProjectileAttackAndStrafeToPos_0097f3a0.cpp
+04:23:13 PASS /home/user/FableDecomp/rebuild/src/compiled/00/92/CAIStateGroupFreeze_Update_009224f0.cpp

@@ -1,0 +1,33 @@
+## HEAD set: H_00439ab0.obj H_00499c50.obj H_004b1110.obj H_004c8c90.obj H_004c9690.obj H_00530a40.obj H_00530ce0.obj H_00555220.obj H_00581cfd.obj H_00581d4e.obj H_00581d8e.obj H_00581fa4.obj H_005be028.obj H_005dc070.obj H_005ea400.obj H_005faa60.obj H_00645ce9.obj H_00662860.obj H_00663f50.obj H_00665e90.obj H_00687c90.obj H_006a4d90.obj H_006c0f70.obj H_006f56e0.obj H_007038d0.obj H_0072cd00.obj H_0072ce20.obj H_007339e0.obj H_00789900.obj H_00832e60.obj H_00858130.obj H_00858400.obj H_00858590.obj H_008587b0.obj H_00890750.obj H_00892f60.obj H_008d0ba0.obj H_00908b50.obj H_00910570.obj H_0093dfc0.obj H_00958e20.obj H_0096d190.obj H_0096d380.obj H_00979e90.obj H_00993bc0.obj H_00994300.obj H_00995d30.obj H_00996cc0.obj H_009d4a50.obj H_009f4d40.obj H_009f50a0.obj H_009f5d70.obj H_00bc64d0.obj 00409fd0.obj 0041e6d3.obj 0047367a.obj 0049f4c0.obj 004b0fc0.obj 004c9920.obj 0051f480.obj 00520670.obj 00522160.obj 0053d060.obj 0053e0c0.obj 00557080.obj 005b3c95.obj 005cbc36.obj 005db630.obj 005f1b10.obj 0064619f.obj 00651b04.obj 00652fa4.obj 00657580.obj 006a5230.obj 006a9590.obj 006c1250.obj 00702cc0.obj 0072cf40.obj 007b2d50.obj 007d7c30.obj 007da110.obj 007ed560.obj 00846bc0.obj 00847520.obj 00856e50.obj 008597a0.obj 0088e220.obj 008c63a0.obj 008c6430.obj 00906380.obj 009106b0.obj 00958cb0.obj 00979f70.obj 0097a630.obj 00994a80.obj 009971a0.obj 009a3c20.obj 009a8170.obj 009a8840.obj 009ae390.obj 009af7a0.obj 009d06f0.obj 009d4ce0.obj 009f5e10.obj 00a276d0.obj 00a62120.obj 00aad150.obj 00ab8e10.obj 00adfdc0.obj 00b420f0.obj 00b42530.obj
+duplicates 5
+  DUP H_00858130.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in H_005be028.obj;
+  DUP H_00858400.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in H_005be028.obj;
+  DUP H_00858590.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in H_005be028.obj;
+  DUP H_008587b0.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in H_005be028.obj;
+  DUP 005cbc36.obj ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z in 0041e6d3.obj;
+UNRESOLVED 1 ?GetBribeAmountWillTake@CTCGuard@@QAEJXZ
+UNRESOLVED 4 ?GetPActiveStrikeEvent@CCombatActionBase@@QAEPAVCStrikeEvent@1@XZ
+UNRESOLVED 1 ?IsEventInQueue@CInputManager@@QBE_NABVCInputEvent@@@Z
+UNRESOLVED 1 ?IsGuardOnLevel@CAIStateGroupMinionReactToCrimeMethods@@QAE_NXZ
+UNRESOLVED 1 ?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@QAE_NXZ
+UNRESOLVED 1 ?IsQuestCompleted@CQuestManager@@QAE_NABVCCharString@@@Z
+UNRESOLVED 1 ?IsStaffed@CAIStateGroup_EatAtTavern@@QAE_NXZ
+UNRESOLVED 2 ?OnCreate@CCombatSequenceBase@@QAEXXZ
+UNRESOLVED 1 ?OnDie@CThingCreatureBase@@UAEXXZ
+UNRESOLVED 2 ?OnDie@CThingPhysical@@QAEXXZ
+UNRESOLVED 1 ?TransferBinaryOut@CAnimationEntry@@QAEXAAVCDataOutputStream@@@Z
+UNRESOLVED 1 ?TransferBinaryOut@CAnimationSet@@QBEXAAVCDataOutputStream@@@Z
+## new set: 00439ab0.obj 00499c50.obj 004b1110.obj 004c8c90.obj 004c9690.obj 00530a40.obj 00530ce0.obj 00555220.obj 00581cfd.obj 00581d4e.obj 00581d8e.obj 00581fa4.obj 005be028.obj 005dc070.obj 005ea400.obj 005faa60.obj 00645ce9.obj 00662860.obj 00663f50.obj 00665e90.obj 00687c90.obj 006a4d90.obj 006c0f70.obj 006f56e0.obj 007038d0.obj 0072cd00.obj 0072ce20.obj 007339e0.obj 00789900.obj 00832e60.obj 00858130.obj 00858400.obj 00858590.obj 008587b0.obj 00890750.obj 00892f60.obj 008d0ba0.obj 00908b50.obj 00910570.obj 0093dfc0.obj 00958e20.obj 0096d190.obj 0096d380.obj 00979e90.obj 00993bc0.obj 00994300.obj 00995d30.obj 00996cc0.obj 009d4a50.obj 009f4d40.obj 009f50a0.obj 009f5d70.obj 00bc64d0.obj 00409fd0.obj 0041e6d3.obj 0047367a.obj 0049f4c0.obj 004b0fc0.obj 004c9920.obj 0051f480.obj 00520670.obj 00522160.obj 0053d060.obj 0053e0c0.obj 00557080.obj 005b3c95.obj 005cbc36.obj 005db630.obj 005f1b10.obj 0064619f.obj 00651b04.obj 00652fa4.obj 00657580.obj 006a5230.obj 006a9590.obj 006c1250.obj 00702cc0.obj 0072cf40.obj 007b2d50.obj 007d7c30.obj 007da110.obj 007ed560.obj 00846bc0.obj 00847520.obj 00856e50.obj 008597a0.obj 0088e220.obj 008c63a0.obj 008c6430.obj 00906380.obj 009106b0.obj 00958cb0.obj 00979f70.obj 0097a630.obj 00994a80.obj 009971a0.obj 009a3c20.obj 009a8170.obj 009a8840.obj 009ae390.obj 009af7a0.obj 009d06f0.obj 009d4ce0.obj 009f5e10.obj 00a276d0.obj 00a62120.obj 00aad150.obj 00ab8e10.obj 00adfdc0.obj 00b420f0.obj 00b42530.obj
+duplicates 5
+  DUP 00858130.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in 005be028.obj;
+  DUP 00858400.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in 005be028.obj;
+  DUP 00858590.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in 005be028.obj;
+  DUP 008587b0.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in 005be028.obj;
+  DUP 005cbc36.obj ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z in 0041e6d3.obj;
+UNRESOLVED 1 ?IsGuardOnLevel@CAIStateGroupMinionReactToCrimeMethods@@QAE_NXZ
+UNRESOLVED 1 ?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@ABE_NXZ
+UNRESOLVED 1 ?IsStaffed@CAIStateGroup_EatAtTavern@@IBE_NXZ
+UNRESOLVED 1 ?OnCreate@CCombatSequenceBase@@QAEXXZ
+UNRESOLVED 1 ?OnCreate@CCombatSequenceBase@@UAEXXZ
+UNRESOLVED 2 ?OnDie@CThingPhysical@@MAEXXZ
+LK_DONE

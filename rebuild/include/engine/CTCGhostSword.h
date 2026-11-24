@@ -24,6 +24,12 @@
 #include "engine/CDefPointer.h"
 #include "engine/CIntelligentPointer.h"
 class CSpecialAbilitiesGhostSwordDef; class CThingAICreature;
+#ifdef FABLE_RETAIL_GHOST_SWORD_ADD_PASS27
+namespace std {
+template<> void vector<CIntelligentPointer<CThing> >::push_back(const CIntelligentPointer<CThing>&);
+template<> void vector<CIntelligentPointer<CThingAICreature> >::push_back(const CIntelligentPointer<CThingAICreature>&);
+}
+#endif
 class CTCGhostSword : public CTCBase {
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:
@@ -36,8 +42,14 @@ public:
     void UpdateGhostSwordParticleEffects();
 #endif
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_GHOST_SWORD; }
+#ifdef FABLE_RETAIL_GHOST_SWORD_FIXTURE_PASS27
+    CTCGhostSword(CThing&);
+#endif
     std::vector<CIntelligentPointer<CThingAICreature> > GetSummonedCreatures() const { return Minions; }
 private:
+#ifdef FABLE_RETAIL_GHOST_SWORD_ADD_PASS27
+    void AddSword(const C3DVector&);
+#endif
     CDefPointer<const CSpecialAbilitiesGhostSwordDef>   PDef;            // +0x0c
     std::vector<CIntelligentPointer<CThingAICreature> > Minions;         // +0x10
 #ifdef FABLE_RETAIL_CTCGHOSTSWORD_FRAME
@@ -62,7 +74,7 @@ public:
 #endif
 };
 #ifdef FABLE_RETAIL_CTCGHOSTSWORD_FRAME
-FABLE_STATIC_ASSERT(sizeof(CTCGhostSword)==0x4c);
+FABLE_STATIC_ASSERT_AT(65, sizeof(CTCGhostSword)==0x4c);
 #endif
 #else
 class CTCGhostSword;

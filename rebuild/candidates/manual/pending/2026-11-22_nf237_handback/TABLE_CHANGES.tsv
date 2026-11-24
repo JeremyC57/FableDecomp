@@ -1,0 +1,18 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	?find@CBlendedEffectMap@@QAE?AUSMapIterator@@ABJ@Z	008ee890	008ee790	the const 0x008EE790 calls the local stand-in find as a const member (retail 0x008EE890 is the STLport const _Rb_tree::find); stand-in to stand-in, 0x008EE890 stays 2 spellings (self leaf STLport + this)
+add	rebuild/oracles/reloc_bindings.tsv	?find@CBlendedEffectMap@@QBE?AUSMapIterator@@ABJ@Z	008ee890	008ee790	as above (only emitter)
+delete	rebuild/oracles/reloc_bindings.tsv	?GetOption48DB35@CUserProfileManager@@QBE_NXZ	0048db35	00548790	stand-in; its only emitter 0x00548790 now binds the FableWin.pdb spelling already in the table (witness 0x00548B50)
+delete	rebuild/oracles/reloc_bindings.tsv	?GetOption548650@CUserProfileManager@@QBE_NXZ	00548650	00548790	stand-in; its only emitter 0x00548790 now binds the FableWin.pdb spelling already in the table (witness 0x00548B50)
+delete	rebuild/oracles/reloc_bindings.tsv	?GetOption548670@CUserProfileManager@@QBEJXZ	00548670	00548790	stand-in; its only emitter 0x00548790 now binds the FableWin.pdb spelling already in the table (witness 0x00548B50)
+delete	rebuild/oracles/reloc_bindings.tsv	?GetOption548690@CUserProfileManager@@QBE_NXZ	00548690	00548790	stand-in; its only emitter 0x00548790 now binds the FableWin.pdb spelling already in the table (witness 0x00548B50)
+delete	rebuild/oracles/reloc_bindings.tsv	?GetOption5486B0@CUserProfileManager@@QBEJXZ	005486b0	00548790	stand-in; its only emitter 0x00548790 now binds the FableWin.pdb spelling already in the table (witness 0x00548B50)
+delete	rebuild/oracles/reloc_bindings.tsv	?GetOption5486D0@CUserProfileManager@@QBEJXZ	005486d0	00548790	stand-in; its only emitter 0x00548790 now binds the FableWin.pdb spelling already in the table (witness 0x00548B50)
+delete	rebuild/oracles/reloc_bindings.tsv	?GetOption5486F0@CUserProfileManager@@QBEJXZ	005486f0	00548790	stand-in; its only emitter 0x00548790 now binds the FableWin.pdb spelling already in the table (witness 0x00548B50)
+delete	rebuild/oracles/reloc_bindings.tsv	?GetOption548740@CUserProfileManager@@QBE_NXZ	00548740	00548790	stand-in; its only emitter 0x00548790 now binds the FableWin.pdb spelling already in the table (witness 0x00548B50)
+delete	rebuild/oracles/reloc_bindings.tsv	?IsShowTargetingStatus@CUserProfileManager@@QBE_NXZ	00548740	00548b50	in no PDB; its only emitter 0x00548B50 now binds ?GetShowTargetingStatus (both emitters)
+add	rebuild/oracles/reloc_bindings.tsv	?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ	00548740	00548b50	FableWin.pdb public + Ego_r.pdb method record; ShowTargetingStatus +116 (retail +0x6C); engine/CUserProfileManager.h declares it
+delete	rebuild/oracles/reloc_bindings.tsv	??0CTCHeroOpinionDeedLog@@QAE@PAVCThing@@@Z	006c5a80	004d3f50	its only emitter now binds the PDB CThing& spelling (self leaf of 0x006C5A80); no line for the new spelling needed beyond the self row (add below)
+add	rebuild/oracles/reloc_bindings.tsv	??0CTCHeroOpinionDeedLog@@QAE@AAVCThing@@@Z	006c5a80	004d3f50	Ego_r.pdb + FableWin.pdb
+delete	rebuild/oracles/reloc_bindings.tsv	?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@QBEJABUCCombatantInfo@@0@Z	006eae20	006eb390	its only emitter 0x006EB390 now binds the private ABE spelling (self leaf)
+add	rebuild/oracles/reloc_bindings.tsv	?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z	006eae20	006eb390	Ego_r.pdb + FableWin.pdb private const
+delete	rebuild/oracles/reloc_bindings.tsv	??1CPersistContext@@QAE@XZ	009bbbf0	009ae150	0x009BBBF0 is CheckUnknownSymbols (its self leaf; Ego_r.pdb); the only emitter now binds that (existing line, witness 0x009BC120)

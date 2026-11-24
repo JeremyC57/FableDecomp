@@ -1,3 +1,4 @@
+// Leaf: ?GetEmptySlotName@CUserProfileManager@@QBE?AVCWideString@@XZ
 // CUserProfileManager::GetEmptySlotName @ 0x00406a80  (__fastcall, returns CWideString by value)
 // The game text bank (0x013B86A0 -> +0x14) turns the symbol (CCharString(const char*, long) 0x0099EBF0 on the literal
 // at 0x0122DF80; ~CCharString 0x0099EAE0) into its text: NGameText::CDataBank::GetTextBySymbol 0x009C95E0 (FableWin
@@ -24,10 +25,10 @@ class CDataBank { public:
 #include "engine/CMainGameComponent.h"
 
 class CUserProfileManager { public:
-    CWideString GetEmptySlotName();
+    CWideString GetEmptySlotName() const;
 };
 
-CWideString CUserProfileManager::GetEmptySlotName()
+CWideString CUserProfileManager::GetEmptySlotName() const
 {
     CMainGameComponent* mgr = CMainGameComponent::Get();
     if (mgr) {

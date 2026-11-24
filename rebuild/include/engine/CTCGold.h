@@ -9,6 +9,9 @@
 class CTCGold : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_GOLD; }
+#ifdef FABLE_RETAIL_REWARD_PICKUP_PASS27
+    void SetGold(long gold) { Gold=gold; }
+#endif
     long GetGold() const;                                                // 0x007CBDC0
 private:
     long Gold;                                                           // +0x0c

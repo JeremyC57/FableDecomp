@@ -1,0 +1,10 @@
+# 0x0069FCD0 defined/undefined external symbols, HEAD (<) v NF270 (>); both RELOCATION_MATCH (q.py)
+1,2c1,2
+< DEF _CCreatureAction_UnsheatheItemFromInventoryWithHasteAction_PerformAction
+< UND _ForwardTarget_0069f9e0
+---
+> DEF ?PerformAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ
+> UND ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+# xref of the new leaf (nftools xref.py): offset, kind, retail target, bound symbol
+# ?PerformAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ size 5
+0001	rel32	0069f9e0	?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ

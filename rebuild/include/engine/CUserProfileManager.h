@@ -79,6 +79,14 @@ public:
  unsigned char _pad_cyl_134[12];
 #endif
     static CUserProfileManager& __fastcall Get();                         // 0x0040D2A0
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DEFAULTPROFILENAME
+    // NF235 opt-in (2026-11-22, q12656; row 0x00496070 ~ the CFrontendGameComponent ctor, which expands CFrontendGameComponent::LoadProfile
+    // 0x00494410): Ego_r.pdb + FableWin.pdb ?GetDefaultProfileName@CUserProfileManager@@QBE?AVCWideString@@XZ (0x004065D0) and
+    // ?SetProfileName@CUserProfileManager@@QAEXABVCWideString@@_N@Z (0x0040D400), both public and out of line in retail (the ctor calls
+    // 0x004065D0, then 0x0040D2A0 Get and 0x0040D400). Declarations only; the includer includes fable_string.h first. No layout change.
+    CWideString GetDefaultProfileName() const;                            // 0x004065D0
+    void SetProfileName(const CWideString& profileName, bool loadProfile); // 0x0040D400
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VIRTUAL_DTOR
     // Retail opt-in (agentFAM10, 2026-11-12, row 0x0040D830 CCountedPointer<CUserProfileManager>::DeleteData): the class is polymorphic
     // (RTTI vtable .?AVCUserProfileManager@@ stored by the ctor 0x0040CEC0) and vtable slot 0 is its scalar deleting destructor (the

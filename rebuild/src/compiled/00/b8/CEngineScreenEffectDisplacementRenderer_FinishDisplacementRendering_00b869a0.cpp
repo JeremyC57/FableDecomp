@@ -9,7 +9,7 @@ class CRenderTarget { public:
 };
 
 class CDisplayManager { public:
-    void SetRenderTarget(CRenderTarget* target);   // 0x009BF160
+    bool SetRenderTarget(CRenderTarget& target);   // 0x009BF160
     void SetViewport(void* viewport);              // 0x009BEF80
 };
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
@@ -42,7 +42,7 @@ class CEngineScreenEffectDisplacementRenderer { public:
 void CEngineScreenEffectDisplacementRenderer::FinishDisplacementRendering()
 {
     if (m_active) {
-        NEngineInternal::GPDisplayManager->SetRenderTarget(&m_renderTarget);
+        NEngineInternal::GPDisplayManager->SetRenderTarget(m_renderTarget);
         NEngineInternal::GPDisplayManager->SetViewport(m_viewport);
         m_renderTarget.Uninitialise();
         if (!m_active) {

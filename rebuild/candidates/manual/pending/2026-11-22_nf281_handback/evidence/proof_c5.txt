@@ -1,0 +1,40 @@
+##### 009183a0 renames: ?OnReplace@CAIStateGroup_Gaze@@UAEXXZ=?OnReplace@CAIStateGroup_Gaze@@MAEXXZ
+sections head 28 new 28
+ALL_EQ 0
+ONLY_A	?OnReplace@CAIStateGroup_Gaze@@UAEXXZ
+funcs SAME=23 vtbl_H=4 vtbl_N=4
+##### 00918880 renames: ?FindFreeParticularGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@J_N@Z=?FindFreeParticularGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@J_N@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 009490d0 renames: ?GetBar@CAIStateGroup_GoToPub@@QAE_NXZ=?GetBar@CAIStateGroup_GoToPub@@IAE_NXZ
+sections head 40 new 40
+ALL_EQ 0
+ONLY_A	?GetBar@CAIStateGroup_GoToPub@@QAE_NXZ
+funcs SAME=35 vtbl_H=4 vtbl_N=4
+##### 0094a0e0 renames: ?FallAsleep@CAIStateGroup_GoToPub@@QAE_NXZ=?FallAsleep@CAIStateGroup_GoToPub@@IAE_NXZ
+sections head 7 new 7
+ALL_EQ 0
+ONLY_A	?FallAsleep@CAIStateGroup_GoToPub@@QAE_NXZ
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 00977b10 renames: ?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@QAEXXZ=?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ
+sections head 25 new 25
+ALL_EQ 0
+ONLY_A	?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@QAEXXZ
+funcs SAME=21 vtbl_H=0 vtbl_N=0
+##### 00977c40 renames: ?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@QAEXXZ=?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ
+sections head 48 new 48
+ALL_EQ 0
+DIFF	?OnActivate@CAIStateGroup_Guildmaster@@UAEXXZ
+funcs SAME=43 vtbl_H=2 vtbl_N=2
+##### 0095a490 renames: ?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@QAE_NJ@Z=?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@IAE_NJ@Z
+sections head 19 new 19
+ALL_EQ 0
+ONLY_A	?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@QAE_NJ@Z
+funcs SAME=15 vtbl_H=0 vtbl_N=0
+##### 0095c1f0 renames: ?Attack@CAIStateGroup_HoverHornetQueen@@QAEXXZ=?Attack@CAIStateGroup_HoverHornetQueen@@IAEXXZ ?DiveBomb@CAIStateGroup_HoverHornetQueen@@QAEXXZ=?DiveBomb@CAIStateGroup_HoverHornetQueen@@IAEXXZ ?Spawn@CAIStateGroup_HoverHornetQueen@@QAEXXZ=?Spawn@CAIStateGroup_HoverHornetQueen@@IAEXXZ
+sections head 22 new 22
+ALL_EQ 0
+DIFF	?Update@CAIStateGroup_HoverHornetQueen@@QAEXXZ
+funcs SAME=19 vtbl_H=0 vtbl_N=0

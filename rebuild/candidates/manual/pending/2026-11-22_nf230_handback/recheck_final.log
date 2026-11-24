@@ -1,0 +1,55 @@
+addr       parity           behav  name
+0042a8e0   RELOCATION_MATCH PASS   ScalarDeletingDtor_0042a8e0
+00541f20   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00541f20   WARN RELOC_NAME: ?Game_013b86a0@@3PAUGame@@A -> 013b86a0 labelled 'CMainGameComponent::PMainGameComponent'
+00541f20   RELOCATION_MATCH PASS   SetValue
+00542140   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+  WARN leaf 'vfunc_143' matches no symbol in 00542140.obj; graded the largest function
+  WARN leaf 'vfunc_143' matches no symbol in 00542140.obj; graded the largest function
+00542140   WARN RELOC_NAME: ?Game_013b86a0@@3PAUGame@@A -> 013b86a0 labelled 'CMainGameComponent::PMainGameComponent'
+00542140   RELOCATION_MATCH PASS   vfunc_143
+00597bf2   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00597bf2   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard (engine/CVirtualKeyboard.h)
+00597bf2   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+00597bf2   RELOCATION_MATCH PASS   GotoPreviousScreen
+0059a238   WARN SHARED_HEADER_AVAILABLE CFileInstaller (engine/CFileInstaller.h)
+0059a238   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+0059a238   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard (engine/CVirtualKeyboard.h)
+0059a238   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+0059a238   WARN RELOC_NAME: ?top@CScreenStack@NUISystem@@QAEAAPAVCComponent@2@XZ -> 0059b039 labelled 'std::deque<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::back'
+0059a238   WARN RELOC_NAME: ?Compare_Unsigned16Array@CWideString@@SA_NPBX0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0059a238   RELOCATION_MATCH PASS   Action
+0041d0a8   WARN SHARED_HEADER_AVAILABLE CASoundBank (engine/CASoundBank.h)
+0041d0a8   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041d0a8   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0041d0a8   RELOCATION_MATCH PASS   PlaySoundW
+0055ca40   RELOCATION_MATCH PASS   AddObserver
+0055c9c0   RELOCATION_MATCH PASS   RemoveObserver
+0055cae0   MATCH            PASS   IsExclusivelyObserved
+0055ca90   RELOCATION_MATCH PASS   AddConcurrentExclusiveObserver
+0055ca00   RELOCATION_MATCH PASS   RemoveConcurrentExclusiveObserver
+0055c950   RELOCATION_MATCH PASS   ClearObservers
+0042d4f0   MATCH            PASS   GetMouseDisabled
+0042d5aa   MATCH            PASS   GetRightStickForce
+0042d592   MATCH            PASS   SetRightStickForce
+0041e3b2   RELOCATION_MATCH PASS   GetLayer
+0041ded2   RELOCATION_MATCH PASS   ClearBastardChild
+
+WINS: 17
+  0042a8e0 RELOCATION_MATCH _global::??_G?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAEPAXI@Z
+  00541f20 RELOCATION_MATCH NUISystem::CIconText::?SetValue@CIconText@NUISystem@@UAEXABVCWideString@@@Z
+  00542140 RELOCATION_MATCH NUISystem::CIconText::vfunc_143
+  00597bf2 RELOCATION_MATCH CFrontEndManager::?GotoPreviousScreen@CFrontEndManager@NUISystem@@QAEX_N@Z
+  0059a238 RELOCATION_MATCH NUISystem::CFrontEndManager::?Action@CFrontEndManager@NUISystem
+  0041d0a8 RELOCATION_MATCH NUISystem::CManager::?PlaySoundW@CManager@NUISystem@@UAEXAAVCCharString@@J@Z
+  0055ca40 RELOCATION_MATCH NUISystem::CObservable::?AddObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z
+  0055c9c0 RELOCATION_MATCH NUISystem::CObservable::?RemoveObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z
+  0055cae0 MATCH NUISystem::CObservable::?IsExclusivelyObserved@CObservable@NUISystem@@UAE_NXZ
+  0055ca90 RELOCATION_MATCH NUISystem::CObservable::?AddConcurrentExclusiveObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z
+  0055ca00 RELOCATION_MATCH NUISystem::CObservable::?RemoveConcurrentExclusiveObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z
+  0055c950 RELOCATION_MATCH NUISystem::CObservable::?ClearObservers@CObservable@NUISystem@@UAEXXZ
+  0042d4f0 MATCH NUISystem::CManager::?GetMouseDisabled@CManager@NUISystem@@UAE_NXZ
+  0042d5aa MATCH NUISystem::CManager::?GetRightStickForce@CManager@NUISystem@@UAEAAVC2DVector@@XZ
+  0042d592 MATCH NUISystem::CManager::?SetRightStickForce@CManager@NUISystem@@UAEXAAVC2DVector@@@Z
+  0041e3b2 RELOCATION_MATCH NUISystem::CManager::?GetLayer@CManager@NUISystem@@UAE?AW4EEngine2DLayer@@J@Z
+  0041ded2 RELOCATION_MATCH NUISystem::CManager::?ClearBastardChild@CManager@NUISystem@@UAEXXZ

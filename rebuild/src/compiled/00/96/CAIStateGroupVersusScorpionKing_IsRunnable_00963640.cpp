@@ -1,5 +1,5 @@
 // CAIStateGroup_VersusScorpionKing::IsRunnable() -- runnable when the creature's live enemy has the scorpion-king creature def type (0x80000): latch the "ARENA_CentrePoint" thing (or the enemy when there is none) as the arena centre, pick a random circling direction (more than 50 of 100) and latch the enemy
-// Leaf: ?IsRunnable@CAIStateGroup_VersusScorpionKing
+// Leaf: ?IsRunnable@CAIStateGroup_VersusScorpionKing@@MAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00963640, length 456 bytes (+ int3 padding; plain `ret`, virtual slot 11).
@@ -189,7 +189,9 @@ struct CAIStateGroup_VersusScorpionKing : CAIStateGroupBase {
     CIntelligentPointerCreature PEnemy;         // +0x14
     bool GoClockwise;                           // +0x1c
     CIntelligentPointerThing PArenaCentreThing; // +0x1d
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 #pragma pack(pop)
 

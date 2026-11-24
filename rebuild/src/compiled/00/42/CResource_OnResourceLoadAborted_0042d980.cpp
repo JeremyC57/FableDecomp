@@ -1,8 +1,6 @@
 // Empty member hook. __fastcall this=ecx.
-// Leaf: ?OnResourceLoadAborted@CResource_Methods@@QAEXXZ
+// Leaf: ?OnResourceLoadAborted@CResource@@UAEXXZ
+#define FABLE_RETAIL_DEF_CLASS_BASE   // alias route: engine/CResource.h declares OnResourceLoadAborted under this class-model switch
 #include "engine/CResource.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CResource_Methods : CResource {
-    void OnResourceLoadAborted();
-};
-void CResource_Methods::OnResourceLoadAborted() {}
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?OnResourceLoadAborted@CResource@@UAEXXZ); evidence: RTTI vtable slot + PDB name set.
+void CResource::OnResourceLoadAborted() {}
+// Was defined on a stand-in alias class (owner rule 2026-11-05); now the real member, through the class-model switch above (alias route, 2026-11-23).

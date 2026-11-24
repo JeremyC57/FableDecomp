@@ -1,0 +1,10 @@
+C1 correct pair (expect ALL_EQ):
+ALL_EQ
+C2 no rename (expect defined symbols differ):
+defined symbols differ: +?IsIOFinished@CAFile@@UBE_NXZ -?CAFile_IsIOFinished@@YI_NPBVCAFile@@@Z
+C3 two different rows (expect fail):
+.drectve differs
+C4 libcp row without the exception (expect .drectve differs):
+.drectve differs
+C5 libcp row with the exception (expect LIBCP):
+LIBCP

@@ -109,9 +109,35 @@ public:
     bool                  Acquired;                          // +0xd3c
     unsigned char         _pad_0xd3d[0x3];                   // +0xd3d
     CInputManagerDX*      InputManagerDX;                    // +0xd40
+#ifdef FABLE_RETAIL_CJOYSTICKDX_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CJoystick chain declares at the same slot (no new slot).
+    // 0x00AB6AD0 vtable 0x0129EA7C slot 3: ?GetXAxis@CJoystickDX@@MAEMXZ (Ego_r.pdb + FableWin.pdb)
+    // 0x00AB6AE0 vtable 0x0129EA7C slot 4: ?GetYAxis@CJoystickDX@@MAEMXZ (Ego_r.pdb + FableWin.pdb)
+    // 0x00AB6AF0 vtable 0x0129EA7C slot 5: ?GetXAxis2@CJoystickDX@@MAEMXZ (Ego_r.pdb + FableWin.pdb)
+    // 0x00AB6B00 vtable 0x0129EA7C slot 6: ?GetYAxis2@CJoystickDX@@MAEMXZ (Ego_r.pdb + FableWin.pdb)
+protected:
+    virtual float GetXAxis();                                         // 0x00AB6AD0
+    virtual float GetYAxis();                                         // 0x00AB6AE0
+    virtual float GetXAxis2();                                        // 0x00AB6AF0
+    virtual float GetYAxis2();                                        // 0x00AB6B00
+public:
+#endif
+#ifdef FABLE_RETAIL_CJOYSTICKDX_RUMBLE_DECLS
+    // Opt-in (NF323, 2026-11-24, NF320 Q3): declarations only, no layout change. Each is the member the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the FableWin.pdb spelling; each overrides the CJoystick virtual
+    // (FABLE_RETAIL_CJOYSTICK_VIRTUALS) at the same slot (no new slot). Ego_r.pdb has neither (ICF / not emitted).
+    // 0x00AB7910 vtable 0x0129EA7C slot 13: ?GetRumbleWithID@CJoystickDX@@UAEPAVCActiveRumble@CJoystick@@J@Z
+    // 0x00AB7920 vtable 0x0129EA7C slot 14: ?PeekRumbleWithID@CJoystickDX@@UBEPBVCActiveRumble@CJoystick@@J@Z
+public:
+    virtual CActiveRumble* GetRumbleWithID(long id);                      // 0x00AB7910
+    virtual const CActiveRumble* PeekRumbleWithID(long id) const;       // 0x00AB7920
+public:
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CJoystickDX) == 0xd44);
+FABLE_STATIC_ASSERT_AT(114, sizeof(CJoystickDX) == 0xd44);
 #else
 #pragma pack(push, 1)
 struct CJoystickDX {
@@ -968,19 +994,19 @@ struct CJoystickDX {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CJoystickDX) == 0xd44);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(971, sizeof(CJoystickDX) == 0xd44);
+FABLE_STATIC_ASSERT_AT(972, offsetof(CJoystickDX, __vftable) == 0x0);
 #endif // FABLE_RETAIL_CJOYSTICKDX
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, XAxis) == 0xd18);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, YAxis) == 0xd1c);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, XAxis2) == 0xd20);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, YAxis2) == 0xd24);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, XAxisMin) == 0xd28);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, XAxisMax) == 0xd2c);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, YAxisMin) == 0xd30);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, YAxisMax) == 0xd34);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, DJoystick) == 0xd38);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, Acquired) == 0xd3c);
-FABLE_STATIC_ASSERT(offsetof(CJoystickDX, InputManagerDX) == 0xd40);
+FABLE_STATIC_ASSERT_AT(974, offsetof(CJoystickDX, XAxis) == 0xd18);
+FABLE_STATIC_ASSERT_AT(975, offsetof(CJoystickDX, YAxis) == 0xd1c);
+FABLE_STATIC_ASSERT_AT(976, offsetof(CJoystickDX, XAxis2) == 0xd20);
+FABLE_STATIC_ASSERT_AT(977, offsetof(CJoystickDX, YAxis2) == 0xd24);
+FABLE_STATIC_ASSERT_AT(978, offsetof(CJoystickDX, XAxisMin) == 0xd28);
+FABLE_STATIC_ASSERT_AT(979, offsetof(CJoystickDX, XAxisMax) == 0xd2c);
+FABLE_STATIC_ASSERT_AT(980, offsetof(CJoystickDX, YAxisMin) == 0xd30);
+FABLE_STATIC_ASSERT_AT(981, offsetof(CJoystickDX, YAxisMax) == 0xd34);
+FABLE_STATIC_ASSERT_AT(982, offsetof(CJoystickDX, DJoystick) == 0xd38);
+FABLE_STATIC_ASSERT_AT(983, offsetof(CJoystickDX, Acquired) == 0xd3c);
+FABLE_STATIC_ASSERT_AT(984, offsetof(CJoystickDX, InputManagerDX) == 0xd40);
 
 #endif // FABLE_ENGINE_CJOYSTICKDX_H

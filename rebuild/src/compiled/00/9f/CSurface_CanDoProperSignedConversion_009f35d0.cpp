@@ -26,7 +26,7 @@ class CPixelFormat;
 class CSurface : public CSurfaceLayout
 {
 public:
-    unsigned long GetHeight() const;   // 0x00415BF0
+    unsigned long GetWidth() const; unsigned long GetHeight() const;   // 0x00415BD0 / 0x00415BF0
     CPixelFormat GetPixelFormat() const;   // 0x009F2F60
 };
 
@@ -64,7 +64,7 @@ class CPixelFormat { public:
 };
 
 struct CSurface_Methods : CSurface {
-    unsigned long GetWidth() const;                // 0x00415BD0
+    // GetWidth 0x00415BD0 is the CSurface member above (NF289; it was declared on this stand-in)
     // the inline expansions of the first GetPixelFormat() / GetWidth() calls
     CPixelFormat GetPixelFormatInline() const
     {

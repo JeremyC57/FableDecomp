@@ -19,10 +19,17 @@ public:
     virtual void Cleanup();                                              // slot 9  0x009143C0
     virtual bool IsRunnable();                                           // slot 11 0x009143E0
     virtual void Update();                                               // slot 12 0x00914460
+#ifdef FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER_INITIALISE_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x008FD892): Ego_r.pdb / FableWin.pdb
+    // ?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z, the override
+    // of CAIStateGroupBase slot 1 (retail RTTI vtable 0x01289670 slot 1 = 0x008FD892). Declaration only.
+    virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority,
+                            const CCharString& name);                    // slot 1  0x008FD892
+#endif
 protected:
     unsigned long FrameLastFinishedWalking;                              // +0x14
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BirdGroundWander) == 0x18);
+FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_BirdGroundWander) == 0x18);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

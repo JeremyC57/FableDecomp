@@ -1,0 +1,31 @@
+action	symbol	target	witness	note
+delete	?GFAYToVY_009e1dd0@@YGMM@Z	009e1dd0	0048f50c	sole binder 0x0048f50c respelled by NF285 (conditional on 0x0048f50c landing: its recheck is withheld, decision 1); the YI stand-in had no table line; the PDB line ?GFAYToVY@@YIMM@Z already exists (witness 009de140 / 0041a980)
+delete	?FreeBarPoint@CAIStateGroupTavernServerMethods@@QAEXXZ	00967110	00967650	sole binder 0x00967650 respelled by NF285 (flat-view opt-in)
+delete	?FreeServingPoint@CAIStateGroupTavernServerMethods@@QAEXXZ	009670a0	00967650	sole binder 0x00967650 respelled by NF285 (flat-view opt-in)
+delete	?GetBar@CAIStateGroupTavernServerMethods@@QAE_NXZ	00966af0	00967650	sole binder 0x00967650 respelled by NF285 (flat-view opt-in)
+delete	?GetJug@CAIStateGroupTavernServerMethods@@QAE_NXZ	00967180	00967650	sole binder 0x00967650 respelled by NF285 (flat-view opt-in)
+delete	?GetServingPoint@CAIStateGroupTavernServerMethods@@QAE_NXZ	00966da0	00967650	sole binder 0x00967650 respelled by NF285 (flat-view opt-in)
+delete	?IsCarryingJug@CAIStateGroupTavernServerMethods@@QAE_NXZ	00966cf0	00967650	sole binder 0x00967650 respelled by NF285 (flat-view opt-in)
+delete	?FreeBarPoint_009670a0@CAIStateGroup_TavernServer@@QAEXXZ	009670a0	00967b40	sole binder 0x00967b40 respelled by NF285 (in place)
+add	?GetBar@CAIStateGroup_TavernServer@@QAE_NXZ	00966af0	00967650	PDB spelling had no table line (self Leaf only); witness = respelled binder
+add	?FreeServingPoint@CAIStateGroup_TavernServer@@QAEXXZ	009670a0	00967b40	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?ResetStrafeAnims_008e97b0@CModeStrafe@NCreatureMode@@AAEXXZ	008e97b0	008e9b60	all binders moved (0x008e9b60 respelled by NF285)
+add	?LockStrafingCombinationAnimsToMainAnim@CModeStrafe@NCreatureMode@@AAEXXZ	008e97b0	008e9b60	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?RemoveBoastQuestInfo_00d17e70@CQ_BountyHuntScript@NScript@@QAEXXZ	00d17e70	00d17da0	all binders moved (0x00d17da0 respelled by NF285)
+add	?RemoveBoastQuestInfo@CQ_BountyHuntScript@NScript@@QAEXXZ	00d17e70	00d17da0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?SetupCameraFromStick_007a9b10@CTCAssassinRush@@QAEXXZ	007a9b10	007a9c80	all binders moved (0x007a9c80 respelled by NF285)
+add	?ResetCameraOnStick@CTCAssassinRush@@AAEXXZ	007a9b10	007a9c80	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?QuestListHook_0061A9D0@CTCInventoryQuests@@QAEXXZ	0061a9d0	0061b560	all binders moved (0x0061b560 respelled by NF285)
+add	?MoveToNextTestQuest@CTCInventoryQuests@@QAEXXZ	0061a9d0	0061b560	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?QuestListHook_0061AA80@CTCInventoryQuests@@QAEXXZ	0061aa80	0061b530	all binders moved (0x0061b530 respelled by NF285)
+add	?MoveToPreviousTestQuest@CTCInventoryQuests@@QAEXXZ	0061aa80	0061b530	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?IsActivatable_00702810@CTCQuestCard@@QBE_NXZ	00702810	004b1590	all binders moved (0x004b1590, 0x004b4aa0 respelled by NF285); CONDITIONAL on both landing (their recheck is withheld, decision 1)
+add	?IsActivatable@CTCQuestCard@@QBE_NXZ	00702810	004b1590	PDB spelling had no table line (self Leaf only); witness = respelled binder; CONDITIONAL on 0x004b1590 landing (recheck withheld, decision 1)
+delete	?OnShownByCreature_006de8c0@CTCTrophy@@QAEXPAVCThing@@@Z	006de8c0	008455c0	all binders moved (0x008455c0 respelled by NF285)
+add	?OnShowTrophyPerformAction@CTCTrophy@@QAEXAAVCThing@@@Z	006de8c0	008455c0	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ	00658bb9	00947a30	all binders moved (0x00947840, 0x00947a30 respelled by NF285)
+delete	?IsThingInViewAngle_00664e50@CThingCreatureBase@@QAE_NPAVCThing@@M_N@Z	00664e50	00665190	all binders moved (0x00665190 respelled by NF285)
+add	?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z	00664e50	00665190	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?UpdateObject_007034d0@CThingObject@@QAEXXZ	007034d0	00704150	all binders moved (0x00704150 respelled by NF285)
+add	?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ	007034d0	00704150	PDB spelling had no table line (self Leaf only); witness = respelled binder
+delete	?IsAugmentation_005d9830@@YI_NJ@Z	005d9830	005be028	sole binder 0x005be028 respelled by NF285; the PDB line exists (witness 006276f0)

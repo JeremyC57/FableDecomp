@@ -1,0 +1,8 @@
+pick-any copies v Fable.exe (relocations masked), landing objects
+00494840 ?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ v 0042f948: 44 diffs 0 [] after 568bf1
+00494840 ?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z v 0042f9f2: 38 diffs 0 [] after e9c3f0
+0054ed90 ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ v 004057a0: 53 diffs 0 [] after cccccc
+0054ed90 ??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z v 00419463: 23 diffs 0 [] after 568bf1
+0042db20 ?Clear@CManager@NUISystem@@SIXXZ v 0042fb40: 39 diffs 0 [] after cccccc
+0042fb40 ??_GCManager@NUISystem@@IAEPAXI@Z v 0042db20: 30 diffs 0 [] after cccc56
+(NF225's pk.py run, all six owned copies EQ incl. 0x00494840 ??$?4 v 0x0042FE34 and 0x0054ED90 ShareData v 0x004190E2: pending/2026-11-22_nf225_handback/NOTES.md)

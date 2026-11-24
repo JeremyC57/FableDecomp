@@ -1,0 +1,10 @@
+## HEAD set: H_00690030.obj H_00687d40.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetEventScrollAmount@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z
+UNRESOLVED 1 ?GetMouseWheelMovement@CGamePlayerInterface@@QBEMABVCInputEvent@@@Z
+## new set: N_00690030.obj H_00687d40.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetMouseWheelMovement@CGamePlayerInterface@@QBEMABVCInputEvent@@@Z
+LK_DONE

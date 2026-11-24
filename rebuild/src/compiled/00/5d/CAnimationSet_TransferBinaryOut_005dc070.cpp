@@ -1,3 +1,4 @@
+// Leaf: ?TransferBinaryOut@CAnimationSet@@QBEXAAVCDataOutputStream@@@Z
 // CAnimationSet::TransferBinaryOut(CDataOutputStream& stream) -- write the entry count, each (key, CAnimationEntry) pair, then the default flags / transition time / delay / group
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DC070, length 178 bytes, ret 4.
@@ -23,7 +24,7 @@ class CAnimationEntry { public:
     CDefString AnimName;                        // +0x04
     CDefString GroupName;                       // +0x08
     void* Components;                           // +0x0c CIVCountedPointer<CAnimComponentMap>
-    void TransferBinaryOut(CDataOutputStream& stream);   // 0x005DB630
+    void TransferBinaryOut(CDataOutputStream& stream) const;   // 0x005DB630 ?TransferBinaryOut@CAnimationEntry@@QBEXAAVCDataOutputStream@@@Z (both PDBs)
 };
 
 #include "engine/CVectorMap.h"
@@ -35,10 +36,10 @@ class CAnimationSet { public:
     long DefaultTransitionTime;                 // +0x14
     long DefaultDelay;                          // +0x18
     CDefString DefaultGroup;                    // +0x1c
-    void TransferBinaryOut(CDataOutputStream& stream);
+    void TransferBinaryOut(CDataOutputStream& stream) const;
 };
 
-void CAnimationSet::TransferBinaryOut(CDataOutputStream& stream)
+void CAnimationSet::TransferBinaryOut(CDataOutputStream& stream) const
 {
     stream.WriteULONG(Anims.size());
     for (unsigned long i = 0; i < Anims.size(); ++i) {

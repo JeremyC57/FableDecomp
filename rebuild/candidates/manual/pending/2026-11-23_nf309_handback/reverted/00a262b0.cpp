@@ -1,0 +1,108 @@
+// CPhysicsMeshInfo::GetMesh() -- make sure the physics mesh is loaded and built (blocking with an "Asset Wait" progress line when the file is still streaming), touch its data in the resource list and return a counted pointer to the mesh
+// Leaf: ?GetMesh@CPhysicsMeshInfo@@QBE?AV?$CIVCountedPointer@$$CBVCPhysicsMesh@@@@XZ
+// NF75 (round 7, land1117fu q10930): GetMesh is const in Ego_r.pdb 0x00B62AB0 / FableWin.pdb 0x03141350 (QBE); the row's own
+//   declaration and definition are now const (was non-const QAE). Same bytes (MeshData is a pointer member).
+// NF72 (round 7, q10880): the callee BeginLoading 0x00A25BD0 is const in Ego_r.pdb and FableWin.pdb (QBEXXZ; its NF68 self row and the
+//   landed caller 0x00724630 use that spelling); the local declaration (CPhysicsMeshInfo has no shared header) is now const.
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A262B0, 191 bytes (+ int3 padding), `ret 4` (hidden result).
+// Callees: CPhysicsMeshInfo::BeginLoading 0x00A25BD0, CBankFileAsyncData::IsFinished 0x009D54E0 / WaitUntilFinished
+//   0x009D5B60, CCharString::CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, DisplayProgress 0x009E9F40
+//   (`__fastcall` text, bool in dl, then -1.0f and false on the stack), CPhysicsMeshInfo::CMeshData::BuildMesh 0x00A25D20,
+//   CResource::ListRemove 0x009FBFB0 / ListInsert 0x009FBF90.
+// Shape: the sibling of the landed NParticleEngine::CParticleEmitterInfo::GetEmitterTemplate 0x00AF1480 and
+//   CLipSyncDataBank::GetLipSyncData 0x00A42FC0. MeshData (Ego_r.pdb: CIVCountedPointer<CMeshData> +0xC) is re-read
+//   through `this` (edi) every time; CMeshData is a CResource (list +8, LastUsedFrame +0x18) with the file
+//   CCountedPointer<CBankFileAsyncData> at +0x1C and the intrusive mesh pointer at +0x24. The progress text is an
+//   implicit `const char*` -> CCharString conversion, so its temporary is built before the `false`/-1.0f pushes (an
+//   explicit CCharString("...") is built after them); the touch block is the inline
+//   resource-list move-to-tail; the result is the add-ref copy (`inc [ecx+4]`) straight into the hidden result.
+class CCharStringData;
+class CCharString { public:
+    CCharStringData* PStringData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                    // 0x0099EAE0
+};
+void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
+
+class CResourceList;
+class CResource { public:
+    virtual void v00();
+    unsigned long IVRefCount;                  // +4
+    CResourceList* ResourceList;           // +8
+    CResource* PrevResource;               // +0xc
+    CResource* NextResource;               // +0x10
+    unsigned long ResourceSize;            // +0x14
+    unsigned long LastUsedFrame;           // +0x18
+private:
+    void ListRemove();                     // 0x009FBFB0
+public:
+private:
+    void ListInsert(CResource*a0, CResource*a1);   // 0x009FBF90
+public:
+    void Touch();
+};
+class CResourceList { public:
+    long m_pad0;                           // +0
+    CResource Head;                        // +4
+    unsigned long ResourceCount;           // +0x20
+    long AllocatedMemory;                  // +0x24
+    long MaximumMemory;                    // +0x28
+    unsigned long CurrentFrame;            // +0x2c
+};
+inline void CResource::Touch()
+{
+    if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
+        ListRemove();
+        ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
+        LastUsedFrame = ResourceList->CurrentFrame;
+    }
+}
+
+class CBankFileAsyncData { public:
+    bool IsFinished() const;               // 0x009D54E0 ?IsFinished@CBankFileAsyncData@@QBE_NXZ (Ego_r / FableWin)
+    bool WaitUntilFinished();              // 0x009D5B60
+};
+#include "engine/CCountedPointer.h"
+
+struct CIVCountedObject {                  // intrusive reference count at +4
+    virtual void v00();
+    mutable long RefCount;
+};
+template <class T> class CIVCountedPointer { public:
+    T* Object;
+    CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
+    T* operator->() const { return Object; }
+};
+
+class CPhysicsMesh : public CIVCountedObject {};
+
+class CPhysicsMeshInfo {
+public:
+    class CMeshData : public CResource { public:
+        CCountedPointer<CBankFileAsyncData>     FileData;   // +0x1C
+        CIVCountedPointer<const CPhysicsMesh>   Mesh;       // +0x24
+        void BuildMesh();                                   // 0x00A25D20
+    };
+    void*                         __vftable;               // +0x00
+    long                          Bank;                    // +0x04
+    long                          Index;                    // +0x08
+    CMeshData*                    MeshData;                // +0x0C CIVCountedPointer<CMeshData>::Object
+    void BeginLoading() const;                             // 0x00A25BD0 ?BeginLoading@CPhysicsMeshInfo@@QBEXXZ (Ego_r.pdb / FableWin.pdb const)
+    CIVCountedPointer<const CPhysicsMesh> GetMesh() const;   // ?GetMesh@CPhysicsMeshInfo@@QBE?AV?$CIVCountedPointer@$$CBVCPhysicsMesh@@@@XZ
+};
+
+CIVCountedPointer<const CPhysicsMesh> CPhysicsMeshInfo::GetMesh() const
+{
+    if (MeshData == 0 || MeshData->Mesh.Object == 0) {
+        if (MeshData == 0 || MeshData->FileData.Data == 0)
+            BeginLoading();
+        if (!MeshData->FileData->IsFinished()) {
+            DisplayProgress("Asset Wait: Physics Mesh", false, -1.0f, false);
+            MeshData->FileData->WaitUntilFinished();
+        }
+        MeshData->BuildMesh();
+    }
+    MeshData->Touch();
+    return MeshData->Mesh;
+}

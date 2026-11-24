@@ -25,7 +25,7 @@ class CEngineLandscapeRenderer { public:
     CEngineLandscapeMemoryManager* MemoryManager;            // +0x6b0
     void OnRegistedZSortingPatchRelocation(long handle, CLandscapeBackgroundPatch* patch);   // 0x00B67780
 };
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;     // 0x01436EA8
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }   // 0x01436EA8 (Ego_r / FableWin / Ego_d PDB spelling)
 class CPatchTesselationEdgeStrip { public:                         // 0x2c bytes
     unsigned char _body[0x2c];
     void SetMovableResourceHandler(CMovableResource* handler);   // 0x00BFC510
@@ -64,7 +64,7 @@ class CLandscapeBackgroundPatch : public CMovableResource { public:
 
 void CLandscapeBackgroundPatch::OnPostRelocation()
 {
-    CEngineLandscapeMemoryManager* memory = g_pLandscapeRenderer->MemoryManager;
+    CEngineLandscapeMemoryManager* memory = NEngineInternal::GPLandscapeRenderer->MemoryManager;
     if (WaterSubPatch)
         memory->SetMovableResourceHandler(WaterSubPatch, this);
     for (long i = 0; i < 4; ++i) {
@@ -81,5 +81,5 @@ void CLandscapeBackgroundPatch::OnPostRelocation()
     if (VertexBuffer)
         memory->SetMovableResourceHandler(VertexBuffer, this);
     if (ZSorterHandle >= 0)
-        g_pLandscapeRenderer->OnRegistedZSortingPatchRelocation(ZSorterHandle, this);
+        NEngineInternal::GPLandscapeRenderer->OnRegistedZSortingPatchRelocation(ZSorterHandle, this);
 }

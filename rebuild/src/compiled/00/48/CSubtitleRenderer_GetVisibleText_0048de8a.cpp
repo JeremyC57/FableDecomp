@@ -7,7 +7,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048DE8A, 237 bytes, `ret 8`. Ego_r.pdb `?GetVisibleText@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z`.
-// Leaf: GetVisibleText
+// Leaf: ?GetVisibleText@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z
 // Callees: CWideString::operator=(const CWideString&) @ 0x0099B7D0, CCharString::CCharString(const char*, long) @ 0x0099EBF0
 //   ("(HC)" @ 0x0123172C), CWideString::ToCharString() const @ 0x0099B2C0 (landed name; PDB ToCharString), strncmp
 //   @ 0x00BFEAF8, ~CCharString @ 0x0099EAE0, CWideString::GetLength() const @ 0x0099B220, CWideString::GetSubString(unsigned
@@ -61,7 +61,9 @@ static inline bool BeginsWith(const CCharString& text, const CCharString& prefix
 
 class CSubtitleRenderer : public CSubtitleRendererDonor {
 public:
+    private:
     bool GetVisibleText(const CWideString& text, CWideString& visible);
+    public:
 };
 
 bool CSubtitleRenderer::GetVisibleText(const CWideString& text, CWideString& visible)

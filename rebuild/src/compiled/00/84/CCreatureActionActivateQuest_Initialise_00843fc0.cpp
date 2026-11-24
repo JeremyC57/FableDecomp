@@ -1,5 +1,5 @@
 // CCreatureAction_ActivateQuest::Initialise() -- record the object used on the quest manager (and, when there is one, its definition's display string), activate the named quest with the LoadResources flag, mark the action initialised
-// Leaf: Initialise
+// Leaf: ?Initialise@CCreatureAction_ActivateQuest@@UAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -61,7 +61,7 @@ class CCreatureAction_ActivateQuest { public:
     CCharString ScriptName;                     // +0xa8
     bool LoadResources;                         // +0xac
     CIntelligentPointer<CThing> PObjectToUse;           // +0xad
-    void Initialise();
+    virtual void Initialise();
 };
 #pragma pack(pop)
 

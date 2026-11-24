@@ -1,3 +1,4 @@
+// Leaf: ?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ
 // CEnginePrimitiveManagerParticleSpriteGroup::BuildBuffers -- fill40 shader-indexed quad vertices and60 triangle indices.
 // Retail00BBF380,279bytes. Donor sprite manager arrays16bytes become native12,
 // placing VertexBuffer+60/IndexBuffer+94 rather than donor6c/a0. Actual headers
@@ -38,7 +39,9 @@ class CEnginePrimitiveManagerParticleSpriteGroup { public:
  ShaderHandle PixelShader,PixelShaderStipple,PixelShaderDisplacement;
  CVertexBufferWin32 VertexBuffer;CIndexBuffer IndexBuffer;
  float ConstantBlock[40][4];
+ private:
  void BuildBuffers();
+ public:
 };
 struct SIndexedParticleVertex {float Index;unsigned short U,V;};
 void CEnginePrimitiveManagerParticleSpriteGroup::BuildBuffers(){

@@ -1,5 +1,5 @@
 // CNavQuadTreeNode::RemoveRegionZero() -- collapse every child that belongs to no region into the shared blocked node, recursing into branch children; returns true when all four children end up blocked
-// Leaf: RemoveRegionZero
+// Leaf: ?RemoveRegionZero@CNavQuadTreeNode@@MAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A76060, length 347 bytes (padded to 352); CNavQuadTreeNode vtable 0x0129DCD4 slot 14.
 // Callees: SetTLNode @ 0x00A75CA0, SetTRNode @ 0x00A75CE0, SetBLNode @ 0x00A75D20, SetBRNode @ 0x00A75D60 (the PDB order of the
 //          four setters); virtual GetRegion (slot 5), GetNodeType (slot 6), RemoveRegionZero (slot 14) and the scalar deleting
@@ -55,7 +55,9 @@ public:
 
 class CNavQuadTreeNode : public CANavQuadTreeNode {
 public:
+    protected:
     virtual bool RemoveRegionZero();
+    public:
 
 protected:
     void SetTLNode(CANavQuadTreeNode*a0);                       // 0x00A75CA0

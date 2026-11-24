@@ -63,7 +63,7 @@ class CCachedFile : public CAFile { public:
     bool            Opened;                     // +0x24
     bool            BufferValid;                // +0x25
     CCachedFile(const CCachedFile& other);
-    void Copy(const CCachedFile& other);        // 0x00A5B650
+    private: void Copy(const CCachedFile& other); public:        // 0x00A5B650
 };
 
 CCachedFile::CCachedFile(const CCachedFile& other)

@@ -65,10 +65,9 @@ class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01
         return PImp.Data != 0 && PImp.Data->IsAlive();
     }
     virtual void t076();
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AB150 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
     virtual bool IsNull() const                         // slot 77 (+0x134) 0x004AB150
-    {
-        return PImp.Data == 0 || PImp.Data->IsNull();
-    }
+    { CScriptThing* imp = PImp.Data; return imp == 0 || imp->IsNull(); }
     FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
     static CCharString NullString;                      // 0x0143E8EC

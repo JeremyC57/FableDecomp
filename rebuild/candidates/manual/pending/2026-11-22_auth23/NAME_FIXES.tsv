@@ -1,0 +1,2 @@
+address	correct_symbol	evidence_1	evidence_2	wrong_spelling
+006e11f0	?Create@CTCDParticleEmitter@@SIPAVCThing@@JJMABVC3DVector@@_N@Z	rebuild/oracles/reloc_bindings.tsv binds this symbol at 006e11f0	engine/CTCDParticleEmitter.h line 128 (landed declaration, 0x006E11F0); no `CreateScaledEffect` name in Ego_r symbols	CreateScaledEffect (free function in the unlanded 0x00839420 draft r0 / p2; a draft-only spelling, nothing landed to respell)

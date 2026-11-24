@@ -1,0 +1,39 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames)
+0x006d8170	CTCHeroExperience	UpdateAbilitiesForStat	?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z	CTCHeroExperience::UpdateAbilitiesForStat	?UpdateAbilitiesForStat@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@_N@Z	both PDBs AAE (private); HEAD object defines the QAE form (bare Leaf); access only (NF302 Q5)
+0x006d83b0	CTCHeroExperience	OnStatLevelChange	?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z	CTCHeroExperience::OnStatLevelChange	?OnStatLevelChange@CTCHeroExperience@@QAEX_N@Z	both PDBs AAE (private); HEAD object defines the QAE form (no Leaf line); access only (NF302 Q5)
+0x00918880	CAIStateGroup_Gaze	FindFreeGazePos	?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ	CAIStateGroup_Gaze::FindFreeGazePos	?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ	both PDBs IAE (protected); HEAD object defines the QAE form (no Leaf line); access only (NF302 Q5)
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00644179	?IsOpen@CFadeInFadeOutBase@@QAE_NXZ	?IsOpen@CFadeInFadeOutBase@@QBE_NXZ	0x0048da30
+0x006d7cb0	?IsAbilityPotentiallyAvailable@CTCInventoryAbilities@@QAE_NW4EHeroAbility@@@Z	?IsAbilityPotentiallyAvailable@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@@Z	0x005ee02e
+0x006d8b50	?OnStatLevelChange@CTCHeroExperience@@QAEX_N@Z	?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z	0x006d83b0
+0x006d8b50	?UpdateAbilitiesForStat@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@_N@Z	?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z	0x006d8170
+0x006e9d90	?GetCombatTypeDef@CThingCreatureBase@@QBEPAVCCombatTypeDef@@XZ	?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	0x00666d10
+0x006ebee0	?GetCombatTypeDef@CThingCreatureBase@@QAEPAVCCombatTypeDef@@XZ	?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	0x00666d10
+0x00730f90	?Open@CTCDoor@@QAEX_N@Z	?Open@CTCDoor@@IAEX_N@Z	0x00730c00
+0x00788555	?Reset@CTCTrapBase@@QAEXXZ	?Reset@CTCTrapBase@@IAEXXZ	0x00787bf1
+0x0079e3a0	?StopSound@CTCPhysicalShieldSpell@@QAEXK@Z	?StopSound@CTCPhysicalShieldSpell@@IAEXK@Z	0x0079ddb0
+0x00872050	?GetCamTools@CBase@NCameraModes@@QBEABVCTools@2@XZ	?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ	0x0084d080
+0x00892f40	?IsQuestActive@CQuestManager@@QAE_NABVCCharString@@@Z	?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z	0x004af610
+0x008e9080	?GetAnimFromName@CThingCreatureBase@@QBEPBVCAnimationEntry@@ABVCCharString@@J@Z	?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z	0x00662a00
+0x00904ee0	?IsActionListEmpty@CTCScriptedControl@@QAE_NXZ	?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ	0x007122c0
+0x009189c0	?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ	?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ	0x00918880
+0x0094fe30	?AIAction_DoNothing@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@XZ	?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ	0x0097e200
+0x009a06b0	?ExtendData@?$CBasicString@D@@QAEXK@Z	?ExtendData@?$CBasicString@D@@IAEXK@Z	0x009a01c0
+0x00b8ff70	?InvalidateAll@CEngineSceneGridCell@@QAEXXZ	?InvalidateAll@CEngineSceneGridCell@@AAEXXZ	0x00b91710
+0x00bdda80	?ClipSphere@CEngineCamera@@QAE_NABVC3DVector@@MPAK@Z	?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@MPAK@Z	0x00b30480
+0x004b4490	?IsQuestActive@CQuestManager@@QAE_NABVCCharString@@@Z	?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z	0x004af610
+0x0064e019	?IsOpen@CFadeInFadeOutBase@@QAE_NXZ	?IsOpen@CFadeInFadeOutBase@@QBE_NXZ	0x0048da30
+0x006d8ca0	?OnStatLevelChange@CTCHeroExperience_Retail@@QAEX_N@Z	?OnStatLevelChange@CTCHeroExperience_Retail@@AAEX_N@Z	0x006d83b0
+0x006ea2c0	?GetCombatTypeDef@CThingCreatureBase@@QBEPAVCCombatTypeDef@@XZ	?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	0x00666d10
+0x00752640	?GetAnimFromName@CThingCreatureBase@@QBEPBVCAnimationEntry@@ABVCCharString@@J@Z	?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z	0x00662a00
+0x00788555	?IsOpen@CFadeInFadeOutBase@@QAE_NXZ	?IsOpen@CFadeInFadeOutBase@@QBE_NXZ	0x0048da30
+0x007887be	?IsOpen@CFadeInFadeOutBase@@QAE_NXZ	?IsOpen@CFadeInFadeOutBase@@QBE_NXZ	0x0048da30
+0x007887be	?Reset@CTCTrapBase@@QAEXXZ	?Reset@CTCTrapBase@@IAEXXZ	0x00787bf1
+0x00858cc0	?GetCombatTypeDef@CThingCreatureBase@@QAEPAVCCombatTypeDef@@XZ	?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	0x00666d10
+0x00904380	?IsActionListEmpty@CTCScriptedControl@@QAE_NXZ	?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ	0x007122c0
+0x00918900	?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ	?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ	0x00918880
+0x00918ac0	?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ	?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ	0x00918880
+0x00918b50	?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ	?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ	0x00918880
+0x0097ef60	?GetCombatTypeDef@CThingCreatureBase@@QAEPAVCCombatTypeDef@@XZ	?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	0x00666d10
+0x0097f3a0	?GetCombatTypeDef@CThingCreatureBase@@QAEPAVCCombatTypeDef@@XZ	?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ	0x00666d10

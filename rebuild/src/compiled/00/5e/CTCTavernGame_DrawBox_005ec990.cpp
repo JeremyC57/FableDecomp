@@ -1,5 +1,5 @@
 // CTCTavernGame::DrawBox(const CEnginePrimitivePrepareInfo&) -- draws the main-game score box: nine box handles, the box placed and sized from the tavern-game def in render-target units, on layer 0x47
-// Leaf: ?DrawBox@CTCTavernGame
+// Leaf: ?DrawBox@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@@Z
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC990, 177 bytes (`ret 4`). Ego_r.pdb
 // `?DrawBox@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@@Z`.
@@ -80,7 +80,9 @@ class CTCTavernGame { public:
     unsigned char _pad_0x08[0x48];
     CRetailHandleVector BoxHandles;             // +0x50
     void GetDef(CDefPointer<const CTavernGameDef>* out) { ParentThing->PDef->GetSubDef(out); }   // out of line 0x005EA000
+    protected:
     void DrawBox(const CEnginePrimitivePrepareInfo& info);
+    public:
 };
 
 void CTCTavernGame::DrawBox(const CEnginePrimitivePrepareInfo& info)

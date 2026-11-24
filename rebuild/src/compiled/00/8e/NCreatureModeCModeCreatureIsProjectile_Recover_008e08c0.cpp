@@ -16,6 +16,7 @@ class CCreatureActionBase;
 // frame temporary (retail CCombatActionBase is 0x114 bytes; CanBeHit/Flip follow).
 // Shape: the action is an unnamed temporary passed by reference (built, used, destroyed by the implicit derived dtor = the
 // out-of-line base dtor); VC duplicates the RemoveMode tail for the GetInterface miss arm.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -76,13 +77,13 @@ class CTCCreatureModeManager { public:            // interface type 0x31
 class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:   // vtable 0x01271BAC
     bool CanBeHit;                         // +0x114
     bool Flip;                             // +0x115
-    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);   // 0x00867AF0
+    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase& owner, bool flip);   // 0x00867AF0 (Ego_r + FableWin AAV)
 };
 
 class CCombatAction_GenericStrikeResponseKnockdownRecover : public CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:   // vtable 0x0127191C
     virtual void v00();
     CCombatAction_GenericStrikeResponseKnockdownRecover(CThingCreatureBase* owner, bool flip)
-        : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, flip)
+        : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(*owner, flip)
     {
     }
 };

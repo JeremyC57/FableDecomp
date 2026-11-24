@@ -1,0 +1,8 @@
+# 006928b0: defined / undefined external symbols, HEAD (<) v NF259 (>)
+1,2c1,3
+< DEF ?CCreatureActionBase_CanAnimationTransitionOut@@YI_NPAVCCreatureActionBase@@@Z
+< UND ?cat_probe@@YIHPAVCAnimationEntry@@@Z
+---
+> DEF ??C?$CCountedPointer@VCAnimationEntry@@@@QBEPAVCAnimationEntry@@XZ
+> DEF ?CanAnimationTransitionOut@CCreatureActionBase@@MBE_NXZ
+> UND ?GetFlags@CAnimationEntry@@QBEJXZ

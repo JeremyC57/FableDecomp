@@ -1,5 +1,5 @@
 // CEnginePrimitiveManagerOcclusionBase::IsClippedByNearPlane(const CMatrix3x4& box) -- map the eight corners of the unit cube through the box transform into camera space and report whether any corner lies in front of the near clip distance
-// Leaf: IsClippedByNearPlane
+// Leaf: ?IsClippedByNearPlane@CEnginePrimitiveManagerOcclusionBase@@ABE_NABVCMatrix3x4@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B900B0, length 448 bytes (body 0x1be + int3 padding), `ret 4` (`this` unused).
 // Globals: the engine camera @ 0x01436EA0 (NoScaleViewTransform CMatrix3x4 at +0x114, NearClip at +0x6c = CameraDesc +0x58).
@@ -43,10 +43,12 @@ class CEngineCamera { public:
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
 struct CEnginePrimitiveManagerOcclusionBase {
-    bool IsClippedByNearPlane(const CMatrix3x4& box);
+    private:
+    bool IsClippedByNearPlane(const CMatrix3x4& box) const;
+    public:
 };
 
-bool CEnginePrimitiveManagerOcclusionBase::IsClippedByNearPlane(const CMatrix3x4& box)
+bool CEnginePrimitiveManagerOcclusionBase::IsClippedByNearPlane(const CMatrix3x4& box) const
 {
     C3DVector corners[8] = {
         C3DVector(-1.0f, -1.0f, -1.0f), C3DVector(-1.0f, -1.0f, 1.0f), C3DVector(-1.0f, 1.0f, -1.0f), C3DVector(-1.0f, 1.0f, 1.0f),

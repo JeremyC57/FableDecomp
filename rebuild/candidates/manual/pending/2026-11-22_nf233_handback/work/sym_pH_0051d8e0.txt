@@ -1,0 +1,11 @@
+DEF ??0CGameComponent@@QAE@PAVCGame@@@Z
+DEF ??0CGameListener@@QAE@XZ
+DEF ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+DEF ??_7CGameComponent@@6BCGameListener@@@
+DEF ??_7CGameListener@@6B@
+DEF ??_GCGameComponent@@UAEPAXI@Z
+UND ??0CBaseClassNonCopyable@@IAE@XZ
+UND ??1CBaseClassNonCopyable@@MAE@XZ
+UND ??3@YAXPAX@Z
+UND ??_GCGameComponent@@UAEPAXI@Z
+UND ?v00@CGameListener@@UAEXXZ

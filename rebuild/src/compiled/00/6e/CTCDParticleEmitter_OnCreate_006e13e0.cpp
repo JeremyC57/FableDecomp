@@ -79,7 +79,10 @@ class CTCDParticleEmitter { public:
     bool AttachedToCamera : 1;
     bool Moving : 1;
     void ClearAttachments();                    // 0x006E0AF0
-    void SetPEmitter(NParticleEngine::CParticleEmitter* emitter);   // 0x006E1080
+    private:
+    void SetPEmitter(NParticleEngine::CParticleEmitter* emitter);
+    public:
+   // 0x006E1080
     void OnCreate();
 };
 

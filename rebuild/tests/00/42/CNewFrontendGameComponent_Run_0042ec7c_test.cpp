@@ -39,7 +39,7 @@ static CBankFileManager GBankFileManager;
 static bool g_bRuntimeLevelFiles = true;
 static bool g_bFrontEndFlag_01375448 = true;
 static bool g_bFrontEndFlag_137544A = true;
-static void* g_pRetiredGameComponent = 0;
+static void* GOldGameComponentToDelete = 0;
 
 struct CFrontEnd {
     bool WindowsMediaPlayerInstalled;
@@ -142,12 +142,12 @@ struct CFrontEnd {
                 GBankFileManager.OpenRetailBank("misc\\", platform, "effects.big", false);
             }
             Log("game");
-            g_pRetiredGameComponent = this;
+            GOldGameComponentToDelete = this;
             return 2;
         } else {
             result = 0;
         }
-        g_pRetiredGameComponent = this;
+        GOldGameComponentToDelete = this;
         return result;
     }
 };
@@ -162,7 +162,7 @@ int main()
     fe.CreateGame = true; fe.updates_before_quit = 6;   // three movie checks, then three frames
     int r = fe.Run();
     if (r != 2 || fe.WindowsMediaPlayerInstalled || std::strcmp(fe.MediaPlayerErrorString, "no wmp") != 0 || fe.ClearColour != 0xFF000000u
-        || fe.SkipOnAnyButton || fe.Running || !fe.Quit || g_bFrontEndFlag_01375448 || g_pRetiredGameComponent != &fe)
+        || fe.SkipOnAnyButton || fe.Running || !fe.Quit || g_bFrontEndFlag_01375448 || GOldGameComponentToDelete != &fe)
         return Fail();
     if (std::strcmp(fe.preloaded, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz()") != 0 || fe.attract_movies != 1)
         return Fail();
@@ -175,17 +175,17 @@ int main()
     if (std::strcmp(g_log, expect1) != 0) { std::printf("%s\n", g_log); return Fail(); }
 
     // 2. movies skipped (flag cleared by run 1), no runtime level files, developer front end.
-    g_log[0] = 0; g_played = 0; g_fail_movie = -1; g_bRuntimeLevelFiles = false; g_pRetiredGameComponent = 0;
+    g_log[0] = 0; g_played = 0; g_fail_movie = -1; g_bRuntimeLevelFiles = false; GOldGameComponentToDelete = 0;
     CFrontEnd dev;
     dev.CreateDevFrontEnd = true; dev.updates_before_quit = 1; dev.language = 17;
-    if (dev.Run() != 1 || g_played != 0 || std::strcmp(g_log, "dev;") != 0 || g_pRetiredGameComponent != &dev || !dev.WindowsMediaPlayerInstalled)
+    if (dev.Run() != 1 || g_played != 0 || std::strcmp(g_log, "dev;") != 0 || GOldGameComponentToDelete != &dev || !dev.WindowsMediaPlayerInstalled)
         return Fail();
 
     // 3. quit during the first movie: returns false before any bank is opened and before the component retires.
-    g_log[0] = 0; g_played = 0; g_bFrontEndFlag_01375448 = true; g_bRuntimeLevelFiles = true; g_pRetiredGameComponent = 0;
+    g_log[0] = 0; g_played = 0; g_bFrontEndFlag_01375448 = true; g_bRuntimeLevelFiles = true; GOldGameComponentToDelete = 0;
     CFrontEnd quit;
     quit.updates_before_quit = 0;
-    if (quit.Run() != 0 || g_played != 1 || std::strcmp(g_log, "Data\\Video\\lionhead_logo.xmv;") != 0 || g_pRetiredGameComponent != 0
+    if (quit.Run() != 0 || g_played != 1 || std::strcmp(g_log, "Data\\Video\\lionhead_logo.xmv;") != 0 || GOldGameComponentToDelete != 0
         || quit.Running)
         return Fail();
 
@@ -193,7 +193,7 @@ int main()
     g_log[0] = 0; g_played = 0; g_bFrontEndFlag_01375448 = false;
     CFrontEnd plain;
     plain.language = 4; plain.elapsed_per_frame = 130.0f;   // movies skipped: three frames, an attract movie each
-    if (plain.Run() != 0 || g_pRetiredGameComponent != &plain || plain.attract_movies != 3
+    if (plain.Run() != 0 || GOldGameComponentToDelete != &plain || plain.attract_movies != 3
         || std::strstr(g_log, "attractEnglish.wmv") == 0 || std::strstr(g_log, "close") != 0)
         return Fail();
 

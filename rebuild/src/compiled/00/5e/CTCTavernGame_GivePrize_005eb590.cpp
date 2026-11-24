@@ -11,7 +11,7 @@
 //   0x00BFEA0E (the creature list's header), CBaseIntelligentPointer::GetPItem 0x00A01B50 (CTCOwnedEntity::GetPOwner),
 //   CTCPhysicsBase::GetBoundingInfo 0x006AF640, CTCBase::PeekThingSearchTools 0x00686D90, CThingSearchTools::GetAllThings
 //   <CThingAICreature, list<CThingAICreature*>, CThingFilter_OverlappingCircle> 0x005ED7D0 (same-TU body), CTCHeroOpinionDeedLog::PostDeed
-//   0x006C6990, ~list<CThingAICreature*> 0x004AB4F0 (out of line); the def's release (slot 1). Data: "" 0x0122D70E.
+//   0x006C6990, ~_List_base<CThingAICreature*> 0x004AB4F0 (out of line); the def's release (slot 1). Data: "" 0x0122D70E.
 // Lever (chunk 1011b, c2prio): the player manager is a named reference (`const CPlayerManager& player_manager = PeekPlayerManager();`).
 //   The named call result adds one candidate to the prize block (K 8 -> 9), so `player` and `prize` (prio 36, keys 95 / 58) are
 //   coloured before `hero` (36, key 5): both take esi, and the def pointer's piece, which overlaps the prize, takes edi -- retail's
@@ -47,7 +47,10 @@
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY
 #define FABLE_RETAIL_STLP_LIST
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF246 (2026-11-22, the 0x004AB4F0 family, nf243 NOTES section 2): FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE (a noinline `~list() {}`,
+//   so the leaf called ~list and bound it at 0x004AB4F0) -> FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE (NF241's swap): ~list
+//   inline, the leaf calls ~_List_base<CThingAICreature*> 0x004AB4F0 out of line, as retail (the 5-byte ~list jmp is 0x004AC080).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_CPLAYERMANAGER
 #define FABLE_RETAIL_CGAMECOMPONENT

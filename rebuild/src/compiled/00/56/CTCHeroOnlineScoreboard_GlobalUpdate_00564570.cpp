@@ -48,16 +48,19 @@ public:
     long           ScoreboardState;                  // +0x50
 
     void ShowScoreboard();                           // 0x00563130
-    ENetworkSuccess LogOnToRegistrationServer(CCharString& message);   // 0x00560D00
+    private: ENetworkSuccess LogOnToRegistrationServer(CCharString& message); public:   // 0x00560D00
     void AbortWithMessage(const CCharString& textSymbol);              // 0x00563410
     ENetworkSuccess UploadPlayerScores();            // 0x00561450
     ENetworkSuccess DownloadListOfMyClans();         // 0x005615C0
     ENetworkSuccess DownloadMyClansLogos();          // 0x00561980
-    void ChooseAClan();                              // 0x0055FEC0
+    private:
+    void ChooseAClan();
+    public:
+                              // 0x0055FEC0
     ENetworkSuccess DownloadMemberListForSelectedClan();   // 0x00561DC0
     ENetworkSuccess DownloadLogosForThisClansMembers();    // 0x005621B0
-    ENetworkSuccess DownloadScoreboardForSelectedClan();   // 0x00563480
-    void DisplayScoreboardGUI();                     // 0x00563920
+    private: ENetworkSuccess DownloadScoreboardForSelectedClan(); public:   // 0x00563480
+    private: void DisplayScoreboardGUI(); public:                     // 0x00563920
     virtual void GlobalUpdate(bool paused);
 };
 

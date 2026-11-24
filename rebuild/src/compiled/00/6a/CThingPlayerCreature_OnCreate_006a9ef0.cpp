@@ -1,5 +1,5 @@
 // CThingPlayerCreature::OnCreate() -- creature-base create; mark the hero level/game-state persistent, record the initial position, set up the movement speeds and reset every control/movement/collision vector, name the script thing, take the hero-combat def and look up the player-movement def; validate, then create the default weapons when the def names a melee weapon
-// Leaf: ?OnCreate@CThingPlayerCreature
+// Leaf: ?OnCreate@CThingPlayerCreature@@MAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A9EF0, length 528 bytes, `ret`, bool in al. Vtable 0x012457FC slot 8
 //   (the catalog's "CThingCreatureBase::OnCreateHero" is a propagated label).
 // Callees: CThingCreatureBase::OnCreate @ 0x00666310, CThing::SetAsGameStatePersisted(bool) @ 0x004C7880,
@@ -100,6 +100,8 @@ extern long g_HeroCreationState;                        // 0x0137F940
 
 class CThing
 {
+protected:
+    virtual ~CThing();                    // vptr at +0 (both PDBs: ??1CThing@@MAE@XZ, protected virtual)
 public:
     void SetAsGameStatePersisted(bool);   // 0x004C7880
 };
@@ -114,7 +116,6 @@ public:
 };
 
 class CThingCreatureBase : public CThingGameObject { public:
-    void* __vftable;
     unsigned char _pad04[0x74 - 0x04];
     CCharString ScriptName;                             // +0x74
     unsigned char _pad78[0x92 - 0x78];
@@ -131,8 +132,12 @@ class CThingCreatureBase : public CThingGameObject { public:
     CDefinitionManager* GetDefinitionManager();         // 0x004C7990 (CThing)
     bool ValidateInitialisation();                      // 0x006A4D60 (CThingPhysical)
     CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;   // 0x00663340 (Ego_r.pdb)
-    void CreateDefaultWeapons();                        // 0x00664680
-    bool OnCreate();                                    // 0x00666310
+    protected:
+    void CreateDefaultWeapons();
+    public:
+                        // 0x00664680
+protected:
+    virtual bool OnCreate();                                    // 0x00666310 (protected virtual: FableWin / Ego_r ?OnCreate@CThingCreatureBase@@MAE_NXZ)
 };
 class CThingPlayerCreature : public CThingCreatureBase { public:
     C3DVector ControlMoveByVector;                      // +0x16c
@@ -153,7 +158,8 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
     C3DVector ImpulseVelocity;                          // +0x1f0
     float LeanAngle;                                    // +0x1fc
     void InitialiseMovementSpeeds();                    // 0x006A9A00
-    bool OnCreate();
+protected:
+    virtual bool OnCreate();            // protected virtual (both PDBs: MAE)
 };
 
 bool CThingPlayerCreature::OnCreate()

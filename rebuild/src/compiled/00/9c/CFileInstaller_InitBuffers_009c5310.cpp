@@ -1,3 +1,4 @@
+// Leaf: ?InitBuffers@CFileInstaller@@IAEXKK@Z
 // CFileInstaller::InitBuffers(unsigned long chunkSize, unsigned long chunkCount) -- record the chunk size/count (+0x64/+0x68), free the old buffers, size the BufferChunks array, allocate every chunk's memory from the global allocator, mark them all available, and GlobalAlloc the read and write buffers
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C5310, length 139 bytes (+ int3 padding).
 // Callees: CFileInstaller::FreeBuffers @ 0x009C5110 (landed; catalog label "~CPatchTesselationEdgeStrip" is propagated),
@@ -47,7 +48,9 @@ class CFileInstaller { public:
     unsigned long          BufferChunkSize;        // +0x64
     unsigned long          NoBufferChunks;         // +0x68
     void FreeBuffers();                            // 0x009C5110
+    protected:
     void InitBuffers(unsigned long chunkSize, unsigned long chunkCount);
+    public:
 };
 
 void CFileInstaller::InitBuffers(unsigned long chunkSize, unsigned long chunkCount)

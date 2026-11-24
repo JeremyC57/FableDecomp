@@ -1,0 +1,141 @@
+# ?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z: 2118 sorts, 2757 comparator calls
+ 3046 b L159   op278  [0]v[1] B1 count 0001a500 00000001 X=1320   Y=None   rule -  s1320:_j | c1
+ 7269 a L159   op278  [0]v[1] B1 need  0207f068 00020549 X=None   Y=None   rule -  s1321:_i c10 s1320:_j c4 | s1323:_result
+ 7279 a L159   op278  [0]v[1] B1 hash  0102a570 0102a538 X=None   Y=None   rule -  s1321:_i c10 | s1320:_j c4
+ 7279 a L159   op278  [0]v[2] B1 need  0102a570 00000004 X=None   Y=None   rule -  s1321:_i c10 | c4
+ 7279 a L159   op278  [1]v[2] B1 need  0102a538 00000004 X=None   Y=None   rule -  s1320:_j c4 | c4
+ 7500 a L159   op278  [0]v[1] B1 need  0207f068 00020549 X=None   Y=None   rule -  s1321:_i c10 s1320:_j c4 | s1323:_result
+ 7510 a L159   op278  [0]v[1] B1 hash  0102a570 0102a538 X=None   Y=None   rule -  s1321:_i c10 | s1320:_j c4
+ 7510 a L159   op278  [0]v[2] B1 need  0102a570 00000008 X=None   Y=None   rule -  s1321:_i c10 | c8
+ 7510 a L159   op278  [1]v[2] B1 need  0102a538 00000008 X=None   Y=None   rule -  s1320:_j c4 | c8
+ 7689 a L159   op27a  [0]v[1] B1 count 0001a520 00000010 X=1321   Y=None   rule -  s1321:_i | c10
+ 7741 a L159   op278  [0]v[1] B1 hash  0102a570 0102a538 X=None   Y=None   rule -  s1321:_i c10 | s1320:_j c4
+ 7741 a L159   op278  [0]v[2] B1 need  0102a570 0000000c X=None   Y=None   rule -  s1321:_i c10 | cc
+ 7741 a L159   op278  [1]v[2] B1 need  0102a538 0000000c X=None   Y=None   rule -  s1320:_j c4 | cc
+18944 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+18945 b L159   op278  [0]v[1] B1 need  0102a538 000101b3 X=None   Y=435    rule -  s1320:_j c4 | s435:_perspective_transform
+18949 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+18950 b L159   op278  [0]v[1] B1 need  0102a538 00010803 X=None   Y=2051   rule -  s1320:_j c4 | s2051
+18951 b L159   op27a  [0]v[1] B1 count 0001a520 00000010 X=1321   Y=None   rule -  s1321:_i | c10
+18954 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+18955 b L159   op278  [0]v[1] B1 need  0102a538 000107fb X=None   Y=2043   rule -  s1320:_j c4 | s2043
+18959 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+18960 b L159   op278  [0]v[1] B1 need  0102a538 000107f3 X=None   Y=2035   rule -  s1320:_j c4 | s2035
+18964 b L159   op278  [0]v[1] B1 hash  020bf93e 020b204a X=None   Y=None   rule -  t482=> t484=> | t1367=> t1364=>
+18964 b L159   op278  [2]v[3] B1 hash  020b2032 020b201a X=None   Y=None   rule -  t1359=> t1356=> | t1351=> t478=>
+18964 b L159   op278  [0]v[2] B1 hash  020bf93e 020b2032 X=None   Y=None   rule -  t482=> t484=> | t1359=> t1356=>
+18964 b L159   op278  [1]v[2] B1 hash  020b204a 020b2032 X=None   Y=None   rule -  t1367=> t1364=> | t1359=> t1356=>
+18966 b L159   op278  [0]v[1] B1 need  0102a558 0001a500 X=None   Y=1320   rule -  s1321:_i c4 | s1320:_j
+18967 b L159   op27a  [0]v[1] B1 need  0104ef86 00000004 X=None   Y=None   rule -  s1321:_i c4 s1320:_j | c4
+18973 a L159   op27a  [0]v[1] B1 need  0102a530 00000004 X=None   Y=None   rule -  s1320:_j c1 | c4
+19008 a L159   op27a  [0]v[1] B1 need  0102a530 00000004 X=None   Y=None   rule -  s1320:_j c1 | c4
+19043 a L159   op27a  [0]v[1] B1 need  0102a530 00000004 X=None   Y=None   rule -  s1320:_j c1 | c4
+19078 a L159   op27a  [0]v[1] B1 need  0102a530 00000004 X=None   Y=None   rule -  s1320:_j c1 | c4
+19084 a L159   op278  [0]v[1] B1 need  0102a538 00000004 X=None   Y=None   rule -  s1320:_j c4 | c4
+19237 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19238 b L159   op278  [0]v[1] B1 need  0102a538 00010805 X=None   Y=2053   rule -  s1320:_j c4 | s2053
+19240 b L159   op278  [0]v[1] B1 need  0102a570 000107c9 X=None   Y=1993   rule -  s1321:_i c10 | s1993
+19241 b L159   op27a  [0]v[1] B1 hash  0105b58a 0105b54a X=None   Y=None   rule -  t2642=> | t2644=>
+19242 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19243 b L159   op278  [0]v[1] B1 need  0102a538 000107fd X=None   Y=2045   rule -  s1320:_j c4 | s2045
+19245 b L159   op278  [0]v[1] B1 need  0102a570 000107c7 X=None   Y=1991   rule -  s1321:_i c10 | s1991
+19246 b L159   op27a  [0]v[1] B1 hash  0105b57a 0105b546 X=None   Y=None   rule -  t2650=> | t2652=>
+19247 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19248 b L159   op278  [0]v[1] B1 need  0102a538 000107f5 X=None   Y=2037   rule -  s1320:_j c4 | s2037
+19252 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19253 b L159   op278  [0]v[1] B1 need  0102a538 000107ed X=None   Y=2029   rule -  s1320:_j c4 | s2029
+19254 b L159   op27a  [0]v[1] B1 count 0001a520 00000010 X=1321   Y=None   rule -  s1321:_i | c10
+19255 b L159   op278  [0]v[1] B1 need  0102a570 0001012e X=None   Y=302    rule -  s1321:_i c10 | s302
+19257 b L159   op278  [0]v[1] B1 hash  020b204e 020b2036 X=None   Y=None   rule -  t2642=> t2644=> | t2650=> t2652=>
+19257 b L159   op278  [2]v[3] B1 hash  020b201e 020b05b2 X=None   Y=None   rule -  t2658=> t2660=> | t2635=> t2637=>
+19257 b L159   op278  [0]v[2] B1 hash  020b204e 020b201e X=None   Y=None   rule -  t2642=> t2644=> | t2658=> t2660=>
+19257 b L159   op278  [1]v[2] B1 hash  020b2036 020b201e X=None   Y=None   rule -  t2650=> t2652=> | t2658=> t2660=>
+19259 b L159   op278  [0]v[1] B1 need  0102a558 0001a500 X=None   Y=1320   rule -  s1321:_i c4 | s1320:_j
+19261 b L159   op278  [0]v[1] B1 need  0105efbe 0001085c X=None   Y=2140   rule -  s1321:_i c4 s1320:_j c4 | s2140
+19266 a L159   op27a  [0]v[1] B1 need  0102a532 00000004 X=None   Y=None   rule -  s1320:_j c2 | c4
+19301 a L159   op27a  [0]v[1] B1 need  0102a532 00000004 X=None   Y=None   rule -  s1320:_j c2 | c4
+19336 a L159   op27a  [0]v[1] B1 need  0102a532 00000004 X=None   Y=None   rule -  s1320:_j c2 | c4
+19371 a L159   op27a  [0]v[1] B1 need  0102a532 00000004 X=None   Y=None   rule -  s1320:_j c2 | c4
+19377 a L159   op278  [0]v[1] B1 need  0102a538 00000008 X=None   Y=None   rule -  s1320:_j c4 | c8
+19530 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19531 b L159   op278  [0]v[1] B1 need  0102a538 00010807 X=None   Y=2055   rule -  s1320:_j c4 | s2055
+19534 b L159   op27a  [0]v[1] B1 hash  0105b58e 0105b54a X=None   Y=None   rule -  t2729=> | t2731=>
+19535 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19536 b L159   op278  [0]v[1] B1 need  0102a538 000107ff X=None   Y=2047   rule -  s1320:_j c4 | s2047
+19540 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19541 b L159   op278  [0]v[1] B1 need  0102a538 000107f7 X=None   Y=2039   rule -  s1320:_j c4 | s2039
+19543 b L159   op278  [0]v[1] B1 need  0102a570 000107c5 X=None   Y=1989   rule -  s1321:_i c10 | s1989
+19544 b L159   op27a  [0]v[1] B1 hash  0105b56e 0105b542 X=None   Y=None   rule -  t2745=> | t2747=>
+19545 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19546 b L159   op278  [0]v[1] B1 need  0102a538 000107ef X=None   Y=2031   rule -  s1320:_j c4 | s2031
+19548 b L159   op278  [0]v[1] B1 need  0102a570 0001012e X=None   Y=302    rule -  s1321:_i c10 | s302
+19549 b L159   op27a  [0]v[1] B1 hash  0105b55e 0105a814 X=None   Y=None   rule -  t2724=> | t2723=>
+19550 b L159   op278  [0]v[1] B1 hash  020b2052 020b203a X=None   Y=None   rule -  t2729=> t2731=> | t2737=> t2739=>
+19550 b L159   op278  [2]v[3] B1 hash  020b2022 020b05b6 X=None   Y=None   rule -  t2745=> t2747=> | t2724=> t2723=>
+19550 b L159   op278  [0]v[2] B1 hash  020b2052 020b2022 X=None   Y=None   rule -  t2729=> t2731=> | t2745=> t2747=>
+19550 b L159   op278  [1]v[2] B1 hash  020b203a 020b2022 X=None   Y=None   rule -  t2737=> t2739=> | t2745=> t2747=>
+19551 b L159   op27a  [0]v[1] B1 count 0001a520 00000004 X=1321   Y=None   rule -  s1321:_i | c4
+19552 b L159   op278  [0]v[1] B1 need  0102a558 0001a500 X=None   Y=1320   rule -  s1321:_i c4 | s1320:_j
+19559 a L159   op27a  [0]v[1] B1 need  0102a534 00000004 X=None   Y=None   rule -  s1320:_j c3 | c4
+19594 a L159   op27a  [0]v[1] B1 need  0102a534 00000004 X=None   Y=None   rule -  s1320:_j c3 | c4
+19629 a L159   op27a  [0]v[1] B1 need  0102a534 00000004 X=None   Y=None   rule -  s1320:_j c3 | c4
+19664 a L159   op27a  [0]v[1] B1 need  0102a534 00000004 X=None   Y=None   rule -  s1320:_j c3 | c4
+19670 a L159   op278  [0]v[1] B1 need  0102a538 0000000c X=None   Y=None   rule -  s1320:_j c4 | cc
+19701 a L159   op27a  [0]v[1] B1 need  0104ef92 00000004 X=None   Y=None   rule -  s1321:_i c4 s1320:_j c3 | c4
+19823 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19824 b L159   op278  [0]v[1] B1 need  0102a538 00010809 X=None   Y=2057   rule -  s1320:_j c4 | s2057
+19828 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19829 b L159   op278  [0]v[1] B1 need  0102a538 00010801 X=None   Y=2049   rule -  s1320:_j c4 | s2049
+19830 b L159   op27a  [0]v[1] B1 count 0001a520 00000010 X=1321   Y=None   rule -  s1321:_i | c10
+19832 b L159   op27a  [0]v[1] B1 hash  0105b582 0105b546 X=None   Y=None   rule -  t2824=> | t2826=>
+19833 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19834 b L159   op278  [0]v[1] B1 need  0102a538 000107f9 X=None   Y=2041   rule -  s1320:_j c4 | s2041
+19838 b L159   op27a  [0]v[1] B1 count 0001a500 00000004 X=1320   Y=None   rule -  s1320:_j | c4
+19839 b L159   op278  [0]v[1] B1 need  0102a538 000107f1 X=None   Y=2033   rule -  s1320:_j c4 | s2033
+19840 b L159   op27a  [0]v[1] B1 count 0001a520 00000010 X=1321   Y=None   rule -  s1321:_i | c10
+19842 b L159   op27a  [0]v[1] B1 hash  0105b562 0105a814 X=None   Y=None   rule -  t2811=> | t2810=>
+19843 b L159   op278  [0]v[1] B1 hash  020b2056 020b203e X=None   Y=None   rule -  t2816=> t2818=> | t2824=> t2826=>
+19843 b L159   op278  [2]v[3] B1 hash  020b2026 020b05ba X=None   Y=None   rule -  t2832=> t2834=> | t2811=> t2810=>
+19843 b L159   op278  [0]v[2] B1 hash  020b2056 020b2026 X=None   Y=None   rule -  t2816=> t2818=> | t2832=> t2834=>
+19843 b L159   op278  [1]v[2] B1 hash  020b203e 020b2026 X=None   Y=None   rule -  t2824=> t2826=> | t2832=> t2834=>
+19845 b L159   op278  [0]v[1] B1 need  0102a558 0001a500 X=None   Y=1320   rule -  s1321:_i c4 | s1320:_j
+19862 b L159   op278  [0]v[1] B1 count 0001a520 00000001 X=1321   Y=None   rule -  s1321:_i | c1
+28799 a L159   op278  [0]v[1] B1 need  010500f7 00000001 X=None   Y=None   rule -  c1 c1 c4 c1 c1 | c1
+28855 a L159   op278  [0]v[1] B0 count 0001052b 0002087a X=1323   Y=None   rule -  s1323:_result | s2140
+28859 a L159   op278  [0]v[1] B0 count 0001085e 0002087a X=2142   Y=None   rule -  s2142 | s2140
+28861 a L159   op278  [0]v[1] B0 count 000107c9 000207e5 X=1993   Y=None   rule -  s1993 | s1991
+28866 a L159   op278  [0]v[1] B0 count 0001012e 000207e5 X=302    Y=None   rule -  s302 | s1991
+31962 a L159   op278  [0]v[1] B1 count 00015400 00000007 X=9552   Y=None   rule -  t9552 | cfffffff8
+31967 b L159   op278  [0]v[1] B1 count 00015400 00000004 X=9552   Y=None   rule -  t9552 | c4
+31972 b L159   op27a  [0]v[1] B1 count 00010008 00000000 X=*9652  Y=None   rule -  t9652 | 
+31977 b L159   op27a  [0]v[1] B1 count 00010008 00000000 X=*9552  Y=None   rule -  t9552 | 
+31980 a L159   op278  [0]v[1] B1 count 00015400 00000003 X=9552   Y=None   rule -  t9552 | cfffffffc
+31985 b L159   op27a  [0]v[1] B1 count 00010008 00000000 X=*9656  Y=None   rule -  t9656 | 
+31988 a L159   op278  [0]v[1] B1 count 000167c0 00000003 X=9631   Y=None   rule -  t9631 | cfffffffc
+32008 b L159   op27a  [0]v[1] B1 hash  00013640 00010008 X=434    Y=*9660  rule -  s434:_frustrum_reduction_factor | t9660
+32009 b L159   op278  [0]v[1] B1 need  01033680 00017200 X=None   Y=9672   rule -  s434:_frustrum_reduction_factor t9660 | t9672
+32009 b L159   op278  [2]v[3] B1 hash  00017080 00015900 X=9666   Y=9572   rule 1  t9666 | t9572
+32009 b L159   op278  [0]v[2] B1 need  01033680 00017080 X=None   Y=9666   rule -  s434:_frustrum_reduction_factor t9660 | t9666
+32009 b L159   op278  [1]v[2] B1 hash  00017200 00017080 X=9672   Y=9666   rule 1  t9672 | t9666
+32014 b L159   op27a  [0]v[1] B1 count 00010008 00000000 X=*9660  Y=None   rule -  t9660 | 
+32034 b L159   op27a  [0]v[1] B1 hash  00013640 00010008 X=434    Y=*9656  rule -  s434:_frustrum_reduction_factor | t9656
+32035 b L159   op278  [0]v[1] B1 need  01033680 000174c0 X=None   Y=9683   rule -  s434:_frustrum_reduction_factor t9656 | t9683
+32035 b L159   op278  [2]v[3] B1 hash  00017080 00015900 X=9666   Y=9572   rule 1  t9666 | t9572
+32035 b L159   op278  [0]v[2] B1 need  01033680 00017080 X=None   Y=9666   rule -  s434:_frustrum_reduction_factor t9656 | t9666
+32035 b L159   op278  [1]v[2] B1 hash  000174c0 00017080 X=9683   Y=9666   rule 1  t9683 | t9666
+32059 b L159   op27a  [0]v[1] B1 hash  00013640 00010008 X=434    Y=*9552  rule -  s434:_frustrum_reduction_factor | t9552
+32060 b L159   op278  [0]v[1] B1 need  01033680 000174c0 X=None   Y=9683   rule -  s434:_frustrum_reduction_factor t9552 | t9683
+32060 b L159   op278  [2]v[3] B1 hash  00017200 00017080 X=9672   Y=9666   rule 1  t9672 | t9666
+32060 b L159   op278  [0]v[2] B1 need  01033680 00017200 X=None   Y=9672   rule -  s434:_frustrum_reduction_factor t9552 | t9672
+32060 b L159   op278  [1]v[2] B1 hash  000174c0 00017200 X=9683   Y=9672   rule 1  t9683 | t9672
+32061 b L159   op278  [0]v[1] B1 count 000167c0 00000004 X=9631   Y=None   rule -  t9631 | c4
+32073 a L159   op27a  [0]v[1] B1 count 00010008 00000000 X=*9656  Y=None   rule -  t9656 | 
+32093 b L159   op27a  [0]v[1] B1 hash  00013440 00010008 X=418    Y=*9652  rule -  s418:_perspective_shift | t9652
+32094 b L159   op278  [0]v[1] B1 need  01033480 000174c0 X=None   Y=9683   rule -  s418:_perspective_shift t9652 | t9683
+32094 b L159   op278  [2]v[3] B1 hash  00015900 00010008 X=9572   Y=*9656  rule -  t9572 | t9656
+32094 b L159   op278  [0]v[2] B1 need  01033480 00015900 X=None   Y=9572   rule -  s418:_perspective_shift t9652 | t9572
+32094 b L159   op278  [1]v[2] B1 hash  000174c0 00015900 X=9683   Y=9572   rule 1  t9683 | t9572
+32095 b L159   op278  [0]v[1] B1 count 000167c0 00000008 X=9631   Y=None   rule -  t9631 | c8
+34280 a L159   op278  [0]v[1] B0 hash  00000000 00000010 X=None   Y=None   rule -  c0 | c10
+34281 a L159   op278  [0]v[1] B0 hash  00000000 00000010 X=None   Y=None   rule -  c0 | c10
+34282 a L159   op278  [0]v[1] B0 count 00000000 0001001f X=None   Y=None   rule -  c0 | c1

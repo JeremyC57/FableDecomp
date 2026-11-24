@@ -1,5 +1,5 @@
 // CAnimateThing::GetProgressFromAlpha(float alpha, float totalAlpha) const -- the fraction alpha / totalAlpha while the total lies in [epsilon, 1 + epsilon], else 1
-// Leaf: GetProgressFromAlpha
+// Leaf: ?GetProgressFromAlpha@CAnimateThing@@ABEMMM@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070BE40, length 58 bytes (+ int3 padding). __fastcall (`this` unused), `ret 8`,
 //         result on the FPU stack. Ego_r.pdb: `?GetProgressFromAlpha@CAnimateThing@@ABEMMM@Z` (private const).
@@ -14,7 +14,9 @@ extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 class CAnimateThing {
 public:
+    private:
     float GetProgressFromAlpha(float alpha, float totalAlpha) const;
+    public:
 };
 
 float CAnimateThing::GetProgressFromAlpha(float alpha, float totalAlpha) const

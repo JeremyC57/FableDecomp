@@ -21,7 +21,7 @@ class CInputEvent { public:
 };
 class CInputManager { public:
     bool IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent& event) const;   // 0x009F50A0 (Ego_r.pdb const, reference)
-    void RemoveEventFromQueue(CInputEvent* event);                                          // 0x009F4F70
+    void RemoveEventFromQueue(const CInputEvent& event);                                          // 0x009F4F70
 };
 namespace NUISystem {
 class CManager { public:
@@ -44,7 +44,7 @@ bool CManager::IsKeyHeld(EUsedKeys key)
         CInputManager* input = m_pInputManager;
         event.m_state = 2;
         bool held = input->IsKeyboardEventInQueue(EIET_KEY_DOWN, (EInputKey)m_keyMap[key], event);
-        m_pInputManager->RemoveEventFromQueue(&event);
+        m_pInputManager->RemoveEventFromQueue(event);
         return held;
     }
     return false;

@@ -1,3 +1,4 @@
+// Leaf: ?IsAnyQuestActive@CQuestManager@@QBE_NXZ
 // CQuestManager::IsAnyQuestActive() -- true when an active quest card's quest component holds a non-vignette quest definition and no quest number has been assigned yet (field +0x14 negative)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B1080, length 143 bytes (padded to 144).
@@ -80,9 +81,9 @@ FABLE_FORCEINLINE CTCQuestCard* GetQuestCard(CBaseObject* thing)
 class CQuestManager { public:
     unsigned char _pad_0x00[0x5c];
     CCardNode*    ActiveQuestCards;                // +0x5c
-    bool IsAnyQuestActive();
+    bool IsAnyQuestActive() const;
 };
-bool CQuestManager::IsAnyQuestActive()
+bool CQuestManager::IsAnyQuestActive() const
 {
     for (CCardNode* node = ActiveQuestCards->next; node != ActiveQuestCards; node = node->next) {
         CTCQuestCard* card = GetQuestCard(node->value.GetPItem());

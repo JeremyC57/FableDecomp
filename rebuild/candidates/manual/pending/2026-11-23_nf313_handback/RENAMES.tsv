@@ -1,0 +1,25 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames)
+0x0097e330	CAIStateGroupBase	SetPushableByHero	?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z	CAIStateGroupBase::SetPushableByHero	?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z	both PDBs IAE (tools/pdbq.sh); HEAD object defines QAE (no Leaf line); access only (NF302 Q5 / NF304 Q6); all four landed QAE binders move with it
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00967930	?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z	?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z	0x0097e330
+0x00967b40	?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z	?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z	0x0097e330
+0x00968bc0	?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z	?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z	0x0097e330
+0x009689c0	?SetPushableByHero@CAIStateGroupBase@@QAEX_N@Z	?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z	0x0097e330
+0x00b242a0	?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z	?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z	0x00adebc0
+0x00bacbd0	?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z	?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z	0x00adebc0
+0x00bc5fc0	?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z	?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z	0x00adebc0
+0x00861a80	?SetMainAnim@CAnimateThing@@QAEXPAVCAnimInit@@JJ@Z	?SetMainAnim@CAnimateThing@@QAEXABVCAnimInit@@JJ@Z	0x0070d580
+0x00b3a910	??0CEngineInternalPrimitiveBase@@QAE@JJ@Z	??0CEngineInternalPrimitiveBase@@QAE@JK@Z	0x00b8ff00
+0x006cef20	?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z	?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z	0x00492ed1
+0x00729b20	?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z	?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z	0x00492ed1
+0x007800b0	?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z	?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z	0x00492ed1
+0x008139c0	?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z	?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z	0x00492ed1
+0x00849380	?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@KM_N2@Z	?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z	0x00492ed1
+0x007df4b0	?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCCharString@@111KM_N2@Z	?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z	0x00492fb4
+0x009d5a90	?AddObject@CThreadedFile@@QAEKPAVCThreadedFileObjectDesc@@@Z	?AddObject@CThreadedFile@@QAEKABVCThreadedFileObjectDesc@@@Z	0x0098f350
+0x0088e0b0	?GetRegionNumberFromName@CWorldMap@@QAEJPBVCCharString@@@Z	?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z	0x004fc210
+0x006ea450	?PerformSequenceReset@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z	0x006ea2c0
+0x006eabb0	?PerformSequenceReset@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z	0x006ea2c0
+0x0092a8a0	?AIAction_MinionWander@CAIStateGroupBase@@QAEJJPAVCThing@@@Z	?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z	0x0097f870
+0x0092b3e0	?AIAction_MinionWander@CAIStateGroupBase@@QAEJJPAVCThing@@@Z	?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z	0x0097f870

@@ -1,3 +1,4 @@
+// Leaf: ?GetInputProcessEventFromUpdate@CGamePlayerInterface@@ABE_NAAVCProcessedInput@@@Z
 // CGamePlayerInterface::GetInputProcessEventFromUpdate(CProcessedInput&) const.
 // Actual player/process headers retained; retail list4, player-info6FC, flag894.
 #define CGamePlayerInterface CGamePlayerInterfaceDonor
@@ -28,7 +29,9 @@ struct CInputScan {
 };
 class CGamePlayerInterface { public:
  void* Vtable;mutable CInputList InputProcesses;unsigned char BeforePlayer[0x6e8];CPlayerManager* PlayerManager;unsigned char BeforeProcessed[0x194];mutable bool AlreadyProcessed;
+ private:
  bool GetInputProcessEventFromUpdate(CProcessedInput&)const;
+ public:
 };
 typedef void(CAInputProcess::*CInputUpdateCall)(CProcessedInput&);
 #ifdef _MSC_VER

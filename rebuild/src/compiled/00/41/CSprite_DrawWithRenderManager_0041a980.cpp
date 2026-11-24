@@ -37,7 +37,7 @@ class CGraphicDataBank;
 float __fastcall GFAXToVX(float);                 // 0x009E1DA0
 float __fastcall GFAYToVY(float y);                 // 0x009E1DD0
 struct CRenderManager2D {
-    bool Draw2DScaledGraphic(const C2DBoxF& box, CGraphicDataBank* bank, unsigned long graphic,
+    bool Draw2DScaledGraphic(const C2DBoxF& box, const CGraphicDataBank& bank, unsigned long graphic,
                              unsigned long a, unsigned long b);   // 0x009DD210
 };
 class CRenderManager { public: unsigned char _pad[8]; CRenderManager2D* RenderManager2D; };   // +0x08
@@ -97,5 +97,5 @@ void CSprite::DrawWithRenderManager()
     box.BRY = GFAYToVY(box.BRY);
     CCountedPointer<CGraphicDataBank> bank = NUISystem::CManager::GetInstance()->PGraphicBank;
     CSystemManager* system = GFGetSystemManager();
-    system->RenderManager->RenderManager2D->Draw2DScaledGraphic(box, bank.Data, GraphicIndex, 0, 0);
+    system->RenderManager->RenderManager2D->Draw2DScaledGraphic(box, *bank.Data, GraphicIndex, 0, 0);
 }

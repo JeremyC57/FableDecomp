@@ -1,3 +1,4 @@
+// Leaf: ?IsEnvironmentRequiringWeatherMasks@CEnvironment@@QBE_NXZ
 // CEnvironment::IsEnvironmentRequiringWeatherMasks() -- true when any of the three interpolated precipitation strengths (rain, snow, mist order +0x1c4, +0x1c0, +0x1c8) exceeds the 1e-4 threshold
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B2C00, length 66 bytes.
 // Callees: none; the threshold float (0x38D1B717 = 1.0e-4f) lives in the pool @ 0x0129BA3C. Shape: three `fld member ; fcomp const ; fnstsw ;
@@ -9,10 +10,10 @@ class CEnvironment { public:
     float         m_snowStrength;                  // +0x1c0
     float         m_rainStrength;                  // +0x1c4
     float         m_mistStrength;                  // +0x1c8
-    long IsEnvironmentRequiringWeatherMasks();
+    bool IsEnvironmentRequiringWeatherMasks() const;
 };
 
-long CEnvironment::IsEnvironmentRequiringWeatherMasks()
+bool CEnvironment::IsEnvironmentRequiringWeatherMasks() const
 {
     return m_rainStrength > 1.0e-4f || m_snowStrength > 1.0e-4f || m_mistStrength > 1.0e-4f;
 }

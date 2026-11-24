@@ -17,6 +17,9 @@ class CThing;
 class CBuyableHouseDef;
 class CTCBuyableHouse : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CREATE_VILLAGER_PASS27
+    void MovedInNotification(long);
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_BUYABLE_HOUSE; }
 #if defined(FABLE_RETAIL_CTCWIFE_MARRY) || defined(FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE)
     void SetWifeLivingHere(CThing*);
@@ -166,6 +169,18 @@ public:
     bool             HasPreviouslyBeenBuyable;               // +0x48
     bool             IsResidential;                          // +0x49
     unsigned char    _pad_0x4a[0x2];                         // +0x4a
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_FLAT_SETRENTED_SETOWNED
+    // Add-only opt-in (naming agent NF292, 2026-11-23, binder 0x00895ED0 CGameScriptInterface::SetHouseOwnedByPlayer): Ego_r.pdb /
+    // FableWin.pdb ?SetRented@CTCBuyableHouse@@QAEX_N@Z (retail 0x006C1150) and ?SetOwnedByPlayer@CTCBuyableHouse@@QAEX_N@Z
+    // (0x006C17B0), as the retail branch declares them. Declarations only: no layout change.
+    void SetRented(bool rented);                                         // 0x006C1150
+    void SetOwnedByPlayer(bool owned);                                   // 0x006C17B0
+#endif
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_FLAT_GETPRICE
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x0072E940 CTCActionUseBuyHouse::OnActionUseMain): Ego_r.pdb / FableWin.pdb
+    // ?GetPrice@CTCBuyableHouse@@QBEJXZ (retail 0x006C0120), as the retail branch declares it. Declaration only: no layout change.
+    long GetPrice() const;                                               // 0x006C0120
+#endif
 };
 #pragma pack(pop)
 

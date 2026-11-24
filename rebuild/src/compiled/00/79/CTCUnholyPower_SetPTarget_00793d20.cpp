@@ -1,3 +1,4 @@
+// Leaf: ?SetPTarget@CTCUnholyPower@@AAEXXZ
 // CTCUnholyPower::SetPTarget() -- clear the spell target, then take the owner's z-target (targeting component slot 33) when it is a live creature and the owner is the player creature
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00793D20, length 220 bytes (+ int3 padding). __fastcall, `ret`.
@@ -96,7 +97,9 @@ class CTCUnholyPower { public:
     unsigned char _pad08[0x6d - 0x08];
     CIntelligentPointerConstThing PTarget;          // +0x6D CIntelligentPointer<CThingCreatureBase>
     bool IsZTargetting;                             // +0x75
+    private:
     void SetPTarget();
+    public:
 };
 
 void CTCUnholyPower::SetPTarget()

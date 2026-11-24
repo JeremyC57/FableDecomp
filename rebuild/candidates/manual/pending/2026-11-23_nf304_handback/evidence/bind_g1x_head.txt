@@ -1,0 +1,64 @@
+#5 00a64e70 ?InsertIntoTree@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@1@0@Z
+   00a64e70(self) - DEF=WRONG:?InsertIntoTree@CMemoryAllocatorVariableSize@@QAEXPAUCMemoryArea@@0@Z
+   00a650f0 OK ?InsertIntoTree@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@1@0@Z x1
+#6 00aee940 ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@@@Z
+   00aee940(self) - DEF=WRONG:?ClearAllPrimitives@CParticleEmitter@@QAEXPAVCIEngine@@@Z
+   00aeb990 WRONG ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@2@@Z x1
+   00aeeba0 OK ?ClearAllPrimitives@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@@@Z x1
+#7 00a12450 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z
+   0049be90 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   0063e950 WRONG ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NABVC3DVector@@0PAVCMeshIntersectionData@@@Z x1
+   00668ab0 WRONG ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NABVC3DVector@@0PAVCMeshIntersectionData@@@Z x1
+   0066cf00 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   006fda20 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   00745120 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   00815070 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   00875b10 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x2
+   00875e60 WRONG ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NPBVC3DVector@@0PAVCMeshIntersectionData@@@Z x1
+   008771a0 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   008fbcb0 OK ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z x1
+   00970790 WRONG ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NPBVC3DVector@@0PAVCMeshIntersectionData@@@Z x1
+#9 004888c0 ?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z
+   004888c0(self) - DEF=OK:?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z
+   00449cb0 WRONG ?SwitchPlayerCharactersWith@CPlayer@@QAE_NPAU1@@Z x1
+#10 00437ae0 ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z
+   00437ae0(self) - DEF=OK:?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z
+   004385f0 OK ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z x1
+   00439bb0 OK ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z x1
+   00439e00 OK ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z x1
+   00439f20 OK ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z x1
+#11 0043b570 ??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z
+   0043b570(self) - DEF=OK:??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z
+   00487fb0 WRONG ??0CPlayerGui@@QAE@PAVCMainGameComponent@@PAVCWorld@@PAVCGamePlayerInterface@@PAVCPlayerManager@@PAVCGraphicDataBank@@@Z x1
+#13 004afbb0 ?OnEntityInterrupted@CQuestManager@@QAEXAAVCThing@@@Z
+   004afbb0(self) - DEF=OK:?OnEntityInterrupted@CQuestManager@@QAEXAAVCThing@@@Z
+   00713850 WRONG ?OnEntityInterrupted@CQuestManager@@QAEXPAVCThing@@@Z x1
+#15 00f3afc0 ?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z
+   00f3afc0(self) - DEF=OK:?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z
+   00bfcf00 OK ?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z x1
+   00bfcf90 OK ?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z x1
+   00bfd020 OK ?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z x1
+   00bfd0b0 WRONG ?Compress@CRangeCompressor@@QAEJPAXJJPAV?$CArray@E@@@Z x1
+   00bfd670 WRONG ?Compress@CRangeCompressor@@QAEJPAXJJPAV?$CArray@E@@@Z x2
+#16 009dbff0 ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+   009dbff0(self) - DEF=OK:?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+   00405020 WRONG ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@PAVCFontBank@@ABVCRGBColour@@K@Z x2
+   00435530 OK ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z x1
+#17 009dd210 ?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z
+   009dd210(self) - DEF=OK:?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z
+   0041a980 WRONG ?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@PAVCGraphicDataBank@@KKK@Z x1
+   00498490 OK ?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z x10
+#18 009de3f0 ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z
+   009de3f0(self) - DEF=OK:?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z
+   00498490 OK ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z x2
+   00499d90 OK ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z x1
+   00637c80 OK ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z x1
+   0085cbd0 OK ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z x3
+   009ead60 WRONG ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@J@Z x1
+#19 00a10dc0 ??0CRenderTarget@@QAE@AAVCSurface@@0@Z
+   00a10dc0(self) - DEF=WRONG:??0CRenderTarget@@QAE@ABVCSurface@@0@Z
+   00499880 OK ??0CRenderTarget@@QAE@AAVCSurface@@0@Z x1
+   009faf70 OK ??0CRenderTarget@@QAE@AAVCSurface@@0@Z x1
+   00b87680 WRONG ??0CRenderTarget@@QAE@ABVCSurface@@0@Z x1
+   00b89a20 WRONG ??0CRenderTarget@@QAE@ABVCSurface@@0@Z x1
+   00b89c30 OK ??0CRenderTarget@@QAE@AAVCSurface@@0@Z x1

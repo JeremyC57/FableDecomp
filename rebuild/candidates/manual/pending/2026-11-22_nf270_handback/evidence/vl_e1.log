@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0069f0f0   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory
+006a0d50   RELOCATION_MATCH PASS   CCreatureAction_UseObject
+
+WINS: 2
+  0069f0f0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z
+  006a0d50 RELOCATION_MATCH CCreatureAction_UseObject::??0CCreatureAction_UseObject@@QAE@ABV0@@Z
+VL_DONE 0

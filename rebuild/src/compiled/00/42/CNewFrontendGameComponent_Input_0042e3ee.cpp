@@ -1,5 +1,5 @@
 // CNewFrontendGameComponent::Input() -- drain the input manager's event queue into the front-end UI manager (keys, characters, mouse move/wheel, joystick buttons and stick), then turn the gathered direction/button flags into repeating UI commands
-// Leaf: ?Input@CNewFrontendGameComponent@@UAEXXZ
+// Leaf: ?Input@CNewFrontendGameComponent@@AAEXXZ
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042E3EE, 1441 bytes, frame pointer, `ret`.
 // Layout: Ego_r.pdb CNewFrontendGameComponent (336 bytes) with the two retail 12-byte STLport vectors (FileNames,
@@ -103,7 +103,7 @@ public:
     CStopWatch    m_attractModeTimer;              // +0x100
     CStopWatch    m_inputDelayTimer;               // +0x120
     long          LastActiveJoystickDeviceNumber;  // +0x140
-    virtual void Input();
+    private: void Input(); public:
 };
 
 void CNewFrontendGameComponent::Input()

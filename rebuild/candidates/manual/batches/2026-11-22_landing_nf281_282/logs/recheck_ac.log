@@ -1,0 +1,163 @@
+addr       parity           behav  name
+0096ea50   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0096ea50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+0096ea50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+0096ea50   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0096ea50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0096ea50   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+0096ea50   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearby (engine/CAIStateGroup_MeleeCombatNearby.h)
+0096ea50   WARN RELOC_NAME: ?IsAttackerReadyToAttack@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z -> 006e93c0 labelled 'CCombatManager::IsCreatureOnRotatingCombatRing'
+0096ea50   RELOCATION_MATCH PASS   AttackEnemy
+0096ee90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0096ee90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0096ee90   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0096ee90   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+0096ee90   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0096ee90   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0096ee90   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0096ee90   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearbyBase (engine/CAIStateGroup_MeleeCombatNearbyBase.h)
+0096ee90   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearby (engine/CAIStateGroup_MeleeCombatNearby.h)
+0096ee90   WARN RELOC_NAME: ?IsInCombatMode@CThing@@QAE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+0096ee90   RELOCATION_MATCH PASS   Update
+00977b10   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00977b10   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00977b10   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00977b10   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+00977b10   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00977b10   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasDefGlobalIndex (engine/CThingFilter_HasDefGlobalIndex.h)
+00977b10   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00977b10   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+00977b10   WARN SHARED_HEADER_AVAILABLE CTCBoss (engine/CTCBoss.h)
+00977b10   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Guildmaster (engine/CAIStateGroup_Guildmaster.h)
+00977b10   WARN RELOC_NAME: ?GetAllThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAUCCreatureVector@@@Z -> 008e3eb0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingAICreature, std::vector<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_HasDefGlobalIndex>'
+00977b10   RELOCATION_MATCH PASS   FindAndStoreBodyguards
+00977c40   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Guildmaster (engine/CAIStateGroup_Guildmaster.h)
+00977c40   WARN RELOC_NAME: ?GetAllThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasTrackName@@AAUCThingPtrVector@@@Z -> 00978250 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasScriptName>'
+00977c40   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00977c40   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+00977c40   RELOCATION_MATCH PASS   OnActivate
+00992170   WARN STANDIN_LEAF ?Reset@CCountedPointer_00991e00@@QAEXPAX@Z (catalog CCountedPointer<CResourceBank>::Reset; address-only name)
+00992170   RELOCATION_MATCH PASS   Reset
+00998010   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00998010   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00998010   RELOCATION_MATCH PASS   ParserReadPastComponent
+00998170   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+00998170   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00998170   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00998170   RELOCATION_MATCH PASS   ParserReadPastDriveLabel
+00998210   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+00998210   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00998210   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00998210   RELOCATION_MATCH PASS   ParserIsDriveLabelNext
+009b1f50   WARN STANDIN_LEAF ?Reset@CCountedPointer_009b0e90@@QAEXPAX@Z (catalog CCountedPointer<CSymbolMap>::Reset; address-only name)
+009b1f50   RELOCATION_MATCH PASS   Reset
+009e3090   WARN STANDIN_LEAF ?Reset@CCountedPointer_009e2960@@QAEXPAX@Z (catalog CCountedPointer<CFontDataBank>::Reset; address-only name)
+009e3090   RELOCATION_MATCH PASS   Reset
+009e3100   WARN STANDIN_LEAF ?Reset@CCountedPointer_009e2970@@QAEXPAX@Z (catalog CCountedPointer<CStreamingFontDataBank>::Reset; address-only name)
+009e3100   RELOCATION_MATCH PASS   Reset
+009f8290   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009f8290   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+009f8290   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009f8290   RELOCATION_MATCH PASS   CloseGraphicBank
+00a09dc0   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a09dc0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+00a09dc0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a09dc0   WARN SHARED_HEADER_AVAILABLE CMeshBankManager (engine/CMeshBankManager.h)
+00a09dc0   RELOCATION_MATCH PASS   CloseMeshBank
+00a16640   WARN STANDIN_LEAF ?Reset@CCountedPointer_00a16270@@QAEXPAX@Z (catalog CCountedPointer<CNavQuadTree>::Reset; address-only name)
+00a16640   RELOCATION_MATCH PASS   Reset
+00a249a0   WARN SHARED_HEADER_AVAILABLE C3DMeshLODInfo (engine/C3DMeshLODInfo.h)
+00a249a0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00a249a0   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo (engine/C3DMeshInfo.h)
+00a249a0   RELOCATION_MATCH PASS   RemoveLOD
+00a25470   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo (engine/C3DMeshInfo.h)
+00a25470   WARN SHARED_HEADER_AVAILABLE C3DMeshLODInfo (engine/C3DMeshLODInfo.h)
+00a25470   RELOCATION_MATCH PASS   OnResourceLoaded
+00a25e70   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE C3DMesh2 (engine/C3DMesh2.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE C3DMeshLODInfo (engine/C3DMeshLODInfo.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo (engine/C3DMeshInfo.h)
+00a25e70   WARN RELOC_NAME: ?RemoveFromResourceList@CResource@@QAEXXZ -> 009fc440 labelled 'CTCActivationTrigger::OnKill'
+00a25e70   RELOCATION_MATCH PASS   GetMesh
+00a29c50   WARN STANDIN_LEAF ?Reset@CCountedPointer_00a282f0@@QAEXPAX@Z (catalog CCountedPointer<C3DAnimation2>::Reset; address-only name)
+00a29c50   RELOCATION_MATCH PASS   Reset
+00a31640   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCContainmentVolume@@@@SIXPAX@Z -> 00a110d0 labelled '_global::DeleteViaVtable0_00a110d0'
+00a31640   RELOCATION_MATCH PASS   Reset
+00a44170   WARN STANDIN_LEAF ?Reset@CCountedPointer_00a44130@@QAEXPAX@Z (catalog CCountedPointer<CLipSyncSampleData>::Reset; address-only name)
+00a44170   RELOCATION_MATCH PASS   Reset
+00a52be0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00a51180@@QAEXPAX@Z (catalog CCountedPointer<CSimpleMemoryPool>::Reset; address-only name)
+00a52be0   RELOCATION_MATCH PASS   Reset
+00a6ae60   WARN STANDIN_LEAF ?Reset@CCountedPointer_00a6acb0@@QAEXPAX@Z (catalog CCountedPointer<CVolumeTexture>::Reset; address-only name)
+00a6ae60   RELOCATION_MATCH PASS   Reset
+00a8d400   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VC3DBone2@@@@SIXPAX@Z -> 00a8cb70 labelled '_unattributed::FreeSelf_00a8cb70'
+00a8d400   RELOCATION_MATCH PASS   Reset
+00a8fd40   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00a8fd40   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00a8fd40   WARN SHARED_HEADER_AVAILABLE C3DClothPrimitive (engine/C3DClothPrimitive.h)
+00a8fd40   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a8fd40   WARN RELOC_NAME: ?WriteUChar@CDataOutputStream@@QAEXE@Z -> 00993e50 labelled 'WriteCBYTE'
+00a8fd40   WARN RELOC_NAME: ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z -> 00996610 labelled 'CDataOutputStream::WriteCompressed'
+00a8fd40   RELOCATION_MATCH PASS   SaveBinary
+00a92870   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00a92870   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a92870   RELOCATION_MATCH PASS   UploadAnimatedBuffers
+00a932c0   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a932c0   RELOCATION_MATCH PASS   UploadRepeatedBuffers
+00a93320   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a93320   RELOCATION_MATCH PASS   UploadStaticBuffers
+00a9a420   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VC3DAnimFileRootChunk@@@@SIXPAX@Z -> 00a99fe0 labelled '_global::DeleteViaVtable0_00a99fe0'
+00a9a420   WARN STANDIN_LEAF ?Reset@CCountedPointer_00a99fe0@@QAEXPAX@Z (catalog CCountedPointer<C3DAnimFileRootChunk>::Reset; address-only name)
+00a9a420   RELOCATION_MATCH PASS   Reset
+00a9ced0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VC3DMeshFileRootChunk@@@@SIXPAX@Z -> 00a9cb20 labelled '_global::DeleteViaVtable0_00a9cb20'
+00a9ced0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00a9cb20@@QAEXPAX@Z (catalog CCountedPointer<C3DMeshFileRootChunk>::Reset; address-only name)
+00a9ced0   RELOCATION_MATCH PASS   Reset
+00ac38a0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00ac3810@@QAEXPAX@Z (catalog CCountedPointer<C3DMeshPartitionElement>::Reset; address-only name)
+00ac38a0   RELOCATION_MATCH PASS   Reset
+00ac3ff0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00ac3fd0@@QAEXPAX@Z (catalog CCountedPointer<CParticleProgram>::Reset; address-only name)
+00ac3ff0   RELOCATION_MATCH PASS   Reset
+00ad65a0   RELOCATION_MATCH PASS   Reset
+00ae93e0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00ae91c0@@QAEXPAX@Z (catalog CCountedPointer<NParticleEngine::CParticleDataBank>::Reset; address-only name)
+00ae93e0   RELOCATION_MATCH PASS   Reset
+
+WINS: 33
+  0096ea50 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@AAEXXZ
+  0096ee90 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::?Update@CAIStateGroup_MeleeCombatNearby@@MAEXXZ
+  00977b10 RELOCATION_MATCH CAIStateGroup_Guildmaster::?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ
+  00977c40 RELOCATION_MATCH CAIStateGroup_Guildmaster::?OnActivate@CAIStateGroup_Guildmaster@@UAEXXZ
+  00992170 RELOCATION_MATCH CCountedPointer<CResourceBank>::?Reset@CCountedPointer_00991e00@@QAEXPAX@Z
+  00998010 RELOCATION_MATCH CAFile::?ParserReadPastComponent@CAFile@@
+  00998170 RELOCATION_MATCH CAFile::?ParserReadPastDriveLabel@CAFile@@CI_NAAVCStringParser@@AAVCParsedItem@@@Z
+  00998210 RELOCATION_MATCH CAFile::?ParserIsDriveLabelNext@CAFile
+  009b1f50 RELOCATION_MATCH CCountedPointer<CSymbolMap>::?Reset@CCountedPointer_009b0e90@@QAEXPAX@Z
+  009e3090 RELOCATION_MATCH CCountedPointer<CFontDataBank>::?Reset@CCountedPointer_009e2960@@QAEXPAX@Z
+  009e3100 RELOCATION_MATCH CCountedPointer<CStreamingFontDataBank>::?Reset@CCountedPointer_009e2970@@QAEXPAX@Z
+  009f8290 RELOCATION_MATCH CGraphicBankManager::CloseGraphicBank
+  00a09dc0 RELOCATION_MATCH CMeshBankManager::CloseMeshBank
+  00a16640 RELOCATION_MATCH CCountedPointer<CNavQuadTree>::?Reset@CCountedPointer_00a16270@@QAEXPAX@Z
+  00a249a0 RELOCATION_MATCH C3DMeshInfo::?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z
+  00a25470 RELOCATION_MATCH C3DMeshLODInfo::OnResourceLoaded
+  00a25e70 RELOCATION_MATCH C3DMeshInfo::GetMesh
+  00a29c50 RELOCATION_MATCH CCountedPointer<C3DAnimation2>::?Reset@CCountedPointer_00a282f0@@QAEXPAX@Z
+  00a31640 RELOCATION_MATCH CCountedPointer_00a110d0::?Reset@CCountedPointer_00a110d0@@QAEXPAX@Z
+  00a44170 RELOCATION_MATCH CCountedPointer<CLipSyncSampleData>::?Reset@CCountedPointer_00a44130@@QAEXPAX@Z
+  00a52be0 RELOCATION_MATCH CCountedPointer<CSimpleMemoryPool>::?Reset@CCountedPointer_00a51180@@QAEXPAX@Z
+  00a6ae60 RELOCATION_MATCH CCountedPointer<CVolumeTexture>::?Reset@CCountedPointer_00a6acb0@@QAEXPAX@Z
+  00a8d400 RELOCATION_MATCH CCountedPointer_00a8cb70::?Reset@CCountedPointer_00a8cb70@@QAEXPAX@Z
+  00a8fd40 RELOCATION_MATCH C3DPrimitive2::SaveBinary
+  00a92870 RELOCATION_MATCH C3DPrimitive2::UploadAnimatedBuffers
+  00a932c0 RELOCATION_MATCH C3DPrimitive2::UploadRepeatedBuffers
+  00a93320 RELOCATION_MATCH C3DPrimitive2::UploadStaticBuffers
+  00a9a420 RELOCATION_MATCH CCountedPointer<C3DAnimFileRootChunk>::?Reset@CCountedPointer_00a99fe0@@QAEXPAX@Z
+  00a9ced0 RELOCATION_MATCH CCountedPointer_00a9cb20::?Reset@CCountedPointer_00a9cb20@@QAEXPAX@Z
+  00ac38a0 RELOCATION_MATCH CCountedPointer<C3DMeshPartitionElement>::?Reset@CCountedPointer_00ac3810@@QAEXPAX@Z
+  00ac3ff0 RELOCATION_MATCH CCountedPointer<CParticleProgram>::?Reset@CCountedPointer_00ac3fd0@@QAEXPAX@Z
+  00ad65a0 RELOCATION_MATCH CCountedPointer_00ad5ed0::?Reset@CCountedPointer_00ad5ed0@@QAEXPAX@Z
+  00ae93e0 RELOCATION_MATCH CCountedPointer<NParticleEngine::CParticleDataBank>::?Reset@CCountedPointer_00ae91c0@@QAEXPAX@Z

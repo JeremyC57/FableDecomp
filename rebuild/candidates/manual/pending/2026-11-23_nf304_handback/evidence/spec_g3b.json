@@ -1,0 +1,62 @@
+{
+ "005e9c50": [
+  [
+   "    void SetText(CFontBank* font,",
+   "    void SetText(const CFontBank& font,",
+   1
+  ],
+  [
+   "SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L\"\",",
+   "SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, L\"\",",
+   1
+  ]
+ ],
+ "005e9d60": [
+  [
+   "    void SetText(CFontBank* font,",
+   "    void SetText(const CFontBank& font,",
+   1
+  ],
+  [
+   "SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L\"\",",
+   "SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, L\"\",",
+   1
+  ]
+ ],
+ "005eb080": [
+  [
+   "    void SetText(CFontBank* font,",
+   "    void SetText(const CFontBank& font,",
+   1
+  ],
+  [
+   "SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L\"\",",
+   "SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, L\"\",",
+   1
+  ]
+ ],
+ "005eaf30": [
+  [
+   "    void SetText(CFontBank* font,",
+   "    void SetText(const CFontBank& font,",
+   1
+  ],
+  [
+   "Renderer.SetText(CMainGameComponent::Get()->PFont, title,",
+   "Renderer.SetText(*CMainGameComponent::Get()->PFont, title,",
+   1
+  ]
+ ],
+ "008139c0": [
+  [
+   "    void SetText(CFontBank* font, const CWideString& text, const CWideString& button1, const CWideString& button2,",
+   "    void SetText(const CFontBank& font, const CWideString& text, const CWideString& button1, const CWideString& button2,",
+   1
+  ],
+  [
+   "SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, boast->Text, goldText,",
+   "SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, boast->Text, goldText,",
+   1
+  ]
+ ]
+}

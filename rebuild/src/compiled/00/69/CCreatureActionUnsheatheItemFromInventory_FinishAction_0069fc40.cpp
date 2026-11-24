@@ -40,7 +40,7 @@ class CThingCreatureBase : public CThing { public:          // Ego_r.pdb / Fable
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CTCCreatureModeManager { public:
-    void OnUnsheatheFinished();             // 0x0073A840
+    void RefreshCurrentMode();             // 0x0073A840; NF296: PDB name, was OnUnsheatheFinished
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -65,7 +65,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
-    bool GetPerformedAction();              // 0x006925A0 (PerformedAction byte at +0x62)
+    bool HasPerformedAction() const;              // 0x006925A0 (PerformedAction byte at +0x62); NF296: PDB name, was GetPerformedAction
 public:
     virtual void FinishAction();   // 0x00694430
 };
@@ -78,7 +78,7 @@ class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { 
 
 void CCreatureAction_UnsheatheItemFromInventory::FinishAction()
 {
-    if (!GetPerformedAction())
+    if (!HasPerformedAction())
         PerformAction();
     CCreatureActionBase::FinishAction();
     if (PFollowUpAction.Object) {
@@ -87,5 +87,5 @@ void CCreatureAction_UnsheatheItemFromInventory::FinishAction()
     }
     CTCCreatureModeManager* modes;
     if (((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31))
-        modes->OnUnsheatheFinished();
+        modes->RefreshCurrentMode();
 }

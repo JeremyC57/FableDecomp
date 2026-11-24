@@ -190,6 +190,11 @@ public:
     // (0x01ACC400; no Ego_r.pdb or Fable.exe copy: the row reads PlayerIsCharacter +0x09 in place off CThing::PeekPlayer, `mov cl,[eax+9]`, 0x007EF31C).
     bool IsPlayerCharacter() const { return PlayerIsCharacter; }
 #endif
+#ifdef FABLE_RETAIL_CONTROL_CREATURE_INPUT_PASS27
+    void SetSpellMode(bool mode){SpellMode=mode;}
+    void SetExpressionShiftMode(bool mode){ExpressionShiftMode=mode;}
+    bool IsExpressionShiftMode() const{return ExpressionShiftMode;}
+#endif
 #ifdef FABLE_RETAIL_PLAYER_ISSPELLMODE
     // Retail opt-in (chunk 1025, row 0x008028D0 GetTargetingRangeForTargetType): FableWin.pdb ?IsSpellMode@CPlayer@@QBE_NXZ (no Ego_r.pdb
     // or Fable.exe copy: the row reads SpellMode +0x218 in place off CThing::PeekPlayer, `mov cl,[eax+218h] ; test cl,cl`, 0x00802903).
@@ -621,6 +626,12 @@ public:
     bool                                                         KeepAbilitiesDuringCutscenes; // +0x224
     unsigned char                                                _pad_0x225[0x3]; // +0x225
     long                                                         JoystickDeviceNumber; // +0x228
+#ifdef FABLE_RETAIL_CPLAYER_PREPAREFORLOAD
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x00449C30 CPlayerManager::PrepareForLoad): Ego_r.pdb / FableWin.pdb
+    // ?PrepareForLoad@CPlayer@@QAEXXZ (public; retail 0x00487550, landed; also called by 0x004A0220). Declaration only: no layout change.
+public:
+    void PrepareForLoad();                                                // 0x00487550
+#endif
 };
 #pragma pack(pop)
 

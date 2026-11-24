@@ -88,14 +88,14 @@ struct CTCInventoryBase_Calls {
 class CTCInventoryQuests : public CTCInventoryBase_Calls { public:     // vtable 0x012585B4
     unsigned char _pad_0x20[0x157 - 0x20];
     bool          m_questListActive;           // +0x157
-    void QuestListHook_0061A9D0();           // 0x0061A9D0
+    void MoveToNextTestQuest();              // 0x0061A9D0 ?MoveToNextTestQuest@CTCInventoryQuests@@QAEXXZ (Ego_r + FableWin; NF285, was QuestListHook_0061A9D0)
     void ProcessInventoryInputDown();
 };
 
 void CTCInventoryQuests::ProcessInventoryInputDown()
 {
     if (m_questListActive) {
-        QuestListHook_0061A9D0();
+        MoveToNextTestQuest();
         return;
     }
     switch (m_menuMode) {

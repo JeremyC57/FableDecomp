@@ -1,0 +1,8 @@
+00adebc0: ?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z 
+00b8ff00: ??0CEngineInternalPrimitiveBase@@QAE@JK@Z 
+00492ed1: ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z 
+00492fb4: ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z 
+0098f350: ?AddObject@CThreadedFile@@QAEKABVCThreadedFileObjectDesc@@@Z 
+004fc210: ?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z 
+006ea2c0: ?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z 
+0070d580: ?SetMainAnim@CAnimateThing@@QAEXABVCAnimInit@@JJ@Z 

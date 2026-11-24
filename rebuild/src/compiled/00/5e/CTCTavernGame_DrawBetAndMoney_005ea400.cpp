@@ -1,5 +1,5 @@
 // CTCTavernGame::DrawBetAndMoney(const CEnginePrimitivePrepareInfo&, float, float, float, float, float, float) -- draw the bet box, the money box (money flag set while the game state is 5) and, when both its coordinates are non-zero, a third box whose width comes from the tavern-game def
-// Leaf: DrawBetAndMoney
+// Leaf: ?DrawBetAndMoney@CTCTavernGame@@UAEXABVCEnginePrimitivePrepareInfo@@MMMMMM@Z
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EA400, length 592 bytes, `ret 0x1c`.
 // Callees: CDefClassBase::GetSubDef<CTavernGameDef> @ 0x005ED4A0, CDisplayManager::GetRenderTargetDimensions @ 0x009BEDC0 on
@@ -84,7 +84,7 @@ public:
     CHandleVector  ThirdHandles;                // +0x74
     unsigned char  _pad80[0xa8 - 0x80];
     long           State;                       // +0xa8
-    void DrawBetAndMoney(const CEnginePrimitivePrepareInfo& info, float betX, float betY, float moneyX, float moneyY,
+    virtual void DrawBetAndMoney(const CEnginePrimitivePrepareInfo& info, float betX, float betY, float moneyX, float moneyY,
                          float thirdX, float thirdY);
 };
 

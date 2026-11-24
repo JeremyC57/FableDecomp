@@ -1,0 +1,9 @@
+entry	address	status	binders_respelled	note
+q12673	0x0143B8D8	done	0x00B32660 0x00B3AAA0 0x00B91760 0x00B92500 0x00B92790 0x00B92C20 0x00B943F0	3 -> 1; held p27 line ?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA restored; header add-only opt-in CURRENTRENDERFRAME (generated branch); 0x00B3AAA0's own leaf moved to the PDB spelling
+q12673	0x006A1620	partial (count-reducing)	0x00664A50 0x0068F9D0 0x0091F050 0x005C2DF5	8 -> 4; 0x00664A10 / 0x00890250 / 0x00890D80 blocked (stand-in classes: header ports / re-authoring, NOTES); held line restorable (decision 2)
+q12673	0x005C2DED (L38)	done	self row (binder 0x0064B1AC already on it)	2 -> 1; catalog / files renamed (RENAMES 1); its callee 0x006A15A0 loses the Run_006a15a0 stand-in
+q12673	0x005C2DF5 (L39)	done	self row (binder 0x0064B1AC already on it)	2 -> 1; catalog / files renamed (RENAMES 1)
+q12674	0x00740040	done	self row (binders 0x00742790 / 0x00938380 already on the PDB ctor); slot self rows 0x00739E70 / 0x00739E90 respelled with it	3 rows: 0x00740040 2 -> 1; vtable 0x01267BFC on ??_7CModeSitBench@NCreatureMode@@6B@ (table line respelled); header add-only opt-in CMODESITBENCH_IMPLICIT_DTOR
+q12675	0x00B260B0 / 0x00B261D0	open (step 1 surveyed)	-	the four CIEngine.h placeholders already have PDB opt-ins (Ego_r + FableWin names); making them the default is a 148-includer header unit with ten tests respelled (NOTES entry 3, decision 5); steps 2 / 3 not started
+q12676	-	open	-	not started (context); NF236 NOTES entry 5 blockers unchanged
+q12659	0x00418DCA	open	-	not started (brief: only with the full 469-includer proof)

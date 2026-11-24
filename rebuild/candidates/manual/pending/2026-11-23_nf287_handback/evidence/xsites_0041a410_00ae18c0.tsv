@@ -1,0 +1,8 @@
+0041a410	call	0049d5ae	0049d550L CWorld::ConvertWorldToStaticMapPath
+0041a410	call	0049d70e	0049d6b0L CWorld::ConvertWorldToISMThingyPath
+0041a410	call	0049de0a	0049ddd0L CWorld_Methods::ConvertWorldToStaticMapPath
+0041a410	call	0049de55	0049ddd0L CWorld_Methods::ConvertWorldToStaticMapPath
+0041a410	call	0049defa	0049dec0L CWorld_Methods::ConvertWorldToISMThingyPath
+0041a410	call	0049df45	0049dec0L CWorld_Methods::ConvertWorldToISMThingyPath
+00ae18c0	call	00ae208c	00ae2050L CParticleSimulation::WriteToFile
+00ae18c0	call	00ae238e	00ae2230L CParticleProgram::WriteToFile

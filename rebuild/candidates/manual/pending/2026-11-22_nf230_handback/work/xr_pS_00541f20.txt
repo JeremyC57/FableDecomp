@@ -1,0 +1,9 @@
+0099b0f0	??9CWideString@@QBE_NABV0@@Z	x1
+0099b2c0	?ToCharString@CWideString@@QBE?AVCCharString@@XZ	x1
+0099b510	??1CWideString@@QAE@XZ	x1
+0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	x2
+0099eae0	??1CCharString@@QAE@XZ	x1
+009c95e0	?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z	x1
+013b86a0	?Game_013b86a0@@3PAUGame@@A	x1
+013b871c	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	x1
+013bca24	?NullString@CWideString@@2V1@A	x1

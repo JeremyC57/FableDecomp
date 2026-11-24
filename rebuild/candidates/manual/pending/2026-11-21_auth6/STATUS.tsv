@@ -1,0 +1,3 @@
+address	state	best_grade	grades_used	best_source	note
+0x007602F0	matched	RELOCATION_MATCH (/Gr, test PASS)	6	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth6/007602f0/007602f0.cpp	Ego_d 313/342 decoded up to IL family (bool != false; (float) square); all 27 lines + frame + block exact; PAREN_CAST only Inferred
+0x00763060	escalated	fitted RELOCATION_MATCH n4 (pending ruling, no test); Ego_d-exact g1 DIFFER(1134v1146) 78; n2/n6/e5 2	17	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth6/00763060/00763060_fitted.cpp	match needs named reference anchor at 198/199 + it_start after the bools (Ego_d contradicts); ESCALATE.md

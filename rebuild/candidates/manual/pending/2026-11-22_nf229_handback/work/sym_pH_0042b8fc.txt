@@ -1,0 +1,3 @@
+DEF ?BuildTreeArray@CTextTreeWalkThrough@@QAEXPAVTreeNode@@@Z
+UND ?Cleanup_00429e16@SubObject@@QAEXXZ
+UND _free

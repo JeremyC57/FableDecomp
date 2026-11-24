@@ -1,0 +1,39 @@
+addr       parity           behav  name
+01223ec0   WARN RELOC_CONFLICT: _$E2 -> 0122a5e0 here, 01228930 in landed 01219f00
+01223ec0   WARN RELOC_NAME: _$E2 -> 0122a5e0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+01223ec0   RELOCATION_MATCH PASS   $E_NullString
+0122a5e0   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00c44550   WARN RELOC_NAME: ?FreeBlock_00c3c370@@YAXPAX@Z -> 00c3c370 labelled 'CodaFree'
+00c44550   WARN STANDIN_LEAF ?Release@CircularQueue@@QAEXXZ (catalog CMarkedBuffer_00c44550::Release; names another function)
+00c44550   RELOCATION_MATCH PASS   Release
+00c3cf30   RELOCATION_MATCH PASS   TailJmp_Release_00c3cf30
+00c3cf40   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureUseCoverBase (engine/CAIStateGroup_CreatureUseCoverBase.h)
+00c3cf40   WARN RELOC_NAME: ?Cleanup@CAIStateGroup_CreatureUseCoverBase@@QAEXXZ -> 00c44170 labelled 'CExclusiveAssert::CExclusiveAssert::Destructor_Extended'
+00c3cf40   WARN RELOC_NAME: ??1CAIStateGroupBase_00c3cf40@@QAE@XZ -> 00c4cf40 labelled 'CVtable_012B8778::~CVtable_012B8778'
+00c3cf40   RELOCATION_MATCH PASS   ~CAIStateGroup_CreatureUseCoverBase
+01214f80   RELOCATION_MATCH PASS   Unwind@01214f80
+01214f88   RELOCATION_MATCH PASS   Unwind@01214f88
+00c43ec0   WARN SHARED_HEADER_AVAILABLE CCodaContext (engine/CCodaContext.h)
+00c43ec0   WARN RELOC_NAME: ?Shutdown@CMarkedBufferOwner@@QAEXXZ -> 00c43810 labelled 'CAudioObject::ReleaseQueue'
+00c43ec0   WARN RELOC_NAME: ?Cleanup@CMarkedBufferOwner@@QAEXXZ -> 00c436c0 labelled 'CAudioObject::Reset'
+00c43ec0   WARN STANDIN_LEAF ?AllocateMarks@CMarkedBufferOwner@@QAE_NJP6GXPAU1@PAX1@Z1@Z (catalog CExclusiveAssert::CExclusiveAssert::OnQuestItemUsed; names another function)
+00c43ec0   RELOCATION_MATCH PASS   OnQuestItemUsed
+00c44360   WARN SHARED_HEADER_AVAILABLE CCodaContext (engine/CCodaContext.h)
+00c44360   WARN STANDIN_LEAF ?Allocate@CircularQueue@@QAE_NJ@Z (catalog CEventDataBuffer::Allocate; names another function)
+00c44360   RELOCATION_MATCH PASS   Allocate
+00c43810   RELOCATION_MATCH PASS   ReleaseQueue
+0099b4d0   WARN STANDIN_LEAF ?UnassignString@CWideString@@IAEXXZ (catalog CCharString::UnassignString; names another function)
+0099b4d0   RELOCATION_MATCH PASS   UnassignString
+
+WINS: 11
+  01223ec0 RELOCATION_MATCH CCharString::_$E1
+  0122a5e0 RELOCATION_MATCH Cons_val_std_allocator_std_pair_EHeroMorphType_CParticleMorphs_CEntry_std_pair_EHeroMorphType_CParticleMorphs_CEntry_std_pair_enum_EHeroMorphType_class_CParticleMorphs::_$E2
+  00c44550 RELOCATION_MATCH CMarkedBuffer_00c44550::?Release@CircularQueue@@QAEXXZ
+  00c3cf30 RELOCATION_MATCH _global::??1CircularQueue@@QAE@XZ
+  00c3cf40 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::??1CAIStateGroup_CreatureUseCoverBase@@QAE@XZ
+  01214f80 RELOCATION_MATCH _global::Unwind@01214f80
+  01214f88 RELOCATION_MATCH _global::Unwind@01214f88
+  00c43ec0 RELOCATION_MATCH CMarkedBufferOwner::?AllocateMarks@CMarkedBufferOwner@@QAE_NJP6GXPAU1@PAX1@Z1@Z
+  00c44360 RELOCATION_MATCH CEventDataBuffer::?Allocate@CircularQueue@@QAE_NJ@Z
+  00c43810 RELOCATION_MATCH CAudioObject::?ReleaseQueue@CAudioObject@@QAEXXZ
+  0099b4d0 RELOCATION_MATCH CWideString::?UnassignString@CWideString@@IAEXXZ

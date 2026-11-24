@@ -1,0 +1,48 @@
+##### 008e9b60 renames: ?ResetStrafeAnims_008e97b0@CModeStrafe@NCreatureMode@@AAEXXZ=?LockStrafingCombinationAnimsToMainAnim@CModeStrafe@NCreatureMode@@AAEXXZ
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00d17da0 renames: ?RemoveBoastQuestInfo_00d17e70@CQ_BountyHuntScript@NScript@@QAEXXZ=?RemoveBoastQuestInfo@CQ_BountyHuntScript@NScript@@QAEXXZ
+sections head 2 new 2
+ALL_EQ 0
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 007a9c80 renames: ?SetupCameraFromStick_007a9b10@CTCAssassinRush@@QAEXXZ=?ResetCameraOnStick@CTCAssassinRush@@AAEXXZ
+sections head 7 new 7
+ALL_EQ 0
+funcs SAME=6 vtbl_H=0 vtbl_N=0
+##### 0061b560 renames: ?QuestListHook_0061A9D0@CTCInventoryQuests@@QAEXXZ=?MoveToNextTestQuest@CTCInventoryQuests@@QAEXXZ
+sections head 2 new 2
+ALL_EQ 0
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 0061b530 renames: ?QuestListHook_0061AA80@CTCInventoryQuests@@QAEXXZ=?MoveToPreviousTestQuest@CTCInventoryQuests@@QAEXXZ
+sections head 2 new 2
+ALL_EQ 0
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 004b1590 renames: ?IsActivatable_00702810@CTCQuestCard@@QBE_NXZ=?IsActivatable@CTCQuestCard@@QBE_NXZ
+sections head 9 new 9
+ALL_EQ 0
+funcs SAME=8 vtbl_H=0 vtbl_N=0
+##### 004b4aa0 renames: ?IsActivatable_00702810@CTCQuestCard@@QBE_NXZ=?IsActivatable@CTCQuestCard@@QBE_NXZ
+sections head 8 new 8
+ALL_EQ 0
+funcs SAME=7 vtbl_H=0 vtbl_N=0
+##### 008455c0 renames: ?OnShownByCreature_006de8c0@CTCTrophy@@QAEXPAVCThing@@@Z=?OnShowTrophyPerformAction@CTCTrophy@@QAEXAAVCThing@@@Z
+sections head 29 new 29
+ALL_EQ 0
+funcs SAME=25 vtbl_H=2 vtbl_N=2
+##### 00947840 renames: ?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ=?IsEatTime@CTCVillage@@QBE_NXZ
+sections head 6 new 6
+ALL_EQ 0
+funcs SAME=5 vtbl_H=0 vtbl_N=0
+##### 00947a30 renames: ?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ=?IsEatTime@CTCVillage@@QBE_NXZ
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00665190 renames: ?IsThingInViewAngle_00664e50@CThingCreatureBase@@QAE_NPAVCThing@@M_N@Z=?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z
+sections head 9 new 9
+ALL_EQ 0
+funcs SAME=8 vtbl_H=0 vtbl_N=0
+##### 00704150 renames: ?UpdateObject_007034d0@CThingObject@@QAEXXZ=?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ
+sections head 13 new 13
+ALL_EQ 0
+funcs SAME=11 vtbl_H=0 vtbl_N=0

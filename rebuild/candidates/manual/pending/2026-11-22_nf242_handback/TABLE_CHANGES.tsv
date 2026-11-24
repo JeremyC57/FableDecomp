@@ -1,0 +1,3 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	??_7CModeSitBench@@6B@	01267bfc	00740040	q12677 (q12674): the vtable's only emitter 0x00740040 now emits the PDB-namespaced name
+add	rebuild/oracles/reloc_bindings.tsv	??_7CModeSitBench@NCreatureMode@@6B@	01267bfc	00740040	q12677 (q12674): replaces the line above (same target and witness)

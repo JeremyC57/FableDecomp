@@ -72,7 +72,10 @@ class CTCDExplosion { public:
     void CreateStaticExplosion();               // 0x0080D0B0
     void UpdateHitThings(const C3DVector& start, const C3DVector& end);   // 0x0080CD40
     void UpdateExplosiveAdditionalImpulse();    // 0x0080C590
-    bool IsDynamicExplosionFinished();          // 0x0080C350
+    private:
+    bool IsDynamicExplosionFinished() const;
+    public:
+          // 0x0080C350
     void FrameUpdate();
 };
 

@@ -29,7 +29,7 @@ class CParticleSystem { public:
     unsigned char     _state08[0x64];                                  // +0x08
     CCharString       Name;                                            // +0x6c
     CParticleSystem* DatabaseClone();                                  // 0x00AF5960
-    void DatabaseCopy(CParticleSystem* source);                        // 0x00AF4EE0
+    void DatabaseCopy(const CParticleSystem& source);                  // 0x00AF4EE0
 };
 }
 struct CParticleSystemPtr {                                            // CCountedPointer<CParticleSystem> (8 bytes)
@@ -150,7 +150,7 @@ void CParticleEmitter::DatabaseCopy(const CParticleEmitter* source)
             clone->PEmitter = this;
             AddParticleSystem(clone);
         } else {
-            mine->DatabaseCopy(system);
+            mine->DatabaseCopy(*system);
         }
     }
     for (CParticleSystemPtr* it = ParticleSystems._M_start; it != ParticleSystems._M_finish; ) {

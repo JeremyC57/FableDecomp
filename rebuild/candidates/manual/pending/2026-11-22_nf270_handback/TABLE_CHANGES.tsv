@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+# none: the moved spellings are vtable slots (reloc_bindings keeps call-site witnesses; ?Validate@CBaseObject@@UBEXXZ, the two EBE Clone spellings and the WithHaste PerformAction have no line and need none); ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ -> 0069f9e0 (witness 005ca68e) already exists for the 0x0069FCD0 tail jump; no line names ForwardTarget_0069f9e0 or ?Validate@CCreatureActionBase@@UBEXXZ

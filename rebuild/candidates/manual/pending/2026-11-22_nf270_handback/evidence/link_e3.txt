@@ -1,0 +1,22 @@
+# q12744 link sets (LINK unset, /DLL /NOENTRY /FORCE /NODEFAULTLIB); watch = map<ulong,long> tree / map symbols
+## A: HEAD 0x00AD9770 + HEAD 0x00AD9980 + HEAD 0x00ADCE10 + HEAD 0x00ADC310
+duplicates 0
+
+UNRESOLVED 4 ??0?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z
+UNRESOLVED 2 ??4?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEAAV01@ABV01@@Z
+## B: mirrored 0x00AD9770 / 0x00AD9980 + the same two HEAD objects (NF268's measurement)
+duplicates 0
+
+UNRESOLVED 4 ??0?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z
+UNRESOLVED 4 ??1?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@XZ
+UNRESOLVED 2 ??4?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEAAV01@ABV01@@Z
+## C: B + HEAD 0x00A96DA0 (~CVertexGroupBlock, a census definer)
+duplicates 0
+
+UNRESOLVED 4 ??0?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z
+UNRESOLVED 2 ??4?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEAAV01@ABV01@@Z
+## D: B + every other census object that defines or references the dtor (0x00A96DA0, 0x00AD9F10, 0x00AD94F0, 0x00ADD020, 0x00ADCE60)
+duplicates 2
+00ad94f0.obj : warning LNK4006: "public: __thiscall CVertexGroupBlock::~CVertexGroupBlock(void)" (??1CVertexGroupBlock@@QAE@XZ) already defined in 00a96da0.obj; second definition ignored
+00adce60.obj : warning LNK4006: "public: __thiscall CVertexGroupBlock::~CVertexGroupBlock(void)" (??1CVertexGroupBlock@@QAE@XZ) already defined in 00a96da0.obj; second definition ignored
+UNRESOLVED 3 ??4?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEAAV01@ABV01@@Z

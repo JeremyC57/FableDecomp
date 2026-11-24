@@ -1,0 +1,27 @@
+#2 0057c4f1 ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z
+   0057c4f1(self) - DEF=OK:?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z
+   007e1eb0 OK ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z x1
+   007ed870 OK ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z x1
+   007edbe0 OK ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z x1
+   007edd60 OK ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z x1
+   00847be0 OK ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z x1
+#3 005eea9b ?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N@Z
+   005eea9b(self) - DEF=OK:?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N@Z
+   005eed4c OK ?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N@Z x1
+   007f4d50 OK ?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N@Z x1
+00713ee0 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z x1
+00714900 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z x1
+00849be0 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z x1
+0091d510 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z x1
+0097e890 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z x1
+00713ee0 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+006d5b50 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+00714900 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+00714cc0 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+00716de0 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x2
+0089bdf0 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+008d8ea0 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+008da610 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+008db240 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x2
+008db460 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+008dbc80 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1

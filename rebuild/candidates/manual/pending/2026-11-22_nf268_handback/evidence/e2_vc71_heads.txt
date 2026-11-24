@@ -1,0 +1,12 @@
+== 0096ae50
+0
+86](sec 29)(fl ??1CCreatureAction_CastAssassinRush@@UAE@XZ
+0)(fl 0x00)(ty ??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@AAVCThing@@_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z
+== 009735d0
+0
+53)(fl 0x00)(ty ??1CCreatureAction_CastAssassinRush@@UAE@XZ
+0)(fl 0x00)(ty ??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@M_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z
+== 008c2550
+0
+115)(fl 0x00)(ty ??1CCreatureAction_CastAssassinRush@@UAE@XZ
+0)(fl 0x00)(ty ??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@M_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z

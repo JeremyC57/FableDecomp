@@ -1,0 +1,91 @@
+# link: control = 321 objects (229 owners of the rows' shared / strong copies + the 92 equivalence rows); landing = control + the 95 new objects. /DLL /NOENTRY /FORCE /NODEFAULTLIB; LNK4006 per symbol
+control 86 landing 155
+1,3c1,12
+<       8 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+<       3 ??$GetSubDef@VCJackOfBladesBattleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCJackOfBladesBattleDef@@@@@Z
+<      10 ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z
+---
+>       9 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+>       1 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z
+>       1 ??$GetSubDef@VCGiftDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGiftDef@@@@@Z
+>       5 ??$GetSubDef@VCJackOfBladesBattleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCJackOfBladesBattleDef@@@@@Z
+>       3 ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+>       1 ??$GetSubDef@VCTargetingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTargetingDef@@@@@Z
+>       1 ??$__destroy_aux@PAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@@std@@YIXPAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@0ABU__false_type@0@@Z
+>       5 ??0C2DBoxF@@QAE@ABVC2DVector@@ABVC2DExtentsF@@@Z
+>       2 ??0C2DBoxI@@QAE@ABVC2DCoordI@@J@Z
+>       1 ??0C3DAnimationBlendState@@QAE@XZ
+>      12 ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z
+>       1 ??0CCompositeBlendDesc@@QAE@ABV0@@Z
+6,9c15,25
+<       1 ??0CGameEvent@@QAE@J@Z
+<       5 ??0CRightHandedSet@@QAE@ABV0@@Z
+<       1 ??0CScriptGameResourceObjectBase@@QAE@XZ
+<       1 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+---
+>       1 ??0CEnginePrimitiveStaticMesh@@QAE@_KKABVC3DVector@@ABVCRightHandedSet@@M_NEVCRGBColour@@MW4EEngineInterpolationSet@@ABVCEnginePrimitiveThemeChannelDesc@@3@Z
+>       3 ??0CGameEvent@@QAE@J@Z
+>       1 ??0COpinionSet@@QAE@XZ
+>       1 ??0CParentDefClassBase@@QAE@XZ
+>       7 ??0CRightHandedSet@@QAE@ABV0@@Z
+>       2 ??0CScriptGameResourceObjectBase@@QAE@XZ
+>       2 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+>       1 ??0CThingAICreatureInit@@QAE@PAVCThingPhysical@@0_NABVCCharString@@21@Z
+>       1 ??0CTimer@@QAE@XZ
+>       1 ??1CCompleteAnimation@CAnimateThing@@QAE@XZ
+>       1 ??1CScriptThing@@UAE@XZ
+11,13c27,32
+<       1 ?AddUBYTE@CGameEvent@@QAEXE@Z
+<       6 ?Clear@CEnginePrimitiveHandle@@QAEXXZ
+<       3 ?Compare@?$CBasicString@D@@KIJPBD0@Z
+---
+>       2 ??BCDefString@@QBE?AVCCharString@@XZ
+>       1 ??RHasBuildingAsHomeOrWork@@QBE_NABV?$CIntelligentPointer@VCThingAICreature@@@@@Z
+>       3 ?AddUBYTE@CGameEvent@@QAEXE@Z
+>       1 ?CancelQuickAccessCharge@CInputProcessQuickAccessItems@@AAEXXZ
+>       7 ?Clear@CEnginePrimitiveHandle@@QAEXXZ
+>       6 ?Compare@?$CBasicString@D@@KIJPBD0@Z
+15,16c34,36
+<       5 ?GFRandom@@YIKKPAK@Z
+<       1 ?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z
+---
+>       7 ?GFRandom@@YIKKPAK@Z
+>       2 ?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z
+>       1 ?GFToScreenScaled@NPlayerGui@@YI?AVC2DBoxF@@ABV2@@Z
+17a38
+>       1 ?GetAreaCovering@CANavQuadTreeNode@@QBE?AVC2DBoxF@@XZ
+19c40,41
+<       2 ?GetCRC@CCharString@@QBEKXZ
+---
+>       3 ?GetCRC@CCharString@@QBEKXZ
+>       1 ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@XZ
+20a43
+>       1 ?GetDimensionsAndAdjustMipmapLevel@CEngineSurfaceCompositionManager@@AAEXAAVC2DExtentsI@@PBVCGraphicInfoFrame@@AAK@Z
+22c45
+<       2 ?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ
+---
+>       3 ?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ
+24,25c47,57
+<       4 ?GetRight@CRightHandedSet@@QBE?AVC3DVector@@XZ
+<       1 ?GetString@CDefString@@QBE?AVCCharString@@XZ
+---
+>       5 ?GetRight@CRightHandedSet@@QBE?AVC3DVector@@XZ
+>       1 ?GetRingRadius@CCombatWheel@CDefendingCombatantInfo@@QBEMJ@Z
+>       1 ?GetSize@CANavQuadTreeNode@@QBEMXZ
+>       3 ?GetString@CDefString@@QBE?AVCCharString@@XZ
+>       1 ?IsAlive@CScriptThing@@UBE_NXZ
+>       1 ?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z
+>       1 ?IsLineIntersectingWithOthersInList@NShape@@YI_NABVC2DLineF@@ABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+>       1 ?IsNearlyIdentical@CEngineSurfaceCompositionManager@@AAE_NABVCEngineTextureMorph@@0M@Z
+>       1 ?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ
+>       1 ?IsStillRunnable@CAIStateGroup_JackOfBladesBase@@IAE_NXZ
+>       1 ?IsTriangleWithPointsInside@NShape@@YI_NABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@0W4ECirculationOrder@1@@Z
+26a59,60
+>       1 ?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z
+>       1 ?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z
+30c64
+<       1 ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z
+---
+>       2 ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z
+36a71
+>       1 ?floor@@YAMM@Z

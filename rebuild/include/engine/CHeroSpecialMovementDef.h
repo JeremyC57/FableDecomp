@@ -21,9 +21,17 @@ public:
     float MinimumNumberOfSecondsLeftToBeAllowedToSprint;         // +0x2c
     float TotalTimeToFullyRestoreSprintBarSeconds;               // +0x30
     float NoSecondsToRunBeforeSprintStarts;                      // +0x34
+#ifdef FABLE_RETAIL_CHEROSPECIALMOVEMENTDEF_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x004D5D95: ?GetSizeofClass@CHeroSpecialMovementDef@@UAEKXZ (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual unsigned long GetSizeofClass();
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CHeroSpecialMovementDef) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, TotalTimeToSprintSeconds) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, sizeof(CHeroSpecialMovementDef) == 0x38);
+FABLE_STATIC_ASSERT_AT(26, offsetof(CHeroSpecialMovementDef, TotalTimeToSprintSeconds) == 0x28);
 #else
 #pragma pack(push, 1)
 class CHeroSpecialMovementDef {
@@ -45,12 +53,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CHeroSpecialMovementDef) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, TotalTimeToSprintSeconds) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, MinimumNumberOfSecondsLeftToBeAllowedToSprint) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, TotalTimeToFullyRestoreSprintBarSeconds) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CHeroSpecialMovementDef, NoSecondsToRunBeforeSprintStarts) == 0x34);
+FABLE_STATIC_ASSERT_AT(48, sizeof(CHeroSpecialMovementDef) == 0x38);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CHeroSpecialMovementDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CHeroSpecialMovementDef, TotalTimeToSprintSeconds) == 0x28);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CHeroSpecialMovementDef, MinimumNumberOfSecondsLeftToBeAllowedToSprint) == 0x2c);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CHeroSpecialMovementDef, TotalTimeToFullyRestoreSprintBarSeconds) == 0x30);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CHeroSpecialMovementDef, NoSecondsToRunBeforeSprintStarts) == 0x34);
 #endif // FABLE_RETAIL_CHEROSPECIALMOVEMENTDEF
 
 #endif // FABLE_ENGINE_CHEROSPECIALMOVEMENTDEF_H

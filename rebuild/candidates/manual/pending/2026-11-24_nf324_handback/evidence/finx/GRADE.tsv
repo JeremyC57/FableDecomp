@@ -1,0 +1,6 @@
+address	verdict	old	new	route	reason
+00445620	ACCEPT	?CInputTypeXboxPadButtonEvent_GetType@@YIHPAX@Z	?GetType@CInputTypeXboxPadButtonEvent@@UBE?AW4EInputType@NControlSystem@@XZ	switch	objcheck ALL_EQ, MATCH PASS
+00445670	ACCEPT	?CInputTypeXboxPadLeftStickEvent_GetType@@YIHPAX@Z	?GetType@CInputTypeXboxPadLeftStickEvent@@UBE?AW4EInputType@NControlSystem@@XZ	switch	objcheck ALL_EQ, MATCH PASS
+004456d0	ACCEPT	?CInputTypeXboxPadRightStickEvent_IsInputTypeWithMouseButton@@YI_NPAX0H@Z	?IsInputTypeWithMouseButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EMouseButtonControl@@@Z	switch	objcheck ALL_EQ, MATCH PASS
+00445770	ACCEPT	?CInputTypeMouseWheelMovementUpEvent_GetType@@YIHPAX@Z	?GetType@CInputTypeMouseWheelMovementUpEvent@@UBE?AW4EInputType@NControlSystem@@XZ	switch	objcheck ALL_EQ, MATCH PASS
+00b23360	ACCEPT	?CIEngine__GetPrimitiveDrawDistanceFactor@@YIMPAX@Z	?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ	switch	objcheck ALL_EQ, RELOCATION_MATCH PASS

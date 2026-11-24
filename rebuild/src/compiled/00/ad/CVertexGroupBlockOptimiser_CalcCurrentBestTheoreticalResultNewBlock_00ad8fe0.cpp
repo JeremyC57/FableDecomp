@@ -1,5 +1,5 @@
 // CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResultNewBlock() -- lower bound on the block count when the current block is closed: the existing blocks plus the blocks the remaining groups need after filling the current block's free slots
-// Leaf: ?CalcCurrentBestTheoreticalResultNewBlock@CVertexGroupBlockOptimiser@@
+// Leaf: ?CalcCurrentBestTheoreticalResultNewBlock@CVertexGroupBlockOptimiser@@AAEKXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD8FE0, 0x43 bytes (+ int3 padding), thiscall, plain `ret`, unsigned long.
 // Identity: Ego_r.pdb ?CalcCurrentBestTheoreticalResultNewBlock@CVertexGroupBlockOptimiser@@AAEKXZ (no-argument private
 // unsigned long). Its only caller is AddBlocks 0x00AD9F10, which calls this one first and the segment-based sibling
@@ -44,7 +44,9 @@ public:
 private:
     unsigned long CountRemainingGroups() const;                // 0x00AD8ED0
 public:
+    private:
     unsigned long CalcCurrentBestTheoreticalResultNewBlock();
+    public:
 };
 
 unsigned long CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResultNewBlock()

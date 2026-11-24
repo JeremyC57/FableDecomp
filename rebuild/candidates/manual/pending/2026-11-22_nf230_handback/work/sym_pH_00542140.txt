@@ -1,0 +1,17 @@
+DEF ??1?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@QAE@XZ
+DEF ??B?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@QBE_NXZ
+DEF ??C?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@QBEPBVCTextEntry@NGameText@@XZ
+DEF ?DecRef@RefCount@@QBEXXZ
+DEF ?GetRefCount@RefCount@@QBEJXZ
+DEF ?GetTextDataBank@Game@@QBEPAVCDataBank@NGameText@@XZ
+DEF ?GetTextDataBank@System@@QBEPAVCDataBank@NGameText@@XZ
+DEF ?Release@CTextEntry@NGameText@@QBEXXZ
+DEF ?SetValue@CIconText@NUISystem@@QAEXK@Z
+UND ??1CWideString@@QAE@XZ
+UND ??4CWideString@@QAEABV0@ABV0@@Z
+UND ?Game_013b86a0@@3PAUGame@@A
+UND ?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z
+UND ?GetText@CTextEntry@NGameText@@QBE?AVCWideString@@XZ
+UND ?GetTextInfo@CDataBank@NGameText@@QBEPBVCDataBankTextEntry@2@K@Z
+UND ?NullString@CWideString@@2V1@A
+UND ?System_013b871c@@3PAUSystem@@A

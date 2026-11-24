@@ -1,0 +1,14 @@
+##### 00921630 renames: ?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z=??$GetPFirstThing@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z
+sections head 17 new 17
+DIFF 0 .drectve .drectve bytes False relocs True 62 292
+bad 1 text_sections_equal=15
+tables H=0 N=0
+##### 00910100 renames: ?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z=??$GetPFirstThing@VCThingFilter_HasDefGlobalIndex@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z
+sections head 17 new 17
+DIFF 0 .drectve .drectve bytes False relocs True 62 304
+bad 1 text_sections_equal=14
+tables H=0 N=0
+##### 006bbf20 renames: ?Compare@CCharString@@QBE_NPBD@Z=??9CCharString@@QBE_NPBD@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

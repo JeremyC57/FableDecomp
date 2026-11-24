@@ -1,3 +1,4 @@
+// Leaf: ?IsIOFinished@CAFile@@UBE_NXZ
 // CAFile::IsIOFinished() const -- synchronous files are always finished
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00401650, 3 bytes. Callees: none.
 //
@@ -7,10 +8,12 @@
 // they asked to be filled.
 //
 // Matching: `this` is unused, body is `mov al,1; ret`.
-class CAFile { public: unsigned char pad[4]; };
+class CAFile { public:
+    virtual bool IsIOFinished() const;
+};
 
-bool __fastcall CAFile_IsIOFinished(const CAFile* file)
+bool CAFile::IsIOFinished() const
 {
-    (void)file;
     return true;
 }
+// Flatten route (flatten_pilot v4, NF324): CAFile_IsIOFinished -> CAFile::IsIOFinished, the RTTI-placed PDB member; class model: the row's local class model.

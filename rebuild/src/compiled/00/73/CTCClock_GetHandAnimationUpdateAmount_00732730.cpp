@@ -1,3 +1,4 @@
+// Leaf: ?GetHandAnimationUpdateAmount@CTCClock@@IBEMXZ
 // CTCClock::GetHandAnimationUpdateAmount() -- the time-of-day advance since LastTimeUpdated (wrapping through 1.0 when the day rolled over), scaled by the clock def's hand speed: x2/3 for type 2, x8 for type 1, otherwise 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00732730, length 80 bytes.
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80 (`mov eax,[g_world] ; mov eax,[eax+24h] ;
@@ -31,10 +32,12 @@ class CTCClock : public CTCBase { public:
     unsigned char _pad04[8];                // +0x04 CTCBase
     CClockDef*    PDef;                     // +0x0c CDefPointer<CClockDef const>
     float         LastTimeUpdated;          // +0x10
-    float GetHandAnimationUpdateAmount();
+    protected:
+    float GetHandAnimationUpdateAmount() const;
+    public:
 };
 
-float CTCClock::GetHandAnimationUpdateAmount()
+float CTCClock::GetHandAnimationUpdateAmount() const
 {
     float time = PeekWorld().PGameTimeManager->Time;
     float delta;

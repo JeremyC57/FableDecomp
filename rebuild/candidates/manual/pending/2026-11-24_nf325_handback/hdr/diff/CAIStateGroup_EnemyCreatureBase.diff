@@ -1,0 +1,21 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureBase.h	2026-11-23 23:33:42.331827482 +0000
++++ hdr/engine/CAIStateGroup_EnemyCreatureBase.h	2026-11-24 01:06:56.423610792 +0000
+@@ -47,6 +47,18 @@
+     virtual EAIStateGroupType GetStateGroupType() const;              // 0x008FE0EA
+ protected:
+ #endif
++#ifdef FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_OVERRIDES
++    // Opt-in (NF325, 2026-11-24): declarations only, no layout change. The four overrides the retail RTTI vftable 0x0128B8BC places under
++    // this class (ghidra_out/labels_rtti_port.tsv), in the spelling both Ego_r.pdb and FableWin.pdb give; each overrides the
++    // CAIStateGroupBase virtual at the same slot (no new slot). Without them a derived table emits CAIStateGroupBase:: at slots 1/2/9/11
++    // (NF322 probe); with them the five EnemyCreatureBase-derived models match retail there (NF325 evidence/probe_*.txt).
++public:
++    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0091D820 ?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
++    virtual void OnActivate();                                            // slot 2 0x0091D8C0 ?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
++    virtual void Cleanup();                                               // slot 9 0x0091D850 ?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
++    virtual bool IsRunnable();                                            // slot 11 0x0091DD30 ?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ
++protected:
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(42, sizeof(CAIStateGroup_EnemyCreatureBase)==0x1c);
+ #else

@@ -38,7 +38,10 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
 
 class CCreatureAction_RiseUp : public CCombatActionBase { public:   // retail sizeof 0x118
     unsigned char _pad114[4];               // +0x114
-    void RemoveUndergroundMode();           // 0x008B7640
+    protected:
+    void RemoveUndergroundMode();
+    public:
+           // 0x008B7640
 };
 
 class CCreatureAction_UndeadRiseUp : public CCreatureAction_RiseUp { public:

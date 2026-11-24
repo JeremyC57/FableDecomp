@@ -1,3 +1,4 @@
+// Leaf: ?CreateBuilding@CTCMeshAutomaticEntityCreator@@AAEXABVCCharString@@0PAVCTCGraphicAppearance@NGraphicAppearance@@@Z
 // CTCMeshAutomaticEntityCreator::CreateBuilding(const CCharString& dummyName, const CCharString& buildingName, CTCGraphicAppearance* appearance) -- create the named building at every dummy of that name
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
@@ -30,7 +31,7 @@ class CTCGraphicAppearance { public:
     unsigned char _pad00[0x34];
     float         m_scale;                            // +0x34
     float GetScale() const { return m_scale; }
-    long GetNoDummyObjects(const CCharString& name, float scale);   // 0x004BE000
+    long GetNoDummyObjects(const CCharString& name, float scale) const;   // 0x004BE000
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
     void SetScale(float scale);                       // 0x004BFA50
 };
@@ -117,7 +118,9 @@ protected:
 };
 struct CTCMeshAutomaticEntityCreator : CTCBase {
     void AddOwnedEntityTC(CThing* created);           // 0x0072DD60
+    private:
     void CreateBuilding(const CCharString& dummyName, const CCharString& buildingName, CTCGraphicAppearance* appearance);
+    public:
 };
 
 void CTCMeshAutomaticEntityCreator::CreateBuilding(const CCharString& dummyName, const CCharString& buildingName,

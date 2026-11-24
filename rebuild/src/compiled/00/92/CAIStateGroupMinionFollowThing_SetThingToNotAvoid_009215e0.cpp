@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionFollowThing::SetThingToNotAvoid(const CThing* thing) -- tell the minion's navigation component (interface 7) to ignore the given thing when avoiding obstacles
-// Leaf: ?SetThingToNotAvoid@CAIStateGroup_MinionFollowThing@@
+// Leaf: ?SetThingToNotAvoid@CAIStateGroup_MinionFollowThing@@IAEXPBVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009215E0, 72 bytes (80 with padding), __fastcall `ret 4`.
 // Identity: Ego_r.pdb ?SetThingToNotAvoid@CAIStateGroup_MinionFollowThing@@IAEXPBVCThing@@@Z (protected); the only caller
@@ -35,7 +35,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_MinionFollowThing : CAIStateGroupBase {
+    protected:
     void SetThingToNotAvoid(const CThing* thing);
+    public:
 };
 
 void CAIStateGroup_MinionFollowThing::SetThingToNotAvoid(const CThing* thing)

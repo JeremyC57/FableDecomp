@@ -7,7 +7,7 @@
 //   menu component's IsActive() @ 0x00625930 (+0x0C), IsQuitting() @ 0x00625940 (+0x1C) and Deactivate() @ 0x00625920
 //   (manifest labels "GetCanItemBeQuickAssigned" / "CTCCreditsUI::Deactivate" are propagated; names as in the landed
 //   CTCInventory::AddCloseInventoryEvent 0x00584A73), CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90,
-//   IsEventButtonReleased @ 0x00687B30, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
+//   IsEventButtonHeld @ 0x00687B30, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
 //   @ 0x0041E5F2 + slot 0, CProcessedInput::SetAsPerformedEvent @ 0x00A0D390.
 // Layout: `this` is engine/CInputProcessGameBase.h (MyPlayer +0x18); CThing dead flag bit 0 of +0x91, component bitset
 //   +0x20 (kind 0xF6 = word 7 bit 22) and map +0x44 as in the landed CInputProcessBetting::ProcessInput 0x00691560.
@@ -90,7 +90,7 @@ void CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProce
             return;
         } else
             return;
-    } else if (IsEventButtonReleased(event)) {
+    } else if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event))
             NUISystem::CManager::GetInstance()->SendEvent(0);
         else if (IsEventGameAction(GAME_ACTION_INVENTORY_DOWN, event))

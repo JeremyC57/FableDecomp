@@ -1,17 +1,17 @@
-// Leaf: ?Transfer@CLightningOrbDef@@QAEXAAVCPersistContext@@@Z
+// Leaf: ?Transfer@CLightningOrbDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     template <class T> void Transfer(T& value);                 // 0x00431102 Transfer(long&)
 };
 class CLightningOrbDef { public:
-    unsigned char _pad[0x28];
+    unsigned char _pad[0x24];
     Field f0; // 0x28
     Field f1; // 0x2c
     Field f2; // 0x30
     Field f3; // 0x34
     Field f4; // 0x38
-    void Transfer(CPersistContext& ctx);
+    virtual void Transfer(CPersistContext& ctx);
 };
 
 void CLightningOrbDef::Transfer(CPersistContext& ctx)

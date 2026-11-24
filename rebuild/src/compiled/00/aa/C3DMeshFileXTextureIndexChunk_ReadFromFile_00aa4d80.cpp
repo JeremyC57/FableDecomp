@@ -1,6 +1,8 @@
 // C3DMeshFileXTextureIndexChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&) -- reads the 4-byte texture index through the inlined memory-stream Read
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA4D80, length 133 bytes.
-// Leaf: ReadFromFile
+// Leaf: ?ReadFromFile@C3DMeshFileXTextureIndexChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z
+// Switch route (NF318, 2026-11-23): defined on the real class of engine/C3DMeshFileXTextureIndexChunk.h (class-model switch FABLE_RETAIL_C3DMESHFILEXTEXTUREINDEXCHUNK; was ?ReadFromFile@C3DMeshFileXTextureIndexChunk_Methods@@QAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address. Bytes unchanged.
 // Callees: 0x00993CA0 CDataInputStream::ReadWithSrcChunkOverflow (when the current chunk runs out).
 // Shape: the landed CPersistTraits TransferBinaryIn model (0x007AD7F0): a local `index` (homed in the dead
 // stream-argument slot) is filled by the inlined Read(buffer, size) -- the position widened to __int64 and
@@ -8,8 +10,12 @@
 // store the uninitialised local exactly like retail), a direct dword copy when 4 bytes remain in the chunk,
 // else the out-of-line overflow read -- and the value is stored to Index (+0x10).
 // The PDB header (rebuild/include/engine/C3DMeshFileXTextureIndexChunk.h) agrees: Index at +0x10.
-#include "fable_compiler.h"
+// Preamble: the define / include block of the landed precedent C3DMeshFileXTextureIndexChunk_WriteToFile_00aa4af0.cpp.
+#define FABLE_RETAIL_CCHUNKEDFILECHUNK
+#define FABLE_RETAIL_C3DMESHFILEXTEXTUREINDEXCHUNK
 #include "engine/C3DMeshFileXTextureIndexChunk.h"
+#include "engine/CDataOutputStream.h"
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -40,11 +46,7 @@ private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
-struct C3DMeshFileXTextureIndexChunk_Methods : C3DMeshFileXTextureIndexChunk {
-    void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);
-};
-
-void C3DMeshFileXTextureIndexChunk_Methods::ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader)
+void C3DMeshFileXTextureIndexChunk::ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader)
 {
     unsigned long index;
     in.Read(&index, sizeof(index));

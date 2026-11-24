@@ -1,0 +1,4 @@
+DEF ??ACLayerTree@@QAEAAW4EEngine2DLayer@@ABJ@Z
+DEF ?SetMetaLayer@CManager@NUISystem@@UAEXJ@Z
+UND ?Find@CLayerTree@@QAEAAW4EEngine2DLayer@@J@Z
+UND ?g_metaLayerBase@@3PAJA

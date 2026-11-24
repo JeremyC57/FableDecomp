@@ -1,0 +1,109 @@
+addr       parity           behav  name
+00692460   MATCH            PASS   GetAnimDelayTime
+006924d0   MATCH            PASS   GetAnimExtraFlags
+006924f0   MATCH            PASS   IsStrikeEventActive
+00692500   MATCH            PASS   IsStrikeAction
+0049d970   MATCH            PASS   PostLoadInit
+0049e1b0   MATCH            PASS   GetThingManager
+004ae8b0   MATCH            PASS   GetWorldMap
+004fb280   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004fb280   RELOCATION_MATCH PASS   DrawGetFrame
+005063d0   WARN RELOC_NAME: ?fl_helper@@YGXJH@Z -> 00502620 labelled 'CWorldMap::LoadLevel'
+005063d0   RELOCATION_MATCH PASS   ForceLoad
+00a19ae0   MATCH            PASS   CalculateNavigableWidthOfLine
+00b6ccf0   WARN RELOC_NAME: ?SetSize@CBridgeVertexBufferMethods@@QAEXJPAUCBridgeVertexBufferResult@@@Z -> 00b6cd10 labelled 'std::vector<CTVertexLandscapeBackground, std::allocator<CTVertexLandscapeBackground>>::resize'
+00b6ccf0   RELOCATION_MATCH PASS   SetBridgeVertexBufferSize
+0088e080   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0088e080   RELOCATION_MATCH PASS   GetConstantFPS
+0088f3e0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+0088f3e0   RELOCATION_MATCH PASS   IsTutorialSystemEnabled
+0088fa90   RELOCATION_MATCH PASS   GetPlayerUsingMeleeDummies
+0088fab0   RELOCATION_MATCH PASS   GetPlayerUsingRangedDummies
+0088faf0   RELOCATION_MATCH PASS   GetCheapHeadLooking
+0088fb10   RELOCATION_MATCH PASS   GetQuitTavernGame
+0088fb30   RELOCATION_MATCH PASS   GetPrizeTavernTable
+0088fb50   RELOCATION_MATCH PASS   GetBettingActive
+0088fb70   RELOCATION_MATCH PASS   GetBettingAccept
+0088fb90   RELOCATION_MATCH PASS   GetBettingAmount
+0088fbb0   RELOCATION_MATCH PASS   GetCountBetMoneyDown
+0088fbd0   RELOCATION_MATCH PASS   GetSpotTheAdditionBeaten
+0088fbf0   RELOCATION_MATCH PASS   GetGlobalTargetingDistanceOffset
+0088fc10   RELOCATION_MATCH PASS   GetTradingPriceMult
+0088fc30   RELOCATION_MATCH PASS   GetBoastingEnabled
+00891510   WARN RELOC_NAME: ?Guild_RemoveAllAvailableQuestCards@@YIXPAUCGuild@@@Z -> 004afdb0 labelled 'CEngine::ChangeCameraAngle'
+00891510   RELOCATION_MATCH PASS   RemoveAllAvailableQuestCardsFromGuild
+00891870   RELOCATION_MATCH PASS   IsHeroOnQuest
+00891c30   WARN RELOC_NAME: ?g_gameObj@@3PAUGameObj@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00891c30   WARN RELOC_NAME: ?QuestMgr_RemoveAll@@YIXPAUQuestMgr@@@Z -> 00647319 labelled 'NPlayerGui::CDrawQuestInfo::Clear'
+00891c30   RELOCATION_MATCH PASS   RemoveAllQuestInfoElements
+00892030   WARN RELOC_NAME: ?g_obj@@3PAUCObj@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00892030   RELOCATION_MATCH PASS   MiniMapRemoveAllMarkers
+00892270   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00892270   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00892270   RELOCATION_MATCH PASS   IsInCutscene
+00892b30   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00892b30   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00892b30   WARN RELOC_NAME: ?Query@CSub@@QAE_N_N@Z -> 00490927 labelled 'CSubtitleRenderer::IsAllowedToSetText'
+00892b30   RELOCATION_MATCH PASS   IsSafeToDisplayGameInfo
+00893040   RELOCATION_MATCH PASS   GetActiveGossipCategoriesSize
+00893050   RELOCATION_MATCH PASS   GetIsGossipForPlayerSize
+008fd27c   MATCH            PASS   GetStateGroupType
+0088de90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0088de90   MATCH            PASS   EntitySetAsAllowedToFollowHero
+0088ded0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0088ded0   MATCH            PASS   EntitySetAsAllowedToChangeRegionFollowingState
+0088df20   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0088df20   MATCH            PASS   EntitySetAsRespondingToFollowAndWaitExpressions
+0088dfd0   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+0088dfd0   RELOCATION_MATCH PASS   OpenHouseDoors
+0088e000   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+0088e000   RELOCATION_MATCH PASS   CloseHouseDoors
+0088df80   RELOCATION_MATCH PASS   HeroGoDigging
+0088dfa0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0088dfa0   RELOCATION_MATCH PASS   HeroStopDigging
+0088e9e0   MATCH            PASS   IsInMovieSequence
+
+WINS: 43
+  00692460 MATCH CCreatureActionBase::?GetAnimDelayTime@CCreatureActionBase@@UBEJXZ
+  006924d0 MATCH CCreatureActionBase::?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ
+  006924f0 MATCH CCreatureActionBase::?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ
+  00692500 MATCH CCreatureActionBase::?IsStrikeAction@CCreatureActionBase@@UBE_NXZ
+  0049d970 MATCH CWorld::?PostLoadInit@CWorld@@MAEXXZ
+  0049e1b0 MATCH CWorld::?GetThingManager@CWorld@@UAEAAVCThingManager@@XZ
+  004ae8b0 MATCH CWorld::?GetWorldMap@CWorld@@UAEAAVCWorldMap@@XZ
+  004fb280 RELOCATION_MATCH CWorldMap::?DrawGetFrame@CWorldMap@@UBEJXZ
+  005063d0 RELOCATION_MATCH CWorldMap::?ForceLoad@CWorldMap@@UAEXJ@Z
+  00a19ae0 MATCH CNavigatorBase::?CalculateNavigableWidthOfLine@CNavigatorBase@@UAEXABVC3DVector@@0AAM1@Z
+  00b6ccf0 RELOCATION_MATCH CLandscapePatchTesselator::?SetBridgeVertexBufferSize@CLandscapePatchTesselator@@EAEXJ@Z
+  0088e080 RELOCATION_MATCH CGameScriptInterface::?GetConstantFPS@CGameScriptInterface@@UBEJXZ
+  0088f3e0 RELOCATION_MATCH CGameScriptInterface::?IsTutorialSystemEnabled@CGameScriptInterface@@UBE_NXZ
+  0088fa90 RELOCATION_MATCH CGameScriptInterface::?GetPlayerUsingMeleeDummies@CGameScriptInterface@@UAE_NXZ
+  0088fab0 RELOCATION_MATCH CGameScriptInterface::?GetPlayerUsingRangedDummies@CGameScriptInterface@@UAE_NXZ
+  0088faf0 RELOCATION_MATCH CGameScriptInterface::?GetCheapHeadLooking@CGameScriptInterface@@UAE_NXZ
+  0088fb10 RELOCATION_MATCH CGameScriptInterface::?GetQuitTavernGame@CGameScriptInterface@@UAE_NXZ
+  0088fb30 RELOCATION_MATCH CGameScriptInterface::?GetPrizeTavernTable@CGameScriptInterface@@UAE_NXZ
+  0088fb50 RELOCATION_MATCH CGameScriptInterface::?GetBettingActive@CGameScriptInterface@@UAE_NXZ
+  0088fb70 RELOCATION_MATCH CGameScriptInterface::?GetBettingAccept@CGameScriptInterface@@UAE_NXZ
+  0088fb90 RELOCATION_MATCH CGameScriptInterface::?GetBettingAmount@CGameScriptInterface@@UAEJXZ
+  0088fbb0 RELOCATION_MATCH CGameScriptInterface::?GetCountBetMoneyDown@CGameScriptInterface@@UAE_NXZ
+  0088fbd0 RELOCATION_MATCH CGameScriptInterface::?GetSpotTheAdditionBeaten@CGameScriptInterface@@UAE_NXZ
+  0088fbf0 RELOCATION_MATCH CGameScriptInterface::?GetGlobalTargetingDistanceOffset@CGameScriptInterface@@UAEMXZ
+  0088fc10 RELOCATION_MATCH CGameScriptInterface::?GetTradingPriceMult@CGameScriptInterface@@UAEMXZ
+  0088fc30 RELOCATION_MATCH CGameScriptInterface::?GetBoastingEnabled@CGameScriptInterface@@UAE_NXZ
+  00891510 RELOCATION_MATCH CGameScriptInterface::?RemoveAllAvailableQuestCardsFromGuild@CGameScriptInterface@@UBEXXZ
+  00891870 RELOCATION_MATCH CGameScriptInterface::?IsHeroOnQuest@CGameScriptInterface@@UBE_NXZ
+  00891c30 RELOCATION_MATCH CGameScriptInterface::?RemoveAllQuestInfoElements@CGameScriptInterface@@UBEXXZ
+  00892030 RELOCATION_MATCH CGameScriptInterface::?MiniMapRemoveAllMarkers@CGameScriptInterface@@UBEXXZ
+  00892270 RELOCATION_MATCH CGameScriptInterface::?IsInCutscene@CGameScriptInterface@@UBE_NXZ
+  00892b30 RELOCATION_MATCH CGameScriptInterface::?IsSafeToDisplayGameInfo@CGameScriptInterface@@UBE_NXZ
+  00893040 RELOCATION_MATCH CGameScriptInterface::?GetActiveGossipCategoriesSize@CGameScriptInterface@@UAEHXZ
+  00893050 RELOCATION_MATCH CGameScriptInterface::?GetIsGossipForPlayerSize@CGameScriptInterface@@UAEHXZ
+  008fd27c MATCH CAIStateGroupBase::?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+  0088de90 MATCH CGameScriptInterface::?EntitySetAsAllowedToFollowHero@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0088ded0 MATCH CGameScriptInterface::?EntitySetAsAllowedToChangeRegionFollowingState@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0088df20 MATCH CGameScriptInterface::?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0088dfd0 RELOCATION_MATCH CGameScriptInterface::?OpenHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0088e000 RELOCATION_MATCH CGameScriptInterface::?CloseHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0088df80 RELOCATION_MATCH CGameScriptInterface::?HeroGoDigging@CGameScriptInterface@@UBEXXZ
+  0088dfa0 RELOCATION_MATCH CGameScriptInterface::?HeroStopDigging@CGameScriptInterface@@UBEXXZ
+  0088e9e0 MATCH CGameScriptInterface::?IsInMovieSequence@CGameScriptInterface@@UBE_NXZ

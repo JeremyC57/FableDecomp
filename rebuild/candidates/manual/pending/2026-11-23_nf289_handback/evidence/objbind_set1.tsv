@@ -1,0 +1,24 @@
+#16	00ac96e0	binder 00acd840	standin_in_obj=False	pdb_in_obj=True	?UpdateSubPair_00ac96e0@COptimisedPrimitive@@QAEXABUCSubContraction@QuadricOptimiserIntern
+#66	0066b120	binder 0066b1d0	standin_in_obj=False	pdb_in_obj=True	?PlayAttachedSampleByName_0066b120@CTCSoundPlayer@@QAEKPAUCASoundBank@@ABVCCharString@@PAU
+#80	004c7a80	binder 0066b1d0	standin_in_obj=False	pdb_in_obj=True	?GetSoundBank_004c7a80@CThing@@QAEPAUCASoundBank@@XZ
+#89	0062fe60	binder 00433670	standin_in_obj=False	pdb_in_obj=False	??0CClass_0062fe60@@QAE@XZ
+#95	00ee2db0	binder 00ee3ee0	NO_OBJ: not compiled (HEAD source fails clang in its own lines, not D1); the False/False of the first run was a missing object
+#133	008f9ca0	binder 008fa000	standin_in_obj=False	pdb_in_obj=True	?CheckAndTrigger@CMusicTimer_008fa000@@QAEXXZ
+#137	00ad64c0	binder 00aca450	standin_in_obj=True	pdb_in_obj=False	??A?$map@IUCContractionReference@QuadricOptimiserInternals@X_00aca450@@@std@X_00aca450@@QA
+#137	00ad64c0	binder 00aca830	standin_in_obj=False	pdb_in_obj=True	??A?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@V?$allocator@U?
+#17	004ddf0c	binder 00580371	standin_in_obj=True	pdb_in_obj=False	?TransferBinaryIn_004ddf0c@?$CPersistTraits@VCDefIndex@@@@QAEXPAVCDataInputStream@@AAVCDef
+#104	0043151d	binder 00431493	standin_in_obj=False	pdb_in_obj=True	??$GFSerialiseMapBinaryIn@JVCCharString@@U?$less@VCCharString@@@std@@@@YIXAAVCMemoryDataIn
+#105	004314c8	binder 00431493	standin_in_obj=False	pdb_in_obj=True	??$GFSerialiseMapBinaryOut@JVCCharString@@U?$less@VCCharString@@@std@@@@YIXAAVCDataOutputS
+#112	004acf90	binder 006c5e90	standin_in_obj=False	pdb_in_obj=False	??$GetAllThings@VCThing@@UCThingList@N_004ab4f0@@V?$CFilter_Bind2@VCThingFilter_None@@VCTh
+#112	004acf90	binder 004a3740	standin_in_obj=False	pdb_in_obj=True	??$GetAllThings@VCThingAICreature@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICr
+#113	005ed860	binder 008a8570	standin_in_obj=False	pdb_in_obj=True	??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingF
+#138	00cd3640	binder 01224c6d	standin_in_obj=False	pdb_in_obj=True	??0?$map@VCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@U?$less@VCUnprovenMapKey_
+#139	00448380	binder 00448950	standin_in_obj=True	pdb_in_obj=False	??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00448950@@@FableHeap_00448950@@
+#145	006b8e20	binder 006b9f10	standin_in_obj=True	pdb_in_obj=False	??4?$Pair_006b9f10@IU?$CountedPointer_006b9f10@UObject_006b9f10@@@@@@QAEAAU0@ABU0@@Z
+#146	00825090	binder 00825b80	standin_in_obj=True	pdb_in_obj=False	??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00825b80@@@FableHeap_00825b80@@
+#147	00827f80	binder 00828dc0	standin_in_obj=True	pdb_in_obj=False	??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00828dc0@@@FableHeap_00828dc0@@
+#148	00a7faf0	binder 00a81170	standin_in_obj=True	pdb_in_obj=False	??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00a81170@@@FableHeap_00a81170@@
+#149	00ae98e0	binder 00ae9df0	standin_in_obj=True	pdb_in_obj=False	??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@
+#163	006753b0	binder 00676740	NO_OBJ: not compiled (HEAD source fails clang in its own lines, not D1); the False/False of the first run was a missing object
+#170	0086b2a0	binder 0086e7c0	standin_in_obj=False	pdb_in_obj=True	??0?$vector@VCMorphSetTextureMorph@CMorphSet@CRandomAppearanceMorph@@V?$allocator@VCMorphS
+#102	0090edc0	binder 0090ee20	standin_in_obj=False	pdb_in_obj=False	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind3@VCMes

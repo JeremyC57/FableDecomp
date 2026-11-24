@@ -6,7 +6,7 @@ class CEngineInternalPrimitiveBase;
 class CMatrix3x4 { public: float m_rows[12]; };
 class C3DBoundingBox { public:
     float Min[3]; float Max[3];
-    void CalculateMatrix(CMatrix3x4* matrix) const;   // 0x00ADEBC0
+    void CalculateMatrix(CMatrix3x4& matrix) const;   // 0x00ADEBC0 (NF313: the PDB parameter type, both PDBs)
 };
 
 struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalPrimitiveBase vtable slots used by the group/changer/viewport bodies
@@ -56,7 +56,7 @@ bool CEngineInternalPrimitiveGroup::GetBoundingBoxTransform(CMatrix3x4& transfor
 {
     C3DBoundingBox box;
     if (GetBoundingBoxWorldSpace(box)) {
-        box.CalculateMatrix(&transform);
+        box.CalculateMatrix(transform);
         return true;
     }
     return false;

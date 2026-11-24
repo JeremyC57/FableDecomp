@@ -16,7 +16,7 @@ struct SScalarTag { SScalarTag() { } };   // user constructor: no zero-initialis
 
 class CLocalDetailObjectCollectionType { public:          // 0x54 bytes
     unsigned char _body[0x54];
-    bool IsEquivalent(const CLocalDetailObjectCollectionType& other);                // 0x00BE2680
+    bool IsEquivalent(const CLocalDetailObjectCollectionType& other) const;                // 0x00BE2680
     CLocalDetailObjectCollectionType(const CLocalDetailObjectCollectionType& other);  // 0x00BE26C0
 };
 

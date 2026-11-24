@@ -1,0 +1,6 @@
+pH 004197a0 CMainGameComponent::SetQuit MATCH flags= [] leaf=
+pS 004197a0 CMainGameComponent::SetQuit MATCH flags= [] leaf=?SetQuit@CMainGameComponent@@UAEXXZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?SetQuit@T@@QAEXXZ
+> DEF ?SetQuit@CMainGameComponent@@UAEXXZ

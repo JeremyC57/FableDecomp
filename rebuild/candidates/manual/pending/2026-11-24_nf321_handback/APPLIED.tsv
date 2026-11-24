@@ -1,0 +1,10 @@
+address	file	change
+0x004FF8A0	00/4f/CWorldMap_ForceUnload_004ff8a0.cpp	body port: ?ForceUnload@CWorldMap_Methods@@QAEXJ@Z -> ?ForceUnload@CWorldMap@@UAEXJ@Z
+0x008FD892	00/8f/CAIStateGroupBirdGroundWander_Initialise_008fd892.cpp	body port: ?Initialise@CAIStateGroup_BirdGroundWander_Retail@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z -> ?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+0x00891320	00/89/CGameScriptInterface_EnableDangerMusic_00891320.cpp	body port: ?EnableDangerMusic@CGameScriptInterface_Methods@@QBEXW4EMusicSetType@@@Z -> ?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z
+0x00A39C70	00/a3/CWADFile_GetAlignment_00a39c70.cpp	body port: ?GetAlignment@CWADFile_Methods@@QAEXXZ -> ?GetAlignment@CWADFile@@UBEJXZ
+0x00A75B50	00/a7/CNavNavigableLeafNode_RemoveRegionZero_00a75b50.cpp	body port: ?RemoveRegionZero@CNavNavigableLeafNode_Methods@@QAE_NXZ -> ?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ
+0x00B5EAD0	00/b5/CEngineScreenEffectRadialBlurRenderer_GetConsoleEnableFunctionName_00b5ead0.cpp	body port: ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer_Methods@@QAE?AVCCharString@@XZ -> ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ
+0x00A667C0	00/a6/CKeyboard_EventScanStart_00a667c0.cpp	body port: ?EventScanStart@CKeyboard@@QAE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z -> ?EventScanStart@CKeyboard@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z
+0x00B23B50	00/b2/CEngine_SetCamera_00b23b50.cpp	body port: ?SetCamera@CEngine_Methods@@QAEXPAVCCamera@@@Z -> ?SetCamera@CEngine@@UAEXPBVCCamera@@@Z
+0x00ABFD70	00/ab/C3DMeshFileMaterialExtChunk_GetChunkInfo_00abfd70.cpp	body port: ?GetChunkInfo@C3DMeshFileMaterialExtChunk_Methods@@QBE?AVCCharString@@XZ -> ?GetChunkInfo@C3DMeshFileMaterialExtChunk@@UBE?BVCCharString@@XZ

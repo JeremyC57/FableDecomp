@@ -1,3 +1,4 @@
+// Leaf: ?Clone@CObstacleNavigatorExternalInterface@@UBEPAVCNavigatorExternalInterface@@XZ
 #pragma optimize("s",on)
 // CObstacleNavigatorExternalInterface::Clone  @ 004df4ca
 // Pattern: return new CObstacleNavigatorExternalInterface(*this);
@@ -7,13 +8,13 @@ class CNavigatorExternalInterface { public: int dummy; };
 
 class CObstacleNavigatorExternalInterface
 { public:
-    char data[0x14];
+    char data[0x10];
     CObstacleNavigatorExternalInterface() {}
     CObstacleNavigatorExternalInterface(const CObstacleNavigatorExternalInterface& src);
-    CNavigatorExternalInterface* Clone();
+    virtual CNavigatorExternalInterface* Clone() const;
 };
 
-CNavigatorExternalInterface* CObstacleNavigatorExternalInterface::Clone()
+CNavigatorExternalInterface* CObstacleNavigatorExternalInterface::Clone() const
 {
     return (CNavigatorExternalInterface*)new CObstacleNavigatorExternalInterface(*this);
 }

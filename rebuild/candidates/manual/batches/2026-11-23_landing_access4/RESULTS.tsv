@@ -1,0 +1,538 @@
+address	verdict	old	new	reason
+00406c20	SKIP	?GetAutoSaveDisplayName@CUserProfileManager@@QAE?AVCWideString@@XZ	?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ	identity: the PDB name is claimed by another address 004069e0
+004167cd	SKIP	?GetCurrentFrameFinishTimeApproximation@CMainGameComponent@@QAENXZ	?GetCurrentFrameFinishTimeApproximation@CMainGameComponent@@IBENXZ	identity: the PDB name is claimed by another address 008f2c60
+004189c2	SKIP	?Run@CMainGameComponent@@QAE_NPAPAVCGameComponent@@@Z	?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z	virtual target, local model has a base clause
+00427dc9	SKIP	?CreateLevelSlider@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z	?CreateLevelSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z	nested scope or operator / special member
+00427f31	SKIP	?CreateStaticSlider@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	?CreateStaticSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	nested scope or operator / special member
+0042819a	SKIP	?CreateStaticSliderBidirectional@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	?CreateStaticSliderBidirectional@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	nested scope or operator / special member
+00430470	SKIP	?GetSizeofClass@CControlsDef@@QAEHXZ	?GetSizeofClass@CControlsDef@@UAEKXZ	virtual target, local model has no leading vptr slot
+00431e30	SKIP	?GetSizeofClass@CFrontEndDef@@QAEHXZ	?GetSizeofClass@CFrontEndDef@@UAEKXZ	virtual target, local model has no leading vptr slot
+00434280	SKIP	?GetSizeofClass@CConfigOptionsDefaultsDef@@QAEHXZ	?GetSizeofClass@CConfigOptionsDefaultsDef@@UAEKXZ	virtual target, local model has no leading vptr slot
+0045f178	SKIP	?Transfer@COpinionSourceDef@@QAEXAAVCPersistContext@@@Z	?Transfer@COpinionSourceDef@@UAEXAAVCPersistContext@@@Z	virtual target, local model has a base clause
+00461b98	SKIP	?Copy@CCombatAbilityBlockLightWeaponAttackDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CCombatAbilityBlockLightWeaponAttackDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has a base clause
+00461d2c	SKIP	?Copy@CCombatAbilityBlockProjectileWeaponAttackDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CCombatAbilityBlockProjectileWeaponAttackDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has no leading vptr slot
+00463923	SKIP	?Copy@CThingNoiseDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CThingNoiseDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has a base clause
+00477288	SKIP	?Copy@CEngineLocalDetailGeneratorDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CEngineLocalDetailGeneratorDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has a base clause
+0047cfd3	SKIP	?GetCameraSensitivity@CUserProfileManager@@QAEMXZ	?GetCameraSensitivity@CUserProfileManager@@QBEMXZ	identity: the PDB name is claimed by another address 00437470,00437490,0047cfc2,0054a4f0
+0047cfee	SKIP	?BoughtSomething@CAIStateGroup_BuyFromSeller@@QAEXXZ	?BoughtSomething@CAIStateGroup_BuyFromSeller@@AAEXXZ	identity: the PDB name is claimed by another address 007e5950,00919a30,00b86a10
+0049b460	SKIP	?IsActive@CProgressDisplay@@QBE_NXZ	?IsActive@CProgressDisplay@@UBE_NXZ	0 local definitions of CProgressDisplay (needs exactly one)
+0049bdc0	SKIP	?GetCameraPos@CParticleEnvironmentInteraction@@QBEXAAVC3DVector@@@Z	?GetCameraPos@CParticleEnvironmentInteraction@@UBEXAAVC3DVector@@@Z	virtual target, local model has no leading vptr slot
+0049e350	SKIP	?DrawGetEnvironment@CWorld@@QAEPBVCIDrawEnvironment@@XZ	?DrawGetEnvironment@CWorld@@UBEPBVCIDrawEnvironment@@XZ	identity: the PDB name is claimed by another address 00c26280
+004ab000	SKIP	?IsOpenDoor@CScriptThing@@QAEDXZ	?IsOpenDoor@CScriptThing@@UBE_NXZ	declaration does not start its line
+004bc620	SKIP	?UpdateRenderedLastFrameFlag@CTCGraphicAppearance@NGraphicAppearance@@QAEXXZ	?UpdateRenderedLastFrameFlag@CTCGraphicAppearance@NGraphicAppearance@@IBEXXZ	nested scope or operator / special member
+004bd160	SKIP	?GetMeshObjectAssumingObjectAt@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@ABVC3DVector@@ABVCRightHandedSet@@AAVC3DMeshObject@@@Z	?GetMeshObjectAssumingObjectAt@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@ABVC3DVector@@ABVCRightHandedSet@@AAVC3DMeshObject@@@Z	nested scope or operator / special member
+004bd2e0	SKIP	?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ	?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ	nested scope or operator / special member
+004e077d	SKIP	?Copy@CGiftDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CGiftDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has a base clause
+004e0a4e	SKIP	?Copy@CBoastingPodiumDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CBoastingPodiumDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has a base clause
+004e1225	SKIP	?Copy@CDecapitationDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CDecapitationDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has a base clause
+004e299b	SKIP	?Copy@CParticleAttacherDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CParticleAttacherDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has a base clause
+004ebbf2	SKIP	?Copy@CAnimatingObjectDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CAnimatingObjectDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has a base clause
+004ebebc	SKIP	?Copy@CCardPositionsDef@@QAEXPBVCDefClassBase@@@Z	?Copy@CCardPositionsDef@@UAEXPBVCDefClassBase@@@Z	virtual target, local model has no leading vptr slot
+004fb4b0	SKIP	?DrawGetNoMaps@CWorldMap@@QAEJXZ	?DrawGetNoMaps@CWorldMap@@UBEJXZ	identity: the PDB name is claimed by another address 00a73cf0
+004fc690	SKIP	?GetMapPos@CWorldMap@@QAE?AVC2DCoordI@@J@Z	?GetMapPos@CWorldMap@@UBE?AVC2DCoordI@@J@Z	virtual target, local model has no leading vptr slot
+00541390	SKIP	?GetDataFromDef@CDynamicList@NUISystem@@QAEXXZ	?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ	nested scope or operator / special member
+0054f8e0	SKIP	?FitInWindow@CText@NUISystem@@QAEJAAVCWideString@@ABVC2DBoxF@@@Z	?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z	nested scope or operator / special member
+00557bd0	SKIP	?CancelSelection@CKeyRedefiner@NUISystem@@QAEXXZ	?CancelSelection@CKeyRedefiner@NUISystem@@IAEXXZ	nested scope or operator / special member
+005826fa	SKIP	?IsQuitMenuReceivingInput@CTCInventory@@QAE_NXZ	?IsQuitMenuReceivingInput@CTCInventory@@QBE_NXZ	identity: the PDB name is claimed by another address 005836d2
+00595b24	SKIP	?AddProfileNameToScreens@CFrontEndManager@NUISystem@@QAEXABVCWideString@@@Z	?AddProfileNameToScreens@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z	nested scope or operator / special member
+005bd3a0	SKIP	?PlayInventoryNoMovementSound@CTCInventoryBase@NInventory@@QBEXXZ	?PlayInventoryNoMovementSound@CTCInventoryBase@NInventory@@ABEXXZ	nested scope or operator / special member
+005be62c	SKIP	?GetPrerequisitesString@CTCInventoryBase@NInventory@@QAE?AVCWideString@@V?$CDefPointer@$$CBVCQuestCardDef@@@@@Z	?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE?AVCWideString@@V?$CDefPointer@$$CBVCQuestCardDef@@@@@Z	nested scope or operator / special member
+005d92f0	SKIP	?GetStartingRightHandedSet@CTCInventoryItem@@QAE?AVCRightHandedSet@@XZ	?GetStartingRightHandedSet@CTCInventoryItem@@QBE?AVCRightHandedSet@@XZ	identity: the PDB name is claimed by another address 005d9730
+005db3b0	SKIP	?Clone@CAnimComponentCombatFlourishTargetOffset@@QBEPAVCAnimComponentBase@@XZ	?Clone@CAnimComponentCombatFlourishTargetOffset@@UBEPAVCAnimComponentBase@@XZ	virtual target, local model has a base clause
+005db410	SKIP	?SetDefaultValue@CAnimComponentStrikeSpeedMultiplier@@QAEXXZ	?SetDefaultValue@CAnimComponentStrikeSpeedMultiplier@@UAEXXZ	declaration does not start its line
+005db4a0	SKIP	?Clone@CAnimComponentStrikeResponseAnim@@QBEPAVCAnimComponentBase@@XZ	?Clone@CAnimComponentStrikeResponseAnim@@UBEPAVCAnimComponentBase@@XZ	virtual target, local model has a base clause
+0062eb20	SKIP	?Clone@CCreatureAction_GiveItemToThing@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_GiveItemToThing@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0062ef30	SKIP	?Clone@CCreatureAction_PlayerInteractionGreet@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayerInteractionGreet@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0062efb0	SKIP	?Clone@CCreatureAction_PlayerInteractionInsult@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayerInteractionInsult@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0062f030	SKIP	?Clone@CCreatureAction_PlayerInteractionThreaten@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayerInteractionThreaten@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0062f0b0	SKIP	?Clone@CCreatureAction_PlayerInteractionBribe@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayerInteractionBribe@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0062f130	SKIP	?Clone@CCreatureAction_PlayerInteractionFlirt@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayerInteractionFlirt@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0062f1b0	SKIP	?Clone@CCreatureAction_TavernGameMasterInteraction@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_TavernGameMasterInteraction@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0062f290	SKIP	?Clone@CCreatureAction_ThrowGameObject@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ThrowGameObject@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0062f300	SKIP	?Clone@CCreatureAction_Talk@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_Talk@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0062f710	SKIP	?Clone@CCombatActionBase@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCombatActionBase@@MBEPAVCCreatureActionBase@@XZ	identity: the PDB name is claimed by another address 00c14c40
+00644179	SKIP	?IsFinishedOpening@CDrawMiniMap@NPlayerGui@@QAE_NXZ	?IsFinishedOpening@CDrawMiniMap@NPlayerGui@@QBE_NXZ	nested scope or operator / special member
+006441be	SKIP	?IsFinishedClosing@CDrawMiniMap@NPlayerGui@@QAE_NXZ	?IsFinishedClosing@CDrawMiniMap@NPlayerGui@@QBE_NXZ	nested scope or operator / special member
+00645292	SKIP	?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z	?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z	nested scope or operator / special member
+00645f2e	SKIP	?DrawChangeText@CStatBar@NPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z	?DrawChangeText@CStatBar@NPlayerGui@@IAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z	nested scope or operator / special member
+0066a7b0	SKIP	?Clone@CCombatAction_GenericResponseToExplosion@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCombatAction_GenericResponseToExplosion@@EBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0066c610	SKIP	?HasPhysicsMesh@C3DMeshInfo@@QAE_NXZ	?HasPhysicsMesh@C3DMeshInfo@@QBE_NXZ	identity: the PDB name is claimed by another address 0079dcb0,009e9c60,00a23c40,00c3eba0
+0066e985	SKIP	?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QAEXXZ	?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QBEXXZ	nested scope or operator / special member
+00687f80	SKIP	?ProcessInput@CInputProcessConsole@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessConsole@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has no leading vptr slot
+00689c40	SKIP	?ProcessInput@CInputProcessInventoryStatsScreen@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessInventoryStatsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+0068ae30	SKIP	?ProcessInput@CInputProcessInventoryMapScreen@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessInventoryMapScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+0068b2e0	SKIP	?ProcessInput@CInputProcessInventoryExperienceScreen@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessInventoryExperienceScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+0068b7c0	SKIP	?ProcessInput@CInputProcessInventoryTradeScreen@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessInventoryTradeScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+0068c880	SKIP	?ProcessInput@CInputProcessYesNoQuestion@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+0068d890	SKIP	?ProcessInput@CInputProcessControlCreatureRightStick@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessControlCreatureRightStick@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+0068f320	SKIP	?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00690030	SKIP	?ProcessInput@CInputProcessSpecialAbilities@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00690390	SKIP	?ProcessInput@CInputProcessFirstPersonTargeting@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessFirstPersonTargeting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00690480	SKIP	?ProcessInput@CInputProcessInGameMenu@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessInGameMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00690830	SKIP	?ProcessInput@CInputProcessTavernGame@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00690b20	SKIP	?ProcessInput@CInputProcessFishing@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00690e70	SKIP	?ProcessInput@CInputProcessBoastUI@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessBoastUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00690fd0	SKIP	?ProcessInput@CInputProcessQuickAccessMenu@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00691130	SKIP	?ProcessInput@CInputProcessQuestCompletionUI@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessQuestCompletionUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00691680	SKIP	?ProcessInput@CInputProcessOracleMinigame@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00691870	SKIP	?ProcessInput@CInputProcessFireheartMinigame@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has a base clause
+00697080	SKIP	?GetControlAngleXY@CAIGameCameraBase@@QAEMXZ	?GetControlAngleXY@CAIGameCameraBase@@UBEMXZ	identity: the PDB name is claimed by another address 00b59760
+0069b790	SKIP	?Update@CGameCameraManager@@QAEXXZ	?Update@CGameCameraManager@@UAEXXZ	virtual target, local model has no leading vptr slot
+0069f4f0	SKIP	?PerformAction@CCreatureAction_SheatheItemToInventory@@QAEXXZ	?PerformAction@CCreatureAction_SheatheItemToInventory@@UAEXXZ	virtual target, local model has a base clause
+006a0c20	SKIP	?Clone@CCreatureAction_SheatheItemToInventory@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_SheatheItemToInventory@@EBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+006a4700	SKIP	?ProcessInput@CInputProcessJumpingAndRolling@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessJumpingAndRolling@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	virtual target, local model has no leading vptr slot
+006b74b0	SKIP	?GetMemoryFootprint@CGameMap@@QBEKXZ	?GetMemoryFootprint@CGameMap@@QBEJXZ	identity: the PDB name is claimed by another address 008f5ee0
+006bb1e0	SKIP	?IsDay@CGameTimeManager@@QAE_NXZ	?IsDay@CGameTimeManager@@QBE_NXZ	identity: the PDB name is claimed by another address 006bb2c0
+006bf7b0	SKIP	?BoughtSomething@CAIStateGroup_BuyFromSeller@@QAEXXZ	?BoughtSomething@CAIStateGroup_BuyFromSeller@@AAEXXZ	identity: the PDB name is claimed by another address 0047cfee,007e5950,00919a30,00b86a10
+006dfb60	SKIP	?Clone@CCreatureAction_ShowTrophy@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ShowTrophy@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+006dfc20	SKIP	?Clone@CCreatureAction_UnsheatheToShowToSheatheTrophy@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_UnsheatheToShowToSheatheTrophy@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+006e28d0	SKIP	?StopCurrentSpeech@CTCTalk@@QAEXPAVCTCSoundPlayer@@@Z	?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z	identity: the PDB name is claimed by another address 006e2e60
+006e72a0	SKIP	?Validate@CGameScriptInterface@@QAEXXZ	?Validate@CGameScriptInterface@@UBEXXZ	virtual target, local model has no leading vptr slot
+006f8530	SKIP	?Clone@CCreatureAction_WaspQueenDeath@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_WaspQueenDeath@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+006f8860	SKIP	?Clone@CCreatureAction_HobbeSpellcasterAim@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_HobbeSpellcasterAim@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+006f8910	SKIP	?Clone@CCreatureAction_NymphGetHit@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_NymphGetHit@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+006f89c0	SKIP	?Clone@CCreatureAction_SummonerFlameSlice@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_SummonerFlameSlice@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+006f9130	SKIP	?GetEmbeddedEventTime@CManager@NAnimationEvents@@QBEMKABVCCharString@@@Z	?GetEmbeddedEventTime@CManager@NAnimationEvents@@ABEMKABVCCharString@@@Z	nested scope or operator / special member
+006f92a0	SKIP	?SaveBinary@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z	?SaveBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z	nested scope or operator / special member
+006f9640	SKIP	?AnimHasExtraEvent@CManager@NAnimationEvents@@QBE_NKABVCCharString@@@Z	?AnimHasExtraEvent@CManager@NAnimationEvents@@ABE_NKABVCCharString@@@Z	nested scope or operator / special member
+006f9ac0	SKIP	?GetExtraEventNames@CManager@NAnimationEvents@@QBEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	?GetExtraEventNames@CManager@NAnimationEvents@@ABEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	nested scope or operator / special member
+006f9b50	SKIP	?GetExtraEvents@CManager@NAnimationEvents@@QBEXKAAV?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@@Z	?GetExtraEvents@CManager@NAnimationEvents@@ABEXKAAV?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@@Z	nested scope or operator / special member
+006f9f90	SKIP	?LoadBinary@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z	?LoadBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z	nested scope or operator / special member
+00719d20	SKIP	?Clone@CCreatureAction_AimMissileWeapon@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_AimMissileWeapon@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00719da0	SKIP	?Clone@CCreatureAction_ReloadMissileWeapon@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ReloadMissileWeapon@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0074db70	SKIP	?IsToFaceTargetAtStart@CCreatureAction_RiseUp@@QAEEXZ	?IsToFaceTargetAtStart@CCreatureAction_RiseUp@@UBE_NXZ	declaration does not start its line
+00751a90	SKIP	?OnAppearanceClear@CTCLook@@QAEXXZ	?OnAppearanceClear@CTCLook@@UAEXXZ	declaration does not start its line
+00753020	SKIP	?IsTurningBody@CTCLook@@QAE_NXZ	?IsTurningBody@CTCLook@@AAE_NXZ	identity: the PDB name is claimed by another address 00638180,0075dcf0,00ad3940
+00760bc0	SKIP	?GetBounds@CShape@NShape@@QBEXAAVC2DBoxF@@@Z	?GetBounds@CShape@NShape@@IBEXAAVC2DBoxF@@@Z	nested scope or operator / special member
+00771620	SKIP	?PushNewSourceDef@CTCOpinionSource@@QAEJABVCCharString@@@Z	?PushNewSourceDef@CTCOpinionSource@@QAE_NABVCCharString@@@Z	identity: the PDB name is claimed by another address 007714b0
+00778d60	SKIP	?Construct@CTCDCameraPoint@@QAEXABVC3DVector@@@Z	?Construct@CTCDCameraPoint@@AAEXABVC3DVector@@@Z	identity: the PDB name is claimed by another address 007e8870
+0078bd30	SKIP	?Clone@CCreatureAction_HeroLoadRangedWeapon@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_HeroLoadRangedWeapon@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0079a600	SKIP	?FinalCleanup@CTCSummonSpell@@QAEXXZ	?FinalCleanup@CTCSummonSpell@@AAEXXZ	declaration does not start its line
+0079e500	SKIP	?UninitWindow@CSystemManager@@QAEXXZ	?UninitWindow@CSystemManager@@AAEXXZ	declaration does not start its line
+007a4300	SKIP	?FinalCleanup@CTCWillEnflame@@QAEXXZ	?FinalCleanup@CTCWillEnflame@@IAEXXZ	declaration does not start its line
+007a5450	SKIP	?FinalCleanup@CTCForcePushPower@@QAEXXZ	?FinalCleanup@CTCForcePushPower@@AAEXXZ	declaration does not start its line
+007a6e20	SKIP	?SetupFacingDirection@CTCAssassinRush@@QAEXAAVC3DVector@@@Z	?SetupFacingDirection@CTCAssassinRush@@AAEXAAVC3DVector@@@Z	identity: the PDB name is claimed by another address 007a9870
+007a9870	SKIP	?SetupFacingDirection@CTCAssassinRush@@QAEXAAVC3DVector@@@Z	?SetupFacingDirection@CTCAssassinRush@@AAEXAAVC3DVector@@@Z	identity: the PDB name is claimed by another address 007a6e20
+007bba50	SKIP	?IsAngry@CTCOnHeroPush@@QBEJXZ	?IsAngry@CTCOnHeroPush@@QBE_NXZ	identity: the PDB name is claimed by another address 00c25de0
+007befb0	SKIP	?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@QAEMXZ	?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ	nested scope or operator / special member
+007c3030	SKIP	?FinalCleanup@CTCDrainLife@@QAEXXZ	?FinalCleanup@CTCDrainLife@@AAEXXZ	declaration does not start its line
+007c5470	SKIP	?FinalCleanup@CTCGhostSword@@QAEXXZ	?FinalCleanup@CTCGhostSword@@AAEXXZ	declaration does not start its line
+007df3d0	SKIP	?HasCameraPhysicsMeshObject@CTCCameraCollision@@QAE_NXZ	?HasCameraPhysicsMeshObject@CTCCameraCollision@@QBE_NXZ	identity: the PDB name is claimed by another address 007e3010
+007eb230	SKIP	?Clone@CCreatureAction_PickupGameObject@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PickupGameObject@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+007eb3f0	SKIP	?Clone@CCreatureAction_AddRealObjectToInventory@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_AddRealObjectToInventory@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+007eb5d0	SKIP	?Clone@CCreatureAction_PlayerInteractionViewQuests@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayerInteractionViewQuests@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+007ed6d0	SKIP	?Clone@CCreatureAction_GiveMoneyToThing@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_GiveMoneyToThing@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+007ed9f0	SKIP	?Clone@CCreatureAction_ShowItemToThing@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ShowItemToThing@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+007ee130	SKIP	?Clone@CCreatureAction_UseSwitch@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_UseSwitch@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+007eea50	SKIP	?Clone@CCreatureAction_OpenChest@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_OpenChest@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0081e7b0	SKIP	?GetMemoryFootprint@CMap@@QAEJXZ	?GetMemoryFootprint@CMap@@QBEJXZ	identity: the PDB name is claimed by another address 00c1d7f0
+00820080	SKIP	?GetGroundSizeZAt@CMap@@QAEMABVC2DCoordI@@@Z	?GetGroundSizeZAt@CMap@@IBEMABVC2DCoordI@@@Z	identity: the PDB name is claimed by another address 0081ea50
+008263f0	SKIP	?IsOpen@CCachedFile@@QAEEXZ	?IsOpen@CCachedFile@@UBE_NXZ	declaration does not start its line
+00842bc0	SKIP	?OnFollowUpActionFailedToAdd@CCreatureAction_OpenChest@@QAEXXZ	?OnFollowUpActionFailedToAdd@CCreatureAction_OpenChest@@UAEXXZ	virtual target, local model has a base clause
+008448e0	SKIP	?PerformAction@CCreatureAction_OpenChest@@QAEXXZ	?PerformAction@CCreatureAction_OpenChest@@UAEXXZ	virtual target, local model has a base clause
+00845900	SKIP	?PerformAction@CCreatureAction_PlayerInteractionGreet@@QAEXXZ	?PerformAction@CCreatureAction_PlayerInteractionGreet@@UAEXXZ	virtual target, local model has a base clause
+00847fb0	SKIP	?PerformAction@CCreatureAction_UseLamp@@QAEXXZ	?PerformAction@CCreatureAction_UseLamp@@UAEXXZ	virtual target, local model has a base clause
+00848730	SKIP	?PerformAction@CCreatureAction_PickUpGoods@@QAEXXZ	?PerformAction@CCreatureAction_PickUpGoods@@UAEXXZ	virtual target, local model has a base clause
+00848db0	SKIP	?PerformAction@CCreatureAction_GetInBed@@QAEXXZ	?PerformAction@CCreatureAction_GetInBed@@UAEXXZ	virtual target, local model has a base clause
+0084a350	SKIP	?PerformAction@CCreatureAction_PickUpJugToFill@@QAEXXZ	?PerformAction@CCreatureAction_PickUpJugToFill@@UAEXXZ	virtual target, local model has a base clause
+0084a4a0	SKIP	?PerformAction@CCreatureAction_PutDownJugFromFilling@@QAEXXZ	?PerformAction@CCreatureAction_PutDownJugFromFilling@@UAEXXZ	virtual target, local model has a base clause
+0084a860	SKIP	?IsUsingAnimationMovement@CCreatureAction_PlayIntoLoopOutOfAnimation@@QAEEXZ	?IsUsingAnimationMovement@CCreatureAction_PlayIntoLoopOutOfAnimation@@UBE_NXZ	declaration does not start its line
+0084bd10	SKIP	?Clone@CCreatureAction_PerformExpression@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PerformExpression@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084be00	SKIP	?Clone@CCreatureAction_PerformExpressionExtended@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PerformExpressionExtended@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084bed0	SKIP	?Clone@CCreatureAction_LearnExpression@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_LearnExpression@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084bf70	SKIP	?Clone@CCreatureAction_Drink@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_Drink@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c040	SKIP	?Clone@CCreatureAction_UseLamp@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_UseLamp@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c0c0	SKIP	?Clone@CCreatureAction_UseWallMount@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_UseWallMount@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c140	SKIP	?Clone@CCreatureAction_ShopkeeperGetOut@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ShopkeeperGetOut@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c210	SKIP	?Clone@CCreatureAction_ShopkeeperPutAway@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ShopkeeperPutAway@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c290	SKIP	?Clone@CCreatureAction_BlowHorn@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BlowHorn@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c310	SKIP	?Clone@CCreatureAction_PlayAnimation@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayAnimation@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c3b0	SKIP	?Clone@CCreatureAction_PlayIntoLoopOutOfAnimation@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PlayIntoLoopOutOfAnimation@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c510	SKIP	?Clone@CCreatureAction_DowseFire@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_DowseFire@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c5c0	SKIP	?Clone@CCreatureAction_FillBucket@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_FillBucket@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c640	SKIP	?Clone@CCreatureAction_PickUpGenericBox@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PickUpGenericBox@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c720	SKIP	?Clone@CCreatureAction_ShowLove@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ShowLove@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c850	SKIP	?Clone@CCreatureAction_Hammer@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_Hammer@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c8d0	SKIP	?Clone@CCreatureAction_ActivateQuest@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ActivateQuest@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084c970	SKIP	?Clone@CCreatureAction_PickUpThingAtTable@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PickUpThingAtTable@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084ca90	SKIP	?Clone@CCreatureAction_PickUpJugToFill@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PickUpJugToFill@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084cb10	SKIP	?Clone@CCreatureAction_PutDownJugFromFilling@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PutDownJugFromFilling@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0084cdf0	SKIP	?UpdateFixLookDirection@CBase@NCameraModes@@QAEXABVC3DVector@@0AAV3@M@Z	?UpdateFixLookDirection@CBase@NCameraModes@@IBEXABVC3DVector@@0AAV3@M@Z	nested scope or operator / special member
+0084db30	SKIP	?UpdateCameraOcclusion@CBase@NCameraModes@@QAEXAAVC3DVector@@@Z	?UpdateCameraOcclusion@CBase@NCameraModes@@IAEXAAVC3DVector@@@Z	nested scope or operator / special member
+008520f0	SKIP	?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@QAEXABVC3DVector@@0J@Z	?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@IAEXABVC3DVector@@0J@Z	nested scope or operator / special member
+008527f0	SKIP	?IsThingsOk@CScriptModuleConversationBase@NCameraModes@@QBE_NXZ	?IsThingsOk@CScriptModuleConversationBase@NCameraModes@@IBE_NXZ	nested scope or operator / special member
+00853290	SKIP	?GetTransformedPosition@CScriptModuleBase@NCameraModes@@QAE?AVC3DVector@@ABV3@@Z	?GetTransformedPosition@CScriptModuleBase@NCameraModes@@IBE?AVC3DVector@@ABV3@@Z	nested scope or operator / special member
+00853320	SKIP	?GetViewPosInFocalPlane@CScriptModuleBase@NCameraModes@@QAE?AVC3DVector@@ABV3@0@Z	?GetViewPosInFocalPlane@CScriptModuleBase@NCameraModes@@IBE?AVC3DVector@@ABV3@0@Z	nested scope or operator / special member
+00855190	SKIP	?Clone@CCreatureAction_SpiritHitResponse@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_SpiritHitResponse@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00855230	SKIP	?Clone@CCreatureAction_SpiritAttack@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_SpiritAttack@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00855e50	SKIP	?Clone@CCreatureAction_BlockRespond@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BlockRespond@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008571a0	SKIP	?GetAnimationTransitionInTime@CCombatActionBase@@QAEHXZ	?GetAnimationTransitionInTime@CCombatActionBase@@UBEJXZ	declaration does not start its line
+008579d0	SKIP	?UpdateActionRunningTime@CCombatActionBase@@QAEXXZ	?UpdateActionRunningTime@CCombatActionBase@@UAEXXZ	virtual target, local model has a base clause
+0085bcb0	SKIP	?Clone@CCreatureActionHero180RunningTurn@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureActionHero180RunningTurn@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0085c330	SKIP	?Clone@CCombatAction_ControlledStrafeJump@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCombatAction_ControlledStrafeJump@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0085cfe0	SKIP	?GetMemoryFootprint@CThingMap@NThingMap@@QAEJXZ	?GetMemoryFootprint@CThingMap@NThingMap@@QBEJXZ	nested scope or operator / special member
+00860210	SKIP	?Clone@CCreatureAction_GetOutOfBed@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_GetOutOfBed@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00865cf0	SKIP	?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseBase@@QBE_NXZ	?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseBase@@UBE_NXZ	virtual target, local model has a base clause
+00865dd0	SKIP	?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QBE_NXZ	?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UBE_NXZ	virtual target, local model has a base clause
+00865e70	SKIP	?IsOverrideableByActionOfSamePriority@CCombatAction_GenericStrikeResponseBase@@QBE_NXZ	?IsOverrideableByActionOfSamePriority@CCombatAction_GenericStrikeResponseBase@@UBE_NXZ	identity: the PDB name is claimed by another address 00984b40
+00866d80	SKIP	?FrameUpdate@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAEXXZ	?FrameUpdate@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ	virtual target, local model has a base clause
+00868400	SKIP	?Clone@CCombatAction_GenericStrikeResponseKnockdown@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCombatAction_GenericStrikeResponseKnockdown@@EBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00871d50	SKIP	?UpdateCageRadius@CStringAndCageBase@NCameraModes@@QBE_NAAVC3DVector@@@Z	?UpdateCageRadius@CStringAndCageBase@NCameraModes@@ABE_NAAVC3DVector@@@Z	nested scope or operator / special member
+00878ce0	SKIP	?SetUpParams@CProjectileWeapon@NCameraModes@@QAEXXZ	?SetUpParams@CProjectileWeapon@NCameraModes@@AAEXXZ	nested scope or operator / special member
+008798c0	SKIP	?GetPhiForTargetedThing@CProjectileWeapon@NCameraModes@@QBEMABVCThing@@@Z	?GetPhiForTargetedThing@CProjectileWeapon@NCameraModes@@ABEMABVCThing@@@Z	nested scope or operator / special member
+0087c8b0	SKIP	?IsAbleToBeAttacked@CCreatureAction_InterruptableMidAttackAutoTurn@@QBE_NXZ	?IsAbleToBeAttacked@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ	virtual target, local model has a base clause
+0087cd50	SKIP	?PerformAction@CCreatureAction_InterruptableMidAttackAutoTurn@@QAEXXZ	?PerformAction@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ	virtual target, local model has a base clause
+0087e660	SKIP	?Clone@CCreatureAction_InterruptableMidAttackAutoTurn@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_InterruptableMidAttackAutoTurn@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0087ebd0	SKIP	?FinishAction@CCombatAction_KickThingOnGround@@QAEXXZ	?FinishAction@CCombatAction_KickThingOnGround@@UAEXXZ	virtual target, local model has a base clause
+008800f0	SKIP	?Clone@CCombatAction_KickThingOnGround@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCombatAction_KickThingOnGround@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00880190	SKIP	?Clone@CCombatAction_StabThing@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCombatAction_StabThing@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0088b7a0	SKIP	?SuspendableProcess@CAIBrain@@QAEXXZ	?SuspendableProcess@CAIBrain@@EAEXXZ	virtual target, local model has a base clause
+0088f960	SKIP	?SetSaveGameMarkerPos@CGameScriptInterface@@QAEXABVC3DVector@@@Z	?SetSaveGameMarkerPos@CGameScriptInterface@@UBEXABVC3DVector@@@Z	virtual target, local model has no leading vptr slot
+0088f970	SKIP	?ResetToFrontEnd@CGameScriptInterface@@QBEXXZ	?ResetToFrontEnd@CGameScriptInterface@@UBEXXZ	virtual target, local model has no leading vptr slot
+0088fc60	SKIP	?GiveHeroExpression@CGameScriptInterface@@QBEXABVCCharString@@J_N@Z	?GiveHeroExpression@CGameScriptInterface@@UBEXABVCCharString@@J_N@Z	virtual target, local model has no leading vptr slot
+0088fe80	SKIP	?SetTimeAsStopped@CGameScriptInterface@@QBEX_NAAJ@Z	?SetTimeAsStopped@CGameScriptInterface@@UBEX_NAAJ@Z	virtual target, local model has no leading vptr slot
+0088fe90	SKIP	?FastForwardTimeTo@CGameScriptInterface@@QBEXMM@Z	?FastForwardTimeTo@CGameScriptInterface@@UBEXMM@Z	virtual target, local model has no leading vptr slot
+008a7ec0	SKIP	?EntitySetThingAsAllyOfThing@CGameScriptInterface@@QBEXABVCScriptThing@@0@Z	?EntitySetThingAsAllyOfThing@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z	virtual target, local model has no leading vptr slot
+008b35b0	SKIP	?GetName@CCombatSequence_BanditUnblockableAttack@@QBE?AVCCharString@@XZ	?GetName@CCombatSequence_BanditUnblockableAttack@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+008b3890	SKIP	?GetName@CCombatSequence_BanditAttackNear@@QAE?AVCCharString@@XZ	?GetName@CCombatSequence_BanditAttackNear@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+008b3b80	SKIP	?GetName@CCombatSequence_BanditKingBackOff@@QAE?AVCCharString@@XZ	?GetName@CCombatSequence_BanditKingBackOff@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+008b3d00	SKIP	?GetName@CCombatSequence_FodderUnblockableMainAttack@@QBE?AVCCharString@@XZ	?GetName@CCombatSequence_FodderUnblockableMainAttack@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+008b4180	SKIP	?GetName@CCombatSequence_TrollProjectileAttack@@QBE?AVCCharString@@XZ	?GetName@CCombatSequence_TrollProjectileAttack@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+008b45b0	SKIP	?GetName@CCombatSequence_VillagerAttack@@QBE?AVCCharString@@XZ	?GetName@CCombatSequence_VillagerAttack@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+008b47a0	SKIP	?GetName@CCombatSequence_VillagerCombo@@QBE?AVCCharString@@XZ	?GetName@CCombatSequence_VillagerCombo@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+008b4a20	SKIP	?GetName@CCombatSequenceWhisperAttackCombo@@QBE?AVCCharString@@XZ	?GetName@CCombatSequenceWhisperAttackCombo@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+008b4e90	SKIP	?GetName@CCombatSequenceJacksCombo@@QBE?AVCCharString@@XZ	?GetName@CCombatSequenceJacksCombo@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+008b6530	SKIP	?OnAnimationLoaded@CCreatureAction_GetUpFromSitting@@QAEXXZ	?OnAnimationLoaded@CCreatureAction_GetUpFromSitting@@UAEXXZ	declaration does not start its line
+008b89e0	SKIP	?Clone@CCreatureAction_ProjectileCrouch@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ProjectileCrouch@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008b9210	SKIP	?Clone@CCreatureAction_ScreamerDie@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ScreamerDie@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008b95a0	SKIP	?PerformAction@CCreatureAction_CastWillTurncoatSpell@@QAEXXZ	?PerformAction@CCreatureAction_CastWillTurncoatSpell@@UAEXXZ	virtual target, local model has a base clause
+008bac40	SKIP	?FinishAction@CCreatureAction_FinishFireballSpell@@QAEXXZ	?FinishAction@CCreatureAction_FinishFireballSpell@@UAEXXZ	virtual target, local model has a base clause
+008be400	SKIP	?Clone@CCreatureAction_CastPhysicalShieldSpell@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_CastPhysicalShieldSpell@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008be7f0	SKIP	?Clone@CCreatureAction_CastWillReclaimUndeadFollower@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_CastWillReclaimUndeadFollower@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008bea80	SKIP	?Clone@CCreatureAction_TeleportOut@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_TeleportOut@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008c02d0	SKIP	?Clone@CCreatureAction_Ambush@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_Ambush@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008c0620	SKIP	?PerformAction@CCreatureAction_WhisperSommersaultBackward@@QAEXXZ	?PerformAction@CCreatureAction_WhisperSommersaultBackward@@UAEXXZ	declaration does not start its line
+008c0fb0	SKIP	?PerformAction@CCreatureAction_JackFloatUp@@QAEXXZ	?PerformAction@CCreatureAction_JackFloatUp@@UAEXXZ	virtual target, local model has a base clause
+008c3ce0	SKIP	?Clone@CCreatureAction_BriarRoseShotFarOutof@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BriarRoseShotFarOutof@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008c4810	SKIP	?PerformAction@CCreatureAction_ScorpionTailPlunge@@QAEXXZ	?PerformAction@CCreatureAction_ScorpionTailPlunge@@UAEXXZ	virtual target, local model has a base clause
+008c55b0	SKIP	?FinishAction@CCreatureAction_ScorpionCharge@@QAEXXZ	?FinishAction@CCreatureAction_ScorpionCharge@@UAEXXZ	virtual target, local model has a base clause
+008c5d10	SKIP	?Clone@CCreatureAction_ScorpionChargeInto@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ScorpionChargeInto@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008c5d90	SKIP	?Clone@CCreatureAction_ScorpionCharge@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ScorpionCharge@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008c5e10	SKIP	?Clone@CCreatureAction_ScorpionChargeStrike@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ScorpionChargeStrike@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008c6000	SKIP	?InitAnimation@CCreatureAction_TrollProjectileAttack@@QAEXXZ	?InitAnimation@CCreatureAction_TrollProjectileAttack@@MAEXXZ	virtual target, local model has a base clause
+008c67a0	SKIP	?FrameUpdate@CCreatureAction_TrollThrowProjectile@@QAEXXZ	?FrameUpdate@CCreatureAction_TrollThrowProjectile@@UAEXXZ	virtual target, local model has a base clause
+008c6b20	SKIP	?PerformAction@CCreatureAction_TrollGroundPound@@QAEXXZ	?PerformAction@CCreatureAction_TrollGroundPound@@UAEXXZ	virtual target, local model has a base clause
+008c7d50	SKIP	?Clone@CCreatureAction_TrollThrowProjectile@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_TrollThrowProjectile@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008c7f40	SKIP	?OnAnimationLoaded@CCreatureAction_BanditKingLunge@@QAEXXZ	?OnAnimationLoaded@CCreatureAction_BanditKingLunge@@UAEXXZ	virtual target, local model has a base clause
+008c8080	SKIP	?IsToCauseRecoil@CCreatureAction_BanditKingAttack@@QBE_NXZ	?IsToCauseRecoil@CCreatureAction_BanditKingAttack@@UBE_NXZ	virtual target, local model has a base clause
+008c80e0	SKIP	?IsToCauseRecoil@CCreatureAction_BanditKingStuck@@QBE_NXZ	?IsToCauseRecoil@CCreatureAction_BanditKingStuck@@UBE_NXZ	virtual target, local model has a base clause
+008c8130	SKIP	?IsToCauseRecoil@CCreatureAction_BanditKingUnstuck@@QBE_NXZ	?IsToCauseRecoil@CCreatureAction_BanditKingUnstuck@@UBE_NXZ	virtual target, local model has a base clause
+008c8180	SKIP	?PerformAction@CCreatureAction_BanditKingLunge@@QAEXXZ	?PerformAction@CCreatureAction_BanditKingLunge@@UAEXXZ	virtual target, local model has a base clause
+008c8f70	SKIP	?FinishAction@CCreatureAction_BanditKingStuck@@QAEXXZ	?FinishAction@CCreatureAction_BanditKingStuck@@UAEXXZ	virtual target, local model has a base clause
+008c91e0	SKIP	?FinishAction@CCreatureAction_BanditKingStuckGetHit@@QAEXXZ	?FinishAction@CCreatureAction_BanditKingStuckGetHit@@UAEXXZ	virtual target, local model has a base clause
+008c9760	SKIP	?Clone@CCreatureAction_BanditKingThrowWeapons@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BanditKingThrowWeapons@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008c9830	SKIP	?Clone@CCreatureAction_BanditKingStuck@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BanditKingStuck@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008c9f40	SKIP	?FrameUpdate@CCreatureAction_NymphGetHitDie@@QAEXXZ	?FrameUpdate@CCreatureAction_NymphGetHitDie@@UAEXXZ	virtual target, local model has a base clause
+008ca310	SKIP	?PerformAction@CCreatureAction_NymphGetHit@@QAEXXZ	?PerformAction@CCreatureAction_NymphGetHit@@UAEXXZ	virtual target, local model has a base clause
+008caaa0	SKIP	?Clone@CCreatureAction_NymphTeleportOutOfLimbo@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_NymphTeleportOutOfLimbo@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008cafa0	SKIP	?PerformAction@CCreatureAction_SummonerFlameSlice@@QAEXXZ	?PerformAction@CCreatureAction_SummonerFlameSlice@@UAEXXZ	virtual target, local model has a base clause
+008cb500	SKIP	?PerformAction@CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAEXXZ	?PerformAction@CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@UAEXXZ	virtual target, local model has a base clause
+008cd820	SKIP	?FinishAction@CCreatureAction_BattleChargeImpact@@QAEXXZ	?FinishAction@CCreatureAction_BattleChargeImpact@@UAEXXZ	virtual target, local model has a base clause
+008cda30	SKIP	?FinishAction@CCreatureAction_BattleChargeMiss@@QAEXXZ	?FinishAction@CCreatureAction_BattleChargeMiss@@UAEXXZ	virtual target, local model has a base clause
+008cef20	SKIP	?Clone@CCreatureAction_CastAssassinRush@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_CastAssassinRush@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008ceff0	SKIP	?Clone@CCreatureAction_CastBattleCharge@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_CastBattleCharge@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008cf0c0	SKIP	?Clone@CCreatureAction_BattleChargeImpact@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BattleChargeImpact@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008cf160	SKIP	?Clone@CCreatureAction_BattleChargeMiss@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BattleChargeMiss@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008cf610	SKIP	?FinishAction@CCreatureAction_TentacleRise@@QAEXXZ	?FinishAction@CCreatureAction_TentacleRise@@UAEXXZ	virtual target, local model has a base clause
+008cf700	SKIP	?FinishAction@CCreatureAction_TentacleStrikeInto@@QAEXXZ	?FinishAction@CCreatureAction_TentacleStrikeInto@@UAEXXZ	virtual target, local model has a base clause
+008d51d0	SKIP	?GetAnimationTransitionOutTime@CCreatureAction_FireMissileWeapon@@QBEJXZ	?GetAnimationTransitionOutTime@CCreatureAction_FireMissileWeapon@@UBEJXZ	virtual target, local model has a base clause
+008d62f0	SKIP	?Clone@CCreatureAction_FireMissileWeapon@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_FireMissileWeapon@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008d63c0	SKIP	?Clone@CCreatureAction_FireMissileTest@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_FireMissileTest@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008dacb0	SKIP	?CreateHandGlow@CModeThunderLightningStorm@NCreatureMode@@QAEXXZ	?CreateHandGlow@CModeThunderLightningStorm@NCreatureMode@@AAEXXZ	nested scope or operator / special member
+008dba90	SKIP	?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@QAEXXZ	?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	nested scope or operator / special member
+008e4ef0	SKIP	?Clone@CCreatureAction_ScorpionTailWithdraw@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ScorpionTailWithdraw@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008e4f60	SKIP	?Clone@CCreatureAction_ScorpionTailPlunge@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ScorpionTailPlunge@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008e5f00	SKIP	?PerformForceUpdates@CTCPhysicsStandard@@QAEXXZ	?PerformForceUpdates@CTCPhysicsStandard@@IAEXXZ	identity: the PDB name is claimed by another address 008e5670
+008e8d30	SKIP	?Clone@CCreatureAction_BriarRoseConcentrateInto@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BriarRoseConcentrateInto@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008e8db0	SKIP	?Clone@CCreatureAction_BriarRoseInvulnerableTeleport@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BriarRoseInvulnerableTeleport@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008e9460	SKIP	?GetBestFrameInAimingAnim@CModeStrafe@NCreatureMode@@QAE_NAAM@Z	?GetBestFrameInAimingAnim@CModeStrafe@NCreatureMode@@ABE_NAAM@Z	nested scope or operator / special member
+008ea9f0	SKIP	?UpdateHoverAnim@CModeHoverBase@NCreatureMode@@QAEXXZ	?UpdateHoverAnim@CModeHoverBase@NCreatureMode@@AAEXXZ	nested scope or operator / special member
+008ec470	SKIP	?FinishAction@CCreatureAction_UndeadRiseUp@@QAEXXZ	?FinishAction@CCreatureAction_UndeadRiseUp@@UAEXXZ	virtual target, local model has a base clause
+008ec700	SKIP	?FinishAction@CCreatureAction_UndeadReturnToEarth@@QAEXXZ	?FinishAction@CCreatureAction_UndeadReturnToEarth@@UAEXXZ	virtual target, local model has a base clause
+008f2e00	SKIP	?FrameUpdate@CCreatureAction_DragonFlight@@QAEXXZ	?FrameUpdate@CCreatureAction_DragonFlight@@UAEXXZ	virtual target, local model has a base clause
+008f47e0	SKIP	?FinishAction@CCreatureAction_DragonTakeOffIntoFlying@@QAEXXZ	?FinishAction@CCreatureAction_DragonTakeOffIntoFlying@@UAEXXZ	virtual target, local model has a base clause
+008f5060	SKIP	?PerformAction@CCreatureAction_SnapDragon@@QAEXXZ	?PerformAction@CCreatureAction_SnapDragon@@UAEXXZ	virtual target, local model has a base clause
+008f5220	SKIP	?PerformAction@CCreatureAction_SnapDragonFast@@QAEXXZ	?PerformAction@CCreatureAction_SnapDragonFast@@UAEXXZ	virtual target, local model has a base clause
+008f57c0	SKIP	?Clone@CCreatureAction_DragonSwoop@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_DragonSwoop@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+008f5ee0	SKIP	?GetMemoryFootprint@CGameMap@@QAEJXZ	?GetMemoryFootprint@CGameMap@@QBEJXZ	identity: the PDB name is claimed by another address 006b74b0
+008f8830	SKIP	?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@SI_NABULAddress@2@AAUsockaddr_in@@@Z	?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@CI_NABULAddress@2@AAUsockaddr_in@@@Z	nested scope or operator / special member
+00906380	SKIP	?OnCreate@CCombatSequence_BanditUnblockableAttack@@QAEXXZ	?OnCreate@CCombatSequence_BanditUnblockableAttack@@UAEXXZ	virtual target, local model has a base clause
+009064b0	SKIP	?OnCreate@CCombatSequence_NonInterruptableBoxStrafe@@QAEXXZ	?OnCreate@CCombatSequence_NonInterruptableBoxStrafe@@UAEXXZ	virtual target, local model has a base clause
+00909ba0	SKIP	?OnCreate@CCombatSequenceWhisperAdvance@@QAEXXZ	?OnCreate@CCombatSequenceWhisperAdvance@@UAEXXZ	virtual target, local model has a base clause
+00910ff0	SKIP	?Clone@CCreatureAction_DeclarePlayerACriminal@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_DeclarePlayerACriminal@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00911a00	SKIP	?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@QAE_NXZ	?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@UAE_NXZ	virtual target, local model has a base clause
+00911f80	SKIP	?Update@CAIStateGroup_FireflyWander@@QAEXXZ	?Update@CAIStateGroup_FireflyWander@@UAEXXZ	virtual target, local model has a base clause
+00917330	SKIP	?InitCreaturePosition@CAIStateGroup_IdleAtHome@@QAEJXZ	?InitCreaturePosition@CAIStateGroup_IdleAtHome@@MAE_NXZ	identity: the PDB name is claimed by another address 004496b0
+00917db0	SKIP	?GetBuilding@CAIStateGroup_CleanWork@@QAEPAVCThingBuilding@@XZ	?GetBuilding@CAIStateGroup_CleanWork@@MAEPAVCThingBuilding@@XZ	virtual target, local model has a base clause
+00918ac0	SKIP	?InitCreaturePosition@CAIStateGroup_Gaze@@QAE_NXZ	?InitCreaturePosition@CAIStateGroup_Gaze@@MAE_NXZ	virtual target, local model has a base clause
+00918b50	SKIP	?InitCreaturePosition@CAIStateGroup_GazeAtWork@@QAE_NXZ	?InitCreaturePosition@CAIStateGroup_GazeAtWork@@MAE_NXZ	virtual target, local model has a base clause
+0091bcf0	SKIP	?Update@CAIStateGroup_StandStill@@QAEXXZ	?Update@CAIStateGroup_StandStill@@UAEXXZ	declaration does not start its line
+0091eb60	SKIP	?IsRunnable@CAIStateGroup_CreatureRangedCombat2@@QAE_NXZ	?IsRunnable@CAIStateGroup_CreatureRangedCombat2@@MAE_NXZ	virtual target, local model has a base clause
+009212c0	SKIP	?OnActivate@CAIStateGroup_MinionFollowThing@@QAEXXZ	?OnActivate@CAIStateGroup_MinionFollowThing@@MAEXXZ	virtual target, local model has a base clause
+009224e0	SKIP	?IsRunnable@CAIStateGroup_Freeze@@QAEEXZ	?IsRunnable@CAIStateGroup_Freeze@@UAE_NXZ	virtual target, local model has no leading vptr slot
+009224f0	SKIP	?Update@CAIStateGroup_Freeze@@QAEXXZ	?Update@CAIStateGroup_Freeze@@UAEXXZ	virtual target, local model has a base clause
+009250f0	SKIP	?Update@CAIStateGroup_KrakenTentacleIdle@@QAEXXZ	?Update@CAIStateGroup_KrakenTentacleIdle@@MAEXXZ	virtual target, local model has a base clause
+00925170	SKIP	?Update@CAIStateGroup_KrakenTentacleRise@@QAEXXZ	?Update@CAIStateGroup_KrakenTentacleRise@@MAEXXZ	virtual target, local model has a base clause
+009251e0	SKIP	?Update@CAIStateGroup_KrakenTentacleAttack@@QAEXXZ	?Update@CAIStateGroup_KrakenTentacleAttack@@MAEXXZ	virtual target, local model has a base clause
+00927c80	SKIP	?IsRunnable@CAIStateGroup_ShopkeeperWatchPlayer@@QAE_NXZ	?IsRunnable@CAIStateGroup_ShopkeeperWatchPlayer@@UAE_NXZ	virtual target, local model has a base clause
+00927ea0	SKIP	?InitCreaturePosition@CAIStateGroup_SetupWares@@QAE_NXZ	?InitCreaturePosition@CAIStateGroup_SetupWares@@UAE_NXZ	virtual target, local model has a base clause
+00928e20	SKIP	?OnReplace@CAIStateGroup_BanditPlayDice@@QAEXXZ	?OnReplace@CAIStateGroup_BanditPlayDice@@MAEXXZ	virtual target, local model has a base clause
+00929220	SKIP	?GetDiceGame@CAIStateGroup_BanditPlayDice@@QAEPAVCTCDiceGame@@XZ	?GetDiceGame@CAIStateGroup_BanditPlayDice@@MAEPAVCTCDiceGame@@XZ	virtual target, local model has a base clause
+009292b0	SKIP	?GetDiceGame@CAIStateGroup_BanditPlot@@QAEPAVCTCDiceGame@@XZ	?GetDiceGame@CAIStateGroup_BanditPlot@@MAEPAVCTCDiceGame@@XZ	virtual target, local model has a base clause
+0092b800	SKIP	?IsRunnable@CAIStateGroup_OnHeroPush@@QAE_NXZ	?IsRunnable@CAIStateGroup_OnHeroPush@@UAE_NXZ	virtual target, local model has a base clause
+0092c490	SKIP	?InitStateGroup@CAIStateGroup_GoToBed@@QAEXABVCWorld@@AAVCThingAICreature@@@Z	?InitStateGroup@CAIStateGroup_GoToBed@@UAEXABVCWorld@@AAVCThingAICreature@@@Z	virtual target, local model has a base clause
+0092c560	SKIP	?IsStillValid@CAIStateGroup_GoToBed@@QAE_NXZ	?IsStillValid@CAIStateGroup_GoToBed@@UBE_NXZ	virtual target, local model has a base clause
+0092d7c0	SKIP	?Update@CAIStateGroup_GoToBed@@QAEXXZ	?Update@CAIStateGroup_GoToBed@@UAEXXZ	virtual target, local model has a base clause
+0092e7e0	SKIP	?Clone@CCreatureAction_GetInBed@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_GetInBed@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00931010	SKIP	?IsRunnable@CAIStateGroup_MinionReactToCriminal@@QAE_NXZ	?IsRunnable@CAIStateGroup_MinionReactToCriminal@@UAE_NXZ	virtual target, local model has a base clause
+00932990	SKIP	?IsRunnable@CAIStateGroup_MinionGuardReactToCriminal@@QAE_NXZ	?IsRunnable@CAIStateGroup_MinionGuardReactToCriminal@@UAE_NXZ	virtual target, local model has a base clause
+00933fd0	SKIP	?Clone@CCreatureAction_KickCreature@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_KickCreature@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00934920	SKIP	?IsRunnable@CAIStateGroup_MinionKidGroupTag@@QAE_NXZ	?IsRunnable@CAIStateGroup_MinionKidGroupTag@@UAE_NXZ	virtual target, local model has a base clause
+009357f0	SKIP	?Update@CAIStateGroup_MinionFaceHero@@QAEXXZ	?Update@CAIStateGroup_MinionFaceHero@@UAEXXZ	virtual target, local model has a base clause
+00938ed0	SKIP	?IsStateGroupStillValid@CAIStateGroup_MinionSitAtHome@@QAEDXZ	?IsStateGroupStillValid@CAIStateGroup_MinionSitAtHome@@MBE_NXZ	declaration does not start its line
+00939ed0	SKIP	?IsRunnable@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ	?IsRunnable@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@UAE_NXZ	virtual target, local model has a base clause
+0093a080	SKIP	?Update@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ	?Update@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@UAEXXZ	virtual target, local model has a base clause
+0093afc0	SKIP	?OnReplace@CAIStateGroup_BanditSitRoundCampfire@@QAEXXZ	?OnReplace@CAIStateGroup_BanditSitRoundCampfire@@UAEXXZ	virtual target, local model has a base clause
+0093cb20	SKIP	?Update@CAIStateGroup_NonVillageGuardPatrol@@QAEXXZ	?Update@CAIStateGroup_NonVillageGuardPatrol@@UAEXXZ	virtual target, local model has a base clause
+0093d030	SKIP	?Update@CAIStateGroup_ButterflyWander@@QAEXXZ	?Update@CAIStateGroup_ButterflyWander@@UAEXXZ	virtual target, local model has a base clause
+0093fad0	SKIP	?IsStillValid@CAIStateGroup_VillageTaskSecuritySweep@@QBE_NXZ	?IsStillValid@CAIStateGroup_VillageTaskSecuritySweep@@UBE_NXZ	virtual target, local model has a base clause
+009406b0	SKIP	?Clone@CCreatureAction_PickCrop@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_PickCrop@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00940bd0	SKIP	?OnActivate@CAIStateGroup_KidWatchHopscotch@@QAEXXZ	?OnActivate@CAIStateGroup_KidWatchHopscotch@@MAEXXZ	declaration does not start its line
+00941210	SKIP	?IsRunnable@CAIStateGroup_KidWatchHopscotch@@QAE_NXZ	?IsRunnable@CAIStateGroup_KidWatchHopscotch@@MAE_NXZ	virtual target, local model has a base clause
+00941520	SKIP	?InitStateGroup@CAIStateGroup_KidPlayHopscotch@@QAEXABVCWorld@@AAVCThingAICreature@@@Z	?InitStateGroup@CAIStateGroup_KidPlayHopscotch@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	virtual target, local model has a base clause
+00941550	SKIP	?OnActivate@CAIStateGroup_KidPlayHopscotch@@QAEXXZ	?OnActivate@CAIStateGroup_KidPlayHopscotch@@MAEXXZ	virtual target, local model has a base clause
+009429c0	SKIP	?InitCreaturePosition@CAIStateGroup_WorkAtSchool@@QAEJXZ	?InitCreaturePosition@CAIStateGroup_WorkAtSchool@@MAE_NXZ	virtual target, local model has a base clause
+009454b0	SKIP	?InitStateGroup@CAIStateGroup_SitForMeal@@QAEXABVCWorld@@AAVCThingAICreature@@@Z	?InitStateGroup@CAIStateGroup_SitForMeal@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	declaration does not start its line
+00945620	SKIP	?Cleanup@CAIStateGroup_SitForMeal@@QAEXXZ	?Cleanup@CAIStateGroup_SitForMeal@@UAEXXZ	virtual target, local model has a base clause
+00945cb0	SKIP	?InitCreaturePosition@CAIStateGroup_SitForMeal@@QAE_NXZ	?InitCreaturePosition@CAIStateGroup_SitForMeal@@MAE_NXZ	virtual target, local model has a base clause
+00946850	SKIP	?Update@CAIStateGroup_LightHomeCandle@@QAEXXZ	?Update@CAIStateGroup_LightHomeCandle@@MAEXXZ	virtual target, local model has a base clause
+00946f30	SKIP	?IsStillValid@CAIStateGroup_WanderAroundShops@@QBE_NXZ	?IsStillValid@CAIStateGroup_WanderAroundShops@@UBE_NXZ	virtual target, local model has a base clause
+0094c7b0	SKIP	?OnActivate@CAIStateGroup_GameMaster@@QAEXXZ	?OnActivate@CAIStateGroup_GameMaster@@MAEXXZ	declaration does not start its line
+0094c7d0	SKIP	?ChooseAction@CAIStateGroup_GameMaster@@QAEXXZ	?ChooseAction@CAIStateGroup_GameMaster@@MAE_NXZ	virtual target, local model has no leading vptr slot
+0094c850	SKIP	?InitCreaturePosition@CAIStateGroup_GameMaster@@QAE_NXZ	?InitCreaturePosition@CAIStateGroup_GameMaster@@MAE_NXZ	virtual target, local model has a base clause
+0094c900	SKIP	?IsRunnable@CAIStateGroup_GameMaster@@QAE_NXZ	?IsRunnable@CAIStateGroup_GameMaster@@MAE_NXZ	virtual target, local model has a base clause
+0094cb40	SKIP	?GetSeat@CAIStateGroup_GameMaster@@QAE_NXZ	?GetSeat@CAIStateGroup_GameMaster@@MAE_NXZ	virtual target, local model has a base clause
+009500a0	SKIP	?Cleanup@CAIStateGroup_JackDragon@@QAEXXZ	?Cleanup@CAIStateGroup_JackDragon@@UAEXXZ	virtual target, local model has a base clause
+00953b90	SKIP	?Clone@CCreatureAction_DragonTakeOffIntoFlying@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_DragonTakeOffIntoFlying@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00953dc0	SKIP	?Clone@CCreatureAction_DragonBurninateInto@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_DragonBurninateInto@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00954470	SKIP	?IsRunnable@CAIStateGroup_MazeRangedCombat@@QAE_NXZ	?IsRunnable@CAIStateGroup_MazeRangedCombat@@UAE_NXZ	virtual target, local model has a base clause
+00954900	SKIP	?Cleanup@CAIStateGroup_MazeShieldedChase@@QAEXXZ	?Cleanup@CAIStateGroup_MazeShieldedChase@@UAEXXZ	virtual target, local model has a base clause
+00956460	SKIP	?Update@CAIStateGroup_MazeTutorialBattleUseShield@@QAEXXZ	?Update@CAIStateGroup_MazeTutorialBattleUseShield@@UAEXXZ	virtual target, local model has a base clause
+00956ce0	SKIP	?IsRunnable@CAIStateGroup_BriarRoseWillUse@@QAE_NXZ	?IsRunnable@CAIStateGroup_BriarRoseWillUse@@UAE_NXZ	virtual target, local model has a base clause
+009573d0	SKIP	?Clone@CCreatureAction_BriarRoseIntoInvulnerable@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BriarRoseIntoInvulnerable@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00957450	SKIP	?Clone@CCreatureAction_BriarRoseForcePush@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_BriarRoseForcePush@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00958000	SKIP	?Update@CAIStateGroup_MinionReactToBurglary@@QAEXXZ	?Update@CAIStateGroup_MinionReactToBurglary@@UAEXXZ	virtual target, local model has a base clause
+00959f30	SKIP	?IsRunnable@CAIStateGroup_HoverKeepInArea@@QAE_NXZ	?IsRunnable@CAIStateGroup_HoverKeepInArea@@UAE_NXZ	virtual target, local model has a base clause
+0095c1f0	SKIP	?Update@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?Update@CAIStateGroup_HoverHornetQueen@@UAEXXZ	virtual target, local model has a base clause
+0095e260	SKIP	?IsRunnable@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@QAE_NXZ	?IsRunnable@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@MAE_NXZ	virtual target, local model has a base clause
+0095e870	SKIP	?IsStillValid@CAIStateGroup_BoastingCrowdMember@@QAEJXZ	?IsStillValid@CAIStateGroup_BoastingCrowdMember@@MBE_NXZ	virtual target, local model has a base clause
+0095ebf0	SKIP	?OnReplace@CAIStateGroup_BoastingCrowdMember@@QAEXXZ	?OnReplace@CAIStateGroup_BoastingCrowdMember@@MAEXXZ	virtual target, local model has a base clause
+00960070	SKIP	?OnActivate@CAIStateGroup_DeedReactionRoot@@QAEXXZ	?OnActivate@CAIStateGroup_DeedReactionRoot@@UAEXXZ	virtual target, local model has a base clause
+00960760	SKIP	?OnReplace@CAIStateGroup_DeedReactionRoot@@QAEXXZ	?OnReplace@CAIStateGroup_DeedReactionRoot@@UAEXXZ	virtual target, local model has a base clause
+00961790	SKIP	?Update@CAIStateGroup_BanditKingCharge@@QAEXXZ	?Update@CAIStateGroup_BanditKingCharge@@MAEXXZ	virtual target, local model has a base clause
+00961fb0	SKIP	?IsRunnable@CAIStateGroup_IceTrollIcicleAssault@@QAE_NXZ	?IsRunnable@CAIStateGroup_IceTrollIcicleAssault@@MAE_NXZ	virtual target, local model has a base clause
+009621f0	SKIP	?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ	?Update@CAIStateGroup_IceTrollIcicleAttack@@MAEXXZ	virtual target, local model has a base clause
+009635c0	SKIP	?IsStillRunnable@CAIStateGroup_VersusScorpionKing@@QAE_NXZ	?IsStillRunnable@CAIStateGroup_VersusScorpionKing@@MAE_NXZ	virtual target, local model has a base clause
+00966a90	SKIP	?InitCreaturePosition@CAIStateGroup_TavernServer@@QAEJXZ	?InitCreaturePosition@CAIStateGroup_TavernServer@@MAE_NXZ	virtual target, local model has a base clause
+009681a0	SKIP	?InitCreaturePosition@CAIStateGroup_TavernKeeper@@QAEJXZ	?InitCreaturePosition@CAIStateGroup_TavernKeeper@@MAE_NXZ	virtual target, local model has a base clause
+009681e0	SKIP	?IsStillValid@CAIStateGroup_TavernKeeper@@QBE_NXZ	?IsStillValid@CAIStateGroup_TavernKeeper@@MBE_NXZ	virtual target, local model has a base clause
+0096a7a0	SKIP	?IsRunnableLeaf@CAIStateGroup_WhisperRetreat@@QAE_NXZ	?IsRunnableLeaf@CAIStateGroup_WhisperRetreat@@MAE_NXZ	virtual target, local model has a base clause
+0096aad0	SKIP	?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@QAE_NXZ	?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@MAE_NXZ	virtual target, local model has a base clause
+0096bf70	SKIP	?IsToEvadeAllHits@CCreatureAction_WhisperSommersaultForward@@QAEHXZ	?IsToEvadeAllHits@CCreatureAction_WhisperSommersaultForward@@UBE_NXZ	declaration does not start its line
+0096bff0	SKIP	?IsToEvadeAllHits@CCreatureAction_WhisperSommersaultBackward@@QAEHXZ	?IsToEvadeAllHits@CCreatureAction_WhisperSommersaultBackward@@UBE_NXZ	declaration does not start its line
+0096d260	SKIP	?GetBuilding@CAIStateGroup_EatAtTavern@@QAEPAVCThingBuilding@@XZ	?GetBuilding@CAIStateGroup_EatAtTavern@@MBEPAVCThingBuilding@@XZ	virtual target, local model has a base clause
+0096f030	SKIP	?CleanupLeaf@CAIStateGroup_MinionBehaviourSad@@QAEXXZ	?CleanupLeaf@CAIStateGroup_MinionBehaviourSad@@UAEXXZ	declaration does not start its line
+0096f490	SKIP	?InitLeaf@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@QAEXXZ	?InitLeaf@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@UAEXXZ	declaration does not start its line
+0096f570	SKIP	?UpdateLeaf@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@QAEXXZ	?UpdateLeaf@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@UAEXXZ	virtual target, local model has a base clause
+00971840	SKIP	?Clone@CCreatureAction_DuckAndCover@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_DuckAndCover@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+009720c0	SKIP	?OnActivate@CAIStateGroup_JackOfBladesBase@@QAEXXZ	?OnActivate@CAIStateGroup_JackOfBladesBase@@UAEXXZ	virtual target, local model has a base clause
+009775c0	SKIP	?Clone@CCreatureAction_JackScream@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_JackScream@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00977660	SKIP	?Clone@CCreatureAction_JackFloatUp@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_JackFloatUp@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00977770	SKIP	?Cleanup@CAIStateGroup_Guildmaster@@QAEXXZ	?Cleanup@CAIStateGroup_Guildmaster@@UAEXXZ	virtual target, local model has a base clause
+00977a30	SKIP	?OnDeactivate@CAIStateGroup_Guildmaster@@QAEXXZ	?OnDeactivate@CAIStateGroup_Guildmaster@@UAEXXZ	virtual target, local model has a base clause
+0097b5f0	SKIP	?Clone@CCreatureAction_JumpOutFromCover@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_JumpOutFromCover@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0097ca80	SKIP	?Clone@CCreatureAction_ScorpionPrepareTailPlunge@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ScorpionPrepareTailPlunge@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+009826a0	SKIP	?Clone@CCreatureAction_MagicBlast@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_MagicBlast@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+00982720	SKIP	?Clone@CCreatureAction_SendMessage@@QAEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_SendMessage@@UBEPAVCCreatureActionBase@@XZ	virtual target, local model has a base clause
+0098d6f0	SKIP	?PeekName@CVertexShaderConstantLayout@@QAE?AVCCharString@@XZ	?PeekName@CVertexShaderConstantLayout@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+00997e90	SKIP	?ParserIsSeparatorNext@CAFile@@SI_NAAVCStringParser@@@Z	?ParserIsSeparatorNext@CAFile@@CI_NAAVCStringParser@@@Z	identity: the PDB name is claimed by another address 00997da0
+009a5a50	SKIP	?ActivateWindow@CSystemManager@@SIXPAV1@_N@Z	?ActivateWindow@CSystemManager@@CIXPAV1@_N@Z	declaration does not start its line
+009cbc50	SKIP	?GetLastModifiedTime@CBankFile@@QAE?AVCDateAndTime@@ABVCCharString@@@Z	?GetLastModifiedTime@CBankFile@@MAE?AVCDateAndTime@@ABVCCharString@@@Z	virtual target, local model has no leading vptr slot
+009d5410	SKIP	?FreeBuffer@CBankFileAsyncData@@QAEXXZ	?FreeBuffer@CBankFileAsyncData@@AAEXXZ	identity: the PDB name is claimed by another address 0040f470,0043fdc0,0043fe80,004432b0
+009ea210	SKIP	?Init@CGenericVar@@QAEXABVCCharString@@@Z	?Init@CGenericVar@@UAEXABVCCharString@@@Z	identity: the PDB name is claimed by another address 009ea190,009ea1b0,009ea1d0,009ea1f0
+009ea620	SKIP	?CopyBackBufferToFrontBuffer@CConsole@@QAEXXZ	?CopyBackBufferToFrontBuffer@CConsole@@AAEXXZ	identity: the PDB name is claimed by another address 009ea640
+009ea640	SKIP	?CopyBackBufferToFrontBuffer@CConsole@@QAEXXZ	?CopyBackBufferToFrontBuffer@CConsole@@AAEXXZ	identity: the PDB name is claimed by another address 009ea620
+009f2a40	SKIP	?InternalAllocate@CMemoryAllocator@@QAEPAXJK_N@Z	?InternalAllocate@CMemoryAllocator@@IAEPAXJK_N@Z	identity: the PDB name is claimed by another address 009f2ac0
+009ff440	SKIP	?InitFrames@CGraphicDataBank@@QAEXXZ	?InitFrames@CGraphicDataBank@@AAEXXZ	declaration does not start its line
+00a013c0	SKIP	?IsUsingSurfaces@CGraphicDataBank@@QAE_NXZ	?IsUsingSurfaces@CGraphicDataBank@@UBE_NXZ	virtual target, local model has no leading vptr slot
+00a1bee0	SKIP	?UpdateLastPosition@CNavigatorAStar@@QAEXABVC3DVector@@@Z	?UpdateLastPosition@CNavigatorAStar@@UAEXABVC3DVector@@@Z	virtual target, local model has a base clause
+00a25470	SKIP	?OnResourceLoaded@C3DMeshLODInfo@@QAEXXZ	?OnResourceLoaded@C3DMeshLODInfo@@UAEXXZ	declaration does not start its line
+00a3a2e0	SKIP	?Set@CWADBankStateBlock@@QAEXPBVCBankStateBlock@@@Z	?Set@CWADBankStateBlock@@MAEXPBVCBankStateBlock@@@Z	virtual target, local model has no leading vptr slot
+00a42da0	SKIP	?Close@CLipSyncDataBank@@QAEXXZ	?Close@CLipSyncDataBank@@UAEXXZ	virtual target, local model has a base clause
+00a4e150	SKIP	?GetMovementAtTime@C3DAnimation2@@QBE?AVC3DVector@@M@Z	?GetMovementAtTime@C3DAnimation2@@UBE?AVC3DVector@@M@Z	virtual target, local model has a base clause
+00a5b0a0	SKIP	?MovePosition@CCachedFile@@QAEXJ@Z	?MovePosition@CCachedFile@@UAEXJ@Z	virtual target, local model has no leading vptr slot
+00a5b260	SKIP	?Open@CCachedFile@@QAEXABVCWideString@@W4FileAccessType@@K@Z	?Open@CCachedFile@@UAEXABVCWideString@@W4FileAccessType@@K@Z	virtual target, local model has no leading vptr slot
+00a5f6a0	SKIP	?CreateCRC@CStreamingFontBankStateBlock@@QAEHXZ	?CreateCRC@CStreamingFontBankStateBlock@@UAEKXZ	declaration does not start its line
+00a61f40	SKIP	?Set@CShaderBankStateBlock@@QAEXPBVCBankStateBlock@@@Z	?Set@CShaderBankStateBlock@@MAEXPBVCBankStateBlock@@@Z	identity: the PDB name is claimed by another address 00b50c60
+00a62580	SKIP	?CreateCRC@CShaderBankStateBlock@@QAEHXZ	?CreateCRC@CShaderBankStateBlock@@UAEKXZ	declaration does not start its line
+00a63120	SKIP	?DoUnlock@CVertexBufferWin32@@QAEXXZ	?DoUnlock@CVertexBufferWin32@@EAEXXZ	identity: the PDB name is claimed by another address 009f2dc0,00a67410
+00a63890	SKIP	?CreateCRC@CFontBankStateBlock@@QAEHXZ	?CreateCRC@CFontBankStateBlock@@UAEKXZ	identity: the PDB name is claimed by another address 00c2d1e0,01229480,012294a0,012295f0
+00a63db0	SKIP	?ReadFromParserAsBool@CGenericVarRef@@QAE_NAAVCStringParser@@@Z	?ReadFromParserAsBool@CGenericVarRef@@AAE_NAAVCStringParser@@@Z	declaration does not start its line
+00a64230	SKIP	?ReadFromParserAsBool@CGenericVar@@QAE_NAAVCStringParser@@@Z	?ReadFromParserAsBool@CGenericVar@@IAE_NAAVCStringParser@@@Z	declaration does not start its line
+00a65260	SKIP	?GetAllAllocatedAreas@CMemoryAllocatorVariableSize@@QAEKPAPAXK@Z	?GetAllAllocatedAreas@CMemoryAllocatorVariableSize@@UAEKPAPAXK@Z	virtual target, local model has a base clause
+00a65d30	SKIP	?ConsolidateFreeAreas@CMemoryAllocatorFixedSize@@QAEXXZ	?ConsolidateFreeAreas@CMemoryAllocatorFixedSize@@UAEXXZ	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a65d40	SKIP	?GetAllocationSize@CMemoryAllocatorFixedSize@@QAEKPAX@Z	?GetAllocationSize@CMemoryAllocatorFixedSize@@UAEKPAX@Z	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a65d50	SKIP	?GetTotalMemoryControlledByAllocator@CMemoryAllocatorFixedSize@@QAEKXZ	?GetTotalMemoryControlledByAllocator@CMemoryAllocatorFixedSize@@UAEKXZ	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a65d70	SKIP	?GetHeaderOverhead@CMemoryAllocatorFixedSize@@QAEKXZ	?GetHeaderOverhead@CMemoryAllocatorFixedSize@@UAEKXZ	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a65da0	SKIP	?GetTotalMemoryAllocated@CMemoryAllocatorFixedSize@@QAEKXZ	?GetTotalMemoryAllocated@CMemoryAllocatorFixedSize@@UAEKXZ	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a65de0	SKIP	?GetAllocationSizeIncludingHeader@CMemoryAllocatorFixedSize@@QAEKPAX@Z	?GetAllocationSizeIncludingHeader@CMemoryAllocatorFixedSize@@UAEKPAX@Z	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a65df0	SKIP	?GetLargestFreeAreaSize@CMemoryAllocatorFixedSize@@QAEKXZ	?GetLargestFreeAreaSize@CMemoryAllocatorFixedSize@@UAEKXZ	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a65e20	SKIP	?GetNoFreeAreas@CMemoryAllocatorFixedSize@@QAEKXZ	?GetNoFreeAreas@CMemoryAllocatorFixedSize@@UAEKXZ	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a65e50	SKIP	?GetNoAllocatedAreas@CMemoryAllocatorFixedSize@@QAEKXZ	?GetNoAllocatedAreas@CMemoryAllocatorFixedSize@@UAEKXZ	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a66550	SKIP	?GetFragmentation@CMemoryAllocatorFixedSize@@QAEMXZ	?GetFragmentation@CMemoryAllocatorFixedSize@@UAEMXZ	0 local definitions of CMemoryAllocatorFixedSize (needs exactly one)
+00a668e0	SKIP	?AddMaintainedEventsToEventStore@CKeyboard@@QAEXXZ	?AddMaintainedEventsToEventStore@CKeyboard@@IAEXXZ	identity: the PDB name is claimed by another address 00a66ed0
+00a66ed0	SKIP	?AddMaintainedEventsToEventStore@CKeyboard@@QAEXXZ	?AddMaintainedEventsToEventStore@CKeyboard@@IAEXXZ	identity: the PDB name is claimed by another address 00a668e0
+00a67420	SKIP	?ReleaseVolume@CVolume@@QAEXXZ	?ReleaseVolume@CVolume@@IAEXXZ	identity: the PDB name is claimed by another address 00a67460
+00aacfb0	SKIP	?UpdateFogColour@CShaderRenderManager@@QAEXXZ	?UpdateFogColour@CShaderRenderManager@@AAEXXZ	identity: the PDB name is claimed by another address 009897c0
+00ab5390	SKIP	?SetMouseCursor@CMouseDX@@QAEXABVCSurface@@@Z	?SetMouseCursor@CMouseDX@@UAEXABVCSurface@@@Z	0 local definitions of CMouseDX (needs exactly one)
+00ab5f00	SKIP	?PeekPos@CMouseDX@@QBEABVC2DVector@@XZ	?PeekPos@CMouseDX@@UBEABVC2DVector@@XZ	0 local definitions of CMouseDX (needs exactly one)
+00ab5f10	SKIP	?SetInputOn@CMouseDX@@QAEX_N@Z	?SetInputOn@CMouseDX@@UAEX_N@Z	0 local definitions of CMouseDX (needs exactly one)
+00ab5f20	SKIP	?SetRecentringOn@CMouseDX@@QAEX_N@Z	?SetRecentringOn@CMouseDX@@UAEX_N@Z	0 local definitions of CMouseDX (needs exactly one)
+00ab5f30	SKIP	?IsRecentringOn@CMouseDX@@QBE_NXZ	?IsRecentringOn@CMouseDX@@UBE_NXZ	0 local definitions of CMouseDX (needs exactly one)
+00ab5f40	SKIP	?SetDrawCursor@CMouseDX@@QAEX_N@Z	?SetDrawCursor@CMouseDX@@UAEX_N@Z	0 local definitions of CMouseDX (needs exactly one)
+00ab5f50	SKIP	?IsDrawingCursor@CMouseDX@@QBE_NXZ	?IsDrawingCursor@CMouseDX@@UBE_NXZ	0 local definitions of CMouseDX (needs exactly one)
+00ab5f60	SKIP	?SetMouseFiltering@CMouseDX@@QAEX_N@Z	?SetMouseFiltering@CMouseDX@@UAEX_N@Z	0 local definitions of CMouseDX (needs exactly one)
+00ab5f70	SKIP	?IsLMBDown@CMouseDX@@QBE_NXZ	?IsLMBDown@CMouseDX@@UBE_NXZ	0 local definitions of CMouseDX (needs exactly one)
+00ab5f80	SKIP	?IsMMBDown@CMouseDX@@QBE_NXZ	?IsMMBDown@CMouseDX@@UBE_NXZ	0 local definitions of CMouseDX (needs exactly one)
+00ab5f90	SKIP	?IsRMBDown@CMouseDX@@QBE_NXZ	?IsRMBDown@CMouseDX@@UBE_NXZ	0 local definitions of CMouseDX (needs exactly one)
+00abcf40	SKIP	?ReadFromFile@C3DMeshFilePrimitiveChunk@@QAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z	?ReadFromFile@C3DMeshFilePrimitiveChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z	virtual target, local model has a base clause
+00ac7030	SKIP	?IsZTargetable@CTCTargeted@@QAE_NXZ	?IsZTargetable@CTCTargeted@@QBE_NXZ	identity: the PDB name is claimed by another address 007ea290
+00b0a750	SKIP	?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@QAEMXZ	?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ	nested scope or operator / special member
+00b23f00	SKIP	?SetSeaBodyToRender@CEngine@@QAEXVCCharString@@@Z	?SetSeaBodyToRender@CEngine@@UAEXVCCharString@@@Z	virtual target, local model has no leading vptr slot
+00b23fd0	SKIP	?Enable2DSceneRendering@CEngine@@QAEX_N@Z	?Enable2DSceneRendering@CEngine@@UAEX_N@Z	identity: the PDB name is claimed by another address 00c42fe0
+00b240c0	SKIP	?PausedWorldFrameUpdate@CEngine@@QAEXXZ	?PausedWorldFrameUpdate@CEngine@@UAEXXZ	virtual target, local model has no leading vptr slot
+00b242a0	SKIP	?ClipBox@CEngine@@QAE_NABVC3DBoundingBox@@@Z	?ClipBox@CEngine@@UBE_NABVC3DBoundingBox@@@Z	virtual target, local model has no leading vptr slot
+00b25c00	SKIP	?RenderColorFilteredQuad@CEngine@@QAEXMMABVC4DVector@@MMPAVCTexture@@@Z	?RenderColorFilteredQuad@CEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z	virtual target, local model has no leading vptr slot
+00b3b5d0	SKIP	?SetupVertexShaderResource@CEngineResourceManager@@QAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z	?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z	identity: the PDB name is claimed by another address 00b3b6d0
+00b599c0	SKIP	?LoadNewScene@CEngineLocalDetailGenerator@@QAE_NABVCEngineComponentLoadNewSceneParams@@@Z	?LoadNewScene@CEngineLocalDetailGenerator@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z	virtual target, local model has no leading vptr slot
+00b6ca10	SKIP	?PeekSceneFilterFlags@CEngineLandscapeRenderer@@QBEKXZ	?PeekSceneFilterFlags@CEngineLandscapeRenderer@@UBEKXZ	0 local definitions of CEngineLandscapeRenderer (needs exactly one)
+00b86a10	SKIP	?BoughtSomething@CAIStateGroup_BuyFromSeller@@QAEXXZ	?BoughtSomething@CAIStateGroup_BuyFromSeller@@AAEXXZ	identity: the PDB name is claimed by another address 0047cfee,007e5950,00919a30
+00b91340	SKIP	?RenderBoundingVolume@CEnginePrimitiveManagerOcclusionBase@@QAEXAAVCEngineSubPrimitiveBase@@@Z	?RenderBoundingVolume@CEnginePrimitiveManagerOcclusionBase@@UAEXAAVCEngineSubPrimitiveBase@@@Z	virtual target, local model has no leading vptr slot
+00bacbd0	SKIP	?GetBoundingBoxTransform@CEngineInternalPrimitiveOcclusionGroup@@QAE_NAAVCMatrix3x4@@@Z	?GetBoundingBoxTransform@CEngineInternalPrimitiveOcclusionGroup@@UAE_NAAVCMatrix3x4@@@Z	virtual target, local model has a base clause
+00bad8a0	SKIP	?Update@CEngineInternalPrimitive2DSprite@@QAEXABVCEnginePrimitive@@K@Z	?Update@CEngineInternalPrimitive2DSprite@@UAEXABVCEnginePrimitive@@K@Z	virtual target, local model has a base clause
+00bbbf00	SKIP	?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleGroup@@QAEJJ@Z	?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleGroup@@UAE_NJ@Z	virtual target, local model has no leading vptr slot
+00bc5970	SKIP	?RenderPrimitive@CEnginePrimitiveChangerManager@@QAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	?RenderPrimitive@CEnginePrimitiveChangerManager@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	virtual target, local model has no leading vptr slot
+00bc5c50	SKIP	?SetChildPrimitive@CEngineInternalPrimitiveChanger@@QAEXKABVCEnginePrimitive@@K@Z	?SetChildPrimitive@CEngineInternalPrimitiveChanger@@UAEXKABVCEnginePrimitive@@K@Z	virtual target, local model has a base clause
+00bc5fc0	SKIP	?GetBoundingBoxTransform@CEngineInternalPrimitiveGroup@@QAE_NAAVCMatrix3x4@@@Z	?GetBoundingBoxTransform@CEngineInternalPrimitiveGroup@@UAE_NAAVCMatrix3x4@@@Z	virtual target, local model has a base clause
+00bc65d0	SKIP	?SetChildPrimitive@CEngineInternalPrimitiveGroup@@QAEXKABVCEnginePrimitive@@K@Z	?SetChildPrimitive@CEngineInternalPrimitiveGroup@@UAEXKABVCEnginePrimitive@@K@Z	virtual target, local model has a base clause
+00bc7f70	SKIP	?Update@CEngineInternalPrimitiveLine@@QAEXABVCEnginePrimitive@@K@Z	?Update@CEngineInternalPrimitiveLine@@UAEXABVCEnginePrimitive@@K@Z	virtual target, local model has a base clause
+00bcbc00	SKIP	?Update@CEngineInternalPrimitiveSpriteTrail@@QAEXABVCEnginePrimitive@@K@Z	?Update@CEngineInternalPrimitiveSpriteTrail@@UAEXABVCEnginePrimitive@@K@Z	virtual target, local model has a base clause
+00bcd660	SKIP	?Update@CEngineInternalPrimitiveWeaponTrail@@QAEXABVCEnginePrimitive@@K@Z	?Update@CEngineInternalPrimitiveWeaponTrail@@UAEXABVCEnginePrimitive@@K@Z	virtual target, local model has a base clause
+00bdb040	SKIP	?PeekName@CEngineVSConstantLayoutParticles@@QAE?AVCCharString@@XZ	?PeekName@CEngineVSConstantLayoutParticles@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+00bdb2f0	SKIP	?PeekName@CEngineVSConstantLayoutLightsBones@@QAE?AVCCharString@@XZ	?PeekName@CEngineVSConstantLayoutLightsBones@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+00bdb580	SKIP	?PeekName@CEngineVSConstantLayoutLights@@QAE?AVCCharString@@XZ	?PeekName@CEngineVSConstantLayoutLights@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+00bdbf00	SKIP	?PeekName@CEngineVSConstantLayoutBasic@@QAE?AVCCharString@@XZ	?PeekName@CEngineVSConstantLayoutBasic@@UBE?AVCCharString@@XZ	virtual target, local model has no leading vptr slot
+00bdc130	SKIP	?RelocateData@CEngineLandscapeMap@@QAEXJPAX0J@Z	?RelocateData@CEngineLandscapeMap@@EAEXJPAX0J@Z	0 local definitions of CEngineLandscapeMap (needs exactly one)
+00be1a00	SKIP	?CreateInternalPrimitive@CEnginePrimitiveManager2DParticleGroup@@QAEPAVCEngineInternalPrimitiveBase@@W4EEnginePrimitiveType@@@Z	?CreateInternalPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAEPAVCEngineInternalPrimitiveBase@@W4EEnginePrimitiveType@@@Z	virtual target, local model has no leading vptr slot
+00be1ba0	SKIP	?Render2DPrimitive@CEnginePrimitive2DViewportManager@@QAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z	?Render2DPrimitive@CEnginePrimitive2DViewportManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z	virtual target, local model has no leading vptr slot
+00be2310	SKIP	?AddChildPrimitive@CEngineInternalPrimitive2DViewport@@QAEKABVCEnginePrimitive@@K@Z	?AddChildPrimitive@CEngineInternalPrimitive2DViewport@@UAEKABVCEnginePrimitive@@K@Z	virtual target, local model has a base clause
+00be23f0	SKIP	?SetChildPrimitive@CEngineInternalPrimitive2DViewport@@QAEXKABVCEnginePrimitive@@K@Z	?SetChildPrimitive@CEngineInternalPrimitive2DViewport@@UAEXKABVCEnginePrimitive@@K@Z	virtual target, local model has a base clause
+00be5d80	SKIP	?OnPostRelocation@CLandscapeBackgroundPatch@@QAEXXZ	?OnPostRelocation@CLandscapeBackgroundPatch@@UAEXXZ	virtual target, local model has a base clause
+00bf3840	SKIP	?CanRelocateData@CEngineLandscapePatch@@QBE_NJ@Z	?CanRelocateData@CEngineLandscapePatch@@EBE_NJ@Z	0 local definitions of CEngineLandscapePatch (needs exactly one)
+00c1c620	SKIP	?SetAsPaused@CWorld@@QAEX_N@Z	?SetAsPaused@CWorld@@IAEX_N@Z	identity: the PDB name is claimed by another address 0049d8f0
+00c1d7f0	SKIP	?GetMemoryFootprint@CMap@@QAEJXZ	?GetMemoryFootprint@CMap@@QBEJXZ	identity: the PDB name is claimed by another address 0081e7b0
+00c1ea80	SKIP	?GetMemoryFootprint@CMap@@QAEJXZ	?GetMemoryFootprint@CMap@@QBEJXZ	identity: the PDB name is claimed by another address 0081e7b0,00c1d7f0
+00c23df0	SKIP	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJXZ	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@IAEJXZ	identity: the PDB name is claimed by another address 00c1b460,00c23c00,00c24040,00c242a0
+00c242a0	SKIP	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJXZ	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@IAEJXZ	identity: the PDB name is claimed by another address 00c1b460,00c23c00,00c23df0,00c24040
+00c44860	SKIP	?SetHeadTurnState@CTCLook@@QAEXJ@Z	?SetHeadTurnState@CTCLook@@AAEXJ@Z	identity: the PDB name is claimed by another address 007517b0,00c41530,00c415a0
+00f3a2e0	SKIP	?Compress@CRangeCompressor@@QAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	identity: the PDB name is claimed by another address 00f3ae50,00f3afc0
+01212487	SKIP	?SetAsPaused@CWorld@@QAEX_N@Z	?SetAsPaused@CWorld@@IAEX_N@Z	identity: the PDB name is claimed by another address 0049d8f0,00c1c620
+00467553	ACCEPT	?Transfer@CPlayerInventoryDef@@QAEXAAVCPersistContext@@@Z	?Transfer@CPlayerInventoryDef@@UAEXAAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00490927	ACCEPT	?IsAllowedToSetText@CSubtitleRenderer@@QAE_N_N@Z	?IsAllowedToSetText@CSubtitleRenderer@@QBE_N_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004dd999	ACCEPT	?Transfer@CBedDef@@QAEXAAVCPersistContext@@@Z	?Transfer@CBedDef@@UAEXAAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004de36b	ACCEPT	?Transfer@COpinionOfHeroDef@@QAEXAAVCPersistContext@@@Z	?Transfer@COpinionOfHeroDef@@UAEXAAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004df107	ACCEPT	?Transfer@CFishingRodDef@@QAEXAAVCPersistContext@@@Z	?Transfer@CFishingRodDef@@UAEXAAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004df738	ACCEPT	?Transfer@CLightningOrbDef@@QAEXAAVCPersistContext@@@Z	?Transfer@CLightningOrbDef@@UAEXAAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004e394f	ACCEPT	?Transfer@CWhisperBattleDef@@QAEXAAVCPersistContext@@@Z	?Transfer@CWhisperBattleDef@@UAEXAAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004e599d	ACCEPT	?Transfer@CFlammableDef@@QAEXAAVCPersistContext@@@Z	?Transfer@CFlammableDef@@UAEXAAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004ec0b3	ACCEPT	?Transfer@CCardDef@@QAEXAAVCPersistContext@@@Z	?Transfer@CCardDef@@UAEXAAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0058376c	ACCEPT	?IsSaveMenuReceivingInput@CTCInventory@@QAE_NXZ	?IsSaveMenuReceivingInput@CTCInventory@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006836d0	ACCEPT	?IsGuardOnLevel@CTCCreatureOpinionOfHero@@QAE_NXZ	?IsGuardOnLevel@CTCCreatureOpinionOfHero@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007308f0	ACCEPT	?UpdateAnimation@CTCDoor@@QAEXXZ	?UpdateAnimation@CTCDoor@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00730f90	ACCEPT	?UpdateOpenStatusTriggerTypePerson@CTCDoor@@QAEXXZ	?UpdateOpenStatusTriggerTypePerson@CTCDoor@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00749bf0	ACCEPT	?StartAnimation@CTCCupboard@@QAEXJ@Z	?StartAnimation@CTCCupboard@@AAEXJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00751c70	ACCEPT	?GetAnglesFromBodyToPos@CTCLook@@QBEXABVC3DVector@@_NAAM2@Z	?GetAnglesFromBodyToPos@CTCLook@@ABEXABVC3DVector@@_NAAM2@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00753840	ACCEPT	?TrackNearestInterestingThing@CTCLook@@QAEJ_N@Z	?TrackNearestInterestingThing@CTCLook@@QAE_N_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0078e7c0	ACCEPT	?Attackable@CTCDivineWrath@@QAE_NPAVCThingCreatureBase@@@Z	?Attackable@CTCDivineWrath@@AAE_NPAVCThingCreatureBase@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0078e9c0	ACCEPT	?UnsheatheWeapon@CTCDivineWrath@@QAEXXZ	?UnsheatheWeapon@CTCDivineWrath@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00793cc0	ACCEPT	?Attackable@CTCUnholyPower@@QAE_NPAVCThingCreatureBase@@@Z	?Attackable@CTCUnholyPower@@AAE_NPAVCThingCreatureBase@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00793ec0	ACCEPT	?UnsheatheWeapon@CTCUnholyPower@@QAEXXZ	?UnsheatheWeapon@CTCUnholyPower@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007a16f0	ACCEPT	?InitialiseBeams@CTCWillLightning@@QAEXXZ	?InitialiseBeams@CTCWillLightning@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007b2c70	ACCEPT	?ReportCrime@CTCGuard@@QAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z	?ReportCrime@CTCGuard@@AAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+007f8160	ACCEPT	?SetTriggerState@CTCActivationReceptorRelay@@QAEX_N@Z	?SetTriggerState@CTCActivationReceptorRelay@@AAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+007f8490	ACCEPT	?PopItem@CTCCreatureItemLevitationBase@@QAEXXZ	?PopItem@CTCCreatureItemLevitationBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00800500	REJECT	?HasRoute@CTCPreCalculatedNavigationRoute@@QBEJXZ	?HasRoute@CTCPreCalculatedNavigationRoute@@QBE_NXZ	objsec DIFF 5 .text .text bytes False relocs False 55 73 /     (10, '?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ', 20) | (17, '?IS_THING_DEAD@@YA_NABV?$CIntelligentPointer@VCThing@@@@@Z', 20) / bad 5 text_sections_equal=0
+00803b20	REJECT	?PostProcessTargetedThing@CTCTargetingPlayer@@QAE_NXZ	?PostProcessTargetedThing@CTCTargetingPlayer@@IAEXXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+008448a0	ACCEPT	?IsToHaveEmptyHands@CCreatureAction_UseLamp@@QAEEXZ	?IsToHaveEmptyHands@CCreatureAction_UseLamp@@UBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+008552f0	ACCEPT	?GetNextPos@CCreatureAction_BlockBase@@QAE?AVC3DVector@@XZ	?GetNextPos@CCreatureAction_BlockBase@@MBE?AVC3DVector@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+008569c0	ACCEPT	?SetForcedMoveToPos@CCombatActionBase@@QAEXABVC3DVector@@@Z	?SetForcedMoveToPos@CCombatActionBase@@IAEXABVC3DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00860300	REJECT	?IsValid@CVillageTaskSecuritySweep@@QBE_NXZ	?IsValid@CVillageTaskSecuritySweep@@UBE_NXZ	objsec sections head 2 new 2 / DIFF 1 .text .text bytes False relocs True 11 23 / bad 1 text_sections_equal=0
+0087c900	ACCEPT	?IsToFaceTarget@CCreatureAction_InterruptableMidAttackAutoTurn@@QBE_NXZ	?IsToFaceTarget@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+008d58d0	ACCEPT	?ResetCreatureUseProjectileWeaponState@CCreatureAction_FireMissileWeapon@@QAEXXZ	?ResetCreatureUseProjectileWeaponState@CCreatureAction_FireMissileWeapon@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0090c800	ACCEPT	?InitStateGroup@CAIStateGroup_MinionGossip@@UAEXABVCWorld@@AAVCThingAICreature@@@Z	?InitStateGroup@CAIStateGroup_MinionGossip@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0090cb80	REJECT	?IsStillValid@CAIStateGroup_MinionGossip@@UAE_NXZ	?IsStillValid@CAIStateGroup_MinionGossip@@MBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+0090fb60	ACCEPT	?GetSeat@CAIStateGroup_MinionSitAtInn@@UAEXPAVCThing@@@Z	?GetSeat@CAIStateGroup_MinionSitAtInn@@MAEXPAVCThing@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0090fd20	ACCEPT	?IsRunnable@CAIStateGroup_MinionSitAtSchool@@UAE_NXZ	?IsRunnable@CAIStateGroup_MinionSitAtSchool@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0090fdb0	ACCEPT	?Update@CAIStateGroup_MinionSitAtSchool@@UAEXXZ	?Update@CAIStateGroup_MinionSitAtSchool@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00910100	ACCEPT	?IsRunnable@CAIStateGroup_MinionListenToStory@@UAE_NXZ	?IsRunnable@CAIStateGroup_MinionListenToStory@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00918900	ACCEPT	?IsRunnable@CAIStateGroup_GazeOutside@@UAE_NXZ	?IsRunnable@CAIStateGroup_GazeOutside@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009189c0	ACCEPT	?IsRunnable@CAIStateGroup_GazeAtHome@@UAE_NXZ	?IsRunnable@CAIStateGroup_GazeAtHome@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009190f0	ACCEPT	?InitStateGroup@CAIStateGroup_LookAtInterestingThings@@UAEXABVCWorld@@AAVCThingAICreature@@@Z	?InitStateGroup@CAIStateGroup_LookAtInterestingThings@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009191b0	ACCEPT	?OnReplace@CAIStateGroup_LookAtInterestingThings@@UAEXXZ	?OnReplace@CAIStateGroup_LookAtInterestingThings@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00919440	ACCEPT	?InitCreaturePosition@CAIStateGroup_LookAtInterestingThings@@UAE_NXZ	?InitCreaturePosition@CAIStateGroup_LookAtInterestingThings@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00919510	ACCEPT	?IsRunnable@CAIStateGroup_LookAtInterestingThings@@UAE_NXZ	?IsRunnable@CAIStateGroup_LookAtInterestingThings@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0091e990	ACCEPT	?Cleanup@CAIStateGroup_CreatureRangedCombat2@@UAEXXZ	?Cleanup@CAIStateGroup_CreatureRangedCombat2@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00921630	ACCEPT	?IsRunnable@CAIStateGroup_MinionWalkToMarker@@UAE_NXZ	?IsRunnable@CAIStateGroup_MinionWalkToMarker@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009236c0	ACCEPT	?Update@CAIStateGroup_ServeFood@@UAEXXZ	?Update@CAIStateGroup_ServeFood@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009239c0	ACCEPT	?OnReplace@CAIStateGroup_ServeFood@@UAEXXZ	?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0092b110	ACCEPT	?Update@CAIStateGroup_ApprenticeHero@@UAEXXZ	?Update@CAIStateGroup_ApprenticeHero@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00933470	ACCEPT	?IsStillValid@CAIStateGroup_MinionGuardReactToBribe@@UAE_NXZ	?IsStillValid@CAIStateGroup_MinionGuardReactToBribe@@UBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00937b10	ACCEPT	?FindUndiscoveredUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThingCreatureBase@@XZ	?FindUndiscoveredUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@ABEPAVCThingCreatureBase@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00937c20	ACCEPT	?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThingCreatureBase@@XZ	?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@ABEPAVCThingCreatureBase@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00938960	ACCEPT	?IsStillValid@CAIStateGroup_UsesSeat@@UAE_NXZ	?IsStillValid@CAIStateGroup_UsesSeat@@UBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00938f70	ACCEPT	?IsRunnable@CAIStateGroup_MinionSitOutside@@UAE_NXZ	?IsRunnable@CAIStateGroup_MinionSitOutside@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00939060	REJECT	?IsStillValid@CAIStateGroup_MinionSitOutside@@UAEEXZ	?IsStillValid@CAIStateGroup_MinionSitOutside@@MBE_NXZ	objsec     (95, '?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ', 20) | (220, '?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ', 20) /     (100, '?GetFrame@CWorld@@SIJXZ', 20) | (232, '?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ', 20) / bad 13 text_sections_equal=0
+0093c420	ACCEPT	?Cleanup@CAIStateGroup_StealthSeekEnemy@@UAEXXZ	?Cleanup@CAIStateGroup_StealthSeekEnemy@@EAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093e240	ACCEPT	?Cleanup@CAIStateGroup_MeleeCombatNearby2@@UAEXXZ	?Cleanup@CAIStateGroup_MeleeCombatNearby2@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093e560	ACCEPT	?Cleanup@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@UAEXXZ	?Cleanup@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00944db0	ACCEPT	?OnReplace@CAIStateGroup_WorkHammerAnvil@@UAEXXZ	?OnReplace@CAIStateGroup_WorkHammerAnvil@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009460c0	ACCEPT	?InitCreaturePosition@CAIStateGroup_PrepareMeal@@UAE_NXZ	?InitCreaturePosition@CAIStateGroup_PrepareMeal@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00946690	ACCEPT	?ShouldBeLit@CAIStateGroup_LightHomeCandle@@UAE_NXZ	?ShouldBeLit@CAIStateGroup_LightHomeCandle@@MBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00948060	ACCEPT	?InitCreaturePosition@CAIStateGroup_GoToPub@@UAE_NXZ	?InitCreaturePosition@CAIStateGroup_GoToPub@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009498b0	ACCEPT	?OnReplace@CAIStateGroup_GoToPub@@UAEXXZ	?OnReplace@CAIStateGroup_GoToPub@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094ca80	ACCEPT	?OnReplace@CAIStateGroup_GameMaster@@UAEXXZ	?OnReplace@CAIStateGroup_GameMaster@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00954c60	ACCEPT	?FindHitEvent@CAIStateGroup_MazeTutorialBattleRespondToLightning@@QAE_NXZ	?FindHitEvent@CAIStateGroup_MazeTutorialBattleRespondToLightning@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0095e350	ACCEPT	?IsRunnable@CAIStateGroup_ReactToDeadLeader@@UAE_NXZ	?IsRunnable@CAIStateGroup_ReactToDeadLeader@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0095e790	ACCEPT	?IsRunnable@CAIStateGroup_BoastingCrowdMember@@QAE_NXZ	?IsRunnable@CAIStateGroup_BoastingCrowdMember@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0095f7d0	ACCEPT	?GreetedThingReactingToBefore@CAIStateGroup_OpinionReactionRoot@@QAE_NXZ	?GreetedThingReactingToBefore@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00968e00	ACCEPT	?IsRunnable@CAIStateGroup_TavernKeeper@@UAE_NXZ	?IsRunnable@CAIStateGroup_TavernKeeper@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0096cfc0	ACCEPT	?OnReplace@CAIStateGroup_EatAtTable@@UAEXXZ	?OnReplace@CAIStateGroup_EatAtTable@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0096d380	REJECT	?IsTime@CAIStateGroup_EatAtTavern@@UAE_NXZ	?IsTime@CAIStateGroup_EatAtTavern@@MBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+0096edb0	ACCEPT	?Cleanup@CAIStateGroup_MeleeCombatNearby@@UAEXXZ	?Cleanup@CAIStateGroup_MeleeCombatNearby@@MAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0096f180	ACCEPT	?FoundDeadSpouse@CAIStateGroup_MinionBehaviourSad@@QAE_NXZ	?FoundDeadSpouse@CAIStateGroup_MinionBehaviourSad@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00972280	ACCEPT	?IsRunnable@CAIStateGroup_JackOfBladesStage1@@UAE_NXZ	?IsRunnable@CAIStateGroup_JackOfBladesStage1@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009723d0	ACCEPT	?IsRunnable@CAIStateGroup_JackOfBladesStage2@@UAE_NXZ	?IsRunnable@CAIStateGroup_JackOfBladesStage2@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009725b0	ACCEPT	?IsRunnable@CAIStateGroup_JackOfBladesStage3@@UAE_NXZ	?IsRunnable@CAIStateGroup_JackOfBladesStage3@@MAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009830c0	ACCEPT	?TryAndLookOnAwarenessUpdate@CAIStateGroup_OpinionReactionRoot@@QAE_NXZ	?TryAndLookOnAwarenessUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00984a20	REJECT	?WatchUpdate@CAIStateGroup_OpinionReactionRoot@@QAEJXZ	?WatchUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	objsec     (7, '?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ', 20) | (4, '$L3654', 6) /     (30, '?GFROR13@@YIJK@Z', 20) | (16, '$T3661', 6) / bad 7 text_sections_equal=0
+00beab20	ACCEPT	?RelocateData@CWaterPatchMesh@@UAEXJPAX0J@Z	?RelocateData@CWaterPatchMesh@@EAEXJPAX0J@Z	objsec ALL_EQ, MATCH PASS

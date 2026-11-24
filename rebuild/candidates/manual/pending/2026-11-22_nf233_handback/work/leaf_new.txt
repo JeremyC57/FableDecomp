@@ -1,0 +1,13 @@
+0051d8e0 ??0CGameComponent@@QAE@AAVCGame@@@Z
+0042ea8f ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z
+0042f50b ??1CNewFrontendGameComponent@@UAE@XZ
+00418dca ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+00496070 ??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z
+004330d2 ?ScalarDeletingDestructor@CNewFrontendGameComponent@@QAEPAXI@Z
+0042dc5f ?OnPreDeviceReset@CNewFrontendGameComponent@@UAEXXZ
+0042dc60 ?OnPostDeviceReset@CNewFrontendGameComponent@@UAE_NXZ
+0042dc5c ?ChangeTextureColourDepth@CNewFrontendGameComponent@@UAEXJ@Z
+00415940 ??_GCGameComponent@@UAEPAXI@Z
+0042f75e ?Init@CNewFrontendGameComponent@@UAEXXZ
+00430340 ?SetQuit@CNewFrontendGameComponent@@UAEXXZ
+0042ec7c ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z

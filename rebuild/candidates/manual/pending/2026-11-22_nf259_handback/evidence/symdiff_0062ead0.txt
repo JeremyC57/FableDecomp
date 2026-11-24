@@ -1,0 +1,7 @@
+# 0062ead0: defined / undefined external symbols, HEAD (<) v NF259 (>)
+1,2c1,2
+< DEF ?CCombatActionBase_GetIsToFaceTargetMinDist@@YIMPAUCAIStateGroup_EnemyCreatureBase@@@Z
+< UND ?g_CombatMinDistance_0122f59c@@3MA
+---
+> DEF ?GetIsToFaceTargetMinDist@CCombatActionBase@@UBEMXZ
+> DEF __real@3f000000

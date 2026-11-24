@@ -25,8 +25,10 @@ namespace NUISystem { class CComponent; }
 //   std::list<NUISystem::CComponent*> (stlport/fable_containers.h), with the define set of the landed list<CComponent*> callers
 //   0x00583815 / 0x005838DD (ctor 0x0042ABAF and ~list 0x0042ABCA out of line with their bodies visible).
 #define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
-#define FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE
+// NF241 (2026-11-22, the list<CComponent*> family pass): the list calls bind _List_base<CComponent*>'s constructor 0x0042ABAF and
+//   destructor 0x0042ABCA (was FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE + _DTOR_OUTOFLINE, binding list's own names there; retail
+//   0x0042B6A6 / 0x0042B6D2 are list's size-optimised wrappers, a `call 0x0042ABAF` and a 5-byte `jmp 0x0042ABCA`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_VISIBLE_NOINLINE
 #include "stlport/fable_containers.h"
 
 namespace NUISystem {

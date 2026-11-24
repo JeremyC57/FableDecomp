@@ -1,5 +1,9 @@
-// Leaf: ?CJoystickDX_Update@@YIXPAUCJoystickDX@@@Z
+// Leaf: ?Update@CJoystickDX@@UAEXXZ
 struct CJoystickDX; extern void __fastcall h1(CJoystickDX* joystickDX); extern void __fastcall h2(CJoystickDX* joystickDX);
-struct CJoystickDX { int x; };
-void __fastcall CJoystickDX_Update(CJoystickDX* joystickDX){ h1(joystickDX); h2(joystickDX); }
-// Stand-in (owner rule 2026-11-05): CJoystickDX_Update for CJoystickDX::Update; RTTI vtable slot ?Update@CJoystickDX@@UAEXXZ + PDB name set (egor/fablewin).
+struct CJoystickDX {
+    virtual void Update();
+};
+void CJoystickDX::Update()
+{
+    CJoystickDX* joystickDX = this; h1(joystickDX); h2(joystickDX); }
+// Flatten route (flatten_pilot v4, NF324): CJoystickDX_Update -> CJoystickDX::Update, the RTTI-placed PDB member; class model: the row's local class model.

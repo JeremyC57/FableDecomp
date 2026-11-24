@@ -1,5 +1,5 @@
 // CInputManager::IsEventProcessed(const CInputEvent& event) -- true when one of the already processed events is the same input as `event`
-// Leaf: IsEventProcessed
+// Leaf: ?IsEventProcessed@CInputManager@@QBE_NABVCInputEvent@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F4B10, 240 bytes, `ret 4`.
 // Callees: CInputEvent::GetType @ 0x00A03B40, GetDeviceType @ 0x00A03B50, GetDeviceNumber @ 0x00A03B60, GetKey @
 //   0x00A03B70, GetChar @ 0x00A03B80, GetJoystickButton @ 0x00A03B90 (the first three carry the propagated label
@@ -71,10 +71,10 @@ public:
     CRetailVector<CInputEvent> ProcessedEvents;    // +0x04
     CRetailVector<CInputEvent> EventStore;         // +0x10
     long                       NoStoredEvents;     // +0x1c
-    bool IsEventProcessed(const CInputEvent& event);
+    bool IsEventProcessed(const CInputEvent& event) const;
 };
 
-bool CInputManager::IsEventProcessed(const CInputEvent& event)
+bool CInputManager::IsEventProcessed(const CInputEvent& event) const
 {
     for (CInputEvent* it = ProcessedEvents.m_first; it != ProcessedEvents.m_last; ++it)
         if (IsSameInput(*it, event))

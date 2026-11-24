@@ -5,8 +5,8 @@
 class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 struct CRequestOwner_00bf8c10 {                   // the owned object: a virtual deleting destructor in slot 0
     virtual ~CRequestOwner_00bf8c10();
 };
@@ -27,7 +27,7 @@ struct CLandscapeBackgroundLoadTask {              // 16 bytes, no vtable: freed
         if (m_requested)
             m_pManager->ReleaseRequest(m_pRequest);
     }
-    static void operator delete(void* block) { g_pLandscapeRenderer->MemoryManager->FreeVirtual(block); }
+    static void operator delete(void* block) { NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(block); }
 };
 
 void KillLoadTask_00bf8c10(CLandscapeBackgroundLoadTask* task)   // forces the scalar deleting destructor into the object; not part of the retail body

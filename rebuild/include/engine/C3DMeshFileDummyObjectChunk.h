@@ -12,6 +12,13 @@
 class C3DMeshFileDummyObjectChunk : public C3DMeshFileHelperPointChunk {
 public:
     C3DMeshFileDummyObjectChunk();
+#ifdef FABLE_RETAIL_C3DMESHFILEDUMMYOBJECTCHUNK_GETTERS
+    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetTransform@C3DMeshFileDummyObjectChunk@@QBE?AVCMatrix3x4@@XZ
+    // and ?GetUseLocalOrigin@..@@QBE_NXZ, inline in retail (0x00A2FA30..0x00A2FA45: the flag byte +0x80, then the 12-dword `rep movsd`
+    // of Transform +0x50); the bone index and name come from the C3DMeshFileHelperPointChunk base's getters.
+    CMatrix3x4 GetTransform() const { return Transform; }
+    bool GetUseLocalOrigin() const { return UseLocalOrigin; }
+#endif
     virtual const CCharString GetChunkDescription() const;
     virtual const CCharString GetChunkInfo() const;
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
@@ -22,7 +29,7 @@ private:
     CMatrix3x4 Transform;
     bool UseLocalOrigin;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileDummyObjectChunk) == 0x84);
+FABLE_STATIC_ASSERT_AT(25, sizeof(C3DMeshFileDummyObjectChunk) == 0x84);
 #endif // FABLE_ENGINE_C3DMESHFILEDUMMYOBJECTCHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEDUMMYOBJECTCHUNK_H
@@ -60,13 +67,13 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileDummyObjectChunk) == 0x84);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction_X) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction_Y) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction_Z) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Transform) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, UseLocalOrigin) == 0x80);
+FABLE_STATIC_ASSERT_AT(63, sizeof(C3DMeshFileDummyObjectChunk) == 0x84);
+FABLE_STATIC_ASSERT_AT(64, offsetof(C3DMeshFileDummyObjectChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(65, offsetof(C3DMeshFileDummyObjectChunk, Direction_X) == 0x44);
+FABLE_STATIC_ASSERT_AT(66, offsetof(C3DMeshFileDummyObjectChunk, Direction_Y) == 0x48);
+FABLE_STATIC_ASSERT_AT(67, offsetof(C3DMeshFileDummyObjectChunk, Direction_Z) == 0x4c);
+FABLE_STATIC_ASSERT_AT(68, offsetof(C3DMeshFileDummyObjectChunk, Transform) == 0x50);
+FABLE_STATIC_ASSERT_AT(69, offsetof(C3DMeshFileDummyObjectChunk, UseLocalOrigin) == 0x80);
 
 #endif // FABLE_ENGINE_C3DMESHFILEDUMMYOBJECTCHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEDUMMYOBJECTCHUNK

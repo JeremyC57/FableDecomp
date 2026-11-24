@@ -1,0 +1,84 @@
+##### 00b2a010 renames: ?Announce@CEngineComponent@@QAEXXZ=?SetupEnableConsoleVariable@CEngineComponent@@QAEXXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 0054e0b0 renames: ?Initialize@CFrontEndButton@NUISystem@@QAEXXZ=?GetDataFromDef@CFrontEndButton@NUISystem@@QAEXXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=4
+tables H=3 N=3
+##### 00811760 renames: ?HasDamageAttribute4@CHitParameters@@QBE_NXZ=?IsShotStrike@CHitParameters@@QBE_NXZ
+sections head 14 new 14
+ALL_EQ text_sections_equal=12
+tables H=1 N=1
+##### 00bf7f70 renames: ?CalcCameraRangeState@CLandscapeBackgroundTreeNode@@QAEJXZ=?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 009d66a0 renames: ?AddBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z=?RegisterBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z ?RemoveBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z=?UnregisterBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 0063a760 renames: ?IsPassableAtBlock@CMap@@QBE_NABVC2DCoordI@@@Z=?GetNavPreferredAt@CMap@@QBE_NABVC2DCoordI@@@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00adfdc0 renames: ?Reset@CMemoryDataOutputStream@@QAEXXZ=?Clear@CMemoryDataOutputStream@@QAEXXZ
+sections head 9 new 9
+ALL_EQ text_sections_equal=8
+tables H=0 N=0
+##### 009b0200 renames: ?WriteUShort@CDataOutputStream@@QAEXG@Z=?WriteUWORD@CDataOutputStream@@QAEXG@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 00a2eaa0 renames: ?WriteUShort@CDataOutputStream@@QAEXG@Z=?WriteUWORD@CDataOutputStream@@QAEXG@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 00a4beb0 renames: ?WriteUShort@CDataOutputStream@@QAEXG@Z=?WriteUWORD@CDataOutputStream@@QAEXG@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00a89450 renames: ?WriteUShort@CDataOutputStream@@QAEXG@Z=?WriteUWORD@CDataOutputStream@@QAEXG@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00a8e770 renames: ?WriteUShort@CDataOutputStream@@QAEXG@Z=?WriteUWORD@CDataOutputStream@@QAEXG@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00abaee0 renames: ?WriteUSHORT@CDataOutputStream@@QAEXG@Z=?WriteUWORD@CDataOutputStream@@QAEXG@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00abbf30 renames: ?WriteUShort@CDataOutputStream@@QAEXG@Z=?WriteUWORD@CDataOutputStream@@QAEXG@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00bfd670 renames: ?WriteUShort@CDataOutputStream@@QAEXG@Z=?WriteUWORD@CDataOutputStream@@QAEXG@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 00bb6e00 renames: ?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z=?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+sections head 46 new 46
+ALL_EQ text_sections_equal=28
+tables H=6 N=6
+##### 00bba480 renames: ?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z=?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+sections head 46 new 46
+ALL_EQ text_sections_equal=28
+tables H=6 N=6
+##### 00bc7e90 renames: ?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z=?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+sections head 18 new 18
+ALL_EQ text_sections_equal=12
+tables H=3 N=3
+##### 00be1e70 renames: ?SetCameraDesc@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z=?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z
+sections head 14 new 14
+ALL_EQ text_sections_equal=12
+tables H=0 N=0
+##### 0088ba40 renames: 
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0088b6f0 renames: 
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

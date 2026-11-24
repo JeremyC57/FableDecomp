@@ -1,0 +1,36 @@
+0054f410 HEAD	?GetLength@CCharString@@QBEKXZ	11	-	NO-OWNER
+0054f410 HEAD	?GetString@CCharString@@QBEPBDXZ	15	-	NO-OWNER
+0054f410 HEAD	?GetCRC@CCharString@@QBEKXZ	46	00404310	NEQ:relocs ??_C@_00CNPNBAHC@?$AA@@0129aaf4
+0054f410 HEAD	?Get@CMainGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+0054f410 HEAD	?GetGameTextDataBank@CMainGameComponent@@QBEPAVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+0054f410 HEAD	?Get@CNewFrontendGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+0054f410 HEAD	??D?$CCountedPointer@VCDataBank@NGameText@@@@QBEAAVCDataBank@NGameText@@XZ	3	-	NO-OWNER
+0054f410 HEAD	?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+0054f410 NEW	?Get@CMainGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+0054f410 NEW	?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+0054f410 NEW	?Get@CNewFrontendGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+0054f410 NEW	?PeekData@?$CBasicString@D@@QBEPBDXZ	3	-	NO-OWNER
+0054f410 NEW	?GetLength@?$CBasicString@D@@QBEKXZ	4	-	NO-OWNER
+0054f410 NEW	??D?$CCountedPointer@VCDataBank@NGameText@@@@QBEAAVCDataBank@NGameText@@XZ	3	-	NO-OWNER
+0054f410 NEW	?GetLength@CCharString@@QBEJXZ	11	00403a00	EQ
+0054f410 NEW	?GetAsCharArray@CCharString@@QBEPBDXZ	15	00403a10	EQ
+0054f410 NEW	?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+0054f410 NEW	?GetCRC@CCharString@@QBEKXZ	46	00404310	EQ
+0054f370 HEAD	?GetLength@CCharString@@QBEKXZ	11	-	NO-OWNER
+0054f370 HEAD	?GetString@CCharString@@QBEPBDXZ	15	-	NO-OWNER
+0054f370 HEAD	?GetCRC@CCharString@@QBEKXZ	46	00404310	NEQ:relocs ??_C@_00CNPNBAHC@?$AA@@0129aaf4
+0054f370 HEAD	?Get@CMainGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+0054f370 HEAD	?GetGameTextDataBank@CMainGameComponent@@QBEPAVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+0054f370 HEAD	?Get@CNewFrontendGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+0054f370 HEAD	??D?$CCountedPointer@VCDataBank@NGameText@@@@QBEAAVCDataBank@NGameText@@XZ	3	-	NO-OWNER
+0054f370 HEAD	?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+0054f370 NEW	?Get@CMainGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+0054f370 NEW	?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+0054f370 NEW	?Get@CNewFrontendGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+0054f370 NEW	?PeekData@?$CBasicString@D@@QBEPBDXZ	3	-	NO-OWNER
+0054f370 NEW	?GetLength@?$CBasicString@D@@QBEKXZ	4	-	NO-OWNER
+0054f370 NEW	??D?$CCountedPointer@VCDataBank@NGameText@@@@QBEAAVCDataBank@NGameText@@XZ	3	-	NO-OWNER
+0054f370 NEW	?GetLength@CCharString@@QBEJXZ	11	00403a00	EQ
+0054f370 NEW	?GetAsCharArray@CCharString@@QBEPBDXZ	15	00403a10	EQ
+0054f370 NEW	?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+0054f370 NEW	?GetCRC@CCharString@@QBEKXZ	46	00404310	EQ

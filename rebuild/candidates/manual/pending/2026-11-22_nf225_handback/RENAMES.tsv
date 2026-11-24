@@ -1,0 +1,8 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0042DB20	NUISystem::CManager	`scalar deleting destructor'	??_GCManager@NUISystem@@IAEPAXI@Z	NUISystem::CManager::`scalar_deleting_destructor' (unchanged)	?ScalarDeletingDestructor@CManager@@QAEPAXI@Z	FableWin.pdb S_GPROC32 NUISystem::CManager::`scalar deleting destructor' (new_frontend_game_component.obj, marked inline) + Ego_d.pdb raw name; protected (I) since ~CManager is ??1CManager@NUISystem@@IAE@XZ in all three PDBs; no referencer (callers.py / absrefs.py: none)
+# Section 2: caller respellings (caller row, old symbol, new symbol, callee address)
+0x00494840	?GetFont@CFontBank@@QAE?AV?$CCountedPointer@$$CBVCFontBank@@@@ABVCCharString@@@Z	?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	0x009E2C80
+0x0054ED90	?GetFont@CFontBankSource@NUISystem@@QAE?AV?$CCountedPointer@UCFontBank@NUISystem@@@2@ABVCCharString@@@Z	?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	0x009E2C80
+0x0042DB20	?Dtor@CManager@@QAEXXZ	??1CManager@NUISystem@@IAE@XZ	0x0041E641
+0x0042FB40	?Instance@CManager@NUISystem@@2PAV12@A	?GPUniqueInstance@CManager@NUISystem@@1PAV12@A	0x013B8710
+0x0041E5F2	?g_pUIManagerInstance@NUISystem@@3PAVCManager@1@A	?GPUniqueInstance@CManager@NUISystem@@1PAV12@A	0x013B8710

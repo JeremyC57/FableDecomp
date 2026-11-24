@@ -20,12 +20,23 @@ class C3DVector;
 class CRightHandedSet;
 class CTCUserActionPointBase : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_SIT_ROUND_CAMPFIRE_PASS27
+    explicit CTCUserActionPointBase(CThing& thing);
+#endif
     bool GetFreeActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& rh_set, long& index);   // 0x007FEDE0
+#ifdef FABLE_RETAIL_CTCUSERACTIONPOINTBASE_ACTIONPOINTFREE_PASS26
+    // Ego_r and FableWin const member, out of line at 007FEBF0.
+    bool IsActionPointFree() const;
+#endif
     void SetActionPointAsFree(long index);                               // 0x007FEF40
 };
 class CTCSingleUserActionPoints : public CTCUserActionPointBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SINGLE_USER_ACTION_POINTS; }
+#ifdef FABLE_RETAIL_SIT_ROUND_CAMPFIRE_PASS27
+    explicit CTCSingleUserActionPoints(CThing& thing);
+#endif
+
 };
 #endif
 #endif // FABLE_ENGINE_CTCUSERACTIONPOINTBASE_H

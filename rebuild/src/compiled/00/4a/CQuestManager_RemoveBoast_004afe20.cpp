@@ -1,4 +1,5 @@
 // CQuestManager::RemoveBoast(long id, CCharString scriptName) -- remove the boast with this id and script name from the boast list
+// Leaf: ?RemoveBoast@CQuestManager@@QAEXJVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004AFE20, 345 bytes, `ret 8` (by-value CCharString destroyed at the end).
 // Callees: CCharString::operator!=(const char*) 0x0099E960 / (const CCharString&) 0x0099E900 (first pass), CBasicString<char>::
 //   operator==(const char*) 0x004115A0 and Compare 0x00411570 (both given their landed-equivalent bodies as same-TU
@@ -7,74 +8,18 @@
 // Shape: the group pass uses the inline CCharString == ("" and CCharString). The same-TU 0x004115A0 body tells VC7.1 the
 //   call writes no memory, so scriptName's block stays in ebp across it (an extern declaration reloads it). The inline
 //   ==("") null arm is `if (strcmp(text, "") == 0) return true; return false;`, which branches off the repe cmpsb flags.
+// Name fix (NF215, 2026-11-21, q12262): ported onto fable_string.h: the local CBasicStringChar / CCharStringData / CCharString / CWideString
+//   models and the same-TU Compare_00411570 / CBasicStringChar::operator== stand-ins are replaced by FABLE_RETAIL_CCHARSTRING with
+//   FABLE_RETAIL_CBASICSTRING_COMPARE_BODY (Compare 0x00411570) + FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO (the visible, called
+//   CBasicString<char>::operator==(const char*), retail 0x004115A0, whose pick-any copy is then the owner's 88-byte body); the call binds the
+//   Ego_r.pdb 0x0040C910 / FableWin.pdb 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z (was ??8CBasicStringChar@@QBE_NPBD@Z).
 #include <string.h>
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 class CWorld { public: static long __fastcall GetFrame(); };               // 0x0049D870
-#pragma auto_inline(off)
-long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (the landed body, same-TU stand-in)
-{
-    for (;;) {
-        char ca = *a;
-        if (ca == 0 && *b == 0)
-            return 0;
-        char cb = *b;
-        if (ca < cb)
-            return -1;
-        if (ca > cb)
-            return 1;
-        ++a;
-        ++b;
-    }
-}
-#pragma auto_inline(on)
-#pragma pack(push, 1)
-struct CBasicStringChar {                          // CBasicString<char>, 13 bytes
-    char*         PData;                           // +0x00
-    unsigned long StringLength;                    // +0x04
-    unsigned long DataLength : 31;                 // +0x08
-    bool          UseFastExtend : 1;               // +0x0c
-    bool operator==(const char* text) const;       // 0x004115A0
-};
-class CCharStringData { public:
-    CBasicStringChar Data;                         // +0x00
-    long             NoRefs;                       // +0x0d
-};
-#pragma pack(pop)
-#pragma auto_inline(off)
-bool CBasicStringChar::operator==(const char* text) const   // 0x004115A0 (same-TU stand-in: reads only)
-{
-    return Compare_00411570(PData, text) ? false : true;
-}
-#pragma auto_inline(on)
-class CCharString { public:
-    CCharStringData* PStringData;
-    ~CCharString();                                  // 0x0099EAE0
-    bool operator!=(const char* text) const;         // 0x0099E960
-    bool operator!=(const CCharString& other) const; // 0x0099E900
-    bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-    bool operator==(const CCharString& other) const
-    {
-        if (PStringData == other.PStringData)
-            return true;
-        if (PStringData == 0 || other.PStringData == 0)
-            return false;
-        if (PStringData->Data.StringLength != other.PStringData->Data.StringLength)
-            return false;
-        return Compare_00411570(PStringData->Data.PData, other.PStringData->Data.PData) ? false : true;
-    }
-};
-class CWideString { public:
-    void* PStringData;
-    ~CWideString();                                  // 0x0099B510
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO
+#include "fable_string.h"
 struct CBoast {                                    // CQuestManager::CBoast (PDB, 32 bytes)
     long        ID;                                // +0x00
     long        Cost;                              // +0x04

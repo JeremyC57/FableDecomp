@@ -33,6 +33,22 @@ class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol; class
 class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
 #pragma pack(push, 1)
 class CTCVillage : public CTCBase {
+#ifdef FABLE_RETAIL_CTCVILLAGE_PEEKMARKERS_PASS27
+public:
+    // 00922860, FableWin: the original const list reference accessor, inline at native +70h.
+    const std::list<CIntelligentPointer<CThingMarker> >& PeekVillageMarkers()const { return VillageMarkers; }
+private:
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_UPDATE_TORCH_PASS27
+    void UpdateTorchTasks(); // Both PDBs, private.
+    template<class T> bool IsThingInTaskList(const CThing&,std::list<CCountedPointer<T> >&) const;
+    template<class T> bool IsTaskTaken(const CThing&,std::list<CCountedPointer<T> >&) const;
+    template<class T> void RemoveThingFromTaskList(const CThing&,std::list<CCountedPointer<T> >&) const;
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_PEEKCAMPFIRES_PASS26
+public:const std::list<CIntelligentPointer<CThing> >& PeekVillageCampfires()const{return VillageCampfires;}
+private:
+#endif
 #ifdef FABLE_RETAIL_HEARING
 public:long GetFrameBribeEnds()const{return FrameBribeEnds;}
 #endif
@@ -103,6 +119,10 @@ public:
     bool IsTavernTime() const;                               // 0x00658C0A
     CThingBuilding* GetNearestBuildingWithProperty(const C3DVector& pos, ESimBuildingProperty property);   // 0x00658E38
 #endif
+#ifdef FABLE_RETAIL_CREATE_VILLAGER_PASS27
+    long GetNextGuardTypeAndIncrement();
+    long GetNumberOfGayVillagers() const;
+#endif
     void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
 #ifdef FABLE_RETAIL_CTCVILLAGE_ONHEROSLEPT
     // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): Ego_r.pdb ?OnHeroSlept@CTCVillage@@QAEXXZ (0x0069B1A6); retail call
@@ -167,6 +187,11 @@ public:
     // Chunk 754 (row 0x00943C20 CAIStateGroup_WorkInWarehouse::IsRunnable): Ego_r.pdb / FableWin.pdb
     // ?GetBestCrateTaskForThing@CTCVillage@@QAEPAVCVillageTaskCarryCrate@@ABVCThing@@@Z (retail 0x00658EA0, out of line).
     CVillageTaskCarryCrate* GetBestCrateTaskForThing(const CThing& thing);   // 0x00658EA0
+#ifdef FABLE_RETAIL_CTCVILLAGE_WAREHOUSE_UPDATE_PASS27
+    // Both PDBs, CTCVillage::SetCrateTaskAsAcceptedByThing and SetCrateTaskAsCompleted.
+    bool SetCrateTaskAsAcceptedByThing(CVillageTaskCarryCrate& task, const CThing& thing); // 0x006585BA
+    void SetCrateTaskAsCompleted(CIntelligentPointer<CVillageTaskCarryCrate> task);        // 0x0065A053
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_MIRROREDCRIMES
     // Q19 opt-in (row 0x0065C5BB): Ego_r.pdb ?UpdateMirroredCrimeData@CTCVillage@@QAEXXZ (public). The same opt-in types

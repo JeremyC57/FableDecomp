@@ -1,0 +1,49 @@
+0097d580	call	0090be3d	0090bd40L CAIStateGroup_MinionWorkInInn::CleanBench
+0097d580	call	00910414	-
+0097d580	call	009160e3	00915b60L CAIStateGroup_MoveGoodsBase::PlaceGoods
+0097d580	call	00917fbd	-
+0097d580	call	00918e30	00918b90L CAIStateGroup_Gaze::Update
+0097d580	call	009196ed	009195d0L CAIStateGroup_LookAtInterestingThings::Update
+0097d580	call	0091cd1a	0091ccc0L CAIStateGroup_MinionReactToNoise::Update
+0097d580	call	00922bc2	00922860L CAIStateGroup_Drunk::Update
+0097d580	call	00923054	00922fc0L CAIStateGroup_ServeFood::WalkTo
+0097d580	call	009272c5	-
+0097d580	call	009281a8	00927f30L CAIStateGroup_SetupWares::Update
+0097d580	call	0092836e	00927f30L CAIStateGroup_SetupWares::Update
+0097d580	call	00929420	00929340L CAIStateGroup_BanditPlayDice::Update
+0097d580	call	00929c58	00929b10L CAIStateGroup_MinionGuardBribed::Update
+0097d580	call	0092adff	0092ace0L CAIStateGroup_ApprenticeHero::GoToLibrary
+0097d580	call	0092c057	0092bf50L CAIStateGroup_MinionWander::FaceAwayFromBuildings
+0097d580	call	0092d9c3	0092d7c0L CAIStateGroup_GoToBed::Update
+0097d580	call	00934741	00934410L CAIStateGroup_MinionKidGroupTag::EvadeTarget
+0097d580	call	0093877c	009385f0L CAIStateGroup_UsesSeat::MoveToSeat
+0097d580	call	00939446	009392a0L CAIStateGroup_SitRoundCampfire::Update
+0097d580	call	0093b409	0093b1d0L CAIStateGroup_BanditSitRoundCampfire::Update
+0097d580	call	0093bcd8	-
+0097d580	call	0093f789	0093f3c0L CAIStateGroup_VillageTaskPatrol::Update
+0097d580	call	0093ffd6	-
+0097d580	call	009410be	-
+0097d580	call	009417a0	00941690L CAIStateGroup_KidPlayHopscotch::Update
+0097d580	call	00941e57	00941e00L CAIStateGroup_KidReactToBlockage::Update
+0097d580	call	009426b4	009425f0L CAIStateGroup_WorkAtSchool::MoveAndFace
+0097d580	call	00943627	009432c0L CAIStateGroup_WorkAtSchool::Update
+0097d580	call	00944a46	00944940L CAIStateGroup_WorkSawingWood::Update
+0097d580	call	00945156	00945060L CAIStateGroup_WorkHammerAnvil::Update
+0097d580	call	009459ca	-
+0097d580	call	00946221	00946190L CAIStateGroup_PrepareMeal::Update
+0097d580	call	009469fa	00946850L CAIStateGroup_LightHomeCandle::Update
+0097d580	call	00947655	009474f0L CAIStateGroup_WanderAroundShops::Update
+0097d580	call	009476f0	009474f0L CAIStateGroup_WanderAroundShops::Update
+0097d580	call	0094979d	00949580L CAIStateGroup_GoToPub::WalktoSeatAndSit
+0097d580	call	0094a80b	0094a6d0L CAIStateGroup_GoToPub::WalkToPoint
+0097d580	call	00959e48	00959bf0L CAIStateGroup_HoverWander::Update
+0097d580	call	0095a1c2	00959f80L CAIStateGroup_HoverKeepInArea::Update
+0097d580	call	0095b1fa	0095b020L CAIStateGroup_HoverHornetQueen::GoToSpawnPoint
+0097d580	call	00964a6b	009647c0L CAIStateGroup_StealStealableItem::Update
+0097d580	call	00965b5a	009658b0L CAIStateGroup_RecoverStealableItem::Update
+0097d580	call	00966666	-
+0097d580	call	00967902	009677a0L CAIStateGroup_TavernServer::WalkToPoint
+0097d580	call	0096836b	00968230L CAIStateGroup_TavernKeeper::WalkToPoint
+0097d580	call	0096c975	0096c880L CAIStateGroup_EatAtTable::WalkTo
+0097d580	call	00980aff	00980770L CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFa
+0097d580	call	009830f2	009830c0L CAIStateGroup_OpinionReactionRoot::TryAndLookOnAwarenessUpda

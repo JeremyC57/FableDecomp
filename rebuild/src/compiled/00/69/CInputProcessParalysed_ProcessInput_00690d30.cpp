@@ -3,7 +3,7 @@
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690D30, length 116 bytes. Vtable 0x01237D88 slot 4.
-// Callees: CInputProcessGameBase::IsEventGameAction @ 0x00687CF0, IsEventButtonHeld @ 0x00687BD0, CPlayer::GetPControlledCreature
+// Callees: CInputProcessGameBase::IsEventGameAction @ 0x00687CF0, IsEventButtonReleased @ 0x00687BD0, CPlayer::GetPControlledCreature
 // @ 0x00487DC0 (MyPlayer +0x18), CCombatAction_GenericBreakOffDrain::CCombatAction_GenericBreakOffDrain(CThingCreatureBase*)
 // @ 0x00690DB0 (stores vtable 0x0125BF6C; manifest label "CCombatAction_GenericResponseToDecapitation" is propagated),
 // CThingCreatureBase::SetCurrentAction(CCreatureActionBase*) @ 0x006644F0, CCombatActionBase::~CCombatActionBase @ 0x0062E900.
@@ -47,7 +47,9 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
+protected:
+    bool IsEventButtonReleased(const CInputEvent& event) const;                 // 0x00687BD0; NF236: protected const (Ego_r / FableWin IBE)
+public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessParalysed : public CInputProcessGameBase {
@@ -58,7 +60,7 @@ public:
 
 void CInputProcessParalysed::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (IsEventGameAction((EGameAction)(9), event) && IsEventButtonHeld(event)) {
+    if (IsEventGameAction((EGameAction)(9), event) && IsEventButtonReleased(event)) {
         if (++m_pressCount > 10) {
             CThingCreatureBase* hero = MyPlayer->GetPControlledCreature();
             if (hero && !hero->m_dead)

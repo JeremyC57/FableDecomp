@@ -1,3 +1,4 @@
+// Leaf: ?UpdateWorldTransform@CShaderRenderManager@@AAEXXZ
 // CShaderRenderManager::UpdateWorldTransform() -- uploads the world matrix (+0x1f0) to the current vertex-shader constant layout's world registers (at most 4 vectors) and clears dirty bit 0x10
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00988E30, length 71 bytes.
 // Layout: engine/CVertexShaderConstantLayout.h (its CShaderConstantRange members viewed as {vptr, Offset, Count}).
@@ -39,7 +40,9 @@ class CShaderRenderManager { public:
     unsigned char                _pad230[0x1a8];
     unsigned long                UpdateFlags;               // +0x3d8
 
+    private:
     void UpdateWorldTransform();
+    public:
 };
 
 void CShaderRenderManager::UpdateWorldTransform()

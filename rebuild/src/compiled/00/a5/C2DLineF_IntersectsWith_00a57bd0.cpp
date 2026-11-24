@@ -4,7 +4,7 @@ class C2DBoxF { public: float minX; float minY; float maxX; float maxY; };
 class C2DLineF {
 public:
     float x1; float y1; float x2; float y2;
-    bool IntersectsWith(const C2DLineF* other, C2DVector* point, float tolerance);
+    bool IntersectsWith(const C2DLineF& other, C2DVector& point, float tolerance) const;
     int IntersectsWith(const C2DBoxF* box);
 };
 int C2DLineF::IntersectsWith(const C2DBoxF* box) {
@@ -14,9 +14,9 @@ int C2DLineF::IntersectsWith(const C2DBoxF* box) {
     C2DLineF top = { box->minX, box->maxY, box->maxX, box->maxY };
     C2DLineF left = { box->minX, box->minY, box->minX, box->maxY };
     extern const float DELTA_NOTIONAL_ZERO;
-    if (IntersectsWith(&bottom, &point, DELTA_NOTIONAL_ZERO) ||
-        IntersectsWith(&right, &point, DELTA_NOTIONAL_ZERO) ||
-        IntersectsWith(&top, &point, DELTA_NOTIONAL_ZERO) ||
-        IntersectsWith(&left, &point, DELTA_NOTIONAL_ZERO)) return true;
+    if (IntersectsWith(bottom, point, DELTA_NOTIONAL_ZERO) ||
+        IntersectsWith(right, point, DELTA_NOTIONAL_ZERO) ||
+        IntersectsWith(top, point, DELTA_NOTIONAL_ZERO) ||
+        IntersectsWith(left, point, DELTA_NOTIONAL_ZERO)) return true;
     return false;
 }

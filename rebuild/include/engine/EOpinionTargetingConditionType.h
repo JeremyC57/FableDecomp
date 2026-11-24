@@ -1,0 +1,7 @@
+#ifndef FABLE_ENGINE_EOPINIONTARGETINGCONDITIONTYPE_H
+#define FABLE_ENGINE_EOPINIONTARGETINGCONDITIONTYPE_H
+#ifdef FABLE_RETAIL_OPINION_STRENGTH_PASS26
+// PDB field type of COpinionReactionManagerDef::TargetingCondition.
+enum EOpinionTargetingConditionType { OPINION_TARGETING_CONDITION_TYPE_NONE=0 };
+#endif
+#endif

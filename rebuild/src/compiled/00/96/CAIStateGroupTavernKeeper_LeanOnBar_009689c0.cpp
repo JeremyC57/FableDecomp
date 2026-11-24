@@ -36,7 +36,7 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 class CThingCreatureBase;
 class CTCTavernBar { public:                           // interface 0xb9
     bool GetRandomBarSlot(CThing& creature, C3DVector& position, CRightHandedSet& orientation, long& actionPoint, long& slot);  // 0x007BA3C0
-    bool HasEmptyJugSlot(CThing* creature);     // 0x007BA8C0
+    bool HasEmptyJugSlot(CThing& creature);     // 0x007BA8C0
 };
 class CCreatureActionBase { public:
     virtual void v00();
@@ -47,7 +47,7 @@ class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { 
     unsigned char _anim[0x14];
     CCharString LoopAnimName;                   // +0xbc
     CCharString OutOfAnimName;                  // +0xc0
-    CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+    CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& creature, const CCharString& into,
         const CCharString& loop, const CCharString& outOf, float loopTime, bool b, long c, long d);   // 0x008427E0
 };
 class CAIBrain { public:
@@ -70,7 +70,7 @@ class CAIStateGroupBase { public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
-    void SetPushableByHero(bool pushable);      // 0x0097E330
+    protected: void SetPushableByHero(bool pushable);      // 0x0097E330 (NF313: IAE, both PDBs; the next line is protected: already)
 protected:
     EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
 public:
@@ -84,7 +84,7 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     C3DVector JugPos;                           // +0x38
     CRightHandedSet JugRHSet;                   // +0x44
     long JugSlot;                               // +0x5c
-    bool WalkToPoint(C3DVector* pos, CRightHandedSet* rh);   // 0x00968230
+    bool WalkToPoint(const C3DVector& pos, const CRightHandedSet& rh);   // 0x00968230
     bool GetPaymentRequest();                   // 0x009683A0
     void FreeBarPoint();                        // 0x00968950
     bool LeanOnBar();
@@ -96,13 +96,13 @@ bool CAIStateGroup_TavernKeeper::LeanOnBar()
     CTCTavernBar* bar;
     PBar.Get()->GetTC(TCI_TAVERN_BAR, &bar);
     bar->GetRandomBarSlot(*PBrain->PCreature, JugPos, JugRHSet, JugActionPointIndex, JugSlot);
-    if (!WalkToPoint(&JugPos, &JugRHSet)) {
+    if (!WalkToPoint(JugPos, JugRHSet)) {
         FreeBarPoint();
         SetPushableByHero(true);
         Terminate();
         return false;
     }
-    if (GetPaymentRequest() || bar->HasEmptyJugSlot(GetCreature())) {
+    if (GetPaymentRequest() || bar->HasEmptyJugSlot(*GetCreature())) {
         FreeBarPoint();
         SetPushableByHero(true);
         return true;
@@ -110,13 +110,13 @@ bool CAIStateGroup_TavernKeeper::LeanOnBar()
     float loopTime = GFFloatRandom(9.0f, GetPWorldSeed()) + 1.0f;
     long result;
     do {
-        if (GetPaymentRequest() || bar->HasEmptyJugSlot(GetCreature())) {
+        if (GetPaymentRequest() || bar->HasEmptyJugSlot(*GetCreature())) {
             FreeBarPoint();
             SetPushableByHero(true);
             return true;
         }
         result = AIAction_PerformAction(CCreatureAction_PlayIntoLoopOutOfAnimation(
-            GetCreatureBase(), "BARMAN_LEAN_INTO", "BARMAN_LEAN_LOOP",
+            *GetCreatureBase(), "BARMAN_LEAN_INTO", "BARMAN_LEAN_LOOP",
             "BARMAN_LEAN_OUTOF", loopTime, false, 0, 0));
     } while (result == 4);
     FreeBarPoint();

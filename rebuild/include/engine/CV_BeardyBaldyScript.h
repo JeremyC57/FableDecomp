@@ -35,6 +35,16 @@ public:
     // Opt-in (NF190, 2026-11-20, row 0x00E50100): Ego_r.pdb + FableWin.pdb ?WatchForQuestFinished@CV_BeardyBaldyScript@NScript@@QAEXXZ.
     void WatchForQuestFinished();                                        // 0x00E50100
 #endif
+#ifdef FABLE_RETAIL_CV_BEARDYBALDYSCRIPT_MAIN_PASS27
+    virtual void Main();
+    void WatchForQuestCardConditions();
+    void WatchForBarberLadyDeath();
+    void WatchForBeardyBaldyDeath();
+    void WatchForNewHairdo();
+    void WatchForNewBeard();
+    void WatchForNewTash();
+    void GoTalkToBeardyBaldy();
+#endif
     void ResetRandomSpeechTime();                                        // 0x00E53C70
     void SetWanderPointAndDistance(const CScriptThing&, const C3DVector&); // 0x00E53F60
     void WatchForAttack(CScriptThing);                                   // 0x00E53D90

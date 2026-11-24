@@ -10,12 +10,24 @@
 #include "engine/CDefIndex.h"
 class COpinionOfHeroDef : public CSubDefClassBase {
 public:
+#ifdef FABLE_RETAIL_COPINIONOFHERODEF_TYPENAME_PASS27
+    // FableWin 01DE8660 and the original native GetSubDef at 00685C00.
+    static CCharString __fastcall StatGetTypeName() { return CCharString("COpinionOfHeroDef", -1); }
+#endif
     CDefIndex ThreatenGift;                                              // +0x28
     bool      WillAttackCriminals;                                       // +0x2c
     long      Personality;                                               // +0x30
     long      ReactionMask;                                              // +0x34
     long      DeedMask;                                                  // +0x38
+#ifdef FABLE_RETAIL_COPINIONOFHERODEF_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x004D3F99: ?GetSizeofClass@COpinionOfHeroDef@@UAEKXZ (FableWin.pdb)
+public:
+    virtual unsigned long GetSizeofClass();
+#endif
 };
-FABLE_STATIC_ASSERT(offsetof(COpinionOfHeroDef, WillAttackCriminals) == 0x2c);
-FABLE_STATIC_ASSERT(sizeof(COpinionOfHeroDef) == 0x3c);
+FABLE_STATIC_ASSERT_AT(19, offsetof(COpinionOfHeroDef, WillAttackCriminals) == 0x2c);
+FABLE_STATIC_ASSERT_AT(20, sizeof(COpinionOfHeroDef) == 0x3c);
 #endif

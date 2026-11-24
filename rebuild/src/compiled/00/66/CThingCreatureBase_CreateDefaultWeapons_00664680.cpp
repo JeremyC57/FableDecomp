@@ -1,5 +1,5 @@
 // CThingCreatureBase::CreateDefaultWeapons() -- create the creature's default weapons from its def (the initial weapon, or when that is -1 the primary + secondary melee weapons or the ranged weapon), then the initial sheathed weapon: a non-persistent thing object owned by the creature, put into the creature's carry slot that the object's carryable component names
-// Leaf: ?CreateDefaultWeapons@CThingCreatureBase
+// Leaf: ?CreateDefaultWeapons@CThingCreatureBase@@IAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00664680, length 354 bytes (+14 int3), plain `ret`.
@@ -99,7 +99,9 @@ class CThingCreatureBase : public CThing { public:
     unsigned char _pad94[0xe0 - 0x94];
     const CThingCreatureDef* PDef;                      // +0xe0 CDefPointer<const CThingCreatureDef>::Object
     const CThingCreatureDef* GetDef() const { return PDef; }
+    protected:
     void CreateDefaultWeapons();
+    public:
 };
 
 void CThingCreatureBase::CreateDefaultWeapons()

@@ -1,0 +1,22 @@
+## h: 00ad9770.obj
+00ad9980.obj
+00adc310.obj
+00adce10.obj
+duplicates 0
+
+watched unresolved 2
+00ad9770.obj : error LNK2019: unresolved external symbol "public: class std::_Rb_tree<unsigned long,struct std::pair<unsigned long const,long>,struct std::_Select1st<struct std::pair<unsigned long const,long> >,struct std::less<unsigned long>,class std::alloca
+00ad9980.obj : error LNK2001: unresolved external symbol "public: class std::_Rb_tree<unsigned long,struct std::pair<unsigned long const,long>,struct std::_Select1st<struct std::pair<unsigned long const,long> >,struct std::less<unsigned long>,class std::alloca
+## n: 00ad9770.obj
+00ad9980.obj
+00adc310.obj
+00adce10.obj
+duplicates 0
+
+watched unresolved 6
+00ad9770.obj : error LNK2019: unresolved external symbol "public: __thiscall std::_Rb_tree<unsigned long,struct std::pair<unsigned long const,long>,struct std::_Select1st<struct std::pair<unsigned long const,long> >,struct std::less<unsigned long>,class std::a
+00ad9980.obj : error LNK2001: unresolved external symbol "public: __thiscall std::_Rb_tree<unsigned long,struct std::pair<unsigned long const,long>,struct std::_Select1st<struct std::pair<unsigned long const,long> >,struct std::less<unsigned long>,class std::a
+00adc310.obj : error LNK2001: unresolved external symbol "public: __thiscall std::_Rb_tree<unsigned long,struct std::pair<unsigned long const,long>,struct std::_Select1st<struct std::pair<unsigned long const,long> >,struct std::less<unsigned long>,class std::a
+00adce10.obj : error LNK2001: unresolved external symbol "public: __thiscall std::_Rb_tree<unsigned long,struct std::pair<unsigned long const,long>,struct std::_Select1st<struct std::pair<unsigned long const,long> >,struct std::less<unsigned long>,class std::a
+00ad9770.obj : error LNK2019: unresolved external symbol "public: class std::_Rb_tree<unsigned long,struct std::pair<unsigned long const,long>,struct std::_Select1st<struct std::pair<unsigned long const,long> >,struct std::less<unsigned long>,class std::alloca
+00ad9980.obj : error LNK2001: unresolved external symbol "public: class std::_Rb_tree<unsigned long,struct std::pair<unsigned long const,long>,struct std::_Select1st<struct std::pair<unsigned long const,long> >,struct std::less<unsigned long>,class std::alloca

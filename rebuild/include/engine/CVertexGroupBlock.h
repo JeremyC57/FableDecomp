@@ -12,7 +12,15 @@
 class CVertexGroupBlock {
 public:
     CVertexGroupBlock();               // 0x00AD9030
+#if defined(FABLE_RETAIL_CVERTEXGROUPBLOCK_DTOR_INLINE) && defined(FABLE_RETAIL_CVERTEXGROUPBLOCK_MEMBERS)
+    // NF275 opt-in (nf273 ruling 2b, row 0x00A96DA0): the destructor is inline in retail's CVertexGroupBlockOptimiser TU (FindBestStartingBlock
+    // 0x00AD94F0 and __destroy_aux 0x00ADC190 expand it: _M_erase 0x004507A1 + two frees, no call to 0x00A96DA0), and 0x00A96DA0, among
+    // template COMDATs, is the out-of-line pick-any copy the linker kept (called by AddBlocks 0x00ADA1A3, Process 0x00ADA348, pop_back
+    // 0x00ADC7A3, ??_G 0x00ADBE53). Empty body: the members' destructors run (Ego_r.pdb / FableWin.pdb ??1CVertexGroupBlock@@QAE@XZ).
+    ~CVertexGroupBlock() { }           // 0x00A96DA0
+#else
     ~CVertexGroupBlock();              // 0x00A96DA0
+#endif
 #ifdef FABLE_RETAIL_CVERTEXGROUPBLOCK_MEMBERS
     // Retail opt-in (chunk F1, row 0x00AD9770 CVertexGroupBlockList::RemoveAllSubsets): the Ego_r.pdb members with their real types
     // (the including row picks how their copy constructors are emitted), and FableWin.pdb / Ego_r.pdb

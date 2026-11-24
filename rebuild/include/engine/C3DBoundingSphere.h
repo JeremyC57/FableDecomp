@@ -23,6 +23,11 @@ public:
     // alternating copy registers at 0x00BDF241 / landed 0x00BDFE70).
     C3DBoundingSphere(const C3DBoundingSphere& other) : Center(other.Center), Radius(other.Radius) { }
 #endif
+#ifdef FABLE_RETAIL_MESH_BOOTSTRAP_BOUNDS_PASS28
+    // FableWin 02EC1800 and 02EC1830. The retail mesh reader writes the vector at +0 and the radius at +0xC.
+    void SetCenter(const C3DVector& center) { Center = center; }
+    void SetRadius(float radius) { Radius = radius; }
+#endif
     void AccurateBuildFromPoints(const std::vector<C3DVector>&,float);
 #ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_CENTER_VALUE
     // Retail opt-in (Codex 2026-11-10): FableWin GetCenter at02ca7de0 returns

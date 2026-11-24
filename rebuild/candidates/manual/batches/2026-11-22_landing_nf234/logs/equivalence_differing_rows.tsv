@@ -1,0 +1,4 @@
+0042ea8f	src	DIFF		rebuild/src/compiled/00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042ea8f.cpp
+00495780	src	DIFF		rebuild/src/compiled/00/49/CFrontendGameComponent_Shutdown_00495780.cpp
+00495780	test	DIFF		rebuild/tests/00/49/CFrontendGameComponent_Shutdown_00495780_test.cpp
+rows checked 57023 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/land234/equiv.tsv

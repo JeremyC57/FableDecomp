@@ -110,7 +110,7 @@ struct CTCCharge {                                   // interface 0x84 (descript
     void GetHitPosition(C3DVector* out) const;       // 0x0078C150
 };
 class CTCWeapon { public:                                   // interface 0x48 (descriptive)
-    bool HasDamage() const;                          // 0x005DAA00
+    bool IsMeleeWeapon() const;                          // 0x005DAA00; NF296: PDB name, was HasDamage
     long GetDamageAttribute() const;                 // 0x005DA810
     float GetDamage() const;                         // 0x005DAAA0
 };
@@ -290,7 +290,7 @@ void CThingGameObject::GetMeleeHitParameters(NHitLocations::CHitLocation* locati
     EDamageAttribute attribute;
     float damage;
     const CTCWeapon* tc;
-    if (weapon && !weapon->Dead && weapon->GetConstInterface(&tc, 0x48) && tc->HasDamage()) {
+    if (weapon && !weapon->Dead && weapon->GetConstInterface(&tc, 0x48) && tc->IsMeleeWeapon()) {
         damage = tc->GetDamage();
         attribute = (EDamageAttribute)tc->GetDamageAttribute();
     } else {

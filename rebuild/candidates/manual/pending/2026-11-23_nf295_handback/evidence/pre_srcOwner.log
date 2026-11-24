@@ -1,0 +1,7 @@
+02:24:42 PASS /home/user/FableDecomp/rebuild/src/compiled/00/63/CPlayer_UninitModeQuickAccessMenu_00633a60.cpp
+02:25:14 PASS /home/user/FableDecomp/rebuild/src/compiled/00/97/CAIStateGroupBase_AIActionMoveToPos_0097ec00.cpp
+02:25:14 PASS /home/user/FableDecomp/rebuild/src/compiled/00/73/CAnimEntryLite_CAnimEntryLite_0073a9b0.cpp
+02:25:14 PASS /home/user/FableDecomp/rebuild/src/compiled/00/86/CCountedPointer0073cc90_Reset_00863090.cpp
+02:25:14 PASS /home/user/FableDecomp/rebuild/src/compiled/00/75/CCountedPointerNAnimationEntryBodgeCAnimEntryLite_operator_00754f10.cpp
+02:25:14 PASS /home/user/FableDecomp/rebuild/src/compiled/00/73/CCountedPointer0073cc90_CCountedPointer0073cc90_0073d180.cpp
+02:25:14 PASS /home/user/FableDecomp/rebuild/src/compiled/00/a0/CAInputProcess_RemoveFromInterface_00a0d2d0.cpp

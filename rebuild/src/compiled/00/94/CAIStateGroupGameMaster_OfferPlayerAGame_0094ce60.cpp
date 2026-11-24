@@ -69,7 +69,7 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
             // 0x00449970
-class CTCTavernGame { public: long GetBanter(); };                     // 0x005EA3C0 (interface 0xcf)
+class CTCTavernGame { public: long GetBanter() const; };                     // 0x005EA3C0 (interface 0xcf)
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18

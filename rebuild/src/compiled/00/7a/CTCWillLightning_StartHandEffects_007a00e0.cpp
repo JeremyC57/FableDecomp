@@ -1,5 +1,5 @@
 // CTCWillLightning::StartHandEffects() -- unless the spell is finished, create the primary and secondary hand effects on the caster (swapped for a left-handed cast) and attach them to the caster's right and left hand bones
-// Leaf: ?StartHandEffects@CTCWillLightning
+// Leaf: ?StartHandEffects@CTCWillLightning@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A00E0, 542 bytes (+ int3 padding), plain `ret`, 8-aligned frame.
@@ -115,7 +115,9 @@ class CTCWillLightning { public:
         }
         return true;
     }
+    private:
     void StartHandEffects();
+    public:
 };
 
 void CTCWillLightning::StartHandEffects()

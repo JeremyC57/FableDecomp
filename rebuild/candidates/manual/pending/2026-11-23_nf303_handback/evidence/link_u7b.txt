@@ -1,0 +1,9 @@
+## HEAD set: H_008c91b0.obj H_008ce3c0.obj H_008cf8f0.obj H_00857e40.obj
+duplicates 0
+
+UNRESOLVED 3 ??0CCombatActionBase@@QAE@J@Z
+## new set: N_008c91b0.obj N_008ce3c0.obj N_008cf8f0.obj H_00857e40.obj
+duplicates 0
+
+UNRESOLVED 3 ??0CCombatActionBase@@IAE@J@Z
+LK_DONE

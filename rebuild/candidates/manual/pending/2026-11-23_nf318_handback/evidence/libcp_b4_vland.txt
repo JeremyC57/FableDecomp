@@ -1,0 +1,3 @@
+008fd3dc LIBCP_OK renames=?IsTimingCritical@CAIStateGroup_MinionGossip_Methods@@QAEDXZ=?IsTimingCritical@CAIStateGroup_MinionGossip@@UBE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+009be210 LIBCP_OK renames=?CountReferences@CVertexShader_Methods@@QAEKXZ=?CountReferences@CVertexShader@@EAEKXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00a39c40 LIBCP_OK renames=?GetPathname@CWADFile_Methods@@QAE?AVCWideString@@XZ=?GetPathname@CWADFile@@UBE?AVCWideString@@XZ ; .drectve EQUAL ; sections=2

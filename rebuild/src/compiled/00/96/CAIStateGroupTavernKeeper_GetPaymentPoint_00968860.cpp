@@ -1,0 +1,97 @@
+// CAIStateGroup_TavernKeeper::GetPaymentPoint() -- with the bar alive, ask its named-action-point component
+// Leaf: ?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ
+// Name (2026-11-23): Ego_r.pdb + FableWin.pdb ?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ (was the descriptive GetOldJugPoint,
+//   the TavernServer twin's name; TavernKeeper has no GetOldJugPoint in either PDB): the one TavernKeeper member left after 16 of 18 map to
+//   other rows; Ego_r 245 B v TavernServer::GetOldJugPoint 249 B (retail 229 v 233); Update 0x00969470 calls it between GetPaymentRequest
+//   and ReceivePayment.
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// (interface 0x2E) for the free point "ACTION_POINT_BARMAN_0<JugSlot+1>" and store it as the jug point.
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00968860, length 233 bytes (+ int3 padding). The catalog files it
+// under CAIStateGroup_TavernServer; the string, the field offsets (PDB TavernKeeper: JugActionPointIndex +0x34,
+// JugPos +0x38, JugRHSet +0x44, JugSlot +0x5c) and its address among the keeper bodies make it the keeper's twin
+// of CAIStateGroup_TavernServer::GetOldJugPoint (0x009672C0).
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PBar +0x1c, three times), CVectorMap::LowerBound
+// @ 0x0040F020 (inlined out-parameter GetInterface, 0x2E = bit 14 of +0x24; the miss path reads the never-written
+// slot), CCharString(const char*, long) @ 0x0099EBF0, operator+=(const char*) @ 0x0099F100, GFIntToCharString
+// @ 0x0099F830 (__fastcall, hidden result), operator+=(const CCharString&) @ 0x0099F0A0, ~CCharString @ 0x0099EAE0,
+// the by-value copy @ 0x0099EC30, CTCNamedUserActionPoints::GetFreeNamedActionPoint @ 0x007FF190 (creature, &JugPos,
+// &JugRHSet, CCharString name, &JugActionPointIndex, 0, true). Literals 0x0126DCD4 "ACTION_POINT_BARMAN", 0x0126DCBC "_0".
+// Shape: early `return false` for a dead bar; the component pointer preset to null (`xor ebx,ebx`, no miss-path load); the creature a named local read before the by-value string copy;
+// the integer string temporary shares the lookup-key slot. Engine header is padding only, so a local model.
+// ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+class CTCBase;
+
+// A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
+// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+
+class CBaseObject;
+class CBaseObjectPointer;
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
+
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+{
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
+            return true;
+    }
+    return false;
+}
+
+class CAIBrain { public:
+    unsigned char _pad[0x18];
+    CThing* PCreature;                          // +0x18
+};
+
+class CAIStateGroupBase { public:
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    long ScriptAIPriority;                      // +0x08
+    void* Name_PStringData;                     // +0x0c
+    unsigned char Terminated;                   // +0x10
+    unsigned char Priority;                     // +0x11
+    unsigned char Enabled;                      // +0x12
+    unsigned char _pad_0x13;
+};
+
+class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
+#include "engine/C3DVector.h"
+
+CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830 (hidden result in ecx)
+
+class CTCNamedUserActionPoints { public:               // interface 0x2E
+    bool GetFreeNamedActionPoint(CThing& creature, C3DVector& pos, CRightHandedSet& rhSet, CCharString name,
+                                 long& actionPointIndex, long slot, bool reserve);   // 0x007FF190 ?GetFreeNamedActionPoint@CTCNamedUserActionPoints@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@VCCharString@@AAJJ_N@Z (Ego_r.pdb; NF28: references)
+};
+
+struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
+    CIntelligentPointer<CThing> PJug;               // +0x14 CIntelligentPointer<CThingObject>
+    CIntelligentPointer<CThing> PBar;               // +0x1c CIntelligentPointer<CThingObject>
+    CIntelligentPointer<CThing> PPub;               // +0x24 CIntelligentPointer<CThingBuilding>
+    CIntelligentPointer<CThing> PPayee;             // +0x2c CIntelligentPointer<CThingAICreature>
+    long JugActionPointIndex;                   // +0x34
+    C3DVector JugPos;                           // +0x38
+    CRightHandedSet JugRHSet;                   // +0x44
+    long JugSlot;                               // +0x5c
+    bool GetPaymentPoint();
+};
+
+bool CAIStateGroup_TavernKeeper::GetPaymentPoint()
+{
+    if (!IS_THING_ALIVE(PBar))
+        return false;
+    CTCNamedUserActionPoints* points = 0;
+    PBar.Get()->GetTC(TCI_NAMED_USER_ACTION_POINTS, &points);
+    CCharString name("ACTION_POINT_BARMAN", -1);
+    name += "_0";
+    name += GFIntToCharString(JugSlot + 1);
+    CThing* creature = PBrain->PCreature;
+    return points->GetFreeNamedActionPoint(*creature, JugPos, JugRHSet, name, JugActionPointIndex, 0, true);
+}

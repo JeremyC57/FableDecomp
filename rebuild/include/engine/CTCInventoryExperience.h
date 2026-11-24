@@ -74,6 +74,10 @@ struct SExpSpendUndo {
 };
 class CTCInventoryExperience : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_QUICKACCESS_MAGIC_TEST_PASS27
+    CTCInventoryExperience(CThing&);
+    virtual ~CTCInventoryExperience();
+#endif
     CWideString GetExperienceStatName(long);                                        // 0x0056F26F
 #ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_INTERFACETYPE
     // Row 0x005AD571: ?StatGetInterfaceType@CTCInventoryExperience@@SI?AW4ETCInterfaceType@@XZ, inline (the expanded GetTC tests 0x16).

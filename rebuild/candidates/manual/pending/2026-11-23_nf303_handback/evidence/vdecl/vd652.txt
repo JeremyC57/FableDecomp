@@ -1,0 +1,1 @@
+007e7640 - CTCFireheartMinigame_CTCFireheartMinigame_007e7640.cpp | L31:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CFireheartMinigameDef>* out);

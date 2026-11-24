@@ -1,0 +1,5 @@
+qid	queue_line
+q12682	land1122nf242	-	the 16 off-address CModeBase slot bindings (slots 3-6) in five of NF242's nine vtables: header ports, as far as they go
+q12679	land1122nf240	0x006A1620	the three blocked binders: 0x00664A10 onto CThingCreatureBase.h; 0x00890250 / 0x00890D80 only if a header port suffices
+q12676	land1122nf238	-	the other 23 held p27 lines, where a blocker has fallen (NF236 NOTES entry 5)
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof

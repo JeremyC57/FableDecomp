@@ -1,1 +1,45 @@
-void __fastcall CAIStateGroup_SeekPerceivedThing_Cleanup() {}
+// Leaf: ?Cleanup@CAIStateGroup_SeekPerceivedThing@@UAEXXZ
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGPHYSICAL_ISINRANGE
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CTCPERCEIVETHING
+#define FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS
+#define FABLE_RETAIL_CTCPERCEIVETHING_SEEKPERCEIVEDTHING_FRIEND
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION
+#define FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION_IMPLICIT_DTOR
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCPerceiveThing.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCreatureAction_PlayAnimation.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_SeekPerceivedThing.h"
+void CAIStateGroup_SeekPerceivedThing::Cleanup()
+{}
+// Flatten route (flatten_pilot v4, NF324): CAIStateGroup_SeekPerceivedThing_Cleanup -> CAIStateGroup_SeekPerceivedThing::Cleanup, the RTTI-placed PDB member; class model: engine/CAIStateGroup_SeekPerceivedThing.h under FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING (preamble of CAIStateGroupSeekPerceivedThing_RunToPerceivedThingPosition_0091b3a0.cpp).

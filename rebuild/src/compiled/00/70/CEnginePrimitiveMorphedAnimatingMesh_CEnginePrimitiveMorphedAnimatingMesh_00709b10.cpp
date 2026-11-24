@@ -25,8 +25,8 @@ struct __declspec(novtable) C3DOrientationInterpolator : CBaseClass {    // +0x3
     unsigned char _data[0x30];
 };
 class C3DAnimationInterpolator { public:               // +0x6c, 0x14 bytes
-    unsigned char _data[0x14];
-    ~C3DAnimationInterpolator();                // 0x004C2E90
+    unsigned char _data[0x10];                  // +0x04 (NF311: the vptr is +0x00)
+    virtual ~C3DAnimationInterpolator();        // 0x004C2E90 (UAE, Ego_r.pdb + FableWin.pdb)
 };
 struct CCountedDef {
     virtual void v00();

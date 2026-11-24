@@ -15,6 +15,11 @@
 // Shape: both accessors are the wrapper's inline lazy resolvers applied to the global instance (absolute member
 // addresses); the call arguments (source, 1, &buffers[readIndex]) are evaluated before the inline body, so they sit in
 // ebx/edi across the resolve, and GetProcAddress is hoisted into ebp once for both resolvers.
+// Inferred: named resolved address (NF217, 2026-11-21, q12380) -- the SourceUnqueueBuffers resolver keeps the resolved entry point in a
+//   named `void* proc` before the member store and calls through the member, the one spelling of landed 0x00C73050 CAudioSource::UpdateStream
+//   (batches/2026-11-21_landing_auth3; AUTH3 measured this text on 0x00C57C90: pending/2026-11-21_auth3/00c73050/cons/), so the TU has one
+//   spelling of CAudioContext::SourceUnqueueBuffers. The bytes do not tell it from the HEAD ternary here (same grade); 0x00C73050's do.
+//   The other resolvers stay on the ternary.
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* name);   // IAT 0x0143FE44
 
 typedef long (__cdecl* PFN_alGetError)();
@@ -42,9 +47,10 @@ struct CAudioContext {
     }
     void SourceUnqueueBuffers(unsigned long source, long count, unsigned long* buffers)
     {
-        if (!pfnSourceUnqueueBuffers)
-            pfnSourceUnqueueBuffers = (PFN_alSourceUnqueueBuffers)(UseALGetProcAddress ? GetProcAddress("alSourceUnqueueBuffers")
-                                                                                       : ::GetProcAddress(Module, "alSourceUnqueueBuffers"));
+        if (!pfnSourceUnqueueBuffers) {
+            void* proc = UseALGetProcAddress ? GetProcAddress("alSourceUnqueueBuffers") : ::GetProcAddress(Module, "alSourceUnqueueBuffers");
+            pfnSourceUnqueueBuffers = (PFN_alSourceUnqueueBuffers)proc;
+        }
         pfnSourceUnqueueBuffers(source, count, buffers);
     }
 };

@@ -1,3 +1,4 @@
+// Leaf: ?ConvertFloatToVideoOptionQuality@CUserProfileManager@@AAE?AW4EEngineVideoOptionQuality@@M@Z
 // CUserProfileManager::ConvertFloatToVideoOptionQuality(float) -- map a 0..3 detail slider value to the EEngineVideoOptionQuality step it has reached
 // Retail: Fable.exe @ 0x00406820, 90 bytes (+ int3 padding), `ret 4`, `this` unused. No callees.
 // Float pool: 0x0122DEDC = 0.0f, 0x0122DED8 = 1.0f, 0x0122DCDC = 2.0f, 0x0122DED4 = 3.0f.
@@ -12,7 +13,9 @@ enum EEngineVideoOptionQuality {
 };
 
 class CUserProfileManager { public:
+    private:
     EEngineVideoOptionQuality ConvertFloatToVideoOptionQuality(float value);
+    public:
 };
 
 EEngineVideoOptionQuality CUserProfileManager::ConvertFloatToVideoOptionQuality(float value)

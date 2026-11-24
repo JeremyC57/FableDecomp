@@ -1,5 +1,5 @@
 // CTCSpecialAbilities::SetupMultiArrow() -- give the parent thing a "CTCMultiArrow" component (activated, no params) and report success; false when it already uses one
-// Leaf: SetupMultiArrow
+// Leaf: ?SetupMultiArrow@CTCSpecialAbilities@@AAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072AAA0, 67 bytes, called from CTCSpecialAbilities::UseSpecialAbility's switch (0x0072CF40).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 with "CTCMultiArrow" @ 0x0123D364, CThing::AddTC(const CCharString&, bool,
 //   CTCParamsBase*) @ 0x004C9D60, CCharString::~CCharString @ 0x0099EAE0.
@@ -62,7 +62,9 @@ public:
     long          CurrentAbility;                           // +0x10 EHeroAbility
     void*         UndeadFollowers;                          // +0x14 retail std::list (one sentinel pointer; PDB +0x14..+0x1f)
     CThingCreatureBase* Creature;                           // +0x18 (PDB +0x20)
+    private:
     bool SetupMultiArrow();
+    public:
 };
 
 bool CTCSpecialAbilities::SetupMultiArrow()

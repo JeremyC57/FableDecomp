@@ -1,15 +1,22 @@
 // CAnimComponentCombatMisc::TransferBinaryIn(CMemoryDataInputStream* stream) -- read the MeleeFlourish and MeleeKnockdown flags (one byte each, stored as `!= 0`)
-// Leaf: TransferBinaryIn
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DBCD0, length 199 bytes (+ int3 padding), `ret 4`.
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0 (twice, when the chunk runs out).
 // Shape: two inline CPersistTraits<bool>::TransferBinaryIn reads (the landed 0x007AD7F0 Read model for one byte, the byte
 // homed in the dead stream-argument slot, `test ; setne` into the member); the second read's exits duplicate the tails.
 // Layout: rebuild/include/engine/CAnimComponentCombatMisc.h (MeleeFlourish +0x08, MeleeKnockdown +0x09).
+// Leaf: ?TransferBinaryIn@CAnimComponentCombatMisc@@UAEXAAVCMemoryDataInputStream@@@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CAnimComponentCombatMisc.h under FABLE_RETAIL_ANIMCOMPONENT with the PDB parameter / return types (was ?TransferBinaryIn@CAnimComponentCombatMisc_Transfer@@QAEXPAVCMemoryDataInputStream@@@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_ANIMCOMPONENT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
 #include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CDataOutputStream.h"
+#include "engine/CAnimComponentCombatMisc.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-#include "engine/CAnimComponentCombatMisc.h"
 
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
@@ -44,13 +51,7 @@ FABLE_FORCEINLINE void TransferBoolIn(CMemoryDataInputStream* stream, bool* out)
     stream->Read(&value, sizeof(value));
     *out = value != 0;
 }
-
-struct CAnimComponentCombatMisc_Transfer : CAnimComponentCombatMisc {
-    void TransferBinaryIn(CMemoryDataInputStream* stream);
-};
-
-void CAnimComponentCombatMisc_Transfer::TransferBinaryIn(CMemoryDataInputStream* stream)
-{
-    TransferBoolIn(stream, &MeleeFlourish);
-    TransferBoolIn(stream, &MeleeKnockdown);
+void CAnimComponentCombatMisc::TransferBinaryIn(CMemoryDataInputStream& stream) {
+    TransferBoolIn(&stream, &MeleeFlourish);
+    TransferBoolIn(&stream, &MeleeKnockdown);
 }

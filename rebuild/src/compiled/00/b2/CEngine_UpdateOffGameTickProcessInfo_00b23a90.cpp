@@ -1,3 +1,4 @@
+// Leaf: ?UpdateOffGameTickProcessInfo@CEngine@@AAEX_N@Z
 // CEngine::UpdateOffGameTickProcessInfo(bool) -- off-world tick throttling: when processing is enabled, accumulate (now - last) * MinProcessFrequency ticks, decide whether this frame processes (spending one tick), clamp the accumulator to [0, MaxProcessTicksBehind] and remember the time stamp
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B23A90, 186 bytes (+ int3 padding).
 // Callees: GFGetTime @ 0x009E1BC0 (`__fastcall`, double on the FPU). Float pool: 0x0122DED8 = 1.0f, 0x0122DEDC = 0.0f.
@@ -24,7 +25,9 @@ struct SOffWorldTickProcessInfo {                      // <unnamed-type-OffWorld
 class CEngine { public:
     unsigned char            _pad0[0xf8];
     SOffWorldTickProcessInfo OffWorldTickProcessInfo;  // +0xF8 (retail; PDB +0x100)
+    private:
     void UpdateOffGameTickProcessInfo(bool allowSkip);
+    public:
 };
 
 void CEngine::UpdateOffGameTickProcessInfo(bool allowSkip)

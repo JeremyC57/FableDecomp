@@ -22,7 +22,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCTalk { public:                                // interface 0xf
-    float GetCurrentSpeechDuration();           // 0x006E2840
+    float GetCurrentSpeechDuration() const;           // 0x006E2840
 };
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870

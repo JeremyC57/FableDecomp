@@ -1,0 +1,7 @@
+008f6050	call	0081e7e9	0081e7e0L CMap::Clear
+008f6050	call	00820dea	00820cc0L CMap::CMap
+008f6050	call	00821b0f	00821a80L CMap::LoadFromFile
+008f6050	call	008f6495	008f63c0L CHeightMap::CHeightMap
+00aedca0	call	00aeadfe	00aeac90L NParticleEngine::CParticleEmitterManager::DumpInfo
+00aedca0	call	00aeebc3	00aeeba0L NParticleEngine::CParticleEmitter::StartFrame
+00aedca0	call	00b0c879	00b0c830L NParticleEngine::CPSCUpdateNormal::GetParticleCount

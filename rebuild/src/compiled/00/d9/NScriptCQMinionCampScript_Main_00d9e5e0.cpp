@@ -64,9 +64,9 @@ class CQ_MinionCampScript : public CScriptBase {
 public:
     typedef CCountedPointer<CEntityScriptBase> (__fastcall *TAlloc)(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& thing);
     struct CBriarRose      { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D9E8B0
-    struct CMCMinionGuard  { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D9EA80
-    struct CMCSpawnPoint   { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D9ED50
-    struct CMCMinion       { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D9F0B0
+    struct CMC_MinionGuard  { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D9EA80
+    struct CMC_SpawnPoint   { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D9ED50
+    struct CMC_Minion       { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D9F0B0
     struct CFadeinSummoner { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D9F5B0
     CGameScriptInterface* Game;                         // +0x40
     void*                 Data;                         // +0x44
@@ -77,9 +77,9 @@ void CQ_MinionCampScript::Main()
 {
     Game->SetCreatureGeneratorsEnabled("Darkwood3", false);
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_MinionCampScript>("BriarRose", this, &CBriarRose::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_MinionCampScript>("MC_MinionGuard", this, &CMCMinionGuard::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_MinionCampScript>("MC_SpawnPoint", this, &CMCSpawnPoint::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_MinionCampScript>("MC_Minion", this, &CMCMinion::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_MinionCampScript>("MC_MinionGuard", this, &CMC_MinionGuard::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_MinionCampScript>("MC_SpawnPoint", this, &CMC_SpawnPoint::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_MinionCampScript>("MC_Minion", this, &CMC_Minion::Alloc, 0));
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_MinionCampScript>("FadeinSummoner", this, &CFadeinSummoner::Alloc, 0));
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();

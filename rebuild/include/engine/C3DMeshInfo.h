@@ -108,6 +108,11 @@ public:
     float GetSafeBoundingRadius()const{return SafeBoundingRadius;}
 #endif
 private:
+#ifdef FABLE_RETAIL_CMESHDATABANK_INITIALISEENTRY_PASS27
+    friend class CMeshDataBank;
+    void SetPhysicsMeshIndex(unsigned long index) { PhysicsMeshIndex = index; }
+    void SetBoundingVolumes(const C3DBoundingSphere& sphere, const C3DBoundingBox& box) { BoundingSphere = sphere; BoundingBox = box; }
+#endif
     class CMeshData;
     CIVCountedPointer<CMeshData> MeshData;
     C3DBoundingBox BoundingBox;
@@ -118,6 +123,15 @@ private:
     unsigned long LODDataSizes[4];
 #else
     unsigned char _body_0x0c[0x60 - 0xc];                               // +0x0c MeshData, BoundingBox, BoundingSphere, ...
+#endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x00A23C70: ?FreeDeviceSpecificResources@C3DMeshInfo@@UAEXXZ (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual void FreeDeviceSpecificResources();
+private:
 #endif
 };
 FABLE_STATIC_ASSERT_AT(104, sizeof(C3DMeshInfo) == 0x60);

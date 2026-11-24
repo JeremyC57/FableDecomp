@@ -62,7 +62,7 @@ public:
     unsigned char _pad00[0x58];
     CIntelligentPointer<CThing> PThingHitting;      // +0x58
     CHitParameters(const CHitParameters& other);    // 0x00812170
-    bool HasDamageAttribute4() const;               // 0x008688C0
+    bool IsShotStrike() const;               // 0x008688C0
     void SetWeapon(CThing& weapon);                 // 0x00868CE0 ?SetWeapon@CHitParameters@@QAEXAAVCThing@@@Z (Ego_r.pdb / FableWin.pdb; NF28: reference, was CThing*)
 };
 
@@ -87,7 +87,7 @@ NEntityEvents::CEventHitBase::CEventHitBase(const CHitParameters& params)
 {
     PHitParams.Reset(new CHitParameters(params));
     do {
-        if (!PHitParams->HasDamageAttribute4())
+        if (!PHitParams->IsShotStrike())
             break;
         CThing* hitter = PHitParams->PThingHitting.GetPItem();
         if (!hitter || hitter->m_dead || !hitter->HasTC(0x77))

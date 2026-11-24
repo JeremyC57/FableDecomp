@@ -465,3 +465,24 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
 - (nf203) A function copy that the HEAD object already defined, and that already differed from its owner, may change body in a port and
   stays debt (the function-copy counterpart of the nf176 data-COMDAT rule). A row is held only for a newly defined copy, or for a copy
   that matched at HEAD and stops matching (0x00993B20's ??_GCDataStream / ??_GCDataInputStream: 34 v 36 at HEAD, 28 v 36 after).
+
+## 2026-11-21 advisor decision (owner delegated, landing p25): pick-any checks for new rows; size-pragma condition 2
+- A NEW row has no "before" object, so its pick-any check compares every function COMDAT its object exports that the binding table
+  maps to another address with Fable.exe at that address (relocation fields zeroed on both sides; full symbol names, never
+  truncated). An owner-object comparison that reports MISSING (the owner names another spelling) does not count as checked.
+- Every differing copy gets the two checks from the 2026-11-20 rule: does the row's own leaf relocate to the symbol, and did HEAD
+  already bind that symbol there? Leaf-bound, newly bound and different: the row is held (p25: 0x0078FD60 / 0x00795300 on
+  GetAllThingsInRoughArea, map::operator[], vector::push_back). Not leaf-bound and bound at HEAD: debt, queued. Not leaf-bound and
+  the table line is a folded alias of another function: lands, with the split queued (p25: 0x00B0DC20's 5-byte
+  ~CIntelligentPointer<CParticleEmitter> thunk against ~CBaseIntelligentPointer 0x00A01C10).
+- Size-pragma scaffolding, condition 2 ("the owner row sets the same pragmas itself"): it is met when the pragma restores the owner
+  row's command-line mode (e.g. `optimize("t", on)` in a `/Os` row, for an owner built with the default /O2 /Oy /W3). Cite the owner's
+  catalog flags in the opt-in comment. Conditions 1 and 3 stay as written. (p25 0x0064FDB4 Clear: the device worked, but HasTC and
+  LowerBound still differed, so the row was held after its one bounded attempt and the header change did not land.)
+
+## Coordinator note, 2026-11-22: the authoring checklist from Codex pass 28
+Before declaring a long row stuck or parking it, run the 20-item checklist in `docs/pipeline/CODEX_P28_LESSONS.md` ("Authoring checklist"):
+regrade the draft on today's headers, finish every block, prove the mangled Leaf, copy the TU flags, no local types, every debug-record local in
+its scope, callee signatures and the wrappers the source called, branch order as written, the NScript generator form, callee-body visibility
+toggles, cleanup / termination targets, expression shape last, a behaviour test with distinct arguments. Park only after at least five genuinely
+different logged source shapes that do not shrink the residue. Item 19 (donor debug-build code) is not available on the lane yet.

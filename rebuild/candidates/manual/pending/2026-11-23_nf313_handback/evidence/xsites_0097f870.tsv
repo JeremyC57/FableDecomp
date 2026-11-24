@@ -1,0 +1,12 @@
+0097f870	call	0090f373	0090f320L CAIStateGroup_MinionHasInformation::Wander
+0097f870	call	00915c9a	00915b60L CAIStateGroup_MoveGoodsBase::PlaceGoods
+0097f870	call	00915fae	00915b60L CAIStateGroup_MoveGoodsBase::PlaceGoods
+0097f870	call	0092ac27	0092a8a0L CAIStateGroup_ApprenticeHero::PracticeSkills
+0097f870	call	0092b702	0092b3e0L CAIStateGroup_SkillPractice::PracticeSkills
+0097f870	call	0092c0fd	0092c070L CAIStateGroup_MinionWander::Update
+0097f870	call	0093bdb1	-
+0097f870	call	0094b2ff	-
+0097f870	call	00966ae0	00966ad0L CAIStateGroup_TavernServer::WanderWithinTavern
+0097f870	call	00967fc3	00967d40L CAIStateGroup_TavernServer::Update
+0097f870	call	00968000	00967d40L CAIStateGroup_TavernServer::Update
+0097f870	call	0098091c	00980770L CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFa

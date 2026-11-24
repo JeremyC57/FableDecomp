@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CCombatDialogueDef@@UAEXAAVCPersistContext@@@Z
 // CCombatDialogueDef::Transfer(CPersistContext&) -- transfer three timing floats and seventeen dialogue-state fields through native context helpers.
 // Flags: /O1
 // Retail: Fable.exe @ 0x00456DFB, 242 bytes. Native vtable slot18; helper overloads at 0x00431061 (float) and 0x00431102 (long).
@@ -14,8 +15,7 @@ class CPersistContext : public CPersistContext_PDB { public:
     template <class T> void Transfer(T& value); // 0x00431061
 };
 class CCombatDialogueDef { public:
-    void* __vftable;
-    unsigned char nativePrefix[0x38];
+        unsigned char nativePrefix[0x38];
     float MinTimeBetweenSpeech;
     float MinTimeBetweenSpeechRepeat;
     float MinDelayAfterBattleCry;
@@ -36,7 +36,7 @@ class CCombatDialogueDef { public:
     long ColleagueInjured;
     long Scared;
     long Flee;
-    void Transfer(CPersistContext& context);
+    virtual void Transfer(CPersistContext& context);
 };
 void CCombatDialogueDef::Transfer(CPersistContext& context) {
     context.Transfer(MinTimeBetweenSpeech);

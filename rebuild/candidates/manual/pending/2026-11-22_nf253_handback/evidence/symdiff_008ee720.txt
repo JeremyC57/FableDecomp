@@ -1,0 +1,19 @@
+1c1,2
+< DEF ??A?$vector@J@@QBEABJK@Z
+---
+> DEF ??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z
+> DEF ?GFRandom@@YIKKPAK@Z
+4,7c5,8
+< DEF ?Next@CRandomGenerator@@QAEKXZ
+< DEF ?Random@CRandomGenerator@@QAEKK@Z
+< DEF ?empty@?$vector@J@@QBE_NXZ
+< DEF ?size@?$vector@J@@QBEKXZ
+---
+> DEF ?GetWorld@CMainGameComponent@@QAEAAVCWorld@@XZ
+> DEF ?begin@?$vector@JV?$allocator@J@std@@@std@@QBEPBJXZ
+> DEF ?empty@?$vector@JV?$allocator@J@std@@@std@@QBE_NXZ
+> DEF ?size@?$vector@JV?$allocator@J@std@@@std@@QBEIXZ
+9c10
+< UND ?GetRandomGenerator@CEngineRandomOwner@@QAEPAUCRandomGenerator@@XZ
+---
+> UND ?GetLocalSeed@CWorld@@QBEPAKXZ

@@ -1,0 +1,65 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00858A20	CCombatActionBase	SetupCombatInterrupts	?SetupCombatInterrupts@CCombatActionBase@@IAEXXZ	CCombatActionBase::SetupCombatInterrupts	?SetupCombatInterrupts@CCombatActionBase@@QAEXXZ	Ego_r + FableWin IAE; engine/CCombatActionBase.h declares it protected; VC7.1 HEAD objects of both binders 0x00859EC0 / 0x00859EF0 bind IAE; self had no Leaf line (none added)
+0x00B81050	CEngineClothSimulationMeshBase	UpdateTransform	?UpdateTransform@CEngineClothSimulationMeshBase@@IAEXXZ	CEngineClothSimulationMeshBase::UpdateTransform	?UpdateTransform@CEngineClothSimulationMeshBase@@QAEXXZ	Ego_r + FableWin IAE; binder 0x00B81F30 already IAE (VC7.1 HEAD object), 0x00B82100 moved with it; self had no Leaf line
+0x00416C8A	CMainGameComponent	InitGraphics	?InitGraphics@CMainGameComponent@@IAE_NXZ	CMainGameComponent::InitGraphics	?InitGraphics@CMainGameComponent@@QAE_NXZ	Ego_r + FableWin IAE; binders 0x0041799B / 0x004179EE already bind IAE (VC7.1 HEAD objects); T2 self: `protected:` on the decl, Leaf respelled
+0x0042E98F	CNewFrontendGameComponent	Init2	?Init2@CNewFrontendGameComponent@@AAEXXZ	CNewFrontendGameComponent::Init2	?Init2@CNewFrontendGameComponent@@QAEXXZ	Ego_r + FableWin AAE (the HEAD Leaf comment already cited Ego_r AAEXXZ); the only binder 0x0042EC7C binds AAE through engine/CNewFrontendGameComponent.h line 123 (private), by source; T2 self: `private:` on the decl, Leaf respelled ("modelled public" dropped on the same line)
+0x0042E3EE	CNewFrontendGameComponent	Input	?Input@CNewFrontendGameComponent@@AAEXXZ	CNewFrontendGameComponent::Input	?Input@CNewFrontendGameComponent@@UAEXXZ	Ego_r + FableWin AAE (private, not virtual; Fable.exe holds no absolute reference to 0x0042E3EE: in no vtable); the only binder 0x0042EC7C binds AAE through engine/CNewFrontendGameComponent.h line 125, by source; T2 self: `virtual` dropped (the model's last virtual, no ctor / table in the TU), `private:`, Leaf respelled
+0x004AFC60	CQuestManager	IsCreatureGenerationEnabled	?IsCreatureGenerationEnabled@CQuestManager@@QBE_NXZ	CQuestManager::IsCreatureGenerationEnabled	?IsCreatureGenerationEnabled@CQuestManager@@QAE_NXZ	Ego_r + FableWin QBE; binder 0x0049EA40 binds QBE (VC7.1 HEAD object); T2 self: `const` on decl + definition, Leaf respelled; the const body forces `const` on the local model's callee IsQuestActive (both PDBs QBE, already bound by 0x0049EA40): RENAMES section 2
+0x0077D190	CTCCreatureHive	UpdateAnimation	?UpdateAnimation@CTCCreatureHive@@AAEXXZ	CTCCreatureHive::UpdateAnimation	?UpdateAnimation@CTCCreatureHive@@QAEXXZ	Ego_r + FableWin AAE; the only binder 0x0077D330 binds AAE through engine/CTCCreatureHive.h line 27 (VC7.1 HEAD object); T2 self: `private:` on the decl, Leaf respelled
+0x006827A0	CTCCreatureOpinionOfHero	IsHeroOpinionEnemy	?IsHeroOpinionEnemy@CTCCreatureOpinionOfHero@@QBE_NXZ	CTCCreatureOpinionOfHero::IsHeroOpinionEnemy	?IsHeroOpinionEnemy@CTCCreatureOpinionOfHero@@QAE_NXZ	Ego_r + FableWin QBE; binders 0x0076CC00 / 0x008648A0 bind QBE (VC7.1 HEAD objects); T2 self: `const` on decl + definition, Leaf respelled
+0x0048F6BD	CSubtitleRenderer	GetTextFromTextTag	?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z	CSubtitleRenderer::GetTextFromTextTag	?GetTextFromTextTag@CSubtitleRenderer@@QAE_NABVCWideString@@AAV2@@Z	Ego_r + FableWin AAE (the row's own header comment cites it); T1 with a QAE self (its HEAD object defines QAE): `private:` on its local-model line 95 (plain Leaf kept); binders 0x0048F939 / 0x00492973 / 0x00493281 bind AAE (VC7.1 HEAD objects), 0x0048F7C0 / 0x0048F881 moved
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00A5B710	?Copy@CCachedFile@@QAEXABV1@@Z	?Copy@CCachedFile@@AAEXABV1@@Z	0x00A5B650
+0x00A5B760	?Copy@CCachedFile@@QAEXABV1@@Z	?Copy@CCachedFile@@AAEXABV1@@Z	0x00A5B650
+0x00BCFDE0	??0CEngineClothSimulation2DAnimatedMesh@@QAE@PBVC3DMeshInfo@@IPAVCEngineInternalPrimitiveAnimatedMesh@@@Z	??0CEngineClothSimulation2DAnimatedMesh@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveAnimatedMesh@@@Z	0x00B81F00
+0x00BCFCB0	??0CEngineClothSimulationAnimatedMesh@@QAE@PBVC3DMeshInfo@@IPAVCEngineInternalPrimitiveAnimatedMesh@@@Z	??0CEngineClothSimulationAnimatedMesh@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveAnimatedMesh@@@Z	0x00B81ED0
+0x00B9DE90	??0CEngineClothSimulationStaticMesh@@QAE@PBVC3DMeshInfo@@IPAVCEngineInternalPrimitiveStaticMesh@@@Z	??0CEngineClothSimulationStaticMesh@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveStaticMesh@@@Z	0x00B81EA0
+0x00B82100	?UpdateTransform@CEngineClothSimulationMeshBase@@QAEXXZ	?UpdateTransform@CEngineClothSimulationMeshBase@@IAEXXZ	0x00B81050
+0x00B619B0	?CaptureBackBuffer@CEngineScreenEffectGlowRenderer@@QAEXXZ	?CaptureBackBuffer@CEngineScreenEffectGlowRenderer@@AAEXXZ	0x00B5FAB0
+0x00B619B0	?ApplyGlow@CEngineScreenEffectGlowRenderer@@QAEXXZ	?ApplyGlow@CEngineScreenEffectGlowRenderer@@AAEXXZ	0x00B60F70
+0x0069A990	?ResetFlags@CGameCameraManager@@QAEXXZ	?ResetFlags@CGameCameraManager@@AAEXXZ	0x00699130
+0x004175E5	?UninitEventPackageLoading@CMainGameComponent@@QAEXXZ	?UninitEventPackageLoading@CMainGameComponent@@IAEXXZ	0x004160A6
+0x004175E5	?UninitEventPackageSaving@CMainGameComponent@@QAEXXZ	?UninitEventPackageSaving@CMainGameComponent@@IAEXXZ	0x00416122
+0x00417001	?GetCurrentGameTime@CMainGameComponent@@QAENXZ	?GetCurrentGameTime@CMainGameComponent@@IBENXZ	0x00416231
+0x004189C2	?GetCurrentGameTime@CMainGameComponent@@QAENXZ	?GetCurrentGameTime@CMainGameComponent@@IBENXZ	0x00416231
+0x004AEAA0	?IsTimeForServerUpdate@CMainGameComponent@@QAE_NJ@Z	?IsTimeForServerUpdate@CMainGameComponent@@QBE_NJ@Z	0x0041674A
+0x008E0780	?UpdateBeam@CModeDragonFireBeam@NCreatureMode@@QAEXXZ	?UpdateBeam@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	0x008DB810
+0x0042E98F	?InitialiseSounds@CNewFrontendGameComponent@@QAEXXZ	?InitialiseSounds@CNewFrontendGameComponent@@AAEXXZ	0x0042E17C
+0x00A38670	?GetSymbol@CParsedItem@@QAEABVCCharString@@XZ	?GetSymbol@CParsedItem@@QBEABVCCharString@@XZ	0x009B9870
+0x00A38670	?GetString@CParsedItem@@QAEABVCCharString@@XZ	?GetString@CParsedItem@@QBEABVCCharString@@XZ	0x009B9880
+0x009EB430	?GetString@CParsedItem@@QAEABVCCharString@@XZ	?GetString@CParsedItem@@QBEABVCCharString@@XZ	0x009B9880
+0x009EC710	?GetString@CParsedItem@@QAEABVCCharString@@XZ	?GetString@CParsedItem@@QBEABVCCharString@@XZ	0x009B9880
+0x00AEB6D0	?ShouldSpawn@CParticleEmitter@NParticleEngine@@QAE_NABVC3DVector@@@Z	?ShouldSpawn@CParticleEmitter@NParticleEngine@@QBE_NABVC3DVector@@@Z	0x00AECF90
+0x00AEB6D0	?DatabaseClone@CParticleEmitter@NParticleEngine@@QAEPAV12@XZ	?DatabaseClone@CParticleEmitter@NParticleEngine@@QBEPAV12@XZ	0x00AF0650
+0x006A7B20	?IsInContainmentVolume@CPhysicsMeshObject@@QAE_NABVCCharString@@ABVC3DVector@@M@Z	?IsInContainmentVolume@CPhysicsMeshObject@@QBE_NABVCCharString@@ABVC3DVector@@M@Z	0x00A128E0
+0x0082D000	?IsInContainmentVolume@CPhysicsMeshObject@@QAE_NABVCCharString@@ABVC3DVector@@M@Z	?IsInContainmentVolume@CPhysicsMeshObject@@QBE_NABVCCharString@@ABVC3DVector@@M@Z	0x00A128E0
+0x0069F9E0	?IsMainPlayer@CPlayer@@QAE_NXZ	?IsMainPlayer@CPlayer@@QBE_NXZ	0x00487520
+0x008BA3C0	?IsMainPlayer@CPlayer@@QAE_NXZ	?IsMainPlayer@CPlayer@@QBE_NXZ	0x00487520
+0x0048A210	?InitInterfaces@CPlayer@@QAEXXZ	?InitInterfaces@CPlayer@@AAEXXZ	0x00488D10
+0x00634190	?UnInitActiveMode@CPlayer@@QAEXW4EPlayerMode@@@Z	?UnInitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z	0x00633BF0
+0x00634190	?InitActiveMode@CPlayer@@QAEXW4EPlayerMode@@@Z	?InitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z	0x00633CB0
+0x0043A080	?UpdateMoney@CPlayerGui@@QAEXXZ	?UpdateMoney@CPlayerGui@@AAEXXZ	0x00439BB0
+0x0043A080	?UpdateCrime@CPlayerGui@@QAEXXZ	?UpdateCrime@CPlayerGui@@AAEXXZ	0x004385F0
+0x00407370	?IsPlayer@CPlayerManager@@QAE_NJ@Z	?IsPlayer@CPlayerManager@@QBE_NJ@Z	0x00449880
+0x00449CB0	?IsPlayer@CPlayerManager@@QAE_NJ@Z	?IsPlayer@CPlayerManager@@QBE_NJ@Z	0x00449880
+0x00449E60	?IsPlayerAssociatedWithJoystickDeviceNumber@CPlayerManager@@QAE_NJ@Z	?IsPlayerAssociatedWithJoystickDeviceNumber@CPlayerManager@@QBE_NJ@Z	0x004499E0
+0x004AFC60	?IsQuestActive@CQuestManager@@QAE_NABVCCharString@@@Z	?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z	0x004AF610
+0x00557080	?ClearList@CRedefinerList@NUISystem@@QAEXXZ	?ClearList@CRedefinerList@NUISystem@@IAEXXZ	0x005567B0
+0x00B63010	?ResetWorldTransform@CShaderRenderManager@@AAEXXZ	?ResetWorldTransform@CShaderRenderManager@@QAEXXZ	0x00988290
+0x0048F7C0	?GetTextFromTextTag@CSubtitleRenderer@@QAE_NABVCWideString@@AAV2@@Z	?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z	0x0048F6BD
+0x0048F881	?GetTextFromTextTag@CSubtitleRenderer@@QAE_NABVCWideString@@AAV2@@Z	?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z	0x0048F6BD
+0x00A44880	?InternalSwitchToProcess@CSuspendableProcessMicrothread@@SIXAAV1@@Z	?InternalSwitchToProcess@CSuspendableProcessMicrothread@@KIXAAV1@@Z	0x00A44660
+0x008DBB30	?GetAnimIndex@CTCAnimationComplex@@QAEJXZ	?GetAnimIndex@CTCAnimationComplex@@QBEJXZ	0x0070B490
+0x008DBB30	?GetAnimDuration@CTCAnimationComplex@@QAEMJ@Z	?GetAnimDuration@CTCAnimationComplex@@QBEMJ@Z	0x0070B4A0
+0x00753930	?GetAnimDuration@CTCAnimationComplex@@QAEMJ@Z	?GetAnimDuration@CTCAnimationComplex@@QBEMJ@Z	0x0070B4A0
+0x00686E10	?EndSerialising@CTCBase@@QAEX_NAAVCCharString@@@Z	?EndSerialising@CTCBase@@AAEX_NAAVCCharString@@@Z	0x006869E0
+0x0074F080	?CreateItemPickupContainer@CTCContainerRewardHero@@QAEXXZ	?CreateItemPickupContainer@CTCContainerRewardHero@@IAEXXZ	0x0074EC50
+0x00659C7E	?GetNumCrates@CTCCrateStack@@QAEJXZ	?GetNumCrates@CTCCrateStack@@QBEJXZ	0x007B6660
+0x00915890	?GetNumCrates@CTCCrateStack@@QAEJXZ	?GetNumCrates@CTCCrateStack@@QBEJXZ	0x007B6660
+0x007DE030	?UpdateFlight@CTCCreatureFlyInCircles@@QAEXAAVC3DVector@@0@Z	?UpdateFlight@CTCCreatureFlyInCircles@@IAEXAAVC3DVector@@0@Z	0x007DD270
+0x007DE030	?PlayLoopAnim@CTCCreatureFlyInCircles@@QAEXXZ	?PlayLoopAnim@CTCCreatureFlyInCircles@@IAEXXZ	0x007DDDA0
+0x007FD4B0	?Construct@CTCDPhysicalObstruction@@QAEXABVC3DVector@@@Z	?Construct@CTCDPhysicalObstruction@@AAEXABVC3DVector@@@Z	0x007FD430
+0x007F1AC0	?Construct@CTCDRumble@@QAEXABVC3DVector@@@Z	?Construct@CTCDRumble@@AAEXABVC3DVector@@@Z	0x007F18B0
+0x00730F90	?Close@CTCDoor@@QAEXXZ	?Close@CTCDoor@@IAEXXZ	0x00730DD0
+0x0071AE90	?DrawEmoteTypeIcon@CTCEmoteIcon@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	?DrawEmoteTypeIcon@CTCEmoteIcon@@AAEXABVCEnginePrimitivePrepareInfo@@@Z	0x0071AD20

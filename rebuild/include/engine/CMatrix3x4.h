@@ -57,6 +57,10 @@ public:
     }
 #endif
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4_ORTHONORMALISE
+    // Ego_r and FableWin agree on the public out-of-line orthonormalisation method at 0x00A56270.
+    void Orthonormalise();
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_INVERSE_NO_TRANSLATE_PASS23
 #ifdef FABLE_RETAIL_CMATRIX3X4_INVERSE_NO_TRANSLATE_FORCEINLINE
  // Overlay opt-in (hand4d, row 0x00AEDE60 CParticleEmitter::SetOrientation): retail expands SetInverseNoTranslate and its
@@ -397,6 +401,24 @@ public:
     FABLE_MATRIX_INLINE_PASS23 void PostTranslate(const C3DVector& v) {
         E41+=v.X; E42+=v.Y; E43+=v.Z;
     }
+#if defined(FABLE_RETAIL_CMATRIX3X4_SETINVERSE_DONOR_PASS26)
+ // Both original PDBs identify matrix, det, and rec. FableWin 01B40BE0 calls GetDeterminant and stores the cofactors column by column.
+ FABLE_MATRIX_INLINE_PASS23 void SetInverse(const CMatrix3x4& matrix){
+  float det=matrix.GetDeterminant();float rec=1.0f/det;
+  E11=(matrix.E22*matrix.E33-matrix.E32*matrix.E23)*rec;
+  E21=(matrix.E31*matrix.E23-matrix.E21*matrix.E33)*rec;
+  E31=(matrix.E21*matrix.E32-matrix.E31*matrix.E22)*rec;
+  E12=(matrix.E32*matrix.E13-matrix.E12*matrix.E33)*rec;
+  E22=(matrix.E11*matrix.E33-matrix.E31*matrix.E13)*rec;
+  E32=(matrix.E31*matrix.E12-matrix.E11*matrix.E32)*rec;
+  E13=(matrix.E12*matrix.E23-matrix.E22*matrix.E13)*rec;
+  E23=(matrix.E21*matrix.E13-matrix.E11*matrix.E23)*rec;
+  E33=(matrix.E11*matrix.E22-matrix.E21*matrix.E12)*rec;
+  E41=-(matrix.E41*E11+matrix.E42*E21+matrix.E43*E31);
+  E42=-(matrix.E41*E12+matrix.E42*E22+matrix.E43*E32);
+  E43=-(matrix.E41*E13+matrix.E42*E23+matrix.E43*E33);
+ }
+#else
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETINVERSE_TRANSLATION_LOCAL
     // Nested opt-in (wfE6 successor, row 0x00B4D370 CEngineShadowRenderer::UpdateShadowSpace): the same cofactors, determinant and
     // elements, with m's translation taken into a C3DVector first and the inverse translation as -(Ek1*t.X + Ek2*t.Y + Ek3*t.Z).
@@ -439,6 +461,7 @@ public:
         E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
     }
 #endif
+#endif // FABLE_RETAIL_CMATRIX3X4_SETINVERSE_DONOR_PASS26
 #endif
 #ifdef FABLE_RETAIL_CMATRIX3X4
     // Chunk 737 (CPSCLight::PreparePrimitives 0x00B19C60, through CParticleSystem::TransformPosIfWorld): every row in the X row's
@@ -607,6 +630,15 @@ public:
     // 61 instructions, the size of the three-row TransformPoint(source, destination); no Ego_r.pdb or Fable.exe out-of-line copy):
     // the translation applied before the matrix, E4k += t . column k. After SetTranslateOnly(0,0,0) on a copied view matrix (the
     // sibling 0x00B8B780 idiom) VC7.1 folds the zero terms and drops the dead stores: 0x00BAAADC..0x00BAAB34. Default path unchanged.
+#ifdef FABLE_RETAIL_CMATRIX3X4_ZSPRITE_SOURCE_GEOMETRY_PASS26
+    // Inline-budget: both original matrix helpers expand in retail 0x00BAA870.
+    // FableWin 02D78DD0 and matching PDB source lines 495–499 establish the formal and coordinate-first products.
+    FABLE_FORCEINLINE void PreTranslate(const C3DVector& vector) {
+        E41 = vector.X * E11 + vector.Y * E21 + vector.Z * E31 + E41;
+        E42 = vector.X * E12 + vector.Y * E22 + vector.Z * E32 + E42;
+        E43 = vector.X * E13 + vector.Y * E23 + vector.Z * E33 + E43;
+    }
+#else
     FABLE_FORCEINLINE void PreTranslate(const C3DVector& t) {
 #ifdef FABLE_RETAIL_CMATRIX3X4_PRETRANSLATE_ACCUMULATE
         E41+=E11*t.X+E21*t.Y+E31*t.Z;
@@ -618,6 +650,7 @@ public:
         E43=E13*t.X+E23*t.Y+E33*t.Z+E43;
 #endif
     }
+#endif // FABLE_RETAIL_CMATRIX3X4_ZSPRITE_SOURCE_GEOMETRY_PASS26
 #endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMPLANE
     // Retail opt-in (chunk 3001 / 3020, row 0x00A12EE0 CPhysicsMeshObject::GetNavigationLevelVolumes): FableWin.pdb
@@ -653,9 +686,16 @@ public:
     // Row 0x00A11F20 CPhysicsMeshObject::IsSpherePartContainedInBoundingBox (same workflow, a different author agent) arrived at the
     // same three lines independently and matches with them too (386 v 428 with the plain-inline default).
     FABLE_MATRIX_INLINE_PASS23 void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
+#ifdef FABLE_RETAIL_CMATRIX3X4_ZSPRITE_SOURCE_GEOMETRY_PASS26
+    // FableWin 01D129F0 and matching PDB source lines 807–811 establish the coordinate-first products.
+        destination.X = pSource.X * E11 + pSource.Y * E21 + pSource.Z * E31 + E41;
+        destination.Y = pSource.X * E12 + pSource.Y * E22 + pSource.Z * E32 + E42;
+        destination.Z = pSource.X * E13 + pSource.Y * E23 + pSource.Z * E33 + E43;
+#else
         destination.X=E11*pSource.X+E21*pSource.Y+E31*pSource.Z+E41;
         destination.Y=E12*pSource.X+E22*pSource.Y+E32*pSource.Z+E42;
         destination.Z=E13*pSource.X+E23*pSource.Y+E33*pSource.Z+E43;
+#endif // FABLE_RETAIL_CMATRIX3X4_ZSPRITE_SOURCE_GEOMETRY_PASS26
     }
 #elif defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_COPY_SUMS)
     // Retail opt-in (chunk 2028, row 0x00B8DF50 CEngineOcclusionManager::FrameEnd, through the inline CEngineCamera::TransformWorldToView):

@@ -19,7 +19,7 @@ class CTCTavernGame : public CTCTavernGameDonor {
 };
 
 class CTCTavernGameCoinGolf : public CTCTavernGame { public:
-    void FadeOutTableOccupants(bool fadeOut);                           // 0x007D46D0
+    private: void FadeOutTableOccupants(bool fadeOut); public:                           // 0x007D46D0
     void vfunc_11(CRenderContext* context);
 };
 

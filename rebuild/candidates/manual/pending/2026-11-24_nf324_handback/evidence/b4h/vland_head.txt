@@ -1,0 +1,7 @@
+0084a820   MATCH            PASS   GetAnimExtraFlags
+008601b0   MATCH            PASS   IsPreventingNormalMovement
+008601c0   MATCH            PASS   IsPreventingLookTurning
+00865a80   MATCH            PASS   GetAnimationTransitionInTime
+00865a90   MATCH            PASS   GetAnimDelayTime
+00941ba0   MATCH            PASS   GetAnimExtraFlags
+00941bb0   MATCH            PASS   IsUsingAnimationMovement

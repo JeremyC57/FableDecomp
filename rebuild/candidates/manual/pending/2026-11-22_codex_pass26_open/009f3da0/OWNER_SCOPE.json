@@ -1,0 +1,362 @@
+{
+  "row": "009f3da0",
+  "selected": "spell21_portable_lock_owner",
+  "comparison": "spell56_late_original_extent_wrapper_depth_zero",
+  "owner_matches": [
+    {
+      "symbol": "?GetWidth@CSurface@@QBEKXZ",
+      "address": "00415bd0",
+      "bytes": 18,
+      "call_target": "009f2f90",
+      "call_symbol": "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ"
+    },
+    {
+      "symbol": "?GetHeight@CSurface@@QBEKXZ",
+      "address": "00415bf0",
+      "bytes": 19,
+      "call_target": "009f2f90",
+      "call_symbol": "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ"
+    }
+  ],
+  "comparison_leaf_bytes": 573,
+  "retail_leaf_bytes": 582,
+  "comparison_leaf_nested_get_dimensions_offsets": [
+    41,
+    55
+  ],
+  "conclusion": "The depth-zero out-of-class accessor owners emit both exact native copies. When expanded into CopyToMemoryB8G8R8A8, their nested calls stay out of line. The selected exact leaf retains the two transported unreferenced copies.",
+  "raw_pdb_verification": {
+    "FableWin.pdb": {
+      "compilands": [
+        {
+          "stream": 817,
+          "module": "debug\\main_game_component.obj",
+          "procedures": [
+            {
+              "name": "CSurface::GetWidth",
+              "section": 2,
+              "offset": "001177c0",
+              "size": 27,
+              "c13": [
+                {
+                  "block_start": 1144768,
+                  "block_bytes": 27,
+                  "path": "lib_surface.hpp",
+                  "entries": [
+                    [
+                      0,
+                      130
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "CSurface::GetHeight",
+              "section": 2,
+              "offset": "001177f0",
+              "size": 28,
+              "c13": [
+                {
+                  "block_start": 1144816,
+                  "block_bytes": 28,
+                  "path": "lib_surface.hpp",
+                  "entries": [
+                    [
+                      0,
+                      131
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stream": 1040,
+          "module": ".\\Debug\\lib_surface.obj",
+          "procedures": [
+            {
+              "name": "CSurface::GetDimensions",
+              "section": 2,
+              "offset": "01936db0",
+              "size": 254,
+              "c13": [
+                {
+                  "block_start": 26439088,
+                  "block_bytes": 254,
+                  "path": "lib_surface.cpp",
+                  "entries": [
+                    [
+                      0,
+                      156
+                    ],
+                    [
+                      37,
+                      159
+                    ],
+                    [
+                      64,
+                      160
+                    ],
+                    [
+                      219,
+                      162
+                    ],
+                    [
+                      238,
+                      163
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "carved": [],
+      "publics": [
+        "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ",
+        "?GetWidth@CSurface@@QBEKXZ",
+        "?GetHeight@CSurface@@QBEKXZ"
+      ]
+    },
+    "Ego_r.pdb": {
+      "compilands": [
+        {
+          "stream": 820,
+          "module": "release\\main_game_component.obj",
+          "procedures": [
+            {
+              "name": "CSurface::GetWidth",
+              "section": 1,
+              "offset": "00013f70",
+              "size": 18,
+              "c13": [
+                {
+                  "block_start": 81776,
+                  "block_bytes": 18,
+                  "path": "lib_surface.hpp",
+                  "entries": [
+                    [
+                      0,
+                      130
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "CSurface::GetHeight",
+              "section": 1,
+              "offset": "00013f90",
+              "size": 19,
+              "c13": [
+                {
+                  "block_start": 81808,
+                  "block_bytes": 19,
+                  "path": "lib_surface.hpp",
+                  "entries": [
+                    [
+                      0,
+                      131
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stream": 1042,
+          "module": ".\\Release\\lib_surface.obj",
+          "procedures": [
+            {
+              "name": "CSurface::GetDimensions",
+              "section": 1,
+              "offset": "00745c70",
+              "size": 41,
+              "c13": [
+                {
+                  "block_start": 7625840,
+                  "block_bytes": 41,
+                  "path": "lib_surface.cpp",
+                  "entries": [
+                    [
+                      0,
+                      156
+                    ],
+                    [
+                      3,
+                      159
+                    ],
+                    [
+                      18,
+                      162
+                    ],
+                    [
+                      35,
+                      163
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "carved": [],
+      "publics": [
+        "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ",
+        "?GetWidth@CSurface@@QBEKXZ",
+        "?GetHeight@CSurface@@QBEKXZ"
+      ]
+    },
+    "Ego_d.pdb": {
+      "compilands": [],
+      "carved": [
+        {
+          "file_offset": 98116208,
+          "block": 95816,
+          "name": "CSurface::GetWidth",
+          "size": 27,
+          "type_index": "a58d",
+          "section": 2,
+          "offset": 1117584,
+          "lines": [
+            {
+              "file_offset": 98191676,
+              "file_id": 2976,
+              "lines": [
+                [
+                  0,
+                  130
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "file_offset": 98116324,
+          "block": 95816,
+          "name": "CSurface::GetHeight",
+          "size": 28,
+          "type_index": "a58d",
+          "section": 2,
+          "offset": 1117632,
+          "lines": [
+            {
+              "file_offset": 98191716,
+              "file_id": 2976,
+              "lines": [
+                [
+                  0,
+                  131
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "file_offset": 123109896,
+          "block": 120224,
+          "name": "CSurface::GetDimensions",
+          "size": 254,
+          "type_index": "a58c",
+          "section": 2,
+          "offset": 26292864,
+          "lines": [
+            {
+              "file_offset": 123129076,
+              "file_id": 552,
+              "lines": [
+                [
+                  0,
+                  156
+                ],
+                [
+                  37,
+                  159
+                ],
+                [
+                  64,
+                  160
+                ],
+                [
+                  219,
+                  162
+                ],
+                [
+                  238,
+                  163
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "publics": []
+    }
+  },
+  "diagnostic_branch": {
+    "donor": "030c5df0",
+    "line": 160,
+    "symbol": "?D3DError@CDebugManager@@QAE_NJABVCWideString@@K@Z",
+    "tags": "spell75 through spell90",
+    "outcome": "The release-dead Direct3D error check leaves the two getter owner contexts distinct."
+  },
+  "optimized_donor": {
+    "pdb": "ego_r.pdb",
+    "rsds_guid": "774b3052-bdd8-43b4-808d-48481cc576ce",
+    "age": 4,
+    "executable_sha256": "aeb372d37adce0b17affc0744eb20c3fe75d05c5a80cd134b0a4a7f5d607ea96",
+    "leaf": "00b47aa0",
+    "wrapper_owners": [
+      {
+        "symbol": "?GetWidth@CSurface@@QBEKXZ",
+        "donor_address": "00414f70",
+        "extent": 18,
+        "call_site": "00414f77",
+        "callee": 11824240,
+        "extent_member_offset": 0,
+        "object_cmp_masked": true,
+        "retail_address": "00415bd0"
+      },
+      {
+        "symbol": "?GetHeight@CSurface@@QBEKXZ",
+        "donor_address": "00414f90",
+        "extent": 19,
+        "call_site": "00414f97",
+        "callee": 11824240,
+        "extent_member_offset": 4,
+        "object_cmp_masked": true,
+        "retail_address": "00415bf0"
+      }
+    ],
+    "get_dimensions": {
+      "address": "00b46c70",
+      "symbol": "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ"
+    },
+    "leaf_expanded_two_getdesc_sites": [
+      "00b47acb",
+      "00b47adf"
+    ]
+  },
+  "independent_alternates": {
+    "manifest": "alternate/HANDOFF_MANIFEST.txt",
+    "receipt": "alternate/COMPILAND_EVIDENCE.json",
+    "single_object_diagnostic": {
+      "source": "alternate/expanded_extent_control.cpp",
+      "native_leaf_bytes": 582,
+      "exact_helpers": 7,
+      "resolved_operands": 12,
+      "donor_difference": "FableWin line 666 and line 667 call the named width and height wrappers. The diagnostic substitutes their exact GetDimensions member expressions at those call sites."
+    },
+    "separated_original_owner": {
+      "exact_width": 18,
+      "exact_height": 19,
+      "native_selected_leaf_bytes": 582,
+      "exact_linked_profiles": "The main_game_component owner object precedes the lib_surface leaf object. Reversing the inputs selects the larger leaf-object extent wrappers."
+    }
+  }
+}

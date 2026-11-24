@@ -1,5 +1,5 @@
 // CTCHeroOnlineScoreboard::ChooseAClan() -- build the PC "choose a clan" list: drop the cached logos and hide the connecting message; with the hero's inventory on the scoreboard screen, create the clans list (title, position dummy, one menu entry per clan with its back / select actions, name, description and cached logo), register it with the inventory, wire the scroll arrows and the back / close clickables, then show it
-// Leaf: ?ChooseAClan@CTCHeroOnlineScoreboard@@QAEXXZ
+// Leaf: ?ChooseAClan@CTCHeroOnlineScoreboard@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055FEC0, 2132 bytes, plain `ret` (frame-pointer prologue, `and esp,-8`).
 // Callees: map<long, CCountedPointer<CTexture> >::_M_erase 0x00567980 (inline clear); CVectorMap LowerBound 0x0040F020 (inline
 //   GetTC, TCI_INVENTORY); NUISystem::CManager::GetInstance 0x0041E5F2 / CreateComponent 0x0041DB1D / CreateMenuEntryComponent
@@ -84,7 +84,9 @@ class CTCHeroOnlineScoreboard : public CTCBase { public:
 private:
     CCountedPointer<CTexture> GetCachedImage(const CWideString& folder, long id);   // 0x0055FC90
 public:
+    private:
     void ChooseAClan();
+    public:
 };
 
 void CTCHeroOnlineScoreboard::ChooseAClan()

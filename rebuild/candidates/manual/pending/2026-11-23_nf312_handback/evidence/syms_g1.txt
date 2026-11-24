@@ -1,0 +1,47 @@
+== 007990c0
+3c3
+< UND ??RCThingFilter_IsPotentialCustomer@@QAE_NPAVCThing@@@Z
+---
+> UND ??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z
+== 009650c0
+16c16
+< UND ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThing@@@Z
+---
+> UND ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z
+== 00405350
+24c24
+< UND ?TransferIMEColour@@YIIAAVCPersistContext@@ABVCCharString@@I@Z
+---
+> UND ?TransferIMEColour@@YIKAAVCPersistContext@@ABVCCharString@@K@Z
+== 009432c0
+32c32
+< UND ?GetDummyObjectRecursive@@YI_NPAVCThing@@ABVCCharString@@JKPAVC3DVector@@PAVCRightHandedSet@@@Z
+---
+> UND ?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z
+== 00efb8c0
+16c16
+< UND ?FoundMessageIsThingHitBy@@YI_NPAVCScriptThing@@0@Z
+---
+> UND ?FoundMessageIsThingHitBy@@YI_NABVCScriptThing@@0@Z
+== 00df2ab0
+17c17
+< UND ?FadeInThing@@YIXABVCScriptThing@@M@Z
+---
+> UND ?FadeInThing@@YIXAAVCScriptThing@@M@Z
+== 00d89380
+21,22c21,22
+< UND ?FadeInThing@@YIXABVCScriptThing@@M@Z
+< UND ?FadeOutThing@@YIXABVCScriptThing@@MM@Z
+---
+> UND ?FadeInThing@@YIXAAVCScriptThing@@M@Z
+> UND ?FadeOutThing@@YIXAAVCScriptThing@@MM@Z
+== 00df2380
+42c42
+< UND ?FadeInThing@@YIXABVCScriptThing@@M@Z
+---
+> UND ?FadeInThing@@YIXAAVCScriptThing@@M@Z
+== 00dfe0f0
+101c101
+< UND ?IsPlayerThreateningEntity@@YIJABVCScriptThing@@@Z
+---
+> UND ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z

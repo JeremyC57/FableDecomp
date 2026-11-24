@@ -1,0 +1,11 @@
+# NF281 lessons (one line each)
+- The tracker's T1 label ("the row already defines the PDB spelling") is a table-only reading: a clang census of the SELF rows found 9 T1 entries of the first 53 whose self row defines a wrong spelling too (1, 2, 7, 18, 32, 34, 47, 48, 50); census the self row before moving any binder, or the binders end unresolved.
+- The binding table keeps one witness per (symbol, target), so it can miss a whole spelling: 0x00A254A0 bound a third RemoveLOD spelling (QAE) that the tracker never listed; the exe scan + a per-row object census found it.
+- A clang MS-ABI -O0 object of every referencing row (854 rows in ~20 min) is a cheap whole-entry census; confirm each wrong binder from its VC7.1 HEAD object, which the grade builds anyway.
+- `private: T F(...); public:` on the declaration's own line is a zero-line-delta access fix that needs no knowledge of the members after it, because the wrong letters say the access in effect there was public.
+- Making a non-virtual base method virtual in a local model also makes the row's own same-named override virtual: the self leaf moves too (QAE -> UAE). Check the PDB for the override and census its binders before calling it count-neutral (0x0052C7E0 gained ~35 resolved binders; 0x00717450 had none).
+- A respell can surface a pre-existing wrong binder elsewhere as a vland RELOC_CONFLICT (one symbol, two addresses): 0x005367F3's slot spelled as the base class.
+- A PDB-const method whose body assigns a member (BeginLoadingStats) or passes `this` to a non-const ctor needs `mutable` / a ctor respell: not an in-place letter fix.
+- A same-TU strong copy of the callee in another row (0x00951FB0 IsTargetOnATower) blocks moving the self row onto the same spelling (LNK2005).
+- Rows that the clang precheck cannot parse (VC-only constructs, VC7.1 <cwchar> / iostream in tests) cannot be compiled under the rules; a host-header g++ precheck covers plain host-model tests.
+- The per-TU ?A0x hash of an anonymous-namespace helper changes with the compile path (rows/ v repo): one spelling by the 2026-11-20 ruling, but it shows up in a HEAD-v-new symbol diff; expect it.

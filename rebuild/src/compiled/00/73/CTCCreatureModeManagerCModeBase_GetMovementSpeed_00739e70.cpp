@@ -1,17 +1,24 @@
-// CClass_00739e70::vfunc_7(long, long, long) -- returns the float literal 0.0f; the 3 argument(s) are not read
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00739E70, oracle length 9 bytes.
-// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); the batch README records the lane verdict.
-//
-// Retail bytes:  fld dword ptr [0x122dedc] ; ret 0xc
-// Tiny-body shape `GetConstant` synthesised from the instruction pattern (the class comes from the
-// manifest label when it is a plain class name, else the method is landed under a descriptive
-// placeholder); member names are descriptive. 
-struct CClass_00739e70 {
-    float vfunc_7(long, long, long);                    // the literal is pooled in .rdata (@ 0x0122DEDC)
-};
+// CTCCreatureModeManager::CModeBase::GetMovementSpeed(const C3DVector&, const C3DVector&, EMovementType) const -- the base mode does not move: 0.0f
+// Leaf: ?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00739E70, 9 bytes: `fld dword ptr [0x0122DEDC]` (0.0f) ; `ret 0Ch`.
+// NF240 (q12674): the CModeBase vtable slot 7 (0x012673CC; 25 vtable references, no code reference). Was the placeholder
+//   ?vfunc_7@CClass_00739e70@@QAEMJJJ@Z; now the PDB member on engine/CTCCreatureModeManager.h (CMODEBASE_VIRTUALS): Ego_r.pdb
+//   0x0051C5F0 / FableWin.pdb 0x01DD6780 / Ego_d.pdb ?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z,
+//   the spelling the sit-bench vtable 0x01267BFC (row 0x00740040) binds at slot 7.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CTCCreatureModeManager.h"
 
-float CClass_00739e70::vfunc_7(long, long, long)
+float CTCCreatureModeManager::CModeBase::GetMovementSpeed(const C3DVector&, const C3DVector&, EMovementType) const
 {
     return 0.0f;
 }

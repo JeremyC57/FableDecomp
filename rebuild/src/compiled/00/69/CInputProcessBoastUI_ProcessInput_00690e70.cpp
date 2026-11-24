@@ -3,8 +3,8 @@
 // NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
 //   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690E70, length 323 bytes, `ret 8`.
-// Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventButtonHeld @ 0x00687BD0,
-//   IsEventButtonReleased @ 0x00687B30, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
+// Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventButtonReleased @ 0x00687BD0,
+//   IsEventButtonHeld @ 0x00687B30, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
 //   @ 0x0041E5F2 (`__fastcall`, no arguments), the manager's virtual slot 0 (send a UI event), CProcessedInput::SetAsPerformedEvent
 //   @ 0x00A0D390 (manifest "CWomanToAttract::Init" is propagated).
 // Layout: `this` is engine/CInputProcessGameBase.h (engine/CInputProcessBoastUI.h is the same 0x28 bytes flattened);
@@ -57,14 +57,14 @@ void CInputProcessBoastUI::ProcessInput(const CInputEvent& event, CProcessedInpu
             NUISystem::CManager::GetInstance()->SendEvent(7);
         else
             return;
-    } else if (IsEventButtonHeld(event)) {
+    } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1c);
         else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1d);
         else
             return;
-    } else if (IsEventButtonReleased(event)) {
+    } else if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1f);
         else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))

@@ -1,0 +1,90 @@
+##### 0090f9c0 renames: ?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@UAE_NXZ=?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ
+sections head 17 new 17
+ALL_EQ 0
+ONLY_A	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@UAE_NXZ
+funcs SAME=14 vtbl_H=0 vtbl_N=0
+##### 0090fd20 renames: ?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@UAE_NXZ=?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ
+sections head 16 new 16
+ALL_EQ 0
+DIFF	?IsRunnable@CAIStateGroup_MinionSitAtSchool@@UAE_NXZ
+funcs SAME=13 vtbl_H=0 vtbl_N=0
+##### 009104a0 renames: ?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@UAE_NXZ=?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?IsRunnable@CAIStateGroup_MinionSitOnSeat@@UAE_NXZ
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00938f70 renames: ?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@UAE_NXZ=?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ
+sections head 17 new 17
+ALL_EQ 0
+DIFF	?IsRunnable@CAIStateGroup_MinionSitOutside@@UAE_NXZ
+funcs SAME=14 vtbl_H=0 vtbl_N=0
+##### 009f8290 renames: ?GetBankHandle@CBankFile@@QAE?AVCCharString@@XZ=?GetBankHandle@CBankFile@@QBE?AVCCharString@@XZ
+sections head 13 new 13
+ALL_EQ 0
+DIFF	?CloseGraphicBank@CGraphicBankManager@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z
+funcs SAME=11 vtbl_H=0 vtbl_N=0
+##### 00a09dc0 renames: ?GetBankHandle@CBankFile@@QAE?AVCCharString@@XZ=?GetBankHandle@CBankFile@@QBE?AVCCharString@@XZ
+sections head 13 new 13
+ALL_EQ 0
+DIFF	?CloseMeshBank@CMeshBankManager@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z
+funcs SAME=11 vtbl_H=0 vtbl_N=0
+##### 00871e40 renames: ?AddAttractorGoTo@CBase@NCameraModes@@QAEXABVC3DVector@@M@Z=?AddAttractorGoTo@CBase@NCameraModes@@IAEXABVC3DVector@@M@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?SetSACPosition@CStringAndCage@NCameraModes@@UAEXABVC3DVector@@@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00871e60 renames: ?AddAttractorGoTo@CBase@NCameraModes@@QAEXABVC3DVector@@M@Z=?AddAttractorGoTo@CBase@NCameraModes@@IAEXABVC3DVector@@M@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?SetSACPosition@CSACCombat@NCameraModes@@UAEXABVC3DVector@@@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00856b20 renames: ?UpdateFacingDirection@CCombatActionBase@@QAEXXZ=?UpdateFacingDirection@CCombatActionBase@@IAEXXZ
+sections head 12 new 12
+ALL_EQ 0
+ONLY_A	?UpdateFacingDirection@CCombatActionBase@@QAEXXZ
+funcs SAME=4 vtbl_H=0 vtbl_N=0
+##### 00859d80 renames: ?ResetMeleeCombatAbilityEffects@CCombatActionBase@@QAEXXZ=?ResetMeleeCombatAbilityEffects@CCombatActionBase@@IAEXXZ ?UpdateFacingDirection@CCombatActionBase@@QAEXXZ=?UpdateFacingDirection@CCombatActionBase@@IAEXXZ
+sections head 12 new 12
+ALL_EQ 0
+DIFF	?FrameUpdate@CCombatActionBase@@UAEXXZ
+funcs SAME=7 vtbl_H=6 vtbl_N=6
+##### 00858130 renames: ?GetWeaponUsedInStrikeAction@CCombatActionBase@@QAEPAVCThing@@XZ=?GetWeaponUsedInStrikeAction@CCombatActionBase@@QBEPAVCThing@@XZ ?ProcessFramesRunningForOnHitWithParams@?A0x20a17b70@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z=?ProcessFramesRunningForOnHitWithParams@?A0xaac8899b@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z
+sections head 15 new 15
+ALL_EQ 0
+DIFF	?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@QAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+funcs SAME=13 vtbl_H=0 vtbl_N=0
+##### 00858590 renames: ?GetWeaponUsedInStrikeAction@CCombatActionBase@@QAEPAVCThing@@XZ=?GetWeaponUsedInStrikeAction@CCombatActionBase@@QBEPAVCThing@@XZ ?ProcessFramesRunningForOnHitWithParams@?A0x8720b727@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z=?ProcessFramesRunningForOnHitWithParams@?A0x0d4945cc@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z
+sections head 15 new 15
+ALL_EQ 0
+DIFF	?ProcessPossibleShotStrikeEvent@CCombatActionBase@@QAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+funcs SAME=13 vtbl_H=0 vtbl_N=0
+##### 008587b0 renames: ?GetWeaponUsedInStrikeAction@CCombatActionBase@@QAEPAVCThing@@XZ=?GetWeaponUsedInStrikeAction@CCombatActionBase@@QBEPAVCThing@@XZ ?ProcessFramesRunningForOnHitWithParams@?A0xa2697e09@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z=?ProcessFramesRunningForOnHitWithParams@?A0x28008ce2@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z
+sections head 9 new 9
+ALL_EQ 0
+DIFF	?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@QAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+funcs SAME=7 vtbl_H=0 vtbl_N=0
+##### 008597a0 renames: ?GetWeaponUsedInStrikeAction@CCombatActionBase@@QAEPAVCThing@@XZ=?GetWeaponUsedInStrikeAction@CCombatActionBase@@QBEPAVCThing@@XZ
+sections head 21 new 21
+ALL_EQ 0
+DIFF	?ProcessStrikeEvents@CCombatActionBase@@QAEXXZ
+funcs SAME=18 vtbl_H=0 vtbl_N=0
+##### 006ed510 renames: ?UpdateAttackingCombatantsList@CCombatManager@@QAEXAAUCCombatantInfo@@_N@Z=?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z
+sections head 57 new 57
+ALL_EQ 0
+DIFF	?DeregisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+funcs SAME=48 vtbl_H=2 vtbl_N=2
+##### 006edc50 renames: ?UpdateAttackingCombatantsList@CCombatManager@@QAEXAAUCCombatantInfo@@_N@Z=?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z
+sections head 21 new 21
+ALL_EQ 0
+DIFF	?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z
+funcs SAME=17 vtbl_H=0 vtbl_N=0
+##### 00717450 renames: ?Update@CActionOverheadTalkToThing@NTCScriptedControl@@QAEXXZ=?Update@CActionOverheadTalkToThing@NTCScriptedControl@@UAEXXZ ?Update@CActionTalkBase@NTCScriptedControl@@QAEXXZ=?Update@CActionTalkBase@NTCScriptedControl@@UAEXXZ
+sections head 8 new 8
+ALL_EQ 0
+ONLY_A	?Update@CActionOverheadTalkToThing@NTCScriptedControl@@QAEXXZ
+funcs SAME=6 vtbl_H=0 vtbl_N=0
+##### 0052c7e0 renames: ?Update@CChangingStateComponent@NUISystem@@QAEXM@Z=?Update@CChangingStateComponent@NUISystem@@UAEXM@Z ?Update@CComponent@NUISystem@@QAEXM@Z=?Update@CComponent@NUISystem@@UAEXM@Z
+sections head 2 new 2
+ALL_EQ 0
+ONLY_A	?Update@CChangingStateComponent@NUISystem@@QAEXM@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0

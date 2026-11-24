@@ -1,0 +1,8 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	?GetFont@CFontBank@@QAE?AV?$CCountedPointer@$$CBVCFontBank@@@@ABVCCharString@@@Z	009e2c80	00494840	stale: 0x00494840 now binds ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z (that line stays, witness 0x0054F4B0)
+delete	rebuild/oracles/reloc_bindings.tsv	?GetFont@CFontBankSource@NUISystem@@QAE?AV?$CCountedPointer@UCFontBank@NUISystem@@@2@ABVCCharString@@@Z	009e2c80	0054ed90	stale: 0x0054ED90 now binds the CFontManager spelling
+delete	rebuild/oracles/reloc_bindings.tsv	?Instance@CManager@NUISystem@@2PAV12@A	013b8710	0042fb40	stale: 0x0042FB40 now binds ?GPUniqueInstance@CManager@NUISystem@@1PAV12@A
+delete	rebuild/oracles/reloc_bindings.tsv	?g_pUIManagerInstance@NUISystem@@3PAVCManager@1@A	013b8710	0041e5f2	stale: 0x0041E5F2 now binds ?GPUniqueInstance@CManager@NUISystem@@1PAV12@A
+add	rebuild/oracles/reloc_bindings.tsv	?GPUniqueInstance@CManager@NUISystem@@1PAV12@A	013b8710	0041e5f2	new spelling of 0x013B8710 (all three PDBs); also bound by 0x0042FB40 and by 0x0042DB20's Clear copy
+keep	rebuild/oracles/reloc_bindings.tsv	??1CManager@NUISystem@@IAE@XZ	0041e641	0042fb40	0x0042FB40 and now 0x0042DB20 bind it (?Dtor@CManager@@QAEXXZ had no line)
+note	rebuild/oracles/reloc_bindings.tsv	??_GCManager@NUISystem@@IAEPAXI@Z	0042db20	-	no row binds it (Clear expands it), so no witness line; 0x0042FB40's pick-any copy was compared by hand: EQ (work/e2/pk_forms.tsv, link_check_e2.txt). Add an owner line only if the gate needs one

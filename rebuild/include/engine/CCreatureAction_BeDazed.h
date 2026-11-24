@@ -20,6 +20,18 @@ public:
     CCreatureAction_BeDazed(CThingCreatureBase& creature);               // 0x00865A00
     virtual void PerformAction();                                        // FableWin.pdb ?PerformAction@CCreatureAction_BeDazed@@UAEXXZ
     virtual CCreatureActionBase* Clone() const;                          // Ego_r.pdb / FableWin.pdb ?Clone@CCreatureAction_BeDazed@@UBEPAVCCreatureActionBase@@XZ
+#ifdef FABLE_RETAIL_CCREATUREACTION_BEDAZED_RTTI_DECLS
+    // NF323 add-only (2026-11-24, NF320 Q1): the retail overrides the Clone TU's vftable needs. Declarations only; each overrides
+    // the CCreatureActionBase virtual at the same slot (no new slot). Retail vftable 0x01276F54, RTTI-port label + FableWin.pdb:
+    // slot 6 = 0x00865A90 ?GetAnimDelayTime@CCreatureAction_BeDazed@@UBEJXZ;
+    // slot 8 = 0x00865A80 ?GetAnimationTransitionInTime@CCreatureAction_BeDazed@@UBEJXZ;
+    // slot 12 = 0x008ED850 ?Initialise@CCreatureAction_BeDazed@@UAEXXZ (also Ego_r.pdb).
+public:
+    virtual long GetAnimDelayTime() const;
+    virtual long GetAnimationTransitionInTime() const;
+    virtual void Initialise();
+public:
+#endif
 };
 #else
 #pragma pack(push, 1)

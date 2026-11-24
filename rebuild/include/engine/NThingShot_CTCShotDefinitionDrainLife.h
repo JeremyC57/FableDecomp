@@ -8,6 +8,10 @@
 namespace NThingShot {
 class CTCShotDefinitionDrainLife : public CTCShotDefinitionBase {
 protected:
+#ifdef FABLE_RETAIL_SHOT_UPDATEMOVEMENT_PASS26
+    // Both original PDBs protected virtual MAE; native caller's virtual slot.
+    virtual void UpdateMovement();
+#endif
     virtual void InitMovement();                                         // 0x007BD845
 private:
     float MaxCosAngleToTurn;                                             // +0x9c
@@ -16,6 +20,6 @@ private:
     float Speed;                                                         // +0xa8
     CIntelligentPointer<CThing> PSoulEffect;                             // +0xac
 };
-FABLE_STATIC_ASSERT(sizeof(CTCShotDefinitionDrainLife)==0xb4);
+FABLE_STATIC_ASSERT_AT(19, sizeof(CTCShotDefinitionDrainLife)==0xb4);
 }
 #endif

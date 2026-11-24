@@ -1,0 +1,26 @@
+address	symbol	called_by	object_bytes	catalog_bytes	masked_extent_equal_or_prefix_if_extent_unknown
+00405ba0	?__copy_trivial@std@@YIPAXPBX0PAX@Z	00485b6c	30	30	True
+00405bc0	?__copy_trivial_backward@std@@YIPAXPBX0PAX@Z	00485f3a	26	26	True
+0047ce40	?fill@std@@YIXPAE0ABE@Z	00485b6c	46	46	True
+00485b6c	?_M_insert_overflow@?$vector@EV?$allocator@E@std@@@std@@IAEXPAEABEABU__true_type@2@I_N@Z	primary leaf	132	132	True
+00485f3a	?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z	primary leaf	174	174	True
+00a51be0	??$__uninitialized_copy@PAVCQuaternion@@PAV1@@std@@YIPAVCQuaternion@@PAV1@00ABU__false_type@0@@Z	00a55190	62	62	True
+00a51c20	??$__uninitialized_fill_n@PAVCQuaternion@@IV1@@std@@YIPAVCQuaternion@@PAV1@IABV1@ABU__false_type@0@@Z	00a55190	58	58	True
+00a51c60	??$__uninitialized_copy@PAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@00ABU__false_type@0@@Z	00a552b0	52	52	True
+00a51fa0	??$__uninitialized_copy@PBVCQuaternion@@PAV1@@std@@YIPAVCQuaternion@@PBV1@0PAV1@ABU__false_type@0@@Z	00a54bb0	62	62	True
+00a51fe0	??$fill@PAVCQuaternion@@V1@@std@@YIXPAVCQuaternion@@0ABV1@@Z	00a55190	55	55	True
+00a52040	??$__uninitialized_copy@PBVC3DVectorWord@C3DAnimationSequenceData@@PAV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PBV12@0PAV12@ABU__false_type@0@@Z	00a54cb0	52	52	True
+00a52080	??$fill@PAVC3DVectorWord@C3DAnimationSequenceData@@V12@@std@@YIXPAVC3DVectorWord@C3DAnimationSequenceData@@0ABV12@@Z	00a552b0	45	45	True
+00a520b0	??$uninitialized_fill_n@PAVC3DVectorWord@C3DAnimationSequenceData@@IV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@IABV12@@Z	00a552b0	48	48	True
+00a52210	??$__copy_backward@PAVCQuaternion@@PAV1@H@std@@YIPAVCQuaternion@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	00a55190	68	68	True
+00a52260	??$__copy@PBVC3DVectorWord@C3DAnimationSequenceData@@PAV12@H@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z	00a54cb0	70	70	True
+00a522b0	??$__copy_backward@PAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@H@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z	00a552b0	71	71	True
+00a535f0	??$__copy_ptrs@PBVCQuaternion@@PAV1@@std@@YIPAVCQuaternion@@PBV1@0PAV1@ABU__false_type@0@@Z	00a54bb0	57	57	True
+00a53650	??$_M_allocate_and_copy@PBVC3DVectorWord@C3DAnimationSequenceData@@@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@IAEPAVC3DVectorWord@C3DAnimationSequenceData@@IPBV23@0@Z	00a54cb0	83	83	True
+00a54580	??0?$vector@VC3DKeyframe@@V?$allocator@VC3DKeyframe@@@std@@@std@@QAE@I@Z	primary leaf	117	117	True
+00a54bb0	??4?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEAAV01@ABV01@@Z	primary leaf	253	253	True
+00a54cb0	??4?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEAAV01@ABV01@@Z	primary leaf	268	268	True
+00a54fa0	?_M_insert_overflow@?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@IAEXPAVCQuaternion@@ABV3@ABU__false_type@2@I_N@Z	00a55190	207	207	True
+00a55070	?_M_insert_overflow@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@IAEXPAVC3DVectorWord@C3DAnimationSequenceData@@ABV34@ABU__false_type@2@I_N@Z	primary leaf	279	279	True
+00a55190	?_M_fill_insert@?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEXPAVCQuaternion@@IABV3@@Z	primary leaf	285	285	True
+00a552b0	?_M_fill_insert@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEXPAVC3DVectorWord@C3DAnimationSequenceData@@IABV34@@Z	primary leaf	299	299	True

@@ -9,6 +9,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_GHOST_SWORD_ADD_PASS27
+#include "engine/CParentDefClassBase.h"
+class CSpecialAbilitiesGhostSwordDef : public CParentDefClassBase {
+public:
+    float TimeOfSummon[4];                                               // +0x3c
+    float FadeInTime;
+    float FadeOutTime;
+    float CreationDistance;
+};
+FABLE_STATIC_ASSERT_AT(21, sizeof(CSpecialAbilitiesGhostSwordDef) == 0x58);
+#else
 #pragma pack(push, 1)
 class CSpecialAbilitiesGhostSwordDef {
 public:
@@ -31,11 +42,13 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSpecialAbilitiesGhostSwordDef) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesGhostSwordDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesGhostSwordDef, TimeOfSummon) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesGhostSwordDef, FadeInTime) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesGhostSwordDef, FadeOutTime) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesGhostSwordDef, CreationDistance) == 0x54);
+FABLE_STATIC_ASSERT_AT(34, sizeof(CSpecialAbilitiesGhostSwordDef) == 0x58);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CSpecialAbilitiesGhostSwordDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CSpecialAbilitiesGhostSwordDef, TimeOfSummon) == 0x3c);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CSpecialAbilitiesGhostSwordDef, FadeInTime) == 0x4c);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CSpecialAbilitiesGhostSwordDef, FadeOutTime) == 0x50);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CSpecialAbilitiesGhostSwordDef, CreationDistance) == 0x54);
+
+#endif
 
 #endif // FABLE_ENGINE_CSPECIALABILITIESGHOSTSWORDDEF_H

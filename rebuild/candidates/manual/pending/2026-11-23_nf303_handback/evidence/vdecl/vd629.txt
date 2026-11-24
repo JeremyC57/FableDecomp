@@ -1,0 +1,1 @@
+00731e20 - CTCSpotLight_OnCreate_00731e20.cpp | L33:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CSpotLightDef>* out) const;

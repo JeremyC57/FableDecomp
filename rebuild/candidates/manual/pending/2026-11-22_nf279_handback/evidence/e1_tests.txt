@@ -1,0 +1,34 @@
+### HEAD 0x00BFD480 test alone (landed host model)
+CL rc 0
+t.cpp
+LINK rc 0
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+RUN rc 0
+00bfd480_TEST PASS
+
+PATTERN PASS
+### new 0x00BFD480 test alone (expect link failure on the row's leaf)
+CL rc 0
+t.cpp
+LINK rc 96
+t.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch(void)" (??1CEngineWaterBackgroundSubPatch@@UAE@XZ) referenced in function "int __cdecl RunDestructor(bool,void * *)" (?RunDestructor@@YAH_NPAPAX@Z)
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF279\work\tst_wlp17kjj\t.exe : fatal error LNK1120: 1 unresolved externals
+### new 0x00BFD480 test + row object
+CL rc 0
+t.cpp
+LINK rc 0
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+RUN rc 0
+00bfd480_TEST PASS
+
+PATTERN PASS
+### new 0x00BFD480 test + fold 0x00BFDC90 object
+CL rc 0
+t.cpp
+LINK rc 0
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+RUN rc 0
+00bfd480_TEST PASS
+
+PATTERN PASS
+E1DDONE

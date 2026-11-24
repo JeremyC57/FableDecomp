@@ -8,6 +8,9 @@
 class CFontBank;class CTexture;
 class CEngineSubPrimitiveText:public CEngineSubPrimitiveBase {
 public:
+#ifdef FABLE_RETAIL_PROJECT_TEXT_PASS27
+    CEngineSubPrimitiveText(class CEngineInternalPrimitiveText* parent);
+#endif
     C3DVector Pos;
     float Scale;
     CRGBColour Colour;
@@ -15,5 +18,5 @@ public:
     const CFontBank* Font;
     const CTexture* Mask;
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveText)==56);
+FABLE_STATIC_ASSERT_AT(18, sizeof(CEngineSubPrimitiveText)==56);
 #endif

@@ -1,0 +1,9 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1: no self renames (no row's own leaf changes)
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00b81bc0	??0CPerlinNoise@@QAE@K@Z	??0CPerlinNoise@NFractal@@QAE@K@Z	0x00f36be0
+0x00dc21f0	?PopulateLevel@CQ_BanditRaidScript@@QAE_NXZ	?PopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAE_NXZ	0x00dc0300
+0x006778a0	?CreateFromType@@YIPAVCReactionFrequencyTraits@@W4EReactionFrequencyType@@@Z	?CreateFromType@CReactionFrequencyTraits@@SIPAV1@W4EReactionFrequencyType@@@Z	0x006ff930
+0x006b84b0	??0CScreenEffectPriorityStack@@QAE@XZ	??0CScreenEffectPriorityStack@NScreenEffect@@QAE@XZ	0x00881370
+0x00717c50	?GetMessageFromTextIndex@@YI?AVCSubtitledMessage@@KPBD@Z	?GetMessageFromTextIndex@CSubtitledMessage@@SI?AV1@KPBD@Z	0x004cea60
+0x0092bcb0	?GetPosition@CTCAvoidRegionExitView@@QAE?AVC3DVector@@XZ	?GetPosition@CTCAvoidRegionExit@@QAE?AVC3DVector@@XZ	0x0092bd80

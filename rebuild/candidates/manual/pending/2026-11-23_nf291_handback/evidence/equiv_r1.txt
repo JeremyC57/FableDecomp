@@ -1,0 +1,15 @@
+# equiv_check engine/CTCQuestCard.h (repo tree v symlink farm work/eqtree_r1 = repo + NF291 overlay; S=$A/pE)
+# addr-file (tools/incl.py engine/CTCQuestCard.h): its landed includers plus every row including a relative source path: 1407 rows
+differing: 0
+# control (work/ctlhdr: a member typedef planted in the flat class just above the new opt-in, outside it), same rows: differing 10:
+004d2e61	src	DIFF		rebuild/src/compiled/00/4d/CTCQuestCard_StatGetClassTypeName_004d2e61.cpp
+007022c0	src	DIFF		rebuild/src/compiled/00/70/CTCQuestCard_IsOptional_007022c0.cpp
+007022f0	src	DIFF		rebuild/src/compiled/00/70/CTCQuestCard_IsRouteToAppearOnMinimap_007022f0.cpp
+007022f0	test	DIFF		rebuild/tests/00/70/CTCQuestCard_IsRouteToAppearOnMinimap_007022f0_test.cpp
+004b0e50	src	DIFF		rebuild/src/compiled/00/4b/CQuestManager_SetQuestCardGoldReward_004b0e50.cpp
+004b0eb0	src	DIFF		rebuild/src/compiled/00/4b/CQuestManager_SetQuestCardRenownReward_004b0eb0.cpp
+00702560	src	DIFF		rebuild/src/compiled/00/70/CTCQuestCard_SetRegionName_00702560.cpp
+00896a30	src	DIFF		rebuild/src/compiled/00/89/CGameScriptInterfaceMethods_SetQuestCardObjective_00896a30.cpp
+005be3b1	src	DIFF		rebuild/src/compiled/00/5b/NInventoryCTCInventoryBase_GetPrerequisitesString_005be3b1.cpp
+004b0b90	src	DIFF		rebuild/src/compiled/00/4b/CQuestManager_RemoveActiveQuestCardAndMakeAvailableAgain_004b0b90.cpp
+# FABLE_STATIC_ASSERT lines in the header that are not FABLE_STATIC_ASSERT_AT: 0 (pin_asserts has nothing to pin)

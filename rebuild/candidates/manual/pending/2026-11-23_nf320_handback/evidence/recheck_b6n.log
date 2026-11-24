@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a66ad0   MATCH            PASS   GetKeyName
+
+WINS: 1
+  00a66ad0 MATCH CKeyboard::?GetKeyName@CKeyboard@@UBE_NW4EInputKey@@AAVCWideString@@@Z

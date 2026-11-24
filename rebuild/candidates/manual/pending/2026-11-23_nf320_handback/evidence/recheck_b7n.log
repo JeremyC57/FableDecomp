@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0084c6c0   RELOCATION_MATCH PASS   Clone
+
+WINS: 1
+  0084c6c0 RELOCATION_MATCH CCreatureAction_DropGenericBox::?Clone@CCreatureAction_DropGenericBox@@UBEPAVCCreatureActionBase@@XZ

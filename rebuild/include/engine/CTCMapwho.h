@@ -45,6 +45,12 @@ public:
     void PlaceInMapwho(const C3DVector&);                                // 0x0071A710
     void RemoveFromMapwho();                                             // 0x0071A730
     void MoveInMapwho(const C3DVector&);                                 // 0x0071A750
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_PLACE_PASS27
+    NThingMap::CMapwhoNode& GetTLNode() { return TLNode; }
+    NThingMap::CMapwhoNode& GetTRNode() { return TRNode; }
+    NThingMap::CMapwhoNode& GetBLNode() { return BLNode; }
+    NThingMap::CMapwhoNode& GetBRNode() { return BRNode; }
+#endif
     bool IsInMap() const { return InMapwho; }
 #ifdef FABLE_RETAIL_CTCMAPWHO_SETINMAP
     // Nested opt-in (w24B, row 0x007DDA30 CTCCreatureFlyInCircles::QueueSwoop): FableWin.pdb ?SetInMap@CTCMapwho@@QAEX_N@Z, inline in

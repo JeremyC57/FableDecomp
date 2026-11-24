@@ -1,5 +1,5 @@
 // CAIStateGroup_Clean::OnActivate() -- once: starting at the building physics' bounding centre, step down by a constant while the point stays inside the building and keep the last inside height
-// Leaf: OnActivate@CAIStateGroup_Clean
+// Leaf: ?OnActivate@CAIStateGroup_Clean@@MAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00917520, length 185 bytes (+ int3 padding).
 // Callees: own virtual slot 14 (+0x38, the building; called again for every use), CTCPhysicsBase::GetBoundingInfo
@@ -54,7 +54,10 @@ struct CAIStateGroup_Clean
     virtual void v10();
     virtual bool IsRunnable();                      // slot 11 (+0x2c)
     virtual void v12();
-    virtual void OnActivate();                      // slot 13 (+0x34)
+    protected:
+    virtual void OnActivate();
+    public:
+                      // slot 13 (+0x34)
     virtual CThingBuilding* GetBuilding();          // slot 14 (+0x38)
     unsigned char _pad04[0x20 - 0x04];
     float FloorHeight;                              // +0x20

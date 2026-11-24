@@ -1,0 +1,7 @@
+N 006412b0 CTCLight::SetActive RELOCATION_MATCH flags= [] leaf=?SetActive@CTCLight@@QAEX_N@Z
+N 00ed99d0 NScript::CV_TalentlessBardScript::CTB_Bard::GetRandomSpeech RELOCATION_MATCH flags= [] leaf=GetRandomSpeech
+N 00581cfd CTCInventory::GetContextSensitiveItemGraphicIndex RELOCATION_MATCH flags= [] leaf=
+N 00581fa4 CTCInventory::GetQuickAccessItemGraphicIndex RELOCATION_MATCH flags= [] leaf=
+N 005bcd2d NInventory::CTCInventoryBase::ResetInventoryAnim RELOCATION_MATCH flags= [] leaf=?ResetInventoryAnim@CTCInventoryBase@NInventory@@QAEXJ@Z
+N 00581d8e CTCInventory::IsContextSensitiveOpinionExpressionAvailable RELOCATION_MATCH flags= [] leaf=
+GR_DONE

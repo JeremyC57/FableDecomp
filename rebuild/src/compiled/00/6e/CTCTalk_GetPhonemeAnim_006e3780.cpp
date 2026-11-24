@@ -1,3 +1,4 @@
+// Leaf: ?GetPhonemeAnim@CTCTalk@@ABEKABVCCharString@@@Z
 // CTCTalk::GetPhonemeAnim(const CCharString& phoneme) const -- the animation index the talk definition maps a phoneme name to (0 when the phoneme is not in the map)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E3780, length 77 bytes (+ int3 padding).
 // Callees: CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>&) @ 0x00485815 (manifest template argument
@@ -79,7 +80,9 @@ class CThing { public:
 class CTCTalk { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
+    private:
     unsigned long GetPhonemeAnim(const CCharString& phoneme) const;
+    public:
 };
 
 unsigned long CTCTalk::GetPhonemeAnim(const CCharString& phoneme) const

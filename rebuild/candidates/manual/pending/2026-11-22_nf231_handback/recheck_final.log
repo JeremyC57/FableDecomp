@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00430340   MATCH            PASS   SetQuit
+0042ebb6   WARN RELOC_NAME: ?Set@CStartupDefinitionManager@@SIXPAV1@@Z -> 004336b0 labelled 'CEngineSubPrimitiveBase::operator_new'
+0042ebb6   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0042ebb6   WARN RELOC_NAME: ?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@0@Z -> 00411b00 labelled 'vector_push_back_copy'
+0042ebb6   RELOCATION_MATCH PASS   Shutdown
+0041d0a8   WARN SHARED_HEADER_AVAILABLE CASoundBank (engine/CASoundBank.h)
+0041d0a8   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041d0a8   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0041d0a8   RELOCATION_MATCH PASS   PlaySoundW
+
+WINS: 3
+  00430340 MATCH CNewFrontendGameComponent::?SetQuit@CNewFrontendGameComponent@@UAEXXZ
+  0042ebb6 RELOCATION_MATCH CNewFrontendGameComponent::?Shutdown@CNewFrontendGameComponent@@AAEXXZ
+  0041d0a8 RELOCATION_MATCH NUISystem::CManager::?PlaySoundW@CManager@NUISystem@@UAEXAAVCCharString@@J@Z

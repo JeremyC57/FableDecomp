@@ -58,12 +58,14 @@ template <class T> class CArray { public:                                     //
 class CParticleSimulation { public:
     unsigned char _body[0x80];
     void WriteToFile(CDataOutputStream& stream);                       // 0x00AE2050
+    friend class CParticleProgram;   // as engine/CParticleSimulation.h (the real class befriends it)
+protected: static void __fastcall WriteVectorArray(const C4DVector* vectors, unsigned long count, CDataOutputStream& stream);   // 0x00AE18C0
 };
 struct CExportParticle {                                               // CVectorMap<CCharString, unsigned long> entry
     CCharString   first;
     unsigned long second;
 };
-void __fastcall WriteVectors_00ae18c0(const C4DVector* vectors, unsigned long count, CDataOutputStream& stream);   // 0x00AE18C0
+// WriteVectorArray 0x00AE18C0: the protected static CParticleSimulation member, declared in the class above (Ego_r + FableWin KIX)
 void __fastcall WriteGroups(CDataOutputStream& stream, const CArray<C3DGroup2>* groups);                            // 0x00AE0680
 
 class CParticleProgram {
@@ -115,7 +117,7 @@ void CParticleProgram::WriteToFile(CDataOutputStream& stream)
         stream.Write(data, array->size() * sizeof(C3DClothRenderVertex));
     }
     stream.WriteULONG(NonSimCount);
-    WriteVectors_00ae18c0(NonSimPositions, NonSimCount, stream);
+    CParticleSimulation::WriteVectorArray(NonSimPositions, NonSimCount, stream);
     stream.WriteULONG(IndexedTextureCoords.size());
     {
         const void* data = IndexedTextureCoords.GetData();

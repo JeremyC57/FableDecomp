@@ -1,5 +1,5 @@
 // CConsoleCommandBase::GetHelp() -- "command with no parameters" / "command with N parameter[s]: <type> <type> ..."
-// Leaf: ?GetHelp@CConsoleCommandBase
+// Leaf: ?GetHelp@CConsoleCommandBase@@MAE?AVCCharString@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EA7D0, 313 bytes, `?GetHelp@CConsoleCommandBase@@MAE?AVCCharString@@XZ`.
 // Callees: virtual slot 3 (+0xc) GetTypeAsString() const (0x00414F70, returns "command" by value; vtable 0x0122E638:
 //   0 deleting dtor, 1 ProcessCommandLine, 2 GetFormattedName, 3 GetTypeAsString, 4 GetHelp), operator+(const CCharString&, const char*) 0x0099F600
@@ -42,7 +42,9 @@ struct CConsoleCommandBase {
     unsigned char m_field4;                                      // +0x04
     unsigned char _pad05[3];
     CConsoleCommandParameters ParamTypes;                        // +0x08
-    CCharString GetHelp();
+    protected:
+    virtual CCharString GetHelp();
+    public:
 };
 
 CCharString CConsoleCommandBase::GetHelp()

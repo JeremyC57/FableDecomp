@@ -8,6 +8,20 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CCREATUREACTION_PLAYANIMATIONFROMINDEX_VIRTUAL_MODEL
+// NF323 (2026-11-24, NF320 Q1 / NF322 recipe): the polymorphic retail class for the Clone TU, RTTI .?AVCCreatureAction_PlayAnimationFromIndex@@ : CCreatureActionBase
+// (rtti_bases.tsv), no own members (retail sizeof 0xA8: the Clone allocates 0xa8 and copies only the base). Declarations only. Each
+// virtual overrides the CCreatureActionBase virtual at the same slot of retail vftable 0x0127507C (RTTI-port label + the PDB name sets):
+//   slot 3 = 0x0084B490 ?PerformAction@CCreatureAction_PlayAnimationFromIndex@@UAEXXZ (FableWin.pdb)
+//   slot 11 = 0x0084C460 ?Clone@CCreatureAction_PlayAnimationFromIndex@@UBEPAVCCreatureActionBase@@XZ (FableWin.pdb, Ego_r.pdb)
+#include "engine/CCreatureActionBase.h"
+class CCreatureAction_PlayAnimationFromIndex : public CCreatureActionBase {
+public:
+    virtual void PerformAction();
+    virtual CCreatureActionBase * Clone() const;
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayAnimationFromIndex) == 0xa8);
+#else
 
 #pragma pack(push, 1)
 class CCreatureAction_PlayAnimationFromIndex {
@@ -18,7 +32,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayAnimationFromIndex) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayAnimationFromIndex, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(21, sizeof(CCreatureAction_PlayAnimationFromIndex) == 0xa8);
+FABLE_STATIC_ASSERT_AT(22, offsetof(CCreatureAction_PlayAnimationFromIndex, __vftable) == 0x0);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_PLAYANIMATIONFROMINDEX_VIRTUAL_MODEL
 #endif // FABLE_ENGINE_CCREATUREACTION_PLAYANIMATIONFROMINDEX_H

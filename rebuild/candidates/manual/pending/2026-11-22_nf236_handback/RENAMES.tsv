@@ -1,0 +1,65 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x004065D0	CUserProfileManager	GetDefaultProfileName	?GetDefaultProfileName@CUserProfileManager@@QBE?AVCWideString@@XZ	CUserProfileManager::GetAutoSaveFileName	?GetAutoSaveFileName@CUserProfileManager@@QAE?AVCWideString@@XZ	Ego_r.pdb 0x00405230 / FableWin.pdb 0x0187B2C0 (public const); Ego_r order GetDefaultProfileName 0x00405230, GetManualSaveBaseFileName 0x00405250 = retail 0x004065D0, 0x004065F0 (+0x20 both); the body pushes L"Default" (0x0122DE80); both binders 0x00496070 / 0x004962C0 bind this spelling. GetAutoSaveFileName is retail 0x00406690 (L"AutoSave"; Ego_r 0x004052E0; landed row + table line). Files: CUserProfileManager_GetAutoSaveFileName_004065d0{,_test}.cpp -> CUserProfileManager_GetDefaultProfileName_004065d0{,_test}.cpp; functions.tsv / catalog name likewise
+0x00406690	CUserProfileManager	GetAutoSaveFileName	?GetAutoSaveFileName@CUserProfileManager@@QBE?AVCWideString@@XZ	CUserProfileManager::GetAutoSaveFileName	?GetAutoSaveFileName@CUserProfileManager@@QAE?AVCWideString@@XZ	Ego_r.pdb 0x004052E0 / FableWin.pdb 0x0187B9B0 (public const); L"AutoSave" body; every landed caller binds QBE (table witness 0x004A0AE0). Leaf-only (name unchanged)
+0x007267C0	CTCPhysicsNavigator	GetPossibleCollidedWithAreaWithImpulse	?GetPossibleCollidedWithAreaWithImpulse@CTCPhysicsNavigator@@ABE?AVC2DBoxI@@ABVC3DVector@@@Z	CTCPhysicsNavigator::GetPossibleCollidedWithAreaWithImpulse	?GetPossibleCollidedWithAreaWithImpulse@CTCPhysicsNavigator@@QBE?AVC2DBoxI@@ABVC3DVector@@@Z	Ego_r + FableWin (private const); leaf-only
+0x005E9F30	CTCTavernGame	ClearBetAndMoney	?ClearBetAndMoney@CTCTavernGame@@IAEXXZ	CTCTavernGame::ClearBetAndMoney	?ClearBetAndMoney@CTCTavernGame@@QAEXXZ	Ego_r + FableWin (protected); leaf-only
+0x005EC5C0	CTCTavernGame	ClearBox	?ClearBox@CTCTavernGame@@IAEXXZ	CTCTavernGame::ClearBox	?ClearBox@CTCTavernGame@@QAEXXZ	Ego_r + FableWin (protected); leaf-only
+0x006A4D60	CThingPhysical	ValidateInitialisation	?ValidateInitialisation@CThingPhysical@@IAE_NXZ	CThingPhysical::ValidateInitialisation	?ValidateInitialisation@CThingPhysical@@QAE_NXZ	Ego_r + FableWin (protected); leaf-only
+0x0080F190	CTCNymph	IsDecentAttackRange	?IsDecentAttackRange@CTCNymph@@QBE_NABVC3DVector@@@Z	CTCNymph::IsDecentAttackRange	?IsDecentAttackRange@CTCNymph@@QAE_NABVC3DVector@@@Z	Ego_r + FableWin (public const); the body only reads; leaf-only
+0x00665F90	CThingCreatureBase	PlayCreatureContinuousSounds	?PlayCreatureContinuousSounds@CThingCreatureBase@@IAEXXZ	CThingCreatureBase::PlayCreatureContinuousSounds	?PlayCreatureContinuousSounds@CThingCreatureBase@@QAEXXZ	Ego_r + FableWin (protected); leaf-only
+# Section 2: caller respellings (caller row, old symbol, new symbol, callee address)
+0x004189C2	?g_pLastComponent@@3PAVCGameComponent@@A	?GOldGameComponentToDelete@@3PAVCGameComponent@@A	0x013B7D58
+0x00412F90	?g_pRetiredGameComponent@@3PAVCGameComponent@@A	?GOldGameComponentToDelete@@3PAVCGameComponent@@A	0x013B7D58
+0x0042EC7C	?g_pRetiredGameComponent@@3PAVCGameComponent@@A	?GOldGameComponentToDelete@@3PAVCGameComponent@@A	0x013B7D58
+0x0068C760	?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687BD0
+0x0068C7F0	?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687BD0
+0x0068CAC0	?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687BD0
+0x0068F180	?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687BD0
+0x00690030	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x00690030	?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687BD0
+0x00690390	?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687BD0
+0x00690D30	?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687BD0
+0x00689C40	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x0068C6E0	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x0068D890	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x0068E2C0	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x0068E8F0	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x0068EA60	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x0068ECA0	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x006909A0	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x00690C70	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x00691470	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x006A4040	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90
+0x004138D0	?g_CommandLineQ@@3JA	?GStaticMapQuality@@3JA	0x01375490
+0x004138D0	?g_bBuildRetailStaticMaps@@3_NA	?GBuildRetailStaticMaps@@3_NA	0x013B864A
+0x00413C50	?g_WADBuildEnabled@@3_NA	?GAllowDataGeneration@@3_NA	0x01375459
+0x00413C50	?g_DefaultEngineMemoryInit@@3VCEngineMemoryInit@@A	?GEngineMemoryInit@@3VCEngineMemoryInit@@A	0x0137549C
+0x0042E204	?g_WADBuildEnabled@@3_NA	?GAllowDataGeneration@@3_NA	0x01375459
+0x0042E204	?g_DefaultEngineMemoryInit@@3VCEngineMemoryInit@@A	?GEngineMemoryInit@@3VCEngineMemoryInit@@A	0x0137549C
+0x00498490	?g_WADBuildEnabled@@3_NA	?GAllowDataGeneration@@3_NA	0x01375459
+0x00502170	?g_WADBuildEnabled@@3_NA	?GAllowDataGeneration@@3_NA	0x01375459
+0x00507C30	?g_WADBuildEnabled@@3_NA	?GAllowDataGeneration@@3_NA	0x01375459
+0x0042DF9E	?PRenderManager@@3PAVCRenderManager@@A	?GPRenderManager@@3PAVCRenderManager@@A	0x013B8384
+0x0042EC7C	?PRenderManager@@3PAVCRenderManager@@A	?GPRenderManager@@3PAVCRenderManager@@A	0x013B8384
+0x00435530	?PRenderManager@@3PAVCRenderManager@@A	?GPRenderManager@@3PAVCRenderManager@@A	0x013B8384
+0x00487570	?PRenderManager@@3PAVCRenderManager@@A	?GPRenderManager@@3PAVCRenderManager@@A	0x013B8384
+0x00494900	?PRenderManager@@3PAVCRenderManager@@A	?GPRenderManager@@3PAVCRenderManager@@A	0x013B8384
+0x0061AD60	?PRenderManager@@3PAVCRenderManager@@A	?GPRenderManager@@3PAVCRenderManager@@A	0x013B8384
+0x00880730	?g_flipMeshCollideNormals_013b86ec@@3_NA	?GJossTestPhysics@NGlobalConsole@@3_NA	0x013B86EC
+0x008337B0	?PlayCreatureContinuousSounds@CThingCreatureBase@@QAEXXZ	?PlayCreatureContinuousSounds@CThingCreatureBase@@IAEXXZ	0x00665F90
+0x006626E0	?GetPositionMatrix@CTCGraphicAppearance@NGraphicAppearance@@QAE?AVCMatrix3x4@@M@Z	?GetPositionMatrix@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVCMatrix3x4@@M@Z	0x004BC800
+0x00637F40	?GetThingLayerCellPositions@CThingMapManager@NThingMap@@QBEXMABVC2DVector@@JAAVCMapCellPosInfoGroup@2@@Z	?GetThingLayerCellPositions@CThingMapManager@NThingMap@@IBEXMABVC2DVector@@JAAVCMapCellPosInfoGroup@2@@Z	0x00637E70
+0x00726BE0	?GetPossibleCollidedWithAreaWithImpulse@CTCPhysicsNavigator@@QBE?AVC2DBoxI@@ABVC3DVector@@@Z	?GetPossibleCollidedWithAreaWithImpulse@CTCPhysicsNavigator@@ABE?AVC2DBoxI@@ABVC3DVector@@@Z	0x007267C0
+0x005EC650	?ClearBetAndMoney@CTCTavernGame@@QAEXXZ	?ClearBetAndMoney@CTCTavernGame@@IAEXXZ	0x005E9F30
+0x005EC650	?ClearBox@CTCTavernGame@@QAEXXZ	?ClearBox@CTCTavernGame@@IAEXXZ	0x005EC5C0
+0x0080FAD0	?IsDecentAttackRange@CTCNymph@@QAE_NABVC3DVector@@@Z	?IsDecentAttackRange@CTCNymph@@QBE_NABVC3DVector@@@Z	0x0080F190
+0x009CE8D0	?WriteFileInformation@CBankFile@@QAEX_N@Z	?WriteFileInformation@CBankFile@@AAEX_N@Z	0x009CE370
+0x007032F0	?ValidateInitialisation@CThingPhysical@@QAE_NXZ	?ValidateInitialisation@CThingPhysical@@IAE_NXZ	0x006A4D60
+0x004A3740	?g_bQuestFinishScreensEnabled@@3_NA	?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA	0x01375741
+0x0061AC60	?g_bQuestFinishScreensEnabled@@3_NA	?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA	0x01375741
+0x004AF290	?g_questScreenFlag@@3EA	?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA	0x01375741
+0x00892F80	?g_someFlag@@3DA	?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA	0x01375741
+0x00892FD0	?g_someFlag@@3DA	?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA	0x01375741
+0x006881D0	?IsSpellModeForced@CGamePlayerInterface@@QBE_NXZ	?IsToggleSpells@CGamePlayerInterface@@QBE_NXZ	0x00445B90
+0x006881D0	?IsExpressionShiftModeForced@CGamePlayerInterface@@QBE_NXZ	?IsToggleExpressionShift@CGamePlayerInterface@@QBE_NXZ	0x00445BB0
+0x00637A10	?IsMapwhoExempt@CThing@@QBE_NXZ	?IsLocal@CThing@@QBE_NXZ	0x004C7E30

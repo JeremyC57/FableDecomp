@@ -52,7 +52,7 @@ class CWorld { public:
     bool MiniMapActive;                            // +0xde
     unsigned char _pad2[0x104 - 0xdf];
     long RegionLoadStage;                          // +0x104
-    bool IsDisplayingMiniMapOnRegionLoad();        // 0x0049E9F0
+    bool IsDisplayingMiniMapOnRegionLoad() const;        // 0x0049E9F0
     bool IsRegionLoadShowingMiniMap();             // 0x0048DB13 (label unverified)
 };
 

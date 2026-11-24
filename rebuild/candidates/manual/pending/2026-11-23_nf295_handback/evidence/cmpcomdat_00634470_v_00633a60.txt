@@ -1,0 +1,4 @@
+??C?$scoped_ptr@VCInputProcessCameraLookAround@@@boost@@QBEPAVCInputProcessCameraLookAround@@XZ bytes_equal=True relocs_equal=True sizes=3/3
+??C?$scoped_ptr@VCInputProcessControlCreatureRightStick@@@boost@@QBEPAVCInputProcessControlCreatureRightStick@ bytes_equal=True relocs_equal=True sizes=3/3
+??C?$scoped_ptr@VCInputProcessCycleSpecialCameraModes@@@boost@@QBEPAVCInputProcessCycleSpecialCameraModes@@XZ bytes_equal=True relocs_equal=True sizes=3/3
+??C?$scoped_ptr@VCInputProcessDebugControls@@@boost@@QBEPAVCInputProcessDebugControls@@XZ bytes_equal=True relocs_equal=True sizes=3/3

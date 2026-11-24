@@ -1,47 +1,16 @@
-// NUISystem::CManager::SetRightStickForce(C2DVector&) -- store the right-stick force vector
-// Retail 0x0042D592, 24 bytes (vtable 0x01230134 slot 38; header inline). Name: Ego_r.pdb ?SetRightStickForce@CManager@NUISystem@@UAEXAAVC2DVector@@@Z.
+// NUISystem::CManager::SetRightStickForce(C2DVector&) -- store the right-stick force vector (RightStickForce +0x94)
+// Leaf: ?SetRightStickForce@CManager@NUISystem@@UAEXAAVC2DVector@@@Z
+// Retail 0x0042D592, 24 bytes (vtable 0x01230134 slot 38, its only reference, .rdata 0x012301CC). Name: Ego_r.pdb / FableWin.pdb /
+// Ego_d.pdb ?SetRightStickForce@CManager@NUISystem@@UAEXAAVC2DVector@@@Z (public virtual).
+// Port (NF227, 2026-11-22, q12582 / q12583): onto engine/NUISystem_CManager.h (retail layout: RightStickForce +0x94). Was a row-local
+//   CManager model with a non-virtual member, leaf ?SetRightStickForce@CManager@NUISystem@@QAEXAAVC2DVector@@@Z, while the header vtable
+//   COMDAT of 0x0041E641 / 0x0041E3F6 binds this slot as UAE.
 #pragma optimize("s", on)
-// CManager TU is size-optimised (odd addresses, `pop ecx` after cdecl calls). Local model: the engine CManager.h is the
-// donor Ego_r layout (RightStickForce +0xc0, BastardChild +0xa8); retail has BastardChild +0x80, BastardChildren +0x88,
-// RightStickForce +0x94.
-#include "fable_string.h"
-class C2DVector { public: float X, Y; };
-class CCPPointerInfo;
+// CManager TU is size-optimised (odd addresses, `pop ecx` after cdecl calls).
+#include "engine/NUISystem_CManager.h"
 namespace NUISystem {
-class CComponent;
-struct CComponentPointer {                 // CCountedPointer<NUISystem::CComponent>
- CComponent* Data; CCPPointerInfo* Info;
- void ReleaseData();                       // 0x004291DE
-};
-// STLport map<CCharString, CCountedPointer<CComponent>>: header-node pointer + count; begin() = header->_M_left.
-struct CRbNodeBase { long Color; CRbNodeBase* Parent; CRbNodeBase* Left; CRbNodeBase* Right; };
-CRbNodeBase* __cdecl Rb_tree_increment(CRbNodeBase* node);   // 0x004292C0 _Rb_global<bool>::_M_increment
-struct CBastardNode : CRbNodeBase { CCharString Key; CComponentPointer Value; };
-struct CBastardIterator {
- CRbNodeBase* Node;
- CBastardIterator(CRbNodeBase* n) : Node(n) {}
- bool operator!=(const CBastardIterator& o) const { return Node != o.Node; }
- void operator++() { Node = Rb_tree_increment(Node); }
- CBastardNode* operator->() const { return static_cast<CBastardNode*>(Node); }
-};
-struct CBastardChildMap {
- CRbNodeBase* Header; unsigned long NodeCount;
- CBastardIterator begin() const { return CBastardIterator(Header->Left); }
- CBastardIterator end() const { return CBastardIterator(Header); }
- void clear();                             // 0x0042C02F
-};
-class CManager { public:
- virtual void Slot0();
- unsigned char _pad04[0x80 - 4];
- CComponentPointer BastardChild;           // +0x80
- CBastardChildMap BastardChildren;         // +0x88
- unsigned char _pad90[0x94 - 0x90];
- C2DVector RightStickForce;                // +0x94
- void ClearBastardChild();
- void SetRightStickForce(C2DVector&);
-};
 void CManager::SetRightStickForce(C2DVector& force)
 {
- RightStickForce = force;
+    RightStickForce = force;
 }
 }

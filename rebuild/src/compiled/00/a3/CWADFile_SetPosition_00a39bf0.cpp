@@ -1,7 +1,6 @@
-// Leaf: ?SetPosition@CWADFile_Methods@@QAEXK@Z
-#include "engine/CWADFile.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWADFile_Methods : CWADFile {
-    void SetPosition(unsigned long v);
-};
-void CWADFile_Methods::SetPosition(unsigned long v){ this->FilePos = v; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?SetPosition@CWADFile@@UAEXJ@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?SetPosition@CWADFile@@UAEXJ@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CWADFile.h under FABLE_RETAIL_CWADFILE with the PDB parameter / return types (was ?SetPosition@CWADFile_Methods@@QAEXK@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CWADFILE
+#include "engine/CWADFile.h"
+void CWADFile::SetPosition(long v) { this->FilePos = v; }

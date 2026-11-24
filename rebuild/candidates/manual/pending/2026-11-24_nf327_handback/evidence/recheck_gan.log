@@ -1,0 +1,9 @@
+addr       parity           behav  name
+007ebb30   RELOCATION_MATCH PASS   Clone
+007ed140   RELOCATION_MATCH PASS   Clone
+0084c010   RELOCATION_MATCH PASS   Clone
+
+WINS: 3
+  007ebb30 RELOCATION_MATCH CCreatureAction_LookThroughWindow::?Clone@CCreatureAction_LookThroughWindow@@UBEPAVCCreatureActionBase@@XZ
+  007ed140 RELOCATION_MATCH CCreatureAction_DropWeapon::?Clone@CCreatureAction_DropWeapon@@UBEPAVCCreatureActionBase@@XZ
+  0084c010 RELOCATION_MATCH CCreatureAction_ActivateZTarget::?Clone@CCreatureAction_ActivateZTarget@@UBEPAVCCreatureActionBase@@XZ

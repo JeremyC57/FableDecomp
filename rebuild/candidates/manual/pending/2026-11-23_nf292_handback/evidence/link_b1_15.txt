@@ -1,0 +1,10 @@
+## HEAD set: H_00a9f2f0.obj H_00a4d770.obj
+duplicates 0
+
+UNRESOLVED 1 ?CalcLocalBoneTransformations@C3DAnimation2@@QBEXPAVC3DKeyframe@@KM@Z
+UNRESOLVED 1 ?CalcLocalBoneTransformationsRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z
+## new set: N_00a9f2f0.obj H_00a4d770.obj
+duplicates 0
+
+UNRESOLVED 1 ?CalcLocalTransformations@C3DAnimation2@@QBEXPAVC3DKeyframe@@KM@Z
+LK_DONE

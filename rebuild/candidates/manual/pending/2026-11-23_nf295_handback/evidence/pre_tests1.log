@@ -1,0 +1,6 @@
+02:19:33 PASS /home/user/FableDecomp/rebuild/tests/00/93/CAIStateGroupNonVillageGuardPatrol_Update_0093cb20_test.cpp
+02:19:33 PASS /home/user/FableDecomp/rebuild/tests/00/94/CAIStateGroupGoToPub_WalkToPoint_0094a6d0_test.cpp
+02:19:33 PASS /home/user/FableDecomp/rebuild/tests/00/91/CAIStateGroupMinionLeaveRegion_Update_0091e4b0_test.cpp
+02:19:33 PASS /home/user/FableDecomp/rebuild/tests/00/63/CPlayer_UninitModeChargeQuickAccess_00634470_test.cpp
+02:19:33 PASS /home/user/FableDecomp/rebuild/tests/00/8e/NCreatureModeCModeStrafe_SetUpCombinationAnims_008e9190_test.cpp
+02:19:33 PASS /home/user/FableDecomp/rebuild/tests/00/75/CTCLook_InitialiseHeadAnims_00752640_test.cpp

@@ -1,5 +1,5 @@
 // CLandscapeBackgroundPatch::UpdateTesselation() -- when landscape tesselation is enabled, fill a CTesselationData record for this patch (world origin, size, map, index buffer, the four edge strips and the bridge buffers) and tesselate it: water-only patches through the water sub-patch; otherwise through the engine's landscape tesselator, taking back the bridge buffers and poly counts it produced, then the water sub-patch if any; on success mark all four edge strips tesselated
-// Leaf: UpdateTesselation
+// Leaf: ?UpdateTesselation@CLandscapeBackgroundPatch@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE61B0, 573 bytes (+ int3 padding).
 // Callees: CTesselationData ctor (inline; out-of-line copy 0x00BE59C0, base CBaseClass ctor 0x0099A2D0, vtable 0x012A800C) and dtor
 //   (CBaseClass dtor 0x0099A2E0); CLandscapeTesselatorBase::TesselatePatch 0x00BE3910 on the engine global 0x01436EA8 (+0x66C);
@@ -47,8 +47,7 @@ class CEngineWaterBackgroundSubPatch { public:
 struct CLandscapeMap { unsigned char _pad[0x14]; CEngineMap* EngineMap; };   // +0x14
 class CLandscapeBackgroundTreeNode { public: unsigned char _pad[0xa4]; CLandscapeMap* Map; };   // +0xA4
 class CLandscapeBackgroundPatch { public:
-    void*                           vptr;
-    CLandscapeBackgroundTreeNode*   Parent;             // +0x04
+        CLandscapeBackgroundTreeNode*   Parent;             // +0x04
     CPatchTesselationEdgeStrip      EdgeStrips[4];      // +0x08
     void*                           Texture;            // +0xb8
     CIndexBuffer*                   IndexBuffer;        // +0xbc
@@ -78,7 +77,7 @@ class CLandscapeBackgroundPatch { public:
     bool                            IsDefaultSection;   // +0x11b
     long GetWorldX() const { return Parent->Map->EngineMap->OriginX + MapX; }
     long GetWorldY() const { return Parent->Map->EngineMap->OriginY + MapY; }
-    void UpdateTesselation();
+    virtual void UpdateTesselation();
 };
 
 void CLandscapeBackgroundPatch::UpdateTesselation()

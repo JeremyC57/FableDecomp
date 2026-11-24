@@ -1,0 +1,4 @@
+# equiv_check.py (exact mode) repo rebuild/include v work/tree_new = repo tree + hdr/engine/CEngineWaterBackgroundSubPatch.h (diff -rq: that file only)
+rows checked 57125 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF279/work/equiv.tsv
+DONE 0
+differing lines: 0

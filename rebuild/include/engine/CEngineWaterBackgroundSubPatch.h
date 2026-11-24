@@ -28,6 +28,19 @@ class CEngineWaterBackgroundSubPatch
 #endif
 {
 public:
+#ifdef FABLE_RETAIL_CENGINEWATERBACKGROUNDSUBPATCH_VIRTUALS
+    // Opt-in (NF279, 2026-11-22, rows 0x00BFD480 / 0x00BFD5D0 / 0x00BFD390): the retail virtuals of vtable 0x012A8334 (RTTI
+    // .?AVCEngineWaterBackgroundSubPatch@@ : CMovableResource; slot 0 ??_G 0x00BFDC90, slot 1 0x00BFD5D0, slot 2 0x00BFD390, slot 3
+    // CMovableResource::Verify 0x009D5100). Use with FABLE_RETAIL_WATER_OCCLUSION_ORIGINAL_CHAIN_PASS22 and FABLE_RETAIL_CMOVABLERESOURCE
+    // (the polymorphic retail base). The class delete is FableWin.pdb ??3CEngineWaterBackgroundSubPatch@@SIXPAX@Z (02e05130; static
+    // __fastcall; no Ego_r out-of-line copy, so inline in retail): declared here, defined inline by the destructor's TU.
+    virtual ~CEngineWaterBackgroundSubPatch();                           // 0x00BFD480 ??1...UAE@XZ (Ego_r 00a4bba0, FableWin 02e05150)
+    static void FABLE_FASTCALL operator delete(void* block);
+private:
+    virtual void RelocateData(long handle, void* oldData, void* newData, long size);   // slot 1 0x00BFD5D0 (Ego_r 00a4bd00, FableWin 02e06160)
+    virtual bool CanRelocateData(long handle) const;                                   // slot 2 0x00BFD390 (Ego_r 00a4bac0, FableWin 02e06380)
+public:
+#endif
 #ifdef FABLE_RETAIL_CENGINEWATERBACKGROUNDSUBPATCH_ACCESSORS
     // Opt-in (wf3, row 0x00BE7BE0): FableWin.pdb ?IsSea@CEngineWaterBackgroundSubPatch@@QBE?B_NXZ and
     // ?IsEmpty@CEngineWaterBackgroundSubPatch@@QBE_NXZ (inline in retail), and WaterType typed as its PDB enum.

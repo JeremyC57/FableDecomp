@@ -1,3 +1,4 @@
+// Leaf: ?TouchAnimation@C3DAnimationInfo@@QBEXXZ
 // C3DAnimationInfo::TouchAnimation() -- marks the animation data as used this frame: moves it to the tail of its resource list and stamps LastUsedFrame; starts loading when the data or its shared animation is missing
 // Name (NF143, q4942 / q4943): ListRemove 0x009FBFB0 / ListInsert 0x009FBF90 are private CResource members in Ego_r.pdb / FableWin.pdb
 //   (?ListRemove@CResource@@AAEXXZ / ?ListInsert@CResource@@AAEXPAV1@0@Z); the row's local CResource declares them private and the
@@ -55,12 +56,12 @@ class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h o
     void* Bank;                            // +4
     unsigned long Index;                   // +8
     CAnimationData* Data;                  // +0xc
-    void TouchAnimation();
+    void TouchAnimation() const;
 public:
     void BeginLoading(bool) const;   // 0x00A26730
 };
 
-void C3DAnimationInfo::TouchAnimation()
+void C3DAnimationInfo::TouchAnimation() const
 {
     CAnimationData* data = Data;
     if (data == 0 || data->SharedAnimation == 0) {

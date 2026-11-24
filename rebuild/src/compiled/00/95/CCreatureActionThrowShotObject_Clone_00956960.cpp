@@ -13,6 +13,7 @@
 //   engine/CCombatActionBase.h (MELEE mode, opt-in FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR: ??0CCombatActionBase@@QAE@ABV0@@Z,
 //   0x0062F3B0) and engine/CCreatureAction_ThrowShotObject.h (_CLASS + _CLONE + _INITIALISE), so this object's
 //   ??_7CCreatureAction_ThrowShotObject@@6B@ COMDAT is the same as the copies 0x009551A0 and 0x009566C0 emit.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CTHING

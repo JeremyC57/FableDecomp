@@ -34,7 +34,7 @@ public:
 };
 class CCombatAction_RecoverFromStunned : public CCombatActionBase {
 public:
-    CCombatAction_RecoverFromStunned(CThingCreatureBase& creature, CThingCreatureBase* other);   // 0x008AE1B0
+    CCombatAction_RecoverFromStunned(CThingCreatureBase& creature, bool flip);   // 0x008AE1B0 (Ego_r + FableWin _N)
     unsigned long _pad114;
 };
 class CCombatAction_FallStunned : public CCombatActionBase {
@@ -59,7 +59,7 @@ void CGameScriptInterface::SetThingAsConscious(const CScriptThing& thing, bool c
         {
             CThingCreatureBase* creature = (CThingCreatureBase*)t;
             if (conscious)
-                creature->SetCurrentAction(CCombatAction_RecoverFromStunned(*creature, 0));
+                creature->SetCurrentAction(CCombatAction_RecoverFromStunned(*creature, false));
             else
                 creature->SetCurrentAction(CCombatAction_FallStunned(*creature, 0, anim));
         }

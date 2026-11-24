@@ -113,7 +113,10 @@ class C3DMeshStats { public:
     char* PackedNames;                                     // +0x74
     unsigned short PackedNamesSize;                        // +0x78
     bool AnimatedFlag;                                     // +0x7a
-    bool AllocateBuffers(unsigned long helpers, unsigned long dummies, unsigned long namesSize);   // 0x00A2E760
+    private:
+    bool AllocateBuffers(unsigned long helpers, unsigned long dummies, unsigned long namesSize);
+    public:
+   // 0x00A2E760
     bool LoadBinary(CMemoryDataInputStream* in);
 };
 

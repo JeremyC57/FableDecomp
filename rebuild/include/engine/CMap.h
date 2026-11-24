@@ -4,6 +4,13 @@
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/C2DBoxI.h"
 #include "engine/C2DCoordI.h"
+#ifdef FABLE_RETAIL_MAP_CACHED_VOLUMES_PASS26
+#include "boost/scoped_ptr.h"
+#include "engine/CCachedVolumes.h"
+#include "engine/CWorldMap.h"
+#include "engine/CWorld.h"
+#endif
+
 #ifndef FABLE_RETAIL_CIDRAWMAP
 #define FABLE_RETAIL_CIDRAWMAP
 #endif
@@ -59,7 +66,17 @@ enum EThemePaintType { THEME_PAINT_ENGINE = 0, THEME_PAINT_ATMOS = 1 };
 // opaque at retail STLport sizes; sizeof 0x1D40.
 class CMap:public CIDrawMap,public CBaseClassNonCopyable {
 protected:
+#ifdef FABLE_RETAIL_MAP_CACHED_VOLUMES_PASS26
+    boost::scoped_ptr<CCachedVolumes> CachedVolumes;
+    unsigned char ScriptedMapBrushes[4],ScriptedMapBrushUpdateAreas[12];
+    void InitCachedVolumes();
+    CWorld* GetWorld() { return &World; }
+public:
+    long GetWorldMapNumber() const { return World.PeekWorldMap().GetMapNumberAt(WorldPos); }
+protected:
+#else
     unsigned char CachedVolumes[4],ScriptedMapBrushes[4],ScriptedMapBrushUpdateAreas[12];
+#endif
     const CGameDefinitionManager& DefinitionManager;
     CWorld& World;
     unsigned long* WorldSeed;

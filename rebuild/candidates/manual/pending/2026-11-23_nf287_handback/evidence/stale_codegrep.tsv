@@ -1,0 +1,21 @@
+CDataOutputStream_Methods	3	src/compiled/00/99/CDataOutputStream_WritePixelFormat_00993f60.cpp src/compiled/00/99/CDataOutputStream_AlignData_009942d0.cpp tests/00/b1/NParticleEngineCPSCAttractor_WriteBinary_00b17f70_test.cpp
+WriteULong	137	src/compiled/00/9d/CDefStringTable_AddString_009d4f90.cpp src/compiled/00/aa/C3DMeshFileHelperPointChunk_C3DMeshFileHelperPointChunk_00aa9b20.cpp src/compiled/00/aa/C3DMeshFileXBoundingSphereChunk_WriteToFile_00aa4b50.cpp src/compiled/00/aa/C3DMeshFileConvexVolumeChunk_CreateNewInstance_00aaaa60.cpp src/compiled/00/aa/C3DMeshFileXBoundingSphereChunk_CreateNewInstance_00aa4fb0.cpp src/compiled/00/aa/C3DMeshFileDummyObjectChunk_C3DMeshFileDummyObjectChunk_00aa9e10.cpp src/compiled/00/aa/C3DMeshFileXBoundingBoxChunk_WriteToFile_00aa4b90.cpp src/compiled/00/aa/C3DMeshFileXUVTangentChunk_CreateNewInstance_00aa5b30.cpp
+CElement8_00654daf	0	
+GetInstance_0041e5f2	0	
+CFrontEndManager_00404c00	0	
+CClass_004ebba3	0	
+CClass_00455eac	0	
+CClass_004d4c3e	0	
+vfunc_42	2	tests/00/7d/CTCTavernGameCardBlackjack_GetWinPhrase_007da3a0_test.cpp tests/00/5e/CTCTavernGame_GetWinPhrase_005ea100_test.cpp
+vfunc_43	2	src/compiled/00/52/CThingFilterIsValid_func005271b0_005271b0.cpp tests/00/52/CThingFilterIsValid_func005271b0_005271b0_test.cpp
+CClass_004e1195	0	
+CClass_00e2ab60	0	
+CClass_00e54310	0	
+CClass_00e62830	0	
+CClass_00eae910	0	
+CClass_004525b3	0	
+SerialiseMapBinaryIn_004e5a76	0	
+h_005dc1f0	0	
+CMusicTimer_008fa000	0	
+CameraBlockTest_00874ee0	0	
+CameraBlockTest_00874f10	0	

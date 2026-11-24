@@ -1,0 +1,5 @@
+DEF ?CActiveFile_CopyRange@@YIPAXPAX000@Z
+DEF ?Copy_MemoryStepped@@YIPAXPAX000@Z
+DEF ?Std_DoubleLinkedList_CreateNode@@YIPAPAUDoubleListNode@@PAPAU1@PAX1@Z
+UND ?memmove@@YAPAXPAXPBXI@Z
+UND _malloc

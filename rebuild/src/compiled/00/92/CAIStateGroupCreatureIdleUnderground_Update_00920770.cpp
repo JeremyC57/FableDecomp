@@ -1,3 +1,4 @@
+// Leaf: ?Update@CAIStateGroup_CreatureIdleUnderground@@MAEXXZ
 // CAIStateGroup_CreatureIdleUnderground::Update()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00920770, length 23 bytes.
 // Callees: CAIStateGroupBase::AIAction_DoNothing @ 0x0097E200 (returns EAIActionReturn),
@@ -11,7 +12,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_CreatureIdleUnderground : CAIStateGroupBase {
+    protected:
     virtual void Update();
+    public:
 };
 
 void CAIStateGroup_CreatureIdleUnderground::Update()

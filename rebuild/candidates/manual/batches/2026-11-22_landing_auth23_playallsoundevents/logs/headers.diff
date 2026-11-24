@@ -1,0 +1,220 @@
+diff --git a/rebuild/include/engine/CAnimSet.h b/rebuild/include/engine/CAnimSet.h
+index 16ba2a516b..345cf0cf28 100644
+--- a/rebuild/include/engine/CAnimSet.h
++++ b/rebuild/include/engine/CAnimSet.h
+@@ -38,6 +38,35 @@ class CAnimSet{friend class CAnimateThing;public:
+  float GetChangeAlphaBy()const{return ChangeAlphaBy;}
+  void SetChangeAlphaBy(float value){ChangeAlphaBy=value;}
+  float GetAlpha()const{return CurrentAlpha;}
++#ifdef FABLE_RETAIL_CANIMSET_ANIMINDICES
++ // Retail opt-in (AUTH22 2026-11-22, row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents): FableWin.pdb
++ // ?GetAnimIndices@CAnimSet@@QBEABV?$vector@FV?$allocator@F@std@@@std@@XZ, ?GetAnimBlendStrength@CAnimSet@@QBEMJ@Z,
++ // ?GetPercentageComplete@CAnimSet@@QBEMXZ and ?GetLastPercentageComplete@CAnimSet@@QBEMXZ, inline in retail (0x0066B5BA reads
++ // Anims +0x04 / +0x08 and InternalAlphas +0x10 in place, 0x0066B6CB `fld [set+1Ch] ; fcomp [set+20h]`). Ego_d.pdb's locals of
++ // that row (`const vector<short>& anim_indeces`, `float strength`) and its 11-B / 15-B /Od lines 189 / 195 are one accessor call
++ // each. GetAnimBlendStrength's debug body carries asserts (FableWin has EH funclets for it); the release body is the element read.
++ // No layout change.
++ const std::vector<short,std::allocator<short> >& GetAnimIndices()const{return Anims;}
++ float GetAnimBlendStrength(long index)const{return InternalAlphas[index].CurrentAlpha;}
++ // The two percentage accessors. All three later VC10 PDBs (Ego_d / Ego_r / FableWin) give them as public, by value
++ // (`?GetPercentageComplete@CAnimSet@@QBEMXZ`, `?GetLastPercentageComplete@CAnimSet@@QBEMXZ`) over private members, and hold no friend
++ // record of any class. Retail's CTCSoundPlayer::PlayAllSoundEvents passes both to GetAnimEventsBetweenTimes with no temporary
++ // (0x0066B6E0 `mov ecx,[set+1Ch] ; mov edx,[set+20h] ; push ecx ; .. ; push edx`, frame 0x74); under VC7.1 an inlined by-value float
++ // accessor used as an argument always keeps a stored temporary (frame 0x7C, DIFFER(1844v1808)), and a `const float&` return graded
++ // RELOCATION_MATCH on that row with Ego_d's line-208 calls unchanged. Inferred TLC-era form (owner 2026-11-22, as
++ // FABLE_RETAIL_CCOMBATMANAGER_PROXIMITY_REF_INFERRED in engine/CCombatManager.h); off by default. No layout change.
++#ifdef FABLE_RETAIL_CANIMSET_PERCENTAGE_REF_INFERRED
++ const float& GetLastPercentageComplete()const{return LastPercentageComplete;}
++#if !(defined(FABLE_RETAIL_CANIMSET_TYPE) && defined(FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24))
++ const float& GetPercentageComplete()const{return CurrentPercentageComplete;}
++#endif
++#else
++ float GetLastPercentageComplete()const{return LastPercentageComplete;}
++#if !(defined(FABLE_RETAIL_CANIMSET_TYPE) && defined(FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24))
++ float GetPercentageComplete()const{return CurrentPercentageComplete;}
++#endif
++#endif
++#endif
+ #ifdef FABLE_RETAIL_CANIMSET_FRAME
+  // Retail opt-in (chunk 1006, row 0x005B3E4E): FableWin.pdb ?GetAnimIndex@CAnimSet@@QBEJXZ (the first anim index, `mov eax,[set+4] ;
+  // movsx eax,word ptr [eax]`, 0x005B3FD4) and ?GetFrame@CAnimSet@@QBE?AVCAnimFrameInfo@@XZ (the percentage-complete pair +0x1C/+0x20
+diff --git a/rebuild/include/engine/CDefinitionManager.h b/rebuild/include/engine/CDefinitionManager.h
+index b44312797f..fd6a0001b2 100644
+--- a/rebuild/include/engine/CDefinitionManager.h
++++ b/rebuild/include/engine/CDefinitionManager.h
+@@ -250,6 +250,38 @@ bool CDefClassBase::GetSubDef(CDefPointer<const T>* out)const
+  }
+  return false;
+ }
++#ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CENTITYSOUNDDEF_SIZE_BODY
++// Nested opt-in (AUTH23 2026-11-22, row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents). Fidelity: scaffolding, not retail: it is for link
++// determinism and makes no claim about retail's text. A /O2 TU that keeps the GetSubDef body visible emits its own pick-any copy of
++// ??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z (182 B), while retail's linker kept the
++// copy of the owner row 0x0065F604 (162 B), which was built in a frame-pointer size TU and sets these same two pragmas itself
++// (rebuild/src/compiled/00/65/CDefClassBase_GetSubDefCEntitySoundDef_0065f604.cpp: optimize("y", off) / optimize("s", on)). VC7.1 takes a
++// template instance's optimize mode at the end of the TU, so a pragma pair around the template does nothing and a row-tail pragma re-modes
++// every instance; an `inline` explicit specialization is an ordinary definition and takes the mode at this point. Its body is the template
++// body above with T = CEntitySoundDef, token for token. The pair ends with optimize("", on), which restores the command-line default
++// (VC7.1 has no push / pop for optimize), so this is valid only in a TU with no optimize pragma above this include.
++#include "engine/CEntitySoundDef.h"
++#if defined(_MSC_VER)
++#pragma optimize("y", off)
++#pragma optimize("s", on)
++template<> __declspec(noinline) inline
++#else
++template<> inline
++#endif
++bool CDefClassBase::GetSubDef<CEntitySoundDef>(CDefPointer<const CEntitySoundDef>* out)const
++{
++ const CSubDefInfo* info=GetPSubDefInfo(CEntitySoundDef::StatGetTypeName());
++ if(info){
++  CDefPointer<const CDefClassBase> def=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
++  out->SetDynamicCast(def);
++  return true;
++ }
++ return false;
++}
++#if defined(_MSC_VER)
++#pragma optimize("", on)
++#endif
++#endif
+ #endif
+ #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_INDEX_BODY
+ // Nested opt-in (chunk 1012, row 0x006B1A20 CAtmosProcess::UpdateDayNightAtmosSounds): the same-TU body of the by-class-index
+diff --git a/rebuild/include/engine/CTCSoundPlayer.h b/rebuild/include/engine/CTCSoundPlayer.h
+index fd0173efb0..8287d40cac 100644
+--- a/rebuild/include/engine/CTCSoundPlayer.h
++++ b/rebuild/include/engine/CTCSoundPlayer.h
+@@ -116,6 +116,16 @@ public:
+     virtual void BulletTimeFrameUpdate();  // slot 10, 0x0066A910
+ public:
+ #endif // FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
++#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYALLSOUNDEVENTS
++    // Opt-in (chunk 853 text, re-ported by AUTH22 2026-11-22; row 0x0066B370): Ego_r.pdb / FableWin.pdb
++    // ?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ (Ego_r 0x005749A0, FableWin 0x01E7E870; sole retail caller FrameUpdate 0x0066BBF0, tail
++    // jump) and the private ?InternalPlaySoundEvent@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z 0x0066B120 (landed).
++    // Declarations only: no layout change.
++public:
++    void PlayAllSoundEvents();                                           // 0x0066B370
++private:
++    unsigned long InternalPlaySoundEvent(class CASoundBank&,const CCharString&,bool,bool,bool,long);   // 0x0066B120
++#endif
+ #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_INTERNALPLAYSOUNDEVENTATPOS
+     // Retail opt-in (Codex pass 24, 0x0066A9E0). The call at 0x0066AA5C
+     // and both PDBs identify this private sound-event entry point.
+diff --git a/rebuild/include/engine/CThingSoundEmitter.h b/rebuild/include/engine/CThingSoundEmitter.h
+index b4b06f935e..c0bd838e15 100644
+--- a/rebuild/include/engine/CThingSoundEmitter.h
++++ b/rebuild/include/engine/CThingSoundEmitter.h
+@@ -62,6 +62,15 @@ public: static CClass* __fastcall Alloc();
+     void ReleaseLoop(unsigned long sampleID);                                              // 0x008368F0
+     void SetSpecificSamplePitch(unsigned long sampleID, float pitch);
+     void SetSpecificSampleVolume(unsigned long sampleID, float volume);
++#ifdef FABLE_RETAIL_CTHINGSOUNDEMITTER_STOPALLCRITERIACONTAININGSTRING
++    // Nested opt-in (AUTH22 2026-11-22, row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents): the inline forwarder to CASoundEmitter slot 12
++    // StopAllCriteriaContainingString (+0x30), the same shape as the Ego_r.pdb forwarders above (null test on PSoundEmitter, then the
++    // virtual). Retail expands it at 0x0066B769: `mov ecx,[eax+98h] ; test ecx,ecx ; je ; mov eax,[ecx] ; push edi ; call [eax+30h]`
++    // (the emitter loaded once, straight into ecx). TLC-only: neither PDB has a CThingSoundEmitter member for slot 12 (the code of the
++    // caller's arm is absent from Ego_d's line table, lines 216..227), so the forwarder's NAME is DESCRIPTIVE: it repeats the slot's
++    // Anniversary name as the eight PDB forwarders do. No layout change.
++    void StopAllCriteriaContainingString(const CCharString& text) { if (PSoundEmitter) PSoundEmitter->StopAllCriteriaContainingString(text); }
++#endif
+ protected:
+     virtual bool OnCreate();                                                               // 0x00836740 ?OnCreate@CThingSoundEmitter@@MAE_NXZ
+ public:
+@@ -71,5 +80,5 @@ public:
+ #ifdef FABLE_RETAIL_CTHINGSOUNDEMITTER_MEMBERS
+ #pragma pack(pop)
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(CThingSoundEmitter)==0xb8);
++FABLE_STATIC_ASSERT_AT(74, sizeof(CThingSoundEmitter)==0xb8);
+ #endif
+diff --git a/rebuild/include/engine/CSmallVector.h b/rebuild/include/engine/CSmallVector.h
+new file mode 100644
+index 0000000000..9028e6e1a0
+--- /dev/null
++++ b/rebuild/include/engine/CSmallVector.h
+@@ -0,0 +1,23 @@
++#ifndef FABLE_ENGINE_CSMALLVECTOR_H
++#define FABLE_ENGINE_CSMALLVECTOR_H
++// NEW shared header (AUTH22, 2026-11-22; first user row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents).
++// CSmallVector<T,N>: a GLOBAL template in both debug PDBs (FableWin.pdb ?begin@?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@QAEPAVCEvent@NAnimationEvents@@XZ,
++// ?end@.., ?size@..QBEJXZ, ?empty@.., ?erase@.., ?resize@..QAEXJABVCEvent@NAnimationEvents@@@Z; Ego_d.pdb TPI
++// `CSmallVector<NAnimationEvents::CEvent,32>`, sizeof 8: protected Start +0x00 (T*), Size +0x04 (int)). The landed rows of the
++// animation-events TU model it locally with the same two members (0x006F9820, 0x006FADE0 resize).
++// Only the members the first user needs. Bodies: inline in retail. The destructor's body is INFERRED from its expansion
++// (0x0066BA0B..0x0066BA24: `test eax,eax ; je ; push eax ; call operator delete[] 0x00BFEB1C ; add esp,4`, then Start = 0, Size = 0);
++// begin / end are the pointer pair (0x0066B70B `mov eax,[Start]`, 0x0066B715 `lea ecx,[eax+Size*8]`).
++#include "rebuild_abi.h"
++void __cdecl operator delete[](void*);                                  // 0x00BFEB1C (MSVCR71 ??_V@YAXPAX@Z)
++template <class T, long N> class CSmallVector {
++public:
++    CSmallVector() : Start(0), Size(0) { }
++    ~CSmallVector() { delete [] Start; Start = 0; Size = 0; }
++    T* begin() { return Start; }
++    T* end() { return Start + Size; }
++protected:
++    T*  Start;                                                           // +0x00
++    int Size;                                                            // +0x04
++};
++#endif // FABLE_ENGINE_CSMALLVECTOR_H
+diff --git a/rebuild/include/engine/NAnimationEvents_CEvent.h b/rebuild/include/engine/NAnimationEvents_CEvent.h
+new file mode 100644
+index 0000000000..fdd069d5db
+--- /dev/null
++++ b/rebuild/include/engine/NAnimationEvents_CEvent.h
+@@ -0,0 +1,19 @@
++#ifndef FABLE_ENGINE_NANIMATIONEVENTS_CEVENT_H
++#define FABLE_ENGINE_NANIMATIONEVENTS_CEVENT_H
++// NEW shared header (AUTH22, 2026-11-22; first user row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents).
++// NAnimationEvents::CEvent, Ego_d.pdb TPI (sizeof 8): the bitfields Index (unsigned long, bits 0..29), ExternallyImported (bit 30),
++// StopEvent (bit 31) at +0x00 and Time (float) at +0x04, all public. The landed animation-events rows model it locally with these
++// names and widths (0x006F9820). Retail reads: 0x0066B730 `mov edx,[event] ; and edx,3FFFFFFFh` (Index), 0x0066B747
++// `mov eax,[event] ; test eax,eax ; jns` (StopEvent). The class's two constructors and operator== are not declared here yet.
++#include "rebuild_abi.h"
++namespace NAnimationEvents {
++class CEvent {
++public:
++    unsigned long Index : 30;                                            // +0x00 bits 0..29
++    unsigned long ExternallyImported : 1;                                // +0x00 bit 30
++    unsigned long StopEvent : 1;                                         // +0x00 bit 31
++    float Time;                                                          // +0x04
++};
++}
++FABLE_STATIC_ASSERT(sizeof(NAnimationEvents::CEvent) == 8);
++#endif // FABLE_ENGINE_NANIMATIONEVENTS_CEVENT_H
+diff --git a/rebuild/include/engine/NAnimationEvents_CManager.h b/rebuild/include/engine/NAnimationEvents_CManager.h
+new file mode 100644
+index 0000000000..317bfa4422
+--- /dev/null
++++ b/rebuild/include/engine/NAnimationEvents_CManager.h
+@@ -0,0 +1,29 @@
++#ifndef FABLE_ENGINE_NANIMATIONEVENTS_CMANAGER_H
++#define FABLE_ENGINE_NANIMATIONEVENTS_CMANAGER_H
++// NEW shared header (AUTH22, 2026-11-22; first user row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents).
++// NAnimationEvents::CManager, Ego_d.pdb TPI: a polymorphic class (vfptr +0x00) with the private members MeshDataBank +0x04 and
++// EventSymbolMap +0x08 (CSymbolMap), then AnimToExtraEventsMap, DifferentToSavedCopy, UseEmbeddedEvents (not modelled: their retail
++// offsets are unproven; the debug class is 88 bytes with a Dinkumware map). Only what the first user needs:
++//  - ?GetEventSymbolMap@CManager@NAnimationEvents@@QBEABVCSymbolMap@@XZ (FableWin.pdb), inline in retail (0x0066B73D `add ecx,8`);
++//  - ?GetAnimEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@MM@Z
++//    (Ego_r.pdb / FableWin.pdb), out of line in retail at 0x006F99B0;
++//  - the free ?GetSoundEventManager@NAnimationEvents@@YIAAVCManager@1@XZ (Ego_r 0x0071E740), retail 0x006F90C0.
++// The vfptr is modelled as a data word (no virtual is called through this header yet). Needs FABLE_RETAIL_CSYMBOLMAP for the member's type.
++#include "rebuild_abi.h"
++#include "engine/CSymbolMap.h"
++#include "engine/CSmallVector.h"
++#include "engine/NAnimationEvents_CEvent.h"
++class CMeshDataBank;
++namespace NAnimationEvents {
++class CManager {
++public:
++    const CSymbolMap& GetEventSymbolMap() const { return EventSymbolMap; }
++    bool GetAnimEventsBetweenTimes(unsigned long anim, CSmallVector<CEvent, 32>& events, float start_time, float end_time) const;   // 0x006F99B0
++private:
++    void*                __vfptr;                                        // +0x00
++    const CMeshDataBank* MeshDataBank;                                   // +0x04
++    CSymbolMap           EventSymbolMap;                                 // +0x08
++};
++CManager& FABLE_FASTCALL GetSoundEventManager();                         // 0x006F90C0
++}
++#endif // FABLE_ENGINE_NANIMATIONEVENTS_CMANAGER_H

@@ -257,6 +257,10 @@ public:
     // Both original PDBs and native004C10E0; original const value result.
     C3DVector GetStaticFocalPos()const;
 #endif
+#ifdef FABLE_RETAIL_COMBAT_NEXT_POS_PASS27
+public:
+    CMatrix3x4 GetPositionMatrix(float time) const;
+#endif
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPERNAMES
     // Retail opt-in (chunk Q3, row 0x0076EB00 CTCWeaponTrail::InitialiseTrails): Ego_r.pdb / FableWin.pdb spellings of the four

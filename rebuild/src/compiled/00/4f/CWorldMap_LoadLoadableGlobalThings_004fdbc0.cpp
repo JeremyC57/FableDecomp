@@ -33,7 +33,10 @@ class CMapInfo { public:                                            // 0x48 byte
 class CWorldMap { public:
     unsigned char    _pad00[0x20];
     CArray<CMapInfo> Maps;                                   // +0x20
-    void LoadLoadableGlobalThingsForLevel(long level);       // 0x004FBF60
+    protected:
+    void LoadLoadableGlobalThingsForLevel(long level);
+    public:
+       // 0x004FBF60
     void LoadLoadableGlobalThings();
 };
 

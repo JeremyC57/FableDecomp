@@ -7,7 +7,7 @@
 // Shape: the landed FallAsleepAtTable 0x0094A200 (inlined world LCG `% 10` -> float, three explicit string temporaries
 // right to left, the bool in bl across the dtors) between `tc->Telling = true` / `= false` on the 0xb8 component of
 // the +0x24 thing (an out-parameter GetInterface whose miss leaves the pointer in the random value's frame word).
-// Leaf: TellStory@CAIStateGroup_GoToPub
+// Leaf: ?TellStory@CAIStateGroup_GoToPub@@IAE_NXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
@@ -147,7 +147,9 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     unsigned char _pad14[0x10];
     CIntelligentPointer<CThing> PStoryListener;     // +0x24
     bool PlayAnims(const CCharString& into, const CCharString& loop, const CCharString& outOf, float loopTime);   // 0x00948EF0
+    protected:
     bool TellStory();
+    public:
 };
 
 bool CAIStateGroup_GoToPub::TellStory()

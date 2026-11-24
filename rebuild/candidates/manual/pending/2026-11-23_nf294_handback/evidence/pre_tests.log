@@ -1,0 +1,6 @@
+01:58:02 PASS /home/user/FableDecomp/rebuild/tests/00/99/global_ReplacePathExtension_00997800_test.cpp
+01:58:02 PASS /home/user/FableDecomp/rebuild/tests/00/d8/NScriptCQHeroSoulsBriarScript_Main_00d80e40_test.cpp
+01:58:02 PASS /home/user/FableDecomp/rebuild/tests/00/a5/CStreamingFontDataBank_AdjustUpdateEntries_00a5eea0_test.cpp
+01:58:02 PASS /home/user/FableDecomp/rebuild/tests/00/9c/CBankFile_BeginUpdateEntries_009ce8d0_test.cpp
+01:58:02 PASS /home/user/FableDecomp/rebuild/tests/00/73/CTCCombat_RemoveFromCombat_00733580_test.cpp
+01:58:02 PASS /home/user/FableDecomp/rebuild/tests/00/99/CCharString_Append_0099f3b0_test.cpp

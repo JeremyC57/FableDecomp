@@ -1,0 +1,66 @@
+== A: HEAD 0x00418DCA + HEAD 0x00418B7A + 0x009C0190 + 0x00412F90
+duplicates 0
+
+UNRESOLVED 1 ??0CGameComponent@@QAE@AAVCGame@@@Z
+UNRESOLVED 1 ??0CMainGameComponentInit@@QAE@ABV0@@Z
+UNRESOLVED 1 ?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z
+UNRESOLVED 1 ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+UNRESOLVED 1 ?GOldGameComponentToDelete@@3PAVCGameComponent@@A
+UNRESOLVED 1 ?GetInputs@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?Init@CGameComponent@@UAEXXZ
+UNRESOLVED 1 ?Init@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+UNRESOLVED 1 ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+UNRESOLVED 1 ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?PostInit@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?Render@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+UNRESOLVED 1 ?SetQuit@CGameComponent@@MAEXXZ
+UNRESOLVED 1 ?SetQuit@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?Shutdown@CMainGameComponent@@QAEXXZ
+UNRESOLVED 1 ?Update@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?v00@CMainGameComponent@@UAEXXZ
+== B: NF275 0x00418DCA + NF275 0x00418B7A + 0x009C0190 + 0x00412F90
+duplicates 0
+
+UNRESOLVED 1 ??0CGameComponent@@QAE@AAVCGame@@@Z
+UNRESOLVED 1 ??0CMainGameComponentInit@@QAE@ABV0@@Z
+UNRESOLVED 2 ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+UNRESOLVED 1 ?GOldGameComponentToDelete@@3PAVCGameComponent@@A
+UNRESOLVED 2 ?GetInputs@CMainGameComponent@@MAEXXZ
+UNRESOLVED 1 ?Init@CGameComponent@@UAEXXZ
+UNRESOLVED 2 ?Init@CMainGameComponent@@UAEXXZ
+UNRESOLVED 2 ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+UNRESOLVED 2 ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+UNRESOLVED 2 ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+UNRESOLVED 2 ?PostInit@CMainGameComponent@@MAEXXZ
+UNRESOLVED 2 ?Render@CMainGameComponent@@MAEXXZ
+UNRESOLVED 2 ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+UNRESOLVED 1 ?SetQuit@CGameComponent@@MAEXXZ
+UNRESOLVED 2 ?SetQuit@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?Shutdown@CMainGameComponent@@QAEXXZ
+UNRESOLVED 2 ?Update@CMainGameComponent@@MAEXXZ
+== C: NF275 0x00418DCA + HEAD 0x00418B7A + controls
+duplicates 0
+
+UNRESOLVED 1 ??0CGameComponent@@QAE@AAVCGame@@@Z
+UNRESOLVED 1 ??0CMainGameComponentInit@@QAE@ABV0@@Z
+UNRESOLVED 2 ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+UNRESOLVED 1 ?GOldGameComponentToDelete@@3PAVCGameComponent@@A
+UNRESOLVED 1 ?GetInputs@CMainGameComponent@@MAEXXZ
+UNRESOLVED 1 ?GetInputs@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?Init@CGameComponent@@UAEXXZ
+UNRESOLVED 2 ?Init@CMainGameComponent@@UAEXXZ
+UNRESOLVED 2 ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+UNRESOLVED 2 ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+UNRESOLVED 2 ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?PostInit@CMainGameComponent@@MAEXXZ
+UNRESOLVED 1 ?PostInit@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?Render@CMainGameComponent@@MAEXXZ
+UNRESOLVED 1 ?Render@CMainGameComponent@@UAEXXZ
+UNRESOLVED 2 ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+UNRESOLVED 1 ?SetQuit@CGameComponent@@MAEXXZ
+UNRESOLVED 2 ?SetQuit@CMainGameComponent@@UAEXXZ
+UNRESOLVED 1 ?Shutdown@CMainGameComponent@@QAEXXZ
+UNRESOLVED 1 ?Update@CMainGameComponent@@MAEXXZ
+UNRESOLVED 1 ?Update@CMainGameComponent@@UAEXXZ

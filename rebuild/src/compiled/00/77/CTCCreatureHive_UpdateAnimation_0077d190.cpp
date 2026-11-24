@@ -1,5 +1,5 @@
 // CTCCreatureHive::UpdateAnimation() -- while the hive is animating, advance its animation by one frame (1 / fps seconds) and stop animating once the main anim set is empty or finished
-// Leaf: ?UpdateAnimation@CTCCreatureHive@@QAEXXZ
+// Leaf: ?UpdateAnimation@CTCCreatureHive@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -53,7 +53,7 @@ class CTCAnimationComplex { public:
 };
 class CTCCreatureHive : public CTCBase { public:
     bool Animating;                            // +0x0c
-    void UpdateAnimation();
+    private: void UpdateAnimation(); public:
 };
 
 void CTCCreatureHive::UpdateAnimation()

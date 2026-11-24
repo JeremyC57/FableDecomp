@@ -138,7 +138,7 @@ struct CTCTargetSource {                        // the interface-8 component
 };
 
 class CTCAISummon { public:                            // interface 0xFA
-    long GetMaxCreatureCount();                 // 0x007FDF60
+    long GetNumberCanSummon() const;                 // 0x007FDF60; NF296: PDB name, was GetMaxCreatureCount
 };
 
 struct CAIStateGroup_SummonerSummon : CAIStateGroupBase {
@@ -151,7 +151,7 @@ bool CAIStateGroup_SummonerSummon::IsRunnable()
     if (PBrain->PCreature->HasTC(8)) {
         CThing* target = ((CTCTargetSource*)PBrain->PCreature->FindEntry(8)->second)->GetEnemy();
         if (target != 0 && !(target->m_flags91 & 1) && PBrain->PCreature->HasTC(0xFA)
-            && ((CTCAISummon*)PBrain->PCreature->FindEntryConst(0xFA)->second)->GetMaxCreatureCount() != 0) {
+            && ((CTCAISummon*)PBrain->PCreature->FindEntryConst(0xFA)->second)->GetNumberCanSummon() != 0) {
             CIntelligentPointerConstThing converted(target);
             PTarget.SetPItem(converted.GetPItem());
             return true;

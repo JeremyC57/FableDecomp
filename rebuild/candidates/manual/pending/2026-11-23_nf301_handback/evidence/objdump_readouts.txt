@@ -1,0 +1,17 @@
+## H_00f09640.obj symbols matching WatchFor (objdump -t)
+??_C@_0BF@FJLLLGNB@WatchForContactDeath?$AA@
+??_C@_0BM@CBFNMPOI@WatchForHeroAttackOnContact?$AA@
+?WatchForContactDeath@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+## H_00d167c0.obj symbols matching WatchFor (objdump -t)
+??_C@_0BH@CCLAJOGK@WatchForHostage1Killed?$AA@
+?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+## H_00d16bb0.obj symbols matching WatchFor (objdump -t)
+??_C@_0BH@KMDPJJIJ@WatchForHostage2Killed?$AA@
+?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+## H_00961b90.obj symbols matching GetPredictedTargetPosForThing (objdump -t)
+?GetPredictedTargetPosForThing@?A0x61fa97ae@@YI?AVC3DVector@@ABVCThing@@0@Z
+## H_00851860.obj symbols matching IME (objdump -t)
+?FinaliseString@CIME@NUISystem@@QAEX_N@Z
+?Get@CIME@NUISystem@@SIAAV12@XZ
+?IsIMEActive@CIME@NUISystem@@QBE_NXZ

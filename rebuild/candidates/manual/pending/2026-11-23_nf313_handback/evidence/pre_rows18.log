@@ -1,0 +1,10 @@
+05:56:31 FAIL rows/0097e330.cpp
+05:56:31 FAIL rows/00967930.cpp
+05:56:31 FAIL rows/00967b40.cpp
+05:56:31 FAIL rows/00968bc0.cpp
+05:56:31 FAIL rows/009689c0.cpp
+05:56:36 PASS /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF313/rows/0097e330.cpp
+05:56:36 PASS /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF313/rows/00967930.cpp
+05:56:36 PASS /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF313/rows/00967b40.cpp
+05:56:36 PASS /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF313/rows/00968bc0.cpp
+05:56:36 PASS /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF313/rows/009689c0.cpp

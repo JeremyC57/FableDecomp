@@ -28,7 +28,7 @@ class CCreatureAction_NymphTeleportLimboBase { public:
     long m_duration;                        // +0x10
     unsigned char _pad14[8];
     long m_elapsed;                         // +0x1c
-    void DoEffect();                        // 0x008C9FE0
+    protected: void DoEffect(); public:                        // 0x008C9FE0
 };
 class CCreatureAction_NymphTeleportIntoLimbo : public CCreatureAction_NymphTeleportLimboBase { public:
     virtual void PerformAction();

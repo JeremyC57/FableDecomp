@@ -62,7 +62,9 @@ public:
     void Init(CStringParser&,void (__fastcall*)(const CCharString&),bool,const CDefinitionManager*,const CSymbolMap*,CCharString*);
     // Codex pass 13 (row 0x00CDC070): the default ctor and dtor (??0CPersistContext@@QAE@XZ / ??1CPersistContext@@QAE@XZ, one PDB
     // each; inline in retail) and the parser Init (?Init@CPersistContext@@QAEXAAVCStringParser@@...@Z, both PDBs).
+#ifndef FABLE_RETAIL_CPERSISTCONTEXT_IMPLICIT_DTOR_PASS27
     ~CPersistContext() {}
+#endif
     // retry11a (row 0x00521620): the save-side constructor 0x009BAE50 (Ego_r.pdb / FableWin.pdb
     // ??0CPersistContext@@QAE@AAVCDataOutputStream@@_N@Z) and the PSaveStream accessor (inline in retail).
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT_STRINGSAVE

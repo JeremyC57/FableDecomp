@@ -1,5 +1,5 @@
 // CTCCombat::ClearCombatVariables() -- reset the combat component's transient state: block/action flags off, combo chain position/id to their -777/-999 sentinels, grace and idle countdowns zeroed, every combat ability's repeat/active timers to -1, block timers to -1 and the component ready for melee
-// Leaf: ?ClearCombatVariables@CTCCombat
+// Leaf: ?ClearCombatVariables@CTCCombat@@AAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007334F0, 140 bytes (144 with padding), `ret`.
 // Label correction: catalog "CTCCombat_ResetState" -- Ego_r.pdb names ?ClearCombatVariables@CTCCombat@@AAEXXZ (private,
@@ -126,7 +126,9 @@ public:
     long                CurFlourishTimer;               // +0x84
     void*               FlourishParticles[3];           // +0x88 STLport vector
     bool                IsInMiddleOfFlourishAction;     // +0x94
+    private:
     void ClearCombatVariables();
+    public:
 };
 
 void CTCCombat::ClearCombatVariables()

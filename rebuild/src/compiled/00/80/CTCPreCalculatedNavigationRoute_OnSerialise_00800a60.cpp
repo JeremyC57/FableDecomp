@@ -23,7 +23,7 @@ protected:
 };
 #include "engine/CThing.h"
 class CThingManager { public:
-    unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
+    unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, unsigned long level, unsigned __int64 uid) const;   // 0x0051E210 (Ego_r / FableWin ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z)
 };
 class CPersistContext { public:
     unsigned char _pad00[0x18];
@@ -44,7 +44,7 @@ public:
     unsigned __int64        ThingToCalculateRouteToUID; // +0x18
     unsigned char           Route[0xc];                 // +0x20 vector<pair<C2DVector, unsigned char> >
     void SaveRoute(CPersistContext& context);   // 0x008006D0
-    void LoadRoute(CPersistContext& context, long version);   // 0x008008B0
+    private: void LoadRoute(CPersistContext& context, long version); public:   // 0x008008B0
     void OnSerialise(CPersistContext& context, bool);
 };
 

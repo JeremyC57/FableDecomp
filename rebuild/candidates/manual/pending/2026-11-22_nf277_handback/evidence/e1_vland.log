@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00bfe900   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 1
+  00bfe900 RELOCATION_MATCH CLandscapeLayerMesh::??_GCLandscapeLayerMesh@@UAEPAXI@Z

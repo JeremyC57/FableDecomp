@@ -1,5 +1,5 @@
 // CTCObjectAugmentations::ClearAllParticleEffects() -- kill the projectile trail and every running / attack particle effect, then empty both particle tables
-// Leaf: ?ClearAllParticleEffects@CTCObjectAugmentations@@QAEXXZ
+// Leaf: ?ClearAllParticleEffects@CTCObjectAugmentations@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007674A0, length 507 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / ctor @ 0x00A01B10 / dtor @ 0x00A01C10
 // (CIntelligentPointer<CThing> vtable 0x01238C6C), CThing::Kill(bool) @ 0x004C9B80, vector<ParticleAndEndPoints>::operator=
@@ -119,7 +119,7 @@ class CTCObjectAugmentations { public:
     long          CurPeriod;                            // +0x60
     bool          InStrikeAction;                       // +0x64
     CIntelligentPointer<CThing> ProjectileTrailEffect;  // +0x65
-    void ClearAllParticleEffects();
+    private: void ClearAllParticleEffects(); public:
 };
 
 void CTCObjectAugmentations::ClearAllParticleEffects()

@@ -1,0 +1,23 @@
+addr       parity           behav  name
+0096db60   RELOCATION_MATCH PASS   CCreatureAction_ScreamerIntoAggressive
+0096dba0   MATCH            PASS   vfunc_74
+0096dbb0   MATCH            PASS   vfunc_73
+0096ddb0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0096ddb0   RELOCATION_MATCH PASS   OnReplace
+0096e3f0   WARN STANDIN_LEAF ??_GCCreatureAction_ScreamerIntoAggressive@?A0xecffe54e@@UAEPAXI@Z (catalog ?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive::`scalar_deleting_destructor'; names another function)
+0096e3f0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0096e510   RELOCATION_MATCH PASS   Clone
+0096df50   RELOCATION_MATCH PASS   Update
+0096dbc0   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+0096dbc0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScreamerIntoAggressive (engine/CCreatureAction_ScreamerIntoAggressive.h)
+0096dbc0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 8
+  0096db60 RELOCATION_MATCH CCreatureAction_ScreamerIntoAggressive::??0CCreatureAction_ScreamerIntoAggressive@?A0x
+  0096dba0 MATCH _gapscan::?IsToFaceTargetAtStart@CCreatureAction_ScreamerIntoAggressive@?A0x
+  0096dbb0 MATCH _gapscan::?IsToFaceTarget@CCreatureAction_ScreamerIntoAggressive@?A0x
+  0096ddb0 RELOCATION_MATCH CAIStateGroup_ScreamerPursueTarget::?OnReplace@CAIStateGroup_ScreamerPursueTarget@@UAEXXZ
+  0096e3f0 RELOCATION_MATCH ?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive::??_GCCreatureAction_ScreamerIntoAggressive@?A0x
+  0096e510 RELOCATION_MATCH CCreatureAction_ScreamerIntoAggressive::?Clone@CCreatureAction_ScreamerIntoAggressive@?A0x
+  0096df50 RELOCATION_MATCH CAIStateGroup_ScreamerPursueTarget::?Update@CAIStateGroup_ScreamerPursueTarget@@UAEXXZ
+  0096dbc0 RELOCATION_MATCH CCreatureAction_ScreamerIntoAggressive::?Initialise@CCreatureAction_ScreamerIntoAggressive@?A0x

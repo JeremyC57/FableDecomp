@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q12723	0x008C9E40	'0x008C9E40 (free-function stand-in) moves with its [L100 0x00956870] ctor'	part rejected: 0x008C9E40 is ?FinishAction@CCreatureAction_NymphSummonOutOf@@UAEXXZ (Ego_r 0x009014A0 + FableWin 0x02A2D6F0; retail vftable 0x01282354 = CCreatureAction_NymphSummonOutOf slot 4), so it belongs to L74 (q12721) and was ported with it; L100's own FinishAction is 0x008C2AD0 (NF253 NOTES entry 4). The rest of q12723 stays open.

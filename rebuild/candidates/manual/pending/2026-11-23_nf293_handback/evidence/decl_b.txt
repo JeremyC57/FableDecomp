@@ -1,0 +1,89 @@
+#8 0099e5f0 SaveToFile [?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z]
+  0099e5f0(self) leaf=- inc=0
+      L38: void SaveToFile(CAFile& file) const;
+      L41: void CCharString::SaveToFile(CAFile& file) const
+  004fda60 leaf=?SaveToFile@CWorldMap@@UAEXAAVCAFile@@@Z inc=0
+      L16: void SaveToFile(CAFile& file) const;
+      L22: virtual void SaveToFile(CAFile& file);
+      L30: void CWorldMap::SaveToFile(CAFile& file)
+  004fe030 leaf=?CompileLoadableGlobalThingsToSingleFile@CWorldMap@ inc=1
+      L33: void SaveToFile(class CAFile& file) const;
+  006f9be0 leaf=?Save@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z inc=0
+      L53: void SaveToFile(CAFile& file) const;
+  00ae8680 leaf=GenerateHeaderFile inc=0
+      L29: void SaveToFile(CAFile& file) const;
+  00ae8810 leaf=- inc=0
+      L23: void SaveToFile(const CCharString& filename);
+  00aeac90 leaf=DumpInfo inc=1
+      L48: void SaveToFile(CAFile& file) const;
+  no-local-decl rows: 1 (00501450)
+#9 0099f2e0 LoadFromFile [?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z]
+  0099f2e0(self) leaf=?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z inc=3
+      L42: void LoadFromFile(CAFile&,CASuspendableProcess*,long);
+      L45: void CCharString::LoadFromFile(CAFile&file,CASuspendableProcess*process,long length){
+  004fe630 leaf=GetNavigationSectionOffsetInFile inc=2
+      L16: class CCharString{ public:X_004fe630::CCharStringData*p;X_004fe630::CCharStringData*AllocStringData(const char*,int);__declspec(noinline) void Unassig
+      L19: } void CCharString::LoadFromFile(X_004fe630::CAFile*file,void*context,int length){UnassignString();if(length==-1)length=file->GetFileSize()-file->GetF
+  00506d40 leaf=- inc=1
+      L53: void LoadFromFile(CAFile& file, CASuspendableProcess* process, long length);
+  00521ae0 leaf=- inc=2
+      L22: void LoadFromFile(CAFile* file, CASuspendableProcess* process, long size);
+      L109: void LoadFromFile(CCountedPointer<CAFile> file, long version, CCharStringSet names, CThingVector& things,
+      L112: void CThingManager::LoadFromFile(CCountedPointer<CAFile> file, long version, CCharStringSet names, CThingVector& things,
+  00821a80 leaf=?LoadFromFile@CMap@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z inc=11
+      L93: void CMap::LoadFromFile(CAFile& file, CASuspendableProcess* psuspendable_process)
+  0099fa50 leaf=- inc=0
+      L37: void LoadFromFile(CAFile& file, CASuspendableProcess* process, long length);
+      L46: LoadFromFile(file, 0, length);
+  no-local-decl rows: 8 (0040bca0,0047f58b,004959e0,0049a0b0,004a21f0,004fe2a0,00597228,00ae8d50)
+#11 00867af0 CCombatAction_GenericStrikeResponseKnockdownRecoverBase [??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@AAVCThingCreatureBase@@_N@Z]
+  00867af0(self) leaf=- inc=0
+      L27: CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);
+      L30: CCombatAction_GenericStrikeResponseKnockdownRecoverBase::CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip)
+  007f04c0 leaf=OnItemUsed inc=2
+      L62: CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);
+      L66: : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, false) { }
+  007f05c0 leaf=??0CCombatAction_GenericStrikeResponseKnockdownRecover@@QAE@AAVCThingCreatureBase@@_N@Z inc=0
+      L21: CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase& creature, bool flip);
+      L31: : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(creature, flip)
+  008ae1b0 leaf=??0CCombatAction_RecoverFromStunned@@QAE@AAVCThingCreatureBase@@_N@Z inc=0
+      L21: CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase& creature, bool flip);
+      L31: : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(creature, flip)
+  008de650 leaf=?Recover@CModeStunned@ inc=0
+      L33: CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);
+      L39: : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, false)
+  008e08c0 leaf=Recover inc=4
+      L80: CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);
+      L86: : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, flip)
+#12 008e4860 CCombatAction_Guildmaster_HealFollowersRelease [??0CCombatAction_Guildmaster_HealFollowersRelease@@QAE@AAVCThingCreatureBase@@@Z]
+  008e4860(self) leaf=??0CCombatAction_Guildmaster_HealFollowersRelease@@QAE@AAVCThingCreatureBase@@@Z inc=0
+      L43: CCombatAction_Guildmaster_HealFollowersRelease(CThingCreatureBase& owner);
+      L46: CCombatAction_Guildmaster_HealFollowersRelease::CCombatAction_Guildmaster_HealFollowersRelease(CThingCreatureBase& owner)
+  008dffd0 leaf=?FrameUpdate@CModeGuildmasterPowerUpHeal inc=2
+      L56: CCombatAction_Guildmaster_HealFollowersRelease(CThingCreatureBase* owner);
+      L85: creature->SetCurrentAction(CCombatAction_Guildmaster_HealFollowersRelease(creature));
+#13 008ae1b0 CCombatAction_RecoverFromStunned [??0CCombatAction_RecoverFromStunned@@QAE@AAVCThingCreatureBase@@_N@Z]
+  008ae1b0(self) leaf=??0CCombatAction_RecoverFromStunned@@QAE@AAVCThingCreatureBase@@_N@Z inc=0
+      L26: CCombatAction_RecoverFromStunned(CThingCreatureBase& creature, bool flip);
+      L30: CCombatAction_RecoverFromStunned::CCombatAction_RecoverFromStunned(CThingCreatureBase& creature, bool flip)
+  008a9610 leaf=?SetThingAsConscious@CGameScriptInterface@@UBEXABVCScriptThing@@_NABVCCharString@@@Z inc=4
+      L37: CCombatAction_RecoverFromStunned(CThingCreatureBase& creature, CThingCreatureBase* other);
+      L62: creature->SetCurrentAction(CCombatAction_RecoverFromStunned(*creature, 0));
+#14 008c38b0 CCombatAction_WillForcePushInto [??0CCombatAction_WillForcePushInto@@QAE@AAVCThingCreatureBase@@@Z]
+  008c38b0(self) leaf=??0CCombatAction_WillForcePushInto@@QAE@AAVCThingCreatureBase@@@Z inc=1
+      L31: CCombatAction_WillForcePushInto(CThingCreatureBase& owner);
+      L34: CCombatAction_WillForcePushInto::CCombatAction_WillForcePushInto(CThingCreatureBase& owner)
+  008c2810 leaf=?FinishAction@CCombatAction_StrikeResponseMazeDoForcePush@@UAEXXZ inc=3
+      L122: CCombatAction_WillForcePushInto(CThingCreatureBase* owner);
+      L150: creature->SetCurrentAction(CCombatAction_WillForcePushInto(creature));
+#15 00956760 CCombatAction_WillShieldInto [??0CCombatAction_WillShieldInto@@QAE@AAVCThingCreatureBase@@MM@Z]
+  00956760(self) leaf=??0CCombatAction_WillShieldInto@@QAE@AAVCThingCreatureBase@@MM@Z inc=0
+      L42: CCombatAction_WillShieldInto(CThingCreatureBase& owner, float shieldUpTime, float shieldHealth);
+      L48: CCombatAction_WillShieldInto::CCombatAction_WillShieldInto(CThingCreatureBase& owner, float shieldUpTime, float shieldHealth)
+  00955620 leaf=?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ inc=26
+      L106: AIAction_PerformActionAndWait(CCombatAction_WillShieldInto(GetCreature(), p_maze_def->ShieldUpTime, 5.0f), false);
+  00956460 leaf=?Update@CAIStateGroup_MazeTutorialBattleUseShield@@QAEXXZ inc=2
+      L49: CCombatAction_WillShieldInto(CThingCreatureBase* creature, float first, float second);
+      L86: AIAction_PerformActionAndWait(CCombatAction_WillShieldInto(GetCreature(), 3.0f, 5.0f), false);
+  00977e00 leaf=?Update@CAIStateGroup_Guildmaster@@UAEXXZ inc=19
+      L97: AIAction_PerformActionAndWait(CCombatAction_WillShieldInto(GetCreature(), 1800.0f, 5.0f), false);

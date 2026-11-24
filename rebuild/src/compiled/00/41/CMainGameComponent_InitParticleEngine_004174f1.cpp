@@ -1,3 +1,4 @@
+// Leaf: ?InitParticleEngine@CMainGameComponent@@IAEXXZ
 // CMainGameComponent::InitParticleEngine() -- start the particle engine: initialise it, give it the game's environment-interaction object (a new counted object holding the world), and open the "PARTICLE_MAIN" bank of its emitter database
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Naming wave 35c (caller respell): calls 0x00AEAAE0 as NParticleEngine::GetParticleEmitterDatabase() (?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ, FableWin.pdb + Ego_r.pdb); the database class is NParticleEngine::CParticleEmitterDatabase, so its OpenBank is FableWin.pdb ?OpenBank@CParticleEmitterDatabase@NParticleEngine@@QAEXABVCCharString@@@Z (was GetEmitterDatabase() returning a global struct).
@@ -43,7 +44,9 @@ CParticleEmitterDatabase& __fastcall GetParticleEmitterDatabase();              
 class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld*       m_pWorld;                        // +0x24
+    protected:
     void InitParticleEngine();
+    public:
 };
 void CMainGameComponent::InitParticleEngine()
 {

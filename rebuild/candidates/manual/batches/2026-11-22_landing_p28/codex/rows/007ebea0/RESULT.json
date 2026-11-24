@@ -1,0 +1,34 @@
+{
+  "include_snapshot": "cd9640ec9d46c9ba5ee9fae1afe9053ebae20b5c7dea761b4f172438c83014aa",
+  "tag": "handback_cd9640ec9d_eefea70",
+  "compile": {
+    "row": "007ebea0",
+    "tag": "handback_cd9640ec9d_eefea70",
+    "source_sha256": "eefea704ac74f2bb3055b5932325732bbe1c35f8b47ed2c6e4373557cb203bb7",
+    "requested_leaf": "?OnActionUse@CTCActionUseBed@@UAEXAAVCThing@@@Z",
+    "flags": [
+      "/GS"
+    ],
+    "retail_bytes": 2145,
+    "leaf": "?OnActionUse@CTCActionUseBed@@UAEXAAVCThing@@@Z",
+    "status": "MASKED_EQUAL",
+    "object_bytes": 2145,
+    "matched_instructions": 596,
+    "retail_instructions": 596,
+    "built_instructions": 596,
+    "hunks": 0,
+    "same_size_different_bytes": 0,
+    "pickany_complete": true,
+    "pickany_eq": 10,
+    "pickany_neq": 1,
+    "pickany_referenced_neq": 0
+  },
+  "tested": true,
+  "test_sha256": "985af5b03b8fd02d2d729cc4c92d75cc2367ff150735dd9de55b6b65c9df4761",
+  "grade": "RELOCATION_MATCH",
+  "symbol_table_checked": true,
+  "effective_pickany_eq": 13,
+  "effective_pickany_neq": 0,
+  "effective_pickany_referenced_neq": 0,
+  "strong_same_tu_copies": "none"
+}

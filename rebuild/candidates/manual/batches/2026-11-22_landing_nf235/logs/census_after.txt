@@ -1,0 +1,172 @@
+### 00495620 [/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF235/rows/00495620.cpp] 00495620 CFrontendGameComponent::~CFrontendGameComponent RELOCATION_MATCH flags= []
+      1   REL 0099a300 ??1CBaseClassNonCopyable@@MAE@XZ
+      2   REL 00bfe9bc ??3@YAXPAX@Z
+      3   REL 00bfea14 _free
+      1   REL 0122eca4 ??_7CGameComponent@@6BCDeviceResetCallback@@@
+      1   REL 0122ecb0 ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+      1   REL 0123875c ??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@
+      1   REL 01238768 ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+VT ??_7CGameComponent@@6BCDeviceResetCallback@@@ slots 2
+  0 __purecall
+  1 __purecall
+VT ??_7CGameComponent@@6BCBaseClassNonCopyable@@@ slots 5
+  0 ??_ECGameComponent@@UAEPAXI@Z
+  1 ?Init@CGameComponent@@UAEXXZ
+  2 __purecall
+  3 __purecall
+  4 ?SetQuit@CGameComponent@@MAEXXZ
+VT ??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@ slots 2
+  0 ?OnPreDeviceReset@CFrontendGameComponent@@UAEXXZ
+  1 ?OnPostDeviceReset@CFrontendGameComponent@@UAE_NXZ
+VT ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@ slots 5
+  0 ??_ECFrontendGameComponent@@UAEPAXI@Z
+  1 ?Init@CGameComponent@@UAEXXZ
+  2 ?Run@CFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  3 ?ChangeTextureColourDepth@CFrontendGameComponent@@UAEXJ@Z
+  4 ?SetQuit@CFrontendGameComponent@@UAEXXZ
+  SYM DEF ??1CFrontendGameComponent@@UAE@XZ
+  SYM DEF ??1CGameComponent@@UAE@XZ
+  SYM DEF ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@
+  SYM DEF ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CGameComponent@@6BCDeviceResetCallback@@@
+  SYM DEF ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM UND ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ?ChangeTextureColourDepth@CFrontendGameComponent@@UAEXJ@Z
+  SYM UND ?Init@CGameComponent@@UAEXXZ
+  SYM UND ?OnPostDeviceReset@CFrontendGameComponent@@UAE_NXZ
+  SYM UND ?OnPreDeviceReset@CFrontendGameComponent@@UAEXXZ
+  SYM UND ?Run@CFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  SYM UND ?SetQuit@CFrontendGameComponent@@UAEXXZ
+  SYM UND ?SetQuit@CGameComponent@@MAEXXZ
+### 00496070 [/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF235/rows/00496070.cpp] 00496070 CFrontendGameComponent::CFrontendGameComponent RELOCATION_MATCH flags= []
+      1   REL 0051d8e0 ??0CGameComponent@@QAE@AAVCGame@@@Z
+      1   REL 0123875c ??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@
+      1   REL 01238768 ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+VT ??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@ slots 2
+  0 ?OnPreDeviceReset@CFrontendGameComponent@@UAEXXZ
+  1 ?OnPostDeviceReset@CFrontendGameComponent@@UAE_NXZ
+VT ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@ slots 5
+  0 ??_ECFrontendGameComponent@@UAEPAXI@Z
+  1 ?Init@CGameComponent@@UAEXXZ
+  2 ?Run@CFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  3 ?ChangeTextureColourDepth@CFrontendGameComponent@@UAEXJ@Z
+  4 ?SetQuit@CFrontendGameComponent@@UAEXXZ
+  SYM DEF ??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z
+  SYM DEF ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@
+  SYM DEF ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ?LoadProfile@CFrontendGameComponent@@AAEXABVCWideString@@_N@Z
+  SYM DEF ?SetMode@CFrontendGameComponent@@AAEXW4EGameMode@@@Z
+  SYM UND ??0CGameComponent@@QAE@AAVCGame@@@Z
+  SYM UND ??1CFrontendGameComponent@@UAE@XZ
+  SYM UND ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM UND ?ChangeTextureColourDepth@CFrontendGameComponent@@UAEXJ@Z
+  SYM UND ?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  SYM UND ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  SYM UND ?GetWorldNames@CFrontendGameComponent@@AAEXXZ
+  SYM UND ?Init@CGameComponent@@UAEXXZ
+  SYM UND ?InitGraphics@CFrontendGameComponent@@AAE_NXZ
+  SYM UND ?OnPostDeviceReset@CFrontendGameComponent@@UAE_NXZ
+  SYM UND ?OnPreDeviceReset@CFrontendGameComponent@@UAEXXZ
+  SYM UND ?Run@CFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  SYM UND ?SetQuit@CFrontendGameComponent@@UAEXXZ
+### 00496cf0 [/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF235/rows/00496cf0.cpp] 00496cf0 CFrontendGameComponent::Run RELOCATION_MATCH flags= []
+      1   REL 00418dca ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+      1   REL 0042ea8f ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z
+      1   REL 00494900 ?Output@CFrontendGameComponent@@AAEXXZ
+      1   REL 004963a0 ?Input@CFrontendGameComponent@@AAEXXZ
+      4   REL 013b7d58 ?GOldGameComponentToDelete@@3PAVCGameComponent@@A
+  SYM DEF ??0CMainGameComponentInit@@QAE@XZ
+  SYM DEF ??0CNewFrontendGameComponentInit@@QAE@XZ
+  SYM DEF ??1CMainGameComponentInit@@QAE@XZ
+  SYM DEF ?Run@CFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  SYM UND ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+  SYM UND ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z
+  SYM UND ?GOldGameComponentToDelete@@3PAVCGameComponent@@A
+  SYM UND ?Input@CFrontendGameComponent@@AAEXXZ
+  SYM UND ?Output@CFrontendGameComponent@@AAEXXZ
+  SYM UND ?Shutdown@CFrontendGameComponent@@AAEXXZ
+### 00494370 [/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF235/rows/00494370.cpp] 00494370 CFrontendGameComponent::SetQuit MATCH flags= []
+  SYM DEF ?SetQuit@CFrontendGameComponent@@UAEXXZ
+### 00494350 [/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF235/rows/00494350.cpp] 00494350 CFrontendGameComponent::OnPreDeviceReset MATCH flags= []
+  SYM DEF ?OnPreDeviceReset@CFrontendGameComponent@@UAEXXZ
+### 00494360 [/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF235/rows/00494360.cpp] 00494360 CFrontendGameComponent::OnPostDeviceReset MATCH flags= []
+  SYM DEF ?OnPostDeviceReset@CFrontendGameComponent@@UAE_NXZ
+### 00a0a110 [/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF235/rows/00a0a110.cpp] 00a0a110 CMeshBankManager::CMeshBankManager RELOCATION_MATCH flags= []
+      1   REL 0099a2f0 ??0CBaseClassNonCopyable@@IAE@XZ
+      1   REL 00bfea0e _malloc
+      1   REL 0122de50 ??_7CDeviceResetCallback@@6B@
+      1   REL 0129c980 ??_7CMeshBankManager@@6BCDeviceResetCallback@@@
+      1   REL 0129c98c ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@
+VT ??_7CDeviceResetCallback@@6B@ slots 2
+  0 __purecall
+  1 __purecall
+VT ??_7CMeshBankManager@@6BCDeviceResetCallback@@@ slots 2
+  0 ?OnPreDeviceReset@CMeshBankManager@@UAEXXZ
+  1 ?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ
+VT ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECMeshBankManager@@UAEPAXI@Z
+  SYM DEF ??0?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@ABV?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@1@@Z
+  SYM DEF ??0?$_STLP_alloc_proxy@PAU?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@U12@V?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@1@PAU?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@1@@Z
+  SYM DEF ??0?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@ABV01@@Z
+  SYM DEF ??0?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@XZ
+  SYM DEF ??0?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@QAE@XZ
+  SYM DEF ??0?$list@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@ABV?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@1@@Z
+  SYM DEF ??0CDeviceResetCallback@@QAE@XZ
+  SYM DEF ??0CMeshBankManager@@QAE@XZ
+  SYM DEF ??1?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@XZ
+  SYM DEF ??1?$_STLP_alloc_proxy@PAU?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@U12@V?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@2@@std@@QAE@XZ
+  SYM DEF ??1?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@XZ
+  SYM DEF ??1?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@QAE@XZ
+  SYM DEF ??1?$list@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@XZ
+  SYM DEF ??_7CDeviceResetCallback@@6B@
+  SYM DEF ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CMeshBankManager@@6BCDeviceResetCallback@@@
+  SYM DEF ??_GCMeshBankManager@@UAEPAXI@Z
+  SYM DEF ?allocate@?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEPAU?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@2@IPBX@Z
+  SYM DEF ?deallocate@?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXPAU?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@2@I@Z
+  SYM UND ??0CBaseClassNonCopyable@@IAE@XZ
+  SYM UND ??1CMeshBankManager@@UAE@XZ
+  SYM UND ??_GCMeshBankManager@@UAEPAXI@Z
+  SYM UND ?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ
+  SYM UND ?OnPreDeviceReset@CMeshBankManager@@UAEXXZ
+  SYM UND ?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXXZ
+### 00a0a150 [/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF235/rows/00a0a150.cpp] 00a0a150 CMeshBankManager::~CMeshBankManager RELOCATION_MATCH flags= []
+      1   REL 0099a300 ??1CBaseClassNonCopyable@@MAE@XZ
+      1   REL 00a0a720 ?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXXZ
+      1   REL 00bfe9bc ??3@YAXPAX@Z
+      1   REL 00bfea14 _free
+      1   REL 0129c980 ??_7CMeshBankManager@@6BCDeviceResetCallback@@@
+      1   REL 0129c98c ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@
+VT ??_7CMeshBankManager@@6BCDeviceResetCallback@@@ slots 2
+  0 ?OnPreDeviceReset@CMeshBankManager@@UAEXXZ
+  1 ?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ
+VT ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECMeshBankManager@@UAEPAXI@Z
+  SYM DEF ??0?$_List_iterator@VCMeshDataBankInfo@CMeshBankManager@@U?$_Nonconst_traits@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+  SYM DEF ??1?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@XZ
+  SYM DEF ??1?$_STLP_alloc_proxy@PAU?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@U12@V?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@2@@std@@QAE@XZ
+  SYM DEF ??1?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@XZ
+  SYM DEF ??1?$list@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE@XZ
+  SYM DEF ??1CMeshBankManager@@UAE@XZ
+  SYM DEF ??C?$_List_iterator@VCMeshDataBankInfo@CMeshBankManager@@U?$_Nonconst_traits@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QBEPAVCMeshDataBankInfo@CMeshBankManager@@XZ
+  SYM DEF ??D?$_List_iterator@VCMeshDataBankInfo@CMeshBankManager@@U?$_Nonconst_traits@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QBEAAVCMeshDataBankInfo@CMeshBankManager@@XZ
+  SYM DEF ??E?$_List_iterator@VCMeshDataBankInfo@CMeshBankManager@@U?$_Nonconst_traits@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEAAU01@XZ
+  SYM DEF ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CMeshBankManager@@6BCDeviceResetCallback@@@
+  SYM DEF ??_GCMeshBankManager@@UAEPAXI@Z
+  SYM DEF ?begin@?$list@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE?AU?$_List_iterator@VCMeshDataBankInfo@CMeshBankManager@@U?$_Nonconst_traits@VCMeshDataBankInfo@CMeshBankManager@@@std@@@2@XZ
+  SYM DEF ?deallocate@?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXPAU?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@2@I@Z
+  SYM DEF ?end@?$list@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAE?AU?$_List_iterator@VCMeshDataBankInfo@CMeshBankManager@@U?$_Nonconst_traits@VCMeshDataBankInfo@CMeshBankManager@@@std@@@2@XZ
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ??_GCMeshBankManager@@UAEPAXI@Z
+  SYM UND ?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ
+  SYM UND ?OnPreDeviceReset@CMeshBankManager@@UAEXXZ
+  SYM UND ?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXXZ
+### 00a09d80 [/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF235/rows/00a09d80.cpp] 00a09d80 CMeshBankManager::OnPostDeviceReset MATCH flags= []
+  SYM DEF ?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ
+DONE

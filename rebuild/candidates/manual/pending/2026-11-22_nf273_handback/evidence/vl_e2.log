@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00adce60   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00adce60   WARN RELOC_NAME: ??0?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z -> 00a96e40 labelled 'std::map::map'
+00adce60   RELOCATION_MATCH PASS   _M_insert_overflow
+
+WINS: 1
+  00adce60 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCVertexGroupBlock@@
+VLDONE

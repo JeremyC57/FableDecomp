@@ -70,7 +70,7 @@ extern CDriveManagerPointer g_pDriveManager;            // 0x013CAA28
 
 class CWorld : public CWorldDonor {
  public:
-    bool LoadGameStateInternal(const CWideString& path, bool b);   // 0x004A21F0
+    protected: bool LoadGameStateInternal(const CWideString& path, bool b); public:   // 0x004A21F0
  protected:
     bool LoadHeroStateInternal(const CWideString& name);
 };

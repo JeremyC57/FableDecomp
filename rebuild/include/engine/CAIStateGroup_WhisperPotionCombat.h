@@ -9,6 +9,51 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_WHISPERPOTIONCOMBAT_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128D5EC (RTTI .?AVCAIStateGroup_WhisperPotionCombat@@ : CAIStateGroup_EnemyCreatureBase), 22 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_WhisperPotionCombat); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS, FABLE_RETAIL_CINTELLIGENTPOINTER.
+class CThingCreatureBase;
+#include "engine/CAIStateGroup_EnemyCreatureBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_WhisperPotionCombat : public CAIStateGroup_EnemyCreatureBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0096A8B0 ?Initialise@CAIStateGroup_WhisperPotionCombat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x009031DA ?GetStateGroupType@CAIStateGroup_WhisperPotionCombat@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void Cleanup();                                               // slot 9 0x0096A730 ?Cleanup@CAIStateGroup_WhisperPotionCombat@@UAEXXZ
+    virtual void Update();                                                // slot 12 0x0096B100 ?Update@CAIStateGroup_WhisperPotionCombat@@UAEXXZ
+protected:
+    virtual bool IsRunnableLeaf();                                        // slot 15 0x0096AAD0 ?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@MAE_NXZ
+public:
+    virtual bool IsCombatStateGroup() const;                              // slot 20 0x009031D7 ?IsCombatStateGroup@CAIStateGroup_WhisperPotionCombat@@UBE_NXZ
+public:
+    unsigned char TrapThings[0xc];                           // +0x1c vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    long          FrameLastRun;                              // +0x28
+    float         Jump_to_pos_X;                             // +0x2c C3DVector::X
+    float         Jump_to_pos_Y;                             // +0x30 C3DVector::Y
+    float         Jump_to_pos_Z;                             // +0x34 C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WhisperPotionCombat) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, TrapThings) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, FrameLastRun) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_X) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_Y) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_Z) == 0x34);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -39,5 +84,6 @@ FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_WhisperPotionCombat, FrameLast
 FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_X) == 0x2c);
 FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_Y) == 0x30);
 FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_Z) == 0x34);
+#endif // FABLE_RETAIL_CAISTATEGROUP_WHISPERPOTIONCOMBAT_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_WHISPERPOTIONCOMBAT_H

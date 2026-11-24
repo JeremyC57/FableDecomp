@@ -13,14 +13,14 @@
 // counted-pointer local (inline {count, destroy, object} release, block re-read from its frame word) and is used through it
 // for the parent/initialise calls; HideComponent re-reads the member and builds the C2DVector in the argument area.
 #include "engine/CCountedPointer.h"                 // global-scope template (Ego_r.pdb ??1?$CCountedPointer@VCComponent@NUISystem@@@@)
-namespace NUISystem {
 
-struct C2DVector {
+
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
-};
+}; namespace NUISystem {
 
 
 struct CRefCounted {
@@ -172,7 +172,7 @@ class CManager { public:
 class CScrollableList : public CComponent { public:
     unsigned char _pad004[0x178];
     void Initialise();                                  // 0x00555EB0
-    void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440
+    protected: void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha); public:   // 0x00555440
 };
 
 class CRedefinerList : public CScrollableList { public:

@@ -248,4 +248,23 @@ protected:
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AmbushTradersScript::CAT_ConvoySpy)==0x1c);
 #endif
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AmbushTradersScript)==0x1d0);
+
+#ifdef FABLE_RETAIL_PHASE1_ARCHER_PASS26
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+// Both original PDBs identify the private virtual Main. The native entity allocation is 28 bytes.
+class CQ_AmbushTradersScript::CAT_Phase1Archer : public CEntityScriptBase {
+public:
+    virtual CScriptBase* GetParentScript() const;
+private:
+    virtual void Main();
+    virtual void Init();
+    virtual void OnPersist(CPersistContext&);
+protected:
+    CQ_AmbushTradersScript& ParentClass;
+    CQ_SunnyvaleMasterData* PMasterData;
+};
+}
+FABLE_STATIC_ASSERT_AT(920,sizeof(NScript::CQ_AmbushTradersScript::CAT_Phase1Archer)==0x1c);
+#endif
 #endif

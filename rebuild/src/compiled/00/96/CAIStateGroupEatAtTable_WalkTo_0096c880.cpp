@@ -9,7 +9,7 @@
 // actions; the look target is three named float sums `pos.X + axes.Forward.X` (VC loads the right operand first;
 // the Z sum is homed in the dead `pos.X` argument slot) passed as `C3DVector(x, y, z)` (a C3DVector local takes three
 // frame words); the turn speed literal is 0.0027777f (not 1.0f/360.0f); the look-at runs twice; `return r == 2;` (full-register bool).
-// Leaf: WalkTo@CAIStateGroup_EatAtTable
+// Leaf: ?WalkTo@CAIStateGroup_EatAtTable@@IAE_NVC3DVector@@VCRightHandedSet@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_LookAtPos 0x0097D580 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, long, float) (?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z, Ego_r.pdb / FableWin.pdb).
 // Name fix (agentNF5 2026-11-10): CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 is protected, EAIActionReturn(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) (Ego_r.pdb / FableWin.pdb).
@@ -53,7 +53,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
+    protected:
     bool WalkTo(C3DVector pos, CRightHandedSet axes);
+    public:
 };
 
 bool CAIStateGroup_EatAtTable::WalkTo(C3DVector pos, CRightHandedSet axes)

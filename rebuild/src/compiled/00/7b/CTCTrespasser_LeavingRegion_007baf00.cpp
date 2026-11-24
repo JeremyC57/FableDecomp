@@ -7,7 +7,7 @@
 //   temporary), CBaseIntelligentPointer() 0x00A01B10, SetPItem 0x00A01B90 and ~CBaseIntelligentPointer 0x00A01C10 (the
 //   inline CIntelligentPointer<CThing> ctor / operator=, vtable 0x01238C6C, as landed); CVectorMap LowerBound 0x0040F020
 //   (interface 0x51 = CTCHeroOpinionDeedLog, bit 17 of +0x28; 0xBD = CTCTrespassable, bit 29 of +0x34);
-//   CTCHeroOpinionDeedLog deed-ending call 0x006C5920 (descriptive EndDeed: stamps FrameHappened, clears
+//   CTCHeroOpinionDeedLog deed-ending call 0x006C5920 (descriptive RemoveDeedStillSearchingForWitnesses: stamps FrameHappened, clears
 //   IsStillHappening, drops the handle from the witness search list) and RemoveDeed(long) 0x006C59E0 (map erase; manifest
 //   "AIState_DestroyWithPointerCleanup"); CWorld::GetWorldFrame() 0x0049D870 (static); CTCBase::GetWorld() const
 //   0x00686A70; COpinionReactionManager::ClearOpinionSource(CThing&, bool) 0x007008C0 (Ego_r.pdb signature; world +0x74).
@@ -29,7 +29,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCHeroOpinionDeedLog { public:                          // interface 0x51
-    void EndDeed(long handle);                          // 0x006C5920 (descriptive)
+    void RemoveDeedStillSearchingForWitnesses(long handle);                          // 0x006C5920 (descriptive)
     void RemoveDeed(long handle);                       // 0x006C59E0
 };
 class CTCTrespassable { public:                                // interface 0xBD
@@ -96,14 +96,14 @@ void CTCTrespasser::LeavingRegion()
             CTCHeroOpinionDeedLog* log = (CTCHeroOpinionDeedLog*)((CTCHeroOpinionDeedLog*)&ParentThing->GetTC(TCI_HERO_OPINION_DEED_LOG));
             for (long i = 0; i < 3; ++i) {
                 if (DeedHandles[i] != -1) {
-                    log->EndDeed(DeedHandles[i]);
+                    log->RemoveDeedStillSearchingForWitnesses(DeedHandles[i]);
                     if (i != 2)
                         log->RemoveDeed(DeedHandles[i]);
                     DeedHandles[i] = -1;
                 }
             }
             if (InsideBuildingNotTrespassingDeedHandle != -1) {
-                log->EndDeed(InsideBuildingNotTrespassingDeedHandle);
+                log->RemoveDeedStillSearchingForWitnesses(InsideBuildingNotTrespassingDeedHandle);
                 log->RemoveDeed(InsideBuildingNotTrespassingDeedHandle);
                 InsideBuildingNotTrespassingDeedHandle = -1;
             }

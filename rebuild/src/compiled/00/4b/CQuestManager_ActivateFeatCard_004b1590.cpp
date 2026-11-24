@@ -60,7 +60,7 @@ class CTCQuestCard { public:                                    // TC type 0x6c 
     unsigned char _pad00[0x14];
     long          FeatIndex;                             // +0x14
     long GetFeatIndex() const { return FeatIndex; }
-    bool IsActivatable_00702810() const;                 // 0x00702810
+    bool IsActivatable() const;                          // 0x00702810 ?IsActivatable@CTCQuestCard@@QBE_NXZ (Ego_r + FableWin; NF285, was IsActivatable_00702810)
 };
 
 class CBaseObject;
@@ -124,7 +124,7 @@ bool CQuestManager::ActivateFeatCard(CThing* card)
     Objectives.clear();
     if (card && !card->Dead && card->HasTC(0x6c)) {
         CTCQuestCard* tc = (CTCQuestCard*)card->GetTC(0x6c);
-        if (tc->IsActivatable_00702810()) {
+        if (tc->IsActivatable()) {
             if (ActivateFeat(tc->GetFeatIndex())) {
                 {
                     CIntelligentPointer<CThing> pointer(card);

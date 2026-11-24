@@ -1,0 +1,39 @@
+009e1e40	call	00439976	00439070L CPlayerGui::DrawPreparePrimitivesForEngine
+009e1e40	call	0048dbd1	0048dbc3L CSubtitleRenderer::GetBlackBarHeight
+009e1e40	call	0048f29d	0048f230L CSubtitleRenderer::DrawTextEmbeddedGraphics
+009e1e40	call	0048f470	0048f40aL CSubtitleRenderer::DrawTextEmbeddedHighlights
+009e1e40	call	00490561	-
+009e1e40	call	004906a9	-
+009e1e40	call	004906d0	-
+009e1e40	call	004907bd	-
+009e1e40	call	00490847	-
+009e1e40	call	0057b578	0057b43fL CTCHeroStats::RenderHeroDrunkenness
+009e1e40	call	006446af	-
+009e1e40	call	006447a6	-
+009e1e40	call	00647701	-
+009e1e40	call	0079c97d	0079c880L CTCBulletTime::FrameUpdate
+009e1e40	call	0079caf1	0079c880L CTCBulletTime::FrameUpdate
+009e1e40	call	0079d5d1	0079d360L CTCBulletTime::CTCBulletTime
+009e1e40	call	0079d902	0079d7e0L CTCBulletTime::UnPause
+009e1e40	call	009db778	009db700L CRenderManager2D::AddText
+009e1e40	call	009dcaad	009dca80L CRenderManager2D::Draw2DGraphic
+009e1e40	call	009dce85	-
+009e1e40	call	009dd01e	-
+009e1e40	call	009dd051	-
+009e1e40	call	009dd096	-
+009e1e40	call	009dd0cd	-
+009e1e40	call	009dd23f	009dd210L CRenderManager2D::Draw2DScaledGraphic
+009e1e40	call	009dd273	009dd210L CRenderManager2D::Draw2DScaledGraphic
+009e1e40	call	009dd59f	-
+009e1e40	call	009dd5d6	-
+009e1e40	call	009dd9a2	009dd960L CRenderManager2D::Draw2DLine
+009e1e40	call	009dd9bf	009dd960L CRenderManager2D::Draw2DLine
+009e1e40	call	009ddaf4	009dda50L CRenderManager2D::Draw2DBoxColours
+009e1e40	call	009ddb0e	009dda50L CRenderManager2D::Draw2DBoxColours
+009e1e40	call	009ddcaf	009ddc60L CRenderManager2D::Draw2DBoxWithZ
+009e1e40	call	009ddcc9	009ddc60L CRenderManager2D::Draw2DBoxWithZ
+009e1e40	call	009de035	009ddff0L CRenderManager2D::Draw2DTriangle
+009e1e40	call	009de078	009ddff0L CRenderManager2D::Draw2DTriangle
+009e1e40	call	009de0be	009ddff0L CRenderManager2D::Draw2DTriangle
+009e1e40	call	009de2c1	009de2a0L CRenderManager2D::DrawArc
+009e1e40	call	00b648b6	00b64550L CEngineSkyRenderer::RenderSunFlare

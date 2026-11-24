@@ -1,3 +1,4 @@
+// Leaf: ?FindQuestsForActiveRegion@CTCInventoryMap@@AAEXXZ
 // CTCInventoryMap::FindQuestsForActiveRegion() -- rebuilds ActiveRegionQuestPositions: the marker position of every active quest that contains the active region (zero markers skipped)
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
@@ -107,7 +108,9 @@ class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
     CCoordVector  ActiveRegionQuestPositions;      // +0x1dc
     unsigned char _pad1e8[0x238 - 0x1e8];
     long          ActiveRegionIndex;               // +0x238
+    private:
     void FindQuestsForActiveRegion();
+    public:
 };
 void CTCInventoryMap::FindQuestsForActiveRegion()
 {

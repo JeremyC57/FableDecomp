@@ -1,0 +1,8 @@
+## HEAD set: H_006e11f0.obj H_004fb4a0.obj
+duplicates 0
+
+UNRESOLVED 1 ?IsLoadingAnyMap@CWorldMapAdapter@X_006e11f0@@QBE_NXZ
+## new set: N_006e11f0.obj H_004fb4a0.obj
+duplicates 0
+
+LK_DONE

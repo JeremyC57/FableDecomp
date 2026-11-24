@@ -74,7 +74,7 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonReleased(const CInputEvent& event) { return event.m_released != 0; }
+    bool IsEventButtonHeld(const CInputEvent& event) { return event.m_released != 0; }
     bool IsEventGameAction(long action, const CInputEvent& event) { return event.m_action == action; }
     float GetButtonPressureForEvent(const CInputEvent& event) { return event.m_pressure; }
 };
@@ -90,7 +90,7 @@ public:
 void CInputProcessTargetLockCycleTargets::ProcessInput(const CInputEvent& event, CProcessedInput& input)
 {
     bool click = false;
-    if (IsEventGameAction(1, event) && IsEventButtonReleased(event)) {
+    if (IsEventGameAction(1, event) && IsEventButtonHeld(event)) {
         float pressure = GetButtonPressureForEvent(event);
         long timer = ClickAcceptancePulseTimer;
         if (timer >= 0 && LastButtonPressure < ButtonPressureThresholdForClick && pressure > ButtonPressureThresholdForClick)

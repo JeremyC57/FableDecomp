@@ -8,13 +8,41 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CINPUTTYPEMOUSEWHEELMOVEMENTEVENT_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01231838 (RTTI .?AVCInputTypeMouseWheelMovementEvent@@), 8 slots; every slot is this class's own (RTTI-port labels), so `void* __vftable` becomes these virtual declarations, in slot order.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+class C2DVector;
+class CInputEvent;
+class CInputTypeBase;
+enum EInputButtonEventType;
+enum EMouseButtonControl;
+enum EXboxControllerButton;
+namespace NControlSystem { enum EInputType; }
+#pragma pack(push, 1)
+class CInputTypeMouseWheelMovementEvent {
+public:
+    virtual ~CInputTypeMouseWheelMovementEvent();                         // slot 0 0x00447B50 ??_GCInputTypeMouseWheelMovementEvent@@UAEPAXI@Z
+    virtual NControlSystem::EInputType GetType() const;                   // slot 1 0x00445730 ?GetType@CInputTypeMouseWheelMovementEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+    virtual bool operator==(const CInputTypeBase&) const;                 // slot 2 0x0066F480 ??8CInputTypeMouseWheelMovementEvent@@UBE_NABVCInputTypeBase@@@Z
+    virtual bool IsEventOfThisType(const CInputEvent&) const;             // slot 3 0x0066F4B0 ?IsEventOfThisType@CInputTypeMouseWheelMovementEvent@@UBE_NABVCInputEvent@@@Z
+    virtual C2DVector GetControlDirection(const CInputEvent&) const;      // slot 4 0x0066F930 ?GetControlDirection@CInputTypeMouseWheelMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+    virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType, long, float&) const; // slot 5 0x0066F4D0 ?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+    virtual bool IsInputTypeWithButton(EXboxControllerButton) const;      // slot 6 0x00445740 ?IsInputTypeWithButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EXboxControllerButton@@@Z
+    virtual bool IsInputTypeWithMouseButton(EMouseButtonControl) const;   // slot 7 0x00445750 ?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EMouseButtonControl@@@Z
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CInputTypeMouseWheelMovementEvent) == 0x4);
+#else
 #pragma pack(push, 1)
 struct CInputTypeMouseWheelMovementEvent {
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CInputTypeMouseWheelMovementEvent) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CInputTypeMouseWheelMovementEvent, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(17, sizeof(CInputTypeMouseWheelMovementEvent) == 0x4);
+FABLE_STATIC_ASSERT_AT(18, offsetof(CInputTypeMouseWheelMovementEvent, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CINPUTTYPEMOUSEWHEELMOVEMENTEVENT_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CINPUTTYPEMOUSEWHEELMOVEMENTEVENT_H

@@ -1,0 +1,92 @@
+addr       parity           behav  name
+007032f0   WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)
+007032f0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007032f0   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+007032f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+007032f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007032f0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+007032f0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+007032f0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+007032f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007032f0   RELOCATION_MATCH PASS   OnCreate
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ea2c0   RELOCATION_MATCH PASS   PerformSequenceReset
+006eb390   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CombatDialogueManager (engine/CombatDialogueManager.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006eb390   WARN RELOC_NAME: ?ApplyBlockResponse@CTCCombat@@QAEXPAVCThing@@@Z -> 00733cf0 labelled 'CTCCombat::UpdateGetHitCounterAttack'
+006eb390   RELOCATION_MATCH PASS   SetupNextSequenceForAttacker
+006eb600   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006eb600   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+006eb600   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006eb600   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006eb600   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006eb600   RELOCATION_MATCH PASS   GetNextActionForCreature
+008cc8e0   WARN SHARED_HEADER_AVAILABLE CTCHitOnCollision (engine/CTCHitOnCollision.h)
+008cc8e0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008cc8e0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008cc8e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008cc8e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008cc8e0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cc8e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineLungeAttack (engine/CCreatureAction_BalverineLungeAttack.h)
+008cc8e0   RELOCATION_MATCH PASS   Initialise
+007fd580   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+007fd580   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007fd580   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNotList (engine/CThingFilter_IsNotList.h)
+007fd580   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+007fd580   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+007fd580   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007fd580   WARN SHARED_HEADER_AVAILABLE CTCDriverBase (engine/CTCDriverBase.h)
+007fd580   WARN SHARED_HEADER_AVAILABLE CTCDPhysicalObstruction (engine/CTCDPhysicalObstruction.h)
+007fd580   RELOCATION_MATCH PASS   UpdateAdditionalImpulse
+0064f6dc   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0064f6dc   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0064f6dc   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+0064f6dc   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive (engine/CEnginePrimitive.h)
+0064f6dc   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DSprite (engine/CEnginePrimitive2DSprite.h)
+0064f6dc   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+0064f6dc   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo (engine/CEnginePrimitivePrepareInfo.h)
+0064f6dc   WARN RELOC_NAME: ?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+0064f6dc   RELOCATION_MATCH PASS   DrawOracleSymbols
+0064499c   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0064499c   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+0064499c   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+0064499c   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+0064499c   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DSprite (engine/CEnginePrimitive2DSprite.h)
+0064499c   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer (engine/CEnginePrimitiveRenderer.h)
+0064499c   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo (engine/CEnginePrimitivePrepareInfo.h)
+0064499c   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0064499c   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0064499c   RELOCATION_MATCH PASS   Draw
+0049e8c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0049e8c0   RELOCATION_MATCH PASS   StopAutoSaveProgress
+009e9f20   RELOCATION_MATCH PASS   StopProgress
+
+WINS: 10
+  007032f0 RELOCATION_MATCH CThingObject::?OnCreate@CThingObject
+  006ea2c0 RELOCATION_MATCH CCombatManager::?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+  006eb390 RELOCATION_MATCH CCombatManager::?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z
+  006eb600 RELOCATION_MATCH CCombatManager::?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@AAVCThingCreatureBase@@@Z
+  008cc8e0 RELOCATION_MATCH CCreatureAction_BalverineLungeAttack::Initialise
+  007fd580 RELOCATION_MATCH CTCDPhysicalObstruction::UpdateAdditionalImpulse
+  0064f6dc RELOCATION_MATCH NPlayerGui_CDrawQuestInfo::DrawOracleSymbols
+  0064499c RELOCATION_MATCH NPlayerGui::CDrawPerceivers::Draw
+  0049e8c0 RELOCATION_MATCH CWorld::?StopAutoSaveProgress@CWorld@@IAEXXZ
+  009e9f20 RELOCATION_MATCH _global::?StopProgress@NProgressDisplay@@YIX_N0@Z
+RF_DONE

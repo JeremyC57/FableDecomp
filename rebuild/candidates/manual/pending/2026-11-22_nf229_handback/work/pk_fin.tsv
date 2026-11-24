@@ -1,0 +1,6 @@
+0042b8fc fin	?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@I@Z	20	-	NO-OWNER
+0042b8fc fin	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	44	004291de	EQ
+0042b8fc fin	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	5	00429c53	EQ
+0042b8fc fin	??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ	19	00429e16	EQ
+0042b8fc fin	??_G?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAEPAXI@Z	28	0042a8e0	EQ
+0042b8fc fin	??$_Destroy@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@0@@Z	9	-	NO-OWNER

@@ -29,7 +29,7 @@ class CDataOutputStream { public:
     void WriteUChar(unsigned char value);               // 0x00993E50
     void WriteFloat(float value);                       // 0x00993EE0
     void Write3DVector(const C3DVector& value);         // 0x00993FD0
-    void WriteBuffer(const void* data, long size);      // 0x00996610 (compressed block)
+    void WriteCompressed(const void* data, long size);      // 0x00996610 (compressed block); NF299: PDB name, was WriteBuffer
 public:
     void WriteEBOOL(bool);   // 0x00993E30
     void WriteSLONG(long);   // 0x00993EB0
@@ -85,7 +85,7 @@ class C3DPrimitive2 { public:
     bool UploadedFlag;                                  // +0x64
     unsigned char VertexStreamFlags;                    // +0x65
     unsigned long InitFlags;                            // +0x68
-    bool UploadToIndexBuffer(unsigned long flags);      // 0x00A8F9E0
+    private: bool UploadToIndexBuffer(unsigned long flags); public:      // 0x00A8F9E0
     void SaveBinary(CDataOutputStream& out);
 };
 
@@ -126,13 +126,13 @@ void C3DPrimitive2::SaveBinary(CDataOutputStream& out)
     out.WriteULONG(vb->Stride);
     out.WriteULONG(vb->Type);
     void* vertices = vb->Lock(0, 0, 0);
-    out.WriteBuffer(vertices, vb->Length);
+    out.WriteCompressed(vertices, vb->Length);
     vb->Unlock();
 
     UploadToIndexBuffer(0);
     CIndexBuffer* ib = IndexBuffer;
     unsigned char* indices = ib->Lock(0, 0, 0);
-    out.WriteBuffer(indices, IndexCount * reps * sizeof(unsigned short));
+    out.WriteCompressed(indices, IndexCount * reps * sizeof(unsigned short));
     ib->Unlock();
 
     unsigned long clothCount = ClothPrimitives.size();

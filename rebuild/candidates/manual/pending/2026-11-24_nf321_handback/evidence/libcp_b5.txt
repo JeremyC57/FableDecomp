@@ -1,0 +1,1 @@
+00b23b50 LIBCP_OK renames=?SetCamera@CEngine_Methods@@QAEXPAVCCamera@@@Z=?SetCamera@CEngine@@UAEXPBVCCamera@@@Z ?AddExclusiveObserver@CEngineCamera@@QAEXPAVCCamera@@@Z=?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z ; .drectve EQUAL ; sections=2

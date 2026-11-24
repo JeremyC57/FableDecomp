@@ -1,0 +1,6 @@
+# NF277 lessons
+- A landed host-model test can PASS without ever touching its row: vland links a test ALONE first. Prove a rewritten test links the row with two runs: tst.py alone (LNK2019 on the row's leaf) and tst.py with EXTRA_OBJ = the row object (PASS).
+- A fold row (by-path include of the destructor's landed file, no code) is checked in one line: objsec of the fold object against the destructor row's object (ALL_EQ) settles pk, both vtables and link-order independence at once.
+- A test can reach a row's vtable without constructing the class (which would emit ??_7 / ??_G in the test TU): call the row's destructor non-virtually, capture the vptr in a manager stub it calls, plant it in raw storage, then `delete` / `p->~T()` hit slot 0.
+- A private member of a header-less (quarantined) class is called from a test through a test-only `friend` in the test's copy of the class block plus a qualified call; friends do not enter mangled names, and the qualified call avoids needing a vtable.
+- Before rewriting a test onto the shared headers, check the row's own leaf against both PDBs: a row still on a local non-virtual base (QAE where the PDBs say UAE) cannot be linked from a shared-header test; it needs its port first (0x00BFD480).

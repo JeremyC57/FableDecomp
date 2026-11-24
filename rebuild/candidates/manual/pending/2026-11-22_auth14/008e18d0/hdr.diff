@@ -1,0 +1,40 @@
+--- a/rebuild/include/engine/NParticleEngine_CParticleUpdateParameters.h
++++ b/rebuild/include/engine/NParticleEngine_CParticleUpdateParameters.h
+@@ -52,7 +52,12 @@
+ #else
+     CParticleUpdateParameters() { }
+ #endif
++#ifndef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_IMPLICIT_DTOR
+     virtual ~CParticleUpdateParameters();                    // 0x006E2500
++#else
++    // Opt-in (p25N, row 0x008E18D0; re-made by AUTH1, re-based on HEAD by AUTH9): no user-declared destructor -- the implicit one
++    // (virtual through CBaseClass) is expanded in the row's sky block and its out-of-line COMDAT compares SAME with retail 0x006E2500.
++#endif
+ #ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_UPDATE_DECL_PASS26
+     // Original named COMDAT at native 0x0076C750, called by Activate.
+     void Update();
+--- a/rebuild/include/engine/CThing.h
++++ b/rebuild/include/engine/CThing.h
+@@ -422,7 +422,22 @@
+         }
+         return false;
+     }
++#ifdef FABLE_RETAIL_CTHING_GETTC_EGOD_WRAPPER
++    // Opt-in (AUTH11 2026-11-22, row 0x008E18D0, measurement set): Ego_d.pdb / FableWin.pdb ??$GetTC@VCTCDParticleEmitter@@@CThing@@
++    // (74 B, lines 43..51 = 9/21/17/15/4/2/6; parameter `ptc`, block local `CTCBase& base`): HasTC, the GetTC(ETCInterfaceType)
++    // reference, the checked cast (FableWin GFDebugPDynamicCast<CTCBase *,CTCDParticleEmitter *>(original_val, new_type)). This text
++    // gives exactly those line sizes under VC10 SP1 (odall10 fablelib). The release cast is engine/GFDebugPDynamicCast.h's static cast.
++    template<class T> FABLE_FORCEINLINE bool GetTC(T** ptc) {
++        if(HasTC(T::StatGetInterfaceType())) {
++            CTCBase& base=GetTC(T::StatGetInterfaceType());
++            *ptc=GFDebugPDynamicCast(&base,(T*)0);
++            return true;
++        }
++        return false;
++    }
++#else
+     template<class T> FABLE_FORCEINLINE bool GetTC(T** result) { return GetTC(T::StatGetInterfaceType(),result); }
++#endif
+     template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const { return PeekTC(T::StatGetInterfaceType(),result); }
+ #ifdef FABLE_RETAIL_CTHING_GETTCOFLEAFTYPE
+     // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ??$GetTCOfLeafType@VCTCTargetingPlayer@@@CThing@@QAE_NPAPAVCTCTargetingPlayer@@@Z

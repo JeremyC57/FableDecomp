@@ -1,5 +1,5 @@
 // CTCActivationReceptorRelay::SetTriggerState(bool state) -- pass the relay's activation state on to the activation-trigger component of its own thing (OnTriggerActivate)
-// Leaf: ?SetTriggerState@CTCActivationReceptorRelay@@QAEX_N@Z
+// Leaf: ?SetTriggerState@CTCActivationReceptorRelay@@AAEX_N@Z
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members m_pFirst/m_pLast are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F8160, 88 bytes (`ret 4` + int3 padding). FableWin.pdb / Ego_r.pdb
 //   `?SetTriggerState@CTCActivationReceptorRelay@@AAEX_N@Z` (private thiscall; modelled public, hence the QAE leaf); callers CTCActivationReceptorRelay::Activate
@@ -31,7 +31,9 @@ class CTCActivationReceptorRelay {
 public:
     virtual void v00();
     CThing* ParentThing;                                        // +0x04 (CTCBase)
+    private:
     void SetTriggerState(bool state);
+    public:
 };
 
 void CTCActivationReceptorRelay::SetTriggerState(bool state)

@@ -1,0 +1,15 @@
+{
+  "folded_alias": "??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ",
+  "existing_binding": "00a01c10",
+  "actual_owner": "??1CBaseIntelligentPointer@@UAE@XZ",
+  "source_of_existing_alias": "00652fa4",
+  "leaf_references_to_alias": 0,
+  "leaf_calls_to_actual_owner": 2,
+  "thunk": "Unreferenced five-byte tail jump to the base destructor.",
+  "decision": "EXTRA_RULES.md, 2026-11-21, explicitly permits this exact existing folded alias and queues its split. The raw checker reports it accurately as NEQ; no alternate native address is asserted.",
+  "extra_verified_owners": [
+    "00643BEF GFToScreen(box)",
+    "0041A7C0 C2DBoxF copy constructor",
+    "00644644 CDrawHealth::ClearEffects"
+  ]
+}

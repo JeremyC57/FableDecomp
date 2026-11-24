@@ -1,0 +1,5 @@
+# 0062ea40 defined/undefined externals: HEAD object (<) v NF261 row object (>)
+1c1
+< DEF ?CCombatActionBase_IsToUseRotationInAnimation@@YI_NXZ
+---
+> DEF ?IsToUseRotationInAnimation@CCombatActionBase@@UBE_NXZ

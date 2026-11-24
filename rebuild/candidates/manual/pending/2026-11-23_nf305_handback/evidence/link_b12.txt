@@ -1,0 +1,32 @@
+## HEAD set: H_0097e200.obj H_00918880.obj H_0084d080.obj H_00b30480.obj H_00b91710.obj H_0048da30.obj H_004af610.obj H_00730c00.obj H_006d8170.obj H_006d83b0.obj H_005ee02e.obj H_0079ddb0.obj H_007122c0.obj H_00787bf1.obj H_00662a00.obj H_00666d10.obj H_004b4490.obj H_00644179.obj H_0064e019.obj H_006d7cb0.obj H_006d8b50.obj H_006e9d90.obj H_006ea2c0.obj H_006ebee0.obj H_00730f90.obj H_00752640.obj H_00788555.obj H_007887be.obj H_0079e3a0.obj H_00858cc0.obj H_00872050.obj H_00892f40.obj H_008e9080.obj H_00904380.obj H_00904ee0.obj H_00918900.obj H_009189c0.obj H_00918ac0.obj H_00918b50.obj H_0094fe30.obj H_0097ef60.obj H_0097f3a0.obj H_009a06b0.obj H_00b8ff70.obj H_00bdda80.obj
+duplicates 4
+H_006d8170.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceTyp
+H_006d7cb0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+H_00858cc0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+H_00904ee0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+UNRESOLVED 1 ?AIAction_DoNothing@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@XZ
+UNRESOLVED 1 ?ClipSphere@CEngineCamera@@QAE_NABVC3DVector@@MPAK@Z
+UNRESOLVED 1 ?ExtendData@?$CBasicString@D@@QAEXK@Z
+UNRESOLVED 2 ?GetAnimFromName@CThingCreatureBase@@QBEPBVCAnimationEntry@@ABVCCharString@@J@Z
+UNRESOLVED 1 ?GetCamTools@CBase@NCameraModes@@QBEABVCTools@2@XZ
+UNRESOLVED 4 ?GetCombatTypeDef@CThingCreatureBase@@QAEPAVCCombatTypeDef@@XZ
+UNRESOLVED 2 ?GetCombatTypeDef@CThingCreatureBase@@QBEPAVCCombatTypeDef@@XZ
+UNRESOLVED 1 ?InvalidateAll@CEngineSceneGridCell@@QAEXXZ
+UNRESOLVED 1 ?IsAbilityPotentiallyAvailable@CTCInventoryAbilities@@QAE_NW4EHeroAbility@@@Z
+UNRESOLVED 2 ?IsActionListEmpty@CTCScriptedControl@@QAE_NXZ
+UNRESOLVED 4 ?IsOpen@CFadeInFadeOutBase@@QAE_NXZ
+UNRESOLVED 2 ?IsQuestActive@CQuestManager@@QAE_NABVCCharString@@@Z
+UNRESOLVED 1 ?Open@CTCDoor@@QAEX_N@Z
+UNRESOLVED 2 ?Reset@CTCTrapBase@@QAEXXZ
+UNRESOLVED 1 ?StopSound@CTCPhysicalShieldSpell@@QAEXK@Z
+## new set: H_0097e200.obj N_00918880.obj H_0084d080.obj H_00b30480.obj H_00b91710.obj H_0048da30.obj H_004af610.obj H_00730c00.obj N_006d8170.obj N_006d83b0.obj H_005ee02e.obj H_0079ddb0.obj H_007122c0.obj H_00787bf1.obj H_00662a00.obj H_00666d10.obj N_004b4490.obj N_00644179.obj N_0064e019.obj N_006d7cb0.obj N_006d8b50.obj N_006e9d90.obj N_006ea2c0.obj N_006ebee0.obj N_00730f90.obj N_00752640.obj N_00788555.obj N_007887be.obj N_0079e3a0.obj N_00858cc0.obj N_00872050.obj N_00892f40.obj N_008e9080.obj N_00904380.obj N_00904ee0.obj N_00918900.obj N_009189c0.obj N_00918ac0.obj N_00918b50.obj N_0094fe30.obj N_0097ef60.obj N_0097f3a0.obj N_009a06b0.obj N_00b8ff70.obj N_00bdda80.obj
+duplicates 4
+N_006d8170.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceTyp
+N_006d7cb0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+N_00858cc0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+N_00904ee0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+UNRESOLVED 1 ?ExtendData@?$CBasicString@D@@IAEXK@Z
+UNRESOLVED 6 ?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ
+UNRESOLVED 4 ?IsOpen@CFadeInFadeOutBase@@QBE_NXZ
+UNRESOLVED 1 ?Open@CTCDoor@@IAEX_N@Z
+LK_DONE

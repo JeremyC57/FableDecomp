@@ -78,6 +78,13 @@ private:
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_HEIGHTLIMITS_PASS24
     void UpdateHeightLimits();
 #endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_EARTHQUAKE_PASS26
+    // Both original PDBs: private UpdateEarthquake; original World getter is public and inline.
+    void UpdateEarthquake();
+public:
+    const CWorld& GetWorld() const { return World; }
+private:
+#endif
     void SetCameraManagerDef(const CDefPointer<const CCameraManagerDef>& def);         // 0x0069A850 (Ego_r.pdb AAE: private)
 public:
     class CQuake {                                                       // Ego_r.pdb CGameCameraManager::CQuake, 0x30 bytes
@@ -363,6 +370,16 @@ public:
     void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
     // Retail opt-in (chunk 725): FableWin.pdb members at their retail addresses. CurrentMode is the real
     // CCountedPointer<NCameraModes::CBase> (engine/NCameraModes_CBase.h for the mode's vtable).
+#ifdef FABLE_RETAIL_PCMOUSELOOK_GETMODE_PASS26
+    NCameraModes::CBase* GetCameraMode() { return CurrentMode.Get(); }
+    template<class T> bool GetCameraMode(T** mode) {
+        if (HasCameraMode(T::StatGetModeType())) {
+            *mode = static_cast<T*>(CurrentMode.Get());
+            return true;
+        }
+        return false;
+    }
+#endif
     NCameraModes::EMode GetCameraModeType() const;           // 0x00697AB0 ?GetCameraModeType@CGameCameraManager@@QBE?AW4EMode@NCameraModes@@XZ
     bool HasCameraMode(NCameraModes::EMode) const;           // 0x00697AC0 ?HasCameraMode@CGameCameraManager@@QBE_NW4EMode@NCameraModes@@@Z
     // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): FableWin.pdb ?GetCamera@CGameCameraManager@@QAEAAVCCamera@@XZ

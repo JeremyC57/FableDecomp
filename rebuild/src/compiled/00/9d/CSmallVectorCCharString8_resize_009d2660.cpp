@@ -29,7 +29,7 @@ public:
     void resize(long n, const T& fill);
     void push_back(const T& value);
     T* erase(T* where);
-    void Clear();                                         // 0x009D2110 (out of line)
+    protected: void Clear(); public:                                         // 0x009D2110 (out of line)
     void Allocate(unsigned long n);
     void Copy(const CSmallVector& other);
 };

@@ -6,7 +6,7 @@
 // Callees: this class's virtual slot 17 (+0x44, bool "uses a gather point"), CBaseIntelligentPointer::GetPItem
 // @ 0x00A01B50 (three times on POwner at +0x34: the inlined IS_THING_ALIVE pair, then the object for the lookup),
 // CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface on the owner, type 0x7B = CTCGatherPointBase, bit 27 of
-// the bitset dword at +0x2c), CTCGatherPointBase::RemoveUser(CThing*) @ 0x007FFDB0 with PBrain->PCreature.
+// the bitset dword at +0x2c), CTCGatherPointBase::RemoveAsUser(const CThing&) @ 0x007FFDB0 with PBrain->PCreature.
 // Shape: nested ifs, no return value; `POwner.GetPItem()->GetInterface(&gp, 0x7b)` re-fetches the item for the
 // lookup (lea esi over the owner's map), the creature argument is loaded before the component for the call.
 // Layout local (the engine header flattens the base and has no vtable).
@@ -69,7 +69,7 @@ long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPr
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CTCGatherPointBase { public:                     // interface type 0x7B
-    void RemoveUser(CThing* user);              // 0x007FFDB0
+    void RemoveAsUser(const CThing& user);      // 0x007FFDB0 (NF306: Ego_r + FableWin QAEXABVCThing; was RemoveUser(CThing*))
 };
 
 struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroupBase {
@@ -89,7 +89,7 @@ void CAIStateGroup_MinionSitOnSeatBase::Cleanup()
         if (IS_THING_ALIVE(POwner)) {
             CTCGatherPointBase* pGatherPoint;
             if (POwner.Get()->GetTC(TCI_GATHER_POINT, &pGatherPoint))
-                pGatherPoint->RemoveUser(PBrain->PCreature);
+                pGatherPoint->RemoveAsUser(*PBrain->PCreature);
         }
     }
 }

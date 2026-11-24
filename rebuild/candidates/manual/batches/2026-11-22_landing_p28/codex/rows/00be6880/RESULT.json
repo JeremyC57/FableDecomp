@@ -1,0 +1,34 @@
+{
+  "include_snapshot": "cd9640ec9d46c9ba5ee9fae1afe9053ebae20b5c7dea761b4f172438c83014aa",
+  "tag": "handback_cd9640ec9d_f855e30",
+  "compile": {
+    "row": "00be6880",
+    "tag": "handback_cd9640ec9d_f855e30",
+    "source_sha256": "f855e30e687ff7f7eb824971c4978db77fbdfb955137a06b4c2b256a44123fde",
+    "requested_leaf": "?BuildDefaultSection@CLandscapeBackgroundPatch@@QAEXXZ",
+    "flags": [
+      "/GS"
+    ],
+    "retail_bytes": 1776,
+    "leaf": "?BuildDefaultSection@CLandscapeBackgroundPatch@@QAEXXZ",
+    "status": "MASKED_EQUAL",
+    "object_bytes": 1776,
+    "matched_instructions": 416,
+    "retail_instructions": 416,
+    "built_instructions": 416,
+    "hunks": 0,
+    "same_size_different_bytes": 0,
+    "pickany_complete": true,
+    "pickany_eq": 0,
+    "pickany_neq": 0,
+    "pickany_referenced_neq": 0
+  },
+  "tested": true,
+  "test_sha256": "7dbbf5d6bbd1106d353696d7eda053b1408e24dba1286f4595cd41d0e94c5d6a",
+  "grade": "RELOCATION_MATCH",
+  "symbol_table_checked": true,
+  "effective_pickany_eq": 0,
+  "effective_pickany_neq": 0,
+  "effective_pickany_referenced_neq": 0,
+  "strong_same_tu_copies": "00BE66F0 SetTargetVertexNormal, 150 bytes and three operands verified"
+}

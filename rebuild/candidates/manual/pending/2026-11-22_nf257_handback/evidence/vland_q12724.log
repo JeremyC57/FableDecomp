@@ -1,0 +1,39 @@
+addr       parity           behav  name
+0096b600   RELOCATION_MATCH PASS   Update
+0096ae50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastAssassinRush (engine/CCreatureAction_CastAssassinRush.h)
+0096ae50   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+0096ae50   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WhisperRetreat (engine/CAIStateGroup_WhisperRetreat.h)
+0096ae50   RELOCATION_MATCH PASS   UseWill
+008fe547   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WhisperRetreat (engine/CAIStateGroup_WhisperRetreat.h)
+008fe547   RELOCATION_MATCH PASS   GetName
+0090188e   MATCH            PASS   GetStateGroupType
+0096a260   WARN RELOC_NAME: ??$GetEvent@VCEventHitBy@NEntityEvents@@V?$CFilter_Bind3@VCIsHitEventHitByShot@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsEventCreatedAfter@2@@@@CTCEntityEvents@@QBE_NPAPAVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind3@VCIsHitEventHitByShot@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsEventCreatedAfter@2@@@@Z -> 0096bac0 labelled 'CTCEntityEvents::GetEvent<NEntityEvents::CEventHitBy,CFilter_Bind3<...>>'
+0096a260   WARN RELOC_NAME: ??$GetEvent@VCEventHitBySpecialAbility@NEntityEvents@@VCIsEventCreatedAfter@2@@CTCEntityEvents@@QBE_NPAPAVCEventHitBySpecialAbility@NEntityEvents@@ABVCIsEventCreatedAfter@2@@Z -> 0096bc20 labelled 'CTCEntityEvents::GetEvent<NEntityEvents::CEventHitBySpecialAbility,NEntityEvents::CIsEventCreatedAfter>'
+0096a260   RELOCATION_MATCH PASS   FindHitEvent
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionFindPersonalSpace (engine/CAIStateGroup_MinionFindPersonalSpace.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionGuardReactToBodyFoundMessage (engine/CAIStateGroup_MinionGuardReactToBodyFoundMessage.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditSitRoundCampfire (engine/CAIStateGroup_BanditSitRoundCampfire.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionFaceHero (engine/CAIStateGroup_MinionFaceHero.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionPutOutFires (engine/CAIStateGroup_MinionPutOutFires.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToCorpse (engine/CAIStateGroup_MinionReactToCorpse.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BirdStartled (engine/CAIStateGroup_BirdStartled.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskPatrol (engine/CAIStateGroup_VillageTaskPatrol.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskSecuritySweep (engine/CAIStateGroup_VillageTaskSecuritySweep.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkInWarehouse (engine/CAIStateGroup_WorkInWarehouse.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_NymphAttack (engine/CAIStateGroup_NymphAttack.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesStage3 (engine/CAIStateGroup_JackOfBladesStage3.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureSeekEnemyUnderground (engine/CAIStateGroup_CreatureSeekEnemyUnderground.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ScreamerPursueTarget (engine/CAIStateGroup_ScreamerPursueTarget.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SetupWares (engine/CAIStateGroup_SetupWares.h)
+0121f86f   WARN RELOC_CONFLICT: _$E2 -> 0122a20a here, 01228930 in landed 01219f00
+0121f86f   WARN RELOC_NAME: _$E2 -> 0122a20a labelled 'CAIBrain::DestroyStateGroupInfo'
+0121f86f   RELOCATION_MATCH PASS   `dynamic initializer for 'StateGroupInfo'' (object symbol _$E1 of its TU)
+
+WINS: 6
+  0096b600 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?Update@CAIStateGroup_WhisperRetreat@@UAEXXZ
+  0096ae50 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ
+  008fe547 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?GetName@CAIStateGroup_WhisperRetreat@@SI?AVCCharString@@XZ
+  0090188e MATCH CAIStateGroup_WhisperRetreat::?GetStateGroupType@CAIStateGroup_WhisperRetreat_Methods@@QAEHXZ
+  0096a260 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?FindHitEvent@CAIStateGroup_WhisperRetreat@@IAE_NXZ
+  0121f86f RELOCATION_MATCH CAIBrain::_$E1
+EXIT 0

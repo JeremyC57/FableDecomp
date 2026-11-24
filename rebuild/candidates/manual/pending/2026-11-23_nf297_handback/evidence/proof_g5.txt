@@ -1,0 +1,12 @@
+##### 004aeaa0 renames: ?AddEvent@CGameEventPackage@@QAEXPAVCGameEvent@@@Z=?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 00447390 renames: ?SetControlScheme@CGamePlayerInterface@@QAEXH@Z=?SetControlScheme@CGamePlayerInterface@@QAEXJ@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 006bbe30 renames: ?SetTimeAsStopped@CGameTimeManager@@QAEX_NPAJ@Z=?SetTimeAsStopped@CGameTimeManager@@QAEX_NAAJ@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 0065b0b4 renames: ?SetTimeAsStopped@CGameTimeManager@@QAEX_NPAJ@Z=?SetTimeAsStopped@CGameTimeManager@@QAEX_NAAJ@Z
+ALL_EQ sections=8 DEF=7 tables=-
+##### 0041e10d renames: ?RemoveEventFromQueue@CInputManager@@QAEXPAVCInputEvent@@@Z=?RemoveEventFromQueue@CInputManager@@QAEXABVCInputEvent@@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 00bcb800 renames: ?GetFrame@CGraphicInfo@@QAE_NPAVCGraphicFrame@@KKK@Z=?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z ?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXPAVCEngineInternalPrimitiveSpriteTrail@@_N@Z=?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z
+ALL_EQ sections=23 DEF=21 tables=-

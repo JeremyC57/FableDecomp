@@ -9,7 +9,10 @@
 #define FABLE_RETAIL_STLP_SORT_HEAP_BODY
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_INSERT_DISPATCH_NOINLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF246 (2026-11-22, the 0x005127A0 family): FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE -> FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+//   (NF241's swap): the leaf has no list destructor relocation, but its pick-any __pop_heap copy (owner 0x00A83570, ported the same way)
+//   called the noinline ~list and bound it at 0x005127A0; it now calls ~_List_base<C2DLineF> 0x005127A0 and equals its owner.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #define FABLE_RETAIL_STLP_LIST_ASSIGN_POPBACK_DECL
 #include "stlport/fable_containers.h"
 #include "engine/C2DLineF.h"

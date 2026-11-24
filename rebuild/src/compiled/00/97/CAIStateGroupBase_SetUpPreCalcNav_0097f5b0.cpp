@@ -30,7 +30,7 @@ class CTCPreCalculatedNavigationRoute              // interface type 0xA6
     unsigned char _pad00[0x20];
     std::vector<std::pair<C2DVector, unsigned char> > Route;   // +0x20
     bool HasRoute();                                // 0x00800500
-    C3DVector GetRouteDestination();                // 0x008004D0
+    C3DVector GetRouteDestination() const;                // 0x008004D0
 };
 
 #define FABLE_RETAIL_CTCCREATURENAVIGATION

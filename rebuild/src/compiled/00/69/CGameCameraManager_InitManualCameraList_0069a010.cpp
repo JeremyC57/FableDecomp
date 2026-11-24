@@ -1,5 +1,5 @@
 // CGameCameraManager::InitManualCameraList() -- rebuild the manual camera list from the manager def's CameraList mode indices (each def that loads is pushed), then point the current and initial list iterators at the previously selected mode's new position, else at the def's InitialMode
-// Leaf: ?InitManualCameraList@
+// Leaf: ?InitManualCameraList@CGameCameraManager@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069A010, 400 bytes (389 without padding), thiscall, plain `ret`. Ego_r.pdb
 //   `?InitManualCameraList@CGameCameraManager@@AAEXXZ` (private); called from CGameCameraManager::SetCameraManagerDef 0x0069A850
 //   right after PDef is replaced (followed by InitSpecialCameraList 0x0069A1A0).
@@ -211,7 +211,9 @@ public:
     std::vector<CDefPointer<const CCameraModeDef> >::iterator InitialModeCameraListIndex;   // +0x118
     unsigned char _pad11c[0x134 - 0x11c];
     CDefPointer<const CCameraManagerDef> PDef;         // +0x134
+    private:
     void InitManualCameraList();
+    public:
 };
 
 void CGameCameraManager::InitManualCameraList()

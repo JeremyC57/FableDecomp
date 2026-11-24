@@ -1,0 +1,215 @@
+# CGameScriptInterface.h direct includers the planted control did NOT flag, and why (the plant sits inside #ifdef FABLE_RETAIL_NSCRIPT, line 18)
+004a6ab0 no NSCRIPT define rebuild/src/compiled/00/4a/CWorld_CWorld_004a6ab0.cpp
+004ae8a0 no NSCRIPT define rebuild/src/compiled/00/4a/CWorld_vectordeletingdestructor_004ae8a0.cpp
+00697e20 no NSCRIPT define rebuild/src/compiled/00/69/CGameCameraManager_SetCameraMode_00697e20.cpp
+006e7290 no NSCRIPT define rebuild/src/compiled/00/6e/CGameScriptInterface_EndLetterBox_006e7290.cpp
+006e73b0 no NSCRIPT define rebuild/src/compiled/00/6e/CGameScriptInterface_FreezeControls_006e73b0.cpp
+006e7340 no NSCRIPT define rebuild/src/compiled/00/6e/CGameScriptInterface_GetGameAngleXY_006e7340.cpp
+006e77f0 no NSCRIPT define rebuild/src/compiled/00/6e/CGameScriptInterface_GetScriptSpriteBySymbol_006e77f0.cpp
+006e71b0 no NSCRIPT define rebuild/src/compiled/00/6e/CGameScriptInterface_IsActiveThreadTerminating_006e71b0.cpp
+006e7300 no NSCRIPT define rebuild/src/compiled/00/6e/CGameScriptInterface_IsCameraPosOnScreen_006e7300.cpp
+006e7d40 no NSCRIPT define rebuild/src/compiled/00/6e/CGameScriptInterface_ResetCreatureCreationDelayFrames_006e7d40.cpp
+006e73e0 no NSCRIPT define rebuild/src/compiled/00/6e/CGameScriptInterface_UnfreezeControls_006e73e0.cpp
+006e7630 no NSCRIPT define rebuild/src/compiled/00/6e/CScriptGameResourceObjectMovie_CScriptGameResourceObjectMovie_006e7630.cpp
+0088f930 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_AutoSave_0088f930.cpp
+0088ec90 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_CameraSetCameraPreloadFlag_0088ec90.cpp
+0088ece0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_CameraShake_0088ece0.cpp
+0088e520 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_EndCutFade_0088e520.cpp
+0088f560 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_EntityCastLightningAtTarget_0088f560.cpp
+0088f850 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetDeedReactionsEnabled_0088f850.cpp
+0088f810 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetOpinionReactionsEnabled_0088f810.cpp
+0088f7d0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetSleepEnabled_0088f7d0.cpp
+0088f6b0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetStategroupEnabled_0088f6b0.cpp
+0088e4c0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_FadeScreenIn_0088e4c0.cpp
+0088f900 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_GetCountdownTimer_0088f900.cpp
+0088fe70 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_GetDayCount_0088fe70.cpp
+0088fe50 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_GetDayOfWeek_0088fe50.cpp
+0088f9e0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_GetGuildSealRecallAngleXY_0088f9e0.cpp
+0088e340 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_GetRegionName_0088e340.cpp
+0088fcc0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_GiveHeroAbility_0088fcc0.cpp
+0088ecc0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_IsCameraInScriptedMode_0088ecc0.cpp
+0088fd60 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_IsEntityInLimbo_0088fd60.cpp
+0088f450 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_IsHeroSleepingEnabled_0088f450.cpp
+0088f950 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_IsSavingEnabled_0088f950.cpp
+0088e4d0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_IsScreenFadingOut_0088e4d0.cpp
+0088f420 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_IsTeleportingActive_0088f420.cpp
+0088e400 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_MiniMapSetAsEnabled_0088e400.cpp
+0088fff0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_ResetToDefaultThemeExternals_0088fff0.cpp
+0088ff10 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_ResetToDefaultTheme_0088ff10.cpp
+0088e920 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetAllowScreenFadingIfAlreadyFaded_0088e920.cpp
+0088e910 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetAllowScreenFadingOnNextRegionChange_0088e910.cpp
+0088fc20 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetBoastingEnabled_0088fc20.cpp
+0088f460 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetExperienceSpendingAsEnabled_0088f460.cpp
+0088f980 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetGuildSealRecallLocation_0088f980.cpp
+0088f440 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetHeroSleepingAsEnabled_0088f440.cpp
+0088f430 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetRegionTextDisplayAsActive_0088f430.cpp
+0088f940 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetSavingAsEnabled_0088f940.cpp
+0088fbc0 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetSpotTheAdditionBeaten_0088fbc0.cpp
+0088f470 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetSummonerDeathExplosionAffectsHero_0088f470.cpp
+0088f410 no NSCRIPT define rebuild/src/compiled/00/88/CGameScriptInterface_SetTeleportingAsActive_0088f410.cpp
+0089cd70 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterfaceMethods_CanThingBeHeardByOtherThing_0089cd70.cpp
+008986d0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterfaceMethods_ConfiscateAllHeroItems_008986d0.cpp
+00898840 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterfaceMethods_ConfiscateItemsOfTypeFromHero_00898840.cpp
+0089c560 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterfaceMethods_EntityPostOpinionDeedToAll_0089c560.cpp
+00898940 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterfaceMethods_ReturnAllConfiscatedItemsToHero_00898940.cpp
+00895ed0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterfaceMethods_SetHouseOwnedByPlayer_00895ed0.cpp
+00896a30 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterfaceMethods_SetQuestCardObjective_00896a30.cpp
+00894aa0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_BeginLoadingMesh_00894aa0.cpp
+0089d690 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_CancelAbilitiesForCutscene_0089d690.cpp
+00890180 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_CancelRadialBlurFade_00890180.cpp
+0089a0e0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ChangeHeroMoralityDueToPicklock_0089a0e0.cpp
+0089a070 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ChangeHeroMoralityDueToTheft_0089a070.cpp
+008987e0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ConfiscateAllHeroWeapons_008987e0.cpp
+0089f910 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_CreateEffect_0089f910.cpp
+0089f9e0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_CreateEffect_0089f9e0.cpp
+0089fbb0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_CreateExperienceOrb_0089fbb0.cpp
+00890690 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_EntityAttachToScript_00890690.cpp
+00890f00 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAbleToBeEngagedInCombat_00890f00.cpp
+00890ec0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetEvadeAllHits_00890ec0.cpp
+00890e80 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetNegateAllHits_00890e80.cpp
+00890400 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_GetHealth_00890400.cpp
+008903a0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHealthMax_008903a0.cpp
+008903d0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHealthPercentage_008903d0.cpp
+00890370 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHealth_00890370.cpp
+0089a210 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroWillEnergyPercentage_0089a210.cpp
+00899cf0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_GetPlayerCreatureCombatMultiplierRunningNumHits_00899cf0.cpp
+00899c90 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_GetPlayerCreatureCombatMultiplier_00899c90.cpp
+00897630 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_GetPreviouslyWieldedRangedWeaponName_00897630.cpp
+00895b60 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_HeroPlayOracleMinigame_00895b60.cpp
+00890280 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityAbleToAttack_00890280.cpp
+0089a2d0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityPickLockable_0089a2d0.cpp
+00890220 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityWieldingMeleeWeapon_00890220.cpp
+008902b0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroChild_008902b0.cpp
+0089b330 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroNaked_0089b330.cpp
+00890170 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_IsRadialBlurFadeActive_00890170.cpp
+00896210 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_IsSleepingTime_00896210.cpp
+00896d20 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_KickOffDeathScreen_00896d20.cpp
+008950e0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ManuallyResetTrap_008950e0.cpp
+00895090 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ManuallyTriggerTrap_00895090.cpp
+00890430 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ModifyThingHealth_00890430.cpp
+008942c0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnChestOpeningCancelled_008942c0.cpp
+00893ec0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnHeroSlept_00893ec0.cpp
+008901a0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_RadialBlurSetCenterWorldPos_008901a0.cpp
+0089b390 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_RemoveHeroClothing_0089b390.cpp
+00896fd0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault_00896fd0.cpp
+00899d50 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ResetPlayerCreatureCombatMultiplier_00899d50.cpp
+008970f0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault_008970f0.cpp
+0089d6f0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_ResumeAbilitiesForCutscene_0089d6f0.cpp
+00896f60 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_SetDeathRecoveryMarkerName_00896f60.cpp
+00890870 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_SetFactionAsAlliedToFaction_00890870.cpp
+00890910 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_SetFactionAsEnemyToFaction_00890910.cpp
+008908c0 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_SetFactionAsNeutralToFaction_008908c0.cpp
+00896e60 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_SetPreferredQuickAccessItem_00896e60.cpp
+00892f80 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_SetQuestAsCompleted_00892f80.cpp
+0089a270 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_SetThingAsKilled_0089a270.cpp
+00890b50 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes_00890b50.cpp
+0089b110 no NSCRIPT define rebuild/src/compiled/00/89/CGameScriptInterface_StartMovieSequence_0089b110.cpp
+008a03f0 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_ClearThingBestEnemyTarget_008a03f0.cpp
+008a9020 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_CreatureGeneratorSetFamily_008a9020.cpp
+008a08a0 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_EntityStartScreamerSuperAttackThing_008a08a0.cpp
+008a7f60 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_ForceShipsVisible_008a7f60.cpp
+008a7e00 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_GetRandomThingWithScriptName_008a7e00.cpp
+008a0e80 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_IsThingABed_008a0e80.cpp
+008a0ee0 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_IsThingADoor_008a0ee0.cpp
+008a0f40 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_IsThingSearchable_008a0f40.cpp
+008a0f10 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_IsThingSmashable_008a0f10.cpp
+008a0a20 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_PlaySoundOnThing_008a0a20.cpp
+008a0b10 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_SetEntityAsRegionFollowing_008a0b10.cpp
+008a99f0 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_SetThingAndCarriedItemsNotAffectedByScreenFilter_008a99f0.cpp
+008a1300 no NSCRIPT define rebuild/src/compiled/00/8a/CGameScriptInterface_StartSneaking_008a1300.cpp
+00cdff50 no NSCRIPT define rebuild/src/compiled/00/cd/CEndGameBarrier_OnPredicateFail_00cdff50.cpp
+00ce5e10 NSCRIPT defined after the include rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastBountyHuntDecapitation_00ce5e10.cpp
+00ce6a40 NSCRIPT defined after the include rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastFireHeartFreeAllPrisoners_00ce6a40.cpp
+00ce6b10 NSCRIPT defined after the include rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastFireHeartKillAllPrisoners_00ce6b10.cpp
+00ce56e0 NSCRIPT defined after the include rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastGraveyardKillAllInnocents_00ce56e0.cpp
+00ce4b70 NSCRIPT defined after the include rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastHobbeCavePerpertratorKilled_00ce4b70.cpp
+00ce5620 NSCRIPT defined after the include rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastHobbeContestKillMoreHobbes_00ce5620.cpp
+00d1e310 no NSCRIPT define rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCGuardHoldingBandit_Init_00d1e310.cpp
+00d2c530 NSCRIPT defined after the include rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_Main_00d2c530.cpp
+00d408b0 no NSCRIPT define rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCSpeedFriend_Main_00d408b0.cpp
+00d6aea0 no NSCRIPT define rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_Main_00d6aea0.cpp
+00d6b240 no NSCRIPT define rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAudience_Main_00d6b240.cpp
+00d72200 no NSCRIPT define rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGAudience_Main_00d72200.cpp
+00d72590 no NSCRIPT define rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGBoss_Main_00d72590.cpp
+00d701c0 no NSCRIPT define rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGFreedomFighter_Main_00d701c0.cpp
+00d7f250 no NSCRIPT define rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCBlockedEntrance_Main_00d7f250.cpp
+00d7f460 no NSCRIPT define rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCDyingVillager_Main_00d7f460.cpp
+00d7f880 no NSCRIPT define rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHSAScreamingVillager_Main_00d7f880.cpp
+00d7ad10 no NSCRIPT define rebuild/src/compiled/00/d7/NScriptCQHeroSoulsThunderScript_Init_00d7ad10.cpp
+00d864b0 no NSCRIPT define rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardInWoods_Main_00d864b0.cpp
+00d9fd80 no NSCRIPT define rebuild/src/compiled/00/d9/CFadeinSummoner_PhaseMe_00d9fd80.cpp
+00d9c2b0 no NSCRIPT define rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkersReactMarker_Main_00d9c2b0.cpp
+00d9c4a0 NSCRIPT defined after the include rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCHobbeBarrel_Main_00d9c4a0.cpp
+00daab70 NSCRIPT defined after the include rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_Alloc_00daab70.cpp
+00da30b0 NSCRIPT defined after the include rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_CQMinionClifftopChaseScript_00da30b0.cpp
+00daabd0 NSCRIPT defined after the include rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_scalardeletingdestructor_00daabd0.cpp
+00db8300 no NSCRIPT define rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_Main_00db8300.cpp
+00dd84b0 no NSCRIPT define rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCGuardMotherEscape_Main_00dd84b0.cpp
+00ddece0 no NSCRIPT define rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCExitWardensOffice_Main_00ddece0.cpp
+00deefc0 no NSCRIPT define rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCTortureDoorCourtyard_Main_00deefc0.cpp
+00dfba60 no NSCRIPT define rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditHostageKeeper_Main_00dfba60.cpp
+00e03bf0 no NSCRIPT define rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodRockTroll_Init_00e03bf0.cpp
+00e02470 no NSCRIPT define rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCFleshEatingBalverine_Main_00e02470.cpp
+00e02950 no NSCRIPT define rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02950.cpp
+00e1f3e0 no NSCRIPT define rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCAttackingBandit_Init_00e1f3e0.cpp
+00e11dc0 no NSCRIPT define rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCHornetDrone_Main_00e11dc0.cpp
+00e11bb0 NSCRIPT defined after the include rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCQueenHornet_Main_00e11bb0.cpp
+00e4a060 no NSCRIPT define rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCReluctantTrader_Main_00e4a060.cpp
+00e5d0b0 NSCRIPT defined after the include rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_Alloc_00e5d0b0.cpp
+00e57bb0 NSCRIPT defined after the include rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_CVBeggarAndChildScript_00e57bb0.cpp
+00e5d110 NSCRIPT defined after the include rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_scalardeletingdestructor_00e5d110.cpp
+00e5f8f0 no NSCRIPT define rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCHenchmanRegionExitComment_Main_00e5f8f0.cpp
+00e9fb40 NSCRIPT defined after the include rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_Alloc_00e9fb40.cpp
+00e9c360 NSCRIPT defined after the include rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_CVIntroductionToTrophiesScript_00e9c360.cpp
+00e9fba0 NSCRIPT defined after the include rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_scalardeletingdestructor_00e9fba0.cpp
+00ea0b10 NSCRIPT defined after the include rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_Main_00ea0b10.cpp
+00ec46b0 no NSCRIPT define rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFESparrow_Main_00ec46b0.cpp
+00ed54d0 no NSCRIPT define rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_Main_00ed54d0.cpp
+00ed76e0 no NSCRIPT define rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_CVTalentlessBardScript_00ed76e0.cpp
+00eed6b0 no NSCRIPT define rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCSignpost_Main_00eed6b0.cpp
+00ef3000 no NSCRIPT define rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCDoor_Main_00ef3000.cpp
+00ef45b0 no NSCRIPT define rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCGhostDude_Main_00ef45b0.cpp
+00ef29e0 no NSCRIPT define rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCGoalChest_Main_00ef29e0.cpp
+00f00ae0 no NSCRIPT define rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCGamesmasterOracleMarker_Main_00f00ae0.cpp
+00f19b60 no NSCRIPT define rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellDoorGuard2_Init_00f19b60.cpp
+004a6ab0 no NSCRIPT define rebuild/tests/00/4a/CWorld_CWorld_004a6ab0_test.cpp
+006e7290 no NSCRIPT define rebuild/tests/00/6e/CGameScriptInterface_EndLetterBox_006e7290_test.cpp
+006e7340 no NSCRIPT define rebuild/tests/00/6e/CGameScriptInterface_GetGameAngleXY_006e7340_test.cpp
+006e71b0 no NSCRIPT define rebuild/tests/00/6e/CGameScriptInterface_IsActiveThreadTerminating_006e71b0_test.cpp
+006e7300 no NSCRIPT define rebuild/tests/00/6e/CGameScriptInterface_IsCameraPosOnScreen_006e7300_test.cpp
+006e7d40 no NSCRIPT define rebuild/tests/00/6e/CGameScriptInterface_ResetCreatureCreationDelayFrames_006e7d40_test.cpp
+00813d00 no NSCRIPT define rebuild/tests/00/81/CTCBoastingPodium_FrameUpdate_00813d00_test.cpp
+0088ec90 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_CameraSetCameraPreloadFlag_0088ec90_test.cpp
+0088ece0 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_CameraShake_0088ece0_test.cpp
+0088e4c0 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_FadeScreenIn_0088e4c0_test.cpp
+0088fe70 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_GetDayCount_0088fe70_test.cpp
+0088fe50 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_GetDayOfWeek_0088fe50_test.cpp
+0088ecc0 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_IsCameraInScriptedMode_0088ecc0_test.cpp
+0088f450 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_IsHeroSleepingEnabled_0088f450_test.cpp
+0088f950 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_IsSavingEnabled_0088f950_test.cpp
+0088e4d0 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_IsScreenFadingOut_0088e4d0_test.cpp
+0088fff0 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_ResetToDefaultThemeExternals_0088fff0_test.cpp
+0088ff10 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_ResetToDefaultTheme_0088ff10_test.cpp
+0088e910 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_SetAllowScreenFadingOnNextRegionChange_0088e910_test.cpp
+0088fc20 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_SetBoastingEnabled_0088fc20_test.cpp
+0088f460 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_SetExperienceSpendingAsEnabled_0088f460_test.cpp
+0088f980 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_SetGuildSealRecallLocation_0088f980_test.cpp
+0088f440 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_SetHeroSleepingAsEnabled_0088f440_test.cpp
+0088fbc0 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_SetSpotTheAdditionBeaten_0088fbc0_test.cpp
+0088f470 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_SetSummonerDeathExplosionAffectsHero_0088f470_test.cpp
+0088f410 no NSCRIPT define rebuild/tests/00/88/CGameScriptInterface_SetTeleportingAsActive_0088f410_test.cpp
+00890180 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_CancelRadialBlurFade_00890180_test.cpp
+008987e0 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_ConfiscateAllHeroWeapons_008987e0_test.cpp
+00890370 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_GetHeroHealth_00890370_test.cpp
+0089a2d0 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_IsEntityPickLockable_0089a2d0_test.cpp
+008902b0 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_IsHeroChild_008902b0_test.cpp
+00890170 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_IsRadialBlurFadeActive_00890170_test.cpp
+008901a0 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_RadialBlurSetCenterWorldPos_008901a0_test.cpp
+00896fd0 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault_00896fd0_test.cpp
+008970f0 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault_008970f0_test.cpp
+00890870 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_SetFactionAsAlliedToFaction_00890870_test.cpp
+00890910 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_SetFactionAsEnemyToFaction_00890910_test.cpp
+008908c0 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_SetFactionAsNeutralToFaction_008908c0_test.cpp
+00890b50 no NSCRIPT define rebuild/tests/00/89/CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes_00890b50_test.cpp
+00ed76e0 no NSCRIPT define rebuild/tests/00/ed/NScriptCVTalentlessBardScript_CVTalentlessBardScript_00ed76e0_test.cpp
+# summary {'no NSCRIPT define': 194, 'NSCRIPT defined after the include': 19, 'OTHER': 0}

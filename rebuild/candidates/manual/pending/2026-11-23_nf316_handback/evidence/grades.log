@@ -1,0 +1,120 @@
+pH 0040d350 RELOCATION_MATCH leaf=Load flags=
+pH 00522880 RELOCATION_MATCH leaf=SaveMainPlayerCreatureState flags=
+pS 0040d350 RELOCATION_MATCH leaf=Load flags=
+GRADE_DONE
+pS 00522880 RELOCATION_MATCH leaf=SaveMainPlayerCreatureState flags=
+GRADE_DONE
+pH 00846100 DIFFER(687v686) leaf=PerformAction flags=
+pH 00969470 RELOCATION_MATCH leaf=?Update@CAIStateGroup_TavernKeeper flags=
+pS 00846100 DIFFER(687v686) leaf=PerformAction flags=
+GRADE_DONE
+pS 00969470 RELOCATION_MATCH leaf=?Update@CAIStateGroup_TavernKeeper flags=
+GRADE_DONE
+pH 0075d320 RELOCATION_MATCH leaf=OnSerialseLeaf flags=
+pH 0051e210 RELOCATION_MATCH leaf=RemapUIDForSerialisation flags=
+pS 0075d320 RELOCATION_MATCH leaf=OnSerialseLeaf flags=
+pH 006ca120 RELOCATION_MATCH leaf=OnSerialise flags=
+GRADE_DONE
+pS 0051e210 RELOCATION_MATCH leaf=?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z flags=
+GRADE_DONE
+pS 006ca120 RELOCATION_MATCH leaf=OnSerialise flags=
+GRADE_DONE
+pH 00729cf0 RELOCATION_MATCH leaf=?OnSerialise@CTCActionUseScriptedHook@@QAEXAAVCPersistContext@@_N@Z flags=
+pS 00729cf0 RELOCATION_MATCH leaf=?OnSerialise@CTCActionUseScriptedHook@@QAEXAAVCPersistContext@@_N@Z flags=
+GRADE_DONE
+pH 007e8460 RELOCATION_MATCH leaf=OnSerialise flags=
+pH 0077b0d0 RELOCATION_MATCH leaf=?OnSerialise@CTCActivationTrigger@@QAEXAAVCPersistContext@@_N@Z flags=
+pH 00779430 RELOCATION_MATCH leaf=OnSerialise flags=
+pS 007e8460 RELOCATION_MATCH leaf=OnSerialise flags=
+GRADE_DONE
+pH 007c9770 RELOCATION_MATCH leaf=OnSerialise flags=
+pS 0077b0d0 RELOCATION_MATCH leaf=?OnSerialise@CTCActivationTrigger@@QAEXAAVCPersistContext@@_N@Z flags=
+GRADE_DONE
+pS 007c9770 RELOCATION_MATCH leaf=OnSerialise flags=
+pS 00779430 RELOCATION_MATCH leaf=OnSerialise flags=
+GRADE_DONE
+GRADE_DONE
+pH 006b0210 RELOCATION_MATCH leaf=ApplyAcceleration flags=
+GRADE_DONE
+pH 00800a60 RELOCATION_MATCH leaf=OnSerialise flags=
+pH 007ee3d0 RELOCATION_MATCH leaf=OnSerialise flags=
+pS 00800a60 RELOCATION_MATCH leaf=OnSerialise flags=
+GRADE_DONE
+pH 006702e0 RELOCATION_MATCH leaf=UpdateAppliedMovement flags=
+GRADE_DONE
+pS 007ee3d0 RELOCATION_MATCH leaf=OnSerialise flags=
+GRADE_DONE
+pH 00897fa0 RELOCATION_MATCH leaf=?MakeHeroCarryItemInHand@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z flags=
+GRADE_DONE
+pH 005d8e90 RELOCATION_MATCH leaf=?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ flags=
+GRADE_DONE
+pH 0074e560 RELOCATION_MATCH leaf=?CreateNewObject@CTCContainerRewardHero@@AAEPAVCThingObject@@JABVC3DVector@@0ABVCCharString@@@Z flags=
+pH 006701a0 RELOCATION_MATCH leaf=UpdateAttractionToMaster flags=
+GRADE_DONE
+GRADE_DONE
+pH 006deee0 RELOCATION_MATCH leaf=?GlobalUpdate@CTCTrophy@@UAEX_N@Z flags=
+GRADE_DONE
+pH 0066fb80 RELOCATION_MATCH leaf=?UpdateLocalJostling@CTCCoopSpirit@@QAEXXZ flags=
+GRADE_DONE
+pH 00725060 RELOCATION_MATCH leaf=ApplyControlledAcceleration flags=
+GRADE_DONE
+pH 0066fc90 RELOCATION_MATCH leaf=UpdateScreenRestrictingForces flags=
+GRADE_DONE
+pH 007bc004 RELOCATION_MATCH leaf=?InitMovement@CTCShotDefinitionNymphFun@NThingShot@@UAEXXZ flags=
+GRADE_DONE
+pH 00670470 RELOCATION_MATCH leaf=?UpdateHeightAboveGround@CTCCoopSpirit@@AAEXXZ flags=
+GRADE_DONE
+pH 006a4dc0 RELOCATION_MATCH leaf=?Run@T@@QAEXXZ flags=
+GRADE_DONE
+pH 007bbe34 RELOCATION_MATCH leaf=?InitMovement@CTCShotDefinitionSpreadShotProjectile@NThingShot@@MAEXXZ flags=
+GRADE_DONE
+pH 00846090 RELOCATION_MATCH leaf=?PerformAction@CCreatureAction_ThrowGameObject@@UAEXXZ flags=
+GRADE_DONE
+pH 0077a430 RELOCATION_MATCH leaf=?FrameUpdate@CTCDExperienceOrb@@UAEXXZ flags=
+GRADE_DONE
+pH 007bbb3b RELOCATION_MATCH leaf=?InitMovement@CTCShotDefinitionProjectile@NThingShot@@MAEXXZ flags=
+GRADE_DONE
+pH 007ba1d0 RELOCATION_MATCH leaf=?GetEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z flags=
+GRADE_DONE
+pH 00844740 RELOCATION_MATCH leaf=?PerformAction@CCreatureAction_DropGift@@UAEXXZ flags=
+GRADE_DONE
+pH 007bc6fa RELOCATION_MATCH leaf=?InitMovement@CTCShotDefinitionProjectilePredictive@NThingShot@@MAEXXZ flags=
+GRADE_DONE
+pH 008e5f00 RELOCATION_MATCH leaf=PerformForceUpdates flags=
+GRADE_DONE
+pH 004b5500 RELOCATION_MATCH leaf=?LoadGameState@CQuestManager@@QAEXAAVCStringParser@@@Z flags=
+GRADE_DONE
+pH 007bc15a RELOCATION_MATCH leaf=?UpdateMovement@CTCShotDefinitionMultiArrow@NThingShot@@MAEXXZ flags=/O1 /Oy-
+GRADE_DONE
+pH 008e5670 RELOCATION_MATCH leaf=PerformForceUpdates flags=
+GRADE_DONE
+pH 00854810 RELOCATION_MATCH leaf=?Initialise@CCreatureAction_SpiritHitResponse@@UAEXXZ flags=
+GRADE_DONE
+pH 006a7e70 RELOCATION_MATCH leaf=??RCThingFilter_HasScriptData@@QBE_NABVCThing@@@Z flags=
+GRADE_DONE
+pH 0040bca0 RELOCATION_MATCH leaf=?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z flags=/GS
+GRADE_DONE
+pH 004caa00 RELOCATION_MATCH leaf=?ConstructFromLevelScript@CThing@@UAE_NPBD@Z flags=
+GRADE_DONE
+pH 005800d6 RELOCATION_MATCH leaf=GetPFirstLeafThing flags=
+GRADE_DONE
+pH 004c84b0 RELOCATION_MATCH leaf=?SaveBinary@CThing@@QAEXAAVCDataOutputStream@@@Z flags=
+GRADE_DONE
+pH 004c9120 RELOCATION_MATCH leaf=?Save@CThing@@UAEXAAVCCharString@@@Z flags=
+GRADE_DONE
+pH 0072f380 RELOCATION_MATCH leaf=?OnSerialise@CTCDummyVillager@@UAEXAAVCPersistContext@@_N@Z flags=default
+GRADE_DONE
+pH 004b5ee0 RELOCATION_MATCH leaf=?SaveGameState@CQuestManager@@QAEXAAVCCharString@@@Z flags=
+GRADE_DONE
+pH 005fae90 RELOCATION_MATCH leaf=?RemapUIDsForLoading@CTCInventoryMap@@QAEXAAUCUIDVector@@@Z flags=
+GRADE_DONE
+pH 00837e40 RELOCATION_MATCH leaf=?ConstructFromLevelScript@CThingTrackNode@@UAE_NPBD@Z flags=
+GRADE_DONE
+pH 00606300 RELOCATION_MATCH leaf=?OnSerialise@CTCInventoryMap@@MAEXAAVCPersistContext@@_N@Z flags=
+GRADE_DONE
+pH 0051fd80 RELOCATION_MATCH leaf=?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z flags=
+GRADE_DONE
+pH 0088ae40 RELOCATION_MATCH leaf=?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z flags=
+GRADE_DONE
+pH 008304a0 RELOCATION_MATCH leaf=?Save@CThingAICreature@@UAEXAAVCCharString@@@Z flags=
+GRADE_DONE

@@ -1,0 +1,17 @@
+0042ebb6 NEW	?AddRef@CIVCountedPointeeBase@@QBEXXZ	4	-	NO-OWNER
+0042ebb6 NEW	??0CRGBColour@@QAE@EEEE@Z	32	-	NO-OWNER
+0042ebb6 NEW	?SetLoadFontGlyphsAsynchronously@CFontManager@@QAEX_N@Z	13	-	NO-OWNER
+0042ebb6 NEW	?Release@?$CDefPointer@$$CBVCFrontEndDef@@@@QAEXXZ	24	-	NO-OWNER
+0042ebb6 NEW	?begin@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ	3	-	NO-OWNER
+0042ebb6 NEW	?end@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ	4	-	NO-OWNER
+0042ebb6 NEW	?begin@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@XZ	3	-	NO-OWNER
+0042ebb6 NEW	?end@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@XZ	4	-	NO-OWNER
+0042ebb6 NEW	?Reset@?$CDefPointer@$$CBVCFrontEndDef@@@@QAEXPBVCFrontEndDef@@@Z	42	-	NO-OWNER
+0042ebb6 NEW	?clear@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXXZ	11	-	NO-OWNER
+0042ebb6 NEW	?clear@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEXXZ	11	-	NO-OWNER
+0042ebb6 HEAD	?ReleaseRef@CFrontEndDef@@QAEXXZ	11	-	NO-OWNER
+0042ebb6 HEAD	??0CRGBColour@@QAE@EEEE@Z	32	-	NO-OWNER
+0042ebb6 HEAD	?clear@?$vector@VCWideString@@@@QAEXXZ	11	-	NO-OWNER
+0042ebb6 HEAD	?clear@?$vector@VCDateAndTime@@@@QAEXXZ	11	-	NO-OWNER
+0042ebb6 HEAD	?Clear@?$CDefPointer@VCFrontEndDef@@@@QAEXXZ	24	-	NO-OWNER
+0042ebb6 HEAD	??4?$CDefPointer@VCFrontEndDef@@@@QAEAAV0@PAVCFrontEndDef@@@Z	37	-	NO-OWNER

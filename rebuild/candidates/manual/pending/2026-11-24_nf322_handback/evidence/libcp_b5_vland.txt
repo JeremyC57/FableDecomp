@@ -1,0 +1,3 @@
+00994500 LIBCP_OK renames=?SetPosition@CBufferedFileDataOutputStream_Methods@@QAEXK@Z=?SetPosition@CBufferedFileDataOutputStream@@UAEXK@Z ; .drectve EQUAL ; sections=2
+00a5f230 LIBCP_OK renames=?CanUnload@CStreamingFontDataBankEntry_Methods@@QAE_NXZ=?CanUnload@CStreamingFontDataBankEntry@@UBE_NXZ ; .drectve EQUAL ; sections=2
+00a63560 LIBCP_OK renames=?CanUnload@CFontDataBankEntry_Methods@@QAE_NXZ=?CanUnload@CFontDataBankEntry@@UBE_NXZ ; .drectve EQUAL ; sections=2

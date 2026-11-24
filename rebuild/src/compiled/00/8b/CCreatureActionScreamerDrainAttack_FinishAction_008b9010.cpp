@@ -12,6 +12,7 @@
 //   CCREATUREACTION_SCREAMERDRAINOUTOF_CTORS (the FableWin.pdb inline ctors) / CCREATUREACTION_SCREAMERDRAINATTACK_FINISHACTION:
 //   SetCurrentAction 0x006644F0 and ~CCombatActionBase 0x0062E900 now bind the PDB spellings. CCreatureAction_CastWillDrainLifeSpell (the RTTI
 //   base of ScreamerDrainAttack) has no shared header: row-local on CCombatActionBase as in the landed 0x006F5C10.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

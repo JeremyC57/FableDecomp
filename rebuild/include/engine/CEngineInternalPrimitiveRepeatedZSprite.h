@@ -11,6 +11,28 @@
 class C3DMeshInfo;
 struct CObjectEntry;
 
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEREPEATEDZSPRITE_TYPED_PASS26
+// Overlay opt-in (row 0x00BAA870 RenderFromSortList): the class on its typed retail base (RTTI CEngineInternalPrimitiveRepeatedZSprite :
+// CEngineInternalPrimitiveOcclusionBase : CEngineInternalPrimitiveBase; needs FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE and
+// FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED) with the Ego_r.pdb members at the generated offsets below, and
+// ?GetTransitionFade@CEngineInternalPrimitiveRepeatedZSprite@@QBE?AVCEngineFadeDistance@@XZ (landed out of line at 0x00BAA460).
+#include "engine/CEngineInternalPrimitiveOcclusionBase.h"
+#include "engine/C3DBoundingSphere.h"
+#include "engine/C3DBoundingBox.h"
+class CEngineInternalPrimitiveRepeatedZSprite : public CEngineInternalPrimitiveOcclusionBase {
+public:
+    CEngineFadeDistance GetTransitionFade() const;                       // 0x00BAA460
+    C3DMeshInfo*  Mesh;                                      // +0x50
+    float         FadeInStart;                               // +0x54
+    float         FadeInEnd;                                 // +0x58
+    CObjectEntry* ObjectsEntries;                            // +0x5c
+    long          ObjectCount;                               // +0x60
+    C3DBoundingSphere BoundingSphere;                        // +0x64
+    C3DBoundingBox BoundingBox;                              // +0x74
+    float         MinDistance;                               // +0x8c
+    float         MaxScale;                                  // +0x90
+};
+#else
 #pragma pack(push, 1)
 class CEngineInternalPrimitiveRepeatedZSprite {
 public:
@@ -46,16 +68,17 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveRepeatedZSprite) == 0x94);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, Mesh) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, FadeInStart) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, FadeInEnd) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, ObjectsEntries) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, ObjectCount) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, BoundingSphere) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, BoundingBox) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, MinDistance) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedZSprite, MaxScale) == 0x90);
+FABLE_STATIC_ASSERT_AT(49, sizeof(CEngineInternalPrimitiveRepeatedZSprite) == 0x94);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CEngineInternalPrimitiveRepeatedZSprite, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CEngineInternalPrimitiveRepeatedZSprite, Mesh) == 0x50);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CEngineInternalPrimitiveRepeatedZSprite, FadeInStart) == 0x54);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CEngineInternalPrimitiveRepeatedZSprite, FadeInEnd) == 0x58);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CEngineInternalPrimitiveRepeatedZSprite, ObjectsEntries) == 0x5c);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CEngineInternalPrimitiveRepeatedZSprite, ObjectCount) == 0x60);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CEngineInternalPrimitiveRepeatedZSprite, BoundingSphere) == 0x64);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CEngineInternalPrimitiveRepeatedZSprite, BoundingBox) == 0x74);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CEngineInternalPrimitiveRepeatedZSprite, MinDistance) == 0x8c);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CEngineInternalPrimitiveRepeatedZSprite, MaxScale) == 0x90);
 
+#endif
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEREPEATEDZSPRITE_H

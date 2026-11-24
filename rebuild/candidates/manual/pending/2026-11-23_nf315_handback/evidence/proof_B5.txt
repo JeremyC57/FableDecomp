@@ -1,0 +1,8 @@
+##### 009621f0 renames: ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z=?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z
+sections head 35 new 35
+ALL_EQ text_sections_equal=30
+tables H=2 N=2
+##### 009624d0 renames: ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z=?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z
+sections head 30 new 30
+ALL_EQ text_sections_equal=25
+tables H=0 N=0

@@ -1,3 +1,4 @@
+// Leaf: ?SetFilenames@CBankFileEntryUpdateData@@AAEXABV?$CArray@VCCharString@@@@@Z
 // CBankFileEntryUpdateData::SetFilenames(const CArray<CCharString>& names) -- size the entry's filename list to match and copy every name across
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009CC840, 104 bytes (+8 int3), __fastcall, ret 4.
@@ -36,7 +37,9 @@ public:
     unsigned long InfoSize;                          // +0x04
     char* InfoBuffer;                                // +0x08
     CSmallVector<CCharString, 8> Filenames;          // +0x0C
+    private:
     void SetFilenames(const CArray<CCharString>& names);
+    public:
 };
 
 void CBankFileEntryUpdateData::SetFilenames(const CArray<CCharString>& names)

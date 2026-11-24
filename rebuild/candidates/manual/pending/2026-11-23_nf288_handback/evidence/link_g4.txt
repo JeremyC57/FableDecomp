@@ -1,0 +1,8 @@
+## HEAD set: H_0059a238.obj 00598463.obj
+duplicates 1
+  DUP 00598463.obj ??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z in H_0059a238.obj;
+UNRESOLVED 1 ?RefreshAvailableSavedGamesForProfile@CFrontEndManager@NUISystem@@QAEJXZ
+## new set: 0059a238.obj 00598463.obj
+duplicates 1
+  DUP 00598463.obj ??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z in 0059a238.obj;
+LK_DONE

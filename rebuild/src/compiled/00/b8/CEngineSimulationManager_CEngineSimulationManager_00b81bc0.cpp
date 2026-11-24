@@ -29,11 +29,11 @@ class CEngineComponent { public:                          // 0x0c bytes
     CEngineComponent();                            // 0x00B59710
 };
 #include "engine/C3DVector.h"
-struct CPerlinNoise {
+namespace NFractal { struct CPerlinNoise {     // both PDBs: NFractal::CPerlinNoise
     unsigned long IndexTable[256];                 // +0x000
     C3DVector     VectorTable[256];                // +0x400
     CPerlinNoise(unsigned long seed);              // 0x00F36BE0
-};
+}; }
 
 class CEnginePrimitiveSimulationInfo;
 template <class T> class CIVCountedPointer { public: T* Object; };
@@ -58,7 +58,7 @@ class CEngineSimulationManager : public CBaseClassNonCopyable, public CEngineCom
     unsigned char CurrentSimStep;                  // +0x1d
     long          MaxIterations;                   // +0x20
     float         MaxDistanceError;                // +0x24
-    CPerlinNoise  PerlinNoise;                     // +0x28
+    NFractal::CPerlinNoise PerlinNoise;            // +0x28
     float         WindNoiseTime;                   // +0x1028
     float         WindNoiseOffset;                 // +0x102c
     float         WindNoiseSpeed;                  // +0x1030

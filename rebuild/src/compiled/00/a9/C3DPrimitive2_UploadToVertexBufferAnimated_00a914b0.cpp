@@ -10,7 +10,7 @@
 // Vtable: N3DPrimitive::CVertexShaderInputAnimated 0x0129DFB0 (stored by the inline derived ctor).
 // Retail offsets (PDB - 4): VertexBuffer +0x30 (CVertexBufferWin32: compression params +0x14), VertexBufferStatus +0x38,
 // AnimatedBlockCount +0x48, AnimatedBlocks +0x4c (0x30-byte blocks, VertexCount +0x10).
-// Leaf: UploadToVertexBufferAnimated@C3DPrimitive2
+// Leaf: ?UploadToVertexBufferAnimated@C3DPrimitive2@@AAE_NK@Z
 // NF149 (q4552 / q4559 / q4560): the vertex buffer is the shared retail CVertexBufferWin32 (engine/CVertexBufferWin32.h, which brings
 // engine/CVertexCompressionParams.h; Ego_r.pdb + FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0); was a local
 // CVertexBufferWin32 model (binding ?Lock@CVertexBufferWin32@@QAEPAXKKK@Z / ?Unlock@CVertexBufferWin32@@QAEXXZ) and a local
@@ -58,7 +58,9 @@ private:
     bool SetupVertexBuffer(EVertexType vertexType, unsigned long vertexSize, unsigned long vertexCount, unsigned long flags);   // 0x00A8EDA0
 public:
     void ConvertToVBFormatAnimated(void* data, unsigned long vertexSize, unsigned long flags, CVertexCompressionParams* params);   // 0x00A91180
+    private:
     bool UploadToVertexBufferAnimated(unsigned long flags);
+    public:
 };
 
 bool C3DPrimitive2::UploadToVertexBufferAnimated(unsigned long flags)

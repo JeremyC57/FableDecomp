@@ -29,7 +29,8 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
-inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AAD60 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { const CScriptThing* imp = PImp.Data; if (!imp) return false; return imp->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }
 inline bool CScriptThing::IsAlive() const { if (!PImp.Data) return false; return PImp.Data->IsAlive(); }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

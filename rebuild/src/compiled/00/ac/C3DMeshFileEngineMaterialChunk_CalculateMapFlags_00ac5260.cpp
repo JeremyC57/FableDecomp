@@ -1,3 +1,4 @@
+// Leaf: ?CalculateMapFlags@C3DMeshFileEngineMaterialChunk@@AAEXXZ
 // C3DMeshFileEngineMaterialChunk::CalculateMapFlags() -- bit 0..3 set for each of the diffuse, bump, reflection and illumination maps present (by file name when the name set exists, else by bank index)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC5260, 144 bytes, no calls.
 // Retail layout of the landed constructor 0x00AC56F0 (the PDB header engine/C3DMeshFileEngineMaterialChunk.h sits
@@ -34,7 +35,9 @@ class C3DMeshFileEngineMaterialChunk { public:
     unsigned long ReflectionMapBankIndex;           // +0x40
     unsigned long IlluminationMapBankIndex;         // +0x44
     unsigned long MapFlags;                         // +0x48
+    private:
     void CalculateMapFlags();
+    public:
 };
 
 void C3DMeshFileEngineMaterialChunk::CalculateMapFlags()

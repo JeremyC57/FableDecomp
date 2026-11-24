@@ -10,8 +10,8 @@ class CEngineLandscapeMemoryManager { public:
 };
 // Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
 //   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 
 class CBaseClassNonCopyable {
 protected:
@@ -25,7 +25,7 @@ class CEdgeStipVertexArray { public:
     ~CEdgeStipVertexArray()
     {
         if (Data)
-            g_pLandscapeRenderer->MemoryManager->FreeVirtual(Data);
+            NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(Data);
     }
 };
 

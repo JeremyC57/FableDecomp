@@ -1,0 +1,3 @@
+00557c10 HEAD object binds: ?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z 
+00544350 HEAD object binds: ?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z 
+0054a990 HEAD object binds: ?ChangeState@CChangingStateComponent@@QAEXK@Z 

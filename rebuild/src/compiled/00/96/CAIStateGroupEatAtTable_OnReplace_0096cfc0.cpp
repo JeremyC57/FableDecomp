@@ -3,7 +3,7 @@
 //   ?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z (namespace NCreatureMode; the creature by
 //   reference as CThingCreatureBase, the animation by const reference); was ?GetUpFromSitting@@YI_NPAVCThing@@JPBVCCharString@@PAVCAIBrain@@@Z.
 //   No shared header declares it, so the declaration stays in the row; the row's other local models are unchanged.
-// Leaf: ?OnReplace@CAIStateGroup_EatAtTable@@UAEXXZ
+// Leaf: ?OnReplace@CAIStateGroup_EatAtTable@@MAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096CFC0, length 463 bytes.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (interfaces 0x31 / 0xb8 / 0x46 / 0xba), CTCCreatureModeManager::RemoveMode
@@ -66,7 +66,9 @@ struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
     CIntelligentPointer<CThing> Table;              // +0x14
     long SeatIndex;                             // +0x1c
     long SeatActionPointIndex;                  // +0x20
+    protected:
     virtual void OnReplace();
+    public:
 };
 
 void CAIStateGroup_EatAtTable::OnReplace()

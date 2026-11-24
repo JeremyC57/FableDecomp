@@ -1,0 +1,60 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x008B7FF0	CCreatureAction_PlayCombatAnimation	CCreatureAction_PlayCombatAnimation	??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z	CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation	??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z	Ego_r + FableWin (reference parameters); pointer -> reference on decl / definition, `&` / no `*` at its base-ctor calls (no cast); objsec ALL_EQ
+0x008BD880	CCreatureAction_RiseUp	CCreatureAction_RiseUp	??0CCreatureAction_RiseUp@@QAE@AAVCThingCreatureBase@@@Z	CCreatureAction_RiseUp::CCreatureAction_RiseUp	??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@@Z	Ego_r + FableWin (reference parameters); pointer -> reference on decl / definition, `&` / no `*` at its base-ctor calls (no cast); objsec ALL_EQ
+0x006DF730	CCreatureAction_ShowTrophy	CCreatureAction_ShowTrophy	??0CCreatureAction_ShowTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@J@Z	CCreatureAction_ShowTrophy::CCreatureAction_ShowTrophy	??0CCreatureAction_ShowTrophy@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@J@Z	Ego_r + FableWin (reference parameters); pointer -> reference on decl / definition, `&` / no `*` at its base-ctor calls (no cast); objsec ALL_EQ
+0x008CBD90	CCreatureAction_SummonerLightningOrbInto	CCreatureAction_SummonerLightningOrbInto	??0CCreatureAction_SummonerLightningOrbInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	CCreatureAction_SummonerLightningOrbInto::CCreatureAction_SummonerLightningOrbInto	??0CCreatureAction_SummonerLightningOrbInto@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	Ego_r + FableWin (reference parameters); pointer -> reference on decl / definition, `&` / no `*` at its base-ctor calls (no cast); objsec ALL_EQ
+0x0069F230	CCreatureAction_UseObject	CCreatureAction_UseObject	??0CCreatureAction_UseObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@_N@Z	CCreatureAction_UseObject::CCreatureAction_UseObject	??0CCreatureAction_UseObject@@QAE@PAVCThingCreatureBase@@PAVCThing@@_N@Z	Ego_r + FableWin (reference parameters); pointer -> reference on decl / definition, `&` / no `*` at its base-ctor calls (no cast); objsec ALL_EQ
+0x00994DC0	CDataInputStream	ReadUntilCharacter	?ReadUntilCharacter@CDataInputStream@@QAE?AVCCharString@@DAA_N@Z	CDataInputStream::ReadUntilCharacter	?ReadUntilCharacter@CDataInputStream@@QAE?AVCCharString@@DPA_N@Z	Ego_r + FableWin DAA_N (bool&); objsec ALL_EQ
+0x009BE530	CDisplayManager	IsTextureBitDepthSupported	?IsTextureBitDepthSupported@CDisplayManager@@QAE_NK@Z	CDisplayManager::IsTextureBitDepthSupported	?IsTextureBitDepthSupported@CDisplayManager@@QAE_NH@Z	Ego_r + FableWin _NK (unsigned long); objsec ALL_EQ
+0x009BF600	CDisplayManager	GetClosestMode	?GetClosestMode@CDisplayManager@@ABE?AU_D3DDISPLAYMODE@@ABVC2DExtentsI@@J_N@Z	CDisplayManager::GetClosestMode	?GetClosestMode@CDisplayManager@@QAE?AU_D3DDISPLAYMODE@@ABVC2DExtentsI@@K_N@Z	Ego_r + FableWin ABE..J (private const, long); `private:` + const + long on decl / definition; objsec ALL_EQ
+0x00AF88A0	CDynamicObjectHeap<24,853>	CreateMoreBlocks	?CreateMoreBlocks@?$CDynamicObjectHeap@$0BI@$0DFF@@@AAEXXZ	CDynamicObjectHeap<24,853>::CreateMoreBlocks	?CreateMoreBlocks@?$CDynamicObjectHeap@$0BI@$0DFF@@@QAEXXZ	Ego_r + FableWin AAE (private); `private:` on its local template model; objsec ALL_EQ
+0x00B935C0	CEngineSceneGridCell	CEngineSceneGridCell	??0CEngineSceneGridCell@@AAE@PAV0@@Z	CEngineSceneGridCell::CEngineSceneGridCell	??0CEngineSceneGridCell@@QAE@PAV0@@Z	Ego_r + FableWin AAE (private); `private:` on its local model (engine/CEngineSceneGridCell.h has the same friend CEngineSceneGrid); objsec ALL_EQ
+0x006BBE30	CGameTimeManager	SetTimeAsStopped	?SetTimeAsStopped@CGameTimeManager@@QAEX_NAAJ@Z	CGameTimeManager::SetTimeAsStopped	?SetTimeAsStopped@CGameTimeManager@@QAEX_NPAJ@Z	Ego_r + FableWin _NAAJ (long&); objsec ALL_EQ
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x0040D400	?Save@CUserProfileManager@@AAEXXZ	?Save@CUserProfileManager@@QAEXXZ	0x0040A740
+0x0040C790	?Save@CUserProfileManager@@AAEXXZ	?Save@CUserProfileManager@@QAEXXZ	0x0040A740
+0x0092A8A0	??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z	??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z	0x008B7FF0
+0x0092B3E0	??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z	??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z	0x008B7FF0
+0x0095B680	??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z	??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z	0x008B7FF0
+0x009621F0	??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z	??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z	0x008B7FF0
+0x009621F0	??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@@Z	??0CCreatureAction_RiseUp@@QAE@AAVCThingCreatureBase@@@Z	0x008BD880
+0x009624D0	??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z	??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z	0x008B7FF0
+0x009624D0	??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@@Z	??0CCreatureAction_RiseUp@@QAE@AAVCThingCreatureBase@@@Z	0x008BD880
+0x00909520	??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@0ABVCCharString@@_N@Z	??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@0ABVCCharString@@_N@Z	0x008B7F80
+0x009352C0	??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@0ABVCCharString@@_N@Z	??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@0ABVCCharString@@_N@Z	0x008B7F80
+0x0072CD00	??0CCreatureAction_SheatheItemToInventory_ForDivineWrath@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z	??0CCreatureAction_SheatheItemToInventory_ForDivineWrath@@QAE@AAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z	0x0069F090
+0x0072CD00	??1CCreatureAction_SheatheItemToInventory_ForDivineWrath@@QAE@XZ	??1CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAE@XZ	0x0072D3E0
+0x0072CE20	??0CCreatureAction_SheatheItemToInventory_ForUnholyPower@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z	??0CCreatureAction_SheatheItemToInventory_ForUnholyPower@@QAE@AAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z	0x0069F0C0
+0x0072CE20	??1CCreatureAction_SheatheItemToInventory_ForUnholyPower@@QAE@XZ	??1CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UAE@XZ	0x0072D430
+0x0090F830	??1CCreatureAction_SitDown@@QAE@XZ	??1CCreatureAction_SitDown@@UAE@XZ	0x008ABAA0
+0x0096FCD0	??0CCreatureAction_SummonerLightningOrbInto@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	??0CCreatureAction_SummonerLightningOrbInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	0x008CBD90
+0x007A7BF0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCThing@@JJPAVCCreatureActionBase@@@Z	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z	0x0069F0F0
+0x00946850	??0CCreatureAction_UseObject@@QAE@PAVCThingCreatureBase@@PAVCThing@@_N@Z	??0CCreatureAction_UseObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@_N@Z	0x0069F230
+0x00946850	??1CCreatureAction_UseObject@@QAE@XZ	??1CCreatureAction_UseObject@@UAE@XZ	0x006290E0
+0x009A77D0	?ReadUntilCharacter@CDataInputStream@@QAE?AVCCharString@@DPA_N@Z	?ReadUntilCharacter@CDataInputStream@@QAE?AVCCharString@@DAA_N@Z	0x00994DC0
+0x00829D90	??0CDateAndTime@@QAE@JJJJJJJ@Z	??0CDateAndTime@@QAE@JKKKKKK@Z	0x009E9A70
+0x009CB710	??0CDateAndTime@@QAE@JJJJJJJ@Z	??0CDateAndTime@@QAE@JKKKKKK@Z	0x009E9A70
+0x00A5F9D0	??0CDateAndTime@@QAE@JJJJJJJ@Z	??0CDateAndTime@@QAE@JKKKKKK@Z	0x009E9A70
+0x00A63AD0	??0CDateAndTime@@QAE@JJJJJJJ@Z	??0CDateAndTime@@QAE@JKKKKKK@Z	0x009E9A70
+0x00581765	??1CDiskFileWin32@@QAE@XZ	??1CDiskFileWin32@@UAE@XZ	0x00401630
+0x004022B0	?IsTextureBitDepthSupported@CDisplayManager@@QAE_NH@Z	?IsTextureBitDepthSupported@CDisplayManager@@QAE_NK@Z	0x009BE530
+0x00B4F510	?SetRenderTarget@CDisplayManager@@QAEXPAVCRenderTarget@@@Z	?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z	0x009BF160
+0x00B869A0	?SetRenderTarget@CDisplayManager@@QAEXPAVCRenderTarget@@@Z	?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z	0x009BF160
+0x00B87680	?SetRenderTarget@CDisplayManager@@QAEXPAVCRenderTarget@@@Z	?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z	0x009BF160
+0x00B89140	?SetRenderTarget@CDisplayManager@@QAEXPAVCRenderTarget@@@Z	?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z	0x009BF160
+0x00B89A20	?SetRenderTarget@CDisplayManager@@QAEXPAVCRenderTarget@@@Z	?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z	0x009BF160
+0x009BFB30	?GetClosestMode@CDisplayManager@@QAE?AU_D3DDISPLAYMODE@@ABVC2DExtentsI@@K_N@Z	?GetClosestMode@CDisplayManager@@ABE?AU_D3DDISPLAYMODE@@ABVC2DExtentsI@@J_N@Z	0x009BF600
+0x00AF89C0	?CreateMoreBlocks@?$CDynamicObjectHeap@$0BI@$0DFF@@@QAEXXZ	?CreateMoreBlocks@?$CDynamicObjectHeap@$0BI@$0DFF@@@AAEXXZ	0x00AF88A0
+0x00BBBB00	?RenderLandscapeDecal@CEnginePrimitiveManagerDecal@@QAEXPAVCEngineInternalPrimitiveDecal@@@Z	?RenderLandscapeDecal@CEnginePrimitiveManagerDecal@@IAEXAAVCEngineInternalPrimitiveDecal@@@Z	0x00BBAC60
+0x00BAD2E0	?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXPAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	0x00BC04F0
+0x00BCB800	?GetFrame@CGraphicInfo@@QAE_NPAVCGraphicFrame@@KKK@Z	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	0x009FF8D0
+0x00BCB800	?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXPAVCEngineInternalPrimitiveSpriteTrail@@_N@Z	?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z	0x00BCA950
+0x00BABF70	?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEKPAVCEnginePrimitiveOcclusionInfo@@@Z	?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEJAAVCEnginePrimitiveOcclusionInfo@@@Z	0x00B2FAC0
+0x00BEBBB0	?FindSimulation@CEnginePrimitiveSimulationInfo@@QAEPAVCEngineSimulationBase@@J@Z	?FindSimulation@CEnginePrimitiveSimulationInfo@@QAEPAVCEngineSimulationBase@@K@Z	0x00B812C0
+0x00B94D30	?GetMapAt@CEngineScene@@QAEPAVCEngineSceneMap@@ABVC2DVector@@@Z	?GetMapAt@CEngineScene@@QAEAAVCEngineSceneMap@@ABVC2DVector@@@Z	0x00B94BF0
+0x00B937A0	??0CEngineSceneGridCell@@QAE@PAV0@@Z	??0CEngineSceneGridCell@@AAE@PAV0@@Z	0x00B935C0
+0x004AEAA0	?AddEvent@CGameEventPackage@@QAEXPAVCGameEvent@@@Z	?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z	0x009F1650
+0x00447390	?SetControlScheme@CGamePlayerInterface@@QAEXH@Z	?SetControlScheme@CGamePlayerInterface@@QAEXJ@Z	0x00446EF0
+0x0065B0B4	?SetTimeAsStopped@CGameTimeManager@@QAEX_NPAJ@Z	?SetTimeAsStopped@CGameTimeManager@@QAEX_NAAJ@Z	0x006BBE30
+0x0041E10D	?RemoveEventFromQueue@CInputManager@@QAEXPAVCInputEvent@@@Z	?RemoveEventFromQueue@CInputManager@@QAEXABVCInputEvent@@@Z	0x009F4F70

@@ -1,4 +1,4 @@
-// Leaf: ?CCrateStackDef_Copy@@YIXPAVCCrateStackDef@@PAXPBVCDefClassBase@@@Z
+// Leaf: ?Copy@CCrateStackDef@@UAEXPBVCDefClassBase@@@Z
 #pragma optimize("s",on)
 // CCrateStackDef::Copy  0x004e0e98
 
@@ -13,12 +13,15 @@ class CCrateStackDef : public CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);         // slot 18 0x004DE9A1
     virtual void CCrateStackDef_Copy(const CDefClassBase* other);           // slot 19 0x004E0E98
     virtual unsigned long GetSizeofClass();                  // slot 20 0x004D50B2
+    virtual void Copy(const class CDefClassBase*);
 };
 
-void __fastcall CCrateStackDef_Copy(CCrateStackDef* self, void* edx, const CDefClassBase* other)
+void CCrateStackDef::Copy(const class CDefClassBase* other)
 {
+    CCrateStackDef* self = this;
     self->CDefClassBase::operator=(*(const CDefClassBase*)(other));
     const CCrateStackDef* o = (const CCrateStackDef*)other;
     self->m28 = o->m28;
     self->m2c = o->m2c;
 }
+// Flatten route (flatten_pilot v4, NF324): CCrateStackDef_Copy -> CCrateStackDef::Copy, the RTTI-placed PDB member; class model: the row's local class model.

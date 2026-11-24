@@ -98,7 +98,7 @@ namespace NInventory { class CTCInventoryBase; }
 class CTCInventoryItem { public:
     ETCInterfaceType GetInventoryType() const;   // NF35: Ego_r + FableWin ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ                            // 0x005D9030
     bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
-    CWideString GetDescription();                       // 0x005D9070
+    CWideString GetDescription() const;                       // 0x005D9070
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -123,7 +123,7 @@ private: public:
     CFontBank* PSubtitleFont;                           // +0x1614c
 };
 class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CWideString* text, unsigned long colour, float time, bool a, bool b);   // 0x00492E4B
+    void SetText(const CFontBank& font, const CWideString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492E4B
 };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -152,7 +152,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CPlayerManager* GetPlayerManager();                 // 0x008FCF90
+protected:
+    CPlayerManager& GetPlayerManager() const;           // 0x008FCF90 ?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ (Ego_r / FableWin)
 };
 struct CAIStateGroup_WifeGiveYouGift : CAIStateGroupBase {
     long FrameToSpeakNext;                              // +0x14
@@ -165,7 +166,7 @@ void CAIStateGroup_WifeGiveYouGift::OnReplace()
 {
     if (!DeliveredGiveSpeech)
         return;
-    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || (hero->m_flags91 & 1))
         return;
     CThing* gift = ((CThing*)CThingObject::Create(GiftToGiveDef, *(&hero->GetPos()), hero->PlayerNumber, 0, 0, ""));
@@ -174,7 +175,7 @@ void CAIStateGroup_WifeGiveYouGift::OnReplace()
     item->AddToInventory(*(NInventory::CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
     CWideString text = CMainGameComponent::Get()->PTextBank->GetTextBySymbol("TEXT_GUI_WIFE_GIVEN_YOU_GIFT");
     NGameText::ConstructString(text, item->GetDescription());
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(CMainGameComponent::Get()->PSubtitleFont, &text, 0x122, 0.0f, false, true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*CMainGameComponent::Get()->PSubtitleFont, text, 0x122, 0.0f, false, true);
     if (PBrain->PCreature->HasTC(0xd7))
         ((CTCWife*)PBrain->PCreature->GetTC(0xd7))->GiftState = 0;
 }

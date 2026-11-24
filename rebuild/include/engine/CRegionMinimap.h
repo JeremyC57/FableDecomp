@@ -139,6 +139,10 @@ public:
     }
 #endif
     const CGameDefinitionManager& PeekDefinitionManager() const { return CMainGameComponent::Get()->PeekDefinitionManager(); }
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_ILLUMINATION_GETTER_PASS26
+    // Original02185f00 copies the real vector member by assignment through the output reference.
+    void GetRegionMinimapIlluminationDirection(C3DVector& dir) const {dir=IlluminationDirection;}
+#endif
     float IlluminateRegionMinimapTheme(const CWorldMap& worldMap, const C3DVector& position) const;   // 0x0066C900
     void PopulateRegionMinimap(const CWorldMap& worldMap);                                             // 0x0066CF00
 #ifdef FABLE_RETAIL_CREGIONMINIMAP_BUILDTGA

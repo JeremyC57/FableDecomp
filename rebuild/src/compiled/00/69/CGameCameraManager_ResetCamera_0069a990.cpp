@@ -137,7 +137,7 @@ class CGameCameraManager { public:
     CQuakeVector                        EarthQuakes;             // +0xec
     float                               MinWorldHeight;          // +0xf8
     float                               MaxWorldHeight;          // +0xfc
-    void ResetFlags();                                   // 0x00699130
+    private: void ResetFlags(); public:                                   // 0x00699130
     void PushCurrentManualMode();                        // 0x006988B0
     void RefreshMode();                                  // 0x0069A2A0
     void ResetCamera();

@@ -1,0 +1,24 @@
+##### 009ddff0 renames: ?GFAXToVX@@YGMM@Z=?GFVXToAX@@YIMM@Z ?GFAYToVY@@YGMM@Z=?GFVYToAY@@YIMM@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 009dda50 renames: ?GFAXToVX@@YGMM@Z=?GFVXToAX@@YIMM@Z ?GFAYToVY@@YGMM@Z=?GFVYToAY@@YIMM@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 009dd210 renames: ?GFAXToVX_009e1e10@@YIMM@Z=?GFVXToAX@@YIMM@Z ?GFAYToVY@@YIMM@Z=?GFVYToAY@@YIMM@Z
+sections head 19 new 19
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 009dca80 renames: ?GFAXToVX_009e1e10@@YIMM@Z=?GFVXToAX@@YIMM@Z ?GFAYToVY@@YIMM@Z=?GFVYToAY@@YIMM@Z
+sections head 20 new 20
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 0048f230 renames: ?GFVXToAX_009e1e10@@YGMM@Z=?GFVXToAX@@YIMM@Z ?GFVYToAY@@YGMM@Z=?GFVYToAY@@YIMM@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=9
+tables H=0 N=0
+##### 00438aa0 renames: ?GFVXToAX@@YGMM@Z=?GFAXToVX@@YIMM@Z
+sections head 10 new 10
+ALL_EQ text_sections_equal=8
+tables H=0 N=0

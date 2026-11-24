@@ -1,0 +1,164 @@
+#17 008fcf40 pdb=?Terminate@CAIStateGroupBase@@QAEXXZ ids={'f4': ['00911f00'], 'Terminate': ['0094f730', '009445f0'], 'FinishUpdate': ['009574d0']}
+   -unliste:UNLANDED 0088b6f0:PDB+SI=Terminate 0088ba40:PDB+SI=Terminate 0088bcb0:PDB+SI=Terminate 0090bed0:PDB+SI=Terminate 0090c540:PDB+SI=Terminate:SO 0090d030:PDB+SI=Terminate 0090e5d0:PDB+SI=Terminate 0090eec0:PDB+SI=Terminate 0090f1c0:PDB+SI=Terminate 0090f320:PDB+SI=Terminate 0090f470:PDB+SI=Terminate 0090f740:PDB+SI=Terminate 0090fdb0:PDB+SI=Terminate 00910df0:PDB+SI=Terminate:SO 00911300:PDB+SI=Terminate 00911630:PDB+SI=Terminate:SO 00911a90:PDB+SI=Terminate 00911d90:PDB+SI=Terminate 00911f00:SI=f4 00911f80:PDB+SI=Terminate 00913eb0:PDB+SI=Terminate 00913f00:PDB+SI=Terminate 00914460:PDB+SI=Terminate 00914600:PDB+SI=Terminate 00915350:PDB+SI=Terminate 00916910:PDB+SI=Terminate 00917130:PDB+SI=Terminate:SO 00917380:PDB+SI=Terminate 009175e0:PDB+SI=Terminate 00918b90:PDB+SI=Terminate:SO 009195d0:PDB+SI=Terminate 0091b190:PDB+SI=Terminate:SO 0091bd10:PDB+SI=Terminate 0091c3d0:PDB+SI=Terminate 0091c6a0:PDB+SI=Terminate 0091ccc0:PDB+SI=Terminate 0091d190:PDB+SI=Terminate:SO 0091ddd0:PDB+SI=Terminate 0091e050:PDB+SI=Terminate:SO 0091e4b0:PDB+SI=Terminate:SO 0091e750:PDB+SI=Terminate 0091ec30:PDB+SI=Terminate 0091f0d0:PDB+SI=Terminate 00920730:PDB+SI=Terminate 00920770:PDB+SI=Terminate:SO 00920a00:PDB+SI=Terminate 009211d0:PDB+SI=Terminate 00922010:PDB+SI=Terminate 009224f0:PDB+SI=Terminate 00922750:PDB+SI=Terminate:SO 00922860:PDB+SI=Terminate 009236c0:PDB+SI=Terminate 00924c70:PDB+SI=Terminate:SO 009250f0:PDB+SI=Terminate 00925170:PDB+SI=Terminate 009251e0:PDB+SI=Terminate 00926060:PDB+SI=Terminate 00927f30:PDB+SI=Terminate:SO 00929340:PDB+SI=Terminate 00929820:PDB+SI=Terminate 00929b10:PDB+SI=Terminate 0092a220:PDB+SI=Terminate 0092b110:PDB+SI=Terminate 0092b3a0:PDB+SI=Terminate 0092b900:PDB+SI=Terminate 0092bc60:PDB+SI=Terminate 0092c070:PDB+SI=Terminate 0092d7c0:PDB+SI=Terminate 0092da20:PDB+SI=Terminate 0092ea90:PDB+SI=Terminate 009334f0:PDB+SI=Terminate 00933b30:PDB+SI=Terminate 00933bb0:PDB+SI=Terminate 00933db0:PDB+SI=Terminate 009341c0:PDB+SI=Terminate 00934410:PDB+SI=Terminate 00934870:PDB+SI=Terminate:SO 009352c0:PDB+SI=Terminate 009357f0:PDB+SI=Terminate 00936020:PDB+SI=Terminate 009363d0:PDB+SI=Terminate 00936c70:PDB+SI=Terminate 009378f0:PDB+SI=Terminate 00937da0:PDB+SI=Terminate 009392a0:PDB+SI=Terminate 0093a080:PDB+SI=Terminate:SO 0093b1d0:PDB+SI=Terminate:SO 0093c030:PDB+SI=Terminate 0093c6d0:PDB+SI=Terminate:SO 0093c7b0:PDB+SI=Terminate:SO 0093c830:PDB+SI=Terminate:SO 0093cb20:PDB+SI=Terminate:SO 0093d030:PDB+SI=Terminate 0093d580:PDB+SI=Terminate 0093d720:PDB+SI=Terminate 0093dde0:PDB+SI=Terminate 0093e2d0:PDB+SI=Terminate:SO 0093e5e0:PDB+SI=Terminate 0093ea90:PDB+SI=Terminate:SO 0093f3c0:PDB+SI=Terminate 00940310:PDB+SI=Terminate 00940960:PDB+SI=Terminate 00941690:PDB+SI=Terminate 00941e00:PDB+SI=Terminate 00942ee0:PDB+SI=Terminate 009432c0:PDB+SI=Terminate:SO 00944300:PDB+SI=Terminate 009445f0:PDB+SI=Terminate 00944940:PDB+SI=Terminate 00944d10:PDB+SI=Terminate 00945060:PDB+SI=Terminate 00945bd0:PDB+SI=Terminate 00946190:PDB+SI=Terminate 00946850:PDB+SI=Terminate:SO 009474f0:PDB+SI=Terminate 00947a30:PDB+SI=Terminate 00949580:PDB+SI=Terminate 0094aac0:PDB+SI=Terminate 0094b740:PDB+SI=Terminate:SO 0094bb20:PDB+SI=Terminate 0094c050:PDB+SI=Terminate 0094ce60:PDB+SI=Terminate 0094d020:PDB+SI=Terminate 0094dd90:PDB+SI=Terminate 0094e7b0:PDB+SI=Terminate 0094f000:PDB+SI=Terminate 0094f640:PDB+SI=Terminate 0094f730:PDB+SI=Terminate 0094fe30:PDB+SI=Terminate:SO 0094feb0:PDB+SI=Terminate:SO 00950950:PDB+SI=Terminate:SO 00950cf0:PDB+SI=Terminate 00951070:PDB+SI=Terminate 00951430:PDB+SI=Terminate 00951b20:PDB+SI=Terminate:SO 00951d60:PDB+SI=Terminate 00951fb0:PDB+SI=Terminate 00952890:PDB+SI=Terminate 00952e80:PDB+SI=Terminate 00954f40:PDB+SI=Terminate 009551a0:PDB+SI=Terminate 00955620:PDB+SI=Terminate 00956060:PDB+SI=Terminate 00956380:PDB+SI=Terminate 00956460:PDB+SI=Terminate:SO 00956e70:PDB+SI=Terminate 00956fe0:PDB+SI=Terminate 009574d0:SI=FinishUpdate:SO 00957db0:PDB+SI=Terminate 00958000:SI=FinishUpdate 009582d0:PDB+SI=Terminate 00958840:PDB+SI=Terminate 00959a60:PDB+SI=Terminate 00959bf0:PDB+SI=Terminate 00959f80:PDB+SI=Terminate 0095a6c0:PDB+SI=Terminate 0095b020:PDB+SI=Terminate 0095b280:PDB+SI=Terminate:SO 0095b680:PDB+SI=Terminate 0095b6f0:PDB+SI=Terminate 0095b820:PDB+SI=Terminate:SO 0095b9e0:PDB+SI=Terminate 0095bcf0:PDB+SI=Terminate 0095c1f0:PDB+SI=Terminate:SO 0095d200:PDB+SI=Terminate:SO 0095e0b0:PDB+SI=Terminate 0095e470:PDB+SI=Terminate 0095e900:PDB+SI=Terminate:SO 0095ed80:PDB+SI=Terminate 0095edf0:PDB+SI=Terminate 0095f6f0:PDB+SI=Terminate 00960070:PDB+SI=Terminate 00960120:PDB+SI=Terminate 00961640:PDB+SI=Terminate 00961790:PDB+SI=Terminate:SO 00961880:PDB+SI=Terminate 009621f0:PDB+SI=Terminate:SO 009624d0:PDB+SI=Terminate 009627c0:PDB+SI=Terminate 009647c0:PDB+SI=Terminate 009658b0:PDB+SI=Terminate 00967b40:PDB+SI=Terminate:SO 00967d40:PDB+SI=Terminate:SO 009689c0:PDB+SI=Terminate:SO 00969470:PDB+SI=Terminate:SO 00969cb0:PDB+SI=Terminate 0096af60:PDB+SI=Terminate 0096b600:PDB+SI=Terminate 0096c4f0:PDB+SI=Terminate 0096cd70:PDB+SI=Terminate 0096df50:PDB+SI=Terminate 0096e610:PDB+SI=Terminate:SO 0096ea50:PDB+SI=Terminate 0096ee90:PDB+SI=Terminate 0096f050:PDB+SI=Terminate 0096fcd0:PDB+SI=Terminate:SO 0096ff10:PDB+SI=Terminate:SO 009711d0:PDB+SI=Terminate 00972cc0:PDB+SI=Terminate 00974110:PDB+SI=Terminate 00974770:PDB+SI=Terminate 00974aa0:PDB+SI=Terminate:SO 009756b0:PDB+SI=Terminate 00977e00:PDB+SI=Terminate:SO 009790f0:PDB+SI=Terminate 00979f70:PDB+SI=Terminate:SO 0097a630:PDB+SI=Terminate 0097bda0:PDB+SI=Terminate 0097c580:PDB+SI=Terminate 0097c5e0:PDB+SI=Terminate 0097ccd0:PDB+SI=Terminate
+#22 0097e270 pdb=?SetThingToNotAvoid@CAIStateGroupBase@@IAEXPBVCThing@@@Z ids={'SetNavigationIgnoreThing': ['0097e890']}
+   -unliste:UNLANDED 0097e890:SI=SetNavigationIgnoreThing 0097ec00:SI=SetNavigationIgnoreThing:SO
+#23 0097e2d0 pdb=?SetProximityForDirectApproach@CAIStateGroupBase@@IAEXM@Z ids={'SetNavigationSpeedScale': ['0097e890']}
+   -unliste:UNLANDED 0097e890:SI=SetNavigationSpeedScale 0097ec00:SI=SetNavigationSpeedScale:SO
+#29 00939dd0 pdb=?RemoveMessageEventsAdded@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAEXXZ ids={'RemoveMyWarningMessage': ['0093a080']}
+   0093a080:SI=RemoveMyWarningMessage:SO
+#37 00947110 pdb=?FindPrettyThingInShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@PAV2@@Z ids={'SelectPrettyThing': ['00947280']}
+   00947280:SI=SelectPrettyThing 009474f0:SI=SelectPrettyThing
+#83 008574d0 pdb=?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z ids={'SetName': ['008c4f50']}
+   -unliste:UNLANDED 0074ace0:NONE 0074dac0:PDB 00855500:PDB:SO 008559e0:PDB 00855be0:PDB 00855c40:PDB 0085b8b0:PDB 0085b8f0:PDB 0085ba90:PDB 0085bd70:PDB 0085ff10:NONE 00860150:NONE 00865eb0:PDB 008664f0:PDB 00867010:PDB 008676a0:PDB 00867820:PDB 0087c780:PDB 0087c7c0:PDB 0087c800:PDB 0087cf90:PDB 0087e860:PDB 0087fdf0:PDB 008b6550:PDB 008b65d0:PDB 008b6610:PDB 008b6650:PDB 008b6690:PDB 008b66d0:PDB 008b6710:PDB 008b6750:PDB 008b6790:PDB 008b67d0:PDB 008b6810:PDB 008b6850:PDB 008b6890:PDB 008b68d0:PDB 008b6910:PDB 008b6950:PDB 008b6990:PDB 008b6ad0:PDB 008b6e60:PDB 008b6ee0:PDB 008b7040:PDB 008b7350:PDB 008b74d0:PDB 008b76b0:PDB 008b7a20:PDB 008b7ed0:PDB:SO 008b7f80:PDB:SO 008b7ff0:PDB:SO 008b8110:PDB 008b8260:PDB 008b8310:PDB 008b8b00:PDB 008b8b40:PDB 008b8bc0:PDB 008b8d30:PDB 008b9370:PDB 008b9400:PDB 008b9ff0:PDB 008bab70:PDB 008bb0b0:PDB 008bb130:PDB 008bb200:PDB:SO 008bb2c0:PDB 008bb320:PDB 008bb450:PDB 008bb500:PDB 008bb5b0:PDB 008bb610:PDB 008bb670:PDB 008bb6f0:PDB:SO 008bb7d0:PDB 008bb830:PDB 008bb890:PDB 008bb8f0:PDB 008bb9a0:PDB 008bba50:PDB 008bbab0:PDB 008bbc00:PDB 008bbc60:PDB 008bbcc0:PDB 008bbd80:PDB 008bbe40:PDB 008bbeb0:PDB 008bbf20:PDB 008bbf90:PDB 008bc000:PDB 008bc060:PDB 008bc0c0:PDB 008bc5e0:PDB 008bc660:PDB 008bc6d0:PDB 008bc730:PDB 008bc790:PDB 008bc8c0:PDB 008bca00:PDB 008bcb80:PDB 008bcbe0:PDB 008bcdb0:PDB 008bcea0:PDB 008bcf20:PDB 008bcfb0:PDB 008bd040:PDB 008bd0b0:PDB 008bd110:PDB 008bd170:PDB 008bd1c0:PDB 008bd220:PDB 008bd280:PDB 008bd2e0:PDB 008bd330:PDB 008bd390:PDB 008bd880:PDB:SO 008bed40:PDB 008bed80:PDB 008bede0:PDB 008bee20:PDB 008bee60:PDB 008beea0:PDB 008beee0:PDB 008bf0f0:PDB:SO 008bf1c0:PDB 008bf740:PDB 008bf800:PDB 008c0460:PDB 008c04a0:PDB 008c04e0:PDB 008c0520:PDB 008c0560:PDB 008c05a0:PDB 008c05e0:PDB 008c0630:PDB 008c0670:PDB 008c06b0:PDB 008c06f0:PDB 008c0730:PDB 008c0820:PDB 008c0b70:PDB 008c12d0:PDB 008c1900:PDB 008c1a10:PDB 008c1b20:PDB 008c1c30:PDB 008c1e00:PDB 008c1e80:PDB 008c1f70:PDB 008c3810:PDB:T3 008c39a0:PDB 008c3e50:PDB 008c3f90:PDB 008c4040:PDB 008c4170:PDB 008c44b0:PDB 008c4cb0:PDB 008c4ea0:PDB 008c4f50:SI=SetName 008c5410:PDB 008c5f90:PDB 008c6000:PDB 008c6070:PDB 008c60b0:PDB 008c60f0:PDB 008c6160:PDB 008c64f0:PDB 008c7200:PDB 008c7600:PDB 008c7f00:PDB 008c8380:PDB 008c8550:PDB 008c87a0:PDB 008c9410:PDB 008c9980:PDB 008c9df0:PDB 008ca170:PDB 008ca4a0:PDB 008ca600:PDB 008ca680:PDB 008ca700:PDB 008ca800:PDB 008cac00:PDB 008cac40:PDB 008cac80:PDB 008cacc0:PDB 008cb120:PDB 008cb940:PDB 008cbb90:PDB 008cbcf0:PDB 008cbd90:PDB:SO 008cc720:PDB 008cc760:PDB 008cc8e0:PDB:SO 008cc9c0:PDB:SO 008cca60:PDB 008cd5a0:PDB 008cdef0:PDB 008cdf40:PDB 008cdf90:PDB 008cdff0:PDB 008ce040:PDB 008ce100:PDB 008ce1b0:PDB 008ce3f0:PDB 008ce4b0:PDB 008ce570:PDB 008ce630:PDB 008ce690:PDB 008ce6f0:PDB 008ce900:PDB 008cf2a0:PDB 008cf2e0:PDB 008cf320:PDB 008cf370:PDB 008cf3d0:PDB 008cf540:PDB 008e43a0:PDB 008e4420:PDB 008e4490:PDB 008e45b0:PDB 008e4640:PDB 008e46d0:SI=SetName 008e4770:PDB 008e6780:PDB 008e6880:PDB 008e68e0:PDB 008e6bb0:PDB 008e6c90:PDB 008ec4f0:PDB 008ec6a0:PDB 008eda90:PDB 008f2b00:PDB 008f2b40:PDB 008f2b80:PDB 008f2bc0:PDB 008f2c70:PDB 008f2d00:PDB 008f2d40:PDB 008f39a0:PDB 008f3a50:PDB 008f3ad0:PDB 008f3e70:PDB 008f3fd0:PDB 008f40b0:PDB 008f41d0:PDB 008f42a0:PDB 008f4320:PDB 008f4480:PDB 008f4570:PDB 008f4b00:PDB 008f4cb0:PDB 008f4d00:PDB 008f4d60:PDB 008f4ef0:PDB 008f4f40:PDB 00908000:PDB 00908160:PDB 00908270:PDB 009082d0:PDB 00908340:PDB 009083a0:PDB 00908400:PDB 00910570:PDB 00924c70:PDB:SO 00925330:PDB 009253c0:PDB 00925440:PDB 009254c0:PDB 00925560:PDB 009255e0:PDB:SO 00925680:PDB:SO 00925700:PDB 00925780:PDB 00925820:PDB 009258a0:PDB 00925920:PDB 009259b0:PDB 00938a10:PDB 0093afc0:PDB 0094e5f0:PDB 00957170:PDB 0095cb80:SI=SetName 0096af60:PDB 0096c010:PDB 0096dbc0:PDB 00970280:PDB 00970320:PDB 009703d0:PDB 00976e80:PDB 00976f30:PDB 00976fc0:SI=SetName 00977060:SI=SetName 00977100:PDB 009771f0:PDB 00977320:PDB 0097c760:SI=SetName 0097c830:SI=SetName 0097c920:SI=SetName 0097ce30:PDB 0097ce70:PDB 0097ceb0:PDB 0097cef0:PDB 00982c10:PDB 00982c70:PDB
+#100 00a3a9c0 pdb=?Alloc@CCompressorZlib@@CAPAXPAXII@Z ids={'fn_a3a9c0': ['00a3aa10'], 'ZAlloc': ['00a3aa40'], 'ZlibAlloc': ['00a3ab00']}
+   
+#101 00a3aa00 pdb=?Free@CCompressorZlib@@CAXPAX0@Z ids={'fn_a3aa00': ['00a3aa10'], 'ZFree': ['00a3aa40'], 'ZlibFree': ['00a3ab00']}
+   
+#102 00a3aa10 pdb=?Initialise@CCompressorZlib@@AAEXXZ ids={'Init': ['00996230']}
+   0051f480:NONE 00520670:NONE 00522530:NONE 00523860:NONE 0052ada0:SI=Init 00996230:SI=Init 009967e0:SI=Init:SO 00996990:PDB:SO 00996a40:SI=Init:SO 009ad5f0:NONE:SO 009ae390:NONE 009c4330:SI=Init
+#122 007a4120 pdb=?DeleteData@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z ids={'DestroyObject': ['007a1870']}
+   
+#130 006925a0 pdb=?HasPerformedAction@CCreatureActionBase@@QBE_NXZ ids={'UnsheatheWeapons_CheckPredicate': ['008b69d0'], 'Check': ['008cabe0'], 'CreatureForcePush_Check': ['008b93b0'], 'GetPerformedAction': ['0069f670', '0069fc40'], 'HasPerformedAction': ['00858130'], 'GetCanItemBeQuickAssigned': ['00848ae0'], 'IsChestOpen': ['00842b60']}
+   0069f670:SI=GetPerformedAction 0069fc40:SI=GetPerformedAction 00842b60:SI=IsChestOpen 00846bc0:PDB+SI=HasPerformedAction 00848ae0:SI=GetCanItemBeQuickAssigned 00858130:PDB+SI=HasPerformedAction:SO 00858400:PDB+SI=HasPerformedAction 008b69d0:SI=UnsheatheWeapons_CheckPredicate 008b6a20:PDB+SI=HasPerformedAction 008b6a90:PDB+SI=HasPerformedAction 008b93b0:SI=CreatureForcePush_Check 008bf500:PDB+SI=HasPerformedAction 008cabe0:SI=Check 008e0780:PDB+SI=HasPerformedAction:SO
+#171 00996610 pdb=?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z ids={'WriteData': ['00ac3b00'], 'WriteBuffer': ['004b64e0']}
+   -unliste:UNLANDED 004b64e0:SI=WriteBuffer 006ba030:SI=WriteData:SO 00a2eaa0:SI=WriteBuffer 00a75400:SI=WriteBuffer 00a89450:SI=WriteData/WriteBuffer 00a8fd40:SI=WriteData/WriteBuffer 00ac3b00:SI=WriteData
+#184 009bebb0 pdb=?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z ids={'GetDepthBufferFormat': ['009bfb30']}
+   009bf7e0:PDB:SO 009bfb30:SI=GetDepthBufferFormat:SO
+#203 00be3110 pdb=?BuildSharedIndexBuffers@CEngineLandscapeMeshBuilder@@AAEXXZ ids={'Initialise': ['00be32a0']}
+   00be32a0:SI=Initialise
+#207 00b8d0d0 pdb=?BuildUnitBox@CEngineOcclusionManager@@AAEXXZ ids={'InitializeOcclusionBuffers': ['00b8d780']}
+   00b8d780:SI=InitializeOcclusionBuffers
+#212 00b99860 pdb=?CalcFrameConstantSIMDVars@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXXZ ids={'FrameStartCommon': ['00b99b50']}
+   00b99b50:SI=FrameStartCommon
+#247 00698540 pdb=?UpdateEarthquake@CGameCameraManager@@AAEXXZ ids={'UpdateEarthQuakes': ['0069b790']}
+   0069b790:SI=UpdateEarthQuakes
+#248 006988b0 pdb=?PushCurrentManualMode@CGameCameraManager@@QAEXXZ ids={'Extra': ['00699090']}
+   -unliste:UNLANDED 00635b30:PDB 00635d70:PDB 0068d840:PDB 0068d890:PDB 00698950:PDB 00699090:SI=Extra:SO 0069a850:PDB 0069a990:PDB 0069b6f0:PDB
+#270 00a043a0 pdb=?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ ids={'GetAnaloguePosition': ['007a9960', '006894c0'], 'GetAnalogueVector': ['005bc5c6'], 'GetJoystickPosition': ['00689130']}
+   -unliste:UNLANDED 0042e3ee:PDB+SI=GetJoystickPosition:SO 004963a0:PDB+SI=GetJoystickPosition 005bc5c6:SI=GetAnalogueVector:SO 0066f7d0:PDB+SI=GetJoystickPosition 0066f840:PDB+SI=GetJoystickPosition 00689130:PDB+SI=GetJoystickPosition:SO 006894c0:SI=GetAnaloguePosition 006896c0:PDB+SI=GetJoystickPosition 00689820:PDB+SI=GetJoystickPosition 00689980:PDB+SI=GetJoystickPosition 00689c40:PDB+SI=GetJoystickPosition 00689df0:PDB+SI=GetJoystickPosition 0068bc70:PDB+SI=GetJoystickPosition:SO 0068cac0:PDB+SI=GetJoystickPosition 0068cb90:PDB+SI=GetJoystickPosition 00690480:PDB+SI=GetJoystickPosition 007a7000:PDB+SI=GetJoystickPosition:SO 007a9960:SI=GetAnaloguePosition 009e4470:PDB+SI=GetJoystickPosition 00a0dfc0:PDB+SI=GetJoystickPosition
+#287 00416258 pdb=?GetPredictedTimeSinceLastRenderFrame@CMainGameComponent@@IBENXZ ids={'GetTimeSinceLastRenderFrameStart': ['00417001']}
+   00417001:SI=GetTimeSinceLastRenderFrameStart 00417747:PDB
+#323 00a629d0 pdb=?Clear@CPackedUIntArray@@QAEXXZ ids={'DeallocateMemory': ['009cd850']}
+   009cd740:PDB+SI=DeallocateMemory 009cd850:PDB+SI=DeallocateMemory
+#328 006dfda0 pdb=?SetParticleCreationDisabled@CParticleEmitter@NParticleEngine@@QAEX_N@Z ids={'SetHidden': ['006e1620']}
+   006e1620:PDB+SI=SetHidden:SO
+#343 008fa9f0 pdb=?GetPointsList@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ ids={'Finalise': ['008fadb0']}
+   -unliste:UNLANDED 008fac30:NONE 008fadb0:SI=Finalise 008faf70:SI=Finalise:SO
+#354 00d89ad0 pdb=?PlayCutscene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z ids={'PlayCutScene': ['00d87cb0']}
+   00d87cb0:SI=PlayCutScene:SO
+#355 00d9f070 pdb=?ShouldSpawnPointSpawn@CQ_MinionCampScript@NScript@@QAE_NABVCScriptThing@@@Z ids={'IsSpawnPointToSpawn': ['00d9ee20']}
+   00d9ee20:SI=IsSpawnPointToSpawn
+#356 00dc0830 pdb=?DepopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ ids={'CleanupBandits': ['00dc0300']}
+   00dc0300:SI=CleanupBandits:SO
+#359 004b0a30 pdb=?AddPendingQuestToDeactivate@CQuestManager@@QAEXABVCCharString@@K@Z ids={'DeactivateQuestLater': ['00892f10']}
+   004b0f10:PDB 00892f10:SI=DeactivateQuestLater
+#365 00f3ae50 pdb=?Compress@CRangeCompressor@@QAEJPBXJJPAEJ@Z ids={'CompressToBuffer': ['00f3afc0']}
+   00f3afc0:PDB+SI=CompressToBuffer:SO
+#368 006bbfa0 pdb=?IsMapIncluded@CRegion@@QBE_NJ@Z ids={'ContainsMap': ['004fc190']}
+   004fc190:SI=ContainsMap
+#382 00cb7d60 pdb=?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z ids={'BindsEntityScript': ['004afa60']}
+   004afa60:SI=BindsEntityScript 004afb00:SI=BindsEntityScript 004afbb0:PDB:SO 004b26b0:SI=BindsEntityScript
+#385 00cb8220 pdb=?RunSubThreads@CScriptBase@@QAEXXZ ids={'UpdateScript': ['004b4490']}
+   004b4490:SI=UpdateScript
+#392 0082e250 pdb=?GetName@CScriptedMapBrush@@QBEABVCCharString@@XZ ids={'transform': ['004ff900'], 'GetAnimFilter': ['00820c90'], 'GetName': ['0081e960'], 'GetBrushName': ['00820b80']}
+   -unliste:UNLANDED 004fe550:PDB+SI=GetName:SO 004fe5b0:PDB+SI=GetName 004ff900:SI=transform 0081e960:PDB+SI=GetName 0081e9f0:PDB+SI=GetName 00820b80:SI=GetBrushName:SO 00820c90:SI=GetAnimFilter:SO
+#393 00a62050 pdb=?CloseShaders@CShaderDataBank@@AAEXXZ ids={'DeleteShaderEntries': ['00a62860']}
+   00a620d0:PDB 00a62110:NONE 00a62860:SI=DeleteShaderEntries
+#420 007fdf60 pdb=?GetNumberCanSummon@CTCAISummon@@QBEJXZ ids={'GetMaxCreatureCount': ['0080fd30']}
+   -unliste:UNLANDED 0080fd30:SI=GetMaxCreatureCount 0096e540:SI=GetMaxCreatureCount
+#435 00783680 pdb=?OnNoBoastsRemain@CTCBoastingCrowdControl@@QAEXXZ ids={'DetachAll': ['0056a980']}
+   0056a980:SI=DetachAll:SO
+#440 006a1270 pdb=?IsPrimarySlotFree@CTCCarrying@@QBE_NXZ ids={'IsPrimarySlotEmpty': ['008ba3c0']}
+   -unliste:UNLANDED 006355d0:PDB 00636480:PDB 00692ec0:PDB 0069f9e0:PDB:SO 006a1e00:PDB 006ab0e0:PDB 0078e9c0:PDB 00793ec0:PDB 008ba3c0:SI=IsPrimarySlotEmpty
+#442 007338a0 pdb=?UnsetBlocking@CTCCombat@@QAEXXZ ids={'OnBlockHoldExpired': ['007339e0']}
+   -unliste:UNLANDED 0056ad40:PDB 006369b0:PDB 00717710:PDB:SO 007339e0:SI=OnBlockHoldExpired:SO 00733f70:PDB 00855920:PDB 0089d600:PDB
+#450 00670470 pdb=?UpdateHeightAboveGround@CTCCoopSpirit@@AAEXXZ ids={'UpdateGravity': ['00670a10']}
+   00670a10:SI=UpdateGravity
+#455 0073a840 pdb=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ ids={'UpdateFrontMode': ['0069f670'], 'OnUnsheatheFinished': ['0069fc40'], 'RestartCurrentMode': ['008ed850']}
+   -unliste:UNLANDED 0069f4f0:SI=RestartCurrentMode 0069f670:SI=UpdateFrontMode 0069f9e0:SI=RestartCurrentMode:SO 0069fc40:SI=OnUnsheatheFinished 006d83b0:SI=UpdateFrontMode:SO 0078c860:SI=RestartCurrentMode 0078c8b0:SI=RestartCurrentMode 0078e9c0:SI=RestartCurrentMode 00793ec0:SI=RestartCurrentMode 008b7ba0:PDB 008ba3c0:SI=UpdateFrontMode 008ed850:SI=RestartCurrentMode
+#456 0073a8a0 pdb=?IsModeActive@CTCCreatureModeManager@@QBE_NK@Z ids={'HasMode': ['008c2490', '009621f0']}
+   -unliste:UNLANDED 00667d30:PDB 007175d0:PDB:SO 0078c7f0:PDB 0078d250:PDB 007e4430:PDB 007f1410:SI=HasMode 007fb270:PDB 0085ef00:PDB 0085fa00:PDB 00867b40:PDB 0089ed80:PDB 008b8cb0:PDB 008c0d10:PDB 008c0ea0:PDB 008c1180:PDB 008c1260:PDB 008c2490:SI=HasMode 008cb4a0:PDB 008cb5c0:PDB 008e8a10:PDB:SO 00914c60:PDB 00924420:PDB 0092e890:PDB 00934120:PDB 00941fc0:PDB 00948880:PDB 0094dbc0:PDB 00954a20:PDB 00955620:PDB 009621f0:SI=HasMode:SO 009624d0:SI=HasMode 00962b80:PDB 009635c0:PDB 0096d190:PDB 0096ddb0:PDB 0096df50:PDB 009711d0:PDB 00977a30:PDB 00977c40:SI=HasMode:SO 0097c5e0:PDB 0097ef60:SI=HasMode:SO 0097f3a0:SI=HasMode:SO
+#468 0078f820 pdb=?CancelMove@CTCDivineWrath@@QAEXXZ ids={'CancelAbilities': ['0072ba40']}
+   0069f800:PDB 0072b420:PDB+SI=CancelAbilities 0072ba40:PDB+SI=CancelAbilities
+#476 007e7880 pdb=?PlaySoundW@CTCFireheartMinigame@@QAEKABVCCharString@@@Z ids={'PlaySound': ['007e7ac0']}
+   007e7ac0:SI=PlaySound:SO
+#484 004bffc0 pdb=?ClearHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z ids={'ClearMeshEffect': ['00646709'], 'ClearMeshEffect_004bffc0': ['007d8e20']}
+   -unliste:UNLANDED 00646709:SI=ClearMeshEffect 0064bfba:PDB 0079eaa0:SI=ClearMeshEffect 007cc120:SI=ClearMeshEffect:SO 007ce390:PDB:SO 007ce3c0:PDB 007ce3f0:PDB 007d8e20:SI=ClearMeshEffect_004bffc0 008f17d0:SI=ClearMeshEffect_004bffc0
+#490 0071be80 pdb=?SetWill@CTCHeroMorph@@QAEXM@Z ids={'SetWillMorphAmount': ['005ee887']}
+   005ee887:SI=SetWillMorphAmount:SO
+#491 0071c0c0 pdb=?SetTan@CTCHeroMorph@@QAEXM@Z ids={'SetSunTan': ['0057b0f7']}
+   0057b0f7:SI=SetSunTan
+#493 006c5920 pdb=?RemoveDeedStillSearchingForWitnesses@CTCHeroOpinionDeedLog@@QAEXJ@Z ids={'RemoveDeedStillSearchingForWitnesses': ['006c6010'], 'EndDeed': ['007baf00']}
+   -unliste:UNLANDED 0057cb7e:PDB+SI=RemoveDeedStillSearchingForWitnesses 0065c146:PDB+SI=RemoveDeedStillSearchingForWitnesses 006c6010:PDB+SI=RemoveDeedStillSearchingForWitnesses 006c6e20:PDB+SI=RemoveDeedStillSearchingForWitnesses 00747da0:PDB+SI=RemoveDeedStillSearchingForWitnesses:SO 00784260:NONE 007846b0:NONE 007849c0:PDB+SI=RemoveDeedStillSearchingForWitnesses 007baf00:SI=EndDeed:SO 0089c850:PDB+SI=RemoveDeedStillSearchingForWitnesses
+#499 0077cca0 pdb=?DoStopRunning@CTCHighlightItem@@IAEXXZ ids={'Update': ['0077cdd0'], 'DoHighlightAction': ['0077cde0'], 'DoStopRunning': ['0077d140']}
+   -unliste:UNLANDED 0077cd30:PDB+SI=DoStopRunning 0077cdd0:SI=Update 0077cde0:SI=DoHighlightAction 0077d140:PDB+SI=DoStopRunning
+#501 008018b0 pdb=?Clear@CTCIdleScheduler@@QAEXXZ ids={'Reset': ['004e1537'], 'OnNewBrain_008018b0': ['00833010']}
+   004e1537:SI=Reset 00833010:SI=Reset/OnNewBrain_008018b0:SO
+#524 005fc510 pdb=?ResetPrimitiveHandles@CTCInventoryMap@@QAEXXZ ids={'ReleaseMapScreenPrimitives': ['00602f30']}
+   005fc610:NONE 005fce60:PDB 005fd0b0:PDB 00602f30:SI=ReleaseMapScreenPrimitives:SO
+#528 007f0b10 pdb=?DoDieFX@CTCKrakenTentacle@@QAEXXZ ids={'CreateHeadEffect': ['007f14f0']}
+   007f14f0:SI=CreateHeadEffect
+#529 00751a80 pdb=?GetLookAngleRelToBodyXY@CTCLook@@QBEMXZ ids={'GetHeadAngleOffset': ['00665260']}
+   00664e50:PDB 00665260:SI=GetHeadAngleOffset
+#533 007714b0 pdb=?PushNewSourceDef@CTCOpinionSource@@QAE_NJ@Z ids={'PushSourceDefIndex': ['00771620']}
+   00700820:PDB 00771620:PDB+SI=PushSourceDefIndex
+#535 007e60f0 pdb=?PlaySoundW@CTCOracleMinigame@@QAEKABVCCharString@@@Z ids={'PlaySound': ['007e61b0']}
+   007e61b0:SI=PlaySound 007e6450:PDB 007e6750:PDB:SO
+#536 007b7cd0 pdb=?AddRenownChange@CTCOverheadDisplay@@QAEXM@Z ids={'AddRenownEntry': ['0057d8be']}
+   0057d8be:SI=AddRenownEntry
+#541 0079dcb0 pdb=?IsShieldActive@CTCPhysicalShieldSpell@@QAE_NXZ ids={'IsMoveActive': ['0072ac90']}
+   -unliste:UNLANDED 0072ac90:SI=IsMoveActive 0072acf0:PDB:T3 0072b0d0:PDB
+#557 0066add0 pdb=?StopAttachedSound@CTCSoundPlayer@@QAEXK@Z ids={'StopSample': ['007c6da0', '0079d020'], 'StopSound': ['007b0950']}
+   -unliste:UNLANDED 006d0830:PDB:SO 006e28d0:PDB 006e2e60:PDB 00766550:PDB 00789ff0:PDB 0078ec80:PDB+SI=StopSound 0078f6e0:SI=StopSample 0078f8f0:SI=StopSound 00794180:PDB+SI=StopSound 00794c10:SI=StopSample/StopSound:SO 00794e60:SI=StopSound 0079cee0:PDB+SI=StopSound 0079d020:SI=StopSample/StopSound 0079d110:SI=StopSample/StopSound 0079ddb0:PDB+SI=StopSound:SO 0079eaa0:PDB+SI=StopSound 007a0490:PDB 007b0950:SI=StopSound:SO 007b0cd0:PDB:SO 007c4320:PDB 007c6da0:SI=StopSample 007c89f0:PDB:SO 007c8fd0:PDB 007c90a0:PDB 008df680:PDB:SO 008ef400:PDB 00929b10:PDB
+#560 0066b370 pdb=?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ ids={'UpdateSounds': ['0066bbf0']}
+   0066bbf0:SI=UpdateSounds
+#571 00794d90 pdb=?CancelMove@CTCUnholyPower@@QAEXXZ ids={'CancelAbilities': ['0069f8b0']}
+   0069f8b0:SI=CancelAbilities 0072b420:PDB+SI=CancelAbilities 0072ba40:PDB+SI=CancelAbilities
+#574 0065914b pdb=?HasCrimeBeenReported@CTCVillage@@QAE_NJ@Z ids={'IsCrimeHandled': ['00684210'], 'IsDeedHandled': ['00930a70']}
+   -unliste:UNLANDED 00684210:SI=IsCrimeHandled 007993f0:PDB 007b2fd0:PDB 00930a70:SI=IsDeedHandled 00958cb0:SI=IsDeedHandled 00958e20:PDB
+#575 0065c2d0 pdb=?ClearCrimes@CTCVillage@@QAEXXZ ids={'ProcessCrimeDeeds': ['0065c36e']}
+   -unliste:UNLANDED 004a3740:PDB:SO 0065c36e:SI=ProcessCrimeDeeds 0065c45a:PDB 0065c760:PDB 006a9590:PDB 007e2a60:PDB
+#577 007ee540 pdb=?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ ids={'GetVillage': ['0093ae80']}
+   -unliste:UNLANDED 005eb9e0:PDB 0065a8ee:PDB:SO 0065aa6f:PDB 0065b854:PDB:SO 006827a0:PDB 00682810:PDB:SO 006836d0:PDB 00684050:PDB 00684210:PDB 006bfb10:PDB 006bfb90:PDB 006c0fd0:PDB 006c1250:PDB 006c6040:PDB 006c8d40:PDB 006cf530:PDB 006cfaa0:PDB 006d0180:PDB:SO 006d18a0:PDB:SO 007039a0:PDB 0072f9e0:PDB 00730070:PDB 00730ae0:PDB 00744fb0:PDB 00773950:PDB 00775b40:PDB 00799140:PDB 007993f0:PDB 00799aa0:PDB 00799e30:PDB:SO 007b2bf0:PDB 007b2cf0:PDB 007b2d50:PDB 007b2fd0:PDB 007b6a80:PDB 007eacb0:PDB 007ebea0:PDB 007ee5a0:PDB 00833390:PDB 00833710:PDB 00849250:PDB 008648a0:PDB:SO 00896390:PDB 008a1cc0:PDB 0090c1a0:PDB:SO 0090c2d0:PDB 0090c540:PDB:SO 0090c670:PDB 0090c870:PDB 0090c900:PDB 0090fae0:PDB 0090fbf0:PDB 0090fc50:PDB:SO 0090fcd0:PDB 0090fd20:PDB:SO 0090fdb0:PDB 00910100:PDB 00916790:PDB:T3 009167f0:PDB 00916910:PDB 00918640:PDB 00918900:PDB 00919440:PDB:SO 00919510:PDB 0091a6f0:NONE 0091b190:PDB:SO 0091ea70:PDB 00922860:PDB 00923aa0:PDB 00923b00:PDB 00929020:PDB 00929220:PDB 009292b0:PDB 00929650:PDB 00929820:PDB 00929aa0:PDB 00929b10:PDB 00929f10:PDB 0092b110:PDB 0092c5a0:PDB 0092c8a0:PDB 0092d060:PDB 0092fab0:PDB:SOT3 00930a70:PDB 00930ee0:PDB 00931200:PDB 00932990:PDB 009331e0:PDB 009334f0:PDB 00938f70:PDB 00939060:PDB 00939ed0:PDB 0093ab70:PDB 0093ae80:SI=GetVillage 0093d580:PDB 0093e8c0:PDB 0093ea00:PDB:SO 0093ea90:PDB:SO 0093edf0:PDB 0093ee40:PDB 0093f3c0:PDB 0093fb30:PDB 0093fbc0:PDB 00940120:PDB 00940180:PDB 00940240:PDB:SO 00940310:PDB 00940820:PDB 009408d0:PDB 00940960:PDB 00942a00:PDB:SO 00942c10:PDB 00942d40:PDB:SO 00942ee0:PDB 009432c0:PDB:SO 00943b40:PDB 00943c20:PDB 00944300:PDB 00944940:NONE 00945060:NONE 009455b0:PDB 009462a0:PDB 00946690:PDB 00946730:PDB 00947840:PDB 00947a30:PDB 00947fb0:PDB 00949580:PDB 00949ab0:PDB 0094a3b0:PDB 0094b8b0:PDB 0094c900:PDB 0094d020:PDB 00958c00:PDB 00958cb0:PDB 00958e20:PDB 00967650:PDB 00967d40:PDB:SO 00968e00:PDB 00969470:PDB:SO 0096cb40:PDB 0096cd70:PDB 0096d200:PDB 0096d260:PDB 0096d2d0:PDB 0096d380:PDB:SO 0097fea0:PDB 00984d90:PDB 00986510:PDB
+#579 005daa00 pdb=?IsMeleeWeapon@CTCWeapon@@QBE_NXZ ids={'HasDamage': ['00838bc0']}
+   -unliste:UNLANDED 005ca68e:PDB 005cb2b0:PDB 006a15a0:PDB:SO 006eb390:PDB:SO 006ec850:PDB 007034d0:PDB 00736760:PDB 00838bc0:SI=HasDamage 00845ce0:PDB:SO
+#581 0076e6a0 pdb=?DrawAddWeaponTrails@CTCWeaponTrail@@QBEXABVCEnginePrimitivePrepareInfo@@@Z ids={'DrawPreparePrimitivesForRendering': ['00703590']}
+   00663c40:PDB+SI=DrawPreparePrimitivesForRendering 00703590:SI=DrawPreparePrimitivesForRendering:SO
+#600 006d5ab0 pdb=?ForceAIReset@CThingAICreature@@QAEXXZ ids={'NotifyManager': ['0082fe00'], 'OnBestEnemyTargetChanged': ['008a0260'], 'ResetBrain': ['0065935e']}
+   -unliste:UNLANDED 004a3740:PDB:SO 0065935e:SI=ResetBrain 0082fe00:SI=NotifyManager 008a0260:SI=OnBestEnemyTargetChanged 008a7980:PDB 008da7a0:PDB 008de700:PDB
+#607 00661e70 pdb=?IsAbortingCurrentAction@CThingCreatureBase@@QBE_NXZ ids={'IsBusy': ['00843c10'], 'IsCollidingWithLandscape': ['008c55b0']}
+   00843940:PDB 00843b40:PDB 00843c10:SI=IsBusy:SO 008c55b0:SI=IsCollidingWithLandscape
+#609 00662170 pdb=?GetCombatType@CThingCreatureBase@@QBEJXZ ids={'GetCombatTypeIndex': ['007363a0']}
+   007363a0:SI=GetCombatTypeIndex 00890f40:PDB
+#610 006621a0 pdb=?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ ids={'IsInCombatMode': ['0093d180', '0093e2d0'], 'UsesCreatureModes': ['0093e240']}
+   -unliste:UNLANDED 0093d180:SI=IsInCombatMode 0093e240:SI=UsesCreatureModes 0093e2d0:SI=IsInCombatMode:SO 0093e5e0:SI=IsInCombatMode 00955620:PDB 0096edb0:SI=IsInCombatMode 0096ee90:SI=IsInCombatMode 00972110:SI=UsesCreatureModes 0097e140:PDB:SO
+#616 00666d40 pdb=?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z ids={'FindPosZ': ['006cd970'], 'FindPosZAt': ['006cd990'], 'GetHeightZBelowAt': ['007aa9e0']}
+   -unliste:UNLANDED 00670470:PDB+SI=GetHeightZBelowAt 006cd970:SI=FindPosZ 006cd990:SI=FindPosZAt 007aa9e0:PDB+SI=GetHeightZBelowAt 007eff80:PDB+SI=GetHeightZBelowAt 00912700:PDB+SI=GetHeightZBelowAt 00912840:PDB+SI=GetHeightZBelowAt 00912ba0:PDB+SI=GetHeightZBelowAt
+#621 0051ed80 pdb=?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z ids={'GetThingByUID': ['0077b1c0'], 'GetTicks': ['00891d50'], 'GetThingWithUID': ['008d0200', '00438ff0'], 'FindThingByUID': ['00730070']}
+   -unliste:UNLANDED 00438ff0:SI=GetThingWithUID 00487c20:PDB 004b5500:PDB 005d9c90:PDB 005fcb10:PDB:SO 006295c0:SI=GetThingWithUID 0062c1c0:PDB 0062c300:PDB 006463ff:PDB 006ca4e0:PDB:SO 00729bc0:SI=GetThingByUID 00729f60:PDB 00730070:SI=FindThingByUID 00779340:SI=GetThingByUID 0077b1c0:SI=GetThingByUID 007c9920:PDB 007de5d0:PDB 007e8820:PDB 007ee5a0:PDB 00800460:SI=GetThingByUID 00820790:PDB:SO 00820840:PDB 008209c0:PDB:SO 00821010:PDB 00837830:PDB 0088aff0:PDB 0088e260:PDB 00891d50:SI=GetTicks/GetThingWithUID 008d0200:SI=GetThingWithUID
+#633 0098e7d0 pdb=?CloseAllStreamsForFile@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z ids={'RemovePendingRequests': ['0098ec40'], 'RemovePending': ['0098ec70']}
+   0098ec40:SI=RemovePendingRequests 0098ec70:SI=RemovePending 0098f090:PDB 00991450:SI=RemovePendingRequests
+#634 0098f380 pdb=?BeginThread@CThreadedFileManager@@CAXPAX@Z ids={'ThreadProc': ['0098f3a0']}
+   
+#647 00e827a0 pdb=?SetCompletedThisClub@CV_FisticuffsClubScript@NScript@@QAEXXZ ids={'InitialiseVariablesCheck': ['00e82650']}
+   00e82650:SI=InitialiseVariablesCheck
+#649 00e9fec0 pdb=?InitialiseVariables@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ ids={'ResetMissionState': ['00e9fcd0']}
+   00e9fcd0:SI=ResetMissionState
+#652 0054e5d0 pdb=?GetDataFromDef@CViewport@NUISystem@@QAEXXZ ids={'InitialiseFromDef': ['0054ea00']}
+   0054ea00:SI=InitialiseFromDef 0054ea60:PDB
+#654 00a67770 pdb=?InitialiseFromVolumeTextureMipmap@CVolume@@QAEXPAUIDirect3DVolume9@@@Z ids={'InitialiseFromVolume': ['00a67ea0']}
+   00a67da0:PDB 00a67ea0:SI=InitialiseFromVolume
+#658 009f73c0 pdb=?OnPostSwapScreens@CVsyncCallbackTimer@@QAEXXZ ids={'OnPresent': ['009beeb0']}
+   009beeb0:SI=OnPresent 009bf2d0:PDB
+#661 0099b4d0 pdb=?UnassignString@CWideString@@IAEXXZ ids={'UnassignString': ['0099b560', '0099b720'], 'Release': ['0099b7d0'], 'UnassignString_0099b4d0': ['0099bdb0']}
+   -unliste:UNLANDED 0099b560:PDB+SI=UnassignString 0099b720:PDB+SI=UnassignString:SO 0099b7d0:SI=Release 0099bdb0:SI=UnassignString_0099b4d0 0099be70:PDB+SI=UnassignString 0099bf30:PDB+SI=UnassignString 0099bff0:PDB+SI=UnassignString 0099c120:PDB+SI=UnassignString
+#663 0048db13 pdb=?IsPerformingRegionLoad@CWorld@@QBE_NXZ ids={'IsRegionLoadShowingMiniMap': ['0064401c'], 'IsInSpecialMode': ['00490927']}
+   00490927:SI=IsInSpecialMode 0064401c:SI=IsRegionLoadShowingMiniMap:SO 006495a8:PDB 0092fab0:PDB:SOT3
+#666 0049ea10 pdb=?SetMiniMapEnabled@CWorld@@QAEX_N@Z ids={'SetEnabled': ['0088e400']}
+   0088e400:SI=SetEnabled
+#885 00405f00 pdb=?GFIntToWideString@@YI?AVCWideString@@J@Z ids={'LongToWideString': ['00646010']}
+   -unliste:UNLANDED 00406ae0:PDB 0041e6d3:PDB:SO 00427dc9:PDB 00427f31:PDB 00435530:PDB:SO 00439bb0:PDB 0044a2a0:PDB 0047e9ae:PDB 00494900:PDB 0049a0b0:SI=LongToWideString 00558170:PDB 0056ad40:PDB 0056ea4e:PDB 0056eb48:PDB 00570332:PDB 00571280:PDB 005726a0:PDB 005729d8:PDB 00573792:PDB 005841f9:PDB 0058578b:PDB 0058807d:PDB 0058af10:PDB 0058f016:PDB 005907ab:PDB 00598a1c:PDB 0059ca95:PDB 0059cfbd:PDB 0059d0b8:PDB 0059d1b1:PDB 0059d65a:PDB 0059d761:PDB 005a04f7:PDB 005a29f4:PDB 005a3734:PDB 005a3e47:PDB 005a45f6:PDB 005a4cdd:PDB 005a5b31:PDB:SO 005a6769:PDB 005a731f:PDB 005a79e6:PDB 005a8175:PDB 005a8a5d:PDB 005a8c66:PDB:SO 005a9cbe:PDB 005aaf28:PDB 005ad571:PDB 005aecc0:PDB 005af64e:PDB 005b01fe:PDB 005b0aac:PDB 005b5cf8:PDB 005b62fe:PDB 005b6767:PDB 005b6881:PDB 005b76d1:PDB:SO 005b8743:PDB 005be3b1:PDB 005be62c:PDB 005c4f42:PDB 005c574e:PDB 005c5f11:PDB 005c6b26:PDB 005c7452:PDB 005c8459:PDB 005c90fc:PDB 005c9a95:PDB 005cacb9:PDB 005ccc91:PDB:SO 005ce0e6:PDB 005d1f0c:PDB 005e4be0:PDB 005e78f0:PDB 005eeff2:PDB 005f1b10:PDB 005f3f7b:PDB 005f45b5:PDB 005f519f:PDB 00628000:PDB 0064499c:PDB 00646010:SI=LongToWideString:SO 00646762:PDB 00646f67:PDB 00647ab4:PDB 006509f8:PDB 00652fa4:PDB:SO 006aa2e0:PDB 007cacb0:PDB 007da640:PDB 007e50c0:PDB 007e5570:PDB 008139c0:PDB 00833c00:PDB
+#888 00661540 pdb=?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z ids={'AngleBetweenPositions': ['00751c70']}
+   -unliste:UNLANDED 006650e0:PDB 006ab820:PDB 00751c70:SI=AngleBetweenPositions 00751e80:SI=AngleBetweenPositions 00752930:SI=AngleBetweenPositions 007534b0:PDB 00753e90:PDB:SO 008bf1c0:PDB
+#890 00754e70 pdb=?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z ids={'AngleYZBetweenPositions': ['00752930']}
+   -unliste:UNLANDED 00751c70:PDB 00752930:SI=AngleYZBetweenPositions 00753e90:PDB:SO

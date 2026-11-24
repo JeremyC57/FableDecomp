@@ -1,0 +1,4 @@
+004aa940 LIBCP_OK renames=?GetFocalPos@CScriptThing_Methods@@QBE?AVC3DVector@@XZ=?GetFocalPos@CScriptThing@@UBE?AVC3DVector@@XZ ; .drectve EQUAL ; sections=3
+004aa9a0 LIBCP_OK renames=?GetHomePos@CScriptThing_Methods@@QBE?AVC3DVector@@XZ=?GetHomePos@CScriptThing@@UBE?AVC3DVector@@XZ ; .drectve EQUAL ; sections=3
+004aa9e0 LIBCP_OK renames=?GetCurrentMapName@CScriptThing_Methods@@QAE?AVCCharString@@XZ=?GetCurrentMapName@CScriptThing@@UBE?AVCCharString@@XZ ; .drectve EQUAL ; sections=2
+00ac62b0 LIBCP_OK renames=?GetChunkInfo@C3DMeshFileClothChunk_Methods@@QAE?AVCCharString@@XZ=?GetChunkInfo@C3DMeshFileClothChunk@@UBE?BVCCharString@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

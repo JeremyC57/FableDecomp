@@ -1,19 +1,14 @@
-// std::list<T_0042ab1c>::~list() -- STLport list destructor: clear the nodes (out-of-line _List_base::clear @ 0x0042A141) then free the sentinel node
-// Leaf: ??1list_T_0042ab1c@std@@
-// Renamed (fistp pass, 2026-10-24) from CFileInstaller::CActiveFile::OnReadFinished @ 00/42/CActiveFile_OnReadFinished_0042ab1c.cpp: 23/25-byte STLport list destructor: `mov esi,ecx ; call clear (0x0042A141) ; if (sentinel) free(sentinel)`; the node type T is not recoverable from the bytes (the label CFileInstaller::CActiveFile::OnReadFinished was propagated across 165 byte-twins); descriptive placeholder (size-optimised TU: pop ecx)
-// Retail: Fable.exe (TLC, VC7.1) @ 0x0042AB1C, 23 bytes.
+// std::_List_base<NUISystem::CActionParam*>::~_List_base() -- STLport list base destructor: clear the nodes (0x0042A141, out of
+//   line) then free the sentinel node
+// Leaf: ??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0042AB1C, 23 bytes, size-optimised TU (`pop ecx` after the free).
+// Name (NF239, 2026-11-22, CODEXP27 L16): the STLport 4.6 _list.h spelling the landed binders 0x0041E641 (~CManager), 0x0054DED0 and
+//   0x005954AD already bind here (STL instances have no PDB names). Was the stand-in ??1list_T_0042ab1c@std@@QAE@XZ (catalog
+//   std::list<T_0042ab1c>::~list); its clear callee bound ?clear@list_T_0042ab1c@std@@QAEXXZ at 0x0042A141, now the STLport clear.
+// Model: stlport/fable_containers.h (FABLE_RETAIL_STLP_LIST; FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE: clear declared only, called out
+//   of line as retail does) and engine/NUISystem_CAction.h; the explicit instantiation emits the destructor as its own COMDAT.
 #pragma optimize("s", on)
-extern "C" void __cdecl free(void*);
-namespace std {
-struct list_T_0042ab1c {
-    void* _M_node;                                   // +0x00 the sentinel node (STLport _List_base)
-    void clear();                                    // 0x0042A141 (_List_base::clear, out of line)
-    ~list_T_0042ab1c();
-};
-}
-std::list_T_0042ab1c::~list_T_0042ab1c()
-{
-    clear();
-    if (_M_node)
-        free(_M_node);
-}
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#include "engine/NUISystem_CAction.h"
+template std::_List_base<NUISystem::CActionParam*, std::allocator<NUISystem::CActionParam*> >::~_List_base();

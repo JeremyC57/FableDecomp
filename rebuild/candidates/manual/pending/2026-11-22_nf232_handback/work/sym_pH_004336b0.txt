@@ -1,0 +1,3 @@
+DEF @OperatorNew@4
+UND ?Alloc@Pool@@QAEPAXI@Z
+UND ?g_pool_013b8760@@3UPool@@A

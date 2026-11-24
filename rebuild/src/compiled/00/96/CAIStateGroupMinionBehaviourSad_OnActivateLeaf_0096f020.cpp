@@ -1,3 +1,4 @@
+// Leaf: ?OnActivateLeaf@CAIStateGroup_MinionBehaviourSad@@UAEXXZ
 // CAIStateGroup_MinionBehaviourSad::OnActivateLeaf() -- calls the method @ 0x0073AE10 of the object at +0x24 with the constant 20
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096F020, oracle length 11 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
@@ -13,9 +14,9 @@ public:
 };
 
 struct CAIStateGroup_MinionBehaviourSad {
-    unsigned char _pad[0x24];
+    unsigned char _pad[0x20];
     CTCCreatureModeManager* m_pObject;                    // +0x24
-    void OnActivateLeaf();
+    virtual void OnActivateLeaf();
 };
 
 void CAIStateGroup_MinionBehaviourSad::OnActivateLeaf()

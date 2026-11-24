@@ -13,6 +13,9 @@
 #include "rebuild_abi.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CTCCreatureModeManager.h"
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_PASS27
+#include "engine/CAnimFilterOfGroup.h"
+#endif
 class CThing;
 class CCharString;
 class CCreatureActionBase;
@@ -68,6 +71,32 @@ public:
 private:
     unsigned char Filter[0xc];                                           // +0x2c CAnimFilterOfGroup
 };
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_PASS27
+// Both PDBs and retail allocation/constructor at 0x00938421 / 0x00740040.
+class CModeSitBench : public CModeSitBase {
+public:
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_ALLOC
+    // NF238 opt-in (row 0x00742790): Ego_r.pdb / FableWin.pdb / Ego_d.pdb
+    // ?Alloc@CModeSitBench@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z, the MODE_SIT_BENCH factory that
+    // CTCCreatureModeManager::RegisterModes 0x0073B130 stores. Declaration only: a static member adds no slot and no layout.
+    static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& owner);   // 0x00742790
+#endif
+    CModeSitBench(CThing&);
+#ifndef FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_IMPLICIT_DTOR
+    virtual ~CModeSitBench();
+#else
+    // NF240 opt-in (q12674, row 0x00740040 the ctor, which emits the vtable): no user-declared destructor, as retail's scalar deleting
+    // destructor 0x007400E0 expands it in place (~Filter 0x00739DB0, then ~CModeSitBase 0x008D71D0; vtable 0x01267BFC slot 0); the
+    // implicit destructor is still the virtual ??1CModeSitBench@NCreatureMode@@UAE@XZ (FableWin.pdb 0x024B9E50). The
+    // CModeGuildmasterPowerUpShield PASS22_IMPLICIT_DTOR pattern. No layout change.
+#endif
+    virtual unsigned long GetType() const;
+    virtual const CAnimFilterBase& GetAnimFilter() const;
+private:
+    CAnimFilterOfGroup Filter;
+};
+FABLE_STATIC_ASSERT_AT(85, sizeof(CModeSitBench) == 0x38);
+#endif
 #ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITTAVERNSTOOL
 // Retail opt-in (chunk Q22, row 0x0096CD70 CAIStateGroup_EatAtTable::Update): RTTI .?AVCModeSitTavernStool@NCreatureMode@@ (vtable
 // 0x01292FF8: slot 0 0x0094B5D0, 1 GetType 0x0094B5B0, 4 GetAnimFilter 0x0094B5C0). Ego_r.pdb: CModeSitBase + Filter

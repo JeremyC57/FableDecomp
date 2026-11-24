@@ -1,3 +1,4 @@
+// Leaf: ?IsStrikeEventFinishedBeingActive@CCombatActionBase@@UBE_NXZ
 // CCombatActionBase::IsStrikeEventFinishedBeingActive() const -- true when there are strike events and none of them ends after the current running frame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00857030, length 58 bytes (+ int3 padding).
 // No callees. StrikeEvents is the retail std::list at +0xbc (head pointer, size at +0xc0) of counted
@@ -60,7 +61,7 @@ class CCombatActionBase { public:
     unsigned char _pad20[0xbc - 0x20];          // +0x20
     CStrikeEventList StrikeEvents;              // +0xbc
     unsigned char _padc4[0x114 - 0xc4];         // +0xc4
-    bool IsStrikeEventFinishedBeingActive() const;
+    virtual bool IsStrikeEventFinishedBeingActive() const;
 };
 
 bool CCombatActionBase::IsStrikeEventFinishedBeingActive() const

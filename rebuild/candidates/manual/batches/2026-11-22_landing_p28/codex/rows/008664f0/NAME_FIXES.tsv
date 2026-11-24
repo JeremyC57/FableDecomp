@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x013B86EF	?GCheatModeEnableRemoveProjectileModeWhenHit@NGlobalConsole@@3_NA	FableWin PUB32 and GDATA32 04ABD0BA, Ego_d PUB32, retail load 00866586 in the same ranged-attack reset branch.	CUnprovenBool_013b86ef
+0x005DFA50	?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@@QAEPAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@ABW4EAnimComponent@@@Z	Both calls in retail 00867F60 resolve to 005DFA50. The selected non-const instantiation matches the original typed owner in the landed source and all 60 bytes.	CAnimComponentVectorMap::LowerBound; CProtoMap::LowerBound

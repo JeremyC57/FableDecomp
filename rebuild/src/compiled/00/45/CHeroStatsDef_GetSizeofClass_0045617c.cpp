@@ -1,7 +1,10 @@
-class CHeroStatsDef { public:};
+// Leaf: ?GetSizeofClass@CHeroStatsDef@@UAEKXZ
+class CHeroStatsDef { public:
+    virtual unsigned long GetSizeofClass();
+};
 
-unsigned long __fastcall CHeroStatsDef_GetSizeofClass(CHeroStatsDef* self)
+unsigned long CHeroStatsDef::GetSizeofClass()
 {
-    (void)self;
     return 0x138;
 }
+// Flatten route (flatten_pilot v4, NF324): CHeroStatsDef_GetSizeofClass -> CHeroStatsDef::GetSizeofClass, the RTTI-placed PDB member; class model: the row's local class model.

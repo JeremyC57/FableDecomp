@@ -1,5 +1,5 @@
 // CMiniMapDisplay::UpdateMarkersInternal() -- when a region is loaded (+0xb8), add the hero marker: the live hero thing (game -> player manager (+0x1c) -> GetPlayer @ 0x00449970 -> GetPControlledCreature @ 0x00487DC0, dead bit +0x91 clear) with the first graphic index of the player GUI def's marker list (+0x958) through AddMarker (0x0082A500)
-// Leaf: ?UpdateMarkersInternal@CMiniMapDisplay@@QAEXXZ
+// Leaf: ?UpdateMarkersInternal@CMiniMapDisplay@@IAEXXZ
 // Naming wave 18: the global stand-in g_pGame (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0082A960, length 79 bytes.
@@ -40,7 +40,9 @@ class CMiniMapDisplay { public:
     unsigned char _pad04[0xb4];                    // +0x04 .. +0xb8
     CRegion*      m_pRegion;                       // +0xb8 (retail)
     void AddMarker(const CThing* thing, long graphicIndex);   // 0x0082A500
+    protected:
     void UpdateMarkersInternal();
+    public:
 };
 
 void CMiniMapDisplay::UpdateMarkersInternal()

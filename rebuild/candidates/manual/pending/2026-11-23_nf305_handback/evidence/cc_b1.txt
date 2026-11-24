@@ -1,0 +1,156 @@
+######## 00918880 CAIStateGroup_Gaze::FindFreeGazePos
+00918900 public	nonconst	143	src/compiled/00/91/CAIStateGroupGazeOutside_IsRunnable_00918900.cpp	CThingGameObject* FindFreeGazePos();
+009189c0 public	nonconst	57	src/compiled/00/91/CAIStateGroupGazeAtHome_IsRunnable_009189c0.cpp	CThingGameObject* FindFreeGazePos();
+00918a40 NODECL incl=engine/CThing.h,engine/CTCBase.h,engine/CThingCreatureBase.h,engine/CThingAICreature.h,engine/CIntelligentPointer.h,engine/CAIStateGroupBase.h,engine
+00918ac0 public	nonconst	69	src/compiled/00/91/CAIStateGroupGaze_InitCreaturePosition_00918ac0.cpp	CThingGameObject* FindFreeGazePos();
+00918b50 public	nonconst	47	src/compiled/00/91/CAIStateGroupGazeAtWork_InitCreaturePosition_00918b50.cpp	CThingGameObject* FindFreeGazePos();
+00918b90 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CDefPointer.h,engine/CDefClassBase.h,engine/CIntelligentPointer.h,engine/CThing.h,engine/CTC
+00927c80 NODECL incl=engine/CAIStateGroupBase.h,engine/CAIBrain.h,engine/CThingAICreature.h,engine/CPlayerManager.h,engine/CPlayer.h,engine/CTCBase.h,engine/_quarantine/C
+######## 0084d080 CBase::GetCamTools
+00871fd0 NODECL incl=engine/NCameraModes_CStringAndCageBase.h,engine/NCameraModes_CTools.h
+00872050 public	const	46	src/compiled/00/87/NCameraModesCStringAndCageBase_UpdateZVars_00872050.cpp	const CTools& GetCamTools() const;
+00872110 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CTCPhysicsBase.h,engine/CThingGameObject.h,engine/NGraphicAppearance_CTCGraphicAppearance.h,engine/NCameraM
+008728c0 public	const	59	src/compiled/00/87/NCameraModesCStringAndCageBase_Update_008728c0.cpp	const CTools& GetCamTools() const;
+0087b910 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CVectorMap.h,engine/CIntelligentPointer.h
+######## 009a01c0 CBasicString::ExtendData
+0099ef90 NODECL incl=
+009a0460 protected	nonconst	27	src/compiled/00/9a/CBasicStringchar_Append_009a0460.cpp	void ExtendData(unsigned long length);
+009a04e0 NODECL incl=
+009a06b0 public	nonconst	20	src/compiled/00/9a/CBasicStringchar_Insert_009a06b0.cpp	void ExtendData(unsigned long newLength);
+######## 00b30480 CEngineCamera::ClipSphere
+00b99710 public	nonconst	19	src/compiled/00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_ClipSubSections_00b99710.cpp	void ClipSphere(const C3DVector& centre, float rad
+00bdda80 public	nonconst	37	src/compiled/00/bd/CLocalDetailCacheMapCQuadTreeElement_RenderUpdate_00bdda80.cpp	bool ClipSphere(const C3DVector& centre, float radius, unsig
+00bf9aa0 public	nonconst	20	src/compiled/00/bf/CLocalDetailPrimitiveBase_ClipPrimitive_00bf9aa0.cpp	bool ClipSphere(const C3DVector* centre, float radius, unsigned long* 
+######## 00b91710 CEngineSceneGridCell::InvalidateAll
+00b8ff70 public	nonconst	9	src/compiled/00/b8/CEngineInternalPrimitiveBase_NotifyReleased_00b8ff70.cpp	void InvalidateAll();
+00b91870 NODECL incl=
+00b918b0 private	nonconst	32	src/compiled/00/b9/CEngineSceneGridCell_MovePrimitivesTo_00b918b0.cpp	void InvalidateAll();
+00b92300 NODECL incl=engine/CEngineSceneGridCell.h,engine/CEnginePrimitiveOcclusionManager.h
+00b93860 private	nonconst	17	src/compiled/00/b9/CEngineSceneGrid_MovePrimitivesDown_00b93860.cpp	CEngineSceneGridCell(CEngineSceneGridCell*);void InvalidateAll();FABLE_FO
+00b93b30 NODECL incl=engine/GFFloatToLongFloor.h,engine/C2DVector.h,engine/C2DBoxF.h,engine/CEngineSceneGridPos.h,engine/CEngineSceneGridCell.h,engine/CEngineSceneMap.h
+######## 0048da30 CFadeInFadeOutBase::IsOpen
+0048e78e NODECL incl=engine/C2DVector.h,engine/C2DBoxF.h,engine/CRGBColour.h,engine/CEnginePrimitiveHandle.h,engine/CEnginePrimitive2DSprite.h,engine/CEnginePrimitivePrep
+00644179 public	nonconst	24	src/compiled/00/64/NPlayerGuiCDrawMiniMap_IsFinishedOpening_00644179.cpp	bool IsOpen();
+00648820 NODECL incl=engine/C2DVector.h,engine/C2DBoxF.h,engine/C2DExtentsF.h,engine/C2DExtentsI.h,engine/C3DVector.h,engine/CRGBColour.h,engine/CIntelligentPointer.h,eng
+0064a639 NODECL incl=engine/EEnginePrimitiveType.h,engine/C2DVector.h,engine/CRGBColour.h,engine/CEnginePrimitive2DSprite.h,engine/CEnginePrimitivePrepareInfo.h,engine/NP
+0064e019 public	nonconst	42	src/compiled/00/64/NPlayerGuiCDrawMiniMap_ToggleCentering_0064e019.cpp	bool IsOpen();
+00652fa4 NODECL incl=engine/C2DVector.h,engine/C3DVector.h,engine/C2DExtentsF.h,engine/CRGBColour.h,engine/CRightHandedSet.h,engine/CIntelligentPointer.h,engine/CEnginePr
+00787c1b NODECL incl=
+00788555 public	nonconst	68	src/compiled/00/78/CTCMeleeTrap_UpdateAnimation_00788555.cpp	bool IsOpen();
+007887be public	nonconst	36	src/compiled/00/78/CTCTrapBase_UpdateTriggerOnProximity_007887be.cpp	bool IsOpen();
+######## 004af610 CQuestManager::IsQuestActive
+0049ea40 public	const	33	src/compiled/00/49/CWorld_IsCreatureGenerationEnabled_0049ea40.cpp	bool IsQuestActive(const CCharString&) const;
+004afc60 public	const	31	src/compiled/00/4a/CQuestManager_IsCreatureGenerationEnabled_004afc60.cpp	bool IsQuestActive(const CCharString& name) const;
+004b3a20 public	const	165	src/compiled/00/4b/CQuestManager_DeactivateQuest_004b3a20.cpp	bool IsQuestActive(const CCharString&) const;
+004b3ce0 NODECL incl=engine/C3DVector.h,engine/CWorld.h,engine/CScriptInfo.h,engine/CScriptBase.h,engine/CScriptDataBase.h,engine/CMessageEventManager.h,engine/CTBaseSing
+004b4490 public	nonconst	114	src/compiled/00/4b/CQuestManager_Update_004b4490.cpp	bool IsQuestActive(const CCharString& name);
+0061a8a0 public	const	103	src/compiled/00/61/CTCInventoryQuests_GetTestQuestsToDisplay_0061a8a0.cpp	bool IsQuestActive(const CCharString&) const;
+0061ad60 NODECL incl=engine/C2DVector.h,engine/C2DBoxF.h,engine/CRGBColour.h,engine/CDefString.h,engine/CInventoryDef.h,engine/CTestQuest.h,engine/CWorld.h,engine/CThing.
+00844090 public	const	22	src/compiled/00/84/CCreatureActionActivateQuest_FrameUpdate_00844090.cpp	bool IsQuestActive(const CCharString&) const;
+00892f40 public	nonconst	7	src/compiled/00/89/CGameScriptInterface_IsQuestActive_00892f40.cpp	bool IsQuestActive(const CCharString& questName);
+00896a30 NODECL incl=engine/CGameScriptInterface.h,engine/CPlayerManager.h,engine/CPlayer.h,engine/CTCHeroStats.h,engine/_quarantine/CTCInventoryBase.h,engine/CVectorMap.
+######## 00730c00 CTCDoor::Open
+00730f90 public	nonconst	85	src/compiled/00/73/CTCDoor_UpdateOpenStatusTriggerTypePerson_00730f90.cpp	void Open(bool instant);
+007310c0 NODECL incl=engine/ETCInterfaceType.h,engine/CDefClassBase.h,engine/CThing.h,engine/CThingBaseDef.h,engine/CDefPointer.h,engine/CAppearanceDef.h,engine/CAnimatio
+00731170 NODECL incl=engine/CTCDoor.h
+######## 006d8170 CTCHeroExperience::UpdateAbilitiesForStat
+006d8980 NODECL incl=engine/ETCInterfaceType.h,engine/CThing.h,engine/CTCBase.h,engine/CTCHeroExperience.h,engine/CHeroStatsDef.h,engine/CAbilityTrackDef.h,engine/CGameDe
+006d8ad0 NODECL incl=engine/CTCHeroExperience.h
+006d8b00 NODECL incl=
+006d8b50 public	nonconst	35	src/compiled/00/6d/CTCHeroExperience_SetExperienceStatus_006d8b50.cpp	void UpdateAbilitiesForStat(EHeroTrainableStatType stat, bool b);
+006d8ca0 NODECL incl=
+######## 006d83b0 CTCHeroExperience::OnStatLevelChange
+006d8980 NODECL incl=engine/ETCInterfaceType.h,engine/CThing.h,engine/CTCBase.h,engine/CTCHeroExperience.h,engine/CHeroStatsDef.h,engine/CAbilityTrackDef.h,engine/CGameDe
+006d8ad0 NODECL incl=engine/CTCHeroExperience.h
+006d8b00 NODECL incl=
+006d8b50 public	nonconst	36	src/compiled/00/6d/CTCHeroExperience_SetExperienceStatus_006d8b50.cpp	void OnStatLevelChange(bool b);
+006d8ca0 NODECL incl=
+######## 005ee02e CTCInventoryAbilities::IsAbilityPotentiallyAvailable
+005726a0 NODECL incl=engine/ETCInterfaceType.h,engine/CTCHeroExperience.h,engine/CTCInventoryExperience.h,engine/CTCInventoryAbilities.h,engine/NUISystem_CDeletion.h,engi
+005ee0e7 NODECL incl=
+005ee887 public	const	54	src/compiled/00/5e/CTCInventoryAbilities_UpdateWillMorph_005ee887.cpp	bool IsAbilityPotentiallyAvailable(EHeroAbility ability) const;
+005f3e7d public	const	33	src/compiled/00/5f/CTCInventoryAbilities_ForceAllAbilitiesToMaxLevel_005f3e7d.cpp	bool IsAbilityPotentiallyAvailable(EHeroAbility ability) const;
+005f3eca NODECL incl=
+005f3f14 NODECL incl=
+005f4c45 NODECL incl=
+006d7b80 NODECL incl=engine/CThing.h,engine/CTCHeroExperience.h,engine/CTCInventoryAbilities.h
+006d7cb0 public	nonconst	41	src/compiled/00/6d/CTCHeroExperience_IsReadyToLevelUp_006d7cb0.cpp	bool IsAbilityPotentiallyAvailable(EHeroAbility ability);
+######## 0079ddb0 CTCPhysicalShieldSpell::StopSound
+0079e3a0 public	nonconst	27	src/compiled/00/79/CTCPhysicalShieldSpell_Pause_0079e3a0.cpp	void StopSound(unsigned long sound);
+0079e500 NODECL incl=
+######## 007122c0 CTCScriptedControl::IsActionListEmpty
+004c70f0 NODECL incl=engine/ETCInterfaceType.h,engine/CTCScriptedControl.h
+004c8c90 NODECL incl=engine/CVectorMap.h
+006a8560 NODECL incl=engine/CVectorMap.h
+006ad970 NODECL incl=engine/CThing.h,engine/CVectorMap.h
+00747da0 NODECL incl=engine/C3DVector.h,engine/EOpinionDeedType.h,engine/GFFloatToLongCeil.h
+007e76b0 public	const	56	src/compiled/00/7e/CTCFireheartMinigame_FrameUpdate_007e76b0.cpp	bool IsActionListEmpty() const;
+008326a0 NODECL incl=engine/CIntelligentPointer.h,engine/C3DVector.h
+008508b0 NODECL incl=engine/CVectorMap.h
+008648a0 public	const	165	src/compiled/00/86/NCreatureAI_IsWillingToAttackTarget_008648a0.cpp	bool IsActionListEmpty() const;
+00864b30 public	const	161	src/compiled/00/86/NCreatureAI_IsOverridingFactionEnemyOnTarget_00864b30.cpp	bool IsActionListEmpty() const;
+00904380 public	nonconst	88	src/compiled/00/90/CScriptGameResourceObjectScriptedThing_WaitWhilePerformingTasks_00904380.cpp	bool IsActionListEmpty();
+00904ee0 public	nonconst	60	src/compiled/00/90/CScriptGameResourceObjectScriptedThing_IsPerformingScriptTask_00904ee0.cpp	bool IsActionListEmpty();
+######## 00787bf1 CTCTrapBase::Reset
+00787bfe protected	nonconst	55	src/compiled/00/78/CTCTrapBase_ManualDeactivate_00787bfe.cpp	void Reset();
+00787c0c NODECL incl=
+00788555 public	nonconst	87	src/compiled/00/78/CTCMeleeTrap_UpdateAnimation_00788555.cpp	void Reset();
+007887be public	nonconst	56	src/compiled/00/78/CTCTrapBase_UpdateTriggerOnProximity_007887be.cpp	void Reset();
+######## 00662a00 CThingCreatureBase::GetAnimFromName
+00663510 public	nonconst	65	src/compiled/00/66/CThingCreatureBase_InitialiseMovementSpeed_00663510.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, long inde
+006635d0 NODECL incl=
+00665860 NODECL incl=engine/C2DVector.h,engine/C3DVector.h,engine/ETCInterfaceType.h,engine/CDefClassBase.h,engine/CDefinitionManager.h,engine/CThing.h,engine/CThingCreat
+00666310 NODECL incl=engine/EThingCreatureProperty.h,engine/CThingCreatureDef.h,engine/CThingCreatureBase.h,engine/CTCCreatureModeManager.h,engine/NGraphicAppearance_CTCG
+006668a0 NODECL incl=engine/CThing.h,engine/CThingBaseDef.h,engine/CAnimationEntry.h,engine/CAppearanceDef.h,engine/CAnimFilterNoGroup.h,engine/CTCCreatureModeManager.h,e
+00733690 public	nonconst	52	src/compiled/00/73/CTCCombat_GetBlockingAnimationEntry_00733690.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, long index);
+00752640 public	const	51	src/compiled/00/75/CTCLook_InitialiseHeadAnims_00752640.cpp	const CAnimationEntry* GetAnimFromName(const CCharString& name, long index) const;
+008618b0 public	const	26	src/compiled/00/86/NCreatureMode_GetAnimationFromCreature_008618b0.cpp	const CAnimationEntry& GetAnimFromName(const CCharString& name, long flags
+00861c90 public	const	26	src/compiled/00/86/NCreatureMode_GetMovementSpeedFromAnimation_00861c90.cpp	const CAnimationEntry& GetAnimFromName(const CCharString& name, long 
+008621a0 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CThingCreatureBase.h,engine/CThingPlayerCreature.h,engine/CWorld.h,engine/CTCCreatureModeManager.h,engine/C
+008d6540 public	nonconst	25	src/compiled/00/8d/NCreatureModeCModeCarryingPlateStand_GetHoldingAnimIndex_008d6540.cpp	CAnimationEntry* GetAnimFromName(const CCharString& n
+008d6ac0 NODECL incl=engine/C3DVector.h,engine/NCreatureMode.h,engine/CThing.h,engine/CThingCreatureBase.h,engine/CTCCreatureModeManager.h,engine/NCreatureMode_CModeSitFl
+008d6cb0 public	nonconst	67	src/compiled/00/8d/NCreatureModeCModeSleepBed_AnimUpdate_008d6cb0.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, long flags);
+    public	nonconst	68	src/compiled/00/8d/NCreatureModeCModeSleepBed_AnimUpdate_008d6cb0.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilterBa
+008d6e80 public	nonconst	68	src/compiled/00/8d/NCreatureModeCModeForcePushed_AnimUpdate_008d6e80.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, long flags)
+    public	nonconst	69	src/compiled/00/8d/NCreatureModeCModeForcePushed_AnimUpdate_008d6e80.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilte
+008d6f20 public	nonconst	68	src/compiled/00/8d/NCreatureModeCModeRockTrollVulnerable_AnimUpdate_008d6f20.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, lon
+    public	nonconst	69	src/compiled/00/8d/NCreatureModeCModeRockTrollVulnerable_AnimUpdate_008d6f20.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, const CA
+008d70a0 public	nonconst	17	src/compiled/00/8d/CModeDragonFlyingBase_AnimUpdate_008d70a0.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, long index);
+008d8b00 public	nonconst	102	src/compiled/00/8d/NCreatureModeCModeCrouch_AnimUpdate_008d8b00.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, long index);
+008e9080 public	const	62	src/compiled/00/8e/NCreatureMode_GetAnimDistanceAndIndexFromAnimName_008e9080.cpp	const CAnimationEntry* GetAnimFromName(const CCharString& name,
+008e9110 public	nonconst	58	src/compiled/00/8e/NCreatureModeCModeStrafe_GetMovementSpeed_008e9110.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, long index
+008e9190 public	nonconst	62	src/compiled/00/8e/NCreatureModeCModeStrafe_SetUpCombinationAnims_008e9190.cpp	CAnimationEntry* GetAnimFromName(const CCharString& name, long 
+00914f00 NODECL incl=engine/fable_ai_action_enums.h,engine/CThingAICreature.h,engine/CAIStateGroupBase.h,engine/CAIBrain.h,engine/CAIStateGroup_KidHurtSelfRunToMother.h,e
+00917130 NODECL incl=engine/CThing.h,engine/CVectorMap.h,engine/CIntelligentPointer.h,engine/CDefClassBase.h,engine/CDefPointer.h,engine/CGameDefinitionManager.h,engine/C
+0092da20 NODECL incl=engine/CAIStateGroupBase.h,engine/CThingCreatureBase.h,engine/CThingAICreature.h,engine/CDefString.h,engine/CCreatureActionBase.h,engine/CCreatureAct
+00949580 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CRightHandedSet.h,engine/CCountedPointer.h,engine/CIntelligentPointer.h,engine/CThing.h,engi
+0096cd70 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CRightHandedSet.h,engine/CDefPointer.h,engine/CCountedPointer.h,engine/CIntelligentPointer.h
+######## 00666d10 CThingCreatureBase::GetCombatTypeDef
+006e7eb0 NODECL incl=engine/CThingCreatureBase.h,engine/CTCPhysicsBase.h,engine/CCombatTypeDef.h
+006e8050 public	const	25	src/compiled/00/6e/CDefendingCombatantInfoCCombatRing_StretchRingThickness_006e8050.cpp	const CCombatTypeDef& GetCombatTypeDef() const;
+006e89b0 NODECL incl=engine/CThingCreatureBase.h,engine/CTCPhysicsBase.h,engine/CCombatTypeDef.h,engine/CDefendingCombatantInfo.h
+006e9700 public	const	36	src/compiled/00/6e/CCombatManager_IsCreatureOnOuterRing_006e9700.cpp	const CCombatTypeDef* GetCombatTypeDef() const;
+006e99b0 NODECL incl=engine/ECombatZone.h,engine/CThingCreatureBase.h,engine/CTCPhysicsBase.h,engine/CCombatTypeDef.h,engine/CCombatManager.h,engine/GFCos.h
+006e9d90 public	const	47	src/compiled/00/6e/CCombatManager_SetAttackerRingAsRotating_006e9d90.cpp	CCombatTypeDef* GetCombatTypeDef() const;
+006ea0c0 NODECL incl=engine/CThingCreatureBase.h,engine/CCombatTypeDef.h,engine/CParentDefClassBase.h,engine/CDefString.h,engine/CGameDefinitionManager.h,engine/CWorld.h,
+006ea2c0 public	const	64	src/compiled/00/6e/CCombatManager_PerformSequenceReset_006ea2c0.cpp	CCombatTypeDef* GetCombatTypeDef() const;
+006eb700 NODECL incl=engine/CThingCreatureBase.h,engine/CTCTargeted.h,engine/CCombatTypeDef.h,engine/CCombatManager.h
+006eba60 public	nonconst	18	src/compiled/00/6e/CCombatManager_CCombatManagerRebuildCombatLists_006eba60.cpp	::CCombatTypeDef* GetCombatTypeDef();
+006ebee0 public	nonconst	28	src/compiled/00/6e/CCombatRing_AssignAttackerToProng_006ebee0.cpp	CCombatTypeDef* GetCombatTypeDef();
+006ebf70 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CThingCreatureBase.h,engine/CCombatTypeDef.h,engine/CAttackingCombatantInfo.h,engine/ECombatAbilityDataType
+006ec4f0 public	nonconst	74	src/compiled/00/6e/CCombatManager_FillCombatSequenceList_006ec4f0.cpp	const CCombatTypeDef* GetCombatTypeDef();
+006ec850 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CThingCreatureBase.h,engine/CCombatTypeDef.h,engine/CAttackingCombatantInfo.h,engine/ECombatAbilityDataType
+006f2c00 NODECL incl=engine/CThingCreatureBase.h,engine/CTCPhysicsBase.h,engine/CCombatTypeDef.h,engine/CDefendingCombatantInfo.h,engine/CAttackingCombatantInfo.h,engine/
+006f2de0 NODECL incl=engine/CThingCreatureBase.h,engine/CTCPhysicsBase.h,engine/CCombatTypeDef.h,engine/CDefendingCombatantInfo.h,engine/CAttackingCombatantInfo.h
+007331a0 NODECL incl=engine/CTCCombat.h
+00858cc0 public	nonconst	59	src/compiled/00/85/CCombatActionBase_OnBlowBlocked_00858cc0.cpp	CCombatTypeDef* GetCombatTypeDef();
+00865ac0 public	const	32	src/compiled/00/86/global_IsKnockdownToStun_00865ac0.cpp	const CCombatTypeDef* GetCombatTypeDef() const;
+008b8bc0 NODECL incl=
+0094f180 NODECL incl=engine/C3DVector.h,engine/CVectorMap.h,engine/CThing.h,engine/CTCBase.h,engine/CTCPhysicsBase.h,engine/CTCTargetingBase.h,engine/CThingCreatureBase.h
+00955620 NODECL incl=engine/CThingAICreature.h,engine/CThingBaseDef.h,engine/C3DVector.h,engine/CDefPointer.h,engine/CWorld.h,engine/CCombatManager.h,engine/CCombatTypeDe
+0096aad0 NODECL incl=engine/CVectorMap.h,engine/C3DVector.h
+0096df50 NODECL incl=engine/C3DVector.h,engine/CDefPointer.h,engine/CCountedPointer.h,engine/CThing.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engine/CInte
+00972cc0 NODECL incl=engine/CThingCreatureBase.h,engine/CThingAICreature.h,engine/CAIStateGroup_JackOfBladesStage1.h,engine/CAIBrain.h,engine/CWorld.h,engine/CCombatTypeD
+0097bda0 NODECL incl=engine/CAIStateGroupBase.h,engine/CIntelligentPointer.h,engine/CAIStateGroup_ScorpionKing.h,engine/CCreatureAction_ScorpionChargeInto.h,engine/CCreat
+0097ef60 public	nonconst	90	src/compiled/00/97/CAIStateGroupBase_AIActionProjectileAttackAndStrafeToThingProximit_0097ef60.cpp	CCombatTypeDef* GetCombatTypeDef();
+0097f3a0 public	nonconst	89	src/compiled/00/97/CAIStateGroupBase_AIActionProjectileAttackAndStrafeToPos_0097f3a0.cpp	CCombatTypeDef* GetCombatTypeDef();

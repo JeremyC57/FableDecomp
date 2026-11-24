@@ -1,0 +1,30 @@
+BP  -552 t2b262 this
+BP   -96 t40 angle_between_beams
+BP   -92 t40 lifetime_in_seconds
+BP   -88 t9b55 rhs
+BP   -64 t12 num_beams
+BP   -60 t40 storm_rotation
+BP   -56 t2460 start_pos
+BP   -44 t40 lifetime_of_main_beams
+BP   -40 t40 beam_length
+BP   -36 t12 storm_rotation_int
+BP   -32 t12 n
+BP   -28 t2460 weapon_pos
+BP   -16 t12 num_beams_ends
+BLOCK off 10c5011 len 861
+  BP  -208 t300e6 vtStartPos
+  BP  -192 t2460 end_pos
+  BP  -180 t300e6 vtEndPos
+  BP  -164 t2460 beam_direction
+  BP  -152 t232b5 upParams
+  BP  -100 t3a328 ptc_particle_emitter
+BLOCK off 10c53cf len 728
+  BP  -236 t2460 end_pos
+  BP  -224 t2460 beam_direction
+  BP  -212 t3a328 ptc_particle_emitter
+BLOCK off 10c56c2 len 783
+  BP  -336 t300e6 vtStartPos
+  BP  -320 t2460 end_pos
+  BP  -308 t300e6 vtEndPos
+  BP  -292 t232b5 upParams
+  BP  -240 t3a328 ptc_particle_emitter

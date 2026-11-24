@@ -1,0 +1,7 @@
+008c2550 ??_7CCreatureAction_CastAssassinRush@@6B@ 12 ?Initialise@CCombatActionBase@@UAEXXZ slots 70
+008ce040 ??_7CCreatureAction_CastAssassinRush@@6B@ 12 - slots 1
+008ce100 ??_7CCreatureAction_CastAssassinRush@@6B@ 12 - slots 1
+008ce1b0 ??_7CCreatureAction_CastAssassinRush@@6B@ 12 - slots 1
+008cef50 ??_7CCreatureAction_CastAssassinRush@@6B@ 12 - slots 1
+0096ae50 ??_7CCreatureAction_CastAssassinRush@@6B@ 12 ?Initialise@CCreatureActionBase@@UAEXXZ slots 70
+009735d0 ??_7CCreatureAction_CastAssassinRush@@6B@ 12 ?Initialise@CCreatureActionBase@@UAEXXZ slots 70

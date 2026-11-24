@@ -20,7 +20,10 @@ class CGPUScratchBufferTextureManager { public:
         long MultiSampleType; unsigned long UseageFlags; long MemoryPool;
     };
     void* Vtable; CResourceEntry* FirstResource; CResourceEntry* LastResource; CResourceEntry* EndResource;
-    long AllocResourceEntry(long); // 00f372b0
+    private:
+    long AllocResourceEntry(long);
+    public:
+ // 00f372b0
     long AllocateDepthBufferSurface(long,const C2DExtentsI&,const CPixelFormat&,long);
 private:
     void FreeResourceEntry(long);   // 0x00F36F40

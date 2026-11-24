@@ -35,6 +35,15 @@ public: void Activate();                                                 // 0x00
 public: static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_QUICK_ACCESS_MENU; }
 public: void Deactivate();                                               // 0x00625920
 #endif
+#ifdef FABLE_RETAIL_CTCQUICKACCESSMENU_MAGIC_LIST_PASS27
+private: NUISystem::CComponent* GetMagicListUI();
+#endif
+#ifdef FABLE_RETAIL_QUICKACCESSMENU_ACTIVATE_PASS27
+private:
+    // Both PDBs and retail 006276F0 / 00627BE0.
+    NUISystem::CComponent* GetItemsListUI(long&, NUISystem::CComponent*);
+    NUISystem::CComponent* GetExpressionsListUI(long&, NUISystem::CComponent*);
+#endif
 private: void ConstructItemCategoryList(CWideString &,NUISystem::CList *,std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > > &,NUISystem::CComponent *,bool);
 #ifdef FABLE_RETAIL_CTCQUICKACCESSMENU_EXPRESSIONS
 private: void ConstructExpressionCategoryList(CWideString &,NUISystem::CList *,std::vector<std::pair<long,long>,std::allocator<std::pair<long,long> > > &,NUISystem::CComponent *);

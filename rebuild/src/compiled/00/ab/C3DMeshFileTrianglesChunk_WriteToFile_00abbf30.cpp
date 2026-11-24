@@ -45,7 +45,7 @@ class CChunkedFileLoader;
 class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteUShort(unsigned short value);             // 0x00993E80
+    void WriteUWORD(unsigned short value);             // 0x00993E80
     void WriteULONG(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
@@ -103,9 +103,9 @@ void C3DMeshFileTrianglesChunk::WriteToFile(CDataOutputStream& out, CChunkedFile
     out.WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i) {
         const C3DMeshFileTriangle& triangle = Triangles[i];
-        out.WriteUShort(triangle.Index[0]);
-        out.WriteUShort(triangle.Index[1]);
-        out.WriteUShort(triangle.Index[2]);
+        out.WriteUWORD(triangle.Index[0]);
+        out.WriteUWORD(triangle.Index[1]);
+        out.WriteUWORD(triangle.Index[2]);
     }
     C3DMeshFileChunk::WriteToFile(out, saver);
 }

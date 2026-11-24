@@ -1,0 +1,19 @@
+addr       parity           behav  name
+006d5050   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006d5050   WARN SHARED_HEADER_AVAILABLE CTCEmoteIcon (engine/CTCEmoteIcon.h)
+006d5050   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+006d5050   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+006d5050   WARN SHARED_HEADER_AVAILABLE CTCFollowed (engine/CTCFollowed.h)
+006d5050   RELOCATION_MATCH PASS   RemoveEmoteIcon
+006d5180   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CTCFollowed (engine/CTCFollowed.h)
+006d5180   RELOCATION_MATCH PASS   RemoveFollower
+
+WINS: 2
+  006d5050 RELOCATION_MATCH CTCFollowed::?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+  006d5180 RELOCATION_MATCH CTCFollowed::RemoveFollower
+RF_DONE

@@ -1,0 +1,46 @@
+addr       parity           behav  name
+0062ea40   MATCH            PASS   IsToUseRotationInAnimation
+0062ea50   MATCH            PASS   IsToAlignWithGroundNormal
+0062ea60   MATCH            PASS   IsToFaceTarget
+0062ea70   MATCH            PASS   IsToFaceTargetAtStart
+0062ea80   MATCH            PASS   GetActionMovementVector
+0062eaa0   MATCH            PASS   IsToPerformActionOnStrike
+0062eab0   MATCH            PASS   IsToHitProneThings
+00692890   RELOCATION_MATCH PASS   AllowsCombinationAnims
+00661f90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00661f90   WARN GENERIC_STRUCT module=CThingCreatureBase (use engine/CThingCreatureBase.h)
+00661f90   RELOCATION_MATCH PASS   GetCombatRadius
+00b0a750   WARN SHARED_HEADER_AVAILABLE CPSCUpdateNormal (engine/CPSCUpdateNormal.h)
+00b0a750   RELOCATION_MATCH PASS   GetCurrentFadeValue
+0062ea10   MATCH            PASS   AllowsCombinationAnims
+006f5c10   WARN RELOC_NAME: ??1?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 00695d90 labelled '_global::Dtor_CountedPtrAt0x8_00695d90'
+006f5c10   WARN RELOC_NAME: ??1?$pair@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 006f5260 labelled '_global::Dtor_CountedPtrAt0x8_006f5260'
+006f5c10   RELOCATION_MATCH PASS   StatRegisterClass
+00693b30   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00693b30   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00693b30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00693b30   RELOCATION_MATCH PASS   CCreatureActionBase
+00955620   WARN RELOC_NAME: ?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+00955620   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+00955620   RELOCATION_MATCH PASS   Update
+008b83c0   RELOCATION_MATCH PASS   CCreatureAction_SummonCreatures
+006df800   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheToShowToSheatheTrophy
+
+WINS: 16
+  0062ea40 MATCH CCombatActionBase::?IsToUseRotationInAnimation@CCombatActionBase@@UBE_NXZ
+  0062ea50 MATCH CCombatActionBase::?IsToAlignWithGroundNormal@CCombatActionBase@@UBE_NXZ
+  0062ea60 MATCH CCombatActionBase::?IsToFaceTarget@CCombatActionBase@@UBE_NXZ
+  0062ea70 MATCH CCombatActionBase::?IsToFaceTargetAtStart@CCombatActionBase@@UBE_NXZ
+  0062ea80 MATCH CCombatActionBase::?GetActionMovementVector@CCombatActionBase@@UBE?AVC3DVector@@XZ
+  0062eaa0 MATCH CCombatActionBase::?IsToPerformActionOnStrike@CCombatActionBase@@UBE_NXZ
+  0062eab0 MATCH CCombatActionBase::?IsToHitProneThings@CCombatActionBase@@UBE_NXZ
+  00692890 RELOCATION_MATCH CCreatureActionBase::?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ
+  00661f90 RELOCATION_MATCH CThingCreatureBase::GetCombatRadius
+  00b0a750 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue
+  0062ea10 MATCH CCombatActionBase::AllowsCombinationAnims
+  006f5c10 RELOCATION_MATCH CCreatureActionBase::?StatRegisterClass@CCreatureActionBase@@SIXXZ
+  00693b30 RELOCATION_MATCH CCreatureActionBase::??0CCreatureActionBase@@
+  00955620 RELOCATION_MATCH CAIStateGroup_MazeDefensiveMeleeCombat::?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ
+  008b83c0 RELOCATION_MATCH CCreatureAction_SummonCreatures::??0CCreatureAction_SummonCreatures@@QAE@XZ
+  006df800 RELOCATION_MATCH CCreatureAction_UnsheatheToShowToSheatheTrophy::??0CCreatureAction_UnsheatheToShowToSheatheTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z
+EXIT 0

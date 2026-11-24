@@ -56,7 +56,8 @@ public:
     C3DVector           GoToPosition;                              // +0x54
     unsigned char       _pad60[0xa4 - 0x60];
     const CThingGameObject* GetObservedThing() const;              // 0x0084F1B0
-    const CTools& GetCamTools() const;                             // 0x0084D080
+protected:
+    const CTools& GetCamTools() const;                             // 0x0084D080 ?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ (protected in Ego_r / FableWin)
 };
 class CStringAndCageBase : public CBase {
 public:

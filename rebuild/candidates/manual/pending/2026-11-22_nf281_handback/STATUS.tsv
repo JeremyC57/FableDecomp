@@ -1,0 +1,235 @@
+idx	address	class	tier	status	rows_changed	spellings_before_after	note
+1	0x00A249A0	C3DMeshInfo	T1	done	0x00A249A0 (self), 0x00A25470, 0x00A254A0	4 -> 1 (self QBE, binders AAE / QAE / ABE -> ABE)	self row also wrong (defined public QBE): private label added in place; binder 0x00A25470 const added; 0x00A254A0 private const + same-line friend of its C3DMeshLODInfo_Methods stand-in (DECISION D1); 0x00A254F0 already ABE
+2	0x00A24A80	C3DMeshInfo	T1	rejected		2 (unchanged: QAE self + 0x00A25530 / 0x00B393D0, QBE 0x00B39080)	T3: the self row defines QAE and its body assigns MeshData and passes this to the C3DMeshLODInfo ctor; a const self needs a mutable MeshData plus the ctor respelled to the PDB ??0C3DMeshLODInfo@@AAE@PBVC3DMeshInfo@@K@Z (not in place). Binders 0x00A25530 / 0x00B393D0 bind QAE = what the self row defines, so they stay until the self moves
+3	0x00A24520	C3DMeshLODInfo	T1	done	0x00A25470, 0x00A25E70	2 -> 1 (QAE -> AAE)	0x00A25470: private label on its own member decl; 0x00A25E70 (C3DMeshInfo::GetMesh calls it): private + same-line friend class C3DMeshInfo in its local C3DMeshLODInfo model (DECISION D1; the PDB access plus the cross-class retail call imply the friendship)
+4	0x00A8F9E0	C3DPrimitive2	T1	done	0x00A8FD40, 0x00A92870, 0x00A932C0, 0x00A93320	2 -> 1 (QAE -> AAE)	private label on the same line in each local C3DPrimitive2 model (callers are its own members)
+5	0x009975E0	CAFile	T1	done	0x00998010	2 -> 1 (SI_ -> CI_)	private label on the static decl in 0x00998010 (a CAFile member)
+6	0x00997DA0	CAFile	T1	done	0x00998010	2 -> 1 (SI_ -> CI_)	same row as entry 5; 0x00998A30 already CI_
+7	0x00998170	CAFile	T1	done	0x00998170 (self), 0x00998210	2 -> 1 (SI_ self + 0x00998210 -> CI_)	self row also wrong (public static): private label + full Leaf; 0x00998A30 already CI_
+8	0x0088BF30	CAIBrain	T1	done	0x0088C160	2 -> 1 (QAE -> AAE)	private label in the ctor row's local CAIBrain model
+9	0x0092ACE0	CAIStateGroup_ApprenticeHero	T1	done	0x0092B110	2 -> 1 (QAE -> IAE)	protected label (Update is a member)
+10	0x0092AE70	CAIStateGroup_ApprenticeHero	T1	done	0x0092B110	2 -> 1 (QAE -> IAE)	same row as 9
+11	0x0092AFE0	CAIStateGroup_ApprenticeHero	T1	done	0x0092B110	2 -> 1 (QAE -> IAE)	same row as 9
+12	0x0093AB70	CAIStateGroup_BanditSitRoundCampfire	T1	done	0x0093AE80	2 -> 1 (QBE -> ABE)	private label
+13	0x0096CB40	CAIStateGroup_EatAtTable	T1	done	0x0096D450	2 -> 1 (QAE -> IAE)	protected label; 0x0096CD70 already IAE (source)
+14	0x009183A0	CAIStateGroup_Gaze	T2	done	0x009183A0 (self)	2 -> 1 (UAE self -> MAE)	protected label on the virtual decl + Leaf; its 4 emitted tables are intelligent-pointer tables, unchanged (vtmap). Gaze tables (0x00918190 / 0x00918230 / 0x009182B0 / 0x009182D0, clang census) bind no OnReplace@CAIStateGroup_Gaze symbol: untouched
+15	0x00918640	CAIStateGroup_Gaze	T1	done	0x00918880	2 -> 1 (QAE -> IAE)	protected label
+16	0x009490D0	CAIStateGroup_GoToPub	T2	done	0x009490D0 (self)	2 -> 1 (QAE -> IAE)	protected label + Leaf; its 4 emitted tables unchanged (vtmap)
+17	0x0094A0E0	CAIStateGroup_GoToPub	T2	done	0x0094A0E0 (self)	2 -> 1 (QAE -> IAE)	protected label + Leaf
+18	0x00977B10	CAIStateGroup_Guildmaster	T1	done	0x00977B10 (self), 0x00977C40	2 -> 1 (QAE self + 0x00977C40 -> IAE)	self row also wrong: protected label + full Leaf; binder protected label; 0x00977E00 already IAE
+19	0x0095A490	CAIStateGroup_HoverHornetQueen	T2	done	0x0095A490 (self)	2 -> 1 (QAE -> IAE)	protected label + Leaf
+20	0x0095B820	CAIStateGroup_HoverHornetQueen	T1	done	0x0095C1F0	2 -> 1 (QAE -> IAE)	protected label
+21	0x0095B9E0	CAIStateGroup_HoverHornetQueen	T1	done	0x0095C1F0	2 -> 1 (QAE -> IAE)	same row as 20
+22	0x0095BCF0	CAIStateGroup_HoverHornetQueen	T1	done	0x0095C1F0	2 -> 1 (QAE -> IAE)	same row as 20
+23	0x00961C50	CAIStateGroup_IceTrollPoundGroundAttack	T1	skipped-precheck		2 (unchanged)	the only binder 0x009624D0 (`bool IsStillRunnable();`, QAE) fails the clang precheck at HEAD (-Waddress-of-temporary on two CCreatureAction temporaries, an MSVC extension VC7.1 accepts), so it was not compiled; the fix is `private: bool IsStillRunnable() const; public:` on its line 169 (DECISION D3: precheck flag)
+24	0x0094FBB0	CAIStateGroup_JackDragon	T2	rejected		2 (unchanged)	not in place: 0x00951FB0 (UpdateHover, Codex pass-27 opt-ins, fails the clang precheck so not compiled) DEFINES its own strong same-TU copy of ?IsTargetOnATower@CAIStateGroup_JackDragon@@AAE_NXZ (line 116, from the shared header private decl); moving the self leaf QAE -> AAE gives two strong definitions (LNK2005). DECISION D2
+25	0x0094FE30	CAIStateGroup_JackDragon	T2	done	0x0094FE30 (self)	2 -> 1 (QAE -> AAE)	private label + Leaf; binders 0x00952890 (clang: AAE) and 0x00951FB0 (shared header CAIStateGroup_JackDragon.h line 63, private, by source) already AAE
+26	0x00951B20	CAIStateGroup_JackDragon	T2	done	0x00951B20 (self)	2 -> 1 (QAE -> AAE)	private label + Leaf; binder 0x00952890 already AAE
+27	0x00915290	CAIStateGroup_KidHurtSelfRunToMother	T2	done	0x00915290 (self)	2 -> 1 (QAE -> AAE)	private label + Leaf; 3 emitted tables unchanged (objsec ALL_EQ, no slot binds it)
+28	0x0096E830	CAIStateGroup_MeleeCombatNearby	T1	done	0x0096EA50	2 -> 1 (QAE -> ABE)	private const on the decl in the 0x0096EA50 model
+29	0x0096EA50	CAIStateGroup_MeleeCombatNearby	T2	done	0x0096EA50 (self)	2 -> 1 (QAE -> AAE)	private label + Leaf (same row as 28); binder 0x0096EE90 already AAE
+30	0x0093D7A0	CAIStateGroup_MeleeCombatNearbyBase	T1	done	0x0093E2D0, 0x0093E5E0, 0x0096EE90	2 -> 1 (QAE -> IAE)	protected label in each model
+31	0x00935E40	CAIStateGroup_MinionPutOutFires	T1	done	0x00936020	2 -> 1 (QAE -> AAE)	private label
+32	0x00930EE0	CAIStateGroup_MinionReactToCriminal	T1	done	0x00930EE0 (self), 0x00931010	3 -> 1 (self QAE + binder QBE -> ABE)	self row also wrong: private const on the decl and const on the out-of-class definition (body reads only); binder private label; 0x00931200 already ABE
+33	0x0092F240	CAIStateGroup_MinionReactToPlayerInteraction	T1	done	0x00930A70	2 -> 1 (QAE -> AAE)	private label
+34	0x0090F9C0	CAIStateGroup_MinionSitOnSeatBase	T1	done	0x0090F9C0 (self), 0x0090FD20, 0x009104A0, 0x00938F70	2 -> 1 (UAE self + 3 binders -> MAE)	self row also wrong (its Leaf line already said MAE, its object defined UAE): protected label on the SitOnSeatBase decl in all four rows (derived IsRunnable decls untouched); the SitOnSeat ctor rows 0x008FF247.. emit tables with placeholder slots (no IsRunnable symbol: untouched)
+35	0x0095D0E0	CAIStateGroup_RangedCombatUsePreferredFirePoint	T1	done	0x0095D200	2 -> 1 (QAE -> IAE)	protected label
+36	0x0096C250	CAIStateGroup_Thunder	T1	done	0x0096C2E0	2 -> 1 (QAE -> IAE)	protected label
+37	0x0096A260	CAIStateGroup_WhisperRetreat	T1	done	0x0096A7A0	2 -> 1 (QAE -> IAE)	protected label
+38	0x00716DE0	CActionTalkBase	T1	done	0x00717450	2 -> 1 (QAE -> UAE)	`virtual` added to the polymorphic local CActionTalkBase model (vptr already there; appended last, no slot index used, no table emitted). Side effect: the row's own override becomes virtual, self leaf ?Update@CActionOverheadTalkToThing@NTCScriptedControl@@QAEXXZ -> UAEXXZ (both PDBs UAE; no other binder of 0x00717450 anywhere): RENAMES section 1
+39	0x005DC390	CAnimationEntry	T1	open		(census only)	not started: clang census binders on QAE: 0x008D6DA0, 0x008D6FF0, 0x008D70A0, 0x008D8B00, 0x008D8DD0 (0x00753630 fails clang); 14 others already QBE
+40	0x009CBA40	CBankFile	T1	done	0x009F8290, 0x00A09DC0	2 -> 1 (QAE -> QBE)	const added
+41	0x009CBC20	CBankFile	T1	open		(census only)	not started: clang finds no NotifyEntryAdded symbol in the self row (check its leaf); 0x00A26D40 binds UAE, five others MAE
+42	0x009CBE10	CBankFile	T1	open		(census only)	not started: self row defines no ConvertPathToFilename symbol in clang (check); 0x009CCDF0 binds QBE; 0x009CE050 fails clang
+43	0x009D54E0	CBankFileAsyncData	T1	open		(census only)	not started (28 referencing rows)
+44	0x0084E1A0	CBase	T1	done	0x00871E40, 0x00871E60	2 -> 1 (QAE -> IAE)	protected label; 0x0085C470 already IAE
+45	0x00A5B650	CCachedFile	T1	open		(census only)	both binders 0x00A5B710 / 0x00A5B760 fail the clang precheck (`short wchar_t`): same D3 question
+46	0x0099E9B0	CCharString	T1	open		(census only)	clang census: all 25 referencing rows bind IAE already; the tracker witnesses 0x0099EAE0 (AAE) / 0x0099F690 (QAE) look stale: likely done-already, needs a VC7.1 HEAD confirmation of those two
+47	0x0099EA60	CCharString	T1	open		(census only)	clang: the self row defines QAE (T2), all binders IAE
+48	0x00856B20	CCombatActionBase	T1	done	0x00856B20 (self), 0x00859D80	2 -> 1 (QAE self + 0x00859D80 -> IAE)	self row also wrong: protected label; 0x00859EF0 (fails clang, not compiled) declares it through engine/CCombatActionBase.h line 59 under protected: IAE by source
+49	0x00857070	CCombatActionBase	T1	done	0x00858130, 0x00858590, 0x008587B0, 0x008597A0	2 -> 1 (QAE -> QBE)	const added (the three CStrikeEvent rows also show a per-TU ?A0x hash change of an anonymous-namespace helper: compile path only, one spelling by the 2026-11-20 ruling)
+50	0x00858A20	CCombatActionBase	T1	open		(census only)	clang: the self row defines QAE (T2); binders 0x00859EC0 / 0x00859EF0 fail clang (CTCFlourishTarget.h), header-declared protected
+51	0x00859660	CCombatActionBase	T1	done	0x00859D80	2 -> 1 (QAE -> IAE)	protected label (same row as 48); 0x00859A20 already IAE
+52	0x006ED030	CCombatManager	T1	done	0x006ED510, 0x006EDC50	2 -> 1 (QAE -> AAE)	private label; 0x006ED200 already AAE
+53	0x00531EC0	CComponent	T1	held-D4	0x0052C7E0	2 -> 1 (QAE -> UAE)	HELD (D4), not counted done: `virtual` added to the polymorphic local CComponent model (declared after the v000..v137 placeholders: no slot index moves, no table emitted). Side effect: self leaf of 0x0052C7E0 QAEXM -> ?Update@CChangingStateComponent@NUISystem@@UAEXM@Z (both PDBs), which ~35 landed table emitters already bind (clang census): 0x0052C7E0 4 -> 3 spellings; the no-namespace stand-in ?Update@CChangingStateComponent@@QAEXM@Z (0x0054BA20, 0x00555220) and CComponent UAE at 0x005367F3 stay (NAME_FIXES) DECISION D4: vland now WARNs RELOC_CONFLICT ?Update@CComponent@NUISystem@@UAEXM@Z -> 0x00531EC0 here v 0x0052C7E0 via 0x005367F3 (CList::Update, whose local model spells its direct call to 0x0052C7E0 as the base CComponent::Update: pre-existing wrong binding, NAME_FIXES). To drop it: rows/0052c7e0.cpp, its RENAMES section 1 line (0x0052C7E0) and section 2 line (caller 0x0052C7E0), and the TABLE_CHANGES line for ?Update@CComponent@NUISystem@@QAEXM@Z (target 00531ec0)
+54	0x00692AA0	CCreatureActionBase	T1	open			
+55	0x00692EC0	CCreatureActionBase	T2	open			
+56	0x008C9FE0	CCreatureAction_NymphTeleportLimboBase	T1	open			
+57	0x0069FC40	CCreatureAction_UnsheatheItemFromInventory	T1	open			
+58	0x009C8630	CDataBank	T1	open			
+59	0x009D49F0	CDefStringTable	T1	open			
+60	0x009AC9F0	CDefinitionManager	T1	open			
+61	0x009ACEE0	CDefinitionManager	T1	open			
+62	0x009ADC90	CDefinitionManager	T1	open			
+63	0x00A90900	CDeviceIndependent	T1	open			
+64	0x0099A960	CDiskFileWin32	T1	open			
+65	0x0099AA90	CDiskFileWin32	T1	open			
+66	0x00435070	CDisplayEngine	T2	open			
+67	0x009BEE40	CDisplayManager	T1	open			
+68	0x00643E09	CDrawMiniMap	T1	open			
+69	0x00B31160	CEngineCamera	T1	open			
+70	0x00B81F00	CEngineClothSimulation2DAnimatedMesh	T1	open			
+71	0x00B81ED0	CEngineClothSimulationAnimatedMesh	T1	open			
+72	0x00B80AD0	CEngineClothSimulationMeshBase	T1	open			
+73	0x00B81050	CEngineClothSimulationMeshBase	T1	open			
+74	0x00B81EA0	CEngineClothSimulationStaticMesh	T1	open			
+75	0x00BC6180	CEngineInternalPrimitiveGroup	T1	open			
+76	0x00B67480	CEngineLandscapeRenderer	T1	open			
+77	0x00B67510	CEngineLandscapeRenderer	T1	open			
+78	0x00B677D0	CEngineLandscapeRenderer	T1	open			
+79	0x00B68DA0	CEngineLandscapeRenderer	T1	open			
+80	0x00B46A30	CEngineLightingManager	T1	open			
+81	0x00BCC800	CEnginePrimitiveManagerWeaponTrails	T1	open			
+82	0x00B2F8B0	CEnginePrimitiveOcclusionInfo	T1	open			
+83	0x00B91D20	CEngineSceneGrid	T1	open			
+84	0x00B5FAB0	CEngineScreenEffectGlowRenderer	T1	open			
+85	0x00B60F70	CEngineScreenEffectGlowRenderer	T1	open			
+86	0x00B89C30	CEngineScreenEffectOutlineGlow	T1	open			
+87	0x00B4B830	CEngineShadowRenderer	T2	open			
+88	0x00B6DC40	CEngineWaterRenderer	T1	open			
+89	0x00B6E260	CEngineWaterRenderer	T1	open			
+90	0x00B51570	CEngineWeatherRenderer	T1	open			
+91	0x00B51AD0	CEngineWeatherRenderer	T1	open			
+92	0x006B93D0	CFactionManager	T2	open			
+93	0x009C3530	CFileInstaller	T1	open			
+94	0x00A633A0	CFontDataBank	T1	open			
+95	0x005955AB	CFrontEndManager	T1	open			
+96	0x0059697A	CFrontEndManager	T2	open			
+97	0x00598463	CFrontEndManager	T1	open			
+98	0x004962C0	CFrontendGameComponent	T2	open			
+99	0x00699130	CGameCameraManager	T1	open			
+100	0x009FCBF0	CGraphicFrameData	T1	open			
+101	0x00A01F80	CHandleBasedMemoryPool	T1	open			
+102	0x0068F470	CInputProcessCombat	T1	open			
+103	0x00687A90	CInputProcessGameBase	T1	open			
+104	0x00AB6450	CKeyboardDX	T1	open			
+105	0x00BE6F70	CLandscapeBackgroundPatch	T1	open			
+106	0x004160A6	CMainGameComponent	T1	open			
+107	0x00416122	CMainGameComponent	T1	open			
+108	0x00416231	CMainGameComponent	T1	open			
+109	0x0041674A	CMainGameComponent	T1	open			
+110	0x00416C8A	CMainGameComponent	T2	open			
+111	0x008DB810	CModeDragonFireBeam	T1	open			
+112	0x00AB5710	CMouseDX	T1	open			
+113	0x0042E17C	CNewFrontendGameComponent	T1	open			
+114	0x0042E3EE	CNewFrontendGameComponent	T2	open			
+115	0x0042E98F	CNewFrontendGameComponent	T2	open			
+116	0x009B9870	CParsedItem	T1	open			
+117	0x009B9880	CParsedItem	T1	open			
+118	0x00AECF90	CParticleEmitter	T1	open			
+119	0x00AF0650	CParticleEmitter	T1	open			
+120	0x00A128E0	CPhysicsMeshObject	T1	open			
+121	0x00487520	CPlayer	T1	open			
+122	0x00488D10	CPlayer	T1	open			
+123	0x00633BF0	CPlayer	T1	open			
+124	0x00633CB0	CPlayer	T1	open			
+125	0x004385F0	CPlayerGui	T1	open			
+126	0x00439BB0	CPlayerGui	T1	open			
+127	0x00449880	CPlayerManager	T1	open			
+128	0x004499E0	CPlayerManager	T1	open			
+129	0x004AFC60	CQuestManager	T2	open			
+130	0x005567B0	CRedefinerList	T1	open			
+131	0x007E7310	CScriptGameResourceObjectScriptedThingBase	T1	open			
+132	0x007E7360	CScriptGameResourceObjectScriptedThingBase	T1	open			
+133	0x007E7450	CScriptGameResourceObjectScriptedThingBase	T1	open			
+134	0x00988290	CShaderRenderManager	T1	open			
+135	0x00871FD0	CStringAndCageBase	T1	open			
+136	0x0048F6BD	CSubtitleRenderer	T1	open			
+137	0x00A44660	CSuspendableProcessMicrothread	T1	open			
+138	0x0070B490	CTCAnimationComplex	T1	open			
+139	0x0070B4A0	CTCAnimationComplex	T1	open			
+140	0x006869E0	CTCBase	T1	open			
+141	0x00686DB0	CTCBase	T1	open			
+142	0x0074EC50	CTCContainerRewardHero	T1	open			
+143	0x007B6660	CTCCrateStack	T1	open			
+144	0x007DD270	CTCCreatureFlyInCircles	T1	open			
+145	0x007DDDA0	CTCCreatureFlyInCircles	T1	open			
+146	0x0077D190	CTCCreatureHive	T2	open			
+147	0x006827A0	CTCCreatureOpinionOfHero	T2	open			
+148	0x007FD430	CTCDPhysicalObstruction	T1	open			
+149	0x007F18B0	CTCDRumble	T1	open			
+150	0x00730DD0	CTCDoor	T1	open			
+151	0x0071AD20	CTCEmoteIcon	T1	open			
+152	0x0076CCE0	CTCEnemy	T1	open			
+153	0x006C3CA0	CTCFadeOutAndIn	T1	open			
+154	0x007C86F0	CTCFireballSpell	T1	open			
+155	0x007E7580	CTCFireheartMinigame	T1	open			
+156	0x006D5260	CTCFollowed	T1	open			
+157	0x004BC4F0	CTCGraphicAppearance	T1	open			
+158	0x004BE000	CTCGraphicAppearance	T1	open			
+159	0x006D7F20	CTCHeroExperience	T2	open			
+160	0x0055FB80	CTCHeroOnlineScoreboard	T1	open			
+161	0x00563480	CTCHeroOnlineScoreboard	T1	open			
+162	0x00563920	CTCHeroOnlineScoreboard	T1	open			
+163	0x0057A89D	CTCHeroStats	T1	open			
+164	0x0057AAD9	CTCHeroStats	T1	open			
+165	0x0077C960	CTCHighlightItem	T1	open			
+166	0x00582027	CTCInventory	T1	open			
+167	0x005BDD39	CTCInventoryBase	T1	open			
+168	0x005D9070	CTCInventoryItem	T1	open			
+169	0x005FBFA0	CTCInventoryMap	T1	open			
+170	0x005FC840	CTCInventoryMap	T2	open			
+171	0x005A8C66	CTCInventoryTrade	T1	open			
+172	0x005CA68E	CTCInventoryWeapons	T1	open			
+173	0x007FB4A0	CTCKraken	T2	open			
+174	0x007FBB00	CTCKraken	T1	open			
+175	0x007FBC90	CTCKraken	T2	open			
+176	0x007F07A0	CTCKrakenTentacle	T1	open			
+177	0x007F0C70	CTCKrakenTentacle	T1	open			
+178	0x007F0F40	CTCKrakenTentacle	T1	open			
+179	0x00751DA0	CTCLook	T1	open			
+180	0x00766660	CTCObjectAugmentations	T1	open			
+181	0x007674A0	CTCObjectAugmentations	T2	open			
+182	0x00744830	CTCPerceiveThing	T1	open			
+183	0x0079E420	CTCPhysicalShieldSpell	T1	open			
+184	0x006AFA40	CTCPhysicsBase	T2	open			
+185	0x0075B000	CTCPhysicsRigidBody	T1	open			
+186	0x008004D0	CTCPreCalculatedNavigationRoute	T1	open			
+187	0x008008B0	CTCPreCalculatedNavigationRoute	T1	open			
+188	0x00702400	CTCQuestCard	T1	open			
+189	0x007280C0	CTCRandomAppearanceMorph	T1	open			
+190	0x007F53A0	CTCSoundAtmosphere	T1	open			
+191	0x0066BC10	CTCSoundPlayer	T1	open			
+192	0x006E2840	CTCTalk	T1	open			
+193	0x007F9960	CTCTargetingSpirit	T1	open			
+194	0x005E9AA0	CTCTavernGame	T1	open			
+195	0x005EA3C0	CTCTavernGame	T1	open			
+196	0x008F1D40	CTCTavernGameCardBase	T1	open			
+197	0x007D46D0	CTCTavernGameCoinGolf	T1	open			
+198	0x007881AD	CTCTrapBase	T1	open			
+199	0x00659EA9	CTCVillage	T1	open			
+200	0x004C8280	CThing	T1	open			
+201	0x004C8C00	CThing	T1	open			
+202	0x008338D0	CThingAICreature	T1	open			
+203	0x00863250	CThingBodyReorienter	T1	open			
+204	0x00863280	CThingBodyReorienter	T1	open			
+205	0x00863CA0	CThingBodyReorienter	T1	open			
+206	0x006626E0	CThingCreatureBase	T2	open			
+207	0x00662880	CThingCreatureBase	T1	open			
+208	0x006628E0	CThingCreatureBase	T1	open			
+209	0x00665860	CThingCreatureBase	T1	open			
+210	0x0085D180	CThingMap	T1	open			
+211	0x006378E0	CThingMapManager	T1	open			
+212	0x006A4E90	CThingPhysical	T1	open			
+213	0x006AC390	CThingPlayerCreature	T1	open			
+214	0x006AD970	CThingPlayerCreature	T2	open			
+215	0x0083B520	CThingVillage	T1	open			
+216	0x0098ECD0	CThreadedFileManager	T2	open			
+217	0x00760E70	CTrack	T1	open			
+218	0x00F3B970	CTriangleStripifier2	T1	open			
+219	0x00408120	CUserProfileManager	T1	open			
+220	0x0040D350	CUserProfileManager	T1	open			
+221	0x00AD9F10	CVertexGroupBlockOptimiser	T1	open			
+222	0x00AC44D0	CVertexStreamConverter	T1	open			
+223	0x00AC4910	CVertexStreamConverter	T1	open			
+224	0x00A67FF0	CVolumeTexture	T1	open			
+225	0x00A0CDD0	CWStringParser	T1	open			
+226	0x0049D4E0	CWorld	T1	open			
+227	0x0049D8F0	CWorld	T1	open			
+228	0x0049E9F0	CWorld	T1	open			
+229	0x0049F4C0	CWorld	T1	open			
+230	0x004A21F0	CWorld	T1	open			
+231	0x004A2D70	CWorld	T1	open			
+232	0x004FB310	CWorldMap	T1	open			
+233	0x004FCE20	CWorldMap	T1	open			
+234	0x008AF500	CombatDialogueManager	T1	open			

@@ -3,7 +3,7 @@
 // Callees: CCharString(const char*, long) 0x0099EBF0, default ctor 0x0099E4B0, dtor 0x0099EAE0, operator=(const
 //          CCharString&) 0x0099EFB0, operator=(const char*) 0x0099EFE0, operator+=(const CCharString&) 0x0099F0A0,
 //          operator+=(const char*) 0x0099F100; CStringParser(const CCharString&, callback, const CCharString&, long)
-//          0x00404720 and its inlined dtor (~list 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass 0x0099A2E0);
+//          0x00404720 and its inlined dtor (~_List_base 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass 0x0099A2E0);
 //          CStringParser::ReadAsStringUntilString(const CCharString&, CParsedItem&) 0x009BA110 and ReadNextItem
 //          0x009BA080; CParsedItem::GetString 0x009B9880; CConsole::RunCommandLine 0x009EB430.
 //          Literals: "" 0x0122D70E, ";" 0x0123542C.
@@ -46,14 +46,11 @@ class CCharString { public:
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {           // retail std::list<CStringParserCommentBoundaries>: sentinel only
-public:
-    void* m_pHead;
-    ~list();            // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 struct CCursorPos {
     bool          InQuotes;                 // +0x00
     unsigned long StringPos;                // +0x04
@@ -76,7 +73,7 @@ class CParsedItem { public:                        // 12 bytes
     long        Type;                       // +0x00 (1 = symbol, 2 = identifier, 3 = number)
     long        Value;                      // +0x04
     CCharString Text;                       // +0x08
-    const CCharString& GetString();         // 0x009B9880
+    const CCharString& GetString() const;         // 0x009B9880
     const CCharString& GetSymbol();         // 0x009B9870
 };
 class CConsoleInputBase { public:

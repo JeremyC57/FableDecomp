@@ -1595,7 +1595,7 @@
 00b2e830	RBTree_FindLE	[forge-autoname4 conf=medium] Identical logic to 00b2e630; same function, duplicate name justified.
 00b2eb20	RBTree_FindUpperBound	[forge-autoname4 conf=medium] RB-tree search for first element > param; upper bound query.
 00b2f240	RBTree_InsertOrFind	[forge-autoname4 conf=high] RBTree insert or find with RBTree_FindInsertPosition, RBTree_FindSuccessor, CCreatureAction_NavToPos_Insert calls.
-00b2fd60	CPlane_InitializeFromCorners	[forge-autoname4 conf=high] Computes 4 plane equations from frustum corners via cross products & dot products, calls CPlane::Initialise 4x.
+00b2fd60	CEngineCamera::SetupGamut	[forge-autoname4 conf=high] Computes 4 plane equations from frustum corners via cross products & dot products, calls CPlane::Initialise 4x.
 00b31b10	Vector_InsertResizeAnimation	[forge-autoname4 conf=medium] Resizes vector of CKeyCamera (0x20 bytes) via _Move + fill; camera animation vector insert.
 00b31e90	CEnginePrimitiveHandle_SetAnimation	[forge-autoname4 conf=high] Sets primitive animation via vtable[0x5c], updates scene position if visible.
 00b31ec0	CEnginePrimitiveHandle_SetPosition	[forge-autoname4 conf=high] Sets primitive position via vtable[0x60], updates scene position if visible.

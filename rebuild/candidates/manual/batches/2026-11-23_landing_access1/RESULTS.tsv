@@ -1,0 +1,242 @@
+address	verdict	old	new	reason
+00530a40	SKIP	?MakeUnavailable@CComponent@NUISystem@@QAEXXZ	?MakeUnavailable@CComponent@NUISystem@@UAEXXZ	access letter Q->U changes virtuality or is not a member
+00530ce0	SKIP	?MakeAvailable@CComponent@NUISystem@@QAEXXZ	?MakeAvailable@CComponent@NUISystem@@UAEXXZ	access letter Q->U changes virtuality or is not a member
+00993bc0	SKIP	?SetPosition@CDataInputStream@@QAEXK@Z	?SetPosition@CDataInputStream@@UAEXK@Z	access letter Q->U changes virtuality or is not a member
+00645292	SKIP	?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z	?DrawIcon@CDrawQuickAccessIcons@NPlayerGui@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJJ_N@Z	nested scope or operator / special member
+00541390	SKIP	?GetDataFromDef@CDynamicList@NUISystem@@QAEXXZ	?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ	nested scope or operator / special member
+00bad670	SKIP	?Update@CEngineInternalPrimitiveSprite@@QAEXABVCEnginePrimitive@@K@Z	?Update@CEngineInternalPrimitiveSprite@@UAEXABVCEnginePrimitive@@K@Z	access letter Q->U changes virtuality or is not a member
+00b3b5d0	SKIP	?SetupVertexShaderResource@CEngineResourceManager@@QAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z	?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z	identity: the PDB name is claimed by another address 00b3b6d0
+00994300	SKIP	?Close@CFileDataInputStream@@QAEXXZ	?Close@CFileDataInputStream@@UAEXXZ	access letter Q->U changes virtuality or is not a member
+00595b24	SKIP	?AddProfileNameToScreens@CFrontEndManager@NUISystem@@QAEXABVCWideString@@@Z	?AddProfileNameToScreens@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z	nested scope or operator / special member
+00427dc9	SKIP	?CreateLevelSlider@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z	?CreateLevelSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z	nested scope or operator / special member
+0042819a	SKIP	?CreateStaticSliderBidirectional@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	?CreateStaticSliderBidirectional@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	nested scope or operator / special member
+0066e985	SKIP	?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QAEXXZ	?RemoveAllPlayerModes@CManager@NHeroInformationScreens@@QBEXXZ	nested scope or operator / special member
+009f2a40	SKIP	?InternalAllocate@CMemoryAllocator@@QAEPAXJK_N@Z	?InternalAllocate@CMemoryAllocator@@IAEPAXJK_N@Z	identity: the PDB name is claimed by another address 009f2ac0
+00995d30	SKIP	?ReadNullTerminatedString@CMemoryDataInputStream@@QAE?AVCCharString@@XZ	?ReadNullTerminatedString@CMemoryDataInputStream@@UAE?AVCCharString@@XZ	access letter Q->U changes virtuality or is not a member
+00996cc0	SKIP	?Write@CMemoryDataOutputStream@@QAEXPBXJ@Z	?Write@CMemoryDataOutputStream@@UAEXPBXJ@Z	access letter Q->U changes virtuality or is not a member
+008dba90	SKIP	?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@QAEXXZ	?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	nested scope or operator / special member
+00b0a750	SKIP	?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@QAEMXZ	?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ	nested scope or operator / special member
+00878ce0	SKIP	?SetUpParams@CProjectileWeapon@NCameraModes@@QAEXXZ	?SetUpParams@CProjectileWeapon@NCameraModes@@AAEXXZ	nested scope or operator / special member
+00f3a2e0	SKIP	?Compress@CRangeCompressor@@QAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	identity: the PDB name is claimed by another address 00f3ae50,00f3afc0
+008520f0	SKIP	?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@QAEXABVC3DVector@@0J@Z	?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@IAEXABVC3DVector@@0J@Z	nested scope or operator / special member
+00555220	SKIP	?Update@CScrollableList@NUISystem@@QAEXM@Z	?Update@CScrollableList@NUISystem@@UAEXM@Z	access letter Q->U changes virtuality or is not a member
+00645ce9	SKIP	?DrawStatBox@CStatBar@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@JJJABVCWideString@@E_N4@Z	?DrawStatBox@CStatBar@NPlayerGui@@MAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@JJJABVCWideString@@E_N4@Z	access letter Q->M changes virtuality or is not a member
+00645f2e	SKIP	?DrawChangeText@CStatBar@NPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z	?DrawChangeText@CStatBar@NPlayerGui@@IAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z	nested scope or operator / special member
+004bd2e0	SKIP	?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ	?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ	nested scope or operator / special member
+005be028	SKIP	?OnItemAdded@CTCInventoryBase@NInventory@@QAEXJ_N0@Z	?OnItemAdded@CTCInventoryBase@NInventory@@MAEXJ_N0@Z	access letter Q->M changes virtuality or is not a member
+005d92f0	SKIP	?GetStartingRightHandedSet@CTCInventoryItem@@QAE?AVCRightHandedSet@@XZ	?GetStartingRightHandedSet@CTCInventoryItem@@QBE?AVCRightHandedSet@@XZ	identity: the PDB name is claimed by another address 005d9730
+00753020	SKIP	?IsTurningBody@CTCLook@@QAE_NXZ	?IsTurningBody@CTCLook@@AAE_NXZ	identity: the PDB name is claimed by another address 00638180,0075dcf0,00ad3940
+007befb0	SKIP	?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@QAEMXZ	?GetInitialVelocity@CTCShotDefinitionBase@NThingShot@@IBEMXZ	nested scope or operator / special member
+006e28d0	SKIP	?StopCurrentSpeech@CTCTalk@@QAEXPAVCTCSoundPlayer@@@Z	?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z	identity: the PDB name is claimed by another address 006e2e60
+005ea400	SKIP	?DrawBetAndMoney@CTCTavernGame@@QAEXABVCEnginePrimitivePrepareInfo@@MMMMMM@Z	?DrawBetAndMoney@CTCTavernGame@@UAEXABVCEnginePrimitivePrepareInfo@@MMMMMM@Z	access letter Q->U changes virtuality or is not a member
+008f1720	SKIP	?EndRound@CTCTavernGameCardBase@@QAEXXZ	?EndRound@CTCTavernGameCardBase@@UAEXXZ	access letter Q->U changes virtuality or is not a member
+0054f8e0	SKIP	?FitInWindow@CText@NUISystem@@QAEJAAVCWideString@@ABVC2DBoxF@@@Z	?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z	nested scope or operator / special member
+004c9690	SKIP	?InitialActivate@CThing@@QAEXXZ	?InitialActivate@CThing@@UAEXXZ	access letter Q->U changes virtuality or is not a member
+00663f50	SKIP	?OnDie@CThingCreatureBase@@QAEXXZ	?OnDie@CThingCreatureBase@@UAEXXZ	access letter Q->U changes virtuality or is not a member
+006a4d90	SKIP	?CanBlockNavigatingCreature@CThingPhysical@@QAE_NXZ	?CanBlockNavigatingCreature@CThingPhysical@@UBE_NXZ	access letter Q->U changes virtuality or is not a member
+006a4e90	SKIP	?DrawGetEditDrawInfo@CThingPhysical@@QBE_NMPAVCEditEngineDrawInfo@@@Z	?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z	access letter Q->U changes virtuality or is not a member
+00406c20	SKIP	?GetAutoSaveDisplayName@CUserProfileManager@@QAE?AVCWideString@@XZ	?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ	identity: the PDB name is claimed by another address 004069e0
+008f8830	SKIP	?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@SI_NABULAddress@2@AAUsockaddr_in@@@Z	?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@CI_NABULAddress@2@AAUsockaddr_in@@@Z	nested scope or operator / special member
+00a26a50	ACCEPT	?TouchAnimation@C3DAnimationInfo@@QAEXXZ	?TouchAnimation@C3DAnimationInfo@@QBEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a9dfa0	ACCEPT	?ApplyBoneMorphDisplacement@C3DAnimationManager@@QBEXPAVC3DKeyframe@@PBVC3DVector@@ABVC3DMesh2@@@Z	?ApplyBoneMorphDisplacement@C3DAnimationManager@@ABEXPAVC3DKeyframe@@PBVC3DVector@@ABVC3DMesh2@@@Z	objsec ALL_EQ, MATCH PASS
+00a8a9d0	ACCEPT	?CalculateBoneKeyframes@C3DMesh2@@QAEXXZ	?CalculateBoneKeyframes@C3DMesh2@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ac5260	ACCEPT	?CalculateMapFlags@C3DMeshFileEngineMaterialChunk@@QAEXXZ	?CalculateMapFlags@C3DMeshFileEngineMaterialChunk@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+00a9ad00	ACCEPT	?AddChunkType@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@PAVCChunkedFileSuperChunk@@@Z	?AddChunkType@C3DMeshFileLoader@@AAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@PAVCChunkedFileSuperChunk@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a24a80	REJECT	?BeginLoadingStats@C3DMeshInfo@@QAEX_N@Z	?BeginLoadingStats@C3DMeshInfo@@QBEX_N@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00a25530	REJECT	?GetMeshStats@C3DMeshInfo@@QAE?AV?$CCountedPointer@$$CBVC3DMeshStats@@@@XZ	?GetMeshStats@C3DMeshInfo@@QBE?AV?$CCountedPointer@$$CBVC3DMeshStats@@@@XZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00abf6b0	ACCEPT	?SaveBinary@C3DMeshMaterial@@QAEXAAVCDataOutputStream@@@Z	?SaveBinary@C3DMeshMaterial@@QBEXAAVCDataOutputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a91560	ACCEPT	?LoadVertexBuffer@C3DPrimitive2@@QAEXAAVCMemoryDataInputStream@@KKKAAVCVertexCompressionParams@@@Z	?LoadVertexBuffer@C3DPrimitive2@@AAEXAAVCMemoryDataInputStream@@KKKAAVCVertexCompressionParams@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00998010	ACCEPT	?ParserReadPastComponent@CAFile@@SI_NAAVCStringParser@@AAVCCharString@@@Z	?ParserReadPastComponent@CAFile@@CI_NAAVCStringParser@@AAVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0097e890	ACCEPT	?AIAction_MoveToPosProximity@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z	?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00978f10	ACCEPT	?IsStillRunnable@CAIStateGroup_CreatureAdvanceInCover@@QAE_NXZ	?IsStillRunnable@CAIStateGroup_CreatureAdvanceInCover@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00979e90	REJECT	?IsStillRunnable@CAIStateGroup_CreatureTakeCover@@QAE_NXZ	?IsStillRunnable@CAIStateGroup_CreatureTakeCover@@AAE_NXZ	objsec DIFF 5 .text .text bytes True relocs False 221 221 /     (82, '?IsInMeleeWithCombatWheelAttackers@?A0xc6bb5bf1@@YI_NABVCThingCreatureBase@@@Z', 20) | (82, '?IsInMeleeWithCombatWheelAttackers@?A0xe9d647b6@@YI_NABVCThingCreatureBase@@@Z', 20) / bad 1 text_sections_equal=4
+00970790	ACCEPT	?CanSeeTarget@CAIStateGroup_CreatureUseCoverBase@@QAE_NXZ	?CanSeeTarget@CAIStateGroup_CreatureUseCoverBase@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00922750	ACCEPT	?TalkToSelfUpdate@CAIStateGroup_Drunk@@QAEXXZ	?TalkToSelfUpdate@CAIStateGroup_Drunk@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0096c880	ACCEPT	?WalkTo@CAIStateGroup_EatAtTable@@QAE_NVC3DVector@@VCRightHandedSet@@@Z	?WalkTo@CAIStateGroup_EatAtTable@@IAE_NVC3DVector@@VCRightHandedSet@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094ce60	ACCEPT	?OfferPlayerAGame@CAIStateGroup_GameMaster@@QAE_NXZ	?OfferPlayerAGame@CAIStateGroup_GameMaster@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0092c4e0	ACCEPT	?IsInSleepTime@CAIStateGroup_GoToBed@@QAE_NXZ	?IsInSleepTime@CAIStateGroup_GoToBed@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0092d060	ACCEPT	?IsUnreportedCrimeKnown@CAIStateGroup_GoToBed@@QAE_NXZ	?IsUnreportedCrimeKnown@CAIStateGroup_GoToBed@@IBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00947ca0	ACCEPT	?SitIdle@CAIStateGroup_GoToPub@@QAE_NXZ	?SitIdle@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00947d30	ACCEPT	?Laugh@CAIStateGroup_GoToPub@@QAE_NXZ	?Laugh@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00947fb0	ACCEPT	?IsStaffed@CAIStateGroup_GoToPub@@QAE_NXZ	?IsStaffed@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094a190	ACCEPT	?Listen@CAIStateGroup_GoToPub@@QAE_NXZ	?Listen@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094a2b0	ACCEPT	?TellStory@CAIStateGroup_GoToPub@@QAE_NXZ	?TellStory@CAIStateGroup_GoToPub@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0094fbb0	ACCEPT	?IsTargetOnATower@CAIStateGroup_JackDragon@@QAE_NXZ	?IsTargetOnATower@CAIStateGroup_JackDragon@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00972340	ACCEPT	?HasHitsCausedRush@CAIStateGroup_JackOfBladesStage1@@QAE_NXZ	?HasHitsCausedRush@CAIStateGroup_JackOfBladesStage1@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093dde0	ACCEPT	?AttackEnemy@CAIStateGroup_MeleeCombatNearby2@@QAEXXZ	?AttackEnemy@CAIStateGroup_MeleeCombatNearby2@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093dfc0	REJECT	?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby2@@QAE_NXZ	?AlertAlliesInVicinity@CAIStateGroup_MeleeCombatNearby2@@AAE_NXZ	objsec DIFF 7 .text .text bytes True relocs False 203 203 /     (180, '?TIME_TO_LEAVE_SHOUT_MESSAGE@?A0xcdfcb552@@3JB', 6) | (180, '?TIME_TO_LEAVE_SHOUT_MESSAGE@?A0xe291a915@@3JB', 6) / bad 1 text_sections_equal=6
+0093e090	ACCEPT	?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby2@@QAE_NXZ	?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby2@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0095edf0	ACCEPT	?TurnToFace@CAIStateGroup_OpinionReactionRoot@@QAE_NXZ	?TurnToFace@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00986510	ACCEPT	?MarriageCommentIsRunnable@CAIStateGroup_OpinionReactionRoot@@QAE_NXZ	?MarriageCommentIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009462a0	ACCEPT	?IsTimeToPrepareMeal@CAIStateGroup_PrepareMeal@@QAE_NXZ	?IsTimeToPrepareMeal@CAIStateGroup_PrepareMeal@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009454c0	ACCEPT	?StandAroundAndEat@CAIStateGroup_SitForMeal@@QAE_NXZ	?StandAroundAndEat@CAIStateGroup_SitForMeal@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093c600	ACCEPT	?SetWhatsThatSound@CAIStateGroup_StealthSeekEnemy@@QAEXXZ	?SetWhatsThatSound@CAIStateGroup_StealthSeekEnemy@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0093c7b0	ACCEPT	?MoveTowardsEnemy@CAIStateGroup_StealthSeekEnemy@@QAEXPBVCTCPerceiveThing@@@Z	?MoveTowardsEnemy@CAIStateGroup_StealthSeekEnemy@@AAEXPBVCTCPerceiveThing@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0070c2c0	ACCEPT	?UpdateInternalAlphas@CAnimSet@@QAEXXZ	?UpdateInternalAlphas@CAnimSet@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0070c800	ACCEPT	?GetInterpolatedTime@CAnimSet@@QBEMMJ@Z	?GetInterpolatedTime@CAnimSet@@ABEMMJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0070c100	ACCEPT	?AnimsCanBeIgnored@CAnimateThing@@QAE_NXZ	?AnimsCanBeIgnored@CAnimateThing@@QBE_NXZ	objsec ALL_EQ, MATCH PASS
+005dc070	REJECT	?TransferBinaryOut@CAnimationSet@@QAEXAAVCDataOutputStream@@@Z	?TransferBinaryOut@CAnimationSet@@QBEXAAVCDataOutputStream@@@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+009cd3c0	ACCEPT	?DeleteEntry@CBankFile@@QAEXK@Z	?DeleteEntry@CBankFile@@AAEXK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009d54e0	REJECT	?IsFinished@CBankFileAsyncData@@QAE_NXZ	?IsFinished@CBankFileAsyncData@@QBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+009cc750	ACCEPT	?Equals@CBankFileEntryUpdateData@@QBE_NABV?$CArray@VCCharString@@@@V?$CCountedPointer@VCBankStateBlock@@@@@Z	?Equals@CBankFileEntryUpdateData@@ABE_NABV?$CArray@VCCharString@@@@V?$CCountedPointer@VCBankStateBlock@@@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009cc840	ACCEPT	?SetFilenames@CBankFileEntryUpdateData@@QAEXABV?$CArray@VCCharString@@@@@Z	?SetFilenames@CBankFileEntryUpdateData@@AAEXABV?$CArray@VCCharString@@@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0099ea60	ACCEPT	?AllocStringData@CCharString@@QAEPAVCCharStringData@@PBDJ@Z	?AllocStringData@CCharString@@IAEPAVCCharStringData@@PBDJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00856a20	ACCEPT	?InitialiseActionTimes@CCombatActionBase@@QAEXXZ	?InitialiseActionTimes@CCombatActionBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006e86a0	ACCEPT	?UpdateDefenderAttackInstruction@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	?UpdateDefenderAttackInstruction@CCombatManager@@AAEXAAUCCombatantInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009accc0	ACCEPT	?GetDefNameFromGlobalIndex@CDefinitionManager@@QAE?AVCDefString@@J@Z	?GetDefNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z	objsec ALL_EQ, MATCH PASS
+009acce0	ACCEPT	?GetDefClassTypeNameFromGlobalIndex@CDefinitionManager@@QAE?AVCDefString@@J@Z	?GetDefClassTypeNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z	objsec ALL_EQ, MATCH PASS
+009ae6b0	ACCEPT	?ClearDefsForRecompile@CDefinitionManager@@QAEXABVCCharString@@@Z	?ClearDefsForRecompile@CDefinitionManager@@IAEXABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b23a90	ACCEPT	?UpdateOffGameTickProcessInfo@CEngine@@QAEX_N@Z	?UpdateOffGameTickProcessInfo@CEngine@@AAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b262c0	ACCEPT	?AddRenderLayer@CEngine@@QAEAAVCEngineLayerRenderer@@PAV2@@Z	?AddRenderLayer@CEngine@@AAEAAVCEngineLayerRenderer@@PAV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b2fb70	ACCEPT	?TransformScreenTo2DHomogenousSpace@CEngineCamera@@QBEXAAVC2DVector@@@Z	?TransformScreenTo2DHomogenousSpace@CEngineCamera@@QAEXAAVC2DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b80ad0	ACCEPT	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z	objsec ALL_EQ, MATCH PASS
+00b44540	ACCEPT	?UpdateSIMDVarBlock@CEngineLightingManager@@QAEXXZ	?UpdateSIMDVarBlock@CEngineLightingManager@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+00b90cd0	ACCEPT	?DrawAlphaBoundingBox@CEnginePrimitiveManagerOcclusionBase@@QAEXABVCMatrix3x4@@K@Z	?DrawAlphaBoundingBox@CEnginePrimitiveManagerOcclusionBase@@IAEXABVCMatrix3x4@@K@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00bbf380	ACCEPT	?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXXZ	?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b3c4b0	ACCEPT	?BuildHWStipplePatterns@CEngineResourceManager@@QAEXABV?$CArray@E@@@Z	?BuildHWStipplePatterns@CEngineResourceManager@@AAEXABV?$CArray@E@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b91f00	ACCEPT	?MovePrimitivesUp@CEngineSceneGrid@@QAEXXZ	?MovePrimitivesUp@CEngineSceneGrid@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b4ce20	ACCEPT	?SetShadowClipVolumesToNeverShadow@CEngineShadowRenderer@@QAEXXZ	?SetShadowClipVolumesToNeverShadow@CEngineShadowRenderer@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+00b2c8e0	ACCEPT	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@QAEXXZ	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b6d630	ACCEPT	?FinishUsingDynamicTextures@CEngineWaterRenderer@@QAEXXZ	?FinishUsingDynamicTextures@CEngineWaterRenderer@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b6e3e0	ACCEPT	?RenderIceBumpMap@CEngineWaterRenderer@@QAEXXZ	?RenderIceBumpMap@CEngineWaterRenderer@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b75ca0	ACCEPT	?RenderIceBackground@CEngineWaterRenderer@@QAEXM@Z	?RenderIceBackground@CEngineWaterRenderer@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b77e20	ACCEPT	?RenderSeaNonReflectiveForeground@CEngineWaterRenderer@@QAEXM@Z	?RenderSeaNonReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b40070	ACCEPT	?AutoBuildWorldMapGrid@CEngineWorldMap@@QAEXXZ	?AutoBuildWorldMapGrid@CEngineWorldMap@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009c53a0	ACCEPT	?ProcessReads@CFileInstaller@@QAEXXZ	?ProcessReads@CFileInstaller@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00494710	ACCEPT	?ChooseWorldNumber@CFrontendGameComponent@@QAEXJ@Z	?ChooseWorldNumber@CFrontendGameComponent@@AAEXJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00446220	ACCEPT	?GetInputProcessEventFromUpdate@CGamePlayerInterface@@QBE_NAAVCProcessedInput@@@Z	?GetInputProcessEventFromUpdate@CGamePlayerInterface@@ABE_NAAVCProcessedInput@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006bb210	ACCEPT	?IsNightTime@CGameTimeManager@@QAE_NXZ	?IsNightTime@CGameTimeManager@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009fd2b0	ACCEPT	?GetTextureType@CGraphicDataBank@@QBE?AW4ETextureType@1@ABVCGraphicHeader@1@_N@Z	?GetTextureType@CGraphicDataBank@@ABE?AW4ETextureType@1@ABVCGraphicHeader@1@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009ff8d0	ACCEPT	?GetFrame@CGraphicInfo@@QAE_NAAVCGraphicFrame@@KKK@Z	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009ff710	ACCEPT	?GetVolumeTexture@CGraphicInfoFrame@@QAE_NPAPAVCVolumeTexture@@K@Z	?GetVolumeTexture@CGraphicInfoFrame@@QBE_NPAPAVCVolumeTexture@@K@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+008f5f00	ACCEPT	?Update@CHeightMap@@QAEXXZ	?Update@CHeightMap@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+009f4b10	ACCEPT	?IsEventProcessed@CInputManager@@QAE_NABVCInputEvent@@@Z	?IsEventProcessed@CInputManager@@QBE_NABVCInputEvent@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009f5250	ACCEPT	?IsJoystickDeviceNumberActive@CInputManager@@QAE_NJ@Z	?IsJoystickDeviceNumberActive@CInputManager@@QBE_NJ@Z	objsec ALL_EQ, MATCH PASS
+00687c90	REJECT	?IsOtherQuickAccessItemButtonHeld@CInputProcessGameBase@@QAE_NJ@Z	?IsOtherQuickAccessItemButtonHeld@CInputProcessGameBase@@IBE_NJ@Z	grade ('RELOCATION_MATCH', 'LINK_FAIL')
+009e42e0	ACCEPT	?UpdateMaintainedEventPositions@CJoystick@@QAEXXZ	?UpdateMaintainedEventPositions@CJoystick@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009e4360	ACCEPT	?AddMaintainedEventsToEventStore@CJoystick@@QAEXXZ	?AddMaintainedEventsToEventStore@CJoystick@@IAEXXZ	objsec ALL_EQ, MATCH PASS
+00be79d0	ACCEPT	?RenderWithOcclusion@CLandscapeBackgroundPatch@@QAEXAAJAA_N@Z	?RenderWithOcclusion@CLandscapeBackgroundPatch@@AAEXAAJAA_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00be2740	ACCEPT	?PeekFadeEnd@CLocalDetailObjectCollectionType@@QAEMXZ	?PeekFadeEnd@CLocalDetailObjectCollectionType@@QBEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0081e690	ACCEPT	?GetWorldMapNumber@CMap@@QAEJXZ	?GetWorldMapNumber@CMap@@QBEJXZ	objsec ALL_EQ, MATCH PASS
+0081ed90	ACCEPT	?InitHeightMap@CMap@@QAEXXZ	?InitHeightMap@CMap@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0081ee00	ACCEPT	?InitGameMap@CMap@@QAEXXZ	?InitGameMap@CMap@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0081f460	ACCEPT	?IsCameraPassableAt@CMap@@QAE_NABVC2DCoordI@@@Z	?IsCameraPassableAt@CMap@@QBE_NABVC2DCoordI@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00820ab0	ACCEPT	?UpdateScriptedMapBrushes@CMap@@QAEXXZ	?UpdateScriptedMapBrushes@CMap@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+008f71a0	ACCEPT	?InitThemePalette@CMap@@QAEXXZ	?InitThemePalette@CMap@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009f2920	ACCEPT	?InternalDeallocate@CMemoryAllocator@@QAEXPAX@Z	?InternalDeallocate@CMemoryAllocator@@IAEXPAX@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00861a80	ACCEPT	?SetUpMovementAnim@CModeStandBase@@QBEXAAVCAnimateThing@@W4EExistingAnimStatus@1@MABVCMovementSetup@1@2@Z	?SetUpMovementAnim@CModeStandBase@@ABEXAAVCAnimateThing@@W4EExistingAnimStatus@1@MABVCMovementSetup@1@2@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a66c20	ACCEPT	?UpdateMaintainedEvents@CMouse@@QAEXXZ	?UpdateMaintainedEvents@CMouse@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ab4910	ACCEPT	?GetExclusiveModeDeviceMouseEvent@CMouseDX@@QAE_NPAVCMouseEvent@@@Z	?GetExclusiveModeDeviceMouseEvent@CMouseDX@@IAE_NPAVCMouseEvent@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ab5190	ACCEPT	?UpdateCurrentStatusFromEvent@CMouseDX@@QAEXPBVCMouseEvent@@@Z	?UpdateCurrentStatusFromEvent@CMouseDX@@IAEXPBVCMouseEvent@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a1b4e0	ACCEPT	?GetSpeedReducedForStartAndEnd@CNavigatorAStar@@QAEMMMABVC2DVector@@@Z	?GetSpeedReducedForStartAndEnd@CNavigatorAStar@@AAEMMMABVC2DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a150a0	ACCEPT	?IsActionPoint@CNavigatorManager@@QAE_NABVC2DVector@@@Z	?IsActionPoint@CNavigatorManager@@QBE_NABVC2DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004aeaa0	ACCEPT	?GetLocalGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z	?GetLocalGameEventPackageSet@CNetworkClient@@AAE_NPAVCGameEventPackageSet@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00439ab0	REJECT	?GetButtonAlpha@CPlayerGui@@QAEMJ_N00@Z	?GetButtonAlpha@CPlayerGui@@QBEMJ_N00@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+004497e0	ACCEPT	?GetPlayerDefIndexFromNumber@CPlayerManager@@QAEJJ@Z	?GetPlayerDefIndexFromNumber@CPlayerManager@@ABEJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0044a070	ACCEPT	?DestroyPlayers@CPlayerManager@@QAEXXZ	?DestroyPlayers@CPlayerManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+004afa10	ACCEPT	?GetMasterScriptDataForScript@CQuestManager@@QAEPAVCScriptDataBase@@ABVCScriptInfo@@@Z	?GetMasterScriptDataForScript@CQuestManager@@AAEPAVCScriptDataBase@@ABVCScriptInfo@@@Z	objsec ALL_EQ, MATCH PASS
+004b1080	ACCEPT	?IsAnyQuestActive@CQuestManager@@QAE_NXZ	?IsAnyQuestActive@CQuestManager@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+004b5030	ACCEPT	?SaveMasterScriptDataToGameState@CQuestManager@@QAEXAAVCScriptDataBase@@ABVCCharString@@@Z	?SaveMasterScriptDataToGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00f3a270	ACCEPT	?CalcMemoryNeededBitCompressed@CRangeCompressor@@QAEJABV?$CArray@K@@@Z	?CalcMemoryNeededBitCompressed@CRangeCompressor@@AAEJABV?$CArray@K@@@Z	objsec ALL_EQ, MATCH PASS
+00f3a5d0	ACCEPT	?TestRangeBias@CRangeCompressor@@QAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	?TestRangeBias@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00f3a710	ACCEPT	?TestRedundantBitStrip@CRangeCompressor@@QAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	?TestRedundantBitStrip@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009fc070	ACCEPT	?GetUnloadableMemory@CResourceList@@QAEKK@Z	?GetUnloadableMemory@CResourceList@@QBEKK@Z	objsec ALL_EQ, MATCH PASS
+00989640	ACCEPT	?UpdateWorldSpaceFogTransform@CShaderRenderManager@@QAEXXZ	?UpdateWorldSpaceFogTransform@CShaderRenderManager@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+0098a540	ACCEPT	?UpdateWorldSpaceLighting@CShaderRenderManager@@QAEXXZ	?UpdateWorldSpaceLighting@CShaderRenderManager@@AAEXXZ	objsec ALL_EQ, MATCH PASS
+00a5f2f0	ACCEPT	?CloseFonts@CStreamingFontDataBank@@QAEXXZ	?CloseFonts@CStreamingFontDataBank@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0048dbc3	ACCEPT	?GetBlackBarHeight@CSubtitleRenderer@@QBEMXZ	?GetBlackBarHeight@CSubtitleRenderer@@ABEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0048f50c	ACCEPT	?FormatTextForVWindow@CSubtitleRenderer@@QBEXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z	?FormatTextForVWindow@CSubtitleRenderer@@ABEXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00490a22	ACCEPT	?IsInInteractiveState@CSubtitleRenderer@@QAE_NXZ	?IsInInteractiveState@CSubtitleRenderer@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007fde00	ACCEPT	?IsTimeToSummon@CTCAISummon@@QAE_NXZ	?IsTimeToSummon@CTCAISummon@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007468c0	ACCEPT	?UpdateAnimation@CTCBed@@QAEXXZ	?UpdateAnimation@CTCBed@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007aede0	ACCEPT	?IsOnFinalPhase@CTCBoss@@QBE_NXZ	?IsOnFinalPhase@CTCBoss@@QAE_NXZ	objsec ALL_EQ, MATCH PASS
+006bfb90	ACCEPT	?NeedsMainSignPost@CTCBuyableHouse@@QBE_NXZ	?NeedsMainSignPost@CTCBuyableHouse@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006c0c90	ACCEPT	?CreateRentMoney@CTCBuyableHouse@@QAEXXZ	?CreateRentMoney@CTCBuyableHouse@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006c0f70	REJECT	?CreateDressingSignPost@CTCBuyableHouse@@QAEXXZ	?CreateDressingSignPost@CTCBuyableHouse@@AAEXXZ	objsec DIFF 6 .text .text bytes True relocs False 81 81 /     (8, '?DRESSING_SIGN_POST_DEF_NAME@?A0x05e3280b@@3VCCharString@@B', 6) | (8, '?DRESSING_SIGN_POST_DEF_NAME@?A0x2a8e344c@@3VCCharString@@B', 6) / bad 1 text_sections_equal=4
+006c0fd0	ACCEPT	?Evict@CTCBuyableHouse@@QAEXXZ	?Evict@CTCBuyableHouse@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0075c530	ACCEPT	?IsAngleValid@CTCCameraPointDefinitionBase@@QBE_NXZ	?IsAngleValid@CTCCameraPointDefinitionBase@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006a1330	ACCEPT	?IsSlotPrimarySlot@CTCCarrying@@QAE_NJ@Z	?IsSlotPrimarySlot@CTCCarrying@@QBE_NJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0074e280	ACCEPT	?GetDynamicPotionDefIndex@CTCContainerRewardHero@@QAEJXZ	?GetDynamicPotionDefIndex@CTCContainerRewardHero@@IBEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0074e460	ACCEPT	?GetDynamicResurrectionDefIndex@CTCContainerRewardHero@@QAEJXZ	?GetDynamicResurrectionDefIndex@CTCContainerRewardHero@@IBEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00749b40	ACCEPT	?UpdateAnimation@CTCCupboard@@QAEXXZ	?UpdateAnimation@CTCCupboard@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007fd580	ACCEPT	?UpdateAdditionalImpulse@CTCDPhysicalObstruction@@QAEXXZ	?UpdateAdditionalImpulse@CTCDPhysicalObstruction@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0076d460	ACCEPT	?IsAllyOf@CTCEnemy@@QBE_NABVCThing@@@Z	?IsAllyOf@CTCEnemy@@ABE_NABVCThing@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00750dd0	ACCEPT	?Explode@CTCExplodingObject@@QAEXXZ	?Explode@CTCExplodingObject@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006d5260	ACCEPT	?CullNullFollowers@CTCFollowed@@QAEXXZ	?CullNullFollowers@CTCFollowed@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00798770	ACCEPT	?FinishBeingForcePushed@CTCForcePushed@@QAEX_NM@Z	?FinishBeingForcePushed@CTCForcePushed@@AAEX_NM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+005edc90	ACCEPT	?GetGame@CTCGamePlayer@@QAEPAVCTCTavernGame@@XZ	?GetGame@CTCGamePlayer@@QBEPAVCTCTavernGame@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006d7120	ACCEPT	?GetAttackVariationMultiplier@CTCHeroExperience@@QBEMXZ	?GetAttackVariationMultiplier@CTCHeroExperience@@ABEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006d86d0	ACCEPT	?GetOnHitSoundIntensity@CTCHeroExperience@@QBEJXZ	?GetOnHitSoundIntensity@CTCHeroExperience@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0071c9f0	ACCEPT	?UpdateIdleParticles@CTCHeroMorph@@QAEXXZ	?UpdateIdleParticles@CTCHeroMorph@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0055fb80	ACCEPT	?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0078a2c0	ACCEPT	?LoadRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ	?LoadRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007cabd0	ACCEPT	?AddItemToInventory@CTCHeroReceiveItems@@QAEXAAVCThing@@_N@Z	?AddItemToInventory@CTCHeroReceiveItems@@AAEXAAVCThing@@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00581cfd	REJECT	?GetContextSensitiveItemGraphicIndex@CTCInventory@@QAEJJ@Z	?GetContextSensitiveItemGraphicIndex@CTCInventory@@QBEJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00581d4e	REJECT	?GetContextSensitiveItemButtonIndex@CTCInventory@@QAEJJ@Z	?GetContextSensitiveItemButtonIndex@CTCInventory@@QBEJJ@Z	no object (head ('MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00581fa4	REJECT	?GetQuickAccessItemGraphicIndex@CTCInventory@@QAEJJ@Z	?GetQuickAccessItemGraphicIndex@CTCInventory@@QBEJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+005b37f7	ACCEPT	?InitialiseMannequin@CTCInventoryClothing@@QAEXXZ	?InitialiseMannequin@CTCInventoryClothing@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+005b62fe	ACCEPT	?GetItemDescriptionNoArmourRating@CTCInventoryClothing@@QAEXAAVCWideString@@J@Z	?GetItemDescriptionNoArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+005faa60	REJECT	?IsTeleportValid@CTCInventoryMap@@QAE_NXZ	?IsTeleportValid@CTCInventoryMap@@QBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+005fc0c0	ACCEPT	?UpdateRegionsCorrespondances@CTCInventoryMap@@QAEXJJ@Z	?UpdateRegionsCorrespondances@CTCInventoryMap@@AAEXJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+005fc840	REJECT	?TeleportHeroToRegionTeleporter@CTCInventoryMap@@QAEXJ@Z	?TeleportHeroToRegionTeleporter@CTCInventoryMap@@QBEXJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+0059de04	ACCEPT	?UpdateBuyActionsList@CTCInventoryTrade@@QAEXXZ	?UpdateBuyActionsList@CTCInventoryTrade@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+005c30d3	REJECT	?RefreshActiveWeaponData@CTCInventoryWeapons@@QAEXXZ	?RefreshActiveWeaponData@CTCInventoryWeapons@@QBEXXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+007faf60	ACCEPT	?DoHeadTracking@CTCKraken@@QAEXXZ	?DoHeadTracking@CTCKraken@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007fb6a0	ACCEPT	?StartBeamEffect@CTCKraken@@QAEXXZ	?StartBeamEffect@CTCKraken@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007fbe50	ACCEPT	?UpdateBeamExplosion@CTCKraken@@QAEXXZ	?UpdateBeamExplosion@CTCKraken@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00751970	ACCEPT	?GetBodySettingsSlowInFastOut@CTCLook@@QBEXAAM0MMM@Z	?GetBodySettingsSlowInFastOut@CTCLook@@ABEXAAM0MMM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00752480	ACCEPT	?IsAbleToTurnViaAnimation@CTCLook@@QAE_NXZ	?IsAbleToTurnViaAnimation@CTCLook@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00788555	ACCEPT	?UpdateAnimation@CTCMeleeTrap@@QAEXXZ	?UpdateAnimation@CTCMeleeTrap@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072e290	ACCEPT	?CreateChildThings@CTCMeshAutomaticEntityCreator@@QAEXXZ	?CreateChildThings@CTCMeshAutomaticEntityCreator@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007cc2b0	ACCEPT	?CreateAmmoEffect@CTCMultiArrow@@QAEXXZ	?CreateAmmoEffect@CTCMultiArrow@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007cc410	ACCEPT	?FinalCleanup@CTCMultiArrow@@QAEXXZ	?FinalCleanup@CTCMultiArrow@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006afe00	ACCEPT	?GetMass@CTCPhysicsBase@@QAEMXZ	?GetMass@CTCPhysicsBase@@QBEMXZ	objsec ALL_EQ, MATCH PASS
+00712d70	ACCEPT	?IsActionRunning@CTCScriptedControl@@QAE_NABVCCharString@@@Z	?IsActionRunning@CTCScriptedControl@@QBE_NABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00772720	REJECT	?GetMaxStock@CTCShop@@QAEJJ@Z	?GetMaxStock@CTCShop@@QBEJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00772790	REJECT	?GetDaysTillRestock@CTCShop@@QAEJJ@Z	?GetDaysTillRestock@CTCShop@@QBEJJ@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00722590	ACCEPT	?CreatePositions@CTCSmokeGenerator@@QAEXXZ	?CreatePositions@CTCSmokeGenerator@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0066b120	ACCEPT	?InternalPlaySoundEvent@CTCSoundPlayer@@QAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z	?InternalPlaySoundEvent@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072a970	ACCEPT	?SetupBulletTime@CTCSpecialAbilities@@QAE_NXZ	?SetupBulletTime@CTCSpecialAbilities@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072a9b0	ACCEPT	?SetupForceMove@CTCSpecialAbilities@@QAE_NXZ	?SetupForceMove@CTCSpecialAbilities@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072aa00	ACCEPT	?SetupHealLifeSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupHealLifeSpell@CTCSpecialAbilities@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072aa50	ACCEPT	?SetupGhostSwordSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupGhostSwordSpell@CTCSpecialAbilities@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072aaa0	ACCEPT	?SetupMultiArrow@CTCSpecialAbilities@@QAE_NXZ	?SetupMultiArrow@CTCSpecialAbilities@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072b0d0	ACCEPT	?SetupPhysicalShieldSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupPhysicalShieldSpell@CTCSpecialAbilities@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072b160	ACCEPT	?SetupTurncoatSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupTurncoatSpell@CTCSpecialAbilities@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072c680	ACCEPT	?SetupLightningSpell@CTCSpecialAbilities@@QAE_NXZ	?SetupLightningSpell@CTCSpecialAbilities@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072cd00	REJECT	?SetupDivineWrath@CTCSpecialAbilities@@QAE_NXZ	?SetupDivineWrath@CTCSpecialAbilities@@AAE_NXZ	objsec DIFF 22 .text .text bytes True relocs False 286 286 /     (191, '?SHEATH_ACTION_NAME@?A0x985ddbc8@@3VCCharString@@A', 6) | (191, '?SHEATH_ACTION_NAME@?A0xb730c78f@@3VCCharString@@A', 6) / bad 1 text_sections_equal=19
+0072ce20	REJECT	?SetupUnholyPower@CTCSpecialAbilities@@QAE_NXZ	?SetupUnholyPower@CTCSpecialAbilities@@AAE_NXZ	objsec DIFF 22 .text .text bytes True relocs False 286 286 /     (191, '?SHEATH_ACTION_NAME@?A0xc36e245f@@3VCCharString@@A', 6) | (191, '?SHEATH_ACTION_NAME@?A0xec033818@@3VCCharString@@A', 6) / bad 1 text_sections_equal=19
+00731ca0	ACCEPT	?GetDirection@CTCSpotLight@@QBE?AVC3DVector@@XZ	?GetDirection@CTCSpotLight@@QAE?AVC3DVector@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00747090	ACCEPT	?ClearDangerStatus@CTCStealth@@QAEXXZ	?ClearDangerStatus@CTCStealth@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00747480	ACCEPT	?UpdateViewability@CTCStealth@@QAEXXZ	?UpdateViewability@CTCStealth@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007479b0	ACCEPT	?UpdateHearability@CTCStealth@@QAEXXZ	?UpdateHearability@CTCStealth@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+005ec7c0	ACCEPT	?RenderText@CTCTavernGame@@QAEXABVCEnginePrimitivePrepareInfo@@MMVCWideString@@ABVCFontBank@@VCRGBColour@@@Z	?RenderText@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@MMVCWideString@@ABVCFontBank@@VCRGBColour@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+005ec990	ACCEPT	?DrawBox@CTCTavernGame@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	?DrawBox@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006dd760	ACCEPT	?SendPauseEvent@CTCTrophy@@QAEX_N@Z	?SendPauseEvent@CTCTrophy@@AAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+007c6aa0	ACCEPT	?StartTurncoatingEffects@CTCTurncoatSpell@@QAEXXZ	?StartTurncoatingEffects@CTCTurncoatSpell@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00658f41	ACCEPT	?GetNumberOfGayVillagers@CTCVillage@@QAEJXZ	?GetNumberOfGayVillagers@CTCVillage@@QBEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007df6a0	ACCEPT	?DoEffect@CTCWallMountEffects@@QAEXXZ	?DoEffect@CTCWallMountEffects@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0076de60	ACCEPT	?IsTrailActiveForThing@CTCWeaponTrail@@QBE_NJPBVCThing@@PBVCThingCreatureBase@@@Z	?IsTrailActiveForThing@CTCWeaponTrail@@ABE_NJPBVCThing@@PBVCThingCreatureBase@@@Z	objsec ALL_EQ, MATCH PASS
+00a69730	ACCEPT	?GetPoolIndex@CTextureManager@@QBEJK@Z	?GetPoolIndex@CTextureManager@@AAEJK@Z	objsec ALL_EQ, MATCH PASS
+004c72d0	REJECT	?SaveSerialiseCreatableTCs@CThing@@QAEXAAVCCharString@@@Z	?SaveSerialiseCreatableTCs@CThing@@IBEXAAVCCharString@@@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+004c8c90	REJECT	?IsUnderScriptControl@CThing@@QAE_NXZ	?IsUnderScriptControl@CThing@@QBE_NXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00833390	ACCEPT	?GetSleepTimes@CThingAICreature@@QAEXAAJ0@Z	?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006622d0	ACCEPT	?UpdateBodyReorientation@CThingCreatureBase@@QAEXXZ	?UpdateBodyReorientation@CThingCreatureBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00662860	REJECT	?GetDefaultWeaponDef@CThingCreatureBase@@QAEJXZ	?GetDefaultWeaponDef@CThingCreatureBase@@QBEJXZ	grade ('MATCH', 'LINK_FAIL')
+006655a0	ACCEPT	?GetAnimationSpeedMultiplier@CThingCreatureBase@@QAEMXZ	?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0051e5a0	ACCEPT	?ActivateAfterLoading@CThingManager@@QAEXJ@Z	?ActivateAfterLoading@CThingManager@@AAEXJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006a5ab0	ACCEPT	?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QAE_NXZ	?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QBE_NXZ	objsec ALL_EQ, MATCH PASS
+006ab770	ACCEPT	?ResolveMovementAcceleration@CThingPlayerCreature@@QAEXXZ	?ResolveMovementAcceleration@CThingPlayerCreature@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006ac390	REJECT	?IsExpressionAvailable@CThingPlayerCreature@@QAE_NABVCCharString@@@Z	?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00406a80	ACCEPT	?GetEmptySlotName@CUserProfileManager@@QAE?AVCWideString@@XZ	?GetEmptySlotName@CUserProfileManager@@QBE?AVCWideString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00406f70	REJECT	?GetAutoSavePathName@CUserProfileManager@@QAE?AVCWideString@@XZ	?GetAutoSavePathName@CUserProfileManager@@QBE?AVCWideString@@XZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'LINK_FAIL'))
+00548710	ACCEPT	?IsVerticalSyncEnabled@CUserProfileManager@@QAE_NXZ	?IsVerticalSyncEnabled@CUserProfileManager@@QBE_NXZ	objsec ALL_EQ, MATCH PASS
+0054a530	ACCEPT	?GetTextureDetail@CUserProfileManager@@QAEMXZ	?GetTextureDetail@CUserProfileManager@@QBEMXZ	objsec ALL_EQ, MATCH PASS
+0054a590	ACCEPT	?GetMeshDetail@CUserProfileManager@@QAEMXZ	?GetMeshDetail@CUserProfileManager@@QBEMXZ	objsec ALL_EQ, MATCH PASS
+00ad8fe0	ACCEPT	?CalcCurrentBestTheoreticalResultNewBlock@CVertexGroupBlockOptimiser@@QAEKXZ	?CalcCurrentBestTheoreticalResultNewBlock@CVertexGroupBlockOptimiser@@AAEKXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ad9d10	ACCEPT	?CalcCurrentBestTheoreticalResultNewBlock2@CVertexGroupBlockOptimiser@@QAEKXZ	?CalcCurrentBestTheoreticalResultNewBlock2@CVertexGroupBlockOptimiser@@AAEKXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0049e370	ACCEPT	?UpdateEnvironmentCameraPos@CWorld@@QAEXABVC3DVector@@@Z	?UpdateEnvironmentCameraPos@CWorld@@IAEXABVC3DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0049e620	ACCEPT	?InitMeshBank@CWorld@@QAE_NXZ	?InitMeshBank@CWorld@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0049ebf0	ACCEPT	?InitThingManager@CWorld@@QAE_NXZ	?InitThingManager@CWorld@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+004a0370	ACCEPT	?DisplayCollectableRentInformation@CWorld@@QAEXXZ	?DisplayCollectableRentInformation@CWorld@@QBEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+004fc9c0	ACCEPT	?SetMapPlacement@CWorldMap@@QAEXABVC2DBoxI@@J@Z	?SetMapPlacement@CWorldMap@@IAEXABVC2DBoxI@@J@Z	objsec ALL_EQ, MATCH PASS

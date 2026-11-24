@@ -1,0 +1,6 @@
+0040d400	src	DIFF		rebuild/src/compiled/00/40/CUserProfileManager_SetProfileName_0040d400.cpp
+0040d400	test	DIFF		rebuild/tests/00/40/CUserProfileManager_SetProfileName_0040d400_test.cpp
+00506e30	src	DIFF		rebuild/src/compiled/00/50/CWorldMap_GetLevelDimensions_00506e30.cpp
+004fe2a0	src	DIFF		rebuild/src/compiled/00/4f/CWorldMap_LoadAllLoadableGlobalThingsFromSingleFile_004fe2a0.cpp
+00507c30	src	DIFF		rebuild/src/compiled/00/50/CWorldMap_LoadFromFile_00507c30.cpp
+0098ecd0	src	DIFF		rebuild/src/compiled/00/98/CThreadedFileManager_ProcessObjects_0098ecd0.cpp

@@ -1,3 +1,4 @@
+// Leaf: ?UpdateCombatRelatedEffects@CBulletTimeManager@@AAEXXZ
 // CBulletTimeManager::UpdateCombatRelatedEffects() -- while the main player's creature is performing a combat action, keep the default bullet-time multiplier on and restart the strike-action countdown; otherwise count it down
 // Naming wave 18: the global stand-in g_BulletTimeFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -64,7 +65,9 @@ public:
     long            LastStrikeActionTick;     // +0x10
     void*           World;                    // +0x14 CWorld*
     CPlayerManager* PlayerManager;            // +0x18
+    private:
     void UpdateCombatRelatedEffects();
+    public:
 };
 
 void CBulletTimeManager::UpdateCombatRelatedEffects()

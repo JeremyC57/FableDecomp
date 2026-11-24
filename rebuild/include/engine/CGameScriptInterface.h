@@ -968,6 +968,13 @@ protected:
     // apart; retail has the same twin pair 0x30 apart: 0x006E7510 reads the +0x18 frame word, 0x006E7530 the +0x1c one.
     long GetMinWorldFrameForMessages() const;                                                            // 0x006E7510 (pairing by PDB order; landed rows respelled by naming wave 10)
     long GetMaxWorldFrameForMessages() const;                                                            // 0x006E7530
+#ifdef FABLE_RETAIL_CGAMESCRIPTINTERFACE_ENDCUTFADE_CALLEES
+    // Opt-in (NF321, 2026-11-23, row 0x0088E520 EndCutFade): the two protected non-virtual helpers the donor FableWin EndCutFade calls,
+    // Ego_r.pdb / FableWin.pdb ?EndFadeScreen@CGameScriptInterface@@IAEXXZ and ?Rest@CGameScriptInterface@@IBEXM@Z (landed self row
+    // 0x006E71F0). Declarations only.
+    void EndFadeScreen();                                                                                // 0x006E7270
+    void Rest(float) const;                                                                              // 0x006E71F0
+#endif
 public:
     // Wave 6. 0x006E77F0 never touches `this`: it takes the PLAYER_GUI_PC definition (0x00438570, the lazily cached
     // CPlayerGuiDef* at 0x013B878C), finds the CCharString key in the map at def+0x934 and returns the node's long (+0x14)

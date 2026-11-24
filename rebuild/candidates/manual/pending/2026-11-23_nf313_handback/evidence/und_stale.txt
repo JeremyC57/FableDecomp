@@ -1,0 +1,6 @@
+0090f0d0 UND ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z
+0095a890 UND ?Initialise@CAIStateGroup_EnemyCreatureBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z
+007bb150 UND ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJJ_N@Z
+0089e540 UND ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z
+0089e540 UND ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z
+0089e540 UND ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@1111KM_N2@Z

@@ -1,3 +1,4 @@
+// Leaf: ?CanRelocateData@CBankFileAsyncData@@UBE_NJ@Z
 // CBankFileAsyncData::CanRelocateData(long) const -- relocatable and not already relocating, under the movable pool's lock
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D55D0, oracle length 74 bytes.
 // Callees: CCriticalSectionLock ctor @ 0x00A62920 / dtor @ 0x00A629A0.
@@ -52,7 +53,7 @@ class CBankFileAsyncData { public:
     bool                        m_finished;       // +0x44
     bool                        m_dataLocked;     // +0x45
     bool                        m_completionPending; // +0x46
-    bool CanRelocateData(long size) const;     // 0x009D55D0
+    virtual bool CanRelocateData(long size) const;     // 0x009D55D0
 };
 
 bool CBankFileAsyncData::CanRelocateData(long size) const

@@ -13,12 +13,22 @@
 class CThing;
 class CTCCarrying : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_POWERUP_SWORD_FIXTURE_PASS27
+    CTCCarrying(CThing& thing);
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CARRYING; }
+#ifdef FABLE_RETAIL_RANGED_COMBAT_FIXTURE_PASS27
+    CTCCarrying(CThing&);
+#endif
 #ifdef FABLE_RETAIL_CTCCARRYING_ISTHINGCARRYINGMELEEWEAPON
     // Opt-in (NF107, round 10, row 0x008E4100 GetAllThingsInRoughArea<CThingAICreature, vector<CThingAICreature*>, CFilter_Bind2<
     // CThingFilter_HasDefGlobalIndex, `anonymous namespace'::CThingFilter_IsHoldingMeleeWeapon> >): Ego_r.pdb 0x006C6040
     // ?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z (public static fastcall), out of line in retail at 0x006A15A0. Declaration only.
     static bool __fastcall IsThingCarryingMeleeWeapon(const CThing& thing);   // 0x006A15A0
+#endif
+#ifdef FABLE_RETAIL_CTCCARRYING_PLAYERHIT_PASS26
+    static bool FABLE_FASTCALL IsThingCarryingRangedWeapon(const CThing&);
+    bool IsPrimarySlotFree()const;
 #endif
     CThing* GetThingInPrimarySlot() const;                   // 0x006A1440
     CThing* RemoveThingFromPrimarySlot(bool);                // 0x006A1E00

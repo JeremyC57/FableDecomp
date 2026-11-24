@@ -12,14 +12,33 @@
 // Ego_r53e81 and donor02c4bd00: original protected fields at1c/24/28/2c in native.
 #include "engine/CAIStateGroup_EnemyCreatureBase.h"
 class CAIStateGroup_WhisperRetreat:public CAIStateGroup_EnemyCreatureBase {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT_UPDATE
+ // NF257 opt-in (2026-11-22, q12724, row 0x0096B600 Update): Ego_r.pdb + FableWin.pdb ?Update@CAIStateGroup_WhisperRetreat@@UAEXXZ (public
+ // virtual, the override of CAIStateGroupBase slot 12), ?JumpToSafety@ / ?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ (protected; retail
+ // 0x0096AC20 / 0x0096AE50, the landed UseWill row's own leaf). Declarations only; no layout change.
+public:
+ virtual void Update();
+protected:
+ void JumpToSafety();                                                     // 0x0096AC20
+ void UseWill();                                                          // 0x0096AE50
+#endif
 protected:
  bool FindHitEvent();
  CIntelligentPointer<CThing> PArenaCentre;
  bool bIsRangeAttack;
  long NumHits;
  long FrameOfLastHit;
+#ifdef FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CAIStateGroup_EnemyCreatureBase chain declares at the same slot (no new slot).
+    // 0x0090188E vtable 0x0128CDCC slot 8: ?GetStateGroupType@CAIStateGroup_WhisperRetreat@@UBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;              // 0x0090188E
+protected:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WhisperRetreat)==0x30);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_WhisperRetreat)==0x30);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

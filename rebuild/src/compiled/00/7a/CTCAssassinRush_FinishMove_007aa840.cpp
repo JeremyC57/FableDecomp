@@ -25,7 +25,10 @@ class CTCAssassinRush { public:
     bool                  StartTrailDelay;                  // +0x2c
     unsigned char         _pad2d[0x90 - 0x2d];
     CCountedActionPointer FinalAction;                      // +0x90
-    void CleanUpEffects();                                  // 0x007AA370
+    private:
+    void CleanUpEffects();
+    public:
+                                  // 0x007AA370
     void FinishMove(CThingCreatureBase* creature);
 };
 

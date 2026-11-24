@@ -1,0 +1,227 @@
+#41 00442190 [CDrawSpiritTargetingCursor] self=Y :: ??1CDrawSpiritTargetingCursor@NPlayerGui@@QAE@XZ
+   header engine/CDrawSpiritTargetingCursor.h: absent
+   S @CLandscapeBackgroundPatch_scalar_dtor@4 wit=00443080
+      CLandscapeBackgroundPatch_vectordeletingdestructor_00443080.cpp (14 lines)
+      inc: 
+      6| extern "C" void __fastcall CLandscapeBackgroundPatch_scalar_dtor(CLandscapeBackgroundPatch* self);
+      10| CLandscapeBackgroundPatch_scalar_dtor(this);
+#42 00b80940 [CEngineClothSimulationMeshBase] self=Y :: ?CalculateRunState@CEngineClothSimulationMeshBase@@IBE?AW4ERunState@CEngineSimulationBase@@ABVC3DVector@@M@Z
+   header engine/CEngineClothSimulationMeshBase.h: leaf lines 39[FABLE_ENGINE_CENGINECLOTHSIMULATIONMESHBASE_H]
+   S ?CalculateRunState@CEngineSimulationBase@@QAEJABVC3DVector@@M@Z wit=00b81230
+      CEngineClothSimulationAnimatedMesh_CalcAndSetRunState_00b81230.cpp (81 lines)
+      inc: "engine/C3DVector.h"
+      def 36: class CEngineSimulationBase {
+      41| long CalculateRunState(const C3DVector& centre, float radius);
+      79| RunState = CalculateRunState(world, MeshInfo->BoundingSphere.Radius * Owner->Scale);
+#43 00bdc020 [CEngineLandscapeMap] self=- :: ?UpdateBackgroundTesselation@CEngineLandscapeMap@@QAEXXZ
+   header engine/CEngineLandscapeMap.h: absent
+   = PDB wit 00b68610
+   S ?UpdateBackgroundTesselation@CEngineLandscapeMapCallView@@QAEXXZ wit=00b684f0 SIBWIT
+      CEngineLandscapeRenderer_LoadNewScene_00b684f0.cpp (137 lines)
+      inc: "engine/CEngineComponent.h" "engine/CEngineWorldMap.h" "engine/CEngineLandscapeRenderer.h" "engine/CEngineLandscapeMemoryManager.h" "engine/_quarantine/CEngineLandscapeMap.h" "engine/CEngineMap.h"
+      def 40: struct CEngineLandscapeMapCallView : CEngineLandscapeMap
+      45| void UpdateBackgroundTesselation();
+      129| map->UpdateBackgroundTesselation();
+#44 00bade40 [CEnginePrimitiveManagerSprites] self=Y :: ?RenderSprite@CEnginePrimitiveManagerSprites@@IAEXAAVCEngineInternalPrimitiveSprite@@@Z
+   header engine/CEnginePrimitiveManagerSprites.h: leaf lines 21[FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSPRITES_RENDER]
+   S _SpriteHelper@4 wit=00baf9e0
+      CEnginePrimitiveManagerSprites_RenderPrimitive_00baf9e0.cpp (26 lines)
+      inc: "engine/CEnginePrimitiveManagerSprites.h"
+      12| extern "C" void __stdcall SpriteHelper(CEngineInternalPrimitiveBase &prim);
+      24| SpriteHelper(prim);
+#45 00b87870 [CEngineScreenEffectDisplacementRenderer] self=Y :: ?ApplyDisplacement@CEngineScreenEffectDisplacementRenderer@@AAEXXZ
+   header engine/CEngineScreenEffectDisplacementRenderer.h: leaf lines 55[FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDER]
+   S ?ApplyDisplacement@CEngineScreenEffectDisplacementRenderer_Render@@QAEXXZ wit=00b88ed0
+      CEngineScreenEffectDisplacementRenderer_Render_00b88ed0.cpp (67 lines)
+      inc: "engine/CEngineScreenEffectDisplacementRenderer.h" "engine/CEngineResourceManager.h" "engine/CGPUScratchBufferTextureManager.h"
+      def 37: struct CEngineScreenEffectDisplacementRenderer_Render : CEngineScreenEffectDisplacementRenderer {
+      38| void ApplyDisplacement();
+      60| ApplyDisplacement();
+#46 00520330 [CEntityRuntimePersistence] self=Y :: ?AddPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@QAEX_K_NK@Z
+   header engine/CEntityRuntimePersistence.h: absent
+   S ?AddPersistedDeadEntity@CEntityRuntimePersistence@@QAEX_K_NK@Z wit=00520c80
+      CThingManager_OnThingKill_00520c80.cpp (58 lines)
+      inc: 
+      def 37: struct CEntityRuntimePersistence {
+      38| void AddPersistedDeadEntity(unsigned __int64 uid, bool gameState, unsigned long sectionCRC);
+      55| EntityRuntimePersistence.AddPersistedDeadEntity(uid, thing->IsGameStatePersisted(), crc);
+#47 006b8310 [CEnvironmentSpellEffectInterpolator] self=- :: ?RadialBlurSetCenterWorldPos@CEnvironmentSpellEffectInterpolator@@QAEXPAXABVC3DVector@@@Z
+   header engine/CEnvironmentSpellEffectInterpolator.h: leaf lines 24[FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_B]
+   = PDB wit 008901a0
+   S ?RadialBlurSetCenterWorldPos@CEnvironmentSpellEffects@@QAEXPAXABVC3DVector@@@Z wit=007a9fe0
+      CTCAssassinRush_CreateTrailingEffect_007a9fe0.cpp (191 lines)
+      inc: "fable_compiler.h" "fable_string.h" "engine/CDefClassBase.h" "engine/CDefPointer.h" "engine/CSpecialEffectsDef.h" "engine/CDefClassBase_GetSubDef.h" "engine/C3DVector.h" "engine/CVectorMap.h"
+      def 119: struct CEnvironmentSpellEffects {
+      121| void RadialBlurSetCenterWorldPos(void* key, const C3DVector& pos);
+      190| spellEffects->RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurHeight));
+#48 006b8730 [CEnvironmentSpellEffectInterpolator] self=- :: ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@MMMMMM@Z
+   header engine/CEnvironmentSpellEffectInterpolator.h: leaf lines 33[FABLE_RETAIL_BATTLECHARGE_RADIAL_FLOAT_PASS27] 59[FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_R]
+   = PDB wit 00890110
+   S ?RadialBlurFadeTo@CEnvironmentSpellEffects@@QAEPAXMJMMMMMM@Z wit=007a9fe0
+      CTCAssassinRush_CreateTrailingEffect_007a9fe0.cpp (191 lines)
+      inc: "fable_compiler.h" "fable_string.h" "engine/CDefClassBase.h" "engine/CDefPointer.h" "engine/CSpecialEffectsDef.h" "engine/CDefClassBase_GetSubDef.h" "engine/C3DVector.h" "engine/CVectorMap.h"
+      def 119: struct CEnvironmentSpellEffects {
+      120| void* RadialBlurFadeTo(float strength, long mode, float a, float b, float c, float d, float e, float f);
+      187| RadialBlurFadeKey = spellEffects->RadialBlurFadeTo(PDef->BlurStrength, 2, PDef->Blur[0], PDef->Blur[1], PDef->Blur[2],
+#49 008883c0 [CEnvironmentThemePriorityStack] self=Y :: ??0CEnvironmentThemePriorityStack@NEnvironmentInternal@@QAE@J@Z
+   header engine/CEnvironmentThemePriorityStack.h: leaf lines NONE
+   S ??0CEnvironmentThemePriorityStack@@QAE@J@Z wit=006b4900 SIBWIT
+      CEnvironment_CEnvironment_006b4900.cpp (231 lines)
+      inc: "engine/C3DVector.h" "engine/CIntelligentPointer.h"
+#50 00888260 [CEnvironmentThemeSetDay] self=- :: ?GetBlendedTheme@CEnvironmentThemeSetDay@NEnvironmentInternal@@QBEXAAVCBlendedEnvironmentTheme@2@M@Z
+   header engine/CEnvironmentThemeSetDay.h: absent
+   S ?GetBlendedTheme@CEnvironmentThemeSetDay@@QAEXPAUCBlendedEnvironmentTheme@@M@Z wit=006b4900 SIBWIT
+      CEnvironment_CEnvironment_006b4900.cpp (231 lines)
+      inc: "engine/C3DVector.h" "engine/CIntelligentPointer.h"
+      def 112: struct CEnvironmentThemeSetDay {
+      113| void GetBlendedTheme(CBlendedEnvironmentTheme* theme, float hour);
+      228| ThemeSet.Day->GetBlendedTheme(&GameTickState.BlendedTheme[i], 12.0f);
+      229| ThemeSet.Day->GetBlendedTheme(&PrevGameTickState.BlendedTheme[i], 12.0f);
+   = PDB wit 008884d0
+#51 00669300 [CEventDied] self=Y :: ??0CEventDied@NEntityEvents@@QAE@PAVCThing@@0@Z
+   header engine/CEventDied.h: absent
+   S ??0CEventDied@@QAE@PAVCThing@@0@Z wit=00663f50 SIBWIT
+      CThingCreatureBase_OnDie_00663f50.cpp (306 lines)
+      inc: "fable_compiler.h" "engine/C3DVector.h" "engine/CVectorMap.h" "engine/CIntelligentPointer.h"
+#52 00811760 [CEventHitBase] self=- :: ??0CEventHitBase@NEntityEvents@@QAE@ABVCHitParameters@@@Z
+   TARGET OFFLIMITS
+   header engine/CEventHitBase.h: absent
+   S ??0CEventHitBase@@QAE@PAVCHitParameters@@@Z wit=0083af30
+      CEventHitBy_CEventHitBy_0083af30.cpp (25 lines)
+      inc: 
+   = PDB wit 00811830
+#53 00811190 [CEventKilledCreature] self=Y :: ??0CEventKilledCreature@NEntityEvents@@QAE@ABVCThing@@0@Z
+   header engine/CEventKilledCreature.h: absent
+   S ??0CEventKilledCreature@@QAE@PAVCThing@@0@Z wit=00663f50 SIBWIT
+      CThingCreatureBase_OnDie_00663f50.cpp (306 lines)
+      inc: "fable_compiler.h" "engine/C3DVector.h" "engine/CVectorMap.h" "engine/CIntelligentPointer.h"
+#54 0084af90 [CEventTalkedTo] self=Y :: ??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z
+   header engine/CEventTalkedTo.h: absent
+   S ??0CEventTalkedTo@@QAE@PAVCThing@@@Z wit=00846660
+      CCreatureActionTalk_PerformAction_00846660.cpp (63 lines)
+      inc: "engine/CThing.h" "engine/CVectorMap.h" "engine/CIntelligentPointer.h"
+   S ??0CEventTalkedTo@NEntityEvents@@QAE@PAVCThing@@@Z wit=00845900 SIBWIT
+      CCreatureActionPlayerInteractionGreet_PerformAction_00845900.cpp (122 lines)
+      inc: "fable_compiler.h" "engine/CVectorMap.h"
+#55 00436560 [CFadeInFadeOutBase] self=Y :: ??0CFadeInFadeOutBase@@QAE@XZ
+   header engine/CFadeInFadeOutBase.h: leaf lines NONE
+   S ??0SEntry_00594df4@@QAE@XZ wit=00594df4
+      CTimedEntryArray00594df4_ResetEntry_00594df4.cpp (28 lines)
+      inc: 
+   S ??0CFadeInFadeOutBase@NPlayerGui@@QAE@XZ wit=0064dab4
+      NPlayerGuiCDrawTargetInfo_CDrawTargetInfo_0064dab4.cpp (42 lines)
+      inc: 
+   = PDB wit 0078918d
+   S ??0CFadeTimer@@QAE@XZ wit=0049166e
+      CSubtitleRenderer_CSubtitleRenderer_0049166e.cpp (116 lines)
+      inc: 
+#56 009fe460 [CFrameData] self=Y :: ?FreeTextureMemory@CFrameData@CGraphicInfoFrame@@QAE_N_N@Z
+   header engine/CFrameData.h: absent
+   S ?FreeTextureMemory@FrameData@@QAE_N_N@Z wit=009fe8e0
+      CGraphicInfo_UnloadFrame_009fe8e0.cpp (33 lines)
+      inc: "fable_compiler.h" "engine/CIVCountedPointeeBase.h" "engine/CResource.h" "engine/CPixelFormat.h" "engine/_quarantine/CGraphicDataBank.h"
+      def 15: struct FrameData:ManagedTextureOwner {FrameData(const GraphicInfoFrame*);virtual ~FrameData();virtual unsigned long GetUnloadableMemory()const;virtual bool IsResourceLoad
+      15| struct FrameData:ManagedTextureOwner {FrameData(const GraphicInfoFrame*);virtual ~FrameData();virtual unsigned long GetUnloadableMemory()const;virtual bool IsResourceLoaded()const;
+      32| }else{GraphicInfoFrame&f=Frames[index];if(f.Data.P&&!f.Data.P->StopLoading())return;if(f.Data.P){unsigned long age=f.Data.P->GetUnusedFrames();if(f.Data.P)f.Data.P->FreeTextureMemo
+#57 009ff220 [CFrameData] self=Y :: ?UploadFrame@CFrameData@CGraphicInfoFrame@@QAE_N_N@Z
+   header engine/CFrameData.h: absent
+   S ?UploadFrame@CFrameData_009ff6b0@@QAE_NJ@Z wit=009ff6b0 SIBWIT
+      CGraphicInfoFrame_InternalGetFrameForcedLoading_009ff6b0.cpp (49 lines)
+      inc: 
+      def 22: struct CFrameData_009ff6b0 : public CManagedTextureOwner {
+      26| bool UploadFrame(long flags);
+      43| if (m_pData->UploadFrame(1)) {
+   S ?UploadFrame@CFrameData@@QAE_N_N@Z wit=009ff710 SIBWIT
+      CGraphicInfoFrame_GetVolumeTexture_009ff710.cpp (144 lines)
+      inc: "fable_compiler.h"
+      def 83: struct CFrameData : CResource {
+      95| bool UploadFrame(bool force);
+      123| Data->UploadFrame(true);
+   = PDB wit 009ff860
+#58 00697e20 [CGameCameraManager] self=- :: ?SetCameraMode@CGameCameraManager@@QAEXV?$CCountedPointer@VCBase@NCameraModes@@@@@Z
+   header engine/CGameCameraManager.h: leaf lines 168[FABLE_RETAIL_CGAMECAMERAMANAGER_SCRIPTEDCONTROL] 368[FABLE_RETAIL_CGAMECAMERAMANAGER_GENERALCASE]
+   S ?SetCameraMode@CGameCameraManager@@QAEXUCCameraModePointer@@@Z wit=00698d10 SIBWIT
+      CGameCameraManager_PushProjectileWeaponMode_00698d10.cpp (79 lines)
+      inc: "fable_compiler.h" "engine/CGameCameraManager.h" "engine/_quarantine/CCameraManagerDef.h" "engine/_quarantine/CCameraModeDef.h" "engine/_quarantine/CThing.h" "engine/CWorld.h" "engine/CIVCountedPointe
+      def 49: class CGameCameraManager { public:
+      56| void SetCameraMode(CCameraModePointer);
+      77| SetCameraMode(CCameraModePointer(new NCameraModes::CProjectileWeapon(*this,mode,zoom,zoom)));
+   S ?SetPendingMode@CGameCameraManager@@QAEXUCCountedCameraMode@@@Z wit=00699970 SIBWIT
+      CGameCameraManager_PushLookAround_00699970.cpp (55 lines)
+      inc: "fable_compiler.h" "engine/CGameCameraManager.h" "fable_string.h" "engine/_quarantine/CThing.h" "engine/CIntelligentPointer.h"
+      def 20: class CGameCameraManager;
+      def 39: class CGameCameraManager { public:
+      44| void SetPendingMode(CCountedCameraMode);
+      52| SetPendingMode(new NCameraModes::CRotateAround(this,g_DefaultCameraModeDef));
+   = PDB wit 006987a0
+   S ?SetCameraMode@CCombatSequence_WillLightning@@QAEXV?$CCountedPointer@UCCameraModeBase@@@@@Z wit=0069e3d0
+      CCombatSequenceWillLightning_OnCreate_0069e3d0.cpp (92 lines)
+      inc: 
+      def 72: struct CCombatSequence_WillLightning;
+      def 80: struct CCombatSequence_WillLightning {
+      83| void SetCameraMode(CCountedPointer<CCameraModeBase> mode);
+      91| SetCameraMode(mode);
+#59 00699560 [CGameCameraManager] self=- :: ?SetEarthquakeAt@CGameCameraManager@@QAEXABVC3DVector@@MM_N@Z
+   header engine/CGameCameraManager.h: leaf lines NONE
+   S ?SetEarthquakeAt@CCamObj@@QAEXPAVC3DVector@@MM_N@Z wit=0088ece0
+      CGameScriptInterface_CameraShake_0088ece0.cpp (34 lines)
+      inc: "engine/CGameScriptInterface.h" "engine/C3DVector.h"
+      def 5: struct CCamObj {
+      7| void SetEarthquakeAt(C3DVector* pos, float magnitude, float duration, bool oneShot);
+      32| local->SetEarthquakeAt((C3DVector*)((char*)local + 4), magnitude, duration, false);
+   = PDB wit 007f1930
+#60 0049bb90 [CGameJoystickManager] self=Y :: ?Get@CGameJoystickManager@@SIAAV1@XZ
+   header engine/CGameJoystickManager.h: leaf lines 26[FABLE_RETAIL_CGAMEJOYSTICKMANAGER_MAINPLAYERJOYSTI]
+   S ?Get@CGameJoystickManager@@SIPAV1@XZ wit=00449e60 SIBWIT
+      CPlayerManager_LoadGameState_00449e60.cpp (81 lines)
+      inc: "fable_compiler.h"
+      def 37: class CGameJoystickManager { public:
+      38| static CGameJoystickManager* __fastcall Get();
+      80| CGameJoystickManager::Get()->SetMainPlayerJoystickDeviceNumber(FindPlayer(MainPlayer)->GetJoystickDeviceNumber());
+   = PDB wit 00416296
+   S ?Get@CActiveJoystick@@SIAAV1@XZ wit=0042e3ee SIBWIT
+      CNewFrontendGameComponent_Input_0042e3ee.cpp (267 lines)
+      inc: 
+      def 70: class CActiveJoystick {
+      68| static T& __fastcall Get();
+      77| static CActiveJoystick& __fastcall Get();
+      123| CTBaseSingleton<CConsole>::Get().ProcessInput(event);
+#61 00445800 [CGamePlayerInterface] self=Y :: ?GetButtonPressureForEvent@CGamePlayerInterface@@QBEMABVCInputEvent@@@Z
+   header engine/CGamePlayerInterface.h: leaf lines 37[FABLE_ENGINE_CGAMEPLAYERINTERFACE_H]
+   S ?GetButtonPressureForEvent@CGamePlayerInterfaceCalls@@QAEMPAVCInputEvent@@@Z wit=00687d10
+      CInputManager_GetButtonPressureForEvent_00687d10.cpp (28 lines)
+      inc: 
+      def 13: struct CGamePlayerInterfaceCalls {
+      14| float GetButtonPressureForEvent(CInputEvent* event);
+      20| float GetButtonPressureForEvent(CInputEvent* event);
+      23| float CInterfaceOwner_Retail::GetButtonPressureForEvent(CInputEvent* event)
+#62 00e8be10 [CGhostGrannyDaughterInLaw] self=Y :: ?Alloc@CGhostGrannyDaughterInLaw@CV_GhostGrannyNecklaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+   header engine/CGhostGrannyDaughterInLaw.h: absent
+   S ?Alloc@CGhostGrannyDaughterInLaw@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@ wit=00e8b9c0
+      NScriptCVGhostGrannyNecklaceScript_Main_00e8b9c0.cpp (108 lines)
+      inc: "engine/CCountedPointer.h" "engine/CSpawnedFuncBase.h" "engine/CSpawnedFunc.h" "engine/CCountedPointer.h" "engine/CGameScriptInterface.h" "engine/CScriptBase.h"
+      def 64: struct CGhostGrannyDaughterInLaw {
+      62| static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_GhostGrannyNecklaceScript& parent, CScriptDataBase* data, const CScriptThing& thing);
+      65| static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_GhostGrannyNecklaceScript& parent, CScriptDataBase* data, const CScriptThing& thing);
+      68| static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_GhostGrannyNecklaceScript& parent, CScriptDataBase* data, const CScriptThing& thing);
+   = PDB wit 00e8b9c0
+#63 00e8bd30 [CGhostGrannyNecklace] self=Y :: ?Alloc@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+   header engine/CGhostGrannyNecklace.h: absent
+   S ?Alloc@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z wit=00e8b9c0
+      NScriptCVGhostGrannyNecklaceScript_Main_00e8b9c0.cpp (108 lines)
+      inc: "engine/CCountedPointer.h" "engine/CSpawnedFuncBase.h" "engine/CSpawnedFunc.h" "engine/CCountedPointer.h" "engine/CGameScriptInterface.h" "engine/CScriptBase.h"
+      def 61: struct CGhostGrannyNecklace {
+      62| static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_GhostGrannyNecklaceScript& parent, CScriptDataBase* data, const CScriptThing& thing);
+      65| static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_GhostGrannyNecklaceScript& parent, CScriptDataBase* data, const CScriptThing& thing);
+      68| static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_GhostGrannyNecklaceScript& parent, CScriptDataBase* data, const CScriptThing& thing);
+   = PDB wit 00e8b9c0
+#64 00e8ca60 [CGhostGrannySon] self=Y :: ?Alloc@CGhostGrannySon@CV_GhostGrannyNecklaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+   header engine/CGhostGrannySon.h: absent
+   S ?Alloc@CGhostGrannySon@CV_GhostGrannyNecklaceScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAU2@PAVCScriptDataBase@@ABVCScriptThing@@@Z wit=00e8b9c0
+      NScriptCVGhostGrannyNecklaceScript_Main_00e8b9c0.cpp (108 lines)
+      inc: "engine/CCountedPointer.h" "engine/CSpawnedFuncBase.h" "engine/CSpawnedFunc.h" "engine/CCountedPointer.h" "engine/CGameScriptInterface.h" "engine/CScriptBase.h"
+      def 67: struct CGhostGrannySon {
+      62| static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_GhostGrannyNecklaceScript& parent, CScriptDataBase* data, const CScriptThing& thing);
+      65| static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_GhostGrannyNecklaceScript& parent, CScriptDataBase* data, const CScriptThing& thing);
+      68| static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_GhostGrannyNecklaceScript& parent, CScriptDataBase* data, const CScriptThing& thing);
+   = PDB wit 00e8b9c0

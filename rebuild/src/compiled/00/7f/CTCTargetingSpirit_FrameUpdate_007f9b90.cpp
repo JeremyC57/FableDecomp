@@ -38,7 +38,7 @@ struct CTCTargetingSpirit : CTCBase {
     virtual CThing* GetPTargetedThing();        // slot 33 (+0x84)
     virtual void SetPTargetedThing(CThing* thing);   // slot 34 (+0x88)
     virtual void FrameUpdate();
-    void UpdateTargetList();                    // 0x007F9960
+    protected: void UpdateTargetList(); public:                    // 0x007F9960
 };
 
 void CTCTargetingSpirit::FrameUpdate()

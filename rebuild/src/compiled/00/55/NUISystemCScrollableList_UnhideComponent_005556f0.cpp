@@ -1,14 +1,14 @@
 // NUISystem::CScrollableList::UnhideComponent(CComponent*, float, float, C2DVector) -- bring a list component back: set the position of all eight of its UI states to the given point and slide it there, make every state fully opaque and fade to it, then raise (instant move into an active list) or clear the component's state flag 0x19
-// Leaf: UnhideComponent
+// Leaf: ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005556F0, length 736 bytes, ret 0x14. Mirror of HideComponent 0x00555440.
 // Callees: the component's virtual GetStateMap (slot 82, +0x148), ChangePosition (slot 31, +0x7c), FadeColour (slot 38,
 // +0x98) and its CStateHolder base (+4) slots 3/4 (+0x0c/+0x10); STLport map<unsigned long, CUIState>::operator[] 0x0042D5B1.
 // Layout: CUIState Position +0x08, Colour +0x18 (alpha byte +0x1b); the list's flag word +0x14c.
 // Threshold: 0.0001f (0x0129BA3C).
-namespace NUISystem {
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
-};
+}; namespace NUISystem {
+
 struct CRGBColour {
     unsigned char B, G, R, A;
 };
@@ -57,7 +57,7 @@ class CComponent : public CComponentBase, public CStateHolder { public:
 class CScrollableList { public:
     unsigned char _pad000[0x14c];
     long          Active;            // +0x14c
-    void UnhideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position);
+    protected: void UnhideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position); public:
 };
 
 void CScrollableList::UnhideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position)

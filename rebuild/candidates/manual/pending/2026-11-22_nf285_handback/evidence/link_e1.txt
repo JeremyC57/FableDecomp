@@ -1,0 +1,9 @@
+## HEAD set: H_0048f50c.obj H_00437210.obj H_0043e4d0.obj 009e1dd0.obj
+duplicates 1
+H_0043e4d0.obj : warning LNK4006: "public: class C2DExtentsF __thiscall CFontBank::GetVStringExtents(class CWideString const &)const " (?GetVStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@@Z) already defined in H_00437210.obj; second definition ig
+UNRESOLVED 1 ?GFAYToVY_009e1dd0@@YGMM@Z
+UNRESOLVED 2 ?GFAYToVY_009e1dd0@@YIMM@Z
+## new set: 0048f50c.obj 00437210.obj 0043e4d0.obj 009e1dd0.obj
+duplicates 1
+0043e4d0.obj : warning LNK4006: "public: class C2DExtentsF __thiscall CFontBank::GetVStringExtents(class CWideString const &)const " (?GetVStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@@Z) already defined in 00437210.obj; second definition ignore
+LK_DONE

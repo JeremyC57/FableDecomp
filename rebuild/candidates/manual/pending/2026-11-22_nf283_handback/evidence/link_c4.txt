@@ -1,0 +1,18 @@
+## HEAD set: H_009c3ae0.obj H_00a633a0.obj H_00a63b30.obj H_0059697a.obj H_009fe380.obj H_00b2afd0.obj H_00b2b120.obj H_00a030d0.obj H_0068fb90.obj H_007e5230.obj 009c3530.obj 009c4440.obj 00a63680.obj 009fcbf0.obj 00a02df0.obj 0068f470.obj 00687a90.obj
+duplicates 2
+H_00b2b120.obj : warning LNK4006: "public: void __thiscall CCompositeSurfaceCache_Retail::UpdateResourceSize(void)" (?UpdateResourceSize@CCompositeSurfaceCache_Retail@@QAEXXZ) already defined in H_00b2afd0.obj; second definition ignored
+009c4440.obj : warning LNK4006: "protected: static void __fastcall CFileInstaller::SetDirtyDiscError(bool)" (?SetDirtyDiscError@CFileInstaller@@KIX_N@Z) already defined in 009c3530.obj; second definition ignored
+UNRESOLVED 1 ?CloseFonts@CFontDataBank@@AAEXXZ
+UNRESOLVED 1 ?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z
+UNRESOLVED 1 ?ProcessCombatInput@CInputProcessCombat@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+UNRESOLVED 1 ?SetDirtyDiscError@CFileInstaller@@SIX_N@Z
+UNRESOLVED 1 ?Sizeof@CGraphicFrameData@@QAEJXZ
+UNRESOLVED 2 ?Sizeof@CGraphicFrameData@@QAEKXZ
+UNRESOLVED 1 ?UpdateLargestFreeArea@CHandleBasedMemoryPool@@AAEXXZ
+UNRESOLVED 1 ?UpdateLargestFreeArea@CHandleBasedMemoryPool@@QAEXXZ
+## new set: 009c3ae0.obj 00a633a0.obj 00a63b30.obj 0059697a.obj 009fe380.obj 00b2afd0.obj 00b2b120.obj 00a030d0.obj 0068fb90.obj 007e5230.obj 009c3530.obj 009c4440.obj 00a63680.obj 009fcbf0.obj 00a02df0.obj 0068f470.obj 00687a90.obj
+duplicates 2
+00b2b120.obj : warning LNK4006: "public: void __thiscall CCompositeSurfaceCache_Retail::UpdateResourceSize(void)" (?UpdateResourceSize@CCompositeSurfaceCache_Retail@@QAEXXZ) already defined in 00b2afd0.obj; second definition ignored
+009c4440.obj : warning LNK4006: "protected: static void __fastcall CFileInstaller::SetDirtyDiscError(bool)" (?SetDirtyDiscError@CFileInstaller@@KIX_N@Z) already defined in 009c3530.obj; second definition ignored
+UNRESOLVED 2 ?UpdateLargestFreeArea@CHandleBasedMemoryPool@@AAEXXZ
+LK_DONE

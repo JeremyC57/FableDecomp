@@ -1,0 +1,7 @@
+# base /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/c2t1/logs/p8_all.json (?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z: 34291 sites)  other /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/c2t1/logs/p8b.json (?UpdateShadowSpace@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z: 34291 sites)
+# aligned 34291 sites; unaligned runs 0 (0 base / 0 other sites)
+FLIPS 0 sorts in 0 trees
+
+real	0m4.472s
+user	0m4.234s
+sys	0m0.131s

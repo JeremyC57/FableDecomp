@@ -1,5 +1,5 @@
 // CTCPhysicsBase::HasSphereMeshCollidedFromTo(const CTCPhysicsBase& other, const C3DVector& from, const C3DVector& to, CPhysicsCollideResponse& response) const -- sweep this body's sphere (raised by its radius; the player uses a fixed 0.4) from `from` to `to` through the other body's physics mesh and report the hit position (lowered back) and normal
-// Leaf: ?HasSphereMeshCollidedFromTo@CTCPhysicsBase@@QBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z
+// Leaf: ?HasSphereMeshCollidedFromTo@CTCPhysicsBase@@IBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00880640, 230 bytes (`ret 10h`; PDB ?HasSphereMeshCollidedFromTo@CTCPhysicsBase@@IBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z).
 // Callees: CTCPhysicsBase::GetPhysicsMeshObject() const @ 0x006B0850 (CPhysicsMeshObject by hidden pointer), CPhysicsMeshObject::
@@ -44,8 +44,10 @@ class CTCPhysicsBase { public:
     C3DVector Velocity;                                 // +0x28
     float     Radius;                                   // +0x34
     CPhysicsMeshObject GetPhysicsMeshObject() const;    // 0x006B0850
+    protected:
     bool HasSphereMeshCollidedFromTo(const CTCPhysicsBase& other, const C3DVector& from, const C3DVector& to,
                                      CPhysicsCollideResponse& response) const;
+    public:
 };
 
 bool CTCPhysicsBase::HasSphereMeshCollidedFromTo(const CTCPhysicsBase& other, const C3DVector& from, const C3DVector& to,

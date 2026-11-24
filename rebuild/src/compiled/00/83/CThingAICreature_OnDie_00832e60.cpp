@@ -1,5 +1,5 @@
 // CThingAICreature::OnDie() -- a creature killed by a thing that answers the killer query posts the hero-postcard message event; a killer with an opinion deed log posts the murder deeds against the victim's faction and tells the victim's wife it was murdered (otherwise she is told it died); then the base OnDie
-// Leaf: OnDie
+// Leaf: ?OnDie@CThingAICreature@@UAEXXZ
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDef<T>
 // @ 0x007923C0, CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CThing::GetWorld @ 0x004C7AA0,
 // CThingCreatureBase::PeekPos @ 0x006A4D00, CMessageEventManager::AddMessage @ 0x00687730, LowerBound @ 0x0040F020 (non-const) and
@@ -132,14 +132,14 @@ class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;               // 0x006A4D00
 };
 class CThingCreatureBase : public CThingPhysical { public:
-    void OnDie();                                       // 0x00663F50
+    virtual void OnDie();                               // 0x00663F50 ?OnDie@CThingCreatureBase@@UAEXXZ (both PDBs; retail slot 11, a new slot of this model: called qualified)
 };
 
 class CThingAICreature : public CThingCreatureBase {
 public:
     unsigned char _pad[0xf4 - 0x4c];
     CIntelligentPointer<CThing> LastAttacker;               // +0xf4
-    void OnDie();
+    virtual void OnDie();                               // rtti-vtables CThingAICreature slot 11; PDB UAE
 };
 
 void CThingAICreature::OnDie()

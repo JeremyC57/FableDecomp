@@ -1,0 +1,9 @@
+entry	address	status	binders respelled	note
+1	0x00BFE900	done	none (no binding change)	fold of 0x00BFDE20; wrong 3-slot table, local CMovableResource Verify/CanRelocateData copies and ForceNew_00bfe900 gone; test links the row
+2	0x00BFDE20	done	none	test rewritten, links the row
+2	0x00BFDDB0	done	none	test rewritten, links the row
+2	0x00BFD480	blocked	none	row on local CMovableResource with a QAE leaf (PDBs UAE): test cannot link it on the shared headers until the row is ported
+2	0x00BE6090	open	-	not started (context)
+2	0x00BFAAE0	open	-	not started (context)
+2	0x00BFB590	open	-	scouted only (context)
+2	0x00B684F0	open	-	not started (context)

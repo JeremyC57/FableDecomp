@@ -1,0 +1,4 @@
+06:10:50 PASS /home/user/FableDecomp/rebuild/tests/00/92/CAIStateGroupApprenticeHero_PracticeSkills_0092a8a0_test.cpp
+06:10:50 FAIL /home/user/FableDecomp/rebuild/tests/00/92/CAIStateGroupSkillPractice_PracticeSkills_0092b3e0_test.cpp
+06:10:50 PASS /home/user/FableDecomp/rebuild/tests/00/97/CAIStateGroupBase_AIActionMinionWander_0097f870_test.cpp
+06:11:05 PASS /home/user/FableDecomp/rebuild/tests/00/97/CAIStateGroupBase_AIActionMinionWander_0097f870_test.cpp

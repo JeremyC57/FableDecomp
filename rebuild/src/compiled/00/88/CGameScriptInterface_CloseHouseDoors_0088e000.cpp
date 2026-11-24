@@ -2,9 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088E000, length 48 bytes.
 // Callees: CScriptThing virtual slot 75 (+0x12c, IsValid) and slot 11 (+0x2c, GetThing), CThingBuilding::LockAllDoors(bool lock,
 // bool) @ 0x0082DB00 (true, false) on the thing when bit 6 of its flag byte at +0x6c is set (it is a building).
-// Oracle name: ?CloseHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z (`this` unused; written on the PDB-header wrapper).
-// Leaf: CloseHouseDoors
+// Oracle name: ?CloseHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z (`this` unused).
+// Leaf: ?CloseHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+// Switch route (NF318, 2026-11-23): defined on the real class of engine/CGameScriptInterface.h (class-model switch FABLE_RETAIL_NSCRIPT; was ?CloseHouseDoors@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address. Bytes unchanged.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
 class CThingBuilding { public:
@@ -15,14 +18,9 @@ class CThingBuilding { public:
 
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
-#define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void CloseHouseDoors(const CScriptThing& thing) const;
-};
-
-void CGameScriptInterface_Methods::CloseHouseDoors(const CScriptThing& thing) const
+void CGameScriptInterface::CloseHouseDoors(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
         CThingBuilding* building = ((CThingBuilding*)thing.GetPThing());

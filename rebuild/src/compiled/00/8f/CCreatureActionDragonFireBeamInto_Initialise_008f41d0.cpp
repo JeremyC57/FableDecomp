@@ -22,29 +22,50 @@
 //   .?AVCModeDragonFireBeam@NCreatureMode@@) and its constructor takes the two things by reference, as Ego_r.pdb 0x008195A0 / FableWin.pdb
 //   0x02865640 spell it: 0x008D86E0 now binds ??0CModeDragonFireBeam@NCreatureMode@@QAE@AAVCThing@@0M@Z (was the global stand-in
 //   ??0CModeDragonFireBeam@@QAE@PAVCThing@@0M@Z; the self row respells its leaf in the same hand-back). Same token, now class-keyed as both PDBs, same layout.
-#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
-class CTCBase;
+// NF259 (2026-11-22, q12732, nf255 port debt): moved off the row-local CThingCreatureBase (empty) / CBaseIntelligentPointer /
+//   CIntelligentPointerCreature / CCombatActionBase / CCreatureAction_DragonFireBeamInto models onto the shared headers: the L92 prelude of the
+//   landed class rows 0x009535B0 / 0x00953CF0 / 0x009539C0 (CCombatActionBase.h MELEE branch with 0x00955620's opt-in set) and the nf255
+//   engine/CCreatureAction_DragonFireBeamInto.h INITIALISE opt-in; engine/CTCCreatureModeManager.h (ADDMODEPOINTER) as before. The
+//   header-less NCreatureMode::CModeDragonFireBeam keeps the HEAD row's local declaration over the shared CModeBase.
 #define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThingCreatureBase : public CThing { public: };
-
-class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                            // +0x04
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    operator CThing*() const { return ((CThing*)GetPItem()); }
-};
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
-    CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
-};
-
-#include "engine/CTCCreatureModeManager.h"
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#define FABLE_RETAIL_JACKDRAGON_HOVER_PASS27
+#define FABLE_RETAIL_CCREATUREACTION_DRAGONFIREBEAMINTO_INITIALISE
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
 #include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCreatureAction_DragonFireBeamInto.h"
+#include "engine/CTCCreatureModeManager.h"
 namespace NCreatureMode {
 class CModeDragonFireBeam : public CTCCreatureModeManager::CModeBase {   // class-keyed (RTTI .?AVCModeDragonFireBeam@NCreatureMode@@)
     unsigned char _pad[0x94 - 0x1c];
@@ -54,23 +75,6 @@ public:
 };
 }
 
-class CCombatActionBase {
-public:
-    virtual void Initialise();                  // 0x00857520
-    unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;          // +0x08
-    unsigned char           _pad10[0xa8 - 0x10];
-    CBaseIntelligentPointer PTarget;            // +0xa8
-    unsigned char           _padb0[0x114 - 0xb0];
-    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
-};
-
-class CCreatureAction_DragonFireBeamInto : public CCombatActionBase {
-public:
-    float Timer;                                // +0x114 (PDB +0x12c)
-    virtual void Initialise();
-};
-
 void CCreatureAction_DragonFireBeamInto::Initialise()
 {
     {
@@ -79,6 +83,6 @@ void CCreatureAction_DragonFireBeamInto::Initialise()
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
-    if (((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
+    if (PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
         modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new NCreatureMode::CModeDragonFireBeam(*PCreature, *PTarget, Timer)));
 }

@@ -1,0 +1,135 @@
+address	cause	evidence	note
+00491ad2	debug_record_structure	N	Ego_d locals: bool new_lines do-while, text_area/screen_width in own scope, signed long i
+00491ad2	callee_body_visibility	N	typed STLport owners and externally owned wide-string == (patch 132) with auto_inline(off) bodies
+00491ad2	expression_shape	P	round2_subparen_top (probe 162, first MASKED_EQUAL): parenthesised top-edge cast
+00491ad2	residue_framed_as_codegen_artefact	V	our STATUS: "VC7.1 peels the first compare ... frame 0xAC vs 0xA0"
+00491ad2	binding_table_error	N	five operand sites missing from the old binding table
+00491ad2	row_local_models	C	local CPlayerGuiDef/CDisplayManager/CWStringParser, #define CSubtitleRenderer CSubtitleRendererLayout
+00491ad2	missing_header_support	N	patches 77, 132
+00559a90	debug_record_structure	P	r_scroll_donor_getter reached 2163 B: switch(event), delta_size local with the right expression (draft: top = Y + Y, extra end/dragged locals), clamp forms
+00559a90	callee_body_visibility	P	r_scroll_m_original (probe 44): visible map::operator[] body keeps the key non-escaping
+00559a90	wrong_callee_or_accessor	N	static CList::GetPreviousSelected() instead of the global GPreviousSelected
+00559a90	residue_framed_as_codegen_artefact	V	our note: "frame-slot sharing only"
+00559a90	missing_header_support	N	patch 129 (per-owner size settings for the map owners)
+00560d00	wrong_signature_or_identity	V	draft ProcessLogin; real private LogOnToRegistrationServer
+00560d00	flags	V	/Gr (same-TU calling convention) missing from draft
+00560d00	semantic_error	V	draft hashed the username twice; retail encrypts the CD key under MD5(password)
+00560d00	wrong_callee_or_accessor	V	Encrypt(key, hashText) vs StdEncryptString(GetCDKey(), MD5(password))
+00560d00	debug_record_structure	P	round2_scorereq_early (probe 93): common result return + early-return GetAsCharArray form
+00560d00	incomplete_draft	V	first draft, one grade on record
+00560d00	tu_mate_bodies	N	strong same-TU definitions of 0x0055E040/0x0055E180/0x0055E2C0/0x00560920
+00560d00	row_local_models	C	local LHString, CUserProfileManager, CCharString
+00560d00	missing_header_support	N	patches 91, 92, 117, 133, 134, 136
+00647ab4	incomplete_draft	V	87-byte head draft (skeleton 3 B; record 11 B from a flag sweep)
+00647ab4	wrong_signature_or_identity	V	draft void Draw(); real Draw(const CEnginePrimitivePrepareInfo&) in NPlayerGui
+00647ab4	expression_shape	N	authored C2DBoxF copy, implicit pointer conversion on the two Effects assignments
+00647ab4	row_local_models	C	local CThing/CPlayerGuiDef/CDrawHealth pads
+00647ab4	missing_header_support	N	patches 1, 90, 123 (new NPlayerGui_CDrawHealth.h)
+00647ab4	stale_record	V	record 11v1910, draft header 87v1910
+006c6040	debug_record_structure	P	pdb_single_village_walk 2809->2409: one inform_buildings_villagers local, one village walk
+006c6040	wrong_callee_or_accessor	P	round2_deedsite_parent (probe 32): *ParentThing instead of GetParentThing()
+006c6040	residue_framed_as_codegen_artefact	V	our note: "VC7.1 cross-jump of two identical tails"
+006c6040	binding_table_error	N	GetHomeBuilding bound to 0x00810FC0 (an event getter)
+006c6040	flags	N	/d2inlT80 plus inline_depth(0) at push_back sites
+006c6040	row_local_models	C	local COpinionDeed, CThingFilter_IsEligibleWitness pad, CTCEnemy, CTCSleep; 'shared' probe left bytes unchanged
+006c6040	missing_header_support	N	patches 83, 109-112
+006c6040	stale_record	V	record 2793, draft 2809
+0078ecd0	callee_body_visibility	P	PROBES ladder: expose effect lookup+CRC (1986), STLport const lookup (2031), GetSubDef body (escape info), typed CRC loop (2034, 1 byte off)
+0078ecd0	debug_record_structure	P	final step: named length/text locals inside the shared effect lookup
+0078ecd0	residue_framed_as_codegen_artefact	V	our note: "frame 0x1c v 0x20 slot layout"
+0078ecd0	row_local_models	C	28 local types incl. a hand-written __forceinline Lookup/CRC loop; shared owner alone fell to 1878 B
+0078ecd0	missing_header_support	N	patches 101, 130
+0078ecd0	stale_record	V	record 2000, draft 2032
+007ebea0	debug_record_structure	P	bed_final_separate_denial_source (probe 50): one flat else-if chain with the occupied-bed and !UseableByHero denials as arms (draft: trailing else); scoped IP temporaries
+007ebea0	binding_table_error	N	GetHomeBuilding bound to an event getter; PICKANY_CORRECTED
+007ebea0	residue_framed_as_codegen_artefact	V	our note: register colouring + FAIL-block cross-jumping
+007ebea0	harness_bug	V	our note: q.py ignored the // Flags: /GS line
+007ebea0	row_local_models	C	25 local types
+007ebea0	missing_header_support	N	patches 80, 81, 104, 106, 113
+008101f0	incomplete_draft	V	first draft; x87 steering block "approximate"
+008101f0	debug_record_structure	P	round2_trailtime_index -> 1914 B: trap_index from the period division before the callbacks; strict expiry
+008101f0	expression_shape	P	round2_trailsched_random_product (probe 104): parenthesised random product
+008101f0	wrong_callee_or_accessor	N	CTCTrapBase::IsClosed before Kill
+008101f0	row_local_models	C	19 local types
+008101f0	missing_header_support	N	patches 50, 52, 85, 114
+008664f0	wrong_callee_or_accessor	V	draft calls a placeholder SetOrientation at slot 32; Codex: slot 32 (+0x80) is ResetRHSet
+008664f0	by_value_or_hidden_return	V	draft GetFacing(C3DVector*) out-param; final returns facing vectors by value into hidden result slots
+008664f0	callee_body_visibility	P	round2_knockfilter_find (probe 35): visible GetComponent/Find remove a 4-byte slot
+008664f0	debug_record_structure	N	Ego_d cos_thet / line_to_target locals; IsNonZero reads Y,X,Z
+008664f0	semantic_error	N	wrong virtual (SetRHSet vs ResetRHSet) per Codex NOTES
+008664f0	residue_framed_as_codegen_artefact	V	our note: "x87 term order ... register/slot choices"
+008664f0	row_local_models	C	29 local types incl. a local C3DVector with __forceinline copy ctor
+008664f0	missing_header_support	N	patches 33, 39, 41, 42, 98, 108, 122
+008664f0	stale_record	V	record 1963, draft 1957
+008e8060	expression_shape	P	round2_briarstr_fxall (probe 48): implicit CCharString arguments, not explicit CCharString("...") temporaries
+008e8060	callee_body_visibility	N	authentic GetSubDef, effect lookup and marker-search bodies (marker search 0x008E8AC0 also matches)
+008e8060	debug_record_structure	N	effects def kept in the Ego_d scope; three-component marker average
+008e8060	residue_framed_as_codegen_artefact	V	our note: "frame 0x1A0 vs 0x190 (local packing), ebx as function-wide zero"
+008e8060	row_local_models	C	28 local types
+008e8060	missing_header_support	N	patch 79
+008e8060	stale_record	V	record 5v1784, draft 1758v1784
+00a87960	incomplete_draft	V	115-byte skeleton (early-out only)
+00a87960	wrong_callee_or_accessor	P	donor_kinematic (probe 19): CKinematic GetVector/SetVector, not member copy
+00a87960	row_local_models	C	local C2DVector/CSteeringAgent/CSBIAgents
+00a87960	missing_header_support	N	patches 55, 73, 75, 76
+00ab7c20	wrong_signature_or_identity	V	draft (..., const CRGBColour*, unsigned long, bool); real virtual const (..., const CRGBColour&, unsigned long, const CTexture*)
+00ab7c20	wrong_callee_or_accessor	V	invented MakeVertex(CVertexPos&,colour,CVertexUV&); real DX-SDK InitFont2DVertex(const D3DXVECTOR4&, colour, tu, tv)
+00ab7c20	by_value_or_hidden_return	N	InitFont2DVertex returns the FONT2DVERTEX aggregate by value (the rep movsd copies)
+00ab7c20	expression_shape	P	round2_fontsch_count_uv0 (probe 37): grouped UV product, re-evaluated corners
+00ab7c20	incomplete_draft	V	one first draft
+00ab7c20	row_local_models	C	17 local types
+00ab7c20	missing_header_support	N	patches 53, 72, 115, 116 (new FONT2DVERTEX.h, D3DXVECTOR4.h)
+00b19c60	callee_body_visibility	N	visible ScaleParticleDimensions body fixes the 4-byte frame difference; visible light ctor fixes temp placement
+00b19c60	debug_record_structure	N	Ego_d names normalised_time/anim_percent with a flat clamp (draft: extra float limit local in an else block)
+00b19c60	expression_shape	P	round2_lightowner_lastparAtt (probe 79): grouped attenuation expression
+00b19c60	wrong_callee_or_accessor	N	byte-colour assignment through Initialise(4 channels); midpoint via the conversion operator
+00b19c60	residue_framed_as_codegen_artefact	V	our note: "retail packs lifeFraction / radiusScale / spotRadius into one slot"
+00b19c60	row_local_models	C	2 local types
+00b19c60	missing_header_support	N	patches 64, 65, 71
+00bbe090	wrong_callee_or_accessor	P	r_trail_donor_constant_blend (probe 19): call SetupBlendOpState(ADD)/SetupAlphaBlendingStatesFromBlendMode(ALPHA), not three hand-reduced setter calls
+00bbe090	residue_framed_as_codegen_artefact	V	our note: "Next idea: none in source; revisit when the lane gap is solved"
+00bbe090	row_local_models	C	10 local types
+00bbe090	missing_header_support	N	patch 48
+00be6880	incomplete_draft	V	89-byte prefix (sizes, allocate, lock)
+00be6880	callee_body_visibility	P	round2_landcallee_before1 (probe 108): visible SetTargetVertexNormal body
+00be6880	by_value_or_hidden_return	N	CEngineLandscapeMap::PeekWorldPosition returns C3DVector by value (FableWin)
+00be6880	expression_shape	N	named C3DPackedNormal in PackVertexNormal restores the slot layout
+00be6880	row_local_models	C	5 local types
+00be6880	missing_header_support	N	patches 27, 44, 45, 58, 59, 63, 67, 125
+00be6880	stale_record	V	record 19v1776, draft 89v1776
+00d43db0	incomplete_draft	V	our STATUS: NOT_REACHED, no hand edit
+00d43db0	debug_record_structure	P	evidence_evidence_scope_break (probe 58): termination tested with an in-body break; movie and pause-guard scopes
+00d43db0	script_generator_idiom	C	TRetVoid _Fail_Val + for(;;NewScriptFrame) in final, absent in draft
+00d43db0	callee_body_visibility	N	position accessor keeps the impl pointer across the null test
+00d43db0	row_local_models	C	16 local types; 37 inline_depth lines in the draft
+00d43db0	missing_header_support	N	patch 70
+00dc08c0	debug_record_structure	P	solo_oak_shared_reset (probe 33): explicit termination return in the loop body; shared BanditsKilled reset
+00dc08c0	script_generator_idiom	C	TRetVoid _Fail_Val + for(;;NewScriptFrame) in final, absent in draft
+00dc08c0	row_local_models	C	11 local types ("old local-model source")
+00dfd600	debug_record_structure	P	round2_traderlast_flowlast (probe 273): leave the trader scope before returning
+00dfd600	script_generator_idiom	C	TRetVoid _Fail_Val in final, absent in draft
+00dfd600	residue_framed_as_codegen_artefact	V	our note: "lane gap: inline-budget site choice"
+00dfd600	flags	N	/d2inlT70
+00dfd600	binding_table_error	N	vector<CScriptThing> copy ctor 0x00DFDE30 had a placeholder class name; use the shared declaration
+00dfd600	stale_record	V	record 2296, draft 2456
+00e03f70	wrong_callee_or_accessor	V	draft BothGone() via IsAlive on CScriptThing; real IsDead() wrapper (= !IsAlive()) on each handle
+00e03f70	wrong_signature_or_identity	N	class is CQ_TraderEscortScript, catalogue had CQ_WaspQueenScript (name only)
+00e03f70	debug_record_structure	P	solo_flat_locals (probe 36): RockTroll at function scope, no extra lexical scope
+00e03f70	callee_body_visibility	N	inline GetAngleXY body; its parenthesised return decides tail jump vs call
+00e03f70	script_generator_idiom	C	TRetVoid _Fail_Val in final, absent in draft
+00e03f70	residue_framed_as_codegen_artefact	V	our note: "per-function inline budget"
+00e03f70	row_local_models	C	9 local types
+00e49020	debug_record_structure	P	tollfin_toll_exact_timer_edges (probe 64): WarningTimer scope exits, outer break
+00e49020	wrong_signature_or_identity	N	callees: IsPlayerThreateningEntity returns int; FadeOutAndKillEntity(float, bool, bool)
+00e49020	callee_body_visibility	N	original 18-byte GetPos body
+00e49020	script_generator_idiom	C	TRetVoid _Fail_Val + for(;;NewScriptFrame) in final, absent in draft
+00e49020	residue_framed_as_codegen_artefact	V	our note: "per-exit inline split of ~CTimer"
+00e49020	stale_record	V	record 2276, draft 2424
+00ec32f0	callee_body_visibility	P	round2_bandit_flat_ONLY (probe 31): _M_insert_overflow declaration-only (opposite direction)
+00ec32f0	debug_record_structure	P	vector at function scope; named experience local; natural case order (draft wrote default: first)
+00ec32f0	residue_framed_as_codegen_artefact	V	our note: "frequency + alias residue"
+00ec32f0	row_local_models	C	local CV_RandomPopulationSimScript pad model
+00ec32f0	missing_header_support	N	patch 124
+00dfd600	row_local_models	C	local model of the row class CQ_TraderConflictGoodScript
+00e49020	row_local_models	C	local CScriptDef model
+00491ad2	semantic_error	V	draft offset Y from last-line extents; source uses the full sub-string (height) extents

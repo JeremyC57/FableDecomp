@@ -1,3 +1,4 @@
+// Leaf: ?Validate@C3DAnimationBlendState@@QAEXXZ
 // C3DAnimationBlendState::Validate() const -- validate the shared data's base animation and every combination blend
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3C0C0, 114 bytes. Callees: virtual slot 5 (+0x14) of the animation
 // states (C3DAnimationState vtable 0x01249F50 slot 5 = 0x00A3BE10).
@@ -48,10 +49,10 @@ struct CSharedData {
 class C3DAnimationBlendState { public:
     virtual void v00();
     CSharedData* Data;                     // +4 CIVCountedPointer<CSharedData>
-    void Validate() const;
+    void Validate();
 };
 
-void C3DAnimationBlendState::Validate() const
+void C3DAnimationBlendState::Validate()
 {
     if (Data) {
         Data->BaseAnimation->Validate();

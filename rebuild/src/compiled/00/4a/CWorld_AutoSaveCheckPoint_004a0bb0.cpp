@@ -71,7 +71,10 @@ class CWorld { public:
     long            MostRecentSaveTypeBeforeManualSave;       // +0x138 ESaveType (PDB +0x148)
     unsigned char   _pad13c[4];                               // +0x13C MostRecentManualSaveName
     bool            AutoSaveCheckPointExists;                 // +0x140 (PDB +0x150)
-    bool AutoSaveInternal(const CWideString& name, bool b);   // 0x004A0850
+    protected:
+    bool AutoSaveInternal(const CWideString& name, bool b);
+    public:
+   // 0x004A0850
     bool AutoSaveCheckPoint();
 };
 bool CWorld::AutoSaveCheckPoint()

@@ -1,3 +1,4 @@
+// Leaf: ?UpdateBodyReorientation@CThingCreatureBase@@IAEXXZ
 // CThingCreatureBase::UpdateBodyReorientation() -- run the body reorienter when it wants an update (and stop it once no action holds it), then level a body-set YZ pitch back to 0 once the creature is alive, idle, upright and capable
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006622D0, length 186 bytes, `ret`.
@@ -32,7 +33,7 @@ class CTCPhysicsBase { public:
 };
 
 class CThingBodyReorienter { public:
-    bool IsUpdateNeeded();                              // 0x00863250
+    bool IsUpdateNeeded() const;                              // 0x00863250
     void UpdateBodyReorienation();                      // 0x00863E10
     void SetFlag_00863260(bool value);                  // 0x00863260 (`[this+8] = value`)
 };
@@ -85,7 +86,9 @@ class CThingCreatureBase : public CThing { public:
         }
         return false;
     }
+    protected:
     void UpdateBodyReorientation();
+    public:
 };
 
 void CThingCreatureBase::UpdateBodyReorientation()

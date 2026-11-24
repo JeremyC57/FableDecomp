@@ -1,3 +1,4 @@
+// Leaf: ?SaveBinary@C3DMeshStats@@QAEXAAVCDataOutputStream@@@Z
 // C3DMeshStats::SaveBinary(CDataOutputStream&) const -- write the name, flags, bounds, table sizes, the raw helper/dummy/name blocks, then each mesh volume and generator
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00A2EAA0, 407 bytes (ret 4).
@@ -17,12 +18,12 @@ class CCharString { public: void* m_pStringData; };
 class CMatrix3x4 { public: float m_row[3][4]; };
 
 class CDataOutputStream { public:
-    void WriteUShort(unsigned short value);               // 0x00993E80
+    void WriteUWORD(unsigned short value);               // 0x00993E80
     void WriteFloat(float value);                         // 0x00993EE0
     void Write3DVector(const C3DVector& value);           // 0x00993FD0
     void WriteMatrix3x4(const CMatrix3x4& m);             // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
-    void WriteBuffer(const void* data, long size);      // 0x00996610 (compressed block)
+    void WriteCompressed(const void* data, long size);      // 0x00996610 (compressed block); NF299: PDB name, was WriteBuffer
 public:
     void WriteEBOOL(bool);   // 0x00993E30
     void WriteSLONG(long);   // 0x00993EB0
@@ -87,10 +88,10 @@ class C3DMeshStats { public:
     char* PackedNames;                                    // +0x74
     unsigned short PackedNamesSize;                       // +0x78
     bool AnimatedFlag;                                    // +0x7A
-    void SaveBinary(CDataOutputStream& out) const;
+    void SaveBinary(CDataOutputStream& out);
 };
 
-void C3DMeshStats::SaveBinary(CDataOutputStream& out) const
+void C3DMeshStats::SaveBinary(CDataOutputStream& out)
 {
     out.WriteNullTerminatedString(Name);
     out.WriteEBOOL(AnimatedFlag);
@@ -98,14 +99,14 @@ void C3DMeshStats::SaveBinary(CDataOutputStream& out) const
     out.WriteFloat(BoundingSphere.Radius);
     out.Write3DVector(BoundingBox.MinCoord);
     out.Write3DVector(BoundingBox.MaxCoord);
-    out.WriteUShort((unsigned short)HelperPoints.m_count);
-    out.WriteUShort((unsigned short)DummyObjects.m_count);
-    out.WriteUShort(PackedNamesSize);
-    out.WriteUShort((unsigned short)MeshVolumes.size());
-    out.WriteUShort((unsigned short)MeshGenerators.size());
-    out.WriteBuffer(HelperPoints.m_pData, HelperPoints.m_count * sizeof(C3DHelperPoint));
-    out.WriteBuffer(DummyObjects.m_pData, DummyObjects.m_count * sizeof(C3DDummyObject));
-    out.WriteBuffer(PackedNames, PackedNamesSize);
+    out.WriteUWORD((unsigned short)HelperPoints.m_count);
+    out.WriteUWORD((unsigned short)DummyObjects.m_count);
+    out.WriteUWORD(PackedNamesSize);
+    out.WriteUWORD((unsigned short)MeshVolumes.size());
+    out.WriteUWORD((unsigned short)MeshGenerators.size());
+    out.WriteCompressed(HelperPoints.m_pData, HelperPoints.m_count * sizeof(C3DHelperPoint));
+    out.WriteCompressed(DummyObjects.m_pData, DummyObjects.m_count * sizeof(C3DDummyObject));
+    out.WriteCompressed(PackedNames, PackedNamesSize);
     for (unsigned long i = 0; i < MeshVolumes.size(); ++i) {
         out.WriteULONG(MeshVolumes[i].first);
         const C3DMeshVolume& volume = MeshVolumes[i].second;

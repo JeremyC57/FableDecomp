@@ -1,3 +1,4 @@
+// Leaf: ?SaveBinary@C3DMeshMaterial@@QBEXAAVCDataOutputStream@@@Z
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: WriteLong bound to both 0x993ea0 and 0x993eb0)
 // C3DMeshMaterial::SaveBinary(CDataOutputStream&) -- serialize all material fields and optional filenames.
 // Retail00ABF6B0,250 bytes. No material header exists; offsets follow the landed00ABF7B0 constructor.
@@ -45,9 +46,9 @@ class C3DMeshMaterial : public CBaseClass { public:
     bool BooleanAlpha;
     bool DegenerateTriangles;
     CMaterialFilenames* Filenames;
-    void SaveBinary(CDataOutputStream& stream);
+    void SaveBinary(CDataOutputStream& stream) const;
 };
-void C3DMeshMaterial::SaveBinary(CDataOutputStream& destination)
+void C3DMeshMaterial::SaveBinary(CDataOutputStream& destination) const
 {
     CDataOutputStreamMethods& stream=(CDataOutputStreamMethods&)destination;
     stream.WriteSLONG(MaterialIndex);

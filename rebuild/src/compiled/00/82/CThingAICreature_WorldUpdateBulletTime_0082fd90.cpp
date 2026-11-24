@@ -36,7 +36,7 @@ protected:
 };
 class CThingCreatureBase : public CThing { public:
     void UpdateAction();                        // 0x006643C0
-    void UpdateAnimation(float distanceToCamera);   // 0x00665860
+    protected: void UpdateAnimation(float distanceToCamera); public:   // 0x00665860
 };
 class CThingAICreature : public CThingCreatureBase { public:  // vtable 0x0127293C
     virtual void WorldUpdateBulletTime();       // slot 20

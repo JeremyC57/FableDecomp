@@ -60,12 +60,12 @@ class CCreatureAction_CastWillForceSpell : public CCombatActionBase { public:   
     unsigned char _pad116[2];
     long LevelToCast;                           // +0x118 (PDB +0x130)
     virtual void v00();
-    CCreatureAction_CastWillForceSpell(CThingCreatureBase* owner, long levelToCast, bool immediateCast, const CCharString& animationName);
+    CCreatureAction_CastWillForceSpell(CThingCreatureBase& owner, long levelToCast, bool immediateCast, const CCharString& animationName);   // Ego_r + FableWin AAV
 };
 
-CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell(CThingCreatureBase* owner, long levelToCast, bool immediateCast,
+CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell(CThingCreatureBase& owner, long levelToCast, bool immediateCast,
                                                                        const CCharString& animationName)
-    : CCombatActionBase(*owner, 150, CSoundPair())
+    : CCombatActionBase(owner, 150, CSoundPair())
     , ImmediateCast(immediateCast)
     , LevelToCast(levelToCast)
 {

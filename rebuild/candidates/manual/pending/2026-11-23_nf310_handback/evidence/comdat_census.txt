@@ -1,0 +1,12 @@
+## D3: COMDAT copies of the PDB names (self variants held/ v includers)
+REF obj/00766050.obj len=110 relocs=1
+DIFF bytes=True relocs=False hobj/007677e0.obj len=110
+DIFF bytes=True relocs=False hobj/00839100.obj len=110
+REF obj/007660c0.obj len=116 relocs=1
+DIFF bytes=True relocs=False hobj/007677e0.obj len=116
+(bytes=True relocs=False: bytes equal; the one relocation differs only in symbol name: selves ?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAugmentationDef@@@@@Z, includers ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z)
+## 0x006A7930's renamed pick-any getter v the other compiled objects
+REF obj/006a7930.obj len=4 relocs=0
+EQUAL hobj/0050a650.obj len=4
+## 0x009FB750 (compiled control) DEF
+DEF ?Unlock@CTexture@@QAEXK@Z

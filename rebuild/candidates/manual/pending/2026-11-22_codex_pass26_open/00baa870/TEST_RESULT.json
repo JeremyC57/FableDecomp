@@ -1,0 +1,21 @@
+{
+  "source_sha256": "be5e19f5e976cc90d26c9915373769c6fcd1a8836d970d1b5e80abfb8bd2c5bb",
+  "test_sha256": "ce8ee80e1ee7d73cc1a5cadde64fe03b0dc2c3222abc56d065da0c461e840540",
+  "tag": "original_magnitude_selected_ordinary",
+  "complete_body_verbatim": true,
+  "cases": 6144,
+  "limitations": "Executes the complete selected body and its visible helpers with shared C3DVector, C3DBoundingSphere, C3DBoundingBox, CMatrix3x4, C2DBoxF and CEngineFadeDistance. Deterministic fixtures stand in for mesh loading, shader and device state, and the reciprocal-square-root seed table.",
+  "runs": {
+    "native": {
+      "compile": 0,
+      "run": 0,
+      "output": "00baa870_TEST PASS",
+      "flags": [
+        "/Od",
+        "/W3",
+        "/GR-"
+      ]
+    }
+  },
+  "primitive_conversion_mappings": 6
+}

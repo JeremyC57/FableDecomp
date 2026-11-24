@@ -1,5 +1,5 @@
 // CSubtitleRenderer::SetText(CFontBank*, const CWideString&, const CWideString&, const CWideString&, const CWideString&, unsigned long, float, bool, bool) -- the two-button overload: forwards to the full SetText with an empty third button text
-// Leaf: SetText
+// Leaf: ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00492F69, 75 bytes. Callees: CWideString::CWideString(const wchar_t*) @
 // 0x0099B6B0 (empty wide literal 0x0122D70C), the full CSubtitleRenderer::SetText (font, text, name, button1, button2,
 // button3, flags, time, bool, bool) @ 0x00492973, CWideString::~CWideString @ 0x0099B510.
@@ -83,15 +83,15 @@ public:
     bool               UpdateTimer;                // +0xE7
     CFadeInFadeOutBase SkipCutsceneTimer;          // +0xE8
     CFadeInFadeOutBase ButtonPulseTimer;           // +0x104
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
                  const CWideString& button2Text, const CWideString& button3Text, unsigned long displayFlags,
                  float displayTime, bool updateWhilePaused, bool changePlayerMode);   // 0x00492973
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
                  const CWideString& button2Text, unsigned long displayFlags, float displayTime,
                  bool updateWhilePaused, bool changePlayerMode);
 };
 
-void CSubtitleRenderer::SetText(CFontBank* font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
+void CSubtitleRenderer::SetText(const CFontBank& font, const CWideString& text, const CWideString& nameText, const CWideString& button1Text,
                                 const CWideString& button2Text, unsigned long displayFlags, float displayTime,
                                 bool updateWhilePaused, bool changePlayerMode)
 {

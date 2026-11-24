@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00bd9ca0   RELOCATION_MATCH PASS   FreeVirtualAligned
+00bfaae0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+00bfaae0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00bfaae0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00bfaae0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfaae0   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00bfaae0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfaae0   RELOCATION_MATCH PASS   ~CLocalDetailPrimitiveRepeatedMesh
+00bfb590   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+00bfb590   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00bfb590   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00bfb590   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfb590   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00bfb590   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfb590   RELOCATION_MATCH PASS   ~CLocalDetailPrimitiveMeshZSpriteBatch
+00bd9b90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bd9b90   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bd9b90   RELOCATION_MATCH PASS   FreeVirtual
+
+WINS: 4
+  00bd9ca0 RELOCATION_MATCH CEngineLandscapeMemoryManager::?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+  00bfaae0 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::??1CLocalDetailPrimitiveRepeatedMesh
+  00bfb590 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::??1CLocalDetailPrimitiveMeshZSpriteBatch
+  00bd9b90 RELOCATION_MATCH CEngineLandscapeMemoryManager::FreeVirtual

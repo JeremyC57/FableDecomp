@@ -1,0 +1,10 @@
+318a319,323
+> #ifdef FABLE_RETAIL_CWORLDMAP_ALLOCATEMAPUID_PROTECTED
+>     // Add-only nested opt-in (NF293, 2026-11-23; row 0x00507C30): Ego_r.pdb + FableWin.pdb ?AllocateMapUID@CWorldMap@@IAEKJ@Z (protected,
+>     // 0x004FCE20). Declaration only.
+> protected:
+> #endif
+319a325,327
+> #ifdef FABLE_RETAIL_CWORLDMAP_ALLOCATEMAPUID_PROTECTED
+> public:
+> #endif

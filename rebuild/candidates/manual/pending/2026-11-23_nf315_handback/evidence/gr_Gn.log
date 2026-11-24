@@ -1,0 +1,8 @@
+N 005be028 NInventory::CTCInventoryBase::OnItemAdded RELOCATION_MATCH flags= [] leaf=
+N 005ee418 CTCInventoryAbilities::FrameUpdate RELOCATION_MATCH flags= [] leaf=FrameUpdate
+N 006d77c0 CTCHeroExperience::AddExperience RELOCATION_MATCH flags= [] leaf=?AddExperience@CTCHeroExperience@@QAEXJ@Z
+N 0072e940 CTCActionUseBuyHouse::OnActionUseMain RELOCATION_MATCH flags= [] leaf=?OnActionUseMain@CTCActionUseBuyHouse@@QAEXPAVCTCBuyableHouse@@J@Z
+N 0077d4b0 CTCHeroCentre::OpenTrainingScreen RELOCATION_MATCH flags= ['/GS'] leaf=OpenTrainingScreen
+N 00784600 CTCCreatureGroupBoastingCrowd::OnHeroApproachBoastingArea RELOCATION_MATCH flags= [] leaf=?OnHeroApproachBoastingArea@CTCCreatureGroupBoastingCrowd@@QAEXXZ
+N 007e00d0 CTCTeleporter::FrameUpdate RELOCATION_MATCH flags= [] leaf=?FrameUpdate@CTCTeleporter
+GR_DONE

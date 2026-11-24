@@ -1,0 +1,18 @@
+--- orig/hdr/engine/CAIStateGroup_BalverineJumpAtFleeingEnemy.h	2026-11-23 23:09:04.486927335 +0000
++++ hdr/engine/CAIStateGroup_BalverineJumpAtFleeingEnemy.h	2026-11-23 23:09:04.484723595 +0000
+@@ -23,6 +23,15 @@
+     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);   // slot 13 0x0094F170
+     CIntelligentPointer<CThingCreatureBase> PTarget;         // +0x14
+     long          WaitUntilWorldFrameForNextAttempt;         // +0x1c
++#ifdef FABLE_RETAIL_CAISTATEGROUP_BALVERINEJUMPATFLEEINGENEMY_RTTI_DECLS
++    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base CAIStateGroupBase chain declares at the same slot (no new slot).
++    // 0x00900572 vtable 0x0128C0F8 slot 8: ?GetStateGroupType@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
++protected:
++    virtual EAIStateGroupType GetStateGroupType() const;              // 0x00900572
++protected:
++#endif
+ };
+ #else
+ #pragma pack(push, 1)

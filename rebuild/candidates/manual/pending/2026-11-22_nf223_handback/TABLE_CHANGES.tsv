@@ -1,0 +1,8 @@
+action	line	symbol	target	witness	note
+delete	14640	?GetFont@CFontBankSource@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	009e2c80	00405020	q12554: its only binder 0x00405020 now binds ?GetFont@CFontManager@@... (line 15211 covers it)
+delete	14688	?GetFont@CFontBankManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	009e2c80	00438aa0	q12554: its only binder 0x00438AA0 now binds GetFont@CFontManager
+delete	32680	?CreateAndInitialize@CGraphicDataBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z	009f83d0	00416c8a	q12555: its only binder 0x00416C8A now binds OpenGraphicBank (line 39450)
+delete	32696	?CreateAndInitialize@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@PAUCGraphicBankParams@@_N2@Z	009f83d0	0041e3f6	q12555: its binders 0x0041E3F6 / 0x005BFF07 now bind OpenGraphicBank
+delete	32691	??0CGraphicBankParams@@QAE@XZ	00415b80	0041e3f6	q12555: its binders 0x0041E3F6 / 0x005BFF07 now bind ??0CGraphicDataBankInit@@QAE@XZ (line 32678)
+delete	2849	?InsertGrow@CRetailVector_CElement12_006f0810@@QAEXPAUCElement12_006f0810@@ABU2@ABUSScalarTag@@K_N@Z	00765b70	00765c80	q12548: its only binder 0x00765C80 now binds the STLport _M_insert_overflow
+add	-	?_M_insert_overflow@?$vector@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@V?$allocator@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@2@@std@@IAEXPAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z	00765b70	00763060	q12548: replaces line 2849 (the address keeps one spelling: self leaf of 0x00765B70 + 0x00763060 / 0x007634E0 / 0x00765C80)

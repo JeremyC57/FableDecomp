@@ -41,7 +41,7 @@ struct __declspec(novtable) CCreatureAction_ActivateQuest : CCreatureActionBase 
     CCharString         ScriptName;                     // +0xa8
     bool                LoadResources;                  // +0xac
     CIntelligentPointer<CThing> PObjectToUse;                   // +0xad
-    CCreatureAction_ActivateQuest(CThingCreatureBase* owner, CThing* objectToUse, const CCharString& scriptName, bool loadResources);   // 0x00843F50
+    CCreatureAction_ActivateQuest(CThingCreatureBase& owner, CThing* objectToUse, const CCharString& scriptName, bool loadResources);   // 0x00843F50 (NF315: ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z, Ego_r + FableWin; engine/CCreatureAction_ActivateQuest.h)
 };
 class CThingCreatureBase { public:
     unsigned char _pad00[0x20];
@@ -83,7 +83,7 @@ void CTCCarriedActionUseSpade::OnActionUse(CThing& thing)
     CTCCarriedActionUseBase::OnActionUse(thing);
     if (IsThingAbleToDig(*user)) {
         CCharString name("Expression_Dig", -1);
-        user->SetCurrentAction(CCreatureAction_ActivateQuest(user, 0, name, false));
+        user->SetCurrentAction(CCreatureAction_ActivateQuest(*user, 0, name, false));
     }
     if (ParentThing->HasTC(0x1a))
         ((CTCShowableItem*)ParentThing->GetTC(0x1a))->OnShowEnded();

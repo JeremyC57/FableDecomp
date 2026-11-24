@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?cat_probe@@YIHPAVCAnimationEntry@@@Z	005dc210	006928b0	q12730: its only witness 0x006928B0 now binds ?GetFlags@CAnimationEntry@@QBEJXZ (line kept, witness 0x00663140)

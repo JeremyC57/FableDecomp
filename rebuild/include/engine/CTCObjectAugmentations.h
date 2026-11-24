@@ -140,6 +140,9 @@ long GetOnHitExplodingEffect()const;void StopTrailEffect();
 #endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_OBJECT_AUGMENTATIONS; }
+#ifdef FABLE_RETAIL_WEAPON_ARROW_TRAIL_PASS26
+    bool HasAugmentationOfType(EObjectAugmentationType) const;
+#endif
 #ifdef FABLE_RETAIL_CTCOBJECTAUGMENTATIONS_COPYFROMTHING
     // Overlay opt-in (row 0x007BF790): Ego_r/FableWin ?CopyAugmentationDataFromThing@CTCObjectAugmentations@@QAEXABVCThing@@@Z, out of line 0x00768210.
     void CopyAugmentationDataFromThing(const CThing& thing);        // 0x00768210

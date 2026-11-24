@@ -129,7 +129,7 @@ private:
     void UpdateObjectSpaceLighting(unsigned long flags);   // 0x00989CB0
     void UpdateWorldSpaceLighting();                    // 0x0098A540
     void UpdateLocalisedSphereMapping();                // 0x00988E80
-    void ResetWorldTransform();                         // 0x00988290
+    public: void ResetWorldTransform(); private:                         // 0x00988290
     void UpdateCombinedProjectionTransform();           // 0x00988A50
     void UpdateCameraPos();                             // 0x00989700
 };

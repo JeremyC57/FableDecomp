@@ -156,7 +156,7 @@ public:
     }
     bool IsSpeechAllowed(const CThingCreatureBase& creature) const;      // 0x008AF5F0
     bool CanSaySpeech(CThingCreatureBase& creature, unsigned long textGroup) const;
-    void AttemptToSpeak();                                               // 0x008AF500
+    private: void AttemptToSpeak(); public:                                               // 0x008AF500
     void Update();
     bool SaySpeech(CThingCreatureBase& creature, unsigned long textGroup);
 };

@@ -24,6 +24,14 @@ private:
     void CreateBabies();                                                                      // 0x008C4FD0
 public:
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCORPIONSUMMON_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x008C52B0: ?FinishAction@CCreatureAction_ScorpionSummon@@UAEXXZ (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual void FinishAction();
+#endif
 };
 #else
 #pragma pack(push, 1)
@@ -44,8 +52,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionSummon) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionSummon, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(47, sizeof(CCreatureAction_ScorpionSummon) == 0x114);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CCreatureAction_ScorpionSummon, __vftable) == 0x0);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONSUMMON_CLASS
 

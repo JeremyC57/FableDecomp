@@ -1,0 +1,8 @@
+## HEAD set: H_0098abf0.obj H_0098d710.obj
+duplicates 0
+
+UNRESOLVED 1 ??1CVertexShaderConstantLayout@@QAE@XZ
+## new set: N_0098abf0.obj H_0098d710.obj
+duplicates 0
+
+LK_DONE

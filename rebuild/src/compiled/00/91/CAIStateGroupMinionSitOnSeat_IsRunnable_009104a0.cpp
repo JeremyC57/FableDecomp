@@ -24,7 +24,7 @@ struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
 
 struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroup_UsesSeat {
     unsigned char POwner[8];                    // +0x34 CIntelligentPointer<CThing>
-    virtual bool IsRunnable();                  // 0x0090F9C0
+    protected: virtual bool IsRunnable(); public:                  // 0x0090F9C0
 };
 
 struct CAIStateGroup_MinionSitOnSeat : CAIStateGroup_MinionSitOnSeatBase {

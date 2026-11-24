@@ -1,0 +1,8 @@
+## HEAD set: H_00449e60.obj H_0049bb90.obj
+duplicates 0
+
+UNRESOLVED 1 ?Get@CGameJoystickManager@@SIPAV1@XZ
+## new set: N_00449e60.obj H_0049bb90.obj
+duplicates 0
+
+LK_DONE

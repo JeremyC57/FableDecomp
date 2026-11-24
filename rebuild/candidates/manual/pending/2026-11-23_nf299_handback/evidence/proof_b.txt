@@ -1,0 +1,4 @@
+##### 007c6da0 renames: ?StopSample@CTCSoundPlayer@@QAEXK@Z=?StopAttachedSound@CTCSoundPlayer@@QAEXK@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0

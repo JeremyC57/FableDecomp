@@ -1,0 +1,16 @@
+egor=1 fablewin=1 ?Alloc@CHSB_MagicBarrier@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDat
+egor=1 fablewin=1 ?Alloc@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBas
+egor=1 fablewin=1 ?Alloc@CMC_Minion@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVC
+egor=1 fablewin=1 ?Alloc@CMC_MinionGuard@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@
+egor=1 fablewin=1 ?Alloc@CMC_SpawnPoint@CQ_MinionCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@
+egor=1 fablewin=1 ?Alloc@CMK_OFI_GWLL_WHIS2@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptD
+egor=1 fablewin=1 ?Alloc@CM_BodyGuardRespawn@CV_BodyGuardScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBa
+egor=1 fablewin=1 ?Alloc@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptD
+egor=1 fablewin=1 ?Alloc@CM_WhisperFarmRaidIntro@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCSc
+egor=1 fablewin=1 ?Alloc@CMurderTwistBrother@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptData
+egor=1 fablewin=1 ?Alloc@CMurderTwistBrotherFriend@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScri
+egor=1 fablewin=1 ?Alloc@CMurderTwistBrotherOlder@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScrip
+egor=1 fablewin=1 ?Alloc@CMurderTwistBrotherOlderFriend@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAV
+egor=1 fablewin=1 ?Alloc@CMurderTwistBrotherYounger@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScr
+egor=1 fablewin=1 ?Alloc@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDa
+egor=1 fablewin=1 ?Alloc@CMurderTwistLeader@CV_MurderTwistScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataB

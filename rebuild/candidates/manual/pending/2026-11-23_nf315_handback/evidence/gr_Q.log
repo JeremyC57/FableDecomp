@@ -1,0 +1,5 @@
+H 00843f50 CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest RELOCATION_MATCH flags= [] leaf=
+H 007f03d0 CTCCarriedActionUseSpade::OnActionUse RELOCATION_MATCH flags= [] leaf=OnActionUse
+H 007ef600 CTCActionUseActivateQuest::OnActionUse RELOCATION_MATCH flags= [] leaf=?OnActionUse@CTCActionUseActivateQuest@@UAEXAAVCThing@@@Z
+H 007f01f0 CTCCarriedActionUseFishingRod::OnActionUse RELOCATION_MATCH flags= [] leaf=?OnActionUse@CTCCarriedActionUseFishingRod@@UAEXAAVCThing@@@Z
+GR_DONE

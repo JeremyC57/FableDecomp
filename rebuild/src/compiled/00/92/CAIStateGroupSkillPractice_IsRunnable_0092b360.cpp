@@ -1,3 +1,4 @@
+// Leaf: ?IsRunnable@CAIStateGroup_SkillPractice@@MAE_NXZ
 // CAIStateGroup_SkillPractice::IsRunnable() -- once a minute, runnable when a practice dummy is available
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -27,7 +28,9 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_SkillPractice : CAIStateGroupBase {
     long FrameToCheckForDummy;                  // +0x14
+    protected:
     virtual bool IsRunnable();
+    public:
     bool GetDummy();                            // 0x0092A0C0
 };
 

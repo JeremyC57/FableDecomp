@@ -1,0 +1,8 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0078ECD0	??0CTCDivineWrath@@QAE@AAVCThing@@@Z	Ego_r 0x00798390 and FableWin 0x0267BB50 agree on CThing&. Exact retail-aligned constructor and caller 0x004D4A99.	??0CTCDivineWrath@@QAE@PAVCThing@@@Z
+0x0078EBF0	?PlaySoundW@CTCDivineWrath@@AAEKABVCCharString@@_N@Z	Ego_r and FableWin private member. FableWin 0x0267BB50 calls it twice, as does retail at 0x0078F464 and 0x0078F496.	?PlaySound@CTCDivineWrath@@AAEKABUCCharString@@_N@Z
+0x00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	FableWin donor call and bound native helper. The emitted helper independently matches all 182 retail bytes.	Row-local CSpecialAbilitiesDivineWrathDef::GetSubDef
+0x00669D30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	FableWin donor calls in all three lookups and Ego_r exact name. Two native calls and one inlined instance.	CEffectsDef::CalcAndLookup
+0x013BAC30	?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B	Ego_r and FableWin dynamic initializer records. Bound native global, initialized to WEAPON_FOCUS_01 at 0x0121E607.	g_LeftHandDummy
+0x013BAC34	?SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B	Ego_r and FableWin dynamic initializer records. Bound native global, initialized to WEAPON_FOCUS_02 at 0x0121E627.	g_RightHandDummy
+0x01375550	?ConstantFPS@CMainGameComponent@@1JA	Protected static in original PDBs. Read through the donor's GetConstantFPS, with aligned retail absolute operands.	g_FramesPerSecond

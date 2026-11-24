@@ -1,0 +1,16 @@
+## HEAD set: H_00994dc0.obj H_009a77d0.obj H_00829d90.obj H_009cb710.obj H_00a5f9d0.obj H_00a63ad0.obj H_00581765.obj H_009be530.obj H_004022b0.obj H_00b4f510.obj H_00b869a0.obj H_00b87680.obj H_00b89140.obj H_00b89a20.obj H_009bf600.obj H_009bfb30.obj H_00af88a0.obj H_00af89c0.obj 009e9a70.obj 00401630.obj 009bf160.obj 00af8680.obj
+duplicates 0
+UNRESOLVED 4 ??0CDateAndTime@@QAE@JJJJJJJ@Z
+UNRESOLVED 1 ??0CDiskFileWin32@@QAE@ABVCWideString@@W4FileAccessType@@K@Z
+UNRESOLVED 1 ??1CDiskFileWin32@@QAE@XZ
+UNRESOLVED 1 ?Close@CDiskFileWin32@@UAEXXZ
+UNRESOLVED 1 ?CreateMoreBlocks@?$CDynamicObjectHeap@$0BI@$0DFF@@@AAEXXZ
+UNRESOLVED 1 ?FilesAreIdentical@@YI_NAAVCDiskFileWin32@@0@Z
+UNRESOLVED 5 ?SetRenderTarget@CDisplayManager@@QAEXPAVCRenderTarget@@@Z
+## new set: 00994dc0.obj 009a77d0.obj 00829d90.obj 009cb710.obj 00a5f9d0.obj 00a63ad0.obj 00581765.obj 009be530.obj 004022b0.obj 00b4f510.obj 00b869a0.obj 00b87680.obj 00b89140.obj 00b89a20.obj 009bf600.obj 009bfb30.obj 00af88a0.obj 00af89c0.obj 009e9a70.obj 00401630.obj 009bf160.obj 00af8680.obj
+duplicates 0
+UNRESOLVED 1 ??0CDiskFileWin32@@QAE@ABVCWideString@@W4FileAccessType@@K@Z
+UNRESOLVED 1 ?Close@CDiskFileWin32@@UAEXXZ
+UNRESOLVED 1 ?FilesAreIdentical@@YI_NAAVCDiskFileWin32@@0@Z
+UNRESOLVED 5 ?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z
+LK_DONE

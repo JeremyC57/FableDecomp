@@ -1,0 +1,74 @@
+addr       parity           behav  name
+00445650   MATCH            PASS   IsInputTypeWithMouseButton
+00445680   MATCH            PASS   IsInputTypeWithButton
+00445690   MATCH            PASS   IsInputTypeWithMouseButton
+004456c0   MATCH            PASS   IsInputTypeWithButton
+00445700   MATCH            PASS   IsInputTypeWithButton
+00445710   MATCH            PASS   IsInputTypeWithMouseButton
+00445740   MATCH            PASS   IsInputTypeWithButton
+00445750   MATCH            PASS   IsInputTypeWithMouseButton
+00445780   MATCH            PASS   IsInputTypeWithButton
+00445790   MATCH            PASS   IsInputTypeWithMouseButton
+004457c0   MATCH            PASS   IsInputTypeWithButton
+004457d0   MATCH            PASS   IsInputTypeWithMouseButton
+00447a00   MATCH            PASS   IsInputTypeWithButton
+00447a10   MATCH            PASS   IsInputTypeWithMouseButton
+0066ee20   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066ee20   RELOCATION_MATCH PASS   IsEventOfThisType
+0066f250   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066f250   RELOCATION_MATCH PASS   IsEventOfThisType
+0066f320   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066f320   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+0066f320   RELOCATION_MATCH PASS   IsEventOfThisTypeInQueue
+0066f3b0   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066f3b0   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+0066f3b0   RELOCATION_MATCH PASS   IsEventOfThisTypeInQueue
+0066f440   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066f440   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+0066f440   RELOCATION_MATCH PASS   IsEventOfThisTypeInQueue
+0066f4d0   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066f4d0   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+0066f4d0   RELOCATION_MATCH PASS   IsEventOfThisTypeInQueue
+0066f540   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066f540   RELOCATION_MATCH PASS   IsEventOfThisType
+0066f580   MATCH            PASS   IsEventOfThisTypeInQueue
+0066f5c0   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066f5c0   WARN RELOC_NAME: ?GetValue@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0066f5c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0066f5c0   RELOCATION_MATCH PASS   IsEventOfThisType
+0066f600   MATCH            PASS   IsEventOfThisTypeInQueue
+0066f840   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0066f840   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066f840   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0066f840   RELOCATION_MATCH PASS   GetControlDirection
+0066f8b0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0066f8b0   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0066f8b0   RELOCATION_MATCH PASS   GetControlDirection
+
+WINS: 26
+  00445650 MATCH CInputTypeXboxPadButtonEvent::?IsInputTypeWithMouseButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EMouseButtonControl@@@Z
+  00445680 MATCH CInputTypeXboxPadLeftStickEvent::?IsInputTypeWithButton@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EXboxControllerButton@@@Z
+  00445690 MATCH CInputTypeXboxPadLeftStickEvent::?IsInputTypeWithMouseButton@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EMouseButtonControl@@@Z
+  004456c0 MATCH CInputTypeXboxPadRightStickEvent::?IsInputTypeWithButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EXboxControllerButton@@@Z
+  00445700 MATCH CInputTypeMouseMovementEvent::?IsInputTypeWithButton@CInputTypeMouseMovementEvent@@UBE_NW4EXboxControllerButton@@@Z
+  00445710 MATCH CInputTypeMouseMovementEvent::?IsInputTypeWithMouseButton@CInputTypeMouseMovementEvent@@UBE_NW4EMouseButtonControl@@@Z
+  00445740 MATCH CInputTypeMouseWheelMovementEvent::?IsInputTypeWithButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EXboxControllerButton@@@Z
+  00445750 MATCH CInputTypeMouseWheelMovementEvent::?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EMouseButtonControl@@@Z
+  00445780 MATCH CInputTypeMouseWheelMovementUpEvent::?IsInputTypeWithButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EXboxControllerButton@@@Z
+  00445790 MATCH CInputTypeMouseWheelMovementUpEvent::?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EMouseButtonControl@@@Z
+  004457c0 MATCH CInputTypeMouseWheelMovementDownEvent::?IsInputTypeWithButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EXboxControllerButton@@@Z
+  004457d0 MATCH CInputTypeMouseWheelMovementDownEvent::?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EMouseButtonControl@@@Z
+  00447a00 MATCH CInputTypeKeyboardKeyEvent::?IsInputTypeWithButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EXboxControllerButton@@@Z
+  00447a10 MATCH CInputTypeKeyboardKeyEvent::?IsInputTypeWithMouseButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EMouseButtonControl@@@Z
+  0066ee20 RELOCATION_MATCH CInputTypeKeyboardKeyEvent::?IsEventOfThisType@CInputTypeKeyboardKeyEvent@@UBE_NABVCInputEvent@@@Z
+  0066f250 RELOCATION_MATCH CInputTypeXboxPadButtonEvent::?IsEventOfThisType@CInputTypeXboxPadButtonEvent@@UBE_NABVCInputEvent@@@Z
+  0066f320 RELOCATION_MATCH CInputTypeXboxPadLeftStickEvent::?IsEventOfThisTypeInQueue@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f3b0 RELOCATION_MATCH CInputTypeXboxPadRightStickEvent::?IsEventOfThisTypeInQueue@CInputTypeXboxPadRightStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f440 RELOCATION_MATCH CInputTypeMouseMovementEvent::?IsEventOfThisTypeInQueue@CInputTypeMouseMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f4d0 RELOCATION_MATCH CInputTypeMouseWheelMovementEvent::?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f540 RELOCATION_MATCH CInputTypeMouseWheelMovementUpEvent::?IsEventOfThisType@CInputTypeMouseWheelMovementUpEvent@@UBE_NABVCInputEvent@@@Z
+  0066f580 MATCH CInputTypeMouseWheelMovementUpEvent::?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f5c0 RELOCATION_MATCH CInputTypeMouseWheelMovementDownEvent::?IsEventOfThisType@CInputTypeMouseWheelMovementDownEvent@@UBE_NABVCInputEvent@@@Z
+  0066f600 MATCH CInputTypeMouseWheelMovementDownEvent::?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f840 RELOCATION_MATCH CInputTypeXboxPadRightStickEvent::?GetControlDirection@CInputTypeXboxPadRightStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+  0066f8b0 RELOCATION_MATCH CInputTypeMouseMovementEvent::?GetControlDirection@CInputTypeMouseMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z

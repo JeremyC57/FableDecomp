@@ -27,7 +27,11 @@ basic_string<C,T,A>& basic_string<C,T,A>::_M_assign_dispatch(I first,I last,cons
     C* cur=this->_M_start;
     while(first!=last && cur!=this->_M_finish) { T::assign(*cur,*first);++first;++cur; }
     if(first==last) {
+#ifdef FABLE_RETAIL_STLP_STRING_RANGE_ERASE_PASS28
+        erase(cur, this->_M_finish);
+#else
         if(cur!=this->_M_finish) {T::assign(*cur,_M_null());this->_M_finish=cur;}
+#endif
     } else append(first,last);
     return *this;
 }

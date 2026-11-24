@@ -1,0 +1,2 @@
+DEF ?BuildTreeArray@Tree@@QAEXPAUNode@@@Z
+UND _free

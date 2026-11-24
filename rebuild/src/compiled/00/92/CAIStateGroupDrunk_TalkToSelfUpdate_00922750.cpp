@@ -12,7 +12,7 @@
 // the re-arm store falls into -- the earlier `do { if (result != 2) { ...; return; } } while (...); Terminate();` form
 // tail-merged the result != 0 exit into the Terminate epilogue and scheduled the store between the pops.
 // Layout: Ego_r.pdb CAIStateGroup_Drunk FrameToNextTalkToSelf +0x14.
-// Leaf: TalkToSelfUpdate@CAIStateGroup_Drunk
+// Leaf: ?TalkToSelfUpdate@CAIStateGroup_Drunk@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -109,7 +109,9 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 struct CAIStateGroup_Drunk : CAIStateGroupBase {
     long FrameToNextTalkToSelf;                     // +0x14
     long AIAction_DoNothing();                      // 0x0097E200 (EAIActionReturn)
+    private:
     void TalkToSelfUpdate();
+    public:
 };
 
 void CAIStateGroup_Drunk::TalkToSelfUpdate()

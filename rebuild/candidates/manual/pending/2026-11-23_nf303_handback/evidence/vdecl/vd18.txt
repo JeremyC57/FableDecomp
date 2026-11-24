@@ -1,0 +1,8 @@
+006666a0 SO INC CThingCreatureBase_WorldUpdate_006666a0.cpp | NODECL
+00704150 SO - CThingObject_WorldUpdate_00704150.cpp | L40:CThingGameObject:public:plain:bool WorldUpdate(); || L84:CThingObject:public:plain:bool WorldUpdate();
+0082d810 - CThingBuilding_WorldUpdate_0082d810.cpp | L26:CThingGameObject:public:plain:bool WorldUpdate(); || L30:CThingBuilding:public:plain:bool WorldUpdate();
+00836260 - CThingDeadCreature_WorldUpdate_00836260.cpp | L174:CThingGameObject:public:plain:bool WorldUpdate(); || L190:CThingDeadCreature:public:plain:bool WorldUpdate();
+0083b9e0 - CThingHolySite_WorldUpdate_0083b9e0.cpp | L12:CThingHolySite:public:plain:unsigned char WorldUpdate();
+0083cd70 - CThingSwitch_WorldUpdate_0083cd70.cpp | L77:CThingSwitch:public:plain:unsigned char WorldUpdate();
+0083d060 - CThingMarker_WorldUpdate_0083d060.cpp | L12:CThingMarker:public:plain:unsigned char WorldUpdate();
+0083d700 - CThingPhysicalSwitch_WorldUpdate_0083d700.cpp | L12:CThingPhysicalSwitch:public:plain:unsigned char WorldUpdate();

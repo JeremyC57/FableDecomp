@@ -8,6 +8,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_EXPLOSIVE_TRAIL_UPDATE_PASS28
+#include "engine/CSubDefClassBase.h"
+// Retail RTTI at 01232b54 and the original type records identify the direct base.
+// Both the native load and the field record place TrapDefIndex at +0x28.
+class CExplosiveTrailDef : public CSubDefClassBase {
+public:
+    long          TrapDefIndex;                              // +0x28
+    float         SecondsBetweenTraps;                       // +0x2c
+    float         DistanceBetweenTraps;                      // +0x30
+    float         SecondsForTrapPersistance;                 // +0x34
+    float         SecondsTrailLifetime;                      // +0x38
+    float         DistanceForLateralDeviation;               // +0x3c
+    float         DegreesMaxTurnTowardsTargetPerTrap;        // +0x40
+    float         FractionOfLifetimeToTurnTowardsTarget;     // +0x44
+    float         SecondsIcicleAttackTargetPositionPredictionTime; // +0x48
+#ifdef FABLE_RETAIL_CEXPLOSIVETRAILDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CExplosiveTrailDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
+};
+#else
 #pragma pack(push, 1)
 class CExplosiveTrailDef {
 public:
@@ -37,9 +59,12 @@ public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
 };
 #pragma pack(pop)
+#endif
 
 FABLE_STATIC_ASSERT_AT(36, sizeof(CExplosiveTrailDef) == 0x4c);
+#ifndef FABLE_RETAIL_EXPLOSIVE_TRAIL_UPDATE_PASS28
 FABLE_STATIC_ASSERT_AT(37, offsetof(CExplosiveTrailDef, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT_AT(38, offsetof(CExplosiveTrailDef, TrapDefIndex) == 0x28);
 FABLE_STATIC_ASSERT_AT(39, offsetof(CExplosiveTrailDef, SecondsBetweenTraps) == 0x2c);
 FABLE_STATIC_ASSERT_AT(40, offsetof(CExplosiveTrailDef, DistanceBetweenTraps) == 0x30);

@@ -1,3 +1,4 @@
+// Leaf: ?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveStaticMesh@@UAE_NAAVC3DBoundingSphere@@@Z
 // CEngineInternalPrimitiveStaticMesh::GetBoundingSphereWorldSpace(C3DBoundingSphere&) -- the mesh's local bounding sphere (record at +0x50, sphere at +0x28) moved into world space: centre through the object transform at +0x70, radius times the scale at +0x58; always true
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retry 10b: the radius is widened into a double local inside the inline GetRadius (`double radius = ...; *r = (float)(radius * m_scale);`),
@@ -15,14 +16,14 @@ struct C3DMeshRecord {
     C3DBoundingSphere m_sphere;   // +0x28
 };
 class CEngineInternalPrimitiveStaticMesh { public:
-    unsigned char _pad[0x50];
+    unsigned char _pad[0x4c];
     C3DMeshRecord* m_pMesh;       // +0x50
     unsigned char _pad54[4];
     float m_scale;                // +0x58
     unsigned char _pad5c[0x14];
     CMatrix3x4 m_transform;       // +0x70
     void GetRadius(float* r) { double radius = m_pMesh->m_sphere.Radius; *r = (float)(radius * m_scale); }
-    bool GetBoundingSphereWorldSpace(C3DBoundingSphere& out);
+    virtual bool GetBoundingSphereWorldSpace(C3DBoundingSphere& out);
 };
 bool CEngineInternalPrimitiveStaticMesh::GetBoundingSphereWorldSpace(C3DBoundingSphere& out)
 {

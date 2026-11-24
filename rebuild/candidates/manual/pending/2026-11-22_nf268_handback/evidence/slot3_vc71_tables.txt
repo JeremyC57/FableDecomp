@@ -1,0 +1,6 @@
+0069f0f0 VC71 ??_7?$CIntelligentPointer@VCThing@@@@6B@ 3 - slots 1
+0069f0f0 VC71 ??_7CCreatureAction_UnsheatheItemFromInventory@@6B@ 3 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ slots 70
+006a0d50 VC71 ??_7?$CIntelligentPointer@VCThing@@@@6B@ 3 - slots 1
+006a0d50 VC71 ??_7CCreatureAction_UseObject@@6B@ 3 ?PerformAction@CCreatureAction_UseObject@@UAEXXZ slots 70
+006df800 VC71 ??_7?$CIntelligentPointer@VCThing@@@@6B@ 3 - slots 1
+006df800 VC71 ??_7CCreatureAction_UnsheatheToShowToSheatheTrophy@@6B@ 3 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ slots 70

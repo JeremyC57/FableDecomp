@@ -1,5 +1,5 @@
 // CTCHeroExperience::GetNextFlourishLevel() const -- with flourishes enabled in the hero-combat def, the next multiple of the flourish step above the current experience-multiplier level (level = (long)(param / def divisor + 1.0), at least 1); otherwise the next fallback multiplier
-// Leaf: GetNextFlourishLevel
+// Leaf: ?GetNextFlourishLevel@CTCHeroExperience@@ABEJXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D74B0, length 146 bytes (+14 int3 padding).
 // Ego_r.pdb: ?GetNextFlourishLevel@CTCHeroExperience@@ABEJXZ
 // Callees: __ftol2 @ 0x00BFEA70 (the `(long)` of the double), CTCHeroExperience::GetNextExperienceFallbackMultiplier()
@@ -46,8 +46,13 @@ public:
     CDefPointer<CHeroExperienceDef> PDef;       // +0x54
     CDefPointer<CHeroCombatDef>     PHeroCombatDef;   // +0x58
     CDefPointer<CHeroCombatDef> GetHeroCombatDef() const { return PHeroCombatDef; }
-    long GetNextExperienceFallbackMultiplier() const;     // 0x006D7430
+    private:
+    long GetNextExperienceFallbackMultiplier() const;
+    public:
+     // 0x006D7430
+    private:
     long GetNextFlourishLevel() const;
+    public:
 };
 
 long CTCHeroExperience::GetNextFlourishLevel() const

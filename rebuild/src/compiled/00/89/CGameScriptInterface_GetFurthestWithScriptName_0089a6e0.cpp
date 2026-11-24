@@ -136,7 +136,8 @@ public:
     virtual void _slot3();
     virtual void _slot4();
     virtual void _slot5();
-    virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+    virtual const C3DVector& GetPos() const { CScriptThingImp* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
     bool operator==(const CScriptThing& other) const { return PImp.Data->IsSameThing(other.PImp.Data); }
 };
 FABLE_FORCEINLINE void _Destroy(CScriptThing* first, CScriptThing* last)

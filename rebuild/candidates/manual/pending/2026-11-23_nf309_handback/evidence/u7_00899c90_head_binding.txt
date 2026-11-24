@@ -1,0 +1,1 @@
+evidence: HEAD object of 0x00899C90 (work/obj/H_00899c90.obj) references ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ and not @Sub_ResolveA@4; the source no longer names Sub_ResolveA

@@ -36,7 +36,7 @@ class CEventHitBase : public CEventBase { public:
     virtual bool IsFlourish() const;                  // slot 5: PHitParams->Flourish (+0x1d)
     CCountedPointer<CHitParameters> PHitParams;       // +0x08
     CThing* GetPThingHitting() const;                 // 0x00810FC0: PHitParams->PThingHitting.GetPItem()
-    CThing* GetPWeapon() const;                       // 0x00810FD0: PHitParams->PWeapon.GetPItem()
+    CThing* GetPWeaponUsed() const;                       // 0x00810FD0: PHitParams->PWeapon.GetPItem(); NF299: PDB name, was GetPWeapon
     bool IsKnockDown() const;                         // 0x00810F00: PHitParams->KnockDown (+0x1a)
     bool IsDecapitate() const;                        // 0x00810F10: PHitParams->Decapitate (+0x1b)
 };
@@ -60,7 +60,7 @@ struct CEventFilter_HitEventWithWeapon {           // a live weapon of the held 
     long DefGlobalIndex;
     bool operator()(const NEntityEvents::CEventHitBase* event) const
     {
-        CThing* weapon = event->GetPWeapon();
+        CThing* weapon = event->GetPWeaponUsed();
         return weapon && !weapon->IsDead() && weapon->GetDefGlobalIndex() == DefGlobalIndex;
     }
 };

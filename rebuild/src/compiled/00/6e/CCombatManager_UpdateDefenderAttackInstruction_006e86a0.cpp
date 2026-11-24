@@ -1,5 +1,5 @@
 // CCombatManager::UpdateDefenderAttackInstruction(CCombatantInfo&) -- on an attack entry stops a still-rotating first combat ring; on an idle entry whose wait has expired steps to the next pattern entry
-// Leaf: UpdateDefenderAttackInstruction
+// Leaf: ?UpdateDefenderAttackInstruction@CCombatManager@@AAEXAAUCCombatantInfo@@@Z
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E86A0, 135 bytes of code (`ret 4`).
@@ -71,8 +71,13 @@ struct CCombatantInfo {                         // retail layout (Ego_r.pdb name
 class CCombatManager { public:
     unsigned char _pad00[0x30];
     float AttackPatternIdleStandardInterval;    // +0x30
-    void IncrementDefenderAttackPattern(CCombatantInfo& info);   // 0x006E8600
+    private:
+    void IncrementDefenderAttackPattern(CCombatantInfo& info);
+    public:
+   // 0x006E8600
+    private:
     void UpdateDefenderAttackInstruction(CCombatantInfo& info);
+    public:
 };
 
 void CCombatManager::UpdateDefenderAttackInstruction(CCombatantInfo& info)

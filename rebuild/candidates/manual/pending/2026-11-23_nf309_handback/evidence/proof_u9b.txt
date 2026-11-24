@@ -1,0 +1,4 @@
+##### 008326a0 renames: ?IsScriptTaskRunning@CTCScriptedControl@@QAE_NXZ=?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0

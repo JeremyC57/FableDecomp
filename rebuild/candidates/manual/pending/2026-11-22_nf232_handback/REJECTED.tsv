@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q12630	0x00495780	in-place respell of the row-local std::vector<T> to vector<T, allocator<T> > (so clear() binds the STLport erase spelling)	grades RELOCATION_MATCH, but the object then defines ?begin / ?end / ?clear@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@ from the local model, names the shared stlport/fable_containers.h defines inline: in-place rule condition (2) fails; needs a header port (NAME_FIXES)

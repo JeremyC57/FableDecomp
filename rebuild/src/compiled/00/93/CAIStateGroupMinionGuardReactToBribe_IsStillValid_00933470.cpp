@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionGuardReactToBribe::IsStillValid() -- the hero is still alive and, once the bribe was
-// Leaf: ?IsStillValid@CAIStateGroup_MinionGuardReactToBribe@@UAE_NXZ
+// Leaf: ?IsStillValid@CAIStateGroup_MinionGuardReactToBribe@@UBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // received, the creature's component 0xB4 still has a non-negative value at +0x10.
@@ -81,10 +81,10 @@ struct CAIStateGroup_MinionGuardReactToBribe : CAIStateGroupBase {
     CIntelligentPointer<CThing> PHero;              // +0x14 CIntelligentPointer<CThingPlayerCreature>
     long FrameLastReactedToReceiveing;          // +0x1c
     bool HasRecievedBribe;                      // +0x20
-    virtual bool IsStillValid();
+    virtual bool IsStillValid() const;
 };
 
-bool CAIStateGroup_MinionGuardReactToBribe::IsStillValid()
+bool CAIStateGroup_MinionGuardReactToBribe::IsStillValid() const
 {
     if (IS_THING_ALIVE(PHero)) {
         CThing* creature = PBrain->PCreature;

@@ -7,7 +7,7 @@
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x0056A980, 656 bytes, `ret 4`. Callees: _Rb_tree_rebalance_for_erase 0x0042A34E (cdecl), ~CWideString
 // 0x0099B510, ~CCharString 0x0099EAE0, free 0x00BFEA14, CTCBoastingCrowdControl::OnHeroBoast 0x00783C50 and
-// DetachAll 0x00783680, SetAutomaticCameraControl 0x00699090, CPlayerGui::Open 0x004374B0, CCharString 0x0099EBF0,
+// CTCBoastingCrowdControl::OnNoBoastsRemain 0x00783680, SetAutomaticCameraControl 0x00699090, CPlayerGui::Open 0x004374B0, CCharString 0x0099EBF0,
 // CCreatureAction_PlayAnimation 0x00843A80, CThingCreatureBase::SetCurrentAction 0x006644F0, ~CCreatureActionBase 0x00693EF0.
 // Layout: retail CTCBoastUI (12-byte STLport map at +0xc, Active +0x18, Quitting +0x28, ActivationRequested +0x2a) as
 // the landed 0x0056AC10/0x0056A880; CBoast from Ego_r.pdb (ID +0, ScriptName +0xc, Text +0x10, Title +0x14,
@@ -308,7 +308,7 @@ class CThingCreatureBase : public CThing { public:          // Ego_r.pdb / Fable
 };
 class CTCBoastingCrowdControl { public:
     void OnHeroBoast(const CBoast* boast);              // 0x00783C50
-    void DetachAll();                                   // 0x00783680
+    void OnNoBoastsRemain();                            // 0x00783680 ?OnNoBoastsRemain@CTCBoastingCrowdControl@@QAEXXZ (Ego_r / FableWin; the donor BoastTaken calls it)
 };
 
 class CGameCameraManager { public:
@@ -402,7 +402,7 @@ void CTCBoastUI::BoastTaken(const CBoast* boast)
     }
     if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().Boasts.empty()) {
         if (crowd)
-            crowd->DetachAll();
+            crowd->OnNoBoastsRemain();
         Deactivate();
     }
     CThing* creature = ParentThing;

@@ -1,0 +1,32 @@
+## HEAD set: H_007ebab0.obj H_00911710.obj H_009118a0.obj H_009574d0.obj H_0057b783.obj H_0093a5c0.obj H_0093a8c0.obj H_009689c0.obj H_00843c10.obj H_009ad6e0.obj H_009a6610.obj H_00b83750.obj H_00b24690.obj H_00b6e260.obj H_00be79d0.obj 007eba20.obj 00843a80.obj 008427e0.obj 008428b0.obj 009ad5f0.obj 00b59870.obj 00b8d420.obj 00bd2a90.obj
+duplicates 0
+UNRESOLVED 1 ??0CCreatureAction_LookThroughWindow@@QAE@AAVCThingAICreature@@@Z
+UNRESOLVED 3 ??0CCreatureAction_PlayAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z
+UNRESOLVED 2 ??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@11M_N22@Z
+UNRESOLVED 2 ??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z
+UNRESOLVED 1 ??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@1JM_NJJ@Z
+UNRESOLVED 1 ??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_NJJ@Z
+UNRESOLVED 1 ??0CDisplayManager@@QAE@PAVCSystemManager@@@Z
+UNRESOLVED 2 ??1CCreatureAction_PlayAnimationBase@@QAE@XZ
+UNRESOLVED 1 ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+UNRESOLVED 1 ?ChangePresentationInterval@CDisplayManager@@QAEX_NJ0@Z
+UNRESOLVED 1 ?DecompressDefinitionData@CDefinitionManager@@QAEXPAVCMemoryDataInputStream@@K@Z
+UNRESOLVED 1 ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
+UNRESOLVED 1 ?Init@CDisplayManager@@QAE_NABVCDisplayManagerInit@@_N@Z
+UNRESOLVED 1 ?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QAEXPAVC3DMesh2@@@Z
+UNRESOLVED 2 ?RenderOcclusionBox@CEngineOcclusionManager@@QAEJABVCMatrix3x4@@@Z
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VCDisplayManager@@@@QAEXPAVCDisplayManager@@@Z
+UNRESOLVED 1 ?SetDisplayMode@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@1@ABVC2DExtentsI@@KW4ESurfaceMultisampleType@@K@Z
+UNRESOLVED 1 ?UpdateLoadingDistanceVideoOptions@CEngineLocalDetailGenerator@@QAEXPAVCEngineVideoOptionsDef@@@Z
+## new set: 007ebab0.obj 00911710.obj 009118a0.obj 009574d0.obj 0057b783.obj 0093a5c0.obj 0093a8c0.obj 009689c0.obj 00843c10.obj 009ad6e0.obj 009a6610.obj 00b83750.obj 00b24690.obj 00b6e260.obj 00be79d0.obj 007eba20.obj 00843a80.obj 008427e0.obj 008428b0.obj 009ad5f0.obj 00b59870.obj 00b8d420.obj 00bd2a90.obj
+duplicates 0
+UNRESOLVED 1 ??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_NJJ@Z
+UNRESOLVED 1 ??0CDisplayManager@@QAE@AAVCSystemManager@@@Z
+UNRESOLVED 2 ??1CCreatureAction_PlayAnimationBase@@QAE@XZ
+UNRESOLVED 1 ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+UNRESOLVED 1 ?ChangePresentationInterval@CDisplayManager@@QAEX_NJ0@Z
+UNRESOLVED 1 ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
+UNRESOLVED 1 ?Init@CDisplayManager@@QAE_NABVCDisplayManagerInit@@_N@Z
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VCDisplayManager@@@@QAEXPAVCDisplayManager@@@Z
+UNRESOLVED 1 ?SetDisplayMode@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@1@ABVC2DExtentsI@@KW4ESurfaceMultisampleType@@K@Z
+LK_DONE

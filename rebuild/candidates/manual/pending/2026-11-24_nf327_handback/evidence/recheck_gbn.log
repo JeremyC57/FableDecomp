@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0084ca30   RELOCATION_MATCH PASS   Clone
+0084ca60   RELOCATION_MATCH PASS   Clone
+00933d50   RELOCATION_MATCH PASS   Clone
+
+WINS: 3
+  0084ca30 RELOCATION_MATCH CCreatureAction_StartFillingTankard::?Clone@CCreatureAction_StartFillingTankard@@UBEPAVCCreatureActionBase@@XZ
+  0084ca60 RELOCATION_MATCH CCreatureAction_StopFillingTankard::?Clone@CCreatureAction_StopFillingTankard@@UBEPAVCCreatureActionBase@@XZ
+  00933d50 RELOCATION_MATCH CCreatureAction_CallSpouseHome::?Clone@CCreatureAction_CallSpouseHome@@UBEPAVCCreatureActionBase@@XZ

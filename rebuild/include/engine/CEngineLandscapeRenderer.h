@@ -158,6 +158,11 @@ public:
     // only caller 0x00BE5D20 passes the patch's slot word and the patch). A declaration only: no layout change.
     void RegisterSubPatchForZSorting(long& index, CLandscapeBackgroundPatch* patch);    // 0x00B67E30
 #endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_UNREGISTERSUBPATCHFORZSORTING
+    // Nested opt-in (NF265, row 0x00BE6090): Ego_r.pdb / FableWin.pdb ?UnregisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJ@Z
+    // (retail 0x00B677A0; ~CLandscapeBackgroundPatch 0x00BE6090 passes its ZSorterHandle slot by reference). Declaration only: no layout change.
+    void UnregisterSubPatchForZSorting(long& index);                     // 0x00B677A0
+#endif
 #ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_RENDERSORTED
     // Retail opt-in (row 0x00B68DA0): Ego_r.pdb / FableWin.pdb ?RenderSortedPatches@CEngineLandscapeRenderer@@AAEXXZ,
     // ?SetupCommonStates@CEngineLandscapeRenderer@@AAEXXZ, ?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ (all private).
@@ -341,5 +346,13 @@ FABLE_STATIC_ASSERT_AT(306, offsetof(CEngineLandscapeRenderer, Tesselator) == 0x
 FABLE_STATIC_ASSERT_AT(307, offsetof(CEngineLandscapeRenderer, FastForegroundTextureLoadInfo) == 0x68c);
 FABLE_STATIC_ASSERT_AT(308, offsetof(CEngineLandscapeRenderer, MemoryManager) == 0x6b0);
 #endif // FABLE_RETAIL_CENGINELANDSCAPERENDERER
+
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER
+// NEngineInternal::GPLandscapeRenderer, the engine's landscape renderer instance, at 0x01436EA8 (add-only opt-in, NF260).
+// Spelling: ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A (Ego_r.pdb / FableWin.pdb / Ego_d.pdb).
+// Address: both PDBs' S_GDATA32 records put it at GPResourceManager + 0x10, after GPLightingManager / GPCamera / GPEngine,
+// and the table binds those four at 0x01436E98 / 9C / A0 / A4 (nf256 proof). Declared for either layout branch above.
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }
+#endif
 
 #endif // FABLE_ENGINE_CENGINELANDSCAPERENDERER_H

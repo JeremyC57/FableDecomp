@@ -1,0 +1,4 @@
+pS 00bd9ce0 CEngineLandscapeMemoryManager::FreeDisposalList DIFFER(255v488) flags= [] leaf=?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ
+P2	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z	29	00bd9c20	EQ
+P2	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z	29	00bd9c00	EQ
+P2	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z	28	00bd9cc0	EQ

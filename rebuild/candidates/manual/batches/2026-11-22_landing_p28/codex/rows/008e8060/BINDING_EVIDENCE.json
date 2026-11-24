@@ -1,0 +1,7 @@
+[
+  {
+    "address": "0x008E8AC0",
+    "symbol": "??$GetAllThings@VCThingMarker@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasScriptName@@@CThingSearchTools@@QBEXABVCThingFilter_HasScriptName@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z",
+    "evidence": "FableWin creature_mode_briar_rose.obj 0x0280D7E0 and donor caller line 126 spell CThingMarker, vector<CThing*>, CThingFilter_HasScriptName. The retail call at 0x008E812D receives those two arguments. Both the retail catalog and the caller identify this owner. Ego_r shares a folded marker-vector body at 0x00831B90."
+  }
+]

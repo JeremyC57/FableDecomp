@@ -1,0 +1,68 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00A249A0	C3DMeshInfo	RemoveLOD	?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z	C3DMeshInfo::RemoveLOD	?RemoveLOD@C3DMeshInfo@@QBEXK_N@Z	Ego_r + FableWin ?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z; access label only, leaf bytes identical (objsec ALL_EQ)
+0x00998170	CAFile	ParserReadPastDriveLabel	?ParserReadPastDriveLabel@CAFile@@CI_NAAVCStringParser@@AAVCParsedItem@@@Z	CAFile::ParserReadPastDriveLabel	?ParserReadPastDriveLabel@CAFile@@SI_NAAVCStringParser@@AAVCParsedItem@@@Z	Ego_r + FableWin ?ParserReadPastDriveLabel@CAFile@@CI_NAAVCStringParser@@AAVCParsedItem@@@Z; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c3)
+0x009183A0	CAIStateGroup_Gaze	OnReplace	?OnReplace@CAIStateGroup_Gaze@@MAEXXZ	CAIStateGroup_Gaze::OnReplace	?OnReplace@CAIStateGroup_Gaze@@UAEXXZ	Ego_r + FableWin ?OnReplace@CAIStateGroup_Gaze@@MAEXXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c5)
+0x009490D0	CAIStateGroup_GoToPub	GetBar	?GetBar@CAIStateGroup_GoToPub@@IAE_NXZ	CAIStateGroup_GoToPub::GetBar	?GetBar@CAIStateGroup_GoToPub@@QAE_NXZ	Ego_r + FableWin ?GetBar@CAIStateGroup_GoToPub@@IAE_NXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c5)
+0x0094A0E0	CAIStateGroup_GoToPub	FallAsleep	?FallAsleep@CAIStateGroup_GoToPub@@IAE_NXZ	CAIStateGroup_GoToPub::FallAsleep	?FallAsleep@CAIStateGroup_GoToPub@@QAE_NXZ	Ego_r + FableWin ?FallAsleep@CAIStateGroup_GoToPub@@IAE_NXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c5)
+0x00977B10	CAIStateGroup_Guildmaster	FindAndStoreBodyguards	?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ	CAIStateGroup_Guildmaster::FindAndStoreBodyguards	?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@QAEXXZ	Ego_r + FableWin ?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c5)
+0x0095A490	CAIStateGroup_HoverHornetQueen	IsRouteToPosBlockedByTarget	?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@IAE_NJ@Z	CAIStateGroup_HoverHornetQueen::IsRouteToPosBlockedByTarget	?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@QAE_NJ@Z	Ego_r + FableWin ?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@IAE_NJ@Z; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c5)
+0x0094FE30	CAIStateGroup_JackDragon	StayIdle	?StayIdle@CAIStateGroup_JackDragon@@AAEXM@Z	CAIStateGroup_JackDragon::StayIdle	?StayIdle@CAIStateGroup_JackDragon@@QAEXM@Z	Ego_r + FableWin ?StayIdle@CAIStateGroup_JackDragon@@AAEXM@Z; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c6)
+0x00951B20	CAIStateGroup_JackDragon	FlyOutOfGround	?FlyOutOfGround@CAIStateGroup_JackDragon@@AAEXXZ	CAIStateGroup_JackDragon::FlyOutOfGround	?FlyOutOfGround@CAIStateGroup_JackDragon@@QAEXXZ	Ego_r + FableWin ?FlyOutOfGround@CAIStateGroup_JackDragon@@AAEXXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c6)
+0x00915290	CAIStateGroup_KidHurtSelfRunToMother	SendMessageToMother	?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@AAEXXZ	CAIStateGroup_KidHurtSelfRunToMother::SendMessageToMother	?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@QAEXXZ	Ego_r + FableWin ?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@AAEXXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c6)
+0x0096EA50	CAIStateGroup_MeleeCombatNearby	AttackEnemy	?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@AAEXXZ	CAIStateGroup_MeleeCombatNearby::AttackEnemy	?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@QAEXXZ	Ego_r + FableWin ?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@AAEXXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c6)
+0x00930EE0	CAIStateGroup_MinionReactToCriminal	IsValid	?IsValid@CAIStateGroup_MinionReactToCriminal@@ABE_NXZ	CAIStateGroup_MinionReactToCriminal::IsValid	?IsValid@CAIStateGroup_MinionReactToCriminal@@QAE_NXZ	Ego_r + FableWin ?IsValid@CAIStateGroup_MinionReactToCriminal@@ABE_NXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c6)
+0x0090F9C0	CAIStateGroup_MinionSitOnSeatBase	IsRunnable	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ	CAIStateGroup_MinionSitOnSeatBase::IsRunnable	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@UAE_NXZ	Ego_r + FableWin ?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c7)
+0x00856B20	CCombatActionBase	UpdateFacingDirection	?UpdateFacingDirection@CCombatActionBase@@IAEXXZ	CCombatActionBase::UpdateFacingDirection	?UpdateFacingDirection@CCombatActionBase@@QAEXXZ	Ego_r + FableWin ?UpdateFacingDirection@CCombatActionBase@@IAEXXZ; in-place access / virtual / const letters, leaf bytes identical (objsec ALL_EQ, proof_c7)
+0x00717450	NTCScriptedControl::CActionOverheadTalkToThing	Update	?Update@CActionOverheadTalkToThing@NTCScriptedControl@@UAEXXZ	NTCScriptedControl::CActionOverheadTalkToThing::Update	?Update@CActionOverheadTalkToThing@NTCScriptedControl@@QAEXXZ	Ego_r 0x0072B930 + FableWin 0x025659A0 UAEXXZ; side effect of entry 38 (base Update made virtual in the local model, so the override is virtual); leaf bytes identical (objsec ALL_EQ, proof_c7); no other binder of 0x00717450
+0x0052C7E0	NUISystem::CChangingStateComponent	Update	?Update@CChangingStateComponent@NUISystem@@UAEXM@Z	NUISystem::CChangingStateComponent::Update	?Update@CChangingStateComponent@NUISystem@@QAEXM@Z	Ego_r 0x005A7310 + FableWin 0x022851B0 UAEXM; side effect of entry 53; ~35 landed table emitters already bind UAE (clang census, e.g. 0x00541020 in reloc_bindings); leaf bytes identical (objsec ALL_EQ, proof_c7)
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00A25470	?BuildMesh@C3DMeshLODInfo@@QAE_N_N0@Z	?BuildMesh@C3DMeshLODInfo@@AAE_N_N0@Z	0x00A24520
+0x00A25470	?RemoveLOD@C3DMeshInfo@@AAEXK_N@Z	?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z	0x00A249A0
+0x00A254A0	?RemoveLOD@C3DMeshInfo@@QAEXK_N@Z	?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z	0x00A249A0
+0x00A25E70	?BuildMesh@C3DMeshLODInfo@@QAE_N_N0@Z	?BuildMesh@C3DMeshLODInfo@@AAE_N_N0@Z	0x00A24520
+0x00A8FD40	?UploadToIndexBuffer@C3DPrimitive2@@QAE_NK@Z	?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z	0x00A8F9E0
+0x00A92870	?UploadToIndexBuffer@C3DPrimitive2@@QAE_NK@Z	?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z	0x00A8F9E0
+0x00A932C0	?UploadToIndexBuffer@C3DPrimitive2@@QAE_NK@Z	?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z	0x00A8F9E0
+0x00A93320	?UploadToIndexBuffer@C3DPrimitive2@@QAE_NK@Z	?UploadToIndexBuffer@C3DPrimitive2@@AAE_NK@Z	0x00A8F9E0
+0x00998010	?IsForbiddenSymbolInComponent@CAFile@@SI_NABVCCharString@@@Z	?IsForbiddenSymbolInComponent@CAFile@@CI_NABVCCharString@@@Z	0x009975E0
+0x00998010	?ParserIsSeparatorNext@CAFile@@SI_NAAVCStringParser@@@Z	?ParserIsSeparatorNext@CAFile@@CI_NAAVCStringParser@@@Z	0x00997DA0
+0x00998210	?ParserReadPastDriveLabel@CAFile@@SI_NAAVCStringParser@@AAVCParsedItem@@@Z	?ParserReadPastDriveLabel@CAFile@@CI_NAAVCStringParser@@AAVCParsedItem@@@Z	0x00998170
+0x0088C160	?InitStateGroups@CAIBrain@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z	?InitStateGroups@CAIBrain@@AAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z	0x0088BF30
+0x0092B110	?GoToLibrary@CAIStateGroup_ApprenticeHero@@QAE_NXZ	?GoToLibrary@CAIStateGroup_ApprenticeHero@@IAE_NXZ	0x0092ACE0
+0x0092B110	?LookAtLeaderBoard@CAIStateGroup_ApprenticeHero@@QAE_NXZ	?LookAtLeaderBoard@CAIStateGroup_ApprenticeHero@@IAE_NXZ	0x0092AE70
+0x0092B110	?LookAtMap@CAIStateGroup_ApprenticeHero@@QAE_NXZ	?LookAtMap@CAIStateGroup_ApprenticeHero@@IAE_NXZ	0x0092AFE0
+0x0093AE80	?GetPNearCampfire@CAIStateGroup_BanditSitRoundCampfire@@QBEPAVCThingObject@@XZ	?GetPNearCampfire@CAIStateGroup_BanditSitRoundCampfire@@ABEPAVCThingObject@@XZ	0x0093AB70
+0x0096D450	?GetSeat@CAIStateGroup_EatAtTable@@QAE_NXZ	?GetSeat@CAIStateGroup_EatAtTable@@IAE_NXZ	0x0096CB40
+0x00918880	?FindFreeParticularGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@J_N@Z	?FindFreeParticularGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@J_N@Z	0x00918640
+0x00977C40	?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@QAEXXZ	?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ	0x00977B10
+0x0095C1F0	?Attack@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?Attack@CAIStateGroup_HoverHornetQueen@@IAEXXZ	0x0095BCF0
+0x0095C1F0	?DiveBomb@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?DiveBomb@CAIStateGroup_HoverHornetQueen@@IAEXXZ	0x0095B9E0
+0x0095C1F0	?Spawn@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?Spawn@CAIStateGroup_HoverHornetQueen@@IAEXXZ	0x0095B820
+0x0096EA50	?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby@@QAE_NXZ	?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby@@ABE_NXZ	0x0096E830
+0x0093E2D0	?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ	?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ	0x0093D7A0
+0x0093E5E0	?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ	?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ	0x0093D7A0
+0x0096EE90	?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ	?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ	0x0093D7A0
+0x00936020	?PutOutFire@CAIStateGroup_MinionPutOutFires@@QAE_NXZ	?PutOutFire@CAIStateGroup_MinionPutOutFires@@AAE_NXZ	0x00935E40
+0x00931010	?IsValid@CAIStateGroup_MinionReactToCriminal@@QBE_NXZ	?IsValid@CAIStateGroup_MinionReactToCriminal@@ABE_NXZ	0x00930EE0
+0x00930A70	?InteractionFailed@CAIStateGroup_MinionReactToPlayerInteraction@@QAEXXZ	?InteractionFailed@CAIStateGroup_MinionReactToPlayerInteraction@@AAEXXZ	0x0092F240
+0x0095D200	?IsStillRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ	?IsStillRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ	0x0095D0E0
+0x0096C2E0	?FindHitEvent@CAIStateGroup_Thunder@@QAE_NXZ	?FindHitEvent@CAIStateGroup_Thunder@@IAE_NXZ	0x0096C250
+0x0096A7A0	?FindHitEvent@CAIStateGroup_WhisperRetreat@@QAE_NXZ	?FindHitEvent@CAIStateGroup_WhisperRetreat@@IAE_NXZ	0x0096A260
+0x0090FD20	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@UAE_NXZ	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ	0x0090F9C0
+0x009104A0	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@UAE_NXZ	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ	0x0090F9C0
+0x00938F70	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@UAE_NXZ	?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ	0x0090F9C0
+0x009F8290	?GetBankHandle@CBankFile@@QAE?AVCCharString@@XZ	?GetBankHandle@CBankFile@@QBE?AVCCharString@@XZ	0x009CBA40
+0x00A09DC0	?GetBankHandle@CBankFile@@QAE?AVCCharString@@XZ	?GetBankHandle@CBankFile@@QBE?AVCCharString@@XZ	0x009CBA40
+0x00871E40	?AddAttractorGoTo@CBase@NCameraModes@@QAEXABVC3DVector@@M@Z	?AddAttractorGoTo@CBase@NCameraModes@@IAEXABVC3DVector@@M@Z	0x0084E1A0
+0x00871E60	?AddAttractorGoTo@CBase@NCameraModes@@QAEXABVC3DVector@@M@Z	?AddAttractorGoTo@CBase@NCameraModes@@IAEXABVC3DVector@@M@Z	0x0084E1A0
+0x00859D80	?ResetMeleeCombatAbilityEffects@CCombatActionBase@@QAEXXZ	?ResetMeleeCombatAbilityEffects@CCombatActionBase@@IAEXXZ	0x00859660
+0x00859D80	?UpdateFacingDirection@CCombatActionBase@@QAEXXZ	?UpdateFacingDirection@CCombatActionBase@@IAEXXZ	0x00856B20
+0x00858130	?GetWeaponUsedInStrikeAction@CCombatActionBase@@QAEPAVCThing@@XZ	?GetWeaponUsedInStrikeAction@CCombatActionBase@@QBEPAVCThing@@XZ	0x00857070
+0x00858590	?GetWeaponUsedInStrikeAction@CCombatActionBase@@QAEPAVCThing@@XZ	?GetWeaponUsedInStrikeAction@CCombatActionBase@@QBEPAVCThing@@XZ	0x00857070
+0x008587B0	?GetWeaponUsedInStrikeAction@CCombatActionBase@@QAEPAVCThing@@XZ	?GetWeaponUsedInStrikeAction@CCombatActionBase@@QBEPAVCThing@@XZ	0x00857070
+0x008597A0	?GetWeaponUsedInStrikeAction@CCombatActionBase@@QAEPAVCThing@@XZ	?GetWeaponUsedInStrikeAction@CCombatActionBase@@QBEPAVCThing@@XZ	0x00857070
+0x006ED510	?UpdateAttackingCombatantsList@CCombatManager@@QAEXAAUCCombatantInfo@@_N@Z	?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z	0x006ED030
+0x006EDC50	?UpdateAttackingCombatantsList@CCombatManager@@QAEXAAUCCombatantInfo@@_N@Z	?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z	0x006ED030
+0x00717450	?Update@CActionTalkBase@NTCScriptedControl@@QAEXXZ	?Update@CActionTalkBase@NTCScriptedControl@@UAEXXZ	0x00716DE0
+0x0052C7E0	?Update@CComponent@NUISystem@@QAEXM@Z	?Update@CComponent@NUISystem@@UAEXM@Z	0x00531EC0

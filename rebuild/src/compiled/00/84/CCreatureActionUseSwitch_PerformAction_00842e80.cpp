@@ -8,7 +8,7 @@ class CThingCreatureBase;
 class CThingPhysicalSwitch { public:              // only the dead bit and the call are modelled
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    void TriggerMe(CThingCreatureBase* user);   // 0x0083DDC0
+    protected: friend class CCreatureAction_UseSwitch; void TriggerMe(CThingCreatureBase& user);   // 0x0083DDC0 (PDB protected IAE; its caller below is the retail friend, NF305 Q5)
 };
 
 class CBaseObject;
@@ -41,5 +41,5 @@ void CCreatureAction_UseSwitch::PerformAction()
 {
     CThingPhysicalSwitch* pSwitch = PSwitch.GetPItem();
     if (pSwitch != 0 && !(pSwitch->m_flags91 & 1))
-        pSwitch->TriggerMe((CThingCreatureBase*)PCreature.GetPItem());
+        pSwitch->TriggerMe(*(CThingCreatureBase*)PCreature.GetPItem());
 }

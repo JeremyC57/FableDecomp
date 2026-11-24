@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00a86030   WARN SHARED_HEADER_AVAILABLE CIPhysicsFacesSegmentBase (engine/CIPhysicsFacesSegmentBase.h)
+00a86030   MATCH            PASS   GetPossibleCollisionSet
+
+WINS: 1
+  00a86030 MATCH CPhysicsFacesSegmentBranch::GetPossibleCollisionSet

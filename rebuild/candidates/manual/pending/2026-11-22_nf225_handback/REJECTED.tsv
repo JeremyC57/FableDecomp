@@ -1,0 +1,2 @@
+address	claim	reason
+0x0054ED90	new opt-in FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_RELEASEDATA_SIZE_BODY (form f1)	not needed: the existing FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA gives the /O2 owner 0x004057A0's body (form f2, EQ), so the extra opt-in was dropped from hdr/

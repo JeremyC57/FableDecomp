@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CPlayerMovementDef@@UAEXAAVCPersistContext@@@Z
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
 #pragma optimize("s", on)
 // CPlayerMovementDef::Transfer(CPersistContext&) -- serialize the sixteen player-movement fields in declaration order
@@ -9,7 +10,7 @@ class CPersistContext { public:
     template <class T> void Transfer(T& value);                              // 0x00431061
 };
 class CPlayerMovementDef { public:
-    unsigned char _base[0x3c];                          // CDefClassBase/CParentDefClassBase
+    unsigned char _base[0x38];                          // CDefClassBase/CParentDefClassBase
     float JoystickMovementStationaryBand;               // +0x3c
     float JoystickMovementSlowBand;                     // +0x40
     float JoystickMovementWalkingBand;                  // +0x44
@@ -26,7 +27,7 @@ class CPlayerMovementDef { public:
     float LeanAngleTurnFactor;                          // +0x70
     float LeanAngleLimitAngle;                          // +0x74
     float LeanAngleStepPerFrame;                        // +0x78
-    void Transfer(CPersistContext&);
+    virtual void Transfer(CPersistContext&);
 };
 void CPlayerMovementDef::Transfer(CPersistContext& ctx) {
     ctx.Transfer(JoystickMovementStationaryBand);

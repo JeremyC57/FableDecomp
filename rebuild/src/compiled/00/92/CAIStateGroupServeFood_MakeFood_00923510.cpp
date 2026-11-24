@@ -105,7 +105,7 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    const CPlayerManager* GetPPlayerManager() const;    // 0x008FCF80
+protected: const CPlayerManager& PeekPlayerManager() const; public:   // 0x008FCF80 (NF306: Ego_r + FableWin IBEABV; was public const CPlayerManager* GetPPlayerManager() const)
 protected:
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
@@ -121,7 +121,7 @@ CThing* CAIStateGroup_ServeFood::MakeFood(const C3DVector* position, CThing* own
         CDefinitionManager* defs = GetWorld().PDefManager;
         def = defs->GetDefGlobalIndexFromName(name);
     }
-    long player = GetPPlayerManager()->GetMainPlayer().Number;
+    long player = PeekPlayerManager().GetMainPlayer().Number;
     CThing* food = ((CThing*)CThingObject::Create(def, *position, player, 0, 0, ""));
     food->m_flags91 |= 2;
     food->AddTC("CTCCreatedEntity", false, 0);

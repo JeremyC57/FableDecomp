@@ -13,10 +13,10 @@ class CThing;
 
 class CTCHeroOpinionDeedLog { public:
     unsigned char _body[0x34a8];       // sizeof(CTCHeroOpinionDeedLog) = 0x34a8
-    CTCHeroOpinionDeedLog(CThing* owner);                   // 0x006C5A80
+    CTCHeroOpinionDeedLog(CThing& owner);                   // 0x006C5A80 (Ego_r.pdb + FableWin.pdb ??0CTCHeroOpinionDeedLog@@QAE@AAVCThing@@@Z; NF237)
 };
 
 CTCHeroOpinionDeedLog* __fastcall CTCHeroOpinionDeedLog_Alloc(CThing* owner)
 {
-    return new CTCHeroOpinionDeedLog(owner);
+    return new CTCHeroOpinionDeedLog(*owner);
 }

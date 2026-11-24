@@ -68,7 +68,7 @@ class CTCHeroOpinionDeedLog { public:                  // interface 0x51
     void RemoveDeed(long data);                 // 0x006C59E0 (descriptive)
 };
 class CTCVillage { public:
-    bool IsDeedHandled(long handle);            // 0x0065914B (descriptive)
+    bool HasCrimeBeenReported(long handle);            // 0x0065914B NF296: PDB name, was IsDeedHandled
 };
 class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetPVillage() const;              // 0x007EE540
@@ -117,7 +117,7 @@ bool CAIStateGroupMinionReactToCrimeMethods::IsRunnable()
                     }
                     OpinionDeedHandle = deed->Handle;
                 }
-                if (IsGuardOnLevel() && !village->IsDeedHandled(OpinionDeedHandle)) {
+                if (IsGuardOnLevel() && !village->HasCrimeBeenReported(OpinionDeedHandle)) {
                     long type = deed->Type;
                     if (type == 7 || type == 8) {
                         AllowDuplicateReactToCrime = true;

@@ -15,7 +15,7 @@ extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(atan2, fmod, fabs)
 inline float fabs(float x) { return (float)fabs((double)x); }
 class C3DVector { public: float X, Y, Z; };
-float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);   // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 struct CTCPhysicsBase {
     virtual void p000(); virtual void p001(); virtual void p002(); virtual void p003(); virtual void p004(); virtual void p005(); virtual void p006(); virtual void p007();
     virtual void p008(); virtual void p009(); virtual void p010(); virtual void p011(); virtual void p012(); virtual void p013(); virtual void p014(); virtual void p015();
@@ -32,7 +32,7 @@ struct CTCPhysicsBase {
 };
 #include "engine/CThing.h"
 class CAnimationEntry { public:
-    void GetRotationInAnimation(float* pRotation) const;   // 0x005DBFD0
+    void GetRotationInAnimation(float& rotation) const;   // 0x005DBFD0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -70,7 +70,7 @@ class CCombatActionBase { public:
     CAnimationEntry*        PAnimEntry;         // +0x74
     unsigned char           _pad78[0xa8 - 0x78];
     CIntelligentPointer<CThing> PTarget;            // +0xa8
-    void UpdateFacingDirection();
+    protected: void UpdateFacingDirection(); public:
 };
 
 void CCombatActionBase::UpdateFacingDirection()
@@ -83,7 +83,7 @@ void CCombatActionBase::UpdateFacingDirection()
         return;
     if (PAnimEntry) {
         float rotation;
-        PAnimEntry->GetRotationInAnimation(&rotation);
+        PAnimEntry->GetRotationInAnimation(rotation);
         if (fabs(rotation) > 0.0001f)
             return;
     }
@@ -101,7 +101,7 @@ void CCombatActionBase::UpdateFacingDirection()
         if (tolerance < 0.5f) {
             C3DVector current = PCreature.Get()->GetPhysicsTC()->GetFacing();
             float currentFacing = FacingFraction(current.X, current.Y);
-            if (fabs(AngleDifference(currentFacing, facing)) > tolerance)
+            if (fabs(GFGetSignedAngleDifference(currentFacing, facing)) > tolerance)
                 return;
         }
     }

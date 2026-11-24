@@ -19,6 +19,10 @@ public:
  // ProngBlockageTimer +0x10, POccupier +0x14) so a TU can take vector<CProng>::size(), and Ego_r.pdb
  // ?GetProngVector@CProng@CDefendingCombatantInfo@@QBE?AVC3DVector@@M@Z (out of line in retail at 0x006E7FD0; declaration only).
  class CProng {public:
+#ifdef FABLE_RETAIL_COMBAT_PRONG_OCCUPIER_PASS26
+  // FableWin 0240FDD0; native 006F2C0E reads the pointer at +0x14.
+  CThingCreatureBase* GetPOccupyingAttacker() const { return POccupier.Get(); }
+#endif
   C3DVector GetProngVector(float rotationAngle) const;                           // 0x006E7FD0
   bool Blocked;C3DVector Prong;long ProngBlockageTimer;CIntelligentPointer<CThingCreatureBase> POccupier;};
 #else
@@ -28,6 +32,12 @@ public:
  class CCombatWheel;
 #endif
  class CCombatRing {public:
+#ifdef FABLE_RETAIL_COMBATRING_ASSIGN_PASS27
+ private:
+  void AssignAttackerToProng(CProng*,CThingCreatureBase*,CAttackingCombatantInfo*,bool);
+ public:
+  bool IsRotating() const {return (float)fabs(DeltaRotation)>DELTA_NOTIONAL_ZERO;}
+#endif
 #ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PASS22_INIT
   // Ego_r00711D10 / FableWin024113C0, retail006E8B60.
   void Reset();

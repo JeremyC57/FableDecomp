@@ -1,0 +1,87 @@
+pS 008ee790 CMaterialDef::GetBlendedSwordHitEffect RELOCATION_MATCH flags= [] leaf=?GetBlendedSwordHitEffect@CMaterialDef@@QBE_NJMAAJ0AAM@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+< 008ee890	?find@CBlendedEffectMap@@QAE?AUSMapIterator@@ABJ@Z	x1
+> 008ee890	?find@CBlendedEffectMap@@QBE?AUSMapIterator@@ABJ@Z	x1
+--- symbols HEAD(<) new(>)
+< DEF ?GetBlendedSwordHitEffect@CMaterialDef@@QAE_NJMPAJ0PAM@Z
+> DEF ?GetBlendedSwordHitEffect@CMaterialDef@@QBE_NJMAAJ0AAM@Z
+< DEF ?find@CBlendedEffectMap@@QAE?AUSMapIterator@@ABJ@Z
+> DEF ?find@CBlendedEffectMap@@QBE?AUSMapIterator@@ABJ@Z
+pS 008ee720 CMaterialDef::GetRandomBerserkedSwordHitParticleEffect RELOCATION_MATCH flags= [] leaf=?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ??A?$vector@J@@QAEAAJK@Z
+> DEF ??A?$vector@J@@QBEABJK@Z
+< DEF ?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QAEJXZ
+> DEF ?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ
+pS 00548790 NUISystem::CTextSlider::GetValueFromProfile RELOCATION_MATCH flags= [] leaf=?GetValueFromProfile@CTextSlider@NUISystem@@
+--- reloc (target symbol count) HEAD(<) new(>)
+< 0048db35	?GetOption48DB35@CUserProfileManager@@QBE_NXZ	x1
+> 0048db35	?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ	x1
+< 00548630	?IsCameraResetting@CUserProfileManager@@QBE_NXZ	x1
+< 00548650	?GetOption548650@CUserProfileManager@@QBE_NXZ	x1
+< 00548670	?GetOption548670@CUserProfileManager@@QBEJXZ	x1
+< 00548690	?GetOption548690@CUserProfileManager@@QBE_NXZ	x1
+< 005486b0	?GetOption5486B0@CUserProfileManager@@QBEJXZ	x1
+< 005486d0	?GetOption5486D0@CUserProfileManager@@QBEJXZ	x1
+< 005486f0	?GetOption5486F0@CUserProfileManager@@QBEJXZ	x1
+> 00548630	?IsUsingHeadPhones@CUserProfileManager@@QBE_NXZ	x1
+> 00548650	?IsShowingBuddyNames@CUserProfileManager@@QBE_NXZ	x1
+> 00548670	?GetAntialiasing@CUserProfileManager@@QBEKXZ	x1
+> 00548690	?IsCameraResetting@CUserProfileManager@@QBE_NXZ	x1
+> 005486b0	?GetResolution@CUserProfileManager@@QBEKXZ	x1
+> 005486d0	?GetRefreshRate@CUserProfileManager@@QBEKXZ	x1
+> 005486f0	?GetScreenAspectRatio@CUserProfileManager@@QBEKXZ	x1
+< 00548740	?GetOption548740@CUserProfileManager@@QBE_NXZ	x1
+> 00548740	?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ	x1
+--- symbols HEAD(<) new(>)
+> UND ?GetAntialiasing@CUserProfileManager@@QBEKXZ
+< UND ?GetOption48DB35@CUserProfileManager@@QBE_NXZ
+< UND ?GetOption548650@CUserProfileManager@@QBE_NXZ
+< UND ?GetOption548670@CUserProfileManager@@QBEJXZ
+< UND ?GetOption548690@CUserProfileManager@@QBE_NXZ
+< UND ?GetOption5486B0@CUserProfileManager@@QBEJXZ
+< UND ?GetOption5486D0@CUserProfileManager@@QBEJXZ
+< UND ?GetOption5486F0@CUserProfileManager@@QBEJXZ
+< UND ?GetOption548740@CUserProfileManager@@QBE_NXZ
+> UND ?GetRefreshRate@CUserProfileManager@@QBEKXZ
+> UND ?GetResolution@CUserProfileManager@@QBEKXZ
+> UND ?GetScreenAspectRatio@CUserProfileManager@@QBEKXZ
+> UND ?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ
+> UND ?IsShowingBuddyNames@CUserProfileManager@@QBE_NXZ
+> UND ?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ
+> UND ?IsUsingHeadPhones@CUserProfileManager@@QBE_NXZ
+pS 00548b50 NUISystem::CTextSlider::AdjustValueToProfile RELOCATION_MATCH flags= [] leaf=AdjustValueToProfile
+--- reloc (target symbol count) HEAD(<) new(>)
+< 00548740	?IsShowTargetingStatus@CUserProfileManager@@QBE_NXZ	x1
+> 00548740	?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ	x1
+--- symbols HEAD(<) new(>)
+> UND ?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ
+< UND ?IsShowTargetingStatus@CUserProfileManager@@QBE_NXZ
+pS 0048db35 CUserProfileManager::IsCameraResetting MATCH flags= [] leaf=?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?CUserProfileManager_IsCameraResetting@@YIDPAVCUserProfileManager@@@Z
+> DEF ?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ
+pS 004d3f50 CTCHeroOpinionDeedLog::Alloc RELOCATION_MATCH flags= [] leaf=
+--- reloc (target symbol count) HEAD(<) new(>)
+< 006c5a80	??0CTCHeroOpinionDeedLog@@QAE@PAVCThing@@@Z	x1
+> 006c5a80	??0CTCHeroOpinionDeedLog@@QAE@AAVCThing@@@Z	x1
+--- symbols HEAD(<) new(>)
+< UND ??0CTCHeroOpinionDeedLog@@QAE@PAVCThing@@@Z
+> UND ??0CTCHeroOpinionDeedLog@@QAE@AAVCThing@@@Z
+pS 006eb390 CCombatManager::SetupNextSequenceForAttacker RELOCATION_MATCH flags= [] leaf=?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+< 006eae20	?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@QBEJABUCCombatantInfo@@0@Z	x1
+> 006eae20	?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z	x1
+--- symbols HEAD(<) new(>)
+< UND ?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@QBEJABUCCombatantInfo@@0@Z
+> UND ?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z
+pS 009ae150 CDefinitionManager::CompileSubDefinition RELOCATION_MATCH flags= [] leaf=CompileSubDefinition
+--- reloc (target symbol count) HEAD(<) new(>)
+< 009bbbf0	??1CPersistContext@@QAE@XZ	x1
+> 009bbbf0	?CheckUnknownSymbols@CPersistContext@@QAEXXZ	x1
+--- symbols HEAD(<) new(>)
+< UND ??1CPersistContext@@QAE@XZ
+> UND ?CheckUnknownSymbols@CPersistContext@@QAEXXZ
+FINAL_DONE

@@ -1,5 +1,5 @@
 // CThingSwitch::TriggerSetEnvironment() -- when the living hero stands inside the switch's trigger square, transition the environment to the switch's theme def
-// Leaf: TriggerSetEnvironment
+// Leaf: ?TriggerSetEnvironment@CThingSwitch@@IAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083BE90, length 252 bytes (+ int3 padding).
 // Callees: CThing::PeekPos() const @ 0x006A4D00 (this TU's out-of-line copy, four times), the player-manager
@@ -78,7 +78,9 @@ public:
     float         TriggerRadius;                               // +0xd0
     CCharString   EnvironmentDef;                              // +0xd4
     float         TimeToChangeEnvironmentDef;                  // +0xd8
+    protected:
     void TriggerSetEnvironment();
+    public:
 };
 
 void CThingSwitch::TriggerSetEnvironment()

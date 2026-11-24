@@ -1,5 +1,5 @@
 // CWorldMap::Validate() const -- walks every loaded map (from 1) and, along its left and top edges, looks up the neighbouring map across the edge; for each different neighbour it converts the two edge cells into each map's local coordinates (the comparison itself is compiled out of retail)
-// Leaf: Validate
+// Leaf: ?Validate@CWorldMap@@IBEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063DDF0, 472 bytes (+ int3 padding), plain `ret`; 8-byte aligned frame (`and esp,-8`).
 // Callees: CWorldMap virtual slots 10 IsMapLoaded (+0x28), 13 GetDimensions (+0x34), 17 GetMapNumberAt(const C2DCoordI&)
 //   (+0x44), 19 PeekMap (+0x4C), 23 GetMapPos (+0x5C, C2DCoordI by hidden pointer); ConvertWorldMapCoordsToLocalCoords
@@ -75,7 +75,10 @@ public:
     CMapInfoArray   Maps;                  // +0x20 CArray<CMapInfo>
 
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const;   // 0x004FC3C0
-    void Validate() const;                                           // protected in the original (?Validate@CWorldMap@@IBEXXZ)
+    protected:
+    void Validate() const;
+    public:
+                                           // protected in the original (?Validate@CWorldMap@@IBEXXZ)
 };
 
 void CWorldMap::Validate() const

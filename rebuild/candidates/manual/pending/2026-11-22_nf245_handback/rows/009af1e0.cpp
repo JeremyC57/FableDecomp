@@ -1,0 +1,105 @@
+// CDefinitionManager::CompileString(const char* text, const CCharString& defType) -- parse a definitions text: compile every #definition_template block first, then rewind and compile every #definition block, keeping only blocks whose class matches defType (case-insensitively) unless defType is empty
+// Leaf: ?CompileString@CDefinitionManager@@IAEXPBDABVCCharString@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009AF1E0, 672 bytes (incl. int3 padding), thiscall `ret 8`. FableWin.pdb
+//   `?CompileString@CDefinitionManager@@IAEXPBDABVCCharString@@@Z`; the only caller is the file loader 0x009AF480. The
+//   catalog's "CDefinitionManager_LoadDefinitions" is descriptive.
+// Callees: CBaseClass() 0x0099A2D0 / ~CBaseClass 0x0099A2E0, CCharString() 0x0099E4B0, CCharString(const char*, long) 0x0099EBF0,
+//   ~CCharString 0x0099EAE0, CBasicString<char>::operator== 0x004115A0, malloc 0x00BFEA0E (the comment list's sentinel),
+//   CStringParser::Init(const char*, callback, const CCharString&, long) 0x009B9530, CStringParser::SkipPastWholeString
+//   0x009B9C00 (catalog "CThingCreatureBase::SerialiseGameState" is a propagated label), CStringParser::ReadAsString
+//   0x009BA6F0, CStringParser::SetStringPos 0x009B9940, _stricmp 0x00BFEBA8, CDefinitionManager::CompileDefinition
+//   0x009AE7C0, the comment list's destructor 0x004046B0.
+// Layout: engine/CDefinitionManager.h (ErrorCallback +0xB0, CurrentFilename +0xB4); retail CStringParser (0x28 bytes,
+//   vtable 0x0122D874): vptr, String +4, BaseLineOffset +8, Filename +0xC, TempCharString +0x10, the 4-byte STLport
+//   comment list +0x14, ErrorCallback +0x18, CursorPos +0x1C (12 bytes).
+// Shape: the CStringParser(const char*, ...) constructor and its destructor are inline (CBase, the two strings, the
+//   list's malloc'd self-linked sentinel, then Init); the marker temporaries are homed in the dead `text` argument slot;
+//   the two loops are written out (retail repeats the block, it is not a shared helper). Two spellings matter: the
+//   marker goes through the implicit const char* -> CCharString conversion (an explicit CCharString("...") temporary
+//   takes the dead `text` slot from the loop's class-name string), and CBasicString<char>::operator== has a same-TU
+//   noinline body so VC7.1 keeps defType's data pointer in ebx across the call (declaration-only reloads it).
+// Fix (sweep 3, FINDINGS chunk 482): `this` is CDefinitionManager itself -- the engine header's struct is included under a
+//   layout name and CDefinitionManager derives from it -- so the function and its CompileDefinition callee bind the PDB
+//   symbols ?CompileString@CDefinitionManager@@IAE... / ?CompileDefinition@CDefinitionManager@@IAEXAAVCStringParser@@...
+//   (protected, FableWin/Ego_r name sets) instead of the CDefinitionManager_Methods wrapper's. Same bytes.
+#include "fable_compiler.h"
+#include <string.h>
+// Name fix (NF216, 2026-11-21, q12378): ported onto fable_string.h: the local CBasicString / CCharStringData / CCharString models
+//   and the same-TU strcmp stand-in for CBasicString<char>::operator==(const char*) (auto_inline(off)) are replaced by FABLE_RETAIL_CCHARSTRING
+//   with FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ (the inline CCharString::operator==) + FABLE_RETAIL_CBASICSTRING_COMPARE_BODY +
+//   FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO (the visible, called 0x004115A0 body); GetString -> the header GetAsCharArray
+//   (NullChar 0x0129AAF4, was the stand-in g_emptyLiteral_0129aaf4). The pick-any ??8?$CBasicString@D@@QBE_NPBD@Z copy this object
+//   carries is now the owner's 88-byte body, equal in bytes and relocation targets.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO
+#include "fable_string.h"
+#define CDefinitionManager CDefinitionManagerLayout
+#include "engine/CDefinitionManager.h"
+#undef CDefinitionManager
+#pragma intrinsic(strcmp)
+
+extern "C" void* __cdecl malloc(unsigned int size);                 // 0x00BFEA0E
+extern "C" int __cdecl _stricmp(const char* left, const char* right);   // 0x00BFEBA8
+
+typedef void (__fastcall* TParserErrorCallback)(const CCharString& message);
+
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (the visible out-of-line _List_base dtor) and the element by engine/CStringParser.h's partial mode: the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#define FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY
+#include "engine/CStringParser.h"
+#include "stlport/fable_containers.h"
+
+class CStringParser : public CBaseClass                      // vtable 0x0122D874, 0x28 bytes
+{
+public:
+    const char*   String;                               // +0x04
+    unsigned long BaseLineOffset;                       // +0x08
+    CCharString   Filename;                             // +0x0C
+    CCharString   TempCharString;                       // +0x10
+    std::list<CStringParserCommentBoundaries> Comments; // +0x14
+    TParserErrorCallback ErrorCallback;                 // +0x18
+    unsigned long CursorLine;                           // +0x1C CursorPos (12 bytes)
+    unsigned long StringPos;                            // +0x20
+    unsigned long CursorColumn;                         // +0x24
+    CStringParser(const char* text, TParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset)
+    {
+        Init(text, errorCallback, filename, baseLineOffset);
+    }
+    void Init(const char* text, TParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
+    bool SkipPastWholeString(const CCharString& text);  // 0x009B9C00
+    CCharString ReadAsString();                         // 0x009BA6F0
+    void SetStringPos(unsigned long position);          // 0x009B9940
+};
+
+class CDefinitionManager : public CDefinitionManagerLayout   // the engine header's layout, the PDB's methods
+{
+public:
+    const CCharString& CurrentFilename() const { return *(const CCharString*)&CurrentFilename_PStringData; }
+protected:
+    void CompileDefinition(CStringParser& parser, const CCharString& defType, const CCharString& defName);   // 0x009AE7C0
+    void CompileString(const char* text, const CCharString& defType);
+};
+
+void CDefinitionManager::CompileString(const char* text, const CCharString& defType)
+{
+    CStringParser parser(text, (TParserErrorCallback)ErrorCallback, CurrentFilename(), 0);
+    while (parser.SkipPastWholeString("#definition_template")) {
+        CCharString type = parser.ReadAsString();
+        CCharString name = parser.ReadAsString();
+        if (defType == "" || _stricmp(defType.GetAsCharArray(), type.GetAsCharArray()) == 0)
+            CompileDefinition(parser, type, name);
+    }
+    parser.SetStringPos(0);
+    while (parser.SkipPastWholeString("#definition")) {
+        CCharString type = parser.ReadAsString();
+        CCharString name = parser.ReadAsString();
+        if (defType == "" || _stricmp(defType.GetAsCharArray(), type.GetAsCharArray()) == 0)
+            CompileDefinition(parser, type, name);
+    }
+}

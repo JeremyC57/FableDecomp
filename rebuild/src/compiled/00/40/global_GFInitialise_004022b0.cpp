@@ -59,14 +59,14 @@ class CDisplayManager
     fable_i32 displayWidth1C8;                  // current mode width, halved for UI centring
 
     // Can the device create textures at this bit depth?
-    bool IsTextureBitDepthSupported(int bitDepth);
+    bool IsTextureBitDepthSupported(unsigned long bitDepth);
 };
 #pragma pack(pop)
 
 struct CXMVPlayer
 {
     // Registers the XMV movie player with the engine's video playback hooks.
-    static void GlobalRegisterPlayer();
+    static void __fastcall GlobalRegisterPlayer();   // PDB SIXXZ (static __fastcall; no arguments, same call bytes)
 };
 
 // Accessor for the engine root object.

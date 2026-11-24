@@ -1,4 +1,12 @@
-bool __fastcall CCreatureAction_SheatheItemToInventory_ForEnflame_IsToEvadeAllHits()
+// Leaf: ?IsToEvadeAllHits@CCreatureAction_SheatheItemToInventory_ForEnflame@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_RTTI_DECLS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_CLASS
+#include "engine/CCreatureAction_SheatheItemToInventory.h"
+#include "engine/CCreatureAction_SheatheItemToInventory_ForEnflame.h"
+bool CCreatureAction_SheatheItemToInventory_ForEnflame::IsToEvadeAllHits() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v4, NF324): CCreatureAction_SheatheItemToInventory_ForEnflame_IsToEvadeAllHits -> CCreatureAction_SheatheItemToInventory_ForEnflame::IsToEvadeAllHits, the RTTI-placed PDB member; class model: engine/CCreatureAction_SheatheItemToInventory_ForEnflame.h opt-in FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_CLASS, FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_RTTI_DECLS (preamble of CTCSpecialAbilities_SetupEnflameSpell_0072c790.cpp).

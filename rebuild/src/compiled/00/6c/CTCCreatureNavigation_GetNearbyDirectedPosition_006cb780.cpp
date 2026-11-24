@@ -33,14 +33,14 @@ protected:
 class CTCCreatureNavigation : public CTCBase { public:
     unsigned char _pad04[0x0c - 0x04];
     CNavigatorBase* PNavigator;                         // +0x0c
-    bool GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread, C3DVector* out);
+    bool GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread, C3DVector& out) const;
 };
 
-bool CTCCreatureNavigation::GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread, C3DVector* out)
+bool CTCCreatureNavigation::GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread, C3DVector& out) const
 {
-    *out = PNavigator->GetNearbyDirectedPosition(from, distance, C2DVector(direction.X, direction.Y), spread);
-    if (PeekWorldMap().IsPosInMap(*out)) {
-        C3DVector delta = *out - from;
+    out = PNavigator->GetNearbyDirectedPosition(from, distance, C2DVector(direction.X, direction.Y), spread);
+    if (PeekWorldMap().IsPosInMap(out)) {
+        C3DVector delta = out - from;
         if (delta.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             return true;
     }

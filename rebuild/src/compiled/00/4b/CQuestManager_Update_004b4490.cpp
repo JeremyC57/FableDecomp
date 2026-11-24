@@ -52,7 +52,7 @@ class CGameScriptInterface { public:
     long          MainPlayerID;                        // +0x1c
 };
 class CScriptBase { public:
-    void UpdateScript();                               // 0x00CB8220
+    void RunSubThreads();                               // 0x00CB8220; NF296: PDB name, was UpdateScript
 };
 struct CActiveQuest {
     long         ID;                                   // +0x00
@@ -111,7 +111,7 @@ class CQuestManager { public:
     CActiveQuest*            PQuestCurrentlyRunning;   // +0x88
     unsigned char            _pad8c[4];                // DayActive .. QuestCardsNeedUpdating
     long                     HeroMapNumber;            // +0x90
-    bool IsQuestActive(const CCharString& name);       // 0x004AF610
+    bool IsQuestActive(const CCharString& name) const;       // 0x004AF610
     void DeactivateQuest(const CCharString& name, unsigned long reason);   // 0x004B43D0
     void ResetPositionOfAllQuestCards();               // 0x004AFCA0
     void Update();
@@ -132,7 +132,7 @@ void CQuestManager::Update()
         if (quest->PScript != 0) {
             World->QuestRunState->CurrentQuestID = quest->ID;
             PQuestCurrentlyRunning = quest;
-            quest->PScript->UpdateScript();
+            quest->PScript->RunSubThreads();
             PQuestCurrentlyRunning = 0;
         }
     }

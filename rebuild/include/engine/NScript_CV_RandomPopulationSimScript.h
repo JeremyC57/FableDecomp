@@ -18,6 +18,11 @@ public:
     unsigned long GuardCreatureGeneratorIndex;
     CPopulationSim PopulationSim[3];
     long GetCurrentPopulationLevel(POPULATION_TYPES population);
+#ifdef FABLE_RETAIL_RANDOMPOPULATIONSIMSCRIPT_BANDITDEFS
+    // Pass 28 0x00EC32F0, original Ego_r and FableWin spellings; no layout change.
+    CCharString ChooseRandomBanditGruntString(long level);
+    CCharString ChooseRandomBanditFromDefs();
+#endif
 };
 }
 #endif

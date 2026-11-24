@@ -1,0 +1,322 @@
+{
+ "00492f69": [
+  [
+   "// Leaf: SetText\n",
+   "// Leaf: ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z\n",
+   1
+  ],
+  [
+   "    void SetText(CFontBank* font,",
+   "    void SetText(const CFontBank& font,",
+   2
+  ],
+  [
+   "void CSubtitleRenderer::SetText(CFontBank* font,",
+   "void CSubtitleRenderer::SetText(const CFontBank& font,",
+   1
+  ]
+ ],
+ "007e7ac0": [
+  [
+   "    void SetText(CFontBank* font,",
+   "    void SetText(const CFontBank& font,",
+   1
+  ],
+  [
+   "SubtitleRenderer.SetText(font, GetText(def->QuitText)",
+   "SubtitleRenderer.SetText(*font, GetText(def->QuitText)",
+   1
+  ]
+ ],
+ "007132c0": [
+  [
+   "    void SetText(CFontBank* font,",
+   "    void SetText(const CFontBank& font,",
+   3
+  ],
+  [
+   "SubtitleRenderer.SetText(GetFont(), GetCurrentText(), name,",
+   "SubtitleRenderer.SetText(*GetFont(), GetCurrentText(), name,",
+   2
+  ],
+  [
+   "SubtitleRenderer.SetText(font, text, flags,",
+   "SubtitleRenderer.SetText(*font, text, flags,",
+   1
+  ]
+ ],
+ "009261f0": [
+  [
+   "void SetText(CFontBank* font, const CWideString* text, unsigned long colour,",
+   "void SetText(const CFontBank& font, const CWideString& text, unsigned long colour,",
+   1
+  ],
+  [
+   "Subtitles.SetText(CMainGameComponent::Get()->PSubtitleFont, &text, 0x122,",
+   "Subtitles.SetText(*CMainGameComponent::Get()->PSubtitleFont, text, 0x122,",
+   1
+  ]
+ ],
+ "007e27f0": [
+  [
+   "float time, bool flag, unsigned long mode);   // 0x00492E4B",
+   "float time, bool flag, bool mode);   // 0x00492E4B",
+   1
+  ]
+ ],
+ "008929d0": [
+  [
+   "    void SetText(CFontBank* font, const CCharString& text,",
+   "    void SetText(const CFontBank& font, const CCharString& text,",
+   1
+  ],
+  [
+   "        reinterpret_cast<CMainGameComponentFontView*>(Component)->Font, text, a, b, c, d,",
+   "        *reinterpret_cast<CMainGameComponentFontView*>(Component)->Font, text, a, b, c, d,",
+   1
+  ]
+ ],
+ "005eadc0": [
+  [
+   "    void SetText(CFontBank* font,",
+   "    void SetText(const CFontBank& font,",
+   2
+  ],
+  [
+   "Renderer.SetText(CMainGameComponent::Get()->PFont, title,",
+   "Renderer.SetText(*CMainGameComponent::Get()->PFont, title,",
+   1
+  ]
+ ],
+ "006dd7e0": [
+  [
+   "    void SetText(CFontBank* font,",
+   "    void SetText(const CFontBank& font,",
+   2
+  ],
+  [
+   "SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text,",
+   "SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text,",
+   2
+  ]
+ ],
+ "0069fe60": [
+  [
+   "    void OnActionUse(CThing* user);",
+   "    void OnActionUse(CThing& user);",
+   1
+  ],
+  [
+   "->OnActionUse(((CThing*)PCreature.GetPItem()));",
+   "->OnActionUse(*((CThing*)PCreature.GetPItem()));",
+   1
+  ]
+ ],
+ "004de660": [
+  [
+   "    CTCActivationReceptorBase(CThing* argument);",
+   "    CTCActivationReceptorBase(CThing& argument);",
+   1
+  ],
+  [
+   "    : CTCActivationReceptorBase(argument)",
+   "    : CTCActivationReceptorBase(*argument)",
+   1
+  ]
+ ],
+ "004de68b": [
+  [
+   "    CTCActivationReceptorBase(CThing* argument);",
+   "    CTCActivationReceptorBase(CThing& argument);",
+   1
+  ],
+  [
+   "    : CTCActivationReceptorBase(argument)",
+   "    : CTCActivationReceptorBase(*argument)",
+   1
+  ]
+ ],
+ "004e07e3": [
+  [
+   "    CTCActivationReceptorBase(CThing* argument);",
+   "    CTCActivationReceptorBase(CThing& argument);",
+   1
+  ],
+  [
+   "    : CTCActivationReceptorBase(argument)",
+   "    : CTCActivationReceptorBase(*argument)",
+   1
+  ]
+ ],
+ "004d4a69": [
+  [
+   "    CTCBerserk(CThing* owner);",
+   "    CTCBerserk(CThing& owner);",
+   1
+  ],
+  [
+   "return new CTCBerserk(owner);",
+   "return new CTCBerserk(*owner);",
+   1
+  ]
+ ],
+ "004d4c58": [
+  [
+   "    CTCBulletTime(CThing* owner);",
+   "    CTCBulletTime(CThing& owner);",
+   1
+  ],
+  [
+   "return new CTCBulletTime(owner);",
+   "return new CTCBulletTime(*owner);",
+   1
+  ]
+ ],
+ "004d32da": [
+  [
+   "    CTCDoor(CThing* owner);",
+   "    CTCDoor(CThing& owner);",
+   1
+  ],
+  [
+   "return new CTCDoor(owner);",
+   "return new CTCDoor(*owner);",
+   1
+  ]
+ ],
+ "007828e0": [
+  [
+   "    void OnHeroEnteringArea(CThing* hero);          // 0x007827D0\n    void OnHeroLeavingArea(CThing* hero);           // 0x00782860\n",
+   "    private: void OnHeroEnteringArea(CThing& hero);          // 0x007827D0\n    void OnHeroLeavingArea(CThing& hero); public:   // 0x00782860\n",
+   1
+  ],
+  [
+   "            OnHeroEnteringArea(hero);",
+   "            OnHeroEnteringArea(*hero);",
+   2
+  ],
+  [
+   "            OnHeroLeavingArea(hero);",
+   "            OnHeroLeavingArea(*hero);",
+   2
+  ]
+ ],
+ "00782a90": [
+  [
+   "    void OnHeroLeavingArea(CThing* hero);                   // 0x00782860",
+   "    private: void OnHeroLeavingArea(CThing& hero); public:  // 0x00782860",
+   1
+  ],
+  [
+   "            OnHeroLeavingArea(hero);",
+   "            OnHeroLeavingArea(*hero);",
+   1
+  ]
+ ],
+ "00705b00": [
+  [
+   "    bool GetCarriedPositionInfo(C3DVector* position, CRightHandedSet* orientation, bool forceUpdate, float time);   // 0x007055D0",
+   "    bool GetCarriedPositionInfo(C3DVector& position, CRightHandedSet& orientation, bool forceUpdate, float time) const;   // 0x007055D0",
+   1
+  ],
+  [
+   "GetCarriedPositionInfo(&position->StartPosition, &orientation->StartOrientation, false, time);",
+   "GetCarriedPositionInfo(position->StartPosition, orientation->StartOrientation, false, time);",
+   1
+  ]
+ ],
+ "00705b60": [
+  [
+   "    bool GetCarriedPositionInfo(C3DVector* position, CRightHandedSet* orientation, bool forceUpdate, float time);",
+   "    bool GetCarriedPositionInfo(C3DVector& position, CRightHandedSet& orientation, bool forceUpdate, float time) const;",
+   1
+  ],
+  [
+   "GetCarriedPositionInfo(&position, &orientation, forceUpdate, 1.0f)",
+   "GetCarriedPositionInfo(position, orientation, forceUpdate, 1.0f)",
+   1
+  ]
+ ],
+ "006cb780": [
+  [
+   "    bool GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread, C3DVector* out);\n",
+   "    bool GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread, C3DVector& out) const;\n",
+   1
+  ],
+  [
+   "bool CTCCreatureNavigation::GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread, C3DVector* out)\n",
+   "bool CTCCreatureNavigation::GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread, C3DVector& out) const\n",
+   1
+  ],
+  [
+   "    *out = PNavigator->",
+   "    out = PNavigator->",
+   1
+  ],
+  [
+   "IsPosInMap(*out)",
+   "IsPosInMap(out)",
+   1
+  ],
+  [
+   "C3DVector delta = *out - from;",
+   "C3DVector delta = out - from;",
+   1
+  ]
+ ],
+ "0095e900": [
+  [
+   "                                   C3DVector* out);     // 0x006CB780",
+   "                                   C3DVector& out) const;     // 0x006CB780",
+   1
+  ],
+  [
+   "0.33333334f, &directed)",
+   "0.33333334f, directed)",
+   1
+  ]
+ ],
+ "0097fbe0": [
+  [
+   "                                   C3DVector* out);     // 0x006CB780",
+   "                                   C3DVector& out) const;     // 0x006CB780",
+   1
+  ],
+  [
+   "0.25277778f, &dest)",
+   "0.25277778f, dest)",
+   1
+  ]
+ ],
+ "009804a0": [
+  [
+   "                                   C3DVector* out);     // 0x006CB780",
+   "                                   C3DVector& out) const;     // 0x006CB780",
+   1
+  ],
+  [
+   "0.25277778f, &dest)",
+   "0.25277778f, dest)",
+   1
+  ]
+ ],
+ "00896df0": [
+  [
+   "    void __fastcall Activate(CCharString screenName);",
+   "    void Activate(CCharString screenName);",
+   1
+  ]
+ ],
+ "00750540": [
+  [
+   "    void SetEmitterOrientation(CRightHandedSet* orientation);   // 0x006E0480",
+   "    void SetEmitterOrientation(const CRightHandedSet& orientation);   // 0x006E0480",
+   1
+  ],
+  [
+   "emitter->SetEmitterOrientation(ParentThing->Physics->GetOrientation());",
+   "emitter->SetEmitterOrientation(*ParentThing->Physics->GetOrientation());",
+   1
+  ]
+ ]
+}

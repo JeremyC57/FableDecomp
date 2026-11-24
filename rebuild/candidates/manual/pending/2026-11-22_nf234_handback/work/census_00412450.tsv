@@ -1,0 +1,30 @@
+004091c0	GRADE	RELOCATION_MATCH	?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z	/GS
+	004091c0	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+0040bca0	GRADE	RELOCATION_MATCH	?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z	/GS
+	0040bca0	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x2
+0040c790	GRADE	RELOCATION_MATCH	?SetDefaultValues@CUserProfileManager@@QAEXXZ	
+	0040c790	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x2
+00412b20	GRADE	RELOCATION_MATCH	?resize@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXIABVCWideString@@@Z	  
+	00412b20	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+00412b70	GRADE	RELOCATION_MATCH	?resize@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXI@Z	  
+	00412b70	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+0042ebb6	GRADE	RELOCATION_MATCH	?Shutdown@CNewFrontendGameComponent@@AAEXXZ	  
+	0042ebb6	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+0047fe83	GRADE	RELOCATION_MATCH	?GetFileNameList@CTCInGameMenu@@AAEXXZ	  
+	0047fe83	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+00492381	GRADE	RELOCATION_MATCH	?ProcessEmbeddedGraphicTags@CSubtitleRenderer@@AAEXXZ	  
+	00492381	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+00495830	GRADE	RELOCATION_MATCH	?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	  
+	00495830	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+00495890	GRADE	RELOCATION_MATCH	?GetWorldNames@CFrontendGameComponent@@AAEXXZ	/GS
+	00495890	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+004959e0	GRADE	RELOCATION_MATCH	?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	/GS
+	004959e0	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+005955ab	GRADE	RELOCATION_MATCH	?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	/GS
+	005955ab	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+00597df7	GRADE	RELOCATION_MATCH	?GetSavedGameNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	  
+	00597df7	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x1
+005fdad0	GRADE	RELOCATION_MATCH		  
+	005fdad0	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x3
+00606300	GRADE	RELOCATION_MATCH	?OnSerialise@CTCInventoryMap@@MAEXAAVCPersistContext@@_N@Z	  
+	00606300	00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	rel32	x3

@@ -1,0 +1,9 @@
+# Verifying the movie destructor in its owner translation unit
+
+The shipped leaf uses the authenticated counted-pointer destructor at both normal exits. Its object includes one 25-byte MovieBase destructor. The native owner has 66 bytes. Keep this row in HELD_PICKANY under the single-object rule.
+
+Compile movie_lifetime_owner_control.cpp as a separate translation unit using the merged headers, VC7.1 RTM and /O2 /Oy /W3. The test function materializes the original implicit CScriptGameResourceObjectMovieBase destructor. Its 66 bytes and the 53-byte counted-handle destructor agree with the native owners when relocation operands are masked. The four operands inside the owners resolve to scalar operator delete, the resource base vtable and the CBaseObject destructor. BINDING_EVIDENCE.json records each offset and target.
+
+A diagnostic LINK run used /DLL /NOENTRY /NODEFAULTLIB /FORCE:UNRESOLVED /OPT:NOREF /OPT:NOICF and a map. With the owner object first, both destructor copies and all six linked call targets from the guard agree with retail. Reversing the two objects selects the smaller MovieBase copy. Other game imports were left unresolved for this static inspection. The separate native behavior fixture passed on the merged headers. Run the normal per-row grader before landing.
+
+The control was independently replayed on header tree `ecee975d2a37`. The owner-first link again gives both native destructor bodies and all six checked call targets. The guard-first link still selects the small MovieBase wrapper. A same-compiland copy of the independently matched 11-byte `MovieBase::Release` and placement changes in the original counted-pointer definitions leave the single-object result held. The exact original scope records, copy checks and replay tags are in `BINDING_EVIDENCE.json`.

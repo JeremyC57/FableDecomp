@@ -29,14 +29,14 @@ typedef unsigned int PlacementSize;
 #endif
 inline void* operator new(PlacementSize,void* p) { return p; }
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable:public CBaseClass{};class CMovableResource{public:virtual ~CMovableResource(){}virtual unsigned long Verify()const{return 0;}virtual bool CanRelocateData(long)const{return true;}};class CFailedAllocationHandler{public:virtual ~CFailedAllocationHandler(){} };class CEngineLandscapeMemoryManager:public CFailedAllocationHandler,public CMovableResource{public:void FreeVirtual(void*);};extern CEngineLandscapeRenderer* g_LandscapeRenderer_01436EA8;
+class CBaseClassNonCopyable:public CBaseClass{};class CMovableResource{public:virtual ~CMovableResource(){}virtual unsigned long Verify()const{return 0;}virtual bool CanRelocateData(long)const{return true;}};class CFailedAllocationHandler{public:virtual ~CFailedAllocationHandler(){} };class CEngineLandscapeMemoryManager:public CFailedAllocationHandler,public CMovableResource{public:void FreeVirtual(void*);};namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }
 #include "engine/C3DVector.h"
 class C3DBoundingBox{public:C3DVector MinCoord,MaxCoord;};class C3DBoundingSphere{public:C3DVector Center;float Radius;};template<class T>class CEdgeStipVertexArray{public:T* Data;long Count;};class CPatchTesselationEdgeStrip:public CBaseClassNonCopyable{public:struct CVertex;struct CFanBaseVertex;struct CWaterVertex;struct CWaterFanBaseVertex;unsigned short StartPos,Size;CEdgeStipVertexArray<CVertex> Verts;CEdgeStipVertexArray<CFanBaseVertex> FanBaseVerts;CEdgeStipVertexArray<CWaterVertex> WaterVerts;CEdgeStipVertexArray<CWaterFanBaseVertex> WaterFanBaseVerts;bool Tesselated,Vertical;};
 class CLandscapeBackgroundSubNodeBase:public CMovableResource{};class CLocalDetailCacheMap;class CLocalDetailObjectCollectionType;class CLocalDetailPrimitiveBase:public CMovableResource{public:CLocalDetailPrimitiveBase* Next;C3DBoundingBox BoundingBox;C3DBoundingSphere BoundingSphere;CLocalDetailObjectCollectionType* Type;CLocalDetailCacheMap* Map;};class CEnginePersistentPrimitiveBase;class CIVCountedPointeeBase;template<class T>class CIVCountedPointer{public:CIVCountedPointeeBase* Object;};class CEnginePrimitiveHandle:public CBaseClass{public:CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;};
 enum LANDSCAPE_TEXTURE_MAPPING_DIRECTION{LANDSCAPE_MAPPING_UNNAMED=0};
 class CLocalDetailPrimitiveMeshZSpriteBatch:public CLocalDetailPrimitiveBase{public:
 class CObject;class CObjectEntry;CObject* Objects;CObjectEntry* ZSpriteEntries;long ObjectCount;bool HasMeshPrimitiveHandles;CEnginePrimitiveHandle ZSpriteHandle;
-virtual ~CLocalDetailPrimitiveMeshZSpriteBatch();static void operator delete(void* p){g_LandscapeRenderer_01436EA8->MemoryManager->FreeVirtual(p);}};
+virtual ~CLocalDetailPrimitiveMeshZSpriteBatch();static void operator delete(void* p){NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(p);}};
 #ifdef _MSC_VER
 typedef char ExactOwnerSize[(sizeof(CLocalDetailPrimitiveMeshZSpriteBatch)==80)?1:-1];
 #endif

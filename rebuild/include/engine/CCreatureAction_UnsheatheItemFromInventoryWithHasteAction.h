@@ -21,10 +21,15 @@ public:
  CCreatureAction_UnsheatheItemFromInventoryWithHasteAction(void* haste_key, CThingCreatureBase& creature, const CCharString& animation,
                                                            CThing& item, long, long, CCreatureActionBase* follow_up);   // 0x0069F1F0
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNSHEATHEHASTE_PERFORMACTION
+ // NF270 opt-in (row 0x0069FCD0): Ego_r.pdb 0x006C4FB0 + FableWin.pdb 0x02212790 ?PerformAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ
+ // (public virtual, both PDBs list it before FinishAction); retail vtable 0x0125CDDC slot 3 = 0x0069FCD0 (`jmp 0x0069F9E0`). Declaration only.
+ virtual void PerformAction();                                           // 0x0069FCD0
+#endif
 virtual void FinishAction();
 private:void* HasteKey;
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction)==0xbc);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction)==0xbc);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_UnsheatheItemFromInventoryWithHasteAction {
@@ -71,9 +76,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction, HasteKey) == 0xb8);
+FABLE_STATIC_ASSERT_AT(74, sizeof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction) == 0xbc);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction, HasteKey) == 0xb8);
 
 #endif // retail branch
 #endif // FABLE_ENGINE_CCREATUREACTION_UNSHEATHEITEMFROMINVENTORYWITHHASTEACTION_H

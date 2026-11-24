@@ -1,6 +1,6 @@
 // CRenderManager2D::Draw2DTriangle(const C2DVector&, const C2DVector&, const C2DVector&, const CRGBColour&, unsigned long) -- queue a flat-coloured screen-space triangle
 // Leaf: Draw2DTriangle
-// Retail 0x009DDFF0, 329 bytes, ret 0x14. Callees: GFAXToVX 0x009E1E10 / GFAYToVY 0x009E1E40 (__stdcall float), the
+// Retail 0x009DDFF0, 329 bytes, ret 0x14. Callees: GFVXToAX 0x009E1E10 / GFVYToAY 0x009E1E40 (__fastcall float), the
 // screen RHW float 0x0139652C, CRenderManager2D::Add2DTri 0x009DC030 (v0, v1, v2, mode, texture).
 // Shape: the three CTVertexRHWColSpecTex1 are an array (separate locals get the reverse frame order) filled field by
 // field (Specular left unset as in retail) with the RHW copied last, so the global is re-read for each vertex; the
@@ -18,8 +18,8 @@ class CTVertexRHWColSpecTex1 { public:
     unsigned long Specular;
     float U, V;
 };
-float __stdcall GFAXToVX(float x);                 // 0x009E1E10
-float __stdcall GFAYToVY(float y);                 // 0x009E1E40
+float __fastcall GFVXToAX(float x);                 // 0x009E1E10
+float __fastcall GFVYToAY(float y);                 // 0x009E1E40
 extern const float BIGGEST_RHW_VERTEX_VALUE;                          // 0x0139652C (S_LDATA32 const float in both PDBs; the spelling engine/CTVertexRHWColSpecTex1.h declares)
 
 struct CRenderManager2D {
@@ -35,22 +35,22 @@ bool CRenderManager2D::Draw2DTriangle(const C2DVector& p0, const C2DVector& p1, 
     unsigned long argb = colour.GetARGB();
     long mode = 1;
     CTVertexRHWColSpecTex1 v[3];
-    v[0].X = GFAXToVX(p0.X);
-    v[0].Y = GFAYToVY(p0.Y);
+    v[0].X = GFVXToAX(p0.X);
+    v[0].Y = GFVYToAY(p0.Y);
     v[0].Z = 0.0f;
     v[0].Diffuse = argb;
     v[0].U = 0.0f;
     v[0].V = 0.0f;
     v[0].RHW = BIGGEST_RHW_VERTEX_VALUE;
-    v[1].X = GFAXToVX(p1.X);
-    v[1].Y = GFAYToVY(p1.Y);
+    v[1].X = GFVXToAX(p1.X);
+    v[1].Y = GFVYToAY(p1.Y);
     v[1].Z = 0.0f;
     v[1].Diffuse = argb;
     v[1].U = 0.0f;
     v[1].V = 0.0f;
     v[1].RHW = BIGGEST_RHW_VERTEX_VALUE;
-    v[2].X = GFAXToVX(p2.X);
-    v[2].Y = GFAYToVY(p2.Y);
+    v[2].X = GFVXToAX(p2.X);
+    v[2].Y = GFVYToAY(p2.Y);
     v[2].Z = 0.0f;
     v[2].Diffuse = argb;
     v[2].U = 0.0f;

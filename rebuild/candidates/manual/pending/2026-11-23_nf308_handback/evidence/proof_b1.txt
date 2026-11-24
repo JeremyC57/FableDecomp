@@ -1,0 +1,4 @@
+##### 007032f0 renames: ?SetRotationAngle@CTCGraphicAppearanceSprite@@QAEXM@Z=?SetRotationAngle@CTCGraphicAppearanceSprite@NGraphicAppearance@@QAEXM@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=9
+tables H=0 N=0

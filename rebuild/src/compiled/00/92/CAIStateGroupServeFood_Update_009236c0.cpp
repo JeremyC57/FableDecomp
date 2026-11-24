@@ -1,5 +1,5 @@
 // CAIStateGroup_ServeFood::Update() -- serve at a tavern table: mark the table's 0xB8 component occupied; state 1 walks to the table, makes a food object, puts it in the creature's carry slot (the food's CCarryableDef slot) and puts the tankard down, telling the table the food was served; state 2 walks to the table and, if the table's food for our task lives, takes it off the table, drops and destroys it and tells the table; then replace and terminate the state group
-// Leaf: ?Update@CAIStateGroup_ServeFood@@UAEXXZ
+// Leaf: ?Update@CAIStateGroup_ServeFood@@MAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
@@ -140,7 +140,9 @@ struct CAIStateGroup_ServeFood : CAIStateGroupBase {
     long Mode;                                  // +0x48 (ServingMode)
     bool WalkTo(C3DVector pos, CRightHandedSet rhSet);   // 0x00922FC0
     CThingObject* MakeFood(const C3DVector* position, CThing* owner);     // 0x00923510
+    protected:
     virtual void Update();
+    public:
 };
 
 void CAIStateGroup_ServeFood::Update()

@@ -1,0 +1,5 @@
+05:36:25 PASS /home/user/FableDecomp/rebuild/tests/00/57/CTCHeroStats_GetRandomBeardName_0057b9d7_test.cpp
+05:36:25 PASS /home/user/FableDecomp/rebuild/tests/00/99/CAFile_PathExists_00999230_test.cpp
+05:36:25 PASS /home/user/FableDecomp/rebuild/tests/00/bd/CEngineLandscapeMap_UpdateBackgroundLOD_00bdc180_test.cpp
+05:36:25 PASS /home/user/FableDecomp/rebuild/tests/00/89/CGameScriptInterface_EntityGetThingInPrimarySlot_008976f0_test.cpp
+05:36:25 PASS /home/user/FableDecomp/rebuild/tests/00/52/CThingBuilding_scalardeletingdestructor_005299a0_test.cpp

@@ -1,0 +1,30 @@
+## 00548790
+5c5
+< UND ?GetMaxAntialiasing@CUserProfileManager@@QBEJXZ
+---
+> UND ?GetMaxAntialiasing@CUserProfileManager@@QBEKXZ
+## 004164e0
+9c9
+< UND ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z
+---
+> UND ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
+## 0088f920
+2c2
+< UND ?AutoSaveQuestStart@CWorld@@QAEXXZ
+---
+> UND ?AutoSaveQuestStart@CWorld@@QAE_NXZ
+## 0065c781
+52c52
+< UND ?PopulateRegionWithVillagers@CWorldMap@@QAEXPAVCThing@@@Z
+---
+> UND ?PopulateRegionWithVillagers@CWorldMap@@QAEXAAVCThing@@@Z
+## 0050af10
+20c20
+< UND ?GetMapNavigationAreaInit@CWorldMap@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
+---
+> UND ?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
+## 004022b0
+9c9
+< UND ?GlobalRegisterPlayer@CXMVPlayer@@SAXXZ
+---
+> UND ?GlobalRegisterPlayer@CXMVPlayer@@SIXXZ

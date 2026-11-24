@@ -13,7 +13,7 @@ class CThingBuilding;
 
 class CIsHouseLargerThan { public:
     char m_tag;
-    bool operator()(CThingBuilding* a, CThingBuilding* b) const;   // 0x00512410
+    bool operator()(const CThingBuilding* a, const CThingBuilding* b) const;   // 0x00512410
 };
 
 void __fastcall _Push_heap(CThingBuilding** first, long hole, long top, CThingBuilding* value, CIsHouseLargerThan comp)

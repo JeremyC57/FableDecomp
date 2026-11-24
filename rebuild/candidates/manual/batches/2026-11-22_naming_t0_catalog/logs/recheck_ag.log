@@ -1,0 +1,311 @@
+addr       parity           behav  name
+004e52b3   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<long>>' matches no symbol in 004e52b3.obj; graded the largest function
+  WARN leaf 'less<long>>' matches no symbol in 004e52b3.obj; graded the largest function
+004e52b3   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004e52b3   WARN STANDIN_LEAF ?WriteState_004e52b3@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<long,long,std::less<long>>; address-only name)
+004e52b3   RELOCATION_MATCH PASS   less<long>>
+004e5636   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EClothingSuitPart>>' matches no symbol in 004e5636.obj; graded the largest function
+  WARN leaf 'less<EClothingSuitPart>>' matches no symbol in 004e5636.obj; graded the largest function
+004e5636   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004e5636   WARN STANDIN_LEAF ?WriteState_004e5636@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<long,EClothingSuitPart,std::less<EClothingSuitPart>>; address-only name)
+004e5636   RELOCATION_MATCH PASS   less<EClothingSuitPart>>
+004e628d   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EIdleStateGroup>>' matches no symbol in 004e628d.obj; graded the largest function
+  WARN leaf 'less<EIdleStateGroup>>' matches no symbol in 004e628d.obj; graded the largest function
+004e628d   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004e628d   WARN STANDIN_LEAF ?WriteState_004e628d@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<long,EIdleStateGroup,std::less<EIdleStateGroup>>; address-only name)
+004e628d   RELOCATION_MATCH PASS   less<EIdleStateGroup>>
+004e67c0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EQuakeStrength>>' matches no symbol in 004e67c0.obj; graded the largest function
+  WARN leaf 'less<EQuakeStrength>>' matches no symbol in 004e67c0.obj; graded the largest function
+004e67c0   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004e67c0   WARN STANDIN_LEAF ?WriteState_004e67c0@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<float,EQuakeStrength,std::less<EQuakeStrength>>; address-only name)
+004e67c0   RELOCATION_MATCH PASS   less<EQuakeStrength>>
+004e6a5b   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EQuakeLength>>' matches no symbol in 004e6a5b.obj; graded the largest function
+  WARN leaf 'less<EQuakeLength>>' matches no symbol in 004e6a5b.obj; graded the largest function
+004e6a5b   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004e6a5b   WARN STANDIN_LEAF ?WriteState_004e6a5b@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<float,EQuakeLength,std::less<EQuakeLength>>; address-only name)
+004e6a5b   RELOCATION_MATCH PASS   less<EQuakeLength>>
+004e7a62   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EQuestCardPrerequisite>>' matches no symbol in 004e7a62.obj; graded the largest function
+  WARN leaf 'less<EQuestCardPrerequisite>>' matches no symbol in 004e7a62.obj; graded the largest function
+004e7a62   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004e7a62   WARN STANDIN_LEAF ?WriteState_004e7a62@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<long,EQuestCardPrerequisite,std::less<EQuestCardPrerequisite>>; address-only name)
+004e7a62   RELOCATION_MATCH PASS   less<EQuestCardPrerequisite>>
+004e9356   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EObjectAugmentationType>>' matches no symbol in 004e9356.obj; graded the largest function
+  WARN leaf 'less<EObjectAugmentationType>>' matches no symbol in 004e9356.obj; graded the largest function
+004e9356   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004e9356   WARN STANDIN_LEAF ?WriteState_004e9356@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<long,EObjectAugmentationType,std::less<EObjectAugmentationType>>; address-only name)
+004e9356   RELOCATION_MATCH PASS   less<EObjectAugmentationType>>
+004ec62f   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EObjectAugmentationType>>' matches no symbol in 004ec62f.obj; graded the largest function
+  WARN leaf 'less<EObjectAugmentationType>>' matches no symbol in 004ec62f.obj; graded the largest function
+004ec62f   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004ec62f   WARN STANDIN_LEAF ?WriteState_004ec62f@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<CDefString,EObjectAugmentationType,std::less<EObjectAugmentationType>>; address-only name)
+004ec62f   RELOCATION_MATCH PASS   less<EObjectAugmentationType>>
+00415890   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00415890   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'CUILocaleGraphicsDef>' matches no symbol in 00415890.obj; graded the largest function
+  WARN leaf 'CUILocaleGraphicsDef>' matches no symbol in 00415890.obj; graded the largest function
+00415890   WARN STANDIN_LEAF ?GetDef_00415890@CDefinitionManager@@QAE_NABVCCharString@@AAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<NUISystem::CUILocaleGraphicsDef>; address-only name)
+00415890   RELOCATION_MATCH PASS   CUILocaleGraphicsDef>
+0042b144   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0042b144   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CDefClassBase>' matches no symbol in 0042b144.obj; graded the largest function
+  WARN leaf 'GetDef<CDefClassBase>' matches no symbol in 0042b144.obj; graded the largest function
+0042b144   WARN STANDIN_LEAF ?GetDef_0042b144@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CDefClassBase>; address-only name)
+0042b144   RELOCATION_MATCH PASS   GetDef<CDefClassBase>
+004ab920   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+004ab920   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CCameraManagerSetDef>' matches no symbol in 004ab920.obj; graded the largest function
+  WARN leaf 'GetDef<CCameraManagerSetDef>' matches no symbol in 004ab920.obj; graded the largest function
+004ab920   WARN STANDIN_LEAF ?GetDef_004ab920@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CCameraManagerSetDef>; address-only name)
+004ab920   RELOCATION_MATCH PASS   GetDef<CCameraManagerSetDef>
+004ab990   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+004ab990   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CCameraManagerSetDef>' matches no symbol in 004ab990.obj; graded the largest function
+  WARN leaf 'GetDef<CCameraManagerSetDef>' matches no symbol in 004ab990.obj; graded the largest function
+004ab990   WARN STANDIN_LEAF ?GetDef_004ab990@CDefinitionManager@@QAE_NABVCCharString@@AAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CCameraManagerSetDef>; address-only name)
+004ab990   RELOCATION_MATCH PASS   GetDef<CCameraManagerSetDef>
+0057ff30   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0057ff30   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesDrunkennessDef>' matches no symbol in 0057ff30.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesDrunkennessDef>' matches no symbol in 0057ff30.obj; graded the largest function
+0057ff30   WARN STANDIN_LEAF ?GetDef_0057ff30@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesDrunkennessDef>; address-only name)
+0057ff30   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesDrunkennessDef>
+005f89f2   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005f89f2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CHeroAbilityDef>' matches no symbol in 005f89f2.obj; graded the largest function
+  WARN leaf 'GetDef<CHeroAbilityDef>' matches no symbol in 005f89f2.obj; graded the largest function
+005f89f2   WARN STANDIN_LEAF ?GetDef_005f89f2@CDefinitionManager@@QAE_NABVCCharString@@JAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CHeroAbilityDef>; address-only name)
+005f89f2   RELOCATION_MATCH PASS   GetDef<CHeroAbilityDef>
+005f8a57   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005f8a57   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesFireballSpellDef>' matches no symbol in 005f8a57.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesFireballSpellDef>' matches no symbol in 005f8a57.obj; graded the largest function
+005f8a57   WARN STANDIN_LEAF ?GetDef_005f8a57@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesFireballSpellDef>; address-only name)
+005f8a57   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesFireballSpellDef>
+005f8ab9   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005f8ab9   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesUnholyPowerDef>' matches no symbol in 005f8ab9.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesUnholyPowerDef>' matches no symbol in 005f8ab9.obj; graded the largest function
+005f8ab9   WARN STANDIN_LEAF ?GetDef_005f8ab9@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesUnholyPowerDef>; address-only name)
+005f8ab9   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesUnholyPowerDef>
+005f8b1b   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005f8b1b   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesDivineWrathDef>' matches no symbol in 005f8b1b.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesDivineWrathDef>' matches no symbol in 005f8b1b.obj; graded the largest function
+005f8b1b   WARN STANDIN_LEAF ?GetDef_005f8b1b@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesDivineWrathDef>; address-only name)
+005f8b1b   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesDivineWrathDef>
+00637650   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00637650   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CCameraModeDef>' matches no symbol in 00637650.obj; graded the largest function
+  WARN leaf 'GetDef<CCameraModeDef>' matches no symbol in 00637650.obj; graded the largest function
+00637650   WARN STANDIN_LEAF ?GetDef_00637650@CDefinitionManager@@QAE_NABVCCharString@@AAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CCameraModeDef>; address-only name)
+00637650   RELOCATION_MATCH PASS   GetDef<CCameraModeDef>
+006697e0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006697e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CHeroCombatDef>' matches no symbol in 006697e0.obj; graded the largest function
+  WARN leaf 'GetDef<CHeroCombatDef>' matches no symbol in 006697e0.obj; graded the largest function
+006697e0   WARN STANDIN_LEAF ?GetDef_006697e0@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CHeroCombatDef>; address-only name)
+006697e0   RELOCATION_MATCH PASS   GetDef<CHeroCombatDef>
+00685e70   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00685e70   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<COpinionPersonalityDef>' matches no symbol in 00685e70.obj; graded the largest function
+  WARN leaf 'GetDef<COpinionPersonalityDef>' matches no symbol in 00685e70.obj; graded the largest function
+00685e70   WARN STANDIN_LEAF ?GetDef_00685e70@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<COpinionPersonalityDef>; address-only name)
+00685e70   RELOCATION_MATCH PASS   GetDef<COpinionPersonalityDef>
+006f0e80   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006f0e80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CAttackPatternDef>' matches no symbol in 006f0e80.obj; graded the largest function
+  WARN leaf 'GetDef<CAttackPatternDef>' matches no symbol in 006f0e80.obj; graded the largest function
+006f0e80   WARN STANDIN_LEAF ?GetDef_006f0e80@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CAttackPatternDef>; address-only name)
+006f0e80   RELOCATION_MATCH PASS   GetDef<CAttackPatternDef>
+00737f80   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00737f80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CMeleeCombatAbilityDef>' matches no symbol in 00737f80.obj; graded the largest function
+  WARN leaf 'GetDef<CMeleeCombatAbilityDef>' matches no symbol in 00737f80.obj; graded the largest function
+00737f80   WARN STANDIN_LEAF ?GetDef_00737f80@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CMeleeCombatAbilityDef>; address-only name)
+00737f80   RELOCATION_MATCH PASS   GetDef<CMeleeCombatAbilityDef>
+00737ff0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00737ff0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CMeleeCombatAbilityDef>' matches no symbol in 00737ff0.obj; graded the largest function
+  WARN leaf 'GetDef<CMeleeCombatAbilityDef>' matches no symbol in 00737ff0.obj; graded the largest function
+00737ff0   WARN STANDIN_LEAF ?GetDef_00737ff0@CDefinitionManager@@QAE_NABVCCharString@@AAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CMeleeCombatAbilityDef>; address-only name)
+00737ff0   RELOCATION_MATCH PASS   GetDef<CMeleeCombatAbilityDef>
+0074f760   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0074f760   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CObjectFamilyDef>' matches no symbol in 0074f760.obj; graded the largest function
+  WARN leaf 'GetDef<CObjectFamilyDef>' matches no symbol in 0074f760.obj; graded the largest function
+0074f760   WARN STANDIN_LEAF ?GetDef_0074f760@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CObjectFamilyDef>; address-only name)
+0074f760   RELOCATION_MATCH PASS   GetDef<CObjectFamilyDef>
+00792350   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00792350   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CHeroAbilityDef>' matches no symbol in 00792350.obj; graded the largest function
+  WARN leaf 'GetDef<CHeroAbilityDef>' matches no symbol in 00792350.obj; graded the largest function
+00792350   WARN STANDIN_LEAF ?GetDef_00792350@CDefinitionManager@@QAE_NABVCCharString@@AAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CHeroAbilityDef>; address-only name)
+00792350   RELOCATION_MATCH PASS   GetDef<CHeroAbilityDef>
+007923c0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007923c0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CMessageEventDef>' matches no symbol in 007923c0.obj; graded the largest function
+  WARN leaf 'GetDef<CMessageEventDef>' matches no symbol in 007923c0.obj; graded the largest function
+007923c0   WARN STANDIN_LEAF ?GetDef_007923c0@CDefinitionManager@@QAE_NABVCCharString@@AAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CMessageEventDef>; address-only name)
+007923c0   RELOCATION_MATCH PASS   GetDef<CMessageEventDef>
+00798c10   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00798c10   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesForcePushDef>' matches no symbol in 00798c10.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesForcePushDef>' matches no symbol in 00798c10.obj; graded the largest function
+00798c10   WARN STANDIN_LEAF ?GetDef_00798c10@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesForcePushDef>; address-only name)
+00798c10   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesForcePushDef>
+0079bd10   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0079bd10   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesSummonSpellDef>' matches no symbol in 0079bd10.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesSummonSpellDef>' matches no symbol in 0079bd10.obj; graded the largest function
+0079bd10   WARN STANDIN_LEAF ?GetDef_0079bd10@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesSummonSpellDef>; address-only name)
+0079bd10   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesSummonSpellDef>
+0079dbb0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0079dbb0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesBulletTimeDef>' matches no symbol in 0079dbb0.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesBulletTimeDef>' matches no symbol in 0079dbb0.obj; graded the largest function
+0079dbb0   WARN STANDIN_LEAF ?GetDef_0079dbb0@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesBulletTimeDef>; address-only name)
+0079dbb0   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesBulletTimeDef>
+007a5080   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007a5080   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesEnflameDef>' matches no symbol in 007a5080.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesEnflameDef>' matches no symbol in 007a5080.obj; graded the largest function
+007a5080   WARN STANDIN_LEAF ?GetDef_007a5080@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesEnflameDef>; address-only name)
+007a5080   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesEnflameDef>
+007a90f0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007a90f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesBattleChargeDef>' matches no symbol in 007a90f0.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesBattleChargeDef>' matches no symbol in 007a90f0.obj; graded the largest function
+007a90f0   WARN STANDIN_LEAF ?GetDef_007a90f0@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesBattleChargeDef>; address-only name)
+007a90f0   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesBattleChargeDef>
+007ab530   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007ab530   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesAssassinRushDef>' matches no symbol in 007ab530.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesAssassinRushDef>' matches no symbol in 007ab530.obj; graded the largest function
+007ab530   WARN STANDIN_LEAF ?GetDef_007ab530@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesAssassinRushDef>; address-only name)
+007ab530   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesAssassinRushDef>
+007c4f80   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007c4f80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesHealLifeDef>' matches no symbol in 007c4f80.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesHealLifeDef>' matches no symbol in 007c4f80.obj; graded the largest function
+007c4f80   WARN STANDIN_LEAF ?GetDef_007c4f80@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesHealLifeDef>; address-only name)
+007c4f80   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesHealLifeDef>
+007cc8e0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007cc8e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesMultiArrowDef>' matches no symbol in 007cc8e0.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesMultiArrowDef>' matches no symbol in 007cc8e0.obj; graded the largest function
+007cc8e0   WARN STANDIN_LEAF ?GetDef_007cc8e0@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesMultiArrowDef>; address-only name)
+007cc8e0   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesMultiArrowDef>
+007ce100   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007ce100   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesBurntEffectDef>' matches no symbol in 007ce100.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesBurntEffectDef>' matches no symbol in 007ce100.obj; graded the largest function
+007ce100   WARN STANDIN_LEAF ?GetDef_007ce100@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesBurntEffectDef>; address-only name)
+007ce100   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesBurntEffectDef>
+007cec90   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007cec90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesElectrocutedEffectDef>' matches no symbol in 007cec90.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesElectrocutedEffectDef>' matches no symbol in 007cec90.obj; graded the largest function
+007cec90   WARN STANDIN_LEAF ?GetDef_007cec90@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesElectrocutedEffectDef>; address-only name)
+007cec90   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesElectrocutedEffectDef>
+007cf2e0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007cf2e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSpecialAbilitiesCreatureTintDef>' matches no symbol in 007cf2e0.obj; graded the largest function
+  WARN leaf 'GetDef<CSpecialAbilitiesCreatureTintDef>' matches no symbol in 007cf2e0.obj; graded the largest function
+007cf2e0   WARN STANDIN_LEAF ?GetDef_007cf2e0@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSpecialAbilitiesCreatureTintDef>; address-only name)
+007cf2e0   RELOCATION_MATCH PASS   GetDef<CSpecialAbilitiesCreatureTintDef>
+0082e1e0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0082e1e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CSimBuildingDef>' matches no symbol in 0082e1e0.obj; graded the largest function
+  WARN leaf 'GetDef<CSimBuildingDef>' matches no symbol in 0082e1e0.obj; graded the largest function
+0082e1e0   WARN STANDIN_LEAF ?GetDef_0082e1e0@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CSimBuildingDef>; address-only name)
+0082e1e0   RELOCATION_MATCH PASS   GetDef<CSimBuildingDef>
+0083b970   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0083b970   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CThingVillageDef>' matches no symbol in 0083b970.obj; graded the largest function
+  WARN leaf 'GetDef<CThingVillageDef>' matches no symbol in 0083b970.obj; graded the largest function
+0083b970   WARN STANDIN_LEAF ?GetDef_0083b970@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CThingVillageDef>; address-only name)
+0083b970   RELOCATION_MATCH PASS   GetDef<CThingVillageDef>
+0083bd10   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0083bd10   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CThingHolySiteDef>' matches no symbol in 0083bd10.obj; graded the largest function
+  WARN leaf 'GetDef<CThingHolySiteDef>' matches no symbol in 0083bd10.obj; graded the largest function
+0083bd10   WARN STANDIN_LEAF ?GetDef_0083bd10@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CThingHolySiteDef>; address-only name)
+0083bd10   RELOCATION_MATCH PASS   GetDef<CThingHolySiteDef>
+0083d630   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0083d630   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+  WARN leaf 'GetDef<CThingMarkerDef>' matches no symbol in 0083d630.obj; graded the largest function
+  WARN leaf 'GetDef<CThingMarkerDef>' matches no symbol in 0083d630.obj; graded the largest function
+0083d630   WARN STANDIN_LEAF ?GetDef_0083d630@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z (catalog CDefinitionManager::GetDef<CThingMarkerDef>; address-only name)
+0083d630   RELOCATION_MATCH PASS   GetDef<CThingMarkerDef>
+00cdca40   WARN GENERIC_STRUCT module=CPersistContext (use engine/CPersistContext.h)
+  WARN leaf 'GetDefaultVal<EGameflowPosition>' matches no symbol in 00cdca40.obj; graded the largest function
+  WARN leaf 'GetDefaultVal<EGameflowPosition>' matches no symbol in 00cdca40.obj; graded the largest function
+00cdca40   WARN STANDIN_LEAF ?Get@T@@QAEHXZ (catalog CPersistContext::GetDefaultVal<EGameflowPosition>; generic placeholder)
+00cdca40   MATCH            PASS   GetDefaultVal<EGameflowPosition>
+00cdca50   WARN GENERIC_STRUCT module=CPersistContext (use engine/CPersistContext.h)
+  WARN leaf 'ArcheryOpenState>' matches no symbol in 00cdca50.obj; graded the largest function
+  WARN leaf 'ArcheryOpenState>' matches no symbol in 00cdca50.obj; graded the largest function
+00cdca50   WARN STANDIN_LEAF ?Get@T@@QAEHXZ (catalog CPersistContext::GetDefaultVal<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>; generic placeholder)
+00cdca50   MATCH            PASS   ArcheryOpenState>
+00cdca60   WARN GENERIC_STRUCT module=CPersistContext (use engine/CPersistContext.h)
+  WARN leaf 'GetDefaultVal<EPlaceInHeroSouls>' matches no symbol in 00cdca60.obj; graded the largest function
+  WARN leaf 'GetDefaultVal<EPlaceInHeroSouls>' matches no symbol in 00cdca60.obj; graded the largest function
+00cdca60   WARN STANDIN_LEAF ?Get@T@@QAEHXZ (catalog CPersistContext::GetDefaultVal<EPlaceInHeroSouls>; generic placeholder)
+00cdca60   MATCH            PASS   GetDefaultVal<EPlaceInHeroSouls>
+00e1df50   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CPersistContext::GetDefaultVal<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>; names another function)
+00e1df50   MATCH            PASS   EscortTraderQuestStage>
+
+WINS: 45
+  004e52b3 RELOCATION_MATCH _global::less<long>>
+  004e5636 RELOCATION_MATCH _global::less<EClothingSuitPart>>
+  004e628d RELOCATION_MATCH _global::less<EIdleStateGroup>>
+  004e67c0 RELOCATION_MATCH _global::less<EQuakeStrength>>
+  004e6a5b RELOCATION_MATCH _global::less<EQuakeLength>>
+  004e7a62 RELOCATION_MATCH _global::less<EQuestCardPrerequisite>>
+  004e9356 RELOCATION_MATCH _global::less<EObjectAugmentationType>>
+  004ec62f RELOCATION_MATCH _global::less<EObjectAugmentationType>>
+  00415890 RELOCATION_MATCH CDefinitionManager::CUILocaleGraphicsDef>
+  0042b144 RELOCATION_MATCH CDefinitionManager::GetDef<CDefClassBase>
+  004ab920 RELOCATION_MATCH CDefinitionManager::GetDef<CCameraManagerSetDef>
+  004ab990 RELOCATION_MATCH CDefinitionManager::GetDef<CCameraManagerSetDef>
+  0057ff30 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesDrunkennessDef>
+  005f89f2 RELOCATION_MATCH CDefinitionManager::GetDef<CHeroAbilityDef>
+  005f8a57 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesFireballSpellDef>
+  005f8ab9 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesUnholyPowerDef>
+  005f8b1b RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesDivineWrathDef>
+  00637650 RELOCATION_MATCH CDefinitionManager::GetDef<CCameraModeDef>
+  006697e0 RELOCATION_MATCH CDefinitionManager::GetDef<CHeroCombatDef>
+  00685e70 RELOCATION_MATCH CDefinitionManager::GetDef<COpinionPersonalityDef>
+  006f0e80 RELOCATION_MATCH CDefinitionManager::GetDef<CAttackPatternDef>
+  00737f80 RELOCATION_MATCH CDefinitionManager::GetDef<CMeleeCombatAbilityDef>
+  00737ff0 RELOCATION_MATCH CDefinitionManager::GetDef<CMeleeCombatAbilityDef>
+  0074f760 RELOCATION_MATCH CDefinitionManager::GetDef<CObjectFamilyDef>
+  00792350 RELOCATION_MATCH CDefinitionManager::GetDef<CHeroAbilityDef>
+  007923c0 RELOCATION_MATCH CDefinitionManager::GetDef<CMessageEventDef>
+  00798c10 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesForcePushDef>
+  0079bd10 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesSummonSpellDef>
+  0079dbb0 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesBulletTimeDef>
+  007a5080 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesEnflameDef>
+  007a90f0 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesBattleChargeDef>
+  007ab530 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesAssassinRushDef>
+  007c4f80 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesHealLifeDef>
+  007cc8e0 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesMultiArrowDef>
+  007ce100 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesBurntEffectDef>
+  007cec90 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesElectrocutedEffectDef>
+  007cf2e0 RELOCATION_MATCH CDefinitionManager::GetDef<CSpecialAbilitiesCreatureTintDef>
+  0082e1e0 RELOCATION_MATCH CDefinitionManager::GetDef<CSimBuildingDef>
+  0083b970 RELOCATION_MATCH CDefinitionManager::GetDef<CThingVillageDef>
+  0083bd10 RELOCATION_MATCH CDefinitionManager::GetDef<CThingHolySiteDef>
+  0083d630 RELOCATION_MATCH CDefinitionManager::GetDef<CThingMarkerDef>
+  00cdca40 MATCH CPersistContext::GetDefaultVal<EGameflowPosition>
+  00cdca50 MATCH CPersistContext::ArcheryOpenState>
+  00cdca60 MATCH CPersistContext::GetDefaultVal<EPlaceInHeroSouls>
+  00e1df50 MATCH CPersistContext::AddChildPrimitive

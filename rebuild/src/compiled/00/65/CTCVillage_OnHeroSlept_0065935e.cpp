@@ -49,7 +49,7 @@ public:
 };
 class CThingAICreature : public CThing {
 public:
-    void ResetBrain();                          // 0x006D5AB0 (forwards to the brain at +0x1a8)
+    void ForceAIReset();                          // 0x006D5AB0 (forwards to the brain at +0x1a8); NF296: PDB name, was ResetBrain
     void InitCreaturePosition();                // 0x006D5AC0 (forwards to the brain at +0x1a8)
     bool RequiresAutoPlacement();               // 0x00833710
 };
@@ -90,7 +90,7 @@ void CTCVillage::OnHeroSlept()
     for (node = VillagePeople._M_node->_M_next; node != VillagePeople._M_node; node = node->_M_next) {
         CThingAICreature* person = node->_M_data.GetPItem();
         if (person->HasTC(0x1f) && !person->GetTC<CTCScriptedControl>(0x1f)->IsActive())
-            node->_M_data.GetPItem()->ResetBrain();
+            node->_M_data.GetPItem()->ForceAIReset();
     }
     for (node = VillagePeople._M_node->_M_next; node != VillagePeople._M_node; node = node->_M_next) {
         CThingAICreature* person = node->_M_data.GetPItem();

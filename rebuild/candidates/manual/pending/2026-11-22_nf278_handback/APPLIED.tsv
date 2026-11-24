@@ -1,0 +1,4 @@
+entry	address	status	binders_respelled	note
+1 (CMainGameComponent slot self rows)	0x00415E83 0x004197A0 0x004197B0 0x004197B3 (+ 0x00416E78)	done for 4 rows (each address 2 -> 1 spellings; 0x00418B7A 2 -> 1); 0x00416E78 open (port needed)	1 (0x004197B3's dtor call, RENAMES section 2)	see NOTES entry 1
+2 (_M_erase split at 0x004507A1)	0x00ADC190 0x00ADC250 0x00ADC4E0 0x00ADCB90	measured, not applied: needs a ruling (in-place 5-arg respell fails the in-place rule; copies would be byte/reloc-identical to 0x00A96DA0's)	0	see NOTES entry 2
+3 (0x00ADCE60 onto CVertexGroupBlock.h)	0x00ADCE60	open (not started)	0	-

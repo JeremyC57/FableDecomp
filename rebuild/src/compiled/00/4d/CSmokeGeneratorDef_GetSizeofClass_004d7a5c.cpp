@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CSmokeGeneratorDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CSmokeGeneratorDef_GetSizeofClass()
+class CSmokeGeneratorDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CSmokeGeneratorDef::GetSizeofClass()
 {
     return 48;
 }

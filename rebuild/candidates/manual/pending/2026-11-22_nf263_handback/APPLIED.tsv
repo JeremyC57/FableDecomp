@@ -1,0 +1,7 @@
+entry	address	status	binders_respelled	note
+L129 GB unit (0x00BF36A0 / 0x00BF36E0 / 0x00BF9920 with self renames)	0x01436EA8	done	5	3 self renames onto the PDB placement forms + binders 0x00BDD3E0 / 0x00BDFD60; 0x01436EA8 14 -> 12 table spellings (15 -> 13 with the untabled ?g_obj_01436ea8); 0x00BD9B90 2 -> 1 table lines; 0x00BF36A0 / 0x00BF36E0 / 0x00BF9920 each end on one spelling (HEAD: 2 / 2 / 3, incl. ?fn_00bf36a0 defined by two rows); NOTE: the PDB plain forms ...SIXPAX@Z named in the brief are NOT these addresses (they are the xor edx,edx ; jmp stubs 0x00BDBF70 / 0x00BDBF80): NOTES D1
+L129 0x00BE5C30 + 0x00BE6090 with 0x00BDA110	0x00BDA110	open	0	not started (handed back after the GB unit); second source for ?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z now found (FableWin name set 02cb7490 + Ego_r 009c26a0); needs an add-only declaration opt-in in CEngineLandscapeMemoryManager.h (equiv_check)
+L129 LocalDetailEngine 0x00BFAAE0 / 0x00BFB590, 0x00B684F0	0x01436EA8	open	0	not started (ports)
+L129 CEngineGlobal rows	0x01436EA8	open	0	not started (last)
+L129 0x00BEB4D0 ?DAT_01436ea8@@3PAEA	0x01436EA8	open	0	not started
+0x009B0AC0 (entry 2)	0x009B0AC0	open	0	not started; NF260 plan stands

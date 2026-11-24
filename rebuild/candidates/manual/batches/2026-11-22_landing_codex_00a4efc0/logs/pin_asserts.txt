@@ -1,0 +1,6 @@
+engine/C3DAnimFileSequenceChunk.h                  pinned 0
+engine/C3DAnimationSequenceData.h                  pinned 0
+engine/C3DKeyframe.h                               pinned 0
+engine/CArray.h                                    pinned 0
+engine/CQuaternion.h                               pinned 0
+total pinned 0

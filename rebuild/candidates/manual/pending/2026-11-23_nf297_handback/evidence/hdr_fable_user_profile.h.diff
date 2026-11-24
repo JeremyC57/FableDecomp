@@ -1,0 +1,20 @@
+152a153,157
+> #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+>     // Add-only opt-in (NF297, 2026-11-23; row 0x0040C790 CUserProfileManager::SetDefaultValues): Ego_r.pdb + FableWin.pdb
+>     // ?Save@CUserProfileManager@@QAEXXZ (public, 0x0040A740; the self and 0x0040B690 / 0x0041E6D3 bind QAE). Declaration only.
+> public:
+> #endif
+153a159,161
+> #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+> private:
+> #endif
+313a322,326
+> #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+>     // Add-only opt-in (NF297, 2026-11-23; row 0x0040D400 CUserProfileManager::SetProfileName): Ego_r.pdb + FableWin.pdb
+>     // ?Save@CUserProfileManager@@QAEXXZ (public, 0x0040A740; the self and 0x0040B690 / 0x0041E6D3 bind QAE). Declaration only.
+> public:
+> #endif
+314a328,330
+> #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+> private:
+> #endif

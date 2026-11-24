@@ -18,7 +18,11 @@
 struct IDirect3DIndexBuffer9;
 enum EIndexBufferFormat;                                                 // MS forward enums (the row defines the enumerators it uses)
 enum EIndexBufferPool;
+#ifdef FABLE_RETAIL_CINDEXBUFFER_PRIMITIVE_TYPE_PASS26
+#include "engine/EPrimitiveType.h"
+#else
 enum EPrimitiveType;
+#endif // FABLE_RETAIL_CINDEXBUFFER_PRIMITIVE_TYPE_PASS26
 class CIndexBuffer : public CMovableResource {
 public:
     CIndexBuffer();                                                      // 0x00AC1EC0 ??0CIndexBuffer@@QAE@XZ
@@ -37,7 +41,13 @@ public:
 #endif
     IDirect3DIndexBuffer9* PD3DIndexBuffer;                              // +0x04
     unsigned long          ByteLength;                                   // +0x08
+#ifdef FABLE_RETAIL_CINDEXBUFFER_PRIMITIVE_TYPE_PASS26
+    // FableWin 0x02D59280 returns the original enum stored at 0x0c.
+    EPrimitiveType GetPrimitiveType() const { return PrimitiveType; }
+    EPrimitiveType PrimitiveType;                                      // +0x0c
+#else
     unsigned char          PrimitiveType[0x4];                           // +0x0c EPrimitiveType
+#endif // FABLE_RETAIL_CINDEXBUFFER_PRIMITIVE_TYPE_PASS26
     void*                  PAllocatedBuffer;                             // +0x10
 };
 FABLE_STATIC_ASSERT_AT(40, sizeof(CIndexBuffer) == 0x14);

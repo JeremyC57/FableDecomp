@@ -1,0 +1,79 @@
+#21 009f4910 ?Initialise@CScratchBuffer@@QAE_NJ@Z
+   009f4910(self) - DEF=OK:?Initialise@CScratchBuffer@@QAE_NJ@Z
+   009a6610 OK ?Initialise@CScratchBuffer@@QAE_NJ@Z x1
+#27 00555440 ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z
+   00555440(self) - DEF=WRONG:?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z
+   005559d0 OK ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z x3
+   00555a90 OK ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z x4
+   005566a0 WRONG ?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z x1
+   00556810 OK ?HideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@E@Z x2
+   005570f0 WRONG ?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z x1
+#28 005556f0 ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z
+   005556f0(self) - DEF=WRONG:?UnhideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@@Z
+   00555a90 OK ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z x3
+   00556810 OK ?UnhideComponent@CScrollableList@NUISystem@@IAEXPAVCComponent@2@MMVC2DVector@@@Z x2
+#31 00a7db10 ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z
+   00a7db10(self) - DEF=OK:?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z
+   00a76a80 OK ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z x1
+   00a76b90 OK ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z x2
+   00a772d0 OK ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z x1
+   00a780b0 OK ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z x2
+   00a78a90 OK ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z x2
+   00a7dbf0 OK ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z x1
+#32 00872110 ?UpdateAutoGoBehind@CStringAndCageBase@NCameraModes@@ABEXAAVC3DVector@@@Z
+   00872110(self) - DEF=OK:?UpdateAutoGoBehind@CStringAndCageBase@NCameraModes@@ABEXAAVC3DVector@@@Z
+   008728c0 OK ?UpdateAutoGoBehind@CStringAndCageBase@NCameraModes@@ABEXAAVC3DVector@@@Z x1
+#33 00414e30 ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z
+   00414e30(self) - DEF=OK:??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z
+   004138d0 OK ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z x1
+   004a0d90 OK ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z x1
+   00507c30 OK ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z x1
+   006a5d90 OK ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z x1
+   008315c0 OK ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z x1
+   00837e40 OK ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z x1
+   0083c2d0 OK ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z x1
+   0083d990 OK ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z x1
+   009ec890 OK ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z x1
+#34 009ba110 ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@AAVCParsedItem@@@Z
+   009ba110(self) - DEF=WRONG:?ReadAsStringUntilString@CStringParser@@QAE_NPAVCCharString@@PAVCParsedItem@@@Z
+   004138d0 OK ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@AAVCParsedItem@@@Z x3
+   00998250 OK ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@AAVCParsedItem@@@Z x2
+   00998570 NOOBJ
+   009ec710 OK ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@AAVCParsedItem@@@Z x2
+   00a63ee0 OK ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@AAVCParsedItem@@@Z x1
+#39 009f3230 ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z
+   009f3230(self) - DEF=OK:?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z
+   00642820 OK ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z x1
+   00642970 OK ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z x1
+   0066c750 OK ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z x1
+   0066ca80 OK ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z x1
+   0066dc50 OK ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z x1
+   00885f50 OK ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z x1
+   009f37e0 OK ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z x1
+   009fed30 OK ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z x1
+#40 009f35d0 ?CanDoProperSignedConversion@CSurface@@AAE_NPBVC2DBoxI@@0ABVCPixelFormat@@@Z
+   009f35d0(self) - DEF=WRONG:?CanDoProperSignedConversion@CSurface_Methods@@QAE_NPBVC2DBoxI@@0ABVCPixelFormat@@@Z
+   009f37e0 OK ?CanDoProperSignedConversion@CSurface@@AAE_NPBVC2DBoxI@@0ABVCPixelFormat@@@Z x1
+   009f4390 OK ?CanDoProperSignedConversion@CSurface@@AAE_NPBVC2DBoxI@@0ABVCPixelFormat@@@Z x1
+#41 009f36e0 ?CopyFromUnsignedDataToSignedSurface@CSurface@@AAEXPBXABVCPixelFormat@@J@Z
+   009f36e0(self) - DEF=WRONG:?CopyFromUnsignedDataToSignedSurface@CSurface@@QAEXPBEABVCPixelFormat@@K@Z
+   009f37e0 OK ?CopyFromUnsignedDataToSignedSurface@CSurface@@AAEXPBXABVCPixelFormat@@J@Z x1
+   009f4390 OK ?CopyFromUnsignedDataToSignedSurface@CSurface@@AAEXPBXABVCPixelFormat@@J@Z x1
+#42 009f37e0 ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z
+   009f37e0(self) OK ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z x1 DEF=OK:?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z
+   00642880 OK ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z x1
+   0066cb00 OK ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z x1
+   009bf350 OK ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z x1
+   009fa4e0 OK ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z x1
+   009fed30 OK ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z x1
+   00b2b180 OK ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z x1
+   00b2c4e0 OK ?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z x1
+#43 009f4120 ?SetPixel@CSurface@@QAEXJJABVCRGBColour@@@Z
+   009f4120(self) - DEF=OK:?SetPixel@CSurface@@QAEXJJABVCRGBColour@@@Z
+   00642970 OK ?SetPixel@CSurface@@QAEXJJABVCRGBColour@@@Z x1
+   0066cd50 OK ?SetPixel@CSurface@@QAEXJJABVCRGBColour@@@Z x1
+#44 009f4590 ?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z
+   009f4590(self) NOOBJ
+   00435530 OK ?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z x2
+   00642970 OK ?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z x1
+   0066cd50 OK ?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z x1

@@ -12,6 +12,24 @@ of the same account. **The repo is the channel.** Everything in this file is how
 Owner order (2026-11-19): "save their authoring work for the second account. so we can do naming queue work on this account while the other account does
 authoring". Only the owner merges into `main`.
 
+## 0. Coordination restarted (owner, 2026-11-24): pull from the other branch, then commit, after every piece of work
+
+Owner order (2026-11-24): "I want to start the coordination between main branch and b branch ... Each should pull from the other then commit
+when they finish a piece of work." Here "main branch" is Account A's `FullDecomp` and "b branch" is Account B's `FullDecomp-B`; `main`
+itself stays owner-merged only.
+
+**After every finished piece of work** (a landing, a hand-back applied, a tools or docs change), in this order:
+1. **Pull from the other side:** `git fetch origin <other branch>` then `git merge --no-edit FETCH_HEAD`. Use a merge, never a rebase.
+2. **Resolve conflicts** by the table in section 4. Then recheck what the merge touched:
+   - after a header merge, that header's landed users;
+   - a `build_candidates.ps1` entry both sides changed.
+3. **Commit** your own finished work. If the merge changed anything, commit the merge too, then push your branch:
+   `git push -u origin <own branch>`.
+4. **Read** `docs/journal/2026-11/COORDINATION_LOG.md` for new entries from the other side and answer there.
+
+The session-start sync below still applies. This rule adds a sync at the end of every piece of work, so neither branch drifts for more than
+one landing.
+
 ## 1. Sync: merge the other branch, never rebase
 
 - **At the start of every session**, before claiming anything and before every landing, run `git fetch origin <other branch>` then

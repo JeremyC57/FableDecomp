@@ -1,0 +1,40 @@
+##### 00b324a0 renames: ?RegisterPrimitive@CEnginePrimitiveManager@@QAEXPAVCEngineInternalPrimitiveBase@@K@Z=?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 00814d90 renames: ?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@PAVCThing@@@Z=?GetSphereBase@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@ABVCThing@@@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 004fc8a0 renames: ?GetPMiniMapDisplay@CPlayerGui@@QAEPAVCMiniMapDisplay@@XZ=?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 0049f180 renames: ?ActivateMultipleQuests@CQuestManager@@QAE_NPAV?$CArray@VCCharString@@@@_N1@Z=?ActivateMultipleQuests@CQuestManager@@QAE_NABV?$CArray@VCCharString@@@@_N1@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=9
+tables H=0 N=0
+##### 0090fa60 renames: ?RemoveUser@CTCGatherPointBase@@QAEXPAVCThing@@@Z=?RemoveAsUser@CTCGatherPointBase@@QAEXABVCThing@@@Z
+sections head 18 new 18
+ALL_EQ text_sections_equal=16
+tables H=0 N=0
+##### 008c1f70 renames: ?PlaySound@CTCSoundPlayer@@QAEKJABVCSoundInit@@JJ@Z=?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z
+sections head 29 new 29
+ALL_EQ text_sections_equal=25
+tables H=0 N=0
+##### 009492a0 renames: ?GetPickupSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3_N@Z=?GetPickupSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3_N@Z
+sections head 17 new 17
+ALL_EQ text_sections_equal=15
+tables H=0 N=0
+##### 0054e4b0 renames: ?SetUpChildrenForAcceptButton@NUISystem@@YIXPAVCComponent@1@0@Z=?SetPAcceptButtonRecursive@@YIXPAVCComponent@NUISystem@@0@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00923510 renames: ?GetPPlayerManager@CAIStateGroupBase@@QBEPBVCPlayerManager@@XZ=?PeekPlayerManager@CAIStateGroupBase@@IBEABVCPlayerManager@@XZ
+sections head 18 new 18
+ALL_EQ text_sections_equal=12
+tables H=1 N=1
+##### 00602f30 renames: ?GetPMiniMapDisplay@CPlayerGui@@QAEPAVCMiniMapDisplay@@XZ=?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ ?ReleaseMapScreenPrimitives@CTCInventoryMap@@QAEXXZ=?ResetPrimitiveHandles@CTCInventoryMap@@QAEXXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0

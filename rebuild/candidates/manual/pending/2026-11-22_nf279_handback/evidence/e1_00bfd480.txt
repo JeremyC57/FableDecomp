@@ -1,0 +1,71 @@
+# 0x00BFD480 grade (sc.sh HEAD pH v new pS, overlay hdr/), leafcmp, pk, vtcheck, vtmap, cmpobj v landed 0x00BFDE20 object (NF277 D_00bfde20.obj)
+##### 00bfd480
+pH 00bfd480 CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch RELOCATION_MATCH flags= [] leaf=??1CEngineWaterBackgroundSubPatch@@QAE@XZ
+pS 00bfd480 CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch RELOCATION_MATCH flags= [] leaf=??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ??1CEngineWaterBackgroundSubPatch@@QAE@XZ
+< DEF ??1CMovableResource@@QAE@XZ
+> DEF ??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+> DEF ??1CMovableResource@@UAE@XZ
+> DEF ??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+> DEF ??_GCMovableResource@@UAEPAXI@Z
+> UND ??3@YAXPAX@Z
+> UND ??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+> UND ??_GCMovableResource@@UAEPAXI@Z
+> UND ?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z
+> UND ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+> UND ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+< UND ?v00@CEngineWaterBackgroundSubPatch@@UAEXXZ
+< UND ?v00@CMovableResource@@UAEXXZ
+> UND ?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z
+> UND ?Verify@CMovableResource@@UBEKXZ
+> UND __purecall
+ALLDONE
+## pk new
+00bfd480 NEW	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+00bfd480 NEW	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+00bfd480 NEW	??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z	38	00bfdc90	EQ
+## pk HEAD
+00bfd480 HEAD	??1CMovableResource@@QAE@XZ	7	-	NO-OWNER
+00bfd480 HEAD	??1CEngineWaterBackgroundSubPatch@@QAE@XZ	144	-	NO-OWNER
+## leafcmp HEAD QAE v new UAE
+len 144 144 bytes_equal True
+relocs_equal True
+## vtcheck
+0	00bfdc90	NOLINE	??_ECEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+1	00bfd5d0	NOLINE	?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z
+2	00bfd390	NOLINE	?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 3dcccccd COL@-4 sym ?
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	__purecall
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 01355d84 COL@-4 sym ?
+## vtmap
+VT ??_7CMovableResource@@6B@ slots 4 retail 0129b860
+  0 009d5110 DIFF ??_ECMovableResource@@UAEPAXI@Z ??_GCMovableResource@@UAEPAXI@Z
+  1 00bfea08 NOLEAF __purecall -
+  2 009d50f0 NOLEAF ?CanRelocateData@CMovableResource@@UBE_NJ@Z -
+  3 009d5100 NOLEAF ?Verify@CMovableResource@@UBEKXZ -
+VT ??_7CEngineWaterBackgroundSubPatch@@6B@ slots 4 retail 012a8334
+  0 00bfdc90 DIFF ??_ECEngineWaterBackgroundSubPatch@@UAEPAXI@Z ??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+  1 00bfd5d0 DIFF ?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z RelocateData
+  2 00bfd390 NOLEAF ?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z -
+  3 009d5100 NOLEAF ?Verify@CMovableResource@@UBEKXZ -
+## cmpobj landed 0x00BFDE20 obj v new
+SAME	??1CMovableResource@@UAE@XZ
+SAME	??_GCMovableResource@@UAEPAXI@Z
+ONLY_A	??1CLandscapeLayerMesh@@UAE@XZ
+ONLY_A	??_GCLandscapeLayerMesh@@UAEPAXI@Z
+## HEAD symbols
+DEF ??1CEngineWaterBackgroundSubPatch@@QAE@XZ
+DEF ??1CMovableResource@@QAE@XZ
+DEF ??_7CEngineWaterBackgroundSubPatch@@6B@
+DEF ??_7CMovableResource@@6B@
+UND ?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z
+UND ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+UND ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+UND ?v00@CEngineWaterBackgroundSubPatch@@UAEXXZ
+UND ?v00@CMovableResource@@UAEXXZ

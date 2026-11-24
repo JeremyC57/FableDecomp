@@ -1,0 +1,20 @@
+# Pass 25 handoff after retrying the three open functions
+
+The five verified functions can be reviewed for landing. The other three remain open. This archive supersedes the previous eight-row handoff and contains the complete source, tests, shared-header patches and grading records for the reserved set.
+
+| Open function | Selected object / retail | Current evidence |
+|---|---:|---|
+| Arena `PlayWave` | 9,262 / 9,262 | One non-relocated SIB byte differs at `0x00F1FFBA`. All 321 relocated operands agree. The selected source now uses genuine shared resource members, seven of whose additional emitted bodies reproduce their full native sizes, masked bytes and checked relocation targets. |
+| Bandit outer gate guard `Main` | 5,161 / 5,178 | 29 disassembly groups remain. The 242 emitted operands were checked. A near-size SAY rewrite produces eleven extra donor-incompatible branches. |
+| Escort trader `Main` | 14,526 / 14,510 | Recovered the seven original timer equality expressions. 408 paired reduced branch destinations agree. Two emitted predicate-base calls are expanded in retail. `alternative_exact_size/` reproduces the native length and the full movie destructor, with one further wrong cleanup at the caller. |
+
+`rows/<address>/RETRY_NOTES.md` records the new experiments and what the next reviewer should distinguish. The alternate Escort file uses the same function body, test and header patch set as the selected file. Use the primary source in each address directory when reproducing STATUS.tsv. Keep all three open objects out of a whole-object landing. An emitted helper can differ even when an assigned leaf is very close.
+
+
+Five of eight functions matched under MSVC 7.1 RTM, covering 35,935 of the 64,885 verified leaf bytes. All eight rows have source, behavior tests, recorded grades and attempt notes. STATUS.tsv records the native size and current grade of each selected source. Three rows remain in progress.
+
+Apply hdr/PATCHES.json to the original pass 25 include tree, in order, by replacing each unique old_text with new_text. An empty old_text creates a new header. Compile each row with cl 13.10.3077 /c /O2 /Oy /W3 and the extra flags in its source. Use the exact leaf in LABELS.tsv, cut the extent in STATUS.tsv, mask only object relocations, then check each target. BOUNDS_FIX.tsv records where the assigned span extends beyond the function. Run each behavior test independently with /Od /W3 /GR- and include/ only. Each main test prints the address followed by _TEST PASS.
+
+Each spell matches 9,268 bytes, 468 relocations and 249 local jumps. The distinct local statics named GUMPH in their range checks are confirmed by the debug local records and by separate retail data addresses for their equal float values. Their execution tests use controlled dependencies. Each canonical spell test executes the complete production method and checks game-side effects. EAX uses a descriptive function name. For Arena the latest selected object differs by one effective-address operand byte, and the helper-ownership review identified an unused conversion COMDAT that differs from its separately owned implementation. Avoid integrating unresolved objects as complete library replacements.
+
+All eight main tests passed x86 and x86-64 GCC C++03 as well as Win32 VC7.1. Clang 19.1.7 also compiled all eight production files as C++03 on the combined header tree for i686-pc-windows-msvc and emitted each expected mangled function. Each primary source is the formatted, independently graded file. Its function body is present verbatim in the corresponding test. DELIVERY_RECEIPT.json ties the selected source and test to the earlier byte and binding audit. EAX has zero linked-byte differences. Its disassembly-only hunk is an inline jump-table entry decoded as an instruction. This verifies the tested behavior; the full engine still uses 32-bit layouts and compiler-specific shared headers. An independent 32-bit GCC syntax check accepted the EAX production TU; the other standalone production checks encountered pre-existing shared-header ABI and STLport compatibility errors. No claim of a whole-game non-MSVC build is made.

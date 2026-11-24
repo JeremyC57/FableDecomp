@@ -1,0 +1,7 @@
+addr       parity           behav  name
+008b3810   RELOCATION_MATCH PASS   GetName
+008b42e0   RELOCATION_MATCH PASS   GetName
+
+WINS: 2
+  008b3810 RELOCATION_MATCH CCombatSequence_BanditAttackSide::?GetName@CCombatSequence_BanditAttackSide@@UBE?AVCCharString@@XZ
+  008b42e0 RELOCATION_MATCH CCombatSequence_TrollRockPursue::?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ

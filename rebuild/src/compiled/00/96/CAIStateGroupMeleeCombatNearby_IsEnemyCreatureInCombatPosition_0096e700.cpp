@@ -46,7 +46,7 @@ public:
 #include "engine/CIntelligentPointer.h"
 class CCombatManager { public:
     C3DVector GetPreferredPos(const CThingCreatureBase& creature) const;                // 0x006EA770
-    bool IsPositionOccupied(CThingCreatureBase* creature);                  // 0x006E9700
+    bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;   // 0x006E9700 (NF306: Ego_r + FableWin QBE; was IsPositionOccupied(CThingCreatureBase*))
 };
 struct CAIStateGroup_MeleeCombatNearby_Methods : CAIStateGroupBase {   // the engine header's flat layout past the base: +0x14 enemy pointer, +0x1c Archer
     unsigned char _pad_0x14[0x4];                            // +0x14
@@ -70,7 +70,7 @@ bool CAIStateGroup_MeleeCombatNearby_Methods::IsEnemyCreatureInCombatPosition() 
         const C3DVector& current = Creature()->GetPos();
         C3DVector delta; delta.X = target.X - current.X; delta.Y = target.Y - current.Y; delta.Z = 0;
         CThingCreatureBase* owner = Creature(); CCombatManager* manager = GetPWorld()->PThingCombatManager_ptr;
-        if (!manager->IsPositionOccupied(owner)) {
+        if (!manager->IsCreatureOnOuterRing(*owner)) {
             float limit = (Creature()->Physics->Radius + Creature()->Physics->Radius) * ReachScale + 1.0f;
             limit += DELTA_NOTIONAL_ZERO;   // its own statement: in one expression VC7.1 moves the 1.0f literal add after this one
             if (delta.X * delta.X + delta.Y * delta.Y < limit * limit) return true;

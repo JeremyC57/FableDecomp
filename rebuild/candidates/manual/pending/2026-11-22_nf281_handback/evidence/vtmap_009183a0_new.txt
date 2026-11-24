@@ -1,0 +1,5 @@
+VT ??_7CIntelligentPointerGameObject@@6B@ slots 2 retail NONE
+  0 ??_ECIntelligentPointerGameObject@@UAEPAXI@Z
+  1 ?v00@CIntelligentPointerGameObject@@UAEXXZ
+VT ??_7?$CIntelligentPointer@VCThing@@@@6B@ slots 1 retail 01238c6c
+  0 004a9710 DIFF ??_E?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z ??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z

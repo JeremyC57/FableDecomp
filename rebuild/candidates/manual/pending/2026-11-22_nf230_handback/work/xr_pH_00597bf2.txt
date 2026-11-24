@@ -1,0 +1,16 @@
+0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	x2
+0040d350	?Load@CUserProfileManager@@QAEXXZ	x1
+0041e5f2	?GetInstance@CManager@NUISystem@@SIPAV12@XZ	x3
+0042dbee	?ResetAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ	x1
+00594fa9	?CloseVirtualKeyboard@CFrontEndManager@NUISystem@@QAEX_N@Z	x1
+005959ab	?IsScreenOnStack@CFrontEndManager@NUISystem@@QBE_NPAVCComponent@2@@Z	x1
+00596763	?GotoNextScreen@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@_N@Z	x1
+0059686d	?GotoSpecificPreviousScreen@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@@Z	x1
+0059a8f3	?_M_subtract@?$_Deque_iterator_base@PAVCComponent@NUISystem@@@std@@QBEHABU12@@Z	x1
+0059aee5	?pop_back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ	x1
+0059b039	?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	x5
+0059b5d7	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z	x8
+00851700	??0CVirtualKeyboard@@QAE@PAVCComponent@NUISystem@@@Z	x1
+00851770	?Initialize@CVirtualKeyboard@@QAEJXZ	x1
+00bfea1a	??2@YAPAXI@Z	x1
+013b871c	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@2PAV1@A	x1

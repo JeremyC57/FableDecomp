@@ -1,0 +1,21 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x009ddff0	?GFAYToVY@@YGMM@Z	?GFVYToAY@@YIMM@Z	0x009e1e40
+0x009ddff0	?GFAXToVX@@YGMM@Z	?GFVXToAX@@YIMM@Z	0x009e1e10
+0x009dda50	?GFAYToVY@@YGMM@Z	?GFVYToAY@@YIMM@Z	0x009e1e40
+0x009dda50	?GFAXToVX@@YGMM@Z	?GFVXToAX@@YIMM@Z	0x009e1e10
+0x009dd210	?GFAYToVY@@YIMM@Z	?GFVYToAY@@YIMM@Z	0x009e1e40
+0x009dd210	?GFAXToVX_009e1e10@@YIMM@Z	?GFVXToAX@@YIMM@Z	0x009e1e10
+0x009dca80	?GFAYToVY@@YIMM@Z	?GFVYToAY@@YIMM@Z	0x009e1e40
+0x009dca80	?GFAXToVX_009e1e10@@YIMM@Z	?GFVXToAX@@YIMM@Z	0x009e1e10
+0x0048f230	?GFVYToAY@@YGMM@Z	?GFVYToAY@@YIMM@Z	0x009e1e40
+0x0048f230	?GFVXToAX_009e1e10@@YGMM@Z	?GFVXToAX@@YIMM@Z	0x009e1e10
+0x00438aa0	?GFVXToAX@@YGMM@Z	?GFAXToVX@@YIMM@Z	0x009e1da0
+0x0094a6d0	?AIAction_LookAtPos@CAIStateGroupGoToPubMethods@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z	?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z	0x0097d580
+0x0049d550	?GetLevelsDirectory_0041a410@@YI?AVCWideString@@XZ	?GetStaticMapDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0x0041a410
+0x0049d6b0	?GetLevelsDirectory_0041a410@@YI?AVCWideString@@XZ	?GetStaticMapDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0x0041a410
+0x0049ddd0	?GetLevelsDirectory_0041a410@@YI?AVCWideString@@XZ	?GetStaticMapDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0x0041a410
+0x0049dec0	?GetLevelsDirectory_0041a410@@YI?AVCWideString@@XZ	?GetStaticMapDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0x0041a410
+0x00ae2050	?WriteVectors_00ae18c0@@YIXPBVC4DVector@@KAAVCDataOutputStream@@@Z	?WriteVectorArray@CParticleSimulation@@KIXPBVC4DVector@@KAAVCDataOutputStream@@@Z	0x00ae18c0
+0x00ae2230	?WriteVectors_00ae18c0@@YIXPBVC4DVector@@KAAVCDataOutputStream@@@Z	?WriteVectorArray@CParticleSimulation@@KIXPBVC4DVector@@KAAVCDataOutputStream@@@Z	0x00ae18c0
+0x00af5380	?AllocateParticleMemory_00af8b00@@YIPAXI@Z	??2CDecal@NParticleEngine@@SIPAXI@Z	0x00af8b00

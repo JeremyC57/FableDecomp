@@ -1,0 +1,8 @@
+action	symbol	address	witness	reason
+delete	?g_LandscapeRenderer@@3PAUNativeLandscapeRenderer@@A	01436ea8	00bfbe40	L129 unit 3: the three landed rows that named it (0x00BFBE40 / 0x00BFBF40 / 0x00BFC040; source grep: no other row or header) now name ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+delete	?AllocVirtual@CEngineLandscapeMemoryManager_Methods@@QAEPAXHPAVCMovableResource@@@Z	00bd9af0	00bfbe40	L129 unit 3: the same three rows now bind ?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJPAVCMovableResource@@@Z (no other binder of the stand-in)
+delete	?FreeVirtual@CEngineLandscapeMemoryManager_Methods@@QAEXPAX@Z	00bd9b90	00bfbe40	L129 unit 3: the same three rows now bind ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z (no other binder of the stand-in)
+delete	?gEngine@@3PAUEngineGlobal@@A	01436ea8	00bdfa10	L129 unit 4: the one landed row that named it (0x00BDFA10; source grep: no other row or header; its self-contained test defines its own copy) now names ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+keep	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	01436ea8	00beae50	the PDB spelling (nf256 / nf260)
+keep	?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJPAVCMovableResource@@@Z	00bd9af0	00bf6530	the PDB spelling (Ego_r + FableWin name sets)
+keep	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bd9b90	00beb4d0	the PDB spelling (Ego_r + FableWin name sets)

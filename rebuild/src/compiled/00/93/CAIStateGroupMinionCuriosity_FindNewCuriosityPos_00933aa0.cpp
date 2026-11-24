@@ -1,3 +1,4 @@
+// Leaf: ?FindNewCuriosityPos@CAIStateGroup_MinionCuriosity@@AAE_NXZ
 // CAIStateGroup_MinionCuriosity::FindNewCuriosityPos() -- take the position of the thing the creature is
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // currently curious about (if any, and if it is not dead) as the new curiosity position.
@@ -37,7 +38,9 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_MinionCuriosity : CAIStateGroupBase {
     C3DVector CuriosityPos;                 // +0x14
+    private:
     bool FindNewCuriosityPos();
+    public:
 };
 
 bool CAIStateGroup_MinionCuriosity::FindNewCuriosityPos()

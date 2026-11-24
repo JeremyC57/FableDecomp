@@ -1,0 +1,20 @@
+--- /dev/null	2026-11-23 21:33:39.425796864 +0000
++++ hdr/engine/CCreatureAction_StartFillingTankard.h	2026-11-24 00:44:49.738571908 +0000
+@@ -0,0 +1,17 @@
++#ifndef FABLE_ENGINE_CCREATUREACTION_STARTFILLINGTANKARD_H
++#define FABLE_ENGINE_CCREATUREACTION_STARTFILLINGTANKARD_H
++// NF323 (2026-11-24, NF320 Q1 / NF322 recipe): the polymorphic retail class for the Clone TU, RTTI .?AVCCreatureAction_StartFillingTankard@@ : CCreatureActionBase
++// (rtti_bases.tsv), no own members (retail sizeof 0xA8: the Clone allocates 0xa8 and copies only the base). Declarations only. Each
++// virtual overrides the CCreatureActionBase virtual at the same slot of retail vftable 0x01273D6C (RTTI-port label + the PDB name sets):
++//   slot 3 = 0x0084A290 ?PerformAction@CCreatureAction_StartFillingTankard@@UAEXXZ (FableWin.pdb, Ego_r.pdb)
++//   slot 11 = 0x0084CA30 ?Clone@CCreatureAction_StartFillingTankard@@UBEPAVCCreatureActionBase@@XZ (FableWin.pdb, Ego_r.pdb)
++// New header: no class model existed in rebuild/include (NF323). Needs FABLE_RETAIL_CCREATUREACTIONBASE (the retail base).
++#include "rebuild_abi.h"
++#include "engine/CCreatureActionBase.h"
++class CCreatureAction_StartFillingTankard : public CCreatureActionBase {
++public:
++    virtual void PerformAction();
++    virtual CCreatureActionBase * Clone() const;
++};
++FABLE_STATIC_ASSERT(sizeof(CCreatureAction_StartFillingTankard) == 0xa8);
++#endif // FABLE_ENGINE_CCREATUREACTION_STARTFILLINGTANKARD_H

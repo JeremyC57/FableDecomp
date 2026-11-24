@@ -1,0 +1,50 @@
+== head
+0	004197b3	NOLINE	??_ECMainGameComponent@@UAEPAXI@Z
+slots 1 not-OK 1 retail next word 004184bd COL@-4 sym ?
+0	00415e83	NOLINE	?v00@CMainGameComponent@@UAEXXZ
+slots 1 not-OK 1 retail next word 004175da COL@-4 sym ?
+== new
+0	004197b3	NOLINE	??_ECMainGameComponent@@UAEPAXI@Z
+1	004184bd	NOLINE	?Init@CMainGameComponent@@UAEXXZ
+2	004189c2	NOLINE	?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+3	0041799b	NOLINE	?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+4	004197a0	NOLINE	?SetQuit@CMainGameComponent@@UAEXXZ
+5	00418289	NOLINE	?Update@CMainGameComponent@@MAEXXZ
+6	00416e78	NOLINE	?GetInputs@CMainGameComponent@@MAEXXZ
+7	00417001	NOLINE	?Render@CMainGameComponent@@MAEXXZ
+8	00416953	NOLINE	?PostInit@CMainGameComponent@@MAEXXZ
+9	004197b0	NOLINE	?IsEditorActive@CMainGameComponent@@UBE_NXZ
+slots 10 not-OK 10 retail next word 002e002a COL@-4 sym ?
+0	00415e83	NOLINE	?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+1	004175da	NOLINE	?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+slots 2 not-OK 2 retail next word 0132d260 COL@-4 sym ?
+== 00418b7a HEAD
+0	004197b3	NOLINE	??_ECMainGameComponent@@UAEPAXI@Z
+1	004184bd	NOLINE	?Init@CMainGameComponent@@UAEXXZ
+2	004189c2	NOLINE	?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+3	0041799b	NOLINE	?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+4	004197a0	NOLINE	?SetQuit@CMainGameComponent@@UAEXXZ
+5	00418289	NOLINE	?Update@CMainGameComponent@@UAEXXZ
+6	00416e78	NOLINE	?GetInputs@CMainGameComponent@@UAEXXZ
+7	00417001	NOLINE	?Render@CMainGameComponent@@UAEXXZ
+8	00416953	NOLINE	?PostInit@CMainGameComponent@@UAEXXZ
+9	004197b0	NOLINE	?IsEditorActive@CMainGameComponent@@UBE_NXZ
+slots 10 not-OK 10 retail next word 002e002a COL@-4 sym ?
+0	00415e83	NOLINE	?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+1	004175da	NOLINE	?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+slots 2 not-OK 2 retail next word 0132d260 COL@-4 sym ?
+== 00418b7a NF275 (slots 5..8 protected)
+0	004197b3	NOLINE	??_ECMainGameComponent@@UAEPAXI@Z
+1	004184bd	NOLINE	?Init@CMainGameComponent@@UAEXXZ
+2	004189c2	NOLINE	?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+3	0041799b	NOLINE	?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+4	004197a0	NOLINE	?SetQuit@CMainGameComponent@@UAEXXZ
+5	00418289	NOLINE	?Update@CMainGameComponent@@MAEXXZ
+6	00416e78	NOLINE	?GetInputs@CMainGameComponent@@MAEXXZ
+7	00417001	NOLINE	?Render@CMainGameComponent@@MAEXXZ
+8	00416953	NOLINE	?PostInit@CMainGameComponent@@MAEXXZ
+9	004197b0	NOLINE	?IsEditorActive@CMainGameComponent@@UBE_NXZ
+slots 10 not-OK 10 retail next word 002e002a COL@-4 sym ?
+0	00415e83	NOLINE	?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+1	004175da	NOLINE	?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+slots 2 not-OK 2 retail next word 0132d260 COL@-4 sym ?

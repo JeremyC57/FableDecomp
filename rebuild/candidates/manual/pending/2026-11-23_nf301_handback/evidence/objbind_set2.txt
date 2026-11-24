@@ -1,0 +1,4 @@
+#29	00d39330	binder 00d3af50	standin_in_obj=False	pdb_in_obj=True	?PlayCutscene@CQ_FireHeartScript@@QAEXVCCharString@@@Z
+#33	00df20f0	binder 00df2f90	standin_in_obj=False	pdb_in_obj=True	?MakeBriarRoseComment@CQ_SummoningTheShipScript@@QAE_NABVCCharString@@@Z
+#19	004498c0	binder 0066fb80	standin_in_obj=False	pdb_in_obj=True	?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z
+#42	00519630	binder 0051cbb0	standin_in_obj=False	pdb_in_obj=True	?GetMaxSize@COldFileFormatMapHeader7@@SIJJJ@Z

@@ -58,7 +58,7 @@ class CThingObject : public CThingGameObject { public: enum { ThingTypeMask = 0x
 #include "engine/C3DVector.h"
 class CThingFilter_ObjectHasProperty { public:
     long Property;                                    // EObjectProperty
-    bool operator()(const CThing& thing) const;       // 0x006A7590
+    bool operator()(const CThingObject& object) const; // 0x006A7590
 };
 class CThingFilter_HasFreeActionPoint { public:
     bool operator()(const CThing& thing) const;       // 0x006A8B40

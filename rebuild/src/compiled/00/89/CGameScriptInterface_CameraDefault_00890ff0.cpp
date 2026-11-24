@@ -1,3 +1,4 @@
+// Leaf: ?CameraDefault@CGameScriptInterface@@UAEXXZ
 class CGameCameraManager
 {
 public:
@@ -56,7 +57,7 @@ public:
     WorldOverlay* world;
     unsigned char padding08[0x40];
     long cameraLayerCount;
-    void CameraDefault();
+    virtual void CameraDefault();
 };
 
 void CGameScriptInterface::CameraDefault()

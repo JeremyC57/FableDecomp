@@ -154,7 +154,7 @@ private: public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x28 - 0x08];
     CIntelligentPointer<CThing> PHeadEffect;            // +0x28
-    void CreateHeadEffect(const CCharString& name);
+    private: void CreateHeadEffect(const CCharString& name); public:
 };
 
 void CTCKraken::CreateHeadEffect(const CCharString& name)

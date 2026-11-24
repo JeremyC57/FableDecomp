@@ -43,6 +43,13 @@ public:
     static void* FABLE_FASTCALL operator new(unsigned int size, CMovableResource* owner);                       // 0x00BEA7E0
     static CWaterPatchMesh* __stdcall CreateFromStream(CMovableResource* owner, CEngineLandscapeMap* map, CDataInputStream* stream);   // 0x00BF5A30
 #endif
+#ifdef FABLE_RETAIL_CWATERPATCHMESH_OPERATORDELETE
+    // NF272 opt-in (2026-11-22, rows 0x00BEAAA0 / 0x00BEB4D0): the class operator delete, FableWin.pdb ??3CWaterPatchMesh@@SIXPAX@Z (02e672e0;
+    // static __fastcall; Ego_r.pdb has no out-of-line copy, so inline in retail): retail ??_GCWaterPatchMesh 0x00BEB4D0 returns `this` to the
+    // landscape memory manager on flag bit 0 (`mov ecx,[GPLandscapeRenderer] ; mov ecx,[ecx+6B0h] ; push esi ; call FreeVirtual 0x00BD9B90`).
+    // The row includes engine/CEngineLandscapeMemoryManager.h (retail branch) and engine/CEngineLandscapeRenderer.h (_GPLANDSCAPERENDERER) first.
+    static void FABLE_FASTCALL operator delete(void* block) { NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(block); }
+#endif
     bool Build(const CWaterPatchDescriptors& descriptors);
     void BuildVertexBuffer();
     void GetMemoryStats(CLandscapeMemoryStats* stats);

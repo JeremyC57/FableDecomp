@@ -8,18 +8,18 @@
 // copy ctor 0x00619C50 / _M_erase 0x0047C6A0, CategoriesList _M_erase 0x00613AE0 / operator[] 0x00618BE0, CVectorMap::LowerBound
 // 0x0040F020, CTCInventoryBase::GetAllItems 0x005BF482, CTCInventoryItem::IsBook 0x005D9970 / GetDescription 0x005D95C0 /
 // GetDetails 0x005D9630 / GetEngineGraphic 0x005D96A0 / GetStartingRightHandedSet 0x005D9730, vector<long>::_M_insert_overflow
-// 0x00440990, list<CComponent*>::~list 0x0042ABCA (see the name note below) / _M_insert_dispatch 0x0042B4C3, CTCBase::GetDefinitionManager 0x006869D0,
+// 0x00440990, _List_base<CComponent*>::~_List_base 0x0042ABCA (see the name note below) / _M_insert_dispatch 0x0042B4C3, CTCBase::GetDefinitionManager 0x006869D0,
 // CDefinitionManager::GetPDefFromGlobalIndex 0x009AD9E0, CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, CAnimationSet::GetAnim
 // 0x005DC340, CTCInventoryMap::GetMenuEntryFromCategory 0x005FAA90, CCharString / CWideString ctors and dtors, operator new/delete,
 // malloc/free.
 // Shape notes: GetSubDef<T>'s body is visible but kept out of line (retail calls 0x0042B0A2); the books title/back block is its own
 // `if (!books.empty())` after the book loop (scope-based slot packing gives retail's 0x10C frame, not 0x11C). The per-site reasons
 // for the GetDef<T> copy, the eight *_desc locals, the site-1 `entry && arrow` guard and the book iterator are at each site below.
-// Name note (one address, one name): FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST (stlport/fable_containers.h) puts STLport's clear+free body
-// in list::~list itself and leaves ~_List_base the trivial compiler-generated one, so the out-of-line call binds 0x0042ABCA under the
-// landed retail name list<CComponent*>::~list (??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ,
-// FableWin.pdb 0x017C0C95 / 0x01AB9BF3; FableWin.pdb has no ??1?$_List_base symbol for any instantiation): the object carries that
-// COMDAT as the real 0x3E-byte body and ??1?$_List_base only as the 1-byte trivial one. No NAME_FIXES entry.
+// Name note (NF241, 2026-11-22, the list<CComponent*> family pass): 0x0042ABCA is _List_base<CComponent*>::~_List_base
+// (??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ): retail 0x0042B6D2 is list's
+// own size-optimised `~list() {}`, a 5-byte `jmp 0x0042ABCA` (STLport 4.6 _list.h keeps the clear + free in ~_List_base). The row
+// used FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST, whose rationale (FableWin.pdb's ??1?$list) reads a Dinkumware PDB with no _List_base
+// type at all, so it does not arbitrate STLport layering; dropped, the default header path calls the base destructor. Same bytes.
 // Leaf: ?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -33,7 +33,6 @@
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_INSERT_DISPATCH_NOINLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST
 #define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
 #define FABLE_RETAIL_CDEFINITIONMANAGER
@@ -170,7 +169,7 @@ CComponent* CTCInventoryMap::ConstructLogbookList(CComponent* parent)
             entry->MakeUnavailable();
             CComponent* arrow = entry->FindChild("UI_SELECTION_ARROW_RIGHT");
             // `entry &&` is redundant (folded away; entry is already non-null), but it is what makes VC7.1's static-frequency
-            // inliner treat this site as colder: retail CALLS list<CComponent*>::~list 0x0042ABCA here (CDeletion temp at site 1)
+            // inliner treat this site as colder: retail CALLS _List_base<CComponent*>::~_List_base 0x0042ABCA here (CDeletion temp at site 1)
             // and EXPANDS the same ~list inline at site 2 (the category loop's else arm below); both sites call
             // _M_insert_dispatch 0x0042B4C3. With a plain `if (arrow)` both sites expand ~list.
             if (entry && arrow) {

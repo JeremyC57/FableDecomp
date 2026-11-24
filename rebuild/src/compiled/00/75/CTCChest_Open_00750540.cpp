@@ -112,7 +112,7 @@ private:
 public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
     void SetAlwaysUpdate(bool always);                  // 0x006E0590
-    void SetEmitterOrientation(CRightHandedSet* orientation);   // 0x006E0480
+    void SetEmitterOrientation(const CRightHandedSet& orientation);   // 0x006E0480
 };
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -186,7 +186,7 @@ void CTCChest::Open()
                     emitter = effect->PTCDriver;
                 emitter->AttachToThing(*ParentThing, 1, "", 0, 0.0f);
                 emitter->SetAlwaysUpdate(true);
-                emitter->SetEmitterOrientation(ParentThing->Physics->GetOrientation());
+                emitter->SetEmitterOrientation(*ParentThing->Physics->GetOrientation());
             }
         }
         SetPushableByHero(false);

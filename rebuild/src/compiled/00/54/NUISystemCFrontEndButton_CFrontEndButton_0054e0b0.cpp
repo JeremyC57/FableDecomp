@@ -91,13 +91,13 @@ class CFrontEndButton : public CClickable { public:             // vtables 0x012
     virtual void ProcessEvent();
     virtual void v3();
     CFrontEndButton(long owner);
-    void Initialize();                                       // 0x0054DF50
+    void GetDataFromDef();                                       // 0x0054DF50
 };
 
 CFrontEndButton::CFrontEndButton(long owner)
     : CClickable(owner)
 {
-    Initialize();
+    GetDataFromDef();
 }
 
 }

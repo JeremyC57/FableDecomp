@@ -1,0 +1,35 @@
+entry	address	row	change	proof
+40	0x00692aa0	0x00694020	CCreatureActionBase model: UpdateActionMovement() moved under protected: (QAE -> IAE)	objsec ALL_EQ (evidence/proof_u1.txt); link evidence/link_u1_00694020.txt
+48	0x00b30480	0x00bf9aa0	CEngineCamera model: ClipSphere(const C3DVector*, float, unsigned long*) -> (const C3DVector&, float, unsigned long*) const; call passes m_centre	objsec ALL_EQ; link evidence/link_u1_00bf9aa0.txt
+49	0x00b30b50	0x00b662f0	CEngineCamera model: SetCameraState(const CEngineCameraDesc*, bool, bool) -> (const CEngineCameraDesc&, bool, bool); calls pass skyDesc / savedDesc	objsec ALL_EQ; link evidence/link_u1_00b662f0.txt
+50	0x0084af90	0x00845900	CEventTalkedTo model ctor (CThing*) -> (CThing&); call passes *PCreature.GetPItem()	objsec ALL_EQ; link evidence/link_u1_00845900.txt
+67	0x0078ecd0	0x004d4a99	CTCDivineWrath model ctor (CThing*) -> (CThing&); call passes *owner	objsec ALL_EQ; link evidence/link_u1_004d4a99.txt
+47	0x009ebb30	-	table-only (stale line)	evidence/u1_006bbc30_head_binding.txt
+2	0x00694d10	0x0078b410	CCreatureActionBase::Initialise + the override declared virtual (own Leaf QAE -> UAE, full Leaf)	objsec ALL_EQ (evidence/proof_u2.txt); link evidence/link_u2_e2.txt
+2	0x00694d10	0x00694d10	self: placeholder v12 -> virtual Initialise (slot 12), trailing non-virtual declaration removed, full Leaf UAE (NF304 Q6)	objsec ALL_EQ (evidence/proof_u2b.txt); link evidence/link_u2_e2.txt
+3	0x00838ba0	0x0082d810	CThing virtual WorldUpdate (vptr +0), CThingGameObject pad 0x2c -> 0x28 at +4, base + own override virtual (own Leaf QAE -> UAE, full Leaf)	objsec ALL_EQ (evidence/proof_u2.txt); link evidence/link_u2_e3.txt
+3	0x00838ba0	0x00704150	as 0x0082D810 (pad 0x20 -> 0x1c at +4)	objsec ALL_EQ (evidence/proof_u2b.txt); link evidence/link_u2_e3.txt
+3	0x00838ba0	0x00836260	CThing's flattened void* __vftable replaced by the PDB virtual WorldUpdate (same +0 vptr); base + own override virtual	objsec ALL_EQ (evidence/proof_u2b.txt); link evidence/link_u2_e3.txt
+1	0x0052cf40	0x005469e0	CChangingStateComponent::ChangeState + CZoomingComponent override virtual (own Leaf -> UAE, Leaf line added)	objsec ALL_EQ (evidence/proof_u3.txt); link evidence/link_u3_e1.txt
+1	0x0052cf40	0x0053ebf0	global struct CChangingStateComponent -> class NUISystem::CChangingStateComponent (public bases) + virtual; CScrollingViewport override virtual (own Leaf -> UAE)	objsec ALL_EQ; link evidence/link_u3_e1.txt
+1	0x0052cf40	0x00547c90	CChangingStateComponent::ChangeState + CMovie override virtual (own Leaf -> UAE)	objsec ALL_EQ; link evidence/link_u3_e1.txt
+1	0x0052cf40	0x00543df0	ChangeState(long) -> (unsigned long) in the base slot 48 and the CParticleEffect override (own Leaf UAEXJ -> UAEXK)	objsec ALL_EQ; link evidence/link_u3_e1.txt
+7	0x00f3ae50	0x00f3afc0	CRangeCompressor model: CompressToBuffer -> the PDB overload Compress (same parameters); own Leaf written in full	objsec ALL_EQ (evidence/proof_u4.txt); link evidence/link_u4_00f3afc0.txt
+10	0x008fcf90	0x009261f0	CAIStateGroupBase model: GetPlayerManager() -> protected CPlayerManager& GetPlayerManager() const; call uses '.'	objsec ALL_EQ; link evidence/link_u4_009261f0.txt
+11	0x009b9a20	0x009ba110	CStringParser model: FindMatchingSubstring(CCharString*) -> SkipUntilString(const CCharString&); call passes *terminator	objsec ALL_EQ; link evidence/link_u4_009ba110.txt
+103	0x0084d080	0x008728c0	NCameraModes::CBase model: GetCamTools() const moved under protected:	objsec ALL_EQ (evidence/proof_u6.txt); link evidence/link_u6_008728c0.txt
+122	0x00996610	0x006ba030	CDataOutputStream model: WriteData(const void*, unsigned long) -> WriteCompressed(const void*, long)	objsec ALL_EQ; link evidence/link_u6_006ba030.txt
+130	0x00be0420	0x00bf8030	CEngineStaticMapFileBlockManager model: PrioritiseBlock -> SetBlockToHighPriority	objsec ALL_EQ; link evidence/link_u6_00bf8030.txt
+130	0x00be0420	0x00bf84c0	as 0x00BF8030	objsec ALL_EQ; link evidence/link_u6_00bf8030.txt
+142	0x00bf7df0	0x00bf8030	CLandscapeBackgroundTreeNode model: CalculateLODBand -> GetDesiredLODBand	objsec ALL_EQ; link evidence/link_u6_00bf8030.txt
+182	0x007e7880	0x007e7ac0	CTCFireheartMinigame model: PlaySound -> PlaySoundW	objsec ALL_EQ; link evidence/link_u6_007e7ac0.txt
+184	0x0071be80	0x005ee887	CTCHeroMorph model: SetWillMorphAmount -> SetWill	objsec ALL_EQ; link evidence/link_u6_005ee887.txt
+166	0x00449970	-	table-only (stale line)	evidence/u7_00899c90_head_binding.txt
+24	0x00b215e0	-	table-only (stale line)	evidence/u8_stale_lines.txt
+26	0x00b216f0	-	table-only (stale line)	evidence/u8_stale_lines.txt
+85	0x00810fd0	-	table-only (stale line)	evidence/u8_stale_lines.txt
+129	0x00bacd80	0x00bad040	CEnginePrimitiveManager model: RegisterEnable -> AddEnableConsoleVariable	objsec ALL_EQ (evidence/proof_u9.txt); link evidence/link_u9_00bad040.txt
+140	0x0099a350	0x009f4910	CInitBaseClass model: Init() -> protected Initialise(); call qualified	objsec ALL_EQ; link evidence/link_u9_009f4910.txt
+189	0x007122c0	0x006ad970	CTCScriptedControl model: IsScriptTaskRunning() -> IsActionListEmpty() const	objsec ALL_EQ; link evidence/link_u9_006ad970.txt
+189	0x007122c0	0x006a8560	CTCScriptedControl model: IsTaskListEmpty() -> IsActionListEmpty() const (IsActive inline unchanged)	objsec ALL_EQ; link evidence/link_u9_006ad970.txt
+189	0x007122c0	0x008326a0	CTCScriptedControl model: IsScriptTaskRunning() -> IsActionListEmpty() const	objsec ALL_EQ (evidence/proof_u9b.txt); link evidence/link_u9b_008326a0.txt

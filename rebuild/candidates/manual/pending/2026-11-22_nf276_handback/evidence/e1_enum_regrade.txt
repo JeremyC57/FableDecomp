@@ -1,0 +1,12 @@
+# 00bfde20: enum-change regrade, objsec pre-enum object v final object
+pS 00bfde20 CLandscapeLayerMesh::~CLandscapeLayerMesh RELOCATION_MATCH flags= [] leaf=??1CLandscapeLayerMesh@@UAE@XZ
+ALL_EQ 0
+# 00bfdd70: enum-change regrade, objsec pre-enum object v final object
+pS 00bfdd70 CLandscapeLayerMesh::OnPostRelocation RELOCATION_MATCH flags= [] leaf=?OnPostRelocation@CLandscapeLayerMesh@@QAEXXZ
+ALL_EQ 0
+# 00bfddb0: enum-change regrade, objsec pre-enum object v final object
+pS 00bfddb0 CLandscapeLayerMesh::CanRelocateData MATCH flags= [] leaf=?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+ALL_EQ 0
+# 00bfde80: enum-change regrade, objsec pre-enum object v final object
+pS 00bfde80 CLandscapeLayerMesh::RelocateData RELOCATION_MATCH flags= [] leaf=?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+ALL_EQ 0

@@ -1,0 +1,7 @@
+Method_007f5560	0	
+CSubobject_007f5560	0	
+CClass_0062fe60	0	
+QuestCardMethods	2	src/compiled/00/89/CGameScriptInterfaceMethods_SetQuestCardObjective_00896a30.cpp tests/00/89/CGameScriptInterfaceMethods_SetQuestCardObjective_00896a30_test.cpp
+# census: out-of-line definitions of CTCQuestCard::IsVignette in landed sources / headers:
+0
+# the six other exe callers' IsVignette declarations sit in a global 'class CTCQuestCard' (local models: 0x004B0F10 line 84, 0x004B1270 line 68, 0x004B1340 line 88, 0x008968C0 line 63, 0x004B1110 line 55; 0x005FF190 uses the header's FABLE_RETAIL_CTCQUESTCARD_ISVIGNETTE); no namespace other than a one-line std::pair model in each

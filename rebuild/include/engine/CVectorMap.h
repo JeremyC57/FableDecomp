@@ -267,6 +267,26 @@ __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K
     return first;
 }
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_COMPONENT_LOWERBOUND_OWNER_PASS26
+// Fidelity scaffolding: explicit instance retains the genuine generic body and caller visibility.
+// The caller includes this definition before its size-optimised row body.
+#include "engine/ETCInterfaceType.h"
+class CTCBase;
+template<> inline __declspec(noinline)
+CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::iterator
+CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound(const ETCInterfaceType& key)
+{
+ iterator first=this->begin();
+ long count=this->end()-first;
+ while(count>0) {
+  long half=count/2;
+  iterator middle=first+half;
+  if(middle->first<key) { first=middle+1; count-=half+1; }
+  else count=half;
+ }
+ return first;
+}
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND
 template<class K,class V,class CompareType>
 #ifdef FABLE_RETAIL_CVECTORMAP_UPPERBOUND_COUNT_FIRST
@@ -317,6 +337,29 @@ typename CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>
     }
     return first;
 }
+#if defined(FABLE_RETAIL_CVECTORMAP_CONST_LOWERBOUND_SPEED_OWNER_PASS27) && defined(_MSC_VER)
+// Fidelity: scaffolding, not retail. Restore the 0x004365B0 owner's default
+// /O2 /Oy flags around its original search, then reset with optimize("", on)
+// before any caller's function-level optimization.
+#include "engine/ETCInterfaceType.h"
+class CTCBase;
+#pragma optimize("ty", on)
+template<> inline __declspec(noinline)
+CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::const_iterator
+CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound(const ETCInterfaceType& key) const
+{
+    const_iterator first=this->begin();
+    long count=this->end()-first;
+    while(count>0) {
+        long half=count/2;
+        const_iterator middle=first+half;
+        if(middle->first<key) { first=middle+1; count-=half+1; }
+        else count=half;
+    }
+    return first;
+}
+#pragma optimize("", on)
+#endif
 #if defined(FABLE_RETAIL_CVECTORMAP_UPPERBOUND) && defined(FABLE_RETAIL_CVECTORMAP_UPPERBOUND_BODY)
 // Per-TU opt-in (egod e02, row 0x0086B9D0 CRandomAppearanceMorph::GetRandomSkeletalMorph): the body of the const UpperBound declared by
 // FABLE_RETAIL_CVECTORMAP_UPPERBOUND: an ordinary out-of-class template member, visible in the TU (VC7.1 keeps it out of line by itself;

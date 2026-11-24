@@ -1,5 +1,5 @@
 // CSymbolMap::Error(const CWideString& file, long line, const char* format, ...) -- format a compiler-style "<file>(<line>) : error C2065 : <message>" string (the 0-based line printed 1-based); the text is built and dropped (its consumer is compiled out of the retail build)
-// Leaf: Error
+// Leaf: ?Error@CSymbolMap@@IAAXABVCWideString@@JPBDZZ
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E4F80, 270 bytes (+2 int3 padding), `ret` (a varargs member: __cdecl with
 //   `this` as the first stack argument, never read). Callers 0x009E570C.. (CSymbolMap's definition parser).
@@ -36,7 +36,9 @@ private: public:
 
 class CSymbolMap {
 public:
+    protected:
     void Error(const CWideString& file, long line, const char* format, ...);
+    public:
 };
 
 void CSymbolMap::Error(const CWideString& file, long line, const char* format, ...)

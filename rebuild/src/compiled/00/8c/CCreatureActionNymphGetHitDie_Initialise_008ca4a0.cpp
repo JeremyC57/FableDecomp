@@ -45,7 +45,7 @@ class CTCNymph { public:                                     // interface type 0
     void StopFlyingAround(long mode);                 // 0x0080F870
 };
 class CWorldMap { public:
-    float GetHeightZBelowPos(const C3DVector* position);   // 0x0063E480
+    float GetHeightZBelowPos(const C3DVector& position) const;   // 0x0063E480 (NF315: the PDB signature, Ego_r + FableWin)
 };
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
@@ -75,6 +75,6 @@ void CCreatureAction_NymphGetHitDie::Initialise()
     if (PCreature.Get()->GetTC(TCI_NYMPH, &nymph))
         nymph->StopFlyingAround(-1);
     C3DVector position = PCreature.Get()->GetPos();
-    HeightOnInit = position.Z - GetWorldMap()->GetHeightZBelowPos(&position);
+    HeightOnInit = position.Z - GetWorldMap()->GetHeightZBelowPos(position);
     CCombatActionBase::Initialise();
 }

@@ -1,5 +1,5 @@
 // NUISystem::CComponent::MakeAvailable() -- brighten every UI state's colour: scale R, G and B of each CUIState in the component's state map by 4/3
-// Leaf: ?MakeAvailable@CComponent
+// Leaf: ?MakeAvailable@CComponent@NUISystem@@UAEXXZ
 // Retail: Fable.exe @ 0x00530CE0, 188 bytes, `__fastcall`, plain `ret`; virtual, CComponent vtable 0x0124608C slot 94 (and the
 // 40 derived NUISystem vtables, e.g. CSprite 0x0122F5D4). Label correction: the manifest's "DynamicListEntry::MakeAvailable" is
 // propagated; Ego_r.pdb has ?MakeAvailable@CComponent@NUISystem@@UAEXXZ.
@@ -153,8 +153,11 @@ public:
     virtual void _v80();
     virtual void _v81();
     virtual CStateMap& GetStates();         // slot 82 (+0x148), 0x0052F0E0: the map at +0x24
-    void MakeUnavailable();
-    void MakeAvailable();
+    virtual void _v83(); virtual void _v84(); virtual void _v85(); virtual void _v86(); virtual void _v87(); virtual void _v88();
+    virtual void _v89(); virtual void _v90(); virtual void _v91();
+    virtual void MakeUnavailable();          // slot 92 (+0x170): 0x00530A40, rtti-vtables NUISystem::CSprite slot 92; PDB UAE
+    virtual void _v93();
+    virtual void MakeAvailable();            // slot 94 (+0x178): 0x00530CE0, rtti-vtables NUISystem::CSprite slot 94; PDB UAE
 };
 
 }

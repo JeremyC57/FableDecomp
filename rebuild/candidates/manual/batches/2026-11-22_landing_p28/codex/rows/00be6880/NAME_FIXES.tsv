@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x01436E20	?GPEngineDef@NEngineInternal@@3PBVCEngineDef@@B	FableWin global and public at 04AC8000, section 4+88000, loaded at BuildDefaultSection+353. Ego_r and Ego_d also contain the same decorated public. Retail BE68F5 reads the def for its SeaHeight field. CEngine::Initialise publishes the raw definition pointer.	?g_pRenderSettings@@3PAUSRenderSettings@@A | ?g_pRenderSettings_01436e20@@3PAUSRenderSettings_01436e20@@A | ?g_pEngineDef_01436e20@@3QBVCEngineDef@@B

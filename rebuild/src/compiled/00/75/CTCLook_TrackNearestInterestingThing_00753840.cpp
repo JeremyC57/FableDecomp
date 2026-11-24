@@ -1,5 +1,5 @@
 // CTCLook::TrackNearestInterestingThing(bool track) -- drives the head-turn state from the creature's targeting: while tracking, keeps the look timer alive as long as there is something interesting, else drops back to the idle turn; starts tracking when something appears; `track` false resets the state (one frame of delay) and clears the stop time. Returns whether the head is tracking
-// Leaf: ?TrackNearestInterestingThing@CTCLook@@QAEJ_N@Z
+// Leaf: ?TrackNearestInterestingThing@CTCLook@@QAE_N_N@Z
 // Naming (NF173, 2026-11-20): q11928: SetHeadTurnState 0x007517B0 is private in both PDBs (Ego_r.pdb 0x007630F0 / FableWin.pdb 0x025AFE60 ?SetHeadTurnState@CTCLook@@AAEXJ@Z); the local model declaration moves under private: (in place).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753840, length 240 bytes (+ int3 padding, `ret 4`); speed TU (no frame pointer).
@@ -42,12 +42,15 @@ class CTCLook { public:
     unsigned char _pad4c[0xb4 - 0x4c];
     long          TimeToStopLooking;                 // +0xb4
     bool          OneFrameDelay;                     // +0xb8
-    void UpdateLookTimer();                          // 0x00751AD0
-    long TrackNearestInterestingThing(bool track);
+    private:
+    void UpdateLookTimer();
+    public:
+                          // 0x00751AD0
+    bool TrackNearestInterestingThing(bool track);
 private:
     void SetHeadTurnState(long state);               // 0x007517B0 (private: Ego_r.pdb / FableWin.pdb ?SetHeadTurnState@CTCLook@@AAEXJ@Z)
 };
-long CTCLook::TrackNearestInterestingThing(bool track)
+bool CTCLook::TrackNearestInterestingThing(bool track)
 {
     unsigned long state = HeadTurnState;
     if (!(state & HEAD_TURN_ENABLED))

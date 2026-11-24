@@ -9,6 +9,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCEUNBLOCKABLEFACING_VIRTUAL_MODEL
+// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127A11C (RTTI .?AVCCombatSequenceUnblockableFacing@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequenceUnblockableFacing); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequenceUnblockableFacing : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x0090A4C0 ?OnCreate@CCombatSequenceUnblockableFacing@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B4F90 ?GetName@CCombatSequenceUnblockableFacing@@UBE?AVCCharString@@XZ
+    virtual bool IsInterruptableDueToZoneChange() const;                  // slot 6 0x008B4FC0 ?IsInterruptableDueToZoneChange@CCombatSequenceUnblockableFacing@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B4FB0 ?GetZone@CCombatSequenceUnblockableFacing@@UBEKXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequenceUnblockableFacing) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequenceUnblockableFacing {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +40,8 @@ struct CCombatSequenceUnblockableFacing {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequenceUnblockableFacing) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequenceUnblockableFacing, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequenceUnblockableFacing) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequenceUnblockableFacing, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCEUNBLOCKABLEFACING_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCEUNBLOCKABLEFACING_H

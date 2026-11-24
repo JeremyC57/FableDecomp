@@ -33,6 +33,9 @@ long GetExplosionType()const;void IncrementNumThingsKilled(CThing*);
 #endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_WEAPON; }
+#ifdef FABLE_RETAIL_RANGED_COMBAT_FIXTURE_PASS27
+    CTCWeapon(CThing&);
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPON_SETLOADED
     // Both PDBs original nonconst void(bool,CThing*), native005dac50.
     void SetProjectileWeaponLoaded(bool,CThing*);
@@ -119,6 +122,11 @@ public:
 private:
     virtual void OnCreate();                                 // slot 4 0x005DA6E0
 public:
+#ifdef FABLE_RETAIL_WEAPON_ARROW_TRAIL_PASS26
+public:
+    CDefPointer<const CWeaponDef> GetWeaponDef() const { return WeaponDef; }
+private:
+#endif
     CDefPointer<const class CWeaponDef> WeaponDef;           // +0x0c
 #else
     unsigned char    WeaponDef[0x4];                         // +0x0c CDefPointer<const CWeaponDef>

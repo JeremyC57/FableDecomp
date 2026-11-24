@@ -33,6 +33,10 @@ class C3DVector;
 class CRightHandedSet;
 class CTCUserActionPointBase : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS_LIFETIME_PASS27
+    // Ego_r 0x007EED30 and FableWin 0x02587F70.
+    CTCUserActionPointBase(CThing& thing);
+#endif
     bool GetFreeActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long& index);      // 0x007FEDE0
 #ifdef FABLE_RETAIL_CTCUSERACTIONPOINTBASE_SETFREE
     // Nested opt-in (wf4, row 0x007B8B10 CTCTavernTable::GetEatingPoint): Ego_r.pdb / FableWin.pdb
@@ -51,6 +55,16 @@ protected:
 };
 class CTCNamedUserActionPoints : public CTCUserActionPointBase {
 public:
+#ifdef FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS_STATTYPE_PASS27
+    // FableWin 0x01B9F4BB returns the interface key tested by retail 0x007B8840.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_NAMED_USER_ACTION_POINTS; }
+#endif
+#ifdef FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS_LIFETIME_PASS27
+    // Ego_r 0x004FDF5B..0x004FDF82 and FableWin 0x01B9F441..0x01B9F4C5.
+    CTCNamedUserActionPoints(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+#endif
     virtual bool IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long index) const;   // 0x007FF0C0
 #ifdef FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS_GETNAME
     // Nested opt-in (wf4, row 0x007B8B10): Ego_r.pdb / FableWin.pdb ?GetName@CTCNamedUserActionPoints@@QAEXJAAVCCharString@@@Z
@@ -63,8 +77,8 @@ public:
 protected:
     std::vector<CCharString> Names;                                      // +0x34
 };
-FABLE_STATIC_ASSERT(sizeof(CTCUserActionPointBase) == 0x34);
-FABLE_STATIC_ASSERT(sizeof(CTCNamedUserActionPoints) == 0x40);
+FABLE_STATIC_ASSERT_AT(66, sizeof(CTCUserActionPointBase) == 0x34);
+FABLE_STATIC_ASSERT_AT(67, sizeof(CTCNamedUserActionPoints) == 0x40);
 #else
 
 #ifdef FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS_FREEPOINT
@@ -95,9 +109,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCNamedUserActionPoints) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTCNamedUserActionPoints, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCNamedUserActionPoints, Names) == 0x34);
+FABLE_STATIC_ASSERT_AT(98, sizeof(CTCNamedUserActionPoints) == 0x40);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CTCNamedUserActionPoints, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(100, offsetof(CTCNamedUserActionPoints, Names) == 0x34);
 
 #endif // FABLE_RETAIL_CTCNAMEDUSERACTIONPOINTS
 

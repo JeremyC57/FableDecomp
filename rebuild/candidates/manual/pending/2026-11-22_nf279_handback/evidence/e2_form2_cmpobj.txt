@@ -1,0 +1,8 @@
+## cmpobj HEAD v form2 00be8e60 (function COMDATs by symbol)
+      1 ONLY_A
+     18 SAME
+ONLY_A	?Verify@CMovableResource@@UBEKXZ
+## cmpobj HEAD v form2 00bfbd80 (function COMDATs by symbol)
+      1 ONLY_A
+     16 SAME
+ONLY_A	?Verify@CMovableResource@@UBEKXZ

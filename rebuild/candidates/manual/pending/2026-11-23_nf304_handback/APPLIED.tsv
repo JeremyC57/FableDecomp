@@ -1,0 +1,228 @@
+entry	address	status	binders_respelled	note
+1	0x00884E90	skipped-port		re-scope measured (held: work/held/006b8640.cpp, ruling NF300 Q2 not met): binder 0x006B8640 with CRadialBlurParams / CRadialBlurPositionParams / CScreenFilterParams nested in its CEnvironmentSpellEffectInterface model (no vftable / RTTI emitted; CDisplacementParams left global) grades RELOCATION_MATCH, objsec ALL_EQ (.drectve included) and binds the three PDB setters, BUT four of the TU's own DEFs change name: the pick-any implicit copy ctor ??0CRadialBlurPositionParams@@QAE@ABU0@@Z -> ...@CEnvironmentSpellEffectInterface@@QAE@ABU01@@Z (the new name is FableWin's) and the three local inline getters of the stand-in CScreenEffectPriorityStack model (?GetCurrent*@CScreenEffectPriorityStack@@QBE?AU<type>@@XZ -> ...@CEnvironmentSpellEffectInterface@@XZ; PDB: NScreenEffect::CScreenEffectPriorityStack::GetCurrentRadialBlurParams / GetCurrentRadialBlurPosParams / GetCurrentScreenFilterParam). Decision Q1
+2	0x00884F60	skipped-port		as entry 1 (the same 0x006B8640 variant; line 13 / call 40)
+3	0x00884FE0	skipped-port		as entry 1 (the same 0x006B8640 variant; line 15 / call 42)
+4	0x00BF9FA0	skipped-port		binder 0x00BFA8A0 line 11 `struct CAddPrimitiveDesc` global (PDB NEnginePrimitiveManagerRepeatedZSprites::CAddPrimitiveDesc) and line 37 public (PDB private AAE): the same type is the parameter of its stand-in callee CEngine_01436e80::UpdatePrimitive (line 14, 0x00B32000, table ?UpdatePrimitive@CEngine_01436e80@@QAEXPAVCEnginePrimitiveHandle@@ABUCAddPrimitiveDesc@@@Z), so the re-scope also respells a stand-in binding at a second address; 0x00BFACC0 line 110 declares the same global type (binds AddRepeatedZSprite through the stand-in CLocalDetailRenderer, line 142). Not compiled. T3 (callee port: PDB ?UpdateRepeatedZSprite@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitiveHandle@@ABUCAddPrimitiveDesc@NEnginePrimitiveManagerRepeatedZSprites@@@Z is the probable identity, unproven)
+5	0x00A64E70	done		binder 0x00A650F0 (compiled control, HEAD) already binds the PDB ?InsertIntoTree@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@1@0@Z (its CMemoryArea is nested, InsertIntoTree protected, source lines 11-18 / 87; nested in an earlier naming wave). Census: 0x00A650F0 is the only caller of 0x00A64E70. TABLE_CHANGES: delete the stale QAEXPAUCMemoryArea@@0@Z line (witness 0x00A650F0). The self 0x00A64E70 (control) still DEFINES the global-struct stand-in ?InsertIntoTree@CMemoryAllocatorVariableSize@@QAEXPAUCMemoryArea@@0@Z (no Leaf line): NAME_FIXES (self port)
+6	0x00AEE940	done	0x00AEB990	binder 0x00AEB990: `class CIEngine;` moved from inside `namespace NParticleEngine {` (line 21) to just above it (line 19; zero line delta): its ClearAllPrimitives(CIEngine*) declaration (line 41) and the CEnginePrimitivePrepareInfo::Engine / PEngine members now name the global ::CIEngine (both PDB name sets). No vftable / RTTI for CIEngine; the only renamed symbol is the UND ClearAllPrimitives reference (syms diff). objsec ALL_EQ. Census: 0x00AEEBA0 (control) already binds the PDB spelling. The self 0x00AEE940 (control) DEFINES ?ClearAllPrimitives@CParticleEmitter@@QAEXPAVCIEngine@@@Z (CParticleEmitter outside NParticleEngine): NAME_FIXES; the PDB spelling stays unresolved (link_g1)
+7	0x00A12450	done	0x00668AB0,0x0063E950,0x00875E60,0x00970790	binders: 0x00668AB0 line 24 `GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& out) const;` call 46 `(*From, *To, data)`; 0x0063E950 (no table line: full census) line 29 / 150 the same; 0x00875E60 line 24 references for the pointers, call 60 `(from, to, data)`; 0x00970790 line 32 the same + const, call 95. objsec ALL_EQ x4. The other 10 census rows (8 compiled controls; 0x0063E480 / 0x0074A5D0 are NF302/NF303 entry rows, read only: shared engine/CPhysicsMeshObject.h line 48 PDB form) bind the PDB spelling. The self 0x00A12450 has no landed row: unresolved before and after
+8	0x00487EF0	skipped-port		re-scope measured (held: work/held/00449e60.cpp): binder 0x00449E60 with `namespace NPlayerManager { class CPlayerSave { public:` (zero line delta), `InitCharacterFromSave(const NPlayerManager::CPlayerSave& save)` and the call `(save)`: RELOCATION_MATCH, objsec ALL_EQ, binds the PDB spelling, BUT the TU's own pick-any DEFs ??0CPlayerSave@@QAE@XZ / ??1CPlayerSave@@QAE@XZ change name (to ...@NPlayerManager@@, both FableWin names): ruling NF300 Q2 not met. Decision Q1
+9	0x004888C0	skipped-held		measured, held (evidence/held/00449cb0.cpp): binder 0x00449CB0 (CPlayerManager::SwapToHero) with `class CPlayer { public:` (PDB key V), `SwitchPlayerCharactersWith(CPlayer& other)` and the locals as references grades RELOCATION_MATCH, objsec ALL_EQ, and binds the PDB ?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z, BUT the class key also respells the TU's GetPlayer binding (0x004498C0: stand-in QAEPAUCPlayer@@J@Z -> PDB QAEAAVCPlayer@@J@Z with `CPlayer& GetPlayer(long)`), and 0x004498C0 is a T3_PORT_QUEUE item (nf301 "rest of done-partial", which lists 0x00449CB0): off limits for this batch. Compiled census of 0x004498C0 (evidence/bind_getplayer_head.txt): the PAU line's only binder is 0x00449CB0; the PAV line's witness 0x0066FB80 is stale (it binds AAV; 0x00449D90 / 0x00449E60 / 0x00449F90 / 0x0066FC90 / 0x0083C690 / 0x0083C800 / 0x0083CA90 bind PAV). Decision Q5
+10	0x00437AE0	done		the table witnesses are stale: binders 0x00439E00 (UpdateRenown, line 67) and 0x00439F20 (UpdateMorality, line 68), compiled controls, already bind the PDB ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z, as do the other census rows 0x004385F0 / 0x00439BB0 (controls). TABLE_CHANGES: delete the QAEXMMMMMPAUCStatBase@@@Z (witness 0x00439E00) and QAEXMMMMMPAVCStatBar@NPlayerGui@@@Z (witness 0x00439F20) lines. The self 0x00437AE0 (control) defines the PDB spelling
+11	0x0043B570	done	0x00487FB0	binder 0x00487FB0 (CPlayer::InitPlayerGui) lines 28-29 `CPlayerGui(const CMainGameComponent& component, CWorld& world, CGamePlayerInterface& playerInterface, CPlayerManager& playerManager, const CGraphicDataBank& bank);` and the call (lines 55-56) passes `*Component, *World, *(playerInterface = PlayerInterface), *PlayerManager, *(bank = ...)` (the in-argument assignments the shape note needs are kept). objsec ALL_EQ. The self 0x0043B570 (control) defines the PDB spelling; link resolves it
+12	0x00F07B80	skipped-port		binder 0x00F081E0 line 95 `WatchForBanditSpeechMarkers(CScriptThingParam bandit)`: the stand-in parameter type CScriptThingParam (PDB by-value CScriptThing, a class with copy semantics): T3 (not compiled)
+13	0x004AFBB0	done	0x00713850	binder 0x00713850 line 38 `void OnEntityInterrupted(CThing& thing);`, line 87 `OnEntityInterrupted(*ParentThing)` (ParentThing is the CThing* member). objsec ALL_EQ (its ??_7CIntelligentPointer table unchanged). The self 0x004AFBB0 (control) defines the PDB spelling; link resolves it
+14	0x004B3A20	skipped-port		binder 0x004B43D0 (compiled control) binds ?DeactivateQuest@CQuestManager@@QAEXV?$CCountedPointer@UCActiveQuest@@@@K@Z through a global `struct CActiveQuest` (line 33) used by its CActiveQuestNode model and by-value CCountedPointer<CActiveQuest> (lines 38-47); the SELF 0x004B3A20 (control) DEFINES that same stand-in spelling (QAE, global struct), while 0x004B4450 already binds the PDB AAE nested form: moving the binder alone would leave it unresolved where HEAD resolves it against the self. Unit with a self re-scope (CActiveQuest nested in CQuestManager, CCountedPointer instance names): T3
+15	0x00F3AFC0	done	0x00BFD0B0,0x00BFD670	binders 0x00BFD0B0 (line 37 `long Compress(const void* data, long count, long stride, CArray<unsigned char>& output);`, call 65 `buffer`) and 0x00BFD670 (line 39, calls 85 / 92). objsec ALL_EQ x2. The other census rows 0x00BFCF00 / 0x00BFCF90 / 0x00BFD020 (controls) bind the PDB spelling. The self 0x00F3AFC0 (control) defines it; link resolves it
+16	0x009DBFF0	done	0x00405020	binder 0x00405020 line 45 `const CFontBank& font`, calls 125 / 130 `*font.Data` (the CCountedPointer<CFontBank> local's pointer). objsec ALL_EQ. Census: 0x00435530 (control) binds the PDB spelling; 0x005BCAFE (an NF302/NF303 entry row, read only) declares it (line 46). The self 0x009DBFF0 (control) defines it; link resolves it
+17	0x009DD210	done	0x0041A980	binder 0x0041A980 line 40 `const CGraphicDataBank& bank`, call 100 `*bank.Data`. objsec ALL_EQ. Census 0x00498490 (control) binds the PDB spelling. The self 0x009DD210 (control) defines it; link resolves it
+18	0x009DE3F0	done	0x009EAD60	binder 0x009EAD60 line 15 `unsigned long flags` (call 103 passes the literal 1, same push). objsec ALL_EQ. The other census rows 0x00498490 / 0x00499D90 / 0x00637C80 / 0x0085CBD0 (controls) bind the PDB spelling. The self 0x009DE3F0 (control) defines it; link resolves it
+19	0x00A10DC0	done	0x00A10DC0,0x00B87680,0x00B89A20	the SELF 0x00A10DC0 defined the const stand-in ??0CRenderTarget@@QAE@ABVCSurface@@0@Z; both PDB name sets give AAV (non-const), as the shared engine/CRenderTarget.h line 17 already declares (the census rows 0x00499880 / 0x009FAF70 / 0x00B89C30 bind AAV through it: unresolved at HEAD). Self lines 30-31 / 37-38: `CSurface& primary, CSurface& secondary` (the body only reads them through CSurface::operator=(const CSurface&)) + a new first line `// Leaf: ??0CRenderTarget@@QAE@AAVCSurface@@0@Z` (the row had none); binders 0x00B87680 line 38 / 0x00B89A20 line 39 `CRenderTarget(CSurface& colour, CSurface& depth);` (their calls pass non-const lvalues). objsec ALL_EQ x3 (tables ??_7CRenderTarget / ??_7CSurface unchanged). Self rename (RENAMES section 1); link: the AAV references now resolve against the self
+20	0x009FC5C0	skipped-port		the SELF 0x009FC5C0 (control) DEFINES ~CResourceList non-virtual (QAE; PDB virtual UAE): a self port; the witness binder 0x009B02E0 is off limits (T3 queue); 0x00A6A440 (control) binds QAE through a polymorphic local CResourceList model (line 54) with derived classes (CTextureManager, virtual dtor line 75): a virtual dtor there changes the derived vtable (NF299 Q3 not met). T3
+21	0x009F4910	done	0x009A6610	binder 0x009A6610 (CSystemManager::Initialise) line 119: its one-line local CScratchBuffer declares `bool Initialise(long size);` (both PDB name sets return bool; R1 "a return type both PDBs give"); the call (line 236) discards the result: same code. objsec ALL_EQ (??_7CDriveManager table unchanged). The self 0x009F4910 (control) defines the PDB spelling; link resolves it
+22	0x00CB7920	skipped-port		binders 0x00EEA460 / 0x00EEA7C0 / 0x00EEB7B0 / 0x00EEC890 declare SetPredicate(CIsThingConscious&) on a global stand-in struct CIsThingConscious (PDB NScript::CIsThingConscious, derived from NScript::CPredicateBase; the PDB member takes const CPredicateBase&): the conversion needs the predicate hierarchy in each model (new local model / header port), T3. Not compiled
+23	0x0082E600	skipped-port		binder 0x00820F80 line 19 constructs CScriptedMapBrush from a C2DBoxI (the stand-in parameter type; PDB ctor takes const CScriptedMapBrushInit&, no such model in the TU): T3. Not compiled
+24	0x0082E780	done-partial	0x00820F80	binder 0x00820F80 (CMap::CreateScriptedMapBrush) lines 18 / 21: its local CScriptedMapBrush (not polymorphic, 0x54-byte body) gets `virtual ~CScriptedMapBrush();` (both PDB name sets UAE; retail vtable 0x01272518 is installed by the ctor 0x0082E600) with the leading body shrunk 0x54 -> 0x50 so sizeof and every offset stay (ruling NF299 Q3: the TU defines no ctor / dtor inline, so no ??_7 / ??_R is emitted; the temporary's dtor call stays direct). objsec ALL_EQ, the only renamed symbol is the UND dtor (syms diff). The self 0x0082E780 (control) defines UAE: HEAD left QAE unresolved, the new set resolves it. Left: census row 0x008270C0 (the ??_G row, control) calls the free stand-in ?CScriptedMapBrush_dtor@@YIXPAVCScriptedMapBrush@@@Z (NAME_FIXES; T3)
+25	0x0082E910	skipped-port		binder 0x008209C0 line 35 GetThingsToDelete(UIDList&) on the stand-in struct UIDList (a hand-written list, lines 27-31; PDB std::list<unsigned __int64>&): STL-instance port, T3. Not compiled
+26	0x0082E9C0	skipped-port		as entry 25 (binder 0x00820790 line 34 / 70, UIDList)
+27	0x00555440	done	0x00555440,0x005556F0,0x005559D0,0x00556810,0x005566A0,0x005570F0	every row of the unit modelled C2DVector inside namespace NUISystem as a struct; PDB: the global class ::C2DVector (V) and protected IAE for HideComponent / UnhideComponent. In each TU the C2DVector model moves out of the namespace as `class C2DVector { public:` (zero line delta: `namespace NUISystem {` re-opens on the closing line) and the declaration gets `protected: ... public:` on its own line. SELF 0x00555440 (and 0x005556F0, entry 28): the DEF moves onto the PDB spelling (RENAMES section 1; bare `// Leaf: HideComponent` -> full mangled). Binders 0x005559D0 (lines 7-14, 43), 0x00556810 (lines 14-21, 110-111), 0x005566A0 (lines 16-23, 175) and 0x005570F0 (lines 14-21, 40) were RESOLVED against the self's stand-in at HEAD, so the unit moves together; 0x00555A90 (control, shared header) already bound the PDB spelling. Every caller is a CScrollableList / CRedefinerList member (protected access compiles). objsec ALL_EQ x6; syms diff: only the method symbol renames (DEF in the selves, UND in the binders); no C2DVector COMDAT
+28	0x005556F0	done	0x005556F0,0x00556810	the UnhideComponent half of the entry-27 unit: self 0x005556F0 (DEF rename, full mangled Leaf) + binder 0x00556810; 0x00555A90 (control) already binds the PDB spelling
+29	0x0098B860	skipped-port		binder 0x00B3B5D0 returns the stand-in CShaderResourcePointer (line 75-79, a hand-written counted pointer; PDB CCountedPointer<CShaderResource>): stand-in return type, T3 (0x00B3B6D0 likewise). Not compiled
+30	0x00A5D7C0	skipped-port		binder 0x00B3B6D0 line 18 OpenShaderBank(const CShaderDataBankNative*) on the stand-in CShaderDataBankNative (PDB const CShaderDataBank*): stand-in type, T3. Not compiled
+31	0x00A7DB10	done	0x00A772D0	binder 0x00A772D0 line 42: its local CSmallVector<T, N> template member `void resize(long size, const T& value);` (call 96 passes the unsigned long count: same push). objsec ALL_EQ (tables unchanged). The other census rows 0x00A76A80 / 0x00A76B90 / 0x00A780B0 / 0x00A78A90 / 0x00A7DBF0 (controls) bind the PDB spelling; the self 0x00A7DB10 (control) defines it
+32	0x00872110	done		the table witness is stale: binder 0x008728C0 (the only census caller; compiled control) already binds the PDB ?UpdateAutoGoBehind@CStringAndCageBase@NCameraModes@@ABEXAAVC3DVector@@@Z (source line 71, private const). TABLE_CHANGES: delete the QAEXAAUC3DVector@@@Z line. The self 0x00872110 (control) defines the PDB spelling
+33	0x00414E30	done	0x004138D0	binder 0x004138D0 (GFParseCommandLine): line 66 the local `TStringParserErrorCallback` typedef takes `const CCharString&` (PDB P6IXABVCCharString@@@Z; the TU's /Gr makes it __fastcall), line 76 `CStringParser(const char* text, ...)` (call 99 passes the char* command line: same push). The symbol now equals the PDB spelling, back-references included. objsec ALL_EQ. The other census rows (controls) bind the PDB spelling; the self 0x00414E30 (control) defines it; link resolves it
+34	0x009BA110	done	0x004138D0	binder 0x004138D0 line 78 `ReadAsStringUntilString(const CCharString& terminator, CParsedItem& item)`, calls 101 / 105 `item` (was `&item`). objsec ALL_EQ. The other census rows bind the PDB spelling (controls; 0x00998570 is an NF302/NF303 entry row, read only). The SELF 0x009BA110 (control) DEFINES the pointer stand-in ?ReadAsStringUntilString@CStringParser@@QAE_NPAVCCharString@@PAVCParsedItem@@@Z (its body passes the terminator pointer to a stand-in FindMatchingSubstring(CCharString*)): NAME_FIXES (self port); the PDB spelling stays unresolved as HEAD's was
+35	0x00492973	done	0x00492F69,0x005EADC0,0x006DD7E0,0x007132C0	the SetText family unit (entries 35-38). 6-wide-string SetText (0x00492973): binders 0x00492F69 (the entry-37 self, its forwarding call line 99), 0x005EADC0 (line 33 decl), 0x006DD7E0 (line 29) and 0x007132C0 (line 58) declare `const CFontBank& font`; their calls pass `*<the CFontBank* member / local / accessor>` (0x005EADC0 line 94, 0x006DD7E0 line 88, 0x007132C0 line 127). objsec ALL_EQ. The other census rows (0x00492BAB, 0x00492E4B, 0x00493049, 0x00892A80: controls; 0x00492ED1 / 0x00492FB4: NF302/NF303 entry rows, read only, const-reference declarations) bind the PDB spelling; the self 0x00492973 defines it (control)
+36	0x00492E4B	done	0x007132C0,0x009261F0,0x007E27F0	3-argument SetText (0x00492E4B): 0x007132C0 line 62 `const CFontBank& font`, call 137 `*font`; 0x009261F0 line 126 `(const CFontBank& font, const CWideString& text, ...)`, call 177 `(*...->PSubtitleFont, text, ...)`; 0x007E27F0 line 53 `bool mode` (both calls pass the literal 1: the same push). objsec ALL_EQ x3. The other census rows (controls: 0x006D0830, 0x0072E710, 0x0072E810, 0x0072E940, 0x00750110, 0x007CACB0, 0x007E2A60; 0x0074EE90 NF302/NF303 entry row, 0x0092FAB0 off limits: both read only, const-reference declarations / PeekCutSceneMainFont) bind the PDB spelling; the self 0x00492E4B (control) defines it. Control 0x007E2A60 grades DIFFER(707v707) at HEAD (the known assert-pin row, GOTCHAS); its binding was read from that object
+37	0x00492F69	done	0x00492F69,0x005E9C50,0x005E9D60,0x005EAF30,0x005EB080,0x006DD7E0,0x007132C0,0x007E7AC0,0x008139C0	the SELF 0x00492F69 DEFINED the 5-wide-string SetText with `CFontBank* font` (lines 86 / 89 / 94): now `const CFontBank& font` (both PDB name sets; RENAMES section 1; bare `// Leaf: SetText` -> full mangled). Its eight binders were RESOLVED against the stand-in at HEAD (compiled census), so all move with it: 0x007E7AC0 (line 41, call 113 `*font`), 0x005E9C50 / 0x005E9D60 (line 33, call 91), 0x005EAF30 (line 33, call 93), 0x005EB080 (line 37, call 104), 0x006DD7E0 (line 32, call 90), 0x007132C0 (line 60, call 123), 0x008139C0 (line 93, call 145; its line-95 CCharString overload, 0x00492ED1, an NF302/NF303 entry, is left as it was). objsec ALL_EQ x9; syms diff: only SetText symbols rename (DEF only in the self). Census 0x005EB180 / 0x007E4E30 / 0x007EBEA0 (controls) already bound the PDB spelling; 0x0092FAB0 off limits (read only, PDB form)
+38	0x00493049	done	0x008929D0	CCharString SetText (0x00493049): binder 0x008929D0 line 23 `const CFontBank& font`, call 40 `*reinterpret_cast<CMainGameComponentFontView*>(Component)->Font`. objsec ALL_EQ. Census 0x0089E540 (control) binds the PDB spelling; the self 0x00493049 (control) defines it
+39	0x009F3230	done	0x00642970,0x0066C750,0x0066DC50	binders 0x00642970 (line 28 references, call 63 `(size, format, false)`; no table line, full census), 0x0066C750 (line 11, call 28) and 0x0066DC50 (line 35, call 80): `const C2DExtentsI&, const CPixelFormat&`. objsec ALL_EQ x3. The other census rows (controls) bind the PDB spelling; the self 0x009F3230 (control) defines it; link resolves it
+40	0x009F35D0	done	0x009F37E0	binder 0x009F37E0 (CSurface::CopyFromSurface, a CSurface member) line 82 `private: bool CanDoProperSignedConversion(const C2DBoxI*, const C2DBoxI*, const CPixelFormat& format); public:`, call 93 passes the CPixelFormat temporary itself (was its address). objsec ALL_EQ. Census 0x009F4390 (control) binds the PDB spelling. The SELF 0x009F35D0 (control) DEFINES ?CanDoProperSignedConversion@CSurface_Methods@@QAE_NPBVC2DBoxI@@0ABVCPixelFormat@@@Z on the stand-in class CSurface_Methods: NAME_FIXES (self port); unresolved before and after
+41	0x009F36E0	done	0x009F37E0	binder 0x009F37E0 line 86 `private: void CopyFromUnsignedDataToSignedSurface(const void* data, const CPixelFormat& format, long pitch); public:`, call 101 `argb` (was `&argb`). objsec ALL_EQ. Census 0x009F4390 (control) binds the PDB spelling. The SELF 0x009F36E0 (control) DEFINES ?CopyFromUnsignedDataToSignedSurface@CSurface@@QAEXPBEABVCPixelFormat@@K@Z (public, const unsigned char*, unsigned long): NAME_FIXES (self port)
+42	0x009F37E0	done	0x0066CB00,0x00B2C4E0	binders 0x0066CB00 (line 53 `const CSurface& source`, call 83 `Surface()`, the inline accessor's reference) and 0x00B2C4E0 (no table line, full census; line 68, call 180 passes the GetSurfaceLevel(0) temporary itself). objsec ALL_EQ x2. The other census rows (controls) bind the PDB spelling; the self 0x009F37E0 defines it (its object, compiled for entries 40 / 41); link resolves it
+43	0x009F4120	done	0x00642970	binder 0x00642970 line 29 `void SetPixel(long x, long y, const CRGBColour& colour);`, call 67 `colour`. objsec ALL_EQ. Census 0x0066CD50 (control) binds the PDB spelling; the self 0x009F4120 (control) defines it
+44	0x009F4590	done	0x00642970	binder 0x00642970 line 30 `bool SaveAsTGA(const CWideString& filename, const C2DExtentsI* size, bool a) const;`, call 69 `filename`. objsec ALL_EQ. Census 0x00435530 / 0x0066CD50 (controls) bind the PDB spelling. The self 0x009F4590 has no landed row: unresolved before and after
+45	0x009E5090	done		the table witness is stale: 0x006E0730 (compiled control) binds the PDB ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z (nested CSymbolInfo, source lines 37-43), as do 0x0066B370 / 0x006F9BE0 / 0x006FC8E0 (controls); 0x006FCC80 (an NF302/NF303 entry row, read only) declares it const (QBE), so it cannot bind the deleted QAE spelling. TABLE_CHANGES: delete the QAEPAUCSymbolInfo@@J@Z line
+46	0x00729B20	done	0x0069FE60	binder 0x0069FE60 line 49 `void OnActionUse(CThing& user);`, call 81 `*((CThing*)PCreature.GetPItem())`. objsec ALL_EQ. The self 0x00729B20 (control) defines the PDB spelling; link resolves it
+47	0x007F7710	done	0x004DE660,0x004DE68B,0x004E07E3	binders 0x004DE660 / 0x004DE68B / 0x004E07E3 (the receptor ctors, Chest / Door / Relay) line 15 `CTCActivationReceptorBase(CThing& argument);` and the mem-initializer line 24 `(*argument)`. objsec ALL_EQ x3 (their ??_7CTCActivationReceptor* tables unchanged). Census 0x004DE623 (control) binds the PDB spelling; the self 0x007F7710 (control) defines it
+48	0x0078C210	done	0x004D4A69	binder 0x004D4A69 (the TC factory) line 16 `CTCBerserk(CThing& owner);`, line 21 `new CTCBerserk(*owner)`. objsec ALL_EQ. The self 0x0078C210 (control) defines the PDB spelling
+49	0x007827D0	done	0x007828E0	binder 0x007828E0 (a CTCBoastingArea member) lines 49-50 `private: void OnHeroEnteringArea(CThing& hero); ... void OnHeroLeavingArea(CThing& hero); public:`, calls 70 / 87 `*hero`. objsec ALL_EQ. The self 0x007827D0 (control) defines the PDB spelling
+50	0x00782860	done	0x007828E0,0x00782A90	binders 0x007828E0 (line 50, calls 95 / 98) and 0x00782A90 (line 37 `private: ... public:`, call 46 `*hero`). objsec ALL_EQ x2. The self 0x00782860 (control) defines the PDB spelling
+51	0x00783730	skipped-port		binder 0x0095E790 line 56 / 72 GetCrowdGroup(CThing*, CCrowdGroup**) on the stand-in struct CCrowdGroup (PDB CTCCreatureGroupBoastingCrowd**): stand-in type, T3. Not compiled
+52	0x0079D360	done	0x004D4C58	binder 0x004D4C58 (TC factory) line 16 `CTCBulletTime(CThing& owner);`, line 21 `new CTCBulletTime(*owner)`. objsec ALL_EQ. The self 0x0079D360 (control) defines the PDB spelling
+53	0x007055D0	done	0x00705B00,0x00705B60	binders 0x00705B00 (line 32 `GetCarriedPositionInfo(C3DVector& position, CRightHandedSet& orientation, bool forceUpdate, float time) const;`, call 38 `(position->StartPosition, orientation->StartOrientation, ...)`; its own other overload, line 33 / 36, unchanged) and 0x00705B60 (line 50, call 60 `(position, orientation, ...)`). objsec ALL_EQ x2. Census 0x0076E2F0 (control) binds the PDB spelling. The self 0x007055D0 has no landed row
+54	0x006CB780	done	0x006CB780,0x0095E900,0x0097FBE0,0x009804A0	the SELF 0x006CB780 DEFINED the stand-in QAE ... C3DVector* out: lines 36 / 39 now `C3DVector& out) const` and the body uses `out` for `*out` (lines 41-43; same code); RENAMES section 1 (the row has no Leaf line; left so). Binders 0x0095E900 (line 95, call 148), 0x0097FBE0 (line 26, call 131), 0x009804A0 (line 27, call 168): `C3DVector& out) const;`, the call passes the local (was its address); they were resolved against the self's stand-in at HEAD. Census 0x004A3740 / 0x00984F60 (controls) already bound the PDB spelling (unresolved at HEAD). objsec ALL_EQ x4; syms diff: DEF only in the self
+55	0x006CBAC0	open		not attempted this pass: binder 0x0091D510 (and census rows 0x00713EE0 / 0x00714900 / 0x00849BE0 / 0x0097E890 / 0x0097EC00 with their own global `struct CCreatureNavOutput` models, by-value return) need CCreatureNavOutput re-scoped into CTCCreatureNavigation (class key V) in each TU: a six-row re-scope unit (ruling NF300 Q2 check per TU); the self 0x006CBAC0 has no landed row
+56	0x00681AE0	skipped-port		the SELF 0x00681AE0 defines KnowsOfDeed(long, long, bool) const (the deed type as long; PDB W4EOpinionDeedType@@); binder 0x00683650 (line 72) passes `deed->Type`, a `long` member of its local deed model (line 51): the enum parameter needs the member retyped or a cast (not ruling NF300 Q1's literal case); engine/EOpinionDeedType.h exists. Self + binder unit with a member retype: T3 / decision. Not compiled
+57	0x00682810	skipped-port		as entry 56 (binder 0x00683590 line 94 InformOfDeed(long deedType, long, const COpinionDeedEffectsDef*, bool): the deed type as long plus a pointer for the PDB reference; the self 0x00682810 not read). T3. Not compiled
+58	0x007E4B60	done	0x00896DF0	binder 0x00896DF0 line 37 `void Activate(CCharString screenName);` (was `__fastcall`: the by-value class argument is pushed and `this` travels in ecx either way). objsec ALL_EQ. The self 0x007E4B60 (control) defines the PDB spelling
+59	0x006E0480	done	0x00750540	binder 0x00750540 (CTCChest::Open) line 115 `void SetEmitterOrientation(const CRightHandedSet& orientation);`, call 189 `*ParentThing->Physics->GetOrientation()` (the virtual returns a pointer). objsec ALL_EQ. Census 0x006637D0 / 0x0089F9E0 (controls) bind the PDB spelling; the self 0x006E0480 (control) defines it. (bind.py printed `-` for this row: its bare Leaf `Open` substring-matched ?SetOpened@COpenCloseHelper first; objdump + the retail bytes show the leaf's call at +0x14C goes to 0x006E0480)
+60	0x00730630	done	0x004D32DA	binder 0x004D32DA (TC factory) line 16 `CTCDoor(CThing& owner);`, line 21 `new CTCDoor(*owner)`. objsec ALL_EQ. The self 0x00730630 (control) defines the PDB spelling
+61	0x0071AC70	open		not started
+62	0x0076C8A0	open		not started
+63	0x0076CC00	open		not started
+64	0x004D6292	open		not started
+65	0x006D4E60	open		not started
+66	0x006D50C0	open		not started
+67	0x006D5180	open		not started
+68	0x007986A0	open		not started
+69	0x004BFFD0	open		not started
+70	0x004C0240	open		not started
+71	0x00706640	open		not started
+72	0x006D6660	open		not started
+73	0x0057A6B8	open		not started
+74	0x0057BC6E	open		not started
+75	0x0057C4F1	open		not started
+76	0x008168B0	open		not started
+77	0x008169B0	open		not started
+78	0x00801920	open		not started
+79	0x00581DDB	open		not started
+80	0x00584B86	open		not started
+81	0x005EE49A	open		not started
+82	0x005EEA9B	open		not started
+83	0x005F0DC5	open		not started
+84	0x005F1320	open		not started
+85	0x005BF482	open		not started
+86	0x005D8E90	open		not started
+87	0x005FB140	open		not started
+88	0x0061A8A0	open		not started
+89	0x00753E90	open		not started
+90	0x007CD390	open		not started
+91	0x00766050	open		not started
+92	0x007660C0	open		not started
+93	0x0079DEB0	open		not started
+94	0x006B0210	open		not started
+95	0x006B0460	open		not started
+96	0x00772120	open		not started
+97	0x00773C00	open		not started
+98	0x007751A0	open		not started
+99	0x00770FA0	open		not started
+100	0x00746EC0	open		not started
+101	0x00747B80	open		not started
+102	0x0079ACC0	open		not started
+103	0x006E3180	open		not started
+104	0x007F5A70	open		not started
+105	0x007B9F60	open		not started
+106	0x007BA1D0	open		not started
+107	0x007BA8C0	open		not started
+108	0x005EB4B0	open		not started
+109	0x005ECA50	open		not started
+110	0x0078839A	open		not started
+111	0x007941D0	open		not started
+112	0x00658620	open		not started
+113	0x00658716	open		not started
+114	0x00659EFC	open		not started
+115	0x0065A8EE	open		not started
+116	0x007DF4B0	open		not started
+117	0x0076E4D0	open		not started
+118	0x007A0D90	open		not started
+119	0x009C8DE0	open		not started
+120	0x009F9DE0	open		not started
+121	0x009FA450	open		not started
+122	0x0081B0A0	open		not started
+123	0x004C8310	open		not started
+124	0x004C9030	open		not started
+125	0x00863750	open		not started
+126	0x008098B0	open		not started
+127	0x006619F0	open		not started
+128	0x00662B10	open		not started
+129	0x00663260	open		not started
+130	0x006644F0	open		not started
+131	0x006668A0	open		not started
+132	0x00835C80	open		not started
+133	0x006A7550	open		not started
+134	0x006A7E70	open		not started
+135	0x006A7930	open		not started
+136	0x006A76A0	open		not started
+137	0x006A7EB0	open		not started
+138	0x00799E30	open		not started
+139	0x006A7580	open		not started
+140	0x006A7590	open		not started
+141	0x006A7B20	open		not started
+142	0x0051E210	open		not started
+143	0x0051EC50	open		not started
+144	0x00520D00	open		not started
+145	0x00525CD0	open		not started
+146	0x006A5AF0	open		not started
+147	0x0083DDC0	open		not started
+148	0x00877840	open		not started
+149	0x00409090	open		not started
+150	0x00409FD0	open		not started
+151	0x0040BCA0	open		not started
+152	0x00AD89B0	open		not started
+153	0x00A3B0F0	open		not started
+154	0x00A0CCD0	open		not started
+155	0x0099B800	open		not started
+156	0x0049D930	open		not started
+157	0x0049E080	open		not started
+158	0x004A0CD0	open		not started
+159	0x00500EB0	open		not started
+160	0x00501990	open		not started
+161	0x00501D30	open		not started
+162	0x00502E90	open		not started
+163	0x0050A650	open		not started
+164	0x0063D4A0	open		not started
+165	0x009BD020	open		not started
+166	0x00493EAB	open		not started
+167	0x00632830	open		not started
+168	0x00632B90	open		not started
+169	0x00412C70	open		not started
+170	0x0040FCA0	open		not started
+171	0x0052B270	open		not started
+172	0x008786E0	open		not started
+173	0x007510D0	open		not started
+174	0x0083EBD0	open		not started
+175	0x00BFC880	open		not started
+176	0x00BFCA20	open		not started
+177	0x00BFCBC0	open		not started
+178	0x00BFCD60	open		not started
+179	0x0085F830	open		not started
+180	0x009EA060	open		not started
+181	0x006E2B70	open		not started
+182	0x00660AE2	open		not started
+183	0x00660B5D	open		not started
+184	0x00660BD8	open		not started
+185	0x00660C53	open		not started
+186	0x00660CCE	open		not started
+187	0x00660D49	open		not started
+188	0x00660787	open		not started
+189	0x00660894	open		not started
+190	0x0066090A	open		not started
+191	0x00660980	open		not started
+192	0x006609F6	open		not started
+193	0x00660A6C	open		not started
+194	0x00BFCF00	open		not started
+195	0x00BFCF90	open		not started
+196	0x00BFD020	open		not started
+197	0x0059B4FE	open		not started
+198	0x00479449	open		not started
+199	0x0053CB20	open		not started
+200	0x0042D1B7	open		not started
+201	0x007AEBE0	open		not started
+202	0x005E0E20	open		not started
+203	0x0046ACA8	open		not started
+204	0x004E9F20	open		not started
+205	0x00581284	open		not started
+206	0x006C9D50	open		not started
+207	0x006D4A20	open		not started
+208	0x006DD4A0	open		not started
+209	0x00721240	open		not started
+210	0x007B5210	open		not started
+211	0x00F33D90	open		not started
+212	0x00F34BF0	open		not started
+213	0x00F353F0	open		not started
+214	0x00405220	open		not started
+215	0x00497890	open		not started
+216	0x005578A0	open		not started
+217	0x00778610	open		not started
+218	0x0088AE40	open		not started
+219	0x00942B30	open		not started
+220	0x009E1E70	open		not started
+221	0x009E21D0	open		not started
+222	0x00CBE0C7	open		not started
+223	0x00CBE7AA	open		not started
+224	0x00CBE814	open		not started
+225	0x00CBED00	open		not started
+226	0x00CBED82	open		not started
+227	0x00CBEED2	open		not started

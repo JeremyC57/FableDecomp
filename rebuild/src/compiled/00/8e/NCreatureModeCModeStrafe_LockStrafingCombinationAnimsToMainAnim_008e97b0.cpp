@@ -39,7 +39,7 @@ class CAnimSet { public:                           // retail layout (12-byte vec
 };
 
 class CAnimateThing { public:
-    CAnimSet* FindCombinationAnim(long type);   // 0x0070C4E0
+    CAnimSet* GetFirstCombinationAnimFromType(long type);   // 0x0070C4E0; NF299: PDB name, was FindCombinationAnim
 };
 class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();          // 0x0070B460
@@ -60,16 +60,16 @@ void CModeStrafe::LockStrafingCombinationAnimsToMainAnim()
     CTCAnimationComplex* animation;
     if (ParentThing && !ParentThing->IsDead() && ParentThing->GetTC(TCI_ANIMATION, &animation)) {
         CAnimateThing& animator = animation->GetAnimation();
-        CAnimSet* set = animator.FindCombinationAnim(0x23);
+        CAnimSet* set = animator.GetFirstCombinationAnimFromType(0x23);
         if (set)
             set->OwnedByMainAnim = true;
-        set = animator.FindCombinationAnim(0x24);
+        set = animator.GetFirstCombinationAnimFromType(0x24);
         if (set)
             set->OwnedByMainAnim = true;
-        set = animator.FindCombinationAnim(0x25);
+        set = animator.GetFirstCombinationAnimFromType(0x25);
         if (set)
             set->OwnedByMainAnim = true;
-        set = animator.FindCombinationAnim(0x1f);
+        set = animator.GetFirstCombinationAnimFromType(0x1f);
         if (set)
             set->OwnedByMainAnim = true;
     }

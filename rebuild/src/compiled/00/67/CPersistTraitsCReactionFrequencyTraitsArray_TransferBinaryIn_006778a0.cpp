@@ -41,8 +41,8 @@ class CReactionFrequencyTraits { public:
     virtual void v01();
     virtual long GetType() const;                                       // +0x08
     virtual void TransferBinaryIn(CDataInputStream* stream);            // +0x0C
+    static CReactionFrequencyTraits* __fastcall CreateFromType(EReactionFrequencyType type);   // 0x006FF930 (both PDBs: static member)
 };
-CReactionFrequencyTraits* __fastcall CreateFromType(EReactionFrequencyType type);   // 0x006FF930
 
 class CReactionFrequencyTraitsArray { public:
     CReactionFrequencyTraits* LowHigh[2][79];       // +0x000
@@ -60,7 +60,7 @@ void CPersistTraits<CReactionFrequencyTraitsArray>::TransferBinaryIn(CDataInputS
             CReactionFrequencyTraits* traits = 0;
             long type = ((CDataInputStreamReader*)stream)->ReadLong();
             if (type != 0) {
-                traits = CreateFromType((EReactionFrequencyType)type);
+                traits = CReactionFrequencyTraits::CreateFromType((EReactionFrequencyType)type);
                 if (traits != 0)
                     traits->TransferBinaryIn(stream);
             }

@@ -1,5 +1,4 @@
 // CAnimComponentCombatHandedness::TransferBinaryIn(CMemoryDataInputStream* stream) -- read StartHandedness then EndHandedness (4-byte enums) from the memory stream
-// Leaf: TransferBinaryIn
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DBA80, length 205 bytes (+ int3 padding), `ret 4`.
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0 (twice, when the chunk runs out).
 // Same shape as the landed sibling CAnimComponentCombatComboChain::TransferBinaryIn (0x005DBB60).
@@ -7,12 +6,20 @@
 // range check, chunk memcpy fast path, overflow call); each value is homed in the dead stream-argument slot; the
 // second read's fast path forwards straight into the member and its exits duplicate the return tails.
 // Layout: rebuild/include/engine/CAnimComponentCombatHandedness.h (StartHandedness +0x08, EndHandedness +0x0c, ECombatAnimationHandedness enums); the method is
-// declared on a local view of the header's layout.
+// defined on the header's class (signature port below).
+// Leaf: ?TransferBinaryIn@CAnimComponentCombatHandedness@@UAEXAAVCMemoryDataInputStream@@@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CAnimComponentCombatHandedness.h under FABLE_RETAIL_ANIMCOMPONENT with the PDB parameter / return types (was ?TransferBinaryIn@CAnimComponentCombatHandedness_Transfer@@QAEXPAVCMemoryDataInputStream@@@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_ANIMCOMPONENT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
 #include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CDataOutputStream.h"
+#include "engine/CAnimComponentCombatHandedness.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-#include "engine/CAnimComponentCombatHandedness.h"
 
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
@@ -47,13 +54,7 @@ FABLE_FORCEINLINE void TransferLongIn(CMemoryDataInputStream* stream, long* out)
     stream->Read(&value, sizeof(value));
     *out = value;
 }
-
-struct CAnimComponentCombatHandedness_Transfer : CAnimComponentCombatHandedness {
-    void TransferBinaryIn(CMemoryDataInputStream* stream);
-};
-
-void CAnimComponentCombatHandedness_Transfer::TransferBinaryIn(CMemoryDataInputStream* stream)
-{
-    TransferLongIn(stream, (long*)StartHandedness);
-    TransferLongIn(stream, (long*)EndHandedness);
+void CAnimComponentCombatHandedness::TransferBinaryIn(CMemoryDataInputStream& stream) {
+    TransferLongIn(&stream, &StartHandedness);
+    TransferLongIn(&stream, &EndHandedness);
 }

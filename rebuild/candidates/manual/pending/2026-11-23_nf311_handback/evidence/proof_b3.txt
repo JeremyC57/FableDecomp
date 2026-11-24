@@ -1,0 +1,8 @@
+##### 00709b10 renames: ??1C3DAnimationInterpolator@@QAE@XZ=??1C3DAnimationInterpolator@@UAE@XZ
+sections head 9 new 9
+ALL_EQ text_sections_equal=8
+tables H=0 N=0
+##### 00708a30 renames: ??1C3DAnimationInterpolator@@QAE@XZ=??1C3DAnimationInterpolator@@UAE@XZ
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0

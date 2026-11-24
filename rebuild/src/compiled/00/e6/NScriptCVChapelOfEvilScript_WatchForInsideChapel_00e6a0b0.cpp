@@ -34,8 +34,10 @@
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterfaceBase.h"
 #include "engine/CV_ChapelOfEvilScript.h"
-inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return CScriptThing::NullString; return PImp.Data->GetDefName(); }
-inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA8D0 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline CCharString CScriptThing::GetDefName() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return CScriptThing::NullString; return imp->GetDefName(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AB150 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline bool CScriptThing::IsNull() const { const CScriptThing* imp = PImp.Data; return imp == 0 || imp->IsNull(); }
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::~CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }

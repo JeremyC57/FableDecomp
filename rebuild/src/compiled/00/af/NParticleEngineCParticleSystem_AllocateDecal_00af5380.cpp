@@ -49,7 +49,7 @@ public:
 CParticleEmitterManager& FABLE_FASTCALL GetParticleEmitterManager();   // 0x00AEAAF0
 }
 
-void* __fastcall AllocateParticleMemory_00af8b00(unsigned int size);   // 0x00AF8B00
+// operator new 0x00AF8B00 is the class static NParticleEngine::CDecal::operator new (declared in the class below)
 
 namespace NParticleEngine {
 class CDecal {                                     // vtable 0x0129F4FC
@@ -85,7 +85,7 @@ public:
         AlphaFactor[0] = 1.0f;
         AlphaFactor[1] = 1.0f;
     }
-    static void* operator new(unsigned int size) { return AllocateParticleMemory_00af8b00(size); }
+    static void* __fastcall operator new(unsigned int size);   // 0x00AF8B00 ??2CDecal@NParticleEngine@@SIPAXI@Z (Ego_r + FableWin)
     virtual void v00();
 };
 

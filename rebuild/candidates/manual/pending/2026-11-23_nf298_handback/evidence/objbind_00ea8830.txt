@@ -1,0 +1,9 @@
+#40	00eaaf10	binder 00ea8830	standin_in_obj=False	pdb_in_obj=True	?Alloc@CMurderTwistBrother@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase
+#41	00eac4e0	binder 00ea8830	standin_in_obj=False	pdb_in_obj=True	?Alloc@CMurderTwistBrotherFriend@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScri
+#42	00eaba10	binder 00ea8830	standin_in_obj=False	pdb_in_obj=True	?Alloc@CMurderTwistBrotherOlder@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScrip
+#43	00eacde0	binder 00ea8830	standin_in_obj=False	pdb_in_obj=True	?Alloc@CMurderTwistBrotherOlderFriend@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntit
+#44	00eaae40	binder 00ea8830	standin_in_obj=False	pdb_in_obj=True	?Alloc@CMurderTwistBrotherYounger@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScr
+#45	00ead730	binder 00ea8830	standin_in_obj=False	pdb_in_obj=True	?Alloc@CMurderTwistBuriedGem@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBa
+#46	00ea8e50	binder 00ea8830	standin_in_obj=False	pdb_in_obj=True	?Alloc@CMurderTwistLeader@CV_MurderTwistScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@
+#245	00ea8c20	binder 00ea8830	standin_in_obj=False	pdb_in_obj=True	?MagicRuneProcess@CV_MurderTwistScript@@QAEXXZ
+#246	00ead9f0	binder 00ea8830	standin_in_obj=False	pdb_in_obj=True	?GemsFoundProcess@CV_MurderTwistScript@@QAEXXZ

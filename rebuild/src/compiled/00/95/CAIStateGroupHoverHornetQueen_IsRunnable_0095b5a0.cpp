@@ -169,7 +169,10 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
     CIntelligentPointerCreature PTargetThing;   // +0x14
     CPlayerManager* GetPPlayerManager();        // 0x008FCF90
-    void SetupArena();                          // 0x0095B3E0
+    protected:
+    void SetupArena();
+    public:
+                          // 0x0095B3E0
     virtual bool IsRunnable();
 };
 

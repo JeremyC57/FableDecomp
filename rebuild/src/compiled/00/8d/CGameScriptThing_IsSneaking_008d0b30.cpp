@@ -1,3 +1,4 @@
+// Leaf: ?IsSneaking@CGameScriptThing@@UBE_NXZ
 // CGameScriptThing::IsSneaking() const -- whether the scripted thing is alive and its sneak component (kind 0x36) reports sneaking
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D0B30, length 112 bytes (padded).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three calls: null test, dead bit +0x91, mask word),
@@ -83,10 +84,9 @@ struct CTCSneak_Retail {
     bool           m_sneaking;                     // +0x0f
 };
 class CGameScriptThing { public:
-    void*                   m_pVtbl;               // +0x00
-    unsigned char           _pad04[8];
+        unsigned char           _pad04[8];
     CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>
-    bool IsSneaking() const;
+    virtual bool IsSneaking() const;
 };
 
 bool CGameScriptThing::IsSneaking() const

@@ -1,0 +1,8 @@
+## HEAD set: H_0077cca0.obj H_0077d140.obj H_0077cdd0.obj H_0077cd30.obj
+duplicates 0
+
+UNRESOLVED 2 ?DoStopRunning@CTCHighlightItem@@IAEXXZ
+## new set: N_0077cca0.obj N_0077d140.obj H_0077cdd0.obj H_0077cd30.obj
+duplicates 0
+
+LK_DONE

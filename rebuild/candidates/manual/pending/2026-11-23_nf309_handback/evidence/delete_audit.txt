@@ -1,0 +1,55 @@
+delete ??0CConsoleCommandParameters@@QAE@J@Z @009ebb30 witness=006bbc30 binders: 006bbc30:LEFT
+delete ??0CEventTalkedTo@NEntityEvents@@QAE@PAVCThing@@@Z @0084af90 witness=00845900 binders: 00845900:MOVED
+replace ??0CTCDivineWrath@@QAE@PAVCThing@@@Z @0078ecd0 witness=004d4a99 binders: 004d4a99:MOVED
+delete ?ClipSphere@CEngineCamera@@QAE_NPBVC3DVector@@MPAK@Z @00b30480 witness=00bf9aa0 binders: 00bf9aa0:MOVED
+delete ?SetCameraState@CEngineCamera@@QAEXPBUCEngineCameraDesc@@_N1@Z @00b30b50 witness=00b662f0 binders: 00b662f0:MOVED
+delete ?UpdateActionMovement@CCreatureActionBase@@QAEXXZ @00692aa0 witness=00694020 binders: 00694020:MOVED
+delete ?Initialise@CCreatureActionBase@@QAEXXZ @00694d10 witness=0078b410 binders: 0078b410:MOVED
+delete ?WorldUpdate@CThingGameObject@@QAE_NXZ @00838ba0 witness=0082d810 binders: 0082d810:MOVED
+delete ?ChangeState@CChangingStateComponent@NUISystem@@QAEXK@Z @0052cf40 witness=005469e0 binders: 005469e0:MOVED
+delete ?ChangeState@CChangingStateComponent@NUISystem@@UAEXJ@Z @0052cf40 witness=00543df0 binders: 00543df0:MOVED
+replace ?CompressToBuffer@CRangeCompressor@@QAEJPBXJJPAEJ@Z @00f3ae50 witness=00f3afc0 binders: 00f3afc0:MOVED
+delete ?GetPlayerManager@CAIStateGroupBase@@QAEPAVCPlayerManager@@XZ @008fcf90: X not in ENTRIES spellings (stale-line entry; see evidence/u*_head_binding / u8_stale_lines)
+delete ?FindMatchingSubstring@CStringParser@@QAE_NPAVCCharString@@@Z @009b9a20 witness=009ba110 binders: 009ba110:MOVED
+delete ?GetCamTools@CBase@NCameraModes@@QBEABVCTools@2@XZ @0084d080 witness=008728c0 binders: 008728c0:MOVED
+delete ?WriteData@CDataOutputStream@@QAEXPBXK@Z @00996610 witness=006ba030 binders: 006ba030:MOVED
+replace ?PrioritiseBlock@CEngineStaticMapFileBlockManager@@QAEXJ@Z @00be0420 witness=00bf8030 binders: 00bf8030:MOVED
+delete ?CalculateLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ @00bf7df0 witness=00bf8030 binders: 00bf8030:MOVED
+replace ?PlaySound@CTCFireheartMinigame@@QAEKABVCCharString@@@Z @007e7880 witness=007e7ac0 binders: 007e7ac0:MOVED
+replace ?SetWillMorphAmount@CTCHeroMorph@@QAEXM@Z @0071be80 witness=005ee887 binders: 005ee887:MOVED
+delete @Sub_ResolveA@4 @00449970 witness=00899c90 binders: 00899c90:LEFT
+    MID-RUN LANDED caller 0068359b 00683590L CTCCreatureOpinionOfHero::InformOfDeed
+    MID-RUN LANDED caller 0072c23d 0072c230L CTCUndeadSoul::FrameUpdate
+delete ?UpdateSplineData@CPSCSplineBase@NParticleEngine@@QAEXABU?$CParticleUpdateParameters@KK@2@@Z @00b215e0 witness=00b1b0c0 binders: 00b1b0c0:LEFT
+delete ?CalcDistanceAlpha@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEMABU?$CParticleUpdateParameters@KK@3@M@Z @00b216f0 witness=00b1b0c0 binders: 00b1b0c0:LEFT
+delete ?GetHitThing@SHitEvent_008d43c0@@QBEPAUCThing_Retail@@XZ @00810fd0 witness=008d43c0 binders: 008d43c0:LEFT
+delete ?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z @00bacd80 witness=00bad040 binders: 00bad040:MOVED
+delete ?Init@CInitBaseClass@@QAE_NXZ @0099a350 witness=009f4910 binders: 009f4910:MOVED
+delete ?IsScriptTaskRunning@CTCScriptedControl@@QAE_NXZ @007122c0 witness=006ad970 binders: 006ad970:MOVED
+delete ?IsTaskListEmpty@CTCScriptedControl@@QAE_NXZ @007122c0 witness=006a8560 binders: 006a8560:MOVED
+LEFT binders total: 5
+
+# Reading (NF309, 2026-11-23). Hard rule: every delete / replace line checked against the full caller list of its target.
+# - Source of binders: the ENTRIES `spellings` column (the tracker's per-spelling list of landed binders, including vtable-slot and
+#   absolute-reference binders), plus every exe E8/E9 call site and every 4-byte absolute reference to the target (xsites.py / absrows.py;
+#   vtable slots show as DATA rows) whose row landed mid-run (work/landed_mid.txt, the 34 NF307 / NF308 rows).
+# - All MOVED binders are in rows.txt; their new objects no longer reference the old symbol (proof_u*.txt symdiff pairs).
+# - The 5 LEFT binders are the stale-line witnesses (entries 47, 166, 24, 26, 85). Their HEAD objects were read, and none references the
+#   old symbol (u1_006bbc30_head_binding.txt, u7_00899c90_head_binding.txt, u8_stale_lines.txt), so the tracker list is out of date.
+# - GetPlayerManager QAEPAV @008fcf90: not in the ENTRIES spellings (009261f0 was held when ENTRIES was cut). reloc_bindings has the
+#   line with witness 009261f0. The declaration census over all 34 landed caller rows of 0x008FCF90 (u4_008fcf90_decl_census.txt) shows
+#   that only 009261f0 declared / used the pointer form; every other caller declares or uses the PDB `CPlayerManager& ... const` form.
+# - Entry 48: 00b99710 binds a DIFFERENT spelling (?ClipSphere@CEngineCamera@@QAEXABVC3DVector@@MAAK@Z, a T3 row) whose line stays;
+#   the deleted QAE_NPBV spelling had the single binder 00bf9aa0 (moved).
+# - Mid-run landed callers: only 00683590 / 0072c230 -> 0x00449970 (entry 166). Both name GetMainPlayer, not Sub_ResolveA.
+# - Virtual targets (0052cf40 ChangeState, 00694d10 Initialise, 00838ba0 WorldUpdate): their vtable-slot references are DATA (vtables,
+#   no row); a vtable has no table line for a member spelling. The slot binders that are landed derived overrides already bind UAE (u3_census_objects.txt)
+#   or are listed above.
+# - ChangeState UAEXJ @0052cf40 (the one deleted VIRTUAL spelling): two more landed rows, 00543d30 (CParticleEffect::Initialise) and
+#   00543ee0 (CParticleEffect::Draw), keep the same model with `virtual void ChangeState(long)` at slot 48. Neither calls ChangeState
+#   (grep: declaration lines only) nor defines / uses a CParticleEffect or CChangingStateComponent ctor, so neither emits a vftable
+#   that names the slot, and neither references UAEXJ. The tracker's per-spelling list (built from relocations) agrees: 00543df0 is the
+#   only UAEXJ binder. The (long) -> (unsigned long) models there can be aligned later; they bind nothing.
+# - Unit 5 (entries 75 / 80 / 81, deleter targets 006174f0 / 0085a5a0 / 00ac3a10) was withdrawn (T3_PORT_QUEUE line 74), so its 4
+#   table lines are out of TABLE_CHANGES (kept in work/reverted/unit5/TABLE_LINES_unit5.tsv).
+# Result: no delete or replace line strands a landed binder.

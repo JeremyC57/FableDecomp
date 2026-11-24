@@ -90,7 +90,7 @@ struct CPlayerModeList {                         // std::list<EPlayerMode>: reta
 class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                  // +0x04
-    bool Init();                                 // 0x0099A350
+    protected: bool Initialise(); public:                                 // 0x0099A350; NF303: PDB name, was Init
 };
 
 class CPlayer : public CInitBaseClass { public:
@@ -146,7 +146,7 @@ class CPlayer : public CInitBaseClass { public:
             JoystickDeviceNumber = Number;
     }
     void InitPlayerHeroLogBook();                // 0x0048A1A0
-    void InitInterfaces();                       // 0x00488D10
+    private: void InitInterfaces(); public:                       // 0x00488D10
     void InitModes();                            // 0x00636E50
     void InitPlayerGui();                        // 0x00487FB0
     bool PlayerInit(const CPlayerInit* init);
@@ -154,7 +154,7 @@ class CPlayer : public CInitBaseClass { public:
 
 bool CPlayer::PlayerInit(const CPlayerInit* init)
 {
-    Init();
+    Initialise();
     PlayerModes.push_front(PLAYER_MODE_NULL);
     KeepAbilitiesDuringCutscenes = false;
     ControllingFreeCamera = false;

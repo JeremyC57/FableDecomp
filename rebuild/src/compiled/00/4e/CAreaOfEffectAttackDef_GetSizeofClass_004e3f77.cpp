@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CAreaOfEffectAttackDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CAreaOfEffectAttackDef_GetSizeofClass()
+class CAreaOfEffectAttackDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CAreaOfEffectAttackDef::GetSizeofClass()
 {
     return 76;
 }

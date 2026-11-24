@@ -1,0 +1,13 @@
+action	symbol	address	witness	note
+delete	?_M_insert_overflow@CBoastVector@@QAEXPAUCBoastPair@@ABU2@ABU__false_type@@K_N@Z	0074fce0	008a9ae0	stand-in gone (0x008A9AE0 binds the STLport spelling)
+delete	?_M_insert_overflow@CContainerItemVector@@QAEXPAUSContainerItem@@ABU2@ABU__false_type@@K_N@Z	0074fce0	008ed1f0	stand-in gone (0x008ED1F0 binds the STLport spelling)
+keep	?_M_insert_overflow@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@IAEXPAU?$pair@JVCCharString@@@2@ABU32@ABU__false_type@2@I_N@Z	0074fce0	0074fe50	the one spelling left (self + 4 binders)
+replace	?__uninitialized_copy@FableVector_0074fce0@@YIPAU?$pair@HVCCharString@@@1@PBU21@0PAU21@ABU__false_type@1@@Z -> ??$__uninitialized_copy@PAU?$pair@JVCCharString@@@std@@PAU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@00ABU__false_type@0@@Z	0074f4f0	0074fce0	self + only binder
+replace	?__uninitialized_fill_n@FableVector_0074fce0@@YIPAU?$pair@HVCCharString@@@1@PAU21@IABU21@ABU__false_type@1@@Z -> ??$__uninitialized_fill_n@PAU?$pair@JVCCharString@@@std@@IU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@IABU10@ABU__false_type@0@@Z	0074f530	0074fce0	self + only binder
+replace	?DoUpdate@CLipSyncDataBank_Methods@@QAEXXZ -> ?Update@CBankFile@@UAEXXZ	009cec60	00a427a0	the 0x009CEC60 self spelling (add only if the table wants a line for it)
+replace	?BuildSky@CSkyRendererMethods@@QAEXAAPAX0II@Z -> ?BuildOuterSkyMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z	00b61b30	00b620a0	
+replace	?BuildClouds@CSkyRendererMethods@@QAEXAAPAX0II@Z -> ?BuildCloudMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z	00b61dd0	00b620a0	
+replace	?BuildBand@CSkyRendererMethods@@QAEXAAPAX0II@Z -> ?BuildBaseBandMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z	00b61cd0	00b620a0	
+replace	?BuildSolidBaseBand@CSkyRendererMethods@@QAEXXZ -> ?BuildStarFieldVB@CEngineSkyRenderer@@AAEXXZ	00b61ff0	00b620a0	
+keep	?BuildBuffers@CEngineSkyRenderer@@AAEXXZ	00b620a0	00b625e0	now also the self leaf
+add	??1CDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAE@XZ	00a978c0	00a978a0	new line (the ??_G calls it); optional

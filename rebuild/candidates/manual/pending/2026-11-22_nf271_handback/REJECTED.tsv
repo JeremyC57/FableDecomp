@@ -1,0 +1,2 @@
+claim	reason
+nf262 / nf263 plan + rows 0x00BFAAE0 / 0x00BFB590 comments: `LandscapeMemoryMethods::FreeAlignedVirtual` stands in for 0x00BD9B90 (FreeVirtual)	wrong: retail 0x00BFAAE0 calls 0x00BD9CA0 at 0x00BFAB06 / 0x00BFAB11 / 0x00BFAB27, and reloc_bindings.tsv maps the stand-in to 00bd9ca0; it is FreeVirtualAligned (evidence/unitA_freevirtualaligned.md)

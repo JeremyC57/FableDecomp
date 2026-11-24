@@ -1,0 +1,3 @@
+H 00701990 CReactionMatch_Sphere::TransferBinaryIn RELOCATION_MATCH flags= [] leaf=TransferBinaryIn@CReactionMatch_Sphere
+H 00835ac0 CThingDeadCreature::DrawPreparePrimitivesForRendering RELOCATION_MATCH flags= [] leaf=DrawPreparePrimitivesForRendering
+GR_DONE

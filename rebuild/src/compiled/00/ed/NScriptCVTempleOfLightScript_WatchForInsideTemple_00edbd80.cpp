@@ -59,9 +59,11 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::~CScriptThing() {}
-inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return CScriptThing::NullString; return PImp.Data->GetDefName(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA8D0 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline CCharString CScriptThing::GetDefName() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return CScriptThing::NullString; return imp->GetDefName(); }
 inline bool CScriptThing::IsAlive() const { if (!PImp.Data) return false; return PImp.Data->IsAlive(); }
-inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AB150 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline bool CScriptThing::IsNull() const { const CScriptThing* imp = PImp.Data; return imp == 0 || imp->IsNull(); }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

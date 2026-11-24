@@ -6,7 +6,7 @@
 // Callees: NGraphicAppearance::CTCGraphicAppearance::GetAllDummyObjectNames 0x004BDB40 / GetDummyObject 0x004C08C0, CCharString(const char*,
 //   long) 0x0099EBF0 / ~CCharString 0x0099EAE0 / operator=(const CCharString&) 0x0099EFB0 / GetSubString 0x0099EC70, CBasicString<char>
 //   Compare 0x00411570 (__fastcall, the inline operator==), strncmp 0x00BFEAF8 (the inline StartsWith), CStringParser ctor 0x00404720 /
-//   ReadAsInteger 0x009BA540 (its implicit dtor: ~list<CStringParserCommentBoundaries> 0x004046B0, the two strings, ~CBaseClass
+//   ReadAsInteger 0x009BA540 (its implicit dtor: ~_List_base<CStringParserCommentBoundaries> 0x004046B0, the two strings, ~CBaseClass
 //   0x0099A2E0), CTCBase::GetDefinitionManager 0x006869D0, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410,
 //   CThingObject::Create 0x00703210 (__fastcall), CVectorMap::LowerBound 0x0040F020, CTCBoastingPosition::SetBoastingPodium 0x008147D0,
 //   CThing::Kill 0x004C9B80, CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10
@@ -42,7 +42,10 @@
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_CSTRINGPARSER
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF245 (2026-11-22, the 0x004046B0 family): the out-of-line list destructor call binds _List_base<CStringParserCommentBoundaries>'s
+//   destructor 0x004046B0 (was FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, binding list's own name there; retail 0x00404710 is list's
+//   size-optimised `~list() {}`, a 5-byte `jmp 0x004046B0`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
 #define FABLE_RETAIL_STLP_SORT_FASTCALL
 #define FABLE_RETAIL_CVECTORMAP_INSERT

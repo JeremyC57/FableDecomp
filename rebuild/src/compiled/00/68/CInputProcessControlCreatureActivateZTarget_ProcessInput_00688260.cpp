@@ -23,7 +23,7 @@ void CInputProcessControlCreatureActivateZTarget::ProcessInput(const CInputEvent
     if(MyPlayer->GetCurrentMode()==PLAYER_MODE_Z_TARGET)return;
     bool activate=false;
     if(GetGamePlayerInterface().IsToggleZTarget()) {
-        if(IsEventButtonHeld(event))activate=true;
+        if(IsEventButtonReleased(event))activate=true;
     } else {
         if(IsEventButtonPressed(event))activate=true;
     }

@@ -19,8 +19,16 @@ public:
     // FableWin.pdb ?IsCombatStateGroup@CAIStateGroup_HoverWander@@UBE_NXZ (_fablewin_api.tsv / FableWin.exe.signatures.tsv 0x01811FCD;
     // retail vtable 0x0128C5D4 slot 20 = 0x00900C13, Fable.exe.signatures.tsv). Public virtual const override; declaration only.
     virtual bool IsCombatStateGroup() const;
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERWANDER_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x00900C16: ?IsRunnable@CAIStateGroup_HoverWander@@UAE_NXZ (FableWin.pdb)
+public:
+    virtual bool IsRunnable();
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverWander) == 0x1c);
+FABLE_STATIC_ASSERT_AT(23, sizeof(CAIStateGroup_HoverWander) == 0x1c);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

@@ -1,0 +1,35 @@
+{
+  "native_compiland": "tc_quick_access_menu.obj",
+  "canonical_build": {
+    "native_compiland": "tc_quick_access_menu.obj",
+    "compile_once": "00628000.cpp",
+    "equivalent_grade_view": "00627be0.cpp",
+    "methods": [
+      "?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z",
+      "?Activate@CTCQuickAccessMenu@@QAEXXZ"
+    ],
+    "original_modules": [
+      "Ego_r and FableWin both place these methods in tc_quick_access_menu.obj"
+    ],
+    "same_source_except_address_and_leaf": true,
+    "code_sections_equivalent": 187,
+    "retail_rebound_bytes": [
+      1056,
+      1315
+    ],
+    "symbols_published_by_private_link_probe": {
+      "?Activate@CTCQuickAccessMenu@@QAEXXZ": "0x2360",
+      "?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z": "0x1f40"
+    },
+    "duplicate_definitions": 0,
+    "linker_returncode": 0,
+    "standalone_runtime": "Original game imports unresolved in this private symbol ownership check; the two self-contained behavior fixtures run separately.",
+    "two_snapshot_link": "Compiling and passing both independently graded snapshots directly to the linker produces duplicate definitions. Link the common compiland once; do not add a second copy of it for the second address."
+  },
+  "exact_functions": [
+    "00626750 (1771 bytes)",
+    "00627400 (742 bytes)",
+    "00627BE0 (1056 bytes, including checked switch table)",
+    "00628000 (1315 bytes)"
+  ]
+}

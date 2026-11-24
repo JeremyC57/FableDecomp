@@ -5,7 +5,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00688EB0, length 404 bytes (`ret 8`). Vtable 0x01238028 slot 4.
 // Callees: the player-interface gate @ 0x00445B80 (manifest "CTCShotDefinitionBase::CanBeHitByMeleeStrike" is propagated);
-//   CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90 / IsEventButtonHeld @ 0x00687BD0 / IsEventGameAction @ 0x00687CF0;
+//   CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90 / IsEventButtonReleased @ 0x00687BD0 / IsEventGameAction @ 0x00687CF0;
 //   CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10; the interface map's
 //   LowerBound @ 0x004365B0; the target-pointer inequality @ 0x00689270 (`__fastcall`, `GetPItem() != thing`);
 //   CProcessedInput::SetAsPerformedEvent @ 0x00A0D390; DeactivateZTarget @ 0x00688BA0; the targeting interface's slot 33 (+0x84).
@@ -91,7 +91,7 @@ public:
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
 protected:   // Ego_r.pdb / FableWin.pdb protected const (NF70 q10790; the landed 0x00687A90 / 0x00687BD0 spellings)
     bool IsEventButtonPressed(const CInputEvent& event) const;        // 0x00687A90
-    bool IsEventButtonHeld(const CInputEvent& event) const;           // 0x00687BD0
+    bool IsEventButtonReleased(const CInputEvent& event) const;           // 0x00687BD0
 public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
@@ -101,7 +101,10 @@ public:
     void*                   PHeroCombatDef;        // +0x30
     long                    DeactivateHoldTimer;   // +0x34
     CBaseIntelligentPointer PTarget;               // +0x38
-    void DeactivateZTarget(CProcessedInput& processed);   // 0x00688BA0
+    private:
+    void DeactivateZTarget(CProcessedInput& processed);
+    public:
+   // 0x00688BA0
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
@@ -122,7 +125,7 @@ void CInputProcessZTarget::ProcessInput(const CInputEvent& event, CProcessedInpu
         DeactivateHoldTimer = 15;
         processed.SetAsPerformedEvent();
     }
-    if (IsEventButtonHeld(event) && IsEventGameAction((EGameAction)(0x4a), event)) {
+    if (IsEventButtonReleased(event) && IsEventGameAction((EGameAction)(0x4a), event)) {
         CTCHeroTargeting* targeting;
         if (IS_THING_ALIVE(PCreature) && ((CThing*)PCreature.GetPItem())->GetInterface(&targeting, 8)) {
             if (!(PTarget != targeting->GetPTargetedThing()) && DeactivateHoldTimer != -1) {

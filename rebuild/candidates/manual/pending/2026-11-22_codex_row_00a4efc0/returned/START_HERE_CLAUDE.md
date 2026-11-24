@@ -1,0 +1,11 @@
+# Verified 00A4EFC0 handoff
+
+C3DAnimationSequenceData::InitialiseFromFileData matches the original 3,491-byte extent of Fable.exe. Applying the independently verified 58 operand bindings to the compiled section reproduces the retail bytes, with SHA-256 5930397abb1c56784d2230e405994eb850dd789983cdacd78d1210956416635a. The comparison includes both compression decisions, the quaternion copy and loop alignment.
+
+1. Start with include/ from the original standalone 00A4EFC0 package. For each entry of hdr/PATCHES.json in order, replace the unique old_text with new_text. An empty old_text requests creation of its path. The handoff uses the existing common CSimpleMemoryPool allocator body and includes no patch to that class.
+2. Compile 00a4efc0.cpp under stock cl 13.10.3077 RTM with /nologo /c /O2 /Oy /W3 /Gr. LABELS.tsv gives the exact COFF leaf. Grade against the owner’s executable (SHA-1 39fd416ba23a91a89713ec80c789f57ddb22e2c8). The target is the only strong code definition in the object. Two helper definitions carry inline linkage.
+3. Build 00a4efc0_test.cpp by itself with /Od /W3 /GR- and include/ under the same toolchain. It should print exactly 00a4efc0_TEST PASS. Repeat with /DFABLE_PORTABLE to exercise the fallback without the Windows debugger branch. The test includes the production function and supplies deterministic external dependencies.
+4. Regrade the original three landed witness sources with their own flags and the same patched header tree. STATUS.tsv records their leaf and helper baselines. All three witness leaves match. Two witnesses have existing helper mismatches, reproduced on their original configuration.
+5. Read OPINION.md before accepting the opt-in as source fidelity. The machine-code match is verified. The release expansion of the bounds check is inferred. Applying the opt-in to this translation unit is an owner decision. No repository commit is part of this handoff.
+
+The test covers empty and named bones, empty inputs, constant and identity tracks, compressed and raw tracks, equal storage costs, 255/256 distinct values, palette indices, reconstructed positions and flags. The production function sets scaling to one for every decoded frame. A nonempty input therefore cannot independently exercise a variable scaling track. The fixture controls the matrix decoder and quaternion predicates.

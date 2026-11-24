@@ -39,7 +39,7 @@ struct CCountedPointer_CAProgressDisplay {
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);   // KERNEL32 (0x0143FE1C)
 double __fastcall GFGetTime();                     // 0x009E1BC0
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
-void __fastcall StopProgress(bool stopNow, bool keepScreen);   // 0x009E9F20
+namespace NProgressDisplay { void __fastcall StopProgress(bool stopNow, bool keepScreen); } using NProgressDisplay::StopProgress;   // 0x009E9F20 (NF308: PDB scope)
 void __fastcall SetProgressDisplay(CCountedPointer_CAProgressDisplay* display);   // 0x009E9FD0
 extern bool g_bAutoSaveProgressShown;              // 0x013B89C1
 extern double g_AutoSaveProgressEndTime;           // 0x013B89C8

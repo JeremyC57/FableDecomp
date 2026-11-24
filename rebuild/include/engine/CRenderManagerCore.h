@@ -426,6 +426,11 @@ FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* texture)
                                    unsigned long vertexCount, unsigned long startIndex, unsigned long primitiveCount);   // 0x00A0ACA0
 #endif
     void DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount);         // ?DrawCurrentBuffersAsTris@CRenderManagerCore@@QAEXKK@Z
+#ifdef FABLE_RETAIL_CSTATICFONTBANK_RENDER_PASS28
+    // Both PDBs, retail 0x00A0ABE0 (texture array, texture count, start vertex, triangle count).
+    void DrawCurrentBuffersAsTris(const CTexture** textures, unsigned long texture_count,
+        unsigned long start_vertex, unsigned long triangle_count);
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASTRIFAN
     // Retail opt-in (chunk 2028, row 0x00B8DF50): Ego_r.pdb / FableWin.pdb ?DrawCurrentBuffersAsTriFan@CRenderManagerCore@@QAEXJJ@Z = retail
     // 0x00A0AE40 (RealiseRenderState, then IDirect3DDevice9::DrawPrimitive(D3DPT_TRIANGLEFAN = 6, 0, count), `ret 8`; its twin 0x00A0AE70

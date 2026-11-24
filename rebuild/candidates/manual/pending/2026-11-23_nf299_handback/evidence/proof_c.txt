@@ -1,0 +1,4 @@
+##### 00a67ff0 renames: ?ReleaseVolume@CVolume@@QAEX_N@Z=?Uninitialise@CVolume@@QAEX_N@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=3
+tables H=1 N=1

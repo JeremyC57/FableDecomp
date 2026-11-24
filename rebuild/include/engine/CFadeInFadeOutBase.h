@@ -123,6 +123,11 @@ public:
     bool IsOpen() const { return Active && !Opening && !Closing; }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_ISOPENING_PASS26
+    // Opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): FableWin.pdb ?IsOpening@CFadeInFadeOutBase@@QBE_NXZ, inline in retail
+    // (the byte Opening +0x0D tested in place on ScreenPosFadeInOut +0x138: `cmp byte ptr [ebx+145h],0`). No layout change.
+    bool IsOpening() const { return Opening; }
+#endif // FABLE_RETAIL_CFADEINFADEOUTBASE_ISOPENING_PASS26
 #ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_ISCLOSING
     // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): FableWin.pdb ?IsClosing@CFadeInFadeOutBase@@QBE_NXZ, inline in retail (the
     // byte Closing +0x0C tested in place: `mov al,[esi+0C8h]` on the display engine's ScreenFadeOutInfo +0xBC, 0x004A477E). No layout change.

@@ -1,0 +1,55 @@
+// CThingCreatureBase::GetAnimMovementVector(long animIndex) -- the animation's movement vector rotated into world space by the creature's appearance position matrix (scale 1)
+// Leaf: ?GetAnimMovementVector@CThingCreatureBase@@QAE?AVC3DVector@@J@Z
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x006626E0, length 178 bytes, `ret 8` (hidden C3DVector result + index).
+// Callees: CThing::PeekWorld @ 0x004C7AB0, the main mesh bank's GetAnimation(long) @ 0x00A242C0,
+//   CTCGraphicAppearance::GetPositionMatrix(float) @ 0x004BC800 (CMatrix3x4 by hidden pointer; engine_api.tsv).
+// Layout: retail CThing PTCGraphicAppearance +0x64; C3DAnimationInfo MovementVector +0x18; CWorld PMainMeshBank +0x3c.
+// Shape: the movement vector is copied into a frame local and rotated IN PLACE by an inline matrix helper that first copies
+//   the components into float locals (x = X*m00 + Y*m10 + Z*m20, ...; the helper's name is not from the PDB): VC7.1 keeps
+//   the copies of X (dead index slot) and Y (a fourth frame word) because the first stores overwrite them, Z is read from
+//   the local; the local is then returned through C3DVector's memberwise copy constructor (`fxch st(2)` + three `fstp`).
+#include "engine/C3DVector.h"
+class CMatrix3x4 { public:
+    float m[12];
+    CMatrix3x4() { }
+    void RotateInPlace(C3DVector& v) const
+    {
+        float x = v.X;
+        float y = v.Y;
+        float z = v.Z;
+        v.X = m[0] * x + m[3] * y + m[6] * z;
+        v.Y = m[1] * x + m[4] * y + m[7] * z;
+        v.Z = m[2] * x + m[5] * y + m[8] * z;
+    }
+};
+class C3DAnimationInfo { public:
+    unsigned char _pad[0x18];
+    C3DVector MovementVector;                  // +0x18
+};
+class CMeshDataBank { public:
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
+};
+class CWorld { public:
+    unsigned char _pad[0x3c];
+    CMeshDataBank* PMainMeshBank;              // +0x3c
+};
+namespace NGraphicAppearance {
+struct CTCGraphicAppearance {
+    CMatrix3x4 GetPositionMatrix(float scale) const;  // 0x004BC800; NF236: Ego_r / FableWin spelling QBE (const)
+};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+#include "engine/CThing.h"
+class CThingCreatureBase : public CThing { public:
+    C3DVector GetAnimMovementVector(long animIndex);
+};
+
+C3DVector CThingCreatureBase::GetAnimMovementVector(long animIndex)
+{
+    CMeshDataBank* bank = PeekWorld().PMainMeshBank;
+    C3DVector movement = bank->PeekAnimation(animIndex)->MovementVector;
+    PTCGraphicAppearance->GetPositionMatrix(1.0f).RotateInPlace(movement);
+    return movement;
+}

@@ -1,5 +1,5 @@
 // CTCCoopSpirit::AddAppearanceParticle(const CCharString& particleThingName) -- create the named particle thing at the spirit's position and attach its emitter to the spirit (bone 0x88, scale 1.1)
-// Leaf: ?AddAppearanceParticle@CTCCoopSpirit@@QAEXABVCCharString@@@Z
+// Leaf: ?AddAppearanceParticle@CTCCoopSpirit@@AAEXABVCCharString@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x00670560, 141 bytes (`ret 4`). Callees: CThing::GetPos() const @ 0x004C73D0, the
@@ -38,7 +38,9 @@ FABLE_FORCEINLINE CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 class CTCCoopSpirit { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
+    private:
     void AddAppearanceParticle(const CCharString& particleThingName);
+    public:
 };
 
 void CTCCoopSpirit::AddAppearanceParticle(const CCharString& particleThingName)

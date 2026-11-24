@@ -1,0 +1,36 @@
+--- orig/hdr/engine/CCreatureAction_GetUpFromSitting.h	2026-11-24 00:43:35.266909364 +0000
++++ hdr/engine/CCreatureAction_GetUpFromSitting.h	2026-11-24 00:44:49.690362162 +0000
+@@ -18,13 +18,32 @@
+     CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& animation, long sittingMode,
+                                      bool removeOnPerformAction);        // 0x00860150
+     virtual void PerformAction();                                        // slot 3  0x008B79A0
++#ifdef FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_RTTI_DECLS
++    // Opt-in (NF323, 2026-11-24, NF320 Q1 / NF309 Q2): the retail vftable 0x01276C2C as the Clone TU must emit it. Clone in its PDB
++    // access (public: Ego_r.pdb + FableWin.pdb + the RTTI-port label ?Clone@CCreatureAction_GetUpFromSitting@@UBEPAVCCreatureActionBase@@XZ;
++    // the #else branch keeps the old protected line), plus the overrides the class model lacked. Declarations only; each overrides the
++    // base virtual at the same slot (no new slot). RTTI-port label + PDB name sets:
++    //   slot 12 = 0x008B7920 ?Initialise@CCreatureAction_GetUpFromSitting@@UAEXXZ (FableWin.pdb, Ego_r.pdb)
++    //   slot 49 = 0x008601B0 ?IsPreventingNormalMovement@CCreatureAction_GetUpFromSitting@@UBE_NXZ (FableWin.pdb)
++    //   slot 50 = 0x008601C0 ?IsPreventingLookTurning@CCreatureAction_GetUpFromSitting@@UBE_NXZ (FableWin.pdb)
++    //   slot 59 = 0x008601D0 ?IsMovementUsingPhysics@CCreatureAction_GetUpFromSitting@@UBE_NXZ (FableWin.pdb)
++    //   slot 68 = 0x008B6530 ?OnAnimationLoaded@CCreatureAction_GetUpFromSitting@@UAEXXZ (FableWin.pdb, Ego_r.pdb)
++public:
++    virtual CCreatureActionBase* Clone() const;                          // slot 11 0x00860290
++    virtual void Initialise();                                           // slot 12 0x008B7920
++    virtual bool IsPreventingNormalMovement() const;                     // slot 49 0x008601B0
++    virtual bool IsPreventingLookTurning() const;                        // slot 50 0x008601C0
++    virtual bool IsMovementUsingPhysics() const;                         // slot 59 0x008601D0
++    virtual void OnAnimationLoaded();                                    // slot 68 0x008B6530
++#else
+ protected:
+     virtual CCreatureActionBase* Clone() const;                          // slot 11 0x00860290
++#endif
+ private:
+     long SittingMode;                                                    // +0x114
+     bool RemoveOnPerformAction;                                          // +0x118
+ };
+-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GetUpFromSitting) == 0x11c);
++FABLE_STATIC_ASSERT_AT(27, sizeof(CCreatureAction_GetUpFromSitting) == 0x11c);
+ #ifdef FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_CTOR_INLINE
+ // NF86 opt-in (round 7, q11102 / q11120, rows 0x00860150 and 0x0085FF10): the one shared body of the 4-argument constructor
+ // ??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z (retail 0x00860150, `ret 10h`), defined `inline`

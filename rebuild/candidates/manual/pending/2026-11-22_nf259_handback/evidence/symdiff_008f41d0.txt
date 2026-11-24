@@ -1,0 +1,10 @@
+# 008f41d0: defined / undefined external symbols, HEAD (<) v NF259 (>)
+5c5,6
+< DEF ??BCBaseIntelligentPointer@@QBEPAVCThing@@XZ
+---
+> DEF ??D?$CIntelligentPointer@VCThing@@@@QBEAAVCThing@@XZ
+> DEF ??D?$CIntelligentPointer@VCThingCreatureBase@@@@QBEAAVCThingCreatureBase@@XZ
+8a10,12
+> DEF ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+> DEF ?GetPointer@?$CIntelligentPointer@VCThing@@@@ABEPAVCThing@@XZ
+> DEF ?GetPointer@?$CIntelligentPointer@VCThingCreatureBase@@@@ABEPAVCThingCreatureBase@@XZ

@@ -31,7 +31,7 @@ class CTCShopKeeper;
 class CThingFilter_IsPotentialCustomer { public:
     unsigned char m_state[0x18];
     CThingFilter_IsPotentialCustomer(CTCShopKeeper* shopKeeper, bool checkShop);   // 0x00799D80
-    bool operator()(CThing* thing);                                                  // 0x00799E30
+    bool operator()(const CThing& thing) const;                                      // 0x00799E30
 };
 
 class CTCShopKeeper { public:
@@ -48,7 +48,7 @@ bool CTCShopKeeper::RequiresNewCustomer()
         CThing* owner = m_pOwner;
         if ((CThing*)m_currentCustomer.GetPItem() != owner) {
             CThingFilter_IsPotentialCustomer filter(this, true);
-            return !filter((CThing*)m_currentCustomer.GetPItem());
+            return !filter(*(CThing*)m_currentCustomer.GetPItem());
         }
     }
     return true;

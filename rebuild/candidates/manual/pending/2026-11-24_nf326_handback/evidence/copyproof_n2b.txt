@@ -1,0 +1,13 @@
+00d15510 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d15a40 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00d73c70 OK changed ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ; changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetDataString v retail BYTES_EQUAL, v self EQUAL; GetPos v retail BYTES_EQUAL, v self EQUAL
+00da4e30 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self DIFF(bytes=True relocs=False)
+00da63f0 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00daa260 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00daa700 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00def3b0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e49980 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00e5e0c0 OK changed ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z; SetDataString v retail BYTES_EQUAL, v self EQUAL
+00ec42f0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00f045e0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL
+00f051d0 OK changed ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ; GetPos v retail BYTES_EQUAL, v self EQUAL

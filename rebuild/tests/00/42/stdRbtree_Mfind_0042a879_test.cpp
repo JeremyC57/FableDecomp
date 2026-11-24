@@ -1,49 +1,38 @@
-// behaviour test for 0x0042A879 _Rb_tree<long, ...>::_M_find: exact-key lookup over a signed key (hits, misses between keys, below the minimum, above the maximum, negative keys), empty tree returns the header
-#include <cstdio>
-enum EEngine2DLayer { ENGINE_2D_LAYER_0 };
-typedef long K;
-struct Node { bool color; Node* parent; Node* left; Node* right; K key; long mapped; };
-struct Tree { Node* header; unsigned int count; };
-static Node* Find(const Tree& t, const K& k)
-{
-    Node* y = t.header;
-    Node* x = t.header->parent;
-    while (x != 0)
-        if (!(x->key < k)) { y = x; x = x->left; }
-        else x = x->right;
-    if (y == t.header || k < y->key) y = t.header;
-    return y;
-}
-static Node gNodes[16];
-static int gUsed = 0;
-static Node* Insert(Node* root, Node* parent, long v)
-{
-    if (root == 0) {
-        Node* n = &gNodes[gUsed++];
-        n->color = false; n->parent = parent; n->left = 0; n->right = 0; n->key = (K)v; n->mapped = v * 10;
-        return n;
-    }
-    if ((K)v < root->key) root->left = Insert(root->left, root, v);
-    else root->right = Insert(root->right, root, v);
-    return root;
-}
+// Behaviour test for 0x0042A879 (NF228) on the shared headers engine/NUISystem_CManager.h / stlport/fable_map.h: NUISystem::CManager's
+// map<long, EEngine2DLayer> (Layers). Under test: the tree's _M_find<long> (map::find): hit, misses below / between / above the keys, and on an empty tree.
+// One case per condition; the out-of-line STLport rebalance is stubbed (no other model).
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_HINT_BODY
+#define FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
+#include <stdio.h>
+#include "engine/NUISystem_CManager.h"
+// Stub of the out-of-line STLport rebalance (a landed row of its own): the tree stays a valid, unbalanced search tree.
+namespace std { template<> void _Rb_global<bool>::_Rebalance(_Rb_tree_node_base*, _Rb_tree_node_base*&) { } }
+typedef std::map<long, EEngine2DLayer> LayerMap;
+static int g_fails = 0;
+static void Check(bool ok, const char* what) { if (!ok) { printf("FAIL: %s\n", what); ++g_fails; } }
 int main()
 {
-    Node header = { false, 0, 0, 0, (K)0, 0 };
-    Tree t = { &header, 0 };
-    int fails = 0;
-    long kq = 4;
-    if (Find(t, (K)kq) != &header) fails |= 1;                    // empty tree
-    const long keys[] = { 5, -3, 12, 0, 7, -20, 9 };
-    for (int i = 0; i < 7; ++i) { header.parent = Insert(header.parent, &header, keys[i]); ++t.count; }
-    for (int i = 0; i < 7; ++i) {
-        Node* n = Find(t, (K)keys[i]);
-        if (n == &header || n->mapped != keys[i] * 10) fails |= 2;
+    {
+        LayerMap m;
+        Check(m.size() == 0 && m.begin() == m.end(), "new map empty");
+        Check(m.find(5) == m.end(), "find on empty");
+        m[-3] = ENGINE_2D_LAYER_M3;
+        m[13] = ENGINE_2D_LAYER_13;
+        m[0] = ENGINE_2D_LAYER_0;
+        Check(m.size() == 3, "three inserts");
+        Check(m[0] == ENGINE_2D_LAYER_0 && m.size() == 3, "operator[] on a present key");
+        LayerMap::iterator it = m.find(13);
+        Check(it != m.end() && (*it).second == ENGINE_2D_LAYER_13, "find hit");
+        Check(m.find(7) == m.end() && m.find(-4) == m.end() && m.find(14) == m.end(), "find misses");
+        Check(m[7] == (EEngine2DLayer)0 && m.size() == 4, "operator[] inserts the default value");
+        m.clear();
+        Check(m.size() == 0 && m.begin() == m.end(), "clear non-empty");
+        m.clear();
+        Check(m.size() == 0 && m.begin() == m.end(), "clear empty");
+        m[1] = ENGINE_2D_LAYER_1;
+        Check(m.size() == 1 && m[1] == ENGINE_2D_LAYER_1, "reuse after clear");
     }
-    const long misses[] = { 1, 6, 8, -21, 13, -4, 100 };
-    for (int i = 0; i < 7; ++i)
-        if (Find(t, (K)misses[i]) != &header) fails |= 4;
-    if (fails) { std::printf("0042a879_TEST FAIL %d\n", fails); return 1; }
-    std::printf("0042a879_TEST PASS\n");
-    return 0;
+    printf(g_fails ? "0042a879_TEST FAIL\n" : "0042a879_TEST PASS\n");
+    return g_fails ? 1 : 0;
 }

@@ -1,5 +1,5 @@
 // CEngineShadowRenderer::OnReleaseDefaultPoolResources() -- when the default-pool resources are held (+0x2af): uninitialise the render target at +0x2c4, release the two shader holders at +0x308 / +0x2f8 and the two buffers at +0x318 / +0x2e8, then clear the flag
-// Leaf: ?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@QAEXXZ
+// Leaf: ?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B4B830, length 77 bytes.
 // Callees: CRenderTarget::Uninitialise @ 0x00A10E30, the holder release @ 0x009F2E20 twice, the buffer release @ 0x009F9F70 twice (each on the member by address).
 // Shape: five `lea ecx ; call` pairs in that order, then an immediate byte clear.
@@ -14,7 +14,7 @@
 #include "engine/CRenderTarget.h"
 
 class CEngineShadowRenderer { public:
-    unsigned char          _pad[0x2af];
+    unsigned char          _pad[0x2ab];
     bool                   m_defaultPoolHeld;      // +0x2af
     unsigned char          _pad2b0[0x14];
     CRenderTarget          m_renderTarget;         // +0x2c4
@@ -23,7 +23,7 @@ class CEngineShadowRenderer { public:
     CSurface               m_shaderA;              // +0x2f8
     CSurface               m_shaderB;              // +0x308
     CTexture               m_bufferB;              // +0x318
-    void OnReleaseDefaultPoolResources();
+    virtual void OnReleaseDefaultPoolResources();
 };
 
 void CEngineShadowRenderer::OnReleaseDefaultPoolResources()

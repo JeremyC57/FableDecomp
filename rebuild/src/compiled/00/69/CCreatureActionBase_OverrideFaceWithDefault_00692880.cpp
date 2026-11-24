@@ -1,7 +1,34 @@
-// Leaf: ?CCreatureActionBase_OverrideFaceWithDefault@@YI_NPAVCCreatureActionBase@@@Z
-#include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
-class CAnimationEntry {
-public:
-    long GetFlags() const;   // 0x005DC210
-};
-bool __fastcall CCreatureActionBase_OverrideFaceWithDefault(CCreatureActionBase* action){ return (((unsigned int)(((CAnimationEntry*)(action->PAnimEntry_Data))->GetFlags())) >> 4) & 1; }
+// CCreatureActionBase::OverrideFaceWithDefault() const -- bit 4 (0x10) of the current animation entry's flags
+// Leaf: ?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00692880, 15 bytes: `mov ecx,[ecx+74h] ; call 0x005DC210 ; shr eax,4 ; and eax,1 ; ret` (PAnimEntry's
+//   Data at +0x74; 0x005DC210 = ?GetFlags@CAnimationEntry@@QBEJXZ, Ego_r.pdb 0x0063BE40 + FableWin.pdb 0x01FA0DF0).
+// Identity: Ego_r.pdb 0x005191E0 + FableWin.pdb 0x01DB9510 ?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ (protected virtual const);
+//   retail CCreatureActionBase vftable 0x01259D24 slot 65 (+0x104) = 0x00692880, bound under this spelling by the landed vtable emitters.
+// NF259 (2026-11-22, q12730): re-spelled from the free __fastcall stand-in
+//   ?CCreatureActionBase_OverrideFaceWithDefault@@YI_NPAVCCreatureActionBase@@@Z (on a local CAnimationEntry model) onto the shared
+//   engine/CCreatureActionBase.h (retail branch, FULL_MEMBERS: PAnimEntry +0x74) and engine/CAnimationEntry.h (GETFLAGS opt-in).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CANIMATIONENTRY_GETFLAGS
+#include "fable_string.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CAnimationEntry.h"
+
+bool CCreatureActionBase::OverrideFaceWithDefault() const
+{
+    return (PAnimEntry->GetFlags() & 0x10) != 0;
+}

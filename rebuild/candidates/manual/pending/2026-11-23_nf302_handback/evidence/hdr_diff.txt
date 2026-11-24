@@ -1,0 +1,162 @@
+diff -u orig/engine/CPixelFormat.h hdr/engine/CPixelFormat.h
+--- orig/engine/CPixelFormat.h	2026-11-23 03:38:28.877056611 +0000
++++ hdr/engine/CPixelFormat.h	2026-11-23 03:43:05.003586123 +0000
+@@ -141,6 +141,11 @@
+ class CPixelFormat {
+ public:
+     long FormatIndex;                                        // +0x00
++#ifdef FABLE_RETAIL_CPIXELFORMAT_FLAT_GETINIT
++    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x00993F60 CDataOutputStream::WritePixelFormat): Ego_r.pdb / FableWin.pdb
++    // ?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ (const, CPixelFormatInit by value; retail 0x009E3870, landed). Declaration only.
++    class CPixelFormatInit GetInit() const;                  // 0x009E3870
++#endif
+ };
+ #pragma pack(pop)
+ 
+diff -u orig/engine/CPlayer.h hdr/engine/CPlayer.h
+--- orig/engine/CPlayer.h	2026-11-23 03:38:28.878519568 +0000
++++ hdr/engine/CPlayer.h	2026-11-23 03:43:05.004546447 +0000
+@@ -626,6 +626,12 @@
+     bool                                                         KeepAbilitiesDuringCutscenes; // +0x224
+     unsigned char                                                _pad_0x225[0x3]; // +0x225
+     long                                                         JoystickDeviceNumber; // +0x228
++#ifdef FABLE_RETAIL_CPLAYER_PREPAREFORLOAD
++    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x00449C30 CPlayerManager::PrepareForLoad): Ego_r.pdb / FableWin.pdb
++    // ?PrepareForLoad@CPlayer@@QAEXXZ (public; retail 0x00487550, landed; also called by 0x004A0220). Declaration only: no layout change.
++public:
++    void PrepareForLoad();                                                // 0x00487550
++#endif
+ };
+ #pragma pack(pop)
+ 
+diff -u orig/engine/CResource.h hdr/engine/CResource.h
+--- orig/engine/CResource.h	2026-11-23 03:38:28.879938315 +0000
++++ hdr/engine/CResource.h	2026-11-23 03:43:05.004858871 +0000
+@@ -65,7 +65,7 @@
+     void RemoveFromResourceList();                                       // 0x009FC440
+ #endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CResource) == 0x1c);
++FABLE_STATIC_ASSERT_AT(68, sizeof(CResource) == 0x1c);
+ #else // flattened Ego_r layout (the landed default)
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+@@ -82,16 +82,21 @@
+     CResource*     NextResource;                             // +0x10
+     unsigned long  ResourceSize;                             // +0x14
+     unsigned long  LastUsedFrame;                            // +0x18
++#ifdef FABLE_RETAIL_CRESOURCE_FLAT_SETRESOURCESIZE
++    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x009C8470 NGameText::CGroupEntry::ReadFromDataStream): Ego_r.pdb /
++    // FableWin.pdb ?SetResourceSize@CResource@@QAEXK@Z (retail 0x009FBF20, landed), as the DEF_CLASS_BASE branch declares it. Declaration only.
++    void SetResourceSize(unsigned long);                     // 0x009FBF20
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CResource) == 0x1c);
+-FABLE_STATIC_ASSERT(offsetof(CResource, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CResource, ResourceList) == 0x8);
+-FABLE_STATIC_ASSERT(offsetof(CResource, PrevResource) == 0xc);
+-FABLE_STATIC_ASSERT(offsetof(CResource, NextResource) == 0x10);
+-FABLE_STATIC_ASSERT(offsetof(CResource, ResourceSize) == 0x14);
+-FABLE_STATIC_ASSERT(offsetof(CResource, LastUsedFrame) == 0x18);
++FABLE_STATIC_ASSERT_AT(88, sizeof(CResource) == 0x1c);
++FABLE_STATIC_ASSERT_AT(89, offsetof(CResource, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(90, offsetof(CResource, ResourceList) == 0x8);
++FABLE_STATIC_ASSERT_AT(91, offsetof(CResource, PrevResource) == 0xc);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CResource, NextResource) == 0x10);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CResource, ResourceSize) == 0x14);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CResource, LastUsedFrame) == 0x18);
+ 
+ #endif // FABLE_RETAIL_DEF_CLASS_BASE
+ 
+diff -u orig/engine/CResourceList.h hdr/engine/CResourceList.h
+--- orig/engine/CResourceList.h	2026-11-23 03:38:28.881275750 +0000
++++ hdr/engine/CResourceList.h	2026-11-23 03:43:05.005012357 +0000
+@@ -38,7 +38,7 @@
+     long AllocatedMemory,MaximumMemory;
+     unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CResourceList)==0x3c);
++FABLE_STATIC_ASSERT_AT(41, sizeof(CResourceList)==0x3c);
+ #ifdef FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+ // Opt-in (chunk 2031): the CResource::TouchResource body (see engine/CResource.h): Head +0x04 (Head.PrevResource +0x10), CurrentFrame +0x2C.
+ // FABLE_FORCEINLINE (owner 2026-11-01 rule): retail's only out-of-line copy, 0x0041B9C0 (this exact body; landed under the wrong name
+@@ -75,19 +75,24 @@
+     unsigned long DebugStatsFrame;                           // +0x30
+     unsigned long UnloadDelay;                               // +0x34
+     unsigned long UnloadedThisFrame;                         // +0x38
++#ifdef FABLE_RETAIL_CRESOURCELIST_FLAT_UNLOADNEXTRESOURCE
++    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x009FC210 CResourceList::ShrinkResources): Ego_r.pdb / FableWin.pdb
++    // ?UnloadNextResource@CResourceList@@QAE_NK@Z (retail 0x009FC170, landed). Declaration only: no layout change.
++    bool UnloadNextResource(unsigned long frames);           // 0x009FC170
++#endif
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CResourceList) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CResourceList, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CResourceList, Head) == 0x4);
+-FABLE_STATIC_ASSERT(offsetof(CResourceList, ResourceCount) == 0x20);
+-FABLE_STATIC_ASSERT(offsetof(CResourceList, AllocatedMemory) == 0x24);
+-FABLE_STATIC_ASSERT(offsetof(CResourceList, MaximumMemory) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CResourceList, CurrentFrame) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CResourceList, DebugStatsFrame) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CResourceList, UnloadDelay) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CResourceList, UnloadedThisFrame) == 0x38);
++FABLE_STATIC_ASSERT_AT(81, sizeof(CResourceList) == 0x3c);
++FABLE_STATIC_ASSERT_AT(82, offsetof(CResourceList, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(83, offsetof(CResourceList, Head) == 0x4);
++FABLE_STATIC_ASSERT_AT(84, offsetof(CResourceList, ResourceCount) == 0x20);
++FABLE_STATIC_ASSERT_AT(85, offsetof(CResourceList, AllocatedMemory) == 0x24);
++FABLE_STATIC_ASSERT_AT(86, offsetof(CResourceList, MaximumMemory) == 0x28);
++FABLE_STATIC_ASSERT_AT(87, offsetof(CResourceList, CurrentFrame) == 0x2c);
++FABLE_STATIC_ASSERT_AT(88, offsetof(CResourceList, DebugStatsFrame) == 0x30);
++FABLE_STATIC_ASSERT_AT(89, offsetof(CResourceList, UnloadDelay) == 0x34);
++FABLE_STATIC_ASSERT_AT(90, offsetof(CResourceList, UnloadedThisFrame) == 0x38);
+ 
+ #endif // FABLE_RETAIL_CRESOURCELIST
+ #endif // FABLE_ENGINE_CRESOURCELIST_H
+diff -u orig/engine/CTCBuyableHouse.h hdr/engine/CTCBuyableHouse.h
+--- orig/engine/CTCBuyableHouse.h	2026-11-23 03:38:28.882723997 +0000
++++ hdr/engine/CTCBuyableHouse.h	2026-11-23 03:43:05.005243177 +0000
+@@ -176,6 +176,11 @@
+     void SetRented(bool rented);                                         // 0x006C1150
+     void SetOwnedByPlayer(bool owned);                                   // 0x006C17B0
+ #endif
++#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_FLAT_GETPRICE
++    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x0072E940 CTCActionUseBuyHouse::OnActionUseMain): Ego_r.pdb / FableWin.pdb
++    // ?GetPrice@CTCBuyableHouse@@QBEJXZ (retail 0x006C0120), as the retail branch declares it. Declaration only: no layout change.
++    long GetPrice() const;                                               // 0x006C0120
++#endif
+ };
+ #pragma pack(pop)
+ 
+diff -u orig/engine/CTCInventoryItem.h hdr/engine/CTCInventoryItem.h
+--- orig/engine/CTCInventoryItem.h	2026-11-23 03:52:39.595355522 +0000
++++ hdr/engine/CTCInventoryItem.h	2026-11-23 03:52:39.607648282 +0000
+@@ -289,6 +289,24 @@
+     unsigned __int64  InventoryUIDToAttachTo;                // +0x18
+     bool              DefaultItem;                           // +0x20
+     unsigned char     _pad_0x21[0x7];                        // +0x21
++#ifdef FABLE_RETAIL_CTCINVENTORYITEM_FLAT_GETENGINEGRAPHIC
++    // Add-only opt-in (naming agent NF302, 2026-11-23, binders 0x00581CFD / 0x00581FA4): Ego_r.pdb / FableWin.pdb
++    // ?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z (static __fastcall, by value; retail 0x005D96A0), as the retail
++    // branch declares it (FABLE_RETAIL_CTCINVENTORYITEM_STATICENGINEGRAPHIC). Declaration only: no layout change.
++    static class CEngineGraphic __fastcall GetEngineGraphic(long defIndex);               // 0x005D96A0
++#endif
++#ifdef FABLE_RETAIL_CTCINVENTORYITEM_FLAT_GETSTARTINGRIGHTHANDEDSET
++    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x005BCD2D): Ego_r.pdb / FableWin.pdb
++    // ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z (static __fastcall, by value; retail 0x005D9730), as the
++    // retail branch declares it. Declaration only: no layout change.
++    static class CRightHandedSet __fastcall GetStartingRightHandedSet(long defIndex);     // 0x005D9730
++#endif
++#ifdef FABLE_RETAIL_CTCINVENTORYITEM_FLAT_GETCONTEXTSENSITIVETYPE
++    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x00581D8E): Ego_r.pdb / FableWin.pdb
++    // ?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z (static __fastcall; retail 0x005D9B90). The includer
++    // defines enum EContextSensitiveType before it includes this header. Declaration only: no layout change.
++    static EContextSensitiveType __fastcall GetContextSensitiveType(long defIndex);       // 0x005D9B90
++#endif
+ };
+ #pragma pack(pop)
+ 

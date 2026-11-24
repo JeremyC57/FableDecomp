@@ -14,7 +14,9 @@ struct CInputProcessGameBase
     char pad1[0x24 - 0x1C];
     CGamePlayerInterface* PGamePlayerInterface;
 
-    bool IsOtherQuickAccessItemButtonHeld(long param);
+protected:
+    bool IsOtherQuickAccessItemButtonHeld(long param) const;   // the row's PDB IBE spelling
+    friend int main();
 };
 
 static long g_device = 7;

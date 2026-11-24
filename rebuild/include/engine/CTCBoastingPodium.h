@@ -12,6 +12,11 @@ public:
  // Both original PDB PUBLICs: ??0CTCBoastingPodium@@QAE@AAVCThing@@@Z.
  CTCBoastingPodium(CThing&);
 #endif
+#ifdef FABLE_RETAIL_BOAST_AREA_PASS27
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_BOASTING_PODIUM;}
+ void OnHeroEnterBoastArea(long,bool,class CThingCreatureBase&);
+ void OnHeroLeaveBoastArea(long,bool,class CThingCreatureBase&);
+#endif
  virtual void FrameUpdate();
 private:
  long GetNumberOfActiveBoastingPositions()const;

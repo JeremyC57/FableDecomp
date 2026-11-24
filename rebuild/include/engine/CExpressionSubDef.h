@@ -17,6 +17,12 @@ public:
     // ?StatGetTypeName@CExpressionSubDef@@SI?AVCCharString@@XZ (FableWin.pdb; the landed 0x005DA240 row's spelling).
     static CCharString __fastcall StatGetTypeName() { return CCharString("CExpressionSubDef"); }
 #endif
+#ifdef FABLE_RETAIL_CEXPRESSIONSUBDEF_TRANSFER_DECL
+    // Opt-in (NF320, 2026-11-23): declaration only, no layout change: Ego_r.pdb + FableWin.pdb ?Transfer@CExpressionSubDef@@UAEXAAVCPersistContext@@@Z,
+    // named at 0x004DE881 by the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv); overrides CDefClassBase::Transfer (slot 18), no new slot.
+public:
+    virtual void Transfer(CPersistContext&);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(16, sizeof(CExpressionSubDef) == 0x2c);
 FABLE_STATIC_ASSERT_AT(17, offsetof(CExpressionSubDef, ExpressionDef) == 0x28);

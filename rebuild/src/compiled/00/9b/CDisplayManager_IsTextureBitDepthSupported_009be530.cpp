@@ -17,10 +17,10 @@ class CDisplayManager { public:
     int   field60;             // +0x60
     char  pad2[0x1c4 - 0x64];
     int   field1c4;            // +0x1c4
-    bool  IsTextureBitDepthSupported(int fmt);
+    bool  IsTextureBitDepthSupported(unsigned long fmt);
 };
 
-bool CDisplayManager::IsTextureBitDepthSupported(int fmt)
+bool CDisplayManager::IsTextureBitDepthSupported(unsigned long fmt)
 {
     if (g_bitDepthTable[0] != -1) {
         int* p = g_bitDepthTable;

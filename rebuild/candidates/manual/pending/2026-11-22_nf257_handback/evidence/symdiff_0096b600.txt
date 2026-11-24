@@ -1,0 +1,44 @@
+1,4c1,13
+< DEF ??$GetInterface@VCTCBoss@@@CThing@@QAE_NPAPAVCTCBoss@@J@Z
+< DEF ??$GetInterface@VCTCStealth@@@CThing@@QAE_NPAPAVCTCStealth@@J@Z
+< DEF ?GetPItem@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+< DEF ?IS_THING_ALIVE@@YA_NABV?$CIntelligentPointer@VCThing@@@@@Z
+---
+> DEF ??$?9VCThingCreatureBase@@@@YI_NABV?$CIntelligentPointer@VCThingCreatureBase@@@@H@Z
+> DEF ??$GetTC@VCTCBoss@@@CThing@@QAE_NPAPAVCTCBoss@@@Z
+> DEF ??$GetTC@VCTCBoss@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCBoss@@@Z
+> DEF ??$GetTC@VCTCStealth@@@CThing@@QAE_NPAPAVCTCStealth@@@Z
+> DEF ??$GetTC@VCTCStealth@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCStealth@@@Z
+> DEF ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingCreatureBase@@@@@@YI_NABV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z
+> DEF ??C?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+> DEF ??_C@_06CBNGNPJL@bitset?$AA@
+> DEF ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+> DEF ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+> DEF ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+> DEF ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+> DEF ?IsDead@CThing@@QBE_NXZ
+5a15,16
+> DEF ?StatGetInterfaceType@CTCBoss@@SI?AW4ETCInterfaceType@@XZ
+> DEF ?StatGetInterfaceType@CTCStealth@@SI?AW4ETCInterfaceType@@XZ
+6a18,23
+> DEF ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+> DEF ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+> DEF ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+> DEF ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+> DEF ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+> DEF ?__stl_throw_out_of_range@std@@YAXPBD@Z
+9a27
+> DEF ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+17c35
+< UND ?JumpToSafety@CAIStateGroup_WhisperRetreat@@QAEXXZ
+---
+> UND ?JumpToSafety@CAIStateGroup_WhisperRetreat@@IAEXXZ
+21,22c39,40
+< UND ?UnsheatheMeleeWeapon@CThing@@QAEXXZ
+< UND ?UseWill@CAIStateGroup_WhisperRetreat@@QAEXXZ
+---
+> UND ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ
+> UND ?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ
+23a42,43
+> UND _abort
+> UND _puts

@@ -40,7 +40,9 @@ class CThing { public:
 };
 
 class CThingCreatureBase : public CThing { public:
-    void PlayCreatureContinuousSounds();             // 0x00665F90
+protected:
+    void PlayCreatureContinuousSounds();             // 0x00665F90; NF236: Ego_r / FableWin spelling IAE (protected)
+public:
 };
 
 class CThingAICreature : public CThingCreatureBase { public:

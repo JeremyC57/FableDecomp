@@ -1,0 +1,8 @@
+## HEAD set: H_005ee887.obj H_0071be80.obj
+duplicates 0
+
+UNRESOLVED 1 ?SetWillMorphAmount@CTCHeroMorph@@QAEXM@Z
+## new set: N_005ee887.obj H_0071be80.obj
+duplicates 0
+
+LK_DONE

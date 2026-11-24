@@ -43,6 +43,31 @@ private:
     virtual bool CanRelocateData(long) const;                            // ?CanRelocateData@CEngineLandscapeMemoryManager@@EBE_NJ@Z
 public:
 #endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER_DELETEINDEXBUFFER
+    // Retail opt-in (NF265 / NF267, rows 0x00BDA090 / 0x00BE6090): Ego_r.pdb / FableWin.pdb ?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z
+    // (public: other classes' destructors call retail 0x00BDA090, which queues the buffer on IndexBufferDisposalList). Declaration only.
+    void DeleteIndexBuffer(CIndexBuffer* buffer);                        // 0x00BDA090
+#endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER_DELETEVERTEXBUFFER
+    // Retail opt-in (NF265 / NF267, rows 0x00BDA0D0 / 0x00BE6090): Ego_r.pdb / FableWin.pdb ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+    // (public: retail 0x00BDA0D0 queues the buffer on VertexBufferDisposalList; the destroy-now twin is the private BlockWhileBusy). Declaration only.
+    void DeleteVertexBuffer(CVertexBufferWin32* buffer);                 // 0x00BDA0D0
+#endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER_DELETETEXTURE
+    // Retail opt-in (NF265, rows 0x00BDA110 / 0x00BE5C30 / 0x00BE6090): Ego_r.pdb 009c26a0 / FableWin.pdb 02cb7490
+    // ?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z (public: retail 0x00BDA110 queues the texture on
+    // TextureDisposalList; the destroy-now 0x00BD9CC0 is the private DeleteTextureBlockWhileBusy by Ego_r's FreeVirtual ..
+    // DeleteTextureBlockWhileBusy run = retail 0x00BD9B90 .. 0x00BD9CC0). Declaration only.
+    void DeleteTexture(CTexture* texture);                               // 0x00BDA110
+#endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER_FREEVIRTUALALIGNED
+    // Retail opt-in (NF271, rows 0x00BD9CA0 / 0x00BFAAE0): Ego_r.pdb 009c2430 / FableWin.pdb 02cb7a40
+    // ?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z (public: the landscape primitives' destructors release their
+    // AllocVirtualAligned blocks through retail 0x00BD9CA0, which steps back by the stored offset and tail-jumps to FreeVirtual; Ego_r's
+    // AllocVirtualAligned 009c23d0 / FreeVirtualAligned 009c2430 / DeleteTextureBlockWhileBusy 009c2450 = retail 0x00BD9C40 / CA0 / CC0).
+    // Declaration only.
+    void FreeVirtualAligned(void* block);                                // 0x00BD9CA0
+#endif
     void* AllocVirtual(long size, CMovableResource* owner);              // 0x00BD9AF0 ?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJPAVCMovableResource@@@Z
     void FreeVirtual(void* block);                                       // 0x00BD9B90 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
     CIndexBuffer* AllocateIndexBuffer(CMovableResource* owner, long count, unsigned long usage, EIndexBufferFormat format, EPrimitiveType type);   // 0x00BDA360

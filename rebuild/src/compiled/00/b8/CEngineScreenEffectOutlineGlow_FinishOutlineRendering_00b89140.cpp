@@ -21,7 +21,7 @@ class CRenderTarget { public:
 };
 
 class CDisplayManager { public:
-    void SetRenderTarget(CRenderTarget* target);   // 0x009BF160
+    bool SetRenderTarget(CRenderTarget& target);   // 0x009BF160
     void SetViewport(void* viewport);              // 0x009BEF80
 };
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
@@ -49,7 +49,7 @@ void CEngineScreenEffectOutlineGlow_Finish::FinishOutlineRendering()
         OutlineRenderingCaptureBlock_Open = false;
         g_pRenderStateManager->RestoreCaptureBlock();
         CRenderTarget* target = (CRenderTarget*)OldRenderTarget;
-        NEngineInternal::GPDisplayManager->SetRenderTarget(target);
+        NEngineInternal::GPDisplayManager->SetRenderTarget(*target);
         NEngineInternal::GPDisplayManager->SetViewport(&OldViewport_TLX);
         target->Uninitialise();
         if (!IsActive()) {

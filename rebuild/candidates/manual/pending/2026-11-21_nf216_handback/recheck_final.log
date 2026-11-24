@@ -1,0 +1,33 @@
+addr       parity           behav  name
+004a0d90   WARN RELOC_CONFLICT: ??0?$vector@DV?$allocator@D@std@@@std@@QAE@I@Z -> 00410f30 here, 00411910 in landed 009ec890
+004a0d90   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+004a0d90   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004a0d90   RELOCATION_MATCH PASS   LoadQuestsFromFile
+009acee0   RELOCATION_MATCH PASS   ParseEnumForSymbols
+007d2cc0   WARN SHARED_HEADER_AVAILABLE Coin (engine/Coin.h)
+007d2cc0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinGolf (engine/CTCTavernGameCoinGolf.h)
+007d2cc0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+007d2cc0   RELOCATION_MATCH PASS   EnableCourse
+00870e00   RELOCATION_MATCH PASS   SetDataFromString
+00871290   RELOCATION_MATCH PASS   SetDataFromString
+004fdcb0   WARN SHARED_HEADER_AVAILABLE CThingFilter_InMap (engine/CThingFilter_InMap.h)
+004fdcb0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+004fdcb0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+004fdcb0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004fdcb0   RELOCATION_MATCH PASS   IsSectionToHaveNavigationMap
+009af1e0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009af1e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009af1e0   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+009af1e0   RELOCATION_MATCH PASS   CompileString
+00870fc0   RELOCATION_MATCH PASS   vfunc_4
+
+WINS: 8
+  004a0d90 RELOCATION_MATCH CWorld::?LoadQuestsFromFile@CWorld@@QAEXAAVCAFile@@_N@Z
+  009acee0 RELOCATION_MATCH CDefinitionManager::?ParseEnumForSymbols@CDefinitionManager@@IAEXAAVCStringParser@@@Z
+  007d2cc0 RELOCATION_MATCH CTCTavernGameCoinGolf::?EnableCourse@CTCTavernGameCoinGolf@@QAEXJ@Z
+  00870e00 RELOCATION_MATCH NCreatureAction::CActionEventTriggerParticle::?SetDataFromString@CActionEventTriggerParticle@NCreatureAction@@MAE_NABVCCharString@@@Z
+  00871290 RELOCATION_MATCH NCreatureAction::CActionEventExplosion::?SetDataFromString@CActionEventExplosion@NCreatureAction@@MAE_NABVCCharString@@@Z
+  004fdcb0 RELOCATION_MATCH CWorldMap::?IsSectionToHaveNavigationMap@CWorldMap@@IBE_NABVCCharString@@J@Z
+  009af1e0 RELOCATION_MATCH CDefinitionManager::?CompileString@CDefinitionManager@@IAEXPBDABVCCharString@@@Z
+  00870fc0 RELOCATION_MATCH NCreatureAction::CActionEventCameraShake::?SetDataFromString@CActionEventCameraShake@NCreatureAction@@MAE_NABVCCharString@@@Z
+done

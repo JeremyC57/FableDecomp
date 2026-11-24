@@ -43,7 +43,7 @@ class CDefinitionManager {
 public:
     unsigned char _pad[0xb0];
     void (__fastcall* ErrorCallback)(const CCharString& text);   // +0xb0 (PDB +0xcc)
-    void Error(const CStringParser& parser, const CCharString& message);
+    protected: void Error(const CStringParser& parser, const CCharString& message); public:
 };
 
 void CDefinitionManager::Error(const CStringParser& parser, const CCharString& message)

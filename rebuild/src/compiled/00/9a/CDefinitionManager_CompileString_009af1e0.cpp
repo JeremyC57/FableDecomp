@@ -24,6 +24,17 @@
 //   (protected, FableWin/Ego_r name sets) instead of the CDefinitionManager_Methods wrapper's. Same bytes.
 #include "fable_compiler.h"
 #include <string.h>
+// Name fix (NF216, 2026-11-21, q12378): ported onto fable_string.h: the local CBasicString / CCharStringData / CCharString models
+//   and the same-TU strcmp stand-in for CBasicString<char>::operator==(const char*) (auto_inline(off)) are replaced by FABLE_RETAIL_CCHARSTRING
+//   with FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ (the inline CCharString::operator==) + FABLE_RETAIL_CBASICSTRING_COMPARE_BODY +
+//   FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO (the visible, called 0x004115A0 body); GetString -> the header GetAsCharArray
+//   (NullChar 0x0129AAF4, was the stand-in g_emptyLiteral_0129aaf4). The pick-any ??8?$CBasicString@D@@QBE_NPBD@Z copy this object
+//   carries is now the owner's 88-byte body, equal in bytes and relocation targets.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO
+#include "fable_string.h"
 #define CDefinitionManager CDefinitionManagerLayout
 #include "engine/CDefinitionManager.h"
 #undef CDefinitionManager
@@ -31,81 +42,18 @@
 
 extern "C" void* __cdecl malloc(unsigned int size);                 // 0x00BFEA0E
 extern "C" int __cdecl _stricmp(const char* left, const char* right);   // 0x00BFEBA8
-extern const char g_emptyLiteral_0129aaf4[];                         // 0x0129AAF4: ""
 
-template <class T> class CBasicString { public:
-    char*         PData;                                // +0x00
-    long          StringLength;                         // +0x04
-    bool operator==(const char* text) const;            // 0x004115A0
-};
-// A same-TU stand-in for the out-of-line comparison (retail's body is at 0x004115A0): with its body visible VC7.1 knows the
-// call only reads memory, so the filter string's data pointer stays in ebx across it, as retail's does.
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CBasicString<T>::operator==(const char* text) const
-{
-    return strcmp(PData, text) == 0;
-}
-#pragma auto_inline(on)
-class CCharStringData { public:
-    CBasicString<char> Data;                              // +0x00
-};
-
-class CCharString
-{
-public:
-    CCharStringData* PStringData;                       // +0x00
-    CCharString();                                      // 0x0099E4B0
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    const char* GetString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->Data.PData; }
-    FABLE_FORCEINLINE bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-};
 typedef void (__fastcall* TParserErrorCallback)(const CCharString& message);
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CStringParserCommentBoundaries
-{
-public:
-    long Start;                                         // +0x00
-    long End;                                           // +0x04
-};
-namespace std {
-class _List_node_base
-{
-public:
-    _List_node_base* _M_next;
-    _List_node_base* _M_prev;
-};
-template <class _Tp> class _List_node : public _List_node_base
-{
-public:
-    _Tp _M_data;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list
-{
-public:
-    typedef _List_node<_Tp> _Node;
-    _List_node_base* _M_node;                           // +0x00 the sentinel
-    list() : _M_node(0)
-    {
-        _Node* __sentinel = (_Node*)malloc(sizeof(_Node));
-        __sentinel->_M_next = __sentinel;
-        __sentinel->_M_prev = __sentinel;
-        _M_node = __sentinel;
-    }
-    ~list();                                            // 0x004046B0 (CStringParserCommentBoundaries)
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (the visible out-of-line _List_base dtor) and the element by engine/CStringParser.h's partial mode: the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#define FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY
+#include "engine/CStringParser.h"
+#include "stlport/fable_containers.h"
 
 class CStringParser : public CBaseClass                      // vtable 0x0122D874, 0x28 bytes
 {
@@ -144,14 +92,14 @@ void CDefinitionManager::CompileString(const char* text, const CCharString& defT
     while (parser.SkipPastWholeString("#definition_template")) {
         CCharString type = parser.ReadAsString();
         CCharString name = parser.ReadAsString();
-        if (defType == "" || _stricmp(defType.GetString(), type.GetString()) == 0)
+        if (defType == "" || _stricmp(defType.GetAsCharArray(), type.GetAsCharArray()) == 0)
             CompileDefinition(parser, type, name);
     }
     parser.SetStringPos(0);
     while (parser.SkipPastWholeString("#definition")) {
         CCharString type = parser.ReadAsString();
         CCharString name = parser.ReadAsString();
-        if (defType == "" || _stricmp(defType.GetString(), type.GetString()) == 0)
+        if (defType == "" || _stricmp(defType.GetAsCharArray(), type.GetAsCharArray()) == 0)
             CompileDefinition(parser, type, name);
     }
 }

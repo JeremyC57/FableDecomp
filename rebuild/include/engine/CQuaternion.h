@@ -22,6 +22,10 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CQUATERNION_PARTICLE_UPDATE
  // Both original PDB signatures; native A88C10/A88DE0, donor Update call sites.
+#ifdef FABLE_RETAIL_CQUATERNION_RHS_EARLY_PASS25
+ // Inline-budget: test receiver-address visibility before dead old_rhs removal.
+ FABLE_FORCEINLINE
+#endif
  void ToRightHandedSet(CRightHandedSet& dest)const {
   float d=GFSqr(X)+GFSqr(Y)+GFSqr(Z)+GFSqr(W);
 #if defined(FABLE_RETAIL_CQUATERNION_PARTICLE_ADD_FLOAT_SCALE) || defined(FABLE_RETAIL_CQUATERNION_TORIGHTHANDEDSET_FLOAT)
@@ -44,6 +48,13 @@ public:
  void SetIdentity(){X=0.0f;Y=0.0f;Z=0.0f;W=1.0f;}
 #endif
  void SetFromAxisAngle(const C3DVector& axis,float angle);
+#ifdef FABLE_RETAIL_CQUATERNION_EQUALS
+ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): Ego_r.pdb / FableWin.pdb
+ // ?Equals@CQuaternion@@QBE_NABV1@@Z (out of line in retail, 0x00A88C50) and ?IsIdentity@CQuaternion@@QBE_NXZ (0x00A88CB0).
+ // Declarations only.
+ bool Equals(const CQuaternion& other) const;
+ bool IsIdentity() const;
+#endif
 #ifdef FABLE_RETAIL_CQUATERNION_INLINE_TOMATRIX
  // Native00B0EAB8 begins this expanded math body after axis-angle call00B0EAB3.
  // Natural,T200/T400 and scoped

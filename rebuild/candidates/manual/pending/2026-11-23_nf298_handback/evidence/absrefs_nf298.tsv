@@ -1,0 +1,37 @@
+00d81b60	absref	00d80f56	00d80e40 NScript::CQ_HeroSoulsBriarScript::Main
+00d81b60	total	1
+00d83e60	absref	00d8368a	00d835d0 NScript::CQ_HeroSoulsMotherScript::Main
+00d83e60	total	1
+00d9f0b0	absref	00d9e784	00d9e5e0 NScript::CQ_MinionCampScript::Main
+00d9f0b0	total	1
+00d9ea80	absref	00d9e6bc	00d9e5e0 NScript::CQ_MinionCampScript::Main
+00d9ea80	total	1
+00d9ed50	absref	00d9e720	00d9e5e0 NScript::CQ_MinionCampScript::Main
+00d9ed50	total	1
+00dcf610	absref	00dccaf2	00dcc770 NScript::CQ_OrchardFarmRaidScript::Main
+00dcf610	total	1
+00e5dff0	absref	00e5d6ce	00e5d4f0 NScript::CV_BodyGuardScript::Main
+00e5dff0	total	1
+00dc0090	absref	00dbf69e	00dbf2d0 NScript::CQ_OakValeBanditRaidScript::Main
+00dc0090	absref	0144e6fc	-
+00dc0090	total	2
+00dcf540	absref	00dcca89	00dcc770 NScript::CQ_OrchardFarmRaidScript::Main
+00dcf540	total	1
+00eaaf10	absref	00ea8946	00ea8830 NScript::CV_MurderTwistScript::Main
+00eaaf10	total	1
+00eac4e0	absref	00ea8a0e	00ea8830 NScript::CV_MurderTwistScript::Main
+00eac4e0	total	1
+00eaba10	absref	00ea89aa	00ea8830 NScript::CV_MurderTwistScript::Main
+00eaba10	total	1
+00eacde0	absref	00ea8a72	00ea8830 NScript::CV_MurderTwistScript::Main
+00eacde0	total	1
+00eaae40	absref	00ea88e2	00ea8830 NScript::CV_MurderTwistScript::Main
+00eaae40	total	1
+00ead730	absref	00ea8ad6	00ea8830 NScript::CV_MurderTwistScript::Main
+00ead730	total	1
+00ea8e50	absref	00ea887f	00ea8830 NScript::CV_MurderTwistScript::Main
+00ea8e50	total	1
+00ea8c20	absref	00ea8b4c	00ea8830 NScript::CV_MurderTwistScript::Main
+00ea8c20	total	1
+00ead9f0	absref	00ea8bc8	00ea8830 NScript::CV_MurderTwistScript::Main
+00ead9f0	total	1

@@ -1,0 +1,6 @@
+00843f50	call	00629979	-
+00843f50	call	00629a09	006299c0L CWorld::EAExpressionWait
+00843f50	call	007b5aa4	007b57c0L CTCCarriedActionUseActivateQuest::OnActionUse
+00843f50	call	007ef66c	007ef600L CTCActionUseActivateQuest::OnActionUse
+00843f50	call	007f0232	007f01f0L CTCCarriedActionUseFishingRod::OnActionUse
+00843f50	call	007f0410	007f03d0L CTCCarriedActionUseSpade::OnActionUse

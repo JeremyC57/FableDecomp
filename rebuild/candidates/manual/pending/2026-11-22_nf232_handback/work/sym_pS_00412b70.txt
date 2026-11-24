@@ -1,0 +1,9 @@
+DEF ?begin@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ
+DEF ?end@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ
+DEF ?resize@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXI@Z
+DEF ?resize@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXIABVCWideString@@@Z
+DEF ?size@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QBEIXZ
+UND ??0CWideString@@QAE@XZ
+UND ??1CWideString@@QAE@XZ
+UND ?_M_fill_insert@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXPAVCWideString@@IABV3@@Z
+UND ?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z

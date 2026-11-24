@@ -1,5 +1,5 @@
 // CTCHeroOnlineScoreboard::InitialiseActivityInfo() -- sizes ActivityInfo to the 39 scoreboard activities and fills each one's Name / Description / UnitOfMeasurement text-bank symbols, then the decimal-place counts and the lower-is-better flags
-// Leaf: InitialiseActivityInfo
+// Leaf: ?InitialiseActivityInfo@CTCHeroOnlineScoreboard@@AAEXXZ
 // Retail: Fable.exe @ 0x00562710, 1785 bytes, `ret`. Ego_r.pdb `?InitialiseActivityInfo@CTCHeroOnlineScoreboard@@AAEXXZ`.
 // Callees: vector<CActivity>::resize(size_type) 0x0056A230 (the out-of-line resize(n, CActivity()) wrapper),
 // CCharString::operator=(const char*) 0x0099EFE0.
@@ -33,7 +33,9 @@ public:
     void*           __vftable;                       // +0x00
     unsigned char   _pad04[0x28 - 0x04];
     CActivityVector ActivityInfo;                    // +0x28
+    private:
     void InitialiseActivityInfo();
+    public:
 };
 
 void CTCHeroOnlineScoreboard::InitialiseActivityInfo()

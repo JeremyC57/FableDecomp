@@ -1,0 +1,22 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames)
+0x005bd273	NInventory::CTCInventoryBase	GetInventoryText	?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z	CTCInventoryBase::GetInventoryText	?GetInventoryText@CTCInventoryBase@NInventory@@QAE?AVCWideString@@J@Z	both PDBs QBE (const); HEAD object defines the QAE form (no Leaf line at HEAD); the new row defines the QBE form, objsec ALL_EQ; 8 landed callers (0x0056EEF6, 0x00582073, 0x0059C790, 0x005B3555, 0x005C2FAA, 0x005CCED7, 0x005EDFA2 + 0x005BDA1D after this batch) bind QBE
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00993f60	?GetInit@CPixelFormat_Calls@@QAE?AVCPixelFormatInit@@XZ	?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ	0x009e3870
+0x00449c30	?PrepareForLoad@CPlayer_Calls@@QAEXXZ	?PrepareForLoad@CPlayer@@QAEXXZ	0x00487550
+0x009c8470	?SetResourceSize@ResourceMethods@@QAEXK@Z	?SetResourceSize@CResource@@QAEXK@Z	0x009fbf20
+0x009fc210	?UnloadNextResource@CResourceList_Methods@@QAE_NK@Z	?UnloadNextResource@CResourceList@@QAE_NK@Z	0x009fc170
+0x0072e940	?GetPrice@CTCBuyableHouseCalls@@QAEJXZ	?GetPrice@CTCBuyableHouse@@QBEJXZ	0x006c0120
+0x00581cfd	?GetEngineGraphic@@YI?AVCEngineGraphic@@J@Z	?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z	0x005d96a0
+0x00581fa4	?GetEngineGraphic@@YI?AVCEngineGraphic@@J@Z	?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z	0x005d96a0
+0x005bcd2d	?GetStartingRightHandedSet@@YI?AVCRightHandedSet@@J@Z	?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z	0x005d9730
+0x00581d8e	?GetContextSensitiveType@@YI?AW4EContextSensitiveType@@J@Z	?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z	0x005d9b90
+0x006412b0	?RemovePrimitive@CTCGraphicAppearance@@QAEXPAVCPrimitive@NGraphicAppearance@@@Z	?RemovePrimitive@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCPrimitive@2@@Z	0x004bf920
+0x00ed99d0	?ProcessSongsQuestComplete@CV_TalentlessBardScript@@QAEXXZ	?ProcessSongsQuestComplete@CV_TalentlessBardScript@NScript@@QAEXXZ	0x00ed9b40
+0x00ed99d0	?ProcessSongsClothes@CV_TalentlessBardScript@@QAEXXZ	?ProcessSongsClothes@CV_TalentlessBardScript@NScript@@QAEXXZ	0x00ed9bb0
+0x00ed99d0	?ProcessSongsAge@CV_TalentlessBardScript@@QAEXXZ	?ProcessSongsAge@CV_TalentlessBardScript@NScript@@QAEXXZ	0x00eda8c0
+0x00ed99d0	?ProcessSongsMorality@CV_TalentlessBardScript@@QAEXXZ	?ProcessSongsMorality@CV_TalentlessBardScript@NScript@@QAEXXZ	0x00eda9b0
+0x00ed99d0	?ProcessSongsMarriage@CV_TalentlessBardScript@@QAEXXZ	?ProcessSongsMarriage@CV_TalentlessBardScript@NScript@@QAEXXZ	0x00edaba0
+0x00ed99d0	?ProcessSongsRenown@CV_TalentlessBardScript@@QAEXXZ	?ProcessSongsRenown@CV_TalentlessBardScript@NScript@@QAEXXZ	0x00edaad0
+0x005bd4ea	?GetHighlightedItem@CTCInventoryBase@NInventory@@QAEJXZ	?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ	0x005bcae3
+0x005bda1d	?GetInventoryText@CTCInventoryBase@NInventory@@QAE?AVCWideString@@J@Z	?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z	0x005bd273

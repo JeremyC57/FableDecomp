@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0062d7b0   MATCH            PASS   PerformAction
+0062d7c0   MATCH            PASS   IsPreventingNormalMovement
+0062d860   MATCH            PASS   IsPreventingNormalMovement
+00842250   MATCH            PASS   PerformAction
+0084b490   MATCH            PASS   PerformAction
+008aa0d0   WARN RELOC_NAME: ?Inner@@YIXVCCharString@@@Z -> 008ae660 labelled 'CTCAIScratchpad::AddGossip'
+008aa0d0   RELOCATION_MATCH PASS   AddGossip
+00b23570   MATCH            PASS   SetLandscapeDebugTintColour
+
+WINS: 7
+  0062d7b0 MATCH CCreatureAction_StartSneaking::?PerformAction@CCreatureAction_StartSneaking@@UAEXXZ
+  0062d7c0 MATCH CCreatureAction_StartSneaking::?IsPreventingNormalMovement@CCreatureAction_StartSneaking@@UBE_NXZ
+  0062d860 MATCH CCreatureAction_StopSneaking::?IsPreventingNormalMovement@CCreatureAction_StopSneaking@@UBE_NXZ
+  00842250 MATCH CCreatureAction_YellOverHere::?PerformAction@CCreatureAction_YellOverHere@@UAEXXZ
+  0084b490 MATCH CCreatureAction_PlayAnimationFromIndex::?PerformAction@CCreatureAction_PlayAnimationFromIndex@@UAEXXZ
+  008aa0d0 RELOCATION_MATCH CGameScriptInterface::?AddGossip@CGameScriptInterface@@UAEXVCCharString@@@Z
+  00b23570 MATCH CIEngine::?SetLandscapeDebugTintColour@CIEngine@@UAEXJVCRGBColour@@@Z

@@ -1,0 +1,2 @@
+VT ??_7CStringParser@@6B@ slots 1 retail 0122d874
+  0 004047d0 NOLEAF ??_ECStringParser@@UAEPAXI@Z -

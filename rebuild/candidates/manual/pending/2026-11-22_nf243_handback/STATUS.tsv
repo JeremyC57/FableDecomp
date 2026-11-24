@@ -1,0 +1,10 @@
+address	change	grade	test	grades_used	entries	note
+0x0063F360	self: stand-in SortTreeRecursively_00436900 -> std::_List_base<const CThingGameObject*>::~_List_base() on stlport/fable_containers.h (explicit instantiation)	RELOCATION_MATCH	PASS (HEAD test)	1	E2	family 0x0063F360: self + its only referencer
+0x0063E6F0	FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE -> FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE; the 0x0063F360 call binds ~_List_base	RELOCATION_MATCH	PASS (HEAD test)	1	E2	only that relocation changes (relocation diff v HEAD compile)
+0x009CBD30	self: CScriptedThingOwner_Retail stand-in -> CBankFile::SetBankUpdateStatus on engine/CBankFile.h (+ FABLE_RETAIL_CBANKFILE_PROGRESS_WRAPPERS_DECL)	MATCH	PASS (new test on the shared header)	2	E3 L108	defines only its leaf
+0x009CBD50	self: stand-in -> CBankFile::SetBankUpdateProgress (private)	MATCH	PASS (new test)	2	E3 L109	defines only its leaf
+0x009CBD70	self: stand-in -> CBankFile::WriteBankLog (protected)	MATCH	PASS (new test)	2	E3 L110	defines only its leaf; catalog name + module rename
+0x004046B0	self + 46 ~list binders: NOT changed (family held)	-	-	-	E1	recipe proven on 005dc550 / 009ec890 / 004c88e0 / 009af1e0 drafts (work/t_*.cpp); blockers 00501d30 (3 forms), 00756d00, 007ae3d0
+0x00501D30	blocked (3 forms): local vector<char> / vector<CWideString> models beside the list; the shared vector path calls vector<char>(n) out of line (DIFFER 1052v1086)	DIFFER	-	3	E1	needs a vector port first
+0x00756D00	blocked/port: local _Rb_tree / map models beside the list; shared map lacks map::erase / CCharString < on that path	SRC_FAIL	-	1	E1	needs a map port first
+0x007AE3D0	blocked/port: local map models (as 0x00756D00)	SRC_FAIL	-	1	E1	needs a map port first

@@ -1,5 +1,5 @@
 // CCombatManager::PerformSequenceReset(CThingCreatureBase&) -- end the creature's running combat sequence: a running melee sequence advances its victim's attack pattern and, unless the creature already circles on a rotating ring, may (by its combat type's ring-rotation chance) set its ring turning either way at the def's speed; the sequence is stopped and the current index cleared
-// Leaf: PerformSequenceReset
+// Leaf: ?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA2C0, 355 bytes (368 with padding). `ret 4`.
 // Callees: the combatant map's find 0x006F0250 (twice), CCombatManager::IncrementDefenderAttackPattern 0x006E8600,
 //          IsCreatureOnRotatingCombatRing 0x006E9700 (catalogued "CCombatWheel_ValidateSequencePosition"; name from
@@ -61,7 +61,7 @@ class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;              // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
-    CCombatTypeDef* GetCombatTypeDef() const;   // 0x00666D10
+    const CCombatTypeDef& GetCombatTypeDef() const;   // 0x00666D10
 };
 class CCombatSequenceBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -109,10 +109,13 @@ class CCombatManager { public:
     {
         return Combatants.find(creature.GetUID())->second;
     }
-    void IncrementDefenderAttackPattern(CCombatantInfo& info);             // 0x006E8600
+    private:
+    void IncrementDefenderAttackPattern(CCombatantInfo& info);
+    public:
+             // 0x006E8600
     bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;   // 0x006E9700
     void SetAttackerRingAsRotating(const CThingCreatureBase& attacker, float degreesPerSecond);   // 0x006E9D90
-    void PerformSequenceReset(CThingCreatureBase& creature);
+    private: void PerformSequenceReset(CThingCreatureBase& creature);   // NF308: AAE (private), Ego_r + FableWin
 };
 
 void CCombatManager::PerformSequenceReset(CThingCreatureBase& creature)
@@ -126,7 +129,7 @@ void CCombatManager::PerformSequenceReset(CThingCreatureBase& creature)
                 IncrementDefenderAttackPattern(victim->second);
                 CDefPointer<const CCombatAbilityStrafeDef> rotation;
                 if (!IsCreatureOnOuterRing(creature)) {
-                    if (creature.GetCombatTypeDef()->GetSubDef(&rotation)) {
+                    if (creature.GetCombatTypeDef().GetSubDef(&rotation)) {
                         long roll = WorldRandom(*World->GetWorldSeed()) % 100;
                         if (roll <= rotation->CombatAbility.PercentageChance) {
                             float speed = rotation->CombatAbility.RotationSpeed;

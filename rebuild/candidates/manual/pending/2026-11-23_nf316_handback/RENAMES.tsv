@@ -1,0 +1,17 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0051E210	CThingManager	RemapUIDForSerialisation	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	CThingManager::RemapUIDForSerialisation	(no Leaf line; HEAD object DEF ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z)	Ego_r + FableWin name sets ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z (const, unsigned long level), also engine/CThingManager.h:157 and the landed binders 0x005FAE90 / 0x0088AE40 (compiled: both bind it) and 10 more rows through the shared header (compiled); body unchanged (`level` only forwarded to CWorldMap::GetMapUID(long), no code; const forces nothing: the members read are m_uidRemapDisabled and the WorldMap pointer); RELOCATION_MATCH HEAD / new, ALL_EQ, .drectve equal; every landed binder of the old QAE `long` spelling (0x006CA120, 0x00729CF0, 0x0075D320, 0x00779430, 0x0077B0D0, 0x007C9770, 0x007E8460, 0x007EE3D0, 0x00800A60: the full exe census compiled) moves in this landing (NF304 Q6); full mangled Leaf added (GOTCHAS 479); not virtual
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00522880	?GetInventoryOwner@CTCInventoryItem@@QAEPAVCThing@@XZ	?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ	0x005D8E90
+0x00846100	?ApplyAcceleration@CTCPhysicsBase@@QAEXPAVC3DVector@@@Z	?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z	0x006B0210
+0x00969470	?GetEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3@Z	?GetEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z	0x007BA1D0
+0x0040D350	?LoadGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z	?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z	0x0040BCA0
+0x006CA120	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0x0051E210
+0x00729CF0	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0x0051E210
+0x0075D320	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0x0051E210
+0x00779430	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0x0051E210
+0x0077B0D0	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0x0051E210
+0x007C9770	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0x0051E210
+0x007E8460	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0x0051E210
+0x007EE3D0	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0x0051E210
+0x00800A60	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0x0051E210

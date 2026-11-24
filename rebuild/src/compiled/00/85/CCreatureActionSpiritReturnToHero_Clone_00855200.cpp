@@ -7,18 +7,18 @@
 // Virtual clone of a class that adds no data to its base: the implicit copy constructor is
 // inlined as the base copy constructor @ 0x0062EBC0 plus this class's vtable store
 // (0x01275C54, named through rtti-vtables.tsv). sizeof = 0xa8. One of 196 bodies of this shape.
-class CCreatureActionBase { public:
-    virtual void v00();
-    unsigned char _body[0xa8 - 4];    // sizeof(CCreatureActionBase) = sizeof(CCreatureAction_SpiritReturnToHero) = 0xa8
-    CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
-};
+// Leaf: ?Clone@CCreatureAction_SpiritReturnToHero@@UBEPAVCCreatureActionBase@@XZ
+// Clone port (NF323, 2026-11-24; NF317 Q3 / NF320 Q1): defined on the real class of engine/CCreatureAction_SpiritReturnToHero.h over engine/CCreatureActionBase.h
+//   instead of the local one-slot stand-in model (was ?Clone@CCreatureAction_SpiritReturnToHero@@QAEPAVCCreatureActionBase@@XZ). The inline implicit copy constructor stores
+//   the class vftable, so this TU emits ??_7CCreatureAction_SpiritReturnToHero@@6B@ from the header model, slot for slot the retail table.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_COPYCTOR
+#define FABLE_RETAIL_CCREATUREACTION_SPIRITRETURNTOHERO_VIRTUAL_MODEL
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCreatureAction_SpiritReturnToHero.h"
 
-class CCreatureAction_SpiritReturnToHero : public CCreatureActionBase { public:
-    virtual void v00();                    // own vtable; copy constructor implicit
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_SpiritReturnToHero::Clone()
+CCreatureActionBase* CCreatureAction_SpiritReturnToHero::Clone() const
 {
     return new CCreatureAction_SpiritReturnToHero(*this);
 }

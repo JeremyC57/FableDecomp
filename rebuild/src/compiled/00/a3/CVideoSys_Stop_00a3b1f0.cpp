@@ -1,3 +1,4 @@
+// Leaf: ?Stop@CVideoSys@@QAE_NXZ
 // CVideoSys::Stop() -- when a movie is loaded, stop the graph, wait for State_Stopped and record state 3
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3B1F0, length 48 bytes.
 // Callees: CVideoSys::WaitForState @ 0x00A3B0F0 (this chunk), IMediaControl::Stop (slot 9).
@@ -36,10 +37,10 @@ struct CVideoSys {                            // engine/CVideoSys.h layout (no v
     unsigned char   _pad08[0x20];             // +0x08..+0x27
     long            State;                    // +0x28 (0 = nothing loaded, 1 playing, 2 paused, 3 stopped)
     void WaitForState(long state);            // 0x00A3B0F0
-    unsigned char Stop();
+    bool Stop();
 };
 
-unsigned char CVideoSys::Stop()
+bool CVideoSys::Stop()
 {
     if (State == 0)
         return 0;

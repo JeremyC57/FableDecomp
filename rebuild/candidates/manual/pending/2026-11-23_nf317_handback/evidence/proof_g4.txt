@@ -1,0 +1,40 @@
+##### 00439ab0 renames: ??A?$vector@M@@QAEAAMJ@Z=??A?$vector@M@@QBEABMJ@Z ?GetButtonAlpha@CPlayerGui@@QAEMJ_N00@Z=?GetButtonAlpha@CPlayerGui@@QBEMJ_N00@Z
+ALL_EQ sections=7 DEF=6 tables=-
+##### 004b1110 renames: ??A?$CRetailVector@VCCharString@@@@QAEAAVCCharString@@K@Z=??A?$CRetailVector@VCCharString@@@@QBEABVCCharString@@K@Z ?IsBetweenQuestStartAndFinishScreensIgnoringVignettes@CQuestManager@@QAE_NXZ=?IsBetweenQuestStartAndFinishScreensIgnoringVignettes@CQuestManager@@QBE_NXZ ?begin@?$CRetailVector@VCCharString@@@@QAEPAVCCharString@@XZ=?begin@?$CRetailVector@VCCharString@@@@QBEPBVCCharString@@XZ
+ALL_EQ sections=8 DEF=7 tables=-
+##### 009f4d40 renames: ??A?$CRetailVector@VCInputEvent@@@@QAEAAVCInputEvent@@J@Z=??A?$CRetailVector@VCInputEvent@@@@QBEABVCInputEvent@@J@Z ?IsEventInQueue@CInputManager@@QAE_NABVCInputEvent@@@Z=?IsEventInQueue@CInputManager@@IBE_NABVCInputEvent@@@Z ?begin@?$CRetailVector@VCInputEvent@@@@QAEPAVCInputEvent@@XZ=?begin@?$CRetailVector@VCInputEvent@@@@QBEPBVCInputEvent@@XZ
+ALL_EQ sections=4 DEF=3 tables=-
+##### 00581cfd renames: ??ACLongVector@@QAEAAJK@Z=??ACLongVector@@QBEABJK@Z ?GetContextSensitiveItemGraphicIndex@CTCInventory@@QAEJJ@Z=?GetContextSensitiveItemGraphicIndex@CTCInventory@@QBEJJ@Z
+ALL_EQ sections=4 DEF=3 tables=-
+##### 00581d8e renames: ??ACLongVector@@QAEAAJK@Z=??ACLongVector@@QBEABJK@Z ?IsContextSensitiveOpinionExpressionAvailable@CTCInventory@@QAE_NXZ=?IsContextSensitiveOpinionExpressionAvailable@CTCInventory@@QBE_NXZ
+ALL_EQ sections=5 DEF=4 tables=-
+##### 00581fa4 renames: ??ACLongVector@@QAEAAJK@Z=??ACLongVector@@QBEABJK@Z ?GetQuickAccessItemGraphicIndex@CTCInventory@@QAEJJ@Z=?GetQuickAccessItemGraphicIndex@CTCInventory@@QBEJJ@Z
+ALL_EQ sections=4 DEF=3 tables=-
+##### 00581d4e renames: ??ACLongVector@@QAEAAJK@Z=??ACLongVector@@QBEABJK@Z ?GetContextSensitiveItemButtonIndex@CTCInventory@@QAEJJ@Z=?GetContextSensitiveItemButtonIndex@CTCInventory@@QBEJJ@Z
+ALL_EQ sections=4 DEF=3 tables=-
+##### 005dc070 renames: ??A?$CArray@U?$pair@KVCAnimationEntry@@@std@@@@QAEAAU?$pair@KVCAnimationEntry@@@std@@I@Z=??A?$CArray@U?$pair@KVCAnimationEntry@@@std@@@@QBEABU?$pair@KVCAnimationEntry@@@std@@I@Z ?TransferBinaryOut@CAnimationEntry@@QAEXAAVCDataOutputStream@@@Z=?TransferBinaryOut@CAnimationEntry@@QBEXAAVCDataOutputStream@@@Z ?TransferBinaryOut@CAnimationSet@@QAEXAAVCDataOutputStream@@@Z=?TransferBinaryOut@CAnimationSet@@QBEXAAVCDataOutputStream@@@Z
+ALL_EQ sections=4 DEF=3 tables=-
+##### 00958e20 renames: ?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@QAE_NXZ=?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@ABE_NXZ ?IsStillValid@CAIStateGroup_MinionReactToCrime@@UAE_NXZ=?IsStillValid@CAIStateGroup_MinionReactToCrime@@UBE_NXZ
+ALL_EQ sections=8 DEF=7 tables=-
+##### 0096d380 renames: ?IsStaffed@CAIStateGroup_EatAtTavern@@QAE_NXZ=?IsStaffed@CAIStateGroup_EatAtTavern@@IBE_NXZ ?IsTime@CAIStateGroup_EatAtTavern@@UAE_NXZ=?IsTime@CAIStateGroup_EatAtTavern@@MBE_NXZ
+ALL_EQ sections=19 DEF=18 tables=-
+##### 005faa60 renames: ?IsTeleportValid@CTCInventoryMap@@QAE_NXZ=?IsTeleportValid@CTCInventoryMap@@QBE_NXZ
+ALL_EQ sections=2 DEF=1 tables=-
+##### 0096d190 renames: ?IsStillValid@CAIStateGroup_EatAtTable@@UAE_NXZ=?IsStillValid@CAIStateGroup_EatAtTable@@MBE_NXZ
+ALL_EQ sections=6 DEF=5 tables=-
+##### 009d4a50 renames: ?WriteTable@CDefStringTable@@QAEXAAVCDataOutputStream@@@Z=?WriteTable@CDefStringTable@@QBEXAAVCDataOutputStream@@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 008d0ba0 renames: ?IsAwareOfHero@CGameScriptThing@@QAE_NXZ=?IsAwareOfHero@CGameScriptThing@@UBE_NXZ
+ALL_EQ sections=7 DEF=6 tables=-
+##### 004c8c90 renames: ??$GetTC@UCTCScriptControl@@@CThing@@QAEPAUCTCScriptControl@@J@Z=??$GetTC@UCTCScriptControl@@@CThing@@QBEPAUCTCScriptControl@@J@Z ?IsUnderScriptControl@CThing@@QAE_NXZ=?IsUnderScriptControl@CThing@@QBE_NXZ
+ALL_EQ sections=8 DEF=7 tables=-
+##### 00665e90 renames: ??$GetInterface@VCTCPerceiveThing@@@CThing@@QAE_NPAPAVCTCPerceiveThing@@J@Z=??$GetInterface@VCTCPerceiveThing@@@CThing@@QBE_NPAPAVCTCPerceiveThing@@J@Z ?IsPickPocketable@CThingCreatureBase@@QAE_NXZ=?IsPickPocketable@CThingCreatureBase@@QBE_NXZ
+ALL_EQ sections=9 DEF=8 tables=-
+##### 008c63c0 renames: ?WhackGround@CCreatureAction_TrollWhackGroundBase@@QAEXXZ=?WhackGround@CCreatureAction_TrollWhackGroundBase@@AAEXXZ
+ALL_EQ sections=18 DEF=17 tables=-
+##### 00908b50 renames: ?OnCreate@CCombatSequenceBase@@QAEXXZ=?OnCreate@CCombatSequenceBase@@UAEXXZ ?OnCreate@CCombatSequence_VillagerComboUnblockable@@QAEXXZ=?OnCreate@CCombatSequence_VillagerComboUnblockable@@UAEXXZ
+ALL_EQ sections=11 DEF=10 tables=??_7CCreatureAction_InterruptableMidAttack@@6B@
+##### 00789900 renames: ?GetBribeAmountWillTake@CTCGuard@@QAEJXZ=?GetBribeAmountWillTake@CTCGuard@@QBEJXZ
+ALL_EQ sections=6 DEF=5 tables=-
+##### 00832e60 renames: ?OnDie@CThingAICreature@@QAEXXZ=?OnDie@CThingAICreature@@UAEXXZ ?OnDie@CThingCreatureBase@@QAEXXZ=?OnDie@CThingCreatureBase@@UAEXXZ
+ALL_EQ sections=22 DEF=21 tables=-

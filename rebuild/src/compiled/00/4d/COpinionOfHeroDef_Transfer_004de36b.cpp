@@ -1,4 +1,4 @@
-// Leaf: ?Transfer@COpinionOfHeroDef@@QAEXAAVCPersistContext@@@Z
+// Leaf: ?Transfer@COpinionOfHeroDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
@@ -6,13 +6,13 @@ class CPersistContext { public:                       // typed transfer helpers:
     template <class T> void Transfer(T& value);                 // 0x0043314A Transfer(bool&)
 };
 class COpinionOfHeroDef { public:
-    unsigned char _pad[0x28];
+    unsigned char _pad[0x24];
     Field f0; // 0x28
     Field f1; // 0x2c
     Field f2; // 0x30
     Field f3; // 0x34
     Field f4; // 0x38
-    void Transfer(CPersistContext& ctx);
+    virtual void Transfer(CPersistContext& ctx);
 };
 
 void COpinionOfHeroDef::Transfer(CPersistContext& ctx)

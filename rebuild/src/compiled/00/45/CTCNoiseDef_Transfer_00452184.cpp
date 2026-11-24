@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 class CPersistContext { public:
     void TransferA(int* v);
@@ -5,15 +6,18 @@ class CPersistContext { public:
 };
 
 class CTCNoiseDef { public:
-    char pad[0x28];
+    char pad[0x24];
     int a;
     int b;
     int c;
+    virtual void Transfer(class CPersistContext&);
 };
 
-void __fastcall CTCNoiseDef_Transfer(CTCNoiseDef* self, void* edx, CPersistContext* ctx)
+void CTCNoiseDef::Transfer(class CPersistContext& ctx)
 {
-    ctx->TransferA(&self->a);
-    ctx->Transfer(*(float*)(&self->b));
-    ctx->Transfer(*(float*)(&self->c));
+    CTCNoiseDef* self = this;
+    ctx.TransferA(&self->a);
+    ctx.Transfer(*(float*)(&self->b));
+    ctx.Transfer(*(float*)(&self->c));
 }
+// Flatten route (flatten_pilot v4, NF324): CTCNoiseDef_Transfer -> CTCNoiseDef::Transfer, the RTTI-placed PDB member; class model: the row's local class model.

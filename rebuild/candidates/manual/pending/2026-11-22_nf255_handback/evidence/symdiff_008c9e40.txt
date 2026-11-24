@@ -1,0 +1,10 @@
+1c1,5
+< DEF ?CCreatureAction_NymphSummonOutOf_FinishAction@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z
+---
+> DEF ??C?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+> DEF ?FinishAction@CCreatureAction_NymphSummonOutOf@@UAEXXZ
+> DEF ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+> DEF ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ
+> UND ?FinishAction@CCombatActionBase@@MAEXXZ
+3d6
+< UND ?base_FinishAction_859a20@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z

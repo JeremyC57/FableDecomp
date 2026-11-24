@@ -1,0 +1,85 @@
+--- work/gen0/engine/CAIStateGroup_ServeFood.h	2026-11-24 01:45:35.866837685 +0000
++++ hdr/engine/CAIStateGroup_ServeFood.h	2026-11-24 01:46:13.883719044 +0000
+@@ -10,13 +10,28 @@
+ 
+ class CThing;
+ 
++#ifdef FABLE_RETAIL_CAISTATEGROUP_SERVEFOOD_VIRTUAL_MODEL
++// Opt-in (NF327, 2026-11-24, NF325 Q2 ruling; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
++// 0x0128AA1C (RTTI .?AVCAIStateGroup_ServeFood@@ : CAIStateGroupBase), 17 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_ServeFood); every other slot stays the base's.
++// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF327 evidence/probe_servefood.txt).
++// Slots 14-16 are pure (NF325 Q2 ruling): retail ServeFood vftable 0x0128AA1C holds _purecall there, and both derived tables override all three
++// (IsTime / GetBuilding both PDBs MAE, SetPlaceForSelf FableWin.pdb MAE, + the RTTI-port labels).
++// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
++#include "engine/CAIStateGroupBase.h"
++class CThingAICreature;
++class CThingBuilding;
++class CWorld;
+ #pragma pack(push, 1)
+-struct CAIStateGroup_ServeFood {
+-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+-    unsigned char _pad_0x04[0x4];                            // +0x04
+-    unsigned char _pad_0x08[0x4];                            // +0x08
+-    unsigned char _pad_0x0c[0x4];                            // +0x0c
+-    unsigned char _pad_0x10[0x4];                            // +0x10
++class CAIStateGroup_ServeFood : public CAIStateGroupBase {
++protected:
++    virtual void OnReplace();                                             // slot 10 0x009239C0 ?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ
++    virtual bool IsRunnable();                                            // slot 11 0x00923070 ?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ
++    virtual void Update();                                                // slot 12 0x009236C0 ?Update@CAIStateGroup_ServeFood@@MAEXXZ
++    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x00922FA0 ?InitStateGroup@CAIStateGroup_ServeFood@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
++    virtual bool IsTime() = 0;                                            // slot 14 _purecall (retail 0x00BFEA08); no ServeFood symbol: spelling from the overrides ?IsTime@CAIStateGroup_ServeFoodAtHome / _AtTavern
++    virtual CThingBuilding* GetBuilding() = 0;                            // slot 15 _purecall (retail 0x00BFEA08); no ServeFood symbol: spelling from the overrides ?GetBuilding@CAIStateGroup_ServeFoodAtHome / _AtTavern
++    virtual bool SetPlaceForSelf() = 0;                                   // slot 16 _purecall (retail 0x00BFEA08); no ServeFood symbol: spelling from the overrides ?SetPlaceForSelf@CAIStateGroup_ServeFoodAtHome / _AtTavern
++public:
+     long          CarriedFoodItems;                          // +0x14
+     CThing*       Table;                                     // +0x18
+     long          Seat;                                      // +0x1c
+@@ -28,9 +43,7 @@
+     unsigned char Mode[0x4];                                 // +0x48 ServingMode
+ };
+ #pragma pack(pop)
+-
+ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_ServeFood) == 0x4c);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, __vftable) == 0x0);
+ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, CarriedFoodItems) == 0x14);
+ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, Table) == 0x18);
+ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, Seat) == 0x1c);
+@@ -40,5 +53,37 @@
+ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, ServeRHSet) == 0x2c);
+ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, ServeActionPoint) == 0x44);
+ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, Mode) == 0x48);
++#else
++#pragma pack(push, 1)
++struct CAIStateGroup_ServeFood {
++    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
++    unsigned char _pad_0x04[0x4];                            // +0x04
++    unsigned char _pad_0x08[0x4];                            // +0x08
++    unsigned char _pad_0x0c[0x4];                            // +0x0c
++    unsigned char _pad_0x10[0x4];                            // +0x10
++    long          CarriedFoodItems;                          // +0x14
++    CThing*       Table;                                     // +0x18
++    long          Seat;                                      // +0x1c
++    float         ServePos_X;                                // +0x20 C3DVector::X
++    float         ServePos_Y;                                // +0x24 C3DVector::Y
++    float         ServePos_Z;                                // +0x28 C3DVector::Z
++    unsigned char ServeRHSet[0x18];                          // +0x2c CRightHandedSet
++    long          ServeActionPoint;                          // +0x44
++    unsigned char Mode[0x4];                                 // +0x48 ServingMode
++};
++#pragma pack(pop)
++
++FABLE_STATIC_ASSERT_AT(32, sizeof(CAIStateGroup_ServeFood) == 0x4c);
++FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_ServeFood, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_ServeFood, CarriedFoodItems) == 0x14);
++FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_ServeFood, Table) == 0x18);
++FABLE_STATIC_ASSERT_AT(36, offsetof(CAIStateGroup_ServeFood, Seat) == 0x1c);
++FABLE_STATIC_ASSERT_AT(37, offsetof(CAIStateGroup_ServeFood, ServePos_X) == 0x20);
++FABLE_STATIC_ASSERT_AT(38, offsetof(CAIStateGroup_ServeFood, ServePos_Y) == 0x24);
++FABLE_STATIC_ASSERT_AT(39, offsetof(CAIStateGroup_ServeFood, ServePos_Z) == 0x28);
++FABLE_STATIC_ASSERT_AT(40, offsetof(CAIStateGroup_ServeFood, ServeRHSet) == 0x2c);
++FABLE_STATIC_ASSERT_AT(41, offsetof(CAIStateGroup_ServeFood, ServeActionPoint) == 0x44);
++FABLE_STATIC_ASSERT_AT(42, offsetof(CAIStateGroup_ServeFood, Mode) == 0x48);
++#endif // FABLE_RETAIL_CAISTATEGROUP_SERVEFOOD_VIRTUAL_MODEL
+ 
+ #endif // FABLE_ENGINE_CAISTATEGROUP_SERVEFOOD_H

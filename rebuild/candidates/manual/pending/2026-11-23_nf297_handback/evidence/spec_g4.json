@@ -1,0 +1,14 @@
+{
+ "00bbbb00": [["    void RenderLandscapeDecal(CEngineInternalPrimitiveDecal* decal);   // 0x00BBAC60", "    protected: void RenderLandscapeDecal(CEngineInternalPrimitiveDecal& decal); public:   // 0x00BBAC60", 1],
+              ["        RenderLandscapeDecal(decal);", "        RenderLandscapeDecal(*decal);", 1]],
+ "00bad2e0": [["void RenderSingleSprite(CEngineSubPrimitiveBase* subPrimitive, ERenderPassType pass);", "void RenderSingleSprite(CEngineSubPrimitiveBase& subPrimitive, ERenderPassType pass);", 1],
+              ["group->RenderSingleSprite(&subPrimitive, pass);", "group->RenderSingleSprite(subPrimitive, pass);", 1]],
+ "00bcb800": [["void RenderSpriteTrail(CEngineInternalPrimitiveSpriteTrail* trail, bool textured);", "void RenderSpriteTrail(const CEngineInternalPrimitiveSpriteTrail& trail, bool textured);", 1],
+              ["        RenderSpriteTrail(trail, true);", "        RenderSpriteTrail(*trail, true);", 1]],
+ "00babf70": [["    unsigned long GetOccludedFrames(CEnginePrimitiveOcclusionInfo* info);", "    long GetOccludedFrames(CEnginePrimitiveOcclusionInfo& info);", 1],
+              ["{ return GetOccludedFrames(info) <= MaxOccludedFrames; }", "{ return GetOccludedFrames(*info) <= MaxOccludedFrames; }", 1]],
+ "00bebbb0": [["CEngineSimulationBase* FindSimulation(long index);", "CEngineSimulationBase* FindSimulation(unsigned long index);", 1]],
+ "00b94d30": [["CEngineSceneMap* GetMapAt(const C2DVector& position);", "CEngineSceneMap& GetMapAt(const C2DVector& position);", 1],
+              ["GetMapAt(C2DVector(centre.X, centre.Y))->AddPrimitive(", "GetMapAt(C2DVector(centre.X, centre.Y)).AddPrimitive(", 1]],
+ "00b937a0": [["    CEngineSceneGridCell(CEngineSceneGridCell* parent);   // 0x00B935C0\n};", "    private: CEngineSceneGridCell(CEngineSceneGridCell* parent); friend class CEngineSceneGrid;   // 0x00B935C0\n};", 1]]
+}

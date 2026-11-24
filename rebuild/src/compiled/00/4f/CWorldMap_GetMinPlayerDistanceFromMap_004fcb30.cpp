@@ -35,7 +35,7 @@ class C2DBoxI
     long BRX;
     long BRY;
     bool Overlapping(const C2DBoxI& other) const;                 // 0x004FAB40
-    long GetDistanceTo(const C2DCoordI& pos) const;               // 0x00A3A180
+    long GetDistance(const C2DCoordI& pos) const;               // 0x00A3A180
 };
 
 class CMap
@@ -146,7 +146,7 @@ long CWorldMap::GetMinPlayerDistanceFromMap(long map)
         {
             const CPlayerPositionInfo& info = PlayerPositionInfo_start[i];
             const CMapInfo& mapInfo = *(Maps.begin() + map);
-            long distance = mapInfo.Area.GetDistanceTo(C2DCoordI(info.Pos));
+            long distance = mapInfo.Area.GetDistance(C2DCoordI(info.Pos));
             if (distance < best)
                 best = distance;
         }

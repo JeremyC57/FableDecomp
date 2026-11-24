@@ -1,0 +1,8 @@
+004014a0	?Calc@CCRC@@SIKKPBXK@Z	x2
+00404310	?GetCRC@CCharString@@QBEKXZ	x1
+0099b510	??1CWideString@@QAE@XZ	x1
+0099e480	?ToWideString@CCharString@@QBE?AVCWideString@@XZ	x1
+009cc410	?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z	x1
+0129aaf4	??_C@_00CNPNBAHC@?$AA@	x1
+013b86a0	?PMainGameComponent@CMainGameComponent@@1PAV1@A	x1
+013b871c	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	x1

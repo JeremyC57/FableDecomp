@@ -65,7 +65,10 @@ class CTCSkeletalMorph { public:                           // vtable 0x0126B6F4
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     void AddMorph(long tag, const CCharString& name, float weight);   // 0x00786670
-    void CalculateSkeletalMorph();                  // 0x00786700
+    private:
+    void CalculateSkeletalMorph() const;
+    public:
+                  // 0x00786700
     void vfunc_4();
 };
 

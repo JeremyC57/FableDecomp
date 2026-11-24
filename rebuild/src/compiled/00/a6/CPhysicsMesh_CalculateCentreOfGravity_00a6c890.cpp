@@ -1,6 +1,6 @@
 // CPhysicsMesh::CalculateCentreOfGravity() -- zero the centre of gravity, sum every mesh point into it with for_each(CAddElements), then scale it by 1 / point count
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6C890, length 110 bytes (+ int3 padding).
-// Leaf: CalculateCentreOfGravity
+// Leaf: ?CalculateCentreOfGravity@CPhysicsMesh@@AAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Callees: for_each<C3DVector*, CAddElements<C3DVector>> @ 0x00A6ECE0 (`__fastcall`: hidden result in ecx -- the
@@ -29,7 +29,9 @@ class CPhysicsMesh { public:
     CArray<C3DVector>  TotalPoints;                // +0x3c
     unsigned char      _pad48[0xa8 - 0x48];
     C3DVector          CentreOfGravity;            // +0xa8
+    private:
     void CalculateCentreOfGravity();
+    public:
 };
 
 void CPhysicsMesh::CalculateCentreOfGravity()

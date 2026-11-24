@@ -34,7 +34,7 @@ class CTCPhysicsBase { public:
 #define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETFOV
 #include "engine/CTCPerceiveThing.h"
 class CTCLook { public:
-    float GetHeadAngleOffset();                 // 0x00751A80
+    float GetLookAngleRelToBodyXY() const;                 // 0x00751A80; NF296: PDB name, was GetHeadAngleOffset
 };
 
 FABLE_FORCEINLINE float WrapAngle(float angle)
@@ -93,7 +93,7 @@ bool CThingCreatureBase::IsPosInFOV(const C3DVector& position, bool useLookOffse
         if (UsingComponents[0x43 >> 5] & (1UL << (0x43 & 31))) {
             CTCLook* look = GetTC<CTCLook>(0x43);
             if (useLookOffset)
-                facing = WrapAngle(look->GetHeadAngleOffset() + angle);
+                facing = WrapAngle(look->GetLookAngleRelToBodyXY() + angle);
         }
         float target = WrapAngle((float)atan2(delta.X, delta.Y) * 0.15915494f);
         if (AngleDistance(target, facing) <= fieldOfView * 0.5f)

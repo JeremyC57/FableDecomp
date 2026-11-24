@@ -1,0 +1,16 @@
+CAIStateGroup_ServeFood	SAME	inserted=45	pinned=11
+CAIStateGroup_ServeFoodAtHome	SAME	inserted=27	pinned=0
+CAIStateGroup_ServeFoodAtTavern	SAME	inserted=27	pinned=0
+CCreatureAction_ActivateZTarget	SAME	inserted=16	pinned=2
+CCreatureAction_CallSpouseHome	SAME	inserted=16	pinned=2
+CCreatureAction_DropWeapon	SAME	inserted=16	pinned=2
+CCreatureAction_LookThroughWindow	SAME	inserted=16	pinned=2
+CCreatureAction_PickUpJug	SAME	inserted=18	pinned=2
+CCreatureAction_StartFillingTankard	SAME	inserted=16	pinned=2
+CCreatureAction_StopFillingTankard	SAME	inserted=16	pinned=2
+CCreatureAction_Tankard	OTHER	1 blocks
+  insert old23-22 new23-29:  => #ifdef FABLE_RETAIL_CCREATUREACTION_PICKUPTHINGATTABLE_COPYCTOR_DECL |     // Opt-in (NF327, 2026-11-24, NF323 Q2): the copy constructor retail calls out of line at 0x0084C9A0 (0x009680D0 PickUpJug::C
+CGameScriptInterface	OTHER	1 blocks
+  insert old971-970 new971-977:  => #ifdef FABLE_RETAIL_CGAMESCRIPTINTERFACE_ENDCUTFADE_CALLEES |     // Opt-in (NF321, 2026-11-23, row 0x0088E520 EndCutFade): the two protected non-virtual helpers the donor FableWin EndCutFade calls, |
+CIPhysicsFacesSegmentBase	OTHER	1 blocks
+  insert old31-30 new31-37:  => #ifdef FABLE_RETAIL_CIPHYSICSFACESSEGMENTBASE_FRIEND_BRANCH |     // Opt-in (NF327, 2026-11-24, NF325 Q1 ruling; NF305 Q5 / NF309 Q2 shape): retail 0x00A86030 |     // CPhysicsFacesSegmentBranch::GetP

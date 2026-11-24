@@ -34,8 +34,10 @@
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::~CScriptThing() { }
 FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-inline const C3DVector& CScriptThing::GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
-inline float CScriptThing::GetAngleXY() const { return PImp.Data == 0 ? 0.0f : PImp.Data->GetAngleXY(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AAA40 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline float CScriptThing::GetAngleXY() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return 0.0f; float angle = imp->GetAngleXY(); return angle; }
 
 void NScript::CV_BanditTollScript::CTollBandit::SetUpBanditToll()
 {

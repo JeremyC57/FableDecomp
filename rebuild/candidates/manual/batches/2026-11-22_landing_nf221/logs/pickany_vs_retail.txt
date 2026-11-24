@@ -1,0 +1,13 @@
+pick-any copies v Fable.exe (relocations masked)
+0042d45d wdH ??1<CComponent> v 0x00429C53: 44 diffs 39 [0, 1, 2, 3, 4, 5] after 74256a
+0042d45d wd ??1<CComponent> v 0x00429C53: 5 diffs 0 [] after 8b4424
+0058f016 wdH ??1<CComponent> v 0x00429C53: not defined
+0058f016 wd ??1<CComponent> v 0x00429C53: 5 diffs 0 [] after 8b4424
+005c8459 wdH ??1<CComponent> v 0x00429C53: 44 diffs 39 [0, 1, 2, 3, 4, 5] after 74256a
+005c8459 wd ??1<CComponent> v 0x00429C53: 5 diffs 0 [] after 8b4424
+005c9a95 wdH ??1<CComponent> v 0x00429C53: 44 diffs 39 [0, 1, 2, 3, 4, 5] after 74256a
+005c9a95 wd ??1<CComponent> v 0x00429C53: 5 diffs 0 [] after 8b4424
+005c8459 wdH ReleaseData<CComponent> v 0x004291DE: 44 diffs 5 [36, 37, 38, 39, 40] after 56578b
+005c8459 wd ReleaseData<CComponent> v 0x004291DE: 44 diffs 0 [] after 56578b
+005c9a95 wdH ReleaseData<CComponent> v 0x004291DE: 44 diffs 5 [36, 37, 38, 39, 40] after 56578b
+005c9a95 wd ReleaseData<CComponent> v 0x004291DE: 44 diffs 0 [] after 56578b

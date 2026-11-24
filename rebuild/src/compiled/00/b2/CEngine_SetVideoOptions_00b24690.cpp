@@ -3,7 +3,7 @@
 //   fallback makes the result false, total failure returns false), then push the vsync, effects quality, hi-res texture memory
 //   and mesh detail settings to their subsystems and restore component video memory; the post-device-reset flag is cleared for
 //   the duration and set again on every exit after the initialised check.
-// Leaf: SetVideoOptions
+// Leaf: ?SetVideoOptions@CEngine@@UAE_NABVCEngineVideoOptions@@@Z
 // NF95 (part 2, q11381): 0x01436EB0 is NEngineInternal::GPVideoOptions (FableWin.pdb public ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B,
 //   FableWin 0x04AC8094; Ego_r.pdb data order GPLightingManager / GPEngine / GPVideoOptions; CEngine::SetVideoOptions 0x00B24690 stores
 //   &VideoOptions there), a pointer to const CEngineVideoOptions (Ego_r.pdb layout, 0x34 bytes).
@@ -56,13 +56,13 @@ struct CEngineVideoOptionsListener {
     virtual void SetEffectQuality(CEngineVideoOptionsDef* def);   // slot 13 (+0x34)
 };
 class CEngineResourceManager { public: bool ResizeHiresTextureMemory(long size); };        // 0x00B3B4F0
-class CEngineLocalDetailGenerator { public: void UpdateLoadingDistanceVideoOptions(CEngineVideoOptionsDef* def); };   // 0x00B59870
+class CEngineLocalDetailGenerator { public: void UpdateLoadingDistanceVideoOptions(const CEngineVideoOptionsDef& def); };   // 0x00B59870
 struct CEngineVideoOptionsSink { void OnVideoOptionsChanged(); };                 // 0x00B2F740
 
 enum ESmartRestoreComponentVideoMemoryResult { SMART_RESTORE_OK = 0 };
 
 class CEngine { public:
-    unsigned char           _pad00[0x84];
+    unsigned char _pad00[0x80];
     bool                    IsInitialised;                // +0x84
     unsigned char           _pad85[0xbd - 0x85];
     bool                    EnablePostDeviceReset;        // +0xbd
@@ -71,7 +71,7 @@ class CEngine { public:
     unsigned char           _padf4[0x120 - 0xf4];
     CEngineVideoOptionsDef* PEngineVideoOptionsDefs[4];   // +0x120 CDefPointer<CEngineVideoOptionsDef>
     ESmartRestoreComponentVideoMemoryResult SmartRestoreComponentVideoMemory();   // 0x00B24500
-    bool SetVideoOptions(const CEngineVideoOptions& options);
+    virtual bool SetVideoOptions(const CEngineVideoOptions& options);
 };
 
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
@@ -119,7 +119,7 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     CEngineVideoOptionsDef* meshDef = NEngineInternal::GPEngine->PEngineVideoOptionsDefs[VideoOptions.MeshDetail];
     NEngineInternal::GPPrimitiveRenderer->SetDrawDistanceQuality(VideoOptions.MeshDetail, *meshDef);
     if (g_pLocalDetailGenerator)
-        g_pLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(meshDef);
+        g_pLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(*meshDef);
     g_pVideoOptionsSink->OnVideoOptionsChanged();
     if (SmartRestoreComponentVideoMemory() != SMART_RESTORE_OK)
         result = false;

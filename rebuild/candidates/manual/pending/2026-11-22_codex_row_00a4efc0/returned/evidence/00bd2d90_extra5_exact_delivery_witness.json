@@ -1,0 +1,20 @@
+{
+  "row": "00bd2d90",
+  "tag": "extra5_exact_delivery_witness",
+  "source_sha256": "f09614bd6ed3feadc8f67b03be1313c75cb00e3254b43cd7d56b6cc0db748dbf",
+  "requested_leaf": "?GetBoneTransformations@CEngineInternalPrimitiveAnimatedMesh@@QAEPBVCMatrix4x4@@XZ",
+  "flags": [],
+  "retail_bytes": 721,
+  "leaf": "?GetBoneTransformations@CEngineInternalPrimitiveAnimatedMesh@@QAEPBVCMatrix4x4@@XZ",
+  "status": "MASKED_EQUAL",
+  "object_bytes": 721,
+  "matched_instructions": 226,
+  "retail_instructions": 226,
+  "built_instructions": 226,
+  "hunks": 0,
+  "same_size_different_bytes": 0,
+  "pickany_complete": true,
+  "pickany_eq": 0,
+  "pickany_neq": 0,
+  "pickany_referenced_neq": 0
+}

@@ -17,7 +17,7 @@ public:
 };
 class CQuestManager
 { public:
-    void DeactivateQuestLater(
+    void AddPendingQuestToDeactivate(        // NF296: PDB name, was DeactivateQuestLater
         const CCharString& questName,
         unsigned long delay);
 };
@@ -29,5 +29,5 @@ void __fastcall CGameScriptInterface_DeactivateQuestLater(
     const CCharString& questName,
     unsigned long delay)
 {
-    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().DeactivateQuestLater(questName, delay);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().AddPendingQuestToDeactivate(questName, delay);
 }

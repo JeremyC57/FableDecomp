@@ -87,7 +87,7 @@ class CThing { public:
 };
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    CCombatTypeDef* GetCombatTypeDef();         // 0x00666D10
+    const CCombatTypeDef& GetCombatTypeDef() const;         // 0x00666D10
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
@@ -118,7 +118,7 @@ class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:  
     bool Decapitate;                                        // +0xbc
     long DelayTimer;                                        // +0xc0
     CDefPointer<const CMeleeCombatAbilityDef> PSpecialShotDef;    // +0xc4
-    CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);   // 0x008D5110
+    CCreatureAction_FireMissileWeapon(CThingCreatureBase& creature, const CThing* target);   // 0x008D5110
 };
 
 class CAIBrain { public:
@@ -152,7 +152,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProx
 {
     bool useStrafe = false;
     CDefPointer<const CCombatAbilityUseProjectileWeaponDef> indicator;
-    if (GetCreature()->GetCombatTypeDef()->GetSubDef(&indicator))
+    if (GetCreature()->GetCombatTypeDef().GetSubDef(&indicator))
         useStrafe = indicator->CombatAbility.AbleToStrafeAndShoot;
     CTCCreatureModeManager* modes;
     GetCreature()->GetInterfaceT(&modes, 0x31);
@@ -171,7 +171,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProx
             modes->RemoveMode(0x19);
         if (IS_THING_ALIVE(target)) {
             CThingCreatureBase* creature = GetCreature();
-            creature->SetCurrentAction(CCreatureAction_FireMissileWeapon(creature, ((CThing*)target.GetPItem())));
+            creature->SetCurrentAction(CCreatureAction_FireMissileWeapon(*creature, ((CThing*)target.GetPItem())));
         }
     }
     return result;

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x013BAF98	?InvertY@CProjectileWeapon@NCameraModes@@0_NA	FableWin PUB32 and GDATA32 at 04AC5B41, Ego_d PUB32, and the corresponding retail input branch reading 013BAF98 before negating the vertical axis.	g_CUnprovenCameraInputFlag_013baf98

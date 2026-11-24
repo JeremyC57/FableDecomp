@@ -1,0 +1,24 @@
+EXT  BOUND  0099ec30 ??0CCharString@@QAE@ABV0@@Z
+EXT  BOUND  00a5c910 ?Allocate@CSimpleMemoryPool@@QAEPAXK@Z
+EXT  BOUND  0129aaf4 ?NullChar@CCharString@@1DB
+DEF  EQ   00a54580   117 ??0?$vector@VC3DKeyframe@@V?$allocator@VC3DKeyframe@@@std@@@std@@QAE@I@Z
+EXT  BOUND  00aaf1e0 ?InitialiseFromMatrix@C3DKeyframe@@QAE_NABVCMatrix3x4@@@Z
+DEF  DATA 0129c81c     4 __real@38000100
+DEF  DATA 0122dedc     4 __real@00000000
+DEF  DATA 0122ded8     4 __real@3f800000
+DEF  EQ   00a55190   285 ?_M_fill_insert@?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEXPAVCQuaternion@@IABV3@@Z
+EXT  NOLINE 00a88c50 ?Equals@CQuaternion@@QBE_NABV1@@Z
+EXT  BOUND  00bfea0e _malloc
+EXT  BOUND  00bfea14 _free
+DEF  EQ   00485b6c   132 ?_M_insert_overflow@?$vector@EV?$allocator@E@std@@@std@@IAEXPAEABEABU__true_type@2@I_N@Z
+EXT  NOLINE 00a88cb0 ?IsIdentity@CQuaternion@@QBE_NXZ
+DEF  EQ   00a54bb0   253 ??4?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEAAV01@ABV01@@Z
+DEF  EQ   00a552b0   299 ?_M_fill_insert@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEXPAVC3DVectorWord@C3DAnimationSequenceData@@IABV34@@Z
+DEF  EQ   00485f3a   174 ?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z
+EXT  BOUND  00bfea70 __ftol2
+DEF  EQ   00a55070   279 ?_M_insert_overflow@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@IAEXPAVC3DVectorWord@C3DAnimationSequenceData@@ABV34@ABU__false_type@2@I_N@Z
+EXT  BOUND  0129ba3c ?DELTA_NOTIONAL_ZERO@@3MB
+DEF  EQ   00a54cb0   268 ??4?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEAAV01@ABV01@@Z
+EXT  BOUND  00bfeae6 _memmove
+EXT  BOUND  0099eae0 ??1CCharString@@QAE@XZ
+PROBLEMS 0

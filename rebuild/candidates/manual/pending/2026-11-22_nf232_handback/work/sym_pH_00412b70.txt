@@ -1,0 +1,9 @@
+DEF ?begin@?$CRetailVector@VCWideString@@@@QAEPAVCWideString@@XZ
+DEF ?end@?$CRetailVector@VCWideString@@@@QAEPAVCWideString@@XZ
+DEF ?resize@?$CRetailVector@VCWideString@@@@QAEXI@Z
+DEF ?resize@?$CRetailVector@VCWideString@@@@QAEXIABVCWideString@@@Z
+DEF ?size@?$CRetailVector@VCWideString@@@@QBEIXZ
+UND ??0CWideString@@QAE@XZ
+UND ??1CWideString@@QAE@XZ
+UND ?erase@?$CRetailVector@VCWideString@@@@QAEPAVCWideString@@PAV2@0@Z
+UND ?insert@?$CRetailVector@VCWideString@@@@QAEXPAVCWideString@@IABV2@@Z

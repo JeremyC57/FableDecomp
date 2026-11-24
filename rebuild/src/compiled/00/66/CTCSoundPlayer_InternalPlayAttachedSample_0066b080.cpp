@@ -1,5 +1,5 @@
 // CTCSoundPlayer::InternalPlayAttachedSample(CASoundBank& bank, long sample, const CSoundInit& init, bool flag, bool loop, bool attached) -- play a sample index through the attached emitter (default fader bits 0x8010 when the init has none)
-// Leaf: ?InternalPlayAttachedSample@CTCSoundPlayer
+// Leaf: ?InternalPlayAttachedSample@CTCSoundPlayer@@AAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066B080, 148 bytes (+ int3 padding to 160), thiscall `ret 18h`.
 //   Name: Ego_r.pdb `?InternalPlayAttachedSample@CTCSoundPlayer@@AAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z`.
@@ -84,10 +84,13 @@ public:
 class CTCSoundPlayer : public CTCBase {
 public:
     unsigned char _pad08[0x24 - 0x08];          // PAttachedEmitter +0x0c, VoiceName +0x14, ExtraTag +0x18, ...
-    CThingSoundEmitter* CreatePAttachedEmitter(bool flag);   // 0x0066AEF0
+    private:
+    CThingSoundEmitter* CreatePAttachedEmitter(bool flag);
+    public:
+   // 0x0066AEF0
     unsigned long InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached);
     unsigned long PlayUnattachedSample(long sample, const CSoundInit& init, bool loop, bool attached);
-    unsigned long InternalPlayAttachedSample(CASoundBank& bank, long sample, const CSoundInit& init, bool flag, bool loop, bool attached);
+private: unsigned long InternalPlayAttachedSample(CASoundBank& bank, long sample, const CSoundInit& init, bool flag, bool loop, bool attached); public:   // NF306: private (Ego_r + FableWin AAE), as its binders 0x0066B280 / 0x0066B300 / 0x0066BA80 declare it
     unsigned long InternalPlaySoundEvent(CASoundBank& bank, const CCharString& name, bool flag, bool loop, bool attached, long overrideID);
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool flag, bool loop, bool attached);
 };

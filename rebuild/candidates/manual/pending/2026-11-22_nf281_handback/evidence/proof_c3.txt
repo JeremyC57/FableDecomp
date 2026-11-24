@@ -1,0 +1,15 @@
+##### 00998010 renames: ?IsForbiddenSymbolInComponent@CAFile@@SI_NABVCCharString@@@Z=?IsForbiddenSymbolInComponent@CAFile@@CI_NABVCCharString@@@Z ?ParserIsSeparatorNext@CAFile@@SI_NAAVCStringParser@@@Z=?ParserIsSeparatorNext@CAFile@@CI_NAAVCStringParser@@@Z
+sections head 10 new 10
+ALL_EQ 0
+DIFF	?ParserReadPastComponent@CAFile@@SI_NAAVCStringParser@@AAVCCharString@@@Z
+funcs SAME=5 vtbl_H=0 vtbl_N=0
+##### 00998210 renames: ?ParserReadPastDriveLabel@CAFile@@SI_NAAVCStringParser@@AAVCParsedItem@@@Z=?ParserReadPastDriveLabel@CAFile@@CI_NAAVCStringParser@@AAVCParsedItem@@@Z
+sections head 5 new 5
+ALL_EQ 0
+DIFF	?ParserIsDriveLabelNext@CAFile@@SI_NAAVCStringParser@@@Z
+funcs SAME=3 vtbl_H=0 vtbl_N=0
+##### 00998170 renames: ?ParserReadPastDriveLabel@CAFile@@SI_NAAVCStringParser@@AAVCParsedItem@@@Z=?ParserReadPastDriveLabel@CAFile@@CI_NAAVCStringParser@@AAVCParsedItem@@@Z
+sections head 5 new 5
+ALL_EQ 0
+ONLY_A	?ParserReadPastDriveLabel@CAFile@@SI_NAAVCStringParser@@AAVCParsedItem@@@Z
+funcs SAME=1 vtbl_H=0 vtbl_N=0

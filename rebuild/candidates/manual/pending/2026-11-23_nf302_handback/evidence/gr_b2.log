@@ -1,0 +1,20 @@
+H 006412b0 CTCLight::SetActive RELOCATION_MATCH flags= [] leaf=?SetActive@CTCLight@@QAEX_N@Z
+H 00ed99d0 NScript::CV_TalentlessBardScript::CTB_Bard::GetRandomSpeech RELOCATION_MATCH flags= [] leaf=GetRandomSpeech
+H 00581cfd CTCInventory::GetContextSensitiveItemGraphicIndex RELOCATION_MATCH flags= [] leaf=
+H 00581fa4 CTCInventory::GetQuickAccessItemGraphicIndex RELOCATION_MATCH flags= [] leaf=
+H 005bcd2d NInventory::CTCInventoryBase::ResetInventoryAnim RELOCATION_MATCH flags= [] leaf=?ResetInventoryAnim@CTCInventoryBase@NInventory@@QAEXJ@Z
+H 00581d8e CTCInventory::IsContextSensitiveOpinionExpressionAvailable RELOCATION_MATCH flags= [] leaf=
+H 00eb15c0 NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoGivingRewardToHero RELOCATION_MATCH flags= [] leaf=?DoGivingRewardToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+H 00eb23e0 NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss RELOCATION_MATCH flags= [] leaf=?DoAskingHeroToSpeakToBoss@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+H 00788198 CTCMeleeTrap::InitialiseContinuousPlay RELOCATION_MATCH flags= [] leaf=
+H 005d96a0 CTCInventoryItem::GetEngineGraphic RELOCATION_MATCH flags= [] leaf=?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z
+H 005d9730 CTCInventoryItem::GetStartingRightHandedSet RELOCATION_MATCH flags= [] leaf=?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z
+H 005d9b90 CTCInventoryItem::GetContextSensitiveType RELOCATION_MATCH flags= [] leaf=?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z
+H 004bf920 NGraphicAppearance::CTCGraphicAppearance::RemovePrimitive RELOCATION_MATCH flags= [] leaf=?RemovePrimitive@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCPrimitive@2@@Z
+H 00ed9b40 NScript::CV_TalentlessBardScript::ProcessSongsQuestComplete RELOCATION_MATCH flags= [] leaf=?ProcessSongsQuestComplete@CV_TalentlessBardScript@NScript@@QAEXXZ
+H 00ed9bb0 NScript::CV_TalentlessBardScript::ProcessSongsClothes RELOCATION_MATCH flags= [] leaf=?ProcessSongsClothes@CV_TalentlessBardScript@NScript@@QAEXXZ
+H 00eda8c0 NScript::CV_TalentlessBardScript::ProcessSongsAge RELOCATION_MATCH flags= ['/d2inlT59'] leaf=?ProcessSongsAge@CV_TalentlessBardScript@NScript@@QAEXXZ
+H 00eda9b0 NScript::CV_TalentlessBardScript::ProcessSongsMorality RELOCATION_MATCH flags= [] leaf=?ProcessSongsMorality@CV_TalentlessBardScript@NScript@@QAEXXZ
+H 00edaba0 NScript::CV_TalentlessBardScript::ProcessSongsMarriage RELOCATION_MATCH flags= [] leaf=?ProcessSongsMarriage@CV_TalentlessBardScript@NScript@@QAEXXZ
+H 00edaad0 NScript::CV_TalentlessBardScript::ProcessSongsRenown RELOCATION_MATCH flags= [] leaf=
+GR_DONE

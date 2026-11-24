@@ -1,0 +1,14 @@
+action	symbol	target	witness	note
+delete	?UpdateSubPair_00ac96e0@COptimisedPrimitive@@QAEXABUCSubContraction@QuadricOptimiserInternals@@@Z	00ac96e0	00acd840	stale witness: 0x00acd840's HEAD object binds the PDB spelling (evidence/objbind_set1.tsv)
+add	?UpdateContractions@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXABVCSubContraction@2@@Z	00ac96e0	00acd840	the table had no line for the PDB spelling; witness's HEAD object references it
+delete	?PlayAttachedSampleByName_0066b120@CTCSoundPlayer@@QAEKPAUCASoundBank@@ABVCCharString@@PAUCSoundInit@@JJJ@Z	0066b120	0066b1d0	stale witness (objbind_set1.tsv); PDB line exists (witness 0066bd00)
+delete	?GetSoundBank_004c7a80@CThing@@QAEPAUCASoundBank@@XZ	004c7a80	0066b1d0	stale witness (objbind_set1.tsv); PDB line exists (witness 0066bd00)
+delete	??0?$map@VCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@U?$less@VCUnprovenMapKey_00CD3640@@@std@@V?$allocator@U?$pair@$$CBVCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@@std@@@4@@std@@QAE@XZ	00cd3640	01224c6d	stale witness (objbind_set1.tsv); PDB line exists (same witness)
+delete	?OnRoseQuestCutscene_00ee2db0@CV_TravellingHeroesScript@@QAEXVCCharString@@@Z	00ee2db0	00ee3ee0	stale witness (source evidence: the HEAD source declares NScript::CV_TravellingHeroesScript::PlayCutscene; not compiled) -- CONDITIONAL on decision 1 (confirm with the HEAD object first); PDB line exists (witness 00ee3fc0)
+delete	?CheckAndTrigger@CMusicTimer_008fa000@@QAEXXZ	008f9ca0	008fa000	stale witness (objbind_set1.tsv); the 008f9e60 stand-in line stays
+delete	?GetMultiplayerColour@PlayerManagerMethods@@QBE?AVCRGBColour@@J@Z	00449b60	00644424	sole binder respelled by NF289; PDB line exists (witness 0064c869)
+delete	?GetPlayer@PlayerManagerMethods@@QAEAAVCPlayer@@J@Z	004498c0	00644424	sole binder of this stand-in respelled by NF289 (outside ENTRIES, ruling 1); PDB line exists (witness 00449b20)
+delete	?ClipBoundingBox@CShadowClipVolumeMethods@@QBE_NABVC3DBoundingBox@@AA_N@Z	00b4ced0	00b92070	sole binder respelled by NF289; PDB line exists (witness 00b92660)
+delete	?GetWidth@CSurface_Methods@@QBEKXZ	00415bd0	009f35d0	sole binder respelled by NF289; PDB line exists (witness 009f3b00)
+delete	?CreatePlayers@CPlayerManager_Methods@@QAEXXZ	0044a530	004166a8	sole binder respelled by NF289 (exe: one call site); PDB spelling is the self row's leaf
+add	?CreatePlayers@CPlayerManager@@QAEXXZ	0044a530	004166a8	the table had no binder line for the PDB spelling

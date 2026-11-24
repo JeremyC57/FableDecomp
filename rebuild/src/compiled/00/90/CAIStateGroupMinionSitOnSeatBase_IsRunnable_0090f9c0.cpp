@@ -89,7 +89,7 @@ struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroup_UsesSeat {
     virtual bool GetPOwnerObject(CThing** ppOwner);     // slot 16 (+0x40)
     virtual bool UsesGatherPoint();             // slot 17 (+0x44)
     virtual void GetSeat(CThing* owner);        // slot 18 (+0x48)
-    virtual bool IsRunnable();
+    protected: virtual bool IsRunnable(); public:
 };
 
 FABLE_FORCEINLINE bool AddAsUserTo(CTCGatherPointBase* gatherPoint, CThing* user) { return gatherPoint->AddAsUser(user); }

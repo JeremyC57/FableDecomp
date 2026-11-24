@@ -7,6 +7,10 @@ struct IDirect3DSurface9;
 class CSurface {
 public:
  CSurface() :PD3DSurface(0),AllocationSource(0) {}
+#ifdef FABLE_RETAIL_SHADOW_BUFFERS_PASS27
+public:
+ bool InitialiseAsDepthBuffer(const C2DExtentsI&,const CPixelFormat&,ESurfaceMultisampleType,bool);
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_COPYFROMMEMORY
  // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): the destructor is inline in retail (the
  // GetSurfaceLevel temporary is destroyed in place: vtable 0x0122F84C stored, then ?Uninitialise@CSurface@@QAEXXZ 0x009F2E20
@@ -23,7 +27,15 @@ public:
 #else
  virtual ~CSurface();
 #endif
+#ifdef FABLE_RETAIL_CSURFACE_COPYTOMEMORY_PASS26
+ void Uninitialise() {if(PD3DSurface){PD3DSurface->Release();PD3DSurface=0;AllocationSource=0;}}
+ void CopyToMemoryB8G8R8A8(unsigned char* dest,const class C2DBoxI* psrc_area);
+#ifndef FABLE_RETAIL_CSURFACE_LOADGRAPHICFRAME
+ bool InitialiseAsImage(const class C2DExtentsI& size,const class CPixelFormat& format,bool);
+#endif
+#else
  void Uninitialise();                                     // 0x009F2E20
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_PREALLOCATED
  // Opt-in (hand3c2, row 0x009BF7E0 CDisplayManager::CreateDevice): Ego_r.pdb / Ego_d.pdb / FableWin.pdb
  // ?InitialiseFromPreallocatedSurface@CSurface@@QAEXPAUIDirect3DSurface9@@_N@Z (landed 0x009F2EC0; Ego_d parameters d3dsurface, add_ref).
@@ -183,6 +195,9 @@ private:
  unsigned long AllocationSource;
  void* PAllocatedMemory;
 };
+#ifdef FABLE_RETAIL_CSURFACE_COPYTOMEMORY_PASS26
+FABLE_STATIC_ASSERT_AT(195, sizeof(CSurface)==0x10);
+#endif
 #endif
 #else
 #ifndef FABLE_ENGINE_CSURFACE_H

@@ -1,3 +1,4 @@
+// Leaf: ?CreateDressingSignPost@CTCBuyableHouse@@AAEXXZ
 // CTCBuyableHouse::CreateDressingSignPost() -- create the dressing sign post thing (by its global def name, not as the main sign) and keep it in DressingSignPost
 //
 // Retail 0x006C0F70, 81 bytes. Callees: CTCBuyableHouse::CreateSignPost(const CCharString&, bool)
@@ -53,7 +54,9 @@ class CTCBuyableHouse
 private:
     CThing* CreateSignPost(const CCharString& defName, bool mainSign);   // 0x006C0970
 public:
+    private:
     void CreateDressingSignPost();
+    public:
 };
 #pragma pack(pop)
 

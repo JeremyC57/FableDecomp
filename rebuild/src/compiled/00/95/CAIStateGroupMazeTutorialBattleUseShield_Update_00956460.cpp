@@ -46,7 +46,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
 class CCombatAction_WillShieldInto : public CCombatActionBase { public:
     float m_first;                              // +0x114
     float m_second;                             // +0x118
-    CCombatAction_WillShieldInto(CThingCreatureBase* creature, float first, float second);   // 0x00956760
+    CCombatAction_WillShieldInto(CThingCreatureBase& creature, float first, float second);   // 0x00956760 (Ego_r + FableWin AAV)
 };
 
 class CWorld { public:
@@ -83,7 +83,7 @@ struct CAIStateGroup_MazeTutorialBattleUseShield : CAIStateGroupBase {
 void CAIStateGroup_MazeTutorialBattleUseShield::Update()
 {
     if (IS_THING_ALIVE(PTargetThing) && !IsStopping()) {
-        AIAction_PerformActionAndWait(CCombatAction_WillShieldInto(GetCreature(), 3.0f, 5.0f), false);
+        AIAction_PerformActionAndWait(CCombatAction_WillShieldInto(*GetCreature(), 3.0f, 5.0f), false);
         FrameOfLastShield = GetWorld().GetFrame();
     }
     Terminate();

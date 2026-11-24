@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	?Register@CInputProcessManager@@QAEXPAVCAInputProcess@@@Z -> ?AddInputProcess@CInputProcessManager@@IAEXAAVCAInputProcess@@@Z	00a0d4f0	00a0d2b0	the witness row now binds the PDB name (both PDB name sets, protected); its new object UND (evidence/libcp_c5.txt); no other table line or landed row binds the Register stand-in

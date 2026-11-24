@@ -1,0 +1,1 @@
+verify_final: done 679, rows 679, locks 679, problems 0

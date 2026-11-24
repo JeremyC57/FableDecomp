@@ -43,7 +43,7 @@ class CThing { public:
 };
 
 class CTCGuard { public:
-    long GetBribeAmountWillTake();             // 0x007B2D50
+    long GetBribeAmountWillTake() const;             // 0x007B2D50
 };
 
 struct CTCBribable_00789900 {

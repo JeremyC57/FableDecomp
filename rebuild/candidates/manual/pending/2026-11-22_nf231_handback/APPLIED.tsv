@@ -1,0 +1,4 @@
+entry	address	status	binders_respelled	note
+q12625	0x00430340	done	0 (no binder: callers.py none; the only absolute reference is the retail vtable slot 0x01230CB0; the landed vtable COMDATs of 0x0042EA8F / 0x0042F50B model 1 slot)	self QAE -> UAE on the landed SETQUIT opt-in; new header test
+q12627	0x0042EBB6	done	3 callee spellings in the row itself (0x004336B0, 0x00412450, 0x00411B00), each onto the spelling the other binders emit	full header port; two new add-only opt-ins (hdr/README.md); 3 table lines go (TABLE_CHANGES)
+q12628	(9 rows)	partial: 2 of 9	-	new header tests for 0x0042EBB6 and 0x0041D0A8, both PASS; open: 0x0041D98A, 0x00446720, 0x00599D5C, 0x00542140, 0x0059A238, 0x0054F410, 0x0054F370 (STATUS)

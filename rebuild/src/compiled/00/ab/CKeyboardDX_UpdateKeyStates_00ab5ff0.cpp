@@ -1,5 +1,5 @@
 // CKeyboardDX::UpdateKeyStates() -- clear the 256-byte key-state buffer and, while the keyboard is acquired, refill it from DirectInput (re-acquiring once when the input was lost); true when the read succeeded
-// Leaf: UpdateKeyStates
+// Leaf: ?UpdateKeyStates@CKeyboardDX@@IAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB5FF0, length 101 bytes.
 // Callees: the IDirectInputDevice8 COM slots 9 (+0x24, GetDeviceState(256, buffer)) and 7 (+0x1c, Acquire).
 // Model: retail CKeyboardDX layout as the landed CKeyboardDX::IsKeyPressed 0x00AB6220 (KeyStates +0x341c) and the
@@ -32,7 +32,9 @@ struct CKeyboardDX {
     unsigned char               KeyStates[0x100];  // +0x341c
     unsigned short              KeyMap[0x7a];      // +0x351c
     bool                        Acquired;          // +0x3610
+    protected:
     bool UpdateKeyStates();
+    public:
 };
 
 bool CKeyboardDX::UpdateKeyStates()

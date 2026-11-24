@@ -1,0 +1,1 @@
+00a86030 LIBCP_OK renames=?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch_Methods@@QBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@@@@@Z=?GetPossibleCollisionSet@CPhysicsFacesSegmentBranch@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=4

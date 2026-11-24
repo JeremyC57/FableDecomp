@@ -29,7 +29,8 @@ class CCPPointerInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-FABLE_FORCEINLINE bool CScriptThing::IsBeingCarriedBy(const CCharString& name) const { return PImp.Data && PImp.Data->IsBeingCarriedBy(name); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AAFE0 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+FABLE_FORCEINLINE bool CScriptThing::IsBeingCarriedBy(const CCharString& name) const { const CScriptThing* imp = PImp.Data; if (!imp) return false; return imp->IsBeingCarriedBy(name); }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

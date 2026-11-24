@@ -1,0 +1,8 @@
+egor=1 fablewin=1 ?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z
+egor=1 fablewin=1 ?SetMainAnim@CAnimateThing@@QAEXABVCAnimInit@@JJ@Z
+egor=1 fablewin=1 ??0CEngineInternalPrimitiveBase@@QAE@JK@Z
+egor=1 fablewin=1 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+egor=1 fablewin=1 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z
+egor=1 fablewin=1 ?AddObject@CThreadedFile@@QAEKABVCThreadedFileObjectDesc@@@Z
+egor=1 fablewin=1 ?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z
+egor=1 fablewin=1 ?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z

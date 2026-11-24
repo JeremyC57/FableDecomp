@@ -38,7 +38,7 @@ class CEngineSimulationBase { public:void* VTable;int RunState;unsigned char Sim
 struct ClothVector {float X,Y,Z;};struct ClothMatrix {ClothVector X,Y,Z,Position;};
 struct CEngineClothSimulationStaticMesh:CEngineSimulationBase {
  SimulationArray ParticleSims;ClothMatrix CurrentTransform,LastTransform,InverseTransform;const C3DMeshInfo* MeshInfo;unsigned int PrimitiveIndex;CEngineInternalPrimitiveStaticMesh* Owner;
- CEngineClothSimulationStaticMesh(const C3DMeshInfo*,unsigned int,CEngineInternalPrimitiveStaticMesh*); //00B81EA0
+ CEngineClothSimulationStaticMesh(const C3DMeshInfo*,unsigned long,CEngineInternalPrimitiveStaticMesh*); //00B81EA0
 };
 struct CEngineInternalPrimitiveStaticMesh_Methods:CEngineInternalPrimitiveStaticMesh {
  SimulationInfoPointer& Simulation(){return *reinterpret_cast<SimulationInfoPointer*>(_pad_0x64);}

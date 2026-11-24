@@ -126,7 +126,7 @@ struct CAIStateGroup_WhisperRetreat : CAIStateGroupBase {
     bool  bIsRangeAttack;                              // +0x24
     long  NumHits;                                     // +0x28
     long  FrameOfLastHit;                              // +0x2c
-    bool FindHitEvent();                               // 0x0096A260
+    protected: bool FindHitEvent(); public:                               // 0x0096A260
     bool IsRunnableLeaf();
 };
 

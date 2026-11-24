@@ -1,0 +1,5 @@
+H sections [('.drectve', 42), ('.text', 71)]
+N sections [('.drectve', 42), ('.text', 3), ('.text', 3), ('.text', 3), ('.text', 3), ('.text', 3), ('.text', 71)]
+.drectve equal True b'/DEFAULTLIB:"LIBC" /DEFAULTLIB:"OLDNAMES" '
+main .text bytes equal True relocs equal under rename True 71
+extra N COMDATs: [('.text', 3, '8b01c3'), ('.text', 3, '8b01c3'), ('.text', 3, '8b01c3'), ('.text', 3, '8b01c3'), ('.text', 3, '8b01c3')]

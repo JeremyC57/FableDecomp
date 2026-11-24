@@ -1,0 +1,8 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0069FCD0	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	PerformAction	?PerformAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction::PerformAction	_CCreatureAction_UnsheatheItemFromInventoryWithHasteAction_PerformAction	Ego_r.pdb 0x006C4FB0 + FableWin.pdb 0x02212790 (public virtual); retail vtable 0x0125CDDC slot 3 = 0x0069FCD0, its only reference (absrefs.py); body `jmp 0x0069F9E0`; was the July extern "C" forwarder (no Leaf line); no landed row binds the address (the one WithHaste table emitter, 0x0069F1F0, has a 1-slot stand-in table)
+# Section 2
+0x0069FCD0	ForwardTarget_0069f9e0 (extern "C" _ForwardTarget_0069f9e0)	?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ	0x0069F9E0
+0x0069F0F0	?Validate@CCreatureActionBase@@UBEXXZ (vtable slot 1)	?Validate@CBaseObject@@UBEXXZ	0x0099A400
+0x0069F0F0	?Clone@CCreatureAction_UnsheatheItemFromInventory@@UBEPAVCCreatureActionBase@@XZ (vtable slot 11)	?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ	0x006A0E50
+0x006A0D50	?Validate@CCreatureActionBase@@UBEXXZ (vtable slot 1)	?Validate@CBaseObject@@UBEXXZ	0x0099A400
+0x006A0D50	?Clone@CCreatureAction_UseObject@@UBEPAVCCreatureActionBase@@XZ (vtable slot 11)	?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ	0x006A0D20

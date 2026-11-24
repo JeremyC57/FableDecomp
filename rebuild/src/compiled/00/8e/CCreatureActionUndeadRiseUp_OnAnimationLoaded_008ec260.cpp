@@ -1,4 +1,5 @@
 // CCreatureAction_UndeadRiseUp::OnAnimationLoaded() -- once the rise animation is loaded, spawn the creature definition's "RISE" special effect at the undead's position (when its special-effects sub-def maps that name), then the combat-action OnAnimationLoaded
+// Leaf: ?OnAnimationLoaded@CCreatureAction_UndeadRiseUp@@UAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EC260, length 192 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, twice), CDefClassBase::GetSubDef<
@@ -90,7 +91,7 @@ public:
 class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
-    void OnAnimationLoaded();                   // 0x00859EF0
+    protected: virtual void OnAnimationLoaded(); public:   // 0x00859EF0 ?OnAnimationLoaded@CCombatActionBase@@MAEXXZ (protected virtual in Ego_r / FableWin; NF299 Q3 / NF311 Q6: no vftable in this TU)
     unsigned char           _pad04[4];
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];

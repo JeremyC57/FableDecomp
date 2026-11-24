@@ -1,0 +1,227 @@
+F2 00be8e60 CLandscapeBackgroundPatch::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf=??_GCLandscapeBackgroundPatch@@UAEPAXI@Z
+## pk 00be8e60
+00be8e60 F2	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+00be8e60 F2	?CanRelocateData@CMovableResource@@UBE_NJ@Z	5	009d50f0	EQ
+00be8e60 F2	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+00be8e60 F2	??1CLandscapeBackgroundSubNodeBase@@UAE@XZ	7	-	NO-OWNER
+00be8e60 F2	??_H@YGXPAXIHP6EPAX0@Z@Z	48	004038c0	EQ
+00be8e60 F2	??_I@YGXPAXIHP6EX0@Z@Z	49	00401400	EQ
+00be8e60 F2	??0CMovableResource@@QAE@XZ	9	-	NO-OWNER
+00be8e60 F2	??0CBaseClassNonCopyable@@QAE@XZ	18	-	NO-OWNER
+00be8e60 F2	??1CBaseClassNonCopyable@@UAE@XZ	5	0099a300	NEQ:bytes(5 v 7)
+00be8e60 F2	??_GCBaseClassNonCopyable@@UAEPAXI@Z	30	-	NO-OWNER
+00be8e60 F2	??0CLandscapeBackgroundSubNodeBase@@QAE@XZ	9	-	NO-OWNER
+00be8e60 F2	??_GCLandscapeBackgroundSubNodeBase@@UAEPAXI@Z	31	-	NO-OWNER
+00be8e60 F2	??0CPatchTesselationEdgeStrip@@QAE@XZ	18	00bfc370	NEQ:bytes(18 v 58)
+00be8e60 F2	??1CPatchTesselationEdgeStrip@@UAE@XZ	5	-	NO-OWNER
+00be8e60 F2	??_GCPatchTesselationEdgeStrip@@UAEPAXI@Z	30	-	NO-OWNER
+00be8e60 F2	??0CLandscapeBackgroundPatch@@QAE@XZ	44	-	NO-OWNER
+00be8e60 F2	?ForceNew_00be8e60@@YAPAVCLandscapeBackgroundPatch@@XZ	27	-	NO-OWNER
+## leafcmp 00be8e60
+len 38 38 bytes_equal True
+relocs_equal True
+## objsec HEAD v form2 00be8e60
+sections head 25 new 24
+DIFF 3 .text .text bytes False relocs True 3 5
+DIFF 4 .text .text bytes False relocs False 5 31
+    N (10, '??_7CMovableResource@@6B@', 6)
+    N (18, '??3@YAXPAX@Z', 20)
+DIFF 5 .text .text bytes False relocs False 31 7
+    N (2, '??_7CMovableResource@@6B@', 6)
+    H (10, '??_7CMovableResource@@6B@', 6)
+    H (18, '??3@YAXPAX@Z', 20)
+DIFF 6 .text .text bytes False relocs False 7 48
+    H (2, '??_7CMovableResource@@6B@', 6)
+DIFF 7 .text .text bytes False relocs True 48 49
+DIFF 8 .text .text bytes False relocs False 49 9
+    N (4, '??_7CMovableResource@@6B@', 6)
+DIFF 9 .text .text bytes False relocs False 9 18
+    N (4, '??0CBaseClass@@QAE@XZ', 20)
+    H (4, '??_7CMovableResource@@6B@', 6)
+    N (10, '??_7CBaseClassNonCopyable@@6B@', 6)
+DIFF 10 .text .rdata bytes False relocs False 18 4
+    N (0, '??_ECBaseClassNonCopyable@@UAEPAXI@Z', 6)
+    H (4, '??0CBaseClass@@QAE@XZ', 20)
+    H (10, '??_7CBaseClassNonCopyable@@6B@', 6)
+DIFF 11 .rdata .text bytes False relocs False 4 5
+    H (0, '??_ECBaseClassNonCopyable@@UAEPAXI@Z', 6)
+    N (1, '??1CBaseClass@@UAE@XZ', 20)
+DIFF 12 .text .text bytes False relocs False 5 30
+    H (1, '??1CBaseClass@@UAE@XZ', 20)
+    N (4, '??1CBaseClass@@UAE@XZ', 20)
+    N (17, '??3@YAXPAX@Z', 20)
+DIFF 13 .text .text bytes False relocs False 30 9
+    H (4, '??1CBaseClass@@UAE@XZ', 20)
+    N (4, '??_7CLandscapeBackgroundSubNodeBase@@6B@', 6)
+    H (17, '??3@YAXPAX@Z', 20)
+DIFF 14 .text .rdata bytes False relocs False 9 12
+    N (0, '??_ECLandscapeBackgroundSubNodeBase@@UAEPAXI@Z', 6)
+    H (4, '??_7CLandscapeBackgroundSubNodeBase@@6B@', 6)
+    N (4, '?Verify@CMovableResource@@UBEKXZ', 6)
+    N (8, '?CanRelocateData@CMovableResource@@UBE_NJ@Z', 6)
+DIFF 15 .rdata .text bytes False relocs False 12 31
+    H (0, '??_ECLandscapeBackgroundSubNodeBase@@UAEPAXI@Z', 6)
+    H (4, '?Verify@CMovableResource@@UBEKXZ', 6)
+    H (8, '?CanRelocateData@CMovableResource@@UBE_NJ@Z', 6)
+    N (10, '??_7CMovableResource@@6B@', 6)
+    N (18, '??3@YAXPAX@Z', 20)
+DIFF 16 .text .text bytes False relocs False 31 18
+    N (4, '??0CBaseClass@@QAE@XZ', 20)
+    H (10, '??_7CMovableResource@@6B@', 6)
+    N (10, '??_7CPatchTesselationEdgeStrip@@6B@', 6)
+    H (18, '??3@YAXPAX@Z', 20)
+DIFF 17 .text .rdata bytes False relocs False 18 4
+    N (0, '??_ECPatchTesselationEdgeStrip@@UAEPAXI@Z', 6)
+    H (4, '??0CBaseClass@@QAE@XZ', 20)
+    H (10, '??_7CPatchTesselationEdgeStrip@@6B@', 6)
+DIFF 18 .rdata .text bytes False relocs False 4 5
+    H (0, '??_ECPatchTesselationEdgeStrip@@UAEPAXI@Z', 6)
+    N (1, '??1CBaseClass@@UAE@XZ', 20)
+DIFF 19 .text .text bytes False relocs False 5 30
+    H (1, '??1CBaseClass@@UAE@XZ', 20)
+    N (4, '??1CBaseClass@@UAE@XZ', 20)
+    N (17, '??3@YAXPAX@Z', 20)
+DIFF 20 .text .text bytes False relocs False 30 44
+    H (4, '??1CBaseClass@@UAE@XZ', 20)
+    N (7, '??_7CLandscapeBackgroundPatch@@6B@', 6)
+    H (17, '??3@YAXPAX@Z', 20)
+    N (22, '??0CBaseClass@@QAE@XZ', 20)
+    N (28, '??_7CPatchTesselationEdgeStrip@@6B@', 6)
+DIFF 21 .text .rdata bytes False relocs False 44 12
+    N (0, '??_ECLandscapeBackgroundPatch@@UAEPAXI@Z', 6)
+    N (4, '?Verify@CMovableResource@@UBEKXZ', 6)
+    H (7, '??_7CLandscapeBackgroundPatch@@6B@', 6)
+    N (8, '?CanRelocateData@CMovableResource@@UBE_NJ@Z', 6)
+    H (22, '??0CBaseClass@@QAE@XZ', 20)
+    H (28, '??_7CPatchTesselationEdgeStrip@@6B@', 6)
+DIFF 22 .rdata .text bytes False relocs False 12 38
+    H (0, '??_ECLandscapeBackgroundPatch@@UAEPAXI@Z', 6)
+    N (4, '??1CLandscapeBackgroundPatch@@UAE@XZ', 20)
+    H (4, '?Verify@CMovableResource@@UBEKXZ', 6)
+    H (8, '?CanRelocateData@CMovableResource@@UBE_NJ@Z', 6)
+    N (16, '?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A', 6)
+    N (28, '?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z', 20)
+DIFF 23 .text .text bytes False relocs False 38 27
+    H (4, '??1CLandscapeBackgroundPatch@@UAE@XZ', 20)
+    N (6, '??2@YAPAXI@Z', 20)
+    H (16, '?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A', 6)
+    N (20, '??0CLandscapeBackgroundPatch@@QAE@XZ', 20)
+    H (28, '?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z', 20)
+NOT_EQ 21
+## symbols HEAD(<) form2(>)
+24d23
+< DEF ?Verify@CMovableResource@@UBEKXZ
+36a36
+> UND ?Verify@CMovableResource@@UBEKXZ
+F2 00bfbd80 CLocalDetailPrimitiveMeshZSpriteBatch::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf=??_GCLocalDetailPrimitiveMeshZSpriteBatch@@UAEPAXI@Z
+## pk 00bfbd80
+00bfbd80 F2	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+00bfbd80 F2	?CanRelocateData@CMovableResource@@UBE_NJ@Z	5	009d50f0	EQ
+00bfbd80 F2	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+00bfbd80 F2	??0C3DVector@@QAE@XZ	3	-	NO-OWNER
+00bfbd80 F2	??1CLocalDetailPrimitiveBase@@UAE@XZ	7	-	NO-OWNER
+00bfbd80 F2	??0CEnginePrimitiveHandle@@QAE@XZ	18	-	NO-OWNER
+00bfbd80 F2	??1CEnginePrimitiveHandle@@UAE@XZ	5	-	NO-OWNER
+00bfbd80 F2	??0CMovableResource@@QAE@XZ	9	-	NO-OWNER
+00bfbd80 F2	??0C3DBoundingBox@@QAE@XZ	3	-	NO-OWNER
+00bfbd80 F2	??0C3DBoundingSphere@@QAE@XZ	3	-	NO-OWNER
+00bfbd80 F2	??_GCEnginePrimitiveHandle@@UAEPAXI@Z	30	-	NO-OWNER
+00bfbd80 F2	??0CLocalDetailPrimitiveBase@@QAE@XZ	9	-	NO-OWNER
+00bfbd80 F2	??_GCLocalDetailPrimitiveBase@@UAEPAXI@Z	31	-	NO-OWNER
+00bfbd80 F2	??0CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@XZ	31	-	NO-OWNER
+00bfbd80 F2	?ForceNew_00bfbd80@@YAPAVCLocalDetailPrimitiveMeshZSpriteBatch@@XZ	49	-	NO-OWNER
+## leafcmp 00bfbd80
+len 38 38 bytes_equal True
+relocs_equal True
+## objsec HEAD v form2 00bfbd80
+sections head 22 new 21
+DIFF 3 .text .text bytes False relocs True 3 5
+DIFF 4 .text .text bytes False relocs False 5 31
+    N (10, '??_7CMovableResource@@6B@', 6)
+    N (18, '??3@YAXPAX@Z', 20)
+DIFF 5 .text .text bytes False relocs False 31 3
+    H (10, '??_7CMovableResource@@6B@', 6)
+    H (18, '??3@YAXPAX@Z', 20)
+DIFF 6 .text .text bytes False relocs False 3 7
+    N (2, '??_7CMovableResource@@6B@', 6)
+DIFF 7 .text .text bytes False relocs False 7 18
+    H (2, '??_7CMovableResource@@6B@', 6)
+    N (4, '??0CBaseClass@@QAE@XZ', 20)
+    N (10, '??_7CEnginePrimitiveHandle@@6B@', 6)
+DIFF 8 .text .rdata bytes False relocs False 18 4
+    N (0, '??_ECEnginePrimitiveHandle@@UAEPAXI@Z', 6)
+    H (4, '??0CBaseClass@@QAE@XZ', 20)
+    H (10, '??_7CEnginePrimitiveHandle@@6B@', 6)
+DIFF 9 .rdata .text bytes False relocs False 4 5
+    H (0, '??_ECEnginePrimitiveHandle@@UAEPAXI@Z', 6)
+    N (1, '??1CBaseClass@@UAE@XZ', 20)
+DIFF 10 .text .text bytes False relocs False 5 9
+    H (1, '??1CBaseClass@@UAE@XZ', 20)
+    N (4, '??_7CMovableResource@@6B@', 6)
+DIFF 11 .text .text bytes False relocs False 9 3
+    H (4, '??_7CMovableResource@@6B@', 6)
+DIFF 13 .text .text bytes False relocs False 3 30
+    N (4, '??1CBaseClass@@UAE@XZ', 20)
+    N (17, '??3@YAXPAX@Z', 20)
+DIFF 14 .text .text bytes False relocs False 30 9
+    H (4, '??1CBaseClass@@UAE@XZ', 20)
+    N (4, '??_7CLocalDetailPrimitiveBase@@6B@', 6)
+    H (17, '??3@YAXPAX@Z', 20)
+DIFF 15 .text .rdata bytes False relocs False 9 12
+    N (0, '??_ECLocalDetailPrimitiveBase@@UAEPAXI@Z', 6)
+    H (4, '??_7CLocalDetailPrimitiveBase@@6B@', 6)
+    N (4, '?Verify@CMovableResource@@UBEKXZ', 6)
+    N (8, '?CanRelocateData@CMovableResource@@UBE_NJ@Z', 6)
+DIFF 16 .rdata .text bytes False relocs False 12 31
+    H (0, '??_ECLocalDetailPrimitiveBase@@UAEPAXI@Z', 6)
+    H (4, '?Verify@CMovableResource@@UBEKXZ', 6)
+    H (8, '?CanRelocateData@CMovableResource@@UBE_NJ@Z', 6)
+    N (10, '??_7CMovableResource@@6B@', 6)
+    N (18, '??3@YAXPAX@Z', 20)
+DIFF 17 .text .text bytes False relocs False 31 31
+    H (10, '??_7CMovableResource@@6B@', 6)
+    N (11, '??_7CLocalDetailPrimitiveMeshZSpriteBatch@@6B@', 6)
+    N (16, '??0CBaseClass@@QAE@XZ', 20)
+    H (18, '??3@YAXPAX@Z', 20)
+    N (22, '??_7CEnginePrimitiveHandle@@6B@', 6)
+DIFF 18 .text .rdata bytes False relocs False 31 12
+    N (0, '??_ECLocalDetailPrimitiveMeshZSpriteBatch@@UAEPAXI@Z', 6)
+    N (4, '?Verify@CMovableResource@@UBEKXZ', 6)
+    N (8, '?CanRelocateData@CMovableResource@@UBE_NJ@Z', 6)
+    H (11, '??_7CLocalDetailPrimitiveMeshZSpriteBatch@@6B@', 6)
+    H (16, '??0CBaseClass@@QAE@XZ', 20)
+    H (22, '??_7CEnginePrimitiveHandle@@6B@', 6)
+DIFF 19 .rdata .text bytes False relocs False 12 38
+    H (0, '??_ECLocalDetailPrimitiveMeshZSpriteBatch@@UAEPAXI@Z', 6)
+    N (4, '??1CLocalDetailPrimitiveMeshZSpriteBatch@@UAE@XZ', 20)
+    H (4, '?Verify@CMovableResource@@UBEKXZ', 6)
+    H (8, '?CanRelocateData@CMovableResource@@UBE_NJ@Z', 6)
+    N (16, '?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A', 6)
+    N (28, '?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z', 20)
+DIFF 20 .text .text bytes False relocs False 38 49
+    H (4, '??1CLocalDetailPrimitiveMeshZSpriteBatch@@UAE@XZ', 20)
+    N (4, '??2@YAPAXI@Z', 20)
+    H (16, '?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A', 6)
+    N (25, '??_7CLocalDetailPrimitiveMeshZSpriteBatch@@6B@', 6)
+    H (28, '?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z', 20)
+    N (30, '??0CBaseClass@@QAE@XZ', 20)
+    N (36, '??_7CEnginePrimitiveHandle@@6B@', 6)
+NOT_EQ 17
+## symbols HEAD(<) form2(>)
+21d20
+< DEF ?Verify@CMovableResource@@UBEKXZ
+32a32
+> UND ?Verify@CMovableResource@@UBEKXZ
+0	00be8e60	NOLINE	??_ECLandscapeBackgroundPatch@@UAEPAXI@Z
+1	00be65a0	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	00be5e50	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+0	00bfbd80	NOLINE	??_ECLocalDetailPrimitiveMeshZSpriteBatch@@UAEPAXI@Z
+1	00bfa8a0	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	00bf9a80	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+E2FDONE

@@ -1,5 +1,7 @@
 // CChunkedFileRawDataChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&) -- replaces the chunk's byte buffer with a fresh one of the chunk size and reads it from the stream
-// Leaf: ReadFromFile
+// Leaf: ?ReadFromFile@CChunkedFileRawDataChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z
+// Switch route (NF318, 2026-11-23): defined on the real class of engine/CChunkedFileRawDataChunk.h (class-model switch FABLE_RETAIL_CCHUNKEDFILERAWDATACHUNK; was ?ReadFromFile@CChunkedFileRawDataChunk_Methods@@QAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address. Bytes unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AA77A0, 138 bytes of code (virtual, `ret 0Ch`).
 // Callees: operator delete[] @ 0x00BFEB1C, operator new[] @ 0x00BFEB22 (one shared `add esp,8`),
 //          CDataInputStream::ReadWithSrcChunkOverflow(unsigned char*, long) @ 0x00993CA0.
@@ -9,8 +11,11 @@
 // (`rep movsd ; rep movsb`) with the chunk pointer / remaining count / position updates, or the overflow read.
 // `this` uses engine/CChunkedFileRawDataChunk.h (Data +0x10, ByteSize +0x14); the method (virtual in retail, the
 // flattened header carries no vtable declarations) is declared on a methods-only derivation of it.
-#include "fable_compiler.h"
+// Preamble: the define / include block of the landed precedent CChunkedFileRawDataChunk_CChunkedFileRawDataChunk_00aa7710.cpp.
+#define FABLE_RETAIL_CCHUNKEDFILECHUNK
+#define FABLE_RETAIL_CCHUNKEDFILERAWDATACHUNK
 #include "engine/CChunkedFileRawDataChunk.h"
+#include "fable_compiler.h"
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 
@@ -47,11 +52,7 @@ private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
-struct CChunkedFileRawDataChunk_Methods : CChunkedFileRawDataChunk {
-    void ReadFromFile(CDataInputStream& stream, unsigned long size, CChunkedFileLoader& loader);
-};
-
-void CChunkedFileRawDataChunk_Methods::ReadFromFile(CDataInputStream& stream, unsigned long size, CChunkedFileLoader& loader)
+void CChunkedFileRawDataChunk::ReadFromFile(CDataInputStream& stream, unsigned long size, CChunkedFileLoader& loader)
 {
     delete[] (unsigned char*)Data;
     Data = new unsigned char[size];

@@ -1,0 +1,28 @@
+addr       parity           behav  name
+00bfde20   RELOCATION_MATCH PASS   ~CLandscapeLayerMesh
+00bfdd70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfdd70   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bfdd70   RELOCATION_MATCH PASS   OnPostRelocation
+00bfde80   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bfde80   WARN RELOC_NAME: ?OnPostRelocation@CIndexBuffer@@QAEXXZ -> 00ac1f60 labelled '_global::Nop_ret0_00ac1f60'
+00bfde80   RELOCATION_MATCH PASS   RelocateData
+00bfddb0   MATCH            PASS   CanRelocateData
+00bfe900   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00bfe900   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 5
+  00bfde20 RELOCATION_MATCH CLandscapeLayerMesh::??1CLandscapeLayerMesh@@UAE@XZ
+  00bfdd70 RELOCATION_MATCH CLandscapeLayerMesh::?OnPostRelocation@CLandscapeLayerMesh@@QAEXXZ
+  00bfde80 RELOCATION_MATCH CLandscapeLayerMesh::?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+  00bfddb0 MATCH CLandscapeLayerMesh::?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+  00bfe900 RELOCATION_MATCH CLandscapeLayerMesh::??_GCLandscapeLayerMesh@@UAEPAXI@Z

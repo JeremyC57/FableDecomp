@@ -8,7 +8,15 @@
 #include "rebuild_abi.h"
 #include "engine/CDefClassBase.h"
 class CEngineDef : public CDefClassBase {
-#if defined(FABLE_RETAIL_CENGINEDEF_LODERRORTOLERANCE) && !defined(FABLE_RETAIL_CENGINEDEF_FOV_2D)
+#if defined(FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28)
+    // Ego_r names SeaHeight at +0x48, confirmed by the 0x00BE6880 sea plane load.
+private:
+    unsigned char _pad_0x25[0x48 - 0x25];
+public:
+    float SeaHeight;
+private:
+    unsigned char _pad_0x4c[0x80 - 0x4c];
+#elif defined(FABLE_RETAIL_CENGINEDEF_LODERRORTOLERANCE) && !defined(FABLE_RETAIL_CENGINEDEF_FOV_2D)
     // Opt-in (wfE7, row 0x00B33B50): Ego_r.pdb CEngineDef::LODErrorTolerance / CharacterLODErrorTolerance (+0x40 / +0x44 there, retail
     // +0x3C / +0x40: the -4 container shift as FOV_2D), read by the CEnginePrimitiveRenderer ctor (0x00B35CF2 / 0x00B35D02).
 private:
@@ -26,6 +34,13 @@ public:
     float FOV_2D;                                                        // +0x5c
 private:
     unsigned char _pad_0x60[0x20];                                       // +0x60 members not modelled yet
+#elif defined(FABLE_RETAIL_CENGINEDEF_DRAW_DISTANCE_PASS27)
+private:
+    unsigned char _pad_0x25[0x50 - 0x25];
+public:
+    float GamePrimitiveDefaultFadeRangeRatio;                            // +0x50, Ego_r offset 0x54
+private:
+    unsigned char _pad_0x54[0x80 - 0x54];
 #else
 private:
     unsigned char _pad_0x25[0x5b];                                       // +0x25 members not modelled yet

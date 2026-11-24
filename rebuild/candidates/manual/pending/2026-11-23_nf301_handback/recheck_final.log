@@ -1,0 +1,39 @@
+addr       parity           behav  name
+006778a0   WARN SHARED_HEADER_AVAILABLE CReactionFrequencyTraits (engine/CReactionFrequencyTraits.h)
+006778a0   WARN SHARED_HEADER_AVAILABLE CReactionFrequencyTraitsArray (engine/CReactionFrequencyTraitsArray.h)
+006778a0   RELOCATION_MATCH PASS   TransferBinaryIn
+006b84b0   WARN STANDIN_LEAF ??0CScreenEffectOwner_006b84b0@@QAE@JPAX@Z (catalog CEnvironmentSpellEffectInterpolator::CEnvironmentSpellEffectInterpolator; address-only name)
+006b84b0   RELOCATION_MATCH PASS   CEnvironmentSpellEffectInterpolator
+00dc21f0   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00dc21f0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00dc21f0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00dc21f0   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00dc21f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00dc21f0   WARN SHARED_HEADER_AVAILABLE CQ_OakValeBanditRaidScript (engine/CQ_OakValeBanditRaidScript.h)
+00dc21f0   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00dc21f0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00dc21f0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00dc21f0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map'
+00dc21f0   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00dc21f0   RELOCATION_MATCH PASS   Main
+00717c50   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00717c50   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00717c50   RELOCATION_MATCH PASS   CActionTalkToThing
+0092bcb0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0092bcb0   WARN STANDIN_LEAF ?IsRunnable@CAvoidStateView@@QAE_NXZ (catalog CAIStateGroup_AvoidRegionExit::IsRunnable; names another function)
+0092bcb0   RELOCATION_MATCH PASS   IsRunnable
+00b81bc0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00b81bc0   WARN SHARED_HEADER_AVAILABLE CEngineComponent (engine/CEngineComponent.h)
+00b81bc0   WARN SHARED_HEADER_AVAILABLE CPerlinNoise (engine/CPerlinNoise.h)
+00b81bc0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00b81bc0   WARN SHARED_HEADER_AVAILABLE CEngineSimulationManager (engine/CEngineSimulationManager.h)
+00b81bc0   RELOCATION_MATCH PASS   CEngineSimulationManager
+
+WINS: 6
+  006778a0 RELOCATION_MATCH CPersistTraits<CReactionFrequencyTraitsArray>::TransferBinaryIn
+  006b84b0 RELOCATION_MATCH CEnvironmentSpellEffectInterpolator::??0CScreenEffectOwner_006b84b0
+  00dc21f0 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker::?Main@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ
+  00717c50 RELOCATION_MATCH NTCScriptedControl::CActionTalkToThing::??0CActionTalkToThing
+  0092bcb0 RELOCATION_MATCH CAIStateGroup_AvoidRegionExit::IsRunnable
+  00b81bc0 RELOCATION_MATCH CEngineSimulationManager::??0CEngineSimulationManager
+RF_DONE

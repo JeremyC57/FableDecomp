@@ -1,5 +1,5 @@
 // CTCClock::PlaySoundW(const CCharString& name) -- play the clock's named sound: look up the "STF_<name>" / "STL_<name>" first/last sample ids in the clock definition's sound map and, when both exist, play a random sample of that range through the owner's sound player
-// Leaf: ?PlaySoundW@CTCClock
+// Leaf: ?PlaySoundW@CTCClock@@IAEXABVCCharString@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007329E0, 235 bytes (240 with padding), `ret 4`.
 // Label correction: catalog "CTCCreature_PlayMorphSound" (autoname) -- the body sits between CTCClock::FrameUpdate
@@ -99,7 +99,9 @@ public:
     bool                         IsInGlobalUpdateTCs;
     CDefPointer<const CClockDef> PDef;          // +0x0c
     float                        LastTimeUpdated;   // +0x10
+    protected:
     void PlaySoundW(const CCharString& name);
+    public:
 };
 
 void CTCClock::PlaySoundW(const CCharString& name)

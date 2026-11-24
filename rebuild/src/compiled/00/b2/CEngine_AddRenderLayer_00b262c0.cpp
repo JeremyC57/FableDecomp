@@ -1,5 +1,5 @@
 // CEngine::AddRenderLayer(CEngineLayerRenderer* layer) -- reports "Engine: Add Render Layer" to the progress display, appends the layer to the engine's render-layer list and returns it
-// Leaf: AddRenderLayer
+// Leaf: ?AddRenderLayer@CEngine@@AAEAAVCEngineLayerRenderer@@PAV2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B262C0, length 116 bytes, `ret 4`.
 // Signature from Ego_r.pdb: ?AddRenderLayer@CEngine@@AAEAAVCEngineLayerRenderer@@PAV2@@Z (private; returns the layer by
 //   reference). Callers: CEngine::Initialise @ 0x00B26360, each result feeding CEngineLayerRenderer::AddComponent (0x00B2AC80).
@@ -81,7 +81,9 @@ public:
     unsigned char                 _pad_0x000[0x15C];
     CArray<CEngineLayerRenderer*> RenderLayers;            // +0x15C (retail; PDB +0x168)
     CArray<void*>                 EngineComponents;        // +0x168 (retail; PDB +0x178)
+    private:
     CEngineLayerRenderer& AddRenderLayer(CEngineLayerRenderer* layer);
+    public:
 };
 
 CEngineLayerRenderer& CEngine::AddRenderLayer(CEngineLayerRenderer* layer)

@@ -1,4 +1,5 @@
-// NUISystem::CParticleEffect::ChangeState(long) -- the CChangingStateComponent state change, then, unless the new state has info that wants no effect, start the particle effect for it
+// NUISystem::CParticleEffect::ChangeState(unsigned long) -- the CChangingStateComponent state change, then, unless the new state has info that wants no effect, start the particle effect for it
+// Leaf: ?ChangeState@CParticleEffect@NUISystem@@UAEXK@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retry 10: RELOCATION_MATCH -- GetInstance() called inline as the object expression of GetLayer (a named `frontEnd` local hoists the vtable load above the CRightHandedSet temporary stores).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543DF0, length 224 bytes. Virtual: slot 48 of NUISystem::CParticleEffect's
@@ -143,7 +144,7 @@ public:
     virtual void v045();
     virtual void v046();
     virtual void v047();
-    virtual void ChangeState(long state);                                               // slot 48: CChangingStateComponent::ChangeState @ 0x0052CF40
+    virtual void ChangeState(unsigned long state);                                      // slot 48: CChangingStateComponent::ChangeState @ 0x0052CF40 ?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z (Ego_r / FableWin)
     virtual void v049();
     virtual void v050();
     virtual void v051();
@@ -250,11 +251,11 @@ public:
                       CManager::GetInstance()->GetLayer(Depth), true, CRightHandedSet());
     }
     virtual void Initialise();
-    virtual void ChangeState(long state);
+    virtual void ChangeState(unsigned long state);   // ?ChangeState@CParticleEffect@NUISystem@@UAEXK@Z (Ego_r / FableWin)
     virtual void Draw(long target, long a, long layerOffset, long c, long d);
 };
 
-void CParticleEffect::ChangeState(long state)
+void CParticleEffect::ChangeState(unsigned long state)
 {
     CChangingStateComponent::ChangeState(state);
     if (GetState(state) == 0 || GetState(state)->HasParticleEffect) {

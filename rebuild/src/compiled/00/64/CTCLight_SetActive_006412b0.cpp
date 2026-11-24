@@ -52,9 +52,9 @@ class CTCParticleAttacher : public CTCBase {    // interface 0x82 (TCI_PARTICLE_
 public:
     void DetachParticles();                     // 0x007F8860 ?DetachParticles@CTCParticleAttacher@@QAEXXZ (Ego_r + FableWin)
 };
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance { class CTCGraphicAppearance { public:   // NF302: the PDB class (both PDBs ?RemovePrimitive@CTCGraphicAppearance@NGraphicAppearance@@); was a global stand-in struct
     void RemovePrimitive(CPrimitive* primitive);        // 0x004BF920
-};
+}; }
 
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -105,7 +105,7 @@ public:
     unsigned long  m_presentBits[9];                    // +0x20 interface-present bitset
     CInterfaceMap  m_interfaces;                        // +0x44
     unsigned char  _pad4c[0x64 - 0x4c];
-    CTCGraphicAppearance* PGraphicAppearance;           // +0x64
+    NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance;           // +0x64
     void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
     void SetAsFrameUpdated();                           // 0x004C7C40
     FABLE_FORCEINLINE bool HasTC(long interfaceType) const

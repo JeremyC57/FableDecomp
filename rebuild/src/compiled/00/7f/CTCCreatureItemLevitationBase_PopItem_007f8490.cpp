@@ -1,5 +1,5 @@
 // CTCCreatureItemLevitationBase::PopItem() -- kill the oldest levitated item, unlink its node and drop the count
-// Leaf: ?PopItem@CTCCreatureItemLevitationBase@@QAEXXZ
+// Leaf: ?PopItem@CTCCreatureItemLevitationBase@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F8490, length 48 bytes. Inlined into CTCCreatureItemLevitationHero::
 // LeafUpdate (0x007F8540).
 // Callees: CThing::Kill(bool) @ 0x004C9B80 (checks Dead / Dying / KillLocked, sets Dying), the CRT free @ 0x00BFEA14.
@@ -39,7 +39,9 @@ class CTCCreatureItemLevitationBase { public:
     CThingList LevitatingItems;             // +0x0c (retail 4-byte STLport list)
     long NumItems;                          // +0x10
     long LastAddFrame;                      // +0x14
+    protected:
     void PopItem();
+    public:
 };
 
 void CTCCreatureItemLevitationBase::PopItem()

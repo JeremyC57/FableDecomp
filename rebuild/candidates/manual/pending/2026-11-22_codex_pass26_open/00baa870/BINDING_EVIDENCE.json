@@ -1,0 +1,294 @@
+{
+  "pdb": "ego_r.pdb",
+  "rsds_guid": "774b3052-bdd8-43b4-808d-48481cc576ce",
+  "age": 4,
+  "executable_sha256": "aeb372d37adce0b17affc0744eb20c3fe75d05c5a80cd134b0a4a7f5d607ea96",
+  "leaf": "00a61800",
+  "vertex_constant_four": {
+    "receiver_load": "00a623a1",
+    "index_operand": "00a623e2",
+    "call": "00a623e4",
+    "typed_target": "00ae62b0",
+    "symbol": "?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z",
+    "receiver_unchanged_before_call": true
+  },
+  "back_control_point_y": {
+    "terms": [
+      "Y at 00A61EE0",
+      "X at 00A61EE9",
+      "Z at 00A61EF4"
+    ],
+    "first_sum": "00a61ef0",
+    "second_sum": "00a61ef6",
+    "translation": "00a61ef8",
+    "write": "00a61efa"
+  },
+  "minimum_texture_filter": {
+    "current_mask_load": "00a629c7",
+    "stored_mask_load": "00a629cd",
+    "test": "00a629d0",
+    "combine": "00a629d4",
+    "store": "00a629d6",
+    "observation": "The optimized donor tests stored against current and combines into the current-mask register, as the selected object does."
+  },
+  "transition_owner": {
+    "tag": "normalize_host_fallback",
+    "donor": "02ed27b0",
+    "original_locals": [
+      "fade",
+      "min_mesh_dist",
+      "max_mesh_dist",
+      "clamped_dist"
+    ],
+    "original_named_calls": [
+      "CEngineFadeDistance::CEngineFadeDistance(float, float)",
+      "GetMinimumZSpriteAsMeshDistance",
+      "GetMaximumZSpriteAsMeshDistance"
+    ],
+    "checked_native_owner": {
+      "release_match": true,
+      "release_bytes": 112,
+      "release_operands": [
+        {
+          "symbol": "?GPPrimitiveRenderer@NEngineInternal@@3PAVCEnginePrimitiveRenderer@@A",
+          "site": "00baa46e",
+          "target": "01436e80"
+        }
+      ],
+      "debug_bytes": 160,
+      "debug_instructions": 55,
+      "debug_donor_instructions": 59,
+      "debug_donor_exact_ops": false
+    }
+  },
+  "behavior": {
+    "native_scenarios": 6144,
+    "source_sha256": "a0b20d5463b661386128e81efc3c9a9a03b395d4a0c2ac4e241cf2f92c5bb20d",
+    "fixture_sha256": "6ce19efa1a059d1d817401d6b7101157e6ade78e775c0407b6fbe6e18c666fb0",
+    "native_receipt": "runtime/tests/00baa870/6ce19efa1a05/TEST.json",
+    "host_sanitizers": [
+      "address",
+      "undefined"
+    ],
+    "host_fixture": "GCC C++03 LP64 with platform STL declarations for the unused vector API, and the existing width-safe reciprocal-root branch."
+  },
+  "retail_operand_provenance": {
+    "back_y": {
+      "egod_source_line": 362,
+      "egod_offset": "046a",
+      "matrix_terms": [
+        {
+          "coefficient": "E12",
+          "coefficient_store": "00baab99",
+          "coordinate": "back_cp_object_space.X",
+          "coordinate_store": "00baace7",
+          "multiply": "00baae2f"
+        },
+        {
+          "coefficient": "E22",
+          "coefficient_store": "00baaba5",
+          "coordinate": "back_cp_object_space.Y",
+          "coordinate_store": "00baacf4",
+          "multiply": "00baae41"
+        },
+        {
+          "coefficient": "E32",
+          "coefficient_store": "00baabaf",
+          "coordinate": "back_cp_object_space.Z",
+          "coordinate_store": "00baad01",
+          "multiply": "00baae37"
+        }
+      ],
+      "retail_machine_term_order": [
+        "E12*X",
+        "E32*Z",
+        "E22*Y"
+      ],
+      "selected_machine_term_order": [
+        "E32*Z",
+        "E22*Y",
+        "E12*X"
+      ],
+      "c2_product_keys": [
+        880,
+        4754,
+        4914
+      ],
+      "c2_qualified_field_clone": 1058,
+      "c2_candidate_residue_values": [
+        18,
+        19,
+        20,
+        1042,
+        1043,
+        1044
+      ],
+      "diagnostic_interpretation": "With the other operands held fixed, the compiler key model needs the first back coordinate clone to enter one of these ranges. The values describe the compiler measurement and are not source annotations."
+    },
+    "constant_four": {
+      "egod_source_line": 412,
+      "egod_offset": "089b",
+      "retail_receiver_load": "00bab21f",
+      "selected_receiver_load": "00bab24d",
+      "named_operand": "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+      "retail_receiver_object": "01436e14",
+      "checked_call": "00bab253",
+      "retail_schedule_region_diagnostic": "The selected and ungrouped source use different 81-tuple boundaries before the fourth shader constant upload."
+    },
+    "minimum_texture_filter": {
+      "egod_source_line": 469,
+      "egod_offset": "0bcc",
+      "original_method": "CRenderStateManager::SetTextureFilterModeMin",
+      "stage": 1,
+      "c2d_domain": "TEXTURE_FILTER_POINT",
+      "d3d_values": [
+        1,
+        2,
+        3
+      ],
+      "table_address": "01396e58",
+      "stored_mask": "00bab74f",
+      "current_mask": "00bab752",
+      "result": "00bab75e"
+    }
+  },
+  "texture_state_behavior": {
+    "source": "spell_lane/00baa870/bookmark_state_test.cpp",
+    "sha256": "fb2acd0eb8902413e79eeafe970532c6f45f093299dacac3b7568bcdb659a1d5",
+    "receipt": {
+      "test_sha256": "fb2acd0eb8902413e79eeafe970532c6f45f093299dacac3b7568bcdb659a1d5",
+      "compiler": "13.10.3077",
+      "test_flags": [
+        "/Od",
+        "/W3",
+        "/GR-"
+      ],
+      "output": "00baa870_TEST PASS"
+    },
+    "cases": [
+      "unchanged value",
+      "first recorded change",
+      "second change shares bookmark and dirty-list item",
+      "nested capture records original desired value",
+      "repeat update keeps both lists stable"
+    ],
+    "original_debug_field": {
+      "owner": "CRenderStateManager::CStateInfo",
+      "name": "StateIsInitialised",
+      "offset": 19,
+      "Ego_d_complete_type": "d131",
+      "Ego_d_field_list": "d130",
+      "FableWin_store": "018bf9cc"
+    }
+  },
+  "original_geometry_source": {
+    "tag": "geometry_reviewed_original_compilands",
+    "source_sha256": "b73f6436288e404959c66455e0d3c162199f495883d01e5841efccc7fa5ecc87",
+    "test_sha256": "bd9b269563b448fd5de6beee38c5b1cde4b4d0d7864f18b92ba335464b665442",
+    "previous_native_leaf_relocations_and_pickany_identical": true,
+    "helpers": [
+      {
+        "method": "CMatrix3x4::PreTranslate",
+        "fablewin_va": "02d78dd0",
+        "source_lines": "495\u2013499",
+        "formal": "vector"
+      },
+      {
+        "method": "CMatrix3x4::TransformPoint, one argument",
+        "fablewin_va": "024543e0",
+        "source_lines": "816\u2013824",
+        "formals_and_locals": [
+          "point",
+          "xx",
+          "yy",
+          "zz"
+        ]
+      },
+      {
+        "method": "CMatrix3x4::TransformPoint, two arguments",
+        "fablewin_va": "01d129f0",
+        "source_lines": "807\u2013811",
+        "formals": [
+          "pSource",
+          "destination"
+        ]
+      },
+      {
+        "method": "C3DVector component constructor",
+        "fablewin_va": "018a0be0",
+        "source_line": 156,
+        "formals": [
+          "x",
+          "y",
+          "z"
+        ]
+      },
+      {
+        "method": "C3DVector copy constructor",
+        "fablewin_va": "018bff40",
+        "source_line": 157,
+        "formal": "p"
+      }
+    ],
+    "viewport_extent_named_locals_absent": true,
+    "portable_cxx03_asan_ubsan": "00baa870_TEST PASS"
+  },
+  "primitive_type_conversion": {
+    "tag": "primitive_conversion_reviewed_types",
+    "source_sha256": "5bbafa423e897fce72ede7f70e3124f51c840d240bd0cac379a2ade431578a04",
+    "test_sha256": "755f0acd25711d37ae2fce3580d01b9b8cad61118d5407e816121bc669bfb8bf",
+    "debug_site": "02dcff0a",
+    "debug_body": "02dd0060",
+    "symbol": "?GFPrimitiveTypeToD3DPT@@YI?AW4_D3DPRIMITIVETYPE@@W4EPrimitiveType@@@Z",
+    "checked_debug_condition": "prim_type!=PT_NULL",
+    "device_slot": "0x148",
+    "legal_mappings_tested": 6,
+    "previous_native_leaf_relocations_and_pickany_identical": true,
+    "portable_cxx03_asan_ubsan": "00baa870_TEST PASS"
+  },
+  "original_magnitude_expression": {
+    "tag": "original_magnitude_selected_ordinary",
+    "source_sha256": "be5e19f5e976cc90d26c9915373769c6fcd1a8836d970d1b5e80abfb8bd2c5bb",
+    "test_sha256": "ce8ee80e1ee7d73cc1a5cadde64fe03b0dc2c3222abc56d065da0c461e840540",
+    "debug_va": "01b52910",
+    "debug_module_stream": 560,
+    "debug_source_line": 417,
+    "debug_named_locals": [
+      "this"
+    ],
+    "debug_root_call": "01B52949",
+    "gfroot_debug_va": "01B52970",
+    "retail_helper": "00c25970",
+    "retail_helper_matched_bytes": 33,
+    "retail_leaf_and_relocations_identical_to_previous_selection": true
+  },
+  "later_donor_compiland_versions": {
+    "Ego_r": {
+      "stream": 916,
+      "compiler": "16.0.40219.1",
+      "observed_switches": [
+        "-Ox",
+        "-Ob2",
+        "-Oi",
+        "-Ot",
+        "-Oy",
+        "-GT",
+        "-fp:precise",
+        "-Gr"
+      ]
+    },
+    "FableWin": {
+      "stream": 913,
+      "compiler": "16.0.40219.1",
+      "observed_switches": [
+        "-Od",
+        "-EHs",
+        "-EHc",
+        "-Gy",
+        "-fp:precise",
+        "-Gr"
+      ]
+    },
+    "native_grading_compiler": "13.10.3077"
+  }
+}

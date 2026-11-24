@@ -131,7 +131,7 @@ class CThingGameObject : public CThing { public:
 };
 class CTCHitLocations { public:                        // interface type 0x7F
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithFiniteLine(const C3DVector& start,
-        const C3DVector& end, C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008168B0
+        const C3DVector& end, C3DVector& hitPosition, C3DVector& hitNormal, float tolerance);   // 0x008168B0
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithTriangle(const CVector<C3DVector>& triangle,
         C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008169B0
 };
@@ -240,8 +240,10 @@ class CCombatActionBase { public:
         CVector<CThingGameObject*> StruckThingList;   // +0x1c
     };
     bool IsThingInStruckThingList(const CThingGameObject& thing) const;   // 0x00856F00
-    CStrikeEvent* GetPActiveStrikeEvent();      // 0x00856E50
-    CThing* GetWeaponUsedInStrikeAction();      // 0x00857070
+protected:
+    CStrikeEvent* GetPActiveStrikeEvent();      // 0x00856E50 (PDB IAE: protected)
+public:
+    CThing* GetWeaponUsedInStrikeAction() const;      // 0x00857070
     bool HasPerformedAction() const;            // 0x006925A0
     void ProcessPossibleObjectStrikeEvent(float time, const std::pair<C3DVector, C3DVector>& previous,
         const std::pair<C3DVector, C3DVector>& current, CThingGameObject& thing);
@@ -257,13 +259,13 @@ void CCombatActionBase::ProcessPossibleObjectStrikeEvent(float time, const std::
         return;
     C3DVector hitPosition;
     C3DVector hitNormal;
-    NHitLocations::CHitLocation* hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.first, current.first, &hitPosition, &hitNormal, 0.25f);
+    NHitLocations::CHitLocation* hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.first, current.first, hitPosition, hitNormal, 0.25f);
     if (!hit)
-        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.second, current.second, &hitPosition, &hitNormal, 0.25f);
+        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.second, current.second, hitPosition, hitNormal, 0.25f);
     if (!hit)
-        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.first, current.second, &hitPosition, &hitNormal, 0.25f);
+        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.first, current.second, hitPosition, hitNormal, 0.25f);
     if (!hit)
-        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.second, current.first, &hitPosition, &hitNormal, 0.25f);
+        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.second, current.first, hitPosition, hitNormal, 0.25f);
     if (hit) {
         GetPActiveStrikeEvent()->StruckThingList.push_back_inline(&thing);
         C3DVector direction;

@@ -81,7 +81,7 @@ extern double VIRTUAL_SCREEN_HEIGHT;                                     // 0x01
 extern CDisplayManager* GPDisplayManager;                                // 0x013B8390
 extern bool g_bUseCompiledWorldFiles;                                    // 0x013B8618
 extern bool g_bUseCompiledGlobalThings;                                  // 0x013B8609
-extern bool g_WADBuildEnabled;                                           // 0x01375459
+extern bool GAllowDataGeneration;                                           // 0x01375459 (Ego_r / FableWin / Ego_d publics; NF236: was g_WADBuildEnabled)
 extern bool g_bAutoSaveProgressShown;                                    // 0x013B89C1
 extern bool g_bSaveLoadFailed;                                           // 0x013B89C0
 extern bool g_bProgressDisplaySuppressed;                                // 0x013B89D3
@@ -117,7 +117,7 @@ void CProgressDisplay::DrawRetailDisplay(const CCharString& text_tag, float prog
             total = 465;
         if (!g_bUseCompiledGlobalThings)
             total += 347;
-        if (g_WADBuildEnabled)
+        if (GAllowDataGeneration)
             total += 1788;
         if (g_bAutoSaveProgressShown)
             total = 300;

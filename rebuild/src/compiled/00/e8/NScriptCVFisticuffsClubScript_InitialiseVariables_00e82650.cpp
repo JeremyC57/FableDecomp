@@ -90,7 +90,7 @@ public:
     float         BooNumber;                             // +0xb0
     CCharString   RegionNames[5];                        // +0xb4
     void SetFightCount();                                // 0x00E82800
-    void InitialiseVariablesCheck();                     // 0x00E827A0 (name unknown)
+    void SetCompletedThisClub();                     // 0x00E827A0 NF296: PDB name, was InitialiseVariablesCheck
     void InitialiseVariables();
 };
 } // namespace NScript
@@ -119,7 +119,7 @@ void NScript::CV_FisticuffsClubScript::InitialiseVariables()
     PlayerLost = false;
     HitCount = 0;
     SetFightCount();
-    InitialiseVariablesCheck();
+    SetCompletedThisClub();
     AttackWarnings = 0;
     EverybodyAttack = false;
     LostWhileOutside = false;

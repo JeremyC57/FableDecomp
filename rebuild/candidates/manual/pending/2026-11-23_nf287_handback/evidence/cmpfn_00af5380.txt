@@ -1,0 +1,14 @@
+SAME ??0?$CArray@V?$CArray@J@@@@QAE@XZ
+SAME ??0?$CArray@VCEnginePrimitiveHandle@@@@QAE@XZ
+SAME ??0C3DVector@@QAE@XZ
+SAME ??0CDecal@NParticleEngine@@QAE@XZ
+SAME ??0CRightHandedSet@@QAE@XZ
+SAME ??0iterator@?$CRetailList@PAVCDecal@NParticleEngine@@@NParticleEngine@@QAE@PAU?$SListNode@PAVCDecal@NParticleEngine@@@2@@Z
+SAME ??2@YAPAXIPAX@Z
+ONLY_HEAD ??2CDecal@NParticleEngine@@SAPAXI@Z
+SAME ??_7CDecal@NParticleEngine@@6B@
+SAME ?AllocateDecal@CParticleSystem@NParticleEngine@@QAEPAVCDecal@2@XZ
+SAME ?_M_create_node@?$CRetailList@PAVCDecal@NParticleEngine@@@NParticleEngine@@QAEPAU?$SListNode@PAVCDecal@NParticleEngine@@@2@ABQAVCDecal@2@@Z
+SAME ?end@?$CRetailList@PAVCDecal@NParticleEngine@@@NParticleEngine@@QAE?AUiterator@12@XZ
+SAME ?insert@?$CRetailList@PAVCDecal@NParticleEngine@@@NParticleEngine@@QAEXUiterator@12@ABQAVCDecal@2@@Z
+SAME ?push_back@?$CRetailList@PAVCDecal@NParticleEngine@@@NParticleEngine@@QAEXABQAVCDecal@2@@Z

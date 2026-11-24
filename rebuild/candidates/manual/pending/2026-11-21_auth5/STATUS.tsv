@@ -1,0 +1,3 @@
+address	state	best_grade	grades_used	best_source	note
+0x00763060	escalated	DIFFER(1134v1146) 78 (g1, Ego_d frame-exact); h1 1136/37 frame-inexact	27	$S/w22/auth5/00763060/g1.cpp	Ego_d 195..241 decoded exactly incl. frame (it_anchor=begin(); a=*it_anchor++; it_start=it_anchor+1; b=*it_anchor; it_begin=begin() at 204); same behaviour as retail; residue = preheader fold + alignment + ebx/ebp
+0x007602F0	match pending ruling	MATCH bytes (/Gr, test PASS); Ego_d 313/342 sizes open	8	$S/w22/auth5/007602f0/007602f0.cpp	Ego_d-decoded text (flattened reads) + PAREN_CAST overlay; Ego_d 313/342 sizes open

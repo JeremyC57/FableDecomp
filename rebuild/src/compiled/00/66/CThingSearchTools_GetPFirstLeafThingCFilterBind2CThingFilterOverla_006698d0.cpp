@@ -70,11 +70,11 @@ class CThingBuilding : public CThing { public: enum { ThingListType = 3 }; };
 class CThingFilter_OverlappingSphere { public:
     C3DVector SpherePos;                        // +0x00
     float     Radius;                           // +0x0c
-    FABLE_FORCEINLINE bool operator()(CThing* thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         C3DVector centre;
         float boundRadius;
-        thing->PhysicsTC->GetBoundingInfo(&centre, &boundRadius);
+        thing.PhysicsTC->GetBoundingInfo(&centre, &boundRadius);
         float dx = centre.X - SpherePos.X;
         float dy = centre.Y - SpherePos.Y;
         float dz = centre.Z - SpherePos.Z;
@@ -86,20 +86,20 @@ class CThingFilter_OverlappingSphere { public:
 };
 class CThingFilter_PosInContainmentVolume { public:
     C3DVector Pos;
-    bool operator()(CThing* thing) const;       // 0x006A7B20
+    bool operator()(const CThing& thing) const; // 0x006A7B20
 };
 template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     CFilter_Bind2(const A& a, const B& b) : First(a), Second(b) {}
-    template <class T> FABLE_FORCEINLINE bool operator()(T* thing) const { return First(thing) && Second(thing); }
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const { return First(thing) && Second(thing); }
 };
 template <class A, class B, class C> class CFilter_Bind3 { public:
     const A& First;
     const B& Second;
     const C& Third;
     CFilter_Bind3(const A& a, const B& b, const C& c) : First(a), Second(b), Third(c) {}
-    template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing) && Third(thing); }
+    template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing) && Third(thing); }
 };
 class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     float X, Y, Z;
@@ -123,7 +123,7 @@ bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** ou
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -140,7 +140,7 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -162,7 +162,7 @@ bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompa
         if ((*it)->IsIncludedInThingScans() && IsThingOfType<TThing>(*it))
         {
             TThing* candidate = (TThing*)*it;
-            if (candidate && filter(candidate))
+            if (candidate && filter(*candidate))
                 best = compare(best, candidate);
         }
     }
@@ -179,7 +179,7 @@ bool CThingSearchToolsMethods::GetPBestLeafThing(const TFilter& filter, const TC
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
             best = compare(best, (TThing*)thing);
     }
     *out = best;

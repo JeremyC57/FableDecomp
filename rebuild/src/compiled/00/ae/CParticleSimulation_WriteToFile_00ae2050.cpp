@@ -23,7 +23,7 @@ public:
     void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
-void __fastcall WriteVectors_00ae18c0(const C4DVector* vectors, unsigned long count, CDataOutputStream& stream);   // 0x00AE18C0
+// WriteVectorArray 0x00AE18C0: the protected static CParticleSimulation member, declared in the class below (Ego_r + FableWin KIX)
 
 class CParticleSimulation { public:
     void*         __vftable;                       // +0x00
@@ -46,6 +46,7 @@ class CParticleSimulation { public:
     bool          AccelerationEnable;              // +0x44
     float         GlobalDamping;                   // +0x48
     void WriteToFile(CDataOutputStream& stream);
+protected: static void __fastcall WriteVectorArray(const C4DVector* vectors, unsigned long count, CDataOutputStream& stream);   // 0x00AE18C0
 };
 
 void CParticleSimulation::WriteToFile(CDataOutputStream& stream)
@@ -54,7 +55,7 @@ void CParticleSimulation::WriteToFile(CDataOutputStream& stream)
     stream.WriteULONG(TimestepChanged);
     stream.WriteFloat(TimestepMultiplier);
     stream.WriteULONG(Size);
-    WriteVectors_00ae18c0(Positions, Size, stream);
+    WriteVectorArray(Positions, Size, stream);
     stream.Write(SimulationAlphas, Size * sizeof(float));
     stream.WriteFloat(GravityStrength);
     stream.WriteFloat(WindStrength);

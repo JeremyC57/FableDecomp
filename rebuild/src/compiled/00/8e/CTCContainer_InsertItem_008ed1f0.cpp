@@ -1,4 +1,5 @@
 // CTCContainer::InsertItem(long defIndex, const CCharString& name) -- append (def index, name) to the container's item list; a container whose thing does not persist its game state yet starts doing so when the item's def asks for it
+// Leaf: ?InsertItem@CTCContainer@@QAEXJABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008ED1F0, 184 bytes (`ret 8`).
 // Callees: CCharString(const CCharString&) @ 0x0099EC30 (the pair, then the placement copy), the item vector's
 // _M_insert_overflow @ 0x0074FCE0 (manifest "std::vector_InsertRangeWithCopy"), ~CCharString @ 0x0099EAE0,
@@ -10,34 +11,15 @@
 // Shape: a pair<long, CCharString> local (index stored next to the string copy) handed to the inline STLport push_back
 // (placement memberwise copy / _M_insert_overflow with the __false_type tag in the dead index slot); the def out pointer also
 // reuses the dead index slot, the def taken out of it into a holder whose release loses its null test after the flag read.
-#include "fable_compiler.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-};
-struct SContainerItem {                                 // std::pair<long, CCharString>
-    long        first;
-    CCharString second;
-    SContainerItem(const long& a, const CCharString& b) : first(a), second(b) { }
-    SContainerItem(const SContainerItem& other) : first(other.first), second(other.second) { }
-};
-struct __false_type { __false_type() { } };
-inline void* operator new(unsigned int, void* where) { return where; }
-struct CContainerItemVector {                           // STLport vector<pair<long, CCharString>>, 12 bytes
-    SContainerItem* _M_start;
-    SContainerItem* _M_finish;
-    SContainerItem* _M_end_of_storage;
-    void _M_insert_overflow(SContainerItem* position, const SContainerItem& x, const __false_type&, unsigned long fill_len, bool atend);   // 0x0074FCE0
-    void push_back(const SContainerItem& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) SContainerItem(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
+// NF254 (2026-11-22, CODEXP27 L4 / L5 family): the item vector and its element were the row-local CContainerItemVector / SContainerItem /
+//   CCharString stand-ins (bound 0x0074FCE0 as ?_M_insert_overflow@CContainerItemVector@@...); they now come from the shared headers
+//   (fable_string.h CCharString, stlport/fable_containers.h vector<pair<long, CCharString> > with the overflow declaration only:
+//   FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY), so the call binds the protected STLport spelling the self row 0x0074FCE0 defines.
+//   The other local models are as at HEAD.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
 struct CDefPointeeBase {
     virtual void v00();
     virtual void Delete();                              // slot 1 (+0x04)
@@ -93,7 +75,7 @@ protected:
 
 class CTCContainer : public CTCBase { public:
     unsigned char _pad08[0x0c - 0x08];
-    CContainerItemVector ContainerItems;                // +0x0c
+    std::vector<std::pair<long, CCharString> > ContainerItems;   // +0x0c (Ego_r.pdb)
     FABLE_FORCEINLINE CDefPointeeBase* GetItemDef(long defIndex) const
     {
         CDefPointer<const CThingBaseDef> out;
@@ -105,7 +87,7 @@ class CTCContainer : public CTCBase { public:
 
 void CTCContainer::InsertItem(long defIndex, const CCharString& name)
 {
-    ContainerItems.push_back(SContainerItem(defIndex, name));
+    ContainerItems.push_back(std::pair<long, CCharString>(defIndex, name));
     if (!ParentThing->IsGameStatePersisted()) {
         CDefHolder<const CThingBaseDef> def(GetItemDef(defIndex));
         if (def->PersistsGameState())

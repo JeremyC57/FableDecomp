@@ -29,6 +29,9 @@ public:
     // FableWin and native GetSubDef<CCreatureDef> use the same class literal.
     static CCharString FABLE_FASTCALL StatGetTypeName() { return CCharString("CCreatureDef", -1); }
 #endif
+#ifdef FABLE_RETAIL_CCREATUREDEF_RANDOMMORPH_PASS26
+    const CRandomAppearanceMorph& GetRandomAppearanceMorph()const{return *PRandomAppearanceMorph;}
+#endif
     virtual void Transfer(CPersistContext& context);
     unsigned char _pad_0x25[3];
 #ifdef FABLE_RETAIL_CPERSIST_ORIGINAL_CLASS_TYPES_PASS22

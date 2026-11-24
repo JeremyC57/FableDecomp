@@ -1,0 +1,5 @@
+qid	source	address	claim
+q12722	land1122nf253	L72 (SummonCreatures)	the same: Clone UBE, Initialise UAE
+q12723	land1122nf253	L100 (WillHealInto)	the same: Clone EBE, FinishAction UAE, Initialise UAE
+q12724	land1122nf253	0x0096B600	the last UnsheatheMeleeWeapon stand-in binder (0x006649C0 2 -> 1)
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof

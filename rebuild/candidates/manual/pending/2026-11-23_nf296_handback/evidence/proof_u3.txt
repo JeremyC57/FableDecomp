@@ -1,0 +1,48 @@
+##### 00947280 renames: ?SelectPrettyThing@CAIStateGroup_WanderAroundShops@@QAEPAVCThing@@PAV2@@Z=?FindPrettyThingInShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@PAV2@@Z
+sections head 24 new 24
+ALL_EQ text_sections_equal=21
+tables H=1 N=1
+##### 009474f0 renames: ?SelectPrettyThing@CAIStateGroup_WanderAroundShops@@QAEPAVCThing@@PAV2@@Z=?FindPrettyThingInShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@PAV2@@Z
+sections head 10 new 10
+ALL_EQ text_sections_equal=9
+tables H=0 N=0
+##### 00be32a0 renames: ?Initialise@CEngineLandscapeMeshBuilder@@QAEXXZ=?BuildSharedIndexBuffers@CEngineLandscapeMeshBuilder@@AAEXXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=1 N=1
+##### 00b8d780 renames: ?InitializeOcclusionBuffers@CEngineOcclusionManager@@QAEXXZ=?BuildUnitBox@CEngineOcclusionManager@@AAEXXZ
+sections head 51 new 51
+ALL_EQ text_sections_equal=41
+tables H=6 N=6
+##### 00b99b50 renames: ?FrameStartCommon@CEnginePrimitiveManagerRepeatedStaticMeshes@@QAEXXZ=?CalcFrameConstantSIMDVars@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXXZ
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 0069b790 renames: ?UpdateEarthQuakes@CGameCameraManager@@QAEXXZ=?UpdateEarthquake@CGameCameraManager@@AAEXXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00417001 renames: ?GetTimeSinceLastRenderFrameStart@CMainGameComponent@@QAENXZ=?GetPredictedTimeSinceLastRenderFrame@CMainGameComponent@@IBENXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 00a62860 renames: ?DeleteShaderEntries@CShaderDataBank@@QAEXXZ=?CloseShaders@CShaderDataBank@@AAEXXZ
+sections head 14 new 14
+ALL_EQ text_sections_equal=10
+tables H=3 N=3
+##### 00670a10 renames: ?UpdateGravity@CTCCoopSpirit@@QAEXXZ=?UpdateHeightAboveGround@CTCCoopSpirit@@AAEXXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 0077cdd0 renames: ?Update@CTCHighlightItem@@QAEXXZ=?DoStopRunning@CTCHighlightItem@@IAEXXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0049a0b0 renames: ?LongToWideString@@YI?AVCWideString@@J@Z=?GFIntToWideString@@YI?AVCWideString@@J@Z
+sections head 120 new 120
+ALL_EQ text_sections_equal=99
+tables H=2 N=2
+##### 0097e890 renames: ?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBVCThing@@@Z=?SetThingToNotAvoid@CAIStateGroupBase@@IAEXPBVCThing@@@Z ?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z=?SetProximityForDirectApproach@CAIStateGroupBase@@IAEXM@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=12
+tables H=0 N=0

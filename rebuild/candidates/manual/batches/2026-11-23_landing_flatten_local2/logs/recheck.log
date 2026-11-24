@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00662090   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00662090   MATCH            PASS   GetDazedHealthThreshold
+00b25d00   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b25d00   WARN RELOC_NAME: ?B_DoReset@@YIHPAUB@@@Z -> 00b24500 labelled 'CEngine::SmartRestoreComponentVideoMemory'
+00b25d00   RELOCATION_MATCH PASS   OnPostDeviceReset
+00865e40   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00865e40   RELOCATION_MATCH PASS   IsHitToDaze
+
+WINS: 3
+  00662090 MATCH CThingCreatureBase::?GetDazedHealthThreshold@CThingCreatureBase@@QBEMXZ
+  00b25d00 RELOCATION_MATCH CEngine::?OnPostDeviceReset@CEngine@@EAE_NXZ
+  00865e40 RELOCATION_MATCH _global::?IsHitToDaze@?A0x

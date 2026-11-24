@@ -11,14 +11,14 @@
 // element through the vector for the redefiner's null test; the flag is re-read from memory for the branch, the warning's
 // vtable fetch is shared by both arms; the by-value C2DVector results are built straight into the argument area (user ctor
 // + user copy ctor), the float time passes through edi.
-namespace NUISystem {
 
-struct C2DVector {
+
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
-};
+}; namespace NUISystem {
 
 #include "engine/CCountedPointer.h"
 template <class T> struct CRetailVector {               // STLport vector (12 bytes; PDB 16)
@@ -107,8 +107,8 @@ class CScrollableList : public CComponent { public:
     unsigned char _pad004[0xac];
     CRetailVector<CCountedPointer<CComponent> > Children;   // +0xb0 (CComponent::Children, PDB +0xb8)
     unsigned char _pad0bc[0xc0];
-    void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440
-    void UnhideComponent(CComponent* component, float startTime, float endTime, C2DVector position);                      // 0x005556F0
+    protected: void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440
+    void UnhideComponent(CComponent* component, float startTime, float endTime, C2DVector position); public:              // 0x005556F0
 };
 
 class CRedefinerList : public CScrollableList { public:

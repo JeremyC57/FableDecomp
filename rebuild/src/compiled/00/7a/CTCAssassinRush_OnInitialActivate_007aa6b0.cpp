@@ -65,7 +65,10 @@ public:
     CSpecialAbilitiesAssassinRushDef*          PDef;       // +0x14
     unsigned char                              _pad18[0x64 - 0x18];
     CRetailVector<CIntelligentPointer<CThing> > ItemAlphaList;   // +0x64
-    void UpdateDirectionOverride();                        // 0x007A9960
+    private:
+    void UpdateDirectionOverride();
+    public:
+                        // 0x007A9960
     void OnInitialActivate();
 };
 

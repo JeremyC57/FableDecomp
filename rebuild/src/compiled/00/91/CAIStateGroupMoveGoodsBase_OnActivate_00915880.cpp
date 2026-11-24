@@ -1,7 +1,74 @@
-// Leaf: ?OnActivate@CAIStateGroup_MoveGoodsBase_Methods@@QAEXXZ
-#include "engine/CAIStateGroup_MoveGoodsBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CAIStateGroup_MoveGoodsBase_Methods : CAIStateGroup_MoveGoodsBase {
-    void OnActivate();
-};
-void CAIStateGroup_MoveGoodsBase_Methods::OnActivate(){ this->DroppingGoods = 0; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?OnActivate@CAIStateGroup_MoveGoodsBase@@UAEXXZ); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?OnActivate@CAIStateGroup_MoveGoodsBase@@UAEXXZ
+// Switch route (NF318, 2026-11-23): defined on the real class of engine/CAIStateGroup_MoveGoodsBase.h (class-model switch FABLE_RETAIL_CAISTATEGROUP_MOVEGOODSBASE; was ?OnActivate@CAIStateGroup_MoveGoodsBase_Methods@@QAEXXZ);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address. Bytes unchanged.
+// Preamble: the define / include block of the landed precedent CAIStateGroupMoveGoodsBase_PlaceGoods_00915b60.cpp.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MOVETOPOSPROXIMITY
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MINIONWANDER
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAISTATEGROUPBASE_FILTER
+#define FABLE_RETAIL_CAISTATEGROUP_MOVEGOODSBASE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE_STATTYPE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_C3DVECTOR_SQUAREDMAGNITUDE_XYZ
+#define FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_PUTGOODSDOWN
+#define FABLE_RETAIL_CTCSOLIDTOTHING
+#define FABLE_RETAIL_CTCCRATESTACK
+#define FABLE_RETAIL_CTCEXCLUSIVEUSE
+#define FABLE_RETAIL_CTCUSERACTIONPOINTBASE
+#include "engine/C3DVector.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "fable_string.h"
+#include "engine/CRightHandedSet.h"
+#include "engine/CThing.h"
+#include "engine/CVectorMap.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CAIBrain.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CTCCarrying.h"
+#include "engine/CTCCrateStack.h"
+#include "engine/CTCExclusiveUse.h"
+#include "engine/CTCSolidToThing.h"
+#include "engine/CTCUserActionPointBase.h"
+#include "engine/CCreatureAction_PutGoodsDown.h"
+#include "engine/CAIStateGroup_WorkBase.h"
+#include "engine/CAIStateGroup_MoveGoodsBase.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CWorld.h"
+#include "engine/GFRandom.h"
+void CAIStateGroup_MoveGoodsBase::OnActivate(){ this->DroppingGoods = 0; }

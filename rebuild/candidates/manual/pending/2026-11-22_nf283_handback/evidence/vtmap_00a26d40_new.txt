@@ -1,0 +1,8 @@
+VT ??_7CMeshDataBankEntry@@6B@ slots 1 retail 0129cd28
+  0 00a23910 NOLEAF ?Release@CMeshDataBankEntry@@UAEXXZ -
+VT ??_7C3DMeshInfo@@6B@ slots 1 retail 0129cd3c
+  0 00a2b6b0 NOLEAF ?Release@CMeshDataBankEntry@@UAEXXZ -
+VT ??_7CPhysicsMeshInfo@@6B@ slots 1 retail 0129cd50
+  0 00a2b740 DIFF ?Release@CMeshDataBankEntry@@UAEXXZ ??_GCPhysicsMeshInfo
+VT ??_7C3DAnimationInfo@@6B@ slots 1 retail 0129cd64
+  0 00a2bd70 NOLEAF ?Release@CMeshDataBankEntry@@UAEXXZ -

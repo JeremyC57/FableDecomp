@@ -1,0 +1,7 @@
+H 0097e330 CAIStateGroupBase::SetPushableByHero RELOCATION_MATCH flags= [] leaf=
+H 00967930 CAIStateGroup_TavernServer::PickUpJug RELOCATION_MATCH flags= [] leaf=?PickUpJug@CAIStateGroup_TavernServer@@QAE_NXZ
+H 00967b40 CAIStateGroup_TavernServer::FillTankard RELOCATION_MATCH flags= [] leaf=FillTankard
+H 00968bc0 CAIStateGroup_TavernKeeper::OnReplace RELOCATION_MATCH flags= [] leaf=?OnReplace@CAIStateGroup_TavernKeeper
+H 009689c0 CAIStateGroup_TavernKeeper::LeanOnBar RELOCATION_MATCH flags= [] leaf=LeanOnBar
+H 009692c0 CAIStateGroup_TavernKeeper::ReceivePayment RELOCATION_MATCH flags= [] leaf=?ReceivePayment@CAIStateGroup_TavernKeeper@@QAE_NXZ
+GR_DONE

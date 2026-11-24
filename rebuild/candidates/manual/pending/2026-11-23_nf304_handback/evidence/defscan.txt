@@ -1,0 +1,10 @@
+#14 004b3a20 binder 004b43d0 DEF ?DeactivateQuest@CQuestManager@@QAEXABVCCharString@@K@Z
+#19 00a10dc0 binder 009faf70 DEF ??0CRenderTarget@@QAE@XZ
+#19 00a10dc0 binder 00b87680 DEF ??0CRenderTarget@@QAE@XZ
+#19 00a10dc0 binder 00b89a20 DEF ??0CRenderTarget@@QAE@XZ
+#19 00a10dc0 binder 00b89c30 DEF ??0CRenderTarget@@QAE@XZ
+#31 00a7db10 binder 00a76a80 DEF ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z
+#35 00492973 binder 00492e4b DEF ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z
+#35 00492973 binder 00492f69 DEF ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z
+#35 00492973 binder 00493049 DEF ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@1111KM_N2@Z
+#53 007055d0 binder 00705b00 DEF ?GetCarriedPositionInfo@CTCCarryable@@QAE_NPAVC3DPositionInterpolator@@PAVC3DOrientationInterpolator@@M@Z

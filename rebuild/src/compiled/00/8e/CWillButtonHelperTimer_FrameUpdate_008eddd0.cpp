@@ -26,9 +26,11 @@ public:
 public:
     long GetJoystickDeviceNumber() const;   // 0x00487510
 };
+#define FABLE_RETAIL_COMBAT_INPUT_PASS26            // NF300: the shared EInputButtonEventType (held = 2) for the 0x00445E90 declaration
+#include "engine/EInputButtonEventType.h"
 class CGamePlayerInterface {
 public:
-    bool IsAssignableSpecialMoveButtonInQueue(long button, long eventType, long playerNumber) const;   // 0x00445E90
+    bool IsAssignableSpecialMoveButtonInQueue(long button, EInputButtonEventType eventType, long playerNumber) const;   // 0x00445E90
 };
 #include "engine/CMainGameComponent.h"   // NF94 q11265: the shared header (GETPPLAYERINTERFACE) in place of the row-local model
 inline CMainGameComponent* GetMainGameComponent() { return CMainGameComponent::Get(); }
@@ -150,7 +152,7 @@ void CWillButtonHelperTimer::FrameUpdate()
                 abilities = (CTCInventoryAbilities*)creature->GetTC(0x6f);
             long button = -1;
             if ((!abilities->QuickAccessPending && abilities->GetButtonAbilityIsSetTo(MyAbility, &button)
-                 && GetMainGameComponent()->GetPPlayerInterface()->IsAssignableSpecialMoveButtonInQueue(button, 2, PCreature->GetPlayer().GetJoystickDeviceNumber()))
+                 && GetMainGameComponent()->GetPPlayerInterface()->IsAssignableSpecialMoveButtonInQueue(button, INPUT_BUTTON_TYPE_HELD, PCreature->GetPlayer().GetJoystickDeviceNumber()))
                 || (abilities->QuickAccessPending && abilities->IsAbilityQuickAccessEventInQueue(MyAbility))) {
                 ++ButtonHeldDownTimer;
                 if (WillAccumulatedLevel < CurMaxLevels

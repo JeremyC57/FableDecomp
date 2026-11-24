@@ -1,0 +1,7 @@
+entry	address	status	binders respelled	note
+q12226	0x004190B6	blocked (family: 2 rows open)	0x004175E5 0x00418B7A 0x00419428	self ReleaseData<CLUA> ported (RELOCATION_MATCH); lands with the family (q12402)
+q12227	0x00419108	blocked (family: 2 rows open)	0x00416C8A 0x004175E5 0x00418B7A 0x00419134 0x004194B5 0x004194D1 0x0041E641 0x0042A9B7 0x0042DD28 0x0042DDB3 0x0042F50B 0x0056F177 0x005958F5 0x005BFF07	self ReleaseData<CGraphicDataBank> ported; every landed binder moved
+q12228	0x0042F974	blocked (family: 2 rows open)	0x0042DD28 0x0042F50B	self ReleaseData<CIEngine> ported (0x0042FD04 already right)
+q12229	0x0042F9A0	blocked (family: 2 rows open)	0x0042F50B	self ReleaseData<CASoundBank> ported (0x0042FD6F already right)
+q12402	0x004190B6	blocked (2 rows open: 0x00A5F1C0, 0x00A634F0)	42 rows ported (STATUS.tsv)	every family address ends on one spelling except 0x0041947A Reset<CFontBank> (3 spellings before and after: its two landed callers 0x00A5F1C0 / 0x00A634F0 keep local stand-ins); coordinator decisions 1 (0x005BFF07) and 2 (hold whole v land with the existing split) in NOTES
+q12403	0x004291DE	done	0x0042D45D 0x005C8459 0x005C9A95 0x0058F016	exactly these 4 rows (not 0x0041E641, which is a family row: it moves 0x00419108 / 0x0042918C); no landed row binds ??1<CComponent> at 0x004291DE any more; table line move in NOTES; independent of the family (lands alone)

@@ -1,0 +1,7 @@
+H 00997800 _global::ReplacePathExtension DIFFER(207v122) flags= ['/EHsc'] leaf=ReplacePathExtension
+H 00d80e40 NScript::CQ_HeroSoulsBriarScript::Main RELOCATION_MATCH flags= [] leaf=?Main@CQ_HeroSoulsBriarScript@NScript@@UAEXXZ
+H 00a5eea0 CStreamingFontDataBank::AdjustUpdateEntries RELOCATION_MATCH flags= [] leaf=AdjustUpdateEntries
+H 009ce8d0 CBankFile::BeginUpdateEntries RELOCATION_MATCH flags= [] leaf=
+H 00733580 CTCCombat::RemoveFromCombat RELOCATION_MATCH flags= [] leaf=?RemoveFromCombat@CTCCombat@@QAEXXZ
+H 0099f3b0 CCharString::Append RELOCATION_MATCH flags= [] leaf=?Append@CCharString@@QAEXDK@Z
+GR_DONE

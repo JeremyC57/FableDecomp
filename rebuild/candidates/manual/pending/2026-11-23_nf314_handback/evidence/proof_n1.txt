@@ -1,0 +1,12 @@
+##### 00699090 renames: ?Extra@CGameCameraManager@@QAEXXZ=?PushCurrentManualMode@CGameCameraManager@@QAEXXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0093a080 renames: ?RemoveMyWarningMessage@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ=?RemoveMessageEventsAdded@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAEXXZ
+sections head 17 new 17
+ALL_EQ text_sections_equal=14
+tables H=1 N=1
+##### 00449e60 renames: ?Get@CGameJoystickManager@@SIPAV1@XZ=?Get@CGameJoystickManager@@SIAAV1@XZ
+sections head 10 new 10
+ALL_EQ text_sections_equal=6
+tables H=0 N=0

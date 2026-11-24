@@ -98,7 +98,7 @@ class CCombatActionBase : public CCreatureActionBase { public:    // retail size
     virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* owner, CThingCreatureBase* target, const CCharString& animation,
+    CCreatureAction_PlayCombatAnimation(CThingCreatureBase& owner, CThingCreatureBase& target, const CCharString& animation,
         bool flag);                             // 0x008B7F80
 };
 class CPlayer { public:
@@ -162,7 +162,7 @@ void CAIStateGroup_PerformAction::Update()
             case 1: {
                 bool face = scratchpad->FaceHeroForAction;
                 CCharString action(scratchpad->Action);
-                result = AIAction_PerformAction(CCreatureAction_PlayCombatAnimation(GetCreature(), hero, action, face));
+                result = AIAction_PerformAction(CCreatureAction_PlayCombatAnimation(*GetCreature(), *hero, action, face));
                 break;
             }
             case 2:

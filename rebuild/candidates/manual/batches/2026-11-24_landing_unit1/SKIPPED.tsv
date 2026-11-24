@@ -1,0 +1,121 @@
+address	reason
+00408900	caller not accepted: 00548790 SKIP Q->Q: the difference is not an allowed access / const / virtual / return edit
+0042ddb3	a caller belongs to two units
+0042dec5	a caller belongs to two units
+00439e00	a caller belongs to two units
+00439f20	a caller belongs to two units
+004fbf60	a caller is itself a self of this run
+004fca50	a caller belongs to two units
+004fcac0	a caller belongs to two units
+004fcb30	a caller belongs to two units
+004fdbc0	a caller belongs to two units
+004fe030	a caller belongs to two units
+004fede0	a caller belongs to two units
+0055e850	a caller is itself a self of this run
+0055ea80	a caller is itself a self of this run
+0055f480	a caller is itself a self of this run
+0055fec0	a caller belongs to two units
+00561450	a caller belongs to two units
+005615c0	a caller belongs to two units
+00561980	a caller belongs to two units
+00561dc0	a caller belongs to two units
+005621b0	a caller belongs to two units
+005fd0f0	a caller belongs to two units
+005fd1d0	a caller belongs to two units
+00641260	caller reserved 006412b0
+0065890b	a caller belongs to two units
+006594bb	a caller belongs to two units
+0065a852	a caller belongs to two units
+0065c08a	a caller belongs to two units
+006643c0	caller reserved 006644f0
+0066fb80	a caller belongs to two units
+006705f0	a caller belongs to two units
+00670710	a caller belongs to two units
+00697760	a caller belongs to two units
+00697860	caller reserved 00697e20
+0069ac30	a caller belongs to two units
+0069b650	a caller belongs to two units
+0069b6f0	a caller belongs to two units
+006b7510	780 sources name Clear (cap 60)
+006c04d0	a caller belongs to two units
+006c0580	a caller belongs to two units
+006d73d0	caller reserved 006d7f20
+006d7430	a caller belongs to two units
+006d7e70	a caller belongs to two units
+006e0690	a caller belongs to two units
+006e0af0	caller reserved 006e0be0
+006e0df0	a caller belongs to two units
+006e1080	a caller belongs to two units
+006e14e0	a caller belongs to two units
+006eda80	caller reserved 006edc50
+00706040	a caller belongs to two units
+00706510	a caller belongs to two units
+00751ad0	a caller belongs to two units
+00752000	a caller belongs to two units
+00752640	a caller is itself a self of this run
+00753930	a caller belongs to two units
+00753ad0	a caller belongs to two units
+00753ba0	a caller belongs to two units
+00779d20	94 sources name Construct (cap 60)
+00788229	a caller is itself a self of this run
+007887be	a caller is itself a self of this run
+007a6f00	1699 sources name Reset (cap 60)
+007a74a0	caller reserved 007a7bf0
+007a9b70	1699 sources name Reset (cap 60)
+007ca670	caller reserved 007cab30
+007d7f10	a caller belongs to two units
+007d8c20	a caller belongs to two units
+007dd990	a caller belongs to two units
+007ddcc0	a caller belongs to two units
+0080c350	a caller belongs to two units
+0080c590	a caller belongs to two units
+0080d0b0	a caller belongs to two units
+0080f130	a caller is itself a self of this run
+0082a960	a caller belongs to two units
+0082a9b0	a caller belongs to two units
+0082abd0	a caller belongs to two units
+0082acd0	a caller belongs to two units
+0082add0	a caller belongs to two units
+0082ae80	a caller belongs to two units
+0082b520	a caller belongs to two units
+0082b630	a caller belongs to two units
+00830360	87 sources name ConstructFromParams (cap 60)
+008326a0	a caller belongs to two units
+00857b70	a caller belongs to two units
+008597a0	a caller belongs to two units
+008ec940	a caller belongs to two units
+008ec9c0	a caller belongs to two units
+008eca50	a caller belongs to two units
+008f5fa0	caller not accepted: 0081e810 SKIP declaration does not start its line
+0090f290	a caller belongs to two units
+0090f320	a caller belongs to two units
+00917a10	360 sources name IsRunnable (cap 60)
+00939d00	a caller belongs to two units
+00939d70	a caller belongs to two units
+0093d180	caller reserved 0093e5e0,0096ee90
+0093d580	caller reserved 0093d720
+009425f0	a caller belongs to two units
+00942c70	a caller belongs to two units
+00947e20	a caller belongs to two units
+009492a0	a caller belongs to two units
+00949320	a caller belongs to two units
+0094a840	a caller belongs to two units
+0095ab50	a caller is itself a self of this run
+0095d310	caller reserved 0095d590
+009a52f0	a caller belongs to two units
+009a5340	a caller belongs to two units
+009a5490	a caller belongs to two units
+009a64b0	a caller belongs to two units
+009be980	caller reserved 009c0e50
+009d52d0	caller not accepted: 009d5970 REJECT no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+009fd8d0	77 sources name Sizeof (cap 60)
+00a02140	caller not accepted: 00a62e40 REJECT no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS')); 00a03180 REJECT no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+00a67f60	callers did not compile at HEAD: 00f3fb96
+00a6c890	a caller belongs to two units
+00a73db0	a caller is itself a self of this run
+00a74360	a caller belongs to two units
+00ad9380	a caller is itself a self of this run
+00ae2050	138 sources name WriteToFile (cap 60)
+00bf6530	a caller belongs to two units
+00bf65b0	a caller belongs to two units
+00bf6a30	table witness not among the callers 00bf6a30

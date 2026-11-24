@@ -1,0 +1,5 @@
+# 00661f90 defined/undefined externals: HEAD (<) v NF261 (>)
+2c2
+< UND ?g_scale@@3MA
+---
+> DEF __real@3f000000

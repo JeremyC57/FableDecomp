@@ -5,7 +5,7 @@
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068C7F0, length 129 bytes.
-// Callees: CInputProcessGameBase::IsEventButtonHeld @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, CPlayer::HasMode
+// Callees: CInputProcessGameBase::IsEventButtonReleased @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, CPlayer::HasMode
 // @ 0x00634160 (MyPlayer +0x18), the event's controller-index getter (+0) @ 0x00A03B70, CProcessedInput::AddGameEvent @ 0x00A0D340,
 // __security_check_cookie @ 0x00BFE9F9.
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes); the
@@ -46,8 +46,10 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13)
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
+protected:
+    bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90 (kind 0x13); NF236: protected const (Ego_r / FableWin IBE)
+    bool IsEventButtonReleased(const CInputEvent& event) const;                 // 0x00687BD0 (kind 0x15); NF236: protected const (Ego_r / FableWin IBE)
+public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessToggleViewHeroMode : public CInputProcessGameBase {
@@ -57,7 +59,7 @@ public:
 
 void CInputProcessToggleViewHeroMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (IsEventButtonHeld(event)
+    if (IsEventButtonReleased(event)
         && (IsEventGameAction((EGameAction)(0x70), event) || (MyPlayer->HasMode((EPlayerMode)0x2f) && event.GetKey() == 1)))
         processed.AddGameEvent(0x55);
 }

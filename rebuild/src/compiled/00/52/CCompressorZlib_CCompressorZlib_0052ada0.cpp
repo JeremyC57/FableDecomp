@@ -27,7 +27,7 @@ public:
     bool          Compressing;                                  // +0x55
     bool          ErrorFlag;                                    // +0x56
     static long GetWorkspaceSize();                             // 0x00A3A7D0
-    void Init();                                                // 0x00A3AA10
+    private: void Initialise(); public:                                                // 0x00A3AA10; NF299: PDB name, was Init
     virtual ~CCompressorZlib();
     CCompressorZlib();
 };
@@ -35,5 +35,5 @@ public:
 CCompressorZlib::CCompressorZlib()
     : CACompressor(GetWorkspaceSize())
 {
-    Init();
+    Initialise();
 }

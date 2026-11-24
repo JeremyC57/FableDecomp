@@ -1,3 +1,4 @@
+// Leaf: ?UpdateLookTimer@CTCLook@@AAEXXZ
 // CTCLook::UpdateLookTimer() -- re-arm the look timer: LookTimer = current frame number + 90
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751AD0, length 23 bytes.
 // Callees: CTCBase::PeekComponent @ 0x00686D60 (out of line, `this` unused: returns [g_pMainGameComponent 0x013B8A1C]+0x1c;
@@ -19,7 +20,9 @@ protected:
 class CTCLook : public CTCBase { public:
     unsigned char _pad_0x08[0x34];
     long          LookTimer;                       // +0x3c
+    private:
     void UpdateLookTimer();
+    public:
 };
 
 void CTCLook::UpdateLookTimer()

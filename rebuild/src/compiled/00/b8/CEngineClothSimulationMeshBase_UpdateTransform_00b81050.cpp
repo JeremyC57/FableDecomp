@@ -51,7 +51,7 @@ struct CEngineClothSimulationMeshBase {
     CMatrix3x4                        InverseTransform;   // +0x78
     unsigned char                     _pad_a8[8];         // MeshInfo, PrimitiveIndex
     CEngineInternalPrimitiveMeshBase* Owner;              // +0xb0
-    void UpdateTransform();
+    protected: void UpdateTransform(); public:
 };
 
 void CEngineClothSimulationMeshBase::UpdateTransform()

@@ -1,5 +1,5 @@
 // CEngineWaterRenderer::LoadCompressedBuffer(CMemoryDataInputStream&, CVertexBufferWin32&, long*) -- read a vertex count and stride, create the vertex buffer, then range-decompress the following compressed block straight into the locked buffer; report the vertex count
-// Leaf: LoadCompressedBuffer
+// Leaf: ?LoadCompressedBuffer@CEngineWaterRenderer@@AAEXAAVCMemoryDataInputStream@@AAVCVertexBufferWin32@@PAJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6D940, length 432 bytes, `ret 0xc` (this unused).
 // Callees: CVertexBufferWin32::Uninitialise 0x00A63200, Initialise(long,long,long,unsigned long,long) 0x00A63150, the
 //   out-of-line Lock(3 args)/Unlock thunks 0x00AC20A0/0x00AC20B0 (COMDAT-folded), the buffer-usage query 0x00B3B030 on the
@@ -16,6 +16,8 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+protected:   // NF295: Ego_r + FableWin ?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z (protected base member; was on CMemoryDataInputStream)
+    void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10
 };
 class CMemoryDataInputStream { public:
     unsigned long StreamPos;                            // +0x04
@@ -27,7 +29,6 @@ class CMemoryDataInputStream { public:
     virtual void v00();
     virtual void v01();
     virtual unsigned long GetPosition();                // slot 2
-    void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10
     static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     FABLE_FORCEINLINE void Read(void* dst, long size)
     {
@@ -56,7 +57,7 @@ class CMemoryDataInputStream { public:
         const unsigned char* data;
         if (IsValidPosition(np)) {
             data = StreamSource + position;
-            SetPositionAssumeWithinSourceChunk(position + size);
+            ((CDataInputStream*)this)->SetPositionAssumeWithinSourceChunk(position + size);
         } else {
             data = 0;
         }
@@ -88,7 +89,9 @@ struct CRangeCompressor {
 };
 
 class CEngineWaterRenderer { public:
+    private:
     void LoadCompressedBuffer(CMemoryDataInputStream& stream, CVertexBufferWin32& buffer, long* vertexCount);
+    public:
 };
 
 void CEngineWaterRenderer::LoadCompressedBuffer(CMemoryDataInputStream& stream, CVertexBufferWin32& buffer, long* vertexCount)

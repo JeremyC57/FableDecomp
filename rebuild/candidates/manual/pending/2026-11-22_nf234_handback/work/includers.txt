@@ -1,0 +1,6 @@
+00495780 CFrontendGameComponent_Shutdown_00495780.cpp includers=0
+00496cf0 CFrontendGameComponent_Run_00496cf0.cpp includers=0
+00418b7a CMainGameComponent_CMainGameComponent_00418b7a.cpp includers=0
+0121a2dc global_gglobal0121a2dc_0121a2dc.cpp includers=0
+01228af1 global_GlobalMethodTailThunk01228af1_01228af1.cpp includers=0
+0042ea8f CNewFrontendGameComponent_CNewFrontendGameComponent_0042ea8f.cpp includers=0

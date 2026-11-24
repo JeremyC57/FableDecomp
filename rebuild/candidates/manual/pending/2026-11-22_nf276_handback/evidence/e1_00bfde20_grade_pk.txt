@@ -1,0 +1,25 @@
+##### 00bfde20
+pH 00bfde20 CLandscapeLayerMesh::~CLandscapeLayerMesh RELOCATION_MATCH flags= [] leaf=??1CLandscapeLayerMesh@@QAE@XZ
+pS 00bfde20 CLandscapeLayerMesh::~CLandscapeLayerMesh RELOCATION_MATCH flags= [] leaf=??1CLandscapeLayerMesh@@UAE@XZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ??1CLandscapeLayerMesh@@QAE@XZ
+< DEF ??1CMovableResource@@QAE@XZ
+> DEF ??1CLandscapeLayerMesh@@UAE@XZ
+> DEF ??1CMovableResource@@UAE@XZ
+> DEF ??_GCLandscapeLayerMesh@@UAEPAXI@Z
+> DEF ??_GCMovableResource@@UAEPAXI@Z
+> UND ??3@YAXPAX@Z
+> UND ??_GCLandscapeLayerMesh@@UAEPAXI@Z
+> UND ??_GCMovableResource@@UAEPAXI@Z
+> UND ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+> UND ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+> UND ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+< UND ?v00@CMovableResource@@UAEXXZ
+> UND ?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+> UND ?Verify@CMovableResource@@UBEKXZ
+> UND __purecall
+ALLDONE
+00bfde20 NEW	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+00bfde20 NEW	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+00bfde20 NEW	??_GCLandscapeLayerMesh@@UAEPAXI@Z	38	00bfe900	EQ

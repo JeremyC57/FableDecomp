@@ -1,0 +1,7 @@
+qid	queue_line
+q12668	land1122nf236	-	29 held p27 binding lines still held: batches/2026-11-22_landing_p27/logs/reloc_bindings_held_split_growth.tsv minus the 25 restored (pending/2026-11-22_nf236_handback/NOTES.md entry 5 gives each one's blocker); port the stand-in classes / respell the binders where two sources prove the spelling, count-neutral or count-reducing
+q12669	land1122nf236	0x006F2C00 / 0x01296F14	the two anonymous-namespace held lines whose other binders use stand-ins (CRotateThing; the non-anonymous ScreamerIntoAggressive vtable): respell those binders, then restore the lines (?A0x hashes count as one spelling, EXTRA_RULES 2026-11-20)
+q12670	land1122nf236	0x004C7E30	?IsLocal@CThing@@QBE_NXZ: prove the body against Ego_r / FableWin and rename the self row (catalog CThing::GetTypeName): files, catalog, leaf
+q12671	land1122nf236	0x007D7C10	name the row (catalog CUserProfileManager::GetAutoSaveFileName is a propagated label; it is a slot-42 getter of CTCTavernGameSpotTheAddition): vtable + PDBs, then self rename
+q12672	land1122nf235	0x00B260B0 / 0x00B261D0	the CEngine ctor and dtor together: a CEngine.h override opt-in with the 83 overrides in PDB spelling (pending/2026-11-22_nf235_handback/NOTES.md entry 3), replacing both rows' local EngineNative models
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof

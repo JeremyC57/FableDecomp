@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CTrapDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CTrapDef_GetSizeofClass()
+class CTrapDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CTrapDef::GetSizeofClass()
 {
     return 100;
 }

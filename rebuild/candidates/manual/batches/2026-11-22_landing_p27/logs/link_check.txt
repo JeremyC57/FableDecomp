@@ -1,0 +1,9 @@
+# link: control = 171 landed objects (the 143 recheck rows + 29 MovieBase script rows, final tree), landing = control + the 100 new objects. /DLL /NOENTRY /FORCE /NODEFAULTLIB
+control duplicate-symbol lines: 1; landing: 7
+0a1,6
+>       1 "private: bool __thiscall CAIStateGroup_JackDragon::IsStillRunnable(void)" (?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ)
+>       1 "private: class NUISystem::CComponent * __thiscall CTCQuickAccessMenu::GetExpressionsListUI(long &,class NUISystem::CComponent *)" (?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z)
+>       1 "private: void __thiscall CTCQuickAccessMenu::ConstructExpressionCategoryList(class CWideString &,class NUISystem::CList *,class std::vector<struct std::pair<long,long>,class std::allocator<struct std::pair<long,long> > > &,class NUISystem::CComponent *)" (?ConstructExpressionCategoryList@CTCQuickAccessMenu@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@@Z)
+>       1 "private: void __thiscall CTCQuickAccessMenu::ContructItemLists(class std::vector<struct std::pair<long,long>,class std::allocator<struct std::pair<long,long> > > &,class NUISystem::CList *,class NUISystem::CComponent *,class CCountedPointer<class NUISystem::CComponent> &)" (?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z)
+>       1 "public: bool __thiscall CDefClassBase::GetSubDef<class CTavernGameShoveHaPennyDef>(class CDefPointer<class CTavernGameShoveHaPennyDef const> *)const " (??$GetSubDef@VCTavernGameShoveHaPennyDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameShoveHaPennyDef@@@@@Z)
+>       1 "public: void __thiscall CTCQuickAccessMenu::Activate(void)" (?Activate@CTCQuickAccessMenu@@QAEXXZ)

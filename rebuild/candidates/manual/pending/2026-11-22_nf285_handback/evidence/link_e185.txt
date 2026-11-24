@@ -1,0 +1,8 @@
+## HEAD set: H_005be028.obj 005d9830.obj
+duplicates 0
+
+UNRESOLVED 1 ?IsAugmentation_005d9830@@YI_NJ@Z
+## new set: 005be028.obj 005d9830.obj
+duplicates 0
+
+LK_DONE

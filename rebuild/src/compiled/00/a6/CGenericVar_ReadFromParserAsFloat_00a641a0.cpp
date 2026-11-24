@@ -1,3 +1,4 @@
+// Leaf: ?ReadFromParserAsFloat@CGenericVar@@IAE_NAAVCStringParser@@@Z
 // CGenericVar::ReadFromParserAsFloat(CStringParser& parser) -- reads the parser's next item into the float at +0x18: an integer item (type 3) converted, a float item (type 4) as is; false for anything else
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A641A0, length 131 bytes (padded to 144).
 // Callees: CCharString::CCharString @ 0x0099E4B0 / ~CCharString @ 0x0099EAE0 (the item's text), CStringParser::ReadNextItem
@@ -20,7 +21,9 @@ class CStringParser { public:
 class CGenericVar { public:
     unsigned char _pad[0x18];
     float         m_floatValue;                    // +0x18
+    protected:
     bool ReadFromParserAsFloat(CStringParser& parser);
+    public:
 };
 
 bool CGenericVar::ReadFromParserAsFloat(CStringParser& parser)

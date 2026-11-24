@@ -75,7 +75,7 @@ namespace NScript {
 class CQ_HeroSoulsMotherScript : public CScriptBase {
 public:
     struct CSummonerToKill { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_HeroSoulsMotherScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D83CF0
-    struct CHSScreamer { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_HeroSoulsMotherScript& parent, CScriptDataBase* data, const CScriptThing& thing); };       // 0x00D83E60
+    struct CHS_Screamer { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_HeroSoulsMotherScript& parent, CScriptDataBase* data, const CScriptThing& thing); };       // 0x00D83E60
     CGameScriptInterface*   Game;                       // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44
     bool                    PlayedMotherCS;             // +0x48
@@ -89,7 +89,7 @@ public:
 void CQ_HeroSoulsMotherScript::Main()
 {
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_HeroSoulsMotherScript>("SummonerToKill", this, &CSummonerToKill::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CQ_HeroSoulsMotherScript>("HS_Screamer", this, &CHSScreamer::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_HeroSoulsMotherScript>("HS_Screamer", this, &CHS_Screamer::Alloc, 0));
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();
     while (!(Game->IsRegionLoaded("OakBay") || Game->IsRegionLoaded("OakvaleMemorialGarden"))) {

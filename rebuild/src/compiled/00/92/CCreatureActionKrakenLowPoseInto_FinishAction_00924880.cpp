@@ -24,7 +24,7 @@ class CThingCreatureBase : public CThing { public:
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual ~CCombatActionBase();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0062E900
-    virtual void FinishAction();                // 0x00859A20 (slot 4)
+    protected: virtual void FinishAction(); public:                // 0x00859A20 (slot 4)
     unsigned char           _pad04[4];          // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0xa8 - 0x10];

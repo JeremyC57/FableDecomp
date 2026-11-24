@@ -8,7 +8,7 @@
 #include "engine/CResource.h"
 
 class CGraphicFrameData { public:
-    unsigned long Sizeof();                                     // 0x009FCBF0
+    unsigned long Sizeof() const;                                     // 0x009FCBF0
 };
 
 struct CGraphicFrame_Retail {                                   // engine/CGraphicFrame.h: one pointer

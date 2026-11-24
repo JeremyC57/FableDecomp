@@ -1,3 +1,4 @@
+// Leaf: ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
 // CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat, C3DVector, float, bool&, EMovementType, bool, bool, bool, const CThing*, bool, float) -- steer the creature along its navigation route to within `proximity` of a position, one brain output per tick (move, look at the best face target or look around), until arrived (2), failed (3) or stopped (1)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
@@ -60,16 +61,16 @@ class CNavigationInput { public:
     long  MovementType;                         // +0x10
     float Speed;                                // +0x14
 };
-struct CCreatureNavOutput {
+class CTCCreatureNavigation { public: class CCreatureNavOutput { public:   // PDB CTCCreatureNavigation::CCreatureNavOutput (class key V, nested; NF307)
     long Status;                                // 0 arrived, 1 failed, 2 moving
     C3DVector Offset;
+};
+    CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool b1, bool b2, bool b3, bool b4, bool b5);   // 0x006CBAC0
 };
 class CTCLook { public:
     bool TrackNearestInterestingThing(bool track);   // 0x00753840
 };
-class CTCCreatureNavigation { public:
-    CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool b1, bool b2, bool b3, bool b4, bool b5);   // 0x006CBAC0
-};
+// (CTCCreatureNavigation is declared above, with its nested CCreatureNavOutput)
 class CCreatureActionBase { public:
     virtual void v00();
     bool BlocksMovement();                      // virtual slot 49 (+0xc4), declared below
@@ -164,7 +165,7 @@ class CBrainOutput { public:
     C3DVector               LookAtPos;          // +0x34
     CBaseIntelligentPointer LookAtThing;        // +0x40
     CBrainOutput();                             // 0x00835620
-    void SetAsLookAtThing(const CThing* thing, long lookFlags);   // 0x0093E760
+    void SetAsLookAtThing(const CThing& thing, long lookFlags);   // 0x0093E760
     void SetAsMoveToPos(const C3DVector& pos, const CNavigationInput& input)
     {
         Types |= 1;
@@ -193,19 +194,21 @@ class CAIStateGroupBase { public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
-    void SetNavigationIgnoreThing(const CThing* thing);   // 0x0097E270
-    void SetNavigationSpeedScale(float scale);            // 0x0097E2D0
+    protected: void SetThingToNotAvoid(const CThing* thing); public:   // 0x0097E270; NF296: PDB name, was SetNavigationIgnoreThing
+    protected: void SetProximityForDirectApproach(float scale); public:            // 0x0097E2D0; NF296: PDB name, was SetNavigationSpeedScale
+    protected:
     EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float proximity, bool& moving,
                                                 EMovementType anim, bool lookAround, bool b7, bool b8, const CThing* ignoreThing,
                                                 bool b10, float speedScale);
+    public:
 };
 
 EAIActionReturn CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float proximity, bool& moving,
                                                                EMovementType anim, bool lookAround, bool b7, bool b8,
                                                                const CThing* ignoreThing, bool b10, float speedScale)
 {
-    SetNavigationIgnoreThing(ignoreThing);
-    SetNavigationSpeedScale(speedScale);
+    SetThingToNotAvoid(ignoreThing);
+    SetProximityForDirectApproach(speedScale);
     if (IsStopping())
         return AI_ACTION_STOPPING;
     EAIActionReturn result = AI_ACTION_RUNNING;
@@ -220,7 +223,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat r
             ((CTCLook*)GetCreature()->GetTC(0x43))->TrackNearestInterestingThing(true);
         CTCCreatureNavigation* navigation;
         GetCreature()->GetInterface(&navigation, 7);
-        CCreatureNavOutput output = navigation->GetNextNavPosOnRoute(input, b7, b8, b10, true, false);
+        CTCCreatureNavigation::CCreatureNavOutput output = navigation->GetNextNavPosOnRoute(input, b7, b8, b10, true, false);
         moving = output.Status == 0 || output.Offset.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO;
         if (!GetCreature()->IsPerformingAnyAction() || !GetCreature()->CurrentAction->BlocksMovement()) {
             switch (output.Status) {
@@ -234,7 +237,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat r
                 CBrainOutput brainOutput;
                 brainOutput.SetAsMoveToPos(output.Offset + GetCreature()->PeekPos(), input);
                 if (faceTarget && !IsDead(faceTarget))
-                    brainOutput.SetAsLookAtThing(faceTarget, 0x97);
+                    brainOutput.SetAsLookAtThing(*faceTarget, 0x97);
                 else if (lookAround) {
                     brainOutput.Types |= 0x10;
                     brainOutput.LookFlags = 0x51;

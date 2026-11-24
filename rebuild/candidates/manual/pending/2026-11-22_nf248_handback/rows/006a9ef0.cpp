@@ -1,0 +1,195 @@
+// CThingPlayerCreature::OnCreate() -- creature-base create; mark the hero level/game-state persistent, record the initial position, set up the movement speeds and reset every control/movement/collision vector, name the script thing, take the hero-combat def and look up the player-movement def; validate, then create the default weapons when the def names a melee weapon
+// Leaf: ?OnCreate@CThingPlayerCreature@@MAE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x006A9EF0, length 528 bytes, `ret`, bool in al. Vtable 0x012457FC slot 8
+//   (the catalog's "CThingCreatureBase::OnCreateHero" is a propagated label).
+// Callees: CThingCreatureBase::OnCreate @ 0x00666310, CThing::SetAsGameStatePersisted(bool) @ 0x004C7880,
+//   CThingCreatureBase::PeekPos @ 0x006A4D00, CThingPlayerCreature::InitialiseMovementSpeeds @ 0x006A9A00,
+//   CCharString::operator=(const char*) @ 0x0099EFE0, CThingCreatureBase::GetHeroCombatDef @ 0x00663340 (CDefPointer by
+//   hidden pointer), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetDefinitionManager
+//   @ 0x004C7990, CDefinitionManager::GetDef<CPlayerMovementDef>(const CCharString&, CDefPointer&) @ 0x006AE1C0,
+//   CThingPhysical::ValidateInitialisation @ 0x006A4D60, CThingCreatureBase::CreateDefaultWeapons @ 0x00664680.
+// Globals: the hero creation state word @ 0x0137F940 (-1 until the first hero is created); strings "SCRIPT_NAME_HERO"
+//   0x0125D1C8 and "MOVEMENT_DEFAULT" 0x0125D1B4.
+// Layout (retail; Ego_r.pdb in brackets): CThing ScriptName +0x74 [+0x84], LevelPersistent bit 4 of +0x92 [+0xa2];
+//   CThingCreatureBase PDef +0xe0, InitialPos +0xe8 [+0x104], IdleCounter +0x124 [+0x148]; CThingPlayerCreature
+//   ControlMoveByVector +0x16c, MovedByPlayer bit 0 of +0x178, ControlledMovementType +0x17c, MovementAcceleration +0x180,
+//   RelativeMovementAcceleration +0x1b4, LastRelativeMovementAcceleration +0x1c0, CollidedWithThing +0x1cc, the two
+//   unaligned collision vectors +0x1cd/+0x1d9, PHeroCombatDef +0x1e8, PPlayerMovementDef +0x1ec, ImpulseVelocity +0x1f0,
+//   LeanAngle +0x1fc (landed CThingPlayerCreature models); CThingCreatureDef PrimaryMeleeWeaponDef +0xd8.
+// Shape: each def pointer is cleared as `if (P) { P->Release(); P = 0; } P = 0;` (both stores kept); the vectors are
+//   zeroed with `X = Y = Z = 0` (Z stored first); the hero-combat def is a CDefPointer temporary assigned through
+//   CDefPointer::operator= and released through the def's inline ReleaseTemporary(); the body nests under the base
+//   OnCreate and ValidateInitialisation tests so both failures share one final `return false` (ebx pushed at entry).
+#include "fable_compiler.h"
+class C3DVector { public:
+    float X, Y, Z;
+    void Clear() { X = Y = Z = 0.0f; }
+};
+class CCharString { public:
+    void* m_pData;
+    CCharString(const char* text, long length = -1);    // 0x0099EBF0
+    ~CCharString();                                     // 0x0099EAE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
+};
+struct CRefCounted {
+    long m_count;
+    void DecRef() { --m_count; }
+    long GetRefCount() const { return m_count; }
+};
+struct CDefVirtual {
+    virtual void v00();
+    virtual void Destroy();                             // slot 1
+};
+struct CDefObject : CDefVirtual, CRefCounted {
+    FABLE_FORCEINLINE void Release()
+    {
+        if (--m_count == 0)
+            Destroy();
+    }
+    void ReleaseTemporary()
+    {
+        DecRef();
+        if (GetRefCount() == 0)
+            Destroy();
+    }
+};
+// agentNF15: the pointee is held non-const whatever T is (engine/CDefPointer.h stores CDefPointeeBase*), so the
+//   CDefPointer<const T> out slots of the const def lookups keep the landed member code.
+template <class T> struct CDefNonConst { typedef T Type; };
+template <class T> struct CDefNonConst<const T> { typedef T Type; };
+template <class T> class CDefPointer { public:
+    typename CDefNonConst<T>::Type* Object;
+    CDefPointer() : Object(0) {}
+    ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    CDefPointer& operator=(const CDefPointer& o)
+    {
+        if (Object != o.Object) {
+            typename CDefNonConst<T>::Type* object = Object;
+            if (object) {
+                if (--object->m_count == 0)
+                    object->Destroy();
+                Object = 0;
+            }
+            Object = o.Object;
+            if (Object)
+                ++Object->m_count;
+        }
+        return *this;
+    }
+    void Clear()
+    {
+        if (Object) {
+            Object->Release();
+            Object = 0;
+        }
+        Object = 0;
+    }
+    typename CDefNonConst<T>::Type* operator->() const { return Object; }
+};
+class CHeroCombatDef : public CDefObject { public:};
+class CPlayerMovementDef : public CDefObject { public:};
+class CThingCreatureDef { public:
+    unsigned char _pad00[0xd8];
+    long PrimaryMeleeWeaponDef;                         // +0xd8
+};
+class CDefinitionManager { public:
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // 0x006AE1C0 GetDef<CPlayerMovementDef> (Ego_r.pdb member template)
+};
+
+extern long g_HeroCreationState;                        // 0x0137F940
+
+class CThing
+{
+protected:
+    virtual ~CThing();                    // vptr at +0 (both PDBs: ??1CThing@@MAE@XZ, protected virtual)
+public:
+    void SetAsGameStatePersisted(bool);   // 0x004C7880
+};
+class CThingPhysical : public CThing
+{
+public:
+    const C3DVector& PeekPos() const;    // 0x006A4D00
+};
+class CThingGameObject : public CThingPhysical
+{
+public:
+};
+
+class CThingCreatureBase : public CThingGameObject { public:
+    unsigned char _pad04[0x74 - 0x04];
+    CCharString ScriptName;                             // +0x74
+    unsigned char _pad78[0x92 - 0x78];
+    unsigned char _bits92 : 4;
+    unsigned char LevelPersistent : 1;                  // +0x92 bit 4
+    unsigned char _bits92b : 3;
+    unsigned char _pad93[0xe0 - 0x93];
+    CThingCreatureDef* PDef;                            // +0xe0 CDefPointer<const CThingCreatureDef>
+    unsigned char _pade4[0xe8 - 0xe4];
+    C3DVector InitialPos;                               // +0xe8
+    unsigned char _padf4[0x124 - 0xf4];
+    long IdleCounter;                                   // +0x124
+    unsigned char _pad128[0x16c - 0x128];
+    CDefinitionManager* GetDefinitionManager();         // 0x004C7990 (CThing)
+    bool ValidateInitialisation();                      // 0x006A4D60 (CThingPhysical)
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;   // 0x00663340 (Ego_r.pdb)
+    void CreateDefaultWeapons();                        // 0x00664680
+protected:
+    virtual bool OnCreate();                                    // 0x00666310 (protected virtual: FableWin / Ego_r ?OnCreate@CThingCreatureBase@@MAE_NXZ)
+};
+class CThingPlayerCreature : public CThingCreatureBase { public:
+    C3DVector ControlMoveByVector;                      // +0x16c
+    unsigned char MovedByPlayer : 1;                    // +0x178 bit 0
+    unsigned char Jumping : 1;
+    long ControlledMovementType;                        // +0x17c
+    C3DVector MovementAcceleration;                     // +0x180
+    unsigned char _pad18c[0x1b4 - 0x18c];
+    C3DVector RelativeMovementAcceleration;             // +0x1b4
+    C3DVector LastRelativeMovementAcceleration;         // +0x1c0
+    bool CollidedWithThing;                             // +0x1cc
+#pragma pack(push, 1)
+    struct { C3DVector Normal; C3DVector Position; } LastThingCollision;   // +0x1cd / +0x1d9
+#pragma pack(pop)
+    unsigned char _pad1e5[0x1e8 - 0x1e5];
+    CDefPointer<const CHeroCombatDef> PHeroCombatDef;         // +0x1e8
+    CDefPointer<const CPlayerMovementDef> PPlayerMovementDef; // +0x1ec (Ego_r.pdb CDefPointer<const CPlayerMovementDef>)
+    C3DVector ImpulseVelocity;                          // +0x1f0
+    float LeanAngle;                                    // +0x1fc
+    void InitialiseMovementSpeeds();                    // 0x006A9A00
+protected:
+    virtual bool OnCreate();            // protected virtual (both PDBs: MAE)
+};
+
+bool CThingPlayerCreature::OnCreate()
+{
+    if (CThingCreatureBase::OnCreate()) {
+        LevelPersistent = true;
+        SetAsGameStatePersisted(true);
+        InitialPos = PeekPos();
+        InitialiseMovementSpeeds();
+        PPlayerMovementDef.Clear();
+        PHeroCombatDef.Clear();
+        ControlMoveByVector.Clear();
+        MovementAcceleration.Clear();
+        RelativeMovementAcceleration.Clear();
+        LastRelativeMovementAcceleration.Clear();
+        IdleCounter = 0;
+        LeanAngle = 0.0f;
+        ImpulseVelocity.Clear();
+        MovedByPlayer = true;
+        ScriptName = "SCRIPT_NAME_HERO";
+        ControlledMovementType = 1;
+        CollidedWithThing = false;
+        LastThingCollision.Normal.Clear();
+        LastThingCollision.Position.Clear();
+        PHeroCombatDef = GetPHeroCombatDef();
+        GetDefinitionManager()->GetDef("MOVEMENT_DEFAULT", &PPlayerMovementDef);
+        if (g_HeroCreationState == -1)
+            g_HeroCreationState = 1;
+        if (ValidateInitialisation()) {
+            if (PDef->PrimaryMeleeWeaponDef)
+                CreateDefaultWeapons();
+            return true;
+        }
+    }
+    return false;
+}

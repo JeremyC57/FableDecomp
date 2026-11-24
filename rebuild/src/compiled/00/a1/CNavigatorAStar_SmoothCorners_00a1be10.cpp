@@ -1,5 +1,5 @@
 // CNavigatorAStar::SmoothCorners() -- for a route of three or more way points, walk every corner (three consecutive points) and take the unit directions of its two legs; the turn itself is not applied in this build, so only the normalisation work remains
-// Leaf: SmoothCorners
+// Leaf: ?SmoothCorners@CNavigatorAStar@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1BE10, 208 bytes. __fastcall, `ret`; an 8-aligned frame (`and esp,-8`).
 // Callees: C2DVector::Normalise() 0x00A14540 (landed) on each leg.
 // Layout: Ego_r.pdb CNavigatorAStar with STLport containers: Route (list<CNavWayPoint>; node next +0, prev +4, way point +8 with
@@ -41,7 +41,9 @@ class CNavigatorAStar {
 public:
     unsigned char      _pad00[0x8c];
     list<CNavWayPoint> Route;                      // +0x8c
+    private:
     void SmoothCorners();
+    public:
 };
 
 void CNavigatorAStar::SmoothCorners()

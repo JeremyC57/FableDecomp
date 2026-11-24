@@ -1,0 +1,8 @@
+970a971,977
+> #ifdef FABLE_RETAIL_CGAMESCRIPTINTERFACE_ENDCUTFADE_CALLEES
+>     // Opt-in (NF321, 2026-11-23, row 0x0088E520 EndCutFade): the two protected non-virtual helpers the donor FableWin EndCutFade calls,
+>     // Ego_r.pdb / FableWin.pdb ?EndFadeScreen@CGameScriptInterface@@IAEXXZ and ?Rest@CGameScriptInterface@@IBEXM@Z (landed self row
+>     // 0x006E71F0). Declarations only.
+>     void EndFadeScreen();                                                                                // 0x006E7270
+>     void Rest(float) const;                                                                              // 0x006E71F0
+> #endif

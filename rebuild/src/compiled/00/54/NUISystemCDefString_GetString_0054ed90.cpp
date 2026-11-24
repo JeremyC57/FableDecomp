@@ -1,5 +1,7 @@
 // NUISystem::CText::GetDataFromDef() -- read the text component's UI def: the font bank named by the def's font string, the text window, the scale-text flag, the def's text value (with its line-break flag), and the alignment bit
 // Leaf: GetDataFromDef@CText
+// Names (NF223, 2026-11-22): the font comes from CFontManager::GetFont (engine/CFontManager.h; FableWin.pdb / Ego_r.pdb ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z, the self leaf of 0x009E2C80; was a local NUISystem::CFontBankSource stand-in returning NUISystem::CCountedPointer<NUISystem::CFontBank>). engine/CCountedPointer.h is now included at global scope (it was included inside namespace NUISystem, which made every counted-pointer symbol NUISystem::); PFont is CCountedPointer<CFontBank> (Ego_r.pdb CText::PFont). The HEAD-local system-manager model's +0x84 pointer is retyped CFontManager* in place.
+// Pick-any (NF225, 2026-11-22): this /O2 TU expands operator=, ShareData and ReleaseData<CFontBank> as retail does and emits their COMDATs; FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (Data zeroed before Info, the /O2 owner 0x004057A0's body) and the engine/CCountedPointer.h size-body opt-ins FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY / _ASSIGN_SIZE_BODY (`optimize("s", on)` as the owner rows set) make those copies the owners' bodies: 0x004057A0 (53 B), 0x004190E2 (38 B), 0x00419463 (23 B), each equal with its relocations bound alike. The leaf grades the same with them removed.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets). Spellings unified: 009e2c80: ?GetFont@CFontBankSource@NUISystem@@QAE?AU?$CCountedPointer@UCFontBank@NUISystem@@@2@ABVCCharString@@@Z -> ?GetFont@CFontBankSource@NUISystem@@QAE?AV?$CCountedPointer@UCFontBank@NUISystem@@@2@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054ED90, length 365 bytes (plain `ret`, no frame pointer; Ego_r.pdb
 //   `?GetDataFromDef@CText@NUISystem@@QAEXXZ`). Called by the CText constructor 0x0054F5C0 (landed).
@@ -26,6 +28,11 @@ public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
 };
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY
+#include "engine/CCountedPointer.h"                     // the owner-body opt-ins above (pick-any copies = owners 0x004057A0 / 0x004190E2 / 0x00419463)
+#include "engine/CFontManager.h"                        // CFontManager::GetFont 0x009E2C80 and engine/CCountedPointer.h, at global scope
 namespace NUISystem {
 using ::CCharString;
 class CWideString { public: void* PStringData; };
@@ -40,15 +47,10 @@ struct CDefString {
     CCharString GetString() const { return GDefStringTable.GetString(Index); }
 };
 
-#include "engine/CCountedPointer.h"
-struct CFontBank;
-struct CFontBankSource {                                // the system manager's font bank (+0x84)
-    CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
-};
 struct CSystemManager {
     unsigned char    _pad00[0x84];
-    CFontBankSource* FontBank;                          // +0x84
-    CFontBankSource* GetFontBank() const { return FontBank; }
+    CFontManager*    FontBank;                          // +0x84 (Ego_r.pdb PFontManager, the CCountedPointer<CFontManager>'s Data)
+    CFontManager*    GetFontBank() const { return FontBank; }
 };
 CSystemManager* __fastcall GFGetSystemManager();        // 0x009A4EC0
 

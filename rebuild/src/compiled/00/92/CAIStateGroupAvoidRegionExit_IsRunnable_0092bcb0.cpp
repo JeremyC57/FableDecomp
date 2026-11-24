@@ -78,7 +78,7 @@ struct CTCWalkToMarkerView {
  unsigned char _before68[0x68]; bool Flag68;
  unsigned char _before7b[0x12]; bool Flag7b;
 };
-struct CTCAvoidRegionExitView {
+struct CTCAvoidRegionExit {   // NF301: was the view stand-in CTCAvoidRegionExitView (both PDBs: CTCAvoidRegionExit::GetPosition)
  unsigned char _base[0xc]; CIntelligentPointer<CThingAICreature> EntranceMarker;
  C3DVector GetPosition(); // 0092BD80
 };
@@ -90,7 +90,7 @@ bool CAvoidStateView::IsRunnable() {
   if(!walk->Flag7b || walk->Flag68) return false;
  }
  if(creature->HasTC(0x105)) {
-  CTCAvoidRegionExitView* avoid=(CTCAvoidRegionExitView*)creature->GetTC(0x105);
+  CTCAvoidRegionExit* avoid=(CTCAvoidRegionExit*)creature->GetTC(0x105);
   if(avoid->EntranceMarker.GetPItem() && !ThingView(avoid->EntranceMarker.GetPItem())->Dead) {
    Position=avoid->GetPosition();
    return true;

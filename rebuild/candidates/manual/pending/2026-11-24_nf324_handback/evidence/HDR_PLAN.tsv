@@ -1,0 +1,255 @@
+C3DAnimationStateAlpha	SKIP	FABLE_RETAIL_C3DANIMATIONSTATEALPHA_RTTI_DECLS	FABLE_RETAIL_C3DANIMATIONSTATEALPHA		0070fe20 override probe fails: chpad/w22/agentNF324/work/probe/p.cpp:42:69: error: no type named 'EType' in 'C3DAnimationStateBase'; 00a3be20 override probe fails: w22/agentNF324/work/probe/p.cpp:42:62: error: only virtual member functions can be marked 'override'
+C3DMeshInfo	EDIT	FABLE_RETAIL_C3DMESHINFO_RTTI_DECLS	FABLE_RETAIL_CMESHDATABANKENTRY	00a23c70	pinned: total pinned 0
+CAIStateGroup_BanditPlot	SKIP	FABLE_RETAIL_CAISTATEGROUP_BANDITPLOT_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_BANDITPLOT		008fe802 override probe fails: w22/agentNF324/work/probe/p.cpp:40:69: error: only virtual member functions can be marked 'override'
+CAIStateGroup_CarryCrateAndFollow	EDIT	FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW	00901697	pinned: total pinned 0
+CAIStateGroup_CreatureAdvanceInCover	SKIP				another agent's hdr/ overlay has this header
+CAIStateGroup_CreatureFindCover	SKIP				another agent's hdr/ overlay has this header
+CAIStateGroup_CreatureTakeCover	SKIP				another agent's hdr/ overlay has this header
+CAIStateGroup_FollowPlayer	EDIT	FABLE_RETAIL_CAISTATEGROUP_FOLLOWPLAYER_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_FOLLOWPLAYER	00900436	pinned: total pinned 1
+CAIStateGroup_Gaze	SKIP	FABLE_RETAIL_CAISTATEGROUP_GAZE_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_GAZE		00918ed0 override probe fails: w22/agentNF324/work/probe/p.cpp:36:63: error: only virtual member functions can be marked 'override'
+CAIStateGroup_Guildmaster	SKIP				another agent's hdr/ overlay has this header
+CAIStateGroup_HoverHornetQueen	SKIP				2 polymorphic definitions
+CAIStateGroup_HoverKeepInArea	EDIT	FABLE_RETAIL_CAISTATEGROUP_HOVERKEEPINAREA_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_HOVERKEEPINAREA	00900d03	pinned: total pinned 1
+CAIStateGroup_HoverWander	EDIT	FABLE_RETAIL_CAISTATEGROUP_HOVERWANDER_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_HOVERWANDER	00900c16	pinned: total pinned 1
+CAIStateGroup_HoverWanderAroundThing	SKIP	FABLE_RETAIL_CAISTATEGROUP_HOVERWANDERAROUNDTHING_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_HOVERWANDERAROUNDTHING		probe preamble fails clang: rebuild/include/engine/CTCMapwho.h:26:5: error: unknown type name 'CTCMapwho'
+CAIStateGroup_JackDragon	EDIT	FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON	009006be	pinned: total pinned 0
+CAIStateGroup_MazeDefensiveMeleeCombat	SKIP		FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27		class switch not defined by a landed row or _PASS (NF318 Q2)
+CAIStateGroup_MinionKidGroupTag	EDIT	FABLE_RETAIL_CAISTATEGROUP_MINIONKIDGROUPTAG_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_MINIONKIDGROUPTAG	009340f0	pinned: total pinned 0
+CAIStateGroup_MinionSitOnSeatBase	SKIP		FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEATBASE		class switch not defined by a landed row or _PASS (NF318 Q2)
+CAIStateGroup_MinionWatchFires	SKIP		FABLE_RETAIL_MINIONWATCHFIRES_UPDATE_PASS26		class switch not defined by a landed row or _PASS (NF318 Q2)
+CAIStateGroup_PrepareMeal	EDIT	FABLE_RETAIL_CAISTATEGROUP_PREPAREMEAL_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_PREPAREMEAL	009460b0	pinned: total pinned 0
+CAIStateGroup_RangedCombatUsePreferredFirePoint	SKIP				another agent's hdr/ overlay has this header
+CAIStateGroup_RecoverStealableItem	EDIT	FABLE_RETAIL_CAISTATEGROUP_RECOVERSTEALABLEITEM_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_RECOVERSTEALABLEITEM	00901600	pinned: total pinned 1
+CAIStateGroup_StealStealableItem	EDIT	FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM	00901561	pinned: total pinned 0
+CAIStateGroup_TavernKeeper	SKIP	FABLE_RETAIL_CAISTATEGROUP_TAVERNKEEPER_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_TAVERNKEEPER		probe preamble fails clang: rebuild/include/engine/CAIStateGroupBase.h:73:112: error: unknown type name 'CMessageEvent'
+CAIStateGroup_TestTestTest	SKIP		FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_PASS27		class switch not defined by a landed row or _PASS (NF318 Q2)
+CAIStateGroup_Thunder	SKIP				another agent's hdr/ overlay has this header
+CAIStateGroup_TrollBase	EDIT	FABLE_RETAIL_CAISTATEGROUP_TROLLBASE_RTTI_DECLS	FABLE_RETAIL_CAISTATEGROUP_TROLLBASE	00900381	pinned: total pinned 10
+CAIStateGroup_VillageTaskPickCrops	SKIP		FABLE_RETAIL_CROP_TASK_UPDATE_PASS24		class switch not defined by a landed row or _PASS (NF318 Q2)
+CAIStateGroup_WhisperRetreat	SKIP				another agent's hdr/ overlay has this header
+CAInputProcess	SKIP				another agent's hdr/ overlay has this header
+CActivateQuestDef	EDIT	FABLE_RETAIL_CACTIVATEQUESTDEF_RTTI_DECLS	FABLE_RETAIL_CACTIVATEQUESTDEF	004d506c	pinned: total pinned 1
+CAnimatingObjectDef	EDIT	FABLE_RETAIL_CANIMATINGOBJECTDEF_RTTI_DECLS		004ea20a	pinned: total pinned 0
+CAppearanceDef	EDIT	FABLE_RETAIL_CAPPEARANCEDEF_RTTI_DECLS		0046a174	pinned: total pinned 0
+CArmourDef	SKIP				class model under a complex #if: ELSE #if defined(FABLE_RETAIL_CARMOURDEF_DTOR) && defined(_MSC_VER)
+CBedDef	EDIT	FABLE_RETAIL_CBEDDEF_RTTI_DECLS		004d7a46	pinned: total pinned 1
+CBrainDef	SKIP		FABLE_RETAIL_CAIBRAIN_INITGROUPS_PASS26		class switch not defined by a landed row or _PASS (NF318 Q2)
+CBuyableHouseDef	EDIT	FABLE_RETAIL_CBUYABLEHOUSEDEF_RTTI_DECLS		004ddb52	pinned: total pinned 3
+CCameraModeDef	EDIT	FABLE_RETAIL_CCAMERAMODEDEF_RTTI_DECLS	FABLE_RETAIL_CCAMERAMODEDEF_CYLINDER	0045655e	pinned: total pinned 1
+CCarrySlotDef	EDIT	FABLE_RETAIL_CCARRYSLOTDEF_RTTI_DECLS		0044c1f6	pinned: total pinned 0
+CCarryableDef	EDIT	FABLE_RETAIL_CCARRYABLEDEF_RTTI_DECLS	FABLE_RETAIL_CCARRYABLEDEF	004d7a0b	pinned: total pinned 13
+CCombatAbilityBlockCounterAttackDef	SKIP				2 polymorphic definitions
+CCombatAbilityBlockLightWeaponAttackDef	SKIP				2 polymorphic definitions
+CCombatAbilityBlockUnarmedAttackDef	SKIP				2 polymorphic definitions
+CCombatAbilityFlourishCounterAttackDef	SKIP				2 polymorphic definitions
+CCombatAbilityStrafeDef	SKIP				2 polymorphic definitions
+CCombatAction_GenericResponseToExplosion	EDIT	FABLE_RETAIL_CCOMBATACTION_GENERICRESPONSETOEXPLOSION_RTTI_DECLS	FABLE_RETAIL_CCOMBATACTIONGENERICRESPONSETOEXPLOSION	0066a650,0066a660	pinned: total pinned 0
+CCombatAction_GenericStrikeResponseBase	EDIT	FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_RTTI_DECLS		006f56b0,00865e00	pinned: total pinned 0
+CCombatAction_GenericStrikeResponseKnockdown	EDIT	FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWN_RTTI_DECLS	FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN	00865b10,00865e10,00868300	pinned: total pinned 0; left out: 00868310 override probe fails: 22/agentNF324/work/probe/p.cpp:27:107: error: only virtual member functions can be marked 'override'; 00868320 override probe fails: 22/agentNF324/work/probe/p.cpp:27:108: error: only virtual member functions can be marked 'override'
+CCombatAction_GenericStrikeResponseKnockdownRecoverBase	EDIT	FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWNRECOVERBASE_RTTI_DECLS	FABLE_RETAIL_CCOMBATACTION_KNOCKDOWNRECOVER	007f05e0,00865b40	pinned: total pinned 5
+CCombatAction_KickThingOnGround	SKIP	FABLE_RETAIL_CCOMBATACTION_KICKTHINGONGROUND_RTTI_DECLS	FABLE_RETAIL_CCOMBATACTION_KICKTHINGONGROUND		00880020 override probe fails: w22/agentNF324/work/probe/p.cpp:28:94: error: only virtual member functions can be marked 'override'; 00880030 override probe fails: w22/agentNF324/work/probe/p.cpp:28:87: error: only virtual member functions can be marked 'override'
+CCombatAction_StrikeResponseJackOfBladesIntoRush	SKIP				2 polymorphic definitions
+CCombatSequenceGeneric	SKIP	FABLE_RETAIL_CCOMBATSEQUENCEGENERIC_RTTI_DECLS	FABLE_RETAIL_CCOMBATSEQUENCEGENERIC		probe preamble fails clang: rebuild/include/engine/CCombatSequenceGeneric.h:24:39: error: unknown class name 'CCombatSequenceBase'; did you mean 'CCombatSequenceDef'?
+CCombatSequence_WillForcePushLongRange	SKIP	FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE_RTTI_DECLS	FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE		probe preamble fails clang: rebuild/include/engine/CCombatSequence_WillForcePushLongRange.h:16:55: error: expected class name
+CCombatTypeDef	EDIT	FABLE_RETAIL_CCOMBATTYPEDEF_RTTI_DECLS	FABLE_RETAIL_CCOMBATTYPEDEF	00455ddd	pinned: total pinned 0
+CContainerRewardHeroDef	SKIP		FABLE_RETAIL_REWARD_PICKUP_PASS27		class switch not defined by a landed row or _PASS (NF318 Q2)
+CContainmentVolume	SKIP	FABLE_RETAIL_CCONTAINMENTVOLUME_RTTI_DECLS	FABLE_RETAIL_CCONTAINMENTVOLUME_MOVABLERESOURCE		00a755a0 override probe fails: /w22/agentNF324/work/probe/p.cpp:6:86: error: only virtual member functions can be marked 'override'
+CContextSensitiveItemDef	EDIT	FABLE_RETAIL_CCONTEXTSENSITIVEITEMDEF_RTTI_DECLS	FABLE_RETAIL_CCONTEXTSENSITIVEITEMDEF_CLASS	0044c37a	pinned: total pinned 0
+CCreatureAction_BalverineBreakOffFromCombat	SKIP	FABLE_RETAIL_CCREATUREACTION_BALVERINEBREAKOFFFROMCOMBAT_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_BALVERINEBREAKOFFFROMCOMBAT_PROTOTYPE		008cd240 override probe fails: 22/agentNF324/work/probe/p.cpp:99:102: error: only virtual member functions can be marked 'override'
+CCreatureAction_BalverineBreakOffFromCombatLong	SKIP	FABLE_RETAIL_CCREATUREACTION_BALVERINEBREAKOFFFROMCOMBATLONG_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_BALVERINEBREAKOFFFROMCOMBATLONG_PROTOTYPE		008cd250 override probe fails: 2/agentNF324/work/probe/p.cpp:100:106: error: only virtual member functions can be marked 'override'
+CCreatureAction_BalverineLungeAttack	EDIT	FABLE_RETAIL_CCREATUREACTION_BALVERINELUNGEATTACK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_BALVERINELUNGEATTACK_PROTOTYPE	008cd210	pinned: total pinned 1; left out: 008cd220 override probe fails: w22/agentNF324/work/probe/p.cpp:98:95: error: only virtual member functions can be marked 'override'; 008cd230 override probe fails: w22/agentNF324/work/probe/p.cpp:98:96: error: only virtual member functions can be marked 'override'
+CCreatureAction_BanditKingGetHit	EDIT	FABLE_RETAIL_CCREATUREACTION_BANDITKINGGETHIT_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_BANDITKINGGETHIT_PROTOTYPE	006f5a60	pinned: total pinned 1
+CCreatureAction_BanditKingLunge	EDIT	FABLE_RETAIL_CCREATUREACTION_BANDITKINGLUNGE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_BANDITKINGLUNGE	00961a00,00961a10,00961a20	pinned: total pinned 0
+CCreatureAction_BeDazed	SKIP				another agent's hdr/ overlay has this header
+CCreatureAction_BeingForcePushed	EDIT	FABLE_RETAIL_CCREATUREACTION_BEINGFORCEPUSHED_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_BEINGFORCEPUSHED_COMBAT	008bdb20,008bdb30	pinned: total pinned 0
+CCreatureAction_BodgeSideStrike	EDIT	FABLE_RETAIL_CCREATUREACTION_BODGESIDESTRIKE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_BODGESIDESTRIKE_PROTOTYPE	008bffb0	pinned: total pinned 1; left out: 008bffa0 override probe fails: w22/agentNF324/work/probe/p.cpp:96:90: error: only virtual member functions can be marked 'override'
+CCreatureAction_BriarRoseConcentrateInto	SKIP	FABLE_RETAIL_CCREATUREACTION_BRIARROSECONCENTRATEINTO_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_BRIARROSECONCENTRATEINTO		008e8c10 override probe fails: /w22/agentNF324/work/probe/p.cpp:9:99: error: only virtual member functions can be marked 'override'
+CCreatureAction_BriarRoseShotFarOutof	SKIP	FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFAROUTOF_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFAROUTOF_CLASS		008c3a30 override probe fails: w22/agentNF324/work/probe/p.cpp:40:89: error: only virtual member functions can be marked 'override'; 008c3a40 override probe fails: w22/agentNF324/work/probe/p.cpp:40:96: error: only virtual member functions can be marked 'override'
+CCreatureAction_CastAssassinRush	EDIT	FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH	008cebe0	pinned: total pinned 0
+CCreatureAction_CastBattleCharge	EDIT	FABLE_RETAIL_CCREATUREACTION_CASTBATTLECHARGE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_CASTBATTLECHARGE_PROTOTYPE	008cebf0	pinned: total pinned 1
+CCreatureAction_CastPhysicalShieldSpell	EDIT	FABLE_RETAIL_CCREATUREACTION_CASTPHYSICALSHIELDSPELL_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_CASTPHYSICALSHIELD	008bd990	pinned: total pinned 0
+CCreatureAction_CastStrengthBerserk	EDIT	FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHBERSERK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_CASTSTRENGTHBERSERK_CLASS	008e6de0	pinned: total pinned 0
+CCreatureAction_CastWillEnflameSpell	EDIT	FABLE_RETAIL_CCREATUREACTION_CASTWILLENFLAMESPELL_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_CASTWILLENFLAMESPELL_CLASS	008bd930,008bd940	pinned: total pinned 0
+CCreatureAction_CastWillForceSpell	EDIT	FABLE_RETAIL_CCREATUREACTION_CASTWILLFORCESPELL_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_CASTWILLFORCESPELL_CLASS	008bd900	pinned: total pinned 0
+CCreatureAction_CastWillLightningSpell	EDIT	FABLE_RETAIL_CCREATUREACTION_CASTWILLLIGHTNINGSPELL_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_CASTWILLLIGHTNINGSPELL_MAZE	008bdab0	pinned: total pinned 3
+CCreatureAction_Charge	SKIP	FABLE_RETAIL_CCREATUREACTION_CHARGE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_CHARGE_PROTOTYPE		008b86f0 override probe fails: w22/agentNF324/work/probe/p.cpp:91:81: error: only virtual member functions can be marked 'override'
+CCreatureAction_CombatBoast	SKIP	FABLE_RETAIL_CCREATUREACTION_COMBATBOAST_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_COMBATBOAST_PROTOTYPE		006f5970 override probe fails: w22/agentNF324/work/probe/p.cpp:83:86: error: only virtual member functions can be marked 'override'
+CCreatureAction_DiagonalStrafeBL	SKIP	FABLE_RETAIL_CCREATUREACTION_DIAGONALSTRAFEBL_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_DIAGONALSTRAFEBL_PROTOTYPE		008bff50 override probe fails: w22/agentNF324/work/probe/p.cpp:89:84: error: only virtual member functions can be marked 'override'
+CCreatureAction_DiagonalStrafeBR	SKIP	FABLE_RETAIL_CCREATUREACTION_DIAGONALSTRAFEBR_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_DIAGONALSTRAFEBR_PROTOTYPE		008bff60 override probe fails: w22/agentNF324/work/probe/p.cpp:90:84: error: only virtual member functions can be marked 'override'
+CCreatureAction_Die	EDIT	FABLE_RETAIL_CCREATUREACTION_DIE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_DIE	008edb50,008edb60,008edb70,008edb80	pinned: total pinned 4
+CCreatureAction_DragonBurninateInto	EDIT	FABLE_RETAIL_CCREATUREACTION_DRAGONBURNINATEINTO_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_DRAGONBURNINATEINTO	00953880	pinned: total pinned 15
+CCreatureAction_DragonLand	SKIP		FABLE_RETAIL_CCREATUREACTION_DRAGONLAND_PASS27		class switch not defined by a landed row or _PASS (NF318 Q2)
+CCreatureAction_DragonRearUpFull	EDIT	FABLE_RETAIL_CCREATUREACTION_DRAGONREARUPFULL_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_DRAGONREARUPFULL	00953190	pinned: total pinned 0
+CCreatureAction_DropGenericBox	SKIP				another agent's hdr/ overlay has this header
+CCreatureAction_FinishFireballSpell	SKIP	FABLE_RETAIL_CCREATUREACTION_FINISHFIREBALLSPELL_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_FINISHFIREBALLSPELL_CLASS		008bdaf0 override probe fails: w22/agentNF324/work/probe/p.cpp:51:94: error: only virtual member functions can be marked 'override'
+CCreatureAction_GenericAimProjectileWeapon	SKIP	FABLE_RETAIL_CCREATUREACTION_GENERICAIMPROJECTILEWEAPON_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_GENERICAIMPROJECTILEWEAPON_PROTOTYPE		006f5aa0 override probe fails: w22/agentNF324/work/probe/p.cpp:70:94: error: only virtual member functions can be marked 'override'; 006f5ab0 override probe fails: 22/agentNF324/work/probe/p.cpp:70:102: error: only virtual member functions can be marked 'override'
+CCreatureAction_GenericFireProjectileWeapon	SKIP				2 polymorphic definitions
+CCreatureAction_GenericLoadProjectileWeapon	SKIP	FABLE_RETAIL_CCREATUREACTION_GENERICLOADPROJECTILEWEAPON_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_GENERICLOADPROJECTILEWEAPON_PROTOTYPE		008bff00 override probe fails: 22/agentNF324/work/probe/p.cpp:81:102: error: only virtual member functions can be marked 'override'
+CCreatureAction_GenericStrafeLeft	SKIP	FABLE_RETAIL_CCREATUREACTION_GENERICSTRAFELEFT_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_GENERICSTRAFELEFT_PROTOTYPE		006f59e0 override probe fails: w22/agentNF324/work/probe/p.cpp:87:85: error: only virtual member functions can be marked 'override'
+CCreatureAction_GenericStrafeRight	SKIP	FABLE_RETAIL_CCREATUREACTION_GENERICSTRAFERIGHT_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_GENERICSTRAFERIGHT_PROTOTYPE		006f5a10 override probe fails: w22/agentNF324/work/probe/p.cpp:88:86: error: only virtual member functions can be marked 'override'
+CCreatureAction_GetUpFromSitting	SKIP				another agent's hdr/ overlay has this header
+CCreatureAction_GoUnderground	EDIT	FABLE_RETAIL_CCREATUREACTION_GOUNDERGROUND_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_GOUNDERGROUND_CLASS	008b86a0	pinned: total pinned 0
+CCreatureAction_HeroLoadRangedWeapon	EDIT	FABLE_RETAIL_CCREATUREACTION_HEROLOADRANGEDWEAPON_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_HEROLOADRANGEDWEAPON_CLASS	0078aee0,0078aef0	pinned: total pinned 0
+CCreatureAction_HobbeLungeAttack	EDIT	FABLE_RETAIL_CCREATUREACTION_HOBBELUNGEATTACK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_HOBBELUNGEATTACK_PROTOTYPE	008c9d40,008c9d50	pinned: total pinned 1; left out: 008c9d60 override probe fails: 22/agentNF324/work/probe/p.cpp:101:91: error: only virtual member functions can be marked 'override'
+CCreatureAction_InterruptableFarAttack	EDIT	FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEFARATTACK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEFARATTACK_PROTOTYPE	006f5830,006f5840	pinned: total pinned 1; left out: 006f5850 override probe fails: w22/agentNF324/work/probe/p.cpp:93:97: error: only virtual member functions can be marked 'override'
+CCreatureAction_InterruptableMidAttack	EDIT	FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_PROTOTYPE	006f58b0	pinned: total pinned 1; left out: 006f58a0 override probe fails: w22/agentNF324/work/probe/p.cpp:94:97: error: only virtual member functions can be marked 'override'
+CCreatureAction_JackFlash	EDIT	FABLE_RETAIL_CCREATUREACTION_JACKFLASH_RTTI_DECLS	FABLE_RETAIL_JACK_STAGE2_UPDATE	00976f00	pinned: total pinned 1
+CCreatureAction_JackFloatUp	EDIT	FABLE_RETAIL_CCREATUREACTION_JACKFLOATUP_RTTI_DECLS	FABLE_RETAIL_JACK_STAGE2_UPDATE	009772f0	pinned: total pinned 1
+CCreatureAction_JackScream	SKIP		FABLE_RETAIL_JACK_STAGE3_ACTIONS_PASS26		class switch not defined by a landed row or _PASS (NF318 Q2)
+CCreatureAction_NymphGetHitDie	EDIT	FABLE_RETAIL_CCREATUREACTION_NYMPHGETHITDIE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_NYMPHGETHITDIE_PROTOTYPE	006f5b40	pinned: total pinned 1
+CCreatureAction_NymphIdleAfterShot	SKIP		FABLE_RETAIL_NYMPH_ATTACK_PASS27		class switch not defined by a landed row or _PASS (NF318 Q2)
+CCreatureAction_NymphShot	SKIP		FABLE_RETAIL_NYMPH_ATTACK_PASS27		class switch not defined by a landed row or _PASS (NF318 Q2)
+CCreatureAction_NymphSummonInto	SKIP		FABLE_RETAIL_NYMPH_ATTACK_PASS27		class switch not defined by a landed row or _PASS (NF318 Q2)
+CCreatureAction_OnGenerate	EDIT	FABLE_RETAIL_CCREATUREACTION_ONGENERATE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_ONGENERATE	0074dc00,0074dc10	pinned: total pinned 2; left out: 0074dc20 override probe fails: w22/agentNF324/work/probe/p.cpp:47:85: error: only virtual member functions can be marked 'override'
+CCreatureAction_OpenChest	EDIT	FABLE_RETAIL_CCREATUREACTION_OPENCHEST_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_OPENCHEST	007ee850,007ee860	pinned: total pinned 4
+CCreatureAction_PickUpGenericBox	EDIT	FABLE_RETAIL_CCREATUREACTION_PICKUPGENERICBOX_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_GENERICBOX	0084b390,0084b3a0	pinned: total pinned 4
+CCreatureAction_PickupGameObject	EDIT	FABLE_RETAIL_CCREATUREACTION_PICKUPGAMEOBJECT_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_PICKUPGAMEOBJECT	007eb0c0,007eb0d0	pinned: total pinned 3
+CCreatureAction_PlayCombatAnimationWithLooking	EDIT	FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATIONWITHLOOKING_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATION	008b8690	pinned: total pinned 3
+CCreatureAction_PlayHopscotch	SKIP				another agent's hdr/ overlay has this header
+CCreatureAction_QueenHornetShootBabies	EDIT	FABLE_RETAIL_CCREATUREACTION_QUEENHORNETSHOOTBABIES_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_QUEENHORNETSHOOTBABIES	0095cc00,0095cc10	pinned: total pinned 3
+CCreatureAction_ReleasePhysicalShieldSpell	EDIT	FABLE_RETAIL_CCREATUREACTION_RELEASEPHYSICALSHIELDSPELL_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_RELEASEPHYSICALSHIELDSPELL	008bd9b0,008bd9c0,008bd9d0	pinned: total pinned 0
+CCreatureAction_ReleaseStrengthBerserk	EDIT	FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK	008e6df0,008e6e00,008e6e10	pinned: total pinned 1
+CCreatureAction_ReleaseTimeSpell	EDIT	FABLE_RETAIL_CCREATUREACTION_RELEASETIMESPELL_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_RELEASETIMESPELL	008cebb0,008cebc0,008cebd0	pinned: total pinned 4
+CCreatureAction_RiseUp	EDIT	FABLE_RETAIL_CCREATUREACTION_RISEUP_RTTI_DECLS		0074db40,0074db50,0074db60,0074db80	pinned: total pinned 1
+CCreatureAction_ScorpionChargeInto	EDIT	FABLE_RETAIL_CCREATUREACTION_SCORPIONCHARGEINTO_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SCORPIONCHARGEINTO	008c5b90	pinned: total pinned 4; left out: 008c5ba0 override probe fails: w22/agentNF324/work/probe/p.cpp:56:97: error: only virtual member functions can be marked 'override'; 008c5bb0 override probe fails: w22/agentNF324/work/probe/p.cpp:56:94: error: only virtual member functions can be marked 'override'
+CCreatureAction_ScorpionSummon	EDIT	FABLE_RETAIL_CCREATUREACTION_SCORPIONSUMMON_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SCORPIONSUMMON_CLASS	008c52b0	pinned: total pinned 2
+CCreatureAction_ScorpionUnblockableLeftTurnAttack	EDIT	FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK	0097c7e0,0097c7f0	pinned: total pinned 2; left out: 0097c800 override probe fails: 22/agentNF324/work/probe/p.cpp:57:112: error: only virtual member functions can be marked 'override'
+CCreatureAction_ScorpionUnblockableRightTurnAttack	EDIT	FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLERIGHTTURNATTACK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLERIGHTTURNATTACK	0097c8b0,0097c8c0	pinned: total pinned 2; left out: 0097c8d0 override probe fails: 22/agentNF324/work/probe/p.cpp:58:113: error: only virtual member functions can be marked 'override'
+CCreatureAction_ScreamerAdvance	SKIP	FABLE_RETAIL_CCREATUREACTION_SCREAMERADVANCE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SCREAMERADVANCE_PROTOTYPE		probe preamble fails clang: rebuild/include/engine/CCreatureAction_ScreamerDrainAttack.h:7:52: error: expected class name
+CCreatureAction_ScreamerBackOff	SKIP	FABLE_RETAIL_CCREATUREACTION_SCREAMERBACKOFF_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SCREAMERBACKOFF_PROTOTYPE		probe preamble fails clang: rebuild/include/engine/CCreatureAction_ScreamerDrainAttack.h:7:52: error: expected class name
+CCreatureAction_ScreamerDrainAttack	SKIP	FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINATTACK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINATTACK_PROTOTYPE		probe preamble fails clang: rebuild/include/engine/CCreatureAction_ScreamerDrainAttack.h:7:52: error: expected class name
+CCreatureAction_ScreamerDrainOutOf	EDIT	FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINOUTOF_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINOUTOF_PROTOTYPE	006f55c0	pinned: total pinned 0; left out: 006f55a0 override probe fails: w22/agentNF324/work/probe/p.cpp:48:93: error: only virtual member functions can be marked 'override'; 006f55b0 override probe fails: w22/agentNF324/work/probe/p.cpp:48:86: error: only virtual member functions can be marked 'override'
+CCreatureAction_ScreamerIdle	SKIP	FABLE_RETAIL_CCREATUREACTION_SCREAMERIDLE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SCREAMERIDLE_PROTOTYPE		probe preamble fails clang: rebuild/include/engine/CCreatureAction_ScreamerDrainAttack.h:7:52: error: expected class name
+CCreatureAction_SheatheItemToInventory_ForEnflame	EDIT	FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_CLASS	006a07d0,006a07e0	pinned: total pinned 0
+CCreatureAction_SitDown	EDIT	FABLE_RETAIL_CCREATUREACTION_SITDOWN_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SITDOWN	008aba50,008aba60,008aba70,008aba80,008aba90	pinned: total pinned 5
+CCreatureAction_SnapDragon	EDIT	FABLE_RETAIL_CCREATUREACTION_SNAPDRAGON_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SNAPDRAGON	00953220,00953230	pinned: total pinned 2
+CCreatureAction_SnapDragonFast	EDIT	FABLE_RETAIL_CCREATUREACTION_SNAPDRAGONFAST_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SNAPDRAGONFAST	009532c0,009532d0	pinned: total pinned 2
+CCreatureAction_StrafeBackward	SKIP	FABLE_RETAIL_CCREATUREACTION_STRAFEBACKWARD_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_STRAFEBACKWARD_PROTOTYPE		008bff80 override probe fails: w22/agentNF324/work/probe/p.cpp:73:82: error: only virtual member functions can be marked 'override'
+CCreatureAction_StrafeForward	SKIP	FABLE_RETAIL_CCREATUREACTION_STRAFEFORWARD_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_STRAFEFORWARD_PROTOTYPE		008bff70 override probe fails: w22/agentNF324/work/probe/p.cpp:72:81: error: only virtual member functions can be marked 'override'
+CCreatureAction_SummonerDie	SKIP	FABLE_RETAIL_CCREATUREACTION_SUMMONERDIE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SUMMONERDIE_PROTOTYPE		probe preamble fails clang: rebuild/include/engine/CCreatureAction_ScreamerDrainAttack.h:7:52: error: expected class name
+CCreatureAction_SummonerFlameSlice	SKIP	FABLE_RETAIL_CCREATUREACTION_SUMMONERFLAMESLICE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SUMMONERFLAMESLICE_PROTOTYPE		probe preamble fails clang: rebuild/include/engine/CCreatureAction_ScreamerDrainAttack.h:7:52: error: expected class name
+CCreatureAction_SummonerStrike	SKIP	FABLE_RETAIL_CCREATUREACTION_SUMMONERSTRIKE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SUMMONERSTRIKE_PROTOTYPE		probe preamble fails clang: rebuild/include/engine/CCreatureAction_ScreamerDrainAttack.h:7:52: error: expected class name
+CCreatureAction_SummonerUnsheatheStrike	SKIP	FABLE_RETAIL_CCREATUREACTION_SUMMONERUNSHEATHESTRIKE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_SUMMONERUNSHEATHESTRIKE_PROTOTYPE		probe preamble fails clang: rebuild/include/engine/CCreatureAction_ScreamerDrainAttack.h:7:52: error: expected class name
+CCreatureAction_TentacleStrikeGetHit	EDIT	FABLE_RETAIL_CCREATUREACTION_TENTACLESTRIKEGETHIT_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_TENTACLESTRIKEGETHIT_PROTOTYPE	008cfaa0,008cfab0	pinned: total pinned 1
+CCreatureAction_TrollThrowProjectile	EDIT	FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE	008c7cf0	pinned: total pinned 9; left out: 008c7cc0 override probe fails: w22/agentNF324/work/probe/p.cpp:58:88: error: only virtual member functions can be marked 'override'; 008c7cd0 override probe fails: w22/agentNF324/work/probe/p.cpp:58:88: error: only virtual member functions can be marked 'override'; 008c7ce0 override probe fails: w22/agentNF324/work/probe/p.cpp:58:96: error: only virtual member functions can be marked 'override'
+CCreatureAction_UnblockableMidAttack	EDIT	FABLE_RETAIL_CCREATUREACTION_UNBLOCKABLEMIDATTACK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_UNBLOCKABLEMIDATTACK_PROTOTYPE	008bff20,008bff30	pinned: total pinned 1; left out: 008bff40 override probe fails: w22/agentNF324/work/probe/p.cpp:92:99: error: only virtual member functions can be marked 'override'
+CCreatureAction_UndeadIdleUnderground	EDIT	FABLE_RETAIL_CCREATUREACTION_UNDEADIDLEUNDERGROUND_RTTI_DECLS		0074dd60	pinned: total pinned 0
+CCreatureAction_UndeadReturnToEarth	EDIT	FABLE_RETAIL_CCREATUREACTION_UNDEADRETURNTOEARTH_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_UNDEADRETURNTOEARTH_CLASS	008ec770,008ec780	pinned: total pinned 0
+CCreatureAction_UndeadRiseUp	SKIP				another agent's hdr/ overlay has this header
+CCreatureAction_UseLamp	EDIT	FABLE_RETAIL_CCREATUREACTION_USELAMP_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_USELAMP	0084b2f0	pinned: total pinned 4
+CCreatureAction_WaspQueenDiveAttack	SKIP	FABLE_RETAIL_CCREATUREACTION_WASPQUEENDIVEATTACK_RTTI_DECLS	FABLE_RETAIL_CCREATUREACTION_WASPQUEENDIVEATTACK_BASE		008c5c40 override probe fails: w22/agentNF324/work/probe/p.cpp:40:94: error: only virtual member functions can be marked 'override'; 008c5c50 override probe fails: w22/agentNF324/work/probe/p.cpp:40:95: error: only virtual member functions can be marked 'override'
+CCreatureAction_WaspQueenPrimaryAttack	SKIP		FABLE_RETAIL_CCREATUREACTION_WASPQUEENPRIMARYATTACK_PASS23		class switch not defined by a landed row or _PASS (NF318 Q2)
+CCreatureDef	SKIP				2 polymorphic definitions
+CCreatureNavigationDef	EDIT	FABLE_RETAIL_CCREATURENAVIGATIONDEF_RTTI_DECLS	FABLE_RETAIL_CCREATURENAVIGATIONDEF	004d7a72	pinned: total pinned 7
+CCreatureStatsDef	EDIT	FABLE_RETAIL_CCREATURESTATSDEF_RTTI_DECLS	FABLE_RETAIL_CCREATUREDEF_TRANSFER	0044c33f	pinned: total pinned 0
+CDoorDef	EDIT	FABLE_RETAIL_CDOORDEF_RTTI_DECLS	FABLE_RETAIL_CDOORDEF	004d331c	pinned: total pinned 10
+CEnemyDef	SKIP				another agent's hdr/ overlay has this header
+CEngineInternalPrimitive2DAnimatedMesh	SKIP	FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DANIMATEDMESH_RTTI_DECLS	FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DANIMATEDMESH		00bcea30 override probe fails: 22/agentNF324/work/probe/p.cpp:28:103: error: only virtual member functions can be marked 'override'
+CEngineInternalPrimitive2DClockSprite	SKIP	FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DCLOCKSPRITE_RTTI_DECLS	FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DCLOCKSPRITE		00bacec0 override probe fails: 22/agentNF324/work/probe/p.cpp:63:102: error: only virtual member functions can be marked 'override'
+CEngineInternalPrimitive2DViewport	SKIP	FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DVIEWPORT_RTTI_DECLS	FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DVIEWPORT_MEMBERS		00be1b80 override probe fails: /w22/agentNF324/work/probe/p.cpp:6:99: error: only virtual member functions can be marked 'override'
+CEngineInternalPrimitiveGroup	EDIT	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEGROUP_RTTI_DECLS	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEGROUP	00bc5fa0,00bc5fb0	pinned: total pinned 5
+CEngineInternalPrimitiveOcclusionBase	EDIT	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_RTTI_DECLS	FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE	00b9c650	pinned: total pinned 3
+CEnginePrimitiveManagerParticleSpriteTrailGroup	SKIP				2 polymorphic definitions
+CEnginePrimitiveManagerRepeatedZSprites	SKIP				2 polymorphic definitions
+CEnginePrimitiveOcclusionGroupManager	EDIT	FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONGROUPMANAGER_RTTI_DECLS	FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONGROUPMANAGER_CLASS	00b38860	pinned: total pinned 1
+CEnginePrimitiveOcclusionManager	EDIT	FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_RTTI_DECLS	FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER	00b2f730	pinned: total pinned 15
+CEnginePrimitiveRenderer2D	EDIT	FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D_RTTI_DECLS	FABLE_RETAIL_CENGINEPRIMITIVERENDERER2D	00b4a5d0,00b4a5e0	pinned: total pinned 0
+CEngineSkyRenderer	EDIT	FABLE_RETAIL_CENGINESKYRENDERER_RTTI_DECLS	FABLE_RETAIL_CENGINESKYRENDERER	00b61db0	pinned: total pinned 0
+CEngineSurfaceCompositionManager	EDIT	FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER_RTTI_DECLS	FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER	00b2ad60	pinned: total pinned 0
+CEntitySoundDef	EDIT	FABLE_RETAIL_CENTITYSOUNDDEF_RTTI_DECLS		004564b1	pinned: total pinned 0
+CExperienceDef	SKIP		FABLE_RETAIL_CEXPERIENCEDEF_PASS22		class switch not defined by a landed row or _PASS (NF318 Q2)
+CExplodingObjectDef	EDIT	FABLE_RETAIL_CEXPLODINGOBJECTDEF_RTTI_DECLS	FABLE_RETAIL_EXPLODING_OBJECT_DEF	004d38c9	pinned: total pinned 7
+CExplosionDef	EDIT	FABLE_RETAIL_CEXPLOSIONDEF_RTTI_DECLS		004e135e	pinned: total pinned 1
+CExplosiveTrailDef	SKIP		FABLE_RETAIL_EXPLOSIVE_TRAIL_UPDATE_PASS28		class switch not defined by a landed row or _PASS (NF318 Q2)
+CExpressionSubDef	SKIP				another agent's hdr/ overlay has this header
+CFireballSpellLevelDef	SKIP				another agent's hdr/ overlay has this header
+CFishingDef	SKIP		FABLE_RETAIL_CFISHINGDEF_PASS22		class switch not defined by a landed row or _PASS (NF318 Q2)
+CFlammableDef	EDIT	FABLE_RETAIL_CFLAMMABLEDEF_RTTI_DECLS		004e2865	pinned: total pinned 2
+CGameCameraBase	EDIT	FABLE_RETAIL_CGAMECAMERABASE_RTTI_DECLS	FABLE_RETAIL_CGAMECAMERABASE_RENDER	006fd4e0	pinned: total pinned 24
+CGameScriptThing	SKIP	FABLE_RETAIL_CGAMESCRIPTTHING_RTTI_DECLS	FABLE_RETAIL_CGAMESCRIPTTHING		probe preamble fails clang: rebuild/include/engine/CGameScriptThing.h:61:33: error: field has incomplete type 'CCharString'
+CGiftDef	EDIT	FABLE_RETAIL_CGIFTDEF_RTTI_DECLS		004d41ab	pinned: total pinned 2
+CGoldDef	SKIP				another agent's hdr/ overlay has this header
+CHairCardDef	EDIT	FABLE_RETAIL_CHAIRCARDDEF_RTTI_DECLS	FABLE_RETAIL_CHAIRCARDDEF	0044c3ea,00452b04	pinned: total pinned 0
+CHasNameDef	EDIT	FABLE_RETAIL_CHASNAMEDEF_RTTI_DECLS	FABLE_RETAIL_CHASNAMEDEF	004d66ac,004df77c	pinned: total pinned 2
+CHeroExperienceDef	EDIT	FABLE_RETAIL_CHEROEXPERIENCEDEF_RTTI_DECLS		004eba68	pinned: total pinned 1
+CHeroMarriageDef	EDIT	FABLE_RETAIL_CHEROMARRIAGEDEF_RTTI_DECLS	FABLE_RETAIL_CTCWIFE_MARRY	0044c2e2	pinned: total pinned 0
+CHeroSpecialMovementDef	EDIT	FABLE_RETAIL_CHEROSPECIALMOVEMENTDEF_RTTI_DECLS	FABLE_RETAIL_CHEROSPECIALMOVEMENTDEF	004d5d95	pinned: total pinned 8
+CHeroSuitDef	SKIP				2 polymorphic definitions
+CHeroTitleDef	EDIT	FABLE_RETAIL_CHEROTITLEDEF_RTTI_DECLS	FABLE_RETAIL_CHEROTITLEDEF	0044c3a6	pinned: total pinned 0
+CHighlightItemDef	SKIP				another agent's hdr/ overlay has this header
+CInputProcessBetting	SKIP	FABLE_RETAIL_CINPUTPROCESSBETTING_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486ba0 override probe fails: w22/agentNF324/work/probe/p.cpp:11:76: error: only virtual member functions can be marked 'override'; 00691550 override probe fails: w22/agentNF324/work/probe/p.cpp:11:56: error: only virtual member functions can be marked 'override'
+CInputProcessBoastUI	SKIP	FABLE_RETAIL_CINPUTPROCESSBOASTUI_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00690e60 override probe fails: w22/agentNF324/work/probe/p.cpp:11:56: error: only virtual member functions can be marked 'override'
+CInputProcessClickPastText	SKIP	FABLE_RETAIL_CINPUTPROCESSCLICKPASTTEXT_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		004866b0 override probe fails: w22/agentNF324/work/probe/p.cpp:15:82: error: only virtual member functions can be marked 'override'
+CInputProcessConsole	SKIP	FABLE_RETAIL_CINPUTPROCESSCONSOLE_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		0048b3a0 override probe fails: w22/agentNF324/work/probe/p.cpp:17:76: error: only virtual member functions can be marked 'override'
+CInputProcessControlCreatureRightStick	SKIP	FABLE_RETAIL_CINPUTPROCESSCONTROLCREATURERIGHTSTICK_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		0068d830 override probe fails: w22/agentNF324/work/probe/p.cpp:12:74: error: only virtual member functions can be marked 'override'
+CInputProcessControlFreeCamera	SKIP	FABLE_RETAIL_CINPUTPROCESSCONTROLFREECAMERA_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486790 override probe fails: w22/agentNF324/work/probe/p.cpp:22:86: error: only virtual member functions can be marked 'override'
+CInputProcessControlSpirit	SKIP	FABLE_RETAIL_CINPUTPROCESSCONTROLSPIRIT_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		006a9170 override probe fails: 22/agentNF324/work/probe/p.cpp:11:118: error: only virtual member functions can be marked 'override'
+CInputProcessCreditsUI	SKIP	FABLE_RETAIL_CINPUTPROCESSCREDITSUI_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486b70 override probe fails: w22/agentNF324/work/probe/p.cpp:26:78: error: only virtual member functions can be marked 'override'; 00691460 override probe fails: w22/agentNF324/work/probe/p.cpp:26:58: error: only virtual member functions can be marked 'override'
+CInputProcessCycleSpecialCameraModes	SKIP	FABLE_RETAIL_CINPUTPROCESSCYCLESPECIALCAMERAMODES_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		0068dbb0 override probe fails: 22/agentNF324/work/probe/p.cpp:14:128: error: only virtual member functions can be marked 'override'
+CInputProcessDead	SKIP	FABLE_RETAIL_CINPUTPROCESSDEAD_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00688a00 override probe fails: 22/agentNF324/work/probe/p.cpp:29:109: error: only virtual member functions can be marked 'override'
+CInputProcessFireheartMinigame	SKIP	FABLE_RETAIL_CINPUTPROCESSFIREHEARTMINIGAME_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486bf0 override probe fails: w22/agentNF324/work/probe/p.cpp:11:86: error: only virtual member functions can be marked 'override'
+CInputProcessFreezeControls	SKIP	FABLE_RETAIL_CINPUTPROCESSFREEZECONTROLS_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		0068cb60 override probe fails: 22/agentNF324/work/probe/p.cpp:37:119: error: only virtual member functions can be marked 'override'
+CInputProcessHeroInformationScreens	SKIP	FABLE_RETAIL_CINPUTPROCESSHEROINFORMATIONSCREENS_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		probe preamble fails clang: rebuild/include/engine/CInputProcessGameBase.h:46:54: error: unknown type name 'CInputEvent'
+CInputProcessInGameMenu	SKIP	FABLE_RETAIL_CINPUTPROCESSINGAMEMENU_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486a20 override probe fails: w22/agentNF324/work/probe/p.cpp:40:79: error: only virtual member functions can be marked 'override'
+CInputProcessInventoryBase	SKIP	FABLE_RETAIL_CINPUTPROCESSINVENTORYBASE_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486500 override probe fails: /w22/agentNF324/work/probe/p.cpp:3:82: error: only virtual member functions can be marked 'override'
+CInputProcessLightning	SKIP	FABLE_RETAIL_CINPUTPROCESSLIGHTNING_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		0068fed0 override probe fails: 22/agentNF324/work/probe/p.cpp:51:114: error: only virtual member functions can be marked 'override'
+CInputProcessMain	SKIP	FABLE_RETAIL_CINPUTPROCESSMAIN_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		004863a0 override probe fails: w22/agentNF324/work/probe/p.cpp:52:73: error: only virtual member functions can be marked 'override'
+CInputProcessQuestCompletionUI	SKIP	FABLE_RETAIL_CINPUTPROCESSQUESTCOMPLETIONUI_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486b40 override probe fails: w22/agentNF324/work/probe/p.cpp:57:86: error: only virtual member functions can be marked 'override'
+CInputProcessQuickAccessMenu	SKIP	FABLE_RETAIL_CINPUTPROCESSQUICKACCESSMENU_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00690fc0 override probe fails: w22/agentNF324/work/probe/p.cpp:25:64: error: only virtual member functions can be marked 'override'
+CInputProcessTargetLockRightStickTargetSelect	SKIP	FABLE_RETAIL_CINPUTPROCESSTARGETLOCKRIGHTSTICKTARGETSELECT_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00688a70 override probe fails: w22/agentNF324/work/probe/p.cpp:5:105: error: only virtual member functions can be marked 'override'
+CInputProcessTavernGame	SKIP	FABLE_RETAIL_CINPUTPROCESSTAVERNGAME_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486a50 override probe fails: w22/agentNF324/work/probe/p.cpp:11:79: error: only virtual member functions can be marked 'override'; 00690820 override probe fails: w22/agentNF324/work/probe/p.cpp:11:59: error: only virtual member functions can be marked 'override'
+CInputProcessUseRangedWeaponZLock	SKIP	FABLE_RETAIL_CINPUTPROCESSUSERANGEDWEAPONZLOCK_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		0068eb00 override probe fails: 22/agentNF324/work/probe/p.cpp:71:125: error: only virtual member functions can be marked 'override'
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	SKIP	FABLE_RETAIL_CINPUTPROCESSWATCHFORRANGEDWEAPONTHIRDPERSONMODETERMINATION_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486900 override probe fails: 22/agentNF324/work/probe/p.cpp:72:151: error: only virtual member functions can be marked 'override'
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	SKIP	FABLE_RETAIL_CINPUTPROCESSWATCHFORWILLCHARGEUPTHIRDPERSONMODETERMINATION_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		00486930 override probe fails: w22/agentNF324/work/probe/p.cpp:5:151: error: only virtual member functions can be marked 'override'
+CInputProcessYesNoQuestion	SKIP	FABLE_RETAIL_CINPUTPROCESSYESNOQUESTION_RTTI_DECLS	FABLE_RETAIL_INPUTPROCESS		004866e0 override probe fails: w22/agentNF324/work/probe/p.cpp:74:82: error: only virtual member functions can be marked 'override'
+CInventoryDef	EDIT	FABLE_RETAIL_CINVENTORYDEF_RTTI_DECLS		004554a4	pinned: total pinned 0
+CJackOfBladesBattleDef	EDIT	FABLE_RETAIL_CJACKOFBLADESBATTLEDEF_RTTI_DECLS		004e39e0	pinned: total pinned 0
+CJoystickDX	SKIP				another agent's hdr/ overlay has this header
+CKickableDef	EDIT	FABLE_RETAIL_CKICKABLEDEF_RTTI_DECLS	FABLE_RETAIL_CKICKABLEDEF	004d33c2	pinned: total pinned 14
+CKrakenTentacleDef	SKIP		FABLE_RETAIL_CTCKRAKENTENTACLE_TRACK_PASS26		class switch not defined by a landed row or _PASS (NF318 Q2)
+CLandscapeBackgroundPatch	EDIT	FABLE_RETAIL_CLANDSCAPEBACKGROUNDPATCH_RTTI_DECLS	FABLE_RETAIL_LANDSCAPE_BACKGROUND_PATCH	00be5e50	pinned: total pinned 0; left out: 00be8dc0 override probe fails: /w22/agentNF324/work/probe/p.cpp:3:64: error: only virtual member functions can be marked 'override'
+CLandscapeBackgroundSubNodeBase	SKIP	FABLE_RETAIL_CLANDSCAPEBACKGROUNDSUBNODEBASE_RTTI_DECLS	FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_BASE		00be8d50 override probe fails: /w22/agentNF324/work/probe/p.cpp:3:80: error: only virtual member functions can be marked 'override'; 00be8d60 override probe fails: w22/agentNF324/work/probe/p.cpp:3:125: error: only virtual member functions can be marked 'override'; 00be8d70 override probe fails: /w2
+CLandscapeBackgroundSubNodeSplitBranch	SKIP		FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_SPLIT_BRANCH		class switch not defined by a landed row or _PASS (NF318 Q2)
+CLightDef	SKIP	FABLE_RETAIL_CLIGHTDEF_RTTI_DECLS	FABLE_RETAIL_CLIGHTDEF		probe preamble fails clang: rebuild/include/engine/CSubDefClassBase.h:10:2: error: engine/CSubDefClassBase.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before in
+CLightningDef	EDIT	FABLE_RETAIL_CLIGHTNINGDEF_RTTI_DECLS		0045890d	pinned: total pinned 0
+CLipSyncDataBank	SKIP				another agent's hdr/ overlay has this header
+CMaterialDef	EDIT	FABLE_RETAIL_CMATERIALDEF_RTTI_DECLS		00455d22	pinned: total pinned 0
+CMessageEventDef	EDIT	FABLE_RETAIL_CMESSAGEEVENTDEF_RTTI_DECLS		004556ca	pinned: total pinned 0
+CNavBlockedQuadTreeNode	SKIP				another agent's hdr/ overlay has this header
+CNavNavigableLeafNode	SKIP				another agent's hdr/ overlay has this header
+CNavQuadTreeNode	EDIT	FABLE_RETAIL_CNAVQUADTREENODE_RTTI_DECLS	FABLE_RETAIL_CNAVQUADTREENODE	00a7b930,00a7b940,00a7b950	pinned: total pinned 0
+CNavSwitchableLeafNode	EDIT	FABLE_RETAIL_CNAVSWITCHABLELEAFNODE_RTTI_DECLS	FABLE_RETAIL_CNAVSWITCHABLELEAFNODE	00a75c10,00a76530,00a84e00,00a84e10,00a84e30	pinned: total pinned 0
+CNymphDef	SKIP		FABLE_RETAIL_NYMPH_ATTACK_PASS27		class switch not defined by a landed row or _PASS (NF318 Q2)
+CObjectFamilyDef	SKIP		FABLE_RETAIL_REWARD_PICKUP_PASS27		class switch not defined by a landed row or _PASS (NF318 Q2)
+COpinionOfHeroDef	EDIT	FABLE_RETAIL_COPINIONOFHERODEF_RTTI_DECLS		004d3f99	pinned: total pinned 0
+COpinionReactionManagerDef	SKIP		FABLE_RETAIL_OPINION_STRENGTH_PASS26		class switch not defined by a landed row or _PASS (NF318 Q2)
+CPlayerMovementDef	EDIT	FABLE_RETAIL_CPLAYERMOVEMENTDEF_RTTI_DECLS		00459611	pinned: total pinned 0
+CReadableDef	SKIP		FABLE_RETAIL_CREADABLEDEF_USEINFO_PASS24		class switch not defined by a landed row or _PASS (NF318 Q2)
+CReplaceableMeshDef	SKIP				class written on one line (NF319 Q3)
+CSBCAgents	SKIP	FABLE_RETAIL_CSBCAGENTS_RTTI_DECLS	FABLE_RETAIL_CSB		00a20910 override probe fails: d96bb1c2d/scratchpad/w22/agentNF324/work/probe/p.cpp:16:39: error: no type named 'ESB_TYPE' in 'CSB'
+CSBIAgents	SKIP		FABLE_RETAIL_CSBIAGENTS_PROCESS_PASS28		class switch not defined by a landed row or _PASS (NF318 Q2)
+CScorpionKingBattleDef	EDIT	FABLE_RETAIL_CSCORPIONKINGBATTLEDEF_RTTI_DECLS		004e3adc	pinned: total pinned 0
+CSkyDef	EDIT	FABLE_RETAIL_CSKYDEF_RTTI_DECLS	FABLE_RETAIL_DEF_CLASS_BASE	00455893	pinned: total pinned 0
+CSnowTrollDef	EDIT	FABLE_RETAIL_CSNOWTROLLDEF_RTTI_DECLS	FABLE_RETAIL_CSNOWTROLLDEF	0044c669	pinned: total pinned 3
+CSoundDef	EDIT	FABLE_RETAIL_CSOUNDDEF_RTTI_DECLS		00458454	pinned: total pinned 0
+CSpecialAbilitiesForcePushDef	EDIT	FABLE_RETAIL_CSPECIALABILITIESFORCEPUSHDEF_RTTI_DECLS	FABLE_RETAIL_CSPECIALABILITIESFORCEPUSHDEF	004576b9	pinned: total pinned 0
+CSpecialAbilitiesPhysicalShieldDef	SKIP		FABLE_RETAIL_PHYSICAL_SHIELD_EFFECT_PASS26		class switch not defined by a landed row or _PASS (NF318 Q2)
+CSpecialAbilitiesTurncoatSpellDef	EDIT	FABLE_RETAIL_CSPECIALABILITIESTURNCOATSPELLDEF_RTTI_DECLS		00457ac4	pinned: total pinned 0
+CSpecialAbilitiesUnholyPowerDef	EDIT	FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_RTTI_DECLS		004582b4	pinned: total pinned 0
+CSpotLightDef	SKIP	FABLE_RETAIL_CSPOTLIGHTDEF_RTTI_DECLS	FABLE_RETAIL_CSPOTLIGHTDEF		probe preamble fails clang: rebuild/include/engine/CSubDefClassBase.h:10:2: error: engine/CSubDefClassBase.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before in
+CStealthDef	EDIT	FABLE_RETAIL_CSTEALTHDEF_RTTI_DECLS	FABLE_RETAIL_CSTEALTHDEF_SUBDEF	004d3654	pinned: total pinned 1
+CStockItemDef	SKIP				2 polymorphic definitions
+CTCVolumeContainmentTrackerDef	EDIT	FABLE_RETAIL_CTCVOLUMECONTAINMENTTRACKERDEF_RTTI_DECLS	FABLE_RETAIL_TC_VOLUME_CONTAINMENT_TRACKER_DEF	004d6332	pinned: total pinned 7
+CTargetingDef	EDIT	FABLE_RETAIL_CTARGETINGDEF_RTTI_DECLS		004538e5	pinned: total pinned 0
+CTattooDef	EDIT	FABLE_RETAIL_CTATTOODEF_RTTI_DECLS	FABLE_RETAIL_CTATTOODEF	0044c3d4	pinned: total pinned 0
+CTavernGameShoveHaPennyDef	EDIT	FABLE_RETAIL_CTAVERNGAMESHOVEHAPENNYDEF_RTTI_DECLS		004e1127	pinned: total pinned 5
+CTavernGameSpotTheAdditionDef	EDIT	FABLE_RETAIL_CTAVERNGAMESPOTTHEADDITIONDEF_RTTI_DECLS		004ded48	pinned: total pinned 3
+CThingBaseDef	SKIP				2 polymorphic definitions
+CThingCreatureDef	EDIT	FABLE_RETAIL_CTHINGCREATUREDEF_RTTI_DECLS		006710d0	pinned: total pinned 0
+CThingDrainLifeShotDef	EDIT	FABLE_RETAIL_CTHINGDRAINLIFESHOTDEF_RTTI_DECLS	FABLE_RETAIL_CTHINGDRAINLIFESHOTDEF_CLASS	004d53a4	pinned: total pinned 8
+CThingHolySiteDef	EDIT	FABLE_RETAIL_CTHINGHOLYSITEDEF_RTTI_DECLS		00454dc5	pinned: total pinned 0
+CThingMultiArrowShotDef	EDIT	FABLE_RETAIL_CTHINGMULTIARROWSHOTDEF_RTTI_DECLS	FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION	0044f619	pinned: total pinned 0
+CThingShotDef	EDIT	FABLE_RETAIL_CTHINGSHOTDEF_RTTI_DECLS		00458d69	pinned: total pinned 0
+CTrophyDef	EDIT	FABLE_RETAIL_CTROPHYDEF_RTTI_DECLS	FABLE_RETAIL_CTROPHYDEF	004d374c	pinned: total pinned 22
+CTurncoatDef	EDIT	FABLE_RETAIL_CTURNCOATDEF_RTTI_DECLS		004debc0	pinned: total pinned 3
+CWADBank	SKIP		FABLE_RETAIL_WAD_ADD_FILE_PASS24		class switch not defined by a landed row or _PASS (NF318 Q2)

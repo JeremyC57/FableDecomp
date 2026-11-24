@@ -37,16 +37,31 @@ public:
     const CLipSyncDataBankEntry* PeekLipSyncInfo(unsigned long index) const;          // 0x00A42830
     CCountedPointer<CLipSyncSampleData> GetLipSyncData(unsigned long index) const;    // 0x00A42FC0
 #endif
+#ifdef FABLE_RETAIL_CLIPSYNCDATABANK_UPDATE
+    // NF254 opt-in (2026-11-22, CODEXP27 L111; row 0x00A427A0): Ego_r.pdb / FableWin.pdb ?Update@CLipSyncDataBank@@UAEXXZ, the override of
+    // CBankFile::Update (vtable 0x0129D3D4 slot 7 = 0x00A427A0; the base's slot 7 is 0x009CEC60 CBankFile::Update). Declaration only:
+    // no layout or vtable-slot change (an override of an existing virtual).
+    virtual void Update();                                                             // 0x00A427A0
+#endif
     unsigned char                   Entries[0xc];            // +0x164 CArray<CLipSyncDataBankEntry>
     CCountedPointer<CResourceBank>  ResourceBank;            // +0x170
     bool                            SkipUpdate;              // +0x178
     CPhonemeDataBank*               PhonemeBank;             // +0x17c
+#ifdef FABLE_RETAIL_CLIPSYNCDATABANK_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CBankFileAsync chain declares at the same slot (no new slot).
+    // 0x00A427C0 vtable 0x0129D3D4 slot 17: ?IsDiskFile@CLipSyncDataBank@@MAE_NKK@Z (Ego_r.pdb + FableWin.pdb)
+protected:
+    virtual bool IsDiskFile(unsigned long, unsigned long);            // 0x00A427C0
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CLipSyncDataBank) == 0x180);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, Entries) == 0x164);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, ResourceBank) == 0x170);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, SkipUpdate) == 0x178);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, PhonemeBank) == 0x17c);
+FABLE_STATIC_ASSERT_AT(45, sizeof(CLipSyncDataBank) == 0x180);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CLipSyncDataBank, Entries) == 0x164);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CLipSyncDataBank, ResourceBank) == 0x170);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CLipSyncDataBank, SkipUpdate) == 0x178);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CLipSyncDataBank, PhonemeBank) == 0x17c);
 #else
 #pragma pack(push, 1)
 class CLipSyncDataBank {

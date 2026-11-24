@@ -26,7 +26,7 @@ public:
     long             _pad4018;
     unsigned long    QueryCount;                   // +0x401c
     long IsQueryVisible(unsigned long id, bool wait);   // 0x00B8D0B0
-    long RenderOcclusionBox(const CMatrix3x4& box);     // 0x00B8D420
+    unsigned long RenderOcclusionBox(const CMatrix3x4& box);     // 0x00B8D420 (Ego_r + FableWin QAEK)
     void StartOcclusionTest();                     // 0x00B8D090 (NF34: Ego_r + FableWin)
     void EndOcclusionTest(unsigned long id);         // 0x00B8D0A0 (NF34: Ego_r + FableWin)
     FABLE_FORCEINLINE long AllocateQuery()
@@ -60,7 +60,10 @@ class CEngineWaterRenderer {
 public:
     unsigned char _pad[0x296];
     bool          OcclusionEnabled;                // +0x296
-    void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch);   // 0x00B6E010
+    private:
+    void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch);
+    public:
+   // 0x00B6E010
 private:                                       // Ego_r.pdb 0x00A1BD40 / FableWin.pdb 0x02D4E9D0: private (AAE)
     void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time);
 };

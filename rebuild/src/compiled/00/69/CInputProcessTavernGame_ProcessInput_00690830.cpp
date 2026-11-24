@@ -9,7 +9,7 @@
 //   global @ 0x013B86A0), CPlayer::GetPControlledCreature @ 0x00487DC0, the component map's LowerBound @ 0x0040F020,
 //   CTCGamePlayer::GetGame @ 0x005EDC90 (called twice: test, then use), the tavern game's virtual slot 28 (+0x70)
 //   ProcessInput(event, processed, process), CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90,
-//   IsEventButtonHeld @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
+//   IsEventButtonReleased @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
 //   @ 0x0041E5F2 and the manager's virtual slot 0 (send a UI event).
 // Layout: `this` is engine/CInputProcessGameBase.h (engine/CInputProcessTavernGame.h is the same 0x28 bytes flattened);
 //   component bitset at CThing +0x20 (kind 0xD0 = word 6 bit 16, `test ecx,10000h` on +0x38) and the map at +0x44, as in
@@ -114,7 +114,7 @@ void CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedI
             NUISystem::CManager::GetInstance()->SendEvent(0x1a);
         else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1b);
-    } else if (IsEventButtonHeld(event)) {
+    } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event))
             NUISystem::CManager::GetInstance()->SendEvent(0x1c);
         else if (IsEventGameAction(GAME_ACTION_INVENTORY_UNSELECT, event))

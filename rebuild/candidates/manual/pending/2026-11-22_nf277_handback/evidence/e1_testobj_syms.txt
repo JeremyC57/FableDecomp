@@ -1,0 +1,10 @@
+## test object defined externals (CLandscapeLayerMesh / CMovableResource):
+DEF ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+DEF ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+DEF ?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+DEF ?Verify@CMovableResource@@UBEKXZ
+## ??_7 / ??_G / ??1 CLandscapeLayerMesh in test object (expect none):
+0
+?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+?Populate@@YAPAVCLandscapeLayerMesh@@PAN_N11@Z

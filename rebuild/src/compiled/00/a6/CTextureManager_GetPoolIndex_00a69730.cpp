@@ -1,3 +1,4 @@
+// Leaf: ?GetPoolIndex@CTextureManager@@AAEJK@Z
 // CTextureManager::GetPoolIndex(unsigned long size) const -- binary-search the sorted preallocation sizes: exact hit, else the first larger pool, else -1
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A69730, 99 bytes (+13 int3). __fastcall, `ret 4`. RENDER LAYER (texture pools).
 // Shape: an inline lower_bound over PreallocSizes[0..PoolCount) (`half = len / 2` signed: `cdq ; sub eax,edx ; sar eax,1`;
@@ -9,9 +10,11 @@ class CTextureManager { public:
     bool          Initialised;                   // +0x04
     unsigned long PoolCount;                     // +0x08
     unsigned long PreallocSizes[16];             // +0x0c
-    long GetPoolIndex(unsigned long size) const;
+    private:
+    long GetPoolIndex(unsigned long size);
+    public:
 };
-long CTextureManager::GetPoolIndex(unsigned long size) const
+long CTextureManager::GetPoolIndex(unsigned long size)
 {
     unsigned long count = PoolCount;
     long first = 0;

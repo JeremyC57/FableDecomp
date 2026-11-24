@@ -1,0 +1,20 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x008EE790	CMaterialDef	GetBlendedSwordHitEffect	?GetBlendedSwordHitEffect@CMaterialDef@@QBE_NJMAAJ0AAM@Z	CMaterialDef::GetBlendedSwordHitEffect	?GetBlendedSwordHitEffect@CMaterialDef@@QAE_NJMPAJ0PAM@Z	Ego_r.pdb + FableWin.pdb publics (const, long& / long& / float& outputs); engine/CMaterialDef.h SWORDHITEFFECTS opt-in (AUTH24, both PDB type records); landed binder 0x00839420 binds it; body writes the three outputs through the pointer args (`mov [reg],..`)
+0x008EE720	CMaterialDef	GetRandomBerserkedSwordHitParticleEffect	?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ	CMaterialDef::GetRandomBerserkedSwordHitParticleEffect	?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QAEJXZ	Ego_r.pdb + FableWin.pdb publics (const); engine/CMaterialDef.h SWORDHITEFFECTS opt-in; landed binder 0x00839420 binds it; sibling 0x008EE600 GetRandomSwordHitParticleEffect is QBE
+0x0048DB35	CUserProfileManager	IsSubtitlingEnabled	?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ	CUserProfileManager::IsCameraResetting	?CUserProfileManager_IsCameraResetting@@YIDPAVCUserProfileManager@@@Z	FableWin.pdb public; Ego_r.pdb UseNewProfileValues +12 / SubtitlingEnabled +13 = the body's +0x0C / +0x0D; landed binder 0x00548B50 binds it (option 0x2F)
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x008EE790	?find@CBlendedEffectMap@@QAE?AUSMapIterator@@ABJ@Z	?find@CBlendedEffectMap@@QBE?AUSMapIterator@@ABJ@Z	0x008EE890
+0x00548790	?GetOption48DB35@CUserProfileManager@@QBE_NXZ	?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ	0x0048DB35
+0x00548790	?IsCameraResetting@CUserProfileManager@@QBE_NXZ	?IsUsingHeadPhones@CUserProfileManager@@QBE_NXZ	0x00548630
+0x00548790	?GetOption548650@CUserProfileManager@@QBE_NXZ	?IsShowingBuddyNames@CUserProfileManager@@QBE_NXZ	0x00548650
+0x00548790	?GetOption548670@CUserProfileManager@@QBEJXZ	?GetAntialiasing@CUserProfileManager@@QBEKXZ	0x00548670
+0x00548790	?GetOption548690@CUserProfileManager@@QBE_NXZ	?IsCameraResetting@CUserProfileManager@@QBE_NXZ	0x00548690
+0x00548790	?GetOption5486B0@CUserProfileManager@@QBEJXZ	?GetResolution@CUserProfileManager@@QBEKXZ	0x005486B0
+0x00548790	?GetOption5486D0@CUserProfileManager@@QBEJXZ	?GetRefreshRate@CUserProfileManager@@QBEKXZ	0x005486D0
+0x00548790	?GetOption5486F0@CUserProfileManager@@QBEJXZ	?GetScreenAspectRatio@CUserProfileManager@@QBEKXZ	0x005486F0
+0x00548790	?GetOption548740@CUserProfileManager@@QBE_NXZ	?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ	0x00548740
+0x00548B50	?IsShowTargetingStatus@CUserProfileManager@@QBE_NXZ	?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ	0x00548740
+0x004D3F50	??0CTCHeroOpinionDeedLog@@QAE@PAVCThing@@@Z	??0CTCHeroOpinionDeedLog@@QAE@AAVCThing@@@Z	0x006C5A80
+0x006EB390	?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@QBEJABUCCombatantInfo@@0@Z	?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z	0x006EAE20
+0x009AE150	??1CPersistContext@@QAE@XZ	?CheckUnknownSymbols@CPersistContext@@QAEXXZ	0x009BBBF0

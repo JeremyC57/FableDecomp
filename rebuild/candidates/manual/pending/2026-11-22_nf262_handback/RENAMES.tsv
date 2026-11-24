@@ -1,0 +1,12 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 2
+0x00BFBE40	?g_LandscapeRenderer@@3PAUNativeLandscapeRenderer@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8
+0x00BFBE40	?AllocVirtual@CEngineLandscapeMemoryManager_Methods@@QAEPAXHPAVCMovableResource@@@Z	?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJPAVCMovableResource@@@Z	0x00BD9AF0
+0x00BFBE40	?FreeVirtual@CEngineLandscapeMemoryManager_Methods@@QAEXPAX@Z	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	0x00BD9B90
+0x00BFBF40	?g_LandscapeRenderer@@3PAUNativeLandscapeRenderer@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8
+0x00BFBF40	?AllocVirtual@CEngineLandscapeMemoryManager_Methods@@QAEPAXHPAVCMovableResource@@@Z	?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJPAVCMovableResource@@@Z	0x00BD9AF0
+0x00BFBF40	?FreeVirtual@CEngineLandscapeMemoryManager_Methods@@QAEXPAX@Z	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	0x00BD9B90
+0x00BFC040	?g_LandscapeRenderer@@3PAUNativeLandscapeRenderer@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8
+0x00BFC040	?AllocVirtual@CEngineLandscapeMemoryManager_Methods@@QAEPAXHPAVCMovableResource@@@Z	?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJPAVCMovableResource@@@Z	0x00BD9AF0
+0x00BFC040	?FreeVirtual@CEngineLandscapeMemoryManager_Methods@@QAEXPAX@Z	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	0x00BD9B90
+0x00BDFA10	?gEngine@@3PAUEngineGlobal@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8

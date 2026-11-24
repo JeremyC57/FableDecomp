@@ -26,7 +26,7 @@
 class CParentDefClassBase { public:
     void* __nativeVftable;
     unsigned char _nativeBaseTail[0x38];
-    CParentDefClassBase* operator=(CParentDefClassBase& other); // 0x00431ED0
+    CParentDefClassBase& operator=(const CParentDefClassBase& other); // 0x00431ED0 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z (Ego_r / FableWin; engine/CParentDefClassBase.h)
 };
 
 class CEngineLocalDetailObjectDef : public CParentDefClassBase { public:

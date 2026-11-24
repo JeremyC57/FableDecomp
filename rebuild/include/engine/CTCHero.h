@@ -18,6 +18,12 @@
 #include "engine/fable_nscript_forward.h"
 #endif
 class CTCHero : public CTCBase {
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_TEST_CTORS_PASS27
+public:
+    CTCHero(CThing&);
+private:
+#endif
+
 #ifdef FABLE_RETAIL_GREETING_PASS23
 public:
     // Both original PDB constructors: public CThing&; normal fixture lifetimes.

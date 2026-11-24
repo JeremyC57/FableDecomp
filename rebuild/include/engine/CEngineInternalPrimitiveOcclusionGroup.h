@@ -13,7 +13,13 @@ class CEngineSceneGridCell;
 
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONGROUP
 #include "engine/CEngineInternalPrimitiveOcclusionBase.h"
-class CEngineInternalPrimitiveOcclusionGroup:public CEngineInternalPrimitiveOcclusionBase {public:virtual ~CEngineInternalPrimitiveOcclusionGroup();CEngineInternalPrimitiveOcclusionGroup(CEngineSceneGridCell*,CEngineSceneGrid*,unsigned long,unsigned long);private:CEngineSceneGridCell* GridCell;CEngineSceneGrid* Grid;unsigned long GridX,GridY,FramesRendered;};
+class CEngineInternalPrimitiveOcclusionGroup:public CEngineInternalPrimitiveOcclusionBase {public:virtual ~CEngineInternalPrimitiveOcclusionGroup();CEngineInternalPrimitiveOcclusionGroup(CEngineSceneGridCell*,CEngineSceneGrid*,unsigned long,unsigned long);
+#ifdef FABLE_RETAIL_SCENEGRID_VISIBILITY_PASS27
+    // FableWin methods inline at retail 0x00B92950.
+    CEngineSceneGridCell* GetGridCell() const { return GridCell; }
+    bool IsRenderedMoreThanOnce() const { return FramesRendered > 1; }
+#endif
+private:CEngineSceneGridCell* GridCell;CEngineSceneGrid* Grid;unsigned long GridX,GridY,FramesRendered;};
 #else
 #pragma pack(push, 1)
 class CEngineInternalPrimitiveOcclusionGroup {
@@ -47,14 +53,14 @@ public:
 #pragma pack(pop)
 #endif
 
-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveOcclusionGroup) == 0x64);
+FABLE_STATIC_ASSERT_AT(50, sizeof(CEngineInternalPrimitiveOcclusionGroup) == 0x64);
 #ifndef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONGROUP
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, GridCell) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, Grid) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, GridX) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, GridY) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, FramesRendered) == 0x60);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CEngineInternalPrimitiveOcclusionGroup, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CEngineInternalPrimitiveOcclusionGroup, GridCell) == 0x50);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CEngineInternalPrimitiveOcclusionGroup, Grid) == 0x54);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CEngineInternalPrimitiveOcclusionGroup, GridX) == 0x58);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CEngineInternalPrimitiveOcclusionGroup, GridY) == 0x5c);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CEngineInternalPrimitiveOcclusionGroup, FramesRendered) == 0x60);
 
 #endif
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEOCCLUSIONGROUP_H

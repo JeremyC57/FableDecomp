@@ -1,0 +1,13 @@
+# NF223 census: spellings per touched address, HEAD -> after this hand-back (callers.py + absrefs.py over Fable.exe; binders graded with hb.sh / sc.sh)
+0x00419036  2 -> 1  self @DeleteIfSet@4 -> DeleteData<CGraphicDataBank>; binders 0x004194D1 0x009F83D0 (already DeleteData<CGraphicDataBank>)
+0x00428AE7  2 -> 1  self @DeleteIfSet@4 -> DeleteData<CMeshDataBank>; binders 0x0042FC86 0x00A09F20
+0x0042F864  2 -> 1  self @DeleteIfSet@4 -> DeleteData<const CFontBank>; binder 0x0042FC13
+0x009E2C80  5 -> 3  GetFont@CFontManager (self + 14 binders incl. 0x00405020 0x00438AA0 moved here); left: 0x00494840 (?GetFont@CFontBank@@..$$CB..), 0x0054ED90 (?GetFont@CFontBankSource@NUISystem@@..) -- held
+0x009F83D0  3 -> 1  OpenGraphicBank: self + 0x0042DDB3 0x00416C8A 0x0041E3F6 0x005BFF07
+0x00415B80  2 -> 1  ??0CGraphicDataBankInit@@QAE@XZ: 0x00416C8A 0x0042DDB3 0x0041E3F6 0x005BFF07 (self row not landed)
+0x0041E641  2 -> 1  ??1CManager@NUISystem@@IAE@XZ: self + 0x0042FB40 + 0x0042DB20
+0x0042DB20  self ?ScalarDeletingDestructor@CManager@@QAEPAXI@Z -> ??_GCManager@NUISystem@@IAEPAXI@Z; no referencer
+0x00765B70  2 -> 1  STLport _M_insert_overflow: self + 0x00763060 + 0x007634E0 + 0x00765C80
+0x00765C80  2 -> 1  self placeholder -> STLport push_back; binder 0x00763060
+0x006F0810  n -> n-1  ??0CElement12_006f0810@@QAE@ABU0@@Z dropped (only 0x00765C80 used it); pre-existing split otherwise unchanged
+0x00B2FD60  1 -> 1  ?SetupGamut@CEngineCamera@@AAEXXZ (0x00B30B50); label line only

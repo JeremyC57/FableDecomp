@@ -1,0 +1,2 @@
+address	state	best grade	grades used	best source	note
+0x00A4EFC0	escalated	DIFFER(3491v3491) residue 16	3	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth7/00a4efc0/b3_00a4efc0.cpp (overlay /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth7/00a4efc0/hdr)	one-shot set A-E (Ego_d-exact row body, VC10 model 3872=3872 line for line) graded: object byte-identical to a2; order L>R unchanged; header-set probes negative; ESCALATE.md

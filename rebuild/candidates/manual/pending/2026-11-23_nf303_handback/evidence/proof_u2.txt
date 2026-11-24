@@ -1,0 +1,12 @@
+##### 008cf7d0 renames: ?FinishAction@CCombatActionBase@@UAEXXZ=?FinishAction@CCombatActionBase@@MAEXXZ
+sections head 16 new 16
+ALL_EQ text_sections_equal=14
+tables H=1 N=1
+##### 00924880 renames: ?FinishAction@CCombatActionBase@@UAEXXZ=?FinishAction@CCombatActionBase@@MAEXXZ
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 00923cd0 renames: ?OnAnimationLoaded@CCombatActionBase@@UAEXXZ=?OnAnimationLoaded@CCombatActionBase@@MAEXXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

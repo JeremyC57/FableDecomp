@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+# none: the reloc_bindings lines of the ten targets already carry the PDB spellings (witnesses 0x00CBFB7D / 0x00D73970 / 0x00DD6A60), and no object of the unit binds another spelling at them (evidence/refbind.tsv)

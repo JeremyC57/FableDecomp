@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CThingGroupDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CThingGroupDef_GetSizeofClass()
+class CThingGroupDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CThingGroupDef::GetSizeofClass()
 {
     return 58;
 }

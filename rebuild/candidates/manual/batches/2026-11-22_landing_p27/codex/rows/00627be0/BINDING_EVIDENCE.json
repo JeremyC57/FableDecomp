@@ -1,0 +1,301 @@
+{
+  "named_owners": [
+    [
+      "?clear@?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXXZ",
+      "0042a141"
+    ],
+    [
+      "?clear@?$_List_base@JV?$allocator@J@std@@@std@@QAEXXZ",
+      "0042a168"
+    ],
+    [
+      "?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ",
+      "0042a18f"
+    ],
+    [
+      "??0?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z",
+      "0042ab01"
+    ],
+    [
+      "??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z",
+      "0042ab58"
+    ],
+    [
+      "??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z",
+      "0042abaf"
+    ],
+    [
+      "??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ",
+      "0042ab1c"
+    ],
+    [
+      "??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ",
+      "0042ab73"
+    ],
+    [
+      "??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ",
+      "0042abca"
+    ],
+    [
+      "?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z",
+      "00429fbe"
+    ],
+    [
+      "?_M_create_node@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCComponent@NUISystem@@@2@ABQAVCComponent@NUISystem@@@Z",
+      "0042a008"
+    ],
+    [
+      "?insert@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCActionParam@NUISystem@@U?$_Nonconst_traits@PAVCActionParam@NUISystem@@@std@@@2@U32@ABQAVCActionParam@NUISystem@@@Z",
+      "0042aadc"
+    ],
+    [
+      "?insert@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@U32@ABQAVCComponent@NUISystem@@@Z",
+      "0042ab8a"
+    ],
+    [
+      "??$_M_insert_dispatch@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@1@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@1@1ABU__false_type@1@@Z",
+      "0042b4c3"
+    ],
+    [
+      "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "0042b646"
+    ],
+    [
+      "??$insert@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@1@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@1@1@Z",
+      "0042b945"
+    ],
+    [
+      "??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z",
+      "0042b6a6"
+    ],
+    [
+      "??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ",
+      "0042b6d2"
+    ],
+    [
+      "??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z",
+      "0042bf06"
+    ],
+    [
+      "??0?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z",
+      "0042b624"
+    ],
+    [
+      "??1?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ",
+      "0042b660"
+    ],
+    [
+      "??0?$list@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z",
+      "0042b665"
+    ],
+    [
+      "??1?$list@JV?$allocator@J@std@@@std@@QAE@XZ",
+      "0042b6a1"
+    ],
+    [
+      "?Activate@CTCQuickAccessMenu@@QAEXXZ",
+      "00628000"
+    ],
+    [
+      "?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z",
+      "00627be0"
+    ],
+    [
+      "?ConstructExpressionCategoryList@CTCQuickAccessMenu@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@@Z",
+      "00627400"
+    ],
+    [
+      "?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z",
+      "00626750"
+    ],
+    [
+      "??2@YAPAXIPAX@Z",
+      "00405c10"
+    ],
+    [
+      "??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z",
+      "0041c780"
+    ],
+    [
+      "?_M_incr@_List_iterator_base@std@@QAEXXZ",
+      "0041c7a0"
+    ],
+    [
+      "??9_List_iterator_base@std@@QBE_NABU01@@Z",
+      "0041c7c0"
+    ],
+    [
+      "?IsActive@CTCQuickAccessMenu@@QBE_NXZ",
+      "00625930"
+    ],
+    [
+      "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "00429160"
+    ],
+    [
+      "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "004291de"
+    ],
+    [
+      "??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ",
+      "00429b72"
+    ],
+    [
+      "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "00429c53"
+    ],
+    [
+      "?GFIntToWideString@@YI?AVCWideString@@J@Z",
+      "00405f00"
+    ],
+    [
+      "?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z",
+      "00428b10"
+    ],
+    [
+      "?push_back@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXABQAVCComponent@NUISystem@@@Z",
+      "00486024"
+    ],
+    [
+      "?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z",
+      "00429f43"
+    ],
+    [
+      "??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z",
+      "0042aa29"
+    ],
+    [
+      "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "00429c15"
+    ],
+    [
+      "?clear@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAEXXZ",
+      "00593235"
+    ],
+    [
+      "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "0040f020"
+    ],
+    [
+      "??$__uninitialized_fill_n@PAU?$pair@JJ@std@@IU12@@std@@YIPAU?$pair@JJ@0@PAU10@IABU10@ABU__false_type@0@@Z",
+      "00513a80"
+    ],
+    [
+      "??0CAction@NUISystem@@QAE@XZ",
+      "0042be50"
+    ],
+    [
+      "??0CDeletion@NUISystem@@QAE@XZ",
+      "0042bed4"
+    ],
+    [
+      "??0CDeletion@NUISystem@@QAE@ABV01@@Z",
+      "0042cd84"
+    ],
+    [
+      "??$__uninitialized_copy@PAU?$pair@JJ@std@@PAU12@@std@@YIPAU?$pair@JJ@0@PAU10@00ABU__false_type@0@@Z",
+      "00592d43"
+    ],
+    [
+      "??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z",
+      "0042af3c"
+    ],
+    [
+      "??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z",
+      "005f81be"
+    ],
+    [
+      "??$GetSubDef@VCExpressionSubDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExpressionSubDef@@@@@Z",
+      "005da240"
+    ],
+    [
+      "?test@?$bitset@$0BBC@@std@@QBE_NI@Z",
+      "00410de0"
+    ],
+    [
+      "?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z",
+      "004118c0"
+    ],
+    [
+      "?_M_insert_overflow@?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@IAEXPAU?$pair@JJ@2@ABU32@ABU__false_type@2@I_N@Z",
+      "0059400c"
+    ],
+    [
+      "?push_back@?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QAEXABU?$pair@JJ@2@@Z",
+      "005947b6"
+    ]
+  ],
+  "corrected_wrong_table_comparisons": [
+    "CComponent counted destructor -> 00429C53, not its 44-byte release at 004291DE",
+    "list<CComponent*> allocator constructor -> 0042B6A6, base constructor at 0042ABAF",
+    "list<CComponent*> destructor -> 0042B6D2, base destructor at 0042ABCA"
+  ],
+  "evidence": [
+    {
+      "address": "0x00429C53",
+      "correct_symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "evidence": "Ego_r identifies a five-byte destructor at 0x00438DDC. Retail calls the 0x00429C53 wrapper at 0x0054522E and it jumps to the independently matching ReleaseData at 0x004291DE.",
+      "wrong_spellings_seen": "0x004291DE"
+    },
+    {
+      "address": "0x00592BCE",
+      "correct_symbol": "?_M_erase@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@Z",
+      "evidence": "The 45-byte STLport pointer-map specialization matches the native loop and recursive operand. Its two callers in Activate and its matched clear owner all call 0x00592BCE.",
+      "wrong_spellings_seen": "?_M_erase@CRbTree@@QAEXPAUSRbNode@@@Z"
+    },
+    {
+      "address": "0x006276F0",
+      "correct_symbol": "?GetItemsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z",
+      "evidence": "Ego_r and FableWin identify the full private signature. The landed same-module neighbour at 0x006276F0 uses that symbol, and retail Activate calls it at 0x0062813F.",
+      "wrong_spellings_seen": ""
+    },
+    {
+      "address": "0x00627BE0",
+      "correct_symbol": "?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z",
+      "evidence": "Ego_r and FableWin identify the private signature and adjacent TU owner. The call at 0x00628150 targets 0x00627BE0 and the original FableWin Activate calls the same method.",
+      "wrong_spellings_seen": ""
+    },
+    {
+      "address": "0x00429FBE",
+      "correct_symbol": "?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z",
+      "evidence": "Exact native STLport body and audited relative call tree in AUDIT.json.",
+      "wrong_spellings_seen": "?LinkedList_AllocateNode_12bytes@@YGPAULinkedListNode12@@K@Z"
+    },
+    {
+      "address": "0x0042A141",
+      "correct_symbol": "?clear@?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXXZ",
+      "evidence": "Exact native STLport body and audited relative call tree in AUDIT.json.",
+      "wrong_spellings_seen": "?Base_0042a141@CActiveFile@@QAEXXZ"
+    },
+    {
+      "address": "0x0042AB01",
+      "correct_symbol": "??0?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z",
+      "evidence": "Exact native STLport body and audited relative call tree in AUDIT.json.",
+      "wrong_spellings_seen": "??0CActionParamList@NUISystem@@QAE@ABUSRetailAllocator@1@@Z"
+    },
+    {
+      "address": "0x0042AB01",
+      "correct_symbol": "??0?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z",
+      "evidence": "Exact native STLport body and audited relative call tree in AUDIT.json.",
+      "wrong_spellings_seen": "??0CActionParamList@NUISystem@@QAE@ABUSAllocator@1@@Z"
+    },
+    {
+      "address": "0x0042AB1C",
+      "correct_symbol": "??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ",
+      "evidence": "Exact native STLport body and audited relative call tree in AUDIT.json.",
+      "wrong_spellings_seen": "??1SMember60@@QAE@XZ"
+    },
+    {
+      "address": "0x0042ABAF",
+      "correct_symbol": "??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z",
+      "evidence": "The outer member is 0042b6a6; its call or tail jump targets this base member.",
+      "wrong_spellings_seen": "??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z"
+    },
+    {
+      "address": "0x0042ABCA",
+      "correct_symbol": "??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ",
+      "evidence": "The outer member is 0042b6d2; its call or tail jump targets this base member.",
+      "wrong_spellings_seen": "??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ"
+    }
+  ]
+}

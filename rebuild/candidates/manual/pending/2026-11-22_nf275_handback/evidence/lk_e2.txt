@@ -1,0 +1,21 @@
+== A: HEAD 0x00A96DA0 + HEAD 0x00AD94F0 + HEAD 0x00ADCE60
+duplicates 1
+head_00ad94f0.obj : warning LNK4006: "public: __thiscall CVertexGroupBlock::~CVertexGroupBlock(void)" (??1CVertexGroupBlock@@QAE@XZ) already defined in pH_00a96da0.obj; second definition ignored
+== B: NF275 0x00A96DA0 + HEAD 0x00AD94F0 + HEAD 0x00ADCE60
+duplicates 0
+
+== C: NF275 0x00A96DA0 alone (unresolved list)
+duplicates 0
+
+UNRESOLVED 1 ??0CVertexGroupBlock@@QAE@XZ
+== D: HEAD 0x00ADCE60 alone
+duplicates 0
+
+UNRESOLVED 1 ??1CVertexGroupBlock@@QAE@XZ
+== E: NF275 0x00A96DA0 + HEAD 0x00ADCE60
+duplicates 0
+
+UNRESOLVED 1 ??0CVertexGroupBlock@@QAE@XZ
+== F: HEAD 0x00AD94F0 + HEAD 0x00ADCE60 + HEAD 0x00A96DA0 (owner last)
+duplicates 1
+pH_00a96da0.obj : warning LNK4006: "public: __thiscall CVertexGroupBlock::~CVertexGroupBlock(void)" (??1CVertexGroupBlock@@QAE@XZ) already defined in head_00ad94f0.obj; second definition ignored

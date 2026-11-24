@@ -1,0 +1,13 @@
+## HEAD set: H_0074e560.obj H_0074fbb0.obj H_0087e860.obj H_008b76b0.obj H_008c0820.obj H_008f3e70.obj H_009162f0.obj H_0095b3e0.obj H_006a7930.obj H_00417001.obj 006a16a0.obj 0074f350.obj 007bf790.obj 00844740.obj 008f40b0.obj 0090e5d0.obj 009735d0.obj 00974110.obj 00512ed0.obj 00512f60.obj 00615750.obj 00617a00.obj 00617a90.obj 00617bb0.obj 006186f0.obj 00618790.obj 006c1dd0.obj 008abdf0.obj 008adc30.obj
+duplicates 1
+  DUP 00618790.obj ?_M_insert_overflow@?$vector@PAVCThingAICreature@@@std@@QAEXPAPAVCThingAICreature@@ABQAV3@ABU__true_type@@K_N@Z in 006186f0.obj;
+UNRESOLVED 11 ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z
+UNRESOLVED 8 ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z
+UNRESOLVED 8 ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+UNRESOLVED 1 ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z
+## new set: 0074e560.obj 0074fbb0.obj 0087e860.obj 008b76b0.obj 008c0820.obj 008f3e70.obj 009162f0.obj 0095b3e0.obj 006a7930.obj 00417001.obj 006a16a0.obj 0074f350.obj 007bf790.obj 00844740.obj 008f40b0.obj 0090e5d0.obj 009735d0.obj 00974110.obj 00512ed0.obj 00512f60.obj 00615750.obj 00617a00.obj 00617a90.obj 00617bb0.obj 006186f0.obj 00618790.obj 006c1dd0.obj 008abdf0.obj 008adc30.obj
+duplicates 1
+  DUP 00618790.obj ?_M_insert_overflow@?$vector@PAVCThingAICreature@@@std@@QAEXPAPAVCThingAICreature@@ABQAV3@ABU__true_type@@K_N@Z in 006186f0.obj;
+UNRESOLVED 16 ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+UNRESOLVED 1 ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
+LK_DONE

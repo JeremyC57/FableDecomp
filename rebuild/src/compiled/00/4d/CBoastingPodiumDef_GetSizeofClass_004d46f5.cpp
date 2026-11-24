@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CBoastingPodiumDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CBoastingPodiumDef_GetSizeofClass()
+class CBoastingPodiumDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CBoastingPodiumDef::GetSizeofClass()
 {
     return 44;
 }

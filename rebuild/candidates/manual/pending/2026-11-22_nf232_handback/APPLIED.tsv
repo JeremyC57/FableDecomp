@@ -1,0 +1,7 @@
+entry	address	status	binders_respelled	note
+q12629	0x004336B0	done	0 (both binders 0x0042F5A9 / 0x0042EBB6 already bind ?Set; census work/e1/hb_0042ebb6.tsv + NF231 bind_004336b0.tsv)	self leaf onto the PDB spelling; 0x004336B0 2 -> 1 spelling (the `@OperatorNew@4` self leaf gone; the ?SetActiveFrontend stand-in went at nf231)
+q12630	0x00412450	done (2 spellings left: existing split)	1 (0x00412B70)	self + 0x00412B70 onto the STLport spelling: 3 -> 2 spellings; the allocator-less one stays with 0x00495780 (held, NAME_FIXES)
+q12631	0x00411B00	done	0 (all 4 other binders already STLport: 0x0047FE83, 0x004861F7, 0x00597DF7, 0x0042EBB6)	self onto the STLport spelling: 2 -> 1
+q12633	0x0042EA8F, 0x0042F50B	blocked: needs header claim (census + gap list in NOTES entry 2; no form graded)	0	not a pure add-only port: needs ~CGameComponent inline (FORCEINLINE in a size TU) in CGameComponent.h, ctor / dtor / Init / device-reset overrides and typed members in CNewFrontendGameComponent.h, and a 3-address respell family (0x0042EA8F ctor leaf, 0x0051D8E0 base ctor, 0x00412F90 binder)
+q12632	0x0054F410, 0x0054F370	done	0 (leaves unchanged)	both ported onto the shared headers first form, RELOCATION_MATCH; no header change
+q12634	(5 rows)	open (0 of 5, not started: context)	-	-

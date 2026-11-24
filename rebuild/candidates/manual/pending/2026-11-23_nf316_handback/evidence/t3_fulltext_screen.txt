@@ -1,0 +1,6 @@
+0040d350: col2=0x00409730 | port | binder 0x0040d350: binder 0x0040D350 declares a global free VerifySignature for the PDB CUserProfileManager static (port); NF310 witness
+00522880: col2=0x00521EB0 | port | binder 0x00522600 / 0x00522880: every stand-in line binds through MADEUP (MADEUP = a class / scope / type token in neither PDB name set; WRONGCLASS = another cl
+00846100: col2=0x00661B40 | port | binder 0x00846100: binder 0x00846100 binds GetHeadPos on CThing (non-const) for the const CThingCreatureBase member (stand-in class: port); NF310 witness
+00969470: col2=0x0082D000 | port | binder 0x0091cdc0 (0x00969470 NF304 witness): IsPointInside on CThing (non-const) for the PDB const CThingBuilding member: class + const port
+00969470: col2=0x00773C00 | port | PDB takes the NESTED enum CTCShop::ESTOCK_STATE (`W4ESTOCK_STATE@1@`); the self 0x00773C00 and binders 0x00773E10 / 0x007751A0 / 0x00927DF0 / 0x00927EA0 / 0x009
+00969470: col2=0x004C7950 | port | binder 0x00969470: binder 0x00969470 binds the CThingPos stand-in class (port); NF310 witness

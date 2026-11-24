@@ -278,6 +278,7 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - The edges get the 0x008DBC80 line-5093 size test (fits: no label; can't fit: out; undecidable: Inferred), and Ego_d's TPI types for first / second / this_line / last_line decide whether a 2D text is the real one.
   - The paren body is acceptable as Inferred (the PAREN family), re-measured after the edges settle. Every landed GFArcCos user is regraded with it, and it lands only with the row.
 - **2026-11-21 (0x00763060, coordinator ruling; the advisor call timed out):** p25Q's VC7.1 probe proves Ego_d's pre-increment text cannot produce retail. The post-increment text still contradicts Ego_d 199 / 204, so it is not Inferred. The probe is evidence about the revision, not a second source for the spelling. The row stays reserved behind its bracket and on the Windows request.
+  - **Superseded (2026-11-21, Account A AUTH5, VC10 SP1 odall10 --stl):** the 199 / 204 basis does not hold. Ego_d increments after the call as its own statement (207 `find_if` 168 B, 210 `it_start++;` 28 B), and the AUTH1 sizes came from a parser that dropped wrapped bytes. The row is still not landable: the Ego_d-exact text grades DIFFER(1134v1146) (`pending/2026-11-21_auth5/`); AUTH6 continues.
 
 ## 2026-11-21 owner instruction: next reservation set by size
 Owner: "after next reserved rows/functions are done, reserve the next set from the largest ones". When p25Q's and p25R's
@@ -344,3 +345,114 @@ other block stays bound. The twins' draft (function-scope shared `creature`, x/y
 Clarification 2026-11-21 (revision test without Ego_d code): Ego_d has line tables and procs but no code, so test (a) is run by
 size: a block passes only if an Ego_d line decodes (calibrated size) as a call to a named function that Ego_d lists as a proc and
 retail's function never calls (or the reverse). Size arguments that only show "more code" do not pass; untestable blocks stay bound.
+
+- **2026-11-22 (Account A, advisor, owner delegated): AUTH10 / AUTH7 escalations.**
+  - 0x008E18D0: does not land. A hooked c2 with forced inline decisions is an oracle, never a grade; no bracket grade is recorded.
+    Next is a bounded measurement: e4 against Ego_d with VC10, line by line plus the wrappers to the four sites; the for-scope idiom
+    check; then c2's decision inputs within a budget, else an owner packet (`pending/2026-11-22_auth10/README.md`).
+  - 0x00A4EFC0: b3 replaces a2 as the recorded best text (D and E labelled Inferred; the `rhs` parameter name queued).
+    - AllocateType's Ego_d `overflow_check` local is admissible only if something besides the 261-B debug assert uses it, and if
+      Ego_r.pdb / FableWin.pdb show it. Then: one pre-registered readout. Acceptance is fixed before grading: the row flips AND
+      0x00A50510 / 0x00AA0FA0 / 0x00BD2D90 still match with the same shape, with no re-fit. Otherwise the row goes to the owner.
+    - No fitted text in the STLport / CArray bodies: nothing calibrates them, so a pick there is chosen by readout. That case
+      also goes to the owner as a proven order tie.
+  - 0x00CF4EC0: port onto the shared headers before more forcing.
+  - Authoring briefs stay narrow (two agents in a row ran out of context on six-row briefs).
+
+- **2026-11-22 (Account A, advisor, owner delegated): AUTH12's 0x00CF4EC0 escalation.**
+  - Does not land yet. (b) (keep /d2inlS15 + inline_depth regions at the retail-called ~CTimer sites) is out: the row's own call to
+    0x00CD4470 contradicts S15, and regions placed where retail calls are the decision list written by hand.
+  - (a) (a header opt-in that lowers the implicit movie dtor's c2 cost) is admissible only after four checks:
+    1. close the 5-B Ego_d misfit in the fan hit blocks (do they hold the seven movie-dtor sites?);
+    2. is the movie class's dtor compiler-generated (PDB method list)? Measure it, GROBase and CCountedPointer<MovieBase>'s dtor with odall10;
+    3. does the row's movie-dtor COMDAT equal retail 0x006E7B80, and does retail's body call or carry ReleaseData?
+    4. falsify "cost <= 13": a straight-line call to 0x006E7B80 in a landed stock-flag row kills (a). Confirm the one-TU premise from
+       Ego_d's compiland record, and count the landed /d2inlS15 rows with this class (they join the acceptance set).
+  - Then (a) pre-registered: a capped candidate list, one pick using this row only. Acceptance: the row matches at stock S9; 0x00CF2B70 /
+    0x00CF3D20 match with /d2inlS15 removed (graded once, no re-fit); every other header user still matches; the dtor copy equals
+    0x006E7B80. On failure, an owner packet with the forced oracle. If Ego_d confirms one TU, queue the siblings' S15 as debt either way.
+  - CTimer forcing is convention: if the row is byte-identical with a row-local body, the add-only header opt-in wins (2026-11-21 (a));
+    fix CTimer.h's wave-8 comment in the same claim. Grade the local EScriptAIPriority enum under strict headers before land-ready.
+  - 0x008E18D0, before any c2 hunt: grade e5 with and without C5 in e4's configuration (/Gr /d2inlT65); C5 replaces an arm documented
+    as fitted and must stand alone. Apply the always-inline rule (inlined iff cost - 4 <= S) to the four sites: list retail's decision
+    per occurrence per callee. A uniformly treated callee is a cost question (calibrate it); only a mixed one needs the frequency hunt.
+  - **Owner (2026-11-22), on 0x00CF4EC0: "have advisor decide".** The owner-packet branch of this ruling is delegated: if the checks kill
+    (a) or its pre-registered acceptance fails, the row goes to the advisor (ESCALATE_ADVISOR.md), not to the owner, and the advisor's
+    ruling is final for this row.
+
+- **2026-11-22 (Account A, advisor, owner delegated as final): AUTH13's 0x00CF4EC0 checks.** Check 4 falsified the cost route: the movie
+  dtor is a MIXED callee (retail both expands and calls it in stock row 0x00EB40C0; 55 stock landed rows match with today's cost), and one
+  TU is confirmed (register_scripts.obj in all three PDBs).
+  - (B) is out as a route to a match: a callee-side change cannot separate sites and puts the 55 rows at risk. The finding stays: Ego_d's
+    19-B `{ ReleaseData(); }` PImp dtor contradicts the header default (112 B). Queue it as a family item with the 55 rows as acceptance;
+    name 0x006E7AB0 from the PDBs / reloc_bindings.
+  - (C), bounded, then (A) as terminal. First, a pruning check: at one hit-block return retail expands the movie dtor (cost 19) and calls
+    ~CTimer (cost 14). If the readout gives both the same f, no S / T / frequency change or loop idiom can produce the pair, and the missing
+    text must change WHICH callee or inline context sits there. Compare Ego_d's type for the object destroyed there with the class the 55
+    rows use, say what the two costs 19/22 are, and confirm 0x00EB40C0's expanded and called dtors are one class.
+  - The 5-B instruments, in order: (1) a PROC diff of Ego_d's register_scripts.obj against our VC10 object (catches a no-argument static
+    call); (2) one extra imm32 / address argument (exactly 5 B under -Gr): compare PDB parameter counts with our declarations for every
+    function the macro calls; (3) FableWin's code for one macro expansion (Mod 0011): if (1) and (2) fail, put that one question in the
+    next Codex package instead of searching spellings.
+  - Pre-register: at most three candidates, each fitting Ego_d's line sizes at all 14 macro lines (this row and 0x00CF2B70), never chosen
+    by readout. Grade once: this row at stock; both siblings without /d2inlS15; other users of any changed header. Bonus: regrade a few of
+    the 16 /d2inlS rows at stock, no re-fit.
+  - Terminal: if the 5 B is not named, record (A) (forced oracle, row unlanded, no owner packet); reopen only on a FableWin read.
+  - Pick-any: the rule applies. A copy landed rows already emit with the same bytes is queued debt, not a hold (2026-11-21): verify for the
+    movie dtor (any of the 55) and for ??1CIsThingAlive (0x00DE6C20). A copy new to this row holds it.
+  - 0x008E18D0: the locals check must compare per block (Ego_d's block 2 has no vtStartPos / vtEndPos / upParams).
+
+- **2026-11-22 (Account A, advisor): AUTH18's 0x0093D270 IsRunnable escalation.** Outcome (A), not a `const float&` opt-in: unlike the CArray
+  case (0x00A4EFC0), the reference form does not extend attested evidence, it contradicts all three PDBs' by-value signature, so it cannot
+  land on advisor or coordinator authority; only the owner can override.
+  - Before adopting the terminal: grade the reference form once on the REAL row (pre-registered, unlanded oracle). Done: e1.cpp + CCombatManager.h:144
+    `const float&` = RELOCATION_MATCH (control DIFFER(305v295)), so the whole residue is that one inline.
+  - The sibling site 0x006AAA24 sits in parked 0x006AA720 (DIFFER 1218v1212): name both rows as one item in the terminal. Its 2026-11-03
+    draft hung cl.exe, so it is not graded.
+  - Record 305v295 as the row's rule-clean grade (297v295 was a local-model bracket). Queue "TLC-era form of GetProximityForNavigation" for the
+    next Codex package (`pending/NEXT_CODEX_QUESTIONS.md`, with the 0x00CF4EC0 line-887 question). Restart authoring on the other three rows
+    (AUTH19), restating "never run git, including read-only".
+
+- **2026-11-22 (Account A, advisor): AUTH20's 0x00B4D370 UpdateShadowSpace escalation.** Not terminal; no TERMINAL.md. The 0x00CF4EC0 model
+  needs a measured tie plus an oracle, and three parts of the packet are not shown to be c2 id ties:
+  1. The frame (0x3c0 v 0x3d0) is the whole 14-B size gap and is slot placement, not operand order. Check p5 (7176 B): if it has retail's
+     placement of the last PostMultiply result, the p5 v p9 difference there is the one pre-registered candidate, graded once on p9.
+  2. Line 590 (FableWin 96 B, ten spellings miss) sits on a residue site (diag's GetMagnitude): unsolved text. FableWin's code for 590 and
+     the tail 636-657 goes to `pending/NEXT_CODEX_QUESTIONS.md`.
+  3. The wfE6 id rule was measured on `or` / `test` operands, not x87; one flipped site (p8 -> p9) does not establish it here.
+  - Record: p9 is the row's DIFFER(7162v7176); p5 (7176v7176) is a bracket only.
+  - Tools: rebuild the wfE6 comparator readout (wfE6 NOTES 168-170, LESSONS gdb line) as a bounded tools task under `lane_tools/c2probe/`,
+    committed this time. Acceptance: it predicts the p8 -> p9 flip (that site's bit changes, no other). Readouts say where temps are
+    missing; candidates still come from evidence, never from the readout.
+  - Authoring restarts without waiting on the tools (AUTH21: item 1, then 0x00BD3070's ~15 row-local forceinlines into shared headers,
+    then 0x00502E90). Leave the GFLimit guard alone.
+
+- **2026-11-22 (Account A, advisor): C2T1's comparator tools.** Accepted as an instrument and committed (`lane_tools/c2probe/lk/`); the
+  "no other bit changes" half of the acceptance test is withdrawn: it assumed every comparator bit is visible in code, and on 0x00B4D370
+  12 of 12 flipped binary products emitted identical code. Proven: keys recompute, the zero-shift replay reproduces all 34,291 sorts,
+  a repeat compile gives 0 flips, and the target site's tool order equals the emitted order in both builds. Scope + the corrected IND
+  rule (`[0x4000*(X mod 4) + 8 >= 64Y mod 65536]`) at the top of the README. Caveats: rerun the p8-v-p8b control with the final lka
+  (must give 0 flips); fsolve over-predicts (10 extra flips at +1), a screen only.
+  - Also: AUTH21 refuted the 2026-11-22 frame-placement item for 0x00B4D370 (p5 has the same wrong frame and is 7176 B; the 14 B are
+    x87 operand picks plus the 10-B loop pad they cost).
+  - Next (tools agent C2T2): (1) 0x00B4D370, no new run: per residue site, p9's tool order v p9's emitted order (agree = addressable;
+    disagree = the tool says nothing; check what the wfA6g notes found there). (2) 0x00BD3070, one lk run on c6 (11 of 13 picks are
+    test / or, the rule's measured domain): the same check on all 13 sites, then fsolve for the flips retail needs. (3) Terminal standard:
+    if fsolve gives a shift the allocator hook can force, force it on the real row; RELOCATION_MATCH proves a numbering tie = outcome (A)
+    unless evidence supplies the text; an empty solution set means not a uniform shift (report the conflicting sites). Candidates still
+    come from PDB evidence, pre-registered, graded once; never fit text to a record count.
+
+- **2026-11-22 (Account A, advisor): AUTH22 (Fable 5.2 trial) on 0x0066B370 and 0x00502E90.**
+  - 0x0066B370 (RELOCATION_MATCH) does not land yet. Ego_d line 208 (by-value float accessors as arguments, retail reads them like
+    lvalues) is the 0x0093D270 mechanism and meets neither clause of the standing criterion: an owner decision, put to the owner with
+    0x0093D270 (a third site in a second class makes "the TLC headers differed" more likely). Before asking: grade the `const float&`
+    accessor form once on the real row (if it matches, one form covers both rows: offer that, not direct-read + `friend`), and check the
+    three PDBs for the two CAnimSet members' access and any friend record. The GetSubDef<CEntitySoundDef> copy (182 v 162, owner in a size
+    frame-pointer TU) holds the row under the pick-any rule; no "losing instance" exception: try ONE row-tail pragma matching the owner's
+    mode, then pk.py. Run the full header proof (equiv over all rows, recheck the differing, dry run, leafrel, link) whatever the rulings.
+  - 0x00502E90: not terminal; do not pick AUTH22's (a) / (b) / (c). The penalty model is unverified (without the 288-unit block the
+    stretch is still 172 against a window of 81): give dt.py a control on a matched row first; confirm the 11 assert arms are every Ego_d
+    assert line before the servant block; list what retail's early-return block at 0x005048C6 destroys v ours v Ego_d; then the Ego_d
+    declaration-order port.
+  - Trial: score 0x0066B370 as "matched, pending owner; same mechanism as Opus's 0x0093D270 oracle", not as a landed match. AUTH23 (Fable)
+    takes the three checks, the four untouched rows, then 0x00502E90; every grade under a timeout (stale drafts hung cl twice).

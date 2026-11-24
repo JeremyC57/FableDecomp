@@ -8,8 +8,13 @@
 // Shape: a frame-pointer, size-optimised translation unit (`push ebp ; mov ebp,esp ; push ecx`,
 // `leave`, the second member's address formed in place with `add esi,2Ch`), the retail persist
 // hook shape: #pragma optimize("y",off) then ("s",on).
+// Leaf: ?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z
+// Class-model move (NF322, 2026-11-23): defined on the real class of engine/CCrateStackDef.h under FABLE_RETAIL_CCRATESTACKDEF_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CCrateStackDef_Methods::Transfer); the retail RTTI vftable placement names this PDB member here.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CCRATESTACKDEF_VIRTUAL_MODEL
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CCrateStackDef.h"
 
 class CPersistContext { public:
@@ -17,12 +22,7 @@ class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
 };
 
-struct CCrateStackDef_Methods : CCrateStackDef {
-    void Transfer(CPersistContext& context);
-};
-
-void CCrateStackDef_Methods::Transfer(CPersistContext& context)
-{
+void CCrateStackDef::Transfer(CPersistContext& context) {
     context.Transfer(*(long*)(&StackType));
     long defaultPriority = 0;
     context.Transfer("Priority", Priority, defaultPriority);

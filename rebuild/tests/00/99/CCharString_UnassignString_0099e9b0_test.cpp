@@ -1,108 +1,58 @@
+// Behaviour test for 0x0099E9B0 CCharString::UnassignString (NF218, 2026-11-21, q12377): on fable_string.h (the row's header path);
+//   links the row object. A derived probe reaches the protected member; the data block is laid out by byte offset (pack 1: text +0,
+//   string length +4, data length / flag word +8, owner count +0xD) and the global new / delete are replaced to count the frees.
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 
-#pragma pack(push, 1)
-class CCharStringData
-{ public:
-    char* text;
-    unsigned int unknown04;
-    unsigned int unknown08;
-    unsigned char flags0C;
-    int owners;
-};
-#pragma pack(pop)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRINGDATA_FRIEND
+#define FABLE_RETAIL_SHOVE_STRING_CLEANUP_PASS23
+#include "fable_string.h"
 
-class CCharString
-{ public:
-    CCharStringData* storage_;
+static int g_deleteScalar = 0, g_deleteArray = 0;
+void* __cdecl operator new(size_t n) { return std::malloc(n ? n : 1); }
+void* __cdecl operator new[](size_t n) { return std::malloc(n ? n : 1); }
+void __cdecl operator delete(void* p) { if (p) { ++g_deleteScalar; std::free(p); } }
+void __cdecl operator delete[](void* p) throw() { if (p) { ++g_deleteArray; std::free(p); } }
 
-    void __fastcall UnassignString();
+struct Probe : CCharString {
+    static void Unassign(void* s) { static_cast<Probe*>(static_cast<CCharString*>(s))->UnassignString(); }
 };
 
-void __fastcall CCharString::UnassignString()
+static unsigned char* MakeBlock(char* text, long refs)
 {
-    CCharStringData* p = storage_;
-    if (p != 0)
-    {
-        if (--p->owners <= 0)
-        {
-            CCharStringData* data = storage_;
-            if (data != 0)
-            {
-                if (data->text != 0)
-                {
-                    delete[] data->text;
-                    data->text = 0;
-                }
-                unsigned int flag = data->unknown08 & 0x80000000;
-                data->unknown04 = 0;
-                data->unknown08 = flag;
-                delete data;
-            }
-        }
-        storage_ = 0;
-    }
+    unsigned char* b = (unsigned char*)::operator new(sizeof(CCharStringData));
+    std::memset(b, 0, sizeof(CCharStringData));
+    unsigned long len = 3, word = 0x80000007;
+    std::memcpy(b + 0, &text, 4); std::memcpy(b + 4, &len, 4); std::memcpy(b + 8, &word, 4); std::memcpy(b + 0xD, &refs, 4);
+    return b;
 }
-
-static int g_freeArrayCount = 0;
-static int g_freeScalarCount = 0;
 
 int main()
 {
-    // Case 1: null storage_ pointer -- no-op.
-    CCharString cs1;
-    cs1.storage_ = 0;
-    cs1.UnassignString();
-    if (cs1.storage_ != 0) { printf("FAIL case1\n"); return 1; }
-
-    // Case 2: owners=2 (shared) -- decrements to 1, does NOT free, resets storage_ to 0.
-    CCharStringData* d2 = (CCharStringData*)malloc(sizeof(CCharStringData));
-    char* txt2 = (char*)malloc(8);
-    strcpy(txt2, "hi");
-    d2->text = txt2;
-    d2->unknown04 = 0x1234;
-    d2->unknown08 = 0x80000005;
-    d2->flags0C = 0;
-    d2->owners = 2;
-    CCharString cs2;
-    cs2.storage_ = d2;
-    cs2.UnassignString();
-    if (cs2.storage_ != 0) { printf("FAIL case2 storage not reset\n"); return 1; }
-    if (d2->owners != 1) { printf("FAIL case2 owners=%d\n", d2->owners); return 1; }
-    if (d2->text != txt2) { printf("FAIL case2 text freed early\n"); return 1; }
-    free(txt2);
-    free(d2);
-
-    // Case 3: owners=1 (last owner) -- decrements to 0, frees text via delete[],
-    // clears unknown04, masks unknown08 to only the high bit, frees the block itself.
-    CCharStringData* d3 = new CCharStringData();
-    char* txt3 = new char[8];
-    strcpy(txt3, "bye");
-    d3->text = txt3;
-    d3->unknown04 = 0xAAAA;
-    d3->unknown08 = 0x80000007;
-    d3->flags0C = 0;
-    d3->owners = 1;
-    CCharString cs3;
-    cs3.storage_ = d3;
-    cs3.UnassignString();
-    if (cs3.storage_ != 0) { printf("FAIL case3 storage not reset\n"); return 1; }
-    // d3 and txt3 are now freed memory -- we cannot safely dereference them again,
-    // so this test only validates the reachable postconditions (storage_ reset).
-
-    // Case 4: owners=0 already (<=0 branch with no text pointer) -- frees block, no text free call.
-    CCharStringData* d4 = new CCharStringData();
-    d4->text = 0;
-    d4->unknown04 = 0x55;
-    d4->unknown08 = 0x80000009;
-    d4->flags0C = 0;
-    d4->owners = 0;
-    CCharString cs4;
-    cs4.storage_ = d4;
-    cs4.UnassignString();
-    if (cs4.storage_ != 0) { printf("FAIL case4 storage not reset\n"); return 1; }
-
-    printf("UNASSIGN_STRING_OK\n");
+    if (sizeof(CCharString) != 4 || sizeof(CCharStringData) != 0x11) { std::printf("FAIL layout\n"); return 1; }
+    // Case 1: null data pointer -- no-op.
+    void* s1 = 0;
+    Probe::Unassign(&s1);
+    if (s1 != 0 || g_deleteScalar || g_deleteArray) { std::printf("FAIL case1\n"); return 1; }
+    // Case 2: two owners -- the count drops to 1, nothing is freed, the pointer is cleared.
+    char* t2 = new char[8]; std::strcpy(t2, "hi");
+    unsigned char* b2 = MakeBlock(t2, 2);
+    void* s2 = b2;
+    Probe::Unassign(&s2);
+    long r2; std::memcpy(&r2, b2 + 0xD, 4);
+    if (s2 != 0 || r2 != 1 || g_deleteScalar || g_deleteArray) { std::printf("FAIL case2\n"); return 1; }
+    // Case 3: last owner -- the text array and then the block are freed, the pointer is cleared.
+    std::memcpy(b2 + 0xD, &r2, 4);
+    s2 = b2;
+    Probe::Unassign(&s2);
+    if (s2 != 0 || g_deleteArray != 1 || g_deleteScalar != 1) { std::printf("FAIL case3\n"); return 1; }
+    // Case 4: count already 0 and no text -- only the block is freed.
+    unsigned char* b4 = MakeBlock(0, 0);
+    void* s4 = b4;
+    Probe::Unassign(&s4);
+    if (s4 != 0 || g_deleteArray != 1 || g_deleteScalar != 2) { std::printf("FAIL case4\n"); return 1; }
+    std::printf("UNASSIGN_STRING_OK\n");
     return 0;
 }

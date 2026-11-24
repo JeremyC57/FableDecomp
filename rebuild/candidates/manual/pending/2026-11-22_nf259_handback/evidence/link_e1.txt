@@ -1,0 +1,9 @@
+## new five + HEAD 00955620
+duplicates 0
+
+## positive control (00692880 twice)
+duplicates 0
+
+## positive control (00692880 and a renamed copy)
+duplicates 1
+dup_00692880.obj : warning LNK4006: "protected: virtual bool __thiscall CCreatureActionBase::OverrideFaceWithDefault(void)const " (?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ) already defined in 00692880.obj; second definition ignored

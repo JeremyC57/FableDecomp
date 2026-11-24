@@ -12,7 +12,7 @@
 //   the tentacle component (0xE3) angle offset +0x44.
 #include <math.h>
 #pragma intrinsic(fmod, fabs, atan2)
-float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);   // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 
 #include "engine/C3DVector.h"
 class C2DVector { public:
@@ -97,7 +97,7 @@ bool CTCKraken::GetClosestTentacleToTarget(CTentacleIterator& closest)
             thing->GetTC(TCI_KRAKEN_TENTACLE, &tentacle);
             {
                 float facing = heading + tentacle->AngleOffset;
-                float difference = (float)fabs(AngleDifference(facing, bearing));
+                float difference = (float)fabs(GFGetSignedAngleDifference(facing, bearing));
                 if (difference < best) {
                     best = difference;
                     closest._M_node = node;

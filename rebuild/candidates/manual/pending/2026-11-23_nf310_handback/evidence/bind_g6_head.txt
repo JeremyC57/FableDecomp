@@ -1,0 +1,24 @@
+#62 00409090 ?GetMaxAntialiasing@CUserProfileManager@@QBEKXZ
+   00409090(self) - DEF=OK:?GetMaxAntialiasing@CUserProfileManager@@QBEKXZ
+   00548790 WRONG ?GetMaxAntialiasing@CUserProfileManager@@QBEJXZ x1
+#70 0049e080 ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
+   0049e080(self) NOOBJ
+   004164e0 WRONG ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z x1
+   00417001 WRONG ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z x1
+   00417747 OK ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z x1
+#71 004a0cd0 ?AutoSaveQuestStart@CWorld@@QAE_NXZ
+   004a0cd0(self) - DEF=OK:?AutoSaveQuestStart@CWorld@@QAE_NXZ
+   004a3740 OK ?AutoSaveQuestStart@CWorld@@QAE_NXZ x1
+   0088f920 WRONG ?AutoSaveQuestStart@CWorld@@QAEXXZ x1
+   00896b60 OK ?AutoSaveQuestStart@CWorld@@QAE_NXZ x1
+#75 00502e90 ?PopulateRegionWithVillagers@CWorldMap@@QAEXAAVCThing@@@Z
+   00502e90(self) NOOBJ
+   005064c0 OK ?PopulateRegionWithVillagers@CWorldMap@@QAEXAAVCThing@@@Z x1
+   0065c781 WRONG ?PopulateRegionWithVillagers@CWorldMap@@QAEXPAVCThing@@@Z x1
+   008a1c50 OK ?PopulateRegionWithVillagers@CWorldMap@@QAEXAAVCThing@@@Z x1
+#76 0050a650 ?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
+   0050a650(self) - DEF=OK:?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
+   0050af10 WRONG ?GetMapNavigationAreaInit@CWorldMap@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z x1
+#78 009bd020 ?GlobalRegisterPlayer@CXMVPlayer@@SIXXZ
+   009bd020(self) - DEF=OK:?GlobalRegisterPlayer@CXMVPlayer@@SIXXZ
+   004022b0 WRONG ?GlobalRegisterPlayer@CXMVPlayer@@SAXXZ x1

@@ -1,7 +1,6 @@
-// Leaf: ?RenderPrimitive@CEnginePrimitiveManagerParticleLineGroup_Methods@@QAEHHHH@Z
-#include "engine/CEnginePrimitiveManagerParticleLineGroup.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CEnginePrimitiveManagerParticleLineGroup_Methods : CEnginePrimitiveManagerParticleLineGroup {
-    int RenderPrimitive(int primitive, int x1, int chain);
-};
-int CEnginePrimitiveManagerParticleLineGroup_Methods::RenderPrimitive(int primitive, int x1, int chain) { return 0; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?RenderPrimitive@CEnginePrimitiveManagerParticleLineGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?RenderPrimitive@CEnginePrimitiveManagerParticleLineGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CEnginePrimitiveManagerParticleLineGroup.h under FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLELINEGROUP_CLASS with the PDB parameter / return types (was ?RenderPrimitive@CEnginePrimitiveManagerParticleLineGroup_Methods@@QAEHHHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLELINEGROUP_CLASS
+#include "engine/CEnginePrimitiveManagerParticleLineGroup.h"
+ERendered CEnginePrimitiveManagerParticleLineGroup::RenderPrimitive(CEngineInternalPrimitiveBase& primitive, EEngineRenderLayer x1, CEngineSubPrimitiveChain& chain) { return (ERendered)0; }

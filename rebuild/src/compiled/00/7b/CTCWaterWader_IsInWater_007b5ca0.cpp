@@ -1,5 +1,5 @@
 // CTCWaterWader::IsInWater(bool& inWater, bool& deep, float& waterHeight) const -- clear the outputs; unless the world's mode object says always-check, skip things more than 20 units from the camera point or not rendered last frame; skip things whose slot-39 query is set, that lack the 0x31 component or whose 0x31 kind is 0x1A; then read the water height at the thing, and when it is above 0.05 report water deeper than 0.1 over the ground and more than 0.7 above the thing's feet
-// Leaf: IsInWater
+// Leaf: ?IsInWater@CTCWaterWader@@ABEXAA_N0AAM@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B5CA0, length 417 bytes (+ int3 padding; `ret 0Ch`).
 // Mangled (Ego_r.pdb): ?IsInWater@CTCWaterWader@@ABEXAA_N0AAM@Z.
@@ -91,7 +91,9 @@ protected:
     CWorld& GetWorld() const;   // 0x00686A70
 };
 struct CTCWaterWader : CTCBase {
+    private:
     void IsInWater(bool& inWater, bool& deep, float& waterHeight) const;
+    public:
     FABLE_FORCEINLINE float GetDistanceSquaredFromReferencePoint() const
     {
         CWorld* world = (&GetWorld());

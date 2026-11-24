@@ -62,7 +62,7 @@ __declspec(noinline) CArray<T>& CArray<T>::operator=(const CArray<T>& other)
 
 class CTriangleStripifier2 {
 public:
-    void StripUnusedVerts(CArray<unsigned short>& verts, const CArray<CArray<long> >& vertTriangles, const CArray<bool>& triangleUsed);
+    private: void StripUnusedVerts(CArray<unsigned short>& verts, const CArray<CArray<long> >& vertTriangles, const CArray<bool>& triangleUsed); public:
 };
 
 void CTriangleStripifier2::StripUnusedVerts(CArray<unsigned short>& verts, const CArray<CArray<long> >& vertTriangles, const CArray<bool>& triangleUsed)

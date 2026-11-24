@@ -80,7 +80,7 @@ struct CActionTalkBase {
     unsigned char _pad1c[0x48 - 0x1c];          // +0x1c times, Messages, indices, conversation
     long GameTurnDuration;                      // +0x48
     unsigned char _pad4c[0x90 - 0x4c];          // +0x4c .. +0x8f
-    void Update();                              // 0x00716DE0
+    virtual void Update();                              // 0x00716DE0
     CWideString GetCurrentMessageText();        // 0x00713290
 };
 

@@ -26,7 +26,7 @@ class CPlane { public:
     float     D;
 };
 
-class CShadowClipVolume { public:
+class C3DBoundingBox; class CShadowClipVolume { public: bool ClipBoundingBox(const C3DBoundingBox& box, bool& inside) const;   // 0x00B4CED0
     CPlane            ClipPlanes[8];               // +0x00
     long              ClipPlaneCount;              // +0x80
     C3DBoundingSphere BoundingSphere;              // +0x84
@@ -82,9 +82,9 @@ class C3DBoundingBox { public:
     C3DVector MinCoord, MaxCoord;
 };
 
-struct CShadowClipVolumeMethods : CShadowClipVolume {
-    bool ClipBoundingBox(const C3DBoundingBox& box, bool& inside) const;   // 0x00B4CED0
-};
+// NF289: ClipBoundingBox 0x00B4CED0 is declared in CShadowClipVolume above (Ego_r + FableWin
+// ?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@AA_N@Z); it was called through a
+// CShadowClipVolumeMethods stand-in.
 
 class CEngineSceneGridCell { public:
     CEngineSceneGridCell*         Parent;           // +0x00
@@ -112,7 +112,7 @@ bool CEngineSceneGrid::PreloadPrimitives(unsigned long x, unsigned long y, const
     float distance;
     bool inside;
     if (cell && GetCellBoundingBoxAndDrawDistance(bounds, distance, x, y)) {
-        if (static_cast<const CShadowClipVolumeMethods&>(volume).ClipBoundingBox(bounds, inside)) {
+        if (volume.ClipBoundingBox(bounds, inside)) {
             C3DBoundingSphere sphere;
             for (CEngineInternalPrimitiveBase* primitive = cell->FirstPrimitive; primitive; primitive = primitive->NextPrimitive) {
                 sphere.Center.X = 0.0f;

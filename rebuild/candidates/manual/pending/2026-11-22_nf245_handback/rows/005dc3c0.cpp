@@ -1,0 +1,75 @@
+// CAnimComponentFlags::Initialise(CPersistContext&, const CCharString&) -- reset, then OR the flags parsed from the text into Flags
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005DC3C0, length 130 bytes (virtual, `ret 8`).
+// Callees: this's virtual slot 8 (+0x20, the component reset), CCharString::CCharString(const char*, long)
+// @ 0x0099EBF0, CStringParser::CStringParser(const CCharString&, void (__fastcall*)(const CCharString&), const CCharString&,
+// long) @ 0x00404720 (landed), CCharString::~CCharString @ 0x0099EAE0, TransferIn(CPersistContext*,
+// CStringParser*, long*) @ 0x009E2590 (__fastcall), std::_List_base<CStringParserCommentBoundaries>::~_List_base
+// @ 0x004046B0 (landed), CBaseClass::~CBaseClass @ 0x0099A2E0.
+//
+// Shape: after the virtual reset, a CStringParser local (0x28 bytes, the whole frame above the temp string's
+// word) is built over the text with no error callback, an explicit `CCharString("", -1)` file-name
+// temporary (its constructor's returned pointer pushed straight from eax; the trailing 0 pushed before it is
+// evaluated, right to left) and line offset 0; the temporary dies right after the declaration. The parsed
+// value is the local of an INLINE helper returning it, which VC homes in the dead text-argument slot
+// (`lea edx,[esp+38h]`); it is OR-ed into Flags (+0x08). A plain `long` local in the function body takes a
+// frame word of its own (0x30 frame), an inlined by-value parameter adds a self-copy. The parser's implicit destructor is inlined (comment list, TempCharString,
+// Filename, then the out-of-line CBase destructor: no vtable store of its own). The engine header
+// CAnimComponentFlags.h is data-only, so the polymorphic class is modelled locally (Flags +0x08, PDB name).
+// Leaf: ?Initialise@CAnimComponentFlags@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferIn(CPersistContext*, CStringParser*, long*) and the local
+//   ParseLong helper replaced by the shared engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY):
+//   its inline long-returning TransferIn(context, parser) over the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (0x009E2590, the landed self spelling).
+
+class CCharString { public:
+    void* m_pData;
+    CCharString(const char* text, long length); // 0x0099EBF0
+    ~CCharString();                             // 0x0099EAE0
+};
+
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+
+class CStringParserCommentBoundaries;
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
+
+class CStringParser : public CBaseClass { public:                  // retail 0x28 bytes
+    char* String;                               // +0x04
+    unsigned long BaseLineOffset;               // +0x08
+    CCharString Filename;                       // +0x0c
+    CCharString TempCharString;                 // +0x10
+    std::list<CStringParserCommentBoundaries> Comments;          // +0x14
+    void (*ErrorCallback)(CCharString*);        // +0x18
+    long CursorPos[3];                          // +0x1c CCursorPos
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
+                  long baseLineOffset);         // 0x00404720
+};
+
+class CPersistContext;
+
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
+
+
+class CAnimComponentBase { public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
+    virtual void Reset();                       // slot 8 (+0x20)
+    long _base04;                               // +0x04
+};
+
+class CAnimComponentFlags : public CAnimComponentBase { public:
+    long Flags;                                 // +0x08
+    virtual bool Initialise(CPersistContext& context, const CCharString& text);
+};
+
+bool CAnimComponentFlags::Initialise(CPersistContext& context, const CCharString& text)
+{
+    Reset();
+    CStringParser parser(text, 0, CCharString("", -1), 0);
+    Flags |= CPersistTraitsSLONG::TransferIn(context, parser);
+    return true;
+}

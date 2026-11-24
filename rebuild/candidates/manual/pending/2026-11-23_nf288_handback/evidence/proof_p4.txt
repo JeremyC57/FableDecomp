@@ -1,0 +1,2 @@
+##### 0059a238 renames: ?RefreshAvailableSavedGamesForProfile@CFrontEndManager@NUISystem@@QAEJXZ=?RefreshAvailableSavedGamesForProfile@CFrontEndManager@NUISystem@@IAEJXZ
+ALL_EQ sections=18 DEF=17 tables=-

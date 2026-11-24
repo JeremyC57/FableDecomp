@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson() -- once a second (staggered by the creature's
-// Leaf: ?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThingCreatureBase@@XZ
+// Leaf: ?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@ABEPAVCThingCreatureBase@@XZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -182,7 +182,9 @@ class CThingSearchTools { public:
         const CThingCompare_Nearest& compare, CThingCreatureBase** out) const;    // 0x00937420
 };
 struct CAIStateGroup_MinionReactToUnconsciousPerson : CAIStateGroupBase {
-    CThingCreatureBase* FindUnconsciousPerson();
+    private:
+    CThingCreatureBase* FindUnconsciousPerson() const;
+    public:
     CThingCreatureBase* FindUndiscoveredUnconsciousPerson();
 };
 // GetPBestThingInRoughArea stand-in: the nearest candidate in the box passing every bound filter.
@@ -212,7 +214,7 @@ bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& box, const TUnco
 }
 #pragma auto_inline(on)
 
-CThingCreatureBase* CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson()
+CThingCreatureBase* CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson() const
 {
     __int64 uid = ((CThingWithUID*)PBrain->PCreature)->UID;
     long framesPerSecond = CMainGameComponent::GetConstantFPS();

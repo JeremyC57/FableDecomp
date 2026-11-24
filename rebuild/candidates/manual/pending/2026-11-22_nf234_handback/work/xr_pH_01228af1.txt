@@ -1,0 +1,2 @@
+00433cc0	?Invoke_00433cc0@AutoTinyThunkTarget@@QAEXXZ	x1
+013b8760	?g_AutoTinyThunkObject_013b8760@@3UAutoTinyThunkTarget@@A	x1

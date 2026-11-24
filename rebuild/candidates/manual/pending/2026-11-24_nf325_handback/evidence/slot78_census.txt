@@ -1,0 +1,16 @@
+src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_PreparePrimitives_00b1f200.cpp:153:        info.Engine->SetChildPrimitive(system_group, LandscapeDecalsChildPrimIndex, LandscapeDecalsPrimHandle,
+src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_PreparePrimitives_00b1f200.cpp:155:        info.Engine->SetChildPrimitive(system_group, MeshDecalsChildPrimIndex, MeshDecalsPrimHandle,
+src/compiled/00/b1/NParticleEngineCPSCDecalRenderer_PreparePrimitives_00b1f200.cpp:230:                        info.Engine->SetChildPrimitive(parent, child_prim_id,
+src/compiled/00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30.cpp:167:        info.Engine->SetChildPrimitive(system_group, ChildPrimIndex, PrimHandle,
+src/compiled/00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30.cpp:174:        info.Engine->SetChildPrimitive(system_group, ChildTrailPrimIndex, TrailPrimHandle,
+src/compiled/00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30.cpp:235:                                info.Engine->SetChildPrimitive(PrimHandle, child_prim_id,
+src/compiled/00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30.cpp:247:                            info.Engine->SetChildPrimitive(PrimHandle, child_prim_id,
+src/compiled/00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30.cpp:265:                        info.Engine->SetChildPrimitive(TrailPrimHandle, child_prim_id,
+src/compiled/00/b0/NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0.cpp:340:            info.Engine->SetChildPrimitive(system_group, ChildPrimIndex, PrimHandle,
+src/compiled/00/b0/NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0.cpp:359:            info.Engine->SetChildPrimitive(system_group, ChildTrailPrimIndex, TrailPrimHandle,
+src/compiled/00/b0/NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0.cpp:446:                        info.Engine->SetChildPrimitive(PrimHandle, id,
+src/compiled/00/b0/NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0.cpp:469:                            info.Engine->SetChildPrimitive(TrailPrimHandle, id,
+tests/00/b9/CEngineSceneGrid_RenderCellClippedAndCheckVisibility_00b92950_test.cpp:462:void CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long,CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long) { abort(); }
+tests/00/b9/CEngineSceneGrid_RenderCellClippedAndCheckVisibility_00b92950_test.cpp:463:void CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long,const CEnginePrimitive&,unsigned long) { abort(); }
+tests/00/b4/CEnginePrimitiveRenderer2D_Render_00b4a700_test.cpp:292:void CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long,CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long){abort();}
+tests/00/b4/CEnginePrimitiveRenderer2D_Render_00b4a700_test.cpp:293:void CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long,const CEnginePrimitive&,unsigned long){abort();}

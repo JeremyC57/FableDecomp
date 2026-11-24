@@ -1,3 +1,4 @@
+// Leaf: ?BeginSerialising@CTCBase@@AAE_N_NAAVCCharString@@AAVCStringParser@@AAVCPersistContext@@@Z
 // CTCBase::BeginSerialising(bool saving, CCharString& data, CStringParser& parser, CPersistContext& context) -- open a
 // component's "Start<ClassName>;" block: saving appends the header to the level-state string and points the persist
 // context at it; loading parses the string, finds the block and hands its body to the context through the parser
@@ -70,7 +71,9 @@ public:
     void*         ParentThing;                         // +0x04
     bool          ToBeRemoved;                         // +0x08
     bool          IsInGlobalUpdateTCs;                 // +0x09
+    private:
     bool BeginSerialising(bool saving, CCharString& data, CStringParser& parser, CPersistContext& context);
+    public:
 };
 
 bool CTCBase::BeginSerialising(bool saving, CCharString& data, CStringParser& parser, CPersistContext& context)

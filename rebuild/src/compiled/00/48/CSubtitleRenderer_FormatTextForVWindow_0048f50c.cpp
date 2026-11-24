@@ -1,4 +1,4 @@
-// Leaf: FormatTextForVWindow
+// Leaf: ?FormatTextForVWindow@CSubtitleRenderer@@ABEXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z
 // Naming wave 35c (caller respell): calls 0x0048DAE0 as the Ego_r.pdb template instance ??$GFLimit@MMM@@YIXAAMABM1@Z (was the
 //   non-template ?GFLimit@@YIXAAMABM1@Z); the same-TU stand-in body is now that template's.
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
@@ -25,7 +25,7 @@ public:
 };
 
 float __fastcall GFAXToVX(float);                           // 0x009E1DA0
-float __stdcall GFAYToVY_009e1dd0(float y);                           // 0x009E1DD0
+float __fastcall GFAYToVY(float y);                                    // 0x009E1DD0 ?GFAYToVY@@YIMM@Z (Ego_r + FableWin; NF285, was the __stdcall stand-in GFAYToVY_009e1dd0)
 extern double g_VirtualScreenWidth;                          // 0x013961E8
 template <class T, class TMin, class TMax> void __fastcall GFLimit(T& value, const TMin& minimum, const TMax& maximum);   // 0x0048DAE0 <float,float,float>
 
@@ -35,7 +35,7 @@ public:
     virtual C2DExtentsF GetStringExtents(const wchar* text, bool wrap) const;
     virtual float GetMaxHeight() const;                      // slot 2 (+0x08)
     C2DExtentsF GetVStringExtents(const CWideString& text) const;   // 0x00437210
-    float GetVFontMaxHeight() const { return GFAYToVY_009e1dd0(GetMaxHeight()); }
+    float GetVFontMaxHeight() const { return GFAYToVY(GetMaxHeight()); }
 };
 extern const CFontBank* g_pWordWrapFont;                     // 0x013B87AC
 
@@ -73,8 +73,10 @@ public:
     // landed 0x0048E012 declares it so both files bind the same symbol). Only its address is taken here.
     static unsigned int __fastcall GetCharWidthW(wchar character);   // 0x0048E012
     CWideString WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const;   // 0x0048DC8B
+    private:
     void FormatTextForVWindow(const C2DBoxF& box, const CFontBank& font, const CWideString& text, CWideString& outText,
                               C2DBoxF& outBox) const;
+    public:
 };
 
 extern "C" int StandInSink(int, int);

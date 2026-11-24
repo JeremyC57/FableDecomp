@@ -8,6 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#include "engine/_quarantine/CAIStateGroup_MazeBase.h"
+
+class CAIStateGroup_MazeDefensiveMeleeCombat : public CAIStateGroup_MazeBase {
+public:
+    virtual void Update();
+protected:
+    bool IsStillRunnable();
+    long LastHealFrame;
+};
+FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_MazeDefensiveMeleeCombat) == 0x24);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -31,5 +43,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_MazeDefensiveMeleeCombat) == 0x24);
 FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_MazeDefensiveMeleeCombat, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_MazeDefensiveMeleeCombat, LastHealFrame) == 0x20);
+
+#endif
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZEDEFENSIVEMELEECOMBAT_H

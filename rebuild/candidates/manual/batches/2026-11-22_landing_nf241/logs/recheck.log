@@ -1,0 +1,88 @@
+0042abaf   RELOCATION_MATCH PASS   _List_base
+0042abca   RELOCATION_MATCH PASS   ~_List_base
+0042bed4   RELOCATION_MATCH PASS   CDeletion
+0047d648   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+0047d648   RELOCATION_MATCH PASS   IsLoadMenuReceivingInput
+0047d6f2   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+0047d6f2   RELOCATION_MATCH PASS   IsSaveComponentReceivingInput
+004830a1   WARN SHARED_HEADER_AVAILABLE CTCFishing (engine/CTCFishing.h)
+004830a1   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004830a1   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004830a1   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004830a1   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004830a1   RELOCATION_MATCH PASS   OpenInGameMenu
+00531e90   RELOCATION_MATCH PASS   SetDeletion
+00545b10   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00545b10   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00545b10   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00545b10   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00545b10   RELOCATION_MATCH PASS   UnAssignSpell
+00555390   RELOCATION_MATCH PASS   ~CScrollableList
+005836d2   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+005836d2   RELOCATION_MATCH PASS   IsQuitMenuReceivingInput
+0058376c   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+0058376c   RELOCATION_MATCH PASS   IsSaveMenuReceivingInput
+00583815   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00583815   RELOCATION_MATCH PASS   AdjustAudioOptionsSliders
+005838dd   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+005838dd   RELOCATION_MATCH PASS   AdjustVideoOptionsSliders
+005839a5   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+005839a5   RELOCATION_MATCH PASS   AdjustGameplayOptionsSliders
+00584f15   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00584f15   RELOCATION_MATCH PASS   UnAssignThingPC
+0058f016   RELOCATION_MATCH PASS   ConstructItemCategoryList
+00595356   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+00595356   RELOCATION_MATCH PASS   ResetSlidersToProfileValues
+0059db82   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+0059db82   RELOCATION_MATCH PASS   RefreshEntriesAmountsAndAvailabilities
+0059de04   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+0059de04   RELOCATION_MATCH PASS   UpdateBuyActionsList
+0059de76   RELOCATION_MATCH PASS   UpdateSellActionsList
+0059e6bd   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+0059e6bd   RELOCATION_MATCH PASS   RecurseRefreshEntriesAmountsAndAvailabilitiesPC
+005a887d   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005a887d   RELOCATION_MATCH PASS   RefreshBuyPossibilityPC
+005a9a87   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005a9a87   RELOCATION_MATCH PASS   RefreshBuyPossibility
+005ae6af   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+005ae6af   RELOCATION_MATCH PASS   RefreshDescriptions
+005ae9de   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+005ae9de   RELOCATION_MATCH PASS   RefreshBuyDescriptionsPC
+005aeaee   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+005aeaee   RELOCATION_MATCH PASS   RefreshSellDescriptionsPC
+005aecc0   WARN RELOC_NAME: ?BuyItem@CTCShop@@QAEXJ@Z -> 00774d20 labelled '_global::CTCShop_SellHighlightedItem'
+005aecc0   RELOCATION_MATCH PASS   SellItem
+005b43a2   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CHeroSuitDef (engine/CHeroSuitDef.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers (engine/CTCHeroAttachableAppearanceModifiers.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b43a2   WARN RELOC_NAME: ?FindLong@@YIPAJPAJ0ABJ@Z -> 005ba7f9 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+005b43a2   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+005b43a2   WARN RELOC_NAME: ?erase@?$list@JV?$allocator@J@std@@@std@@QAE?AU?$_List_iterator@JU?$_Nonconst_traits@J@std@@@2@U32@@Z -> 00429b02 labelled 'LinkedList_Unlink_and_Free'
+005b43a2   RELOCATION_MATCH PASS   AddClothingToThing
+005c3947   WARN SHARED_HEADER_AVAILABLE CDefIndex (engine/CDefIndex.h)
+005c3947   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c3947   WARN RELOC_NAME: ??0CIntelligentPointer_CThing@@QAE@PAVCThing@@@Z -> 004a96f0 labelled 'CIntelligentPointer<class CThing>::CIntelligentPointer'
+005c3947   WARN RELOC_NAME: ??0CEnginePrimitiveHandleVector@@QAE@K@Z -> 00485d30 labelled 'std::vector::vector'
+005c3947   WARN RELOC_NAME: ??0CComponentItemMap@@QAE@XZ -> 004df81d labelled 'std::map<T_004df81d>::map'
+005c3947   RELOCATION_MATCH PASS   CTCInventoryWeapons
+005c39f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005c39f0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c39f0   WARN RELOC_NAME: ??1CClothingItemMap@@QAE@XZ -> 004dd1c4 labelled '_global::StdList_Dtor_004dd1c4'
+005c39f0   WARN RELOC_NAME: ??1CRetailHandleVector@@QAE@XZ -> 00440c40 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+005c39f0   RELOCATION_MATCH PASS   ~CTCInventoryWeapons
+005c69aa   RELOCATION_MATCH PASS   RefreshAugmentationsLeftDescriptions
+005e5f30   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005e5f30   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005e5f30   RELOCATION_MATCH PASS   ActivateReal
+00607330   RELOCATION_MATCH PASS   ConstructLogbookList
+00626e40   RELOCATION_MATCH PASS   ConstructItemCategoryList
+00627400   RELOCATION_MATCH PASS   ConstructExpressionCategoryList
+009cba80   MATCH            PASS   UpdateEntry

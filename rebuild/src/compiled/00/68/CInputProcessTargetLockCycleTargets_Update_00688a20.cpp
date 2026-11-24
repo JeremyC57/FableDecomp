@@ -1,3 +1,4 @@
+// Leaf: ?Update@CInputProcessTargetLockCycleTargets@@UAEXAAVCProcessedInput@@@Z
 // CInputProcessTargetLockCycleTargets::Update(CProcessedInput& processed) -- build a scratch CInputEvent (0x00A04410 / destroyed @ 0x00A03B30); unless the (1, 2) button query (0x00687D50) holds, clear the cycle index (+0x28) and set the target (+0x30) to -1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00688A20, length 64 bytes.
 // The query label "CPersistContext::Transfer<CEngineGraphic>" is propagated. Shape: a 0x34-byte frame for the event, `push 2 ; push 1`, `ret 4`.
@@ -14,7 +15,7 @@ class CInputProcessTargetLockCycleTargets { public:
     long          m_2c;
     long          m_target;                        // +0x30
     bool IsButtonHeld(long a, long b);             // 0x00687D50
-    void Update(CProcessedInput& processed);
+    virtual void Update(CProcessedInput& processed);
 };
 
 void CInputProcessTargetLockCycleTargets::Update(CProcessedInput& processed)

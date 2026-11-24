@@ -1,4 +1,6 @@
+// Leaf: ?SetDeathRecoveryMarkerName@CGameScriptInterface@@UBEXABVCCharString@@@Z
 // CGameScriptInterface::SetDeathRecoveryMarkerName
+#define FABLE_RETAIL_NSCRIPT
 #include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString
@@ -48,11 +50,9 @@ template <class T> FABLE_FORCEINLINE bool GetTCOut(unsigned char* thing, int kin
     return false;
 }
 
-void __fastcall CGameScriptInterface_SetDeathRecoveryMarkerName(
-    CGameScriptInterface* self,
-    unsigned long,
-    const CCharString& name)
+void CGameScriptInterface::SetDeathRecoveryMarkerName(const class CCharString& name) const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     CPlayer* source = (&self->PlayerManager->GetMainPlayer());
     unsigned char* target =
         (unsigned char*)source->GetPControlledCreature();
@@ -65,3 +65,4 @@ void __fastcall CGameScriptInterface_SetDeathRecoveryMarkerName(
     if (GetTCOut(target, 4, &markerInterface))
         markerInterface->markerName = name;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_SetDeathRecoveryMarkerName -> CGameScriptInterface::SetDeathRecoveryMarkerName, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

@@ -8,6 +8,32 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CREATURE_RANGED_COMBAT2_PASS27
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+
+class CThingCreatureBase;
+
+// Original methods, access and fields from both complete PDB records.
+class CAIStateGroup_CreatureRangedCombat2 : public CAIStateGroupBase {
+protected:
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);
+    virtual bool IsRunnable();
+    virtual void OnActivate();
+    virtual void Update();
+    virtual void Cleanup();
+    virtual EAIStateGroupType GetStateGroupType() const;
+    bool HasRangedWeaponOut() const;
+public:
+    static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+    static CCharString FABLE_FASTCALL GetName();
+private:
+    bool IsAbleToFire() const;
+    CIntelligentPointer<CThingCreatureBase> PTargetThing;
+    bool AddedStrafe;
+};
+FABLE_STATIC_ASSERT_AT(24, sizeof(CAIStateGroup_CreatureRangedCombat2) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -31,5 +57,7 @@ FABLE_STATIC_ASSERT_AT(24, sizeof(CAIStateGroup_CreatureRangedCombat2) == 0x20);
 FABLE_STATIC_ASSERT_AT(25, offsetof(CAIStateGroup_CreatureRangedCombat2, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_CreatureRangedCombat2, PTargetThing) == 0x14);
 FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_CreatureRangedCombat2, AddedStrafe) == 0x1c);
+
+#endif // FABLE_RETAIL_CREATURE_RANGED_COMBAT2_PASS27
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_CREATURERANGEDCOMBAT2_H

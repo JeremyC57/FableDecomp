@@ -14,8 +14,30 @@
 #include "engine/CDefPointer.h"
 #include "engine/CStopWatch.h"
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_FILENAMES_FILETIMES
+#include "stlport/fable_containers.h"
+#include "engine/CDateAndTime.h"
+#endif
 class CEngineInterpolationInfo;
 namespace NUISystem { class CFrontEndManager; }
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_CTOR_DTOR
+// NF233 opt-in (rows 0x0042EA8F ctor / 0x0042F50B dtor; needs _RUN and _FILENAMES_FILETIMES): the members the constructor builds and
+// the destructor destroys, typed as Ego_r.pdb (struct_layouts_egor.tsv) at the retail offsets (8 lower than Ego_r after the 0xC
+// STLport vectors): CurrentMovement NGameComponentHelpers::ECursorMovement +0x18 (Ego_r / FableWin mangle the enum in that namespace,
+// ?ChangeSelection@CFrontendGameComponent@@AAE_NW4ECursorMovement@NGameComponentHelpers@@@Z; no enumerator name in the PDB extracts, so
+// the enum is declared empty, as landed 0x004963A0 does), m_bInitMainGame CMainGameComponentInit +0x2C, PAVITextureShow /
+// PAVITextureDecode CTexture* +0x88 / +0x8C, AVISrcBox / AVIDstBox C2DBoxI +0x90 / +0xA0, AVIPlaying / XMVCodeLoaded bool +0xB0 / +0xB1,
+// m_LastInterp CEngineInterpolationInfoSet +0xCC. Declarations (Ego_r + FableWin + Ego_d, all public):
+// ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z (0x0042EA8F), ??1CNewFrontendGameComponent@@UAE@XZ
+// (0x0042F50B), ?Init@CNewFrontendGameComponent@@UAEXXZ (0x0042F75E, vtable slot 1), ?OnPreDeviceReset@CNewFrontendGameComponent@@UAEXXZ
+// (0x0042DC5F) and ?OnPostDeviceReset@CNewFrontendGameComponent@@UAE_NXZ (0x0042DC60), the CDeviceResetCallback overrides (vtable
+// 0x01230C94 slots 0 / 1). Overrides only: no new vtable slot; no layout change (the static assert below holds).
+#include "engine/CMainGameComponentInit.h"
+#include "engine/C2DBoxI.h"
+#include "engine/CEngineInterpolationInfo.h"
+class CGame; class CTexture; class CNewFrontendGameComponentInit;
+namespace NGameComponentHelpers { enum ECursorMovement { }; }
+#endif
 #endif
 class CFontBank; class CGraphicDataBank; class CMeshDataBank; class CASoundBank; class CIEngine; class CInputManager;
 template <class T> class CDefPointer; class CFrontEndDef;
@@ -24,14 +46,22 @@ class CNewFrontendGameComponent : public CGameComponent {
 private:
     static CNewFrontendGameComponent* m_pNewFrontendGameComponent;       // 0x013B871C
     CCountedPointer<const CFontBank> m_pMenuFont;                        // +0x10
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_CTOR_DTOR
+    NGameComponentHelpers::ECursorMovement CurrentMovement;              // +0x18
+#else
     unsigned char CurrentMovement[4];                                    // +0x18 ECursorMovement
+#endif
     bool StartedRepeatingMovement;                                       // +0x1C
     double TimeLastMovementHappened;                                     // +0x20
     bool m_bAllowInputs;                                                 // +0x28
     bool m_bCreateGame;                                                  // +0x29
     bool CreateDevFrontEnd;                                              // +0x2A
 #ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RUN
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_CTOR_DTOR
+    CMainGameComponentInit m_bInitMainGame;                              // +0x2C
+#else
     unsigned char m_bInitMainGame[0x10];                                 // +0x2C CMainGameComponentInit
+#endif
     CDefPointer<const CFrontEndDef> m_pFrontEndDef;                      // +0x3C
 #else
     unsigned char m_bInitMainGame[0x10];                                 // +0x2C CMainGameComponentInit
@@ -48,16 +78,40 @@ private:
     // SaveGame +0x84 (Run 0x0042F43C), m_pFrontEndManager +0xB4, m_fLastUpdateTime +0xB8 / m_fLastRenderTime +0xBC (0x0042EC91),
     // m_attractModeTimer +0x100, m_inputDelayTimer +0x120 (its m_bIsRunning read at +0x138, 0x0042F07F), WindowsMediaPlayerInstalled
     // +0x144 (0x0042EDE2); the AVI members stay opaque.
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_FILENAMES_FILETIMES
+    // NF231 opt-in (row 0x0042EBB6 CNewFrontendGameComponent::Shutdown, needs FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RUN): the two
+    // STLport vectors typed as Ego_r.pdb (struct_layouts_egor.tsv: vector<CWideString,std::allocator<CWideString> > FileNames +0x6C,
+    // vector<CDateAndTime,std::allocator<CDateAndTime> > FileTimes) and Ego_d.pdb (field list 0x57888: FileNames type 0x7D2B
+    // std::vector<CWideString,std::allocator<CWideString> >, FileTimes type 0x1D9E0 std::vector<CDateAndTime,...>, both private)
+    // declare them; 12 bytes each in retail (+0x6C / +0x78, Shutdown 0x0042EC31 `lea ecx,[esi+6Ch]` -> erase 0x00412450, 0x0042EC3E `lea ecx,[esi+78h]` -> erase 0x00411B00).
+    // No layout change (same offsets and sizes as the opaque arrays below).
+    std::vector<CWideString> FileNames;                                  // +0x6C
+    std::vector<CDateAndTime> FileTimes;                                 // +0x78
+#else
     unsigned char FileNames[0xc];                                        // +0x6C vector<CWideString>
     unsigned char FileTimes[0xc];                                        // +0x78 vector<CDateAndTime>
+#endif
     CWideString SaveGame;                                                // +0x84
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_CTOR_DTOR
+    CTexture* PAVITextureShow;                                           // +0x88
+    CTexture* PAVITextureDecode;                                         // +0x8C
+    C2DBoxI AVISrcBox;                                                   // +0x90
+    C2DBoxI AVIDstBox;                                                   // +0xA0
+    bool AVIPlaying;                                                     // +0xB0
+    bool XMVCodeLoaded;                                                  // +0xB1
+#else
     unsigned char _pad_0x88[0xb4 - 0x88];                                // +0x88 PAVITextureShow .. XMVCodeLoaded
+#endif
     NUISystem::CFrontEndManager* m_pFrontEndManager;                     // +0xB4
     float m_fLastUpdateTime;                                             // +0xB8
     float m_fLastRenderTime;                                             // +0xBC
     double m_fLastRealUpdateTime;                                        // +0xC0
     bool CreatedMarkerFile;                                              // +0xC8
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_CTOR_DTOR
+    CEngineInterpolationInfoSet m_LastInterp;                            // +0xCC
+#else
     unsigned char m_LastInterp[0xc];                                     // +0xCC CEngineInterpolationInfoSet
+#endif
     CStopWatch m_RepeatTimer;                                            // +0xD8
     float m_fRepeatDelay;                                                // +0xF8
     unsigned long m_dwDPadTriggerState;                                  // +0xFC
@@ -78,6 +132,13 @@ private:
 public:
     virtual bool Run(CGameComponent** next_component);                   // 0x0042EC7C ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
     virtual void ChangeTextureColourDepth(long depth);                   // 0x0042DC5C
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_CTOR_DTOR
+    CNewFrontendGameComponent(CGame& game, const CNewFrontendGameComponentInit& init);   // 0x0042EA8F
+    virtual ~CNewFrontendGameComponent();                                // 0x0042F50B
+    virtual void Init();                                                 // 0x0042F75E
+    virtual void OnPreDeviceReset();                                     // 0x0042DC5F
+    virtual bool OnPostDeviceReset();                                    // 0x0042DC60
+#endif
 #else
 #ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_INIT
     // Opt-in (agentNF47, row 0x0042F75E CNewFrontendGameComponent::Init): Ego_r.pdb XMVCodeLoaded (+0xB9 there, +0xB1 in retail: the two
@@ -90,8 +151,20 @@ public:
 public:
     virtual void Init();                                                 // 0x0042F75E
 #else
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_GETLASTACTIVEJOYSTICKDEVICENUMBER
+    // NF229 opt-in (row 0x00599D5C NUISystem::CFrontEndManager::DoPressStart): Ego_r.pdb LastActiveJoystickDeviceNumber (+0x148 there,
+    // +0x140 in retail: the two STLport vectors are 0xC, as the RUN opt-in above) and FableWin.pdb's public inline
+    // ?GetLastActiveJoystickDeviceNumber@CNewFrontendGameComponent@@QBEJXZ (0x0201D7C8); retail expands it in 0x00599D5C
+    // (0x00599E1B `mov eax,[0x013B871C] ; push dword ptr [eax+140h]`). No layout change (the opaque pad split around the member).
+    unsigned char _pad_0x6c[0x140 - 0x6c];                               // +0x6C FileNames .. m_inputDelayTimer (opaque)
+    long LastActiveJoystickDeviceNumber;                                 // +0x140
+    unsigned char _pad_0x144[0x148 - 0x144];                             // +0x144 WindowsMediaPlayerInstalled (opaque)
+public:
+    long GetLastActiveJoystickDeviceNumber() const { return LastActiveJoystickDeviceNumber; }
+#else
     unsigned char _pad_0x6c[0x148 - 0x6c];                               // +0x6C FileNames .. WindowsMediaPlayerInstalled (opaque)
 public:
+#endif
 #endif
 #endif
 #ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_STARTGAME
@@ -101,6 +174,25 @@ public:
     // (out of line at 0x00594F36). No layout change.
     void StartGame() { SetQuit(); m_bCreateGame = true; }
     void LoadGame(CWideString& game);                                    // 0x00594F36
+#endif
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RESETATTRACTMODETIMER
+    // NF230 opt-in (rows 0x00597BF2 GotoPreviousScreen, 0x0059A238 CFrontEndManager::Action): Ego_r.pdb and FableWin.pdb
+    // ?ResetAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ (public, non-virtual), out of line at 0x0042DBEE. No layout change.
+    void ResetAttractModeTimer();                                        // 0x0042DBEE
+#endif
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_GETPSOUNDBANK
+    // NF230 opt-in (row 0x0041D0A8 NUISystem::CManager::PlaySoundW): Ego_d.pdb CNewFrontendGameComponent field list LF_ONEMETHOD
+    // `GetPSoundBank`, public, non-const, `CASoundBank* ()` (?GetPSoundBank@CNewFrontendGameComponent@@QAEPAVCASoundBank@@XZ; not in
+    // Ego_r / FableWin: inline, no out-of-line copy). Second source: the retail read 0x0041D0A8 `mov eax,[0x013B871C] ... mov eax,[eax+50h]`
+    // (PSampleBank's Data word; the body is reconstructed from those bytes with the FableWin CCountedPointer<T>::Get). No layout change.
+    CASoundBank* GetPSoundBank() { return PSampleBank.Get(); }
+#endif
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_SETQUIT
+    // NF230 opt-in (row 0x0059A238 CFrontEndManager::Action): FableWin.pdb ?SetQuit@CNewFrontendGameComponent@@UAEXXZ, the PUBLIC
+    // override of the protected CGameComponent::SetQuit (?SetQuit@CGameComponent@@MAEXXZ); retail RTTI vtable CNewFrontendGameComponent
+    // slot 4 holds 0x00430340 (`mov byte ptr [ecx+8],1 ; ret`), not CGameComponent's 0x00415930. Callers reach it through slot 4
+    // (`call [eax+10h]`). Declaration only: an override adds no vtable slot; no layout change.
+    virtual void SetQuit();                                              // 0x00430340
 #endif
     static CNewFrontendGameComponent* __fastcall Get() { return m_pNewFrontendGameComponent; }
     bool IsTextBankInitialised() const { return !m_pTextBank.IsNull(); }

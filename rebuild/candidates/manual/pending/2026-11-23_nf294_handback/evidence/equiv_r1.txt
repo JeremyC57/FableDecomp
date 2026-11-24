@@ -1,0 +1,10 @@
+rows checked 2951 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF294/work/eq_r1.tsv
+EQ_DONE
+## new tree (opt-in only): differing rows
+## planted control (typedef token above the opt-in, outside it): differing rows
+132
+00596cce	src	DIFF		rebuild/src/compiled/00/59/NUISystemCFrontEndManager_RefreshAvailableProfiles_00596cce.cpp
+00597006	src	DIFF		rebuild/src/compiled/00/59/NUISystemCFrontEndManager_RefreshAvailableProfilesForDelete_00597006.cpp
+004457f0	src	DIFF		rebuild/src/compiled/00/44/CGamePlayerInterface_Update_004457f0.cpp
+004457f0	test	DIFF		rebuild/tests/00/44/CGamePlayerInterface_Update_004457f0_test.cpp
+0050be40	src	DIFF		rebuild/src/compiled/00/50/CCountedPointer_DeleteData_0050be40.cpp

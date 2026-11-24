@@ -85,6 +85,15 @@ private:
 template <class _Result, class _Tp> inline const_mem_fun_ref_t<_Result, _Tp>
 mem_fun_ref(_Result (_Tp::*__f)() const) { return const_mem_fun_ref_t<_Result,_Tp>(__f); }
 #endif
+#ifdef FABLE_RETAIL_COMBATRING_ASSIGN_PASS27
+// STLport 4.6 _algo.h selects the bidirectional partition for a random-access range.
+template<class It,class Predicate>
+It FABLE_FASTCALL __partition(It,It,Predicate,const bidirectional_iterator_tag&);
+template<class It,class Predicate>
+inline It FABLE_FASTCALL partition(It first,It last,Predicate pred) {
+    return __partition(first,last,pred,typename iterator_traits<It>::iterator_category());
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_FOR_EACH_BODY
 // Retail opt-in (chunk 1018, row 0x0067E290 CDegradableDef::Transfer): STLport 4.6 _algo.h for_each with its body visible, which that
 // TU expands in place (0x0067E37F..0x0067E398: the CSetEngineGraphicType functor's byte store in a `cmp eax,edi ; jne` loop).

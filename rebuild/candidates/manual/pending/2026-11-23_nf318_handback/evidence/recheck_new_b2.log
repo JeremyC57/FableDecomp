@@ -1,0 +1,66 @@
+addr       parity           behav  name
+005db1c0   MATCH            PASS   SetDefaultValue
+005db1f0   MATCH            PASS   SetDefaultValue
+005db220   MATCH            PASS   SetDefaultValue
+005db310   MATCH            PASS   SetDefaultValue
+005db340   MATCH            PASS   SetDefaultValue
+005db370   RELOCATION_MATCH PASS   TransferBinaryOut
+005db3a0   MATCH            PASS   SetDefaultValue
+005dbda0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+005dbda0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+005dbda0   WARN RELOC_NAME: ?ReadC2DVector@CMemoryDataInputStream@@QAE?AVC2DVector@@XZ -> 00995030 labelled 'CDataInputStream::Read2DVector'
+005dbda0   RELOCATION_MATCH PASS   TransferBinaryIn
+006ff810   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+006ff810   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+006ff810   DIFFER(285v285)  PASS   TransferBinaryIn
+00915880   MATCH            PASS   OnActivate
+00958760   MATCH            PASS   InitStateGroup
+00a62ec0   MATCH            PASS   ValidateResource
+00aa75f0   RELOCATION_MATCH PASS   GetChunkInfo
+00aa7740   MATCH            PASS   IsUnknownType
+00ab9fa0   RELOCATION_MATCH PASS   GetChunkInfo
+0065ee9c   MATCH            PASS   GetTaskType
+00677740   MATCH            PASS   GetMatchType
+00842720   MATCH            PASS   IsMovementUsingPhysics
+00842730   MATCH            PASS   IsUsingAnimationMovement
+0084a840   MATCH            PASS   IsAllowingAnimationMovementToMoveSpeakAndWaitCameras
+009003b2   MATCH            PASS   GetStateGroupType
+009008e5   MATCH            PASS   GetStateGroupType
+00901298   MATCH            PASS   GetStateGroupType
+009012e6   MATCH            PASS   GetStateGroupType
+009013d0   MATCH            PASS   GetStateGroupType
+0090234e   MATCH            PASS   GetStateGroupType
+00a39c20   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a39c20   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+00a39c20   RELOCATION_MATCH PASS   GetLength
+00b28b40   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+00b28b40   MATCH            PASS   PeekGlobalDiffuseColour
+
+WINS: 27
+  005db1c0 MATCH CAnimComponentFlags::?SetDefaultValue@CAnimComponentFlags@@UAEXXZ
+  005db1f0 MATCH CAnimComponentTransitionInTime::?SetDefaultValue@CAnimComponentTransitionInTime@@UAEXXZ
+  005db220 MATCH CAnimComponentDelayTime::?SetDefaultValue@CAnimComponentDelayTime@@UAEXXZ
+  005db310 MATCH CAnimComponentCombatRecoil::?SetDefaultValue@CAnimComponentCombatRecoil@@UAEXXZ
+  005db340 MATCH CAnimComponentCombatMisc::?SetDefaultValue@CAnimComponentCombatMisc@@UAEXXZ
+  005db370 RELOCATION_MATCH CAnimComponentCombatMisc::?TransferBinaryOut@CAnimComponentCombatMisc@@UBEXAAVCDataOutputStream@@@Z
+  005db3a0 MATCH CAnimComponentCombatFlourishTargetOffset::?SetDefaultValue@CAnimComponentCombatFlourishTargetOffset@@UAEXXZ
+  005dbda0 RELOCATION_MATCH CAnimComponentCombatFlourishTargetOffset::?TransferBinaryIn@CAnimComponentCombatFlourishTargetOffset@@UAEXAAVCMemoryDataInputStream@@@Z
+  00915880 MATCH CAIStateGroup_MoveGoodsBase::?OnActivate@CAIStateGroup_MoveGoodsBase@@UAEXXZ
+  00958760 MATCH CAIStateGroup_MinionReactToCrime::?InitStateGroup@CAIStateGroup_MinionReactToCrime@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+  00a62ec0 MATCH CMovableResourceMemoryPool::?ValidateResource@CMovableResourceMemoryPool@@MAEXPAX@Z
+  00aa75f0 RELOCATION_MATCH CChunkedFileChunk::?GetChunkInfo@CChunkedFileChunk@@UBE?BVCCharString@@XZ
+  00aa7740 MATCH CChunkedFileRawDataChunk::?IsUnknownType@CChunkedFileRawDataChunk@@UBEHXZ
+  00ab9fa0 RELOCATION_MATCH C3DMeshFileUniqueVerticesChunk::?GetChunkInfo@C3DMeshFileUniqueVerticesChunk@@UBE?BVCCharString@@XZ
+  0065ee9c MATCH CVillageTaskPatrol::?GetTaskType@CVillageTaskPatrol@@UBE?AW4EVillageTaskType@@XZ
+  00677740 MATCH CReactionMatch_MRPyramid::?GetMatchType@CReactionMatch_MRPyramid@@UBE?AW4EReactionMatchType@@XZ
+  00842720 MATCH CCreatureAction_PlayAnimation::?IsMovementUsingPhysics@CCreatureAction_PlayAnimation@@UBE_NXZ
+  00842730 MATCH CCreatureAction_PlayAnimation::?IsUsingAnimationMovement@CCreatureAction_PlayAnimation@@UBE_NXZ
+  0084a840 MATCH CCreatureAction_PlayAnimation::?IsAllowingAnimationMovementToMoveSpeakAndWaitCameras@CCreatureAction_PlayAnimation@@UBE_NXZ
+  009003b2 MATCH CAIStateGroup_EarthTroll::?GetStateGroupType@CAIStateGroup_EarthTroll@@MBE?AW4EAIStateGroupType@@XZ
+  009008e5 MATCH CAIStateGroup_BriarRose::?GetStateGroupType@CAIStateGroup_BriarRose@@UBE?AW4EAIStateGroupType@@XZ
+  00901298 MATCH CAIStateGroup_BanditKingLunge::?GetStateGroupType@CAIStateGroup_BanditKingLunge@@MBE?AW4EAIStateGroupType@@XZ
+  009012e6 MATCH CAIStateGroup_BanditKingThrowWeapons::?GetStateGroupType@CAIStateGroup_BanditKingThrowWeapons@@MBE?AW4EAIStateGroupType@@XZ
+  009013d0 MATCH CAIStateGroup_IceTrollIcicleAssault::?GetStateGroupType@CAIStateGroup_IceTrollIcicleAssault@@MBE?AW4EAIStateGroupType@@XZ
+  0090234e MATCH CAIStateGroup_MeleeCombatNearby::?GetStateGroupType@CAIStateGroup_MeleeCombatNearby@@MBE?AW4EAIStateGroupType@@XZ
+  00a39c20 RELOCATION_MATCH CWADFile::?GetLength@CWADFile@@UBEJXZ
+  00b28b40 MATCH CIEngine::?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ

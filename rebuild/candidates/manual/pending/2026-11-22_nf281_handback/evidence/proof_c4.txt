@@ -1,0 +1,20 @@
+##### 0088c160 renames: ?InitStateGroups@CAIBrain@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z=?InitStateGroups@CAIBrain@@AAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z
+sections head 12 new 12
+ALL_EQ 0
+DIFF	??0CAIBrain@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCThingManager@@AAVCPlayerManager@@AAVCThingAICreature@@V?$CDefPointer@$$CBVCBrainDef@@@@@Z
+funcs SAME=9 vtbl_H=1 vtbl_N=1
+##### 0092b110 renames: ?GoToLibrary@CAIStateGroup_ApprenticeHero@@QAE_NXZ=?GoToLibrary@CAIStateGroup_ApprenticeHero@@IAE_NXZ ?LookAtLeaderBoard@CAIStateGroup_ApprenticeHero@@QAE_NXZ=?LookAtLeaderBoard@CAIStateGroup_ApprenticeHero@@IAE_NXZ ?LookAtMap@CAIStateGroup_ApprenticeHero@@QAE_NXZ=?LookAtMap@CAIStateGroup_ApprenticeHero@@IAE_NXZ
+sections head 12 new 12
+ALL_EQ 0
+DIFF	?Update@CAIStateGroup_ApprenticeHero@@UAEXXZ
+funcs SAME=10 vtbl_H=0 vtbl_N=0
+##### 0093ae80 renames: ?GetPNearCampfire@CAIStateGroup_BanditSitRoundCampfire@@QBEPAVCThingObject@@XZ=?GetPNearCampfire@CAIStateGroup_BanditSitRoundCampfire@@ABEPAVCThingObject@@XZ
+sections head 23 new 23
+ALL_EQ 0
+DIFF	?IsRunnable@CAIStateGroup_BanditSitRoundCampfire@@UAE_NXZ
+funcs SAME=19 vtbl_H=2 vtbl_N=2
+##### 0096d450 renames: ?GetSeat@CAIStateGroup_EatAtTable@@QAE_NXZ=?GetSeat@CAIStateGroup_EatAtTable@@IAE_NXZ
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?IsRunnable@CAIStateGroup_EatAtTable@@UAE_NXZ
+funcs SAME=0 vtbl_H=0 vtbl_N=0

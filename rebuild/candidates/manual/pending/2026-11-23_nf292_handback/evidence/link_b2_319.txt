@@ -1,0 +1,10 @@
+## HEAD set: H_009d66a0.obj H_009d5a30.obj
+duplicates 0
+
+UNRESOLVED 1 ?AddBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z
+UNRESOLVED 1 ?RemoveBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z
+## new set: N_009d66a0.obj H_009d5a30.obj
+duplicates 0
+
+UNRESOLVED 1 ?RegisterBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z
+LK_DONE

@@ -26,7 +26,7 @@ public:
         CObjectAllocatorBlockEntry* NextEntry;
     };
     void* Alloc(long size);
-    void CreateMoreBlocks();                             // bound public in reloc_bindings (Ego_r.pdb: private)
+    private: void CreateMoreBlocks(); public:            // Ego_r.pdb + FableWin.pdb: private (AAE)
     CObjectEntry* FreeList;                              // +0x14
     CObjectAllocatorBlockEntry StartBlock;               // +0x18
     bool AllowHeapToGrow;                                // +0x5014

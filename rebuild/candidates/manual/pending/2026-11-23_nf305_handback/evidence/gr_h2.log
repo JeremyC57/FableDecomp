@@ -1,0 +1,14 @@
+H 00918900 CAIStateGroup_GazeOutside::IsRunnable RELOCATION_MATCH flags= [] leaf=?IsRunnable@CAIStateGroup_GazeOutside@@UAE_NXZ
+H 00918ac0 CAIStateGroup_Gaze::InitCreaturePosition RELOCATION_MATCH flags= [] leaf=?InitCreaturePosition@CAIStateGroup_Gaze@@QAE_NXZ
+H 00918b50 CAIStateGroup_GazeAtWork::InitCreaturePosition RELOCATION_MATCH flags= [] leaf=?InitCreaturePosition@CAIStateGroup_GazeAtWork@@QAE_NXZ
+H 0064e019 NPlayerGui::CDrawMiniMap::ToggleCentering RELOCATION_MATCH flags= [] leaf=
+H 007887be CTCTrapBase::UpdateTriggerOnProximity RELOCATION_MATCH flags= [] leaf=UpdateTriggerOnProximity
+H 004b4490 CQuestManager::Update RELOCATION_MATCH flags= [] leaf=?Update@CQuestManager@@QAEXXZ
+H 00904380 CScriptGameResourceObjectScriptedThing::WaitWhilePerformingTasks RELOCATION_MATCH flags= [] leaf=WaitWhilePerformingTasks
+H 00752640 CTCLook::InitialiseHeadAnims RELOCATION_MATCH flags= [] leaf=InitialiseHeadAnims
+H 006ea2c0 CCombatManager::PerformSequenceReset RELOCATION_MATCH flags= [] leaf=PerformSequenceReset
+H 00858cc0 CCombatActionBase::OnBlowBlocked RELOCATION_MATCH flags= [] leaf=?OnBlowBlocked@CCombatActionBase
+H 0097ef60 CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProximity RELOCATION_MATCH flags= [] leaf=
+H 0097f3a0 CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToPos RELOCATION_MATCH flags= [] leaf=?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z
+H 009224f0 CAIStateGroup_Freeze::Update RELOCATION_MATCH flags= [] leaf=
+GR_DONE

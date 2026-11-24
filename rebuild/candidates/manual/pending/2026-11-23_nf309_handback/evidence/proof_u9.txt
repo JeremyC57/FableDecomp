@@ -1,0 +1,16 @@
+##### 00bad040 renames: ?RegisterEnable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z=?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+sections head 29 new 29
+ALL_EQ text_sections_equal=19
+tables H=4 N=4
+##### 009f4910 renames: ?Init@CInitBaseClass@@QAE_NXZ=?Initialise@CInitBaseClass@@IAE_NXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 006ad970 renames: ?IsScriptTaskRunning@CTCScriptedControl@@QAE_NXZ=?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ
+sections head 15 new 15
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 006a8560 renames: ?IsTaskListEmpty@CTCScriptedControl@@QAE_NXZ=?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0

@@ -1,0 +1,30 @@
+# entry 1: 0x00BBC130 new / HEAD copy v 0x00B98A50; 0x00BBBDB0's existing copy
+  reloc +4 ??0CBaseClassNonCopyable@@IAE@XZ -> retail 0099a2f0 OK table=['??0CBaseClassNonCopyable@@IAE@XZ', '??0CBaseObject@N_0099a2f0@@QAE@XZ']
+  reloc +11 ??_7CEngineSubPrimitiveBase@@6B@ -> retail 012a3e7c OK table=['??_7CEngineSubPrimitiveBase@@6B@']
+??0CEngineSubPrimitiveBase@@QAE@PAVCEngineInternalPrimitiveBase@@@Z 00b98a50 size 34 bytes_equal True
+  reloc +4 ??0CBaseClassNonCopyable@@IAE@XZ -> retail 0099a2f0 OK table=['??0CBaseClassNonCopyable@@IAE@XZ', '??0CBaseObject@N_0099a2f0@@QAE@XZ']
+  reloc +11 ??_7CEngineSubPrimitiveBase@@6B@ -> retail 012a3e7c OK table=['??_7CEngineSubPrimitiveBase@@6B@']
+??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z 00b98a50 size 34 bytes_equal True
+  reloc +4 ??0CBaseClassNonCopyable@@IAE@XZ -> retail 0099a2f0 OK table=['??0CBaseClassNonCopyable@@IAE@XZ', '??0CBaseObject@N_0099a2f0@@QAE@XZ']
+  reloc +11 ??_7CEngineSubPrimitiveBase@@6B@ -> retail 012a3e7c OK table=['??_7CEngineSubPrimitiveBase@@6B@']
+??0CEngineSubPrimitiveBase@@QAE@PAVCEngineInternalPrimitiveBase@@@Z 00b98a50 size 34 bytes_equal True
+# entry 2 (held; objects of the work/held/ variants were graded as rows at the time): see STATUS 2
+# entry 2 (held): the work/held/ variants of 0x00BBBF70 / 0x00BE0CD0 (objects from the g1 grades) v the owners
+## 00bbbf70 new: ParticleGroup copy v 0x00BBBDB0, base copy v 0x00B98A50
+  reloc +4 ??0CBaseClassNonCopyable@@IAE@XZ -> retail 0099a2f0 OK table=['??0CBaseClassNonCopyable@@IAE@XZ', '??0CBaseObject@N_0099a2f0@@QAE@XZ']
+  reloc +18 ??_7CEngineSubPrimitiveParticleGroup@@6B@ -> retail 012a5bb0 OK table=['??_7CEngineSubPrimitiveParticleGroup@@6B@']
+??0CEngineSubPrimitiveParticleGroup@@QAE@PAVCEngineInternalPrimitiveBase@@@Z 00bbbdb0 size 34 bytes_equal True
+  reloc +4 ??0CBaseClassNonCopyable@@IAE@XZ -> retail 0099a2f0 OK table=['??0CBaseClassNonCopyable@@IAE@XZ', '??0CBaseObject@N_0099a2f0@@QAE@XZ']
+??0CEngineSubPrimitiveBase@@QAE@PAVCEngineInternalPrimitiveBase@@@Z 00b98a50 size 28 bytes_equal False
+## 00bbbf70 HEAD base copy (AAV) v 0x00B98A50
+  reloc +4 ??0CBaseClassNonCopyable@@IAE@XZ -> retail 0099a2f0 OK table=['??0CBaseClassNonCopyable@@IAE@XZ', '??0CBaseObject@N_0099a2f0@@QAE@XZ']
+??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z 00b98a50 size 28 bytes_equal False
+## 00be0cd0 new: ParticleGroup copy v 0x00BBBDB0, base copy v 0x00B98A50
+  reloc +4 ??0CBaseClassNonCopyable@@IAE@XZ -> retail 0099a2f0 OK table=['??0CBaseClassNonCopyable@@IAE@XZ', '??0CBaseObject@N_0099a2f0@@QAE@XZ']
+  reloc +18 ??_7CEngineSubPrimitiveParticleGroup@@6B@ -> retail 012a5bb0 OK table=['??_7CEngineSubPrimitiveParticleGroup@@6B@']
+??0CEngineSubPrimitiveParticleGroup@@QAE@PAVCEngineInternalPrimitiveBase@@@Z 00bbbdb0 size 34 bytes_equal True
+  reloc +4 ??0CBaseClassNonCopyable@@IAE@XZ -> retail 0099a2f0 OK table=['??0CBaseClassNonCopyable@@IAE@XZ', '??0CBaseObject@N_0099a2f0@@QAE@XZ']
+??0CEngineSubPrimitiveBase@@QAE@PAVCEngineInternalPrimitiveBase@@@Z 00b98a50 size 28 bytes_equal False
+## 00be0cd0 HEAD base copy (AAV) v 0x00B98A50
+  reloc +4 ??0CBaseClassNonCopyable@@IAE@XZ -> retail 0099a2f0 OK table=['??0CBaseClassNonCopyable@@IAE@XZ', '??0CBaseObject@N_0099a2f0@@QAE@XZ']
+??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z 00b98a50 size 28 bytes_equal False

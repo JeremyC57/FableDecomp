@@ -1,0 +1,4 @@
+013b8710	.text	0041e5f3	0041e5f2	NUISystem::CManager::GetInstance
+013b8710	.text	0041e616	0041e5f2	NUISystem::CManager::GetInstance
+013b8710	.text	0042fb42	0042fb40	NUISystem::CManager::Clear
+013b8710	.text	0042fb5d	0042fb40	NUISystem::CManager::Clear

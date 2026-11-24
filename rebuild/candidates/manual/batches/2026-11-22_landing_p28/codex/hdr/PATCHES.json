@@ -1,0 +1,687 @@
+[
+  {
+    "path": "engine/C2DVector.h",
+    "old_text": "#endif\n#ifdef FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_SUB\n",
+    "new_text": "#endif\n#endif\n#ifdef FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_SUB\n"
+  },
+  {
+    "path": "engine/C2DVector.h",
+    "old_text": "#else\n    C2DVector operator+(const C2DVector& vector) const { return C2DVector(X+vector.X,Y+vector.Y); }\n",
+    "new_text": "#else\n    #ifdef FABLE_RETAIL_CDRAWHEALTH_ORIGINAL_EFFECTS_PASS28\n    // Fidelity: both FableWin component sums and retail GUI rounding order. The const reference keeps the same source vector.\n    C2DVector operator+(const C2DVector& vector) const {\n        const C2DVector& v=vector;\n        return C2DVector(X+v.X,Y+v.Y);\n    }\n#else\n    C2DVector operator+(const C2DVector& vector) const { return C2DVector(X+vector.X,Y+vector.Y); }\n"
+  },
+  {
+    "path": "engine/C3DBoundingSphere.h",
+    "old_text": "    C3DBoundingSphere(const C3DBoundingSphere& other) : Center(other.Center), Radius(other.Radius) { }\n",
+    "new_text": "    C3DBoundingSphere(const C3DBoundingSphere& other) : Center(other.Center), Radius(other.Radius) { }\n#endif\n#ifdef FABLE_RETAIL_MESH_BOOTSTRAP_BOUNDS_PASS28\n    // FableWin 02EC1800 and 02EC1830. The retail mesh reader writes the vector at +0 and the radius at +0xC.\n    void SetCenter(const C3DVector& center) { Center = center; }\n    void SetRadius(float radius) { Radius = radius; }\n"
+  },
+  {
+    "path": "engine/C3DDummyObject.h",
+    "old_text": "#ifdef FABLE_RETAIL_C3DMESHOBJECT_STATIC_DUMMY_PASS26\n",
+    "new_text": "#ifdef FABLE_RETAIL_C3DDUMMYOBJECT_TRANSFORMCTOR\n    // FableWin constructor, inlined at 0x00A2FA30.\n    C3DDummyObject(const CMatrix3x4& transform,unsigned long bone_index) : Transform(transform), BoneIndex(bone_index) { }\n#endif\n#ifdef FABLE_RETAIL_C3DMESHOBJECT_STATIC_DUMMY_PASS26\n"
+  },
+  {
+    "path": "engine/C3DGeneratorObject.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DGeneratorObject) == 0x40);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(21, sizeof(C3DGeneratorObject) == 0x40);\n"
+  },
+  {
+    "path": "engine/C3DGeneratorObject.h",
+    "old_text": "public:\n",
+    "new_text": "public:\n#ifdef FABLE_RETAIL_C3DGENERATOROBJECT_CTOR\n    // FableWin constructor, inlined at 0x00A2FAF8.\n    C3DGeneratorObject() : BankIndex(0), UseLocalOrigin(false) { }\n    C3DGeneratorObject(const C3DDummyObject& dummy,bool local_origin,const CCharString& name,unsigned long bank_index)\n        : C3DDummyObject(dummy), ObjectName(name), BankIndex(bank_index), UseLocalOrigin(local_origin) { }\n#endif\n"
+  },
+  {
+    "path": "engine/C3DHelperPoint.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DHelperPoint)==0x10);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(15, sizeof(C3DHelperPoint)==0x10);\n"
+  },
+  {
+    "path": "engine/C3DHelperPoint.h",
+    "old_text": "public:\n",
+    "new_text": "public:\n#ifdef FABLE_RETAIL_C3DMESHSTATS_FILE_LOADER_PASS28\n    // FableWin ctor; retail creates Position and BoneIndex together before the map insertion.\n    C3DHelperPoint() { }\n    C3DHelperPoint(const C3DVector& position,unsigned long bone_index) : Position(position), BoneIndex(bone_index) { }\n#endif\n"
+  },
+  {
+    "path": "engine/C3DMeshFile.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_C3DMESHFILE_H\n#define FABLE_ENGINE_C3DMESHFILE_H\n// C3DMeshFile (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): the mesh file over the chunked-file base. RTTI\n// .?AVC3DMeshFile@@ : CChunkedFile (ghidra_out/rtti_bases.tsv); no members of its own (sizeof 0x14 = CChunkedFile: vptr, RootChunk +0x4,\n// Version +0xC, FileComment +0x10 -- the landed 0x00A32620 layout). FableWin.pdb: ??0C3DMeshFile@@QAE@XZ,\n// ?GetRoot@C3DMeshFile@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileRootChunk@@@@XZ (retail 0x00A32620, landed: the root chunk pointer\n// static-cast into a const counted pointer, returned by value) and the non-const ?GetRoot@C3DMeshFile@@QAE?AV?$CCountedPointer@VC3DMeshFileRootChunk@@@@XZ.\n#include \"rebuild_abi.h\"\n#include \"engine/CChunkedFile.h\"\n#include \"engine/CCountedPointer.h\"\n#ifdef FABLE_RETAIL_C3DMESHFILE_GETROOT_BODY\n#ifndef FABLE_RETAIL_CCHUNKEDFILE_GETCHUNKEDFILEROOT\n#error FABLE_RETAIL_C3DMESHFILE_GETROOT_BODY needs FABLE_RETAIL_CCHUNKEDFILE_GETCHUNKEDFILEROOT\n#endif\n#include \"engine/C3DMeshFileRootChunk.h\"\n#endif\nclass C3DMeshFileRootChunk;\nclass C3DMeshFile : public CChunkedFile {\npublic:\n    C3DMeshFile();\n#ifdef FABLE_RETAIL_C3DMESHFILE_GETROOT_BODY\n    // Retail opt-in (wfE8, row 0x00A2F740): the body of the landed 0x00A32620 (FableWin.pdb ?GetRoot@C3DMeshFile@@QBE..XZ; no Ego_r.pdb\n    // copy, so an inline header member whose retail COMDAT sits among the mesh-stats TU's COMDATs). Visible to the caller, which still\n    // calls it out of line; c2 then knows the result slot is not captured.\n    CCountedPointer<const C3DMeshFileRootChunk> GetRoot() const {\n        CCountedPointer<const C3DMeshFileRootChunk> root;\n        root.SetStaticCast(GetChunkedFileRoot());\n        return root;\n    }\n#else\n    CCountedPointer<const C3DMeshFileRootChunk> GetRoot() const;        // 0x00A32620\n#endif\n    CCountedPointer<C3DMeshFileRootChunk> GetRoot();\n};\nFABLE_STATIC_ASSERT(sizeof(C3DMeshFile) == 0x14);\n#endif // FABLE_ENGINE_C3DMESHFILE_H\n"
+  },
+  {
+    "path": "engine/C3DMeshFileConvexVolumeChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileConvexVolumeChunk) == 0x3C);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(24, sizeof(C3DMeshFileConvexVolumeChunk) == 0x3C);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileConvexVolumeChunk.h",
+    "old_text": "    C3DMeshFileConvexVolumeChunk();\n",
+    "new_text": "    C3DMeshFileConvexVolumeChunk();\n#ifdef FABLE_RETAIL_C3DMESHFILECONVEXVOLUMECHUNK_GETTERS\n    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetName@C3DMeshFileConvexVolumeChunk@@QBEABVCCharString@@XZ,\n    // ?GetPlaneCount@..@@QBEKXZ, ?PeekPlanes@..@@QBEPBVCPlane@@XZ -- inline in retail (0x00A2FCF9 reads Name +0x2C in place; the landed\n    // C3DMeshVolume constructor 0x00A2E9A0 reads the plane array through the CArray GetAsCArray idiom).\n    const CCharString& GetName() const { return Name; }\n    unsigned long GetPlaneCount() const { return Planes.size(); }\n    const CPlane* PeekPlanes() const { return Planes.GetAsCArray(); }\n#endif\n"
+  },
+  {
+    "path": "engine/C3DMeshFileDummyObjectChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileDummyObjectChunk) == 0x84);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction_X) == 0x44);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction_Y) == 0x48);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction_Z) == 0x4c);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Transform) == 0x50);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, UseLocalOrigin) == 0x80);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(63, sizeof(C3DMeshFileDummyObjectChunk) == 0x84);\nFABLE_STATIC_ASSERT_AT(64, offsetof(C3DMeshFileDummyObjectChunk, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(65, offsetof(C3DMeshFileDummyObjectChunk, Direction_X) == 0x44);\nFABLE_STATIC_ASSERT_AT(66, offsetof(C3DMeshFileDummyObjectChunk, Direction_Y) == 0x48);\nFABLE_STATIC_ASSERT_AT(67, offsetof(C3DMeshFileDummyObjectChunk, Direction_Z) == 0x4c);\nFABLE_STATIC_ASSERT_AT(68, offsetof(C3DMeshFileDummyObjectChunk, Transform) == 0x50);\nFABLE_STATIC_ASSERT_AT(69, offsetof(C3DMeshFileDummyObjectChunk, UseLocalOrigin) == 0x80);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileDummyObjectChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileDummyObjectChunk) == 0x84);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(25, sizeof(C3DMeshFileDummyObjectChunk) == 0x84);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileDummyObjectChunk.h",
+    "old_text": "    C3DMeshFileDummyObjectChunk();\n",
+    "new_text": "    C3DMeshFileDummyObjectChunk();\n#ifdef FABLE_RETAIL_C3DMESHFILEDUMMYOBJECTCHUNK_GETTERS\n    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetTransform@C3DMeshFileDummyObjectChunk@@QBE?AVCMatrix3x4@@XZ\n    // and ?GetUseLocalOrigin@..@@QBE_NXZ, inline in retail (0x00A2FA30..0x00A2FA45: the flag byte +0x80, then the 12-dword `rep movsd`\n    // of Transform +0x50); the bone index and name come from the C3DMeshFileHelperPointChunk base's getters.\n    CMatrix3x4 GetTransform() const { return Transform; }\n    bool GetUseLocalOrigin() const { return UseLocalOrigin; }\n#endif\n"
+  },
+  {
+    "path": "engine/C3DMeshFileHelperPointChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileHelperPointChunk) == 0x44);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, Position_X) == 0x2c);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, Position_Y) == 0x30);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, Position_Z) == 0x34);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, SubMeshIndex) == 0x38);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, BoneIndex) == 0x3c);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, Name_PStringData) == 0x40);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(60, sizeof(C3DMeshFileHelperPointChunk) == 0x44);\nFABLE_STATIC_ASSERT_AT(61, offsetof(C3DMeshFileHelperPointChunk, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(62, offsetof(C3DMeshFileHelperPointChunk, Position_X) == 0x2c);\nFABLE_STATIC_ASSERT_AT(63, offsetof(C3DMeshFileHelperPointChunk, Position_Y) == 0x30);\nFABLE_STATIC_ASSERT_AT(64, offsetof(C3DMeshFileHelperPointChunk, Position_Z) == 0x34);\nFABLE_STATIC_ASSERT_AT(65, offsetof(C3DMeshFileHelperPointChunk, SubMeshIndex) == 0x38);\nFABLE_STATIC_ASSERT_AT(66, offsetof(C3DMeshFileHelperPointChunk, BoneIndex) == 0x3c);\nFABLE_STATIC_ASSERT_AT(67, offsetof(C3DMeshFileHelperPointChunk, Name_PStringData) == 0x40);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileHelperPointChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileHelperPointChunk) == 0x44);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(26, sizeof(C3DMeshFileHelperPointChunk) == 0x44);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileHelperPointChunk.h",
+    "old_text": "    C3DMeshFileHelperPointChunk();\n",
+    "new_text": "    C3DMeshFileHelperPointChunk();\n#ifdef FABLE_RETAIL_C3DMESHFILEHELPERPOINTCHUNK_GETTERS\n    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetPosition@C3DMeshFileHelperPointChunk@@QBE?AVC3DVector@@XZ,\n    // ?GetSubMeshIndex@..@@QBEJXZ, ?GetBoneIndex@..@@QBEJXZ, ?GetName@..@@QBEABVCCharString@@XZ -- inline in retail (0x00A2F858..0x00A2F86D\n    // reads Position +0x2C, BoneIndex +0x3C and Name +0x40 in place).\n    C3DVector GetPosition() const { return Position; }\n    long GetSubMeshIndex() const { return SubMeshIndex; }\n    long GetBoneIndex() const { return BoneIndex; }\n    const CCharString& GetName() const { return Name; }\n#endif\n"
+  },
+  {
+    "path": "engine/C3DMeshFileHelpersChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileHelpersChunk) == 0x2c);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelpersChunk, __vftable) == 0x0);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(40, sizeof(C3DMeshFileHelpersChunk) == 0x2c);\nFABLE_STATIC_ASSERT_AT(41, offsetof(C3DMeshFileHelpersChunk, __vftable) == 0x0);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileHelpersChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileHelpersChunk) == 0x2C);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(16, sizeof(C3DMeshFileHelpersChunk) == 0x2C);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileHelpersChunk.h",
+    "old_text": "    C3DMeshFileHelpersChunk();\n",
+    "new_text": "    C3DMeshFileHelpersChunk();\n#ifdef FABLE_RETAIL_C3DMESHFILEHELPERSCHUNK_FINDERS\n    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): the twelve sub-chunk finders, FableWin.pdb\n    // ?FindFirstPoint / ?FindNextPoint / ?FindFirstDummy / ?FindNextDummy / ?FindFirstVolumeW / ?FindNextVolumeW@C3DMeshFileHelpersChunk@@\n    // in QBE (const result) and QAE forms; the const ones are out of line in retail and landed: FindFirstPoint 0x00AAA270, FindNextPoint\n    // 0x00AAA300 (\"HPNT\"), FindFirstDummy 0x00AAA550, FindNextDummy 0x00AAA5E0 (\"HDMY\"), FindFirstVolumeW 0x00AAA830, FindNextVolumeW\n    // 0x00AAA8C0 (\"HCVL\"); each wraps CChunkedFileSuperChunk::FindFirst/NextSubChunkOfType in a SetStaticCast. Declarations only.\n    CCountedPointer<const C3DMeshFileHelperPointChunk> FindFirstPoint() const;                                                         // 0x00AAA270\n    CCountedPointer<const C3DMeshFileHelperPointChunk> FindNextPoint(const CCountedPointer<const C3DMeshFileHelperPointChunk>&) const;   // 0x00AAA300\n    CCountedPointer<C3DMeshFileHelperPointChunk> FindFirstPoint();\n    CCountedPointer<C3DMeshFileHelperPointChunk> FindNextPoint(const CCountedPointer<const C3DMeshFileHelperPointChunk>&);\n    CCountedPointer<const C3DMeshFileDummyObjectChunk> FindFirstDummy() const;                                                         // 0x00AAA550\n    CCountedPointer<const C3DMeshFileDummyObjectChunk> FindNextDummy(const CCountedPointer<const C3DMeshFileDummyObjectChunk>&) const;   // 0x00AAA5E0\n    CCountedPointer<C3DMeshFileDummyObjectChunk> FindFirstDummy();\n    CCountedPointer<C3DMeshFileDummyObjectChunk> FindNextDummy(const CCountedPointer<const C3DMeshFileDummyObjectChunk>&);\n    CCountedPointer<const C3DMeshFileConvexVolumeChunk> FindFirstVolumeW() const;                                                      // 0x00AAA830\n    CCountedPointer<const C3DMeshFileConvexVolumeChunk> FindNextVolumeW(const CCountedPointer<const C3DMeshFileConvexVolumeChunk>&) const;   // 0x00AAA8C0\n    CCountedPointer<C3DMeshFileConvexVolumeChunk> FindFirstVolumeW();\n    CCountedPointer<C3DMeshFileConvexVolumeChunk> FindNextVolumeW(const CCountedPointer<const C3DMeshFileConvexVolumeChunk>&);\n#endif\n"
+  },
+  {
+    "path": "engine/C3DMeshFileHelpersChunk.h",
+    "old_text": "#include \"engine/CChunkedFileSuperChunk.h\"\n",
+    "new_text": "#include \"engine/CChunkedFileSuperChunk.h\"\n#ifdef FABLE_RETAIL_C3DMESHFILEHELPERSCHUNK_FINDERS\nclass C3DMeshFileHelperPointChunk;\nclass C3DMeshFileDummyObjectChunk;\nclass C3DMeshFileConvexVolumeChunk;\n#endif\n"
+  },
+  {
+    "path": "engine/C3DMeshFileRootChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileRootChunk) == 0x2C);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(15, sizeof(C3DMeshFileRootChunk) == 0x2C);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileRootChunk.h",
+    "old_text": "    virtual const CCharString GetChunkDescription() const;\n",
+    "new_text": "#ifdef FABLE_RETAIL_C3DMESHFILEROOTCHUNK_HELPERS\n    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?HasHelpers@C3DMeshFileRootChunk@@QBE_NXZ\n    // (retail 0x00A9B2C0, landed: a \"HLPR\" FindFirstSubChunkOfType result tested for null), ?GetHelpers@..@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileHelpersChunk@@@@XZ\n    // (retail 0x00A9B3D0, landed: the same lookup static-cast into the counted pointer) and the non-const QAE GetHelpers. Declarations only.\n    bool HasHelpers() const;                                                 // 0x00A9B2C0\n    CCountedPointer<const class C3DMeshFileHelpersChunk> GetHelpers() const; // 0x00A9B3D0\n    CCountedPointer<class C3DMeshFileHelpersChunk> GetHelpers();\n#endif\n    virtual const CCharString GetChunkDescription() const;\n"
+  },
+  {
+    "path": "engine/C3DMeshFileXBoundingBoxChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXBoundingBoxChunk) == 0x28);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Center_X) == 0x10);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Center_Y) == 0x14);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Center_Z) == 0x18);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_X) == 0x1c);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_Y) == 0x20);\nFABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_Z) == 0x24);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(52, sizeof(C3DMeshFileXBoundingBoxChunk) == 0x28);\nFABLE_STATIC_ASSERT_AT(53, offsetof(C3DMeshFileXBoundingBoxChunk, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(54, offsetof(C3DMeshFileXBoundingBoxChunk, Center_X) == 0x10);\nFABLE_STATIC_ASSERT_AT(55, offsetof(C3DMeshFileXBoundingBoxChunk, Center_Y) == 0x14);\nFABLE_STATIC_ASSERT_AT(56, offsetof(C3DMeshFileXBoundingBoxChunk, Center_Z) == 0x18);\nFABLE_STATIC_ASSERT_AT(57, offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_X) == 0x1c);\nFABLE_STATIC_ASSERT_AT(58, offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_Y) == 0x20);\nFABLE_STATIC_ASSERT_AT(59, offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_Z) == 0x24);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileXBoundingBoxChunk.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXBoundingBoxChunk) == 0x28);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(23, sizeof(C3DMeshFileXBoundingBoxChunk) == 0x28);\n"
+  },
+  {
+    "path": "engine/C3DMeshFileXBoundingBoxChunk.h",
+    "old_text": "    C3DMeshFileXBoundingBoxChunk() : CChunkedFileChunk(\"XBDB\"),Center(0.0f,0.0f,0.0f),Diagonal(0.0f,0.0f,0.0f) { }\n",
+    "new_text": "    C3DMeshFileXBoundingBoxChunk() : CChunkedFileChunk(\"XBDB\"),Center(0.0f,0.0f,0.0f),Diagonal(0.0f,0.0f,0.0f) { }\n#ifdef FABLE_RETAIL_C3DMESHFILEXBOUNDINGBOXCHUNK_GETTERS\n    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetCenter@C3DMeshFileXBoundingBoxChunk@@QBE?AVC3DVector@@XZ\n    // and ?GetDiagonal@..@@QBE?AVC3DVector@@XZ, inline in retail (0x00A30172..0x00A301FF: the box's min / max corners computed as\n    // Center -/+ Diagonal straight from the chunk's members).\n#ifdef FABLE_RETAIL_MESH_BOOTSTRAP_BOUNDS_PASS28\n    // FableWin 031E3AF0 and the original mesh reader both use the XBDB type name.\n    static const char* FABLE_FASTCALL GetStaticChunkType() { return \"XBDB\"; }\n#endif\n    C3DVector GetCenter() const { return Center; }\n    C3DVector GetDiagonal() const { return Diagonal; }\n#endif\n"
+  },
+  {
+    "path": "engine/C3DMeshVolume.h",
+    "old_text": "public:\n",
+    "new_text": "public:\n#ifdef FABLE_RETAIL_C3DMESHVOLUME_CHUNKCTOR\n    C3DMeshVolume();\n    C3DMeshVolume(const class C3DMeshFileConvexVolumeChunk&, class CMovableResourceMemoryPool*);\n#endif\n"
+  },
+  {
+    "path": "engine/C3DPackedNormal.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_C3DPACKEDNORMAL_H\n#define FABLE_ENGINE_C3DPACKEDNORMAL_H\n#ifdef FABLE_RETAIL_BACKGROUND_VERTEX_HELPERS_PASS28\n#include \"engine/C3DVector.h\"\n// Ego_r records the unsigned VectorBits at +0, sizeof 4. FableWin 02CE9960/02CE9990/02CE99D0 prove the constructor, getter and initializer.\nclass C3DPackedNormal {\npublic:\n    C3DPackedNormal(const C3DVector& normal) { Initialise(normal); }\n    unsigned long GetAsPackedInt() const { return VectorBits; }\n    void Initialise(const C3DVector&);\nprivate:\n    unsigned long VectorBits;\n};\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/C3DVector.h",
+    "old_text": "    inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }\n",
+    "new_text": "    inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }\n#endif\n"
+  },
+  {
+    "path": "engine/C3DVector.h",
+    "old_text": "    inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }\n",
+    "new_text": "#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n    FABLE_FORCEINLINE C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }\n#else\n    inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }\n"
+  },
+  {
+    "path": "engine/CAnimComponentFollowingOnAnimFilter.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CAnimComponentFollowingOnAnimFilter) == 0xc);\nFABLE_STATIC_ASSERT(offsetof(CAnimComponentFollowingOnAnimFilter, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(CAnimComponentFollowingOnAnimFilter, NextFilter_TablePos) == 0x8);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(72, sizeof(CAnimComponentFollowingOnAnimFilter) == 0xc);\nFABLE_STATIC_ASSERT_AT(73, offsetof(CAnimComponentFollowingOnAnimFilter, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(74, offsetof(CAnimComponentFollowingOnAnimFilter, NextFilter_TablePos) == 0x8);\n"
+  },
+  {
+    "path": "engine/CAnimComponentFollowingOnAnimFilter.h",
+    "old_text": "};\nFABLE_STATIC_ASSERT(sizeof(CAnimComponentFollowingOnAnimFilter) == 0xc);\n",
+    "new_text": "};\nFABLE_STATIC_ASSERT_AT(53, sizeof(CAnimComponentFollowingOnAnimFilter) == 0xc);\n"
+  },
+  {
+    "path": "engine/CAnimComponentFollowingOnAnimFilter.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CAnimComponentFollowingOnAnimFilter) == 0xc);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(30, sizeof(CAnimComponentFollowingOnAnimFilter) == 0xc);\n"
+  },
+  {
+    "path": "engine/CAnimComponentFollowingOnAnimFilter.h",
+    "old_text": "public:\n    virtual EAnimComponent GetType() const;\n",
+    "new_text": "#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28\npublic:\n    // FableWin 0281c1a0 and native +8 filter table index.\n    CDefString GetNextAnimFilter() const { return NextFilter; }\n#endif\npublic:\n    virtual EAnimComponent GetType() const;\n"
+  },
+  {
+    "path": "engine/CChunkedFile.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CChunkedFile)==0x14);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(14, sizeof(CChunkedFile)==0x14);\n"
+  },
+  {
+    "path": "engine/CChunkedFile.h",
+    "old_text": "virtual ~CChunkedFile();\n",
+    "new_text": "virtual ~CChunkedFile();\n#ifdef FABLE_RETAIL_CCHUNKEDFILE_GETCHUNKEDFILEROOT\n    const CCountedPointer<CChunkedFileSuperChunk>& GetChunkedFileRoot() const { return RootChunk; }\n#endif\n"
+  },
+  {
+    "path": "engine/CCombatAction_GenericStrikeResponseKnockdown.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CCombatAction_GenericStrikeResponseKnockdown) == 0x13c);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, AnimName_PStringData) == 0x114);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PThingThatHit) == 0x118);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_X) == 0x120);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Y) == 0x124);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Z) == 0x128);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotPointOfHit) == 0x12c);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_X) == 0x12d);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Y) == 0x131);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Z) == 0x135);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotDirectionOfHit) == 0x139);\nFABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, FlipFacing) == 0x13a);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(77, sizeof(CCombatAction_GenericStrikeResponseKnockdown) == 0x13c);\nFABLE_STATIC_ASSERT_AT(78, offsetof(CCombatAction_GenericStrikeResponseKnockdown, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(79, offsetof(CCombatAction_GenericStrikeResponseKnockdown, AnimName_PStringData) == 0x114);\nFABLE_STATIC_ASSERT_AT(80, offsetof(CCombatAction_GenericStrikeResponseKnockdown, PThingThatHit) == 0x118);\nFABLE_STATIC_ASSERT_AT(81, offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_X) == 0x120);\nFABLE_STATIC_ASSERT_AT(82, offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Y) == 0x124);\nFABLE_STATIC_ASSERT_AT(83, offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Z) == 0x128);\nFABLE_STATIC_ASSERT_AT(84, offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotPointOfHit) == 0x12c);\nFABLE_STATIC_ASSERT_AT(85, offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_X) == 0x12d);\nFABLE_STATIC_ASSERT_AT(86, offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Y) == 0x131);\nFABLE_STATIC_ASSERT_AT(87, offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Z) == 0x135);\nFABLE_STATIC_ASSERT_AT(88, offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotDirectionOfHit) == 0x139);\nFABLE_STATIC_ASSERT_AT(89, offsetof(CCombatAction_GenericStrikeResponseKnockdown, FlipFacing) == 0x13a);\n"
+  },
+  {
+    "path": "engine/CCombatAction_GenericStrikeResponseKnockdown.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CCombatAction_GenericStrikeResponseKnockdown)==0x13c);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(34, sizeof(CCombatAction_GenericStrikeResponseKnockdown)==0x13c);\n"
+  },
+  {
+    "path": "engine/CCombatAction_GenericStrikeResponseKnockdown.h",
+    "old_text": "    unsigned char DirectionOfHit[12];\n",
+    "new_text": "    unsigned char DirectionOfHit[12];\n#endif\n"
+  },
+  {
+    "path": "engine/CCombatAction_GenericStrikeResponseKnockdown.h",
+    "old_text": "    bool GotPointOfHit;\n",
+    "new_text": "    bool GotPointOfHit;\n#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28\n    C3DVector DirectionOfHit;\n#else\n"
+  },
+  {
+    "path": "engine/CCombatAction_GenericStrikeResponseKnockdown.h",
+    "old_text": "    unsigned char PointOfHit[12];\n",
+    "new_text": "    unsigned char PointOfHit[12];\n#endif\n"
+  },
+  {
+    "path": "engine/CCombatAction_GenericStrikeResponseKnockdown.h",
+    "old_text": "    unsigned char PointOfHit[12];\n",
+    "new_text": "#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28\n    C3DVector PointOfHit;\n#else\n    unsigned char PointOfHit[12];\n"
+  },
+  {
+    "path": "engine/CCombatAction_GenericStrikeResponseKnockdown.h",
+    "old_text": "#ifndef FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN_IMPLICIT_DTOR\n",
+    "new_text": "#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28\n    virtual void Initialise();\n#endif\n#ifndef FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN_IMPLICIT_DTOR\n"
+  },
+  {
+    "path": "engine/CContextSensitiveItemDef.h",
+    "old_text": "    EContextSensitiveType Type;                              // +0x28\n",
+    "new_text": "#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\nprivate:\n    bool TargetCreatureLikelyToReactToDeed(const class CThingPlayerCreature* player, const class CThingAICreature* target,\n                                          enum EOpinionDeedType deed) const; // Both donor PDBs and retail 0x008508B0.\npublic:\n#endif\n    EContextSensitiveType Type;                              // +0x28\n"
+  },
+  {
+    "path": "engine/CEngineDef.h",
+    "old_text": "#if defined(FABLE_RETAIL_CENGINEDEF_LODERRORTOLERANCE) && !defined(FABLE_RETAIL_CENGINEDEF_FOV_2D)\n",
+    "new_text": "#if defined(FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28)\n    // Ego_r names SeaHeight at +0x48, confirmed by the 0x00BE6880 sea plane load.\nprivate:\n    unsigned char _pad_0x25[0x48 - 0x25];\npublic:\n    float SeaHeight;\nprivate:\n    unsigned char _pad_0x4c[0x80 - 0x4c];\n#elif defined(FABLE_RETAIL_CENGINEDEF_LODERRORTOLERANCE) && !defined(FABLE_RETAIL_CENGINEDEF_FOV_2D)\n"
+  },
+  {
+    "path": "engine/CEngineMap.h",
+    "old_text": "    long PeekWorldX() const { return WorldPosX; }\n",
+    "new_text": "#ifdef FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28\n    // FableWin PeekWorldPosition and Ego_r MapWorldPosition, loaded at +0x0c in 0x00BE6880.\n    const C3DVector& PeekWorldPosition() const { return MapWorldPosition; }\n#endif\n    long PeekWorldX() const { return WorldPosX; }\n"
+  },
+  {
+    "path": "engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleSpriteTrailGroup) == 0x40);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(22, sizeof(CEnginePrimitiveManagerParticleSpriteTrailGroup) == 0x40);\n"
+  },
+  {
+    "path": "engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h",
+    "old_text": "    unsigned char Unmodeled_0xc[0x40 - 0xc];\n",
+    "new_text": "    unsigned char Unmodeled_0xc[0x40 - 0xc];\n#endif\n"
+  },
+  {
+    "path": "engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h",
+    "old_text": "private:\n",
+    "new_text": "private:\n#ifdef FABLE_RETAIL_SPRITETRAILGROUP_RENDER_SINGLE_PASS28\npublic:\n    // Both PDBs, retail 0x00BBE090.\n    void RenderSingleSpriteTrail(class CEngineSubPrimitiveBase& subprim, ERenderPassType render_pass);\nprivate:\n    void ApplySpriteTrailPointLightVertexShader(unsigned long);\n    void ApplyDisplacementVertexShader();\n    CArray<CVertexShader> VertexShadersSpriteTrailPointLights;\n    CVertexShader VertexShaderDisplacement;\n    CPixelShader PixelShader;\n    CPixelShader PixelShaderStipple;\n    CPixelShader PixelShaderDisplacement;\n    CCountedPointer<CEnginePrimitiveManagerSpriteTrails> PTrailManager;\n#else\n"
+  },
+  {
+    "path": "engine/CExplosiveTrailDef.h",
+    "old_text": "FABLE_STATIC_ASSERT_AT(37, offsetof(CExplosiveTrailDef, __vftable) == 0x0);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(37, offsetof(CExplosiveTrailDef, __vftable) == 0x0);\n#endif\n"
+  },
+  {
+    "path": "engine/CExplosiveTrailDef.h",
+    "old_text": "FABLE_STATIC_ASSERT_AT(36, sizeof(CExplosiveTrailDef) == 0x4c);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(36, sizeof(CExplosiveTrailDef) == 0x4c);\n#ifndef FABLE_RETAIL_EXPLOSIVE_TRAIL_UPDATE_PASS28\n"
+  },
+  {
+    "path": "engine/CExplosiveTrailDef.h",
+    "old_text": "#pragma pack(pop)\n",
+    "new_text": "#pragma pack(pop)\n#endif\n"
+  },
+  {
+    "path": "engine/CExplosiveTrailDef.h",
+    "old_text": "#pragma pack(push, 1)\n",
+    "new_text": "#ifdef FABLE_RETAIL_EXPLOSIVE_TRAIL_UPDATE_PASS28\n#include \"engine/CSubDefClassBase.h\"\n// Retail RTTI at 01232b54 and the original type records identify the direct base.\n// Both the native load and the field record place TrapDefIndex at +0x28.\nclass CExplosiveTrailDef : public CSubDefClassBase {\npublic:\n    long          TrapDefIndex;                              // +0x28\n    float         SecondsBetweenTraps;                       // +0x2c\n    float         DistanceBetweenTraps;                      // +0x30\n    float         SecondsForTrapPersistance;                 // +0x34\n    float         SecondsTrailLifetime;                      // +0x38\n    float         DistanceForLateralDeviation;               // +0x3c\n    float         DegreesMaxTurnTowardsTargetPerTrap;        // +0x40\n    float         FractionOfLifetimeToTurnTowardsTarget;     // +0x44\n    float         SecondsIcicleAttackTargetPositionPredictionTime; // +0x48\n#ifdef FABLE_RETAIL_CEXPLOSIVETRAILDEF_ALLOC\n// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator\n// ?Alloc@CExplosiveTrailDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.\npublic: static class CDefClassBase* FABLE_FASTCALL Alloc();\n#endif\n};\n#else\n#pragma pack(push, 1)\n"
+  },
+  {
+    "path": "engine/CFontManager.h",
+    "old_text": "#ifdef FABLE_RETAIL_CFONTMANAGER_ASYNC\n",
+    "new_text": "#ifdef FABLE_RETAIL_CSTATICFONTBANK_RENDER_PASS28\n    // Both PDBs, retail 0x009E2CE0.\n    class CVertexBufferWin32& GetFreeVertexBuffer();\n#endif\n#ifdef FABLE_RETAIL_CFONTMANAGER_ASYNC\n"
+  },
+  {
+    "path": "engine/CKinematic.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CKinematic) == 8);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(16,sizeof(CKinematic) == 8);\n"
+  },
+  {
+    "path": "engine/CKinematic.h",
+    "old_text": "public:\n",
+    "new_text": "public:\n#ifdef FABLE_RETAIL_KINEMATIC_ASSIGN_PASS28\n    // FableWin 031B5770 calls GetVector on its argument, then SetVector on this.\n    const CKinematic& operator=(const CKinematic& other) {\n        SetVector(other.GetVector());\n        return *this;\n    }\n#endif\n"
+  },
+  {
+    "path": "engine/CLandscapeBackgroundPatch.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundPatch) == 0x11c);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Parent) == 0x4);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, EdgeStrips) == 0x8);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Texture) == 0xb8);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, IndexBuffer) == 0xbc);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, VertexBuffer) == 0xc0);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, BridgeIndexBuffers) == 0xc4);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, BridgeVertexBuffers) == 0xd4);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, BridgePolyCount) == 0xe4);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, UVLockTreeU) == 0xec);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, UVLockTreeV) == 0xf0);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, WaterSubPatch) == 0xf4);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, MinZ) == 0xf8);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, MaxZ) == 0xfc);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, ZSorterHandle) == 0x100);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, VertexCount) == 0x104);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, PolyCountIncDegenerates) == 0x106);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, TextureWidthNeeded) == 0x108);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, TextureHeightNeeded) == 0x10a);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, MapX) == 0x10c);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, MapY) == 0x10e);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Width) == 0x110);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Height) == 0x112);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, LockedGridSpacingX) == 0x114);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, LockedGridSpacingY) == 0x116);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, LODBand) == 0x118);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, SharedIndexBuffer) == 0x119);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, WaterOnlyPatch) == 0x11a);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x11b);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(118, sizeof(CLandscapeBackgroundPatch) == 0x11c);\nFABLE_STATIC_ASSERT_AT(119, offsetof(CLandscapeBackgroundPatch, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(120, offsetof(CLandscapeBackgroundPatch, Parent) == 0x4);\nFABLE_STATIC_ASSERT_AT(121, offsetof(CLandscapeBackgroundPatch, EdgeStrips) == 0x8);\nFABLE_STATIC_ASSERT_AT(122, offsetof(CLandscapeBackgroundPatch, Texture) == 0xb8);\nFABLE_STATIC_ASSERT_AT(123, offsetof(CLandscapeBackgroundPatch, IndexBuffer) == 0xbc);\nFABLE_STATIC_ASSERT_AT(124, offsetof(CLandscapeBackgroundPatch, VertexBuffer) == 0xc0);\nFABLE_STATIC_ASSERT_AT(125, offsetof(CLandscapeBackgroundPatch, BridgeIndexBuffers) == 0xc4);\nFABLE_STATIC_ASSERT_AT(126, offsetof(CLandscapeBackgroundPatch, BridgeVertexBuffers) == 0xd4);\nFABLE_STATIC_ASSERT_AT(127, offsetof(CLandscapeBackgroundPatch, BridgePolyCount) == 0xe4);\nFABLE_STATIC_ASSERT_AT(128, offsetof(CLandscapeBackgroundPatch, UVLockTreeU) == 0xec);\nFABLE_STATIC_ASSERT_AT(129, offsetof(CLandscapeBackgroundPatch, UVLockTreeV) == 0xf0);\nFABLE_STATIC_ASSERT_AT(130, offsetof(CLandscapeBackgroundPatch, WaterSubPatch) == 0xf4);\nFABLE_STATIC_ASSERT_AT(131, offsetof(CLandscapeBackgroundPatch, MinZ) == 0xf8);\nFABLE_STATIC_ASSERT_AT(132, offsetof(CLandscapeBackgroundPatch, MaxZ) == 0xfc);\nFABLE_STATIC_ASSERT_AT(133, offsetof(CLandscapeBackgroundPatch, ZSorterHandle) == 0x100);\nFABLE_STATIC_ASSERT_AT(134, offsetof(CLandscapeBackgroundPatch, VertexCount) == 0x104);\nFABLE_STATIC_ASSERT_AT(135, offsetof(CLandscapeBackgroundPatch, PolyCountIncDegenerates) == 0x106);\nFABLE_STATIC_ASSERT_AT(136, offsetof(CLandscapeBackgroundPatch, TextureWidthNeeded) == 0x108);\nFABLE_STATIC_ASSERT_AT(137, offsetof(CLandscapeBackgroundPatch, TextureHeightNeeded) == 0x10a);\nFABLE_STATIC_ASSERT_AT(138, offsetof(CLandscapeBackgroundPatch, MapX) == 0x10c);\nFABLE_STATIC_ASSERT_AT(139, offsetof(CLandscapeBackgroundPatch, MapY) == 0x10e);\nFABLE_STATIC_ASSERT_AT(140, offsetof(CLandscapeBackgroundPatch, Width) == 0x110);\nFABLE_STATIC_ASSERT_AT(141, offsetof(CLandscapeBackgroundPatch, Height) == 0x112);\nFABLE_STATIC_ASSERT_AT(142, offsetof(CLandscapeBackgroundPatch, LockedGridSpacingX) == 0x114);\nFABLE_STATIC_ASSERT_AT(143, offsetof(CLandscapeBackgroundPatch, LockedGridSpacingY) == 0x116);\nFABLE_STATIC_ASSERT_AT(144, offsetof(CLandscapeBackgroundPatch, LODBand) == 0x118);\nFABLE_STATIC_ASSERT_AT(145, offsetof(CLandscapeBackgroundPatch, SharedIndexBuffer) == 0x119);\nFABLE_STATIC_ASSERT_AT(146, offsetof(CLandscapeBackgroundPatch, WaterOnlyPatch) == 0x11a);\nFABLE_STATIC_ASSERT_AT(147, offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x11b);\n"
+  },
+  {
+    "path": "engine/CLandscapeBackgroundPatch.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundPatch) == 0x11C);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Parent) == 0x4);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, EdgeStrips) == 0x8);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, Texture) == 0xb8);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, ZSorterHandle) == 0x100);\nFABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x11b);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(76, sizeof(CLandscapeBackgroundPatch) == 0x11C);\nFABLE_STATIC_ASSERT_AT(77, offsetof(CLandscapeBackgroundPatch, Parent) == 0x4);\nFABLE_STATIC_ASSERT_AT(78, offsetof(CLandscapeBackgroundPatch, EdgeStrips) == 0x8);\nFABLE_STATIC_ASSERT_AT(79, offsetof(CLandscapeBackgroundPatch, Texture) == 0xb8);\nFABLE_STATIC_ASSERT_AT(80, offsetof(CLandscapeBackgroundPatch, ZSorterHandle) == 0x100);\nFABLE_STATIC_ASSERT_AT(81, offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x11b);\n"
+  },
+  {
+    "path": "engine/CLandscapeBackgroundPatch.h",
+    "old_text": "    CPatchTesselationEdgeStrip* GetEdgeStrip(LANDSCAPE_EDGE_STRIP_SIDE side);   // 0x00BE5C60\n",
+    "new_text": "#ifdef FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28\n#ifdef FABLE_RETAIL_BACKGROUND_VERTEX_HELPERS_PASS28\nprivate:\n    long PeekWorldX() const;\n    long PeekWorldY() const;\n    static long __fastcall PackUVForVertexBuffer(float);\n    unsigned long PackVertexNormal(const C3DVector&);\npublic:\n#endif\n    void BuildDefaultSection(); // Ego_r and FableWin, retail 0x00BE6880\n    static void __fastcall SetTargetVertexNormal(class CTVertexLandscapeBackground&, unsigned long);\n#endif\n    CPatchTesselationEdgeStrip* GetEdgeStrip(LANDSCAPE_EDGE_STRIP_SIDE side);   // 0x00BE5C60\n"
+  },
+  {
+    "path": "engine/CLandscapeBackgroundTreeNode.h",
+    "old_text": "    struct CLODLoadInfo {\n",
+    "new_text": "#ifdef FABLE_RETAIL_BACKGROUND_VERTEX_HELPERS_PASS28\n    CEngineLandscapeMap* PeekMap() const { return Map; }\n#endif\n    struct CLODLoadInfo {\n"
+  },
+  {
+    "path": "engine/CLandscapePatchTesselator.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CLandscapePatchTesselator) == 0x20);\nFABLE_STATIC_ASSERT(offsetof(CLandscapePatchTesselator, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(CLandscapePatchTesselator, BridgeVertexBuffer) == 0x14);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(41, sizeof(CLandscapePatchTesselator) == 0x20);\nFABLE_STATIC_ASSERT_AT(42, offsetof(CLandscapePatchTesselator, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(43, offsetof(CLandscapePatchTesselator, BridgeVertexBuffer) == 0x14);\n"
+  },
+  {
+    "path": "engine/CLandscapePatchTesselator.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CLandscapePatchTesselator) == 0x20);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(21, sizeof(CLandscapePatchTesselator) == 0x20);\n"
+  },
+  {
+    "path": "engine/CLandscapePatchTesselator.h",
+    "old_text": "class CLandscapePatchTesselator : public CLandscapeTesselatorBase {\n",
+    "new_text": "#endif\nclass CLandscapePatchTesselator : public CLandscapeTesselatorBase {\n"
+  },
+  {
+    "path": "engine/CLandscapePatchTesselator.h",
+    "old_text": "#include \"engine/CLandscapeTesselatorBase.h\"\n",
+    "new_text": "#include \"engine/CLandscapeTesselatorBase.h\"\n#ifdef FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28\n// Ego_r CTVertexLandscapeBackgroundBase fields and retail 0x00BE6880 X/Y, Z, V1/U1 stores.\nclass CTVertexLandscapeBackgroundBase {\npublic:\n    unsigned short X, Y;\n    float Z;\n    float NormalX, NormalY, NormalZ;\n    unsigned char UVPad1, V1, U1, UVPad2;\n};\n#ifdef FABLE_RETAIL_BACKGROUND_VERTEX_HELPERS_PASS28\n#include \"engine/CGenericVertex.h\"\nclass CTVertexLandscapeBackground : public CGenericVertex<CTVertexLandscapeBackgroundBase> { };\n#else\nclass CTVertexLandscapeBackground : public CTVertexLandscapeBackgroundBase { };\n#endif\nFABLE_STATIC_ASSERT_AT(10, sizeof(CTVertexLandscapeBackground) == 0x18);\n#else\n"
+  },
+  {
+    "path": "engine/CPSCBase.h",
+    "old_text": "class CPSCBase:public CParticleUpdateParamCallback<unsigned long,unsigned long>{\n",
+    "new_text": "class CPSCBase:public CParticleUpdateParamCallback<unsigned long,unsigned long>{\n#ifdef FABLE_RETAIL_CPSCLIGHT_PREPARE_PRIMITIVES_PASS28\npublic:\n    C3DVector GetCurrentPosition(const CParticleUpdateParameters<unsigned long, unsigned long>&,\n                                const unsigned long&, float, bool, unsigned long) const;\n#endif\n"
+  },
+  {
+    "path": "engine/CPSCLight.h",
+    "old_text": "    long LightLifeTimer;\n",
+    "new_text": "#ifdef FABLE_RETAIL_CPSCLIGHT_PREPARE_PRIMITIVES_PASS28\n    // Ego_r and FableWin virtual signature, retail slot 13 (0x00B19C60).\n    virtual void PreparePrimitives(float, const CEnginePrimitivePrepareInfo&, CParticleSystem&,\n        const CParticleUpdateParameters<unsigned long, unsigned long>&, CEnginePrimitiveHandle&);\n    float SmoothFadeValue(float) const;\n#endif\n    long LightLifeTimer;\n"
+  },
+  {
+    "path": "engine/CPatchTesselationEdgeStrip.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CPatchTesselationEdgeStrip) == 0x2C);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(105, sizeof(CPatchTesselationEdgeStrip) == 0x2C);\n"
+  },
+  {
+    "path": "engine/CPatchTesselationEdgeStrip.h",
+    "old_text": "public:\n",
+    "new_text": "public:\n#ifdef FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28\n    // Ego_r and FableWin spellings, called by BuildDefaultSection at 0x00BE6B91 and 0x00BE6E49.\n    void Reset(long start_pos, long size, bool vertical, class CMovableResource* owner);\n    void ResizeVertexCount(long verts, long fan_verts, long water_verts, long water_fan_verts, class CMovableResource* owner);\n#endif\n"
+  },
+  {
+    "path": "engine/CPreAllocVectorMap.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_CPREALLOCVECTORMAP_H\n#define FABLE_ENGINE_CPREALLOCVECTORMAP_H\n// CPreAllocVectorMap<K,V,CompareType> (chunk 868, row 0x00A2F740): a sorted pair array over pre-allocated storage. Layout (Ego_r.pdb\n// through the landed C3DMeshStats rows 0x00A2E900 / 0x00A2E760): CompareType Compare +0x0, pair<K,V>* Elements +0x4, unsigned long\n// Size +0x8, bool Dirty +0xC; sizeof 0x10. FableWin.pdb members (the <unsigned long, C3DHelperPoint> instance): ??0 (default), Count,\n// Find, GetAsCArray, GetByteSize, Initialise(pair*, unsigned long), LowerBound / UpperBound (out of line in retail: 0x00A316B0 /\n// 0x00A31700 helper points, 0x00A31790 / 0x00A317E0 dummy objects, all landed), RelocateData(void*, void*), SetDirty(bool), Sort(),\n// begin / end (const and non-const), size. Retail 0x00A2F740 expands Sort as `std::sort(begin(), end(), Compare)` (0x00A35150 /\n// 0x00A351B0 instantiations) followed by the Dirty clear, and the pair copies into Elements as std::copy (0x00A31150 / 0x00A311B0).\n#include \"rebuild_abi.h\"\n#include \"stlport/fable_containers.h\"\n#include \"engine/CVectorMap.h\"\ntemplate<class K, class V, class CompareType = CKeyPairCompareLess<K, V> >\nclass CPreAllocVectorMap {\npublic:\n    typedef std::pair<K, V> value_type;\n    typedef value_type* iterator;\n    typedef const value_type* const_iterator;\n    CPreAllocVectorMap() : Elements(0), Size(0), Dirty(false) { }\n    void Initialise(value_type* elements, unsigned long size) { Elements = elements; Size = size; Dirty = true; }\n    iterator begin() { return Elements; }\n    const_iterator begin() const { return Elements; }\n    iterator end() { return Elements + Size; }\n    const_iterator end() const { return Elements + Size; }\n    unsigned long size() const { return Size; }\n    unsigned long GetByteSize() const { return Size * sizeof(value_type); }\n    value_type* GetAsCArray() { return Elements; }\n    void SetDirty(bool dirty) { Dirty = dirty; }\n    void Sort() { std::sort(Elements, Elements + Size, Compare); Dirty = false; }\n    const_iterator LowerBound(const K& key) const;\n    const_iterator UpperBound(const K& key) const;\n    long Count(const K& key) const { return (long)(UpperBound(key) - LowerBound(key)); }\n    const_iterator Find(const K& key) const { const_iterator i = LowerBound(key); return i == end() || key < i->first ? end() : i; }\n    void RelocateData(void* oldBase, void* newBase) { Elements = (value_type*)((char*)Elements + ((char*)newBase - (char*)oldBase)); }\nprivate:\n    CompareType Compare;                                                 // +0x00\n    value_type* Elements;                                                // +0x04\n    unsigned long Size;                                                  // +0x08\n    bool Dirty;                                                          // +0x0C\n};\n#endif // FABLE_ENGINE_CPREALLOCVECTORMAP_H\n"
+  },
+  {
+    "path": "engine/CQ_GuildTrainingScript.h",
+    "old_text": "#endif\n#endif\n",
+    "new_text": "#endif\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/CQ_GuildTrainingScript.h",
+    "old_text": "#endif\n#endif\n",
+    "new_text": "#endif\n#if defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_PREMELEEMAZE) && defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN)\n// Pass 28 0x00D43DB0. Ego_r and FableWin prove the private virtual Main and the two-member layout.\nnamespace NScript {\nclass CQ_GuildTrainingScript::CPreMeleeMaze : public CEntityScriptBase {\npublic:\n    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_GuildTrainingScript&, CScriptDataBase*, const CScriptThing&);\n    virtual CScriptBase* GetParentScript() const;\n    CQ_SunnyvaleMasterData* GetMasterData();\nprotected:\n    CQ_GuildTrainingScript& ParentClass;\n    CQ_SunnyvaleMasterData* PMasterData;\nprivate:\n    virtual void Main();\n    virtual void Init();\n};\n}\nFABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CPreMeleeMaze) == 0x1c);\n#endif\n"
+  },
+  {
+    "path": "engine/CRGBFloatColour.h",
+    "old_text": "    void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }\n#endif\n",
+    "new_text": "    void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }\n#endif\n#endif\n#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_BYTE_ASSIGN_PASS28\n    // Inline-budget: 00B19C60 expands all three byte-colour assignments; plain inline emits calls, and global thresholds alter other sites.\n    // FableWin's 141-byte assignment calls Initialise with each RGBA byte divided by 255. The native constant is the single-precision reciprocal.\n    FABLE_FORCEINLINE CRGBFloatColour& operator=(const CRGBColour& colour)\n    {\n        Initialise(colour.R / 255.0f, colour.G / 255.0f, colour.B / 255.0f, colour.A / 255.0f);\n        return *this;\n    }\n"
+  },
+  {
+    "path": "engine/CRenderManagerCore.h",
+    "old_text": "#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASTRIFAN\n",
+    "new_text": "#ifdef FABLE_RETAIL_CSTATICFONTBANK_RENDER_PASS28\n    // Both PDBs, retail 0x00A0ABE0 (texture array, texture count, start vertex, triangle count).\n    void DrawCurrentBuffersAsTris(const CTexture** textures, unsigned long texture_count,\n        unsigned long start_vertex, unsigned long triangle_count);\n#endif\n#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASTRIFAN\n"
+  },
+  {
+    "path": "engine/CSBIAgents.h",
+    "old_text": "#endif // FABLE_ENGINE_CSBIAGENTS_H\n",
+    "new_text": "#endif // FABLE_RETAIL_CSBIAGENTS_PROCESS_PASS28\n#endif // FABLE_ENGINE_CSBIAGENTS_H\n"
+  },
+  {
+    "path": "engine/CSBIAgents.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CSBIAgents) == 0x18);\nFABLE_STATIC_ASSERT(offsetof(CSBIAgents, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(CSBIAgents, Agents) == 0x14);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(22,sizeof(CSBIAgents) == 0x18);\nFABLE_STATIC_ASSERT_AT(23,offsetof(CSBIAgents, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(24,offsetof(CSBIAgents, Agents) == 0x14);\n"
+  },
+  {
+    "path": "engine/CSBIAgents.h",
+    "old_text": "#pragma pack(push, 1)\n",
+    "new_text": "#ifdef FABLE_RETAIL_CSBIAGENTS_PROCESS_PASS28\n#include \"engine/CSBConstraint.h\"\n#include \"engine/CSteeringAgent.h\"\n// Ego_r names Agents at +0x14. FableWin's Process reads the vector at that offset.\nclass CSBIAgents : public CSBInput {\npublic:\n    CSBIAgents(const std::vector<const CSteeringAgent*>& agents);\n    virtual bool Process(const CSteeringAgent* agent);\nprivate:\n    const std::vector<const CSteeringAgent*>* Agents;\n};\n#else\n#pragma pack(push, 1)\n"
+  },
+  {
+    "path": "engine/CSteeringAgent.h",
+    "old_text": "public:\n",
+    "new_text": "public:\n#ifdef FABLE_RETAIL_CSBIAGENTS_PROCESS_PASS28\n    CSteeringAgent(const CNavigatorExternalInterface* navigator, bool dummy);\n    float GetDistCutoff() const { return DistCutoff; }\n    const C2DVector& GetGoal() const { return Goal; }\n    bool IsDead() const { return NavigatorInterface->IsDead(); }\n    float PeekBestDistRight() const { return BestDistRight; }\n    float PeekBestDistLeft() const { return BestDistLeft; }\n#endif\n"
+  },
+  {
+    "path": "engine/CSubtitleRenderer.h",
+    "old_text": "    float GetBlackBarHeight() const;                                     // 0x0048DBC3\n",
+    "new_text": "#ifdef FABLE_RETAIL_CSUBTITLERENDERER_PROCESSHIGHLIGHT_PASS28\n    void ProcessEmbeddedHighlightTags(); // Ego_r and FableWin, retail 0x00491AD2\n#endif\n    float GetBlackBarHeight() const;                                     // 0x0048DBC3\n"
+  },
+  {
+    "path": "engine/CTCAbsorbHits.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CTCAbsorbHits)==0x10);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(10, sizeof(CTCAbsorbHits)==0x10);\n"
+  },
+  {
+    "path": "engine/CTCAbsorbHits.h",
+    "old_text": "private:long HitsRemaining;\n",
+    "new_text": "#ifdef FABLE_RETAIL_CTCABSORBHITS_ADD_PASS28\n // FableWin 0x0280BEC0 and retail OnActivate's in-place addition at +0x0c.\n void AddHitsRemaining(long hits) { HitsRemaining += hits; }\n#endif\nprivate:long HitsRemaining;\n"
+  },
+  {
+    "path": "engine/CTCActionUseBed.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_CTCACTIONUSEBED_H\n#define FABLE_ENGINE_CTCACTIONUSEBED_H\n#ifdef FABLE_RETAIL_BED_USE_PASS28\n#include \"engine/CTCActionUseBase.h\"\n#include \"engine/CIntelligentPointer.h\"\nclass CTCActionUseBed : public CTCActionUseBase { public:\n    bool WaitingForFadeOut;                             // +0x14\n    bool WaitingForFadeIn;                              // +0x15\n    bool InAtomicAction;                                // +0x16\n    bool WaitingForConfirmation;                        // +0x17\n    long PlayerNumberOfThingUsingBed;                   // +0x18\n    long Cost;                                          // +0x1c\n    bool UseableByHero;                                 // +0x20\n    bool OwnedByHero;                                   // +0x21\n    bool ForceTrespassOnceFadedOut;                     // +0x22\n    CIntelligentPointer<CThing> PBuilding;              // +0x23\n    CIntelligentPointer<CThing> PThingUser;             // +0x2b\n    virtual void OnActionUse(CThing& user);\n};\nFABLE_STATIC_ASSERT(offsetof(CTCActionUseBed,PBuilding)==0x23);\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/CTCBed.h",
+    "old_text": "public:\n",
+    "new_text": "#ifdef FABLE_RETAIL_BED_USE_PASS28\npublic:\n    // FableWin 02545670 and native read at +0x0c.\n    bool IsEmpty() { return Empty; }\n#endif\npublic:\n"
+  },
+  {
+    "path": "engine/CTCCarriedActionUseSpade.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_CTCCARRIEDACTIONUSESPADE_H\n#define FABLE_ENGINE_CTCCARRIEDACTIONUSESPADE_H\n#include \"engine/CTCCarriedActionUseFishingRod.h\"\n#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n// Both PDBs and the retail 0x007F0300 entry. The shared carried-action\n// base is in CTCCarriedActionUseFishingRod.h.\nclass CTCCarriedActionUseSpade : public CTCCarriedActionUseBase {\npublic:\n    static bool FABLE_FASTCALL IsThingAbleToDig(const CThingCreatureBase&);\n};\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/CTCCreatureOpinionOfHero.h",
+    "old_text": "    bool KnowsOfDeed(long handle, EOpinionDeedType type, bool flag) const;                                // 0x00681AE0\n",
+    "new_text": "#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDTYPE_QUERY_PASS28\n    // Ego_r and FableWin name this const query. FableWin at 01F27B20 indexes the vector, and retail 006C659B loads the byte from the mask at +3C.\n    bool IsDeedTypeEnabled(EOpinionDeedType deed_type) const { return DeedMask[deed_type]; }\n#endif\n    bool KnowsOfDeed(long handle, EOpinionDeedType type, bool flag) const;                                // 0x00681AE0\n"
+  },
+  {
+    "path": "engine/CTCCreatureOpinionOfHero.h",
+    "old_text": "    // (`mov byte ptr [eax+343h],1/0`). No layout change.\n",
+    "new_text": "    // (`mov byte ptr [eax+343h],1/0`). No layout change.\n#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n    bool IsInFindAGuardAndYellForHelp() const { return InFindAGuardAndYellForHelp; } // FableWin 0x029BC550.\n#endif\n"
+  },
+  {
+    "path": "engine/CTCDExplosiveTrail.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_CTCD_EXPLOSIVE_TRAIL_H\n#define FABLE_ENGINE_CTCD_EXPLOSIVE_TRAIL_H\n#ifdef FABLE_RETAIL_EXPLOSIVE_TRAIL_UPDATE_PASS28\n#include \"engine/CTCBase.h\"\n#include \"engine/CIntelligentPointer.h\"\n#include \"engine/CDefPointer.h\"\n#include \"stlport/fable_containers.h\"\nclass CExplosiveTrailDef;\n// Layout: Ego_r and FableWin name these members. Native AddThingToIgnore\n// uses the vector at +0x20 after the four-byte STLport list at +0x1c.\nclass CTCDExplosiveTrail : public CTCBase {\npublic:\n    virtual void FrameUpdate();\nprivate:\n    CIntelligentPointer<const CThing> PTarget;\n    long Timer;\n    bool Terminated;\n    std::list<std::pair<CIntelligentPointer<CThing>,long> > ComponentTraps;\n    std::vector<CIntelligentPointer<CThing> > ThingsToIgnore;\n    CDefPointer<const CExplosiveTrailDef> PDef;\n};\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/CTCDoor.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CTCDoor) == 0x24);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, m4) == 0x4);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, Jammed) == 0xc);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, CurrentOpen) == 0x10);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, OldOpen) == 0x11);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, Opening) == 0x12);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, Closing) == 0x13);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, LastCreatureFoundWF) == 0x14);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, UpdateID) == 0x18);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, TriggerType) == 0x1c);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, PDef_Object) == 0x20);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(105, sizeof(CTCDoor) == 0x24);\nFABLE_STATIC_ASSERT_AT(106, offsetof(CTCDoor, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(107, offsetof(CTCDoor, m4) == 0x4);\nFABLE_STATIC_ASSERT_AT(108, offsetof(CTCDoor, Jammed) == 0xc);\nFABLE_STATIC_ASSERT_AT(109, offsetof(CTCDoor, CurrentOpen) == 0x10);\nFABLE_STATIC_ASSERT_AT(110, offsetof(CTCDoor, OldOpen) == 0x11);\nFABLE_STATIC_ASSERT_AT(111, offsetof(CTCDoor, Opening) == 0x12);\nFABLE_STATIC_ASSERT_AT(112, offsetof(CTCDoor, Closing) == 0x13);\nFABLE_STATIC_ASSERT_AT(113, offsetof(CTCDoor, LastCreatureFoundWF) == 0x14);\nFABLE_STATIC_ASSERT_AT(114, offsetof(CTCDoor, UpdateID) == 0x18);\nFABLE_STATIC_ASSERT_AT(115, offsetof(CTCDoor, TriggerType) == 0x1c);\nFABLE_STATIC_ASSERT_AT(116, offsetof(CTCDoor, PDef_Object) == 0x20);\n"
+  },
+  {
+    "path": "engine/CTCDoor.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CTCDoor) == 0x24);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, Jammed) == 0xc);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, LastCreatureFoundWF) == 0x14);\nFABLE_STATIC_ASSERT(offsetof(CTCDoor, PDef) == 0x20);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(77, sizeof(CTCDoor) == 0x24);\nFABLE_STATIC_ASSERT_AT(78, offsetof(CTCDoor, Jammed) == 0xc);\nFABLE_STATIC_ASSERT_AT(79, offsetof(CTCDoor, LastCreatureFoundWF) == 0x14);\nFABLE_STATIC_ASSERT_AT(80, offsetof(CTCDoor, PDef) == 0x20);\n"
+  },
+  {
+    "path": "engine/CTCDoor.h",
+    "old_text": "    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_DOOR; }\n",
+    "new_text": "#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n    bool IsLockPickable() const; // Both donor PDBs, retail 0x00730AE0.\n#endif\n    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_DOOR; }\n"
+  },
+  {
+    "path": "engine/CTCGuard.h",
+    "old_text": "    CTCGuard(CThing&);\n",
+    "new_text": "    CTCGuard(CThing&);\n#endif\n#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n bool PlayerIsCriminalAndCanApologise(); // Both donor PDBs and retail 0x007B2BF0.\n"
+  },
+  {
+    "path": "engine/CTCHaste.h",
+    "old_text": "#ifdef FABLE_RETAIL_CTCHASTE_UNSET\n",
+    "new_text": "#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWHEALTH_PASS28\npublic:\n    float GetActionSpeedMultiplier(); // Ego_r and FableWin, retail 0x007FFFB0\nprivate:\n#endif\n#ifdef FABLE_RETAIL_CTCHASTE_UNSET\n"
+  },
+  {
+    "path": "engine/CTCHeroOnlineScoreboard.h",
+    "old_text": "    ENetworkSuccess DownloadScoreboardForSelectedClan();\n",
+    "new_text": "    ENetworkSuccess DownloadScoreboardForSelectedClan();\n#ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_LOGON_PASS28\n    // Pass 28 0x00560D00. Both original PDBs and the GlobalUpdate call identify this private method.\n    ENetworkSuccess LogOnToRegistrationServer(CCharString& errorText);\n#endif\n"
+  },
+  {
+    "path": "engine/CTCHeroOnlineScoreboard.h",
+    "old_text": "    enum ENetworkSuccess { ENS_SUCCESS=1000, ENS_FAILURE=1001, ENS_PENDING=1002 };\n",
+    "new_text": "#ifdef FABLE_RETAIL_SCOREBOARD_TRANSACTION_PASS28\n    // Both donor TPI records agree on the names and values. Retail UpdateTransaction uses 100 through 104.\n    enum ETaskState { ETS_UNSTARTED=100, ETS_PREPARING, ETS_SENDING_REQUEST_ASYNC, ETS_RECEIVING_HEADER_ASYNC, ETS_RECEIVING_DOCUMENT_ASYNC };\n#endif\n    enum ENetworkSuccess { ENS_SUCCESS=1000, ENS_FAILURE=1001, ENS_PENDING=1002 };\n"
+  },
+  {
+    "path": "engine/CTCHeroRangedAttacks.h",
+    "old_text": " float GetProjectileTargetingZLockPressure() const;\n",
+    "new_text": " float GetProjectileTargetingZLockPressure() const;\n#endif\n"
+  },
+  {
+    "path": "engine/CTCHeroRangedAttacks.h",
+    "old_text": " bool IsProjectileTargetingZLock() const;\n",
+    "new_text": " bool IsProjectileTargetingZLock() const;\n#endif\n#ifdef FABLE_RETAIL_PROJECTILE_PRESSURE_PASS28\n float GetProjectileTargetingZLockPressure() const { return ProjectileWeaponZLockPressure; }\n#else\n"
+  },
+  {
+    "path": "engine/CTCHeroRangedAttacks.h",
+    "old_text": " bool IsProjectileTargetingZLock() const;\n",
+    "new_text": "#ifdef FABLE_RETAIL_PROJECTILE_PRESSURE_PASS28\n bool IsProjectileTargetingZLock() const { return GetProjectileTargetingZLockPressure() > 0.0f; }\n#else\n bool IsProjectileTargetingZLock() const;\n"
+  },
+  {
+    "path": "engine/CTCHeroStats.h",
+    "old_text": "    long GetStamina() const { return Stamina; }\n",
+    "new_text": "#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n    long GetMaxStamina() const { return MaxStamina; } // FableWin 0x01EF53A0, retail health/mana override reads +0x5C.\n#endif\n    long GetStamina() const { return Stamina; }\n"
+  },
+  {
+    "path": "engine/CTCHitOnCollision.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CTCHitOnCollision) == 0x20);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(22, sizeof(CTCHitOnCollision) == 0x20);\n"
+  },
+  {
+    "path": "engine/CTCHitOnCollision.h",
+    "old_text": "private:\n",
+    "new_text": "#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28\n    // FableWin IsThrowThingsOutLaterally and the native byte test at +0x1b.\n    bool IsThrowThingsOutLaterally() const { return PushSideways; }\n#endif\nprivate:\n"
+  },
+  {
+    "path": "engine/CTCInventory.h",
+    "old_text": " virtual void RemoveItemFromInventory(long p0, long p1);\n",
+    "new_text": "#endif\n virtual void RemoveItemFromInventory(long p0, long p1);\n"
+  },
+  {
+    "path": "engine/CTCInventory.h",
+    "old_text": " std::vector<long,std::allocator<long> > & GetQuickAccessItems();\n",
+    "new_text": " std::vector<long,std::allocator<long> > & GetQuickAccessItems();\n#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n // Donor source lines 226, 228, 233 and 236, retail component offsets 0x1D8 / 0x1E4 / 0x1F0.\n long GetCSOpinionExpressionCount(EContextSensitiveOpinionExpression expression) const { return NumberOfCSOpinionExpressions[expression]; }\n long GetLastOpinionExpression(EContextSensitiveOpinionExpression expression) const { return LastCSOpinionExpression[expression]; }\n long GetLastButOneOpinionExpression(EContextSensitiveOpinionExpression expression) const { return LastButOneCSOpinionExpression[expression]; }\n#else\n"
+  },
+  {
+    "path": "engine/CTCSpecialAbilities.h",
+    "old_text": "#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_ISCHARGINGUPABILITY\n",
+    "new_text": "#ifdef FABLE_RETAIL_DIVINE_WRATH_CTOR_PASS28\n // FableWin 0267D580, with both member stores inlined in retail at 0078EE1A.\n void LockAbilitiyMutex(EHeroAbility ability) { AbilityMutexLock = true; CurrentAbility = ability; }\n#endif\n#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_ISCHARGINGUPABILITY\n"
+  },
+  {
+    "path": "engine/CTCTrophy.h",
+    "old_text": "    CTCTrophy(CThing&);                                                  // 0x006DDAE0\n",
+    "new_text": "#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_TROPHY; }\n#endif\n    CTCTrophy(CThing&);                                                  // 0x006DDAE0\n"
+  },
+  {
+    "path": "engine/CTCWife.h",
+    "old_text": "    bool IsCourtingHero() const;                             // 0x006CF890 ?IsCourtingHero@CTCWife@@QBE_NXZ\n",
+    "new_text": "    bool IsCourtingHero() const;                             // 0x006CF890 ?IsCourtingHero@CTCWife@@QBE_NXZ\n#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n    bool HasReceivedWeddingRing() const { return ReceivedWeddingRing; } // FableWin 0x02488490.\n#endif\n"
+  },
+  {
+    "path": "engine/CTavernDef.h",
+    "old_text": "#endif // FABLE_ENGINE_CTAVERNDEF_H\n",
+    "new_text": "#endif // FABLE_RETAIL_BED_USE_PASS28\n#endif // FABLE_ENGINE_CTAVERNDEF_H\n"
+  },
+  {
+    "path": "engine/CTavernDef.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(CTavernDef) == 0x2c);\nFABLE_STATIC_ASSERT(offsetof(CTavernDef, __vftable) == 0x0);\nFABLE_STATIC_ASSERT(offsetof(CTavernDef, BedCost) == 0x28);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(28,sizeof(CTavernDef) == 0x2c);\nFABLE_STATIC_ASSERT_AT(29,offsetof(CTavernDef, __vftable) == 0x0);\nFABLE_STATIC_ASSERT_AT(30,offsetof(CTavernDef, BedCost) == 0x28);\n"
+  },
+  {
+    "path": "engine/CTavernDef.h",
+    "old_text": "#pragma pack(push, 1)\n",
+    "new_text": "#ifdef FABLE_RETAIL_BED_USE_PASS28\n#include \"engine/CSubDefClassBase.h\"\nclass CTavernDef : public CSubDefClassBase {                    // RTTI .?AVCTavernDef@@ : CSubDefClassBase\npublic:\n    static CCharString __fastcall StatGetTypeName() { return CCharString(\"CTavernDef\", -1); }\n    virtual void Transfer(CPersistContext&);\n    virtual void Copy(const CDefClassBase*);\n    virtual unsigned long GetSizeofClass();\n    \n    long BedCost;                                                   // +0x28\n};\n\n#else\n#pragma pack(push, 1)\n"
+  },
+  {
+    "path": "engine/CThingCreatureBase.h",
+    "old_text": "    virtual void OnHit(CHitParameters&);\n",
+    "new_text": "    virtual void OnHit(CHitParameters&);\n#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28\n    bool IsPickPocketable() const; // Both donor PDBs, retail 0x00665E90.\n#endif\n"
+  },
+  {
+    "path": "engine/CThingCreatureBase.h",
+    "old_text": "#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ONDIE\n",
+    "new_text": "#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28\npublic:\n    // Both original symbol tables; native caller targets 00663490.\n    void SetBodyReorienterActive(bool active);\nprivate:\n#endif\n#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ONDIE\n"
+  },
+  {
+    "path": "engine/CThingFilter_IsDeedTypeEnabled.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_CTHINGFILTER_ISDEEDTYPEENABLED_H\n#define FABLE_ENGINE_CTHINGFILTER_ISDEEDTYPEENABLED_H\n#ifdef FABLE_RETAIL_DEED_WITNESS_PASS28\n#include \"stlport/fable_containers.h\"\nclass CThing;\nclass CFaction;\n#include \"engine/EOpinionDeedType.h\"\n// Layout: Ego_r member table and the FableWin witness-filter constructor.\nclass CThingFilter_IsDeedTypeEnabled : public std::unary_function<CThing, bool> {\n    EOpinionDeedType DeedType;\n};\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/CThingFilter_IsEligibleWitness.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_CTHINGFILTER_ISELIGIBLEWITNESS_H\n#define FABLE_ENGINE_CTHINGFILTER_ISELIGIBLEWITNESS_H\n#ifdef FABLE_RETAIL_DEED_WITNESS_PASS28\n#include \"engine/CThingFilter_HasTC.h\"\n#include \"engine/CThingFilter_IsNot.h\"\n#include \"engine/CThingFilter_IsAlliedWithFaction.h\"\n#include \"engine/CThingFilter_IsDeedTypeEnabled.h\"\n#include \"engine/CThingFilter_IsPerceivingThingAndIsThingPerceived.h\"\n#include \"engine/CThingFilter_IsEnemyOfFaction.h\"\nclass CThingFilter_IsEligibleWitness {\npublic:\n    CThingFilter_IsEligibleWitness(const COpinionDeed* deed, CThing& perpetrator, bool useHearing, CThingAICreature* recipient,\n                                   const CFaction* faction, bool reverseFactionSearch, bool unknownThreatSearch);   // 0x006C8DE0\n    bool operator()(const CThing& thing) const;         // 0x006C8E90\nprivate:\n    CThing& Perpetrator;\n    const COpinionDeed* PDeed;\n    CThingFilter_HasTC HasOpinions;\n    CThingFilter_IsDeedTypeEnabled DeedTypeEnabled;\n    CThingFilter_IsPerceivingThingAndIsThingPerceived IsPerceivingPerpetrator;\n    CThingFilter_IsNot IsNotRecipient;\n    CThingFilter_IsAlliedWithFaction IsAllied;\n    CThingFilter_IsEnemyOfFaction IsEnemy;\n    bool UnknownThreatSearch, UseHearing, UsePerceiving, UseIsNot, UseFaction, ReverseFactionSearch;\n};\n\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/CThingFilter_IsEnemyOfFaction.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_CTHINGFILTER_ISENEMYOFFACTION_H\n#define FABLE_ENGINE_CTHINGFILTER_ISENEMYOFFACTION_H\n#ifdef FABLE_RETAIL_DEED_WITNESS_PASS28\n#include \"stlport/fable_containers.h\"\nclass CThing;\nclass CFaction;\n#include \"engine/EOpinionDeedType.h\"\n// Layout: Ego_r member table and the FableWin witness-filter constructor.\nclass CThingFilter_IsEnemyOfFaction : public std::unary_function<CThing, bool> {\n    const CFaction* PFaction;\n};\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/CThingFilter_IsPerceivingThingAndIsThingPerceived.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_CTHINGFILTER_ISPERCEIVINGTHINGANDISTHINGPERCEIVED_H\n#define FABLE_ENGINE_CTHINGFILTER_ISPERCEIVINGTHINGANDISTHINGPERCEIVED_H\n#ifdef FABLE_RETAIL_DEED_WITNESS_PASS28\n#include \"stlport/fable_containers.h\"\nclass CThing;\nclass CFaction;\n#include \"engine/EOpinionDeedType.h\"\n// Layout: Ego_r member table and the FableWin witness-filter constructor.\nclass CThingFilter_IsPerceivingThingAndIsThingPerceived : public std::unary_function<CThing, bool> {\n    const CThing& PerceivedThing;\n    bool IncludeHearing;\n};\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/CWorld.h",
+    "old_text": "class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {\n",
+    "new_text": "class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {\n#ifdef FABLE_RETAIL_BED_USE_PASS28\npublic:\n    // FableWin 02545650 and native read at +0xd9.\n    bool IsHeroSleepingEnabled() const { return HeroSleepingEnabled; }\nprivate:\n#endif\n"
+  },
+  {
+    "path": "engine/CWorldMap.h",
+    "old_text": "    bool IsPosPassable(const C2DCoordI&) const;\n",
+    "new_text": "    bool IsPosPassable(const C2DCoordI&) const;\n#ifdef FABLE_RETAIL_EXPLOSIVE_TRAIL_UPDATE_PASS28\n    // Native 004fcc40 and both original PDB overload sets: the call uses create_pos directly.\n    bool IsPosPassable(const C3DVector&) const;\n#endif\n"
+  },
+  {
+    "path": "engine/D3DXVECTOR4.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_D3DXVECTOR4_H\n#define FABLE_ENGINE_D3DXVECTOR4_H\n#ifdef FABLE_RETAIL_FONT2DVERTEX_PASS28\n// Layout: Ego_r and the D3DX9 SDK place x, y, z, w at 0, 4, 8, 12. FableWin lib_font_bank calls the four-float constructor.\nstruct D3DXVECTOR4 {\n    float x, y, z, w;\n    D3DXVECTOR4() {}\n        D3DXVECTOR4(float sx, float sy, float sz, float sw) : x(sx), y(sy), z(sz), w(sw) {}\n};\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/FONT2DVERTEX.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_FONT2DVERTEX_H\n#define FABLE_ENGINE_FONT2DVERTEX_H\n#ifdef FABLE_RETAIL_FONT2DVERTEX_PASS28\n#include \"D3DXVECTOR4.h\"\n// Layout: Ego_r FONT2DVERTEX and FableWin InitFont2DVertex independently give p at 0, color at 16, tu at 20 and tv at 24.\nstruct FONT2DVERTEX {\n    D3DXVECTOR4 p;\n    unsigned long color;\n    float tu;\n    float tv;\n};\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/LHHttpHeaderStatus.h",
+    "old_text": "    LH_HTTP_SERVER_CODES hsServerCode;                       // +0x00\n",
+    "new_text": "#ifdef FABLE_RETAIL_SCOREBOARD_TRANSACTION_PASS28\n    // The native status object is constructed at 00569C50 and destroyed at 00569D30.\n    LHHttpHeaderStatus();\n    ~LHHttpHeaderStatus();\n#endif\n    LH_HTTP_SERVER_CODES hsServerCode;                       // +0x00\n"
+  },
+  {
+    "path": "engine/NCameraModes_CBase.h",
+    "old_text": " void SetFOV(float p0);\n",
+    "new_text": " void SetFOV(float p0);\n#endif\n"
+  },
+  {
+    "path": "engine/NCameraModes_CBase.h",
+    "old_text": " void SetFOV(float p0);\n",
+    "new_text": "#ifdef FABLE_RETAIL_PROJECTILE_SETFOV_PASS28\n void SetFOV(float fov) { CameraFOV = fov; }\n#else\n void SetFOV(float p0);\n"
+  },
+  {
+    "path": "engine/NCameraModes_CProjectileWeapon.h",
+    "old_text": "FABLE_STATIC_ASSERT(sizeof(NCameraModes::CProjectileWeapon)==0x108);\n",
+    "new_text": "FABLE_STATIC_ASSERT_AT(29,sizeof(NCameraModes::CProjectileWeapon)==0x108);\n"
+  },
+  {
+    "path": "engine/NCameraModes_CProjectileWeapon.h",
+    "old_text": "private:\n",
+    "new_text": "#ifdef FABLE_RETAIL_PROJECTILE_UPDATE_PASS28\n virtual void Update();\nprivate:\n#ifdef FABLE_RETAIL_CPROJECTILEWEAPON_INVERTY_PASS28\n // Ego_d PUB32 and FableWin PUB32/GDATA32 at 04AC5B41; retail reads byte 013BAF98 before negating the vertical input.\n static bool InvertY;\n#endif\n void SetUpParams();\n C3DVector GetBaseOffset() const;\n C3DVector GetCamPosOffsetXY(float p0) const;\n C3DVector GetLookDirectionXYFromParams(float p0, float p1) const;\n float GetPhiForPosition(const C3DVector & p0) const;\n float GetPhiForTargetedThing(const CThing & p0) const;\n float GetHeightParamForTargetedThingWithPhi(const CThing & p0, float p1) const;\n#endif\nprivate:\n"
+  },
+  {
+    "path": "engine/NCreatureMode_CModeKnockedDown.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_MODE_KNOCKED_DOWN_H\n#define FABLE_ENGINE_MODE_KNOCKED_DOWN_H\n#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28\n#include \"engine/CTCCreatureModeManager.h\"\n#include \"engine/CAnimFilterOfGroup.h\"\nnamespace NCreatureMode {\n// FableWin 0281c1d0, Ego_r class layout and native 0x28 allocation.\nclass CModeKnockedDown : public CTCCreatureModeManager::CModeBase {\npublic:\n    CModeKnockedDown(CThing& owner,const CCharString& name): CModeBase(owner), Filter(name) {}\n    virtual unsigned long GetType() const;\n    virtual void OnActivate();\n    virtual void OnDeactivate();\nprivate:\n    CAnimFilterOfGroup Filter;\n};\n}\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/NPlayerGui_CDrawHealth.h",
+    "old_text": "",
+    "new_text": "#ifndef FABLE_ENGINE_NPLAYERGUI_CDRAWHEALTH_H\n#define FABLE_ENGINE_NPLAYERGUI_CDRAWHEALTH_H\n#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWHEALTH_PASS28\n#include \"engine/NPlayerGui_CDrawBase.h\"\n#include \"engine/CFadeInFadeOutBase.h\"\n#include \"engine/CIntelligentPointer.h\"\nclass CEnginePrimitivePrepareInfo;\nnamespace NParticleEngine { class CParticleEmitter; }\nnamespace NPlayerGui {\n// Ego_r CDrawHealth fields after the CDrawBase subobject. Both STLport vectors are four bytes smaller than the donor equivalents.\nclass CDrawHealth : public CDrawBase {\npublic:\n#ifdef FABLE_RETAIL_CDRAWHEALTH_ORIGINAL_EFFECTS_PASS28\n    // Original GUI helper at 00644644 forwards Effects to CDrawBase, matching the FableWin member call.\n    void ClearEffects() { CDrawBase::ClearEffects(Effects); }\n#endif\n    void Draw(const CEnginePrimitivePrepareInfo& info); // Ego_r and FableWin, retail 0x00647AB4\nprivate:\n    std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> > Effects;\n    float PreviousHealth;\n    CFadeInFadeOutBase HealthIncreaseFade;\n    float HealthReduction;\n    float HealthReductionAlpha;\n    float HealthFlashTimer;\n    float LowHealthPulseScale;\n    float LowHealthPulseDirection;\n    long PreviousEffect;\n};\n}\nFABLE_STATIC_ASSERT(sizeof(NPlayerGui::CDrawHealth) == 0x6c);\n#endif\n#endif\n"
+  },
+  {
+    "path": "engine/NScript_CV_RandomPopulationSimScript.h",
+    "old_text": "    long GetCurrentPopulationLevel(POPULATION_TYPES population);\n",
+    "new_text": "    long GetCurrentPopulationLevel(POPULATION_TYPES population);\n#ifdef FABLE_RETAIL_RANDOMPOPULATIONSIMSCRIPT_BANDITDEFS\n    // Pass 28 0x00EC32F0, original Ego_r and FableWin spellings; no layout change.\n    CCharString ChooseRandomBanditGruntString(long level);\n    CCharString ChooseRandomBanditFromDefs();\n#endif\n"
+  },
+  {
+    "path": "engine/_quarantine/CEngineLandscapeMap.h",
+    "old_text": "public:\n",
+    "new_text": "public:\n#ifdef FABLE_RETAIL_BACKGROUND_VERTEX_HELPERS_PASS28\n    C3DVector PeekWorldPosition() const;\n#endif\n"
+  },
+  {
+    "path": "fable_user_profile.h",
+    "old_text": "    unsigned char _pad_0x100[0x140 - 0x100];                             // +0x100 MeshDetailNewProfile .. (opaque)\n",
+    "new_text": "#ifdef FABLE_RETAIL_PROJECTILE_UPDATE_PASS28\n    unsigned char _pad_camera_100[0x30];\n    float CameraSensitivityNewProfile; // Ego_r +0x134, retail +0x130\n    unsigned char _pad_camera_134[0xc];\n#else\n    unsigned char _pad_0x100[0x140 - 0x100];\n#endif                             // +0x100 MeshDetailNewProfile .. (opaque)\n"
+  },
+  {
+    "path": "fable_user_profile.h",
+    "old_text": "class CUserProfileManager : public CBaseClassNonCopyable, public CDeviceResetCallback\n{\n",
+    "new_text": "class CUserProfileManager : public CBaseClassNonCopyable, public CDeviceResetCallback\n{\n#ifdef FABLE_RETAIL_PROJECTILE_UPDATE_PASS28\npublic:\n    // FableWin 029ccb70/029ccbb0 and the native Update profile accesses.\n    bool IsCameraFPBowXYInverted() const { return UseNewProfileValues ? CameraFPBowXYInvertedNewProfile : CameraFPBowXYInverted; }\n    bool IsCameraFPBowYZInverted() const { return UseNewProfileValues ? CameraFPBowYZInvertedNewProfile : CameraFPBowYZInverted; }\n    float GetCameraSensitivity() const { return UseNewProfileValues ? CameraSensitivityNewProfile : CameraSensitivity; }\nprivate:\n#endif\n"
+  },
+  {
+    "path": "stlport/fable_map.h",
+    "old_text": "#pragma optimize(\"\", on)\n#endif\n#endif\n",
+    "new_text": "#pragma optimize(\"\", on)\n#endif\n#endif\n#endif\n"
+  },
+  {
+    "path": "stlport/fable_map.h",
+    "old_text": "#endif\n#endif\n#endif\n",
+    "new_text": "#endif\n\n#if defined(FABLE_RETAIL_STLP_CUISTATE_MAP_OWNERS_PASS28) && defined(_MSC_VER)\n// ScrollBar::ProcessEvent 0x00559A90 uses a visible map index body so the const\n// key does not escape. Its distinct retail owners are the 0x0042D5B1 map index,\n// 0x0042AD6C tree lower-bound walk and 0x0042AA96 pair constructor. Rebuild the\n// original STLport declarations and bodies with each owner's size settings.\n#include \"engine/NUISystem_CUIState.h\"\n#pragma optimize(\"s\", on)\nnamespace std {\ntypedef pair<const unsigned long, NUISystem::CUIState> CUIStatePair;\ntypedef allocator<CUIStatePair> CUIStateAllocator;\ntypedef _Rb_tree<unsigned long, CUIStatePair, _Select1st<CUIStatePair>, less<unsigned long>, CUIStateAllocator> CUIStateTree;\ntypedef map<unsigned long, NUISystem::CUIState> CUIStateMap;\n\ntemplate<> __declspec(noinline) inline\n_Rb_tree_node_base* CUIStateTree::_M_lower_bound(const unsigned long& __k) const\n{\n    _Link_type y = this->_M_header._M_data;\n    _Link_type x = _M_root();\n    while (x != 0) {\n        if (!_M_key_compare(_S_key(x), __k)) {\n            y = x;\n            x = _S_left(x);\n        } else {\n            x = _S_right(x);\n        }\n    }\n    return y;\n}\n\ntemplate<> inline\nCUIStatePair::pair(const unsigned long& a, const NUISystem::CUIState& b) : first(a), second(b) {}\n\ntemplate<>\nCUIStateMap::iterator CUIStateMap::insert(iterator, const value_type&);\n\n#pragma optimize(\"y\", off)\ntemplate<> inline\nNUISystem::CUIState& CUIStateMap::operator[](const unsigned long& k)\n{\n    iterator i = lower_bound(k);\n    if (i == end() || key_comp()(k, (*i).first)) {\n        NUISystem::CUIState __default;\n        i = insert(i, value_type(k, __default));\n    }\n    return (*i).second;\n}\n}\n#pragma optimize(\"\", on)\n#endif\n#endif\n"
+  },
+  {
+    "path": "stlport/fable_map.h",
+    "old_text": "#ifdef FABLE_RETAIL_ARROW_TREE_FIND_SIZE_OWNER_PASS26\n",
+    "new_text": "#if defined(FABLE_RETAIL_STLP_ULONG_LONG_MFIND_SIZE_PASS28) && defined(_MSC_VER)\n// Fidelity scaffolding: use the size setting of the retail unsigned-long lookup owner 0x005D83B3.\n// The genuine STLport body remains visible to the speed-optimized Divine Wrath caller.\n#pragma optimize(\"s\", on)\nnamespace std {\ntypedef pair<const unsigned long,long> EffectStringMapValue;\ntypedef _Rb_tree<unsigned long,EffectStringMapValue,_Select1st<EffectStringMapValue>,\n                 less<unsigned long>,allocator<EffectStringMapValue> > EffectStringMapTree;\ntemplate<> template<> inline _Rb_tree_node<EffectStringMapValue>*\nEffectStringMapTree::_M_find<unsigned long>(const unsigned long& key) const\n{\n    _Link_type y=this->_M_header._M_data;\n    _Link_type x=_M_root();\n    while (x!=0) {\n        if (!_M_key_compare(_S_key(x),key)) { y=x; x=_S_left(x); }\n        else x=_S_right(x);\n    }\n    if (y==this->_M_header._M_data || _M_key_compare(key,_S_key(y)))\n        y=this->_M_header._M_data;\n    return y;\n}\n}\n#pragma optimize(\"\", on)\n#endif\n#ifdef FABLE_RETAIL_ARROW_TREE_FIND_SIZE_OWNER_PASS26\n"
+  },
+  {
+    "path": "stlport/fable_string.h",
+    "old_text": "    return x.size()==y.size()&&T::compare(x.data(),y.data(),x.size())==0;\n}\n",
+    "new_text": "    return x.size()==y.size()&&T::compare(x.data(),y.data(),x.size())==0;\n}\n#endif\n"
+  },
+  {
+    "path": "stlport/fable_string.h",
+    "old_text": "template<class C,class T,class A> inline bool\n",
+    "new_text": "#ifdef FABLE_RETAIL_CSUBTITLERENDERER_WIDESTRING_EQ_DECL_PASS28\n// The ProcessEmbeddedHighlightTags TU calls the externally owned basic_string<unsigned short> equality at 0x0040F0A0.\ntemplate<class C,class T,class A> bool __cdecl operator==(const basic_string<C,T,A>&,const basic_string<C,T,A>&);\n#else\ntemplate<class C,class T,class A> inline bool\n"
+  },
+  {
+    "path": "stlport/fable_string.h",
+    "old_text": "    _Self& assign(const C* first,const C* last);\n",
+    "new_text": "    _Self& assign(const C* first,const C* last);\n#ifdef FABLE_RETAIL_STLP_STRING_RANGE_ERASE_PASS28\n    // STLport _string.h erases the tail including its terminator in the move.\n    iterator erase(iterator first, iterator last) {\n        if (first != last) {\n            Traits::move(first, last, this->_M_finish - last + 1);\n            iterator new_finish = this->_M_finish - (last - first);\n            _Destroy(new_finish + 1, this->_M_finish + 1);\n            this->_M_finish = new_finish;\n        }\n        return first;\n    }\n#endif\n"
+  },
+  {
+    "path": "stlport/fable_string.h",
+    "old_text": "    typedef char char_type;\n",
+    "new_text": "    typedef char char_type;\n#ifdef FABLE_RETAIL_STLP_STRING_RANGE_ERASE_PASS28\n    // STLport char_traits::move, verified by the memmove site within retail 00569140.\n    static char* move(char* out, const char* in, size_t n) { return n ? static_cast<char*>(memmove(out, in, n)) : out; }\n#endif\n"
+  },
+  {
+    "path": "stlport/fable_string_bodies.h",
+    "old_text": "    } else append(first,last);\n",
+    "new_text": "#endif\n    } else append(first,last);\n"
+  },
+  {
+    "path": "stlport/fable_string_bodies.h",
+    "old_text": "    if(first==last) {\n",
+    "new_text": "    if(first==last) {\n#ifdef FABLE_RETAIL_STLP_STRING_RANGE_ERASE_PASS28\n        erase(cur, this->_M_finish);\n#else\n"
+  }
+]

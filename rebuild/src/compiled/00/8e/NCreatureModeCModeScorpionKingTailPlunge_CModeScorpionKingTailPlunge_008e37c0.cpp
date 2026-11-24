@@ -70,9 +70,10 @@ public:
         virtual void OnDeactivate();                        // slot 6 0x00739E60 (Active = false)
         virtual float GetMovementSpeed(const C3DVector& from, const C3DVector& to, EMovementType type) const;   // slot 7 0x00739E70
         virtual bool IsIdleMode() const;                    // slot 8 0x00739E80
-        virtual bool IsRemoveOnDeactivate() const;          // slot 9 0x00739E90
+        virtual bool IsAllowingPlayerSpecialMovementMoves() const;   // slot 9 0x00739E90
         virtual bool IsHoldWeaponWithBothHands() const;     // slot 10 0x0073A9F0
-        virtual bool IsAllowingPlayerSpecialMovementMoves() const;   // slot 11 0x00739EA0
+        virtual bool IsRemoveOnDeactivate() const;          // slot 11 0x00739EA0
+        // NF242 (q12677): slots 9 / 11 in retail order (vtable 0x012673CC; CModeStandBase 0x0073DA00 and CModeCarryingWeaponStand 0x008E35F0 override slot 9)
         CThing*            ParentThing;                     // +0x04
         CAnimFilterOfGroup WeaponBasedFilter;               // +0x08
         long               FramesBeforeRemovingSelf;        // +0x14
@@ -85,6 +86,7 @@ public:
 };
 
 #define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE                  // NF242 (q12677): CModeStandBase's slot 2 / 7 / 9 overrides (0x00862EC0 / 0x00861900 / 0x0073DA00), as 0x00743600 / 0x008E3A20
 #include "engine/CModeStandBase.h"                          // CModeStandBase : CModeBase (retail opt-in, hdr/ overlay chunk 710)
 
 class CThingCreatureBase;

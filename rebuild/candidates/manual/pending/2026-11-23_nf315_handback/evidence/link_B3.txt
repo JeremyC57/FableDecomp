@@ -1,0 +1,8 @@
+## HEAD set: H_006d56e0.obj H_006d5050.obj
+duplicates 0
+
+UNRESOLVED 1 ?RemoveEmoteIcon@CTCFollowed@@QAEXPAVCThingAICreature@@@Z
+## new set: N_006d56e0.obj H_006d5050.obj
+duplicates 0
+
+LK_DONE

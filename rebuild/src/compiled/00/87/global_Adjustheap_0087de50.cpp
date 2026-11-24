@@ -15,7 +15,7 @@
 
 class CAnimationEntry { public:
     long BankIndex;                             // +0x00
-    void GetRotationInAnimation(float* pRotation) const;   // 0x005DBFD0
+    void GetRotationInAnimation(float& rotation) const;   // 0x005DBFD0
 };
 
 namespace {
@@ -25,8 +25,8 @@ struct CTurningAnimCompare {
     {
         float rotationA;
         float rotationB;
-        a->GetRotationInAnimation(&rotationA);
-        a->GetRotationInAnimation(&rotationB);
+        a->GetRotationInAnimation(rotationA);
+        a->GetRotationInAnimation(rotationB);
         return fabs(m_WantedRotation - rotationA) < fabs(m_WantedRotation - rotationB);
     }
 };

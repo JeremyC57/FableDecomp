@@ -1,0 +1,4 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	?erase@?$vector@VCWideString@@@std@@QAEPAVCWideString@@PAV3@0@Z	00412450	00495780	allocator-less stand-in; 0x00495780 (its last emitter) now binds the STLport spelling (existing line, witness 0x00412B20)
+delete	rebuild/oracles/reloc_bindings.tsv	?Shutdown@CFrontendGameComponent@@QAEXXZ	00495780	00496cf0	public stand-in; the self row and its only binder 0x00496CF0 now spell the PDB private AAE (line added below)
+add	rebuild/oracles/reloc_bindings.tsv	?Shutdown@CFrontendGameComponent@@AAEXXZ	00495780	00496cf0	Ego_r.pdb + FableWin.pdb + Ego_d.pdb; self leaf of 0x00495780; bound x3 by 0x00496CF0

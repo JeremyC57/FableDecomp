@@ -1,0 +1,14 @@
+004c7e30   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+004c7e30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004c7e30   RELOCATION_MATCH PASS   IsLocal
+006f3530   RELOCATION_MATCH PASS   for_each
+00742790   RELOCATION_MATCH PASS   Alloc
+007d7c10   RELOCATION_MATCH PASS   GetWinPhrase
+00b26360   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b26360   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b26360   WARN RELOC_NAME: ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B -> 01436e24 labelled 'g_pEngineEnvironmentDef'
+00b26360   RELOCATION_MATCH PASS   Initialise
+00b40260   RELOCATION_MATCH PASS   PeekHasWaterFast
+00b40bd0   RELOCATION_MATCH PASS   PeekWaterDepth
+00b625e0   RELOCATION_MATCH PASS   CEngineSkyRenderer
+00beab40   RELOCATION_MATCH PASS   GetWaterType

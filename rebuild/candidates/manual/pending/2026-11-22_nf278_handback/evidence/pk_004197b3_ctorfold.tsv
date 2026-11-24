@@ -1,0 +1,37 @@
+004197b3 NEW	??0?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	10	-	NO-OWNER
+004197b3 NEW	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	44	-	NO-OWNER
+004197b3 NEW	??0?$scoped_ptr@VCPlayerManager@@@boost@@QAE@PAVCPlayerManager@@@Z	11	-	NO-OWNER
+004197b3 NEW	??0?$scoped_ptr@VCGamePlayerInterface@@@boost@@QAE@PAVCGamePlayerInterface@@@Z	11	-	NO-OWNER
+004197b3 NEW	??0?$scoped_ptr@VCWorld@@@boost@@QAE@PAVCWorld@@@Z	11	-	NO-OWNER
+004197b3 NEW	??0?$scoped_ptr@VCDisplayEngine@@@boost@@QAE@PAVCDisplayEngine@@@Z	11	-	NO-OWNER
+004197b3 NEW	??0?$CCountedPointer@VCLUA@@@@QAE@XZ	10	-	NO-OWNER
+004197b3 NEW	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	44	-	NO-OWNER
+004197b3 NEW	??0?$CCountedPointer@VCFontBank@@@@QAE@XZ	10	-	NO-OWNER
+004197b3 NEW	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	44	-	NO-OWNER
+004197b3 NEW	??0?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	10	-	NO-OWNER
+004197b3 NEW	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	44	004194b5	NEQ:bytes(44 v 44)
+004197b3 NEW	??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z	294	00418dca	EQ
+00418dca HEAD	??0?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	10	-	NO-OWNER
+00418dca HEAD	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	44	-	NO-OWNER
+00418dca HEAD	??0?$scoped_ptr@VCPlayerManager@@@boost@@QAE@PAVCPlayerManager@@@Z	11	-	NO-OWNER
+00418dca HEAD	??0?$scoped_ptr@VCGamePlayerInterface@@@boost@@QAE@PAVCGamePlayerInterface@@@Z	11	-	NO-OWNER
+00418dca HEAD	??0?$scoped_ptr@VCWorld@@@boost@@QAE@PAVCWorld@@@Z	11	-	NO-OWNER
+00418dca HEAD	??0?$scoped_ptr@VCDisplayEngine@@@boost@@QAE@PAVCDisplayEngine@@@Z	11	-	NO-OWNER
+00418dca HEAD	??0?$CCountedPointer@VCLUA@@@@QAE@XZ	10	-	NO-OWNER
+00418dca HEAD	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	44	-	NO-OWNER
+00418dca HEAD	??0?$CCountedPointer@VCFontBank@@@@QAE@XZ	10	-	NO-OWNER
+00418dca HEAD	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	44	-	NO-OWNER
+00418dca HEAD	??0?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	10	-	NO-OWNER
+00418dca HEAD	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	44	004194b5	NEQ:bytes(44 v 44)
+00418dca HEAD	??_GCMainGameComponent@@UAEPAXI@Z	28	-	NO-OWNER
+00418b7a HEAD	??1CGameComponent@@UAE@XZ	18	-	NO-OWNER
+00418b7a HEAD	??_GCGameComponent@@UAEPAXI@Z	41	-	NO-OWNER
+00418b7a HEAD	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	5	-	NO-OWNER
+00418b7a HEAD	??1?$scoped_ptr@VCPlayerManager@@@@QAE@XZ	13	-	NO-OWNER
+00418b7a HEAD	??1?$scoped_ptr@VCGamePlayerInterface@@@@QAE@XZ	13	-	NO-OWNER
+00418b7a HEAD	??1?$scoped_ptr@VCWorld@@@@QAE@XZ	13	-	NO-OWNER
+00418b7a HEAD	??1?$scoped_ptr@VCDisplayEngine@@@@QAE@XZ	13	-	NO-OWNER
+00418b7a HEAD	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	5	-	NO-OWNER
+00418b7a HEAD	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER
+00418b7a HEAD	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ
+00418b7a HEAD	??_GCMainGameComponent@@UAEPAXI@Z	28	-	NO-OWNER

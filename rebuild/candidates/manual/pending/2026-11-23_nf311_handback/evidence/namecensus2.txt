@@ -1,0 +1,654 @@
+## TransferBinaryIn 465
+   src/compiled/00/83/CThingAICreature_SerialiseGameState_00830fe0.cpp:49: void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream& stream, float& value)
+   src/compiled/00/75/CWoundMorphs_TransferBinaryIn_00757990.cpp:84: void CWoundMorphs::TransferBinaryIn(CMemoryDataInputStream* stream)
+   src/compiled/00/75/CPersistTraitsstdpairlonglong_TransferBinaryIn_00755d00.cpp:50: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   src/compiled/00/7a/CPersistTraits_TransferBinaryIn_007ad7f0.cpp:46: template <> void CPersistTraits<EScriptingStateGroups>::TransferBinaryIn(CMemoryDataInputStream& stream, EScriptingState
+   src/compiled/00/87/CThingComponentSet_TransferBinaryIn_008707a0.cpp:76: void CThingComponentSet::TransferBinaryIn(CMemoryDataInputStream* stream)
+   src/compiled/00/6f/CReactionMatch_TransferBinaryIn_006fefb0.cpp:50: void CReactionMatch::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/6f/CReactionMatchAsymmetricPyramid_TransferBinaryIn_006ff540.cpp:55: void CReactionMatch_AsymmetricPyramid_TransferBinaryIn::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/6f/CReactionFrequencyTraitsControlledCount_TransferBinaryIn_006fff00.cpp:53: void CReactionFrequencyTraits_ControlledCount_Methods::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/6f/CReactionMatchMRPyramid_TransferBinaryIn_006ff810.cpp:53: void CReactionMatch_MRPyramid_TransferBinaryIn::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/6f/CReactionFrequencyTraitsPeriodicFrequency_TransferBinaryIn_006ffc30.cpp:50: void CReactionFrequencyTraits_PeriodicFrequency_Methods::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/6f/CReactionMatchSecondaryAxisCentredMRShifted_TransferBinaryIn_006ff2c0.cpp:55: void CReactionMatch_SecondaryAxisCentredMRShifted_TransferBinaryIn::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/6f/CReactionMatchSecondaryAxisMRShifted_TransferBinaryIn_006ff040.cpp:55: void CReactionMatch_SecondaryAxisMRShifted_TransferBinaryIn::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/6f/CReactionFrequencyTraitsLinearTime_TransferBinaryIn_006ffa40.cpp:47: void CReactionFrequencyTraits_LinearTime_Methods::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/7b/CActivateQuestDef_Transfer_007b5740.cpp:39: void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(&stream); }
+   src/compiled/00/7b/CPersistTraitsCCrimeWaitingForBribe_TransferBinaryIn_007b42d0.cpp:50: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   src/compiled/00/7b/CPersistTraitsCCrimeWaitingForBribe_TransferBinaryIn_007b42d0.cpp:62: void CPersistTraits<CCrimeWaitingForBribe>::TransferBinaryIn(CMemoryDataInputStream* stream, CCrimeWaitingForBribe* valu
+   src/compiled/00/7b/global_GFSerialiseVectorBinaryInCCrimeWaitingForBribe_007b5370.cpp:61: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStreamReader* stream, long* value)
+   src/compiled/00/7b/global_GFSerialiseVectorBinaryInCCrimeWaitingForBribe_007b5370.cpp:73: void CPersistTraits<CCrimeWaitingForBribe>::TransferBinaryIn(CMemoryDataInputStreamReader* stream, CCrimeWaitingForBribe
+   src/compiled/00/62/CPersistTraits_TransferBinaryIn_00625730.cpp:46: template <> void CPersistTraits<NUISystem::EStateChangeType>::TransferBinaryIn(CMemoryDataInputStream& stream, NUISystem
+   src/compiled/00/4f/CWorldMap_SaveGameState_004fde80.cpp:43: template <> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
+   src/compiled/00/5c/CPersistTraitsNInventoryCItem_TransferBinaryIn_005c19a3.cpp:99: void CPersistTraits<NInventory::CItem>::TransferBinaryIn(CMemoryDataInputStream& inStream, NInventory::CItem& value)
+   src/compiled/00/4a/CPersistTraitsdouble_TransferBinaryIn_004aa360.cpp:44: template <> void CPersistTraits<double>::TransferBinaryIn(CMemoryDataInputStreamReader* stream, double* out) const
+   src/compiled/00/4a/CPersistTraitsESaveType_TransferBinaryIn_004aa270.cpp:43: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   src/compiled/00/e9/CPersistTraits_TransferBinaryIn_00e9e350.cpp:62: template <> void CPersistTraits<NScript::CV_IntroductionToTrophiesScript::BriarRoseOpinion>::TransferBinaryIn(CMemoryDat
+   src/compiled/00/74/CCreatureGeneratorDef_Transfer_0074c5f0.cpp:43: void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(&stream); }
+   src/compiled/00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_0046ba4b.cpp:52: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   src/compiled/00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_0046ba4b.cpp:64: void CPersistTraits<CBrainUpdateZone>::TransferBinaryIn(CMemoryDataInputStream* stream, CBrainUpdateZone* value)
+   src/compiled/00/46/global_GFSerialiseMapBinaryIn_00469381.cpp:47: template<> inline void CPersistTraits<CBlendedParticleEffectSet>::TransferBinaryIn(CMemoryDataInputStream& is, CBlendedP
+   src/compiled/00/46/CPersistTraitsCObjectFamilyEntry_TransferBinaryIn_0046c3b9.cpp:66: void CPersistTraits<CObjectFamilyEntry>::TransferBinaryIn(CDataInputStream* stream, CObjectFamilyEntry* value)
+   src/compiled/00/46/CPersistTraitsCBrainBehaviour_TransferBinaryIn_004671ca.cpp:58: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   src/compiled/00/46/CPersistTraitsCBrainBehaviour_TransferBinaryIn_004671ca.cpp:70: void CPersistTraits<CBrainBehaviour>::TransferBinaryIn(CMemoryDataInputStream* stream, CBrainBehaviour* value)
+   src/compiled/00/46/global_GFSerialiseMultiMapBinaryIn_00463732.cpp:86: template <> FABLE_FORCEINLINE void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStreamReader& stream, C
+   src/compiled/00/46/global_GFSerialiseVectorBinaryIn_0046caf4.cpp:55: template <> void CPersistTraits<EActionRegisteredType>::TransferBinaryIn(CMemoryDataInputStream& stream, EActionRegister
+   src/compiled/00/46/global_GFSerialiseVectorBinaryIn_00466aa7.cpp:54: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value)
+   src/compiled/00/46/CPersistTraitsCMusicEntry_TransferBinaryIn_0046b545.cpp:59: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
+   src/compiled/00/46/CPersistTraitsCMusicEntry_TransferBinaryIn_0046b545.cpp:67: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
+   src/compiled/00/46/CPersistTraitsCMusicEntry_TransferBinaryIn_0046b545.cpp:75: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value)
+   src/compiled/00/46/CPersistTraitsCMusicEntry_TransferBinaryIn_0046b545.cpp:87: void CPersistTraits<CMusicEntry>::TransferBinaryIn(CMemoryDataInputStream* stream, CMusicEntry* value)
+   src/compiled/00/46/global_GFSerialiseVectorBinaryInCDefString_00465852.cpp:67: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStreamReader* stream, CDefString* value) { value->TransferBinary
+   src/compiled/00/46/CBlendedParticleEffectSet_TransferBinaryIn_0046944c.cpp:44: void CBlendedParticleEffectSet::TransferBinaryIn(CDataInputStream& in)
+   src/compiled/00/46/global_GFSerialiseMapBinaryIn_0046461d.cpp:55: template <> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream& stream, unsigned long& value)
+   src/compiled/00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_00466c8e.cpp:51: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   src/compiled/00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_00466c8e.cpp:63: void CPersistTraits<CBrainUpdateZone>::TransferBinaryIn(CMemoryDataInputStream* stream, CBrainUpdateZone* value)
+   src/compiled/00/46/CPersistTraitsCSoundBankEntry_TransferBinaryIn_0046abd6.cpp:56: void CPersistTraits<CSoundBankEntry>::TransferBinaryIn(CDataInputStream* stream, CSoundBankEntry* value)
+   src/compiled/00/46/CPersistContext_Transfer_00464b9a.cpp:29: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   src/compiled/00/46/global_GFSerialiseMapBinaryIn_0046fa94.cpp:55: template <> void CPersistTraits<ECombatCreatureType>::TransferBinaryIn(CMemoryDataInputStream& stream, ECombatCreatureTy
+   src/compiled/00/46/global_GFSerialiseMapBinaryIn_0046fa94.cpp:61: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value)
+   src/compiled/00/46/CPersistTraitsCWeaponTrailGraphicSet_TransferBinaryIn_00469d47.cpp:46: void CPersistTraits<CWeaponTrailGraphicSet>::TransferBinaryIn(CDataInputStream* stream, CWeaponTrailGraphicSet* value)
+   src/compiled/00/46/global_GFSerialiseVectorBinaryIn_00468f15.cpp:75: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CRGBColour* value) const { *value = stream
+   src/compiled/00/46/global_GFSerialiseMapBinaryIn_00463d18.cpp:55: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value)
+   src/compiled/00/46/CPersistTraitsSRecord54_TransferBinaryIn_0046bf1c.cpp:40: void CPersistTraitsRecord54::TransferBinaryIn(CDataInputStream* stream, SRecord54* value)
+   src/compiled/00/46/global_GFSerialiseVectorBinaryIn_004648a1.cpp:54: template <> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream& stream, unsigned long& value)
+   src/compiled/00/46/CAppearanceModifierGraphics_TransferBinaryIn_0046fee9.cpp:52: void CPODVector_0046fee9::TransferBinaryIn(CDataInputStream* stream)
+   src/compiled/00/46/CPersistContext_Transfer_0046fe40.cpp:29: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   src/compiled/00/63/CPersistTraits_TransferBinaryIn_00632550.cpp:46: template <> void CPersistTraits<NUISystem::EActionType>::TransferBinaryIn(CMemoryDataInputStream& stream, NUISystem::EAc
+   src/compiled/00/63/CPersistTraits_TransferBinaryIn_00632710.cpp:46: template <> void CPersistTraits<EEngineSprite2DFlag>::TransferBinaryIn(CMemoryDataInputStream& stream, EEngineSprite2DFl
+   src/compiled/00/63/CPersistTraits_TransferBinaryIn_00632630.cpp:46: template <> void CPersistTraits<NUISystem::ETextAlignement>::TransferBinaryIn(CMemoryDataInputStream& stream, NUISystem:
+   src/compiled/00/63/CPersistTraits_TransferBinaryIn_00632900.cpp:46: template <> void CPersistTraits<NUISystem::ETableSprites>::TransferBinaryIn(CMemoryDataInputStream& stream, NUISystem::E
+   src/compiled/00/63/CPersistTraits_TransferBinaryIn_00632390.cpp:46: template <> void CPersistTraits<NUISystem::ETableExpansionTypes>::TransferBinaryIn(CMemoryDataInputStream& stream, NUISy
+   src/compiled/00/63/CPersistTraits_TransferBinaryIn_006322b0.cpp:46: template <> void CPersistTraits<NUISystem::EType>::TransferBinaryIn(CMemoryDataInputStream& stream, NUISystem::EType& va
+   src/compiled/00/77/CPersistTraits_TransferBinaryIn_0077fd10.cpp:46: template <> void CPersistTraits<EHeroCentreDoorType>::TransferBinaryIn(CMemoryDataInputStream& stream, EHeroCentreDoorTy
+   src/compiled/00/68/CSimVoice_TransferBinaryIn_00680950.cpp:91: void CSimVoice::TransferBinaryIn(CMemoryDataInputStream* stream)
+   src/compiled/00/70/COpinionSet_TransferBinaryIn_007020d0.cpp:87: void COpinionSet::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/70/CReactionMatchSphere_TransferBinaryIn_00701990.cpp:64: void CReactionMatch_Sphere::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/81/CExpressionSet_TransferBinaryIn_0081b510.cpp:75: void CExpressionSet::TransferBinaryIn(CMemoryDataInputStream& in)
+   src/compiled/00/81/NHitLocationsCPhysicalPrimitiveCylinder_TransferBinaryIn_008156a0.cpp:61: void CPhysicalPrimitiveCylinder::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/81/NHitLocationsCPhysicalPrimitiveSphere_TransferBinaryIn_00815620.cpp:54: void CPhysicalPrimitiveSphere::TransferBinaryIn(CMemoryDataInputStream* stream)
+   src/compiled/00/81/NHitLocationsCPhysicalPrimitiveMesh_TransferBinaryIn_00814b90.cpp:3: void CPhysicalPrimitiveMesh::TransferBinaryIn(int stream) {}
+   src/compiled/00/81/CExpressionSet_TransferBinaryIn_0081b300.cpp:93: void CExpressionSet::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/81/CSkeletalMorphs_TransferBinaryIn_0081aed0.cpp:76: void CSkeletalMorphs::TransferBinaryIn(CMemoryDataInputStream* stream)
+   src/compiled/00/57/CPersistTraitsCHeroMarriageInfo_TransferBinaryIn_0057f9e9.cpp:50: void CPersistTraits<CHeroMarriageInfo>::TransferBinaryIn(CMemoryDataInputStream&stream,CHeroMarriageInfo&value){
+   src/compiled/00/6d/CPersistTraits_TransferBinaryIn_006dc070.cpp:20: template<> void CPersistTraits<CHeroStatIncreaseData>::TransferBinaryIn(CMemoryDataInputStream& is, CHeroStatIncreaseDat
+   src/compiled/00/6d/CPersistTraits_TransferBinaryIn_006dbe00.cpp:31: template<> void CPersistTraits<CComboMultiplierData>::TransferBinaryIn(CMemoryDataInputStream& is, CComboMultiplierData&
+   src/compiled/00/6d/CPersistTraitsstdpairCCharStringlong_TransferBinaryIn_006d3b90.cpp:80: void TransferBinaryIn(CMemoryDataInputStream* stream, std::pair<T1, T2>* out) const
+   src/compiled/00/6d/global_GFSerialiseMapBinaryInCDefStringlongstdlesslong_006dba50.cpp:111: void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString* out) const { out->TransferBinaryIn(stream); }
+   src/compiled/00/6d/CPersistTraitsCAttackHistoryCombo_TransferBinaryIn_006dc6a0.cpp:23: template<> void CPersistTraits<CAttackHistoryCombo>::TransferBinaryIn(CMemoryDataInputStream& stream, CAttackHistoryComb
+   src/compiled/00/80/CPersistContext_TransferC2DVector_00800b90.cpp:30: void TransferBinaryIn(CMemoryDataInputStream* stream, C2DVector* value) { *value = stream->ReadC2DVector(); }
+   src/compiled/00/6c/CPersistTraitsCIntelligentPointerCThing_TransferBinaryIn_006c8780.cpp:59: void CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryIn(CMemoryDataInputStream& stream, CIntelligentPointer<
+   src/compiled/00/6c/global_GFSerialiseVectorBinaryInpairlongCOpinionDeed_006c9e40.cpp:85: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, std::pair<T1, T2>* out) const
+   src/compiled/00/6c/CPersistTraitsCOpinionDeed_TransferBinaryIn_006c88d0.cpp:118: void CPersistTraits<COpinionDeed*>::TransferBinaryIn(CMemoryDataInputStream* stream, COpinionDeed** value)
+   src/compiled/00/67/CPersistTraits_TransferBinaryIn_006725d0.cpp:46: template <> void CPersistTraits<ENavigatorType>::TransferBinaryIn(CMemoryDataInputStream& stream, ENavigatorType& value)
+   src/compiled/00/67/CPersistTraits_TransferBinaryIn_00671f00.cpp:46: template <> void CPersistTraits<EThingCreatureProperty>::TransferBinaryIn(CMemoryDataInputStream& stream, EThingCreature
+   src/compiled/00/67/CPersistTraitsCEngineGraphic_TransferBinaryIn_0067d830.cpp:56: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   src/compiled/00/67/CPersistTraitsCEngineGraphic_TransferBinaryIn_0067d830.cpp:64: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
+   src/compiled/00/67/CPersistTraitsCEngineGraphic_TransferBinaryIn_0067d830.cpp:72: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
+   src/compiled/00/67/CPersistTraitsCEngineGraphic_TransferBinaryIn_0067d830.cpp:80: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value)
+   src/compiled/00/67/CPersistTraitsCEngineGraphic_TransferBinaryIn_0067d830.cpp:92: void CPersistTraits<CEngineGraphic>::TransferBinaryIn(CMemoryDataInputStream* stream, CEngineGraphic* value)
+   src/compiled/00/67/global_GFSerialiseMapBinaryIn_0067c200.cpp:93: template <> FABLE_FORCEINLINE void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long* out) con
+   src/compiled/00/67/CPersistTraitsCReactionFrequencyTraitsArray_TransferBinaryIn_006778a0.cpp:56: void CPersistTraits<CReactionFrequencyTraitsArray>::TransferBinaryIn(CDataInputStream* stream, CReactionFrequencyTraitsA
+   src/compiled/00/67/CPersistTraitsCPhysicalPrimitiveInit_TransferBinaryIn_0067f870.cpp:61: void CPersistTraits<CPhysicalPrimitiveInit>::TransferBinaryIn(CDataInputStream* stream, CPhysicalPrimitiveInit* value)
+   src/compiled/00/67/CPersistTraitsEOpinionTargetingConditionType_TransferBinaryIn_0067aa40.cpp:43: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   src/compiled/00/67/CPersistTraitslistCReactionMatch_TransferBinaryIn_006782b0.cpp:173: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream& stream, long* value)
+   src/compiled/00/67/CPersistTraitslistCReactionMatch_TransferBinaryIn_006782b0.cpp:181: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream& stream, EReactionMatchType* value)
+   src/compiled/00/67/CPersistTraitsCDegradableInfo_TransferBinaryIn_0067df60.cpp:64: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   src/compiled/00/67/CPersistTraitsCDegradableInfo_TransferBinaryIn_0067df60.cpp:72: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
+   src/compiled/00/67/CPersistTraitsCDegradableInfo_TransferBinaryIn_0067df60.cpp:80: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value)
+   src/compiled/00/67/CPersistTraitsCDegradableInfo_TransferBinaryIn_0067df60.cpp:99: void CPersistTraits<CDegradableInfo>::TransferBinaryIn(CMemoryDataInputStream* stream, CDegradableInfo* value)
+   src/compiled/00/67/global_GFSerialiseMapBinaryIn_0067c110.cpp:93: template <> FABLE_FORCEINLINE void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long* out) con
+   src/compiled/00/67/CPersistTraits_TransferBinaryIn_00671d40.cpp:46: template <> void CPersistTraits<ECreatureType>::TransferBinaryIn(CMemoryDataInputStream& stream, ECreatureType& value)
+   src/compiled/00/67/global_GFSerialiseMapBinaryIn_0067c020.cpp:93: template <> FABLE_FORCEINLINE void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long* out) con
+   src/compiled/00/67/CActionUseDef_Transfer_006773f0.cpp:44: void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(&stream); }
+   src/compiled/00/67/CPersistTraits_TransferBinaryIn_00671c60.cpp:46: template <> void CPersistTraits<ESex>::TransferBinaryIn(CMemoryDataInputStream& stream, ESex& value)
+   src/compiled/00/67/CThingBaseDef_Transfer_00676be0.cpp:49: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(&stream); }
+   src/compiled/00/67/CThingBaseDef_Transfer_00676be0.cpp:64: void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(&stream); }
+   src/compiled/00/67/CPersistTraits_TransferBinaryIn_00671fe0.cpp:46: template <> void CPersistTraits<EControlledMovementType>::TransferBinaryIn(CMemoryDataInputStream& stream, EControlledMo
+   src/compiled/00/67/CPersistTraits_TransferBinaryIn_00671e20.cpp:46: template <> void CPersistTraits<ECreatureInteractionType>::TransferBinaryIn(CMemoryDataInputStream& stream, ECreatureInt
+   src/compiled/00/5d/CAnimComponentTransitionInTime_TransferBinaryIn_005db960.cpp:51: void CAnimComponentTransitionInTime::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/5d/CAnimComponentDelayTime_TransferBinaryIn_005db9f0.cpp:51: void CAnimComponentDelayTime::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/5d/CAnimComponentCombatFlourishTargetOffset_TransferBinaryIn_005dbda0.cpp:60: void CAnimComponentCombatFlourishTargetOffset_Methods::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/5d/CAnimComponentSetCreatureMode_TransferBinaryIn_005dbe40.cpp:51: void CAnimComponentSetCreatureMode::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/5d/CAnimComponentCombatComboChain_TransferBinaryIn_005dbb60.cpp:55: void CAnimComponentCombatComboChain_Transfer::TransferBinaryIn(CMemoryDataInputStream* stream)
+   src/compiled/00/5d/CAnimComponentStrikeSpeedMultiplier_TransferBinaryIn_005dbee0.cpp:50: void CAnimComponentStrikeSpeedMultiplier::TransferBinaryIn(CDataInputStream& in)
+   src/compiled/00/5d/CAnimationEntry_TransferBinaryIn_005dd090.cpp:182: void CAnimationEntry::TransferBinaryIn(CMemoryDataInputStream& streamRef)
+   src/compiled/00/5d/CAnimComponentCombatMisc_TransferBinaryIn_005dbcd0.cpp:52: void CAnimComponentCombatMisc_Transfer::TransferBinaryIn(CMemoryDataInputStream* stream)
+   src/compiled/00/5d/CAnimationSet_TransferBinaryIn_005dd440.cpp:121: void CAnimationSet::TransferBinaryIn(CMemoryDataInputStream* stream)
+   src/compiled/00/5d/CAnimComponentFlags_TransferBinaryIn_005db8d0.cpp:51: void CAnimComponentFlags::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/5d/CAnimComponentFollowingOnAnimFilter_TransferBinaryIn_005dbed0.cpp:23: void CAnimComponentFollowingOnAnimFilter::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/5d/CAnimComponentCombatRecoil_TransferBinaryIn_005dbc40.cpp:51: void CAnimComponentCombatRecoil::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/5d/CAnimComponentStrikeResponseAnim_TransferBinaryIn_005dbf50.cpp:76: void CAnimComponentStrikeResponseAnim::TransferBinaryIn(CDataInputStream& in)
+   src/compiled/00/5d/CAnimComponentCombatHandedness_TransferBinaryIn_005dba80.cpp:55: void CAnimComponentCombatHandedness_Transfer::TransferBinaryIn(CMemoryDataInputStream* stream)
+   src/compiled/00/52/CThingManager_LoadHeroStateBinary_00520670.cpp:56: template<> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream,long& val) { val=stream.ReadSLONG(
+   src/compiled/00/52/CThingManager_LoadHeroStateBinary_00520670.cpp:57: template<> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream& stream,unsigned long& val) { val
+   src/compiled/00/52/NThingManagerCEntityRuntimePersistence_SaveToGameStateBinary_00521620.cpp:59: template<> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream,long& val) { val=stream.ReadSLONG(
+   src/compiled/00/52/NThingManagerCEntityRuntimePersistence_SaveToGameStateBinary_00521620.cpp:60: template<> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream& stream,unsigned long& val) { val
+   src/compiled/00/52/NThingManagerCEntityRuntimePersistence_SaveToGameStateBinary_00521620.cpp:61: void CPersistTraits<unsigned __int64>::TransferBinaryIn(CMemoryDataInputStream& stream,unsigned __int64& val) { val=stre
+   src/compiled/00/41/CPersistContext_TransferCCharString_004109a0.cpp:44: void TransferBinaryIn(CDataInputStream* stream, T* value) { *value = stream->ReadNullTerminatedString(); }
+   src/compiled/00/41/CActionInputControl_TransferBinaryIn_00410120.cpp:65: void CActionInputControl::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/41/global_GFSerialiseVectorBinaryInCActionInputControl_00412c70.cpp:78: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const { out->TransferBinaryIn(stream); }
+   src/compiled/00/41/CPersistContext_TransferCWideString_00410ac0.cpp:46: void TransferBinaryIn(CDataInputStream* stream, T* value) { *value = stream->ReadNullTerminatedWString(); }
+   src/compiled/00/7e/CPersistContext_TransferCDefString_007e39d0.cpp:49: void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(stream); }
+   src/compiled/00/44/CCombatAbilityData_TransferBinaryIn_0044fadc.cpp:70: void CCombatAbilityData::TransferBinaryIn(CMemoryDataInputStream& stream, CCombatAbilityData&)
+   src/compiled/00/44/CPersistTraitsunsignedint64_TransferBinaryIn_0044b890.cpp:43: template <> void CPersistTraits<unsigned __int64>::TransferBinaryIn(CMemoryDataInputStreamReader* stream, unsigned __int
+   src/compiled/00/44/CDefString_TransferBinaryIn_0044fc00.cpp:44: void CDefString::TransferBinaryIn(CDataInputStream& stream)
+   src/compiled/00/43/CPersistContext_TransferCWideString_004310a7.cpp:30: template <> FABLE_FORCEINLINE void CPersistTraits<CWideString>::TransferBinaryIn(CMemoryDataInputStream& stream, CWideSt
+   src/compiled/00/43/global_GFSerialiseMapBinaryIn_0043151d.cpp:86: template <> FABLE_FORCEINLINE void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStreamReader& stream, C
+   src/compiled/00/43/global_GFSerialiseMapBinaryIn_004312b4.cpp:54: template <> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream& stream, unsigned long& value)
+   src/compiled/00/43/CPersistContext_TransferCCharString_00431143.cpp:29: template <> FABLE_FORCEINLINE void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStream& stream, CCharSt
+   src/compiled/00/43/global_GFSerialiseVectorBinaryIn_00433273.cpp:72: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const { *out = stream.ReadNullTerminated
+   src/compiled/00/47/CPersistTraits_TransferBinaryIn_0047cf3f.cpp:32: template <> void CPersistTraits<C3DVector>::TransferBinaryIn(CMemoryDataInputStream* stream, C3DVector* value)
+   src/compiled/00/47/CPersistContext_Transfer_00470301.cpp:29: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   src/compiled/00/47/CPersistTraitsstdlistCOpinionTransientOffset_TransferBinaryIn_00479369.cpp:65: template <> FABLE_FORCEINLINE void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStreamReader* stream, long* ou
+   src/compiled/00/47/CPersistTraitsstdlistCOpinionTransientOffset_TransferBinaryIn_00479369.cpp:72: template <> void CPersistTraits<std::list<COpinionTransientOffset> >::TransferBinaryIn(CMemoryDataInputStreamReader* str
+   src/compiled/00/47/global_GFSerialiseVectorBinaryIn_00472123.cpp:55: template <> void CPersistTraits<EOpinionAttitudeType>::TransferBinaryIn(CMemoryDataInputStream& stream, EOpinionAttitude
+   src/compiled/00/47/CPersistContext_Transfer_0047367a.cpp:29: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   src/compiled/00/47/COpinionTransientOffset_TransferBinaryIn_004793f8.cpp:23: void COpinionTransientOffset::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/47/global_GFSerialiseMapBinaryIn_00475aa6.cpp:87: template <> FABLE_FORCEINLINE void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStreamReader& stream, C
+   src/compiled/00/47/CSoundMap_TransferBinaryIn_0047042a.cpp:22: void CSoundMap::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/45/global_GFSerialiseMapBinaryIn_0045ec72.cpp:36: inline void CPersistTraits<bool>::TransferBinaryIn(CMemoryDataInputStream& is, bool& value) { value = is.ReadEBOOL(); }
+   src/compiled/00/45/CPersistTraits_TransferBinaryIn_00458f89.cpp:25: void CPersistTraits<CFloatRange>::TransferBinaryIn(CMemoryDataInputStream& is, CFloatRange& value)
+   src/compiled/00/45/global_GFSerialiseMapBinaryIn_0045c95a.cpp:54: template <> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream& stream, unsigned long& value)
+   src/compiled/00/45/global_GFSerialiseMapBinaryIn_0045c95a.cpp:60: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value)
+   src/compiled/00/45/global_GFSerialiseMapBinaryIn_0045dadb.cpp:55: template <> void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream& stream, float& value)
+   src/compiled/00/45/global_GFSerialiseMapBinaryIn_0045f360.cpp:55: template <> void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream& stream, float& value)
+   src/compiled/00/45/COpinionPersonalityTraits_TransferBinaryIn_0045e8ed.cpp:66: void COpinionPersonalityTraits::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/45/CPersistContext_TransferCSpecialEffectsStringMap_0045c8d3.cpp:47: void TransferBinaryIn(CMemoryDataInputStream* stream, CSpecialEffectsStringMap* value)
+   src/compiled/00/45/global_GFSerialiseMapBinaryIn_0045e37f.cpp:38: inline void CPersistTraits<bool>::TransferBinaryIn(CMemoryDataInputStream& is, bool& value) { value = is.ReadEBOOL(); }
+   src/compiled/00/45/CPersistContext_TransferCOpinionPersonalityTraits_0045e808.cpp:41: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, COpinionPersonalityTraits** value)
+   src/compiled/00/45/global_GFSerialiseMapBinaryIn_0045df5e.cpp:37: inline void CPersistTraits<bool>::TransferBinaryIn(CMemoryDataInputStream& is, bool& value) { value = is.ReadEBOOL(); }
+   src/compiled/00/86/CRandomAppearanceMorph_TransferBinaryIn_0086bfb0.cpp:29: void CRandomAppearanceMorph::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/86/CExpressionSet_TransferBinaryIn_0086f680.cpp:93: void CExpressionSet::TransferBinaryIn(CMemoryDataInputStream& stream)
+   src/compiled/00/50/CWorldMap_LoadGameState_005079c0.cpp:109: template <> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
+   src/compiled/00/6b/CPersistTraitsCFaction_TransferBinaryIn_006ba8b0.cpp:123: void CPersistTraits<CFaction>::TransferBinaryIn(CMemoryDataInputStream& stream, CFaction& value)
+   src/compiled/00/40/CPersistTraits_TransferBinaryIn_00403eb0.cpp:19: void CPersistTraits<bool>::TransferBinaryIn(CMemoryDataInputStream& is, bool& value)
+   src/compiled/00/40/CPersistTraits_TransferBinaryIn_0040fef0.cpp:46: template <> void CPersistTraits<ETutorialCategory>::TransferBinaryIn(CMemoryDataInputStream& stream, ETutorialCategory& 
+   src/compiled/00/40/CPersistTraitsunsignedchar_TransferBinaryIn_00405940.cpp:43: template <> void CPersistTraits<unsigned char>::TransferBinaryIn(CMemoryDataInputStreamReader* stream, unsigned char* ou
+   src/compiled/00/40/CPersistTraitsfloat_TransferBinaryIn_0040efb0.cpp:43: template <> void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStreamReader* stream, float* out) const
+   src/compiled/00/40/CPersistTraitsunsignedlong_TransferBinaryIn_0040f8a0.cpp:42: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   src/compiled/00/cd/CPersistTraits_TransferBinaryIn_00cdcd00.cpp:61: template <> void CPersistTraits<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>::TransferBinaryIn(CMemoryDataInputStr
+   src/compiled/00/61/CPersistTraitsCTCInventoryMapCUIMiniMapMarker_TransferBinaryIn_00614af0.cpp:88: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   src/compiled/00/61/CPersistTraitsCTCInventoryMapCUIMiniMapMarker_TransferBinaryIn_00614af0.cpp:96: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
+   src/compiled/00/61/CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferBinaryIn_00614da0.cpp:64: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   src/compiled/00/61/CPersistTraitsCHeroLogBookCHeroLogBookEntryECategory_TransferBinaryIn_006148a0.cpp:49: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   src/compiled/00/4e/CPersistTraitsCMusicEntry_TransferBinaryIn_004e9e0b.cpp:60: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
+   src/compiled/00/4e/CPersistTraitsCMusicEntry_TransferBinaryIn_004e9e0b.cpp:68: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
+   src/compiled/00/4e/CPersistTraitsCMusicEntry_TransferBinaryIn_004e9e0b.cpp:76: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value)
+   src/compiled/00/4e/CPersistTraitsCMusicEntry_TransferBinaryIn_004e9e0b.cpp:88: void CPersistTraits<CMusicEntry>::TransferBinaryIn(CMemoryDataInputStream* stream, CMusicEntry* value)
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004e9156.cpp:47: inline void CPersistTraits<CWeaponTrailGraphicSet>::TransferBinaryIn(CMemoryDataInputStream& is, CWeaponTrailGraphicSet&
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004e52f0.cpp:54: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value)
+   src/compiled/00/4e/CPersistContext_Transfer_004e7822.cpp:29: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   src/compiled/00/4e/CExplosionRing_TransferBinaryIn_004eb2b8.cpp:55: void CExplosionRing::TransferBinaryIn(CDataInputStream* stream)
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004ecdac.cpp:55: template <> void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream& stream, float& value)
+   src/compiled/00/4e/CPersistContext_Transfer_004e788a.cpp:29: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004e9393.cpp:55: template <> void CPersistTraits<EObjectAugmentationType>::TransferBinaryIn(CMemoryDataInputStream& stream, EObjectAugmen
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004e9393.cpp:61: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value)
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004e62ca.cpp:55: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value)
+   src/compiled/00/4e/global_GFSerialiseVectorBinaryIn_004e89f7.cpp:59: template <> void CPersistTraits<CDefIndex>::TransferBinaryIn(CMemoryDataInputStream& stream, CDefIndex& value)
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004e5673.cpp:55: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value)
+   src/compiled/00/4e/CPersistContext_TransferCFireEffectCreationSet_004e59e1.cpp:60: void TransferBinaryIn(CMemoryDataInputStream& stream, CFireEffectCreationSet& value)
+   src/compiled/00/4e/CPersistContext_Transfer_004e78f2.cpp:29: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   src/compiled/00/4e/global_GFSerialiseVectorBinaryIn_004eb219.cpp:70: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CExplosionRing* value) const
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004e7a9f.cpp:55: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value)
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004e6801.cpp:55: template <> void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream& stream, float& value)
+   src/compiled/00/4e/CPersistTraits_TransferBinaryIn_004e9021.cpp:25: template<> void CPersistTraits<CWeaponTrailGraphicSet>::TransferBinaryIn(CMemoryDataInputStream& is, CWeaponTrailGraphic
+   src/compiled/00/4e/global_GFSerialiseMapBinaryIn_004e6a9c.cpp:55: template <> void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream& stream, float& value)
+   src/compiled/00/4e/CPersistTraitsNGraphicAppearanceCReplaceableMeshes_TransferBinaryIn_004ea2c9.cpp:67: void CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::TransferBinaryIn(CDataInputStream* stream, NGraphicAppearan
+   src/compiled/00/4e/CPersistTraits_TransferBinaryIn_004e9642.cpp:35: void CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryIn(CMemoryDataInputStream& is, CObjectAugmentationPar
+   src/compiled/00/4c/CPersistTraitsshort_TransferBinaryIn_004cbc70.cpp:43: template <> void CPersistTraits<short>::TransferBinaryIn(CMemoryDataInputStreamReader* stream, short* out) const
+   src/compiled/00/4c/CThing_SaveBinary_004c84b0.cpp:67: template<> void CPersistTraits<signed char>::TransferBinaryIn(CMemoryDataInputStream& stream, signed char& val) { val = 
+   src/compiled/00/4c/CThing_SaveBinary_004c84b0.cpp:68: template<> void CPersistTraits<short>::TransferBinaryIn(CMemoryDataInputStream& stream, short& val) { val = (short)strea
+   src/compiled/00/4c/CThing_SaveBinary_004c84b0.cpp:69: template<> void CPersistTraits<bool>::TransferBinaryIn(CMemoryDataInputStream& stream, bool& val) { val = stream.ReadEBO
+   src/compiled/00/4c/CThing_SaveBinary_004c84b0.cpp:70: void CPersistTraits<unsigned __int64>::TransferBinaryIn(CMemoryDataInputStream& stream, unsigned __int64& val) { val = s
+   src/compiled/00/4c/CPersistTraitsunsignedchar_TransferBinaryIn_004cbd50.cpp:43: template <> void CPersistTraits<unsigned char>::TransferBinaryIn(CMemoryDataInputStreamReader* stream, unsigned char* ou
+   src/compiled/00/4c/CThing_ConstructFromBinarySave_004ca390.cpp:71: template<> void CPersistTraits<short>::TransferBinaryIn(CMemoryDataInputStream& stream, short& val) { val = (short)strea
+   src/compiled/00/4c/CThing_ConstructFromBinarySave_004ca390.cpp:72: template<> void CPersistTraits<bool>::TransferBinaryIn(CMemoryDataInputStream& stream, bool& val) { val = stream.ReadEBO
+   tests/00/b1/NParticleEngineCPSCOrbit_DatabaseSerialise_00b17030_test.cpp:173: template<>void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream&is,unsigned long&value){assert(&is
+   tests/00/b1/NParticleEngineCPSCOrbit_DatabaseSerialise_00b17030_test.cpp:174: template<>void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream&is,long&value){assert(&is==ExpectedInput);v
+   tests/00/83/CThingScriptUIDReplacer_CThingScriptUIDReplacer_0083e1f0_test.cpp:384: void CPersistTraits<unsigned __int64>::TransferBinaryIn(CMemoryDataInputStream&, unsigned __int64&) { abort(); }
+   tests/00/75/CWoundMorphs_TransferBinaryIn_00757990_test.cpp:93: void CWoundMorphs::TransferBinaryIn(CMemoryDataInputStream* stream)
+   tests/00/75/CPersistTraitsstdpairlonglong_TransferBinaryIn_00755d00_test.cpp:49: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   tests/00/7a/CPersistContext_TransferEScriptingStateGroups_007ad6d0_test.cpp:18: void TransferBinaryIn(CMemoryDataInputStream* s, U* value) { LOG(s->id == 1 ? "binin" : "binin?"); *value = MK(7); }
+   tests/00/7a/global_GFSerialiseMapBinaryIn_007adbf0_test.cpp:31: static void TransferBinaryIn(Stream& in, bool* p) { unsigned char v = 0; in.Read(&v, 1); *p = v != 0; }
+   tests/00/56/global_GFSerialiseVectorBinaryInCQuestActivityRecord_00569b30_test.cpp:74: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const
+   tests/00/87/CThingComponentSet_TransferBinaryIn_008707a0_test.cpp:92: void CThingComponentSet::TransferBinaryIn(CMemoryDataInputStream* stream)
+   tests/00/6f/CReactionMatchAsymmetricPyramid_TransferBinaryIn_006ff540_test.cpp:57: void TransferBinaryIn(Stream& stream)
+   tests/00/6f/CReactionMatchMRPyramid_TransferBinaryIn_006ff810_test.cpp:37: void TransferBinaryIn(CMemoryDataInputStream& stream)
+   tests/00/6f/CReactionFrequencyTraitsLinearTime_TransferBinaryIn_006ffa40_test.cpp:38: void TransferBinaryIn(CMemoryDataInputStream& stream)
+   tests/00/6f/CReactionFrequencyTraitsControlledCount_TransferBinaryIn_006fff00_test.cpp:54: void TransferBinaryIn(Stream& stream)
+   tests/00/6f/CReactionMatchSecondaryAxisMRShifted_TransferBinaryIn_006ff040_test.cpp:56: void TransferBinaryIn(Stream& stream)
+   tests/00/6f/CReactionMatchSecondaryAxisCentredMRShifted_TransferBinaryIn_006ff2c0_test.cpp:56: void TransferBinaryIn(Stream& stream)
+   tests/00/6f/CReactionMatch_TransferBinaryIn_006fefb0_test.cpp:18: void TransferBinaryIn(Stream& s) { int value = 0; s.Read(&value, sizeof(value)); member = value; }   // the function und
+   tests/00/6f/CReactionFrequencyTraitsPeriodicFrequency_TransferBinaryIn_006ffc30_test.cpp:42: void TransferBinaryIn(Stream& stream)
+   tests/00/7b/global_GFSerialiseVectorBinaryInCCrimeWaitingForBribe_007b5370_test.cpp:20: static void TransferBinaryIn(Stream* s, CCrimeWaitingForBribe* v)
+   tests/00/7b/CActivateQuestDef_Transfer_007b5740_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, bool* v) { *v = s->Read() != 0; }
+   tests/00/7b/CActivateQuestDef_Transfer_007b5740_test.cpp:19: void TransferBinaryIn(CMemoryDataInputStream* s, CDefString* v) { v->TransferBinaryIn(s); }
+   tests/00/7b/CFishingDef_Transfer_007b1f10_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream* s, int* value) { *value = (int)s->next; s->next += 1; g.kind[g.n] = 'L'; g
+   tests/00/7b/CFishingDef_Transfer_007b1f10_test.cpp:20: void TransferBinaryIn(CMemoryDataInputStream* s, float* value) { *value = (float)s->next; s->next += 1; g.kind[g.n] = 'F
+   tests/00/7b/COverheadDisplayDef_Transfer_007b7d20_test.cpp:18: void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value) { *value = g_in[g_inPos++]; }
+   tests/00/7b/CPersistTraitsCCrimeWaitingForBribe_TransferBinaryIn_007b42d0_test.cpp:49: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   tests/00/7b/CPersistTraitsCCrimeWaitingForBribe_TransferBinaryIn_007b42d0_test.cpp:61: void CPersistTraits<CCrimeWaitingForBribe>::TransferBinaryIn(CMemoryDataInputStream* stream, CCrimeWaitingForBribe* valu
+   tests/00/7b/CPersistContext_TransferECrimeSeverity_007b45a0_test.cpp:97: template <class T> void CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream* stream, T* value) { g_which = 2; g_s
+   tests/00/eb/CPersistContext_TransferEAssassinState_00eb6750_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/eb/CPersistContext_TransferESheriffState_00eb65a0_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/62/CPersistContext_Transfer_006256e0_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/e1/CPersistContext_TransferEscortTraderQuestStage_00e1df60_test.cpp:13: void TransferBinaryIn(CMemoryDataInputStream& s, T& v) { v = (T)s.next; }
+   tests/00/4f/CWorldMap_SaveGameState_004fde80_test.cpp:23: void TransferBinaryIn(CMemoryDataInputStream* stream, T* value) { *value = (T)stream->Next; }
+   tests/00/5c/global_GFSerialiseVectorBinaryIn_005c2ad8_test.cpp:80: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CItem* out) const { out->ItemType = stream.Next(); out->Numb
+   tests/00/5c/global_GFSerialiseVectorBinaryOut_005c12a1_test.cpp:80: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CItem* out) const { out->ItemType = stream.Next(); out->Numb
+   tests/00/5c/CPersistTraitsNInventoryCItem_TransferBinaryIn_005c19a3_test.cpp:111: void CPersistTraits<NInventory::CItem>::TransferBinaryIn(CMemoryDataInputStream& inStream, NInventory::CItem& value)
+   tests/00/4a/CPersistContext_Transferdouble_004ab710_test.cpp:17: void TransferBinaryIn(CMemoryDataInputStream* s, U* value) { LOG(s->id == 1 ? "binin" : "binin?"); *value = MK(7); }
+   tests/00/4a/CPersistContext_ESaveType_004ab640_test.cpp:18: void TransferBinaryIn(CMemoryDataInputStream& stream, X& value) { value = stream.Next; }
+   tests/00/4a/CPersistTraitsdouble_TransferBinaryIn_004aa360_test.cpp:55: template <> void CPersistTraits<double>::TransferBinaryIn(CMemoryDataInputStream* stream, double* out) const
+   tests/00/e9/CPersistContext_Transfer_00e9e270_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/74/CCreatureGeneratorDef_Transfer_0074c5f0_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, long* v) { *v = s->values[s->pos++]; }
+   tests/00/74/CCreatureGeneratorDef_Transfer_0074c5f0_test.cpp:20: void TransferBinaryIn(CMemoryDataInputStream* s, CDefString* v) { v->TransferBinaryIn(s); }
+   tests/00/46/CBlendedParticleEffectSet_TransferBinaryIn_0046944c_test.cpp:17: void TransferBinaryIn(Stream& in) { Particle1Index = in.ReadLong(); Particle2Index = in.ReadLong(); Particle1Value = in.
+   tests/00/46/CPersistTraitsSRecord54_TransferBinaryIn_0046bf1c_test.cpp:32: void CPersistTraitsRecord54::TransferBinaryIn(CDataInputStream* stream, SRecord54* value)
+   tests/00/46/CPersistContext_Transfer_0046fe40_test.cpp:13: void TransferBinaryIn(CMemoryDataInputStream& stream) { ++gIn; Value = stream.Next; }
+   tests/00/46/CPersistContext_Transfer_0046fe40_test.cpp:19: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   tests/00/46/global_GFSerialiseVectorBinaryInCBrainUpdateZone_00466beb_test.cpp:14: void TransferBinaryIn(Reader* s, CBrainUpdateZone* v) { s->Read(&v->Distance, 4); s->Read(&v->UpdateFrequency, 4); s->Re
+   tests/00/46/CPersistContext_Transfer_00464b9a_test.cpp:13: void TransferBinaryIn(CMemoryDataInputStream& stream) { ++gIn; Value = stream.Next; }
+   tests/00/46/CPersistContext_Transfer_00464b9a_test.cpp:19: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   tests/00/46/CPersistTraitsCMusicEntry_TransferBinaryIn_0046b545_test.cpp:52: void TransferBinaryIn(TestStream& stream) { int v; stream.Read(&v, sizeof(v)); Index = v; }   // stand-in for 0x0044FC00
+   tests/00/46/CPersistTraitsCMusicEntry_TransferBinaryIn_0046b545_test.cpp:55: static void TransferBinaryIn(TestStream* stream, CMusicEntry* value)
+   tests/00/46/global_GFSerialiseVectorBinaryIn_00469cb2_test.cpp:24: void TransferBinaryIn(Stream& s, CEntry* out) { ++calls; s.Read(&out->OriginalTexture, 4); s.Read(&out->NewTexture, 4); 
+   tests/00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_0046ba4b_test.cpp:52: static void TransferBinaryIn(TestStream* stream, CBrainUpdateZone* value)
+   tests/00/46/global_GFSerialiseVectorBinaryIn_0046be89_test.cpp:24: void TransferBinaryIn(Stream& s, CReverbEnvironmentEntry* out) const { s.Read(out, (int)sizeof(*out)); }
+   tests/00/46/global_GFSerialiseVectorBinaryIn_0046b03a_test.cpp:23: void TransferBinaryIn(Stream& s, CAtmosBankEntry* out) const { s.Read(&out->ID, 4); s.Read(&out->Filename, 4); }
+   tests/00/46/CPersistTraitsCBrainBehaviour_TransferBinaryIn_004671ca_test.cpp:48: void TransferBinaryIn(CMemoryDataInputStream& stream) { ++g_nameReads; g_nameStream = &stream; Index = 500 + g_nameReads
+   tests/00/46/CPersistTraitsCBrainBehaviour_TransferBinaryIn_004671ca_test.cpp:54: FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   tests/00/46/CPersistTraitsCBrainBehaviour_TransferBinaryIn_004671ca_test.cpp:66: void CPersistTraits<CBrainBehaviour>::TransferBinaryIn(CMemoryDataInputStream* stream, CBrainBehaviour* value)
+   tests/00/46/CAppearanceModifierGraphics_TransferBinaryIn_0046fee9_test.cpp:89: void TransferBinaryIn(CIn* in)
+   tests/00/46/global_GFSerialiseVectorBinaryIn_0046ab33_test.cpp:26: void TransferBinaryIn(Stream& s, CSoundBankEntry* out) const { s.Read(&out->ID, 4); s.Read(&out->Filename, 4); }
+   tests/00/46/global_GFSerialiseVectorBinaryInCBrainBehaviour_0046712b_test.cpp:16: void TransferBinaryIn(Reader* s, CBrainBehaviour* v) { s->Read(&v->Name.TablePos, 4); s->Read(&v->Priority, 4); s->Read(
+   tests/00/46/global_GFSerialiseMultiMapBinaryIn_00463732_test.cpp:60: void TransferBinaryIn(CStream& stream, T* out) const { *out = (T)ReadLong(stream); }
+   tests/00/46/global_GFSerialiseMultiMapBinaryIn_00463732_test.cpp:63: void TransferBinaryIn(CStream& stream, bool* out) const { unsigned char b; stream.Read(&b, 1); *out = b != 0; }
+   tests/00/46/global_GFSerialiseMultiMapBinaryIn_00463732_test.cpp:66: void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharStr
+   tests/00/46/CPersistTraitsCObjectFamilyEntry_TransferBinaryIn_0046c3b9_test.cpp:47: void TransferBinaryIn(CDataInputStream* stream, long* value) { ((CDataInputStreamReader*)stream)->Read(value, sizeof(lon
+   tests/00/46/CPersistTraitsCObjectFamilyEntry_TransferBinaryIn_0046c3b9_test.cpp:53: void CPersistTraits<CObjectFamilyEntry>::TransferBinaryIn(CDataInputStream* stream, CObjectFamilyEntry* value)
+   tests/00/46/global_GFSerialiseVectorBinaryIn_0046c31c_test.cpp:24: void TransferBinaryIn(Stream& s, CObjectFamilyEntry* out) const { s.Read(&out->Object, 4); s.Read(&out->Probability, 4);
+   tests/00/46/global_GFSerialiseVectorBinaryIn_0046b4ab_test.cpp:26: void TransferBinaryIn(Stream& s, CMusicEntry* out) const { s.Read(&out->ID, 4); s.Read(&out->Gain, 4); }
+   tests/00/46/CPersistTraitsCBrainUpdateZone_TransferBinaryIn_00466c8e_test.cpp:52: static void TransferBinaryIn(TestStream* stream, CBrainUpdateZone* value)
+   tests/00/46/CPersistTraitsstdpairCDefIndexCDefString_TransferBinaryIn_0046b0d6_test.cpp:49: void TransferBinaryIn(CMemoryDataInputStream& stream) { ++g_nameReads; g_nameStream = &stream; Index = 500 + g_nameReads
+   tests/00/46/global_GFSerialiseMapBinaryIn_00469381_test.cpp:60: void TransferBinaryIn(CStream& stream, T* out) const { *out = (T)ReadLong(stream); }
+   tests/00/46/global_GFSerialiseMapBinaryIn_00469381_test.cpp:63: void TransferBinaryIn(CStream& stream, bool* out) const { unsigned char b; stream.Read(&b, 1); *out = b != 0; }
+   tests/00/46/global_GFSerialiseMapBinaryIn_00469381_test.cpp:66: void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharStr
+   tests/00/46/global_GFSerialiseMapBinaryIn_00469381_test.cpp:72: void TransferBinaryIn(CStream& stream)
+   tests/00/46/global_GFSerialiseMapBinaryIn_00469381_test.cpp:79: void TransferBinaryIn(CStream& stream, CBlendedParticleEffectSet* out) const { out->TransferBinaryIn(stream); }
+   tests/00/46/global_GFSerialiseVectorBinaryIn_0046b9b0_test.cpp:23: void TransferBinaryIn(Stream& s, CMusicSetEntry* out) const { s.Read(&out->NormalMusicID, 4); s.Read(&out->DangerMusicID
+   tests/00/63/global_ETableSprites_00632830_test.cpp:17: template<>void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& is,long& val){++value_reads;if(traits_live
+   tests/00/63/CPersistContext_Transfer_00632260_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/63/CPersistContext_Transfer_00632340_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/63/CPersistContext_Transfer_00632500_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/63/CPersistContext_Transfer_006326c0_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/63/CPersistContext_Transfer_00632420_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/63/CPersistContext_Transfer_006325e0_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/77/CPersistContext_TransferEHeroCentreDoorType_0077fde0_test.cpp:18: void TransferBinaryIn(CMemoryDataInputStream& stream, X& value) { value = stream.Next; }
+   tests/00/4b/CPersistContext_Transfer_004b8d70_test.cpp:14: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(s->id == 1 ? "binin" : "binin?"); *value = (T)7; }
+   tests/00/68/CPersistContext_TransferCOpinionTransientOffset_00685f80_test.cpp:16: void COpinionTransientOffset::TransferBinaryIn(CMemoryDataInputStream& s) { LOG(s.id == 1 ? "binin" : "binin?"); *this =
+   tests/00/68/CPersistContext_TransferEOpinionAttitudeType_00685cc0_test.cpp:18: void TransferBinaryIn(CMemoryDataInputStream& stream, X& value) { value = (X)stream.Next; }
+   tests/00/70/CReactionMatchSphere_TransferBinaryIn_00701990_test.cpp:9: void TransferBinaryIn(Stream& s) { ++based; ++centred; float r = 0.0f; s.Read(&r, sizeof(r)); SqRadius = r; } };
+   tests/00/81/CExpressionSet_TransferBinaryIn_0081b510_test.cpp:11: static void TransferBinaryIn(Set& s, Stream& in)
+   tests/00/81/NHitLocationsCPhysicalPrimitiveSphere_TransferBinaryIn_00815620_test.cpp:21: void TransferBinaryIn(Stream* s) { ++nameReads; float r; s->Read(&r, sizeof(r)); Radius = r; } };
+   tests/00/81/NHitLocationsCPhysicalPrimitiveCylinder_TransferBinaryIn_008156a0_test.cpp:72: void CPhysicalPrimitiveCylinder::TransferBinaryIn(CMemoryDataInputStream& stream)
+   tests/00/81/NHitLocationsCPhysicalPrimitiveCylinder_TransferBinaryIn_008156a0_test.cpp:93: void CDefString::TransferBinaryIn(CMemoryDataInputStream* stream) { stream->Read(&TablePos, 4); }
+   tests/00/81/CSkeletalMorphs_TransferBinaryIn_0081aed0_test.cpp:17: void TransferBinaryIn(Stream* stream) { int v = 0; stream->Read(&v, 4); TablePos = v; }
+   tests/00/81/CSkeletalMorphs_TransferBinaryIn_0081aed0_test.cpp:34: void TransferBinaryIn(Stream* stream)
+   tests/00/81/CExpressionSet_TransferBinaryIn_0081b300_test.cpp:23: void TransferBinaryIn(Stream& s)
+   tests/00/57/CPersistTraitsCHeroMarriageInfo_TransferBinaryIn_0057f9e9_test.cpp:503: void CPersistTraits<CHeroMarriageInfo>::TransferBinaryIn(CMemoryDataInputStream&stream,CHeroMarriageInfo&value){
+   tests/00/6d/CPersistTraits_TransferBinaryIn_006dc070_test.cpp:31: template<class T> void CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream& in,T* out) {
+   tests/00/6d/global_GFSerialiseVectorBinaryInCAttackHistoryCombo_006dd580_test.cpp:29: void TransferBinaryIn(Stream& s, Combo* out) const { int v; s.Read(&v, 4); out->Words[0] = v; }
+   tests/00/6d/CPersistTraitsCAttackHistoryCombo_TransferBinaryIn_006dc6a0_test.cpp:25: void CPersistTraits<CAttackHistoryCombo>::TransferBinaryIn(CMemoryDataInputStream& stream, CAttackHistoryCombo& value)
+   tests/00/6d/global_GFSerialiseMapBinaryIn_006dd1c0_test.cpp:197: void CPersistTraitsAttr::TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+   tests/00/6d/global_GFSerialiseMapBinaryIn_006dd1c0_test.cpp:201: void CPersistTraitsStat::TransferBinaryIn(CMemoryDataInputStream* stream, CHeroStatIncreaseData* value)
+   tests/00/6d/global_GFSerialiseMapBinaryInCDefStringlongstdlesslong_006dba50_test.cpp:72: void TransferBinaryIn(CMemoryDataInputStream& stream) { LONG32 v; stream.Read(&v, sizeof(v)); TablePos = v; }
+   tests/00/6d/global_GFSerialiseMapBinaryInCDefStringlongstdlesslong_006dba50_test.cpp:75: void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const
+   tests/00/6d/global_GFSerialiseMapBinaryInCDefStringlongstdlesslong_006dba50_test.cpp:83: void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString* out) const { out->TransferBinaryIn(stream); }
+   tests/00/6d/CPersistTraits_TransferBinaryIn_006dbe00_test.cpp:57: static void TransferBinaryIn(TestStream* stream, CComboMultiplierData* value)
+   tests/00/6d/CPersistTraitsstdpairCCharStringlong_TransferBinaryIn_006d3b90_test.cpp:74: void TransferBinaryIn(CMemoryDataInputStream* stream, std::pair<T1, T2>* out) const
+   tests/00/6c/global_GFSerialiseVectorBinaryInpairlongCOpinionDeed_006c9e40_test.cpp:88: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, std::pair<T1, T2>* out) const
+   tests/00/6c/CPersistTraitsCOpinionDeed_TransferBinaryIn_006c88d0_test.cpp:63: static void TransferBinaryIn(TestStream* stream, COpinionDeed** value)
+   tests/00/6c/CPersistContext_TransferCIntelligentPointerCThing_006c9a10_test.cpp:122: template <> void CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryIn(CMemoryDataInputStream* stream, CIntelli
+   tests/00/6c/CPersistTraitsCIntelligentPointerCThing_TransferBinaryIn_006c8780_test.cpp:36: void CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryIn(CMemoryDataInputStream& stream, CIntelligentPointer<
+   tests/00/67/global_GFSerialiseMapBinaryIn_0067c110_test.cpp:72: void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const
+   tests/00/67/CPersistContext_TransferBinary0067b820_0067b820_test.cpp:26: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { ++g_in; g_stream = &stream; g_value = &value; g_zeroDe
+   tests/00/67/CPersistContext_Transfer_00676740_test.cpp:154: void CRandomAppearanceMorph::TransferBinaryIn(CMemoryDataInputStream& stream) { ++stream.Reads; g_lastIn = this; }
+   tests/00/67/CPersistContext_Transfer_00671c10_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/67/global_GFSerialiseMapBinaryIn_0067c020_test.cpp:72: void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const
+   tests/00/67/global_GFSerialiseVectorBinaryInCDegradableInfo_0067f430_test.cpp:85: void CPersistTraits<CDegradableInfo>::TransferBinaryIn(CMemoryDataInputStreamReader* stream, CDegradableInfo* value)
+   tests/00/67/CPersistContext_Transfer_00671cf0_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/67/CPersistTraitsCEngineGraphic_TransferBinaryIn_0067d830_test.cpp:51: static void TransferBinaryIn(TestStream* stream, CEngineGraphic* value)
+   tests/00/67/CPersistContext_Transfer_00671f90_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/67/CPersistContext_Transfer_00671eb0_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/67/CPersistContext_Transfer_00671dd0_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/67/CThingBaseDef_Transfer_00676be0_test.cpp:39: void TransferBinaryIn(CMemoryDataInputStream* stream, T* value) { value->TransferBinaryIn(stream); }
+   tests/00/67/CThingBaseDef_Transfer_00676be0_test.cpp:54: void TransferBinaryIn(CMemoryDataInputStream* stream, CDefString* value) { value->TransferBinaryIn(stream); }
+   tests/00/67/CThingBaseDef_Transfer_00676be0_test.cpp:253: void CThingComponentSet::TransferBinaryIn(CMemoryDataInputStream* stream) { (void)stream; ++g_compIn; }
+   tests/00/67/CThingBaseDef_Transfer_00676be0_test.cpp:255: void CDefString::TransferBinaryIn(CMemoryDataInputStream* stream) { (void)stream; m_index = 500 + g_loads++; }
+   tests/00/67/CThingBaseDef_Transfer_00676be0_test.cpp:256: void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream* stream, long* value) { (void)stream; *value = 100 + 
+   tests/00/67/CThingBaseDef_Transfer_00676be0_test.cpp:257: void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream* stream, float* value) { (void)stream; *value = (flo
+   tests/00/67/CPersistTraitslistCReactionMatch_TransferBinaryIn_006782b0_test.cpp:54: virtual void TransferBinaryIn(TestStream& stream) { int v; stream.Read(&v, 4); Payload = v; }
+   tests/00/67/CPersistTraitslistCReactionMatch_TransferBinaryIn_006782b0_test.cpp:71: static void TransferBinaryIn(TestStream& stream, CMatchList& value)
+   tests/00/67/CCreatureDef_Transfer_00675e20_test.cpp:184: void CWoundMorphs::TransferBinaryIn(CMemoryDataInputStream&){record(this);}
+   tests/00/67/CCreatureDef_Transfer_00675e20_test.cpp:186: void CExpressionSet::TransferBinaryIn(CMemoryDataInputStream&){record(this);}
+   tests/00/67/CCreatureDef_Transfer_00675e20_test.cpp:193: void CPersistTraits<bool>::TransferBinaryIn(CMemoryDataInputStream&,bool& v){record(&v);loadValue(v);}
+   tests/00/67/CCreatureDef_Transfer_00675e20_test.cpp:194: template<class T> void CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream&,T& v){record(&v);loadValue(v);}
+   tests/00/67/CCreatureDef_Transfer_00675e20_test.cpp:195: void CDefString::TransferBinaryIn(CDataInputStream&){record(this);}
+   tests/00/67/CPersistTraitsCDegradableInfo_TransferBinaryIn_0067df60_test.cpp:54: static void TransferBinaryIn(TestStream* stream, CDegradableInfo* value)
+   tests/00/67/global_GFSerialiseVectorBinaryInENavigatorType_00672530_test.cpp:66: void TransferBinaryIn(CMemoryDataInputStreamReader* stream, ENavigatorType* value)   // models 0x006725D0
+   tests/00/67/global_GFSerialiseMapBinaryIn_0067c200_test.cpp:72: void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const
+   tests/00/67/global_GFSerialiseMapBinaryIn_0067c200_test.cpp:80: void TransferBinaryIn(CMemoryDataInputStream& stream, float* out) const { float v; stream.Read(&v, sizeof(v)); *out = v;
+   tests/00/67/CPersistContext_TransferReactionMatchList0067bfb0_0067bfb0_test.cpp:16: void TransferBinaryIn(CMemoryDataInputStream* s, CReactionMatchList* v) { if (s && v) ++g_in; }
+   tests/00/e7/CPersistContext_TransferEPath_00e759f0_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/e7/CPersistContext_TransferEStageNumber_00e75840_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/e2/CPersistContext_TransferEOrchardFarmTraderEscortPhase_00e257c0_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/5d/CAnimComponentFollowingOnAnimFilter_TransferBinaryIn_005dbed0_test.cpp:12: void TransferBinaryIn(CMemoryDataInputStream& stream) { NextFilter.TransferBinaryIn(stream); }
+   tests/00/5d/CAnimComponentStrikeResponseAnim_TransferBinaryIn_005dbf50_test.cpp:52: void TransferBinaryIn(CDataInputStream& in)
+   tests/00/5d/CAnimComponentCombatRecoil_TransferBinaryIn_005dbc40_test.cpp:18: void TransferBinaryIn(Stream& s) { int value = 0; s.Read(&value, sizeof(value)); member = value; }   // the function und
+   tests/00/5d/CAnimComponentCombatMisc_TransferBinaryIn_005dbcd0_test.cpp:13: void TransferBinaryIn(TStream* s) { TransferBoolIn(s, &MeleeFlourish); TransferBoolIn(s, &MeleeKnockdown); } };
+   tests/00/5d/CAnimComponentDelayTime_TransferBinaryIn_005db9f0_test.cpp:18: void TransferBinaryIn(Stream& s) { int value = 0; s.Read(&value, sizeof(value)); member = value; }   // the function und
+   tests/00/5d/CAnimComponentSetCreatureMode_TransferBinaryIn_005dbe40_test.cpp:18: void TransferBinaryIn(Stream& s) { int value = 0; s.Read(&value, sizeof(value)); member = value; }   // the function und
+   tests/00/5d/CAnimComponentStrikeSpeedMultiplier_TransferBinaryIn_005dbee0_test.cpp:36: void TransferBinaryIn(CDataInputStream& in)
+   tests/00/5d/CAnimComponentCombatFlourishTargetOffset_TransferBinaryIn_005dbda0_test.cpp:28: void TransferBinaryIn(CMemoryDataInputStream& stream)
+   tests/00/5d/CAnimComponentTransitionInTime_TransferBinaryIn_005db960_test.cpp:18: void TransferBinaryIn(Stream& s) { int value = 0; s.Read(&value, sizeof(value)); member = value; }   // the function und
+   tests/00/5d/CAnimComponentCombatHandedness_TransferBinaryIn_005dba80_test.cpp:13: void TransferBinaryIn(TStream* s) { TransferLongIn(s, &StartHandedness); TransferLongIn(s, &EndHandedness); } };
+   tests/00/5d/CAnimComponentFlags_TransferBinaryIn_005db8d0_test.cpp:18: void TransferBinaryIn(Stream& s) { int value = 0; s.Read(&value, sizeof(value)); member = value; }   // the function und
+   tests/00/5d/CAnimationEntry_TransferBinaryIn_005dd090_test.cpp:10: static void TransferBinaryIn(Entry& e, Stream& s, const std::map<long, int>& protos)
+   tests/00/5d/CAnimationSet_TransferBinaryIn_005dd440_test.cpp:16: void TransferBinaryIn(Stream* s) { BankIndex = (int)s->ReadU32(); AnimName.TransferBinaryIn(s); GroupName.TransferBinary
+   tests/00/5d/CAnimationSet_TransferBinaryIn_005dd440_test.cpp:25: void CAnimationSet::TransferBinaryIn(Stream* stream)
+   tests/00/e3/CPersistContext_TransferAALocationIdentifier_00e38dd0_test.cpp:13: void TransferBinaryIn(CMemoryDataInputStream& s, T& v) { v = (T)s.next; }
+   tests/00/f2/CPersistContext_Transfer_00f2d4d0_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/41/CPersistContext_Transferfloat_00410620_test.cpp:18: void TransferBinaryIn(CMemoryDataInputStream& stream, X& value) { value = stream.Next; }
+   tests/00/41/CActionInputControl_TransferBinaryIn_00410120_test.cpp:39: void TransferBinaryIn(CMemoryDataInputStream& stream)
+   tests/00/41/global_GFSerialiseVectorBinaryInCActionInputControl_00412c70_test.cpp:71: void TransferBinaryIn(CMemoryDataInputStreamReader& stream)
+   tests/00/41/global_GFSerialiseVectorBinaryInCActionInputControl_00412c70_test.cpp:83: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const { out->TransferBinaryIn(stream); }
+   tests/00/41/global_GFSerialiseVectorBinaryInunsignedlong_00412d20_test.cpp:57: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const
+   tests/00/41/CPersistContext_TransferCWideString_00410ac0_test.cpp:53: void TransferBinaryIn(CDataInputStream* stream, T* value) { *value = stream->ReadNullTerminatedWString(); }
+   tests/00/41/CPersistContext_Transferlong_00410be0_test.cpp:17: void TransferBinaryIn(CMemoryDataInputStream* s, U* value) { LOG(s->id == 1 ? "binin" : "binin?"); *value = MK(7); }
+   tests/00/41/CPersistContext_Transferunsignedlong_004106f0_test.cpp:18: void TransferBinaryIn(CMemoryDataInputStream& stream, X& value) { value = stream.Next; }
+   tests/00/41/CPersistContext_TransferCCharString_004109a0_test.cpp:51: void TransferBinaryIn(CDataInputStream* stream, T* value) { *value = stream->ReadNullTerminatedString(); }
+   tests/00/7e/CPersistContext_TransferCDefString_007e39d0_test.cpp:13: void TransferBinaryIn(CDataInputStream& stream) { TablePos = stream.Next; }
+   tests/00/7e/CPersistContext_TransferCDefString_007e39d0_test.cpp:18: void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(stream); }
+   tests/00/7e/CReadableDef_Transfer_007e81b0_test.cpp:10: void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value) { ++stream->reads; *value = stream->next; }
+   tests/00/44/CCombatAbilityData_TransferBinaryIn_0044fadc_test.cpp:17: void TransferBinaryIn(CMemoryDataInputStream& stream, CCombatAbilityData&)
+   tests/00/44/CPersistTraitsunsignedint64_TransferBinaryIn_0044b890_test.cpp:55: template <> void CPersistTraits<unsigned __int64>::TransferBinaryIn(CMemoryDataInputStream* stream, unsigned __int64* ou
+   tests/00/44/CDefString_TransferBinaryIn_0044fc00_test.cpp:55: void TransferBinaryIn(CMemoryDataInputStream& stream)
+   tests/00/7d/CTavernGameShoveHaPennyDef_Transfer_007d0a40_test.cpp:114: void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream* stream, long* value) { (void)stream; *value = (long)
+   tests/00/7d/CTavernGameShoveHaPennyDef_Transfer_007d0a40_test.cpp:115: void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream* stream, float* value) { (void)stream; *value = g_ne
+   tests/00/43/CPersistContext_Transferlong_00431102_test.cpp:48: template <> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long& value) { g_trait_seen = Va
+   tests/00/43/CPersistContext_Transferunsignedlong_00431020_test.cpp:48: template <> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream& stream, unsigned long& value) {
+   tests/00/43/global_GFSerialiseMapBinaryIn_0043151d_test.cpp:60: void TransferBinaryIn(CStream& stream, T* out) const { *out = (T)ReadLong(stream); }
+   tests/00/43/global_GFSerialiseMapBinaryIn_0043151d_test.cpp:63: void TransferBinaryIn(CStream& stream, bool* out) const { unsigned char b; stream.Read(&b, 1); *out = b != 0; }
+   tests/00/43/global_GFSerialiseMapBinaryIn_0043151d_test.cpp:66: void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharStr
+   tests/00/43/CPersistContext_Transfer_00431061_test.cpp:47: template <> void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream& stream, float& value) { g_trait_seen = 
+   tests/00/47/CPersistTraits_TransferBinaryIn_0047cf3f_test.cpp:22: template <> void CPersistTraits<C3DVector>::TransferBinaryIn(CMemoryDataInputStream* stream, C3DVector* value)
+   tests/00/47/global_GFSerialiseMapBinaryIn_00472896_test.cpp:60: void TransferBinaryIn(CStream& stream, T* out) const { *out = (T)ReadLong(stream); }
+   tests/00/47/global_GFSerialiseMapBinaryIn_00472896_test.cpp:63: void TransferBinaryIn(CStream& stream, bool* out) const { unsigned char b; stream.Read(&b, 1); *out = b != 0; }
+   tests/00/47/global_GFSerialiseMapBinaryIn_00472896_test.cpp:66: void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharStr
+   tests/00/47/global_GFSerialiseMapBinaryIn_00475aa6_test.cpp:60: void TransferBinaryIn(CStream& stream, T* out) const { *out = (T)ReadLong(stream); }
+   tests/00/47/global_GFSerialiseMapBinaryIn_00475aa6_test.cpp:63: void TransferBinaryIn(CStream& stream, bool* out) const { unsigned char b; stream.Read(&b, 1); *out = b != 0; }
+   tests/00/47/global_GFSerialiseMapBinaryIn_00475aa6_test.cpp:66: void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharStr
+   tests/00/47/CPersistContext_Transfer_00470301_test.cpp:13: void TransferBinaryIn(CMemoryDataInputStream& stream) { ++gIn; Value = stream.Next; }
+   tests/00/47/CPersistContext_Transfer_00470301_test.cpp:19: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   tests/00/47/CPersistContextTransferstd_listCOpinionTransientOffset_004792cf_test.cpp:87: template <> void CPersistTraits<std::list<COpinionTransientOffset> >::TransferBinaryIn(CMemoryDataInputStream& stream, s
+   tests/00/47/CPersistContext_TransferNSpeechGainManagerEDialogueLayer_00479187_test.cpp:24: template <> void CPersistTraits<EDialogueLayer>::TransferBinaryIn(CMemoryDataInputStream& stream, EDialogueLayer& value)
+   tests/00/47/CSoundMap_TransferBinaryIn_0047042a_test.cpp:25: void CSoundMap::TransferBinaryIn(CMemoryDataInputStream& stream)
+   tests/00/47/CSoundMap_TransferBinaryIn_0047042a_test.cpp:49: void CDefString::TransferBinaryIn(CDataInputStream& stream) { ++g_defStringReads; *(long*)this = stream.ReadSLONG(); }
+   tests/00/47/CPersistContext_Transferunsignedchar_00473593_test.cpp:23: template <> void CPersistTraits<unsigned char>::TransferBinaryIn(CMemoryDataInputStream& stream, unsigned char& value)
+   tests/00/47/CPersistContext_Transfer_0047367a_test.cpp:13: void TransferBinaryIn(CMemoryDataInputStream& stream) { ++gIn; Value = stream.Next; }
+   tests/00/47/CPersistContext_Transfer_0047367a_test.cpp:19: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   tests/00/47/CPersistTraitsstdlistCOpinionTransientOffset_TransferBinaryIn_00479369_test.cpp:57: void TransferBinaryIn(CMemoryDataInputStream& stream) { stream.Read(m_data, sizeof(m_data)); }   // NF104 q6539: by refe
+   tests/00/47/CPersistTraitsstdlistCOpinionTransientOffset_TransferBinaryIn_00479369_test.cpp:67: template <> FABLE_FORCEINLINE void CPersistTraits<LONG32>::TransferBinaryIn(CMemoryDataInputStream* stream, LONG32* out)
+   tests/00/47/CPersistTraitsstdlistCOpinionTransientOffset_TransferBinaryIn_00479369_test.cpp:73: void TransferBinaryIn(CMemoryDataInputStream* stream, COffsetList* out)
+   tests/00/45/global_GFSerialiseMapBinaryIn_0045e37f_test.cpp:60: void TransferBinaryIn(CStream& stream, T* out) const { *out = (T)ReadLong(stream); }
+   tests/00/45/global_GFSerialiseMapBinaryIn_0045e37f_test.cpp:63: void TransferBinaryIn(CStream& stream, bool* out) const { unsigned char b; stream.Read(&b, 1); *out = b != 0; }
+   tests/00/45/global_GFSerialiseMapBinaryIn_0045e37f_test.cpp:66: void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharStr
+   tests/00/45/CPersistContext_TransferCOpinionPersonalityTraits_0045e808_test.cpp:12: void TransferBinaryIn(CMemoryDataInputStream* s) { if (s->id == 6) { HeroStatScaling = BaseOffset * 2.0f; std::strcat(g_
+   tests/00/45/CPersistContext_TransferCOpinionPersonalityTraits_0045e808_test.cpp:20: void TransferBinaryIn(CMemoryDataInputStream* s, COpinionPersonalityTraits** v)
+   tests/00/45/CPersistContext_TransferCSpecialEffectsStringMap_0045c8d3_test.cpp:17: void TransferBinaryIn(CMemoryDataInputStream* s, CSpecialEffectsStringMap* v) { GFSerialiseMapBinaryIn_ULongLong(s, &v->
+   tests/00/45/CPersistContext_TransferCPhysicalPrimitiveInit_00458833_test.cpp:64: void CPersistTraits<CPhysicalPrimitiveInit>::TransferBinaryIn(CMemoryDataInputStream* stream, CPhysicalPrimitiveInit* va
+   tests/00/45/COpinionPersonalityTraits_TransferBinaryIn_0045e8ed_test.cpp:26: void TransferBinaryIn(Stream& s) { for (int i = 0; i < 9; i++) TransferIn(s, f[i]); }
+   tests/00/45/global_GFSerialiseMapBinaryIn_0045df5e_test.cpp:60: void TransferBinaryIn(CStream& stream, T* out) const { *out = (T)ReadLong(stream); }
+   tests/00/45/global_GFSerialiseMapBinaryIn_0045df5e_test.cpp:63: void TransferBinaryIn(CStream& stream, bool* out) const { unsigned char b; stream.Read(&b, 1); *out = b != 0; }
+   tests/00/45/global_GFSerialiseMapBinaryIn_0045df5e_test.cpp:66: void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharStr
+   tests/00/45/global_GFSerialiseMapBinaryIn_0045ec72_test.cpp:60: void TransferBinaryIn(CStream& stream, T* out) const { *out = (T)ReadLong(stream); }
+   tests/00/45/global_GFSerialiseMapBinaryIn_0045ec72_test.cpp:63: void TransferBinaryIn(CStream& stream, bool* out) const { unsigned char b; stream.Read(&b, 1); *out = b != 0; }
+   tests/00/45/global_GFSerialiseMapBinaryIn_0045ec72_test.cpp:66: void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharStr
+   tests/00/86/CRandomAppearanceMorph_TransferBinaryIn_0086bfb0_test.cpp:17: void TransferBinaryIn(CMemoryDataInputStream& stream) { TablePos = stream.ReadSLONG(); }
+   tests/00/86/CRandomAppearanceMorph_TransferBinaryIn_0086bfb0_test.cpp:46: void CRandomAppearanceMorph::TransferBinaryIn(CMemoryDataInputStream& stream)
+   tests/00/86/CExpressionSet_TransferBinaryIn_0086f680_test.cpp:23: void TransferBinaryIn(Stream& s)
+   tests/00/6b/CPersistTraitsCFaction_TransferBinaryIn_006ba8b0_test.cpp:61: static void TransferBinaryIn(TestByteStream& stream, CFaction& value)
+   tests/00/6b/CRegion_TransferGameState_006bc290_test.cpp:11: void TransferBinaryIn(CMemoryDataInputStream* s, bool* v) { *v = s->src[s->pos++]; }
+   tests/00/40/CPersistTraitsfloat_TransferBinaryIn_0040efb0_test.cpp:55: template <> void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInputStream* stream, float* out) const
+   tests/00/40/CPersistContext_Transferbool_004045c0_test.cpp:18: void TransferBinaryIn(CMemoryDataInputStream& stream, X& value) { value = stream.Next; }
+   tests/00/40/CPersistTraitsunsignedchar_TransferBinaryIn_00405940_test.cpp:55: template <> void CPersistTraits<unsigned char>::TransferBinaryIn(CMemoryDataInputStream* stream, unsigned char* out) con
+   tests/00/73/CTCCombat_SetCombatType_007355f0_test.cpp:5612: void CCombatAbilityData::TransferBinaryIn(CMemoryDataInputStream&,CCombatAbilityData&){assert(false);}
+   tests/00/73/CTCCombat_ResetBlockPercentageChance_00739250_test.cpp:230: void CCombatAbilityData::TransferBinaryIn(CMemoryDataInputStream&,CCombatAbilityData&){}
+   tests/00/73/CTCCombat_ResetBlockPercentageChanceCCombatAbilityBlockPro_00739360_test.cpp:3078: void CCombatAbilityData::TransferBinaryIn(CMemoryDataInputStream&,CCombatAbilityData&){}
+   tests/00/73/CTCCombat_ResetBlockPercentageChance_00739140_test.cpp:230: void CCombatAbilityData::TransferBinaryIn(CMemoryDataInputStream&,CCombatAbilityData&){}
+   tests/00/73/CTCCombat_ResetBlockPercentageChance_00739030_test.cpp:235: void CCombatAbilityData::TransferBinaryIn(CMemoryDataInputStream&,CCombatAbilityData&){}
+   tests/00/cd/CPersistContext_Transfer_00cdcc20_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/cd/CPersistContext_Transfer_00cdca70_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/cd/CPersistContext_Transfer_00cdcdd0_test.cpp:15: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(DefaultVal == 0 && s->id == 1 ? "binin" : "binin?"); *v
+   tests/00/61/global_GFSerialiseVectorBinaryOut_00614620_test.cpp:84: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CUIMiniMapMarker* out) const { out->Region = stream.Next(); 
+   tests/00/61/global_GFSerialiseVectorBinaryIn_006194a0_test.cpp:84: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CUIMiniMapMarker* out) const { out->Region = stream.Next(); 
+   tests/00/61/CPersistTraitsCTCInventoryMapCUIRegionInfo_TransferBinaryIn_00614da0_test.cpp:55: static void TransferBinaryIn(TestStream* stream, CUIRegionInfo* value)
+   tests/00/61/global_GFSerialiseVectorBinaryInunsignedint64_00619130_test.cpp:72: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const { stream.Read(out, sizeof(T)); }
+   tests/00/61/global_GFSerialiseVectorBinaryInlong_00619620_test.cpp:72: void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const { stream.Read(out, sizeof(T)); }
+   tests/00/61/global_GFSerialiseVectorBinaryIn_00619560_test.cpp:63: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value)
+   tests/00/61/CPersistTraitsCTCInventoryMapCUIMiniMapMarker_TransferBinaryIn_00614af0_test.cpp:62: static void TransferBinaryIn(TestStream* stream, CUIMiniMapMarker* value)
+   tests/00/4e/CPersistContext_Transfer_004e7822_test.cpp:13: void TransferBinaryIn(CMemoryDataInputStream& stream) { ++gIn; Value = stream.Next; }
+   tests/00/4e/CPersistContext_Transfer_004e7822_test.cpp:19: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   tests/00/4e/global_GFSerialiseMapBinaryIn_004ec66c_test.cpp:60: void TransferBinaryIn(CStream& stream, T* out) const { *out = (T)ReadLong(stream); }
+   tests/00/4e/global_GFSerialiseMapBinaryIn_004ec66c_test.cpp:63: void TransferBinaryIn(CStream& stream, bool* out) const { unsigned char b; stream.Read(&b, 1); *out = b != 0; }
+   tests/00/4e/global_GFSerialiseMapBinaryIn_004ec66c_test.cpp:66: void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharStr
+   tests/00/4e/global_GFSerialiseMapBinaryIn_004ec66c_test.cpp:73: void TransferBinaryIn(CStream& stream) { TablePos = ReadLong(stream); }
+   tests/00/4e/global_GFSerialiseMapBinaryIn_004ec66c_test.cpp:76: void TransferBinaryIn(CStream& stream, CDefString* out) const { out->TransferBinaryIn(stream); }
+   tests/00/4e/global_GFSerialiseMapBinaryIn_004e9156_test.cpp:75: void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const
+   tests/00/4e/global_GFSerialiseMapBinaryIn_004e9156_test.cpp:83: void TransferBinaryIn(CMemoryDataInputStream& stream, CWeaponTrailGraphicSet* out) const
+   tests/00/4e/global_GFSerialiseVectorBinaryIn_004e9d71_test.cpp:21: void TransferBinaryIn(SStream& s, CMusicEntry* v) const { long id = 0; s.Read(&id); v->ID = (unsigned long)id; s.Read(&v
+   tests/00/4e/global_GFSerialiseVectorBinaryIn_004eb219_test.cpp:12: void TransferBinaryIn(SStream& s) { s.Read(&NumExplosions); }
+   tests/00/4e/CPersistContext_Transfer_004e78f2_test.cpp:13: void TransferBinaryIn(CMemoryDataInputStream& stream) { ++gIn; Value = stream.Next; }
+   tests/00/4e/CPersistContext_Transfer_004e78f2_test.cpp:19: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   tests/00/4e/CPersistContextTransferNGraphicAppearance_CReplaceableMeshes_004ea21e_test.cpp:64: void CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::TransferBinaryIn(CMemoryDataInputStream* stream, NGraphicAp
+   tests/00/4e/CPersistContext_TransferHelper_004e9550_test.cpp:67: void CPersistTraits_ParticleSet::TransferBinaryIn(CMemoryDataInputStream* stream, CObjectAugmentationParticleSet* value)
+   tests/00/4e/CPersistTraits_TransferBinaryIn_004e9642_test.cpp:65: static void TransferBinaryIn(TestStream* stream, CObjectAugmentationParticleSet* value)
+   tests/00/4e/CExplosionRing_TransferBinaryIn_004eb2b8_test.cpp:50: void CExplosionRing::TransferBinaryIn(CDataInputStream* stream)
+   tests/00/4e/CPersistTraitsCMusicEntry_TransferBinaryIn_004e9e0b_test.cpp:52: void TransferBinaryIn(TestStream& stream) { int v; stream.Read(&v, sizeof(v)); Index = v; }   // stand-in for 0x0044FC00
+   tests/00/4e/CPersistTraitsCMusicEntry_TransferBinaryIn_004e9e0b_test.cpp:55: static void TransferBinaryIn(TestStream* stream, CMusicEntry* value)
+   tests/00/4e/CPersistContext_Transfer_004e788a_test.cpp:13: void TransferBinaryIn(CMemoryDataInputStream& stream) { ++gIn; Value = stream.Next; }
+   tests/00/4e/CPersistContext_Transfer_004e788a_test.cpp:19: void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(stream); }
+   tests/00/4c/CPersistContext_Transfersignedchar_004cc5c0_test.cpp:17: void TransferBinaryIn(CMemoryDataInputStream& stream, X& value) { value = stream.Next; }
+   tests/00/4c/CPersistContext_Transfershort_004cc3f0_test.cpp:17: void TransferBinaryIn(CMemoryDataInputStream* s, U* value) { LOG(s->id == 1 ? "binin" : "binin?"); *value = MK(7); }
+   tests/00/4c/CPersistTraitsunsignedchar_TransferBinaryIn_004cbd50_test.cpp:55: template <> void CPersistTraits<unsigned char>::TransferBinaryIn(CMemoryDataInputStream* stream, unsigned char* out) con
+   tests/00/4c/CPersistContext_TransferBinarysignedchar_004cc4d0_test.cpp:12: void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(s->id == 1 ? "binin" : "binin?"); *value = (T)-5; }
+   tests/00/4c/CPersistTraitsshort_TransferBinaryIn_004cbc70_test.cpp:55: template <> void CPersistTraits<short>::TransferBinaryIn(CMemoryDataInputStream* stream, short* out) const
+## DrawPreparePrimitivesForRendering 168
+   src/compiled/00/83/CThingPhysicalSwitch_DrawPreparePrimitivesForRendering_0083dc80.cpp:49: bool CThingPhysicalSwitch::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/83/CThingHolySite_DrawPreparePrimitivesForRendering_0083ba70.cpp:24: bool CThingHolySite::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/83/CThingNoise_DrawPreparePrimitivesForRendering_00838560.cpp:3: bool CThingNoise::DrawPreparePrimitivesForRendering(int prepareInfo) { return true; }
+   src/compiled/00/83/CThingSwitch_DrawPreparePrimitivesForRendering_0083be30.cpp:3: bool CThingSwitch::DrawPreparePrimitivesForRendering(int prepareInfo) { return false; }
+   src/compiled/00/83/CThingTrackNode_DrawPreparePrimitivesForRendering_00837b30.cpp:50: bool CThingTrackNode::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/83/CThingAICreature_DrawPreparePrimitivesForRendering_00833c00.cpp:101: bool CThingAICreature::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/83/CThingVillage_DrawPreparePrimitivesForRendering_0083b6b0.cpp:53: bool CThingVillage::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/83/CThingDeadCreature_DrawPreparePrimitivesForRendering_00835ac0.cpp:27: bool CThingDeadCreature::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/56/CTCBoastUI_DrawPreparePrimitivesForRendering_0056a8c0.cpp:308: void CTCBoastUI::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&info){
+   src/compiled/00/56/CTCInventoryExperience_DrawPreparePrimitivesForRendering_0056f090.cpp:129: void CTCInventoryExperience::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/7b/CTCOverheadDisplay_DrawPreparePrimitivesForRendering_007b7de0.cpp:24: void CTCOverheadDisplay::DrawPreparePrimitivesForRendering(long)
+   src/compiled/00/6e/CTCDParticleEmitter_DrawPreparePrimitivesForRendering_006e0470.cpp:21: CBaseObject* CTCDParticleEmitter::DrawPreparePrimitivesForRendering(long unused)
+   src/compiled/00/62/CTCQuickAccessMenu_DrawPreparePrimitivesForRendering_00625950.cpp:46: void CTCQuickAccessMenu::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/5c/CTCInventoryWeapons_DrawPreparePrimitivesForRendering_005c2fe1.cpp:49: void CTCInventoryWeapons::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/76/CTCShapeManager_DrawPreparePrimitivesForRendering_00761b10.cpp:40: void CTCShapeManager::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)
+   src/compiled/00/74/CTCStealth_DrawPreparePrimitivesForRendering_007471f0.cpp:26: void CTCStealth::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&info)
+   src/compiled/00/6a/CThingPlayerCreature_DrawPreparePrimitivesForRendering_006aa2e0.cpp:45: bool CThingPlayerCreature::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/77/CTCDriverBase_DrawPreparePrimitivesForRendering_00771230.cpp:33: void CTCDriverBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/71/CTCEmoteIcon_DrawPreparePrimitivesForRendering_0071ae90.cpp:104: void CTCEmoteIcon::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/68/CTCBase_DrawPreparePrimitivesForRendering_006868c0.cpp:3: void CTCBase::DrawPreparePrimitivesForRendering(int prepareInfo) {}
+   src/compiled/00/70/CThingObject_DrawPreparePrimitivesForRendering_00703590.cpp:128: bool CThingObject::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/6d/CTCHeroExperience_DrawPreparePrimitivesForRendering_006d6330.cpp:3: void CTCHeroExperience::DrawPreparePrimitivesForRendering(int prepareInfo) {}
+   src/compiled/00/72/CTCInventoryMagic_DrawPreparePrimitivesForRendering_0072dac0.cpp:37: void CTCInventoryMagic::DrawPreparePrimitivesForRendering(CViewport* viewport)
+   src/compiled/00/55/CTCPhotojournalCapture_DrawPreparePrimitivesForRendering_0055d5d0.cpp:153: void CTCPhotojournalCapture::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/5f/CTCInventoryMap_DrawPreparePrimitivesForRendering_005faf50.cpp:166: void CTCInventoryMap::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/59/CTCInventoryTrade_DrawPreparePrimitivesForRendering_0059c7c7.cpp:129: void CTCInventoryTrade::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/66/CThingCreatureBase_DrawPreparePrimitivesForRendering_00663c40.cpp:247: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/7e/CTCBetting_DrawPreparePrimitivesForRendering_007e5680.cpp:120: void CTCBetting::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/7e/CTCCreditsUI_DrawPreparePrimitivesForRendering_007e49d0.cpp:50: void CTCCreditsUI::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)
+   src/compiled/00/7e/CTCFireheartMinigame_DrawPreparePrimitivesForRendering_007e7c90.cpp:76: void CTCFireheartMinigame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/7d/CTCCreatureFlyOnSpline_DrawPreparePrimitivesForRendering_007dce40.cpp:72: void CTCCreatureFlyOnSpline::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/5e/CTCTavernGame_DrawPreparePrimitivesForRendering_005eca50.cpp:53: void CTCTavernGame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/5e/CTCQuestCompletionUI_DrawPreparePrimitivesForRendering_005e3f00.cpp:19: void CTCQuestCompletionUI::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/47/CTCInGameMenu_DrawPreparePrimitivesForRendering_0047d1ac.cpp:50: void CTCInGameMenu::DrawPreparePrimitivesForRendering(const CDrawPrepareContext& context)
+   src/compiled/00/58/CTCInventory_DrawPreparePrimitivesForRendering_00581ebd.cpp:129: void CTCInventory::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/61/CTCInventoryQuests_DrawPreparePrimitivesForRendering_0061b3c0.cpp:128: void CTCInventoryQuests::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   src/compiled/00/4d/CTCDNone_DrawPreparePrimitivesForRendering_004d3f4d.cpp:3: void CTCDNone::DrawPreparePrimitivesForRendering(int prepareInfo) {}
+   src/compiled/00/4c/CThing_DrawPreparePrimitivesForRendering_004c7540.cpp:38: bool CThing::DrawPreparePrimitivesForRendering(CRenderContext* context)
+   src/compiled/00/82/CThingBuilding_DrawPreparePrimitivesForRendering_0082d080.cpp:26: bool CThingBuilding::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)
+   tests/00/83/CThingHolySite_DrawPreparePrimitivesForRendering_0083ba70_test.cpp:6: void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { ++calls; last = &info; }
+   tests/00/83/CThingHolySite_DrawPreparePrimitivesForRendering_0083ba70_test.cpp:12: bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/83/CThingDeadCreature_DrawPreparePrimitivesForRendering_00835ac0_test.cpp:11: bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { return m_baseResult; }
+   tests/00/83/CThingDeadCreature_DrawPreparePrimitivesForRendering_00835ac0_test.cpp:14: bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/8c/CCreatureActionSummonerLightningOrbOutOf_PerformAction_008cb250_test.cpp:4656: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&){abort();}
+   tests/00/84/CCreatureActionTavernGameMasterInteraction_Initialise_00845b10_test.cpp:2206: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&){CHECK(false);}
+   tests/00/56/CTCBoastUI_DrawPreparePrimitivesForRendering_0056a8c0_test.cpp:307: void CTCBoastUI::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&info){
+   tests/00/87/NCameraModesCLookAtFrontCLookAtFrontInit_Alloc_00873930_test.cpp:212: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/64/NPlayerGuiCDrawReceivedItems_Draw_0064e978_test.cpp:408: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/64/NPlayerGuiCDrawReceivedItems_Draw_0064e978_test.cpp:409: bool CThingPlayerCreature::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/64/NPlayerGuiCDrawReceivedItems_Draw_0064e978_test.cpp:421: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/64/NPlayerGuiCDrawAbilityButtons_UpdateWeaponAbilities_0064b1ac_test.cpp:220: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/64/NPlayerGuiCDrawAbilityButtons_UpdateWeaponAbilities_0064b1ac_test.cpp:246: bool CThingPlayerCreature::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/64/NPlayerGuiCDrawAbilityButtons_UpdateWeaponAbilities_0064b1ac_test.cpp:248: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/64/NPlayerGuiCDrawGuildSeal_Draw_0064a639_test.cpp:366: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/64/NPlayerGuiCDrawGuildSeal_Draw_0064a639_test.cpp:367: bool CThingPlayerCreature::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/64/NPlayerGuiCDrawGuildSeal_Draw_0064a639_test.cpp:379: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/64/NPlayerGuiCDrawGuildSeal_Draw_0064a639_test.cpp:465: void CTCInventory::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0) { abort(); }
+   tests/00/64/NPlayerGuiCDrawAbilityButtons_DrawAbilityButton_0064ae80_test.cpp:410: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/64/NPlayerGuiCDrawAbilityButtons_DrawAbilityButton_0064ae80_test.cpp:411: bool CThingPlayerCreature::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/64/NPlayerGuiCDrawAbilityButtons_DrawAbilityButton_0064ae80_test.cpp:423: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7c/CTCElectrocutedEffect_Reset_007ce7a0_test.cpp:192: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7c/CTCElectrocutedEffect_Reset_007ce7a0_test.cpp:240: void CTCDriverBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7c/CTCElectrocutedEffect_Reset_007ce7a0_test.cpp:253: void CTCDParticleEmitter::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0) { abort(); }
+   tests/00/7c/CTCHealLife_StartHealingEffect_007c4430_test.cpp:288: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/7c/CTCHealLife_StartHealingEffect_007c4430_test.cpp:299: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7c/CTCHealLife_StartHealingEffect_007c4430_test.cpp:316: void CTCDriverBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7c/CTCHealLife_StartHealingEffect_007c4430_test.cpp:343: void CTCDParticleEmitter::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0) { abort(); }
+   tests/00/7c/CTCGhostSword_AddSword_007c57c0_test.cpp:180: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/7c/CTCGhostSword_AddSword_007c57c0_test.cpp:487: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { fprintf(stderr, "u
+   tests/00/7c/CTCGhostSword_AddSword_007c57c0_test.cpp:505: void CTCDParticleEmitter::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0) { fprintf(stderr, "u
+   tests/00/69/NDisplayViewCView3DBase_vfunc3_0069e980_test.cpp:304: void CTCInGameMenu::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& p){event(10);checkprepare(p);}
+   tests/00/8e/CTCTavernGameCoinBase_UpdateCoins_008ef520_test.cpp:156: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/8e/CTCTavernGameCoinBase_UpdateCoins_008ef520_test.cpp:391: bool CThing::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0) { abort(); }
+   tests/00/8e/CTCTavernGameCoinBase_UpdateCoins_008ef520_test.cpp:405: void CTCTavernGame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7b/NThingShotCTCShotDefinitionDrainLife_InitMovement_007bd845_test.cpp:228: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7b/NThingShotCTCShotDefinitionMultiArrow_InitMovement_007bcf7f_test.cpp:204: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7b/CTCOverheadDisplay_DrawPreparePrimitivesForRendering_007b7de0_test.cpp:20: void DrawPreparePrimitivesForRendering(long) { PrimitiveHandles.clear(); }
+   tests/00/7b/CTCTavernTable_GetSeat_007b8840_test.cpp:91: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/6e/CCombatManager_GetDefenderZone_006e99b0_test.cpp:182: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/6e/CCombatManager_GetDefenderZone_006e99b0_test.cpp:193: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/93/CAIStateGroupSitRoundCampfire_Update_009392a0_test.cpp:186: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/93/CAIStateGroupSitRoundCampfire_Update_009392a0_test.cpp:434: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/93/CAIStateGroupMinionGuardReactToBribe_Update_009334f0_test.cpp:167: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/93/CAIStateGroupMinionGuardReactToBribe_Update_009334f0_test.cpp:372: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { fprintf(stderr, "u
+   tests/00/93/CAIStateGroupMinionGuardReactToBribe_Update_009334f0_test.cpp:373: bool CThingPlayerCreature::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { fprintf(stderr, 
+   tests/00/93/CAIStateGroupMinionKidGroupTag_EvadeTarget_00934410_test.cpp:256: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/93/CAIStateGroupMinionKidGroupTag_EvadeTarget_00934410_test.cpp:267: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/62/CTCQuickAccessMenu_ConstructItemCategoryList_00626e40_test.cpp:2506: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo &) { assert(!"unexpected CTCBase call:
+   tests/00/62/CTCQuickAccessMenu_ConstructItemCategoryList_00626e40_test.cpp:2541: void CTCQuickAccessMenu::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo &) { assert(!"unexpected CT
+   tests/00/62/CTCQuickAccessMenu_GetMagicListUI_00625af0_test.cpp:126: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/62/CTCQuickAccessMenu_GetMagicListUI_00625af0_test.cpp:405: void CTCQuickAccessMenu::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo &) { fprintf(stderr, "unexp
+   tests/00/79/CTCBulletTime_CTCBulletTime_0079d360_test.cpp:243: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { } void CTCBase::Copy(const CTCBase
+   tests/00/79/CTCSummonSpell_IsValidTeleportPos_0079a890_test.cpp:109: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/79/CTCBulletTime_FrameUpdate_0079c880_test.cpp:140: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/79/CTCBulletTime_FrameUpdate_0079c880_test.cpp:157: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/76/CTCShapeManager_DrawPreparePrimitivesForRendering_00761b10_test.cpp:10: void DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)
+   tests/00/74/CTCStealth_DrawPreparePrimitivesForRendering_007471f0_test.cpp:20: void CTCStealth::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&info)
+   tests/00/74/NCreatureHiding_GetValidPositions_0074a5d0_test.cpp:3077: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo &) { assert(false); abort(); }
+   tests/00/77/CTCDriverBase_DrawPreparePrimitivesForRendering_00771230_test.cpp:8: void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { ++g_calls; g_arg = &info; }
+   tests/00/77/CTCDriverBase_DrawPreparePrimitivesForRendering_00771230_test.cpp:21: void CTCDriverBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/8a/CGameScriptInterface_ClearThingBestEnemyTarget_008a03f0_test.cpp:597: void TargetingMethods::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&){}
+   tests/00/95/CAIStateGroupMazeDefensiveMeleeCombat_Update_00955620_test.cpp:229: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/95/CAIStateGroupMazeDefensiveMeleeCombat_Update_00955620_test.cpp:548: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { fprintf(stderr, "u
+   tests/00/95/CAIStateGroupHoverHornetQueen_Attack_0095bcf0_test.cpp:179: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/95/CAIStateGroupHoverHornetQueen_DiveBomb_0095b9e0_test.cpp:188: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/68/CTCCreatureOpinionOfHero_GetGreetDialogueGroupIndex_00683c10_test.cpp:193: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/68/CTCCreatureOpinionOfHero_GetGreetDialogueGroupIndex_00683c10_test.cpp:194: bool CThingPlayerCreature::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/68/CTCCreatureOpinionOfHero_GetGreetDialogueGroupIndex_00683c10_test.cpp:206: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/70/CThingObject_DrawPreparePrimitivesForRendering_00703590_test.cpp:153: bool CThingObject::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/70/CThingObject_DrawPreparePrimitivesForRendering_00703590_test.cpp:198: bool CThingPhysical::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { note("base"); (void)in
+   tests/00/70/CThingObject_DrawPreparePrimitivesForRendering_00703590_test.cpp:209: void CTCWeaponTrail::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { char b[64]; _snprintf(
+   tests/00/70/CThingObject_DrawPreparePrimitivesForRendering_00703590_test.cpp:213: void CTCDrawPreparer::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { char b[64]; _snprintf
+   tests/00/70/CTCCarryable_SetAsCarriedBy_00705d40_test.cpp:3765: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&){abort();}
+   tests/00/81/CTCBoastingPodium_FrameUpdate_00813d00_test.cpp:216: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/57/CTCHeroStats_KickHeroToMostRecentSafeRegion_0057df85_test.cpp:211: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&){abort();}
+   tests/00/90/CAIStateGroupBanditGossip_Update_0090e5d0_test.cpp:344: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/90/CAIStateGroupBanditGossip_Update_0090e5d0_test.cpp:355: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/85/NCameraModesCMoveOnCylinder_Update_0085c470_test.cpp:137: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/94/CAIStateGroupGoToPub_Drink_00948880_test.cpp:165: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/94/CAIStateGroupGoToPub_Drink_00948880_test.cpp:461: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { fprintf(stderr, "u
+   tests/00/94/CAIStateGroupGoToPub_Drink_00948880_test.cpp:548: void CTCTavernGame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { fprintf(stderr, "unexpected 
+   tests/00/94/CAIStateGroupGoToPub_GetSeat_009482a0_test.cpp:205: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/94/CAIStateGroupGoToPub_GetSeat_009482a0_test.cpp:216: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/80/CTCTargetingPlayer_SetPTargetedThing_00802e00_test.cpp:144: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/65/CTCVillage_CalculateSecuritySweepTasks_00659800_test.cpp:299: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/65/CTCVillage_CalculateSecuritySweepTasks_00659800_test.cpp:310: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/97/CAIStateGroupJackOfBladesStage1_PowerUpSword_00974770_test.cpp:153: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/97/CAIStateGroupJackOfBladesStage1_PowerUpSword_00974770_test.cpp:473: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { fprintf(stderr, "u
+   tests/00/97/CAIStateGroupJackOfBladesStage1_PowerUpSword_00974770_test.cpp:601: void CTCDParticleEmitter::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0) { fprintf(stderr, "u
+   tests/00/97/CAIStateGroupJackOfBladesStage2_SetupArena_00972f30_test.cpp:164: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/97/CAIStateGroupJackOfBladesStage2_SetupArena_00972f30_test.cpp:233: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/97/CAIStateGroupJackOfBladesStage1_GetRushToPos_00971cd0_test.cpp:69: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&){return false;}
+   tests/00/60/CTCInventoryMap_OnSerialise_00606300_test.cpp:2297: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&){assert(false);}
+   tests/00/72/CTCInventoryMagic_DrawPreparePrimitivesForRendering_0072dac0_test.cpp:15: void CTCInventoryMagic::DrawPreparePrimitivesForRendering(CViewport* viewport)
+   tests/00/72/CTCDummyVillager_OnSerialise_0072f380_test.cpp:121: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/72/CTCDummyVillager_OnSerialise_0072f380_test.cpp:363: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { fprintf(stderr, "u
+   tests/00/49/GetAllThingsInRoughAreaCThingconststdvectorCThingconststd_allocatorCThingconstCThingFilterHasPhysicsMesh_0049c490_test.cpp:59: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/55/CTCPhotojournalCapture_DrawPreparePrimitivesForRendering_0055d5d0_test.cpp:61: void CTCPhotojournalCapture::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/59/CTCInventory_GetItemsListUIComponent_00590235_test.cpp:266: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/59/CTCInventory_GetItemsListUIComponent_00590235_test.cpp:353: void CTCInventory::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0) { abort(); }
+   tests/00/66/CThingCreatureBase_DrawPreparePrimitivesForRendering_00663c40_test.cpp:78: static bool DrawPreparePrimitivesForRendering(Thing& t)
+   tests/00/66/CThingCreatureBase_OnHit_00667d30_test.cpp:6735: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo &) { assert(false); abort(); }
+   tests/00/66/CThingCreatureBase_AutoPlaceNearBuilding_00666ef0_test.cpp:3422: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo &) { assert(false); abort(); }
+   tests/00/7e/CTCFireheartMinigame_DrawPreparePrimitivesForRendering_007e7c90_test.cpp:76: void CTCFireheartMinigame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/7e/CTCBetting_DrawPreparePrimitivesForRendering_007e5680_test.cpp:124: void CTCBetting::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/7d/CTCTavernGameCardBlackjack_DealCard_007daef0_test.cpp:121: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7d/CTCTavernGameCardBlackjack_DealCard_007daef0_test.cpp:140: void CTCTavernGame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/7d/CTCTavernGameSpotTheAddition_DrawPreparePrimitivesForRendering_007d7ec0_test.cpp:45: void DrawPreparePrimitivesForRendering(CRenderContext* context) { ++g_baseDraw; g_baseContext = context; }
+   tests/00/7d/CTCTavernGameCoinGolf_DrawPreparePrimitivesForRendering_007d4a60_test.cpp:8: void DrawPreparePrimitivesForRendering(CRenderContext* context) { if (context) ++g_prepare; }
+   tests/00/5e/CTCTavernGame_DrawPreparePrimitivesForRendering_005eca50_test.cpp:174: void CTCTavernGame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/5e/CTCQuestCompletionUI_DrawPreparePrimitivesForRendering_005e3f00_test.cpp:58: void CTCQuestCompletionUI::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/91/CAIStateGroupNymphAttack_Update_0091c6a0_test.cpp:120: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/91/CAIStateGroupNymphAttack_Update_0091c6a0_test.cpp:443: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/91/CAIStateGroupCreatureRangedCombat2_Update_0091ec30_test.cpp:178: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/91/CAIStateGroupCreatureRangedCombat2_Update_0091ec30_test.cpp:426: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { fprintf(stderr, "u
+   tests/00/91/CAIStateGroupCreatureRangedCombat2_Update_0091ec30_test.cpp:433: void CTCPerceiveThing::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { fprintf(stderr, "unexpect
+   tests/00/91/CAIStateGroupKidHurtSelfRunToMother_Update_00915350_test.cpp:254: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/91/CAIStateGroupKidHurtSelfRunToMother_Update_00915350_test.cpp:266: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/73/CTCCombat_SetCombatType_007355f0_test.cpp:5647: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo &) {assert(false);abort();}
+   tests/00/92/CAIStateGroupSetupWares_Update_00927f30_test.cpp:284: bool CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { abort(); }
+   tests/00/92/CAIStateGroupSetupWares_Update_00927f30_test.cpp:295: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { abort(); }
+   tests/00/92/CAIStateGroupDrunk_Update_00922860_test.cpp:449: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) {}
+   tests/00/8b/CCreatureActionUnblockableMidAttack_Initialise_008bf1c0_test.cpp:1576: void CTCBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&){CHECK(false);}
+   tests/00/61/CTCInventoryQuests_DrawPreparePrimitivesForRendering_0061b3c0_test.cpp:83: void CTCInventoryQuests::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+   tests/00/4c/CThing_DrawPreparePrimitivesForRendering_004c7540_test.cpp:7: virtual void DrawPreparePrimitivesForRendering(CRenderContext* context) { ++calls; last = context; }
+   tests/00/4c/CThing_DrawPreparePrimitivesForRendering_004c7540_test.cpp:15: bool DrawPreparePrimitivesForRendering(CRenderContext* context)
+   tests/00/82/CThingBuilding_DrawPreparePrimitivesForRendering_0082d080_test.cpp:12: bool DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info) { return g_baseResult; }
+   tests/00/82/CThingBuilding_DrawPreparePrimitivesForRendering_0082d080_test.cpp:17: bool CThingBuilding::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)
+## ~C3DAnimationInterpolator 2
+   tests/00/5b/CEnginePrimitive2DMorphedAnimatingMesh_CEnginePrimitive2DMorphedAnimatingMesh_005bc1b0_test.cpp:68: C3DAnimationInterpolator::~C3DAnimationInterpolator(){}
+   tests/00/4c/CEnginePrimitiveAnimation_CEnginePrimitiveAnimation_004c3d30_test.cpp:65: C3DAnimationInterpolator::~C3DAnimationInterpolator() { ++g_ai; }
+## C3DAnimationInterpolator 15
+   src/compiled/00/70/CEnginePrimitiveAnimatingMesh_CEnginePrimitiveAnimatingMesh_007088f0.cpp:32: C3DAnimationInterpolator(const C3DAnimationInterpolator& o):CBaseClass(o),StartState(o.StartState),EndState(o.EndState){
+   src/compiled/00/55/CEnginePrimitive2DAnimatingMesh_CEnginePrimitive2DAnimatingMesh_00550a70.cpp:28: C3DAnimationInterpolator(const C3DAnimationBlendState& state):StartState(state),EndState(state){}
+   src/compiled/00/bd/CEngineInternalPrimitiveMorphedAnimatedMesh_CEngineInternalPrimitiveMorphedAnimatedMesh_00bd9940.cpp:34: C3DAnimationInterpolator() { }
+   src/compiled/00/bd/CEngineInternalPrimitive2DMorphedAnimatedMesh_CEngineInternalPrimitive2DMorphedAnimatedMesh_00bd9710.cpp:33: C3DAnimationInterpolator() { }
+   src/compiled/00/bd/CEngineInternalPrimitiveAnimatedMesh_CEngineInternalPrimitiveAnimatedMesh_00bd9250.cpp:30: C3DAnimationInterpolator() { }
+   src/compiled/00/bd/CEngineInternalPrimitiveAnimatedMeshFromFile_CEngineInternalPrimitiveAnimatedMeshFromFile_00bd9830.cpp:33: C3DAnimationInterpolator() { }
+   src/compiled/00/bd/CEngineInternalPrimitiveAnimatedMesh_CEngineInternalPrimitiveAnimatedMesh_00bd92e0.cpp:36: C3DAnimationInterpolator() { }
+   src/compiled/00/bd/CEngineInternalPrimitive2DAnimatedMesh_CEngineInternalPrimitive2DAnimatedMesh_00bd94e0.cpp:35: C3DAnimationInterpolator() { }
+   src/compiled/00/4c/C3DAnimationInterpolator_C3DAnimationInterpolator_004c2e20.cpp:26: C3DAnimationInterpolator::C3DAnimationInterpolator()
+   tests/00/55/C3DAnimationInterpolator_C3DAnimationInterpolator_00550a20_test.cpp:9: C3DAnimationInterpolator(const C3DAnimationBlendState& f, const C3DAnimationBlendState& t) : CBaseClass(), m_from(f), m_
+   tests/00/bd/CEngineInternalPrimitiveAnimatedMeshFromFile_CEngineInternalPrimitiveAnimatedMeshFromFile_00bd9830_test.cpp:35: C3DAnimationInterpolator() { }
+   tests/00/bd/CEngineInternalPrimitiveAnimatedMesh_CEngineInternalPrimitiveAnimatedMesh_00bd92e0_test.cpp:35: C3DAnimationInterpolator() { }
+   tests/00/bd/CEngineInternalPrimitiveMorphedAnimatedMesh_CEngineInternalPrimitiveMorphedAnimatedMesh_00bd9940_test.cpp:35: C3DAnimationInterpolator() { }
+   tests/00/bd/CEngineInternalPrimitive2DAnimatedMesh_CEngineInternalPrimitive2DAnimatedMesh_00bd94e0_test.cpp:33: C3DAnimationInterpolator() { }
+   tests/00/bd/CEngineInternalPrimitive2DMorphedAnimatedMesh_CEngineInternalPrimitive2DMorphedAnimatedMesh_00bd9710_test.cpp:33: C3DAnimationInterpolator() { }

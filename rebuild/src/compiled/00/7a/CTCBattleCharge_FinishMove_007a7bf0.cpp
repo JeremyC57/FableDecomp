@@ -46,9 +46,9 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8
 class CThingCreatureBase;
 class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     unsigned char _body[0x10];
-    CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase* owner, const CCharString& animation, CThing* item,
+    CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& owner, const CCharString& animation, CThing& item,
                                                long priority, long timeout, CCreatureActionBase* next);   // 0x0069F0F0
-    ~CCreatureAction_UnsheatheItemFromInventory();   // 0x005CC091
+    virtual ~CCreatureAction_UnsheatheItemFromInventory();   // 0x005CC091 ??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ (virtual in Ego_r / FableWin)
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _pad0a8[0x114 - 0xa8];
@@ -89,7 +89,7 @@ void CTCBattleCharge::FinishMove(CThingCreatureBase* creature, bool hitSomething
     HitSomething = hitSomething;
     if (IS_THING_ALIVE(PItemRemoved)) {
         CCharString animation("ST_ABILITY_FAST_UNSHEATHE_TO_COMBAT_POSE", -1);
-        creature->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(creature, animation, ((CThing*)PItemRemoved.GetPItem()), 100, 250, 0));
+        creature->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(*creature, animation, *((CThing*)PItemRemoved.GetPItem()), 100, 250, 0));
     }
     if (hitSomething)
         creature->SetCurrentAction(CCreatureAction_BattleChargeImpact(creature, LeftFeetEffect, RightFeetEffect));

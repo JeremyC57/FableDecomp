@@ -1,0 +1,20 @@
+# Entry 2: how retail reaches ~CVertexGroupBlock 0x00A96DA0 (NF273, 2026-11-22; Fable.exe scans, no bytes reproduced)
+# Every rel32 call / jmp in .text whose target is 0x00A96DA0 (whole-exe scan, landed or not):
+#   0x00AA74A6 call  (0x00AA7480 ~C3DMeshFileXAnimatedPrimitiveBlockChunk)
+#   0x00ADA1A3 call  (0x00AD9F10 CVertexGroupBlockOptimiser::AddBlocks)
+#   0x00ADA348 call  (0x00ADA240 CVertexGroupBlockOptimiser::Process)
+#   0x00ADBE53 call  (0x00ADBE50 CVertexGroupBlock scalar deleting destructor)
+#   0x00ADC070 jmp   (a 5-byte unlisted function: `jmp 0x00A96DA0` between int3 padding; no rel32 or absolute reference to 0x00ADC070 anywhere in the exe)
+#   0x00ADC233 call  (an unlisted function between 0x00ADC190 + 141 and 0x00ADC250)
+#   0x00ADC7A3 call  (0x00ADC790 list<CVertexGroupBlock>::pop_back)
+# No absolute reference to 0x00A96DA0 (callers.py / census.py).
+# 0x00AD94F0 FindBestStartingBlock (536 bytes): calls 0x00BFEA0E malloc, 0x00535470 vector<ulong> copy ctor, 0x00A96E40 tree copy ctor,
+#   0x00ADBFF0, 0x004507A1 tree _M_erase, 0x00BFEA14 free x5, 0x00ADAE00; no EH frame (no fs:0 setup). The `block` copy's destructor is
+#   EXPANDED inline (_M_erase 0x004507A1 + free of the header + free of the vector storage), never a call to 0x00A96DA0.
+# 0x00ADCE60 vector<CVertexGroupBlock>::_M_insert_overflow (243 bytes): calls malloc, 0x00ADC330 / 0x00ADC3B0 (uninitialized copy / fill),
+#   0x00535470, 0x00A96E40, 0x00ADC190 __destroy_aux, free; never 0x00A96DA0.
+# 0x00ADC190 __destroy_aux (141 bytes, same TU, the helper the 0x00ADCE60 row carries as a noinline body): calls 0x004507A1 and free x3:
+#   the element destructor is EXPANDED inline there too.
+# Reading: in the CVertexGroupBlockOptimiser TU retail's ~CVertexGroupBlock was an inline (implicit or header-inline) destructor, expanded at
+#   these sites and called at others (AddBlocks, Process, pop_back) by VC7.1's per-site budget; 0x00A96DA0 is the out-of-line COMDAT copy the
+#   linker kept (a strong out-of-line definition in another TU could not have been expanded here: no LTCG).

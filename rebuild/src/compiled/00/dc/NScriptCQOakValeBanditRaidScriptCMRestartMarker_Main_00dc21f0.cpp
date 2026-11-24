@@ -123,26 +123,26 @@ class CEntityScriptBase { public:                              // retail 0x14 by
     CScriptThing          Me;                           // +0x08
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
 };
-struct CQ_BanditRaidScript {
+namespace NScript { class CQ_OakValeBanditRaidScript { public:   // the PDB owner script (NF301: was the stand-in struct CQ_BanditRaidScript)
     unsigned char _pad[0x4a];
     bool          Flag4a;                               // +0x4a
     unsigned char _pad4b[0x58 - 0x4b];
     bool          RestartRequested;                     // +0x58
     unsigned char _pad59[0x60 - 0x59];
     bool          Flag60;                               // +0x60
-    bool PopulateLevel();                               // 0x00DC0300
-};
-namespace NScript {
-class CQ_OakValeBanditRaidScript {    // the PDB owner script; only its nested entity class is modelled here
-public:
+    bool PopulateLevel();                               // 0x00DC0300 (both PDBs: ?PopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAE_NXZ)
     class CM_RestartMarker;
-};
-}
+}; }
+// The members above are the parent fields Main reads (Flag4a, RestartRequested, Flag60) and the
+// parent call it makes (PopulateLevel); the nested entity class follows.
+//
+//
+//
 using NScript::CQ_OakValeBanditRaidScript;
 namespace NScript {
 class CQ_OakValeBanditRaidScript::CM_RestartMarker : public CEntityScriptBase {
 public:
-    CQ_BanditRaidScript* ParentClass;                   // +0x14
+    CQ_OakValeBanditRaidScript* ParentClass;            // +0x14
 private:
     virtual void Main();                          // PDB ?Main@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ
 };

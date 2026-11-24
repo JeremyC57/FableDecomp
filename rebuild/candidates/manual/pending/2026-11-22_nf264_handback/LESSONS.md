@@ -1,0 +1,7 @@
+# NF264 lessons (one line each)
+- A slot self rename whose symbol other tables bind at OTHER retail addresses needs a whole-tree emitter census first: q12750's three rows were 24 (21 VC7.1 emitters bound 0x00692890's symbol where retail has 0x0062EA10).
+- A clang MS-ABI object (`clang++ -target i686-pc-windows-msvc -fms-compatibility-version=13.10 -c -O0`) gives a 4,000-row vtable census in minutes without wine (tools/coffvt.py reads slot N of every table), but it over-approximates: -O0 emits tables VC7.1 /O2 drops (14 of 35 flagged rows here), so confirm every hit with a VC7.1 object before changing the row.
+- An override declared in a shared base header moves every derived table that does not override the slot: grep the PDB name sets for other overrides of the member (ScorpionKing) before adding it, or one table moves onto a wrong body.
+- When a row's match hangs on its inline budget and its own text carries a __LINE__ (a dead-arm FABLE_RETAIL_ASSERT), add defines without shifting lines: re-join comment lines above.
+- A define-only change is inert for line-sensitive text only if the row has no FABLE_STATIC_ASSERT / FABLE_RETAIL_ASSERT / __LINE__ of its own and nothing includes the row: check both before inserting a line.
+- Use the full merged include tree as FABLE_HDR_OVERLAY for rechecks of rows that reach an overlaid header through other shared headers (MSVC's quoted-include walk can pick the repo copy).

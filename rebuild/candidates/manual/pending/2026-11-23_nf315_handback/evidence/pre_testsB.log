@@ -1,0 +1,10 @@
+06:28:42 PASS /home/user/FableDecomp/rebuild/tests/00/91/CAIStateGroupBuyFromSeller_GetSellersReply_00919a70_test.cpp
+06:28:42 PASS /home/user/FableDecomp/rebuild/tests/00/93/CAIStateGroupMinionKidGroupTag_IsRunnable_00934920_test.cpp
+06:28:42 PASS /home/user/FableDecomp/rebuild/tests/00/8c/CCreatureActionNymphGetHitDie_FrameUpdate_008c9f40_test.cpp
+06:28:42 PASS /home/user/FableDecomp/rebuild/tests/00/8c/CCreatureActionNymphGetHitDie_Initialise_008ca4a0_test.cpp
+06:28:42 PASS /home/user/FableDecomp/rebuild/tests/00/6d/CTCFollowed_QuitAIFollower_006d56e0_test.cpp
+06:28:42 PASS /home/user/FableDecomp/rebuild/tests/00/73/CAnimationSet_IsAppropriateEntryExistingCIsCombatAnimAppropria_00738f90_test.cpp
+06:28:42 PASS /home/user/FableDecomp/rebuild/tests/00/91/CAIStateGroupHoverAttack_Update_0091e050_test.cpp
+06:28:43 PASS /home/user/FableDecomp/rebuild/tests/00/96/CAIStateGroupIceTrollIcicleAttack_Update_009621f0_test.cpp
+06:28:43 PASS /home/user/FableDecomp/rebuild/tests/00/96/CAIStateGroupIceTrollPoundGroundAttack_Update_009624d0_test.cpp
+06:28:43 PASS /home/user/FableDecomp/rebuild/tests/00/b2/CEngineSurfaceCompositionManager_AddSurface_00b2c460_test.cpp

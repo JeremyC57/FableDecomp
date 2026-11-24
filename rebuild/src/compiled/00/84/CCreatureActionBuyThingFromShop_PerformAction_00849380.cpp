@@ -140,7 +140,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+    void SetText(const CFontBank& font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1 (NF313: the PDB parameter type, both PDBs)
 };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -230,7 +230,7 @@ void CCreatureAction_BuyThingFromShop::PerformAction()
                     else
                         message = "You don't have room in your inventory for this item!";
                     CMainGameComponent* component = ((CThing*)PCreature.GetPItem())->GetMainGameComponent();
-                    subtitles->SetText(component->FontBank, message, 0, 3.0f, false, true);
+                    subtitles->SetText(*component->FontBank, message, 0, 3.0f, false, true);
                     return;
                 }
                 stats->AddMoney(-stockItem->Price, true);

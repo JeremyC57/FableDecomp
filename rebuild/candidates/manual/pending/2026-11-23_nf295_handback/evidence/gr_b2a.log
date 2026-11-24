@@ -1,0 +1,20 @@
+H 0064f9a7 NPlayerGui::CDrawQuestInfo::AddCounter RELOCATION_MATCH flags= [] leaf=AddCounter
+H 0069e3d0 CCombatSequence_WillLightning::OnCreate RELOCATION_MATCH flags= [] leaf=
+H 00cf8970 NScript::CLadyGreyWifeManagerScript::Init RELOCATION_MATCH flags= [] leaf=?Init@CLadyGreyWifeManagerScript@NScript@@UAEXXZ
+H 0071e180 CTCHeroMorph::CTCHeroMorph RELOCATION_MATCH flags= [] leaf=??0CTCHeroMorph@@QAE@AAVCThing@@@Z
+H 007275c0 CTCSimpleAppearanceMorph::OnCreate RELOCATION_MATCH flags= [] leaf=
+H 00908a20 CCombatSequence_VillagerCombo::OnCreate RELOCATION_MATCH flags= [] leaf=
+H 00cb8230 CScriptBase::AddEntityScriptBinding RELOCATION_MATCH flags= [] leaf=AddEntityScriptBinding
+H 00856d30 CCombatActionBase::UpdateActionMoveToPos RELOCATION_MATCH flags= [] leaf=UpdateActionMoveToPos
+H 00856ac0 CCombatActionBase::SetupCombatAnimation RELOCATION_MATCH flags= [] leaf=
+H 0084a5f0 CCreatureAction_PickupGameObject::PerformAction RELOCATION_MATCH flags= [] leaf=?PerformAction@CCreatureAction_PickupGameObject@@UAEXXZ
+H 006ebdd0 CreatureUnsheathWeapon RELOCATION_MATCH flags= [] leaf=
+H 008b7ed0 CCreatureAction_UnsheatheWeapons::Initialise RELOCATION_MATCH flags= [] leaf=?Initialise@CCreatureAction_UnsheatheWeapons@@UAEXXZ
+H 00815c40 NHitLocations::CPhysicalPrimitiveCylinder::GetFirstIntersectionWithTriangle RELOCATION_MATCH flags= [] leaf=GetFirstIntersectionWithTriangle
+H 008a0cb0 CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing RELOCATION_MATCH flags= [] leaf=DebugGetAllTextEntriesForTargetedThing
+H 00b6d940 CEngineWaterRenderer::LoadCompressedBuffer RELOCATION_MATCH flags= [] leaf=LoadCompressedBuffer
+H 00614620 _global::GFSerialiseVectorBinaryOut RELOCATION_MATCH flags= [] leaf=GFSerialiseVectorBinaryOut
+H 006a7c00 CThingFilter_HasInstantiationName::operator() RELOCATION_MATCH flags= ['/Oa'] leaf=
+H 00472e58 _global::UninitFillN_CDialogueLayerDef_00472e58 RELOCATION_MATCH flags= [] leaf=
+H 0064d2a9 NPlayerGui::CDrawSpiritsHealth::CDrawSpiritsHealth RELOCATION_MATCH flags= [] leaf=
+GR_DONE

@@ -20,7 +20,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 #include "engine/C3DVector.h"
 
 class CTCLook { public:                           // interface 0x43
-    void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
+    void LookAtPos(const C3DVector& position, long priority);   // 0x00753E90
 };
 
 class CBaseObject;
@@ -52,6 +52,6 @@ void NCreatureMode::CModeScreamerAggressive::FrameUpdate()
 {
     CTCLook* look;
     if (PTarget.Get() != 0 && !PTarget.Get()->IsDead() && ParentThing->GetTC(TCI_LOOK, &look))
-        look->LookAtPos(&PTarget.Get()->GetPos(), 0x67);
+        look->LookAtPos(PTarget.Get()->GetPos(), 0x67);
     CModeBase::FrameUpdate();
 }

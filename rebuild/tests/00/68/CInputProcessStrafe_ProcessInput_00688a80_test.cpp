@@ -23,7 +23,7 @@ class CThing { public: unsigned long long UniqueID; bool Dead; };
 class CPlayer { public: CThing* creature; CThing* GetControlledCreature() const { return creature; } };
 class CInputProcessStrafe { public:
     CPlayer* MyPlayer;
-    bool IsEventButtonReleased(const CInputEvent& e) { return e.released != 0; }
+    bool IsEventButtonHeld(const CInputEvent& e) { return e.released != 0; }
     bool GetEventGameActionVector(long action, const CInputEvent& e, C2DVector* v)
     {
         if (e.action != action) return false;
@@ -35,7 +35,7 @@ class CInputProcessStrafe { public:
         C2DVector strafe;
         if (!GetEventGameActionVector(0x3c, event, &strafe))
             return;
-        if (event.GetDeviceType() == 2 && !IsEventButtonReleased(event))
+        if (event.GetDeviceType() == 2 && !IsEventButtonHeld(event))
             return;
         CGameEvent gameEvent(0x2b);
         if (creature == 0 || creature->Dead)

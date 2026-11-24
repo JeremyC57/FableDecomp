@@ -1,0 +1,12 @@
+## HEAD set: H_00bbbb00.obj H_00bad2e0.obj H_00bcb800.obj H_00babf70.obj H_00bebbb0.obj H_00b94d30.obj H_00b937a0.obj H_00b935c0.obj 00bbac60.obj 00bc04f0.obj 00bca950.obj 00b812c0.obj 00b94bf0.obj
+duplicates 0
+UNRESOLVED 1 ?FindSimulation@CEnginePrimitiveSimulationInfo@@QAEPAVCEngineSimulationBase@@J@Z
+UNRESOLVED 1 ?GetMapAt@CEngineScene@@QAEPAVCEngineSceneMap@@ABVC2DVector@@@Z
+UNRESOLVED 1 ?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEKPAVCEnginePrimitiveOcclusionInfo@@@Z
+UNRESOLVED 1 ?RenderLandscapeDecal@CEnginePrimitiveManagerDecal@@QAEXPAVCEngineInternalPrimitiveDecal@@@Z
+UNRESOLVED 1 ?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXPAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
+UNRESOLVED 1 ?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXPAVCEngineInternalPrimitiveSpriteTrail@@_N@Z
+## new set: 00bbbb00.obj 00bad2e0.obj 00bcb800.obj 00babf70.obj 00bebbb0.obj 00b94d30.obj 00b937a0.obj 00b935c0.obj 00bbac60.obj 00bc04f0.obj 00bca950.obj 00b812c0.obj 00b94bf0.obj
+duplicates 0
+UNRESOLVED 1 ?GetOccludedFrames@CEnginePrimitiveOcclusionManager@@QAEJAAVCEnginePrimitiveOcclusionInfo@@@Z
+LK_DONE

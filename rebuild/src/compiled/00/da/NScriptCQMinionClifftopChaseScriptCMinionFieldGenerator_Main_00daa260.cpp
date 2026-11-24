@@ -66,7 +66,8 @@ protected:
     static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
 public:
     VPAD4(t1) VPAD1(t2)                                                  // slots 1..5
-    virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }   // slot 6
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+    virtual const C3DVector& GetPos() const { CScriptThingImp* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }   // slot 6
     VPAD8(t7) VPAD4(t8) VPAD2(t9)                                        // slots 7..20
     virtual bool MsgIsHitBy(const CCharString& name) const;              // slot 21 (+0x54)
     CCountedPointer<CScriptThingImp> PImp;              // +0x04

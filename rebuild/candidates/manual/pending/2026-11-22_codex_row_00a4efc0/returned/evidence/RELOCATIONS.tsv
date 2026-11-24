@@ -1,0 +1,59 @@
+object_offset	aligned_retail_offset	target	symbol	finding
+0x1f	0x1f	0099ec30	??0CCharString@@QAE@ABV0@@Z	binding confirmed
+0x4a	0x4a	00a5c910	?Allocate@CSimpleMemoryPool@@QAEPAXK@Z	binding confirmed
+0x60	0x60	0129aaf4	?NullChar@CCharString@@1DB	binding confirmed
+0xc3	0xc3	00a54580	??0?$vector@VC3DKeyframe@@V?$allocator@VC3DKeyframe@@@std@@@std@@QAE@I@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0x107	0x107	00aaf1e0	?InitialiseFromMatrix@C3DKeyframe@@QAE_NABVCMatrix3x4@@@Z	binding confirmed
+0x268	0x268	0129c81c	__real@38000100	Checked IEEE float bits at native data target against the COFF literal symbol
+0x273	0x273	0129c81c	__real@38000100	Checked IEEE float bits at native data target against the COFF literal symbol
+0x27f	0x27f	0122dedc	__real@00000000	Checked IEEE float bits at native data target against the COFF literal symbol
+0x28c	0x28c	0122ded8	__real@3f800000	Checked IEEE float bits at native data target against the COFF literal symbol
+0x2a8	0x2a8	0122dedc	__real@00000000	Checked IEEE float bits at native data target against the COFF literal symbol
+0x2b5	0x2b5	0122ded8	__real@3f800000	Checked IEEE float bits at native data target against the COFF literal symbol
+0x340	0x340	00a55190	?_M_fill_insert@?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEXPAVCQuaternion@@IABV3@@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0x3ba	0x3ba	00a88c50	?Equals@CQuaternion@@QBE_NABV1@@Z	Original PDB signature and donor caller; native callee and source receiver/parameters agree
+0x437	0x437	00bfea0e	_malloc	binding confirmed
+0x4ba	0x4ba	00bfea14	_free	binding confirmed
+0x505	0x505	00485b6c	?_M_insert_overflow@?$vector@EV?$allocator@E@std@@@std@@IAEXPAEABEABU__true_type@2@I_N@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0x549	0x549	00a88cb0	?IsIdentity@CQuaternion@@QBE_NXZ	Original PDB signature and donor caller; native callee and source receiver/parameters agree
+0x584	0x584	00a54bb0	??4?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEAAV01@ABV01@@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0x5da	0x5da	00a54bb0	??4?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEAAV01@ABV01@@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0x602	0x602	00a552b0	?_M_fill_insert@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEXPAVC3DVectorWord@C3DAnimationSequenceData@@IABV34@@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0x61a	0x61a	00485f3a	?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z	binding confirmed
+0x695	0x695	00bfea70	__ftol2	binding confirmed
+0x69f	0x69f	00bfea70	__ftol2	binding confirmed
+0x6ad	0x6ad	00bfea70	__ftol2	binding confirmed
+0x760	0x760	00a55070	?_M_insert_overflow@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@IAEXPAVC3DVectorWord@C3DAnimationSequenceData@@ABV34@ABU__false_type@2@I_N@Z	binding confirmed
+0x7dd	0x7dd	0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	binding confirmed
+0x7e3	0x7e3	0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	binding confirmed
+0x819	0x819	00a54cb0	??4?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEAAV01@ABV01@@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0x86b	0x86b	00a54cb0	??4?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEAAV01@ABV01@@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0x896	0x896	00a552b0	?_M_fill_insert@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEXPAVC3DVectorWord@C3DAnimationSequenceData@@IABV34@@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0x8b1	0x8b1	00485f3a	?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z	binding confirmed
+0x922	0x922	00bfea70	__ftol2	binding confirmed
+0x92c	0x92c	00bfea70	__ftol2	binding confirmed
+0x93d	0x93d	00bfea70	__ftol2	binding confirmed
+0x9da	0x9da	00a55070	?_M_insert_overflow@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@IAEXPAVC3DVectorWord@C3DAnimationSequenceData@@ABV34@ABU__false_type@2@I_N@Z	binding confirmed
+0xa4f	0xa4f	0122ded8	__real@3f800000	Checked IEEE float bits at native data target against the COFF literal symbol
+0xa5c	0xa5c	0122ded8	__real@3f800000	Checked IEEE float bits at native data target against the COFF literal symbol
+0xa69	0xa69	0122ded8	__real@3f800000	Checked IEEE float bits at native data target against the COFF literal symbol
+0xa8f	0xa8f	0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	binding confirmed
+0xaba	0xaba	00a54cb0	??4?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEAAV01@ABV01@@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0xb22	0xb22	00a54cb0	??4?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEAAV01@ABV01@@Z	Resolved from aligned native call; emitted specialization equals independently indexed native extent; STLport confirms the operation
+0xba2	0xba2	00a5c910	?Allocate@CSimpleMemoryPool@@QAEPAXK@Z	binding confirmed
+0xbd7	0xbd7	00a5c910	?Allocate@CSimpleMemoryPool@@QAEPAXK@Z	binding confirmed
+0xbf3	0xbf3	00a5c910	?Allocate@CSimpleMemoryPool@@QAEPAXK@Z	binding confirmed
+0xc0f	0xc0f	00a5c910	?Allocate@CSimpleMemoryPool@@QAEPAXK@Z	binding confirmed
+0xca8	0xca8	00bfeae6	_memmove	binding confirmed
+0xcbc	0xcbc	00bfeae6	_memmove	binding confirmed
+0xce1	0xce1	00bfea14	_free	binding confirmed
+0xcf5	0xcf5	00bfea14	_free	binding confirmed
+0xd06	0xd06	00bfea14	_free	binding confirmed
+0xd1a	0xd1a	00bfea14	_free	binding confirmed
+0xd27	0xd27	00bfea14	_free	binding confirmed
+0xd34	0xd34	00bfea14	_free	binding confirmed
+0xd4e	0xd4e	00bfea14	_free	binding confirmed
+0xd61	0xd61	00bfea14	_free	binding confirmed
+0xd72	0xd72	00bfea14	_free	binding confirmed
+0xd88	0xd88	00bfea14	_free	binding confirmed
+0xd94	0xd94	0099eae0	??1CCharString@@QAE@XZ	binding confirmed

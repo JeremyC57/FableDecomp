@@ -52,7 +52,8 @@ public:
     virtual void s001() const; virtual void s002() const;
     virtual const CCharString& GetDataString() const { return !PImp.Data ? CScriptThing::NullString : PImp.Data->GetDataString(); }   // slot 3 (+0xc)
     virtual void s004() const; virtual void s005() const;
-    virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }   // slot 6 (+0x18)
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+    virtual const C3DVector& GetPos() const { CScriptThingImpl* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }   // slot 6 (+0x18)
     virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const;
     virtual void s015() const; virtual void s016() const; virtual void s017() const; virtual void s018() const; virtual void s019() const; virtual void s020() const; virtual void s021() const; virtual void s022() const;
     virtual void s023() const; virtual void s024() const; virtual void s025() const; virtual void s026() const; virtual void s027() const; virtual void s028() const; virtual void s029() const; virtual void s030() const;

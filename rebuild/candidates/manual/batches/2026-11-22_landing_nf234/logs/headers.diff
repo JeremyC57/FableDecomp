@@ -1,0 +1,150 @@
+diff --git a/rebuild/include/engine/CCountedPointer.h b/rebuild/include/engine/CCountedPointer.h
+index a8da7879d8..0a64800aab 100644
+--- a/rebuild/include/engine/CCountedPointer.h
++++ b/rebuild/include/engine/CCountedPointer.h
+@@ -388,7 +388,7 @@ public:
+ };
+ 
+ #endif
+-#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_CONVERTING_ASSIGN_SIZE_BODY)
++#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_CONVERTING_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RESET_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RESET_SIZE_BODY)
+ // NF225 opt-ins (2026-11-22, q12562; rows 0x00494840 CFrontendGameComponent::InitGraphics, 0x0054ED90 NUISystem::CText::GetDataFromDef).
+ // Fidelity: scaffolding, not retail. Those /O2 TUs expand every CCountedPointer<CFontBank> / <const CFontBank> member at the call
+ // site (as retail does), and VC7.1 still emits each expanded inline as a pick-any COMDAT. Retail kept the out-of-line copies from the
+@@ -403,6 +403,23 @@ public:
+ // this header). Not with FABLE_RETAIL_CCOUNTEDPOINTER_ORIGINAL_COMPLETE_MEMBERS_PASS22 (that class has no member-template operator=).
+ class CFontBank;
+ #pragma optimize("s", on)
++#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RELEASEDATA_SIZE_BODY
++class CGraphicDataBank;
++// NF234 opt-in (2026-11-22, q12650; row 0x00495780 CFrontendGameComponent::Shutdown), the same scaffolding as the CONSTCFONTBANK one below:
++// ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ = 0x00419108 (owner row: optimize("s", on) + FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA).
++template<> inline void CCountedPointer<CGraphicDataBank>::ReleaseData()
++{
++    if (Info) {
++        --Info->RefCount;
++        if (Info->RefCount == 0) {
++            Info->DeleteFunc(Info->Data);
++            delete Info;
++        }
++    }
++    Data = 0;
++    Info = 0;
++}
++#endif
+ #ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY
+ // ?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ = 0x0042F948 (44 bytes, owner row: optimize("s", on)).
+ template<> inline void CCountedPointer<const CFontBank>::ReleaseData()
+@@ -460,6 +477,29 @@ template<> template<> inline CCountedPointer<const CFontBank>& CCountedPointer<c
+     return *this;
+ }
+ #endif
++#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RESET_SIZE_BODY
++// NF234 opt-in (2026-11-22, q12650; row 0x00495780): ?Reset@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@@Z = 0x004194D1
++// (57 bytes, calls ReleaseData 0x00419108, stores DeleteData 0x00419036; owner row: optimize("s", on)). The default Reset body.
++class CGraphicDataBank;
++template<> inline void CCountedPointer<CGraphicDataBank>::Reset(CGraphicDataBank* data)
++{
++    ReleaseData();
++    Data = data;
++    if (data)
++        Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
++}
++#endif
++#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RESET_SIZE_BODY
++// NF234 opt-in (2026-11-22, q12650; row 0x00495780): ?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z = 0x0042FC13
++// (calls ReleaseData 0x0042F948, stores DeleteData 0x0042F864; owner row: optimize("s", on)). The default Reset body.
++template<> inline void CCountedPointer<const CFontBank>::Reset(const CFontBank* data)
++{
++    ReleaseData();
++    Data = data;
++    if (data)
++        Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
++}
++#endif
+ #pragma optimize("", on)
+ #endif
+ #endif // FABLE_ENGINE_CCOUNTEDPOINTER_H
+diff --git a/rebuild/include/engine/CEngineInterpolationInfo.h b/rebuild/include/engine/CEngineInterpolationInfo.h
+index 97ec79d480..b90c57c65d 100644
+--- a/rebuild/include/engine/CEngineInterpolationInfo.h
++++ b/rebuild/include/engine/CEngineInterpolationInfo.h
+@@ -3,6 +3,40 @@
+ // Chunk 2051 (row 0x0042EC7C CNewFrontendGameComponent::Run). Ego_r.pdb CEngineInterpolationInfo (0x70 bytes; the landed ctor
+ // 0x0042FA30 zeroes all of it), CEngineInterpolationInfoSet 0x0C. Default ctor out of line (??0CEngineInterpolationInfo@@QAE@XZ).
+ #include "rebuild_abi.h"
++#ifdef FABLE_RETAIL_CENGINEINTERPOLATIONINFO_NESTED_SET
++// NF234 opt-in (2026-11-22, q12646 / q12649; header claim): the set class is NESTED in CEngineInterpolationInfo, as all three PDBs
++// record it: Ego_d.pdb + FableWin.pdb ??0CEngineInterpolationInfoSet@CEngineInterpolationInfo@@QAE@XZ and
++// ??4CEngineInterpolationInfoSet@CEngineInterpolationInfo@@QAEABV01@ABVCInterpolationInfoSet@CInterpolationInfo@@@Z, the type name
++// CEngineInterpolationInfo::CEngineInterpolationInfoSet in Ego_r / FableWin / Ego_d (no top-level VCEngineInterpolationInfoSet@@ in any
++// PDB). Same members, same layout; the typedef keeps the top-level spelling usable (CNewFrontendGameComponent.h m_LastInterp), so
++// every symbol naming the class mangles the nested scope. The default path below is the old text, unchanged.
++class CEngineInterpolationInfo {
++public:
++    class CEngineInterpolationInfoSet {
++    public:
++#ifdef FABLE_RETAIL_CENGINEINTERPOLATIONINFOSET_CTOR
++        // NF233 opt-in (row 0x0042EA8F CNewFrontendGameComponent::CNewFrontendGameComponent, m_LastInterp +0xCC): the user default
++        // constructor, Ego_d.pdb and FableWin.pdb ??0CEngineInterpolationInfoSet@CEngineInterpolationInfo@@QAE@XZ (no Ego_r.pdb copy:
++        // inline in release); retail expands it as three float zero stores (0x0042EB41..0x0042EB58 `fldz ; fstp dword ptr [eax]` / +4 / +8).
++        // (Nested here, as the PDBs spell it: FABLE_RETAIL_CENGINEINTERPOLATIONINFO_NESTED_SET.)
++        CEngineInterpolationInfoSet() : GTPredictedRenderAt(0.0f), GTPredictedTimeSinceLastRenderFrame(0.0f), WFInterpolate(0.0f) {}
++#endif
++        float GTPredictedRenderAt;                                                // +0x00
++        float GTPredictedTimeSinceLastRenderFrame;                                // +0x04
++        float WFInterpolate;                                                      // +0x08
++    };
++    CEngineInterpolationInfo();                                               // 0x0042FA30
++    CEngineInterpolationInfoSet Current;                                      // +0x00
++    CEngineInterpolationInfoSet Last;                                         // +0x0C
++    CEngineInterpolationInfoSet PausedCurrent;                                // +0x18
++    CEngineInterpolationInfoSet PausedLast;                                   // +0x24
++    CEngineInterpolationInfoSet BulletTimeCurrent;                            // +0x30
++    CEngineInterpolationInfoSet BulletTimeLast;                               // +0x3C
++    long WFServerCurrentTime;                                                 // +0x48
++    CEngineInterpolationInfoSet InterpolationSetList[3];                      // +0x4C
++};
++typedef CEngineInterpolationInfo::CEngineInterpolationInfoSet CEngineInterpolationInfoSet;
++#else
+ class CEngineInterpolationInfoSet {
+ public:
+ #ifdef FABLE_RETAIL_CENGINEINTERPOLATIONINFOSET_CTOR
+@@ -28,5 +62,6 @@ public:
+     long WFServerCurrentTime;                                                 // +0x48
+     CEngineInterpolationInfoSet InterpolationSetList[3];                      // +0x4C
+ };
++#endif
+ FABLE_STATIC_ASSERT_AT(24, sizeof(CEngineInterpolationInfo) == 0x70);
+ #endif
+diff --git a/rebuild/include/engine/CFrontendGameComponent.h b/rebuild/include/engine/CFrontendGameComponent.h
+index 048f68e011..9fe08d54ad 100644
+--- a/rebuild/include/engine/CFrontendGameComponent.h
++++ b/rebuild/include/engine/CFrontendGameComponent.h
+@@ -50,6 +50,26 @@ private:
+     CCountedPointer<const class CFontBank> MainFont;                          // +0x1E04
+     unsigned char _body_1e0c[0x1e60 - 0x1e0c];
+ };
++#elif defined(FABLE_RETAIL_CFRONTENDGAMECOMPONENT_SHUTDOWN)
++    // NF233 opt-in (2026-11-22, q12639; row 0x00495780): Ego_r.pdb 0x0049E380 + FableWin.pdb 0x01A41790 ?Shutdown@CFrontendGameComponent@@AAEXXZ
++    // (private) and the Ego_r.pdb members it touches, typed: PTempGraphics +0x1DFC, MainFont +0x1E04 (as INITGRAPHICS), the STLport vectors
++    // ProfileNames +0x1E0C / SaveNames +0x1E1C / WorldNames +0x1E30 (12 bytes in retail, 16 in Ego_r; Shutdown 0x004957E8 `lea ecx,[esi+1E1Ch]`
++    // and 0x00495812 `lea ecx,[esi+1E30h]` -> erase 0x00412450), ProfileNamesOffset +0x1E18, SaveNamesOffset +0x1E28, SaveToLoad +0x1E2C
++    // (CWideString); the rest stays opaque. Same size as the default path. The includer includes engine/CCountedPointer.h,
++    // stlport/fable_containers.h and fable_string.h first. One layout branch per TU (not with CLEARSTRING / INITGRAPHICS).
++private:
++    void Shutdown();                                                          // 0x00495780
++    unsigned char _body_010[0x1dfc - 0x10];
++    CCountedPointer<class CGraphicDataBank> PTempGraphics;                    // +0x1DFC
++    CCountedPointer<const class CFontBank> MainFont;                          // +0x1E04
++    std::vector<CWideString> ProfileNames;                                    // +0x1E0C
++    long ProfileNamesOffset;                                                  // +0x1E18
++    std::vector<CWideString> SaveNames;                                       // +0x1E1C
++    long SaveNamesOffset;                                                     // +0x1E28
++    CWideString SaveToLoad;                                                   // +0x1E2C
++    std::vector<CWideString> WorldNames;                                      // +0x1E30
++    unsigned char _body_1e3c[0x1e60 - 0x1e3c];
++};
+ #else
+ private:
+     unsigned char _body[0x1e60 - 0x10];

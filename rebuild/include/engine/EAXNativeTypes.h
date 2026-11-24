@@ -3,7 +3,12 @@
 #include "EAX40.h"
 #include "DSound3D.h"
 // Original SDK COFF type and field names. Native omits older EAX1/2 conversion state.
+#ifdef FABLE_RETAIL_EAX30_LISTENER_ORIGINAL_TAG
+// The landed CEAXManager listener update uses the original EAX 3 listener structure tag.
+typedef struct _EAXLISTENERPROPERTIES
+#else
 typedef struct _EAX30LISTENERPROPERTIES
+#endif
 {
     unsigned long ulEnvironment;   // sets all reverb properties
     float flEnvironmentSize;       // environment size in meters

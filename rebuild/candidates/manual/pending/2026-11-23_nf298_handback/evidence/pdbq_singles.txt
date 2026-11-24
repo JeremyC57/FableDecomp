@@ -1,0 +1,3 @@
+egor=1 fablewin=1 ?GetNoParticles@CParticleEmitter@NParticleEngine@@QBEJXZ
+egor=1 fablewin=1 ?GetNoDecals@CParticleEmitter@NParticleEngine@@QBEJXZ
+egor=1 fablewin=1 ?Clear@CHeightMap@@AAEXXZ

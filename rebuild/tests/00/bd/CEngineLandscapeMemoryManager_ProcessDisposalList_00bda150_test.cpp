@@ -7,11 +7,11 @@ struct Manager {
     bool enableDelayed; long current; std::list<Res*> lists[3]; int freed; int deletedOrder[8]; int n;
     Manager() : enableDelayed(true), current(0), freed(0), n(0) {}
     void FreeDisposalList() { freed++; }
-    void DeleteTexture(Res* r) { r->deleted = true; deletedOrder[n++] = r->id; }
+    void DeleteTextureBlockWhileBusy(Res* r) { r->deleted = true; deletedOrder[n++] = r->id; }
     void ProcessDisposalList() {
         if (!enableDelayed) FreeDisposalList();
         long index = (current + 1) % 3;
-        while (lists[index].size() != 0) { DeleteTexture(lists[index].front()); lists[index].pop_front(); }
+        while (lists[index].size() != 0) { DeleteTextureBlockWhileBusy(lists[index].front()); lists[index].pop_front(); }
     }
 };
 int main() {

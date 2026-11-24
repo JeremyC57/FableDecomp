@@ -1,0 +1,11 @@
+H 009054f0 NBalverineCombat::SetLungedThisFrame RELOCATION_MATCH flags= [] leaf=?SetLungedThisFrame@NBalverineCombat@@YIXXZ
+H 008f58c0 NPhysicsHelpers::GetLineThingSearchArea RELOCATION_MATCH flags= [] leaf=?GetLineThingSearchArea@NPhysicsHelpers@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z
+H 00643ca1 NPlayerGui::GFAnchorToTopRight RELOCATION_MATCH flags= [] leaf=?GFAnchorToTopRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z
+H 009e9f20 NProgressDisplay::StopProgress RELOCATION_MATCH flags= [] leaf=
+H 008cc8e0 CCreatureAction_BalverineLungeAttack::Initialise RELOCATION_MATCH flags= [] leaf=Initialise
+H 007fd580 CTCDPhysicalObstruction::UpdateAdditionalImpulse RELOCATION_MATCH flags= [] leaf=
+H 0064499c NPlayerGui::CDrawPerceivers::Draw RELOCATION_MATCH flags= [] leaf=Draw
+H 0049e8c0 CWorld::StopAutoSaveProgress RELOCATION_MATCH flags= [] leaf=?StopAutoSaveProgress@CWorld@@IAEXXZ
+H 00648820 NPlayerGui::CDrawMiniMap::Draw RELOCATION_MATCH flags= [] leaf=?Draw@CDrawMiniMap@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z
+H 0064d404 NPlayerGui::CDrawQuestInfo::DrawMiniGameInfo RELOCATION_MATCH flags= [] leaf=DrawMiniGameInfo
+GR_DONE

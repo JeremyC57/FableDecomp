@@ -1,3 +1,4 @@
+// Leaf: ?GetDynamicResurrectionDefIndex@CTCContainerRewardHero@@IBEJXZ
 // CTCContainerRewardHero::GetDynamicResurrectionDefIndex() -- the resurrection phial's def index when the live hero carries no phial yet (so the container should reward one), else 0
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 //
@@ -87,10 +88,12 @@ public:
 
 class CTCContainerRewardHero : public CTCContainer { public:
     CThing* ParentThing;                                    // +0x04 (CTCBase)
-    long GetDynamicResurrectionDefIndex();
+    protected:
+    long GetDynamicResurrectionDefIndex() const;
+    public:
 };
 
-long CTCContainerRewardHero::GetDynamicResurrectionDefIndex()
+long CTCContainerRewardHero::GetDynamicResurrectionDefIndex() const
 {
     const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (IsThingAlive(hero) && hero->HasInterface(0x11))

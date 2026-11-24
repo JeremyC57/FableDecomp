@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00642000	??0CEnginePrimitiveLight@@QAE@_KABVC3DVector@@ABVCRGBColour@@MMW4EEngineInterpolationSet@@K@Z	Both PDBs and the native 108-byte light constructor, including every field store. Called at 00B1A5DC.	CEnginePrimitiveShadowedSpotLight
+0x00B1AD90	?SmoothFadeValue@CPSCLight@NParticleEngine@@QBEMM@Z	Original PDB method in psc_light.obj, independently landed 99-byte same-TU neighbour and both caller targets.	

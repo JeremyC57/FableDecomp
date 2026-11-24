@@ -14,6 +14,9 @@ protected:
 };
 class CTCShotDefinitionProjectilePredictive : public CTCShotDefinitionProjectile {
 protected:
+#ifdef FABLE_RETAIL_PREDICTIVE_SUBSHOT_PASS26
+    virtual void OnSubShotTrigger();
+#endif
     virtual void InitMovement(); // vtable01240ef4 slot33; Ego_r MAEXXZ
 };
 FABLE_STATIC_ASSERT_AT(14, sizeof(CTCShotDefinitionProjectile)==0xa4);

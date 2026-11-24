@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+replace	?Impl@CWorldMap_Methods@@QAEXJ@Z -> ?UnloadLevel@CWorldMap@@IAEXJ@Z	004fede0	004ff8a0	witness now binds the PDB spelling (its object UND, vland new side); the old spelling has no other binder in the table
+replace	?Run@CBankFileAsync@@QAEXXZ -> ?GetAlignment@CBankFile@@QBEKXZ	009cbb80	00a39c70	witness now binds the PDB spelling (its object UND, vland new side); the old spelling has no other binder in the table
+replace	?AddExclusiveObserver@CEngineCamera@@QAEXPAVCCamera@@@Z -> ?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z	00b2fbf0	00b23b50	witness now binds the PDB spelling (its object UND, vland new side); the old spelling has no other binder in the table

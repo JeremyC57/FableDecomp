@@ -1,6 +1,9 @@
+// Leaf: ?GetSizeofClass@CSimVoicesDef@@UAEKXZ
 #pragma optimize("s",on)
-unsigned long __fastcall CSimVoicesDef_GetSizeofClass(const void* self)
+class CSimVoicesDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CSimVoicesDef::GetSizeofClass()
 {
+    const void* self = (void*)this;
     (void)self;
     return 0x54;
 }

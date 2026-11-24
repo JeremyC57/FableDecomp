@@ -29,7 +29,7 @@ template <class T> const T& __fastcall GFLimitReturn(const T& v, const T& lo, co
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCHeroMorph { public:
-    void SetSunTan(float tan);                       // 0x0071C0C0
+    void SetTan(float tan);                       // 0x0071C0C0; NF296: PDB name, was SetSunTan
 };
 
 class CTCHeroStats { public:
@@ -48,5 +48,5 @@ void CTCHeroStats::SetSunTan(float tan)
     SunTan = GFLimitReturn(tan, 0.0f, 1.0f);
     CTCHeroMorph* morph;
     if (ParentThing->GetTC(TCI_APPEARANCE_MORPH, &morph))
-        morph->SetSunTan(SunTan);
+        morph->SetTan(SunTan);
 }

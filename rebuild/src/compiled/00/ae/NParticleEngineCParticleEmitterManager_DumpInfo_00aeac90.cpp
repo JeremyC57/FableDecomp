@@ -74,7 +74,7 @@ class CParticleEmitter { public:
     unsigned char       _statee0[0x60];                // +0xe0
     CCharString         Name;                          // +0x140
     C3DVector GetPosition() const { return Position; }
-    long GetNoParticles();                             // 0x00AEDCA0
+    long GetNoParticles() const;                       // 0x00AEDCA0
 };
 struct SEmitterNode {                                  // STLport list node
     SEmitterNode*     _M_next;

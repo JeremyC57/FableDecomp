@@ -1,0 +1,18 @@
+# link of the 42 rechecked objects, /FORCE; LNK4006 per symbol (HEAD control = the 8 rows from HEAD)
+HEAD
+      7 ??0CCharString@@QAE@ABV0@@Z
+      2 ??0CCharString@@QAE@PBDJ@Z
+     10 ??1CCharString@@QAE@XZ
+      2 ??4CCharString@@QAEABV0@ABV0@@Z
+      2 ?MakeOwnCopyOfData@CCharString@@QAEXXZ
+      1 ?SetAsSubString@CCharString@@QAEXPBDJ@Z
+      2 ?SourceUnqueueBuffers@CAudioContext@@QAEXKJPAK@Z
+      2 ?UnassignString@CCharString@@IAEXXZ
+landing
+      7 ??0CCharString@@QAE@ABV0@@Z
+      2 ??0CCharString@@QAE@PBDJ@Z
+     10 ??1CCharString@@QAE@XZ
+      2 ??4CCharString@@QAEABV0@ABV0@@Z
+      2 ?MakeOwnCopyOfData@CCharString@@QAEXXZ
+      1 ?SetAsSubString@CCharString@@QAEXPBDJ@Z
+      3 ?UnassignString@CCharString@@IAEXXZ

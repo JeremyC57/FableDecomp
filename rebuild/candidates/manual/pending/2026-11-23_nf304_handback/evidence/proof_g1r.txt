@@ -1,0 +1,2 @@
+##### 00a10dc0 renames: ??0CRenderTarget@@QAE@ABVCSurface@@0@Z=??0CRenderTarget@@QAE@AAVCSurface@@0@Z
+ALL_EQ sections=5 DEF=4 tables=??_7CRenderTarget@@6B@,??_7CSurface@@6B@

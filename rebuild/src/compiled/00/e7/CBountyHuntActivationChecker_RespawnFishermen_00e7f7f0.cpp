@@ -27,7 +27,8 @@ struct CScriptThingImpl {                               // the game-side thing b
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003();
-    virtual void SetDataString(const CCharString& text) { if (PImp_Data) PImp_Data->SetDataString(text); }   // slot 4 (+0x10)
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA930 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+    virtual void SetDataString(const CCharString& text) { CScriptThingImpl* imp = PImp_Data; if (imp) imp->SetDataString(text); }   // slot 4 (+0x10)
     virtual void t005();
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
     CScriptThingImpl* PImp_Data;                        // +0x04

@@ -1,0 +1,4 @@
+06:42:22 PASS /home/user/FableDecomp/rebuild/tests/00/6e/CCombatManager_CreatureUnsheathWeapon_006ebdd0_test.cpp
+06:42:23 FAIL /home/user/FableDecomp/rebuild/tests/00/92/CAIStateGroupSkillPractice_PracticeSkills_0092b3e0_test.cpp
+06:42:23 PASS /home/user/FableDecomp/rebuild/tests/00/6e/CCombatManager_DeregisterAttackingCombatant_006ed510_test.cpp
+06:42:23 PASS /home/user/FableDecomp/rebuild/tests/00/6e/CCombatRing_AssignAttackerToProng_006ebee0_test.cpp

@@ -141,10 +141,23 @@ public:
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_PROXIMITY
  // Nested opt-in (chunk 760, row 0x0093D270): FableWin.pdb ?GetProximityForNavigation@CCombatManager@@QBEMXZ (public const,
  // inline in retail: the row reads +0x28 straight off the manager).
+ // Owner decision 2026-11-22 (land as Inferred): retail reads this getter like a reference at both call sites (0x006AAA24,
+ // 0x0093D351; a `const float&` return graded RELOCATION_MATCH on 0x0093D270, the by-value form DIFFER(305v295)), against all three
+ // later VC10 PDBs (QBEMXZ, by value). Inferred TLC-era form; off by default. pending/2026-11-22_auth18/0093d270/TERMINAL.md.
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_PROXIMITY_REF_INFERRED
+ const float& GetProximityForNavigation() const { return ProximityForNavigation; }
+#else
  float GetProximityForNavigation() const { return ProximityForNavigation; }
 #endif
 #endif
+#endif
 private:
+#ifdef FABLE_RETAIL_COMBAT_SEQUENCE_SELECTION_PASS27
+ long GetBestSequenceIndexAttackerOnDefender(const CCombatantInfo& attacker_info,const CCombatantInfo& defender_info) const;
+ long PickBestSequenceFromIndexList(const std::vector<long>& index_list) const;
+ CWorld& GetWorld() const { return World; }
+ const CThingSearchTools& PeekThingSearchTools() const { return World.PeekThingSearchTools(); }
+#endif
  std::map<CCharString,CCombatSequenceBase* (__fastcall*)(CThingCreatureBase&,CThingCreatureBase&)> RegisteredCombatSequences;
  std::map<unsigned __int64,CCombatantInfo> Combatants;bool CombatStrafeTurningEnabled;CWorld& World;
  bool DrawDebug;bool TraceDebug;float ProximityForNavigation;bool EnableAINonAttackMode;float AttackPatternIdleStandardInterval;

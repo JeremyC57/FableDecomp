@@ -14,7 +14,7 @@ class CInputProcessInventoryStatsScreen { public:
     int refreshes;
     void Refresh() { ++refreshes; }
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 1; }
-    bool IsEventButtonReleased(const CInputEvent& e) { return e.button == 3; }
+    bool IsEventButtonHeld(const CInputEvent& e) { return e.button == 3; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.action == a; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed)
     {
@@ -35,7 +35,7 @@ class CInputProcessInventoryStatsScreen { public:
             else if (IsEventGameAction(0x21, event)) GetInstance()->SendEvent(4);
             else if (IsEventGameAction(0x22, event)) GetInstance()->SendEvent(5);
             else return;
-        } else if (IsEventButtonReleased(event)) {
+        } else if (IsEventButtonHeld(event)) {
             if (IsEventGameAction(0x25, event)) GetInstance()->SendEvent(0);
             else if (IsEventGameAction(0x26, event)) GetInstance()->SendEvent(1);
             else return;

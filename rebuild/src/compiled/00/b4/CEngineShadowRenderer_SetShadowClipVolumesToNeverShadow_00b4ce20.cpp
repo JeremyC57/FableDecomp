@@ -1,3 +1,4 @@
+// Leaf: ?SetShadowClipVolumesToNeverShadow@CEngineShadowRenderer@@AAEXXZ
 // CEngineShadowRenderer::SetShadowClipVolumesToNeverShadow() -- empty both shadow clip volumes (no clip planes, no sphere test), then give each a bounding sphere of radius 0 at (-1e30, -1e30, -1e30) with the sphere test on, so nothing falls inside either volume
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B4CE20, 173 bytes (+ int3 padding).
@@ -42,7 +43,9 @@ class CShadowRendererSceneData { public:                      // 0x240 bytes
 class CEngineShadowRenderer { public:
     unsigned char            _pad00[0x0c];
     CShadowRendererSceneData SceneData;                // +0x0c
+    private:
     void SetShadowClipVolumesToNeverShadow();
+    public:
 };
 
 void CEngineShadowRenderer::SetShadowClipVolumesToNeverShadow()

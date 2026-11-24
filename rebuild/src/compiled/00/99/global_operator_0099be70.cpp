@@ -85,8 +85,14 @@ public:
     }
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
     const wchar16* GetText() const { return PStringData == 0 ? g_EmptyWideString : PStringData->Data._M_start; }
-    void UnassignString();                              // 0x0099B4D0
-    void MakeOwnCopyOfData();                           // 0x0099B560
+    protected:
+    void UnassignString();
+    public:
+                              // 0x0099B4D0
+    protected:
+    void MakeOwnCopyOfData();
+    public:
+                           // 0x0099B560
     CWideStringData* AllocStringData(const wchar16* text, long length);   // 0x0099B3C0
 protected:
     static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)

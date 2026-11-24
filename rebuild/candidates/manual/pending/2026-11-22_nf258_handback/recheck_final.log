@@ -1,0 +1,33 @@
+addr       parity           behav  name
+006250b0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+006250b0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+006250b0   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase (engine/CParentDefClassBase.h)
+006250b0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+006250b0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+006250b0   WARN RELOC_NAME: ??0CSubDefInfoVector@@QAE@ABU0@@Z -> 0046eecf labelled 'std::vector::vector'
+006250b0   RELOCATION_MATCH PASS   CUIStateDef
+00ad9b20   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00ad9b20   WARN RELOC_NAME: ?CopyBlocks@@YIPAVCVertexGroupBlock@@PAV1@00ABU__false_type@@PAH@Z -> 00adc0d0 labelled '_global::Copy_SArrayTreePair18_00adc0d0'
+00ad9b20   WARN RELOC_NAME: ?DestroyBlocks@@YIXPAVCVertexGroupBlock@@0ABU__false_type@@@Z -> 00adc190 labelled 'std::__destroy_aux'
+00ad9b20   WARN RELOC_NAME: ??0CGroupToIndexMap@@QAE@ABU0@@Z -> 00a96e40 labelled 'std::map::map'
+00ad9b20   WARN RELOC_NAME: ?_M_erase@CGroupToIndexMap@@QAEXPAUCRbNode@@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00ad9b20   RELOCATION_MATCH PASS   CalcCurrentBlockSegments
+00ada240   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00ada240   WARN RELOC_NAME: ??0CGroupToIndexMap@@QAE@ABU0@@Z -> 00a96e40 labelled 'std::map::map'
+00ada240   RELOCATION_MATCH PASS   Process
+00adce10   RELOCATION_MATCH PASS   push_back
+009d4810   WARN RELOC_NAME: ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z -> 009d2ba0 labelled 'std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>::_Lbound'
+009d4810   RELOCATION_MATCH PASS   operator[]
+009d3ca0   WARN STANDIN_LEAF ??$_Construct@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@U12@@std@@YIXPAU?$pair@$$CBVCCharString@@V?$CArray@K@@@0@ABU10@@Z (catalog std::_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>; names another function)
+009d3ca0   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>
+00adc310   WARN STANDIN_LEAF ??$_Construct@VCVertexGroupBlock@@V1@@std@@YIXPAVCVertexGroupBlock@@ABV1@@Z (catalog std::_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>; names another function)
+00adc310   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>
+
+WINS: 7
+  006250b0 RELOCATION_MATCH NUISystem::CUIStateDef::??0CUIStateDef
+  00ad9b20 RELOCATION_MATCH CVertexGroupBlockOptimiser::CalcCurrentBlockSegments
+  00ada240 RELOCATION_MATCH CVertexGroupBlockOptimiser::Process
+  00adce10 RELOCATION_MATCH std::list<CVertexGroupBlock>::?push_back@?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QAEXABVCVertexGroupBlock@@@Z
+  009d4810 RELOCATION_MATCH std::map::??A?$map@VCCharString@@V?$CArray@K@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@4@@std@@QAEAAV?$CArray@K@@ABVCCharString@@@Z
+  009d3ca0 RELOCATION_MATCH _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::??$_Construct@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@U12@@std@@YIXPAU?$pair@$$CBVCCharString@@V?$CArray@K@@@0@ABU10@@Z
+  00adc310 RELOCATION_MATCH _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::??$_Construct@VCVertexGroupBlock@@V1@@std@@YIXPAVCVertexGroupBlock@@ABV1@@Z

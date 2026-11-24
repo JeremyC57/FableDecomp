@@ -1,3 +1,4 @@
+// Leaf: ?IsUsingScriptedCameraMode@CGameCameraManager@@QBE_NXZ
 struct Sub {
     struct Vtbl {
         void* s0;
@@ -12,9 +13,12 @@ class CGameCameraManager { public:
     Sub* obj_d4;
     char pad2[4];
     int  flag_dc;
+    public: bool IsUsingScriptedCameraMode() const;
 };
 
-bool __fastcall CGameCameraManager_IsUsingScriptedCameraMode(const CGameCameraManager* manager) {
+bool CGameCameraManager::IsUsingScriptedCameraMode() const
+{
+    const CGameCameraManager* manager = this;
     if (manager->flag_dc == 0) {
         Sub* s = manager->obj_d4;
         if (s == 0)

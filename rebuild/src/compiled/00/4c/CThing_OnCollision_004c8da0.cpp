@@ -24,7 +24,7 @@ struct CTCCollisionHandler_0xA8 {                    // interface type 0xA8 (des
     void OnThingCollision(CThing* thing);            // 0x004CC000 (manifest label propagated)
 };
 class CThingManager { public:
-    void AddToUpdateList(CThing* thing);             // 0x0051EC50
+    void AddToUpdateList(CThing& thing);             // 0x0051EC50
 };
 class CThing {
 private:
@@ -63,5 +63,5 @@ void CThing::OnCollision(long phase, long, long, CThing* other)
             handler->OnThingCollision(other);
     }
     if (!Dead)
-        CThing::GetPCurrentThingManager()->AddToUpdateList(this);
+        CThing::GetPCurrentThingManager()->AddToUpdateList(*this);
 }

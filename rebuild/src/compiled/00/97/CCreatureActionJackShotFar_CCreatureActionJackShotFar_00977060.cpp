@@ -35,7 +35,7 @@ protected:
 public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0; NF303: PDB name, was SetName
 };
 
 class CCreatureAction_JackShotFar : public CCombatActionBase { public:
@@ -48,6 +48,6 @@ CCreatureAction_JackShotFar::CCreatureAction_JackShotFar(CThingCreatureBase* own
 {
     {
         CCharString name("STRIKE_SHOT_FAR", -1);      // scoped named local (a bare temporary would reuse eax, GOTCHAS)
-        SetName(name);                     // 0x008574D0
+        SetCombatAnimation(name);                     // 0x008574D0
     }
 }

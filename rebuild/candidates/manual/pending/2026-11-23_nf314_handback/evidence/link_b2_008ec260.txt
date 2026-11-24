@@ -1,0 +1,8 @@
+## HEAD set: H_008ec260.obj H_00859ef0.obj
+duplicates 0
+
+UNRESOLVED 1 ?OnAnimationLoaded@CCombatActionBase@@QAEXXZ
+## new set: N_008ec260.obj H_00859ef0.obj
+duplicates 0
+
+LK_DONE

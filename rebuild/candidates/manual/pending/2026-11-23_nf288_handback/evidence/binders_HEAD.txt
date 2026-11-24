@@ -1,0 +1,240 @@
+#4 0076cce0 ?IsEnemyOf@CTCEnemy@@ABE_NABVCThing@@@Z
+   0076cce0(self) NOOBJ
+   0076d2f0 OK ?IsEnemyOf@CTCEnemy@@ABE_NABVCThing@@@Z x2
+   0076d460 WRONG ?IsEnemyOf@CTCEnemy@@QBE_NABVCThing@@@Z x1
+#5 006c3ca0 ?AddCarriedThingsOfThingToFadeList@CTCFadeOutAndIn@@AAEXABVCThing@@@Z
+   006c3ca0(self) - DEF=OK:?AddCarriedThingsOfThingToFadeList@CTCFadeOutAndIn@@AAEXABVCThing@@@Z
+   006c3e80 WRONG ?AddCarriedThingsOfThingToFadeList@CTCFadeOutAndIn@@QAEXABVCThing@@@Z x2
+#6 007c86f0 ?GetReleaseAnimName@CTCFireballSpell@@QBE?AVCCharString@@XZ
+   007c86f0(self) - DEF=OK:?GetReleaseAnimName@CTCFireballSpell@@QBE?AVCCharString@@XZ
+   008bab70 WRONG ?GetReleaseAnimName@CTCFireballSpell@@QAE?AVCCharString@@XZ x1
+#7 007e7580 ?GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z
+   007e7580(self) - DEF=OK:?GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z
+   007e7ac0 WRONG ?GetText@CTCFireheartMinigame@@QBE?AVCWideString@@K@Z x3
+#8 006d5260 ?CullNullFollowers@CTCFollowed@@IAEXXZ
+   006d5260(self) - DEF=WRONG:?CullNullFollowers@CTCFollowed@@QAEXXZ
+   006d53c0 OK ?CullNullFollowers@CTCFollowed@@IAEXXZ x2
+   006d5850 NOOBJ
+#9 004bc4f0 ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z
+   004bc4f0(self) - DEF=WRONG:?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z
+   004bda30 WRONG ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z x1
+   004bdb40 WRONG ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z x1
+   004bdd70 WRONG ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z x1
+   004bde90 WRONG ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z x1
+   004be000 WRONG ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z x1
+   004c0560 OK ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z x1
+#10 004be000 ?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z
+   004be000(self) - DEF=OK:?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z
+   0072ddb0 WRONG ?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QAEJABVCCharString@@M@Z x2
+   0072df50 WRONG ?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QAEJABVCCharString@@M@Z x2
+   0072e130 OK ?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z x2
+   007f8890 WRONG ?GetNoDummyObjects@CTCGraphicAppearance@@QAEJABVCCharString@@M@Z x1
+#11 006d7f20 ?UpdateComboMultiplier@CTCHeroExperience@@AAEX_N@Z
+   006d7f20(self) - DEF=WRONG:?UpdateComboMultiplier@CTCHeroExperience@@QAEX_N@Z
+   006d8770 WRONG ?helper_6d7f20@@YGXH@Z x1
+   006d8790 OK ?UpdateComboMultiplier@CTCHeroExperience@@AAEX_N@Z x1
+   006d8830 OK ?UpdateComboMultiplier@CTCHeroExperience@@AAEX_N@Z x1
+#12 0055fb80 ?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
+   0055fb80(self) - DEF=WRONG:?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ
+   00560d00 OK ?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ x1
+   00561450 WRONG ?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ x1
+   005615c0 WRONG ?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ x1
+   00561980 WRONG ?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ x1
+   00561dc0 WRONG ?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ x1
+   005621b0 WRONG ?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ x1
+   00563480 OK ?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ x1
+#13 00560d00 ?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z
+   00560d00(self) - DEF=OK:?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z
+   00564570 WRONG ?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z x1
+#14 00563480 ?DownloadScoreboardForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
+   00563480(self) - DEF=OK:?DownloadScoreboardForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
+   00564570 WRONG ?DownloadScoreboardForSelectedClan@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ x1
+#15 00563920 ?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ
+   00563920(self) - DEF=OK:?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ
+   00564570 WRONG ?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@QAEXXZ x1
+#16 0057a89d ?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ
+   0057a89d(self) - DEF=OK:?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ
+   0057b43f OK ?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ x1
+   0057cb7e WRONG ?GetMaxDrunkenness@CTCHeroStats@@QAEMXZ x1
+#17 0057aad9 ?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ
+   0057aad9(self) - DEF=WRONG:?GetPercentageThroughRenownLevel@CTCHeroStats_Retail@@QBEMXZ
+   0057be71 WRONG ?GetPercentageThroughRenownLevel@CTCHeroStats@@QAEMXZ x4
+   0057d8be OK ?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ x2
+   005ce0e6 OK ?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ x1
+   005d1f0c OK ?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ x1
+   008991a0 OK ?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ x1
+#18 0077c960 ?DoMovement@CTCHighlightItem@@IAEXXZ
+   0077c960(self) - DEF=OK:?DoMovement@CTCHighlightItem@@IAEXXZ
+   0077cd50 WRONG ?DoMovement@CTCHighlightItem@@QAEXXZ x1
+#19 00582027 ?GetQuickAccessNextFreeSlot@CTCInventory@@QBEJJ@Z
+   00582027(self) - DEF=WRONG:?GetQuickAccessNextFreeSlot@CTCInventory@@QAEJJ@Z
+   0058509f WRONG ?GetQuickAccessNextFreeSlot@CTCInventory@@QAEJJ@Z x1
+   006ac430 OK ?GetQuickAccessNextFreeSlot@CTCInventory@@QBEJJ@Z x1
+   006ac690 WRONG ?GetQuickAccessNextFreeSlot@CTCInventory@@QAEJJ@Z x1
+#20 005bdd39 ?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z
+   005bdd39(self) - DEF=WRONG:?GlobalUpdate@CTCInventoryBase_Retail@@UAEXM@Z
+   0056fc5d WRONG ?GlobalUpdate@CTCInventoryBase@NInventory@@QAEX_N@Z x1
+   00591e8c WRONG ?GlobalUpdate@CTCInventoryBase@NInventory@@QAEX_N@Z x1
+   0059b717 WRONG _ForwardTarget_005bdd39 x1
+   005b3e4e OK ?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z x1
+   005c2dfd WRONG _ForwardTarget_005bdd39 x1
+   005cda50 OK ?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z x1
+#21 005d9070 ?GetDescription@CTCInventoryItem@@QBE?AVCWideString@@XZ
+   005d9070(self) - DEF=WRONG:?GetDescription@CTCInventoryItem@@QAE?AVCWideString@@XZ
+   007cacb0 OK ?GetDescription@CTCInventoryItem@@QBE?AVCWideString@@XZ x2
+   009261f0 WRONG ?GetDescription@CTCInventoryItem@@QAE?AVCWideString@@XZ x1
+#22 005fbfa0 ?TeleportToActiveRegion@CTCInventoryMap@@AAEXXZ
+   005fbfa0(self) - DEF=OK:?TeleportToActiveRegion@CTCInventoryMap@@AAEXXZ
+   00602f30 WRONG ?TeleportToActiveRegion@CTCInventoryMap@@QAEXXZ x1
+#23 005fc840 ?TeleportHeroToRegionTeleporter@CTCInventoryMap@@QBEXJ@Z
+   005fc840(self) - DEF=WRONG:?TeleportHeroToRegionTeleporter@CTCInventoryMap@@QAEXJ@Z
+   0041e6d3 OK ?TeleportHeroToRegionTeleporter@CTCInventoryMap@@QBEXJ@Z x1
+#24 005a8c66 ?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ
+   005a8c66(self) - DEF=OK:?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ
+   005ae972 WRONG ?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@QAEXXZ x1
+#25 005ca68e ?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@AAEXXZ
+   005ca68e(self) - DEF=OK:?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@AAEXXZ
+   005cac8d WRONG ?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@QAEXXZ x1
+   005cb128 OK ?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@AAEXXZ x1
+   005cb2b0 OK ?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@AAEXXZ x1
+#26 007fb4a0 ?UpdateTentaclesOnly@CTCKraken@@AAEXXZ
+   007fb4a0(self) - DEF=WRONG:?UpdateTentaclesOnly@CTCKraken@@QAEXXZ
+   007fc9d0 OK ?UpdateTentaclesOnly@CTCKraken@@AAEXXZ x1
+#27 007fbb00 ?CreateHeadEffect@CTCKraken@@AAEXABVCCharString@@@Z
+   007fbb00(self) - DEF=WRONG:?CreateHeadEffect@CTCKraken@@QAEXABVCCharString@@@Z
+   007fbc30 WRONG ?CreateHeadEffect@CTCKraken@@QAEXABVCCharString@@@Z x1
+   007fc9d0 OK ?CreateHeadEffect@CTCKraken@@AAEXABVCCharString@@@Z x1
+#28 007fbc90 ?GetCentreMarker@CTCKraken@@AAEXXZ
+   007fbc90(self) - DEF=WRONG:?GetCentreMarker@CTCKraken@@QAEXXZ
+   007fc8e0 WRONG ?GetCentreMarker@CTCKraken@@QAEXXZ x1
+   007fc9d0 OK ?GetCentreMarker@CTCKraken@@AAEXXZ x1
+#29 007f07a0 ?KillRippleFX@CTCKrakenTentacle@@AAEXXZ
+   007f07a0(self) - DEF=OK:?KillRippleFX@CTCKrakenTentacle@@AAEXXZ
+   007f0890 OK ?KillRippleFX@CTCKrakenTentacle@@AAEXXZ x1
+   007f08b0 WRONG ?KillRippleFX@CTCKrakenTentacle@@QAEXXZ x1
+   007f0b10 OK ?KillRippleFX@CTCKrakenTentacle@@AAEXXZ x1
+#30 007f0c70 ?TrackTarget@CTCKrakenTentacle@@AAEXXZ
+   007f0c70(self) - DEF=OK:?TrackTarget@CTCKrakenTentacle@@AAEXXZ
+   007f14f0 WRONG ?TrackTarget@CTCKrakenTentacle@@QAEXXZ x1
+#31 007f0f40 ?ReturnToDesiredPos@CTCKrakenTentacle@@AAEX_N@Z
+   007f0f40(self) - DEF=OK:?ReturnToDesiredPos@CTCKrakenTentacle@@AAEX_N@Z
+   007f14f0 WRONG ?ReturnToDesiredPos@CTCKrakenTentacle@@QAEX_N@Z x1
+   007f15d0 WRONG ?ReturnToDesiredPos@CTCKrakenTentacle@@QAEX_N@Z x1
+#32 00751da0 ?IsAbleToTurnDaBody@CTCLook@@ABE_NXZ
+   00751da0(self) - DEF=OK:?IsAbleToTurnDaBody@CTCLook@@ABE_NXZ
+   00753c70 WRONG ?IsAbleToTurnDaBody@CTCLook@@QAE_NXZ x1
+#33 00766660 ?AttemptToStartParticle@CTCObjectAugmentations@@AAEXAAV?$CIntelligentPointer@VCThing@@@@JJABVCCharString@@1@Z
+   00766660(self) NOOBJ
+   00766a60 WRONG ?AttemptToStartParticle@CTCObjectAugmentations@@QAEXAAV?$CIntelligentPointer@VCThing@@@@JJABVCCharString@@1@Z x1
+#34 007674a0 ?ClearAllParticleEffects@CTCObjectAugmentations@@AAEXXZ
+   007674a0(self) - DEF=WRONG:?ClearAllParticleEffects@CTCObjectAugmentations@@QAEXXZ
+   007676a0 OK ?ClearAllParticleEffects@CTCObjectAugmentations@@AAEXXZ x1
+   007677e0 NOOBJ
+#35 00744830 ?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QBE_NXZ
+   00744830(self) - DEF=
+   008d0ba0 OK ?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QBE_NXZ x1
+   0090f290 WRONG ?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QAE_NXZ x1
+   009357f0 WRONG ?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QAE_NXZ x1
+   00939ed0 OK ?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QBE_NXZ x1
+#36 0079e420 ?PlayShieldEffects@CTCPhysicalShieldSpell@@IAEXPAVCThingCreatureBase@@@Z
+   0079e420(self) - DEF=WRONG:?PlayShieldEffects@CTCPhysicalShieldSpell@@QAEXPAVCThingCreatureBase@@@Z
+   0079eb30 WRONG ?PlayShieldEffects@CTCPhysicalShieldSpell@@QAEXPAVCThingCreatureBase@@@Z x1
+   0079ec10 OK ?PlayShieldEffects@CTCPhysicalShieldSpell@@IAEXPAVCThingCreatureBase@@@Z x1
+#37 006afa40 ?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@IBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z
+   006afa40(self) - DEF=WRONG:?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@QBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z
+   00725500 OK ?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@IBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z x1
+#38 0075b000 ?InitialiseBody@CTCPhysicsRigidBody@@AAEXXZ
+   0075b000(self) - DEF=OK:?InitialiseBody@CTCPhysicsRigidBody@@AAEXXZ
+   0075b2d0 WRONG ?InitialiseBody@CTCPhysicsRigidBody@@QAEXXZ x1
+#39 008004d0 ?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QBE?AVC3DVector@@XZ
+   008004d0(self) - DEF=OK:?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QBE?AVC3DVector@@XZ
+   00714370 OK ?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QBE?AVC3DVector@@XZ x1
+   0097f5b0 WRONG ?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QAE?AVC3DVector@@XZ x2
+#40 008008b0 ?LoadRoute@CTCPreCalculatedNavigationRoute@@AAEXAAVCPersistContext@@J@Z
+   008008b0(self) - DEF=OK:?LoadRoute@CTCPreCalculatedNavigationRoute@@AAEXAAVCPersistContext@@J@Z
+   00800a60 WRONG ?LoadRoute@CTCPreCalculatedNavigationRoute@@QAEXAAVCPersistContext@@J@Z x1
+#41 00702400 ?GetQuestSummary@CTCQuestCard@@QBE?AVCWideString@@XZ
+   00702400(self) - DEF=OK:?GetQuestSummary@CTCQuestCard@@QBE?AVCWideString@@XZ
+   0058578b OK ?GetQuestSummary@CTCQuestCard@@QBE?AVCWideString@@XZ x1
+   005e4430 WRONG ?GetQuestSummary@CTCQuestCard@@QAE?AVCWideString@@XZ x1
+   0061b610 OK ?GetQuestSummary@CTCQuestCard@@QBE?AVCWideString@@XZ x1
+   0061e6d0 OK ?GetQuestSummary@CTCQuestCard@@QBE?AVCWideString@@XZ x1
+#42 007280c0 ?UpdateMorphSet@CTCRandomAppearanceMorph@@AAEXXZ
+   007280c0(self) - DEF=OK:?UpdateMorphSet@CTCRandomAppearanceMorph@@AAEXXZ
+   007283f0 WRONG _ForwardTarget_007280c0 x1
+   00728400 WRONG ?UpdateMorphSet@CTCRandomAppearanceMorph@@QAEXXZ x1
+   00728460 WRONG ?UpdateMorphSet@CTCRandomAppearanceMorph@@QAEXXZ x1
+   00728470 WRONG ?UpdateMorphSet@CTCRandomAppearanceMorph@@QAEXXZ x1
+#43 007f53a0 ?OnInitialActivate@CTCSoundAtmosphere@@UAEXXZ
+   007f53a0(self) - DEF=OK:?OnInitialActivate@CTCSoundAtmosphere@@UAEXXZ
+   007f50b0 WRONG ?OnInitialActivate@CTCSoundAtmosphere@@QAEXXZ x1
+#44 0066bc10 ?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+   0066bc10(self) - DEF=OK:?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+   0066bd00 OK ?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z x1
+   0066bdf0 WRONG ?GetPotentialCriteriaStrings@CTCSoundPlayer@@QAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z x1
+#45 006e2840 ?GetCurrentSpeechDuration@CTCTalk@@QBEMXZ
+   006e2840(self) - DEF=WRONG:?GetCurrentSpeechDuration@CTCTalk@@QAEMXZ
+   00716b30 OK ?GetCurrentSpeechDuration@CTCTalk@@QBEMXZ x1
+   00957a20 WRONG ?GetCurrentSpeechDuration@CTCTalk@@QAEMXZ x1
+   0096f570 WRONG ?GetCurrentSpeechDuration@CTCTalk@@QAEMXZ x1
+#46 007f9960 ?UpdateTargetList@CTCTargetingSpirit@@IAEXXZ
+   007f9960(self) - DEF=OK:?UpdateTargetList@CTCTargetingSpirit@@IAEXXZ
+   007f9b90 WRONG ?UpdateTargetList@CTCTargetingSpirit@@QAEXXZ x1
+#47 005e9aa0 ?EndRound@CTCTavernGame@@UAEXXZ
+   005e9aa0(self) - DEF=WRONG:?EndRound@C005e9aa0@@QAEXXZ
+   007d7ba0 WRONG ?EndRound@CTCTavernGame@@QAEXXZ x1
+   008ef190 OK ?EndRound@CTCTavernGame@@UAEXXZ x1
+   008f1720 WRONG ?EndRound@CTCTavernGame@@QAEXXZ x1
+#48 005ea3c0 ?GetBanter@CTCTavernGame@@QBEJXZ
+   005ea3c0(self) - DEF=OK:?GetBanter@CTCTavernGame@@QBEJXZ
+   0094ce60 WRONG ?GetBanter@CTCTavernGame@@QAEJXZ x1
+#49 008f1d40 ?FrameUpdate@CTCTavernGameCardBase@@UAEXXZ
+   008f1d40(self) - DEF=OK:?FrameUpdate@CTCTavernGameCardBase@@UAEXXZ
+   007da360 WRONG ?FrameUpdate@CTCTavernGameCardBase@@QAEXXZ x1
+#50 007d46d0 ?FadeOutTableOccupants@CTCTavernGameCoinGolf@@AAEX_N@Z
+   007d46d0(self) - DEF=OK:?FadeOutTableOccupants@CTCTavernGameCoinGolf@@AAEX_N@Z
+   007d4a60 WRONG ?FadeOutTableOccupants@CTCTavernGameCoinGolf@@QAEX_N@Z x1
+   007d4a90 WRONG ?FadeOutTableOccupants@CTCTavernGameCoinGolf@@QAEX_N@Z x1
+#51 007881ad ?UpdateTriggerThings@CTCTrapBase@@IAEXXZ
+   007881ad(self) - DEF=OK:?UpdateTriggerThings@CTCTrapBase@@IAEXXZ
+   007888b4 WRONG ?UpdateTriggerThings@CTCTrapBase@@QAEXXZ x1
+#52 00659ea9 ?RemoveThingFromAllTasks@CTCVillage@@AAEXABVCThing@@@Z
+   00659ea9(self) - DEF=WRONG:?RemoveThingFromAllTasks@CTCVillage@@QAEXABVCThing@@@Z
+   0065b6dd WRONG ?RemoveThingFromAllTasks@CTCVillage@@QAEXABVCThing@@@Z x1
+   0065be6c OK ?RemoveThingFromAllTasks@CTCVillage@@AAEXABVCThing@@@Z x1
+#53 004c8280 ?IsGameStatePersisted@CThing@@QBE_NXZ
+   004c8280(self) - DEF=OK:?IsGameStatePersisted@CThing@@QBE_NXZ
+   004b5ee0 OK ?IsGameStatePersisted@CThing@@QBE_NXZ x1
+   00520c80 OK ?IsGameStatePersisted@CThing@@QBE_NXZ x2
+   00522880 WRONG ?IsGameStatePersisted@CThing@@QAE_NXZ x1
+   00523cf0 OK ?IsGameStatePersisted@CThing@@QBE_NXZ x1
+   005252b0 OK ?IsGameStatePersisted@CThing@@QBE_NXZ x1
+   007df3e0 OK ?IsGameStatePersisted@CThing@@QBE_NXZ x1
+   0089f4a0 OK ?IsGameStatePersisted@CThing@@QBE_NXZ x1
+   008ed1f0 NOOBJ
+#54 004c8c00 ?UpdateThingScanInclusion@CThing@@IAEXXZ
+   004c8c00(self) - DEF=WRONG:?UpdateThingScanInclusion@CThing@@QAEXXZ
+   004c8cf0 WRONG ?UpdateThingScanInclusion@CThing@@QAEXXZ x1
+   004c9b80 WRONG ?UpdateThingScanInclusion@CThing@@QAEXXZ x1
+   004c9c10 OK ?UpdateThingScanInclusion@CThing@@IAEXXZ x1
+   004c9ca0 WRONG ?UpdateThingScanInclusion@CThing@@QAEXXZ x1
+#55 008338d0 ?InitialiseFromDef@CThingAICreature@@IAEXXZ
+   008338d0(self) - DEF=OK:?InitialiseFromDef@CThingAICreature@@IAEXXZ
+   00833a70 WRONG ?InitialiseFromDef@CThingAICreature@@QAEXXZ x1
+#56 00863250 ?IsUpdateNeeded@CThingBodyReorienter@@QBE_NXZ
+   00863250(self) - DEF=OK:?IsUpdateNeeded@CThingBodyReorienter@@QBE_NXZ
+   006622d0 WRONG ?IsUpdateNeeded@CThingBodyReorienter@@QAE_NXZ x1
+   00836260 WRONG ?IsUpdateNeeded@CThingBodyReorienter@@QAE_NXZ x1
+#57 00863280 ?GradualReorientBody@CThingBodyReorienter@@AAEXXZ
+   00863280(self) - DEF=OK:?GradualReorientBody@CThingBodyReorienter@@AAEXXZ
+   00863e10 WRONG ?GradualReorientBody@CThingBodyReorienter@@QAEXXZ x1
+#58 00863ca0 ?FillBodyReorientationPossibleIntersecting@CThingBodyReorienter@@AAEXXZ
+   00863ca0(self) - DEF=OK:?FillBodyReorientationPossibleIntersecting@CThingBodyReorienter@@AAEXXZ
+   00863e10 WRONG ?FillBodyReorientationPossibleIntersecting@CThingBodyReorienter@@QAEXXZ x1
+#59 006626e0 ?GetAnimMovementVector@CThingCreatureBase@@QBE?AVC3DVector@@J@Z
+   006626e0(self) - DEF=WRONG:?GetAnimMovementVector@CThingCreatureBase@@QAE?AVC3DVector@@J@Z
+   00692c80 OK ?GetAnimMovementVector@CThingCreatureBase@@QBE?AVC3DVector@@J@Z x1
+#60 00662880 ?ConstructFromParams@CThingCreatureBase@@IAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z
+   00662880(self) - DEF=OK:?ConstructFromParams@CThingCreatureBase@@IAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z
+   006a9dd0 OK ?ConstructFromParams@CThingCreatureBase@@IAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z x1
+   00830360 WRONG ?ConstructFromParams@CThingCreatureBase@@QAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z x1

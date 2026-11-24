@@ -106,7 +106,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
+    bool IsEventButtonReleased(const CInputEvent& event);                 // 0x00687BD0
     bool IsEventAssignableSpecialMoveButton(const CInputEvent& event);   // 0x00687C70
     bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     float GetEventScrollAmount(const CInputEvent& event);             // 0x00687D40 (descriptive)
@@ -127,7 +127,7 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
             if (IsEventButtonPressed(event)) {
                 abilities->TriggerSpecialAbility(PGamePlayerInterface->GetAssignableSpecialMoveIndexForEvent(event));
                 processed.SetHandled();
-            } else if (IsEventButtonHeld(event)) {
+            } else if (IsEventButtonReleased(event)) {
                 processed.SetHandled();
             }
         } else if (IsEventGameAction(0x39, event)) {
@@ -147,7 +147,7 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
                             }
                         }
                     }
-                } else if (IsEventButtonHeld(event)) {
+                } else if (IsEventButtonReleased(event)) {
                     abilities->CycleAssignedAbilities(true);
                     processed.SetHandled();
                 }
@@ -209,7 +209,7 @@ long CPlayer::GetCurrentMode() const { return 2; }
 long CGamePlayerInterface::GetAssignableSpecialMoveIndexForEvent(const CInputEvent&) const { return 0; }
 void CInputProcessGameBase::v00() {}
 bool CInputProcessGameBase::IsEventButtonPressed(const CInputEvent&) { return false; }
-bool CInputProcessGameBase::IsEventButtonHeld(const CInputEvent&) { return false; }
+bool CInputProcessGameBase::IsEventButtonReleased(const CInputEvent&) { return false; }
 bool CInputProcessGameBase::IsEventAssignableSpecialMoveButton(const CInputEvent&) { return false; }
 bool CInputProcessGameBase::IsEventGameAction(long action, const CInputEvent&) { return action == 0x39; }
 static float g_scroll = 0.0f;

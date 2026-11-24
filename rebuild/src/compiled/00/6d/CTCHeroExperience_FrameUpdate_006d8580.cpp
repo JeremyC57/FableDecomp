@@ -107,7 +107,10 @@ public:
         return multiplier;
     }
     long GetExperiencePickUpMultiplier() const { return GetExperiencePickupMultiplierForParam(ExperienceMultiplierParam); }
-    void OnComboMultiplierDecrease();                       // 0x006D7E70
+    private:
+    void OnComboMultiplierDecrease();
+    public:
+                       // 0x006D7E70
     virtual void FrameUpdate();
 };
 

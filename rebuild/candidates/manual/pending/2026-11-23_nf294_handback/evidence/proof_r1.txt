@@ -1,0 +1,17 @@
+##### 00997800 renames: ?MakePath@@YI?AVCWideString@@ABV1@000@Z=?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z
+sections head 2 new 2
+DIFF 0 .drectve .drectve bytes False relocs True 42 62
+bad 1 text_sections_equal=1
+tables H=0 N=0
+##### 00d80e40 renames: ?Alloc@CBriarRoseImposter@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z=?Alloc@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+sections head 26 new 26
+ALL_EQ text_sections_equal=6
+tables H=1 N=1
+##### 00a5eea0 renames: ?EntryExists@CStreamingFontDataBank_Methods@@QAE_NK@Z=?EntryExists@CBankFile@@QBE_NK@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 009ce8d0 renames: ?WriteZeros@CBankFile@@QAEXK@Z=?WritePadding@CBankFile@@AAEXK@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=9
+tables H=1 N=1

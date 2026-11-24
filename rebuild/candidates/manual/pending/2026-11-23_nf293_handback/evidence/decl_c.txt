@@ -1,0 +1,49 @@
+#17 006e9360 GetCombatantInfo [?GetCombatantInfo@CCombatManager@@QBEABUCCombatantInfo@@ABVCThingCreatureBase@@@Z]
+  006e9360(self) leaf=?GetCombatantInfo@CCombatManager@@QBEABUCCombatantInfo@@ABVCThingCreatureBase@@@Z inc=2
+      L34: const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) const;
+      L36: CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature);
+      L39: const CCombatantInfo& CCombatManager::GetCombatantInfo(const CThingCreatureBase& creature) const
+  00663b10 leaf=?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ inc=2
+      L35: CCombatantInfo* GetCombatantInfo(const CThing& thing);
+  008d8ea0 leaf=?FrameUpdate@CModeBlock@NCreatureMode@@UAEXXZ inc=4
+      L47: CCombatantInfo* GetCombatantInfo(const CThingCreatureBase* thing);
+  008e7040 leaf=IsAbilityValid inc=3
+      L126: CCombatantInfo* GetCombatantInfo(const CThingCreatureBase* thing);
+  00979910 leaf=?IsInMeleeWithCombatWheelAttackers@ inc=0
+      L58: const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) const;
+  0097e140 leaf=?GetPBestTargetToFaceForCreature@ inc=2
+      L57: const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) const;
+  no-local-decl rows: 3 (007355f0,008bf500,008bf800)
+#18 006eb600 GetNextActionForCreature [?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@AAVCThingCreatureBase@@@Z]
+  006eb600(self) leaf=?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@AAVCThingCreatureBase@@ inc=4
+      L46: CCombatActionBase* GetNextActionForCreature(CThingCreatureBase& creature);
+      L48: CCombatActionBase* CCombatManager::GetNextActionForCreature(CThingCreatureBase& creature){
+  007e5b90 leaf=FrameUpdate inc=4
+      L92: CCombatActionBase* GetNextActionForCreature(CThingCreatureBase* creature);
+  0091e050 leaf=?Update@CAIStateGroup_HoverAttack@@UAEXXZ inc=3
+      L30: CCombatActionBase* GetNextActionForCreature(CThingCreatureBase* creature);
+#21 00a3ab90 SetStreamInput [?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z]
+  00a3ab90(self) leaf=- inc=0
+      L8: void SetStreamInput(void* input, unsigned long size);
+      L11: void CCompressorZlib::SetStreamInput(void* input, unsigned long sz)
+  009967e0 leaf=WriteZlibCompressed inc=2
+      L25: void SetStreamInput(const void* source, long sourceSize);
+  00996990 leaf=??0CCompressedMemoryDataInputStream inc=1
+      L25: void SetStreamInput(const void* source, long sourceSize);
+  00996a40 leaf=OpenMemorySource inc=1
+      L24: void SetStreamInput(const void* source, long sourceSize);
+  no-local-decl rows: 1 (009c3c20)
+#23 009ebb30 CConsoleCommandParameters [??0CConsoleCommandParameters@@QAE@W4EGenericVarType@@@Z]
+  009ebb30(self) leaf=??0CConsoleCommandParameters@@QAE@W4EGenericVarType@@@Z inc=0
+      L90: CConsoleCommandParameters(EGenericVarType type);
+      L94: CConsoleCommandParameters::CConsoleCommandParameters(EGenericVarType type)
+  00413c50 leaf=?InitialiseConsoleVariables@@YIXXZ inc=1
+      L76: CConsoleCommandParameters(EGenericVarType type);
+  00414f30 leaf=- inc=1
+      L28: CConsoleCommandParameters(EGenericVarType type);
+  00419d90 leaf=?Initialise@NGlobalConsole@@YIXXZ inc=1
+      L52: CConsoleCommandParameters(long type);
+      L53: CConsoleCommandParameters(const CConsoleCommandParameters& other);
+      L105: ConsoleActivateQuest, CConsoleCommandParameters(GENERIC_VAR_TYPE_STRING)));
+  006bbc30 leaf=??0CGameTimeManager@@QAE@AAVCMainGameComponent@@AAVCWorld@@@Z inc=0
+      L29: CConsoleCommandParameters(EGenericVarType type);

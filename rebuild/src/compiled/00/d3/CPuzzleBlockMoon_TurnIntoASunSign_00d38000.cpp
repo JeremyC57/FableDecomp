@@ -23,7 +23,8 @@ class CCPPointerInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-inline void CScriptThing::SetDataString(const CCharString& data) { if (PImp.Data) PImp.Data->SetDataString(data); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA930 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline void CScriptThing::SetDataString(const CCharString& data) { CScriptThing* imp = PImp.Data; if (imp) imp->SetDataString(data); }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

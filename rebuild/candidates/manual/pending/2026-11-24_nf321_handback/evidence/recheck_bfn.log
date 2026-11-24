@@ -1,0 +1,24 @@
+addr       parity           behav  name
+004ff8a0   RELOCATION_MATCH PASS   ForceUnload
+008fd892   RELOCATION_MATCH PASS   Initialise
+00891320   RELOCATION_MATCH PASS   EnableDangerMusic
+00a39c70   WARN RELOC_NAME: ?GetAlignment@CBankFile@@QBEKXZ -> 009cbb80 labelled '_global::GetMember_dword0x98_009cbb80'
+00a39c70   RELOCATION_MATCH PASS   GetAlignment
+00a75b50   MATCH            PASS   RemoveRegionZero
+00b5ead0   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00a667c0   MATCH            PASS   EventScanStart
+00b23b50   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b23b50   WARN RELOC_NAME: ?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z -> 00b2fbf0 labelled '_global::SetMember_dword0xc_00b2fbf0'
+00b23b50   RELOCATION_MATCH PASS   SetCamera
+00abfd70   RELOCATION_MATCH PASS   GetChunkInfo
+
+WINS: 9
+  004ff8a0 RELOCATION_MATCH CWorldMap::?ForceUnload@CWorldMap@@UAEXJ@Z
+  008fd892 RELOCATION_MATCH CAIStateGroup_BirdGroundWander::?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  00891320 RELOCATION_MATCH CGameScriptInterface::?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z
+  00a39c70 RELOCATION_MATCH CWADFile::?GetAlignment@CWADFile@@UBEJXZ
+  00a75b50 MATCH CNavNavigableLeafNode::?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ
+  00b5ead0 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ
+  00a667c0 MATCH CKeyboard::?EventScanStart@CKeyboard@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z
+  00b23b50 RELOCATION_MATCH CEngine::?SetCamera@CEngine@@UAEXPBVCCamera@@@Z
+  00abfd70 RELOCATION_MATCH C3DMeshFileMaterialExtChunk::?GetChunkInfo@C3DMeshFileMaterialExtChunk@@UBE?BVCCharString@@XZ

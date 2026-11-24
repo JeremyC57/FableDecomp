@@ -1,0 +1,29 @@
+00499ce0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00499ce0   WARN SHARED_HEADER_AVAILABLE CAProgressDisplay (engine/CAProgressDisplay.h)
+00499ce0   WARN SHARED_HEADER_AVAILABLE CProgressDisplay (engine/CProgressDisplay.h)
+00499ce0   RELOCATION_MATCH PASS   CProgressDisplay
+0089bdf0   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+0089bdf0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+0089bdf0   RELOCATION_MATCH PASS   EntitySetFacingAngle
+00b23350   MATCH            PASS   CheckPrimitiveVisibility
+00b233c0   MATCH            PASS   AddChildPrimitive
+00b23450   MATCH            PASS   GetEditorAnimation
+00b23460   MATCH            PASS   AddCustomMorphTexture
+00b23490   MATCH            PASS   IsStaticMapNeedingUpdate
+00b23530   MATCH            PASS   OnActivate
+00b23540   MATCH            PASS   OnDeactivate
+00b23750   RELOCATION_MATCH PASS   CIEngine
+00b23cf0   MATCH            PASS   ConvertScreenPosToWorldPos
+00b23d90   MATCH            PASS   IsStaticMapNeedingUpdate
+00b23de0   MATCH            PASS   OnActivate
+00b260b0   RELOCATION_MATCH PASS   CEngine
+00b261d0   RELOCATION_MATCH PASS   ~CEngine
+00b2ab10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00adf1e0   WARN SHARED_HEADER_AVAILABLE CMovableResourceMemoryPool (engine/CMovableResourceMemoryPool.h)
+00adf1e0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00adf1e0   WARN SHARED_HEADER_AVAILABLE CParticleSimulation (engine/CParticleSimulation.h)
+00adf1e0   RELOCATION_MATCH PASS   Clear
+00b23770   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00b23770   WARN SHARED_HEADER_AVAILABLE CIEngine (engine/CIEngine.h)
+00b23770   WARN STANDIN_LEAF ??_GCIEngine@@UAEPAXI@Z (catalog CIEngine::ScalarDeletingDestructor; names another function)
+00b23770   RELOCATION_MATCH PASS   ScalarDeletingDestructor

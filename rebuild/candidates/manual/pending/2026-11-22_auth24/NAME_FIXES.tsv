@@ -1,0 +1,5 @@
+address	correct_symbol	evidence_1	evidence_2	wrong_spelling
+008ee790	?GetBlendedSwordHitEffect@CMaterialDef@@QBE_NJMAAJ0AAM@Z	FableWin.pdb name set (ghidra_out/_fablewin_api.tsv 017acb5f / 02ae9290)	Ego_r.pdb proc record S_GPROC32 `CMaterialDef::GetBlendedSwordHitEffect` (codex27 Ego_r.symbols.txt); the FableWin mangled name gives const, long&, long&, float&	landed 0x008EE790 defines it non-const with pointer parameters (long*, long*, float*); Leaf line is the bare name
+008ee720	?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ	FableWin.pdb name set (017f12b9 / 02ae9200)	Ego_r name set (00913e70) + Ego_d type record	landed 0x008EE720 defines it non-const (QAEJXZ)
+0122dee0	__real@bf800000	the row's own -1.0f literal relocates there (first_witnesses.tsv)	retail 0x0122DEE0 holds 00 00 80 BF = -1.0f (read from Fable.exe)	SPLIT TO QUEUE, not a proven fix: reloc_bindings.tsv binds ?g_fMinusOne@@3MA there (another row's spelling)
+0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	reloc_bindings.tsv binds this symbol there (0x0040ED10)	engine/C3DVector.h line 39	label ?g_NormaliseEpsilon@@3MB (vland RELOC_NAME warning; already queued by the c2_symbol_order batch)

@@ -161,7 +161,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad10[0x114 - 0x10];
 };
 class CCreatureAction_NymphTeleportLimboBase : public CCombatActionBase { public:
-    void DoEffect();
+    protected: void DoEffect(); public:
 };
 
 extern "C" int StandInSink(int, int);

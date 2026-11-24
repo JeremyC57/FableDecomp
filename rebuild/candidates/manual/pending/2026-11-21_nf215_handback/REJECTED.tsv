@@ -1,0 +1,2 @@
+claim	address	reason
+0x006D41F0 "(" test = inline CCharString::operator!=(const char*)	0x006D41F0	grades DIFFER(307v295), the same object as the == spelling; retail has the out-of-line ??9CCharString@@QBE_NPBD@Z at 0x0099E960 (FableWin .cpp cluster) and 0x006D41F0 never calls it

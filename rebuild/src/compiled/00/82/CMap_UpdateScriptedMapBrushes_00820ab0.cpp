@@ -1,3 +1,4 @@
+// Leaf: ?UpdateScriptedMapBrushes@CMap@@IAEXXZ
 // CMap::UpdateScriptedMapBrushes() -- advance every pending scripted-map-brush update area by one game frame: look up its brush by name, count its time left down by 1/frames-per-second, erase the entry once the time runs out, otherwise apply the brush at the progress (duration - time left) / duration
 // Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -59,7 +60,9 @@ class CMap { public:
     CUpdateAreaVector  ScriptedMapBrushUpdateAreas;   // +0x10 (PDB +0x18)
     CScriptedMapBrush* GetScriptedMapBrush(const CCharString& name);         // 0x0081E960
     void ApplyScriptedMapBrushUpdate(float progress, CScriptedMapBrush* brush);   // 0x008203A0
+    protected:
     void UpdateScriptedMapBrushes();
+    public:
 };
 void CMap::UpdateScriptedMapBrushes()
 {

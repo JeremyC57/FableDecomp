@@ -1,0 +1,11 @@
+05:22:17 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6d/CTCFollowed_RemoveEmoteIcon_006d5050.cpp
+05:22:17 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6d/CTCFollowed_RemoveFollower_006d5180.cpp
+05:22:17 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6d/CTCFollowed_FrameUpdate_006d53c0.cpp
+05:22:17 PASS /home/user/FableDecomp/rebuild/src/compiled/00/97/CAIStateGroupBase_SetPushableByHero_0097e330.cpp
+05:22:17 PASS /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupTavernServer_PickUpJug_00967930.cpp
+05:22:17 PASS /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupTavernServer_FillTankard_00967b40.cpp
+05:22:17 PASS /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0.cpp
+05:22:17 PASS /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_ReceivePayment_009692c0.cpp
+05:22:18 PASS /home/user/FableDecomp/rebuild/src/compiled/00/77/CTCShop_AddSaleItemPlacesFromThing_007748e0.cpp
+05:22:18 PASS /home/user/FableDecomp/rebuild/src/compiled/00/84/basicstringchar_find_00841790.cpp
+05:22:18 PASS /home/user/FableDecomp/rebuild/src/compiled/00/99/STLbasicstringunsignedshort_resize_0099cd60.cpp

@@ -18,8 +18,8 @@ struct CAnimFilterOf2Groups {
     CCharString Group2;                                  // +8
     unsigned long Group1CRC;                             // +0xc
     unsigned long Group2CRC;                             // +0x10
-    CAnimFilterOf2Groups(const CCharString& group1, const CCharString& group2) { SetGroups(group1, group2); }
-    void SetGroups(const CCharString& group1, const CCharString& group2);   // 0x0073E040
+    CAnimFilterOf2Groups(const CCharString& group1, const CCharString& group2) { SetCurrentGroupNames(group1, group2); }
+    void SetCurrentGroupNames(const CCharString& group1, const CCharString& group2);   // 0x0073E040 (FableWin; NF292, was SetGroups)
 };
 
 CAnimFilterOf2Groups* CAnimFilterOf2Groups::Clone()

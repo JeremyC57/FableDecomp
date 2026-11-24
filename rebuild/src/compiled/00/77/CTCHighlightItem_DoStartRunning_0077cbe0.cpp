@@ -1,5 +1,5 @@
 // CTCHighlightItem::DoStartRunning() -- spawns the item's highlight particle emitter just above the thing, keeps it, and switches the highlight to running
-// Leaf: DoStartRunning
+// Leaf: ?DoStartRunning@CTCHighlightItem@@IAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CBE0, 186 bytes.
 // Callees: CDefClassBase::GetSubDef<CHighlightItemDef>(CDefPointer&) @ 0x0077D080 (same TU; see the stand-in
@@ -125,7 +125,9 @@ struct CTCHighlightItem {
     long                    LifeTimer;               // +0x10
     C3DVector               StartPos;                // +0x14
     CBaseIntelligentPointer PParticleEmitter;        // +0x20 CIntelligentPointer<CThing>
+    protected:
     void DoStartRunning();
+    public:
 };
 
 void CTCHighlightItem::DoStartRunning()

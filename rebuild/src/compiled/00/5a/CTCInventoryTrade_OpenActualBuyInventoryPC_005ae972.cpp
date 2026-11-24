@@ -134,7 +134,7 @@ class CTCInventoryTrade { public:
 private:
     void ConstructActualBuyInventoryPC();       // 0x005AC10E (Ego_r.pdb + FableWin.pdb: private, AAE)
 public:
-    void ConstructActualSpecialInventoryPC();   // 0x005A8C66
+    private: void ConstructActualSpecialInventoryPC(); public:   // 0x005A8C66
     void OpenActualBuyInventoryPC();
 };
 

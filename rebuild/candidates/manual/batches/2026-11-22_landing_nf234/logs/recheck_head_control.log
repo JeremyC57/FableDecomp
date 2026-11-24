@@ -1,0 +1,6 @@
+00418b7a   RELOCATION_MATCH PASS   ~CMainGameComponent
+0042ea8f   RELOCATION_MATCH PASS   CNewFrontendGameComponent
+00495780   RELOCATION_MATCH PASS   Shutdown
+00496cf0   RELOCATION_MATCH PASS   Run
+0121a2dc   RELOCATION_MATCH PASS   `dynamic initializer for 'PClass''
+01228af1   RELOCATION_MATCH PASS   `dynamic atexit destructor for 'PClass''

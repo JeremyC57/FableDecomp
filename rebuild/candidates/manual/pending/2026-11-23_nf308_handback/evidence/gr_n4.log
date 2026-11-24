@@ -1,0 +1,7 @@
+N 008cc8e0 CCreatureAction_BalverineLungeAttack::Initialise RELOCATION_MATCH flags= [] leaf=Initialise
+N 007fd580 CTCDPhysicalObstruction::UpdateAdditionalImpulse RELOCATION_MATCH flags= [] leaf=
+N 0064f6dc DrawOracleSymbols RELOCATION_MATCH flags= [] leaf=DrawOracleSymbols
+N 0064499c NPlayerGui::CDrawPerceivers::Draw RELOCATION_MATCH flags= [] leaf=Draw
+N 0049e8c0 CWorld::StopAutoSaveProgress RELOCATION_MATCH flags= [] leaf=?StopAutoSaveProgress@CWorld@@IAEXXZ
+N 009e9f20 NProgressDisplay::StopProgress RELOCATION_MATCH flags= [] leaf=
+GR_DONE

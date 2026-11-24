@@ -1,0 +1,32 @@
+## HEAD: HEAD 008cd470 + HEAD 008ceae0
+duplicates 0
+
+watched unresolved 8
+008cd470.obj : error LNK2019: unresolved external symbol "public: void __thiscall CTCAssassinRush::SetFinalAction(struct CCountedAction)" (?SetFinalAction@CTCAssassinRush@@QAEXUCCountedAction@@@Z) referenced in function "public: virtual void __thiscall CCreatu
+008cd470.obj : error LNK2019: unresolved external symbol "public: void __thiscall CTCAssassinRush::SetPTarget(class CThing *,bool)" (?SetPTarget@CTCAssassinRush@@QAEXPAVCThing@@_N@Z) referenced in function "public: virtual void __thiscall CCreatureAction_CastA
+008cd470.obj : error LNK2019: unresolved external symbol "public: __thiscall CCharString::~CCharString(void)" (??1CCharString@@QAE@XZ) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::Initialise(void)" (?Initialise@CCre
+008cd470.obj : error LNK2019: unresolved external symbol "public: class CTCBase * __thiscall CThing::AddTC(class CCharString const &,bool,class CTCParamsBase const *)" (?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z) referenced in functio
+008cd470.obj : error LNK2019: unresolved external symbol "public: __thiscall CCharString::CCharString(char const *,long)" (??0CCharString@@QAE@PBDJ@Z) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::Initialise(void)" (
+008cd470.obj : error LNK2019: unresolved external symbol "public: void __thiscall CThing::RemoveTC(enum ETCInterfaceType)" (?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::
+008cd470.obj : error LNK2019: unresolved external symbol "public: class CBaseObject * __thiscall CBaseIntelligentPointer::GetPItem(void)const " (?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ) referenced in function "public: virtual void __thiscall C
+008cd470.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall CCombatActionBase::Initialise(void)" (?Initialise@CCombatActionBase@@UAEXXZ) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::Ini
+## NEW: new 008cd470 + HEAD 008ceae0
+duplicates 0
+
+watched unresolved 6
+008cd470.obj : error LNK2019: unresolved external symbol "public: void __thiscall CTCAssassinRush::SetPTarget(class CThing *,bool)" (?SetPTarget@CTCAssassinRush@@QAEXPAVCThing@@_N@Z) referenced in function "public: virtual void __thiscall CCreatureAction_CastA
+008cd470.obj : error LNK2019: unresolved external symbol "public: __thiscall CCharString::~CCharString(void)" (??1CCharString@@QAE@XZ) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::Initialise(void)" (?Initialise@CCre
+008cd470.obj : error LNK2019: unresolved external symbol "public: class CTCBase * __thiscall CThing::AddTC(class CCharString const &,bool,class CTCParamsBase const *)" (?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z) referenced in functio
+008cd470.obj : error LNK2019: unresolved external symbol "public: __thiscall CCharString::CCharString(char const *,long)" (??0CCharString@@QAE@PBDJ@Z) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::Initialise(void)" (
+008cd470.obj : error LNK2019: unresolved external symbol "public: void __thiscall CThing::RemoveTC(enum ETCInterfaceType)" (?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::
+008cd470.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall CCombatActionBase::Initialise(void)" (?Initialise@CCombatActionBase@@UAEXXZ) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::Ini
+## POSITIVE CONTROL: NEW + a renamed copy of the 008ceae0 object
+duplicates 1
+dup_008ceae0.obj : warning LNK4006: "public: void __thiscall CTCAssassinRush::SetFinalAction(class CCountedPointer<class CCreatureActionBase>)" (?SetFinalAction@CTCAssassinRush@@QAEXV?$CCountedPointer@VCCreatureActionBase@@@@@Z) already defined in 008ceae0.obj
+watched unresolved 6
+008cd470.obj : error LNK2019: unresolved external symbol "public: void __thiscall CTCAssassinRush::SetPTarget(class CThing *,bool)" (?SetPTarget@CTCAssassinRush@@QAEXPAVCThing@@_N@Z) referenced in function "public: virtual void __thiscall CCreatureAction_CastA
+008cd470.obj : error LNK2019: unresolved external symbol "public: __thiscall CCharString::~CCharString(void)" (??1CCharString@@QAE@XZ) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::Initialise(void)" (?Initialise@CCre
+008cd470.obj : error LNK2019: unresolved external symbol "public: class CTCBase * __thiscall CThing::AddTC(class CCharString const &,bool,class CTCParamsBase const *)" (?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z) referenced in functio
+008cd470.obj : error LNK2019: unresolved external symbol "public: __thiscall CCharString::CCharString(char const *,long)" (??0CCharString@@QAE@PBDJ@Z) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::Initialise(void)" (
+008cd470.obj : error LNK2019: unresolved external symbol "public: void __thiscall CThing::RemoveTC(enum ETCInterfaceType)" (?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::
+008cd470.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall CCombatActionBase::Initialise(void)" (?Initialise@CCombatActionBase@@UAEXXZ) referenced in function "public: virtual void __thiscall CCreatureAction_CastAssassinRush::Ini

@@ -87,7 +87,7 @@ public:
     bool          GlobalRumble;                                 // +0x18
     long          LifeTimer;                                    // +0x1c
     static CThing* __fastcall Create(const C3DVector& pos, float strength, float length, bool globalRumble);
-    void Construct(const C3DVector& pos);                       // 0x007F18B0
+    private: void Construct(const C3DVector& pos); public:                       // 0x007F18B0
 };
 
 CThing* __fastcall CTCDRumble::Create(const C3DVector& pos, float strength, float length, bool globalRumble)

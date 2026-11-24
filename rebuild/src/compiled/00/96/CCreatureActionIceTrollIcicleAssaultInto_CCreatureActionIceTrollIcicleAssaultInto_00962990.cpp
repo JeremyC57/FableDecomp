@@ -10,6 +10,7 @@
 //   engine/CCombatActionBase.h (TARGETCTOR: the Ego_r.pdb (creature, target, priority, sound) constructor 0x00857F30) and engine/CSoundPair.h.
 //   Evidence: Ego_r.pdb + FableWin.pdb ??0CCreatureAction_IceTrollIcicleAssaultInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z (the class's only
 //   non-copy constructor); the ported caller CAIStateGroup_IceTrollIcicleAssault::Update 0x009627C0 binds it.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

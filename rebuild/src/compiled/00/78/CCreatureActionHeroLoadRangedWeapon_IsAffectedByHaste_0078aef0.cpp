@@ -1,4 +1,50 @@
-bool __fastcall CCreatureAction_HeroLoadRangedWeapon_IsAffectedByHaste()
+// Leaf: ?IsAffectedByHaste@CCreatureAction_HeroLoadRangedWeapon@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_HEROLOADRANGEDWEAPON_RTTI_DECLS
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGOBJECT_CREATE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_FORCEINLINE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_IS_THING_ALIVE_NOINLINE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
+#define FABLE_RETAIL_CCREATUREACTION_HEROLOADRANGEDWEAPON_CLASS
+#define FABLE_RETAIL_CTCWEAPON
+#define FABLE_RETAIL_CTCWEAPON_LOADING
+#define FABLE_RETAIL_CTCWEAPON_GETCREATEDSHOTDEFGLOBALINDEX
+#define FABLE_RETAIL_CTCWEAPON_GETMISSILELOADCARRYSLOT
+#define FABLE_RETAIL_CTCCARRYING_PUTTHING
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_COUNTREF
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingObject.h"
+#include "engine/CThingShotDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/ThingAlive.h"
+#include "engine/CTCWeapon.h"
+#include "engine/CTCCarrying.h"
+#include "engine/CCreatureAction_HeroLoadRangedWeapon.h"
+bool CCreatureAction_HeroLoadRangedWeapon::IsAffectedByHaste() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v4, NF324): CCreatureAction_HeroLoadRangedWeapon_IsAffectedByHaste -> CCreatureAction_HeroLoadRangedWeapon::IsAffectedByHaste, the RTTI-placed PDB member; class model: engine/CCreatureAction_HeroLoadRangedWeapon.h opt-in FABLE_RETAIL_CCREATUREACTION_HEROLOADRANGEDWEAPON_CLASS, FABLE_RETAIL_CCREATUREACTION_HEROLOADRANGEDWEAPON_RTTI_DECLS (preamble of CCreatureActionHeroLoadRangedWeapon_PerformAction_0078b070.cpp).

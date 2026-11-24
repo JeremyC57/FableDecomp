@@ -53,7 +53,7 @@ class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeo
     virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCombatAction_Guildmaster_HealFollowersRelease : public CCombatActionBase { public:
-    CCombatAction_Guildmaster_HealFollowersRelease(CThingCreatureBase* owner);   // 0x008E4860
+    CCombatAction_Guildmaster_HealFollowersRelease(CThingCreatureBase& owner);   // 0x008E4860 (Ego_r + FableWin AAV)
 };
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
@@ -82,6 +82,6 @@ void NCreatureMode::CModeGuildmasterPowerUpHeal::FrameUpdate()
     ParentThing->GetInterface(&boss, 0xad);
     if (remaining <= 0 || boss->CountLivingHelpers() == 0) {
         CThingCreatureBase* creature = ParentThing;
-        creature->SetCurrentAction(CCombatAction_Guildmaster_HealFollowersRelease(creature));
+        creature->SetCurrentAction(CCombatAction_Guildmaster_HealFollowersRelease(*creature));
     }
 }

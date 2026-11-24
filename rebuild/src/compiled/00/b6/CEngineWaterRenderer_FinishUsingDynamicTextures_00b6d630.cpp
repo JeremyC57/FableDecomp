@@ -1,3 +1,4 @@
+// Leaf: ?FinishUsingDynamicTextures@CEngineWaterRenderer@@AAEXXZ
 // CEngineWaterRenderer::FinishUsingDynamicTextures() -- hand the four dynamic water textures back to the engine's texture pool and clear their slots
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6D630, length 103 bytes (+ int3 padding).
 // Callees: the texture pool release @ 0x00F36F00 four times (on the global @ 0x01436E98 + 0x3190, kept in edi).
@@ -30,7 +31,9 @@ class CEngineWaterRenderer { public:
     long          m_seaBumpSlot;                   // +0x1f0
     long           m_pWaterBumpTexture;             // +0x1f4 (scratch texture handle)
     long          m_waterBumpSlot;                 // +0x1f8
+    private:
     void FinishUsingDynamicTextures();
+    public:
 };
 
 void CEngineWaterRenderer::FinishUsingDynamicTextures()

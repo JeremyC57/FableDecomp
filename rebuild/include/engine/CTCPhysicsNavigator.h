@@ -55,6 +55,14 @@ public:
     virtual void SetForcedToMovePos(const C3DVector&, bool);        // slot 34, 0x00727120
     virtual void EnableNavigator(bool);                             // slot 40, 0x00727110
     virtual bool IsNavigationEnabled() const;                       // slot 41, 0x00727100
+#ifdef FABLE_RETAIL_CTCPHYSICSNAVIGATOR_MOVE_PASS27
+    // 00726CE0: both donor PDBs, native vtable slot 87, and the three native movement helpers.
+    virtual void Move();
+    void PerformForcedMovement(std::vector<CThing*>& thing_list, const C3DVector& impulse, C3DVector& current_pos);
+private:
+    C2DBoxI GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const;
+    void UpdateAdditionalImpulse();
+#endif
 protected:
 #pragma pack(push, 1)
     bool Navigating;                                                // +0x88

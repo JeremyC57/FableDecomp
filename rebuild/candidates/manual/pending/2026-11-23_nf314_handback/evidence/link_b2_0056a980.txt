@@ -1,0 +1,10 @@
+## HEAD set: H_0056a980.obj H_00783680.obj
+duplicates 0
+
+UNRESOLVED 1 ?DetachAll@CTCBoastingCrowdControl@@QAEXXZ
+UNRESOLVED 1 ?OnNoBoastsRemain@CTCCreatureGroupBoastingCrowd@@QAEXXZ
+## new set: N_0056a980.obj H_00783680.obj
+duplicates 0
+
+UNRESOLVED 1 ?OnNoBoastsRemain@CTCCreatureGroupBoastingCrowd@@QAEXXZ
+LK_DONE

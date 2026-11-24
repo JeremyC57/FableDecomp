@@ -1,3 +1,4 @@
+// Leaf: ?HasHitsCausedRush@CAIStateGroup_JackOfBladesStage1@@IAE_NXZ
 // CAIStateGroup_JackOfBladesStage1::HasHitsCausedRush() -- true when the boss's hit counter has reached the will-power indicator def's rush threshold (a zero threshold never rushes)
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00972340, length 142 bytes (+ int3 padding).
@@ -83,7 +84,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_JackOfBladesStage1 : CAIStateGroupBase {
+    protected:
     bool HasHitsCausedRush();
+    public:
 };
 
 bool CAIStateGroup_JackOfBladesStage1::HasHitsCausedRush()

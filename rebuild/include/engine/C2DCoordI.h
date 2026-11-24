@@ -15,7 +15,13 @@ class C2DCoordI { public: long X,Y;C2DCoordI(){}C2DCoordI(long x,long y):X(x),Y(
     C2DVector ToC2DCoordF() const;
 #ifdef FABLE_RETAIL_C2DCOORDI_NOTEQUAL
     // Retail opt-in (row 0x0064546F CDrawQuickAccessIcons::DrawEffectAtPos): FableWin.pdb ??9C2DCoordI@@QBE_NABV0@@Z (inline): X then Y compare.
+#ifdef FABLE_RETAIL_C2DCOORDI_ORIGINAL_COMPARE_PASS27
+    // FableWin 018867C0 / 0208EA20: != negates the two-field equality.
+    inline bool operator==(const C2DCoordI& coord) const { return X == coord.X && Y == coord.Y; }
+    inline bool operator!=(const C2DCoordI& coord) const { return !(*this == coord); }
+#else
     FABLE_FORCEINLINE bool operator!=(const C2DCoordI& coord) const { return X!=coord.X || Y!=coord.Y; }
+#endif
 #endif
 };
 #include "engine/C2DVector.h"

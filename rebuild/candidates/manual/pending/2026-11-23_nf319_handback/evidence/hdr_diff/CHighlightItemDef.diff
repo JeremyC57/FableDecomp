@@ -1,0 +1,46 @@
+--- orig/hdr/engine/CHighlightItemDef.h	2026-11-23 23:09:04.467958162 +0000
++++ hdr/engine/CHighlightItemDef.h	2026-11-23 23:09:04.466186024 +0000
+@@ -14,6 +14,15 @@
+ class CHighlightItemDef:public CSubDefClassBase {public:
+  static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CHighlightItemDef");}
+  long ParticleEmitter,PickupParticleEmitter;float RotationSpeed,DistanceFromGround,BobDistance,BobTime;bool StartAsRunning;float StartAsRunningDelay;
++#ifdef FABLE_RETAIL_CHIGHLIGHTITEMDEF_RTTI_DECLS
++    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base CSubDefClassBase chain declares at the same slot (no new slot).
++    // 0x0077CE00 vtable 0x0123BD14 slot 18: ?Transfer@CHighlightItemDef@@UAEXAAVCPersistContext@@@Z (Ego_r.pdb + FableWin.pdb)
++public:
++    virtual void Transfer(CPersistContext&);                          // 0x0077CE00
++private:
++#endif
+ };
+ #else
+ #pragma pack(push, 1)
+@@ -42,17 +51,17 @@
+ #pragma pack(pop)
+ #endif
+ 
+-FABLE_STATIC_ASSERT(sizeof(CHighlightItemDef) == 0x48);
++FABLE_STATIC_ASSERT_AT(45, sizeof(CHighlightItemDef) == 0x48);
+ #ifndef FABLE_RETAIL_CHIGHLIGHTITEMDEF
+-FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(47, offsetof(CHighlightItemDef, __vftable) == 0x0);
+ #endif
+-FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, ParticleEmitter) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, PickupParticleEmitter) == 0x2c);
+-FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, RotationSpeed) == 0x30);
+-FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, DistanceFromGround) == 0x34);
+-FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, BobDistance) == 0x38);
+-FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, BobTime) == 0x3c);
+-FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, StartAsRunning) == 0x40);
+-FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, StartAsRunningDelay) == 0x44);
++FABLE_STATIC_ASSERT_AT(49, offsetof(CHighlightItemDef, ParticleEmitter) == 0x28);
++FABLE_STATIC_ASSERT_AT(50, offsetof(CHighlightItemDef, PickupParticleEmitter) == 0x2c);
++FABLE_STATIC_ASSERT_AT(51, offsetof(CHighlightItemDef, RotationSpeed) == 0x30);
++FABLE_STATIC_ASSERT_AT(52, offsetof(CHighlightItemDef, DistanceFromGround) == 0x34);
++FABLE_STATIC_ASSERT_AT(53, offsetof(CHighlightItemDef, BobDistance) == 0x38);
++FABLE_STATIC_ASSERT_AT(54, offsetof(CHighlightItemDef, BobTime) == 0x3c);
++FABLE_STATIC_ASSERT_AT(55, offsetof(CHighlightItemDef, StartAsRunning) == 0x40);
++FABLE_STATIC_ASSERT_AT(56, offsetof(CHighlightItemDef, StartAsRunningDelay) == 0x44);
+ 
+ #endif // FABLE_ENGINE_CHIGHLIGHTITEMDEF_H

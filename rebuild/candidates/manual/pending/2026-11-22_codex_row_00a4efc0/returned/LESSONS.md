@@ -1,0 +1,5 @@
+# What closed the row
+
+The decision order in the position block could be fixed without rewriting compressed_size < uncompressed_size. Using the fuller CArray declaration alone fixed the comparison and disturbed the copy kernel. Changing the shared subscript’s release assertion footprint fixed both under the original ternary allocator. Changing the quaternion copy constructor lacked PDB support. Changing the loop walker sometimes altered inlining enough to add two malloc and free calls. Restoring the native call boundaries under that experiment recovered the earlier residue.
+
+Both PDB type records describe CQuaternion as four floats with a default and four-float constructor. The donor records CArray’s debug size check and debugger break. The donor allocator diagnostic is a message for the element-count multiplication overflow. The native witness at 00BD2DD7 confirms a real wide multiply and overflow check. Keep the accepted common allocator. Its evidence-backed formal name elements remains queued separately. The vector-word equality formal in the supplied opt-in uses the recorded spelling rhs.

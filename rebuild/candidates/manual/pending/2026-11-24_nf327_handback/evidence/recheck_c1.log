@@ -1,0 +1,12 @@
+addr       parity           behav  name
+007eba20   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+007eba20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+007eba20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+007eba20   RELOCATION_MATCH PASS   CCreatureAction_LookThroughWindow
+00842460   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00842460   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00842460   RELOCATION_MATCH PASS   CCreatureAction_ActivateZTarget
+
+WINS: 2
+  007eba20 RELOCATION_MATCH CCreatureAction_LookThroughWindow::??0CCreatureAction_LookThroughWindow@@QAE@AAVCThingCreatureBase@@@Z
+  00842460 RELOCATION_MATCH CCreatureAction_ActivateZTarget::??0CCreatureAction_ActivateZTarget@

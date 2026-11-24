@@ -1,0 +1,147 @@
+// CInputProcessUseRangedWeapon::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- outside ranged mode, forward the input to ProcessRangedAttackInput when the hero's primary carried thing is a live projectile weapon; in ranged mode, when the hero carries a melee weapon and the primary weapon is not an unloaded analogue-loading projectile weapon, cancel aiming, reset the projectile mode and leave player mode 0x22
+// Leaf: ProcessInput
+// Naming (NF173, 2026-11-20): q11685: 0x005DA950 is FableWin.pdb 0x0239B3E0 / Ego_r.pdb 0x0063A790 ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ (IsAnalogueLoading is 0x005DA8F0); respelled in place in the existing local CTCWeapon model.
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0068F9D0, length 444 bytes (`ret 8`).
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the player's character pointer +0x34); the interface map LowerBound
+//   const @ 0x004365B0 / non-const @ 0x0040F020; CTCCarrying::GetThingInPrimarySlot @ 0x006A1440; CTCWeapon::IsProjectileWeapon
+//   @ 0x005DAA40 / IsProjectileWeaponLoaded @ 0x005DA980 / IsAnalogueLoading @ 0x005DA950; CTCCarrying::IsThingCarryingRangedWeapon @ 0x006A1620
+//   (static `__fastcall`); ProcessRangedAttackInput @ 0x0068EF50; CTCHeroRangedAttacks::CancelAimingWeapon @ 0x00789FF0 /
+//   ResetProjectileWeaponMode @ 0x00789B30; CThing::GetPlayer @ 0x004C7A30; CPlayer::RemoveMode @ 0x00634190.
+// Layout: CInputProcessGameBase (MyPlayer +0x18); retail CPlayer: character pointer +0x34, ranged-mode flag +0x218 (descriptive);
+//   CThing interface bits +0x20 / map +0x44 / dead bit +0x91 as the landed CTCWound ctor 0x00757680. Interfaces 0x46 CTCCarrying,
+//   0x48 CTCWeapon, 0x81 CTCHeroRangedAttacks.
+// Shape: the carrying and ranged-attacks lookups are pointer-returning inline GetInterface forms (`xor ecx,ecx` default); the weapon
+//   test is the out-parameter form inside one && chain. The carrying component is a NAMED local: that lets the two lookup-key
+//   temporaries share one stack slot (first half: the 4-byte frame word; second half: the dead `event` slot) -- chaining
+//   `GetConstInterface(0x46)->GetThingInPrimarySlot()` gives each key its own slot (8-byte frame).
+// Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
+#include "fable_compiler.h"
+// NF240 (q12673): 0x006A1620 is ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z (Ego_r.pdb 0x006C60F0 / FableWin.pdb
+//   0x02214CE0; the melee predicate is 0x006A15A0). CTCCarrying (with GetThingInPrimarySlot 0x006A1440) and ETCInterfaceType come from
+//   engine/CTCCarrying.h (PLAYERHIT_PASS26 opt-in, as the witness 0x0091EC30); the local CTCCarrying model and empty enum are gone.
+#define FABLE_RETAIL_CTCCARRYING_PLAYERHIT_PASS26
+#include "engine/CTCCarrying.h"
+class CInputEvent;
+class CProcessedInput;
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CPlayer;
+class CThing {
+public:
+    unsigned char _pad00[0x20];
+    unsigned long m_presentBits[9];                // +0x20
+    CInterfaceMap m_interfaces;                    // +0x44
+    unsigned char _pad54[0x3d];
+    unsigned char m_flags91;                       // +0x91 bit 0: dead
+    CPlayer& GetPlayer();                          // 0x004C7A30
+    template<class T> FABLE_FORCEINLINE T* GetConstInterface(long interfaceType) const
+    {
+        T* result = 0;
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            result = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
+        }
+        return result;
+    }
+    template<class T> FABLE_FORCEINLINE T* GetInterface(long interfaceType)
+    {
+        T* result = 0;
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            result = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
+        }
+        return result;
+    }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
+            return true;
+        }
+        return false;
+    }
+};
+class CTCWeapon { public:
+    bool IsProjectileWeapon() const;                     // 0x005DAA40
+    bool IsProjectileWeaponLoaded() const;   // Ego_r/FableWin ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ (agentNF16)               // 0x005DA980
+    bool IsProjectileWeaponAutoLoading() const;                      // 0x005DA950 (Ego_r.pdb / FableWin.pdb)
+};
+class CTCHeroRangedAttacks { public:
+    void CancelAimingWeapon();                     // 0x00789FF0
+    void ResetProjectileWeaponMode();              // 0x00789B30
+};
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+class CPlayer { public:
+    unsigned char           _pad00[0x34];
+    CIntelligentPointer<CThing> PCharacter;            // +0x34
+    unsigned char           _pad3c[0x218 - 0x3c];
+    bool                    InRangedWeaponMode;    // +0x218 (descriptive)
+    CThing* GetCharacter() const { return PCharacter.GetPItem(); }
+    void RemoveMode(EPlayerMode mode);                    // 0x00634190
+};
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+class CInputProcessGameBase {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);   // slot 4
+    unsigned char           _pad04[0x10];
+    CWorld*                 World;                 // +0x14
+    CPlayer*                MyPlayer;              // +0x18
+    CGameDefinitionManager* DefinitionManager;     // +0x1c
+    CMainGameComponent*     Component;             // +0x20
+    CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
+};
+class CInputProcessUseRangedWeapon : public CInputProcessGameBase {
+public:
+    void ProcessRangedAttackInput(const CInputEvent& event, CProcessedInput& processed, CThing* weapon);   // 0x0068EF50
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
+};
+
+void CInputProcessUseRangedWeapon::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
+{
+    CThing* hero = MyPlayer->GetCharacter();
+    if (!MyPlayer->InRangedWeaponMode) {
+        CTCCarrying* carrying = hero->GetConstInterface<CTCCarrying>(0x46);
+        CThing* weapon = carrying->GetThingInPrimarySlot();
+        CTCWeapon* tcWeapon;
+        if (weapon && !(weapon->m_flags91 & 1) && weapon->GetInterface(&tcWeapon, 0x48) && tcWeapon->IsProjectileWeapon())
+            ProcessRangedAttackInput(event, processed, weapon);
+        return;
+    }
+    if (!CTCCarrying::IsThingCarryingRangedWeapon(*hero))
+        return;
+    CTCCarrying* carrying = hero->GetConstInterface<CTCCarrying>(0x46);
+    CThing* weapon = carrying->GetThingInPrimarySlot();
+    CTCWeapon* tcWeapon;
+    if (!weapon || (weapon->m_flags91 & 1) || !weapon->GetInterface(&tcWeapon, 0x48) || tcWeapon->IsProjectileWeaponLoaded()
+        || !tcWeapon->IsProjectileWeaponAutoLoading()) {
+        CTCHeroRangedAttacks* rangedAttacks = hero->GetInterface<CTCHeroRangedAttacks>(0x81);
+        rangedAttacks->CancelAimingWeapon();
+        rangedAttacks->ResetProjectileWeaponMode();
+        hero->GetPlayer().RemoveMode((EPlayerMode)(0x22));
+    }
+}

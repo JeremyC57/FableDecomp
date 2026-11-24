@@ -1,0 +1,9 @@
+## HEAD set: H_00b2c460.obj H_009fc380.obj
+duplicates 0
+
+UNRESOLVED 1 ?AddResource@CResourceBank@@QAEXPAVCResource@@@Z
+## new set: N_00b2c460.obj H_009fc380.obj
+duplicates 0
+
+UNRESOLVED 1 ?AddResource@CResourceBank@@QAEXAAVCResource@@@Z
+LK_DONE

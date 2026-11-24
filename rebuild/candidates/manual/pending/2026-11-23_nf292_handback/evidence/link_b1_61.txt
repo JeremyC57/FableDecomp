@@ -1,0 +1,13 @@
+## HEAD set: H_007306c0.obj H_007502d0.obj H_00730c00.obj H_00730dd0.obj H_0070ec30.obj H_0070d920.obj H_00787580.obj
+duplicates 2
+H_00730c00.obj : warning LNK4006: "public: bool __thiscall CThingBaseDef::GetSubDef(class CDefPointer<class CAnimatingObjectDef> *)const " (?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAnimatingObjectDef@@@@@Z) already defined in H_007306c0.obj; second de
+H_00730dd0.obj : warning LNK4006: "public: bool __thiscall CThingBaseDef::GetSubDef(class CDefPointer<class CAnimatingObjectDef> *)const " (?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAnimatingObjectDef@@@@@Z) already defined in H_007306c0.obj; second de
+UNRESOLVED 2 ?Reset@CAnimateThing@@QAEXXZ
+UNRESOLVED 3 ?SetBlocking@CTCSwitchableNavigation@@QAEX_N@Z
+UNRESOLVED 1 ?SetMainAnim@CAnimateThing@@QAEXABVCAnimInit@@@Z
+## new set: N_007306c0.obj N_007502d0.obj N_00730c00.obj N_00730dd0.obj H_0070ec30.obj H_0070d920.obj H_00787580.obj
+duplicates 2
+N_00730c00.obj : warning LNK4006: "public: bool __thiscall CThingBaseDef::GetSubDef(class CDefPointer<class CAnimatingObjectDef> *)const " (?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAnimatingObjectDef@@@@@Z) already defined in N_007306c0.obj; second de
+N_00730dd0.obj : warning LNK4006: "public: bool __thiscall CThingBaseDef::GetSubDef(class CDefPointer<class CAnimatingObjectDef> *)const " (?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAnimatingObjectDef@@@@@Z) already defined in N_007306c0.obj; second de
+UNRESOLVED 1 ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z
+LK_DONE

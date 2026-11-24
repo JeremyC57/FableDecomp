@@ -1,3 +1,4 @@
+// Leaf: ?UpdateMaintainedEvents@CKeyboard@@IAEXXZ
 // CKeyboard::UpdateMaintainedEvents() -- walk the maintained-event list (+0x340c) and restamp every maintained event of kind 2 (GetType @ 0x00A03B40) with the current time: GetTickCount (import 0x0143FDFC, unsigned) scaled by 0.001f (0x01266300) into the event's +0x2c
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A66880, length 96 bytes.
 // Callees: CInputEvent::GetType @ 0x00A03B40 (on the node's event at +0xc), GetTickCount through the import table (held in ebx across the loop).
@@ -32,7 +33,9 @@ class CKeyboard { public:                                 // retail layout: 256 
     SMaintainedEventNode* m_pMaintainedEvents;     // +0x340c list<CMaintainedEvent> head
     bool EventScanStart(CInputEventScanInfo& scan, CInputEvent& event);
     void AddMaintainedEventsToEventStore();
+    protected:
     void UpdateMaintainedEvents();
+    public:
 };
 extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount(void);   // import 0x0143FDFC = KERNEL32 GetTickCount (Fable.exe import table), not timeGetTime
 extern const float g_timeScale_01266300;           // 0x01266300 = 0.001f (milliseconds to seconds)

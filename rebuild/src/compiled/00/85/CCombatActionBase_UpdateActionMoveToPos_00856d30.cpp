@@ -1,5 +1,5 @@
 // CCombatActionBase::UpdateActionMoveToPos() -- targets the creature's current position, or the action's next position when the animation moves the creature, uses action movement, or a final position was forced
-// Leaf: UpdateActionMoveToPos
+// Leaf: ?UpdateActionMoveToPos@CCombatActionBase@@MAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00856D30, 155 bytes of code (protected virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, twice through one `lea edi,[esi+8]`),
@@ -49,7 +49,9 @@ class CCombatActionBase { public:
     bool PreferredFinalPosSet;                  // +0xdd
     bool IsUsingActionMovement();               // 0x00692A50 (CCreatureActionBase)
     void SetMoveToPos(const C3DVector& pos);    // 0x006929E0 (CCreatureActionBase)
-    void UpdateActionMoveToPos();
+    protected:
+    virtual void UpdateActionMoveToPos();
+    public:
 };
 
 void CCombatActionBase::UpdateActionMoveToPos()

@@ -1,0 +1,2 @@
+address	entry	reason
+0x00738f90	0x00738980 (ENTRIES line 15)	binder `T**` -> `const T**` (+ `const` local) is byte-equal in .text, but the compiler-emitted /alternatename .drectve line of the member-template declaration changes with it (evidence/drectve_00738f90.txt, evidence/rejected_00738f90.diff): a .drectve change is T3 (prefix; NF303 Q2). Reverted; not in rows/

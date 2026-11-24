@@ -1,0 +1,7 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00644424	?GetMultiplayerColour@PlayerManagerMethods@@QBE?AVCRGBColour@@J@Z	?GetMultiplayerColour@CPlayerManager@@QBE?AVCRGBColour@@J@Z	0x00449b60
+0x00644424	?GetPlayer@PlayerManagerMethods@@QAEAAVCPlayer@@J@Z	?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z	0x004498c0
+0x00b92070	?ClipBoundingBox@CShadowClipVolumeMethods@@QBE_NABVC3DBoundingBox@@AA_N@Z	?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@AA_N@Z	0x00b4ced0
+0x009f35d0	?GetWidth@CSurface_Methods@@QBEKXZ	?GetWidth@CSurface@@QBEKXZ	0x00415bd0
+0x004166a8	?CreatePlayers@CPlayerManager_Methods@@QAEXXZ	?CreatePlayers@CPlayerManager@@QAEXXZ	0x0044a530

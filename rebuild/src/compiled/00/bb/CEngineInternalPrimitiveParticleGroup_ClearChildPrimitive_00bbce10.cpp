@@ -1,3 +1,4 @@
+// Leaf: ?ClearChildPrimitive@CEngineInternalPrimitiveParticleGroup@@UAEXK@Z
 // CEngineInternalPrimitiveParticleGroup::ClearChildPrimitive(unsigned long id) -- frees child id `id`: erases its handle node from the primitive list, marks the id slot unused and returns the id to the free list (removed first, then appended)
 // Grade: RELOCATION_MATCH -- FreePrimitiveIDs typed as the Ego_r.pdb list<long> (the unsigned id binds const long&
 //   through a converted temporary, so push_back stores it from edi), direct PrimitiveIDToIterator[id] uses instead of an
@@ -84,7 +85,7 @@ public:
     CHandleList    Primitives;                     // +0x48
     CIteratorArray PrimitiveIDToIterator;          // +0x4c
     CIdList        FreePrimitiveIDs;               // +0x58
-    void ClearChildPrimitive(unsigned long id);
+    virtual void ClearChildPrimitive(unsigned long id);
 };
 
 void CEngineInternalPrimitiveParticleGroup::ClearChildPrimitive(unsigned long id)

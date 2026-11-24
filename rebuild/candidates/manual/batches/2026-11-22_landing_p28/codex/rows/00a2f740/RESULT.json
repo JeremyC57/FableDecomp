@@ -1,0 +1,34 @@
+{
+  "include_snapshot": "cd9640ec9d46c9ba5ee9fae1afe9053ebae20b5c7dea761b4f172438c83014aa",
+  "tag": "handback_cd9640ec9d_0456118",
+  "compile": {
+    "row": "00a2f740",
+    "tag": "handback_cd9640ec9d_0456118",
+    "source_sha256": "0456118c95c433fcdbd4e0d7ce9bf101adff4507bf813e0b15afb07ed050ebd6",
+    "requested_leaf": "?InitialiseFromFileData@C3DMeshStats@@QAE_NABVCCharString@@ABVC3DMeshFile@@_NPAVCMovableResourceMemoryPool@@@Z",
+    "flags": [
+      "/Gr"
+    ],
+    "retail_bytes": 3051,
+    "leaf": "?InitialiseFromFileData@C3DMeshStats@@QAE_NABVCCharString@@ABVC3DMeshFile@@_NPAVCMovableResourceMemoryPool@@@Z",
+    "status": "DIFFER",
+    "object_bytes": 3017,
+    "matched_instructions": 666,
+    "retail_instructions": 944,
+    "built_instructions": 935,
+    "hunks": 148,
+    "same_size_different_bytes": null,
+    "pickany_complete": true,
+    "pickany_eq": 27,
+    "pickany_neq": 0,
+    "pickany_referenced_neq": 0
+  },
+  "tested": true,
+  "test_sha256": "0948597f0a5dbee18f8c651780a3d867eb663c5b7efdffb2d8a2e85543be5325",
+  "grade": "DIFFER",
+  "symbol_table_checked": true,
+  "effective_pickany_eq": 27,
+  "effective_pickany_neq": 0,
+  "effective_pickany_referenced_neq": 0,
+  "strong_same_tu_copies": "GetRoot 101 bytes, AllocateBuffers 183, PackNames 502 and vector<char> insertion 218 verified with their operands"
+}

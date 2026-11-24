@@ -68,7 +68,11 @@ public:
 class CWaterPatchMesh
 {
 public:
+#ifdef FABLE_RETAIL_LANDSCAPE_PATCH_UPDATE_FOREGROUND_RELEASEBUFFERS   // NF272 (row 0x00BF4220): 0x00BEAA00 is ?ReleaseBuffers@CWaterPatchMesh@@QAEXXZ (Ego_r 00aa2710 + FableWin 02e67fe0)
+    void ReleaseBuffers();                                            // 0x00BEAA00
+#else
     void ClearTextures();
+#endif
 };
 
 class CBankFileAsyncData
@@ -110,15 +114,15 @@ public:
     void DeleteLayerMeshes();
 };
 
-FABLE_STATIC_ASSERT(sizeof(CCountedPointer<CBankFileAsyncEntry>) == 8);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, LandscapeMap) == 0x04);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, WaterPatch) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, ForegroundDataSize) == 0x1C);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, BoundsMinX) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, BoundsMaxZ) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, PatchX) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, Flags) == 0x3C);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, AsyncData) == 0x40);
-FABLE_STATIC_ASSERT(sizeof(CEngineLandscapePatch) == 0x48);
+FABLE_STATIC_ASSERT_AT(113, sizeof(CCountedPointer<CBankFileAsyncEntry>) == 8);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CEngineLandscapePatch, LandscapeMap) == 0x04);
+FABLE_STATIC_ASSERT_AT(115, offsetof(CEngineLandscapePatch, WaterPatch) == 0x14);
+FABLE_STATIC_ASSERT_AT(116, offsetof(CEngineLandscapePatch, ForegroundDataSize) == 0x1C);
+FABLE_STATIC_ASSERT_AT(117, offsetof(CEngineLandscapePatch, BoundsMinX) == 0x20);
+FABLE_STATIC_ASSERT_AT(118, offsetof(CEngineLandscapePatch, BoundsMaxZ) == 0x34);
+FABLE_STATIC_ASSERT_AT(119, offsetof(CEngineLandscapePatch, PatchX) == 0x38);
+FABLE_STATIC_ASSERT_AT(120, offsetof(CEngineLandscapePatch, Flags) == 0x3C);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CEngineLandscapePatch, AsyncData) == 0x40);
+FABLE_STATIC_ASSERT_AT(122, sizeof(CEngineLandscapePatch) == 0x48);
 
 #endif

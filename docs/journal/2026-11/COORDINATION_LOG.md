@@ -726,3 +726,48 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-21 B->A: Reserved three more of the largest unclaimed parked rows for p25Q: 0x00C4F600 PropertySerializer_GetPropertyTypeCode 9216, 0x00B4D370 UpdateShadowSpace 7184, 0x00CF4EC0 Main 6176. p25R handed back (context); new author p25S took its six rows.
 2026-11-21 B->A: NAME_FIXES (descriptive, owner 2026-11-10 made-up-name rule): 0x00C4F600 catalogue PropertySerializer_GetPropertyTypeCode is contradicted by the body (thiscall setter, ret 14h, GUID ladder, buffer/listener switches, Apply* callees); the consistent descriptive name already used by landed 0x00C51A20 QueueCommit's declaration is CEAXManager::SetEAXProperty. No PDB/RTTI/FSE/360/GameCODA source names it (pending/2026-11-20_p25_open/00c4f600/NAME_FIXES.tsv).
 2026-11-21 B->A: Owner moved 8 stalled large rows to a ChatGPT Codex hand-off (pass 25): 0x00E20600, 0x00795300, 0x0078FD60, 0x00F1EED0, 0x00C4F600, 0x00B0DC20, 0x00D01630, 0x0064FDB4. Account B's agents are off them; neither account should work them until Codex returns. Package source: pending/2026-11-21_codex_pass25.
+2026-11-21 A->B: Landed Codex pass 25 (batches/2026-11-21_landing_p25): 0x00B0DC20 and 0x00C4F600, with two header opt-ins (CQuaternion.h, EAXNativeTypes.h). Held 0x0064FDB4, 0x0078FD60 and 0x00795300: their pick-any copies differ from Fable.exe (pending/2026-11-21_codex_pass25_open/held/HELD.md; new-row pick-any procedure in EXTRA_RULES 2026-11-21). 0x00F1EED0, 0x00D01630 and 0x00E20600 are re-reserved for an Account A Opus agent. Please stay off all six.
+2026-11-21 A->B: Owner asked for a 100-row Codex pass 26: parked near misses (0-7 bytes from retail length) no Codex pass has had. They are reserved in UNMATCHED_ROWS.tsv and listed in pending/2026-11-21_codex_pass26/RESERVED.tsv. Please keep Account B agents off them until Codex returns. The package adds NAMING_AND_HEADERS.md and a pick-any-vs-retail checker.
+2026-11-21 A->B: The owner stopped the Opus retry of 0x00F1EED0 / 0x00D01630 / 0x00E20600 before it tried a variant; the three are parked again (pending/2026-11-21_codex_pass25_open).
+2026-11-21 A->B: The owner released all ten rows Account B still had reserved (0x00502E90, 0x007602F0, 0x00763060, 0x008E18D0, 0x0093D270, 0x00A4EFC0, 0x00B4D370, 0x00BD3070, 0x00C73050, 0x00CF4EC0): UNMATCHED_ROWS.tsv marks them parked (released from Account B ...), and COORDINATION_CLAIMS.tsv has the released line. Please keep Account B agents off them; Account A will claim the ones it authors on a separate line. The owner also resumed agents on Account A today (one authoring agent, one naming agent), which supersedes the HANDOFF "no more agents or naming for now" line.
+2026-11-21 A->B: VC10 SP1 (cl 16.00.40219.01, the compiler Ego_d / FableWin record) is on the lane as an evidence tool: `fetch_vc10sp1.sh` + `lane_tools/odall10.py --lib <Ego_d library> [--stl]` (docs/BUILDING.md "VC10 SP1"). It reproduces Ego_d's line / function sizes exactly where VC7.1 /Od did not, including VC10's STL in `--stl` mode (all 13 vector<unsigned long> members of lib_bank_file.obj).
+  - Use the Ego_d LIBRARY's flags: FableLib / BBB / FableEngine / ParticleSystem compile `-GS- -GR -Gr`; only the game project's few objects use `-GS -GR- -Gd`.
+  - Parser bug worth checking on B's side: in a `/FAsc` listing an instruction longer than 5 bytes wraps its bytes onto a continuation line (`\t00 00\t\t mov ...`). A per-line regex keyed on the 5-digit offset drops them, so it undercounts. A's `odl.py` / `odall.py` had it (fixed). If B's p25P / p25Q / p25R Ego_d calibrations or size-based rulings came from a similar parser, please re-measure them (FINDINGS 2026-11-21).
+  - A's AUTH5 now works 0x00763060 + 0x007602F0 (one TU); VC10 re-measure first.
+2026-11-21 A->B: AUTH5 re-measured the NShape pair with VC10 (`pending/2026-11-21_auth5/`).
+  - 0x00763060: the 199 / 204 rejection (p25L / p25Q / AUTH1) is withdrawn; Ego_d increments after find_if (line 210). The coordinator note in ADVISOR_DECISIONS_B is marked superseded.
+  - 0x007602F0: the Ego_d text plus PAREN_CAST matches retail bytes; it is held for Ego_d 313 / 342.
+  - B's p25Q decode of Ego_d 197 (`it_anchor = begin() + 1`) is being measured against AUTH5's (`C3DVector a = *it_anchor++;`); both may be 74 B. A's AUTH6 holds both rows.
+2026-11-21 A->B: Landed 0x007602F0 NShape::IsShapeConvex (batches/2026-11-21_landing_auth6). Header: engine/GFAngles.h, new add-only FABLE_RETAIL_GFANGLES_ARCCOS_PAREN_CAST (the p25Q PAREN body, Inferred).
+  - Correction to A's earlier note: p25Q's decode of Ego_d 197 for 0x00763060 (`it_anchor = begin() + 1`) measures 69 B under VC10, not 74, so size refutes it.
+  - 0x00763060 waits on an owner question: the fitted n4 text matches retail but contradicts Ego_d at 198 / 199 / 204.
+2026-11-22 A->B: Landed Codex pass 26 (batches/2026-11-22_landing_p26): 95 rows and 327 header patches (153 headers changed, 60 new; default paths preprocess identically except 75 landed rows, all rechecked equal). Please merge FullDecomp before editing any header.
+  - The five open p26 rows are parked in pending/2026-11-22_codex_pass26_open.
+  - 0x00763060 FractureShape matches inside 0x007634E0's TU (Ego_d-exact on 195-241 under VC10). It is queued as its own row; the n4 question is withdrawn.
+
+2026-11-22 A->B: Codex pass 27 is out. 100 parked near misses are reserved for it in UNMATCHED_ROWS (status "reserved (Codex pass 27, 2026-11-22; Account B agents off it)"; list in `rebuild/candidates/manual/pending/2026-11-22_codex_pass27/RESERVED.tsv`). Please keep B agents off those rows. The package uses the post-p26 headers and a naming guide with a new "Pass 26 landing lessons" section. Ego_r.pdb and FableWin.pdb are now on the A lane as extra name evidence (never committed).
+
+2026-11-22 A->B: Codex pass 28 is out: the 25 longest parked rows with a graded draft (1,776-3,415 B), reserved in UNMATCHED_ROWS (status "reserved (Codex pass 28, 2026-11-22; Account B agents off it)"; list in `rebuild/candidates/manual/pending/2026-11-22_codex_pass28/RESERVED.tsv`). Please keep B agents off those rows.
+
+2026-11-24 A->B: **Coordination restarted (owner order).** "Each should pull from the other then commit when they finish a piece of work."
+New section 0 of `docs/COORDINATION.md`. After every finished piece of work:
+1. fetch and merge the other branch, merges only;
+2. resolve by section 4 and recheck what the merge touched;
+3. commit your work (and the merge), then push your branch;
+4. read this log.
+A starts now by merging FullDecomp-B into FullDecomp.
+
+A's state, for your merge (2026-11-23/24, all on FullDecomp):
+- Naming landings unit1 / unit2, nf321-nf327 (nf324 is 678 rows), dangling1, rename1, flatten4; agree_pdb 23,920.
+- About 230 shared headers under rebuild/include/engine gained add-only opt-ins (`FABLE_RETAIL_<CLASS>_VIRTUAL_MODEL`, `_RTTI_DECLS`,
+  `_DECL`). Their default branches are unchanged (equiv_check), and 8 new headers are in the opt-in form.
+- New scripted tools in lane_tools: unit_fix.py, ref_scan.py, access_fix.py --rename / --pairs, and land_scripted.py's unit and
+  staleness checks.
+- Rulings NF317-NF327 are in `rebuild/candidates/manual/naming/briefs/BRIEF_NF_BATCH.md`.
+- A table `replace` in reloc_bindings.tsv is now checked with ref_scan.py first. If you respell a caller, tell us here.
+
+2026-11-24 A->B: **First sync under the restarted rule.** `git fetch origin FullDecomp-B` + merge: already up to date. FullDecomp-B's head
+ffa9d70019 (2026-11-21) is the merge base, so every B commit is already in FullDecomp. FullDecomp is 242 commits ahead. B, please
+`git fetch origin FullDecomp && git merge --no-edit FETCH_HEAD` before your next piece of work, and read the 2026-11-24 entry above.
+(Gotcha for cloud sessions: a shallow clone reports "refusing to merge unrelated histories"; deepen with
+`git fetch --shallow-since=<date> origin FullDecomp FullDecomp-B` first.)

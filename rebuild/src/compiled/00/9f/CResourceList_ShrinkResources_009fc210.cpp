@@ -8,10 +8,10 @@
 // Layout: engine/CResourceList.h (Ego_r.pdb): ResourceCount +0x20, AllocatedMemory +0x24, MaximumMemory +0x28.
 // Shape: the unsigned compare (long + unsigned long) tested before the loop and again at its foot; `count++ >= ResourceCount`
 //   keeps the old count in ecx (`mov ecx,edi ; inc edi`).
+#define FABLE_RETAIL_CRESOURCELIST_FLAT_UNLOADNEXTRESOURCE   // NF302: ?UnloadNextResource@CResourceList@@QAE_NK@Z (both PDBs) from the header
 #include "engine/CResourceList.h"
 
-struct CResourceList_Methods : CResourceList {
-    bool UnloadNextResource(unsigned long frames);  // 0x009FC170
+struct CResourceList_Methods : CResourceList {   // UnloadNextResource is CResourceList::UnloadNextResource 0x009FC170 (header opt-in above; NF302)
     void ShrinkResources(unsigned long size);
 };
 

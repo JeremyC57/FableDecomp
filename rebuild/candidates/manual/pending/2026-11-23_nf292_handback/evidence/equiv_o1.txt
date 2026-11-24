@@ -1,0 +1,9 @@
+pin-only tree (CMemoryDataOutputStream.h line 58 FABLE_STATIC_ASSERT -> FABLE_STATIC_ASSERT_AT(58,...)), rows = its includers + relative-source rows:
+rows checked 1418 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF292/work/eq_pin.tsv
+differing: 0
+full overlay tree (4 headers), rows = their includers + relative-source rows:
+rows checked 1693 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF292/work/eq_new.tsv
+differing: 0
+planted control (member typedef just above each opt-in, outside it), same rows:
+rows checked 1693 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF292/work/eq_ctl.tsv
+differing: 80 (evidence/equiv_o1_control.tsv)

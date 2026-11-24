@@ -1,3 +1,4 @@
+// Leaf: ?SaveBinary@C3DMesh2@@QAEKAAVCDataOutputStream@@@Z
 // C3DMesh2::SaveBinary(CDataOutputStream&) const -- write the mesh stats, counts and raw bone/keyframe blocks, then every material and primitive; return the bytes written
 // Retail @ 0x00A89450, 403 bytes (ret 4).
 // Callees: CDataOutputStream::GetPosition (vtable slot 2), CDataOutputStream::WriteData (vtable slot 4),
@@ -15,8 +16,8 @@ class CDataOutputStream { public:
     virtual unsigned long GetPosition();                       // slot 2 (+0x08)
     virtual void v3();
     virtual void WriteData(const void* data, unsigned long size); // slot 4 (+0x10)
-    void WriteUShort(unsigned short value);                    // 0x00993E80
-    void WriteBuffer(const void* data, long size);             // 0x00996610 (compressed block)
+    void WriteUWORD(unsigned short value);                    // 0x00993E80
+    void WriteCompressed(const void* data, long size);             // 0x00996610 (compressed block); NF299: PDB name, was WriteBuffer
 public:
     void WriteEBOOL(bool);   // 0x00993E30
     void WriteULONG(unsigned long);   // 0x00993EA0
@@ -37,12 +38,12 @@ class C3DPrimitive2 { public:
     void* StaticBlocks;                                        // +0x44
     unsigned long AnimatedBlockCount;                          // +0x48 (PDB +0x4C)
     unsigned char _pad4c[0xA0 - 0x4C];
-    void SaveBinary(CDataOutputStream& out) const;             // 0x00A8FD40
+    void SaveBinary(CDataOutputStream& out);             // 0x00A8FD40
 };
 
 class C3DMeshStats { public:
     unsigned char _body[0x7C];
-    void SaveBinary(CDataOutputStream& out) const;             // 0x00A2EAA0
+    void SaveBinary(CDataOutputStream& out);             // 0x00A2EAA0
 };
 
 class C3DMesh2 : public C3DMeshStats { public:
@@ -64,10 +65,10 @@ class C3DMesh2 : public C3DMeshStats { public:
     bool ClothFlag;                       // +0xE4
     bool LockedFromMemoryRelocation;      // +0xE5
     unsigned long MeshID;                 // +0xE8
-    unsigned long SaveBinary(CDataOutputStream& out) const;
+    unsigned long SaveBinary(CDataOutputStream& out);
 };
 
-unsigned long C3DMesh2::SaveBinary(CDataOutputStream& out) const
+unsigned long C3DMesh2::SaveBinary(CDataOutputStream& out)
 {
     unsigned long start = out.GetPosition();
     C3DMeshStats::SaveBinary(out);
@@ -82,13 +83,13 @@ unsigned long C3DMesh2::SaveBinary(CDataOutputStream& out) const
         staticBlocks += Primitives[p].StaticBlockCount;
         animatedBlocks += Primitives[p].AnimatedBlockCount;
     }
-    out.WriteUShort((unsigned short)staticBlocks);
-    out.WriteUShort((unsigned short)animatedBlocks);
+    out.WriteUWORD((unsigned short)staticBlocks);
+    out.WriteUWORD((unsigned short)animatedBlocks);
     out.WriteData(BoneNameIndices, BoneCount * sizeof(unsigned short));
-    out.WriteBuffer(BoneNameData, BoneNameDataSize);
-    out.WriteBuffer(Bones, BoneCount * sizeof(C3DBone2));
-    out.WriteBuffer(BoneKeyframes, BoneCount * sizeof(C3DKeyframe));
-    out.WriteBuffer(BoneSpaceTransforms, BoneCount * sizeof(CMatrix4x4));
+    out.WriteCompressed(BoneNameData, BoneNameDataSize);
+    out.WriteCompressed(Bones, BoneCount * sizeof(C3DBone2));
+    out.WriteCompressed(BoneKeyframes, BoneCount * sizeof(C3DKeyframe));
+    out.WriteCompressed(BoneSpaceTransforms, BoneCount * sizeof(CMatrix4x4));
     out.WriteData(&InverseTransform, sizeof(CMatrix3x4));
     for (unsigned long i = 0; i < MaterialCount; ++i)
         Materials[i].SaveBinary(out);

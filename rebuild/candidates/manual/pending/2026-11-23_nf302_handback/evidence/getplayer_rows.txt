@@ -1,0 +1,11 @@
+/home/user/FableDecomp/rebuild/src/compiled/00/83/CThingSwitch_SwitchTriggerPlayerOnlyOnceInArea_0083ca90.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/83/CThingSwitch_SwitchTriggerPlayerOnlyMultipleTimesInArea_0083c690.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/83/CThingSwitch_TriggerPlayerResetWhenLeaves_0083c800.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/66/CTCCoopSpirit_UpdateScreenRestrictingForces_0066fc90.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/44/CPlayerManager_GetMainPlayerHeroCreature_00449bf0.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/44/CPlayerManager_SwapToHero_00449cb0.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/44/CPlayerManager_DestroyPlayers_0044a070.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/44/CPlayerManager_LoadGameState_00449e60.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/44/CPlayerManager_InitPlayerCharacter_00449d90.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/44/CPlayerManager_SaveGameState_00449f90.cpp
+/home/user/FableDecomp/rebuild/src/compiled/00/44/CPlayerManager_GetMainPlayerHeroCreatureB_00449c10.cpp

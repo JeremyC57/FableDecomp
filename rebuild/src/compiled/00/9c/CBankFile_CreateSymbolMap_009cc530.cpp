@@ -5,7 +5,7 @@
 //   an invented ?Finalise@CSymbolMap (no Finalise in either PDB).
 // CBankFile.h donor CArrays are 16 bytes, retail 12: Symbols +8, RuntimeData +20,
 // PackedDataType +58, PackedValid +68. Local typed layout follows PackRuntimeData.
-// Virtual slot19 at vtable0129B54C is GetBankHandle 009CBD10; its type parameter is
+// Virtual slot19 at vtable0129B54C is GetEnumerationType 009CBD10 (protected const, engine/CBankFile.h slot 19; was the made-up GetBankHandle); its type parameter is
 // ignored by the base body but passed through for derived type-specific prefixes.
 // Callees: CSymbolMap Clear009E5250, AddSymbolDirty009E54E0, Finalise009E5C30;
 // CCharString constructors0099EBF0/0099EC30, Find0099E5A0, destructor0099EAE0;
@@ -35,7 +35,7 @@ class CBankFile { public:
     virtual void Slot08(); virtual void Slot09(); virtual void Slot10(); virtual void Slot11();
     virtual void Slot12(); virtual void Slot13(); virtual void Slot14(); virtual void Slot15();
     virtual void Slot16(); virtual void Slot17(); virtual void Slot18();
-    virtual CCharString GetBankHandle(unsigned long type); //009CBD10 slot19
+protected: virtual CCharString GetEnumerationType(unsigned long type) const; public: //009CBD10 slot19 (Ego_r + FableWin ?GetEnumerationType@CBankFile@@MBE?AVCCharString@@K@Z)
     unsigned long Size;
     CArray<CCharString> Symbols;
     CArray<unsigned long> Checksums;
@@ -47,7 +47,7 @@ class CBankFile { public:
         if (PackedValid.Size) return PackedValid[i-1]!=0;
         return RuntimeData.begin()[i].Valid;
     }
-    CCharString GetSymbol(unsigned long i) {
+    CCharString GetSymbol(unsigned long i) const {
         if (Symbols.empty()) return CCharString("(Unknown)",-1);
         return Symbols[i];
     }
@@ -55,16 +55,16 @@ class CBankFile { public:
         if (PackedDataType.Size) return PackedDataType[i-1];
         return RuntimeData.begin()[i].DataType;
     }
-    void CreateSymbolMap(CSymbolMap&, bool);
+    void CreateSymbolMap(CSymbolMap&, bool) const;   // Ego_r + FableWin QBE
 };
-void CBankFile::CreateSymbolMap(CSymbolMap& map, bool append)
+void CBankFile::CreateSymbolMap(CSymbolMap& map, bool append) const
 {
     if (!append) map.Clear();
     for (unsigned long i=0;i<Size;++i) {
         if (IsValid(i)) {
             CCharString name=GetSymbol(i);
             if (name.FindCharPos('[')==-1) {
-                CCharString prefix=GetBankHandle(GetDataType(i));
+                CCharString prefix=GetEnumerationType(GetDataType(i));
                 map.AddSymbolDirty(prefix,name,i);
             }
         }

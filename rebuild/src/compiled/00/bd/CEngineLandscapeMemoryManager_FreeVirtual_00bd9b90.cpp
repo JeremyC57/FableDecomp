@@ -1,5 +1,6 @@
 // CEngineLandscapeMemoryManager::FreeVirtual(void* block) -- returns a block to the global CMemoryAllocator under the allocator lock and, when the free-when-empty flag is set and nothing is left allocated, destroys the global allocator
 // Flags: /d2inlT114
+// Leaf: ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
 // Inline-budget: /d2inlT114 (EXTRA_RULES 2026-11-08 preference 2; replaces the nf140 FABLE_FORCEINLINE in the header) -- retail
 //   expands the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
 //   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE, plain inline) here; at the default threshold both stay calls (DIFFER 68v97).
@@ -23,8 +24,18 @@ class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);
 };
 
-void CEngineLandscapeMemoryManager::FreeVirtual(void* block)
+inline void CEngineLandscapeMemoryManager::FreeVirtual(void* block)
 {
     if (block)
         CMemoryAllocator::Deallocate(block);
+}
+
+namespace {
+// Fidelity: scaffolding, not retail (NF276, D4; the nf86 / nf88 form): FreeVirtual is defined `inline` and its address taken here, so this
+// object emits it as a pick-any COMDAT (bytes unchanged) like its TU-mate copies in 0x00BDA150 / 0x00BD9CE0, instead of a strong definition
+// that every link meets with LNK4006 against those copies. Internal to this TU; never called.
+void (CEngineLandscapeMemoryManager::*ReferenceFreeVirtual())(void*)
+{
+    return &CEngineLandscapeMemoryManager::FreeVirtual;
+}
 }

@@ -106,7 +106,7 @@ struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
     void UpdateCurrentAction();                 // 0x0093D140
     bool ShouldGoStraightIntoStrafe();          // 0x0093D180
-    void AddStrafeMode();                       // 0x0093D7A0
+    protected: void AddStrafeMode(); public:                       // 0x0093D7A0
 };
 
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroup_MeleeCombatNearbyBase {

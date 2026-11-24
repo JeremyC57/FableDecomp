@@ -1,0 +1,11 @@
+## out-of-line definitions of CPlayerManager::CreatePlayers( in src/compiled + include (code lines, comments stripped)
+src/compiled/00/44/CPlayerManager_CreatePlayers_0044a530.cpp:27:void CPlayerManager::CreatePlayers()
+## out-of-line definitions of CShadowClipVolume::ClipBoundingBox( in src/compiled + include (code lines, comments stripped)
+src/compiled/00/b9/CShadowClipVolume_ClipBoundingBox_00b9c2e0.cpp:73:bool CShadowClipVolume::ClipBoundingBox(const C3DBoundingBox& box) const
+src/compiled/00/b4/CShadowClipVolume_ClipBoundingBox_00b4ced0.cpp:74:bool CShadowClipVolume::ClipBoundingBox(const C3DBoundingBox& box, bool& fullyInside) const
+## out-of-line definitions of CSurface::GetWidth( in src/compiled + include (code lines, comments stripped)
+src/compiled/00/41/CSurface_GetWidth_00415bd0.cpp:14:unsigned long CSurface::GetWidth() const
+## out-of-line definitions of CPlayerManager::GetMultiplayerColour( in src/compiled + include (code lines, comments stripped)
+## out-of-line definitions of CPlayerManager::GetPlayer( in src/compiled + include (code lines, comments stripped)
+src/compiled/00/44/CPlayerManager_GetPlayer_004498c0.cpp:35:CPlayer& CPlayerManager::GetPlayer(long number)
+src/compiled/00/44/CPlayerManager_GetPlayer_00449910.cpp:35:const CPlayer& CPlayerManager::GetPlayer(long number) const

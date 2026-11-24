@@ -1,5 +1,7 @@
 // CTCPhysicsNavigator::UpdateAdditionalImpulse() -- clear the additional impulse; when the feature is on and the owner creature is busy with an action, pushable and pushable by self-avoidance, gather the other things in the area it could reach this frame and let each one that is in combat and too close add to its impulse
-// Leaf: ?UpdateAdditionalImpulse@CTCPhysicsNavigator@@QAEXXZ
+// Leaf: ?UpdateAdditionalImpulse@CTCPhysicsNavigator@@AAEXXZ
+// Name fix (NF239, 2026-11-22, CODEXP27 L52): private in Ego_r + FableWin publics (?UpdateAdditionalImpulse@CTCPhysicsNavigator@@AAEXXZ);
+//   the landed caller 0x00726CE0 already binds that spelling. Was public (QAE). Same bytes.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00726BE0, 254 bytes, plain `ret`.
 // Callees: CThingCreatureBase::IsPerformingAnyAction() const 0x006622A0, the physics TC's virtual slot 83 (+0x14c,
@@ -176,8 +178,9 @@ class CTCPhysicsNavigator : public CTCPhysicsBase {
 public:
     unsigned char _pad38[0x95 - 0x38];
     C3DVector     AdditionalImpulse;                // +0x95
-    C2DBoxI GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const;   // 0x007267C0
-    void UpdateAdditionalImpulse();
+private:
+    C2DBoxI GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const;   // 0x007267C0; NF236: Ego_r / FableWin spelling ABE (private const)
+    void UpdateAdditionalImpulse();                 // private: Ego_r / FableWin AAE
 };
 #pragma pack(pop)
 

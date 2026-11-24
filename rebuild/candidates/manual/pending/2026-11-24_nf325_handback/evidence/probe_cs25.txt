@@ -1,0 +1,551 @@
+== CCombatSequenceUnblockableFacing vftable 0127A11C
+slot   0 008B4FD0 DIFF     ours=??_ECCombatSequenceUnblockableFacing@@UAEPAXI@Z retail_label=??_GCCombatSequenceUnblockableFacing@@UAEPAXI@Z
+slot   1 0090A4C0 SAME     ours=?OnCreate@CCombatSequenceUnblockableFacing@@UAEXXZ retail_label=?OnCreate@CCombatSequenceUnblockableFacing@@UAEXXZ
+slot   2 008B4F90 SAME     ours=?GetName@CCombatSequenceUnblockableFacing@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceUnblockableFacing@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 008B4FC0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceUnblockableFacing@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceUnblockableFacing@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4FB0 SAME     ours=?GetZone@CCombatSequenceUnblockableFacing@@UBEKXZ retail_label=?GetZone@CCombatSequenceUnblockableFacing@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 18 DIFF 1 NOLABEL 0
+
+== CCombatSequenceWhisperAdvance vftable 01279D5C
+slot   0 008B49E0 DIFF     ours=??_ECCombatSequenceWhisperAdvance@@UAEPAXI@Z retail_label=??_GCCombatSequenceWhisperAdvance@@UAEPAXI@Z
+slot   1 00909BA0 SAME     ours=?OnCreate@CCombatSequenceWhisperAdvance@@UAEXXZ retail_label=?OnCreate@CCombatSequenceWhisperAdvance@@UAEXXZ
+slot   2 008B49A0 SAME     ours=?GetName@CCombatSequenceWhisperAdvance@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceWhisperAdvance@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 008B49D0 SAME     ours=?IsMeleeSequence@CCombatSequenceWhisperAdvance@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceWhisperAdvance@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B49C0 SAME     ours=?GetZone@CCombatSequenceWhisperAdvance@@UBEKXZ retail_label=?GetZone@CCombatSequenceWhisperAdvance@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 18 DIFF 1 NOLABEL 0
+
+== CCombatSequenceWhisperAttackBigCombo vftable 01279DFC
+slot   0 008B4AE0 DIFF     ours=??_ECCombatSequenceWhisperAttackBigCombo@@UAEPAXI@Z retail_label=??_GCCombatSequenceWhisperAttackBigCombo@@UAEPAXI@Z
+slot   1 00909E30 SAME     ours=?OnCreate@CCombatSequenceWhisperAttackBigCombo@@UAEXXZ retail_label=?OnCreate@CCombatSequenceWhisperAttackBigCombo@@UAEXXZ
+slot   2 008B4AA0 SAME     ours=?GetName@CCombatSequenceWhisperAttackBigCombo@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceWhisperAttackBigCombo@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 008B4AD0 SAME     ours=?IsMeleeSequence@CCombatSequenceWhisperAttackBigCombo@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceWhisperAttackBigCombo@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 00908D80 SAME     ours=?IsValid@CCombatSequenceWhisperAttackBigCombo@@UBE_NXZ retail_label=?IsValid@CCombatSequenceWhisperAttackBigCombo@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4AC0 SAME     ours=?GetZone@CCombatSequenceWhisperAttackBigCombo@@UBEKXZ retail_label=?GetZone@CCombatSequenceWhisperAttackBigCombo@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 18 DIFF 1 NOLABEL 0
+
+== CCombatSequenceWhisperBoast vftable 01279F3C
+slot   0 008B4CE0 SAME     ours=??_ECCombatSequenceWhisperBoast@@UAEPAXI@Z retail_label=??_ECCombatSequenceWhisperBoast@@UAEPAXI@Z
+slot   1 0090A0B0 SAME     ours=?OnCreate@CCombatSequenceWhisperBoast@@UAEXXZ retail_label=?OnCreate@CCombatSequenceWhisperBoast@@UAEXXZ
+slot   2 008B4CA0 SAME     ours=?GetName@CCombatSequenceWhisperBoast@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceWhisperBoast@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 008B4CD0 SAME     ours=?IsBoastSequence@CCombatSequenceWhisperBoast@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceWhisperBoast@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4CC0 SAME     ours=?GetZone@CCombatSequenceWhisperBoast@@UBEKXZ retail_label=?GetZone@CCombatSequenceWhisperBoast@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequenceWhisperIdles vftable 0127A02C
+slot   0 008B4E50 DIFF     ours=??_ECCombatSequenceWhisperIdles@@UAEPAXI@Z retail_label=??_GCCombatSequenceWhisperIdles@@UAEPAXI@Z
+slot   1 0090A150 SAME     ours=?OnCreate@CCombatSequenceWhisperIdles@@UAEXXZ retail_label=?OnCreate@CCombatSequenceWhisperIdles@@UAEXXZ
+slot   2 008B4E10 SAME     ours=?GetName@CCombatSequenceWhisperIdles@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceWhisperIdles@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 008B4E40 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceWhisperIdles@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceWhisperIdles@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4E30 SAME     ours=?GetZone@CCombatSequenceWhisperIdles@@UBEKXZ retail_label=?GetZone@CCombatSequenceWhisperIdles@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 18 DIFF 1 NOLABEL 0
+
+== CCombatSequenceWhisperLunge vftable 01279D0C
+slot   0 008B4960 DIFF     ours=??_ECCombatSequenceWhisperLunge@@UAEPAXI@Z retail_label=??_GCCombatSequenceWhisperLunge@@UAEPAXI@Z
+slot   1 00908E00 SAME     ours=?OnCreate@CCombatSequenceWhisperLunge@@UAEXXZ retail_label=?OnCreate@CCombatSequenceWhisperLunge@@UAEXXZ
+slot   2 008B4920 SAME     ours=?GetName@CCombatSequenceWhisperLunge@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceWhisperLunge@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 008B4950 SAME     ours=?IsMeleeSequence@CCombatSequenceWhisperLunge@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceWhisperLunge@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4940 SAME     ours=?GetZone@CCombatSequenceWhisperLunge@@UBEKXZ retail_label=?GetZone@CCombatSequenceWhisperLunge@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 18 DIFF 1 NOLABEL 0
+
+== CCombatSequenceWhisperSortYourselfOut vftable 01279F8C
+slot   0 008B4D50 SAME     ours=??_ECCombatSequenceWhisperSortYourselfOut@@UAEPAXI@Z retail_label=??_ECCombatSequenceWhisperSortYourselfOut@@UAEPAXI@Z
+slot   1 00908FE0 SAME     ours=?OnCreate@CCombatSequenceWhisperSortYourselfOut@@UAEXXZ retail_label=?OnCreate@CCombatSequenceWhisperSortYourselfOut@@UAEXXZ
+slot   2 008B4D20 SAME     ours=?GetName@CCombatSequenceWhisperSortYourselfOut@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceWhisperSortYourselfOut@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4D40 SAME     ours=?GetZone@CCombatSequenceWhisperSortYourselfOut@@UBEKXZ retail_label=?GetZone@CCombatSequenceWhisperSortYourselfOut@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequenceWhisperStrafeAround vftable 01279FDC
+slot   0 008B4DD0 DIFF     ours=??_ECCombatSequenceWhisperStrafeAround@@UAEPAXI@Z retail_label=??_GCCombatSequenceWhisperStrafeAround@@UAEPAXI@Z
+slot   1 00908F20 SAME     ours=?OnCreate@CCombatSequenceWhisperStrafeAround@@UAEXXZ retail_label=?OnCreate@CCombatSequenceWhisperStrafeAround@@UAEXXZ
+slot   2 008B4D90 SAME     ours=?GetName@CCombatSequenceWhisperStrafeAround@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceWhisperStrafeAround@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 008B4DC0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceWhisperStrafeAround@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceWhisperStrafeAround@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4DB0 SAME     ours=?GetZone@CCombatSequenceWhisperStrafeAround@@UBEKXZ retail_label=?GetZone@CCombatSequenceWhisperStrafeAround@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 18 DIFF 1 NOLABEL 0
+
+== CCombatSequenceWhisperStrikeStrafeBack vftable 01279E9C
+slot   0 008B4BE0 SAME     ours=??_ECCombatSequenceWhisperStrikeStrafeBack@@UAEPAXI@Z retail_label=??_ECCombatSequenceWhisperStrikeStrafeBack@@UAEPAXI@Z
+slot   1 00909FD0 SAME     ours=?OnCreate@CCombatSequenceWhisperStrikeStrafeBack@@UAEXXZ retail_label=?OnCreate@CCombatSequenceWhisperStrikeStrafeBack@@UAEXXZ
+slot   2 008B4BA0 SAME     ours=?GetName@CCombatSequenceWhisperStrikeStrafeBack@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceWhisperStrikeStrafeBack@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 008B4BD0 SAME     ours=?IsMeleeSequence@CCombatSequenceWhisperStrikeStrafeBack@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceWhisperStrikeStrafeBack@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4BC0 SAME     ours=?GetZone@CCombatSequenceWhisperStrikeStrafeBack@@UBEKXZ retail_label=?GetZone@CCombatSequenceWhisperStrikeStrafeBack@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequenceWhisperTooCloseLeapBack vftable 01279EEC
+slot   0 008B4C60 SAME     ours=??_ECCombatSequenceWhisperTooCloseLeapBack@@UAEPAXI@Z retail_label=??_ECCombatSequenceWhisperTooCloseLeapBack@@UAEPAXI@Z
+slot   1 00908E90 SAME     ours=?OnCreate@CCombatSequenceWhisperTooCloseLeapBack@@UAEXXZ retail_label=?OnCreate@CCombatSequenceWhisperTooCloseLeapBack@@UAEXXZ
+slot   2 008B4C20 SAME     ours=?GetName@CCombatSequenceWhisperTooCloseLeapBack@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequenceWhisperTooCloseLeapBack@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 008B4C50 SAME     ours=?IsMeleeSequence@CCombatSequenceWhisperTooCloseLeapBack@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceWhisperTooCloseLeapBack@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4C40 SAME     ours=?GetZone@CCombatSequenceWhisperTooCloseLeapBack@@UBEKXZ retail_label=?GetZone@CCombatSequenceWhisperTooCloseLeapBack@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_BanditAdvanceFar vftable 0127917C
+slot   0 008B36D0 SAME     ours=??_ECCombatSequence_BanditAdvanceFar@@UAEPAXI@Z retail_label=??_ECCombatSequence_BanditAdvanceFar@@UAEPAXI@Z
+slot   1 009061E0 SAME     ours=?OnCreate@CCombatSequence_BanditAdvanceFar@@UAEXXZ retail_label=?OnCreate@CCombatSequence_BanditAdvanceFar@@UAEXXZ
+slot   2 008B36A0 SAME     ours=?GetName@CCombatSequence_BanditAdvanceFar@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_BanditAdvanceFar@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B36C0 SAME     ours=?GetZone@CCombatSequence_BanditAdvanceFar@@UBEKXZ retail_label=?GetZone@CCombatSequence_BanditAdvanceFar@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_BanditAttackSide vftable 0127926C
+slot   0 008B3850 SAME     ours=??_ECCombatSequence_BanditAttackSide@@UAEPAXI@Z retail_label=??_ECCombatSequence_BanditAttackSide@@UAEPAXI@Z
+slot   1 009062A0 SAME     ours=?OnCreate@CCombatSequence_BanditAttackSide@@UAEXXZ retail_label=?OnCreate@CCombatSequence_BanditAttackSide@@UAEXXZ
+slot   2 008B3810 SAME     ours=?GetName@CCombatSequence_BanditAttackSide@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_BanditAttackSide@@UBE?AVCCharString@@XZ
+slot   3 008B3840 SAME     ours=?GetCombatSequenceType@CCombatSequence_BanditAttackSide@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequence_BanditAttackSide@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B3830 SAME     ours=?GetZone@CCombatSequence_BanditAttackSide@@UBEKXZ retail_label=?GetZone@CCombatSequence_BanditAttackSide@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_BanditKingAdvance vftable 0127944C
+slot   0 008B3B40 SAME     ours=??_ECCombatSequence_BanditKingAdvance@@UAEPAXI@Z retail_label=??_ECCombatSequence_BanditKingAdvance@@UAEPAXI@Z
+slot   1 00906DB0 SAME     ours=?OnCreate@CCombatSequence_BanditKingAdvance@@UAEXXZ retail_label=?OnCreate@CCombatSequence_BanditKingAdvance@@UAEXXZ
+slot   2 008B3B00 SAME     ours=?GetName@CCombatSequence_BanditKingAdvance@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_BanditKingAdvance@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 008B3B20 SAME     ours=?IsAllowedOnOuterRing@CCombatSequence_BanditKingAdvance@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequence_BanditKingAdvance@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B3B30 SAME     ours=?GetZone@CCombatSequence_BanditKingAdvance@@UBEKXZ retail_label=?GetZone@CCombatSequence_BanditKingAdvance@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_BattleCharge vftable 0127A1BC
+slot   0 008B50E0 SAME     ours=??_ECCombatSequence_BattleCharge@@UAEPAXI@Z retail_label=??_ECCombatSequence_BattleCharge@@UAEPAXI@Z
+slot   1 00909070 SAME     ours=?OnCreate@CCombatSequence_BattleCharge@@UAEXXZ retail_label=?OnCreate@CCombatSequence_BattleCharge@@UAEXXZ
+slot   2 008B5090 SAME     ours=?GetName@CCombatSequence_BattleCharge@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_BattleCharge@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 008B50D0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequence_BattleCharge@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequence_BattleCharge@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 00908DA0 SAME     ours=?IsValid@CCombatSequence_BattleCharge@@UBE_NXZ retail_label=?IsValid@CCombatSequence_BattleCharge@@UBE_NXZ
+slot  13 008B50B0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequence_BattleCharge@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequence_BattleCharge@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B50C0 SAME     ours=?GetZone@CCombatSequence_BattleCharge@@UBEKXZ retail_label=?GetZone@CCombatSequence_BattleCharge@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 00908DE0 SAME     ours=?OnStart@CCombatSequence_BattleCharge@@UAEXXZ retail_label=?OnStart@CCombatSequence_BattleCharge@@UAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_FodderSecondaryAttack vftable 012795DC
+slot   0 008B3DC0 SAME     ours=??_ECCombatSequence_FodderSecondaryAttack@@UAEPAXI@Z retail_label=??_ECCombatSequence_FodderSecondaryAttack@@UAEPAXI@Z
+slot   1 00907200 SAME     ours=?OnCreate@CCombatSequence_FodderSecondaryAttack@@UAEXXZ retail_label=?OnCreate@CCombatSequence_FodderSecondaryAttack@@UAEXXZ
+slot   2 008B3D80 SAME     ours=?GetName@CCombatSequence_FodderSecondaryAttack@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_FodderSecondaryAttack@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 008B3DB0 SAME     ours=?IsMeleeSequence@CCombatSequence_FodderSecondaryAttack@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequence_FodderSecondaryAttack@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B3DA0 SAME     ours=?GetZone@CCombatSequence_FodderSecondaryAttack@@UBEKXZ retail_label=?GetZone@CCombatSequence_FodderSecondaryAttack@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_GenericLeader vftable 0127908C
+slot   0 008B3570 DIFF     ours=??_ECCombatSequence_GenericLeader@@UAEPAXI@Z retail_label=??_GCCombatSequence_GenericLeader@@UAEPAXI@Z
+slot   1 00906150 SAME     ours=?OnCreate@CCombatSequence_GenericLeader@@UAEXXZ retail_label=?OnCreate@CCombatSequence_GenericLeader@@UAEXXZ
+slot   2 008B3540 SAME     ours=?GetName@CCombatSequence_GenericLeader@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_GenericLeader@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B3560 SAME     ours=?GetZone@CCombatSequence_GenericLeader@@UBEKXZ retail_label=?GetZone@CCombatSequence_GenericLeader@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 18 DIFF 1 NOLABEL 0
+
+== CCombatSequence_GenericRangedAttack vftable 0127903C
+slot   0 008B3500 SAME     ours=??_ECCombatSequence_GenericRangedAttack@@UAEPAXI@Z retail_label=??_ECCombatSequence_GenericRangedAttack@@UAEPAXI@Z
+slot   1 00906050 SAME     ours=?OnCreate@CCombatSequence_GenericRangedAttack@@UAEXXZ retail_label=?OnCreate@CCombatSequence_GenericRangedAttack@@UAEXXZ
+slot   2 008B34D0 SAME     ours=?GetName@CCombatSequence_GenericRangedAttack@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_GenericRangedAttack@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B34F0 SAME     ours=?GetZone@CCombatSequence_GenericRangedAttack@@UBEKXZ retail_label=?GetZone@CCombatSequence_GenericRangedAttack@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_ScorpionLungeAttack vftable 0127967C
+slot   0 008B3F10 DIFF     ours=??_ECCombatSequence_ScorpionLungeAttack@@UAEPAXI@Z retail_label=??_GCCombatSequence_ScorpionLungeAttack@@UAEPAXI@Z
+slot   1 00907010 SAME     ours=?OnCreate@CCombatSequence_ScorpionLungeAttack@@UAEXXZ retail_label=?OnCreate@CCombatSequence_ScorpionLungeAttack@@UAEXXZ
+slot   2 008B3EA0 SAME     ours=?GetName@CCombatSequence_ScorpionLungeAttack@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_ScorpionLungeAttack@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 008B3EF0 SAME     ours=?IsInterruptable@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ
+slot   6 008B3F00 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ
+slot   7 008B3EE0 SAME     ours=?IsMeleeSequence@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 00906FA0 SAME     ours=?IsValid@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ retail_label=?IsValid@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ
+slot  13 008B3EC0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B3ED0 SAME     ours=?GetZone@CCombatSequence_ScorpionLungeAttack@@UBEKXZ retail_label=?GetZone@CCombatSequence_ScorpionLungeAttack@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 00906FC0 SAME     ours=?OnStart@CCombatSequence_ScorpionLungeAttack@@MAEXXZ retail_label=?OnStart@CCombatSequence_ScorpionLungeAttack@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 18 DIFF 1 NOLABEL 0
+
+== CCombatSequence_TrollBurrowPursue vftable 0127985C
+slot   0 008B4230 DIFF     ours=??_ECCombatSequence_TrollBurrowPursue@@UAEPAXI@Z retail_label=??_GCCombatSequence_TrollBurrowPursue@@UAEPAXI@Z
+slot   1 00907AE0 SAME     ours=?OnCreate@CCombatSequence_TrollBurrowPursue@@UAEXXZ retail_label=?OnCreate@CCombatSequence_TrollBurrowPursue@@UAEXXZ
+slot   2 008B4200 SAME     ours=?GetName@CCombatSequence_TrollBurrowPursue@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_TrollBurrowPursue@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4220 SAME     ours=?GetZone@CCombatSequence_TrollBurrowPursue@@UBEKXZ retail_label=?GetZone@CCombatSequence_TrollBurrowPursue@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 18 DIFF 1 NOLABEL 0
+
+== CCombatSequence_TrollDoubleSwipeNonMelee vftable 0127976C
+slot   0 008B40B0 SAME     ours=??_ECCombatSequence_TrollDoubleSwipeNonMelee@@UAEPAXI@Z retail_label=??_ECCombatSequence_TrollDoubleSwipeNonMelee@@UAEPAXI@Z
+slot   1 00907840 SAME     ours=?OnCreate@CCombatSequence_TrollDoubleSwipeNonMelee@@UAEXXZ retail_label=?OnCreate@CCombatSequence_TrollDoubleSwipeNonMelee@@UAEXXZ
+slot   2 008B4070 SAME     ours=?GetName@CCombatSequence_TrollDoubleSwipeNonMelee@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_TrollDoubleSwipeNonMelee@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 008B40A0 SAME     ours=?IsMeleeSequence@CCombatSequence_TrollDoubleSwipeNonMelee@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequence_TrollDoubleSwipeNonMelee@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4090 SAME     ours=?GetZone@CCombatSequence_TrollDoubleSwipeNonMelee@@UBEKXZ retail_label=?GetZone@CCombatSequence_TrollDoubleSwipeNonMelee@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_TrollOpeningGroundPound vftable 012797BC
+slot   0 008B4140 SAME     ours=??_ECCombatSequence_TrollOpeningGroundPound@@UAEPAXI@Z retail_label=??_ECCombatSequence_TrollOpeningGroundPound@@UAEPAXI@Z
+slot   1 00907930 SAME     ours=?OnCreate@CCombatSequence_TrollOpeningGroundPound@@UAEXXZ retail_label=?OnCreate@CCombatSequence_TrollOpeningGroundPound@@UAEXXZ
+slot   2 008B40F0 SAME     ours=?GetName@CCombatSequence_TrollOpeningGroundPound@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_TrollOpeningGroundPound@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 008B4130 SAME     ours=?IsMeleeSequence@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 009076A0 SAME     ours=?IsValid@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ retail_label=?IsValid@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ
+slot  13 008B4110 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4120 SAME     ours=?GetZone@CCombatSequence_TrollOpeningGroundPound@@UBEKXZ retail_label=?GetZone@CCombatSequence_TrollOpeningGroundPound@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 00907670 SAME     ours=?OnStart@CCombatSequence_TrollOpeningGroundPound@@UAEXXZ retail_label=?OnStart@CCombatSequence_TrollOpeningGroundPound@@UAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_TrollRockPursue vftable 012798FC
+slot   0 008B4310 SAME     ours=??_ECCombatSequence_TrollRockPursue@@UAEPAXI@Z retail_label=??_ECCombatSequence_TrollRockPursue@@UAEPAXI@Z
+slot   1 00907BE0 SAME     ours=?OnCreate@CCombatSequence_TrollRockPursue@@UAEXXZ retail_label=?OnCreate@CCombatSequence_TrollRockPursue@@UAEXXZ
+slot   2 008B42E0 SAME     ours=?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4300 SAME     ours=?GetZone@CCombatSequence_TrollRockPursue@@UBEKXZ retail_label=?GetZone@CCombatSequence_TrollRockPursue@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_VillagerBackOff vftable 01279B2C
+slot   0 008B4660 SAME     ours=??_ECCombatSequence_VillagerBackOff@@UAEPAXI@Z retail_label=??_ECCombatSequence_VillagerBackOff@@UAEPAXI@Z
+slot   1 00908810 SAME     ours=?OnCreate@CCombatSequence_VillagerBackOff@@UAEXXZ retail_label=?OnCreate@CCombatSequence_VillagerBackOff@@UAEXXZ
+slot   2 008B4630 SAME     ours=?GetName@CCombatSequence_VillagerBackOff@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_VillagerBackOff@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 006F06E0 SAME     ours=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequenceBase@@UBE_NXZ
+slot   6 006F06F0 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequenceBase@@UBE_NXZ
+slot   7 006F0700 SAME     ours=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 008B32B0 SAME     ours=?IsValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsValid@CCombatSequenceBase@@UBE_NXZ
+slot  13 008B32C0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequenceBase@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B4650 SAME     ours=?GetZone@CCombatSequence_VillagerBackOff@@UBEKXZ retail_label=?GetZone@CCombatSequence_VillagerBackOff@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 008B32F0 SAME     ours=?OnStart@CCombatSequenceBase@@MAEXXZ retail_label=?OnStart@CCombatSequenceBase@@MAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_WillPhysicalShield vftable 0127A364
+slot   0 008B5480 SAME     ours=??_ECCombatSequence_WillPhysicalShield@@UAEPAXI@Z retail_label=??_ECCombatSequence_WillPhysicalShield@@UAEPAXI@Z
+slot   1 009092C0 SAME     ours=?OnCreate@CCombatSequence_WillPhysicalShield@@UAEXXZ retail_label=?OnCreate@CCombatSequence_WillPhysicalShield@@UAEXXZ
+slot   2 008B5410 SAME     ours=?GetName@CCombatSequence_WillPhysicalShield@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_WillPhysicalShield@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 008B5460 SAME     ours=?IsInterruptable@CCombatSequence_WillPhysicalShield@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+slot   6 008B5450 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequence_WillPhysicalShield@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+slot   7 008B5470 SAME     ours=?IsMeleeSequence@CCombatSequence_WillPhysicalShield@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 00909780 SAME     ours=?IsValid@CCombatSequence_WillPhysicalShield@@UBE_NXZ retail_label=?IsValid@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+slot  13 008B5430 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequence_WillPhysicalShield@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B5440 SAME     ours=?GetZone@CCombatSequence_WillPhysicalShield@@UBEKXZ retail_label=?GetZone@CCombatSequence_WillPhysicalShield@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 009097E0 SAME     ours=?OnStart@CCombatSequence_WillPhysicalShield@@UAEXXZ retail_label=?OnStart@CCombatSequence_WillPhysicalShield@@UAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+== CCombatSequence_WillPhysicalShieldNonMelee vftable 0127A3B4
+slot   0 008B5530 SAME     ours=??_ECCombatSequence_WillPhysicalShieldNonMelee@@UAEPAXI@Z retail_label=??_ECCombatSequence_WillPhysicalShieldNonMelee@@UAEPAXI@Z
+slot   1 009093F0 SAME     ours=?OnCreate@CCombatSequence_WillPhysicalShieldNonMelee@@UAEXXZ retail_label=?OnCreate@CCombatSequence_WillPhysicalShieldNonMelee@@UAEXXZ
+slot   2 008B54C0 SAME     ours=?GetName@CCombatSequence_WillPhysicalShieldNonMelee@@UBE?AVCCharString@@XZ retail_label=?GetName@CCombatSequence_WillPhysicalShieldNonMelee@@UBE?AVCCharString@@XZ
+slot   3 008B3290 SAME     ours=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ retail_label=?GetCombatSequenceType@CCombatSequenceBase@@UBE?AW4ECombatSequenceType@@XZ
+slot   4 008B32A0 SAME     ours=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ retail_label=?GetCombatSequenceInterruptionType@CCombatSequenceBase@@UBE?AW4ECombatSequenceInterruptionType@@XZ
+slot   5 008B5510 SAME     ours=?IsInterruptable@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ retail_label=?IsInterruptable@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ
+slot   6 008B5500 SAME     ours=?IsInterruptableDueToZoneChange@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ retail_label=?IsInterruptableDueToZoneChange@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ
+slot   7 008B5520 SAME     ours=?IsMeleeSequence@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ retail_label=?IsMeleeSequence@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ
+slot   8 006F0710 SAME     ours=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBreakIntoMeleeSequence@CCombatSequenceBase@@UBE_NXZ
+slot   9 006F0720 SAME     ours=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsBoastSequence@CCombatSequenceBase@@UBE_NXZ
+slot  10 006F0730 SAME     ours=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ retail_label=?IsOuterRingSequence@CCombatSequenceBase@@UBE_NXZ
+slot  11 006F0740 SAME     ours=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ retail_label=?IsAllowedOnOuterRing@CCombatSequenceBase@@UBE_NXZ
+slot  12 00909830 SAME     ours=?IsValid@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ retail_label=?IsValid@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ
+slot  13 008B54E0 SAME     ours=?IsToPreferSequenceWhenValid@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ retail_label=?IsToPreferSequenceWhenValid@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ
+slot  14 008B32D0 SAME     ours=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ retail_label=?IsSequenceWithActions@CCombatSequenceBase@@UBE_NXZ
+slot  15 008B54F0 SAME     ours=?GetZone@CCombatSequence_WillPhysicalShieldNonMelee@@UBEKXZ retail_label=?GetZone@CCombatSequence_WillPhysicalShieldNonMelee@@UBEKXZ
+slot  16 008B32E0 SAME     ours=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ retail_label=?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ
+slot  17 00909890 SAME     ours=?OnStart@CCombatSequence_WillPhysicalShieldNonMelee@@UAEXXZ retail_label=?OnStart@CCombatSequence_WillPhysicalShieldNonMelee@@UAEXXZ
+slot  18 008B3300 SAME     ours=?OnStop@CCombatSequenceBase@@MAEXXZ retail_label=?OnStop@CCombatSequenceBase@@MAEXXZ
+retail slots 19, emitted slots 19; SAME 19 DIFF 0 NOLABEL 0
+
+PROBE_DONE

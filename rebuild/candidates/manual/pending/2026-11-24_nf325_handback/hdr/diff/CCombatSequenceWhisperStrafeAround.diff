@@ -1,0 +1,39 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CCombatSequenceWhisperStrafeAround.h	2026-11-23 00:11:47.569824473 +0000
++++ hdr/engine/CCombatSequenceWhisperStrafeAround.h	2026-11-24 01:03:02.818717642 +0000
+@@ -9,6 +9,25 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CCOMBATSEQUENCEWHISPERSTRAFEAROUND_VIRTUAL_MODEL
++// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
++// 0x01279FDC (RTTI .?AVCCombatSequenceWhisperStrafeAround@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequenceWhisperStrafeAround); every other slot stays the base's.
++// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
++// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
++#include "engine/CCombatSequenceBase.h"
++class CCharString;
++#pragma pack(push, 1)
++class CCombatSequenceWhisperStrafeAround : public CCombatSequenceBase {
++public:
++    virtual void OnCreate();                                              // slot 1 0x00908F20 ?OnCreate@CCombatSequenceWhisperStrafeAround@@UAEXXZ
++    virtual CCharString GetName() const;                                  // slot 2 0x008B4D90 ?GetName@CCombatSequenceWhisperStrafeAround@@UBE?AVCCharString@@XZ
++    virtual bool IsInterruptableDueToZoneChange() const;                  // slot 6 0x008B4DC0 ?IsInterruptableDueToZoneChange@CCombatSequenceWhisperStrafeAround@@UBE_NXZ
++    virtual unsigned long GetZone() const;                                // slot 15 0x008B4DB0 ?GetZone@CCombatSequenceWhisperStrafeAround@@UBEKXZ
++public:
++};
++#pragma pack(pop)
++FABLE_STATIC_ASSERT(sizeof(CCombatSequenceWhisperStrafeAround) == 0x28);
++#else
+ #pragma pack(push, 1)
+ struct CCombatSequenceWhisperStrafeAround {
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+@@ -21,7 +40,8 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CCombatSequenceWhisperStrafeAround) == 0x28);
+-FABLE_STATIC_ASSERT(offsetof(CCombatSequenceWhisperStrafeAround, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequenceWhisperStrafeAround) == 0x28);
++FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequenceWhisperStrafeAround, __vftable) == 0x0);
++#endif // FABLE_RETAIL_CCOMBATSEQUENCEWHISPERSTRAFEAROUND_VIRTUAL_MODEL
+ 
+ #endif // FABLE_ENGINE_CCOMBATSEQUENCEWHISPERSTRAFEAROUND_H

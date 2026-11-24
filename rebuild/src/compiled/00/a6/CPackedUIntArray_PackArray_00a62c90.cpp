@@ -1,3 +1,4 @@
+// Leaf: ?PackArray@CPackedUIntArray@@AAEXPBXKJK@Z
 // CPackedUIntArray::PackArray(const void*, unsigned long, long, unsigned long) -- read Size strided source values of `bits` bits, subtract the bias and pack them Bits bits apiece, low bits first, into the PackedInts words
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A62C90, length 240 bytes (`ret 10h`; the word count argument is unused).
 // Callees: none (memcpy is the intrinsic rep movsd/movsb copy). Globals: the low-bit mask table
@@ -18,7 +19,9 @@ struct CPackedUIntArray {
     unsigned long  Size;                    // +0x04
     unsigned char  Bits;                    // +0x08
     unsigned long  Bias;                    // +0x0c
+    private:
     void PackArray(const void* data, unsigned long bits, long stride, unsigned long words);
+    public:
 };
 
 void CPackedUIntArray::PackArray(const void* data, unsigned long bits, long stride, unsigned long words)

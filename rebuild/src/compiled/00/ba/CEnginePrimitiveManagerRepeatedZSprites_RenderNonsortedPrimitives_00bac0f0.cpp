@@ -1,5 +1,5 @@
 // CEnginePrimitiveManagerRepeatedZSprites::RenderNonsortedPrimitives() -- lock the billboard and z-buffer scratch textures, order the sort list (gap pass: by mesh, then by depth), render every entry, empty the list, release the textures and flush the lighting manager's pending fog/colour state
-// Leaf: RenderNonsortedPrimitives
+// Leaf: ?RenderNonsortedPrimitives@CEnginePrimitiveManagerRepeatedZSprites@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BAC0F0, length 560 bytes (body 0x229 + int3 padding), plain `ret`.
 // Callees: CGPUScratchBufferTextureManager::StartSurfaceUse 0x00F36EE0 / 0x00F36F10 and the matching ends 0x00F36F00 / 0x00F36F30
 //   on g_pDisplayManager(0x01436E98)+0x3190, RenderFromSortList 0x00BAA870, memmove 0x00BFEAE6, vector _M_fill_insert 0x00BAC800.
@@ -77,7 +77,7 @@ namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; } 
 
 class CTexture; class CSurface;
 class CEnginePrimitiveManagerRepeatedZSprites { public:
-    unsigned char _pad00[0x80];
+    unsigned char _pad00[0x7c];
     CSortList     PrimitiveSortList;               // +0x80
     CTexture*     BillboardSurface;                // +0x8c (the billboard texture: StartTextureUse)
     CSurface*     ZBufferSurface;                  // +0x90 (StartSurfaceUse)
@@ -87,7 +87,7 @@ class CEnginePrimitiveManagerRepeatedZSprites { public:
     unsigned char _padac[0xc0 - 0xac];
     long          RenderedCount;                   // +0xc0
     void RenderFromSortList(PSprite sprite);       // 0x00BAA870
-    void RenderNonsortedPrimitives();
+    virtual void RenderNonsortedPrimitives();
 };
 
 void CEnginePrimitiveManagerRepeatedZSprites::RenderNonsortedPrimitives()

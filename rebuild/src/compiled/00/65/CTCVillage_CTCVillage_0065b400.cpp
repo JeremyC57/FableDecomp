@@ -117,7 +117,10 @@ class CTCVillage : public CTCBase { public:
 
     virtual void v01();
     CTCVillage(CThing& parent);
-    void InitialiseSecuritySweeps();                         // 0x00659085
+    private:
+    void InitialiseSecuritySweeps();
+    public:
+                         // 0x00659085
 };
 
 CTCVillage::CTCVillage(CThing& parent)

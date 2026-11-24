@@ -95,8 +95,8 @@ public:
 class CInputProcessQuestCompletionUI : public CInputProcessGameBase {
 public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
+    bool IsEventButtonHeld(const CInputEvent& event);             // 0x00687B30
+    bool IsEventButtonReleased(const CInputEvent& event);                 // 0x00687BD0
     bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     CMousePosition GetMousePosition(const CInputEvent& event) const { return event.Position; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
@@ -138,7 +138,7 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
         }
         return;
     }
-    if (IsEventButtonHeld(event)) {
+    if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(0x19, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0x1c);
             processed.SetHandled();
@@ -150,7 +150,7 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
         }
         return;
     }
-    if (IsEventButtonReleased(event)) {
+    if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(0x19, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0x1f);
             processed.SetHandled();
@@ -202,8 +202,8 @@ STCEntry* CTCMap::LowerBound(const unsigned long& kind)
     return it;
 }
 bool CInputProcessQuestCompletionUI::IsEventButtonPressed(const CInputEvent&) { return g_pressed != 0; }
-bool CInputProcessQuestCompletionUI::IsEventButtonReleased(const CInputEvent&) { return g_released != 0; }
-bool CInputProcessQuestCompletionUI::IsEventButtonHeld(const CInputEvent&) { return g_held != 0; }
+bool CInputProcessQuestCompletionUI::IsEventButtonHeld(const CInputEvent&) { return g_released != 0; }
+bool CInputProcessQuestCompletionUI::IsEventButtonReleased(const CInputEvent&) { return g_held != 0; }
 bool CInputProcessQuestCompletionUI::IsEventGameAction(long action, const CInputEvent&) { return action == g_action; }
 NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return g_mgr; }
 void NUISystem::CManager::SendEvent(long event) { if (g_sends < 8) g_events[g_sends] = event; ++g_sends; g_lastEvent = event; }

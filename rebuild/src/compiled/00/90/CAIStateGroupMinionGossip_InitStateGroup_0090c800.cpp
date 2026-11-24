@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionGossip::InitStateGroup(const CWorld&, CThingAICreature&) -- pretend the villager last
-// Leaf: ?InitStateGroup@CAIStateGroup_MinionGossip@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+// Leaf: ?InitStateGroup@CAIStateGroup_MinionGossip@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -89,7 +89,9 @@ struct CAIStateGroup_MinionGossip : CAIStateGroupBase {
     long FrameOfLastGossip;                     // +0x14
     bool Critical;                              // +0x18
     bool NowRelyingOnGossipee;                  // +0x19
+    protected:
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
+    public:
 };
 
 void CAIStateGroup_MinionGossip::InitStateGroup(const CWorld& world, CThingAICreature& creature)

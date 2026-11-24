@@ -1,0 +1,26 @@
+# NOTE (NF287): section-aligned compare. 0x00af5380: the new object lacks the stand-in pick-any COMDAT ??2CDecal@NParticleEngine@@SAPAXI@Z,
+# so every later section shifts by one; the symbol-wise compare (cmpfn_00af5380.txt) shows every function and the vtable SAME (decision 3).
+# 0x009415b0: only .drectve differs (a VC7.1 /alternatename for the declared-only member template); that row is HELD (work/held/, decision 2), not in rows/.
+##### 00af5380 renames: ??2CDecal@NParticleEngine@@SAPAXI@Z=??2CDecal@NParticleEngine@@SIPAXI@Z ?AllocateParticleMemory_00af8b00@@YIPAXI@Z=
+sections head 15 new 14
+DIFF section count
+DIFF 3 .text .text bytes False relocs False 9 3
+DIFF 4 .text .text bytes False relocs True 3 13
+DIFF 6 .text .text bytes False relocs False 13 28
+DIFF 7 .text .text bytes False relocs False 28 11
+DIFF 8 .text .text bytes False relocs False 11 64
+DIFF 9 .text .rdata bytes False relocs False 64 4
+    (12, '??_7CDecal@NParticleEngine@@6B@', 6) | (0, '?v00@CDecal@NParticleEngine@@UAEXXZ', 6)
+DIFF 10 .rdata .text bytes False relocs False 4 11
+DIFF 11 .text .text bytes False relocs False 11 45
+DIFF 12 .text .text bytes False relocs False 45 45
+    (3, '_malloc', 20) | (6, '_malloc', 20)
+DIFF 13 .text .text bytes False relocs False 45 167
+    (6, '_malloc', 20) | (12, '??2CDecal@NParticleEngine@@SIPAXI@Z', 20)
+bad 11 text_sections_equal=3
+tables H=1 N=1
+##### 009415b0 renames: ?FindMostRecentMessage_0090dee0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z=??$FindMostRecentMessage@V?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z
+sections head 23 new 23
+DIFF 0 .drectve .drectve bytes False relocs True 62 498
+bad 1 text_sections_equal=21
+tables H=0 N=0

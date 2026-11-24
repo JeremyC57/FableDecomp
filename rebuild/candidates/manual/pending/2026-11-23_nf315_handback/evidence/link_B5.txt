@@ -1,0 +1,9 @@
+## HEAD set: H_0091e050.obj H_009621f0.obj H_009624d0.obj H_0097da40.obj
+duplicates 0
+
+UNRESOLVED 3 ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z
+## new set: N_0091e050.obj N_009621f0.obj N_009624d0.obj H_0097da40.obj
+duplicates 0
+
+UNRESOLVED 3 ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z
+LK_DONE

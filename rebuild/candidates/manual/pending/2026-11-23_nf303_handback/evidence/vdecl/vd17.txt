@@ -1,0 +1,26 @@
+008d6690 - NCreatureModeCModeCreatureIsProjectile_OnActivate_008d6690.c | L86:CModeBase:public:virtual:virtual void OnActivate(); || L94:CModeStandBase:public:virtual:virtual void OnActivate(); || L102:NCreatureMode::CModeCreatureIsProjectile:public:virtual:virtual void OnActivate();
+008d66e0 SO - NCreatureModeCModeUnderground_OnActivate_008d66e0.cpp | L21:NCreatureMode::CModeStandBase:public:plain:void OnActivate(); || L27:NCreatureMode::CModeUnderground:public:virtual:virtual void OnActivate();
+008d68a0 - NCreatureModeCModeDrained_OnActivate_008d68a0.cpp | L57:CModeBase:public:virtual:virtual void OnActivate(); || L65:CModeStandBase:public:virtual:virtual void OnActivate(); || L71:NCreatureMode::CModeDrained:public:virtual:virtual void OnActivate();
+008d68e0 - NCreatureModeCModeSummonerSummon_OnActivate_008d68e0.cpp | L17:CModeSummonerSummon:public:plain:void OnActivate();
+008d6920 - NCreatureModeCModeSummonerDie_OnActivate_008d6920.cpp | L23:NCreatureMode::CModeStandBase:public:plain:void OnActivate(); || L38:NCreatureMode::CModeSummonerDie:public:virtual:virtual void OnActivate();
+008d6960 - CModeChargeForcePush_OnActivate_008d6960.cpp | L17:CModeChargeForcePush:public:plain:void OnActivate();
+008d69f0 - CModeDragonRearUp_OnActivate_008d69f0.cpp | L19:CModeDragonRearUp:public:plain:void OnActivate();
+008d6a30 - NCreatureModeCModeDragonHover_OnActivate_008d6a30.cpp | NODECL
+008d6a50 - NCreatureModeCModeDragonFireBeam_OnActivate_008d6a50.cpp | L21:NCreatureMode::CModeStandBase:public:plain:void OnActivate(); || L28:NCreatureMode::CModeDragonFireBeam:public:virtual:virtual void OnActivate();
+008d6a80 - NCreatureModeCModeHitByEpicSpell_OnActivate_008d6a80.cpp | L18:?:public:plain:void  OnActivate();
+008d7270 - NCreatureModeCModeOutOfActionBase_OnActivate_008d7270.cpp | L70:CModeStandBase:public:virtual:virtual void OnActivate(); || L86:NCreatureMode::CModeOutOfActionBase:public:virtual:virtual void OnActivate();
+008d74b0 - NCreatureModeCModeDragonLanded_OnActivate_008d74b0.cpp | L41:NCreatureMode::CModeStandBase:public:plain:void OnActivate(); || L47:NCreatureMode::CModeDragonLanded:public:virtual:virtual void OnActivate();
+008d7510 - NCreatureModeCModeDragonGetHit_OnActivate_008d7510.cpp | L69:NCreatureMode::CModeStandBase:public:plain:void OnActivate(); || L76:NCreatureMode::CModeDragonGetHit:public:virtual:virtual void OnActivate();
+008d7630 INC NCreatureModeCModeIceTrollGroundSmashIcicleAssault_OnActivat | L70:NCreatureMode::CModeIceTrollGroundSmashIcicleAssault:public:virtual:virtual void OnActivate();
+008d8330 - NCreatureModeCModeScreamerSuperAttack_OnActivate_008d8330.cp | L81:CModeStandBase:public:virtual:virtual void OnActivate(); || L92:NCreatureMode::CModeScreamerSuperAttack:public:virtual:virtual void OnActivate();
+008d87c0 - NCreatureModeCModeCarryingWeaponStand_OnActivate_008d87c0.cp | L88:CModeStandBase:public:plain:void OnActivate(); || L96:NCreatureMode::CModeCarryingWeaponStand:public:plain:void OnActivate();
+008da2e0 - NCreatureModeCModeScorpionKingExhausted_OnActivate_008da2e0. | L138:CModeStandBase:public:virtual:virtual void OnActivate(); || L154:NCreatureMode::CModeScorpionKingExhausted:public:virtual:virtual void OnActivate();
+008da410 - NCreatureModeCModeScreamerAggressive_OnActivate_008da410.cpp | NODECL
+008dae10 - NCreatureModeCModeSummonerLightningOrb_OnActivate_008dae10.c | L162:NCreatureMode::CModeStandBase:public:plain:void OnActivate(); || L170:NCreatureMode::CModeSummonerLightningOrb:public:virtual:virtual void OnActivate();
+008dd6e0 INC NCreatureModeCModeThunderLightningStorm_OnActivate_008dd6e0. | L41:CModeBase:public:virtual:virtual void OnActivate(); || L52:CModeStandBase:public:virtual:virtual void OnActivate(); || L143:NCreatureMode::CModeThunderLightningStorm:public:virtual:virtual void OnActivate();
+008ddd70 SO - NCreatureModeCModeGuildmasterPowerUpHeal_OnActivate_008ddd70 | L209:CModeStandBase:public:virtual:virtual void OnActivate(); || L214:NCreatureMode::CModeGuildmasterPowerUpHeal:public:virtual:virtual void OnActivate();
+008e0060 - NCreatureModeCModeGuildmasterPowerUpShield_OnActivate_008e00 | NODECL
+008e03b0 - NCreatureModeCModeGuildmasterPowerUpSpeed_OnActivate_008e03b | NODECL
+008e7a00 - NCreatureModeCModeBriarRoseTeleportInvulnerable_OnActivate_0 | L152:CModeStandBase:public:plain:void OnActivate(); || L160:NCreatureMode::CModeBriarRoseTeleportInvulnerable:public:plain:void OnActivate();
+008e7b90 INC NCreatureModeCModeBriarRoseTeleportIntangible_OnActivate_008 | L81:NCreatureMode::CModeBriarRoseTeleportIntangible:public:virtual:virtual void OnActivate();
+008e8060 - NCreatureModeCModeBriarRoseConcentrate_OnActivate_008e8060.c | NODECL

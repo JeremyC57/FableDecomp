@@ -18,6 +18,7 @@
 // temporaries, ebx flag bits 1/2/4/8, the bool in a frame byte); the failure exits are gotos to one `success = false`.
 // Name fix (agentNF23): SetPItem takes the PDB CBaseObject* (Ego_r.pdb / FableWin.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z, 0x00A01B90); the argument is cast to CBaseObject* as CIntelligentPointer<T>::SetPointer does.
 #include "fable_compiler.h"
+#include "engine/EMovementType.h"   // NF313: the PDB parameter enum of AIAction_MinionWander
 class CThing;
 class CCharString { public:
     void* PStringData;
@@ -57,7 +58,7 @@ class CCreatureAction_AimMissileWeapon : public CCreatureActionBase { public:   
 };
 class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:   // retail sizeof 0xc8
     unsigned char _fire[0xc8 - 0xa8];
-    CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);   // 0x008D5110
+    CCreatureAction_FireMissileWeapon(CThingCreatureBase& creature, const CThing* target);   // 0x008D5110
     ~CCreatureAction_FireMissileWeapon();       // 0x0078ADF0
 };
 class CCombatActionBase : public CCreatureActionBase { public:    // retail sizeof 0x114
@@ -66,7 +67,7 @@ class CCombatActionBase : public CCreatureActionBase { public:    // retail size
 };
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:   // retail sizeof 0x118
     long Loop;                                  // +0x114
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
+    CCreatureAction_PlayCombatAnimation(CThingCreatureBase& creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CAIBrain { public:
@@ -74,6 +75,7 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 enum EAIActionReturn { };
+class CThingBuilding;                          // NF313: the PDB parameter class of AIAction_MinionWander
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -85,7 +87,7 @@ class CAIStateGroupBase { public:
     protected: EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   protected: // 0x0097D6F0
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
-    long AIAction_MinionWander(long movementType, CThing* building);   // 0x0097F870
+    protected: EAIActionReturn AIAction_MinionWander(EMovementType movementType, CThingBuilding* building); public:   // 0x0097F870 (NF313: IAE, both PDBs)
     FABLE_FORCEINLINE unsigned long Random()
     {
         unsigned long* seed = GetPWorldSeed();
@@ -145,19 +147,19 @@ bool CAIStateGroup_SkillPractice::PracticeSkills()
             if (stepFailed)
                 goto failed;
             stepFailed = secondAnim != ""
-                && AIAction_PerformActionAndWait(CCreatureAction_FireMissileWeapon(GetCreature(), PDummy), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_FireMissileWeapon(*GetCreature(), PDummy), false) != 2;
         } else {
             stepFailed = firstAnim != ""
-                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), firstAnim, true), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(*GetCreature(), firstAnim, true), false) != 2;
             if (stepFailed)
                 goto failed;
             stepFailed = secondAnim != ""
-                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), secondAnim, true), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(*GetCreature(), secondAnim, true), false) != 2;
         }
         if (stepFailed)
             goto failed;
         if ((DummyType == 0 || DummyType == 2) && (Random() & 3) == 0) {
-            if (AIAction_MinionWander(3, 0) != 2 || !MoveToAppropriateDummy())
+            if (AIAction_MinionWander(AI_MOVEMENT_WALKING, 0) != 2 || !MoveToAppropriateDummy())
                 goto failed;
         }
         if (!IsDummyTypeLegal(DummyType))

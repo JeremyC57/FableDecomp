@@ -36,7 +36,7 @@ class CRenderTarget : public CBaseClass { public:                     // vtable 
     CSurface RenderToSurface;                      // +0x04
     CSurface ZBufferSurface;                       // +0x14
     CRenderTarget() {}
-    CRenderTarget(const CSurface& colour, const CSurface& depth);   // 0x00A10DC0
+    CRenderTarget(CSurface& colour, CSurface& depth);   // 0x00A10DC0
     CRenderTarget& operator=(const CRenderTarget& other)
     {
         RenderToSurface = other.RenderToSurface;
@@ -54,7 +54,7 @@ class CDisplayManager { public:
     CSurface      CurrentZBufferSurface;           // +0x1c
     unsigned char _pad02c[0x1f4 - 0x2c];
     C2DBoxI       Viewport;                        // +0x1f4
-    void SetRenderTarget(CRenderTarget* target);   // 0x009BF160
+    bool SetRenderTarget(CRenderTarget& target);   // 0x009BF160
 };
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
@@ -126,7 +126,7 @@ void CEngineScreenEffectOutlineGlow_Begin::BeginOutlineRendering()
         *(C2DBoxI*)&OldViewport_TLX = NEngineInternal::GPDisplayManager->Viewport;
         CRenderTarget target;
         target.AttachTarget(OutlineTexture->GetSurfaceLevel(0));
-        NEngineInternal::GPDisplayManager->SetRenderTarget(&target);
+        NEngineInternal::GPDisplayManager->SetRenderTarget(target);
         g_pRenderManagerCore->Clear(CRGBColour(0, 0, 0, 0), 4);
     }
 }

@@ -70,7 +70,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-void __fastcall FadeInThing(const CScriptThing& thing, float time);                               // 0x00CBE7AA
+void __fastcall FadeInThing(CScriptThing& thing, float time);                                     // 0x00CBE7AA
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 namespace NScript {

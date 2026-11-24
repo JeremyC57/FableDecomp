@@ -20,6 +20,16 @@ class CThingCreatureBase;
 class CCreatureAction_BeingForcePushed : public CCombatActionBase {
 public:
     CCreatureAction_BeingForcePushed(CThingCreatureBase& creature);     // 0x008BD0B0
+#ifdef FABLE_RETAIL_CCREATUREACTION_BEINGFORCEPUSHED_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x008BDB20: ?PerformAction@CCreatureAction_BeingForcePushed@@UAEXXZ (FableWin.pdb)
+public:
+    virtual void PerformAction();
+    // 0x008BDB30: ?IsUsingAnimationMovement@CCreatureAction_BeingForcePushed@@UBE_NXZ (FableWin.pdb)
+    virtual bool IsUsingAnimationMovement() const;
+#endif
 };
 FABLE_STATIC_ASSERT_AT(24, sizeof(CCreatureAction_BeingForcePushed) == 0x114);
 #else

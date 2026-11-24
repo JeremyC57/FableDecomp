@@ -1,0 +1,2 @@
+DEF ?DoublyLinkedList_InitializeEmpty@@YIPAPAXPAPAXPAX1@Z
+UND _malloc

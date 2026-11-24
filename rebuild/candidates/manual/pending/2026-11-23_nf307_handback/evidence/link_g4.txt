@@ -1,0 +1,21 @@
+## HEAD set: H_004d5896.obj H_00714900.obj H_00714cc0.obj H_0072c230.obj H_008587b0.obj H_008d8ea0.obj H_008da610.obj H_008db240.obj H_008db460.obj 008168b0.obj 00816aa0.obj 005ee49a.obj 005eea9b.obj 0064ae80.obj 00651b04.obj 0072c430.obj 00753e90.obj 006d5b50.obj 00716de0.obj 0089bdf0.obj 008dbc80.obj 007cd390.obj
+duplicates 3
+  DUP H_008587b0.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in H_00714cc0.obj;
+  DUP 00651b04.obj ?GFAnchorToBottomRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z in 0064ae80.obj;
+  DUP 00651b04.obj ?DrawButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z in 0064ae80.obj;
+UNRESOLVED 1 ??0CTCMultiStrike@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ?ApplyEffectOnWeapon@CTCMultiStrike@@QAEXPAVCThing@@@Z
+UNRESOLVED 1 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z
+UNRESOLVED 1 ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z
+UNRESOLVED 1 ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0PAV4@1M@Z
+UNRESOLVED 1 ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NJ_N@Z
+UNRESOLVED 6 ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z
+## new set: 004d5896.obj 00714900.obj 00714cc0.obj 0072c230.obj 008587b0.obj 008d8ea0.obj 008da610.obj 008db240.obj 008db460.obj 008168b0.obj 00816aa0.obj 005ee49a.obj 005eea9b.obj 0064ae80.obj 00651b04.obj 0072c430.obj 00753e90.obj 006d5b50.obj 00716de0.obj 0089bdf0.obj 008dbc80.obj 007cd390.obj
+duplicates 3
+  DUP 008587b0.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in 00714cc0.obj;
+  DUP 00651b04.obj ?GFAnchorToBottomRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z in 0064ae80.obj;
+  DUP 00651b04.obj ?DrawButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z in 0064ae80.obj;
+UNRESOLVED 1 ?ApplyEffectOnWeapon@CTCMultiStrike@@QAEXPAVCThing@@@Z
+UNRESOLVED 1 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z
+UNRESOLVED 2 ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z
+LK_DONE

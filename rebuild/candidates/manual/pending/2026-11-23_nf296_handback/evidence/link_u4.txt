@@ -1,0 +1,38 @@
+## HEAD set: H_004b4490.obj H_00665260.obj H_0072ac90.obj H_007363a0.obj H_008c55b0.obj H_0093d180.obj H_0093e240.obj H_0096edb0.obj H_00972110.obj H_00490927.obj H_007d8e20.obj H_008f17d0.obj H_0069f4f0.obj H_0078c860.obj H_0078c8b0.obj H_0078e9c0.obj H_00793ec0.obj H_008ba3c0.obj H_008ed850.obj H_007f1410.obj H_008c2490.obj H_00684210.obj H_00958cb0.obj H_0065c36e.obj H_00838bc0.obj H_004e1537.obj H_0069f670.obj H_0069fc40.obj H_00cb8220.obj H_00751a80.obj H_0079dcb0.obj H_00662170.obj H_00661e70.obj H_006621a0.obj H_0048db13.obj H_004bffc0.obj H_0073a840.obj H_0073a8a0.obj H_0065914b.obj H_0065c2d0.obj H_005daa00.obj H_006a1270.obj H_008018b0.obj
+duplicates 2
+H_00838bc0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+H_00838bc0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceTyp
+UNRESOLVED 2 ?ClearMeshEffect_004bffc0@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z
+UNRESOLVED 1 ?GetCombatTypeIndex@CThingCreatureBase@@QBEJXZ
+UNRESOLVED 1 ?GetHeadAngleOffset@CTCLook@@QAEMXZ
+UNRESOLVED 1 ?GetPerformedAction@CCreatureActionBase@@QAE_NXZ
+UNRESOLVED 1 ?GetPerformedAction@CCreatureActionBase@@QBE_NXZ
+UNRESOLVED 1 ?HasDamage@CTCWeapon@@QBE_NXZ
+UNRESOLVED 2 ?HasMode@CTCCreatureModeManager@@QAE_NK@Z
+UNRESOLVED 1 ?IsCollidingWithLandscape@CThingCreatureBase@@QBE_NXZ
+UNRESOLVED 1 ?IsCrimeHandled@CTCVillage@@QAE_NJ@Z
+UNRESOLVED 1 ?IsDeedHandled@CTCVillage@@QAE_NJ@Z
+UNRESOLVED 2 ?IsInCombatMode@CThingCreatureBase@@QAE_NXZ
+UNRESOLVED 1 ?IsInSpecialMode@CWorld@@QAE_NXZ
+UNRESOLVED 1 ?IsMoveActive@CTCPhysicalShieldSpell@@QAE_NXZ
+UNRESOLVED 1 ?IsPrimarySlotEmpty@CTCCarrying@@QAE_NXZ
+UNRESOLVED 1 ?OnUnsheatheFinished@CTCCreatureModeManager@@QAEXXZ
+UNRESOLVED 1 ?ProcessCrimeDeeds@CTCVillage@@QAEXXZ
+UNRESOLVED 1 ?Reset@CTCIdleScheduler@@QAEXXZ
+UNRESOLVED 6 ?RestartCurrentMode@CTCCreatureModeManager@@QAEXXZ
+UNRESOLVED 2 ?UpdateFrontMode@CTCCreatureModeManager@@QAEXXZ
+UNRESOLVED 1 ?UpdateScript@CScriptBase@@QAEXXZ
+UNRESOLVED 2 ?UsesCreatureModes@CThingCreatureBase@@QAE_NXZ
+## new set: N_004b4490.obj N_00665260.obj N_0072ac90.obj N_007363a0.obj N_008c55b0.obj N_0093d180.obj N_0093e240.obj N_0096edb0.obj N_00972110.obj N_00490927.obj N_007d8e20.obj N_008f17d0.obj N_0069f4f0.obj N_0078c860.obj N_0078c8b0.obj N_0078e9c0.obj N_00793ec0.obj N_008ba3c0.obj N_008ed850.obj N_007f1410.obj N_008c2490.obj N_00684210.obj N_00958cb0.obj N_0065c36e.obj N_00838bc0.obj N_004e1537.obj N_0069f670.obj N_0069fc40.obj H_00cb8220.obj H_00751a80.obj H_0079dcb0.obj H_00662170.obj H_00661e70.obj H_006621a0.obj H_0048db13.obj H_004bffc0.obj H_0073a840.obj H_0073a8a0.obj H_0065914b.obj H_0065c2d0.obj H_005daa00.obj H_006a1270.obj H_008018b0.obj
+duplicates 2
+N_00838bc0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+N_00838bc0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceTyp
+UNRESOLVED 2 ?ClearHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z
+UNRESOLVED 1 ?GetCombatType@CThingCreatureBase@@QBEJXZ
+UNRESOLVED 2 ?HasPerformedAction@CCreatureActionBase@@QBE_NXZ
+UNRESOLVED 4 ?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ
+UNRESOLVED 1 ?IsAbortingCurrentAction@CThingCreatureBase@@QBE_NXZ
+UNRESOLVED 1 ?IsMeleeWeapon@CTCWeapon@@QBE_NXZ
+UNRESOLVED 1 ?IsShieldActive@CTCPhysicalShieldSpell@@QAE_NXZ
+UNRESOLVED 9 ?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+LK_DONE

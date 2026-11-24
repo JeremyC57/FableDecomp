@@ -1,0 +1,8 @@
+##### 008587b0 renames: ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0PAV4@1M@Z=?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z ?ProcessFramesRunningForOnHitWithParams@?A0x2c3c4541@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z=?ProcessFramesRunningForOnHitWithParams@?A0xa839fbbb@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z
+ALL_EQ sections=9 DEF=8 tables=-
+##### 0072c230 renames: ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NJ_N@Z=?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z
+ALL_EQ sections=11 DEF=10 tables=-
+##### 008db460 renames: ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z=?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+ALL_EQ sections=27 DEF=26 tables=-
+##### 004d5896 renames: ??0CTCMultiStrike@@QAE@PAVCThing@@@Z=??0CTCMultiStrike@@QAE@AAVCThing@@@Z
+ALL_EQ sections=2 DEF=1 tables=-

@@ -1,4 +1,5 @@
 // CMarkedBufferOwner::AllocateMarks(long, callback, context) -- reset state, allocate marks, bind its resource and retain notification.
+// Leaf: ?AllocateMarks@CMarkedBufferOwner@@QAE_NJP6GXPAU1@PAX1@Z1@Z
 // Retail00c43ec0 179bytes. Manifest CExclusiveAssert::OnQuestItemUsed is propagated;
 // sibling00c43810 uses this same buffer/callback layout. Calls audited directly; no RTTI class identity asserted.
 // Address-named native views: no PDB header/RTTI mapping for this library.
@@ -17,9 +18,13 @@ class CCodaContext { public:
 };
 struct CErrorState {};extern CErrorState gErrorState;//0143bb58;Report00c3d090
 struct CReferenceLease {void Release();}; //00c3c5f0: decrement +c when nonzero
-struct CMarkedBuffer {void* Block;void* Cursor;long Count;long Used;void* Marks;long MarkCount;
+class CSoundBuffer;
+// The +0x54 buffer queue, the landed sibling model of 0x00C437C0 / 0x00C43810 (descriptive, libpk has no PDB); was CMarkedBuffer.
+class CircularQueue { public:
  bool Allocate(long); //00c44360, allocates12 bytes per item
  void Release(); //00c44550
+ CSoundBuffer** m_items; unsigned __int64* m_times; unsigned long m_capacity; unsigned long m_head; unsigned long m_tail;
+ CSoundBuffer* m_lastItem; unsigned long m_stats[3];
 };
 typedef void (__stdcall* PFNMARK)(CMarkedBufferOwner*,void*,void*);
 struct CRegistrationList {long Remove(long);}; //00c5ff60
@@ -33,8 +38,8 @@ struct CMarkedBufferOwner {
  virtual bool Initialise(void*); //slot3 retail00c42dd0: parameter pointer, bool result
  virtual void Close(); //slot4 retail00c44170
  void* Previous;void* Next;long Handle;unsigned long Flags;
- unsigned char OwnerState[0x3c];CResourceLink* Resource;CMarkedBuffer Buffer;
- unsigned char BufferState[0xc];CReferenceLease* Lease;
+ unsigned char OwnerState[0x3c];CResourceLink* Resource;CircularQueue Buffer;
+ CReferenceLease* Lease; // +0x78 (the queue's +0x18 stats were BufferState[0xc])
  unsigned char OpenState[0x58];PFNMARK MarkCallback;void* MarkContext;
  void* StateCallback;void* StateContext;unsigned char RegistrationState[0x10];void* OwnedMemory;long RegistrationID;
  void Shutdown(); //00c43810
@@ -43,7 +48,7 @@ struct CMarkedBufferOwner {
 };
 
 bool CMarkedBufferOwner::AllocateMarks(long count,PFNMARK callback,void* context){
- if(Buffer.Count)Shutdown();
+ if(Buffer.m_capacity)Shutdown();
  Cleanup();
  if(Lease){Lease->Release();Lease=0;
   if(Resource&&Resource->DetachOwner(this)){gResourceManager->Release(Resource);Resource=0;}

@@ -1,0 +1,5 @@
+H_00adce60	??1CVertexGroupBlock@@QAE@XZ	19	00a96da0	NEQ:bytes(19 v 84)
+H_00adce60	??_GCVertexGroupBlock@@QAEPAXI@Z	40	00adbe50	NEQ:bytes(40 v 40)
+H_00adce60	??$__destroy_aux@PAVCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@0ABU__false_type@0@@Z	43	00adc190	NEQ:bytes(43 v 141)
+d1_00adce60	??_GCVertexGroupBlock@@QAEPAXI@Z	30	00adbe50	EQ
+d1_00adce60	??$__destroy_aux@PAVCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@0ABU__false_type@0@@Z	35	00adc190	NEQ:bytes(35 v 141)

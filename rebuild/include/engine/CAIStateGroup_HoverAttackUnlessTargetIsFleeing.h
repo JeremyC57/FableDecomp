@@ -8,6 +8,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_HOVERATTACKUNLESSTARGETISFLEEING_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128C694 (RTTI .?AVCAIStateGroup_HoverAttackUnlessTargetIsFleeing@@ : CAIStateGroup_HoverAttack), 23 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_HoverAttackUnlessTargetIsFleeing); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VSLOTS, FABLE_RETAIL_CINTELLIGENTPOINTER, FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS, FABLE_RETAIL_CAISTATEGROUP_HOVERMOVEMENTBASE_MOVETOPOSANDFACEPOS, FABLE_RETAIL_CAISTATEGROUP_HOVERATTACK_VIRTUAL_MODEL.
+class CThingCreatureBase;
+#include "engine/CAIStateGroup_HoverAttack.h"
+enum EAIStateGroupType;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_HoverAttackUnlessTargetIsFleeing : public CAIStateGroup_HoverAttack {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00900C8B ?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE?AW4EAIStateGroupType@@XZ
+protected:
+    virtual bool IsRunnableLeaf();                                        // slot 15 0x0091E480 ?IsRunnableLeaf@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@MAE_NXZ
+public:
+    virtual bool IsCombatStateGroup() const;                              // slot 20 0x00900C88 ?IsCombatStateGroup@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverAttackUnlessTargetIsFleeing) == 0x1c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -23,5 +51,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_HoverAttackUnlessTargetIsFleeing) == 0x1c);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_HoverAttackUnlessTargetIsFleeing, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_HOVERATTACKUNLESSTARGETISFLEEING_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_HOVERATTACKUNLESSTARGETISFLEEING_H

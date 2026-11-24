@@ -1,3 +1,4 @@
+// Leaf: ?IsFreeForDeletion@CThing@@QBE_NXZ
 // CThing::IsFreeForDeletion() -- a thing may be deleted only when every live thing component agrees (false as soon as one refuses)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7500, 55 bytes. Callees: CTCBase virtual slot 18 (+0x48) on each
 // component not marked ToBeRemoved.
@@ -26,10 +27,10 @@ class CThing { public:
     unsigned char   _pad04[0x44 - 0x04];
     SComponentPair* m_componentsFirst;               // +0x44 Components
     SComponentPair* m_componentsLast;                // +0x48
-    bool IsFreeForDeletion();
+    bool IsFreeForDeletion() const;
 };
 
-bool CThing::IsFreeForDeletion()
+bool CThing::IsFreeForDeletion() const
 {
     for (SComponentPair* it = m_componentsFirst; it != m_componentsLast; ++it) {
         CTCBase* tc = it->second;

@@ -28,11 +28,11 @@ struct IDirect3DVolumeTexture9 {
 class CVolume : public CBaseClass { public:                                    // vtable 0x0129C840
     IDirect3DVolume9* m_pVolume;                            // +4
     CVolume() : m_pVolume(0) { }
-    CVolume(IDirect3DVolume9* volume) : m_pVolume(0) { InitialiseFromVolume(volume); }
+    CVolume(IDirect3DVolume9* volume) : m_pVolume(0) { InitialiseFromVolumeTextureMipmap(volume); }
     CVolume(const CVolume& other);                          // 0x00A673E0
-    ~CVolume() { ReleaseVolume(true); }
-    void InitialiseFromVolume(IDirect3DVolume9* volume);    // 0x00A67770
-    void ReleaseVolume(bool flag);                          // 0x00A67460
+    ~CVolume() { Uninitialise(true); }
+    void InitialiseFromVolumeTextureMipmap(IDirect3DVolume9* volume);    // 0x00A67770; NF296: PDB name, was InitialiseFromVolume
+    void Uninitialise(bool flag);                          // 0x00A67460; NF299: PDB name, was ReleaseVolume
 };
 
 class CVolumeTexture { public:

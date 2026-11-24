@@ -1,3 +1,4 @@
+// Leaf: ?GetShouldStrike@CTCKrakenTentacle@@QBE_NXZ
 // CTCKrakenTentacle::GetShouldStrike() -- whether the tentacle may strike now: it is allowed to, its kraken is alive, the owning creature is in neither of the two blocking modes, and more frames than the def's time between attacks have passed since the last strike
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -51,7 +52,7 @@ class CThing { public:
     }
 };
 class CTCCreatureModeManager { public:                      // interface type 0x31
-    bool HasMode(unsigned long mode);                // 0x0073A8A0
+    bool IsModeActive(unsigned long mode) const;                // 0x0073A8A0; NF296: PDB name, was HasMode
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -96,14 +97,14 @@ class CTCKrakenTentacle { public:
     bool          IsStriking;                        // +0x2a
     long          QueuedStrikeTick;                  // +0x2c
     long          LastStrikeTick;                    // +0x30
-    bool GetShouldStrike();
+    bool GetShouldStrike() const;
 };
-bool CTCKrakenTentacle::GetShouldStrike()
+bool CTCKrakenTentacle::GetShouldStrike() const
 {
     if (CanStrike && PKraken.GetPItem() && !PKraken.GetPItem()->Dead) {
         CTCCreatureModeManager* modes;
         ParentThing->GetInterface(&modes, 0x31);
-        if (!modes->HasMode(0x54) && !modes->HasMode(0x53)) {
+        if (!modes->IsModeActive(0x54) && !modes->IsModeActive(0x53)) {
             CThing* kraken = PKraken.GetPItem();
             long framesPerSecond = CMainGameComponent::GetConstantFPS();
             CKrakenTentacleDef* def = PTentacleDef.Object;

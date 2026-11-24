@@ -1,3 +1,4 @@
+// Leaf: ?IsRunnable@CAIStateGroup_LightHomeCandle@@MAE_NXZ
 // CAIStateGroup_LightHomeCandle::IsRunnable() -- refresh the candle to tend from the (alive) home building unless
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // the building's material is flagged not-for-candles (bit 5 of the def's +0x3c), then runnable while that candle is
@@ -152,7 +153,9 @@ class CThingBuilding : public CThing { public:
 
 class CAIStateGroup_LightHomeCandle : public CAIStateGroupBase { public:
     CIntelligentPointer<CThing> PCandle;           // +0x14
+    protected:
     virtual bool IsRunnable();
+    public:
     CThing* FindAndValidateTask(CThing* building);      // 0x00946AE0
     bool IsCandleInNeedOfChanging(CThing* candle);      // 0x00946730
 };

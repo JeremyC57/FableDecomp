@@ -1,0 +1,19 @@
+--- orig/hdr_CCreatureAction_SheatheItemToInventory_ForEnflame.h	2026-11-24 01:18:49.099056340 +0000
++++ hdr/engine/CCreatureAction_SheatheItemToInventory_ForEnflame.h	2026-11-24 01:18:49.177584596 +0000
+@@ -22,6 +22,16 @@
+     CCreatureAction_SheatheItemToInventory_ForEnflame(CThingCreatureBase& creature, const CCharString& animation,
+                                                       CCreatureActionBase* followUp, long priority);   // 0x0069F060
+     virtual ~CCreatureAction_SheatheItemToInventory_ForEnflame();   // 0x0072D390 (FableWin.pdb ??1..@@UAE@XZ; called out of line, 0x0072C8E5)
++#ifdef FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORENFLAME_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x006A07D0: ?IsToEvadeAllHits@CCreatureAction_SheatheItemToInventory_ForEnflame@@UBE_NXZ (FableWin.pdb)
++public:
++    virtual bool IsToEvadeAllHits() const;
++    // 0x006A07E0: ?IsAbleToBeAttacked@CCreatureAction_SheatheItemToInventory_ForEnflame@@UBE_NXZ (FableWin.pdb)
++    virtual bool IsAbleToBeAttacked() const;
++#endif
+ };
+ #else
+ #pragma pack(push, 1)

@@ -1,3 +1,4 @@
+// Leaf: ?BuildHWStipplePatterns@CEngineResourceManager@@AAEXABV?$CArray@E@@@Z
 // CEngineResourceManager::BuildHWStipplePatterns(const CArray<unsigned char>& stipple) -- build the 256 hardware stipple masks: for every fade level, each of the 32 rows of the 32x32 threshold pattern becomes a 32-bit mask (bit 31 - column set where the threshold is <= level + 1), byte-swapped and stored bottom row first
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B3C4B0, length 288 bytes (`ret 4`).
 // Callees: CArray<unsigned long>::resize(unsigned long, const unsigned long&) @ 0x00464931 (manifest label "push_back" is wrong;
@@ -18,7 +19,9 @@
 class CEngineResourceManager { public:
     unsigned char         _pad[0x2ab4];
     CArray<unsigned long> HWInverseStipplePatterns;      // +0x2ab4
+    private:
     void BuildHWStipplePatterns(const CArray<unsigned char>& stipple);
+    public:
 };
 
 void CEngineResourceManager::BuildHWStipplePatterns(const CArray<unsigned char>& stipple)

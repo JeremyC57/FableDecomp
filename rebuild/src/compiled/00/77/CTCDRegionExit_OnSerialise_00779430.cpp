@@ -22,7 +22,7 @@ protected:
 };
 #include "engine/CThing.h"
 class CThingManager { public:
-    unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
+    unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, unsigned long level, unsigned __int64 uid) const;   // 0x0051E210 (Ego_r / FableWin ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z)
 };
 class CPersistContext { public:
     unsigned char _pad00[0x18];

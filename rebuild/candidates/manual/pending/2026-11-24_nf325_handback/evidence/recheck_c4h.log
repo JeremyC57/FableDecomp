@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00bbddb0   MATCH            PASS   PrimTypeMatchesGroup
+
+WINS: 1
+  00bbddb0 MATCH CEngineInternalPrimitiveParticleSpriteTrailGroup::PrimTypeMatchesGroup

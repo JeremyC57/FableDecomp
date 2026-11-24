@@ -1,0 +1,11 @@
+01:47:57 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6e/CTCDParticleEmitter_Create_006e11f0.cpp
+01:47:57 PASS /home/user/FableDecomp/rebuild/src/compiled/00/a9/C3DAnimFileSaver_SaveAnimFileCompressed_00a99840.cpp
+01:47:58 PASS /home/user/FableDecomp/rebuild/src/compiled/00/a9/C3DMeshFileSaver_SaveMeshFileCompressed_00a9ba70.cpp
+01:47:58 PASS /home/user/FableDecomp/rebuild/src/compiled/00/89/CGameScriptInterfaceMethods_SetHouseOwnedByPlayer_00895ed0.cpp
+01:47:58 PASS /home/user/FableDecomp/rebuild/src/compiled/00/73/CTCDoor_FrameUpdate_007311f0.cpp
+01:47:58 PASS /home/user/FableDecomp/rebuild/src/compiled/00/4f/CWorldMap_IsLoadingAnyMap_004fb4a0.cpp
+01:47:58 PASS /home/user/FableDecomp/rebuild/src/compiled/00/99/CMemoryDataOutputStream_GetLength_00994b40.cpp
+01:47:58 PASS /home/user/FableDecomp/rebuild/src/compiled/00/99/CMemoryDataOutputStream_PeekData_00995e70.cpp
+01:47:58 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6c/CTCBuyableHouse_SetRented_006c1150.cpp
+01:47:58 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6c/CTCBuyableHouse_SetOwnedByPlayer_006c17b0.cpp
+01:47:58 PASS /home/user/FableDecomp/rebuild/src/compiled/00/73/CTCDoor_UpdateOpenStatusTriggerTypeScript_007310c0.cpp

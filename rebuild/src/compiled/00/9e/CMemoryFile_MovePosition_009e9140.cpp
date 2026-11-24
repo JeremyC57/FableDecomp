@@ -1,3 +1,4 @@
+// Leaf: ?MovePosition@CMemoryFile@@UAEXJ@Z
 // CMemoryFile::MovePosition(long delta) -- move the read/write position by `delta`, throwing a CBBBFileException (type 11) when it would leave the file
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E9140, length 219 bytes (`ret 4`).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, `__fastcall operator+(const CCharString&, const char*)` @ 0x0099F600
@@ -27,11 +28,10 @@ public:
     CBBBFileException(CCharString text, EFileExceptionType type) : CExceptionBase(static_cast<const char*>(text)), Type(type) { }
 };
 class CMemoryFile { public:
-    void*         __vftable;                    // +0x00
-    unsigned char* Data;                        // +0x04
+        unsigned char* Data;                        // +0x04
     long          Position;                     // +0x08
     long          Length;                       // +0x0c
-    void MovePosition(long delta);
+    virtual void MovePosition(long delta);
 };
 
 void CMemoryFile::MovePosition(long delta)

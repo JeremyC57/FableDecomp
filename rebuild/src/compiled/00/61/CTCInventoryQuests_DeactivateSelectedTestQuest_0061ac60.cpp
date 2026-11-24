@@ -70,7 +70,7 @@ class CQuestManager { public:
     bool OnQuestFinishScreenDisplayed(const CCharString& name);                 // 0x004B0160
     void DeactivateQuest(const CCharString& name, unsigned long reason);        // 0x004B43D0
 };
-extern bool g_bQuestFinishScreensEnabled;          // 0x01375741 (descriptive)
+namespace NGlobalConsole { extern bool GEnableRegionLockingSaveSystem; }          // 0x01375741 ?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA (Ego_r / FableWin / Ego_d publics; Codex p27 NAME_FIXES cross-reference); NF236: was g_bQuestFinishScreensEnabled
 class CConsole {
 public:
     static CConsole* Get();                        // 0x00414C90
@@ -110,7 +110,7 @@ void CTCInventoryQuests::DeactivateSelectedTestQuest()
     GetTestQuestsToDisplay(&quests);
     CTestQuest& quest = quests[TestQuestSelectedIndex];
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().SetQuestAsCompleted(quest.QuestName, false, false, false);
-    if (g_bQuestFinishScreensEnabled)
+    if (NGlobalConsole::GEnableRegionLockingSaveSystem)
         CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnQuestFinishScreenDisplayed(quest.QuestName);
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().DeactivateQuest(quest.QuestName, 0);
     if (quest.OutiFile != "") {

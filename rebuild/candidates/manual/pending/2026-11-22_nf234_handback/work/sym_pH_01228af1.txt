@@ -1,0 +1,3 @@
+DEF ?GlobalMethodTailThunk_01228af1@@YIXXZ
+UND ?Invoke_00433cc0@AutoTinyThunkTarget@@QAEXXZ
+UND ?g_AutoTinyThunkObject_013b8760@@3UAutoTinyThunkTarget@@A

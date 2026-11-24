@@ -1,11 +1,12 @@
 // CPlayerGui::AddScreenMessage(const CWideString& text) -- word-wrap a message into the visible screen area (left edge pushed in to the GUI def's message margin) with the def's message font, and queue it on the screen-message list with its display time (frames-per-second x the def's seconds) and reveal speed
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
+// Names (NF223, 2026-11-22): the font comes from CFontManager::GetFont (engine/CFontManager.h; FableWin.pdb / Ego_r.pdb ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z, the self leaf of 0x009E2C80; was a local CFontBankManager stand-in cast from PFontManager); the temporary is engine/CCountedPointer.h (was a local CCountedPointer / CCPPointerInfo model).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00438AA0, length 528 bytes, `ret 4`.
 // Callees: CDisplayManager::GetVVisibleTelevisionScreenArea 0x009BECE0 (g_pDisplayManager 0x013B8390, hidden result),
 // the lazily loaded "PLAYER_GUI_PC" def (CCharString 0x0099EBF0, CGameDefinitionManager::Get 0x0044C6B0, GetDef<T>
-// 0x0043FF30, ~CCharString 0x0099EAE0; global 0x013B878C), GFVXToAX 0x009E1DA0 (__stdcall float; virtual-to-absolute X `K * x / width`, the inverse of the landed GFAXToVX 0x009E1E10, Ego_r.pdb ?GFVXToAX@@YIMM@Z pairs with ?GFVYToAY at 0x009E1DD0), the font bank's
+// 0x0043FF30, ~CCharString 0x0099EAE0; global 0x013B878C), GFAXToVX 0x009E1DA0 (__fastcall float, the float on the stack; actual-to-virtual X `K * x / width`, Ego_r / FableWin ?GFAXToVX@@YIMM@Z, the first of GFAXToVX / GFAYToVY / GFVXToAX / GFVYToAY = 0x009E1DA0 / 0x009E1DD0 / 0x009E1E10 / 0x009E1E40), the font bank's
 // GetFont 0x009E2C80 (bank 0x013B838C, CCountedPointer by hidden pointer; count-block destroy +4 and operator delete
 // 0x00BFE9BC), CWideString() 0x0099AED0 / (const CWideString&) 0x0099B720 / ~CWideString 0x0099B510,
 // CPlayerGui::FormatStringForArea 0x00437D10 (static __fastcall), __ftol2 0x00BFEA70, NPlayerGui::CScreenMessage ctor
@@ -36,7 +37,7 @@ class CDisplayManager { public:
     C2DBoxF GetVVisibleTelevisionScreenArea() const;        // 0x009BECE0
 };
 extern CDisplayManager* GPDisplayManager;                  // 0x013B8390
-float __stdcall GFVXToAX(float x);                          // 0x009E1DA0
+float __fastcall GFAXToVX(float x);                          // 0x009E1DA0
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -70,31 +71,8 @@ FABLE_FORCEINLINE const CPlayerGuiDef* GetPlayerGuiDef()
     return g_PlayerGuiDef.Object;
 }
 
-class CCPPointerInfo { public:
-    long References;
-    void (__fastcall* Destroy)(void* object);
-    void* Object;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-    }
-};
-class CFontBank;
-struct CFontBankManager {
-    CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
-};
-class CFontManager;
-extern CFontManager* PFontManager;                // 0x013B838C
+#include "engine/CFontManager.h"                         // CFontManager::GetFont 0x009E2C80 (FableWin.pdb / Ego_r.pdb), PFontManager 0x013B838C;
+                                                          // engine/CCountedPointer.h for the temporary (was a local CCountedPointer / CFontBankManager stand-in)
 
 namespace NPlayerGui {
 class CScreenMessage { public:
@@ -138,10 +116,10 @@ class CPlayerGui { public:
 void CPlayerGui::AddScreenMessage(const CWideString& text)
 {
     C2DBoxF area = GPDisplayManager->GetVVisibleTelevisionScreenArea();
-    float margin = GFVXToAX(GetPlayerGuiDef()->MessageLeftMargin);
+    float margin = GFAXToVX(GetPlayerGuiDef()->MessageLeftMargin);
     if (area.TLX < margin)
         area.TLX = margin;
-    CFontBank* font = ((CFontBankManager*)PFontManager)->GetFont(GetPlayerGuiDef()->MessageFont).Data;
+    CFontBank* font = PFontManager->GetFont(GetPlayerGuiDef()->MessageFont).Data;
     CWideString formatted;
     FormatStringForArea(area, *font, text, formatted);
     ScreenMessages.push_back(NPlayerGui::CScreenMessage(formatted, (long)(CMainGameComponent::GetConstantFPS() * GetPlayerGuiDef()->MessageDisplaySeconds), GetPlayerGuiDef()->MessageCharactersPerFrame));

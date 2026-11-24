@@ -1,5 +1,10 @@
 // NUISystem::CTextSlider::GetValueFromProfile() -- sets the slider's selected / previously selected / start child from the user-profile option its def action names (camera inversion, vibration, tooltips, resolution, refresh rate, antialiasing, ...), and for the display modes also the child count
 // Leaf: ?GetValueFromProfile@CTextSlider@NUISystem@@
+// Names (NF237): the CUserProfileManager getters take the FableWin.pdb public spellings the landed sibling 0x00548B50 binds (each body
+//   reads Ego_r.pdb member offsets, with 12-byte retail vectors): 0x00548630 IsUsingHeadPhones (+0x30), 0x00548650 IsShowingBuddyNames (+0x32),
+//   0x00548670 GetAntialiasing, 0x00548690 IsCameraResetting, 0x005486B0 GetResolution, 0x005486D0 GetRefreshRate, 0x005486F0
+//   GetScreenAspectRatio (unsigned long, Ego_r), 0x00548740 GetShowTargetingStatus (+0x6C), 0x0048DB35 IsSubtitlingEnabled (+0x0D); in-place
+//   respell of the HEAD local model, bytes unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00548790, 538 bytes of code (0x21A incl. `mov edi,edi` alignment) then the switch
 //   tables (two dword jump tables and a byte index table, 852 bytes in all), thiscall `ret`. Virtual: RTTI vtable of
 //   NUISystem::CTextSlider 0x01248A8C slot 143.
@@ -37,18 +42,18 @@ public:
     bool IsCameraPCBowYZInverted() const;                 // 0x005485D0
     bool IsGuildMasterEnabled() const;                    // 0x005485F0
     bool IsHUDTooltipEnabled() const;                     // 0x00548610
-    bool IsCameraResetting() const;                       // 0x00548630
-    bool GetOption548650() const;                         // 0x00548650
-    long GetOption548670() const;                         // 0x00548670
-    bool GetOption548690() const;                         // 0x00548690
-    long GetOption5486B0() const;                         // 0x005486B0
-    long GetOption5486D0() const;                         // 0x005486D0
-    long GetOption5486F0() const;                         // 0x005486F0
+    bool IsUsingHeadPhones() const;                       // 0x00548630 (reads +0x30: Ego_r UsingHeadPhones +48)
+    bool IsShowingBuddyNames() const;                         // 0x00548650
+    unsigned long GetAntialiasing() const;                         // 0x00548670
+    bool IsCameraResetting() const;                         // 0x00548690
+    unsigned long GetResolution() const;                         // 0x005486B0
+    unsigned long GetRefreshRate() const;                         // 0x005486D0
+    unsigned long GetScreenAspectRatio() const;                         // 0x005486F0
     bool IsVerticalSyncEnabled() const;                   // 0x00548710
-    bool GetOption548740() const;                         // 0x00548740
-    bool GetOption48DB35() const;                         // 0x0048DB35
+    bool GetShowTargetingStatus() const;                         // 0x00548740
+    bool IsSubtitlingEnabled() const;                         // 0x0048DB35
     long GetMaxResolution() const;                        // 0x00408900
-    long GetMaxAntialiasing() const;                      // 0x00409090
+    unsigned long GetMaxAntialiasing() const;             // 0x00409090
     long GetMaxRefreshRate() const;                       // 0x00406890
     bool GetOption17() const { return UseSecondProfile ? Profile2Option17 : Profile1Option17; }
 public:
@@ -93,11 +98,11 @@ void CTextSlider::GetValueFromProfile()
         break;
     case 0x2e:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CUserProfileManager::Get().IsCameraResetting();
+            CUserProfileManager::Get().IsUsingHeadPhones();
         break;
     case 0x2f:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CUserProfileManager::Get().GetOption48DB35();
+            CUserProfileManager::Get().IsSubtitlingEnabled();
         break;
     case 0x53:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
@@ -113,7 +118,7 @@ void CTextSlider::GetValueFromProfile()
         break;
     case 0x54:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CUserProfileManager::Get().GetOption548650();
+            CUserProfileManager::Get().IsShowingBuddyNames();
         break;
     case 0x139:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
@@ -121,22 +126,22 @@ void CTextSlider::GetValueFromProfile()
         break;
     case 0x102:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CUserProfileManager::Get().GetOption5486B0();
+            CUserProfileManager::Get().GetResolution();
         MaxChild = CUserProfileManager::Get().GetMaxResolution();
         break;
     case 0x13d:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CUserProfileManager::Get().GetOption5486D0();
+            CUserProfileManager::Get().GetRefreshRate();
         MaxChild = CUserProfileManager::Get().GetMaxRefreshRate();
         break;
     case 0x109:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CUserProfileManager::Get().GetOption548670();
+            CUserProfileManager::Get().GetAntialiasing();
         MaxChild = CUserProfileManager::Get().GetMaxAntialiasing();
         break;
     case 0x12c:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CUserProfileManager::Get().GetOption5486F0();
+            CUserProfileManager::Get().GetScreenAspectRatio();
         break;
     case 0x106:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
@@ -144,7 +149,7 @@ void CTextSlider::GetValueFromProfile()
         break;
     case 0x140:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CUserProfileManager::Get().GetOption548690();
+            CUserProfileManager::Get().IsCameraResetting();
         break;
     case 0x13f:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
@@ -152,7 +157,7 @@ void CTextSlider::GetValueFromProfile()
         break;
     case 0x143:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CUserProfileManager::Get().GetOption548740();
+            CUserProfileManager::Get().GetShowTargetingStatus();
         break;
     }
 }

@@ -9,6 +9,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_TROLLBURROWPURSUE_VIRTUAL_MODEL
+// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127985C (RTTI .?AVCCombatSequence_TrollBurrowPursue@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_TrollBurrowPursue); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequence_TrollBurrowPursue : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x00907AE0 ?OnCreate@CCombatSequence_TrollBurrowPursue@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B4200 ?GetName@CCombatSequence_TrollBurrowPursue@@UBE?AVCCharString@@XZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B4220 ?GetZone@CCombatSequence_TrollBurrowPursue@@UBEKXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_TrollBurrowPursue) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_TrollBurrowPursue {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +39,8 @@ struct CCombatSequence_TrollBurrowPursue {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_TrollBurrowPursue) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_TrollBurrowPursue, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequence_TrollBurrowPursue) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequence_TrollBurrowPursue, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_TROLLBURROWPURSUE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_TROLLBURROWPURSUE_H

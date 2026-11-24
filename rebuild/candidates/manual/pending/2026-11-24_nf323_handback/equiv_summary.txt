@@ -1,0 +1,22 @@
+#DONE rows 57146
+DIFF 0 ERROR 0
+CCreatureAction_BeDazed                                 CTL   1   direct-includers(grep) 2
+CCreatureAction_CastStrengthMultiStrikeProper           CTL   0   direct-includers(grep) 0
+CCreatureAction_DropGenericBox                          CTL   5   direct-includers(grep) 5
+CCreatureAction_GetUpFromSitting                        CTL   3   direct-includers(grep) 3
+CCreatureAction_PlayAnimationFromIndex                  CTL   0   direct-includers(grep) 0
+CCreatureAction_PlayHopscotch                           CTL   1   direct-includers(grep) 1
+CCreatureAction_SpiritReturnToHero                      CTL   2   direct-includers(grep) 2
+CCreatureAction_StartSneaking                           CTL   0   direct-includers(grep) 0
+CCreatureAction_StopSneaking                            CTL   0   direct-includers(grep) 0
+CCreatureAction_YellOverHere                            CTL   0   direct-includers(grep) 0
+CEnginePrimitiveManager2DParticleGroup                  CTL   4   direct-includers(grep) 4
+CFireballSpellLevelDef                                  CTL   4   direct-includers(grep) 4
+CJoystickDX                                             CTL  12   direct-includers(grep) 13
+CNavBlockedQuadTreeNode                                 CTL  19   direct-includers(grep) 13
+CCreatureAction_ActivateZTarget                         CTL   0   direct-includers(grep) 0
+CCreatureAction_CallSpouseHome                          CTL   0   direct-includers(grep) 0
+CCreatureAction_DropWeapon                              CTL   0   direct-includers(grep) 0
+CCreatureAction_LookThroughWindow                       CTL   0   direct-includers(grep) 0
+CCreatureAction_StartFillingTankard                     CTL   0   direct-includers(grep) 0
+CCreatureAction_StopFillingTankard                      CTL   0   direct-includers(grep) 0

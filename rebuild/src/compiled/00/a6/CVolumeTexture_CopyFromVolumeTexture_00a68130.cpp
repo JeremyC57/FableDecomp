@@ -40,8 +40,8 @@ class C3DBoxI;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolume : public CBaseClass { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
-    ~CVolume() { ReleaseVolume(true); }
-    void ReleaseVolume(bool flag);                 // 0x00A67460
+    ~CVolume() { Uninitialise(true); }
+    void Uninitialise(bool flag);                 // 0x00A67460; NF299: PDB name, was ReleaseVolume
     long CopyFromVolume(const C3DBoxI* destBox, const CVolume& source, const C3DBoxI* sourceBox, unsigned long filter);   // 0x00A67670
 };
 template <class T> inline const T& (min)(const T& a, const T& b) { return a < b ? a : b; }

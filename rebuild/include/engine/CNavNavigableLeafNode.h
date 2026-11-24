@@ -72,6 +72,22 @@ public:
     CNavRegion*                               PRegion;                           // +0x10
     CSmallVector<const CANavQuadTreeNode*, 8> Neighbours;                        // +0x14
     unsigned char                             PreferabilityCost;                 // +0x1c
+#ifdef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CANavQuadTreeNode chain declares at the same slot (no new slot).
+    // 0x00A75A90 vtable 0x0129DDA4 slot 8: ?GetPreferabilityCost@CNavNavigableLeafNode@@UBEEXZ (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual unsigned char GetPreferabilityCost() const;               // 0x00A75A90
+public:
+#endif
+#ifdef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_REMOVEREGIONZERO_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x00A75B50): Ego_r.pdb / FableWin.pdb ?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ, the override
+    // the retail RTTI vftable placement names at vtable 0x0129DDA4 slot 14 (CANavQuadTreeNode slot 14). Declaration only.
+protected:
+    virtual bool RemoveRegionZero();                                  // 0x00A75B50
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(25, sizeof(CNavNavigableLeafNode) == 0x20);
 #else // flattened Ego_r layout (the landed default, unchanged)

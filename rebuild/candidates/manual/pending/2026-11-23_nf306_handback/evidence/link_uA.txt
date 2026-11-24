@@ -1,0 +1,30 @@
+## HEAD set: H_00602f30.obj H_0096ea50.obj H_0093db70.obj H_0096e700.obj H_0093e090.obj H_00662550.obj H_0049e370.obj H_0076d460.obj H_00a032f0.obj H_00828590.obj H_00587a41.obj H_0066b300.obj H_00b3b4f0.obj H_00945610.obj H_00945b90.obj H_005fc510.obj H_008631d0.obj H_006b3e60.obj H_006b9460.obj H_00a03180.obj H_00828360.obj H_00582414.obj H_0066b080.obj H_00a6abe0.obj H_009455b0.obj H_0066b280.obj H_0066ba80.obj
+duplicates 1
+H_0066ba80.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+UNRESOLVED 1 ?AddCreature@CCreatureInteraction@@QAEXPAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?CCombatWheel_ValidateSequencePosition@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?ClearHighlights@CTCInventory@@QAEXJ@Z
+UNRESOLVED 1 ?Combat_ProximityCalculation@CCombatManager@@QAEMPAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?GetNextRegionOnWayToRegion@CRegionConnectionNode@@QAEJJPAVCRegionConnectionGraph@@@Z
+UNRESOLVED 1 ?InternalAllocate@CHandleBasedMemoryPool@@QAE_NAAJJJ@Z
+UNRESOLVED 1 ?InternalAllocate@CHandleBasedMemoryPool@@QAE_NPAJK@Z
+UNRESOLVED 2 ?InternalPlayAttachedSample@CTCSoundPlayer@@AAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z
+UNRESOLVED 1 ?IsAlliedWith@CFaction@@QBE_NPBV1@@Z
+UNRESOLVED 1 ?IsAttackerReadyToAttack@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?IsInMealHours@CAIStateGroup_WorkBase@@QAE_NXZ
+UNRESOLVED 1 ?IsPositionOccupied@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?OnCombatPositionUnreachable@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?PlayAttachedSampleIndex@CTCSoundPlayer@@QAEKPAVCASoundBank@@JPAVCSoundInit@@_N22@Z
+UNRESOLVED 1 ?Query_009455b0@CAIStateGroup_SitForMeal@@QAEEXZ
+UNRESOLVED 1 ?ReleaseMapScreenPrimitives@CTCInventoryMap@@QAEXXZ
+UNRESOLVED 1 ?ResizePoolByFormat@CTextureManager@@QAE_NJJ@Z
+UNRESOLVED 1 ?SetCameraThemes@CEnvironment@@QAEXJJPBJPBMJ@Z
+## new set: N_00602f30.obj N_0096ea50.obj N_0093db70.obj N_0096e700.obj N_0093e090.obj N_00662550.obj N_0049e370.obj N_0076d460.obj N_00a032f0.obj N_00828590.obj N_00587a41.obj N_0066b300.obj N_00b3b4f0.obj N_00945610.obj N_00945b90.obj H_005fc510.obj H_008631d0.obj H_006b3e60.obj H_006b9460.obj H_00a03180.obj H_00828360.obj H_00582414.obj N_0066b080.obj H_00a6abe0.obj H_009455b0.obj H_0066b280.obj H_0066ba80.obj
+duplicates 1
+H_0066ba80.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterf
+UNRESOLVED 1 ?GetCombatWheelRadiusForAttacker@CCombatManager@@QBEMABVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?InternalAllocate@CHandleBasedMemoryPool@@QAE_NPAJK@Z
+UNRESOLVED 2 ?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?IsCreatureOnRotatingCombatRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?SetAttackerProngAsInvalid@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+LK_DONE

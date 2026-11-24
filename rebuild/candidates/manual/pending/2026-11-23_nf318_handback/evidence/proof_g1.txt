@@ -1,0 +1,22 @@
+##### 00692460 renames: ?CCreatureActionBase_GetAnimDelayTime@@YIJPBVCCreatureActionBase@@@Z=?GetAnimDelayTime@CCreatureActionBase@@UBEJXZ
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-
+##### 006924d0 renames: ?CCreatureActionBase_GetAnimExtraFlags@@YIKPBVCCreatureActionBase@@@Z=?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-
+##### 006924f0 renames: ?CCreatureActionBase_IsStrikeEventActive@@YI_NPBVCCreatureActionBase@@@Z=?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-
+##### 00692500 renames: ?CCreatureActionBase_IsStrikeAction@@YI_NPBVCCreatureActionBase@@@Z=?IsStrikeAction@CCreatureActionBase@@UBE_NXZ
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-
+##### 0049d970 renames: ?PostLoadInit@CWorld_Methods@@QAEXXZ=?PostLoadInit@CWorld@@MAEXXZ
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-
+##### 0049e1b0 renames: ?GetThingManager@CWorld_Methods@@QAEAAVCThingManager@@XZ=?GetThingManager@CWorld@@UAEAAVCThingManager@@XZ
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-
+##### 004ae8b0 renames: ?GetWorldMap@CWorld_Methods@@QAEAAVCWorldMap@@XZ=?GetWorldMap@CWorld@@UAEAAVCWorldMap@@XZ
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-
+##### 004fb280 renames: ?DrawGetFrame@CWorldMap_Methods@@QBEJXZ=?DrawGetFrame@CWorldMap@@UBEJXZ
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-
+##### 005063d0 renames: ?ForceLoad@CWorldMap_Methods@@QAEXJ@Z=?ForceLoad@CWorldMap@@UAEXJ@Z
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-
+##### 00a19ae0 renames: ?CalculateNavigableWidthOfLine@CNavigatorBase_Methods@@QAEXABVC3DVector@@0AAM1@Z=?CalculateNavigableWidthOfLine@CNavigatorBase@@UAEXABVC3DVector@@0AAM1@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 00b6ccf0 renames: ?SetBridgeVertexBufferSize@CLandscapePatchTesselator_Methods@@QAEXJ@Z=?SetBridgeVertexBufferSize@CLandscapePatchTesselator@@EAEXJ@Z
+NOT_EQ section .drectve data/flags sections=2 DEF=1 tables=-

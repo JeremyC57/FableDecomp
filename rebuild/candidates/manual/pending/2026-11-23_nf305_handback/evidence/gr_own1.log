@@ -1,0 +1,17 @@
+H 0097e200 CAIStateGroupBase::AIAction_DoNothing RELOCATION_MATCH flags= [] leaf=?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
+H 00918880 CAIStateGroup_Gaze::FindFreeGazePos RELOCATION_MATCH flags= [] leaf=
+H 0084d080 NCameraModes::CBase::GetCamTools MATCH flags= [] leaf=?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ
+H 00b30480 CEngineCamera::ClipSphere MATCH flags= [] leaf=?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@MPAK@Z
+H 00b91710 CEngineSceneGridCell::InvalidateAll MATCH flags= [] leaf=
+H 0048da30 CFadeInFadeOutBase::IsOpen MATCH flags= [] leaf=
+H 004af610 CQuestManager::IsQuestActive RELOCATION_MATCH flags= [] leaf=?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z
+H 00730c00 CTCDoor::Open RELOCATION_MATCH flags= [] leaf=Open
+H 006d8170 CTCHeroExperience::UpdateAbilitiesForStat RELOCATION_MATCH flags= [] leaf=UpdateAbilitiesForStat
+H 006d83b0 CTCHeroExperience::OnStatLevelChange RELOCATION_MATCH flags= [] leaf=
+H 005ee02e CTCInventoryAbilities::IsAbilityPotentiallyAvailable RELOCATION_MATCH flags= [] leaf=IsAbilityPotentiallyAvailable
+H 0079ddb0 CTCPhysicalShieldSpell::StopSound RELOCATION_MATCH flags= [] leaf=?StopSound@CTCPhysicalShieldSpell@@IAEXK@Z
+H 007122c0 CTCScriptedControl::IsActionListEmpty MATCH flags= [] leaf=?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ
+H 00787bf1 CTCTrapBase::Reset MATCH flags= [] leaf=?Reset@CTCTrapBase@@IAEXXZ
+H 00662a00 CThingCreatureBase::GetAnimFromName RELOCATION_MATCH flags= [] leaf=?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z
+H 00666d10 CThingCreatureBase::GetCombatTypeDef RELOCATION_MATCH flags= [] leaf=
+GR_DONE

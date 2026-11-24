@@ -1,0 +1,8 @@
+DEF ?Clear@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ
+DEF ?Clear@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ
+DEF ?Shutdown@CFrontendGameComponent@@QAEXXZ
+DEF ?begin@?$vector@VCWideString@@@std@@QAEPAVCWideString@@XZ
+DEF ?clear@?$vector@VCWideString@@@std@@QAEXXZ
+DEF ?end@?$vector@VCWideString@@@std@@QAEPAVCWideString@@XZ
+UND ??3@YAXPAX@Z
+UND ?erase@?$vector@VCWideString@@@std@@QAEPAVCWideString@@PAV3@0@Z

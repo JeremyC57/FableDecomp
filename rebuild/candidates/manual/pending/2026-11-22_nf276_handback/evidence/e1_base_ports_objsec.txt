@@ -1,0 +1,18 @@
+##### 00bfdd70
+pH 00bfdd70 CLandscapeLayerMesh::OnPostRelocation RELOCATION_MATCH flags= [] leaf=?OnPostRelocation@CLandscapeLayerMesh@@QAEXXZ
+pS 00bfdd70 CLandscapeLayerMesh::OnPostRelocation RELOCATION_MATCH flags= [] leaf=?OnPostRelocation@CLandscapeLayerMesh@@QAEXXZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+ALLDONE
+##### 00bfde80
+pH 00bfde80 CLandscapeLayerMesh::RelocateData RELOCATION_MATCH flags= [] leaf=?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+pS 00bfde80 CLandscapeLayerMesh::RelocateData RELOCATION_MATCH flags= [] leaf=?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+ALLDONE
+# objsec 00bfdd70 HEAD v new
+sections head 2 new 2
+ALL_EQ 0
+# objsec 00bfde80 HEAD v new
+sections head 4 new 4
+ALL_EQ 0

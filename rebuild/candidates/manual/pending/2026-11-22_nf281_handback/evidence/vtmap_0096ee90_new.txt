@@ -1,0 +1,3 @@
+VT ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ slots 2 retail 01237f1c
+  0 0048a4f0 DIFF ?v00@?$CIntelligentPointer@$$CBVCThing@@@@UAEXXZ ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+  1 01332e44 NOTLANDED ??_E?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z 

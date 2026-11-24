@@ -47,7 +47,7 @@ class CEngineComponent { public:                              // vtable 0x012A25
     bool          RenderEnabled;                       // +0x08
     unsigned char KeepAlive;                           // +0x09
     void SetGlobalPointerAddress(void** address);      // 0x00B59750
-    void Announce();                                   // 0x00B59760
+    void SetupEnableConsoleVariable();                                   // 0x00B59760
 };
 
 struct CEnginePrimitiveRendererBody {                  // primary part (vtable 0x012A1380)
@@ -101,7 +101,7 @@ template <class T> void CEngine::AddEngineComponent(T* component, T*& globalPoin
     globalPointer = component;
     component->SetGlobalPointerAddress(reinterpret_cast<void**>(&globalPointer));
     EngineComponents.push_back(component);
-    component->Announce();
+    component->SetupEnableConsoleVariable();
 }
 
 template void CEngine::AddEngineComponent<CEnginePrimitiveRenderer>(CEnginePrimitiveRenderer*, CEnginePrimitiveRenderer*&, unsigned char);

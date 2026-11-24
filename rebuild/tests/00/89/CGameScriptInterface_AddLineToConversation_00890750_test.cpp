@@ -32,10 +32,9 @@ struct CGSIAddLineToConversationWorld
 
 class CGameScriptInterface
 { public:
-    unsigned char                    m_Pad0000[0x04];
-    CGSIAddLineToConversationWorld*  m_pWorld;
+    CGSIAddLineToConversationWorld*  m_pWorld;            // +0x04 (the vptr takes +0x00)
 
-    void AddLineToConversation(
+    virtual void AddLineToConversation(
         long                conversationId,
         const CCharString&  line,
         bool                playDuringCutScenes,

@@ -1,0 +1,5 @@
+entry	address	status	binders_respelled	note
+L129 unit 3 (NativeLandscapeRenderer)	0x01436EA8	done	3	0x00BFBE40 / 0x00BFBF40 / 0x00BFC040 onto the header; 0x01436EA8 16 -> 15 table spellings (17 -> 16 with the untabled ?g_obj_01436ea8), 0x00BD9AF0 6 -> 5 table lines, 0x00BD9B90 3 -> 2 table lines (minus one spelling each is proven; untabled stand-ins exist, e.g. LandscapeMemoryMethods::FreeAlignedVirtual in 0x00BFAAE0)
+L129 unit 4 (gEngine)	0x01436EA8	done	1	0x00BDFA10 onto the header opt-in; 0x01436EA8 15 -> 14 table spellings (16 -> 15 with the untabled ?g_obj_01436ea8); nothing else changes
+L129 remaining (14 stand-in spellings: 13 tabled + ?g_obj_01436ea8; 25 rows)	0x01436EA8	open	0	not started: plan and per-unit blockers in NOTES.md
+0x009B0AC0 (entry 2)	0x009B0AC0	open	0	not started (handed back after two L129 units); NF260 plan stands, NOTES.md

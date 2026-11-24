@@ -1,7 +1,7 @@
 // CEngineWaterRenderer::RenderIceBackground(float time) -- bind the ice bump map and environment map, set the ice blend states and shaders, upload the bump-scale constant and the four ice bone matrices, flush the shader state and draw the alphaed then the opaque ice background patch lists
 // NF151 (2026-11-20, q4541): the row-local CShaderRenderManager declaration respelled in place to ?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z (0x00988140; Ego_r.pdb 0x00AE47A0 + FableWin.pdb 0x030325A0: const CPixelShader&).
 // NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool) and ?SetBoneTransform@CShaderRenderManager@@QAEXKABVCMatrix3x4@@@Z (0x0098A7F0; Ego_r.pdb 0x00AE5F80 + FableWin.pdb 0x03032D30: matrix by const reference).
-// Leaf: RenderIceBackground
+// Leaf: ?RenderIceBackground@CEngineWaterRenderer@@AAEXM@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B75CA0, length 1320 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?RenderIceBackground@CEngineWaterRenderer@@AAEXM@Z.
@@ -185,8 +185,10 @@ class CEngineWaterRenderer { public:                      // retail layout (12-b
     CMatrix3x4 BoneMatrix2;                        // +0x474
     unsigned char _pad4a4[0x504 - 0x4a4];
     CMatrix3x4 BoneMatrix0;                        // +0x504
-    void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time);   // 0x00B6E260
+    private: void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time); public:   // 0x00B6E260
+    private:
     void RenderIceBackground(float time);
+    public:
 };
 
 void CEngineWaterRenderer::RenderIceBackground(float time)

@@ -4,7 +4,7 @@ class CCharString
 { public:
     void* data;
 
-    void ReleaseData();
+    protected: void UnassignString(); public:   // 0x0099E9B0 (Ego_r 0x00AFA2E0 / FableWin 0x02F624F0, protected; was ReleaseData, NF218 q12377)
 
     CCharString(const CCharString& rhs);
 };
@@ -19,7 +19,7 @@ CCharString::CCharString(const CCharString& rhs)
     {
         if (data != 0)
         {
-            ReleaseData();
+            UnassignString();
         }
         void* rhsData = rhs.data;
         if (rhsData != 0)

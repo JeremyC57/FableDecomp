@@ -1,3 +1,4 @@
+// Leaf: ?UpdateTextureMorphs@CTCHeroMorph@@AAEXXZ
 // CTCHeroMorph::UpdateTextureMorphs() -- rebuilds the hero's texture morphs and composite textures from the current morph strengths, sorts them by priority and pushes them to the hero's texture-morph component
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 #include "fable_compiler.h"
@@ -198,7 +199,9 @@ public:
     void AddParticles(long type, float value);          // 0x0071C7C0
     void AddCompositeTexture(long type, float strength, CCompositeTextureList* list);   // 0x0071DBD0
     void UpdateTattoos(CCompositeTextureList* list);    // 0x0071D3B0
+    private:
     void UpdateTextureMorphs();
+    public:
 };
 
 extern "C" int StandInSink(int, int);

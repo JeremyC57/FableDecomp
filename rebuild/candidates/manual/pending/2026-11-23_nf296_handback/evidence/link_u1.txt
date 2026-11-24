@@ -1,0 +1,23 @@
+## HEAD set: H_00d9ee20.obj H_00892f10.obj H_004fc190.obj H_0057b0f7.obj H_007f14f0.obj H_0057d8be.obj H_0066bbf0.obj H_0069f8b0.obj H_00e82650.obj H_00e9fcd0.obj H_0054ea00.obj H_00a67ea0.obj H_009beeb0.obj H_0088e400.obj H_00d9f070.obj H_004b0a30.obj H_006bbfa0.obj H_0071c0c0.obj H_007f0b10.obj H_007b7cd0.obj H_0066b370.obj H_00794d90.obj H_00e827a0.obj H_00e9fec0.obj H_0054e5d0.obj H_00a67770.obj H_0049ea10.obj
+duplicates 0
+
+UNRESOLVED 1 ?AddRenownEntry@CTCOverheadDisplay@@QAEXM@Z
+UNRESOLVED 1 ?CancelAbilities@CTCUnholyPower@@QAEXXZ
+UNRESOLVED 1 ?ContainsMap@CRegion@@QBE_NJ@Z
+UNRESOLVED 1 ?CreateHeadEffect@CTCKrakenTentacle@@QAEXXZ
+UNRESOLVED 1 ?DeactivateQuestLater@CQuestManager@@QAEXABVCCharString@@K@Z
+UNRESOLVED 1 ?InitialiseFromDef@CViewport@NUISystem@@QAEXXZ
+UNRESOLVED 1 ?InitialiseFromVolume@CVolume@@QAEXPAUIDirect3DVolume9@@@Z
+UNRESOLVED 1 ?InitialiseVariablesCheck@CV_FisticuffsClubScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?IsSpawnPointToSpawn@CQ_MinionCampScript@NScript@@QAE_NABVCScriptThing@@@Z
+UNRESOLVED 1 ?OnPresent@CVsyncCallbackTimer@@QAEXXZ
+UNRESOLVED 1 ?ResetMissionState@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?SetEnabled@CWorld@@QAEX_N@Z
+UNRESOLVED 1 ?SetSunTan@CTCHeroMorph@@QAEXM@Z
+UNRESOLVED 1 ?UpdateSounds@CTCSoundPlayer@@QAEXXZ
+## new set: N_00d9ee20.obj N_00892f10.obj N_004fc190.obj N_0057b0f7.obj N_007f14f0.obj N_0057d8be.obj N_0066bbf0.obj N_0069f8b0.obj N_00e82650.obj N_00e9fcd0.obj N_0054ea00.obj N_00a67ea0.obj N_009beeb0.obj N_0088e400.obj H_00d9f070.obj H_004b0a30.obj H_006bbfa0.obj H_0071c0c0.obj H_007f0b10.obj H_007b7cd0.obj H_0066b370.obj H_00794d90.obj H_00e827a0.obj H_00e9fec0.obj H_0054e5d0.obj H_00a67770.obj H_0049ea10.obj
+duplicates 0
+
+UNRESOLVED 1 ?InitialiseFromVolumeTextureMipmap@CVolume@@QAEXPAUIDirect3DVolume9@@@Z
+UNRESOLVED 1 ?OnPostSwapScreens@CVsyncCallbackTimer@@QAEXXZ
+LK_DONE

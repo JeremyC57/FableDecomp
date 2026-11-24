@@ -48,14 +48,11 @@ public:
 };
 
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {                  // retail list<CStringParserCommentBoundaries>: the head pointer only
-public:
-    void* m_pHead;
-    ~list();                   // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 struct CCursorPos {
     bool          InQuotes;                        // +0x0
     unsigned long StringPos;                       // +0x4
@@ -66,7 +63,7 @@ class CParsedItem { public:                               // 12 bytes
     long        Integer;                           // +0x04
     CCharString String;                            // +0x08
 };
-typedef void (*TStringParserErrorCallback)(CCharString* message);
+typedef void (*TStringParserErrorCallback)(const CCharString& message);
 class CStringParser : public CBaseClass {               // vtable 0x0122D874, 0x28 bytes in retail
 public:
     char*                      String;             // +0x04
@@ -76,9 +73,9 @@ public:
     std::list<CStringParserCommentBoundaries> Comments;           // +0x14
     TStringParserErrorCallback ErrorCallback;      // +0x18
     CCursorPos                 CursorPos;          // +0x1C
-    CStringParser(char* text, TStringParserErrorCallback errorCallback = 0, const CCharString& filename = "",
+    CStringParser(const char* text, TStringParserErrorCallback errorCallback = 0, const CCharString& filename = "",
                   long baseLineOffset = 0);        // 0x00414E30
-    bool ReadAsStringUntilString(const CCharString& terminator, CParsedItem* item);   // 0x009BA110
+    bool ReadAsStringUntilString(const CCharString& terminator, CParsedItem& item);   // 0x009BA110
     CCharString ReadAsStringUntilString(const CCharString& terminator);             // 0x009BA330
     CCharString ReadAsSymbol();                    // 0x009BA790
     CCharString ReadAsString();                    // 0x009BA6F0
@@ -87,13 +84,13 @@ public:
 
 extern CWideString GForceLevel;                  // 0x013B8668
 extern bool g_bCompileFrontendDefinitions;         // 0x013B8648
-extern bool g_bBuildRetailStaticMaps;              // 0x013B864A
+extern bool GBuildRetailStaticMaps;              // 0x013B864A (Ego_r / FableWin / Ego_d publics; NF236: was g_bBuildRetailStaticMaps)
 extern bool g_bEnableMapOptimisations;             // 0x013B864B
 extern bool g_bRuntimeLevelFiles;                  // 0x013B8616
 extern bool g_bStartMainGame;                      // 0x013B8605
 extern bool g_bFrontEndFlag_137548F;               // 0x0137548F
 extern bool g_bFrontEndFlag_137544A;               // 0x0137544A
-extern long g_CommandLineQ;                        // 0x01375490
+extern long GStaticMapQuality;                        // 0x01375490 (Ego_r / FableWin / Ego_d publics; NF236: was g_CommandLineQ)
 
 void GFParseCommandLine(char* commandLine)
 {
@@ -101,11 +98,11 @@ void GFParseCommandLine(char* commandLine)
     if (commandLine != 0) {
         CStringParser parser(commandLine, 0, CCharString(""), 0);
         CParsedItem item;
-        while (parser.ReadAsStringUntilString("-", &item)) {
+        while (parser.ReadAsStringUntilString("-", item)) {
             parser.ReadAsSymbol();
             CCharString option = parser.ReadAsString();
             if (option.EqualsNoCase("staticmap")) {
-                if (!parser.ReadAsStringUntilString("\"", &item))
+                if (!parser.ReadAsStringUntilString("\"", item))
                     break;
                 parser.ReadAsSymbol();
                 GForceLevel = parser.ReadAsStringUntilString("\"").ToWideString();
@@ -115,9 +112,9 @@ void GFParseCommandLine(char* commandLine)
                 }
             }
             else if (option.EqualsNoCase("q"))
-                g_CommandLineQ = parser.ReadAsInteger();
+                GStaticMapQuality = parser.ReadAsInteger();
             else if (option.EqualsNoCase("build_retail_static_maps")) {
-                g_bBuildRetailStaticMaps = true;
+                GBuildRetailStaticMaps = true;
                 g_bRuntimeLevelFiles = true;
                 g_bCompileFrontendDefinitions = true;
                 g_bEnableMapOptimisations = true;

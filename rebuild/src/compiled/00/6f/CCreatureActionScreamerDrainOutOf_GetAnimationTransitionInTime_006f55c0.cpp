@@ -1,4 +1,15 @@
-int __fastcall CCreatureAction_ScreamerDrainOutOf_GetAnimationTransitionInTime()
+// Leaf: ?GetAnimationTransitionInTime@CCreatureAction_ScreamerDrainOutOf@@UBEJXZ
+#define FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINOUTOF_RTTI_DECLS
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#define FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINOUTOF_PROTOTYPE
+#define FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINOUTOF_CTORS
+#include "engine/CThing.h"
+#include "engine/CCreatureAction_ScreamerDrainOutOf.h"
+long CCreatureAction_ScreamerDrainOutOf::GetAnimationTransitionInTime() const
 {
     return 10;
 }
+// Flatten route (flatten_pilot v4, NF324): CCreatureAction_ScreamerDrainOutOf_GetAnimationTransitionInTime -> CCreatureAction_ScreamerDrainOutOf::GetAnimationTransitionInTime, the RTTI-placed PDB member; class model: engine/CCreatureAction_ScreamerDrainOutOf.h opt-in FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINOUTOF_PROTOTYPE, FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINOUTOF_RTTI_DECLS (preamble of CCreatureActionScreamerDrainAttack_FinishAction_008b9010.cpp).

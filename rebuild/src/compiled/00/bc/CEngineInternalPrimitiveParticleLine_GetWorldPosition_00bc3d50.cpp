@@ -1,3 +1,4 @@
+// Leaf: ?GetWorldPosition@CEngineInternalPrimitiveParticleLine@@UAE_NAAVC3DVector@@@Z
 // CEngineInternalPrimitiveParticleLine::GetWorldPosition(C3DVector& position) -- the line's midpoint: half of (start + end) with the start at +0x48 and the end at +0x54; always true
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC3D50, length 88 bytes (96 with padding).
@@ -7,10 +8,10 @@
 #include "engine/C3DVector.h"
 
 struct CEngineInternalPrimitiveParticleLine {
-    unsigned char _pad[0x48];
+    unsigned char _pad[0x44];
     float m_startX, m_startY, m_startZ;            // +0x48
     float m_endX, m_endY, m_endZ;                  // +0x54
-    bool GetWorldPosition(C3DVector& position);
+    virtual bool GetWorldPosition(C3DVector& position);
 };
 
 bool CEngineInternalPrimitiveParticleLine::GetWorldPosition(C3DVector& position)

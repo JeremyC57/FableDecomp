@@ -31,7 +31,7 @@ public:
 };
 #include "engine/EGameAction.h"
 struct CInputProcessGameBase {
-    bool IsEventButtonPressed(const CInputEvent& event);                // 0x00687A90
+    protected: bool IsEventButtonPressed(const CInputEvent& event) const; friend class CTCBetting; public:                // 0x00687A90
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;      // 0x00687CF0
     bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const;   // 0x00687D00
 };

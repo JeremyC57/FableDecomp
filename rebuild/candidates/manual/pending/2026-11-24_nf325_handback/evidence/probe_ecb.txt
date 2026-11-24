@@ -1,0 +1,135 @@
+== CAIStateGroup_HoverAttack vftable 0128C634
+
+slot   0 00900C54 SAME     ours=??_ECAIStateGroup_HoverAttack@@UAEPAXI@Z retail_label=??_ECAIStateGroup_HoverAttack@@UAEPAXI@Z
+slot   1 0091D820 SAME     ours=?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 0091D8C0 SAME     ours=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00900C50 SAME     ours=?GetStateGroupType@CAIStateGroup_HoverAttack@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_HoverAttack@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0091D850 SAME     ours=?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0091DD30 SAME     ours=?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ
+slot  12 0091E050 SAME     ours=?Update@CAIStateGroup_HoverAttack@@UAEXXZ retail_label=?Update@CAIStateGroup_HoverAttack@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 008FE0EE SAME     ours=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  15 008FE0EF SAME     ours=?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ retail_label=?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ
+slot  16 008FE0F2 SAME     ours=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  17 008FE0F3 SAME     ours=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  18 008FE0F4 SAME     ours=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  19 008FE0FB SAME     ours=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  20 00900C4D SAME     ours=?IsCombatStateGroup@CAIStateGroup_HoverAttack@@UBE_NXZ retail_label=?IsCombatStateGroup@CAIStateGroup_HoverAttack@@UBE_NXZ
+slot  21 008FE102 SAME     ours=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ retail_label=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ
+slot  22 0091D7F0 SAME     ours=?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@1AA_NW4EMovementType@@@Z retail_label=?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@1AA_NW4EMovementType@@@Z
+retail slots 23, emitted slots 23; SAME 23 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_HoverHornetQueenTakeDamage vftable 0128C7B4
+
+slot   0 00900D7C SAME     ours=??_ECAIStateGroup_HoverHornetQueenTakeDamage@@UAEPAXI@Z retail_label=??_ECAIStateGroup_HoverHornetQueenTakeDamage@@UAEPAXI@Z
+slot   1 0095A380 SAME     ours=?Initialise@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 0091D8C0 SAME     ours=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00900D78 SAME     ours=?GetStateGroupType@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0091D850 SAME     ours=?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot  10 0095A3B0 SAME     ours=?OnReplace@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXXZ retail_label=?OnReplace@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXXZ
+slot  11 0095AA60 SAME     ours=?IsRunnable@CAIStateGroup_HoverHornetQueenTakeDamage@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_HoverHornetQueenTakeDamage@@UAE_NXZ
+slot  12 0095B280 SAME     ours=?Update@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXXZ retail_label=?Update@CAIStateGroup_HoverHornetQueenTakeDamage@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 008FE0EE SAME     ours=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  15 008FE0EF SAME     ours=?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ retail_label=?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ
+slot  16 008FE0F2 SAME     ours=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  17 008FE0F3 SAME     ours=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  18 008FE0F4 SAME     ours=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  19 008FE0FB SAME     ours=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  20 00900D75 SAME     ours=?IsCombatStateGroup@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE_NXZ retail_label=?IsCombatStateGroup@CAIStateGroup_HoverHornetQueenTakeDamage@@UBE_NXZ
+slot  21 008FE102 SAME     ours=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ retail_label=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ
+slot  22 0091D7F0 SAME     ours=?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@1AA_NW4EMovementType@@@Z retail_label=?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@1AA_NW4EMovementType@@@Z
+retail slots 23, emitted slots 23; SAME 23 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_HoverAttackArea vftable 0128C754
+
+slot   0 00900D41 SAME     ours=??_ECAIStateGroup_HoverAttackArea@@UAEPAXI@Z retail_label=??_ECAIStateGroup_HoverAttackArea@@UAEPAXI@Z
+slot   1 0095A270 SAME     ours=?Initialise@CAIStateGroup_HoverAttackArea@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroup_HoverAttackArea@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 0091D8C0 SAME     ours=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00900D3D SAME     ours=?GetStateGroupType@CAIStateGroup_HoverAttackArea@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_HoverAttackArea@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0091D850 SAME     ours=?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0095A2C0 SAME     ours=?IsRunnable@CAIStateGroup_HoverAttackArea@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_HoverAttackArea@@UAE_NXZ
+slot  12 0091E050 SAME     ours=?Update@CAIStateGroup_HoverAttack@@UAEXXZ retail_label=?Update@CAIStateGroup_HoverAttack@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 008FE0EE SAME     ours=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  15 008FE0EF SAME     ours=?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ retail_label=?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ
+slot  16 008FE0F2 SAME     ours=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  17 008FE0F3 SAME     ours=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  18 008FE0F4 SAME     ours=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  19 008FE0FB SAME     ours=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  20 00900D3A SAME     ours=?IsCombatStateGroup@CAIStateGroup_HoverAttackArea@@UBE_NXZ retail_label=?IsCombatStateGroup@CAIStateGroup_HoverAttackArea@@UBE_NXZ
+slot  21 008FE102 SAME     ours=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ retail_label=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ
+slot  22 0091D7F0 SAME     ours=?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@1AA_NW4EMovementType@@@Z retail_label=?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@1AA_NW4EMovementType@@@Z
+retail slots 23, emitted slots 23; SAME 23 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_HoverAttackUnlessTargetIsFleeing vftable 0128C694
+
+slot   0 00900C8F SAME     ours=??_ECAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UAEPAXI@Z retail_label=??_ECAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UAEPAXI@Z
+slot   1 0091D820 SAME     ours=?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 0091D8C0 SAME     ours=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 00900C8B SAME     ours=?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0091D850 SAME     ours=?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0091DD30 SAME     ours=?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ
+slot  12 0091E050 SAME     ours=?Update@CAIStateGroup_HoverAttack@@UAEXXZ retail_label=?Update@CAIStateGroup_HoverAttack@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 008FE0EE SAME     ours=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  15 0091E480 SAME     ours=?IsRunnableLeaf@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@MAE_NXZ retail_label=?IsRunnableLeaf@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@MAE_NXZ
+slot  16 008FE0F2 SAME     ours=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  17 008FE0F3 SAME     ours=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  18 008FE0F4 SAME     ours=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  19 008FE0FB SAME     ours=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  20 00900C88 SAME     ours=?IsCombatStateGroup@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE_NXZ retail_label=?IsCombatStateGroup@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE_NXZ
+slot  21 008FE102 SAME     ours=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ retail_label=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ
+slot  22 0091D7F0 SAME     ours=?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@1AA_NW4EMovementType@@@Z retail_label=?AIAction_MoveToPosAndFacePos@CAIStateGroup_HoverMovementBase@@MAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@1AA_NW4EMovementType@@@Z
+retail slots 23, emitted slots 23; SAME 23 DIFF 0 NOLABEL 0
+
+== CAIStateGroup_WhisperPotionCombat vftable 0128D5EC
+
+slot   0 0090348F DIFF     ours=??_ECAIStateGroup_WhisperPotionCombat@@UAEPAXI@Z retail_label=??_GCAIStateGroup_WhisperPotionCombat@@UAEPAXI@Z
+slot   1 0096A8B0 SAME     ours=?Initialise@CAIStateGroup_WhisperPotionCombat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroup_WhisperPotionCombat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 0091D8C0 SAME     ours=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+slot   3 008FD270 SAME     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ
+slot   4 008FD273 SAME     ours=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 009031DA SAME     ours=?GetStateGroupType@CAIStateGroup_WhisperPotionCombat@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroup_WhisperPotionCombat@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 0096A730 SAME     ours=?Cleanup@CAIStateGroup_WhisperPotionCombat@@UAEXXZ retail_label=?Cleanup@CAIStateGroup_WhisperPotionCombat@@UAEXXZ
+slot  10 008FD281 SAME     ours=?OnReplace@CAIStateGroupBase@@MAEXXZ retail_label=?OnReplace@CAIStateGroupBase@@MAEXXZ
+slot  11 0091DD30 SAME     ours=?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ retail_label=?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ
+slot  12 0096B100 SAME     ours=?Update@CAIStateGroup_WhisperPotionCombat@@UAEXXZ retail_label=?Update@CAIStateGroup_WhisperPotionCombat@@UAEXXZ
+slot  13 008FD285 SAME     ours=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 008FE0EE SAME     ours=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  15 0096AAD0 SAME     ours=?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@MAE_NXZ retail_label=?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@MAE_NXZ
+slot  16 008FE0F2 SAME     ours=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  17 008FE0F3 SAME     ours=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ retail_label=?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+slot  18 008FE0F4 SAME     ours=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  19 008FE0FB SAME     ours=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ retail_label=?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+slot  20 009031D7 SAME     ours=?IsCombatStateGroup@CAIStateGroup_WhisperPotionCombat@@UBE_NXZ retail_label=?IsCombatStateGroup@CAIStateGroup_WhisperPotionCombat@@UBE_NXZ
+slot  21 008FE102 SAME     ours=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ retail_label=?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ
+retail slots 22, emitted slots 22; SAME 21 DIFF 1 NOLABEL 0
+
+PROBE_DONE

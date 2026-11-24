@@ -1,0 +1,34 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CCombatSequenceBase.h	2026-11-23 00:11:47.569824473 +0000
++++ hdr/engine/CCombatSequenceBase.h	2026-11-24 00:56:40.220247312 +0000
+@@ -1,6 +1,6 @@
+ #ifndef FABLE_ENGINE_CCOMBATSEQUENCEBASE_H
+ #define FABLE_ENGINE_CCOMBATSEQUENCEBASE_H
+-#ifdef FABLE_RETAIL_COMBAT_SEQUENCE_SELECTION_PASS27
++#if defined(FABLE_RETAIL_COMBAT_SEQUENCE_SELECTION_PASS27) || defined(FABLE_RETAIL_CCOMBATSEQUENCEBASE) // NF325: + the class-model opt-in (NF322 Q1 ruling)
+ #include "stlport/fable_containers.h"
+ class CCombatAction; class CThingCreatureBase; class CCharString;
+ enum ECombatSequenceType; enum ECombatSequenceInterruptionType;
+@@ -22,9 +22,15 @@
+     virtual bool IsToPreferSequenceWhenValid() const;
+     virtual bool IsSequenceWithActions() const;
+     virtual unsigned long GetZone() const;
++#ifdef FABLE_RETAIL_CCOMBATSEQUENCEBASE // NF325: retail access (RTTI vftable 0x01278FEC slots 16-18 + FableWin.pdb ?GetFramesToPredictTargetPosition@CCombatSequenceBase@@MBEJXZ, ?OnStart@..@@MAEXXZ, ?OnStop@..@@MAEXXZ)
++protected:
++#endif
+     virtual long GetFramesToPredictTargetPosition() const;
+     virtual void OnStart();
+     virtual void OnStop();
++#ifdef FABLE_RETAIL_CCOMBATSEQUENCEBASE
++public:
++#endif
+     bool IsZoneValid() const;
+ private:
+     bool Running;
+@@ -34,6 +40,6 @@
+     CThingCreatureBase& Target;
+     bool CreateCalled;
+ };
+-FABLE_STATIC_ASSERT(sizeof(CCombatSequenceBase)==0x28);
++FABLE_STATIC_ASSERT_AT(37, sizeof(CCombatSequenceBase)==0x28);
+ #endif
+ #endif

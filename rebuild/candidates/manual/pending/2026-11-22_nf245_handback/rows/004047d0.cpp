@@ -1,0 +1,52 @@
+// CStringParser::`vector deleting destructor'(unsigned int flags) -- destroy a background landscape patch and free it when bit 0 is set
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004047D0, 56 bytes. Callees: member destructors at +0x14, +0x10, +0x0C, the class destructor, operator delete.
+// Name (2026-10-31, hand621 NAME_FIXES): the +0x14 destructor 0x004046B0 is the STLport comment list's
+//   ??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ (CStringParser::Comments;
+//   the landed 0x004046B0 body), called as a member destructor on this+0x14 (was a free __fastcall Inner14_dtor). Bytes unchanged.
+//
+// Vtable slot 0 of the patch class. A background patch is one tile of the distant landscape (the
+// low-detail terrain you see beyond the playable area); it owns a few sub-objects plus its texture and
+// buffers. `delete patch` arrives here with flags = 1, destroying the three owned sub-objects in reverse
+// order, running the class destructor for the rest (the texture and index/vertex buffers), and then
+// freeing the storage; array destruction arrives with flags = 0 and skips the free. Returns `this` so
+// the array form can step on. The three sub-object offsets sit inside what the PDB calls EdgeStrips, so
+// the attached class name appears to be a propagated label for a shared destructor shape.
+//
+// Matching: `flags` is the stack argument after the unused edx register; `flags & 1` is a `test ...,1`;
+// `operator delete` is the plain global one.
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+struct CInner { void* v; };
+class CStringParserCommentBoundaries;
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
+extern void __cdecl operator_delete_stub(void* p);
+void operator delete(void* p);
+
+class CStringParser { public:
+    void* vftable;
+    CInner inner4;                  // parent tree node
+    void* f8;
+    CInner innerC;                  // owned sub-object (destroyed here)
+    unsigned char _pad_0x10[0xa8];  // further owned sub-objects at +0x10 / +0x14, edge strips
+    void* tex;                      // the patch texture (released by the class destructor)
+};
+
+void* __fastcall CStringParser_scalar_deleting_destructor(CStringParser* parser, int edx_dummy, unsigned int flags)
+{
+    // Owned sub-objects in reverse order, then the rest of the patch.
+    typedef std::list<CStringParserCommentBoundaries> CommentList;
+    ((CommentList*)((char*)parser + 0x14))->CommentList::~CommentList();
+    ((CCharString*)((char*)parser + 0x10))->~CCharString();
+    ((CCharString*)((char*)parser + 0xc))->~CCharString();
+    ((CBaseClass*)(parser))->CBaseClass::~CBaseClass();
+    // Bit 0: the caller used `delete`, so give the storage back too.
+    if (flags & 1)
+        operator delete(parser);
+    return parser;
+}

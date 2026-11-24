@@ -36,6 +36,25 @@ private:
     bool FailPath;
     bool OnDirectApproach;
 public:
+#ifdef FABLE_RETAIL_CSBIAGENTS_PROCESS_PASS28
+    CSteeringAgent(const CNavigatorExternalInterface* navigator, bool dummy);
+    float GetDistCutoff() const { return DistCutoff; }
+    const C2DVector& GetGoal() const { return Goal; }
+    bool IsDead() const { return NavigatorInterface->IsDead(); }
+    float PeekBestDistRight() const { return BestDistRight; }
+    float PeekBestDistLeft() const { return BestDistLeft; }
+#endif
+#ifdef FABLE_RETAIL_CSTEERINGAGENT_MOVETOWARD_PASS26
+ // Both PDBs and original031ac720 dispatch/accessor chain.
+ void SetCurrentMaxSpeed(float speed){CurrentMaxSpeed=speed;}
+ void SetAvoidDynamicObstacles(bool avoid){AvoidDynamicObstacles=avoid;}
+ void Process();
+ const C2DVector& GetSteer()const{return Steer;}
+ bool GetRecalcWidth(){return RecalcWidth;}
+ bool GetAddWaypoint(){return AddWaypoint;}
+ float& GetBestDistLeft(){return BestDistLeft;}
+ float& GetBestDistRight(){return BestDistRight;}
+#endif
  bool HasFailedPath() {return FailPath;}
  void Reset() {TimeSinceBestApproach=0;HasWanderedDuringThisSection=false;AvoidDynamicObstaclesUntilNextWaypoint=true;FailPath=false;}
  float GetProximityForArrival() {return ProximityForArrival;}
@@ -56,5 +75,5 @@ public:
  bool GetAvoidDynamicObstacles() const {return AvoidDynamicObstacles;}
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CSteeringAgent)==0x68);
+FABLE_STATIC_ASSERT_AT(59,sizeof(CSteeringAgent)==0x68);
 #endif

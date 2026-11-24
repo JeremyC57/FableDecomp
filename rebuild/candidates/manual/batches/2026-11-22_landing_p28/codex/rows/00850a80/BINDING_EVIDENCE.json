@@ -1,0 +1,17 @@
+[
+  {
+    "address": "0x007B2BF0",
+    "symbol": "?PlayerIsCriminalAndCanApologise@CTCGuard@@QAE_NXZ",
+    "evidence": "Ego_r 0x007B40E0 and FableWin 0x026DD4D0 spell the retail guard method called at 0x00850DDD."
+  },
+  {
+    "address": "0x008508B0",
+    "symbol": "?TargetCreatureLikelyToReactToDeed@CContextSensitiveItemDef@@ABE_NPBVCThingPlayerCreature@@PBVCThingAICreature@@W4EOpinionDeedType@@@Z",
+    "evidence": "Both donor PDBs name the private const helper taking const player and target pointers. Retail calls it at 0x00850E6C and 0x0085106D."
+  },
+  {
+    "address": "0x00851490",
+    "symbol": "??$GetAllThingsInRoughArea@VCThingMarker@@V?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasTC@@AAV?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@@Z",
+    "evidence": "Both PDBs and the existing landed 00851490 self leaf name the same CThingMarker / vector<CThingMarker*> / CThingFilter_HasTC instantiation. Retail calls it at 0x0085122F."
+  }
+]

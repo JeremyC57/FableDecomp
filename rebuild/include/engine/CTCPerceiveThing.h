@@ -200,7 +200,14 @@ public:
     float GetExtendedSightRadius() const;                                // 0x00744950
 #endif
 #else
+#ifdef FABLE_RETAIL_OPINIONREACTIONROOT_ISRUNNABLE_PASS27
+    // Pass 27 (row 0x0095EF80): declared here, defined inline after the row's `#pragma optimize("s", on)`; every other includer keeps the
+    // in-class body (landing 2026-11-22: the unconditional declaration broke 0x0091B3A0 / 0x009578A0).
+    bool IsAwareOfThing() const;
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_PERCEIVE_THING; }
+#else
     bool IsAwareOfThing() const { return AwarenessTimer!=0.0f; }
+#endif
 #endif
     bool IsThingLineOfSight() const { return LineOfSight; }
 #ifdef FABLE_RETAIL_SENSED_PASS23

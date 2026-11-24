@@ -50,6 +50,20 @@ public:
  unsigned long GetFrameCount()const{return FrameCount;}float GetSamplesPerSecond()const{return SamplesPerSecond;}
  bool InitialiseFromFileData(const C3DAnimFileSequenceChunk&,CSimpleMemoryPool&);
 private:
+#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_FROMFILEDATA
+ // Retail opt-in (p25C, row 0x00A4EFC0 InitialiseFromFileData): Ego_d.pdb nested enum C3DAnimationSequenceData::ETrackMode
+ // (type 0x2901D: TRACKMODE_IDENTITY 0, CONSTANT 1, NORMAL 2, PALETTED 3, MOTION_BIT 2), stored in the 2-bit track-mode fields;
+ // and the private helper Ego_r.pdb / FableWin.pdb ?GetMaximumAbsoluteComponent@C3DAnimationSequenceData@@AAEMABVC3DVector@@@Z
+ // (no out-of-line copy in retail: expanded twice per frame in the row's factor loop, 0x00A4F110..). Declaration only: the row's
+ // TU defines it.
+ enum ETrackMode { TRACKMODE_IDENTITY=0, TRACKMODE_CONSTANT=1, TRACKMODE_NORMAL=2, TRACKMODE_PALETTED=3, TRACKMODE_MOTION_BIT=2 };
+ float GetMaximumAbsoluteComponent(const C3DVector& vect);
+#ifndef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_READ
+ // The private ?SetupIdentityFlag@C3DAnimationSequenceData@@AAEXXZ (see READ above; expanded at the end of the row, 0x00A4FC83:
+ // `test byte ptr [esi+0Bh],3Fh`). Declaration only, as under READ.
+ void SetupIdentityFlag();
+#endif
+#endif
 char* BoneName;float SamplesPerSecond;unsigned short FrameCount;
  unsigned char BoneType:5;unsigned char EnabledFlag:1;unsigned char AnimatedFlag:1;unsigned char IdentityFlag:1;
  unsigned char RotationTrackMode:2;unsigned char PositionTrackMode:2;unsigned char ScalingTrackMode:2;
@@ -57,13 +71,29 @@ char* BoneName;float SamplesPerSecond;unsigned short FrameCount;
  unsigned short RotationTrackSize,PositionTrackSize,PalettedRotationTrackSize,PalettedPositionTrackSize;
  C3DVectorWord* PositionTrack;unsigned char* PalettedRotationTrack;unsigned char* PalettedPositionTrack;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DAnimationSequenceData)==0x2c);
+FABLE_STATIC_ASSERT_AT(60, sizeof(C3DAnimationSequenceData)==0x2c);
 #if defined(FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_READ) && !defined(FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_INTERPOLATE)
 // (chunk 2033) the reader allocates PositionTrack as an array of C3DVectorWord: Ego_r.pdb short X / Y / Z, 6 bytes (the retail
 // AllocateType<C3DVectorWord> size check multiplies by 6 at 0x00A4CB7F).
 class C3DAnimationSequenceData::C3DVectorWord {
 public:
  short X,Y,Z;
+};
+#endif
+#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_VECTORWORD_FROMVECTOR
+// Retail opt-in (p25C, row 0x00A4EFC0 InitialiseFromFileData): FableWin.pdb ??0C3DVectorWord@C3DAnimationSequenceData@@QAE@XZ,
+// ??0C3DVectorWord@C3DAnimationSequenceData@@QAE@ABVC3DVector@@@Z and ??8C3DVectorWord@C3DAnimationSequenceData@@QBE_NABV01@@Z
+// (Ego_d.pdb field list 0x29DF1: two constructors, operator==, operator*, X / Y / Z, Sizeof), all inline in retail: the
+// conversion is three _ftol2 calls into a stack temporary (0x00A4F654..0x00A4F66C), the comparison three word compares
+// (0x00A4F6B0..0x00A4F6CA). The user default constructor makes the element non-POD (STLport's __false_type paths, as the
+// landed 0x00A55070 _M_insert_overflow). Needs FABLE_RETAIL_C3DVECTOR (the full C3DVector).
+class C3DAnimationSequenceData::C3DVectorWord {
+public:
+ short X,Y,Z;
+ C3DVectorWord() { }
+ C3DVectorWord(const C3DVector& vect) { X=(short)vect.X; Y=(short)vect.Y; Z=(short)vect.Z; }
+ bool operator==(const C3DVectorWord& rhs) const { return X==rhs.X && Y==rhs.Y && Z==rhs.Z; }
+ C3DVector operator*(float scale) const { return C3DVector(X*scale,Y*scale,Z*scale); }
 };
 #endif
 #ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_INTERPOLATE

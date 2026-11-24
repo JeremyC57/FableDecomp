@@ -1,0 +1,194 @@
+### 0097e330
+1a2
+> // Leaf: ?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z
+53c54
+<     void SetPushableByHero(bool pushable);
+---
+> protected: void SetPushableByHero(bool pushable);      // NF313: IAE (Ego_r.pdb + FableWin.pdb)
+### 00967930
+74c74
+<     void SetPushableByHero(bool pushable);                              protected: // 0x0097E330
+---
+>     protected: void SetPushableByHero(bool pushable);                   protected: // 0x0097E330 (NF313: IAE, both PDBs)
+### 00967b40
+90c90
+<     void SetPushableByHero(bool pushable);      protected: // 0x0097E330
+---
+>     protected: void SetPushableByHero(bool pushable);      protected: // 0x0097E330 (NF313: IAE, both PDBs)
+### 00968bc0
+80c80
+<     void SetPushableByHero(bool pushable);      // 0x0097E330
+---
+>     protected: void SetPushableByHero(bool pushable); public:      // 0x0097E330 (NF313: IAE, both PDBs)
+### 009689c0
+73c73
+<     void SetPushableByHero(bool pushable);      // 0x0097E330
+---
+>     protected: void SetPushableByHero(bool pushable);      // 0x0097E330 (NF313: IAE, both PDBs; the next line is protected: already)
+### 00b242a0
+11c11
+<     void CalculateMatrix(CMatrix3x4* matrix) const;   // 0x00ADEBC0
+---
+>     void CalculateMatrix(CMatrix3x4& matrix) const;   // 0x00ADEBC0 (NF313: the PDB parameter type, both PDBs)
+28c28
+<     box.CalculateMatrix(&matrix);
+---
+>     box.CalculateMatrix(matrix);
+### 00bacbd0
+9c9
+<     void CalculateMatrix(CMatrix3x4* matrix) const;   // 0x00ADEBC0
+---
+>     void CalculateMatrix(CMatrix3x4& matrix) const;   // 0x00ADEBC0 (NF313: the PDB parameter type, both PDBs)
+28c28
+<         box.CalculateMatrix(&transform);
+---
+>         box.CalculateMatrix(transform);
+### 00bc5fc0
+9c9
+<     void CalculateMatrix(CMatrix3x4* matrix) const;   // 0x00ADEBC0
+---
+>     void CalculateMatrix(CMatrix3x4& matrix) const;   // 0x00ADEBC0 (NF313: the PDB parameter type, both PDBs)
+59c59
+<         box.CalculateMatrix(&transform);
+---
+>         box.CalculateMatrix(transform);
+### 00861a80
+68c68
+<     void SetMainAnim(CAnimInit* init, long blendTime, long delay);   // 0x0070D580
+---
+>     void SetMainAnim(const CAnimInit& init, long blendTime, long delay);   // 0x0070D580 (NF313: the PDB parameter type, both PDBs)
+119c119
+<     animate.SetMainAnim(&init, blendTime, delay);
+---
+>     animate.SetMainAnim(init, blendTime, delay);
+### 00b3a910
+42c42
+<     CEngineInternalPrimitiveBase(long type, long flags);   // 0x00B8FF00
+---
+>     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00 (NF313: the PDB parameter type, both PDBs)
+### 006cef20
+48c48
+<     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+---
+>     void SetText(const CFontBank& font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1 (NF313: the PDB parameter type, both PDBs)
+102c102
+<     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitleRenderer.SetText(CMainGameComponent::Get()->m_pFontBank,
+---
+>     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitleRenderer.SetText(*CMainGameComponent::Get()->m_pFontBank,
+### 00729b20
+33c33
+<     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+---
+>     void SetText(const CFontBank& font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1 (NF313: the PDB parameter type, both PDBs)
+77c77
+<             ui->Subtitles.SetText(font, text, 4, 0.0f, false, true);
+---
+>             ui->Subtitles.SetText(*font, text, 4, 0.0f, false, true);
+79c79
+<             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(PeekComponent().GetFontBank(), text, 0x322, 0.0f, false, true);
+---
+>             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*PeekComponent().GetFontBank(), text, 0x322, 0.0f, false, true);
+### 007800b0
+121c121
+<     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+---
+>     void SetText(const CFontBank& font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1 (NF313: the PDB parameter type, both PDBs)
+171c171
+<             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(component->PCutSceneMainFont_Data, text, 0x122, 4.0f, false, true);
+---
+>             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*component->PCutSceneMainFont_Data, text, 0x122, 4.0f, false, true);
+### 008139c0
+95c95
+<     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+---
+>     void SetText(const CFontBank& font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1 (NF313: the PDB parameter type, both PDBs)
+148c148
+<         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, "You do not have enough money to make this boast!", 0, 2.5f, false, true);
+---
+>         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, "You do not have enough money to make this boast!", 0, 2.5f, false, true);
+### 00849380
+143c143
+<     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+---
+>     void SetText(const CFontBank& font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1 (NF313: the PDB parameter type, both PDBs)
+233c233
+<                     subtitles->SetText(component->FontBank, message, 0, 3.0f, false, true);
+---
+>                     subtitles->SetText(*component->FontBank, message, 0, 3.0f, false, true);
+### 007df4b0
+44,45c44,45
+<     void SetText(CFontBank* font, const CCharString& text, const CCharString& a, const CCharString& b, const CCharString& c,
+<                  unsigned long colour, float time, bool b1, bool b2);   // 0x00492FB4
+---
+>     void SetText(const CFontBank& font, const CCharString& text, const CCharString& a, const CCharString& b, const CCharString& c,
+>                  unsigned long colour, float time, bool b1, bool b2);   // 0x00492FB4 (NF313: the PDB parameter type, both PDBs)
+140c140
+<             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, question, empty, yes, no, 4, 0.0f, false, true);
+---
+>             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, question, empty, yes, no, 4, 0.0f, false, true);
+### 009d5a90
+27c27
+<     unsigned long AddObject(CThreadedFileObjectDesc* desc);              // 0x0098F350
+---
+>     unsigned long AddObject(const CThreadedFileObjectDesc& desc);        // 0x0098F350 (NF313: the PDB parameter type, both PDBs)
+119c119
+<         data->ThreadedFileUID = data->BankFile->ThreadedFile->AddObject(&data->LoadDesc);
+---
+>         data->ThreadedFileUID = data->BankFile->ThreadedFile->AddObject(data->LoadDesc);
+### 0088e0b0
+19c19
+<     long GetRegionNumberFromName(const CCharString* regionName);
+---
+>     long GetRegionNumberFromName(const CCharString& regionName) const;   // 0x004FC210 (NF313: the PDB QBE const-reference form, both PDBs)
+65c65
+<             ->GetRegionNumberFromName(pName);
+---
+>             ->GetRegionNumberFromName(*pName);
+### 006ea450
+82c82
+<     void PerformSequenceReset(CThingCreatureBase* creature);   // 0x006EA2C0
+---
+>     private: void PerformSequenceReset(CThingCreatureBase& creature); public:   // 0x006EA2C0 (NF313: AAE, both PDBs)
+100c100
+<         PerformSequenceReset(attacker);
+---
+>         PerformSequenceReset(*attacker);
+### 006eabb0
+54c54
+<     void PerformSequenceReset(CThingCreatureBase* creature);   // 0x006EA2C0
+---
+>     private: void PerformSequenceReset(CThingCreatureBase& creature); public:   // 0x006EA2C0 (NF313: AAE, both PDBs)
+65c65
+<         PerformSequenceReset(parent);
+---
+>         PerformSequenceReset(*parent);
+71c71
+<         PerformSequenceReset(parent);
+---
+>         PerformSequenceReset(*parent);
+### 0092a8a0
+9a10
+> #include "engine/EMovementType.h"   // NF313: the PDB parameter enum of AIAction_MinionWander
+66a68
+> class CThingBuilding;                          // NF313: the PDB parameter class of AIAction_MinionWander
+78c80
+<     long AIAction_MinionWander(long movementType, CThing* building);   // 0x0097F870
+---
+>     protected: EAIActionReturn AIAction_MinionWander(EMovementType movementType, CThingBuilding* building); public:   // 0x0097F870 (NF313: IAE, both PDBs)
+152c154
+<             if (AIAction_MinionWander(3, 0) != 2 || !MoveToAppropriateDummy())
+---
+>             if (AIAction_MinionWander(AI_MOVEMENT_WALKING, 0) != 2 || !MoveToAppropriateDummy())
+### 0092b3e0
+20a21
+> #include "engine/EMovementType.h"   // NF313: the PDB parameter enum of AIAction_MinionWander
+76a78
+> class CThingBuilding;                          // NF313: the PDB parameter class of AIAction_MinionWander
+88c90
+<     long AIAction_MinionWander(long movementType, CThing* building);   // 0x0097F870
+---
+>     protected: EAIActionReturn AIAction_MinionWander(EMovementType movementType, CThingBuilding* building); public:   // 0x0097F870 (NF313: IAE, both PDBs)
+160c162
+<             if (AIAction_MinionWander(3, 0) != 2 || !MoveToAppropriateDummy())
+---
+>             if (AIAction_MinionWander(AI_MOVEMENT_WALKING, 0) != 2 || !MoveToAppropriateDummy())

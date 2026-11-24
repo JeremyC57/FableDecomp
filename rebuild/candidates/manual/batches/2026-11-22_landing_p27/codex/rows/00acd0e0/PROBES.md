@@ -1,0 +1,155 @@
+# Attempts
+
+Leaf, all 1041 bytes and 340 instructions, exact. 51 behavior cases pass. Three mapped owners correct. Fourth stock comparison masks a stale unsigned tree-destructor relocation: 00517850 erases signed long. Four unsigned copies match the emitted 66-byte owner and both operands exactly but its unique identity remains unassigned. Debug compile confirms left-to-right argument sequence and the same floating comparison as FableWin. See BINDING_EVIDENCE.json.
+
+- array_access_donor_comparison_checked — 1028 bytes, 314 aligned instructions; DIFFER.
+- array_access_donor_comparison_index — 1041 bytes, 328 aligned instructions; DIFFER.
+- array_access_found_assert_donor_comparison_release_checked — 1028 bytes, 314 aligned instructions; DIFFER.
+- array_access_found_assert_donor_comparison_release_index — 1041 bytes, 328 aligned instructions; DIFFER.
+- array_access_found_assert_fold_xzy_release_checked — 1028 bytes, 322 aligned instructions; DIFFER.
+- array_access_found_assert_fold_xzy_release_index — 1041 bytes, 336 aligned instructions; DIFFER.
+- array_access_found_assert_fold_zyx_release_checked — 1028 bytes, 322 aligned instructions; DIFFER.
+- array_access_found_assert_fold_zyx_release_index — 1041 bytes, 336 aligned instructions; DIFFER.
+- baseline — 1048 bytes, 327 aligned instructions; DIFFER.
+- donor_comparison — 1041 bytes, 327 aligned instructions; DIFFER.
+- dot_group_0 — 1033 bytes, 331 aligned instructions; DIFFER.
+- dot_group_1 — 1044 bytes, 335 aligned instructions; DIFFER.
+- dot_group_2 — 1033 bytes, 331 aligned instructions; DIFFER.
+- dot_grouped — 1033 bytes, 331 aligned instructions; DIFFER.
+- dot_orig_0 — 1033 bytes, 335 aligned instructions; DIFFER.
+- dot_orig_1 — 1033 bytes, 335 aligned instructions; DIFFER.
+- dot_orig_2 — 1033 bytes, 331 aligned instructions; DIFFER.
+- dot_orig_3 — 1044 bytes, 335 aligned instructions; DIFFER.
+- dot_orig_mirror — 1033 bytes, 335 aligned instructions; DIFFER.
+- dot_xyz — 1033 bytes, 331 aligned instructions; DIFFER.
+- dot_yxz — 1041 bytes, 331 aligned instructions; DIFFER.
+- dot_zyx — 1041 bytes, 336 aligned instructions; DIFFER.
+- fold_at_arm_donor — 1028 bytes, 310 aligned instructions; DIFFER.
+- fold_at_arm_donor_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_arm_older — 1028 bytes, 318 aligned instructions; DIFFER.
+- fold_at_arm_older_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_dbg_donor — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_at_dbg_donor_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_dbg_older — 1041 bytes, 336 aligned instructions; DIFFER.
+- fold_at_dbg_older_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_disabled_donor — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_at_disabled_donor_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_disabled_older — 1041 bytes, 336 aligned instructions; DIFFER.
+- fold_at_disabled_older_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_guard_donor — 1028 bytes, 310 aligned instructions; DIFFER.
+- fold_at_guard_donor_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_guard_older — 1028 bytes, 318 aligned instructions; DIFFER.
+- fold_at_guard_older_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_guardarm_donor — 1028 bytes, 313 aligned instructions; DIFFER.
+- fold_at_guardarm_donor_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_guardarm_older — 1028 bytes, 322 aligned instructions; DIFFER.
+- fold_at_guardarm_older_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_simple_donor — 1028 bytes, 310 aligned instructions; DIFFER.
+- fold_at_simple_donor_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_at_simple_older — 1028 bytes, 318 aligned instructions; DIFFER.
+- fold_at_simple_older_full — compile error bytes, unknown aligned instructions; COMPILE_FAIL.
+- fold_fullvec_at_arm_donor_full — 1028 bytes, 310 aligned instructions; DIFFER.
+- fold_fullvec_at_arm_older_full — 1028 bytes, 318 aligned instructions; DIFFER.
+- fold_fullvec_at_dbg_donor_full — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_fullvec_at_dbg_older_full — 1041 bytes, 336 aligned instructions; DIFFER.
+- fold_fullvec_at_disabled_donor_full — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_fullvec_at_disabled_older_full — 1041 bytes, 336 aligned instructions; DIFFER.
+- fold_fullvec_at_guard_donor_full — 1028 bytes, 310 aligned instructions; DIFFER.
+- fold_fullvec_at_guard_older_full — 1028 bytes, 318 aligned instructions; DIFFER.
+- fold_fullvec_at_guardarm_donor_full — 1028 bytes, 313 aligned instructions; DIFFER.
+- fold_fullvec_at_guardarm_older_full — 1028 bytes, 322 aligned instructions; DIFFER.
+- fold_fullvec_at_simple_donor_full — 1028 bytes, 310 aligned instructions; DIFFER.
+- fold_fullvec_at_simple_older_full — 1028 bytes, 318 aligned instructions; DIFFER.
+- fold_geometry_selected — 1041 bytes, 340 aligned instructions; MASKED_EQUAL.
+- fold_locals_cross_sqr_dot — 1041 bytes, 327 aligned instructions; DIFFER.
+- fold_locals_cross_sub_sqr_dot — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_locals_cross_sub_sqr_dot_right — 1041 bytes, 340 aligned instructions; MASKED_EQUAL.
+- fold_locals_cross_sub_sqr_group_dot — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_locals_dot — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_locals_sqr_dot — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_locals_sub_dot — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_locals_sub_dot_right — 1033 bytes, 335 aligned instructions; DIFFER.
+- fold_locals_sub_sqr_dot — 1041 bytes, 328 aligned instructions; DIFFER.
+- fold_locals_sub_sqr_group_dot_right — 1041 bytes, 340 aligned instructions; MASKED_EQUAL.
+- fold_od_identify_cross_sub_sqr_dot — 615 bytes, 14 aligned instructions; DIFFER.
+- fold_od_identify_cross_sub_sqr_dot_right — 615 bytes, 15 aligned instructions; DIFFER.
+- fold_owner_end_donor_comparisonend60 — 1070 bytes, 321 aligned instructions; DIFFER.
+- fold_owner_end_donor_comparisonend70 — 1070 bytes, 321 aligned instructions; DIFFER.
+- fold_owner_end_donor_comparisonexplicit60 — 1070 bytes, 321 aligned instructions; DIFFER.
+- fold_owner_end_donor_comparisonexplicit70 — 1070 bytes, 321 aligned instructions; DIFFER.
+- fold_owner_end_donor_comparisonresume60 — 1041 bytes, 327 aligned instructions; DIFFER.
+- fold_owner_end_donor_comparisonresume70 — 1070 bytes, 321 aligned instructions; DIFFER.
+- fold_owner_end_donor_comparisonspeed60 — 1070 bytes, 321 aligned instructions; DIFFER.
+- fold_owner_end_donor_comparisonspeed70 — 1070 bytes, 321 aligned instructions; DIFFER.
+- fold_owner_end_fold_xzyend60 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_xzyend70 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_xzyexplicit60 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_xzyexplicit70 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_xzyresume60 — 1041 bytes, 336 aligned instructions; DIFFER.
+- fold_owner_end_fold_xzyresume70 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_xzyspeed60 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_xzyspeed70 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_zyxend60 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_zyxend70 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_zyxexplicit60 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_zyxexplicit70 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_zyxresume60 — 1041 bytes, 336 aligned instructions; DIFFER.
+- fold_owner_end_fold_zyxresume70 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_zyxspeed60 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_owner_end_fold_zyxspeed70 — 1070 bytes, 329 aligned instructions; DIFFER.
+- fold_xyz — 1033 bytes, 331 aligned instructions; DIFFER.
+- fold_xyz_ordered — 1033 bytes, 326 aligned instructions; DIFFER.
+- fold_xzy — 1041 bytes, 336 aligned instructions; DIFFER.
+- fold_xzy_ordered — 1041 bytes, 330 aligned instructions; DIFFER.
+- fold_yxz — 1041 bytes, 331 aligned instructions; DIFFER.
+- fold_yxz_ordered — 1041 bytes, 326 aligned instructions; DIFFER.
+- fold_yzx — 1044 bytes, 332 aligned instructions; DIFFER.
+- fold_yzx_ordered — 1044 bytes, 325 aligned instructions; DIFFER.
+- fold_zxy — 1044 bytes, 332 aligned instructions; DIFFER.
+- fold_zxy_ordered — 1044 bytes, 324 aligned instructions; DIFFER.
+- fold_zyx — 1041 bytes, 336 aligned instructions; DIFFER.
+- fold_zyx_ordered — 1041 bytes, 329 aligned instructions; DIFFER.
+- found_assert_donor_comparison_arm — 1041 bytes, 328 aligned instructions; DIFFER.
+- found_assert_donor_comparison_guard — 1041 bytes, 328 aligned instructions; DIFFER.
+- found_assert_donor_comparison_native_debug — 1041 bytes, 327 aligned instructions; DIFFER.
+- found_assert_donor_comparison_release — 1041 bytes, 328 aligned instructions; DIFFER.
+- found_assert_fold_xzy_arm — 1041 bytes, 336 aligned instructions; DIFFER.
+- found_assert_fold_xzy_guard — 1041 bytes, 336 aligned instructions; DIFFER.
+- found_assert_fold_xzy_native_debug — 1041 bytes, 336 aligned instructions; DIFFER.
+- found_assert_fold_xzy_release — 1041 bytes, 336 aligned instructions; DIFFER.
+- found_assert_fold_zyx_arm — 1041 bytes, 336 aligned instructions; DIFFER.
+- found_assert_fold_zyx_guard — 1041 bytes, 336 aligned instructions; DIFFER.
+- found_assert_fold_zyx_native_debug — 1041 bytes, 336 aligned instructions; DIFFER.
+- found_assert_fold_zyx_release — 1041 bytes, 336 aligned instructions; DIFFER.
+- found_assert_smaller_inline_arm — 1033 bytes, 335 aligned instructions; DIFFER.
+- found_assert_smaller_inline_guard — 1033 bytes, 335 aligned instructions; DIFFER.
+- found_assert_smaller_inline_native_debug — 1044 bytes, 335 aligned instructions; DIFFER.
+- found_assert_smaller_inline_release — 1033 bytes, 335 aligned instructions; DIFFER.
+- near_inline — 1089 bytes, 316 aligned instructions; DIFFER.
+- parent_cross_original_formal — 1041 bytes, 328 aligned instructions; DIFFER.
+- parent_declare_edge_result — 1073 bytes, 231 aligned instructions; DIFFER.
+- parent_declare_normal — 1060 bytes, 317 aligned instructions; DIFFER.
+- parent_dot_original_scope_pass23 — 1041 bytes, 326 aligned instructions; DIFFER.
+- parent_exists_block — 1041 bytes, 327 aligned instructions; DIFFER.
+- parent_iter_post — 1041 bytes, 327 aligned instructions; DIFFER.
+- parent_itr_loop — 1041 bytes, 328 aligned instructions; DIFFER.
+- parent_look_vertex — 1041 bytes, 327 aligned instructions; DIFFER.
+- parent_normal_first — 1041 bytes, 327 aligned instructions; DIFFER.
+- parent_original_copies_pass26 — 1041 bytes, 327 aligned instructions; DIFFER.
+- parent_original_grouped_cross_pass22 — 1041 bytes, 328 aligned instructions; DIFFER.
+- parent_subtract_x_group — 1033 bytes, 322 aligned instructions; DIFFER.
+- parent_subtract_xy_group — 1033 bytes, 322 aligned instructions; DIFFER.
+- separate_erase — 1044 bytes, 335 aligned instructions; DIFFER.
+- shared_donor — 1058 bytes, 328 aligned instructions; DIFFER.
+- site_bool_result — 1041 bytes, 327 aligned instructions; DIFFER.
+- site_both_named — 1041 bytes, 328 aligned instructions; DIFFER.
+- site_edge_ref — 1041 bytes, 327 aligned instructions; DIFFER.
+- site_extended_position — 1041 bytes, 327 aligned instructions; DIFFER.
+- site_extended_vertex — 1044 bytes, 335 aligned instructions; DIFFER.
+- site_normal_ref — 1044 bytes, 335 aligned instructions; DIFFER.
+- site_position_first — 1041 bytes, 327 aligned instructions; DIFFER.
+- site_position_ref — 1044 bytes, 335 aligned instructions; DIFFER.
+- site_vertex_first — 1044 bytes, 335 aligned instructions; DIFFER.
+- smaller_inline — 1044 bytes, 335 aligned instructions; DIFFER.
+
+Tested native VC7.1 object ordering and linker folding through the real CRC symbol-map constructor/destructor and seven STLport heap anchors. A 613-byte speech caller control demonstrates that equal normalized caller bytes can still name the same destructor at sites with two different native targets. No new binding was assigned.

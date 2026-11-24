@@ -1,0 +1,89 @@
+== CInputTypeKeyboardKeyEvent vftable 012318A4
+slot   0 00447A20 SAME     ours=??_ECInputTypeKeyboardKeyEvent@@UAEPAXI@Z retail_label=??_ECInputTypeKeyboardKeyEvent@@UAEPAXI@Z
+slot   1 004479F0 SAME     ours=?GetType@CInputTypeKeyboardKeyEvent@@UBE?AW4EInputType@NControlSystem@@XZ retail_label=?GetType@CInputTypeKeyboardKeyEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+slot   2 0066EDE0 NOLABEL  ours=??8CInputTypeKeyboardKeyEvent@@UBE_NABVCInputTypeBase@@@Z retail_label=-
+slot   3 0066EE20 SAME     ours=?IsEventOfThisType@CInputTypeKeyboardKeyEvent@@UBE_NABVCInputEvent@@@Z retail_label=?IsEventOfThisType@CInputTypeKeyboardKeyEvent@@UBE_NABVCInputEvent@@@Z
+slot   4 0066F610 SAME     ours=?GetControlDirection@CInputTypeKeyboardKeyEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z retail_label=?GetControlDirection@CInputTypeKeyboardKeyEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+slot   5 0066F630 SAME     ours=?IsEventOfThisTypeInQueue@CInputTypeKeyboardKeyEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z retail_label=?IsEventOfThisTypeInQueue@CInputTypeKeyboardKeyEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+slot   6 00447A00 SAME     ours=?IsInputTypeWithButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EXboxControllerButton@@@Z retail_label=?IsInputTypeWithButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EXboxControllerButton@@@Z
+slot   7 00447A10 SAME     ours=?IsInputTypeWithMouseButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EMouseButtonControl@@@Z retail_label=?IsInputTypeWithMouseButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EMouseButtonControl@@@Z
+retail slots 8, emitted slots 8; SAME 7 DIFF 0 NOLABEL 1
+
+== CInputTypeXboxPadButtonEvent vftable 012317A8
+slot   0 00447AD0 DIFF     ours=??_ECInputTypeXboxPadButtonEvent@@UAEPAXI@Z retail_label=??_GCInputTypeXboxPadButtonEvent@@UAEPAXI@Z
+slot   1 00445620 SAME     ours=?GetType@CInputTypeXboxPadButtonEvent@@UBE?AW4EInputType@NControlSystem@@XZ retail_label=?GetType@CInputTypeXboxPadButtonEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+slot   2 0066F210 NOLABEL  ours=??8CInputTypeXboxPadButtonEvent@@UBE_NABVCInputTypeBase@@@Z retail_label=-
+slot   3 0066F250 SAME     ours=?IsEventOfThisType@CInputTypeXboxPadButtonEvent@@UBE_NABVCInputEvent@@@Z retail_label=?IsEventOfThisType@CInputTypeXboxPadButtonEvent@@UBE_NABVCInputEvent@@@Z
+slot   4 0066F730 SAME     ours=?GetControlDirection@CInputTypeXboxPadButtonEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z retail_label=?GetControlDirection@CInputTypeXboxPadButtonEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+slot   5 0066F750 SAME     ours=?IsEventOfThisTypeInQueue@CInputTypeXboxPadButtonEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z retail_label=?IsEventOfThisTypeInQueue@CInputTypeXboxPadButtonEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+slot   6 00445630 SAME     ours=?IsInputTypeWithButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EXboxControllerButton@@@Z retail_label=?IsInputTypeWithButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EXboxControllerButton@@@Z
+slot   7 00445650 SAME     ours=?IsInputTypeWithMouseButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EMouseButtonControl@@@Z retail_label=?IsInputTypeWithMouseButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EMouseButtonControl@@@Z
+retail slots 8, emitted slots 8; SAME 6 DIFF 1 NOLABEL 1
+
+== CInputTypeXboxPadLeftStickEvent vftable 012317CC
+slot   0 00447AF0 DIFF     ours=??_ECInputTypeXboxPadLeftStickEvent@@UAEPAXI@Z retail_label=??_GCInputTypeXboxPadLeftStickEvent@@UAEPAXI@Z
+slot   1 00445670 SAME     ours=?GetType@CInputTypeXboxPadLeftStickEvent@@UBE?AW4EInputType@NControlSystem@@XZ retail_label=?GetType@CInputTypeXboxPadLeftStickEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+slot   2 0066F2D0 NOLABEL  ours=??8CInputTypeXboxPadLeftStickEvent@@UBE_NABVCInputTypeBase@@@Z retail_label=-
+slot   3 0066F300 SAME     ours=?IsEventOfThisType@CInputTypeXboxPadLeftStickEvent@@UBE_NABVCInputEvent@@@Z retail_label=?IsEventOfThisType@CInputTypeXboxPadLeftStickEvent@@UBE_NABVCInputEvent@@@Z
+slot   4 0066F7D0 SAME     ours=?GetControlDirection@CInputTypeXboxPadLeftStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z retail_label=?GetControlDirection@CInputTypeXboxPadLeftStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+slot   5 0066F320 SAME     ours=?IsEventOfThisTypeInQueue@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z retail_label=?IsEventOfThisTypeInQueue@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+slot   6 00445680 SAME     ours=?IsInputTypeWithButton@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EXboxControllerButton@@@Z retail_label=?IsInputTypeWithButton@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EXboxControllerButton@@@Z
+slot   7 00445690 SAME     ours=?IsInputTypeWithMouseButton@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EMouseButtonControl@@@Z retail_label=?IsInputTypeWithMouseButton@CInputTypeXboxPadLeftStickEvent@@UBE_NW4EMouseButtonControl@@@Z
+retail slots 8, emitted slots 8; SAME 6 DIFF 1 NOLABEL 1
+
+== CInputTypeXboxPadRightStickEvent vftable 012317F0
+slot   0 00447B10 DIFF     ours=??_ECInputTypeXboxPadRightStickEvent@@UAEPAXI@Z retail_label=??_GCInputTypeXboxPadRightStickEvent@@UAEPAXI@Z
+slot   1 004456B0 SAME     ours=?GetType@CInputTypeXboxPadRightStickEvent@@UBE?AW4EInputType@NControlSystem@@XZ retail_label=?GetType@CInputTypeXboxPadRightStickEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+slot   2 0066F360 NOLABEL  ours=??8CInputTypeXboxPadRightStickEvent@@UBE_NABVCInputTypeBase@@@Z retail_label=-
+slot   3 0066F390 SAME     ours=?IsEventOfThisType@CInputTypeXboxPadRightStickEvent@@UBE_NABVCInputEvent@@@Z retail_label=?IsEventOfThisType@CInputTypeXboxPadRightStickEvent@@UBE_NABVCInputEvent@@@Z
+slot   4 0066F840 SAME     ours=?GetControlDirection@CInputTypeXboxPadRightStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z retail_label=?GetControlDirection@CInputTypeXboxPadRightStickEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+slot   5 0066F3B0 SAME     ours=?IsEventOfThisTypeInQueue@CInputTypeXboxPadRightStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z retail_label=?IsEventOfThisTypeInQueue@CInputTypeXboxPadRightStickEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+slot   6 004456C0 SAME     ours=?IsInputTypeWithButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EXboxControllerButton@@@Z retail_label=?IsInputTypeWithButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EXboxControllerButton@@@Z
+slot   7 004456D0 SAME     ours=?IsInputTypeWithMouseButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EMouseButtonControl@@@Z retail_label=?IsInputTypeWithMouseButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EMouseButtonControl@@@Z
+retail slots 8, emitted slots 8; SAME 6 DIFF 1 NOLABEL 1
+
+== CInputTypeMouseMovementEvent vftable 01231814
+slot   0 00447B30 SAME     ours=??_ECInputTypeMouseMovementEvent@@UAEPAXI@Z retail_label=??_ECInputTypeMouseMovementEvent@@UAEPAXI@Z
+slot   1 004456F0 SAME     ours=?GetType@CInputTypeMouseMovementEvent@@UBE?AW4EInputType@NControlSystem@@XZ retail_label=?GetType@CInputTypeMouseMovementEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+slot   2 0066F3F0 NOLABEL  ours=??8CInputTypeMouseMovementEvent@@UBE_NABVCInputTypeBase@@@Z retail_label=-
+slot   3 0066F420 SAME     ours=?IsEventOfThisType@CInputTypeMouseMovementEvent@@UBE_NABVCInputEvent@@@Z retail_label=?IsEventOfThisType@CInputTypeMouseMovementEvent@@UBE_NABVCInputEvent@@@Z
+slot   4 0066F8B0 SAME     ours=?GetControlDirection@CInputTypeMouseMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z retail_label=?GetControlDirection@CInputTypeMouseMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+slot   5 0066F440 SAME     ours=?IsEventOfThisTypeInQueue@CInputTypeMouseMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z retail_label=?IsEventOfThisTypeInQueue@CInputTypeMouseMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+slot   6 00445700 SAME     ours=?IsInputTypeWithButton@CInputTypeMouseMovementEvent@@UBE_NW4EXboxControllerButton@@@Z retail_label=?IsInputTypeWithButton@CInputTypeMouseMovementEvent@@UBE_NW4EXboxControllerButton@@@Z
+slot   7 00445710 SAME     ours=?IsInputTypeWithMouseButton@CInputTypeMouseMovementEvent@@UBE_NW4EMouseButtonControl@@@Z retail_label=?IsInputTypeWithMouseButton@CInputTypeMouseMovementEvent@@UBE_NW4EMouseButtonControl@@@Z
+retail slots 8, emitted slots 8; SAME 7 DIFF 0 NOLABEL 1
+
+== CInputTypeMouseWheelMovementEvent vftable 01231838
+slot   0 00447B50 DIFF     ours=??_ECInputTypeMouseWheelMovementEvent@@UAEPAXI@Z retail_label=??_GCInputTypeMouseWheelMovementEvent@@UAEPAXI@Z
+slot   1 00445730 SAME     ours=?GetType@CInputTypeMouseWheelMovementEvent@@UBE?AW4EInputType@NControlSystem@@XZ retail_label=?GetType@CInputTypeMouseWheelMovementEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+slot   2 0066F480 NOLABEL  ours=??8CInputTypeMouseWheelMovementEvent@@UBE_NABVCInputTypeBase@@@Z retail_label=-
+slot   3 0066F4B0 SAME     ours=?IsEventOfThisType@CInputTypeMouseWheelMovementEvent@@UBE_NABVCInputEvent@@@Z retail_label=?IsEventOfThisType@CInputTypeMouseWheelMovementEvent@@UBE_NABVCInputEvent@@@Z
+slot   4 0066F930 SAME     ours=?GetControlDirection@CInputTypeMouseWheelMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z retail_label=?GetControlDirection@CInputTypeMouseWheelMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+slot   5 0066F4D0 SAME     ours=?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z retail_label=?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+slot   6 00445740 SAME     ours=?IsInputTypeWithButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EXboxControllerButton@@@Z retail_label=?IsInputTypeWithButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EXboxControllerButton@@@Z
+slot   7 00445750 SAME     ours=?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EMouseButtonControl@@@Z retail_label=?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementEvent@@UBE_NW4EMouseButtonControl@@@Z
+retail slots 8, emitted slots 8; SAME 6 DIFF 1 NOLABEL 1
+
+== CInputTypeMouseWheelMovementUpEvent vftable 0123185C
+slot   0 00447B70 SAME     ours=??_ECInputTypeMouseWheelMovementUpEvent@@UAEPAXI@Z retail_label=??_ECInputTypeMouseWheelMovementUpEvent@@UAEPAXI@Z
+slot   1 00445770 SAME     ours=?GetType@CInputTypeMouseWheelMovementUpEvent@@UBE?AW4EInputType@NControlSystem@@XZ retail_label=?GetType@CInputTypeMouseWheelMovementUpEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+slot   2 0066F510 NOLABEL  ours=??8CInputTypeMouseWheelMovementUpEvent@@UBE_NABVCInputTypeBase@@@Z retail_label=-
+slot   3 0066F540 SAME     ours=?IsEventOfThisType@CInputTypeMouseWheelMovementUpEvent@@UBE_NABVCInputEvent@@@Z retail_label=?IsEventOfThisType@CInputTypeMouseWheelMovementUpEvent@@UBE_NABVCInputEvent@@@Z
+slot   4 0066F950 SAME     ours=?GetControlDirection@CInputTypeMouseWheelMovementUpEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z retail_label=?GetControlDirection@CInputTypeMouseWheelMovementUpEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+slot   5 0066F580 SAME     ours=?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z retail_label=?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+slot   6 00445780 SAME     ours=?IsInputTypeWithButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EXboxControllerButton@@@Z retail_label=?IsInputTypeWithButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EXboxControllerButton@@@Z
+slot   7 00445790 SAME     ours=?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EMouseButtonControl@@@Z retail_label=?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EMouseButtonControl@@@Z
+retail slots 8, emitted slots 8; SAME 7 DIFF 0 NOLABEL 1
+
+== CInputTypeMouseWheelMovementDownEvent vftable 01231880
+slot   0 00447B90 DIFF     ours=??_ECInputTypeMouseWheelMovementDownEvent@@UAEPAXI@Z retail_label=??_GCInputTypeMouseWheelMovementDownEvent@@UAEPAXI@Z
+slot   1 004457B0 SAME     ours=?GetType@CInputTypeMouseWheelMovementDownEvent@@UBE?AW4EInputType@NControlSystem@@XZ retail_label=?GetType@CInputTypeMouseWheelMovementDownEvent@@UBE?AW4EInputType@NControlSystem@@XZ
+slot   2 0066F590 NOLABEL  ours=??8CInputTypeMouseWheelMovementDownEvent@@UBE_NABVCInputTypeBase@@@Z retail_label=-
+slot   3 0066F5C0 SAME     ours=?IsEventOfThisType@CInputTypeMouseWheelMovementDownEvent@@UBE_NABVCInputEvent@@@Z retail_label=?IsEventOfThisType@CInputTypeMouseWheelMovementDownEvent@@UBE_NABVCInputEvent@@@Z
+slot   4 0066F970 SAME     ours=?GetControlDirection@CInputTypeMouseWheelMovementDownEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z retail_label=?GetControlDirection@CInputTypeMouseWheelMovementDownEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z
+slot   5 0066F600 SAME     ours=?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z retail_label=?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+slot   6 004457C0 SAME     ours=?IsInputTypeWithButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EXboxControllerButton@@@Z retail_label=?IsInputTypeWithButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EXboxControllerButton@@@Z
+slot   7 004457D0 SAME     ours=?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EMouseButtonControl@@@Z retail_label=?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EMouseButtonControl@@@Z
+retail slots 8, emitted slots 8; SAME 6 DIFF 1 NOLABEL 1
+
+PROBE_DONE

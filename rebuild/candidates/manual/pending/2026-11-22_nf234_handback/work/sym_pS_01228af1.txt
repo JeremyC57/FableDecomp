@@ -1,0 +1,5 @@
+DEF ??0?$CCountedPointer@VCStartupDefinitionManager@@@@QAE@XZ
+DEF ??1?$CCountedPointer@VCStartupDefinitionManager@@@@QAE@XZ
+DEF ?PClass@CStartupDefinitionManager@@1V?$CCountedPointer@VCStartupDefinitionManager@@@@A
+UND ?ReleaseData@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXXZ
+UND _atexit

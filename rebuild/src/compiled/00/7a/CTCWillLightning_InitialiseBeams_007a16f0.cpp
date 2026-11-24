@@ -1,5 +1,5 @@
 // CTCWillLightning::InitialiseBeams() -- gather the main beams toward targets around the caster, then for every main beam mark it main, pick its hand, gather its sub-beams and activate it; finally flag the beams initialised and ask the caster's targeting component to pick a new lock target
-// Leaf: ?InitialiseBeams@CTCWillLightning@@QAEXXZ
+// Leaf: ?InitialiseBeams@CTCWillLightning@@AAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A16F0, length 375 bytes (plain `ret`).
@@ -133,7 +133,9 @@ class CTCWillLightning : public CTCBase { public:             // vtable 0x0126C7
         }
         return true;
     }
+    private:
     void InitialiseBeams();
+    public:
 };
 
 // Same-TU stand-in for GetTargets (0x007A0D90 sits in this TU): only its visibility matters -- VC7.1 then knows the

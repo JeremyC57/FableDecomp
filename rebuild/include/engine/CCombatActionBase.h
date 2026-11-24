@@ -166,8 +166,80 @@ public: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long pri
     // call it, then store their own vftable). The first branch above declares it too. Declaration only; no layout change.
 public: CCombatActionBase(const CCombatActionBase& other);               // 0x0062F3B0
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_PRIORITYCTOR
+    // NF257 opt-in (2026-11-22, q12722, row 0x008B83C0 CCreatureAction_SummonCreatures::CCreatureAction_SummonCreatures()): Ego_r.pdb 0x00838AC0
+    // + FableWin.pdb 0x02823960 ??0CCombatActionBase@@IAE@J@Z (protected), out of line in retail at 0x00857E40 (the third branch's PRIORITYCTOR
+    // declares the same constructor). Declaration only; no layout change.
+protected: CCombatActionBase(long priority);                             // 0x00857E40
+#endif
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SCREAMER_VTABLE_PASS27
+    // 0096DF50: native temporary's vtable retains these base overrides. Both donor
+    // PDBs give the actual access and signatures. These are declarations only.
+    virtual long GetAnimDelayTime() const;
+    virtual long GetAnimationIndex() const;
+    virtual long GetAnimationTransitionInTime() const;
+    virtual unsigned long GetAnimExtraFlags() const;
+    virtual bool IsStrikeEvent(long) const;
+    virtual bool IsStrikeEventActive() const;
+    virtual bool IsStrikeAction() const;
+    virtual bool IsStrikeEventFinishedBeingActive() const;
+    virtual CCharString GetStrikeEventHelperName() const;
+    virtual bool IsActionReadyForInterruption() const;
+    virtual bool IsActionReadyForInterruptionByMovement(const C3DVector&) const;
+    virtual float GetTotalTimeSeconds() const;
+    virtual void OnBlowBlocked(bool);
+    virtual void UpdateActionRunningTime();
+    virtual float GetFrameUpdateTime() const;
+    virtual bool AllowsCombinationAnims() const;
+protected:
+    virtual bool IsVitalStrike() const;
+    virtual bool IsKnockdownStrike() const;
+    virtual bool IsBlockCounter() const;
+    virtual bool IsMeleeFlourish() const;
+    virtual bool IsActionWithStrikeEventHelperName() const;
+    virtual bool IsBlockable() const;
+    virtual CTCWeaponTrail* GetWeaponTrailUsedInStrikeAction(long&) const;
+    virtual bool IsDecapitatingAttack() const;
+    virtual bool IsUsingAnimationMovement() const;
+    virtual bool IsMovementUsingPhysics() const;
+    virtual void UpdateActionMoveToPos();
+    virtual void InitialiseActionMovement();
+public:
+#endif
+#ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+    // Original virtual overrides, in the native 81-entry action vtable.
+    virtual long GetAnimDelayTime() const;
+    virtual long GetAnimationIndex() const;
+    virtual long GetAnimationTransitionInTime() const;
+    virtual unsigned long GetAnimExtraFlags() const;
+    virtual bool IsStrikeEvent(long) const;
+    virtual bool IsStrikeEventActive() const;
+    virtual bool IsStrikeAction() const;
+    virtual bool IsStrikeEventFinishedBeingActive() const;
+    virtual CCharString GetStrikeEventHelperName() const;
+    virtual bool IsActionReadyForInterruption() const;
+    virtual bool IsActionReadyForInterruptionByMovement(const C3DVector&) const;
+    virtual float GetTotalTimeSeconds() const;
+    virtual void OnBlowBlocked(bool);
+    virtual void UpdateActionRunningTime();
+    virtual float GetFrameUpdateTime() const;
+    virtual bool AllowsCombinationAnims() const;
+protected:
+    virtual bool IsVitalStrike() const;
+    virtual bool IsKnockdownStrike() const;
+    virtual bool IsBlockCounter() const;
+    virtual bool IsMeleeFlourish() const;
+    virtual bool IsActionWithStrikeEventHelperName() const;
+    virtual bool IsBlockable() const;
+    virtual CTCWeaponTrail* GetWeaponTrailUsedInStrikeAction(long&) const;
+    virtual bool IsDecapitatingAttack() const;
+    virtual bool IsUsingAnimationMovement() const;
+    virtual bool IsMovementUsingPhysics() const;
+    virtual void UpdateActionMoveToPos();
+    virtual void InitialiseActionMovement();
+#endif
 protected: virtual CCreatureActionBase* Clone() const;
 public: class CStrikeEvent;
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
@@ -206,6 +278,16 @@ public:
     virtual float GetDamageMultiplier() const;
 protected:
 #endif
+#if defined(FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS) && !defined(FABLE_RETAIL_CCOMBATACTIONBASE_SCREAMER_VTABLE_PASS27) && !defined(FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27)
+    // NF264 opt-in (2026-11-22, q12750, row 0x0062EA10 and the vtable emitters): FableWin.pdb 0x01D916B0
+    // ?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ (public virtual const: CCombatActionBase's override of the protected
+    // CCreatureActionBase slot 66) + retail CCombatActionBase vftable 0x01259E44 slot 66 = 0x0062EA10 (body `xor al,al ; ret`), so the
+    // tables of classes that do not override it bind slot 66 to 0x0062EA10, not to CCreatureActionBase's 0x00692890. Both class branches;
+    // the PASS27 blocks above already declare it. Declaration only; no layout change; the access before and after is protected.
+public:
+    virtual bool AllowsCombinationAnims() const;                         // 0x0062EA10
+protected:
+#endif
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
     // p25E opt-in (row 0x00859EF0 CCombatActionBase::OnAnimationLoaded): the protected members it uses, with the Ego_r.pdb / FableWin.pdb
     // spellings the first class branch declares (Ego_r ?UpdateFacingDirection / ?InitialiseActionTimes / ?SetUpCombatAnimationNotes /
@@ -218,6 +300,12 @@ protected:
     void SetupCombatStrikeEvents();                                      // 0x00859A70
     void SetupCombatInterrupts();                                        // 0x00858A20
     virtual void OnAnimationLoaded();                                    // 0x00859EF0
+#endif
+#ifdef FABLE_RETAIL_COMBAT_NEXT_POS_PASS27
+protected:
+    const CMeshDataBank* PeekMeshBank() const;
+    float GetTimeThroughCurrentAnimation() const;
+    float GetLastTimeThroughCurrentAnimation() const;
 #endif
     void ResetMeleeCombatAbilityEffects();                               // 0x00859660
     CIntelligentPointer<CThing> PTarget;                                 // +0xa8
@@ -265,6 +353,42 @@ public: class CStrikeEvent;
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;
+#ifdef FABLE_RETAIL_JACKDRAGON_NATIVE_ACTION_SLOTS_PASS27
+    // Original overrides from the first CCombatActionBase model. They occupy existing slots in the
+    // Forward and HoverOutOf tables at retail 0x012940E4 and 0x01293D0C.
+public:
+    virtual long GetAnimDelayTime() const;
+    virtual long GetAnimationIndex() const;
+    virtual long GetAnimationTransitionInTime() const;
+    virtual unsigned long GetAnimExtraFlags() const;
+    virtual bool IsStrikeEvent(long event) const;
+    virtual bool IsStrikeEventActive() const;
+    virtual bool IsStrikeAction() const;
+    virtual bool IsStrikeEventFinishedBeingActive() const;
+    virtual CCharString GetStrikeEventHelperName() const;
+    virtual bool IsActionReadyForInterruption() const;
+    virtual bool IsActionReadyForInterruptionByMovement(const C3DVector& position) const;
+    virtual float GetTotalTimeSeconds() const;
+    virtual void OnBlowBlocked(bool blocked);
+    virtual void UpdateActionRunningTime();
+    virtual float GetFrameUpdateTime() const;
+    virtual bool AllowsCombinationAnims() const;
+protected:
+    virtual void FinishAction();
+    virtual bool IsVitalStrike() const;
+    virtual bool IsKnockdownStrike() const;
+    virtual bool IsBlockCounter() const;
+    virtual bool IsMeleeFlourish() const;
+    virtual bool IsActionWithStrikeEventHelperName() const;
+    virtual bool IsBlockable() const;
+    virtual CTCWeaponTrail* GetWeaponTrailUsedInStrikeAction(long& trail) const;
+    virtual bool IsDecapitatingAttack() const;
+    virtual bool IsUsingAnimationMovement() const;
+    virtual bool IsMovementUsingPhysics() const;
+    virtual void UpdateActionMoveToPos();
+    virtual void InitialiseActionMovement();
+    virtual void OnAnimationLoaded();
+#endif
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
     // NF75 opt-in (round 7, land1117fu q10916, rows 0x0085BAD0 / 0x008E6390): Ego_r.pdb 0x0083A360 / FableWin.pdb 0x0282A4B0
     // ?FrameUpdate@CCombatActionBase@@UAEXXZ (public virtual, over the protected CCreatureActionBase::FrameUpdate, slot 56), out of line in
@@ -311,6 +435,12 @@ public:
     // it), out of line in retail at 0x0085AA90. Declaration only, no layout change.
 public:
     void SetTarget(CThing& target);                                    // 0x0085AA90
+#endif
+#if defined(FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS) && !defined(FABLE_RETAIL_JACKDRAGON_NATIVE_ACTION_SLOTS_PASS27)
+    // NF264 opt-in (2026-11-22, q12750): the declaration the MELEE branch has under the same macro (FableWin.pdb 0x01D916B0
+    // ?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ + retail vftable 0x01259E44 slot 66 = 0x0062EA10). Declaration only.
+public:
+    virtual bool AllowsCombinationAnims() const;                         // 0x0062EA10
 #endif
 protected: unsigned char _pad_0xa8[0x6c];
 };

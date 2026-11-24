@@ -1,0 +1,55 @@
+##### 00731e20 renames: ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z=??$GetSubDef@VCSpotLightDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z
+sections head 6 new 6
+DIFF 0 .drectve .drectve bytes False relocs True 42 222
+bad 1 text_sections_equal=5
+tables H=0 N=0
+##### 00747820 renames: ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStealthDef@@@@@Z=??$GetSubDef@VCStealthDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStealthDef@@@@@Z
+sections head 9 new 9
+DIFF 0 .drectve .drectve bytes False relocs True 42 216
+bad 1 text_sections_equal=7
+tables H=1 N=1
+##### 007aefd0 renames: ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBossDef@@@@@Z=??$GetSubDef@VCBossDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBossDef@@@@@Z
+sections head 8 new 8
+DIFF 0 .drectve .drectve bytes False relocs True 62 227
+bad 1 text_sections_equal=6
+tables H=1 N=1
+##### 007b0800 renames: ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCFishingDef@@@@@Z=??$GetSubDef@VCFishingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishingDef@@@@@Z
+sections head 11 new 11
+DIFF 0 .drectve .drectve bytes False relocs True 42 216
+bad 1 text_sections_equal=7
+tables H=2 N=2
+##### 007dfb20 renames: ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishDef@@@@@Z=??$GetSubDef@VCFishDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishDef@@@@@Z
+sections head 7 new 7
+DIFF 0 .drectve .drectve bytes False relocs True 42 207
+bad 1 text_sections_equal=4
+tables H=1 N=1
+##### 007e5f00 renames: ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOracleMinigameDef@@@@@Z=??$GetSubDef@VCOracleMinigameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOracleMinigameDef@@@@@Z
+sections head 6 new 6
+DIFF 0 .drectve .drectve bytes False relocs True 42 237
+bad 1 text_sections_equal=4
+tables H=1 N=1
+##### 007e7640 renames: ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCFireheartMinigameDef@@@@@Z=??$GetSubDef@VCFireheartMinigameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFireheartMinigameDef@@@@@Z
+sections head 18 new 18
+DIFF 0 .drectve .drectve bytes False relocs True 42 246
+bad 1 text_sections_equal=14
+tables H=3 N=3
+##### 007ea510 renames: ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCTargetingDef@@@@@Z=??$GetSubDef@VCTargetingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTargetingDef@@@@@Z
+sections head 2 new 2
+DIFF 0 .drectve .drectve bytes False relocs True 42 222
+bad 1 text_sections_equal=1
+tables H=0 N=0
+##### 0080fd90 renames: ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCNymphDef@@@@@Z=??$GetSubDef@VCNymphDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCNymphDef@@@@@Z
+sections head 3 new 3
+DIFF 0 .drectve .drectve bytes False relocs True 42 210
+bad 1 text_sections_equal=2
+tables H=0 N=0
+##### 0096f6f0 renames: ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z=??$GetSubDef@VCSummonerDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z
+sections head 5 new 5
+DIFF 0 .drectve .drectve bytes False relocs True 42 219
+bad 1 text_sections_equal=4
+tables H=0 N=0
+##### 0096f730 renames: ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z=??$GetSubDef@VCSummonerDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z
+sections head 5 new 5
+DIFF 0 .drectve .drectve bytes False relocs True 42 219
+bad 1 text_sections_equal=4
+tables H=0 N=0

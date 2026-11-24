@@ -1,0 +1,73 @@
+#10 008fcf90 ident=GetPlayerManager pdb=?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ
+  00910df0 CAIStateGroupMinionGuardHeardYellForHelp_Update_00910df0.cpp
+    L81 [ ] CThingPlayerCreature* phero=GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  00911f00 CAIStateGroupChickenBeg_Update_00911f00.cpp
+  00911f80 CAIStateGroupFireflyWander_Update_00911f80.cpp
+    L103 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L140 [CAIStateGroup_FireflyWander ] CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  009162f0 CAIStateGroupMoveGoodsBase_Cleanup_009162f0.cpp
+    L115 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L146 [CAIStateGroup_MoveGoodsBase ] solid->AddThingNotSolidTo(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
+  0091d190 CAIStateGroupMinionReactToApology_Update_0091d190.cpp
+    L89 [CAIStateGroup_MinionReactToApology public:] CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  00925f90 CAIStateGroupWifeGiveYouGift_IsRunnable_00925f90.cpp
+    L49 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L71 [CAIStateGroup_WifeGiveYouGift ] CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  00926060 CAIStateGroupWifeGiveYouGift_Update_00926060.cpp
+    L63 [ ] CThingPlayerCreature* pplayer = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  009261f0 CAIStateGroupWifeGiveYouGift_OnReplace_009261f0.cpp
+    L155 [CAIStateGroupBase ] CPlayerManager* GetPlayerManager();
+    L168 [CAIStateGroup_WifeGiveYouGift ] CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+  00927c80 CAIStateGroupShopkeeperWatchPlayer_IsRunnable_00927c80.cpp
+  0092fab0 CAIStateGroupMinionReactToPlayerInteraction_TestOrDoInteraction_0092fab0.cpp
+    L249 [CAIStateGroup_MinionReactToPlayerInteraction private:] CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  00931010 CAIStateGroupMinionReactToCriminal_IsRunnable_00931010.cpp
+    L110 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L124 [CAIStateGroup_MinionReactToCriminal private: bool IsValid() const; public:] PHero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  00932990 CAIStateGroupMinionGuardReactToCriminal_IsRunnable_00932990.cpp
+    L137 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L155 [CAIStateGroup_MinionGuardReactToCriminal ] PHero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  00933310 CAIStateGroupMinionGuardReactToBribe_IsRunnable_00933310.cpp
+  00939ed0 CAIStateGroupMinionGuardReactToPlayerWithWeapon_IsRunnable_00939ed0.cpp
+    L86 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L112 [CAIStateGroup_MinionGuardReactToPlayerWithWeapon public:] Player = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  0093d580 CAIStateGroupMeleeCombatNearbyBase_RequestMoney_0093d580.cpp
+    L79 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L91 [CAIStateGroup_MeleeCombatNearbyBase ] CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  0094c900 CAIStateGroupGameMaster_IsRunnable_0094c900.cpp
+    L114 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L125 [CAIStateGroup_GameMaster ] CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  0094ce60 CAIStateGroupGameMaster_OfferPlayerAGame_0094ce60.cpp
+    L101 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L124 [CAIStateGroup_GameMaster ] CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  0094d020 CAIStateGroupGameMaster_Update_0094d020.cpp
+    L162 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L234 [CAIStateGroup_GameMaster protected:] CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+    L267 [CAIStateGroup_GameMaster protected:] CThing* player = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  0094ef90 CAIStateGroupFollowPlayer_IsRunnable_0094ef90.cpp
+    L45 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L56 [CAIStateGroup_FollowPlayer ] CThing* hero = (CThing*)GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  00952e80 CAIStateGroupJackDragon_Update_00952e80.cpp
+    L105 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L137 [CAIStateGroup_JackDragon ] PEnemy = CIntelligentPointerCreature(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
+  00954470 CAIStateGroupMazeRangedCombat_IsRunnable_00954470.cpp
+    L111 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L134 [CAIStateGroup_MazeRangedCombat ] PTarget = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  009582d0 CAIStateGroupMinionReactToTrespassing_Update_009582d0.cpp
+    L89 [ ] PHero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  00958840 CAIStateGroupMinionReactToCrime_Update_00958840.cpp
+    L117 [ ] CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  00958cb0 CAIStateGroupMinionReactToCrime_IsRunnable_00958cb0.cpp
+  0095aa60 CAIStateGroupHoverHornetQueenTakeDamage_IsRunnable_0095aa60.cpp
+  0095b5a0 CAIStateGroupHoverHornetQueen_IsRunnable_0095b5a0.cpp
+  009612f0 CAIStateGroupBanditKingCharge_IsRunnable_009612f0.cpp
+  009614a0 CAIStateGroupBanditKingLunge_IsRunnable_009614a0.cpp
+  00961550 CAIStateGroupBanditKingThrowWeapons_IsRunnable_00961550.cpp
+  0096df50 CAIStateGroupScreamerPursueTarget_Update_0096df50.cpp
+    L102 [ ] targets.push_back(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
+  00972280 CAIStateGroupJackOfBladesStage1_IsRunnable_00972280.cpp
+  009723d0 CAIStateGroupJackOfBladesStage2_IsRunnable_009723d0.cpp
+  009725b0 CAIStateGroupJackOfBladesStage3_IsRunnable_009725b0.cpp
+  009777a0 CAIStateGroupGuildmaster_IsRunnable_009777a0.cpp
+    L81 [CAIStateGroupBase protected:] CPlayerManager& GetPlayerManager() const;
+    L99 [CAIStateGroup_Guildmaster protected:] PEnemy = CIntelligentPointer<CThingCreatureBase>(GetPlayerManager().GetMainPlayer().GetPControlledCreature());

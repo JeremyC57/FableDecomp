@@ -1,0 +1,11 @@
+PASS clone_bytes 47 v 47 bytes
+PASS clone_relocs 
+PASS defs_none_lost []
+PASS defs_added_allowlist ['??_GCCreatureAction_DropGenericBox@@UAEPAXI@Z']
+PASS vft_slotcount retail 70 emitted 70 relocs 70
+FAIL vft_slots slot 10 ours=?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ retail=0084A820 ?GetAnimExtraFlags@CCreatureAction_DropGenericBox@@UBEKXZ
+PASS dtorG_bytes_v_retail 30 bytes at 0084AB40 ??_GCCreatureAction_DropGenericBox@@UAEPAXI@Z
+PASS dtorG_reloc_targets ??1CCreatureActionBase@@UAE@XZ->00693EF0(-) | ??3@YAXPAX@Z->00BFE9BC(-)
+PASS drectve HEAD+libcp
+PASS other_comdats_equal []
+NOT_OK

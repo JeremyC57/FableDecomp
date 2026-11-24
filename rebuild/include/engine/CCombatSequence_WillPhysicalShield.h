@@ -9,6 +9,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_WILLPHYSICALSHIELD_VIRTUAL_MODEL
+// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127A364 (RTTI .?AVCCombatSequence_WillPhysicalShield@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_WillPhysicalShield); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequence_WillPhysicalShield : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x009092C0 ?OnCreate@CCombatSequence_WillPhysicalShield@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B5410 ?GetName@CCombatSequence_WillPhysicalShield@@UBE?AVCCharString@@XZ
+    virtual bool IsInterruptable() const;                                 // slot 5 0x008B5460 ?IsInterruptable@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+    virtual bool IsInterruptableDueToZoneChange() const;                  // slot 6 0x008B5450 ?IsInterruptableDueToZoneChange@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+    virtual bool IsMeleeSequence() const;                                 // slot 7 0x008B5470 ?IsMeleeSequence@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+    virtual bool IsValid() const;                                         // slot 12 0x00909780 ?IsValid@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+    virtual bool IsToPreferSequenceWhenValid() const;                     // slot 13 0x008B5430 ?IsToPreferSequenceWhenValid@CCombatSequence_WillPhysicalShield@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B5440 ?GetZone@CCombatSequence_WillPhysicalShield@@UBEKXZ
+    virtual void OnStart();                                               // slot 17 0x009097E0 ?OnStart@CCombatSequence_WillPhysicalShield@@UAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_WillPhysicalShield) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_WillPhysicalShield {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +45,8 @@ struct CCombatSequence_WillPhysicalShield {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_WillPhysicalShield) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_WillPhysicalShield, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequence_WillPhysicalShield) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequence_WillPhysicalShield, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_WILLPHYSICALSHIELD_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_WILLPHYSICALSHIELD_H

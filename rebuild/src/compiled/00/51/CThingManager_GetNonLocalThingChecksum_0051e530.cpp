@@ -1,3 +1,4 @@
+// Leaf: ?GetNonLocalThingChecksum@CThingManager@@QBEKXZ
 // CThingManager::GetNonLocalThingChecksum() -- sums the checksum (virtual slot 23) of every thing in the thing list that is not Dead
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051E530, length 48 bytes.
 // Callees: CThing virtual slot 23 (+0x5c), the per-thing checksum.
@@ -30,10 +31,10 @@ struct CThingList {                            // VC6 Dinkumware list: allocator
 class CThingManager { public:
     unsigned char _pad00[0x18];
     CThingList    Things;                      // +0x18
-    unsigned long GetNonLocalThingChecksum();
+    unsigned long GetNonLocalThingChecksum() const;
 };
 
-unsigned long CThingManager::GetNonLocalThingChecksum()
+unsigned long CThingManager::GetNonLocalThingChecksum() const
 {
     unsigned long checksum = 0;
     for (SThingListNode* it = Things.begin(); it != Things.end(); it = it->PNext) {

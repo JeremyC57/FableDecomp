@@ -1,0 +1,177 @@
+entry	address	status	binders_respelled	note
+1	0x00a2cf50	skipped-port	0	entry 1: binder(s) opened (tri3): stand-in class token ??4CResourceRef_00a2d6c0@@QAEAAU0@ABU0@@Z [00a2d6c0 defines CResourceRef_00a2d6c0]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the sh
+2	0x00bf6130	skipped-port	0	entry 2: binder(s) opened (tri3): stand-in class token ?GetPatch@Tree@Native@@QAEPAUPatch@2@XZ [00bf6d50 defines Tree,Native]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header)
+3	0x00bf6160	skipped-port	0	entry 3: binder(s) opened (tri3): stand-in class token ?GetSplitBranch@Tree@Native@@QAEPAUSplit@2@XZ [00bf6d50 defines Tree,Native]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared h
+4	0x00415fbc	skipped-port	0	entry 4: binder(s) opened (tri3): stand-in class token ?PeekDefinitionManager@CEngine_Retail@@QBEABUCDefinitionManager_Retail@@XZ [008981c0 defines CEngine_Retail]. A respell needs the real class / parameter types (a new or renamed local mo
+5	0x005110b0	skipped-port	0	entry 5: binder(s) opened (tri3): stand-in class token ??0CElement72_005110b0@@QAE@ABU0@@Z [00513830 defines CElement72_005110b0]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared hea
+6	0x00513bf0	skipped-port	0	entry 6: binder(s) opened (tri3): stand-in class token ??4CElement72_00513bf0@@QAEAAU0@ABU0@@Z [005150e0 defines CElement72_00513bf0]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared
+7	0x00a658e0	skipped-port	0	entry 7: binder(s) opened (tri3): stand-in class token ?RemoveAreaFromFreeList@SVarChunk_00a65a50@@QAEXPAUSAreaHeader_00a65a50@@@Z [00a65a50 defines SVarChunk_00a65a50]. A respell needs the real class / parameter types (a new or renamed loc
+8	0x00994b40	skipped-port	0	entry 8: binder(s) opened (tri3): stand-in class token ?GetLength@CMemoryDataOutputStreamMethods@X_00a99840@@QBEKXZ [00a99840 defines CMemoryDataOutputStreamMethods,X_00a99840] || stand-in class token ?GetLength@CMemoryDataOutputStreamMetho
+9	0x00995e70	skipped-port	0	entry 9: binder(s) opened (tri3): stand-in class token ?PeekData@CMemoryDataOutputStreamMethods@X_00a99840@@QBEPBXXZ [00a99840 defines CMemoryDataOutputStreamMethods,X_00a99840] || stand-in class token ?PeekData@CMemoryDataOutputStreamMetho
+10	0x00996af0	skipped-port	0	entry 10: binder(s) opened (tri3): stand-in class token ??0CMemoryDataOutputStreamMethods@X_00a99840@@QAE@XZ [00a99840 defines CMemoryDataOutputStreamMethods,X_00a99840] || stand-in class token ??0CMemoryDataOutputStreamMethods@X_00a9ba70@@
+11	0x0082a890	skipped-port	0	entry 11: binder(s) opened (tri3): stand-in class token ?AddMarker@CMiniMapDisplay_Retail@@QAEXPAUCThing_Retail@@J@Z [00891f50 defines CMiniMapDisplay_Retail]. A respell needs the real class / parameter types (a new or renamed local model, 
+12	0x0082cac0	skipped-port	0	entry 12: binder(s) opened (tri3): stand-in class token ??0CElement60_0082cac0@@QAE@ABU0@@Z [0082cea0 defines CElement60_0082cac0]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared he
+13	0x00a851e0	skipped-port	0	entry 13: binder(s) opened (tri3): stand-in class token ??1SMarker_00a85f30@@QAE@XZ [00a85f30 defines SMarker_00a85f30]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): T3
+14	0x007018b0	skipped-port	0	entry 14: binder(s) opened (tri3): stand-in class token ?GetThingAttitudeToPlayerAsString@COpinionReactionManager_Retail@@QAEABVCCharString@@PAUCT [008909c0 defines COpinionReactionManager_Retail]. A respell needs the real class / parameter
+15	0x00477428	skipped-port	0	entry 15: binder(s) opened (tri3): stand-in class token ??0CRetailLayerVector_00477428@@QAE@ABU0@@Z [004773f1 defines CRetailLayerVector_00477428]. A respell needs the real class / parameter types (a new or renamed local model, or a port on
+16	0x00ac96e0	done-already	0	order 1 (stale-witness pass, E2). entry 16: witness 0x00ACD840's HEAD object references the PDB ?UpdateContractions@COptimisedPrimitive@QuadricOptimiserInternals@@AAE... and not the stand-in ?UpdateSubPair_00ac96e0@... (evidence/objbind_set
+17	0x004ddf0c	skipped-port	0	entry 17: binder(s) opened (tri3): stand-in class token ?TransferBinaryIn_004ddf0c@?$CPersistTraits@VCDefIndex@@@@QAEXPAVCDataInputStream@@AAVCDef [00580371 defines CPersistTraits]. A respell needs the real class / parameter types (a new or
+18	0x00487cf0	skipped-port	0	entry 18: binder(s) opened (tri3): stand-in class token ?SetControlledCreature@CPlayer_Methods@@QAEXPAVCThing@@@Z [0048a070 defines CPlayer_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a port 
+19	0x00489d40	skipped-port	0	entry 19: binder(s) opened (tri3): stand-in class token ?CreateCharacter@CPlayer_Methods@@QAE_NABVCCharString@@@Z [0048a070 defines CPlayer_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a port 
+20	0x0043a2a0	skipped-port	0	entry 20: binder(s) opened (tri3): stand-in class token ?ShowOnScreenMessage@CGameUI_Retail@@QAEXABVCWideString@@JJJ@Z [00892810 defines CGameUI_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a p
+21	0x00449b60	done	1	order 2 (in-place pass). entry 21: binder 0x00644424 (PlayerManagerMethods : the flat engine/CPlayerManager.h class) declared GetMultiplayerColour on the stand-in; it now defines the existing opt-in FABLE_RETAIL_CPLAYERMANAGER_MULTIPLAYERCO
+22	0x0044a530	done	1	order 3 (in-place with an add-only opt-in). entry 22: binder 0x004166A8 (CMainGameComponent::CreatePlayers, PDB self leaf) called CreatePlayers through a CPlayerManager_Methods stand-in deriving the flat engine/CPlayerManager.h class, which
+23	0x004af3c0	skipped-port	0	entry 23: binder(s) opened (tri3): stand-in class token ?GetRegisteredQuestFromIndex@CQuestManager_Retail@@QAEABVCCharString@@J@Z [00893610 defines CQuestManager_Retail]. A respell needs the real class / parameter types (a new or renamed lo
+24	0x004b0c80	skipped-port	0	entry 24: binder(s) opened (tri3): stand-in class token ?GetActiveQuestCardFromScriptName@QuestManagerMethods@@QBEPAUCThingNative@@ABVCCharString@ [00896a30 defines QuestManagerMethods]. A respell needs the real class / parameter types (a n
+25	0x0051a110	skipped-port	0	entry 25: binder(s) opened (tri3): free stand-in function @InnerDtor_0051a110@4 [006191d0 free / out-of-scope stand-in]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): T3. 
+26	0x00a04630	skipped-port	0	entry 26: binder(s) opened (tri3): stand-in class token ?SetupRenderStates@CRenderStateManager_Methods@@QAEXXZ [00a07900 defines CRenderStateManager_Methods]. A respell needs the real class / parameter types (a new or renamed local model, o
+27	0x00a059e0	skipped-port	0	entry 27: binder(s) opened (tri3): stand-in class token ?SetDefaultRenderStates@CRenderStateManager_Methods@@QAEXXZ [00a07900 defines CRenderStateManager_Methods]. A respell needs the real class / parameter types (a new or renamed local mod
+28	0x00cd2ae2	skipped-port	0	entry 28: binder(s) opened (tri3): stand-in class token ??0CElement16_00cd2ae2@@QAE@ABU0@@Z [00cd2e65 defines CElement16_00cd2ae2]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared he
+29	0x004ae0e0	skipped-port	0	entry 29: binder(s) opened (tri3): stand-in class token ??1CMember_004ae0e0@@QAE@XZ [004ae490 defines CMember_004ae0e0] || stand-in class token ??1CValue_004ae0e0@@QAE@XZ [006e6e50 defines CValue_004ae0e0] || free stand-in function @InnerDt
+30	0x00905330	skipped-port	0	entry 30: binder(s) opened (tri3): stand-in class token ??0CElement16_00905330@@QAE@ABU0@@Z [00cd25e8 defines CElement16_00905330]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared he
+31	0x0069dfe0	skipped-port	0	entry 31: binder(s) opened (tri3): stand-in class token ??0CCameraMode_0069dfe0@@QAE@PAUCCombatSequence_WillLightning@@PBUSCameraDescriptor@@PBV?$ [0069e3d0 defines CCameraMode_0069dfe0]. A respell needs the real class / parameter types (a 
+32	0x00b4ced0	done	1	order 2. entry 32: binder 0x00B92070 called ClipBoundingBox through a CShadowClipVolumeMethods stand-in deriving its own local CShadowClipVolume model; the PDB member (Ego_r + FableWin ?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBounding
+33	0x00a1c950	skipped-port	0	entry 33: binder(s) opened (tri3): stand-in class token ??1CSurfaceOwner_00a1c950@@QAE@XZ [004d959d defines CSurfaceOwner_00a1c950]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared h
+34	0x00415bd0	done	1	order 2. entry 34: binder 0x009F35D0 declared GetWidth on its CSurface_Methods stand-in (deriving the row's local CSurface model, which already declares GetHeight 0x00415BF0); GetWidth is now declared beside GetHeight in the local CSurface 
+35	0x009e5200	skipped-port	0	entry 35: binder(s) opened (tri3): stand-in class token ??0CStatic_009e5200@@QAE@XZ [0121ef30 defines CStatic_009e5200]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): T3
+36	0x006c0330	skipped-port	0	entry 36: binder(s) opened (tri3): stand-in class token ?SetDressLevel@CTCBuyableHouse_Methods@@QAEXH@Z [006c04b0 defines CTCBuyableHouse_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a port on
+37	0x006c1150	skipped-port	0	entry 37: binder(s) opened (tri3): stand-in class token ?SetRented@BuyableHouseMethods@@QAEX_N@Z [00895ed0 defines BuyableHouseMethods]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shar
+38	0x006c17b0	skipped-port	0	entry 38: binder(s) opened (tri3): stand-in class token ?SetOwnedByPlayer@BuyableHouseMethods@@QAEX_N@Z [00895ed0 defines BuyableHouseMethods]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto t
+39	0x006a2520	skipped-port	0	entry 39: binder(s) opened (tri3): stand-in class token ?SetAllCarriedThingsAsBypassFilter@CarryingMethods@@QAEXPAX@Z [008a99f0 defines CarryingMethods]. A respell needs the real class / parameter types (a new or renamed local model, or a p
+40	0x00736590	skipped-port	0	entry 40: binder(s) opened (tri3): stand-in class token ?UpdateUsableMeleeCombatAbilities@CTCCombat_Methods@@QAEXXZ [00736ae0 defines CTCCombat_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a p
+41	0x008ed040	skipped-port	0	entry 41: binder(s) opened (tri3): stand-in class token ?RemoveItem@CTCContainer_Retail@@QAEXJ@Z [0089e810 defines CTCContainer_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shar
+42	0x008ed1f0	skipped-port	0	entry 42: binder(s) opened (tri3): stand-in class token ?InsertItem@CTCContainer_Retail@@QAEXJABVCCharString@@@Z [00898ac0 defines CTCContainer_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a po
+43	0x00779e10	skipped-port	0	entry 43: binder(s) opened (tri3): stand-in class token ?SetExperiencePoints@ExperienceOrbMethods@@QAEXJ@Z [0089fbb0 defines ExperienceOrbMethods]. A respell needs the real class / parameter types (a new or renamed local model, or a port on
+44	0x007310c0	skipped-port	0	entry 44: binder(s) opened (tri3): stand-in class token ?UpdateOpenStatusTriggerTypeScript@CTCDoor_Methods@@QAEXXZ [007311f0 defines CTCDoor_Methods]. A respell needs the real class / parameter types (a new or renamed local model, or a port
+45	0x006c3b70	skipped-port	0	entry 45: binder(s) opened (tri3): stand-in class token ?Fade@CTCFadeOutAndIn_Retail@@QAEXM_N@Z [008a0720 defines CTCFadeOutAndIn_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the sh
+46	0x007e78e0	skipped-port	0	entry 46: binder(s) opened (tri3): stand-in class token ?PlayGame@CTCFireheartMinigame_Retail@@QAEXXZ [00895c90 defines CTCFireheartMinigame_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port 
+47	0x00780410	skipped-port	0	entry 47: binder(s) opened (tri3): stand-in class token ?SetOnFire@CTCFlammable_Retail@@QAEXXZ [0089bcd0 defines CTCFlammable_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared
+48	0x006d4d70	skipped-port	0	entry 48: binder(s) opened (tri3): stand-in class token ?IsAIFollower@CTCFollowed_Retail@@QAE_NPAUCThing_Retail@@@Z [008955c0 defines CTCFollowed_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a 
+49	0x006d5850	skipped-port	0	entry 49: binder(s) opened (tri3): stand-in class token ?GetFollowers@CTCFollowed_Retail@@QAEXAAUCThingVector@@@Z [008a80f0 defines CTCFollowed_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a po
+50	0x006c59e0	skipped-port	0	entry 50: binder(s) opened (tri3): stand-in class token ?DestroyDeed@CDeedOwner_006c6010@@QAEXJ@Z [006c6010 defines CDeedOwner_006c6010]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the sha
+51	0x006c5f80	skipped-port	0	entry 51: binder(s) opened (tri3): stand-in class token ?RemoveCrimeFromVillage@CDeedOwner_006c6010@@QAEXJ@Z [006c6010 defines CDeedOwner_006c6010]. A respell needs the real class / parameter types (a new or renamed local model, or a port o
+52	0x005bf3f1	skipped-port	0	entry 52: binder(s) opened (tri3): stand-in class token ?GetItemOfTypeInInventory@CTCInventoryBase_Retail@@QAEPAVCThing@@J@Z [005c311a defines CTCInventoryBase_Retail]. A respell needs the real class / parameter types (a new or renamed loca
+53	0x005bf91a	skipped-port	0	entry 53: binder(s) opened (tri3): stand-in class token ?ReturnAllConfiscatedItems@CTCInventoryBase_Retail@@QAEXXZ [005cb742 defines CTCInventoryBase_Retail]. A respell needs the real class / parameter types (a new or renamed local model, o
+54	0x005b43a2	skipped-port	0	entry 54: binder(s) opened (tri3): free stand-in function ?h_005b4ea8@@YGHHH@Z [005b4ea8 free / out-of-scope stand-in]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): T3. F
+55	0x005b4a95	skipped-port	0	entry 55: binder(s) opened (tri3): stand-in class token ?GetCurrentTotalArmorValue@CTCInventoryClothing_Retail@@QAEJXZ [005b6881 defines CTCInventoryClothing_Retail]. A respell needs the real class / parameter types (a new or renamed local 
+56	0x0056ff3d	skipped-port	0	entry 56: binder(s) opened (tri3): stand-in class token ?GetTCHeroExperience@CTCInventoryExperience_Methods@@QAEPAUCTCHeroExperience_Calls@@XZ [00572672 defines CTCInventoryExperience_Methods]. A respell needs the real class / parameter typ
+57	0x0056ffc5	skipped-port	0	entry 57: binder(s) opened (tri3): stand-in class token ?GetTCInventoryAbilities@CTCInventoryExperience_Methods@@QAEPAUCTCInventoryAbilities_Calls [00572689 defines CTCInventoryExperience_Methods]. A respell needs the real class / parameter
+58	0x005d9320	skipped-port	0	entry 58: binder(s) opened (tri3): stand-in class token ?ClearCachedDefs_005d9320@CTCInventory@@QAEXXZ [00589c55 defines CTCInventory]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the share
+59	0x00640bb0	skipped-port	0	entry 59: binder(s) opened (tri3): stand-in class token ?SetColour@CTCLight_Retail@@QAEXABVCRGBColour@@@Z [0089df10 defines CTCLight_Retail]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the
+60	0x007713c0	skipped-port	0	entry 60: binder(s) opened (tri3): stand-in class token ?SetupFromDef@CStateStackOwner_00771510@@QAEXPAUCStateDef@@@Z [00771510 defines CStateStackOwner_00771510]. A respell needs the real class / parameter types (a new or renamed local mod
+61	0x007022e0	open	0	not started
+62	0x005e4740	open	0	not started
+63	0x004d2b17	open	0	not started
+64	0x0074ac80	open	0	not started
+65	0x0066aeb0	open	0	not started
+66	0x0066b120	done-already	0	order 1. entry 66: witness 0x0066B1D0's HEAD object references the PDB ?InternalPlaySoundEvent@CTCSoundPlayer@@AAE... (private), not the stand-in PlayAttachedSampleByName_0066b120 (objbind_set1.tsv); codegrep 0 hits. Table only: stale line 
+67	0x0072acf0	open	0	not started
+68	0x007f5890	open	0	not started
+69	0x008abb50	open	0	not started
+70	0x004d5853	open	0	not started
+71	0x00787bfe	open	0	not started
+72	0x007c7890	open	0	not started
+73	0x0065b349	open	0	not started
+74	0x0065bffa	open	0	not started
+75	0x00806ae0	open	0	not started
+76	0x004a89d0	open	0	not started
+77	0x00a69f70	open	0	not started
+78	0x004c78a0	open	0	not started
+79	0x004c7a10	open	0	not started
+80	0x004c7a80	done-already	0	order 1. entry 80: same witness 0x0066B1D0 references ?GetSampleBank@CThing@@QBEAAVCASoundBank@@XZ, not GetSoundBank_004c7a80 (objbind_set1.tsv); codegrep 0. Table only: stale line deleted (PDB line exists, witness 0x0066bd00). No row chang
+81	0x004c9c40	open	0	not started
+82	0x004ca1d0	open	0	not started
+83	0x00830eb0	open	0	not started
+84	0x00663610	open	0	not started
+85	0x006647f0	open	0	not started
+86	0x00666830	open	0	not started
+87	0x0051efc0	open	0	not started
+88	0x00cd4470	open	0	not started
+89	0x0062fe60	open	0	not started
+90	0x00429e29	open	0	not started
+91	0x0052e5d0	open	0	not started
+92	0x006250b0	open	0	not started
+93	0x00edc980	open	0	not started
+94	0x00edcb80	open	0	not started
+95	0x00ee2db0	done-already (table only, pending decision 1)	0	order 1. entry 95: source evidence only. 0x00EE3EE0 declares `namespace NScript { class CV_TravellingHeroesScript { public: void PlayCutscene(CCharString name); ... }; }` (line 125-131; CCharString a local `class`) and calls ParentClass->Pl
+96	0x00ac20c0	open	0	not started
+97	0x004fb4a0	open	0	not started
+98	0x004fb880	open	0	not started
+99	0x004fc970	open	0	not started
+100	0x008eff40	open	0	not started
+101	0x008abf20	open	0	not started
+102	0x0090edc0	open	0	not started
+103	0x00939cb0	open	0	not started
+104	0x0043151d	open	0	not started
+105	0x004314c8	open	0	not started
+106	0x00475a51	open	0	not started
+107	0x0046367a	open	0	not started
+108	0x00463f9c	open	0	not started
+109	0x0046caf4	open	0	not started
+110	0x00472123	open	0	not started
+111	0x004e89f7	open	0	not started
+112	0x004acf90	open	0	not started
+113	0x005ed860	open	0	not started
+114	0x0065f856	open	0	not started
+115	0x0065f884	open	0	not started
+116	0x00660034	open	0	not started
+117	0x00660062	open	0	not started
+118	0x00660090	open	0	not started
+119	0x006600be	open	0	not started
+120	0x006b2660	open	0	not started
+121	0x008af0a0	open	0	not started
+122	0x00935040	open	0	not started
+123	0x007086f0	open	0	not started
+124	0x0077e430	open	0	not started
+125	0x007a6ca0	open	0	not started
+126	0x007c8000	open	0	not started
+127	0x007e0540	open	0	not started
+128	0x007e1400	open	0	not started
+129	0x007f5560	open	0	not started
+130	0x007f9330	open	0	not started
+131	0x007fe5b0	open	0	not started
+132	0x00810c80	open	0	not started
+133	0x008f9ca0	done-partial (table only)	0	order 1. entry 133: witness 0x008FA000's HEAD object references the PDB ?Stop@LTimer@LHNetworkLib@@QAEXXZ, not ?CheckAndTrigger@CMusicTimer_008fa000@@ (objbind_set1.tsv; NF287 saw the same); codegrep 0. That stale line is deleted. The other
+134	0x00516180	open	0	not started
+135	0x007e39d0	open	0	not started
+136	0x009ac310	open	0	not started
+137	0x00ad64c0	open	0	not started
+138	0x00cd3640	done-already	0	order 1. entry 138: witness 0x01224C6D's HEAD object references the PDB ??0?$map@VCCharString@@W4EScriptActiveStatus@@...QAE@XZ, not the CUnprovenMapKey_00CD3640 stand-in (objbind_set1.tsv). The stand-in name survives only in the row's stan
+139	0x00448380	open	0	not started
+140	0x004d6902	open	0	not started
+141	0x004d788d	open	0	not started
+142	0x004dd728	open	0	not started
+143	0x005799fd	open	0	not started
+144	0x005f8736	open	0	not started
+145	0x006b8e20	open	0	not started
+146	0x00825090	open	0	not started
+147	0x00827f80	open	0	not started
+148	0x00a7faf0	open	0	not started
+149	0x00ae98e0	open	0	not started
+150	0x00cd27b4	open	0	not started
+151	0x006603a0	open	0	not started
+152	0x006603dd	open	0	not started
+153	0x0066041a	open	0	not started
+154	0x00660457	open	0	not started
+155	0x00660494	open	0	not started
+156	0x00513700	open	0	not started
+157	0x00411910	open	0	not started
+158	0x004df88a	open	0	not started
+159	0x004e34b2	open	0	not started
+160	0x0056d490	open	0	not started
+161	0x005bba94	open	0	not started
+162	0x005e3040	open	0	not started
+163	0x006753b0	open	0	not started
+164	0x006755e0	open	0	not started
+165	0x006fcf10	open	0	not started
+166	0x00708ca0	open	0	not started
+167	0x00722eb0	open	0	not started
+168	0x0082c620	open	0	not started
+169	0x0082c8a0	open	0	not started
+170	0x0086b2a0	open	0	not started
+171	0x00ad83a0	open	0	not started
+172	0x00b83df0	open	0	not started
+173	0x00b97af0	open	0	not started
+174	0x00cdbc90	open	0	not started
+175	0x00f25ce0	open	0	not started
+-	0x004498c0	done (outside ENTRIES)	1	GetPlayer, ruling 1: on the same PlayerManagerMethods line as entry 21. ?GetPlayer@PlayerManagerMethods@@QAEAAVCPlayer@@J@Z -> the flat CPlayerManager.h member ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z (both PDB name sets, evidence/pdbq

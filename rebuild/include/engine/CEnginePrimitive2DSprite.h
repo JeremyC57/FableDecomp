@@ -195,11 +195,19 @@ inline CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 uid,c
 // the subtitle rows. This text compiled on its own grades MATCH against 0x0041BEB0 (wfA2 probe/s5/ctors3.cpp). Same member-init style
 // as ..._CRIME_CTOR (ClipBox(box), ClipBoxIsPos false, Texture 0). Needs FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR, FABLE_RETAIL_C2DBOXF_COPY,
 // FABLE_RETAIL_CRGBCOLOUR.
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_BOX_OWNER_SPEED_PASS26) && defined(_MSC_VER)
+// Exact native owner profile; genuine constructor body only.
+#pragma optimize("t",on)
+#pragma optimize("y",on)
+#endif
 inline CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 id,const C2DBoxF&box,EEngine2DLayer layer,unsigned long bank,
         unsigned long frame,EEnginePrimitiveBlendMode blend,EEngineInterpolationSet interpolation,float start_angle,float end_angle,
         unsigned char alpha,unsigned char r,unsigned char g,unsigned char b,unsigned long flags,const C2DVector&uv_start,const C2DVector&uv_end)
     :CEnginePrimitive((EEnginePrimitiveType)34,id,interpolation),ClipBox(box),Layer(layer),BankIndex(bank),Frame(frame),StartAngle(start_angle),
      EndAngle(end_angle),BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(false),Flags(flags),Texture(0),UVOffsetsStart(uv_start),
      UVOffsetsEnd(uv_end){}
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_BOX_OWNER_SPEED_PASS26) && defined(_MSC_VER)
+#pragma optimize("",on)
+#endif
 #endif
 #endif

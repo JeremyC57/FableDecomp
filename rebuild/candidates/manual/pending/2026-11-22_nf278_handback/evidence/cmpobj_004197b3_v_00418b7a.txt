@@ -1,0 +1,12 @@
+SAME	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ
+SAME	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ
+SAME	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ
+SAME	??1?$CCountedPointer@VCLUA@@@@QAE@XZ
+SAME	??1?$scoped_ptr@VCDisplayEngine@@@@QAE@XZ
+SAME	??1?$scoped_ptr@VCGamePlayerInterface@@@@QAE@XZ
+SAME	??1?$scoped_ptr@VCPlayerManager@@@@QAE@XZ
+SAME	??1?$scoped_ptr@VCWorld@@@@QAE@XZ
+SAME	??1CGameComponent@@UAE@XZ
+SAME	??1CMainGameComponent@@UAE@XZ
+SAME	??_GCGameComponent@@UAEPAXI@Z
+SAME	??_GCMainGameComponent@@UAEPAXI@Z

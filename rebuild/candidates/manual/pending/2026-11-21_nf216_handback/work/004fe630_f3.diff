@@ -1,0 +1,154 @@
+--- 
++++ 
+@@ -2,3 +2,2 @@
+ push ebx
+-push ebp
+ push esi
+@@ -6,26 +5,26 @@
+ push esi
+-push X
+-lea ecx, [esp + 0x14]
++push 0
++lea ecx, [esp + 0x10]
+ call X
+-lea eax, [esp + 0xc]
++lea eax, [esp + 8]
+ push eax
+-lea ecx, [esp + 0x24]
++lea ecx, [esp + 0x20]
+ call X
+-lea ecx, [esp + 0xc]
+-mov dword ptr [esp + 0x24], esi
++lea ecx, [esp + 8]
++mov dword ptr [esp + 0x20], esi
+ call X
+ push esi
+-push X
+-lea ecx, [esp + 0x14]
++push 0
++lea ecx, [esp + 0x10]
+ call X
+-lea ecx, [esp + 0xc]
++lea ecx, [esp + 8]
+ push ecx
+-lea ecx, [esp + 0x1c]
++lea ecx, [esp + 0x18]
+ call X
+-lea ecx, [esp + 0xc]
+-mov dword ptr [esp + 0x1c], esi
++lea ecx, [esp + 8]
++mov dword ptr [esp + 0x18], esi
+ call X
+-mov ebx, dword ptr [esp + 0x30]
++mov ebx, dword ptr [esp + 0x2c]
+ push 0
+-lea edx, [esp + 0x14]
++lea edx, [esp + 0x10]
+ push edx
+@@ -33,8 +32,9 @@
+ call X
+-mov eax, dword ptr [esp + 0x10]
+-xor ebp, ebp
++mov eax, dword ptr [esp + 0xc]
+ test eax, eax
++mov dword ptr [esp + 8], 0
+ jle X
++push ebp
++mov ebp, dword ptr [esp + 0x34]
+ push edi
+-mov edi, edi
+ push 0
+@@ -53,3 +53,3 @@
+ push 0
+-lea edx, [esp + 0x14]
++lea edx, [esp + 0x3c]
+ push edx
+@@ -60,4 +60,4 @@
+ jne X
+-mov edi, X
+-mov esi, X
++mov edi, 0
++mov esi, 0
+ mov ecx, 5
+@@ -66,3 +66,3 @@
+ je X
+-mov edi, X
++mov edi, 0
+ mov esi, edi
+@@ -76,3 +76,3 @@
+ call X
+-mov edx, dword ptr [esp + 0x10]
++mov edx, dword ptr [esp + 0x38]
+ mov dword ptr [esp + 0x28], edx
+@@ -80,8 +80,10 @@
+ call X
+-mov eax, dword ptr [esp + 0x14]
+-inc ebp
+-cmp ebp, eax
++mov eax, dword ptr [esp + 0x10]
++mov ecx, dword ptr [esp + 0x14]
++inc eax
++cmp eax, ecx
++mov dword ptr [esp + 0x10], eax
+ jl X
+ jmp X
+-push X
++push 0
+ mov ecx, esi
+@@ -90,3 +92,3 @@
+ jne X
+-push X
++push 0
+ mov ecx, esi
+@@ -95,8 +97,7 @@
+ jne X
+-mov esi, dword ptr [esp + 0x38]
+ lea eax, [esp + 0x34]
+ push eax
+-mov ecx, esi
++mov ecx, ebp
+ call X
+-cmp eax, dword ptr [esi]
++cmp eax, dword ptr [ebp]
+ je X
+@@ -106,3 +107,3 @@
+ call X
+-mov ecx, dword ptr [esp + 0x10]
++mov ecx, dword ptr [esp + 0x38]
+ mov dword ptr [esp + 0x20], ecx
+@@ -111,12 +112,13 @@
+ pop edi
+-cmp dword ptr [esp + 0x1c], -1
++pop ebp
++cmp dword ptr [esp + 0x18], -1
+ jne X
+-lea edx, [esp + 0x20]
++lea edx, [esp + 0x1c]
+ push edx
+-lea ecx, [esp + 0x1c]
++lea ecx, [esp + 0x18]
+ call X
+-mov eax, dword ptr [esp + 0x24]
+-mov dword ptr [esp + 0x1c], eax
+-mov esi, dword ptr [esp + 0x2c]
+-lea ecx, [esp + 0x18]
++mov eax, dword ptr [esp + 0x20]
++mov dword ptr [esp + 0x18], eax
++mov esi, dword ptr [esp + 0x28]
++lea ecx, [esp + 0x14]
+ push ecx
+@@ -124,7 +126,7 @@
+ call X
+-mov edx, dword ptr [esp + 0x1c]
+-lea ecx, [esp + 0x18]
++mov edx, dword ptr [esp + 0x18]
++lea ecx, [esp + 0x14]
+ mov dword ptr [esi + 4], edx
+ call X
+-lea ecx, [esp + 0x20]
++lea ecx, [esp + 0x1c]
+ call X
+@@ -132,3 +134,2 @@
+ pop esi
+-pop ebp
+ pop ebx

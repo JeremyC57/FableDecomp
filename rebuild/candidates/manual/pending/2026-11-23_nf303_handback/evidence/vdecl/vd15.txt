@@ -1,0 +1,6 @@
+008b6530 - CCreatureActionGetUpFromSitting_OnAnimationLoaded_008b6530.c | L4:-:None:plain:struct CCreatureAction_GetUpFromSitting { char pad[0x10]; int m_a; int
+008bedc0 - CCreatureActionGenericAimProjectileWeapon_OnAnimationLoaded_ | L4:CCreatureAction_GenericAimProjectileWeapon_Methods:public:plain:void OnAnimationLoaded();
+008c7f40 - CCreatureActionBanditKingLunge_OnAnimationLoaded_008c7f40.cp | L13:?:public:plain:void OnAnimationLoaded();
+008c9dd0 - CCreatureActionNymphGetHit_OnAnimationLoaded_008c9dd0.cpp | L6:CCreatureAction_NymphGetHit_Methods:public:plain:void OnAnimationLoaded();
+008ec260 - CCreatureActionUndeadRiseUp_OnAnimationLoaded_008ec260.cpp | L93:CCombatActionBase:public:plain:void OnAnimationLoaded(); || L100:CCreatureAction_UndeadRiseUp:public:plain:void OnAnimationLoaded();
+00923cd0 - CCreatureActionKrakenLowAttackInto_OnAnimationLoaded_00923cd | L10:CCombatActionBase:public:virtual:virtual void OnAnimationLoaded(); || L17:CCreatureAction_KrakenLowAttackInto:public:virtual:virtual void OnAnimationLoaded();

@@ -1,0 +1,20 @@
+##### 008cc8e0 renames: ?SetLungedThisFrame@@YIXXZ=?SetLungedThisFrame@NBalverineCombat@@YIXXZ
+sections head 11 new 11
+ALL_EQ text_sections_equal=8
+tables H=0 N=0
+##### 007fd580 renames: ?GetLineThingSearchArea@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z=?GetLineThingSearchArea@NPhysicsHelpers@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=12
+tables H=0 N=0
+##### 0064f6dc renames: ?GFAnchorToTopRight@@YI?AVC2DVector@@ABV1@@Z=?GFAnchorToTopRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z
+sections head 10 new 10
+ALL_EQ text_sections_equal=8
+tables H=0 N=0
+##### 0064499c renames: ?GFAnchorToTopRight@@YI?AVC2DVector@@ABV1@@Z=?GFAnchorToTopRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=8
+tables H=0 N=0
+##### 0049e8c0 renames: ?StopProgress@@YIX_N0@Z=?StopProgress@NProgressDisplay@@YIX_N0@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=0 N=0

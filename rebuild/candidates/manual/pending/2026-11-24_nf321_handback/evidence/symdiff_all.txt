@@ -1,0 +1,45 @@
+== 0088e520
+  - DEF ?EndCutFade@CGameScriptInterface_Methods@@QAEXXZ
+  - UND ?helperA@CGameScriptInterface_Methods@@QAEXXZ
+  - UND ?helperB@CGameScriptInterface_Methods@@QAEXH@Z
+  + DEF ?EndCutFade@CGameScriptInterface@@UAEXXZ
+  + UND ?EndFadeScreen@CGameScriptInterface@@IAEXXZ
+  + UND ?Rest@CGameScriptInterface@@IBEXM@Z
+  + UND __fltused
+== 004ff8a0
+  - DEF ?ForceUnload@CWorldMap_Methods@@QAEXJ@Z
+  - UND ?Impl@CWorldMap_Methods@@QAEXJ@Z
+  + DEF ?ForceUnload@CWorldMap@@UAEXJ@Z
+  + UND ?UnloadLevel@CWorldMap@@IAEXJ@Z
+== 008fd892
+  - DEF ?Initialise@CAIStateGroup_BirdGroundWander_Retail@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z
+  - UND ?Initialise@CAIStateGroupBase_Retail@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z
+  + DEF ?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  + UND ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+== 00891320
+  - DEF ?EnableDangerMusic@CGameScriptInterface_Methods@@QBEXW4EMusicSetType@@@Z
+  - UND ?CacheMusicSet_006bde50@CMusicTarget@@QAEXW4EMusicSetType@@@Z
+  + DEF ?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z
+  + UND ?EnableDangerMusic@CMusicManager@@QAEX_N@Z
+== 00a39c70
+  - DEF ?GetAlignment@CWADFile_Methods@@QAEXXZ
+  - UND ?Run@CBankFileAsync@@QAEXXZ
+  + DEF ?GetAlignment@CWADFile@@UBEJXZ
+  + UND ?GetAlignment@CBankFile@@QBEKXZ
+== 00a75b50
+  - DEF ?RemoveRegionZero@CNavNavigableLeafNode_Methods@@QAE_NXZ
+  + DEF ?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ
+== 00b5ead0
+  - DEF ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer_Methods@@QAE?AVCCharString@@XZ
+  + DEF ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ
+== 00a667c0
+  - DEF ?EventScanStart@CKeyboard@@QAE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z
+  + DEF ?EventScanStart@CKeyboard@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z
+== 00b23b50
+  - DEF ?SetCamera@CEngine_Methods@@QAEXPAVCCamera@@@Z
+  - UND ?AddExclusiveObserver@CEngineCamera@@QAEXPAVCCamera@@@Z
+  + DEF ?SetCamera@CEngine@@UAEXPBVCCamera@@@Z
+  + UND ?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z
+== 00abfd70
+  - DEF ?GetChunkInfo@C3DMeshFileMaterialExtChunk_Methods@@QBE?AVCCharString@@XZ
+  + DEF ?GetChunkInfo@C3DMeshFileMaterialExtChunk@@UBE?BVCCharString@@XZ

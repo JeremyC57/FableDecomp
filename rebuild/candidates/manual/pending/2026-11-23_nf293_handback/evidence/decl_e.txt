@@ -1,0 +1,373 @@
+#30 008d5110 CCreatureAction_FireMissileWeapon [??0CCreatureAction_FireMissileWeapon@@QAE@AAVCThingCreatureBase@@PBVCThing@@@Z]
+  008d5110(self) leaf=??0CCreatureAction_FireMissileWeapon@@QAE@AAVCThingCreatureBase@@PBVCThing@@@Z inc=0
+      L93: CCreatureAction_FireMissileWeapon(CThingCreatureBase& creature, const CThing* target);
+      L97: CCreatureAction_FireMissileWeapon::CCreatureAction_FireMissileWeapon(CThingCreatureBase& creature, const CThing* target)
+  00715110 leaf=?OnAdd@CActionFireProjectileWeapon@@QAEXXZ inc=2
+      L14: class CCreatureAction_FireMissileWeapon : public CCreatureAction { public: char _d[0xc8]; CCreatureAction_FireMissileWeapon(CThing* creature, CThing* 
+      L95: Actions.Add(CCountedPointer(new CCreatureAction_FireMissileWeapon(creature, PTargetThing.GetThing())));
+  0092a8a0 leaf=- inc=1
+      L49: CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);
+      L140: && AIAction_PerformActionAndWait(CCreatureAction_FireMissileWeapon(GetCreature(), PDummy), false) != 2;
+  0092b3e0 leaf=- inc=1
+      L60: CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);
+      L148: && AIAction_PerformActionAndWait(CCreatureAction_FireMissileWeapon(GetCreature(), PDummy), false) != 2;
+  0095e0b0 leaf=?Update@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@MAEXXZ inc=7
+      L71: EAIActionReturn fired = AIAction_PerformActionTargetFaceAndWait(CCreatureAction_FireMissileWeapon(GetCreature(), PTarget.Get()), PTarget, false);
+  00979f70 leaf=?AttackTargetThing@CAIStateGroup_CreatureTakeCover@@AAE_NXZ inc=28
+      L123: result = AIAction_PerformActionAndWait(CCreatureAction_FireMissileWeapon(GetCreature(), PTargetThing.Get()), false);
+  0097ef60 leaf=- inc=6
+      L121: CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);
+      L174: creature->SetCurrentAction(CCreatureAction_FireMissileWeapon(creature, ((CThing*)target.GetPItem())));
+  0097f3a0 leaf=?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIA inc=6
+      L134: CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);
+      L183: creature->SetCurrentAction(CCreatureAction_FireMissileWeapon(creature, target.GetPItem()));
+#31 0062d9e0 CCreatureAction_GiveItemToThing [??0CCreatureAction_GiveItemToThing@@QAE@AAVCThingCreatureBase@@AAVCThing@@1@Z]
+  0062d9e0(self) leaf=??0CCreatureAction_GiveItemToThing@@QAE@AAVCThingCreatureBase@@AAVCThing@@1@Z inc=0
+      L57: CCreatureAction_GiveItemToThing(CThingCreatureBase& creature, CThing& receivingThing, CThing& itemBeingGiven);
+      L62: CCreatureAction_GiveItemToThing::CCreatureAction_GiveItemToThing(CThingCreatureBase& creature, CThing& receivingThing,
+  007ed170 leaf=- inc=3
+      L59: CCreatureAction_GiveItemToThing(CThingCreatureBase* giver, CThing* receiver, CThing* item);
+      L99: user->SetCurrentAction(&CCreatureAction_GiveItemToThing((CThingCreatureBase*)user,
+  007ed2c0 leaf=OnActionUse inc=3
+      L55: CCreatureAction_GiveItemToThing(CThingCreatureBase* giver, CThing* receiver, CThing* item);
+      L110: user->SetCurrentAction(CCreatureAction_GiveItemToThing(user,
+#32 0078ae30 CCreatureAction_HeroLoadRangedWeapon [??0CCreatureAction_HeroLoadRangedWeapon@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z]
+  0078ae30(self) leaf=??0CCreatureAction_HeroLoadRangedWeapon@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=1
+      L66: CCreatureAction_HeroLoadRangedWeapon(CThingCreatureBase& creature, CThing& ranged_weapon);
+      L73: CCreatureAction_HeroLoadRangedWeapon::CCreatureAction_HeroLoadRangedWeapon(CThingCreatureBase& creature, CThing& ranged_weapon)
+  0078a2c0 leaf=?LoadRangedWeapon@CTCHeroRangedAttacks inc=2
+      L87: CCreatureAction_HeroLoadRangedWeapon(CThingCreatureBase* creature, CThing* weapon);
+      L112: PParentCreature->SetCurrentAction(CCreatureAction_HeroLoadRangedWeapon(PParentCreature, weapon));
+#33 007eba20 CCreatureAction_LookThroughWindow [??0CCreatureAction_LookThroughWindow@@QAE@AAVCThingCreatureBase@@@Z]
+  007eba20(self) leaf=??0CCreatureAction_LookThroughWindow@@QAE@AAVCThingCreatureBase@@@Z inc=0
+      L41: CCreatureAction_LookThroughWindow(CThingCreatureBase& owner);
+      L44: CCreatureAction_LookThroughWindow::CCreatureAction_LookThroughWindow(CThingCreatureBase& owner)
+  007ebab0 leaf=?OnActionUse@CTCActionUseWindow@@UAEXAAVCThing@@@Z inc=2
+      L46: CCreatureAction_LookThroughWindow(CThingAICreature& creature);
+      L93: creature->SetCurrentAction(CCreatureAction_LookThroughWindow(*creature));
+#34 00843700 CCreatureAction_PickUpGenericBox [??0CCreatureAction_PickUpGenericBox@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z]
+  00843700(self) leaf=??0CCreatureAction_PickUpGenericBox@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z inc=3
+      L49: CCreatureAction_PickUpGenericBox(CThingCreatureBase& owner, CThing& target);
+      L52: CCreatureAction_PickUpGenericBox::CCreatureAction_PickUpGenericBox(CThingCreatureBase& owner, CThing& target)
+  007153b0 leaf=?Update@CActionPickUpGenericBox@NTCScriptedControl@@UAEXXZ inc=9
+      L96: CCreatureAction_PickUpGenericBox(CThingCreatureBase& creature, CThing& box);
+      L163: if (creature->SetCurrentAction(CCreatureAction_PickUpGenericBox(*creature, *PBox.GetPThing()))) {
+  007eb1a0 leaf=?OnActionUse@CTCActionUsePickUpGenericBox@@UAEXAAVCThing@@@Z inc=4
+      L56: CCreatureAction_PickUpGenericBox(CThingCreatureBase* creature, CThing* thing);
+      L85: creature->SetCurrentAction(CCreatureAction_PickUpGenericBox(creature, (CThing*)ParentThing));
+  009647c0 leaf=?Update@CAIStateGroup_StealStealableItem@@UAEXXZ inc=6
+      L57: CCreatureAction_PickUpGenericBox(CThingCreatureBase& owner, CThing& thing);
+  no-local-decl rows: 1 (009658b0)
+#35 008424f0 CCreatureAction_PlayAnimation [??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@ABVCSoundPair@@_N33JJ@Z]
+  008424f0(self) leaf=- inc=0
+      L32: CCreatureAction_PlayAnimation(CThingCreatureBase* owner, const CCharString& animationName, const CSoundPair& sound,
+      L36: CCreatureAction_PlayAnimation::CCreatureAction_PlayAnimation(CThingCreatureBase* owner, const CCharString& animationName, const CSoundPair& sound,
+  00782390 leaf=OnBoastAccepted inc=4
+      L60: CCreatureAction_PlayAnimation(CThingCreatureBase& creature, const CCharString& animation, const CSoundPair& sound,
+      L147: hero.SetCurrentAction(CCreatureAction_PlayAnimation(hero, animation, CSoundPair(), false, true, false, 0, 0));
+  00842db0 leaf=??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCCharString inc=0
+      L18: CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CCharString& animName, const CSoundPair& sound,
+      L20: CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CAnimationEntry& anim, const CSoundPair& sound,
+      L22: CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CAnimationEntry& anim, bool stayOnLastFrame, bool looping,
+      ... 1 more
+  00846dd0 leaf=FinishAction inc=17
+      L201: PCreature->SetCurrentAction(CCreatureAction_PlayAnimation(*PCreature, animation, sound, false, true, false, 0, 0));
+      L205: PCreature->SetCurrentAction(CCreatureAction_PlayAnimation(*PCreature, animation, sound, false, true, false, 0, 0));
+  00847520 leaf=?FinishAction@CCreatureAction_PerformExpressionExtended@@UAEXXZ inc=11
+      L136: PCreature->SetCurrentAction(CCreatureAction_PlayAnimation(*PCreature, animation, sound, false, true, false, 0, 0));
+      L140: PCreature->SetCurrentAction(CCreatureAction_PlayAnimation(*PCreature, animation, sound, false, true, false, 0, 0));
+  008d6ac0 leaf=?AnimUpdate@CModeSitBase@NCreatureMode@@UAEXAAVCAnimateThing@@@Z inc=17
+      L82: started = creature.SetCurrentAction(CCreatureAction_PlayAnimation(creature, name, CSoundPair(),
+  0090bd40 leaf=?CleanBench@CAIStateGroup_MinionWorkInInn@@AAEXXZ inc=3
+      L60: CCreatureAction_PlayAnimation(CThingCreatureBase& creature, const CCharString& animation,
+      L120: AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+  0090d030 leaf=?Update@CAIStateGroup_MinionGossip@@MAEXXZ inc=23
+      L175: if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), greeting, CSoundPair(), false, true, false, 0, 0), false) != AI_ACTION_
+      L212: if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "CONV_LISTENING_INTO", CSoundPair(), false, true, false, 0, 0), false) 
+      L215: if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "CONV_LISTENING_LOOP", CSoundPair(), false, true, false, 0, 0), false) 
+      ... 5 more
+  0090fdb0 leaf=?Update@CAIStateGroup_MinionSitAtSchool@@UAEXXZ inc=4
+      L78: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L166: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_SEATED_CHAIR_RAISE_HAND", CSoundPair(),
+  00914460 leaf=- inc=3
+      L98: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L164: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation,
+  00915350 leaf=?Update@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ inc=16
+      L64: EAIActionReturn ret=AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),"BOY_TRIP_FALL_OVER_01",CSoundPair(0),true,true,false,0,
+      L70: if(AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),"BOY_TRIP_GET_UP_01",CSoundPair(0),false,true,false,0,0),false)!=AI_ACTIO
+  009175e0 leaf=- inc=4
+      L47: CCreatureAction_PlayAnimation(CThing* owner, const CCharString& animationName, const CSoundPair& sound,
+      L136: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_WASH_FLOOR_INTO",
+      L152: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_WASH_FLOOR_OUTOF",
+  00917bb0 leaf=OnReplace@CAIStateGroup_Clean inc=3
+      L103: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+  0091bd10 leaf=- inc=4
+      L102: CCreatureAction_PlayAnimation(CThingCreatureBase* owner, const CCharString& animationName, const CSoundPair& sound,
+      L160: AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "HOWL",
+      L163: AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_IDLE", CSoundPair(), false,
+  0091e750 leaf=- inc=3
+      L117: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L157: result = AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_BLOW_KISS_LOOP",
+  00922860 leaf=?Update@CAIStateGroup_Drunk@@UAEXXZ inc=29
+      L146: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L149: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L189: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+  009285d0 leaf=?Act@CAIStateGroup_BanditPlayDice@@MAE?AW4EAIActionReturn@@XZ inc=3
+      L47: CCreatureAction_PlayAnimation(CThingCreatureBase* owner, const CCharString& animationName, const CSoundPair& sound,
+      L89: EAIActionReturn result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L101: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_DICEGAME_PICKING_DICE",
+      ... 5 more
+  009289b0 leaf=?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ inc=16
+      L69: EAIActionReturn result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L78: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_LISTENING_TO_PLANS_OUTOF",
+      L80: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      ... 6 more
+  00928e20 leaf=?OnReplace@CAIStateGroup_BanditPlayDice@@QAEXXZ inc=4
+      L80: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+  0092b900 leaf=?Update@CAIStateGroup_OnHeroPush@@UAEXXZ inc=21
+      L103: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "PUSHED_FORWARD", CSoundPair(),
+      L106: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "PUSHED_BACKWARD", CSoundPair(),
+  0092d7c0 leaf=?Update@CAIStateGroup_GoToBed@@QAEXXZ inc=4
+      L94: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L162: && AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "STANDARD_YAWN", CSoundPair(),
+  009341c0 leaf=?TagTarget@CAIStateGroup_MinionKidGroupTag@@AAEXXZ inc=19
+      L109: if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "TAG", CSoundPair(),
+  00934410 leaf=?EvadeTarget@CAIStateGroup_MinionKidGroupTag@@AAEXXZ inc=22
+      L92: AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(),"BOY_PULLING_FACES_01",CSoundPair(0),false,true,false,0,0));
+  00935e40 leaf=?PutOutFire@CAIStateGroup_MinionPutOutFires@@AAE_NXZ inc=11
+      L60: if (AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_IDLE", CSoundPair(0), false, true, false, 0, 0)) == AI_ACTION_FINISHED)
+  0093d030 leaf=Update@CAIStateGroup_ButterflyWander inc=1
+      L40: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L93: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+  00941e00 leaf=?Update@CAIStateGroup_KidReactToBlockage@@UAEXXZ inc=11
+      L71: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), anim, CSoundPair(),
+      L77: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), anim, CSoundPair(),
+      L82: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), anim, CSoundPair(),
+  009426d0 leaf=- inc=0
+      L34: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, const CSoundPair& sound,
+      L76: if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), into, CSoundPair(),
+      L80: if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), loop, CSoundPair(),
+      ... 1 more
+  00942920 leaf=- inc=0
+      L36: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L66: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+  00944940 leaf=?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ inc=19
+      L110: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_SAWING_INTO", CSoundPair(), false, true, false, 0, 0), false);
+      L116: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_SAWING_LOOP", CSoundPair(), false, true, false, 0, 0), false);
+      L122: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_SAWING_OUTOF", CSoundPair(), false, true, false, 0, 0), false)
+  00945060 leaf=?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ inc=16
+      L100: bool failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "BLACKSMITH_HAMMER_INTO", CSoundPair(), false, true, false, 0
+      L111: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "BLACKSMITH_HAMMER_LOOP", CSoundPair(), false, true, false, 0, 0),
+      L120: bool finished = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "BLACKSMITH_HAMMER_OUTOF", CSoundPair(), false, true, false
+  009454c0 leaf=- inc=0
+      L37: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L69: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+  00947ca0 leaf=- inc=0
+      L39: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L73: return AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+  00947d30 leaf=- inc=0
+      L39: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L71: bool failed = AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation,
+  00948880 leaf=?Drink@CAIStateGroup_GoToPub@@IAE_NXZ inc=19
+      L82: || AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "SHOUT_FOR_BEER",
+  00948d40 leaf=?PlayAnims@CAIStateGroup_GoToPub@@QAE_NABVCCharString@@00J@Z inc=4
+      L46: CCreatureAction_PlayAnimation(CThingCreatureBase* owner, const CCharString& animationName, const CSoundPair& sound,
+      L76: bool failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), intoAnim, CSoundPair(),
+      L84: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), loopAnim, CSoundPair(),
+      ... 1 more
+  00948ef0 leaf=?PlayAnims@CAIStateGroup_GoToPub@@QAE_NABVCCharString@@00M@Z inc=4
+      L49: CCreatureAction_PlayAnimation(CThingCreatureBase* owner, const CCharString& animationName, const CSoundPair& sound,
+      L88: bool failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), intoAnim, CSoundPair(),
+      L97: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), loopAnim, CSoundPair(),
+      ... 1 more
+  00949380 leaf=?ThankBarmaid@CAIStateGroup_GoToPub@@IAE_NXZ inc=11
+      L104: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), anim, CSoundPair(),
+  0094a840 leaf=?PayMoney@CAIStateGroup_GoToPub@@QAE_NXZ inc=4
+      L66: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L150: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "PAY_AT_BAR", CSoundPair(), false, true,
+  0094ce60 leaf=OfferPlayerAGame@CAIStateGroup_GameMaster inc=4
+      L63: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L132: AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(), false, true, false, 0, 0));
+  00957a20 leaf=?UpdateEmote@CAIStateGroupBehaviourBaseMethods@@QAE_NXZ inc=4
+      L53: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L100: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation,
+  00958000 leaf=- inc=2
+      L45: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L74: AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_SURPRISED",
+  0095b6f0 leaf=?KeepOutOfWay@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ inc=9
+      L76: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(), false, true, false, 0, 0), false);
+  00960120 leaf=?Update@CAIStateGroup_DeedReactionRoot@@UAEXXZ inc=28
+      L208: AIAction_PerformActionTargetFaceAndWait(CCreatureAction_PlayAnimation(GetCreature(), *anim_name, CSoundPair(), false, true, false, 0, 0),
+  009692c0 leaf=?ReceivePayment@CAIStateGroup_TavernKeeper@@QAE_NXZ inc=13
+      L92: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "RECEIVE_MONEY_AT_BAR", CSoundPair(),
+  00969ae0 leaf=?OnReplace@CAIStateGroup_SleepOnFloor@@UAEXXZ inc=6
+      L58: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+  00969cb0 leaf=Update inc=7
+      L74: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L118: if (AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), "ST_SLEEP_ON_FLOOR_INTO", CSoundPair(),
+  0096c9a0 leaf=- inc=2
+      L57: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L98: if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_SAT_EATING_LOOP",
+  0096f050 leaf=?Update@CAIStateGroup_MinionBehaviourSad@@UAEXXZ inc=5
+      L90: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+      L123: AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+  0096f570 leaf=?UpdateLeaf@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@QAEXXZ inc=2
+      L45: CCreatureAction_PlayAnimation(CThing* creature, const CCharString& animation,
+      L99: AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), name, CSoundPair(),
+  00979f70 leaf=?AttackTargetThing@CAIStateGroup_CreatureTakeCover@@AAE_NXZ inc=28
+      L102: CCreatureAction_PlayAnimation(GetCreature(), "PROJECTILE_WEAPON_INTO_AIM", CSoundPair(), false, true, false, 0, 0), PTargetThing, false);
+      L112: CCreatureAction_PlayAnimation(GetCreature(), "PROJECTILE_WEAPON_AIM", CSoundPair(), false, true, false, 0, 0), PTargetThing, false);
+  0097a630 leaf=?Update@CAIStateGroup_CreatureTakeCover@@UAEXXZ inc=23
+      L152: if (AIAction_PerformActionTargetFaceAndWait(CCreatureAction_PlayAnimation(GetCreature(), "PROJECTILE_WEAPON_LOAD",
+#36 00842570 CCreatureAction_PlayAnimation [??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@ABVCSoundPair@@_N33JJ@Z]
+  00842570(self) leaf=- inc=0
+      L28: CCreatureAction_PlayAnimation(CThingCreatureBase* owner, CAnimationEntry* animation, const CSoundPair& sound,
+      L32: CCreatureAction_PlayAnimation::CCreatureAction_PlayAnimation(CThingCreatureBase* owner, CAnimationEntry* animation, const CSoundPair& sound,
+  00842e40 leaf=??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationE inc=0
+      L18: CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CCharString& animName, const CSoundPair& sound,
+      L20: CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CAnimationEntry& anim, const CSoundPair& sound,
+      L22: CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CAnimationEntry& anim, bool stayOnLastFrame, bool looping,
+      ... 1 more
+  00914f00 leaf=?PerformRandomLengthCrying@CAIStateGroup_KidHurtSelfRunToMother@@QAE?AW4EAIActionReturn@@X inc=16
+      L84: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L92: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L99: result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+  0093c6d0 leaf=SetWhatsThatAnimation inc=7
+      L83: CCreatureAction_PlayAnimation(CThingCreatureBase& creature, const CAnimationEntry& animation,
+      L105: long result = AIAction_PerformAction(CCreatureAction_PlayAnimation(*(CThingCreatureBase*)GetCreature(), animation, CSoundPair(),
+  0097fa00 leaf=?AIAction_MinionIdle@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ inc=3
+      L45: CCreatureAction_PlayAnimation(CThingAICreature* creature, CAnimationEntry* animation,
+      L117: return AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(), false, true, false, 0, 0));
+  no-local-decl rows: 1 (0091b3a0)
+#37 00843a80 CCreatureAction_PlayAnimation [??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z]
+  00843a80(self) leaf=??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPai inc=3
+      L63: CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CCharString& animName, float transitionInTime,
+      L74: CCreatureAction_PlayAnimation::CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CCharString& animName,
+  0056a980 leaf=BoastTaken inc=2
+      L279: CCreatureAction_PlayAnimation(CThing* creature, const CCharString& animation, float blend,
+      L410: ((CThingCreatureBase*)(creature))->SetCurrentAction(CCreatureAction_PlayAnimation(creature, animation, 0.0f,
+  00911710 leaf=- inc=3
+      L79: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
+      L142: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+  009118a0 leaf=- inc=3
+      L79: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
+      L138: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+  00922860 leaf=?Update@CAIStateGroup_Drunk@@UAEXXZ inc=29
+      L146: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L149: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L189: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+  009574d0 leaf=- inc=2
+      L44: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
+      L83: long result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+#39 008b7ff0 CCreatureAction_PlayCombatAnimation [??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@_N@Z]
+  008b7ff0(self) leaf=- inc=0
+      L27: CCreatureAction_PlayCombatAnimation(CThingCreatureBase* owner, const CCharString& name, bool flag);
+      L30: CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation(CThingCreatureBase* owner, const CCharString& name, bool flag)
+  00712a80 leaf=?Update@CActionPlayCombatAnimation@NTCScriptedControl@@UAEXXZ inc=6
+      L36: else action=new CCreatureAction_PlayCombatAnimation(GetParentCreature(),Animation,UsePhysics);
+  008b80e0 leaf=??0CCreatureAction_PlayCombatAnimationWithLooking@@QAE@AAVCThingCreatureBase@@ABVCCharStri inc=0
+      L10: CCreatureAction_PlayCombatAnimation(CThingCreatureBase& creature, const CCharString& animation, bool flag);
+      L19: : CCreatureAction_PlayCombatAnimation(creature, animation, flag)
+  008c2550 leaf=?FinishAction@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ inc=20
+      L112: CCountedPointer<CCreatureActionBase> paction(new CCreatureAction_PlayCombatAnimation(*pthing_creature, "RUSH_OUTOF", true));
+  008df680 leaf=- inc=1
+      L96: CCreatureAction_PlayCombatAnimation(CThingCreatureBase&, const CCharString&, bool);
+      L164: owner->SetCurrentAction(CCreatureAction_PlayCombatAnimation(*owner, name, true));
+  0092a8a0 leaf=- inc=1
+      L58: CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);
+      L143: && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), firstAnim, true), false) != 2;
+      L147: && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), secondAnim, true), false) != 2;
+  0092ace0 leaf=?GoToLibrary@CAIStateGroup_ApprenticeHero@@IAE_NXZ inc=12
+      L76: bool failed = AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), "ST_TRAINEE_PERUSE_LIBRARY", true),
+  0092ae70 leaf=?LookAtLeaderBoard@CAIStateGroup_ApprenticeHero@@IAE_NXZ inc=13
+      L100: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), animation, true), false) != 2;
+  0092afe0 leaf=?LookAtMap@CAIStateGroup_ApprenticeHero@@IAE_NXZ inc=13
+      L87: if (AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), "ST_TRAINEE_LOOK_AT_MAP_TABLE", true), false) != 2)
+  0092b3e0 leaf=- inc=1
+      L69: CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);
+      L151: && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), firstAnim, true), false) != 2;
+      L155: && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), secondAnim, true), false) != 2;
+  0094dd90 leaf=?Update@CAIStateGroup_RockTroll@@MAEXXZ inc=27
+      L99: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), "LOOK_BACKWARD", true), false);
+      L101: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), "LOOK_FORWARD", true), false);
+      L184: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), "SPECIAL_BOAST", true), false);
+  0094e7b0 leaf=?Update@CAIStateGroup_EarthTroll@@MAEXXZ inc=26
+      L131: AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), "TURNING_AC90", true), false);
+      L133: AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), "TURNING_C90", true), false);
+      L225: AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), "SPECIAL_BOAST", true), false);
+  009551a0 leaf=?Update@CAIStateGroup_MazeRangedCombat@@UAEXXZ inc=14
+      L78: CCreatureAction_PlayCombatAnimation(creature, animation, true), false);
+  0095b680 leaf=- inc=0
+      L36: CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);
+      L65: AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), animation, true), false);
+  009621f0 leaf=?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ inc=5
+      L109: CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);
+      L183: &CCreatureAction_PlayCombatAnimation(GetCreature(), "ICICLE_BOAST", true), false);
+  009624d0 leaf=?Update@CAIStateGroup_IceTrollPoundGroundAttack@@QAEXXZ inc=3
+      L140: CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);
+      L200: CCreatureAction_PlayCombatAnimation(GetCreature(), "LOOK_BACKWARD", true), false);
+      L207: CCreatureAction_PlayCombatAnimation(GetCreature(), "LOOK_FORWARD", true), false);
+  009735d0 leaf=?RushToPos@CAIStateGroup_JackOfBladesBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z inc=14
+      L70: CCountedPointer<CCreatureActionBase> final_action(new CCreatureAction_PlayCombatAnimation(GetCreature(),"RUSH_OUTOF",true));
+  00973dc0 leaf=?SummonPillars@CAIStateGroup_JackOfBladesBase@@IAEXXZ inc=20
+      L107: result=AIAction_PerformAction(CCreatureAction_PlayCombatAnimation(GetCreature(),"SUMMON_LOOP",true));
+  00974110 leaf=?Summon@CAIStateGroup_JackOfBladesBase@@IAEXJ_N@Z inc=32
+      L143: result = AIAction_PerformAction(CCreatureAction_PlayCombatAnimation(GetCreature(), "SUMMON_LOOP", true));
+  00974770 leaf=?PowerUpSword@CAIStateGroup_JackOfBladesStage1@@IAEXXZ inc=15
+      L70: AIAction_PerformAction(CCreatureAction_PlayCombatAnimation(GetCreature(), "SUMMON_INTO", true));
+      L85: AIAction_PerformAction(CCreatureAction_PlayCombatAnimation(GetCreature(), "SUMMON_LOOP", true));
+      L111: AIAction_PerformAction(CCreatureAction_PlayCombatAnimation(GetCreature(), "SUMMON_OUTOF", true));
+  009756b0 leaf=?Update@CAIStateGroup_JackOfBladesStage3@@UAEXXZ inc=21
+      L127: AIAction_PerformAction(CCreatureAction_PlayCombatAnimation(GetCreature(), "STUMBLE", true));
+#40 008427e0 CCreatureAction_PlayIntoLoopOutOfAnimation [??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z]
+  008427e0(self) leaf=??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@ inc=3
+      L68: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& intoAnimName,
+      L71: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& intoAnimName,
+      L75: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& loopAnimName,
+      ... 2 more
+  0057b783 leaf=Vomit inc=5
+      L53: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+  0093a5c0 leaf=Eat@CAIStateGroup_BanditSitRoundCampfire inc=1
+      L40: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+      L76: CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, duration,
+      L86: CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, eatDuration,
+  0093a7a0 leaf=?Singsong@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ inc=9
+      L78: CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, singsong_time, false, 0, 0), false);
+  0093a8c0 leaf=- inc=5
+      L74: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+      L111: CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, duration,
+  009689c0 leaf=LeanOnBar inc=4
+      L50: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+      L118: result = AIAction_PerformAction(CCreatureAction_PlayIntoLoopOutOfAnimation(
+#41 008428b0 CCreatureAction_PlayIntoLoopOutOfAnimation [??0CCreatureAction_PlayIntoLoopOutOfAnimation@@AAE@AAVCThingCreatureBase@@ABVCCharString@@1JM_NJJ@Z]
+  008428b0(self) leaf=??0CCreatureAction_PlayIntoLoopOutOfAnimation@@AAE@AAVCThingCreatureBase@@ABVCCharString@@ inc=2
+      L51: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& intoAnimName,
+      L54: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& intoAnimName,
+      L58: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& loopAnimName,
+      ... 2 more
+  00843c10 leaf=?FinishAction@CCreatureAction_PlayIntoLoopOutOfAnimation@@UAEXXZ inc=0
+      L59: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* owner, const CCharString& loopAnimName,
+      L61: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* owner, const CCharString& animName,
+      L73: GetCreature()->SetCurrentAction(CCreatureAction_PlayIntoLoopOutOfAnimation(GetCreature(), LoopAnimName, OutOfAnimName,
+      ... 2 more
+#42 008bd880 CCreatureAction_RiseUp [??0CCreatureAction_RiseUp@@QAE@AAVCThingCreatureBase@@@Z]
+  008bd880(self) leaf=- inc=0
+      L37: CCreatureAction_RiseUp(CThingCreatureBase* owner);
+      L40: CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase* owner)
+  008bc1a0 leaf=?PerformAction@CCreatureAction_CastWillRaiseDeadSpell@@UAEXXZ inc=4
+      L291: CCreatureAction_RiseUp(CThingCreatureBase& creature);
+      L333: creature->SetCurrentAction(CCreatureAction_RiseUp(*creature));
+  008c4fd0 leaf=?CreateBabies@CCreatureAction_ScorpionSummon@@AAEXXZ inc=22
+      L115: creature->SetCurrentAction(CCreatureAction_RiseUp(*creature));
+  00920960 leaf=?OnReplace@CAIStateGroup_CreatureIdleUnderground@@UAEXXZ inc=11
+      L52: GetCreature().SetCurrentAction(CCreatureAction_RiseUp(GetCreature()));
+  00920dc0 leaf=?OnReplace@CAIStateGroup_CreatureSeekEnemyUnderground@@UAEXXZ inc=15
+      L81: GetCreature().SetCurrentAction(CCreatureAction_RiseUp(GetCreature()));
+  0094dbc0 leaf=?ForceRiseUp@CAIStateGroup_TrollBase@@IAEXXZ inc=28
+      L94: AIAction_PerformActionAndWait(CCreatureAction_RiseUp(GetCreature()), false);
+  009621f0 leaf=?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ inc=5
+      L105: CCreatureAction_RiseUp(CThingCreatureBase* creature);
+      L153: long result = AIAction_PerformActionAndWait(CCreatureAction_RiseUp(GetCreature()), false);
+  009624d0 leaf=?Update@CAIStateGroup_IceTrollPoundGroundAttack@@QAEXXZ inc=3
+      L136: CCreatureAction_RiseUp(CThingCreatureBase* creature);
+      L181: long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_RiseUp(GetCreature()), true);

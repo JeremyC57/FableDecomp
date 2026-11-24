@@ -9,7 +9,7 @@
 // Shape: byte count = VertexCount * max(reps, 1) * vertex size; the direct read when the file format matches InitFlags or
 // the mesh repeats, else a byte vector (GetData idiom: its own address when empty) converted into the buffer; finally
 // the compression params block-copied into the buffer (rep movsd).
-// Leaf: LoadVertexBuffer@C3DPrimitive2
+// Leaf: ?LoadVertexBuffer@C3DPrimitive2@@AAEXAAVCMemoryDataInputStream@@KKKAAVCVertexCompressionParams@@@Z
 extern "C" void __cdecl free(void* p);              // 0x00BFEA14
 // NF149 (q4552 / q4559 / q4560): the vertex buffer is the shared retail CVertexBufferWin32 (engine/CVertexBufferWin32.h, which brings
 // engine/CVertexCompressionParams.h; Ego_r.pdb + FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0); was a local
@@ -41,7 +41,9 @@ class C3DPrimitive2 { public:
     unsigned long VertexCount;                      // +0x58
     unsigned char _5c[0x0c];
     unsigned long InitFlags;                        // +0x68
+    private:
     void LoadVertexBuffer(CMemoryDataInputStream& in, unsigned long vertexType, unsigned long vertexSize, unsigned long fileFormat, CVertexCompressionParams& params);
+    public:
 };
 
 void C3DPrimitive2::LoadVertexBuffer(CMemoryDataInputStream& in, unsigned long vertexType, unsigned long vertexSize, unsigned long fileFormat, CVertexCompressionParams& params)

@@ -1,3 +1,5 @@
+// NF272 (2026-11-22): the stub follows the row onto ?ReleaseBuffers@CWaterPatchMesh@@QAEXXZ (0x00BEAA00), the header opt-in below.
+#define FABLE_RETAIL_LANDSCAPE_PATCH_UPDATE_FOREGROUND_RELEASEBUFFERS
 #include <stdio.h>
 #include <string.h>
 #include "candidates/landscape_patch_update_foreground_compiled.h"
@@ -19,7 +21,7 @@ bool CEngineLandscapeMap::IsBackgroundAtFullDetailInArea(
     return g_backgroundReady && x == 7 && y == 9 && width == 0x10 && height == 0x10;
 }
 
-void CWaterPatchMesh::ClearTextures() { ++g_clearCalls; }
+void CWaterPatchMesh::ReleaseBuffers() { ++g_clearCalls; }
 void CBankFileAsyncData::DiscardAsyncData() { ++g_discardCalls; }
 void CEngineLandscapePatch::DeleteLayerMeshes() { ++g_deleteCalls; }
 

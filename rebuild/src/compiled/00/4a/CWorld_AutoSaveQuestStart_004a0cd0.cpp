@@ -39,7 +39,10 @@ protected:
     void StopAutoSaveProgress();                                                            // 0x0049E8C0  NF35: protected (IAE)
 public:
     static void __fastcall DeleteCheckPointSave();                                          // 0x0049E740
-    bool AutoSaveInternal(const CWideString& name, bool b);                                 // 0x004A0850
+    protected:
+    bool AutoSaveInternal(const CWideString& name, bool b);
+    public:
+                                 // 0x004A0850
     bool AutoSaveQuestStart();
 };
 

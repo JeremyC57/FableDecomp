@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CBalverineBattleDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CBalverineBattleDef_GetSizeofClass()
+class CBalverineBattleDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CBalverineBattleDef::GetSizeofClass()
 {
     return 72;
 }

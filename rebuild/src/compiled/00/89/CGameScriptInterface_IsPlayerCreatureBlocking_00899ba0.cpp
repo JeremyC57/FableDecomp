@@ -1,4 +1,7 @@
+// Leaf: ?IsPlayerCreatureBlocking@CGameScriptInterface@@UBE_NXZ
 // CGameScriptInterface::IsPlayerCreatureBlocking @ 00899ba0
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 struct Node { int key; void* val; };
 
 class CThingPlayerCreature;
@@ -12,8 +15,9 @@ struct KeyArg { int* p; };
 extern Node* __fastcall LowerBound(void* tree, KeyArg k);
 extern char  __fastcall CheckBlocking(void* obj);
 
-bool __fastcall CGameScriptInterface_IsPlayerCreatureBlocking(void* self)
+bool CGameScriptInterface::IsPlayerCreatureBlocking() const
 {
+    void* self = (void*)this;
     CPlayer* mgr = (&((CPlayerManager*)(*(void**)((char*)self + 0x14)))->GetMainPlayer());
     CThingPlayerCreature* e = mgr->GetPControlledCreature();
     if (e && !(*(unsigned char*)((char*)e + 0x91) & 1)
@@ -31,3 +35,4 @@ bool __fastcall CGameScriptInterface_IsPlayerCreatureBlocking(void* self)
     }
     return false;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_IsPlayerCreatureBlocking -> CGameScriptInterface::IsPlayerCreatureBlocking, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

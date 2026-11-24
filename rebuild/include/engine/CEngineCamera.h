@@ -10,6 +10,10 @@ class CCamera;
 class CEngineCamera:public CEngineComponent {
 public:
  CEngineCamera(bool);
+#ifdef FABLE_RETAIL_SCENEGRID_VISIBILITY_PASS27
+ // Ego_r and FableWin names, retail 0x00B308E0.
+ bool ClipWorldSpaceBoundingBox(const class C3DBoundingBox& box, float max_draw_dist, bool& all_inside) const;
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_SETGAMEWINDOW
  // NF172 opt-in (row 0x00B2FC00): Ego_r.pdb 0x009D0510 / FableWin.pdb 0x02DC15E0 ?SetGameWindow@CEngineCamera@@QAEXPBVC2DBoxF@@@Z
  // (stores the argument in GameWindow +0x10; CEngine::SetWindow 0x00B23B80 tail-jumps here on the engine camera). Declaration only.
@@ -115,6 +119,15 @@ public:
   point.Y=WindowCenterY-one_over_z*HalfWindowHeight*point.Y;
  }
 #endif
+#ifdef FABLE_RETAIL_PROJECT_TEXT_PASS27
+ // Raw FableWin 02C9F690 stores reciprocal depth transformed by Factor and Offset.
+ void TransformViewToScreen(const C3DVector& from,C3DVector& to)const {
+  const float invz=1.0f/from.Z;
+  to.X=WindowCenterX+from.X*invz*HalfWindowWidth;
+  to.Y=WindowCenterY-from.Y*invz*HalfWindowHeight;
+  to.Z=ZBufferFactor*invz+ZBufferOffset;
+ }
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_VIEWTOSCREEN_TWO_ARGS
  // Retail opt-in (Codex pass 24): Ego_d Engine.obj 119- and 35-byte two-argument methods,
  // FableWin 0x02C9F690/0x02C9F730; 0x00B242D0 expands the two view transformations.
@@ -155,6 +168,14 @@ public:
 #endif
 #endif
 private:
+#ifdef FABLE_RETAIL_CENGINECAMERA_DEBUGSCRIPT_PASS26
+ // FableWin 0x02DC0580 and the Ego_d engine_camera.obj procedure record.
+ void ProcessDebugScript();
+#ifdef FABLE_RETAIL_CENGINECAMERA_SETSTATE_CONTEXT_PASS26
+ // Both donor PDBs identify SetupGamut. The native setter calls it at 00B3110F.
+ void SetupGamut();
+#endif
+#endif
  const CCamera* GameCamera;
  const C2DBoxF* GameWindow;
  CEngineCameraDesc CameraDesc;
@@ -167,7 +188,12 @@ private:
  C3DVector LookVector;
  CPlane FrustrumPlanes[4];
  long ConsoleOverrideViewPortWidth,ConsoleOverrideViewPortHeight;
+#ifdef FABLE_RETAIL_CENGINECAMERA_DEBUGSCRIPT_PASS26
+ // FableWin CArray<CDebugScriptElement>::operator[] mangles the nested element as a struct.
+ struct CDebugScriptElement {C3DVector WorldPos,LookVector;float FOV,TimeToNextElement;};
+#else
  class CDebugScriptElement {public:C3DVector WorldPos,LookVector;float FOV,TimeToNextElement;};
+#endif
  CArray<CDebugScriptElement> DebugScript;
  long CurrentDebugScriptElement;
  bool DebugScriptRunning;
@@ -206,6 +232,13 @@ public:
     // Retail opt-in (chunk 792, row 0x00B5A3F0 CEngineScreenEffectColourFilter::ApplyColourFilter): Ego_r.pdb / FableWin.pdb
     // ?RefreshD3DTransforms@CEngineCamera@@QAEXXZ (landed 0x00B2FC50), called on the camera component pointer 0x01436EA0. Declaration only.
     void RefreshD3DTransforms();                                         // 0x00B2FC50
+#endif
+#ifdef FABLE_RETAIL_CENGINECAMERA_SETGAMECAMERA_PROCESS_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x00B23B50 CEngine::SetCamera): Ego_r.pdb / FableWin.pdb ?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z
+    // (retail 0x00B2FBF0) and ?Process@CEngineCamera@@QAEX_N@Z (landed 0x00B314E0), the two calls of the donor FableWin CEngine::SetCamera,
+    // made on the camera component pointer 0x01436EA0. Declarations only.
+    void SetGameCamera(const class CCamera* camera);                     // 0x00B2FBF0
+    void Process(bool force);                                            // 0x00B314E0
 #endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_NOSCALEVIEWTRANSFORM
     // Chunk 764 (row 0x00B451D0 CEngineLightingManager::CalculateFogTransformMatrix): Ego_r.pdb NoScaleViewTransform (CMatrix3x4) at +0x114,

@@ -1,0 +1,3 @@
+entry	address	status	binders respelled	note
+1 CWaterPatchMesh unit + 0x00BFDD40 split	0x00BEAA00 / 0x00BEAAA0 / 0x00BEB4D0 / 0x00BFDD40	done	0x00BF4220 (ClearTextures -> ReleaseBuffers), 0x00BF38F0 (ClearBlock@CTextureOwner -> DeleteForegroundVertexBuffer); vtable-slot binder 0x00BEB490 already binds ??_GCWaterPatchMesh (unchanged, HEAD debt copy: Q1)	first measurement: 0x00BF4220's HEAD object binds ?ClearTextures@CWaterPatchMesh@@QAEXXZ x2 (evidence/bf4220_head_binding.txt); 4 self renames, 2 binder respells, 2 header opt-ins
+2 D4 one definition	0x00BDA150 / 0x00BD9CE0	open	-	not started (handed back after entry 1: context)

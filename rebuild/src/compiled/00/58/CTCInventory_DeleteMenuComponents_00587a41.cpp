@@ -144,7 +144,7 @@ class CTCInventory { public:
     long          CurrentScreen;                            // +0x21C
 
     void BaseDeleteMenuComponents();                        // 0x00556470
-    void ClearHighlights(long value);                       // 0x00582414
+    void DeactivateAllEditBoxes(bool value);                // 0x00582414 (NF306: Ego_r + FableWin ?DeactivateAllEditBoxes@CTCInventory@@QAEX_N@Z; was ClearHighlights(long))
     void ClosePCScoreboard();                               // 0x00584AF6
     void ClosePCMapMenu();                                  // 0x00584FE3
     void ClosePCInventoryMenu();                            // 0x00584B42
@@ -155,7 +155,7 @@ class CTCInventory { public:
 void CTCInventory::DeleteMenuComponents()
 {
     BaseDeleteMenuComponents();
-    ClearHighlights(0);
+    DeactivateAllEditBoxes(false);
     EditBoxes.clear();
     switch (CurrentScreen) {
     case 1:

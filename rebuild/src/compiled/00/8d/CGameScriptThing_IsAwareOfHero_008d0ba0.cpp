@@ -1,3 +1,4 @@
+// Leaf: ?IsAwareOfHero@CGameScriptThing@@UBE_NXZ
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // CGameScriptThing::IsAwareOfHero() -- true when the live thing's perception component (interface 0x34) has the player in
@@ -44,13 +45,13 @@ public:
     bool IsPlayerExtendedLineOfSight() const;   // 0x00744830
 };
 class CGameScriptThing { public:
-    unsigned char _base00[0x0c];
+    unsigned char _base00[0x8];                  // +0x04 (the vptr takes +0x00)
     CIntelligentPointer<CThing> PThing;                 // +0x0c
-    bool IsAwareOfHero();
+    virtual bool IsAwareOfHero() const;
 };
-bool CGameScriptThing::IsAwareOfHero()
+bool CGameScriptThing::IsAwareOfHero() const
 {
-    CIntelligentPointer<CThing>* p = &PThing;
+    const CIntelligentPointer<CThing>* p = &PThing;
     CThing* thing;
     if (p->Get() && !p->Get()->Dead && (thing = p->Get())->UsingComponents[0x34 >> 5] & (1UL << (0x34 & 31))) {
         ETCInterfaceType kind = (ETCInterfaceType)(0x34);

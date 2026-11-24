@@ -1,5 +1,5 @@
 // CSteeringAgent::IsCurrentNavigabilityBetter() const -- 1 when the current best left or right clearance exceeds the corresponding clearance at the next waypoint, else 0
-// Leaf: IsCurrentNavigabilityBetter
+// Leaf: ?IsCurrentNavigabilityBetter@CSteeringAgent@@QAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A1A1A0, 35 bytes (+13 int3 padding). No callees. Caller 0x00A1F4A8.
 // Layout: Ego_r.pdb CSteeringAgent with retail's 4-byte lists (the PDB's three 12-byte lists at +0xC/+0x18/+0x24 are
 // one word each here, so everything after them sits 0x18 lower): BestDistLeft +0x40 (PDB +0x58), BestDistRight +0x44,
@@ -28,10 +28,10 @@ class CSteeringAgent { public:
     float                        BestDistRight;               // +0x44
     float                        BestNextDistLeft;            // +0x48
     float                        BestNextDistRight;           // +0x4C
-    long IsCurrentNavigabilityBetter() const;
+    bool IsCurrentNavigabilityBetter();
 };
 
-long CSteeringAgent::IsCurrentNavigabilityBetter() const
+bool CSteeringAgent::IsCurrentNavigabilityBetter()
 {
     return BestDistLeft > BestNextDistLeft || BestDistRight > BestNextDistRight;
 }

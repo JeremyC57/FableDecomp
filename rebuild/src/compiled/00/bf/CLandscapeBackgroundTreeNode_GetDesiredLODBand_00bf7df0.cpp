@@ -75,7 +75,7 @@ public:
         return 7;
     }
 };
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;            // 0x01436EA8
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }   // 0x01436EA8 (Ego_r / FableWin / Ego_d PDB spelling)
 
 class CLandscapeBackgroundTreeNode {
 public:
@@ -90,7 +90,7 @@ public:
 
 long CLandscapeBackgroundTreeNode::GetDesiredLODBand()
 {
-    long band = g_pLandscapeRenderer->GetLODZBandAtZ(BoundingBox.CalcShortestDistanceToPoint(NEngineInternal::GPCamera->WorldPosition));
+    long band = NEngineInternal::GPLandscapeRenderer->GetLODZBandAtZ(BoundingBox.CalcShortestDistanceToPoint(NEngineInternal::GPCamera->WorldPosition));
     if (band < FirstBand)
         return FirstBand;
     if (band > LastBand)

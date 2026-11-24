@@ -1,0 +1,5 @@
+06:07:13 PASS /home/user/FableDecomp/rebuild/tests/00/90/CAIStateGroupMinionReactToAlert_Initialise_0090f0d0_test.cpp
+06:07:13 PASS /home/user/FableDecomp/rebuild/tests/00/95/CAIStateGroupHoverHornetQueen_Initialise_0095a890_test.cpp
+06:07:14 FAIL /home/user/FableDecomp/rebuild/tests/00/89/CGameScriptInterface_GiveHeroYesNoQuestion_0089e540_test.cpp
+06:07:14 PASS /home/user/FableDecomp/rebuild/tests/00/7b/CTCTrespasser_SeeIfAnyOccupantsKnowAboutDeed_007bb150_test.cpp
+06:07:20 PASS /home/user/FableDecomp/rebuild/tests/00/7b/CTCTrespasser_SeeIfAnyOccupantsKnowAboutDeed_007bb150_test.cpp

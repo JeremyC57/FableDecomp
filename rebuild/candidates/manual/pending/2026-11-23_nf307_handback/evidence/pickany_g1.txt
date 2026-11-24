@@ -1,0 +1,27 @@
+# ??0CPlayerSave@NPlayerManager@@QAE@XZ
+REF obj/00449e60.obj len=15 relocs=1
+EQUAL hobj/00449f90.obj len=15
+# ??1CPlayerSave@NPlayerManager@@QAE@XZ
+REF obj/00449e60.obj len=8 relocs=1
+EQUAL hobj/00449f90.obj len=8
+# COMDAT census of the renamed names over every compiled object (g1 + g1x controls):
+00449e60.obj DEF ??0CPlayerSave@NPlayerManager@@QAE@XZ
+00449e60.obj DEF ??1CPlayerSave@NPlayerManager@@QAE@XZ
+00449f90.obj DEF ??0CPlayerSave@NPlayerManager@@QAE@XZ
+00449f90.obj DEF ??1CPlayerSave@NPlayerManager@@QAE@XZ
+00487ef0.obj DEF ?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+006b84e0.obj DEF ??0CRadialBlurPositionParams@@QAE@XZ
+006b8640.obj DEF ??0CRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAE@ABU01@@Z
+006b8640.obj DEF ?GetCurrentRadialBlurParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurParams@CEnvironmentSpellEffectInterface@@XZ
+006b8640.obj DEF ?GetCurrentRadialBlurPositionParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@XZ
+006b8640.obj DEF ?GetCurrentScreenFilterParams@CScreenEffectPriorityStack@@QBE?AUCScreenFilterParams@CEnvironmentSpellEffectInterface@@XZ
+00880a40.obj DEF ?SetTrackPositions@CRadialBlurPositionParams@@QAEXW4ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION@@0@Z
+00882c90.obj DEF ??0CRadialBlurPositionParams@NScreenEffect@@QAE@ABU01@@Z
+00884f60.obj DEF ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z
+008852e0.obj DEF ??0CRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAE@XZ
+H_00449e60.obj DEF ??0CPlayerSave@@QAE@XZ
+H_00449e60.obj DEF ??1CPlayerSave@@QAE@XZ
+H_006b8640.obj DEF ??0CRadialBlurPositionParams@@QAE@ABU0@@Z
+H_006b8640.obj DEF ?GetCurrentRadialBlurParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurParams@@XZ
+H_006b8640.obj DEF ?GetCurrentRadialBlurPositionParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurPositionParams@@XZ
+H_006b8640.obj DEF ?GetCurrentScreenFilterParams@CScreenEffectPriorityStack@@QBE?AUCScreenFilterParams@@XZ

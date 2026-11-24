@@ -1,5 +1,5 @@
 // CTCHeroOnlineScoreboard::CreateStringFromMyScores() -- builds the upload document: header lines, the signed-in user name and session ID, then per locally recorded activity its id, "LIB"/"HIB" (lower/higher is better) and the best score to 6 digits, one item per line
-// Leaf: CreateStringFromMyScores
+// Leaf: ?CreateStringFromMyScores@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ
 // Retail: Fable.exe @ 0x0055F480, 549 bytes, `ret 4` (hidden CCharString result), `and esp,-8` frame (double argument).
 // Ego_r.pdb `?CreateStringFromMyScores@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / (const CCharString&) 0x0099EC30 / ~ 0x0099EAE0, operator+(const
@@ -94,7 +94,9 @@ public:
     CActivityVector ActivityInfo;                    // +0x28
     CCharString     SessionID;                       // +0x34
     CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return ((CWideString*)&name)->ToCharString(); }
+    private:
     CCharString CreateStringFromMyScores();
+    public:
 };
 
 CCharString CTCHeroOnlineScoreboard::CreateStringFromMyScores()

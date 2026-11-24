@@ -1,5 +1,5 @@
 // CTCVillage::HomeUsersAreAsleep(CThingBuilding* home) -- true when the building has at least one living villager calling it home and every such villager is in creature mode 13 (asleep)
-// Leaf: HomeUsersAreAsleep
+// Leaf: ?HomeUsersAreAsleep@CTCVillage@@AAE_NPAVCThingBuilding@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 004ab8f0: ?IS_THING_ALIVE@@YI_NABUCBaseIntelligentPointer@@@Z -> ?IS_THING_ALIVE@@YI_NABVCBaseIntelligentPointer@@@Z
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065AC83, 180 bytes (`ret 4`, `leave`): frame-pointer size TU,
@@ -97,7 +97,9 @@ struct CPeopleList {                            // retail STLport list: the head
 class CTCVillage { public:
     unsigned char _pad_0x00[0x2c];
     CPeopleList   VillagePeople;                // +0x2c
+    private:
     bool HomeUsersAreAsleep(CThingBuilding* home);
+    public:
 };
 
 bool CTCVillage::HomeUsersAreAsleep(CThingBuilding* home)

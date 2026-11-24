@@ -8,6 +8,32 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_SERVEFOODATHOME_VIRTUAL_MODEL
+// Opt-in (NF327, 2026-11-24, NF325 Q2 ruling; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128CEFC (RTTI .?AVCAIStateGroup_ServeFoodAtHome@@ : CAIStateGroup_ServeFood), 17 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_ServeFoodAtHome); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF327 evidence/probe_servefood.txt).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS,
+// FABLE_RETAIL_CAISTATEGROUP_SERVEFOOD_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_ServeFood.h"
+class CThingBuilding;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_ServeFoodAtHome : public CAIStateGroup_ServeFood {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual bool IsTime();                                                // slot 14 0x00923AA0 ?IsTime@CAIStateGroup_ServeFoodAtHome@@MAE_NXZ
+    virtual CThingBuilding* GetBuilding();                                // slot 15 0x00902CA7 ?GetBuilding@CAIStateGroup_ServeFoodAtHome@@MAEPAVCThingBuilding@@XZ
+    virtual bool SetPlaceForSelf();                                       // slot 16 0x00901A2A ?SetPlaceForSelf@CAIStateGroup_ServeFoodAtHome@@MAE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_ServeFoodAtHome) == 0x4c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -23,5 +49,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_ServeFoodAtHome) == 0x4c);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_ServeFoodAtHome, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_SERVEFOODATHOME_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_SERVEFOODATHOME_H

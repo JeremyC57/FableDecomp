@@ -1,97 +1,56 @@
-// NUISystem::CManager::SetMetaLayer(long metaLayer) -- clamp the meta layer to [0, 4], store it (+0x7c) and rebuild the UI-layer -> engine 2D layer map (+0x70): meta layer 0 gets the fixed table 0x40..0x51 for keys -3..13, any other meta layer maps keys -3..7 onto a run starting at the per-meta-layer base
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0041E1CD, length 485 bytes. Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)`.
-// Callees: the layer tree's operator[] @ 0x0042D246 (const long& -> long&; see the landed GetLayer 0x0041E3B2). Data: the per-meta-layer
-//   base table @ 0x01230118.
-// Layout (retail NUISystem::CManager, as in the landed GetLayer 0x0041E3B2): layer tree +0x70, meta layer +0x7c; engine/CManager.h is the
-//   PDB view (Layers +0x94, MetaLayer +0xa4), so the class is modelled locally.
-// Shape: the clamp constants 4 and 5 are hoisted into edi/ebx (`push 4 ; pop edi`) and reused as the keys 4 and 5; every key is a
-//   const-ref temporary homed in the dead argument slot [ebp+8]. The map operator[] body is visible in the retail TU (same-TU
-//   template instance), so VC knows the key's address does not escape and hoists the `or [ebp+8],-1` / `and [ebp+8],0` key stores
-//   above the previous value store; a same-TU noinline stand-in that reads the key by value reproduces that.
-#pragma optimize("y", off)
-#pragma optimize("s", on)
-enum EEngine2DLayer { E2DL_FIRST = 0x40 };
-struct CLayerTree {
-    EEngine2DLayer& Find(long key);
-    __declspec(noinline) EEngine2DLayer& operator[](const long& key) { return Find(key); }   // stand-in for the same-TU map operator[] @ 0x0042D246
-    unsigned char _d[8];
-};
-extern long g_metaLayerBase[5];                    // 0x01230118
-
-namespace NUISystem {
-class CManager { public:
-    unsigned char _pad[0x70];
-    CLayerTree    m_layers;                        // +0x70
-    unsigned char _pad78[4];
-    long          m_metaLayer;                     // +0x7c
-    void SetMetaLayer(long metaLayer);
-};
-
-void CManager::SetMetaLayer(long metaLayer)
-{
-    if (metaLayer < 0)
-        metaLayer = 0;
-    else if ((unsigned long)metaLayer >= 5)
-        metaLayer = 4;
-    m_metaLayer = metaLayer;
-    if (metaLayer == 0) {
-        m_layers[-3] = (EEngine2DLayer)0x40;
-        m_layers[-2] = (EEngine2DLayer)0x41;
-        m_layers[-1] = (EEngine2DLayer)0x42;
-        m_layers[0] = (EEngine2DLayer)0x43;
-        m_layers[1] = (EEngine2DLayer)0x44;
-        m_layers[2] = (EEngine2DLayer)0x45;
-        m_layers[3] = (EEngine2DLayer)0x46;
-        m_layers[4] = (EEngine2DLayer)0x47;
-        m_layers[5] = (EEngine2DLayer)0x49;
-        m_layers[6] = (EEngine2DLayer)0x4a;
-        m_layers[7] = (EEngine2DLayer)0x4b;
-        m_layers[8] = (EEngine2DLayer)0x4c;
-        m_layers[9] = (EEngine2DLayer)0x4d;
-        m_layers[10] = (EEngine2DLayer)0x4e;
-        m_layers[11] = (EEngine2DLayer)0x4f;
-        m_layers[12] = (EEngine2DLayer)0x50;
-        m_layers[13] = (EEngine2DLayer)0x51;
-    } else {
-        long base = g_metaLayerBase[metaLayer];
-        for (long i = -3; i <= 7; i++) {
-            long key = i;
-            m_layers[key] = (EEngine2DLayer)(base + i + 2);
-        }
-    }
-}
-}
-
-// ---- test harness ----
+// Behaviour test for 0x0041E1CD NUISystem::CManager::SetMetaLayer (NF228) on engine/NUISystem_CManager.h. Links against the row object
+// (verify_and_land's second link: the test object leaves SetMetaLayer undefined), so the function under test is the row's own; it runs on
+// raw storage of the header's size whose Layers map (the header's map<long,EEngine2DLayer>) is constructed in place at the header offset.
+// Defined here: the per-meta-layer base table 0x01230118 (test values), the STLport rebalance stub; the map's out-of-line insert bodies
+// come from this test's own use of the map (same STLport COMDATs the row object calls).
+// Cases: meta layer 0 (the fixed table, keys -3..13), meta layers 1..4 (base + key + 2 for keys -3..7), clamping below 0 and at >= 5,
+// the stored meta layer, and an existing key overwritten (no second node).
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE
+#define FABLE_RETAIL_STLP_TREE_BOUNDS_BODY_PASS22
+#define FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_HINT_BODY
+#define FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
 #include <stdio.h>
-#include <string.h>
-static int fails = 0;
-#define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); ++fails; } } while (0)
-static EEngine2DLayer g_map[17];
-static int g_calls = 0;
-EEngine2DLayer& CLayerTree::Find(long key) { ++g_calls; return g_map[key + 3]; }
-long g_metaLayerBase[5] = { 0x40, 0x100, 0x200, 0x300, 0x400 };
+#include <stddef.h>
+#include <new>
+#include "engine/NUISystem_CManager.h"
+namespace std { template<> void _Rb_global<bool>::_Rebalance(_Rb_tree_node_base*, _Rb_tree_node_base*&) { } }
+long g_metaLayerBase[5] = { 0, 100, 200, 300, 400 };   // 0x01230118 (test values)
+typedef std::map<long, EEngine2DLayer> LayerMap;
+struct CManagerOffsets : NUISystem::CManager {        // never instantiated: names the protected members' offsets
+    static size_t LayersOffset() { return offsetof(CManagerOffsets, Layers); }
+    static size_t MetaLayerOffset() { return offsetof(CManagerOffsets, MetaLayer); }
+};
+static double g_store[sizeof(NUISystem::CManager) / sizeof(double) + 1];
+static int g_fails = 0;
+static void Check(bool ok, const char* what) { if (!ok) { printf("FAIL: %s\n", what); ++g_fails; } }
+static NUISystem::CManager* Manager() { return reinterpret_cast<NUISystem::CManager*>(g_store); }
+static LayerMap& Layers() { return *reinterpret_cast<LayerMap*>(reinterpret_cast<char*>(g_store) + CManagerOffsets::LayersOffset()); }
+static long MetaLayer() { return *reinterpret_cast<long*>(reinterpret_cast<char*>(g_store) + CManagerOffsets::MetaLayerOffset()); }
+static void Run(long meta) { Manager()->NUISystem::CManager::SetMetaLayer(meta); }
 int main()
 {
-    static NUISystem::CManager m;
-    static const long table0[17] = { 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51 };
-    memset(&m, 0, sizeof(m));
-    memset(g_map, 0, sizeof(g_map)); g_calls = 0;
-    m.SetMetaLayer(0);
-    CHECK(m.m_metaLayer == 0);
-    CHECK(g_calls == 17);
-    for (int i = 0; i < 17; ++i) CHECK((long)g_map[i] == table0[i]);
-    long tests[6] = { -5, 1, 2, 4, 5, 100 };
-    long expect[6] = { 0, 1, 2, 4, 4, 4 };
-    for (int t = 0; t < 6; ++t) {
-        memset(g_map, 0, sizeof(g_map)); g_calls = 0;
-        m.SetMetaLayer(tests[t]);
-        CHECK(m.m_metaLayer == expect[t]);
-        if (expect[t] == 0) { CHECK(g_calls == 17); CHECK((long)g_map[3] == 0x43); continue; }
-        CHECK(g_calls == 11);
-        for (long k = -3; k <= 7; ++k) CHECK((long)g_map[k + 3] == g_metaLayerBase[expect[t]] + k + 2);
-        for (long k = 8; k <= 13; ++k) CHECK((long)g_map[k + 3] == 0);
+    new (&Layers()) LayerMap();
+    { LayerMap warm; warm[1] = ENGINE_2D_LAYER_1; }      // instantiates the out-of-line insert bodies here
+    Run(0);
+    static const long fixed[17] = { 0x40,0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x49,0x4a,0x4b,0x4c,0x4d,0x4e,0x4f,0x50,0x51 };
+    bool ok = MetaLayer() == 0 && Layers().size() == 17;
+    for (long k = -3; k <= 13; ++k) ok = ok && Layers()[k] == (EEngine2DLayer)fixed[k + 3];
+    Check(ok, "meta layer 0: fixed table for -3..13");
+    for (long m = 1; m <= 4; ++m) {
+        Run(m);
+        ok = MetaLayer() == m && Layers().size() == 17;
+        for (long k = -3; k <= 7; ++k) ok = ok && Layers()[k] == (EEngine2DLayer)(g_metaLayerBase[m] + k + 2);
+        ok = ok && Layers()[13] == (EEngine2DLayer)0x51;  // keys 8..13 keep the earlier values
+        Check(ok, "meta layers 1..4: base + key + 2 for -3..7");
     }
-    if (fails == 0) printf("0041e1cd_TEST PASS\n");
-    return fails;
+    Run(-5);
+    Check(MetaLayer() == 0 && Layers()[0] == (EEngine2DLayer)0x43, "below 0 clamps to 0");
+    Run(9);
+    Check(MetaLayer() == 4 && Layers()[0] == (EEngine2DLayer)(400 + 2), "5 and above clamp to 4");
+    Run(5);
+    Check(MetaLayer() == 4 && Layers().size() == 17, "5 clamps to 4, no new nodes");
+    Layers().~LayerMap();
+    printf(g_fails ? "0041e1cd_TEST FAIL\n" : "0041e1cd_TEST PASS\n");
+    return g_fails ? 1 : 0;
 }

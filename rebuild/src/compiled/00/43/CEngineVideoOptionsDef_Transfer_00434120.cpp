@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CEngineVideoOptionsDef@@UAEXAAVCPersistContext@@@Z
 // CEngineVideoOptionsDef::Transfer(CPersistContext&) -- transfers video options in persistence order.
 // Retail 00434120, 244 bytes. Donor _quarantine/CEngineVideoOptionsDef.h
 // has a 0x40-byte base; native first member is +0x3c (all members -4).
@@ -7,7 +8,7 @@ class CPersistContext { public:
  template <class T> void Transfer(T& value); // 00431102
 };
 class CEngineVideoOptionsDef { public:
- unsigned char DefinitionBase[0x3c];
+ unsigned char DefinitionBase[0x38];
  int HiresTextureMemory;
  float LODErrorTolerance, CharacterLODErrorTolerance, DrawDistanceMultiplier;
  float DrawDistanceMinimum, DrawDistanceMaximum, RepeatedMeshDrawDistanceFactor;
@@ -17,7 +18,7 @@ class CEngineVideoOptionsDef { public:
  bool Enable2DDisplacement, Enable3DDisplacement, EnableGlow, EnableRadialBlur;
  bool EnableWaterReflection, EnableWeatherEffects, EnableColourFilter, EnableRepeatedMeshes;
  float WeatherDensity;
- void Transfer(CPersistContext& c);
+ virtual void Transfer(CPersistContext& c);
 };
 typedef char NativeVideoSize[(sizeof(CEngineVideoOptionsDef)==0x78)?1:-1];
 typedef char NativeVideoOffset[(offsetof(CEngineVideoOptionsDef,HiresTextureMemory)==0x3c)?1:-1];

@@ -12,7 +12,7 @@
 //   const CWideString&) 0x0099BFF0 (__fastcall), GFIntToWideString 0x00405F00 (__fastcall), wcscmp 0x00BFE94C,
 //   __char_traits_base<wchar_t, wint_t>::compare 0x00403C60 (inherited by char_traits<wchar_t>) (cdecl). Literals: L"" 0x0122D70C, L" " 0x0122D820, the four
 //   "TEXT_GUI_ACTION_MOVE_*" tags (narrow and wide), L"Invalid Movement!!" 0x0124AC14.
-// Globals: CMainGameComponent::Get() 0x013B86A0 (game-text bank +0x14), else g_pNewFrontendGameComponent 0x013B871C (+0x60),
+// Globals: CMainGameComponent::Get() 0x013B86A0 (game-text bank +0x14), else CNewFrontendGameComponent::Get() 0x013B871C (+0x60, GetTextBank()),
 //   as the landed NUISystem::CText::SetValue 0x0054F410.
 // Layout: retail CKeyRedefiner: Actions (STLport list<EGameAction>, 4 bytes: the header node) +0x19c, SubType +0x1a0.
 //   Action 0x3c is the movement action, sub-types 10..13 its directions.
@@ -98,12 +98,11 @@ private: public:
     NGameText::CDataBank* PGameTextDataBank;                                           // +0x14
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };
-class CNewFrontendGameComponent { public:
-    unsigned char         _pad00[0x60];
-    NGameText::CDataBank* PGameTextDataBank;                                           // +0x60
-    NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
-};
-extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;                        // 0x013B871C
+// NF229 (2026-11-22, q12616): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static) read
+//   through the header's inline CNewFrontendGameComponent::Get() (FableWin.pdb ?Get@CNewFrontendGameComponent@@SIPAV1@XZ), the bank
+//   (m_pTextBank +0x60) through GetTextBank() (FableWin.pdb ?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ), as
+//   0x0041CFB2 does; was the row-local CNewFrontendGameComponent model and the stand-in ?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A.
+#include "engine/CNewFrontendGameComponent.h"
 
 namespace std {
 template <class _Tp> struct _List_node {
@@ -133,8 +132,8 @@ public:
 
 void CKeyRedefiner::GetActionText(CWideString& text, const CCharString& symbol) const
 {
-    NGameText::CDataBank* bank = CMainGameComponent::Get() ? CMainGameComponent::Get()->GetGameTextDataBank()
-                                                      : g_pNewFrontendGameComponent->GetGameTextDataBank();
+    const NGameText::CDataBank* bank = CMainGameComponent::Get() ? CMainGameComponent::Get()->GetGameTextDataBank()
+                                                            : &CNewFrontendGameComponent::Get()->GetTextBank();
     if (Actions.front() == GAME_ACTION_MOVE) {
         switch (SubType) {
         case GAME_ACTION_SUB_TYPE_FORWARD:

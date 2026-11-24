@@ -5,7 +5,7 @@
 //   propagated twin), CCharString(const char*, long) 0x0099EBF0 for the by-value name argument, the screen's virtual
 //   slot 5 (+0x14) entry search, and the entry's second-base virtual slot 2 (+0x08) state query.
 // Local model: the CTCInventory screen vector sits at +0x0c (retail); no engine/ header declares these members.
-// Leaf: ?IsSaveMenuReceivingInput@CTCInventory@@QAE_NXZ
+// Leaf: ?IsSaveMenuReceivingInput@CTCInventory@@QBE_NXZ
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NF156 (2026-11-20, q4776): the local CEntryList / CListAllocator / CMenuEntry / CStateQuery / CComponentBase / CMenuScreen /
@@ -15,8 +15,10 @@
 //   +4; the stand-in called it IsInState(1) / (2)). Was ??1CEntryList@@QAE@XZ / ??0CEntryList@@QAE@ABU?$CListAllocator@PAUCMenuEntry@@@@@Z.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
-#define FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE
+// NF241 (2026-11-22, the list<CComponent*> family pass): the list calls bind _List_base<CComponent*>'s constructor 0x0042ABAF and
+//   destructor 0x0042ABCA (was FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE + _DTOR_OUTOFLINE, binding list's own names there; retail
+//   0x0042B6A6 / 0x0042B6D2 are list's size-optimised wrappers, a `call 0x0042ABAF` and a 5-byte `jmp 0x0042ABCA`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_VISIBLE_NOINLINE
 #include "stlport/fable_containers.h"
 #include "engine/NUISystem_CComponent.h"
 using NUISystem::CComponent;
@@ -28,9 +30,9 @@ struct CScreenVector {
 class CTCInventory { public:
     unsigned char _pad[0x0c];
     CScreenVector Screens;
-    bool IsSaveMenuReceivingInput();
+    bool IsSaveMenuReceivingInput() const;
 };
-bool CTCInventory::IsSaveMenuReceivingInput()
+bool CTCInventory::IsSaveMenuReceivingInput() const
 {
     unsigned long i = 0;
     for (; i < Screens.size(); ++i) {

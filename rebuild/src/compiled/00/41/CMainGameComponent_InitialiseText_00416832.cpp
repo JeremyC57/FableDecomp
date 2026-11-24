@@ -1,3 +1,4 @@
+// Leaf: ?InitialiseText@CMainGameComponent@@IAEXXZ
 // CMainGameComponent::InitialiseText() -- report progress, allocate and open the text bank.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail00416832 length170. Actual string and game-text headers included below.
@@ -32,7 +33,9 @@ namespace NLocalisation { CCharString __fastcall GetTextBankName(); } //00415260
 class CMainGameComponent { public:
     unsigned char BaseAndSampleBank[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;
+    protected:
     void InitialiseText();
+    public:
 };
 FABLE_STATIC_ASSERT(sizeof(NGameText::CDataBank)==0x214);
 FABLE_STATIC_ASSERT(sizeof(NGameText::CDataBank)==sizeof(NGameText::CDataBankDonor));

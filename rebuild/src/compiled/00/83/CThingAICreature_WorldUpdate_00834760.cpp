@@ -81,11 +81,14 @@ public:
     unsigned long* GetRandomSeed();                            // 0x004C7AE0
     void UpdateAction();                                       // 0x006643C0
     bool WorldUpdate();                                        // 0x006666A0
-    void UpdateAnimation(float distanceToCamera);              // 0x00665860
+    protected: void UpdateAnimation(float distanceToCamera); public:              // 0x00665860
 };
 class CThingAICreature : public CThingCreatureBase {
 public:
-    void UpdateMovement(float distanceToCamera);               // 0x008326A0
+    protected:
+    void UpdateMovement(float distanceToCamera);
+    public:
+               // 0x008326A0
     bool WorldUpdate();
 };
 #pragma pack(pop)

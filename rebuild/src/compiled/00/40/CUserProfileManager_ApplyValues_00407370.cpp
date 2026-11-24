@@ -37,7 +37,7 @@ class CPlayer { public:
 };
 class CPlayerManager { public:
     long GetMainPlayerNumber() const;                             // 0x00449700
-    bool IsPlayer(long number);                             // 0x00449880
+    bool IsPlayer(long number) const;                             // 0x00449880
 public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };

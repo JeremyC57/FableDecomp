@@ -1,0 +1,14 @@
+## HEAD set: H_00750470.obj H_008dbb30.obj H_0070b460.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetAnimDuration@CTCAnimationComplex@@QBEMJ@Z
+UNRESOLVED 1 ?GetAnimIndex@CTCAnimationComplex@@QBEJXZ
+UNRESOLVED 1 ?GetAnimateThing@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ
+UNRESOLVED 1 ?GetAnimation@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ
+## new set: N_00750470.obj N_008dbb30.obj H_0070b460.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetAnimDuration@CTCAnimationComplex@@QBEMJ@Z
+UNRESOLVED 1 ?GetAnimIndex@CTCAnimationComplex@@QBEJXZ
+UNRESOLVED 2 ?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ
+LK_DONE

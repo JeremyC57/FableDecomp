@@ -99,7 +99,11 @@ public:
     long          Ammo;                                              // +0xa4
     long          TargetingRange;                                    // +0xa8
     float         TargetingFOV;                                      // +0xac
+#ifdef FABLE_RETAIL_WEAPON_ARROW_TRAIL_PASS26
+    std::map<EObjectAugmentationType,long> ArrowTrails;
+#else
     unsigned char ArrowTrails[0xc];                                  // +0xb0 map<EObjectAugmentationType,long>
+#endif
     float         ReloadSpeedRange[2];                               // +0xbc CFloatRange {HighValue, LowValue}
     bool          ProjectileWeaponAutoReload;                        // +0xc4
     bool          ProjectileWeaponStartLoaded;                       // +0xc5

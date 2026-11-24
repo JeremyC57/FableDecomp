@@ -39,7 +39,10 @@ class CChunkedFileLoader { public:
     virtual ~CChunkedFileLoader();
     unsigned char _pad04[0x0c];
     CChunkedFileChunk* RootChunkPrototype;          // +0x10
-    void LoadChunkedFile(CChunkedFile& file, CDataInputStream& in);   // 0x00AA79C0
+    protected:
+    void LoadChunkedFile(CChunkedFile& file, CDataInputStream& in);
+    public:
+   // 0x00AA79C0
 };
 
 struct C3DMeshFileLoader : CChunkedFileLoader {

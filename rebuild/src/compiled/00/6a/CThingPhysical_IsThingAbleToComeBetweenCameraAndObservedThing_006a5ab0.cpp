@@ -1,3 +1,4 @@
+// Leaf: ?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QBE_NXZ
 // CThingPhysical::IsThingAbleToComeBetweenCameraAndObservedThing() -- the explicit CanComeBetweenCameraAndObservedThing setting, or the def's flag when it is -1 (unset)
 // Retail: Fable.exe 0x006A5AB0, 60 bytes; the def release calls the def's vtable slot 1 (+4).
 // Retail offsets (CThing 0x10 and CThingPhysical 0x18 below the PDB; the generated header keeps the PDB
@@ -28,10 +29,10 @@ class CThingPhysical { public:
     unsigned char                   _pad74[0x44];
     long                            CanComeBetweenCameraAndObservedThing;   // +0xb8
     CDefPointer<CThingPhysicalDef> GetDef() const { return PBaseDef; }
-    bool IsThingAbleToComeBetweenCameraAndObservedThing();
+    bool IsThingAbleToComeBetweenCameraAndObservedThing() const;
 };
 
-bool CThingPhysical::IsThingAbleToComeBetweenCameraAndObservedThing()
+bool CThingPhysical::IsThingAbleToComeBetweenCameraAndObservedThing() const
 {
     long setting = CanComeBetweenCameraAndObservedThing;
     if (setting == -1)

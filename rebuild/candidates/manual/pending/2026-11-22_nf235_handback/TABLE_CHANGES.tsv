@@ -1,0 +1,16 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	??_7CFrontendGameComponent@@6BCGameComponentInterface@@@	0123875c	00495620	stand-in; both emitters (0x00495620 / 0x00496070) now bind the PDB name (line added below)
+add	rebuild/oracles/reloc_bindings.tsv	??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@	0123875c	00495620	Ego_r.pdb + FableWin.pdb + Ego_d.pdb publics; RTTI COL 0x0133309C (CDeviceResetCallback at +4)
+delete	rebuild/oracles/reloc_bindings.tsv	??_7CFrontendGameComponent@@6BCBase@@@	01238768	00496070	stand-in; 0x00496070 now binds the PDB name of the existing line ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@ (witness 0x00495620)
+delete	rebuild/oracles/reloc_bindings.tsv	??_7CGameComponent@@6BCGameComponentInterface@@@	0122eca4	00495620	stand-in; its only emitter 0x00495620 now binds ??_7CGameComponent@@6BCDeviceResetCallback@@@ (existing line, witness 0x00418B7A)
+delete	rebuild/oracles/reloc_bindings.tsv	?Input@CFrontendGameComponent@@QAEXXZ	004963a0	00496cf0	public stand-in; 0x00496CF0 now binds the PDB private AAE (self leaf of 0x004963A0)
+add	rebuild/oracles/reloc_bindings.tsv	?Input@CFrontendGameComponent@@AAEXXZ	004963a0	00496cf0	Ego_r.pdb + FableWin.pdb + Ego_d.pdb (private); self leaf of 0x004963A0
+delete	rebuild/oracles/reloc_bindings.tsv	?Output@CFrontendGameComponent@@QAEXXZ	00494900	00496cf0	public stand-in; 0x00496CF0 now binds the PDB private AAE (self leaf of 0x00494900)
+add	rebuild/oracles/reloc_bindings.tsv	?Output@CFrontendGameComponent@@AAEXXZ	00494900	00496cf0	Ego_r.pdb + FableWin.pdb + Ego_d.pdb (private); self leaf of 0x00494900
+delete	rebuild/oracles/reloc_bindings.tsv	?g_pLastFrontend@@3PAUCFrontendGameComponent@@A	013b7d58	00496cf0	descriptive stand-in; its only binder 0x00496CF0 now binds the PDB name (line added below)
+add	rebuild/oracles/reloc_bindings.tsv	?GOldGameComponentToDelete@@3PAVCGameComponent@@A	013b7d58	00496cf0	Ego_r.pdb / FableWin.pdb / Ego_d.pdb publics; Ego_r 0003:477344 = 4 past ?m_strProfileName@CUserProfileManager@@0VCWideString@@A 0003:477340, retail 0x013B7D58 = 4 past m_strProfileName 0x013B7D54; bound x4 by 0x00496CF0
+delete	rebuild/oracles/reloc_bindings.tsv	??_7CMeshBankListener@@6B@	0122de50	00a0a110	stand-in; 0x00A0A110 now binds the PDB name of the existing line ??_7CDeviceResetCallback@@6B@ (witness 0x0051D8E0)
+delete	rebuild/oracles/reloc_bindings.tsv	??_7CMeshBankManager@@6BCMeshBankListener@@@	0129c980	00a0a110	stand-in; both emitters (0x00A0A110 / 0x00A0A150) now bind the PDB name (line added below)
+add	rebuild/oracles/reloc_bindings.tsv	??_7CMeshBankManager@@6BCDeviceResetCallback@@@	0129c980	00a0a110	Ego_r.pdb + FableWin.pdb + Ego_d.pdb publics; RTTI COL 0x01356A64 (CDeviceResetCallback at +4)
+delete	rebuild/oracles/reloc_bindings.tsv	?clear@CBankInfoList@@QAEXXZ	00a0a720	00a0a150	stand-in; 0x00A0A150 now binds the STLport spelling (self leaf of 0x00A0A720; line added below)
+add	rebuild/oracles/reloc_bindings.tsv	?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXXZ	00a0a720	00a0a150	self leaf of 0x00A0A720; Ego_r.pdb / FableWin.pdb type CMeshBankManager::CMeshDataBankInfo (nested); bound x1 by 0x00A0A150

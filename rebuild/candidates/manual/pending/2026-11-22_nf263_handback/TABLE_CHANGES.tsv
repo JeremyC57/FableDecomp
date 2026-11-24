@@ -1,0 +1,12 @@
+action	symbol	address	witness	reason
+delete	?g_00bf36a0@@3PAUGB@@A	01436ea8	00bf36a0	GB unit: the two rows that named it (0x00BF36A0, 0x00BF9920; source grep: no other row or header, their old tests were self-contained) now name ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+delete	?g_00bf36e0@@3PAUGB@@A	01436ea8	00bf36e0	GB unit: the one row that named it (0x00BF36E0) now names ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+delete	?m@That2@@QAEPAXH@Z	00bd9b90	00bf36a0	GB unit: the three rows that named it now bind ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+delete	??3CEngineLandscapePatch@@SIXPAXJ@Z	00bf36a0	00bdd3e0	GB unit: its one binder 0x00BDD3E0 now binds the PDB placement form
+delete	??_VCEngineLandscapePatch@@SIXPAXJ@Z	00bf36e0	00bdd3e0	GB unit: its one binder 0x00BDD3E0 now binds the PDB placement form
+delete	?CEngineSubPrimitiveGameMesh_dealloc@@YIXPAUCEngineSubPrimitiveGameMesh@@H@Z	00bf9920	00bdfd60	stale: the witness's HEAD object already binds ?CLocalDetailPrimitiveMesh_dealloc@@YIXPAUCLocalDetailPrimitiveMesh@@H@Z (no table line), and now the PDB placement form; no source names CEngineSubPrimitiveGameMesh_dealloc
+add	??3CEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	00bf36a0	00bdd3e0	the PDB spelling (self row 0x00BF36A0 defines it; binder 0x00BDD3E0)
+add	??_VCEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	00bf36e0	00bdd3e0	the PDB spelling (self row 0x00BF36E0 defines it; binder 0x00BDD3E0)
+add	??3CLocalDetailPrimitiveMesh@@SIXPAXPAVCMovableResource@@@Z	00bf9920	00bdfd60	the PDB spelling (self row 0x00BF9920 defines it; binder 0x00BDFD60)
+keep	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	01436ea8	00beae50	the PDB spelling (nf256 / nf260)
+keep	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bd9b90	00beb4d0	the PDB spelling (Ego_r + FableWin name sets)

@@ -1,0 +1,20 @@
+[
+  {
+    "symbol": "?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ",
+    "stale_target": "0x00810FC0",
+    "correct_target": "0x005121C0",
+    "evidence": "FableWin 01c9f450 and the native paired getters at 005121c0/005121d0 identify the home/work handles at +0x168/+0x170. The compiled 11-byte body and its tail relocation to 00a01b50 independently match 005121c0. The stale 00810fc0 getter instead loads event data at +8 then a +0x50 handle, matching the two PDB records for NEntityEvents::CEventHitBase::GetPHitBy. The pass-26 correction is already in NAME_FIXES_QUEUE.tsv."
+  },
+  {
+    "symbol": "?GetWorkBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ",
+    "stale_target": null,
+    "correct_target": "0x005121D0",
+    "evidence": "FableWin 0x01C9F470 follows GetHomeBuilding in the same object. The paired native 11-byte getter at 0x005121D0 reads the CThingAICreature WorkBuilding handle at +0x170 and jumps to GetPItem at 0x00A01B50. The weak copy matches every byte and the tail relocation. NAME_FIXES_QUEUE.tsv records the existing pass-26 correction."
+  },
+  {
+    "symbol": "??$GetSubDef@VCTavernDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernDef@@@@@Z",
+    "stale_target": null,
+    "correct_target": "0x007ECD00",
+    "evidence": "Ego_r 0x007E6B00 and FableWin 0x02546A60 in tc_action_use_bed.obj agree with the landed source for 0x007ECD00. The leaf call at 0x007EC538 reaches 0x007ECD00. The emitted 182-byte copy matches the owner, including its CTavernDef literal and all three relocation targets."
+  }
+]

@@ -6,9 +6,17 @@
 // ?PeekInfoFrame@CGraphicInfo@@QBEPBVCGraphicInfoFrame@@K@Z (0x00B2D384 `mov edi,[esi+28h]`: Frames + index) and
 // ?PeekGraphicHeader@CGraphicInfo@@QBEABVCGraphicHeader@CGraphicDataBank@@XZ, and the inline CGraphicDataBank::PeekGraphic body.
 #include "engine/CGraphicDataBank.h"
+#ifdef FABLE_RETAIL_CGRAPHICINFO_FRAMESECTIONS_PASS27
+class CManagedTexture;
+#endif
 #include "engine/CGraphicInfoFrame.h"
 class CGraphicInfo {
 public:
+#ifdef FABLE_RETAIL_CGRAPHICINFO_FRAMESECTIONS_PASS27
+private:
+    void InitialiseFramesAsSurfaceSections(CManagedTexture&, signed char, CCountedPointer<CTexture>&, bool, bool);
+public:
+#endif
 #ifdef FABLE_RETAIL_PASS22_RESOURCE_ORIGINAL_SPECIAL_MEMBERS
     ~CGraphicInfo();
 #endif

@@ -1,0 +1,19 @@
+## new three + HEAD controls 0x008C2AD0 / 0x008C0560 / 0x00955620 / 0x006F8010
+duplicates 0
+
+## HEAD three + the same controls
+duplicates 0
+
+## control: the new 0x00956870 object twice (must show LNK4006)
+duplicates 1
+dup.obj : warning LNK4006: "public: __thiscall CCombatAction_WillHealInto::CCombatAction_WillHealInto(class CThingCreatureBase &,long)" (??0CCombatAction_WillHe
+## L72 and L100 new objects together
+duplicates 0
+
+## 008c2ad0 defines (WillHealInto):
+?FinishAction@CCombatAction_WillHealInto@@UAEXXZ
+## 008c0560 defines (WillHealInto):
+?Initialise@CCombatAction_WillHealInto@@UAEXXZ
+## 00955620 defines (WillHealInto):
+??1CCombatAction_WillHealInto@@UAE@XZ
+## 006f8010 defines (WillHealInto):

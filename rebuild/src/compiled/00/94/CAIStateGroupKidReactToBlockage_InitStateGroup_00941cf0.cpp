@@ -1,3 +1,4 @@
+// Leaf: ?InitStateGroup@CAIStateGroup_KidReactToBlockage@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
 // CAIStateGroup_KidReactToBlockage::InitStateGroup(const CWorld&, CThingAICreature&) -- stamp the current frame and pick a random minimum re-activation interval of 5..15 seconds
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -62,7 +63,9 @@ struct CAIStateGroup_KidReactToBlockage : CAIStateGroupBase {
     float their_radius;                         // +0x28
     unsigned char PThingCreature[8];            // +0x2c CIntelligentPointer<CThingCreatureBase>
 protected:
+    public:
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
+    protected:
 };
 
 void CAIStateGroup_KidReactToBlockage::InitStateGroup(const CWorld& world, CThingAICreature& creature)

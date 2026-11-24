@@ -1,0 +1,6 @@
+rows checked 57125 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF255/work/equiv3.tsv
+DONE 0
+first run: 1 of 57,125 rows differed: 0092c070 src (CAIStateGroupMinionWander_Update_0092c070.cpp, which includes neither overlaid header)
+rerun of that row alone (equiv_check.py, same trees): 0 differ; a by-hand cpp of it against both trees: identical text
+cause: the fresh stub dir (pE/stubinc_equiv) gains a missing system-header stub from a concurrent worker between the old- and new-tree passes of one row (stub-creation race), so one pass saw an error the other did not
+result: 0 of 57,125 rows differ

@@ -8,6 +8,33 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_SIT_ROUND_CAMPFIRE_PASS27
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+
+class CThingObject;
+
+// Original retail members and access from Ego_r's class record.
+class CAIStateGroup_SitRoundCampfire : public CAIStateGroupBase {
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&);
+    virtual void Update();
+    virtual bool IsRunnable();
+    virtual void OnReplace();
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);
+    virtual bool AllowPriorityOverlap();
+    static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+    static CCharString FABLE_FASTCALL GetName();
+private:
+    CThingObject* GetPNearCampfire() const;
+    CIntelligentPointer<CThingObject> PCampfire;
+    long SeatPosIndex;
+    bool GotSeatPos;
+    bool Sitting;
+    unsigned long FrameToNextSitOnSeat;
+};
+FABLE_STATIC_ASSERT_AT(27, sizeof(CAIStateGroup_SitRoundCampfire) == 0x28);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -37,5 +64,7 @@ FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_SitRoundCampfire, SeatPosIndex
 FABLE_STATIC_ASSERT_AT(31, offsetof(CAIStateGroup_SitRoundCampfire, GotSeatPos) == 0x20);
 FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_SitRoundCampfire, Sitting) == 0x21);
 FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_SitRoundCampfire, FrameToNextSitOnSeat) == 0x24);
+
+#endif // FABLE_RETAIL_SIT_ROUND_CAMPFIRE_PASS27
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_SITROUNDCAMPFIRE_H

@@ -1,5 +1,5 @@
 // CAIStateGroup_IceTrollPoundGroundAttack::Cleanup() -- when PTarget is alive and has a stealth component, mark it as in danger from this group's creature (DANGER_STATUS_0)
-// Leaf: ?Cleanup@CAIStateGroup_IceTrollPoundGroundAttack@@
+// Leaf: ?Cleanup@CAIStateGroup_IceTrollPoundGroundAttack@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00961F40, 112 bytes (body 0x6F + int3), thiscall, `ret`.
 // Identity: vtable 0x0128CB28 slot 9 (RTTI .?AVCAIStateGroup_IceTrollPoundGroundAttack@@; bases CAIStateGroup_IceTrollPoundGroundAttack <- CAIStateGroupBase <- CBaseClass); slot 2 is OnActivate and slot 9 Cleanup in the
@@ -66,7 +66,9 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_IceTrollPoundGroundAttack : CAIStateGroupBase {
     CIntelligentPointer<CThing> PTarget;            // +0x14 CIntelligentPointer<CThing>
+    protected:
     virtual void Cleanup();
+    public:
 };
 
 void CAIStateGroup_IceTrollPoundGroundAttack::Cleanup()

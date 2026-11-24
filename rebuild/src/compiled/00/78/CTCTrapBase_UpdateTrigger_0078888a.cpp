@@ -1,3 +1,4 @@
+// Leaf: ?UpdateTrigger@CTCTrapBase@@IAEXXZ
 #pragma optimize("s", on)
 // CTCTrapBase::UpdateTrigger() -- while the trap is active, every other 8-frame window, a proximity-triggered trap re-checks its trigger
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078888A, length 42 bytes. Size TU (`cmp byte ptr [esi+58h],0`
@@ -31,7 +32,9 @@ class CTCTrapBase : public CTCBase { public:
     CTrapDef*     PTrapDef_Object;          // +0x54 CDefPointer<const CTrapDef>::Object
     bool          Active;                   // +0x58
     void UpdateTriggerOnProximity();        // 0x007887BE
+    protected:
     void UpdateTrigger();
+    public:
 };
 
 void CTCTrapBase::UpdateTrigger()

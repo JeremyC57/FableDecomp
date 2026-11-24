@@ -89,7 +89,9 @@ class CSimpleMemoryPool { public:
     void Reset();                                  // 0x00A5C790
     void FreeAll();
     void SetMemoryPool(void* data, unsigned long size);
+    private:
     void CreateNewMemoryBlock(unsigned long size);
+    public:
     void* Allocate(unsigned long size);
 };
 void* CSimpleMemoryPool::Allocate(unsigned long size)

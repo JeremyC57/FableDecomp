@@ -1,7 +1,11 @@
-class CVillagePeopleDef { public: char pad[0xC4]; };
+// Leaf: ?GetSizeofClass@CVillagePeopleDef@@UAEKXZ
+class CVillagePeopleDef { public: char pad[0xc0];
+    public: virtual unsigned long GetSizeofClass();
+};
 
-unsigned long __fastcall CVillagePeopleDef_GetSizeofClass(const CVillagePeopleDef* self)
+unsigned long CVillagePeopleDef::GetSizeofClass()
 {
+    const CVillagePeopleDef* self = this;
     (void)self;
     return 0xC4;
 }

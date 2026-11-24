@@ -22,8 +22,14 @@ public:
     CRGBColour() { }
     CRGBColour(unsigned char r,unsigned char g,unsigned char b) { Initialise(r,g,b,255); }
     CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Initialise(r,g,b,a); }
+#ifdef FABLE_RETAIL_CRGBCOLOUR_ORIGINAL_COPY_FORCEINLINE_PASS26
+    // Inline-budget: size-built 005BA48A expands the original colour copy and Initialise.
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& colour) { Initialise(colour.R,colour.G,colour.B,colour.A); }
+    FABLE_FORCEINLINE void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r;G=g;B=b;A=a; }
+#else
     CRGBColour(const CRGBColour& colour) { Initialise(colour.R,colour.G,colour.B,colour.A); }
     void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r;G=g;B=b;A=a; }
+#endif // FABLE_RETAIL_CRGBCOLOUR_ORIGINAL_COPY_FORCEINLINE_PASS26
     void SetR(unsigned char);
     void SetG(unsigned char);
     void SetB(unsigned char);

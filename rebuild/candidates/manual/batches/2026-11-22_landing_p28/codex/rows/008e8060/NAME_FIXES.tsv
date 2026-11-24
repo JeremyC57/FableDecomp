@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x008E8BB0	??0CCreatureAction_BriarRoseConcentrateInto@@QAE@AAVCThingCreatureBase@@0_N@Z	Ego_r 0x00831CB0 and FableWin 0x0280BC30 spell two CThingCreatureBase references. Calls at retail 0x008E8353 and FableWin source line 171 pass the imposter and dereferenced target.	??0CCreatureAction_BriarRoseConcentrateInto@@QAE@PAVCThingCreatureBase@@PAVCBaseObject@@_N@Z

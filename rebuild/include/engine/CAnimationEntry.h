@@ -17,6 +17,9 @@
 class CAnimComponentMap;
 class CAnimationEntry {
 public:
+#ifdef FABLE_RETAIL_CANIMATIONENTRY_SEAT_ASSIGN_PASS27
+    CAnimationEntry& operator=(const CAnimationEntry&);
+#endif
 #ifdef FABLE_RETAIL_CANIMATIONENTRY_GETCOMPONENT
     // Both PDBs original const out-pointer template, retail00867fe0 for FollowingOnAnim.
     template<class T> void GetComponent(const T** out)const;

@@ -1,5 +1,5 @@
 // CAIStateGroup_GoToPub::GetBar() -- collect the live things in the pub that have a tavern bar component, adopt the first as the bar and its barman as ours; false when the pub has none
-// Leaf: ?GetBar@CAIStateGroup_GoToPub@@QAE_NXZ
+// Leaf: ?GetBar@CAIStateGroup_GoToPub@@IAE_NXZ
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 //   STLport shape (`insert(end(), x)` with a by-value iterator that declares a copy ctor, `create_node`, and the position's
 //   prev read into a local before linking): without it VC7.1 shrink-wraps the ebp push around the loop; (2) front() through
@@ -128,7 +128,7 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     CIntelligentPointer<CThingObject> PBar;     // +0x1c
     CBaseIntelligentPointer PTable;             // +0x24 CIntelligentPointer<CThingObject>
     CIntelligentPointer<CThingAICreature> PBarman;   // +0x2c
-    bool GetBar();
+    protected: bool GetBar(); public:
 };
 
 bool CAIStateGroup_GoToPub::GetBar()

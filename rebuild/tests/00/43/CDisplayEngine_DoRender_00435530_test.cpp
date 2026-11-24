@@ -120,7 +120,7 @@
 
 extern double VIRTUAL_SCREEN_WIDTH;                                      // 0x013961E8
 extern double VIRTUAL_SCREEN_HEIGHT;                                     // 0x013961F0
-extern CRenderManager* PRenderManager;                                   // 0x013B8384
+extern CRenderManager* GPRenderManager;                                   // 0x013B8384 (NF236: the row now binds ?GPRenderManager@@3PAVCRenderManager@@A (was PRenderManager))
 extern CDisplayManager* GPDisplayManager;                                // 0x013B8390
 extern CInputManager* GPInputManager;                                    // 0x013B8388
 extern CCharString GVersionString;                                       // 0x013B85E0
@@ -207,7 +207,7 @@ double VIRTUAL_SCREEN_HEIGHT = 480.0;
 const float DELTA_NOTIONAL_ZERO = 0.0001f;
 static double g_rm[0x4000 / 8], g_dm[0x400 / 8], g_im[0x80 / 8], g_sys[0x100 / 8], g_comp[0x16200 / 8], g_world[0x400 / 8];
 static double g_player[0x400 / 8], g_gui[0x2000 / 8], g_ui[0x200 / 8], g_vm[4], g_con[0xa0 / 8], g_em[0x40 / 8], g_eng3d[8];
-CRenderManager* PRenderManager = reinterpret_cast<CRenderManager*>(g_rm);
+CRenderManager* GPRenderManager = reinterpret_cast<CRenderManager*>(g_rm);
 CDisplayManager* GPDisplayManager = reinterpret_cast<CDisplayManager*>(g_dm);
 CInputManager* GPInputManager = reinterpret_cast<CInputManager*>(g_im);
 CCharString GVersionString;

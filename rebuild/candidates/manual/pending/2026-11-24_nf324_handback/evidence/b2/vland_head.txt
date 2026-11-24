@@ -1,0 +1,140 @@
+0044c158   WARN SHARED_HEADER_AVAILABLE CPhysicsDef (engine/CPhysicsDef.h)
+0044c158   MATCH            PASS   GetSizeofClass
+0044c1cd   WARN SHARED_HEADER_AVAILABLE CActionUseDef (engine/CActionUseDef.h)
+0044c1cd   MATCH            PASS   GetSizeofClass
+0044c364   MATCH            PASS   GetSizeofClass
+0044c41e   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+0044c41e   WARN SHARED_HEADER_AVAILABLE CCombatAbilityData (engine/CCombatAbilityData.h)
+0044c41e   RELOCATION_MATCH PASS   TransferBinaryOut
+0044c579   WARN SHARED_HEADER_AVAILABLE CCombatAbilityGetHitCounterAttackDef (engine/CCombatAbilityGetHitCounterAttackDef.h)
+0044c579   MATCH            PASS   GetSizeofClass
+0044c611   MATCH            PASS   GetSizeofClass
+0044c67f   MATCH            PASS   GetSizeofClass
+0045212a   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+0045212a   WARN SHARED_HEADER_AVAILABLE CPhysicsDef (engine/CPhysicsDef.h)
+0045212a   RELOCATION_MATCH PASS   Transfer
+00452184   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00452184   WARN SHARED_HEADER_AVAILABLE CTCNoiseDef (engine/CTCNoiseDef.h)
+00452184   WARN RELOC_NAME: ?TransferA@CPersistContext@@QAEXPAH@Z -> 004521b2 labelled 'CPersistContext::Transfer<ENoiseType>'
+00452184   RELOCATION_MATCH PASS   Transfer
+00452256   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00452256   WARN SHARED_HEADER_AVAILABLE CCarrySlotDef (engine/CCarrySlotDef.h)
+00452256   RELOCATION_MATCH PASS   Transfer
+00452b93   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00452b93   WARN SHARED_HEADER_AVAILABLE CCombatAbilityStrafeDef (engine/CCombatAbilityStrafeDef.h)
+00452b93   WARN RELOC_NAME: ?TransferB@CPersistContext@@QAEXPAUCFieldB@@@Z -> 00452b4d labelled '_global::PersistTransfer_00452b4d'
+00452b93   RELOCATION_MATCH PASS   Transfer
+00452bb4   WARN SHARED_HEADER_AVAILABLE CCombatAbilityUseProjectileWeaponDef (engine/CCombatAbilityUseProjectileWeaponDef.h)
+00452bb4   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00452bb4   WARN RELOC_NAME: ?PersistC_00452b4d@CPersistContext@@QAEXPAX@Z -> 00452b4d labelled '_global::PersistTransfer_00452b4d'
+00452bb4   RELOCATION_MATCH PASS   Transfer
+00452c94   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00452c94   RELOCATION_MATCH PASS   Transfer
+00453ece   WARN SHARED_HEADER_AVAILABLE CCombatAbilityBlockProjectileWeaponAttackDef (engine/CCombatAbilityBlockProjectileWeaponAttackDef.h)
+00453ece   MATCH            PASS   GetSizeofClass
+00454643   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef (engine/CSpecialEffectsDef.h)
+00454643   MATCH            PASS   GetSizeofClass
+004556ce   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004556ce   WARN SHARED_HEADER_AVAILABLE CMessageEventDef (engine/CMessageEventDef.h)
+004556ce   WARN RELOC_NAME: ?TransferB_00455712@CPersistContext@@QAEXPAX@Z -> 00455712 labelled 'CPersistContext::Transfer<EMessageEventType>'
+004556ce   WARN RELOC_NAME: ?TransferC@CPersistContext@@QAEXPAX@Z -> 004557b6 labelled 'CPersistContext::Transfer<EReactionSpeechType>'
+004556ce   RELOCATION_MATCH PASS   Transfer
+00455ca7   MATCH            PASS   GetSizeofClass
+00456818   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00456818   WARN SHARED_HEADER_AVAILABLE CCameraManagerSetDef (engine/CCameraManagerSetDef.h)
+00456818   RELOCATION_MATCH PASS   Transfer
+0045687f   MATCH            PASS   GetSizeofClass
+00456883   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00456883   WARN RELOC_NAME: ?PutA@CPersistContext@@QAEXPAX@Z -> 004568bc labelled '_global::PersistTransfer_004568bc'
+00456883   WARN RELOC_NAME: ?PutB@CPersistContext@@QAEXPAX@Z -> 00456903 labelled '_global::PersistTransfer_00456903'
+00456883   RELOCATION_MATCH PASS   Transfer
+00456cfb   MATCH            PASS   GetSizeofClass
+00456d9e   WARN SHARED_HEADER_AVAILABLE COpinionDeedEffectsDef (engine/COpinionDeedEffectsDef.h)
+00456d9e   MATCH            PASS   GetSizeofClass
+00456f27   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00456f27   RELOCATION_MATCH PASS   Transfer
+004571e8   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesMultiStrikeDef (engine/CSpecialAbilitiesMultiStrikeDef.h)
+004571e8   MATCH            PASS   GetSizeofClass
+004573db   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesBerserkDef (engine/CSpecialAbilitiesBerserkDef.h)
+004573db   MATCH            PASS   GetSizeofClass
+00457f0f   MATCH            PASS   GetSizeofClass
+0046ee66   MATCH            PASS   GetSizeofClass
+0046f1ff   MATCH            PASS   GetSizeofClass
+0046f723   MATCH            PASS   GetSizeofClass
+00471f93   MATCH            PASS   GetSizeofClass
+004732da   MATCH            PASS   GetSizeofClass
+00477424   MATCH            PASS   GetSizeofClass
+00477698   MATCH            PASS   GetSizeofClass
+004784e0   MATCH            PASS   GetSizeofClass
+004aacc0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+004aacc0   MATCH            PASS   MsgPerformedAnySpecialAbility
+004aada0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+004aada0   MATCH            PASS   MsgOpenedChest
+004d6670   MATCH            PASS   GetSizeofClass
+004de8f1   MATCH            PASS   GetSizeofClass
+004e26b6   MATCH            PASS   GetSizeofClass
+004eac55   MATCH            PASS   GetSizeofClass
+004ebe16   MATCH            PASS   GetSizeofClass
+004ec0af   MATCH            PASS   GetSizeofClass
+0051ce00   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0051ce00   MATCH            PASS   IsMapUsed
+0062e9f0   MATCH            PASS   PerformAction
+0062ea00   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0062ea00   MATCH            PASS   GetAnimDelayTime
+0084a850   MATCH            PASS   PerformAction
+0084b210   MATCH            PASS   PerformAction
+0084b220   MATCH            PASS   IsToHaveEmptyHands
+0084b230   MATCH            PASS   IsToReplaceItemIfRemoved
+0088e910   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088e910   MATCH            PASS   SetAllowScreenFadingOnNextRegionChange
+0088e920   MATCH            PASS   SetAllowScreenFadingIfAlreadyFaded
+0088e930   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+0088e930   RELOCATION_MATCH PASS   SetToDisplayTutorialsDuringCutscenes
+0088ec90   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088ec90   MATCH            PASS   CameraSetCameraPreloadFlag
+0088f410   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f410   MATCH            PASS   SetTeleportingAsActive
+0088f430   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f430   MATCH            PASS   SetRegionTextDisplayAsActive
+0088f440   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f440   MATCH            PASS   SetHeroSleepingAsEnabled
+0088f470   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f470   MATCH            PASS   SetSummonerDeathExplosionAffectsHero
+0088f940   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f940   MATCH            PASS   SetSavingAsEnabled
+0088fae0   RELOCATION_MATCH PASS   SetCheapHeadLooking
+0088fb60   RELOCATION_MATCH PASS   SetBettingAccept
+0088fb80   RELOCATION_MATCH PASS   SetBettingAmount
+00892050   WARN RELOC_NAME: ?g_hud@@3PAUCHud@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00892050   WARN RELOC_NAME: ?Hud_Enable@@YIXPAUCHud@@@Z -> 004374d0 labelled 'CPlayerGui::ForceOpen'
+00892050   WARN RELOC_NAME: ?Hud_Disable@@YIXPAUCHud@@@Z -> 00438440 labelled 'CPlayerGui::ForceClose'
+00892050   RELOCATION_MATCH PASS   SetHUDEnabled
+00899c10   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00899c10   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00899c10   WARN RELOC_NAME: ?IsPCReady_GetReadiness@@YIMPAX@Z -> 00789a60 labelled 'CTCHeroRangedAttacks::GetShotBuildupTime'
+00899c10   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00899c10   RELOCATION_MATCH PASS   IsPlayerCreatureReadyToFireProjectileWeapon
+008aa330   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+008aa330   RELOCATION_MATCH PASS   AddGossipVillages
+008bff10   MATCH            PASS   IsToFaceTargetAtStart
+009fd0b0   MATCH            PASS   GetDataFormatVersion
+00a19bc0   MATCH            PASS   SetUpNeighboursWithLeaf
+00a19bd0   MATCH            PASS   SetUpNeighbours
+00a19be0   MATCH            PASS   CalculateChildrenNeighbours
+00a19bf0   MATCH            PASS   RemoveNeighbours
+00a5f420   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBank (engine/CStreamingFontDataBank.h)
+00a5f420   WARN RELOC_NAME: ?h1@@YIXPAVCStreamingFontDataBank@@@Z -> 00a5f2f0 labelled 'CStreamingFontDataBank::CloseFonts'
+00a5f420   WARN RELOC_NAME: ?h2@@YIXPAVCStreamingFontDataBank@@@Z -> 009ce360 labelled 'CBankFile::Close'
+00a5f420   RELOCATION_MATCH PASS   Close
+00a635c0   WARN SHARED_HEADER_AVAILABLE CFontDataBank (engine/CFontDataBank.h)
+00a635c0   WARN RELOC_NAME: ?h1@@YIXPAVCFontDataBank@@@Z -> 00a633a0 labelled 'CFontDataBank::CloseFonts'
+00a635c0   WARN RELOC_NAME: ?h2@@YIXPAVCFontDataBank@@@Z -> 009ce360 labelled 'CBankFile::Close'
+00a635c0   RELOCATION_MATCH PASS   Close
+00ab78d0   WARN SHARED_HEADER_AVAILABLE CJoystickDX (engine/CJoystickDX.h)
+00ab78d0   WARN RELOC_NAME: ?h1@@YIXPAUCJoystickDX@@@Z -> 009e41b0 labelled 'CJoystick::Update'
+00ab78d0   WARN RELOC_NAME: ?h2@@YIXPAUCJoystickDX@@@Z -> 00ab6e40 labelled 'CJoystickDX::UpdateEvents'
+00ab78d0   RELOCATION_MATCH PASS   Update
+00b23df0   MATCH            PASS   SetLandscapeDebugTintColour
+00b6d500   MATCH            PASS   FrameEnd
+00b7ed70   MATCH            PASS   PeekSceneFilterFlags
+00b8b5a0   MATCH            PASS   PeekSceneFilterFlags

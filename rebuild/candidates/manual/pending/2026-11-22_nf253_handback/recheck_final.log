@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00b23770   WARN STANDIN_LEAF ??_GCIEngine@@UAEPAXI@Z (catalog CIEngine::ScalarDeletingDestructor; names another function)
+00b23770   RELOCATION_MATCH PASS   ScalarDeletingDestructor
+00890c80   RELOCATION_MATCH PASS   EntityUnsheatheMeleeWeapon
+006649c0   RELOCATION_MATCH PASS   UnsheatheMeleeWeapon
+008ee720   RELOCATION_MATCH PASS   GetRandomBerserkedSwordHitParticleEffect
+
+WINS: 4
+  00b23770 RELOCATION_MATCH CIEngine::??_GCIEngine@@UAEPAXI@Z
+  00890c80 RELOCATION_MATCH CGameScriptInterface::?EntityUnsheatheMeleeWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  006649c0 RELOCATION_MATCH CThingCreatureBase::?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ
+  008ee720 RELOCATION_MATCH CMaterialDef::?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ
+EXIT 0

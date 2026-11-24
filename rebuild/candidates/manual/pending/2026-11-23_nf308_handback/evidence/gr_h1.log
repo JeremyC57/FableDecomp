@@ -1,0 +1,3 @@
+H 007032f0 CThingObject::OnCreate RELOCATION_MATCH flags= [] leaf=?OnCreate@CThingObject
+H 00ed4830 NScript::CV_StatueMasterScript::CStatueMasterChest::Main RELOCATION_MATCH flags= [] leaf=?Main@CStatueMasterChest@CV_StatueMasterScript@NScript@@EAEXXZ
+GR_DONE

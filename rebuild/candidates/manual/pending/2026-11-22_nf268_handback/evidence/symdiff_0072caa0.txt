@@ -1,0 +1,26 @@
+0072caa0 CTCSpecialAbilities::SetupAssassinRush RELOCATION_MATCH flags= []
+0072caa0 CTCSpecialAbilities::SetupAssassinRush RELOCATION_MATCH flags= []
+--- defined/undefined diff HEAD(<) new(>)
+1c1,2
+< DEF ??$GetTC@VCTCTargeter@@@CThing@@QBEPAVCTCTargeter@@W4ETCInterfaceType@@@Z
+---
+> DEF ??$PeekTC@$$CBVCTCTargetingBase@@@CThing@@QBE_NPAPBVCTCTargetingBase@@@Z
+> DEF ??$PeekTC@$$CBVCTCTargetingBase@@@CThing@@QBE_NW4ETCInterfaceType@@PAPBVCTCTargetingBase@@@Z
+4c5
+< DEF ??BCCreatureAction_CastAssassinRush@@QBEABVCCreatureActionBase@@XZ
+---
+> DEF ??1CCreatureAction_CastAssassinRush@@UAE@XZ
+5a7
+> DEF ?GetTypeFlags@CThing@@QBEKXZ
+6a9,10
+> DEF ?IsDead@CThing@@QBE_NXZ
+> DEF ?IsZTargeting@CPlayer@@QBE_NXZ
+8c12,13
+< DEF ?SetupAssassinRush@CTCSpecialAbilities@@QAE_NXZ
+---
+> DEF ?SetupAssassinRush@CTCSpecialAbilities@@AAE_NXZ
+> DEF ?StatGetInterfaceType@CTCTargetingBase@@SI?AW4ETCInterfaceType@@XZ
+20c25
+< UND ??1CCreatureAction_CastAssassinRush@@UAE@XZ
+---
+> UND ??1CCombatActionBase@@UAE@XZ

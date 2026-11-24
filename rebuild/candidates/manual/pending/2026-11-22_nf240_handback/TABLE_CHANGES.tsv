@@ -1,0 +1,10 @@
+action	table	symbol	target	witness	reason
+add	rebuild/oracles/reloc_bindings.tsv	?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0143b8d8	00b92950	q12673: held p27 line restored; all seven old binders now bind it (0x0143B8D8 3 -> 1)
+delete	rebuild/oracles/reloc_bindings.tsv	?g_frame@@3GA	0143b8d8	00b3aaa0	q12673: retired; its only binder 0x00B3AAA0 is on the PDB static
+delete	rebuild/oracles/reloc_bindings.tsv	?g_engineFrameNumber@@3GA	0143b8d8	00b91760	q12673: retired; no landed source spells it (6 binders respelled)
+delete	rebuild/oracles/reloc_bindings.tsv	?IsThingCarryingRangedWeapon@@YI_NABVCThing@@@Z	006a1620	00664a50	q12673: retired; its only binder 0x00664A50 is on CTCCarrying.h
+delete	rebuild/oracles/reloc_bindings.tsv	?IsThingCarryingMeleeWeapon@@YI_NPAVCThing@@@Z	006a1620	0091f050	q12673: retired; its only binder 0x0091F050 is on CTCCarrying.h
+delete	rebuild/oracles/reloc_bindings.tsv	?IsThingCarryingMeleeWeapon@@YI_NPBVCThing@@@Z	006a1620	0068f9d0	q12673: retired; its only binder 0x0068F9D0 is on CTCCarrying.h
+add	rebuild/oracles/reloc_bindings.tsv	?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	006a1620	0091ec30	q12673 (only if decision 2 is yes): the held p27 line; 0x006A1620 is 8 -> 4 spellings in landed rows (6 -> 4 table lines with it); three stand-ins remain (0x00664A10, 0x00890250, 0x00890D80: blocked)
+delete	rebuild/oracles/reloc_bindings.tsv	??_7CModeSitBench@@6B@	01267bfc	00740040	q12674: the vtable's only emitter 0x00740040 now emits the PDB-namespaced name
+add	rebuild/oracles/reloc_bindings.tsv	??_7CModeSitBench@NCreatureMode@@6B@	01267bfc	00740040	q12674: replaces the line above (same target and witness)

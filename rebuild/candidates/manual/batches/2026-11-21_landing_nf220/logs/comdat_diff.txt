@@ -1,0 +1,22 @@
+== 0099c120 (HEAD v landing, function COMDATs whose size/selection/bytes change)
+HEAD None NEW (1, 2)  ??$_Destroy@PAG@std@@YIXPAG0@Z
+HEAD None NEW (3, 2)  ??$__destroy@PAGG@std@@YIXPAG00@Z
+HEAD None NEW (3, 2)  ??$__destroy_aux@PAG@std@@YIXPAG0ABU__true_type@0@@Z
+HEAD (3, 2) NEW None  ??0?$allocator@G@std@@QAE@XZ
+HEAD (38, 2) NEW None  ??0CWideStringData@@QAE@PBGK@Z
+HEAD None NEW (3, 2)  ??0__true_type@std@@QAE@XZ
+HEAD None NEW (1, 2)  ??1?$_STLP_alloc_proxy@PAGGV?$allocator@G@std@@@std@@QAE@XZ
+HEAD None NEW (1, 2)  ??1?$allocator@G@std@@QAE@XZ
+HEAD (76, 1) NEW (74, 1)  ??YCWideString@@QAEABV0@G@Z
+HEAD (83, 1) NEW (64, 1)  ?AllocStringData@CWideString@@IAEPAVCWideStringData@@PBGJ@Z
+HEAD None NEW (3, 2)  ?PeekStringData@CWideStringData@@QAEPBGXZ
+HEAD (59, 1) NEW (62, 2)  ?UnassignString@CWideString@@IAEXXZ
+HEAD None NEW (14, 2)  ?_M_deallocate_block@?$_String_base@GV?$allocator@G@std@@@std@@QAEXXZ
+HEAD None NEW (18, 2)  ?deallocate@?$allocator@G@std@@QAEXPAGI@Z
+== 005a4cdd (HEAD v landing, function COMDATs whose size/selection/bytes change)
+HEAD (19, 2) NEW (88, 2)  ??8?$CBasicString@D@@QBE_NPBD@Z
+HEAD (35, 2) NEW (39, 2)  ??8CCharString@@QBE_NPBD@Z
+HEAD (40, 2) NEW (40, 2)  ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+== 005a5b31 (HEAD v landing, function COMDATs whose size/selection/bytes change)
+HEAD (19, 2) NEW (88, 2)  ??8?$CBasicString@D@@QBE_NPBD@Z
+HEAD (35, 2) NEW (39, 2)  ??8CCharString@@QBE_NPBD@Z

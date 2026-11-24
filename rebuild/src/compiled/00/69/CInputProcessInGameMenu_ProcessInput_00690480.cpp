@@ -69,7 +69,7 @@ private: public:
 class CTCInGameMenu { public:
     unsigned char _pad00[0xc8];
     long          CurrentSubPage;                  // +0xC8 (descriptive; -1 = none)
-    bool IsAnySliderReceivingInput();              // 0x0047D483
+    bool IsAnySliderReceivingInput() const;              // 0x0047D483
     bool IsQuitMenuReceivingInput();               // 0x0047D537
     bool IsListReceivingInputA();                  // 0x0047D6F2 (descriptive)
     bool IsListReceivingInputB();                  // 0x0047D648 (descriptive)
@@ -151,7 +151,7 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
             }
             processed.SetAsPerformedEvent();
         }
-    } else if (IsEventButtonReleased(event)) {
+    } else if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0);
             processed.SetAsPerformedEvent();

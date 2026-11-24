@@ -21,8 +21,17 @@ public:
     virtual void Update();                                               // 0x0097CCD0
 protected:
     bool IsStillRunnable();                                              // 0x0097CB10
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREFINDCOVER_RTTI_DECLS
+    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base CAIStateGroup_CreatureUseCoverBase chain declares at the same slot (no new slot).
+    // 0x009031F6 vtable 0x0128D64C slot 8: ?GetStateGroupType@CAIStateGroup_CreatureFindCover@@UBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;              // 0x009031F6
+protected:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureFindCover) == 0x4c);
+FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_CreatureFindCover) == 0x4c);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

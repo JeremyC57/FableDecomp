@@ -14,7 +14,7 @@ public:
 class CQuestManager
 {
 public:
-    bool IsQuestCompleted(const CCharString& questName);
+    bool IsQuestCompleted(const CCharString& questName) const;
 };
 
 class CGameScriptInterface
@@ -32,7 +32,7 @@ static const CCharString* g_ObservedQuestName;
 static unsigned long g_CallCount;
 static bool g_Result;
 
-bool CQuestManager::IsQuestCompleted(const CCharString& questName)
+bool CQuestManager::IsQuestCompleted(const CCharString& questName) const
 {
     g_ObservedQuestName = &questName;
     ++g_CallCount;

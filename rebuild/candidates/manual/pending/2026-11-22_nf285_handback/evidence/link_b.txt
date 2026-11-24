@@ -1,0 +1,27 @@
+## HEAD set: H_008e9b60.obj H_00d17da0.obj H_007a9c80.obj H_0061b560.obj H_0061b530.obj H_004b1590.obj H_004b4aa0.obj H_008455c0.obj H_00947840.obj H_00947a30.obj H_00665190.obj H_00704150.obj 008e97b0.obj 00d17e70.obj 007a9b10.obj 0061a9d0.obj 0061aa80.obj 00702810.obj 006de8c0.obj 00658bb9.obj 00664e50.obj 007034d0.obj
+duplicates 1
+0061aa80.obj : warning LNK4006: "public: void __thiscall CTCInventoryQuests::GetTestQuestsToDisplay(class std::vector<class CTestQuest,class std::allocator<class CTestQuest> > &)" (?GetTestQuestsToDisplay@CTCInventoryQuests@@QAEXAAV?$vector@VCTestQuest@@V?$all
+UNRESOLVED 2 ??$copy@PBVCTestQuest@@PAV1@@std@@YAPAVCTestQuest@@PBV1@0PAV1@@Z
+UNRESOLVED 2 ??$sort@PAVCTestQuest@@VCTestQuestNameCompare@@@std@@YIXPAVCTestQuest@@0VCTestQuestNameCompare@@@Z
+UNRESOLVED 2 ??$uninitialized_copy@PAVCTestQuest@@PAV1@@std@@YAPAVCTestQuest@@PAV1@00@Z
+UNRESOLVED 2 ??$uninitialized_copy@PBVCTestQuest@@PAV1@@std@@YAPAVCTestQuest@@PBV1@0PAV1@@Z
+UNRESOLVED 2 ??0CTestQuest@@QAE@ABV0@@Z
+UNRESOLVED 2 ?IsActivatable_00702810@CTCQuestCard@@QBE_NXZ
+UNRESOLVED 2 ?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ
+UNRESOLVED 1 ?IsThingInViewAngle_00664e50@CThingCreatureBase@@QAE_NPAVCThing@@M_N@Z
+UNRESOLVED 1 ?OnShownByCreature_006de8c0@CTCTrophy@@QAEXPAVCThing@@@Z
+UNRESOLVED 1 ?QuestListHook_0061A9D0@CTCInventoryQuests@@QAEXXZ
+UNRESOLVED 1 ?QuestListHook_0061AA80@CTCInventoryQuests@@QAEXXZ
+UNRESOLVED 1 ?RemoveBoastQuestInfo_00d17e70@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?ResetStrafeAnims_008e97b0@CModeStrafe@NCreatureMode@@AAEXXZ
+UNRESOLVED 1 ?SetupCameraFromStick_007a9b10@CTCAssassinRush@@QAEXXZ
+UNRESOLVED 1 ?UpdateObject_007034d0@CThingObject@@QAEXXZ
+## new set: 008e9b60.obj 00d17da0.obj 007a9c80.obj 0061b560.obj 0061b530.obj 004b1590.obj 004b4aa0.obj 008455c0.obj 00947840.obj 00947a30.obj 00665190.obj 00704150.obj 008e97b0.obj 00d17e70.obj 007a9b10.obj 0061a9d0.obj 0061aa80.obj 00702810.obj 006de8c0.obj 00658bb9.obj 00664e50.obj 007034d0.obj
+duplicates 1
+0061aa80.obj : warning LNK4006: "public: void __thiscall CTCInventoryQuests::GetTestQuestsToDisplay(class std::vector<class CTestQuest,class std::allocator<class CTestQuest> > &)" (?GetTestQuestsToDisplay@CTCInventoryQuests@@QAEXAAV?$vector@VCTestQuest@@V?$all
+UNRESOLVED 2 ??$copy@PBVCTestQuest@@PAV1@@std@@YAPAVCTestQuest@@PBV1@0PAV1@@Z
+UNRESOLVED 2 ??$sort@PAVCTestQuest@@VCTestQuestNameCompare@@@std@@YIXPAVCTestQuest@@0VCTestQuestNameCompare@@@Z
+UNRESOLVED 2 ??$uninitialized_copy@PAVCTestQuest@@PAV1@@std@@YAPAVCTestQuest@@PAV1@00@Z
+UNRESOLVED 2 ??$uninitialized_copy@PBVCTestQuest@@PAV1@@std@@YAPAVCTestQuest@@PBV1@0PAV1@@Z
+UNRESOLVED 2 ??0CTestQuest@@QAE@ABV0@@Z
+LK_DONE

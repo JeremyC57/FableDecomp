@@ -67,7 +67,7 @@ class CThing { public:
     }
 };
 class CTCCrateStack { public:
-    long GetNumCrates();                        // 0x007B6660
+    long GetNumCrates() const;                        // 0x007B6660
 };
 struct CBaseIntelligentPointer {
     void* _vfptr;

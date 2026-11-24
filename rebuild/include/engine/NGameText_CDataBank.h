@@ -26,6 +26,9 @@
 #include "engine/CCountedPointer.h"
 #include "engine/CArray.h"
 #endif
+#ifdef FABLE_RETAIL_NGAMETEXT_TEXTENTRY_READ_PASS26
+class CDataInputStream;
+#endif
 namespace NGameText {
 #ifdef FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING_LONGS
 // Both originals and native009c7b70/009c7b80: references, namespace, fastcall.
@@ -54,14 +57,27 @@ class CDataBankTextEntry;
 }
 #include "engine/CResource.h"
 namespace NGameText {
+#ifdef FABLE_RETAIL_NGAMETEXT_TEXTENTRY_READ_PASS26
+class CTextTag {public:long Pos;CCharString Name;};
+FABLE_STATIC_ASSERT(sizeof(CTextTag)==8);
+#endif
 class CTextEntry : public CResource {
 public:
+#ifdef FABLE_RETAIL_NGAMETEXT_TEXTENTRY_READ_PASS26
+    // Both original PDBs; native009c8de0 and Sizeof009c7d90.
+    void ReadFromDataStream(CDataInputStream& info_stream);
+    unsigned long Sizeof() const;
+#endif
     CWideString GetText() const;                                                   // 0x009C7A40
     CCharString SpeechBank;                                                        // +0x1C
     CCharString Narrator;                                                          // +0x20
     CCharString SoundName;                                                         // +0x24
     CWideString Text;                                                              // +0x28
+#ifdef FABLE_RETAIL_NGAMETEXT_TEXTENTRY_READ_PASS26
+    CArray<CTextTag> Tags;
+#else
     unsigned char Tags[0x38 - 0x2c];                                               // +0x2C CArray<CTextTag>
+#endif
     CCountedPointer<CBankFileAsyncData> PFileData;                                 // +0x38
     CDataBankTextEntry* Owner;                                                     // +0x40
 };

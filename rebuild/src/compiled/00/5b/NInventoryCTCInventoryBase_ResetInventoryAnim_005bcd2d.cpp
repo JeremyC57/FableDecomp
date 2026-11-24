@@ -25,7 +25,8 @@ class CRightHandedSet { public:                           // 24 bytes: Up, Forwa
     CRightHandedSet() {}
     void Rotate(const C3DVector& axis, float angle);   // 0x00A22F80
 };
-CRightHandedSet __fastcall GetStartingRightHandedSet(long defIndex);   // 0x005D9730
+#define FABLE_RETAIL_CTCINVENTORYITEM_FLAT_GETSTARTINGRIGHTHANDEDSET   // NF302: ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z (both PDBs), was a free stand-in
+#include "engine/CTCInventoryItem.h"
 extern C3DVector g_InventoryAnimXAxis;             // 0x0137CDFC
 extern C3DVector g_InventoryAnimYAxis;             // 0x0137CDF0
 extern C3DVector g_InventoryAnimZAxis;             // 0x0137CE08
@@ -56,7 +57,7 @@ void CTCInventoryBase::ResetInventoryAnim(long defIndex)
 {
     if (defIndex > 0) {
         if (defIndex != RHSetInvItemDefIndex) {
-            ResetRHSets(GetStartingRightHandedSet(defIndex));
+            ResetRHSets(CTCInventoryItem::GetStartingRightHandedSet(defIndex));
             InventoryAnimLastRHSet.Rotate(g_InventoryAnimXAxis, -InventoryAnimLastXRotationAngle);
             InventoryAnimLastRHSet.Rotate(g_InventoryAnimYAxis, -InventoryAnimLastYRotationAngle);
             InventoryAnimLastRHSet.Rotate(g_InventoryAnimZAxis, -InventoryAnimLastZRotationAngle);

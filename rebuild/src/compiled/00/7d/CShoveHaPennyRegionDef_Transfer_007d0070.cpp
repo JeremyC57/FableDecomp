@@ -5,7 +5,7 @@
 // Layout: PDB CShoveHaPennyRegionDef (0x30): Start +0x28, Score +0x2c.
 // Shape: the landed CActivateQuestDef::Transfer (0x007B5740) template -- two inline CPersistContext::Transfer<float>,
 // the load traits an empty temporary in the dead argument slot, the second save arm ending in its own epilogue.
-// Leaf: Transfer
+// Leaf: ?Transfer@CShoveHaPennyRegionDef@@UAEXAAVCPersistContext@@@Z
 class CMemoryDataInputStream;
 
 class CDataOutputStream { public:
@@ -45,7 +45,7 @@ class CShoveHaPennyRegionDef { public:
     unsigned char _pad04[0x24];
     float Start;                                        // +0x28
     float Score;                                        // +0x2c
-    void Transfer(CPersistContext& context);
+    virtual void Transfer(CPersistContext& context);
 };
 
 void CShoveHaPennyRegionDef::Transfer(CPersistContext& context)

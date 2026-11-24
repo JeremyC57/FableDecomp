@@ -7,8 +7,8 @@ class CCharString {public:void* PData;CCharString();CCharString(const char*,long
 class CAnimFilterBase {public:virtual ~CAnimFilterBase();};
 class CAnimFilterOf2Groups:public CAnimFilterBase {public:CCharString Group1,Group2;unsigned long Group1CRC,Group2CRC;
 virtual ~CAnimFilterOf2Groups();
-CAnimFilterOf2Groups(const CCharString& a,const CCharString& b){SetGroups(a,b);}
-void SetGroups(const CCharString&,const CCharString&);
+CAnimFilterOf2Groups(const CCharString& a,const CCharString& b){SetCurrentGroupNames(a,b);}
+void SetCurrentGroupNames(const CCharString&,const CCharString&); // 0x0073E040 (FableWin; NF292, was SetGroups)
 };
 namespace NCreatureMode {
 class CModeSitBase {public:virtual ~CModeSitBase();unsigned char BaseState[40];CModeSitBase(CThing&);};

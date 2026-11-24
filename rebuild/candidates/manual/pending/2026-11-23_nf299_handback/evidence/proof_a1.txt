@@ -1,0 +1,48 @@
+##### 00996230 renames: ?Init@CCompressorZlib@@QAEXXZ=?Initialise@CCompressorZlib@@AAEXXZ
+sections head 25 new 25
+ALL_EQ text_sections_equal=23
+tables H=1 N=1
+##### 0052ada0 renames: ?Init@CCompressorZlib@@QAEXXZ=?Initialise@CCompressorZlib@@AAEXXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=1 N=1
+##### 009967e0 renames: ?Init@CCompressorZlib@@QAEXXZ=?Initialise@CCompressorZlib@@AAEXXZ
+sections head 20 new 20
+ALL_EQ text_sections_equal=18
+tables H=1 N=1
+##### 00996a40 renames: ?Init@CCompressorZlib@@QAEXXZ=?Initialise@CCompressorZlib@@AAEXXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=6
+tables H=1 N=1
+##### 009c4330 renames: ?Init@CCompressorZlib@@QAEXXZ=?Initialise@CCompressorZlib@@AAEXXZ
+sections head 7 new 7
+ALL_EQ text_sections_equal=5
+tables H=1 N=1
+##### 0072ba40 renames: ?CancelAbilities@CTCDivineWrath@@QAEXXZ=?CancelMove@CTCDivineWrath@@QAEXXZ ?CancelAbilities@CTCUnholyPower@@QAEXXZ=?CancelMove@CTCUnholyPower@@QAEXXZ
+sections head 24 new 24
+ALL_EQ text_sections_equal=23
+tables H=0 N=0
+##### 0072b420 renames: ?CancelAbilities@CTCDivineWrath@@QAEXXZ=?CancelMove@CTCDivineWrath@@QAEXXZ ?CancelAbilities@CTCUnholyPower@@QAEXXZ=?CancelMove@CTCUnholyPower@@QAEXXZ
+sections head 36 new 36
+ALL_EQ text_sections_equal=35
+tables H=0 N=0
+##### 00771620 renames: ?PushSourceDefIndex@CTCOpinionSource@@QAE_NJ@Z=?PushNewSourceDef@CTCOpinionSource@@QAE_NJ@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 007e61b0 renames: ?PlaySound@CTCOracleMinigame@@QAEKABVCCharString@@@Z=?PlaySoundW@CTCOracleMinigame@@QAEKABVCCharString@@@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 0093ae80 renames: ?GetVillage@CTCVillageMember@@QAEPAVCTCVillage@@XZ=?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ
+sections head 23 new 23
+ALL_EQ text_sections_equal=20
+tables H=1 N=1
+##### 0098f3a0 renames: ?ThreadProc@CThreadedFileManager@@SAXPAX@Z=?BeginThread@CThreadedFileManager@@CAXPAX@Z
+sections head 11 new 11
+ALL_EQ text_sections_equal=8
+tables H=1 N=1
+##### 006a1e00 renames: ?IsMeleeWeapon@CTCWeapon@@QAE_NXZ=?IsProjectile@CTCWeapon@@QBE_NXZ
+sections head 13 new 13
+ALL_EQ text_sections_equal=12
+tables H=0 N=0

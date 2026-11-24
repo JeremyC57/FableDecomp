@@ -1,0 +1,28 @@
+##### 0094fbb0 renames: ?IsTargetOnATower@CAIStateGroup_JackDragon@@QAE_NXZ=?IsTargetOnATower@CAIStateGroup_JackDragon@@AAE_NXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00a262b0 renames: ?IsFinished@CBankFileAsyncData@@QAE_NXZ=?IsFinished@CBankFileAsyncData@@QBE_NXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 00845900 renames: ??0CEventTalkedTo@NEntityEvents@@QAE@PAVCThing@@@Z=??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 004d4a99 renames: ??0CTCDivineWrath@@QAE@PAVCThing@@@Z=??0CTCDivineWrath@@QAE@AAVCThing@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00bf9aa0 renames: ?ClipSphere@CEngineCamera@@QAE_NPBVC3DVector@@MPAK@Z=?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@MPAK@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00b662f0 renames: ?SetCameraState@CEngineCamera@@QAEXPBUCEngineCameraDesc@@_N1@Z=?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z
+sections head 16 new 16
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 00694020 renames: ?UpdateActionMovement@CCreatureActionBase@@QAEXXZ=?UpdateActionMovement@CCreatureActionBase@@IAEXXZ
+sections head 51 new 51
+ALL_EQ text_sections_equal=44
+tables H=2 N=2

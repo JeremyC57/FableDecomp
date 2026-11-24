@@ -1,3 +1,4 @@
+// Leaf: ?InvalidateEdgeTesellation@CLandscapeBackgroundTreeNode@@AAEXXZ
 // CLandscapeBackgroundTreeNode::InvalidateEdgeTesellation() -- invalidate the landscape map's edge strips along the node's four sides (map origin + node rectangle) and mark the node's tesselation invalid
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF6750, length 160 bytes.
 // Callees: CEngineLandscapeMap::InvalidateEdge @ 0x00BDCBB0 (x, y, length, side) four times.
@@ -78,7 +79,9 @@ class CLandscapeBackgroundTreeNode : public CMovableResource { public:
             return (CLandscapeBackgroundSubNodeSplitBranch*)SubNode;
         return 0;
     }
+    private:
     void InvalidateEdgeTesellation();
+    public:
 };
 class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:
     unsigned char _pad04[0x114];

@@ -1,5 +1,5 @@
 // CCreatureActionBase::HasPrecedingAction() -- true when the action reports a preceding animation (virtual slot 36) and the creature's interface-70 component says it is not busy with one; false otherwise
-// Leaf: ?HasPrecedingAction@CCreatureActionBase@@QAE_NXZ
+// Leaf: ?HasPrecedingAction@CCreatureActionBase@@QBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Grade: RELOCATION_MATCH -- the && query written inside `if (IsPlayingPrecedingAnimation()) { ... }` with the `return false` after it: the early false becomes retail's own trailing `xor al,al` block (the guard-clause `if (!x) return false;` form returns the tested al through the shared epilogue)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692EC0, length 97 bytes (+ int3 padding).
@@ -33,14 +33,14 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual bool IsPlayingPrecedingAnimation();   // slot 36 (+0x90)
+    virtual bool IsPlayingPrecedingAnimation() const;   // slot 36 (+0x90)
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
-    bool HasPrecedingAction();
+    bool HasPrecedingAction() const;
 };
 
-bool CCreatureActionBase::HasPrecedingAction()
+bool CCreatureActionBase::HasPrecedingAction() const
 {
     if (IsPlayingPrecedingAnimation()) {
         const CTCCarrying* pQueue;

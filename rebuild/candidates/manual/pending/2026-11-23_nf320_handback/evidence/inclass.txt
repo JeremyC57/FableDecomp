@@ -1,0 +1,16 @@
+004aa980 CScriptThing::GetPos 00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_Main_00d71b30.cpp virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+004aa980 CScriptThing::GetPos 00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointBackup_Main_00d73c70.cpp virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); 
+004aa980 CScriptThing::GetPos 00/da/NScriptCQMinionClifftopChaseScriptCMinionTrollSummoner_Main_00daa700.cpp virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
+004aa980 CScriptThing::GetPos 00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrier_Main_00da4e30.cpp virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }
+004aa980 CScriptThing::GetPos 00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Main_00daa260.cpp virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
+004aa980 CScriptThing::GetPos 00/de/NScriptCQSecretPassageScriptCSPScreamerTrigger_Main_00def3b0.cpp virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); 
+004aa980 CScriptThing::GetPos 00/89/CGameScriptInterface_GetFurthestWithScriptName_0089a6e0.cpp virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
+004aa980 CScriptThing::GetPos 00/89/CGameScriptInterface_GetNearestWithScriptName_0089a510.cpp virtual const C3DVector& GetPos() const { if (PImp.Data == 0) return NullCoord; return PImp.Data->Ge
+004aa980 CScriptThing::GetPos 00/89/CGameScriptInterface_GetNearestWithDefName_0089a880.cpp virtual const C3DVector& GetPos() const { if (PImp.Data == 0) return NullCoord; return PImp.Data->Ge
+004aa980 CScriptThing::GetPos 00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Main_00d15510.cpp FABLE_FORCEINLINE virtual const C3DVector& GetPos() const { if (!PImp.Data) return NullCoord; return
+004aa980 CScriptThing::GetPos 00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_Main_00d15a40.cpp FABLE_FORCEINLINE virtual const C3DVector& GetPos() const { if (!PImp.Data) return NullCoord; return
+004aa980 CScriptThing::GetPos 00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_Main_00f051d0.cpp virtual FABLE_FORCEINLINE const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Dat
+004aa980 CScriptThing::GetPos 00/f0/NScriptCQAmbushTradersScriptCATSentry_Main_00f045e0.cpp virtual FABLE_FORCEINLINE const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Dat
+004aa980 CScriptThing::GetPos 00/e4/NScriptCVBanditTollScriptCBlockingBandit_Main_00e49980.cpp FABLE_FORCEINLINE virtual const C3DVector& GetPos() const { if (!PImp.Data) return NullCoord; return
+004ae8c0 CWorld::PeekWorldMap 00/82/CMap_ScriptedMapBrushRemoveThings_008209c0.cpp FABLE_FORCEINLINE const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VT
+004ae8c0 CWorld::PeekWorldMap 00/82/CMap_ScriptedMapBrushAddThings_00820790.cpp FABLE_FORCEINLINE const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VT

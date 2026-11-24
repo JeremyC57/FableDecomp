@@ -1,0 +1,17 @@
+# equiv_check engine/CAIStateGroup_TavernServer.h (repo tree v repo+NF285 overlay), the header's 15 landed includers
+rows checked 15 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF285/work/eq_tavern.tsv
+EQ_DONE
+differing: 0
+# control (a typedef planted at the end of the default path):
+rows checked 15 -> differing lines in /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF285/work/eq_tavern_ctl.tsv
+008fe50e	src	DIFF
+00967250	src	DIFF
+00966930	src	DIFF
+00967650	src	DIFF
+009670a0	src	DIFF
+00967110	src	DIFF
+009677a0	src	DIFF
+00966da0	src	DIFF
+00967d40	src	DIFF
+00966af0	src	DIFF
+0121f86f	src	DIFF

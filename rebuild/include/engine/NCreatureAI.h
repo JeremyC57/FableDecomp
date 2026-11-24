@@ -8,7 +8,15 @@ class CThingCreatureBase;
 #ifdef FABLE_RETAIL_NCREATUREAI_WASP_ATTACK_PASS23
 class CThingCreatureBase;
 #endif
+class C3DVector;
+class CThingCreatureBase;
 namespace NCreatureAI {
+#ifdef FABLE_RETAIL_CREATURE_RANGED_COMBAT2_PASS27
+bool FABLE_FASTCALL IsBestTargetForAttack(const CThingAICreature&, const CThingCreatureBase*);
+#endif
+#ifdef FABLE_RETAIL_GUARD_REACT_TO_BRIBE_PASS27
+bool FABLE_FASTCALL IsThingRunningAwayFromThing(const CThing&, const CThing&, const C3DVector&);  // 0x00864170
+#endif
 #ifdef FABLE_RETAIL_NCREATUREAI_WASP_ATTACK_PASS23
 // Exact Ego_r/FableWin name and signature, native00864d00.
 bool FABLE_FASTCALL IsToAttackTarget(CThingAICreature*,const CThingCreatureBase*);

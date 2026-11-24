@@ -24,7 +24,7 @@ public:
 };
 
 class CCreatureActionBase { public:
-    float GetProgressRatio();                                // 0x006925E0
+    float GetPercentageComplete() const;                                // 0x006925E0
 };
 class CThingCreatureBase { public:
     unsigned char        _pad00[0x100];
@@ -68,7 +68,7 @@ void CTCCreatureFlyInCircles::UpdateFlight(C3DVector& position, C3DVector& veloc
     if (Transitioning) {
         CCreatureActionBase* action = Creature->PCurrentAction;
         if (action) {
-            float progress = action->GetProgressRatio();
+            float progress = action->GetPercentageComplete();
             if (Mode == FLY_MODE_STRAFE)
                 bank = progress * -0.25f;
             else

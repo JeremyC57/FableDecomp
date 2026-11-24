@@ -1,3 +1,4 @@
+// Leaf: ?WriteToFile@CChunkedFileRawDataChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
 // CChunkedFileRawDataChunk::WriteToFile @ 0x00aa7830
 
 class CDataOutputStream { public:
@@ -11,14 +12,14 @@ class CDataOutputStream { public:
 class CChunkedFileSaver;
 
 struct CChunkedFileRawDataChunk {
-    char pad[0x10];
+    char pad[0xc];
     void* Data;          // +0x10 buffer
     unsigned int ByteSize;   // +0x14 length
-    void WriteToFile(CDataOutputStream& stream, CChunkedFileSaver& saver);
+    virtual void WriteToFile(CDataOutputStream& stream, CChunkedFileSaver& saver) const;
 };
 
 void CChunkedFileRawDataChunk::WriteToFile(CDataOutputStream& stream,
-                                           CChunkedFileSaver& saver)
+                                           CChunkedFileSaver& saver) const
 {
     stream.Write(this->Data, this->ByteSize);
 }

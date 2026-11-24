@@ -1,3 +1,4 @@
+// Leaf: ?IsPreventingNormalMovement@CCreatureActionBase@@UBE_NXZ
 // CCreatureActionBase::IsPreventingNormalMovement() const -- true unless the creature treats this action's animation as a combination anim
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692A20, length 37 bytes. Vtable slot 49 of the CCreatureActionBase family
 // (rtti-vtables.tsv lists it through CCreatureAction_ThrowGameObject, 0x01259044).
@@ -34,7 +35,7 @@ class CCreatureActionBase { public:
     virtual long GetAnimationIndex() const; // slot 7 (+0x1c)
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThingCreatureBase> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
-    bool IsPreventingNormalMovement() const;
+    virtual bool IsPreventingNormalMovement() const;
 };
 
 bool CCreatureActionBase::IsPreventingNormalMovement() const

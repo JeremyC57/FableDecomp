@@ -12,38 +12,22 @@
 // Shape: a frame-pointer, size-optimised translation unit (`optimize("y",off)` + `("s",on)`, as the neighbouring
 // landed NUISystem::CObservable constructor 0x0042BE7B): `and [esi],0` for the zero, the default allocator argument of
 // each list a 1-byte empty temporary homed at [ebp-1] (both lists reuse the slot).
-#pragma optimize("y", off)
-#pragma optimize("s", on)
+// Port (NF227, 2026-11-22, q12578 / q12584): onto engine/NUISystem_CAction.h (FableWin.pdb ??0CAction@NUISystem@@QAE@XZ; members
+//   ActionType +0, list<CActionParam*> UIActionParams +4, list<long> ThingActionParams +8, Valid +0x0C). Was a row-local CAction with a
+//   CActionParamList / SRetailAllocator stand-in for UIActionParams, whose constructor bound 0x0042AB01 as
+//   ??0CActionParamList@NUISystem@@QAE@ABUSRetailAllocator@1@@Z. Both lists now use the header's STLport list with
+//   FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE (the inline list(const allocator&) calls the out-of-line _List_base constructor), so the call
+//   binds ??0?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z
+//   at 0x0042AB01, the spelling 0x0041E3F6 binds there (retail folds the list ctor into it).
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
-#include "stlport/fable_containers.h"
+#include "engine/NUISystem_CAction.h"
+// The TU is frame-pointer and size-optimised; the pragmas follow the includes (EXTRA_RULES 2026-11-20, nf189 placement).
+#pragma optimize("y", off)
+#pragma optimize("s", on)
 namespace NUISystem {
-
-class CActionParam;
-
-struct SRetailAllocator {                      // std::allocator<T>: empty, user constructor keeps it uninitialised
-    SRetailAllocator() { }
-};
-
-struct CActionParamList {                      // STLport list<CActionParam*>, 4 bytes (the sentinel node pointer)
-    void* m_pNode;
-    CActionParamList(const SRetailAllocator& allocator = SRetailAllocator());   // 0x0042AB01
-};
-
-
-enum EActionType { ACTION_NONE = 0 };
-
-class CAction { public:                               // retail 0x10 bytes
-    EActionType      ActionType;               // +0x00
-    CActionParamList UIActionParams;           // +0x04
-    std::list<long>  ThingActionParams;        // +0x08 (_List_base<long> ctor 0x0042AB58, out of line)
-    bool             Valid;                    // +0x0c
-    CAction();
-};
-
 CAction::CAction()
-    : ActionType(ACTION_NONE), UIActionParams(), ThingActionParams(), Valid(true)
+    : ActionType(UI_ACTION_TYPE_NONE), Valid(true)
 {
 }
-
 }

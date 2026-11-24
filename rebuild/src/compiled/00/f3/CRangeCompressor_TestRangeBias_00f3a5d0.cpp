@@ -1,5 +1,5 @@
 // CRangeCompressor::TestRangeBias(const CArray<unsigned long>& in, CArray<unsigned long>& out, CScriptEntry& entry, long bytes) -- find the unsigned and the sign-extended (to `bytes` wide) value ranges of the input, pick the bias that gives the smaller range, write the biased, masked values to `out`, and record the bias in the script entry (flagging it as biased unless flag 0x10 is set)
-// Leaf: TestRangeBias
+// Leaf: ?TestRangeBias@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F3A5D0, length 320 bytes (`ret 10h`). FableWin.pdb
 // ?TestRangeBias@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z; CScriptEntry is 24 bytes
 // {Flags, BitCount, RangeBias, RangeShift, ShuffleMask, OrMask} (PDB). CArray<unsigned long> is the 12-byte
@@ -50,7 +50,9 @@ public:
         unsigned long ShuffleMask;  // +0x10
         unsigned long OrMask;       // +0x14
     };
+    private:
     void TestRangeBias(const CArray<unsigned long>& in, CArray<unsigned long>& out, CScriptEntry& entry, long bytes);
+    public:
 };
 
 void CRangeCompressor::TestRangeBias(const CArray<unsigned long>& in, CArray<unsigned long>& out, CScriptEntry& entry, long bytes)

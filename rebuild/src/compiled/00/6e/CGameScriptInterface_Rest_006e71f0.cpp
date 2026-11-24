@@ -1,3 +1,4 @@
+// Leaf: ?Rest@CGameScriptInterface@@IBEXM@Z
 // CGameScriptInterface::Rest(float seconds) -- block the calling script for the given time: compute the end frame (now + frames-per-second * seconds) and, while the game frame is still before it and the script runner has not been told to stop, yield one script frame
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -25,10 +26,12 @@ public:
 };                        // 0x0049D870
 
 class CGameScriptInterface { public:
-    void Rest(float seconds);
+    protected:
+    void Rest(float seconds) const;
+    public:
 };
 
-void CGameScriptInterface::Rest(float seconds)
+void CGameScriptInterface::Rest(float seconds) const
 {
     if (g_pScriptRunner) {
         long fps = CMainGameComponent::GetConstantFPS();

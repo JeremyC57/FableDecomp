@@ -1,7 +1,7 @@
 // CStringParser::ReadAsStringUntilString  (0x009ba110)
 //
 // Scans the parser's buffer (starting at m_pos within m_buffer) for a
-// matching terminator/substring using FindMatchingSubstring (updates m_pos
+// matching terminator/substring using SkipUntilString (updates m_pos
 // on success). If found, builds a temporary CCharString slice spanning the
 // consumed bytes [oldPos, newPos), assigns it into item->value, marks
 // item->type = 2 (string), and returns true. If not found, returns false.
@@ -27,7 +27,7 @@ class CParsedItem
 class CStringParser
 {
 public:
-    bool FindMatchingSubstring(CCharString* terminator);
+    bool SkipUntilString(const CCharString& s);       // 0x009B9A20 ?SkipUntilString@CStringParser@@QAE_NABVCCharString@@@Z (Ego_r / FableWin; self row Leaf)
     bool ReadAsStringUntilString(CCharString* terminator, CParsedItem* item);
 
     long m_unk0;    // +0x00
@@ -41,7 +41,7 @@ bool CStringParser::ReadAsStringUntilString(CCharString* terminator, CParsedItem
 {
     char* scanStart = m_buffer + m_pos;
 
-    if (FindMatchingSubstring(terminator))
+    if (SkipUntilString(*terminator))
     {
         long matchLen = (m_pos + (long)m_buffer) - (long)scanStart;
 

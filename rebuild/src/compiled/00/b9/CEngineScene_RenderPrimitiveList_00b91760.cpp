@@ -36,6 +36,12 @@ class CEnginePrimitiveManager { public:
 
 class CEngineInternalPrimitiveBase {
 public:
+    // NF240 (q12673): 0x0143B8D8 is the private static ?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA (all three PDBs), stored
+    // through the public inline ?SetAsRendered@CEngineInternalPrimitiveBase@@QAEXXZ (FableWin.pdb / Ego_d.pdb; as in the header).
+    void SetAsRendered() { LastFrameRendered = CurrentRenderFrame; }
+private:
+    static unsigned short CurrentRenderFrame;           // 0x0143B8D8
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -57,7 +63,6 @@ public:
 };
 
 namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
-extern unsigned short            g_engineFrameNumber;          // 0x0143B8D8
 
 class CEngineScene {
 private:                                        // Ego_r.pdb: private (AAE)
@@ -74,7 +79,7 @@ void CEngineScene::RenderPrimitiveList(CEngineInternalPrimitiveBase* primitive, 
                 CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive->Type];
                 CEngineSubPrimitiveChain chain;
                 if (manager->RenderPrimitive(*primitive, layer, chain) == RENDERED_SUB_PRIMITIVES)
-                    primitive->LastFrameRendered = g_engineFrameNumber;
+                    primitive->SetAsRendered();
             }
             primitive = primitive->NextPrimitive;
         }

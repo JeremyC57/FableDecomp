@@ -1,0 +1,13 @@
+006a64d0	call	00663c89	00663c40L CThingCreatureBase::DrawPreparePrimitivesForRendering
+006fefb0	call	006ff04a	006ff040L CReactionMatch_SecondaryAxisMRShifted::TransferBinaryIn
+006fefb0	call	006ff2ca	006ff2c0L CReactionMatch_SecondaryAxisCentredMRShifted::TransferBinary
+006fefb0	call	006ff54a	006ff540L CReactionMatch_AsymmetricPyramid::TransferBinaryIn
+006fefb0	call	00701999	00701990L CReactionMatch_Sphere::TransferBinaryIn
+006a64d0	call	0070359c	00703590L CThingObject::DrawPreparePrimitivesForRendering
+006a64d0	call	0082d089	0082d080L CThingBuilding::DrawPreparePrimitivesForRendering
+006a64d0	call	00835ac9	00835ac0L CThingDeadCreature::DrawPreparePrimitivesForRendering
+006a64d0	call	00837b44	00837b30L CThingTrackNode::DrawPreparePrimitivesForRendering
+006a64d0	call	0083b6c4	0083b6b0L CThingVillage::DrawPreparePrimitivesForRendering
+006a64d0	call	0083ba79	0083ba70L CThingHolySite::DrawPreparePrimitivesForRendering
+006a64d0	call	0083d2f4	-
+006a64d0	call	0083dc94	0083dc80L CThingPhysicalSwitch::DrawPreparePrimitivesForRendering

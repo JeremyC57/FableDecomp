@@ -1,0 +1,28 @@
+address	verdict	old	new	reason
+0085c120	SKIP	?FinishAction@CCombatActionBase@@UAEXXZ	?FinishAction@CCombatActionBase@@MAEXXZ	declaration does not start its line
+00547e40	SKIP	?FreeTextures@CMovie@NUISystem@@QAEXXZ	?FreeTextures@CMovie@NUISystem@@IAEXXZ	nested scope or operator / special member
+00aeefe0	SKIP	?DatabaseClone@CParticleSystem@NParticleEngine@@QAEPAV12@XZ	?DatabaseClone@CParticleSystem@NParticleEngine@@QBEPAV12@XZ	nested scope or operator / special member
+006655a0	SKIP	?GetActionSpeedMultiplier@CTCHaste@@QAEMXZ	?GetActionSpeedMultiplier@CTCHaste@@QBEMXZ	declaration does not start its line
+007bdb66	SKIP	?GetHeightZBelowPos@CWorldMap@@QAEMABVC3DVector@@@Z	?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z	declaration does not start its line
+00a89450	ACCEPT	?SaveBinary@C3DPrimitive2@@QBEXAAVCDataOutputStream@@@Z	?SaveBinary@C3DPrimitive2@@QAEXAAVCDataOutputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a8fd40
+00858130	REJECT	?GetPActiveStrikeEvent@CCombatActionBase@@QAEPAVCStrikeEvent@1@XZ	?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ	objsec DIFF 14 .text .text bytes True relocs False 719 719 /     (693, '?ProcessFramesRunningForOnHitWithParams@?A0xb9928a6e@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z', 20) | (693, '?ProcessFramesRunningForOnHitWithParams@?A0x7b50ae4c@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z', 20) / bad 1 text_sections_equal=13
+008c63c0	REJECT	?PerformAction@CCreatureAction_TrollTunnel@@UAEXXZ	?PerformAction@CCreatureAction_TrollTunnel@@UAEXXZ	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+007ca670	ACCEPT	?GetAVisibleTelevisionScreenArea@CDisplayManager@@QAE?AVC2DBoxF@@XZ	?GetAVisibleTelevisionScreenArea@CDisplayManager@@QBE?AVC2DBoxF@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009becb0
+009a6610	ACCEPT	?Initialise@CInitBaseClass@@QAE_NXZ	?Initialise@CInitBaseClass@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099a350
+00be79d0	ACCEPT	?Render@CLandscapeBackgroundPatch@@QAE_N_N@Z	?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00be6f70
+0082b750	ACCEPT	?RemoveAllDeadMarkers@CMiniMapDisplay@@QAEXXZ	?RemoveAllDeadMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0082a2a0
+00f33b90	ACCEPT	?TransferVectorOfSubComponentsLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009bc120
+00892f60	REJECT	?IsQuestCompleted@CQuestManager@@QAE_NABVCCharString@@@Z	?IsQuestCompleted@CQuestManager@@QBE_NABVCCharString@@@Z	grade ('RELOCATION_MATCH', 'LINK_FAIL')
+00731bf0	REJECT	?CTCSpotLight_FrameUpdate@@YIXPAVCTCSpotLight@@@Z	?CTCSpotLight_FrameUpdate@@YIXPAVCTCSpotLight@@@Z	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+004a0370	ACCEPT	?GetCurrentCollectableRentValue@CTCBuyableHouse@@QAEJXZ	?GetCurrentCollectableRentValue@CTCBuyableHouse@@QBEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006c0160
+00789900	REJECT	?GetBribeAmountWillTake@CTCGuard@@QAEJXZ	?GetBribeAmountWillTake@CTCGuard@@QBEJXZ	grade ('DIFFER(86v68)', 'PASS')
+0065196c	ACCEPT	?IsReadyToLevelUp@CTCHeroExperience@@QAE_NXZ	?IsReadyToLevelUp@CTCHeroExperience@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006d7cb0
+00690480	ACCEPT	?IsAnySliderReceivingInput@CTCInGameMenu@@QAE_NXZ	?IsAnySliderReceivingInput@CTCInGameMenu@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0047d483
+0058509f	REJECT	OnItemAdded	OnItemAdded	no object (head ('RELOCATION_MATCH', 'PASS'), new ('SRC_FAIL', 'PASS'))
+0064a568	ACCEPT	?IsButtonHeldForExpression@CTCInventory@@QAE_NABVCCharString@@@Z	?IsButtonHeldForExpression@CTCInventory@@QBE_NABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00582a16
+0057d5a0	ACCEPT	?GetHealthToAddThisFrame@CTCObjectAugmentations@@QAEJXZ	?GetHealthToAddThisFrame@CTCObjectAugmentations@@QBEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00766260
+005e4430	ACCEPT	?GetSuccessSummary@CTCQuestCard@@QAE?AVCWideString@@XZ	?GetSuccessSummary@CTCQuestCard@@QBE?AVCWideString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00702630
+0087cb10	ACCEPT	?IsAbleToFlourishDangerThings@CTCStealth@@QAE_NXZ	?IsAbleToFlourishDangerThings@CTCStealth@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007471a0
+0072f9e0	ACCEPT	?GetIsAvailableForResidency@CThingBuilding@@QBE_NXZ	?GetIsAvailableForResidency@CThingBuilding@@QAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0082e0e0
+00f3d830	ACCEPT	?StripUnusedVerts@CTriangleStripifier2@@QAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z	?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00f3b970
+0099be70	ACCEPT	?UnassignString@CWideString@@QAEXXZ	?UnassignString@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b4d0

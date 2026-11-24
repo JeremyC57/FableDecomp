@@ -1,0 +1,6 @@
+entry	address	status	binders respelled	note
+q12566	0x0041E641	done	(none needed: 0x0042FB40 / 0x0042DB20 already bind IAE)	self UAE -> IAE on the header; one unit with q12567 (HEAD 0x0041E3F6's ??_GCManager UAE COMDAT called ??1 UAE, which the port removes)
+q12567	0x0041E3F6	done	0x0041E5F2 (??0 QAE -> IAE); 0x0041E1CD self SetMetaLayer QAEXJ -> UAEXJ (in place)	unit 0x0041E641 + 0x0041E3F6 + 0x0041E5F2 + 0x0041E1CD
+q12568	0x00494840	done	(none: 0x00496070 already AAE; 0x00495610 stand-in queued)	self QAE -> AAE on engine/CFrontendGameComponent.h
+q12569	0x00494840,0x0054ED90,0x0041E5F2,0x0042FB40,0x0042DB20 (+0x0041E641,0x0041E3F6)	done	-	7 tests; 0x0054ED90 / 0x0041E3F6 link the row object (the rows keep HEAD local models of classes with headers)
+q12570	(no address)	done (report only)	-	no row change; FableWin evidence: ~CCountedPointer<CFontBank> is `{ ReleaseData(); }` (NOTES); the two shapes are per-TU inlining of one source, no retail copy

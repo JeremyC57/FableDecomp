@@ -1,0 +1,5 @@
+00beb490 HEAD	??0CMovableResource@@QAE@XZ	9	-	NO-OWNER
+00beb490 HEAD	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+00beb490 HEAD	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+00beb490 HEAD	??0C2DCoordI@@QAE@ABV0@@Z	19	-	NO-OWNER
+00beb490 HEAD	??_GCWaterPatchMesh@@UAEPAXI@Z	30	00beb4d0	NEQ:bytes(30 v 100)

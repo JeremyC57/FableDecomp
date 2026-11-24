@@ -107,7 +107,10 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     unsigned char _pad34[0x9c - 0x34];
     long BarIndex;                                     // +0x9c
     void FreeBarPoint();                               // 0x00949320
-    bool GetPaymentRequestReplyMessage();              // 0x00947E20
+    protected:
+    bool GetPaymentRequestReplyMessage();
+    public:
+              // 0x00947E20
     bool PayMoney();
 };
 

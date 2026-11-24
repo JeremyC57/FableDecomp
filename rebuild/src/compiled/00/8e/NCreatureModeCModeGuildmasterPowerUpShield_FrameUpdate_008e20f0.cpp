@@ -13,6 +13,7 @@
 //   0x0126C800, "SWORD_SWING" 0x0127AC80, 0.5f 0x0122F59C, 1.75f 0x012657FC.
 // Headers (overlay, FABLE_HDR_OVERLAY=$A/hdr): new engine/NCreatureMode_CModeGuildmasterPowerUpShield.h,
 //   engine/NParticleEngine_CParticleUpdateParameters.h, engine/CCombatAction_Guildmaster_FollowersRelease.h; opt-in FABLE_RETAIL_CTCBOSS_LIVINGHELPERS.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_CCLASS

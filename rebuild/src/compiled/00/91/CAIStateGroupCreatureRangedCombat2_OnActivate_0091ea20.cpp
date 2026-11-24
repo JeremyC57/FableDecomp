@@ -1,3 +1,4 @@
+// Leaf: ?OnActivate@CAIStateGroup_CreatureRangedCombat2@@MAEXXZ
 // CAIStateGroup_CreatureRangedCombat2::OnActivate() -- register the creature against its live target
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091EA20, length 68 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times on PTargetThing, +0x14),
@@ -53,7 +54,9 @@ struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
 
 struct CAIStateGroup_CreatureRangedCombat2 : CAIStateGroup_EnemyCreatureBase {
     bool AddedStrafe;                       // +0x1c
+    protected:
     virtual void OnActivate();
+    public:
 };
 
 void CAIStateGroup_CreatureRangedCombat2::OnActivate()

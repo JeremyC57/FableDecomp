@@ -1,0 +1,8 @@
+008b83c0	??_GCCreatureAction_SummonCreatures@@UAEPAXI@Z	30	008b87a0	EQ
+008b83e0	??_GCCreatureAction_SummonCreatures@@UAEPAXI@Z	30	008b87a0	EQ
+008b8440	??_GCCreatureAction_SummonCreatures@@UAEPAXI@Z	30	008b87a0	EQ
+008b89a0	??0CCreatureAction_SummonCreatures@@QAE@ABV0@@Z	39	-	NO-OWNER
+008b89a0	??_GCCreatureAction_SummonCreatures@@UAEPAXI@Z	30	008b87a0	EQ
+008b87a0	??2@YAPAXIPAX@Z	5	00405c10	EQ
+008b87a0	??0CCreatureAction_SummonCreatures@@QAE@ABV0@@Z	39	-	NO-OWNER
+008b87a0	?ReferenceSummonCreaturesVtable@?A0x1fbb92b6@@YAXPAXABVCCreatureAction_SummonCreatures@@@Z	43	-	NO-OWNER

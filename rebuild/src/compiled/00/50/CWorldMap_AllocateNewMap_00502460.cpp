@@ -1,3 +1,4 @@
+// Leaf: ?AllocateNewMap@CWorldMap@@MAEJXZ
 // CWorldMap::AllocateNewMap() -- returns the first unused map slot (from 1), growing the map array by one if none is free
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail 0x00502460, 0x98 bytes (CWorldMap.cpp TU), vtable 0x01244AEC slot 30. Works on Maps (CArray<CMapInfo>,
@@ -108,7 +109,9 @@ public:
     unsigned short* MapPlacement_start;    // +0x6C vector<unsigned short>
     unsigned short* MapPlacement_finish;   // +0x70
     unsigned short* MapPlacement_eos;      // +0x74
-    long AllocateNewMap();
+    protected:
+    virtual long AllocateNewMap();
+    public:
 };
 
 long CWorldMap::AllocateNewMap()

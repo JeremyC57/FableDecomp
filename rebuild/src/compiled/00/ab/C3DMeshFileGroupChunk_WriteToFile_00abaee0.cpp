@@ -24,7 +24,7 @@ class CDataOutputStream { public:
     void WriteULONG(unsigned long value);                          // 0x00993EA0
     void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteUBYTE(unsigned char value);                          // 0x00993E50
-    void WriteUSHORT(unsigned short value);                        // 0x00993E80
+    void WriteUWORD(unsigned short value);                        // 0x00993E80
     void WriteMatrix3x4(const CMatrix3x4& m);                      // 0x00994070
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
 public:
@@ -93,7 +93,7 @@ void C3DMeshFileGroupChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSave
     out.WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i) {
         const C3DVertexBlend2& blend = VertexList[i];
-        out.WriteUSHORT((unsigned short)blend.VertexIndex);
+        out.WriteUWORD((unsigned short)blend.VertexIndex);
         out.WriteFloat(blend.BlendValue);
     }
     CChunkedFileSuperChunk::WriteToFile(out, saver);

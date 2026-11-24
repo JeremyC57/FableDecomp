@@ -1,0 +1,184 @@
+address	verdict	old	new	reason
+004166e2	ACCEPT	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QAENXZ	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00417001	ACCEPT	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QAENXZ	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004166e2
+004168dc	ACCEPT	?InitialiseFonts@CMainGameComponent@@QAEXXZ	?InitialiseFonts@CMainGameComponent@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+004175da	ACCEPT	?InitialiseFonts@CMainGameComponent@@QAEXXZ	?InitialiseFonts@CMainGameComponent@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004168dc
+004874f0	ACCEPT	?IsUsingJoystickDeviceNumber@CPlayer@@QAE_NJ@Z	?IsUsingJoystickDeviceNumber@CPlayer@@QBE_NJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00687db0	ACCEPT	?IsUsingJoystickDeviceNumber@CPlayer@@QAE_NJ@Z	?IsUsingJoystickDeviceNumber@CPlayer@@QBE_NJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004874f0
+004945b0	ACCEPT	?CreateNewProfile@CFrontendGameComponent@@QAE?AVCWideString@@XZ	?CreateNewProfile@CFrontendGameComponent@@AAE?AVCWideString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+004962c0	ACCEPT	?CreateNewProfile@CFrontendGameComponent@@QAE?AVCWideString@@XZ	?CreateNewProfile@CFrontendGameComponent@@AAE?AVCWideString@@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004945b0
+0049e2c0	ACCEPT	?SetAsLoadingRegion@CWorld@@QAEXABVC3DVector@@M_N11@Z	?SetAsLoadingRegion@CWorld@@IAEXABVC3DVector@@M_N11@Z	objsec ALL_EQ, MATCH PASS
+0049eaf0	ACCEPT	?SetAsLoadingRegion@CWorld@@QAEXABVC3DVector@@M_N11@Z	?SetAsLoadingRegion@CWorld@@IAEXABVC3DVector@@M_N11@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0049e2c0
+004a0850	ACCEPT	?AutoSaveInternal@CWorld@@QAE_NABVCWideString@@_N@Z	?AutoSaveInternal@CWorld@@IAE_NABVCWideString@@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004a0ae0	ACCEPT	?AutoSaveInternal@CWorld@@QAE_NABVCWideString@@_N@Z	?AutoSaveInternal@CWorld@@IAE_NABVCWideString@@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004a0850
+004a0cd0	ACCEPT	?AutoSaveInternal@CWorld@@QAE_NABVCWideString@@_N@Z	?AutoSaveInternal@CWorld@@IAE_NABVCWideString@@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004a0850
+004a0bb0	ACCEPT	?AutoSaveInternal@CWorld@@QAE_NABVCWideString@@_N@Z	?AutoSaveInternal@CWorld@@IAE_NABVCWideString@@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004a0850
+004af350	ACCEPT	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QAE?AVCCharString@@ABV2@@Z	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QBE?AVCCharString@@ABV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00702b10	ACCEPT	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QAE?AVCCharString@@ABV2@@Z	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QBE?AVCCharString@@ABV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004af350
+004b3260	ACCEPT	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QAE?AVCCharString@@ABV2@@Z	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QBE?AVCCharString@@ABV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004af350
+004b35e0	ACCEPT	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QAE?AVCCharString@@ABV2@@Z	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QBE?AVCCharString@@ABV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004af350
+004b3060	ACCEPT	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QAE?AVCCharString@@ABV2@@Z	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QBE?AVCCharString@@ABV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004af350
+004b33e0	ACCEPT	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QAE?AVCCharString@@ABV2@@Z	?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QBE?AVCCharString@@ABV2@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004af350
+004af560	ACCEPT	?IsQuestCardActive@CQuestManager@@QAE_NABVCCharString@@@Z	?IsQuestCardActive@CQuestManager@@QBE_NABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+008968c0	ACCEPT	?IsQuestCardActive@CQuestManager@@QAE_NABVCCharString@@@Z	?IsQuestCardActive@CQuestManager@@QBE_NABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004af560
+004c7bd0	ACCEPT	?IsForceNoSerialise@CThing@@QAE_NXZ	?IsForceNoSerialise@CThing@@QBE_NXZ	objsec ALL_EQ, MATCH PASS
+00522600	ACCEPT	?IsForceNoSerialise@CThing@@QAE_NXZ	?IsForceNoSerialise@CThing@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004c7bd0
+00562710	ACCEPT	?InitialiseActivityInfo@CTCHeroOnlineScoreboard@@QAEXXZ	?InitialiseActivityInfo@CTCHeroOnlineScoreboard@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00562ec0	ACCEPT	?InitialiseActivityInfo@CTCHeroOnlineScoreboard@@QAEXXZ	?InitialiseActivityInfo@CTCHeroOnlineScoreboard@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00562710
+0057a60a	ACCEPT	?GetFatnessReducingFrequencyInFrames@CTCHeroStats@@QBEJXZ	?GetFatnessReducingFrequencyInFrames@CTCHeroStats@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0057cdb5	ACCEPT	?GetFatnessReducingFrequencyInFrames@CTCHeroStats@@QBEJXZ	?GetFatnessReducingFrequencyInFrames@CTCHeroStats@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0057a60a
+0057d5a0	ACCEPT	?GetFatnessReducingFrequencyInFrames@CTCHeroStats@@QBEJXZ	?GetFatnessReducingFrequencyInFrames@CTCHeroStats@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0057a60a
+0063e2e0	ACCEPT	?InitPassabilityFromThemesIfNecessary@CWorldMap@@QAEXABVC2DBoxI@@@Z	?InitPassabilityFromThemesIfNecessary@CWorldMap@@IAEXABVC2DBoxI@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+004ff440	ACCEPT	?InitPassabilityFromThemesIfNecessary@CWorldMap@@QAEXABVC2DBoxI@@@Z	?InitPassabilityFromThemesIfNecessary@CWorldMap@@IAEXABVC2DBoxI@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0063e2e0
+00659085	ACCEPT	?InitialiseSecuritySweeps@CTCVillage@@QAEXXZ	?InitialiseSecuritySweeps@CTCVillage@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0065b400	ACCEPT	?InitialiseSecuritySweeps@CTCVillage@@QAEXXZ	?InitialiseSecuritySweeps@CTCVillage@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00659085
+00664680	ACCEPT	?CreateDefaultWeapons@CThingCreatureBase@@QAEXXZ	?CreateDefaultWeapons@CThingCreatureBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00833a70	ACCEPT	?CreateDefaultWeapons@CThingCreatureBase@@QAEXXZ	?CreateDefaultWeapons@CThingCreatureBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00664680
+006a9ef0	ACCEPT	?CreateDefaultWeapons@CThingCreatureBase@@QAEXXZ	?CreateDefaultWeapons@CThingCreatureBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00664680
+0066aef0	ACCEPT	?CreatePAttachedEmitter@CTCSoundPlayer@@QAEPAVCThingSoundEmitter@@_N@Z	?CreatePAttachedEmitter@CTCSoundPlayer@@AAEPAVCThingSoundEmitter@@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0066b080	ACCEPT	?CreatePAttachedEmitter@CTCSoundPlayer@@QAEPAVCThingSoundEmitter@@_N@Z	?CreatePAttachedEmitter@CTCSoundPlayer@@AAEPAVCThingSoundEmitter@@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0066aef0
+0066b120	ACCEPT	?CreatePAttachedEmitter@CTCSoundPlayer@@QAEPAVCThingSoundEmitter@@_N@Z	?CreatePAttachedEmitter@CTCSoundPlayer@@AAEPAVCThingSoundEmitter@@_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0066aef0
+00670560	ACCEPT	?AddAppearanceParticle@CTCCoopSpirit@@QAEXABVCCharString@@@Z	?AddAppearanceParticle@CTCCoopSpirit@@AAEXABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006707a0	ACCEPT	?AddAppearanceParticle@CTCCoopSpirit@@QAEXABVCCharString@@@Z	?AddAppearanceParticle@CTCCoopSpirit@@AAEXABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00670560
+006707e0	ACCEPT	?AddAppearanceParticle@CTCCoopSpirit@@QAEXABVCCharString@@@Z	?AddAppearanceParticle@CTCCoopSpirit@@AAEXABVCCharString@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00670560
+00686b00	ACCEPT	?BeginSerialising@CTCBase@@QAE_N_NAAVCCharString@@AAVCStringParser@@AAVCPersistContext@@@Z	?BeginSerialising@CTCBase@@AAE_N_NAAVCCharString@@AAVCStringParser@@AAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00686e10	ACCEPT	?BeginSerialising@CTCBase@@QAE_N_NAAVCCharString@@AAVCStringParser@@AAVCPersistContext@@@Z	?BeginSerialising@CTCBase@@AAE_N_NAAVCCharString@@AAVCStringParser@@AAVCPersistContext@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00686b00
+00688ba0	ACCEPT	?DeactivateZTarget@CInputProcessZTarget@@QAEXAAVCProcessedInput@@@Z	?DeactivateZTarget@CInputProcessZTarget@@AAEXAAVCProcessedInput@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00688c40	ACCEPT	?DeactivateZTarget@CInputProcessZTarget@@QAEXAAVCProcessedInput@@@Z	?DeactivateZTarget@CInputProcessZTarget@@AAEXAAVCProcessedInput@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00688ba0
+00688eb0	ACCEPT	?DeactivateZTarget@CInputProcessZTarget@@QAEXAAVCProcessedInput@@@Z	?DeactivateZTarget@CInputProcessZTarget@@AAEXAAVCProcessedInput@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00688ba0
+0069adc0	ACCEPT	?SetUpMainCameraManagerSetDef@CGameCameraManager@@QAEXXZ	?SetUpMainCameraManagerSetDef@CGameCameraManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0069b610	ACCEPT	?SetUpMainCameraManagerSetDef@CGameCameraManager@@QAEXXZ	?SetUpMainCameraManagerSetDef@CGameCameraManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0069adc0
+006a4040	ACCEPT	?ProcessJumping@CInputProcessJumpingAndRolling@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessJumping@CInputProcessJumpingAndRolling@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006a4700	ACCEPT	?ProcessJumping@CInputProcessJumpingAndRolling@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessJumping@CInputProcessJumpingAndRolling@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006a4040
+006aecf0	ACCEPT	?CullNullFollowers@CTCRegionFollower@@QAEXXZ	?CullNullFollowers@CTCRegionFollower@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006aee40	ACCEPT	?CullNullFollowers@CTCRegionFollower@@QAEXXZ	?CullNullFollowers@CTCRegionFollower@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006aecf0
+006be080	ACCEPT	?RegisterMusic@CMusicManager@@QAEXXZ	?RegisterMusic@CMusicManager@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+006be300	ACCEPT	?RegisterMusic@CMusicManager@@QAEXXZ	?RegisterMusic@CMusicManager@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006be080
+006d4fd0	ACCEPT	?AddEmoteIcon@CTCFollowed@@QAEXAAVCThing@@@Z	?AddEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006d50c0	ACCEPT	?AddEmoteIcon@CTCFollowed@@QAEXAAVCThing@@@Z	?AddEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006d4fd0
+006e8600	ACCEPT	?IncrementDefenderAttackPattern@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	?IncrementDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006e86a0	ACCEPT	?IncrementDefenderAttackPattern@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	?IncrementDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006e8600
+006ea2c0	ACCEPT	?IncrementDefenderAttackPattern@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	?IncrementDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006e8600
+006ed510	ACCEPT	?IncrementDefenderAttackPattern@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	?IncrementDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006e8600
+006eb390	ACCEPT	?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	?SetupNextSequenceForAttacker@CCombatManager@@AAEXAAUCCombatantInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+006eb600	ACCEPT	?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z	?SetupNextSequenceForAttacker@CCombatManager@@AAEXAAUCCombatantInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 006eb390
+0071ab20	ACCEPT	?DrawEmoteTypeText@CTCEmoteIcon@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	?DrawEmoteTypeText@CTCEmoteIcon@@ABEXABVCEnginePrimitivePrepareInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0071ae90	ACCEPT	?DrawEmoteTypeText@CTCEmoteIcon@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	?DrawEmoteTypeText@CTCEmoteIcon@@ABEXABVCEnginePrimitivePrepareInfo@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0071ab20
+0072df50	ACCEPT	?CreateBuilding@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAVCTCGraphicAppearance@NGraphicAppearance@@@Z	?CreateBuilding@CTCMeshAutomaticEntityCreator@@AAEXABVCCharString@@0PAVCTCGraphicAppearance@NGraphicAppearance@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+0072e290	ACCEPT	?CreateBuilding@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAVCTCGraphicAppearance@NGraphicAppearance@@@Z	?CreateBuilding@CTCMeshAutomaticEntityCreator@@AAEXABVCCharString@@0PAVCTCGraphicAppearance@NGraphicAppearance@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0072df50
+00732730	ACCEPT	?GetHandAnimationUpdateAmount@CTCClock@@QAEMXZ	?GetHandAnimationUpdateAmount@CTCClock@@IBEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00732950	ACCEPT	?GetHandAnimationUpdateAmount@CTCClock@@QAEMXZ	?GetHandAnimationUpdateAmount@CTCClock@@IBEMXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00732730
+00750470	ACCEPT	?UpdateAnimation@CTCChest@@QAEXM@Z	?UpdateAnimation@CTCChest@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00750780	ACCEPT	?UpdateAnimation@CTCChest@@QAEXM@Z	?UpdateAnimation@CTCChest@@AAEXM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00750470
+00751e80	ACCEPT	?GetTurningAngles@CTCLook@@QAE_NAAM0@Z	?GetTurningAngles@CTCLook@@AAE_NAAM0@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+007525c0	ACCEPT	?GetTurningAngles@CTCLook@@QAE_NAAM0@Z	?GetTurningAngles@CTCLook@@AAE_NAAM0@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00751e80
+00779340	ACCEPT	?SetUpPEntranceConnectedToFromUID@CTCDRegionExit@@QAEXXZ	?SetUpPEntranceConnectedToFromUID@CTCDRegionExit@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00779420	ACCEPT	?SetUpPEntranceConnectedToFromUID@CTCDRegionExit@@QAEXXZ	?SetUpPEntranceConnectedToFromUID@CTCDRegionExit@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00779340
+0077cbe0	ACCEPT	?DoStartRunning@CTCHighlightItem@@QAEXXZ	?DoStartRunning@CTCHighlightItem@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0077cd50	ACCEPT	?DoStartRunning@CTCHighlightItem@@QAEXXZ	?DoStartRunning@CTCHighlightItem@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0077cbe0
+00786700	ACCEPT	?CalculateSkeletalMorph@CTCSkeletalMorph@@QAEXXZ	?CalculateSkeletalMorph@CTCSkeletalMorph@@ABEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00786870	ACCEPT	?CalculateSkeletalMorph@CTCSkeletalMorph@@QAEXXZ	?CalculateSkeletalMorph@CTCSkeletalMorph@@ABEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00786700
+007868a0	ACCEPT	?CalculateSkeletalMorph@CTCSkeletalMorph@@QAEXXZ	?CalculateSkeletalMorph@CTCSkeletalMorph@@ABEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00786700
+0078888a	ACCEPT	?UpdateTrigger@CTCTrapBase@@QAEXXZ	?UpdateTrigger@CTCTrapBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007888b4	ACCEPT	?UpdateTrigger@CTCTrapBase@@QAEXXZ	?UpdateTrigger@CTCTrapBase@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0078888a
+00799140	ACCEPT	?CalcAreOtherPeopleInShop@CTCShopKeeper@@QAE_NXZ	?CalcAreOtherPeopleInShop@CTCShopKeeper@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00799a60	ACCEPT	?CalcAreOtherPeopleInShop@CTCShopKeeper@@QAE_NXZ	?CalcAreOtherPeopleInShop@CTCShopKeeper@@AAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00799140
+007a0310	ACCEPT	?Deactivate@CTCWillLightning@@QAEXXZ	?Deactivate@CTCWillLightning@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007a03b0	ACCEPT	?Deactivate@CTCWillLightning@@QAEXXZ	?Deactivate@CTCWillLightning@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007a0310
+007a9960	ACCEPT	?UpdateDirectionOverride@CTCAssassinRush@@QAEXXZ	?UpdateDirectionOverride@CTCAssassinRush@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007aa6b0	ACCEPT	?UpdateDirectionOverride@CTCAssassinRush@@QAEXXZ	?UpdateDirectionOverride@CTCAssassinRush@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007a9960
+007a9fe0	ACCEPT	?CreateTrailingEffect@CTCAssassinRush@@QAEXXZ	?CreateTrailingEffect@CTCAssassinRush@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007ab190	ACCEPT	?CreateTrailingEffect@CTCAssassinRush@@QAEXXZ	?CreateTrailingEffect@CTCAssassinRush@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007a9fe0
+007aa370	ACCEPT	?CleanUpEffects@CTCAssassinRush@@QAEXXZ	?CleanUpEffects@CTCAssassinRush@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007aa480	ACCEPT	?CleanUpEffects@CTCAssassinRush@@QAEXXZ	?CleanUpEffects@CTCAssassinRush@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007aa370
+007aa840	ACCEPT	?CleanUpEffects@CTCAssassinRush@@QAEXXZ	?CleanUpEffects@CTCAssassinRush@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007aa370
+007b29b0	ACCEPT	?GetTimeAgoThatCrimesCanBeApologisedFor@CTCGuard@@QBEJXZ	?GetTimeAgoThatCrimesCanBeApologisedFor@CTCGuard@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007b2bf0	ACCEPT	?GetTimeAgoThatCrimesCanBeApologisedFor@CTCGuard@@QBEJXZ	?GetTimeAgoThatCrimesCanBeApologisedFor@CTCGuard@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007b29b0
+007c8de0	ACCEPT	?ProcessLevellingUpFX@CTCFireballSpell@@QAEXXZ	?ProcessLevellingUpFX@CTCFireballSpell@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007c93b0	ACCEPT	?ProcessLevellingUpFX@CTCFireballSpell@@QAEXXZ	?ProcessLevellingUpFX@CTCFireballSpell@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007c8de0
+007c98a0	ACCEPT	?IsGeneratorAlive@CTCCreatureGeneratorCreator@@QAE_NXZ	?IsGeneratorAlive@CTCCreatureGeneratorCreator@@IBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007c9920	ACCEPT	?IsGeneratorAlive@CTCCreatureGeneratorCreator@@QAE_NXZ	?IsGeneratorAlive@CTCCreatureGeneratorCreator@@IBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007c98a0
+007f11d0	ACCEPT	?PerformStrikeDamage@CTCKrakenTentacle@@QAEXXZ	?PerformStrikeDamage@CTCKrakenTentacle@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007f14f0	ACCEPT	?PerformStrikeDamage@CTCKrakenTentacle@@QAEXXZ	?PerformStrikeDamage@CTCKrakenTentacle@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007f11d0
+007f1410	ACCEPT	?GetShouldStrike@CTCKrakenTentacle@@QAE_NXZ	?GetShouldStrike@CTCKrakenTentacle@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009244d0	ACCEPT	?GetShouldStrike@CTCKrakenTentacle@@QAE_NXZ	?GetShouldStrike@CTCKrakenTentacle@@QBE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007f1410
+007f8be0	ACCEPT	?ClearQueuedAnims@CTCAnimatingObject@@QAEXXZ	?ClearQueuedAnims@CTCAnimatingObject@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+007f90b0	ACCEPT	?ClearQueuedAnims@CTCAnimatingObject@@QAEXXZ	?ClearQueuedAnims@CTCAnimatingObject@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 007f8be0
+0080f270	ACCEPT	?PickNewTargetPos@CTCNymph@@QAEXXZ	?PickNewTargetPos@CTCNymph@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0080fad0	ACCEPT	?PickNewTargetPos@CTCNymph@@QAEXXZ	?PickNewTargetPos@CTCNymph@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0080f270
+0080f5e0	ACCEPT	?PickNewTargetPos@CTCNymph@@QAEXXZ	?PickNewTargetPos@CTCNymph@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0080f270
+00880640	ACCEPT	?HasSphereMeshCollidedFromTo@CTCPhysicsBase@@QBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z	?HasSphereMeshCollidedFromTo@CTCPhysicsBase@@IBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00880730	ACCEPT	?HasSphereMeshCollidedFromTo@CTCPhysicsBase@@QBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z	?HasSphereMeshCollidedFromTo@CTCPhysicsBase@@IBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00880640
+008b7640	ACCEPT	?RemoveUndergroundMode@CCreatureAction_RiseUp@@QAEXXZ	?RemoveUndergroundMode@CCreatureAction_RiseUp@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+008ec3f0	ACCEPT	?RemoveUndergroundMode@CCreatureAction_RiseUp@@QAEXXZ	?RemoveUndergroundMode@CCreatureAction_RiseUp@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 008b7640
+008ec470	ACCEPT	?RemoveUndergroundMode@CCreatureAction_RiseUp@@QAEXXZ	?RemoveUndergroundMode@CCreatureAction_RiseUp@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 008b7640
+008bab70	ACCEPT	?SetAnims@CCreatureAction_FinishFireballSpell@@QAEXXZ	?SetAnims@CCreatureAction_FinishFireballSpell@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+008bce10	ACCEPT	?SetAnims@CCreatureAction_FinishFireballSpell@@QAEXXZ	?SetAnims@CCreatureAction_FinishFireballSpell@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 008bab70
+008bce50	ACCEPT	?SetAnims@CCreatureAction_FinishFireballSpell@@QAEXXZ	?SetAnims@CCreatureAction_FinishFireballSpell@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 008bab70
+008ecac0	ACCEPT	?OnParentHealthChanged@CTCDegradableBase@@QAEX_N@Z	?OnParentHealthChanged@CTCDegradableBase@@AAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+008ecc80	ACCEPT	?OnParentHealthChanged@CTCDegradableBase@@QAEX_N@Z	?OnParentHealthChanged@CTCDegradableBase@@AAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 008ecac0
+008ecbe0	ACCEPT	?OnParentHealthChanged@CTCDegradableBase@@QAEX_N@Z	?OnParentHealthChanged@CTCDegradableBase@@AAEX_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 008ecac0
+00933a40	ACCEPT	?MoveToCuriosityProximity@CAIStateGroup_MinionCuriosity@@QAE_NM@Z	?MoveToCuriosityProximity@CAIStateGroup_MinionCuriosity@@AAE_NM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00933b30	ACCEPT	?MoveToCuriosityProximity@CAIStateGroup_MinionCuriosity@@QAE_NM@Z	?MoveToCuriosityProximity@CAIStateGroup_MinionCuriosity@@AAE_NM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00933a40
+0095b3e0	ACCEPT	?SetupArena@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?SetupArena@CAIStateGroup_HoverHornetQueen@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0095b5a0	ACCEPT	?SetupArena@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?SetupArena@CAIStateGroup_HoverHornetQueen@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0095b3e0
+0095b680	ACCEPT	?PlayIdle@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?PlayIdle@CAIStateGroup_HoverHornetQueen@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0095c1f0	ACCEPT	?PlayIdle@CAIStateGroup_HoverHornetQueen@@QAEXXZ	?PlayIdle@CAIStateGroup_HoverHornetQueen@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0095b680
+0095d070	ACCEPT	?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ	?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0095d200	ACCEPT	?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ	?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0095d070
+0099b560	ACCEPT	?MakeOwnCopyOfData@CWideString@@QAEXXZ	?MakeOwnCopyOfData@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0099b8d0	ACCEPT	?MakeOwnCopyOfData@CWideString@@QAEXXZ	?MakeOwnCopyOfData@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b560
+0099b9a0	ACCEPT	?MakeOwnCopyOfData@CWideString@@QAEXXZ	?MakeOwnCopyOfData@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b560
+0099bff0	ACCEPT	?MakeOwnCopyOfData@CWideString@@QAEXXZ	?MakeOwnCopyOfData@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b560
+0099bf30	ACCEPT	?MakeOwnCopyOfData@CWideString@@QAEXXZ	?MakeOwnCopyOfData@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b560
+0099be70	ACCEPT	?MakeOwnCopyOfData@CWideString@@QAEXXZ	?MakeOwnCopyOfData@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b560
+009a4f20	ACCEPT	?ProcessWindowMessages@CSystemManager@@QAEXXZ	?ProcessWindowMessages@CSystemManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+009a6370	ACCEPT	?ProcessWindowMessages@CSystemManager@@QAEXXZ	?ProcessWindowMessages@CSystemManager@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009a4f20
+00a03040	ACCEPT	?InternalAllocateHandle@CHandleBasedMemoryPool@@QAEJXZ	?InternalAllocateHandle@CHandleBasedMemoryPool@@AAEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a030d0	ACCEPT	?InternalAllocateHandle@CHandleBasedMemoryPool@@QAEJXZ	?InternalAllocateHandle@CHandleBasedMemoryPool@@AAEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a03040
+00a0ce90	ACCEPT	?ReadNextString@CWStringParser@@QAE_NPAVCWParsedItem@@@Z	?ReadNextString@CWStringParser@@AAE_NPAVCWParsedItem@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a0cfc0	ACCEPT	?ReadNextString@CWStringParser@@QAE_NPAVCWParsedItem@@@Z	?ReadNextString@CWStringParser@@AAE_NPAVCWParsedItem@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a0ce90
+00a2e760	ACCEPT	?AllocateBuffers@C3DMeshStats@@QAE_NKKK@Z	?AllocateBuffers@C3DMeshStats@@AAE_NKKK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a2f2d0	ACCEPT	?AllocateBuffers@C3DMeshStats@@QAE_NKKK@Z	?AllocateBuffers@C3DMeshStats@@AAE_NKKK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a2e760
+00a2eaa0	ACCEPT	?SaveBinary@C3DMeshStats@@QBEXAAVCDataOutputStream@@@Z	?SaveBinary@C3DMeshStats@@QAEXAAVCDataOutputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a89450	ACCEPT	?SaveBinary@C3DMeshStats@@QBEXAAVCDataOutputStream@@@Z	?SaveBinary@C3DMeshStats@@QAEXAAVCDataOutputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a2eaa0
+00a5c890	ACCEPT	?CreateNewMemoryBlock@CSimpleMemoryPool@@QAEXK@Z	?CreateNewMemoryBlock@CSimpleMemoryPool@@AAEXK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a5c910	ACCEPT	?CreateNewMemoryBlock@CSimpleMemoryPool@@QAEXK@Z	?CreateNewMemoryBlock@CSimpleMemoryPool@@AAEXK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a5c890
+00a62c90	ACCEPT	?PackArray@CPackedUIntArray@@QAEXPBXKJK@Z	?PackArray@CPackedUIntArray@@AAEXPBXKJK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a62d80	ACCEPT	?PackArray@CPackedUIntArray@@QAEXPBXKJK@Z	?PackArray@CPackedUIntArray@@AAEXPBXKJK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a62c90
+00a914b0	ACCEPT	?UploadToVertexBufferAnimated@C3DPrimitive2@@QAE_NK@Z	?UploadToVertexBufferAnimated@C3DPrimitive2@@AAE_NK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a92870	ACCEPT	?UploadToVertexBufferAnimated@C3DPrimitive2@@QAE_NK@Z	?UploadToVertexBufferAnimated@C3DPrimitive2@@AAE_NK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a914b0
+00a931f0	ACCEPT	?UploadToVertexBufferStatic@C3DPrimitive2@@QAE_NK@Z	?UploadToVertexBufferStatic@C3DPrimitive2@@AAE_NK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a932c0	ACCEPT	?UploadToVertexBufferStatic@C3DPrimitive2@@QAE_NK@Z	?UploadToVertexBufferStatic@C3DPrimitive2@@AAE_NK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a931f0
+00a93320	ACCEPT	?UploadToVertexBufferStatic@C3DPrimitive2@@QAE_NK@Z	?UploadToVertexBufferStatic@C3DPrimitive2@@AAE_NK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00a931f0
+00aa79c0	ACCEPT	?LoadChunkedFile@CChunkedFileLoader@@QAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00a99420	ACCEPT	?LoadChunkedFile@CChunkedFileLoader@@QAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00aa79c0
+00a9b640	ACCEPT	?LoadChunkedFile@CChunkedFileLoader@@QAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00aa79c0
+00a99510	ACCEPT	?LoadChunkedFile@CChunkedFileLoader@@QAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00aa79c0
+00a9b740	ACCEPT	?LoadChunkedFile@CChunkedFileLoader@@QAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00aa79c0
+00ad9b20	ACCEPT	?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@QAEXXZ	?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00ad9d70	ACCEPT	?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@QAEXXZ	?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00ad9b20
+00ada240	ACCEPT	?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@QAEXXZ	?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00ad9b20
+00ad9d10	ACCEPT	?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@QAEXXZ	?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00ad9b20
+00b6e010	ACCEPT	?RenderBackgroundPatch@CEngineWaterRenderer@@QAEXPAVCEngineWaterBackgroundSubPatch@@@Z	?RenderBackgroundPatch@CEngineWaterRenderer@@AAEXPAVCEngineWaterBackgroundSubPatch@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b6e260	ACCEPT	?RenderBackgroundPatch@CEngineWaterRenderer@@QAEXPAVCEngineWaterBackgroundSubPatch@@@Z	?RenderBackgroundPatch@CEngineWaterRenderer@@AAEXPAVCEngineWaterBackgroundSubPatch@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00b6e010
+00b900b0	ACCEPT	?IsClippedByNearPlane@CEnginePrimitiveManagerOcclusionBase@@QAE_NABVCMatrix3x4@@@Z	?IsClippedByNearPlane@CEnginePrimitiveManagerOcclusionBase@@ABE_NABVCMatrix3x4@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00b91140	ACCEPT	?IsClippedByNearPlane@CEnginePrimitiveManagerOcclusionBase@@QAE_NABVCMatrix3x4@@@Z	?IsClippedByNearPlane@CEnginePrimitiveManagerOcclusionBase@@ABE_NABVCMatrix3x4@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00b900b0
+00bc3e10	ACCEPT	?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@QAEXXZ	?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00bc4d90	ACCEPT	?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@QAEXXZ	?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00bc3e10
+00be2680	ACCEPT	?IsEquivalent@CLocalDetailObjectCollectionType@@QAE_NABV1@@Z	?IsEquivalent@CLocalDetailObjectCollectionType@@QBE_NABV1@@Z	objsec ALL_EQ, MATCH PASS
+00b59c70	ACCEPT	?IsEquivalent@CLocalDetailObjectCollectionType@@QAE_NABV1@@Z	?IsEquivalent@CLocalDetailObjectCollectionType@@QBE_NABV1@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00be2680
+00bf6490	ACCEPT	?TestIfLoadTaskCanBeAborted@CLandscapeBackgroundTreeNode@@QAE_NJ_N@Z	?TestIfLoadTaskCanBeAborted@CLandscapeBackgroundTreeNode@@AAE_NJ_N@Z	objsec ALL_EQ, MATCH PASS
+00bf84c0	ACCEPT	?TestIfLoadTaskCanBeAborted@CLandscapeBackgroundTreeNode@@QAE_NJ_N@Z	?TestIfLoadTaskCanBeAborted@CLandscapeBackgroundTreeNode@@AAE_NJ_N@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00bf6490
+00cb7950	ACCEPT	?UpdateSpawnedFunction@CScriptBase@@QAE_NPAVCSpawnedFuncBase@@@Z	?UpdateSpawnedFunction@CScriptBase@@IAE_NPAVCSpawnedFuncBase@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00cb7c40	ACCEPT	?UpdateSpawnedFunction@CScriptBase@@QAE_NPAVCSpawnedFuncBase@@@Z	?UpdateSpawnedFunction@CScriptBase@@IAE_NPAVCSpawnedFuncBase@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00cb7950
+00cb8170	ACCEPT	?UpdateSpawnedFunction@CScriptBase@@QAE_NPAVCSpawnedFuncBase@@@Z	?UpdateSpawnedFunction@CScriptBase@@IAE_NPAVCSpawnedFuncBase@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00cb7950
+00cb83d0	ACCEPT	?SaveEntityScript@CScriptBase@@QAEX_KAAVCActiveEntityScriptBase@@@Z	?SaveEntityScript@CScriptBase@@IAEX_KAAVCActiveEntityScriptBase@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00cb8820	ACCEPT	?SaveEntityScript@CScriptBase@@QAEX_KAAVCActiveEntityScriptBase@@@Z	?SaveEntityScript@CScriptBase@@IAEX_KAAVCActiveEntityScriptBase@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00cb83d0
+00cb88b0	ACCEPT	?SaveEntityScript@CScriptBase@@QAEX_KAAVCActiveEntityScriptBase@@@Z	?SaveEntityScript@CScriptBase@@IAEX_KAAVCActiveEntityScriptBase@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00cb83d0
+00f372b0	ACCEPT	?AllocResourceEntry@CGPUScratchBufferTextureManager@@QAEJJ@Z	?AllocResourceEntry@CGPUScratchBufferTextureManager@@AAEJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+00f37390	ACCEPT	?AllocResourceEntry@CGPUScratchBufferTextureManager@@QAEJJ@Z	?AllocResourceEntry@CGPUScratchBufferTextureManager@@AAEJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00f372b0
+00f37440	ACCEPT	?AllocResourceEntry@CGPUScratchBufferTextureManager@@QAEJJ@Z	?AllocResourceEntry@CGPUScratchBufferTextureManager@@AAEJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00f372b0
+00f39e50	ACCEPT	?CalcShuffleOperations@CRangeCompressor@@QAEJKPAK0@Z	?CalcShuffleOperations@CRangeCompressor@@AAEJKPAK0@Z	objsec ALL_EQ, MATCH PASS
+00f39ed0	ACCEPT	?CalcShuffleOperations@CRangeCompressor@@QAEJKPAK0@Z	?CalcShuffleOperations@CRangeCompressor@@AAEJKPAK0@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00f39e50
+00f3a2e0	ACCEPT	?CalcShuffleOperations@CRangeCompressor@@QAEJKPAK0@Z	?CalcShuffleOperations@CRangeCompressor@@AAEJKPAK0@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00f39e50

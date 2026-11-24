@@ -1,0 +1,8 @@
+# pickany.py: COMDAT copies the changed rows now define under PDB spellings, against Fable.exe at the owner address (reloc fields zeroed)
+  reloc +2e ??3@YAXPAX@Z -> retail 00bfe9bc OK table=['??3@YAXPAX@Z']
+??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z 00754f10 size 72 bytes_equal True
+  reloc +10 ??2@YAPAXI@Z -> retail 00bfea1a OK table=['??2@YAPAXI@Z']
+  reloc +26 ?DeleteData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@SIXPAX@Z -> retail 0073cc90 NOT_IN_TABLE table=['?Destroy_0073cc90@@YIXPAX@Z']
+??0?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@PAVCAnimEntryLite@NAnimationEntryBodge@@@Z 0073d180 size 78 bytes_equal True
+  reloc +2 ??3@YAXPAX@Z -> retail 00bfe9bc OK table=['??3@YAXPAX@Z']
+?DeleteData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@SIXPAX@Z 0073cc90 size 8 bytes_equal True

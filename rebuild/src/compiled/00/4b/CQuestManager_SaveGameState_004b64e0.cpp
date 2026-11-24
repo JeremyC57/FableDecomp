@@ -31,7 +31,7 @@ class CCharString { public:
 };
 
 class CDataOutputStream { public:
-    void WriteBuffer(const void* data, long size); // 0x00996610
+    void WriteCompressed(const void* data, long size); // 0x00996610; NF299: PDB name, was WriteBuffer
 public:
     void WriteULONG(unsigned long);   // 0x00993EA0
 };
@@ -57,7 +57,7 @@ void CQuestManager::SaveGameState(CPersistContext& context)
     bool writing = context.Mode == 2 || context.Mode == 3;
     if (writing) {
         context.Stream->WriteULONG(state.GetLength());
-        context.Stream->WriteBuffer(state.GetPString(), state.GetLength());
+        context.Stream->WriteCompressed(state.GetPString(), state.GetLength());
     } else
         context.WriteString(state);
     TransferBoasts(context);

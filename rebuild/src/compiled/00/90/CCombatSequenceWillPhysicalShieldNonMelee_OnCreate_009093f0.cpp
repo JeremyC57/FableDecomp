@@ -1,3 +1,4 @@
+// Leaf: ?OnCreate@CCombatSequence_WillPhysicalShieldNonMelee@@UAEXXZ
 // CCombatSequence_WillPhysicalShieldNonMelee::OnCreate -- enqueue the buildup animation and physical shield spell.
 // Naming wave 18: the global stand-in g_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -63,13 +64,13 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 struct CCombatSequence_WillPhysicalShieldNonMelee {
-    unsigned char nativePrefix[0x1c];
+    unsigned char nativePrefix[0x18];
     CThingCreatureBase* ownerAt1c;
     CThingCreatureBase* targetAt20;
     CThingCreatureBase& GetCreature()const{return *ownerAt1c;}
     CThingCreatureBase& GetTarget()const{return *targetAt20;}
     void AddAction(const CCountedPointer<CCreatureActionBase>&); // 0x008B0B10
-    void OnCreate();
+    virtual void OnCreate();
     void OnCreateBase(); // 0x008B0650
 };
 void CCombatSequence_WillPhysicalShieldNonMelee::OnCreate() {

@@ -1,55 +1,31 @@
 // NUISystem::CManager::ClearBastardChild() -- release every component of the bastard-child map (and the current bastard child), then clear the map
-// Retail 0x0041DED2, 62 bytes (vtable 0x01230134 slot 37). Callees: CCountedPointer<CComponent>::~CCountedPointer 0x004291DE (on
-// each node value at +0x14 and on BastardChild +0x80), STLport _Rb_tree increment 0x004292C0 (cdecl), map clear 0x0042C02F
-// (tail jump). The end node is re-read every iteration (member). Name: Ego_r.pdb ?ClearBastardChild@CManager@NUISystem@@UAEXXZ.
+// Leaf: ?ClearBastardChild@CManager@NUISystem@@UAEXXZ
+// Retail 0x0041DED2, 62 bytes (vtable 0x01230134 slot 37, its only reference, .rdata 0x012301C8). Callees:
+// CCountedPointer<CComponent>::ReleaseData 0x004291DE (on each node value at +0x14 and on BastardChild +0x80), STLport
+// _Rb_global<bool>::_M_increment 0x004292C0 (cdecl), the map's tree clear 0x0042C02F (tail jump). The end node is re-read every
+// iteration (member). Name: Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?ClearBastardChild@CManager@NUISystem@@UAEXXZ (public virtual).
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+// Port (NF227, 2026-11-22, q12582 / q12583): onto engine/NUISystem_CManager.h (retail layout: BastardChild +0x80, BastardChildren +0x88,
+//   the header's STLport map<CCharString,CCountedPointer<CComponent> >). Was a row-local CManager / CBastardChildMap / CRbNodeBase model
+//   whose non-virtual leaf was ?ClearBastardChild@CManager@NUISystem@@QAEXXZ, while the header vtable COMDAT of 0x0041E641 / 0x0041E3F6
+//   binds the slot as UAE. The map clear is the tree's clear, called out of line (FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE; map::clear
+//   is the inline `_M_t.clear()` wrapper).
+// Pragma below the includes: the header inlines are defined in the default /O2 mode, so the pick-any _Rb_tree_base_iterator::
+//   operator!= copy equals its owner 0x0041C830 (22 B; above the include it is the 18-B size body 0x0041E6D3 emits).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
-#pragma optimize("s", on)
-// CManager TU is size-optimised (odd addresses, `pop ecx` after cdecl calls). Local model: the engine CManager.h is the
-// donor Ego_r layout (RightStickForce +0xc0, BastardChild +0xa8); retail has BastardChild +0x80, BastardChildren +0x88,
-// RightStickForce +0x94.
-#include "fable_string.h"
-class C2DVector { public: float X, Y; };
+#define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
 #include "engine/CCountedPointer.h"
-// 0x004291DE is the destructor body (Data zeroed before Info; ReleaseData zeroes Info first and is never out of line in retail),
-// so the release of each value is an explicit destructor call on the counted pointer.
+#include "engine/NUISystem_CManager.h"
+// CManager TU is size-optimised; the pragmas follow the includes (EXTRA_RULES 2026-11-20, nf189 0x005D66BA placement).
+#pragma optimize("s", on)
 namespace NUISystem {
-class CComponent;
-typedef CCountedPointer<CComponent> CComponentPointer;
-// STLport map<CCharString, CCountedPointer<CComponent>>: header-node pointer + count; begin() = header->_M_left.
-struct CRbNodeBase { long Color; CRbNodeBase* Parent; CRbNodeBase* Left; CRbNodeBase* Right; };
-CRbNodeBase* __cdecl Rb_tree_increment(CRbNodeBase* node);   // 0x004292C0 _Rb_global<bool>::_M_increment
-struct CBastardNode : CRbNodeBase { CCharString Key; CComponentPointer Value; };
-struct CBastardIterator {
- CRbNodeBase* Node;
- CBastardIterator(CRbNodeBase* n) : Node(n) {}
- bool operator!=(const CBastardIterator& o) const { return Node != o.Node; }
- void operator++() { Node = Rb_tree_increment(Node); }
- CBastardNode* operator->() const { return static_cast<CBastardNode*>(Node); }
-};
-struct CBastardChildMap {
- CRbNodeBase* Header; unsigned long NodeCount;
- CBastardIterator begin() const { return CBastardIterator(Header->Left); }
- CBastardIterator end() const { return CBastardIterator(Header); }
- void clear();                             // 0x0042C02F
-};
-class CManager { public:
- virtual void Slot0();
- unsigned char _pad04[0x80 - 4];
- CComponentPointer BastardChild;           // +0x80
- CBastardChildMap BastardChildren;         // +0x88
- unsigned char _pad90[0x94 - 0x90];
- C2DVector RightStickForce;                // +0x94
- void ClearBastardChild();
- void SetRightStickForce(C2DVector&);
-};
 void CManager::ClearBastardChild()
 {
- for (CBastardIterator it = BastardChildren.begin(); it != BastardChildren.end(); ++it) {
-  it->Value.ReleaseData();
-  BastardChild.ReleaseData();
- }
- BastardChildren.clear();
+    for (std::map<CCharString,CCountedPointer<CComponent> >::iterator it = BastardChildren.begin(); it != BastardChildren.end(); ++it) {
+        (*it).second.ReleaseData();
+        BastardChild.ReleaseData();
+    }
+    BastardChildren.clear();
 }
 }

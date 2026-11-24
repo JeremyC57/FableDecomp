@@ -1,0 +1,27 @@
+{
+  "row": "00acd0e0",
+  "classification": "LANDABLE_WITH_PREEXISTING_BINDING_DEBT",
+  "grade": "RELOCATION_MATCH",
+  "bytes": 1041,
+  "leaf": "?DetectFoldOver@COptimisedPrimitive@QuadricOptimiserInternals@@AAE_NABVCSubContraction@2@ABVC3DVector@@@Z",
+  "source_sha256": "5fd2bddff96a451d87a2fe8d12ad58be40967f83e97b4fa5b3ca8c99588ef1d4",
+  "test_sha256": "e75f7676bd823b91e0007c07cffc7ad2d98cf8dbe98e60774d0a16efdc4422be",
+  "test": "00acd0e0_TEST PASS (51 cases)",
+  "common_tree_additive_overlay": "2938f42a9ed2",
+  "owners": {
+    "equal": true,
+    "audited_tag": "fold_geometry_selected",
+    "code_sections": 42
+  },
+  "leaf_relocates_to_disputed_symbol": false,
+  "input_binding": [
+    {
+      "symbol": "??1?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@XZ",
+      "target": "00517850",
+      "address": "0051c920"
+    }
+  ],
+  "policy": "docs/EXTRA_RULES.md, 2026-11-21, lines 469-477: a differing copy not bound by the leaf and already bound at HEAD is queued debt.",
+  "open_question": "One unique correct retail address for the exported unsigned tree destructor. Four complete bodies match both operands. Original binding uses signed erase and is demonstrably wrong.",
+  "attempt": "fold_verified_debt_2938f42a9ed2"
+}

@@ -42,7 +42,7 @@ class CTCRandomAppearanceMorph { public:
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x20];                             // +0x08 .. +0x27: flags, PMeshMorphSet, Seed, PrimHandles
     CTCBase*      PTCSkeletalMorph;                         // +0x28 CTCSkeletalMorph*
-    void UpdateMorphSet();                                  // 0x007280C0
+    private: void UpdateMorphSet(); public:                                  // 0x007280C0
     void OnCreate();
 };
 

@@ -1,3 +1,4 @@
+// Leaf: ?SaveMasterScriptDataToGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z
 // CQuestManager::SaveMasterScriptDataToGameState(CScriptDataBase&, const CCharString&) -- persist the master script data into a string through a persist context and record it as the quest's master-data persist script
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B5030, length 77 bytes.
 // Callees: CCharString::CCharString() @ 0x0099E4B0, CPersistContext::CPersistContext(CCharString&) @ 0x009BAE10,
@@ -33,7 +34,9 @@ struct CRuntimeQuestPersistence {
 class CQuestManager { public:
     unsigned char                           _pad_0x00[0x0c];
     NQuestManager::CRuntimeQuestPersistence RuntimeQuestPersistence;   // +0x0c
+    private:
     void SaveMasterScriptDataToGameState(CScriptDataBase& data, const CCharString& quest);
+    public:
 };
 
 void CQuestManager::SaveMasterScriptDataToGameState(CScriptDataBase& data, const CCharString& quest)

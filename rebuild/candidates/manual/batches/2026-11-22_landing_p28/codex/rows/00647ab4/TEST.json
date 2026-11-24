@@ -1,0 +1,10 @@
+{
+  "test_sha256": "8d3c8b76fafb2ab55c57524e8397c677502ed0a079e6b59d50460e3cce5678eb",
+  "compiler": "13.10.3077",
+  "test_flags": [
+    "/Od",
+    "/W3",
+    "/GR-"
+  ],
+  "output": "00647ab4_TEST PASS"
+}

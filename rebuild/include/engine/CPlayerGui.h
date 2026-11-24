@@ -69,6 +69,11 @@ namespace NHeroInformationScreens { class CManager; }
 // bytes in retail; FableWin.pdb ?GetSubtitleRenderer@CPlayerGui@@QAEAAVCSubtitleRenderer@@XZ is inline in Ego_r.pdb and retail
 // (CTCTavernGame::FrameUpdate reads the singleton's byte +0xFD = +0x18 + DisplayingText +0xE5 in place, 0x005EBA74).
 class CPlayerGui : public CTBaseSingletonNoDefaultAlloc<CPlayerGui> {
+#ifdef FABLE_RETAIL_CPLAYERGUI_ISOPEN_PASS26
+public:
+    bool IsOpen() const;
+private:
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_KICKREGION_PASS23
 public:
  // Both original PDBs and native004378b0: original region receiver/const ref.
@@ -252,6 +257,13 @@ public:
     // profile or new ABILITY_CONTEXT_PASS23+QUEST_DRAW profile supplies the named member; layout unchanged.
     bool IsShowSpecialAbilityButtons() const { return ShowSpecialAbilityButtons; }
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_ONHEROHIT_PASS26
+public: void OnHeroHit(float damage);
+#endif
+#ifdef FABLE_RETAIL_QUICKACCESSMENU_ACTIVATE_PASS27
+public:
+    void SetSpecialAbilityButtonsAsDisplaying(bool, bool);               // 00437580
+#endif
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
 #ifdef FABLE_RETAIL_CPLAYERGUI_NPCNAMEDISPLAY
     // e06 egod opt-in (row 0x00805600 CTCTargetingPlayer::FrameUpdate): Ego_r.pdb / FableWin.pdb ?SetNPCNameDisplay@CPlayerGui@@QAEXABVCWideString@@@Z,
@@ -306,7 +318,19 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // Retail opt-in (agentC38, row 0x00652FA4): FableWin.pdb ?GetInputInterface@CPlayerGui@@QBEABVCGamePlayerInterface@@XZ, inline (the row reads +0x0C in place).
     const CGamePlayerInterface& GetInputInterface() const { return *InputInterface; }
 #endif
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_WEAPONABILITIES_PASS27
+    bool IsDrawingTargetingCentre() const;                         // 0x00437640
+    void SetFlourishEffect(long effect);                            // 0x00437650
+    void SetAbilityButton(long button, long graphic);               // 0x00438A20
+#endif
     void Update(bool paused);                                            // 0x0043A080
+#ifdef FABLE_RETAIL_CONTROL_CREATURE_INPUT_PASS27
+    void ToggleMiniMapCentering();
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_TOGGLE_LIVE_PASS26
+    // Ego_r and FableWin original public method, used by the retail hero information event handler.
+    void ToggleLiveGui();                                                 // 0x00438310
+#endif
     void UpdateMiniMapMarkers(bool);                                     // 0x004378C0
     CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; }
 #ifdef FABLE_RETAIL_CPLAYERGUI_PEEKGUIDEF

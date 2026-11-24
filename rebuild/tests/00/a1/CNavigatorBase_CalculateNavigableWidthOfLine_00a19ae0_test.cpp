@@ -1,21 +1,21 @@
+// Behaviour test for 0x00A19AE0 CNavigatorBase::CalculateNavigableWidthOfLine (links the REAL row object; NF318 moved it off the
+// CNavigatorBase_Methods alias): the member reads nothing through this, so it is called qualified (direct call) on raw storage.
+#define FABLE_RETAIL_CNAVIGATORBASE
 #include "engine/CNavigatorBase.h"
+#include "engine/C3DVector.h"
 #include <cstdio>
-
-class C3DVector { public: float x, y, z; };
-struct CNavigatorBase_Methods : CNavigatorBase {
-    void CalculateNavigableWidthOfLine(C3DVector const& a, C3DVector const& pos,
-                                       float& d, float& e);
-};
 
 int main()
 {
-    CNavigatorBase_Methods nav;
-    C3DVector a = {1,2,3}, pos = {4,5,6};
+    unsigned long storage[0x40] = { 0 };
+    CNavigatorBase* nav = (CNavigatorBase*)storage;
+    C3DVector a(1.0f, 2.0f, 3.0f), pos(4.0f, 5.0f, 6.0f);
     float d = 9.0f, e = 8.0f;
-    nav.CalculateNavigableWidthOfLine(a, pos, d, e);
-    if (d == 0.0f && e == 0.0f)
+    nav->CNavigatorBase::CalculateNavigableWidthOfLine(a, pos, d, e);
+    if (d == 0.0f && e == 0.0f) {
         printf("00a19ae0_TEST PASS\n");
-    else
-        printf("FAIL d=%f e=%f\n", d, e);
-    return 0;
+        return 0;
+    }
+    printf("FAIL d=%f e=%f\n", d, e);
+    return 1;
 }

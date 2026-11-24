@@ -1,0 +1,20 @@
+--- orig/hdr/engine/CJoystickDX.h	2026-11-24 00:39:24.491057680 +0000
++++ hdr/engine/CJoystickDX.h	2026-11-24 00:44:49.720289968 +0000
+@@ -124,6 +124,17 @@
+     virtual float GetYAxis2();                                        // 0x00AB6B00
+ public:
+ #endif
++#ifdef FABLE_RETAIL_CJOYSTICKDX_RUMBLE_DECLS
++    // Opt-in (NF323, 2026-11-24, NF320 Q3): declarations only, no layout change. Each is the member the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the FableWin.pdb spelling; each overrides the CJoystick virtual
++    // (FABLE_RETAIL_CJOYSTICK_VIRTUALS) at the same slot (no new slot). Ego_r.pdb has neither (ICF / not emitted).
++    // 0x00AB7910 vtable 0x0129EA7C slot 13: ?GetRumbleWithID@CJoystickDX@@UAEPAVCActiveRumble@CJoystick@@J@Z
++    // 0x00AB7920 vtable 0x0129EA7C slot 14: ?PeekRumbleWithID@CJoystickDX@@UBEPBVCActiveRumble@CJoystick@@J@Z
++public:
++    virtual CActiveRumble* GetRumbleWithID(long id);                      // 0x00AB7910
++    virtual const CActiveRumble* PeekRumbleWithID(long id) const;       // 0x00AB7920
++public:
++#endif
+ };
+ #pragma pack(pop)
+ FABLE_STATIC_ASSERT_AT(114, sizeof(CJoystickDX) == 0xd44);

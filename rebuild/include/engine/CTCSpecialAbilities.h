@@ -17,6 +17,10 @@
 class CThingCreatureBase;class C3DVector;
 class CTCSpecialAbilities:public CTCBase {
 public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&);
+#ifdef FABLE_RETAIL_DIVINE_WRATH_CTOR_PASS28
+ // FableWin 0267D580, with both member stores inlined in retail at 0078EE1A.
+ void LockAbilitiyMutex(EHeroAbility ability) { AbilityMutexLock = true; CurrentAbility = ability; }
+#endif
 #ifdef FABLE_RETAIL_CTCSPECIALABILITIES_ISCHARGINGUPABILITY
  // NF118 (PRIORITY q6369 / q6388, rows 0x0072A860 / 0x0068F2A0 / 0x00690030): Ego_r.pdb 0x00741700 / FableWin.pdb 0x0254F790
  // ?IsChargingUpAbility@CTCSpecialAbilities@@QBE_NXZ, out of line in retail at 0x0072A860 (`mov al,[ecx+0Ch] ; test al,al ; setne al`;

@@ -1,3 +1,4 @@
+// Leaf: ?CreatePositions@CTCSmokeGenerator@@IAEXXZ
 // CTCSmokeGenerator::CreatePositions() -- once the owner's graphic appearance has its resources, collect the focus_chimney_01..09 helper points as smoke generation positions (stopping at the first missing one), then take the generation distance from the smoke def and mark the positions created
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
@@ -99,7 +100,9 @@ class CTCSmokeGenerator { public:
     float   GenerationDistance;                         // +0x0c
     CGenerationPosVector GenerationPositions;           // +0x10
     bool    PositionsCreated;                           // +0x1c
+    protected:
     void CreatePositions();
+    public:
 };
 
 // R&D I-3 sweep: a same-TU auto_inline(off) GetSubDef (fills only *out) makes the def pointer local non-escaping, so it

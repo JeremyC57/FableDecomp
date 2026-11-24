@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CHeroMorphDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CHeroMorphDef_GetSizeofClass()
+class CHeroMorphDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CHeroMorphDef::GetSizeofClass()
 {
     return 104;
 }

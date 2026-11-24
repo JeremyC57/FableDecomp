@@ -85,6 +85,12 @@ public:
     // Chunk 731: ??0CEngineResourceManager@@QAE@ABVCEngineInit@@ABVCEngineMemoryInit@@@Z 0x00B3CB30 (Ego_r.pdb / FableWin.pdb;
     // CEngine::Initialise 0x00B26360 news 0x31E0 bytes and passes the init and its CDefaultEngineMemoryInit local).
     CEngineResourceManager(const CEngineInit& init, const CEngineMemoryInit& memory_init);
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_SETUP_EDITOR_ANIMATION
+    // FableWin SetupEditorAnimation and the retail mesh-bank slot +0x14.
+    unsigned long SetupEditorAnimation(const CWideString& filename);
+    static CWideString __fastcall ConvertArtResourcePathToFullPath(const CWideString& filename);
+#endif
+
     virtual ~CEngineResourceManager();
     virtual void ProcessLoading();
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_PROCESSLOADING_UNTIL

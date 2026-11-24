@@ -1,0 +1,6 @@
+pH 004197b0 CMainGameComponent::IsEditorActive MATCH flags= [] leaf=
+pS 004197b0 CMainGameComponent::IsEditorActive MATCH flags= [] leaf=?IsEditorActive@CMainGameComponent@@UBE_NXZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?IsEditorActive@T@@QAE_NXZ
+> DEF ?IsEditorActive@CMainGameComponent@@UBE_NXZ

@@ -34,7 +34,7 @@ template <class T> class CArray { public:
 
 class CRangeCompressor {
 public:
-    long Compress(void* data, long count, long stride, CArray<unsigned char>* output);   // 0x00F3AFC0
+    long Compress(const void* data, long count, long stride, CArray<unsigned char>& output);   // 0x00F3AFC0
 };
 
 template <class T> class CEdgeStipVertexArray {
@@ -62,7 +62,7 @@ void CPatchTesselationEdgeStrip::SaveVerts(CEdgeStipVertexArray<T>& verts, CData
         CRangeCompressor compressor;
         CArray<unsigned char> buffer;
         T* data = verts.Data;
-        long size = compressor.Compress(data, verts.Count, sizeof(T), &buffer);
+        long size = compressor.Compress(data, verts.Count, sizeof(T), buffer);
         stream.WriteSLONG(size);
         stream.Write(buffer.GetData(), size);
     }

@@ -6,8 +6,7 @@
 // `mov al,[ecx+4]`) tail-jump to Client.Uninitialise() (0x004AE990).
 // Layout: PDB CMainGameComponent: scoped_ptr<CPlayerManager> PPlayerManager +0x1c, CNetworkClient Client +0x13ab8 (80568);
 // no engine/CMainGameComponent.h exists. CNetworkClient from engine/CNetworkClient.h (CInitBaseClass base: vptr +0, valid flag +4).
-// Opt: size TU (unaligned entry).
-#pragma optimize("s", on)
+#pragma optimize("s", on)   // Opt: size TU (unaligned entry).
 // NF132 (q4019): the client is the retail engine/CNetworkClient.h class (CInitBaseClass base): InitialiseAsLocal 0x004AE940 and
 //   Uninitialise 0x004AE990 are its Ego_r.pdb / FableWin.pdb members (was the CNetworkClient_Methods stand-in), IsValid the shared
 //   CInitBaseClass member (was a local CInitBaseClass model).
@@ -15,11 +14,12 @@
 #define FABLE_RETAIL_CNETWORKCLIENT_UPDATE
 #define FABLE_RETAIL_CNETWORKCLIENT_INITIALISEASLOCAL
 #define FABLE_RETAIL_CNETWORKCLIENT_UNINITIALISE
+#define FABLE_RETAIL_CPLAYERMANAGER_FLAT_CREATEPLAYERS   // NF289: CreatePlayers 0x0044A530 from CPlayerManager.h (Ego_r + FableWin QAE)
 #include "engine/CNetworkClient.h"
 #include "engine/CPlayerManager.h"
 class CGameDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 struct CPlayerManager_Methods : CPlayerManager {
-    void CreatePlayers();                                // 0x0044A530
+    // CreatePlayers 0x0044A530: the CPlayerManager.h member (NF289; it was declared on this stand-in)
 };
 class CMainGameComponent { public:
     unsigned char            _pad00[0x1c];

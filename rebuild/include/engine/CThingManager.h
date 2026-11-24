@@ -38,6 +38,11 @@ class CThingSearchTools;                                        // chunk 765
 class CEnginePrimitivePrepareInfo;                              // chunk 734: PreparePrimitivesForEngine's parameter
 #endif
 class CThingManager : public CClassFactory {
+#ifdef FABLE_RETAIL_CTHINGMANAGER_ALLOCATEUID
+public:
+    // Both donor PDBs agree with the out-of-line AllocateNewThingUID at 0x0051E100.
+    unsigned __int64 AllocateNewThingUID(long map_number, bool is_persistent, bool is_hero);
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_LOADLOADABLEGLOBALTHINGS
 // Opt-in (NF62, row 0x004FE2A0 CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile): Ego_r.pdb / FableWin.pdb
 // ?LoadLoadableGlobalThingsFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@J@Z (retail 0x005223F0, the counted file by value).

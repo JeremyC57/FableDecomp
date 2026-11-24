@@ -23,7 +23,7 @@ const HRESULT D3D_OK = 0;
 const HRESULT D3DERR_DEVICELOST = (HRESULT)0x88760868;
 class CVsyncCallbackTimer {
 public:
-    void OnPresent();                                    // 0x009F73C0 (name not confirmed)
+    void OnPostSwapScreens();                                    // 0x009F73C0 NF296: PDB name, was OnPresent
 };
 class CDisplayManager {
 public:
@@ -57,7 +57,7 @@ bool CDisplayManager::SwapScreens()
     ++FrameCounter;
     if (!CheckPresentResult(D3DDevice->Present(0, 0, 0, 0)))
         return false;
-    VsyncCallbackTimer->OnPresent();
+    VsyncCallbackTimer->OnPostSwapScreens();
     CurrentScreenIndex = (CurrentScreenIndex + 1) % (NoBackBuffers + 1);
     return true;
 }

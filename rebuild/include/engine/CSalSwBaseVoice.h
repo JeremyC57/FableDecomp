@@ -4,6 +4,9 @@
 #include "engine/CSalBaseVoice.h"
 #include "engine/CSalSwBuffer.h"
 #include "engine/CSalSwFilter.h"
+#ifdef FABLE_RETAIL_CODA_OPENAL_BUFFER_PASS26
+#include "engine/CodaBufferDesc.h"
+#else
 struct _CBUFFERDESC{
  unsigned int ffFormat;
  unsigned int nChannels;
@@ -13,6 +16,7 @@ struct _CBUFFERDESC{
  unsigned int cbLoopEnd;
  void * pvData;
 };
+#endif
 class CSalReverb;
 class CSalSwBaseVoice:public CSalBaseVoice{
 public: virtual ~CSalSwBaseVoice();

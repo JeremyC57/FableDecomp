@@ -1,5 +1,5 @@
 // CAIStateGroup_WorkAtSchool::IsRunnable() -- a villager kid with a school (and a village) works at school when the school building's sim-building def has Property bit 2 set and the school's own village says it is time to go to school
-// Leaf: ?IsRunnable@CAIStateGroup_WorkAtSchool
+// Leaf: ?IsRunnable@CAIStateGroup_WorkAtSchool@@MAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00942A00, length 304 bytes (plain `ret`, virtual).
@@ -253,11 +253,13 @@ struct CThingSchoolKid : CThing {
 };
 class CThingAICreature;
 class CTCVillage { public:
-    bool IsTimeToGoToSchool(CThingAICreature* creature, CWorld* world, bool force);   // 0x0065A8EE
+    bool IsTimeToGoToSchool(CThingAICreature* creature, const CWorld& world, bool force);   // 0x0065A8EE
 };
 struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
     CThingSchoolKid* GetCreature() const { return (CThingSchoolKid*)PBrain->PCreature; }
+    protected:
     bool IsRunnable();
+    public:
     virtual void Update();
 };
 bool CAIStateGroup_WorkAtSchool::IsRunnable()
@@ -272,7 +274,7 @@ bool CAIStateGroup_WorkAtSchool::IsRunnable()
                     CTCVillager* schoolVillager = (CTCVillager*)school->FindEntry(0x23)->second;
                     if (((CTCVillageMember*)schoolVillager)->GetPVillage()) {
                         CThingAICreature* creature = (CThingAICreature*)PBrain->PCreature;
-                        bool result = ((CTCVillageMember*)schoolVillager)->GetPVillage()->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), false);
+                        bool result = ((CTCVillageMember*)schoolVillager)->GetPVillage()->IsTimeToGoToSchool(creature, PeekWorld(), false);
                         return result;
                     }
                 }

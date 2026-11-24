@@ -1,0 +1,4 @@
+##### 005be028 renames: ?IsAugmentation_005d9830@@YI_NJ@Z=?IsExpression@CTCInventoryItem@@SI_NJ@Z
+sections head 11 new 11
+ALL_EQ 0
+funcs SAME=9 vtbl_H=1 vtbl_N=1

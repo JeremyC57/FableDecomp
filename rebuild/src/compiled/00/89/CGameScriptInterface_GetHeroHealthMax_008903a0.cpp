@@ -1,3 +1,5 @@
+// Leaf: ?GetHeroHealthMax@CGameScriptInterface@@UBEMXZ
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
@@ -10,8 +12,9 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 extern float g_defaultHealthMax;
 
 
-float __fastcall CGameScriptInterface_GetHeroHealthMax(CGameScriptInterface* self)
+float CGameScriptInterface::GetHeroHealthMax() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     CPlayer* t = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     CThingPlayerCreature* h = t->GetPControlledCreature();
     if (h != 0) {
@@ -21,3 +24,4 @@ float __fastcall CGameScriptInterface_GetHeroHealthMax(CGameScriptInterface* sel
     }
     return g_defaultHealthMax;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_GetHeroHealthMax -> CGameScriptInterface::GetHeroHealthMax, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

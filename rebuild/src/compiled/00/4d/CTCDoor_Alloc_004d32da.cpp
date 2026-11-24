@@ -13,10 +13,10 @@ class CThing;
 
 class CTCDoor { public:
     unsigned char _body[0x24];       // sizeof(CTCDoor) = 0x24
-    CTCDoor(CThing* owner);                   // 0x00730630
+    CTCDoor(CThing& owner);                   // 0x00730630
 };
 
 CTCDoor* __fastcall CTCDoor_Alloc(CThing* owner)
 {
-    return new CTCDoor(owner);
+    return new CTCDoor(*owner);
 }

@@ -1,0 +1,16 @@
+--- fable_string.h (NF215 probe base)
++++ fable_string.h (probe)
+@@ -474,7 +474,13 @@
+         return PStringData->Data==other.PStringData->Data;
+     }
+     bool operator!=(const CCharString&) const;
++#ifdef FABLE_RETAIL_CCHARSTRING_TEXT_NE_INLINE
++    // Probe opt-in (NF215, q11760, 2026-11-21): Ego_r.pdb 0x00AFA270 / FableWin.pdb 0x02F61900 ??9CCharString@@QBE_NPBD@Z as a plain inline
++    // body, the negation of operator==(const char*) (retail's out-of-line copy 0x0099E960 is that: `sete al ; test al,al ; sete cl`).
++    bool operator!=(const char* text) const { return !(*this == text); }
++#else
+     bool operator!=(const char*) const;
++#endif
+     const CCharString& operator+=(const char*);
+     const CCharString& operator+=(const CCharString&);
+ #ifdef FABLE_RETAIL_CCHARSTRING_APPEND_CHAR

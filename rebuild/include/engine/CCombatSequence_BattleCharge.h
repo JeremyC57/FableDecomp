@@ -9,6 +9,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_BATTLECHARGE_VIRTUAL_MODEL
+// Opt-in (NF325, 2026-11-24; generator NF322 genmodel.py): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127A1BC (RTTI .?AVCCombatSequence_BattleCharge@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_BattleCharge); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequence_BattleCharge : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x00909070 ?OnCreate@CCombatSequence_BattleCharge@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B5090 ?GetName@CCombatSequence_BattleCharge@@UBE?AVCCharString@@XZ
+    virtual bool IsInterruptableDueToZoneChange() const;                  // slot 6 0x008B50D0 ?IsInterruptableDueToZoneChange@CCombatSequence_BattleCharge@@UBE_NXZ
+    virtual bool IsValid() const;                                         // slot 12 0x00908DA0 ?IsValid@CCombatSequence_BattleCharge@@UBE_NXZ
+    virtual bool IsToPreferSequenceWhenValid() const;                     // slot 13 0x008B50B0 ?IsToPreferSequenceWhenValid@CCombatSequence_BattleCharge@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B50C0 ?GetZone@CCombatSequence_BattleCharge@@UBEKXZ
+    virtual void OnStart();                                               // slot 17 0x00908DE0 ?OnStart@CCombatSequence_BattleCharge@@UAEXXZ
+public:
+    long          m_frameOfLastUse;                          // +0x28
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_BattleCharge) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CCombatSequence_BattleCharge, m_frameOfLastUse) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_BattleCharge {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -24,8 +48,9 @@ struct CCombatSequence_BattleCharge {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_BattleCharge) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_BattleCharge, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_BattleCharge, m_frameOfLastUse) == 0x28);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CCombatSequence_BattleCharge) == 0x2c);
+FABLE_STATIC_ASSERT_AT(28, offsetof(CCombatSequence_BattleCharge, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CCombatSequence_BattleCharge, m_frameOfLastUse) == 0x28);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_BATTLECHARGE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_BATTLECHARGE_H

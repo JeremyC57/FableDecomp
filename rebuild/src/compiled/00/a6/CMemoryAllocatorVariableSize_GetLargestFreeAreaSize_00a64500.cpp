@@ -1,6 +1,6 @@
 // CMemoryAllocatorVariableSize::GetLargestFreeAreaSize() -- the largest of the chunks' largest-free-area sizes (+0x10 of each chunk on the list at +0xc1c, next at +0x20)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A64500, length 48 bytes.
-// Leaf: GetLargestFreeAreaSize
+// Leaf: ?GetLargestFreeAreaSize@CMemoryAllocatorVariableSize@@UAEKXZ
 // Shape: no frame, unsigned max in eax, the loop head aligned, `ret`.
 struct SVarChunk_00a64500 {                           // a chunk of the variable-size allocator: areas +4, largest free +0x10, next at +0x20, first free area at +0x30
     long               m_0;
@@ -17,11 +17,11 @@ extern long g_LastAllocatorChunkCounter_013d28d8;   // 0x013D28D8
 extern long g_LastAllocatorUsage_013d28d4;          // 0x013D28D4
 
 class CMemoryAllocatorVariableSize { public:
-    unsigned char     _pad00[0xc14];
+    unsigned char _pad00[0xc10];
     long              m_usage;                     // +0xc14
     long              m_chunkCounter;              // +0xc18
     SVarChunk_00a64500*  m_pFirstChunk;               // +0xc1c
-    unsigned long GetLargestFreeAreaSize();
+    virtual unsigned long GetLargestFreeAreaSize();
 };
 
 unsigned long CMemoryAllocatorVariableSize::GetLargestFreeAreaSize()

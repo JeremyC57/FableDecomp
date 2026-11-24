@@ -51,7 +51,10 @@ protected:
     void StartAutoSaveProgress();                                                           // 0x0049E7C0  NF35: Ego_r + FableWin protected (IAE)
     void StopAutoSaveProgress();                                                            // 0x0049E8C0  NF35: protected (IAE)
 public:
-    bool AutoSaveInternal(const CWideString& name, bool b);                                 // 0x004A0850
+    protected:
+    bool AutoSaveInternal(const CWideString& name, bool b);
+    public:
+                                 // 0x004A0850
     bool AutoSave(bool ignoreQuestStart);
 };
 

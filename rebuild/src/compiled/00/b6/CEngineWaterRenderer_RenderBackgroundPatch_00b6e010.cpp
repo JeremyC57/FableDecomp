@@ -1,5 +1,5 @@
 // CEngineWaterRenderer::RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch) -- draw one background water sub-patch: a camera-centred world transform, the inlined PrepareForRender(1), the patch's vertex/index buffers and its triangles, then each of the four bridge strips that has a vertex buffer
-// Leaf: RenderBackgroundPatch
+// Leaf: ?RenderBackgroundPatch@CEngineWaterRenderer@@AAEXPAVCEngineWaterBackgroundSubPatch@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6E010, length 592 bytes (+ int3 padding), `ret 4` (`this` unused).
 // Callees: CShaderRenderManager::SetWorldTransform @ 0x009881F0, the PrepareForRender inline of the landed 0x00B7F600,
 //   IDirect3DDevice9::SetStreamSource / SetIndices (slots 100/104) through the render core's inline helpers of the landed
@@ -176,7 +176,9 @@ class CEngineCamera { public:
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }                  // 0x01436EA0
 
 class CEngineWaterRenderer { public:
+    private:
     void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch);
+    public:
 };
 
 void CEngineWaterRenderer::RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch)

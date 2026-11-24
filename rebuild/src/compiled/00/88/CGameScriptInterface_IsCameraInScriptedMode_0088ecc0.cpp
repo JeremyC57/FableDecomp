@@ -1,3 +1,5 @@
+// Leaf: ?IsCameraInScriptedMode@CGameScriptInterface@@UBE_NXZ
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CGameCameraManager {
 public:
@@ -21,11 +23,13 @@ struct CCamMgr {
 class CWorld { public: char pad[0x38]; }; // CCamMgr* at +0x34
 // outer at +0x4
 
-bool __fastcall CGameScriptInterface_IsCameraInScriptedMode(CGameScriptInterface* self)
+bool CGameScriptInterface::IsCameraInScriptedMode() const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     CCamObj* local;
     CWorld* world = self->World;
     CCamMgr* b = *(CCamMgr**)((char*)world + 0x34);
     b->GetObj(&local);
     return ((CGameCameraManager*)(local))->IsUsingScriptedCameraMode();
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_IsCameraInScriptedMode -> CGameScriptInterface::IsCameraInScriptedMode, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

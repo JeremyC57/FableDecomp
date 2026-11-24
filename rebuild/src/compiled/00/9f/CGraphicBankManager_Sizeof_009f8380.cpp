@@ -1,3 +1,4 @@
+// Leaf: ?Sizeof@CGraphicBankManager@@QBEKXZ
 // CGraphicBankManager::Sizeof() -- four bytes per list node plus four, plus for every node eight bytes and the bank's own size (CGraphicDataBank::Sizeof @ 0x009FD8D0) when the node holds a bank
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F8380, length 80 bytes.
 // Callees: CGraphicDataBank::Sizeof @ 0x009FD8D0. Shape: a counting walk (`inc edx`) folded into `lea edi,[edx*4+4]`, then the summing walk with the `+8` on both arms.
@@ -13,10 +14,10 @@ struct SBankNode_009f8200 {                        // a list node: next, prev, t
 class CGraphicBankManager { public:
     unsigned char       _pad[4];
     SBankNode_009f8200* m_pHead;                   // +0x04 (the sentinel)
-    long Sizeof();
+    unsigned long Sizeof() const;
 };
 
-long CGraphicBankManager::Sizeof()
+unsigned long CGraphicBankManager::Sizeof() const
 {
     long count = 0;
     SBankNode_009f8200* node;

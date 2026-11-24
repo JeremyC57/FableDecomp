@@ -33,9 +33,12 @@ class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& s
 }
 using NGameText::CDataBank;   // 0x009C95E0
 struct Game { unsigned char Pad[0x14]; CDataBank* TextBank; CDataBank* GetTextDataBank() const { return TextBank; } };
-struct System { unsigned char Pad[0x60]; CDataBank* TextBank; CDataBank* GetTextDataBank() const { return TextBank; } };
 extern Game* Game_013b86a0;                          // 0x013B86A0
-extern System* System_013b871c;                      // 0x013B871C
+// NF230 (2026-11-22, q12621): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static; Ego_d.pdb LF_STMEMBER
+//   private; the header's spelling) read through the header's inline CNewFrontendGameComponent::Get() (FableWin.pdb ?Get@CNewFrontendGameComponent@@SIPAV1@XZ),
+//   the bank (m_pTextBank +0x60) through GetTextBank() (FableWin.pdb ?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ),
+//   as 0x0041CFB2 / 0x00446720 do; was the row-local `struct System` stand-in and ?System_013b871c@@3PAUSystem@@A.
+#include "engine/CNewFrontendGameComponent.h"
 class C2DBoxF { public: float Left, Top, Right, Bottom; };
 namespace NUISystem {
 class CIconText { public:
@@ -84,8 +87,8 @@ void CIconText::SetValue(const CWideString& value)
    Text = text;
   else
    Text = value;
- } else if (System_013b871c) {
-  CWideString text = System_013b871c->GetTextDataBank()->GetTextBySymbol(((CWideString*)&value)->ToCharString());
+ } else if (CNewFrontendGameComponent::Get()) {
+  CWideString text = CNewFrontendGameComponent::Get()->GetTextBank().GetTextBySymbol(((CWideString*)&value)->ToCharString());
   if (text != CWideString::NullString)
    Text = text;
   else

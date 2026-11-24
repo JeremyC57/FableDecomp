@@ -1,3 +1,4 @@
+// Leaf: ?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby2@@ABE_NXZ
 // CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureNearCombatPosition() -- for a registered combatant, ask the
 // combat manager whether the creature is within ring range of its target.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093DBD0, length 56 bytes (+ int3 padding).
@@ -42,10 +43,12 @@ public:
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
     unsigned char PEnemy[8];                // +0x14 CIntelligentPointer<CThingCreatureBase>
     bool Archer;                            // +0x1c
-    bool IsEnemyCreatureNearCombatPosition();
+    private:
+    bool IsEnemyCreatureNearCombatPosition() const;
+    public:
 };
 
-bool CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureNearCombatPosition()
+bool CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureNearCombatPosition() const
 {
     if (PBrain->Creature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->Creature;

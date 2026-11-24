@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0084c6c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0084c6c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DropGenericBox (engine/CCreatureAction_DropGenericBox.h)
+0084c6c0   RELOCATION_MATCH PASS   Clone
+
+WINS: 1
+  0084c6c0 RELOCATION_MATCH CCreatureAction_DropGenericBox::Clone

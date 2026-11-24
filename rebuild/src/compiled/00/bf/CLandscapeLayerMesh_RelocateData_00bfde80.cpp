@@ -16,7 +16,8 @@ class CVertexBufferWin32;
 class CGraphicInfoFrame;
 class CEngineLandscapeMap;
 class CVertex;
-enum LANDSCAPE_TEXTURE_MAPPING_DIRECTION { LANDSCAPE_TEXTURE_MAPPING_DIRECTION_DEFAULT };
+#define FABLE_RETAIL_CENGINELANDSCAPEMESHBUILDER_MAPPINGBLEND   // the shared global enum LANDSCAPE_TEXTURE_MAPPING_DIRECTION (NF276: was a local
+#include "engine/CEngineLandscapeMeshBuilder.h"            //   copy with a made-up enumerator)
 
 template <class T> inline void RelocatePointer(T*& p, void* oldData, void* newData)
 {
@@ -24,12 +25,8 @@ template <class T> inline void RelocatePointer(T*& p, void* oldData, void* newDa
         p = (T*)((char*)p - (char*)oldData + (char*)newData);
 }
 
-class CMovableResource {
-public:
-    virtual ~CMovableResource();
-    virtual void RelocateData(long handle, void* oldData, void* newData, long size) = 0;
-    virtual bool CanRelocateData(long handle) const = 0;
-};
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#include "engine/CMovableResource.h"    // NF276 (2026-11-22): the shared retail CMovableResource (vtable 0x0129B860), was a row-local model
 
 class CLandscapeLayerMesh : public CMovableResource {    // vtable 0x012A835C, 0x54 bytes
 public:

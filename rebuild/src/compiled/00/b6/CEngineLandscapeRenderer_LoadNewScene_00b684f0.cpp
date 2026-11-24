@@ -1,4 +1,5 @@
 // CEngineLandscapeRenderer::LoadNewScene(const CEngineComponentLoadNewSceneParams&) -- update loaded maps and foreground textures; return false if any update failed
+// Leaf: ?LoadNewScene@CEngineLandscapeRendererCallView@@QAE_NABVCEngineComponentLoadNewSceneParams@@@Z
 // Retail 0x00B684F0, 273 bytes. Vtable 0x012A2B54 slot 3 confirms the owner.
 // Actual CEngineLandscapeRenderer, CEngineComponent and CEngineLandscapeMap PDB headers are included.
 // Native scene-state projections: global 0x01436E8C +0x2c is the sentinel list of map-counted-pointer records;
@@ -18,6 +19,7 @@
 #define FABLE_RETAIL_CENGINEWORLDMAP
 #define FABLE_RETAIL_CENGINEWORLDMAP_VISIBLEMAPLIST
 #define FABLE_RETAIL_CENGINEMAP
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer 0x01436EA8 (landed opt-in; was the CEngineGlobal_01436EA8 stand-in, NF271)
 #include "engine/CEngineComponent.h"
 #include "engine/CEngineWorldMap.h"
 #include "engine/CEngineLandscapeRenderer.h"
@@ -72,14 +74,7 @@ class CEngineComponentLoadNewSceneParams
     unsigned int Flags;
 };
 
-struct CEngineGlobal_01436EA8
-{
-    unsigned char _pad_0x00[0x6b0];
-    CEngineLandscapeMemoryManager* LandscapeMemoryManager;
-};
-
 namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
-extern CEngineGlobal_01436EA8* g_pEngineGlobal_01436EA8; // 0x01436EA8
 
 bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNewSceneParams& params)
 {
@@ -87,9 +82,9 @@ bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNe
         return false;
 
     bool updatePending = false;
-    CEngineGlobal_01436EA8* global = g_pEngineGlobal_01436EA8;
+    CEngineLandscapeRenderer* global = NEngineInternal::GPLandscapeRenderer;
     reinterpret_cast<CEngineLandscapeMemoryManagerCallView*>(
-        global->LandscapeMemoryManager)->ClearTexturePool();
+        global->MemoryManager)->ClearTexturePool();
 
     CEngineWorldMap* const sceneState = NEngineInternal::GPEngineWorldMap;
     const bool updateBackgroundLOD = Settings[0x34] != 0;   // +0x63c: CLandscapeSettings at +0x608 in the retail header (not MeshBuilder)

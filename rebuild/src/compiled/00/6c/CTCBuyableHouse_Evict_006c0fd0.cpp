@@ -1,5 +1,5 @@
 // CTCBuyableHouse::Evict() -- pay the money bags to the hero, then for every villager whose home or work is this house: clear that link (no longer game-state persisted), detach it from its shop and from the village
-// Leaf: Evict
+// Leaf: ?Evict@CTCBuyableHouse@@AAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x006C0FD0, 384 bytes, `ret`.
 // Callees: CTCBuyableHouse::DestroyMoneyBags(bool) 0x006C0580, CVectorMap::LowerBound 0x0040F020 (interfaces 0x23, 0x90),
@@ -108,7 +108,9 @@ public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     void DestroyMoneyBags(bool giveToHero);             // 0x006C0580
+    private:
     void Evict();
+    public:
 };
 
 void CTCBuyableHouse::Evict()

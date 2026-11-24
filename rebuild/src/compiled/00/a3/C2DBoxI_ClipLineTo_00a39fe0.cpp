@@ -1,3 +1,4 @@
+// Leaf: ?ClipLineTo@C2DBoxI@@QAEXAAVC2DLineF@@@Z
 // C2DBoxI::ClipLineTo(C2DLineF&) const -- clip a line to the box: the first edge crossing replaces the start point, later crossings the end point
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A39FE0, length 355 bytes.
@@ -13,38 +14,38 @@ class C2DVector { public: float x; float y; };
 class C2DLineF { public:
     float x1; float y1; float x2; float y2;
     C2DLineF(float ax, float ay, float bx, float by) : x1(ax), y1(ay), x2(bx), y2(by) {}
-    bool IntersectsWith(const C2DLineF& other, C2DVector* point, float tolerance);   // 0x00A56C80
+    bool IntersectsWith(const C2DLineF& other, C2DVector& point, float tolerance) const;   // 0x00A56C80
 };
 class C2DBoxI { public:
     long minX; long minY; long maxX; long maxY;
-    void ClipLineTo(C2DLineF& line) const;
+    void ClipLineTo(C2DLineF& line);
 };
 extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C
 
-void C2DBoxI::ClipLineTo(C2DLineF& line) const
+void C2DBoxI::ClipLineTo(C2DLineF& line)
 {
     C2DVector hit;
     bool first = true;
     C2DLineF top((float)minX, (float)minY, (float)maxX, (float)minY);
-    if (line.IntersectsWith(top, &hit, DELTA_NOTIONAL_ZERO)) {
+    if (line.IntersectsWith(top, hit, DELTA_NOTIONAL_ZERO)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
         first = false;
     }
     C2DLineF right((float)maxX, (float)minY, (float)maxX, (float)maxY);
-    if (line.IntersectsWith(right, &hit, DELTA_NOTIONAL_ZERO)) {
+    if (line.IntersectsWith(right, hit, DELTA_NOTIONAL_ZERO)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
         first = false;
     }
     C2DLineF bottom((float)minX, (float)maxY, (float)maxX, (float)maxY);
-    if (line.IntersectsWith(bottom, &hit, DELTA_NOTIONAL_ZERO)) {
+    if (line.IntersectsWith(bottom, hit, DELTA_NOTIONAL_ZERO)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
         first = false;
     }
     C2DLineF left((float)minX, (float)minY, (float)minX, (float)maxY);
-    if (line.IntersectsWith(left, &hit, DELTA_NOTIONAL_ZERO)) {
+    if (line.IntersectsWith(left, hit, DELTA_NOTIONAL_ZERO)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
     }

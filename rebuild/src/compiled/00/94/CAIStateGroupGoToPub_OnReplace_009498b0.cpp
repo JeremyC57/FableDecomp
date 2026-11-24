@@ -3,7 +3,7 @@
 //   ?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z (namespace NCreatureMode; the creature by
 //   reference as CThingCreatureBase, the animation by const reference); was ?GetUpFromSitting@@YI_NPAVCThing@@JPBVCCharString@@PAVCAIBrain@@@Z.
 //   No shared header declares it, so the declaration stays in the row; the row's other local models are unchanged.
-// Leaf: ?OnReplace@CAIStateGroup_GoToPub@@UAEXXZ
+// Leaf: ?OnReplace@CAIStateGroup_GoToPub@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009498B0, length 497 bytes (+ int3 padding). Vtable slot 10.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 CTCCreatureModeManager = bit 17 of +0x24),
@@ -76,7 +76,9 @@ protected:
     void FreeSeat();                            // 0x009486D0 (NF35: Ego_r + FableWin protected, IAE)
 public:
     void FreeBarPoint();                        // 0x00949320
+    protected:
     virtual void OnReplace();
+    public:
 };
 
 void CAIStateGroup_GoToPub::OnReplace()

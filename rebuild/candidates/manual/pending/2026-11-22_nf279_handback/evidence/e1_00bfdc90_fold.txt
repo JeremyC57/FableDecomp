@@ -1,0 +1,58 @@
+# 0x00BFDC90 fold (sc.sh HEAD v rows/00bfdc90.cpp, overlay hdr/ + src/compiled copy of the new 0x00BFD480 file)
+##### 00bfdc90
+pH 00bfdc90 CEngineWaterBackgroundSubPatch::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf=??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+pS 00bfdc90 CEngineWaterBackgroundSubPatch::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf=??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ??0CEngineWaterBackgroundSubPatch@@QAE@XZ
+< DEF ??2@YAPAXIPAX@Z
+> DEF ??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+> DEF ??1CMovableResource@@UAE@XZ
+> DEF ??_7CMovableResource@@6B@
+< DEF ?Construct_00bfdc90@@YAPAVCEngineWaterBackgroundSubPatch@@PAX@Z
+< UND ??0CMovableResource@@QAE@XZ
+< UND ??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+> DEF ??_GCMovableResource@@UAEPAXI@Z
+> UND ??3@YAXPAX@Z
+> UND ??_GCMovableResource@@UAEPAXI@Z
+> UND ?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z
+> UND ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+> UND ?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z
+> UND ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+> UND ?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z
+> UND ?Verify@CMovableResource@@UBEKXZ
+> UND __purecall
+ALLDONE
+## pk new
+00bfdc90 NEW	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+00bfdc90 NEW	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+00bfdc90 NEW	??1CEngineWaterBackgroundSubPatch@@UAE@XZ	144	00bfd480	EQ
+## pk HEAD
+00bfdc90 HEAD	??0CEngineWaterBackgroundSubPatch@@QAE@XZ	18	-	NO-OWNER
+00bfdc90 HEAD	??2@YAPAXIPAX@Z	5	00405c10	EQ
+00bfdc90 HEAD	?Construct_00bfdc90@@YAPAVCEngineWaterBackgroundSubPatch@@PAX@Z	30	-	NO-OWNER
+## leafcmp HEAD v fold
+len 38 38 bytes_equal True
+relocs_equal True
+## objsec new 0x00BFD480 obj v fold obj
+sections head 7 new 7
+ALL_EQ 0
+## HEAD 0x00BFDC90 tables
+0	00bfdc90	NOLINE	??_ECEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+slots 1 not-OK 1 retail next word 00bfd5d0 COL@-4 sym ?
+## HEAD 0x00BFD480 table
+0	00bfdc90	NOLINE	?v00@CEngineWaterBackgroundSubPatch@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfd5d0 COL@-4 sym ?
+0	009d5110	NOLINE	?v00@CMovableResource@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfea08 COL@-4 sym ?
+## HEAD symbols 0x00BFDC90
+DEF ??0CEngineWaterBackgroundSubPatch@@QAE@XZ
+DEF ??2@YAPAXIPAX@Z
+DEF ??_7CEngineWaterBackgroundSubPatch@@6B@
+DEF ??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+DEF ?Construct_00bfdc90@@YAPAVCEngineWaterBackgroundSubPatch@@PAX@Z
+UND ??0CMovableResource@@QAE@XZ
+UND ??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+UND ??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+UND ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+UND ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A

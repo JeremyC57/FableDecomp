@@ -234,10 +234,10 @@ class CWorld { public:
 
 struct CAIStateGroup_MinionReactToCriminal : CAIStateGroupBase {
     CBaseIntelligentPointer PHero;              // +0x14 CIntelligentPointer<CThingPlayerCreature>
-    bool IsValid();
+    private: bool IsValid() const; public:
 };
 
-bool CAIStateGroup_MinionReactToCriminal::IsValid()
+bool CAIStateGroup_MinionReactToCriminal::IsValid() const
 {
     if (IS_THING_ALIVE(PHero)) {
         CTCVillager* villager;

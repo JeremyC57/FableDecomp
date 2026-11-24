@@ -1,0 +1,6 @@
+N 00993f60 CDataOutputStream::WritePixelFormat RELOCATION_MATCH flags= [] leaf=
+N 00449c30 CPlayerManager::PrepareForLoad RELOCATION_MATCH flags= [] leaf=
+N 009c8470 ReadFromDataStream RELOCATION_MATCH flags= [] leaf=ReadFromDataStream
+N 009fc210 CResourceList_Methods::ShrinkResources RELOCATION_MATCH flags= [] leaf=?ShrinkResources@CResourceList_Methods@@QAEXK@Z
+N 0072e940 CTCActionUseBuyHouse::OnActionUseMain RELOCATION_MATCH flags= [] leaf=?OnActionUseMain@CTCActionUseBuyHouse@@QAEXPAVCTCBuyableHouse@@J@Z
+GR_DONE

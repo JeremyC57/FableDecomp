@@ -1,0 +1,47 @@
+addr       parity           behav  name
+00d80e40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d80e40   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d80e40   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsBriarScript (engine/CQ_HeroSoulsBriarScript.h)
+00d80e40   RELOCATION_MATCH PASS   Main
+00d835d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d835d0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d835d0   RELOCATION_MATCH PASS   Main
+00d9e5e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d9e5e0   WARN SHARED_HEADER_AVAILABLE CQ_MinionCampScript (engine/CQ_MinionCampScript.h)
+00d9e5e0   RELOCATION_MATCH PASS   Main
+00dcc770   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00dcc770   WARN SHARED_HEADER_AVAILABLE CQ_OrchardFarmRaidScript (engine/CQ_OrchardFarmRaidScript.h)
+00dcc770   RELOCATION_MATCH PASS   Main
+00e5d4f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00e5d4f0   WARN SHARED_HEADER_AVAILABLE CV_BodyGuardScript (engine/CV_BodyGuardScript.h)
+00e5d4f0   RELOCATION_MATCH PASS   Main
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CQ_OakValeBanditRaidScript (engine/CQ_OakValeBanditRaidScript.h)
+00dbf2d0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00dbf2d0   RELOCATION_MATCH PASS   Main
+00aeac90   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00aeac90   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00aeac90   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00aeac90   WARN SHARED_HEADER_AVAILABLE CParticleSystem (engine/CParticleSystem.h)
+00aeac90   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00aeac90   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00aeac90   RELOCATION_MATCH PASS   DumpInfo
+008f63c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+008f63c0   WARN SHARED_HEADER_AVAILABLE CHeightMapCell (engine/CHeightMapCell.h)
+008f63c0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+008f63c0   WARN SHARED_HEADER_AVAILABLE CHeightMap (engine/CHeightMap.h)
+008f63c0   RELOCATION_MATCH PASS   CHeightMap
+
+WINS: 8
+  00d80e40 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::?Main@CQ_HeroSoulsBriarScript@NScript@@UAEXXZ
+  00d835d0 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::Main
+  00d9e5e0 RELOCATION_MATCH NScript::CQ_MinionCampScript::Main
+  00dcc770 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::Main
+  00e5d4f0 RELOCATION_MATCH NScript::CV_BodyGuardScript::Main
+  00dbf2d0 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::Main
+  00aeac90 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::DumpInfo
+  008f63c0 RELOCATION_MATCH CHeightMap::??0CHeightMap
+RF_DONE

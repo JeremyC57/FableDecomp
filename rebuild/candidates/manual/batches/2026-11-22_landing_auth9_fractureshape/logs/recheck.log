@@ -1,0 +1,40 @@
+00760000   MATCH            PASS   GetBestCameraPosition
+00760020   RELOCATION_MATCH PASS   IsLineIntersectingWithOthersInList
+00760190   RELOCATION_MATCH PASS   IsTriangleWithPointsInside
+007602f0   RELOCATION_MATCH PASS   IsShapeConvex
+00760760   RELOCATION_MATCH PASS   GetFirstPointThatBreaksConvexity
+00760a70   RELOCATION_MATCH PASS   GetUpDirection
+00760bc0   MATCH            PASS   GetBounds
+00760c40   RELOCATION_MATCH PASS   GetTrackPosAtLengthFraction
+00760da0   RELOCATION_MATCH PASS   GetTrackPosNearest
+00760e70   RELOCATION_MATCH PASS   GetMinDistanceToTrack
+007610d0   RELOCATION_MATCH PASS   IsPosInShape
+007611c0   MATCH            PASS   IsPosInShape
+00761200   MATCH            PASS   UpdateDisplacePoints
+00761280   RELOCATION_MATCH PASS   DrawPrimitiveLineOverLandscape
+00761560   RELOCATION_MATCH PASS   EditorDrawPreparePrimitivesForRendering
+00761620   RELOCATION_MATCH PASS   EditorDrawPreparePrimitivesForRendering
+00761740   RELOCATION_MATCH PASS   IsPosInShape
+007617a0   RELOCATION_MATCH PASS   EditorDrawHighlightPoints
+00761bd0   RELOCATION_MATCH PASS   ~CShape
+00761c00   RELOCATION_MATCH PASS   OnSerialise
+00761f40   RELOCATION_MATCH PASS   CTrack
+00762010   RELOCATION_MATCH PASS   UpdateDeletePoint
+007621c0   RELOCATION_MATCH PASS   UpdateSelectedPoint
+007622c0   RELOCATION_MATCH PASS   UpdateSplit
+00762480   RELOCATION_MATCH PASS   ~CBasicShape
+00763060   RELOCATION_MATCH PASS   FractureShape
+007634e0   RELOCATION_MATCH PASS   UpdateSubdivisions
+00763eb0   MATCH            PASS   CShape> >
+00764590   MATCH            PASS   CSubdivisionTriangle> >
+00764c40   RELOCATION_MATCH PASS   CShape>*>
+00764ee0   RELOCATION_MATCH PASS   CSubdivisionTriangle>*>
+00764f60   MATCH            PASS   UpdateSubdivisions
+00764f70   RELOCATION_MATCH PASS   ~CShape
+00764fc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00765040   MATCH            PASS   GetType
+00765050   RELOCATION_MATCH PASS   ~CShape
+00765080   RELOCATION_MATCH PASS   `scalar deleting destructor'
+007650c0   MATCH            PASS   GetType
+00765370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00765b10   RELOCATION_MATCH PASS   `scalar_deleting_destructor'

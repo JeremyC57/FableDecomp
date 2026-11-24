@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CSummonableCreatureDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CSummonableCreatureDef_GetSizeofClass()
+class CSummonableCreatureDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CSummonableCreatureDef::GetSizeofClass()
 {
     return 48;
 }

@@ -27,6 +27,10 @@ public:
 };
 class CTCInventoryWeapons : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_TEST_CTORS_PASS27
+    CTCInventoryWeapons(CThing&);
+#endif
+
 #ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_PROCESSBUTTONARELEASED
     // NF95 opt-in (q11234, row 0x005C2E2A): Ego_r.pdb (0x00624FB7) + FableWin.pdb (0x0238044C) ?ProcessButtonAReleased@CTCInventoryWeapons@@UAEXXZ,
     // an override of the base virtual. Declaration only: no layout change.
@@ -37,6 +41,10 @@ public:
     CCountedPointer<NUISystem::CComponent> ConstructAugEntry(bool, std::vector<std::pair<long, long> >&, NUISystem::CViewport*);   // 0x005C574E
     CCountedPointer<NUISystem::CComponent> ConstructAugEntryPC(bool, std::vector<std::pair<long, long> >&, NUISystem::CViewport*,
                                                                NUISystem::CComponent*);                                         // 0x005C5F11
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_WEAPONABILITIES_PASS27
+    bool IsMeleeWeaponDrawn() const;                                // 0x005C2DED
+    bool IsRangedWeaponDrawn() const;                               // 0x005C2DF5
+#endif
     float GetActiveMeleeWeaponDamage() const;                                                                                   // inline in retail
     float GetActiveProjectileWeaponDamage() const;                                                                              // inline in retail
 private:

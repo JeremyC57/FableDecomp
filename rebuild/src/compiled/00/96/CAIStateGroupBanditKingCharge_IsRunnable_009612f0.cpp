@@ -1,5 +1,5 @@
 // CAIStateGroup_BanditKingCharge::IsRunnable() -- runnable when the live hero is farther than the charge radius (squared XY distance > 49.0f @ 0x01295F5C): target the hero
-// Leaf: IsRunnable@CAIStateGroup_BanditKingCharge
+// Leaf: ?IsRunnable@CAIStateGroup_BanditKingCharge@@MAE_NXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retry 10b (getsw sweep, FIXES B-15): the creature is read through an inline getter `GetCreature()`; the plain member read gives the parked register/scheduling difference.
@@ -58,7 +58,9 @@ struct CAIStateGroup_BanditKingCharge
     unsigned char _pad08[0x0c];                     // +0x08
     CBaseIntelligentPointer PTargetThing;           // +0x14
     CPlayerManager* GetPPlayerManager();            // 0x008FCF90
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_BanditKingCharge::IsRunnable()

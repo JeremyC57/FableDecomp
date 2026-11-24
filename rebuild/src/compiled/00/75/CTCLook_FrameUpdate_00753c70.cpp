@@ -95,10 +95,13 @@ class CTCLook : public CTCBase { public:
     bool          OneFrameDelay;                           // +0xb8
     void UpdateHeadPos();                                  // 0x00752000
     void ImplementHeadSettings();                          // 0x00753BA0
-    bool IsAbleToTurnDaBody();                             // 0x00751DA0
+    private: bool IsAbleToTurnDaBody() const; public:                             // 0x00751DA0
     bool IsCurrentlyTurningViaAnimation() const;                 // 0x00753B40
     void SetBodyMovingViaAnimation();                      // 0x00753930
-    void UpdateLookTimer();                                // 0x00751AD0
+    private:
+    void UpdateLookTimer();
+    public:
+                                // 0x00751AD0
 private:
     void SetBodyMoving();                                  // 0x00752E00
     void CentreHead();                                     // 0x007528A0

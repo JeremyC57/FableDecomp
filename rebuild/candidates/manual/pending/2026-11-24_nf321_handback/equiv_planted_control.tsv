@@ -1,0 +1,7 @@
+00a75b50	src	DIFF		rebuild/src/compiled/00/a7/CNavNavigableLeafNode_RemoveRegionZero_00a75b50.cpp
+00a76c30	src	DIFF		rebuild/src/compiled/00/a7/CNavNavigableLeafNode_IsNeighbourOf_00a76c30.cpp
+00a76c30	test	DIFF		rebuild/tests/00/a7/CNavNavigableLeafNode_IsNeighbourOf_00a76c30_test.cpp
+00a76c70	src	DIFF		rebuild/src/compiled/00/a7/CNavSwitchableLeafNode_IsNeighbourOf_00a76c70.cpp
+00a76c70	test	DIFF		rebuild/tests/00/a7/CNavSwitchableLeafNode_IsNeighbourOf_00a76c70_test.cpp
+00a77420	src	DIFF		rebuild/src/compiled/00/a7/CNavSwitchableLeafNode_Unlock_00a77420.cpp
+00a77420	test	DIFF		rebuild/tests/00/a7/CNavSwitchableLeafNode_Unlock_00a77420_test.cpp

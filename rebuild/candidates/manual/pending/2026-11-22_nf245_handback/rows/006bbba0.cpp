@@ -1,0 +1,54 @@
+// CGameTimeManager::Load(const CCharString& text) -- parses the saved time-manager text: builds a string parser over it and a text persist context, then runs the context-based Load
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x006BBBA0, length 127 bytes (padded to 144).
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (the "" file name @ 0x0122D70E, -1),
+//          CStringParser::CStringParser(const CCharString&, void (__fastcall*)(const CCharString&), const CCharString&, long) @ 0x00404720,
+//          CCharString::~CCharString @ 0x0099EAE0, CPersistContext::CPersistContext(CStringParser*, void (*)(CCharString*),
+//          bool, CDefinitionManager*, CSymbolMap*, CCharString*) @ 0x009BADD0, CGameTimeManager::Load(CPersistContext&)
+//          @ 0x006BBAC0, std::_List_base<CStringParserCommentBoundaries>::~_List_base @ 0x004046B0, CBaseClass::~CBaseClass @ 0x0099A2E0.
+// Shape: the CAnimComponentFlags::Initialise (0x005DC3C0) parser shape -- a 0x28-byte CStringParser local built over the
+// text with an explicit `CCharString("", -1)` temporary that dies after the declaration, then a 0x2c-byte persist
+// context with a trivial destructor (nothing runs for it); the parser's implicit destructor is inlined (comment list,
+// two strings, the out-of-line CBase destructor). No EH frame.
+// Leaf: ?Load@CGameTimeManager@@QAEXABVCCharString@@@Z
+class CCharString { public:
+    void* m_pData;
+    CCharString(const char* text, long length);    // 0x0099EBF0
+    ~CCharString();                                // 0x0099EAE0
+};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CStringParserCommentBoundaries;
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
+class CStringParser : public CBaseClass { public:                     // retail 0x28 bytes
+    char*                    String;               // +0x04
+    unsigned long            BaseLineOffset;       // +0x08
+    CCharString              Filename;             // +0x0c
+    CCharString              TempCharString;       // +0x10
+    std::list<CStringParserCommentBoundaries> Comments;             // +0x14
+    void (*ErrorCallback)(CCharString*);           // +0x18
+    long                     CursorPos[3];         // +0x1c CCursorPos
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
+                  long baseLineOffset);            // 0x00404720
+};
+class CDefinitionManager;
+class CSymbolMap;
+class CPersistContext { public:                           // retail 0x2c bytes, trivial destructor
+    unsigned char _pad00[0x2c];
+    CPersistContext(CStringParser& parser, void (__fastcall* errorCallback)(const CCharString&), bool reportErrors,
+                    const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* sourceName);   // 0x009BADD0
+};
+class CGameTimeManager { public:
+    unsigned char _pad00[0x40];
+    void Load(CPersistContext& context);           // 0x006BBAC0
+    void Load(const CCharString& text);
+};
+
+void CGameTimeManager::Load(const CCharString& text)
+{
+    CStringParser parser(text, 0, CCharString("", -1), 0);
+    CPersistContext context(parser, 0, true, 0, 0, 0);
+    Load(context);
+}

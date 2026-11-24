@@ -1,3 +1,4 @@
+// Leaf: ?ChangeSelection@CInputProcessInventoryBase@@AAE_NW4ECurrentMovement@1@@Z
 // CInputProcessInventoryBase::ChangeSelection -- reset movement or wait for its category/item repeat interval
 // Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -66,7 +67,9 @@ struct CInputProcessInventoryBase:CInputProcessGameBase {
  enum ECurrentMovement {MOVEMENT_NONE,MOVEMENT_UP,MOVEMENT_DOWN,MOVEMENT_LEFT,MOVEMENT_RIGHT};
  ECurrentMovement CurrentMovement;unsigned int FrameSinceLastMovement;bool StartedRepeatingMovement;
  virtual NInventory::CTCInventoryBase* GetPInventory()const=0; //slot9
+ private:
  bool ChangeSelection(ECurrentMovement);
+ public:
 };
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(NInventory::InventorySlot)==4);

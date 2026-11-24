@@ -1,3 +1,4 @@
+// Leaf: ?EntitySetAsDamageable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
 // CGameScriptInterface::EntitySetAsDamageable(const CScriptThing& thing, bool damageable) const -- when the script thing is valid and its thing is physical (+0x6c bit 1): set the damageable bit (+0xbc bit 0), then this interface's virtual slots 526 and 527 with the script thing and the flag
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088EAD0, length 96 bytes.
@@ -141,7 +142,7 @@ class CGameScriptInterface { public:
     CPlayerManager_Retail*  PlayerManager;                   // +0x14
     unsigned char           _pad18[0x15];
     bool                    AllowScreenFadingIfAlreadyFaded; // +0x2d
-    void EntitySetAsDamageable(const CScriptThing& thing, bool damageable) const;
+    virtual void EntitySetAsDamageable(const CScriptThing& thing, bool damageable) const;
 };
 
 void CGameScriptInterface::EntitySetAsDamageable(const CScriptThing& thing, bool damageable) const

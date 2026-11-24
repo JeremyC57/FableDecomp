@@ -1,0 +1,30 @@
+## HEAD set: H_004d4a99.obj H_0078ecd0.obj
+duplicates 0
+
+UNRESOLVED 1 ??0CTCDivineWrath@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??1CTCDivineWrath@@UAE@XZ
+UNRESOLVED 1 ??1PerEffectInfo@CTCDivineWrath@@QAE@XZ
+UNRESOLVED 1 ?FrameUpdate@CTCDivineWrath@@UAEXXZ
+UNRESOLVED 1 ?GetClassTypeName@CTCDivineWrath@@UBE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetInterfaceType@CTCDivineWrath@@UBE?AW4ETCInterfaceType@@XZ
+UNRESOLVED 1 ?HasFrameUpdate@CTCDivineWrath@@UBE_NXZ
+UNRESOLVED 1 ?OnCreate@CTCDivineWrath@@UAEXXZ
+UNRESOLVED 1 ?OnKill@CTCDivineWrath@@UAEXXZ
+UNRESOLVED 1 ?OnRemove@CTCDivineWrath@@UAEXXZ
+UNRESOLVED 1 ?PlaySoundW@CTCDivineWrath@@AAEKABVCCharString@@_N@Z
+UNRESOLVED 1 ?_M_erase@?$_Rb_tree@PAVCThingCreatureBase@@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@U?$_Select1st@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@3@U?$less@PAVCThingCreatureBase@@@3@V?$allocator@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@2@@Z
+## new set: N_004d4a99.obj H_0078ecd0.obj
+duplicates 0
+
+UNRESOLVED 1 ??1CTCDivineWrath@@UAE@XZ
+UNRESOLVED 1 ??1PerEffectInfo@CTCDivineWrath@@QAE@XZ
+UNRESOLVED 1 ?FrameUpdate@CTCDivineWrath@@UAEXXZ
+UNRESOLVED 1 ?GetClassTypeName@CTCDivineWrath@@UBE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetInterfaceType@CTCDivineWrath@@UBE?AW4ETCInterfaceType@@XZ
+UNRESOLVED 1 ?HasFrameUpdate@CTCDivineWrath@@UBE_NXZ
+UNRESOLVED 1 ?OnCreate@CTCDivineWrath@@UAEXXZ
+UNRESOLVED 1 ?OnKill@CTCDivineWrath@@UAEXXZ
+UNRESOLVED 1 ?OnRemove@CTCDivineWrath@@UAEXXZ
+UNRESOLVED 1 ?PlaySoundW@CTCDivineWrath@@AAEKABVCCharString@@_N@Z
+UNRESOLVED 1 ?_M_erase@?$_Rb_tree@PAVCThingCreatureBase@@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@U?$_Select1st@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@3@U?$less@PAVCThingCreatureBase@@@3@V?$allocator@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@2@@Z
+LK_DONE

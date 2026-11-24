@@ -1,59 +1,32 @@
 // NUISystem::CManager::~CManager() -- destructor of the front-end UI manager: own vtable; clear a showing error message; hand the manager singleton empty mesh and graphics banks; then the members (+0x88 down to +0x10) and the base are destroyed
-// Leaf: ??1CManager@NUISystem
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
+// Leaf: ??1CManager@NUISystem@@IAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041E641, length 146 bytes. Size-optimised TU: `#pragma optimize("s", on)`.
-// Callees: CManager::ClearErrorMessage @ 0x0041CE6A, CManager::GetInstance @ 0x0041E5F2 (`__fastcall`, lazily creates the
-//   singleton), SetMeshBank @ 0x0041D198 (counted pointer at +0x18) and @ 0x0042A9B7 (landed SetGraphicsBank, +0x10), the member
-//   destructors @ 0x0042CE63 / 0x004291DE / 0x0042B7D7 / 0x0042AB1C / 0x0042AB73 / 0x0042B796 / 0x0042918C / 0x00419108 (their manifest
-//   labels -- CActiveFile::OnReadFinished, _Dest_val<...> -- are byte-twin propagations), the base destructor @ 0x0042BEC0 (tail jump).
-// Layout: retail NUISystem::CManager (vtable 0x01230134): a `__declspec(novtable)` base of 0x10 (its destructor stores no vtable; members at
-//   +4/+0xc), counted banks +0x10 / +0x18, members at +0x24, +0x5c, +0x60, +0x70, +0x80, +0x88, the error-showing flag +0x9c
-//   (engine/CManager.h is the debug layout, 0x10 higher for the banks -- modelled locally, as the landed 0x0042A9B7).
-// Shape: the empty counted-pointer arguments are default-constructed in their argument slots (a declared copy constructor), zeroed from
-//   the size-TU zero register ebx (`push ecx ; push ecx ; mov eax,esp ; mov [eax],ebx`); GetInstance is evaluated after the argument.
-// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
-//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+// Names (NF226, 2026-11-22, q12566): protected and non-virtual, ??1CManager@NUISystem@@IAE@XZ in Ego_r.pdb (0x00438C6F), FableWin.pdb
+//   (0x01AE5392) and Ego_d.pdb; engine/NUISystem_CManager.h `protected: CManager(); ~CManager();`. The binders 0x0042FB40 / 0x0042DB20 (??_G)
+//   already bind that spelling. Was a row-local model (NUISystem::CManager on a `__declspec(novtable)` CManagerBase stand-in with a virtual
+//   destructor and SMember24 / 60 / 70 / 88 member stand-ins) that emitted ??1CManager@NUISystem@@UAE@XZ (public virtual).
+// Model: engine/NUISystem_CManager.h (retail layout, 0xD0: banks +0x10 / +0x18, Keys +0x24, the two lists +0x5C / +0x60, Layers +0x70,
+//   BastardChild +0x80, BastardChildren +0x88, m_bHasErrorMessage +0x9C) with FABLE_RETAIL_CMANAGER_ERRORMESSAGE (ClearErrorMessage
+//   0x0041CE6A), _WORLDINIT (SetMeshBank 0x0041D198, by value) and the new _SETGRAPHICSBANK (SetGraphicsBank 0x0042A9B7, by value).
+//   The member destructors this size TU calls out of line are the header's STLport instances, each equal to its retail owner with its
+//   relocations bound alike: ~_Rb_tree for BastardChildren 0x0042CE63, CCountedPointer<CComponent>::ReleaseData 0x004291DE (the
+//   FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA body), ~_Rb_tree for Layers 0x0042B7D7, ~_List_base for UIActionParams 0x0042AB1C and
+//   ThingActionParams 0x0042AB73, ~_Rb_tree for Keys 0x0042B796, ReleaseData<CMeshDataBank> 0x0042918C, ReleaseData<CGraphicDataBank>
+//   0x00419108, and the base NUISystem::CObservable's implicit destructor 0x0042BEC0 (Ego_r.pdb / FableWin.pdb ??1CObservable@NUISystem@@QAE@XZ),
+//   the tail jump.
+// Shape: the empty counted-pointer arguments are default-constructed in their argument slots, zeroed from the size-TU zero register ebx
+//   (`push ecx ; push ecx ; mov eax,esp ; mov [eax],ebx`); GetInstance is evaluated after the argument.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CMANAGER_ERRORMESSAGE
+#define FABLE_RETAIL_CMANAGER_WORLDINIT
+#define FABLE_RETAIL_CMANAGER_SETGRAPHICSBANK
 #pragma optimize("s", on)
-class CGraphicDataBank;
-class CMeshDataBank;
 #include "engine/CCountedPointer.h"
-struct SMember10 { void* a; void* b; ~SMember10(); };            // 0x00419108
-struct SMember18 { void* a; void* b; ~SMember18(); };            // 0x0042918C
-struct SMember24 { unsigned char _d[0x38]; ~SMember24(); };       // 0x0042B796
-namespace NUISystem { class CComponent; }
-namespace std {                                                   // STLport 4.6 list<long> base: only the out-of-line destructor is called
-template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc> class _List_base { public: void* _M_node; ~_List_base(); };   // ~_List_base 0x0042AB73
-}
-struct SMember60 { unsigned char _d[0x10]; ~SMember60(); };       // 0x0042AB1C
-struct SMember70 { unsigned char _d[0x10]; ~SMember70(); };       // 0x0042B7D7
-struct SMember88 { unsigned char _d[0x14]; ~SMember88(); };       // 0x0042CE63
+#include "engine/NUISystem_CManager.h"
 namespace NUISystem {
-struct __declspec(novtable) CManagerBase {
-    virtual ~CManagerBase();                       // 0x0042BEC0
-    unsigned char _d04[0xc];
-};
-class CManager : public CManagerBase { public:
-    static CManager* __fastcall GetInstance();                                 // 0x0041E5F2
-    void SetMeshBank(CCountedPointer<CMeshDataBank> bank);                    // 0x0041D198
-    void SetGraphicsBank(CCountedPointer<CGraphicDataBank> bank);             // 0x0042A9B7
-    SMember10     PGraphicsBank;                   // +0x10
-    SMember18     PMeshBank;                       // +0x18
-    unsigned char _pad20[4];
-    SMember24     m_24;                            // +0x24
-    std::_List_base<long, std::allocator<long> > m_5c;   // +0x5c std::list<long> (~_List_base 0x0042AB73)
-    SMember60     m_60;                            // +0x60
-    SMember70     m_70;                            // +0x70
-    CCountedPointer<CComponent> m_80;              // +0x80 (~CCountedPointer 0x004291DE)
-    SMember88     m_88;                            // +0x88
-    bool          m_errorMessageShowing;           // +0x9c
-    void ClearErrorMessage();                      // 0x0041CE6A
-    virtual ~CManager();
-};
 CManager::~CManager()
 {
-    if (m_errorMessageShowing)
+    if (m_bHasErrorMessage)
         ClearErrorMessage();
     GetInstance()->SetMeshBank(CCountedPointer<CMeshDataBank>());
     GetInstance()->SetGraphicsBank(CCountedPointer<CGraphicDataBank>());

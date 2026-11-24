@@ -1,0 +1,31 @@
+--- orig/hdr/engine/CAIStateGroup_VersusEnemyBase.h	2026-11-23 23:09:04.511325387 +0000
++++ hdr/engine/CAIStateGroup_VersusEnemyBase.h	2026-11-23 23:09:04.508727717 +0000
+@@ -18,6 +18,15 @@
+ class CAIStateGroup_VersusEnemyBase : public CAIStateGroupBase {
+ protected:
+     CIntelligentPointer<CThingCreatureBase> PTargetThing;              // +0x14
++#ifdef FABLE_RETAIL_CAISTATEGROUP_VERSUSENEMYBASE_RTTI_DECLS
++    // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base CAIStateGroupBase chain declares at the same slot (no new slot).
++    // 0x0090141E vtable 0x0128CBA4 slot 8: ?GetStateGroupType@CAIStateGroup_VersusEnemyBase@@MBE?AW4EAIStateGroupType@@XZ (FableWin.pdb)
++protected:
++    virtual EAIStateGroupType GetStateGroupType() const;              // 0x0090141E
++protected:
++#endif
+ };
+ #else
+ #pragma pack(push, 1)
+@@ -31,9 +40,9 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_VersusEnemyBase, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_VersusEnemyBase, PTargetThing) == 0x14);
++FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_VersusEnemyBase, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_VersusEnemyBase, PTargetThing) == 0x14);
+ #endif
+-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_VersusEnemyBase) == 0x1c);
++FABLE_STATIC_ASSERT_AT(37, sizeof(CAIStateGroup_VersusEnemyBase) == 0x1c);
+ 
+ #endif // FABLE_ENGINE_CAISTATEGROUP_VERSUSENEMYBASE_H

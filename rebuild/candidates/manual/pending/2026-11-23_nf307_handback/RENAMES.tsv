@@ -1,0 +1,30 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00681AE0	CTCCreatureOpinionOfHero	KnowsOfDeed	?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z	CTCCreatureOpinionOfHero::KnowsOfDeed	?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJJ_N@Z	Ego_r + FableWin name sets (W4EOpinionDeedType, const); the deed type parameter retyped long -> the shared engine/EOpinionDeedType.h enum (ruling NF304 Q2 / NF300 Q1; bytes equal, MATCH both sides); new full mangled Leaf line (it had none); no landed binder bound the old QBE_NJJ_N spelling (HEAD link: the five PDB binders 0x006C6040 x3, 0x007993F0, 0x007B2C70, 0x007B2E20, 0x0089FEB0 were unresolved at HEAD and resolve now)
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00449E60	?InitCharacterFromSave@CPlayer@@QAE_NPAUCPlayerSave@@@Z	?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z	0x00487EF0
+0x004D3D69	??0CTCEnemy@@QAE@PAVCThing@@@Z	??0CTCEnemy@@QAE@AAVCThing@@@Z	0x0076C8A0
+0x004D5896	??0CTCMultiStrike@@QAE@PAVCThing@@@Z	??0CTCMultiStrike@@QAE@AAVCThing@@@Z	0x007CD390
+0x004D94AB	??0CTCFlashOnHit@@QAE@PAVCThing@@@Z	??0CTCFlashOnHit@@QAE@AAVCThing@@@Z	0x004D6292
+0x00683590	?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJJPBVCOpinionDeedEffectsDef@@_N@Z	?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z	0x00682810
+0x00683650	?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJJ_N@Z	?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z	0x00681AE0
+0x006AFD60	?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXJ@Z	?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z	0x004BFFD0
+0x006B8640	?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@@_N@Z	?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z	0x00884E90
+0x006B8640	?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@@_N@Z	?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z	0x00884F60
+0x006B8640	?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@@_N@Z	?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@1@_N@Z	0x00884FE0
+0x006D7960	?GetTotalStatLevel@CTCHeroExperience@@QBEJJ@Z	?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z	0x006D6660
+0x00714900	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z	0x006CBAC0
+0x00714900	?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z	?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z	0x00753E90
+0x00714CC0	?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z	?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z	0x00753E90
+0x0072C230	?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NJ_N@Z	?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z	0x005EE49A
+0x007BE0F9	?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MPAVCThing@@@Z	?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z	0x007986A0
+0x008587B0	?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0PAV4@1M@Z	?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z	0x008168B0
+0x008D8EA0	?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z	?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z	0x00753E90
+0x008DA610	?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z	?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z	0x00753E90
+0x008DB240	?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z	?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z	0x00753E90
+0x008DB460	?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z	?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z	0x00753E90
+0x0091D510	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z	0x006CBAC0
+0x009212C0	?AddFollower@CTCFollowed@@QAEXPAVCThing@@_N@Z	?AddFollower@CTCFollowed@@QAEXAAVCThing@@_N@Z	0x006D50C0
+0x00921870	?RemoveFollower@CTCFollowed@@QAEXPAVCThing@@@Z	?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z	0x006D5180
+0x0097E890	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z	0x006CBAC0
+0x0097EC00	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z	0x006CBAC0

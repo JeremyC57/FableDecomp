@@ -1,0 +1,56 @@
+addr       parity           behav  name
+00412f90   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+00412f90   WARN SHARED_HEADER_AVAILABLE CGame (engine/CGame.h)
+00412f90   RELOCATION_MATCH PASS   Play
+00418dca   WARN SHARED_HEADER_AVAILABLE CInterpolationInfo (engine/CInterpolationInfo.h)
+00418dca   WARN SHARED_HEADER_AVAILABLE CGameEventPackageSet (engine/CGameEventPackageSet.h)
+00418dca   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+00418dca   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00418dca   WARN SHARED_HEADER_AVAILABLE CRoughFrameCounter (engine/CRoughFrameCounter.h)
+00418dca   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00418dca   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00418dca   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00418dca   WARN RELOC_NAME: ??0CRoughFrameCounter@@QAE@XZ -> 009f8b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00418dca   WARN RELOC_NAME: ?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z -> 009c0190 labelled 'CDisplayManager::AddDeviceResetCallback'
+00418dca   RELOCATION_MATCH PASS   CMainGameComponent
+00496070   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00496070   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00496070   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+00496070   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00496070   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+00496070   WARN RELOC_NAME: ?GetDefaultProfileName@CUserProfileManager@@QBE?AVCWideString@@XZ -> 004065d0 labelled 'CUserProfileManager::GetAutoSaveFileName'
+00496070   RELOCATION_MATCH PASS   CFrontendGameComponent
+0051d8e0   RELOCATION_MATCH PASS   CGameComponent
+0042ea8f   RELOCATION_MATCH PASS   CNewFrontendGameComponent
+0042f50b   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled '_global::Dtor_CCharStringBase_004131d0'
+0042f50b   RELOCATION_MATCH PASS   ~CNewFrontendGameComponent
+004330d2   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004330d2.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004330d2.obj; graded the largest function
+004330d2   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CNewFrontendGameComponent@@QAEPAXI@Z (catalog CNewFrontendGameComponent::`scalar_deleting_destructor'; names another function)
+004330d2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0042dc5f   MATCH            PASS   OnPreDeviceReset
+0042dc60   MATCH            PASS   OnPostDeviceReset
+0042dc5c   MATCH            PASS   ChangeTextureColourDepth
+00415920   MATCH            PASS   Init
+00415930   MATCH            PASS   SetQuit
+00433d3a   RELOCATION_MATCH PASS   Reset
+
+WINS: 13
+  00412f90 RELOCATION_MATCH CGame::Play
+  00418dca RELOCATION_MATCH CMainGameComponent::??0CMainGameComponent
+  00496070 RELOCATION_MATCH CFrontendGameComponent::??0CFrontendGameComponent
+  0051d8e0 RELOCATION_MATCH CGameComponent::??0CGameComponent@@QAE@AAVCGame@@@Z
+  0042ea8f RELOCATION_MATCH CNewFrontendGameComponent::??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z
+  0042f50b RELOCATION_MATCH CNewFrontendGameComponent::??1CNewFrontendGameComponent@@UAE@XZ
+  004330d2 RELOCATION_MATCH CNewFrontendGameComponent::`scalar_deleting_destructor'
+  0042dc5f MATCH CNewFrontendGameComponent::?OnPreDeviceReset@CNewFrontendGameComponent@@UAEXXZ
+  0042dc60 MATCH CNewFrontendGameComponent::?OnPostDeviceReset@CNewFrontendGameComponent@@UAE_NXZ
+  0042dc5c MATCH CNewFrontendGameComponent::?ChangeTextureColourDepth@CNewFrontendGameComponent@@UAEXJ@Z
+  00415920 MATCH CGameComponent::?Init@CGameComponent@@UAEXXZ
+  00415930 MATCH CGameComponent::?SetQuit@CGameComponent@@MAEXXZ
+  00433d3a RELOCATION_MATCH _global::?Reset@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXPAVCStartupDefinitionManager@@@Z

@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	?CleanupBandits@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ -> ?DepopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ	00dc0830	00dc0300	NF314 entry 2 (NF309 169), HELD: lands only once NF312 releases its witness 0x00DC0830; the sole exe caller 0x00DC0300 respelled DepopulateLevel (evidence/held/00dc0300.cpp, objsec ALL_EQ evidence/held/proof_held.txt); the target had no PDB line (self Leaf only)

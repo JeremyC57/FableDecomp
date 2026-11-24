@@ -1,0 +1,14 @@
+## HEAD set: H_00713ee0.obj H_007e1eb0.obj H_007ed870.obj H_007edd60.obj H_007f4d50.obj 0057c4f1.obj 007edbe0.obj 00847be0.obj 005eea9b.obj 005eed4c.obj 00714900.obj 00849be0.obj 0091d510.obj 0097e890.obj 006d5b50.obj 00714cc0.obj 00716de0.obj 0089bdf0.obj 008d8ea0.obj 008da610.obj 008db240.obj 008db460.obj 008dbc80.obj 00753e90.obj
+duplicates 1
+  DUP H_007ed870.obj ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCBonusItemDef@@@@@Z in H_007e1eb0.obj;
+UNRESOLVED 2 ?ApplyBonusItemEffects@CTCHeroStats@@QAEXPAVCBonusItemDef@@@Z
+UNRESOLVED 1 ?ApplyBonusItemEffects@CTCHeroStats@@QAEXPBVCBonusItemDef@@@Z
+UNRESOLVED 1 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z
+UNRESOLVED 4 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z
+UNRESOLVED 1 ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z
+UNRESOLVED 1 ?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXJ_N@Z
+## new set: 00713ee0.obj 007e1eb0.obj 007ed870.obj 007edd60.obj 007f4d50.obj 0057c4f1.obj 007edbe0.obj 00847be0.obj 005eea9b.obj 005eed4c.obj 00714900.obj 00849be0.obj 0091d510.obj 0097e890.obj 006d5b50.obj 00714cc0.obj 00716de0.obj 0089bdf0.obj 008d8ea0.obj 008da610.obj 008db240.obj 008db460.obj 008dbc80.obj 00753e90.obj
+duplicates 1
+  DUP 007ed870.obj ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCBonusItemDef@@@@@Z in 007e1eb0.obj;
+UNRESOLVED 5 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z
+LK_DONE

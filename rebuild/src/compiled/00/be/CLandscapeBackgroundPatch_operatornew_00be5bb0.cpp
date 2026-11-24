@@ -11,8 +11,8 @@ class CMovableResource;
 class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long size, CMovableResource* owner);   // 0x00BD9AF0
 };
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 
 class CLandscapeBackgroundPatch {
 public:
@@ -21,6 +21,6 @@ public:
 
 void* __fastcall CLandscapeBackgroundPatch::operator new(unsigned int size, CMovableResource* owner)
 {
-    CEngineLandscapeMemoryManager* manager = g_pLandscapeRenderer->MemoryManager;
+    CEngineLandscapeMemoryManager* manager = NEngineInternal::GPLandscapeRenderer->MemoryManager;
     return manager->AllocVirtual(size, owner);
 }

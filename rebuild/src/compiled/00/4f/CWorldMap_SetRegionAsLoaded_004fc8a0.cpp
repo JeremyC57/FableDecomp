@@ -43,7 +43,7 @@ template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRT
 public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
-class CPlayerGui { public: CMiniMapDisplay* GetPMiniMapDisplay(); };                     // 0x00437CE0
+class CPlayerGui { public: CMiniMapDisplay& GetMiniMap(); };                             // 0x00437CE0 (NF306: Ego_r + FableWin ?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ; was CMiniMapDisplay* GetPMiniMapDisplay())
 
 class CWorldMap { public:
     unsigned char          _pad[0x2c];
@@ -60,7 +60,7 @@ void CWorldMap::SetRegionAsLoaded(long region, const CCharString& name)
         CCharString text("SetRegionAsLoaded: Initialise MiniMap");
         NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPMiniMapDisplay()->InitialiseOnRegionLoad(Regions[LoadedRegion]);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetMiniMap().InitialiseOnRegionLoad(Regions[LoadedRegion]);
     {
         CCharString text("SetRegionAsLoaded: Initialise MiniMap End");
         NProgressDisplay::DisplayProgress(text, -1.0f, false, false);

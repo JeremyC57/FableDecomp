@@ -10,7 +10,7 @@
 #include "engine/CContainmentVolume.h"
 
 class CDataOutputStream { public:
-    void WriteBuffer(const void* data, long size);     // 0x00996610
+    void WriteCompressed(const void* data, long size);     // 0x00996610; NF299: PDB name, was WriteBuffer
 public:
     void WriteULONG(unsigned long);   // 0x00993EA0
 };
@@ -22,5 +22,5 @@ struct CContainmentVolume_Methods : CContainmentVolume {
 void CContainmentVolume_Methods::SaveBinary(CDataOutputStream& stream) const
 {
     stream.WriteULONG(Size);
-    stream.WriteBuffer(ContainmentPlanes, Size * 16);
+    stream.WriteCompressed(ContainmentPlanes, Size * 16);
 }

@@ -17,6 +17,11 @@ class CEngineInternalPrimitiveBase;
 #include "engine/CBaseClassNonCopyable.h"
 #endif
 class C2DVector;
+#ifdef FABLE_RETAIL_SCENEGRID_VISIBILITY_PASS27
+class CEngineCamera;
+enum EEngineRenderLayer;
+enum EEngineOcclusionLayer;
+#endif
 #ifdef FABLE_RETAIL_CENGINESCENEMAP_RESIZELEVELS
 // Opt-in (p25A, row 0x00B94540 CEngineSceneMap::ResizeLevels, which expands the grid constructor): the Ego_r.pdb CEngineSceneGrid layout
 // at retail offsets (36 bytes in the PDB, 0x20 in retail: the 12-byte STLport CArray) -- RTTI base CBaseClassNonCopyable (vtable
@@ -63,6 +68,19 @@ public:
 #endif
 private:
     unsigned long GetCellTotalPrimitiveCount(unsigned long x, unsigned long y);                 // 0x00B91D20 ?GetCellTotalPrimitiveCount@CEngineSceneGrid@@AAEKKK@Z
+#ifdef FABLE_RETAIL_SCENEGRID_VISIBILITY_PASS27
+    // Exact donor methods and static fields used at retail 0x00B92950.
+    unsigned long GetCellRenderMask(unsigned long x, unsigned long y);
+    static unsigned long OcclusionGroupDelay;
+    static unsigned long OcclusionMinGroupSize;
+public:
+    bool GetCellBoundingBoxAndDrawDistance(class C3DBoundingBox& bbox, float& max_draw_dist, unsigned long x, unsigned long y);
+    CEngineSceneGridCell* GetCell(unsigned long x, unsigned long y) { return GridCells[Size * y + x]; }
+    bool RenderCellClippedAndCheckVisibility(unsigned long x, unsigned long y, EEngineRenderLayer layer,
+        unsigned long occlusion_mask, const CEngineCamera& frustum, bool pre_clipped,
+        class CEngineSceneRenderStats& stats, EEngineOcclusionLayer occ_layer, bool occ_disable, bool& cell_visible);
+private:
+#endif
 #ifdef FABLE_RETAIL_CENGINESCENEMAP_ADDPRIMITIVE
     void AddPrimitive(unsigned long x, unsigned long y, CEngineInternalPrimitiveBase& prim) { GetCellCreate(x, y)->AddPrimitive(prim); }
 #endif

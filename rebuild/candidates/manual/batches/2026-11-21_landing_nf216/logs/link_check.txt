@@ -1,0 +1,6 @@
+# link of the 11 rechecked objects (8 rows + owners 0x004115A0 / 0x00411570 / 0x00403A10), /FORCE; LNK4006 per symbol
+HEAD
+      4 ??8?$CBasicString@D@@QBE_NPBD@Z
+      4 ?Compare@?$CBasicString@D@@KIJPBD0@Z
+landing
+      9 ?Compare@?$CBasicString@D@@KIJPBD0@Z

@@ -1,0 +1,20 @@
+## HEAD set: H_0097e890.obj H_00947280.obj H_009474f0.obj H_00be32a0.obj H_00b8d780.obj H_00b99b50.obj H_0069b790.obj H_00417001.obj H_00a62860.obj H_00670a10.obj H_0077cdd0.obj H_0049a0b0.obj H_0097e270.obj H_0097e2d0.obj H_00947110.obj H_00be3110.obj H_00b8d0d0.obj H_00b99860.obj H_00698540.obj H_00416258.obj H_00a62050.obj H_00670470.obj H_0077cca0.obj H_00405f00.obj
+duplicates 1
+H_00947110.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceTyp
+UNRESOLVED 1 ?DeleteShaderEntries@CShaderDataBank@@QAEXXZ
+UNRESOLVED 1 ?FrameStartCommon@CEnginePrimitiveManagerRepeatedStaticMeshes@@QAEXXZ
+UNRESOLVED 1 ?GetTimeSinceLastRenderFrameStart@CMainGameComponent@@QAENXZ
+UNRESOLVED 1 ?Initialise@CEngineLandscapeMeshBuilder@@QAEXXZ
+UNRESOLVED 1 ?InitializeOcclusionBuffers@CEngineOcclusionManager@@QAEXXZ
+UNRESOLVED 1 ?LongToWideString@@YI?AVCWideString@@J@Z
+UNRESOLVED 2 ?SelectPrettyThing@CAIStateGroup_WanderAroundShops@@QAEPAVCThing@@PAV2@@Z
+UNRESOLVED 1 ?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBVCThing@@@Z
+UNRESOLVED 1 ?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z
+UNRESOLVED 1 ?Update@CTCHighlightItem@@QAEXXZ
+UNRESOLVED 1 ?UpdateEarthQuakes@CGameCameraManager@@QAEXXZ
+UNRESOLVED 1 ?UpdateGravity@CTCCoopSpirit@@QAEXXZ
+## new set: N_0097e890.obj N_00947280.obj N_009474f0.obj N_00be32a0.obj N_00b8d780.obj N_00b99b50.obj N_0069b790.obj N_00417001.obj N_00a62860.obj N_00670a10.obj N_0077cdd0.obj N_0049a0b0.obj H_0097e270.obj H_0097e2d0.obj H_00947110.obj H_00be3110.obj H_00b8d0d0.obj H_00b99860.obj H_00698540.obj H_00416258.obj H_00a62050.obj H_00670470.obj H_0077cca0.obj H_00405f00.obj
+duplicates 1
+H_00947110.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceTyp
+UNRESOLVED 1 ?DoStopRunning@CTCHighlightItem@@IAEXXZ
+LK_DONE

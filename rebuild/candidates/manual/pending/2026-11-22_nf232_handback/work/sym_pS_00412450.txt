@@ -1,0 +1,15 @@
+DEF ??$_Destroy@PAVCWideString@@@std@@YAXPAVCWideString@@0@Z
+DEF ??$_Destroy@VCWideString@@@std@@YAXPAVCWideString@@@Z
+DEF ??$__copy@PAVCWideString@@PAV1@H@std@@YIPAVCWideString@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+DEF ??$__copy_ptrs@PAVCWideString@@PAV1@@std@@YAPAVCWideString@@PAV1@00ABU__false_type@0@@Z
+DEF ??$__destroy@PAVCWideString@@V1@@std@@YAXPAVCWideString@@00@Z
+DEF ??$__destroy_aux@PAVCWideString@@@std@@YAXPAVCWideString@@0ABU__false_type@0@@Z
+DEF ??0__false_type@std@@QAE@XZ
+DEF ??0bidirectional_iterator_tag@std@@QAE@XZ
+DEF ??0forward_iterator_tag@std@@QAE@XZ
+DEF ??0random_access_iterator_tag@std@@QAE@XZ
+DEF ??_GCWideString@@QAEPAXI@Z
+DEF ?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z
+UND ??1CWideString@@QAE@XZ
+UND ??3@YAXPAX@Z
+UND ??4CWideString@@QAEABV0@ABV0@@Z

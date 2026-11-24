@@ -110,7 +110,7 @@ extern bool g_LoadEventPackages;                   // 0x013B85F6
 extern bool g_SaveEventPackages;                   // 0x013B85F5
 extern CWideString GInputFileName;         // 0x013B865C
 extern bool g_PresentationInterval;                // 0x013B8628
-extern CGameComponent* g_pLastComponent;           // 0x013B7D58
+extern CGameComponent* GOldGameComponentToDelete;           // 0x013B7D58 (Ego_r / FableWin / Ego_d publics; NF236: was g_pLastComponent)
 
 class CGameComponent { public:
     virtual void v00();
@@ -134,7 +134,7 @@ class CMainGameComponent : public CGameComponent { public:
     unsigned char      _pad161b0[0xc];
     CRoughFrameCounter RoughFPSCounter;            // +0x161BC
     CGameComponent*    NextComponentToRun;         // +0x161C4
-    double GetCurrentGameTime();                   // 0x00416231
+    protected: double GetCurrentGameTime() const; public:                   // 0x00416231
     void BeginInputLoading(const CWideString& name);   // 0x00416268
     void BeginOutputSaving(const CWideString& name);   // 0x0041627F
     void UpdateForcedTickSpeed();                  // 0x00417747
@@ -189,6 +189,6 @@ bool CMainGameComponent::Run(CGameComponent** next)
     Running = false;
     *next = NextComponentToRun;
     Shutdown();
-    g_pLastComponent = this;
+    GOldGameComponentToDelete = this;
     return *next != 0;
 }

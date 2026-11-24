@@ -1,3 +1,4 @@
+// Leaf: ?ProcessActiveFileForRead@CFileInstaller@@IAEXAAVCActiveFile@1@@Z
 // CFileInstaller::ProcessActiveFileForRead(CActiveFile& file) -- while the source still has unread bytes: when an input buffer is free, queue an overlapped ReadFileEx of the next sector-rounded block (bounded by the chunk size) and advance the read position; when the read cannot start, flag a dirty-disc error and give the buffer back; with no free buffer switch the installer to write mode
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C3AE0, length 308 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?ProcessActiveFileForRead@CFileInstaller@@IAEXAAVCActiveFile@1@@Z.
@@ -76,11 +77,13 @@ class CFileInstaller { public:
 
     CBufferChunk* AllocateBuffer(bool pending);         // 0x009C3A60
     void FreeBuffer(CBufferChunk* chunk);               // 0x009C3330
-    static void __fastcall SetDirtyDiscError(bool error);   // 0x009C3530
+    protected: static void __fastcall SetDirtyDiscError(bool error); public:   // 0x009C3530
 protected:
     static void __stdcall OnFileReadCompletion(unsigned long error, unsigned long bytes, _OVERLAPPED* overlapped);   // 0x009C37A0
 public:
+    protected:
     void ProcessActiveFileForRead(CActiveFile& file);
+    public:
 };
 
 void CFileInstaller::ProcessActiveFileForRead(CActiveFile& file)

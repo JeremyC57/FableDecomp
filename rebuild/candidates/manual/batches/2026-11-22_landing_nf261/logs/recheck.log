@@ -1,0 +1,18 @@
+0062ea40   MATCH            PASS   IsToUseRotationInAnimation
+0062ea50   MATCH            PASS   IsToAlignWithGroundNormal
+0062ea60   MATCH            PASS   IsToFaceTarget
+0062ea70   MATCH            PASS   IsToFaceTargetAtStart
+0062ea80   MATCH            PASS   GetActionMovementVector
+0062eaa0   MATCH            PASS   IsToPerformActionOnStrike
+0062eab0   MATCH            PASS   IsToHitProneThings
+00661f90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00661f90   WARN GENERIC_STRUCT module=CThingCreatureBase (use engine/CThingCreatureBase.h)
+00661f90   RELOCATION_MATCH PASS   GetCombatRadius
+00b0a750   WARN SHARED_HEADER_AVAILABLE CPSCUpdateNormal (engine/CPSCUpdateNormal.h)
+00b0a750   RELOCATION_MATCH PASS   GetCurrentFadeValue
+0062eac0   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+00955620   WARN RELOC_NAME: ?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+00955620   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+00955620   RELOCATION_MATCH PASS   Update
+008b83c0   RELOCATION_MATCH PASS   CCreatureAction_SummonCreatures
+00af9000   RELOCATION_MATCH PASS   GFSmoothFadeValue

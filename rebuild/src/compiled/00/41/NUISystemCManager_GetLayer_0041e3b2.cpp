@@ -1,39 +1,35 @@
-// NUISystem::CManager::GetLayer(long key) -- clamp the key to [-3, 13], look it up in the layer tree at +0x70 (0x0042A879; a hit returns the node's value at +0x14), otherwise return the entry for key 0 (the tree's operator[] @ 0x0042D246)
+// NUISystem::CManager::GetLayer(long key) -- clamp the key to [-3, 13], look it up in the layer map Layers +0x70 (the tree's _M_find @ 0x0042A879; a hit returns the node's value at +0x14), otherwise return the entry for key 0 (the map's operator[] @ 0x0042D246)
+// Leaf: ?GetLayer@CManager@NUISystem@@UAE?AW4EEngine2DLayer@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041E3B2, length 68 bytes.
-// Callees: the tree's find @ 0x0042A879 (const long&; the manifest label "BinarySearchTree_FindNode" is generic), its operator[] @ 0x0042D246 (const long&, returns long&). Shape: a size-optimised TU with frame pointers (`push -3 ; pop eax` constants, the clamp stores sharing `mov [ebp+8],eax`), the key slot reused for the 0 key (`and dword ptr [ebp+8],0`), the VC6-style tree node (value at +0x14) and head at +0, `ret 4`. The retail layout (tree at +0x70) differs from engine/CManager.h: modelled locally.
+// Name (NF227, 2026-11-22, q12582 / q12583): slot 36 of NUISystem::CManager's vtable 0x01230134 (its only reference, .rdata
+//   0x012301C4); Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?GetLayer@CManager@NUISystem@@UAE?AW4EEngine2DLayer@@J@Z (public virtual, returns
+//   EEngine2DLayer); engine/NUISystem_CManager.h slot 36. Was a row-local model (CManager with a VC6-style CLayerTree stand-in at +0x70)
+//   whose non-virtual leaf was ?GetLayer@CManager@NUISystem@@QAEJJ@Z.
+// Port: onto engine/NUISystem_CManager.h. Layers is the header's STLport map<long,EEngine2DLayer> (the tree's header node at +0;
+//   node value at +0x14). Callees, both out of line in retail: the tree's _M_find 0x0042A879 (FABLE_RETAIL_STLP_TREE_MFIND_DECL; map::find
+//   and _Rb_tree::find stay inline, `iterator(_M_find(key))`) and the map's operator[] 0x0042D246 (declared only on the default path of
+//   stlport/fable_map.h). The manifest label "std::_Rb_tree::_M_find" (0x0042A879) and the catalog's map<EUsedKeys,long>::operator[]
+//   (0x0042D246, the identical-code map<EUsedKeys,long> instance) are the STLport functions bound here.
+// Pragmas below the include: the header inlines (e.g. _Rb_tree_base_iterator::operator!= 0x0041C830, 22 B) are then defined in the
+//   default /O2 mode, so their pick-any copies equal their owners; above the include the copy is a 21-B frame-pointer body.
+// Shape: a size-optimised TU with frame pointers (`push -3 ; pop eax` constants, the clamp stores sharing `mov [ebp+8],eax`), the key
+//   slot reused for the 0 key (`and dword ptr [ebp+8],0`), `ret 4`.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#include "engine/NUISystem_CManager.h"
+// CManager TU is size-optimised; the pragmas follow the includes (EXTRA_RULES 2026-11-20, nf189 0x005D66BA placement).
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct SLayerNode {                                // VC6 Dinkumware tree node: links, colour, then the pair
-    SLayerNode* m_pLeft;                           // +0x00
-    SLayerNode* m_pParent;                         // +0x04
-    SLayerNode* m_pRight;                          // +0x08
-    long        m_colour;                          // +0x0c
-    long        m_key;                             // +0x10
-    long        m_value;                           // +0x14
-};
-struct CLayerTree {
-    SLayerNode* m_pHead;                           // +0x00 (the sentinel: end())
-    SLayerNode* Find(const long& key);             // 0x0042A879
-    long& operator[](const long& key);             // 0x0042D246
-};
-
 namespace NUISystem {
-class CManager { public:
-    unsigned char _pad[0x70];
-    CLayerTree    m_layers;                        // +0x70
-    long GetLayer(long key);
-};
-}
-
-long NUISystem::CManager::GetLayer(long key)
+EEngine2DLayer CManager::GetLayer(long key)
 {
     if (key < -3)
         key = -3;
     else if (key > 13)
         key = 13;
-    SLayerNode* node = m_layers.Find(key);
-    if (node != m_layers.m_pHead)
-        return node->m_value;
+    std::map<long,EEngine2DLayer>::iterator it = Layers.find(key);
+    if (it != Layers.end())
+        return (*it).second;
     key = 0;
-    return m_layers[key];
+    return Layers[key];
+}
 }

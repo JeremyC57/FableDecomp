@@ -89,6 +89,18 @@ public:
     bool               EnableClouds;                                     // +0x18c
     CDefPointer<const CSkyDef> PSkyDef;                                  // +0x190
 private:
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_BUILDCLOUDMESH
+    // Ego_r and FableWin both record the private cloud mesh builder at retail 0x00B61DD0.
+    void BuildCloudMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);
+#endif
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_BUILDBUFFERS_CALLEES
+    // NF254 opt-in (2026-11-22, CODEXP27 L120; row 0x00B620A0 BuildBuffers): the other private builders it calls, Ego_r.pdb and FableWin.pdb
+    // ?BuildOuterSkyMesh@ / ?BuildBaseBandMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z and ?BuildStarFieldVB@CEngineSkyRenderer@@AAEXXZ
+    // (retail 0x00B61B30 / 0x00B61CD0 / 0x00B61FF0, called from 0x00B620A0 in that order around BuildCloudMesh). Declarations only.
+    void BuildOuterSkyMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);    // 0x00B61B30
+    void BuildBaseBandMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);    // 0x00B61CD0
+    void BuildStarFieldVB();                                                                                                            // 0x00B61FF0
+#endif
     void BuildBuffers();                                                 // 0x00B620A0
 #ifdef FABLE_RETAIL_CENGINESKYRENDERER_ENVMAP
     // Retail opt-in (chunk 2008, row 0x00B665E0): Ego_r.pdb / FableWin.pdb ?RenderSky@CEngineSkyRenderer@@AAEXMABVC3DVector@@_N@Z (private,
@@ -119,6 +131,14 @@ private:
     void RenderSunFlare();                                               // 0x00B64550
     void RenderScreenSpaceSprite(const CTexture* texture, float x, float y, float width, float height, CRGBColour colour);   // 0x00B63530
 public:
+#endif
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x00B61DB0: ?FrameStart@CEngineSkyRenderer@@UAEXABVCEngineComponentParams@@@Z (Ego_r.pdb + FableWin.pdb)
+public:
+    virtual void FrameStart(const class CEngineComponentParams&);
 #endif
 };
 FABLE_STATIC_ASSERT_AT(120, sizeof(CEngineSkyRenderer) == 0x194);
@@ -171,6 +191,10 @@ public:
     bool             EnableClouds;                           // +0x18c
     unsigned char    _pad_0x18d[0x3];                        // +0x18d
     CDefPointeeBase* PSkyDef_Object;                         // +0x190 CDefPointer<CSkyDef_const_>::Object
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_BUILDCLOUDMESH
+    // The layout-only branch exposes BuildCloudMesh for the stand-alone geometry fixture.
+    void BuildCloudMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);
+#endif
 };
 #pragma pack(pop)
 

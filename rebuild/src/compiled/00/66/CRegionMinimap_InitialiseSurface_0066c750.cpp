@@ -8,7 +8,7 @@ class CPixelFormat { public:
 };
 class CSurface { public:
     char pad[8];
-    bool InitialiseAsImage(C2DExtentsI* ext, CPixelFormat* pf, bool bb);
+    bool InitialiseAsImage(const C2DExtentsI& ext, const CPixelFormat& pf, bool bb);
 };
 struct CRegionMinimap {
     int handle;
@@ -25,5 +25,5 @@ void __fastcall CRegionMinimap_InitialiseSurface(CRegionMinimap* minimap)
     C2DExtentsI ext;
     ext.x = dim;
     ext.y = dim;
-    minimap->surf.InitialiseAsImage(&ext, &pf, false);
+    minimap->surf.InitialiseAsImage(ext, pf, false);
 }

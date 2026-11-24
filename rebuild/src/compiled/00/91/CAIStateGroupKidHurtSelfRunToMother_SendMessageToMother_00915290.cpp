@@ -1,5 +1,5 @@
 // CAIStateGroup_KidHurtSelfRunToMother::SendMessageToMother() -- when the child's mother (+0x180 pointer) is alive,
-// Leaf: ?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@QAEXXZ
+// Leaf: ?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@AAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // post a NEntityEvents::CEventChildHurtGoToMother naming the child to the mother's entity-event component.
@@ -162,7 +162,7 @@ struct CThingKid {
 };
 
 struct CAIStateGroup_KidHurtSelfRunToMother : CAIStateGroupBase {
-    void SendMessageToMother();
+    private: void SendMessageToMother(); public:
 };
 
 void CAIStateGroup_KidHurtSelfRunToMother::SendMessageToMother()

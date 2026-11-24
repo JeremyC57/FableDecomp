@@ -1,5 +1,5 @@
 // CAIStateGroup_WorkHammerAnvil::IsRunnable() -- in work hours and once the next hammer frame is reached, pick the nearest live object owned by the creature's workplace that is a thing class 5 object with property bit 6 and a free action point (interface 0x2D), latch it as the anvil and run
-// Leaf: ?IsRunnable@CAIStateGroup_WorkHammerAnvil
+// Leaf: ?IsRunnable@CAIStateGroup_WorkHammerAnvil@@MAE_NXZ
 // NF131 (2026-11-20, q4946): the row-local CAIStateGroupBase model gives way to the retail engine/CAIStateGroupBase.h (FABLE_RETAIL_CAISTATEGROUPBASE,
 //   _MEMBERS) and engine/CAIStateGroup_WorkBase.h; the class is re-based on CAIStateGroup_WorkBase<CAIStateGroupBase> (RTTI ghidra_out/rtti_bases.tsv),
 //   so the call to 0x0091A6F0 binds ?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ (Ego_r.pdb 0x0093E1A0 + FableWin.pdb
@@ -171,7 +171,9 @@ struct CAIStateGroup_WorkHammerAnvil : CAIStateGroup_WorkBase<CAIStateGroupBase>
     long ActionPointIndex;                      // +0x44
     long NextFrameHammer;                       // +0x48
     CThingWorker* GetCreature() const { return (CThingWorker*)PBrain->PCreature; }
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 #pragma pack(pop)
 

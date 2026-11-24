@@ -1,0 +1,30 @@
+00412450	004091eb	004091c0	CUserProfileManager::GetSortedSaveNamesAndTimes
+00412450	0040c539	0040bca0	CUserProfileManager::LoadGameState
+00412450	0040c566	0040bca0	CUserProfileManager::LoadGameState
+00412450	0040cbf3	0040c790	CUserProfileManager::SetDefaultValues
+00412450	0040cc20	0040c790	CUserProfileManager::SetDefaultValues
+00412450	004128e7	-	
+00412450	00412b3b	00412b20	std::vector<CWideString, std::allocator<CWideString>>::resize
+00412450	00412b9a	00412b70	CRetailVector<CWideString>::resize
+00412450	0042ec39	0042ebb6	CNewFrontendGameComponent::Shutdown
+00412450	0047fea3	0047fe83	CTCInGameMenu::GetFileNameList
+00412450	004923c3	00492381	CSubtitleRenderer::ProcessEmbeddedGraphicTags
+00412450	00495801	00495780	CFrontendGameComponent::Shutdown
+00412450	0049581a	00495780	CFrontendGameComponent::Shutdown
+00412450	0049583f	00495830	CFrontendGameComponent::GetSaveNames
+00412450	004958cc	00495890	CFrontendGameComponent::GetWorldNames
+00412450	00495a0a	004959e0	CFrontendGameComponent::GetProfileNames
+00412450	005955cf	005955ab	NUISystem::CFrontEndManager::GetProfileNames
+00412450	00597e12	00597df7	NUISystem::CFrontEndManager::GetSavedGameNames
+00412450	005fdaef	005fdad0	CTCInventoryMap::Copy
+00412450	005fdb0a	005fdad0	CTCInventoryMap::Copy
+00412450	005fdb25	005fdad0	CTCInventoryMap::Copy
+00412450	006069e4	00606300	CTCInventoryMap::OnSerialise
+00412450	00606a03	00606300	CTCInventoryMap::OnSerialise
+00412450	00606a1e	00606300	CTCInventoryMap::OnSerialise
+00411b00	0042ec46	0042ebb6	CNewFrontendGameComponent::Shutdown
+00411b00	0047feb5	0047fe83	CTCInGameMenu::GetFileNameList
+00411b00	00486218	004861f7	std::vector<CDateAndTime, std::allocator<CDateAndTime>>::resize
+00411b00	00597e21	00597df7	NUISystem::CFrontEndManager::GetSavedGameNames
+004336b0	0042ebd9	0042ebb6	CNewFrontendGameComponent::Shutdown
+004336b0	0042f5f3	0042f5a9	CNewFrontendGameComponent::CompileDefsPlatformSpecific

@@ -10,6 +10,9 @@ class CChunkedFile:public CBaseClassNonCopyable{public:
 CChunkedFile(const CChunkedFile&);
 CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>&);
 virtual ~CChunkedFile();
+#ifdef FABLE_RETAIL_CCHUNKEDFILE_GETCHUNKEDFILEROOT
+    const CCountedPointer<CChunkedFileSuperChunk>& GetChunkedFileRoot() const { return RootChunk; }
+#endif
 private:CCountedPointer<CChunkedFileSuperChunk> RootChunk;unsigned long Version;CCharString FileComment;};
-FABLE_STATIC_ASSERT(sizeof(CChunkedFile)==0x14);
+FABLE_STATIC_ASSERT_AT(14, sizeof(CChunkedFile)==0x14);
 #endif

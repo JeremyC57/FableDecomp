@@ -57,7 +57,7 @@ public:
 class CEnginePrimitiveManagerWeaponTrails {
 public:
     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long pass);
-    void RenderWeaponTrail(const CEngineInternalPrimitiveWeaponTrail& trail);   // 0x00BCC800
+    private: void RenderWeaponTrail(const CEngineInternalPrimitiveWeaponTrail& trail); public:   // 0x00BCC800
 };
 
 void CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long pass)

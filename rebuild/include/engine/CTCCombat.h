@@ -19,6 +19,12 @@
 #include "stlport/fable_map.h"
 class CCombatManager;class CThingCreatureBase;class CCombatTypeDef;class CMeleeCombatAbilityDef;
 class CTCCombat:public CTCBase {
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_TEST_CTORS_PASS27
+public:
+    CTCCombat(CThing&);
+private:
+#endif
+
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:
 void SetStruck(const NHitLocations::CHitLocation&,CHitParameters&);void OnHit(const CThing&);

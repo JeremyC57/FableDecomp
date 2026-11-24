@@ -1,3 +1,4 @@
+// Leaf: ?CountBits@CPackedUIntArray@@ABEKPBXKJK@Z
 // CPackedUIntArray::CountBits -- bits required by biased, strided unsigned values.
 // Retail 00a62b70 length 285. PDB CPackedUIntArray size16 fields0/4/8/12;
 // no generated header exists (including quarantine). Mask table013979e8.
@@ -12,7 +13,9 @@ typedef unsigned int UInt; typedef int SInt;
 #endif
 struct CPackedUIntArray {
     UInt* PackedInts; UInt Size; unsigned char Bits; UInt Bias;
+    private:
     UInt CountBits(const void* data, UInt bits, SInt stride, UInt count) const;
+    public:
 private:
     static UInt BitMasks[];   // 0x013979E8 ?BitMasks@CPackedUIntArray@@0PAKA (Ego_r.pdb private static; NF93 q11367: was the made-up PackedBitMasks)
 };

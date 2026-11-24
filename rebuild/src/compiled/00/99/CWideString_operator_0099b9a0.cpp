@@ -48,7 +48,10 @@ class CWideStringData { public:
 
 class CWideString { public:
     CWideStringData* PStringData;   // +0x00
-    void MakeOwnCopyOfData();       // 0x0099B560
+    protected:
+    void MakeOwnCopyOfData();
+    public:
+       // 0x0099B560
     CWideStringData* AllocStringData(const wchar_t* text, long length);   // 0x0099B3C0
     const CWideString& operator+=(wchar_t c);
 };

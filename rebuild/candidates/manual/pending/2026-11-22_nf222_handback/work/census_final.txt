@@ -1,0 +1,82 @@
+00403750	1	self=?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ [rows/]
+		?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	self 004175e5x1 00418b7ax1 0042f50bx1
+004057a0	1	self=?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ [rows/]
+		?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	self 004168dcx1 004175e5x2 00418b7ax2 004190e2x1 0041947ax1 0042ddb3x1 0048e78ex1 0064560dx2 0065431dx1
+0041901d	1	self=(not landed)
+		?DeleteData@?$CCountedPointer@VCLUA@@@@SIXPAX@Z	00419428x1
+00419028	1	self=(not landed)
+		?DeleteData@?$CCountedPointer@VCFontBank@@@@SIXPAX@Z	0041947ax1
+00419036	2	self=@DeleteIfSet@4 [landed]
+		?DeleteData@?$CCountedPointer@VCGraphicDataBank@@@@SIXPAX@Z	004194d1x1 009f83d0x1
+		@DeleteIfSet@4	self
+004190b6	1	self=?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ [rows/]
+		?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ	self 004175e5x1 00418b7ax1 00419428x1
+004190e2	1	self=?ShareData@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@PAVCCPPointerInfo@@@Z [rows/]
+		?ShareData@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@PAVCCPPointerInfo@@@Z	self 00419463x1
+00419108	1	self=?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ [rows/]
+		?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	self 00416c8ax1 004175e5x1 00418b7ax1 00419134x1 004194b5x1 004194d1x1 0041e641x1 0042a9b7x1 0042dd28x1 0042ddb3x1 0042f50bx1 0056f177x1 005958f5x1 005bff07x1
+00419134	1	self=?ShareData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z [rows/]
+		?ShareData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z	self 004194bax1 0042a9b7x1
+00419423	0	self=(not landed)
+00419428	1	self=?Reset@?$CCountedPointer@VCLUA@@@@QAEXPAVCLUA@@@Z [rows/]
+		?Reset@?$CCountedPointer@VCLUA@@@@QAEXPAVCLUA@@@Z	self
+00419463	1	self=??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z [rows/]
+		??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z	self 004168dcx1 00499aa0x1
+0041947a	1	self=?Reset@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@@Z [rows/]
+		?Reset@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@@Z	self 00a5f1c0x1 00a634f0x1
+004194b5	1	self=??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ [rows/]
+		??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	self 0041afa0x1
+004194ba	1	self=??4?$CCountedPointer@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z [rows/]
+		??4?$CCountedPointer@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z	self 00416c8ax1 0042ddb3x1
+004194d1	1	self=?Reset@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@@Z [rows/]
+		?Reset@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@@Z	self
+0041d198	1	self=?SetMeshBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z [rows/]
+		?SetMeshBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z	self 0041e641x1 005958f5x1 004a6ab0x1 004a6e30x1
+0041e641	3	self=??1CManager@NUISystem [rows/]
+		??1CManager@NUISystem	self
+		??1CManager@NUISystem@@IAE@XZ	0042fb40x1
+		?Dtor@CManager@@QAEXXZ	0042db20x1
+00428ae7	2	self=@DeleteIfSet@4 [landed]
+		?DeleteData@?$CCountedPointer@VCMeshDataBank@@@@SIXPAX@Z	0042fc86x1 00a09f20x1
+		@DeleteIfSet@4	self
+0042918c	1	self=?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ [rows/]
+		?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	self 0041d198x1 0041e641x1 004291b8x1 00429bf9x1 0042dd28x1 0042f50bx1 0042fc86x1 005958f5x1
+004291b8	1	self=?ShareData@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@PAVCCPPointerInfo@@@Z [rows/]
+		?ShareData@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@PAVCCPPointerInfo@@@Z	self 0041d198x1
+00429bf9	1	self=??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ [rows/]
+		??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	self
+0042a9b7	1	self=?SetGraphicsBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z [rows/]
+		?SetGraphicsBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z	self 0041e641x1 0041e3f6x2
+0042ddb3	1	self=?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ [rows/]
+		?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ	self 0042e98fx1
+0042f864	1	self=(catalog name) [landed]
+		?DeleteData@?$CCountedPointer@$$CBVCFontBank@@@@SIXPAX@Z	0042fc13x1
+0042f948	1	self=?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ [rows/]
+		?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	self 0042dd28x1 0042f50bx1 0042f9f2x1 0042fc13x1
+0042f974	1	self=?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ [rows/]
+		?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ	self 0042dd28x1 0042f50bx1 0042fd04x1
+0042f9a0	1	self=?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ [rows/]
+		?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ	self 0042f50bx1 0042fd6fx1
+0042f9f2	1	self=?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z [rows/]
+		?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z	self 0042fe34x1
+0042fbcb	0	self=(not landed)
+0042fc0e	0	self=(not landed)
+0042fc13	1	self=?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z [rows/]
+		?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z	self
+0042fc86	1	self=?Reset@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@@Z [rows/]
+		?Reset@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@@Z	self
+0042fcff	0	self=(not landed)
+0042fe34	1	self=??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z [rows/]
+		??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z	self 0042ddb3x1
+005bff07	5	self=??0CTCInventoryBase [rows/]
+		??0CTCInventoryBase	self
+		??0CTCInventoryBase@@QAE@AAVCThing@@@Z	00606d20x1
+		??0CTCInventoryBase@@QAE@PAVCThing@@@Z	004e7cc3x1 0057832dx1 005cd2a6x1
+		??0CTCInventoryBase@NInventory@@QAE@AAVCThing@@@Z	0061a420x1 0072db90x1
+		??0CTCInventoryBase@NInventory@@QAE@PAVCThing@@@Z	00590d32x1 0059eb0cx1 005c3947x1 005f3bcfx1
+00a5f1c0	1	self=?AcquireFont@CStreamingFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ [rows/]
+		?AcquireFont@CStreamingFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ	self 009e2c10x1
+00a634f0	1	self=?AcquireFont@CFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ [rows/]
+		?AcquireFont@CFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ	self 009e2ba0x1
+00ab8e10	1	self=??0CStaticFontBank@@QAE@PAVCFontDataBank@@K@Z [landed]
+		??0CStaticFontBank@@QAE@PAVCFontDataBank@@K@Z	self 00a634f0x1

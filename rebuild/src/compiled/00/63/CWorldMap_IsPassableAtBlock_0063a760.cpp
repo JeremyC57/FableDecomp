@@ -34,7 +34,7 @@ public:
     float GetThemeSizeZAt(const C2DCoordI& pos) const;            // 0x00820100
     float GetGroundSizeZAt(const C2DCoordI& pos) const;           // 0x00820080
     long GetSoundAt(const C2DCoordI& pos) const;                  // 0x0081F590
-    bool IsPassableAtBlock(const C2DCoordI& pos) const;           // 0x0081F630
+    bool GetNavPreferredAt(const C2DCoordI& pos) const;           // 0x0081F630
     C3DVector GetGroundFaceNormalAt(const C3DVector& localPos) const; // 0x0081F6C0
     long GetStrongestEngineThemeAt(const C2DCoordI& pos, long* strength) const; // 0x0081F910
 };
@@ -135,7 +135,7 @@ bool CWorldMap::IsPassableAtBlock(const C2DCoordI& pos) const
         {
             C2DCoordI local = ConvertWorldMapCoordsToLocalCoords(map, pos);
             const CMap& theMap = PeekMap(map);
-            return theMap.IsPassableAtBlock(local);
+            return theMap.GetNavPreferredAt(local);
         }
     }
     return false;

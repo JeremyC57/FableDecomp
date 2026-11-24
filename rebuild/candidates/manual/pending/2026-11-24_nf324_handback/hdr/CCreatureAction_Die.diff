@@ -1,0 +1,40 @@
+--- orig/hdr_CCreatureAction_Die.h	2026-11-24 01:18:16.758339098 +0000
++++ hdr/engine/CCreatureAction_Die.h	2026-11-24 01:18:16.813103696 +0000
+@@ -18,8 +18,23 @@
+ protected:
+     virtual CCreatureActionBase* Clone() const;
+     bool Flip;                                                     // +0xA8
++#ifdef FABLE_RETAIL_CCREATUREACTION_DIE_RTTI_DECLS
++    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
++    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
++    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
++    // 0x008EDB50: ?GetAnimationTransitionInTime@CCreatureAction_Die@@UBEJXZ (FableWin.pdb)
++public:
++    virtual long GetAnimationTransitionInTime() const;
++    // 0x008EDB60: ?GetAnimDelayTime@CCreatureAction_Die@@UBEJXZ (FableWin.pdb)
++    virtual long GetAnimDelayTime() const;
++    // 0x008EDB70: ?IsToEvadeAllHits@CCreatureAction_Die@@UBE_NXZ (FableWin.pdb)
++    virtual bool IsToEvadeAllHits() const;
++    // 0x008EDB80: ?IsPreventingQuickAccessItemUsage@CCreatureAction_Die@@UBE_NXZ (FableWin.pdb)
++    virtual bool IsPreventingQuickAccessItemUsage() const;
++protected:
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_Die)==0xac);
++FABLE_STATIC_ASSERT_AT(22, sizeof(CCreatureAction_Die)==0xac);
+ #else
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+@@ -66,9 +81,9 @@
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_Die) == 0xac);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_Die, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_Die, Flip) == 0xa8);
++FABLE_STATIC_ASSERT_AT(69, sizeof(CCreatureAction_Die) == 0xac);
++FABLE_STATIC_ASSERT_AT(70, offsetof(CCreatureAction_Die, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(71, offsetof(CCreatureAction_Die, Flip) == 0xa8);
+ 
+ #endif // FABLE_RETAIL_CCREATUREACTION_DIE
+ #endif // FABLE_ENGINE_CCREATUREACTION_DIE_H

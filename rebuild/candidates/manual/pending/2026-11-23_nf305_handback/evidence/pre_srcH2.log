@@ -1,0 +1,16 @@
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/97/CAIStateGroupBase_AIActionDoNothing_0097e200.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/91/CAIStateGroupGaze_FindFreeGazePos_00918880.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/84/NCameraModesCBase_GetCamTools_0084d080.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/b3/CEngineCamera_ClipSphere_00b30480.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/b9/CEngineSceneGridCell_InvalidateAll_00b91710.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/48/CFadeInFadeOutBase_IsOpen_0048da30.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/4a/CQuestManager_IsQuestActive_004af610.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/73/CTCDoor_Open_00730c00.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6d/CTCHeroExperience_UpdateAbilitiesForStat_006d8170.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6d/CTCHeroExperience_OnStatLevelChange_006d83b0.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/5e/CTCInventoryAbilities_IsAbilityPotentiallyAvailable_005ee02e.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/79/CTCPhysicalShieldSpell_StopSound_0079ddb0.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/71/CTCScriptedControl_IsActionListEmpty_007122c0.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/78/CTCTrapBase_Reset_00787bf1.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/66/CThingCreatureBase_GetAnimFromName_00662a00.cpp
+04:20:51 PASS /home/user/FableDecomp/rebuild/src/compiled/00/66/CThingCreatureBase_GetCombatTypeDef_00666d10.cpp

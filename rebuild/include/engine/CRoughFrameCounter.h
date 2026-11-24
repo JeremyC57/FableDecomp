@@ -5,9 +5,14 @@
 #include "rebuild_abi.h"
 class CRoughFrameCounter {
 public:
+#ifdef FABLE_RETAIL_CROUGHFRAMECOUNTER_CTOR
+    // NF275 opt-in (row 0x00418DCA CMainGameComponent ctor): Ego_r.pdb / FableWin.pdb ??0CRoughFrameCounter@@QAE@XZ, out of line in
+    // retail at 0x009F8B10 (the ctor calls it with ecx = this + 0x161BC, 0x00418E9B; it zeroes FrameStart / FPS). Declaration only.
+    CRoughFrameCounter();                                    // 0x009F8B10
+#endif
     void NewFrame();                                         // 0x009F8BA0
     unsigned long FrameStart;                                // +0x00
     float         FPS;                                       // +0x04
 };
-FABLE_STATIC_ASSERT(sizeof(CRoughFrameCounter) == 0x8);
+FABLE_STATIC_ASSERT_AT(12, sizeof(CRoughFrameCounter) == 0x8);
 #endif // FABLE_ENGINE_CROUGHFRAMECOUNTER_H

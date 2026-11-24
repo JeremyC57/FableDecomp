@@ -1,0 +1,20 @@
+{
+  "row": "00eb5750",
+  "tag": "complete_handle_owners",
+  "source_sha256": "b81cb6a2bb9b6db1b08a097fc1f60f8b3818efdca6f231d57ea06f08fd597b18",
+  "requested_leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+  "flags": [],
+  "retail_bytes": 1536,
+  "leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+  "status": "DIFFER",
+  "object_bytes": 1434,
+  "matched_instructions": 428,
+  "retail_instructions": 486,
+  "built_instructions": 452,
+  "hunks": 13,
+  "same_size_different_bytes": null,
+  "pickany_complete": true,
+  "pickany_eq": 6,
+  "pickany_neq": 0,
+  "pickany_referenced_neq": 0
+}

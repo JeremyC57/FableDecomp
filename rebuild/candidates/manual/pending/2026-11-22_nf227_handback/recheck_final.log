@@ -1,0 +1,61 @@
+addr       parity           behav  name
+0055ca40   RELOCATION_MATCH PASS   AddObserver
+0055c9c0   RELOCATION_MATCH PASS   RemoveObserver
+0055cae0   MATCH            PASS   IsExclusivelyObserved
+0055ca90   RELOCATION_MATCH PASS   AddConcurrentExclusiveObserver
+0055ca00   RELOCATION_MATCH PASS   RemoveConcurrentExclusiveObserver
+0041ded2   WARN RELOC_NAME: ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@QAEXXZ -> 0042c02f labelled 'CTCCarryable::OnKill'
+0041ded2   RELOCATION_MATCH PASS   ClearBastardChild
+0042d592   MATCH            PASS   SetRightStickForce
+0041d98a   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+0041d98a   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0041d98a   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0041d98a   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0041d98a   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041d98a   RELOCATION_MATCH PASS   GetIconsDef
+0041e3b2   RELOCATION_MATCH PASS   GetLayer
+0055c950   WARN STANDIN_LEAF ?ClearObservers@CObservable@NUISystem@@UAEXXZ (catalog NUISystem::CObservable::RemoveAllObservers; names another function)
+0055c950   RELOCATION_MATCH PASS   RemoveAllObservers
+0042d4f0   MATCH            PASS   vfunc_11
+0042d5aa   MATCH            PASS   vfunc_39
+0042be50   WARN RELOC_NAME: ??0?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z -> 0042ab01 labelled 'Std_DoubleLinkedList_CreateNode'
+0042be50   RELOCATION_MATCH PASS   CAction
+0042ce63   WARN RELOC_NAME: ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@QAEXXZ -> 0042c02f labelled 'CTCCarryable::OnKill'
+0042ce63   WARN STANDIN_LEAF ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@QAE@XZ (catalog std::list<T_0042ce63>::~list; names another function)
+0042ce63   RELOCATION_MATCH PASS   ~list
+0042b7d7   WARN RELOC_NAME: ?clear@?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAEXXZ -> 0042acc3 labelled 'CTCCarryable::OnKill'
+0042b7d7   WARN STANDIN_LEAF ??1?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAE@XZ (catalog std::list<T_0042b7d7>::~list; names another function)
+0042b7d7   RELOCATION_MATCH PASS   ~list
+0042b796   WARN RELOC_NAME: ?clear@?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAEXXZ -> 0042ac76 labelled 'CTCCarryable::OnKill'
+0042b796   WARN STANDIN_LEAF ??1?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@XZ (catalog std::list<T_0042b796>::~list; names another function)
+0042b796   RELOCATION_MATCH PASS   ~list
+0042bf67   WARN RELOC_NAME: ??0?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@ABU?$less@W4EUsedKeys@CManager@NUISystem@@@1@ABV?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@1@@Z -> 0042b76c labelled 'CTexture_InitEmpty_24bytes'
+0042bf67   RELOCATION_MATCH PASS   map
+0042bf85   WARN RELOC_NAME: ??0?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAE@ABU?$less@J@1@ABV?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@1@@Z -> 0042b7ad labelled 'LinkedList_InitializeNode'
+0042bf85   RELOCATION_MATCH PASS   map
+0042d28b   WARN RELOC_NAME: ??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@QAE@ABU?$less@VCCharString@@@1@ABV?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@1@@Z -> 0042b7ee labelled 'CTexture_InitEmpty_28bytes'
+0042d28b   RELOCATION_MATCH PASS   map
+00495610   RELOCATION_MATCH PASS   ChangeTextureColourDepth
+
+WINS: 20
+  0055ca40 RELOCATION_MATCH NUISystem::CObservable::?AddObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z
+  0055c9c0 RELOCATION_MATCH NUISystem::CObservable::?RemoveObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z
+  0055cae0 MATCH NUISystem::CObservable::?IsExclusivelyObserved@CObservable@NUISystem@@UAE_NXZ
+  0055ca90 RELOCATION_MATCH NUISystem::CObservable::?AddConcurrentExclusiveObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z
+  0055ca00 RELOCATION_MATCH NUISystem::CObservable::?RemoveConcurrentExclusiveObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z
+  0041ded2 RELOCATION_MATCH NUISystem::CManager::?ClearBastardChild@CManager@NUISystem@@UAEXXZ
+  0042d592 MATCH NUISystem::CManager::?SetRightStickForce@CManager@NUISystem@@UAEXAAVC2DVector@@@Z
+  0041d98a RELOCATION_MATCH NUISystem::CManager::?GetIconsDef@CManager@NUISystem@@UAE?AV?$CDefPointer@VCUIIconsDef@NUISystem@@@@XZ
+  0041e3b2 RELOCATION_MATCH NUISystem::CManager::?GetLayer@CManager@NUISystem@@UAE?AW4EEngine2DLayer@@J@Z
+  0055c950 RELOCATION_MATCH NUISystem::CObservable::?ClearObservers@CObservable@NUISystem@@UAEXXZ
+  0042d4f0 MATCH _gapscan::?GetMouseDisabled@CManager@NUISystem@@UAE_NXZ
+  0042d5aa MATCH _gapscan::?GetRightStickForce@CManager@NUISystem@@UAEAAVC2DVector@@XZ
+  0042be50 RELOCATION_MATCH NUISystem::CAction::??0CAction@NUISystem@@QAE@XZ
+  0042ce63 RELOCATION_MATCH std::??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@QAE@XZ
+  0042b7d7 RELOCATION_MATCH std::??1?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAE@XZ
+  0042b796 RELOCATION_MATCH std::??1?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@XZ
+  0042bf67 RELOCATION_MATCH std::map<T_0042bf67>::??0?$map@W4EUsedKeys@CManager@NUISystem@@JU?$less@W4EUsedKeys@CManager@NUISystem@@@std@@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@XZ
+  0042bf85 RELOCATION_MATCH std::map<T_0042bf85>::??0?$map@JW4EEngine2DLayer@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@3@@std@@QAE@XZ
+  0042d28b RELOCATION_MATCH std::map<T_0042d28b>::??0?$map@VCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@@std@@QAE@XZ
+  00495610 RELOCATION_MATCH CFrontendGameComponent::?ChangeTextureColourDepth@CFrontendGameComponent@@UAEXJ@Z
+EXIT 0

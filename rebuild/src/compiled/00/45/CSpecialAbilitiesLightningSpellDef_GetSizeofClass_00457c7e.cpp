@@ -1,7 +1,10 @@
-class CSpecialAbilitiesLightningSpellDef { public:};
+// Leaf: ?GetSizeofClass@CSpecialAbilitiesLightningSpellDef@@UAEKXZ
+class CSpecialAbilitiesLightningSpellDef { public:
+    virtual unsigned long GetSizeofClass();
+};
 
-unsigned long __fastcall CSpecialAbilitiesLightningSpellDef_GetSizeofClass(const CSpecialAbilitiesLightningSpellDef* self)
+unsigned long CSpecialAbilitiesLightningSpellDef::GetSizeofClass()
 {
-    (void)self;
     return 0x128;
 }
+// Flatten route (flatten_pilot v4, NF324): CSpecialAbilitiesLightningSpellDef_GetSizeofClass -> CSpecialAbilitiesLightningSpellDef::GetSizeofClass, the RTTI-placed PDB member; class model: the row's local class model.

@@ -1,5 +1,5 @@
 // CAIStateGroup_LookAtInterestingThings::InitStateGroup(const CWorld&, CThingAICreature&) -- schedule the first
-// Leaf: ?InitStateGroup@CAIStateGroup_LookAtInterestingThings@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+// Leaf: ?InitStateGroup@CAIStateGroup_LookAtInterestingThings@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -155,7 +155,9 @@ class CTCIdleScheduler { public:                       // interface 0xd3
 
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBaseW {
     long FrameToLook;                           // +0x14 (engine header)
+    protected:
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
+    public:
     bool InitCreaturePosition();
     virtual bool IsRunnable();
 };

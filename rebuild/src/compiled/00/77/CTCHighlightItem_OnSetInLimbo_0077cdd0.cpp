@@ -8,12 +8,12 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 struct CTCHighlightItem {
-    void Update();                         // 0x0077CCA0
+    protected: void DoStopRunning(); public:                         // 0x0077CCA0; NF296: PDB name, was Update
     void OnSetInLimbo(bool enable);
 };
 
 void CTCHighlightItem::OnSetInLimbo(bool enable)
 {
     if (enable)
-        Update();
+        DoStopRunning();
 }

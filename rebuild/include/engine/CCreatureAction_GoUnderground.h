@@ -17,6 +17,14 @@
 class CCreatureAction_GoUnderground : public CCombatActionBase {
 public:
     CCreatureAction_GoUnderground(CThingCreatureBase& creature);         // 0x008B8110
+#ifdef FABLE_RETAIL_CCREATUREACTION_GOUNDERGROUND_RTTI_DECLS
+    // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
+    // its base chain declares (clang override probe, made-up-name control fails): no new slot.
+    // 0x008B86A0: ?IsToEvadeAllHits@CCreatureAction_GoUnderground@@UBE_NXZ (FableWin.pdb)
+public:
+    virtual bool IsToEvadeAllHits() const;
+#endif
 };
 #else
 #pragma pack(push, 1)

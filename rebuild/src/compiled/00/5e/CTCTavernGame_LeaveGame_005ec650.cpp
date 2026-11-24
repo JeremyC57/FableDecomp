@@ -173,8 +173,12 @@ public:
         TavernGameState = state;
     }
     void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0
-    void ClearBox();                            // 0x005EC5C0
-    void ClearBetAndMoney();                    // 0x005E9F30
+protected:
+    void ClearBox();                            // 0x005EC5C0; NF236: Ego_r / FableWin spelling IAE (protected)
+public:
+protected:
+    void ClearBetAndMoney();                    // 0x005E9F30; NF236: Ego_r / FableWin spelling IAE (protected)
+public:
 };
 
 void CTCTavernGame::LeaveGame()

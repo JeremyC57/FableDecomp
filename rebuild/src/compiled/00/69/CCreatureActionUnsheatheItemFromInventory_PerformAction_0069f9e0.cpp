@@ -1,5 +1,5 @@
 // CCreatureAction_UnsheatheItemFromInventory::PerformAction() -- unless the carrying component is busy: drop or remove whatever is in the primary slot (dropping weapons, letting a 0x1a component react when the item is not carried), and clear the slot; then, when the item to unsheathe is alive, prepare the weapon sheathes, put it into the carry slot its CCarryableDef names and refresh the sheathes; finally clear the melee flourish, restart the current mode and put the main player in aggressive mode
-// Leaf: ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@QAEXXZ
+// Leaf: ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069F9E0, length 596 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020, CTCCarrying::
@@ -22,7 +22,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer { public:
-    bool IsMainPlayer();                                     // 0x00487520
+    bool IsMainPlayer() const;                                     // 0x00487520
     void SetAggressiveMode(bool aggressive);                 // 0x00487EB0
 };
 #define FABLE_RETAIL_CCHARSTRING
@@ -118,7 +118,7 @@ class CCreatureActionBase { public:                                 // retail si
 class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PItem;                           // +0xa8
     CThing* GetItem() const { return PItem.GetPItem(); }
-    void PerformAction();
+    virtual void PerformAction();   // NF268 (q12772): virtual, as both PDBs (UAE, Ego_r 0x006C4C10 / FableWin 0x02211A10) and the UnsheatheItemFromInventory vftable slot 3 (0x0069F0F0, 0x005CA68E bind UAE); was QAE
 };
 
 void CCreatureAction_UnsheatheItemFromInventory::PerformAction()

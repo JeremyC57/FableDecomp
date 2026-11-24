@@ -39,7 +39,7 @@ class CMatrix3x4 { public:
 
 class CEngineInternalPrimitiveBase { public:
     virtual ~CEngineInternalPrimitiveBase();
-    CEngineInternalPrimitiveBase(long type, long flags);   // 0x00B8FF00
+    CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00 (NF313: the PDB parameter type, both PDBs)
     unsigned char _body[0x80 - 4];
 };
 

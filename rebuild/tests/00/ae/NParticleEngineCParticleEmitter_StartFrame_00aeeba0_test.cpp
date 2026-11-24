@@ -1,3 +1,5 @@
+// NF244 (q12680 step 1): the CIEngine slot 11 / 12 / 13 overrides respelled from the retired VirtualNN_ placeholders to the PDB
+// declarations engine/CIEngine.h now makes the default (ConvertScreenPosToWorldPos, ...AtViewDistance, ConvertWorldPosToScreenPos).
 // 00aeeba0 NParticleEngine::CParticleEmitter::StartFrame standalone behavior test
 #include <assert.h>
 #include <stdio.h>
@@ -183,9 +185,9 @@ class FixtureEngine:public CIEngine{public:
 virtual void SetCamera(const CCamera*) {abort();}
 virtual void SetWindow(const C2DBoxF*) {abort();}
 virtual void Virtual08_00b27d90() {abort();}
-virtual void Virtual11_00b23cf0() {abort();}
-virtual void Virtual12_00b24400() {abort();}
-virtual void Virtual13_00b242d0() {abort();}
+virtual bool ConvertScreenPosToWorldPos(const C2DVector&, C3DVector&) const {abort();}
+virtual bool ConvertScreenPosToWorldPosAtViewDistance(float, const C2DVector&, C3DVector&) const {abort();}
+virtual bool ConvertWorldPosToScreenPos(const C3DVector&, C2DVector&) const {abort();}
 virtual bool PreChangeResolution() {abort();}
 virtual bool PostChangeResolution(unsigned long, unsigned long, unsigned long) {abort();}
 virtual void SetPersistentPrimitive(CEnginePrimitiveHandle&, const CEnginePrimitive&, unsigned long) {abort();}

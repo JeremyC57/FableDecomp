@@ -12,6 +12,32 @@ class CCPPointerInfo;
 class CFontBank;
 class CFontDataBank;
 
+#ifdef FABLE_RETAIL_CFONTDATABANKENTRY_VIRTUAL_MODEL
+// Opt-in (NF322, 2026-11-23): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0129DA70 (RTTI .?AVCFontDataBankEntry@@ : CBaseClassNonCopyable), 4 slots; the declared slots are this class's overrides (RTTI-port labels name CFontDataBankEntry); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
+#include "engine/CBaseClassNonCopyable.h"
+#pragma pack(push, 1)
+class CFontDataBankEntry : public CBaseClassNonCopyable {
+public:
+    virtual bool IsLoaded() const;                                        // slot 1 0x00A63550 ?IsLoaded@CFontDataBankEntry@@UBE_NXZ
+    virtual bool CanUnload() const;                                       // slot 2 0x00A63560 ?CanUnload@CFontDataBankEntry@@UBE_NXZ
+    virtual void Unload();                                                // slot 3 0x00A63580 ?Unload@CFontDataBankEntry@@UAEXXZ
+public:
+    CFontBank*      Font_Data;                               // +0x04 CCountedPointer<CFontBank>::Data
+    CCPPointerInfo* Font_Info;                               // +0x08 CCountedPointer<CFontBank>::Info
+    CFontDataBank*  Bank;                                    // +0x0c
+    unsigned long   Index;                                   // +0x10
+    unsigned long   DataType;                                // +0x14
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CFontDataBankEntry) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Font_Data) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Font_Info) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Bank) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Index) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, DataType) == 0x14);
+#else
 #pragma pack(push, 1)
 class CFontDataBankEntry {
 public:
@@ -24,12 +50,13 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CFontDataBankEntry) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Font_Data) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Font_Info) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Bank) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Index) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, DataType) == 0x14);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CFontDataBankEntry) == 0x18);
+FABLE_STATIC_ASSERT_AT(28, offsetof(CFontDataBankEntry, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CFontDataBankEntry, Font_Data) == 0x4);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CFontDataBankEntry, Font_Info) == 0x8);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CFontDataBankEntry, Bank) == 0xc);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CFontDataBankEntry, Index) == 0x10);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CFontDataBankEntry, DataType) == 0x14);
+#endif // FABLE_RETAIL_CFONTDATABANKENTRY_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CFONTDATABANKENTRY_H

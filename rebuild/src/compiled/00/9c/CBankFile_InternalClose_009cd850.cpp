@@ -77,7 +77,7 @@ struct SKeyPair { unsigned long Key; unsigned long Value; };
 
 struct CPackedUIntArray {
     unsigned long* PackedInts; unsigned long Size; unsigned char Bits; unsigned long Bias;
-    void DeallocateMemory();                                 // 0x00A629D0
+    void Clear();                                 // 0x00A629D0; NF299: PDB name, was DeallocateMemory
 };
 
 class CCPPointerInfo { public:
@@ -158,9 +158,9 @@ void CBankFile::InternalClose()
     SymbolCRCIndices.Clear();
     OldSymbolIndices.Clear();
     FilenameIndices.Clear();
-    PackedDataOffset.DeallocateMemory();
-    PackedDataSize.DeallocateMemory();
-    PackedDataType.DeallocateMemory();
-    PackedValid.DeallocateMemory();
+    PackedDataOffset.Clear();
+    PackedDataSize.Clear();
+    PackedDataType.Clear();
+    PackedValid.Clear();
     Size = 0;
 }

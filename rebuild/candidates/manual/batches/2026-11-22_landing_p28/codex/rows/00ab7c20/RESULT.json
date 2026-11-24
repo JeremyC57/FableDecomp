@@ -1,0 +1,32 @@
+{
+  "include_snapshot": "cd9640ec9d46c9ba5ee9fae1afe9053ebae20b5c7dea761b4f172438c83014aa",
+  "tag": "handback_cd9640ec9d_7a98c12",
+  "compile": {
+    "row": "00ab7c20",
+    "tag": "handback_cd9640ec9d_7a98c12",
+    "source_sha256": "7a98c12794d6a60baf70a5d78c8bbee1245b5985a9c7ae788273fe212d50a3e2",
+    "requested_leaf": "?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+    "flags": [],
+    "retail_bytes": 1910,
+    "leaf": "?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+    "status": "MASKED_EQUAL",
+    "object_bytes": 1910,
+    "matched_instructions": 464,
+    "retail_instructions": 464,
+    "built_instructions": 464,
+    "hunks": 0,
+    "same_size_different_bytes": 0,
+    "pickany_complete": true,
+    "pickany_eq": 1,
+    "pickany_neq": 0,
+    "pickany_referenced_neq": 0
+  },
+  "tested": true,
+  "test_sha256": "0b169db26d1e401c44b375380e7ea932104606232bf742983bc1845639168ea1",
+  "grade": "RELOCATION_MATCH",
+  "symbol_table_checked": true,
+  "effective_pickany_eq": 1,
+  "effective_pickany_neq": 0,
+  "effective_pickany_referenced_neq": 0,
+  "strong_same_tu_copies": "none"
+}

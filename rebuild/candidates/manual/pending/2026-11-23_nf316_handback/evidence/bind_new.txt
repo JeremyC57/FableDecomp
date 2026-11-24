@@ -1,0 +1,59 @@
+#1 005d8e90 ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ
+   005d8e90(self) - DEF=OK:?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ
+   00522880 OK ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ x1
+   006deee0 OK ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ x2
+   00897fa0 OK ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ x1
+#2 006b0210 ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
+   006b0210(self) - DEF=WRONG:?ApplyAcceleration@CTCPhysicsBase_Methods@@QAEXABVC3DVector@@@Z
+   0066fb80 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   0066fc90 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   006701a0 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   006702e0 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   00670470 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   006a4dc0 WRONG ?Run_006b0210@Sub@@QAEXXZ x1
+   00725060 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   0074e560 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   0077a430 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x2
+   007bbb3b OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   007bbe34 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   007bc004 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   007bc15a OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   007bc6fa OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   00844740 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   00846090 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   00846100 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   00854810 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   008e5670 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+   008e5f00 OK ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z x1
+#5 007ba1d0 ?GetEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z
+   007ba1d0(self) - DEF=OK:?GetEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z
+   00969470 OK ?GetEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z x1
+#10 006a7e70 ??RCThingFilter_HasScriptData@@QBE_NABVCThing@@@Z
+   006a7e70(self) - DEF=OK:??RCThingFilter_HasScriptData@@QBE_NABVCThing@@@Z
+   005800d6 OK ??RCThingFilter_HasScriptData@@QBE_NABVCThing@@@Z x1
+#11 0051e210 ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+   0051e210(self) - DEF=OK:?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+   004b5500 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   004b5ee0 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   004c84b0 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x1
+   004c9120 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x1
+   004caa00 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x1
+   0051fd80 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x1
+   005fae90 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x1
+   00606300 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x1
+   006ca120 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   00729cf0 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   0072f380 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x6
+   0075d320 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   00779430 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   0077b0d0 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   007c9770 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   007e8460 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   007ee3d0 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   00800a60 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   008304a0 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x5
+   00837e40 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+   0088ae40 OK ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z x2
+#13 0040bca0 ?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z
+   0040bca0(self) - DEF=OK:?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z
+   0040d350 OK ?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z x1

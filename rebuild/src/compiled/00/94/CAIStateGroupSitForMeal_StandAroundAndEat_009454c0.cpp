@@ -1,3 +1,4 @@
+// Leaf: ?StandAroundAndEat@CAIStateGroup_SitForMeal@@AAE_NXZ
 // CAIStateGroup_SitForMeal::StandAroundAndEat() -- play ST_IDLE and wait; true when the action reports 2 (finished)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009454C0, length 110 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCreatureAction_PlayAnimation::
@@ -58,7 +59,9 @@ struct CAIStateGroup_SitForMeal : CAIStateGroupBase {
     long ActionPointIndex;                          // +0x3c
     bool HoldingBowl;                               // +0x40
     long DayLastAte;                                // +0x44
+    private:
     bool StandAroundAndEat();
+    public:
 };
 
 bool CAIStateGroup_SitForMeal::StandAroundAndEat()

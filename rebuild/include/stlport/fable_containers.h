@@ -1,3 +1,6 @@
+#ifdef FABLE_RETAIL_STLP_BOOL_FILL_OWNER_PASS26
+#include "fable_compiler.h"
+#endif
 // Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_STLPORT_CONTAINERS_H
 #define FABLE_STLPORT_CONTAINERS_H
@@ -6,6 +9,9 @@
 // One model for every translation unit (Codex pass 11 consolidation): original names, keys and inheritance;
 // the members retail keeps out of line (_M_fill_insert, list::_M_insert_dispatch, ~list, vector copy
 // constructor) are declared without a body here, as everywhere else in rebuild/include.
+#if defined(FABLE_RETAIL_STLP_VECTOR_CHECKED_SUBSCRIPT_PASS26) && defined(_DEBUG)
+#include <assert.h>
+#endif
 #include <stddef.h>
 #include <new>
 #include <stdlib.h>
@@ -114,8 +120,11 @@ FABLE_STLP_SCALAR_TRAITS(int)
 FABLE_STLP_SCALAR_TRAITS(unsigned int)
 FABLE_STLP_SCALAR_TRAITS(long)
 FABLE_STLP_SCALAR_TRAITS(unsigned long)
+// The native compiler has two additional scalar integer types. ISO C++03 hosts use the scalar specializations above.
+#if defined(_MSC_VER) || !defined(FABLE_RETAIL_STLP_ISO_SCALAR_TRAITS_PASS26)
 FABLE_STLP_SCALAR_TRAITS(__int64)
 FABLE_STLP_SCALAR_TRAITS(unsigned __int64)
+#endif
 FABLE_STLP_SCALAR_TRAITS(float)
 FABLE_STLP_SCALAR_TRAITS(double)
 FABLE_STLP_SCALAR_TRAITS(long double)
@@ -130,11 +139,16 @@ template<class T> struct __type_traits<T*> {
 #ifdef FABLE_RETAIL_STLP_MAX_FASTCALL
 // Retail opt-in (Codex pass 17): original std::max<long> fastcall,
 // FableWin 018ACFBC and its caller 018A801D; otherwise identical STLport body.
-template<class T> inline const T& (FABLE_FASTCALL max)(const T& a,const T& b) { return a<b?b:a; }
+template<class T> inline const T& FABLE_FASTCALL max(const T& a,const T& b) { return a<b?b:a; }
 #else
 template<class T> inline const T& (max)(const T& a,const T& b) { return a<b?b:a; }
 #endif
+#ifdef FABLE_RETAIL_STLP_MIN_FASTCALL
+// FableWin std::min<long> 0x01DE6FE0 and the CHeightMap::Resize call site use the original fastcall template.
+template<class T> inline const T& FABLE_FASTCALL min(const T& a,const T& b) { return b<a?b:a; }
+#else
 template<class T> inline const T& (min)(const T& a,const T& b) { return b<a?b:a; }
+#endif
 #ifdef FABLE_RETAIL_STLP_ORIGINAL_COPY_DISPATCH_PASS22
 // Original STLport4.6.2 type_traits.h pointer/copy dispatch, partial-specialization path.
 template<int _Is> struct __bool2type { typedef __false_type _Ret; };
@@ -226,7 +240,18 @@ template<class I,class O,class D> inline O __fastcall __copy(I first,I last,O re
 // Original Ego_r / FableWin ?__copy_trivial@std@@YIPAXPBX0PAX@Z, native 0x00405BA0.
 void* FABLE_FASTCALL __copy_trivial(const void* first,const void* last,void* result);
 #else
+#if defined(FABLE_RETAIL_STLP_VECTOR_ULONG_ERASE_COPY_PASS27) && defined(_MSC_VER)
+// 00A90AE0: the 52-byte landed vector<unsigned long>::erase owner at 0046496F
+// expands this STLport _algobase.h helper along with the POD overload below.
+__forceinline void* __copy_trivial(const void* first,const void* last,void* result) {
+#else
+#if defined(FABLE_RETAIL_STLP_BOOL_VECTOR_SIZE_OWNERS_PASS26) && defined(_MSC_VER)
+// Inline-budget: the bool erase owner at 004676BB expands the original POD copy dispatch.
+FABLE_FORCEINLINE void* __copy_trivial(const void* first,const void* last,void* result) {
+#else
 inline void* __copy_trivial(const void* first,const void* last,void* result) {
+#endif
+#endif
     return last==first?result:(char*)memmove(result,first,(const char*)last-(const char*)first)+((const char*)last-(const char*)first);
 }
 #endif
@@ -245,10 +270,14 @@ template<class Input,class Output> inline Output __copy_ptrs(Input first,Input l
 #if defined(FABLE_RETAIL_STLP_COPY_PTRS_FALSE_NOINLINE) && !(defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)) && defined(_MSC_VER)
 #pragma auto_inline(on)
 #endif
+#if defined(FABLE_RETAIL_STLP_VECTOR_ULONG_ERASE_COPY_PASS27) && defined(_MSC_VER)
+template<class Input,class Output> __forceinline Output __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
+#else
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
 #else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
+#endif
 #endif
     return (Output)__copy_trivial(first,last,result);
 }
@@ -335,7 +364,12 @@ template<class T,class U> inline void _Construct(T* p,U v) { new(p) T(v); }
 template<class T> inline void _Destroy(T* p) { p->~T(); }
 inline void _Destroy(char*,char*) { }
 #else
+#if defined(FABLE_RETAIL_QUICK_MENU_PAIR_CONSTRUCT_PASS27)
+// Inline-budget: native 005947B6 and 0059400C expand the real pair placement construction.
+template<class T,class U> FABLE_FORCEINLINE void _Construct(T* p,const U& v) { new(p) T(v); }
+#else
 template<class T,class U> inline void _Construct(T* p,const U& v) { new(p) T(v); }
+#endif
 template<class T> inline void _Destroy(T* p) { p->~T(); }
 inline void _Destroy(char*,char*) { }
 #endif
@@ -448,7 +482,8 @@ template<class I,class O> FABLE_FORCEINLINE O __uninitialized_copy(I first,I las
 // Native 00769930/007698c0 take first/last in ecx/edx and result/tag on the stack.
 template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
 #else
-#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI) || defined(FABLE_RETAIL_STLP_UNINIT_COPY_FALSE_FASTCALL_PASS26)
+// Original native const-C3DVector uninitialized-copy takes first/last in ecx/edx.
 template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
 #else
 template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __false_type&) {
@@ -481,7 +516,13 @@ template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T*
 // from the inlined vector(n) with the tag homed in a dead argument slot); the same-TU noinline body gives that shape (EXTRA_RULES
 // chunk 422 / GOTCHAS 0xB3EA70: inlined, the fill makes vector(n) too large and VC7.1 calls the whole ctor instead).
 #pragma auto_inline(off)
+#ifdef FABLE_RETAIL_STLP_UNINIT_FILL_N_WRAPPER_EXPANSION_PASS27
+// Native 00A95790 is called by _M_insert_overflow, while the public
+// uninitialized_fill_n at 00A959E0 expands this same helper in its body.
+template<class I,class N,class T> inline I __fastcall __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+#else
 template<class I,class N,class T> __declspec(noinline) I __fastcall __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+#endif
     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
 }
 #pragma auto_inline(on)
@@ -571,7 +612,12 @@ public:
     // inliner scores later sites with.
     _Tp* allocate(size_t n,const void* =0) { return n != 0 ? (_Tp*)__malloc_alloc_allocate<0>::allocate(n * sizeof(_Tp)) : 0; }
 #else
+#if defined(FABLE_RETAIL_QUICK_MENU_PAIR_ALLOCATE_PASS27)
+// Inline-budget: native 0059400C expands allocation, including the zero-length test and malloc.
+    FABLE_FORCEINLINE _Tp* allocate(size_t n,const void* =0) { return n?(_Tp*)malloc(n*sizeof(_Tp)):0; }
+#else
     _Tp* allocate(size_t n,const void* =0) { return n?(_Tp*)malloc(n*sizeof(_Tp)):0; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE
     void deallocate(_Tp* p,size_t n) { if (p != 0) __malloc_alloc<0>::deallocate((void*)p, n * sizeof(_Tp)); }
@@ -830,6 +876,27 @@ public:
     _Tp& back() { return *(end()-1); }
     const _Tp& back() const { return *(end()-1); }
     void pop_back() { --this->_M_finish; _Destroy(this->_M_finish); }
+#ifdef FABLE_RETAIL_STLP_VECTOR_CHECKED_SUBSCRIPT_PASS26
+    // Inferred release form of the checked subscript. Both donor instantiations
+    // check size against the original index before accessing their array.
+    // FableWin 01A70AB0 handles primitive handles, 02103F8F handles exit pairs.
+    _Tp& operator[](size_type __n) {
+        if (size() <= __n) {
+#ifdef _DEBUG
+            assert(__n < size());
+#endif
+        }
+        return *(begin() + __n);
+    }
+    const _Tp& operator[](size_type __n) const {
+        if (size() <= __n) {
+#ifdef _DEBUG
+            assert(__n < size());
+#endif
+        }
+        return *(begin() + __n);
+    }
+#else
 #ifdef FABLE_RETAIL_STLP_VECTOR_INDEX_START
     // Retail opt-in (row 0x0075A7A0 CTCPhysicsRigidBody::ResolveCollisions): operator[] reads _M_start directly instead of through
     // begin() (same address arithmetic, one inline level less). With begin() VC7.1 drops that row's second induction slot
@@ -844,6 +911,7 @@ public:
     _Tp& operator[](size_type n) { return *(begin()+n); }
     const _Tp& operator[](size_type n) const { return *(begin()+n); }
 #endif // FABLE_RETAIL_STLP_VECTOR_INDEX_START
+#endif // FABLE_RETAIL_STLP_VECTOR_CHECKED_SUBSCRIPT_PASS26
 #if defined(FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE) && defined(_MSC_VER)
     // Per-TU opt-in (chunk Q6, row 0x00542780 NUISystem::CIconText::AddIcon): the STLport push_back body below, visible but kept out
     // of line, as the retail TU calls it (push_back<CEmbeddedIcon> 0x00543C90, whose body calls _M_insert_overflow 0x00543B70).
@@ -1491,9 +1559,9 @@ public:
     typedef _List_iterator<_Tp,_Nonconst_traits<_Tp> > iterator;
     typedef _List_iterator<_Tp,_Const_traits<_Tp> > const_iterator;
 #ifdef FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE
-    // Per-TU opt-in (NF42 round 5, rows 0x00583815 / 0x005838DD / 0x005839A5 CTCInventory::Adjust*OptionsSliders): STLport's inline
-    // default constructor kept out of line with its body visible, as those TUs call the list<CComponent*> COMDAT (0x0042ABAF).
-    // Needs FABLE_STLP_NOINLINE (e.g. FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, which the same rows use for ~list 0x0042ABCA).
+    // Per-TU opt-in (NF42 round 5): STLport's inline default constructor kept out of line with its body visible. 0x0042ABAF is
+    // _List_base<CComponent*>'s constructor (list's own 0x0042B6A6 calls it; the Adjust*OptionsSliders rows use _BASE_VISIBLE_NOINLINE
+    // since NF241 2026-11-22). Needs FABLE_STLP_NOINLINE (e.g. FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE).
     FABLE_STLP_NOINLINE
 #endif
     explicit list(const _Alloc& a=_Alloc()) : _List_base<_Tp,_Alloc>(a) { }
@@ -1506,10 +1574,14 @@ public:
     // line with its body visible, as the retail TU calls it (~list<CComponent*> 0x0042ABCA at 0x005A8A33). __declspec(noinline) is
     // MSVC's spelling (FABLE_STLP_NOINLINE is empty elsewhere).
     FABLE_STLP_NOINLINE ~list() { }
+#elif defined(FABLE_RETAIL_PERSONAL_SCRIPT_LIST_DTOR_PASS26)
+    // Inline-budget: the native personal script calls list::~list on its first exit and
+    // otherwise expands clear and deallocate, including its normal loop backedge.
+    FABLE_FORCEINLINE ~list() { this->clear();this->_M_node.deallocate(this->_M_node._M_data,1); }
 #elif defined(FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST)
-    // Per-TU opt-in (row 0x00607330): the clear+free body in list::~list itself and no ~_List_base, as FableWin.pdb names it
-    // (??1?$list@PAVCComponent@NUISystem@@..@std@@QAE@XZ 0x017C0C95; no ??1?$_List_base symbol for any instantiation), so a call
-    // binds 0x0042ABCA under its landed name.
+    // Per-TU opt-in: the clear+free body in list::~list itself and no ~_List_base; bytes only. The PDBs' ??1?$list is Dinkumware
+    // (_List_val, no _List_base type), not STLport evidence: retail's list<CComponent*> `~list() {}` 0x0042B6D2 is a 5-byte
+    // `jmp 0x0042ABCA`, ~_List_base (NF239 / NF241, 2026-11-22; row 0x00607330 now uses the default path).
     ~list() { this->clear();this->_M_node.deallocate(this->_M_node._M_data,1); }
 #elif defined(FABLE_RETAIL_STLP_LIST_DTOR_DECL_ONLY)
     // Per-TU opt-in (agentNF187, row 0x01228E44 `dynamic atexit destructor for 'NUISystem::CList::GPreviousSelected''): ~list declared
@@ -1577,10 +1649,15 @@ public:
         tmp->_M_next=n;tmp->_M_prev=p;p->_M_next=tmp;n->_M_prev=tmp;
         return iterator(tmp);
     }
+#ifdef FABLE_RETAIL_STLP_LIST_PUSHBACK_DECL_PASS26
+    // Quest completion 0x004B1EE4 calls the existing STLport owner at 0x004BA4E0.
+    void push_back(const _Tp& x);
+#else
 #ifdef FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE
     FABLE_STLP_NOINLINE
 #endif
     void push_back(const _Tp& x) { insert(end(),x); }
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_INSERT_DEFAULT
     // Per-TU opt-in (chunk 801, row 0x00833C00): STLport 4.6 _list.h `iterator insert(iterator __pos)` (the no-default-parameter
     // overload, `return insert(__pos, _Tp());`), declared only: retail calls it out of line at 0x007464A0 (the landed body builds the
@@ -1803,6 +1880,16 @@ void FABLE_STLP_FASTCALL _S_sort(list<_Tp,_Alloc>& __that,_StrictWeakOrdering __
     }
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_SIZE_OWNER_MODE_PASS26
+// Fidelity: scaffolding, not retail. The original list size is kept from size-mode owner0065f17b.
+}
+class CThingAICreature;
+template<class T>class CIntelligentPointer;
+#pragma optimize("s",on)
+namespace std {
+template<> inline size_t list<CIntelligentPointer<CThingAICreature> >::size() const {size_t result=distance(begin(),end());return result;}
+#pragma optimize("",on)
+#endif
 // _bitset.h / _range_errors.h (no-exceptions branch)
 template<size_t _Nw> struct _Base_bitset {
     typedef unsigned long _WordT;
@@ -1869,6 +1956,22 @@ public:
     bool operator[](size_t pos) const { return _Unchecked_test(pos); }
 #endif
 };
+#ifdef FABLE_RETAIL_STLP_BITSET_TEST_OWNER_PASS27
+// Keep the genuine bitset<274>::test body in its speed-mode owner's compile context.
+template<> inline bool bitset<274>::test(size_t n) const
+{
+    if(n>=274) __stl_throw_out_of_range("bitset");
+    return _Unchecked_test(n);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_BITSET_TEST_SPEED_OWNER_PASS27
+template<> inline bool bitset<274>::test(size_t n) const
+{
+    if (n >= 274)
+        __stl_throw_out_of_range("bitset");
+    return _Unchecked_test(n);
+}
+#endif
 // _function_base.h / _algo.h
 template<class _Arg,class _Result> struct unary_function {
     typedef _Arg argument_type;
@@ -2476,6 +2579,72 @@ void __fastcall __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIt
         __insertion_sort(__first,__last,__comp);
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_FILL_N_NUISYSTEM_CCOMPONENT_SIZE_BODY
+// NF214 opt-in (2026-11-21, q6333 / q6342; rows 0x007E4B60 CTCCreditsUI::Activate, 0x006116E0 CTCInventoryMap::OpenInventory).
+// Fidelity: scaffolding, not retail. With FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY those TUs compile
+// vector<NUISystem::CComponent*>::_M_insert_overflow visibly (retail's caller knows the callee does not let `x` escape); with
+// fill_n declared only, VC7.1 loses that knowledge and moves the caller's registers. This gives the overflow's callee
+// fill_n<NUISystem::CComponent**, unsigned int, NUISystem::CComponent*> the STLport 4.6 _algobase.h body of the generic
+// FABLE_RETAIL_STLP_FILL_N_FASTCALL fill_n above, visible and out of line (noinline, as retail calls 0x0048514C), a pick-any COMDAT.
+// Retail kept the 23-byte copy (x re-read every pass, no frame) from a size-optimised TU, row 0x0048514C, which sets
+// `#pragma optimize("s", on)` itself (no "y" change); the plain /O2 copy hoists x (30 bytes). `#pragma optimize("", on)` below returns
+// to the command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not carry a row-head optimize
+// pragma before its include of this header (nf189). Needs FABLE_RETAIL_STLP_FILL_N_FASTCALL; place before any use of this fill_n.
+}
+namespace NUISystem { class CComponent; }
+#pragma optimize("s", on)
+namespace std {
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+NUISystem::CComponent** FABLE_FASTCALL fill_n(NUISystem::CComponent** first,unsigned int n,NUISystem::CComponent* const& x) { for(;n>0;--n,++first) *first=x;return first; }   // 0x0048514C
+#pragma optimize("", on)
+#endif
+#if defined(FABLE_RETAIL_STLP_BOOL_VECTOR_SIZE_OWNERS_PASS26) && defined(_MSC_VER)
+// Fidelity: scaffolding, not retail. The bool storage constructor and resize owners are
+// size-built; erase at 004676BB is size-built with a frame pointer. A caller's row-head
+// optimization follows this include. optimize("", on) resets the enclosing TU's mode.
+#pragma optimize("s", on)
+template<>
+FABLE_FORCEINLINE bool* allocator<bool>::allocate(size_t n, const void*)
+{
+    return n ? static_cast<bool*>(malloc(n * sizeof(bool))) : 0;
+}
+
+template<>
+inline _Vector_base<bool, allocator<bool> >::_Vector_base(size_t n, const allocator<bool>& a)
+    : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0)
+{
+    _M_start = _M_end_of_storage.allocate(n);
+    _M_finish = _M_start;
+    _M_end_of_storage._M_data = _M_start + n;
+}
+
+template<>
+FABLE_FORCEINLINE bool* __copy_ptrs<bool*, bool*>(bool* first, bool* last, bool* result, const __true_type&)
+{
+    return static_cast<bool*>(__copy_trivial(first, last, result));
+}
+
+#pragma optimize("y", off)
+template<>
+inline bool* vector<bool, allocator<bool> >::erase(iterator first, iterator last)
+{
+    iterator result = __copy_ptrs(last, this->_M_finish, first, _IsPODType());
+    _Destroy(result, this->_M_finish);
+    this->_M_finish = result;
+    return first;
+}
+#pragma optimize("y", on)
+template<>
+inline void vector<bool, allocator<bool> >::resize(size_type n, const bool& value)
+{
+    if (n < size()) erase(begin() + n, end());
+    else _M_fill_insert(end(), n - size(), value);
+}
+#pragma optimize("", on)
+#endif // FABLE_RETAIL_STLP_BOOL_VECTOR_SIZE_OWNERS_PASS26
 #ifdef FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY
 // NF213 opt-in (2026-11-21, q6333 / q6342; row 0x005414A0 NUISystem::CDynamicList::InsertChild, ...). Fidelity: scaffolding, not retail.
 // That TU calls vector<NUISystem::CComponent*>::_M_insert_overflow 0x00485DBC out of line with the STLport stl/_vector.c body visible:
@@ -2495,6 +2664,19 @@ namespace NUISystem { class CComponent; }
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace std {
+#if defined(FABLE_RETAIL_STLP_COMPONENT_OVERFLOW_ALLOCATE_INLINE_PASS26) && defined(_MSC_VER)
+// Inline-budget: 00485DBC expands the null-checked malloc through both STLport allocator layers.
+template<> FABLE_FORCEINLINE NUISystem::CComponent** allocator<NUISystem::CComponent*>::allocate(size_t n, const void*)
+{
+    return n ? static_cast<NUISystem::CComponent**>(malloc(n * sizeof(NUISystem::CComponent*))) : 0;
+}
+#ifdef FABLE_RETAIL_STLP_ALLOC_PROXY_REBIND
+template<> FABLE_FORCEINLINE NUISystem::CComponent** _STLP_alloc_proxy<NUISystem::CComponent**, NUISystem::CComponent*, allocator<NUISystem::CComponent*> >::allocate(size_t n)
+{
+    return __stl_alloc_rebind(static_cast<allocator<NUISystem::CComponent*>&>(*this), static_cast<NUISystem::CComponent**>(0)).allocate(n, 0);
+}
+#endif
+#endif // FABLE_RETAIL_STLP_COMPONENT_OVERFLOW_ALLOCATE_INLINE_PASS26
 template<> NUISystem::CComponent** FABLE_FASTCALL fill_n(NUISystem::CComponent** first,unsigned int n,NUISystem::CComponent* const& x);   // 0x0048514C
 template<> inline
 #ifdef _MSC_VER
@@ -2509,6 +2691,56 @@ void vector<NUISystem::CComponent*,allocator<NUISystem::CComponent*> >::_M_inser
     _M_clear();_M_set(newStart,newFinish,newStart+len);
 }
 #pragma optimize("", on)
+#ifdef FABLE_RETAIL_STLP_COMPONENT_FILL_N_VISIBLE_PASS26
+#pragma optimize("s",on)
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+NUISystem::CComponent** FABLE_FASTCALL fill_n(NUISystem::CComponent** first,unsigned int n,NUISystem::CComponent* const& x) {
+    for(;n>0;--n,++first) *first=x;
+    return first;
+}
+#pragma optimize("",on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_STLP_INVENTORY_LONG_OWNERS_PASS27
+// Stock speed-built vector<long> owners. Native 00440590 selects the POD copy;
+// native 00440990 performs its two copies around fill_n. Both operate on longs.
+template<> inline vector<long>::iterator vector<long>::erase(iterator first,iterator last) {
+    iterator result = static_cast<iterator>(__copy_trivial(last,this->_M_finish,first));
+    this->_M_finish=result;
+    return first;
+}
+template<> inline void vector<long>::_M_insert_overflow(iterator position,const long& x,const __true_type&,size_type fillLength,bool atEnd) {
+    const size_type oldSize=size();
+    const size_type len=oldSize+(max)(oldSize,fillLength);
+    long* newStart=this->_M_end_of_storage.allocate(len);
+    long* newFinish=(long*)__copy_trivial(this->_M_start,position,newStart);
+    newFinish=fill_n(newFinish,fillLength,x);
+    if(!atEnd) newFinish=(long*)__copy_trivial(position,this->_M_finish,newFinish);
+    _M_clear();
+    _M_set(newStart,newFinish,newStart+len);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_LONG_PUSHBACK_OWNER_PASS26
+// The 00485ff3 owner uses a frame pointer and optimizes for size. Preserve the
+// STLport 4.6 body both for callers and for the standalone copy exported here.
+#ifdef _MSC_VER
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+#endif
+template<> inline void vector<long, allocator<long> >::push_back(const long& x) {
+    if (this->_M_finish != this->_M_end_of_storage._M_data) {
+        _Construct(this->_M_finish, x);
+        ++this->_M_finish;
+    } else {
+        _M_insert_overflow(this->_M_finish, x, _IsPODType(), 1, true);
+    }
+}
+#ifdef _MSC_VER
+#pragma optimize("", on)
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY
 // NF213 opt-in (2026-11-21, q6333 / q6342; rows 0x00541390, ...). Fidelity: scaffolding, not retail. A row that expands
@@ -2534,5 +2766,40 @@ template<> inline void vector<NUISystem::CComponent*,allocator<NUISystem::CCompo
 #pragma optimize("", on)
 #endif
 
+#ifdef FABLE_RETAIL_STLP_BOOL_FILL_OWNER_PASS26
+// Native00451583 has a frame and calls00450ccc _Vector_base before its byte fill loop.
+// Same original STLport bodies; specialize only the bool fill helper and constructor.
+template<> FABLE_FORCEINLINE bool* fill_n<bool*,unsigned int,bool>(bool* first,unsigned int n,const bool& x) { for(;n>0;--n,++first)*first=x;return first; }
+template<> FABLE_FORCEINLINE bool* uninitialized_fill_n<bool*,unsigned int,bool>(bool* first,unsigned int n,const bool& x) {
+ typedef __type_traits<bool>::is_POD_type IsPOD;
+ return __uninitialized_fill_n(first,n,x,IsPOD());
+}
+}
+#pragma optimize("s",on)
+#pragma optimize("y",off)
+namespace std {
+template<> __declspec(noinline) inline vector<bool,allocator<bool> >::vector(unsigned int n,const bool& value,const allocator<bool>& a):_Vector_base<bool,allocator<bool> >(n,a) {
+ this->_M_finish=uninitialized_fill_n(this->_M_start,n,value);
+}
+#pragma optimize("",on)
+#endif
+
+#ifdef FABLE_RETAIL_STLP_DESTROY_AUX_PAIR_LONG_CCHARSTRING_SIZE_BODY
+// NF254 opt-in (2026-11-22, CODEXP27 L4 / L5; row 0x0074FCE0 vector<pair<long, CCharString> >::_M_insert_overflow, a /Gr TU).
+// Fidelity: scaffolding, not retail. That TU's _M_clear expands the element destroy loop in place (0x0074FD98..0x0074FDAD), but c1
+// still instantiates the range destroy __destroy_aux<pair<long, CCharString>*> (fastcall under /Gr: ??$__destroy_aux@...@std@@YIX...),
+// a pick-any COMDAT the linker can keep. Retail kept the 29-byte copy (each element's ??_G called with flag 0) from a size-optimised
+// TU, row 0x004DD782 (its Leaf), which sets `#pragma optimize("s", on)` itself; the plain /O2 copy expands ~pair (36 bytes). A pick-any
+// template copy takes the optimize mode in force at the END of the TU (NF216), so this explicit specialization compiles the same STLport
+// 4.6 _construct.h body in place under optimize("s", on), as the owner's TU did. `#pragma optimize("", on)` below returns to the
+// command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not carry a row-head optimize pragma
+// before its include of this header (nf189). Needs CCharString complete (fable_string.h first) and a /Gr TU (the primary template's
+// default convention then is __fastcall, as the owner's symbol is).
+#pragma optimize("s", on)
+template<> inline void __destroy_aux<pair<long,CCharString>*>(pair<long,CCharString>* first,pair<long,CCharString>* last,const __false_type&) {
+    for(;first!=last;++first) _Destroy(&*first);
+}
+#pragma optimize("", on)
+#endif
 }
 #endif

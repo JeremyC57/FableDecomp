@@ -1,0 +1,8 @@
+## HEAD set: H_0063a760.obj H_0081f630.obj
+duplicates 0
+
+UNRESOLVED 1 ?IsPassableAtBlock@CMap@@QBE_NABVC2DCoordI@@@Z
+## new set: N_0063a760.obj H_0081f630.obj
+duplicates 0
+
+LK_DONE

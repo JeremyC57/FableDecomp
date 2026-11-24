@@ -1,0 +1,82 @@
+NO_ROW	-	??1CCombatActionBase@@UAE@XZ
+SAME	0062ea10	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ
+SAME	00859a20	?FinishAction@CCombatActionBase@@MAEXXZ	?FinishAction@CCombatActionBase@@MAEXXZ
+SAME	008e63b0	?FinishAction@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ	?FinishAction@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ
+SAME	00845c70	?FinishAction@CCreatureAction_StartSneaking@@UAEXXZ	?FinishAction@CCreatureAction_StartSneaking@@UAEXXZ
+SAME	00859d80	?FrameUpdate@CCombatActionBase@@UAEXXZ	?FrameUpdate@CCombatActionBase@@UAEXXZ
+SAME	0062ea80	?GetActionMovementVector@CCombatActionBase@@UBE?AVC3DVector@@XZ	?GetActionMovementVector@CCombatActionBase@@UBE?AVC3DVector@@XZ
+LEAF_DIFF	0062ea00	?GetAnimDelayTime@CCombatActionBase@@UBEJXZ	(no Leaf)
+LEAF_DIFF	00865a90	?GetAnimDelayTime@CCreatureAction_BeDazed@@UBEJXZ	(no Leaf)
+SAME	0062ea20	?GetAnimExtraFlags@CCombatActionBase@@UBEKXZ	?GetAnimExtraFlags@CCombatActionBase@@UBEKXZ
+SAME	006924d0	?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ	?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ
+LEAF_DIFF	0084a820	?GetAnimExtraFlags@CCreatureAction_DropGenericBox@@UBEKXZ	(no Leaf)
+LEAF_DIFF	00941ba0	?GetAnimExtraFlags@CCreatureAction_PlayHopscotch@@UBEKXZ	(no Leaf)
+LEAF_DIFF	008565b0	?GetAnimationIndex@CCombatActionBase@@UBEJXZ	(no Leaf)
+LEAF_DIFF	008571a0	?GetAnimationTransitionInTime@CCombatActionBase@@UBEJXZ	(no Leaf)
+LEAF_DIFF	00865a80	?GetAnimationTransitionInTime@CCreatureAction_BeDazed@@UBEJXZ	(no Leaf)
+SAME	00856ea0	?GetDamageMultiplier@CCombatActionBase@@UBEMXZ	?GetDamageMultiplier@CCombatActionBase@@UBEMXZ
+SAME	008571c0	?GetFrameUpdateTime@CCombatActionBase@@UBEMXZ	?GetFrameUpdateTime@CCombatActionBase@@UBEMXZ
+SAME	0062eac0	?GetIsToFaceTargetCone@CCombatActionBase@@UBEMXZ	?GetIsToFaceTargetCone@CCombatActionBase@@UBEMXZ
+SAME	0062ead0	?GetIsToFaceTargetMinDist@CCombatActionBase@@UBEMXZ	?GetIsToFaceTargetMinDist@CCombatActionBase@@UBEMXZ
+SAME	008575c0	?GetNextPos@CCombatActionBase@@UBE?AVC3DVector@@XZ	?GetNextPos@CCombatActionBase@@UBE?AVC3DVector@@XZ
+SAME	008570d0	?GetStrikeEventHelperName@CCombatActionBase@@UBE?AVCCharString@@XZ	?GetStrikeEventHelperName@CCombatActionBase@@UBE?AVCCharString@@XZ
+SAME	00856dd0	?GetTotalTimeSeconds@CCombatActionBase@@UBEMXZ	?GetTotalTimeSeconds@CCombatActionBase@@UBEMXZ
+LEAF_DIFF	00857d10	?GetWeaponTrailUsedInStrikeAction@CCombatActionBase@@MBEPAVCTCWeaponTrail@@AAJ@Z	GetWeaponTrailUsedInStrikeAction
+SAME	008ed850	?Initialise@CCreatureAction_BeDazed@@UAEXXZ	?Initialise@CCreatureAction_BeDazed@@UAEXXZ
+SAME	008e6690	?Initialise@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ	?Initialise@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ
+SAME	008b7920	?Initialise@CCreatureAction_GetUpFromSitting@@UAEXXZ	?Initialise@CCreatureAction_GetUpFromSitting@@UAEXXZ
+LEAF_DIFF	008546a0	?Initialise@CCreatureAction_SpiritReturnToHero@@UAEXXZ	?CCreatureAction_SpiritReturnToHero_Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z
+LEAF_DIFF	00856240	?InitialiseActionMovement@CCombatActionBase@@MAEXXZ	(no Leaf)
+LEAF_DIFF	00856170	?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ	(no Leaf)
+LEAF_DIFF	00856190	?IsActionReadyForInterruptionByMovement@CCombatActionBase@@UBE_NABVC3DVector@@@Z	(no Leaf)
+SAME	00857150	?IsActionWithStrikeEventHelperName@CCombatActionBase@@MBE_NXZ	?IsActionWithStrikeEventHelperName@CCombatActionBase@@MBE_NXZ
+LEAF_DIFF	008562d0	?IsBlockCounter@CCombatActionBase@@MBE_NXZ	(no Leaf)
+SAME	00857220	?IsBlockable@CCombatActionBase@@MBE_NXZ	?IsBlockable@CCombatActionBase@@MBE_NXZ
+LEAF_DIFF	008e6e20	?IsBlockable@CCreatureAction_CastStrengthMultiStrikeProper@@UBE_NXZ	(no Leaf)
+SAME	00857cb0	?IsDecapitatingAttack@CCombatActionBase@@MBE_NXZ	?IsDecapitatingAttack@CCombatActionBase@@MBE_NXZ
+LEAF_DIFF	008565d0	?IsKnockdownStrike@CCombatActionBase@@MBE_NXZ	(no Leaf)
+SAME	008565c0	?IsMeleeFlourish@CCombatActionBase@@MBE_NXZ	?IsMeleeFlourish@CCombatActionBase@@MBE_NXZ
+LEAF_DIFF	00856300	?IsMovementUsingPhysics@CCombatActionBase@@MBE_NXZ	(no Leaf)
+LEAF_DIFF	008601d0	?IsMovementUsingPhysics@CCreatureAction_GetUpFromSitting@@UBE_NXZ	@CCreatureAction_GetUpFromSitting_IsMovementUsingPhysics@4
+LEAF_DIFF	008601c0	?IsPreventingLookTurning@CCreatureAction_GetUpFromSitting@@UBE_NXZ	(no Leaf)
+LEAF_DIFF	008601b0	?IsPreventingNormalMovement@CCreatureAction_GetUpFromSitting@@UBE_NXZ	(no Leaf)
+LEAF_DIFF	0062d7c0	?IsPreventingNormalMovement@CCreatureAction_StartSneaking@@UBE_NXZ	(no Leaf)
+LEAF_DIFF	0062d860	?IsPreventingNormalMovement@CCreatureAction_StopSneaking@@UBE_NXZ	(no Leaf)
+SAME	0062ea30	?IsStrikeAction@CCombatActionBase@@UBE_NXZ	?IsStrikeAction@CCombatActionBase@@UBE_NXZ
+SAME	00856f80	?IsStrikeEvent@CCombatActionBase@@UBE_NJ@Z	?IsStrikeEvent@CCombatActionBase@@UBE_NJ@Z
+SAME	00856fe0	?IsStrikeEventActive@CCombatActionBase@@UBE_NXZ	?IsStrikeEventActive@CCombatActionBase@@UBE_NXZ
+SAME	00857030	?IsStrikeEventFinishedBeingActive@CCombatActionBase@@UBE_NXZ	?IsStrikeEventFinishedBeingActive@CCombatActionBase@@UBE_NXZ
+SAME	0062ea50	?IsToAlignWithGroundNormal@CCombatActionBase@@UBE_NXZ	?IsToAlignWithGroundNormal@CCombatActionBase@@UBE_NXZ
+SAME	0062ea60	?IsToFaceTarget@CCombatActionBase@@UBE_NXZ	?IsToFaceTarget@CCombatActionBase@@UBE_NXZ
+SAME	0062ea70	?IsToFaceTargetAtStart@CCombatActionBase@@UBE_NXZ	?IsToFaceTargetAtStart@CCombatActionBase@@UBE_NXZ
+SAME	0062eab0	?IsToHitProneThings@CCombatActionBase@@UBE_NXZ	?IsToHitProneThings@CCombatActionBase@@UBE_NXZ
+SAME	0062eaa0	?IsToPerformActionOnStrike@CCombatActionBase@@UBE_NXZ	?IsToPerformActionOnStrike@CCombatActionBase@@UBE_NXZ
+SAME	0062ea40	?IsToUseRotationInAnimation@CCombatActionBase@@UBE_NXZ	?IsToUseRotationInAnimation@CCombatActionBase@@UBE_NXZ
+LEAF_DIFF	008562f0	?IsUsingAnimationMovement@CCombatActionBase@@MBE_NXZ	(no Leaf)
+LEAF_DIFF	00941bb0	?IsUsingAnimationMovement@CCreatureAction_PlayHopscotch@@UBE_NXZ	(no Leaf)
+LEAF_DIFF	008562e0	?IsVitalStrike@CCombatActionBase@@MBE_NXZ	(no Leaf)
+SAME	00859ef0	?OnAnimationLoaded@CCombatActionBase@@MAEXXZ	?OnAnimationLoaded@CCombatActionBase@@MAEXXZ
+LEAF_DIFF	008b6530	?OnAnimationLoaded@CCreatureAction_GetUpFromSitting@@UAEXXZ	?OnAnimationLoaded@CCreatureAction_GetUpFromSitting@@QAEXXZ
+SAME	00858cc0	?OnBlowBlocked@CCombatActionBase@@UAEX_N@Z	?OnBlowBlocked@CCombatActionBase@@UAEX_N@Z
+LEAF_DIFF	0062e9f0	?PerformAction@CCombatActionBase@@UAEXXZ	(no Leaf)
+SAME	008424a0	?PerformAction@CCreatureAction_ActivateZTarget@@UAEXXZ	?PerformAction@CCreatureAction_ActivateZTarget@@UAEXXZ
+LEAF_DIFF	00849320	?PerformAction@CCreatureAction_AlertToPlayer@@UAEXXZ	(no Leaf)
+LEAF_DIFF	00865a70	?PerformAction@CCreatureAction_BeDazed@@UAEXXZ	(no Leaf)
+LEAF_DIFF	00849140	?PerformAction@CCreatureAction_CallSpouseHome@@UAEXXZ	(no Leaf)
+LEAF_DIFF	009111f0	?PerformAction@CCreatureAction_Curiosity@@UAEXXZ	(no Leaf)
+SAME	00848d10	?PerformAction@CCreatureAction_DropGenericBox@@UAEXXZ	?PerformAction@CCreatureAction_DropGenericBox@@UAEXXZ
+SAME	00845fe0	?PerformAction@CCreatureAction_DropWeapon@@UAEXXZ	?PerformAction@CCreatureAction_DropWeapon@@UAEXXZ
+SAME	008b79a0	?PerformAction@CCreatureAction_GetUpFromSitting@@UAEXXZ	?PerformAction@CCreatureAction_GetUpFromSitting@@UAEXXZ
+LEAF_DIFF	008424d0	?PerformAction@CCreatureAction_LookThroughWindow@@UAEXXZ	(no Leaf)
+LEAF_DIFF	00849250	?PerformAction@CCreatureAction_OrderSecuritySweep@@UAEXXZ	(no Leaf)
+LEAF_DIFF	0084b490	?PerformAction@CCreatureAction_PlayAnimationFromIndex@@UAEXXZ	(no Leaf)
+LEAF_DIFF	00941b90	?PerformAction@CCreatureAction_PlayHopscotch@@UAEXXZ	(no Leaf)
+LEAF_DIFF	008422e0	?PerformAction@CCreatureAction_ShowFear@@UAEXXZ	(no Leaf)
+SAME	00854720	?PerformAction@CCreatureAction_SpiritReturnToHero@@UAEXXZ	?PerformAction@CCreatureAction_SpiritReturnToHero@@UAEXXZ
+SAME	0084a290	?PerformAction@CCreatureAction_StartFillingTankard@@UAEXXZ	?PerformAction@CCreatureAction_StartFillingTankard@@UAEXXZ
+LEAF_DIFF	0062d7b0	?PerformAction@CCreatureAction_StartSneaking@@UAEXXZ	(no Leaf)
+SAME	0084a2f0	?PerformAction@CCreatureAction_StopFillingTankard@@UAEXXZ	?PerformAction@CCreatureAction_StopFillingTankard@@UAEXXZ
+SAME	00845bc0	?PerformAction@CCreatureAction_StopSneaking@@UAEXXZ	?PerformAction@CCreatureAction_StopSneaking@@UAEXXZ
+LEAF_DIFF	00842250	?PerformAction@CCreatureAction_YellOverHere@@UAEXXZ	(no Leaf)
+SAME	00856d30	?UpdateActionMoveToPos@CCombatActionBase@@MAEXXZ	?UpdateActionMoveToPos@CCombatActionBase@@MAEXXZ
+LEAF_DIFF	008579d0	?UpdateActionRunningTime@CCombatActionBase@@UAEXXZ	?UpdateActionRunningTime@CCombatActionBase

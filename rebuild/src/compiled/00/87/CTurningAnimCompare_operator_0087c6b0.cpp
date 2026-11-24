@@ -21,7 +21,7 @@ static const float QUARTER_PI = 0.78539819f;
 
 class CAnimationEntry {
 public:
-    void GetRotationInAnimation(float* rotation) const; // 0x005DBFD0
+    void GetRotationInAnimation(float& rotation) const; // 0x005DBFD0
 };
 
 class C2DVector { public:
@@ -42,7 +42,7 @@ public:
 bool CTurningAnimCompare::operator()(const CAnimationEntry* entry) const
 {
     float rotation;
-    entry->GetRotationInAnimation(&rotation);
+    entry->GetRotationInAnimation(rotation);
     double entryAngle = rotation * (double)TWO_PI;
     C2DVector entryDirection((float)sin(entryAngle), (float)cos(entryAngle));
     double wantedAngle = RotationAngle * (double)TWO_PI;

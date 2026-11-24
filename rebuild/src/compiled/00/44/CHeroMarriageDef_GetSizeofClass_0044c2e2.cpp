@@ -1,7 +1,10 @@
-// Leaf: ?CHeroMarriageDef_GetSizeofClass@@YIKPAX@Z
-unsigned long __fastcall CHeroMarriageDef_GetSizeofClass(void* self)
+// Leaf: ?GetSizeofClass@CHeroMarriageDef@@UAEKXZ
+#define FABLE_RETAIL_CHEROMARRIAGEDEF_RTTI_DECLS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCWIFE_MARRY
+#include "engine/CHeroMarriageDef.h"
+unsigned long CHeroMarriageDef::GetSizeofClass()
 {
-    (void)self;
     return 0xC8;
 }
-// Stand-in (owner rule 2026-11-05): CHeroMarriageDef_GetSizeofClass for CHeroMarriageDef::GetSizeofClass; RTTI vtable slot ?GetSizeofClass@CHeroMarriageDef@@UAEKXZ + PDB name set (egor/fablewin).
+// Flatten route (flatten_pilot v4, NF324): CHeroMarriageDef_GetSizeofClass -> CHeroMarriageDef::GetSizeofClass, the RTTI-placed PDB member; class model: engine/CHeroMarriageDef.h opt-in FABLE_RETAIL_CTCWIFE_MARRY, FABLE_RETAIL_CHEROMARRIAGEDEF_RTTI_DECLS (preamble of CTCWife_ReceivedNiceGiftIsOpinionReactionHappening_006d0630.cpp).

@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CSkeletalMorphDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CSkeletalMorphDef_GetSizeofClass()
+class CSkeletalMorphDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CSkeletalMorphDef::GetSizeofClass()
 {
     return 52;
 }

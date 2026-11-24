@@ -1,0 +1,3 @@
+N 005bd4ea NInventory::CTCInventoryBase::OpenInventory RELOCATION_MATCH flags= [] leaf=
+N 005bda1d NInventory::CCategory::GetHighlightedItemText RELOCATION_MATCH flags= [] leaf=?GetHighlightedItemText@CCategory@NInventory@@QBE?AVCWideString@@ABVCGameDefinitionManager@@@Z
+GR_DONE

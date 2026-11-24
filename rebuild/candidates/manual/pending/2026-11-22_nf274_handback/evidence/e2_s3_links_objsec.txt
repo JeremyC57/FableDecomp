@@ -1,0 +1,28 @@
+## link S3_00bda150 S3_00bd9ce0
+duplicates 0
+
+MAP 0001:00000360 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001360 f i S3_00bda150.obj
+## link S3_00bda150 S3_00bd9ce0 H_00bd9b90
+duplicates 1
+H_00bd9b90.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in S3_00bda150.ob
+MAP 0001:00000360 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001360 f i S3_00bda150.obj
+## link H_00bd9b90 S3_00bda150 S3_00bd9ce0
+duplicates 2
+S3_00bda150.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in H_00bd9b90.ob
+S3_00bd9ce0.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in H_00bd9b90.ob
+MAP 0001:000000b0 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 100010b0 f H_00bd9b90.obj
+## objsec HEAD v S3 00bda150
+DIFF 35 .text .text bytes False relocs False 63 92
+DIFF 36 .text .text bytes False relocs False 68 97
+DIFF 37 .text .text bytes False relocs False 72 101
+DIFF 38 .text .text bytes False relocs False 72 101
+DIFF 39 .text .text bytes False relocs False 75 104
+NOT_EQ 5
+## objsec HEAD v S3 00bd9ce0
+DIFF 35 .text .text bytes False relocs False 63 92
+DIFF 36 .text .text bytes False relocs False 68 97
+DIFF 37 .text .text bytes False relocs False 72 101
+DIFF 38 .text .text bytes False relocs False 72 101
+DIFF 39 .text .text bytes False relocs False 75 104
+NOT_EQ 5
+L3_DONE

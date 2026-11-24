@@ -1,0 +1,28 @@
+{
+  "test_sha256": "77d274787dd1bcd53bc839a1eec246b919ee0bd5c3c7db3b34e36201bcfbe7ec",
+  "compiler": "13.10.3077",
+  "test_flags": [
+    "/Od",
+    "/W3",
+    "/GR-"
+  ],
+  "output": "005f59c7_TEST PASS",
+  "source_sha256": "21e5685f35f1bdc67d6d8f2dfd1407d8e4ad9f483ea1a10545ca48316bd018c7",
+  "header_tree": "5bf00538c146",
+  "tag": "partial_tree_5bf00538c146_21e5685f",
+  "relation": "The final-tree run built and executed the packaged fixture. The production source was graded separately as recorded in the row grade.",
+  "earlier_fixture_evidence": {
+    "test_sha256": "77d274787dd1bcd53bc839a1eec246b919ee0bd5c3c7db3b34e36201bcfbe7ec",
+    "compiler": "13.10.3077",
+    "test_flags": [
+      "/Od",
+      "/W3",
+      "/GR-"
+    ],
+    "output": "005f59c7_TEST PASS",
+    "source_sha256": "21e5685f35f1bdc67d6d8f2dfd1407d8e4ad9f483ea1a10545ca48316bd018c7",
+    "tag": "expr_selected_original_template_parameters",
+    "portable": "GCC strict C++03 LP64 PASS",
+    "header_tree": "17db647dc01f"
+  }
+}

@@ -1,0 +1,293 @@
+entry	address	status	binders_respelled	note
+1	0x00B98A50	done	0x00BBC130	binder 0x00BBC130 (line 40: its local inline ctor `CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase* parent) : Parent(parent), NextSubPrimitive(0) { }`, the shared engine/CEngineSubPrimitiveBase.h default body; the four `subPrimitive(&primitive)` locals, lines 121 / 127 / 137 / 144). Its object defines the ctor pick-any (the type-30 case calls it): pickany v Fable.exe 0x00B98A50, HEAD AAV copy and new PAV copy both bytes_equal True, both relocations OK (CBaseClassNonCopyable ctor 0x0099A2F0, vtable 0x012A3E7C); 0x00BBBDB0's object already defines the same PAV copy (bytes_equal True); 0x00BBDDD0 binds PAV through the shared header. objsec ALL_EQ (its only table ??_7CEngineSubPrimitiveBase@@6B@ unchanged); link HEAD v new with controls: no new duplicate, nothing left unresolved
+2	0x00BBBDB0	skipped-port		measured (pick-any): binders 0x00BBBF70 / 0x00BE0CD0 define inline local ctors (both AAV). Respelled to PAV (held copies in work/held/): objsec ALL_EQ and their CEngineSubPrimitiveParticleGroup copy equals the owner 0x00BBBDB0 (pickany bytes / relocs equal), BUT their local CEngineSubPrimitiveBase model is `__declspec(novtable)`, so each object also emits a 28-byte ??0CEngineSubPrimitiveBase copy without the vtable store (pickany v 0x00B98A50: bytes_equal False). Under AAV at HEAD it shared a name with nothing; under the PDB PAV name it would join the equal copies of 0x00BBC130 / 0x00BBBDB0 in one pick-any group (a different body under one name), and the ParticleGroup copy would meet the owner's strong definition. Held: the novtable stand-in base needs a port (shared engine/CEngineSubPrimitiveBase.h) and the owner pick-any scaffolding (nf86 / nf88) first. Not in rows/
+3	0x00BACA20	skipped-port		binder opened (NF297 classed from spelling only): 0x00B321B0 line 26 declares the ctor with the stand-in struct CPrimitiveStatMap* (PDB std::map<unsigned long, unsigned long>&) and `long statIndex` (PDB EEnginePrimitiveStatIndex): stand-in parameter type, T3
+4	0x00B84990	skipped-port		binder opened: 0x00B849F0 line 28 declares SortList(CSubList&, bool) public on the stand-in CSubList (PDB private, CArray<CEngineSubPrimitiveRenderer::CSortElement>&); line 36 passes a CSubList& element: stand-in parameter type, T3
+5	0x00884E90	skipped-port		binder opened: 0x006B8640 lines 8-10 define CRadialBlurParams / CRadialBlurPositionParams / CScreenFilterParams at global scope (PDB: nested in CEnvironmentSpellEffectInterface, U key, @1@) and line 6 a CDisplacementParams that neither PDB name set has (0x00884F90 binding); the getters on its CScreenEffectPriorityStack model return the global types. Nesting the structs = a local-model re-scope (decision Q2: T1 or T3?)
+6	0x00884F60	skipped-port		as entry 5 (0x006B8640 line 13 / call 40; CRadialBlurPositionParams at global scope)
+7	0x00884FE0	skipped-port		as entry 5 (0x006B8640 line 15 / call 42; CScreenFilterParams at global scope)
+8	0x008854A0	skipped-port		binder opened: 0x008857E0 line 24 declares InterpolateRadialBlurParams on the stand-in struct CBlurParams (PDB nested CEnvironmentSpellEffectInterface::CRadialBlurParams), line 36 keeps the result in a CBlurParams local: stand-in type, T3
+9	0x00885680	skipped-port		as entry 8 (0x008857E0 line 25 / 37, stand-in CBlurPositionParams)
+10	0x009C3330	skipped-port		binders opened: 0x009C3AE0 line 78 FreeBuffer(CBufferChunk*) public with CBufferChunk at global scope (PDB protected, nested CFileInstaller::CBufferChunk, V key); 0x009C3C20 calls Get().FreeBuffer(...) from outside the class (protected access would need a friend); the self 0x009C3330 defines the stand-in SInstallBuffer_009c3330*: T3
+11	0x009C3A60	skipped-port		as entry 10 (0x009C3AE0 line 77 / call 90; 0x009C3C20 line 77 calls AllocateBuffer from outside the class)
+12	0x009C4440	skipped-port		binder opened: 0x009C53A0 line 136 IsFileCopyNecessary(const CFileInfoPointer&) public non-const on the stand-in CFileInfoPointer (PDB protected const, CCountedPointer<const CFileInstaller::CFileInfo>&); line 143 defines a same-TU noinline body under that stand-in: T3
+13	0x00698840	skipped-port		binders opened: the self 0x00698840 defines the stand-in CDefPointer_CCameraModeDef (line 77 / 80), 0x006988B0 binds it (line 69), 0x00698C30 / 0x00698E40 the stand-in CCameraDefPointer (lines 43 / 126); 0x00698B50 already spells CDefPointer<const CCameraModeDef> private: self + binders on stand-in types, T3
+14	0x006BB860	skipped-port		binder opened: 0x006BBC30 line 115 on the forward-declared stand-in struct CGenericVarVector, also used by its console-command template's function-pointer typedef (line 38): T3
+15	0x006BB940	skipped-port		as entry 14 (0x006BBC30 line 116)
+16	0x00512410	done	0x005140A0,0x00514050	sigdiff's STANDIN flag was wrong (CThingBuilding is a real PDB class): binders 0x005140A0 (line 15) and 0x00514050 (line 15, no table line: its HEAD object binds PAV) declare `bool operator()(const CThingBuilding* a, const CThingBuilding* b) const;` (their CThingBuilding* arguments convert implicitly; no cast). The self 0x00512410 (control) defines PBV. objsec ALL_EQ x2; link: the new set resolves PBV against the self (HEAD left PAV unresolved x2)
+17	0x00BE5BB0	skipped-port		binder opened (CLandscapeBackgroundTreeNode is a real PDB class; sigdiff's STANDIN flag was wrong): 0x00BF6F80 line 44 declares operator new(unsigned int, CLandscapeBackgroundTreeNode*) and line 81 passes `this` (a TreeNode); its TreeNode model (line 51) has no base, while the PDB TreeNode starts with a 12-byte base region (_padding_ +0..+8) and the PDB operator new takes CMovableResource*: the conversion needs a CMovableResource base in the model (new local model / header port), T3
+18	0x00811830	done	0x007BE0F9	binder 0x007BE0F9 (NThingShot::CTCShotDefinitionForcePushBall::OnCollision): line 107 `CEventHitBySpecialAbility(const CHitParameters& params, EHeroAbility ability);`, call line 182 `(hit, HERO_ABILITY_FORCE_PUSH)` (was the literal 1), and one added line 103 `#include "engine/EHeroAbility.h"` just above the NEntityEvents block (the shared Ego_r TPI enum, HERO_ABILITY_FORCE_PUSH=1; the force-push ball is the force-push ability; the six other census rows pass HERO_ABILITY_* enumerators). The self 0x00811830 (control) defines W4EHeroAbility. objsec ALL_EQ; link resolves it against the self
+19	0x00994700	skipped-port		binder opened: 0x009B08C0 line 63 takes CDiskFileWin32* and line 107 passes &file; its CDiskFileWin32 model (line 48) derives CBaseClassNonCopyable, not CAFile (line 44 is a static-only CAFile): CAFile& needs the CDiskFileWin32 : CAFile hierarchy in the model (port), T3
+20	0x00994780	skipped-port		measured: binder 0x009B08C0 line 64 `virtual ~CFileDataInputStream();` (its CDataInputStream base is polymorphic in engine/CDataInputStream.h) grades DIFFER(506v506) against retail (HEAD RELOCATION_MATCH): the virtual destructor changes the stack stream's destruction code. Not an in-place fix; T3 (the row's CFileDataInputStream model with the retail table)
+21	0x00445E90	done	0x008EDDD0	binder 0x008EDDD0 (CWillButtonHelperTimer::FrameUpdate): line 33 `IsAssignableSpecialMoveButtonInQueue(long button, EInputButtonEventType eventType, long playerNumber) const`, call line 155 `INPUT_BUTTON_TYPE_HELD` (was 2), two added lines 29 / 30 above its local CGamePlayerInterface: `#define FABLE_RETAIL_COMBAT_INPUT_PASS26` + `#include "engine/EInputButtonEventType.h"` (the shared enum: FableWin TPI 0x1a894, held = 2; Ego_r / FableWin W4EInputButtonEventType). The self 0x00445E90 (control) defines the PDB spelling. objsec ALL_EQ; link resolves it against the self
+22	0x00A86CD0	done	0x00A6DA40,0x00A6C850	binders 0x00A6DA40 (line 58 `static const CIPhysicsFacesSegmentBase* __fastcall Create(...)`; its RootSegment is already CCountedPointer<const CIPhysicsFacesSegmentBase>) and 0x00A6C850 (line 17 the same, line 30 `CCountedPointer<const CIPhysicsFacesSegmentBase> RootSegment;`: its Reset binding at 0x00A6E9A0 moves too, to ?Reset@?$CCountedPointer@$$CBVCIPhysicsFacesSegmentBase@@@@QAEXPBVCIPhysicsFacesSegmentBase@@@Z, the spelling 0x00A6DA40 already binds and both PDB name sets give). The self 0x00A86CD0 (control) defines PBV; the Reset self 0x00A6E9A0 (control) defines the stand-in ?Reset@CCountedPointer_00a6dd80@@QAEXPAX@Z (both Reset spellings unresolved before and after: NAME_FIXES). objsec ALL_EQ x2 (0x00A6DA40's tables unchanged); link resolves Create against the self
+23	0x00A03C20	done	0x00A669E0	binder 0x00A669E0 line 23 `void SetAsKeyboardKeyHeld(EInputKey key, double, double);` (its GetKey() already returns EInputKey; call line 57 unchanged). 0x009F50A0 already binds the PDB spelling. objsec ALL_EQ. The self 0x00A03C20 (control, MATCH) defines ?SetAsKeyboardKeyPressed@CInputEvent@@QAEXJNN@Z: a misnamed self (PDB order Pressed(EInputKey, double) / Held(EInputKey, double, double) / Released; its two doubles make it Held): NAME_FIXES; the PDB spelling stays unresolved as the JNN one was
+24	0x009F4C60	skipped-port		binders opened: the self 0x009F4C60 defines the stand-in QAE (long, long, CInputEvent*, long) on the stand-in CRetailVector (non-const begin/operator[]): the PDB const reference form needs const accessors on that stand-in container (port); 0x005BC5C6 / 0x0068FB90 / 0x007A7000 / 0x007A9960 bind the self's spelling (move only with it); 0x00651B04 binds QAE W4 PAV through engine/CInputManager.h's FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE opt-in, whose comment cites a spelling neither PDB name set has: a new add-only opt-in could move it (parked: header work, NAME_FIXES)
+25	0x00BE5E70	done	0x00BF6F80	binder 0x00BF6F80 lines 45-47: `const CSubPatchTreeLODLockElement* lockU, const CSubPatchTreeLODLockElement* lockV` (both PDB name sets PBV + back-reference; the call at line 81 passes literal zeros). The self 0x00BE5E70 (control) defines the PDB spelling. objsec ALL_EQ; link resolves it against the self. (The same row's operator new, entry 17, stays T3)
+26	0x00BF9FA0	skipped-port		binder opened: 0x00BFA8A0 line 37 `CAddPrimitiveDesc SetupPrimitiveDesc();` public with CAddPrimitiveDesc at global scope (PDB: NEnginePrimitiveManagerRepeatedZSprites::CAddPrimitiveDesc, private): a re-scope of the result type (as entries 5-7, decision Q2)
+27	0x0041DB1D	skipped-port		binder 0x005E4430 (witness) line 113 on a global `struct CComponent` (PDB NUISystem::CComponent, class); 147 census rows: a family re-scope / port of the CComponent stand-in, T3
+28	0x0041DB84	skipped-port		binder opened: 0x0041E61B line 12 `void ShowErrorMessage(long message);` called from its own stand-in static `ShowErrorMessageOnInstance(long message)` (line 13 / 16, a made-up wrapper) with its long parameter: the PDB ERRORMESSAGE_TYPE needs a cast of a stand-in parameter, T3
+29	0x0066E9E9	skipped-port		the self 0x0066E9E9 already defines the PDB spelling (its Leaf); the only wrong binder 0x0066EA46 line 54 passes the stand-in CVector<const CBase*> (PDB std::vector): T3
+30	0x0066EB11	done	0x0057713F,0x0059C8F2,0x005B36E9,0x005C3057,0x005CD33F,0x005F4A86,0x00602E30,0x00582944,0x0061A6A0	seven binders with local CManager models (decl `void RegisterScreen(const CBase& screen);`, call `->RegisterScreen(*this);`; `this` already converted to const CBase* there, the same derived -> base step) + the two that bind through engine/NHeroInformationScreens_CManager.h FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER (0x00582944 / 0x0061A6A0: one added `#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER_REFERENCE` line each + `*this`). Header: add-only opt-in _REGISTER_REFERENCE inside the _REGISTER block (`#ifdef` reference declaration / `#else` the unchanged pointer line / `#endif`), declaration only; both PDB name sets give ABVCBase@2 (Ego_r 0x006A104A, FableWin 0x02114C57), the self 0x0066EB11 (control) defines it. No assert / __LINE__ users in the header. equiv_check + planted control: NOTES. objsec ALL_EQ x9; link: see evidence/link_g2.txt
+31	0x00A64E70	skipped-port		binder opened: 0x00A650F0 line 17 InsertIntoTree(CMemoryArea*, CMemoryArea*) public with CMemoryArea a global struct (PDB protected, nested CMemoryAllocatorVariableSize::CMemoryArea, V key): re-scope (decision Q2) + a caller in another class (line 87, PParentAllocator->...: protected access needs a friend): T3
+32	0x00996CC0	done	0x00522160	binder 0x00522160 lines 264 / 277: its local CDataOutputStream::Write (slot 4) and CMemoryDataOutputStream::Write take `long length` (Ego_r ?Write@CMemoryDataOutputStream@@UAEXPBXJ@Z; the self 0x00996CC0 defines J); the calls pass unsigned GetLength() values (same push). The other census rows already declare `long`. objsec ALL_EQ (no table emitted). The self 0x00996CC0 (control) defines it NON-virtual, ?Write@CMemoryDataOutputStream@@QAEXPBXJ@Z (PDB UAE): the UAE J spelling stays unresolved as UAE K was (link_g2; NAME_FIXES)
+33	0x009E97B0	skipped-port		binder opened: 0x00418C3B line 38 `CMemoryFile(const CWideString& path, long mode, unsigned long flags)`; its local `enum FileAccessType { FILE_ACCESS_2 = 2 };` (line 35, a made-up enumerator) has no value 3 for the call `CMemoryFile(path, 3, 2)`; no shared FileAccessType header exists: T3 (as NF297 entry 22)
+34	0x006AF3F0	done	0x0095E6D0	binder 0x0095E6D0 (FindMostRecentMessage<CMessageEventFilter_IsMyDeadLeader>): line 17 `bool operator()(const CMessageEvent& event) const;`, line 28 `filter(*event)` in its own template body (the instance's mangled name does not include the callee). The self 0x006AF3F0 (control) defines ABV. objsec ALL_EQ
+35	0x0082B7E0	done	0x0082BE60	binder 0x0082BE60 line 103 `protected: void DrawMarkers(const CEnginePrimitivePrepareInfo& info, ...); public:` (its caller DrawMap, line 144, is a member and passes its own reference). The self 0x0082B7E0 (control) defines the PDB spelling. objsec ALL_EQ
+36	0x006BD840	done	0x00891330	binder 0x00891330 line 4: its local CMusicManager declares `bool IsDangerMusicEnabled() const;` (was `__fastcall`: `this` travels in ecx either way, no arguments). The self 0x006BD840 (control) defines QBE. objsec ALL_EQ
+37	0x00A1CBF0	skipped-port		binder opened: 0x006CC6B0 line 83 `static CNavigatorBase* __fastcall Create(CNavigatorManager*, CNavigatorExternalInterface*)` on a CNavigatorAStar model with no base (CNavigatorBase only forward-declared, line 81); the PDB returns CNavigatorAStar* (pushed into a vector of CNavigatorBase*: needs the CNavigatorAStar : CNavigatorBase hierarchy) and takes references (line 146 passes `&CGroundNavigatorExternalInterface(creature)`): new local model, T3
+38	0x00A18F70	skipped-port		as entry 37 (0x006CC6B0 line 86 / 152, CNavigatorFlyer)
+39	0x0045E8ED	done	0x0045E808	binder 0x0045E808 line 28 `void TransferBinaryIn(CMemoryDataInputStream& stream);` and line 44 `(*value)[i].TransferBinaryIn(*stream);` inside its FABLE_FORCEINLINE local helper (the helper keeps its pointer parameter: inlined, no symbol). The self 0x0045E8ED (control) defines AAV. objsec ALL_EQ
+40	0x00B21940	skipped-port		binder 0x00B1B030 line 41 on a global struct CParticleUpdateParameters (PDB NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>, a template) and C3DVector* (PDB reference): stand-in type, T3
+41	0x00AEE940	skipped-port		binder opened: 0x00AEB990 forward-declares CIEngine inside namespace NParticleEngine (line 21; members +0x34 / +0x1014 use it); the PDB parameter is the global ::CIEngine (the self 0x00AEE940 spells `class CIEngine*`): a re-scope of the forward declaration (decision Q2)
+42	0x00AF0610	skipped-port		binder 0x006E14E0 line 59 on a global struct CParticleUpdateParameters (PDB NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>): stand-in type, T3
+43	0x00AE1320	done		the table witness 0x00AE2D20 is stale: its HEAD object (compiled control) already binds the PDB spelling ?ClingToMesh@CParticleProgram@@ABEXAAVCParticleSimulation@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@@Z (source line 83, private const references); no other row binds 0x00AE1320. TABLE_CHANGES: delete the QAE PAU... line (GOTCHAS 248, stale table)
+44	0x00AE3920	done	0x00AE3A30	binder 0x00AE3A30 line 16: its local STLport `template <class T> struct allocator {};` becomes `class` (EXTRA_RULES: allocator is class-keyed; both PDB name sets spell V?$allocator); the CBoneRemap map typedef then mangles as the PDB map for both its static call (0x00AE3920) and its own definition: a SELF rename too, ?RemapBoneIndices@CParticleProgram@@QAEXAAV?$map@...U?$allocator... -> ...V?$allocator... (Ego_r 0x00BF3A00 / FableWin 0x033371C0 spell the V form; 0x00AC3AF0, compiled control, UND-binds the V form and defines no copy: link_g4 shows it unresolved at HEAD and resolved by the new self). The self rename is of 0x00AE3A30, an address outside ENTRIES; its bare `// Leaf: RemapBoneIndices` is now the full mangled PDB leaf (GOTCHAS 479). objsec ALL_EQ
+45	0x00AE3C30	done	0x00AC3BD0,0x00AC3E00	binders 0x00AC3BD0 (line 61 `bool ReadFromFile(CDataInputStream& in, CMovableResourceMemoryPool& pool);`, line 86 `ReadFromFile(stream, *N3DMeshAllocators::ClothMemoryPool)`) and 0x00AC3E00 (no table line: found by the full census; line 50 / 80, the same edit); the global is a CMovableResourceMemoryPool*, so the same value is pushed. The self 0x00AE3C30 (control) defines AAV AAV. objsec ALL_EQ x2 (0x00AC3E00's ??_7C3DClothPrimitive table unchanged)
+46	0x00AF4EE0	done	0x00AEEFE0	binder 0x00AEEFE0 line 32 `void DatabaseCopy(const CParticleSystem& source);` (its local NParticleEngine::CParticleSystem model), line 153 `mine->DatabaseCopy(*system);`. The self 0x00AF4EE0 (control) defines ABV12. objsec ALL_EQ
+47	0x00AF5330	rejected		the entry's pdb_spelling is the VC10 Dinkumware instance (_List_iterator<_List_val<...>>); retail Fable.exe is STLport 4.6, where the iterator is _List_iterator<T, _Nonconst_traits<T> > as binder 0x00B0DC20 spells it (EXTRA_RULES: STLport, not the propagated Ego_r spellings; advisor ruling 2026-11-20: STL instance spellings are the repo STLport headers'). The self 0x00AF5330 spells the Dinkumware form through a local typedef: the self, not the binder, needs the STLport spelling (NAME_FIXES)
+48	0x00403FF0	skipped-port		CPersistTraits<bool>::TransferIn: the self 0x00403FF0 defines the pointer stand-in (line 56 / 59, CPersistContext* / CStringParser* / bool*); 0x00403FC0 binds it (unit with the self: a self respell through its body); 0x005DC7B0 passes `bool*` (line 25 / 34): the self respell is the step, T3 / CPersistTraits family
+49	0x0040EFB0	skipped-port		CPersistTraits family: the self 0x0040EFB0 defines a stand-in (CMemoryDataInputStreamReader*, const); 0x00464D23 binds the stand-in struct and DEFINES a same-TU noinline copy (line 67); 0x0067C200 defines strong `template <>` specializations (lines 93-108) under the pointer / const spelling: respelling them would make strong copies of the PDB symbol (NF281 D2), T3
+50	0x0040FE60	skipped-port		CPersistTraits family: 0x0043151D is off limits (T3 queue / reserved); 0x0046C3B9 / 0x006DBA50 define same-TU specializations under wrong spellings (strong copies), T3
+51	0x0044B890	skipped-port		CPersistTraits family: the self 0x0044B890 defines the CMemoryDataInputStreamReader stand-in; binder 0x00619130 line 52 binds the stand-in struct (const): T3
+52	0x0045E011	skipped-port		CPersistTraits family: binder 0x0067C020 defines a strong `template <> __declspec(noinline)` specialization for EOpinionReactionType under the const / pointer spelling (line 104): respelling it makes a strong copy of the self 0x0045E011's PDB symbol (NF281 D2), T3
+53	0x0045ED25	skipped-port		as entry 52 (0x0067C020 line 108, EOpinionAttitudeType; self 0x0045ED25)
+54	0x00464030	skipped-port		binder 0x00463F9C is off limits (T3 queue)
+55	0x00475B93	skipped-port		binder opened: 0x00475AA6 line 85 `TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const` (stand-in reader struct) and lines 87 / 104 define FABLE_FORCEINLINE / noinline specializations under that spelling: T3
+56	0x0047926C	done	0x007B45A0	binder 0x007B45A0 line 22: its local CPersistTraits<T> template member `void TransferBinaryIn(CMemoryDataInputStream& stream, T& value);`, line 60 `(*PLoadStream, value)` (PLoadStream is a CMemoryDataInputStream*). The self 0x0047926C (control: explicit instantiation) defines the PDB spelling. objsec ALL_EQ (its two tables unchanged)
+57	0x004CBC70	done	0x004CC3F0	binder 0x004CC3F0 line 21 / 60 as entry 56 (T = short). The self 0x004CBC70 (control) defines the CMemoryDataInputStreamReader stand-in (NAME_FIXES). NOTE: census rows 0x004C84B0 (line 68) and 0x004CA390 (line 71) already DEFINE `template<> void CPersistTraits<short>::TransferBinaryIn(CMemoryDataInputStream& stream, short& val)` strongly under the PDB spelling at HEAD (pre-existing same-TU copies, NF281 D2 debt): in a full link the moved reference can resolve to one of those copies, not to the self. objsec ALL_EQ (tables unchanged)
+58	0x004E959D	skipped-port		binder opened: 0x004EC85A line 98 `TransferBinaryOut(CDataOutputStreamWriter& stream, const CObjectAugmentationParticleSet& value) const` on the CDataOutputStreamWriter stand-in; the self 0x004E959D defines the pointer stand-in (line 32 / 35): T3
+59	0x0057F9E9	skipped-port		binder opened: 0x00581404 line 56 `TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const` (stand-in reader), line 72 `&out[i]`: T3
+60	0x005C0A98	skipped-port		binder opened: 0x005C12A1 line 48 `TransferBinaryOut(CDataOutputStreamWriter& stream, const T* value) const` (stand-in writer), line 57: T3
+61	0x005C0E81	done	0x005C0E41	binder 0x005C0E41 (its own stand-in CPersistContext_TransferableVector::TransferOut leaf unchanged): line 46 the local CPersistTraits<T> template member `TransferOut(CPersistContext& context, CCharString& out, const T& value)` (line 47 TransferIn likewise, unused here), line 61 `traits.TransferOut(*context, *out, (*TransVector)[index]);`. The self 0x005C0E81 (control) defines the PDB spelling. objsec ALL_EQ
+62	0x005C19A3	skipped-port		binder opened: 0x005C2AD8 line 64 `TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const` (stand-in reader), line 80: T3
+63	0x005C2118	done	0x005C20D8	binder 0x005C20D8: the same local model as 0x005C0E41 (lines 46 / 47), line 61 `traits.TransferIn(*context, *parser, (*TransVector)[index]);`. The self 0x005C2118 (control) defines the PDB spelling. objsec ALL_EQ
+64	0x0067AA40	skipped-port		binder opened: 0x0067C110 line 108 DEFINES `template <> __declspec(noinline) void CPersistTraits<EOpinionTargetingConditionType>::TransferBinaryIn(CMemoryDataInputStream&, EOpinionTargetingConditionType*) const` (a strong same-TU specialization under the const / pointer spelling; respelling it would make a strong copy of the self 0x0067AA40's explicit instantiation, NF281 D2): T3
+65	0x006B91A0	done	0x006BAD20,0x006BA030	binders 0x006BAD20 (line 34 template member `const T& value`, line 52 `*TransferableValue`) and 0x006BA030 (line 63 `TransferOut(CPersistContext& context, CCharString& out, const CFaction& value);`, line 71 `TransferOut(context, text, *value);` inside its own TransferBinaryOut, whose stand-in pointer leaf is unchanged). The self 0x006B91A0 (control) defines the PDB spelling. objsec ALL_EQ x2
+66	0x006BA480	done	0x006BACE0	binder 0x006BACE0 line 34 template member `T& value`, line 52 `*TransferableValue`. The self 0x006BA480 (control) defines AAV. objsec ALL_EQ
+67	0x006DC6A0	skipped-port		binder opened: 0x006DD580 line 63 `TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const` (stand-in reader), line 81: T3
+68	0x007AD7F0	done	0x007AD6D0	binder 0x007AD6D0 line 23 / 62 as entry 56 (T = EScriptingStateGroups). The self 0x007AD7F0 (control) defines the PDB spelling. objsec ALL_EQ (tables unchanged)
+69	0x007E3820	done-partial	0x00816150,0x00816000	binders 0x00816150 (line 70 `CDefString&`, line 89 `BaseName`) and 0x00816000 (no table line, full census; line 63 / 82, the same edit); their float specializations (another address) untouched. Left (T3): 0x00F33480 DEFINES CPersistTraits<CDefString>::TransferIn (line 32, `CDefString* value`) in its own TU (a strong same-TU copy, NF281 D2). The self 0x007E3820 (control) defines the pointer stand-in (NAME_FIXES): unresolved before and after. objsec ALL_EQ x2
+70	0x007E3930	skipped-port		binder 0x00F334A0 DEFINES CPersistTraits<CDefString>::TransferOut (line 32, `CDefString* value`) in its own TU: respelling it makes a strong copy of the PDB symbol (NF281 D2); the self 0x007E3930 defines the pointer stand-in too: T3
+71	0x009E81E0	done	0x00800400	binder 0x00800400 line 26 template member `T& value`, line 44 `*TransferableValue`. The self 0x009E81E0 (control) defines AAV. objsec ALL_EQ
+72	0x00A12450	open		not started
+73	0x00487EF0	open		not started
+74	0x004888C0	open		not started
+75	0x00437AE0	open		not started
+76	0x0043B570	open		not started
+77	0x00F07B80	open		not started
+78	0x004AFBB0	open		not started
+79	0x004B3A20	open		not started
+80	0x00F3AFC0	open		not started
+81	0x009DBFF0	open		not started
+82	0x009DD210	open		not started
+83	0x009DE3F0	open		not started
+84	0x00A10DC0	open		not started
+85	0x009FC5C0	open		not started
+86	0x009F4910	open		not started
+87	0x00CB7920	open		not started
+88	0x0082E600	open		not started
+89	0x0082E780	open		not started
+90	0x0082E910	open		not started
+91	0x0082E9C0	open		not started
+92	0x00555440	open		not started
+93	0x005556F0	open		not started
+94	0x0098B860	open		not started
+95	0x00A5D7C0	open		not started
+96	0x00A7DB10	open		not started
+97	0x00872110	open		not started
+98	0x00414E30	open		not started
+99	0x009BA110	open		not started
+100	0x00492973	open		not started
+101	0x00492E4B	open		not started
+102	0x00492F69	open		not started
+103	0x00493049	open		not started
+104	0x009F3230	open		not started
+105	0x009F35D0	open		not started
+106	0x009F36E0	open		not started
+107	0x009F37E0	open		not started
+108	0x009F4120	open		not started
+109	0x009F4590	open		not started
+110	0x009E5090	open		not started
+111	0x00729B20	open		not started
+112	0x007F7710	open		not started
+113	0x0078C210	open		not started
+114	0x007827D0	open		not started
+115	0x00782860	open		not started
+116	0x00783730	open		not started
+117	0x0079D360	open		not started
+118	0x007055D0	open		not started
+119	0x006CB780	open		not started
+120	0x006CBAC0	open		not started
+121	0x00681AE0	open		not started
+122	0x00682810	open		not started
+123	0x007E4B60	open		not started
+124	0x006E0480	open		not started
+125	0x00730630	open		not started
+126	0x0071AC70	open		not started
+127	0x0076C8A0	open		not started
+128	0x0076CC00	open		not started
+129	0x004D6292	open		not started
+130	0x006D4E60	open		not started
+131	0x006D50C0	open		not started
+132	0x006D5180	open		not started
+133	0x007986A0	open		not started
+134	0x004BFFD0	open		not started
+135	0x004C0240	open		not started
+136	0x00706640	open		not started
+137	0x006D6660	open		not started
+138	0x0057A6B8	open		not started
+139	0x0057BC6E	open		not started
+140	0x0057C4F1	open		not started
+141	0x008168B0	open		not started
+142	0x008169B0	open		not started
+143	0x00801920	open		not started
+144	0x00581DDB	open		not started
+145	0x00584B86	open		not started
+146	0x005EE49A	open		not started
+147	0x005EEA9B	open		not started
+148	0x005F0DC5	open		not started
+149	0x005F1320	open		not started
+150	0x005BF482	open		not started
+151	0x005D8E90	open		not started
+152	0x005FB140	open		not started
+153	0x0061A8A0	open		not started
+154	0x00753E90	open		not started
+155	0x007CD390	open		not started
+156	0x00766050	open		not started
+157	0x007660C0	open		not started
+158	0x0079DEB0	open		not started
+159	0x006B0210	open		not started
+160	0x006B0460	open		not started
+161	0x00772120	open		not started
+162	0x00773C00	open		not started
+163	0x007751A0	open		not started
+164	0x00770FA0	open		not started
+165	0x00746EC0	open		not started
+166	0x00747B80	open		not started
+167	0x0079ACC0	open		not started
+168	0x006E3180	open		not started
+169	0x007F5A70	open		not started
+170	0x007B9F60	open		not started
+171	0x007BA1D0	open		not started
+172	0x007BA8C0	open		not started
+173	0x005EB4B0	open		not started
+174	0x005ECA50	open		not started
+175	0x0078839A	open		not started
+176	0x007941D0	open		not started
+177	0x00658620	open		not started
+178	0x00658716	open		not started
+179	0x00659EFC	open		not started
+180	0x0065A8EE	open		not started
+181	0x007DF4B0	open		not started
+182	0x0076E4D0	open		not started
+183	0x007A0D90	open		not started
+184	0x009C8DE0	open		not started
+185	0x009F9DE0	open		not started
+186	0x009FA450	open		not started
+187	0x0081B0A0	open		not started
+188	0x004C8310	open		not started
+189	0x004C9030	open		not started
+190	0x00863750	open		not started
+191	0x008098B0	open		not started
+192	0x006619F0	open		not started
+193	0x00662B10	open		not started
+194	0x00663260	open		not started
+195	0x006644F0	open		not started
+196	0x006668A0	open		not started
+197	0x00835C80	open		not started
+198	0x006A7550	open		not started
+199	0x006A7E70	open		not started
+200	0x006A7930	open		not started
+201	0x006A76A0	open		not started
+202	0x006A7EB0	open		not started
+203	0x00799E30	open		not started
+204	0x006A7580	open		not started
+205	0x006A7590	open		not started
+206	0x006A7B20	open		not started
+207	0x0051E210	open		not started
+208	0x0051EC50	open		not started
+209	0x00520D00	open		not started
+210	0x00525CD0	open		not started
+211	0x006A5AF0	open		not started
+212	0x0083DDC0	open		not started
+213	0x00877840	open		not started
+214	0x00409090	open		not started
+215	0x00409FD0	open		not started
+216	0x0040BCA0	open		not started
+217	0x00AD89B0	open		not started
+218	0x00A3B0F0	open		not started
+219	0x00A0CCD0	open		not started
+220	0x0099B800	open		not started
+221	0x0049D930	open		not started
+222	0x0049E080	open		not started
+223	0x004A0CD0	open		not started
+224	0x00500EB0	open		not started
+225	0x00501990	open		not started
+226	0x00501D30	open		not started
+227	0x00502E90	open		not started
+228	0x0050A650	open		not started
+229	0x0063D4A0	open		not started
+230	0x009BD020	open		not started
+231	0x00493EAB	open		not started
+232	0x00632830	open		not started
+233	0x00632B90	open		not started
+234	0x00412C70	open		not started
+235	0x0040FCA0	open		not started
+236	0x0052B270	open		not started
+237	0x008786E0	open		not started
+238	0x007510D0	open		not started
+239	0x0083EBD0	open		not started
+240	0x00BFC880	open		not started
+241	0x00BFCA20	open		not started
+242	0x00BFCBC0	open		not started
+243	0x00BFCD60	open		not started
+244	0x0085F830	open		not started
+245	0x009EA060	open		not started
+246	0x006E2B70	open		not started
+247	0x00660AE2	open		not started
+248	0x00660B5D	open		not started
+249	0x00660BD8	open		not started
+250	0x00660C53	open		not started
+251	0x00660CCE	open		not started
+252	0x00660D49	open		not started
+253	0x00660787	open		not started
+254	0x00660894	open		not started
+255	0x0066090A	open		not started
+256	0x00660980	open		not started
+257	0x006609F6	open		not started
+258	0x00660A6C	open		not started
+259	0x00BFCF00	open		not started
+260	0x00BFCF90	open		not started
+261	0x00BFD020	open		not started
+262	0x0059B4FE	open		not started
+263	0x00479449	open		not started
+264	0x0053CB20	open		not started
+265	0x0042D1B7	open		not started
+266	0x007AEBE0	open		not started
+267	0x005E0E20	open		not started
+268	0x0046ACA8	open		not started
+269	0x004E9F20	open		not started
+270	0x00581284	open		not started
+271	0x006C9D50	open		not started
+272	0x006D4A20	open		not started
+273	0x006DD4A0	open		not started
+274	0x00721240	open		not started
+275	0x007B5210	open		not started
+276	0x00F33D90	open		not started
+277	0x00F34BF0	open		not started
+278	0x00F353F0	open		not started
+279	0x00405220	open		not started
+280	0x00497890	open		not started
+281	0x005578A0	open		not started
+282	0x00778610	open		not started
+283	0x0088AE40	open		not started
+284	0x00942B30	open		not started
+285	0x009E1E70	open		not started
+286	0x009E21D0	open		not started
+287	0x00CBE0C7	open		not started
+288	0x00CBE7AA	open		not started
+289	0x00CBE814	open		not started
+290	0x00CBED00	open		not started
+291	0x00CBED82	open		not started
+292	0x00CBEED2	open		not started

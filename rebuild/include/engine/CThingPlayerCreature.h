@@ -53,6 +53,9 @@ public:
     bool LearnExpression(const CCharString& expressionName, long quickAccessSlot, bool silent);   // 0x006AC430
 #endif
 public:
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ONHIT_PASS26
+    virtual void OnHit(CHitParameters&);
+#endif
     CThingPlayerCreature();
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingPlayerCreature@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();

@@ -109,7 +109,7 @@ public:
 };
 class CThingManager {
 public:
-    CThing* FindThingByUID(unsigned __int64 uid);   // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);   // 0x0051ED80; NF296: PDB name, was FindThingByUID
 };
 struct CGameClock { unsigned char _pad[0x14]; long Day; };
 class CWorld { public: unsigned char _pad[0x1c]; CGameClock* PClock; };
@@ -139,7 +139,7 @@ public:
 void CTCDummyVillager::OnInitialActivate()
 {
     if (HomeBuildingUID) {
-        CThing* thing = GetThingManager().FindThingByUID(HomeBuildingUID);
+        CThing* thing = GetThingManager().GetPThingWithUID(HomeBuildingUID);
         if (thing) {
             if (thing->ThingType == 3)
                 HomeBuilding = CIntelligentPointer<CThingBuilding>((CThingBuilding*)thing);
@@ -147,7 +147,7 @@ void CTCDummyVillager::OnInitialActivate()
             Respawnable = false;
     }
     if (WorkBuildingUID) {
-        CThing* thing = GetThingManager().FindThingByUID(WorkBuildingUID);
+        CThing* thing = GetThingManager().GetPThingWithUID(WorkBuildingUID);
         if (thing) {
             if (thing->ThingType == 3)
                 WorkBuilding = CIntelligentPointer<CThingBuilding>((CThingBuilding*)thing);
@@ -155,7 +155,7 @@ void CTCDummyVillager::OnInitialActivate()
             Respawnable = false;
     }
     if (CreatureUID) {
-        CThing* thing = GetThingManager().FindThingByUID(CreatureUID);
+        CThing* thing = GetThingManager().GetPThingWithUID(CreatureUID);
         if (thing && thing->ThingType == 1) {
             Creature = CIntelligentPointer<CThingAICreature>((CThingAICreature*)thing);
             CThingAICreature* c = Creature.Get();

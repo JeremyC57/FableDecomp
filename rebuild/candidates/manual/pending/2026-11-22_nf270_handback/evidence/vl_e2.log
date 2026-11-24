@@ -1,0 +1,10 @@
+addr       parity           behav  name
+0069fcd0   RELOCATION_MATCH PASS   PerformAction
+006a02b0   RELOCATION_MATCH PASS   FinishAction
+008cdd40   RELOCATION_MATCH PASS   FinishAction
+
+WINS: 3
+  0069fcd0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventoryWithHasteAction::?PerformAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ
+  006a02b0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventoryWithHasteAction::?FinishAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ
+  008cdd40 RELOCATION_MATCH CCreatureAction_ReleaseTimeSpell::?FinishAction@CCreatureAction_ReleaseTimeSpell@@UAEXXZ
+VL_DONE 0

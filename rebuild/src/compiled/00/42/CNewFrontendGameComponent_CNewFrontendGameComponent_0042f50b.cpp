@@ -1,107 +1,45 @@
 // CNewFrontendGameComponent::~CNewFrontendGameComponent() -- shut the front end down if that has not happened yet, then destroy the members (save name, file lists, banks, engine, def, init data, menu font) and the game-component base
-// Leaf: ??1CNewFrontendGameComponent
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+// Leaf: ??1CNewFrontendGameComponent@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042F50B, 158 bytes. Size TU (`#pragma optimize("s", on)`: `and dword ptr [esi+3Ch],0`).
-// Callees: CNewFrontendGameComponent::Shutdown @ 0x0042EBB6, ~CWideString @ 0x0099B510, vector<CWideString>::~vector @ 0x00412130,
-//   free @ 0x00BFEA14 (the POD vector's storage), the CCountedPointer destructors @ 0x00403750 / 0x0042F974 / 0x0042F9A0 /
-//   0x0042918C / 0x00419108 / 0x0042F948 (labels "_Dest_val<...COptimisedPrimitive>" are propagated byte twins),
-//   ~CMainGameComponentInit @ 0x004131D0, the def's virtual slot 1 (destroy), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (tail jump).
-//   Vtables 0x01230CA0 / 0x01230C94 (this class at +0 / +4), 0x0122ECB0 / 0x0122ECA4 (the game-component base).
-// Layout = Ego_r.pdb up to +0x6c (m_pMenuFont +0x10, m_bInitMainGame +0x2c, m_pFrontEndDef +0x3c, banks/engine +0x40..+0x60,
-//   FileNames +0x6c); the retail STLport vectors are 12 bytes, so FileTimes is +0x78 and SaveGame +0x84 (PDB +0x7c / +0x8c).
-//   The shut-down flag at +8 belongs to the game-component base.
-// Shape: members destroyed last to first; the def pointer's release is inline (local copy, `dec [ecx+4] ; jne`, slot 1, the zero
-//   store inside the null test); the trivially destructible vector frees its storage inline; the base's inline destructor
-//   stores its two vtables and tail-jumps to ~CBase. The size TU inlines the def release and the base destructor only when they
-//   are `__forceinline`.
+// Header port (NF233, 2026-11-22, q12638; the CNewFrontendGameComponent vtable / ctor / dtor family): engine/CNewFrontendGameComponent.h
+//   (RUN + FILENAMES_FILETIMES + the NF233 CTOR_DTOR opt-in: typed members, the ctor / dtor / Init / device-reset declarations, + SETQUIT
+//   so slot 4 binds 0x00430340), engine/CGameComponent.h (NF233 DTOR_INLINE: ~CGameComponent inline, as Ego_r.pdb has no copy of it),
+//   engine/CStopWatch.h (NF233 CTOR). Every local model of HEAD is gone (CBaseClassNonCopyable, the CGameComponentInterface stand-in base,
+//   CGameComponent, CFrontEndDef, CDefPointer_CFrontEndDef, CMainGameComponentInit, CDateAndTime, CDateAndTimeVector, the class itself).
+// Vtables (both emitted from the header build, the names retail's Ego_r.pdb / FableWin.pdb / Ego_d.pdb carry):
+//   ??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@ 0x01230CA0 (was the same; slots ??_E 0x004330D2, Init 0x0042F75E, Run 0x0042EC7C,
+//   ChangeTextureColourDepth 0x0042DC5C, SetQuit 0x00430340) and ??_7CNewFrontendGameComponent@@6BCDeviceResetCallback@@@ 0x01230C94 (was the
+//   stand-in 6BCGameComponentInterface@@@; slots OnPreDeviceReset 0x0042DC5F, OnPostDeviceReset 0x0042DC60); the base's
+//   ??_7CGameComponent@@6BCBaseClassNonCopyable@@@ 0x0122ECB0 / ??_7CGameComponent@@6BCDeviceResetCallback@@@ 0x0122ECA4 (was 6BCGameComponentInterface@@@).
+// Callees: CNewFrontendGameComponent::Shutdown @ 0x0042EBB6, ~CWideString @ 0x0099B510, vector<CWideString>::~vector @ 0x00412130 (called: its
+//   _Destroy loop is too big for the size TU), free @ 0x00BFEA14 (vector<CDateAndTime>'s destructor, expanded), the CCountedPointer<T>::ReleaseData
+//   rows @ 0x00403750 / 0x0042F974 / 0x0042F9A0 / 0x0042918C / 0x00419108 / 0x0042F948 (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY, NF221),
+//   ~CMainGameComponentInit @ 0x004131D0, the def's CDefPointer<const CFrontEndDef> release (header, inline), ~CBaseClassNonCopyable @ 0x0099A300
+//   (tail jump after the inline ~CGameComponent's two vtable stores).
+// Inline decisions (measured, NF233): at stock flags (no /d2inl flag, no __forceinline) the header ~CGameComponent {} and ~vector<CDateAndTime>
+//   expand and ~vector<CWideString> is called, as in retail. HEAD's local models force-inlined both; nothing is forced now.
+// Pragma scaffolding: `#pragma optimize("", on)` after the body restores the TU default before the pick-any copies (accepted form, nf226): the
+//   ~vector<CWideString> COMDAT then equals its owner 0x00412130 (49 B; under the size mode it is a 30-B copy). ??_GCNewFrontendGameComponent
+//   (owner 0x004330D2, 28 B, size) is generated with the vtable at the destructor and keeps the size mode.
+// Quit (+8, CGameComponent, Ego_r.pdb) is the flag HEAD called m_bShutDown.
 #include "fable_compiler.h"
 #pragma optimize("s", on)
-extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
-};
-struct CGameComponentInterface {
-    virtual void v00();
-};
-class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
-    bool m_bShutDown;                                      // +0x08
-    virtual FABLE_FORCEINLINE ~CGameComponent() { }
-};
-#include "engine/CCountedPointer.h"
-class CFontBank; class CGraphicDataBank; class CMeshDataBank; class CASoundBank; class CIEngine; class CInputManager;
-namespace NGameText { class CDataBank; }
-class CFrontEndDef { public:
-    virtual void v00();
-    virtual void Destroy();                                // slot 1
-    long m_count;                                          // +0x04
-};
-struct CDefPointer_CFrontEndDef {
-    CFrontEndDef* Data;
-    FABLE_FORCEINLINE ~CDefPointer_CFrontEndDef()
-    {
-        CFrontEndDef* def = Data;
-        if (def) {
-            if (--def->m_count == 0)
-                def->Destroy();
-            Data = 0;
-        }
-    }
-};
-class CMainGameComponentInit { public:
-    unsigned long _data[4];
-    ~CMainGameComponentInit();                             // 0x004131D0
-};
-// Name fix (agentNF54): the local CWideString / CWideStringVector stand-ins replaced by the shared fable_string.h and
-//   stlport/fable_containers.h: FileNames is std::vector<CWideString> (Ego_r.pdb member type), whose destructor 0x00412130 is
-//   ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ (Ego_r + FableWin; landed row 0x00412130), out of line
-//   in this TU (FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE); was ??1CWideStringVector@@QAE@XZ.
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CWIDESTRING
-#define FABLE_RETAIL_STLP_VECTOR_DTOR_OUTOFLINE
-#include "stlport/fable_containers.h"
-#include "fable_string.h"
-class CDateAndTime { public:
-    unsigned char _data[0x10];
-};
-struct CDateAndTimeVector {                                // STLport vector<CDateAndTime> over the malloc allocator
-    CDateAndTime* _M_start;
-    CDateAndTime* _M_finish;
-    CDateAndTime* _M_end_of_storage;
-    FABLE_FORCEINLINE ~CDateAndTimeVector()
-    {
-        if (_M_start)
-            free(_M_start);
-    }
-};
-enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
-class CNewFrontendGameComponent : public CGameComponent { public:        // vtables 0x01230CA0 / 0x01230C94
-    unsigned long                          m_reserved0c;               // +0x0c (base padding in the PDB view)
-    CCountedPointer<const CFontBank>       m_pMenuFont;                // +0x10
-    ECursorMovement                        CurrentMovement;            // +0x18
-    bool                                   StartedRepeatingMovement;   // +0x1c
-    double                                 TimeLastMovementHappened;   // +0x20
-    bool                                   m_bAllowInputs;             // +0x28
-    bool                                   m_bCreateGame;              // +0x29
-    bool                                   CreateDevFrontEnd;          // +0x2a
-    CMainGameComponentInit                 m_bInitMainGame;            // +0x2c
-    CDefPointer_CFrontEndDef               m_pFrontEndDef;             // +0x3c
-    CCountedPointer<CGraphicDataBank>      m_pFrontEndGraphicBank;     // +0x40
-    CCountedPointer<CMeshDataBank>         m_pMeshBank;                // +0x48
-    CCountedPointer<CASoundBank>           PSampleBank;                // +0x50
-    CCountedPointer<CIEngine>              m_pEngine;                  // +0x58
-    CCountedPointer<NGameText::CDataBank>  m_pTextBank;                // +0x60
-    CInputManager*                         m_pInputManager;            // +0x68
-    std::vector<CWideString>               FileNames;                  // +0x6c
-    CDateAndTimeVector                     FileTimes;                  // +0x78
-    CWideString                            SaveGame;                   // +0x84
-private:
-    void Shutdown();                                       // 0x0042EBB6 (NF35: Ego_r + FableWin private, AAE)
-public:
-    virtual ~CNewFrontendGameComponent();
-};
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#define FABLE_RETAIL_CGAMECOMPONENT_DTOR_INLINE
+#define FABLE_RETAIL_CSTOPWATCH_CTOR
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RUN
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_FILENAMES_FILETIMES
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_CTOR_DTOR
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_SETQUIT
+#include "engine/CGameComponent.h"
+#include "engine/CStopWatch.h"
+#include "engine/CNewFrontendGameComponent.h"
 
 CNewFrontendGameComponent::~CNewFrontendGameComponent()
 {
-    if (!m_bShutDown)
+    if (!Quit)
         Shutdown();
 }
+#pragma optimize("", on)

@@ -1,5 +1,5 @@
 // CParticleProgram::OptimiseConstraints() -- merge runs of same-typed constraint records in the program's constraint stream: each record is (type, count, data size, data); consecutive records of one type other than 0 and 1 are combined into a single record whose count and size are the sums and whose data is the concatenation; the merged stream then replaces the original
-// Leaf: OptimiseConstraints
+// Leaf: ?OptimiseConstraints@CParticleProgram@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADFDC0, 647 bytes (+ int3 padding), plain `ret`.
 // Callees: CMemoryDataInputStream(const CMemoryDataOutputStream&) 0x00995EE0 / ~ 0x00993B10 (label "~CChunkedFileChunk"),
 //   CMemoryDataOutputStream() 0x00996AF0 / ~ 0x00996B30 (label "~CCompressedMemoryDataInputStream") / Reset 0x00996B60 /
@@ -34,7 +34,7 @@ public:
     CMemoryDataOutputStream();                                         // 0x00996AF0
     virtual ~CMemoryDataOutputStream();                                        // 0x00996B30
     virtual void Write(const void* data, long length);                 // 0x00996CC0
-    void Reset();                                                      // 0x00996B60
+    void Clear();                                                      // 0x00996B60
     void const* PeekData() const;                                                  // 0x00995E70
 };
 #define FABLE_RETAIL_CDATAINPUTSTREAM
@@ -48,7 +48,9 @@ class CParticleProgram {
 public:
     unsigned char           _body00[0x114];
     CMemoryDataOutputStream Constraints;                               // +0x114
+    private:
     void OptimiseConstraints();
+    public:
 };
 
 void CParticleProgram::OptimiseConstraints()
@@ -77,7 +79,7 @@ void CParticleProgram::OptimiseConstraints()
             lastType = type;
             totalCount = count;
             totalSize = size;
-            data.Reset();
+            data.Clear();
         }
         in.CopyTo(data, size);
     }
@@ -87,6 +89,6 @@ void CParticleProgram::OptimiseConstraints()
         merged.WriteULONG(totalSize);
         merged.Write(((void*)data.PeekData()), ((CMemoryDataOutputStream*)&data)->GetLength());
     }
-    constraints.Reset();
+    constraints.Clear();
     constraints.Write(((void*)merged.PeekData()), ((CMemoryDataOutputStream*)&merged)->GetLength());
 }

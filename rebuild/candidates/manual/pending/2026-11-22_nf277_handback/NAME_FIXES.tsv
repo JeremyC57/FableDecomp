@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00BFD480	??1CEngineWaterBackgroundSubPatch@@UAE@XZ	Ego_r.pdb 00a4bba0 + FableWin.pdb 02e05150; reloc_bindings already binds it at 00bfd480 (binder 0x00BFDC90): HEAD self-vs-callers split, needs the row unit (REJECTED.tsv)	??1CEngineWaterBackgroundSubPatch@@QAE@XZ (self leaf of 0x00BFD480)

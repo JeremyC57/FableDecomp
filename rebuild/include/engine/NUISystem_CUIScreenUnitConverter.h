@@ -12,6 +12,12 @@ public:
     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ, retail 0x0040F0E0 (landed). Declaration only.
     static void __fastcall ResetDimensions();                // 0x0040F0E0
 #endif
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_SETISUSINGRELATIVECOORDS
+    // NF228 opt-in (2026-11-22, row 0x0041E3F6 NUISystem::CManager::CManager): Ego_r.pdb 0x00438D8A / FableWin.pdb 0x01AE527F
+    // ?SetIsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@SIX_N@Z (public static __fastcall), retail 0x004299A8 (landed; the
+    // constructor's `mov cl,1 ; call`). Declaration only.
+    static void __fastcall SetIsUsingRelativeCoords(bool relative);   // 0x004299A8
+#endif
 #if defined(FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS)
     // Both original complete types, exact private PUBLICs and GDATA32 declarations.
 private:

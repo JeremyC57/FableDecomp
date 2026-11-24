@@ -23,6 +23,7 @@
 //   (NF98 opt-in FABLE_RETAIL_CTCCREATUREGENERATOR_TRIGGERERS, which also types CreatureTriggerers +0x1C). The physics call at +0x7C is
 //   slot 31 ResetPosition (the shared CTCPhysicsBase order; slot 30 +0x78 is SetPosition), was a local slot-31 "SetPosition".
 // Leaf: ?UpdateUndead@CTCCreatureGenerator@@IAEXXZ
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS

@@ -67,6 +67,26 @@ public:
     void TransferOut(CPersistContext& context,CCharString& out,const T& value);
 #endif
 };
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_VECTOR_DEFAULT_PASS26
+// FableWin 01899CF0 constructs DefaultVal with two zero floats. Its vector writer
+// takes a reference at 019C73F6. Integral writers in the same PDB take values.
+template<> class CPersistTraits<C2DVector> {
+public:
+    C2DVector DefaultVal;
+    CPersistTraits() : DefaultVal(0.0f, 0.0f) {}
+    ~CPersistTraits() {}
+    void TransferBinaryIn(CMemoryDataInputStream& stream, C2DVector& value) { value=stream.Read2DVector(); }
+    void TransferBinaryOut(CDataOutputStream& stream, const C2DVector& value) { stream.Write2DVector(value); }
+};
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_ROUTE_BYTE_READER_PASS26
+// Both PDBs name the unsigned-byte reader. FableWin 018BE700 reads a signed long;
+// the retail helper at 00405940 only assigns the low byte to the supplied output.
+template<> inline void CPersistTraits<unsigned char>::TransferBinaryIn(CMemoryDataInputStream& stream, unsigned char& value) {
+    value=static_cast<unsigned char>(stream.ReadSLONG());
+}
+#endif
+#endif
+
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_COMBOMULTIPLIERDATA_BINARYOUT
 // NF81 opt-in (round 7, q10986 binder, row 0x006DC350 GFSerialiseMapBinaryOut<CComboMultiplierData, long>): the traits of
 // CHeroExperienceDef::ComboMultiplierMap's value, as the CWoundMorphs / CExpressionSet specialisations below: DefaultVal and the
@@ -274,6 +294,11 @@ public:
 template<> class CPersistTraits<unsigned __int64> {
 public:
     unsigned __int64 DefaultVal;
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_UID_DEFAULT_PASS27
+    // FableWin 01A628D0 and 01A62900 are the UID default constructor and destructor.
+    CPersistTraits() : DefaultVal() {}
+    ~CPersistTraits() {}
+#endif
     unsigned __int64 TransferBinaryIn(CMemoryDataInputStream&);
     void TransferBinaryIn(CMemoryDataInputStream&,unsigned __int64&);
     void TransferBinaryOut(CDataOutputStream& stream,const unsigned __int64& val) { stream.WriteUHUGE(val); }

@@ -141,6 +141,26 @@ parked `/GS` rows whose stack-cookie prologue 4035 could not reproduce now match
 and zero-register rows, the inline-once destructor band and the biased /GS frame (00581b33) do not change, so those are
 source-formulation questions, not compiler-build ones.
 
+## VC10 SP1 on the Linux lane (evidence only: cl 16.00.40219.01)
+
+Ego_d.pdb and FableWin.pdb were built with VC10 SP1 (compiland records `16.00.40219`; EGOD_FINDINGS.md), so their line tables are
+only comparable byte for byte with a VC10 compile. `S=$S bash tools/decomp_pipeline/linux_lane/fetch_vc10sp1.sh` fetches Microsoft's
+"Visual C++ 2010 SP1 Compiler Update for the Windows SDK 7.1" (KB2519277, `VC-Compiler-KB2519277.exe`, 126,890,440 bytes, sha256
+`46497a249dac03f8a6d6b4f4a737546246752ca751ae16c34127a1d784232645`) and copies the x86-native cl / c1 / c1xx / c2 / clui plus
+mspdb100 / msobj100 / msvcr100 / msvcp100 into `$S/wine/vc10sp1/bin` (no Windows SDK ISO needed), and VC10's include tree (msiextract,
+apt `msitools`) into `$S/wine/vc10sp1/include` plus a declaration-only `stubinc/ammintrin.h` (missing from the package). Then
+`python3 tools/decomp_pipeline/linux_lane/lane_tools/odall10.py [--lib fablelib|bbb|engine|particle|ego] [--stl] <src.cpp> <proc substr>...`
+compiles with the compile line of the Ego_d library the function belongs to (S_ENVBLOCK; they differ: FableLib / BBBLibrary /
+FableEngine / ParticleSystem use `-GS- -GR -Gr`, `-W4` or `-W3`, their own defines; only the game project's few objects use
+`-GS -GR- -Gd -D_STLP_DEBUG`; default `fablelib`) and prints the bytes per source line. Without `--stl` it uses the lane headers (VC7.1 CRT
++ rebuild/include), so a text on the repo's engine headers compiles and its non-STL statements compare exactly. Ego_d's library STL is
+VC10 Dinkumware (checked iterators), which the repo's STLport model cannot stand in for: measure STL statements with `--stl` (VC10 headers
+first) in a standalone text. Calibration (2026-11-21): AUTH2's 0x00A4EFC0 helpers all equal Ego_d (SetScaling 34, GetMaximumAbsoluteComponent
+259, GetBoneName 49, C3DVectorWord::operator== 86, SetupIdentityFlag 97; VC7.1 /Od gives SetScaling 30, GetMaximumAbsoluteComponent 227, GetBoneName 31); `--stl --lib bbb` reproduces
+all 13 `std::vector<unsigned long>` members of Ego_d's `BBBLibrary\Debug\lib_bank_file.obj` byte for byte (ctors 106 / 94,
+operator= 33, _Assign_rv 334, insert<_Vector_iterator> 205, _Insert 911, swap 222, ...). **Never build, grade or land a row with it**:
+rows are VC7.1 3077. Never commit its binaries or the package.
+
 ## Third-party source trees
 
 `bash tools/decomp_pipeline/libsig/fetch_lzo108.sh` (LZO 1.08, public) puts the vendor .asm that `lib_verify.py` proves 0x00C069D0 from under `$S/thirdparty/lzo/lzo-1.08`; `FABLE_THIRDPARTY` overrides the directory. `docs/pipeline/LIBRARY_SIGNATURES.md`.

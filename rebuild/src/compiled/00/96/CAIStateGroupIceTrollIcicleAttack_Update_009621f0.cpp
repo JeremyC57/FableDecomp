@@ -102,11 +102,11 @@ class CCreatureAction_IceTrollIcicleAttack : public CCombatActionBase { public: 
 };
 class CCreatureAction_RiseUp : public CCombatActionBase { public:
     long m_riseState;
-    CCreatureAction_RiseUp(CThingCreatureBase* creature);   // 0x008BD880
+    CCreatureAction_RiseUp(CThingCreatureBase& creature);   // 0x008BD880
 };
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     long m_loop;                                // retail sizeof 0x118 (frame)
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
+    CCreatureAction_PlayCombatAnimation(CThingCreatureBase& creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
 inline void SetPerformAction(CBrainOutput& output, CCombatActionBase* action)
 {
@@ -129,7 +129,7 @@ class CAIStateGroupBase { public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
-    long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
+    protected: EAIActionReturn AIAction_CombatPerformActionAndWait(const CCombatActionBase& action, bool wait); public:   // 0x0097DA40 (NF315: the PDB signature, Ego_r + FableWin)
     protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long flags, float turnSpeed); // 0x0097D6F0
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     void Terminate();                           // 0x008FCF40
@@ -150,7 +150,7 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
         }
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes) && modes->HasMode(0x1e)) {
-            long result = AIAction_PerformActionAndWait(CCreatureAction_RiseUp(GetCreature()), false);
+            long result = AIAction_PerformActionAndWait(CCreatureAction_RiseUp(*GetCreature()), false);
             if (result == 1) {
                 Terminate();
                 return;
@@ -180,7 +180,7 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
                 }
             }
             long result = AIAction_CombatPerformActionAndWait(
-                &CCreatureAction_PlayCombatAnimation(GetCreature(), "ICICLE_BOAST", true), false);
+                CCreatureAction_PlayCombatAnimation(*GetCreature(), "ICICLE_BOAST", true), false);
             if (result == 1) {
                 Terminate();
                 return;

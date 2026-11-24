@@ -1,0 +1,77 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x004BC4F0	NGraphicAppearance::CTCGraphicAppearance	GetMeshObject	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	NGraphicAppearance::CTCGraphicAppearance::GetMeshObject	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	Ego_r + FableWin IBE; binder 0x004C0560 already IBE (VC7.1 HEAD object); the 5 same-class binders moved with it; self Leaf is the prefix ?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@ (unchanged)
+0x00582027	CTCInventory	GetQuickAccessNextFreeSlot	?GetQuickAccessNextFreeSlot@CTCInventory@@QBEJJ@Z	CTCInventory::GetQuickAccessNextFreeSlot	?GetQuickAccessNextFreeSlot@CTCInventory@@QAEJJ@Z	Ego_r + FableWin QBE; binder 0x006AC430 already QBE; const on decl + definition; wider: the local CLongVector stand-in model gains a const operator[] on the same line (its pick-any COMDAT respells ??ACLongVector@@QAEAAJK@Z -> ??ACLongVector@@QBEABJK@Z, bytes equal); no Leaf line (none added)
+0x005D9070	CTCInventoryItem	GetDescription	?GetDescription@CTCInventoryItem@@QBE?AVCWideString@@XZ	CTCInventoryItem::GetDescription	?GetDescription@CTCInventoryItem@@QAE?AVCWideString@@XZ	Ego_r + FableWin QBE; binder 0x007CACB0 already QBE; const on decl + definition; no Leaf line (none added)
+0x006D7F20	CTCHeroExperience	UpdateComboMultiplier	?UpdateComboMultiplier@CTCHeroExperience@@AAEX_N@Z	CTCHeroExperience::UpdateComboMultiplier	?UpdateComboMultiplier@CTCHeroExperience@@QAEX_N@Z	Ego_r + FableWin AAE; binders 0x006D8790 / 0x006D8830 already AAE; T2 self: `private:` on the decl, Leaf respelled
+0x007FB4A0	CTCKraken	UpdateTentaclesOnly	?UpdateTentaclesOnly@CTCKraken@@AAEXXZ	CTCKraken::UpdateTentaclesOnly	?UpdateTentaclesOnly@CTCKraken@@QAEXXZ	Ego_r + FableWin AAE; binder 0x007FC9D0 already AAE; T2 self: `private:` on the decl, Leaf respelled
+0x007FBB00	CTCKraken	CreateHeadEffect	?CreateHeadEffect@CTCKraken@@AAEXABVCCharString@@@Z	CTCKraken::CreateHeadEffect	?CreateHeadEffect@CTCKraken@@QAEXABVCCharString@@@Z	Ego_r + FableWin AAE; binder 0x007FC9D0 already AAE, 0x007FBC30 moved with it; self `private:` (no Leaf line, none added)
+0x007FBC90	CTCKraken	GetCentreMarker	?GetCentreMarker@CTCKraken@@AAEXXZ	CTCKraken::GetCentreMarker	?GetCentreMarker@CTCKraken@@QAEXXZ	Ego_r + FableWin AAE; binder 0x007FC9D0 already AAE, 0x007FC8E0 moved with it; T2 self: `private:`, Leaf respelled
+0x004C8C00	CThing	UpdateThingScanInclusion	?UpdateThingScanInclusion@CThing@@IAEXXZ	CThing::UpdateThingScanInclusion	?UpdateThingScanInclusion@CThing@@QAEXXZ	Ego_r + FableWin IAE; binder 0x004C9C10 already IAE (engine/CThing.h, protected); the 3 same-class binders moved with it; self `protected:` (no Leaf line, none added)
+0x00659EA9	CTCVillage	RemoveThingFromAllTasks	?RemoveThingFromAllTasks@CTCVillage@@AAEXABVCThing@@@Z	CTCVillage::RemoveThingFromAllTasks	?RemoveThingFromAllTasks@CTCVillage@@QAEXABVCThing@@@Z	Ego_r + FableWin AAE; binder 0x0065BE6C already AAE (engine/CTCVillage.h); 0x0065B6DD moved with it; self `private:` (no Leaf line, none added)
+0x006626E0	CThingCreatureBase	GetAnimMovementVector	?GetAnimMovementVector@CThingCreatureBase@@QBE?AVC3DVector@@J@Z	CThingCreatureBase::GetAnimMovementVector	?GetAnimMovementVector@CThingCreatureBase@@QAE?AVC3DVector@@J@Z	Ego_r + FableWin QBE; binder 0x00692C80 already QBE; T2 self: `const` on decl + definition, Leaf respelled
+0x006AFA40	CTCPhysicsBase	ImpulseRespondToCollisonWithCylinder	?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@IBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z	CTCPhysicsBase::ImpulseRespondToCollisonWithCylinder	?ImpulseRespondToCollisonWithCylinder@CTCPhysicsBase@@QBE_NABVCPhysicsCollideResponse@@AAVC3DVector@@@Z	Ego_r + FableWin IBE; binder 0x00725500 already IBE (engine/CTCPhysicsBase.h, protected); T2 self: `protected:` on the decl, Leaf respelled
+0x006E2840	CTCTalk	GetCurrentSpeechDuration	?GetCurrentSpeechDuration@CTCTalk@@QBEMXZ	CTCTalk::GetCurrentSpeechDuration	?GetCurrentSpeechDuration@CTCTalk@@QAEMXZ	Ego_r + FableWin QBE; binder 0x00716B30 already QBE; 0x00957A20 / 0x0096F570 moved with it; self `const` on decl + definition (no Leaf line, none added)
+0x007674A0	CTCObjectAugmentations	ClearAllParticleEffects	?ClearAllParticleEffects@CTCObjectAugmentations@@AAEXXZ	CTCObjectAugmentations::ClearAllParticleEffects	?ClearAllParticleEffects@CTCObjectAugmentations@@QAEXXZ	Ego_r + FableWin AAE; binder 0x007676A0 already AAE; T2 self: `private:` on the decl, Leaf respelled
+0x0079E420	CTCPhysicalShieldSpell	PlayShieldEffects	?PlayShieldEffects@CTCPhysicalShieldSpell@@IAEXPAVCThingCreatureBase@@@Z	CTCPhysicalShieldSpell::PlayShieldEffects	?PlayShieldEffects@CTCPhysicalShieldSpell@@QAEXPAVCThingCreatureBase@@@Z	Ego_r + FableWin IAE; binder 0x0079EC10 already IAE; 0x0079EB30 moved with it; self `protected:` (no Leaf line, none added)
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00A64230	?GetSymbol@CParsedItem@@QBEABVCCharString@@XZ	?GetString@CParsedItem@@QBEABVCCharString@@XZ	0x009B9880
+0x004BDA30	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	0x004BC4F0
+0x004BDB40	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	0x004BC4F0
+0x004BDD70	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	0x004BC4F0
+0x004BDE90	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	0x004BC4F0
+0x004BE000	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	?GetMeshObject@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z	0x004BC4F0
+0x00564570	?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@QAEXXZ	?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ	0x00563920
+0x00564570	?DownloadScoreboardForSelectedClan@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	?DownloadScoreboardForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	0x00563480
+0x00564570	?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z	?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z	0x00560D00
+0x0057BE71	?GetPercentageThroughRenownLevel@CTCHeroStats@@QAEMXZ	?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ	0x0057AAD9
+0x0057CB7E	?GetMaxDrunkenness@CTCHeroStats@@QAEMXZ	?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ	0x0057A89D
+0x005AE972	?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@QAEXXZ	?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ	0x005A8C66
+0x005CAC8D	?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@QAEXXZ	?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@AAEXXZ	0x005CA68E
+0x00602F30	?TeleportToActiveRegion@CTCInventoryMap@@QAEXXZ	?TeleportToActiveRegion@CTCInventoryMap@@AAEXXZ	0x005FBFA0
+0x006AC690	?GetQuickAccessNextFreeSlot@CTCInventory@@QAEJJ@Z	?GetQuickAccessNextFreeSlot@CTCInventory@@QBEJJ@Z	0x00582027
+0x006C3E80	?AddCarriedThingsOfThingToFadeList@CTCFadeOutAndIn@@QAEXABVCThing@@@Z	?AddCarriedThingsOfThingToFadeList@CTCFadeOutAndIn@@AAEXABVCThing@@@Z	0x006C3CA0
+0x0072DDB0	?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QAEJABVCCharString@@M@Z	?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z	0x004BE000
+0x0072DF50	?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QAEJABVCCharString@@M@Z	?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z	0x004BE000
+0x00753C70	?IsAbleToTurnDaBody@CTCLook@@QAE_NXZ	?IsAbleToTurnDaBody@CTCLook@@ABE_NXZ	0x00751DA0
+0x00766A60	?AttemptToStartParticle@CTCObjectAugmentations@@QAEXAAV?$CIntelligentPointer@VCThing@@@@JJABVCCharString@@1@Z	?AttemptToStartParticle@CTCObjectAugmentations@@AAEXAAV?$CIntelligentPointer@VCThing@@@@JJABVCCharString@@1@Z	0x00766660
+0x0076D460	?IsEnemyOf@CTCEnemy@@QBE_NABVCThing@@@Z	?IsEnemyOf@CTCEnemy@@ABE_NABVCThing@@@Z	0x0076CCE0
+0x0077CD50	?DoMovement@CTCHighlightItem@@QAEXXZ	?DoMovement@CTCHighlightItem@@IAEXXZ	0x0077C960
+0x007E7AC0	?GetText@CTCFireheartMinigame@@QBE?AVCWideString@@K@Z	?GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z	0x007E7580
+0x007F08B0	?KillRippleFX@CTCKrakenTentacle@@QAEXXZ	?KillRippleFX@CTCKrakenTentacle@@AAEXXZ	0x007F07A0
+0x007F14F0	?ReturnToDesiredPos@CTCKrakenTentacle@@QAEX_N@Z	?ReturnToDesiredPos@CTCKrakenTentacle@@AAEX_N@Z	0x007F0F40
+0x007F14F0	?TrackTarget@CTCKrakenTentacle@@QAEXXZ	?TrackTarget@CTCKrakenTentacle@@AAEXXZ	0x007F0C70
+0x007F15D0	?ReturnToDesiredPos@CTCKrakenTentacle@@QAEX_N@Z	?ReturnToDesiredPos@CTCKrakenTentacle@@AAEX_N@Z	0x007F0F40
+0x007FBC30	?CreateHeadEffect@CTCKraken@@QAEXABVCCharString@@@Z	?CreateHeadEffect@CTCKraken@@AAEXABVCCharString@@@Z	0x007FBB00
+0x007FC8E0	?GetCentreMarker@CTCKraken@@QAEXXZ	?GetCentreMarker@CTCKraken@@AAEXXZ	0x007FBC90
+0x008BAB70	?GetReleaseAnimName@CTCFireballSpell@@QAE?AVCCharString@@XZ	?GetReleaseAnimName@CTCFireballSpell@@QBE?AVCCharString@@XZ	0x007C86F0
+0x009261F0	?GetDescription@CTCInventoryItem@@QAE?AVCWideString@@XZ	?GetDescription@CTCInventoryItem@@QBE?AVCWideString@@XZ	0x005D9070
+0x004C8CF0	?UpdateThingScanInclusion@CThing@@QAEXXZ	?UpdateThingScanInclusion@CThing@@IAEXXZ	0x004C8C00
+0x004C9B80	?UpdateThingScanInclusion@CThing@@QAEXXZ	?UpdateThingScanInclusion@CThing@@IAEXXZ	0x004C8C00
+0x004C9CA0	?UpdateThingScanInclusion@CThing@@QAEXXZ	?UpdateThingScanInclusion@CThing@@IAEXXZ	0x004C8C00
+0x00522880	?IsGameStatePersisted@CThing@@QAE_NXZ	?IsGameStatePersisted@CThing@@QBE_NXZ	0x004C8280
+0x005E4430	?GetQuestSummary@CTCQuestCard@@QAE?AVCWideString@@XZ	?GetQuestSummary@CTCQuestCard@@QBE?AVCWideString@@XZ	0x00702400
+0x0065B6DD	?RemoveThingFromAllTasks@CTCVillage@@QAEXABVCThing@@@Z	?RemoveThingFromAllTasks@CTCVillage@@AAEXABVCThing@@@Z	0x00659EA9
+0x006622D0	?IsUpdateNeeded@CThingBodyReorienter@@QAE_NXZ	?IsUpdateNeeded@CThingBodyReorienter@@QBE_NXZ	0x00863250
+0x00728400	?UpdateMorphSet@CTCRandomAppearanceMorph@@QAEXXZ	?UpdateMorphSet@CTCRandomAppearanceMorph@@AAEXXZ	0x007280C0
+0x00728460	?UpdateMorphSet@CTCRandomAppearanceMorph@@QAEXXZ	?UpdateMorphSet@CTCRandomAppearanceMorph@@AAEXXZ	0x007280C0
+0x00728470	?UpdateMorphSet@CTCRandomAppearanceMorph@@QAEXXZ	?UpdateMorphSet@CTCRandomAppearanceMorph@@AAEXXZ	0x007280C0
+0x0075B2D0	?InitialiseBody@CTCPhysicsRigidBody@@QAEXXZ	?InitialiseBody@CTCPhysicsRigidBody@@AAEXXZ	0x0075B000
+0x007888B4	?UpdateTriggerThings@CTCTrapBase@@QAEXXZ	?UpdateTriggerThings@CTCTrapBase@@IAEXXZ	0x007881AD
+0x0079EB30	?PlayShieldEffects@CTCPhysicalShieldSpell@@QAEXPAVCThingCreatureBase@@@Z	?PlayShieldEffects@CTCPhysicalShieldSpell@@IAEXPAVCThingCreatureBase@@@Z	0x0079E420
+0x007D4A60	?FadeOutTableOccupants@CTCTavernGameCoinGolf@@QAEX_N@Z	?FadeOutTableOccupants@CTCTavernGameCoinGolf@@AAEX_N@Z	0x007D46D0
+0x007D4A90	?FadeOutTableOccupants@CTCTavernGameCoinGolf@@QAEX_N@Z	?FadeOutTableOccupants@CTCTavernGameCoinGolf@@AAEX_N@Z	0x007D46D0
+0x007F9B90	?UpdateTargetList@CTCTargetingSpirit@@QAEXXZ	?UpdateTargetList@CTCTargetingSpirit@@IAEXXZ	0x007F9960
+0x00800A60	?LoadRoute@CTCPreCalculatedNavigationRoute@@QAEXAAVCPersistContext@@J@Z	?LoadRoute@CTCPreCalculatedNavigationRoute@@AAEXAAVCPersistContext@@J@Z	0x008008B0
+0x00830360	?ConstructFromParams@CThingCreatureBase@@QAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z	?ConstructFromParams@CThingCreatureBase@@IAE_NJABVC3DVector@@JPAVCThingPhysical@@1ABVCCharString@@_N@Z	0x00662880
+0x00833A70	?InitialiseFromDef@CThingAICreature@@QAEXXZ	?InitialiseFromDef@CThingAICreature@@IAEXXZ	0x008338D0
+0x00836260	?IsUpdateNeeded@CThingBodyReorienter@@QAE_NXZ	?IsUpdateNeeded@CThingBodyReorienter@@QBE_NXZ	0x00863250
+0x00863E10	?FillBodyReorientationPossibleIntersecting@CThingBodyReorienter@@QAEXXZ	?FillBodyReorientationPossibleIntersecting@CThingBodyReorienter@@AAEXXZ	0x00863CA0
+0x00863E10	?GradualReorientBody@CThingBodyReorienter@@QAEXXZ	?GradualReorientBody@CThingBodyReorienter@@AAEXXZ	0x00863280
+0x0090F290	?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QAE_NXZ	?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QBE_NXZ	0x00744830
+0x009357F0	?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QAE_NXZ	?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QBE_NXZ	0x00744830
+0x0094CE60	?GetBanter@CTCTavernGame@@QAEJXZ	?GetBanter@CTCTavernGame@@QBEJXZ	0x005EA3C0
+0x00957A20	?GetCurrentSpeechDuration@CTCTalk@@QAEMXZ	?GetCurrentSpeechDuration@CTCTalk@@QBEMXZ	0x006E2840
+0x0096F570	?GetCurrentSpeechDuration@CTCTalk@@QAEMXZ	?GetCurrentSpeechDuration@CTCTalk@@QBEMXZ	0x006E2840
+0x0097F5B0	?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QAE?AVC3DVector@@XZ	?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QBE?AVC3DVector@@XZ	0x008004D0
+0x0059A238	?RefreshAvailableSavedGamesForProfile@CFrontEndManager@NUISystem@@QAEJXZ	?RefreshAvailableSavedGamesForProfile@CFrontEndManager@NUISystem@@IAEJXZ	0x00598463

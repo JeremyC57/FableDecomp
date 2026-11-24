@@ -24,7 +24,7 @@ struct CCriticalSectionLock {                      // 8 bytes on the stack
 };
 class CThreadedFileObjectDesc { public: unsigned char _body[0x18]; };
 class CThreadedFile { public:
-    unsigned long AddObject(CThreadedFileObjectDesc* desc);              // 0x0098F350
+    unsigned long AddObject(const CThreadedFileObjectDesc& desc);        // 0x0098F350 (NF313: the PDB parameter type, both PDBs)
 };
 #include "engine/CCountedPointer.h"
 struct SRbTreeNode {                               // STLport _Rb_tree_node<CBankFileAsyncData*>, 0x14 bytes
@@ -116,7 +116,7 @@ void CBankFileAsync::RestartAbortedReads()
     CCriticalSectionLock lock(CriticalSection, false);
     for (CPointerSetIterator it = ReadsToRestart.begin(); it != ReadsToRestart.end(); ++it) {
         CBankFileAsyncData* data = *it;
-        data->ThreadedFileUID = data->BankFile->ThreadedFile->AddObject(&data->LoadDesc);
+        data->ThreadedFileUID = data->BankFile->ThreadedFile->AddObject(data->LoadDesc);
     }
     ReadsToRestart.clear();
 }

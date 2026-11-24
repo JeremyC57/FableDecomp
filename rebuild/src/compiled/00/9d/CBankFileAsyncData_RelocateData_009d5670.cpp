@@ -1,3 +1,4 @@
+// Leaf: ?RelocateData@CBankFileAsyncData@@UAEXJPAX0J@Z
 // CBankFileAsyncData::RelocateData(long, void*, void*, long) -- rebase the two block pointers after the movable pool moved the block
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D5670, oracle length 78 bytes.
 // Callees: CCriticalSectionLock ctor @ 0x00A62920 / dtor @ 0x00A629A0.
@@ -52,7 +53,7 @@ class CBankFileAsyncData { public:
     bool                        m_finished;       // +0x44
     bool                        m_dataLocked;     // +0x45
     bool                        m_completionPending; // +0x46
-    void RelocateData(long handle, void* oldBase, void* newBase, long size);     // 0x009D5670
+    virtual void RelocateData(long handle, void* oldBase, void* newBase, long size);     // 0x009D5670
 };
 
 void CBankFileAsyncData::RelocateData(long handle, void* oldBase, void* newBase, long size)

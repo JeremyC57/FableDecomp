@@ -1,0 +1,6 @@
+# defining objects (section != 0) among the 4269 rechecked objects, with COMDAT selection
+?NullString@CCharString@@2V1@A: 01223ec0 (not COMDAT), 0122a5e0 (not COMDAT) -- the static pair, no other definer (source grep agrees)
+?g_CCharStringInstanceCount@@3JA: 01223ec0 only (0122a5e0 declares it extern)
+??1CircularQueue@@QAE@XZ: 00c3cf30 sel 1 (owner), 00c3cf40 / 01214f80 / 01214f88 sel 2 (byte-equal pick-any; funclets include the parent)
+?UnassignString@CWideString@@IAEXXZ: 0099b4d0 / 0099ba70 / 0099bb80 sel 2; 0099c120 sel 1 (59 B; already strong at HEAD, queued)
+0x01223EC0 object v HEAD: code, relocations and symbol table identical (only the embedded source path differs)

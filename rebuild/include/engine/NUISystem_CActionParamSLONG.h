@@ -12,9 +12,13 @@ namespace NUISystem {
 class CActionParamSLONG : public CActionParam {
 public:
     CActionParamSLONG(long value) : CActionParam(UI_ACTION_PARAM_TYPE_SLONG), Value(value) { }
+#ifdef FABLE_RETAIL_CACTIONPARAMSLONG_INLINE_DTOR_PASS27
+    virtual ~CActionParamSLONG() { }
+#else
     virtual ~CActionParamSLONG();
+#endif
     long Value;                                                       // +0x08
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CActionParamSLONG) == 0xc);
+FABLE_STATIC_ASSERT_AT(19, sizeof(NUISystem::CActionParamSLONG) == 0xc);
 #endif

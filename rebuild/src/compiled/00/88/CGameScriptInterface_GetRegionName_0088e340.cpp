@@ -1,3 +1,5 @@
+// Leaf: ?GetRegionName@CGameScriptInterface@@UBEABVCCharString@@XZ
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString;
 struct CRegions;
@@ -27,8 +29,9 @@ struct CMidArg {
 };
 
 
-const CCharString& __fastcall CGameScriptInterface_GetRegionName(CGameScriptInterface* interface)
+const class CCharString& CGameScriptInterface::GetRegionName() const
 {
+    CGameScriptInterface* interface = const_cast<CGameScriptInterface*>(this);
     CMidNoArg* m = (CMidNoArg*)interface->World;
     CRegions* col = m->GetRegions();
     int n = ((CWorldMap*)col)->GetLoadedRegion();
@@ -39,3 +42,4 @@ const CCharString& __fastcall CGameScriptInterface_GetRegionName(CGameScriptInte
     }
     return *(const CCharString*)0x13bd804;
 }
+// Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_GetRegionName -> CGameScriptInterface::GetRegionName, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

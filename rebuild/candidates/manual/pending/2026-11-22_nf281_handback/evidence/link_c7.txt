@@ -1,0 +1,19 @@
+## HEAD set: H_0090f9c0.obj H_0090fd20.obj H_009104a0.obj H_00938f70.obj H_009f8290.obj H_00a09dc0.obj H_00871e40.obj H_00871e60.obj H_00856b20.obj H_00859d80.obj H_00858130.obj H_00858590.obj H_008587b0.obj H_008597a0.obj H_006ed510.obj H_006edc50.obj H_00717450.obj H_0052c7e0.obj 009cba40.obj 0084e1a0.obj 00857070.obj 00859660.obj 006ed030.obj 00716de0.obj 00531ec0.obj 00939180.obj
+duplicates 3
+H_00858130.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceTyp
+H_00858590.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceTyp
+H_008587b0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceTyp
+UNRESOLVED 2 ?AddAttractorGoTo@CBase@NCameraModes@@QAEXABVC3DVector@@M@Z
+UNRESOLVED 2 ?GetBankHandle@CBankFile@@QAE?AVCCharString@@XZ
+UNRESOLVED 4 ?GetWeaponUsedInStrikeAction@CCombatActionBase@@QAEPAVCThing@@XZ
+UNRESOLVED 1 ?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ
+UNRESOLVED 1 ?ResetMeleeCombatAbilityEffects@CCombatActionBase@@QAEXXZ
+UNRESOLVED 1 ?Update@CActionTalkBase@NTCScriptedControl@@QAEXXZ
+UNRESOLVED 1 ?Update@CComponent@NUISystem@@QAEXM@Z
+UNRESOLVED 2 ?UpdateAttackingCombatantsList@CCombatManager@@QAEXAAUCCombatantInfo@@_N@Z
+## new set: 0090f9c0.obj 0090fd20.obj 009104a0.obj 00938f70.obj 009f8290.obj 00a09dc0.obj 00871e40.obj 00871e60.obj 00856b20.obj 00859d80.obj 00858130.obj 00858590.obj 008587b0.obj 008597a0.obj 006ed510.obj 006edc50.obj 00717450.obj 0052c7e0.obj 009cba40.obj 0084e1a0.obj 00857070.obj 00859660.obj 006ed030.obj 00716de0.obj 00531ec0.obj 00939180.obj
+duplicates 3
+00858130.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceType 
+00858590.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceType 
+008587b0.obj : warning LNK4006: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceType 
+LK_DONE

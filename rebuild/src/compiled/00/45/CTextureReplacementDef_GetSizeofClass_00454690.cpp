@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CTextureReplacementDef@@UAEKXZ
 #pragma optimize("s",on)
-unsigned long __fastcall CTextureReplacementDef_GetSizeofClass()
+class CTextureReplacementDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CTextureReplacementDef::GetSizeofClass()
 {
     return 0x34;
 }

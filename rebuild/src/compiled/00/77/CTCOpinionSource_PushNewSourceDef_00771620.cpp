@@ -26,7 +26,7 @@ protected:
 };
 
 class CTCOpinionSource : public CTCBase { public:
-    bool PushSourceDefIndex(long index);            // 0x007714B0
+    bool PushNewSourceDef(long index);            // 0x007714B0; NF299: PDB name, was PushSourceDefIndex
     long PushNewSourceDef(const CCharString& name);
 };
 
@@ -34,7 +34,7 @@ long CTCOpinionSource::PushNewSourceDef(const CCharString& name)
 {
     CDefinitionManager* defs = PeekWorld().DefinitionManager;
     long index = defs->GetDefGlobalIndexFromName(name);
-    if (index > 0 && PushSourceDefIndex(index))
+    if (index > 0 && PushNewSourceDef(index))
         return 1;
     return 0;
 }

@@ -1,0 +1,15 @@
+# Slot 11 (Clone) census of the two retail vtables, NF270 2026-11-22
+# Retail: 0x006A0E50 (UnsheatheItemFromInventory::Clone) and 0x006A0D20 (UseObject::Clone) are each referenced once in Fable.exe,
+#   at their own vtable slot 11 (.rdata 0x0125CCE8 = 0x0125CCBC+0x2C, 0x0125CF28 = 0x0125CEFC+0x2C; nftools absrefs.py); no E8/E9 caller (callers.py).
+#   UnsheatheToShowToSheatheTrophy (0x0125F8D4) has its own Clone 0x006DFC20 at slot 11 (vslot.py), so it does not inherit 0x006A0E50.
+# PDB: ?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ (Ego_r 0x006C59B0, FableWin 0x02211670),
+#      ?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ (Ego_r 0x006C5980, FableWin 0x022129F0): private virtual, both PDBs.
+# Landed local class models of the two classes (the 61 rows of NF268's slot-3 row list, a brace-matched scan of each class body):
+#   only 0x0069F0F0 (UnsheatheItemFromInventory, 5 virtuals) and 0x006A0D50 (UseObject, 11 virtuals) declare a virtual Clone (public: UBE);
+#   every other local model has 0-2 virtuals (stand-in v00 tables of 1 slot, no slot 11) or a non-virtual QAE Clone (the self rows
+#   0x006A0E50 / 0x006A0D20). Shared-header users (0x006A0150, 0x006A02B0, 0x00694430, 0x0093EA90, 0x00940960, 0x008CDD40) get the header's private EBE.
+# VC7.1 tables: HEAD 0x0069F0F0 slot 11 UBE, HEAD 0x006A0D50 slot 11 UBE, HEAD 0x006A0150 slot 11 EBE (q.py RELOCATION_MATCH object, vtmap_h_006a0150.txt);
+#   NF270 0x0069F0F0 / 0x006A0D50 slot 11 EBE. The new 0x0069F0F0 table equals 0x006A0150's slot for slot (diff empty).
+# Spelling counts: 0x006A0E50 HEAD {QAE self, UBE 0x0069F0F0, EBE 0x006A0150} = 3 -> {QAE, EBE} = 2.
+#                  0x006A0D20 HEAD {QAE self, UBE 0x006A0D50} = 2 -> {QAE, EBE} = 2 (UBE gone; EBE is the PDB spelling).
+# No landed object defines either EBE (or UBE) Clone: the link (lk_e1_*.txt) leaves them unresolved before and after (the self rows define QAE: NAME_FIXES).

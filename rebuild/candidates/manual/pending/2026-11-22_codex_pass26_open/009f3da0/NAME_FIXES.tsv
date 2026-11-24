@@ -1,0 +1,2 @@
+target	canonical	correction
+009f3da0	?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z	unsigned char* dest first, const C2DBoxI* psrc_area second; old draft reversed arguments and used void*

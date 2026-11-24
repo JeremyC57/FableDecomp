@@ -1,0 +1,12 @@
+## new_00418dca ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+DEF section 29 selection None (1=NODUPLICATES 2=ANY)
+REF from section 27 ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+## new_00418dca ??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+DEF section 28 selection None (1=NODUPLICATES 2=ANY)
+REF from section 27 ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+## new_00418b7a ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+DEF section 27 selection None (1=NODUPLICATES 2=ANY)
+REF from section 25 ??1CMainGameComponent@@UAE@XZ
+## new_00418b7a ??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+DEF section 26 selection None (1=NODUPLICATES 2=ANY)
+REF from section 25 ??1CMainGameComponent@@UAE@XZ

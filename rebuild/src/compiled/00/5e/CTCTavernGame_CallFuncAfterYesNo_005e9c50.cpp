@@ -1,5 +1,5 @@
 // CTCTavernGame::CallFuncAfterYesNo(CWideString text, CWideString yesText, void (__fastcall *yesFunc)(), CWideString noText, void (__fastcall *noFunc)()) -- show a yes/no subtitle prompt, announce it with game event 9, remember the two answer callbacks and enter the yes/no wait state 45 (or leave the game when a quit is pending)
-// Leaf: CallFuncAfterYesNo
+// Leaf: ?CallFuncAfterYesNo@CTCTavernGame@@IAEXVCWideString@@0P6IXXZ01@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -30,7 +30,7 @@ public:
 class CFontBank;
 class CSubtitleRenderer {
 public:
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2);   // 0x00492F69
 };
 #include "engine/CCountedPointer.h"
@@ -83,12 +83,14 @@ class CTCTavernGame { public:
     TTavernGameFunc   AltFunc;                          // +0xbc
     ETavernGameStates TavernGameState;                  // +0xc0
     ETavernGameStates PreviousTavernGameState;          // +0xc4
+    protected:
     void CallFuncAfterYesNo(CWideString text, CWideString yesText, TTavernGameFunc yesFunc, CWideString noText, TTavernGameFunc noFunc);
+    public:
 };
 
 void CTCTavernGame::CallFuncAfterYesNo(CWideString text, CWideString yesText, TTavernGameFunc yesFunc, CWideString noText, TTavernGameFunc noFunc)
 {
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L"", yesText, noText, 0x84, 0.0f, false, true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, L"", yesText, noText, 0x84, 0.0f, false, true);
     {
         CGameEvent event(9);
         event.AddBOOL(false);

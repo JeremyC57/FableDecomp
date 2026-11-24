@@ -1,3 +1,4 @@
+// Leaf: ?IsStillValidInternal@CAIStateGroup_MinionGuardFollowPlayer@@MBE_N_N@Z
 // CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool) -- a guard keeps following the live player only while the player is inside a building (thing type 3) and the guard belongs to a village: a closed shop must carry interface 0x53, any other building must not and must have an owned sim definition; then the village's follow frame must have come and a building whose 0xD5 component is flagged must carry interface 0x53
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -131,10 +132,12 @@ protected:
 public:
 };
 struct CAIStateGroup_MinionGuardFollowPlayer : CAIStateGroupBase {
-    virtual bool IsStillValidInternal(bool flag);
+    protected:
+    virtual bool IsStillValidInternal(bool flag) const;
+    public:
 };
 
-bool CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool)
+bool CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool) const
 {
     CThing* player = CMainGameComponent::Get()->PWorld->PeekMyPlayer()->GetPControlledCreature();
     if (player && !(player->m_flags91 & 1)) {

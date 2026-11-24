@@ -1,0 +1,68 @@
+##### 004b4490 renames: ?IsQuestActive@CQuestManager@@QAE_NABVCCharString@@@Z=?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 0064e019 renames: ?IsOpen@CFadeInFadeOutBase@@QAE_NXZ=?IsOpen@CFadeInFadeOutBase@@QBE_NXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 006d8170 renames: ?UpdateAbilitiesForStat@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@_N@Z=?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=11
+tables H=0 N=0
+##### 006d83b0 renames: ?OnStatLevelChange@CTCHeroExperience@@QAEX_N@Z=?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z
+sections head 26 new 26
+ALL_EQ text_sections_equal=23
+tables H=0 N=0
+##### 006d8ca0 renames: ?OnStatLevelChange@CTCHeroExperience_Retail@@QAEX_N@Z=?OnStatLevelChange@CTCHeroExperience_Retail@@AAEX_N@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 006ea2c0 renames: ?GetCombatTypeDef@CThingCreatureBase@@QBEPAVCCombatTypeDef@@XZ=?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ
+sections head 39 new 39
+ALL_EQ text_sections_equal=35
+tables H=0 N=0
+##### 00752640 renames: ?GetAnimFromName@CThingCreatureBase@@QBEPBVCAnimationEntry@@ABVCCharString@@J@Z=?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z
+sections head 19 new 19
+ALL_EQ text_sections_equal=16
+tables H=2 N=2
+##### 00788555 renames: ?IsOpen@CFadeInFadeOutBase@@QAE_NXZ=?IsOpen@CFadeInFadeOutBase@@QBE_NXZ ?Reset@CTCTrapBase@@QAEXXZ=?Reset@CTCTrapBase@@IAEXXZ
+sections head 15 new 15
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 007887be renames: ?IsOpen@CFadeInFadeOutBase@@QAE_NXZ=?IsOpen@CFadeInFadeOutBase@@QBE_NXZ ?Reset@CTCTrapBase@@QAEXXZ=?Reset@CTCTrapBase@@IAEXXZ
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 00858cc0 renames: ?GetCombatTypeDef@CThingCreatureBase@@QAEPAVCCombatTypeDef@@XZ=?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ
+sections head 21 new 21
+ALL_EQ text_sections_equal=18
+tables H=0 N=0
+##### 00904380 renames: ?IsActionListEmpty@CTCScriptedControl@@QAE_NXZ=?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00918880 renames: ?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ=?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00918900 renames: ?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ=?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ
+sections head 16 new 16
+ALL_EQ text_sections_equal=14
+tables H=0 N=0
+##### 00918ac0 renames: ?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ=?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ
+sections head 5 new 5
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00918b50 renames: ?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ=?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0097ef60 renames: ?GetCombatTypeDef@CThingCreatureBase@@QAEPAVCCombatTypeDef@@XZ=?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ
+sections head 34 new 34
+ALL_EQ text_sections_equal=31
+tables H=1 N=1
+##### 0097f3a0 renames: ?GetCombatTypeDef@CThingCreatureBase@@QAEPAVCCombatTypeDef@@XZ=?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ
+sections head 33 new 33
+ALL_EQ text_sections_equal=31
+tables H=0 N=0

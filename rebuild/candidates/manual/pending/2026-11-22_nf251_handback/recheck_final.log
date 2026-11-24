@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00b260b0   RELOCATION_MATCH PASS   CEngine
+00b261d0   RELOCATION_MATCH PASS   ~CEngine
+00b2ab10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00b23750   RELOCATION_MATCH PASS   CIEngine
+00b23cf0   MATCH            PASS   ConvertScreenPosToWorldPos
+00b23350   MATCH            PASS   CheckPrimitiveVisibility
+00b23d90   MATCH            PASS   IsStaticMapNeedingUpdate
+00b23de0   MATCH            PASS   OnActivate
+00b23540   MATCH            PASS   OnDeactivate
+00b233c0   MATCH            PASS   AddChildPrimitive
+00b23450   MATCH            PASS   GetEditorAnimation
+00b23460   MATCH            PASS   AddCustomMorphTexture
+00b23490   MATCH            PASS   IsStaticMapNeedingUpdate
+00b23530   MATCH            PASS   OnActivate
+0089bdf0   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+0089bdf0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+0089bdf0   RELOCATION_MATCH PASS   EntitySetFacingAngle
+00499ce0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00499ce0   WARN SHARED_HEADER_AVAILABLE CAProgressDisplay (engine/CAProgressDisplay.h)
+00499ce0   WARN SHARED_HEADER_AVAILABLE CProgressDisplay (engine/CProgressDisplay.h)
+00499ce0   RELOCATION_MATCH PASS   CProgressDisplay
+
+WINS: 16
+  00b260b0 RELOCATION_MATCH CEngine::??0CEngine@@QAE@XZ
+  00b261d0 RELOCATION_MATCH CEngine::??1CEngine@@UAE@XZ
+  00b2ab10 RELOCATION_MATCH CEngine::??_GCEngine@@UAEPAXI@Z
+  00b23750 RELOCATION_MATCH CIEngine::??0CIEngine@@IAE@XZ
+  00b23cf0 MATCH CEngine::?ConvertScreenPosToWorldPos@CEngine@@UBE_NABVC2DVector@@AAVC3DVector@@@Z
+  00b23350 MATCH CIEngine::?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z
+  00b23d90 MATCH CEngine::?IsStaticMapNeedingUpdate@CEngine@@UBE_NJABVCCharString@@K@Z
+  00b23de0 MATCH CEngine::?OnActivate@CEngine@@UAEXXZ
+  00b23540 MATCH CIEngine::?OnDeactivate@CIEngine@@UAEXXZ
+  00b233c0 MATCH CIEngine::?AddChildPrimitive@CIEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
+  00b23450 MATCH CIEngine::?GetEditorAnimation@CIEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z
+  00b23460 MATCH CIEngine::?AddCustomMorphTexture@CIEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z
+  00b23490 MATCH CIEngine::?IsStaticMapNeedingUpdate@CIEngine@@UBE_NJABVCCharString@@K@Z
+  00b23530 MATCH CIEngine::?OnActivate@CIEngine@@UAEXXZ
+  0089bdf0 RELOCATION_MATCH CGameScriptInterface::?EntitySetFacingAngle@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+  00499ce0 RELOCATION_MATCH CProgressDisplay::??0CProgressDisplay
+EXIT 0

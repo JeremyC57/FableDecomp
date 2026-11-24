@@ -1,0 +1,2 @@
+##### 00b935c0 renames: ??0CEngineSceneGridCell@@QAE@PAV0@@Z=??0CEngineSceneGridCell@@AAE@PAV0@@Z
+ALL_EQ sections=15 DEF=14 tables=??_7CEnginePrimitiveHandle@@6B@

@@ -52,10 +52,17 @@ public:
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char Data[0x0c];                                // +0x08 CArray<char>
     unsigned long CurrentPosition;                           // +0x14
+#ifdef FABLE_RETAIL_CMEMORYDATAOUTPUTSTREAM_FLAT_GETLENGTH_PEEKDATA
+    // Add-only opt-in (naming agent NF292, 2026-11-23, binders 0x00A99840 / 0x00A9BA70, the C3DAnimFileSaver / C3DMeshFileSaver
+    // SaveFileCompressed pair): Ego_r.pdb / FableWin.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ (retail 0x00994B40) and
+    // ?PeekData@CMemoryDataOutputStream@@QBEPBXXZ (0x00995E70), as the retail branch above declares them. Declarations only: no layout change.
+    unsigned long GetLength() const;                         // 0x00994B40
+    const void* PeekData() const;                            // 0x00995E70
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CMemoryDataOutputStream) == 0x18);
+FABLE_STATIC_ASSERT_AT(58, sizeof(CMemoryDataOutputStream) == 0x18);
 
 #endif // FABLE_ENGINE_CMEMORYDATAOUTPUTSTREAM_H
 #endif // FABLE_RETAIL_CMEMORYDATAOUTPUTSTREAM

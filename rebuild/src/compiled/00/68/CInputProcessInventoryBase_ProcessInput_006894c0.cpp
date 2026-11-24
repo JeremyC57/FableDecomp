@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006894C0, length 474 bytes (`ret 8`).
 // Callees: CInputEvent::GetType @ 0x00A03B40, CInputEvent::GetAnaloguePosition @ 0x00A043A0 (C2DVector by hidden pointer, as the
 //   landed CTCAssassinRush::UpdateDirectionOverride 0x007A9960), CInputProcessInventoryBase::ChangeSelection @ 0x006893D0,
-//   CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90 / IsEventButtonReleased @ 0x00687B30 / IsEventGameAction
+//   CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90 / IsEventButtonHeld @ 0x00687B30 / IsEventGameAction
 //   @ 0x00687CF0 (manifest "_Cons_val" label is propagated), CProcessedInput::SetAsPerformedEvent @ 0x00A0D390.
 // Layout: rebuild/include/engine/CInputProcessInventoryBase.h (sizeof 0x34): CurrentMovement +0x28 (ECurrentMovement). Modelled
 //   locally because the slot-9 screen accessor (pure in the base vtable 0x012376CC, overridden per screen at 0x006896A0..) and
@@ -97,7 +97,7 @@ class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameCompon
 // IsEventGameAction(EGameAction, const CInputEvent&) const is the Ego_r spelling; slot 0 is CAInputProcess's virtual destructor.
 #define FABLE_RETAIL_INPUTPROCESS
 #define FABLE_RETAIL_INPUTPROCESS_ZTARGET
-#define FABLE_RETAIL_INPUTPROCESS_MOVEMENT   // NF64: IsEventButtonReleased (protected const)
+#define FABLE_RETAIL_INPUTPROCESS_MOVEMENT   // NF64: IsEventButtonHeld (protected const)
 #include "engine/EGameAction.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputProcessInventoryBase : public CInputProcessGameBase {
@@ -134,7 +134,7 @@ void CInputProcessInventoryBase::ProcessInput(const CInputEvent& event, CProcess
         } else
             CurrentMovement = MOVEMENT_NONE;
     }
-    if (IsEventButtonPressed(event) || IsEventButtonReleased(event)) {
+    if (IsEventButtonPressed(event) || IsEventButtonHeld(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event)) {
             if (ChangeSelection(MOVEMENT_UP))
                 GetScreen()->OnPreviousPage();

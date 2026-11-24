@@ -1,0 +1,4 @@
+00beaaa0	src	DIFF		rebuild/src/compiled/00/be/CEngineScreenEffectOutlineGlow_FinishWithDynamicTextures_00beaaa0.cpp
+00beaaa0	test	DIFF		rebuild/tests/00/be/CEngineScreenEffectOutlineGlow_FinishWithDynamicTextures_00beaaa0_test.cpp
+00beb4d0	src	DIFF		rebuild/src/compiled/00/be/CEngineScreenEffectOutlineGlow_ScalarDeletingDestructor_00beb4d0.cpp
+00beb4d0	test	DIFF		rebuild/tests/00/be/CEngineScreenEffectOutlineGlow_ScalarDeletingDestructor_00beb4d0_test.cpp

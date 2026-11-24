@@ -1,5 +1,5 @@
 // CCombatActionBase::InitialiseActionTimes() -- sets the action's total time (frames) from its animation's duration, the action time from the anim's PERFORM_ACTION event, both shifted by the anim delay
-// Leaf: InitialiseActionTimes
+// Leaf: ?InitialiseActionTimes@CCombatActionBase@@IAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00856A20, 154 bytes of code.
@@ -70,7 +70,9 @@ class CCombatActionBase { public:
     void* PAnimEntryCount;                      // +0x78
     unsigned char _pad7c[0xde - 0x7c];
     bool HasPerformAction;                      // +0xde
+    protected:
     void InitialiseActionTimes();
+    public:
 };
 
 void CCombatActionBase::InitialiseActionTimes()

@@ -1,3 +1,4 @@
+// Leaf: ?OnReplace@CAIStateGroup_BanditGossip@@MAEXXZ
 // ?OnReplace@CAIStateGroup_BanditGossip@@MAEXXZ  @ 0x0090e590
 // void __fastcall CAIStateGroup_BanditGossip::OnReplace(this)
 //
@@ -23,11 +24,12 @@ public:
 extern "C" void __fastcall BaseGroupOnReplace(void* stateGroup);     // 0x90ca60
 
 struct CAIStateGroup_BanditGossip {
-    void*  vtbl;          // +0x00
-    void** owner;         // +0x04  (owner; owner[0x18/4] loaded into ecx)
+        void** owner;         // +0x04  (owner; owner[0x18/4] loaded into ecx)
     char   pad08[0x24 - 0x08];
     char   flag;          // +0x24
-    void OnReplace();
+    protected:
+    virtual void OnReplace();
+    public:
 };
 
 void CAIStateGroup_BanditGossip::OnReplace()

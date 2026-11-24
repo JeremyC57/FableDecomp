@@ -1,0 +1,9 @@
+## HEAD set: H_006a98f0.obj H_009cc530.obj 006628e0.obj 00ae8980.obj
+duplicates 0
+UNRESOLVED 1 ?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z
+UNRESOLVED 1 ?SerialiseGameState@CThingCreatureBase@@QAE_NAAVCPersistContext@@@Z
+UNRESOLVED 1 ?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z
+## new set: 006a98f0.obj 009cc530.obj 006628e0.obj 00ae8980.obj
+duplicates 0
+UNRESOLVED 1 ?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z
+LK_DONE

@@ -1,0 +1,4 @@
+# link of the 13 rechecked objects (/FORCE): LNK4006 HEAD 2, landing 0; LNK2005 0
+1,2d0
+<       1 ??1CNewFrontendGameComponent@@UAE@XZ
+<       1 ?Init@T@@QAEXXZ

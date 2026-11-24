@@ -1,3 +1,4 @@
+// Leaf: ?InitGameMap@CMap@@IAEXXZ
 // CMap::InitGameMap() -- build a new CGameMap (0x24 bytes, operator new @ 0x00BFEA1A, constructor @ 0x006B7760 with (the world +0x20, this, a copy of the 8-byte init record at +0x1d1c)) into +0x1a78, deleting the previous one through its virtual destructor (slot 0 with 1)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081EE00, length 88 bytes.
 // Callees: operator new @ 0x00BFEA1A, CGameMap::CGameMap(CWorld*, CMap*, CGameMapInit*) @ 0x006B7760, the old map's virtual slot 0 (the deleting destructor with 1). Shape: the init record copied to the frame before `new`, the null arm (`xor eax,eax`) joined before the store, the old pointer read after the constructor (a local taken before the store) and deleted after it, `ret`.
@@ -17,7 +18,9 @@ class CMap { public:
     CGameMap*     m_pGameMap;                      // +0x1a78
     unsigned char _pad1a7c[0x2a0];
     CGameMapInit  m_gameMapInit;                   // +0x1d1c
+    protected:
     void InitGameMap();
+    public:
 };
 
 void CMap::InitGameMap()

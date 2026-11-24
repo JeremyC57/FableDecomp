@@ -74,7 +74,7 @@ class CEventBase { public: };
 namespace NEntityEvents {
 class CEventTalkedTo : public NEntityEvents::CEventBase { public:            // 0x10 bytes
     unsigned char _pad[0x10];
-    CEventTalkedTo(CThing* talker);             // 0x0084AF90
+    CEventTalkedTo(CThing& talker);             // 0x0084AF90 ??0CEventTalkedTo@NEntityEvents@@QAE@AAVCThing@@@Z (Ego_r / FableWin)
 };
 struct CEventTalkedToBy : NEntityEvents::CEventBase {          // 0x10 bytes
     unsigned char _pad[0x10];
@@ -111,7 +111,7 @@ void CCreatureAction_PlayerInteractionGreet::PerformAction()
     if (IS_THING_ALIVE(PCreature) && IS_THING_ALIVE(PTarget)) {
         CTCEntityEvents* events;
         if (PTarget.GetPItem()->GetInterface(&events, 0x42))
-            events->AddEvent(new NEntityEvents::CEventTalkedTo(PCreature.GetPItem()));
+            events->AddEvent(new NEntityEvents::CEventTalkedTo(*PCreature.GetPItem()));
         if (PCreature.GetPItem()->GetInterface(&events, 0x42))
             events->AddEvent(new NEntityEvents::CEventTalkedToBy(PTarget.GetPItem()));
         CThing* pCreatureThing = PCreature.GetPItem();

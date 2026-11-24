@@ -1,5 +1,5 @@
 // CMouseDX::GetExclusiveModeDeviceMouseEvent(CMouseEvent* event) -- pop the next buffered DirectInput mouse record (refilling the buffer from the device when it is drained) and translate it into a CMouseEvent
-// Leaf: GetExclusiveModeDeviceMouseEvent
+// Leaf: ?GetExclusiveModeDeviceMouseEvent@CMouseDX@@IAE_NPAVCMouseEvent@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB4910, length 672 bytes (incl. a 20-entry byte index table + 11-entry jump table), `ret 4`.
 // Ego_r.pdb: CMouseDX::GetExclusiveModeDeviceMouseEvent(CMouseEvent*) -> bool.
 // Callees: GFGetSystemManager @ 0x009A4EC0, CSystemManager::IsApplicationActive @ 0x009A57B0, CSystemManager::HasInputFocus @ 0x009A4FB0
@@ -113,7 +113,9 @@ public:
         else
             SetHasInputFocus(false);
     }
+    protected:
     bool GetExclusiveModeDeviceMouseEvent(CMouseEvent* event);
+    public:
 };
 
 bool CMouseDX::GetExclusiveModeDeviceMouseEvent(CMouseEvent* event)

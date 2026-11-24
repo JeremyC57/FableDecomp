@@ -1,0 +1,6 @@
+00956870	??_GCCombatAction_WillHealInto@@UAEPAXI@Z	30	00956940	EQ
+00956a20	??0CCombatAction_WillHealInto@@QAE@ABV0@@Z	39	-	NO-OWNER
+00956a20	??_GCCombatAction_WillHealInto@@UAEPAXI@Z	30	00956940	EQ
+00956940	??2@YAPAXIPAX@Z	5	00405c10	EQ
+00956940	??0CCombatAction_WillHealInto@@QAE@ABV0@@Z	39	-	NO-OWNER
+00956940	?ReferenceWillHealIntoVtable@?A0xb24247b5@@YAXPAXABVCCombatAction_WillHealInto@@@Z	43	-	NO-OWNER

@@ -1,0 +1,4 @@
+0041c930	??0CSoundInit@@QAE@XZ	x1
+00991840	?GetPSoundBank@CASoundManager@@QBEPAVCASoundBank@@J@Z	x1
+013b8394	?PSoundManager@@3PAVCASoundManager@@A	x2
+013b871c	?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A	x1

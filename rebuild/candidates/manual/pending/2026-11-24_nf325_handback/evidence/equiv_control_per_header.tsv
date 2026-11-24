@@ -1,0 +1,38 @@
+header	flagged_rows	examples
+CAIStateGroup_EnemyCreatureBase	41	006961f0:src 008fe0ea:src 00900c50:src 00900c8b:src 00900d3d:src 00900d78:src
+CAIStateGroup_MazeBase	0	
+CAIStateGroup_MazeTutorialBattle	3	008fdf5b:src 0090080b:src 0121f86f:src
+CAIStateGroup_MazeTutorialBattleRespondToLightning	6	008fdf81:src 0090086f:src 00954040:src 00954e30:src 00954e30:test 0121f86f:src
+CAIStateGroup_MazeTutorialBattleUseShield	5	008fdf94:src 009008a1:src 00954080:src 00954cd0:src 0121f86f:src
+CAInputProcess	44	00486c20:src 00488d10:src 005ec270:src 006336e0:src 006336f0:src 00633780:src
+CCombatSequenceBase	1	006eae20:src
+CCombatSequenceUnblockableFacing	1	008b4f90:src
+CCombatSequenceWhisperAdvance	1	008b49a0:src
+CCombatSequenceWhisperAttackBigCombo	1	008b4aa0:src
+CCombatSequenceWhisperBoast	1	008b4ca0:src
+CCombatSequenceWhisperIdles	1	008b4e10:src
+CCombatSequenceWhisperLunge	1	008b4920:src
+CCombatSequenceWhisperSortYourselfOut	2	008b0440:src 008b4d20:src
+CCombatSequenceWhisperStrafeAround	1	008b4d90:src
+CCombatSequenceWhisperStrikeStrafeBack	1	008b4ba0:src
+CCombatSequenceWhisperTooCloseLeapBack	1	008b4c20:src
+CCombatSequence_BanditAdvanceFar	1	008b36a0:src
+CCombatSequence_BanditAttackSide	2	008b3810:src 008b3810:test
+CCombatSequence_BanditKingAdvance	1	008b3b00:src
+CCombatSequence_BattleCharge	1	00908de0:src
+CCombatSequence_FodderSecondaryAttack	1	008b3d80:src
+CCombatSequence_GenericLeader	1	008b3540:src
+CCombatSequence_GenericRangedAttack	1	008b34d0:src
+CCombatSequence_ScorpionLungeAttack	4	008b3ea0:src 00906fa0:src 00906fc0:src 00906fc0:test
+CCombatSequence_TrollBurrowPursue	1	008b4200:src
+CCombatSequence_TrollDoubleSwipeNonMelee	1	008b4070:src
+CCombatSequence_TrollOpeningGroundPound	3	008b40f0:src 009076a0:src 009076a0:test
+CCombatSequence_TrollRockPursue	1	008b42e0:src
+CCombatSequence_VillagerBackOff	1	008b4630:src
+CCombatSequence_WillPhysicalShield	2	008b5410:src 009092c0:src
+CCombatSequence_WillPhysicalShieldNonMelee	2	008b54c0:src 009093f0:src
+CEngineInternalPrimitiveBase	64	00b32f20:src 00b39080:src 00b396e0:src 00b399a0:src 00b39fb0:src 00b3aa10:src
+CEngineInternalPrimitiveParticleGroup	8	00bb8750:src 00bb8ef0:src 00bbbe60:src 00bbf4a0:src 00bc04f0:src 00bc25f0:src
+CEngineInternalPrimitiveParticleSpriteTrailGroup	1	00bbddb0:src
+CInputProcessManager	15	00416e78:src 004457f0:src 004457f0:test 0068e510:src 007f9960:src 00803280:src
+CPhysicsFacesSegmentBranch	2	00a85fb0:src 00a86030:src

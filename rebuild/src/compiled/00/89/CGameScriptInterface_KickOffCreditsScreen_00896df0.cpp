@@ -34,7 +34,7 @@ public:
 class CTCCreditsUI
 {
 public:
-    void __fastcall Activate(CCharString screenName);
+    void Activate(CCharString screenName);
 };
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

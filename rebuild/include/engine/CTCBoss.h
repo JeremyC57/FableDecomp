@@ -8,7 +8,13 @@ class CThingAICreature;
 // Full original Ego_r0x2fa7d data; original private composites retained.
 class CTCBoss:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_POWERUP_SWORD_FIXTURE_PASS27
+    CTCBoss(CThing& thing);
+#endif
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return (ETCInterfaceType)173;}
+#ifdef FABLE_RETAIL_MAZE_FIXTURE_PASS27
+    CTCBoss(CThing&);
+#endif
  virtual ETCInterfaceType GetInterfaceType()const;
  virtual CCharString GetClassTypeName()const;
  virtual bool HasFrameUpdate()const;

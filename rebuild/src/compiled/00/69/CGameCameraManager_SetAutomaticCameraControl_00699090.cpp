@@ -25,7 +25,7 @@ class CGameCameraManager { public:
     char flag12d;            // 0x12d
     char pad2[6];
     int  h134;               // 0x134
-    void Extra();            // __fastcall
+    void PushCurrentManualMode();   // 0x006988B0 ?PushCurrentManualMode@CGameCameraManager@@QAEXXZ (Ego_r / FableWin; the donor SetAutomaticCameraControl calls it)
     void SetAutomaticCameraControl();
 };
 
@@ -47,7 +47,7 @@ void CGameCameraManager::SetAutomaticCameraControl()
         Inner* p = this->sub100.get(&g);
         Inner_call_edx(p, h);
     }
-    this->Extra();
+    this->PushCurrentManualMode();
     this->flag12d = 0;
     this->flag12c = 0;
 }

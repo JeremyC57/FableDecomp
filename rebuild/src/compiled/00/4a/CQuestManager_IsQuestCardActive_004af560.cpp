@@ -1,5 +1,5 @@
 // CQuestManager::IsQuestCardActive(const CCharString&) -- true when one of the active quest-card things has the given def name
-// Leaf: IsQuestCardActive
+// Leaf: ?IsQuestCardActive@CQuestManager@@QBE_NABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004AF560, 77 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetDefName @ 0x004C7CC0 (returns a CDefString
 // through the hidden pointer), CDefString::operator==(const CCharString&) @ 0x004B7980.
@@ -56,10 +56,10 @@ class CQuestManager { public:
     unsigned char                              m_pad00[0x5c];
     CRetailList< CIntelligentPointer<CThing> > ActiveQuestCards;      // +0x5c
     CRetailList< CIntelligentPointer<CThing> > CompletedQuestCards;   // +0x60
-    bool IsQuestCardActive(const CCharString& defName);
+    bool IsQuestCardActive(const CCharString& defName) const;
 };
 
-bool CQuestManager::IsQuestCardActive(const CCharString& defName)
+bool CQuestManager::IsQuestCardActive(const CCharString& defName) const
 {
     for (CRetailList< CIntelligentPointer<CThing> >::iterator it = ActiveQuestCards.begin(); it != ActiveQuestCards.end(); ++it) {
         CThing* card = (*it).Get();

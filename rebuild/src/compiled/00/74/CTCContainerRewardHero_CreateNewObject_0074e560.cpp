@@ -65,7 +65,7 @@ class CTCBase { protected:
     const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
 };
 class CTCSolidToThing { public:
-    void AddThingNotSolidTo(CThing* thing);             // 0x00770FA0
+    void AddThingNotSolidTo(const CThing* thing);             // 0x00770FA0
 };
 class CTCLifeTimer { public:
     unsigned char _pad00[0x10];

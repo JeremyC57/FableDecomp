@@ -17,7 +17,7 @@ class CShape { public:
     virtual bool IsPosInShape(const C3DVector& pos) const;   // slot 4
 };
 class CTrack : public CShape { public:
-    bool GetMinDistanceToTrack(const C3DVector& pos, float& distance) const;   // 0x00760E70
+    private: bool GetMinDistanceToTrack(const C3DVector& pos, float& distance) const; public:   // 0x00760E70
     virtual bool IsPosInShape(const C3DVector& pos) const;
 };
 

@@ -1,0 +1,23 @@
+## HEAD set: H_00692db0.obj H_00692ec0.obj H_008c9fe0.obj H_008ca110.obj H_006dd8f0.obj H_004b7980.obj H_005b3440.obj H_005fa740.obj H_006aeb10.obj H_0073e1d0.obj H_0076d640.obj H_009ac9f0.obj H_009ade90.obj H_009b0ac0.obj H_00435070.obj H_009bfb30.obj H_0064e019.obj H_00b314e0.obj 00692aa0.obj 00692f30.obj 006644f0.obj 008ca170.obj 0069fc40.obj 009c9070.obj 009d49f0.obj 009acee0.obj 009adc90.obj 00435530.obj 009bee40.obj 00643e09.obj 00b31160.obj
+duplicates 1
+H_006aeb10.obj : warning LNK4006: "public: bool __thiscall CDefString::operator==(class CCharString const &)const " (??8CDefString@@QBE_NABVCCharString@@@Z) already defined in H_004b7980.obj; second definition ignored
+UNRESOLVED 1 ?DoEffect@CCreatureAction_NymphTeleportLimboBase@@IAEXXZ
+UNRESOLVED 1 ?Error@CDefinitionManager@@IAEXABVCStringParser@@ABVCCharString@@@Z
+UNRESOLVED 1 ?FinishAction@CCreatureActionBase@@UAEXXZ
+UNRESOLVED 1 ?FinishAction@CCreatureAction_UnsheatheItemFromInventory@@QAEXXZ
+UNRESOLVED 6 ?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z
+UNRESOLVED 2 ?HasPrecedingAction@CCreatureActionBase@@QBE_NXZ
+UNRESOLVED 2 ?InstantiateDef@CDefinitionManager@@QAE_NABVCCharString@@0_N@Z
+UNRESOLVED 1 ?IsActive@CDrawMiniMap@NPlayerGui@@QAE_NXZ
+UNRESOLVED 1 ?ParseEnumForSymbols@CDefinitionManager@@QAEXAAVCStringParser@@@Z
+UNRESOLVED 1 ?ProcessDebugScript@CEngineCamera@@QAEXXZ
+UNRESOLVED 1 ?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z
+UNRESOLVED 1 ?RenderHeroDrunkenness@CTCHeroStats@@QAEXPAVCIEngine@@@Z
+UNRESOLVED 1 ?SetupDepthAndBackBufferTextures@CDisplayManager@@QAE_NXZ
+UNRESOLVED 1 ?UpdateActionMovement@CCreatureActionBase@@QAEXXZ
+## new set: 00692db0.obj 00692ec0.obj 008c9fe0.obj 008ca110.obj 006dd8f0.obj 004b7980.obj 005b3440.obj 005fa740.obj 006aeb10.obj 0073e1d0.obj 0076d640.obj 009ac9f0.obj 009ade90.obj 009b0ac0.obj 00435070.obj 009bfb30.obj 0064e019.obj 00b314e0.obj 00692aa0.obj 00692f30.obj 006644f0.obj 008ca170.obj 0069fc40.obj 009c9070.obj 009d49f0.obj 009acee0.obj 009adc90.obj 00435530.obj 009bee40.obj 00643e09.obj 00b31160.obj
+duplicates 1
+006aeb10.obj : warning LNK4006: "public: bool __thiscall CDefString::operator==(class CCharString const &)const " (??8CDefString@@QBE_NABVCCharString@@@Z) already defined in 004b7980.obj; second definition ignored
+UNRESOLVED 1 ?FinishAction@CCreatureActionBase@@UAEXXZ
+UNRESOLVED 1 ?RenderHeroDrunkenness@CTCHeroStats@@QAEXPAVCIEngine@@@Z
+LK_DONE

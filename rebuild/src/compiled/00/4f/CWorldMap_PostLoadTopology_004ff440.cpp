@@ -14,7 +14,7 @@
 // bytes): +0x00 Area, +0x10 PMap.
 // Shape: the map's byte offset (map * 0x48) is computed once into edi (`lea ; shl 3`) and Maps.Start re-read after
 // the first call; the CArray operator[] is STLport's `*(begin() + n)` (a plain `Start[n]` swaps the SIB base and index
-// of the first load: `[eax+edi+10h]` for retail's `[edi+eax+10h]`); the engine singleton is fetched after the map argument is pushed (`Get()->SetMapAsLoaded(map)`).
+// of the first load: `[eax+edi+10h]` for retail's `[edi+eax+10h]`); the engine singleton is fetched after the map argument is pushed (`Get().SetMapAsLoaded(map)`).
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 
 class CMap {
@@ -45,7 +45,7 @@ public:
 };
 template <class T> class CTBaseSingleton {
 public:
-    static T* __fastcall Get();                 // 0x00436FB0 (CEngineManager)
+    static T& __fastcall Get();                 // 0x00436FB0 (CEngineManager) ?Get@?$CTBaseSingleton@VCEngineManager@@@@SIAAVCEngineManager@@XZ (Ego_r / FableWin: by reference)
 };
 
 double __fastcall GFGetTime();                  // 0x009E1BC0
@@ -57,7 +57,10 @@ public:
     virtual void PostLoadTopology(long map);    // slot 7
     unsigned char    _pad04[0x1c];
     CArray<CMapInfo> Maps;                      // +0x20 (PDB +0x24)
-    void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area);    // 0x0063E2E0
+    protected:
+    void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area);
+    public:
+    // 0x0063E2E0
 protected:
     void UpdateAllEdges();                      // 0x0063DFD0
 public:
@@ -69,5 +72,5 @@ void CWorldMap::PostLoadTopology(long map)
     InitPassabilityFromThemesIfNecessary(Maps[map].Area);
     GFGetTime();
     UpdateAllEdges();
-    CTBaseSingleton<CEngineManager>::Get()->SetMapAsLoaded(map);
+    CTBaseSingleton<CEngineManager>::Get().SetMapAsLoaded(map);
 }

@@ -12,10 +12,10 @@ class CTCTalk
     char pad0[0x14];
     int  m_speechTicks;   // +0x14
 
-    float GetCurrentSpeechDuration();
+    float GetCurrentSpeechDuration() const;
 };
 
-float CTCTalk::GetCurrentSpeechDuration()
+float CTCTalk::GetCurrentSpeechDuration() const
 {
     return (float)m_speechTicks / CMainGameComponent::GetConstantFPS();
 }

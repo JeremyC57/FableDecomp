@@ -1,0 +1,10 @@
+## HEAD set: 008b34d0.obj 008b3540.obj 008b36a0.obj 008b3b00.obj 008b3d80.obj 008b3ea0.obj 008b4070.obj 008b40f0.obj 008b4200.obj 008b4630.obj 008b4920.obj 008b49a0.obj 008b4aa0.obj 008b4ba0.obj 008b4c20.obj 008b4ca0.obj 008b4d20.obj 008b4d90.obj 008b4e10.obj 008b4f90.obj 008b5410.obj 008b54c0.obj 00908de0.obj 008b3810.obj 008b42e0.obj 00a85fb0.obj 00bbddb0.obj 00a0d2b0.obj 0090080b.obj 0090086f.obj 009008a1.obj
+duplicates 0
+UNRESOLVED 22 ??0CCharString@@QAE@PBDJ@Z
+UNRESOLVED 2 ?Init@CCharString@@QAEXPBDH@Z
+UNRESOLVED 1 ?Register@CInputProcessManager@@QAEXPAVCAInputProcess@@@Z
+## new set: 008b34d0.obj 008b3540.obj 008b36a0.obj 008b3b00.obj 008b3d80.obj 008b3ea0.obj 008b4070.obj 008b40f0.obj 008b4200.obj 008b4630.obj 008b4920.obj 008b49a0.obj 008b4aa0.obj 008b4ba0.obj 008b4c20.obj 008b4ca0.obj 008b4d20.obj 008b4d90.obj 008b4e10.obj 008b4f90.obj 008b5410.obj 008b54c0.obj 00908de0.obj 008b3810.obj 008b42e0.obj 00a85fb0.obj 00bbddb0.obj 00a0d2b0.obj 0090080b.obj 0090086f.obj 009008a1.obj
+duplicates 0
+UNRESOLVED 24 ??0CCharString@@QAE@PBDJ@Z
+UNRESOLVED 1 ?AddInputProcess@CInputProcessManager@@IAEXAAVCAInputProcess@@@Z
+LK_DONE

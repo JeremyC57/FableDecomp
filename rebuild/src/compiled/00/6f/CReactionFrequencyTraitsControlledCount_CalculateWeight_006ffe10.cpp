@@ -1,3 +1,4 @@
+// Leaf: ?CalculateWeight@CReactionFrequencyTraits_ControlledCount@@UAEMPBVCThingAICreature@@@Z
 // CReactionFrequencyTraits_ControlledCount::CalculateWeight(const CThingAICreature*) -- the reaction's weight: 0 for an immediate repeat by the same creature; otherwise recharge the available count while rising (capping it ends the rising phase), and once the minimum gap has passed weigh by count / max, clamped to [0, 1]
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FFE10, length 231 bytes, `ret 4` (vtable slot; float in st0)
 // (PDB ?CalculateWeight@CReactionFrequencyTraits_ControlledCount@@UAEMPBVCThingAICreature@@@Z).
@@ -9,6 +10,7 @@
 // Shape: the elapsed frames convert as an unsigned long; the recharge is `+=` with the recharge-frame store scheduled
 // inside it; the cap is `count >= max` (`test ah,1 ; jne`); the clamp is the inline reference Clamp over 0.0f/1.0f
 // temporaries in the frame (`lea eax,[esp+N] ; fld [eax]`), the weight an unnamed temporary homed in the dead argument slot (`fst` then the compare); the repeat test and the gap test share the 0.0f exit.
+#define FABLE_RETAIL_REACTIONFREQUENCYTRAITS_CLASS_CHAIN_PASS24   // alias route: engine/CReactionFrequencyTraits_ControlledCount.h declares CalculateWeight under this class-model switch
 #include "engine/CReactionFrequencyTraits_ControlledCount.h"
 
 class CWorld { public:
@@ -24,11 +26,8 @@ inline const float& Clamp(const float& v, const float& lo, const float& hi)
     return v;
 }
 
-struct CReactionFrequencyTraits_ControlledCount_Methods : CReactionFrequencyTraits_ControlledCount {
-    float CalculateWeight(const CThingAICreature* creature);
-};
 
-float CReactionFrequencyTraits_ControlledCount_Methods::CalculateWeight(const CThingAICreature* creature)
+float CReactionFrequencyTraits_ControlledCount::CalculateWeight(const CThingAICreature* creature)
 {
     unsigned long frame = CWorld::GetFrame();
     if (!AllowIndividualRepeats && creature && PLastReactionCreature && PLastReactionCreature == creature)

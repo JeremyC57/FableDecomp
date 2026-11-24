@@ -1,0 +1,91 @@
+addr       parity           behav  name
+0042d940   MATCH            PASS   UnloadResource
+0042d950   MATCH            PASS   IsResourceLoaded
+0042d960   MATCH            PASS   OnResourceLoaded
+0042d980   MATCH            PASS   OnResourceLoadAborted
+0042da80   MATCH            PASS   PostTransfer
+004303d0   MATCH            PASS   IsParentDef
+006fedd0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+006fedd0   RELOCATION_MATCH PASS   TransferBinaryOut
+006fef30   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+006fef30   RELOCATION_MATCH PASS   TransferBinaryOut
+006ffa40   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+006ffa40   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+006ffa40   RELOCATION_MATCH PASS   TransferBinaryIn
+006ffb10   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006ffb10   RELOCATION_MATCH PASS   CalculateWeight
+006ffc30   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+006ffc30   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+006ffc30   RELOCATION_MATCH PASS   TransferBinaryIn
+006ffe10   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006ffe10   RELOCATION_MATCH PASS   CalculateWeight
+006fff00   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+006fff00   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+006fff00   RELOCATION_MATCH PASS   TransferBinaryIn
+00890b70   RELOCATION_MATCH PASS   PreloadNewScene
+00890b90   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00890b90   MATCH            PASS   SetEnvironmentalEffectsAlwaysUpdate
+00891220   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00891220   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00891220   WARN RELOC_NAME: ?AddUBYTE@CGSIOverrideMusicEvent@@QAEXE@Z -> 006bdf40 labelled 'CMusicManager::SetCinematicOverridingMusicSet'
+00891220   WARN RELOC_NAME: ?SetOverrideMusic@CGSIOverrideMusicEvent@@QAEXW4EMusicSetType@@_N@Z -> 006bdea0 labelled 'CMusicManager::SetOverridingMusicSet'
+00891220   RELOCATION_MATCH PASS   OverrideMusic
+008912a0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+008912a0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008912a0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+008912a0   WARN RELOC_NAME: ?CGSIStopMusic_StopEvent@@YIXPAUCGSIStopMusicEvent@@@Z -> 006bdf90 labelled 'CMusicManager::ClearCinematicOverridingMusicSet'
+008912a0   WARN RELOC_NAME: ?CGSIStopMusic_ResumeEvent@@YIXPAUCGSIStopMusicEvent@@@Z -> 006bdef0 labelled 'CMusicManager::ClearOverridingMusicSet'
+008912a0   RELOCATION_MATCH PASS   StopOverrideMusic
+00891310   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00891310   WARN RELOC_NAME: ?CacheMusicSet@CMusicTarget@@QAEXW4EMusicSetType@@@Z -> 006bd890 labelled 'sub_006bd890'
+00891310   RELOCATION_MATCH PASS   CacheMusicSet
+008913a0   RELOCATION_MATCH PASS   GetTextString
+00891680   RELOCATION_MATCH PASS   GetMostRecentValidUsedTargetName
+00891880   RELOCATION_MATCH PASS   GetActiveQuestName
+008922c0   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+008922c0   WARN RELOC_NAME: ?g_cutscene@@3PAUInner@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+008922c0   WARN RELOC_NAME: ?SetMode@Inner@@QAEX_NABVCCharString@@@Z -> 004908da labelled 'CSubtitleRenderer::SetCutsceneActionMode'
+008922c0   RELOCATION_MATCH PASS   SetCutsceneActionMode
+008929d0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+008929d0   WARN RELOC_NAME: ?g_pPlayerGui@@3PAVCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+008929d0   RELOCATION_MATCH PASS   DisplayGameInfo
+00892a80   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+00892a80   WARN RELOC_NAME: ?g_pPlayerGui@@3PAVCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00892a80   RELOCATION_MATCH PASS   DisplayGameInfoText
+008a9db0   WARN RELOC_NAME: ?CGameScriptInterface_FindOrCreateRumourCategory@@YGXVCCharString@@@Z -> 008ae660 labelled 'CTCAIScratchpad::AddGossip'
+008a9db0   RELOCATION_MATCH PASS   AddRumourCategory
+00a19ad0   MATCH            PASS   Interrupt
+00a39c00   MATCH            PASS   MovePosition
+00a39de0   MATCH            PASS   IsOpen
+00b38cb0   MATCH            PASS   PeekSceneFilterFlags
+
+WINS: 29
+  0042d940 MATCH CResource::?UnloadResource@CResource@@UAE_NXZ
+  0042d950 MATCH CResource::?IsResourceLoaded@CResource@@UBE_NXZ
+  0042d960 MATCH CResource::?OnResourceLoaded@CResource@@UAEXXZ
+  0042d980 MATCH CResource::?OnResourceLoadAborted@CResource@@UAEXXZ
+  0042da80 MATCH CDefClassBase::?PostTransfer@CDefClassBase@@UAEXXZ
+  004303d0 MATCH CParentDefClassBase::?IsParentDef@CParentDefClassBase@@UBE_NXZ
+  006fedd0 RELOCATION_MATCH CReactionFrequencyTraits_PeriodicFrequency::?TransferBinaryOut@CReactionFrequencyTraits_PeriodicFrequency@@UBEXAAVCDataOutputStream@@@Z
+  006fef30 RELOCATION_MATCH CReactionFrequencyTraits_ControlledCount::?TransferBinaryOut@CReactionFrequencyTraits_ControlledCount@@UBEXAAVCDataOutputStream@@@Z
+  006ffa40 RELOCATION_MATCH CReactionFrequencyTraits_LinearTime::?TransferBinaryIn@CReactionFrequencyTraits_LinearTime@@UAEXAAVCMemoryDataInputStream@@@Z
+  006ffb10 RELOCATION_MATCH CReactionFrequencyTraits_PeriodicFrequency::?CalculateWeight@CReactionFrequencyTraits_PeriodicFrequency@@UAEMPBVCThingAICreature@@@Z
+  006ffc30 RELOCATION_MATCH CReactionFrequencyTraits_PeriodicFrequency::?TransferBinaryIn@CReactionFrequencyTraits_PeriodicFrequency@@UAEXAAVCMemoryDataInputStream@@@Z
+  006ffe10 RELOCATION_MATCH CReactionFrequencyTraits_ControlledCount::?CalculateWeight@CReactionFrequencyTraits_ControlledCount@@UAEMPBVCThingAICreature@@@Z
+  006fff00 RELOCATION_MATCH CReactionFrequencyTraits_ControlledCount::?TransferBinaryIn@CReactionFrequencyTraits_ControlledCount@@UAEXAAVCMemoryDataInputStream@@@Z
+  00890b70 RELOCATION_MATCH CGameScriptInterface::?PreloadNewScene@CGameScriptInterface@@UBEXM@Z
+  00890b90 MATCH CGameScriptInterface::?SetEnvironmentalEffectsAlwaysUpdate@CGameScriptInterface@@UBEX_N@Z
+  00891220 RELOCATION_MATCH CGameScriptInterface::?OverrideMusic@CGameScriptInterface@@UBEXW4EMusicSetType@@_N1@Z
+  008912a0 RELOCATION_MATCH CGameScriptInterface::?StopOverrideMusic@CGameScriptInterface@@UBEX_N@Z
+  00891310 RELOCATION_MATCH CGameScriptInterface::?CacheMusicSet@CGameScriptInterface@@UBEXW4EMusicSetType@@@Z
+  008913a0 RELOCATION_MATCH CGameScriptInterface::?GetTextString@CGameScriptInterface@@UBE?AVCWideString@@ABVCCharString@@@Z
+  00891680 RELOCATION_MATCH CGameScriptInterface::?GetMostRecentValidUsedTargetName@CGameScriptInterface@@UBE?AVCCharString@@XZ
+  00891880 RELOCATION_MATCH CGameScriptInterface::?GetActiveQuestName@CGameScriptInterface@@UBE?AVCCharString@@XZ
+  008922c0 RELOCATION_MATCH CGameScriptInterface::?SetCutsceneActionMode@CGameScriptInterface@@UBEX_NABVCCharString@@@Z
+  008929d0 RELOCATION_MATCH CGameScriptInterface::?DisplayGameInfo@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  00892a80 RELOCATION_MATCH CGameScriptInterface::?DisplayGameInfoText@CGameScriptInterface@@UBEXABVCWideString@@@Z
+  008a9db0 RELOCATION_MATCH CGameScriptInterface::?AddRumourCategory@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  00a19ad0 MATCH CNavigatorBase::?Interrupt@CNavigatorBase@@UAEXXZ
+  00a39c00 MATCH CWADFile::?MovePosition@CWADFile@@UAEXJ@Z
+  00a39de0 MATCH CWADFile::?IsOpen@CWADFile@@UBE_NXZ
+  00b38cb0 MATCH CEnginePrimitiveRenderer::?PeekSceneFilterFlags@CEnginePrimitiveRenderer@@UBEKXZ

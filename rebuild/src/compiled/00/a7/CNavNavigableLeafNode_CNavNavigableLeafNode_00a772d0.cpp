@@ -39,7 +39,7 @@ template <class T, int N> class CSmallVector { public:
     T*          Data;                              // +0
     signed char Count;                             // +4
     CSmallVector() : Data(0), Count(0) { }
-    void resize(unsigned long size, const T& value);   // 0x00A7DB10
+    void resize(long size, const T& value);   // 0x00A7DB10
 };
 class CNavRegion { public: long RegionID; void* Connections; long MostRecentSearchID; };
 struct SRegionNode {                               // _List_node<CNavRegion>

@@ -1,0 +1,28 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0062EA10	CCombatActionBase	AllowsCombinationAnims	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	CCombatActionBase::AllowsCombinationAnims	?CCombatActionBase_AllowsCombinationAnims@@YI_NXZ	FableWin.pdb 0x01D916B0 (header-inline base body; no Ego_r / Ego_d record) + retail CCombatActionBase vftable 0x01259E44 slot 66 = this address + body `xor al,al ; ret`; leaf-only (catalog name unchanged)
+0x006F57B0	CCombatAction_StrikeResponseScorpionKing	AllowsCombinationAnims	?AllowsCombinationAnims@CCombatAction_StrikeResponseScorpionKing@@UBE_NXZ	CCombatAction_StrikeResponseScorpionKing::AllowsCombinationAnims	?CCombatAction_StrikeResponseScorpionKing_AllowsCombinationAnims@@YI_NXZ	FableWin.pdb 0x023F2520 + retail vftable 0x01262874 slot 66 = this address + body `mov al,1 ; ret`; leaf-only (catalog name unchanged)
+0x00692890	CCreatureActionBase	AllowsCombinationAnims	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	CCreatureActionBase::AllowsCombinationAnims	?AllowsCombinationAnims@CCreatureActionBase_Methods@@QAEDXZ	the nf261 line (Ego_r 0x005191F0 + FableWin 0x01DB9540; vftable 0x01259D24 slot 66); held at nf261, lands with this unit
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x006F5C10	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x006F5C10	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatAction_StrikeResponseScorpionKing@@UBE_NXZ	0x006F57B0
+0x0074ACE0	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x0085FF10	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x008A9100	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x008B8590	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x008B9010	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x008C4E20	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x008C5370	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x008E08C0	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x008E20F0	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x008E24F0	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x008E68E0	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x00924C70	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x00951430	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x009537B0	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x009551A0	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x00956960	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x00957170	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x009619C0	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x00962990	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10
+0x00974110	?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ	?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ	0x0062EA10

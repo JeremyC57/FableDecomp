@@ -1,3 +1,4 @@
+// Leaf: ?SetDataString@CGameScriptThing@@UAEXABVCCharString@@@Z
 // CGameScriptThing::SetDataString(const CCharString& text) -- assign the text to the string at +0x24 (CCharString::operator= @ 0x0099EFB0) and, when the intelligent pointer at +0xc holds a live thing, to the thing's data string at +0x78
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D0350, length 80 bytes.
 // Callees: CCharString::operator= @ 0x0099EFB0 twice, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 three times (on +0xc; re-fetched for every access). Shape: the text in edi,
@@ -43,11 +44,11 @@ public:
 };
 
 class CGameScriptThing { public:
-    unsigned char             _pad[0xc];
+    unsigned char _pad[0x8];
     CIntelligentPointer<CThing_Retail> m_thing;            // +0x0c
     unsigned char             _pad14[0x10];
     CCharString               m_dataString;        // +0x24
-    void SetDataString(const CCharString& text);
+    virtual void SetDataString(const CCharString& text);
 };
 
 void CGameScriptThing::SetDataString(const CCharString& text)

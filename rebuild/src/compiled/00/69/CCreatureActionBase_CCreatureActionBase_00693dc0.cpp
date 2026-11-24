@@ -117,7 +117,7 @@ class CCreatureActionBase : public CBaseObject { public:
     virtual void UpdateActionRunningTime(); // native slot53 00692480
     virtual bool IsDecapitatingAttack() const; // native slot54 00692810
     virtual bool PreventSneaking() const; // native slot55 00692820
-    virtual void FrameUpdate(); // native slot56 00694020
+    protected: virtual void FrameUpdate(); // native slot56 00694020 // NF266: slots 56-69 protected (Ego_r + FableWin MAE / MBE; engine/CCreatureActionBase.h)
     virtual bool IsUsingAnimationMovement() const; // native slot57 00692680
     virtual bool IsUsingForcedMovement() const; // native slot58 00692690
     virtual bool IsMovementUsingPhysics() const; // native slot59 006926A0
@@ -131,7 +131,7 @@ class CCreatureActionBase : public CBaseObject { public:
     virtual bool CanAnimationTransitionOut() const; // native slot67 006928B0
     virtual void OnAnimationLoaded(); // native slot68 00692830
     virtual bool WaitForMeshToLoad() const; // native slot69 00692840
- CIntelligentPointer_CThingCreatureBase PCreature;
+ public: CIntelligentPointer_CThingCreatureBase PCreature;
  long TotalTime,ActionTime,AnimDelayTime,FramesRunning,InterruptionGroupID,InterruptionPriority,ActionID;
  CIntelligentPointer_CThing PItemRemoved;
  CSoundPair Sounds;

@@ -37,6 +37,14 @@ protected:
     std::basic_string<unsigned short> Data;
 public:
     long NoRefs;
+#ifdef FABLE_RETAIL_CWIDESTRINGDATA_CTOR_TEXT
+    // Opt-in (NF220, q12401: row 0x0099C120): Ego_r.pdb / FableWin.pdb ??0CWideStringData@@QAE@PB_WJ@Z (public). Declaration only.
+    CWideStringData(const wchar_t* text, long length);
+#endif
+#ifdef FABLE_RETAIL_CWIDESTRINGDATA_APPEND_CHAR
+    // Opt-in (NF220, q12401: row 0x0099C120): Ego_r.pdb / FableWin.pdb ?Append@CWideStringData@@QAEX_W@Z (public). Declaration only.
+    void Append(wchar_t character);
+#endif
 #ifdef FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24
     void Append(const wchar_t* text,long length) {
         if (length < 0) Data.append(text);
@@ -91,6 +99,18 @@ protected:
     // ?Compare@?$CBasicString@D@@KIJPBD0@Z (out of line at 0x00411570, landed CBasicStringchar_Compare_00411570.cpp) is visible to the
     // caller's TU; VC7.1 keeps calling it (the loop is not inlined) but then knows the call writes no memory, so the caller keeps a
     // loaded array base across it (0x009C937F `mov edi,[esi+204h]` reused at 0x009C93D7 after both Compare calls).
+#ifdef FABLE_RETAIL_BEARDY_ORIGINAL_TEXT_COMPARISON_PASS27
+    static long __fastcall Compare(const T* str1,const T* str2)
+    {
+        while (*str1 || *str2) {
+            if (*str1 < *str2) return -1;
+            else if (*str1 > *str2) return 1;
+            ++str1;
+            ++str2;
+        }
+        return 0;
+    }
+#else
     static long __fastcall Compare(const T* a,const T* b)
     {
         for (;;) {
@@ -106,6 +126,7 @@ protected:
             ++b;
         }
     }
+#endif
 #else
     static long __fastcall Compare(const T*,const T*);
 #endif
@@ -135,12 +156,32 @@ public:
 #endif
     // Ego_r 0x0040C910 / FableWin 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z (retail out-of-line copy 0x004115A0; a TU that holds the template body expands it, 0x009BC120).
 #if defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_COMPARE_ZERO)
+#ifdef FABLE_RETAIL_BEARDY_ORIGINAL_TEXT_COMPARISON_PASS27
+    // Inline-budget: 00E4FB8F calls the 40-byte Compare inside two expanded equalities.
+    // The 88-byte standalone equality at 004115A0 expands Compare one level below its own entry.
+    FABLE_FORCEINLINE bool operator==(const T* text) const {
+#ifdef _MSC_VER
+#pragma inline_depth(1)
+#endif
+        return Compare(PData,text)==0;
+#ifdef _MSC_VER
+#pragma inline_depth()
+#endif
+    }
+#else
     bool operator==(const T* text) const { return Compare(PData,text)==0; }   // Codex pass 22: native 0x004115A0 keeps the original compare-result == 0.
+#endif
 #elif defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE)
     // Retail opt-in (chunk 780): the quest-script TUs expand CBasicString<char>::operator==(const char*) in place as
     // `call Compare 0x00411570 ; neg eax ; sbb al,al ; inc al` (CV_BeardyBaldyScript::Main 0x00E4FB88..0x00E4FB98, the landed
     // chunk 778 WatchForQuestCardConditions model), i.e. Compare(PData, text) == 0 (FableWin ??8?$CBasicString@D@@QBE_NPBD@Z).
     bool operator==(const T* text) const { return Compare(PData,text) ? false : true; }
+#elif defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO)
+    // Retail opt-in (NF215, 2026-11-21, q12262): the out-of-line body of 0x004115A0 visible to a caller that calls it (like
+    // FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE), spelled as the owner row is (Compare-result == 0). With FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+    // the pick-any COMDAT the caller's object carries is the owner's 88-byte body (Compare expanded, `xor ecx,ecx ; test eax,eax ; sete cl`
+    // on each return path) instead of the 76-byte `? false : true` copy.
+    __declspec(noinline) bool operator==(const T* text) const { return Compare(PData,text)==0; }
 #elif defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE)
     // Retail opt-in (row 0x007D2CC0 CTCTavernGameCoinGolf::EnableCourse): the template body visible but called out of line
     // (0x004115A0 COMDAT): VC7.1 then knows it writes no memory, so the caller's string pointer survives the call (no second null test).
@@ -154,6 +195,30 @@ public:
     bool operator<(const CBasicString& other) const;                 // 0x00429950 (CBasicString<char>)
 #endif
 };
+#ifdef FABLE_RETAIL_CBASICSTRING_CHAR_COMPARE_MINIMAP_PASS26
+// FableWin 01899DC0 and 01899D90, retail 00411570 and 004115A0.
+// The two signed character operands are read again for the ordering tests.
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+template<> inline long FABLE_FASTCALL CBasicString<char>::Compare(const char* a,const char* b)
+{
+    while (*a || *b) {
+        if (*a < *b) return -1;
+        else if (*a > *b) return 1;
+        ++a;
+        ++b;
+    }
+    return 0;
+}
+template<> inline bool CBasicString<char>::operator==(const char* text) const
+{
+    return Compare(PData,text)==0;
+}
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+#endif // FABLE_RETAIL_CBASICSTRING_CHAR_COMPARE_MINIMAP_PASS26
 #if defined(FABLE_RETAIL_CCHARSTRING_LESS_INLINE) && defined(FABLE_RETAIL_CBASICSTRING_LESS_BODY)
 // Retail opt-in (NF80, q10763 / q10923): the one definition of Ego_r.pdb ??M?$CBasicString@D@@QBE_NABV0@@Z (0x00429950), as a
 // template member so every object that sees it emits a pick-any COMDAT (selection 2) and the copies link together. Never inlined:
@@ -179,6 +244,25 @@ bool CBasicString<T>::operator<(const CBasicString<T>& other) const
     }
     return result < 0;
 }
+#endif
+#if defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_OWNER_BODY) && defined(FABLE_RETAIL_CBASICSTRING_COMPARE_BODY)
+// NF220 opt-in (2026-11-21, q12383; rows 0x005A4CDD, ...). Fidelity: scaffolding, not retail. A size-compiled TU that calls
+// CBasicString<char>::operator==(const char*) out of line carries a pick-any copy of ??8?$CBasicString@D@@QBE_NPBD@Z; as an implicit
+// template instantiation VC7.1 compiles it in the optimize mode in force at the END of the TU (NF216 FINDINGS 2026-11-21), so a size TU
+// emits a 19 / 20-byte copy. The advisor pick-any rule (EXTRA_RULES 2026-11-20) needs the owner's body: the 88-byte copy of row
+// 0x004115A0 (catalog flags: the default /O2 /Oy /W3; Compare expanded, `xor ecx,ecx ; test eax,eax ; sete cl` on each return). An
+// explicit specialization takes the mode at its definition, so this one is compiled under optimize("ty", on), the owner's
+// command-line mode (EXTRA_RULES 2026-11-21, size-pragma condition 2), noinline as retail calls it. `#pragma optimize("", on)` below
+// returns to the command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not carry a
+// row-head optimize pragma before its include of this header (nf189). Needs FABLE_RETAIL_CBASICSTRING_COMPARE_BODY and none of the
+// FABLE_RETAIL_CBASICSTRING_TEXT_EQ_* bodies (the declaration-only operator== above); place before any use of this operator.
+#pragma optimize("ty", on)
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+bool CBasicString<char>::operator==(const char* text) const { return Compare(PData,text)==0; }   // 0x004115A0
+#pragma optimize("", on)
 #endif
 class CCharStringData
 { public:
@@ -224,6 +308,10 @@ inline bool FABLE_FASTCALL GFStringsAreEqual(const wchar_t* a, const wchar_t* b)
 class CWideString
 {
 public:
+#ifdef FABLE_RETAIL_STRING_MEMTRACKING_PASS26
+    // Both original PDB PUBLIC/GDATA records; native string allocation category.
+    static long MemTrackingID;
+#endif
     CWideString();
 #ifdef FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24
     void SetAsSubString(const wchar_t* data, long length) { SetString(data,length); }
@@ -231,7 +319,16 @@ protected:
     void MakeOwnCopyOfData();
 public:
 #endif
+#if defined(FABLE_RETAIL_CWIDESTRING) && defined(FABLE_RETAIL_CWIDESTRING_COPYCTOR_INLINE)
+    // Opt-in (NF220, q12401: row 0x0099C120): the CWideString TU expands the copy constructor (owner 0x0099B720 ??0CWideString@@QAE@ABV0@@Z)
+    // inside operator+ (0x0099C12A..: zero, NoStrings++, the self / same-block tests, UnassignString 0x0099B4D0 out of line, share + NoRefs++).
+    CWideString(const CWideString& other) : PStringData(0) {
+        ++NoStrings;
+        if(&other!=this && other.PStringData!=PStringData){if(PStringData)UnassignString();CWideStringData* data=other.PStringData;if(data){PStringData=data;++data->NoRefs;}}
+    }
+#else
     CWideString(const CWideString& other);
+#endif
 #ifdef FABLE_RETAIL_CWIDESTRING
     // Retail converts bare wide literals implicitly (0x006286F0 Replace(L".xmv", L".wmv"): each temporary's address is
     // re-taken with `lea` after the 0x0099B6B0 call, the implicit-conversion shape; an explicit CWideString(L"...")
@@ -240,7 +337,15 @@ public:
 #else
     explicit CWideString(const wchar_t* text);
 #endif
+#if defined(FABLE_RETAIL_CWIDESTRING) && defined(FABLE_RETAIL_CWIDESTRING_DTOR_INLINE)
+    // Opt-in (NF220, q12401: row 0x0099C120): the CWideString TU expands the destructor (owner 0x0099B510 ??1CWideString@@QAE@XZ)
+    // inside operator+ (0x0099C17B..: NoRefs--, on zero the STLport text freed and the block deleted, the pointer cleared, NoStrings--).
+    // The owner row's own text (coordinator, landing nf220): its pick-any copy equals retail 0x0099B510 (68 = 68 B, relocations masked);
+    // the shorter `if(--NoRefs<=0)` spelling gave a differing 65-B copy. 0x0099C120's bytes are the same with either.
+    ~CWideString() { CWideStringData* storage = PStringData; if (storage != 0) { --storage->NoRefs; if (storage->NoRefs <= 0) { storage = PStringData; if (storage != 0) delete storage; } PStringData = 0; } --NoStrings; }
+#else
     ~CWideString();
+#endif
     operator const wchar_t*() const;
 #if defined(FABLE_RETAIL_CWIDESTRING) && defined(FABLE_RETAIL_CWIDESTRING_TOCHARSTRING_BODY)
     // Retail opt-in (NF80, q10939: row 0x0099B2C0 CWideString::ToCharString): Ego_r.pdb / FableWin.pdb ?GetAsCharArray@CWideString@@QBEPB_WXZ
@@ -268,6 +373,11 @@ public:
 #endif
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
+#ifdef FABLE_RETAIL_CWIDESTRING_ADDCHAR
+    // Opt-in (NF220, q12401: row 0x0099C120 operator+(const CWideString&, wchar_t)): Ego_r.pdb / FableWin.pdb ??YCWideString@@QAEABV0@_W@Z (G here: wchar_t is unsigned short under the retail flags),
+    // out of line in retail (landed 0x0099B9A0, called at 0x0099C15C). Declaration only.
+    const CWideString& operator+=(wchar_t character);         // 0x0099B9A0
+#endif
     bool operator!=(const wchar_t* other) const;
 #ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
     // Both original PDBs; native0099b0f0, called at005e50a2.
@@ -336,6 +446,11 @@ private:
 #endif
 
 protected:
+#if defined(FABLE_RETAIL_CWIDESTRING_MAKEOWNCOPYOFDATA) && !defined(FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24)
+    // Opt-in (NF220, q12401: row 0x0099C120): Ego_r.pdb / FableWin.pdb ?MakeOwnCopyOfData@CWideString@@IAEXXZ (protected; landed
+    // 0x0099B560). Declaration only (FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24 declares the same member).
+    void MakeOwnCopyOfData();
+#endif
     CWideStringData* AllocStringData(                          // 0x0099B3C0 protected (Ego_r / FableWin: IAE)
         const wchar_t* text,
         long length);
@@ -398,6 +513,10 @@ CWideString FABLE_FASTCALL operator+(
 class CCharString
 {
 public:
+#ifdef FABLE_RETAIL_STRING_MEMTRACKING_PASS26
+    // Both original PDB PUBLIC/GDATA records; native string allocation category.
+    static long MemTrackingID;
+#endif
     CCharString();
 #ifdef FABLE_RETAIL_CCHARSTRING
     // Retail opt-in (chunk 717): retail's only const char* constructor is ??0CCharString@@QAE@PBDJ@Z 0x0099EBF0 (Ego_r.pdb +
@@ -406,6 +525,12 @@ public:
     // 0x0121E3A0, vector<CCharString>(18, "") 0x0121A460 which matches only through the implicit conversion, a const
     // CCharString& bound to a literal 0x0121EF70): the declaration carries the default length -1.
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
+#ifdef FABLE_RETAIL_CCHARSTRING_NULLSTRING
+    // Opt-in (NF219, rows 0x01223EC0 / 0x0122A5E0, the NullString initializer / atexit pair): the empty string 0x013BD804, Ego_r.pdb
+    // `dynamic initializer for 'CCharString::NullString'' (0x0101AAD0) / `dynamic atexit destructor ..' (0x0101E240), FableWin.pdb
+    // the same pair (0x0400A4F0 / 0x04012360), Ego_d.pdb PUB32 ?NullString@CCharString@@2V1@A (public static). Declaration only.
+    static CCharString NullString;                             // 0x013BD804
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_RESERVE
     // Opt-in (row 0x00523CF0): Ego_r.pdb ?Reserve@CCharString@@QAEXJ@Z (0x0099EF90) and ?SetUseFastExtend@CCharString@@QAEX_N@Z (0x0099EF70).
     void Reserve(long);                                         // 0x0099EF90
@@ -421,7 +546,13 @@ public:
     // Retail opt-in (chunk 892, row 0x00B21A50): Ego_r.pdb ?GetCRC@CCharString@@QBEKXZ; retail's out-of-line copy 0x00404310 is
     // `CCRC::Calc(0, GetAsCharArray(), GetLength())` (length test first, then the NullChar select, then the fastcall), and the
     // link-time-code-generated callers expand that body (0x00B21AB0..0x00B21AD0, 0x00B21BCF..0x00B21BE5).
+#ifdef FABLE_RETAIL_CCHARSTRING_GETCRC_BYTELENGTH_PASS27
+    // FableWin 0x0186D2A0 calls GetByteLength at 0x0186D370, which directly forwards to GetLength.
+    long GetByteLength() const { return GetLength(); }
+    unsigned long GetCRC() const { return CCRC::Calc(0, GetAsCharArray(), GetByteLength()); }
+#else
     unsigned long GetCRC() const { return CCRC::Calc(0, GetAsCharArray(), GetLength()); }
+#endif
 #else
     unsigned long GetCRC() const;                              // 0x00404310 (Ego_r 0x00403C00)
 #endif
@@ -573,7 +704,18 @@ public:
     // null / non-null arms in place where the plain inline operator is called out of line.
     FABLE_FORCEINLINE
 #endif
+#ifdef FABLE_RETAIL_BEARDY_ORIGINAL_TEXT_COMPARISON_PASS27
+    bool operator==(const char* text) const {
+        if (!PStringData) {
+            if (strcmp(text,"")==0) return true;
+        } else {
+            return PStringData->Data==text;
+        }
+        return false;
+    }
+#else
     bool operator==(const char* text) const { if(!PStringData) { if(strcmp(text,"")==0) return true; return false; } return PStringData->Data==text; }
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_CHAR_EQ
     // Nested opt-in (chunk 778, row 0x00615E70 CPersistTraits<CTCInventoryMap::CUIRegionInfo>::TransferIn): FableWin.pdb
     // ??8CCharString@@QBE_ND@Z (0x020C8690; Ego_r keeps only ??9CCharString@@QBE_ND@Z, retail's out-of-line operator!= 0x0099E520).

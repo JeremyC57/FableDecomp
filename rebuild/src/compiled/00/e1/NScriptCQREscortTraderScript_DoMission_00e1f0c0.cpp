@@ -36,12 +36,8 @@ void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
 
-FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const    // slot 6 0x004AA980, inlined here
-{
-    if (!PImp.Data)
-        return NullCoord;
-    return PImp.Data->GetPos();
-}
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }    // slot 6 0x004AA980, inlined here
 
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

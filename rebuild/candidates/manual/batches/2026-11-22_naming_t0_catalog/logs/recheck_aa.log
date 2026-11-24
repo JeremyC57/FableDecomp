@@ -1,0 +1,190 @@
+addr       parity           behav  name
+  WARN leaf 'operator new' matches no symbol in 00405c10.obj; graded the largest function
+  WARN leaf 'operator new' matches no symbol in 00405c10.obj; graded the largest function
+00405c10   WARN STANDIN_LEAF ?CFourierAnalysis_00405c10@@YAPAXPAX0@Z (catalog _global::operator new; address-only name)
+00405c10   MATCH            PASS   operator new
+  WARN leaf 'AddMatrix' matches no symbol in 00aaf800.obj; graded the largest function
+  WARN leaf 'AddMatrix' matches no symbol in 00aaf800.obj; graded the largest function
+00aaf800   WARN RELOC_NAME: ?InsertGrow@CRetailVector_00aaf800@@QAEXPAUSRecord_00aaf800@@ABU2@ABUSScalarTag@@K_N@Z -> 00aafe50 labelled 'std::vector<CMatrix3x4, std::allocator<CMatrix3x4>>::_M_insert_overflow'
+00aaf800   WARN STANDIN_LEAF ?AddRecord@CRecordOwner_00aaf800@@QAEXABUSRecord_00aaf800@@@Z (catalog C3DAnimFileSequenceChunk::AddMatrix; address-only name)
+00aaf800   RELOCATION_MATCH PASS   AddMatrix
+00710600   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+00710600   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+  WARN leaf '??4C3DAnimationBlendState@' matches no symbol in 00710600.obj; graded the largest function
+  WARN leaf '??4C3DAnimationBlendState@' matches no symbol in 00710600.obj; graded the largest function
+00710600   WARN STANDIN_LEAF ??4CIVCountedHolder_00710600@@QAEAAU0@ABU0@@Z (catalog C3DAnimationBlendState::operator=; address-only name)
+00710600   MATCH            PASS   operator=
+00a4cd70   WARN STANDIN_LEAF ?RelocateData@CAnimationData_00a4cd70@@QAEXPAX0@Z (catalog C3DAnimationSequenceData::RelocateData; address-only name)
+00a4cd70   MATCH            PASS   RelocateData
+00ac41d0   WARN STANDIN_LEAF ?Resize@CSimulationTable_00ac41d0@@QAEXK@Z (catalog C3DGroup2::Resize; address-only name)
+00ac41d0   RELOCATION_MATCH PASS   Resize
+0088bb60   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0088bb60   WARN STANDIN_LEAF ?ForceResetWithOutput@CAIBrain_0088bb60@@QAEXXZ (catalog CAIBrain::ForceReset; address-only name)
+0088bb60   RELOCATION_MATCH PASS   ForceReset
+008fe93b   WARN RELOC_NAME: _ForwardTarget_0099eae0 -> 0099eae0 labelled 'CCharString::~CCharString'
+008fe93b   WARN STANDIN_LEAF _Forward (catalog CAIStateGroupInfo::~CAIStateGroupInfo; names another function)
+008fe93b   RELOCATION_MATCH PASS   ~CAIStateGroupInfo
+  WARN leaf 'FollowCloseUpdate' matches no symbol in 00985420.obj; graded the largest function
+  WARN leaf 'FollowCloseUpdate' matches no symbol in 00985420.obj; graded the largest function
+00985420   WARN RELOC_NAME: ?Method@CClass_00985420@@QAEXJJ@Z -> 009852c0 labelled 'CAIStateGroup_OpinionReactionRoot::FollowUpdate'
+00985420   WARN STANDIN_LEAF ?CallWith2_00985420@CClass_00985420@@QAEXXZ (catalog CAIStateGroup_OpinionReactionRoot::FollowCloseUpdate; address-only name)
+00985420   RELOCATION_MATCH PASS   FollowCloseUpdate
+00a44610   WARN RELOC_NAME: _ForwardTarget_0099a300 -> 0099a300 labelled 'CBaseClassNonCopyable::~CBaseClassNonCopyable'
+00a44610   WARN STANDIN_LEAF _Forward (catalog CASuspendableProcess::~CASuspendableProcess; names another function)
+00a44610   RELOCATION_MATCH PASS   ~CASuspendableProcess
+0045cc79   WARN RELOC_NAME: ?AllocateCopy@?$Vector@URecord24_0045cc79@@@@QAEPAURecord24_0045cc79@@IPBU2@0@Z -> 0045cd9b labelled 'std::vector<CAppearanceModifierGraphics::CEntry>::_M_allocate_and_copy'
+0045cc79   WARN RELOC_NAME: ?Dispose@?$Vector@URecord24_0045cc79@@@@QAEXXZ -> 0045cde2 labelled '_unattributed::ReleaseFirstMember_0045cde2'
+0045cc79   WARN STANDIN_LEAF ?Assign@?$Vector@URecord24_0045cc79@@@@QAEAAV1@ABV1@@Z (catalog CAppearanceModifierGraphics::operator=; names another function)
+0045cc79   RELOCATION_MATCH PASS   operator=
+0046fe8a   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+0046fe8a   WARN STANDIN_LEAF ?TransferBinaryOut@CPODVector_0046fe8a@@QBEXPAVCDataOutputStream@@@Z (catalog CAppearanceModifierGraphics::TransferBinaryOut; address-only name)
+0046fe8a   RELOCATION_MATCH PASS   TransferBinaryOut
+0046fedb   WARN SHARED_HEADER_AVAILABLE CActiveFile (engine/CActiveFile.h)
+0046fedb   WARN STANDIN_LEAF ?OnReadFinished_0046fedb@@YIXPAUCActiveFile@@@Z (catalog CAppearanceModifierGraphics::~CAppearanceModifierGraphics; address-only name)
+0046fedb   RELOCATION_MATCH PASS   ~CAppearanceModifierGraphics
+0046fee9   WARN STANDIN_LEAF ?TransferBinaryIn@CPODVector_0046fee9@@QAEXPAVCDataInputStream@@@Z (catalog CAppearanceModifierGraphics::TransferBinaryIn; address-only name)
+0046fee9   RELOCATION_MATCH PASS   TransferBinaryIn
+  WARN leaf '??0CBBBFileException@' matches no symbol in 0099ae50.obj; graded the largest function
+  WARN leaf '??0CBBBFileException@' matches no symbol in 0099ae50.obj; graded the largest function
+0099ae50   WARN STANDIN_LEAF ??0CNamedHandle_0099ae50@@QAE@VCCharString@@PAX@Z (catalog CBBBFileException::CBBBFileException; address-only name)
+0099ae50   RELOCATION_MATCH PASS   CBBBFileException
+00835620   RELOCATION_MATCH PASS   CBrainOutput
+00a61b10   WARN SHARED_HEADER_AVAILABLE CBusyResourceManager (engine/CBusyResourceManager.h)
+00a61b10   WARN RELOC_NAME: ?ClearAllQueries@CBusyResourceManager@@QAEXXZ -> 00a61a80 labelled 'CDirectInputDeviceLists_00a61b10::ReleaseAll'
+00a61b10   WARN RELOC_NAME: ??1CInterfaceList@@QAE@XZ -> 00a61d20 labelled '_global::StdList_Clear_00a61d20'
+00a61b10   WARN STANDIN_LEAF ??1CDirectInputDeviceLists_00a61b10@@QAE@XZ (catalog CBusyResourceManager::~CBusyResourceManager; address-only name)
+00a61b10   RELOCATION_MATCH PASS   ~CBusyResourceManager
+0066a510   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0066a510   WARN STANDIN_LEAF ?DestroyMembers@CObject_0066a510@@QAEXXZ (catalog CCombatAction_GenericStrikeResponseBase::~CCombatAction_GenericStrikeResponseBase; address-only name)
+0066a510   RELOCATION_MATCH PASS   ~CCombatAction_GenericStrikeResponseBase
+00af6690   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00af6690   WARN STANDIN_LEAF ??4CCountedRecord_00af6690@@QAEAAU0@ABU0@@Z (catalog NParticleEngine::CComponentInstance::operator=; address-only name)
+00af6690   RELOCATION_MATCH PASS   operator=
+00403db0   WARN RELOC_NAME: ?Destroy_00403630@@YIXPAX@Z -> 00403630 labelled 'CCountedPointer<CFileInstaller>::DeleteData'
+00403db0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00403630@@QAEXPAX@Z (catalog CCountedPointer<CFileInstaller>::Reset; address-only name)
+00403db0   RELOCATION_MATCH PASS   Reset
+0041956c   WARN RELOC_NAME: ?Destroy_00419086@@YIXPAX@Z -> 00419086 labelled 'CCountedPointer<NParticleEngine::CAEnvironmentInteraction>::DeleteData'
+0041956c   WARN STANDIN_LEAF ??0CCountedPointer_00419086@@QAE@PAX@Z (catalog CCountedPointer<NParticleEngine::CAEnvironmentInteraction>::CCountedPointer; address-only name)
+0041956c   RELOCATION_MATCH PASS   CCountedPointer
+004366b0   WARN RELOC_NAME: ?Destroy_004361e0@@YIXPAX@Z -> 004361e0 labelled 'CCountedPointer<CEngineManager>::DeleteData'
+004366b0   WARN STANDIN_LEAF ?Reset@CCountedPointer_004361e0@@QAEXPAX@Z (catalog CCountedPointer<CEngineManager>::Reset; address-only name)
+004366b0   RELOCATION_MATCH PASS   Reset
+00436cc0   WARN RELOC_NAME: ?Destroy_00436ba0@@YIXPAX@Z -> 00436ba0 labelled 'CCountedPointer<CDisplayViewManager>::DeleteData'
+00436cc0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00436ba0@@QAEXPAX@Z (catalog CCountedPointer<CDisplayViewManager>::Reset; address-only name)
+00436cc0   RELOCATION_MATCH PASS   Reset
+00443500   WARN RELOC_NAME: ?Cleanup@T@@QAEXXZ -> 00441800 labelled 'NPlayerGui::CDrawHealth::~CDrawHealth'
+00443500   WARN STANDIN_LEAF @OnDie@4 (catalog CCountedPointer<NPlayerGui::CDrawHealth>::DeleteData; names another function)
+00443500   RELOCATION_MATCH PASS   DeleteData
+004440c0   WARN RELOC_NAME: ?Destroy_00443520@@YIXPAX@Z -> 00443520 labelled '_global::DeleteObject_00443520'
+004440c0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443520@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawStamina>::Reset; address-only name)
+004440c0   RELOCATION_MATCH PASS   Reset
+004441a0   WARN RELOC_NAME: ?Destroy_00443580@@YIXPAX@Z -> 00443580 labelled 'CCountedPointer<NPlayerGui::CDrawSpiritsHealth>::DeleteData'
+004441a0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443580@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawSpiritsHealth>::Reset; address-only name)
+004441a0   RELOCATION_MATCH PASS   Reset
+00444210   WARN RELOC_NAME: ?Destroy_004435c0@@YIXPAX@Z -> 004435c0 labelled 'CCountedPointer<NPlayerGui::CDrawScreenFade>::DeleteData'
+00444210   WARN STANDIN_LEAF ?Reset@CCountedPointer_004435c0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawScreenFade>::Reset; address-only name)
+00444210   RELOCATION_MATCH PASS   Reset
+00444280   WARN RELOC_NAME: ?Destroy_00443600@@YIXPAX@Z -> 00443600 labelled 'CCountedPointer<NPlayerGui::CDrawMoney>::DeleteData'
+00444280   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443600@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawMoney>::Reset; address-only name)
+00444280   RELOCATION_MATCH PASS   Reset
+004442f0   WARN RELOC_NAME: ?Destroy_00443640@@YIXPAX@Z -> 00443640 labelled 'CCountedPointer<NPlayerGui::CDrawRenown>::DeleteData'
+004442f0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443640@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawRenown>::Reset; address-only name)
+004442f0   RELOCATION_MATCH PASS   Reset
+00444360   WARN RELOC_NAME: ?Destroy_00443680@@YIXPAX@Z -> 00443680 labelled 'CCountedPointer<NPlayerGui::CDrawMorality>::DeleteData'
+00444360   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443680@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawMorality>::Reset; address-only name)
+00444360   RELOCATION_MATCH PASS   Reset
+004443d0   WARN RELOC_NAME: ?Destroy_004436c0@@YIXPAX@Z -> 004436c0 labelled 'CCountedPointer<NPlayerGui::CDrawExperience>::DeleteData'
+004443d0   WARN STANDIN_LEAF ?Reset@CCountedPointer_004436c0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawExperience>::Reset; address-only name)
+004443d0   RELOCATION_MATCH PASS   Reset
+00444440   WARN RELOC_NAME: ?Destroy_00443700@@YIXPAX@Z -> 00443700 labelled 'CCountedPointer<NPlayerGui::CDrawCrime>::DeleteData'
+00444440   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443700@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawCrime>::Reset; address-only name)
+00444440   RELOCATION_MATCH PASS   Reset
+004444b0   WARN RELOC_NAME: ?Destroy_00443740@@YIXPAX@Z -> 00443740 labelled 'CCountedPointer<NPlayerGui::CDrawReceivedItems>::DeleteData'
+004444b0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443740@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawReceivedItems>::Reset; address-only name)
+004444b0   RELOCATION_MATCH PASS   Reset
+00444520   WARN RELOC_NAME: ?Destroy_00443780@@YIXPAX@Z -> 00443780 labelled 'CCountedPointer<NPlayerGui::CDrawFishingGame>::DeleteData'
+00444520   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443780@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawFishingGame>::Reset; address-only name)
+00444520   RELOCATION_MATCH PASS   Reset
+00444590   WARN RELOC_NAME: ?Destroy_004437c0@@YIXPAX@Z -> 004437c0 labelled '_global::DeleteObject_004437c0'
+00444590   WARN STANDIN_LEAF ?Reset@CCountedPointer_004437c0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawStatUpdates>::Reset; address-only name)
+00444590   RELOCATION_MATCH PASS   Reset
+00444600   WARN RELOC_NAME: ?Destroy_004437e0@@YIXPAX@Z -> 004437e0 labelled 'Catch@0047e8cc'
+00444600   WARN STANDIN_LEAF ?Reset@CCountedPointer_004437e0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawAutoPickups>::Reset; address-only name)
+00444600   RELOCATION_MATCH PASS   Reset
+00444670   WARN RELOC_NAME: ?Destroy_00443820@@YIXPAX@Z -> 00443820 labelled '_global::DeleteObject_00443820'
+00444670   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443820@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawPerceivers>::Reset; address-only name)
+00444670   RELOCATION_MATCH PASS   Reset
+004446e0   WARN RELOC_NAME: ?Destroy_00443840@@YIXPAX@Z -> 00443840 labelled 'CCountedPointer<NPlayerGui::CDrawDamage>::DeleteData'
+004446e0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443840@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawDamage>::Reset; address-only name)
+004446e0   RELOCATION_MATCH PASS   Reset
+00444750   WARN RELOC_NAME: ?Destroy_00443890@@YIXPAX@Z -> 00443890 labelled '_global::DeleteObject_00443890'
+00444750   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443890@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawQuickAccessIcons>::Reset; address-only name)
+00444750   RELOCATION_MATCH PASS   Reset
+004447c0   WARN RELOC_NAME: ?Destroy_004438b0@@YIXPAX@Z -> 004438b0 labelled 'Catch@0047e8cc'
+004447c0   WARN STANDIN_LEAF ?Reset@CCountedPointer_004438b0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawScriptScreenText>::Reset; address-only name)
+004447c0   RELOCATION_MATCH PASS   Reset
+00444830   WARN RELOC_NAME: ?Destroy_004438f0@@YIXPAX@Z -> 004438f0 labelled 'CCountedPointer<NPlayerGui::CDrawTargetInfo>::DeleteData'
+00444830   WARN STANDIN_LEAF ?Reset@CCountedPointer_004438f0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawTargetInfo>::Reset; address-only name)
+00444830   RELOCATION_MATCH PASS   Reset
+004448a0   WARN RELOC_NAME: ?Destroy_00443930@@YIXPAX@Z -> 00443930 labelled 'CCountedPointer<NPlayerGui::CDrawHighlightingTargetingCursor>::DeleteData'
+004448a0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443930@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawHighlightingTargetingCursor>::Reset; address-only name)
+004448a0   RELOCATION_MATCH PASS   Reset
+00444910   WARN RELOC_NAME: ?Destroy_00443980@@YIXPAX@Z -> 00443980 labelled 'Catch@0047e8cc'
+00444910   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443980@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawWorldTime>::Reset; address-only name)
+00444910   RELOCATION_MATCH PASS   Reset
+00444980   WARN RELOC_NAME: ?Destroy_004439c0@@YIXPAX@Z -> 004439c0 labelled '_global::DeleteObject_004439c0'
+00444980   WARN STANDIN_LEAF ?Reset@CCountedPointer_004439c0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawAbilityButtons>::Reset; address-only name)
+00444980   RELOCATION_MATCH PASS   Reset
+004449f0   WARN RELOC_NAME: ?Destroy_004439e0@@YIXPAX@Z -> 004439e0 labelled 'Catch@0047e8cc'
+004449f0   WARN STANDIN_LEAF ?Reset@CCountedPointer_004439e0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawLetterBoxBlackBars>::Reset; address-only name)
+004449f0   RELOCATION_MATCH PASS   Reset
+00444a60   WARN RELOC_NAME: ?Destroy_00443a20@@YIXPAX@Z -> 00443a20 labelled 'CCountedPointer<NPlayerGui::CDrawBettingHUD>::DeleteData'
+00444a60   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443a20@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawBettingHUD>::Reset; address-only name)
+00444a60   RELOCATION_MATCH PASS   Reset
+
+WINS: 45
+  00405c10 MATCH _global::operator new
+  00aaf800 RELOCATION_MATCH C3DAnimFileSequenceChunk::AddMatrix
+  00710600 MATCH C3DAnimationBlendState::??4C3DAnimationBlendState@
+  00a4cd70 MATCH C3DAnimationSequenceData::RelocateData
+  00ac41d0 RELOCATION_MATCH C3DGroup2::Resize
+  0088bb60 RELOCATION_MATCH CAIBrain::ForceReset
+  008fe93b RELOCATION_MATCH CAIStateGroupInfo::_Forward
+  00985420 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::FollowCloseUpdate
+  00a44610 RELOCATION_MATCH CASuspendableProcess::_Forward
+  0045cc79 RELOCATION_MATCH CAppearanceModifierGraphics::Assign
+  0046fe8a RELOCATION_MATCH CAppearanceModifierGraphics::TransferBinaryOut
+  0046fedb RELOCATION_MATCH CAppearanceModifierGraphics::OnReadFinished
+  0046fee9 RELOCATION_MATCH CAppearanceModifierGraphics::TransferBinaryIn
+  0099ae50 RELOCATION_MATCH CBBBFileException::??0CBBBFileException@
+  00835620 RELOCATION_MATCH CBrainOutput::??0CBrainOutput@
+  00a61b10 RELOCATION_MATCH CBusyResourceManager::??1CDirectInputDeviceLists_00a61b10
+  0066a510 RELOCATION_MATCH CCombatAction_GenericStrikeResponseBase::DestroyMembers
+  00af6690 RELOCATION_MATCH NParticleEngine::CComponentInstance::??4CCountedRecord_00af6690
+  00403db0 RELOCATION_MATCH CCountedPointer<CFileInstaller>::Reset
+  0041956c RELOCATION_MATCH CCountedPointer<NParticleEngine::CAEnvironmentInteraction>::CCountedPointer
+  004366b0 RELOCATION_MATCH CCountedPointer<CEngineManager>::Reset
+  00436cc0 RELOCATION_MATCH CCountedPointer<CDisplayViewManager>::Reset
+  00443500 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawHealth>::OnDie
+  004440c0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawStamina>::Reset
+  004441a0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawSpiritsHealth>::Reset
+  00444210 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawScreenFade>::Reset
+  00444280 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawMoney>::Reset
+  004442f0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawRenown>::Reset
+  00444360 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawMorality>::Reset
+  004443d0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawExperience>::Reset
+  00444440 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawCrime>::Reset
+  004444b0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawReceivedItems>::Reset
+  00444520 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawFishingGame>::Reset
+  00444590 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawStatUpdates>::Reset
+  00444600 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawAutoPickups>::Reset
+  00444670 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawPerceivers>::Reset
+  004446e0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawDamage>::Reset
+  00444750 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawQuickAccessIcons>::Reset
+  004447c0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawScriptScreenText>::Reset
+  00444830 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawTargetInfo>::Reset
+  004448a0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawHighlightingTargetingCursor>::Reset
+  00444910 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawWorldTime>::Reset
+  00444980 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawAbilityButtons>::Reset
+  004449f0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawLetterBoxBlackBars>::Reset
+  00444a60 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawBettingHUD>::Reset

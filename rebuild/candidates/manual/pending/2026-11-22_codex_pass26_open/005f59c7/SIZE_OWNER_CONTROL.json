@@ -1,0 +1,11 @@
+{
+  "control_grade": "donor_accessors",
+  "selected_grade": "typed_text_bank",
+  "identical_leaf_object_bytes": 2649,
+  "common_leaf_sha256": "00b6236894c1b895e30a75904861b91648f50016ab2a2787d10b70f489ae6ad2",
+  "restored_owner_copies": [
+    "CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::LowerBound @ 0040F020",
+    "CDefClassBase::GetSubDef<CExpressionSubDef> @ 005DA240"
+  ],
+  "compiler": "VC7.1 RTM 13.10.3077"
+}

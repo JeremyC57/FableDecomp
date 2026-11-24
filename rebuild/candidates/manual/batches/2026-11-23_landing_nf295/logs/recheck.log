@@ -1,0 +1,55 @@
+addr       parity           behav  name
+0093cb20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093cb20   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0093cb20   WARN SHARED_HEADER_AVAILABLE CThingTrackNode (engine/CThingTrackNode.h)
+0093cb20   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0093cb20   RELOCATION_MATCH PASS   Update
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0094a6d0   RELOCATION_MATCH PASS   WalkToPoint
+0091e4b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0091e4b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionLeaveRegion (engine/CAIStateGroup_MinionLeaveRegion.h)
+0091e4b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0091e4b0   WARN RELOC_NAME: ?GetAllRegionNodes@CThingSearchToolsMethods@@QAEXABUCThingFilter_IsRegionNode@@PAUThingVector@@@Z -> 0091e660 labelled 'CThingSearchTools::GetAllThings'
+0091e4b0   RELOCATION_MATCH PASS   Update
+00634470   RELOCATION_MATCH PASS   UninitModeChargeQuickAccess
+008e9190   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008e9190   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+008e9190   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008e9190   RELOCATION_MATCH PASS   SetUpCombinationAnims
+00752640   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CAnimFilterNoGroup (engine/CAnimFilterNoGroup.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CAnimationSet (engine/CAnimationSet.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CAppearanceDef (engine/CAppearanceDef.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00752640   RELOCATION_MATCH PASS   InitialiseHeadAnims
+0073a9b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentFlags (engine/CAnimComponentFlags.h)
+0073a9b0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+0073a9b0   WARN RELOC_NAME: ?GetFlagsComponent@CAnimationEntry@@QBEXPAPAVCAnimComponentFlags@@@Z -> 005e0380 labelled 'CAnimationEntry::GetComponent<CAnimComponentFlags>'
+0073a9b0   RELOCATION_MATCH PASS   CAnimEntryLite
+00b6d940   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00b6d940   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00b6d940   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00b6d940   WARN SHARED_HEADER_AVAILABLE CRangeCompressor (engine/CRangeCompressor.h)
+00b6d940   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b6d940   RELOCATION_MATCH PASS   LoadCompressedBuffer
+00846660   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00846660   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents (engine/CTCEntityEvents.h)
+00846660   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00846660   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 9
+  0093cb20 RELOCATION_MATCH CAIStateGroup_NonVillageGuardPatrol::Update
+  0094a6d0 RELOCATION_MATCH CAIStateGroup_GoToPub::WalkToPoint
+  0091e4b0 RELOCATION_MATCH CAIStateGroup_MinionLeaveRegion::Update
+  00634470 RELOCATION_MATCH CPlayer::UninitModeChargeQuickAccess
+  008e9190 RELOCATION_MATCH NCreatureMode::CModeStrafe::SetUpCombinationAnims
+  00752640 RELOCATION_MATCH CTCLook::InitialiseHeadAnims
+  0073a9b0 RELOCATION_MATCH CAnimEntryLite::??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z
+  00b6d940 RELOCATION_MATCH CEngineWaterRenderer::LoadCompressedBuffer
+  00846660 RELOCATION_MATCH CCreatureAction_Talk::?PerformAction@CCreatureAction_Talk@@UAEXXZ

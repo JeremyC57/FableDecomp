@@ -1,0 +1,4 @@
+##### 009e9f20 renames: ?StopProgress@@YIX_N0@Z=?StopProgress@NProgressDisplay@@YIX_N0@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
