@@ -1,7 +1,7 @@
-// CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge(CPatchTesselationEdgeStrip* strip, long x, long y, bool vertical, bool flip, LANDSCAPE_EDGE_STRIP_SIDE side, unsigned short* indices) -- the water-background instantiation of the edge bridging (sea twin 0x00BE4FE0): walks the strip's water vertices and, for each bridged span, fans the adjacent strip's water vertices in between onto a fan-base vertex
-// Grade: DIFFER(2349v2349) 4 hunks -- else-chain skip stores (no continue): only the FindFirst y copy (retail loads y straight into ebp and pushes it; ours edx + mov ebp,edx) and one loop-head alignment remain; BUT the sea twin needs a continue in this text (s_z2 22 hunks) -- template conflict open
+// CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge(CPatchTesselationEdgeStrip* strip, long x, long y, bool vertical, bool flip, LANDSCAPE_EDGE_STRIP_SIDE side, unsigned short* indices) -- the water instantiation of the water edge bridging (twin 0x00BE4FE0 sea): walks the strip's water vertices and, for each bridged span, fans the adjacent strip's water vertices in between onto a fan-base vertex
+// Grade: DIFFER(2349v2349) 4 hunks -- prologue: retail `mov ebp,[esp+138h] ; push ebp` (y copy coalesced), ours `mov edx,[y] ; push edx ; mov ebp,edx`
 // Leaf: ?TesselateEdge@?$CWaterPatchTesselatorBase@VCTVertexWaterBackground@@@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSCAPE_EDGE_STRIP_SIDE@@PAG@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00BE4660, 2349 bytes, thiscall `ret 1Ch`, frame 0x11C, no EH. Identity: rtti-vtables.tsv
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00BE4660, 2352 bytes, thiscall `ret 1Ch`, frame 0x11C, no EH. Identity: rtti-vtables.tsv
 //   CWaterPatchTesselatorBase<CTVertexWaterBackground> vtable 0x012A3334 slot 0 (Ego_r.pdb / FableWin.pdb ?TesselateEdge@..@@EAEX..@Z,
 //   private virtual). Sea twin: vtable 0x012A334C slot 0 = 0x00BE4FE0.
 // Callees: CEngineLandscapeMap::GetEdgeStrip 0x00BDC980 (x4: two FindFirstWaterAdjacentVertex copies), CArray<CTVertexWaterBackground>::

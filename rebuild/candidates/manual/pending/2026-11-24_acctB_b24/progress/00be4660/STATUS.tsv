@@ -1,1 +1,2 @@
 00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	DIFFER(2349v2349) 4 hunks	~50	z2 text; template-text conflict with sea twin; see NOTES
+00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	DIFFER(2349v2349) 4 hunks	~45 + B24C3 ~110 grades/probes	z2 (W-form); sea needs S-form; see NOTES B24C3

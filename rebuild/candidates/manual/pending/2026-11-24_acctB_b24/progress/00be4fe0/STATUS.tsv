@@ -1,0 +1,9 @@
+address	name	grade	grades_used	note
+012133c0	_global::Unwind@012133c0	RELOCATION_MATCH	0 (vland)	funclet+ehhandler block of CPhysicalPlayer::Play 0x00C271F0; include-the-parent stub, funclet_offset 0
+00407a70	CUserProfileManager::SetAssignedInputKeyboard	RELOCATION_MATCH	2	needs manifest start (OUTSIDE_MANIFEST in stock vland)
+00407ba0	CUserProfileManager::SetAssignedInputMouse	RELOCATION_MATCH	2	needs manifest start
+00402510	_global::GFMain	RELOCATION_MATCH	9	/Gr /GS; 14 overlay headers; RELOC_NAME warnings explained in NAME_FIXES
+00be4fe0	CWaterPatchTesselatorBase<CTVertexSeaBackground>::TesselateEdge	RELOCATION_MATCH	5+14	FableWin-exact FindWaterVert, continue-shaped spans, start via GetWaterVertex(i); payload + strict vland clean
+0070d940	CAnimateThing::CalcInterpolatedMeshAnim	untouched	0	
+00be3970	CLandscapePatchTesselator::TesselateEdge	untouched	0	
+00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	DIFFER(2349v2349) 4 hunks	~45 grades + packer probes	z2 text: prologue y-copy register left; template-text conflict with the sea row (see its NOTES)
