@@ -9,6 +9,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_PLAYERINTERACTIONBRIBE_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01259664 (RTTI .?AVCCreatureAction_PlayerInteractionBribe@@ : CCreatureActionBase), 70 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_PlayerInteractionBribe); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.
+#include "engine/CCreatureActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_PlayerInteractionBribe : public CCreatureActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x00844380 ?PerformAction@CCreatureAction_PlayerInteractionBribe@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0062F0B0 ?Clone@CCreatureAction_PlayerInteractionBribe@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsToHaveEmptyHands() const;                              // slot 36 0x0062DE10 ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionBribe@@UBE_NXZ
+    virtual bool IsToReplaceItemIfRemoved() const;                        // slot 37 0x0062DE20 ?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionBribe@@UBE_NXZ
+public:
+    unsigned char PTarget[0x8];                              // +0xa8 CIntelligentPointer<CThing>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayerInteractionBribe) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayerInteractionBribe, PTarget) == 0xa8);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_PlayerInteractionBribe {
 public:
@@ -50,8 +71,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayerInteractionBribe) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayerInteractionBribe, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayerInteractionBribe, PTarget) == 0xa8);
+FABLE_STATIC_ASSERT_AT(53, sizeof(CCreatureAction_PlayerInteractionBribe) == 0xb0);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CCreatureAction_PlayerInteractionBribe, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CCreatureAction_PlayerInteractionBribe, PTarget) == 0xa8);
+#endif // FABLE_RETAIL_CCREATUREACTION_PLAYERINTERACTIONBRIBE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_PLAYERINTERACTIONBRIBE_H

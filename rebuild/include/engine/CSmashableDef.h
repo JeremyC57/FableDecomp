@@ -8,6 +8,39 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSMASHABLEDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01231F7C (RTTI .?AVCSmashableDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CSmashableDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CSmashableDef : public CSubDefClassBase {
+public:
+#ifdef FABLE_RETAIL_CSMASHABLEDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CSmashableDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004522C6 ?Transfer@CSmashableDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x00453842 ?Copy@CSmashableDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x0044C229 ?GetSizeofClass@CSmashableDef@@UAEKXZ
+public:
+    bool          Smashable;                                 // +0x25
+    unsigned char _pad_0x26[0x2];                            // +0x26
+    long          ReplacementObject_Val;                     // +0x28 CDefIndex::Val
+    long          SmashParticleEmitter;                      // +0x2c
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CSmashableDef) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CSmashableDef, Smashable) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CSmashableDef, _pad_0x26) == 0x26);
+FABLE_STATIC_ASSERT(offsetof(CSmashableDef, ReplacementObject_Val) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CSmashableDef, SmashParticleEmitter) == 0x2c);
+#else
 #pragma pack(push, 1)
 class CSmashableDef {
 public:
@@ -38,5 +71,6 @@ FABLE_STATIC_ASSERT_AT(32, offsetof(CSmashableDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(33, offsetof(CSmashableDef, Smashable) == 0x25);
 FABLE_STATIC_ASSERT_AT(34, offsetof(CSmashableDef, ReplacementObject_Val) == 0x28);
 FABLE_STATIC_ASSERT_AT(35, offsetof(CSmashableDef, SmashParticleEmitter) == 0x2c);
+#endif // FABLE_RETAIL_CSMASHABLEDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CSMASHABLEDEF_H

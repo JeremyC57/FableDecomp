@@ -1,0 +1,27 @@
+addr       parity           behav  name
+008fd99e   MATCH            PASS   AllowPriorityOverlap
+0090002c   MATCH            PASS   IsWorkCandle
+0090005d   MATCH            PASS   IsWorkCandle
+00911ef0   MATCH            PASS   IsRunnable
+00911f00   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00911f00   WARN RELOC_NAME: ?f1@@YIPAUChickenBegStageA@@PAX@Z -> 008fcf90 labelled 'CAIStateGroupBase::GetPlayerManager'
+00911f00   WARN RELOC_NAME: ?f4@@YIXPAX@Z -> 008fcf40 labelled 'CAIStateGroupBase::Terminate'
+00911f00   RELOCATION_MATCH PASS   Update
+0091ccb0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0091ccb0   RELOCATION_MATCH PASS   OnReplace
+0091e4a0   MATCH            PASS   IsRunnable
+00a87110   MATCH            PASS   HasChildren
+00b444d0   MATCH            PASS   GetRenderLayerMask
+00b444e0   MATCH            PASS   GetRenderLayerMask
+
+WINS: 10
+  008fd99e MATCH CAIStateGroup_KidWanderNearKids::?CAIStateGroup_KidWanderNearKids_AllowPriorityOverlap@@YI_NXZ
+  0090002c MATCH CAIStateGroup_LightHomeCandle::?CAIStateGroup_LightHomeCandle_IsWorkCandle@@YI_NXZ
+  0090005d MATCH CAIStateGroup_LightWorkCandle::?CAIStateGroup_LightWorkCandle_IsWorkCandle@@YI_NXZ
+  00911ef0 MATCH CAIStateGroup_ChickenBeg::?CAIStateGroup_ChickenBeg_IsRunnable@@YI_NXZ
+  00911f00 RELOCATION_MATCH CAIStateGroup_ChickenBeg::?CAIStateGroup_ChickenBeg_Update@@YIXPAUCAIStateGroup_ChickenBeg@@@Z
+  0091ccb0 RELOCATION_MATCH CAIStateGroup_MinionReactToNoise::?CAIStateGroup_MinionReactToNoise_OnReplace@@YIXPAUCAIStateGroup_MinionReactToNoise@@@Z
+  0091e4a0 MATCH CAIStateGroup_MinionLeaveRegion::?CAIStateGroup_MinionLeaveRegion_IsRunnable@@YI_NXZ
+  00a87110 MATCH CPhysicsFacesSegmentLeaf::?CPhysicsFacesSegmentLeaf_HasChildren@@YI_NXZ
+  00b444d0 MATCH CEngineInternalPrimitiveLight::?CEngineInternalPrimitiveLight_GetRenderLayerMask@@YIHXZ
+  00b444e0 MATCH CEngineInternalPrimitiveShadowedSpotLight::?CEngineInternalPrimitiveShadowedSpotLight_GetRenderLayerMask@@YIHXZ

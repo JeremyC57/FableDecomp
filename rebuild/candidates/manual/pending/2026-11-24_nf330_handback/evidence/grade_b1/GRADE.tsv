@@ -1,0 +1,21 @@
+address	verdict	old	new	route	reason
+0044c229	ACCEPT	?CSmashableDef_GetSizeofClass@@YIKPBVCSmashableDef@@@Z	?GetSizeofClass@CSmashableDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+0044c269	ACCEPT	?CActionUseDef_GetSizeofClass@@YIKPBVCActionUseDef@@@Z	?GetSizeofClass@CActionUseDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+0044c390	ACCEPT	?CBonusItemDef_GetSizeofClass@@YIKPBX@Z	?GetSizeofClass@CBonusItemDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+0044c5cf	ACCEPT	?CDragonActionSwoopDef_GetSizeofClass@@YIKPBX@Z	?GetSizeofClass@CDragonActionSwoopDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+0044c695	ACCEPT	?CSummonerDef_GetSizeofClass@@YIKPAX@Z	?GetSizeofClass@CSummonerDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004522c6	ACCEPT	?CSmashableDef_Transfer@@YIXPAVCSmashableDef@@HPAVCPersistContext@@@Z	?Transfer@CSmashableDef@@UAEXAAVCPersistContext@@@Z	header	objcheck ALL_EQ, RELOCATION_MATCH PASS
+004d3464	ACCEPT	?CHeroDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CHeroDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d4156	ACCEPT	?CTimeAppearanceFadeDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CTimeAppearanceFadeDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d463c	ACCEPT	?CHeroCentreDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CHeroCentreDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d489d	ACCEPT	?CShipDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CShipDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d500f	ACCEPT	?CGuardDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CGuardDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d5b15	ACCEPT	?CDecapitationDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CDecapitationDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d5c89	ACCEPT	?CFishDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CFishDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d61a0	ACCEPT	?CSummonDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CSummonDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d649f	ACCEPT	?CWillResponseDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CWillResponseDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d6601	ACCEPT	?COracleMinigameDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@COracleMinigameDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004d665a	ACCEPT	?CFireheartMinigameDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CFireheartMinigameDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS
+004ded4e	ACCEPT	?CDecapitationDef_Transfer@@YIXPAVCDecapitationDef@@PAXPAVCPersistContext@@@Z	?Transfer@CDecapitationDef@@UAEXAAVCPersistContext@@@Z	header	objcheck ALL_EQ, RELOCATION_MATCH PASS
+0077d3a0	ACCEPT	?CHeroCentreDef_Transfer@@YGXH@Z	?Transfer@CHeroCentreDef@@UAEXAAVCPersistContext@@@Z	header	objcheck ALL_EQ, MATCH PASS
+007ac6e0	ACCEPT	?CAIScratchpadDef_GetSizeofClass@@YIHXZ	?GetSizeofClass@CAIScratchpadDef@@UAEKXZ	header	objcheck ALL_EQ, MATCH PASS

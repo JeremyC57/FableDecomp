@@ -8,6 +8,43 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CACTIONUSEDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123200C (RTTI .?AVCActionUseDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CActionUseDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CActionUseDef : public CSubDefClassBase {
+public:
+#ifdef FABLE_RETAIL_CACTIONUSEDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CActionUseDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x006773F0 ?Transfer@CActionUseDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x00453899 ?Copy@CActionUseDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x0044C269 ?GetSizeofClass@CActionUseDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    long          AnimationGroup_TablePos;                   // +0x28 CDefString::TablePos
+    bool          SnapToActionPoint;                         // +0x2c
+    bool          IgnoreActionPoints;                        // +0x2d
+    unsigned char _pad_0x2e[0x2];                            // +0x2e
+    unsigned char TutorialCategory[0x4];                     // +0x30 ETutorialCategory
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CActionUseDef) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CActionUseDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CActionUseDef, AnimationGroup_TablePos) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CActionUseDef, SnapToActionPoint) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CActionUseDef, IgnoreActionPoints) == 0x2d);
+FABLE_STATIC_ASSERT(offsetof(CActionUseDef, _pad_0x2e) == 0x2e);
+FABLE_STATIC_ASSERT(offsetof(CActionUseDef, TutorialCategory) == 0x30);
+#else
 #pragma pack(push, 1)
 class CActionUseDef {
 public:
@@ -40,5 +77,6 @@ FABLE_STATIC_ASSERT_AT(34, offsetof(CActionUseDef, AnimationGroup_TablePos) == 0
 FABLE_STATIC_ASSERT_AT(35, offsetof(CActionUseDef, SnapToActionPoint) == 0x2c);
 FABLE_STATIC_ASSERT_AT(36, offsetof(CActionUseDef, IgnoreActionPoints) == 0x2d);
 FABLE_STATIC_ASSERT_AT(37, offsetof(CActionUseDef, TutorialCategory) == 0x30);
+#endif // FABLE_RETAIL_CACTIONUSEDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CACTIONUSEDEF_H

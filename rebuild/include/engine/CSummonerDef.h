@@ -8,6 +8,59 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSUMMONERDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01232AEC (RTTI .?AVCSummonerDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CSummonerDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CSummonerDef : public CSubDefClassBase {
+public:
+#ifdef FABLE_RETAIL_CSUMMONERDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CSummonerDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004530DC ?Transfer@CSummonerDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x00454267 ?Copy@CSummonerDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x0044C695 ?GetSizeofClass@CSummonerDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    float         LightningRangeForAutomaticUse;             // +0x28
+    float         LightningPercentChanceForRandomUse;        // +0x2c
+    float         LightningPercentChanceForBoastUse;         // +0x30
+    float         LightningRandomChanceTestSeconds;          // +0x34
+    float         LightningSecondsToWaitBeforeReuse;         // +0x38
+    float         ChargeRangeNear;                           // +0x3c
+    float         ChargeRangeFar;                            // +0x40
+    float         ChargeRangeAttackInterrupt;                // +0x44
+    float         ChargeSecondsToWaitBeforeReuse;            // +0x48
+    long          SummonerDeathExplosion;                    // +0x4c
+    long          LightningOrb;                              // +0x50
+    long          LightningOrbAttackFireheart;               // +0x54
+    float         LightningOrbLifeSeconds;                   // +0x58
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CSummonerDef) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningRangeForAutomaticUse) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningPercentChanceForRandomUse) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningPercentChanceForBoastUse) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningRandomChanceTestSeconds) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningSecondsToWaitBeforeReuse) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, ChargeRangeNear) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, ChargeRangeFar) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, ChargeRangeAttackInterrupt) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, ChargeSecondsToWaitBeforeReuse) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, SummonerDeathExplosion) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningOrb) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningOrbAttackFireheart) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CSummonerDef, LightningOrbLifeSeconds) == 0x58);
+#else
 #pragma pack(push, 1)
 class CSummonerDef {
 public:
@@ -57,5 +110,6 @@ FABLE_STATIC_ASSERT_AT(51, offsetof(CSummonerDef, SummonerDeathExplosion) == 0x4
 FABLE_STATIC_ASSERT_AT(52, offsetof(CSummonerDef, LightningOrb) == 0x50);
 FABLE_STATIC_ASSERT_AT(53, offsetof(CSummonerDef, LightningOrbAttackFireheart) == 0x54);
 FABLE_STATIC_ASSERT_AT(54, offsetof(CSummonerDef, LightningOrbLifeSeconds) == 0x58);
+#endif // FABLE_RETAIL_CSUMMONERDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CSUMMONERDEF_H

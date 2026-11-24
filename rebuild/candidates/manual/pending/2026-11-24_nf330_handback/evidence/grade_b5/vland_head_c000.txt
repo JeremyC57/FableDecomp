@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00918f10   MATCH            PASS   GetOwner
+00918f20   MATCH            PASS   AllowPriorityOverlap
+00918f50   MATCH            PASS   AllowPriorityOverlap
+00918f60   MATCH            PASS   InsideAtNight
+
+WINS: 4
+  00918f10 MATCH CAIStateGroup_GazeOutside::?CAIStateGroup_GazeOutside_GetOwner@@YIHXZ
+  00918f20 MATCH CAIStateGroup_GazeOutside::?CAIStateGroup_GazeOutside_AllowPriorityOverlap@@YI_NXZ
+  00918f50 MATCH CAIStateGroup_GazeAtHome::?CAIStateGroup_GazeAtHome_AllowPriorityOverlap@@YI_NXZ
+  00918f60 MATCH CAIStateGroup_GazeAtHome::?CAIStateGroup_GazeAtHome_InsideAtNight@@YI_NXZ

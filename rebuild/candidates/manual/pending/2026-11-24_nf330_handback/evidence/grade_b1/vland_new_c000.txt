@@ -1,0 +1,25 @@
+addr       parity           behav  name
+0044c229   MATCH            PASS   GetSizeofClass
+0044c269   MATCH            PASS   GetSizeofClass
+0044c390   MATCH            PASS   GetSizeofClass
+0044c5cf   MATCH            PASS   GetSizeofClass
+0044c695   MATCH            PASS   GetSizeofClass
+004522c6   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004522c6   WARN RELOC_NAME: ?PersistB@CPersistContext@@QAEXPAE@Z -> 004522f4 labelled '_global::PersistTransfer_004522f4'
+004522c6   RELOCATION_MATCH PASS   Transfer
+004d3464   MATCH            PASS   GetSizeofClass
+004d4156   MATCH            PASS   GetSizeofClass
+004d463c   MATCH            PASS   GetSizeofClass
+004d489d   MATCH            PASS   GetSizeofClass
+
+WINS: 10
+  0044c229 MATCH CSmashableDef::?GetSizeofClass@CSmashableDef@@UAEKXZ
+  0044c269 MATCH CActionUseDef::?GetSizeofClass@CActionUseDef@@UAEKXZ
+  0044c390 MATCH CBonusItemDef::?GetSizeofClass@CBonusItemDef@@UAEKXZ
+  0044c5cf MATCH CDragonActionSwoopDef::?GetSizeofClass@CDragonActionSwoopDef@@UAEKXZ
+  0044c695 MATCH CSummonerDef::?GetSizeofClass@CSummonerDef@@UAEKXZ
+  004522c6 RELOCATION_MATCH CSmashableDef::?Transfer@CSmashableDef@@UAEXAAVCPersistContext@@@Z
+  004d3464 MATCH CHeroDef::?GetSizeofClass@CHeroDef@@UAEKXZ
+  004d4156 MATCH CTimeAppearanceFadeDef::?GetSizeofClass@CTimeAppearanceFadeDef@@UAEKXZ
+  004d463c MATCH CHeroCentreDef::?GetSizeofClass@CHeroCentreDef@@UAEKXZ
+  004d489d MATCH CShipDef::?GetSizeofClass@CShipDef@@UAEKXZ

@@ -1,0 +1,94 @@
+CSmashableDef COMPILE_FAIL rc=2 p\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentNF330\work\probe\neg1\CSmashableDef.cpp(5) : error C2259: 'CSmashableDef' : cannot instantiate abstract class
+== CCreatureAction_PlayerInteractionGreet vftable 012592D4
+slot   0 0062DB90 DIFF     ours=??_ECCreatureAction_PlayerInteractionGreet@@UAEPAXI@Z retail_label=??_GCCreatureAction_PlayerInteractionGreet@@UAEPAXI@Z
+slot   1 0099A400 SAME     ours=?Validate@CBaseObject@@UBEXXZ retail_label=?Validate@CBaseObject@@UBEXXZ
+slot   2 00692DB0 SAME     ours=?EditUpdate@CCreatureActionBase@@UAEXM@Z retail_label=?EditUpdate@CCreatureActionBase@@UAEXM@Z
+slot   3 00845900 SAME     ours=?PerformAction@CCreatureAction_PlayerInteractionGreet@@UAEXXZ retail_label=?PerformAction@CCreatureAction_PlayerInteractionGreet@@UAEXXZ
+slot   4 00694430 SAME     ours=?FinishAction@CCreatureActionBase@@UAEXXZ retail_label=?FinishAction@CCreatureActionBase@@UAEXXZ
+slot   5 00692850 SAME     ours=?IsPlayingAnimation@CCreatureActionBase@@UBE_NXZ retail_label=?IsPlayingAnimation@CCreatureActionBase@@UBE_NXZ
+slot   6 00692460 SAME     ours=?GetAnimDelayTime@CCreatureActionBase@@UBEJXZ retail_label=?GetAnimDelayTime@CCreatureActionBase@@UBEJXZ
+slot   7 00692870 SAME     ours=?GetAnimationIndex@CCreatureActionBase@@UBEJXZ retail_label=?GetAnimationIndex@CCreatureActionBase@@UBEJXZ
+slot   8 006929C0 SAME     ours=?GetAnimationTransitionInTime@CCreatureActionBase@@UBEJXZ retail_label=?GetAnimationTransitionInTime@CCreatureActionBase@@UBEJXZ
+slot   9 006924C0 SAME     ours=?GetAnimationTransitionOutTime@CCreatureActionBase@@UBEJXZ retail_label=?GetAnimationTransitionOutTime@CCreatureActionBase@@UBEJXZ
+slot  10 006924D0 SAME     ours=?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ retail_label=?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ
+slot  11 0062EF30 SAME     ours=?Clone@CCreatureAction_PlayerInteractionGreet@@UBEPAVCCreatureActionBase@@XZ retail_label=?Clone@CCreatureAction_PlayerInteractionGreet@@UBEPAVCCreatureActionBase@@XZ
+slot  12 00694D10 SAME     ours=?Initialise@CCreatureActionBase@@UAEXXZ retail_label=?Initialise@CCreatureActionBase@@UAEXXZ
+slot  13 006924E0 SAME     ours=?IsStrikeEvent@CCreatureActionBase@@UBE_NJ@Z retail_label=?IsStrikeEvent@CCreatureActionBase@@UBE_NJ@Z
+slot  14 006924F0 SAME     ours=?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ retail_label=?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ
+slot  15 00692500 SAME     ours=?IsStrikeAction@CCreatureActionBase@@UBE_NXZ retail_label=?IsStrikeAction@CCreatureActionBase@@UBE_NXZ
+slot  16 006926B0 SAME     ours=?IsPartOfComboChain@CCreatureActionBase@@UBE_NXZ retail_label=?IsPartOfComboChain@CCreatureActionBase@@UBE_NXZ
+slot  17 00692510 SAME     ours=?IsStrikeEventFinishedBeingActive@CCreatureActionBase@@UBE_NXZ retail_label=?IsStrikeEventFinishedBeingActive@CCreatureActionBase@@UBE_NXZ
+slot  18 00692530 SAME     ours=?IsVitalStrike@CCreatureActionBase@@UBE_NXZ retail_label=?IsVitalStrike@CCreatureActionBase@@UBE_NXZ
+slot  19 00692520 SAME     ours=?IsKnockdownStrike@CCreatureActionBase@@UBE_NXZ retail_label=?IsKnockdownStrike@CCreatureActionBase@@UBE_NXZ
+slot  20 006926C0 SAME     ours=?IsBlockCounter@CCreatureActionBase@@UBE_NXZ retail_label=?IsBlockCounter@CCreatureActionBase@@UBE_NXZ
+slot  21 006926D0 SAME     ours=?IsMeleeFlourish@CCreatureActionBase@@UBE_NXZ retail_label=?IsMeleeFlourish@CCreatureActionBase@@UBE_NXZ
+slot  22 006926E0 SAME     ours=?IsActionWithStrikeEventHelperName@CCreatureActionBase@@UBE_NXZ retail_label=?IsActionWithStrikeEventHelperName@CCreatureActionBase@@UBE_NXZ
+slot  23 006926F0 SAME     ours=?GetStrikeEventHelperName@CCreatureActionBase@@UBE?AVCCharString@@XZ retail_label=?GetStrikeEventHelperName@CCreatureActionBase@@UBE?AVCCharString@@XZ
+slot  24 00692540 SAME     ours=?IsOverrideableByActionOfSamePriority@CCreatureActionBase@@UBE_NXZ retail_label=?IsOverrideableByActionOfSamePriority@CCreatureActionBase@@UBE_NXZ
+slot  25 00692550 SAME     ours=?OnFrameUpdate@CCreatureActionBase@@UAEXM@Z retail_label=?OnFrameUpdate@CCreatureActionBase@@UAEXM@Z
+slot  26 00692560 SAME     ours=?IsQueuable@CCreatureActionBase@@UBE_NXZ retail_label=?IsQueuable@CCreatureActionBase@@UBE_NXZ
+slot  27 00692570 SAME     ours=?IsActionReadyForInterruption@CCreatureActionBase@@UBE_NXZ retail_label=?IsActionReadyForInterruption@CCreatureActionBase@@UBE_NXZ
+slot  28 00692710 SAME     ours=?IsActionReadyForInterruptionByMovement@CCreatureActionBase@@UBE_NABVC3DVector@@@Z retail_label=?IsActionReadyForInterruptionByMovement@CCreatureActionBase@@UBE_NABVC3DVector@@@Z
+slot  29 00692580 SAME     ours=?IsBlockable@CCreatureActionBase@@UBE_NXZ retail_label=?IsBlockable@CCreatureActionBase@@UBE_NXZ
+slot  30 00692720 SAME     ours=?IsAffectedByHaste@CCreatureActionBase@@UBE_NXZ retail_label=?IsAffectedByHaste@CCreatureActionBase@@UBE_NXZ
+slot  31 00692730 SAME     ours=?IsAffectedByHeroStats@CCreatureActionBase@@UBE_NXZ retail_label=?IsAffectedByHeroStats@CCreatureActionBase@@UBE_NXZ
+slot  32 00692740 SAME     ours=?IsPhysicsPushableByHero@CCreatureActionBase@@UBE_NXZ retail_label=?IsPhysicsPushableByHero@CCreatureActionBase@@UBE_NXZ
+slot  33 00692750 SAME     ours=?IsAlwaysPhysicsPushableBySelfAvoidance@CCreatureActionBase@@UBE_NXZ retail_label=?IsAlwaysPhysicsPushableBySelfAvoidance@CCreatureActionBase@@UBE_NXZ
+slot  34 00692760 SAME     ours=?IsAlwaysUseAnimationMovement@CCreatureActionBase@@UBE_NXZ retail_label=?IsAlwaysUseAnimationMovement@CCreatureActionBase@@UBE_NXZ
+slot  35 00692770 SAME     ours=?IsClearingMovementVector@CCreatureActionBase@@UBE_NXZ retail_label=?IsClearingMovementVector@CCreatureActionBase@@UBE_NXZ
+slot  36 0062DB70 SAME     ours=?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ retail_label=?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ
+slot  37 0062DB80 SAME     ours=?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ retail_label=?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ
+slot  38 006927A0 SAME     ours=?IsAllowingAnimationMovementToMoveSpeakAndWaitCameras@CCreatureActionBase@@UBE_NXZ retail_label=?IsAllowingAnimationMovementToMoveSpeakAndWaitCameras@CCreatureActionBase@@UBE_NXZ
+slot  39 006927B0 SAME     ours=?IsPreventingQuickAccessItemUsage@CCreatureActionBase@@UBE_NXZ retail_label=?IsPreventingQuickAccessItemUsage@CCreatureActionBase@@UBE_NXZ
+slot  40 006927C0 SAME     ours=?SetHitter@CCreatureActionBase@@UAEXABVCThing@@@Z retail_label=?SetHitter@CCreatureActionBase@@UAEXABVCThing@@@Z
+slot  41 006927D0 SAME     ours=?SetHitDirection@CCreatureActionBase@@UAEXVC3DVector@@@Z retail_label=?SetHitDirection@CCreatureActionBase@@UAEXVC3DVector@@@Z
+slot  42 006927E0 SAME     ours=?SetHitPosition@CCreatureActionBase@@UAEXVC3DVector@@@Z retail_label=?SetHitPosition@CCreatureActionBase@@UAEXVC3DVector@@@Z
+slot  43 00692590 SAME     ours=?GetWeaponTrailUsedInStrikeAction@CCreatureActionBase@@UBEPAVCTCWeaponTrail@@AAJ@Z retail_label=?GetWeaponTrailUsedInStrikeAction@CCreatureActionBase@@UBEPAVCTCWeaponTrail@@AAJ@Z
+slot  44 00692960 SAME     ours=?GetTotalTimeSeconds@CCreatureActionBase@@UBEMXZ retail_label=?GetTotalTimeSeconds@CCreatureActionBase@@UBEMXZ
+slot  45 00692630 SAME     ours=?IsToEvadeAllHits@CCreatureActionBase@@UBE_NXZ retail_label=?IsToEvadeAllHits@CCreatureActionBase@@UBE_NXZ
+slot  46 00692640 SAME     ours=?IsToCauseRecoil@CCreatureActionBase@@UBE_NXZ retail_label=?IsToCauseRecoil@CCreatureActionBase@@UBE_NXZ
+slot  47 00692650 SAME     ours=?IsAbleToBeAttacked@CCreatureActionBase@@UBE_NXZ retail_label=?IsAbleToBeAttacked@CCreatureActionBase@@UBE_NXZ
+slot  48 00692660 SAME     ours=?IsPlayHitResponse@CCreatureActionBase@@UBE_NXZ retail_label=?IsPlayHitResponse@CCreatureActionBase@@UBE_NXZ
+slot  49 00692A20 SAME     ours=?IsPreventingNormalMovement@CCreatureActionBase@@UBE_NXZ retail_label=?IsPreventingNormalMovement@CCreatureActionBase@@UBE_NXZ
+slot  50 0062DB60 DIFF     ours=?IsPreventingLookTurning@CCreatureActionBase@@UBE_NXZ retail_label=?IsPreventingLookTurning@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ
+slot  51 006927F0 SAME     ours=?OnBlowBlocked@CCreatureActionBase@@UAEX_N@Z retail_label=?OnBlowBlocked@CCreatureActionBase@@UAEX_N@Z
+slot  52 00692800 SAME     ours=?OnFollowUpActionFailedToAdd@CCreatureActionBase@@UAEXXZ retail_label=?OnFollowUpActionFailedToAdd@CCreatureActionBase@@UAEXXZ
+slot  53 00692480 SAME     ours=?UpdateActionRunningTime@CCreatureActionBase@@UAEXXZ retail_label=?UpdateActionRunningTime@CCreatureActionBase@@UAEXXZ
+slot  54 00692810 SAME     ours=?IsDecapitatingAttack@CCreatureActionBase@@UBE_NXZ retail_label=?IsDecapitatingAttack@CCreatureActionBase@@UBE_NXZ
+slot  55 00692820 SAME     ours=?PreventSneaking@CCreatureActionBase@@UBE_NXZ retail_label=?PreventSneaking@CCreatureActionBase@@UBE_NXZ
+slot  56 00694020 SAME     ours=?FrameUpdate@CCreatureActionBase@@MAEXXZ retail_label=?FrameUpdate@CCreatureActionBase@@MAEXXZ
+slot  57 00692680 SAME     ours=?IsUsingAnimationMovement@CCreatureActionBase@@MBE_NXZ retail_label=?IsUsingAnimationMovement@CCreatureActionBase@@MBE_NXZ
+slot  58 00692690 SAME     ours=?IsUsingForcedMovement@CCreatureActionBase@@MBE_NXZ retail_label=?IsUsingForcedMovement@CCreatureActionBase@@MBE_NXZ
+slot  59 006926A0 SAME     ours=?IsMovementUsingPhysics@CCreatureActionBase@@MBE_NXZ retail_label=?IsMovementUsingPhysics@CCreatureActionBase@@MBE_NXZ
+slot  60 00692B30 SAME     ours=?UpdateActionMoveToPos@CCreatureActionBase@@MAEXXZ retail_label=?UpdateActionMoveToPos@CCreatureActionBase@@MAEXXZ
+slot  61 00692C80 SAME     ours=?InitialiseActionMovement@CCreatureActionBase@@MAEXXZ retail_label=?InitialiseActionMovement@CCreatureActionBase@@MAEXXZ
+slot  62 00692BC0 SAME     ours=?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ retail_label=?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ
+slot  63 00692C30 SAME     ours=?GetActionSpeedParameter@CCreatureActionBase@@MBEMXZ retail_label=?GetActionSpeedParameter@CCreatureActionBase@@MBEMXZ
+slot  64 006923A0 SAME     ours=?GetActionStartRunningTimeSeconds@CCreatureActionBase@@MBEMXZ retail_label=?GetActionStartRunningTimeSeconds@CCreatureActionBase@@MBEMXZ
+slot  65 00692880 SAME     ours=?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ retail_label=?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ
+slot  66 00692890 SAME     ours=?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ retail_label=?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ
+slot  67 006928B0 SAME     ours=?CanAnimationTransitionOut@CCreatureActionBase@@MBE_NXZ retail_label=?CanAnimationTransitionOut@CCreatureActionBase@@MBE_NXZ
+slot  68 00692830 SAME     ours=?OnAnimationLoaded@CCreatureActionBase@@MAEXXZ retail_label=?OnAnimationLoaded@CCreatureActionBase@@MAEXXZ
+slot  69 00692840 SAME     ours=?WaitForMeshToLoad@CCreatureActionBase@@MBE_NXZ retail_label=?WaitForMeshToLoad@CCreatureActionBase@@MBE_NXZ
+retail slots 70, emitted slots 70; SAME 68 DIFF 2 NOLABEL 0
+
+== CAIStateGroup_GazeAtHome vftable 0128FE7C
+slot   0 00918F70 SAME     ours=??_ECAIStateGroup_GazeAtHome@@UAEPAXI@Z retail_label=??_ECAIStateGroup_GazeAtHome@@UAEPAXI@Z
+slot   1 008FCEC0 SAME     ours=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z retail_label=?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+slot   2 008FD26F SAME     ours=?OnActivate@CAIStateGroupBase@@UAEXXZ retail_label=?OnActivate@CAIStateGroupBase@@UAEXXZ
+slot   3 00918AC0 DIFF     ours=?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ retail_label=?InitCreaturePosition@CAIStateGroup_Gaze@@MAE_NXZ
+slot   4 00918F50 SAME     ours=?AllowPriorityOverlap@CAIStateGroup_GazeAtHome@@MAE_NXZ retail_label=?AllowPriorityOverlap@CAIStateGroup_GazeAtHome@@MAE_NXZ
+slot   5 008FD276 SAME     ours=?IsStillValid@CAIStateGroupBase@@UBE_NXZ retail_label=?IsStillValid@CAIStateGroupBase@@UBE_NXZ
+slot   6 008FCFE0 SAME     ours=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ retail_label=?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ
+slot   7 008FD279 SAME     ours=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ retail_label=?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ
+slot   8 008FD27C SAME     ours=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ retail_label=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ
+slot   9 008FD280 SAME     ours=?Cleanup@CAIStateGroupBase@@MAEXXZ retail_label=?Cleanup@CAIStateGroupBase@@MAEXXZ
+slot  10 009185F0 SAME     ours=?OnReplace@CAIStateGroup_GazeAtHome@@MAEXXZ retail_label=?OnReplace@CAIStateGroup_GazeAtHome@@MAEXXZ
+slot  11 009189C0 SAME     ours=?IsRunnable@CAIStateGroup_GazeAtHome@@MAE_NXZ retail_label=?IsRunnable@CAIStateGroup_GazeAtHome@@MAE_NXZ
+slot  12 00918B90 SAME     ours=?Update@CAIStateGroup_Gaze@@MAEXXZ retail_label=?Update@CAIStateGroup_Gaze@@MAEXXZ
+slot  13 00918560 SAME     ours=?InitStateGroup@CAIStateGroup_GazeAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z retail_label=?InitStateGroup@CAIStateGroup_GazeAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+slot  14 00919000 SAME     ours=?GetOwner@CAIStateGroup_GazeAtHome@@MAEPAVCThingBuilding@@XZ retail_label=?GetOwner@CAIStateGroup_GazeAtHome@@MAEPAVCThingBuilding@@XZ
+slot  15 00918F60 SAME     ours=?InsideAtNight@CAIStateGroup_GazeAtHome@@MAE_NXZ retail_label=?InsideAtNight@CAIStateGroup_GazeAtHome@@MAE_NXZ
+retail slots 16, emitted slots 16; SAME 15 DIFF 1 NOLABEL 0
+
+PROBE_DONE

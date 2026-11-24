@@ -1,0 +1,7 @@
+address	pdb_symbol	slot	retail_vftable_entry	note
+0090002c	?IsWorkCandle@CAIStateGroup_LightHomeCandle@@MAE_NXZ	16	0x0090002C	new slot past CAIStateGroupBase (14); LightHomeCandle also adds 14 GetBuilding, 15 ShouldBeLit
+00908130	?IsInterruptableDueToZoneChange@CCreatureAction_TrollProjectileAttack@@UBE_NXZ	83	0x00908130	new slot past TrollWhackGroundBase (83); FableWin name set only
+00b444d0	?GetRenderLayerMask@CEngineInternalPrimitiveLight@@UBEKXZ	28	0x00B444D0	new slot past CEngineInternalPrimitiveBase (28)
+00b444e0	?GetRenderLayerMask@CEngineInternalPrimitiveShadowedSpotLight@@UBEKXZ	28	0x00B444E0	new slot past CEngineInternalPrimitiveBase (28)
+00bb1dd0	?IsBusy@CParticleSimulationRenderData@@UBE_NXZ	1	0x00BB1DD0	new slot past CBaseClassNonCopyable (1)
+00918f60	?InsideAtNight@CAIStateGroup_GazeAtHome@@MAE_NXZ	15	0x00918F60	overrides slot 15, which only this pass's FABLE_RETAIL_CAISTATEGROUP_GAZE_RTTI_DECLS declares in the base (retail Gaze slot 15 = 0x00918ED0)

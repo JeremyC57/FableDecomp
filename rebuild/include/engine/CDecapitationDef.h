@@ -8,6 +8,31 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CDECAPITATIONDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123D5E4 (RTTI .?AVCDecapitationDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CDecapitationDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CDecapitationDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DED4E ?Transfer@CDecapitationDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E1225 ?Copy@CDecapitationDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D5B15 ?GetSizeofClass@CDecapitationDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    long          BodyParticleEffect;                        // +0x28
+    long          Head;                                      // +0x2c
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CDecapitationDef) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CDecapitationDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CDecapitationDef, BodyParticleEffect) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CDecapitationDef, Head) == 0x2c);
+#else
 #pragma pack(push, 1)
 class CDecapitationDef {
 public:
@@ -26,9 +51,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CDecapitationDef) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CDecapitationDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CDecapitationDef, BodyParticleEffect) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CDecapitationDef, Head) == 0x2c);
+FABLE_STATIC_ASSERT_AT(29, sizeof(CDecapitationDef) == 0x30);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CDecapitationDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CDecapitationDef, BodyParticleEffect) == 0x28);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CDecapitationDef, Head) == 0x2c);
+#endif // FABLE_RETAIL_CDECAPITATIONDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CDECAPITATIONDEF_H

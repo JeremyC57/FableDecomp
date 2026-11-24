@@ -8,6 +8,47 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CGUARDDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123C75C (RTTI .?AVCGuardDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CGuardDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CGuardDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DE926 ?Transfer@CGuardDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E0E23 ?Copy@CGuardDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D500F ?GetSizeofClass@CGuardDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    long          BribeCostWeaponOut;                        // +0x28
+    long          BribeCostTrespass;                         // +0x2c
+    long          BribeCostVandalism;                        // +0x30
+    long          BribeCostShoplifter;                       // +0x34
+    long          BribeCostPickPocket;                       // +0x38
+    long          BribeCostAssault;                          // +0x3c
+    long          BribeCostGuardAssault;                     // +0x40
+    long          BribeCostGBH;                              // +0x44
+    long          BribeCostGuardGBH;                         // +0x48
+    long          BribeCostMurder;                           // +0x4c
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CGuardDef) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostWeaponOut) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostTrespass) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostVandalism) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostShoplifter) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostPickPocket) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostAssault) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostGuardAssault) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostGBH) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostGuardGBH) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostMurder) == 0x4c);
+#else
 #pragma pack(push, 1)
 class CGuardDef {
 public:
@@ -34,17 +75,18 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CGuardDef) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostWeaponOut) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostTrespass) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostVandalism) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostShoplifter) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostPickPocket) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostAssault) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostGuardAssault) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostGBH) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostGuardGBH) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CGuardDef, BribeCostMurder) == 0x4c);
+FABLE_STATIC_ASSERT_AT(37, sizeof(CGuardDef) == 0x50);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CGuardDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CGuardDef, BribeCostWeaponOut) == 0x28);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CGuardDef, BribeCostTrespass) == 0x2c);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CGuardDef, BribeCostVandalism) == 0x30);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CGuardDef, BribeCostShoplifter) == 0x34);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CGuardDef, BribeCostPickPocket) == 0x38);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CGuardDef, BribeCostAssault) == 0x3c);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CGuardDef, BribeCostGuardAssault) == 0x40);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CGuardDef, BribeCostGBH) == 0x44);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CGuardDef, BribeCostGuardGBH) == 0x48);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CGuardDef, BribeCostMurder) == 0x4c);
+#endif // FABLE_RETAIL_CGUARDDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CGUARDDEF_H

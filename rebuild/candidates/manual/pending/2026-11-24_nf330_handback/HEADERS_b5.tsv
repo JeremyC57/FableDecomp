@@ -1,0 +1,4 @@
+header	macro	rows
+engine/CAIStateGroup_GazeAtHome.h	FABLE_RETAIL_CAISTATEGROUP_GAZEATHOME_VIRTUAL_MODEL	00918f50,00918f60
+engine/CAIStateGroup_GazeOutside.h	FABLE_RETAIL_CAISTATEGROUP_GAZEOUTSIDE_VIRTUAL_MODEL	00918f10,00918f20
+engine/CAIStateGroup_Gaze.h	FABLE_RETAIL_CAISTATEGROUP_GAZE_RTTI_DECLS (base opt-in)	(none; the batch's derived models need it)

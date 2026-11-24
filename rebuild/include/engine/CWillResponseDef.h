@@ -8,6 +8,41 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CWILLRESPONSEDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123E324 (RTTI .?AVCWillResponseDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CWillResponseDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CWillResponseDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DF562 ?Transfer@CWillResponseDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E18C9 ?Copy@CWillResponseDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D649F ?GetSizeofClass@CWillResponseDef@@UAEKXZ
+public:
+    bool          IsForcePushable;                           // +0x25
+    bool          IsLifeDrainable;                           // +0x26
+    bool          IsLightningable;                           // +0x27
+    bool          IsNotBloodyWillable;                       // +0x28
+    bool          IsAffectedBySlowTime;                      // +0x29
+    bool          IsAbleToBeLifted;                          // +0x2a
+    bool          IsEpicPowerExplodable;                     // +0x2b
+    bool          IsEpicSpellable;                           // +0x2c
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CWillResponseDef) == 0x2d);
+FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsForcePushable) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsLifeDrainable) == 0x26);
+FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsLightningable) == 0x27);
+FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsNotBloodyWillable) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsAffectedBySlowTime) == 0x29);
+FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsAbleToBeLifted) == 0x2a);
+FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsEpicPowerExplodable) == 0x2b);
+FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsEpicSpellable) == 0x2c);
+#else
 #pragma pack(push, 1)
 class CWillResponseDef {
 public:
@@ -24,15 +59,16 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CWillResponseDef) == 0x2d);
-FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsForcePushable) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsLifeDrainable) == 0x26);
-FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsLightningable) == 0x27);
-FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsNotBloodyWillable) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsAffectedBySlowTime) == 0x29);
-FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsAbleToBeLifted) == 0x2a);
-FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsEpicPowerExplodable) == 0x2b);
-FABLE_STATIC_ASSERT(offsetof(CWillResponseDef, IsEpicSpellable) == 0x2c);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CWillResponseDef) == 0x2d);
+FABLE_STATIC_ASSERT_AT(28, offsetof(CWillResponseDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CWillResponseDef, IsForcePushable) == 0x25);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CWillResponseDef, IsLifeDrainable) == 0x26);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CWillResponseDef, IsLightningable) == 0x27);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CWillResponseDef, IsNotBloodyWillable) == 0x28);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CWillResponseDef, IsAffectedBySlowTime) == 0x29);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CWillResponseDef, IsAbleToBeLifted) == 0x2a);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CWillResponseDef, IsEpicPowerExplodable) == 0x2b);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CWillResponseDef, IsEpicSpellable) == 0x2c);
+#endif // FABLE_RETAIL_CWILLRESPONSEDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CWILLRESPONSEDEF_H

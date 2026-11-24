@@ -8,6 +8,53 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CORACLEMINIGAMEDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0123E504 (RTTI .?AVCOracleMinigameDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name COracleMinigameDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class COracleMinigameDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DF658 ?Transfer@COracleMinigameDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E1975 ?Copy@COracleMinigameDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x004D6601 ?GetSizeofClass@COracleMinigameDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    float         WaitBetweenRoundsSeconds;                  // +0x28
+    float         PauseBetweenOutputSeconds;                 // +0x2c
+    float         PauseBetweenOutputsLevelMultiplier;        // +0x30
+    long          MaxLevel;                                  // +0x34
+    unsigned long TintRed;                                   // +0x38
+    unsigned long TintGreen;                                 // +0x3c
+    unsigned long TintBlue;                                  // +0x40
+    unsigned long TextLose;                                  // +0x44
+    unsigned long TextWin;                                   // +0x48
+    unsigned long TextWatch;                                 // +0x4c
+    unsigned long TextRepeat;                                // +0x50
+    unsigned long TextOfferGame;                             // +0x54
+    unsigned long TextWonRound;                              // +0x58
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(COracleMinigameDef) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, WaitBetweenRoundsSeconds) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, PauseBetweenOutputSeconds) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, PauseBetweenOutputsLevelMultiplier) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, MaxLevel) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TintRed) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TintGreen) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TintBlue) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextLose) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextWin) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextWatch) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextRepeat) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextOfferGame) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextWonRound) == 0x58);
+#else
 #pragma pack(push, 1)
 class COracleMinigameDef {
 public:
@@ -37,20 +84,21 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(COracleMinigameDef) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, WaitBetweenRoundsSeconds) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, PauseBetweenOutputSeconds) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, PauseBetweenOutputsLevelMultiplier) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, MaxLevel) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TintRed) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TintGreen) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TintBlue) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextLose) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextWin) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextWatch) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextRepeat) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextOfferGame) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(COracleMinigameDef, TextWonRound) == 0x58);
+FABLE_STATIC_ASSERT_AT(40, sizeof(COracleMinigameDef) == 0x5c);
+FABLE_STATIC_ASSERT_AT(41, offsetof(COracleMinigameDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(42, offsetof(COracleMinigameDef, WaitBetweenRoundsSeconds) == 0x28);
+FABLE_STATIC_ASSERT_AT(43, offsetof(COracleMinigameDef, PauseBetweenOutputSeconds) == 0x2c);
+FABLE_STATIC_ASSERT_AT(44, offsetof(COracleMinigameDef, PauseBetweenOutputsLevelMultiplier) == 0x30);
+FABLE_STATIC_ASSERT_AT(45, offsetof(COracleMinigameDef, MaxLevel) == 0x34);
+FABLE_STATIC_ASSERT_AT(46, offsetof(COracleMinigameDef, TintRed) == 0x38);
+FABLE_STATIC_ASSERT_AT(47, offsetof(COracleMinigameDef, TintGreen) == 0x3c);
+FABLE_STATIC_ASSERT_AT(48, offsetof(COracleMinigameDef, TintBlue) == 0x40);
+FABLE_STATIC_ASSERT_AT(49, offsetof(COracleMinigameDef, TextLose) == 0x44);
+FABLE_STATIC_ASSERT_AT(50, offsetof(COracleMinigameDef, TextWin) == 0x48);
+FABLE_STATIC_ASSERT_AT(51, offsetof(COracleMinigameDef, TextWatch) == 0x4c);
+FABLE_STATIC_ASSERT_AT(52, offsetof(COracleMinigameDef, TextRepeat) == 0x50);
+FABLE_STATIC_ASSERT_AT(53, offsetof(COracleMinigameDef, TextOfferGame) == 0x54);
+FABLE_STATIC_ASSERT_AT(54, offsetof(COracleMinigameDef, TextWonRound) == 0x58);
+#endif // FABLE_RETAIL_CORACLEMINIGAMEDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CORACLEMINIGAMEDEF_H

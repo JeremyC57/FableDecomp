@@ -1,0 +1,18 @@
+class	vftable	verdict	slots	notes
+CAIScratchpadDef	0126D014	OK	retail=25 emitted=25 same=24 slot0_alias=1	
+CActionUseDef	0123200C	OK	retail=25 emitted=25 same=24 slot0_alias=1	
+CBonusItemDef	012322E4	OK	retail=25 emitted=25 same=24 slot0_alias=1	
+CDecapitationDef	0123D5E4	OK	retail=25 emitted=25 same=25 slot0_alias=0	
+CDragonActionSwoopDef	01232744	OK	retail=25 emitted=25 same=25 slot0_alias=0	
+CFireheartMinigameDef	0123E584	OK	retail=25 emitted=25 same=25 slot0_alias=0	
+CFishDef	0123D7BC	OK	retail=25 emitted=25 same=24 slot0_alias=1	
+CGuardDef	0123C75C	OK	retail=25 emitted=25 same=25 slot0_alias=0	
+CHeroCentreDef	0123BE54	OK	retail=25 emitted=25 same=25 slot0_alias=0	
+CHeroDef	0123A904	OK	retail=25 emitted=25 same=24 slot0_alias=1	
+COracleMinigameDef	0123E504	OK	retail=25 emitted=25 same=24 slot0_alias=1	
+CShipDef	0123C0A4	OK	retail=25 emitted=25 same=24 slot0_alias=1	
+CSmashableDef	01231F7C	OK	retail=25 emitted=25 same=25 slot0_alias=0	
+CSummonDef	0123DEB4	OK	retail=25 emitted=25 same=25 slot0_alias=0	
+CSummonerDef	01232AEC	OK	retail=25 emitted=25 same=24 slot0_alias=1	
+CTimeAppearanceFadeDef	0123B7CC	OK	retail=25 emitted=25 same=24 slot0_alias=1	
+CWillResponseDef	0123E324	OK	retail=25 emitted=25 same=25 slot0_alias=0	

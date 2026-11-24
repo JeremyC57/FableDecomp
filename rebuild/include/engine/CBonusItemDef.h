@@ -8,6 +8,79 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CBONUSITEMDEF_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012322E4 (RTTI .?AVCBonusItemDef@@ : CSubDefClassBase), 25 slots; the declared slots are this class's overrides (RTTI-port labels name CBonusItemDef); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+class CDefClassBase;
+class CPersistContext;
+#pragma pack(push, 1)
+class CBonusItemDef : public CSubDefClassBase {
+public:
+#ifdef FABLE_RETAIL_CBONUSITEMDEF_ALLOC
+// Opt-in (wfE11, 2026-11-15, row 0x0044C72B CGameDefinitionManager::InitAndCompile, which registers its address): the static allocator
+// ?Alloc@CBonusItemDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Transfer(CPersistContext&);                              // slot 18 0x0045279B ?Transfer@CBonusItemDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase*);                              // slot 19 0x00453C53 ?Copy@CBonusItemDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                               // slot 20 0x0044C390 ?GetSizeofClass@CBonusItemDef@@UAEKXZ
+public:
+    unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+    float         HealthModifier;                            // +0x28
+    bool          AddsFatness;                               // +0x2c
+    unsigned char _pad_0x2d[0x3];                            // +0x2d
+    long          StaminaModifier;                           // +0x30
+    float         SecondsToApplyHealthIncreaseOver;          // +0x34
+    long          WillExperience;                            // +0x38
+    long          SkillExperience;                           // +0x3c
+    long          StrengthExperience;                        // +0x40
+    long          MoralityChange;                            // +0x44
+    float         AgreeablenessChange;                       // +0x48
+    float         AttractivenessChange;                      // +0x4c
+    float         ScarinessChange;                           // +0x50
+    float         MaxHealthIncrease;                         // +0x54
+    long          MaxStaminaIncrease;                        // +0x58
+    bool          ChangeTimeOfDayToDay;                      // +0x5c
+    bool          ChangeTimeOfDayToNight;                    // +0x5d
+    unsigned char _pad_0x5e[0x2];                            // +0x5e
+    float         SpeedMultiplier;                           // +0x60
+    float         SecondsForSpeedMultiplierToLast;           // +0x64
+    long          ParticleEffect;                            // +0x68
+    bool          AddsDrunkenness;                           // +0x6c
+    unsigned char _pad_0x6d[0x3];                            // +0x6d
+    float         AlcoholicStrength;                         // +0x70
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CBonusItemDef) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, HealthModifier) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AddsFatness) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, _pad_0x2d) == 0x2d);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, StaminaModifier) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, SecondsToApplyHealthIncreaseOver) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, WillExperience) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, SkillExperience) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, StrengthExperience) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, MoralityChange) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AgreeablenessChange) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AttractivenessChange) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, ScarinessChange) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, MaxHealthIncrease) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, MaxStaminaIncrease) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, ChangeTimeOfDayToDay) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, ChangeTimeOfDayToNight) == 0x5d);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, _pad_0x5e) == 0x5e);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, SpeedMultiplier) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, SecondsForSpeedMultiplierToLast) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, ParticleEffect) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AddsDrunkenness) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, _pad_0x6d) == 0x6d);
+FABLE_STATIC_ASSERT(offsetof(CBonusItemDef, AlcoholicStrength) == 0x70);
+#else
 #pragma pack(push, 1)
 class CBonusItemDef {
 public:
@@ -74,5 +147,6 @@ FABLE_STATIC_ASSERT_AT(68, offsetof(CBonusItemDef, SecondsForSpeedMultiplierToLa
 FABLE_STATIC_ASSERT_AT(69, offsetof(CBonusItemDef, ParticleEffect) == 0x68);
 FABLE_STATIC_ASSERT_AT(70, offsetof(CBonusItemDef, AddsDrunkenness) == 0x6c);
 FABLE_STATIC_ASSERT_AT(71, offsetof(CBonusItemDef, AlcoholicStrength) == 0x70);
+#endif // FABLE_RETAIL_CBONUSITEMDEF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CBONUSITEMDEF_H

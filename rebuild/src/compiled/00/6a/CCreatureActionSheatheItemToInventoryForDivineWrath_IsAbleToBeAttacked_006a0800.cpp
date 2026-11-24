@@ -1,4 +1,10 @@
-bool __fastcall CCreatureAction_SheatheItemToInventory_ForDivineWrath_IsAbleToBeAttacked()
+// Leaf: ?IsAbleToBeAttacked@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORDIVINEWRATH_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCreatureAction_SheatheItemToInventory_ForDivineWrath.h"
+bool CCreatureAction_SheatheItemToInventory_ForDivineWrath::IsAbleToBeAttacked() const
 {
     return false;
 }
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_SheatheItemToInventory_ForDivineWrath_IsAbleToBeAttacked -> CCreatureAction_SheatheItemToInventory_ForDivineWrath::IsAbleToBeAttacked, the RTTI-placed PDB member; class model: engine/CCreatureAction_SheatheItemToInventory_ForDivineWrath.h opt-in FABLE_RETAIL_CCREATUREACTION_SHEATHEITEMTOINVENTORY_FORDIVINEWRATH_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.

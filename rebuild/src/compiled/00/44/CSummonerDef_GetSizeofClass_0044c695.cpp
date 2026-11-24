@@ -1,8 +1,12 @@
+// Leaf: ?GetSizeofClass@CSummonerDef@@UAEKXZ
+#define FABLE_RETAIL_CSUMMONERDEF_VIRTUAL_MODEL
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CSummonerDef.h"
 #pragma optimize("s",on)
 typedef unsigned long ulong;
 
-ulong __fastcall CSummonerDef_GetSizeofClass(void* self)
+unsigned long CSummonerDef::GetSizeofClass()
 {
-    (void)self;
     return 0x5c;
 }
+// Flatten route (flatten_pilot v5, NF330): CSummonerDef_GetSizeofClass -> CSummonerDef::GetSizeofClass, the RTTI-placed PDB member; class model: engine/CSummonerDef.h opt-in FABLE_RETAIL_CSUMMONERDEF_VIRTUAL_MODEL, FABLE_RETAIL_DEF_CLASS_BASE.

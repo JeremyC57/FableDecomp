@@ -1,4 +1,10 @@
-bool __fastcall CCreatureAction_PlayerInteractionBribe_IsToHaveEmptyHands()
+// Leaf: ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionBribe@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_PLAYERINTERACTIONBRIBE_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCreatureAction_PlayerInteractionBribe.h"
+bool CCreatureAction_PlayerInteractionBribe::IsToHaveEmptyHands() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_PlayerInteractionBribe_IsToHaveEmptyHands -> CCreatureAction_PlayerInteractionBribe::IsToHaveEmptyHands, the RTTI-placed PDB member; class model: engine/CCreatureAction_PlayerInteractionBribe.h opt-in FABLE_RETAIL_CCREATUREACTION_PLAYERINTERACTIONBRIBE_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.

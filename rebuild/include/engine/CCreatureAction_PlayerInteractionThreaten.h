@@ -9,6 +9,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_PLAYERINTERACTIONTHREATEN_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01259534 (RTTI .?AVCCreatureAction_PlayerInteractionThreaten@@ : CCreatureActionBase), 70 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_PlayerInteractionThreaten); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.
+#include "engine/CCreatureActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_PlayerInteractionThreaten : public CCreatureActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008442F0 ?PerformAction@CCreatureAction_PlayerInteractionThreaten@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0062F030 ?Clone@CCreatureAction_PlayerInteractionThreaten@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsToHaveEmptyHands() const;                              // slot 36 0x0062DD30 ?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionThreaten@@UBE_NXZ
+    virtual bool IsToReplaceItemIfRemoved() const;                        // slot 37 0x0062DD40 ?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionThreaten@@UBE_NXZ
+public:
+    unsigned char PTarget[0x8];                              // +0xa8 CIntelligentPointer<CThing>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayerInteractionThreaten) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayerInteractionThreaten, PTarget) == 0xa8);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_PlayerInteractionThreaten {
 public:
@@ -50,8 +71,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PlayerInteractionThreaten) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayerInteractionThreaten, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayerInteractionThreaten, PTarget) == 0xa8);
+FABLE_STATIC_ASSERT_AT(53, sizeof(CCreatureAction_PlayerInteractionThreaten) == 0xb0);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CCreatureAction_PlayerInteractionThreaten, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CCreatureAction_PlayerInteractionThreaten, PTarget) == 0xa8);
+#endif // FABLE_RETAIL_CCREATUREACTION_PLAYERINTERACTIONTHREATEN_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_PLAYERINTERACTIONTHREATEN_H
