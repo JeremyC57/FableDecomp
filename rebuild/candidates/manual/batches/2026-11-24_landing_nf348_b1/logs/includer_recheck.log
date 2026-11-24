@@ -1,0 +1,113 @@
+addr       parity           behav  name
+00449980   RELOCATION_MATCH PASS   GetMainPlayerJoystickDeviceNumber
+0047d008   MATCH            PASS   SetMember_dword0x64_0047d008
+0047d296   RELOCATION_MATCH PASS   PCSetQuitToFrontEnd
+0047d5f2   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0047d5f2   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+0047d5f2   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0047d5f2   RELOCATION_MATCH PASS   SetPDef
+0047dd9d   RELOCATION_MATCH PASS   PCSetToLoad
+0047e196   WARN RELOC_NAME: ?IsValid@CDateAndTime@@QBE_NXZ -> 009e9c60 labelled 'C3DMeshInfo::HasPhysicsMesh'
+0047e196   RELOCATION_MATCH PASS   SaveGame
+0047e651   RELOCATION_MATCH PASS   VideoOptionsChanged
+0047e9ae   RELOCATION_MATCH PASS   GlobalUpdate
+0047ed76   RELOCATION_MATCH PASS   SetToSave
+0047f30f   RELOCATION_MATCH PASS   VideoOptionsNotAccepted
+0047f58b   RELOCATION_MATCH PASS   AddRegionAndTimeInfo
+0047fe83   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+0047fe83   WARN RELOC_NAME: ?GetSaveSlotFileName@CUserProfileManager@@QBEABVCWideString@@J@Z -> 00407360 labelled 'NInventory::CTCInventoryBase::GetCategoryWithIndex'
+0047fe83   RELOCATION_MATCH PASS   GetFileNameList
+004804de   WARN SHARED_HEADER_AVAILABLE CTCFishing (engine/CTCFishing.h)
+004804de   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004804de   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004804de   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004804de   RELOCATION_MATCH PASS   OpenInGameMenuPC
+004830a1   WARN SHARED_HEADER_AVAILABLE CTCFishing (engine/CTCFishing.h)
+004830a1   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004830a1   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004830a1   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004830a1   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004830a1   RELOCATION_MATCH PASS   OpenInGameMenu
+0048616c   MATCH            PASS   GetInterfaceType
+0049f4c0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0049f4c0   WARN RELOC_NAME: ??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z -> 004ab640 labelled 'CPersistContext::Transfer<CWorld::ESaveType>'
+0049f4c0   RELOCATION_MATCH PASS   SaveGameStateInternal
+004a21f0   WARN RELOC_NAME: ??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z -> 004ab640 labelled 'CPersistContext::Transfer<CWorld::ESaveType>'
+004a21f0   RELOCATION_MATCH PASS   LoadGameStateInternal
+004d55bd   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+004d55bd   RELOCATION_MATCH PASS   StatGetClassTypeName
+00587847   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00587847   RELOCATION_MATCH PASS   ClosePCInventory
+0058af10   WARN RELOC_NAME: ??0?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VCCharString@@V1@@std@@@1@@Z -> 0059326d labelled '_global::StdList_Ctor_0059326d'
+0058af10   WARN RELOC_NAME: ??$?0PBDPBD@?$pair@VCCharString@@V1@@std@@QAE@ABU?$pair@PBDPBD@1@@Z -> 00592495 labelled 'std::pair<const CCharString, CCharString>::pair'
+0058af10   WARN RELOC_NAME: ??0?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@1@@Z -> 00593288 labelled '_global::StdList_Ctor_00593288'
+0058af10   WARN RELOC_NAME: ?insert@?$list@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@U?$_Nonconst_traits@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@2@U32@ABU?$pair@PAVCComponent@NUISystem@@PAV12@@2@@Z -> 00593b1a labelled 'ListNode_Create'
+0058af10   WARN RELOC_NAME: ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ -> 00406880 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@XZ -> 005932a3 labelled 'std::list<T_005932a3>::~list'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@XZ -> 00593b03 labelled 'std::list<T_00593b03>::~list'
+0058af10   RELOCATION_MATCH PASS   OpenPCOptionsMenu
+0062b070   WARN RELOC_NAME: ?IsRenderingNormalScene@CDisplayEngine@@QBE_NXZ -> 00434d60 labelled 'C3DAnimation2::CanRelocateData'
+0062b070   WARN RELOC_NAME: ?GetData@CGameEventDataPackage@@QAEXJPAX@Z -> 009f18f0 labelled 'CircularBuffer_Read'
+0062b070   RELOCATION_MATCH PASS   EAOpenHeroInformationScreen
+0069e980   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CInterpolationInfo (engine/CInterpolationInfo.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo (engine/CEnginePrimitivePrepareInfo.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CEngineInterpolationInfo (engine/CEngineInterpolationInfo.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CIEngine (engine/CIEngine.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CEngineManager (engine/CEngineManager.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore (engine/CRenderManagerCore.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0069e980   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+  WARN leaf 'vfunc_3' matches no symbol in 0069e980.obj; graded the largest function
+  WARN leaf 'vfunc_3' matches no symbol in 0069e980.obj; graded the largest function
+0069e980   WARN RELOC_NAME: ?g_RenderManagerCore_013b8384@@3PAUCRenderManagerCore@@A -> 013b8384 labelled 'PRenderManager'
+0069e980   WARN RELOC_NAME: ?PeekDisplayEngine@CViewBase@NDisplayView@@IBEABVCDisplayEngine@@XZ -> 00640020 labelled 'CViewBase::GetDisplayEngine'
+0069e980   WARN RELOC_NAME: ?GetWorld@CViewBase@NDisplayView@@IAEAAVCWorld@@XZ -> 00640000 labelled 'CViewBase::GetDisplayEngine'
+0069e980   WARN RELOC_NAME: ?DrawBettingHUD@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z -> 00437d00 labelled '_global::Forward_Draw_via0x210_00437d00'
+0069e980   WARN RELOC_NAME: ?DrawReceivedItems@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z -> 00437660 labelled '_global::Forward_Draw_via0x198_00437660'
+0069e980   WARN RELOC_NAME: ?Draw2DText@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z -> 00438000 labelled '_global::Forward_Draw_via0x238_00438000'
+0069e980   RELOCATION_MATCH PASS   vfunc_3
+00e1ad30   WARN STANDIN_LEAF ?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ (catalog NScript::CV_ChickenKickingScript::Init; names another function)
+00e1ad30   MATCH            PASS   Init
+00e1cae0   RELOCATION_MATCH PASS   MonitorMazePhases
+
+WINS: 24
+  00449980 RELOCATION_MATCH CPlayerManager::?GetMainPlayerJoystickDeviceNumber@CPlayerManager@@QBEJXZ
+  0047d008 MATCH _global::?LoadGame@CTCInGameMenu@@QAEXJ@Z
+  0047d296 RELOCATION_MATCH CTCInGameMenu::?PCSetQuitToFrontEnd@CTCInGameMenu@@QAEXXZ
+  0047d5f2 RELOCATION_MATCH CTCInGameMenu::SetPDef
+  0047dd9d RELOCATION_MATCH CTCInGameMenu::?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z
+  0047e196 RELOCATION_MATCH CTCInGameMenu::?SaveGame@CTCInGameMenu@@QAEXJ@Z
+  0047e651 RELOCATION_MATCH CTCInGameMenu::?VideoOptionsChanged@CTCInGameMenu@@QAEXXZ
+  0047e9ae RELOCATION_MATCH CTCInGameMenu::?GlobalUpdate@CTCInGameMenu@@UAEX_N@Z
+  0047ed76 RELOCATION_MATCH CTCInGameMenu::?SetToSave@CTCInGameMenu@@QAEXJ@Z
+  0047f30f RELOCATION_MATCH CTCInGameMenu::?VideoOptionsNotAccepted@CTCInGameMenu@@QAEXXZ
+  0047f58b RELOCATION_MATCH CTCInGameMenu::?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z
+  0047fe83 RELOCATION_MATCH CTCInGameMenu::?GetFileNameList@CTCInGameMenu@@AAEXXZ
+  004804de RELOCATION_MATCH CTCInGameMenu::?OpenInGameMenuPC@CTCInGameMenu@@QAEXPAVCComponent@NUISystem@@0@Z
+  004830a1 RELOCATION_MATCH CTCInGameMenu::?OpenInGameMenu@CTCInGameMenu@@QAEXXZ
+  0048616c MATCH CTCInGameMenu::?GetInterfaceType@CTCInGameMenu@@UBE?AW4ETCInterfaceType@@XZ
+  0049f4c0 RELOCATION_MATCH CWorld::?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+  004a21f0 RELOCATION_MATCH CWorld::?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+  004d55bd RELOCATION_MATCH CTCInGameMenu::?StatGetClassTypeName@CTCInGameMenu@@SI?AVCCharString@@XZ
+  00587847 RELOCATION_MATCH CTCInventory::?ClosePCInventory@CTCInventory@@QAEX_N@Z
+  0058af10 RELOCATION_MATCH CTCInventory::?OpenPCOptionsMenu@CTCInventory@@QAEXXZ
+  0062b070 RELOCATION_MATCH CWorld::?EAOpenHeroInformationScreen@CWorld@@QAEXPBVCGameEvent@@@Z
+  0069e980 RELOCATION_MATCH NDisplayView::CView3DBase::vfunc_3
+  00e1ad30 MATCH Init::?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ
+  00e1cae0 RELOCATION_MATCH NScript::CQ_WizardBattleScript::?MonitorMazePhases@CQ_WizardBattleScript@NScript@@QAEXAAVCScriptThing@@@Z

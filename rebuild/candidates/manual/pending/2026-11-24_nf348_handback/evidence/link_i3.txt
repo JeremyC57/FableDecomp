@@ -1,0 +1,10 @@
+## HEAD set: H_007fc800.obj 0045c5f6.obj 00923f60.obj
+duplicates 0
+UNRESOLVED 1 @Kraken_Finish@4
+UNRESOLVED 1 @Kraken_PreEnd@4
+## new set: 007fc800.obj 0045c5f6.obj 00923f60.obj
+duplicates 1
+  DUP 0045c5f6.obj ?EndAttackBeam@CTCKraken@@QAEXXZ in 007fc800.obj;
+UNRESOLVED 1 @Kraken_Finish@4
+UNRESOLVED 1 @Kraken_PreEnd@4
+LK_DONE

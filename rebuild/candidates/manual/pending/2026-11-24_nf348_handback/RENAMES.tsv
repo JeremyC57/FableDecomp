@@ -1,0 +1,25 @@
+kind	row	old	new	batch
+self	0047d008	?Set@T@@QAEXH@Z	?LoadGame@CTCInGameMenu@@QAEXJ@Z	b1
+self	00e1ad30	?Init@C@@QAEXXZ	?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ	b1
+self	00437990	?Run@T@@QAEXXZ	?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	held/b2 (D2)
+callee	00437990	?Run_00643d8c@Sub@@QAEXXZ	?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	held/b2 (D2; target 0x00643D8C)
+self	00643d8c	?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	held/b2 (D2)
+self	007fc800	?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z	?EndAttackBeam@CTCKraken@@QAEXXZ	held/b3 (not for landing)
+self	005eedcf	?AddLearnedExpression@FableAddLearned_005eedcf@@QAEXJ@Z	?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z	held/b4 (not for landing)
+catalog Module	0047d008	_global	CTCInGameMenu	b1
+catalog name (auto-re-candidates)	0047d008	_global::SetMember_dword0x64_0047d008	CTCInGameMenu::LoadGame	b1
+catalog Source	0047d008	00/47/CObservable_AddExclusiveObserver_0047d008.cpp	00/47/CTCInGameMenu_LoadGame_0047d008.cpp	b1
+catalog TestSource	0047d008	00/47/CObservable_AddExclusiveObserver_0047d008_test.cpp	00/47/CTCInGameMenu_LoadGame_0047d008_test.cpp	b1
+catalog Module	00e1ad30	Init	NScript::CQ_WizardBattleScript	b1
+catalog name (auto-re-candidates)	00e1ad30	NScript::CV_ChickenKickingScript::Init	NScript::CQ_WizardBattleScript::InitialiseVariables	b1
+catalog Source	00e1ad30	00/e1/Init_Init_00e1ad30.cpp	00/e1/NScriptCQWizardBattleScript_InitialiseVariables_00e1ad30.cpp	b1
+catalog TestSource	00e1ad30	00/e1/Init_Init_00e1ad30_test.cpp	00/e1/NScriptCQWizardBattleScript_InitialiseVariables_00e1ad30_test.cpp	b1
+catalog Module	00437990	_global	CPlayerGui	held/b2
+catalog name (auto-re-candidates)	00437990	_global::Forward_InitParticleEmitter_via0x150_00437990	CPlayerGui::AddHitByMelee	held/b2
+catalog Source	00437990	00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990.cpp	00/43/CPlayerGui_AddHitByMelee_00437990.cpp	held/b2
+catalog TestSource	00437990	00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990_test.cpp	00/43/CPlayerGui_AddHitByMelee_00437990_test.cpp	held/b2
+catalog Module	00643d8c	CPlayerGui	NPlayerGui::CDrawCombatMultiplier	held/b2
+catalog name (auto-re-candidates)	00643d8c	CPlayerGui::AddHitByMelee	NPlayerGui::CDrawCombatMultiplier::AddHitByMelee	held/b2
+catalog Source	00643d8c	00/64/CPlayerGui_AddHitByMelee_00643d8c.cpp	00/64/NPlayerGuiCDrawCombatMultiplier_AddHitByMelee_00643d8c.cpp	held/b2
+catalog TestSource	00643d8c	00/64/CPlayerGui_AddHitByMelee_00643d8c_test.cpp	00/64/NPlayerGuiCDrawCombatMultiplier_AddHitByMelee_00643d8c_test.cpp	held/b2
+catalog Module	007fc800	_global	CTCKraken	held/b3 (when its unit lands)

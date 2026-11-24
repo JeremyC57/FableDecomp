@@ -1,0 +1,3 @@
+HEAD payload (head/payload.json) built from the repo sources by nf.py pay with HEADPAY=1 (NF348, 2026-11-24). Per row: repo file, sha1 now, sha1 of the payload source_cpp:
+00437990	rebuild/src/compiled/00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990.cpp	4ea7ecc1091e61b1aeb3bd7ce92a64b8cad64169	4ea7ecc1091e61b1aeb3bd7ce92a64b8cad64169	SAME
+00643d8c	rebuild/src/compiled/00/64/CPlayerGui_AddHitByMelee_00643d8c.cpp	fb041d6c532339df9b7874eeaab7599d3f3d1125	fb041d6c532339df9b7874eeaab7599d3f3d1125	SAME

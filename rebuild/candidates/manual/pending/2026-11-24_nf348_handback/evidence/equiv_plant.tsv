@@ -1,0 +1,5 @@
+004d55bd	src	DIFF		rebuild/src/compiled/00/4d/CTCInGameMenu_StatGetClassTypeName_004d55bd.cpp
+0047d5f2	src	DIFF		rebuild/src/compiled/00/47/CTCInGameMenu_SetPDef_0047d5f2.cpp
+0069e980	src	DIFF		rebuild/src/compiled/00/69/NDisplayViewCView3DBase_vfunc3_0069e980.cpp
+0069e980	test	DIFF		rebuild/tests/00/69/NDisplayViewCView3DBase_vfunc3_0069e980_test.cpp
+00e1cae0	src	DIFF		rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_MonitorMazePhases_00e1cae0.cpp

@@ -1,0 +1,10 @@
+0099ba70 H v S1: NOT_EQ (sections 46 v 46)
+  DROPPED .text:??$fill@PAGG@std@@YAXPAG0ABG@Z#1
+  DROPPED .text:??$uninitialized_fill_n@PAGIG@std@@YAPAGPAGIABG@Z#1
+  ADDED   .text:??$fill@PAGG@std@@YIXPAG0ABG@Z#1
+  ADDED   .text:??$uninitialized_fill_n@PAGIG@std@@YIPAGPAGIABG@Z#1
+  FIXED?  .text:?_M_fill_insert@?$vector@GV?$allocator@G@std@@@std@@QAEXPAGIABG@Z#1 bytes(302 v 273) relocs
+  EXT-    DEF ??$fill@PAGG@std@@YAXPAG0ABG@Z
+  EXT-    DEF ??$uninitialized_fill_n@PAGIG@std@@YAPAGPAGIABG@Z
+  EXT+    DEF ??$fill@PAGG@std@@YIXPAG0ABG@Z
+  EXT+    DEF ??$uninitialized_fill_n@PAGIG@std@@YIPAGPAGIABG@Z

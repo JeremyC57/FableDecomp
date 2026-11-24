@@ -1,0 +1,10 @@
+## HEAD set: H_005eedcf.obj 00c22040.obj 00c222b0.obj
+duplicates 1
+  DUP 00c222b0.obj ?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z in 00c22040.obj;
+UNRESOLVED 1 ?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z
+## new set: 005eedcf.obj 00c22040.obj 00c222b0.obj
+duplicates 2
+  DUP 00c22040.obj ?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z in 005eedcf.obj;
+  DUP 00c222b0.obj ?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z in 005eedcf.obj;
+UNRESOLVED 1 ?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z
+LK_DONE

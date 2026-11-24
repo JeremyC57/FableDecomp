@@ -1,0 +1,124 @@
+addr       parity           behav  name
+0044c72b   WARN SHARED_HEADER_AVAILABLE CBrainDef (engine/CBrainDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CSoundThemeDef (engine/CSoundThemeDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CObjectFamilyDef (engine/CObjectFamilyDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CCameraModeDef (engine/CCameraModeDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CCameraManagerDef (engine/CCameraManagerDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE COpinionPersonalityDef (engine/COpinionPersonalityDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE COpinionReactionManagerDef (engine/COpinionReactionManagerDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesDrainLifeDef (engine/CSpecialAbilitiesDrainLifeDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesHealLifeDef (engine/CSpecialAbilitiesHealLifeDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesLightningSpellDef (engine/CSpecialAbilitiesLightningSpellDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CVillagePeopleDef (engine/CVillagePeopleDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CMeleeCombatAbilityDef (engine/CMeleeCombatAbilityDef.h)
+0044c72b   WARN SHARED_HEADER_AVAILABLE CConfigOptionsDefaultsDef (engine/CConfigOptionsDefaultsDef.h)
+0044c72b   RELOCATION_MATCH PASS   InitAndCompile
+00454dc5   MATCH            PASS   GetSizeofClass
+004d62ce   MATCH            PASS   HasFrameUpdate
+004eba68   MATCH            PASS   GetSizeofClass
+004ebb1c   RELOCATION_MATCH PASS   ~CHeroExperienceDef
+004f914a   RELOCATION_MATCH PASS   operator=
+005b3aef   RELOCATION_MATCH PASS   OnInitialActivate
+00619fd0   MATCH            PASS   IsInventoryScreen
+0061a000   MATCH            PASS   GetPlayerMode
+0061a010   MATCH            PASS   GetScreenType
+0061a6a0   RELOCATION_MATCH PASS   OnCreate
+00624da0   MATCH            PASS   OnChangeCategory
+00624db0   MATCH            PASS   IsComponentSerialisable
+00664ba0   RELOCATION_MATCH PASS   GetCurrentMeshRadius
+00666310   WARN RELOC_NAME: ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z -> 0070d920 labelled 'CTCAnimation::SetMainAnim'
+00666310   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00666310   RELOCATION_MATCH PASS   OnCreate
+00667d30   WARN RELOC_NAME: ?SetLifeTime@CTCFlashOnHit@@QAEXJ@Z -> 007e33a0 labelled 'OnPostParentRelocation'
+00667d30   WARN RELOC_NAME: ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z -> 00437990 labelled '_global::Forward_InitParticleEmitter_via0x150_00437990'
+00667d30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00667d30   RELOCATION_MATCH PASS   OnHit
+00675e20   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JVCCharString@@U?$less@VCCharString@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z -> 004314c8 labelled 'GFSerialiseMapBinaryOut<long, CCharString, std::less<CCharString>>'
+00675e20   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@MW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@W4EHeroTrainableStatType@@MU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@@Z -> 00466848 labelled '_global::GFSerialiseMapBinaryOut<float,EHeroTrainableStatType,std::less<EHeroTrainableStatType>>'
+00675e20   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@MW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EHeroTrainableStatType@@MU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@@Z -> 00466889 labelled 'GFSerialiseMapBinaryIn<float, EHeroTrainableStatType, std::less<EHeroTrainableStatType> >'
+00675e20   RELOCATION_MATCH PASS   Transfer
+006d63f0   RELOCATION_MATCH PASS   GetExperiencePickupMultiplierCurrentLevelFractionComplete
+006d8300   RELOCATION_MATCH PASS   AddTrainableStatExperience
+006d8f10   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@VCDefString@@JU?$less@J@std@@@@YIXAAVCDataOutputStream@@ABV?$map@JVCDefString@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@3@@std@@@Z -> 006dae40 labelled 'GFSerialiseMapBinaryOut<CDefString, long, std::less<long>>'
+006d8f10   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@VCDefString@@JU?$less@J@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@JVCDefString@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCDefString@@@std@@@3@@std@@@Z -> 006dba50 labelled '_global::GFSerialiseMapBinaryIn<CDefString,long,std::less<long>>'
+006d8f10   RELOCATION_MATCH PASS   Transfer
+006de8c0   RELOCATION_MATCH PASS   OnShowTrophyPerformAction
+006e2c00   RELOCATION_MATCH PASS   OnCreate
+007280c0   WARN RELOC_NAME: ?ClearSkeletalMorphs@CTCSkeletalMorph@@QAEXJ@Z -> 00786580 labelled 'CSkeletalMorph::ClearByTag'
+007280c0   RELOCATION_MATCH PASS   UpdateMorphSet
+0072f0c0   MATCH            PASS   HasFrameUpdate
+0072f0d0   MATCH            PASS   IsComponentSerialisable
+0072f170   RELOCATION_MATCH PASS   SetupFromData
+00749f00   RELOCATION_MATCH PASS   Validate
+0074a100   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+0074a100   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+0074a100   RELOCATION_MATCH PASS   GetNumGeneratedCreatures
+0074af50   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+0074af50   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+0074af50   WARN RELOC_NAME: ??1CThingAICreatureInit@@QAE@XZ -> 004fad50 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0074af50   RELOCATION_MATCH PASS   CreateCreaturesUndead
+00839420   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00839420   RELOCATION_MATCH PASS   CreateEffectOnHit
+00839940   WARN RELOC_NAME: ?GetPDefaultHitLocation@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@XZ -> 00814be0 labelled '_global::GetMember_dword0x18_00814be0'
+00839940   WARN RELOC_NAME: ?IsBlocking@CTCCombat@@QBE_NXZ -> 007331e0 labelled '_global::GetMember_byte0x63_007331e0'
+00839940   WARN RELOC_NAME: ?IsToPlayGetHitResponse@CHitLocation@NHitLocations@@QBE_NXZ -> 00815270 labelled 'CTCShotDefinitionBase::CanBeHitByMeleeStrike'
+00839940   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00839940   WARN RELOC_NAME: ??0CInitRumble@CJoystick@@QAE@MMMM_N@Z -> 006a92b0 labelled 'CRecord_006a92b0::CRecord_006a92b0'
+00839940   WARN RELOC_NAME: ?GetPHitMaterialDef@CHitParameters@@QBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ -> 0083af60 labelled 'CThing::GetPBaseDef'
+00839940   RELOCATION_MATCH PASS   OnHit
+008af850   RELOCATION_MATCH PASS   PlayBattleCry
+00d038e0   WARN SHARED_HEADER_AVAILABLE CQ_BanditCampBossBattleScript (engine/CQ_BanditCampBossBattleScript.h)
+00d038e0   WARN RELOC_NAME: ?CheckForFirstAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ -> 00d0ee70 labelled 'Quest009_BanditCamp_Outer_OnLoad'
+00d038e0   RELOCATION_MATCH PASS   Main
+00d043a0   RELOCATION_MATCH PASS   CheckForSecondAreaDoorHelp
+00d04770   RELOCATION_MATCH PASS   WatchForBanditCampGates
+00d04ae0   RELOCATION_MATCH PASS   Main
+00d067a0   RELOCATION_MATCH PASS   Main
+00d0a830   RELOCATION_MATCH PASS   Main
+00d0b3c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d0b3e0   RELOCATION_MATCH PASS   Main
+00d0f640   WARN RELOC_NAME: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAE@XZ -> 00cdbfb0 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map'
+00d0f640   RELOCATION_MATCH PASS   CheckForSecondAreaMassacre
+
+WINS: 41
+  0044c72b RELOCATION_MATCH CGameDefinitionManager::?InitAndCompile@CGameDefinitionManager@@UAEXXZ
+  00454dc5 MATCH CThingHolySiteDef::?GetSizeofClass@CThingHolySiteDef@@UAEKXZ
+  004d62ce MATCH CTCFlashOnHit::?HasFrameUpdate@CTCFlashOnHit@@UBE_NXZ
+  004eba68 MATCH CHeroExperienceDef::?GetSizeofClass@CHeroExperienceDef@@UAEKXZ
+  004ebb1c RELOCATION_MATCH CHeroExperienceDef::??1CHeroExperienceDef@@UAE@XZ
+  004f914a RELOCATION_MATCH CHeroExperienceDef::??4CHeroExperienceDef@@QAEAAV0@ABV0@@Z
+  005b3aef RELOCATION_MATCH CTCInventoryClothing::?OnInitialActivate@CTCInventoryClothing@@UAEXXZ
+  00619fd0 MATCH CTCInventoryQuests::?IsInventoryScreen@CTCInventoryQuests@@UBE_NXZ
+  0061a000 MATCH CTCInventoryQuests::?GetPlayerMode@CTCInventoryQuests@@UBE?AW4EPlayerMode@@XZ
+  0061a010 MATCH CTCInventoryQuests::?GetScreenType@CTCInventoryQuests@@UBE?AW4EScreenType@NHeroInformationScreens@@XZ
+  0061a6a0 RELOCATION_MATCH CTCInventoryQuests::?OnCreate@CTCInventoryQuests@@UAEXXZ
+  00624da0 MATCH CTCInventoryQuests::?OnChangeCategory@CTCInventoryQuests@@UAEXXZ
+  00624db0 MATCH CTCInventoryQuests::?IsComponentSerialisable@CTCInventoryQuests@@UBE_NXZ
+  00664ba0 RELOCATION_MATCH CThingCreatureBase::?GetCurrentMeshRadius@CThingCreatureBase@@QBEMXZ
+  00666310 RELOCATION_MATCH CThingCreatureBase::?OnCreate@CThingCreatureBase@@MAE_NXZ
+  00667d30 RELOCATION_MATCH CThingCreatureBase::?OnHit@CThingCreatureBase@@UAEXAAVCHitParameters@@@Z
+  00675e20 RELOCATION_MATCH CCreatureDef::?Transfer@CCreatureDef@@UAEXAAVCPersistContext@@@Z
+  006d63f0 RELOCATION_MATCH CTCHeroExperience::?GetExperiencePickupMultiplierCurrentLevelFractionComplete@CTCHeroExperience@@QBEMXZ
+  006d8300 RELOCATION_MATCH CTCHeroExperience::?AddTrainableStatExperience@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z
+  006d8f10 RELOCATION_MATCH CHeroExperienceDef::?Transfer@CHeroExperienceDef@@UAEXAAVCPersistContext@@@Z
+  006de8c0 RELOCATION_MATCH CTCTrophy::?OnShowTrophyPerformAction@CTCTrophy@@QAEXAAVCThing@@@Z
+  006e2c00 RELOCATION_MATCH CTCTalk::?OnCreate@CTCTalk@@UAEXXZ
+  007280c0 RELOCATION_MATCH CTCRandomAppearanceMorph::?UpdateMorphSet@CTCRandomAppearanceMorph@@AAEXXZ
+  0072f0c0 MATCH CTCDummyVillager::?HasFrameUpdate@CTCDummyVillager@@UBE_NXZ
+  0072f0d0 MATCH CTCDummyVillager::?IsComponentSerialisable@CTCDummyVillager@@UBE_NXZ
+  0072f170 RELOCATION_MATCH CTCDummyVillager::?SetupFromData@CTCDummyVillager@@QAEXKPAVCThingBuilding@@0_N@Z
+  00749f00 RELOCATION_MATCH CTCCreatureGenerator::?Validate@CTCCreatureGenerator@@UBE_NAAVCCharString@@@Z
+  0074a100 RELOCATION_MATCH CTCCreatureGenerator::?GetNumGeneratedCreatures@CTCCreatureGenerator@@QBEJXZ
+  0074af50 RELOCATION_MATCH CTCCreatureGenerator::?CreateCreaturesUndead@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z
+  00839420 RELOCATION_MATCH NThingHelpers::?CreateEffectOnHit@NThingHelpers@@YIXABVCThing@@ABVCHitParameters@@ABVCWorldMap@@M@Z
+  00839940 RELOCATION_MATCH CThingGameObject::?OnHit@CThingGameObject@@UAEXAAVCHitParameters@@@Z
+  008af850 RELOCATION_MATCH CombatDialogueManager::?PlayBattleCry@CombatDialogueManager@@QAE_NAAVCThingCreatureBase@@@Z
+  00d038e0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::?Main@CQ_BanditCampBossBattleScript@NScript@@UAEXXZ
+  00d043a0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::?CheckForSecondAreaDoorHelp@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ
+  00d04770 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::?WatchForBanditCampGates@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ
+  00d04ae0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin1::?Main@CAssassin1@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d067a0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::?Main@CBCGameMaster@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d0a830 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditKing::?Main@CBanditKing@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d0b3c0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::??_GCCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d0b3e0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::?Main@CCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d0f640 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::?CheckForSecondAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ

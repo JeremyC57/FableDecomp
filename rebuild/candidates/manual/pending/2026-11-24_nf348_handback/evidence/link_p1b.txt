@@ -1,0 +1,6 @@
+## HEAD set: H_00e1ad30.obj 00e1a990.obj
+duplicates 0
+UNRESOLVED 1 ?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ
+## new set: 00e1ad30.obj 00e1a990.obj
+duplicates 0
+LK_DONE

@@ -27,6 +27,11 @@
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
+// Fidelity: scaffolding, not retail (NF347 pilot, T3 nf340 0x00CD3D2E): FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY keeps map::operator[]
+//   declaration-only, so this TU no longer emits its map<CCharString,CScriptGameResourceObjectScriptedThingBase>::operator[] copy
+//   (NEQ to retail 0x00CD3D2E: retail's is size-compiled, 118 bytes); the leaf is unchanged and calls the external symbol. It also keeps
+//   map<CCharString,CCharString>::operator[] (retail 0x009AC700, its HEAD copy NEQ too) declaration-only.
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
 #include "fable_string.h"
 #include "engine/C3DVector.h"
 #include "engine/CCountedPointer.h"

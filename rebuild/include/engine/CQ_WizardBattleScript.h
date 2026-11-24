@@ -24,6 +24,11 @@ public:
     void PhaseTwo();                                                     // 0x00E1C580
     void CutsceneScreamers();                                            // 0x00E1CD40
     void PhaseOne();                                                     // 0x00E1CFD0
+#ifdef FABLE_RETAIL_CQ_WIZARDBATTLESCRIPT_INITIALISEVARIABLES
+    // NF348 opt-in (row 0x00E1AD30): FableWin.pdb ?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ (absent from the Ego_r.pdb name set), out of
+    // line at 0x00E1AD30, the first call of Main 0x00E1A990 (as FableWin's Main). Declaration only.
+    void InitialiseVariables();                                          // 0x00E1AD30
+#endif
     bool VillagersTurnOnHero;                                            // +0x48
     bool VillagersChased;                                                // +0x49
     bool FightersStart;                                                  // +0x4a
@@ -40,6 +45,6 @@ public:
     CScriptThing MiddleOfLighthouse;                                     // +0x74
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WizardBattleScript) == 0x80);
+FABLE_STATIC_ASSERT_AT(43, sizeof(NScript::CQ_WizardBattleScript) == 0x80);
 #endif // FABLE_RETAIL_NSCRIPT
 #endif

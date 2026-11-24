@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+add	?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	00643d8c	00437990	NF348 D2 unit: 0x00437990 (CPlayerGui::AddHitByMelee) jumps to 0x00643D8C, whose self is respelled to the PDB NPlayerGui::CDrawCombatMultiplier::AddHitByMelee

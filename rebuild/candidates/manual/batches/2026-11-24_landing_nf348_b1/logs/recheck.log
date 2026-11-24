@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0047d008   MATCH            PASS   SetMember_dword0x64_0047d008
+00e1ad30   WARN STANDIN_LEAF ?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ (catalog NScript::CV_ChickenKickingScript::Init; names another function)
+00e1ad30   MATCH            PASS   Init
+
+WINS: 2
+  0047d008 MATCH _global::?LoadGame@CTCInGameMenu@@QAEXJ@Z
+  00e1ad30 MATCH Init::?InitialiseVariables@CQ_WizardBattleScript@NScript@@QAEXXZ

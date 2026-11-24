@@ -1,0 +1,11 @@
+00626750 H v Pb: NOT_EQ (sections 105 v 101)
+  DROPPED .text:?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z#1
+  DROPPED .text:??1CAction@NUISystem@@QAE@XZ#1
+  DROPPED .text:??_GCAction@NUISystem@@QAEPAXI@Z#1
+  DROPPED .text:?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z#1
+  EXT-    DEF ??1CAction@NUISystem@@QAE@XZ
+  EXT-    DEF ??_GCAction@NUISystem@@QAEPAXI@Z
+  EXT-    DEF ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z
+  EXT-    DEF ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+  EXT+    UND ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z
+  EXT+    UND ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z

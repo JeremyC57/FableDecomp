@@ -1,0 +1,7 @@
+address	status	where	reason
+0047d008	done	batches/b1	PRIORITY owner LoadGame port: MATCH v MATCH, objsec ALL_EQ, binder 0x0041E6D3 resolves with new, no pick-any copies; header opt-in FABLE_RETAIL_CTCINGAMEMENU_LOADGAME (equiv 0 differing, control flags)
+00e1ad30	done	batches/b1	PRIORITY owner InitialiseVariables port: MATCH v MATCH, objsec ALL_EQ, binder 0x00E1A990 resolves with new, no pick-any copies; header opt-in FABLE_RETAIL_CQ_WIZARDBATTLESCRIPT_INITIALISEVARIABLES + assert pin (equiv 0 differing, control flags)
+00437990	done-held	held/b2	D2 unit, ready; held for ruling D1 (objsec delta: libcp + one pick-any operator-> COMDAT identical to landed 0x00439070's, the NF39 sibling form)
+00643d8c	done-held	held/b2	D2 unit partner: objsec ALL_EQ, test respelled; lands only with 00437990
+007fc800	skipped-held	held/b3	identity claim: landed 0x0045C5F6 (really ??1CThingNoiseDef@@UAE@XZ) defines ?EndAttackBeam@CTCKraken@@QAEXXZ strongly; respell = LNK2005. Draft graded RELOCATION_MATCH, objsec equal except libcp
+005eedcf	skipped-held	held/b4	identity claim: landed libpk rows 0x00C22040 and 0x00C222B0 both define ?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z strongly; respell = a third definition. Draft graded RELOCATION_MATCH, objsec equal except libcp; binder 0x006AC430 under NF349's lock

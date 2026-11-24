@@ -1,0 +1,14 @@
+# Q1 00b40260 src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF347/work/probe/00b40260_Q1.cpp grade=DIFFER(753v1037) leaf=?PeekHasWaterFast@CEngineMap@@QBE_NJJ@Z flags=/d2inlT1267 overlay=-
+# pk_all leaf ?PeekHasWaterFast@CEngineMap@@QBE_NJJ@Z source_a=False 
+PK  NOADDR  NOADDR  -  -  pickany  5  leaf=n reach=n ?PeekWidth@CEngineMap@@QBEJXZ
+PK  NOADDR  NOADDR  -  -  pickany  5  leaf=n reach=n ?PeekHeight@CEngineMap@@QBEJXZ
+PK  NOADDR  NOADDR  -  -  pickany  5  leaf=n reach=n ?PeekWorldX@CEngineMap@@QBEJXZ
+PK  NOADDR  NOADDR  -  -  pickany  5  leaf=n reach=n ?PeekWorldY@CEngineMap@@QBEJXZ
+PK  NOADDR  NOADDR  -  -  pickany  54  leaf=n reach=n ?MapHasDataAtPoint@CEngineMap@@QBE_NJJ@Z
+PK  NOADDR  NOADDR  -  -  pickany  12  leaf=n reach=n ??A?$CArray@PAVCEngineMap@@@@QBEABQAVCEngineMap@@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  14  leaf=n reach=n ??A?$CArray@UCLandscapeTheme@@@@QBEABUCLandscapeTheme@@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  88  leaf=n reach=n ?GetMap@CEngineWorldMap@@QBEPAVCEngineMap@@JJ@Z
+PK  EQ  EQ  00b43720  b  pickany  324  leaf=y reach=y ?PeekThemeId@CEngineMap@@QBEJJJJ@Z
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?PeekTheme@CEngineLandscapeRenderer@@QBEABUCLandscapeTheme@@K@Z
+# old checker (pickany_vs_retail.py)
+OLD EQ  00b43720 324 ?PeekThemeId@CEngineMap@@QBEJJJJ@Z 

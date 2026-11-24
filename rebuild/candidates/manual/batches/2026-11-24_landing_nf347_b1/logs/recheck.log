@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00d58490   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00d58490 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::?Main@CTheRealGuildmaster@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ

@@ -22,7 +22,11 @@ Every overlay was based on today's repo header (`logs/<addr>.hdrcheck.log`).
 - **CThing.h:** one line changes. The existing `#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT` becomes
   `#if ONHIT && ONHIT_HASTC_CLASSTYPE && !GETTC_EXPANDED ... #elif ONHIT`. The default branch and every existing macro check `=same`.
 - **CCreatureDef.h and CHeroExperienceDef.h:** they gain additive STATGETTYPENAME opt-ins. Only those new macros check DIFF.
-- **CQ_BanditCampBossBattleScript.h:** it gains the ASSASSIN1 section. No landed row includes this header.
+- **CQ_BanditCampBossBattleScript.h:** it gains the ASSASSIN1 section.
+- **Correction (coordinator, after the landing; advisor review):** hdrcheck2 read `[0](cpp-err)` for this header and for the default
+  branches of CCreatureDef.h / CHeroExperienceDef.h. That is a failed preprocess, not an includer count, so those checks proved nothing.
+  The headers have 9 / 26 / 7 landed includers (41 rows). All 41 were rechecked from the repo after the landing: 10 MATCH PASS,
+  31 RELOCATION_MATCH PASS (`logs/includer_recheck.log`). The diffs are add-only.
 
 ## Pick-any
 Both checkers ran on A's objects:

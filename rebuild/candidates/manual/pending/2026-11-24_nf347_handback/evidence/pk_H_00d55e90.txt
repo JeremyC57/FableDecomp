@@ -1,0 +1,43 @@
+# H 00d55e90 src=/home/user/FableDecomp/rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScript_Main_00d55e90.cpp grade=RELOCATION_MATCH leaf=?Main@CQ_GuildTrainingMeleeScript@NScript@@UAEXXZ flags= overlay=-
+# pk_all leaf ?Main@CQ_GuildTrainingMeleeScript@NScript@@UAEXXZ source_a=True 
+PK  NEQ  NEQ  004ab060  c  pickany  20  leaf=n reach=n ?SetFriendsWithEverythingFlag@CScriptThing@@UAEX_N@Z
+PK  EQ  EQ  006e7a60  b  pickany  18  leaf=n reach=n ??0CScriptGameResourceObjectBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??1CScriptGameResourceObjectBase@@UAE@XZ
+PK  EQ  EQ  006e70a0  c  pickany  36  leaf=n reach=n ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??0CMovieImpPointer@@QAE@XZ
+PK  EQ  EQ  006e7b60  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectMovieBase@@QAE@XZ
+PK  NEQ  NEQ  006e7b80  b  pickany  25  leaf=n reach=n ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  46  leaf=n reach=n ??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  53  leaf=n reach=n ??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??0?$CCountedPointer@X@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  53  leaf=n reach=n ??1?$CCountedPointer@X@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0CEntityScriptBindingBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  25  leaf=n reach=n ?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@AAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  31  leaf=n reach=n ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@IPBX@Z
+PK  NOADDR  NOADDR  -  -  pickany  18  leaf=n reach=n ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@I@Z
+PK  NOADDR  NOADDR  -  -  pickany  5  leaf=n reach=n ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAE@ABV01@@Z
+PK  EQ  EQ  004aa840  a,b,c  pickany  66  leaf=y reach=y ??1CScriptThing@@UAE@XZ
+PK  EQ  EQ  004ab170  c  pickany  87  leaf=n reach=n ??_GCScriptThing@@UAEPAXI@Z
+PK  EQ  EQ  007e72a0  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+PK  EQ  EQ  007e74d0  a,b  pickany  66  leaf=y reach=y ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  53  leaf=n reach=n ??0?$CEntityScriptBinding@VCQ_GuildTrainingMeleeScript@NScript@@@@QAE@ABVCCharString@@PAVCQ_GuildTrainingMeleeScript@NScript@@P6I?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@ZK@Z
+PK  NOADDR  NOADDR  -  -  pickany  4  leaf=n reach=n ?GetEntityScriptName@?$CEntityScriptBinding@VCQ_GuildTrainingMeleeScript@NScript@@@@UBEABVCCharString@@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@2@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@1@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  87  leaf=n reach=n ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  27  leaf=n reach=n ??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  14  leaf=n reach=n ??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  56  leaf=n reach=n ??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAE@ABU?$less@VCCharString@@@1@ABV?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@1@@Z
+PK  EQ  EQ  00cdbf70  a,b  pickany  54  leaf=y reach=y ??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ
+# old checker (pickany_vs_retail.py)
+OLD EQ  006e7a60 18 ??0CScriptGameResourceObjectBase@@QAE@XZ 
+OLD EQ  006e7b60 26 ??0CScriptGameResourceObjectMovieBase@@QAE@XZ 
+OLD NEQ 006e7b80 25 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ not referenced by the leaf
+OLD EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+OLD EQ  007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ 
+OLD EQ  007e74d0 66 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ 
+OLD EQ  00cdbf70 54 ??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ 

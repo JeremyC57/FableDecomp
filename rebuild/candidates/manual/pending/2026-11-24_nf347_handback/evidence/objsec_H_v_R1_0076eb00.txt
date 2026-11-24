@@ -1,0 +1,5 @@
+0076eb00 H v R1: NOT_EQ (sections 188 v 188)
+  FIXED?  .text:?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z#1 bytes(248 v 291) relocs
+  FIXED?  .text:?_M_insert_overflow@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@V1@ bytes(237 v 317) relocs
+  FIXED?  .text:?_M_insert_overflow@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail bytes(226 v 374) relocs
+  CHANGED .text:?_M_fill_insert@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@s bytes(264 v 463) relocs

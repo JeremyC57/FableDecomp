@@ -67509,9 +67509,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1ad30'
-        Module = 'Init'
-        Source = '00/e1/Init_Init_00e1ad30.cpp'
-        TestSource = '00/e1/Init_Init_00e1ad30_test.cpp'
+        Module = 'NScript::CQ_WizardBattleScript'
+        Source = '00/e1/NScriptCQWizardBattleScript_InitialiseVariables_00e1ad30.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScript_InitialiseVariables_00e1ad30_test.cpp'
         PassPattern = 'OK_00e1ad30'
     }
     [pscustomobject]@{
@@ -93822,9 +93822,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0047d008'
-        Module = '_global'
-        Source = '00/47/CObservable_AddExclusiveObserver_0047d008.cpp'
-        TestSource = '00/47/CObservable_AddExclusiveObserver_0047d008_test.cpp'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_LoadGame_0047d008.cpp'
+        TestSource = '00/47/CTCInGameMenu_LoadGame_0047d008_test.cpp'
         PassPattern = 'PASS_0047d008'
     }
     [pscustomobject]@{
