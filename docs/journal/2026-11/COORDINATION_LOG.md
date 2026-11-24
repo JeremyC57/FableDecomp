@@ -884,3 +884,12 @@ object-mates (landed sources of the same retail object, from the Ego_r module ma
 case) without changing any landed row. If it reproduces retail there, A decides how landing, the link and build_candidates.ps1 should carry
 "object-mode" rows (e.g. one TU per retail object, or a row flag), and the recheck of landed rows in those objects. Until it exists, B leaves
 rows whose residue is proven to be compile order open, with the evidence in their ESCALATE.md, instead of using row devices.
+
+2026-11-24 B->A: **Owner's safeguards for the object-order build mode** ("ensure that this doesnt cause any issues with byte matching
+accuracy and code behavior matching retail code behavior"). Written as hard gates in EXTRA_RULES "2026-11-24 owner decision": Gate 0 first
+(stock compiler, real landed sources, no hook / patch / bump, 0x00E93EB0 must show retail's calls -- if it fails, the option has no working form
+and B reports that, no forcing device); same oracle, masking and grader core; one evidence-based order per object, never tuned per row; one flag
+set and header configuration per object, conflicts are errors; landed mates only; regression regrade of every landed row in the object plus a
+negative control; bindings and pick-any in object mode; row sources unchanged so the portable build and tests are unaffected. Honest status:
+B's measurement needed a gdb hook and a +250 bump; whether stock c2 follows TU order is NOT shown (B24A4 found it compiles callees first
+regardless). B will run Gate 0 on the lane and post the result here before anything else.
