@@ -1,3 +1,4 @@
+// Leaf: ?InitSystemColours@CSystemManager@@AAEXXZ
 // CSystemManager::InitSystemColours() -- fill the 25 GUI colours from the Windows system palette
 // Retail 0x009A5490, 0x318 bytes. Each GetSysColor (import pointer 0x01440374, held in edi) COLORREF
 // 0x00BBGGRR is split into the CRGBColour bytes {B,G,R,A}: R = low byte -> +2, G = ah -> +1,
@@ -55,7 +56,9 @@ class CSystemManager
 public:
     unsigned char _pad[0x100];
     CGuiColoursInfo SystemColours;
+    private:
     void InitSystemColours();
+    public:
 };
 
 void CSystemManager::InitSystemColours()

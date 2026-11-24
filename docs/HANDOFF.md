@@ -9,7 +9,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 ## Account A, 2026-11-24 (naming automation; agents NF321-NF327 all landed; nothing running)
 - **Later 2026-11-24 (this session):** synced with B (FullDecomp contains FullDecomp-B), then landed unit3 (59 rows,
   `batches/2026-11-24_landing_unit3`; agree_pdb 23,942). Owner: continue the naming queue; escalate hard naming issues to the advisor.
-  Then landed RP1, the 2026-11-20 CVsyncCallbackTimer re-port left unlanded (`batches/2026-11-24_landing_rp1`, 29 rows). Next: unit wave 4.
+  Then landed RP1, the 2026-11-20 CVsyncCallbackTimer re-port left unlanded (`batches/2026-11-24_landing_rp1`, 29 rows). Then unit4 (25 rows incl. the 0x004166E2 unit; agree_pdb 23,951). Next: unit wave 5 (15 deferred units).
 - **Coordination restarted (owner, 2026-11-24):** after every finished piece of work, fetch and merge the other branch (A `FullDecomp` <->
   B `FullDecomp-B`), resolve, then commit and push. See `docs/COORDINATION.md` section 0 and COORDINATION_LOG.md.
 - **Read first:** `docs/journal/2026-11/2026-11-24_naming_automation.md` (landings, tools, rulings, the open and queued list).

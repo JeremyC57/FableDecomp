@@ -2082,7 +2082,7 @@ _CCharString_ConstructCCoopSpiritDef_0066fa10_Name	012358e8	0066fa10
 ??_7CTCCoopSpirit@@6B@	0125b264	00670050
 ?UpdateLocalJostling@CTCCoopSpirit@@AAEXXZ	0066fb80	00670a10
 ?UpdateMovement@CTCCoopSpirit@@QAEXXZ	00670820	00670a10
-?UpdateScore@CTCCoopSpirit@@QAEXXZ	00670710	00670a10
+?UpdateScore@CTCCoopSpirit@@AAEXXZ	00670710	00670a10
 ?Destroy_00674e80@@YIXPAX@Z	00674e80	006750d0
 ??4CElement12_006755e0@@QAEAAU0@ABU0@@Z	006755e0	00675790
 ??0CElement12_00675230@@QAE@ABU0@@Z	00675230	00675820
@@ -3078,7 +3078,7 @@ __CxxThrowException@8	00bfeb84	0081e960
 ?InitialiseHouseMarkers@CMiniMapDisplay@@QAEXXZ	0082acd0	0082b750
 ?InitialiseInformationMarkers@CMiniMapDisplay@@IAEXXZ	0082a9b0	0082b750
 ?InitialiseRegionExitMarkers@CMiniMapDisplay@@QAEXXZ	0082afa0	0082b750
-?InitialiseTeleportMarkers@CMiniMapDisplay@@QAEXXZ	0082abd0	0082b750
+?InitialiseTeleportMarkers@CMiniMapDisplay@@IAEXXZ	0082abd0	0082b750
 ?InitialiseTraderMarkers@CMiniMapDisplay@@QAEXXZ	0082ae80	0082b750
 ?RemoveAllDeadMarkers@CMiniMapDisplay@@IAEXXZ	0082a2a0	0082b750
 ?UpdateMarkersInternal@CMiniMapDisplay@@IAEXXZ	0082a960	0082b750
@@ -4176,7 +4176,7 @@ N_008fdb27	008fdb27	008fdb55
 ??_7CCreatureAction_PickUpTankard@@6B@	01292d6c	00947b70
 ?FreeBarPoint@CTCBarPoints@@QAEXJ@Z	007ba4f0	00949320
 ?GetPayPoint@CAIStateGroup_GoToPub@@IAE_NXZ	009492a0	0094aac0
-?PayMoney@CAIStateGroup_GoToPub@@QAE_NXZ	0094a840	0094aac0
+?PayMoney@CAIStateGroup_GoToPub@@IAE_NXZ	0094a840	0094aac0
 ??_7CModeSitTavernStool@@6B@	01292ff8	0094b530
 ?Method@CAIStateGroup_GameMaster@@QAEXJ@Z	0094a3b0	0094c7d0
 ?InitStateGroup@CAIStateGroup_GoToPub@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	00947db0	0094c7e0
@@ -7795,14 +7795,14 @@ _wcscmp	00bfe94c	004fdab0
 ?TransitionToDefaultThemeAllChannels@CEnvironment@@QAEXJM@Z	006b3950	0078f6e0
 ??_7CTCPhysicalShieldSpell@@6B@	0126c53c	0079e990
 ?Erase@CThingPointerSet@@QAEXPAUnode@1@@Z	0079eec0	0079e990
-?CreateStaticExplosion@CTCDExplosion@@QAEXXZ	0080d0b0	0080d750
+?CreateStaticExplosion@CTCDExplosion@@AAEXXZ	0080d0b0	0080d750
 ?IsDynamicExplosionFinished@CTCDExplosion@@ABE_NXZ	0080c350	0080d750
 ?UpdateDynamicExplosion@CTCDExplosion@@QAEXXZ	0080d300	0080d750
 ?UpdateExplosiveAdditionalImpulse@CTCDExplosion@@AAEXXZ	0080c590	0080d750
 ?erase@CEmitterVector@@QAEPAUSEmitter@@PAU2@0@Z	0080e4e0	0080d750
 ?remove_if@@YIPAUSEmitter@@PAU1@0UCEmitterThingIs@@@Z	0080e2f0	0080d750
 ?IsFullyDegraded@CTCDegradableBase@@QBE_NXZ	008ec900	008ecac0
-?ShowParticleEffects@CTCDegradableBase@@QAEXJ@Z	008eca50	008ecac0
+?ShowParticleEffects@CTCDegradableBase@@AAEXJ@Z	008eca50	008ecac0
 ??0CDisplayManagerInit@@QAE@XZ	004016f0	00403b10
 _strncpy	00bfe9c2	00403b10
 ?__uninitialized_copy@@YIPAUSCameraTagEntry@@PAU1@00ABU__false_type@@@Z	004cfa10	004d1360
@@ -28148,7 +28148,7 @@ _CommonStaticMapHeaderEntryName	01436ecc	012246c0
 ?AbortWithMessage@CTCHeroOnlineScoreboard@@QAEXABVCCharString@@@Z	00563410	00564570
 ?ChooseAClan@CTCHeroOnlineScoreboard@@AAEXXZ	0055fec0	00564570
 ?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ	00563920	00564570
-?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	005615c0	00564570
+?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	005615c0	00564570
 ?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	005621b0	00564570
 ?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	00561dc0	00564570
 ?DownloadMyClansLogos@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	00561980	00564570
@@ -28427,7 +28427,7 @@ _NAV_QUAD_TREE_FILE_VERSION	0129dcc8	00a78b20
 ?Init@CDisplayManager@@QAE_NABVCDisplayManagerInit@@_N@Z	009c0e50	009a6610
 ?InitApplicationName@CSystemManager@@AAEXXZ	009a5340	009a6610
 ?InitGUIDFromName@CSystemManager@@AAEXPBD@Z	009a52f0	009a6610
-?InitSystemColours@CSystemManager@@QAEXXZ	009a5490	009a6610
+?InitSystemColours@CSystemManager@@AAEXXZ	009a5490	009a6610
 ?InitWindow@CSystemManager@@QAE_NJJ@Z	009a64b0	009a6610
 ?Initialise@CDriveManager@@QAEJPAVCSystemManager@@@Z	009e4ad0	009a6610
 ?Initialise@CInitBaseClass@@IAE_NXZ	0099a350	009a6610
@@ -35931,7 +35931,7 @@ _sc_fDefaultShortReverbCrossfeedGainMatrix	012bf088	00c75ce0
 ?GetMinPlayerDistanceFromMap@CWorldMap@@IBEJJ@Z	004fcb30	00502850
 ?IsBusy@CLevelLoader@@QBE_NXZ	006c20a0	00502850
 ?LoadLevel@CWorldMap@@IAEXJW4ELoadType@1@@Z	00502620	00502850
-?UnloadLevel@CWorldMap@@QAEXJ@Z	004fede0	00502850
+?UnloadLevel@CWorldMap@@IAEXJ@Z	004fede0	00502850
 ?AllocateMapThingUID@CWorldMap@@QAE_KJ@Z	004fb330	0051e100
 ?MakeUID_0051d990@@YG_K_K0@Z	0051d990	0051e210
 ?OnDeactivateEntity@CQuestManager@@QAEXPAVCThing@@_N@Z	004afb00	005252b0
@@ -37024,7 +37024,7 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?UpdateCreatureControlAngleXY@CGameCameraManager@@AAEXXZ	00697760	0069b790
 ?UpdateHeightLimits@CGameCameraManager@@QAEXXZ	00699670	0069b790
 ?UpdateMode@CGameCameraManager@@QAEXXZ	0069a2a0	0069b790
-?UpdatePrepareFlags@CGameCameraManager@@QAEXXZ	0069b6f0	0069b790
+?UpdatePrepareFlags@CGameCameraManager@@AAEXXZ	0069b6f0	0069b790
 ?UpdateRightStickLookAround@CGameCameraManager@@AAEXXZ	00697cc0	0069b790
 ??_7CModeJackOfBladesScream@NCreatureMode@@6B@	01267d5c	00740450
 ??0CModeJackOfBladesScream@NCreatureMode@@QAE@AAVCThing@@@Z	00740450	00742880
@@ -37498,7 +37498,7 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?IsLookTimeOver@CTCLook@@QAE_NXZ	00753ad0	00753c70
 ?IsLookTurningOverridenByParent@CThing@@QAE_NXZ	0085f200	00753c70
 ?SetBodyMoving@CTCLook@@AAEXXZ	00752e00	00753c70
-?SetBodyMovingViaAnimation@CTCLook@@QAEXXZ	00753930	00753c70
+?SetBodyMovingViaAnimation@CTCLook@@AAEXXZ	00753930	00753c70
 ?UpdateHeadPos@CTCLook@@AAEXXZ	00752000	00753c70
 ?GetAccuracyPercentageFromThingAtBuildUpTime@?A0x9f6d64a0@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	00789d90	00789ff0
 ?GetDamageMultiplierFromThingAtBuildUpTime@?A0x9f6d64a0@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	00789ce0	00789ff0
@@ -37647,7 +37647,7 @@ _z_inflateInit_	00c02310	00a3a840
 ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z	0049e080	004164e0
 ??$GFLimitReturn@N@@YIABNABN00@Z	0041919c	00417001
 ?ForceRender@CMainGameComponent@@IAEXJ@Z	004164e0	00417001
-?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QAENXZ	004166e2	00417001
+?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ	004166e2	00417001
 ?IsBulletTimeActive@CBulletTimeManager@@QBE_NXZ	00419680	00417001
 ?IsReadyToRender@CNetworkClient@@QAE_NXZ	004aea70	00417001
 ?g_ForceRenderFrames@@3JA	013b8630	00417001
@@ -38199,7 +38199,7 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?IS_THING_ALIVE@@YI_NABQAVCThingSoundEmitter@@@Z	0065d55f	0065c781
 ?ReleaseInvalidTasks@CTCVillage@@QAEXXZ	0065be32	0065c781
 ?RemoveTimedoutCrimes@CTCVillage@@QAEXXZ	0065a7a9	0065c781
-?SetEnemyToHeroStatus@CTCVillage@@QAEXXZ	0065a852	0065c781
+?SetEnemyToHeroStatus@CTCVillage@@AAEXXZ	0065a852	0065c781
 ?UpdateCrowds@CTCVillage@@AAEXXZ	006594bb	0065c781
 ?UpdateCurfew@CTCVillage@@QAEXXZ	0065ad37	0065c781
 ?UpdateHornTasks@CTCVillage@@AAEXXZ	0065be6c	0065c781

@@ -100,7 +100,10 @@ class CTCLook : public CTCBase { public:
     void ImplementHeadSettings();                          // 0x00753BA0
     private: bool IsAbleToTurnDaBody() const; public:                             // 0x00751DA0
     bool IsCurrentlyTurningViaAnimation() const;                 // 0x00753B40
-    void SetBodyMovingViaAnimation();                      // 0x00753930
+    private:
+    void SetBodyMovingViaAnimation();
+    public:
+                      // 0x00753930
     private:
     void UpdateLookTimer();
     public:

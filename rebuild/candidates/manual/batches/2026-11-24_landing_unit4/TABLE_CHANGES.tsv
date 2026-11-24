@@ -1,0 +1,12 @@
+action	symbol	target	witness	note
+replace	?UnloadLevel@CWorldMap@@QAEXJ@Z -> ?UnloadLevel@CWorldMap@@IAEXJ@Z	004fede0	00502850	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ -> ?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	005615c0	00564570	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?SetEnemyToHeroStatus@CTCVillage@@QAEXXZ -> ?SetEnemyToHeroStatus@CTCVillage@@AAEXXZ	0065a852	0065c781	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdateScore@CTCCoopSpirit@@QAEXXZ -> ?UpdateScore@CTCCoopSpirit@@AAEXXZ	00670710	00670a10	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdatePrepareFlags@CGameCameraManager@@QAEXXZ -> ?UpdatePrepareFlags@CGameCameraManager@@AAEXXZ	0069b6f0	0069b790	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?SetBodyMovingViaAnimation@CTCLook@@QAEXXZ -> ?SetBodyMovingViaAnimation@CTCLook@@AAEXXZ	00753930	00753c70	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?CreateStaticExplosion@CTCDExplosion@@QAEXXZ -> ?CreateStaticExplosion@CTCDExplosion@@AAEXXZ	0080d0b0	0080d750	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?InitialiseTeleportMarkers@CMiniMapDisplay@@QAEXXZ -> ?InitialiseTeleportMarkers@CMiniMapDisplay@@IAEXXZ	0082abd0	0082b750	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?ShowParticleEffects@CTCDegradableBase@@QAEXJ@Z -> ?ShowParticleEffects@CTCDegradableBase@@AAEXJ@Z	008eca50	008ecac0	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?PayMoney@CAIStateGroup_GoToPub@@QAE_NXZ -> ?PayMoney@CAIStateGroup_GoToPub@@IAE_NXZ	0094a840	0094aac0	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?InitSystemColours@CSystemManager@@QAEXXZ -> ?InitSystemColours@CSystemManager@@AAEXXZ	009a5490	009a6610	unit_fix: the row and its callers moved to the PDB spelling together

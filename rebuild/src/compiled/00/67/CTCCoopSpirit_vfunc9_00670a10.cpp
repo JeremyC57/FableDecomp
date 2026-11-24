@@ -87,7 +87,10 @@ class CTCCoopSpirit { public:
     public:
                      // 0x0066FB80
     private: void UpdateHeightAboveGround(); public:                           // 0x00670470; NF296: PDB name, was UpdateGravity
-    void UpdateScore();                             // 0x00670710
+    private:
+    void UpdateScore();
+    public:
+                             // 0x00670710
     void vfunc_9();
 };
 

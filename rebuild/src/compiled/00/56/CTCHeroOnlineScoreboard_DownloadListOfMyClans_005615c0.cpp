@@ -1,5 +1,5 @@
 // CTCHeroOnlineScoreboard::DownloadListOfMyClans() -- when idle, sends DOWNLOAD_CLAN_LIST for the signed-in user and session; then steps the transaction and, on success, decrypts the reply (busy unless it starts "SID:OK") and appends one CClanInfo per (name, id, description) line triple to MyClans before dropping the connection
-// Leaf: DownloadListOfMyClans
+// Leaf: ?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
 // Retail: Fable.exe @ 0x005615C0, 960 bytes, `ret`. Ego_r.pdb `?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ`.
 // Callees: CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, CWideString(const CWideString&) 0x0099B720 / () 0x0099AED0 /
 // ~ 0x0099B510 / operator= 0x0099B7D0, ConvertToCharString 0x0099B2C0, CCharString(const char*, long) 0x0099EBF0 / ()
@@ -146,7 +146,9 @@ public:
     {
         return GetHeader() + CCharString("DOWNLOAD_CLAN_LIST\r\n", -1) + user + "\r\n" + SessionID + "\r\n";
     }
+    private:
     ENetworkSuccess DownloadListOfMyClans();
+    public:
 };
 
 #pragma auto_inline(off)

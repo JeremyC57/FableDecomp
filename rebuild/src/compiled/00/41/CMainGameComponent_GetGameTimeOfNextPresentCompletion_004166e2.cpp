@@ -1,3 +1,4 @@
+// Leaf: ?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ
 // CMainGameComponent::GetGameTimeOfNextPresentCompletion() -- predict when the next present completes (the vsync timer's last vsync time plus the pending vsync count times the refresh period), never earlier than now (or exactly now when the immediate-present flag is set), as game time
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004166E2, length 104 bytes.
@@ -34,10 +35,12 @@ extern bool g_immediatePresent;                    // 0x013B86A4
 class CMainGameComponent { public:
     unsigned char _pad00[0x60];
     double        m_gameTimeBase;                  // +0x60
-    double GetGameTimeOfNextPresentCompletion();
+    protected:
+    double GetGameTimeOfNextPresentCompletion() const;
+    public:
 };
 
-double CMainGameComponent::GetGameTimeOfNextPresentCompletion()
+double CMainGameComponent::GetGameTimeOfNextPresentCompletion() const
 {
     CVsyncCallbackTimerInfo info = ((CDisplayDevice*)GPDisplayManager)->m_pVsyncTimer->GetInfo();
     double t = (info.CPUFrameCount - info.GPUFrameCount + 1) * ((CDisplayDevice*)GPDisplayManager)->m_refreshPeriod + info.GPUTimeStamp;

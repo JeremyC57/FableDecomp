@@ -54,7 +54,10 @@ public:
     ENetworkSuccess UploadPlayerScores();
     public:
             // 0x00561450
-    ENetworkSuccess DownloadListOfMyClans();         // 0x005615C0
+    private:
+    ENetworkSuccess DownloadListOfMyClans();
+    public:
+         // 0x005615C0
     ENetworkSuccess DownloadMyClansLogos();          // 0x00561980
     private:
     void ChooseAClan();

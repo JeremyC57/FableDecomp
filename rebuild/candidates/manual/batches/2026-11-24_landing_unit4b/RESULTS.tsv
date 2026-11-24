@@ -1,0 +1,3 @@
+address	verdict	old	new	reason
+004166e2	ACCEPT	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QAENXZ	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00417001	ACCEPT	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@QAENXZ	?GetGameTimeOfNextPresentCompletion@CMainGameComponent@@IBENXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 004166e2

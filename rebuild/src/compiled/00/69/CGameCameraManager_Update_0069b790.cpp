@@ -28,7 +28,10 @@ class CGameCameraManager { public:
  NCameraModes::CBase* CurrentMode;void* CurrentInfo;void* PendingMode;void* PendingInfo;
  bool NewAutoMode,ObservedThingInMelee,ObservedThingInBuilding;unsigned char Align;
  void* AvailableCamPoints[1];bool SingleCut;unsigned char ControlsAndScripts[0x4f];CObservedThingPointer PObservedThing;
- void UpdatePrepareFlags(); //0069B6F0
+ private:
+ void UpdatePrepareFlags();
+ public:
+ //0069B6F0
  void UpdateMode(); //0069A2A0
 private:
  void UpdateCleanupFlags(); //00697C60 ?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ (Ego_r / FableWin, private; NF93 q11378)

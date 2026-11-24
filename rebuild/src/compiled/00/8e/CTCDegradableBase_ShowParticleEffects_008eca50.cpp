@@ -1,6 +1,6 @@
 // CTCDegradableBase::ShowParticleEffects(long) -- create the stage's smash particle thing at the parent's position and attach its emitter to the parent (bone 8)
 // Retry 10b (accessor sweep, FIXES B-4/B-5): the parent thing is read through an inline accessor; the plain member read gives the parked register difference.
-// Leaf: ShowParticleEffects
+// Leaf: ?ShowParticleEffects@CTCDegradableBase@@AAEXJ@Z
 //
 // Retail 0x008ECA50, 100 bytes (`ret 4`). Ego_r.pdb `?ShowParticleEffects@CTCDegradableBase@@AAEXJ@Z`.
 // Callees: CThing::GetPos() const @ 0x004C73D0, the global Create(long, const C3DVector&, bool)
@@ -41,7 +41,9 @@ class CTCDegradableBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     CThing* GetParentThing() const { return ParentThing; }
+    private:
     void ShowParticleEffects(long particleDefIndex);
+    public:
 };
 
 void CTCDegradableBase::ShowParticleEffects(long particleDefIndex)

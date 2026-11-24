@@ -189,7 +189,10 @@ private:
     void UpdateTorchTasks();                    // 0x00659625 Ego_r/FableWin ?UpdateTorchTasks@CTCVillage@@AAEXXZ (private; NF239 CODEXP27 L45, was QAE)
     void UpdateHornTasks();                     // 0x0065BE6C Ego_r/FableWin ?UpdateHornTasks@CTCVillage@@AAEXXZ (private)
 public:
-    void SetEnemyToHeroStatus();                // 0x0065A852
+    private:
+    void SetEnemyToHeroStatus();
+    public:
+                // 0x0065A852
     void RemoveTimedoutCrimes();                // 0x0065A7A9
     void UpdateMirroredCrimeData();             // 0x0065C5BB
     bool IsCurfewTime() const;                  // 0x00658DB3 Ego_r/FableWin ?IsCurfewTime@CTCVillage@@QBE_NXZ

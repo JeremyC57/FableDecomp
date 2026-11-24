@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
 // CTCVillage::SetEnemyToHeroStatus() -- through the village thing's enemy component (interface 73): add the hero as an enemy while the village stance is hostile (1) and the hero is alive, else remove the hero from its enemies
-// Leaf: SetEnemyToHeroStatus
+// Leaf: ?SetEnemyToHeroStatus@CTCVillage@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad24[0x20] removed.
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe @ 0x0065A852, 156 bytes; size TU (unaligned entry): `optimize("s",on)`.
@@ -54,7 +54,9 @@ class CTCVillage : public CTCBase { public:
     CThing*       ParentThing;                  // +0x04
     unsigned char _pad_0x08[0x90];
     long          StanceToHero;                 // +0x98 EVillageStanceToHero
+    private:
     void SetEnemyToHeroStatus();
+    public:
 };
 
 void CTCVillage::SetEnemyToHeroStatus()

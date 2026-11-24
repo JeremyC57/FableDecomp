@@ -1,6 +1,6 @@
 {
   "catalog_rows": 57146,
-  "known_functions": 57848,
+  "known_functions": 57850,
   "original_functions": 49567,
   "landed_known": 57146,
   "landed_original": 48950,
@@ -16,14 +16,14 @@
   "missing_source": 0,
   "matched_bytes": 9245822,
   "matched_bytes_genuine": 9245343,
-  "unlanded_bytes_estimate": 802692,
+  "unlanded_bytes_estimate": 803300,
   "split": {
     "game": {
-      "known": 52346,
+      "known": 52348,
       "landed": 51700,
       "landed_genuine": 51699,
       "matched_bytes_genuine": 8599867,
-      "unlanded_bytes_estimate": 781566
+      "unlanded_bytes_estimate": 782174
     },
     "lionhead_library": {
       "known": 4241,

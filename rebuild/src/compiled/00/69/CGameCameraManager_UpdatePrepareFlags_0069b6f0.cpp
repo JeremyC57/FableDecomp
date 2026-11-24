@@ -1,3 +1,4 @@
+// Leaf: ?UpdatePrepareFlags@CGameCameraManager@@AAEXXZ
 // CGameCameraManager::UpdatePrepareFlags() -- per-frame camera bookkeeping: when the current mode reports itself done, fall back to automatic (or re-push the manual) mode; update the melee and building camera modes; and with no script module pending, count down ScriptedCameraRemoveTimer while the current script module is finished and no subtitle waits for a click, releasing scripted control when it runs out
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069B6F0, length 158 bytes.
@@ -59,7 +60,9 @@ class CGameCameraManager { public:
     void UpdateObservedThingInBuilding();
     public:
                                // 0x0069B650
+    private:
     void UpdatePrepareFlags();
+    public:
 };
 
 void CGameCameraManager::UpdatePrepareFlags()

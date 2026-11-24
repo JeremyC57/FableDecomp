@@ -10610,7 +10610,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13450	nf320	00463bdb	?Copy@CCombatAbilityBlockUnarmedAttackDef@@UAEXPBVCDefClassBase@@@Z	no_binding	
 13451	nf321	006e7270	?EndFadeScreen@CGameScriptInterface@@IAEXXZ	partial	?CGameScriptInterface_DoFade@@YIXPAVCGameScriptInterface@@@Z || ?Run@T@@QAEXXZ
 13452	nf321	009cbb80	?GetAlignment@CBankFile@@QBEKXZ	partial	?GetAlignment@CBankFileAsync@@QBEKXZ || DrawGetEnvironment
-13453	nf321	004fede0	?UnloadLevel@CWorldMap@@IAEXJ@Z	partial	?UnloadLevel@CWorldMap@@QAEXJ@Z || ?UnloadLevel@CWorldMap_Methods@@QAEXJ@Z || UnloadLevel
+13453	nf321	004fede0	?UnloadLevel@CWorldMap@@IAEXJ@Z	partial	?UnloadLevel@CWorldMap_Methods@@QAEXJ@Z
 13454	nf321	00b2fbf0	?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z	partial	?M@C_00b2fbf0@@QAEXK@Z
 13455	nf321	006e71f0	?Rest@CGameScriptInterface@@IBEXM@Z	partial	?SetQuestProgress@CGameScriptInterface_Methods@@QAEXM@Z || ?applyFloat@CGameScriptInterface_Methods@@QAEXM@Z
 13456	nf323	0062d7d0	??_GCCreatureAction_StartSneaking@@UAEPAXI@Z	no_binding	

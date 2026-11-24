@@ -35,7 +35,10 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     public:
                          // 0x009492A0
     bool WalkToPoint(C3DVector* pPoint, CRightHandedSet* pOrientation);   // 0x0094A6D0
-    bool PayMoney();                            // 0x0094A840
+    protected:
+    bool PayMoney();
+    public:
+                            // 0x0094A840
     protected:
     bool PayAtBar();
     public:
