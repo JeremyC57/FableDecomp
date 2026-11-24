@@ -97,3 +97,19 @@ So retail's DECISION SET = ~CTimer by the stock frequency rule + ~MovieBase expa
 proves the decisions, not which side's cost causes them (stock+forced-MovieBase and S15+forced-CTimer both match). Counterexample in
 the same object: 0x00DC93F0 retail CALLS ~MovieBase 0x006E7B80 at its helmet-arm exit, so 'MovieBase always inline' is not a TU-wide fact.
 c2 penalty term (0x1078D1DA): pen = (sz/2)*(g+a)/9000 only when sz > S and g+a > 9000 (g = caller growth counter 0x10882B58).
+
+## B24B9 (2026-11-24): FableWin destructor texts (/Od, debug build) = ours -- no c1 change from a header text
+- ~CScriptGameResourceObjectMovieBase 0x02467C90: implicit (NO vptr store); EH frame; ~CCountedPointer<MovieBase> (0x02468220 = `{ ReleaseData(); }`)
+  on +8, then ~CScriptGameResourceObjectBase. ~CScriptGameResourceObjectBase 0x02467C20: user-written (vptr store 0x0421A87C, then
+  ~CBaseObject). ~CTimer: see above (hash-equal). So the MovieBase / GROBase / CTimer dtor texts in our headers are FableWin's.
+- CCountedPointer<T> in FableWin carries debug asserts (int3 arms) in ReleaseData / ShareData / operator= (invariant `(Data&&Info)||(!Data&&!Info)`);
+  sz in c2 is post-optimisation: FableWin's release text (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA: Data-first, ShareData re-reads Info) and an
+  explicit user STB operator= leave ??4CScriptGameResourceObjectScriptedThingBase at sz 80 / c1 72 (traced in ../00dc93f0/b9).
+- c2 score read from c2.dll 0x1078D2EC..0x1078D35A: for f <= 1, sc = (c1*1e8/f_raw + 6*c1) / 7 (integer), expand iff sc < 74; c1 < S+5 (S=9)
+  takes the small-function path 0x1078F15A instead.
+- LANE LEVER (new): FableWin shows the VC6 for-scope prolog (`xor r,r; je body; jmp after`) at the head of `for` loops. Spelled
+  `if (false) {} else for (...)` it changes c2's block frequencies (x0.6 after each such loop in 0x00DC93F0; x0.5 for 0x00D0D910's main
+  loop) with no byte of its own. Check every quest-script row's FableWin copy for it before any frequency / inline-cap work.
+- CORRECTION to the brief's line "at /O2 it [the for-scope macro] has no effect" (B24B9): it emits no bytes of its own, but it changes c2's
+  static block frequencies and so inline decisions (0x00DC93F0: both loops x0.6 each after the loop -> the helmet ~MovieBase called as in
+  retail; 0x00F1EED0: with FableWin's gift loop the three inline_depth(0) devices become unnecessary). Spell FableWin's loops exactly.

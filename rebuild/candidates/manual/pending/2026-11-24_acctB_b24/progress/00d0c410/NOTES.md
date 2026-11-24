@@ -47,3 +47,16 @@ MovieBase-v-~CTimer conflict. Not worked further by B24B6 (context).
   All four NEQ come from the shared declared-only CP<Movie> dtor (53 landed rows) and `~CIsThingAlive() {}` with declared
   ~CScriptThing (78 landed rows emit the same copy, owner row 0x00E241B0 landed): HEAD debt under EXTRA_RULES 2026-11-21, not new.
   The declared-only CP<Movie> is REQUIRED for the leaf (a visible CP dtor makes ~MovieBase sz 66 and expands the CP at hot sites; B24A4).
+## B24B9 (2026-11-24) -- FableWin read (debug build), no decision moves
+- FableWin Main 0x036A66E0 (../00dc93f0/b9/fw_036a66e0.txt): no asserts, no for-scope prolog. Locals (FableWin.pdb, register_scripts
+  module): NotAttacked, seh_me, PsstAmount, HasPass, TalkedTo, _Fail_Val, ForgeTimer, Conversation x2, speech_movie / PauseMyEntitiesPlease x2,
+  answer x2 = ours. Two text differences found by aligning /Od call sequences (b9/ours_seq.txt v b9/fw_seq.txt):
+  (1) both answer waits are `long answer; while (!((answer = Game.MsgIsQuestionAnsweredYesOrNo()) >= 0)) { NSF; CHECK }` (FableWin
+      0x036A7902: call slot 0x9C at the loop head, store, `setge`, jne exit) -- ours calls it before the loop and at the loop end;
+  (2) tail `while (true)` (FableWin `mov edx,1; test`) instead of `for (;;)`.
+  b9/q0.cpp (1) and b9/q1.cpp (1)+(2) on a1 (stock): DIFFER(5304v5373) 112 hunks = a1 bytes; traced MB/~CTimer f identical to a1.
+  Keep q1's spelling as the FableWin-evidenced text. MovieBase decisions unchanged (f .0000..0408, called; retail expands all).
+- b9/c1q.cpp = differ/ (S15 best c1 + FableWin answer loops + while(true) tail): DIFFER(5293v5373) 2 hunks, unchanged bytes; previous differ kept as differ/00d0c410_pre_b9.cpp.
+- B24B9 calls + conditional-jump alignment (../00dc93f0/b9/cjalign.py on b9/_fwsize/c1q.obj v FableWin): identical except the trailing EH funclets the script also reads (ours only): Main's CFG is FableWin's.
+- B24B9 swap check: differ/00d0c410_pre_b9.cpp v b9/c1q.cpp (/d2inlS15) RAW-EQUAL (5293); a1 v b9/q1.cpp (stock) RAW-EQUAL (5304)
+  (b9/*.obj). The answer-wait spelling `while (!((answer = X()) >= 0))` is read off a VC10 /Od idiom (setge): inferred, not proven text.

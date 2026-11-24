@@ -81,3 +81,46 @@
   DIFFER(4503v4507) -- the offset also flips ~100 other decisions in Main AND in its callees' bodies (map/STB/CP helpers; the hook is
   TU-wide, not Main-only); 11000..14000: 4376..4068 b. So a UNIFORM larger caller size does not reproduce retail; a Main-only offset
   (hook gated to Main's compile) is the untested refinement. objs/txt in b8/goff/.
+## B24B9 (2026-11-24) -- FableWin read (debug build): FOR-SCOPE MACRO on both loops; new evidenced base b9/f1.cpp
+- FableWin Main 0x03840220 (annotated listing b9/fw_main.txt, tool b9/fwann.py): NO asserts (no DoErrorMessage / int3 in Main). Statement
+  order = ours. Differences: (a) both `for` loops open with the VC6 for-scope prolog `xor reg,reg; je body; jmp after` (0x03840793 i loop,
+  0x03840B88 j loop) = `#define for if (0) {} else for` (GOTCHAS 442); (b) tail = `if (term) return; while (true) { NewScriptFrame(); if (term)
+  return; } if (term) return;` (b9/f3: same bytes, same f -- irrelevant).
+- b9/f1.cpp = r0 + `if (false) {} else for` on BOTH loops: DIFFER(4269v4507) 212 hunks BUT the ~MovieBase map is now retail's (helmet arm
+  f .0417 CALLED, armour .0556 expanded; whole else block and collected_all block x0.36 v r0 -- inside B24B4's window r .302..403).
+  Only new wrong decisions: the three ??4CScriptGameResourceObjectScriptedThingBase (implicit STB operator=, c1 72) sites in the collected_all
+  block (2) and else block (1) at f .7910, sc 74 = threshold (expand needs sc < 74) -> called. c2 override (b9/inl_force2.py,
+  FORCE_SPEC='??4CScriptGameResourceObjectScriptedThingBase@@|0.7910|1') of just those three on f1 -> RELOCATION_MATCH (b9/f1_stb.obj).
+  So f1 is the evidenced base: do NOT revert to r0 because fg says 212 v 18 hunks.
+- Macro on one loop only (f4 j, f5 i): bytes = r0 (18 hunks). Both needed.
+- f6 (f1 + FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA = FableWin's CP text: Data-first release, ShareData re-reads Info): same 4269 bytes.
+- sc model (fit from traces, f < 1): sc ~= c1 * (0.849 + 0.143/f); expand iff sc < 74. ??4STB c1 72 needs f > ~.80 (have .7910), or c1 <= 71.
+- FableWin.pdb locals (b9/FableWin.4k.pdb = repack4k of the lane copy; `llvm-pdbutil dump -symbols -modi=11`, module register_scripts.obj;
+  b9/fw_mod11_syms.txt line 103766): this, Triggered, first_time, _Fail_Val; loop-body block: `bool cut_scene` (-16; FableWin stores false
+  at 0x0384078F before the i loop, true at 0x03840B66 after the terminate check in `if (!first_time)`; never read = dead local); both loop
+  counters are `int count` (separate blocks); other names = ours. b9/c2.cpp = f1 + cut_scene + count: same bytes and same f as f1.
+- c2 score (read from c2.dll 0x1078D2EC..0x1078D35A, f <= 1): sc = (c1*1e8/f_raw + (k-1)*c1)/k, k=[0x10881994]=7, expand iff sc < T=74.
+  ??4STB c1 72 expands iff f > .8372; helmet ~MovieBase c1 19 is called iff f <= .0470. Window (b9/win.py over the whole trace): a
+  scale x of the f1 frequencies in [1.059, 1.128) flips ONLY the three ??4STB sites (no other decision in 0.85..1.2) -> RELOCATION_MATCH.
+  i.e. retail's frequencies are f1's x ~1.06..1.13 (whole function, or only the code after the j loop), or ??4STB's c1 is <= 71.
+- ??4STB sz 80 / c1 72 is robust to text: explicit user operator= (b9/hdrA, x1) and the FableWin CP text (f6) leave sz 80, c1 72.
+- Cross-row: ChickenMaster 0x00E64FB0 at stock (FORCEINLINE_ASSIGN removed, b9/xr) traces its ??4STB at f .25 sc 102 (retail expands):
+  that row's forced assign is NOT a 1-point cost fact; its landed text has no for-scope prolog (`for (;!T;NSF)`): check FableWin there.
+- Each macro alone scales the code after its loop x0.6 (f4/f5 traced); both = x0.36 v r0.
+- Lessons (B24B9, for the next agent): (1) read FableWin FIRST: a VC6 for-scope prolog (`xor r,r; je; jmp after`) at a `for` head is
+  source text (`if (false) {} else for`) and moves c2 frequencies with no bytes of its own (here x0.6 per loop: after-loop factor 15/16 ->
+  9/16); (2) align /Od call sequences (fwsize obj + b9/objcalls.py v FableWin) to find statement-level differences cheaply.
+- Exhausted on the last notch (all traced, f/c1 unchanged): comparison spellings (`== true`, `== false`: h1..h3), macro spellings
+  (`if (false) ;`, `if (0) {}`, `if (0) ;`, real #define: k1/k3/m1/m2), FableWin tail (f2), cut_scene/count (c2), CP text (f6),
+  explicit / `inline`-keyword STB operator= (b9/hdrA x1/x2), /Z7, ??4STB compiled earlier in the TU (ctx1), QFE 4035 compiler (grade).
+  /Od calls + conditional jumps of c2.cpp align 1:1 with FableWin except the dead tail: Main's CFG IS FableWin's.
+  Retail's own out-of-line ??4STB 0x008ABD10 = our COMDAT byte for byte (reloc-masked) -> same post-opt size. So the one notch
+  (sc 74 v needed <= 73; f .7910 needs >= .8372 or c1 <= 71) is NOT in Main's text or ??4STB's text: ESCALATE.md (compile context
+  / decision-set proof). differ/ = b9/c2.cpp (FableWin text). Doubt: `bool cut_scene` is a dead local (FableWin-evidenced, byte-neutral):
+  the lander may prefer to drop it.
+- B24B9 corrections (advisor review): override proof re-run on differ/00dc93f0.cpp itself -> RELOCATION_MATCH (b9/differ_stb.obj).
+  The QFE 4035 grade (b9/g6.log) did NOT show which compiler ran (fg has no banner; the documented switch is --qfe): strike it from the
+  exhausted list. cut_scene / count / the for-scope spelling are INFERRED from FableWin (later VC10 build): structure evidence only.
+- B24B9 device check under the 3-site override: dropping the CSpawnedFunc1 inline_depth(0) device (b9/d1) -> DIFFER(4590v4507) (still
+  needed); dropping the FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR opt-in (b9/d2) -> RELOCATION_MATCH (b9/d2_stb.obj) and
+  the same stock bytes (DIFFER(4269v4507) 212). differ/ = b9/d2.cpp now (one opt-in fewer); previous = differ/00dc93f0_b9_c2.cpp.

@@ -241,3 +241,51 @@
 - (B24C11, correction) "the base/index order follows IL temp numbering" above is a READING, not measured (no c2 trace was run); the
   measured facts are only which texts flip which operand pairs. Constant guard `if (0) return;` before the loop (FableWin's
   `xor ; je ; jmp end`): inert (c11/gd0, 25). Declaring start/end before vert or at function scope on the rwb scaffold (dc1/dc2): no flip.
+## B24C12 (2026-11-24)
+- Lessons applied: B24A7 (c2 orders commutative operands by key need|count|hash, temps hash 64n); lk comparator kit; B24C11 barrier diagnostics.
+- Tools (c12/): g.sh (grader, = c11/g.sh -> c12/), il.sh <src> (B24A7 dump2 post-opt IL -> c12/il/<v>.pp + .json), symnum.py <v> lo hi
+  (real symbol numbers [sym+1Ch] of k3 temps + first IL line), ycse*.py / ysite.py (lk --syms allocation sites), gdb/batch.py (temp-maker
+  0x107615BC call chains). lk logs: c12/lk_rf0.json, lk_u1.json (+ show dumps lk_*_all.txt). LANE GOTCHA: two fg grades of the SAME address
+  in parallel share $S/wine/q/<addr> and corrupt each other (nr0 ERROR, m40/n40 re-graded serially) -- grade serially.
+- PDB LOCAL RECORDS FOUND: B24B's repacked FableWin.pdb ($S/w22/b24b/00dc93f0/b9/FableWin.4k.pdb, llvm-pdbutil works on it), module 936
+  `Debug\Engine_landscape_tesselator.obj`, dump c12/fw_m936.txt (lane only). TesselateEdge params: strip, strip_x, strip_y,
+  is_left_right_edge, is_right_top_edge, opposite_edge, pindex; locals: adj_strip_index, engine_map, world_x, width, height, adj_strip,
+  last_new_edge_vertex, world_y, strip_size; block {n}; block {vert0_main_axis_pos, vert0, vert1, vert1_main_axis_pos}; block
+  {poly_needs_hiding, duplicate_fan_vertex}; block {old_pos; block {new_vertex}}; block {new_vertex}. Records are in frame-offset order
+  (ascending), so they give NO declaration order. c12/ren.py applies the names: c12/n0.cpp = byte-identical (25 blocks) -> differ/ now
+  carries the PDB names (mapping: x/y -> strip_x/strip_y, vertical -> is_left_right_edge, flip -> is_right_top_edge, side -> opposite_edge,
+  indices -> pindex, length -> strip_size, map -> engine_map, adjacent_strip/index -> adj_strip/adj_strip_index, previous ->
+  last_new_edge_vertex, i -> n, vert -> vert0, next -> vert1, start/end -> vert0/vert1_main_axis_pos, found -> poly_needs_hiding, fan ->
+  duplicate_fan_vertex, pos -> old_pos, added -> new_vertex). The water / sea records are in the same dump (lines 5055 / 5585).
+- MECHANISM (measured, c2 traces):
+  * start's SIB order = hash compare of two temps numbered in ONE batch after site 5216 (kind-15 temp maker 0x107615BC): rf0 (barrier) Data
+    1496 < t 1497 -> t first (ours); u1 (__assume, retail loop top) t 1498 < Data 1508 -> Data first (retail).
+  * The batch numbers rf0's Data first because at vert's add (pass b site 2938, L15) the Data operand is a FORWARDED CSE temp (t143=>,
+    key 01030158) that beats i*20 (01020298) on COUNT; in u1 (site 3132) vert's Data operand is a plain IND over symbol s294 (key 0002c022)
+    that loses on NEED. Not hash-decided -> no symbol-number shift can flip it. In rf0 vert and start share ONE Data temp (redefined after
+    the barrier); in u1 vert's load and start's load go through different base symbols (two separate Data loads, = retail).
+  * f2 (unused vert1) shifts every temp +32; a mod-1024 wrap would need +551 -> the wrap route is closed (would be a count fit).
+  * So retail's form = one inlinee value at the vert site stays an UNFORWARDED symbol (s294), giving the second Data load and Data-first
+    with no barrier. Barrier scaffolds (rf*) are t-first by construction: do not judge candidates on them.
+- Closed (diagnostics): FableWin's three asserts spelled as __assume (c12/as1 25, as2 89, as3 / as3o / as23 141); 40 dead-arm asserts at
+  the top (m40) or in the loop before start (n40): 25 = no effect.
+- (B24C12) The FableWin constant guard `xor r,r ; je <loop init> ; jmp <end>` sits before EVERY `for` loop and before no `while` loop
+  (TesselateEdge 0x02CBCDDD, water 0x02CC15A1, water FindFirstWaterAdjacentVertex 0x02CC512D after the first GetEdgeStrip; none in
+  FindVert / FindWaterVert's while loops): it is the VC6 for-scope macro `#define for if (0) ; else for`. With `if (0) return;` there,
+  VC7.1 /Od FindFirstWaterAdjacentVertex = FableWin 89i/250b SAME (was 86i/241b). At /O2 the macro is inert: row 1 c12/fa (after the
+  includes) / fb (before them) 25 = n0; water 16 / sea RELOCATION_MATCH (../00be4660/c12/w_for, s_for). Not a lever.
+- (B24C12) Lesson: when the barrier reading says "something between A and B", trace which IL operand differs (lk show on a probe that
+  reproduces retail, same line numbers) before sweeping statement spellings: here the operand was an inline `_this` that stayed
+  unforwarded, and only __assume / volatile do that.
+## Exact state at hand-back (B24C12)
+- differ/00be3970.cpp = c12/n0.cpp (PDB local names), DIFFER(2392v2390), 25 dd blocks, overlay hdr/. No payload. Mechanism and owner
+  question in ESCALATE.md (B24C12). Next idea if any: find a c2 rule that keeps an inline `_this` unforwarded without __assume (read c2's
+  copy-forwarding of inline params, symlog allocation 0x1076F08C, n0 v nu2 lka sites 2913..2938) -- only worth it with a candidate text.
+- (B24C12, corrections) See ESCALATE.md B24C12 corrections: the __assume effect is positional (nu1 before vert0: no reload); s294's owner
+  is a reading; next idea = pre-CSE IL dump of n0 v na1. Diagnostic: without the operator[] arm n0x = na1x = 35 blocks.
+- (B24C12) The for-scope macro is MEASURED, not only `if (0) return;`: `#define for if (0) ; else for` on w_full gives FindFirst 89i/250b
+  SAME and adds +3i/+9b to every for loop (water TesselateEdge 310i -> 313i) -- every fwsize comparison of a function with a `for`
+  loop is +3i/+9b short unless the macro is defined. Coordinator: lane-wide fwsize note.
+- (B24C12) Landscape helper PDB names applied (fw_m936 lines 3083..3127): AddFanBaseVertex {vert_index, new_vert, vert, fan_vert},
+  AddDuplicateEdgeVertex {vert_index, new_vert, vert}, AddCompositeVertex params (strip, index, adj_strip, adj_index) locals {avert,
+  vert0, vert1, vert_index, new_vert}: c12/n1.cpp = byte-identical (25) -> differ/ = n1.

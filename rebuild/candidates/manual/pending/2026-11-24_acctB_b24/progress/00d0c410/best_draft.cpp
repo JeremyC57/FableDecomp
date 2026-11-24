@@ -148,11 +148,10 @@ void NScript::CQ_BanditCampBossBattleScript::CBanditForger::Main()
                     if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                 }
                 Game.GiveHeroYesNoQuestion("TEXT_QST_009_FORGER_CHAT_QUESTION","TEXT_OBJECT_HERO_ANSWER_YES","TEXT_OBJECT_HERO_ANSWER_NO","",true);
-                long answer=Game.MsgIsQuestionAnsweredYesOrNo();
-                while (answer<0) {
+                long answer;
+                while (!((answer=Game.MsgIsQuestionAnsweredYesOrNo())>=0)) {
                     Game.NewScriptFrame();
                     if (IsActiveThreadTerminating()) return _Fail_Val.Return();
-                    answer=Game.MsgIsQuestionAnsweredYesOrNo();
                 }
                 if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                 if (answer==1) {
@@ -229,11 +228,10 @@ void NScript::CQ_BanditCampBossBattleScript::CBanditForger::Main()
             else {
                 if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                 Game.GiveHeroYesNoQuestion("TEXT_QST_009_FORGER_SECOND_QUESTION","TEXT_OBJECT_HERO_ANSWER_YES","TEXT_OBJECT_HERO_ANSWER_NO","",true);
-                long answer=Game.MsgIsQuestionAnsweredYesOrNo();
-                while (answer<0) {
+                long answer;
+                while (!((answer=Game.MsgIsQuestionAnsweredYesOrNo())>=0)) {
                     Game.NewScriptFrame();
                     if (IsActiveThreadTerminating()) return _Fail_Val.Return();
-                    answer=Game.MsgIsQuestionAnsweredYesOrNo();
                 }
                 if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                 if (answer==1) {
@@ -289,7 +287,7 @@ void NScript::CQ_BanditCampBossBattleScript::CBanditForger::Main()
         Game.GiveThingBestEnemyTarget(Me,Game.GetHero());
     }
     if (seh_me.IsValid()) seh_me.Release();
-    for (;;) {
+    while (true) {
         Game.NewScriptFrame();
         if (IsActiveThreadTerminating()) return _Fail_Val.Return();
     }

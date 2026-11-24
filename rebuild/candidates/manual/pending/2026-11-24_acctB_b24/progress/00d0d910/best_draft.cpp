@@ -1,6 +1,5 @@
 // NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::Main() -- second camp gate guard
-// Grade: DIFFER(4672v4752) -- Frame0x10c and9movie cleanup sites restored;2native hot inlineTimer cleanup blocks absent under diagnostic noinline destructor. Original timerbody+S15 expands all sites; S10..14 preserves timer split but calls movies. Narrow per-callee expansion split unresolved.
-// Flags: /d2inlS15
+// Grade: DIFFER(4544v4752) stock flags, 117 hunks -- conflict-only (B24B8 proof of the DECISION SET, cause open): with stock flags, forcing all 21 implicit ~CScriptGameResourceObjectMovieBase decisions to expand (ours: called, c1 19 > 13) gives RELOCATION_MATCH; ~CTimer then follows the stock frequency rule (ESCALATE.md). r0 (S15 + auto_inline(off) ~CTimer, 36 hunks) is a diagnostic, b8/differ_prev_r0_autoinline.cpp.
 // Leaf: ?Main@CGate2Guard1@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
 // Retail: 0x00D0D910, 4752 bytes, thiscall.
 // Identity (proven, two sources): Ego_r.pdb and FableWin.pdb name sets hold ?Main@CGate2Guard1@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ;
@@ -50,13 +49,7 @@ inline NScript::CIsThingAlive::~CIsThingAlive() { }
 extern CDefPointer<const CScriptDef> pGlobalScriptDef;                  // 0x0143E90C
 extern CGameScriptInterfaceBase* pDSTGame;                              // 0x0143E8F8
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
-#ifdef _MSC_VER
-#pragma auto_inline(off)
-#endif
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-#ifdef _MSC_VER
-#pragma auto_inline(on)
-#endif
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
 FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #include "engine/CSpawnedFunc2.h"
@@ -84,7 +77,7 @@ void NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::Main()
     MoanTimer = 0;
     bool TalkedTo = false;
     long HitNumber = 0;
-    for (; !false; Game.NewScriptFrame()) {
+    if (false) {} else for (;; Game.NewScriptFrame()) {
         if (IsActiveThreadTerminating()) return _Fail_Val.Return();
         if (!ParentClass.Gate2Open) {
             if (IsActiveThreadTerminating())
