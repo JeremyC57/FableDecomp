@@ -93,7 +93,7 @@ first combination pass's `_M_insert_overflow` site scores 68 v the default 74) a
 landed 0x01219F00` (a compiler-generated static initializer symbol) plus RELOC_NAME 0x0129BA3C (label spelling). Staged only so the work is
 durable; the agent is still on it. Do not land until this section says READY.
 
-## 0x00839940 CThingGameObject::OnHit: READY, with an Inferred item for the lander (B24B5..B24B7, re-verified 2026-11-24)
+## 0x00839940 CThingGameObject::OnHit: NOT READY -- being re-texted (Account A, 2026-11-24: FableWin.exe 0x027EC280 has ELEVEN recoverable asserts; B is replacing the five fitted ones with them; A's NF341 fixes the GetDef<CMaterialDef> copy that holds the row). Earlier status: (B24B5..B24B7, re-verified 2026-11-24)
 RELOCATION_MATCH PASS, stock flags, strict vland on overlay `hdr/00839940/` (= the agent's `hdrf`, re-based by the coordinator onto today's
 CThing.h: it now uses the LANDED `FABLE_RETAIL_CTHING_ISDEAD_DIRECT` instead of the agent's identical `ISDEAD_BITFIELD`, and the one edited line
 is the existing `#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT` turned into `#if <ONHIT && ONHIT_HASTC_CLASSTYPE> ... #elif <ONHIT>`: default

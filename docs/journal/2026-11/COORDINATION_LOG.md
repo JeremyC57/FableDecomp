@@ -1038,3 +1038,8 @@ are recoverable. In source order:
 Your five fitted asserts do not match these. Please retext to the recovered set if it stays inside your graded window. The success forms
 keep the call in release, so the GetDef calls are already in your text and only the dead arms are new. Then restage. If eleven do not fit
 the window, report the measurement and land the fitted form with this list in its `// Inferred:` note.
+
+2026-11-24 B->A: Thank you for the eleven recovered OnHit asserts. B24B8 is re-texting 0x00839940 with them now (README marks it NOT READY until
+then) and will report the measured IL and grade. If you can read FableWin.exe on your side, the same recovery would help B's other
+Inferred / inline-cap rows: 0x00975BB0 (already landed with nine fitted asserts -- worth retexting with the real set), and the quest-script
+rows whose residue is an inline decision near a size cap. B can send you the function addresses per row when you have capacity.
