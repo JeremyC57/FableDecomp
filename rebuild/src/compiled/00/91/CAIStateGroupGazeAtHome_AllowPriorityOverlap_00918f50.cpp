@@ -1,4 +1,13 @@
-bool __fastcall CAIStateGroup_GazeAtHome_AllowPriorityOverlap()
+// Leaf: ?AllowPriorityOverlap@CAIStateGroup_GazeAtHome@@MAE_NXZ
+#define FABLE_RETAIL_CAISTATEGROUP_GAZEATHOME_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUP_GAZE
+#define FABLE_RETAIL_CAISTATEGROUP_GAZE_UPDATE
+#define FABLE_RETAIL_CAISTATEGROUP_GAZE_RTTI_DECLS
+#include "engine/CAIStateGroup_GazeAtHome.h"
+bool CAIStateGroup_GazeAtHome::AllowPriorityOverlap()
 {
     return true;
 }
+// Flatten route (flatten_pilot v5, NF330): CAIStateGroup_GazeAtHome_AllowPriorityOverlap -> CAIStateGroup_GazeAtHome::AllowPriorityOverlap, the RTTI-placed PDB member; class model: engine/CAIStateGroup_GazeAtHome.h opt-in FABLE_RETAIL_CAISTATEGROUP_GAZEATHOME_VIRTUAL_MODEL, FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_GAZE, FABLE_RETAIL_CAISTATEGROUP_GAZE_UPDATE, FABLE_RETAIL_CAISTATEGROUP_GAZE_RTTI_DECLS.

@@ -8,6 +8,36 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GAZEATHOME_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128FE7C (RTTI .?AVCAIStateGroup_GazeAtHome@@ : CAIStateGroup_Gaze), 16 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_GazeAtHome); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_GAZE, FABLE_RETAIL_CAISTATEGROUP_GAZE_UPDATE, FABLE_RETAIL_CAISTATEGROUP_GAZE_RTTI_DECLS.
+#include "engine/CAIStateGroup_Gaze.h"
+class CThingAICreature;
+class CThingBuilding;
+class CWorld;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_GazeAtHome : public CAIStateGroup_Gaze {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual bool AllowPriorityOverlap();                                  // slot 4 0x00918F50 ?AllowPriorityOverlap@CAIStateGroup_GazeAtHome@@MAE_NXZ
+    virtual void OnReplace();                                             // slot 10 0x009185F0 ?OnReplace@CAIStateGroup_GazeAtHome@@MAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x009189C0 ?IsRunnable@CAIStateGroup_GazeAtHome@@MAE_NXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x00918560 ?InitStateGroup@CAIStateGroup_GazeAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+    virtual CThingBuilding* GetOwner();                                   // slot 14 0x00919000 ?GetOwner@CAIStateGroup_GazeAtHome@@MAEPAVCThingBuilding@@XZ
+    virtual bool InsideAtNight();                                         // slot 15 0x00918F60 ?InsideAtNight@CAIStateGroup_GazeAtHome@@MAE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_GazeAtHome) == 0x30);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -25,5 +55,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(19, sizeof(CAIStateGroup_GazeAtHome) == 0x30);
 FABLE_STATIC_ASSERT_AT(20, offsetof(CAIStateGroup_GazeAtHome, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(21, offsetof(CAIStateGroup_GazeAtHome, f4) == 0x4);
+#endif // FABLE_RETAIL_CAISTATEGROUP_GAZEATHOME_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_GAZEATHOME_H

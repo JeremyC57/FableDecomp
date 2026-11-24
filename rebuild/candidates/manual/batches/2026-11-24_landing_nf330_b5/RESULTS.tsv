@@ -1,0 +1,5 @@
+address	verdict	old	new	reason
+00918f10	ACCEPT	?CAIStateGroup_GazeOutside_GetOwner@@YIHXZ	?GetOwner@CAIStateGroup_GazeOutside@@MAEPAVCThingBuilding@@XZ	objcheck ALL_EQ, MATCH PASS [route header]
+00918f20	ACCEPT	?CAIStateGroup_GazeOutside_AllowPriorityOverlap@@YI_NXZ	?AllowPriorityOverlap@CAIStateGroup_GazeOutside@@MAE_NXZ	objcheck ALL_EQ, MATCH PASS [route header]
+00918f50	ACCEPT	?CAIStateGroup_GazeAtHome_AllowPriorityOverlap@@YI_NXZ	?AllowPriorityOverlap@CAIStateGroup_GazeAtHome@@MAE_NXZ	objcheck ALL_EQ, MATCH PASS [route header]
+00918f60	ACCEPT	?CAIStateGroup_GazeAtHome_InsideAtNight@@YI_NXZ	?InsideAtNight@CAIStateGroup_GazeAtHome@@MAE_NXZ	objcheck ALL_EQ, MATCH PASS [route header]

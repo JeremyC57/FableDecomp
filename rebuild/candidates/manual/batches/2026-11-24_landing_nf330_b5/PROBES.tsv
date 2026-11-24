@@ -1,0 +1,4 @@
+class	vftable	verdict	slots	notes
+CAIStateGroup_GazeAtHome	0128FE7C	OK	retail=16 emitted=16 same=16 slot0_alias=0	
+CAIStateGroup_GazeOutside	0128FE34	OK	retail=16 emitted=16 same=15 slot0_alias=1	
+CAIStateGroup_Gaze	0128FDEC	OK	retail=16 emitted=16 same=15 slot0_alias=1	
