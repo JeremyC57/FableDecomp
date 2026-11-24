@@ -1,0 +1,2 @@
+00839940.obj site 0x0083a37b -> 0x006ea430 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+00839940_respell.obj site 0x0083a37b -> 0x006ea430 ?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z

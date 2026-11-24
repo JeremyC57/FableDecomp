@@ -1,0 +1,12 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+NEQ 0099a300 5 ??1CAFile@@UAE@XZ not referenced by the leaf
+NEQ 0042b144 108 ??$GetDef@VCDefClassBase@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z LEAF-REFERENCED
+EQ  0063f3a0 108 ??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z 
+EQ  006b2660 104 ??$GetDef@VCSoundThemeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCSoundThemeDef@@@@@Z 
+EQ  00440080 14 ?_M_clear@?$vector@JV?$allocator@J@std@@@std@@IAEXXZ 
+EQ  00cd2d0b 14 ??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ 
+EQ  00440990 216 ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z 
+EQ  005136b0 77 ??0?$vector@EV?$allocator@E@std@@@std@@QAE@I@Z 
+NEQ 00485ff3 50 ?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z not referenced by the leaf
+EQ  00514e20 77 ??0?$CArray@E@@QAE@I@Z 
+EQ  00826380 95 ??1CCachedFile@@UAE@XZ 

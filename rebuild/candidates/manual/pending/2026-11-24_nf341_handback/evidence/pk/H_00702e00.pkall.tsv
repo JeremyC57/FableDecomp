@@ -1,0 +1,13 @@
+# leaf ?GetAlpha@CThingObject@@IBEEXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	_fabsf
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	_atan2f
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?atan2@@YAMMM@Z
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	?fabs@@YAMM@Z
+NOADDR	NOADDR	-	-	pickany	78	-	n	n	?GET_ROUNDED_ANGLE@@YIMM@Z
+NOADDR	NOADDR	-	-	pickany	187	-	n	n	?GFGetUnsignedAngleDifference@@YIMMM@Z
+NOADDR	NOADDR	-	-	pickany	86	-	n	n	?GetAngleXY@C3DVector@@QBEMXZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?PeekEnvironment@CWorld@@QBEABVCEnvironment@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCThingObjectDef@@@@QBEPBVCThingObjectDef@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CDefPointer@$$CBVCThingObjectDef@@@@QBEABVCThingObjectDef@@XZ
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	?PeekDefinition@CThingObject@@IBEABVCThingObjectDef@@XZ

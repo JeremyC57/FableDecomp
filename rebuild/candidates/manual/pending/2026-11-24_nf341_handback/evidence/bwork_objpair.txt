@@ -1,0 +1,2 @@
+renames: {'?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z': '?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z'}
+ALL_EQ sections=267

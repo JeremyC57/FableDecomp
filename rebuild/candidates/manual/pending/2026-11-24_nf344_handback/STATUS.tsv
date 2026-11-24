@@ -1,0 +1,31 @@
+address	item	status	note
+00d45060	item1	skipped-held	lock held by NF343
+00ce7670	item1	skipped-held	lock held by NF343
+005414a0	item1	keep-flag	drop turns leaf-called _M_insert_overflow 0x00485DBC EQ->NEQ (flag repairs it)
+006116e0	item1	keep-flag	drop turns leaf-called _M_insert_overflow 0x00485DBC EQ->NEQ (flag repairs it)
+007e4b60	item1	keep-flag	drop turns leaf-called _M_insert_overflow 0x00485DBC EQ->NEQ (flag repairs it)
+0090e5d0	item1	keep-flag	drop turns leaf-called FindMostRecentMessage 0x0090EBE0 EQ->NEQ
+00b3fc40	item1	keep-flag	drop turns leaf-called PeekMapNormal 0x00B3F5E0 EQ->NEQ
+0091f140	item1	keep-flag	drop turns leaf-called GetAllThingsInRoughArea 0x00920200 EQ->NEQ (NF340 control showed '-' only because the copy had no address)
+00bd9ce0	item1	keep-flag	drop turns the non-leaf FreeVirtual copy 0x00BD9B90 EQ->NEQ; T114 is the owner's own flag
+00bda150	item1	keep-flag	drop turns the non-leaf FreeVirtual copy 0x00BD9B90 EQ->NEQ; T114 is the owner's own flag
+006c6040	item1	keep-flag	drop leaves copies' verdicts equal but rewrites the NOADDR ~list<CThingAICreature*> copy from the 62-byte body retail has (fold 0x004046B0) to a 5-byte jmp form; no gain
+00803d60	item1	keep-flag	no gain: both leaf-called NEQ copies stay NEQ without the flag (GetAllThingsInRoughArea 0x0080A550 changes 656->803 B, still NEQ); debt
+0064b1ac	item1	done-flag (batches/b2, decision D1)	drop /d2inlT59: object identical without it; vland HEAD/new RELOCATION_MATCH PASS; Codex p27 RESERVED.tsv still lists the row -> coordinator decides
+00e4aa00	item1	done-flag (batches/b1)	drop /d2inlT200: object identical without it; vland HEAD/new RELOCATION_MATCH PASS
+00e4fa20	item1	done-flag (batches/b2, decision D1)	drop /d2inlT69: object identical without it; vland HEAD/new RELOCATION_MATCH PASS; Codex p27 RESERVED.tsv still lists the row -> coordinator decides
+00b2c8e0	item1	done-flag (batches/b1)	drop /d2inlS100 /d2inlT200: leaf same; NOADDR resize(n) copy takes retail's 25-B body; vland HEAD/new RELOCATION_MATCH PASS; T3 nf283 names it in column 3 (land_scripted holds it unless released)
+007677e0	item1	done-flag (batches/b3, recommendation R1)	T59 -> T60: repairs leaf-reached 0x007696E0 / 0x007698C0, none broken
+00b47bc0	item1	done-flag (batches/b1)	T29 -> T39: repairs leaf-called 0x00B49DF0, none broken
+00afcc30	item1	done-flag (batches/b1)	/d2inlT1537 /d2inlS15 -> /d2inlT1537: S15 is a no-op (object identical); resize 0x00AFE910 stays NEQ debt (only T1537 removal repairs it and that breaks the leaf)
+00b03ca0	item1	done-flag (batches/b1)	/d2inlT1537 /d2inlS15 -> /d2inlT1537: S15 is a no-op (object identical); resize 0x00AFE910 stays NEQ debt
+00465c54	item1	no-flag-fix	S39 window S39..S43 keeps ~_Rb_tree 0x00451B07 NEQ; S44..S60 repair it but break clear 0x004512DA; S80 no gain; debt stays per copy
+0083f650	item1	no-flag-fix	S12..S20 equal to HEAD; S10 / no flag repair 3 copies but the leaf DIFFERs
+008ddad0	item1	no-flag-fix	T63..T69 equal to HEAD; T61 / T62 / no flag DIFFER
+009c4440	item1	no-flag-fix	T110..T160 equal to HEAD; T200 / no flag DIFFER (and break SetDirtyDiscError 0x009C3530)
+00a71910	item1	no-flag-fix	T58..T66 equal to HEAD; T55 and below DIFFER
+00b1f200	item1	no-flag-fix	T1157 / T1200 / T1537 / T2000, +S15 all equal to HEAD; resize 0x00AFE910 stays debt
+00b21e90	item1	no-flag-fix	S85 / S90 / S100 equal to HEAD (documented window S84..S100)
+00de8370	item1	no-flag-fix (B claim)	S14+T29 equal to HEAD; S13+T30/32/35 and S15+T29 DIFFER; measured read-only (Account B claim)
+00efa4f0	item1	no-flag-fix (B claim)	T38..T50 equal to HEAD (documented window T36..T50); measured read-only (Account B claim)
+census	item2	done	624 rows ELSEWHERE (121 exact Leaf, 77 self_symbols for a prefix/bare Leaf, 426 self_symbols with no Leaf line), 0 non-anonymous SPLIT, 26 anonymous-namespace twins; 4,889 rows unresolved; LEAF_TABLE_CONFLICTS.tsv; not fixed

@@ -1,0 +1,1 @@
+EQ  007f3c20 182 ??$GetSubDef@VCLightningOrbDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCLightningOrbDef@@@@@Z 

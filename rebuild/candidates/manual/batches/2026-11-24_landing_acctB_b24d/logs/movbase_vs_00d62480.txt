@@ -1,0 +1,10 @@
+bytes  EQ  
+rels   EQ  
+sel    EQ  (2, 2)
+ch     EQ  ('0x60501020', '0x60501020')
+off    EQ  (0, 0)
+bytes 25 568bf18d4e08e800000000c706000000008bce5ee900000000
+  rel (7, 20, '??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ')
+  rel (13, 6, '??_7CScriptGameResourceObjectBase@@6B@')
+  rel (21, 20, '??1CBaseObject@@MAE@XZ')
+OBJECT_EQ

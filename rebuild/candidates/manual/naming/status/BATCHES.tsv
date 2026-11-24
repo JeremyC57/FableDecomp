@@ -6880,6 +6880,7 @@ T3	shared name (2 addresses)	CPKDecompressedStream	2	3		00c62920 01216442
 T3	shared name (2 addresses)	CPanel	2	2		00c12300 012116c5
 T3	shared name (2 addresses)	CPersistContext_TransferableComponent	2	2	engine/CPersistContext_TransferableComponent.h	00403fc0 0044b7e0
 T3	shared name (2 addresses)	CPersistContext_TransferableComponent_float	2	2		005cbe9d 005cbeba
+T3	shared name (2 addresses)	CPhysicalPlayer	2	3		00c271f0 012133c0
 T3	shared name (2 addresses)	CRACBuffer	2	3		00c4c080 01215f10
 T3	shared name (2 addresses)	CRecordWithEntryList	2	2		00443190 004431c0
 T3	shared name (2 addresses)	CRegion	2	2	engine/CRegion.h	0059ab5f 005b1546

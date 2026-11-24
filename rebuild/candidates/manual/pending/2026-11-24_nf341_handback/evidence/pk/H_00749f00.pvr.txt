@@ -1,0 +1,3 @@
+EQ  00415d70 25 ?GetString@CDefString@@QBE?AVCCharString@@XZ 
+EQ  0074c9b0 112 ??$__find@PBW4ECreatureGeneratorGenerateType@@W41@@std@@YIPBW4ECreatureGeneratorGenerateType@@PBW41@0ABW41@ABUrandom_access_iterator_tag@0@@Z 
+NEQ 0074d220 116 ??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z LEAF-REFERENCED

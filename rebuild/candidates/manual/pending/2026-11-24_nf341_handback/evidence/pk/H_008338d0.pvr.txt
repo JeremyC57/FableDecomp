@@ -1,0 +1,3 @@
+EQ  00403a00 11 ?GetLength@CCharString@@QBEJXZ 
+NEQ 0079bd80 116 ??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCBrainDef@@@@@Z LEAF-REFERENCED
+NEQ 006d3e80 112 ??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCBrainDef@@@@@Z LEAF-REFERENCED

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+007677e0   RELOCATION_MATCH PASS   AttachAugmentationParticles
+00b47bc0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b47bc0   RELOCATION_MATCH PASS   UpdateShadowedSpotLights
+
+WINS: 2
+  007677e0 RELOCATION_MATCH CTCObjectAugmentations::?AttachAugmentationParticles@CTCObjectAugmentations@@AAEXXZ
+  00b47bc0 RELOCATION_MATCH CEngineLightingManager::?UpdateShadowedSpotLights@CEngineLightingManager@@AAEXXZ
+VB1C_DONE

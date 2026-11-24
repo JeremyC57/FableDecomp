@@ -1,0 +1,7 @@
+EQ  005b33f4 49 ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  00669640 108 ??$GetDef@VCCombatTypeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z 
+EQ  006696b0 182 ??$GetSubDef@VCCombatAbilityUseProjectileWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@Z 
+EQ  00485815 162 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

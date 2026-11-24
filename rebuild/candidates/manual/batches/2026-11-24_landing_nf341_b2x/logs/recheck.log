@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006ea430   WARN STANDIN_LEAF ?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (catalog CCombatManager::DeregisterCombatant; names another function)
+006ea430   RELOCATION_MATCH PASS   DeregisterCombatant
+00734050   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00734050   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00734050   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+00734050   WARN RELOC_NAME: ?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z -> 006ea430 labelled 'CCombatManager::DeregisterCombatant'
+00734050   RELOCATION_MATCH PASS   SetBlocked
+
+WINS: 2
+  006ea430 RELOCATION_MATCH CCombatManager::?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+  00734050 RELOCATION_MATCH CTCCombat::?SetBlocked@CTCCombat_Methods@@QAEXPAVCThing@@@Z

@@ -1,8 +1,8 @@
 // CTCObjectAugmentations::AttachAugmentationParticles -- construct periodic and attack attachment sets.
-// Inline-budget: T59 plus guarded original find and periodic-vector destructor call boundaries; all bodies remain visible.
+// Inline-budget: T60 plus guarded original find and periodic-vector destructor call boundaries; all bodies remain visible. measured T55..T58 DIFFER, T59 / T60 / T61 match the leaf, T62 / T64 DIFFER; T60 (NF344, 2026-11-24) is the smallest that also gives the leaf-called __uninitialized_copy copies retail's bodies (0x007696E0, 0x007698C0; NF340 /d2inl audit).
 // Retail: 007677e0,1467 bytes plus five padding bytes in the assigned extent.
 // Leaf: ?AttachAugmentationParticles@CTCObjectAugmentations@@AAEXXZ
-// Flags: /d2inlT59
+// Flags: /d2inlT60
 #define FABLE_RETAIL_AUGMENTATION_PARTICLES
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCLASS

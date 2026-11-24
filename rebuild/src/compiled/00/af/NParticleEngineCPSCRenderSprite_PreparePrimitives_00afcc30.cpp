@@ -1,6 +1,6 @@
 // NParticleEngine::CPSCRenderSprite::PreparePrimitives(...) -- prepare animated particle sprites and trails
 // Grade: RELOCATION_MATCH -- actual COFF operands checked against their native targets.
-// Flags: /d2inlT1537 /d2inlS15
+// Flags: /d2inlT1537
 // Leaf: ?PreparePrimitives@CPSCRenderSprite@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
 // Retail: 0x00AFCC30, 5274 bytes, thiscall.
 // Identity: original PDB signatures; native vtable0129F67C slot13.

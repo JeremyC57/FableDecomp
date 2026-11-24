@@ -1,0 +1,15 @@
+addr       parity           behav  name
+0064b1ac   RELOCATION_MATCH PASS   UpdateWeaponAbilities
+00e4aa00   RELOCATION_MATCH PASS   Main
+00e4fa20   RELOCATION_MATCH PASS   Main
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CCompositeSurfaceCache (engine/CCompositeSurfaceCache.h)
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager (engine/CEngineSurfaceCompositionManager.h)
+00b2c8e0   RELOCATION_MATCH PASS   CopyIntermediateBank
+
+WINS: 4
+  0064b1ac RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::?UpdateWeaponAbilities@CDrawAbilityButtons@NPlayerGui@@IAEXXZ
+  00e4aa00 RELOCATION_MATCH NScript::CV_BanditTollScript::CBanditLeader::?Main@CBanditLeader@CV_BanditTollScript@NScript@@EAEXXZ
+  00e4fa20 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::?Main@CV_BeardyBaldyScript@NScript@@UAEXXZ
+  00b2c8e0 RELOCATION_MATCH CEngineSurfaceCompositionManager::CopyIntermediateBank

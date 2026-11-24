@@ -18,7 +18,7 @@
 //   noise_lookup) -- two ordinary named locals; with `timeSeconds` (Anniversary local time_seconds: retail calls GetInterpolatedLifetimerInSeconds
 //   0x00AF85E0 and pops the result, 0x00B0456B) they set the x87 order of the first trail GetRecordedPos interpolation (0x00B050A8).
 // Leaf: ?PreparePrimitives@CPSCRenderMesh@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
-// Flags: /d2inlT1537 /d2inlS15
+// Flags: /d2inlT1537
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B03CA0, 6468 bytes, thiscall, ebp frame (`lea ebp,[esp-64h]`), `ret 14h`.
 // Identity: slot 13 of vtable 0x0129F96C (FableWin.pdb ?PreparePrimitives@CPSCRenderMesh@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z).
 // Same TU as the matched CPSCRenderMesh::AddToBoundingSphere 0x00B01900 (wfD6): its class model, helpers, opt-ins and flags; idioms of the

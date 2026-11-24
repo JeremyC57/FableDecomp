@@ -1,0 +1,15 @@
+#pragma optimize("s", on)
+namespace std {
+template<> inline pair<const CCharString, CScriptGameResourceObjectScriptedThingBase>::pair(const CCharString& a, const CScriptGameResourceObjectScriptedThingBase& b) : first(a), second(b) { }
+template<> inline map<CCharString, CScriptGameResourceObjectScriptedThingBase>::iterator
+map<CCharString, CScriptGameResourceObjectScriptedThingBase>::insert(iterator position, const value_type& value) { return _M_t.insert_unique(position, value); }
+template<> inline CScriptGameResourceObjectScriptedThingBase __default_constructed(CScriptGameResourceObjectScriptedThingBase*) { return CScriptGameResourceObjectScriptedThingBase(); }
+template<> inline CScriptGameResourceObjectScriptedThingBase& map<CCharString, CScriptGameResourceObjectScriptedThingBase>::operator[](const CCharString& k)
+{
+    iterator i = lower_bound(k);
+    if (i == end() || key_comp()(k, (*i).first))
+        i = insert(i, value_type(k, __default_constructed((CScriptGameResourceObjectScriptedThingBase*)0)));
+    return (*i).second;
+}
+}
+#pragma optimize("", on)

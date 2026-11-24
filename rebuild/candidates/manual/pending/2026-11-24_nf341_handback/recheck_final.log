@@ -1,0 +1,39 @@
+addr       parity           behav  name
+006ea430   WARN STANDIN_LEAF ?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (catalog CCombatManager::DeregisterCombatant; names another function)
+006ea430   RELOCATION_MATCH PASS   DeregisterCombatant
+00734050   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00734050   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00734050   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+00734050   WARN RELOC_NAME: ?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z -> 006ea430 labelled 'CCombatManager::DeregisterCombatant'
+00734050   RELOCATION_MATCH PASS   SetBlocked
+
+WINS: 2
+  006ea430 RELOCATION_MATCH CCombatManager::?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+  00734050 RELOCATION_MATCH CTCCombat::?SetBlocked@CTCCombat_Methods@@QAEXPAVCThing@@@Z
+addr       parity           behav  name
+0066b370   RELOCATION_MATCH PASS   PlayAllSoundEvents
+00703150   RELOCATION_MATCH PASS   PeekPMaterial
+007f0300   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007f0300   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+007f0300   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007f0300   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+007f0300   WARN SHARED_HEADER_AVAILABLE CTCCarriedActionUseSpade (engine/CTCCarriedActionUseSpade.h)
+007f0300   RELOCATION_MATCH PASS   IsThingAbleToDig
+0082d5c0   RELOCATION_MATCH PASS   PeekPMaterial
+008f7950   RELOCATION_MATCH PASS   CreateDustEffectForCreature
+00627be0   RELOCATION_MATCH PASS   GetExpressionsListUI
+0064e978   WARN RELOC_CONFLICT: ??0C3DAnimationBlendState@@QAE@XZ -> 004c2dd0 here, 00c59ba0 in landed 00c72600
+0064e978   RELOCATION_MATCH PASS   Draw
+006c14d0   RELOCATION_MATCH PASS   OnInitialActivate
+00774b40   RELOCATION_MATCH PASS   GetFreeSaleItemPlaces
+
+WINS: 9
+  0066b370 RELOCATION_MATCH CTCSoundPlayer::?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ
+  00703150 RELOCATION_MATCH CThingObject::?PeekPMaterial@CThingObject@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+  007f0300 RELOCATION_MATCH CTCCarriedActionUseSpade::?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z
+  0082d5c0 RELOCATION_MATCH CThingBuilding::?PeekPMaterial@CThingBuilding@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+  008f7950 RELOCATION_MATCH NCombatActionHelpers::?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  00627be0 RELOCATION_MATCH CTCQuickAccessMenu::?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+  0064e978 RELOCATION_MATCH NPlayerGui::CDrawReceivedItems::?Draw@CDrawReceivedItems@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  006c14d0 RELOCATION_MATCH CTCBuyableHouse::?OnInitialActivate@CTCBuyableHouse@@UAEXXZ
+  00774b40 RELOCATION_MATCH CTCShop::?GetFreeSaleItemPlaces@CTCShop@@QAE?AV?$vector@UGoodsPlace@CTCShop@@V?$allocator@UGoodsPlace@CTCShop@@@std@@@std@@_N@Z

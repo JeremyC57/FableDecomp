@@ -1,0 +1,4 @@
+EQ  00406880 7 ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ 
+EQ  00406d90 84 ?ClampResolution@CUserProfileManager@@AAEXAAKJ@Z 
+EQ  00410890 108 ??$GetDef@VCConfigOptionsDefaultsDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@@Z 
+EQ  004083e0 194 ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@XZ 

@@ -1,0 +1,3 @@
+EQ  0049cf80 43 ??0CRightHandedSet@@QAE@ABV0@@Z 
+EQ  0040dce0 21 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z 
+EQ  0078b230 108 ??$GetDef@VCThingShotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingShotDef@@@@@Z 

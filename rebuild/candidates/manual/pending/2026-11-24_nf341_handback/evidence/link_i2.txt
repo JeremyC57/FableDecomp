@@ -1,0 +1,6 @@
+## HEAD set: H_006ea430.obj H_006ed9c0.obj H_00734050.obj H_007355f0.obj
+duplicates 1
+  DUP H_006ed9c0.obj ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z in H_006ea430.obj;
+## new set: 006ea430.obj H_006ed9c0.obj 00734050.obj H_007355f0.obj
+duplicates 0
+LK_DONE

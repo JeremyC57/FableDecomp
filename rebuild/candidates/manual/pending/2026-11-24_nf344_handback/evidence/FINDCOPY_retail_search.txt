@@ -1,0 +1,36 @@
+== 006c6040_CAT
+??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ len 62 matches 21 004046b0 00436900 0043fcf0 0043fd40 0043fd80 0044b970 0048ca00 0048ca60 004ab420 004ab490 004ab4f0 004c3550 004cc220 005127a0 00512910 005283c0 0052d5c0 00554fc0 00557680 00558aa0
+== 006c6040_NOD
+??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ len 5 matches 25 00401005(u) 004010e2(u) 004010e9(u) 00401112(u) 00401228(u) 00401299(u) 004012a7(u) 004012ac(u) 004015ab(u) 004015db(u) 00401620 00401649(u) 00401763(u) 00401bbb(u) 004021c1(u) 00403072(u) 00403303(u) 00403548(u) 00403900 00403ccf(u)
+== 00b2c8e0_CAT
+?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXIABE@Z len 85 matches 1 004122d0
+?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z len 94 matches 0 
+== 00b2c8e0_NOD
+?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXIABE@Z len 85 matches 1 004122d0
+?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z len 25 matches 2 00412880 007b9e50
+== 007677e0_CAT
+??$__uninitialized_copy@PAUParticleAndEndPoints@@PAU1@@std@@YIPAUParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z len 76 matches 2 007697c0 00769930
+??$__uninitialized_fill_n@PAUParticleAndEndPoints@@IU1@@std@@YAPAUParticleAndEndPoints@@PAU1@IABU1@ABU__false_type@0@@Z len 75 matches 0 
+??$__uninitialized_copy@PBUParticleAndEndPoints@@PAU1@@std@@YIPAUParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z len 76 matches 2 007697c0 00769930
+??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z len 46 matches 0 
+??$__uninitialized_fill_n@PAUAttackParticleAndEndPoints@@IU1@@std@@YAPAUAttackParticleAndEndPoints@@PAU1@IABU1@ABU__false_type@0@@Z len 45 matches 0 
+??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z len 46 matches 0 
+??$__uninitialized_copy@PAV?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@PAV12@@std@@YIPAV?$vector@UPartic len 46 matches 13 00518f30 00675820 006b6e10 00709030 00764970 0076a930 0076a990 0076fce0 0085e3e0 0086e710 0088a410 00a4aa10 00bcd8a0
+??$__uninitialized_fill_n@PAV?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IV12@@std@@YAPAV?$vector@UParti len 45 matches 0 
+??$__uninitialized_copy@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@PAV12@@std@@YIPAV?$ve len 46 matches 13 00518f30 00675820 006b6e10 00709030 00764970 0076a930 0076a990 0076fce0 0085e3e0 0086e710 0088a410 00a4aa10 00bcd8a0
+??$__uninitialized_fill_n@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@IV12@@std@@YAPAV?$v len 45 matches 0 
+== 007677e0_T60
+??$__uninitialized_copy@PAUParticleAndEndPoints@@PAU1@@std@@YIPAUParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z len 76 matches 2 007697c0 00769930
+??$__uninitialized_fill_n@PAUParticleAndEndPoints@@IU1@@std@@YAPAUParticleAndEndPoints@@PAU1@IABU1@ABU__false_type@0@@Z len 75 matches 0 
+??$__uninitialized_copy@PBUParticleAndEndPoints@@PAU1@@std@@YIPAUParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z len 76 matches 2 007697c0 00769930
+??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z len 106 matches 2 007696e0 007698c0
+??$__uninitialized_fill_n@PAUAttackParticleAndEndPoints@@IU1@@std@@YAPAUAttackParticleAndEndPoints@@PAU1@IABU1@ABU__false_type@0@@Z len 113 matches 0 
+??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z len 106 matches 2 007696e0 007698c0
+??$__uninitialized_copy@PAV?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@PAV12@@std@@YIPAV?$vector@UPartic len 46 matches 13 00518f30 00675820 006b6e10 00709030 00764970 0076a930 0076a990 0076fce0 0085e3e0 0086e710 0088a410 00a4aa10 00bcd8a0
+??$__uninitialized_fill_n@PAV?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IV12@@std@@YAPAV?$vector@UParti len 45 matches 0 
+??$__uninitialized_copy@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@PAV12@@std@@YIPAV?$ve len 46 matches 13 00518f30 00675820 006b6e10 00709030 00764970 0076a930 0076a990 0076fce0 0085e3e0 0086e710 0088a410 00a4aa10 00bcd8a0
+??$__uninitialized_fill_n@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@IV12@@std@@YAPAV?$v len 45 matches 0 
+== 00b47bc0_CAT
+??2CManagerLocalLight@CEngineLightingManager@@SIPAXI@Z len 12 matches 8 004036b0 00419697(u) 004336b0 0044c71f(u) 004ab2f0 009a7580 009a76c0 00cd3f40
+== 00b47bc0_T39
+??2CManagerLocalLight@CEngineLightingManager@@SIPAXI@Z len 51 matches 6 00af8680 00af86c0 00af8b00 00b45310 00b45350 00b45390

@@ -1,0 +1,1 @@
+EQ  0066c340 108 ??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z 

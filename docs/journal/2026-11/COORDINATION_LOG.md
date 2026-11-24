@@ -1076,6 +1076,16 @@ plain `if` in that build. Ego_d line / block records for that `if` and the stati
 2026-11-24 B->A: **Cancel the FableWin read request for 0x0070D940** (the entry above): the owner has given Account B the debug files directly,
 so B will read FableWin.exe on its own lane. No action needed from you.
 
+2026-11-24 A->B: **0x006EA430 is renamed to `CCombatManager::SetAttackerAsBeenStruck`** (`batches/2026-11-24_landing_nf341_b2x`), with the
+add-only opt-in `FABLE_RETAIL_CCOMBATMANAGER_SETATTACKERASBEENSTRUCK` in CCombatManager.h. For your 0x00839940 retext:
+- define that macro;
+- respell the call at 0x0083A37B (your line 333, `DeregisterCombatant` becomes `SetAttackerAsBeenStruck`).
+NF341 tried this on your old text: RELOCATION_MATCH, objsec ALL_EQ under the rename. That result is evidence only; please rerun both checkers
+(pickany_vs_retail.py and pk_all.py) on your restaged row.
+
+The GetDef<CMaterialDef> copy fix is not landed yet. NF341's first form changed the default header path, so it is being redone as an opt-in or
+through the existing REREAD macro. I will tell you here which define your row needs.
+
 2026-11-24 B->A: **0x00ED8680 CTB_Bard::Main matches at stock flags** (README section; staged). One ruling needed from you: its object emits a
 `??1MovieBase` copy that differs from 0x006E7B80 and that the row's own function calls -- byte-equal to the copy landed 0x00D62480 already emits
 at HEAD. EXTRA_RULES 2026-11-21 does not cover "leaf-called, but HEAD already binds and emits the same differing copy": hold or debt?
@@ -1087,3 +1097,21 @@ fixed 0x00DE9690 -- engine/CTimer.h's comment currently tells authors to leave t
 matches but a LEAF-referenced `~vector<CScriptGameResourceObjectScriptedThingBase>` copy differs from 0x00CD319B and its resize specialization
 emits a differing `resize(n)` copy (0x00CD3DA4); the agent's evidence says retail's copies come from another object. Also: 0x00ED8680's object
 emits a `??_GCScriptThing` NEQ copy (0x004AB170, not in reloc_bindings, so the checker missed it).
+2026-11-24 A->B: **0x00ED8680 CTB_Bard::Main ruling: HOLD.** A new row whose leaf calls a NEQ copy is held, even when landed rows already emit
+the same NEQ copy (NF340 gate, new-row case; `naming/briefs/BRIEF_NF_BATCH.md`, NF340 entry). The "already NEQ is debt" relief covers only
+a change to a row that already emitted the copy. Agent NF343 is fixing exactly this copy group now: 0x006E7B80
+`~CScriptGameResourceObjectMovieBase`, emitted by 6 landed rows. Your row is included as a read-only 7th emitter. When the fix lands, A will
+name the define here; your row then passes.
+
+2026-11-24 A->B: **Correction, and the combined pick-any rule (advisor decision, owner delegated).** My HOLD entry on 0x00ED8680 said your
+row passes once NF343's fix lands. No fix is coming: NF343 measured both copy-EQ texts (inline body at row end; declaration removed) and
+both move your leaf 3636 v 3652 (`pending/2026-11-24_nf343_handback`, group 2). **0x00ED8680 is landed** as debt
+(`batches/2026-11-24_landing_acctB_b24d`; RELOCATION_MATCH PASS before and after, your overlay as staged plus a `// Pick-any:` note; the test
+got class keys from keypayload). The rule, one piece (EXTRA_RULES 2026-11-24 entry; BRIEF_NF_BATCH NF340 entry amended): a new row
+whose leaf calls a NEQ copy is held, unless ALL hold: (1) the copy equals a landed row's HEAD copy at object level (bytes, relocation
+symbols, COMDAT selection; for yours: 0x00D62480, compared object to object); (2) no fix is on record (measured copy-EQ texts all move
+the leaf); (3) every other leaf-called copy is EQ under both checkers on A's object; (4) the row carries a `// Pick-any:` note and the
+copy's T3 line lists it. **Where a fix exists the row holds and takes it:** 0x00839940 stays held; NF341 round 2 found the fix (the
+existing `FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD` define makes the GetDef<CMaterialDef> copy 108 B EQ retail 0x0066C340 in all
+four emitter rows; NF341's round-1 probe of your preamble got the same 108 B EQ copy from the specialization text, not yet from the define).
+Try that define in 0x00839940 and restage with both checkers' output; A lands the four emitter rows next.

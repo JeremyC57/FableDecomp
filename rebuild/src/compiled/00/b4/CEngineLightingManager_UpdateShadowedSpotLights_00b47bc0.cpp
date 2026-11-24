@@ -1,7 +1,7 @@
 // 00b47bc0 CEngineLightingManager::UpdateShadowedSpotLights
-// Flags: /d2inlT29
+// Flags: /d2inlT39
 // Leaf: ?UpdateShadowedSpotLights@CEngineLightingManager@@AAEXXZ
-// Inline-budget: /d2inlT29 -- smallest tested integer threshold retaining the real out-of-line element constructor and expanding original caller helpers; default expands constructor1098B,10..28 differ,29 yields1028B.
+// Inline-budget: /d2inlT39 -- retains the real out-of-line element constructor and expands the original caller helpers; default expands the constructor (1098 B), T10..T28 differ, T29 gives the 1028-B leaf; measured T29..T32, T35..T40 and T45 all give it, and T39 (NF344, 2026-11-24) is the smallest of those that also gives the leaf-called _M_insert_overflow copy retail's body (0x00B49DF0; NF340 /d2inl audit).
 // Retail: Fable.exe00b47bc0,1028bytes.
 #define FABLE_RETAIL_CENGINELIGHTINGMANAGER
 #define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS

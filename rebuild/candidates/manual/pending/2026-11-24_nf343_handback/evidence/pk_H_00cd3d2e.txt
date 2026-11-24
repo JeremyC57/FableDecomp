@@ -1,0 +1,18 @@
+# H 00cd3d2e src=/home/user/FableDecomp/rebuild/src/compiled/00/cd/STLmap_operator_00cd3d2e.cpp grade=RELOCATION_MATCH leaf=??A?$map flags= overlay=-
+# pk_all leaf ??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z source_a=True 
+PK  NEQ  NEQ  009e6530  b  pickany  40  leaf=n reach=n ??MCCharString@@QBE_NABV0@@Z
+PK  NEQ  NEQ  0041c820  b  pickany  19  leaf=n reach=n ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+PK  EQ  EQ  00cd27b4  b  pickany  19  leaf=n reach=n ??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  10  leaf=n reach=n ?key_comp@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@@std@@QBE?AU?$less@VCCharString@@@2@XZ
+PK  NEQ  NEQ  0042aab3  a,b  pickany  43  leaf=y reach=y ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAE@ABU01@@Z
+PK  NOADDR  NOADDR  -  -  pickany  6  leaf=n reach=n ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QBEAAU?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@1@XZ
+PK  NOADDR  NOADDR  -  -  pickany  14  leaf=n reach=n ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAE@PAU_Rb_tree_node_base@1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??$__default_constructed@VCScriptGameResourceObjectScriptedThingBase@@@std@@YA?AVCScriptGameResourceObjectScriptedThingBase@@PAV1@@Z
+PK  NOADDR  NOADDR  -  -  pickany  22  leaf=n reach=n ?lower_bound@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@ABVCCharString@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  14  leaf=n reach=n ?end@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@XZ
+# old checker (pickany_vs_retail.py)
+OLD NEQ 009e6530 40 ??MCCharString@@QBE_NABV0@@Z not referenced by the leaf
+OLD NEQ 0041c820 19 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z not referenced by the leaf
+OLD EQ  00cd27b4 19 ??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ 
+OLD NEQ 0042aab3 43 ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z LEAF-REFERENCED

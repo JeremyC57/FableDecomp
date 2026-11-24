@@ -1,7 +1,7 @@
 // 00e4aa00 NScript::CV_BanditTollScript::CBanditLeader::Main
 // Inline-budget: retail expands handle cleanup at outer-loop termination0x00E4AE2C; other exits call0x007E74D0.
 // Grade: RELOCATION_MATCH1356/1356; behavior and complete relocation checks recorded separately.
-// Flags: /d2inlT200
+// (NF344, 2026-11-24) /d2inlT200 dropped: on the current headers the object is identical without it (every function COMDAT, bytes and relocations; NF340 /d2inl audit).
 // Leaf: ?Main@CBanditLeader@CV_BanditTollScript@NScript@@EAEXXZ
 #include "fable_compiler.h"
 #include "engine/TRetVoid.h"

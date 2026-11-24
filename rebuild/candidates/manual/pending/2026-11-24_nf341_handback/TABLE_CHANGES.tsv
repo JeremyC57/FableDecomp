@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+add	?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	006ea430	00734050	NF341: 0x006EA430 is SetAttackerAsBeenStruck (Ego_r + FableWin; object order and size, FableWin body); the binder object 0x00734050 binds it at 0x007340A7 (xr). No line existed for 0x006EA430; the DeregisterCombatant line (006ed9c0, witness 007355f0, HEAD object binds it: xr) is right and stays

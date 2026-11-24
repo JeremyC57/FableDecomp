@@ -1,0 +1,1 @@
+0066b370 NOT_EQ symbol tables differ: [('??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', ('DEF', 2))]; dropped COMDAT ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassB; copy v retail 0x0066C340 EQ, v owner object EQ

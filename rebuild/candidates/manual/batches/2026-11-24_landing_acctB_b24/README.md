@@ -27,3 +27,9 @@ later." B staged these rows in `pending/2026-11-24_acctB_b24/`; A re-graded them
   - 0x00BE4FE0: held by B until its water twin 0x00BE4660 settles the shared template text.
   - GFMain's NAME_FIXES.tsv (20 lines) is queued in `NAME_FIXES_QUEUE.tsv` as `acctB_b24 PRIORITY`.
 - `bindings_multi_check.py`: one multi-target line. It is the existing `?NullCoord@CScriptThing` line from nf326 (queued); none is new.
+
+## Follow-up (2026-11-24, later): 0x012133C0 source comments
+The `self_symbols` refresh found that 0x012133C0 rechecked from the repo as DIFFER(846v8). Its source still described the 18-byte block
+and lacked the `funclet block offset 0x0` Grade line that recheck.py reads (the landing graded it through the payload's funclet_offset). The
+comments now describe the 8-byte funclet, with the thunk as a manifest gap, as on its 1,317 siblings. Comment-only; recheck
+RELOCATION_MATCH PASS.

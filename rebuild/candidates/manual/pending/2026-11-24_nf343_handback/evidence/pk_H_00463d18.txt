@@ -1,0 +1,15 @@
+# H 00463d18 src=/home/user/FableDecomp/rebuild/src/compiled/00/46/global_GFSerialiseMapBinaryIn_00463d18.cpp grade=RELOCATION_MATCH leaf=??$GFSerialiseMapBinaryIn@JW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EHeroTrainableStatType@@JU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@@std@@@Z flags= overlay=-
+# pk_all leaf ??$GFSerialiseMapBinaryIn@JW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EHeroTrainableStatType@@JU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@@std@@@Z source_a=True 
+PK  NOADDR  NOADDR  -  -  pickany  96  leaf=n reach=n ?Read@CDataInputStream@@QAEXPAXJ@Z
+PK  NOADDR  NOADDR  -  -  pickany  90  leaf=n reach=n ?ReadSLONG@CDataInputStream@@QAEJXZ
+PK  NEQ  NEQ  0040fe60  a,b  strong  99  leaf=y reach=y ?TransferBinaryIn@?$CPersistTraits@J@@QAEXAAVCMemoryDataInputStream@@AAJ@Z
+PK  NOADDR  NOADDR  -  -  pickany  6  leaf=n reach=n ??0?$CPersistTraits@J@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$CPersistTraits@J@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  6  leaf=n reach=n ??0?$CPersistTraits@W4EHeroTrainableStatType@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  1  leaf=n reach=n ??1?$CPersistTraits@W4EHeroTrainableStatType@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  5  leaf=n reach=n ?clear@?$map@W4EHeroTrainableStatType@@JU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@@std@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  21  leaf=n reach=n ?insert@?$map@W4EHeroTrainableStatType@@JU?$less@W4EHeroTrainableStatType@@@std@@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@2@@std@@_N@2@ABU?$pair@$$CBW4EHeroTrainableStatType@@J@2@@Z
+PK  NOADDR  NOADDR  -  -  pickany  10  leaf=n reach=n ??0?$pair@W4EHeroTrainableStatType@@J@std@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  22  leaf=n reach=n ??$?0W4EHeroTrainableStatType@@J@?$pair@$$CBW4EHeroTrainableStatType@@J@std@@QAE@ABU?$pair@W4EHeroTrainableStatType@@J@1@@Z
+# old checker (pickany_vs_retail.py)
+OLD NEQ 0040fe60 99 ?TransferBinaryIn@?$CPersistTraits@J@@QAEXAAVCMemoryDataInputStream@@AAJ@Z LEAF-REFERENCED

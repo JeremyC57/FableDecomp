@@ -1,0 +1,5 @@
+address	tag	status	reason
+0066c340	item1	done-partial	header fix in batches/b1 (hdr + orig): every emitter's GetDef<CMaterialDef> copy now EQ (0x008F7950, 0x00703150, 0x007F0300, 0x0082D5C0, B's 0x00839940 13/13); coordinator pk gate PASS; held for ruling D1 (default-path correction drops two unreferenced inline-helper COMDATs, NF318 Q5) and D4 (13 hole rows not compiled)
+006ea430	item2	done	self respelled DeregisterCombatant -> SetAttackerAsBeenStruck (Ego_r + FableWin PDB, donor body); add-only opt-in FABLE_RETAIL_CCOMBATMANAGER_SETATTACKERASBEENSTRUCK; objsec ALL_EQ; RELOCATION_MATCH before and after (batches/b2)
+00734050	item2	done	binder respelled (local model + call); objsec ALL_EQ under the one rename; RELOCATION_MATCH before and after (batches/b2)
+00839940	item1+2	skipped-held	B's staged row, read-only: compiles RELOCATION_MATCH with 13/13 copies EQ under the b1 header unchanged; its 0x0083A37B call needs B's one-token respell + define (D2, work-copy proof evidence/bwork_*)

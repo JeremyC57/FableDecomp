@@ -1,0 +1,595 @@
+# gatecmp.py: every variant v the catalog build (CAT). SAME-AS-HEAD on a sweep value means no gain, not a landable change; BROKE / REPAIR / DEBT use leaf-called = leafref or reach (pk_all), both sides.
+====================================================================================================
+00465c54 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlS39  copies=43 old EQ/NEQ=1/4
+    HEAD leaf-called NEQ: 00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+    HEAD leaf-called NEQ: 00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+    HEAD leaf-called NEQ: 00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+  -- NOD [NOD]: DIFFER(176v226)  copies=43 old EQ/NEQ=2/3  => HOLD-grade
+       REPAIR 00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   004aef50 ?IsSaving@CPersistContext@@QBE_NXZ
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+       old-checker NEQ diff: +['??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@ABU?$less@W4EWeaponClass@@@1@ABV?$allocator@W4EWeaponClass@@@1@@Z@00451add [not referenced by the leaf]', '?IsSaving@CPersistContext@@QBE_NXZ@004aef50 [LEAF-REFERENCED]'] -['??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@ABU?$less@W4EWeaponClass@@@1@ABV?$allocator@W4EWeaponClass@@@1@@Z@00451add [LEAF-REFERENCED]', '??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@XZ@00451b07 [LEAF-REFERENCED]', '?IsSaving@CPersistContext@@QBE_NXZ@004aef50 [not referenced by the leaf]']
+  -- S40 [/d2inlS40]: RELOCATION_MATCH  copies=43 old EQ/NEQ=1/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+  -- S42 [/d2inlS42]: RELOCATION_MATCH  copies=43 old EQ/NEQ=1/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+  -- S45 [/d2inlS45]: RELOCATION_MATCH  copies=43 old EQ/NEQ=1/4  => HOLD-broke
+       BROKE  004512da (head EQ) ?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocat
+       REPAIR 00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+       old-checker NEQ diff: +['?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAEXXZ@004512da [not referenced by the leaf]'] -['??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@XZ@00451b07 [LEAF-REFERENCED]']
+  -- S50 [/d2inlS50]: RELOCATION_MATCH  copies=43 old EQ/NEQ=1/4  => HOLD-broke
+       BROKE  004512da (head EQ) ?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocat
+       REPAIR 00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+       old-checker NEQ diff: +['?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAEXXZ@004512da [not referenced by the leaf]'] -['??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@XZ@00451b07 [LEAF-REFERENCED]']
+  -- S60 [/d2inlS60]: RELOCATION_MATCH  copies=43 old EQ/NEQ=1/4  => HOLD-broke
+       BROKE  004512da (head EQ) ?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocat
+       REPAIR 00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+       old-checker NEQ diff: +['?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAEXXZ@004512da [not referenced by the leaf]'] -['??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@XZ@00451b07 [LEAF-REFERENCED]']
+  -- S80 [/d2inlS80]: RELOCATION_MATCH  copies=43 old EQ/NEQ=0/5  => NO-GAIN(copies changed, none leaf-called NEQ)
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+       other  004512da EQ->NEQ lc=nn ?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeapon
+       old-checker NEQ diff: +['?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAEXXZ@004512da [not referenced by the leaf]'] -[]
+  -- S41 [/d2inlS41]: RELOCATION_MATCH  copies=43 old EQ/NEQ=1/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+  -- S43 [/d2inlS43]: RELOCATION_MATCH  copies=43 old EQ/NEQ=1/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+  -- S44 [/d2inlS44]: RELOCATION_MATCH  copies=43 old EQ/NEQ=1/4  => HOLD-broke
+       BROKE  004512da (head EQ) ?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocat
+       REPAIR 00451b07 ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00451add ??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W
+       DEBT   00450930 ?_M_erase@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allo
+       old-checker NEQ diff: +['?clear@?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAEXXZ@004512da [not referenced by the leaf]'] -['??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@XZ@00451b07 [LEAF-REFERENCED]']
+====================================================================================================
+005414a0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlS12  copies=17 old EQ/NEQ=3/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=17 old EQ/NEQ=2/1  => HOLD-broke
+       BROKE  00485dbc (head EQ) ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPA
+       old-checker NEQ diff: +['?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z@00485dbc [LEAF-REFERENCED]'] -[]
+====================================================================================================
+006116e0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlS12  copies=18 old EQ/NEQ=4/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=18 old EQ/NEQ=3/1  => HOLD-broke
+       BROKE  00485dbc (head EQ) ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPA
+       old-checker NEQ diff: +['?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z@00485dbc [LEAF-REFERENCED]'] -[]
+====================================================================================================
+0064b1ac CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /Os /Oy- /d2inlT59  copies=47 old EQ/NEQ=6/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=47 old EQ/NEQ=6/0  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+====================================================================================================
+006c6040 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT80  copies=153 old EQ/NEQ=22/1
+  -- NOD [NOD]: RELOCATION_MATCH  copies=153 old EQ/NEQ=22/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+====================================================================================================
+007677e0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT59  copies=167 old EQ/NEQ=23/10
+    HEAD leaf-called NEQ: 0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+    HEAD leaf-called NEQ: 0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+    HEAD leaf-called NEQ: 007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+    HEAD leaf-called NEQ: 007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+    HEAD leaf-called NEQ: 0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+    HEAD leaf-called NEQ: 0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+    HEAD leaf-called NEQ: 0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+    HEAD leaf-called NEQ: 0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+  -- NOD [NOD]: DIFFER(1582v1467)  copies=167 old EQ/NEQ=27/6  => HOLD-grade
+       REPAIR 0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       REPAIR 007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+       REPAIR 007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+       REPAIR 0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+       DEBT   0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+       DEBT   0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+       DEBT   0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+       old-checker NEQ diff: +[] -['??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@@std@@YIXPAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@0@0ABU__false_type@0@@Z@0076bdd0 [not referenced by the leaf]', '??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z@007696e0 [not referenced by the leaf]', '??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z@007698c0 [not referenced by the leaf]']
+  -- T55 [/d2inlT55]: DIFFER(1549v1467)  copies=167 old EQ/NEQ=21/12  => HOLD-grade
+       DEBT   0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+       DEBT   0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+       DEBT   007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+       DEBT   0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+       DEBT   0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+       DEBT   0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+       other  004118c0 EQ->NEQ lc=nn ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+       other  0076bcb0 EQ->NEQ lc=yn ?push_back@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@
+       old-checker NEQ diff: +['?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z@004118c0 [not referenced by the leaf]', '?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUParticleAndEndPoints@@ABU3@ABU__false_type@2@I_N@Z@0076b850 [LEAF-REFERENCED]', '?push_back@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@QAEXABUParticleAndEndPoints@@@Z@0076bcb0 [not referenced by the leaf]'] -['?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUParticleAndEndPoints@@ABU3@ABU__false_type@2@I_N@Z@0076b850 [not referenced by the leaf]']
+  -- T56 [/d2inlT56]: DIFFER(1549v1467)  copies=167 old EQ/NEQ=21/12  => HOLD-grade
+       DEBT   0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+       DEBT   0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+       DEBT   007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+       DEBT   0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+       DEBT   0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+       DEBT   0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+       other  004118c0 EQ->NEQ lc=nn ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+       other  0076bcb0 EQ->NEQ lc=yn ?push_back@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@
+       old-checker NEQ diff: +['?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z@004118c0 [not referenced by the leaf]', '?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUParticleAndEndPoints@@ABU3@ABU__false_type@2@I_N@Z@0076b850 [LEAF-REFERENCED]', '?push_back@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@QAEXABUParticleAndEndPoints@@@Z@0076bcb0 [not referenced by the leaf]'] -['?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUParticleAndEndPoints@@ABU3@ABU__false_type@2@I_N@Z@0076b850 [not referenced by the leaf]']
+  -- T57 [/d2inlT57]: DIFFER(1549v1467)  copies=167 old EQ/NEQ=21/12  => HOLD-grade
+       DEBT   0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+       DEBT   0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+       DEBT   007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+       DEBT   0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+       DEBT   0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+       DEBT   0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+       other  004118c0 EQ->NEQ lc=nn ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+       other  0076bcb0 EQ->NEQ lc=yn ?push_back@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@
+       old-checker NEQ diff: +['?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z@004118c0 [not referenced by the leaf]', '?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUParticleAndEndPoints@@ABU3@ABU__false_type@2@I_N@Z@0076b850 [LEAF-REFERENCED]', '?push_back@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@QAEXABUParticleAndEndPoints@@@Z@0076bcb0 [not referenced by the leaf]'] -['?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUParticleAndEndPoints@@ABU3@ABU__false_type@2@I_N@Z@0076b850 [not referenced by the leaf]']
+  -- T58 [/d2inlT58]: DIFFER(1467v1467)  copies=167 old EQ/NEQ=22/11  => HOLD-grade
+       DEBT   0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+       DEBT   0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+       DEBT   007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+       DEBT   0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+       DEBT   0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+       DEBT   0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+       other  004118c0 EQ->NEQ lc=nn ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+       old-checker NEQ diff: +['?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z@004118c0 [not referenced by the leaf]'] -[]
+  -- T60 [/d2inlT60]: RELOCATION_MATCH  copies=167 old EQ/NEQ=25/8  => LANDABLE(repairs)
+       REPAIR 007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+       REPAIR 007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+       DEBT   0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+       DEBT   0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+       DEBT   0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+       DEBT   0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+       old-checker NEQ diff: +[] -['??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z@007696e0 [not referenced by the leaf]', '??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z@007698c0 [not referenced by the leaf]']
+  -- T61 [/d2inlT61]: RELOCATION_MATCH  copies=167 old EQ/NEQ=25/8  => LANDABLE(repairs)
+       REPAIR 007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+       REPAIR 007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+       DEBT   0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+       DEBT   0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+       DEBT   0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+       DEBT   0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+       old-checker NEQ diff: +[] -['??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z@007696e0 [not referenced by the leaf]', '??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z@007698c0 [not referenced by the leaf]']
+  -- T62 [/d2inlT62]: DIFFER(1497v1467)  copies=167 old EQ/NEQ=26/7  => HOLD-grade
+       REPAIR 0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       REPAIR 007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+       REPAIR 007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+       DEBT   0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+       DEBT   0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+       DEBT   0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+       DEBT   0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+       old-checker NEQ diff: +[] -['??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@@std@@YIXPAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@0@0ABU__false_type@0@@Z@0076bdd0 [not referenced by the leaf]', '??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z@007696e0 [not referenced by the leaf]', '??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z@007698c0 [not referenced by the leaf]']
+  -- T64 [/d2inlT64]: DIFFER(1497v1467)  copies=167 old EQ/NEQ=26/7  => HOLD-grade
+       REPAIR 0076bdd0 ??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       REPAIR 007696e0 ??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU_
+       REPAIR 007698c0 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@
+       DEBT   0042b248 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+       DEBT   0076b760 ?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std
+       DEBT   0076b850 ?_M_insert_overflow@?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@IAEXPAUPar
+       DEBT   0076c590 ?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@
+       DEBT   0076c470 ?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@
+       old-checker NEQ diff: +[] -['??$__destroy_aux@PAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@@std@@YIXPAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@0@0ABU__false_type@0@@Z@0076bdd0 [not referenced by the leaf]', '??$__uninitialized_copy@PAUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PAU1@00ABU__false_type@0@@Z@007696e0 [not referenced by the leaf]', '??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z@007698c0 [not referenced by the leaf]']
+====================================================================================================
+007e4b60 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlS12  copies=15 old EQ/NEQ=4/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=15 old EQ/NEQ=3/1  => HOLD-broke
+       BROKE  00485dbc (head EQ) ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPA
+       old-checker NEQ diff: +['?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z@00485dbc [LEAF-REFERENCED]'] -[]
+====================================================================================================
+00803d60 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT68  copies=121 old EQ/NEQ=9/2
+    HEAD leaf-called NEQ: 0080a550 ??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bi
+    HEAD leaf-called NEQ: 006a7270 ??RCThingFilter_IsInFOV@@QBE_NABVC3DVector@@@Z
+  -- NOD [NOD]: RELOCATION_MATCH  copies=121 old EQ/NEQ=9/2  => NO-GAIN(copies changed, none leaf-called NEQ)
+       DEBT   0080a550 ??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bi
+       DEBT   006a7270 ??RCThingFilter_IsInFOV@@QBE_NABVC3DVector@@@Z
+       old-checker NEQ diff: +['??RCThingFilter_IsInFOV@@QBE_NABVC3DVector@@@Z@006a7270 [not referenced by the leaf]'] -['??RCThingFilter_IsInFOV@@QBE_NABVC3DVector@@@Z@006a7270 [LEAF-REFERENCED]']
+====================================================================================================
+0083f650 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlS11  copies=61 old EQ/NEQ=5/6
+    HEAD leaf-called NEQ: 00567d00 ??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_ite
+    HEAD leaf-called NEQ: 0083ee10 ?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z
+    HEAD leaf-called NEQ: 00569330 ?substr@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z
+    HEAD leaf-called NEQ: 0083ebd0 ?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
+  -- NOD [NOD]: DIFFER(561v443)  copies=61 old EQ/NEQ=9/2  => HOLD-grade
+       REPAIR 00567d00 ??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_ite
+       REPAIR 0083ee10 ?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z
+       REPAIR 00569330 ?substr@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z
+       DEBT   0083ebd0 ?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
+       other  005672d0 NEQ->EQ lc=nn ??$_M_range_initialize@PBD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AA
+       old-checker NEQ diff: +[] -['??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_iterator_tag@1@@Z@00567d00 [LEAF-REFERENCED]', '??$_M_range_initialize@PBD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPBD0ABUforward_iterator_tag@1@@Z@005672d0 [not referenced by the leaf]', '?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z@0083ee10 [LEAF-REFERENCED]']
+  -- S10 [/d2inlS10]: DIFFER(561v443)  copies=61 old EQ/NEQ=9/2  => HOLD-grade
+       REPAIR 00567d00 ??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_ite
+       REPAIR 0083ee10 ?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z
+       REPAIR 00569330 ?substr@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z
+       DEBT   0083ebd0 ?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
+       other  005672d0 NEQ->EQ lc=nn ??$_M_range_initialize@PBD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AA
+       old-checker NEQ diff: +[] -['??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_iterator_tag@1@@Z@00567d00 [LEAF-REFERENCED]', '??$_M_range_initialize@PBD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPBD0ABUforward_iterator_tag@1@@Z@005672d0 [not referenced by the leaf]', '?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z@0083ee10 [LEAF-REFERENCED]']
+  -- S12 [/d2inlS12]: RELOCATION_MATCH  copies=61 old EQ/NEQ=5/6  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00567d00 ??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_ite
+       DEBT   0083ee10 ?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z
+       DEBT   00569330 ?substr@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z
+       DEBT   0083ebd0 ?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
+  -- S13 [/d2inlS13]: RELOCATION_MATCH  copies=61 old EQ/NEQ=5/6  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00567d00 ??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_ite
+       DEBT   0083ee10 ?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z
+       DEBT   00569330 ?substr@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z
+       DEBT   0083ebd0 ?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
+  -- S15 [/d2inlS15]: RELOCATION_MATCH  copies=61 old EQ/NEQ=5/6  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00567d00 ??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_ite
+       DEBT   0083ee10 ?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z
+       DEBT   00569330 ?substr@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z
+       DEBT   0083ebd0 ?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
+  -- S20 [/d2inlS20]: RELOCATION_MATCH  copies=61 old EQ/NEQ=5/6  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00567d00 ??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_ite
+       DEBT   0083ee10 ?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z
+       DEBT   00569330 ?substr@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z
+       DEBT   0083ebd0 ?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
+====================================================================================================
+008ddad0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT65  copies=68 old EQ/NEQ=11/4
+    HEAD leaf-called NEQ: 005d83b3 ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$
+    HEAD leaf-called NEQ: 00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+    HEAD leaf-called NEQ: 004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+  -- NOD [NOD]: DIFFER(741v661)  copies=68 old EQ/NEQ=13/2  => HOLD-grade
+       REPAIR 00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+       DEBT   004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+       other  005d83b3 NEQ->NEQ leafcalled_head=y leafcalled_new=n ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@
+       other  006699c0 NEQ->EQ lc=ny ?find@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$
+       old-checker NEQ diff: +[] -['?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z@00669d30 [LEAF-REFERENCED]', '?find@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Const_traits@U?$pair@$$CBKJ@std@@@2@@2@ABK@Z@006699c0 [not referenced by the leaf]']
+  -- T61 [/d2inlT61]: DIFFER(612v661)  copies=68 old EQ/NEQ=11/4  => HOLD-grade
+       DEBT   005d83b3 ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$
+       DEBT   00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+       DEBT   004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+  -- T62 [/d2inlT62]: DIFFER(612v661)  copies=68 old EQ/NEQ=11/4  => HOLD-grade
+       DEBT   005d83b3 ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$
+       DEBT   00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+       DEBT   004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+  -- T63 [/d2inlT63]: RELOCATION_MATCH  copies=68 old EQ/NEQ=11/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   005d83b3 ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$
+       DEBT   00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+       DEBT   004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+  -- T64 [/d2inlT64]: RELOCATION_MATCH  copies=68 old EQ/NEQ=11/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   005d83b3 ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$
+       DEBT   00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+       DEBT   004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+  -- T66 [/d2inlT66]: RELOCATION_MATCH  copies=68 old EQ/NEQ=11/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   005d83b3 ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$
+       DEBT   00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+       DEBT   004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+  -- T67 [/d2inlT67]: RELOCATION_MATCH  copies=68 old EQ/NEQ=11/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   005d83b3 ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$
+       DEBT   00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+       DEBT   004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+  -- T68 [/d2inlT68]: RELOCATION_MATCH  copies=68 old EQ/NEQ=11/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   005d83b3 ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$
+       DEBT   00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+       DEBT   004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+  -- T69 [/d2inlT69]: RELOCATION_MATCH  copies=68 old EQ/NEQ=11/4  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   005d83b3 ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$
+       DEBT   00669d30 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+       DEBT   004ac940 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@
+====================================================================================================
+0090e5d0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT80  copies=67 old EQ/NEQ=14/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=67 old EQ/NEQ=13/1  => HOLD-broke
+       BROKE  0090ebe0 (head EQ) ??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFil
+       old-checker NEQ diff: +['??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@@@@Z@0090ebe0 [LEAF-REFERENCED]'] -[]
+====================================================================================================
+0091f140 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT68  copies=100 old EQ/NEQ=5/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=100 old EQ/NEQ=5/0  => HOLD-broke
+       BROKE  00920200 (head EQ) ??$GetAllThingsInRoughArea@$$CBVCThingObject@@V?$vector@PBVCThingObject@@V?$allocator@PBVCThingObject@@@std@@@
+====================================================================================================
+009c4440 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT120  copies=15 old EQ/NEQ=4/1
+    HEAD leaf-called NEQ: 00404440 ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ
+  -- NOD [NOD]: DIFFER(563v609)  copies=15 old EQ/NEQ=4/1  => HOLD-grade
+       BROKE  009c3530 (head EQ) ?SetDirtyDiscError@CFileInstaller@@KIX_N@Z
+       REPAIR 00404440 ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ
+       old-checker NEQ diff: +['?SetDirtyDiscError@CFileInstaller@@KIX_N@Z@009c3530 [LEAF-REFERENCED]'] -['?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ@00404440 [LEAF-REFERENCED]']
+  -- T110 [/d2inlT110]: RELOCATION_MATCH  copies=15 old EQ/NEQ=4/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00404440 ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ
+  -- T115 [/d2inlT115]: RELOCATION_MATCH  copies=15 old EQ/NEQ=4/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00404440 ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ
+  -- T125 [/d2inlT125]: RELOCATION_MATCH  copies=15 old EQ/NEQ=4/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00404440 ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ
+  -- T140 [/d2inlT140]: RELOCATION_MATCH  copies=15 old EQ/NEQ=4/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00404440 ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ
+  -- T160 [/d2inlT160]: RELOCATION_MATCH  copies=15 old EQ/NEQ=4/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00404440 ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ
+  -- T200 [/d2inlT200]: DIFFER(563v609)  copies=15 old EQ/NEQ=3/2  => HOLD-grade
+       BROKE  009c3530 (head EQ) ?SetDirtyDiscError@CFileInstaller@@KIX_N@Z
+       other  00404440 NEQ->NEQ leafcalled_head=y leafcalled_new=n ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ
+       old-checker NEQ diff: +['?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ@00404440 [not referenced by the leaf]', '?SetDirtyDiscError@CFileInstaller@@KIX_N@Z@009c3530 [LEAF-REFERENCED]'] -['?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ@00404440 [LEAF-REFERENCED]']
+====================================================================================================
+00a71910 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /Gr /d2inlT66  copies=16 old EQ/NEQ=2/3
+    HEAD leaf-called NEQ: 00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+  -- NOD [NOD]: DIFFER(174v110)  copies=16 old EQ/NEQ=4/1  => HOLD-grade
+       REPAIR 00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+       other  00a32960 NEQ->EQ lc=ny ??4C3DMeshVolume@@QAEAAV0@ABV0@@Z
+       old-checker NEQ diff: +[] -['??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z@00a70490 [not referenced by the leaf]', '??4C3DMeshVolume@@QAEAAV0@ABV0@@Z@00a32960 [not referenced by the leaf]']
+  -- T60 [/d2inlT60]: RELOCATION_MATCH  copies=16 old EQ/NEQ=2/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+  -- T61 [/d2inlT61]: RELOCATION_MATCH  copies=16 old EQ/NEQ=2/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+  -- T62 [/d2inlT62]: RELOCATION_MATCH  copies=16 old EQ/NEQ=2/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+  -- T63 [/d2inlT63]: RELOCATION_MATCH  copies=16 old EQ/NEQ=2/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+  -- T64 [/d2inlT64]: RELOCATION_MATCH  copies=16 old EQ/NEQ=2/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+  -- T65 [/d2inlT65]: RELOCATION_MATCH  copies=16 old EQ/NEQ=2/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+  -- T45 [/d2inlT45]: DIFFER(128v110)  copies=16 old EQ/NEQ=1/4  => HOLD-grade
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+       DEBT   00a32960 ??4C3DMeshVolume@@QAEAAV0@ABV0@@Z
+       other  00a6f390 EQ->NEQ lc=yn ??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ
+       old-checker NEQ diff: +['??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z@00a70490 [LEAF-REFERENCED]', '??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ@00a6f390 [not referenced by the leaf]'] -['??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z@00a70490 [not referenced by the leaf]']
+  -- T50 [/d2inlT50]: DIFFER(128v110)  copies=16 old EQ/NEQ=1/4  => HOLD-grade
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+       DEBT   00a32960 ??4C3DMeshVolume@@QAEAAV0@ABV0@@Z
+       other  00a6f390 EQ->NEQ lc=yn ??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ
+       old-checker NEQ diff: +['??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ@00a6f390 [not referenced by the leaf]', '??4C3DMeshVolume@@QAEAAV0@ABV0@@Z@00a32960 [LEAF-REFERENCED]'] -['??4C3DMeshVolume@@QAEAAV0@ABV0@@Z@00a32960 [not referenced by the leaf]']
+  -- T55 [/d2inlT55]: DIFFER(119v110)  copies=16 old EQ/NEQ=1/4  => HOLD-grade
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+       other  00a6f390 EQ->NEQ lc=yn ??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ
+       old-checker NEQ diff: +['??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z@00a70490 [LEAF-REFERENCED]', '??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ@00a6f390 [not referenced by the leaf]'] -['??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z@00a70490 [not referenced by the leaf]']
+  -- T58 [/d2inlT58]: RELOCATION_MATCH  copies=16 old EQ/NEQ=2/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+  -- T59 [/d2inlT59]: RELOCATION_MATCH  copies=16 old EQ/NEQ=2/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00a70490 ??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z
+====================================================================================================
+00afcc30 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT1537 /d2inlS15  copies=156 old EQ/NEQ=19/7
+    HEAD leaf-called NEQ: 00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+    HEAD leaf-called NEQ: 00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+    HEAD leaf-called NEQ: 00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+    HEAD leaf-called NEQ: 00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- NOD [NOD]: DIFFER(3635v5274)  copies=156 old EQ/NEQ=21/5  => HOLD-grade
+       REPAIR 00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+       DEBT   00af72d0 ??$__copy@PAV?$CArray@J@@PAV1@H@std@@YIPAV?$CArray@J@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       other  00af7910 NEQ->EQ lc=ny ?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@
+       old-checker NEQ diff: +[] -['?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@0@Z@00af7910 [not referenced by the leaf]', '?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z@00afe910 [LEAF-REFERENCED]']
+  -- T1537 [/d2inlT1537]: RELOCATION_MATCH  copies=156 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- S15 [/d2inlS15]: DIFFER(3635v5274)  copies=156 old EQ/NEQ=21/5  => HOLD-grade
+       REPAIR 00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+       DEBT   00af72d0 ??$__copy@PAV?$CArray@J@@PAV1@H@std@@YIPAV?$CArray@J@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       other  00af7910 NEQ->EQ lc=ny ?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@
+       old-checker NEQ diff: +[] -['?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@0@Z@00af7910 [not referenced by the leaf]', '?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z@00afe910 [LEAF-REFERENCED]']
+  -- T1156 [/d2inlT1156]: DIFFER(5081v5274)  copies=156 old EQ/NEQ=19/7  => HOLD-grade
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T1537S13 [/d2inlT1537 /d2inlS13]: RELOCATION_MATCH  copies=156 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T1537S20 [/d2inlT1537 /d2inlS20]: RELOCATION_MATCH  copies=156 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T2000S15 [/d2inlT2000 /d2inlS15]: RELOCATION_MATCH  copies=156 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+====================================================================================================
+00b03ca0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT1537 /d2inlS15  copies=173 old EQ/NEQ=26/7
+    HEAD leaf-called NEQ: 00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+    HEAD leaf-called NEQ: 00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+    HEAD leaf-called NEQ: 00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+    HEAD leaf-called NEQ: 00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- NOD [NOD]: DIFFER(5506v6468)  copies=173 old EQ/NEQ=28/5  => HOLD-grade
+       REPAIR 00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+       DEBT   00af72d0 ??$__copy@PAV?$CArray@J@@PAV1@H@std@@YIPAV?$CArray@J@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       other  00af7910 NEQ->EQ lc=ny ?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@
+       old-checker NEQ diff: +[] -['?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@0@Z@00af7910 [not referenced by the leaf]', '?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z@00afe910 [LEAF-REFERENCED]']
+  -- T1537 [/d2inlT1537]: RELOCATION_MATCH  copies=173 old EQ/NEQ=26/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- S15 [/d2inlS15]: DIFFER(5506v6468)  copies=173 old EQ/NEQ=28/5  => HOLD-grade
+       REPAIR 00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+       DEBT   00af72d0 ??$__copy@PAV?$CArray@J@@PAV1@H@std@@YIPAV?$CArray@J@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       other  00af7910 NEQ->EQ lc=ny ?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@
+       old-checker NEQ diff: +[] -['?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@0@Z@00af7910 [not referenced by the leaf]', '?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z@00afe910 [LEAF-REFERENCED]']
+  -- T1156 [/d2inlT1156]: DIFFER(6214v6468)  copies=173 old EQ/NEQ=26/7  => HOLD-grade
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T1537S13 [/d2inlT1537 /d2inlS13]: RELOCATION_MATCH  copies=173 old EQ/NEQ=26/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T1537S20 [/d2inlT1537 /d2inlS20]: RELOCATION_MATCH  copies=173 old EQ/NEQ=26/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T2000S15 [/d2inlT2000 /d2inlS15]: RELOCATION_MATCH  copies=173 old EQ/NEQ=26/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+====================================================================================================
+00b1f200 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT1156  copies=148 old EQ/NEQ=19/7
+    HEAD leaf-called NEQ: 00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+    HEAD leaf-called NEQ: 00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+    HEAD leaf-called NEQ: 00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+    HEAD leaf-called NEQ: 00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- NOD [NOD]: DIFFER(2733v3195)  copies=148 old EQ/NEQ=21/5  => HOLD-grade
+       REPAIR 00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+       DEBT   00af72d0 ??$__copy@PAV?$CArray@J@@PAV1@H@std@@YIPAV?$CArray@J@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       other  00af7910 NEQ->EQ lc=ny ?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@
+       old-checker NEQ diff: +[] -['?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@0@Z@00af7910 [not referenced by the leaf]', '?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z@00afe910 [LEAF-REFERENCED]']
+  -- T1157 [/d2inlT1157]: RELOCATION_MATCH  copies=148 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T1200 [/d2inlT1200]: RELOCATION_MATCH  copies=148 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T1537 [/d2inlT1537]: RELOCATION_MATCH  copies=148 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T1537S15 [/d2inlT1537 /d2inlS15]: RELOCATION_MATCH  copies=148 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T1156S15 [/d2inlT1156 /d2inlS15]: RELOCATION_MATCH  copies=148 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+  -- T2000 [/d2inlT2000]: RELOCATION_MATCH  copies=148 old EQ/NEQ=19/7  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00440f00 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z
+       DEBT   00afe7c0 ?_M_fill_insert@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXPAV?$CArray@J@@IABV3@@Z
+       DEBT   00afe6f0 ?_M_insert_overflow@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@IAEXPAV?$CArray@J@@ABV3@ABU__f
+       DEBT   00afe910 ?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z
+====================================================================================================
+00b21e90 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlS84  copies=46 old EQ/NEQ=3/3
+    HEAD leaf-called NEQ: 0075b8d0 ??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z
+    HEAD leaf-called NEQ: 0066e370 ?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__fals
+    HEAD leaf-called NEQ: 0075c040 ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z
+  -- NOD [NOD]: DIFFER(581v619)  copies=46 old EQ/NEQ=4/2  => HOLD-grade
+       BROKE  0075bb00 (head NOADDR) ?_M_fill_insert@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@IABV3@@Z
+       REPAIR 0075c040 ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z
+       DEBT   0075b8d0 ??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z
+       DEBT   0066e370 ?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__fals
+       old-checker NEQ diff: +[] -['?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z@0075c040 [LEAF-REFERENCED]']
+  -- S85 [/d2inlS85]: RELOCATION_MATCH  copies=46 old EQ/NEQ=3/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   0075b8d0 ??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z
+       DEBT   0066e370 ?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__fals
+       DEBT   0075c040 ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z
+  -- S90 [/d2inlS90]: RELOCATION_MATCH  copies=46 old EQ/NEQ=3/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   0075b8d0 ??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z
+       DEBT   0066e370 ?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__fals
+       DEBT   0075c040 ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z
+  -- S100 [/d2inlS100]: RELOCATION_MATCH  copies=46 old EQ/NEQ=3/3  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   0075b8d0 ??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z
+       DEBT   0066e370 ?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__fals
+       DEBT   0075c040 ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z
+====================================================================================================
+00b2c8e0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlS100 /d2inlT200  copies=34 old EQ/NEQ=1/2
+  -- NOD [NOD]: RELOCATION_MATCH  copies=34 old EQ/NEQ=1/2  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+====================================================================================================
+00b3fc40 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT444  copies=21 old EQ/NEQ=1/1
+    HEAD leaf-called NEQ: 00b439c0 ?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z
+  -- NOD [NOD]: RELOCATION_MATCH  copies=21 old EQ/NEQ=0/2  => HOLD-broke
+       BROKE  00b3f5e0 (head EQ) ?PeekMapNormal@CEngineMap@@QBE?AVC3DVector@@JJ@Z
+       DEBT   00b439c0 ?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z
+       old-checker NEQ diff: +['?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z@00b439c0 [not referenced by the leaf]', '?PeekMapNormal@CEngineMap@@QBE?AVC3DVector@@JJ@Z@00b3f5e0 [LEAF-REFERENCED]'] -['?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z@00b439c0 [LEAF-REFERENCED]']
+====================================================================================================
+00b47bc0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT29  copies=34 old EQ/NEQ=3/1
+    HEAD leaf-called NEQ: 00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+  -- NOD [NOD]: DIFFER(1094v1028)  copies=34 old EQ/NEQ=4/0  => HOLD-grade
+       REPAIR 00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+       old-checker NEQ diff: +[] -['?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLight@CEngineLightingManager@@ABQAU34@ABU__true_type@2@I_N@Z@00b49df0 [LEAF-REFERENCED]']
+  -- T30 [/d2inlT30]: RELOCATION_MATCH  copies=34 old EQ/NEQ=3/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+  -- T31 [/d2inlT31]: RELOCATION_MATCH  copies=34 old EQ/NEQ=3/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+  -- T32 [/d2inlT32]: RELOCATION_MATCH  copies=34 old EQ/NEQ=3/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+  -- T35 [/d2inlT35]: RELOCATION_MATCH  copies=34 old EQ/NEQ=3/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+  -- T40 [/d2inlT40]: RELOCATION_MATCH  copies=34 old EQ/NEQ=4/0  => LANDABLE(repairs)
+       REPAIR 00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+       old-checker NEQ diff: +[] -['?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLight@CEngineLightingManager@@ABQAU34@ABU__true_type@2@I_N@Z@00b49df0 [LEAF-REFERENCED]']
+  -- T45 [/d2inlT45]: RELOCATION_MATCH  copies=34 old EQ/NEQ=4/0  => LANDABLE(repairs)
+       REPAIR 00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+       old-checker NEQ diff: +[] -['?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLight@CEngineLightingManager@@ABQAU34@ABU__true_type@2@I_N@Z@00b49df0 [LEAF-REFERENCED]']
+  -- T36 [/d2inlT36]: RELOCATION_MATCH  copies=34 old EQ/NEQ=3/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+  -- T37 [/d2inlT37]: RELOCATION_MATCH  copies=34 old EQ/NEQ=3/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+  -- T38 [/d2inlT38]: RELOCATION_MATCH  copies=34 old EQ/NEQ=3/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+  -- T39 [/d2inlT39]: RELOCATION_MATCH  copies=34 old EQ/NEQ=4/0  => LANDABLE(repairs)
+       REPAIR 00b49df0 ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@
+       old-checker NEQ diff: +[] -['?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLight@CEngineLightingManager@@ABQAU34@ABU__true_type@2@I_N@Z@00b49df0 [LEAF-REFERENCED]']
+====================================================================================================
+00bd9ce0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT114  copies=48 old EQ/NEQ=4/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=48 old EQ/NEQ=3/1  => NO-GAIN(copies changed, none leaf-called NEQ)
+       other  00bd9b90 EQ->NEQ lc=nn ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+       old-checker NEQ diff: +['?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z@00bd9b90 [not referenced by the leaf]'] -[]
+====================================================================================================
+00bda150 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT114  copies=48 old EQ/NEQ=4/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=48 old EQ/NEQ=3/1  => NO-GAIN(copies changed, none leaf-called NEQ)
+       other  00bd9b90 EQ->NEQ lc=nn ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+       old-checker NEQ diff: +['?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z@00bd9b90 [not referenced by the leaf]'] -[]
+====================================================================================================
+00de8370 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlS13 /d2inlT29  copies=17 old EQ/NEQ=5/2
+    HEAD leaf-called NEQ: 006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- NOD [NOD]: DIFFER(5054v4894)  copies=17 old EQ/NEQ=6/1  => HOLD-grade
+       REPAIR 006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+       old-checker NEQ diff: +[] -['??1CScriptGameResourceObjectMovieBase@@UAE@XZ@006e7b80 [LEAF-REFERENCED]']
+  -- S13T30 [/d2inlS13 /d2inlT30]: DIFFER(4990v4894)  copies=17 old EQ/NEQ=5/2  => HOLD-grade
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- S13T32 [/d2inlS13 /d2inlT32]: DIFFER(4990v4894)  copies=17 old EQ/NEQ=5/2  => HOLD-grade
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- S13T35 [/d2inlS13 /d2inlT35]: DIFFER(4990v4894)  copies=17 old EQ/NEQ=5/2  => HOLD-grade
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- S14T29 [/d2inlS14 /d2inlT29]: RELOCATION_MATCH  copies=17 old EQ/NEQ=5/2  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- S15T29 [/d2inlS15 /d2inlT29]: DIFFER(5072v4894)  copies=17 old EQ/NEQ=5/2  => HOLD-grade
+       other  006e7b80 NEQ->NEQ leafcalled_head=y leafcalled_new=n ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+       old-checker NEQ diff: +['??1CScriptGameResourceObjectMovieBase@@UAE@XZ@006e7b80 [not referenced by the leaf]'] -['??1CScriptGameResourceObjectMovieBase@@UAE@XZ@006e7b80 [LEAF-REFERENCED]']
+====================================================================================================
+00e4aa00 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT200  copies=17 old EQ/NEQ=3/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=17 old EQ/NEQ=3/0  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+====================================================================================================
+00e4fa20 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT69  copies=17 old EQ/NEQ=5/0
+  -- NOD [NOD]: RELOCATION_MATCH  copies=17 old EQ/NEQ=5/0  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+====================================================================================================
+00efa4f0 CAT: RELOCATION_MATCH flags=/O2 /Oy /W3 /d2inlT36  copies=14 old EQ/NEQ=5/1
+    HEAD leaf-called NEQ: 006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- NOD [NOD]: DIFFER(1389v1362)  copies=14 old EQ/NEQ=6/0  => HOLD-grade
+       REPAIR 006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+       old-checker NEQ diff: +[] -['??1CScriptGameResourceObjectMovieBase@@UAE@XZ@006e7b80 [LEAF-REFERENCED]']
+  -- T38 [/d2inlT38]: RELOCATION_MATCH  copies=14 old EQ/NEQ=5/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- T40 [/d2inlT40]: RELOCATION_MATCH  copies=14 old EQ/NEQ=5/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- T43 [/d2inlT43]: RELOCATION_MATCH  copies=14 old EQ/NEQ=5/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- T46 [/d2inlT46]: RELOCATION_MATCH  copies=14 old EQ/NEQ=5/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- T48 [/d2inlT48]: RELOCATION_MATCH  copies=14 old EQ/NEQ=5/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  -- T50 [/d2inlT50]: RELOCATION_MATCH  copies=14 old EQ/NEQ=5/1  => SAME-AS-HEAD (no copy verdict changed; for a NOD variant: flag unneeded)
+       DEBT   006e7b80 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ

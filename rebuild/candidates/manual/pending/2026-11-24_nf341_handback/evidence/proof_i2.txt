@@ -1,0 +1,4 @@
+##### 006ea430 renames: ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z=?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 00734050 renames: ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z=?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+ALL_EQ sections=17 DEF=16 tables=-

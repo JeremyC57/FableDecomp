@@ -1,0 +1,29 @@
+00ea59e0 H v PG: NOT_EQ (sections 99 v 95)
+  DROPPED .text:?_M_root@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharS
+  DROPPED .text:?_S_left@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharS
+  DROPPED .text:?_S_right@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCChar
+  DROPPED .text:?_S_value@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCChar
+  DROPPED .text:??R?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QBEABVCCharString@@ABU?$pair@$$CBVCCharString
+  DROPPED .text:?_S_key@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharSt
+  ADDED   .text:??MCCharString@@QBE_NABV0@@Z#1
+  ADDED   .text:??$__default_constructed@VCScriptGameResourceObjectScriptedThingBase@@@std@@YA?AVCScriptGameResourceObjectScriptedThingBase@@PAV1@@Z#1
+  CHANGED .text:??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z#1 flags bytes(17 v 41) relocs
+  CHANGED .text:??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ#1 flags bytes(78 v 19) relocs
+  CHANGED .text:?insert@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCSc flags bytes(31 v 29) relocs
+  CHANGED .text:??_G?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAEPAXI@Z#1 bytes(30 v 99) relocs
+  CHANGED .text:??0?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@ABVCCharString@@ABVCScriptGameResourceObjectScriptedThingBase flags bytes(62 v 30) relocs
+  CHANGED .text:?lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCC bytes(55 v 21) relocs
+  CHANGED .text:??$_Destroy@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@VCScriptGameResour bytes(9 v 80) relocs
+  CHANGED .text:?lower_bound@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@ bytes(22 v 21) relocs
+  CHANGED .text:??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptG flags bytes(257 v 118) relocs
+  EXT-    DEF ??R?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QBEABVCCharString@@ABU?$pair@$$CBVCCharString@@VCScriptGa
+  EXT-    DEF ?_M_root@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScr
+  EXT-    DEF ?_S_key@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScri
+  EXT-    DEF ?_S_left@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScr
+  EXT-    DEF ?_S_right@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCSc
+  EXT-    DEF ?_S_value@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCSc
+  EXT-    UND ??MCCharString@@QBE_NABV0@@Z
+  EXT+    DEF ??$__default_constructed@VCScriptGameResourceObjectScriptedThingBase@@@std@@YA?AVCScriptGameResourceObjectScriptedThingBase@@PAV1@@Z
+  EXT+    DEF ??MCCharString@@QBE_NABV0@@Z
+  EXT+    UND ??M?$CBasicString@D@@QBE_NABV0@@Z
+  EXT+    UND ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString

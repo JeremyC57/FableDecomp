@@ -1,0 +1,16 @@
+10:00:10 ZS_OK /home/user/FableDecomp/rebuild/tests/00/46/CCombatAbilityBlockDefBase_Transfer_00465c54_test.cpp
+10:00:11 ZS_OK /home/user/FableDecomp/rebuild/src/compiled/00/76/CTCObjectAugmentations_AttachAugmentationParticles_007677e0.cpp
+10:00:12 ZS_OK /home/user/FableDecomp/rebuild/tests/00/76/CTCObjectAugmentations_AttachAugmentationParticles_007677e0_test.cpp
+10:00:13 ZS_OK /home/user/FableDecomp/rebuild/tests/00/83/LHNetworkLibLHHttpHeaders_GetHeader_0083f650_test.cpp
+10:00:14 ZS_OK /home/user/FableDecomp/rebuild/tests/00/8d/NCreatureModeCModeThunderLightningStorm_CreateLightningBeams_008ddad0_test.cpp
+10:00:14 ZS_OK /home/user/FableDecomp/rebuild/tests/00/af/NParticleEngineCPSCRenderSprite_PreparePrimitives_00afcc30_test.cpp
+10:00:15 ZS_OK /home/user/FableDecomp/rebuild/tests/00/b0/NParticleEngineCPSCRenderMesh_PreparePrimitives_00b03ca0_test.cpp
+10:00:16 ZS_OK /home/user/FableDecomp/rebuild/tests/00/b1/NParticleEngineCPSCDecalRenderer_PreparePrimitives_00b1f200_test.cpp
+10:00:17 ZS_OK /home/user/FableDecomp/rebuild/tests/00/b4/CEngineLightingManager_UpdateShadowedSpotLights_00b47bc0_test.cpp
+10:00:20 ZS_OK /home/user/FableDecomp/rebuild/tests/00/64/NPlayerGuiCDrawAbilityButtons_UpdateWeaponAbilities_0064b1ac_test.cpp
+10:00:20 ZS_OK /home/user/FableDecomp/rebuild/tests/00/6c/CTCHeroOpinionDeedLog_InformRelevantThingsOfDeed_006c6040_test.cpp
+10:00:22 ZS_OK /home/user/FableDecomp/rebuild/tests/00/90/CAIStateGroupBanditGossip_Update_0090e5d0_test.cpp
+10:00:23 ZS_OK /home/user/FableDecomp/rebuild/tests/00/bd/CEngineLandscapeMemoryManager_ProcessDisposalList_00bda150_test.cpp
+10:00:24 ZS_OK /home/user/FableDecomp/rebuild/tests/00/e4/NScriptCVBanditTollScriptCBanditLeader_Main_00e4aa00_test.cpp
+10:00:25 ZS_OK /home/user/FableDecomp/rebuild/tests/00/e4/NScriptCVBeardyBaldyScript_Main_00e4fa20_test.cpp
+ZS_DONE

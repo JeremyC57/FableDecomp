@@ -1,0 +1,27 @@
+group	copy	row	flags	status	measurement	evidence
+1	0x00CD3D2E	00ce7670	/d2inlT89690	unprobed	not probed (/d2inlT89690)	evidence/pk_H_00ce7670.txt
+1	0x00CD3D2E	00d13580	/d2inlS15	skipped	PG: operator[] 145 NEQ, leaf identical (S15 acts inside the size region)	evidence/pk_H_00d13580.txt pk_PG_00d13580.txt objsec_H_v_PG_00d13580.txt
+1	0x00CD3D2E	00d19bd0	/d2inlS15	skipped-unprobed	S15 like the 2 measured S15 rows; not probed	evidence/pk_H_00d19bd0.txt
+1	0x00CD3D2E	00d1a740	/d2inlS15	skipped-unprobed	S15 like the 2 measured S15 rows; not probed	evidence/pk_H_00d1a740.txt
+1	0x00CD3D2E	00d1b200	/d2inlS15	skipped-unprobed	S15 like the 2 measured S15 rows; not probed	evidence/pk_H_00d1b200.txt
+1	0x00CD3D2E	00d22f30	/d2inlS15	skipped-unprobed	S15 like the 2 measured S15 rows; not probed	evidence/pk_H_00d22f30.txt
+1	0x00CD3D2E	00d2d930	/d2inlS15	skipped	PG: operator[] 145 NEQ, leaf identical (S15 acts inside the size region)	evidence/pk_H_00d2d930.txt pk_PG_00d2d930.txt objsec_H_v_PG_00d2d930.txt
+1	0x00CD3D2E	00d45060	/d2inlT53	unprobed	not probed (/d2inlT53)	evidence/pk_H_00d45060.txt
+1	0x00CD3D2E	00d58490	-	decision	PG: leaf identical, operator[] EQ 118; multi-COMDAT collateral (NOTES group 1); 0x9AC700 159->150 still NEQ	evidence/pk_H_00d58490.txt pk_PG_00d58490.txt objsec_H_v_PG_00d58490.txt
+1	0x00CD3D2E	00e8ef80	/d2inlT72	decision	PG: leaf identical, operator[] EQ 118; multi-COMDAT collateral (NOTES group 1)	evidence/pk_H_00e8ef80.txt pk_PG_00e8ef80.txt objsec_H_v_PG_00e8ef80.txt
+1	0x00CD3D2E	00ea59e0	-	decision	PG: leaf identical, operator[] EQ 118; multi-COMDAT collateral (NOTES group 1)	evidence/pk_H_00ea59e0.txt pk_PG_00ea59e0.txt objsec_H_v_PG_00ea59e0.txt
+2	0x006E7B80	00d58490	-	skipped	25 NEQ; PM fix: copy EQ 66, leaf DIFFER 9580v9560	evidence/pk_H_00d58490.txt pk_PM_00d58490.txt
+2	0x006E7B80	00e2ff00	-	skipped-uncompiled	same row-local decl-only PImp dtor; 25 NEQ per DEBT_BY_COPY	-
+2	0x006E7B80	00e3bb70	-	skipped-uncompiled	same row-local decl-only PImp dtor; 25 NEQ per DEBT_BY_COPY	-
+2	0x006E7B80	00ed17d0	-	skipped-uncompiled	same row-local decl-only PImp dtor; 25 NEQ per DEBT_BY_COPY	-
+2	0x006E7B80	00de8370	flagged	skipped	flag-caused (NF344 lane)	-
+2	0x006E7B80	00efa4f0	flagged	skipped	flag-caused (NF344 lane)	-
+2	0x006E7B80	00d62480	-	debt	landed, RELOCATION_MATCH, copy NEQ 25 (same form)	evidence/pk_H_00d62480.txt
+2	0x006E7B80	00ed8680 (B staged)	-	DECISION: hold-or-debt	B: RELOCATION_MATCH, copy NEQ 25 leaf-called; M/D: copy EQ 66 but leaf DIFFER 3636v3652; no non-forcing fix	evidence/pk_B_00ed8680.txt pk_M_00ed8680.txt pk_D_00ed8680.txt ed8680_leaf_B_v_D_calls.txt
+3	0x0040FE60	00463d18	-	skipped	PO: leaf identical, 129 bytes, 2 jump displacements differ (tail order)	evidence/pk_H_00463d18.txt pk_PO_00463d18.txt objsec_H_v_PO_00463d18.txt
+3	0x0040FE60	004e9393	?	unprobed	not compiled	-
+3	0x0040FE60	00472896	?	unprobed	not compiled	-
+4	0x00AFE910	*	/d2inl	skipped	all emitters /d2inl-caused (NF344)	-
+5	0x00B439C0	*	?	lead	flag-sensitive; EQ row 00b41770 uses GETMAP_ORIGINAL_PASS26 without PEEK_BODIES	-
+6	0x00429C15/53/6F,0x00429F43	*	?	not-reached	-	-
+7	0x005949C3	*	?	not-reached	-	-

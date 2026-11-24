@@ -1,0 +1,14 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+EQ  0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ 
+EQ  0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z 
+EQ  004cdae0 47 ?GFRandom@@YIKKPAK@Z 
+EQ  005c05c0 21 ??$IS_THING_ALIVE@PAVCThingCreatureBase@@@@YI_NABQAVCThingCreatureBase@@@Z 
+EQ  004a96f0 32 ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z 
+EQ  0074cbc0 42 ?at@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QBEABVCDefIndex@@I@Z 
+NEQ 004a9730 27 ??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z not referenced by the leaf
+NEQ 0074d220 116 ??$GetDef@VCCreatureGenerationFamilyDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCreatureGenerationFamilyDef@@@@@Z LEAF-REFERENCED
+NEQ 00513160 116 ??$GetDef@VCThingCreatureDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingCreatureDef@@@@@Z LEAF-REFERENCED
+NEQ 00485815 182 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z LEAF-REFERENCED
+EQ  0074a190 75 ?HasHitCreationLimit@CTCCreatureGenerator@@QBE_NXZ 
+NEQ 004ba4e0 59 ?push_back@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z LEAF-REFERENCED
