@@ -567,3 +567,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF383 identity research under the no-ICF ruling: NF378 skipped-conflict (18) + NF380 q5 unknowns (26)	naming	claimed	locks via nflocks owner NF383
 2026-11-24	A	agent NF381 the 0x0044C0C0 generated Def-ctor binder family (NF380 q1, ~77 rows) + NF380 q3 binder respells (not 0042ded5)	naming	done	landed nf381_b1 (78) and nf381_b2 (1); stand-in binders queued T3 nf381
 2026-11-24	A	agent NF384 the 116 free T1 split_fixable targets (scratch agentNF384/TARGETS.tsv)	naming	claimed	locks via nflocks owner NF384
+2026-11-24	A	agent NF385 stand-in selves sharing one name with one other address (581 free OPEN.tsv rows, fix "shared name (2 addresses)"; scratch agentNF385/TARGETS.tsv)	naming	claimed	locks via nflocks owner NF385
