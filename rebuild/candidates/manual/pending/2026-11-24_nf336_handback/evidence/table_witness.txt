@@ -1,0 +1,6 @@
+# reloc_bindings.tsv lines whose witness (3rd column) is one of the 24 rows: does HEAD / the new object reference or define the symbol (non-debug sections)?
+line 7009	00e96dd0	??_7CVtable_012ecb94@@6B@	012ecb94	HEAD=no	new=no
+line 12974	00e93d50	??_7CV_HauntedHouseScript@NScript@@6B@	012ecb94	HEAD=yes	new=yes
+line 12975	00e93da0	??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@	012ecba8	HEAD=yes	new=yes
+line 12976	00e95f80	??_7?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@6B@	012ecd58	HEAD=yes	new=yes
+line 17354	00e953e0	?IsActiveThreadTerminating@CV_HauntedHouseScript@NScript@@QAE_NXZ	00cb7940	HEAD=yes	new=no

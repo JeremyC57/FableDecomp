@@ -10,66 +10,36 @@
 // Callees: CScriptThing slot 18 MsgIsKilledBy ("" 0x0122D70E temporary); CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0. Float pool: 50.0f 0x0124E7F8, 4.0f 0x0123088C, 100.0f 0x01230A08, 3.0f 0x0122DED4, 200.0f
 //   0x0125A168 (the doubling is `fadd st(0),st(0)`).
-class CCharString {
-public:
-    void* PData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
 #include "engine/CCountedPointer.h"
-// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CScriptThing.h"
-class CGameScriptInterface;
-class CScriptBase;
-class CPersistContext;
-// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
-#include "engine/CEntityScriptBase.h"
-class CPersistContext;
-// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-class CGameScriptInterfaceBase;
-
-namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CV_HauntedHouseScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
-public:
-    float UndeadBar;                                    // +0x48
-    long GuiCounter;                                    // +0x4c
-    bool CellarDoorOpen;                                // +0x50
-    bool HeroBeenToChest;                               // +0x51
-    bool QuestCardGiven;                                // +0x52
-    bool InHouse;                                       // +0x53
-    long UndeadAlive;                                   // +0x54
-    long MaxUndead;                                     // +0x58
-    class CHHUndead;
-};
-class CV_HauntedHouseScript::CHHUndead : public CEntityScriptBase {
-public:
-    CV_HauntedHouseScript* ParentClass;   // +0x14
-    CQ_SunnyvaleMasterData* PMasterData;   // +0x18
-    float RaiseUndeadBarAmount;                         // +0x1c
-private:
-    virtual void OnPredicateFail();
-};
-
-void CV_HauntedHouseScript::CHHUndead::OnPredicateFail()
+#include "engine/CV_HauntedHouseScript.h"
+void NScript::CV_HauntedHouseScript::CHHUndead::OnPredicateFail()
 {
     if (Me.MsgIsKilledBy("")) {
         float amount;
-        if (ParentClass->UndeadBar < 50.0f)
+        if (ParentClass.UndeadBar < 50.0f)
             amount = RaiseUndeadBarAmount * 4.0f;
-        else if (ParentClass->UndeadBar < 100.0f)
+        else if (ParentClass.UndeadBar < 100.0f)
             amount = RaiseUndeadBarAmount * 3.0f;
-        else if (ParentClass->UndeadBar < 200.0f)
+        else if (ParentClass.UndeadBar < 200.0f)
             amount = RaiseUndeadBarAmount * 2.0f;
         else
             amount = RaiseUndeadBarAmount;
-        ParentClass->UndeadBar += amount;
-        --ParentClass->UndeadAlive;
+        ParentClass.UndeadBar += amount;
+        --ParentClass.UndeadAlive;
     }
-}
 }

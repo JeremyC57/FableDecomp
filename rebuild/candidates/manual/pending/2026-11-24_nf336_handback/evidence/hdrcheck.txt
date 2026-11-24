@@ -1,0 +1,17 @@
+# NF336 hdrcheck (add-only proof): diff orig/hdr_<X>.h v hdr/engine/<X>.h hunk types (only 'a' = pure insertion allowed) and the first/last line of each inserted block
+## CV_HauntedHouseScript
+hunk 30a31,41
+hunk 72a84,106
+hunk 94a129,146
+hunk 101a154,159
+hunk types:       4 a 
+  insert lines 31-41 first: #ifdef FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS | last: #endif
+  insert lines 84-106 first: #ifdef FABLE_RETAIL_CHHUNDEAD_MEMBERS | last: #endif
+  insert lines 129-146 first: #ifdef FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS | last: #endif
+  insert lines 155-160 first: #ifdef FABLE_RETAIL_CHHUNDEAD_MEMBERS | last: #endif
+  inserted lines removed == orig: True
+## CSpawnedFuncBase
+hunk 28a29,36
+hunk types:       1 a 
+  insert lines 29-36 first: #ifdef FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY | last: #endif
+  inserted lines removed == orig: True

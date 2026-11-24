@@ -1,5 +1,5 @@
 // CV_HauntedHouseScript::CheckRegionLeaving() -- while the Haunted House is loaded keep its creature generators off and the cellar door unusable; when the hero leaves, drop the undead counter from the quest display
-// Leaf: CheckRegionLeaving
+// Leaf: ?CheckRegionLeaving@CV_HauntedHouseScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E953E0, 457 bytes (464 with padding), plain `ret`.
 // Label: the manifest's "CV_ExposeMayorScript::DoMission" is propagated. This body is a CSpawnedFunc target stored at
 //   0x00E94BF7 (its only reference), works on "HauntedHouse"/"HH_CellarDoor" and passes the script's GUI counter
@@ -17,56 +17,49 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
-class CCPPointerInfo;
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
 #include "engine/CCountedPointer.h"
-// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CScriptThing.h"
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CGameScriptInterface.h"
-namespace NScript {
-class CV_HauntedHouseScript {
-public:
-    unsigned char _base[0x40];                              // CScriptBase
-    CGameScriptInterface* Game;                             // +0x40
-    void* Data;                                             // +0x44
-    float UndeadBar;                                        // +0x48
-    long GuiCounter;                                        // +0x4c
-    bool IsActiveThreadTerminating();                       // 0x00CB7940 (CScriptBase)
-    void CheckRegionLeaving();
-};
-} // namespace NScript
-using NScript::CV_HauntedHouseScript;
+#include "engine/CV_HauntedHouseScript.h"
+#include "engine/CGameScriptInterfaceBase.h"
+// Callee respelled by the move: IsActiveThreadTerminating is the base member ?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ 0x00CB7940
+//   (Ego_r.pdb + FableWin.pdb; the row-local model declared it on CV_HauntedHouseScript). Game is CLevelScriptBase's reference +0x40.
 void NScript::CV_HauntedHouseScript::CheckRegionLeaving()
 {
     while (!IsActiveThreadTerminating()) {
-        Game->SetCreatureGeneratorsEnabled("HauntedHouse", false);
-        while (!Game->IsRegionLoaded("HauntedHouse")) {
-            Game->NewScriptFrame();
+        Game.SetCreatureGeneratorsEnabled("HauntedHouse", false);
+        while (!Game.IsRegionLoaded("HauntedHouse")) {
+            Game.NewScriptFrame();
             if (IsActiveThreadTerminating())
                 return;
         }
         if (IsActiveThreadTerminating())
             return;
         {
-            CScriptThing door = Game->GetThingWithScriptName("HH_CellarDoor");
-            Game->SetThingAsUsable(door, false);
-            while (!(!Game->IsRegionLoaded("HauntedHouse"))) {
-                Game->NewScriptFrame();
+            CScriptThing door = Game.GetThingWithScriptName("HH_CellarDoor");
+            Game.SetThingAsUsable(door, false);
+            while (!(!Game.IsRegionLoaded("HauntedHouse"))) {
+                Game.NewScriptFrame();
                 if (IsActiveThreadTerminating())
                     return;
             }
             if (IsActiveThreadTerminating())
                 return;
-            Game->RemoveQuestInfoElement(GuiCounter);
+            Game.RemoveQuestInfoElement(GuiCounter);
         }
-        Game->NewScriptFrame();
+        Game.NewScriptFrame();
     }
 }

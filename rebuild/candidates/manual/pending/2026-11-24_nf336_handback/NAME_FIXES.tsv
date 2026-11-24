@@ -1,0 +1,11 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00E95650	?GetParentScript@CM_QuestControl@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ	FableWin.pdb + Ego_r TPI method list; retail vftable 0x012ECCA0 GetParentScript slot = 0x00E95650; landed rows of this object reference this spelling (UND in 0x00E955B0 / 0x00E95670)	gapscan_sub00e95650 (T::Hook)
+0x00E95660	?Init@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ	FableWin.pdb; retail vftable 0x012ECCA0 slot 2 = 0x00E95660; referenced by the NF336 vftables of 0x00E955B0 / 0x00E95670	gapscan_sub00e95660 (T::Hook)
+0x00E95730	?GetParentScript@CM_UndeadHere@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ	FableWin.pdb; retail vftable 0x012ECCBC GetParentScript slot	gapscan_sub00e95730
+0x00E95740	?Init@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ	FableWin.pdb; retail vftable 0x012ECCBC slot 2	gapscan_sub00e95740
+0x00E95C90	?GetParentScript@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ	FableWin.pdb + Ego_r TPI field list 0x10B5B; retail vftable 0x012ECD20 GetParentScript slot	gapscan_sub00e95c90
+0x00E95CA0	?Init@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ	FableWin.pdb + Ego_r TPI field list 0x10B5B; retail vftable 0x012ECD20 slot 2	gapscan_sub00e95ca0
+0x00E95D70	?GetParentScript@CHHUndead@CV_HauntedHouseScript@NScript@@UBEPAVCScriptBase@@XZ	FableWin.pdb + Ego_r TPI field list 0x10B4C; retail vftable 0x012ECD3C GetParentScript slot	gapscan_sub00e95d70
+0x00CDD410	?OnPredicateFail@CSpawnedFuncBase@@UAEXXZ	FableWin.pdb (consecutive with OnInterrupted); retail vftables 0x012C2F9C / 0x012ECBA8 slot 5 = 0x00CDD410 (and every TLC CSpawnedFunc vtable, labels_anniversary waves23 notes); engine/CSpawnedFuncBase.h declaration order	gapscan_sub00cdd410
+0x00CDD420	?OnInterrupted@CSpawnedFuncBase@@UAEXXZ	FableWin.pdb; retail vftables 0x012C2F9C / 0x012ECBA8 slot 6 = 0x00CDD420; engine/CSpawnedFuncBase.h declaration order	gapscan_sub00cdd420
+0x00E96660	?Main@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ	Ego_r.pdb + FableWin.pdb; retail vftable 0x012ECD20 slot 1 = 0x00E96660 (NF336 vt_p1.txt); the NF336 vftables of 0x00E95BF0 / 0x00E95CB0 reference this spelling	catalog Module CM_HeroInsideHouse (non-nested), Leaf ?Main@CM_HeroInsideHouse@ (truncated), row-local class CM_HeroInsideHouse::Main

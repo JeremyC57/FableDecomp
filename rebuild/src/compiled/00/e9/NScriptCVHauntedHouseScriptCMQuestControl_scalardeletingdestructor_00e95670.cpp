@@ -8,50 +8,31 @@
 //   Was a free __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor stand-in (catalog CVtable_012ecca0).
 // Shape: the deleting destructor is emitted with the vtable, i.e. in the TU that constructs the entity: the class model and the PDB Alloc
 //   of the landed row 0x00E955B0 (rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMQuestControl_Alloc_00e955b0.cpp), its user-declared destructor dropped. The Alloc body is not part of this graded body.
-class CGameScriptInterfaceBase;
-class CScriptDataBase;
-
-// 0x00CDEE00 is CCountedPointer<T>::DeleteData (engine/CCountedPointer.h; reloc_bindings binds both spellings)
-
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
 #include "engine/CCountedPointer.h"
-
-
-// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CScriptThing.h"
-
-// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
-#include "engine/CEntityScriptBase.h"
-
-// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
-#define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-
-namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CV_HauntedHouseScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
-public:
-    class CM_QuestControl : public CEntityScriptBase {
-    public:
-        CV_HauntedHouseScript* ParentClass;             // +0x14
-        CQ_SunnyvaleMasterData* PMasterData;            // +0x18
-
-        CM_QuestControl(CV_HauntedHouseScript& parent, CScriptDataBase* data, const CScriptThing& me)
-            : CEntityScriptBase(*parent.Game, me), ParentClass(&parent)
-        {
-            PMasterData = (CQ_SunnyvaleMasterData*)data;
-        }
-        static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_HauntedHouseScript& parent, CScriptDataBase* data, const CScriptThing& me);
-    private:
-    virtual void Main();                                 // PDB ?Main@<entity>@..@@EAEXXZ (slot 1)
-public:
-    virtual CScriptBase* GetParentScript() const;        // PDB ?GetParentScript@<entity>@..@@UBEPAVCScriptBase@@XZ (slot 3)
-};
-};
-
-CCountedPointer<CEntityScriptBase> __fastcall CV_HauntedHouseScript::CM_QuestControl::Alloc(CV_HauntedHouseScript& parent, CScriptDataBase* data, const CScriptThing& me)
+#include "engine/CV_HauntedHouseScript.h"
+// The deleting destructor is emitted with the vtable, i.e. in the TU that constructs the entity (as at HEAD: the constructor and
+//   the PDB Alloc are defined here); the destructor is the implicit one (??_G calls ~CEntityScriptBase 0x00F35B40).
+inline NScript::CV_HauntedHouseScript::CM_QuestControl::CM_QuestControl(CV_HauntedHouseScript& parent, CScriptDataBase* data, const CScriptThing& me)
+    : CEntityScriptBase(parent.Game, me), ParentClass(parent)
+{
+    PMasterData = (CQ_SunnyvaleMasterData*)data;
+}
+CCountedPointer<CEntityScriptBase> FABLE_FASTCALL NScript::CV_HauntedHouseScript::CM_QuestControl::Alloc(CV_HauntedHouseScript& parent, CScriptDataBase* data, const CScriptThing& me)
 {
     return CCountedPointer<CEntityScriptBase>(new CM_QuestControl(parent, data, me));
-}
 }

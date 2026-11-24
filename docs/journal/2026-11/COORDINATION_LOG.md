@@ -969,3 +969,18 @@ from the header instead of a copy. Low priority; tell B here if you do it.
 (0x0066C340) that differs from retail; it is leaf-referenced in B's 0x00839940 CThingGameObject::OnHit and landed row 0x008F7950 emits the same
 differing copy at HEAD. Your ruling / queue. 0x00839940 itself is at 7 fg hunks: everything matches except one inline-cap decision at the
 hero-experience site (forcing those two calls out of line grades RELOCATION_MATCH; c2 needs a running IL size of >= 8992 there, ours 8927).
+
+2026-11-24 A->B: **Gate 0 prerequisite landed (nf336, `batches/2026-11-24_landing_nf336/README.md`).** 24 of the 25 rows in the
+CV_HauntedHouseScript object now sit on the shared headers: two add-only opt-ins in CV_HauntedHouseScript.h and CSpawnedFuncBase.h, and
+0x00E95380 is `?Return@TRetVoid@@QAEXXZ`. Recheck on the landed tree: 26/26 PASS. Three things you will meet when you rerun Gate 0
+(details in `pending/2026-11-24_nf336_handback/COMPOSE.md`):
+(1) 0x00E96C30 is still a local model. Its port changes the COMDAT set (STLport `vector<CScriptThing>` helpers), so it is queued T3 to
+the STLport census.
+(2) The object's rows define the same bodies more than once: the CV_HauntedHouseScript ctor in 4 rows, and each nested ctor / Alloc in
+both its Alloc row and its `??_G` row (identical texts). These are the 7 duplicates HEAD's link already shows.
+(3) Two pairs of rows choose opposite per-row models: the `~CLevelScriptBase` form (0x00E96E10 against 3 rows) and the
+`~CSpawnedFuncBase` form (0x00E95F10 against 0x00E95F80). Neither choice can be honoured in one TU.
+Your other items are queued: the 0x0070C0D0 GetMeshBank name fix (`acctB_b24C8`), the 0x0070C900 CAnimSet::GetMeshAnim re-row (T3
+`acctB_b24C8`), and the GetDef<CMaterialDef> 0x0066C340 pick-any debt (T3 `acctB_b24B6`). Ruling on the last one: NF328 D1 makes it debt.
+Because it is leaf-referenced in your 0x00839940, that row holds until the shared GETDEF_GLOBAL_BODY copy equals retail. Fixing that text is
+the way forward, not a row device.

@@ -1,0 +1,257 @@
+# NF336 final per-row section diff, HEAD (obj/H_<a>.obj) v new (obj/<a>.obj) from the final row sources, one work path; 0x00E96C30 = the skipped attempt
+##### 00e93d50 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .text ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .rdata ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 
+DIFF .rdata ??_7CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CScriptBase@@MAEXXZ -> ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ; ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z -> ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z
+EQ   .text ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z 
+EQ   .text ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z 
+##### 00e93d80 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ 
+##### 00e93da0 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@QAE@ABVCCharString@@KPAVCV_HauntedHouseScript@NScript@@P823@AEXXZ@Z 
+EQ   .text ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ   .text ??1CSpawnedFuncBase@@UAE@XZ 
+EQ   .rdata ??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@ 
+EQ   .text ??_9@$B7AE 
+EQ   .rdata ??_C@_00CNPNBAHC@?$AA@ 
+EQ   .rdata ??_C@_04KGFMLCPK@Main?$AA@ 
+EQ   .text ??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z 
+EQ   .text ?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ 
+EQ   .text ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ 
+##### 00e93e30 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ 
+##### 00e93e40 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@QAE@ABVCCharString@@KPAVCV_HauntedHouseScript@NScript@@P823@AEXXZ@Z 
+EQ   .text ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ   .text ??1CSpawnedFuncBase@@UAE@XZ 
+EQ   .rdata ??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@ 
+EQ   .text ??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z 
+EQ   .text ?MakeOne@@YAPAVCSpawnedFuncBase@@ABVCCharString@@KPAVCV_HauntedHouseScript@NScript@@P834@AEXXZ@Z 
+EQ   .text ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ 
+##### 00e93e60 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .text ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .rdata ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 
+DIFF .rdata ??_7CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CScriptBase@@MAEXXZ -> ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ
+EQ   .rdata ??_C@_0BA@NOKGDAFH@HeroBeenToChest?$AA@ 
+EQ   .rdata ??_C@_0P@JEHMACBF@CellarDoorOpen?$AA@ 
+EQ   .text ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z 
+EQ   .text ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z 
+EQ   .text ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z 
+##### 00e953d0 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ?GetEntityScriptName@?$CEntityScriptBinding@VCV_HauntedHouseScript@NScript@@@@UBEABVCCharString@@XZ 
+##### 00e953e0 renames ?IsActiveThreadTerminating@CV_HauntedHouseScript@NScript@@QAE_NXZ=?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ
+EQ   .drectve .drectve#0 
+EQ   .rdata ??_C@_0N@EEKBDEIG@HauntedHouse?$AA@ 
+EQ   .rdata ??_C@_0O@ELCNPKPE@HH_CellarDoor?$AA@ 
+EQ   .text ?CheckRegionLeaving@CV_HauntedHouseScript@NScript@@QAEXXZ 
+##### 00e955b0 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+EQ   .text ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z 
+EQ   .text ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z 
+EQ   .text ??0CM_QuestControl@CV_HauntedHouseScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ   .rdata ??_7CEntityScriptBase@@6B@ 
+DIFF .rdata ??_7CM_QuestControl@CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CEntityScriptBase@@UAEXXZ -> ?Init@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ
+EQ   .text ??_GCEntityScriptBase@@UAEPAXI@Z 
+DIFF .text ??_GCM_QuestControl@CV_HauntedHouseScript@NScript@@UAEPAXI@Z relocs ??1CM_QuestControl@CV_HauntedHouseScript@NScript@@UAE@XZ -> ??1CEntityScriptBase@@UAE@XZ
+EQ   .text ?Alloc@CM_QuestControl@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+##### 00e95670 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+EQ   .text ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z 
+EQ   .text ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z 
+EQ   .text ??0CM_QuestControl@CV_HauntedHouseScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ   .rdata ??_7CEntityScriptBase@@6B@ 
+DIFF .rdata ??_7CM_QuestControl@CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CEntityScriptBase@@UAEXXZ -> ?Init@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ
+EQ   .text ??_GCEntityScriptBase@@UAEPAXI@Z 
+EQ   .text ??_GCM_QuestControl@CV_HauntedHouseScript@NScript@@UAEPAXI@Z 
+EQ   .text ?Alloc@CM_QuestControl@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+##### 00e95690 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+EQ   .text ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z 
+EQ   .text ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z 
+EQ   .text ??0CM_UndeadHere@CV_HauntedHouseScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ   .rdata ??_7CEntityScriptBase@@6B@ 
+DIFF .rdata ??_7CM_UndeadHere@CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CEntityScriptBase@@UAEXXZ -> ?Init@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ
+EQ   .text ??_GCEntityScriptBase@@UAEPAXI@Z 
+DIFF .text ??_GCM_UndeadHere@CV_HauntedHouseScript@NScript@@UAEPAXI@Z relocs ??1CM_UndeadHere@CV_HauntedHouseScript@NScript@@UAE@XZ -> ??1CEntityScriptBase@@UAE@XZ
+EQ   .text ?Alloc@CM_UndeadHere@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+##### 00e95750 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+EQ   .text ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z 
+EQ   .text ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z 
+EQ   .text ??0CM_UndeadHere@CV_HauntedHouseScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ   .rdata ??_7CEntityScriptBase@@6B@ 
+DIFF .rdata ??_7CM_UndeadHere@CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CEntityScriptBase@@UAEXXZ -> ?Init@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ
+EQ   .text ??_GCEntityScriptBase@@UAEPAXI@Z 
+EQ   .text ??_GCM_UndeadHere@CV_HauntedHouseScript@NScript@@UAEPAXI@Z 
+EQ   .text ?Alloc@CM_UndeadHere@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+##### 00e95bf0 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+EQ   .text ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z 
+EQ   .text ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z 
+EQ   .text ??0CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ   .rdata ??_7CEntityScriptBase@@6B@ 
+DIFF .rdata ??_7CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CEntityScriptBase@@UAEXXZ -> ?Init@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ
+EQ   .text ??_GCEntityScriptBase@@UAEPAXI@Z 
+DIFF .text ??_GCM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UAEPAXI@Z relocs ??1CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UAE@XZ -> ??1CEntityScriptBase@@UAE@XZ
+EQ   .text ?Alloc@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+##### 00e95cb0 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+EQ   .text ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z 
+EQ   .text ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z 
+EQ   .text ??0CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ   .rdata ??_7CEntityScriptBase@@6B@ 
+DIFF .rdata ??_7CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CEntityScriptBase@@UAEXXZ -> ?Init@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ
+EQ   .text ??_GCEntityScriptBase@@UAEPAXI@Z 
+EQ   .text ??_GCM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UAEPAXI@Z 
+EQ   .text ?Alloc@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+##### 00e95cd0 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+EQ   .text ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z 
+EQ   .text ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z 
+EQ   .text ??0CHHUndead@CV_HauntedHouseScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ   .rdata ??_7CEntityScriptBase@@6B@ 
+DIFF .rdata ??_7CHHUndead@CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CEntityScriptBase@@UAEXXZ -> ?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ; ?OnPredicateFail@CEntityScriptBase@@UAEXXZ -> ?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ
+EQ   .text ??_GCEntityScriptBase@@UAEPAXI@Z 
+DIFF .text ??_GCHHUndead@CV_HauntedHouseScript@NScript@@UAEPAXI@Z relocs ??1CHHUndead@CV_HauntedHouseScript@NScript@@UAE@XZ -> ??1CEntityScriptBase@@UAE@XZ
+EQ   .text ?Alloc@CHHUndead@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+##### 00e95d80 renames ?Init@CHHUndead@@QAEXXZ=?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ
+EQ   .drectve .drectve#0 
+EQ   .text ?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ 
+##### 00e95dc0 renames -
+EQ   .drectve .drectve#0 
+EQ   .rdata ??_C@_00CNPNBAHC@?$AA@ 
+EQ   .text ?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ 
+EQ   .rdata __real@40400000 
+EQ   .rdata __real@40800000 
+EQ   .rdata __real@42480000 
+EQ   .rdata __real@42c80000 
+EQ   .rdata __real@43480000 
+##### 00e95e60 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+EQ   .text ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z 
+EQ   .text ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z 
+EQ   .text ??0CHHUndead@CV_HauntedHouseScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ   .rdata ??_7CEntityScriptBase@@6B@ 
+DIFF .rdata ??_7CHHUndead@CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CEntityScriptBase@@UAEXXZ -> ?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ; ?OnPredicateFail@CEntityScriptBase@@UAEXXZ -> ?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ
+EQ   .text ??_GCEntityScriptBase@@UAEPAXI@Z 
+EQ   .text ??_GCHHUndead@CV_HauntedHouseScript@NScript@@UAEPAXI@Z 
+EQ   .text ?Alloc@CHHUndead@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z 
+EQ   .text ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+##### 00e95e80 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0CIsThingAlive@NScript@@QAE@ABVCScriptThing@@@Z 
+EQ   .text ??0CPredicateBase@NScript@@QAE@XZ 
+EQ   .text ??1CPredicateBase@NScript@@UAE@XZ 
+EQ   .rdata ??_7CIsThingAlive@NScript@@6B@ 
+EQ   .rdata ??_7CPredicateBase@NScript@@6B@ 
+EQ   .text ??_GCIsThingAlive@NScript@@UAEPAXI@Z 
+EQ   .text ??_GCPredicateBase@NScript@@UAEPAXI@Z 
+EQ   .text ?Main@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ 
+##### 00e95f10 renames ??0CScriptProcessBase@@QAE@_NJM@Z=??0CSuspendableProcessMicrothread@@IAE@_NJM@Z
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ   .text ??0?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@QAE@ABVCCharString@@KPAVCV_HauntedHouseScript@NScript@@P823@AEXXZ@Z 
+EQ   .text ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 
+EQ   .text ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+DIFF .rdata ??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@ bytes(len 8 v 28) relocs ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ -> ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ (count 2 v 7)
+DIFF .rdata ??_7CSpawnedFuncBase@@6B@ bytes(len 8 v 28) relocs __purecall -> ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ (count 2 v 7)
+EQ   .text ??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z 
+EQ   .text ??_GCSpawnedFuncBase@@UAEPAXI@Z 
+ONLY_N .text ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ len=15
+##### 00e95f80 renames -
+DIFF .drectve .drectve#0 bytes(len 42 v 62)
+EQ   .text ??0?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@QAE@ABVCScriptThing@@_KPAVCV_HauntedHouseScript@NScript@@AAV?$CCountedPointer@VCEntityScriptBase@@@@K@Z 
+EQ   .text ??0?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@QAE@ABVCScriptThing@@_KPAVCV_HauntedHouseScript@NScript@@P823@AEXV1@@ZK@Z 
+EQ   .text ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@ABV0@@Z 
+DIFF .text ??0?$CEntityScriptBinding@VCV_HauntedHouseScript@NScript@@@@QAE@ABVCCharString@@PAVCV_HauntedHouseScript@NScript@@P6I?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@ZK@Z bytes(len 45 v 53) relocs  (count 1 v 2)
+EQ   .text ??0CEntityScriptBindingBase@@QAE@XZ 
+EQ   .text ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ   .text ??1?$CCountedPointer@VCActiveEntityScriptBase@@@@QAE@XZ 
+EQ   .text ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+DIFF .text ??1CActiveEntityScriptBase@@UAE@XZ bytes(len 35 v 51) relocs ??1CSuspendableProcessMicrothread@@MAE@XZ -> ??1CCharString@@QAE@XZ (count 4 v 6)
+DIFF .text ??1CSpawnedFuncBase@@UAE@XZ bytes(len 19 v 35) relocs ??1CSuspendableProcessMicrothread@@MAE@XZ -> ??1CCharString@@QAE@XZ (count 2 v 4)
+EQ   .text ??4?$CCountedPointer@VCEntityScriptBase@@@@QAEAAV0@ABV0@@Z 
+EQ   .text ??C?$CCountedPointer@VCEntityScriptBase@@@@QBEPAVCEntityScriptBase@@XZ 
+EQ   .rdata ??_7?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@6B@ 
+EQ   .rdata ??_7?$CEntityScriptBinding@VCV_HauntedHouseScript@NScript@@@@6B@ 
+EQ   .text ??_G?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z 
+EQ   .text ?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_HauntedHouseScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z 
+EQ   .text ?GetEntityScriptName@?$CEntityScriptBinding@VCV_HauntedHouseScript@NScript@@@@UBEABVCCharString@@XZ 
+##### 00e96dd0 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .text ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .rdata ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 
+DIFF .rdata ??_7CV_HauntedHouseScript@NScript@@6B@ relocs ?RegisterMain@CScriptBase@@MAEXXZ -> ?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ; ?Main@CScriptBase@@MAEXXZ -> ?Main@CV_HauntedHouseScript@NScript@@UAEXXZ; ?Init@CScriptBase@@MAEXXZ -> ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ; ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z -> ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z
+EQ   .text ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z 
+DIFF .text ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z relocs ??1CV_HauntedHouseScript@NScript@@UAE@XZ -> ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ
+EQ   .text ?Alloc@CV_HauntedHouseScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+##### 00e96e10 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .text ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .text ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ 
+EQ   .rdata ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 
+DIFF .rdata ??_7CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CScriptBase@@MAEXXZ -> ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ; ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z -> ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z
+EQ   .text ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z 
+EQ   .text ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z 
+##### 00e95380 renames -
+EQ   .drectve .drectve#0 
+ONLY_H .text ?M@C00e95380@@QAEXXZ
+ONLY_N .text ?ReferenceReturn@?A0x3d80f605@@YAP8TRetVoid@@AEXXZXZ len=6
+ONLY_N .text ?Return@TRetVoid@@QAEXXZ len=1
+##### 00e96c30 renames -
+DIFF .drectve .drectve#0 bytes(len 42 v 62)
+ONLY_N .text ??$_Destroy@PAVCScriptThing@@@std@@YAXPAVCScriptThing@@0@Z len=34
+ONLY_H .text ??$_Destroy@VCScriptThing@@@std@@YAXPAVCScriptThing@@0@Z
+EQ   .text ??$_Destroy@VCScriptThing@@@std@@YAXPAVCScriptThing@@@Z 
+ONLY_N .text ??$__destroy@PAVCScriptThing@@V1@@std@@YAXPAVCScriptThing@@00@Z len=34
+EQ   .text ??$__destroy_aux@PAVCScriptThing@@@std@@YAXPAVCScriptThing@@0ABU__false_type@0@@Z 
+EQ   .text ??0?$_STLP_alloc_proxy@PAVCScriptThing@@V1@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV?$allocator@VCScriptThing@@@1@PAVCScriptThing@@@Z 
+EQ   .text ??0?$_Vector_base@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV?$allocator@VCScriptThing@@@1@@Z 
+ONLY_N .text ??0?$allocator@VCScriptThing@@@std@@QAE@ABV01@@Z len=5
+EQ   .text ??0?$allocator@VCScriptThing@@@std@@QAE@XZ 
+EQ   .text ??0?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV?$allocator@VCScriptThing@@@1@@Z 
+ONLY_N .text ??0__false_type@std@@QAE@XZ len=3
+ONLY_N .text ??1?$_STLP_alloc_proxy@PAVCScriptThing@@V1@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ len=1
+EQ   .text ??1?$_Vector_base@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ 
+ONLY_N .text ??1?$allocator@VCScriptThing@@@std@@QAE@XZ len=1
+EQ   .text ??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ 
+EQ   .text ??A?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEAAVCScriptThing@@I@Z 
+EQ   .rdata ??_C@_09NOKAOCEI@BodyGuard?$AA@ 
+EQ   .text ?SendBodyguardsToTheRightPlace@CV_HauntedHouseScript@NScript@@QAEXVCCharString@@0@Z 
+ONLY_N .text ?begin@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@XZ len=3
+EQ   .text ?deallocate@?$allocator@VCScriptThing@@@std@@QAEXPAVCScriptThing@@I@Z 
+EQ   .text ?size@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QBEIXZ 

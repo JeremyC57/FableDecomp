@@ -1,5 +1,5 @@
 // CSpawnedFunc<NScript::CV_HauntedHouseScript>::CSpawnedFunc(const CCharString& name, unsigned long id, NScript::CV_HauntedHouseScript* pclass, void (NScript::CV_HauntedHouseScript::*func)()) -- build a spawned script function bound to a script object and its member callback
-// Leaf: ??0?$CSpawnedFunc@
+// Leaf: ??0?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@QAE@ABVCCharString@@KPAVCV_HauntedHouseScript@NScript@@P823@AEXXZ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E95F10, 112 bytes, `__fastcall`, `ret 10h`; vtable 0x012ECBA8. FableWin.pdb has the shape
 //   ??0?$CSpawnedFunc@V...@@@@QAE@ABVCCharString@@KPAV...@P8...@AEXXZ@Z for every script T; the only caller 0x00E94C0B passes
 //   CV_HauntedHouseScript::CheckRegionLeaving 0x00E953E0 (caller 0x00E94C0B; the vtable 0x012ECBA8 it stores is the one CV_HauntedHouseScript's RegisterMain 0x00E93DA0 uses), so T is CV_HauntedHouseScript; the manifest's CV_ExposeMayorScript and CExpression_FollowScript labels are propagated.
@@ -9,58 +9,33 @@
 //   Local polymorphic model (engine/CSpawnedFuncBase.h flattens the vptr).
 // Shape: the base ctor is an inline definition in this TU; initialisers Func(func), PClass(pclass) -- VC7.1 schedules the PClass store
 //   before the derived vtable store and Func after it.
-class CCharString {                                       // one pointer to the shared string data
-public:
-    void* PStringData;                                    // +0x00
-    CCharString();                                        // 0x0099E4B0
-    CCharString(const CCharString& other);                // 0x0099EC30
-    ~CCharString();                                       // 0x0099EAE0
-};
-namespace NScript { class CPredicateBase; }
-class CCPPointerInfo;
+// CSpawnedFuncBase: the destructor declared only (FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY), so the ??_G copies this TU emits with
+//   the vtables call 0x00CDD4C0 out of line, as retail's 0x00CDD4A0 / 0x00E93E40 do (and as the HEAD row-local model declared it).
+#define FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY
+// NF336 (2026-11-24): moved off the row-local class model onto the shared engine headers (acctB Gate 0 prerequisite). The family
+//   preamble below is shared by the CV_HauntedHouseScript object-mate rows (a per-row departure is marked where it occurs).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CV_HAUNTEDHOUSE_DECLS
+#define FABLE_RETAIL_CM_UNDEADHERE_MAIN
+#define FABLE_RETAIL_CM_QUESTCONTROL_MAIN_PASS26
+#define FABLE_RETAIL_CHHUNDEAD_MEMBERS
+#define FABLE_RETAIL_CM_HEROINSIDEHOUSE_MEMBERS
+#include "fable_string.h"
 #include "engine/CCountedPointer.h"
-// The 0x14-byte process base: CASuspendableProcess (vptr, Running +4, StopRunning +5, TerminateUsingExceptions +6,
-// TimeProcessSliceStarted +8, TimesliceLength +0xC) plus the dword at +0x10 its (bool, long, float) ctor 0x00A44740 zeroes.
-class CScriptProcessBase {
-public:
-    bool Running;                                         // +0x04
-    bool StopRunning;                                     // +0x05
-    bool TerminateUsingExceptions;                        // +0x06
-    float TimeProcessSliceStarted;                        // +0x08
-    float TimesliceLength;                                // +0x0C
-    unsigned long ProcessState;                           // +0x10
-    CScriptProcessBase(bool running, long stackSize, float timesliceFraction);   // 0x00A44740
-    virtual ~CScriptProcessBase();
-    virtual void SuspendableProcess() = 0;
-};
-class CSpawnedFuncBase : public CScriptProcessBase {      // Ego_r.pdb: 0x34 bytes
-public:
-    unsigned long ID;                                     // +0x14
-    long LastScriptFrame;                                 // +0x18
-    long CurrentScriptFrame;                              // +0x1C
-    CCharString Name;                                     // +0x20
-    CCharString AssociatedRegionName;                     // +0x24
-    bool FuncPaused;                                      // +0x28
-    bool Interrupted;                                     // +0x29
-    CCountedPointer<const NScript::CPredicateBase> PPredicate;   // +0x2C
-    CSpawnedFuncBase(const CCharString& name, unsigned long id);
-    virtual ~CSpawnedFuncBase();
-};
+#include "engine/CV_HauntedHouseScript.h"
+#include "engine/CSpawnedFuncBase.h"
+#include "engine/CSpawnedFunc.h"
+// Retail expands the CSpawnedFuncBase constructor in this out-of-line copy (the CSuspendableProcessMicrothread(true, 0x40, 0.1f)
+//   call 0x00A44740, then the members; RegisterMain 0x00E93DA0 calls the out-of-line 0x00CDD450 instead): its body is visible here.
 inline CSpawnedFuncBase::CSpawnedFuncBase(const CCharString& name, unsigned long id)
-    : CScriptProcessBase(true, 0x40, 0.1f), ID(id), LastScriptFrame(-1), CurrentScriptFrame(-1), Name(name),
+    : CSuspendableProcessMicrothread(true, 0x40, 0.1f), ID(id), LastScriptFrame(-1), CurrentScriptFrame(-1), Name(name),
       FuncPaused(false), Interrupted(false)
 {
 }
-template <class T> class CSpawnedFunc : public CSpawnedFuncBase {   // Ego_r.pdb: 0x3C bytes
-public:
-    void (T::*Func)();                                    // +0x34
-    T* PClass;                                            // +0x38
-    CSpawnedFunc(const CCharString& name, unsigned long id, T* pclass, void (T::*func)());
-    virtual void SuspendableProcess();
-};
-template <class T> CSpawnedFunc<T>::CSpawnedFunc(const CCharString& name, unsigned long id, T* pclass, void (T::*func)())
-    : CSpawnedFuncBase(name, id), Func(func), PClass(pclass)
-{
-}
-namespace NScript { class CV_HauntedHouseScript { public: void CheckRegionLeaving(); }; }   // Name-fix NF186 (q6497): the member was misnamed DoMission; 0x00E953E0 is the landed ?CheckRegionLeaving@CV_HauntedHouseScript@NScript@@QAEXXZ (Ego_r.pdb; spawned under the literal "CheckRegionLeaving"); declaration unused (no relocation)
 template CSpawnedFunc<NScript::CV_HauntedHouseScript>::CSpawnedFunc(const CCharString& name, unsigned long id, NScript::CV_HauntedHouseScript* pclass, void (NScript::CV_HauntedHouseScript::*func)());

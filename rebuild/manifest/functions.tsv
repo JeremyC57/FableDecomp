@@ -53452,7 +53452,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e93e40	`scalar deleting destructor'	CSpawnedFunc<NScript::CV_HauntedHouseScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e9\CLandscapeBackgroundPatch_vectordeletingdestructor_00e93e40.cpp
 00e93e60	OnPersist	NScript::CV_HauntedHouseScript	unknown	undefined	0		0			discovered	gapscan							
 00e93eb0	Main	NScript::CV_HauntedHouseScript	unknown	undefined	0		0			discovered	gapscan							
-00e95380	Nop_ret0_00e95380	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e9\E2_E2_00e95380.cpp
+00e95380	Return	TRetVoid	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e9\TRetVoid_Return_00e95380.cpp
 00e95390	CEntityScriptBinding	CEntityScriptBinding<NScript::CQ_EndGameFocalSitesScript>	__thiscall	undefined	5	CEntityScriptBinding<NScript::CQ_EndGameFocalSitesScript> *,CCharString *,CQ_EndGameFocalSitesScript *,_func_CCountedPointer<CEntityScriptBase>_CQ_EndGameFocalSitesScript_ptr_CScriptDataBase_ptr_CScriptThing_ptr *,ulong	0	yes	accepted									
 00e953d0	GetEntityScriptName	CEntityScriptBinding<NScript::CV_HauntedHouseScript>	unknown	undefined	0		0			discovered	gapscan							
 00e953e0	CheckRegionLeaving	NScript::CV_HauntedHouseScript	__thiscall	void	1	CV_ExposeMayorScript *	1	yes	accepted									
@@ -53471,10 +53471,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e95cb0	`scalar deleting destructor'	NScript::CV_HauntedHouseScript::CM_HeroInsideHouse	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e9\CLandscapeBackgroundPatch_vectordeletingdestructor_00e95cb0.cpp
 00e95cd0	Alloc	NScript::CV_HauntedHouseScript::CHHUndead	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00e95d70	sub_00e95d70	_global	unknown	undefined	0		0			discovered	gapscan							
-00e95d80	Init	CHHUndead	__thiscall	void	1	CHHUndead *	1	yes	accepted									
+00e95d80	Init	NScript::CV_HauntedHouseScript::CHHUndead	__thiscall	void	1	CHHUndead *	1	yes	accepted									
 00e95dc0	OnPredicateFail	NScript::CV_HauntedHouseScript::CHHUndead	unknown	undefined	0		0			discovered	gapscan							
 00e95e60	`scalar deleting destructor'	NScript::CV_HauntedHouseScript::CHHUndead	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e9\CLandscapeBackgroundPatch_vectordeletingdestructor_00e95e60.cpp
-00e95e80	Main	CHHUndead	__thiscall	void	1	CHHUndead *	1	yes	accepted									
+00e95e80	Main	NScript::CV_HauntedHouseScript::CHHUndead	__thiscall	void	1	CHHUndead *	1	yes	accepted									
 00e95f10	CSpawnedFunc	CSpawnedFunc<NScript::CV_HauntedHouseScript>	__thiscall	undefined	5	CSpawnedFunc<NScript::CExpression_FollowScript> *,CCharString *,ulong,CExpression_FollowScript *,_func_void *	0	yes	accepted									
 00e95f80	CreateActiveEntityScript	CEntityScriptBinding<NScript::CV_HauntedHouseScript>	unknown	undefined	0		0	yes	accepted									
 00e96090	SuspendableProcess	CActiveEntityScript<NScript::CV_HauntedHouseScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									

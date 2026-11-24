@@ -7006,7 +7006,6 @@ _rand	00bfeb16	00d2c530
 ??_7CVtable_012ec138@@6B@	012ec138	00e92900
 ?g_hiddenBootyName@@3QBDB	012ecad8	00e93080
 ??_7CVtable_012ec9a4@@6B@	012ec9a4	00e93cf0
-??_7CVtable_012ecb94@@6B@	012ecb94	00e96dd0
 ??_7CVtable_012ece7c@@6B@	012ece7c	00e98640
 ??_7CEvent_00e9def0@@6B@	01238c8c	00e9def0
 ??_7CEvent_00ea7610@@6B@	01238c8c	00ea7610
@@ -17351,7 +17350,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Alloc@COrchardFarmWhisper@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dcef50	00dcc770
 ?Alloc@CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dcd0e0	00dcc770
 ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ	00cb7940	00e3a150
-?IsActiveThreadTerminating@CV_HauntedHouseScript@NScript@@QAE_NXZ	00cb7940	00e953e0
 ??_7CQ_FireHeartScript@NScript@@6B@	012ccb90	00d34470
 ??_7CQ_HeroSoulsBriarScript@NScript@@6B@	012d41bc	00d80c30
 ??4CBaseObject@@IAEAAV0@ABV0@@Z	0099a3b0	00d823a0

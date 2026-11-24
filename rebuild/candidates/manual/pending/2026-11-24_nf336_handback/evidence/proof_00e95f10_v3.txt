@@ -1,0 +1,20 @@
+## 0x00E95F10 v3 (FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY), 2026-11-24: grade RELOCATION_MATCH (HEAD RELOCATION_MATCH)
+##### 00e95f10 renames ??0CScriptProcessBase@@QAE@_NJM@Z=??0CSuspendableProcessMicrothread@@IAE@_NJM@Z
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ   .text ??0?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@QAE@ABVCCharString@@KPAVCV_HauntedHouseScript@NScript@@P823@AEXXZ@Z 
+EQ   .text ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 
+EQ   .text ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+DIFF .rdata ??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@ bytes(len 8 v 28) relocs ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ -> ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ (count 2 v 7)
+DIFF .rdata ??_7CSpawnedFuncBase@@6B@ bytes(len 8 v 28) relocs __purecall -> ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ (count 2 v 7)
+EQ   .text ??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z 
+EQ   .text ??_GCSpawnedFuncBase@@UAEPAXI@Z 
+ONLY_N .text ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ len=15
+N EQ  00CDD4A0 30 ??_GCSpawnedFuncBase@@UAEPAXI@Z | relocs: ??1CSpawnedFuncBase@@UAE@XZ@00CDD4C0 ??3@YAXPAX@Z@00BFE9BC
+H EQ  00CDD4A0 30 ??_GCSpawnedFuncBase@@UAEPAXI@Z | relocs: ??1CSpawnedFuncBase@@UAE@XZ@00CDD4C0 ??3@YAXPAX@Z@00BFE9BC
+N EQ  00E93E40 30 ??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z | relocs: ??1CSpawnedFuncBase@@UAE@XZ@00CDD4C0 ??3@YAXPAX@Z@00BFE9BC
+H EQ  00E93E40 30 ??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z | relocs: ??1CSpawnedFuncBase@@UAE@XZ@00CDD4C0 ??3@YAXPAX@Z@00BFE9BC
+N EQ  00E93E30 15 ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ | relocs: 
+H NOSYM ?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ
+N EQ  00CDD450 80 ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z | relocs: ??0CSuspendableProcessMicrothread@@IAE@_NJM@Z@00A44740 ??_7CSpawnedFuncBase@@6B@@012C2F9C ??0CCharString@@QAE@ABV0@@Z@0099EC30 ??0CCharString@@QAE@XZ@0099E4B0
+H EQ  00CDD450 80 ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z | relocs: ??0CScriptProcessBase@@QAE@_NJM@Z@00A44740 ??_7CSpawnedFuncBase@@6B@@012C2F9C ??0CCharString@@QAE@ABV0@@Z@0099EC30 ??0CCharString@@QAE@XZ@0099E4B0

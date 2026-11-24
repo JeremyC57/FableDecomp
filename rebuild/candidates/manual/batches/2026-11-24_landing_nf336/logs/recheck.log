@@ -1,0 +1,56 @@
+addr       parity           behav  name
+00e93d50   RELOCATION_MATCH PASS   CV_HauntedHouseScript
+00e93d80   MATCH            PASS   Init
+00e93da0   RELOCATION_MATCH PASS   RegisterMain
+00e93e30   MATCH            PASS   SuspendableProcess
+00e93e40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e93e60   RELOCATION_MATCH PASS   OnPersist
+00e95380   MATCH            PASS   Return
+00e953d0   MATCH            PASS   GetEntityScriptName
+00e953e0   RELOCATION_MATCH PASS   CheckRegionLeaving
+00e955b0   RELOCATION_MATCH PASS   Alloc
+00e95670   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e95690   RELOCATION_MATCH PASS   Alloc
+00e95750   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e95770   RELOCATION_MATCH PASS   Main
+00e95bf0   RELOCATION_MATCH PASS   Alloc
+00e95cb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e95cd0   RELOCATION_MATCH PASS   Alloc
+00e95d80   MATCH            PASS   Init
+00e95dc0   RELOCATION_MATCH PASS   OnPredicateFail
+00e95e60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e95e80   RELOCATION_MATCH PASS   Main
+00e95f10   RELOCATION_MATCH PASS   CSpawnedFunc
+00e95f80   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00e96110   WARN RELOC_NAME: ?g_pGameScriptInterface@@3PAVCGameScriptInterface@@A -> 0143e8f8 labelled 'pDSTGame'
+00e96110   RELOCATION_MATCH PASS   Main
+00e96dd0   RELOCATION_MATCH PASS   Alloc
+00e96e10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 26
+  00e93d50 RELOCATION_MATCH NScript::CV_HauntedHouseScript::??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e93d80 MATCH NScript::CV_HauntedHouseScript::?Init@CV_HauntedHouseScript@NScript@@UAEXXZ
+  00e93da0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ
+  00e93e30 MATCH CSpawnedFunc<NScript::CV_HauntedHouseScript>::?SuspendableProcess@?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEXXZ
+  00e93e40 RELOCATION_MATCH CSpawnedFunc<NScript::CV_HauntedHouseScript>::??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z
+  00e93e60 RELOCATION_MATCH NScript::CV_HauntedHouseScript::?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00e95380 MATCH TRetVoid::?Return@TRetVoid@@QAEXXZ
+  00e953d0 MATCH CEntityScriptBinding<NScript::CV_HauntedHouseScript>::?GetEntityScriptName@?$CEntityScriptBinding@VCV_HauntedHouseScript@NScript@@@@UBEABVCCharString@@XZ
+  00e953e0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::?CheckRegionLeaving@CV_HauntedHouseScript@NScript@@QAEXXZ
+  00e955b0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_QuestControl::?Alloc@CM_QuestControl@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00e95670 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_QuestControl::??_GCM_QuestControl@CV_HauntedHouseScript@NScript@@UAEPAXI@Z
+  00e95690 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_UndeadHere::?Alloc@CM_UndeadHere@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00e95750 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_UndeadHere::??_GCM_UndeadHere@CV_HauntedHouseScript@NScript@@UAEPAXI@Z
+  00e95770 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_UndeadHere::?Main@CM_UndeadHere@CV_HauntedHouseScript@NScript@@EAEXXZ
+  00e95bf0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_HeroInsideHouse::?Alloc@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00e95cb0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_HeroInsideHouse::??_GCM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UAEPAXI@Z
+  00e95cd0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CHHUndead::?Alloc@CHHUndead@CV_HauntedHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00e95d80 MATCH NScript::CV_HauntedHouseScript::CHHUndead::?Init@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ
+  00e95dc0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CHHUndead::?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ
+  00e95e60 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CHHUndead::??_GCHHUndead@CV_HauntedHouseScript@NScript@@UAEPAXI@Z
+  00e95e80 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CHHUndead::?Main@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ
+  00e95f10 RELOCATION_MATCH CSpawnedFunc<NScript::CV_HauntedHouseScript>::??0?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@QAE@ABVCCharString@@KPAVCV_HauntedHouseScript@NScript@@P823@AEXXZ@Z
+  00e95f80 RELOCATION_MATCH CEntityScriptBinding<NScript::CV_HauntedHouseScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_HauntedHouseScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00e96110 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_QuestControl::?Main@CM_QuestControl@CV_HauntedHouseScript@NScript@@EAEXXZ
+  00e96dd0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::?Alloc@CV_HauntedHouseScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e96e10 RELOCATION_MATCH NScript::CV_HauntedHouseScript::??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z

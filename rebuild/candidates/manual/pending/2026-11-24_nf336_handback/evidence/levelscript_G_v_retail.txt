@@ -1,0 +1,21 @@
+# NF336 final objects (obj/<a>.obj = landed form, H_ = HEAD): level-script ??_G copies v retail, relocations masked (pickany_vs_retail rule); retail targets read from the exe
+00e93d50 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+00e93d50 EQ  00E96E10 30 ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+H_00e93d50 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+H_00e93d50 EQ  00E96E10 30 ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+00e93e60 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+00e93e60 EQ  00E96E10 30 ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+H_00e93e60 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+H_00e93e60 EQ  00E96E10 30 ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+00e96dd0 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+00e96dd0 EQ  00E96E10 30 ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+H_00e96dd0 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+H_00e96dd0 EQ  00E96E10 30 ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z | relocs: ??1CV_HauntedHouseScript@NScript@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+00e96e10 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1CScriptBase@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+00e96e10 EQ  00E96E10 30 ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z | relocs: ??1CScriptBase@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+H_00e96e10 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1CScriptBase@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+H_00e96e10 EQ  00E96E10 30 ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z | relocs: ??1CScriptBase@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+# parked implicit-form objects (evidence/q2cand sources):
+q2cand/00e93d50 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1CScriptBase@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+q2cand/00e93e60 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1CScriptBase@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC
+q2cand/00e96dd0 EQ  00CDD250 30 ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z | relocs: ??1CScriptBase@@UAE@XZ@00CBD510 ??3@YAXPAX@Z@00BFE9BC

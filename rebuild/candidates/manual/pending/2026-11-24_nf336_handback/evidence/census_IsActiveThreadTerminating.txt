@@ -1,0 +1,16 @@
+# census (NF336, untruncated): landed sources/tests that mention both IsActiveThreadTerminating and CV_HauntedHouseScript
+src/compiled/00/d2/NScriptCQBreakSiegeScript_SendBodyguardsToTheRightPlace_00d226e0.cpp
+src/compiled/00/e9/CHHUndead_Main_00e95e80.cpp
+src/compiled/00/e9/NScriptCVHauntedHouseScript_CheckRegionLeaving_00e953e0.cpp
+src/compiled/00/e9/NScriptCVHauntedHouseScript_SendBodyguardsToTheRightPlace_00e96c30.cpp
+src/compiled/00/e9/NScriptCVHauntedHouseScriptCMQuestControl_Main_00e96110.cpp
+src/compiled/00/e9/NScriptCVHauntedHouseScriptCMUndeadHere_Main_00e95770.cpp
+tests/00/e9/NScriptCVHauntedHouseScript_SendBodyguardsToTheRightPlace_00e96c30_test.cpp
+tests/00/e9/NScriptCVHauntedHouseScriptCMUndeadHere_Main_00e95770_test.cpp
+tests/00/e9/NScriptCVHauntedHouseScriptCMQuestControl_Main_00e96110_test.cpp
+tests/00/e9/NScriptCVHauntedHouseScript_CheckRegionLeaving_00e953e0_test.cpp
+# objects (HEAD compiles in this folder) carrying ?IsActiveThreadTerminating@CV_HauntedHouseScript@NScript@@QAE_NXZ:
+  obj/H_00e953e0.obj
+  hobj/00e953e0.obj
+# 0x00E93EB0 / 0x00E20600: no catalog entry (not landed); 0x00E96110 (Codex RESERVED, read only) uses the shared header (CEntityScriptBase::IsActiveThreadTerminating const); 0x00E95770 HEAD object: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ only; 0x00E96C30 HEAD: CV_HauntedHouseScript : CScriptBase inherits CScriptBase::IsActiveThreadTerminating; 0x00D226E0 mentions CV_HauntedHouseScript in comments only; tests are standalone stubs (no table).
+# reloc_bindings.tsv witness of the stand-in line: 00e953e0 only

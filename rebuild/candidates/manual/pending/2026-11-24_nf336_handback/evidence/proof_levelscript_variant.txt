@@ -1,0 +1,86 @@
+## no-CLEVELSCRIPTBASE variants (2026-11-24): grades RELOCATION_MATCH v RELOCATION_MATCH
+##### 00e93d50 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .text ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .rdata ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 
+DIFF .rdata ??_7CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CScriptBase@@MAEXXZ -> ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ; ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z -> ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z
+EQ   .text ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z 
+EQ   .text ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z 
+##### 00e93d50.obj ??_7CV_HauntedHouseScript@NScript@@6B@ v retail 012ECB94: slots 5 v 9
+slot 0 CHECK retail 00E96E10 leaf=??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z table=-
+       ours ??_ECV_HauntedHouseScript@NScript@@UAEPAXI@Z
+slot 1 SAME  retail 00E93DA0 leaf=?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ table=-
+       ours ?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ
+slot 2 CHECK retail 00E93EB0 leaf=None table=-
+       ours ?Main@CV_HauntedHouseScript@NScript@@UAEXXZ
+slot 3 SAME  retail 00E93D80 leaf=?Init@CV_HauntedHouseScript@NScript@@UAEXXZ table=-
+       ours ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ
+slot 4 SAME  retail 00E93E60 leaf=?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z table=-
+       ours ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z
+slot 5 CHECK retail 00E93E40 leaf=??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z table=-
+       ours -
+slot 6 CHECK retail 00A44880 leaf=?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours -
+slot 7 CHECK retail 00A44840 leaf=?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ table=-
+       ours -
+slot 8 CHECK retail 00A447D0 leaf=?Restart@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours -
+##### 00e93e60 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .text ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .rdata ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 
+DIFF .rdata ??_7CV_HauntedHouseScript@NScript@@6B@ relocs ?Init@CScriptBase@@MAEXXZ -> ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ
+EQ   .rdata ??_C@_0BA@NOKGDAFH@HeroBeenToChest?$AA@ 
+EQ   .rdata ??_C@_0P@JEHMACBF@CellarDoorOpen?$AA@ 
+EQ   .text ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z 
+EQ   .text ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z 
+EQ   .text ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z 
+##### 00e93e60.obj ??_7CV_HauntedHouseScript@NScript@@6B@ v retail 012ECB94: slots 5 v 9
+slot 0 CHECK retail 00E96E10 leaf=??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z table=-
+       ours ??_ECV_HauntedHouseScript@NScript@@UAEPAXI@Z
+slot 1 SAME  retail 00E93DA0 leaf=?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ table=-
+       ours ?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ
+slot 2 CHECK retail 00E93EB0 leaf=None table=-
+       ours ?Main@CV_HauntedHouseScript@NScript@@UAEXXZ
+slot 3 SAME  retail 00E93D80 leaf=?Init@CV_HauntedHouseScript@NScript@@UAEXXZ table=-
+       ours ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ
+slot 4 SAME  retail 00E93E60 leaf=?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z table=-
+       ours ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z
+slot 5 CHECK retail 00E93E40 leaf=??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z table=-
+       ours -
+slot 6 CHECK retail 00A44880 leaf=?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours -
+slot 7 CHECK retail 00A44840 leaf=?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ table=-
+       ours -
+slot 8 CHECK retail 00A447D0 leaf=?Restart@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours -
+##### 00e96dd0 renames -
+EQ   .drectve .drectve#0 
+EQ   .text ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .text ??0CV_HauntedHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+EQ   .rdata ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 
+DIFF .rdata ??_7CV_HauntedHouseScript@NScript@@6B@ relocs ?RegisterMain@CScriptBase@@MAEXXZ -> ?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ; ?Main@CScriptBase@@MAEXXZ -> ?Main@CV_HauntedHouseScript@NScript@@UAEXXZ; ?Init@CScriptBase@@MAEXXZ -> ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ; ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z -> ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z
+EQ   .text ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z 
+DIFF .text ??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z relocs ??1CV_HauntedHouseScript@NScript@@UAE@XZ -> ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ
+EQ   .text ?Alloc@CV_HauntedHouseScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z 
+##### 00e96dd0.obj ??_7CV_HauntedHouseScript@NScript@@6B@ v retail 012ECB94: slots 5 v 9
+slot 0 CHECK retail 00E96E10 leaf=??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z table=-
+       ours ??_ECV_HauntedHouseScript@NScript@@UAEPAXI@Z
+slot 1 SAME  retail 00E93DA0 leaf=?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ table=-
+       ours ?RegisterMain@CV_HauntedHouseScript@NScript@@UAEXXZ
+slot 2 CHECK retail 00E93EB0 leaf=None table=-
+       ours ?Main@CV_HauntedHouseScript@NScript@@UAEXXZ
+slot 3 SAME  retail 00E93D80 leaf=?Init@CV_HauntedHouseScript@NScript@@UAEXXZ table=-
+       ours ?Init@CV_HauntedHouseScript@NScript@@UAEXXZ
+slot 4 SAME  retail 00E93E60 leaf=?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z table=-
+       ours ?OnPersist@CV_HauntedHouseScript@NScript@@UAEXAAVCPersistContext@@@Z
+slot 5 CHECK retail 00E93E40 leaf=??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z table=-
+       ours -
+slot 6 CHECK retail 00A44880 leaf=?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours -
+slot 7 CHECK retail 00A44840 leaf=?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ table=-
+       ours -
+slot 8 CHECK retail 00A447D0 leaf=?Restart@CSuspendableProcessMicrothread@@UAEXXZ table=-
+       ours -
