@@ -590,3 +590,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF393 ruling R7 pilot: binder 00b217d0 on the shared CArray header, HEAD v new COMDAT bins (nf387 conditions / decl-only opt-in / R8 / residue)	naming	done	pilot measured; R10 (= R1 tier 1) and R11 ruled; batch being built (re-claimed by lock only)
 2026-11-24	A	agent NF395 re-bin under rulings R1/R10 of the held NF392 rows (CMeshMorphSetParts uninitialized helpers) and the NF390 binders 009b77b0 / 00762440 (T3 nf393)	naming	claimed	locks via nflocks owner NF395
 2026-11-24	A	agent NF394 T3 nf391 q10 (three made-up SortTreeRecursively list::size stand-ins) and q9 (GetNumberOfNavigationLineLevels unit)	naming	done	landed nf394_b1 (3) and b2 (3-row unit, 2 header opt-ins)
+2026-11-24	A	agent NF396 T3 nf391 q11: nine traced STL identities (vector base dtors, tree clear / _M_erase, list erase / clear) to their STLport spellings	naming	claimed	locks via nflocks owner NF396
