@@ -6862,7 +6862,7 @@ __imp__CoTaskMemFree@4	01440630	00cb1cc0
 ??0value_type@CRetailList_node0x24@@QAE@ABU01@@Z	00cd2cab	00cd3604
 ?Helper@CForwarder_00cd367c@@QAE?AUSResult@@USHandle@@PAX@Z	00cd3282	00cd367c
 ?InsertGrow@CRetailVector_CElement16_00905330@@QAEXPAUCElement16_00905330@@ABU2@ABUSScalarTag@@K_N@Z	00cd36df	00cd3a79
-?Helper@CForwarder_00cd3cae@@QAE?AUSResult@@USHandle@@PAX@Z	00cd3ab6	00cd3cae
+?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@2@@Z	00cd3ab6	00cd3cae
 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	007e72a0	00cd3da4
 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	00cd3da4
 ?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z	00cd3ccb	00cd3da4
@@ -12001,8 +12001,8 @@ _ImmAssociateContext@8	00cb5564	00cb5130
 ?_M_lower_bound@?$map@VCCharString@@KU?$less@VCCharString@@@std@@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	00cd2884	00cd39b1
 ?insert@?$map@VCCharString@@KU?$less@VCCharString@@@std@@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@@2@U32@ABU?$pair@$$CBVCCharString@@K@2@@Z	00cd367c	00cd39b1
 ??0?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@ABVCCharString@@ABVCScriptGameResourceObjectScriptedThingBase@@@Z	00cd27c7	00cd3d2e
-?_M_lower_bound@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	00cd28bc	00cd3d2e
-?insert@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@U32@ABU?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@2@@Z	00cd3cae	00cd3d2e
+?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	00cd28bc	00cd3d2e
+?insert@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@2@@Z	00cd3cae	00cd3d2e
 ?Initialise@CPerlinNoise@NFractal@@QAEXK@Z	00f35ed0	00f36be0
 ??$__destroy_aux@U?$_Deque_iterator@VC2DVector@@U?$_Nonconst_traits@VC2DVector@@@std@@@std@@@std@@YIXU?$_Deque_iterator@VC2DVector@@U?$_Nonconst_traits@VC2DVector@@@std@@@0@0ABU__false_type@0@@Z	0048d050	0048d490
 ??1CSetTextInfo@CSubtitleRenderer@@QAE@XZ	0043e3d0	00493c25

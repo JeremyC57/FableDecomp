@@ -175784,7 +175784,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd3cae'
-        Module = 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString> >'
+        Module = 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const,CScriptGameResourceObjectScriptedThingBase> > >'
         Source = '00/cd/STLmapCCharStringCScriptGameResourceObjectScriptedThingBaseSTLlessCCharString_insert_00cd3cae.cpp'
         TestSource = '00/cd/STLmapCCharStringCScriptGameResourceObjectScriptedThingBaseSTLlessCCharString_insert_00cd3cae_test.cpp'
         PassPattern = '00cd3cae_TEST PASS'

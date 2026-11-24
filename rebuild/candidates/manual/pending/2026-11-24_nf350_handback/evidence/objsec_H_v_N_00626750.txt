@@ -1,0 +1,43 @@
+00626750 H v N: NOT_EQ (sections 105 v 85)
+  DROPPED .text:??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z#1
+  DROPPED .text:??R?$less@J@std@@QBE_NABJ0@Z#1
+  DROPPED .text:??0?$_Rb_tree_iterator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAE@
+  DROPPED .text:??D?$_Rb_tree_iterator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QBEA
+  DROPPED .text:??0?$pair@$$CBJPAVCComponent@NUISystem@@@std@@QAE@ABJABQAVCComponent@NUISystem@@@Z#1
+  DROPPED .text:?key_comp@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$al
+  DROPPED .text:?_M_root@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$all
+  DROPPED .text:?_S_left@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$all
+  DROPPED .text:?_S_right@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$al
+  DROPPED .text:??0?$_Rb_tree_iterator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAE@
+  DROPPED .text:?_S_value@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$al
+  DROPPED .text:??R?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@std@@QBEABJABU?$pair@$$CBJPAVCComponent@NUISystem@@@1@@Z#1
+  DROPPED .text:?insert@?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterat
+  DROPPED .text:?key_comp@?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QBE?AU?$less@J@2@XZ#1
+  DROPPED .text:?end@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocat
+  DROPPED .text:?_S_key@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allo
+  DROPPED .text:?end@?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@
+  DROPPED .text:?lower_bound@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?
+  DROPPED .text:?lower_bound@?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_i
+  DROPPED .text:??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem
+  EXT-    DEF ??0?$_Rb_tree_iterator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAE@ABU01@@Z
+  EXT-    DEF ??0?$_Rb_tree_iterator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAE@PAU?$_Rb_tre
+  EXT-    DEF ??0?$pair@$$CBJPAVCComponent@NUISystem@@@std@@QAE@ABJABQAVCComponent@NUISystem@@@Z
+  EXT-    DEF ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+  EXT-    DEF ??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABJ@Z
+  EXT-    DEF ??D?$_Rb_tree_iterator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QBEAAU?$pair@$$C
+  EXT-    DEF ??R?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@std@@QBEABJABU?$pair@$$CBJPAVCComponent@NUISystem@@@1@@Z
+  EXT-    DEF ??R?$less@J@std@@QBE_NABJ0@Z
+  EXT-    DEF ?_M_root@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pa
+  EXT-    DEF ?_S_key@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pai
+  EXT-    DEF ?_S_left@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pa
+  EXT-    DEF ?_S_right@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$p
+  EXT-    DEF ?_S_value@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$p
+  EXT-    DEF ?end@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$
+  EXT-    DEF ?end@?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CB
+  EXT-    DEF ?insert@?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$
+  EXT-    DEF ?key_comp@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$p
+  EXT-    DEF ?key_comp@?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QBE?AU?$less@J@2@XZ
+  EXT-    DEF ?lower_bound@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U
+  EXT-    DEF ?lower_bound@?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$p
+  EXT-    UND ?insert_unique@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator
+  EXT+    UND ??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABJ@Z

@@ -1152,3 +1152,9 @@ putting the question to the owner. The duplicate alone would not have held it: i
 owner port queued (acctB_b24C8). If you can show the mechanism is body visibility rather than order (for example an inline header body that
 gives the same leaf with no strong duplicate), restage and A lands it. Also queued: `??0C3DAnimationBlendState` is EQ at 0x004C2DD0 and
 NEQ at 0x00C59BA0, so one table line is stale (T3 nf348x).
+
+2026-11-24 A->B: **map<CCharString,STB> owners respelled (nf350).** 0x00CD3D2E operator[] and 0x00CD3CAE insert now define the 4-argument
+STLport symbols (`batches/2026-11-24_landing_nf350_b1`). For any new row of yours whose object emits that operator[] copy: define
+`FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY` (mark it `// Fidelity: scaffolding, not retail`). Its reference now resolves to the landed EQ owner,
+which passes the resolve test, and the NEQ copy goes. A runs the drop test at landing. Also: copy repairs that drop COMDATs are gated by the
+drop test, not by NF318 Q5 / NF320 Q2, which gate moves (BRIEF_NF_BATCH NF340 scope line).

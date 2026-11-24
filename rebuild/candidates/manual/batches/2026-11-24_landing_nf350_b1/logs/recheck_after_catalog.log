@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00cd3d2e   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00cd3d2e   RELOCATION_MATCH PASS   operator[]
+00cd3cae   RELOCATION_MATCH PASS   insert
+
+WINS: 2
+  00cd3d2e RELOCATION_MATCH std::map::??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+  00cd3cae RELOCATION_MATCH std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const,CScriptGameResourceObjectScriptedThingBase> > >::?insert@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@2@@Z

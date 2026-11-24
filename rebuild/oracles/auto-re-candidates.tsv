@@ -25057,7 +25057,7 @@ address	name	length	bytes
 005f9ca5	std::map<EHeroAbility,NUISystem::CComponent*,std::less<EHeroAbility>,std::allocator<std::pair<EHeroAbility const,NUISystem::CComponent*>>>::insert	29	ff74240c8b54240c518bc4ff74240c8910e898fbffff8b442404c20c00
 00cd367c	std::map<CCharString,unsigned long,std::less<CCharString> >::insert	29	ff74240c8b54240c518bc4ff74240c8910e8f0fbffff8b442404c20c00
 00cd36c2	std::map<int, CCharString, std::less<int>, std::allocator<std::pair<const int, CCharString > > >::insert	29	ff74240c8b54240c518bc4ff74240c8910e8edfdffff8b442404c20c00
-00cd3cae	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString> >::insert	29	ff74240c8b54240c518bc4ff74240c8910e8f2fdffff8b442404c20c00
+00cd3cae	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const,CScriptGameResourceObjectScriptedThingBase> > >::insert	29	ff74240c8b54240c518bc4ff74240c8910e8f2fdffff8b442404c20c00
 00431277	_global::GFSerialiseMapBinaryOut<unsigned long,unsigned long,std::less<unsigned long>>	61	5356578bfaff77048bd9e82a2c56008b078b70083bf07421ff76108bcbe8172c5600ff76148bcbe80d2c560056e81780ffff8bf03b375975df5f5e5bc3
 0045c91d	_global::WriteState_0045c91d	61	5356578bfaff77048bd9e8847553008b078b70083bf07421ff76108bcbe871755300ff76148bcbe86775530056e871c9fcff8bf03b375975df5f5e5bc3
 00463cdb	_global::GFSerialiseMapBinaryOut<long,EHeroTrainableStatType,std::less<EHeroTrainableStatType>>	61	5356578bfaff77048bd9e8c60153008b078b70083bf07421ff76108bcbe8b3015300ff76148bcbe8a901530056e8b355fcff8bf03b375975df5f5e5bc3

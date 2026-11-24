@@ -1,0 +1,89 @@
+row	A4	fable_map_STLP_MAP	INDEX_DECL_ONLY	resolve_test	flags
+00cbfb7d	DEF	y	n	pass	-
+00ce7670	DEF	y	n	pass	/d2inlT89690
+00d0f640	none	y	n	n/a	/d2inlT59
+00d13580	DEF	y	n	pass	/d2inlS15
+00d19bd0	DEF	y	n	pass	/d2inlS15
+00d1a740	NOT_COMPILED	-	-	-	-
+00d1b200	DEF	y	n	pass	/d2inlS15
+00d22f30	DEF	y	n	pass	/d2inlS15
+00d2d930	DEF	y	n	pass	/d2inlS15
+00d2ed20	DEF	y	n	pass	-
+00d321c0	DEF	y	n	pass	-
+00d328c0	DEF	y	n	pass	-
+00d33280	DEF	y	n	pass	-
+00d33730	DEF	y	n	pass	-
+00d39330	DEF	y	n	pass	-
+00d45060	DEF	y	n	pass	/d2inlT53
+00d4a270	DEF	y	n	pass	-
+00d51520	DEF	y	n	pass	-
+00d52e90	DEF	y	n	pass	-
+00d58490	UND	y	y	n/a-already-UND	-
+00d5ae70	DEF	y	n	pass	-
+00d5e0c0	DEF	y	n	pass	-
+00d647f0	DEF	y	n	pass	-
+00d6d670	DEF	y	n	pass	-
+00d77690	DEF	y	n	pass	-
+00d8abf0	DEF	y	n	pass	-
+00d8bcd0	DEF	y	n	pass	-
+00d973d0	DEF	y	n	pass	-
+00d9a190	DEF	y	n	pass	-
+00da91a0	DEF	y	n	pass	-
+00db86b0	DEF	y	n	pass	-
+00db97a0	DEF	y	n	pass	-
+00dbb310	DEF	y	n	pass	-
+00dbcd60	DEF	y	n	pass	-
+00dc1770	DEF	y	n	pass	-
+00dc27c0	DEF	y	n	pass	-
+00dca6d0	DEF	y	n	pass	-
+00dcfa60	DEF	y	n	pass	-
+00dd9520	DEF	y	n	pass	-
+00dd9a50	DEF	y	n	pass	-
+00ddf090	DEF	y	n	pass	-
+00de6730	DEF	y	n	pass	-
+00e07640	DEF	y	n	pass	-
+00e0a820	DEF	y	n	pass	/Gr
+00e0b160	DEF	y	n	pass	-
+00e137b0	DEF	y	n	pass	-
+00e13f10	DEF	y	n	pass	-
+00e18630	DEF	y	n	pass	-
+00e19d80	DEF	y	n	pass	-
+00e25f70	NOT_COMPILED	-	-	-	-
+00e26e30	DEF	y	n	pass	-
+00e27e90	DEF	y	n	pass	-
+00e2ab30	none	y	n	n/a	-
+00e46d30	DEF	y	n	pass	-
+00e55ce0	DEF	y	n	pass	-
+00e57e60	DEF	y	n	pass	-
+00e6bc50	DEF	y	n	pass	-
+00e6da80	DEF	y	n	pass	-
+00e78100	DEF	y	n	pass	-
+00e7c8e0	DEF	y	n	pass	-
+00e87030	DEF	y	n	pass	-
+00e8dfa0	DEF	y	n	pass	-
+00e8ef80	DEF	y	n	pass	/d2inlT72
+00e90be0	DEF	y	n	pass	-
+00e9a970	DEF	y	n	pass	/Gr
+00e9b240	DEF	y	n	pass	/Gr
+00e9be60	DEF	y	n	pass	/Gr
+00e9e420	NOT_COMPILED	-	-	-	-
+00ea2720	DEF	y	n	pass	-
+00ea59e0	DEF	y	n	pass	-
+00eb9980	DEF	y	n	pass	-
+00ec4a00	NOT_COMPILED	-	-	-	-
+00ed0b10	DEF	y	n	pass	-
+00ed5830	DEF	y	n	pass	-
+00ed5f50	DEF	y	n	pass	-
+00f0d630	DEF	y	n	pass	-
+00f0fb70	DEF	y	n	pass	-
+# counts {'A4_DEF': 70, 'resolve_pass': 70, 'A4_none': 2, 'resolve_n/a': 2, 'not_compiled': 4, 'A4_UND': 1, 'resolve_n/a-already-UND': 1}
+# owner COMDAT shared with census objects: 0 equal, 70 differ (bytes or relocation symbols): ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@std@@QAE@ABU01@@Z
+# owner COMDAT shared with census objects: 0 equal, 70 differ (bytes or relocation symbols): ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@1@@Z
+# owner COMDAT shared with census objects: 39 equal, 33 differ (bytes or relocation symbols): ??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+# owner COMDAT shared with census objects: 0 equal, 70 differ (bytes or relocation symbols): ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+# owner COMDAT shared with census objects: 0 equal, 70 differ (bytes or relocation symbols): ??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+# owner COMDAT shared with census objects: 70 equal, 0 differ (bytes or relocation symbols): ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@std@@QBEAAU?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@1@XZ
+# owner COMDAT shared with census objects: 0 equal, 70 differ (bytes or relocation symbols): ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z
+# owner COMDAT shared with census objects: 0 equal, 70 differ (bytes or relocation symbols): ?end@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@2@XZ
+# owner COMDAT shared with census objects: 0 equal, 70 differ (bytes or relocation symbols): ?key_comp@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QBE?AU?$less@VCCharString@@@2@XZ
+# owner COMDAT shared with census objects: 0 equal, 70 differ (bytes or relocation symbols): ?lower_bound@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@2@ABVCCharString@@@Z
