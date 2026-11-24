@@ -1,0 +1,12 @@
+defscan 0066b370 DEF
+closure 0066b370 intermediate ?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ
+defscan 0066c340 DEF
+defscan 00703150 DEF
+closure 00703150 intermediate ?PeekPMaterial@CThingObject@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+defscan 007f0300 DEF
+closure 007f0300 intermediate ?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z
+defscan 0082d5c0 DEF
+closure 0082d5c0 intermediate ?PeekPMaterial@CThingBuilding@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+defscan 008f7950 DEF
+closure 008f7950 intermediate ?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+emitters 0066b370 0066c340 00703150 007f0300 0082d5c0 008f7950 | fold hits 0

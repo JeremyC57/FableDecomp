@@ -1,0 +1,3 @@
+addr	tag	owner_cmp
+005fc2d0	g	ownerRS=NODEF obj/005fc2d0_g.obj |ownerRD=NODEF obj/005fc2d0_g.obj |ownerGU=EQUAL obj/005fc2d0_g.obj len=98|ownerGT=
+00868e50	g	ownerRS=NODEF obj/00868e50_g.obj |ownerRD=NODEF obj/00868e50_g.obj |ownerGU=|ownerGT=EQUAL obj/00868e50_g.obj len=98

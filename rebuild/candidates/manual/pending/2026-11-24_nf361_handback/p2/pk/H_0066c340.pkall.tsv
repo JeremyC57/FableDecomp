@@ -1,0 +1,7 @@
+# leaf ??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?DecRef@CRefCounted@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?GetRefCount@CRefCounted@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDefBase@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	19	-	n	n	?ReleaseTemporary@CDefBase@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z

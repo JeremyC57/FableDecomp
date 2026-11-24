@@ -1,0 +1,7 @@
+0066b370	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/66/CTCSoundPlayer_PlayAllSoundEvents_0066b370.cpp
+0066c340	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/66/CDefinitionManager_GetDefCMaterialDef_0066c340.cpp
+00703150	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/70/CThingObject_PeekPMaterial_00703150.cpp
+007f0300	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/7f/CTCCarriedActionUseSpade_IsThingAbleToDig_007f0300.cpp
+0082d5c0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/82/CThingBuilding_PeekPMaterial_0082d5c0.cpp
+008f7950	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/8f/NCombatActionHelpers_CreateDustEffectForCreature_008f7950.cpp
+PRE_DONE

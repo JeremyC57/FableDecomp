@@ -1,0 +1,3 @@
+CHANGED ('COMDAT', '?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ', '.text') size 53 -> 44 data_eq=False relocs_eq=False flags_eq=False
+CHANGED ('COMDAT', '?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z', '.text') size 103 -> 59 data_eq=False relocs_eq=False flags_eq=False
+VERDICT DIFF n=2 symdelta=0 leaf=same

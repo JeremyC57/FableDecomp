@@ -1,0 +1,4 @@
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/ostream:51:16: error: invalid operands to binary expression ('fmtflags' (aka 'int') and 'ios_base &(ios_base &) __attribute__((cdecl))')
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/ostream:51:16: error: invalid operands to binary expression ('fmtflags' (aka 'int') and 'ios_base &(ios_base &) __attribute__((cdecl))')
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/istream:39:28: error: invalid operands to binary expression ('fmtflags' (aka 'int') and 'ios_base &(ios_base &) __attribute__((cdecl))')
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71/include/istream:39:28: error: invalid operands to binary expression ('fmtflags' (aka 'int') and 'ios_base &(ios_base &) __attribute__((cdecl))')

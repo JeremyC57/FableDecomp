@@ -1,0 +1,43 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+EQ  0041c820 16 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+EQ  0041c830 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+NEQ 004291de 53 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ not referenced by the leaf
+EQ  00428b10 11 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z 
+NEQ 00429160 53 ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ not referenced by the leaf
+NEQ 00429230 53 ?ReleaseData@?$CCountedPointer@VCMesh@NUISystem@@@@QAEXXZ not referenced by the leaf
+NEQ 0042925c 53 ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ not referenced by the leaf
+NEQ 004292c0 54 ?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z not referenced by the leaf
+NEQ 0042943a 67 ?ShareData@?$CCountedPointer@VCMesh@NUISystem@@@@QAEXPAVCMesh@NUISystem@@PAVCCPPointerInfo@@@Z not referenced by the leaf
+NEQ 00429460 67 ?ShareData@?$CCountedPointer@VCText@NUISystem@@@@QAEXPAVCText@NUISystem@@PAVCCPPointerInfo@@@Z not referenced by the leaf
+NEQ 00429c15 78 ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z LEAF-REFERENCED
+NEQ 00429c53 53 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ not referenced by the leaf
+NEQ 00429c6f 103 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z LEAF-REFERENCED
+NEQ 00429b72 53 ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ LEAF-REFERENCED
+EQ  0047b3e0 62 ??E?$_Rb_tree_iterator@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@2@@std@@QAEAAU01@XZ 
+NEQ 0042a168 47 ?clear@?$_List_base@JV?$allocator@J@std@@@std@@QAEXXZ not referenced by the leaf
+NEQ 0042a141 47 ?clear@?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXXZ not referenced by the leaf
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 0042a2b9 70 ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCMesh@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z not referenced by the leaf
+NEQ 0042a2ca 70 ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCText@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z not referenced by the leaf
+EQ  0042b040 98 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 
+EQ  0042b0a2 162 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z 
+NEQ 0042ab58 32 ??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z not referenced by the leaf
+NEQ 0042ab73 62 ??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ not referenced by the leaf
+NEQ 0042ab01 32 ??0?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z not referenced by the leaf
+NEQ 0042ab1c 62 ??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ not referenced by the leaf
+NEQ 00429fbe 28 ?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z not referenced by the leaf
+EQ  00440080 14 ?_M_clear@?$vector@JV?$allocator@J@std@@@std@@IAEXXZ 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  00cd2d0b 14 ??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ 
+NEQ 0042aadc 53 ?insert@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCActionParam@NUISystem@@U?$_Nonconst_traits@PAVCActionParam@NUISystem@@@std@@@2@U32@ABQAVCActionParam@NUISystem@@@Z not referenced by the leaf
+NEQ 0053fd00 20 ??1CAction@NUISystem@@QAE@XZ not referenced by the leaf
+EQ  00440990 216 ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+NEQ 0042be50 64 ??0CAction@NUISystem@@QAE@XZ LEAF-REFERENCED
+NEQ 00485ff3 50 ?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z not referenced by the leaf
+NEQ 00618be0 115 ??A?$map@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@U?$less@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@std@@V?$allocator@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@std@@@7@@std@@QAEAAPAVCComponent@NUISystem@@ABW4ECategory@CHeroLogBookEntry@CHeroLogBook@@@Z LEAF-REFERENCED
+NEQ 0042b646 45 ?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z not referenced by the leaf
+NEQ 00429f43 34 ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z LEAF-REFERENCED
+NEQ 0042aa29 78 ??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z LEAF-REFERENCED
+EQ  0047c6a0 117 ?_M_erase@?$_Rb_tree@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@5@U?$less@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@5@V?$allocator@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@5@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@2@@Z 

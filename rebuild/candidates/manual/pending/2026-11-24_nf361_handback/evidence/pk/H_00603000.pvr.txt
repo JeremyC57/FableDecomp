@@ -1,0 +1,56 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+EQ  0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ 
+EQ  0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z 
+EQ  0041c820 16 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+EQ  0041c830 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+NEQ 0048bc40 27 ?IsIncludedInThingScans@CThing@@QBE_NXZ not referenced by the leaf
+EQ  005b3440 90 ??8CDefString@@QBE_NPBD@Z 
+EQ  005fa7f0 12 ?IsDemonDoor@CThingCreatureBase@@QBE_NXZ 
+EQ  005faba0 118 ?IsThingAsPosBeingDrawn@CTCInventoryMap@@IBE_NABVC3DVector@@@Z 
+NEQ 004291de 53 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ not referenced by the leaf
+EQ  00428b10 11 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z 
+NEQ 00429e29 99 ??0CUIState@NUISystem@@QAE@ABV01@@Z not referenced by the leaf
+EQ  00612980 61 ??0CUIMiniMapMarker@CTCInventoryMap@@QAE@ABV01@@Z 
+NEQ 0042aab3 17 ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z not referenced by the leaf
+NEQ 004294e2 64 ?_M_decrement@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z not referenced by the leaf
+NEQ 004292c0 54 ?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z not referenced by the leaf
+EQ  00612db0 112 ??$__find@PAPAVCThing@@PAVCThingAICreature@@@std@@YIPAPAVCThing@@PAPAV1@0ABQAVCThingAICreature@@ABUrandom_access_iterator_tag@0@@Z 
+EQ  0042a944 29 ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABU01@@Z 
+EQ  00403a00 11 ?GetLength@CCharString@@QBEJXZ 
+NEQ 00429c53 53 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ not referenced by the leaf
+NEQ 00429c6f 103 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z LEAF-REFERENCED
+NEQ 0042aa96 30 ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABKABVCUIState@NUISystem@@@Z not referenced by the leaf
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 00429cfb 62 ??E?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAEAAU01@XZ not referenced by the leaf
+EQ  00612f70 133 ??$__copy@PAVCUIMiniMapMarker@CTCInventoryMap@@PAV12@H@std@@YIPAVCUIMiniMapMarker@CTCInventoryMap@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z 
+NEQ 0042b467 83 ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@1@ABVCCharString@@@Z LEAF-REFERENCED
+NEQ 005d82f3 56 ??0?$_Vector_base@JV?$allocator@J@std@@@std@@QAE@IABV?$allocator@J@1@@Z not referenced by the leaf
+NEQ 0042bdf0 46 ?_M_create_node@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z not referenced by the leaf
+EQ  00cd2d0b 14 ??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004ab4f0 62 ??1?$_List_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ 
+EQ  00615360 62 ??1?$_List_base@PBVCThingMarker@@V?$allocator@PBVCThingMarker@@@std@@@std@@QAE@XZ 
+EQ  00514160 95 ??0?$vector@JV?$allocator@J@std@@@std@@QAE@ABV01@@Z 
+EQ  004ac4b0 45 ?push_back@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXABQAVCThingAICreature@@@Z 
+NEQ 0042cb08 202 ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKVCUIState@NUISystem@@@2@0@Z not referenced by the leaf
+NEQ 0042cee3 180 ?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z not referenced by the leaf
+EQ  00515cc0 216 ?_M_insert_overflow@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@IAEXPAPAVCThingAICreature@@ABQAV3@ABU__true_type@2@I_N@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  006a80a0 56 ??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z 
+EQ  005fbaa0 634 ?GetRelativePosOnMiniMap@CTCInventoryMap@@IBEXAAVCRegion@@ABVC3DVector@@AAVC2DVector@@@Z 
+NEQ 0042bef2 21 ?find@?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@ABVCCharString@@@Z not referenced by the leaf
+EQ  004ac060 32 ??0?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@ABV?$allocator@PAVCThingAICreature@@@1@@Z 
+NEQ 0042d2c6 518 ?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z not referenced by the leaf
+NEQ 00617a00 135 ??$GetAllLeafThings@VCThingAICreature@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasInformation@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasInformation@@VCThingFilter_InMap@@@@AAV?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z LEAF-REFERENCED
+NEQ 00617b20 118 ??$GetAllThings@VCThingCreatureBase@@V?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@V?$const_mem_fun_ref_t@_NVCThingCreatureBase@@@3@@CThingSearchTools@@QBEXABV?$const_mem_fun_ref_t@_NVCThingCreatureBase@@@std@@AAV?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@2@@Z LEAF-REFERENCED
+EQ  00517a10 50 ?push_back@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXABQAVCThingAICreature@@@Z 
+NEQ 0042d4d3 31 ?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z not referenced by the leaf
+NEQ 006182f0 306 ?_M_insert_overflow@?$vector@VCUIMiniMapMarker@CTCInventoryMap@@V?$allocator@VCUIMiniMapMarker@CTCInventoryMap@@@std@@@std@@IAEXPAVCUIMiniMapMarker@CTCInventoryMap@@ABV34@ABU__false_type@2@I_N@Z LEAF-REFERENCED
+NEQ 00617780 174 ??$GetAllLeafThings@VCThingMarker@@V?$list@PBVCThingMarker@@V?$allocator@PBVCThingMarker@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingMarker@@V?$allocator@PBVCThingMarker@@@std@@@std@@@Z LEAF-REFERENCED
+NEQ 00617a90 174 ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@@Z LEAF-REFERENCED
+NEQ 006186f0 185 ??$GetAllLeafThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z LEAF-REFERENCED
+NEQ 00618790 145 ??$GetAllLeafThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_EnemyCreature@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_EnemyCreature@@VCThingFilter_InMap@@@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z LEAF-REFERENCED
+NEQ 00617bb0 174 ??$GetAllThings@VCThingCreatureBase@@V?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@@Z LEAF-REFERENCED
+NEQ 0042d5b1 137 ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAEAAVCUIState@NUISystem@@ABK@Z LEAF-REFERENCED

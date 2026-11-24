@@ -1,0 +1,8 @@
+H 005fb7e0 vland-obj Reset len=103 ReleaseData len=53 ; equal to pass.py H object Reset COMDAT: EQUAL
+H 005fe090 vland-obj Reset len=103 ReleaseData len=53 ; equal to pass.py H object Reset COMDAT: EQUAL
+H 006001e0 vland-obj Reset len=103 ReleaseData len=53 ; equal to pass.py H object Reset COMDAT: EQUAL
+H 00600b60 vland-obj Reset len=103 ReleaseData len=53 ; equal to pass.py H object Reset COMDAT: EQUAL
+N 005fb7e0 vland-obj Reset len=59 ReleaseData len=44 ; equal to pass.py N object Reset COMDAT: EQUAL
+N 005fe090 vland-obj Reset len=59 ReleaseData len=44 ; equal to pass.py N object Reset COMDAT: EQUAL
+N 006001e0 vland-obj Reset len=59 ReleaseData len=44 ; equal to pass.py N object Reset COMDAT: EQUAL
+N 00600b60 vland-obj Reset len=59 ReleaseData len=44 ; equal to pass.py N object Reset COMDAT: EQUAL

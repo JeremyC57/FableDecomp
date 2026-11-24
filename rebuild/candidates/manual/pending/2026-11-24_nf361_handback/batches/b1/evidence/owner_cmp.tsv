@@ -1,0 +1,16 @@
+addr	tag	owner_cmp(Reset vs 0x00429C6F obj | ReleaseData vs 0x004291DE obj | GetDef<CUIMiscThingsDef> vs 0x0042B312 obj | GetDef<CThingObjectDef> vs 0x0042B040 obj)
+005fb7e0	N	ownerRS=EQUAL obj/005fb7e0.obj len=59|ownerRD=EQUAL obj/005fb7e0.obj len=44|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+005fb7e0	r1	ownerRS=EQUAL obj/005fb7e0_r1.obj len=59|ownerRD=DIFF bytes=False relocs=False|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+005fe090	N	ownerRS=EQUAL obj/005fe090.obj len=59|ownerRD=EQUAL obj/005fe090.obj len=44|ownerGU=|ownerGT=
+005fe090	r1	ownerRS=EQUAL obj/005fe090_r1.obj len=59|ownerRD=DIFF bytes=False relocs=False|ownerGU=|ownerGT=
+006001e0	N	ownerRS=EQUAL obj/006001e0.obj len=59|ownerRD=EQUAL obj/006001e0.obj len=44|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+006001e0	r1	ownerRS=EQUAL obj/006001e0_r1.obj len=59|ownerRD=DIFF bytes=False relocs=False|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+00600b60	N	ownerRS=EQUAL obj/00600b60.obj len=59|ownerRD=EQUAL obj/00600b60.obj len=44|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+00600b60	r1	ownerRS=EQUAL obj/00600b60_r1.obj len=59|ownerRD=DIFF bytes=False relocs=False|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+00622a00	N	ownerRS=EQUAL obj/00622a00.obj len=59|ownerRD=EQUAL obj/00622a00.obj len=44|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+00622a00	r1	ownerRS=EQUAL obj/00622a00_r1.obj len=59|ownerRD=DIFF bytes=False relocs=False|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+006096e0	r1	ownerRS=EQUAL obj/006096e0_r1.obj len=59|ownerRD=DIFF bytes=False relocs=False|ownerGU=|ownerGT=EQUAL obj/006096e0_r1.obj len=98
+0060c900	r1	ownerRS=EQUAL obj/0060c900_r1.obj len=59|ownerRD=DIFF bytes=False relocs=False|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+0060eeb0	r1	ownerRS=EQUAL obj/0060eeb0_r1.obj len=59|ownerRD=DIFF bytes=False relocs=False|ownerGU=DIFF bytes=False relocs=False|ownerGT=
+005fc2d0	g	ownerRS=NODEF obj/005fc2d0_g.obj |ownerRD=NODEF obj/005fc2d0_g.obj |ownerGU=EQUAL obj/005fc2d0_g.obj len=98|ownerGT=
+00868e50	g	ownerRS=NODEF obj/00868e50_g.obj |ownerRD=NODEF obj/00868e50_g.obj |ownerGU=|ownerGT=EQUAL obj/00868e50_g.obj len=98

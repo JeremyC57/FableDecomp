@@ -1,0 +1,38 @@
+005fb7e0	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fb7e0	pk_all	TURNED_NEQ	004291de	leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+005fb7e0	pk_all	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005fb7e0	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fb7e0	pvr	TURNED_NEQ	004291de	not-leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+005fb7e0	pvr	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005fb7e0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+005fe090	pk_all	TURNED_NEQ	004291de	leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+005fe090	pk_all	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005fe090	pvr	TURNED_NEQ	004291de	not-leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+005fe090	pvr	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 005fe090 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+006001e0	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+006001e0	pk_all	TURNED_NEQ	004291de	leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+006001e0	pk_all	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+006001e0	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+006001e0	pvr	TURNED_NEQ	004291de	not-leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+006001e0	pvr	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 006001e0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+00600b60	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+00600b60	pk_all	TURNED_NEQ	004291de	leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+00600b60	pk_all	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+00600b60	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+00600b60	pvr	TURNED_NEQ	004291de	not-leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+00600b60	pvr	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 00600b60 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+00622a00	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+00622a00	pk_all	TURNED_NEQ	00429c53	not-leaf-called	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+00622a00	pk_all	FIXED	0061b610	leaf-called	?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@NUISystem@@W4QuestScreenType@@1@Z
+00622a00	pk_all	TURNED_NEQ	004291de	leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+00622a00	pk_all	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+00622a00	pvr	TURNED_NEQ	00429c53	not-leaf-called	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+00622a00	pvr	FIXED	0061b610	leaf-called	?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@NUISystem@@W4QuestScreenType@@1@Z
+00622a00	pvr	TURNED_NEQ	004291de	not-leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+00622a00	pvr	TURNED_NEQ	00429c6f	not-leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 00622a00 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [11, 0, 1, 0], 'pvr': [11, 0, 1, 0]}
+GATE FAIL (14)

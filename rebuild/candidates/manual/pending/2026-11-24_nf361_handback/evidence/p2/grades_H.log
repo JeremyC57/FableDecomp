@@ -1,0 +1,24 @@
+# overlay=
+# overlay=
+H 0082d5c0 RELOCATION_MATCH leaf=?PeekPMaterial@CThingBuilding@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/82/CThingBuilding_PeekPMaterial_0082d5c0.cpp
+PASS_DONE
+CHAIN_DONE 0082d5c0
+# overlay=
+H 0066b370 RELOCATION_MATCH leaf=?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/66/CTCSoundPlayer_PlayAllSoundEvents_0066b370.cpp
+PASS_DONE
+CHAIN_DONE 0066b370
+# overlay=
+H 0066c340 RELOCATION_MATCH leaf=??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/66/CDefinitionManager_GetDefCMaterialDef_0066c340.cpp
+PASS_DONE
+H 008f7950 RELOCATION_MATCH leaf=?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@ flags=/Gr src=/home/user/FableDecomp/rebuild/src/compiled/00/8f/NCombatActionHelpers_CreateDustEffectForCreature_008f7950.cpp
+PASS_DONE
+CHAIN_DONE 0066c340
+CHAIN_DONE 008f7950
+# overlay=
+H 00703150 RELOCATION_MATCH leaf=?PeekPMaterial@CThingObject@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CThingObject_PeekPMaterial_00703150.cpp
+PASS_DONE
+CHAIN_DONE 00703150
+# overlay=
+H 007f0300 RELOCATION_MATCH leaf=?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/7f/CTCCarriedActionUseSpade_IsThingAbleToDig_007f0300.cpp
+PASS_DONE
+CHAIN_DONE 007f0300

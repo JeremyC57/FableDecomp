@@ -1,0 +1,7 @@
+005fb7e0 CTCInventoryMap_ConstructRegionDescriptionMapKeys_005fb7e0.cpp others=[] tests=[]
+005fe090 CTCInventoryMap_ConstructQuestsScreen_005fe090.cpp others=[] tests=[]
+006001e0 CTCInventoryMap_ConstructRegionDescriptionShops_006001e0.cpp others=[] tests=[]
+00600b60 CTCInventoryMap_ConstructRegionDescriptionBuyableBuildings_00600b60.cpp others=[] tests=[]
+005fc2d0 CTCInventoryMap_ConstructQuestReviewList_005fc2d0.cpp others=[] tests=[]
+00868e50 global_GetArmourWeightsFromThing_00868e50.cpp others=[rebuild/src/compiled/00/70/CTCHeroAttachableAppearanceModifiers_HasFrameUpdate_007097e0.cpp
+rebuild/src/compiled/00/70/CTCHeroAttachableAppearanceModifiers_IsComponentSerialisable_007097f0.cpp] tests=[]

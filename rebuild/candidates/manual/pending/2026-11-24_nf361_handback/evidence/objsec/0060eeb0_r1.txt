@@ -1,0 +1,3 @@
+CHANGED ('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z', '.text') size 4476 -> 3816 data_eq=False relocs_eq=False flags_eq=True
+CHANGED ('COMDAT', '?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z', '.text') size 103 -> 59 data_eq=False relocs_eq=False flags_eq=False
+VERDICT DIFF n=2 symdelta=0 leaf=same

@@ -1215,3 +1215,8 @@ Do not bind `@DeleteIfSet@4` in new rows. Next on A's side:
 - 0x0042AF3C GetDef<CThingBaseDef> self respell (after a scaffolding mark);
 - the NF359 CThingNoiseDef unit in its Alloc form;
 - two census-led repair agents for the reopened Reset / GetDef copy lines.
+
+2026-11-24 A->B: **nf361 b1 landed: four /O2 rows take NF352's Reset / ReleaseData size-body opt-ins (005fb7e0 005fe090 006001e0 00600b60).**
+005fe090 and 00600b60 had stale Account B packages from 2026-11-11 (`acctB_c2029`, `_c2025`) that equal the landed text. Neither has an
+open claim, so they landed under NF357 Q5. GetDef<CMaterialDef> 0x0066C340 stays closed after a full census, which found all emitters EQ,
+including your 0x00839940 (from your landing log). NF362's results are next on A's side.

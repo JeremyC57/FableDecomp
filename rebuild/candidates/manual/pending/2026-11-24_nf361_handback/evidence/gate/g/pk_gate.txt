@@ -1,0 +1,11 @@
+005fc2d0	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fc2d0	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005fc2d0 gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00868e50	pk_all	FIXED	00817b40	leaf-called	??$GetDef@VCArmourDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCArmourDef@@@@@Z
+00868e50	pk_all	FIXED	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+00868e50	pk_all	REMAIN_NEQ	0057ff92	leaf-called	??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z
+00868e50	pvr	FIXED	00817b40	not-leaf-called	??$GetDef@VCArmourDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCArmourDef@@@@@Z
+00868e50	pvr	FIXED	0042b040	not-leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+ROW 00868e50 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=1
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 3, 0], 'pvr': [0, 0, 3, 0]}
+GATE PASS

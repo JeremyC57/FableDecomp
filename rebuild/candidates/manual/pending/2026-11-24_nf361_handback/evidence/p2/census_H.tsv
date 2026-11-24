@@ -1,0 +1,6 @@
+0066b370	DEF,	sel=2	pk_all=EQ/EQ 108/108 leafref=y reach=y	pvr=EQ 108	2	?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ
+00703150	DEF,	sel=2	pk_all=EQ/EQ 108/108 leafref=y reach=y	pvr=EQ 108	1	?PeekPMaterial@CThingObject@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+007f0300	DEF,	sel=2	pk_all=EQ/EQ 108/108 leafref=y reach=y	pvr=EQ 108	2	?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z
+0082d5c0	DEF,	sel=2	pk_all=EQ/EQ 108/108 leafref=y reach=y	pvr=EQ 108	1	?PeekPMaterial@CThingBuilding@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+008f7950	DEF,	sel=2	pk_all=EQ/EQ 108/108 leafref=y reach=y	pvr=EQ 108	2	?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+0066c340	DEF,	sel=2	pk_all=	pvr=	0	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z

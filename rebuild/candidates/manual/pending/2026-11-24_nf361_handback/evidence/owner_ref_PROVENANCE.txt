@@ -1,0 +1,6 @@
+2026-11-12 02:04:41.855403409 /home/user/FableDecomp/rebuild/src/compiled/00/42/CCountedPointerNUISystemCComponent_Reset_00429c6f.cpp
+2026-11-12 02:04:41.855404190 /home/user/FableDecomp/rebuild/src/compiled/00/42/CDefinitionManager_GetDefCThingObjectDef_0042b040.cpp
+2026-11-12 23:00:51.138300941 /home/user/FableDecomp/rebuild/src/compiled/00/42/CDefinitionManager_GetDef_0042b312.cpp
+2026-11-24 14:21:40.285185632 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF362/work/obj/H_00429c6f.obj
+2026-11-24 14:21:40.407071793 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF362/work/obj/H_0042b040.obj
+2026-11-24 14:21:40.304343684 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF362/work/obj/H_0042b312.obj

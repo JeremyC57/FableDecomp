@@ -1,0 +1,22 @@
+004291de	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/42/CCountedPointerNUISystemCComponent_ReleaseData_004291de.cpp
+0047a9f0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/47/CHeroLogBook_AddEntry_0047a9f0.cpp
+005fddd0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructPastQuestsListPC_005fddd0.cpp
+005fcbe0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructPastQuestsList_005fcbe0.cpp
+005fc8a0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructQuestReviewListPC_005fc8a0.cpp
+005fc2d0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructQuestReviewList_005fc2d0.cpp
+005fe090	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructQuestsScreen_005fe090.cpp
+005fb7e0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructRegionDescriptionMapKeys_005fb7e0.cpp
+005ff190	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_CreateMapMarkers_005ff190.cpp
+006096e0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructLogbookListPC_006096e0.cpp
+00607330	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructLogbookList_00607330.cpp
+0060c900	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructMapList_0060c900.cpp
+0060eeb0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructPCMapList_0060eeb0.cpp
+00600b60	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructRegionDescriptionBuyableBuildings_00600b60.cpp
+006001e0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructRegionDescriptionShops_006001e0.cpp
+00605570	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructRegionDescription_00605570.cpp
+00603000	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_CreateMiniMapMarkers_00603000.cpp
+0061e6d0	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/61/CTCInventoryQuests_ConstructQuestListPC_0061e6d0.cpp
+0061b610	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/61/CTCInventoryQuests_ConstructQuestList_0061b610.cpp
+00622a00	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/62/CTCInventoryQuests_OpenInventory_00622a00.cpp
+00868e50	PASS	/home/user/FableDecomp/rebuild/src/compiled/00/86/global_GetArmourWeightsFromThing_00868e50.cpp
+PRE_DONE

@@ -1,0 +1,5 @@
+CHANGED ('COMDAT', '??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ', '.text') size 53 -> 5 data_eq=False relocs_eq=False flags_eq=True
+CHANGED ('COMDAT', '?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@NUISystem@@W4QuestScreenType@@1@Z', '.text') size 12341 -> 11311 data_eq=False relocs_eq=False flags_eq=True
+CHANGED ('COMDAT', '?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ', '.text') size 53 -> 44 data_eq=False relocs_eq=False flags_eq=False
+CHANGED ('COMDAT', '?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z', '.text') size 103 -> 59 data_eq=False relocs_eq=False flags_eq=False
+VERDICT DIFF n=4 symdelta=0 leaf=same

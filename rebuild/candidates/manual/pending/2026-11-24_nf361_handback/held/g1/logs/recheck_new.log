@@ -1,0 +1,9 @@
+addr       parity           behav  name
+005fc2d0   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005fc2d0   RELOCATION_MATCH PASS   ConstructQuestReviewList
+00868e50   RELOCATION_MATCH PASS   GetArmourWeightsFromThing
+
+WINS: 2
+  005fc2d0 RELOCATION_MATCH CTCInventoryMap::?ConstructQuestReviewList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z
+  00868e50 RELOCATION_MATCH _global::?GetArmourWeightsFromThing@?A0x
+EXIT 0

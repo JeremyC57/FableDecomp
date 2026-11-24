@@ -1,0 +1,13 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  00405ba0 30 ?__copy_trivial@std@@YIPAXPBX0PAX@Z 
+EQ  00768fc0 63 ??$__uninitialized_copy@PAU?$pair@KVC3DVector@@@std@@PAU12@@std@@YIPAU?$pair@KVC3DVector@@@0@PAU10@00ABU__false_type@0@@Z 
+EQ  00769000 55 ??$__uninitialized_fill_n@PAU?$pair@KVC3DVector@@@std@@IU12@@std@@YIPAU?$pair@KVC3DVector@@@0@PAU10@IABU10@ABU__false_type@0@@Z 
+EQ  0063f3a0 108 ??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z 
+EQ  0066c340 108 ??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  00436ac0 216 ?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z 
+EQ  004acb50 27 ??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z 
+EQ  00436c80 50 ?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z 
+EQ  0076ada0 209 ?_M_insert_overflow@?$vector@U?$pair@KVC3DVector@@@std@@V?$allocator@U?$pair@KVC3DVector@@@std@@@2@@std@@IAEXPAU?$pair@KVC3DVector@@@2@ABU32@ABU__false_type@2@I_N@Z 
+NEQ 0076b120 5 ?push_back@?$CArray@U?$pair@KVC3DVector@@@std@@@@QAEXABU?$pair@KVC3DVector@@@std@@@Z LEAF-REFERENCED

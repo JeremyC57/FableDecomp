@@ -1,0 +1,31 @@
+row	copy	status	run_dir	measurement
+005fb7e0	Reset 0x00429C6F (+ReleaseData 0x004291DE)	ACCEPT	batches/b1	RELEASEDATA+RESET defines: Reset 103->59 EQ, RD 53->44 EQ (reach n->y onto EQ), objsec 2 COMDATs, leaf same, vland RM PASS H/N; own strong local GetDef<CUIMiscThingsDef> 51 B stays (out of scope)
+005fe090	Reset 0x00429C6F (+ReleaseData)	ACCEPT	batches/b1	as 005fb7e0; no other copy
+006001e0	Reset 0x00429C6F (+ReleaseData)	ACCEPT	batches/b1	as 005fb7e0; its GetDef<CUIMiscThingsDef> 116 B copy stays (see GetDef line)
+00600b60	Reset 0x00429C6F (+ReleaseData)	ACCEPT	batches/b1	as 006001e0
+005ff190	Reset 0x00429C6F	skipped (leaf moves)	-	R (both defines) DIFFER(3896v4176); RESET alone DIFFER(4000v4176): the leaf expands Reset / ReleaseData inline, the noinline specializations turn them into calls
+00603000	Reset 0x00429C6F	skipped (leaf moves)	-	R DIFFER(8520v9571); RESET alone DIFFER(8645v9571)
+006096e0	Reset 0x00429C6F	skipped (leaf moves / reach flip)	-	R DIFFER(11828v12832) (ReleaseData expanded in the leaf); RESET alone RELOCATION_MATCH, Reset EQ 59, but the NEQ ReleaseData copy's reach flips n->y (NF352 hold)
+0060c900	Reset 0x00429C6F	skipped (leaf moves / reach flip)	-	R DIFFER(8826v9635); RESET alone RM, Reset EQ, ReleaseData NEQ reach n->y
+0060eeb0	Reset 0x00429C6F	skipped (leaf moves / reach flip)	-	R DIFFER(9660v10254); RESET alone RM, Reset EQ, ReleaseData NEQ reach n->y
+00607330	Reset 0x00429C6F (unreached)	skipped (leaf moves)	-	R DIFFER(7804v9124); RESET alone DIFFER(9036v9124)
+0061b610	Reset 0x00429C6F (unreached)	skipped (leaf moves)	-	R DIFFER(11311v12341); RESET alone DIFFER(12063v12341)
+0061e6d0	Reset 0x00429C6F (unreached)	skipped (leaf moves)	-	R DIFFER(11476v12356); RESET alone DIFFER(12100v12356)
+00622a00	Reset 0x00429C6F (unreached)	skipped (turned NEQ)	-	R RM, Reset/RD/~CCountedPointer copies NEQ->EQ, but its folded CTCInventoryQuests::ConstructQuestList copy (0x0061B610, leaf-called) turns EQ->NEQ 12341->11311 under both checkers (gate FAIL); RESET alone: same TURNED_NEQ
+005fc2d0	GetDef<CUIMiscThingsDef> 0x0042B312	held (ruling Q1)	held/g1	swap (row-local template deleted + GLOBAL_BODY/REREAD/SIZE_BODY): 116->98 EQ, owner-equal, RM PASS H/N, gate PASS, 0 flips; objsec also changes NOADDR helpers (SetDynamicCast 50->52, Assign/IsNull dropped, Get added)
+00868e50	GetDef<CThingObjectDef> 0x0042B040	held (ruling Q1)	held/g1	swap: 116->98 EQ, owner-equal, also GetDef<CArmourDef> 0x00817B40 116 NEQ -> 108 EQ; RM PASS H/N; gate PASS; helper COMDAT changes as 005fc2d0
+0047a9f0	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L70) -> 116 B; the NF349 block sits inside GETDEF_GLOBAL_BODY, which with the local template gives C2995 (control on 005fc2d0); swap not probed (/Gr row)
+005fc8a0	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L51), 116 B; swap form = held/g1 pattern, not probed
+005fcbe0	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L55), 116 B
+005fddd0	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L50), 116 B
+006001e0	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L87), 116 B; Reset part ACCEPT in b1
+00600b60	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L92), 116 B; Reset part ACCEPT in b1
+0060c900	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L131), 116 B
+0060eeb0	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L129), 116 B
+0061b610	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L122), 116 B
+0061e6d0	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L132), 116 B
+00622a00	GetDef<CUIMiscThingsDef> 0x0042B312	skipped (no define-only form)	-	row-local template (L171), 116 B (reach via another COMDAT)
+005ff190	GetDef<CUIMiscThingsDef> 0x0042B312 (unreached)	skipped (no define-only form)	-	row-local template (L164) NOT under auto_inline(off): the leaf may expand it; 116 B unreached copy
+00605570	GetDef<CUIMiscThingsDef> 0x0042B312 (unreached)	skipped (no define-only form)	-	row-local template (L133), retail expands GetDef in this leaf (row comment): a noinline body would move it; 116 B unreached copy
+00607330	GetDef<CThingObjectDef> 0x0042B040 (unreached)	skipped (no define-only form)	-	row-local template (L100) whose `!def.IsNull()` spelling the row's own comment says the leaf needs; 116 B unreached copy
+0x0066C340	GetDef<CMaterialDef> (Part 2)	STAYS CLOSED	evidence/p2	11 retail sites: 6 landed rows; 5 compiled EQ 108/108 both checkers (0066b370 00703150 007f0300 0082d5c0 008f7950), 00839940 EQ per acctB_b24e (B-claimed, not compiled); 3 sites in unlanded functions (CTCCombat::SetStruck 0x00734C60 x2, uncatalogued ~0x007A56B0)

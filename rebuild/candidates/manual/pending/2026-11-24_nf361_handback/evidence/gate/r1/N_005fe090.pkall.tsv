@@ -1,0 +1,13 @@
+# leaf ?ConstructQuestsScreen@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ
+NOADDR	NOADDR	-	-	pickany	16	-	n	n	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ	NEQ	00429c53	b	pickany	53	5	n	n	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+NOADDR	NOADDR	-	-	pickany	10	-	n	n	?IsNull@?$CCountedPointer@VCComponent@NUISystem@@@@QBE_NXZ
+NEQ	NEQ	004291de	a2,b	pickany	53	44	n	y	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+EQ	EQ	00428b10	a,a2,b,c	pickany	11	11	y	y	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+EQ	EQ	00429c6f	a,b	pickany	59	59	y	y	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+NEQ	NEQ	00429c15	b	pickany	78	62	n	n	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z

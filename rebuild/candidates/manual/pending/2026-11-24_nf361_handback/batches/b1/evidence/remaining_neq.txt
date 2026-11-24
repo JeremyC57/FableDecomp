@@ -1,0 +1,59 @@
+# every NEQ copy in the NEW objects (pk_all: verdict pvr addr src kind ours retail leafref reach symbol); H for comparison
+## 005fb7e0 H
+NEQ NEQ 0042b312 strong 51/98 leafref=y reach=y ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISy
+NEQ NEQ 00429c53 pickany 53/5 leafref=n reach=n ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ NEQ 004291de pickany 53/44 leafref=n reach=n ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+NEQ NEQ 00428b10 pickany 8/11 leafref=n reach=y ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+NEQ NEQ 00429c6f pickany 103/59 leafref=y reach=y ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+## 005fb7e0 N
+NEQ NEQ 0042b312 strong 51/98 leafref=y reach=y ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISy
+NEQ NEQ 00429c53 pickany 53/5 leafref=n reach=n ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ NEQ 00428b10 pickany 8/11 leafref=n reach=y ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+## 005fe090 H
+NEQ NEQ 00429c53 pickany 53/5 leafref=n reach=n ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ NEQ 004291de pickany 53/44 leafref=n reach=n ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+NEQ NEQ 00429c15 pickany 78/62 leafref=n reach=n ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+NEQ NEQ 00429c6f pickany 103/59 leafref=y reach=y ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+## 005fe090 N
+NEQ NEQ 00429c53 pickany 53/5 leafref=n reach=n ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ NEQ 00429c15 pickany 78/62 leafref=n reach=n ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+## 006001e0 H
+NEQ NEQ 0048bc40 pickany 27/36 leafref=n reach=n ?IsIncludedInThingScans@CThing@@QBE_NXZ
+NEQ NEQ 00429c53 pickany 53/5 leafref=n reach=n ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ NEQ 004291de pickany 53/44 leafref=n reach=n ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+NEQ NEQ 0042aa96 pickany 30/29 leafref=n reach=n ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABKABVCUIState@NUISystem@@@Z
+NEQ NEQ 00429c6f pickany 103/59 leafref=y reach=y ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+NEQ NEQ 0042d4d3 pickany 31/29 leafref=n reach=n ?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@st
+NEQ NEQ 005d82f3 pickany 56/52 leafref=n reach=n ??0?$_Vector_base@JV?$allocator@J@std@@@std@@QAE@IABV?$allocator@J@1@@Z
+NEQ NEQ 0042b312 pickany 116/98 leafref=y reach=y ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISy
+NEQ NEQ 00617a90 pickany 135/144 leafref=y reach=y ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?
+NEQ NEQ 0042d5b1 pickany 137/83 leafref=y reach=y ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QA
+## 006001e0 N
+NEQ NEQ 0048bc40 pickany 27/36 leafref=n reach=n ?IsIncludedInThingScans@CThing@@QBE_NXZ
+NEQ NEQ 00429c53 pickany 53/5 leafref=n reach=n ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ NEQ 0042aa96 pickany 30/29 leafref=n reach=n ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABKABVCUIState@NUISystem@@@Z
+NEQ NEQ 0042d4d3 pickany 31/29 leafref=n reach=n ?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@st
+NEQ NEQ 005d82f3 pickany 56/52 leafref=n reach=n ??0?$_Vector_base@JV?$allocator@J@std@@@std@@QAE@IABV?$allocator@J@1@@Z
+NEQ NEQ 0042b312 pickany 116/98 leafref=y reach=y ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISy
+NEQ NEQ 00617a90 pickany 135/144 leafref=y reach=y ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?
+NEQ NEQ 0042d5b1 pickany 137/83 leafref=y reach=y ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QA
+## 00600b60 H
+NEQ NEQ 0048bc40 pickany 27/36 leafref=n reach=n ?IsIncludedInThingScans@CThing@@QBE_NXZ
+NEQ NEQ 00429c53 pickany 53/5 leafref=n reach=n ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ NEQ 004291de pickany 53/44 leafref=n reach=n ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+NEQ NEQ 0042aa96 pickany 30/29 leafref=n reach=n ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABKABVCUIState@NUISystem@@@Z
+NEQ NEQ 00429c6f pickany 103/59 leafref=y reach=y ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+NEQ NEQ 0042d4d3 pickany 31/29 leafref=n reach=n ?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@st
+NEQ NEQ 005d82f3 pickany 56/52 leafref=n reach=n ??0?$_Vector_base@JV?$allocator@J@std@@@std@@QAE@IABV?$allocator@J@1@@Z
+NEQ NEQ 0042b312 pickany 116/98 leafref=y reach=y ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISy
+NEQ NEQ 00617a90 pickany 135/144 leafref=y reach=y ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?
+NEQ NEQ 0042d5b1 pickany 137/83 leafref=y reach=y ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QA
+## 00600b60 N
+NEQ NEQ 0048bc40 pickany 27/36 leafref=n reach=n ?IsIncludedInThingScans@CThing@@QBE_NXZ
+NEQ NEQ 00429c53 pickany 53/5 leafref=n reach=n ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ NEQ 0042aa96 pickany 30/29 leafref=n reach=n ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABKABVCUIState@NUISystem@@@Z
+NEQ NEQ 0042d4d3 pickany 31/29 leafref=n reach=n ?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@st
+NEQ NEQ 005d82f3 pickany 56/52 leafref=n reach=n ??0?$_Vector_base@JV?$allocator@J@std@@@std@@QAE@IABV?$allocator@J@1@@Z
+NEQ NEQ 0042b312 pickany 116/98 leafref=y reach=y ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISy
+NEQ NEQ 00617a90 pickany 135/144 leafref=y reach=y ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?
+NEQ NEQ 0042d5b1 pickany 137/83 leafref=y reach=y ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QA

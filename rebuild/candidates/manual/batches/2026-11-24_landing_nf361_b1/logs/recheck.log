@@ -1,0 +1,22 @@
+addr       parity           behav  name
+005fb7e0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005fb7e0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005fb7e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005fb7e0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005fb7e0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005fb7e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap (engine/CTCInventoryMap.h)
+005fb7e0   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005fb7e0   RELOCATION_MATCH PASS   ConstructRegionDescriptionMapKeys
+005fe090   RELOCATION_MATCH PASS   ConstructQuestsScreen
+006001e0   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+006001e0   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@@Z -> 00617a90 labelled 'CThingSearchTools::GetAllLeafThings<CThingBuilding, std::list<CThingBuilding const *, std::allocator<CThingBuilding const *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>>'
+006001e0   RELOCATION_MATCH PASS   ConstructRegionDescriptionShops
+00600b60   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+00600b60   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@@Z -> 00617a90 labelled 'CThingSearchTools::GetAllLeafThings<CThingBuilding, std::list<CThingBuilding const *, std::allocator<CThingBuilding const *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>>'
+00600b60   RELOCATION_MATCH PASS   ConstructRegionDescriptionBuyableBuildings
+
+WINS: 4
+  005fb7e0 RELOCATION_MATCH CTCInventoryMap::?ConstructRegionDescriptionMapKeys@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z
+  005fe090 RELOCATION_MATCH CTCInventoryMap::?ConstructQuestsScreen@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+  006001e0 RELOCATION_MATCH CTCInventoryMap::?ConstructRegionDescriptionShops@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@PAVCUIRegionInfo@1@_N3@Z
+  00600b60 RELOCATION_MATCH CTCInventoryMap::?ConstructRegionDescriptionBuyableBuildings@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@PAVCUIRegionInfo@1@_N3@Z

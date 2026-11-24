@@ -1,0 +1,13 @@
+# leaf ?ConstructRegionDescriptionMapKeys@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z  source_a=yes  
+NOADDR	NOADDR	-	-	static	11	-	n	n	?DecRefToZero@@YA_NAAJ@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDefPointeeBase@@QAEXXZ
+NOADDR	NOADDR	-	-	strong	13	-	n	y	?FindDef_s7r_0@@YAPAXXZ
+NEQ	NEQ	0042b312	a,b	strong	51	98	y	y	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+NOADDR	NOADDR	-	-	pickany	16	-	n	n	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ	NEQ	00429c53	b	pickany	53	5	n	n	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ	NEQ	004291de	a2,b	pickany	53	44	n	y	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+NEQ	NEQ	00428b10	a2,b,c	pickany	8	11	n	y	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+EQ	EQ	00429c6f	a,b	pickany	59	59	y	y	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z

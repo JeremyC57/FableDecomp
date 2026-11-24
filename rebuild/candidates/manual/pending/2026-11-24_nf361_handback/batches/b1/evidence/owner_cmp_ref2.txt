@@ -1,0 +1,13 @@
+# second reference: the landed nf352_r1 row 0x00605570's HEAD object (built by NF361), whose copies are EQ 59 / 44
+REF obj/H_00605570.obj len=59 relocs=3
+EQUAL obj/005fb7e0.obj len=59
+EQUAL obj/005fe090.obj len=59
+EQUAL obj/006001e0.obj len=59
+EQUAL obj/00600b60.obj len=59
+EQUAL owner_ref/nf362_H_00429c6f.obj len=59
+REF obj/H_00605570.obj len=44 relocs=1
+EQUAL obj/005fb7e0.obj len=44
+EQUAL obj/005fe090.obj len=44
+EQUAL obj/006001e0.obj len=44
+EQUAL obj/00600b60.obj len=44
+EQUAL obj/H_004291de.obj len=44

@@ -1,0 +1,22 @@
+# leaf ?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?GetDefinitionManager@CWorld@@QBEAAVCDefinitionManager@@XZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$CDefPointer@$$CBVCEngineThemeDef@@@@QAE@W4ENullDef@@@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$CDefPointer@$$CBVCMaterialDef@@@@QAE@W4ENullDef@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCEngineThemeDef@@@@QBEPBVCEngineThemeDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCEngineThemeDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCMaterialDef@@@@QBEPBVCMaterialDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCEngineThemeDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCEngineThemeDef@@@@QBEPBVCEngineThemeDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCMaterialDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCMaterialDef@@@@QBEPBVCMaterialDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCEngineThemeDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+EQ	EQ	0063f3a0	a,b	pickany	108	108	y	y	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z
+EQ	EQ	0066c340	a,b	pickany	108	108	y	y	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z

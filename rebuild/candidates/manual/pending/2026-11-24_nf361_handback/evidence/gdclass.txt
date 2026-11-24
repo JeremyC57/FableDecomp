@@ -1,0 +1,20 @@
+0047a9f0 LOCAL_TEMPLATE L70 | CDefPointer<const X> types: NUISystem::CUIMiscThingsDef
+005fb7e0 LOCAL_CLASS_MODEL L58 | LOCAL_SPEC<NUISystem::CUIMiscThingsDef> L76 | CDefPointer<const X> types: CUIMiscThingsDef,NUISystem::CUIMiscThingsDef
+005fc2d0 LOCAL_TEMPLATE L51 | CDefPointer<const X> types: CUIMiscThingsDef
+005fc8a0 LOCAL_TEMPLATE L51 | CDefPointer<const X> types: CUIMiscThingsDef
+005fcbe0 LOCAL_TEMPLATE L55 | CDefPointer<const X> types: CUIMiscThingsDef
+005fddd0 LOCAL_TEMPLATE L50 | CDefPointer<const X> types: CUIMiscThingsDef
+005fe090 - | CDefPointer<const X> types: 
+005ff190 LOCAL_TEMPLATE L164 | CDefPointer<const X> types: NUISystem::CUIMiscThingsDef
+006001e0 LOCAL_TEMPLATE L87 | CDefPointer<const X> types: NUISystem::CUIMiscThingsDef
+00600b60 LOCAL_TEMPLATE L92 | CDefPointer<const X> types: NUISystem::CUIMiscThingsDef
+00603000 - | CDefPointer<const X> types: 
+00605570 LOCAL_TEMPLATE L133 | CDefPointer<const X> types: NUISystem::CUIMiscThingsDef
+00607330 LOCAL_TEMPLATE L100 | CDefPointer<const X> types: CAppearanceDef,CThingObjectDef
+006096e0 GLOBAL_BODY L28 | REREAD | SIZE_BODY:CTHINGOBJECTDEF | CDefPointer<const X> types: CAppearanceDef,CThingObjectDef
+0060c900 LOCAL_TEMPLATE L131 | CDefPointer<const X> types: CUIMiscThingsDef,NUISystem::CUIMiscThingsDef
+0060eeb0 LOCAL_TEMPLATE L129 | CDefPointer<const X> types: CUIMiscThingsDef,NUISystem::CUIMiscThingsDef
+0061b610 LOCAL_TEMPLATE L122 | CDefPointer<const X> types: CUIMiscThingsDef
+0061e6d0 LOCAL_TEMPLATE L132 | CDefPointer<const X> types: CUIMiscThingsDef
+00622a00 LOCAL_TEMPLATE L171 | CDefPointer<const X> types: CUIMiscThingsDef
+00868e50 LOCAL_TEMPLATE L27 | CDefPointer<const X> types: CAppearanceModifierDef,CArmourDef,CThingObjectDef

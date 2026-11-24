@@ -1,0 +1,1 @@
+/home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructRegionDescriptionMapKeys_005fb7e0_test.cpp:290:58: error: explicit specialization of 'Reset' after instantiation

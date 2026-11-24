@@ -1,0 +1,22 @@
+14:21:13 ZS_PASS ZT_0047a9f0 test /home/user/FableDecomp/rebuild/tests/00/47/CHeroLogBook_AddEntry_0047a9f0_test.cpp /Od /W3
+14:21:14 ZS_PASS ZT_005fb7e0 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructRegionDescriptionMapKeys_005fb7e0_test.cpp /Od /W3
+14:21:15 ZS_PASS ZT_005fc2d0 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructQuestReviewList_005fc2d0_test.cpp /Od /W3
+14:21:15 ZS_PASS ZT_005fc8a0 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructQuestReviewListPC_005fc8a0_test.cpp /Od /W3
+14:21:16 ZS_PASS ZT_005fcbe0 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructPastQuestsList_005fcbe0_test.cpp /Od /W3
+14:21:17 ZS_PASS ZT_005fddd0 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructPastQuestsListPC_005fddd0_test.cpp /Od /W3
+14:21:18 ZS_PASS ZT_005ff190 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_CreateMapMarkers_005ff190_test.cpp /Od /W3
+14:21:19 ZS_PASS ZT_006001e0 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructRegionDescriptionShops_006001e0_test.cpp /Od /W3
+14:21:20 ZS_PASS ZT_00603000 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_CreateMiniMapMarkers_00603000_test.cpp /Od /W3
+14:21:21 ZS_PASS ZT_00607330 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructLogbookList_00607330_test.cpp /Od /W3
+14:21:22 ZS_PASS ZT_006096e0 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructLogbookListPC_006096e0_test.cpp /Od /W3
+14:21:23 ZS_PASS ZT_0060c900 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructMapList_0060c900_test.cpp /Od /W3
+14:21:24 ZS_PASS ZT_0060eeb0 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructPCMapList_0060eeb0_test.cpp /Od /W3
+14:21:25 ZS_PASS ZT_0061b610 test /home/user/FableDecomp/rebuild/tests/00/61/CTCInventoryQuests_ConstructQuestList_0061b610_test.cpp /Od /W3
+14:21:26 ZS_PASS ZT_0061e6d0 test /home/user/FableDecomp/rebuild/tests/00/61/CTCInventoryQuests_ConstructQuestListPC_0061e6d0_test.cpp /Od /W3
+14:21:27 ZS_PASS ZT_00868e50 test /home/user/FableDecomp/rebuild/tests/00/86/global_GetArmourWeightsFromThing_00868e50_test.cpp /Od /W3
+ZS_TESTS_DONE /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF361/work/pre_tests.tsv
+14:23:36 ZS_FAIL rc=2 ZC_005fc2d0 src /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF361/var/C/005fc2d0.cpp /O2 /Oy /W3
+   e-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentNF361\work\zs\ZC_005fc2d0\ZC_005fc2d0.cpp(68) : error C2995: 'bool CDefinitionManager::GetDef(long,CDefPointer<const T> *) const' : template function has already been defined
+14:28:28 ZS_PASS ZT_0066b370 test /home/user/FableDecomp/rebuild/tests/00/66/CTCSoundPlayer_PlayAllSoundEvents_0066b370_test.cpp /Od /W3
+14:28:28 ZS_PASS ZT_008f7950 test /home/user/FableDecomp/rebuild/tests/00/8f/NCombatActionHelpers_CreateDustEffectForCreature_008f7950_test.cpp /Od /W3
+ZS_TESTS_DONE /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF361/work/pre_tests_p2b.tsv

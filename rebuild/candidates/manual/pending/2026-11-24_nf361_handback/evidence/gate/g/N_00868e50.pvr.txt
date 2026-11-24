@@ -1,0 +1,14 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+EQ  0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ 
+EQ  0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z 
+NEQ 0042a168 47 ?clear@?$_List_base@JV?$allocator@J@std@@@std@@QAEXXZ not referenced by the leaf
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  00817b40 108 ??$GetDef@VCArmourDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCArmourDef@@@@@Z 
+EQ  0042b040 98 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 
+NEQ 0057ff92 182 ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z not referenced by the leaf
+NEQ 0042ab58 32 ??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z not referenced by the leaf
+NEQ 0042ab73 62 ??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ not referenced by the leaf
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  00869ca0 205 ?_M_insert@?$_Rb_tree@V?$CDefPointer@$$CBVCArmourDef@@@@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Select1st@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@V?$CCompareDefPointer@$$CBVCArmourDef@@M@@V?$allocator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@U?$_Nonconst_traits@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@2@0@Z 
