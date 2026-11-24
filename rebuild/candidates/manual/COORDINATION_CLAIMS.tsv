@@ -572,3 +572,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF386 unblock the T1 targets NF384 skipped: the T3 lines reserving their 74 binders (nf324 26, nf297 7, nf303 7, ...; scratch agentNF386/BLOCKERS.tsv)	naming	claimed	locks via nflocks owner NF386
 2026-11-24	A	agent NF383 identity research under the no-ICF ruling: NF378 skipped-conflict (18) + NF380 q5 unknowns (26)	naming	done	landed nf383_b1 (6), b2 (5, objsec rule), b3 (3); 14 unknowns queued
 2026-11-24	A	agent NF382 NF380 q2 self renames (minus 004382c0 / 00533cc0) + q6 + q9 identity research	naming	done	landed nf382_b1 (14), b2 (5), b4 (1); b3 (3 units) and the two p6 rows queued T3 nf382
+2026-11-24	A	agent NF387 queued follow-ups: T3 nf381 0x0044C0C0 (13 stand-in binders), nf382 0x0067C490 (three pick-any-form selves), nf383 0x009B7870 (CArray pilot + the 12 lean-vector unknowns)	naming	claimed	locks via nflocks owner NF387
