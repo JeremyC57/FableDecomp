@@ -1,0 +1,4 @@
+id	question	decision	by
+R1	extra STLport chain COMDATs of pick-any re-rows	tier 1 already-in-build and identical to a landed object (comdat_cmp); tier 2 new-to-build with a reloc-masked retail function-start match (address recorded only when unique; non-unique still a home); else residue holds	advisor decision (owner delegated)
+R2	find spelling (member-template v plain)	per class, from a VC7.1 compile of the repo STLport; not by line count	advisor decision (owner delegated)
+R3	binders whose respell lands on another wrong body	not a ruling: queue ports	advisor decision (owner delegated)

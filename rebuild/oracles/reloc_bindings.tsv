@@ -1213,7 +1213,6 @@ __stricmp	00bfeba8	004fb880
 ??_7CThingMapManager@NThingMap@@6B@	01244678	005191e0
 ??1CValue_004ab4f0@@QAE@XZ	004ab4f0	00519560
 ?_M_erase@CCharStringSet@@QAEXPAU_Rb_tree_node_base@@@Z	004aba70	005195b0
-?Erase@CRetailTree_erase00519970@@QAEXPAUnode@1@@Z	00519970	0051af20
 ?CopyFrom@CArrayUL@@QAEXPAX@Z	0051b4c0	0051bb80
 ?CopyFrom@CCharString@@QAEXPAX@Z	00514eb0	0051bb80
 ?InsertionSort_00517500@@YIXPAUSElement4@@0USCompare@@@Z	00517500	0051c400
@@ -10105,7 +10104,7 @@ __imp__OpenMutexW@12	0143fe24	00403480
 ?GetMaxSize@?$CReplaceSerialise@VCOldFileFormatMapHeader5@@VCOldFileFormatMapHeader4@@@@SIJJJ@Z	00515fa0	00519630
 ??$_M_allocate_and_copy@PAVCMapInfo@@@?$vector@VCMapInfo@@@std@@IAEPAVCMapInfo@@IPAV2@0@Z	00515020	00519800
 ??$__destroy_aux@PAVCMapInfo@@@std@@YIXPAVCMapInfo@@0ABU__false_type@0@@Z	00515250	00519800
-?_M_erase@CBuildingCreatureMapTree@@QAEXPAU?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@@std@@@std@@@@@Z	00519970	00519970
+?_M_erase@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Select1st@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@2@@Z	00519970	00519970
 ??$__make_heap@PAPAVCThingBuilding@@VCIsHouseLargerThan@@PAV1@H@std@@YIXPAPAVCThingBuilding@@0VCIsHouseLargerThan@@0PAH@Z	005176d0	0051acf0
 ??$sort_heap@PAPAVCThingBuilding@@VCIsHouseLargerThan@@@std@@YIXPAPAVCThingBuilding@@0VCIsHouseLargerThan@@@Z	00519fa0	0051acf0
 ?GetMaxSize@?$CReplaceSerialise@VCOldFileFormatMapHeader7@@VCOldFileFormatMapHeader6@@@@SIJJJ@Z	00519630	0051adf0
@@ -39139,3 +39138,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@1@@Z	007137d0	007e7760
 ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	00429d8e	0056ad40
 ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ	009ab770	009ab770
+??1?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAE@XZ	0051b720	0051b720
+??1?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Select1st@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAE@XZ	0051af20	0051af20

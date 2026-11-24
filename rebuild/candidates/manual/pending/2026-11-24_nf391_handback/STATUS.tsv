@@ -1,0 +1,42 @@
+job	item	status	batch	note
+j1	00519970	done	b1	ACCEPT (R1 tiers): self respelt to the STLport _M_erase (NAME_FIXES nf389)
+j1	0051af20	done	b1	ACCEPT (R1 tiers): ~_Rb_tree<CThingBuilding*, pair<CThingBuilding* const, list<CThingAICreature*> >, ...> (derivation)
+j1	0051b720	done	b1	ACCEPT (R1 tiers): ~map<CThingBuilding*, list<CThingAICreature*> > (T3 nf389 line address, two checks PASS)
+j1	0051a2f0	done	b2	ACCEPT: tree spelling unification PBV -> QAV
+j1	009ab770	done (HOLD_RULING R1)	b3	HOLD_RULING R1 (gate-clean otherwise): NF132 twin, ~_Rb_tree<CCharString, pair<const CCharString, CCharString>, ...>; rewitness in HAND_TABLE_CHANGES
+j1	00513420	held	-	find form: table splits ??$find@ (23 lines) v ?find@ (14); probe body EQ_MASKED; ruling R3 / QUEUE q1
+j1	005003e0	held	-	binder port: local map model; its same-TU find body is not EQ to 0x00513420 (QUEUE q2)
+j1	0051bf90	held	-	binder port: 3-argument map with an insert_unique stand-in not EQ to 0x0051B1E0 (QUEUE q3)
+j1	0051af80	held	-	self + _M_erase spelt with a descriptive long-key tree; port (QUEUE q4, NAME_FIXES)
+j1	0051a560	reported	-	T3 flatten2: binds ?Detach_00519970@CTCCarryable@@QAEXI@Z (QUEUE q5)
+j2	004df554	traced	-	~_Vector_base<const CSteeringAgent*> (jmp from ~vector 0x004DF54F; ??_GCObstacleNavigatorExternalInterface vt slot 23 path)
+j2	004e1bd2	traced	-	_Rb_tree<unsigned __int64, pair<const unsigned __int64, CGroupMemberData> >::clear (~CTCCreatureGroup member +0x18 via ~map 0x004E350F)
+j2	005143e0	done	b4	ACCEPT (R1 tiers): list<CThingAICreature*>::size
+j2	005793e8	traced	-	_Rb_tree<EHeroTrainableStatType, pair<const EHeroTrainableStatType, NUISystem::CComponent*> >::clear (~CTCInventoryExperience +0x224, destroy order)
+j2	005c1390	traced, held	-	??_GCItem@NInventory@@QAEPAXI@Z (PDB name exists); the deleting dtor emission belongs to the class ctor port
+j2	00615220	done	b4	ACCEPT (R1 tiers): list<CIntelligentPointer<CThing> >::size
+j2	006553d0	traced	-	list<NPlayerGui::CMultiStatBar::CStatUpdate>::erase (via pop_front 0x00655A86 <- CMultiStatBar::DrawStatBarOnLeft, RTTI slot 0 both sides); pop_front self also wrong
+j2	006553fd	traced	-	list<NPlayerGui::CAutoPickupBar::CAutoPickup>::erase (via pop_front 0x00655AA4 <- CAutoPickupBar::DrawStatBarOnLeft, RTTI slot 0); pop_front self also wrong
+j2	00656ead	traced, held	-	??_GCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@QAEPAXI@Z (PDB name exists); ctor port
+j2	00668ed0	kept	-	zero references (raw full-image scan); no second source possible
+j2	006baa70	partial	-	a CCountedPointer deleter (IMM32 stores at 0x006B9900 / 0x006BAE53) for the class whose dtor is 0x006BA6D0; class not pinned
+j2	006ce220	traced	-	~_Vector_base<const CThingCreatureBase*> (local in CGroundNavigatorExternalInterface::IsMovementBlockedAt 0x006CDDF0, both PDBs)
+j2	0072a430	kept	-	zero references
+j2	0085a680	kept	-	zero references: its only hit 0x00724664 is a FALSE mid-instruction abs (NF385 counted it)
+j2	009c3510	kept	-	zero references
+j2	006c2c00	traced	-	_List_base<CCountedPointer<CLevelLoader::CObject> >::clear (CLevelLoader ??_G slot 0, member +0x14; FableWin ~CLevelLoader)
+j2	009c6cc0	partial	-	byte-twin partner of 0x006C2C00; owner class not pinned
+j2	00515c20	not traced	-	budget
+j2	00a96ae0	not traced	-	budget
+j2	0075dcf0	kept	-	zero references
+j2	00ad3940	kept	-	zero references
+j2	00815230	kept	-	reads [ecx+4]->+0x6e; FableWin CanBeHitByMeleeStrike is a large EH body, so the NF385 name is doubtful (maybe IsKnockDown); no proof
+j2	00815240	kept	-	reads [ecx+4]->+0x6f; as 0x00815230 (maybe IsDecapitate); no proof
+j2	004e35d4	traced	-	_Rb_tree<long, pair<const long, CEnginePrimitiveHandle> >::_M_erase (second of three maps in ~CTCInventoryClothing, retail +0x14C)
+j2	0057fefb	traced	-	_Rb_tree<CCharString, pair<const CCharString, CTCHeroStats::MirroredCriminalStatus> >::_M_erase (the only map in ~CTCHeroStats)
+j2	00a73cf0	traced	-	?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ; 3-row unit with 0x00A127C0 and the wrong table line (QUEUE q9)
+j2	00ad2580	not traced	-	budget
+j2	00ad2790	not traced	-	budget
+j2	00788da3	not traced	-	budget
+j2	0080df20	not traced	-	budget
+j3	nf385_b1 (21 rows)	done	-	RECHECK_NF385.tsv: all 21 hold; none rests on a false .text abs hit

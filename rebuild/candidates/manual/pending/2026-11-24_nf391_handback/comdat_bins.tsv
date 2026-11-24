@@ -1,0 +1,83 @@
+00519970	NOADDR	NEW_TO_BUILD	??$_Destroy@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@std@@YAXPAU?$pair@QAVCThingBu
+00519970	EQ	ALREADY_IN_BUILD(005029a0)	??1?$_List_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+00519970	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCThingAICreature@@@std@@U12@V?$allocator@U?$_List_node@PAVCThingAICreature@@@std@@@2@@std@@QAE@XZ
+00519970	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$allocator@U?$_List_node@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+00519970	NOADDR	ALREADY_IN_BUILD(005029a0 0051a2f0)	??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+00519970	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@QAE@XZ
+00519970	NOADDR	NEW_TO_BUILD	??_G?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@QAEPAXI@Z
+00519970	LEAF	SELF	?_M_erase@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?
+00519970	NOADDR	ALREADY_IN_BUILD(005029a0)	?clear@?$_List_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXXZ
+00519970	NOADDR	NEW_TO_BUILD	?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@
+0051af20	NOADDR	NEW_TO_BUILD	??$_Destroy@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@std@@YAXPAU?$pair@QAVCThingBu
+0051af20	EQ	ALREADY_IN_BUILD(005029a0)	??1?$_List_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+0051af20	LEAF	SELF	??1?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Selec
+0051af20	NOADDR	NEW_TO_BUILD	??1?$_Rb_tree_base@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@V?$allocator@U?$pair@QA
+0051af20	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCThingAICreature@@@std@@U12@V?$allocator@U?$_List_node@PAVCThingAICreature@@@std@@@2@@std@@QAE@XZ
+0051af20	NOADDR	NEW_TO_BUILD	??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@
+0051af20	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$allocator@U?$_List_node@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+0051af20	NOADDR	NEW_TO_BUILD	??1?$allocator@U?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@std@@@std
+0051af20	NOADDR	ALREADY_IN_BUILD(005029a0 0051a2f0)	??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+0051af20	EQ	NEW_TO_BUILD	??1?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$p
+0051af20	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@QAE@XZ
+0051af20	HELPER	PER_TU_HOLDER	??1BuildingCreatureMapHolder@?A0x10cd0206@@QAE@XZ
+0051af20	NOADDR	NEW_TO_BUILD	??_G?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@QAEPAXI@Z
+0051af20	EQ	NEW_TO_BUILD	?_M_erase@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?
+0051af20	NOADDR	ALREADY_IN_BUILD(005029a0)	?clear@?$_List_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXXZ
+0051af20	NOADDR	NEW_TO_BUILD	?clear@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_S
+0051af20	NOADDR	ALREADY_IN_BUILD(005029a0 00519970)	?deallocate@?$allocator@U?$_List_node@PAVCThingAICreature@@@std@@@std@@QAEXPAU?$_List_node@PAVCThingAICreature@@@2@I@Z
+0051af20	NOADDR	NEW_TO_BUILD	?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@
+0051b720	NOADDR	NEW_TO_BUILD	??$_Destroy@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@std@@YAXPAU?$pair@QAVCThingBu
+0051b720	EQ	ALREADY_IN_BUILD(005029a0)	??1?$_List_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+0051b720	EQ	NEW_TO_BUILD	??1?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Selec
+0051b720	NOADDR	NEW_TO_BUILD	??1?$_Rb_tree_base@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@V?$allocator@U?$pair@QA
+0051b720	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCThingAICreature@@@std@@U12@V?$allocator@U?$_List_node@PAVCThingAICreature@@@std@@@2@@std@@QAE@XZ
+0051b720	NOADDR	NEW_TO_BUILD	??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@
+0051b720	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$allocator@U?$_List_node@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+0051b720	NOADDR	NEW_TO_BUILD	??1?$allocator@U?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@std@@@std
+0051b720	NOADDR	ALREADY_IN_BUILD(005029a0 0051a2f0)	??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+0051b720	LEAF	SELF	??1?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$p
+0051b720	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@QAE@XZ
+0051b720	HELPER	PER_TU_HOLDER	??1BuildingCreatureMapHolder@?A0x40ef9bce@@QAE@XZ
+0051b720	NOADDR	NEW_TO_BUILD	??_G?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@QAEPAXI@Z
+0051b720	EQ	NEW_TO_BUILD	?_M_erase@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?
+0051b720	NOADDR	ALREADY_IN_BUILD(005029a0)	?clear@?$_List_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXXZ
+0051b720	NOADDR	NEW_TO_BUILD	?clear@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_S
+0051b720	NOADDR	ALREADY_IN_BUILD(005029a0 00519970)	?deallocate@?$allocator@U?$_List_node@PAVCThingAICreature@@@std@@@std@@QAEXPAU?$_List_node@PAVCThingAICreature@@@2@I@Z
+0051b720	NOADDR	NEW_TO_BUILD	?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@
+009ab770	NOADDR	ALREADY_IN_BUILD(009aa830 009ac310 00d33730 00d58490 00d5ae70 00d5e0c0)	??$_Destroy@U?$pair@$$CBVCCharString@@V1@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@V1@@0@@Z
+009ab770	LEAF	SELF	??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocat
+009ab770	NOADDR	ALREADY_IN_BUILD(009ac310 009ecf30 00d005e0 00d33730 00d3b010 00d58490)	??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V1@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@XZ
+009ab770	NOADDR	ALREADY_IN_BUILD(009ac310 00d33730 00d58490 00d5ae70 00d5e0c0 00dbb310)	??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std
+009ab770	NOADDR	ALREADY_IN_BUILD(009ac310 00d33730 00d58490 00d5ae70 00d5e0c0 00dbb310)	??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@std@@QAE@XZ
+009ab770	EQ	ALREADY_IN_BUILD(009ac310 009ecf30 00d005e0 00d33730 00d3b010 00d58490)	??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ
+009ab770	NOADDR	ALREADY_IN_BUILD(009aa830 009ac310 00d33730 00d58490 00d5ae70 00d5e0c0)	??1?$pair@$$CBVCCharString@@V1@@std@@QAE@XZ
+009ab770	HELPER	PER_TU_HOLDER	??1CharStringMapHolder@?A0xa9cad4f7@@QAE@XZ
+009ab770	NOADDR	ALREADY_IN_BUILD(009aa830 009ac310 00d33730 00d58490 00d5ae70 00d5e0c0)	??_G?$pair@$$CBVCCharString@@V1@@std@@QAEPAXI@Z
+009ab770	EQ	ALREADY_IN_BUILD(009aa830 009ac310 00d33730 00d58490 00d5ae70 00d5e0c0)	?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$
+009ab770	NOADDR	ALREADY_IN_BUILD(009ac310 009ecf30 00d005e0 00d33730 00d3b010 00d58490)	?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$all
+009ab770	NOADDR	ALREADY_IN_BUILD(009aa830 009ac310 009ecf30 00d005e0 00d33730 00d3b010)	?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@2@I
+0051a2f0	NOADDR	NEW_TO_BUILD	??$_Destroy@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@std@@YAXPAU?$pair@QAVCThingBu
+0051a2f0	NOADDR	ALREADY_IN_BUILD(005029a0)	??1?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@QAE@XZ
+0051a2f0	NOADDR	NEW_TO_BUILD	??_G?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@QAEPAXI@Z
+0051a2f0	NOADDR	NEW_TO_BUILD	?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@
+0051a2f0	LEAF	SELF	?erase@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_S
+005143e0	NOADDR	NEW_TO_BUILD	??$__distance@U?$_List_iterator@PAVCThingAICreature@@U?$_Const_traits@PAVCThingAICreature@@@std@@@std@@@std@@YAHABU?$_List_iterator@PAVCThingAICreatur
+005143e0	NOADDR	NEW_TO_BUILD	??$distance@U?$_List_iterator@PAVCThingAICreature@@U?$_Const_traits@PAVCThingAICreature@@@std@@@std@@@std@@YAHABU?$_List_iterator@PAVCThingAICreature@
+005143e0	NOADDR	ALREADY_IN_BUILD(005029a0 0051bf90)	??0?$_List_iterator@PAVCThingAICreature@@U?$_Const_traits@PAVCThingAICreature@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+005143e0	EQ	ALREADY_IN_BUILD(005003e0 005029a0 00502b00 0051bf90 0058578b 005fc2d0)	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+005143e0	EQ	ALREADY_IN_BUILD(005029a0 0058578b 005fc2d0 005fc8a0 005fcbe0 005fddd0)	??9_List_iterator_base@std@@QBE_NABU01@@Z
+005143e0	NOADDR	ALREADY_IN_BUILD(005029a0)	??E?$_List_iterator@PAVCThingAICreature@@U?$_Const_traits@PAVCThingAICreature@@@std@@@std@@QAEAAU01@XZ
+005143e0	EQ	ALREADY_IN_BUILD(005029a0 0058578b 005fc2d0 005fc8a0 005fcbe0 005fddd0)	?_M_incr@_List_iterator_base@std@@QAEXXZ
+005143e0	NOADDR	ALREADY_IN_BUILD(005029a0)	?begin@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QBE?AU?$_List_iterator@PAVCThingAICreature@@U?$_Const_traits@PAVCThin
+005143e0	NOADDR	ALREADY_IN_BUILD(005029a0)	?end@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QBE?AU?$_List_iterator@PAVCThingAICreature@@U?$_Const_traits@PAVCThingA
+005143e0	LEAF	SELF	?size@?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QBEIXZ
+00615220	NOADDR	NEW_TO_BUILD	??$__distance@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@std@@YAHABU?$_List_i
+00615220	NOADDR	NEW_TO_BUILD	??$distance@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@std@@YAHABU?$_List_ite
+00615220	NOADDR	ALREADY_IN_BUILD(0058578b 005fc2d0 005fc8a0 005fcbe0 005fddd0)	??0?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+00615220	EQ	ALREADY_IN_BUILD(005003e0 005029a0 00502b00 0051bf90 0058578b 005fc2d0)	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+00615220	EQ	ALREADY_IN_BUILD(005029a0 0058578b 005fc2d0 005fc8a0 005fcbe0 005fddd0)	??9_List_iterator_base@std@@QBE_NABU01@@Z
+00615220	NOADDR	ALREADY_IN_BUILD(0058578b 005fc2d0 005fc8a0 005fcbe0 005fddd0)	??E?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEAAU01@XZ
+00615220	EQ	ALREADY_IN_BUILD(005029a0 0058578b 005fc2d0 005fc8a0 005fcbe0 005fddd0)	?_M_incr@_List_iterator_base@std@@QAEXXZ
+00615220	NOADDR	ALREADY_IN_BUILD(0058578b 005fc2d0 005fc8a0 005fcbe0 005fddd0)	?begin@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBE?AU?$_List_iterator@V?$CIntelligentPoint
+00615220	NOADDR	ALREADY_IN_BUILD(0058578b 005fc2d0 005fc8a0 005fcbe0 005fddd0)	?end@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBE?AU?$_List_iterator@V?$CIntelligentPointer
+00615220	LEAF	SELF	?size@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEIXZ

@@ -1,33 +1,28 @@
-// CRetailTree_erase00519970::~CRetailTree_erase00519970() -- std::map/set destructor: erase all nodes through 0x00519970, reset the head, free it
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0051B720, oracle length 66 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+4] ; test eax,eax ; je F ; mov eax,[esi] ; mov ecx,[eax+4] ; push ecx ; mov ecx,esi ; call Erase ; (re-read head) mov [eax+8],eax ; mov dword ptr [edx+4],0 ; mov [eax+0Ch],eax ; mov dword ptr [esi+4],0 ; F: mov esi,[esi] ; test esi,esi ; je R ; push esi ; call free ; add esp,4 ; R: pop esi ; ret
-// Destructor of the retail red-black tree {head, size}: when the tree holds nodes the recursive
-// erase @ 0x00519970 (a __fastcall member taking the root, head->parent) frees them, then the
-// head's left/parent/right are reset through `head` re-read per store and size is zeroed; finally
-// the head node itself is released with free @ 0x00BFEA14 (null-checked). Only the erase callee
-// distinguishes the instantiations, so the class is named by it. One of 119 bodies.
-extern "C" void __cdecl free(void* block);
-
-struct CRetailTree_erase00519970 {
-    struct node { unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; };
-    node* head;
-    unsigned long size;
-    void Erase(node* root);                // 0x00519970
-    ~CRetailTree_erase00519970();
+// std::map<CThingBuilding*, std::list<CThingAICreature*> >::~map() -- STLport map destructor (the tree's, expanded): clear() (the out-of-line recursive _M_erase from the root, header relinked, count zeroed), then _Rb_tree_base frees the header node
+// Leaf: ??1?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0051B720, 66 bytes, thiscall. Callees: the tree's _M_erase 0x00519970, free 0x00BFEA14.
+// Identity (NF391, T3 nf389 0x0051B720; advisor decision, owner delegated): retail CWorldMap::PopulateRegionWithVillagers 0x00502E90 (both PDB
+//   name sets; its only callers are the CWorldMap slot 22 PostRegionLoad, CTCVillage slot 9 FrameUpdate and CGameScriptInterface slot 754
+//   RepopulateVillage, as in FableWin) calls 0x0051B720 at 0x005048C6 / 0x005048D2 on two map<CThingBuilding*, list<CThingAICreature*> >
+//   locals, where FableWin's PopulateRegionWithVillagers destroys its two locals of that type with ??1?$map. A full-image E8/E9 scan of the
+//   tree's _M_erase 0x00519970 finds exactly two standalone 66-byte destructor bodies, 0x0051AF20 and 0x0051B720; the TU that emits ~map
+//   also emits the 66-byte ~_Rb_tree calling _M_erase directly, so the unreferenced twin 0x0051AF20 is the tree's own destructor.
+// NF391: was the generated CRetailTree_erase00519970 destructor (one of 108 bodies named by their erase callee) over a local tree model;
+//   now the repo STLport (stlport/fable_map.h, FABLE_RETAIL_STLP_MAP) in the pick-any form.
+#include "fable_compiler.h"
+#include "rebuild_abi.h"
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+class CThingBuilding;
+class CThingAICreature;
+namespace {
+// Fidelity: scaffolding, not retail: a TU-internal holder whose out-of-line destructor destroys the map member, so VC7.1 emits the
+// implicit map / tree destructors (and _M_erase) as pick-any COMDATs, as every retail TU that destroys this map does (GOTCHAS nf86 / nf88,
+// nf387). Internal to this TU; never called.
+struct BuildingCreatureMapHolder {
+    std::map<CThingBuilding*, std::list<CThingAICreature*> > Buildings;
+    ~BuildingCreatureMapHolder();
 };
-
-CRetailTree_erase00519970::~CRetailTree_erase00519970()
-{
-    if (size) {
-        Erase(head->parent);
-        head->left = head;
-        head->parent = 0;
-        head->right = head;
-        size = 0;
-    }
-    if (head)
-        free(head);
+BuildingCreatureMapHolder::~BuildingCreatureMapHolder() {}
 }

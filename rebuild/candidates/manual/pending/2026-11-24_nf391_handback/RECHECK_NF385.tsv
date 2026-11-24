@@ -1,0 +1,22 @@
+address	sources_as_landed	abs_hits_inside_text_used	verdict
+008d6960	RTTI vftable slot (.rdata 0x0126833C, CModeChargeForcePush vt 0x01268328 slot 5) = FableWin slot 5; both PDB name sets	none (.rdata slot, not .text)	holds
+008d6980	RTTI vftable slot (.rdata 0x01268340, slot 6) = FableWin slot 6; both PDB name sets	none	holds
+0052cbf0	42 .rdata slot refs, slot 139 of CChangingStateComponent-derived NUISystem vftables (vt.py: 42 of 42) = FableWin slot 139; both PDBs	none	holds
+00536189	RTTI CList 0x012462E4 / CFrontEndList 0x01249224 slot 162 (.rdata) = FableWin; both PDBs	none	holds
+00547be0	RTTI CMovie 0x0124881C slot 23 (.rdata) = FableWin; both PDBs	none	holds
+0054e5a0	RTTI CViewport 0x01249A5C / CScrollingViewport 0x012468D4 slot 23 (.rdata) = FableWin; both PDBs	none	holds
+00403fc0	RTTI 0x0122D6C4 slot 1 (.rdata) = FableWin; both PDBs	none	holds
+0044b7e0	RTTI 0x01231C80 slot 1 (.rdata) = FableWin; both PDBs	none	holds
+005cbe9d	RTTI 0x01253F18 slot 1 (.rdata) = FableWin	none	holds
+005cbeba	RTTI 0x01253F18 slot 0 (.rdata) = FableWin	none	holds
+00b7ec30	RTTI 0x012A3334 slot 3 (.rdata) = FableWin; both PDBs	none	holds
+00b7ece0	RTTI 0x012A334C slot 3 (.rdata) = FableWin (FW-only name)	none	holds
+009fea00	RTTI 0x0129C89C slot 10 (.rdata) = FableWin; both PDBs	none	holds
+006bbed0	RTTI 0x0125D668 slot 5 (.rdata) = FableWin (FW only)	none	holds
+009efeb0	RTTI 0x0129C4E0 slot 5 (.rdata) = FableWin (FW only)	none	holds
+00618170	FableWin TransferVector<T> CheckCRC-then-clear order; retail caller: E8 call at 0x006198AF in 0x00619890 (instruction start, linear sweep)	none (E8 call, decoded)	holds
+0074d5d0	same; retail caller: E8 call at 0x0074DE6F in 0x0074DE50 (instruction start); 0x0074DE50 called at 0x0074B916 (instruction start)	none (E8 call, decoded)	holds
+00d25d20	script registration: 0x00D25690 `mov [esi+10h], 0x00D25C60` (decoded IMM32 in CQ_DragonBossFightScript::Main 0x00D255E0, real) after push of literal 0x012CB754 "DBMinion"; Alloc 0x00D25C60 stores vftable 0x012CB78C at 0x00D25C94 (decoded IMM32, real); slot 5 (.rdata 0x012CB7A0) = 0x00D25D20 = FableWin ??0CDBMinion vftable slot 5 OnPredicateFail	the two .text abs hits 0x00D25693 (in Main) and the vftable store: both decode as IMM32 operands of mov (real abs refs, not rel32 fields)	holds
+00d25ef0	script registration: 0x00D256F8 `mov [esi+10h], 0x00D25E30` (decoded IMM32, real) after push 0x012CB748 "DBSummoner"; Alloc 0x00D25E30 stores vftable 0x012CB7A8 at 0x00D25E64 (decoded IMM32); slot 5 (.rdata 0x012CB7BC) = 0x00D25EF0 = FableWin slot 5	0x00D256FB in Main and the vftable store: IMM32 operands (real)	holds
+007a6e20	CTCBattleCharge RTTI vt slot 9 (.rdata 0x0126CC20) = 0x007A8BE0; E8 at 0x007A8D0D -> 0x007A8700; E8 at 0x007A87BA -> 0x007A6E20 (all decoded instruction starts) = FableWin FrameUpdate > RushForwards > SetupFacingDirection	none (E8 calls by disassembly; the xref index's containing-function label 0x007A7D20 for 0x007A87BA is a catalog-boundary artefact: 0x007A8700 is not a catalog start)	holds
+007a9870	CTCAssassinRush RTTI vt slot 9 (.rdata 0x0126CF50) = 0x007AB190; E8 at 0x007AB281 -> 0x007AAC50; E8 at 0x007AAD0A -> 0x007A9870 (decoded) = FableWin same path	none (same catalog-boundary note: 0x007AAC50 not a catalog start)	holds
