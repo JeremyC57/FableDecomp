@@ -34,3 +34,15 @@
   hdrx FORCEINLINE_DTOR, diagnostic) is blocked by depth 0 too. differ/ = x4 (3 hunks; the device is NOT landable while WS is wrong).
   Next: a form that lowers ONLY the 4th arm's frequency below 0.403x (or the whole else block 0.30..0.40x) with no device; or a scoped
   control that blocks the implicit ~MovieBase but not the WS dtor.
+## B24B6 (2026-11-24)
+- Owner decision 2026-11-08 (EXTRA_RULES) allows inline controls for inline-budget residues, but no scoped control separates the two
+  dtors at the helmet return: both ~WS (needed expanded, retail 0x00DCA575 PauseAll inline) and implicit ~MovieBase (needed called)
+  sit at depth 1 of the same return full-expression; inline_depth(0) blocks forced bodies too (B24B4 hdrx).
+- Per-row flags /d2inlT34 / T37 / T39 on r0 (threshold between armour sc 33.9 and helmet 39.7): 213 / 217 / 205 hunks -- no.
+- Trace (inl/tr.sh): for->while on the j loop (w1) scales the collected_all block and the arms x0.1 (2.1973 -> .2197; arms
+  .2747.. -> .0275..), i loop (w2) x0.067: too cold (needs x0.302..0.403). No source form found for that window.
+- Cap ruled OUT: g at every ~MovieBase decision is 1239..2701 (r0 trace; max 2832) << 9000, pen 0 everywhere.
+- Visible-body lever (DIAG v1.cpp): the CP<Movie> dtor as a VISIBLE `__declspec(noinline)` specialization `{ ReleaseData(); }` instead of
+  the declared-only one: ~MovieBase still sz 25 / c1 19 at every site, same f, same decisions -> no lever on the MovieBase cost.
+  (A single MovieBase c1 cannot fit both rows anyway: here helmet needs c1 in [36,41] at f .1159 v armour .1545; 0x00D0C410 needs it
+  expanded at f .0003.) State unchanged: differ/ = x4 (3 hunks, diagnostic depth(0) device; WS dtor wrongly called).

@@ -87,3 +87,29 @@ byte locals 0x58..0x5b v ours 0x5c..0x5f, a float at 0x44 v 0x48. Not worked fur
 - Re-tested on the c21 base: c25 (no stat/increase loop locals) 5166v5195, 139 hunks -> the locals are needed (kept);
   c26 (plain-inline HasTC(type)) 5183v5195, 94 hunks -> forced HasTC (ONHIT opt-in) stays. Not run: d14-style diagnostic on c21
   (hero site only out of line) to test whether the colour/pweapon slot swap is downstream of the inline cap -- do it first next.
+## B24B6 (2026-11-24)
+- d21h (DIAG, c21 + hero site only out of line): 5195v5195, structural hunks unchanged -> slot swap NOT from the cap.
+- Frame packer traced (pk/: pk.py + phook.py, qs3.py simulates c2's K&R slot sort 0x107AE0C4, comparator flag then w*1000/size,
+  tie 0): `this`, pweapon, colour/damage slots all w=16; pweapon w=15 reproduces retail's order. The extra pweapon weight was the
+  spill reload `mov edi,[esp+0x28]` at the join after the explosion block (pweapon piece edx->edi split).
+- **e1: no separate `if (IS_THING_ALIVE(pweapon)) {` around the weapon block: `if (IS_THING_ALIVE(pweapon) && IS_THING_ALIVE(phitter)
+  && pweapon->GetTC(&ptc_weapon))` then the flammable `if (IS_THING_ALIVE(pweapon) && ...)` at the same level -> 92 -> 7 hunks.**
+  Slot swap, edx/edi copy, 0x6d scheduling, lea order all gone. Only the hero-site inline cap remains.
+- Cap window (playbook: pen only when a+g > 9000; IS_THING_ALIVE a=9): need g >= 8992 at #567 (e1 8927 -> +65); retail still expands
+  bitset::test at the summonable GetTC (#547, a=15), so the extra IL sits within +65..+408 before the hero site.
+- Measured on e1 (g at hero / code): e2 C3DVECTOR_ADD_XY_GROUP +4 (26 hunks), e3 INITIALISE_ADD +44 (44 hunks), e4 ADD_NAMED_RESULT
+  (44 hunks: retail debug block uses the return-by-ctor form), e5 RELEASE_COUNT -7 (7 hunks), hdrd comma-body __stl_throw_out_of_range 0,
+  DIAG e6 (all 24 TC pointer locals before the hero site `= 0`) +24 exactly (+1 IL each, code unchanged) -- oracle-forced, not landable.
+- FableWin's STL is Dinkumware (_Xran/_Tidy, no STLport): its bitset/STL sizes are no evidence. HasTC<CTCActionUseWindow> /Od variants
+  (hdre FABLE_DIAG_HASTCV 1..8) never reach FW 60i/192b; one forced site, dropped.
+- NAME: CHitParameters::GetPWeapon IS proven: ghidra_out/fablewin_pdb_names.tsv + fablewin_obj_functions.tsv (debug\thing_ai_creature.obj,
+  0x01D75520, ?GetPWeapon@CHitParameters@@QBEPAVCThing@@XZ) -- closes B24B5's doubt.
+- hdrd / hdre are DIAGNOSTIC overlays only (never for hand-back).
+- DIAG d1h (e1 + hero site IS_THING_ALIVE/bitset::test forced out of line): RELOCATION_MATCH -> the cap is the ONLY residue.
+- B24B6 landing form: overlay hdrf (README there; additive opt-ins only, no DIAG): FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT_HASTC_CLASSTYPE
+  replaces B24B5's guard edit; e1f.cpp = 7 hunks on hdrf. e1p.cpp = e1f + FABLE_RETAIL_CDEFCLASSBASE_CREATURE_OWNER_SIZE_PASS26
+  (pick-any: GetSubDef<CCreatureDef> copy EQ only with it). Pick-any details + the cap analysis: ESCALATE.md.
+- Local names stat / increase / hit_position / hit_direction: no Fable PDB on the lane to read local records -> descriptive (made up).
+## Exact state (B24B6 end of row-1 work)
+- BEST: e1p.cpp (hand-back candidate source; differ/ holds e1f = same bytes), overlay hdrf, DIFFER(5187v5195) 7 hunks = only the
+  hero-site inline cap (ESCALATE.md). Next idea: find +65 pre-opt IL before #567 with evidence (none found); do not pad with `= 0`.

@@ -956,3 +956,8 @@ pointer; sources Ego_r animate_thing.obj #25 (12 bytes = retail) and FableWin (p
 0x0070C900 CAnimSet::GetMeshAnim source is a local model; B's row needs that body VISIBLE in its TU (it currently carries a verbatim copy, raw-equal
 to 0x0070C900). If you re-row 0x0070C900 onto the shared headers with the same body text (e.g. an opt-in body in CAnimSet.h), B's row can take it
 from the header instead of a copy. Low priority; tell B here if you do it.
+
+2026-11-24 B->A: **Lane-wide pick-any item from B24B6:** the shared `GETDEF_GLOBAL_BODY` text makes objects emit a `GetDef<CMaterialDef>` copy
+(0x0066C340) that differs from retail; it is leaf-referenced in B's 0x00839940 CThingGameObject::OnHit and landed row 0x008F7950 emits the same
+differing copy at HEAD. Your ruling / queue. 0x00839940 itself is at 7 fg hunks: everything matches except one inline-cap decision at the
+hero-experience site (forcing those two calls out of line grades RELOCATION_MATCH; c2 needs a running IL size of >= 8992 there, ours 8927).

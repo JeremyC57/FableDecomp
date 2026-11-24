@@ -1,5 +1,8 @@
+// 0x00839940 CThingGameObject::OnHit (B24B6 e1)
+// Grade: DIFFER(5187v5195) -- e1: only the inline cap at the hero-experience site (retail calls IS_THING_ALIVE 0x0040DCE0 + bitset::test 0x00410DE0); overlay hdrc
+#define FABLE_RETAIL_CDEFCLASSBASE_CREATURE_OWNER_SIZE_PASS26
 #define FABLE_RETAIL_CCREATUREDEF_STATGETTYPENAME
-// Grade: DIFFER(5187v5195) -- 92 hunks, 15 structural (B24B5 c21, overlay hdrc): slot ranking 0x44/0x58 v 0x48/0x5c, pweapon slot, inline cap at hero site.
+#define FABLE_RETAIL_CHEROEXPERIENCEDEF_STATGETTYPENAME
 #define FABLE_RETAIL_CTHING_ISDEAD_BITFIELD
 #define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
 #define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_ORIGINAL_SCOPES_PASS22
@@ -52,7 +55,7 @@
 #define FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN
 #define FABLE_RETAIL_CTHING_PEEKTC_ORIGINAL_CHAIN
 #define FABLE_RETAIL_CVECTORMAP_ORIGINAL_FIND
-#define FABLE_RETAIL_CTHING_HASTC_CLASSTYPE
+#define FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT_HASTC_CLASSTYPE
 #define FABLE_RETAIL_CTHING_LOADSINGLE
 #define FABLE_RETAIL_CTHING_VIRTUALS
 #define FABLE_RETAIL_CTHINGPHYSICAL_VIRTUALS
@@ -211,9 +214,8 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
                     hit_params.SetHitNegated(true);
             }
         }
-        if (IS_THING_ALIVE(pweapon)) {
-            CTCWeapon* ptc_weapon;
-            if (IS_THING_ALIVE(phitter) && pweapon->GetTC(&ptc_weapon)) {
+        CTCWeapon* ptc_weapon;
+        if (IS_THING_ALIVE(pweapon) && IS_THING_ALIVE(phitter) && pweapon->GetTC(&ptc_weapon)) {
                 long explosion_index = ptc_weapon->GetExplosionType();
                 if (explosion_index > 0) {
                     CThing* pexplosion = CTCDExplosion::Create(explosion_index, phitter->GetPos());
@@ -232,7 +234,6 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
                 else if (!ptc_my_flammable->IsOnFire() && ptc_weapon_flammable->IsOnFire())
                     ptc_my_flammable->SetOnFire();
             }
-        }
     }
     if (!HasTC(TCI_BATTLE_CHARGE) && !HasTC(TCI_ASSASSIN_RUSH)) {
     CTCBerserk* ptc_berserk;
