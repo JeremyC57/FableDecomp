@@ -1,3 +1,8 @@
+#define FABLE_RETAIL_CCREATUREDEF_STATGETTYPENAME
+// Grade: DIFFER(5187v5195) -- 92 hunks, 15 structural (B24B5 c21, overlay hdrc): slot ranking 0x44/0x58 v 0x48/0x5c, pweapon slot, inline cap at hero site.
+#define FABLE_RETAIL_CTHING_ISDEAD_BITFIELD
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_ORIGINAL_SCOPES_PASS22
 // CThingGameObject::OnHit(CHitParameters& hit_params) -- apply damage, combat effects and hit notifications
 // Grade: DIFFER(5174v5195) -- Frame now matches native0xa0 after original STL find visibility. EBX/EBP roles, scalar slot ranking and later call/cleanup sharing differ.5174vs5195 bytes,1643vs1646 instructions. Not a match.
 // Leaf: ?OnHit@CThingGameObject@@UAEXAAVCHitParameters@@@Z
@@ -44,7 +49,10 @@
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTHING
-#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CTHING_PEEKTC_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CVECTORMAP_ORIGINAL_FIND
+#define FABLE_RETAIL_CTHING_HASTC_CLASSTYPE
 #define FABLE_RETAIL_CTHING_LOADSINGLE
 #define FABLE_RETAIL_CTHING_VIRTUALS
 #define FABLE_RETAIL_CTHINGPHYSICAL_VIRTUALS
@@ -94,6 +102,7 @@
 #include "engine/CPlayerManager.h"
 #include "engine/CPlayer.h"
 #include "engine/CThingBaseDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/CTCDExplosion.h"
 #include "engine/CTCOwnedEntity.h"
 #include "stlport/fable_map.h"
@@ -188,7 +197,7 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
         if (IS_THING_ALIVE(phitter)) {
             if (phitter->GetTypeFlags() & 8) {
                 CThingCreatureBase& attacker_creature = *static_cast<CThingCreatureBase*>(phitter);
-                attacker_creature.MakeNoise(CCharString("SIMPLE_NOISE", -1));
+                attacker_creature.MakeNoise("SIMPLE_NOISE");
                 CTCElectrocuteOnTouch* ptc_electrocute;
                 if (GetTC(&ptc_electrocute)) {
                     ptc_electrocute->OnHit(*phitter);
@@ -264,8 +273,6 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
         }
         damage_absorbed = hit_params.GetDamageToThing(*this);
         {
-        const CHitParameters& nonse_params = hit_params;
-        const CHitParameters& hit_params = nonse_params;
         if (!hit_params.IsHitNegated()) {
             CTCMultiStrike* ptc_multistrike;
             if (hit_params.IsMeleeStrike() && ((GetTypeFlags() & 8) || IsDamageable()) && IS_THING_ALIVE(pweapon) && pweapon != phitter
@@ -321,12 +328,16 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
                 if (GetTC(&ptc_hero_experience))
                     ptc_hero_experience->SetAsHit();
                 if (hit_params.IsLocalised()) {
+                    const C3DVector& hit_position = hit_params.GetHitPosition();
                     CTCWound* ptc_wound;
                     if (GetTC(&ptc_wound))
-                        ptc_wound->AddPossibleWoundGivenStrikePoint(hit_params.GetHitPosition());
-                    CTCDegradableBase* tc_degradable;
-                    if (hit_params.IsDirectional() && GetTC(&tc_degradable))
-                        tc_degradable->OnHit(hit_params.GetHitPosition(), hit_params.GetHitDirection());
+                        ptc_wound->AddPossibleWoundGivenStrikePoint(hit_position);
+                    if (hit_params.IsDirectional()) {
+                        const C3DVector& hit_direction = hit_params.GetHitDirection();
+                        CTCDegradableBase* tc_degradable;
+                        if (GetTC(&tc_degradable))
+                            tc_degradable->OnHit(hit_position, hit_direction);
+                    }
                 }
             }
         } else {
@@ -341,8 +352,6 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
         }
     }
     {
-    const CHitParameters& nonse_params = hit_params;
-    const CHitParameters& hit_params = nonse_params;
     CTCHeroStats* ptc_stats;
     if (!hit_params.IsHitNegated() && !hit_params.IsBlocked() && IS_THING_ALIVE(phitter) && phitter->GetTC(&ptc_stats) && IsGivingHeroStatChangesOnBeingHit()) {
         CDefPointer<const CCreatureDef> pcreature_def;
@@ -358,10 +367,12 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
                     if (it_lookup != phero_exp_def->StatIncreasePerHitType.end()) {
                         for (std::map<EHeroExperienceStatCategory,float>::const_iterator it2 = it_lookup->second.StatIncreases.begin();
                              it2 != it_lookup->second.StatIncreases.end(); ++it2) {
+                            const float increase = it2->second;
+                            const EHeroExperienceStatCategory stat = it2->first;
                             NHeroStatModifierEvent::CHitThing hit_event(pcreature_def->GetStatsDef());
                             hit_event.SetAsUnarmed(unarmed);
-                            hit_event.SetStatToIncrement(it2->first);
-                            hit_event.SetStatIncrementAmount(it2->second);
+                            hit_event.SetStatToIncrement(stat);
+                            hit_event.SetStatIncrementAmount(increase);
                             bool summoned_creature = false;
                             CTCSummonableCreature* ptc_summonable;
                             if (GetTC(&ptc_summonable) && ptc_summonable->GetHasBeenSummoned())
@@ -405,11 +416,11 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
         if (!phitting_material.Get() && IS_THING_ALIVE(phitter) && (phitter->GetTypeFlags() & 4)) {
             phitting_material = static_cast<CThingPhysical*>(phitter)->PeekPMaterial();
             if (hit_params.IsLightningStrike())
-                PeekDefinitionManager().GetDef(CCharString("MATERIAL_LIGHTNING", -1), &phitting_material);
+                PeekDefinitionManager().GetDef("MATERIAL_LIGHTNING", &phitting_material);
             else if (hit_params.IsDivineWrathStrike())
-                PeekDefinitionManager().GetDef(CCharString("MATERIAL_DIVINE_WRATH", -1), &phitting_material);
+                PeekDefinitionManager().GetDef("MATERIAL_DIVINE_WRATH", &phitting_material);
             else if (hit_params.IsUnholyPowerStrike())
-                PeekDefinitionManager().GetDef(CCharString("MATERIAL_UNHOLY_POWER", -1), &phitting_material);
+                PeekDefinitionManager().GetDef("MATERIAL_UNHOLY_POWER", &phitting_material);
             else {
                 CTCHitLocations* ptc_hit_locations;
                 if ((phitter->GetTypeFlags() & 8) && phitter->GetTC(&ptc_hit_locations))
