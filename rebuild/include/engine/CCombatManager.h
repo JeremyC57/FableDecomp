@@ -77,6 +77,15 @@ public:
  void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450
 #endif
  void DeregisterCombatant(CThingCreatureBase&);
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_SETATTACKERASBEENSTRUCK
+ // Opt-in (NF341, 2026-11-24, row 0x006EA430 and its binder 0x00734050 CTCCombat::SetBlocked): Ego_r.pdb (0x00713F20) + FableWin.pdb
+ // (0x0241CC10) ?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z, out of line at 0x006EA430 (landed; it was spelled
+ // DeregisterCombatant, which is 0x006ED9C0). Ego_r release\combat_manager.obj lists PerformSequenceReset (record 80) then
+ // SetAttackerAsBeenStruck (record 81, 32 B), as retail 0x006EA2C0 / 0x006EA430; the FableWin body calls IsInMeleeAsAttacker then
+ // PerformSequenceReset, as retail 0x006EA430 (FableWin's DeregisterCombatant calls DeregisterAttackingCombatant, as retail 0x006ED9C0).
+ // The PERFORMSEQUENCERESET note below names 0x006EA430 by its old spelling. Declaration only: no layout change.
+ void SetAttackerAsBeenStruck(CThingCreatureBase& attacker);         // 0x006EA430
+#endif
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_PERFORMSEQUENCERESET
  // Opt-in (agentNF22, row 0x006EA430 DeregisterCombatant): Ego_r.pdb + FableWin.pdb private
  // ?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z, out of line at 0x006EA2C0 (landed under that name).

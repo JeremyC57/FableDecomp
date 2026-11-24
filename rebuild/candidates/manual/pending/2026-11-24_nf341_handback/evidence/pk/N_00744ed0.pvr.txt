@@ -1,0 +1,5 @@
+EQ  00744470 41 ?SetSoundRadius@CTCPerceiveThing@@QAEXM@Z 
+EQ  007444a0 41 ?SetSmellRadius@CTCPerceiveThing@@QAEXM@Z 
+EQ  00744540 59 ?SetSightRadius@CTCPerceiveThing@@QAEXM@Z 
+EQ  00744500 57 ?SetExtendedSightRadius@CTCPerceiveThing@@QAEXM@Z 
+NEQ 0042af3c 116 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z LEAF-REFERENCED

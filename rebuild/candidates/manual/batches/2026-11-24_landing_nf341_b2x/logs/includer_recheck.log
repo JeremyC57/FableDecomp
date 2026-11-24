@@ -1,0 +1,165 @@
+addr       parity           behav  name
+004a5a40   WARN SHARED_HEADER_AVAILABLE CAtmosProcess (engine/CAtmosProcess.h)
+004a5a40   WARN SHARED_HEADER_AVAILABLE CMusicManager (engine/CMusicManager.h)
+004a5a40   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+004a5a40   WARN SHARED_HEADER_AVAILABLE CScriptConversationManager (engine/CScriptConversationManager.h)
+004a5a40   WARN SHARED_HEADER_AVAILABLE CGameTimeManager (engine/CGameTimeManager.h)
+004a5a40   WARN SHARED_HEADER_AVAILABLE CInterpolationInfo (engine/CInterpolationInfo.h)
+004a5a40   WARN SHARED_HEADER_AVAILABLE CPhysicsMesh (engine/CPhysicsMesh.h)
+004a5a40   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+004a5a40   WARN SHARED_HEADER_AVAILABLE CEngineManager (engine/CEngineManager.h)
+004a5a40   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+004a5a40   RELOCATION_MATCH PASS   UpdateFrame
+004a6e30   WARN RELOC_NAME: ??0CFactionManager@@QAE@ABVCWorld@@@Z -> 006b97e0 labelled 'CWorld_InitFactions'
+004a6e30   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0ABU__false_type@0@@Z -> 004ad9e0 labelled 'std::__destroy_aux<std::pair<unsigned long, CCountedPointer<CFaction>> *>'
+004a6e30   RELOCATION_MATCH PASS   Init
+006aabe0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006aabe0   RELOCATION_MATCH PASS   SetActionForMelee
+006e9310   RELOCATION_MATCH PASS   IsAttackerOn
+006e94d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006e94d0   WARN STANDIN_LEAF ?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (catalog CCombatManager::Combat_CheckRingRangeToTarget; names another function)
+006e94d0   RELOCATION_MATCH PASS   Combat_CheckRingRangeToTarget
+006e99b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006e99b0   RELOCATION_MATCH PASS   GetDefenderZone
+006ea050   RELOCATION_MATCH PASS   IsDefenderDueForAttack
+006ea0c0   RELOCATION_MATCH PASS   UpdateDefenderAttackPattern
+006ea430   WARN STANDIN_LEAF ?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (catalog CCombatManager::DeregisterCombatant; names another function)
+006ea430   RELOCATION_MATCH PASS   DeregisterCombatant
+006eac50   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+006eac50   RELOCATION_MATCH PASS   GetCombatDebugInfo
+006eae20   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z -> 006f3570 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingObject,std::vector<const CThing*>,CThingFilter_None>'
+006eae20   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingBuilding@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z -> 006f37b0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingBuilding,std::vector<const CThing*>,CThingFilter_None>'
+006eae20   RELOCATION_MATCH PASS   GetBestSequenceIndexAttackerOnDefender
+006eb700   WARN RELOC_NAME: ?IsTargetable@CTCTargeted@@QBE_NXZ -> 007ea280 labelled 'CScriptBase::IsActiveThreadTerminating'
+006eb700   WARN RELOC_NAME: ?IsInRange@NBBBMaths@@YI_NABVC3DVector@@0M@Z -> 00a4b7b0 labelled '_global::GFWorld3DDistanceSmallerThan'
+006eb700   RELOCATION_MATCH PASS   GetBestEnemyForCombatant
+006ecea0   WARN STANDIN_LEAF ?SetupDefenderPlacementWheel@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z (catalog CDefendingCombatantInfo::CDefendingCombatantInfo::UpdateCombatState; names another function)
+006ecea0   RELOCATION_MATCH PASS   UpdateCombatState
+006f8010   WARN STANDIN_LEAF ??_GCCreatureAction_CombatIdle@@UAEPAXI@Z (catalog CCreatureAction_CombatIdle::`scalar_deleting_destructor'; names another function)
+006f8010   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007355f0   RELOCATION_MATCH PASS   SetCombatType
+00834530   WARN STANDIN_LEAF ?CombatStressTestDebug@?A0x7e410edd@@YIXAAVCThingAICreature@@ABVCThingSearchTools@@PAK@Z (catalog CThingAICreature::CombatStressTestDebug; names another function)
+00834530   RELOCATION_MATCH PASS   CombatStressTestDebug
+00890c80   RELOCATION_MATCH PASS   EntityUnsheatheMeleeWeapon
+00890d80   RELOCATION_MATCH PASS   EntityUnsheatheRangedWeapon
+008b0d10   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditAttackMiddle@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b56d0 labelled '_global::Alloc_CCombatSequence_BanditAttackMiddle'
+008b0d10   WARN RELOC_NAME: ?RegisterCombatSequence@CCombatManager@@QAEXP6IPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@ZVCCharString@@@Z -> 006eab60 labelled 'CAttachingThingsDialog::SetAttachingThingTypeName'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditAttackSide@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5710 labelled '_global::Alloc_CCombatSequence_BanditAttackSide'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditAttackShort@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5750 labelled '_global::Alloc_CCombatSequence_BanditAttackNear'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditAdvanceLong@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5650 labelled '_global::Alloc_CCombatSequence_BanditAdvanceFar'
+008b0d10   WARN RELOC_NAME: ?CreateSeqNonInterruptableBoxStrafe@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5610 labelled '_global::Alloc_CCombatSequence_NonInterruptableBoxStrafe'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditAttackLong@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5690 labelled '_global::Alloc_CCombatSequence_BanditAttackFar'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditIdleShort@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5790 labelled '_global::Alloc_CCombatSequence_BanditIdleNear'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditUnblockable@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b55d0 labelled '_global::Alloc_CCombatSequence_BanditUnblockableAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditIdleMiddle@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b57d0 labelled '_global::Alloc_CCombatSequence_BanditIdleMiddle'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditBoast@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5810 labelled '_global::Alloc_CCombatSequence_BanditBoast'
+008b0d10   WARN RELOC_NAME: ?CreateSeqGenericLeader@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5590 labelled '_global::Alloc_CCombatSequence_GenericLeader'
+008b0d10   WARN RELOC_NAME: ?CreateSeqGenericRangedAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5550 labelled '_global::Alloc_CCombatSequence_GenericRangedAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditKingAdvance@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5890 labelled '_global::Alloc_CCombatSequence_BanditKingAdvance'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditKingBackOff@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b58d0 labelled '_global::Alloc_CCombatSequence_BanditKingBackOff'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditKingAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5850 labelled '_global::Alloc_CCombatSequence_BanditKingAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBanditKingSpinAround@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5910 labelled '_global::Alloc_CCombatSequence_BanditKingSpinAround'
+008b0d10   WARN RELOC_NAME: ?CreateSeqFodderMainAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5950 labelled '_global::Alloc_CCombatSequence_FodderMainAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqFodderUnblockableMainAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5990 labelled '_global::Alloc_CCombatSequence_FodderUnblockableMainAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqFodderSecondaryAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b59d0 labelled '_global::Alloc_CCombatSequence_FodderSecondaryAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqFodderCombatIdle@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5a10 labelled '_global::Alloc_CCombatSequence_FodderCombatIdle'
+008b0d10   WARN RELOC_NAME: ?CreateSeqScorpionLungeAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5a50 labelled '_global::Alloc_CCombatSequence_ScorpionLungeAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqKingScorpionTailPlunge@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5a90 labelled '_global::Alloc_CCombatSequence_KingScorpionTailPlunge'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollDoubleSwipe@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5ad0 labelled '_global::Alloc_CCombatSequence_TrollDoubleSwipe'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollDoubleSwipeNonMelee@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5b10 labelled '_global::Alloc_CCombatSequence_TrollDoubleSwipeNonMelee'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollOpeningGroundPound@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5b50 labelled '_global::Alloc_CCombatSequence_TrollOpeningGroundPound'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollProjectileAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5b90 labelled '_global::Alloc_CCombatSequence_TrollProjectileAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollBurrowPursue@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5bd0 labelled '_global::Alloc_CCombatSequence_TrollBurrowPursue'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollBurrowPursueNoZone@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5c10 labelled '_global::Alloc_CCombatSequence_TrollBurrowPursueNoZone'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollRockPursue@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5c50 labelled '_global::Alloc_CCombatSequence_TrollRockPursue'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollRockPursueNoZone@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5c90 labelled '_global::Alloc_CCombatSequence_TrollRockPursueNoZone'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollRockAdvance@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5cd0 labelled '_global::Alloc_CCombatSequence_TrollRockAdvance'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollRockThrowRock@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5d10 labelled '_global::Alloc_CCombatSequence_TrollRockThrowRock'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollRockIdle@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5d50 labelled '_global::Alloc_CCombatSequence_TrollRockIdle'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTrollRockShuffleBack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5d90 labelled '_global::Alloc_CCombatSequence_TrollRockShuffleBack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqVillagerAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5dd0 labelled '_global::Alloc_CCombatSequence_VillagerAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqVillagerBackOff@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5e10 labelled '_global::Alloc_CCombatSequence_VillagerBackOff'
+008b0d10   WARN RELOC_NAME: ?CreateSeqVillagerStepIn@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5e50 labelled '_global::Alloc_CCombatSequence_VillagerStepIn'
+008b0d10   WARN RELOC_NAME: ?CreateSeqVillagerAdvance@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5e90 labelled '_global::Alloc_CCombatSequence_VillagerAdvance'
+008b0d10   WARN RELOC_NAME: ?CreateSeqVillagerComboAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5ed0 labelled '_global::Alloc_CCombatSequence_VillagerCombo'
+008b0d10   WARN RELOC_NAME: ?CreateSeqVillagerComboAttackUnblockable@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5f10 labelled '_global::Alloc_CCombatSequence_VillagerComboUnblockable'
+008b0d10   WARN RELOC_NAME: ?CreateSeqVillagerNearAttack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5f50 labelled '_global::Alloc_CCombatSequence_VillagerNearAttack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWillLightning@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6390 labelled '_global::Alloc_CCombatSequence_WillLightning'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWillForcePush@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6410 labelled '_global::Alloc_CCombatSequence_WillForcePush'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWillForcePushLongRange@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6450 labelled '_global::Alloc_CCombatSequence_WillForcePushLongRange'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWillEnflame@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b63d0 labelled '_global::Alloc_CCombatSequence_WillEnflame'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWillPhysicalShield@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6490 labelled '_global::Alloc_CCombatSequence_WillPhysicalShield'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWillPhysicalShieldNonMelee@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b64d0 labelled '_global::Alloc_CCombatSequence_WillPhysicalShieldNonMelee'
+008b0d10   WARN RELOC_NAME: ?CreateSeqBattleCharge@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6350 labelled '_global::Alloc_CCombatSequence_BattleCharge'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperLunge@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5f90 labelled '_global::Alloc_CCombatSequenceWhisperLunge'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperAdvance@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b5fd0 labelled '_global::Alloc_CCombatSequenceWhisperAdvance'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperAttackCombo@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6010 labelled '_global::Alloc_CCombatSequenceWhisperAttackCombo'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperAttackCombo_8b6050@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6050 labelled '_global::Alloc_CCombatSequenceWhisperAttackBigCombo'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperAttack360@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6090 labelled '_global::Alloc_CCombatSequenceWhisperAttack360'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperStrikeStrafeBack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b60d0 labelled '_global::Alloc_CCombatSequenceWhisperStrikeStrafeBack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperTooCloseLeapBack@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6110 labelled '_global::Alloc_CCombatSequenceWhisperTooCloseLeapBack'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperBoast@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6150 labelled '_global::Alloc_CCombatSequenceWhisperBoast'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperStrafeAround@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b61d0 labelled '_global::Alloc_CCombatSequenceWhisperStrafeAround'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperIdles@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6210 labelled '_global::Alloc_CCombatSequenceWhisperIdles'
+008b0d10   WARN RELOC_NAME: ?CreateSeqJacksCombo@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6250 labelled '_global::Alloc_CCombatSequenceJacksCombo'
+008b0d10   WARN RELOC_NAME: ?CreateSeqTwoStrike@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6290 labelled '_global::Alloc_CCombatSequence2StrikeCombo'
+008b0d10   WARN RELOC_NAME: ?CreateSeqUnblockableFacing@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b62d0 labelled '_global::Alloc_CCombatSequenceUnblockableFacing'
+008b0d10   WARN RELOC_NAME: ?CreateSeqNonInterruptableTwoStrike@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6310 labelled '_global::Alloc_CCombatSequenceNonInterruptable2StrikeCombo'
+008b0d10   WARN RELOC_NAME: ?CreateSeqWhisperSortYourselfOut@@YIPAVCCombatSequenceBase@@AAVCThingCreatureBase@@0@Z -> 008b6190 labelled '_global::Alloc_CCombatSequenceWhisperSortYourselfOut'
+008b0d10   RELOCATION_MATCH PASS   RegisterCombatSequences
+008bf500   RELOCATION_MATCH PASS   FinishAction
+008bf800   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@U?$_Const_traits@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@@std@@QAEAAU01@XZ -> 006ef790 labelled 'CRetailTreeIterator::Increment'
+008bf800   RELOCATION_MATCH PASS   Initialise
+0090234e   MATCH            PASS   GetStateGroupType
+0091ec30   RELOCATION_MATCH PASS   Update
+0093c030   RELOCATION_MATCH PASS   Update
+0093d270   RELOCATION_MATCH PASS   IsRunnable
+00955620   WARN RELOC_NAME: ?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+00955620   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+00955620   RELOCATION_MATCH PASS   Update
+0095bcf0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0095bcf0   RELOCATION_MATCH PASS   Attack
+0096e830   RELOCATION_MATCH PASS   IsEnemyCreatureNearCombatPosition
+0096ec10   RELOCATION_MATCH PASS   MoveToEnemyCreatureCombatPosition
+00972490   RELOCATION_MATCH PASS   OnActivate
+00972990   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 0096bcb0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThing, std::vector<CThing *, std::allocator<CThing *>>, CThingFilter_HasDefGlobalIndex>'
+00972990   RELOCATION_MATCH PASS   OnActivate
+00972cc0   RELOCATION_MATCH PASS   MeleeCombat
+00979f70   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+00979f70   RELOCATION_MATCH PASS   AttackTargetThing
+
+WINS: 33
+  004a5a40 RELOCATION_MATCH CWorld::?UpdateFrame@CWorld@@IAEXXZ
+  004a6e30 RELOCATION_MATCH CWorld::?Init@CWorld@@UAEXXZ
+  006aabe0 RELOCATION_MATCH CThingPlayerCreature::?SetActionForMelee@CThingPlayerCreature@@UAE_NABVCCreatureAbilityDef@@@Z
+  006e9310 RELOCATION_MATCH CCombatManager::?IsAttackerOn@CCombatManager@@QBE_NABVCThingCreatureBase@@0@Z
+  006e94d0 RELOCATION_MATCH CCombatManager::?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  006e99b0 RELOCATION_MATCH CCombatManager::?GetDefenderZone@CCombatManager@@QBE?AW4ECombatZone@@ABVCThingCreatureBase@@0J@Z
+  006ea050 RELOCATION_MATCH CCombatManager::?IsDefenderDueForAttack@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  006ea0c0 RELOCATION_MATCH CCombatManager::?UpdateDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z
+  006ea430 RELOCATION_MATCH CCombatManager::?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+  006eac50 RELOCATION_MATCH CCombatManager::?GetCombatDebugInfo@CCombatManager@@QBE?AVCCombatDebugInfo@@ABVCThingCreatureBase@@@Z
+  006eae20 RELOCATION_MATCH CCombatManager::?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z
+  006eb700 RELOCATION_MATCH CCombatManager::?GetBestEnemyForCombatant@CCombatManager@@QBEPAVCThingCreatureBase@@ABV2@ABVC3DVector@@@Z
+  006ecea0 RELOCATION_MATCH CCombatManager::?SetupDefenderPlacementWheel@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z
+  006f8010 RELOCATION_MATCH CCreatureAction_CombatIdle::??_GCCreatureAction_CombatIdle@@UAEPAXI@Z
+  007355f0 RELOCATION_MATCH CTCCombat::?SetCombatType@CTCCombat@@QAEXABV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z
+  00834530 RELOCATION_MATCH (anonymous namespace)::?CombatStressTestDebug@?A0x
+  00890c80 RELOCATION_MATCH CGameScriptInterface::?EntityUnsheatheMeleeWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  00890d80 RELOCATION_MATCH CGameScriptInterface::?EntityUnsheatheRangedWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008b0d10 RELOCATION_MATCH CCombatManager::?RegisterCombatSequences@CCombatManager@@AAEXXZ
+  008bf500 RELOCATION_MATCH CCreatureAction_GenericFireProjectileWeapon::?FinishAction@CCreatureAction_GenericFireProjectileWeapon@@UAEXXZ
+  008bf800 RELOCATION_MATCH CCreatureAction_GenericLeaderCommand::?Initialise@CCreatureAction_GenericLeaderCommand@@UAEXXZ
+  0090234e MATCH CAIStateGroup_MeleeCombatNearby::?GetStateGroupType@CAIStateGroup_MeleeCombatNearby@@MBE?AW4EAIStateGroupType@@XZ
+  0091ec30 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombat2::?Update@CAIStateGroup_CreatureRangedCombat2@@MAEXXZ
+  0093c030 RELOCATION_MATCH CAIStateGroup_SeekScriptTarget::?Update@CAIStateGroup_SeekScriptTarget@@UAEXXZ
+  0093d270 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearbyBase::?IsRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MAE_NXZ
+  00955620 RELOCATION_MATCH CAIStateGroup_MazeDefensiveMeleeCombat::?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ
+  0095bcf0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::?Attack@CAIStateGroup_HoverHornetQueen@@IAEXXZ
+  0096e830 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby@@ABE_NXZ
+  0096ec10 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby@@AAE_NXZ
+  00972490 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage2::?OnActivate@CAIStateGroup_JackOfBladesStage2@@UAEXXZ
+  00972990 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage1::?OnActivate@CAIStateGroup_JackOfBladesStage1@@UAEXXZ
+  00972cc0 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage1::?MeleeCombat@CAIStateGroup_JackOfBladesStage1@@IAE?AW4EAIActionReturn@@XZ
+  00979f70 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::?AttackTargetThing@CAIStateGroup_CreatureTakeCover@@AAE_NXZ

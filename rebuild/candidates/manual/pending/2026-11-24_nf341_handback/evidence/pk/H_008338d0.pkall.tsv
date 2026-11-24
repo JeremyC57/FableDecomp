@@ -1,0 +1,23 @@
+# leaf ?InitialiseFromDef@CThingAICreature@@IAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?GetLength@?$CBasicString@D@@QBEKXZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$CDefPointer@$$CBVCBrainDef@@@@QAE@W4ENullDef@@@Z
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??0?$CDefPointer@$$CBVCBrainDef@@@@QAE@ABV0@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCBrainDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+NOADDR	NOADDR	-	-	pickany	10	-	n	n	?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	48	-	n	n	?Assign@?$CDefPointer@$$CBVCBrainDef@@@@AAEXPAVCDefPointeeBase@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+EQ	EQ	00403a00	b	pickany	11	11	n	n	?GetLength@CCharString@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	29	-	n	n	?IsEmpty@CCharString@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEABVCThingCreatureDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCBrainDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	50	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCBrainDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$?4$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCBrainDef@@@@QAEAAV0@ABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	?PeekDefinition@CThingCreatureBase@@IBEABVCThingCreatureDef@@XZ
+NEQ	NEQ	0079bd80	a,b	pickany	116	108	y	y	??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCBrainDef@@@@@Z
+NEQ	NEQ	006d3e80	a,b	pickany	112	104	y	y	??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCBrainDef@@@@@Z

@@ -1,0 +1,5 @@
+EQ  0041c830 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+EQ  00415d70 25 ?GetString@CDefString@@QBE?AVCCharString@@XZ 
+NEQ 004292c0 54 ?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z not referenced by the leaf
+EQ  00415dd0 25 ??BCDefString@@QBE?AVCCharString@@XZ 
+NEQ 006f0e80 116 ??$GetDef@VCAttackPatternDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCAttackPatternDef@@@@@Z LEAF-REFERENCED

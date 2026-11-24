@@ -1,0 +1,7 @@
+EQ  00415d70 25 ?GetString@CDefString@@QBE?AVCCharString@@XZ 
+EQ  004038c0 48 ??_H@YGXPAXIHP6EPAX0@Z@Z 
+EQ  00401400 49 ??_I@YGXPAXIHP6EX0@Z@Z 
+EQ  00415dd0 25 ??BCDefString@@QBE?AVCCharString@@XZ 
+EQ  006c4f80 51 ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@Z 
+EQ  006c76b0 108 ??$GetDef@VCOpinionDeedEffectsDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@@Z 
+EQ  006c5630 78 ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z 

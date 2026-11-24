@@ -1,0 +1,2 @@
+NEQ 0083d630 116 ??$GetDef@VCThingMarkerDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingMarkerDef@@@@@Z LEAF-REFERENCED
+NEQ 0042b0a2 182 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z LEAF-REFERENCED

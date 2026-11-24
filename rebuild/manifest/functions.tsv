@@ -17668,7 +17668,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006ea050	IsDefenderDueForAttack	CCombatManager	unknown	undefined	0		0	yes	accepted									
 006ea0c0	UpdateDefenderAttackPattern	CCombatManager	unknown	undefined	0		0	yes	accepted									
 006ea2c0	PerformSequenceReset	CCombatManager	__thiscall	void	2	CCombatManager *,CThingCreatureBase *	1	yes	accepted									
-006ea430	DeregisterCombatant	CCombatManager	__thiscall	void	2	CCombatManager *,CThingCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6e\CCombatManager_DeregisterCombatant_006ea430.cpp
+006ea430	SetAttackerAsBeenStruck	CCombatManager	__thiscall	void	2	CCombatManager *,CThingCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6e\CCombatManager_SetAttackerAsBeenStruck_006ea430.cpp
 006ea450	SetAttackerAsReadyToAttack	CCombatManager	__thiscall	void	3	CCombatManager *,CThingCreatureBase *,bool	1	yes	accepted									
 006ea540	SetCreatureAsAttemptedToPerformedAction	CCombatManager	__thiscall	void	3	CCombatManager *,CThingCreatureBase *,bool	1	yes	accepted									
 006ea5f0	IsTargetOverriddenByAttemptedFacingDirection	CCombatManager	__thiscall	bool	4	CCombatManager *,CThingCreatureBase *,CThing *,C3DVector *	1	yes	accepted									

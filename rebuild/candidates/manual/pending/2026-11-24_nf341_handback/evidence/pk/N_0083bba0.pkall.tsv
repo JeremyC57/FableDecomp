@@ -1,0 +1,14 @@
+# leaf ?ConstructFromLevelScript@CThingHolySite@@UAE_NPBD@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	?Release@CIVCountedPointeeBase@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCThingHolySiteDef@@@@QBEPBVCThingHolySiteDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCThingHolySiteDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CDefPointer@$$CBVCThingHolySiteDef@@@@QBEABVCThingHolySiteDef@@XZ
+NOADDR	NOADDR	-	-	pickany	48	-	n	n	?Assign@?$CDefPointer@$$CBVCThingHolySiteDef@@@@AAEXPAVCDefPointeeBase@@@Z
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	?PeekDefinition@CThingHolySite@@ABEABVCThingHolySiteDef@@XZ
+NOADDR	NOADDR	-	-	pickany	50	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingHolySiteDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+NEQ	NEQ	0083bd10	a,b	pickany	116	108	y	y	??$GetDef@VCThingHolySiteDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingHolySiteDef@@@@@Z

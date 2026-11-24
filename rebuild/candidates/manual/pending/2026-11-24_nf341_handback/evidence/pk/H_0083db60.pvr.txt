@@ -1,0 +1,2 @@
+NEQ 0083e0d0 116 ??$GetDef@VCThingPhysicalSwitchDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingPhysicalSwitchDef@@@@@Z LEAF-REFERENCED
+EQ  0083d900 60 ?PeekDefinition@CThingPhysicalSwitch@@IBEABVCThingPhysicalSwitchDef@@XZ 

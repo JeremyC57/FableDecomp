@@ -1,0 +1,1 @@
+NEQ 004ab840 116 ??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z LEAF-REFERENCED

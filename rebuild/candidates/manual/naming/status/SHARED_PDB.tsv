@@ -72,8 +72,6 @@ symbol	target
 ?AddSuccessfulBlockParry@CTCHeroExperience@@QAEXXZ	006d7550
 ?Clear@CScopedMemoryHandle@@QAEXXZ	00a03870
 ?Clear@CScopedMemoryHandle@@QAEXXZ	00a8d190
-?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	006ea430
-?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	006ed9c0
 ?FinishAction@CCreatureAction_Die@@UAEXXZ	00865e20
 ?FinishAction@CCreatureAction_Die@@UAEXXZ	0087e840
 ?FinishAction@CCreatureAction_Die@@UAEXXZ	008c3f00

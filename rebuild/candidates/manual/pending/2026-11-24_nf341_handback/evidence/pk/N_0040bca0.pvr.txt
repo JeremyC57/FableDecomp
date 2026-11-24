@@ -1,0 +1,12 @@
+EQ  0040e1e0 39 ??$GetDefaultVal@VCCharString@@@CPersistContext@@KI?AVCCharString@@XZ 
+EQ  0040e2d0 72 ??$__copy@PAVCActionInputControl@@PAV1@H@std@@YIPAVCActionInputControl@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z 
+EQ  0040e290 53 ??$__copy@PAVCWideString@@PAV1@H@std@@YIPAVCWideString@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z 
+EQ  00411010 76 ??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@@Z 
+EQ  00411060 76 ??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@@Z 
+EQ  004046b0 62 ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ 
+EQ  00410890 108 ??$GetDef@VCConfigOptionsDefaultsDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@@Z 
+EQ  004083e0 194 ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@XZ 
+NEQ 004046b0 5 ??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ not referenced by the leaf
+EQ  004047a0 35 ??1CStringParser@@UAE@XZ 
+EQ  00412450 104 ?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z 
+EQ  00412b20 66 ?resize@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXIABVCWideString@@@Z 

@@ -1,0 +1,1 @@
+0066b370 ALL_EQ copy v retail 0x0066C340 EQ, v owner object EQ

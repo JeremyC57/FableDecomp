@@ -1,0 +1,7 @@
+EQ  0041c830 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+EQ  00403a00 11 ?GetLength@CCharString@@QBEJXZ 
+EQ  00403a10 15 ?GetAsCharArray@CCharString@@QBEPBDXZ 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 007cc8e0 116 ??$GetDef@VCSpecialAbilitiesMultiArrowDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesMultiArrowDef@@@@@Z not referenced by the leaf
+EQ  00669580 182 ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z 
+EQ  00669d30 100 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z 

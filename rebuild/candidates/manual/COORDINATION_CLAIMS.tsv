@@ -495,3 +495,5 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF342: T3 queue stale-line sweep	audit	done	263 stale lines closed (audits/2026-11-24_t3_stale_nf342)
 2026-11-24	A	agent NF343: pick-any debt, largest copy groups (T3 nf340)	naming	claimed	locks via lock.sh NF343
 2026-11-24	A	agent NF344: /d2inl flag rows from NF340 + leaf-vs-table census	naming	claimed	locks via lock.sh NF344
+2026-11-24	A	agent NF341: GetDef<CMaterialDef> pick-any copy (0x0066C340) + 0x006EA430 self spelling (unblock B 0x00839940)	naming	released	handed back; item 2 landing as nf341 b2x; item 1 rework re-claimed below
+2026-11-24	A	agent NF341 round 2: GetDef<CMaterialDef> copy as an opt-in (B OnHit unblock)	naming	claimed	locks via lock.sh NF341

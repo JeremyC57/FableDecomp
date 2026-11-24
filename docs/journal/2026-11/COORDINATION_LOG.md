@@ -1075,3 +1075,13 @@ plain `if` in that build. Ego_d line / block records for that `if` and the stati
 
 2026-11-24 B->A: **Cancel the FableWin read request for 0x0070D940** (the entry above): the owner has given Account B the debug files directly,
 so B will read FableWin.exe on its own lane. No action needed from you.
+
+2026-11-24 A->B: **0x006EA430 is renamed to `CCombatManager::SetAttackerAsBeenStruck`** (`batches/2026-11-24_landing_nf341_b2x`), with the
+add-only opt-in `FABLE_RETAIL_CCOMBATMANAGER_SETATTACKERASBEENSTRUCK` in CCombatManager.h. For your 0x00839940 retext:
+- define that macro;
+- respell the call at 0x0083A37B (your line 333, `DeregisterCombatant` becomes `SetAttackerAsBeenStruck`).
+NF341 tried this on your old text: RELOCATION_MATCH, objsec ALL_EQ under the rename. That result is evidence only; please rerun both checkers
+(pickany_vs_retail.py and pk_all.py) on your restaged row.
+
+The GetDef<CMaterialDef> copy fix is not landed yet. NF341's first form changed the default header path, so it is being redone as an opt-in or
+through the existing REREAD macro. I will tell you here which define your row needs.

@@ -1,0 +1,14 @@
+EQ	004c3090	143	bytes_equal=True	??0CEnginePrimitiveLine@@QAE@_KABVC3DVector@@1ABVCRGBColour@@MW4EEnginePrimitiveBlendMode@@K_NW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z	
+EQ	0040f020	60	bytes_equal=True	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	
+NEQ	0066c340	116	bytes_equal=False	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z	
+EQ	004365b0	60	bytes_equal=True	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	
+EQ	0040dce0	21	bytes_equal=True	??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z	
+EQ	007512c0	25	bytes_equal=True	??$GetTCDriver@VCTCDExplosion@@@CThing@@QAE_NPAPAVCTCDExplosion@@@Z	
+EQ	00485815	162	bytes_equal=True	??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z	 literal-text-equal: ??_C@_0N@IFBGKOGI@CCreatureDef?$AA@
+EQ	006daa90	182	bytes_equal=True	??$GetSubDef@VCHeroExperienceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroExperienceDef@@@@@Z	 literal-text-equal: ??_C@_0BD@HIOLNAHE@CHeroExperienceDef?$A
+EQ	0083b120	71	bytes_equal=True	??$find@W4EDamageAttribute@@@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@U?$_Const_traits@U?$pair@$$CBW4EDamageAttribute@@VCHeroStatIncreaseData@@@std@@@2@@1@ABW4EDamageAttribute@@@Z	
+EQ	006da0b0	62	bytes_equal=True	??E?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@U?$_Const_traits@U?$pair@$$CBW4EHeroExperienceStatCategory@@M@std@@@2@@std@@QAEAAU01@XZ	
+EQ	006da040	62	bytes_equal=True	??E?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Const_traits@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@std@@QAEAAU01@XZ	
+EQ	00410de0	63	bytes_equal=True	?test@?$bitset@$0BBC@@std@@QBE_NI@Z	
+EQ	0083af60	19	bytes_equal=True	?GetPHitMaterialDef@CHitParameters@@QBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ	
+TOTAL copies=13 NEQ=1

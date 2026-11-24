@@ -1,0 +1,3 @@
+section	address	old	new	note
+1	006ea430	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	self rename (Ego_r.pdb combat_manager.obj record 81 + FableWin.pdb record 214; donor body = retail calls); header opt-in FABLE_RETAIL_CCOMBATMANAGER_SETATTACKERASBEENSTRUCK
+2	00734050	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	caller respelling (callee reference only, site 0x007340A7; own symbol unchanged)

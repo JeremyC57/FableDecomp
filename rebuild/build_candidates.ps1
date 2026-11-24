@@ -63652,8 +63652,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006ea430'
         Module = 'CCombatManager'
-        Source = '00/6e/CCombatManager_DeregisterCombatant_006ea430.cpp'
-        TestSource = '00/6e/CCombatManager_DeregisterCombatant_006ea430_test.cpp'
+        Source = '00/6e/CCombatManager_SetAttackerAsBeenStruck_006ea430.cpp'
+        TestSource = '00/6e/CCombatManager_SetAttackerAsBeenStruck_006ea430_test.cpp'
         PassPattern = 'BEHAVIOR_OK'
     }
     [pscustomobject]@{
