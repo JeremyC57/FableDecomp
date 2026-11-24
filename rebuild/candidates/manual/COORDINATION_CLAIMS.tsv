@@ -511,3 +511,4 @@ date	account	item	kind	status	note
 2026-11-24	A	land Account B staged rows (OnHit, RansomHelper Main, Assassin1 Main)	landing	done	batches/2026-11-24_landing_acctB_b24e
 2026-11-24	A	agent NF347 INDEX_DECL_ONLY pilot and next debt groups	naming	claimed	locks via nflocks owner NF347
 2026-11-24	A	agent NF345: leaf-vs-table conflicts with a likely stale table line (143)	naming	done	batches/2026-11-24_landing_nf345_b1..b3; pending/2026-11-24_nf345_handback
+2026-11-24	A	agent NF348 owner ports queued by NF345	naming	claimed	locks via nflocks owner NF348
