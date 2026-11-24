@@ -1,0 +1,8 @@
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=off y=on
+PRAGMA optimize("s",on)             inc:engine/CCountedPointer.h:586 -> s=on y=on
+MARK   NF352-Reset-spec             inc:engine/CCountedPointer.h:591   state s=on y=on
+PRAGMA optimize("",on)              inc:engine/CCountedPointer.h:599 -> s=off y=on
+PRAGMA optimize("y",off)            A/rows/005cdd86.cpp:12 -> s=off y=off
+PRAGMA optimize("s",on)             A/rows/005cdd86.cpp:13 -> s=on y=off
+MARK   leaf                         A/rows/005cdd86.cpp:154   state s=on y=off
+END-OF-TU state s=on y=off

@@ -1,0 +1,32 @@
+00455ef0	pk_all	ADDED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+00455ef0	pk_all	ADDED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+00455ef0	pk_all	ADDED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+00455ef0	pk_all	NEWLY_NEQ	0042b0aa	leaf-called	?PlantedCopy@@QAEXXZ
+00455ef0	pvr	ADDED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+00455ef0	pvr	ADDED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+00455ef0	pvr	ADDED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+00455ef0	pvr	NEWLY_NEQ	0042b0aa	leaf-called	?PlantedCopy@@QAEXXZ
+ROW 00455ef0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0044c1bb	pk_all	ADDED	00455ef0	not-leaf-called	??0CThingNoiseDef@@QAE@XZ
+0044c1bb	pk_all	ADDED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+0044c1bb	pk_all	ADDED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+0044c1bb	pk_all	ADDED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+0044c1bb	pk_all	NEWLY_NEQ	0042b0aa	leaf-called	?PlantedCopy@@QAEXXZ
+0044c1bb	pvr	ADDED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+0044c1bb	pvr	ADDED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+0044c1bb	pvr	ADDED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+0044c1bb	pvr	NEWLY_NEQ	0042b0aa	leaf-called	?PlantedCopy@@QAEXXZ
+ROW 0044c1bb gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0045c5da	pk_all	ADDED	0044c1bb	not-leaf-called	??0CTCNoiseDef@@QAE@XZ
+0045c5da	pk_all	ADDED	00455ef0	not-leaf-called	??0CThingNoiseDef@@QAE@XZ
+0045c5da	pk_all	ADDED	00454b4c	leaf-called	??1CThingBaseDef@@UAE@XZ
+0045c5da	pk_all	ADDED	0045c5f6	leaf-called	??1CThingNoiseDef@@UAE@XZ
+0045c5da	pk_all	ADDED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+0045c5da	pk_all	NEWLY_NEQ	0042b0aa	leaf-called	?PlantedCopy@@QAEXXZ
+0045c5da	pvr	ADDED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+0045c5da	pvr	ADDED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+0045c5da	pvr	ADDED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+0045c5da	pvr	NEWLY_NEQ	0042b0aa	leaf-called	?PlantedCopy@@QAEXXZ
+ROW 0045c5da gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 3, 0, 0], 'pvr': [0, 3, 0, 0]}
+GATE FAIL (6)

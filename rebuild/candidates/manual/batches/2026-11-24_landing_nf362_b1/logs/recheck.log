@@ -1,0 +1,59 @@
+addr       parity           behav  name
+00584b86   RELOCATION_MATCH PASS   AssignThingPC
+0058578b   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0058578b   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+0058578b   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+0058578b   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0058578b   RELOCATION_MATCH PASS   OpenInventory
+005a04f7   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005a04f7   WARN RELOC_NAME: ??1?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@QAE@XZ -> 004dd1c4 labelled '_global::StdList_Dtor_004dd1c4'
+005a04f7   RELOCATION_MATCH PASS   ConstructNormalShopList
+005a29f4   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005a29f4   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005a29f4   RELOCATION_MATCH PASS   ConstructSpecialShopList
+005a8a5d   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005a8a5d   RELOCATION_MATCH PASS   ConstructSpecialShopListPC
+005a9cbe   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005a9cbe   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005a9cbe   RELOCATION_MATCH PASS   ConstructTradeDescriptionWeapon
+005aaf28   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005aaf28   RELOCATION_MATCH PASS   ConstructTradeDescriptionClothing
+005ad571   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005ad571   RELOCATION_MATCH PASS   ConstructTradeDescription
+005b3aef   RELOCATION_MATCH PASS   OnInitialActivate
+005b76d1   WARN RELOC_NAME: ??1?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAE@XZ -> 005bb090 labelled '_global::StdList_Dtor_005bb090'
+005b76d1   RELOCATION_MATCH PASS   ConstructScreen
+005b8743   WARN RELOC_NAME: ??1?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAE@XZ -> 005bb090 labelled '_global::StdList_Dtor_005bb090'
+005b8743   RELOCATION_MATCH PASS   ConstructScreenPC
+005c6b26   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005c6b26   RELOCATION_MATCH PASS   ConstructWeaponDescription
+005c7452   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005c7452   RELOCATION_MATCH PASS   ConstructWeaponDescriptionDamage
+005c8459   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005c8459   RELOCATION_MATCH PASS   ConstructScreen
+005c90fc   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005c90fc   RELOCATION_MATCH PASS   ConstructWeaponDescriptionContainer
+005c9a95   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005c9a95   RELOCATION_MATCH PASS   ConstructScreenPC
+005cacb9   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005cacb9   WARN RELOC_NAME: ?SetWeaponMappingToMenuEntry@CTCInventoryWeapons@@QAEXPAVCComponent@NUISystem@@J@Z -> 0042d405 labelled 'CTCInventoryClothing::SetClothingMappingToMenuEntry'
+005cacb9   RELOCATION_MATCH PASS   RefreshWeaponDescriptions
+
+WINS: 17
+  00584b86 RELOCATION_MATCH CTCInventory::?AssignThingPC@CTCInventory@@QAEXJKPAVCComponent@NUISystem@@@Z
+  0058578b RELOCATION_MATCH CTCInventory::?OpenInventory@CTCInventory@@UAEXXZ
+  005a04f7 RELOCATION_MATCH CTCInventoryTrade::?ConstructNormalShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@0@Z
+  005a29f4 RELOCATION_MATCH CTCInventoryTrade::?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z
+  005a8a5d RELOCATION_MATCH CTCInventoryTrade::?ConstructSpecialShopListPC@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z
+  005a9cbe RELOCATION_MATCH CTCInventoryTrade::?ConstructTradeDescriptionWeapon@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z
+  005aaf28 RELOCATION_MATCH CTCInventoryTrade::?ConstructTradeDescriptionClothing@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z
+  005ad571 RELOCATION_MATCH CTCInventoryTrade::?ConstructTradeDescription@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z
+  005b3aef RELOCATION_MATCH CTCInventoryClothing::?OnInitialActivate@CTCInventoryClothing@@UAEXXZ
+  005b76d1 RELOCATION_MATCH CTCInventoryClothing::?ConstructScreen@CTCInventoryClothing@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005b8743 RELOCATION_MATCH CTCInventoryClothing::?ConstructScreenPC@CTCInventoryClothing@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+  005c6b26 RELOCATION_MATCH CTCInventoryWeapons::?ConstructWeaponDescription@CTCInventoryWeapons@@QBEXAAVCWideString@@JM_N@Z
+  005c7452 RELOCATION_MATCH CTCInventoryWeapons::?ConstructWeaponDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z
+  005c8459 RELOCATION_MATCH CTCInventoryWeapons::?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005c90fc RELOCATION_MATCH CTCInventoryWeapons::?ConstructWeaponDescriptionContainer@CTCInventoryWeapons@@QBEXPAVCComponent@NUISystem@@JM@Z
+  005c9a95 RELOCATION_MATCH CTCInventoryWeapons::?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005cacb9 RELOCATION_MATCH CTCInventoryWeapons::?RefreshWeaponDescriptions@CTCInventoryWeapons@@QAEXXZ

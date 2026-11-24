@@ -1,0 +1,24 @@
+00455ef0 FAIL /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/tst/mut_00455ef0_test.cpp
+00455ef0.test.cpp
+
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+
+RUN rc=1 00455ef0_TEST FAIL (BS)
+
+RT_DONE
+0044c1bb FAIL /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/tst/mut_0044c1bb_test.cpp
+0044c1bb.test.cpp
+
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+
+RUN rc=1 0044c1bb_TEST FAIL (alone: S)
+
+RT_DONE
+0045c5da FAIL /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/tst/mut_0045c5da_test.cpp
+0045c5da.test.cpp
+
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+
+RUN rc=1 AUTO_TINY_0045c5da_TEST FAIL (delete: RCPR 0)
+
+RT_DONE

@@ -1,0 +1,16 @@
+# leaf ?CreateExperienceSliders@CTCInventoryStats@@QAE?AV?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@PAVCComponent@NUISystem@@J_N@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??0C2DCoordI@@QAE@JJ@Z
+NOADDR	NOADDR	-	-	pickany	32	-	n	n	??0CRGBColour@@QAE@EEEE@Z
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR	NOADDR	-	-	pickany	10	-	n	n	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+EQ	EQ	004291de	a,a2,b	pickany	44	44	y	y	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+NEQ	NEQ	00428b10	a2,b,c	pickany	8	11	n	y	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+NOADDR	NOADDR	-	-	pickany	13	-	n	n	??0?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	14	-	n	n	??1?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	73	-	n	n	??$GetInterface@VCTCInventoryExperience@@@CThing@@QAE_NPAPAVCTCInventoryExperience@@J@Z
+NOADDR	NOADDR	-	-	pickany	73	-	n	n	??$GetInterface@VCTCHeroExperience@@@CThing@@QAE_NPAPAVCTCHeroExperience@@J@Z
+EQ	EQ	00429c6f	a,b	pickany	59	59	y	y	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+EQ	EQ	00429c53	b	pickany	5	5	n	n	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	67	-	n	n	??$GetTC@VCTCHeroExperience@@@CThing@@QAEPAVCTCHeroExperience@@J@Z

@@ -1,0 +1,4 @@
+PRAGMA optimize("s",on)             src:00/5a/CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp:35 -> s=on y=on
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=on y=on
+MARK   GetDef-tmpl-body             src:00/5a/CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp:120   state s=on y=on
+END-OF-TU state s=on y=on

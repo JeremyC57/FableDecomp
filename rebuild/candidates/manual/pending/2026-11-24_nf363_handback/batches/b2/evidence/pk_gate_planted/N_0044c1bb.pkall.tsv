@@ -1,0 +1,13 @@
+# leaf ??0CTCNoiseDef@@QAE@XZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??1CDefPointeeBase@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	36	-	n	n	??_GCDefPointeeBase@@UAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??1CDefClassBase@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??1CSubDefClassBase@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??1CTCNoiseDef@@UAE@XZ
+EQ	EQ	00454b4c	a2,b	pickany	19	19	n	n	??1CThingBaseDef@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	34	-	n	n	??_GCTCNoiseDef@@UAEPAXI@Z
+EQ	EQ	00455ef0	a2,c	pickany	36	36	n	n	??0CThingNoiseDef@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	28	-	n	n	??_GCThingNoiseDef@@UAEPAXI@Z
+EQ	EQ	0045c5f6	b,c	pickany	25	25	n	n	??1CThingNoiseDef@@UAE@XZ
+EQ	EQ	0045c5c1	b	strong	25	-	n	n	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+NEQ	pickany	0042b0aa	-	pickany	12	-	y	y	?PlantedCopy@@QAEXXZ

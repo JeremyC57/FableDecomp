@@ -1,0 +1,8 @@
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=off y=on
+MARK   CCountedPointer-tmpl         inc:engine/CCountedPointer.h:98   state s=off y=on
+PRAGMA optimize("y",off)            /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF362/rows/var/00582ace_hc.cpp:26 -> s=off y=off
+PRAGMA optimize("s",on)             /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF362/rows/var/00582ace_hc.cpp:27 -> s=on y=off
+MARK   NF352-Reset-spec             (not found)
+MARK   GetDef-tmpl-body             (not found)
+MARK   NF349-spec                   (not found)
+END-OF-TU state s=on y=off

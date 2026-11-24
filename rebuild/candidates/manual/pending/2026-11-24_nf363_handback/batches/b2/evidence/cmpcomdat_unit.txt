@@ -1,0 +1,12 @@
+## cmpcomdat on every LNK2005 of the unit link (new set)
+REF /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/obj/00455ef0.obj len=25 relocs=2
+EQUAL /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/obj/0044c1bb.obj len=25
+EQUAL /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/obj/0045c5da.obj len=25
+EQUAL /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/obj/H_0045c5f6.obj len=25
+REF /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/obj/H_00432c40.obj len=27 relocs=2
+EQUAL /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/obj/H_004317d0.obj len=27
+EQUAL /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF363/work/obj/H_004304e0.obj len=27
+00455ef0 ch=60101020 align=1 sel=1 ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+0044c1bb ch=60101020 align=1 sel=1 ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+0045c5da ch=60101020 align=1 sel=1 ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+H_0045c5f6 ch=60101020 align=1 sel=1 ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ

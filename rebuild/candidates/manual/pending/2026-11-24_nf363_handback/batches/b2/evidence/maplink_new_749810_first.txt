@@ -1,0 +1,9 @@
+## link order: H_00749810.obj H_00749a70.obj 00455ef0.obj 0044c1bb.obj 0045c5da.obj H_0045c5f6.obj
+??0CTCNoiseDef@@QAE@XZ	kept from: H_00749810.obj
+??_GCTCNoiseDef@@UAEPAXI@Z	kept from: H_00749810.obj
+??0CThingNoiseDef@@QAE@XZ	kept from: 00455ef0.obj
+??_GCThingNoiseDef@@UAEPAXI@Z	kept from: 00455ef0.obj
+??_7CTCNoiseDef@@6B@	kept from: H_00749810.obj
+??_7CThingNoiseDef@@6B@	kept from: 00455ef0.obj
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ	kept from: 00455ef0.obj
+??1CThingNoiseDef@@UAE@XZ	kept from: 00455ef0.obj

@@ -1,0 +1,7 @@
+PRAGMA optimize("s",on)             /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF362/rows/var/005b3aef_rr.cpp:19 -> s=on y=on
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=on y=on
+MARK   CCountedPointer-tmpl         inc:engine/CCountedPointer.h:98   state s=on y=on
+MARK   GetDef-tmpl-body             /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF362/rows/var/005b3aef_rr.cpp:76   state s=on y=on
+MARK   NF352-Reset-spec             (not found)
+MARK   NF349-spec                   (not found)
+END-OF-TU state s=on y=on

@@ -1,0 +1,18 @@
+# leaf ?ChooseNewIdle@CTCIdleScheduler@@QAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	static	28	-	n	n	?Contains@@YA_NABUCWeightMap@@ABJ@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0CIdleMapIterator@@QAE@PAUSIdleNode@@@Z
+NOADDR	NOADDR	-	-	pickany	54	-	n	n	?Increment@CIdleMapIterator@@SAPAUSIdleNode@@PAU2@@Z
+NOADDR	NOADDR	-	-	pickany	54	-	n	n	??ECIdleMapIterator@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	22	-	n	n	??9CIdleMapIterator@@QBE_NABU0@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??CCIdleMapIterator@@QBEPAUSIdleNode@@XZ
+NOADDR	NOADDR	-	-	pickany	14	-	n	n	?begin@CIdleMap@@QAE?AUCIdleMapIterator@@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?end@CIdleMap@@QAE?AUCIdleMapIterator@@XZ
+NOADDR	NOADDR	-	-	pickany	8	-	n	n	?GetDefGlobalIndex@CThing@@QBEKXZ
+NEQ	NEQ	0042af3c	a,b	strong	31	98	y	y	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+NEQ	NEQ	00801670	a,b	strong	27	182	y	y	??$GetSubDef@VCIdleSchedulerDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCIdleSchedulerDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	??1?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCIdleSchedulerDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCIdleSchedulerDef@@@@QBEPBVCIdleSchedulerDef@@XZ
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	??1?$CDefPointer@$$CBVCIdleSchedulerDef@@@@QAE@XZ

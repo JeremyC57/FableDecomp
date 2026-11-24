@@ -1,0 +1,36 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00455ef0",
+    "module": "CThingNoiseDef",
+    "name": "CThingNoiseDef",
+    "source_cpp": "// CThingNoiseDef::CThingNoiseDef() -- base CThingBaseDef(), this vtable, then the embedded CTCNoiseDef member at +0x70\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00455EF0, oracle length 36 bytes.\n// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.\n//\n// Retail bytes:  push esi ; push edi ; mov esi,ecx ; call CThingBaseDef::CThingBaseDef ; lea edi,[esi+0x70] ; mov ecx,edi ; mov dword ptr [esi],offset CThingNoiseDef::`vftable' ; call CMemberBase_0044c0c0::CMemberBase_0044c0c0 ; mov dword ptr [edi],offset CTCNoiseDef::`vftable' ; pop edi ; mov eax,esi ; pop esi ; ret\n// Default constructor: base CThingBaseDef() @ 0x006772D0 out of line, this class's vtable\n// (0x0123388C), then the embedded member of type CTCNoiseDef at +0x70 is constructed with its\n// own constructor inlined: its base CMemberBase_0044c0c0() @ 0x0044C0C0 and its vtable (0x01231E9C).\n// Class names come from rtti-vtables.tsv; base-constructor names from unique manifest labels.\n// One of 73 bodies of this shape.\nclass CThingBaseDef { public:\n    virtual void v00();\n    CThingBaseDef();                           // 0x006772D0\n};\n\nstruct CMemberBase_0044c0c0 {\n    virtual void v00();\n    CMemberBase_0044c0c0();                          // 0x0044C0C0\n};\n\nclass CTCNoiseDef : public CMemberBase_0044c0c0 { public:\n    virtual void v00();\n    CTCNoiseDef() : CMemberBase_0044c0c0() { }            // inlined into every constructor that embeds it\n};\n\nclass CThingNoiseDef : public CThingBaseDef { public:\n    unsigned char _pad[0x6c];        // base members / earlier members, not touched here\n    CTCNoiseDef m_member;                       // +0x70\n    virtual void v00();\n    CThingNoiseDef();\n};\n\nCThingNoiseDef::CThingNoiseDef()\n    : CThingBaseDef()\n    , m_member()\n{\n}",
+    "test_cpp": "#include <cstdio>\nstatic int g_b = 0, g_m = 0; struct Base { virtual void v00() {} Base() { ++g_b; } };\nstruct MB { virtual void v00() {} MB() { ++g_m; } }; struct M : MB { virtual void v00() {} M() : MB() {} };\nstruct D : Base { unsigned char pad[0x6c]; M m; virtual void v00() {} D() : Base(), m() {} };\nint main()\n{\n    D d; if (g_b != 1 || g_m != 1) { std::printf(\"00455ef0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00455ef0_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00455ef0_TEST PASS",
+    "flags": [],
+    "leaf": "CThingNoiseDef"
+   },
+   {
+    "address": "0044c1bb",
+    "module": "CTCNoiseDef",
+    "name": "CTCNoiseDef",
+    "source_cpp": "// CTCNoiseDef::CTCNoiseDef() -- base CShoveHaPennyRegionDef() then this class's vtable\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0044C1BB, oracle length 18 bytes.\n// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.\n//\n// Retail bytes:  push esi ; mov esi,ecx ; call CShoveHaPennyRegionDef::CShoveHaPennyRegionDef ; mov dword ptr [esi],offset CTCNoiseDef::`vftable' ; mov eax,esi ; pop esi ; ret\n// Default constructor of a polymorphic class with no members of its own to initialise: the base\n// constructor @ 0x0044C0C0 runs, then the compiler stores this class's vtable (0x01231E9C\n// -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265\n// bodies of this shape.\nclass CShoveHaPennyRegionDef { public:\n    virtual void v00();\n    CShoveHaPennyRegionDef();                           // 0x0044C0C0\n};\n\nclass CTCNoiseDef : public CShoveHaPennyRegionDef { public:\n    virtual void v00();                    // this class has its own vtable\n    CTCNoiseDef();\n};\n\nCTCNoiseDef::CTCNoiseDef()\n    : CShoveHaPennyRegionDef()\n{\n}",
+    "test_cpp": "#include <cstdio>\nstatic int g_b = 0; struct Base { virtual void v00() {} Base() { ++g_b; } };\nstruct D : Base { virtual void v00() {} D() : Base() {} };\nint main()\n{\n    D d; if (g_b != 1) { std::printf(\"0044c1bb_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0044c1bb_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "0044c1bb_TEST PASS",
+    "flags": [],
+    "leaf": "CTCNoiseDef"
+   },
+   {
+    "address": "0045c5da",
+    "module": "CThingNoiseDef",
+    "name": "`scalar_deleting_destructor'",
+    "source_cpp": "#pragma optimize(\"s\", on)\n// NF355 (2026-11-24): the destructor call binds the PDB destructor ??1CThingNoiseDef@@UAE@XZ (0x0045C5F6; Ego_r.pdb + FableWin.pdb; slot 0\n// of vftable 0x0123388C is this function) through the shared engine/CThingNoiseDef.h binder opt-in, instead of the free stand-in\n// ?CThingNoiseDef_Destruct@@YIXPAX@Z. This row's own free stand-in self is unchanged (its retail name ??_GCThingNoiseDef@@UAEPAXI@Z is the\n// compiler's, emitted by the def TU that row 0x0045C5F6 reproduces; queued).\n#define FABLE_RETAIL_DEF_CLASS_BASE\n#define FABLE_RETAIL_CTHINGBASEDEF\n#define FABLE_RETAIL_CTHINGNOISEDEF_VIRTUAL_MODEL\n#define FABLE_RETAIL_CTHINGNOISEDEF_DTOR_DECL\n#include \"engine/CThingNoiseDef.h\"\nvoid* __fastcall CThingNoiseDef_ScalarDeletingDestructor(void* def, int, unsigned int flags)\n{\n    static_cast<CThingNoiseDef*>(def)->CThingNoiseDef::~CThingNoiseDef();\n    if (flags & 1)\n        operator delete(def);\n    return def;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_AutoTinyScalarDestructorCalls = 0;\nstatic int g_AutoTinyScalarDeleteCalls = 0;\nclass CThingNoiseDef {\npublic:\n    ~CThingNoiseDef();\n};\nCThingNoiseDef::~CThingNoiseDef()\n{\n    ++g_AutoTinyScalarDestructorCalls;\n}\nvoid __cdecl OperatorDelete(void*)\n{\n    ++g_AutoTinyScalarDeleteCalls;\n}\nvoid* __fastcall CThingNoiseDef_ScalarDeletingDestructor(void* def, int, unsigned int flags)\n{\n    static_cast<CThingNoiseDef*>(def)->CThingNoiseDef::~CThingNoiseDef();\n    if (flags & 1)\n        OperatorDelete(def);\n    return def;\n}\nint main()\n{\n    int object = 0;\n    if (CThingNoiseDef_ScalarDeletingDestructor(&object, 0, 0) != &object ||\n        g_AutoTinyScalarDestructorCalls != 1 ||\n        g_AutoTinyScalarDeleteCalls != 0)\n        return 1;\n    CThingNoiseDef_ScalarDeletingDestructor(&object, 0, 1);\n    if (g_AutoTinyScalarDestructorCalls != 2 ||\n        g_AutoTinyScalarDeleteCalls != 1)\n        return 1;\n    std::printf(\"AUTO_TINY_0045c5da_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "AUTO_TINY_0045c5da_TEST PASS",
+    "flags": [],
+    "leaf": "`scalar_deleting_destructor'"
+   }
+  ]
+ }
+}

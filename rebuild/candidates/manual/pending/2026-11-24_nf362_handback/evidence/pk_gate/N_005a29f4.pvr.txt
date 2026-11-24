@@ -1,0 +1,17 @@
+NEQ 0041c780 14 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z not referenced by the leaf
+NEQ 0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ not referenced by the leaf
+NEQ 0041c7c0 21 ??9_List_iterator_base@std@@QBE_NABU01@@Z not referenced by the leaf
+NEQ 004118c0 12 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z not referenced by the leaf
+EQ  004291de 44 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ 
+EQ  00428b10 11 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z 
+EQ  0042925c 44 ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ 
+NEQ 00429460 40 ?ShareData@?$CCountedPointer@VCText@NUISystem@@@@QAEXPAVCText@NUISystem@@PAVCCPPointerInfo@@@Z LEAF-REFERENCED
+EQ  00429c53 5 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ 
+NEQ 00429c6f 62 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z LEAF-REFERENCED
+NEQ 004365b0 64 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+NEQ 0040f020 64 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+NEQ 0042a2ca 20 ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCText@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z not referenced by the leaf
+EQ  005b1c18 41 ?clear@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@QAEXXZ 
+EQ  005b1c41 41 ?clear@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@@std@@QAEXXZ 
+EQ  0042b312 98 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z 
+EQ  0042b677 16 ?size@?$list@JV?$allocator@J@std@@@std@@QBEIXZ 

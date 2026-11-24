@@ -1,0 +1,5 @@
+LEAF A ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z {'name': '.text', 'ch': '60101020', 'sel': 1, 'size': 98}
+LEAF B ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z {'name': '.text', 'ch': '60101020', 'sel': 1, 'size': 98}
+DRECTVE - [] + []
+LEAFCMP data_eq=True relocs_eq=True ch_eq=True
+VERDICT OTHER_SAME symdelta=0

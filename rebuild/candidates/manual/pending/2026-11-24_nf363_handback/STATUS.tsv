@@ -1,0 +1,6 @@
+address	status	batch	note
+0042af3c	done	b1	ACCEPT: in-place self respell (R1) with the R2 Fidelity marker; all NF360 gates rerun on the edited text
+00455ef0	done	b2	ACCEPT (unit nf363_noisedef): option A Alloc form; table delete ??0CMemberBase_0044c0c0
+0044c1bb	done	b2	ACCEPT (unit nf363_noisedef): option A Alloc form
+0045c5da	done	b2	ACCEPT (unit nf363_noisedef): option A Alloc form; self respelled onto ??_GCThingNoiseDef@@UAEPAXI@Z
+0045c5c1	not-touched	-	as ruled: emitted EQ by 0x0045C5F6's object; no row

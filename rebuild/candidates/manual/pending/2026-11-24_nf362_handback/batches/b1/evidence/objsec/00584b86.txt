@@ -1,0 +1,8 @@
+CHANGED ('COMDAT', '??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z', '.text') size 101 -> 98 data_eq=False relocs_eq=False flags_eq=True
+CHANGED ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAbilityDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text') size 50 -> 50 data_eq=False relocs_eq=True flags_eq=True
+CHANGED ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text') size 50 -> 50 data_eq=False relocs_eq=True flags_eq=True
+DROPPED ('COMDAT', '?Assign@?$CDefPointer@$$CBVCAbilityDef@@@@AAEXPAVCDefPointeeBase@@@Z', '.text')
+DROPPED ('COMDAT', '?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z', '.text')
+SYM- DEF ?Assign@?$CDefPointer@$$CBVCAbilityDef@@@@AAEXPAVCDefPointeeBase@@@Z
+SYM- DEF ?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z
+VERDICT DIFF n=5 symdelta=2 leaf=same

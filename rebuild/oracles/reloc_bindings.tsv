@@ -369,7 +369,6 @@ _FreeThing@4	00451b82	00453630
 ??_7CSimVoicesDef@@6B@	012337bc	00455e72
 ??_7CSoundThemeDef@@6B@	01233824	00455eac
 @Sub54_dtor@4	004302cd	00455eca
-??0CMemberBase_0044c0c0@@QAE@XZ	0044c0c0	00455ef0
 ??_7CThingNoiseDef@@6B@	0123388c	00455ef0
 ??_7?$CPersistContext_TransferableSubComponent@VCTCNoiseDef@@@@6B@	012338fc	00455f3c
 ?TransferSubComponentLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableSubComponentBase@@@Z	009bbcc0	00455f3c

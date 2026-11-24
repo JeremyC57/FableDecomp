@@ -1,0 +1,2 @@
+kind	symbol	witness_is_row	table(target:witness)	self_at_target	pk_verdict	pk_status@addr(src)	size
+DEF	?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z	-	-	-	none	-	-

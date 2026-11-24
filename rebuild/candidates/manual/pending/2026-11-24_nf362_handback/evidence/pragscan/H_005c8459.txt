@@ -1,0 +1,4 @@
+PRAGMA optimize("s",on)             src:00/5c/CTCInventoryWeapons_ConstructScreen_005c8459.cpp:18 -> s=on y=on
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=on y=on
+MARK   GetDef-tmpl-body             src:00/5c/CTCInventoryWeapons_ConstructScreen_005c8459.cpp:85   state s=on y=on
+END-OF-TU state s=on y=on

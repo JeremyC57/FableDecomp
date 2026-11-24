@@ -1,0 +1,5 @@
+PRAGMA optimize("y",off)            src:00/5d/CTCInventoryStats_ConstructExperienceListPC_005d7081.cpp:19 -> s=off y=off
+PRAGMA optimize("s",on)             src:00/5d/CTCInventoryStats_ConstructExperienceListPC_005d7081.cpp:20 -> s=on y=off
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=on y=off
+MARK   GetDef-tmpl-body             (not found)
+END-OF-TU state s=on y=off

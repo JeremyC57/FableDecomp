@@ -1,0 +1,4 @@
+EQ  00454b4c 19 ??1CThingBaseDef@@UAE@XZ 
+EQ  0045c5f6 25 ??1CThingNoiseDef@@UAE@XZ 
+EQ  0045c5c1 25 ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ 
+NEQ 0042b0aa pickany ?PlantedCopy@@QAEXXZ LEAF-REFERENCED

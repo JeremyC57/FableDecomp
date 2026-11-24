@@ -1,0 +1,270 @@
+## HEAD set: H_0042af3c.obj H_004ca010.obj H_005b43a2.obj H_005b4795.obj H_005b4eba.obj H_005b5be6.obj H_0071da70.obj H_007744a0.obj H_00801a50.obj H_00811470.obj H_008115a0.obj H_008ed1f0.obj
+duplicates 20
+  DUP H_005b4795.obj ??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4795.obj ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4795.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4eba.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4eba.obj ??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4eba.obj ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4eba.obj ??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z in H_005b43a2.obj;
+  DUP H_005b5be6.obj ?FindDef_s7r_0@@YAPAXXZ in H_005b4795.obj;
+  DUP H_005b5be6.obj ??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b5be6.obj ?FindDef_s7r_1@@YAPAXXZ in H_005b4795.obj;
+  DUP H_005b5be6.obj ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b5be6.obj ?FindDef_s7r_2@@YAPAXXZ in H_005b4795.obj;
+  DUP H_005b5be6.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_005b43a2.obj;
+  DUP H_0071da70.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_005b43a2.obj;
+  DUP H_007744a0.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_005b43a2.obj;
+  DUP H_00801a50.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_005b43a2.obj;
+  DUP H_00811470.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_005b43a2.obj;
+  DUP H_008115a0.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_005b43a2.obj;
+  DUP H_008115a0.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in H_00811470.obj;
+  DUP H_008ed1f0.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_005b43a2.obj;
+UNRESOLVED 1 ??0CBaseIntelligentPointer@@QAE@XZ
+UNRESOLVED 2 ??0CCharString@@QAE@ABV0@@Z
+UNRESOLVED 5 ??0CCharString@@QAE@PBDJ@Z
+UNRESOLVED 1 ??0CDeletion@NUISystem@@QAE@ABV01@@Z
+UNRESOLVED 1 ??0CDeletion@NUISystem@@QAE@XZ
+UNRESOLVED 1 ??0CTCBase@@QAE@AAVCThing@@@Z
+UNRESOLVED 1 ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+UNRESOLVED 1 ??1CBaseIntelligentPointer@@UAE@XZ
+UNRESOLVED 5 ??1CCharString@@QAE@XZ
+UNRESOLVED 1 ??1CTCBase@@UAE@XZ
+UNRESOLVED 2 ??3@YAXPAX@Z
+UNRESOLVED 1 ??4CCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 1 ??A?$map@JVCShopItem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@3@@std@@QAEAAVCShopItem@@ABJ@Z
+UNRESOLVED 2 ??ACSuitPartMap@@QAEAAJABJ@Z
+UNRESOLVED 1 ??ACWeightMap@@QAEAAJABJ@Z
+UNRESOLVED 1 ?AddAppearanceModifierWithReplace@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z
+UNRESOLVED 1 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+UNRESOLVED 1 ?BulletTimeFrameUpdate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?ConstructFromParams@CTCBase@@UAEXABVCTCParamsBase@@@Z
+UNRESOLVED 1 ?Copy@CTCBase@@UAEXABV1@@Z
+UNRESOLVED 1 ?CreateUID@CThing@@QAEXXZ
+UNRESOLVED 1 ?DestroyRange@@YAXPAX0@Z
+UNRESOLVED 1 ?DrawPreparePrimitivesForRendering@CTCBase@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+UNRESOLVED 1 ?FindDef@@YAPAXPBVCDefinitionManager@@J@Z
+UNRESOLVED 1 ?FindDef_43a2_0@@YAPAXXZ
+UNRESOLVED 1 ?FindDef_43a2_1@@YAPAXXZ
+UNRESOLVED 1 ?FindDef_43a2_2@@YAPAXXZ
+UNRESOLVED 1 ?FindDef_CDefClassBase_GetSubDef_1@@YAPAXXZ
+UNRESOLVED 2 ?FindDef_CDefinitionManager_GetDef_0@@YAPAXXZ
+UNRESOLVED 1 ?FindLong@@YIPAJPAJ0ABJ@Z
+UNRESOLVED 1 ?FindSubDef@@YAPAXPBVCDefClassBase@@@Z
+UNRESOLVED 1 ?FrameUpdate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?GDefStringTable@@3VCDefStringTable@@A
+UNRESOLVED 2 ?Get@CGameDefinitionManager@@SIAAV1@XZ
+UNRESOLVED 1 ?GetAllSelectedItems@CTCInventoryBase@NInventory@@IBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+UNRESOLVED 2 ?GetAppearanceModifierList@CTCHeroAttachableAppearanceModifiers@@QBEXAAV?$list@JV?$allocator@J@std@@@std@@W4EHeroAttachableAppearanceModifierType@@@Z
+UNRESOLVED 1 ?GetCurrentBuyPrice@CTCShop@@QBEJJJ@Z
+UNRESOLVED 1 ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z
+UNRESOLVED 8 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+UNRESOLVED 3 ?GetFrame@CWorld@@SIJXZ
+UNRESOLVED 2 ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
+UNRESOLVED 3 ?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z
+UNRESOLVED 4 ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z
+UNRESOLVED 3 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
+UNRESOLVED 1 ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z
+UNRESOLVED 1 ?GetTypeBalancedAttractiveness@CAppearanceModifierDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z
+UNRESOLVED 1 ?GetTypeBalancedGoodstrength@CAppearanceModifierDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z
+UNRESOLVED 1 ?GetTypeBalancedScariness@CAppearanceModifierDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z
+UNRESOLVED 2 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ
+UNRESOLVED 1 ?GlobalSectionName@CLevelLoader@@2VCCharString@@A
+UNRESOLVED 1 ?GlobalUpdate@CTCBase@@UAEX_N@Z
+UNRESOLVED 1 ?GrowVectorStorage@@YAPAXPAXK@Z
+UNRESOLVED 1 ?HandleMessage@CTCBase@@UAEXABVCMessageBase@NTCMessages@@@Z
+UNRESOLVED 1 ?HasFrameUpdate@CTCBase@@UBE_NXZ
+UNRESOLVED 2 ?InformOfEvent@CTCHeroStats@@QAEXABVCBase@NHeroStatModifierEvent@@@Z
+UNRESOLVED 1 ?InitialActivate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?IsComponentSerialisable@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsCopyable@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsDriver@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsFreeForDeletion@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsGameStatePersisted@CThing@@QBE_NXZ
+UNRESOLVED 1 ?IsSerialisableForHeroState@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsSerialiseCreatable@CTCBase@@UBE_NXZ
+UNRESOLVED 2 ?IsThingGhostSword@CTCGhostSword@@SI_NPBVCThing@@@Z
+UNRESOLVED 1 ?IsValidStockItem@CTCShop@@QBE_NJ@Z
+UNRESOLVED 1 ?LookUpDef@@YAPAVCDefClassBase@@J@Z
+UNRESOLVED 1 ?LookUpSubDef@@YAPAVCDefClassBase@@PBV1@@Z
+UNRESOLVED 1 ?MoveAllocatedClassInLists@CClassFactory@@QAEXAAVCClass@@J_N@Z
+UNRESOLVED 1 ?OnCreate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnDie@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnInitialActivate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnItemHighlighted@CTCInventoryBase@NInventory@@UAEXJ@Z
+UNRESOLVED 1 ?OnKill@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnLevelUnload@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnRemove@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnSerialise@CTCBase@@MAEXAAVCPersistContext@@_N@Z
+UNRESOLVED 1 ?OnSetInLimbo@CTCBase@@UAEX_N@Z
+UNRESOLVED 1 ?PCurrentThingManager@CThing@@0PAVCThingManager@@A
+UNRESOLVED 1 ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+UNRESOLVED 1 ?ReleaseDef@@YAXPAX@Z
+UNRESOLVED 2 ?ReleaseDef_s7@@YAXPAX@Z
+UNRESOLVED 1 ?RemoveAllAppearanceModifiers@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z
+UNRESOLVED 1 ?RemoveAppearanceModifier@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z
+UNRESOLVED 1 ?RenderUpdate@CTCBase@@UAEXM@Z
+UNRESOLVED 1 ?SetAsGameStatePersisted@CThing@@QAEX_N@Z
+UNRESOLVED 1 ?SetThingAsWearingClothingSuit@CTCInventoryClothing@@AAEXAAVCThing@@J@Z
+UNRESOLVED 1 ?SetThingAsWearingSelectedClothes@CTCInventoryClothing@@AAEXAAVCThing@@@Z
+UNRESOLVED 1 ?Successor@@YAPAUSNode@@PAU1@@Z
+UNRESOLVED 1 ?Test@CShopDef@@QBEXXZ
+UNRESOLVED 1 ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z
+UNRESOLVED 2 ?TmplSink_s7_0@@YAJPBXJ@Z
+UNRESOLVED 2 ?TmplSink_s7_1@@YAJPBXJ@Z
+UNRESOLVED 2 ?TmplSink_s7_2@@YAJPBXJ@Z
+UNRESOLVED 1 ?Validate@CTCBase@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 1 ?_M_insert_overflow@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@IAEXPAU?$pair@JVCCharString@@@2@ABU32@ABU__false_type@2@I_N@Z
+UNRESOLVED 1 ?clear@CSuitPartMap@@QAEXXZ
+UNRESOLVED 1 ?erase@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@QAEXU?$_Rb_tree_iterator@W4EClothingSuitPart@@U?$_Nonconst_traits@W4EClothingSuitPart@@@std@@@2@@Z
+UNRESOLVED 1 ?erase@?$list@JV?$allocator@J@std@@@std@@QAE?AU?$_List_iterator@JU?$_Nonconst_traits@J@std@@@2@U32@@Z
+UNRESOLVED 1 ?erase@CClothingEntryVector@@QAEPAUSClothingEntry@@PAU2@@Z
+UNRESOLVED 1 ?find@CWeightMap@@QBE?AUCWeightMapIterator@@ABJ@Z
+UNRESOLVED 1 ?insert_unique@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@W4EClothingSuitPart@@U?$_Nonconst_traits@W4EClothingSuitPart@@@std@@@std@@_N@2@ABW4EClothingSuitPart@@@Z
+UNRESOLVED 1 ?push_back_005bba94@CLongVector@@QAEXABJ@Z
+UNRESOLVED 2 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+UNRESOLVED 2 ?v00@CBase@NHeroStatModifierEvent@@UAEXXZ
+UNRESOLVED 1 ?v00@CKilledThing@NHeroStatModifierEvent@@UAEXXZ
+UNRESOLVED 1 ?v00@CKnockedThingUnconscious@NHeroStatModifierEvent@@UAEXXZ
+UNRESOLVED 2 __fltused
+UNRESOLVED 1 __ftol2
+UNRESOLVED 1 __purecall
+UNRESOLVED 4 _free
+UNRESOLVED 3 _malloc
+UNRESOLVED 1 _memmove
+## new set: 0042af3c.obj H_004ca010.obj H_005b43a2.obj H_005b4795.obj H_005b4eba.obj H_005b5be6.obj H_0071da70.obj H_007744a0.obj H_00801a50.obj H_00811470.obj H_008115a0.obj H_008ed1f0.obj
+duplicates 21
+  DUP H_005b43a2.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_005b4795.obj ??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4795.obj ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4795.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_005b4eba.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_005b4eba.obj ??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4eba.obj ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b4eba.obj ??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z in H_005b43a2.obj;
+  DUP H_005b5be6.obj ?FindDef_s7r_0@@YAPAXXZ in H_005b4795.obj;
+  DUP H_005b5be6.obj ??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b5be6.obj ?FindDef_s7r_1@@YAPAXXZ in H_005b4795.obj;
+  DUP H_005b5be6.obj ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z in H_005b43a2.obj;
+  DUP H_005b5be6.obj ?FindDef_s7r_2@@YAPAXXZ in H_005b4795.obj;
+  DUP H_005b5be6.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_0071da70.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_007744a0.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_00801a50.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_00811470.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_008115a0.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_008115a0.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in H_00811470.obj;
+  DUP H_008ed1f0.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+UNRESOLVED 1 ??0CBaseIntelligentPointer@@QAE@XZ
+UNRESOLVED 2 ??0CCharString@@QAE@ABV0@@Z
+UNRESOLVED 5 ??0CCharString@@QAE@PBDJ@Z
+UNRESOLVED 1 ??0CDeletion@NUISystem@@QAE@ABV01@@Z
+UNRESOLVED 1 ??0CDeletion@NUISystem@@QAE@XZ
+UNRESOLVED 1 ??0CTCBase@@QAE@AAVCThing@@@Z
+UNRESOLVED 1 ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+UNRESOLVED 1 ??1CBaseIntelligentPointer@@UAE@XZ
+UNRESOLVED 5 ??1CCharString@@QAE@XZ
+UNRESOLVED 1 ??1CTCBase@@UAE@XZ
+UNRESOLVED 2 ??3@YAXPAX@Z
+UNRESOLVED 1 ??4CCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 1 ??A?$map@JVCShopItem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@3@@std@@QAEAAVCShopItem@@ABJ@Z
+UNRESOLVED 2 ??ACSuitPartMap@@QAEAAJABJ@Z
+UNRESOLVED 1 ??ACWeightMap@@QAEAAJABJ@Z
+UNRESOLVED 1 ?AddAppearanceModifierWithReplace@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z
+UNRESOLVED 1 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+UNRESOLVED 1 ?BulletTimeFrameUpdate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?ConstructFromParams@CTCBase@@UAEXABVCTCParamsBase@@@Z
+UNRESOLVED 1 ?Copy@CTCBase@@UAEXABV1@@Z
+UNRESOLVED 1 ?CreateUID@CThing@@QAEXXZ
+UNRESOLVED 1 ?DestroyRange@@YAXPAX0@Z
+UNRESOLVED 1 ?DrawPreparePrimitivesForRendering@CTCBase@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+UNRESOLVED 1 ?FindDef@@YAPAXPBVCDefinitionManager@@J@Z
+UNRESOLVED 1 ?FindDef_43a2_0@@YAPAXXZ
+UNRESOLVED 1 ?FindDef_43a2_1@@YAPAXXZ
+UNRESOLVED 1 ?FindDef_43a2_2@@YAPAXXZ
+UNRESOLVED 1 ?FindDef_CDefClassBase_GetSubDef_1@@YAPAXXZ
+UNRESOLVED 2 ?FindDef_CDefinitionManager_GetDef_0@@YAPAXXZ
+UNRESOLVED 1 ?FindLong@@YIPAJPAJ0ABJ@Z
+UNRESOLVED 1 ?FindSubDef@@YAPAXPBVCDefClassBase@@@Z
+UNRESOLVED 1 ?FrameUpdate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?GDefStringTable@@3VCDefStringTable@@A
+UNRESOLVED 2 ?Get@CGameDefinitionManager@@SIAAV1@XZ
+UNRESOLVED 1 ?GetAllSelectedItems@CTCInventoryBase@NInventory@@IBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+UNRESOLVED 2 ?GetAppearanceModifierList@CTCHeroAttachableAppearanceModifiers@@QBEXAAV?$list@JV?$allocator@J@std@@@std@@W4EHeroAttachableAppearanceModifierType@@@Z
+UNRESOLVED 1 ?GetCurrentBuyPrice@CTCShop@@QBEJJJ@Z
+UNRESOLVED 1 ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z
+UNRESOLVED 8 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+UNRESOLVED 3 ?GetFrame@CWorld@@SIJXZ
+UNRESOLVED 2 ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
+UNRESOLVED 3 ?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z
+UNRESOLVED 4 ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z
+UNRESOLVED 3 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
+UNRESOLVED 1 ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z
+UNRESOLVED 1 ?GetTypeBalancedAttractiveness@CAppearanceModifierDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z
+UNRESOLVED 1 ?GetTypeBalancedGoodstrength@CAppearanceModifierDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z
+UNRESOLVED 1 ?GetTypeBalancedScariness@CAppearanceModifierDef@@QBEMABV?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@@Z
+UNRESOLVED 2 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ
+UNRESOLVED 1 ?GlobalSectionName@CLevelLoader@@2VCCharString@@A
+UNRESOLVED 1 ?GlobalUpdate@CTCBase@@UAEX_N@Z
+UNRESOLVED 1 ?GrowVectorStorage@@YAPAXPAXK@Z
+UNRESOLVED 1 ?HandleMessage@CTCBase@@UAEXABVCMessageBase@NTCMessages@@@Z
+UNRESOLVED 1 ?HasFrameUpdate@CTCBase@@UBE_NXZ
+UNRESOLVED 2 ?InformOfEvent@CTCHeroStats@@QAEXABVCBase@NHeroStatModifierEvent@@@Z
+UNRESOLVED 1 ?InitialActivate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?IsComponentSerialisable@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsCopyable@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsDriver@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsFreeForDeletion@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsGameStatePersisted@CThing@@QBE_NXZ
+UNRESOLVED 1 ?IsSerialisableForHeroState@CTCBase@@UBE_NXZ
+UNRESOLVED 1 ?IsSerialiseCreatable@CTCBase@@UBE_NXZ
+UNRESOLVED 2 ?IsThingGhostSword@CTCGhostSword@@SI_NPBVCThing@@@Z
+UNRESOLVED 1 ?IsValidStockItem@CTCShop@@QBE_NJ@Z
+UNRESOLVED 1 ?LookUpDef@@YAPAVCDefClassBase@@J@Z
+UNRESOLVED 1 ?LookUpSubDef@@YAPAVCDefClassBase@@PBV1@@Z
+UNRESOLVED 1 ?MoveAllocatedClassInLists@CClassFactory@@QAEXAAVCClass@@J_N@Z
+UNRESOLVED 1 ?OnCreate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnDie@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnInitialActivate@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnItemHighlighted@CTCInventoryBase@NInventory@@UAEXJ@Z
+UNRESOLVED 1 ?OnKill@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnLevelUnload@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnRemove@CTCBase@@UAEXXZ
+UNRESOLVED 1 ?OnSerialise@CTCBase@@MAEXAAVCPersistContext@@_N@Z
+UNRESOLVED 1 ?OnSetInLimbo@CTCBase@@UAEX_N@Z
+UNRESOLVED 1 ?PCurrentThingManager@CThing@@0PAVCThingManager@@A
+UNRESOLVED 1 ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+UNRESOLVED 1 ?ReleaseDef@@YAXPAX@Z
+UNRESOLVED 2 ?ReleaseDef_s7@@YAXPAX@Z
+UNRESOLVED 1 ?RemoveAllAppearanceModifiers@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z
+UNRESOLVED 1 ?RemoveAppearanceModifier@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z
+UNRESOLVED 1 ?RenderUpdate@CTCBase@@UAEXM@Z
+UNRESOLVED 1 ?SetAsGameStatePersisted@CThing@@QAEX_N@Z
+UNRESOLVED 1 ?SetThingAsWearingClothingSuit@CTCInventoryClothing@@AAEXAAVCThing@@J@Z
+UNRESOLVED 1 ?SetThingAsWearingSelectedClothes@CTCInventoryClothing@@AAEXAAVCThing@@@Z
+UNRESOLVED 1 ?Successor@@YAPAUSNode@@PAU1@@Z
+UNRESOLVED 1 ?Test@CShopDef@@QBEXXZ
+UNRESOLVED 1 ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z
+UNRESOLVED 2 ?TmplSink_s7_0@@YAJPBXJ@Z
+UNRESOLVED 2 ?TmplSink_s7_1@@YAJPBXJ@Z
+UNRESOLVED 2 ?TmplSink_s7_2@@YAJPBXJ@Z
+UNRESOLVED 1 ?Validate@CTCBase@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 1 ?_M_insert_overflow@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@IAEXPAU?$pair@JVCCharString@@@2@ABU32@ABU__false_type@2@I_N@Z
+UNRESOLVED 1 ?clear@CSuitPartMap@@QAEXXZ
+UNRESOLVED 1 ?erase@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@QAEXU?$_Rb_tree_iterator@W4EClothingSuitPart@@U?$_Nonconst_traits@W4EClothingSuitPart@@@std@@@2@@Z
+UNRESOLVED 1 ?erase@?$list@JV?$allocator@J@std@@@std@@QAE?AU?$_List_iterator@JU?$_Nonconst_traits@J@std@@@2@U32@@Z
+UNRESOLVED 1 ?erase@CClothingEntryVector@@QAEPAUSClothingEntry@@PAU2@@Z
+UNRESOLVED 1 ?find@CWeightMap@@QBE?AUCWeightMapIterator@@ABJ@Z
+UNRESOLVED 1 ?insert_unique@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@W4EClothingSuitPart@@U?$_Nonconst_traits@W4EClothingSuitPart@@@std@@@std@@_N@2@ABW4EClothingSuitPart@@@Z
+UNRESOLVED 1 ?push_back_005bba94@CLongVector@@QAEXABJ@Z
+UNRESOLVED 2 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+UNRESOLVED 2 ?v00@CBase@NHeroStatModifierEvent@@UAEXXZ
+UNRESOLVED 1 ?v00@CKilledThing@NHeroStatModifierEvent@@UAEXXZ
+UNRESOLVED 1 ?v00@CKnockedThingUnconscious@NHeroStatModifierEvent@@UAEXXZ
+UNRESOLVED 2 __fltused
+UNRESOLVED 1 __ftol2
+UNRESOLVED 1 __purecall
+UNRESOLVED 4 _free
+UNRESOLVED 3 _malloc
+UNRESOLVED 1 _memmove
+LK_DONE

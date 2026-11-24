@@ -1,0 +1,7 @@
+PRAGMA optimize("s",on)             src:00/42/CCountedPointerNUISystemCComponent_Reset_00429c6f.cpp:13 -> s=on y=on
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=on y=on
+MARK   CCountedPointer-tmpl         inc:engine/CCountedPointer.h:98   state s=on y=on
+MARK   NF352-Reset-spec             src:00/42/CCountedPointerNUISystemCComponent_Reset_00429c6f.cpp:17   state s=on y=on
+MARK   GetDef-tmpl-body             (not found)
+MARK   NF349-spec                   (not found)
+END-OF-TU state s=on y=on

@@ -1,0 +1,36 @@
+## H_0045c5f6
+??0CThingNoiseDef@@QAE@XZ 00455ef0 len 36 bytes EQ relocs EQ
+??0CTCNoiseDef@@QAE@XZ 0044c1bb len 18 bytes EQ relocs EQ
+??_GCThingNoiseDef@@UAEPAXI@Z 0045c5da len 28 bytes EQ relocs EQ
+??1CThingNoiseDef@@UAE@XZ 0045c5f6 len 25 bytes EQ relocs EQ
+??1CThingBaseDef@@UAE@XZ 00454b4c len 19 bytes EQ relocs EQ
+??_GCTCNoiseDef@@UAEPAXI@Z 0044f71b len 34 bytes EQ relocs EQ
+??_GCDefPointeeBase@@UAEPAXI@Z 0042d9a0 len 36 bytes EQ relocs EQ
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ 0045c5c1 len 25 bytes EQ relocs EQ
+## 00455ef0
+??0CThingNoiseDef@@QAE@XZ 00455ef0 len 36 bytes EQ relocs EQ
+??0CTCNoiseDef@@QAE@XZ 0044c1bb len 18 bytes EQ relocs EQ
+??_GCThingNoiseDef@@UAEPAXI@Z 0045c5da len 28 bytes EQ relocs EQ
+??1CThingNoiseDef@@UAE@XZ 0045c5f6 len 25 bytes EQ relocs EQ
+??1CThingBaseDef@@UAE@XZ 00454b4c len 19 bytes EQ relocs EQ
+??_GCTCNoiseDef@@UAEPAXI@Z 0044f71b len 34 bytes EQ relocs EQ
+??_GCDefPointeeBase@@UAEPAXI@Z 0042d9a0 len 36 bytes EQ relocs EQ
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ 0045c5c1 len 25 bytes EQ relocs EQ
+## 0044c1bb
+??0CThingNoiseDef@@QAE@XZ 00455ef0 len 36 bytes EQ relocs EQ
+??0CTCNoiseDef@@QAE@XZ 0044c1bb len 18 bytes EQ relocs EQ
+??_GCThingNoiseDef@@UAEPAXI@Z 0045c5da len 28 bytes EQ relocs EQ
+??1CThingNoiseDef@@UAE@XZ 0045c5f6 len 25 bytes EQ relocs EQ
+??1CThingBaseDef@@UAE@XZ 00454b4c len 19 bytes EQ relocs EQ
+??_GCTCNoiseDef@@UAEPAXI@Z 0044f71b len 34 bytes EQ relocs EQ
+??_GCDefPointeeBase@@UAEPAXI@Z 0042d9a0 len 36 bytes EQ relocs EQ
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ 0045c5c1 len 25 bytes EQ relocs EQ
+## 0045c5da
+??0CThingNoiseDef@@QAE@XZ 00455ef0 len 36 bytes EQ relocs EQ
+??0CTCNoiseDef@@QAE@XZ 0044c1bb len 18 bytes EQ relocs EQ
+??_GCThingNoiseDef@@UAEPAXI@Z 0045c5da len 28 bytes EQ relocs EQ
+??1CThingNoiseDef@@UAE@XZ 0045c5f6 len 25 bytes EQ relocs EQ
+??1CThingBaseDef@@UAE@XZ 00454b4c len 19 bytes EQ relocs EQ
+??_GCTCNoiseDef@@UAEPAXI@Z 0044f71b len 34 bytes EQ relocs EQ
+??_GCDefPointeeBase@@UAEPAXI@Z 0042d9a0 len 36 bytes EQ relocs EQ
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ 0045c5c1 len 25 bytes EQ relocs EQ

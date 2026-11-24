@@ -1,0 +1,11 @@
+?Assign@?$CDefPointer@$$CBVCAbilityDef@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCAppearanceModifierDef@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCAugmentationDef@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCCreatureDef@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCHeroSuitDef@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCStockItemDef@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z
+?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z

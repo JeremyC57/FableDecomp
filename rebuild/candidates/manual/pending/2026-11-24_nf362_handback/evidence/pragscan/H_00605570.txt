@@ -1,0 +1,10 @@
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=off y=on
+MARK   CCountedPointer-tmpl         inc:engine/CCountedPointer.h:98   state s=off y=on
+PRAGMA optimize("s",on)             inc:engine/CCountedPointer.h:561 -> s=on y=on
+PRAGMA optimize("",on)              inc:engine/CCountedPointer.h:579 -> s=off y=on
+PRAGMA optimize("s",on)             inc:engine/CCountedPointer.h:586 -> s=on y=on
+MARK   NF352-Reset-spec             inc:engine/CCountedPointer.h:591   state s=on y=on
+PRAGMA optimize("",on)              inc:engine/CCountedPointer.h:599 -> s=off y=on
+MARK   GetDef-tmpl-body             src:00/60/CTCInventoryMap_ConstructRegionDescription_00605570.cpp:133   state s=off y=on
+MARK   NF349-spec                   (not found)
+END-OF-TU state s=off y=on

@@ -1,0 +1,17 @@
+NEQ 004118c0 8 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z not referenced by the leaf
+EQ  0041c820 16 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+NEQ 0041c830 18 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z not referenced by the leaf
+EQ  0040dce0 21 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z 
+EQ  00429c53 5 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ 
+EQ  00428b10 11 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z 
+EQ  004292c0 44 ?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z 
+EQ  0042aa96 29 ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABKABVCUIState@NUISystem@@@Z 
+EQ  0040f220 12 ??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z 
+EQ  00429c6f 59 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z 
+EQ  0042d4d3 29 ?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z 
+NEQ 004365b0 61 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+NEQ 0040f020 61 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+NEQ 0042b312 101 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z LEAF-REFERENCED
+EQ  0042b1a6 162 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z 
+EQ  0059350c 162 ??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z 
+NEQ 0042d5b1 87 ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAEAAVCUIState@NUISystem@@ABK@Z LEAF-REFERENCED

@@ -1,0 +1,34 @@
+## HEAD set: H_0042af3c.obj H_004ca010.obj
+duplicates 0
+UNRESOLVED 1 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+UNRESOLVED 1 ??0CCharString@@QAE@ABV0@@Z
+UNRESOLVED 1 ??0CCharString@@QAE@PBDJ@Z
+UNRESOLVED 1 ??1CCharString@@QAE@XZ
+UNRESOLVED 1 ??4CCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 1 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+UNRESOLVED 1 ?CreateUID@CThing@@QAEXXZ
+UNRESOLVED 1 ?GDefStringTable@@3VCDefStringTable@@A
+UNRESOLVED 1 ?GetFrame@CWorld@@SIJXZ
+UNRESOLVED 1 ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z
+UNRESOLVED 1 ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z
+UNRESOLVED 1 ?GlobalSectionName@CLevelLoader@@2VCCharString@@A
+UNRESOLVED 1 ?MoveAllocatedClassInLists@CClassFactory@@QAEXAAVCClass@@J_N@Z
+UNRESOLVED 1 ?PCurrentThingManager@CThing@@0PAVCThingManager@@A
+UNRESOLVED 1 ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z
+## new set: 0042af3c.obj H_004ca010.obj
+duplicates 0
+UNRESOLVED 1 ??0CCharString@@QAE@ABV0@@Z
+UNRESOLVED 1 ??0CCharString@@QAE@PBDJ@Z
+UNRESOLVED 1 ??1CCharString@@QAE@XZ
+UNRESOLVED 1 ??4CCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 1 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+UNRESOLVED 1 ?CreateUID@CThing@@QAEXXZ
+UNRESOLVED 1 ?GDefStringTable@@3VCDefStringTable@@A
+UNRESOLVED 1 ?GetFrame@CWorld@@SIJXZ
+UNRESOLVED 1 ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z
+UNRESOLVED 1 ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z
+UNRESOLVED 1 ?GlobalSectionName@CLevelLoader@@2VCCharString@@A
+UNRESOLVED 1 ?MoveAllocatedClassInLists@CClassFactory@@QAEXAAVCClass@@J_N@Z
+UNRESOLVED 1 ?PCurrentThingManager@CThing@@0PAVCThingManager@@A
+UNRESOLVED 1 ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z
+LK_DONE

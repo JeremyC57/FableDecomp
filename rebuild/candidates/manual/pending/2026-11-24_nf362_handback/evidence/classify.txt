@@ -1,0 +1,20 @@
+ROW 0041e6d3 verdict=HOLD leaf=same target=2 sdc=7 assign=7 other=1
+   OTHER CHANGED ('COMDAT', '??$GetDef@VCDefClassBase@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text') size 105 -> 98 data_eq=False reloc
+ROW 00584b86 verdict=OK leaf=same target=1 sdc=2 assign=2 other=0
+ROW 0058578b verdict=OK leaf=same target=2 sdc=5 assign=5 other=0
+ROW 005a04f7 verdict=OK leaf=same target=1 sdc=1 assign=1 other=0
+ROW 005a29f4 verdict=OK leaf=same target=1 sdc=1 assign=1 other=0
+ROW 005a8a5d verdict=OK leaf=same target=1 sdc=1 assign=1 other=0
+ROW 005a9cbe verdict=OK leaf=same target=2 sdc=4 assign=4 other=0
+ROW 005aaf28 verdict=OK leaf=same target=2 sdc=4 assign=4 other=0
+ROW 005ad571 verdict=OK leaf=same target=2 sdc=4 assign=4 other=0
+ROW 005b3aef verdict=OK leaf=same target=1 sdc=3 assign=3 other=0
+ROW 005b76d1 verdict=OK leaf=same target=2 sdc=4 assign=4 other=0
+ROW 005b8743 verdict=OK leaf=same target=2 sdc=4 assign=4 other=0
+ROW 005c6b26 verdict=OK leaf=same target=1 sdc=4 assign=4 other=0
+ROW 005c7452 verdict=OK leaf=same target=1 sdc=3 assign=3 other=0
+ROW 005c8459 verdict=OK leaf=same target=2 sdc=3 assign=3 other=0
+ROW 005c90fc verdict=OK leaf=same target=1 sdc=3 assign=3 other=0
+ROW 005c9a95 verdict=OK leaf=same target=2 sdc=3 assign=3 other=0
+ROW 005cacb9 verdict=OK leaf=same target=2 sdc=3 assign=3 other=0
+ROW 005cdd86 verdict=OK leaf=same target=1 sdc=0 assign=0 other=0

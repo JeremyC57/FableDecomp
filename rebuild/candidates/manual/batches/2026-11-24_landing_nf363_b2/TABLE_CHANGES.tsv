@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	??0CMemberBase_0044c0c0@@QAE@XZ	0044c0c0	00455ef0	NF363 drop test: the new 0x00455EF0 object no longer names it (its ctor call binds ??0CSubDefClassBase@@QAE@XZ, line witnessed by 0044c57d); the only landed source and only witness was 0x00455EF0 (source grep: 1 file); scratch census: UND only in 0x00455EF0 objects

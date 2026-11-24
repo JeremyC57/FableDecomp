@@ -1,0 +1,143 @@
+## HEAD set
+??$_Destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??$_Destroy@U?$pair@$$CBKK@std@@@std@@YAXPAU?$pair@$$CBKK@0@@Z	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??$_Destroy@U?$pair@$$CBVCCharString@@J@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@J@0@@Z	same_body	H317 sel=2 9B 6bc0d311 | H304 sel=2 9B 6bc0d311
+??$_Destroy@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@CD	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??$__destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@@std@@YAXPAU?$pair@KVCSubDef	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??$__destroy_aux@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDef	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??0?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$all	same_body	H317 sel=2 56B f9d0cfb1 | H304 sel=2 56B f9d0cfb1
+??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCC	same_body	H317 sel=2 56B f9d0cfb1 | H304 sel=2 56B f9d0cfb1
+??0?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABV?$	same_body	H317 sel=2 27B 1b012344 | H304 sel=2 27B 1b012344
+??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@	same_body	H317 sel=2 27B 1b012344 | H304 sel=2 27B 1b012344
+??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_R	same_body	H317 sel=2 11B 6b7cb74b | H304 sel=2 11B 6b7cb74b
+??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$al	same_body	H317 sel=2 11B 6b7cb74b | H304 sel=2 11B 6b7cb74b
+??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@ABV01@@Z	same_body	H317 sel=2 5B 9ce3b73b | H304 sel=2 5B 9ce3b73b
+??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@ABV01@@Z	same_body	H317 sel=2 5B 9ce3b73b | H304 sel=2 5B 9ce3b73b
+??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABU?$less@K@1@ABV?	same_body	H317 sel=2 56B f9d0cfb1 | H304 sel=2 56B f9d0cfb1
+??0?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@	same_body	H317 sel=2 56B f9d0cfb1 | H304 sel=2 56B f9d0cfb1
+??0C2DVector@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0CTCNoiseDef@@QAE@XZ	LNK2005 DIFF_BODIES	H55 sel=2 18B da99cb0a | H4c sel=1 18B 2479d8a1 | H5f6 sel=2 18B 54b3763e
+??0CThingNoiseDef@@QAE@XZ	LNK2005 DIFF_BODIES	H55 sel=1 36B 065f5e17 | H5f6 sel=2 36B 1a579ab6
+??0CUIMiscThingsDef@NUISystem@@QAE@XZ	DIFF_BODIES	H317 sel=2 1009B 783be93d | H304 sel=2 1039B ab7b022e
+??0__false_type@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??1?$CArray@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@@QAE@XZ	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClas	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$all	same_body	H317 sel=2 66B 19fae208 | H304 sel=2 66B 19fae208
+??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCC	same_body	H317 sel=2 66B f3c63ccd | H304 sel=2 66B f3c63ccd
+??1?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_R	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$al	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$_STLP_alloc_proxy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@V?$allocator@U?$pa	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$_Vector_base@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDe	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ	same_body	H317 sel=2 66B 19fae208 | H304 sel=2 66B 19fae208
+??1?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@	same_body	H317 sel=2 66B f3c63ccd | H304 sel=2 66B f3c63ccd
+??1?$pair@$$CBVCCharString@@J@std@@QAE@XZ	same_body	H317 sel=2 5B 5607239c | H304 sel=2 5B 5607239c
+??1?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1CDefClassBase@@UAE@XZ	same_body	H5f6 sel=2 11B f9b17404 | H317 sel=2 11B f9b17404 | H304 sel=2 11B f9b17404
+??1CDefPointeeBase@@UAE@XZ	same_body	H5f6 sel=2 11B f9b17404 | H317 sel=2 11B f9b17404 | H304 sel=2 11B f9b17404
+??1CParentDefClassBase@@UAE@XZ	same_body	H317 sel=2 33B dfb50f3b | H304 sel=2 33B dfb50f3b
+??1CUIMiscThingsDef@NUISystem@@UAE@XZ	same_body	H317 sel=2 1036B 8dc7457f | H304 sel=2 1036B 8dc7457f
+??_7CDefPointeeBase@@6B@	same_body	H5f6 sel=2 40B 447afdac | H317 sel=2 40B 447afdac | H304 sel=2 40B 447afdac
+??_7CTCNoiseDef@@6B@	DIFF_BODIES	H55 sel=2 4B 9b5fb189 | H4c sel=2 4B 9b5fb189 | H5f6 sel=2 100B a0c50592
+??_7CThingNoiseDef@@6B@	DIFF_BODIES	H55 sel=2 4B 35a89024 | H5f6 sel=2 100B dfa6663f
+??_7CUIMiscThingsDef@NUISystem@@6B@	same_body	H317 sel=2 100B 039819de | H304 sel=2 100B 039819de
+??_G?$pair@$$CBVCCharString@@J@std@@QAEPAXI@Z	same_body	H317 sel=2 30B 2efe874c | H304 sel=2 30B 2efe874c
+??_GCDefPointeeBase@@UAEPAXI@Z	same_body	H5f6 sel=2 36B f55d22f3 | H317 sel=2 36B f55d22f3 | H304 sel=2 36B f55d22f3
+??_GCUIMiscThingsDef@NUISystem@@UAEPAXI@Z	same_body	H317 sel=2 30B d7ca3608 | H304 sel=2 30B d7ca3608
+?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ	LNK2005 same_body	H32c sel=1 27B 85cf9c93 | H317 sel=1 27B 85cf9c93 | H304 sel=1 27B 85cf9c93
+?_M_empty_initialize@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@	same_body	H317 sel=2 25B a958121f | H304 sel=2 25B a958121f
+?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1	same_body	H317 sel=2 25B a958121f | H304 sel=2 25B a958121f
+?_M_erase@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2	same_body	H317 sel=2 51B 9ddfd0e7 | H304 sel=2 51B 9ddfd0e7
+?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@	same_body	H317 sel=2 59B 8bbd9cd4 | H304 sel=2 59B 8bbd9cd4
+?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEPAU?$_Rb_tree_no	same_body	H317 sel=2 31B c6674a0e | H304 sel=2 31B c6674a0e
+?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEPAU	same_body	H317 sel=2 31B c6674a0e | H304 sel=2 31B c6674a0e
+?clear@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?	same_body	H317 sel=2 51B 32fd734c | H304 sel=2 51B 32fd734c
+?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$C	same_body	H317 sel=2 51B b54ead3e | H304 sel=2 51B b54ead3e
+?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEXPAU?$_Rb_tree	same_body	H317 sel=2 18B 86dc800a | H304 sel=2 18B 86dc800a
+?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEX	same_body	H317 sel=2 18B 86dc800a | H304 sel=2 18B 86dc800a
+?deallocate@?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAEXPAU?$pair@KVC	same_body	H317 sel=2 18B 86dc800a | H304 sel=2 18B 86dc800a
+## new set
+??$_Destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??$_Destroy@U?$pair@$$CBKK@std@@@std@@YAXPAU?$pair@$$CBKK@0@@Z	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??$_Destroy@U?$pair@$$CBVCCharString@@J@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@J@0@@Z	same_body	H317 sel=2 9B 6bc0d311 | H304 sel=2 9B 6bc0d311
+??$_Destroy@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@CD	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??$__destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@@std@@YAXPAU?$pair@KVCSubDef	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??$__destroy_aux@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDef	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??0?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$all	same_body	H317 sel=2 56B f9d0cfb1 | H304 sel=2 56B f9d0cfb1
+??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCC	same_body	H317 sel=2 56B f9d0cfb1 | H304 sel=2 56B f9d0cfb1
+??0?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABV?$	same_body	H317 sel=2 27B 1b012344 | H304 sel=2 27B 1b012344
+??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@	same_body	H317 sel=2 27B 1b012344 | H304 sel=2 27B 1b012344
+??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_R	same_body	H317 sel=2 11B 6b7cb74b | H304 sel=2 11B 6b7cb74b
+??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$al	same_body	H317 sel=2 11B 6b7cb74b | H304 sel=2 11B 6b7cb74b
+??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@ABV01@@Z	same_body	H317 sel=2 5B 9ce3b73b | H304 sel=2 5B 9ce3b73b
+??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@ABV01@@Z	same_body	H317 sel=2 5B 9ce3b73b | H304 sel=2 5B 9ce3b73b
+??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABU?$less@K@1@ABV?	same_body	H317 sel=2 56B f9d0cfb1 | H304 sel=2 56B f9d0cfb1
+??0?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@	same_body	H317 sel=2 56B f9d0cfb1 | H304 sel=2 56B f9d0cfb1
+??0C2DVector@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??0CTCNoiseDef@@QAE@XZ	same_body	N55 sel=2 18B 54b3763e | N4c sel=2 18B 54b3763e | N5da sel=2 18B 54b3763e | H5f6 sel=2 18B 54b3763e
+??0CThingNoiseDef@@QAE@XZ	same_body	N55 sel=2 36B 1a579ab6 | N4c sel=2 36B 1a579ab6 | N5da sel=2 36B 1a579ab6 | H5f6 sel=2 36B 1a579ab6
+??0CUIMiscThingsDef@NUISystem@@QAE@XZ	DIFF_BODIES	H317 sel=2 1009B 783be93d | H304 sel=2 1039B ab7b022e
+??0__false_type@std@@QAE@XZ	same_body	H317 sel=2 3B af626e1d | H304 sel=2 3B af626e1d
+??1?$CArray@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@@QAE@XZ	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClas	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$all	same_body	H317 sel=2 66B 19fae208 | H304 sel=2 66B 19fae208
+??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCC	same_body	H317 sel=2 66B f3c63ccd | H304 sel=2 66B f3c63ccd
+??1?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_R	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$al	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$_STLP_alloc_proxy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@V?$allocator@U?$pa	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$_Vector_base@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDe	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAE@XZ	same_body	H317 sel=2 1B a5b347a6 | H304 sel=2 1B a5b347a6
+??1?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ	same_body	H317 sel=2 66B 19fae208 | H304 sel=2 66B 19fae208
+??1?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@	same_body	H317 sel=2 66B f3c63ccd | H304 sel=2 66B f3c63ccd
+??1?$pair@$$CBVCCharString@@J@std@@QAE@XZ	same_body	H317 sel=2 5B 5607239c | H304 sel=2 5B 5607239c
+??1?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@	same_body	H317 sel=2 14B 35292f57 | H304 sel=2 14B 35292f57
+??1CDefClassBase@@UAE@XZ	same_body	N55 sel=2 11B f9b17404 | N4c sel=2 11B f9b17404 | N5da sel=2 11B f9b17404 | H5f6 sel=2 11B f9b17404 | H317 sel=2 11B f9b17404 | H304 sel=2 11B f9b17404
+??1CDefPointeeBase@@UAE@XZ	same_body	N55 sel=2 11B f9b17404 | N4c sel=2 11B f9b17404 | N5da sel=2 11B f9b17404 | H5f6 sel=2 11B f9b17404 | H317 sel=2 11B f9b17404 | H304 sel=2 11B f9b17404
+??1CParentDefClassBase@@UAE@XZ	same_body	H317 sel=2 33B dfb50f3b | H304 sel=2 33B dfb50f3b
+??1CSubDefClassBase@@UAE@XZ	same_body	N55 sel=2 11B f9b17404 | N4c sel=2 11B f9b17404 | N5da sel=2 11B f9b17404 | H5f6 sel=2 11B f9b17404
+??1CTCNoiseDef@@UAE@XZ	same_body	N55 sel=2 11B f9b17404 | N4c sel=2 11B f9b17404 | N5da sel=2 11B f9b17404 | H5f6 sel=2 11B f9b17404
+??1CThingBaseDef@@UAE@XZ	same_body	N55 sel=2 19B 853578b6 | N4c sel=2 19B 853578b6 | N5da sel=2 19B 853578b6 | H5f6 sel=2 19B 853578b6
+??1CThingNoiseDef@@UAE@XZ	same_body	N55 sel=2 25B 60ea994c | N4c sel=2 25B 60ea994c | N5da sel=2 25B 60ea994c | H5f6 sel=2 25B 60ea994c
+??1CUIMiscThingsDef@NUISystem@@UAE@XZ	same_body	H317 sel=2 1036B 8dc7457f | H304 sel=2 1036B 8dc7457f
+??_7CDefPointeeBase@@6B@	same_body	N55 sel=2 40B 447afdac | N4c sel=2 40B 447afdac | N5da sel=2 40B 447afdac | H5f6 sel=2 40B 447afdac | H317 sel=2 40B 447afdac | H304 sel=2 40B 447afdac
+??_7CTCNoiseDef@@6B@	same_body	N55 sel=2 100B a0c50592 | N4c sel=2 100B a0c50592 | N5da sel=2 100B a0c50592 | H5f6 sel=2 100B a0c50592
+??_7CThingNoiseDef@@6B@	same_body	N55 sel=2 100B dfa6663f | N4c sel=2 100B dfa6663f | N5da sel=2 100B dfa6663f | H5f6 sel=2 100B dfa6663f
+??_7CUIMiscThingsDef@NUISystem@@6B@	same_body	H317 sel=2 100B 039819de | H304 sel=2 100B 039819de
+??_G?$pair@$$CBVCCharString@@J@std@@QAEPAXI@Z	same_body	H317 sel=2 30B 2efe874c | H304 sel=2 30B 2efe874c
+??_GCDefPointeeBase@@UAEPAXI@Z	same_body	N55 sel=2 36B f55d22f3 | N4c sel=2 36B f55d22f3 | N5da sel=2 36B f55d22f3 | H5f6 sel=2 36B f55d22f3 | H317 sel=2 36B f55d22f3 | H304 sel=2 36B f55d22f3
+??_GCTCNoiseDef@@UAEPAXI@Z	same_body	N55 sel=2 34B 308404a6 | N4c sel=2 34B 308404a6 | N5da sel=2 34B 308404a6 | H5f6 sel=2 34B 308404a6
+??_GCThingNoiseDef@@UAEPAXI@Z	same_body	N55 sel=2 28B a3a595d2 | N4c sel=2 28B a3a595d2 | N5da sel=2 28B a3a595d2 | H5f6 sel=2 28B a3a595d2
+??_GCUIMiscThingsDef@NUISystem@@UAEPAXI@Z	same_body	H317 sel=2 30B d7ca3608 | H304 sel=2 30B d7ca3608
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ	LNK2005 same_body	N55 sel=1 25B a9668eb1 | N4c sel=1 25B a9668eb1 | N5da sel=1 25B a9668eb1 | H5f6 sel=1 25B a9668eb1
+?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ	LNK2005 same_body	H32c sel=1 27B 85cf9c93 | H317 sel=1 27B 85cf9c93 | H304 sel=1 27B 85cf9c93
+?_M_empty_initialize@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@	same_body	H317 sel=2 25B a958121f | H304 sel=2 25B a958121f
+?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1	same_body	H317 sel=2 25B a958121f | H304 sel=2 25B a958121f
+?_M_erase@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2	same_body	H317 sel=2 51B 9ddfd0e7 | H304 sel=2 51B 9ddfd0e7
+?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@	same_body	H317 sel=2 59B 8bbd9cd4 | H304 sel=2 59B 8bbd9cd4
+?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEPAU?$_Rb_tree_no	same_body	H317 sel=2 31B c6674a0e | H304 sel=2 31B c6674a0e
+?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEPAU	same_body	H317 sel=2 31B c6674a0e | H304 sel=2 31B c6674a0e
+?clear@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?	same_body	H317 sel=2 51B 32fd734c | H304 sel=2 51B 32fd734c
+?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$C	same_body	H317 sel=2 51B b54ead3e | H304 sel=2 51B b54ead3e
+?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEXPAU?$_Rb_tree	same_body	H317 sel=2 18B 86dc800a | H304 sel=2 18B 86dc800a
+?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEX	same_body	H317 sel=2 18B 86dc800a | H304 sel=2 18B 86dc800a
+?deallocate@?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAEXPAU?$pair@KVC	same_body	H317 sel=2 18B 86dc800a | H304 sel=2 18B 86dc800a

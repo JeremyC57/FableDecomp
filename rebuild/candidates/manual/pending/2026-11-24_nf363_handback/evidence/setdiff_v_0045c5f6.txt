@@ -1,0 +1,63 @@
+=== 00455ef0 v H_0045c5f6
+SAME     .drectve static:- 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+SAME     .rdata   ??_7CTCNoiseDef@@6B@ 
+SAME     .rdata   ??_7CThingNoiseDef@@6B@ 
+SAME     .text    ??0CTCNoiseDef@@QAE@XZ 
+SAME     .text    ??0CThingNoiseDef@@QAE@XZ 
+SAME     .text    ??1CDefClassBase@@UAE@XZ 
+SAME     .text    ??1CDefPointeeBase@@UAE@XZ 
+SAME     .text    ??1CSubDefClassBase@@UAE@XZ 
+SAME     .text    ??1CTCNoiseDef@@UAE@XZ 
+SAME     .text    ??1CThingBaseDef@@UAE@XZ 
+SAME     .text    ??1CThingNoiseDef@@UAE@XZ 
+SAME     .text    ??_GCDefPointeeBase@@UAEPAXI@Z 
+SAME     .text    ??_GCTCNoiseDef@@UAEPAXI@Z 
+SAME     .text    ??_GCThingNoiseDef@@UAEPAXI@Z 
+SAME     .text    ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ 
+DEF dropped: []
+DEF added: []
+UND dropped: []
+UND added (0): []
+=== 0044c1bb v H_0045c5f6
+SAME     .drectve static:- 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+SAME     .rdata   ??_7CTCNoiseDef@@6B@ 
+SAME     .rdata   ??_7CThingNoiseDef@@6B@ 
+SAME     .text    ??0CTCNoiseDef@@QAE@XZ 
+SAME     .text    ??0CThingNoiseDef@@QAE@XZ 
+SAME     .text    ??1CDefClassBase@@UAE@XZ 
+SAME     .text    ??1CDefPointeeBase@@UAE@XZ 
+SAME     .text    ??1CSubDefClassBase@@UAE@XZ 
+SAME     .text    ??1CTCNoiseDef@@UAE@XZ 
+SAME     .text    ??1CThingBaseDef@@UAE@XZ 
+SAME     .text    ??1CThingNoiseDef@@UAE@XZ 
+SAME     .text    ??_GCDefPointeeBase@@UAEPAXI@Z 
+SAME     .text    ??_GCTCNoiseDef@@UAEPAXI@Z 
+SAME     .text    ??_GCThingNoiseDef@@UAEPAXI@Z 
+SAME     .text    ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ 
+DEF dropped: []
+DEF added: []
+UND dropped: []
+UND added (0): []
+=== 0045c5da v H_0045c5f6
+SAME     .drectve static:- 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+SAME     .rdata   ??_7CTCNoiseDef@@6B@ 
+SAME     .rdata   ??_7CThingNoiseDef@@6B@ 
+SAME     .text    ??0CTCNoiseDef@@QAE@XZ 
+SAME     .text    ??0CThingNoiseDef@@QAE@XZ 
+SAME     .text    ??1CDefClassBase@@UAE@XZ 
+SAME     .text    ??1CDefPointeeBase@@UAE@XZ 
+SAME     .text    ??1CSubDefClassBase@@UAE@XZ 
+SAME     .text    ??1CTCNoiseDef@@UAE@XZ 
+SAME     .text    ??1CThingBaseDef@@UAE@XZ 
+SAME     .text    ??1CThingNoiseDef@@UAE@XZ 
+SAME     .text    ??_GCDefPointeeBase@@UAEPAXI@Z 
+SAME     .text    ??_GCTCNoiseDef@@UAEPAXI@Z 
+SAME     .text    ??_GCThingNoiseDef@@UAEPAXI@Z 
+SAME     .text    ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ 
+DEF dropped: []
+DEF added: []
+UND dropped: []
+UND added (0): []

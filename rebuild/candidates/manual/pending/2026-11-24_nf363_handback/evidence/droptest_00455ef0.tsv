@@ -1,0 +1,4 @@
+kind	symbol	witness_is_row	table(target:witness)	self_at_target	pk_verdict	pk_status@addr(src)	size
+UND	??0CMemberBase_0044c0c0@@QAE@XZ	0044c0c0	0044c0c0:00455ef0	0044c0c0=OTHER(none)	UND	-	-
+UND	?v00@CTCNoiseDef@@UAEXXZ	-	-	-	UND	-	-
+UND	?v00@CThingNoiseDef@@UAEXXZ	-	-	-	UND	-	-

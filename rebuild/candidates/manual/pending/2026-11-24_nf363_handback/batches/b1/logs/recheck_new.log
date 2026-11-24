@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0042af3c   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0042af3c   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0042af3c   RELOCATION_MATCH PASS   GetDef<CThingBaseDef>
+
+WINS: 1
+  0042af3c RELOCATION_MATCH CDefinitionManager::??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+EXIT 0

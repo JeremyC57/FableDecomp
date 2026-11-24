@@ -1,0 +1,26 @@
+00455ef0	pk_all	DROPPED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+00455ef0	pk_all	DROPPED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+00455ef0	pk_all	DROPPED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+00455ef0	pvr	DROPPED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+00455ef0	pvr	DROPPED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+00455ef0	pvr	DROPPED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+ROW 00455ef0 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0044c1bb	pk_all	DROPPED	00455ef0	not-leaf-called	??0CThingNoiseDef@@QAE@XZ
+0044c1bb	pk_all	DROPPED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+0044c1bb	pk_all	DROPPED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+0044c1bb	pk_all	DROPPED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+0044c1bb	pvr	DROPPED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+0044c1bb	pvr	DROPPED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+0044c1bb	pvr	DROPPED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+ROW 0044c1bb gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0045c5da	pk_all	DROPPED	0044c1bb	not-leaf-called	??0CTCNoiseDef@@QAE@XZ
+0045c5da	pk_all	DROPPED	00455ef0	not-leaf-called	??0CThingNoiseDef@@QAE@XZ
+0045c5da	pk_all	DROPPED	00454b4c	leaf-called	??1CThingBaseDef@@UAE@XZ
+0045c5da	pk_all	DROPPED	0045c5f6	leaf-called	??1CThingNoiseDef@@UAE@XZ
+0045c5da	pk_all	DROPPED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+0045c5da	pvr	DROPPED	00454b4c	not-leaf-called	??1CThingBaseDef@@UAE@XZ
+0045c5da	pvr	DROPPED	0045c5f6	not-leaf-called	??1CThingNoiseDef@@UAE@XZ
+0045c5da	pvr	DROPPED	0045c5c1	not-leaf-called	?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+ROW 0045c5da gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 0, 12], 'pvr': [0, 0, 0, 9]}
+GATE PASS

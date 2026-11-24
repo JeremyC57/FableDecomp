@@ -1,0 +1,12 @@
+# leaf ?SetUpSelectedClothes@CTCInventoryClothing@@AAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDefPointeeBase@@QAEXXZ
+NOADDR	NOADDR	-	-	strong	12	-	n	y	?FindDef_s7r_0@@YAPAXXZ
+NEQ	NEQ	005935c4	a,b	strong	50	162	y	y	??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z
+NOADDR	NOADDR	-	-	strong	12	-	n	y	?FindDef_s7r_1@@YAPAXXZ
+NEQ	NEQ	0057ff92	a,b	strong	50	162	y	y	??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z
+NOADDR	NOADDR	-	-	strong	12	-	n	y	?FindDef_s7r_2@@YAPAXXZ
+NEQ	NEQ	0042af3c	a,b	strong	50	98	y	y	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	13	-	n	n	??0?$vector@JV?$allocator@J@std@@@std@@QAE@XZ
+EQ	EQ	00cd2d0b	b	pickany	14	14	n	n	??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	?size@?$vector@JV?$allocator@J@std@@@std@@QBEKXZ
+NOADDR	NOADDR	-	-	pickany	15	-	n	n	??A?$vector@JV?$allocator@J@std@@@std@@QAEAAJK@Z

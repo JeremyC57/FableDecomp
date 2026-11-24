@@ -1,0 +1,71 @@
+005a04f7	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005a04f7	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005a04f7 gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005a8a5d	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005a8a5d	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005a8a5d gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005c6b26	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005c6b26	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005c6b26 gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005c7452	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005c7452	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005c7452 gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005c90fc	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005c90fc	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005c90fc gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0058578b	pk_all	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+0058578b	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0058578b	pvr	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+0058578b	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 0058578b gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005c8459	pk_all	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005c8459	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005c8459	pvr	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005c8459	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005c8459 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005c9a95	pk_all	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005c9a95	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005c9a95	pvr	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005c9a95	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005c9a95 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005cacb9	pk_all	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005cacb9	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005cacb9	pvr	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005cacb9	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005cacb9 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005a29f4	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005a29f4	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005a29f4 gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005a9cbe	pk_all	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005a9cbe	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005a9cbe	pvr	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005a9cbe	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005a9cbe gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005aaf28	pk_all	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005aaf28	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005aaf28	pvr	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005aaf28	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005aaf28 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005ad571	pk_all	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005ad571	pk_all	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005ad571	pvr	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005ad571	pvr	FIXED	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005ad571 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00584b86	pk_all	FIXED	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+00584b86	pvr	FIXED	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+ROW 00584b86 gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005b3aef	pk_all	FIXED	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+005b3aef	pvr	FIXED	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+ROW 005b3aef gate=P fixed_getdef=1 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005b76d1	pk_all	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005b76d1	pk_all	FIXED	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+005b76d1	pvr	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005b76d1	pvr	FIXED	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+ROW 005b76d1 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+005b8743	pk_all	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005b8743	pk_all	FIXED	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+005b8743	pvr	FIXED	0042af3c	leaf-called	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+005b8743	pvr	FIXED	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+ROW 005b8743 gate=P fixed_getdef=2 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 26, 0], 'pvr': [0, 0, 26, 0]}
+GATE PASS

@@ -1,0 +1,64 @@
+005a04f7 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005a04f7 UND- ?BUY_SUBTITLE@?A0x552c3381@@3VCCharString@@A bind=0 witness_here=0 pkH= -
+005a04f7 UND- ?CATEGORY_CHILD_SELL_LIST_STRING@?A0x552c3381@@3VCCharString@@A bind=0 witness_here=0 pkH= -
+005a04f7 UND- ?CLOTHES_SUBTITLE@?A0x552c3381@@3VCCharString@@A bind=0 witness_here=0 pkH= -
+005a04f7 UND- ?ITEMS_SUBTITLE@?A0x552c3381@@3VCCharString@@A bind=0 witness_here=0 pkH= -
+005a04f7 UND- ?SELL_SUBTITLE@?A0x552c3381@@3VCCharString@@A bind=0 witness_here=0 pkH= -
+005a04f7 UND- ?WANTED_SUBTITLE@?A0x552c3381@@3VCCharString@@A bind=0 witness_here=0 pkH= -
+005a04f7 UND- ?WEAPONS_SUBTITLE@?A0x552c3381@@3VCCharString@@A bind=0 witness_here=0 pkH= -
+005a8a5d DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c6b26 DEF- ?Assign@?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c6b26 DEF- ?Assign@?$CDefPointer@$$CBVCStockItemDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c6b26 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c6b26 DEF- ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c6b26 UND- ?NEWLINE@?A0x460f1c87@@3VCWideString@@B bind=0 witness_here=0 pkH= -
+005c7452 DEF- ?Assign@?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c7452 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c7452 DEF- ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c90fc DEF- ?Assign@?$CDefPointer@$$CBVCStockItemDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c90fc DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c90fc DEF- ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c90fc UND- ?NEWLINE@?A0xcc4e6571@@3VCWideString@@B bind=0 witness_here=0 pkH= -
+0058578b DEF- ?Assign@?$CDefPointer@$$CBVCAppearanceModifierDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+0058578b DEF- ?Assign@?$CDefPointer@$$CBVCAugmentationDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+0058578b DEF- ?Assign@?$CDefPointer@$$CBVCHeroSuitDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+0058578b DEF- ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+0058578b DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c8459 DEF- ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c8459 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c8459 DEF- ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c9a95 DEF- ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c9a95 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005c9a95 DEF- ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005cacb9 DEF- ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005cacb9 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005cacb9 DEF- ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005cacb9 UND- ?AUGMENTATIONS_MENU_ENTRY_NAME@?A0x20628d62@@3VCCharString@@B bind=0 witness_here=0 pkH= -
+005cacb9 UND- ?WEAPON_DESCRIPTION_STRING@?A0x20628d62@@3VCCharString@@B bind=0 witness_here=0 pkH= -
+005a29f4 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005a29f4 UND- ?SPEC_SUBTITLE@?A0x605cde90@@3VCCharString@@A bind=0 witness_here=0 pkH= -
+005a9cbe DEF- ?Assign@?$CDefPointer@$$CBVCStockItemDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005a9cbe DEF- ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005a9cbe DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005a9cbe DEF- ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005aaf28 DEF- ?Assign@?$CDefPointer@$$CBVCStockItemDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005aaf28 DEF- ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005aaf28 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005aaf28 DEF- ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005ad571 DEF- ?Assign@?$CDefPointer@$$CBVCStockItemDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005ad571 DEF- ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005ad571 DEF- ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005ad571 DEF- ?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+00584b86 DEF- ?Assign@?$CDefPointer@$$CBVCAbilityDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+00584b86 DEF- ?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b3aef DEF- ?Assign@?$CDefPointer@$$CBVCAppearanceModifierDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b3aef DEF- ?Assign@?$CDefPointer@$$CBVCCreatureDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b3aef DEF- ?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b76d1 DEF- ?Assign@?$CDefPointer@$$CBVCAppearanceModifierDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b76d1 DEF- ?Assign@?$CDefPointer@$$CBVCHeroSuitDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b76d1 DEF- ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b76d1 DEF- ?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b8743 DEF- ?Assign@?$CDefPointer@$$CBVCAppearanceModifierDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b8743 DEF- ?Assign@?$CDefPointer@$$CBVCHeroSuitDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b8743 DEF- ?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -
+005b8743 DEF- ?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z bind=0 witness_here=0 pkH= NOADDR -

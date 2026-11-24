@@ -1,0 +1,4 @@
+EQ  004291de 44 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ 
+NEQ 00428b10 8 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z not referenced by the leaf
+EQ  00429c6f 59 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z 
+EQ  00429c53 5 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ 

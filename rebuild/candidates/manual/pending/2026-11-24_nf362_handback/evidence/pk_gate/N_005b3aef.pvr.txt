@@ -1,0 +1,6 @@
+NEQ 004118c0 8 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z not referenced by the leaf
+EQ  0040f220 12 ??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z 
+NEQ 0040f020 61 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+EQ  00485815 162 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z 
+EQ  0042b040 98 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 
+EQ  0057ff92 162 ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z 

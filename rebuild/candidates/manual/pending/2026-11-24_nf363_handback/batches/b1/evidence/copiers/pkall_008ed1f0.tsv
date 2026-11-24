@@ -1,0 +1,15 @@
+# leaf ?InsertItem@CTCContainer@@QAEXJABVCCharString@@@Z  source_a=yes  
+EQ	EQ	00405c10	b	pickany	5	5	n	n	??2@YAPAXIPAX@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??0__false_type@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?PersistsGameState@CThingBaseDef@@QBE_NXZ
+NEQ	NEQ	0042af3c	a,b	strong	25	98	y	y	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	8	-	n	n	??1?$pair@JVCCharString@@@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+EQ	EQ	00695250	b,c	pickany	30	30	n	n	??0?$pair@JVCCharString@@@std@@QAE@ABJABVCCharString@@@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$CDefHolder@$$CBVCThingBaseDef@@@@QAE@PAUCDefPointeeBase@@@Z
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	??1?$CDefHolder@$$CBVCThingBaseDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefHolder@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+NOADDR	NOADDR	-	-	pickany	29	-	n	n	??0?$pair@JVCCharString@@@std@@QAE@ABU01@@Z
+NOADDR	NOADDR	-	-	pickany	37	-	n	n	?GetItemDef@CTCContainer@@QBEPAUCDefPointeeBase@@J@Z
+NOADDR	NOADDR	-	-	pickany	29	-	n	n	??$_Construct@U?$pair@JVCCharString@@@std@@U12@@std@@YAXPAU?$pair@JVCCharString@@@0@ABU10@@Z
+EQ	EQ	0074fe50	b	pickany	69	69	n	n	?push_back@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAEXABU?$pair@JVCCharString@@@2@@Z

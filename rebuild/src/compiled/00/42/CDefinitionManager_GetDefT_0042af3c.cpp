@@ -1,4 +1,5 @@
-// CDefinitionManager::GetDef<T>(long, CDefPointer&) -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false; frame-pointer size TU
+// CDefinitionManager::GetDef<CThingBaseDef>(long index, CDefPointer<const CThingBaseDef>* out) const -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false; frame-pointer size TU
+// Leaf: ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042AF3C, oracle length 98 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -14,7 +15,14 @@
 // ref-count base's two inline accessors (decrement, then test the count): the adjusted base
 // pointer is materialised once for both (`add eax,4`), the stored value is forwarded to the
 // test (re-read in the size TU: `dec [eax] ; cmp [eax],0`) and the def is kept in ecx for the virtual call. Frame pointer and size optimisation from the TU's pragmas. The manifest
-// label names one instantiation; the def type is opaque. One of 13 bodies of this shape.
+// label names one instantiation: GetDef<CThingBaseDef> (Leaf and Identity lines). One of 13 bodies of this shape.
+// Identity (NF360, 2026-11-24; was the made-up self ?GetDef_0042af3c@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z):
+//   FableWin.pdb ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z; the reloc_bindings line
+//   witnessed by the landed caller 0x007CBDC0 binds that symbol at 0x0042AF3C (FableWin UI-TU COMDAT order GetDef<CThingBaseDef> then
+//   GetSubDef<CObjectAugmentationsDef> = 0x0042AF3C / 0x0042AF9E). Respelled in place on the local model in the strong explicit-specialization
+//   form 0x0042B040 uses (no shared-header port: NF356). The out pointer is the PDB's CDefPointer<const CThingBaseDef>*; the local model's
+//   CDefPointer<T> holds the same CDefBase* for every T, so the inlined assignment is the model's CDefPointer<const CDefClassBase> one,
+//   reached through the out pointer (the model has no converting assignment; the emitted inline set stays the landed one).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -70,16 +78,21 @@ template <class T> class CDefPointer { public:
 
 class CDefinitionManager { public:
     CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (hidden result pointer)
-    bool GetDef_0042af3c(long index, CDefPointer<const CDefClassBase>& out);
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const;
 };
 
-bool CDefinitionManager::GetDef_0042af3c(long index, CDefPointer<const CDefClassBase>& out)
+class CThingBaseDef;
+
+template <>
+bool CDefinitionManager::GetDef<CThingBaseDef>(long index, CDefPointer<const CThingBaseDef>* out) const
 {
     if (index <= 0)
         return false;
     CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
     if (def.m_p) {
-        out = def;
+        reinterpret_cast<CDefPointer<const CDefClassBase>&>(*out) = def;   // Fidelity: scaffolding, not retail
+        // (retail assigns CDefPointer<const CThingBaseDef>; the cast reaches the local model's one assignment, the only measured text that
+        // keeps every COMDAT name (NF360 b1, ruling R2); it goes with the nf349 header port of 0x0042AF3C, T3 line nf349 0x0042AF3C)
         return true;
     }
     return false;

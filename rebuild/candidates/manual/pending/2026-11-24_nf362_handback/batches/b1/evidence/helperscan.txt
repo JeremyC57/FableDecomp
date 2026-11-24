@@ -1,0 +1,33 @@
+?Assign@?$CDefPointer@$$CBVCAbilityDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=0 und=0
+?Assign@?$CDefPointer@$$CBVCAppearanceModifierDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=0 und=0
+?Assign@?$CDefPointer@$$CBVCAugmentationDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=0 und=0
+?Assign@?$CDefPointer@$$CBVCCreatureDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=12 und=0
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+    00667d30.t.obj sec 164 +11
+?Assign@?$CDefPointer@$$CBVCHeroSuitDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=0 und=0
+?Assign@?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=0 und=0
+?Assign@?$CDefPointer@$$CBVCStockItemDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=0 und=0
+?Assign@?$CDefPointer@$$CBVCThingBaseDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=8 und=0
+    006c14d0.t.obj sec 68 +14
+    006c14d0.t.obj sec 68 +14
+    006c14d0.t.obj sec 68 +14
+    006c14d0.t.obj sec 68 +14
+    006c14d0.t.obj sec 68 +14
+    006c14d0.t.obj sec 68 +14
+    006c14d0.t.obj sec 68 +14
+    006c14d0.t.obj sec 68 +14
+?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=0 und=0
+?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=0 und=0
+?Assign@?$CDefPointer@$$CBVCWeaponDef@@@@AAEXPAVCDefPointeeBase@@@Z table_lines=0 refs=0 und=0
+# unreadable 1
+# objects scanned 77096, symbols 11, table lines 0, references 20, UND 0

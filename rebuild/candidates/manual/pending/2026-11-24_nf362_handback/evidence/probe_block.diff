@@ -1,0 +1,19 @@
+601a602,619
+> #ifdef NF362_PROBE_RESET_YOFF_TU
+> // NF362 PROBE ONLY (scratch tree, never landed): the NF352 Reset body for a TU that set optimize("y", off) + ("s", on) above this
+> // include. Switch to the owner's mode (y on, s on), define the specialization, then RESTORE the TU's y-off / s-on mode instead of the
+> // command line.
+> namespace NUISystem { class CComponent; }
+> #pragma optimize("y", on)
+> #pragma optimize("s", on)
+> template<> __declspec(noinline) inline
+> void CCountedPointer<NUISystem::CComponent>::Reset(NUISystem::CComponent* data)
+> {
+>     ReleaseData();
+>     Data = data;
+>     if (data)
+>         Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
+> }
+> #pragma optimize("y", off)
+> #pragma optimize("s", on)
+> #endif

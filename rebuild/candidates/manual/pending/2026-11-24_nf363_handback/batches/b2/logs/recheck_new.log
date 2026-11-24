@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00455ef0   RELOCATION_MATCH PASS   CThingNoiseDef
+0044c1bb   RELOCATION_MATCH PASS   CTCNoiseDef
+0045c5da   WARN STANDIN_LEAF ??_GCThingNoiseDef@@UAEPAXI@Z (catalog CThingNoiseDef::`scalar_deleting_destructor'; names another function)
+0045c5da   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 3
+  00455ef0 RELOCATION_MATCH CThingNoiseDef::??0CThingNoiseDef@@QAE@XZ
+  0044c1bb RELOCATION_MATCH CTCNoiseDef::??0CTCNoiseDef@@QAE@XZ
+  0045c5da RELOCATION_MATCH CThingNoiseDef::??_GCThingNoiseDef@@UAEPAXI@Z
+EXIT 0

@@ -1,0 +1,42 @@
+## HEAD set + census controls
+??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ	same_body	H810 sel=2 18B 8a4d82f9 | Ha70 sel=2 18B 8a4d82f9
+??0CTCNoise@@QAE@AAVCThing@@@Z	LNK2005 DIFF_BODIES	H810 sel=1 79B 60ac1b4b | Ha70 sel=1 59B f85f0c44
+??0CTCNoiseDef@@QAE@XZ	LNK2005 DIFF_BODIES	H55 sel=2 18B da99cb0a | H4c sel=1 18B 2479d8a1 | H5f6 sel=2 18B 54b3763e | H810 sel=2 29B c6cc2123
+??0CThingNoiseDef@@QAE@XZ	LNK2005 DIFF_BODIES	H55 sel=1 36B 065f5e17 | H5f6 sel=2 36B 1a579ab6
+??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ	same_body	H810 sel=2 5B a264143b | Ha70 sel=2 5B a264143b
+??1CDefClassBase@@UAE@XZ	same_body	H5f6 sel=2 11B f9b17404 | H810 sel=2 11B f9b17404 | Ha70 sel=2 11B f9b17404
+??1CDefPointeeBase@@UAE@XZ	same_body	H5f6 sel=2 11B f9b17404 | H810 sel=2 11B f9b17404 | Ha70 sel=2 11B f9b17404
+??1CSubDefClassBase@@UAE@XZ	same_body	H5f6 sel=2 11B f9b17404 | H810 sel=2 11B f9b17404 | Ha70 sel=2 11B f9b17404
+??1CTCNoiseDef@@UAE@XZ	same_body	H5f6 sel=2 11B f9b17404 | Ha70 sel=2 11B f9b17404
+??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@	same_body	H810 sel=2 4B 4f2a5e2b | Ha70 sel=2 4B 4f2a5e2b
+??_7CDefPointeeBase@@6B@	same_body	H5f6 sel=2 40B 447afdac | H810 sel=2 40B 447afdac | Ha70 sel=2 40B 447afdac
+??_7CTCNoise@@6B@	DIFF_BODIES	H810 sel=2 112B 1224b95d | Ha70 sel=2 112B 5c115d2a
+??_7CTCNoiseDef@@6B@	DIFF_BODIES	H55 sel=2 4B 9b5fb189 | H4c sel=2 4B 9b5fb189 | H5f6 sel=2 100B a0c50592 | H810 sel=2 100B a0c50592
+??_7CThingNoiseDef@@6B@	DIFF_BODIES	H55 sel=2 4B 35a89024 | H5f6 sel=2 100B dfa6663f
+??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z	same_body	H810 sel=2 30B f9b90be6 | Ha70 sel=2 30B f9b90be6
+??_GCDefPointeeBase@@UAEPAXI@Z	same_body	H5f6 sel=2 36B f55d22f3 | H810 sel=2 36B f55d22f3 | Ha70 sel=2 36B f55d22f3
+??_GCTCNoise@@UAEPAXI@Z	same_body	H810 sel=2 30B 0855f098 | Ha70 sel=2 30B 0855f098
+??_GCTCNoiseDef@@UAEPAXI@Z	DIFF_BODIES	H5f6 sel=2 34B 308404a6 | H810 sel=2 30B 9cded815
+## new set + census controls
+??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ	same_body	H810 sel=2 18B 8a4d82f9 | Ha70 sel=2 18B 8a4d82f9
+??0CTCNoise@@QAE@AAVCThing@@@Z	LNK2005 DIFF_BODIES	H810 sel=1 79B 60ac1b4b | Ha70 sel=1 59B f85f0c44
+??0CTCNoiseDef@@QAE@XZ	DIFF_BODIES	N55 sel=2 18B 54b3763e | N4c sel=2 18B 54b3763e | N5da sel=2 18B 54b3763e | H5f6 sel=2 18B 54b3763e | H810 sel=2 29B c6cc2123
+??0CThingNoiseDef@@QAE@XZ	same_body	N55 sel=2 36B 1a579ab6 | N4c sel=2 36B 1a579ab6 | N5da sel=2 36B 1a579ab6 | H5f6 sel=2 36B 1a579ab6
+??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ	same_body	H810 sel=2 5B a264143b | Ha70 sel=2 5B a264143b
+??1CDefClassBase@@UAE@XZ	same_body	N55 sel=2 11B f9b17404 | N4c sel=2 11B f9b17404 | N5da sel=2 11B f9b17404 | H5f6 sel=2 11B f9b17404 | H810 sel=2 11B f9b17404 | Ha70 sel=2 11B f9b17404
+??1CDefPointeeBase@@UAE@XZ	same_body	N55 sel=2 11B f9b17404 | N4c sel=2 11B f9b17404 | N5da sel=2 11B f9b17404 | H5f6 sel=2 11B f9b17404 | H810 sel=2 11B f9b17404 | Ha70 sel=2 11B f9b17404
+??1CSubDefClassBase@@UAE@XZ	same_body	N55 sel=2 11B f9b17404 | N4c sel=2 11B f9b17404 | N5da sel=2 11B f9b17404 | H5f6 sel=2 11B f9b17404 | H810 sel=2 11B f9b17404 | Ha70 sel=2 11B f9b17404
+??1CTCNoiseDef@@UAE@XZ	same_body	N55 sel=2 11B f9b17404 | N4c sel=2 11B f9b17404 | N5da sel=2 11B f9b17404 | H5f6 sel=2 11B f9b17404 | Ha70 sel=2 11B f9b17404
+??1CThingBaseDef@@UAE@XZ	same_body	N55 sel=2 19B 853578b6 | N4c sel=2 19B 853578b6 | N5da sel=2 19B 853578b6 | H5f6 sel=2 19B 853578b6
+??1CThingNoiseDef@@UAE@XZ	same_body	N55 sel=2 25B 60ea994c | N4c sel=2 25B 60ea994c | N5da sel=2 25B 60ea994c | H5f6 sel=2 25B 60ea994c
+??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@	same_body	H810 sel=2 4B 4f2a5e2b | Ha70 sel=2 4B 4f2a5e2b
+??_7CDefPointeeBase@@6B@	same_body	N55 sel=2 40B 447afdac | N4c sel=2 40B 447afdac | N5da sel=2 40B 447afdac | H5f6 sel=2 40B 447afdac | H810 sel=2 40B 447afdac | Ha70 sel=2 40B 447afdac
+??_7CTCNoise@@6B@	DIFF_BODIES	H810 sel=2 112B 1224b95d | Ha70 sel=2 112B 5c115d2a
+??_7CTCNoiseDef@@6B@	same_body	N55 sel=2 100B a0c50592 | N4c sel=2 100B a0c50592 | N5da sel=2 100B a0c50592 | H5f6 sel=2 100B a0c50592 | H810 sel=2 100B a0c50592
+??_7CThingNoiseDef@@6B@	same_body	N55 sel=2 100B dfa6663f | N4c sel=2 100B dfa6663f | N5da sel=2 100B dfa6663f | H5f6 sel=2 100B dfa6663f
+??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z	same_body	H810 sel=2 30B f9b90be6 | Ha70 sel=2 30B f9b90be6
+??_GCDefPointeeBase@@UAEPAXI@Z	same_body	N55 sel=2 36B f55d22f3 | N4c sel=2 36B f55d22f3 | N5da sel=2 36B f55d22f3 | H5f6 sel=2 36B f55d22f3 | H810 sel=2 36B f55d22f3 | Ha70 sel=2 36B f55d22f3
+??_GCTCNoise@@UAEPAXI@Z	same_body	H810 sel=2 30B 0855f098 | Ha70 sel=2 30B 0855f098
+??_GCTCNoiseDef@@UAEPAXI@Z	DIFF_BODIES	N55 sel=2 34B 308404a6 | N4c sel=2 34B 308404a6 | N5da sel=2 34B 308404a6 | H5f6 sel=2 34B 308404a6 | H810 sel=2 30B 9cded815
+??_GCThingNoiseDef@@UAEPAXI@Z	same_body	N55 sel=2 28B a3a595d2 | N4c sel=2 28B a3a595d2 | N5da sel=2 28B a3a595d2 | H5f6 sel=2 28B a3a595d2
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ	LNK2005 same_body	N55 sel=1 25B a9668eb1 | N4c sel=1 25B a9668eb1 | N5da sel=1 25B a9668eb1 | H5f6 sel=1 25B a9668eb1

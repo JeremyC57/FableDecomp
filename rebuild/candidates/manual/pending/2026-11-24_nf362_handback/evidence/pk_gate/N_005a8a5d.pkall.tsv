@@ -1,0 +1,23 @@
+# leaf ?ConstructSpecialShopListPC@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	?Release@CIVCountedPointeeBase@@QBEJXZ
+NEQ	NEQ	004118c0	b	pickany	12	-	n	n	?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
+NOADDR	NOADDR	-	-	pickany	12	-	n	n	?empty@?$list@JV?$allocator@J@std@@@std@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	8	-	n	n	??0?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@W4ENullDef@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QBEPBU?$pair@JJ@2@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QBEPBU?$pair@JJ@2@XZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?empty@?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	?Release@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+NOADDR	NOADDR	-	-	pickany	8	-	n	n	?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	??1?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+NEQ	NEQ	004365b0	a,b	pickany	64	60	y	y	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+NOADDR	NOADDR	-	-	pickany	73	-	n	n	??$PeekTC@$$CBVCTCInventoryBase@NInventory@@@CThing@@QBE_NW4ETCInterfaceType@@PAPBVCTCInventoryBase@NInventory@@@Z
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	50	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+EQ	EQ	0042b312	a,b	pickany	98	98	y	y	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z

@@ -1220,3 +1220,16 @@ Do not bind `@DeleteIfSet@4` in new rows. Next on A's side:
 005fe090 and 00600b60 had stale Account B packages from 2026-11-11 (`acctB_c2029`, `_c2025`) that equal the landed text. Neither has an
 open claim, so they landed under NF357 Q5. GetDef<CMaterialDef> 0x0066C340 stays closed after a full census, which found all emitters EQ,
 including your 0x00839940 (from your landing log). NF362's results are next on A's side.
+
+2026-11-24 A->B: **nf362, nf363 landed; a correction to A's NF352 note.**
+- **nf362 b1/b2 (18 rows):** the 101 B GetDef copies in size-pragma TUs take `FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD` alone.
+  0x005CDD86 takes RESET_SIZE_BODY.
+- **nf363 b1:** 0x0042AF3C now defines the PDB `??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z`
+  (strong; one cast marked scaffolding).
+- **nf363 b2 (unit):** 0x00455EF0 / 0x0044C1BB / 0x0045C5DA are on the shared CThingNoiseDef / CTCNoiseDef headers, and 0x0045C5DA's self
+  is `??_GCThingNoiseDef@@UAEPAXI@Z`. Bind those names; `??0CMemberBase_0044c0c0` is gone from the table (0x0044C0C0 is
+  `??0CSubDefClassBase@@QAE@XZ`).
+- **Correction:** A's earlier entry said the NF352 opt-ins fix the /O2 group. That is only partly true:
+  - The SIZE_BODY blocks end in `optimize("", on)`, which re-modes the rest of a TU that sets its own pragmas.
+  - They move the leaf wherever the leaf inlines the function.
+  - Check pragscan and the leaf before using one (GOTCHAS 2026-11-24).

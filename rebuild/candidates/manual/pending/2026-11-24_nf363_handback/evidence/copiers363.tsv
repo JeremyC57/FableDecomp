@@ -1,0 +1,11 @@
+addr	defines	sel	size	align	pk_all(verdict@addr reach)	retcmp_v_0042af3c	v_owner_new_obj	leaf
+005b43a2	YES	1	27	1	NEQ@0042af3c reach=y leafref=y	len=27 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	AddClothingToThing
+005b4795	YES	1	50	1	NEQ@0042af3c reach=y leafref=y	len=50 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	SetUpSelectedClothes
+005b4eba	YES	1	105	1	NEQ@0042af3c reach=y leafref=y	len=105 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	?CalculateArmorValues@CTCInventoryClothing@@ABEXAAUArgPasser@1@J@Z
+005b5be6	YES	1	50	1	NEQ@0042af3c reach=y leafref=y	len=50 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	OnItemHighlighted
+0071da70	YES	1	60	16	NEQ@0042af3c reach=y leafref=y	len=60 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	?AddTattoo@CTCHeroMorph@@QAEXJ@Z
+007744a0	YES	1	25	16	NEQ@0042af3c reach=y leafref=y	len=25 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	??0CTCShop@@QAE@AAVCThing@@@Z
+00801a50	YES	1	31	16	NEQ@0042af3c reach=y leafref=y	len=31 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	ChooseNewIdle
+00811470	YES	1	107	16	NEQ@0042af3c reach=y leafref=y	len=107 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	OnAdd
+008115a0	YES	1	107	16	NEQ@0042af3c reach=y leafref=y	len=107 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	OnAdd
+008ed1f0	YES	1	25	16	NEQ@0042af3c reach=y leafref=y	len=25 bytes=DIFF relocs=DIFF	DIFF bytes=False relocs=False	?InsertItem@CTCContainer@@QAEXJABVCCharString@@@Z

@@ -1,0 +1,15 @@
+addr       parity           behav  name
+005cdd86   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+005cdd86   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+005cdd86   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005cdd86   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005cdd86   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005cdd86   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+005cdd86   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+005cdd86   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005cdd86   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005cdd86   RELOCATION_MATCH PASS   CreateExperienceSliders
+
+WINS: 1
+  005cdd86 RELOCATION_MATCH CTCInventoryStats::CreateExperienceSliders
+EXIT 0

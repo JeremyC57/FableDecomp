@@ -1,0 +1,11 @@
+PRAGMA optimize("y",off)            /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF362/rows/var/00584b86_rr_go.cpp:24 -> s=off y=off
+PRAGMA optimize("s",on)             /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF362/rows/var/00584b86_rr_go.cpp:25 -> s=on y=off
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=on y=off
+MARK   CCountedPointer-tmpl         inc:engine/CCountedPointer.h:98   state s=on y=off
+MARK   GetDef-tmpl-body             inc:engine/CDefinitionManager.h:224   state s=on y=off
+PRAGMA optimize("y",off)            inc:engine/CDefinitionManager.h:283 -> s=on y=off
+PRAGMA optimize("s",on)             inc:engine/CDefinitionManager.h:284 -> s=on y=off
+MARK   NF349-spec                   inc:engine/CDefinitionManager.h:289   state s=on y=off
+PRAGMA optimize("",on)              inc:engine/CDefinitionManager.h:301 -> s=off y=on
+MARK   NF352-Reset-spec             (not found)
+END-OF-TU state s=off y=on

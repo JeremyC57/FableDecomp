@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf355	0x00455EF0	port (PRIORITY)	??0CThingNoiseDef@@QAE@XZ: landed strong (selection 1) on a stand-in model (callee ??0CMemberBase_0044c0c0, 1-slot ??_7CThingNoiseDef); the 0x0045C5F6 object emits a byte-identical pick-any copy (the one renamed relocation binds 0x0044C0C0 under both names) and the link gains one LNK2005 (nf184 pattern). Port onto engine/CThingNoiseDef.h.
+nf355	0x0044C1BB	port (PRIORITY)	??0CTCNoiseDef@@QAE@XZ: landed strong on a stand-in base with a 1-slot ??_7CTCNoiseDef (HEAD LNK2005 against 0x00455EF0's copy); the 0x0045C5F6 object emits an EQ copy. Port onto engine/CTCNoiseDef.h. With 0x00455EF0 it removes the one-slot vftable copies the linker keeps first today.

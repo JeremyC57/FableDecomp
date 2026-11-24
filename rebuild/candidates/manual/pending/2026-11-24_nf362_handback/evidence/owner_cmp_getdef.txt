@@ -1,0 +1,22 @@
+## GetDef<CUIMiscThingsDef> v owner 0x0042B312 object
+REF H_0042b312.obj len=98 relocs=1
+EQUAL 0058578b.obj len=98
+EQUAL 005a04f7.obj len=98
+EQUAL 005a29f4.obj len=98
+EQUAL 005a8a5d.obj len=98
+EQUAL 005a9cbe.obj len=98
+EQUAL 005aaf28.obj len=98
+EQUAL 005ad571.obj len=98
+EQUAL 005c6b26.obj len=98
+EQUAL 005c7452.obj len=98
+EQUAL 005c8459.obj len=98
+EQUAL 005c90fc.obj len=98
+EQUAL 005c9a95.obj len=98
+EQUAL 005cacb9.obj len=98
+## GetDef<CThingObjectDef> v owner 0x0042B040 object
+REF H_0042b040.obj len=98 relocs=1
+EQUAL 00584b86.obj len=98
+EQUAL 005b3aef.obj len=98
+EQUAL 005b76d1.obj len=98
+EQUAL 005b8743.obj len=98
+DIFF bytes=False relocs=True 0041e6d3.obj len=98

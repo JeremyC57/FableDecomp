@@ -1,0 +1,21 @@
+# symscan360 over 76,571 scratch objects (stale; a census, not HEAD); per symbol / kind / selection: the distinct row addresses named by the object paths
+??0CMemberBase_0044c0c0@@QAE@XZ	UND	-	1	00455ef0
+??0CTCNoiseDef@@QAE@XZ	DEF	1	1	0044c1bb
+??0CTCNoiseDef@@QAE@XZ	DEF	2	4	00455ef0 0045c5f6 00749810 40effb6c
+??0CThingNoiseDef@@QAE@XZ	DEF	1	1	00455ef0
+??0CThingNoiseDef@@QAE@XZ	DEF	2	2	0045c5f6 40effb6c
+??1CThingNoiseDef@@UAE@XZ	DEF	1	1	40effb6c
+??1CThingNoiseDef@@UAE@XZ	DEF	2	2	0045c5f6 40effb6c
+??1CThingNoiseDef@@UAE@XZ	UND	-	1	0045c5da
+??_7CTCNoiseDef@@6B@	DEF	2	5	0044c1bb 00455ef0 0045c5f6 00749810 40effb6c
+??_7CThingNoiseDef@@6B@	DEF	2	3	00455ef0 0045c5f6 40effb6c
+??_GCTCNoiseDef@@UAEPAXI@Z	DEF	2	3	0045c5f6 00749810 40effb6c
+??_GCTCNoiseDef@@UAEPAXI@Z	UND	-	3	0045c5f6 00749810 40effb6c
+??_GCThingNoiseDef@@UAEPAXI@Z	DEF	2	2	0045c5f6 40effb6c
+??_GCThingNoiseDef@@UAEPAXI@Z	UND	-	2	0045c5f6 40effb6c
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ	DEF	1	2	0045c5f6 40effb6c
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ	UND	-	1	0044c72b
+?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z	DEF	0	1	0045c5da
+?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z	DEF	1	1	0045c5da
+?v00@CTCNoiseDef@@UAEXXZ	UND	-	2	0044c1bb 00455ef0
+?v00@CThingNoiseDef@@UAEXXZ	UND	-	1	00455ef0

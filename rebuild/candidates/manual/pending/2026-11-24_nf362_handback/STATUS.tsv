@@ -1,0 +1,35 @@
+address	sub-group	verdict	batch	note
+00427216	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+00582ace	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+0058315b	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+0058a0c7	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+0058e208	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+005907ab	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+0059cb90	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+0059d270	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+0059ed42	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+0059f51e	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+0059fee3	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+005a29f4	Reset y-off+s-on / GetDef<UIMisc> y-off+s-on	done-partial: GetDef ACCEPT / Reset skipped	b1	GetDef 101->98 B EQ = owner object via REREAD; Reset: skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+005a8c66	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+005a9cbe	Reset y-off+s-on / GetDef<UIMisc> y-off+s-on	done-partial: GetDef ACCEPT / Reset skipped	b1	GetDef 101->98 B EQ = owner object via REREAD (+0x0042AF3C EQ); Reset: skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+005aaf28	Reset y-off+s-on / GetDef<UIMisc> y-off+s-on	done-partial: GetDef ACCEPT / Reset skipped	b1	GetDef 101->98 B EQ = owner object via REREAD (+0x0042AF3C EQ); Reset: skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+005ad571	Reset y-off+s-on / GetDef<UIMisc> y-off+s-on	done-partial: GetDef ACCEPT / Reset skipped	b1	GetDef 101->98 B EQ = owner object via REREAD (+0x0042AF3C EQ); Reset: skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+005cdd86	Reset y-off+s-on	ACCEPT	b2	NF352 RESET_SIZE_BODY in place (row includes CCountedPointer.h above its pragmas): Reset 62->59 B EQ = owner object; one COMDAT changes; leaf same
+005d64dd	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+005d6748	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+005d7081	Reset y-off+s-on	skipped	-	skipped (needs a header device: NF352 opt-in in place keeps Reset 62 B and moves the leaf; include move changes ??0CCPPointerInfo 26->25 B, not byte-neutral; proposal P1 / P2)
+0058578b	GetDef<UIMisc> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object (+0x0042AF3C EQ); leaf same
+005a04f7	GetDef<UIMisc> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object; leaf same
+005c6b26	GetDef<UIMisc> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object; leaf same
+005c8459	GetDef<UIMisc> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object (+0x0042AF3C EQ); leaf same
+005c90fc	GetDef<UIMisc> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object; leaf same
+005c9a95	GetDef<UIMisc> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object (+0x0042AF3C EQ); leaf same
+005cacb9	GetDef<UIMisc> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object (+0x0042AF3C EQ); leaf same
+005a8a5d	GetDef<UIMisc> y-off+s-on	ACCEPT	b1	REREAD: 101->98 B EQ = owner object; leaf same
+005c7452	GetDef<UIMisc> y-off+s-on	ACCEPT	b1	REREAD: 101->98 B EQ = owner object; leaf same
+005b3aef	GetDef<ThingObj> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object; leaf same
+005b76d1	GetDef<ThingObj> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object (+0x0042AF3C EQ); leaf same
+005b8743	GetDef<ThingObj> s-on alone	ACCEPT	b1	REREAD: 101->98 B EQ = owner object (+0x0042AF3C EQ); leaf same
+0041e6d3	GetDef<ThingObj> s-on alone (/GS)	skipped (measured)	-	REREAD: copy 105->98 B but still NEQ (both checkers) and differs from the owner object in bytes (failure branch placed differently); 0x0042AF3C / 0x0042B144 copies also 105->98 NEQ; row unchanged
+00584b86	GetDef<ThingObj> y-off+s-on (header body)	ACCEPT	b1	REREAD: 101->98 B EQ = owner object; leaf same. NF349 block in place moves the leaf (DIFFER 1314v854). Address is in T3_PORT_QUEUE col 2 (nf307 binder port, unrelated: do not release that line); land_scripted will hold it as T3_PORT_QUEUE unless the coordinator overrides

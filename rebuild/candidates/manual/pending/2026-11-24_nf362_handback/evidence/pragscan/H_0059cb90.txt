@@ -1,0 +1,5 @@
+PRAGMA optimize("y",off)            src:00/59/CTCInventoryTrade_AddWantedItemToList_0059cb90.cpp:9 -> s=off y=off
+PRAGMA optimize("s",on)             src:00/59/CTCInventoryTrade_AddWantedItemToList_0059cb90.cpp:10 -> s=on y=off
+MARK   CCPPointerInfo-ctor          inc:engine/CCountedPointer.h:56   state s=on y=off
+MARK   GetDef-tmpl-body             (not found)
+END-OF-TU state s=on y=off

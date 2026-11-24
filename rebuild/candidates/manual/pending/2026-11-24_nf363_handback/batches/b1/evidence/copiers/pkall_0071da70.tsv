@@ -1,0 +1,16 @@
+# leaf ?AddTattoo@CTCHeroMorph@@QAEXJ@Z  source_a=yes  
+NEQ	NEQ	005b1efc	a,b	strong	55	162	y	y	??$GetSubDef@VCTattooDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTattooDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@CThingDefVector@@QBEPAV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@CThingDefVector@@QBEPAV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
+NEQ	NEQ	005b3325	a,b	strong	40	56	y	y	?push_back@CThingDefVector@@QAEXABV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+NEQ	NEQ	00721600	a,b	strong	25	49	y	y	?clear@CThingDefVector@@QAEXXZ
+NEQ	NEQ	00720810	a,b	strong	37	71	y	y	?erase@CThingDefVector@@QAEPAV?$CDefPointer@$$CBVCThingBaseDef@@@@PAV2@@Z
+NEQ	NEQ	0042af3c	a,b	strong	60	98	y	y	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+NOADDR	NOADDR	-	-	static	37	-	n	n	?TattoosOverlap@@YA_NPBVCTattooDef@@0@Z
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??0?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@ABV0@@Z
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	??1?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCTattooDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	??1?$CDefPointer@$$CBVCTattooDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCTattooDef@@@@QBEPBVCTattooDef@@XZ

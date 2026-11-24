@@ -1,0 +1,4 @@
+kind	row	old	new	batch
+self	0045c5da	?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z	??_GCThingNoiseDef@@UAEPAXI@Z	b2 (self symbol; Source / Module / catalog name unchanged; rebuild/oracles/self_symbols.tsv lines 1210 and 27219 follow at the next self_symbols.py pass)
+callee	00455ef0	??0CMemberBase_0044c0c0@@QAE@XZ	??0CSubDefClassBase@@QAE@XZ	b2 (0x0044C0C0; the PDB name other rows bind)
+callee	0044c1bb	??0CShoveHaPennyRegionDef@@QAE@XZ	??0CSubDefClassBase@@QAE@XZ	b2 (0x0044C0C0; 126 other sources keep the stand-in, NAME_FIXES_QUEUE land1120nf190)
