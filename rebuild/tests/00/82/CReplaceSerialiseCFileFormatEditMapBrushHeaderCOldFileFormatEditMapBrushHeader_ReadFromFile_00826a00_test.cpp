@@ -1,4 +1,4 @@
-// behaviour test for 00826a00: CReplaceSerialise<CFileFormatEditMapBrushHeader,COldFileFormatEditMapBrushHeader>::ReadFromFile on an in-memory file (current and old record versions)
+// behaviour test for 00826a00: CReplaceSerialise<CFileFormatBrush,COldFileFormatBrush>::ReadFromFile on an in-memory file (current and old record versions); NF382 name fix, was the CFileFormatEditMapBrushHeader instance
 #include <cstdio>
 #include <cstring>
 #define MAX(a, b) ((a) > (b) ? (a) : (b))

@@ -1,0 +1,3 @@
+# Landing nf382 b2: five more selves on their one name
+
+0x00A13650 vector<CPlane>::reserve; 0x00A219E0 list<CNavWayPoint>::pop_front; 0x006BAB80 CPersistContext::GetDefaultVal<CFaction> (NF380 q6: FableWin faction_manager.obj order, its callees are the CFaction ctor / dtor); 0x006A7050 CThingFilter_RadiusIntersectsInfiniteLine::operator(); 0x0091F990 the CIntelligentPointer<const CThing> converting constructor from CIntelligentPointer<CThingCreatureBase>& (all 8 landed callers; its identical twin 0x00654D58 is the copy constructor). Table: 3 stale lines deleted (C2DLineF copy at 0x00A11210, the CEntry ctor / dtor). Gates as b1.

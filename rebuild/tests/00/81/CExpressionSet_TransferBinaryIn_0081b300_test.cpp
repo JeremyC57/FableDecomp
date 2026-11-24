@@ -1,4 +1,4 @@
-// Behaviour test for 0081b300 CExpressionSet::TransferBinaryIn: count, resize with zero pairs, raw block, sort when dirty, marker.
+// Behaviour test for 0081b300 CTextureMorphs::TransferBinaryIn (NF382 name fix, was CExpressionSet::TransferBinaryIn): count, resize with zero pairs, raw block, sort when dirty, marker.
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>

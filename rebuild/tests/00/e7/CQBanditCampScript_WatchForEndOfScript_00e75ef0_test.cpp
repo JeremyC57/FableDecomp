@@ -1,4 +1,4 @@
-// Behaviour test for 00e75ef0 (CQ_BanditCampScript::WatchForEndOfScript): while Q_TraderConflictEvil is active,
+// Behaviour test for 00e75ef0 (CV_ExposeMayorScript::PreventConflictWithTCE; NF382 name fix, was CQ_BanditCampScript::WatchForEndOfScript): while Q_TraderConflictEvil is active,
 // V_ExposeMayorRhodri is deactivated (delay 0) and re-activated once Q_TraderConflictEvil ends; frames pass until the
 // thread terminates.
 #include <cstdio>

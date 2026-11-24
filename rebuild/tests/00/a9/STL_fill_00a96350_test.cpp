@@ -1,3 +1,4 @@
+// NF382 name fix: the row is fill<CCountedPointer<C3DClothPrimitive>*> (was the C3DGroup2 instance).
 #include <cstdio>
 #include <new>
 #include <stdlib.h>
@@ -73,11 +74,11 @@ public:
     T* operator->() const { return Data; }
 };
 
-class C3DGroup2 { public: int id; };
-typedef CCountedPointer<C3DGroup2> TGroupPtr;
+class C3DClothPrimitive { public: int id; };
+typedef CCountedPointer<C3DClothPrimitive> TPrimitivePtr;
 
-// the row: std::fill over CCountedPointer<C3DGroup2> elements (assignment releases each old group)
-static void __fastcall FillGroups(TGroupPtr* first, TGroupPtr* last, const TGroupPtr& val)
+// the row: std::fill over CCountedPointer<C3DClothPrimitive> elements (assignment releases each old group)
+static void __fastcall FillGroups(TPrimitivePtr* first, TPrimitivePtr* last, const TPrimitivePtr& val)
 {
     for (; first != last; ++first)
         *first = val;
@@ -86,11 +87,11 @@ static void __fastcall FillGroups(TGroupPtr* first, TGroupPtr* last, const TGrou
 int main()
 {
     {
-        TGroupPtr a[4];
+        TPrimitivePtr a[4];
         for (int k = 0; k < 4; ++k)
-            a[k].Reset(new C3DGroup2);
-        TGroupPtr shared(a[2]);
-        TGroupPtr val(new C3DGroup2);
+            a[k].Reset(new C3DClothPrimitive);
+        TPrimitivePtr shared(a[2]);
+        TPrimitivePtr val(new C3DClothPrimitive);
         FillGroups(a, a + 4, val);
         Check(val.Count() == 5);
         Check(g_deleted == 3);
@@ -101,7 +102,7 @@ int main()
         Check(val.Count() == 5 && g_deleted == 3);
         FillGroups(a, a, shared);
         Check(shared.Count() == 1);
-        TGroupPtr none;
+        TPrimitivePtr none;
         FillGroups(a, a + 4, none);
         Check(val.Count() == 1 && a[0].Data == 0 && a[3].Info == 0);
     }

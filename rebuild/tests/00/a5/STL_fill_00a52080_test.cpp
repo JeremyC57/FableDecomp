@@ -1,4 +1,5 @@
-// Behaviour test for 0x00A52080: std::fill<C3DTriangle2*> (assign one triangle across a range)
+// Behaviour test for 0x00A52080: std::fill<C3DAnimationSequenceData::C3DVectorWord*> (assign one packed position across a range)
+// Name fix (NF382): was the fill<C3DVectorWord*> instance.
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -13,19 +14,19 @@ static int g_fail = 0;
 static void Check(bool c) { if (!c) g_fail = 1; }
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
-class C3DTriangle2 {
+class C3DVectorWord {
 public:
-    unsigned short VertexIndex[3];
+    short X, Y, Z;
 };
-static C3DTriangle2 Tri(unsigned short a, unsigned short b, unsigned short c)
+static C3DVectorWord Tri(unsigned short a, unsigned short b, unsigned short c)
 {
-    C3DTriangle2 t;
-    t.VertexIndex[0] = a; t.VertexIndex[1] = b; t.VertexIndex[2] = c;
+    C3DVectorWord t;
+    t.X = (short)a; t.Y = (short)b; t.Z = (short)c;
     return t;
 }
-static bool IsTri(const C3DTriangle2& t, unsigned short a, unsigned short b, unsigned short c)
+static bool IsTri(const C3DVectorWord& t, unsigned short a, unsigned short b, unsigned short c)
 {
-    return t.VertexIndex[0] == a && t.VertexIndex[1] == b && t.VertexIndex[2] == c;
+    return (unsigned short)t.X == a && (unsigned short)t.Y == b && (unsigned short)t.Z == c;
 }
 
 namespace std {
@@ -39,10 +40,10 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 
 int main()
 {
-    C3DTriangle2 a[5];
+    C3DVectorWord a[5];
     for (int i = 0; i < 5; ++i)
         a[i] = Tri(0, 0, 0);
-    C3DTriangle2 v = Tri(7, 8, 65535);
+    C3DVectorWord v = Tri(7, 8, 65535);
     std::fill(a + 1, a + 4, v);
     Check(IsTri(a[0], 0, 0, 0) && IsTri(a[4], 0, 0, 0));
     for (int j = 1; j < 4; ++j)

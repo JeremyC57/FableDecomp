@@ -1,10 +1,15 @@
-// CSharerParserOutputToDebugContextMapper::NewEntry() -- returns a default CEntry by value: a named local built by the out-of-line default constructor, copied member-wise into the hidden result (name string, two string sets), then destroyed
+// CPersistContext::GetDefaultVal<CFaction>() -- returns a default CFaction by value: a named local built by the out-of-line default constructor, copied member-wise into the hidden result (name string, the allied and enemy faction sets), then destroyed
+// Leaf: ??$GetDefaultVal@VCFaction@@@CPersistContext@@KI?AVCFaction@@XZ
+// Name fix (NF382, QUEUE q6): was CSharerParserOutputToDebugContextMapper::NewEntry, binding the CFaction default ctor / dtor
+//   0x006BA420 / 0x006BA6D0 as CSharerParserOutputToDebugContextMapper::CEntry's. Those two are CFaction's (bound so by the
+//   landed CPersistContext_TransferableComponent<CFaction>::TransferIn 0x006BACE0), the 0x1C value is Ego_r CFaction {Name,
+//   AlliedFactions, EnemyFactions} with 12-byte STLport sets, and FableWin faction_manager.obj puts
+//   CPersistContext::GetDefaultVal<CFaction> (protected static __fastcall, returns T by value) directly before
+//   CPersistContext::Transfer<CFaction>(name, value, default) -- retail 0x006BABD0 follows this address. Ego_r keeps it out of
+//   line in the same object. Unreferenced in retail (/OPT:NOREF keeps the COMDAT). Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BAB80, length 69 bytes.
-// Leaf: NewEntry
-// Callees: CEntry::CEntry() @ 0x006BA420, CCharString::CCharString(const CCharString&) @ 0x0099EC30,
-// the STLport set copy constructor @ 0x00514400 (x2), CEntry::~CEntry() @ 0x006BA6D0.
-// The manifest label "AddEntry" (four parameters) is propagated: the body takes only a hidden result pointer in ecx and
-// returns it (`mov eax,esi ; ret`), i.e. a static `__fastcall` function returning the 0x1c-byte entry by value.
+// Callees: CFaction::CFaction() @ 0x006BA420, CCharString::CCharString(const CCharString&) @ 0x0099EC30,
+// the STLport set copy constructor @ 0x00514400 (x2; its landed stand-in spelling is kept), CFaction::~CFaction() @ 0x006BA6D0.
 // Shape: VC7.1 has no named-return-value optimisation, so the local is built in the 0x1c frame, the implicit copy
 // constructor is inlined into the result (string at +0, sets at +4 / +0x10, each source re-addressed with `lea`),
 // and the local's destructor runs before the return.
@@ -22,19 +27,22 @@ struct SStringSet {                             // STLport set<CCharString>: hea
     ~SStringSet();
 };
 
-class CSharerParserOutputToDebugContextMapper { public:
-    struct CEntry {                             // 0x1c bytes
-        CCharString Name;                       // +0x00
-        SStringSet  Sharers;                    // +0x04
-        SStringSet  Contexts;                   // +0x10
-        CEntry();                               // 0x006BA420
-        ~CEntry();                              // 0x006BA6D0
-    };
-    static CEntry __fastcall NewEntry();
+class CFaction { public:                        // 0x1c bytes (Ego_r.pdb CFaction, retail 12-byte sets)
+    CCharString Name;                           // +0x00
+    SStringSet  AlliedFactions;                 // +0x04
+    SStringSet  EnemyFactions;                  // +0x10
+    CFaction();                                 // 0x006BA420
+    ~CFaction();                                // 0x006BA6D0
 };
 
-CSharerParserOutputToDebugContextMapper::CEntry __fastcall CSharerParserOutputToDebugContextMapper::NewEntry()
+class CPersistContext { protected:
+    template <class T> static T __fastcall GetDefaultVal();
+};
+
+template <class T> T __fastcall CPersistContext::GetDefaultVal()
 {
-    CEntry entry;
-    return entry;
+    T value;
+    return value;
 }
+
+template CFaction __fastcall CPersistContext::GetDefaultVal<CFaction>();

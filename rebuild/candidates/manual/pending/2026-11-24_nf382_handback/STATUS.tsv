@@ -1,0 +1,34 @@
+queue	item	status	batch	note
+q2	00a4b7b0	done	b1	ACCEPT
+q2	004d15a0	done	b1	ACCEPT
+q2	004d1600	done	b1	ACCEPT
+q2	00a5a7d0	done	b1	ACCEPT
+q2	0071b2d0	done	b1	ACCEPT
+q2	007898a3	done	b1	ACCEPT
+q2	0081b300	done	b1	ACCEPT
+q2	0081b510	done	b1	ACCEPT
+q2	00826a00	done	b1	ACCEPT (+ table replace for 00825d40)
+q2	00825d40	done (no edit)	b1	rides on 00826a00: the row already defines the right ConvertToThisVersion spelling; TABLE_CHANGES replaces its table line
+q2	006313a0	done	b1	ACCEPT
+q2	0046fece	done	b1	ACCEPT (wrapper question, QUEUE p6)
+q2	004ea2ae	done	b1	ACCEPT (wrapper question, QUEUE p6)
+q2	007691a0	done	b1	ACCEPT
+q2	00a52080	done	b1	ACCEPT
+q2	00a96350	done	b1	ACCEPT
+q2	00aaaf50	done	b1	ACCEPT
+q2	00a13650	done	b2	ACCEPT (+ table delete)
+q2	00a219e0	done	b2	ACCEPT
+q6	006bab80	done	b2	ACCEPT CPersistContext::GetDefaultVal<CFaction> (+ 2 table deletes)
+q2	006a7050	done	b2	ACCEPT (shared header now on main names it)
+q2	0091f990	done	b2	ACCEPT
+q2	00625350	held	b3	HOLD_RULING gate 4 new duplicate (QUEUE p1); unit with NF381 binder 006314c0
+q2	006314c0	held	b3	unit binder of 00625350 (NF381 QUEUE p2), HOLD with it
+q2	0067c490	held	b3	HOLD_RULING gate 4 new duplicates (QUEUE p1)
+q6	00733020	held	b3	HOLD_RULING gate 4 new duplicates (QUEUE p1); NEntityEvents::CIsHitEventHitBy::operator() proven
+q2	00e75ef0	held	b4	HOLD_RULING gate 4: 00d00af0 loses its (wrong-body) WatchForEndOfScript resolution (QUEUE p2)
+q2	009e6530	skipped	-	joint unit with the ??MCCharString binders (QUEUE p3)
+q2	00a55500	parked	-	closure includes 0x006FBE60 / 0x006FB1C0 callee spellings shared with 006fc130 (QUEUE p4)
+q2	004382c0	not mine	-	Account B pending CPlayerGui.h
+q2	00533cc0	not mine	-	T3 nf294 unit 0x00533B50
+q9	0066c000	ruling	-	CSmallVector<NAnimationEvents::CEvent,32> pair, order unproven (QUEUE p5)
+q9	0066c150	ruling	-	as 0066c000

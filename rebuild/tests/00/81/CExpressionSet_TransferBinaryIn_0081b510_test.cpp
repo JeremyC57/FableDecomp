@@ -1,4 +1,4 @@
-// behaviour test for 0081b510 CExpressionSet::TransferBinaryIn: the count sizes the entry vector with default entries,
+// behaviour test for 0081b510 CParticleMorphs::TransferBinaryIn (NF382 name fix, was CExpressionSet::TransferBinaryIn): the count sizes the entry vector with default entries,
 // the entries are read as one raw block, a dirty map is re-sorted by type and cleaned, and the trailing dword is consumed
 #include <cstdio>
 #include <cstring>

@@ -1,18 +1,19 @@
-// Behaviour test for 0x007691A0 STLport fill over CIVCountedPointer<T>: every slot ends up sharing
+// NF382 name fix: the row is fill<CDefPointer<const CThingBaseDef>*> (was the CIVCountedPointer<CLocalDetailPlacementGrid> instance).
+// Behaviour test for 0x007691A0 STLport fill over CDefPointer<T>: every slot ends up sharing
 // the value's pointee, released pointees are deleted at refcount zero, refcounts stay balanced.
 #include <cstdio>
 
 static int gDeleted = 0;
 
-class CIVCountedPointeeBase { public:
+class CDefPointeeBase { public:
     virtual void Destroy(int) { }
     virtual void Delete() { ++gDeleted; }
     unsigned long IVRefCount;
-    CIVCountedPointeeBase() : IVRefCount(0) { }
-    virtual ~CIVCountedPointeeBase() { }
+    CDefPointeeBase() : IVRefCount(0) { }
+    virtual ~CDefPointeeBase() { }
 };
 
-template <class T> class CIVCountedPointer {
+template <class T> class CDefPointer {
 public:
     T* Object;
     void Release()
@@ -24,7 +25,7 @@ public:
             Object = 0;
         }
     }
-    CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    CDefPointer& operator=(const CDefPointer& other)
     {
         if (Object != other.Object) {
             Release();
@@ -45,13 +46,13 @@ void fill_model(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 
 int main()
 {
-    CIVCountedPointeeBase a, b, c;
-    CIVCountedPointer<CIVCountedPointeeBase> v[4];
+    CDefPointeeBase a, b, c;
+    CDefPointer<CDefPointeeBase> v[4];
     v[0].Object = &a; a.IVRefCount = 1;          // sole owner: deleted when overwritten
     v[1].Object = &b; b.IVRefCount = 2;          // shared with v[2]
     v[2].Object = &b;
     v[3].Object = 0;
-    CIVCountedPointer<CIVCountedPointeeBase> val; val.Object = &c; c.IVRefCount = 1;
+    CDefPointer<CDefPointeeBase> val; val.Object = &c; c.IVRefCount = 1;
     fill_model(v, v + 4, val);
     int ok = 1;
     for (int i = 0; i < 4; ++i) if (v[i].Object != &c) ok = 0;

@@ -1,4 +1,4 @@
-// Behaviour test for 006a7050: CThingFilter_BoundingRadiusIntersectsInfiniteLine -- squared point-line distance against the bounding radius squared (model copy, stand-in helpers).
+// Behaviour test for 006a7050: CThingFilter_RadiusIntersectsInfiniteLine (NF382 name fix, was CThingFilter_BoundingRadiusIntersectsInfiniteLine) -- squared point-line distance against the bounding radius squared (model copy, stand-in helpers).
 #include <cstdio>
 class C3DVector { public: float X, Y, Z; };
 class CTCPhysicsBase { public:
@@ -15,7 +15,7 @@ static float GFGetShortestDistanceSquaredBetweenPointAndLine(const C3DVector& a,
     return px * px + py * py + pz * pz - dot * t;
 }
 class CThing { public: CTCPhysicsBase* PhysicsTC; };
-class CThingFilter_BoundingRadiusIntersectsInfiniteLine { public:
+class CThingFilter_RadiusIntersectsInfiniteLine { public:
     C3DVector Start, End;
     bool operator()(const CThing& thing) const
     {
@@ -31,7 +31,7 @@ class CThingFilter_BoundingRadiusIntersectsInfiniteLine { public:
 };
 int main()
 {
-    CThingFilter_BoundingRadiusIntersectsInfiniteLine f = { {0, 0, 0}, {10, 0, 0} };
+    CThingFilter_RadiusIntersectsInfiniteLine f = { {0, 0, 0}, {10, 0, 0} };
     CTCPhysicsBase p = { {50, 3, 0}, 4.0f };   // beyond the segment end: an infinite line still hits
     CThing t = { &p };
     int fail = 0;

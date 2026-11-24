@@ -2268,9 +2268,7 @@ _HEALTH_UNSET	0122dedc	006a98f0
 ?insert@CCharStringSet@@QAE?AUSSetInsertResult@@ABUCCharString@@@Z	004ac380	006b94e0
 ?Assign@CountedPtr@@QAEXPAUCComp@@@Z	004bb270	006b9510
 ??0CMember_006ba420Member@@QAE@XZ	006ba420	006baa40
-??0CEntry@CSharerParserOutputToDebugContextMapper@@QAE@XZ	006ba420	006bab80
 ??0SStringSet@@QAE@ABU0@@Z	00514400	006bab80
-??1CEntry@CSharerParserOutputToDebugContextMapper@@QAE@XZ	006ba6d0	006bab80
 ?InsertionSort_006bad60@@YIXPAUSElement12@@0USCompare@@@Z	006bad60	006baf40
 ?UnguardedInsertionSortAux_006b9ed0@@YIXPAUSElement12@@00USCompare@@@Z	006b9ed0	006baf40
 ?FinalInsertionSort_006baf40@@YIXPAUSElement12@@0USCompare@@@Z	006baf40	006bb140
@@ -9527,7 +9525,7 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@SIXPAX@Z	0051c890	0051cbb0
 ??0CEvent@NAnimationEvents@@QAE@XZ	006f8aa0	006fade0
 ?resize@?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@QAEXJABVCEvent@NAnimationEvents@@@Z	006fade0	006faec0
-?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatEditMapBrushHeader@@VCOldFileFormatEditMapBrushHeader@@@@SIXPAX@Z	00825d40	00826a00
+?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@@@SIXPAX@Z	00825d40	00826a00
 ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@@@SIXPAX@Z	008273d0	008275b0
 ?GetMaxSize@COldFileFormatHeightMapCell6@@SIJJJ@Z	00826560	008275b0
 ?Allocate@?$CSmallVector@VCCharString@@$07@@QAEXK@Z	009d2160	009d21d0
@@ -11039,7 +11037,6 @@ __itow	00bfedee	00a0dac0
 ?__copy_backward@@YIPAUSLongKeyedRecord@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z	0086eff0	0086fac0
 ?__unguarded_linear_insert@@YIXPAUSLongKeyedRecord@@U1@UCKeyPairCompareLess@@@Z	0086f090	0086fac0
 ?GetHelperPointPositionStatic@CPhysicsMesh@@QBE?AVC3DVector@@ABVCCharString@@J@Z	00a6c9c0	00a11760
-??$__uninitialized_copy@PBVC2DLineF@@PAV1@@std@@YIPAVC2DLineF@@PBV1@0PAV1@ABU__false_type@0@@Z	00a11210	00a13650
 ?LoadingCallbacks@CAsyncLoadingMemoryPool@@2V?$vector@PAVCAsyncLoadingProcessCallback@@V?$allocator@PAVCAsyncLoadingProcessCallback@@@std@@@std@@A	013d2770	00a14900
 ??$__find@PAPAVCAsyncLoadingProcessCallback@@PAV1@@std@@YIPAPAVCAsyncLoadingProcessCallback@@PAPAV1@0ABQAV1@ABUrandom_access_iterator_tag@0@@Z	00a14ac0	00a14930
 ?_M_insert_overflow@?$vector@PAVCAsyncLoadingProcessCallback@@V?$allocator@PAVCAsyncLoadingProcessCallback@@@std@@@std@@QAEXPAPAVCAsyncLoadingProcessCallback@@ABQAV3@ABU__true_type@2@I_N@Z	00a14cb0	00a14990

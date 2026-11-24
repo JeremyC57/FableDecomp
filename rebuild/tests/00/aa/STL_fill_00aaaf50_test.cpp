@@ -1,3 +1,4 @@
+// Behaviour test for 0x00AAAF50: std::fill<CPlane*> (NF382 name fix, was the fill<C3DClothQuad*> instance)
 #include <cstdio>
 #include <new>
 #include <stdlib.h>
@@ -12,23 +13,24 @@ typedef unsigned __int64 u64;
 static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
-class C3DClothQuad { public: unsigned short VertexIndex[4]; unsigned short TexCoordIndex[4]; };
-// the row: std::fill<C3DClothQuad*, C3DClothQuad>
-static void __fastcall FillQuads(C3DClothQuad* first, C3DClothQuad* last, const C3DClothQuad& val)
+class C3DVector { public: float X, Y, Z; };
+class CPlane { public: C3DVector Normal; float Distance; };
+// the row: std::fill<CPlane*, CPlane>
+static void __fastcall FillPlanes(CPlane* first, CPlane* last, const CPlane& val)
 {
     for (; first != last; ++first)
         *first = val;
 }
 int main()
 {
-    Check(sizeof(C3DClothQuad) == (unsigned int)16);
-    C3DClothQuad a[5];
+    Check(sizeof(CPlane) == (unsigned int)16);
+    CPlane a[5];
     memset(a, 0, sizeof(a));
-    C3DClothQuad v = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 } };
-    FillQuads(a, a + 4, v);
+    CPlane v = { { 1.0f, 2.0f, 3.0f }, 8.0f };
+    FillPlanes(a, a + 4, v);
     for (int k = 0; k < 4; ++k)
-        Check(a[k].VertexIndex[0] == 1 && a[k].VertexIndex[3] == 4 && a[k].TexCoordIndex[0] == 5 && a[k].TexCoordIndex[3] == 8);
-    Check(a[4].VertexIndex[0] == 0 && a[4].TexCoordIndex[3] == 0);
+        Check(a[k].Normal.X == 1.0f && a[k].Normal.Z == 3.0f && a[k].Distance == 8.0f);
+    Check(a[4].Normal.X == 0.0f && a[4].Distance == 0.0f);
 
     if (g_fail) {
         std::printf("00aaaf50_TEST FAIL\n");

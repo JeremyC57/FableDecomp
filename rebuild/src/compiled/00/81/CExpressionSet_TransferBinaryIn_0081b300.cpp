@@ -1,4 +1,9 @@
-// CExpressionSet::TransferBinaryIn(CMemoryDataInputStream& stream) -- read a CVectorMap of 24-byte pairs: count, resize, raw block, re-sort if dirty, end marker
+// CTextureMorphs::TransferBinaryIn(CMemoryDataInputStream& stream) -- read a CVectorMap of 24-byte pairs: count, resize, raw block, re-sort if dirty, end marker
+// Leaf: ?TransferBinaryIn@CTextureMorphs@@QAEXAAVCMemoryDataInputStream@@@Z
+// Name fix (NF382): was CExpressionSet::TransferBinaryIn (its own body is 0x0086F680). The only retail caller is the landed
+//   CPersistContext::Transfer<CTextureMorphs> 0x004E7822; Ego_r Transfer<CTextureMorphs> calls CTextureMorphs::TransferBinaryIn and
+//   FableWin CPersistTraits<CTextureMorphs>::TransferBinaryIn (inline in retail) does too (tc_register.obj in both donors).
+//   The helper types and callee stand-ins keep their landed spellings. Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081B300, length 388 bytes (`ret 4`).
 // The manifest label is propagated across the CVectorMap<K,V>::TransferBinaryIn template instances; the
 // object is a CVectorMap: a three-pointer vector of 24-byte pairs (+0/+4/+8), the empty comparator (+0xC)
@@ -83,14 +88,14 @@ inline SExpressionPair* GetData(CExpressionPairVector& a)
     return reinterpret_cast<SExpressionPair*>(&a);
 }
 
-class CExpressionSet { public:
+class CTextureMorphs { public:
     CExpressionPairVector Pairs;           // +0x00
     SExpressionCompare Compare;            // +0x0C
     bool Dirty;                            // +0x0D
     void TransferBinaryIn(CMemoryDataInputStream& stream);
 };
 
-void CExpressionSet::TransferBinaryIn(CMemoryDataInputStream& stream)
+void CTextureMorphs::TransferBinaryIn(CMemoryDataInputStream& stream)
 {
     unsigned long count = stream.ReadULong();
     Pairs.resize(count, SExpressionPair());

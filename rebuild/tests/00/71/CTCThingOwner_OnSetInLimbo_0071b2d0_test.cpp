@@ -1,4 +1,5 @@
 #include <cstdio>
+// Name fix (NF382): the row is CTCThingOwner::SetAsDrawable (was OnSetInLimbo, the vtable body at 0x0071B2A0).
 struct SThingListNode { SThingListNode* next; SThingListNode* prev; int flag; };
 struct CThingListIterator {
     SThingListNode* m_node;
@@ -19,7 +20,7 @@ static CSetThingInLimbo ForEach(CThingListIterator first, CThingListIterator las
 }
 class CTCThingOwner { public:
     CThingList ObjectList;
-    void OnSetInLimbo(bool b) { ForEach(ObjectList.begin(), ObjectList.end(), CSetThingInLimbo(b)); }
+    void SetAsDrawable(bool b) { ForEach(ObjectList.begin(), ObjectList.end(), CSetThingInLimbo(b)); }
 };
 int main()
 {
@@ -27,9 +28,9 @@ int main()
     head.next = &a; a.next = &b; b.next = &head; head.prev = &b; b.prev = &a; a.prev = &head;
     head.flag = 7; a.flag = 0; b.flag = 0;
     CTCThingOwner o; o.ObjectList.m_head = &head;
-    o.OnSetInLimbo(true);
+    o.SetAsDrawable(true);
     if (a.flag != 1 || b.flag != 1 || head.flag != 7 || g_calls != 2) { std::printf("0071b2d0_TEST FAIL\n"); return 1; }
-    o.OnSetInLimbo(false);
+    o.SetAsDrawable(false);
     if (a.flag != 0 || b.flag != 0 || head.flag != 7 || g_calls != 4) { std::printf("0071b2d0_TEST FAIL\n"); return 1; }
     std::printf("0071b2d0_TEST PASS\n");
     return 0;

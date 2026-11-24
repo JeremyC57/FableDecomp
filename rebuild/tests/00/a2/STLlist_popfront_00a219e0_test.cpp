@@ -1,4 +1,4 @@
-// Behaviour test for STLport list<long>::pop_front (0x00A219E0): unlink the first node and free it.
+// Behaviour test for STLport list<CNavWayPoint>::pop_front (0x00A219E0; NF382 name fix, was list<long>::pop_front): unlink the first node and free it.
 #include <cstdio>
 #include <cstdlib>
 

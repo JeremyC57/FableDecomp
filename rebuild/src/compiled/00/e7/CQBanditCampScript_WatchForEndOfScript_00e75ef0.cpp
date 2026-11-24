@@ -1,4 +1,9 @@
-// CQ_BanditCampScript::WatchForEndOfScript() -- script thread: whenever the Q_TraderConflictEvil quest is active, suspend the V_ExposeMayorRhodri quest until Q_TraderConflictEvil is no longer active, then re-activate it
+// CV_ExposeMayorScript::PreventConflictWithTCE() -- script thread: whenever the Q_TraderConflictEvil quest is active, suspend the V_ExposeMayorRhodri quest until Q_TraderConflictEvil is no longer active, then re-activate it
+// Leaf: ?PreventConflictWithTCE@CV_ExposeMayorScript@NScript@@QAEXXZ
+// Name fix (NF382): was CQ_BanditCampScript::WatchForEndOfScript, whose body 0x00D013A0 CQ_BanditCampScript::Main stores as its
+//   thread function (site 0x00D00E4D). This address is stored by CV_ExposeMayorScript::Main 0x00E75BA0 (site 0x00E75EA0, its only
+//   reference), as Ego_r CV_ExposeMayorScript::Main stores PreventConflictWithTCE (`mov [esi+34h], fn`) and FableWin's pushes it;
+//   the thread guards V_ExposeMayorRhodri against Q_TraderConflictEvil ("TCE"), the two strings it references.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E75EF0, length 329 bytes (+ int3 padding), plain `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 // 0x0099EAE0; through the quest's interface (+0x40): NewScriptFrame (slot 7), ActivateQuest (276), DeactivateQuest
@@ -25,12 +30,12 @@ namespace NScript {
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
 namespace NScript {
-class CQ_BanditCampScript : public CScriptBase { public:
+class CV_ExposeMayorScript : public CScriptBase { public:
     CGameScriptInterface* GSI;                          // +0x40
     void*                 Data;                         // +0x44
-    void WatchForEndOfScript();
+    void PreventConflictWithTCE();
 };
-void CQ_BanditCampScript::WatchForEndOfScript()
+void CV_ExposeMayorScript::PreventConflictWithTCE()
 {
     while (!IsActiveThreadTerminating()) {
         if (GSI->IsQuestActive("Q_TraderConflictEvil")) {

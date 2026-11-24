@@ -1,9 +1,14 @@
-// CReplaceSerialise<CFileFormatEditMapBrushHeader,COldFileFormatEditMapBrushHeader>::ReadFromFile(CAFile& file, CASuspendableProcess* process) -- read the edit-map brush header record, upgrading an older (version 1) record to version 2
-// Leaf: ReadFromFile
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00826A00, 164 bytes, `__fastcall`, `ret 8`; FableWin.pdb
-//   ?ReadFromFile@?$CReplaceSerialise@VCFileFormatEditMapBrushHeader@@VCOldFileFormatEditMapBrushHeader@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z;
-//   caller 0x0082117A (CWorldMap brush loading). The old format is CBaseSerialise<COldFileFormatEditMapBrushHeader,1> (FableWin.pdb
-//   has its GetMaxSize/GetClassVersionNumber); ConvertToThisVersion is 0x00825D40 (manifest label CAFile_ReadRigidBody is propagated).
+// CReplaceSerialise<CFileFormatBrush,COldFileFormatBrush>::ReadFromFile(CAFile& file, CASuspendableProcess* process) -- read the scripted-brush record, upgrading an older (version 1) record to version 2
+// Leaf: ?ReadFromFile@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z
+// Name fix (NF382): was the CReplaceSerialise<CFileFormatEditMapBrushHeader,COldFileFormatEditMapBrushHeader> instance (FableWin
+//   edit_map_brush.obj, called only by CEditMapBrush::LoadFromFile). The only retail caller is CMap::LoadBrushesFromFile 0x00821010
+//   (site 0x0082117A), which calls the CFileFormatBrush instance in FableWin and Ego_r (map.obj); the landed ConvertToThisVersion
+//   0x00825D40 it calls is the CFileFormatBrush one, and Ego_r CFileFormatBrush is the 73-byte (0x49) pack-1 version-2 record this
+//   body copies. Same bytes.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00826A00, 164 bytes, `__fastcall`, `ret 8`; FableWin.pdb / Ego_r.pdb
+//   ?ReadFromFile@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z;
+//   caller 0x0082117A (CMap::LoadBrushesFromFile). The old format is CBaseSerialise<COldFileFormatBrush,1>;
+//   ConvertToThisVersion is 0x00825D40 (manifest label CAFile_ReadRigidBody is propagated).
 // Layout: {ByteLength +0, SerialiseVersionNumber +4} then the payload; the retail record is 0x49 bytes (`push 49h`, `rep movsd`
 //   x0x12 + `movsb`) -- GetMaxSize folds to that constant, so no version arithmetic survives.
 // Callees: CAFile::ReadVar<int> 0x00516D90, CAFile::ReadVar<unsigned char> 0x00516E10, CAFile virtual slots 7 (+0x1C, the
@@ -77,15 +82,15 @@ public:
     static unsigned short __fastcall GetClassVersionNumber() { return Version; }
     static long __fastcall GetMaxSize(long version, long size) { return MAX(size, sizeof(T)); }
 };
-class COldFileFormatEditMapBrushHeader : public CBaseSerialise<COldFileFormatEditMapBrushHeader, 1> {
+class COldFileFormatBrush : public CBaseSerialise<COldFileFormatBrush, 1> {
 public:
     unsigned char _payload[0x49 - 5];       // retail size not recoverable from this body (it folds to <= 0x49)
 };
-class CFileFormatEditMapBrushHeader : public CReplaceSerialise<CFileFormatEditMapBrushHeader, COldFileFormatEditMapBrushHeader> {
+class CFileFormatBrush : public CReplaceSerialise<CFileFormatBrush, COldFileFormatBrush> {
 public:
     enum { VERSION = 2 };
-    unsigned char _payload[0x49 - 5];       // retail TLC record is 0x49 bytes (Ego_r's is larger)
+    unsigned char _payload[0x49 - 5];       // retail TLC record is 0x49 bytes (Ego_r CFileFormatBrush: pack 1, 73 bytes)
 };
 #pragma pack(pop)
-template <> void __fastcall CReplaceSerialise<CFileFormatEditMapBrushHeader, COldFileFormatEditMapBrushHeader>::ConvertToThisVersion(void* data);   // 0x00825D40
-template void CReplaceSerialise<CFileFormatEditMapBrushHeader, COldFileFormatEditMapBrushHeader>::ReadFromFile(CAFile& file, CASuspendableProcess* process);
+template <> void __fastcall CReplaceSerialise<CFileFormatBrush, COldFileFormatBrush>::ConvertToThisVersion(void* data);   // 0x00825D40
+template void CReplaceSerialise<CFileFormatBrush, COldFileFormatBrush>::ReadFromFile(CAFile& file, CASuspendableProcess* process);

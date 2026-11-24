@@ -1,6 +1,9 @@
-// std::_Sort_heap(float* first, float* last, std::less<float> pred) -- order a heap of floats by repeatedly popping the front to the back
+// std::sort_heap(float* first, float* last, std::less<float> pred) -- order a heap of floats by repeatedly popping the front to the back
 // Flags: /Gr
-// Leaf: _Sort_heap
+// Leaf: ??$sort_heap@PAMU?$less@M@std@@@std@@YIXPAM0U?$less@M@0@@Z
+// Name fix (NF382): was the Dinkumware-only `_Sort_heap` spelling. Retail links STLport (NF301; GOTCHAS: retail STL is
+//   STLport), whose out-of-line algorithm is `sort_heap`; the only retail caller, the landed STLport __partial_sort below this
+//   address, binds this spelling here (reloc_bindings). The callee keeps its landed spelling (NAME_FIXES). Same bytes.
 // Retail: Fable.exe @ 0x00A5A7D0, 144 bytes (/O2). Callee: STLport __push_heap<float*,int,float,less<float>>
 // 0x00A586D0 (`__fastcall`, `ret 0Ch`; catalog label `_Push_heap<pair<float,CCharString>*,...>` is propagated).
 // Shape: the same STLport `sort_heap` source as 0x00777EE0 (the integer twin): `for (; 1 < _Last - _First;
@@ -43,10 +46,10 @@ void _Pop_heap_0(_RanIt _First, _RanIt _Last, _Pr _Pred, _Ty*)
     _Pop_heap(_First, _Last - 1, _Last - 1, _Ty(*(_Last - 1)), _Pred, (int*)0);
 }
 template <class _RanIt, class _Pr>
-void __fastcall _Sort_heap(_RanIt _First, _RanIt _Last, _Pr _Pred)
+void __fastcall sort_heap(_RanIt _First, _RanIt _Last, _Pr _Pred)
 {
     for (; 1 < _Last - _First; --_Last)
         _Pop_heap_0(_First, _Last, _Pred, _First);
 }
-template void __fastcall _Sort_heap<float*, less<float> >(float*, float*, less<float>);
+template void __fastcall sort_heap<float*, less<float> >(float*, float*, less<float>);
 }

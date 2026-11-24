@@ -1,6 +1,9 @@
-// std::_Sort_heap(std::pair<float,EConversationAttitude>* first, std::pair<float,EConversationAttitude>* last, CKeyPairCompareLess<float,EConversationAttitude> pred) -- order a heap of (score, attitude) pairs by repeatedly popping the front to the back
+// std::sort_heap(std::pair<float,EConversationAttitude>* first, std::pair<float,EConversationAttitude>* last, CKeyPairCompareLess<float,EConversationAttitude> pred) -- order a heap of (score, attitude) pairs by repeatedly popping the front to the back
 // Flags: /Gr
-// Leaf: _Sort_heap
+// Leaf: ??$sort_heap@PAU?$pair@MW4EConversationAttitude@@@std@@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@std@@YIXPAU?$pair@MW4EConversationAttitude@@@0@0V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@Z
+// Name fix (NF382): was the Dinkumware-only `_Sort_heap` spelling. Retail links STLport (NF301; GOTCHAS: retail STL is
+//   STLport), whose out-of-line algorithm is `sort_heap`; the only retail caller, the landed STLport __partial_sort below this
+//   address, binds this spelling here (reloc_bindings). The callee keeps its landed spelling (NAME_FIXES). Same bytes.
 // Retail: Fable.exe @ 0x004D15A0, 96 bytes (/O2). Callee: STLport __adjust_heap<pair<float,
 // EConversationAttitude>*,int,pair<...>,CKeyPairCompareLess<float,EConversationAttitude>> 0x004D04F0
 // (`__fastcall`: first ecx, hole edx, bottom + the 8-byte value + the comparator on the stack).
@@ -35,11 +38,11 @@ void _Pop_heap_0(_RanIt _First, _RanIt _Last, _Pr _Pred, _Ty*)
     _Pop_heap(_First, _Last - 1, _Last - 1, _Ty(*(_Last - 1)), _Pred, (int*)0);
 }
 template <class _RanIt, class _Pr>
-void __fastcall _Sort_heap(_RanIt _First, _RanIt _Last, _Pr _Pred)
+void __fastcall sort_heap(_RanIt _First, _RanIt _Last, _Pr _Pred)
 {
     for (; 1 < _Last - _First; --_Last)
         _Pop_heap_0(_First, _Last, _Pred, _First);
 }
 typedef pair<float, EConversationAttitude> Elem;
-template void __fastcall _Sort_heap<Elem*, CKeyPairCompareLess<float, EConversationAttitude> >(Elem*, Elem*, CKeyPairCompareLess<float, EConversationAttitude>);
+template void __fastcall sort_heap<Elem*, CKeyPairCompareLess<float, EConversationAttitude> >(Elem*, Elem*, CKeyPairCompareLess<float, EConversationAttitude>);
 }

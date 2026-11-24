@@ -1,4 +1,10 @@
-// CTCThingOwner::OnSetInLimbo(bool) -- forwards the limbo flag to every owned object: std::for_each over the object list with a CSetThingInLimbo functor
+// CTCThingOwner::SetAsDrawable(bool) -- forwards the drawable flag to every owned object: std::for_each over the object list with a functor
+// Leaf: ?SetAsDrawable@CTCThingOwner@@QAEX_N@Z
+// Name fix (NF382): was the virtual OnSetInLimbo. The only retail caller CThing::SetAsDrawable 0x004C8E50 calls
+//   CTCThingOwner::SetAsDrawable in FableWin and Ego_r (thing.obj); this address is in no vtable, while OnSetInLimbo is the
+//   vtable slot 16 body at 0x0071B2A0 (vtable 0x012412A4 holds it). FableWin order in tc_thing_owner.obj: OnSetInLimbo <
+//   SetAsDrawable, as in retail. The callee and functor keep their landed stand-in spellings (FableWin pairs SetAsDrawable with
+//   for_each<CSetThingAsDrawable>, so the two for_each stand-ins at 0x0071B690 / 0x0071B700 are swapped: NAME_FIXES). Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071B2D0, length 35 bytes.
 // Callees: std::_For_each<list iterator, CSetThingInLimbo> @ 0x0071B690 (__fastcall: hidden functor result in ecx,
 // first/last/functor on the stack, `ret 0Ch`).
@@ -42,10 +48,10 @@ struct CThingComponent {
 class CTCThingOwner : public CThingComponent { public:
     CThingList ObjectList;                  // +0x0C
     bool CallOnDie;                         // +0x10
-    virtual void OnSetInLimbo(bool inLimbo);
+    void SetAsDrawable(bool drawable);
 };
 
-void CTCThingOwner::OnSetInLimbo(bool inLimbo)
+void CTCThingOwner::SetAsDrawable(bool drawable)
 {
-    ForEachSetThingInLimbo(ObjectList.begin(), ObjectList.end(), CSetThingInLimbo(inLimbo));
+    ForEachSetThingInLimbo(ObjectList.begin(), ObjectList.end(), CSetThingInLimbo(drawable));
 }

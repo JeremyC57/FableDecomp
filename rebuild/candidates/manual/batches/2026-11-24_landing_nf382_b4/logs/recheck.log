@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00e75ef0   WARN SHARED_HEADER_AVAILABLE CV_ExposeMayorScript (engine/CV_ExposeMayorScript.h)
+00e75ef0   WARN STANDIN_LEAF ?PreventConflictWithTCE@CV_ExposeMayorScript@NScript@@QAEXXZ (catalog CQ_BanditCampScript::WatchForEndOfScript; names another function)
+00e75ef0   RELOCATION_MATCH PASS   WatchForEndOfScript
+
+WINS: 1
+  00e75ef0 RELOCATION_MATCH CQ_BanditCampScript::?PreventConflictWithTCE@CV_ExposeMayorScript@NScript@@QAEXXZ

@@ -1,10 +1,15 @@
-// vector<C2DLineF>::reserve(unsigned int n) -- grow the line list's capacity to n, copying the existing lines into a fresh block
-// Leaf: ?reserve@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXI@Z
+// vector<CPlane>::reserve(unsigned int n) -- grow the plane list's capacity to n, copying the existing planes into a fresh block
+// Leaf: ?reserve@?$vector@VCPlane@@V?$allocator@VCPlane@@@std@@@std@@QAEXI@Z
+// Name fix (NF382): was vector<C2DLineF>::reserve (its own body is 0x00A74940, caller 0x00A74EA0). FableWin
+//   CPhysicsMeshObject::GetNavigationLevelVolumes (lib_physics_mesh_object_2.obj), this address's only caller 0x00A12EE0, calls
+//   vector<CPlane>::reserve; the copy callee 0x00A11210 is __uninitialized_copy<CPlane*, CPlane*> (catalog, and bound so by
+//   vector<CPlane>::_M_insert_overflow 0x00A13720). STLport 4.6 _M_allocate_and_copy is a member template, so reserve passes
+//   the plain pointers and the callee is that same <CPlane*, CPlane*> instance. Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A13650, 171 bytes, `ret 4`. Only caller 0x00A12F41 in
-//   CPhysicsMeshObject::GetNavigationLevelVolumes (a zeroed local vector<C2DLineF> reserved to the line count). The
-//   catalog label "CArray_Reserve" is descriptive; the element is the 16-byte C2DLineF (Point1/Point2, Ego_r.pdb).
+//   CPhysicsMeshObject::GetNavigationLevelVolumes (a zeroed local vector<CPlane> reserved to the plane count). The
+//   catalog label "CArray_Reserve" is descriptive; the element is the 16-byte CPlane (Normal/Distance, Ego_r.pdb, engine/CPlane.h).
 // Callees: malloc 0x00BFEA0E (allocator::allocate, both arms), the out-of-line STLport `__uninitialized_copy(first,
-//   last, result, const __false_type&)` 0x00A11210 (__fastcall, `ret 8`, catalog "_Copy_impl<C2DLineF*>"), free
+//   last, result, const __false_type&)` 0x00A11210 (__fastcall, `ret 8`, catalog __uninitialized_copy<CPlane*,CPlane*>), free
 //   0x00BFEA14 (inline _M_clear: trivial destroy + deallocate).
 // Shape: STLport 4.6 `reserve` verbatim with `_M_allocate_and_copy` inlined. The copy's body must be visible in the
 //   TU (template under auto_inline(off) + noinline): only then does VC7.1 spill the cached finish to the `push ecx`
@@ -13,16 +18,9 @@ extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class C2DVector {
-public:
-    float X, Y;
-};
-
-class C2DLineF {
-public:
-    C2DVector Point1;
-    C2DVector Point2;
-};
+// CPlane / C3DVector keep their implicit (trivial) copy: retail 0x00A11210 copies the four dwords with integer moves.
+#define FABLE_RETAIL_C3DVECTOR_LIBPK_IMPLICIT_COPY_PASS23
+#include "engine/CPlane.h"
 
 namespace std {
 struct __false_type { __false_type() {} };
@@ -55,7 +53,8 @@ public:
     _STLP_alloc_proxy<_Tp*, _Alloc> _M_end_of_storage;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
-    pointer _M_allocate_and_copy(size_type __n, const_pointer __first, const_pointer __last)
+    template <class _ForwardIterator>
+    pointer _M_allocate_and_copy(size_type __n, _ForwardIterator __first, _ForwardIterator __last)
     {
         pointer __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, __false_type());
@@ -90,4 +89,4 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 }
 }
 
-template void std::vector<C2DLineF>::reserve(unsigned int);
+template void std::vector<CPlane>::reserve(unsigned int);

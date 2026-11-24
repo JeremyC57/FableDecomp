@@ -1,0 +1,56 @@
+addr       parity           behav  name
+004d15a0   WARN STANDIN_LEAF ??$sort_heap@PAU?$pair@MW4EConversationAttitude@@@std@@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@std@@YIXPAU?$pair@MW4EConversationAttitude@@@0@0V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@Z (catalog std::_Sort_heap; names another function)
+004d15a0   RELOCATION_MATCH PASS   _Sort_heap
+004d1600   WARN STANDIN_LEAF ??$sort_heap@PAU?$pair@MVCCharString@@@std@@V?$CKeyPairCompareLess@MVCCharString@@@@@std@@YIXPAU?$pair@MVCCharString@@@0@0V?$CKeyPairCompareLess@MVCCharString@@@@@Z (catalog std::_Sort_heap; names another function)
+004d1600   RELOCATION_MATCH PASS   _Sort_heap
+006313a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+006313a0   WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)
+006313a0   WARN RELOC_NAME: ?AssignBase@BaseDef@@QAEPAU1@PBU1@@Z -> 00431f90 labelled 'std::vector<std::pair<unsigned long, CDefClassBase::CSubDefInfo>, std::allocator<std::pair<unsigned long, CDefClassBase::CSubDefInfo>>>::operator='
+006313a0   WARN STANDIN_LEAF ??4?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEAAV0@ABV0@@Z (catalog CTavernTableDef::operator=; names another function)
+006313a0   RELOCATION_MATCH PASS   operator=
+0071b2d0   WARN SHARED_HEADER_AVAILABLE CTCThingOwner (engine/CTCThingOwner.h)
+0071b2d0   WARN STANDIN_LEAF ?SetAsDrawable@CTCThingOwner@@QAEX_N@Z (catalog CTCThingOwner::OnSetInLimbo; names another function)
+0071b2d0   RELOCATION_MATCH PASS   OnSetInLimbo
+007691a0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+007691a0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007691a0   MATCH            PASS   fill
+007898a3   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007898a3   WARN SHARED_HEADER_AVAILABLE CTCDPhysicalObstruction (engine/CTCDPhysicalObstruction.h)
+007898a3   RELOCATION_MATCH PASS   SetThingToIgnoreObstruction
+0081b300   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+0081b300   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+0081b300   WARN STANDIN_LEAF ?TransferBinaryIn@CTextureMorphs@@QAEXAAVCMemoryDataInputStream@@@Z (catalog CExpressionSet::TransferBinaryIn; names another function)
+0081b300   RELOCATION_MATCH PASS   TransferBinaryIn
+0081b510   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+0081b510   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+0081b510   WARN SHARED_HEADER_AVAILABLE CExpressionSet (engine/CExpressionSet.h)
+0081b510   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+0081b510   WARN RELOC_NAME: ?SortEntries@@YIXPAVCEntry@CExpressionSet@@0V?$CKeyPairCompareLess@W4EExpressionType@@VCEntry@CExpressionSet@@@@@Z -> 0081e090 labelled '_global::Sort_SElement40_0081e090'
+0081b510   WARN STANDIN_LEAF ?TransferBinaryIn@CParticleMorphs@@QAEXAAVCMemoryDataInputStream@@@Z (catalog CExpressionSet::TransferBinaryIn; names another function)
+0081b510   RELOCATION_MATCH PASS   TransferBinaryIn
+00826a00   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00826a00   WARN SHARED_HEADER_AVAILABLE CFileFormatBrush (engine/CFileFormatBrush.h)
+00826a00   RELOCATION_MATCH PASS   ReadFromFile
+00a4b7b0   WARN STANDIN_LEAF ?IsInRange@NBBBMaths@@YI_NABVC3DVector@@0M@Z (catalog _global::GFWorld3DDistanceSmallerThan; names another function)
+00a4b7b0   MATCH            PASS   GFWorld3DDistanceSmallerThan
+00a52080   MATCH            PASS   fill
+00a5a7d0   WARN STANDIN_LEAF ??$sort_heap@PAMU?$less@M@std@@@std@@YIXPAM0U?$less@M@0@@Z (catalog std::_Sort_heap; names another function)
+00a5a7d0   RELOCATION_MATCH PASS   _Sort_heap
+00a96350   RELOCATION_MATCH PASS   fill
+00aaaf50   MATCH            PASS   fill
+
+WINS: 14
+  004d15a0 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@MW4EConversationAttitude@@@std@@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@std@@YIXPAU?$pair@MW4EConversationAttitude@@@0@0V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@Z
+  004d1600 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@MVCCharString@@@std@@V?$CKeyPairCompareLess@MVCCharString@@@@@std@@YIXPAU?$pair@MVCCharString@@@0@0V?$CKeyPairCompareLess@MVCCharString@@@@@Z
+  006313a0 RELOCATION_MATCH CTavernTableDef::??4?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEAAV0@ABV0@@Z
+  0071b2d0 RELOCATION_MATCH CTCThingOwner::?SetAsDrawable@CTCThingOwner@@QAEX_N@Z
+  007691a0 MATCH std::??$fill@PAV?$CDefPointer@$$CBVCThingBaseDef@@@@V1@@std@@YIXPAV?$CDefPointer@$$CBVCThingBaseDef@@@@0ABV1@@Z
+  007898a3 RELOCATION_MATCH CTCDPhysicalObstruction::?SetThingToIgnoreObstruction@CTCDPhysicalObstruction@@QAEXPAVCThing@@@Z
+  0081b300 RELOCATION_MATCH CExpressionSet::?TransferBinaryIn@CTextureMorphs@@QAEXAAVCMemoryDataInputStream@@@Z
+  0081b510 RELOCATION_MATCH CExpressionSet::?TransferBinaryIn@CParticleMorphs@@QAEXAAVCMemoryDataInputStream@@@Z
+  00826a00 RELOCATION_MATCH CReplaceSerialise<CFileFormatEditMapBrushHeader,COldFileFormatEditMapBrushHeader>::?ReadFromFile@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z
+  00a4b7b0 MATCH _global::?IsInRange@NBBBMaths@@YI_NABVC3DVector@@0M@Z
+  00a52080 MATCH std::??$fill@PAVC3DVectorWord@C3DAnimationSequenceData@@V12@@std@@YIXPAVC3DVectorWord@C3DAnimationSequenceData@@0ABV12@@Z
+  00a5a7d0 RELOCATION_MATCH std::??$sort_heap@PAMU?$less@M@std@@@std@@YIXPAM0U?$less@M@0@@Z
+  00a96350 RELOCATION_MATCH std::??$fill@PAV?$CCountedPointer@VC3DClothPrimitive@@@@V1@@std@@YIXPAV?$CCountedPointer@VC3DClothPrimitive@@@@0ABV1@@Z
+  00aaaf50 MATCH std::??$fill@PAVCPlane@@V1@@std@@YIXPAVCPlane@@0ABV1@@Z

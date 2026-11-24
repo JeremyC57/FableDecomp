@@ -1,0 +1,21 @@
+addr       parity           behav  name
+006a7050   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+006a7050   WARN STANDIN_LEAF ??RCThingFilter_RadiusIntersectsInfiniteLine@@QBE_NABVCThing@@@Z (catalog CThingFilter_BoundingRadiusIntersectsInfiniteLine::operator(); names another function)
+006a7050   RELOCATION_MATCH PASS   operator()
+006bab80   WARN SHARED_HEADER_AVAILABLE CFaction (engine/CFaction.h)
+006bab80   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006bab80   WARN RELOC_NAME: ??0SStringSet@@QAE@ABU0@@Z -> 00514400 labelled 'std::set::set'
+006bab80   WARN STANDIN_LEAF ??$GetDefaultVal@VCFaction@@@CPersistContext@@KI?AVCFaction@@XZ (catalog CSharerParserOutputToDebugContextMapper::NewEntry; names another function)
+006bab80   RELOCATION_MATCH PASS   NewEntry
+0091f990   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0091f990   WARN STANDIN_LEAF ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z (catalog CIntelligentPointer<const CThing>::CIntelligentPointer; names another function)
+0091f990   RELOCATION_MATCH PASS   CIntelligentPointer
+00a13650   RELOCATION_MATCH PASS   reserve
+00a219e0   RELOCATION_MATCH PASS   pop_front
+
+WINS: 5
+  006a7050 RELOCATION_MATCH CThingFilter_BoundingRadiusIntersectsInfiniteLine::??RCThingFilter_RadiusIntersectsInfiniteLine@@QBE_NABVCThing@@@Z
+  006bab80 RELOCATION_MATCH CSharerParserOutputToDebugContextMapper::??$GetDefaultVal@VCFaction@@@CPersistContext@@KI?AVCFaction@@XZ
+  0091f990 RELOCATION_MATCH CIntelligentPointer<const CThing>::??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z
+  00a13650 RELOCATION_MATCH vector<C2DLineF>::?reserve@?$vector@VCPlane@@V?$allocator@VCPlane@@@std@@@std@@QAEXI@Z
+  00a219e0 RELOCATION_MATCH std::list::?pop_front@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QAEXXZ

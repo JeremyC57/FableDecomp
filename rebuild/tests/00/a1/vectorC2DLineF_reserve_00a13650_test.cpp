@@ -1,6 +1,6 @@
-// Behaviour test for vector<C2DLineF>::reserve (0x00A13650): reserving on an empty vector allocates exactly n
+// Behaviour test for vector<CPlane>::reserve (0x00A13650; NF382 name fix, was vector<CPlane>::reserve): reserving on an empty vector allocates exactly n
 // elements and keeps size 0 (reserve(0) on an empty vector allocates nothing); reserving above capacity copies the existing elements into a new n-element block and frees
-// the old one; reserving at or below capacity changes nothing. The lines are plain 16-byte C2DLineF values.
+// the old one; reserving at or below capacity changes nothing. The planes are plain 16-byte CPlane values (Normal X/Y/Z, Distance).
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -9,8 +9,8 @@ static int g_allocs = 0, g_frees = 0;
 static unsigned int g_lastBytes = 0;
 static int nearf(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
-class C2DVector { public: float X, Y; };
-class C2DLineF { public: C2DVector Point1; C2DVector Point2; };
+class C3DVector { public: float X, Y, Z; };
+class CPlane { public: C3DVector Normal; float Distance; };
 
 namespace std {
 struct __false_type { __false_type() {} };
@@ -42,7 +42,8 @@ public:
     vector() : _M_start(0), _M_finish(0) { _M_end_of_storage._M_data = 0; }
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
-    pointer _M_allocate_and_copy(size_type __n, const_pointer __first, const_pointer __last)
+    template <class _ForwardIterator>
+    pointer _M_allocate_and_copy(size_type __n, _ForwardIterator __first, _ForwardIterator __last)
     {
         pointer __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, __false_type());
@@ -86,21 +87,21 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 int main()
 {
     int ok = 1;
-    if (sizeof(void*) == 4u && sizeof(C2DLineF) != 16u) ok = 0;
-    std::vector<C2DLineF> v;
+    if (sizeof(void*) == 4u && sizeof(CPlane) != 16u) ok = 0;
+    std::vector<CPlane> v;
     v.reserve(0);
     if (v._M_start != 0 || v.capacity() != 0 || g_allocs != 0) ok = 0;
     v.reserve(2);
-    if (v.size() != 0 || v.capacity() != 2 || g_allocs != 1 || g_lastBytes != 2u * sizeof(C2DLineF) || g_frees != 0) ok = 0;
-    for (int i = 0; i < 2; ++i) { C2DLineF e; e.Point1.X = 1.0f + i; e.Point1.Y = 2.0f * i; e.Point2.X = -3.0f; e.Point2.Y = 0.5f + i; v.push_back(e); }
-    C2DLineF* oldStart = v._M_start;
+    if (v.size() != 0 || v.capacity() != 2 || g_allocs != 1 || g_lastBytes != 2u * sizeof(CPlane) || g_frees != 0) ok = 0;
+    for (int i = 0; i < 2; ++i) { CPlane e; e.Normal.X = 1.0f + i; e.Normal.Y = 2.0f * i; e.Normal.Z = -3.0f; e.Distance = 0.5f + i; v.push_back(e); }
+    CPlane* oldStart = v._M_start;
     int allocs = g_allocs;
     v.reserve(2);
     v.reserve(1);
     if (g_allocs != allocs || v._M_start != oldStart || v.capacity() != 2) ok = 0;
     v.reserve(5);
-    if (g_allocs != allocs + 1 || g_frees != 1 || v.capacity() != 5 || v.size() != 2 || g_lastBytes != 5u * sizeof(C2DLineF)) ok = 0;
-    for (int i = 0; i < 2; ++i) { const C2DLineF& e = v._M_start[i]; if (!(nearf(e.Point1.X, 1.0f + i) && nearf(e.Point1.Y, 2.0f * i )&& nearf(e.Point2.X, -3.0f) && nearf(e.Point2.Y, 0.5f + i))) ok = 0; }
+    if (g_allocs != allocs + 1 || g_frees != 1 || v.capacity() != 5 || v.size() != 2 || g_lastBytes != 5u * sizeof(CPlane)) ok = 0;
+    for (int i = 0; i < 2; ++i) { const CPlane& e = v._M_start[i]; if (!(nearf(e.Normal.X, 1.0f + i) && nearf(e.Normal.Y, 2.0f * i )&& nearf(e.Normal.Z, -3.0f) && nearf(e.Distance, 0.5f + i))) ok = 0; }
     if (!(1)) ok = 0;
 
     if (!ok) { std::printf("00a13650_TEST FAIL\n"); return 1; }

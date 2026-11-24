@@ -1,12 +1,18 @@
-// std::list::pop_front() -- STLport list<long>: unlink the first node and free it
-// Leaf: ?pop_front@?$list@J
+// std::list<CNavWayPoint>::pop_front() -- STLport list of navigation way points: unlink the first node and free it
+// Leaf: ?pop_front@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QAEXXZ
+// Name fix (NF382): was list<long>::pop_front. The only caller is CNavigatorAStar::CalculateAndMoveToPosProximity 0x00A1E5C0
+//   (site 0x00A1FA4F), which calls list<CNavWayPoint>::pop_front in FableWin (lib_navigator_a_star.obj, also from
+//   MoveTowardNextWayPoint); the list<long> instance belongs to tc_opinion_of_hero.obj in both donors. CNavWayPoint (10 bytes,
+//   engine/CNavWayPoint.h) has no destructor in either PDB, so _Destroy emits nothing. Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A219E0, 22 bytes, __fastcall, plain `ret`.
 // Identity: STLport 4.6 `void pop_front() { erase(begin()); }` with the inline single-node erase (unlink, trivial
-//   _Destroy, deallocate = free). Only caller 0x00A1FA4F. The catalog's "list<long>::pop_front" spelling is kept; the
-//   element type cannot be told from the bytes (any trivially destructible 4-byte payload compiles the same).
+//   _Destroy, deallocate = free). Only caller 0x00A1FA4F (see the name fix above).
 // Callee: free @ 0x00BFEA14 (STLport's malloc allocator; the dropped result is cleaned with `pop ecx`).
 // Shape: the node's next/prev are loaded together, then the two link stores bracket the `push node`.
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
+#include "rebuild_abi.h"                                 // (engine/CNavWayPoint.h uses FABLE_STATIC_ASSERT without including it)
+#define FABLE_RETAIL_C2DVECTOR                            // the packed retail C2DVector: CNavWayPoint is 10 bytes (header assert)
+#include "engine/CNavWayPoint.h"
 
 namespace std {
 
@@ -72,6 +78,6 @@ public:
     void pop_front() { erase(begin()); }
 };
 
-template void list<long>::pop_front();
+template void list<CNavWayPoint>::pop_front();
 
 } // namespace std

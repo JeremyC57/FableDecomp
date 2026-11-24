@@ -1,5 +1,10 @@
-// CExpressionSet::TransferBinaryIn(CMemoryDataInputStream&) -- read the entry count, resize the expression vector-map with default entries, read the entries as one raw block, re-sort the map if it was marked dirty, then skip the trailing dword
-// Leaf: TransferBinaryIn
+// CParticleMorphs::TransferBinaryIn(CMemoryDataInputStream&) -- read the entry count, resize the expression vector-map with default entries, read the entries as one raw block, re-sort the map if it was marked dirty, then skip the trailing dword
+// Leaf: ?TransferBinaryIn@CParticleMorphs@@QAEXAAVCMemoryDataInputStream@@@Z
+// Name fix (NF382): was CExpressionSet::TransferBinaryIn (its own body is 0x0086F680). The only retail caller is the landed
+//   CPersistContext::Transfer<CParticleMorphs> 0x004E78F2; Ego_r Transfer<CParticleMorphs> calls CParticleMorphs::TransferBinaryIn and
+//   FableWin CPersistTraits<CParticleMorphs>::TransferBinaryIn (inline in retail) does too (tc_register.obj in both donors).
+//   The entry / array / comparator types stay nested in the CExpressionSet holder so the callee stand-ins at 0x0081D980 /
+//   0x0081E090 keep their landed spellings (the PDB nests them in CParticleMorphs: NAME_FIXES). Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081B510, length 406 bytes, `ret 4`.
 // Callees: CArray<CEntry>::resize(unsigned long, const CEntry&) @ 0x0081D980, std::sort<CEntry*, CKeyPairCompareLess>
 //   @ 0x0081E090 (__fastcall: first, last, comparator by value), CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0.
@@ -64,15 +69,19 @@ class CExpressionSet { public:
         void resize(unsigned long count, const T& value);   // 0x0081D980
     };
     typedef CKeyPairCompareLess<EExpressionType, CEntry> CCompare;
-    CArray<CEntry> Expressions;                         // +0x00
-    CCompare       Compare;                             // +0x0c
+};
+
+class CParticleMorphs { public:
+    typedef CExpressionSet::CEntry CEntry;
+    CExpressionSet::CArray<CEntry> Expressions;         // +0x00
+    CExpressionSet::CCompare       Compare;             // +0x0c
     bool           Dirty;                               // +0x0d
     void TransferBinaryIn(CMemoryDataInputStream& in);
 };
 
 void __fastcall SortEntries(CExpressionSet::CEntry* first, CExpressionSet::CEntry* last, CExpressionSet::CCompare compare);   // 0x0081E090
 
-void CExpressionSet::TransferBinaryIn(CMemoryDataInputStream& in)
+void CParticleMorphs::TransferBinaryIn(CMemoryDataInputStream& in)
 {
     long count;
     in.Read(&count, 4);

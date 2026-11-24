@@ -1,4 +1,5 @@
-// Behaviour test for 0x00A4B7B0: GFWorld3DDistanceSmallerThan (strict squared-distance compare)
+// Behaviour test for 0x00A4B7B0: NBBBMaths::IsInRange (strict squared-distance compare)
+// Name fix (NF382): was GFWorld3DDistanceSmallerThan (the separate body at 0x006614F0).
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -22,20 +23,22 @@ public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 
-bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance)
+namespace NBBBMaths {
+bool __fastcall IsInRange(const C3DVector& a, const C3DVector& b, float distance)
 {
     return (a - b).GetLengthSquared() < distance * distance;
+}
 }
 
 int main()
 {
     C3DVector a(1, 2, 3), b(4, 6, 3);                  // 5 apart
-    Check(GFWorld3DDistanceSmallerThan(a, b, 5.5f));
-    Check(!GFWorld3DDistanceSmallerThan(a, b, 5.0f));  // strict
-    Check(!GFWorld3DDistanceSmallerThan(a, b, 4.9f));
-    Check(GFWorld3DDistanceSmallerThan(a, a, 0.1f));
-    Check(!GFWorld3DDistanceSmallerThan(a, a, 0.0f));
-    Check(GFWorld3DDistanceSmallerThan(C3DVector(0, 0, 0), C3DVector(0, 0, -2), -3.0f));   // squared: the sign drops
+    Check(NBBBMaths::IsInRange(a, b, 5.5f));
+    Check(!NBBBMaths::IsInRange(a, b, 5.0f));  // strict
+    Check(!NBBBMaths::IsInRange(a, b, 4.9f));
+    Check(NBBBMaths::IsInRange(a, a, 0.1f));
+    Check(!NBBBMaths::IsInRange(a, a, 0.0f));
+    Check(NBBBMaths::IsInRange(C3DVector(0, 0, 0), C3DVector(0, 0, -2), -3.0f));   // squared: the sign drops
     if (g_fail) {
         printf("00a4b7b0_TEST FAIL\n");
         return 1;
