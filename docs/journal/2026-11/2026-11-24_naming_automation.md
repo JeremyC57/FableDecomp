@@ -108,3 +108,8 @@ Tracker after these landings: **agree_pdb 23,920** (from 23,193 this morning, 22
   lines. Open: the 95 thin-remainder rows, the neutral CCombatActionBase guard, and rebasing the parked overlays (D-e).
 - **NF328 handed back** (`pending/2026-11-24_nf328_handback/`): the ~CScriptThing / copy-ctor unit, 9 rows proven and held on decisions
   D1-D6. Advisor ruling: land as one unit, with the 21 differing copies as debt, after the D5 census holes are compiled.
+
+## Evening: agents NF378-NF388 (Account A)
+- **Landed:** nf378 b1/b1h/b2/b3 (25 stand-in selves + 4 binders, 11 header opt-ins, whole-tree equiv 0 differing); nf379 b1-b3 (CThingNoiseDef and JackDragon option S units, 0x0044C1BB); nf380 b1/b2; nf381 b1/b2 (78 generated Def-ctor binders onto `??0CSubDefClassBase@@QAE@XZ`, table line deleted after a compiled census of all 150 callers); nf382 b1/b2/b4; nf383 b1-b3; nf384 b1; nf385 b1. Option S landing tools (4f72f62cb2), tracker shared-name fix (347ece5c58).
+- **Rulings (advisor decision, owner delegated):** retail has no ICF (identical template COMDATs at separate addresses; GOTCHAS rewritten); NF379 Q1-Q3; NF378 R1-R5; NF380 #1-#3; NF381 (census strict, reason-column mentions do not reserve); NF383 R1 (objsec exception for destructor thunks) and R2 (a full vector body with wrapper callers is one source); NF382 p1 (NoDuplicates v Any = new duplicate), p2 (wrong-body resolution may drop), p6 (ctor vs traits ctor not proven); NF385 R1 (CRetailTree pairs held), R2 (literal fix as its own batch).
+- **Found:** the grader passes a row whose string literal differs from retail (0x00B1AE00); 38 `Unwind<addr>` funclets have no funclet_offset in the recheck payload.
